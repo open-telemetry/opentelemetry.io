@@ -29,10 +29,6 @@ Some organizations provide a Collector distribution with additional capabilities
 or for improved ease of use. What follows is a list of Collector distributions
 maintained by third parties.
 
-{{% alert title="Note" color="warning" %}} OpenTelemetry **does not validate or
-endorse** the third-party distributions listed in the following table. The list
-is provided as a convenience for the community. {{% /alert %}}
-
 {{% ecosystem/distributions-table filter="third-party-collector" %}}
 
 ## Adding your Collector distribution {#how-to-add}

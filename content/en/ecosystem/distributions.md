@@ -19,10 +19,6 @@ distributions and the component they customize. For
 [OpenTelemetry Collector](/docs/collector/) distributions, see
 [Collector distributions](/docs/collector/distributions/).
 
-{{% alert title="Note" color="warning" %}} OpenTelemetry **does not validate or
-endorse** the third-party distributions listed below. This list is provided as a
-convenience for the community. {{% /alert %}}
-
 {{% ecosystem/distributions-table filter="non-collector" %}}
 
 ## Adding your distribution {#how-to-add}
@@ -36,7 +32,7 @@ To have your distribution listed, [submit a PR] with an entry added to the
 - GitHub handle or email address as a point of contact so that we can reach out
   in case we have questions
 
-{{% alert title="Notes" color="info" %}}
+{{% alert title="Notes" %}}
 
 - If you provide external integration of OpenTelemetry for any kind of library,
   service, or app, then consider

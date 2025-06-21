@@ -18,4 +18,4 @@ createdAt: 2021-06-22
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/bearertokenauthextension
-  version: v0.127.0
+  version: v0.128.0

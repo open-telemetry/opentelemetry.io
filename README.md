@@ -64,7 +64,7 @@ Here is a list of community roles with current and previous members:
   - [Austin Parker](https://github.com/austinlparker), Honeycomb
   - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
   - [Patrice Chalin](https://github.com/chalin), CNCF
-  - [Phillip Carter](https://github.com/cartermp), Honeycomb
+  - [Phillip Carter](https://github.com/cartermp), Salesforce
   - [Severin Neumann](https://github.com/svrnm)
   - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
 

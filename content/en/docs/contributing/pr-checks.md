@@ -14,7 +14,7 @@ a set of checks are executed. The PR checks verify that:
 - Your PR successfully [deploys through Netlify](#netlify-deployment)
 - Your changes are compliant with our [style guide](#checks)
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 If any of the PR checks fails, try to
 [fix content issues](../pull-requests/#fix-issues) first by running
@@ -117,7 +117,7 @@ success status for, you can add the following query parameter to your URL to
 have the link checker ignore it: `?no-link-check`. For example,
 <https:/some-example.org?no-link-check> will be ignored by the link checker.
 
-{{% alert-md title="Maintainers tip" color=info %}}
+{{% alert title="Maintainers tip" %}}
 
 Maintainers can run the following script immediately after having run the link
 checker to have Puppeteer attempt to validate links with non-success statuses
@@ -128,7 +128,7 @@ checker to have Puppeteer attempt to validate links with non-success statuses
 
 This script also validates URL fragments, which the link checker doesn't do.
 
-{{% /alert-md %}}
+{{% /alert %}}
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 

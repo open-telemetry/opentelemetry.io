@@ -5,7 +5,7 @@ aliases: [general-sdk-configuration]
 cSpell:ignore: ottrace
 ---
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 Support for environment variables is optional. For detailed information on which
 environment variables each language implementation supports, please consult the

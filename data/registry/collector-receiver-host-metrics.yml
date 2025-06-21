@@ -16,4 +16,4 @@ createdAt: 2020-11-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/hostmetricsreceiver
-  version: v0.127.0
+  version: v0.128.0

@@ -4,7 +4,7 @@ weight: 20
 cSpell:ignore: springboot
 ---
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 You can also use the [Java agent](../../agent) to instrument your Spring Boot
 application. For the pros and cons, see [Java zero-code instrumentation](..).
@@ -29,7 +29,7 @@ To ensure version alignment across all OpenTelemetry dependencies, you must
 import the `opentelemetry-instrumentation-bom` BOM when using the OpenTelemetry
 starter.
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 When using Maven, import the OpenTelemetry BOMs before any other BOMs in your
 project. For example, if you import the `spring-boot-dependencies` BOM, you have
@@ -92,7 +92,7 @@ dependencyManagement {
 }
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 Be careful not to mix up the different ways of configuring things with Gradle.
 For example, don't use

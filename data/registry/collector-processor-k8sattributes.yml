@@ -19,4 +19,4 @@ createdAt: 2022-03-26
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor
-  version: v0.127.0
+  version: v0.128.0

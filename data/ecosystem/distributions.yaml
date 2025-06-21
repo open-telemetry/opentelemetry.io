@@ -1,4 +1,4 @@
-# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF
+# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT
 - name: Splunk Distribution of OpenTelemetry Collector
   url: https://github.com/signalfx/splunk-otel-collector
   docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
@@ -6,6 +6,10 @@
 - name: AWS Distro for OpenTelemetry (ADOT)
   url: https://aws.amazon.com/otel/
   docsUrl: https://aws-otel.github.io/docs/getting-started/collector
+  components: [Collector]
+- name: Instana Distribution of OpenTelemetry Collector (IDOT)
+  url: https://github.com/instana/instana-otel-collector
+  docsUrl: https://www.ibm.com/docs/en/instana-observability/current?topic=collectors-instana-distribution-opentelemetry-collector
   components: [Collector]
 - name: AWS Distro for OpenTelemetry - Instrumentation for JavaScript
   url: https://github.com/aws-observability/aws-otel-js-instrumentation/
@@ -166,6 +170,10 @@
 - name: Datadog Distribution of OpenTelemetry Collector (DDOT)
   url: https://github.com/DataDog/datadog-agent/tree/main/comp/otelcol
   docsUrl: https://docs.datadoghq.com/opentelemetry/setup/ddot_collector
+  components: [Collector]
+- name: New Relic Distribution of the OpenTelemetry Collector (NRDOT)
+  url: https://github.com/newrelic/nrdot-collector-releases
+  docsUrl: https://docs.newrelic.com/docs/opentelemetry/nrdot/nrdot-collector/
   components: [Collector]
 
 # OSS Collector Distros

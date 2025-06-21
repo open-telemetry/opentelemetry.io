@@ -6,19 +6,21 @@ aliases: [metric_service_features, metric-features, ../metric-features]
 
 | Service         | Language   | Instrumentation Libraries | Manual Instrumentation | Multiple Instruments | Views | Custom Attributes | Resource Detection | Exemplars |
 | --------------- | ---------- | ------------------------- | ---------------------- | -------------------- | ----- | ----------------- | ------------------ | --------- |
-| Accounting      | Go         | 🚧                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
+| Accounting      | .NET       | ✅                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Ad              | Java       | ✅                        | ✅                     | 🚧                   | 🚧    | ✅                | ✅                 | ✅        |
-| Cart            | .NET       | ✅                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
+| Cart            | .NET       | ✅                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | ✅        |
 | Checkout        | Go         | ✅                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Currency        | C++        | 🔕                        | ✅                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Email           | Ruby       | 🚧                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
+| Flagd-ui        | TypeScript | 🚧                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Fraud Detection | Kotlin     | ✅                        | 🚧                     | 🚧                   | 🚧    | 🚧                | ✅                 | 🚧        |
 | Frontend        | TypeScript | 🚧                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
+| Load Generator  | Python     | 🚧                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Payment         | JavaScript | 🚧                        | ✅                     | 🚧                   | 🚧    | 🚧                | ✅                 | 🚧        |
 | Product Catalog | Go         | 🚧                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Quote           | PHP        | 🚧                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
 | Recommendation  | Python     | ✅                        | ✅                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
-| Shipping        | Rust       | 🚧                        | 🚧                     | 🚧                   | 🚧    | 🚧                | 🚧                 | 🚧        |
+| Shipping        | Rust       | ✅                        | ✅                     | 🚧                   | 🚧    | 🚧                | ✅                 | 🚧        |
 
 Emoji Legend:
 
