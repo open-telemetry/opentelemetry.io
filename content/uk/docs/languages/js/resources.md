@@ -3,7 +3,7 @@ title: Ресурси
 weight: 70
 description: Додайте деталі про середовище вашого застосунку до вашої телеметрії
 cSpell:ignore: myhost SIGINT uuidgen WORKDIR
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 {{% docs/languages/resources-intro %}}
@@ -78,15 +78,13 @@ EnvDetector found resource. Resource {
 ```javascript
 ...
 const { resourceFromAttributes } = require('@opentelemetry/resources');
-const { SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_NAMESPACE, SEMRESATTRS_SERVICE_VERSION, SEMRESATTRS_SERVICE_INSTANCE_ID } = require('@opentelemetry/semantic-conventions');
+const { ATTR_SERVICE_NAME, ATTR_SERVICE_VERSION } = require('@opentelemetry/semantic-conventions');
 ...
 const sdk = new opentelemetry.NodeSDK({
   ...
   resource: resourceFromAttributes({
-    [ SEMRESATTRS_SERVICE_NAME ]: "yourServiceName",
-    [ SEMRESATTRS_SERVICE_NAMESPACE ]: "yourNameSpace",
-    [ SEMRESATTRS_SERVICE_VERSION ]: "1.0",
-    [ SEMRESATTRS_SERVICE_INSTANCE_ID ]: "my-instance-id-1",
+    [ ATTR_SERVICE_NAME ]: "yourServiceName",
+    [ ATTR_SERVICE_VERSION ]: "1.0",
   })
   ...
 });

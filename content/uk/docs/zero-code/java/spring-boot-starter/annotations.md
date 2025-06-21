@@ -1,7 +1,7 @@
 ---
 title: Анотації
 weight: 50
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -44,7 +44,7 @@ public class TracedClass {
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert title="Примітка" color="info" %}} Анотації OpenTelemetry використовують Spring AOP на основі проксі.
+{{% alert title="Примітка" %}} Анотації OpenTelemetry використовують Spring AOP на основі проксі.
 
 Ці анотації працюють лише для методів проксі. Ви можете дізнатися більше у [документації Spring](https://docs.spring.io/spring-framework/reference/core/aop/proxying.html).
 
@@ -68,7 +68,7 @@ public class MyControllerManagedBySpring {
 
 {{% /alert %}}
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 Щоб мати можливість використовувати анотації OpenTelemetry, вам потрібно додати залежність Spring Boot Starter AOP до вашого проєкту:
 

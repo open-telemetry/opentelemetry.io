@@ -6,7 +6,7 @@ aliases:
 weight: 30
 description: Ручне інструментування для OpenTelemetry в Go
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup обчислювально
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 {{% include instrumentation-intro %}}
@@ -282,7 +282,7 @@ otel.SetTextMapPropagator(propagation.TraceContext{})
 
 ### Ініціалізація метрик {#initialize-metrics}
 
-{{% alert color="info" %}} Якщо ви інструментуєте бібліотеку, пропустіть цей крок.
+{{% alert %}} Якщо ви інструментуєте бібліотеку, пропустіть цей крок.
 {{% /alert %}}
 
 Щоб увімкнути [метрики](/docs/concepts/signals/metrics/) у вашому застосунку, вам потрібно мати ініціалізований [`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider), який дозволить вам створювати [`Meter`](/docs/concepts/signals/metrics/#meter).

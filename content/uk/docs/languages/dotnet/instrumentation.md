@@ -4,12 +4,12 @@ weight: 20
 aliases: [manual]
 description: Інструментування для OpenTelemetry .NET
 cSpell:ignore: dicelib rolldice activitysource
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 {{% include instrumentation-intro %}}
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 На цій сторінці ви дізнаєтесь, як можна додати трасування, метрики та логи до вашого коду вручну. Ви не обмежені використанням одного виду інструментування: ви також можете використовувати [автоматичне інструментування](/docs/zero-code/dotnet/), щоб почати, а потім збагачувати свій код ручним інструментуванням за потреби.
 
@@ -192,7 +192,7 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore
 
 ### Ініціалізація SDK {#initialize-the-sdk}
 
-{{% alert title="Примітка" color="info" %}} Якщо ви інструментуєте бібліотеку, вам не потрібно ініціалізувати SDK. {{% /alert %}}
+{{% alert title="Примітка" %}} Якщо ви інструментуєте бібліотеку, вам не потрібно ініціалізувати SDK. {{% /alert %}}
 
 Важливо налаштувати екземпляр OpenTelemetry SDK якомога раніше у вашому застосунку.
 
@@ -293,7 +293,7 @@ dotnet run
 
 ### Ініціалізація трасування {#initialize-tracing}
 
-{{% alert title="Примітка" color="info" %}} Якщо ви інструментуєте бібліотеку, вам не потрібно ініціалізувати TracerProvider. {{% /alert %}}
+{{% alert title="Примітка" %}} Якщо ви інструментуєте бібліотеку, вам не потрібно ініціалізувати TracerProvider. {{% /alert %}}
 
 Щоб увімкнути [трасування](/docs/concepts/signals/traces/) у вашому застосунку, вам потрібно мати ініціалізований [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider), який дозволить вам створювати [`Tracer`](/docs/concepts/signals/traces/#tracer).
 

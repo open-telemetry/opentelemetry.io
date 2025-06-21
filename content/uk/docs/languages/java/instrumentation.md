@@ -9,7 +9,7 @@ aliases:
 weight: 10
 description: Екосистема інструментування в OpenTelemetry Java
 cSpell:ignore: logback
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -136,7 +136,7 @@ OpenTelemetry Java [публікує артефакти](../api/#semantic-attrib
 
 Кореляція журналів з трейсами доступна шляхом встановлення [шима](#shims) для перенесення контексту OpenTelemetry в систему логування. Дивіться "Міст OpenTelemetry контексту в Log4j", "Міст OpenTelemetry контексту в Logback".
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 Приклад наскрізного інструментування журналів за допомогою stdout доступний у [репозиторії прикладів Java](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).
 

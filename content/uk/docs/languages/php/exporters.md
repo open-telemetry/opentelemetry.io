@@ -2,12 +2,12 @@
 title: Експортери
 weight: 50
 cSpell:ignore: fastcgi pecl блокуючими
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 {{% docs/languages/exporters/intro %}}
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 Якщо ви використовуєте [інструментування без коду](/docs/zero-code/php/), ви можете налаштувати
 експортери за допомогою [конфігурації без коду для налаштування експортерів](/docs/zero-code/php#configuration).

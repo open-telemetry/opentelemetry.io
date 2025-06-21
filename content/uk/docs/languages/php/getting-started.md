@@ -4,7 +4,7 @@ description: Почніть працювати з OpenTelemetry для PHP.
 aliases: [getting_started]
 weight: 10
 cSpell:ignore: darwin myapp pecl rolldice strval автозавантажений
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 OpenTelemetry для PHP можна використовувати для генерації та експорту [трасувань][трасування], [метрик][метрики] та [логів][логи].
@@ -101,7 +101,10 @@ php -S localhost:8080
    pecl install opentelemetry
    ```
 
-   {{% alert title="Примітка" color="warning" %}}Альтернативні методи встановлення розширення детально описані в розділі [інструментування без коду](/docs/zero-code/php/#install-the-opentelemetry-extension).
+   {{% alert title="Примітка" color="warning" %}}
+
+   Альтернативні методи встановлення розширення детально описані в розділі [інструментування без коду](/docs/zero-code/php/#install-the-opentelemetry-extension).
+
    {{% /alert %}}
 
 3. Додайте розширення до вашого файлу `php.ini`:

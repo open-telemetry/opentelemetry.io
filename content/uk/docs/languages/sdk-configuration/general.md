@@ -3,10 +3,10 @@ title: Загальна конфігурація SDK
 linkTitle: Загальна
 aliases: [general-sdk-configuration]
 cSpell:ignore: ottrace
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 Підтримка змінних середовища є необовʼязковою. Для детальної інформації про те, які змінні середовища підтримує кожна реалізація мови, будь ласка, зверніться до [Матриці відповідності реалізації](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables).
 

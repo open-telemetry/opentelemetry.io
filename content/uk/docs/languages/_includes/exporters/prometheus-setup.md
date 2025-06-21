@@ -8,11 +8,11 @@
 
 ### Налаштування бекенду {#prometheus-setup}
 
-{{% alert-md title=Примітка color=info %}}
+{{% alert title=Примітка %}}
 
 Якщо у вас вже налаштований Prometheus або сумісний з Prometheus бекенд, ви можете пропустити цей розділ і налаштувати залежності експортера [Prometheus](#prometheus-dependencies) або [OTLP](#otlp-dependencies) для вашого застосунку.
 
-{{% /alert-md %}}
+{{% /alert %}}
 
 Ви можете запустити [Prometheus](https://prometheus.io) у docker контейнері, доступному на порту `9090`, дотримуючись цих інструкцій:
 
@@ -32,10 +32,10 @@ scrape_configs:
 docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
 ```
 
-{{% alert-md title=Примітка color=info %}}
+{{% alert title=Примітка %}}
 
 Коли використовуєте OTLP Receiver Prometheus, переконайтеся, що ви встановили OTLP endpoint для метрик у вашому застосунку на `http://localhost:9090/api/v1/otlp`.
 
 Не всі docker середовища підтримують `host.docker.internal`. У деяких випадках вам може знадобитися замінити `host.docker.internal` на `localhost` або IP адресу вашої машини.
 
-{{% /alert-md %}}
+{{% /alert %}}

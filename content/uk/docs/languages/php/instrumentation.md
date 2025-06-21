@@ -4,7 +4,7 @@ weight: 20
 aliases: [manual]
 description: Ручне інструментування для OpenTelemetry PHP
 cSpell:ignore: guzzlehttp myapp ініціюючими
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -121,7 +121,7 @@ composer require open-telemetry/api open-telemetry/sem-conv
 
 ### Ініціалізація SDK {#initialize-the-sdk}
 
-{{% alert title="Примітка" color="info" %}} Якщо ви інструментуєте бібліотеку, **пропустіть цей крок**. {{% /alert %}}
+{{% alert title="Примітка" %}} Якщо ви інструментуєте бібліотеку, **пропустіть цей крок**. {{% /alert %}}
 
 Щоб використовувати OpenTelemetry SDK для PHP, вам потрібні пакунки, які задовольняють залежності для `psr/http-client-implementation` та `psr/http-factory-implementation`. Тут ми будемо використовувати Guzzle, який забезпечує обидва:
 
@@ -270,7 +270,7 @@ $loggerProvider = \OpenTelemetry\API\Globals::loggerProvider();
 
 ### Ініціалізація трасування {#initialize-tracing}
 
-{{% alert title="Примітка" color="info" %}} Якщо ви інструментуєте бібліотеку, **пропустіть цей крок**. {{% /alert %}}
+{{% alert title="Примітка" %}} Якщо ви інструментуєте бібліотеку, **пропустіть цей крок**. {{% /alert %}}
 
 Щоб увімкнути [трасування](/docs/concepts/signals/traces/) у вашому застосунку, вам потрібно
 мати ініціалізований [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider), який дозволить вам створювати [`Tracer`](/docs/concepts/signals/traces/#tracer).

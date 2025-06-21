@@ -6,7 +6,7 @@ aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
 cSpell:ignore: coreutils HKLM iisreset myapp
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 Використовуйте OpenTelemetry .NET Automatic Instrumentation для надсилання трасування та метрик з .NET застосунків та сервісів до систем спостереження без необхідності змінювати їх вихідний код.
@@ -25,7 +25,7 @@ OpenTelemetry .NET Automatic Instrumentation має працювати з усі
 - AMD64 (x86-64)
 - ARM64 ([Експериментально](/docs/specs/otel/versioning-and-stability))
 
-{{% alert title="Примітка" color="info" %}} ARM64 збірка не підтримує образи на базі CentOS. {{% /alert %}}
+{{% alert title="Примітка" %}} ARM64 збірка не підтримує образи на базі CentOS. {{% /alert %}}
 
 CI тести виконуються на наступних операційних системах:
 

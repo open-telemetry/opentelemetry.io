@@ -7,7 +7,7 @@ aliases:
   - /docs/languages/js/automatic/module-config
 weight: 10
 cSpell:ignore: serviceinstance
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 Модуль має широкі можливості конфігурації за допомогою [змінних середовища](/docs/specs/otel/configuration/sdk-environment-variables/). Багато аспектів поведінки автоматичного інструментування можна налаштувати відповідно до ваших потреб, таких як детектори ресурсів, експортери, заголовки поширення контексту трасування та інше.
@@ -64,7 +64,7 @@ OTEL_NODE_ENABLED_INSTRUMENTATIONS="http,express"
 OTEL_NODE_DISABLED_INSTRUMENTATIONS="fs,grpc"
 ```
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 Якщо встановлені обидві змінні середовища, спочатку застосовується `OTEL_NODE_ENABLED_INSTRUMENTATIONS`, а потім до цього списку застосовується `OTEL_NODE_DISABLED_INSTRUMENTATIONS`. Тому, якщо те саме інструментування включено в обидва списки, це інструментування буде вимкнено.
 

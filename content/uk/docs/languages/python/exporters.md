@@ -3,7 +3,7 @@ title: Експортери
 weight: 50
 description: Обробка та експорт ваших телеметричних даних
 cSpell:ignore: LOWMEMORY
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -137,7 +137,7 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 Існують пресети темпоральності для кожного виду інструментації. Ці пресети можуть бути встановлені за допомогою змінної середовища `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE`, наприклад:
 

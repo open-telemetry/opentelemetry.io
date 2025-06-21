@@ -3,7 +3,7 @@ title: Створення власного колектора
 weight: 29
 # prettier-ignore
 cSpell:ignore: batchprocessor chipset darwin debugexporter gomod loggingexporter otlpexporter otlpreceiver wyrtw
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 Якщо ви плануєте створювати та налагоджувати власні приймачі, процесори, розширення або експортери колектора, вам знадобиться власний екземпляр Колектора. Це дозволить вам запускати та налагоджувати компоненти OpenTelemetry Collector безпосередньо у вашому улюбленому IDE для Golang.

@@ -4,7 +4,7 @@ weight: 20
 description: Дізнайтеся, як налаштувати Collector відповідно до ваших потреб
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -39,7 +39,7 @@ otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR --config=https://server/config.yaml
 otelcol --config="yaml:exporters::debug::verbosity: normal"
 ```
 
-{{% alert title="Порада" color="primary" %}}
+{{% alert title="Порада" %}}
 
 При посиланні на вкладені ключі в шляхах YAML, обовʼязково використовуйте подвійні двокрапки (::), щоб уникнути плутанини з просторами імен, які містять крапки. Наприклад:
 `receivers::docker_stats::metrics::container.cpu.utilization::enabled: false`.

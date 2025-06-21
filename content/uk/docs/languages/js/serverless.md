@@ -3,14 +3,14 @@ title: Serverless
 weight: 100
 description: Інструментуйте свої безсерверні функції за допомогою OpenTelemetry JavaScript
 cSpell:ignore: otelwrapper новорозгорнуту
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 Цей посібник показує, як почати відстежувати безсерверні функції за допомогою бібліотек інструментування OpenTelemetry.
 
 ## AWS Lambda
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 Ви також можете автоматично інструментувати свої функції AWS Lambda за допомогою [наданих спільнотою шарів Lambda](/docs/platforms/faas/lambda-auto-instrument/).
 

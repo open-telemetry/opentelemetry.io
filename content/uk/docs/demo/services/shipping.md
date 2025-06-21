@@ -2,152 +2,219 @@
 title: Сервіс доставки
 linkTitle: Доставка
 aliases: [shippingservice]
-cSpell:ignore: itemct oteldemo reqwest sdktrace semcov shiporder tokio
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: sdktrace
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 Цей сервіс відповідає за надання інформації про доставку, включаючи ціни та інформацію про відстеження, коли це запитується з сервісу оформлення замовлення.
 
-Сервіс доставки побудований в основному з використанням Tonic, Reqwest та бібліотек/компонентів OpenTelemetry. Інші залежності включені в `Cargo.toml`.
+Сервіс доставки побудований в основному з використанням [Actix Web](https://actix.rs/), [Tracing](https://tracing.rs/) для логів та бібліотек/компонентів OpenTelemetry. Всі інші залежності включені в `Cargo.toml`.
 
 Залежно від вашого фреймворку та середовища виконання, ви можете розглянути можливість звернення до [документації Rust](/docs/languages/rust/) для додаткової інформації. Ви знайдете приклади асинхронних та синхронних відрізків у запитах котирувань та ідентифікаторах відстеження відповідно.
 
-`build.rs` підтримує розробку поза Docker, за наявності встановленого Rust. В іншому випадку, розгляньте можливість збірки з використанням `docker compose` для редагування/оцінки змін за потреби.
-
 [Сирці сервісу доставки](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/)
 
-## Трейси {#traces}
+## Інструментування {#instrumentation}
 
-### Ініціалізація Трейсингу {#initializing-tracing}
+OpenTelemetry SDK налаштовується у файлі `telemetry_conf`.
 
-SDK OpenTelemetry ініціалізується з `main`.
+Для створення ресурсу реалізовано функцію `get_resource()`, яка використовує стандартні детектори ресурсів (Resource Detector), а також детектори `OS` та `Process`:
 
 ```rust
-fn init_tracer() -> Result<sdktrace::Tracer, TraceError> {
-    global::set_text_map_propagator(TraceContextPropagator::new());
-    let os_resource = OsResourceDetector.detect(Duration::from_secs(0));
-    let process_resource = ProcessResourceDetector.detect(Duration::from_secs(0));
-    let sdk_resource = SdkProvidedResourceDetector.detect(Duration::from_secs(0));
-    let env_resource = EnvResourceDetector::new().detect(Duration::from_secs(0));
-    let telemetry_resource = TelemetryResourceDetector.detect(Duration::from_secs(0));
-    opentelemetry_otlp::new_pipeline()
-        .tracing()
-        .with_exporter(
-            opentelemetry_otlp::new_exporter()
-                .tonic()
-                .with_endpoint(format!(
-                    "{}{}",
-                    env::var("OTEL_EXPORTER_OTLP_TRACES_ENDPOINT")
-                        .unwrap_or_else(|_| "http://otelcol:4317".to_string()),
-                    "/v1/traces"
-                )), // TODO: assume this ^ is true from config when opentelemetry crate > v0.17.0
-                    // https://github.com/open-telemetry/opentelemetry-rust/pull/806 includes the environment variable.
-        )
-        .with_trace_config(
-            sdktrace::config()
-                .with_resource(os_resource.merge(&process_resource).merge(&sdk_resource).merge(&env_resource).merge(&telemetry_resource)),
-        )
-        .install_batch(opentelemetry::runtime::Tokio)
+fn get_resource() -> Resource {
+    let detectors: Vec<Box<dyn ResourceDetector>> = vec![
+        Box::new(OsResourceDetector),
+        Box::new(ProcessResourceDetector),
+    ];
+
+    Resource::builder().with_detectors(&detectors).build()
 }
 ```
 
-Відрізки та інші метрики створюються в цьому прикладі протягом асинхронних середовищ виконання `tokio`, знайдених у функціях сервера [`tonic`](https://github.com/hyperium/tonic/blob/master/examples/helloworld-tutorial.md#writing-our-server). Будьте уважні до асинхронного середовища виконання, [охоронців контексту](https://docs.rs/opentelemetry/latest/opentelemetry/context/struct.ContextGuard.html), та неможливості переміщення та клонування `spans` при відтворенні з цих зразків.
+За допомогою `get_resource()` функцію можна викликати декілька разів у всіх ініціалізаціях провайдера.
 
-### Додавання gRPC інструментування {#adding-grpc-instrumentation}
-
-Цей сервіс отримує gRPC запити, які інструментуються в проміжному програмному забезпеченні.
-
-Кореневий відрізок запускається і передається як посилання в тому ж потоці до іншого замикання, де ми викликаємо `quote`.
+### Ініціалізація провайдера Tracer {#initializing-tracer-provider}
 
 ```rust
-    let tracer = global::tracer("shipping");
-    let mut span = tracer.span_builder("oteldemo.ShippingService/GetQuote").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
-    span.set_attribute(semcov::trace::RPC_SYSTEM.string(RPC_SYSTEM_GRPC));
+fn init_tracer_provider() {
+    global::set_text_map_propagator(TraceContextPropagator::new());
 
-    span.add_event("Processing get quote request".to_string(), vec![]);
+    let tracer_provider = opentelemetry_sdk::trace::SdkTracerProvider::builder()
+        .with_resource(get_resource())
+        .with_batch_exporter(
+            opentelemetry_otlp::SpanExporter::builder()
+                .with_tonic()
+                .build()
+                .expect("Failed to initialize tracing provider"),
+        )
+        .build();
 
-    let cx = Context::current_with_span(span);
-    let q = match create_quote_from_count(itemct)
-        .with_context(cx.clone())
-        .await
-//-> create_quote_from_count()...
-    let f = match request_quote(count).await {
-        Ok(float) => float,
+    global::set_tracer_provider(tracer_provider);
+}
+```
+
+### Ініціалізація провайдера Meter {#initializing-meter-provider}
+
+```rust
+fn init_meter_provider() -> opentelemetry_sdk::metrics::SdkMeterProvider {
+    let meter_provider = opentelemetry_sdk::metrics::SdkMeterProvider::builder()
+        .with_resource(get_resource())
+        .with_periodic_exporter(
+            opentelemetry_otlp::MetricExporter::builder()
+                .with_temporality(opentelemetry_sdk::metrics::Temporality::Delta)
+                .with_tonic()
+                .build()
+                .expect("Failed to initialize metric exporter"),
+        )
+        .build();
+    global::set_meter_provider(meter_provider.clone());
+
+    meter_provider
+}
+```
+
+### Ініціалізація провайдера Logger {#initializing-logger-provider}
+
+Для логів сервіс доставки використовує Tracing, тому `OpenTelemetryTracingBridge`
+використовується для мосту логів з бібліотеки трасування до OpenTelemetry.
+
+```rust
+fn init_logger_provider() {
+    let logger_provider = opentelemetry_sdk::logs::SdkLoggerProvider::builder()
+        .with_resource(get_resource())
+        .with_batch_exporter(
+            opentelemetry_otlp::LogExporter::builder()
+                .with_tonic()
+                .build()
+                .expect("Failed to initialize logger provider"),
+        )
+        .build();
+
+    let otel_layer = OpenTelemetryTracingBridge::new(&logger_provider);
+    let filter_otel = EnvFilter::new("info");
+    let otel_layer = otel_layer.with_filter(filter_otel);
+
+    tracing_subscriber::registry().with(otel_layer).init();
+}
+```
+
+### Ініціалізація інструментування {#instrumentation-initialization}
+
+Після визначення функцій для ініціалізації провайдерів для Трейсів, Метрик і Логів створюється загальнодоступна функція `init_otel()`:
+
+```rust
+pub fn init_otel() -> Result<()> {
+    init_logger_provider();
+    init_tracer_provider();
+    init_meter_provider();
+    Ok(())
+}
+```
+
+Ця функція викликає всі ініціалізатори і повертає `OK(())`, якщо все запускається правильно.
+
+Потім викликається функція `init_otel()` на `main`:
+
+```rust
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    match init_otel() {
+        Ok(_) => {
+            info!("Successfully configured OTel");
+        }
         Err(err) => {
-            let msg = format!("{}", err);
-            return Err(tonic::Status::unknown(msg));
+            panic!("Couldn't start OTel: {0}", err);
         }
     };
 
-    Ok(get_active_span(|span| {
-        let q = create_quote_from_float(f);
-        span.add_event(
-            "Received Quote".to_string(),
-            vec![KeyValue::new("app.shipping.cost.total", format!("{}", q))],
-        );
-        span.set_attribute(KeyValue::new("app.shipping.items.count", count as i64));
-        span.set_attribute(KeyValue::new("app.shipping.cost.total", format!("{}", q)));
-        q
-    }))
-//<- create_quote_from_count()...
-    cx.span().set_attribute(semcov::trace::RPC_GRPC_STATUS_CODE.i64(RPC_GRPC_STATUS_CODE_OK));
+    [...]
+
+}
 ```
 
-Зверніть увагу, що ми створюємо контекст навколо кореневого відрізка та надсилаємо клон до асинхронної функції create_quote_from_count(). Після завершення create_quote_from_count() ми можемо додати додаткові атрибути до кореневого відрізка за потреби.
+### Конфігурація інструментування {#instrumentation-configuration}
 
-Ви також можете помітити `attributes`, встановлені на відрізку в цьому прикладі, та `events`, що передаються аналогічно. З будь-яким дійсним вказівником `spans` (прикріпленим до контексту) API [OpenTelemetry](https://docs.rs/opentelemetry/0.17.0/opentelemetry/trace/struct.SpanRef.html) буде працювати.
+Після налаштування та ініціалізації провайдерів, Shipping використовує [`opentelemetry-instrumentation-actix-web` crate](https://crates.io/crates/opentelemetry-instrumentation-actix-web) для інструменталізації застосунку під час конфігурації на стороні сервера та на стороні клієнта.
 
-### Додавання HTTP інструментування {#adding-http-instrumentation}
+#### На боці сервера {#server-side}
 
-Дочірній _клієнтський_ відрізок також створюється для вихідного HTTP виклику до `quote` через клієнта `reqwest`. Цей відрізок поєднується з відповідним _серверним_ відрізком `quote`. Інструментування трейсингу реалізовано в проміжному програмному забезпеченні клієнта з використанням доступних бібліотек `reqwest-middleware`, `reqwest-tracing` та `tracing-opentelemetry`:
+Сервер обгорнутий у `RequestTracing` та `RequestMetrics`, щоб автоматично створювати Traces та Metrics під час отримання запитів:
 
 ```rust
-let reqwest_client = reqwest::Client::new();
-let client = ClientBuilder::new(reqwest_client)
-    .with(TracingMiddleware::<SpanBackendWithUrl>::new())
-    .build();
+HttpServer::new(|| {
+    App::new()
+        .wrap(RequestTracing::new())
+        .wrap(RequestMetrics::default())
+        .service(get_quote)
+        .service(ship_order)
+})
 ```
 
-### Додавання атрибутів до відрізка {#add-span-attributes}
+#### На боці клієнта {#client-side}
 
-За умови, що ви знаходитесь в тому ж потоці, або в контексті, переданому з потоку, що володіє відрізком, або `ContextGuard` знаходиться в області видимості, ви можете отримати активний відрізок за допомогою `get_active_span`. Ви можете знайти приклади всього цього в демонстрації, з контекстом, доступним у `shipping_service` для синхронного/асинхронного середовища виконання. Ви повинні звернутися до `quote.rs` та/або прикладу вище, щоб побачити контекст, переданий до асинхронного середовища виконання.
-
-Нижче наведено фрагмент з `shiporder`, який утримує контекст та відрізок в області видимості. Це доречно у нашому випадку синхронного середовища виконання.
+При виконанні запиту до іншого сервісу до виклику додається `trace_request()`:
 
 ```rust
-let parent_cx =
-global::get_text_map_propagator(|prop| prop.extract(&MetadataMap(request.metadata())));
-// у цьому випадку, створення ідентифікатора відстеження є тривіальним
-// ми створимо відрізок та повʼязані події все в цій функції.
-let tracer = global::tracer("shipping");
-let mut span = tracer
-    .span_builder("oteldemo.ShippingService/ShipOrder").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
+let mut response = client
+    .post(quote_service_addr)
+    .trace_request()
+    .send_json(&reqbody)
+    .await
+    .map_err(|err| anyhow::anyhow!("Failed to call quote service: {err}"))?;
 ```
 
-Ви повинні додати атрибути до відрізка в контексті за допомогою `set_attribute`, після чого слідує обʼєкт `KeyValue`, що містить ключ та значення.
+### Ручне інструментування {#manual-instrumentation}
+
+`opentelemetry-instrumentation-actix-web` crate дозволяє нам інструментувати серверну та клієнтську сторони, додаючи команди, згадані в попередньому розділі.
+
+У демо ми також показуємо, як вручну покращити автоматично створені відрізки та як створити ручні метрики в застосунку.
+
+#### Ручні відрізки {#manual-spans}
+
+У наступному фрагменті активний відрізок покращується подією відрізка та атрибутом відрізка:
 
 ```rust
-let tid = create_tracking_id();
-span.set_attribute(KeyValue::new("app.shipping.tracking.id", tid.clone()));
-info!("Tracking ID Created: {}", tid);
+Ok(get_active_span(|span| {
+    let q = create_quote_from_float(f);
+    span.add_event(
+        "Received Quote".to_string(),
+        vec![KeyValue::new("app.shipping.cost.total", format!("{}", q))],
+    );
+    span.set_attribute(KeyValue::new("app.shipping.cost.total", format!("{}", q)));
+    q
+}))
 ```
 
-### Додавання подій до відрізка {#add-span-events}
+#### Ручні метрики {#manual-metrics}
 
-Додавання подій до відрізка здійснюється за допомогою `add_event` на обʼєкті відрізка. Обидва серверні маршрути, для `ShipOrderRequest` (синхронний) та `GetQuoteRequest` (асинхронний), мають події на відрізках. Атрибути тут не включені, але вони [прості для включення](https://docs.rs/opentelemetry/latest/opentelemetry/trace/trait.Span.html#method.add_event).
-
-Додавання події до відрізка:
+Створюється власний лічильник метрик для підрахунку кількості елементів у запиті на доставку:
 
 ```rust
-let tid = create_tracking_id();
-span.set_attribute(KeyValue::new("app.shipping.tracking.id", tid.clone()));
-info!("Tracking ID Created: {}", tid);
+let meter = global::meter("otel_demo.shipping.quote");
+let counter = meter.u64_counter("app.shipping.items_count").build();
+counter.add(count as u64, &[]);
 ```
 
-## Метрики {#metrics}
+### Логи {#logs}
 
-TBD
+Оскільки сервіс доставки використовує Tracing як інтерфейс для логів, він використовує crate `opentelemetry-appender-tracing` для мосту між логами Tracing та логами OpenTelemetry.
 
-## Логи {#logs}
+Appender вже був налаштований під час [ініціалізації провайдера логів](#initializing-logger-provider) з наступними двома рядками:
 
-TBD
+```rust
+let otel_layer = OpenTelemetryTracingBridge::new(&logger_provider);
+tracing_subscriber::registry().with(otel_layer).init();
+```
+
+З цим на місці, ми можемо використовувати Tracing так, як зазвичай, наприклад:
+
+```rust
+info!(
+    name = "SendingQuoteValue",
+    quote.dollars = quote.dollars,
+    quote.cents = quote.cents,
+    message = "Sending Quote"
+);
+```
+
+Crate `opentelemetry-appender-tracing` відповідає за додавання контексту OpenTelemetry до запису логу а кінцевий експортований лог містить усі налаштовані атрибути ресурсу та інформацію `TraceContext`.
