@@ -36,6 +36,13 @@
   {{ $data = $filtered -}}
 {{ end -}}
 
+{{ if ne $filter "first-party-collector" -}}
+{{ partial "include" (dict
+    "_dot" .
+    "_path" "otel-does-not-validate-3rd-pty-distros")
+-}}
+{{ end }}
+
 Назва[^1]    | Компонент   | Дізнатись більше
 ------------ | ---------- | ----------
 {{- range $data }}

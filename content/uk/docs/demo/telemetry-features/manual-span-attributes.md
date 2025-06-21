@@ -1,7 +1,7 @@
 ---
 title: Атрибути відрізків, створених вручну
 aliases: [manual_span_attributes, ../manual-span-attributes]
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 Ця сторінка містить перелік атрибутів відрізків, створених вручну, що використовуються в демонстрації:
@@ -114,9 +114,6 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 
 ## Shipping
 
-| Назва                      | Тип    | Опис                             |
-| -------------------------- | ------ | ----------------------------- |
-| `app.shipping.cost.total`  | number | Загальна вартість доставки           |
-| `app.shipping.items.count` | number | Загальна кількість предметів для доставки           |
-| `app.shipping.tracking.id` | string | Ідентифікатор відстеження доставки          |
-| `app.shipping.zip_code`    | string | Поштовий індекс, використаний для доставки предметів |
+| Назва                     | Тип    | Опис                       |
+| ------------------------- | ------ | -------------------------- |
+| `app.shipping.cost.total` | number | Загальна вартість доставки           |

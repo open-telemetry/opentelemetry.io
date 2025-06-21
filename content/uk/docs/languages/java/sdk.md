@@ -3,7 +3,7 @@ title: Керування телеметрією за допомогою SDK
 weight: 12
 aliases: [exporters]
 cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -85,7 +85,7 @@ public class OpenTelemetrySdkConfig {
 
 [Resource](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-common/latest/io/opentelemetry/sdk/resources/Resource.html) є набором атрибутів, що визначають джерело телеметрії. Застосунок повинен асоціювати той самий ресурс з [SdkTracerProvider](#sdktracerprovider), [SdkMeterProvider](#sdkmeterprovider), [SdkLoggerProvider](#sdkloggerprovider).
 
-{{% alert color="info" %}}
+{{% alert %}}
 [ResourceProviders](../configuration/#resourceprovider) додають контекстну інформацію до [автоконфігурованого](../configuration/#zero-code-sdk-autoconfigure) ресурсу на основі середовища. Дивіться документацію для списку доступних `ResourceProvider`.
 {{% /alert %}}
 

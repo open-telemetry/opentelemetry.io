@@ -2,7 +2,7 @@
 title: Початок роботи на прикладі
 description: Отримайте телеметрію для вашого застосунку менш ніж за 5 хвилин!
 weight: 10
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -126,11 +126,15 @@ java -jar ./build/libs/java-simple.jar
 
 1. Завантажте [opentelemetry-javaagent.jar][] з [Releases][] репозиторію `opentelemetry-java-instrumentation`. JAR файл містить агент і всі пакунки автоматичного інструментування:
 
-   ```console
+   ```sh
    curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
    ```
 
-   {{% alert color="info" %}}<i class="fas fa-edit"></i> Зверніть увагу на шлях до JAR файлу.{{% /alert %}}
+   {{% alert %}}
+
+   <i class="fas fa-edit"></i> Зверніть увагу на шлях до JAR файлу.
+
+   {{% /alert %}}
 
 2. Встановіть і експортуйте змінні, які вказують на JAR файл Java агента та [консольний експортер][], використовуючи нотацію, що підходить для вашого середовища shell/терміналу &mdash; ми ілюструємо нотацію для bash-подібних shell:
 

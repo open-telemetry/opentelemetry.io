@@ -4,7 +4,7 @@ aliases: [manual]
 weight: 20
 description: Ручне інструментування для OpenTelemetry Python
 cSpell:ignore: millis ottrace textmap
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -350,7 +350,34 @@ meter.create_observable_gauge(
 
 ## Логи {#logs}
 
-API та SDK для логів наразі розробляються.
+API та SDK для логів наразі розробляються. Щоб почати збір логів, вам потрібно ініціалізувати [`LoggerProvider`](/docs/specs/otel/logs/api/#loggerprovider) і за бажанням встановити його стандартно як глобальний. Потім використовуйте вбудований модуль ведення логів Python для створення записів журналу, які OpenTelemetry може обробити.
+
+```python
+import logging
+from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
+from opentelemetry.sdk._logs.export import BatchLogRecordProcessor, ConsoleLogExporter
+from opentelemetry._logs import set_logger_provider, get_logger
+
+provider = LoggerProvider()
+processor = BatchLogRecordProcessor(ConsoleLogExporter())
+provider.add_log_record_processor(processor)
+# Встановлює глобального стандартного постачальника логів
+set_logger_provider(provider)
+
+logger = get_logger(__name__)
+
+handler = LoggingHandler(level=logging.INFO, logger=logger)
+logging.basicConfig(handlers=[handler], level=logging.INFO)
+
+logging.info("This is an OpenTelemetry log record!")
+```
+
+### Додатково {#further-reading-2}
+
+- [Концепції Логів](/docs/concepts/signals/logs/)
+- [Специфікація Логів](/docs/specs/otel/logs/)
+- [Документація API Logs Python](https://opentelemetry-python.readthedocs.io/en/latest/api/_logs.html)
+- [Документація SDK Logs Python](https://opentelemetry-python.readthedocs.io/en/latest/sdk/_logs.html)
 
 ## Наступні кроки {#next-steps}
 

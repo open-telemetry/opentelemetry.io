@@ -11,7 +11,7 @@ redirects:
   - { from: /docs/operator/*, to: ':splat' }
   - { from: /docs/k8s-operator/*, to: ':splat' }
   - { from: /docs/platforms/kubernetes-operator/*, to: ':splat' }
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 ## Вступ {#introduction}
@@ -70,7 +70,7 @@ spec:
 EOF
 ```
 
-{{% alert color="primary" title="Примітка" %}}
+{{% alert title="Примітка" %}}
 
 Стандартно, `opentelemetry-operator` використовує
 [образ `opentelemetry-collector`](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector). Якщо оператор встановлено за допомогою [чартів Helm](../helm/), використовується образ [`opentelemetry-collector-k8s`](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s). Якщо вам потрібен компонент, якого немає у цих випусках, вам може знадобитися [зібрати власний колектор](/docs/collector/custom-collector/).

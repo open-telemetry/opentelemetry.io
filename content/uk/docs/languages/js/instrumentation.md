@@ -6,12 +6,12 @@ aliases:
 weight: 30
 description: Інструментування для OpenTelemetry JavaScript
 cSpell:ignore: dicelib Millis rolldice
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 {{% include instrumentation-intro %}}
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 На цій сторінці ви дізнаєтеся, як можна додати трасування, метрики та логи до вашого коду _вручну_. Але ви не обмежені використанням лише одного виду інструментування: використовуйте [автоматичне інструментування](/docs/zero-code/js/), щоб почати, а потім збагачуйте свій код ручним інструментуванням за потреби.
 
@@ -183,7 +183,7 @@ npm install @opentelemetry/api @opentelemetry/resources @opentelemetry/semantic-
 
 ### Ініціалізація SDK {#initialize-the-sdk}
 
-{{% alert title="Примітка" color="info" %}} Якщо ви інструментуєте бібліотеку, **пропустіть цей крок**. {{% /alert %}}
+{{% alert title="Примітка" %}} Якщо ви інструментуєте бібліотеку, **пропустіть цей крок**. {{% /alert %}}
 
 Якщо ви інструментуєте Node.js застосунок, встановіть [OpenTelemetry SDK для Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node):
 
@@ -285,7 +285,7 @@ node --require ./instrumentation.js app.js
 
 ### Ініціалізація трасування {#initialize-tracing}
 
-{{% alert title="Примітка" color="info" %}} Якщо ви інструментуєте бібліотеку, **пропустіть цей крок**. {{% /alert %}}
+{{% alert title="Примітка" %}} Якщо ви інструментуєте бібліотеку, **пропустіть цей крок**. {{% /alert %}}
 
 Щоб увімкнути [трасування](/docs/concepts/signals/traces/) у вашому застосунку, вам потрібно мати ініціалізований [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider), який дозволить вам створювати [`Tracer`](/docs/concepts/signals/traces/#tracer).
 
@@ -1139,7 +1139,7 @@ const doWork = (parent, i) => {
 
 ### Ініціалізація метрик {#initialize-metrics}
 
-{{% alert color="info" %}} Якщо ви інструментуєте бібліотеку, пропустіть цей крок. {{% /alert %}}
+{{% alert %}} Якщо ви інструментуєте бібліотеку, пропустіть цей крок. {{% /alert %}}
 
 Щоб увімкнути [метрики](/docs/concepts/signals/metrics/) у вашому застосунку, вам потрібно мати ініціалізований [`MeterProvider`](/docs/concepts/signals/metrics/#meter-provider), який дозволить вам створювати [`Meter`](/docs/concepts/signals/metrics/#meter).
 

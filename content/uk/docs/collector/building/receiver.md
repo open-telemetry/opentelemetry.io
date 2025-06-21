@@ -4,7 +4,7 @@ weight: 20
 aliases: [/docs/collector/trace-receiver/]
 # prettier-ignore
 cSpell:ignore: backendsystem crand debugexporter loggingexporter mapstructure pcommon pdata protogen ptrace rcvr struct structs tailtracer telemetrygen uber receiverfactory бутстрап тікером задіяних викликаючого викликачем викликача
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
@@ -218,7 +218,7 @@ type Config struct {
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Додано поля `Interval` та `NumberOfTraces`, щоб мати доступ до їх значень з config.yaml.
 
@@ -258,7 +258,7 @@ func (cfg *Config) Validate() error {
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Імпортовано пакет `fmt`, щоб належним чином форматувати повідомлення про помилки.
 - Додано метод `Validate` до структури Config, щоб перевірити, чи значення налаштування `interval` становить принаймні 1 хвилину (1m) і чи значення налаштування `number_of_traces` більше або дорівнює 1. Якщо це не так, Collector згенерує помилку під час свого запуску та відобразить повідомлення відповідно.
@@ -370,7 +370,7 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Імпорт пакету `time` для підтримки типу time.Duration для defaultInterval.
 - Імпорт пакету `go.opentelemetry.io/collector/component`, у якому оголошено `component.Config`.
@@ -462,7 +462,7 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Імпорт пакету `context` для підтримки типу `context.Context`, на який посилається функція `createTracesReceiver`.
 - Імпорт пакету `go.opentelemetry.io/collector/consumer` для підтримки типу `consumer.Traces`, на який посилається функція `createTracesReceiver`.
@@ -534,7 +534,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Імпорт пакунку `context`, у якому оголошено тип та функції `Context`.
 - Імпорт пакунка `go.opentelemetry.io/collector/component`, у якому оголошено тип `Host`.
@@ -593,7 +593,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Оновлено метод `Start()`, додаванням до поля `host` ініціалізації переданим колектором посиланням `component.Host` та до поля функції `cancel` скасування на основі нового контексту, створеного за допомогою `context.Background()` (відповідно до рекомендацій документації API колектора).
 - Оновлено метод `Shutdown()` шляхом додавання виклику функції скасування контексту `cancel()`.
@@ -662,7 +662,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Імпорт пакета `go.opentelemetry.io/collector/consumer`, в якому оголошуються типи та інтерфейси споживачів конвеєра.
 - Імпорт пакунка `go.uber.org/zap`, який використовується колектором для налагодження.
@@ -737,7 +737,7 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Додано змінну з назвою `logger` та ініціалізовано її логером колектора, який доступний у вигляді поля з назвою `Logger` у посиланні `receiver.Settings`.
 - Додано змінну `tailtracerCfg` та ініціалізовано її приведенням посилання `component.Config` до приймача `tailtracer` `Config`.
@@ -813,7 +813,7 @@ func components() (otelcol.Factories, error) {
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Імпорт модуля приймача `github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tailtracer`, в якому знаходяться типи приймачів та їх функції.
 - Додано виклик `tailtracer.NewFactory()` як параметр виклику `otelcol.MakeFactoryMap()`, щоб ваша фабрика приймача `tailtracer` була належним чином додана до map `factories`.
@@ -1091,7 +1091,7 @@ func getRandomNumber(min int, max int) int {
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Імпортовано пакунки `math/rand` та `time` для підтримки реалізації функції `generateRandomNumber`.
 - Додано функцію `generateAtm`, яка створює екземпляр типу `Atm` і випадковим чином призначає Іллінойс або Каліфорнію як значення для `StateID` та еквівалентне значення для `ISPNetwork`.
@@ -1157,7 +1157,7 @@ func generateTraces(numberOfTraces int) ptrace.Traces{
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Додано змінну `resourceSpan` та ініціалізовано її посиланням `ResourceSpan`, яке повертається викликом `traces.ResourceSpans().AppendEmpty()`.
 - Додано змінну `atmResource` та ініціалізовано її посиланням `pcommon.Resource`, що повертається викликом `resourceSpan.Resource()`.
@@ -1194,7 +1194,7 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Оголошено змінну з іменем `atmAttrs` та ініціалізовано її посиланням на `pcommon.Map`, що повертається викликом `resource.Attributes()`.
 - Використано методи `PutInt()` та `PutStr()` з `pcommon.Map` для додавання атрибутів типу int та string на основі еквівалентних типів полів `Atm`. Зверніть увагу, що оскільки ці атрибути є дуже специфічними і представляють лише сутність `Atm`, їх згруповано у префікс "atm.".
@@ -1401,7 +1401,7 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Імпортовано пакет `go.opentelemetry.io/collector/semconv/v1.9.0` як `conventions`, щоб мати доступ до всіх імен та значень атрибутів семантичних домовленостей ресурсів.
 - Оновлено функцію `fillResourceWithAtm()`, додаванням рядків для правильного присвоєння атрибутів "service.name” та "service.version" до `pcommon.Resource`, що представляє сутність `Atm`.
@@ -1540,7 +1540,7 @@ func NewSpanID() pcommon.SpanID {
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Імпортовано `crypto/rand` як `crand` (щоб уникнути конфліктів з `math/rand`).
 - Додано нові функції `NewTraceID()` та `NewSpanID()` для генерування ідентифікатора трейсу та ідентифікатора відрізка відповідно.
@@ -1570,7 +1570,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Додано змінні `traceId` та `backendSpanId` для представлення відповідно ідентифікатора трейсу та ідентифікатора відрізка та ініціалізовано їх за допомогою допоміжних функцій, створених раніше.
 - Додано змінні `backendSpanStartTime` та `backendSpanFinishTime` для представлення часу початку та закінчення операції. У підручнику будь-яка операція `BackendSystem` триватиме 1 секунду.
@@ -1848,7 +1848,7 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 }
 ```
 
-{{% alert title="Перевірте свою роботу" color="primary" %}}
+{{% alert title="Перевірте свою роботу" %}}
 
 - Додано рядок під умовою `case <=ticker.C`, що викликає метод `tailtracerRcvr.nextConsumer.ConsumeTraces()` з передачею нового контексту, створеного у методі `Start()` (`ctx`) та виклик функції `generateTraces`, щоб згенеровані трейси можна було передати наступному споживачу у конвеєрі.
 

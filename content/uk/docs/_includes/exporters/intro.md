@@ -30,11 +30,11 @@
 
 {{ if $zeroConfigPageExists }}
 
-<div class="alert alert-info" role="alert"><h4 class="alert-heading">Примітка</h4>
+{{% alert title="Примітка" %}}
 
 Якщо ви використовуєте [інструментування без коду](</docs/zero-code/{{ $langIdAsPath }}>), ви можете дізнатися як налаштувати експортери, дотримуючись [Посібника з налаштування](</docs/zero-code/{{ $langIdAsPath }}/configuration/>).
 
-</div>
+{{% /alert %}}
 
 {{ end }}
 
@@ -44,11 +44,11 @@
 
 ### Налаштування Collector {#collector-setup}
 
-<div class="alert alert-info" role="alert"><h4 class="alert-heading">Примітка</h4>
+{{% alert title="Примітка" %}}
 
 Якщо у вас вже налаштований OTLP collector або бекенд, ви можете пропустити цей розділ і [налаштувати залежності OTLP експортерів](#otlp-dependencies) для вашого застосунку.
 
-</div>
+{{% /alert %}}
 
 Щоб спробувати та перевірити ваші OTLP експортери, ви можете запустити collector у docker контейнері, який записує телеметрію безпосередньо в консоль.
 
