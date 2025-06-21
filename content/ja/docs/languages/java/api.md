@@ -782,7 +782,7 @@ public class SpanAndContextUsage {
 
 ### MeterProvider {#meterprovider}
 
-[MeterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/MeterProvider.html)は、メトリクスのAPIエントリポイントで、[Meters](#meter)を提供します。
+[MeterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/MeterProvider.html)は、メトリクスのAPIエントリポイントで、[Meter](#meter)を提供します。
 プロバイダーとスコープの情報については、[プロバイダーとスコープ](#providers-and-scopes)を参照してください。
 
 #### Meter {#meter}
