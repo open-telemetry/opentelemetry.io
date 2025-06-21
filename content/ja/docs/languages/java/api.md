@@ -619,7 +619,7 @@ public class GlobalOpenTelemetryUsage {
 [SpanBuilder](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/SpanBuilder.html)と[Span](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/Span.html)は、スパンにデータを構築し記録するために使用されます。
 
 `SpanBuilder`は、`Span startSpan()`を呼び出してスパンを開始する前にスパンにデータを追加するために使用されます。
-開始後、さまざまな`Span`更新メソッドを呼び出すことでデータを追加/更新できます。開始前に`SpanBuilder`に提供されるデータは、[Samplers](../sdk/#sampler)への入力として提供されます。
+開始後、さまざまな`Span`更新メソッドを呼び出すことでデータを追加/更新できます。開始前に`SpanBuilder`に提供されるデータは、[Sampler](../sdk/#sampler)への入力として提供されます。
 
 以下のコードスニペットは`SpanBuilder` / `Span` API使用法を調査します。
 
