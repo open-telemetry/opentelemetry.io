@@ -561,10 +561,10 @@ public class OpenTelemetryUsage {
 
 {{% alert title="Java agent" %}}
 
-Java agentは特別なケースで、`GlobalOpenTelemetry`はagentによって設定されます。
+Javaエージェントは特別なケースで、`GlobalOpenTelemetry`はエージェントによって設定されます。
 単純に`GlobalOpenTelemetry.get()`を呼び出して`OpenTelemetry`インスタンスにアクセスしてください。
 
-[カスタム手動計装によるJava agentの拡張](/docs/zero-code/java/agent/api/)についてもっと読む。
+[カスタム手動計装によるJavaエージェントの拡張](/docs/zero-code/java/agent/api/)についてもっと読む。
 
 {{% /alert %}}
 
@@ -573,7 +573,7 @@ Java agentは特別なケースで、`GlobalOpenTelemetry`はagentによって�
 計装は、`GlobalOpenTelemetry`の使用を避けるべきです。
 かわりに、初期化引数として`OpenTelemetry`を受け入れ、設定されていない場合は[Noop実装](#noop-implementation)にデフォルトするべきです。
 この規則には例外があります。
-[Java agent](/docs/zero-code/java/agent/)によってインストールされた`OpenTelemetry`インスタンスは`GlobalOpenTelemetry`を介して利用可能です。
+[Javaエージェント](/docs/zero-code/java/agent/)によってインストールされた`OpenTelemetry`インスタンスは`GlobalOpenTelemetry`を介して利用可能です。
 追加の手動計装を持つユーザーは、`GlobalOpenTelemetry.get()`を介してアクセスすることが推奨されます。
 
 `GlobalOpenTelemetry.get()`は常に同じ結果を返すことが保証されています。`GlobalOpenTelemetry.set(..)`より前に`GlobalOpenTelemetry.get()`が呼び出された場合、`GlobalOpenTelemetry`はnoop実装に設定され、`GlobalOpenTelemetry.set(..)`への将来の呼び出しは例外をスローします。したがって、アプリケーションライフサイクルの可能な限り早期に、計装によって`GlobalOpenTelemetry.get()`が呼び出される前に`GlobalOpenTelemetry.set(..)`を呼び出すことが重要です。この保証により初期化順序の問題が表面化します。`GlobalOpenTelemetry.set()`の呼び出しが遅すぎる場合（計装が`GlobalOpenTelemetry.get()`を呼び出した後）、サイレントに失敗するのではなく例外をトリガーします。
