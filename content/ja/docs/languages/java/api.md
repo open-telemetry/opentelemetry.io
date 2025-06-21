@@ -16,7 +16,7 @@ cSpell:ignore: Dotel kotlint Logback updowncounter
 <!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/api"?>
 
-APIは、主要な観測可能性シグナル全体にわたってテレメトリーを記録するためのクラスとインターフェースのセットです。
+APIは、主要なオブザーバビリティシグナル全体にわたってテレメトリーを記録するためのクラスとインターフェースのセットです。
 [SDK](../sdk/)は、テレメトリーを処理およびエクスポートするように[設定](../configuration/)されたAPIの組み込み参照実装です。
 このページは、説明、関連するJavadocへのリンク、アーティファクト座標、およびサンプルAPI使用法を含むAPIの概念的な概要です。
 
