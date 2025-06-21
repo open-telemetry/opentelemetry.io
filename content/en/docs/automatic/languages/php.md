@@ -1,5 +1,5 @@
 ---
-title: PHP zero-code instrumentation
+title: PHP automatic instrumentation
 linkTitle: PHP
 weight: 30
 aliases: [/docs/languages/php/automatic]

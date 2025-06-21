@@ -1,10 +1,11 @@
 ---
-title: Go zero-code instrumentation
-linkTitle: Go
+title: Go automatic instrumentation using eBPF
+linkTitle: Automatic using eBPF
 weight: 16
+alias: [go]
 ---
 
-Zero-code instrumentation for Go provides a way to instrument any Go application
+Automatic instrumentation for Go provides a way to instrument any Go application
 and capture telemetry data from many popular libraries and frameworks without
 any code changes.
 
