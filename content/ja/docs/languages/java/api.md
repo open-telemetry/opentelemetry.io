@@ -71,7 +71,7 @@ APIには[強力な後方互換性保証](https://github.com/open-telemetry/open
 ContextはOpenTelemetry APIにおける繰り返し出現する概念です。
 
 - 現在アクティブな[スパン](#span)はコンテキストに保存され、デフォルトでスパンの親は現在コンテキストにあるスパンに割り当てられます
-- [メトリクス計装](#meter)に記録される測定値は、[エグザンプラー](/docs/specs/otel/metrics/data-model/#exemplars)を介してスパンに測定値をリンクするために使用されるコンテキスト引数を受け入れ、デフォルトでは現在コンテキストにあるスパンになります
+- [メーター計装](#meter)に記録される測定値は、[エグザンプラー](/docs/specs/otel/metrics/data-model/#exemplars)を介してスパンに測定値をリンクするために使用されるコンテキスト引数を受け入れ、デフォルトでは現在コンテキストにあるスパンになります
 - [LogRecords](#logrecordbuilder)は、ログレコードスパンをリンクするために使用され、デフォルトでは現在コンテキストにあるスパンになるコンテキスト引数を受け入れます
 
 以下のコードスニペットは`Context` API使用法を調査します。
@@ -417,7 +417,7 @@ public class ProvidersAndScopes {
 `Attributes`は、OpenTelemetry APIにおける繰り返し出現する概念です。
 
 - [スパン](#span)、スパンイベント、スパンリンクには属性があります
-- [メトリクスインストルメント](#meter)に記録される測定値には属性があります
+- [メーター計装](#meter)に記録される測定値には属性があります
 - [LogRecords](#logrecordbuilder)には属性があります
 
 セマンティック規約から生成された属性定数については、[セマンティック属性](#semantic-attributes)を参照してください。
