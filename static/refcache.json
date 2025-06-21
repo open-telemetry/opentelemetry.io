@@ -799,6 +799,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:48:58.121727-05:00"
   },
+  "https://datatracker.ietf.org/doc/html/rfc2119": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:09.078664061Z"
+  },
   "https://datatracker.ietf.org/doc/html/rfc3986#section-3": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T01:51:12.345Z"
@@ -807,6 +811,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T01:51:12.345Z"
   },
+  "https://datatracker.ietf.org/doc/html/rfc4648#section-8": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:10.753573585Z"
+  },
+  "https://datatracker.ietf.org/doc/html/rfc5234": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:38:54.903627652Z"
+  },
   "https://datatracker.ietf.org/doc/html/rfc5246#appendix-A.5": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:02:12.345Z"
@@ -814,6 +826,10 @@
   "https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.6": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:03:12.345Z"
+  },
+  "https://datatracker.ietf.org/doc/html/rfc5424": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:10.622746844Z"
   },
   "https://datatracker.ietf.org/doc/html/rfc6455": {
     "StatusCode": 206,
@@ -835,6 +851,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:04:12.345Z"
   },
+  "https://datatracker.ietf.org/doc/html/rfc7230#section-3.2.6": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:38:59.193146236Z"
+  },
   "https://datatracker.ietf.org/doc/html/rfc7231#page-63": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:04:12.345Z"
@@ -855,9 +875,21 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-06T11:23:53.657732-05:00"
   },
+  "https://datatracker.ietf.org/doc/html/rfc8174": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:10.783854972Z"
+  },
   "https://datatracker.ietf.org/doc/html/rfc8555": {
     "StatusCode": 206,
     "LastSeen": "2024-08-09T10:47:38.013929-04:00"
+  },
+  "https://datatracker.ietf.org/doc/html/rfc9110": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:17.48204502Z"
+  },
+  "https://datatracker.ietf.org/doc/html/rfc9110/#name-fields": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:09.21972512Z"
   },
   "https://datatracker.ietf.org/doc/html/rfc9293#section-3.3.2": {
     "StatusCode": 200,
@@ -1286,6 +1318,10 @@
   "https://docs.datadoghq.com/tracing/connect_logs_and_traces/java/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:59:08.050666-05:00"
+  },
+  "https://docs.datadoghq.com/tracing/other_telemetry/connect_logs_and_traces/java/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:08.521611547Z"
   },
   "https://docs.datalust.co/docs/opentelemetry-net-sdk-1": {
     "StatusCode": 200,
@@ -2171,9 +2207,17 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:54.76141-05:00"
   },
+  "https://en.cppreference.com/w/cpp/container/set.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:08.400750866Z"
+  },
   "https://en.cppreference.com/w/cpp/container/vector": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:51.473219-05:00"
+  },
+  "https://en.cppreference.com/w/cpp/container/vector.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:02.945184279Z"
   },
   "https://en.wikipedia.org": {
     "StatusCode": 200,
@@ -3774,6 +3818,10 @@
   "https://github.com/colin-higgins": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:44:42.6Z"
+  },
+  "https://github.com/collectd/collectd/wiki/Binary-protocol": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-18T10:38:19.792581478Z"
   },
   "https://github.com/conan-io/": {
     "StatusCode": 200,
@@ -7187,6 +7235,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:12:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/vision.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:04.232399402Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:08:14.290243-05:00"
@@ -10103,6 +10155,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:47:23.089948-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/logs/v1/logs.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:05.091990592Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-proto/blob/main/opentelemetry/proto/metrics/v1/metrics.proto": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:47:27.397166-05:00"
@@ -10142,6 +10198,10 @@
   "https://github.com/open-telemetry/opentelemetry-proto/releases/tag/v1.3.0": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:14.278497+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/main/docs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:00.800314649Z"
   },
   "https://github.com/open-telemetry/opentelemetry-proto/tree/main/docs/specification.md": {
     "StatusCode": 206,
@@ -12158,6 +12218,14 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/profiles/0239-profiles-data-model.md#message-mapping": {
     "StatusCode": 206,
     "LastSeen": "2025-06-12T21:20:20.098071258Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/trace/0235-sampling-threshold-in-trace-state.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:07.888941375Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.46.0/oteps/trace/0250-Composite_Samplers.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:12.747625892Z"
   },
   "https://github.com/open-telemetry/opentelemetry-swift": {
     "StatusCode": 206,
@@ -15027,6 +15095,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:22:12.345Z"
   },
+  "https://go.dev/ref/spec#Slice_types": {
+    "StatusCode": 200,
+    "LastSeen": "2025-06-17T10:39:05.47180511Z"
+  },
   "https://go.opentelemetry.io": {
     "StatusCode": 200,
     "LastSeen": "2024-08-23T20:33:45.025738962Z"
@@ -15954,6 +16026,10 @@
   "https://learn.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors": {
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:29.705755+02:00"
+  },
+  "https://learn.microsoft.com/windows/win32/api/winbase/nf-winbase-setenvironmentvariable": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:24.729611116Z"
   },
   "https://learn.microsoft.com/windows/win32/api/ws2tcpip/nf-ws2tcpip-getaddrinfo": {
     "StatusCode": 200,
@@ -20103,6 +20179,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-24T14:36:50.470824-05:00"
   },
+  "https://www.collectd.org/wiki/index.php/Binary_protocol": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:38:54.910755496Z"
+  },
   "https://www.controltheory.com/use-case/otel-collector-management/": {
     "StatusCode": 200,
     "LastSeen": "2025-04-08T16:23:33.721746456-07:00"
@@ -20154,6 +20234,10 @@
   "https://www.elastic.co/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:10:40.954551-05:00"
+  },
+  "https://www.elastic.co/docs/reference/ecs/ecs-field-reference": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:01.16697824Z"
   },
   "https://www.elastic.co/docs/reference/elasticsearch/clients/java/setup/opentelemetry": {
     "StatusCode": 206,
@@ -20410,6 +20494,18 @@
   "https://www.jaegertracing.io/docs/1.41/apis/#remote-sampling-configuration-stable": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:31:12.345Z"
+  },
+  "https://www.jaegertracing.io/docs/1.41/architecture/apis/#remote-sampling-configuration-stable": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:13.869395106Z"
+  },
+  "https://www.jaegertracing.io/docs/1.41/architecture/sampling/#adaptive-sampling": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:15.295185955Z"
+  },
+  "https://www.jaegertracing.io/docs/1.41/architecture/sampling/#remote-sampling": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:11.966746878Z"
   },
   "https://www.jaegertracing.io/docs/1.41/sampling/#adaptive-sampling": {
     "StatusCode": 200,
@@ -21250,6 +21346,10 @@
   "https://www.reactive-streams.org/reactive-streams-1.0.1-javadoc/org/reactivestreams/Publisher.html": {
     "StatusCode": 206,
     "LastSeen": "2025-01-06T11:32:21.26934-05:00"
+  },
+  "https://www.rfc-editor.org/info/bcp14": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:39:07.301491326Z"
   },
   "https://www.rfc-editor.org/rfc/rfc2732#section-2": {
     "StatusCode": 200,
