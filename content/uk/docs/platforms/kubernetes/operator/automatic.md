@@ -6,7 +6,7 @@ description:
   Реалізація автоінструментування за допомогою OpenTelemetry Operator.
 # prettier-ignore
 cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 OpenTelemetry Operator підтримує інʼєкцію та налаштування бібліотек автоінструментування для .NET, Java, Node.js, Python та Go сервісів.
@@ -78,7 +78,7 @@ EOF
 
 ## Налаштування автоматичного інструментування {#configure-automatic-instrumentation}
 
-Щоб мати можливість керувати автоматичним інструментуванням, оператор повинен знати, які podʼом інструментувати і яке автоматичне інструментування використовувати для цих podʼів. Це робиться через [Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation).
+Щоб мати можливість керувати автоматичним інструментуванням, оператор повинен знати, які podʼом інструментувати і яке автоматичне інструментування використовувати для цих podʼів. Це робиться через [Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/instrumentations.md).
 
 Створення ресурсу Instrumentation правильно є ключовим для отримання автоінструментування. Переконання, що всі точки доступу та змінні середовища правильні є необхідним для правильного функціонування автоінструментування.
 
@@ -165,7 +165,7 @@ EOF
 
 Стандартно ресурс Instrumentation, який автоматично інсталює сервіси Deno, використовує `otlp` з протоколом `http/proto`. Це означає, що налаштована точка доступу повинна мати можливість отримувати OTLP за протоколом `http/proto`. Тому в прикладі використовується `http://demo-collector:4318`, який підключається до порту `http/proto` `otlpreceiver` колектора, створеного на попередньому кроці.
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 [Інтеграція Deno з OpenTelemetry][deno-docs] ще не є стабільною. Як наслідок, усі робочі навантаження, які хочуть працювати з Deno, повинні мати прапорець `--unstable-otel` під час запуску процесу Deno.
 
@@ -322,7 +322,7 @@ spec:
         value: fs,grpc # список назв пакетів інструментування через кому без префіксу `@opentelemetry/instrumentation-`.
 ```
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 Якщо обидві змінні середовища встановлені, `OTEL_NODE_ENABLED_INSTRUMENTATIONS` застосовується першою, а потім `OTEL_NODE_DISABLED_INSTRUMENTATIONS` застосовується до цього списку. Тому, якщо одна й та сама бібліотека включена в обидва списки, ця бібліотека буде вимкнена.
 

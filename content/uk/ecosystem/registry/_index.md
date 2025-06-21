@@ -24,7 +24,7 @@ outputs: [html, json]
 # redirect rule to avoid the loop, as suggested by Netlify support
 # (email support ID 159489):
 redirects: [{ from: /ecosystem/registry*, to: '/ecosystem/registry?' }]
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 {{% blocks/lead color="dark" %}}
@@ -39,7 +39,7 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 
 {{< blocks/section color="white" type="container-lg" >}}
 
-{{% alert color="info" %}}
+{{% alert %}}
 
 Реєстр OpenTelemetry дозволяє шукати бібліотеки інструментів, компоненти колектора, утиліти та інші корисні проєкти в екосистемі OpenTelemetry. Якщо ви є підтримувачем проєкту, ви можете [додати свій проєкт до Реєстру OpenTelemetry](adding/).
 

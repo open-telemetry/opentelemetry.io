@@ -8,7 +8,7 @@ aliases: [/docs/instrumentation]
 redirects:
   - { from: /docs/instrumentation/*, to: ':splat' } # Only for `en`
   - { from: 'net/*', to: 'dotnet/:splat' }
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 [Інструментування][instrumentation] коду OpenTelemetry підтримується для мов, зазначених у таблиці [Статуси та випуски](#status-and-releases) нижче. Неофіційні реалізації для [інших мов](/docs/languages/other) також доступні. Ви можете знайти їх у [реєстрі](/ecosystem/registry/).
@@ -23,11 +23,11 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 
 {{% alert title="Важливо" color="warning" %}}
 
-Незалежно від статусу API/SDK, якщо ваше інструментування залежить від [семантичних домовленостей][семантичні конвенції], які позначені як [Експериментальні] у [специфікації семантичних домовленостей][специфікація семантичних конвенцій], ваш потік даних може підлягати **змінам, що порушують сумісність**.
+Незалежно від статусу API/SDK, якщо ваше інструментування залежить від [семантичних домовленостей][semantic conventions], які позначені як [Експериментальні][Experimental] у [специфікації семантичних домовленостей][специфікація семантичних конвенцій][semantic conventions specification], ваш потік даних може підлягати **змінам, що порушують сумісність**.
 
-[семантичні конвенції]: /docs/concepts/semantic-conventions/
-[Експериментальні]: /docs/specs/otel/document-status/
-[специфікація семантичних конвенцій]: /docs/specs/semconv/
+[semantic conventions]: /docs/concepts/semantic-conventions/
+[Experimental]: /docs/specs/otel/document-status/
+[semantic conventions specification]: /docs/specs/semconv/
 
 {{% /alert %}}
 
@@ -39,7 +39,7 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 
 {{% apidocs %}}
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 Вищезазначений список має псевдонім [`/api`](/api).
 

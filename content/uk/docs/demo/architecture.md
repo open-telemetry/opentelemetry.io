@@ -3,7 +3,7 @@ title: Архітектура Demo
 linkTitle: Архітектура
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 **OpenTelemetry Demo** складається з мікросервісів, написаних різними мовами програмування, які взаємодіють між собою через gRPC та HTTP; і генератора навантаження, який використовує [Locust](https://locust.io/) для імітації користувацького трафіку.
@@ -36,23 +36,25 @@ react-native-app(Застосунок React Native):::typescript
 
 ad ---->|gRPC| flagd
 
+checkout -->|gRPC| currency
 checkout -->|gRPC| cart
-checkout --->|TCP| queue
+checkout -->|TCP| queue
+
 cart --> cache
 cart -->|gRPC| flagd
 
-checkout -->|gRPC| shipping
 checkout -->|gRPC| payment
 checkout --->|HTTP| email
-checkout -->|gRPC| currency
 checkout -->|gRPC| product-catalog
+checkout -->|HTTP| shipping
 
 fraud-detection -->|gRPC| flagd
 
 frontend -->|gRPC| ad
+frontend -->|gRPC| currency
 frontend -->|gRPC| cart
 frontend -->|gRPC| checkout
-frontend ---->|gRPC| currency
+frontend -->|HTTP| shipping
 frontend ---->|gRPC| recommendation
 frontend -->|gRPC| product-catalog
 
@@ -61,20 +63,18 @@ frontend-proxy -->|HTTP| frontend
 frontend-proxy -->|HTTP| flagd-ui
 frontend-proxy -->|HTTP| image-provider
 
-Internet -->|HTTP| frontend-proxy
-
-load-generator -->|HTTP| frontend-proxy
-
 payment -->|gRPC| flagd
 
 queue -->|TCP| accounting
 queue -->|TCP| fraud-detection
 
-recommendation -->|gRPC| product-catalog
 recommendation -->|gRPC| flagd
+recommendation -->|gRPC| product-catalog
 
 shipping -->|HTTP| quote
 
+Internet -->|HTTP| frontend-proxy
+load-generator -->|HTTP| frontend-proxy
 react-native-app -->|HTTP| frontend-proxy
 end
 

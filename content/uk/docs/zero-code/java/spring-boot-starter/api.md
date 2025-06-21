@@ -4,7 +4,7 @@ linkTitle: Розширення за допомогою API
 description:
   Використовуйте OpenTelemetry API разом зі Spring Boot starter для розширення автоматично згенерованої телеметрії власними відрізками та метриками
 weight: 21
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 ## Вступ {#introduction}
@@ -19,7 +19,7 @@ Spring Boot starter є особливим випадком, де `OpenTelemetry`
 
 ## Відрізок {#span}
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 Для найпоширеніших випадків використовуйте анотацію `@WithSpan` замість ручної інструментації. Дивіться [Анотації](../annotations) для отримання додаткової інформації.
 

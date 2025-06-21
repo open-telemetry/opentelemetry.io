@@ -4,7 +4,7 @@ linkTitle: PHP
 weight: 30
 aliases: [/docs/languages/php/automatic]
 cSpell:ignore: centos democlass epel myapp pecl phar remi phpini
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 ## Вимоги {#requirements}
@@ -172,7 +172,7 @@ OTEL_PROPAGATORS=baggage,tracecontext
 
 ## Як це працює {#how-it-works}
 
-{{% alert title="Опціонально" color="info" %}} Ви можете пропустити цей розділ, якщо ви просто хочете швидко запустити, і є відповідні бібліотеки інструментування для вашого застосунку. {{% /alert %}}
+{{% alert title="Опціонально" %}} Ви можете пропустити цей розділ, якщо ви просто хочете швидко запустити, і є відповідні бібліотеки інструментування для вашого застосунку. {{% /alert %}}
 
 Розширення дозволяє реєструвати функції спостерігачів як PHP код для класів та методів, і виконувати ці функції до та після виконання спостережуваного методу.
 

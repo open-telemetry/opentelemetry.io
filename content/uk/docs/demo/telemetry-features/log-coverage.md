@@ -2,24 +2,29 @@
 title: Покриття логів за сервісом
 linkTitle: Покриття логів
 aliases: [log_service_features, logging-features, ../logging-features]
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 | Сервіс          | Мова       | OTLP Логи |
 | --------------- | ---------- | --------- |
-| Бухгалтерія     | Go         | 🚧        |
+| Бухгалтерія     | .NET       | ✅        |
 | Реклама         | Java       | ✅        |
 | Кошик           | .NET       | ✅        |
 | Оформлення      | Go         | 🚧        |
-| Валюта          | C++        | 🚧        |
+| Валюта          | C++        | ✅        |
 | Електронна пошта| Ruby       | 🚧        |
+| Flagd           | Go         | 🚧        |
+| Flagd-ui        | TypeScript | 🚧        |
 | Виявлення шахрайства | Kotlin | ✅        |
 | Фронтенд        | TypeScript | 🚧        |
+| Фронтенд Proxy  | Envoy      | ✅        |
+| Постачальник зображень  | NGINX      | 🚧        |
+| Генератор навантаження  | Python     | ✅        |
 | Платіж          | JavaScript | 🚧        |
 | Каталог продуктів | Go       | 🚧        |
 | Котирування     | PHP        | ✅        |
 | Рекомендації    | Python     | ✅        |
-| Доставка        | Rust       | 🚧        |
+| Доставка        | Rust       | ✅        |
 
 Легенда емодзі:
 

@@ -3,15 +3,14 @@ title: Поширення
 description: Поширення контексту для JS SDK
 weight: 65
 cSpell:ignore: rolldice
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 {{% uk/docs/languages/propagation js %}}
 
 ## Автоматичне поширення контексту {#automatic-context-propagation}
 
-[Бібліотеки інструментування](../libraries/) такі як [`@opentelemetry/instrumentation-http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http) або [`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
-поширюють контекст між сервісами за вас.
+[Бібліотеки інструментування](../libraries/) такі як [`@opentelemetry/instrumentation-http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http) або [`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-express) поширюють контекст між сервісами за вас.
 
 Якщо ви слідували [Посібнику з початку роботи](../getting-started/nodejs), ви можете створити клієнтський застосунок, який запитує точку доступу `/rolldice`.
 

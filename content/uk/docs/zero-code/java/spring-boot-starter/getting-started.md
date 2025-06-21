@@ -2,10 +2,10 @@
 title: Початок роботи
 weight: 20
 cSpell:ignore: springboot
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 Ви також можете використовувати [Java агент](../../agent) для інструментування вашого Spring Boot застосунку. Для переваг та недоліків дивіться [інструментування Java без коду](..).
 
@@ -21,7 +21,7 @@ Bill of Material ([BOM](https://maven.apache.org/guides/introduction/introductio
 
 Щоб забезпечити узгодження версій усіх залежностей OpenTelemetry, ви повинні імпортувати BOM `opentelemetry-instrumentation-bom` при використанні OpenTelemetry стартера.
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 При використанні Maven, імпортуйте BOM OpenTelemetry перед будь-якими іншими BOM у вашому проєкті. Наприклад, якщо ви імпортуєте BOM `spring-boot-dependencies`, ви повинні оголосити його після BOM OpenTelemetry.
 
@@ -79,7 +79,7 @@ dependencyManagement {
 }
 ```
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 Будьте обережні, щоб не змішувати різні способи конфігурації з Gradle. Наприклад, не використовуйте `implementation(platform("io.opentelemetry.instrumentation:opentelemetry-instrumentation-bom:{{% param vers.instrumentation %}}"))` з втулком `io.spring.dependency-management`.
 

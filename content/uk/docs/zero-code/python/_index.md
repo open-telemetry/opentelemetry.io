@@ -4,8 +4,8 @@ linkTitle: Python
 weight: 30
 aliases: [/docs/languages/python/automatic]
 # prettier-ignore
-cSpell:ignore: devel distro myapp
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: distro myapp
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 Автоматичне інструментування з Python використовує агент Python, який можна підʼєднати до будь-якого застосунку Python. Цей агент в основному використовує [monkey patching](https://en.wikipedia.org/wiki/Monkey_patch), щоб змінювати функції бібліотек під час виконання, дозволяючи захоплювати телеметричні дані з багатьох популярних бібліотек та фреймворків.
@@ -21,7 +21,7 @@ opentelemetry-bootstrap -a install
 
 Пакунок `opentelemetry-distro` встановлює API, SDK та інструменти `opentelemetry-bootstrap` та `opentelemetry-instrument`.
 
-{{% alert title="Примітка" color="info" %}}
+{{% alert title="Примітка" %}}
 
 Ви повинні встановити пакунок дистрибутиву, щоб автоматичне інструментування працювало. Пакунок `opentelemetry-distro` містить стандартний дистрибутив для автоматичної конфігурації деяких загальних параметрів для користувачів. Для отримання додаткової інформації дивіться [Дистрибутив OpenTelemetry](/docs/languages/python/distro/).
 
@@ -30,6 +30,8 @@ opentelemetry-bootstrap -a install
 Команда `opentelemetry-bootstrap -a install` переглядає список пакунків, встановлених у вашій активній теці `site-packages`, і встановлює відповідні бібліотеки інструментування для цих пакунків, якщо це можливо. Наприклад, якщо ви вже встановили пакунок `flask`, виконання `opentelemetry-bootstrap -a install` встановить `opentelemetry-instrumentation-flask` для вас. Агент OpenTelemetry Python використовуватиме monkey patching для зміни функцій у цих бібліотеках під час виконання.
 
 Виконання `opentelemetry-bootstrap` без аргументів виводить список рекомендованих бібліотек інструментування для встановлення. Для отримання додаткової інформації дивіться [`opentelemetry-bootstrap`](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation#opentelemetry-bootstrap).
+
+{{% alert title="Використовуєте <code>uv</code>?" color="warning" %}} Якщо ви використовуєте пакетний менеджер [uv](https://docs.astral.sh/uv/), ви можете зіткнутися з деякими проблемами під час виконання `opentelemetry-bootstrap -a install`. Для отримання деталей дивіться [Bootstrap з використанням uv](troubleshooting/#bootstrap-using-uv). {{% /alert %}}
 
 ## Налаштування агента {#configuring-the-agent}
 
@@ -65,60 +67,4 @@ opentelemetry-instrument \
 
 ## Розвʼязання проблем {#troubleshooting}
 
-### Помилка встановлення пакунка Python {#python-package-installation-failure}
-
-Для встановлення пакунків Python потрібні `gcc` та `gcc-c++`, які можливо потрібно встановити, якщо ви використовуєте спрощену версію Linux, таку як CentOS.
-
-<!-- markdownlint-disable blanks-around-fences -->
-
-- CentOS
-  ```sh
-  yum -y install python3-devel
-  yum -y install gcc-c++
-  ```
-- Debian/Ubuntu
-  ```sh
-  apt install -y python3-dev
-  apt install -y build-essential
-  ```
-- Alpine
-  ```sh
-  apk add python3-dev
-  apk add build-base
-  ```
-
-### Підключення gRPC {#grpc-connectivity}
-
-Щоб відстежити проблеми підключення Python gRPC, встановіть наступні змінні середовища налагодження gRPC:
-
-```sh
-export GRPC_VERBOSITY=debug
-export GRPC_TRACE=http,call_error,connectivity_state
-opentelemetry-instrument python YOUR_APP.py
-```
-
-### Bootstrap з використанням uv {#bootstrap-using-uv}
-
-При використанні менеджера пакунків [uv](https://docs.astral.sh/uv/), ви можете поставати перед труднощами при виконанні `opentelemetry-bootstrap -a install`.
-
-Замість цього, ви можете динамічно згенерувати вимоги та встановити їх за допомогою `uv`.
-
-Спочатку встановіть відповідні пакунки (або додайте їх до файлу проєкту та виконайте `uv sync`):
-
-```sh
-uv pip install opentelemetry-distro opentelemetry-exporter-otlp
-```
-
-Тепер ви можете встановити автоматичне інструментування:
-
-```sh
-uv run opentelemetry-bootstrap -a requirements | uv pip install --requirement -
-```
-
-Нарешті, використовуйте `uv run` для запуску вашого застосунку (дивіться [Налаштування агента](#configuring-the-agent)):
-
-```sh
-uv run opentelemetry-instrument python myapp.py
-```
-
-Зверніть увагу, що вам потрібно перевстановлювати автоматичне інструментування кожного разу, коли ви виконуєте `uv sync` або оновлюєте наявні пакунки. Тому рекомендується зробити встановлення частиною вашого процесу збірки.
+Для загальних кроків усунення неполадок та рішень конкретних проблем дивіться [Усунення неполадок](./troubleshooting/).
