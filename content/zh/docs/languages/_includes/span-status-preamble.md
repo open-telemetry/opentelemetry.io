@@ -1,8 +1,4 @@
-A [Status](/docs/concepts/signals/traces/#span-status) can be set on a
-[Span](/docs/concepts/signals/traces/#spans), typically used to specify that a
-Span has not completed successfully - `Error`. By default, all spans are
-`Unset`, which means a span completed without error. The `Ok` status is reserved
-for when you need to explicitly mark a span as successful rather than stick with
-the default of `Unset` (i.e., "without error").
+可以在一个 [Span](/docs/concepts/signals/traces/#spans) 上设置一个 [Status](/docs/concepts/signals/traces/#span-status)，通常用于指明某个 Span 没有成功完成 —— 即标记为 `Error`。默认情况下，所有的 Span 状态都是 `Unset`，意味着该操作完成但未明确表示是否出错。
+如果你想显式地标记某个操作是成功的，而不是依赖默认的 `Unset`，就可以使用 `Ok` 状态。
 
-The status can be set at any time before the span is finished.
+状态可以在 Span 结束前的任何时候设置。
