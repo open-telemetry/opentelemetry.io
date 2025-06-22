@@ -16,11 +16,11 @@ OpenTelemetryが動作するためには、重要なテレメトリーデータ�
 - [Context仕様](/docs/specs/otel/context/)
 - [Context APIリファレンス](https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api.ContextAPI.html)
 
-## Context Manager {#context-manager}
+## コンテキストマネージャー {#context-manager}
 
-context APIが動作するためには、contextマネージャーに依存します。
-このドキュメントの例では、すでにcontextマネージャーが設定されていることを前提としています。
-通常、contextマネージャーはSDKによって提供されますが、以下のように直接登録することも可能です。
+context APIが動作するためには、コンテキストマネージャーに依存します。
+このドキュメントの例では、すでにコンテキストマネージャーが設定されていることを前提としています。
+通常、コンテキストマネージャーはSDKによって提供されますが、以下のように直接登録することも可能です。
 
 ```typescript
 import * as api from '@opentelemetry/api';
@@ -31,13 +31,13 @@ contextManager.enable();
 api.context.setGlobalContextManager(contextManager);
 ```
 
-## Root Context {#root-context}
+## ルートコンテキスト {#root-context}
 
 `ROOT_CONTEXT`は空のコンテキストです。
 アクティブなコンテキストがない場合、`ROOT_CONTEXT`がアクティブになります。
-アクティブコンテキストについては、以下の[Active Context](#active-context)で説明します。
+アクティブコンテキストについては、以下の[アクティブコンテキスト](#active-context)で説明します。
 
-## Context Keys {#context-keys}
+## コンテキストキー {#context-keys}
 
 コンテキストエントリはキーと値のペアです。
 キーは`api.createContextKey(description)`を呼び出すことで作成できます。
@@ -112,9 +112,9 @@ console.log(ctx2.getValue(key)); // "context 2"
 console.log(ctx.getValue(key)); // undefined
 ```
 
-## Active Context {#active-context}
+## アクティブコンテキスト {#active-context}
 
-**重要**: これはcontextマネージャーが設定されていることを前提としています。contextマネージャーがないと、`api.context.active()`は**常に**`ROOT_CONTEXT`を返します。
+**重要**: これはコンテキストマネージャーが設定されていることを前提としています。コンテキストマネージャーがないと、`api.context.active()`は**常に**`ROOT_CONTEXT`を返します。
 
 アクティブコンテキストは、`api.context.active()`によって返されるコンテキストです。
 コンテキストオブジェクトには、単一の実行スレッドをトレースするトレーシングコンポーネントが相互に通信し、トレースが正常に作成されることを保証するエントリが含まれています。
