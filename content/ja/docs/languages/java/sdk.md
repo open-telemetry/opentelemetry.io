@@ -657,7 +657,7 @@ public class CustomMetricReader implements MetricReader {
 
   @Override
   public AggregationTemporality getAggregationTemporality(InstrumentType instrumentType) {
-    // インストルメント種別の関数として必要な集約時間性を指定
+    // InstrumentTypeの関数として必要な集約時間性を指定
     return AggregationTemporalitySelector.deltaPreferred()
         .getAggregationTemporality(instrumentType);
   }
