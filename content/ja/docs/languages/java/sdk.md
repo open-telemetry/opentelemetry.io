@@ -1254,7 +1254,7 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 すべてのシグナルのエクスポーターは`io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`を介して利用可能で、OTLPプロトコルの`grpc`と`http/protobuf`バージョン間、およびシグナル間で大幅に重複しています。
 以下のセクションでは、これらの重要な概念について詳しく説明します。
 
-- [Senders](#senders)：異なるHTTP / gRPCクライアントライブラリの抽象化
+- [センダー](#senders)：異なるHTTP / gRPCクライアントライブラリの抽象化
 - OTLPエクスポーターの[認証](#authentication)オプション
 
 #### Senders {#senders}
