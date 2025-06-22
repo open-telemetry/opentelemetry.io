@@ -200,7 +200,7 @@ server {
 
 ## コンソール {#console}
 
-計装をデバッグしたり、開発環境でローカルに値を確認したりするために、テレメトリーデータをコンソール（stdout）に書き込むエクスポーターを使用できます。
+計装をデバッグしたり、開発環境でローカルに値を確認したりするために、テレメトリーデータをコンソール（標準出力）に書き込むエクスポーターを使用できます。
 
 [Getting Started](/docs/languages/js/getting-started/nodejs/)または[Manual Instrumentation](/docs/languages/js/instrumentation)ガイドに従った場合、コンソールエクスポーターはすでにインストールされています。
 
