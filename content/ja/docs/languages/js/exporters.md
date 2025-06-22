@@ -202,7 +202,7 @@ server {
 
 計装をデバッグしたり、開発環境でローカルに値を確認したりするために、テレメトリーデータをコンソール（標準出力）に書き込むエクスポーターを使用できます。
 
-[Getting Started](/docs/languages/js/getting-started/nodejs/)または[Manual Instrumentation](/docs/languages/js/instrumentation)ガイドに従った場合、コンソールエクスポーターはすでにインストールされています。
+[Getting Started の Node.js](/docs/languages/js/getting-started/nodejs/)または[手動計装](/docs/languages/js/instrumentation)ガイドに従った場合、コンソールエクスポーターはすでにインストールされています。
 
 `ConsoleSpanExporter`は[`@opentelemetry/sdk-trace-node`](https://www.npmjs.com/package/@opentelemetry/sdk-trace-node)パッケージに含まれており、`ConsoleMetricExporter`は[`@opentelemetry/sdk-metrics`](https://www.npmjs.com/package/@opentelemetry/sdk-metrics)パッケージに含まれています。
 
