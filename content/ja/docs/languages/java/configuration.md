@@ -14,7 +14,7 @@ cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKC
 [SDK](../sdk/)は[API](../api/)の組み込み参照実装で、計装API呼び出しによって生成されたテレメトリーを処理およびエクスポートします。
 テレメトリーを適切に処理およびエクスポートするようにSDKを設定することは、OpenTelemetryをアプリケーションに統合するために不可欠なステップです。
 
-すべてのSDKコンポーネントには[プログラマティック設定API](#programmatic-configuration)があります。
+すべてのSDKコンポーネントには[プログラム設定API](#programmatic-configuration)があります。
 これは、SDKを設定する最も柔軟で表現力豊かな方法です。
 ただし、設定を変更するにはコードを調整してアプリケーションを再コンパイルする必要があり、APIがJavaで書かれているため言語の相互運用性がありません。
 
@@ -49,7 +49,7 @@ cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKC
 
 ## ゼロコードSDK自動設定 {#zero-code-sdk-autoconfigure}
 
-自動設定モジュール（アーティファクト`io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`）は、[プログラマティック設定インターフェース](#programmatic-configuration)の上に構築された設定インターフェースで、[SDKコンポーネント](../sdk/#sdk-components)をゼロコードで設定します。
+自動設定モジュール（アーティファクト`io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`）は、[プログラム設定インターフェース](#programmatic-configuration)の上に構築された設定インターフェースで、[SDKコンポーネント](../sdk/#sdk-components)をゼロコードで設定します。
 2つの異なる自動設定ワークフローがあります。
 
 - [環境変数とシステムプロパティ](#environment-variables-and-system-properties)は、環境変数とシステムプロパティを解釈してSDKコンポーネントを作成し、プログラム設定をオーバーレイするためのさまざまなカスタマイゼーションポイントを含みます
@@ -272,7 +272,7 @@ OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#inter
 
 **[1]**: OpenTelemetry Javaエージェント 2.xとOpenTelemetry Spring Boot starterは、デフォルトで`http/protobuf`を使用します。
 
-**[2]**: [OTLP](/docs/specs/otlp/#otlpgrpc-response)は、[一時的](/docs/specs/otel/protocol/exporter/#retry)エラーをリトライストラテジーで処理することを要求します。リトライが有効な場合、リトライ可能なgRPCステータスコードはジッターアルゴリズムを使用した指数バックオフでリトライされます。`RetryPolicy`の特定のオプションは[プログラマティックカスタマイゼーション](#programmatic-customization)を介してのみカスタマイズできます。
+**[2]**: [OTLP](/docs/specs/otlp/#otlpgrpc-response)は、[一時的](/docs/specs/otel/protocol/exporter/#retry)エラーをリトライストラテジーで処理することを要求します。リトライが有効な場合、リトライ可能なgRPCステータスコードはジッターアルゴリズムを使用した指数バックオフでリトライされます。`RetryPolicy`の特定のオプションは[プログラムカスタマイゼーション](#programmatic-customization)を介してのみカスタマイズできます。
 
 `zipkin`スパンエクスポーターのプロパティ。
 
@@ -291,9 +291,9 @@ OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#inter
 
 #### プログラムカスタマイゼーション {#programmatic-customization}
 
-プログラムカスタマイゼーションは、[サポートされているプロパティ](#environment-variables-and-system-properties)を[プログラマティック設定](#programmatic-configuration)で補完するフックを提供します。
+プログラムカスタマイゼーションは、[サポートされているプロパティ](#environment-variables-and-system-properties)を[プログラム設定](#programmatic-configuration)で補完するフックを提供します。
 
-[Springスターター](/docs/zero-code/java/spring-boot-starter/)を使用している場合は、[Springスタータープログラマティック設定](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#programmatic-configuration)も参照してください。
+[Springスターター](/docs/zero-code/java/spring-boot-starter/)を使用している場合は、[Springスタータープログラム設定](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#programmatic-configuration)も参照してください。
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomizedAutoConfiguredSdk.java"?>
@@ -624,7 +624,7 @@ public class CustomTextMapPropagatorProvider implements ConfigurablePropagatorPr
 
 {{% alert title="注意" color="warning" %}}
 
-設定ファイルが指定された場合、[環境変数とシステムプロパティ](#environment-variables-and-system-properties)は無視され、[プログラマティックカスタマイゼーション](#programmatic-customization)と[SPIs](#spi-service-provider-interface)はスキップされます。
+設定ファイルが指定された場合、[環境変数とシステムプロパティ](#environment-variables-and-system-properties)は無視され、[プログラムカスタマイゼーション](#programmatic-customization)と[SPIs](#spi-service-provider-interface)はスキップされます。
 ファイルの内容のみがSDK設定を決定します。
 
 {{% /alert %}}
