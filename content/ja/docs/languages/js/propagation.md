@@ -1,6 +1,6 @@
 ---
-title: プロパゲーション
-description: JS SDKのコンテキストプロパゲーション
+title: 伝搬
+description: JS SDKのコンテキスト伝搬
 weight: 65
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 cSpell:ignore: rolldice
@@ -8,9 +8,9 @@ cSpell:ignore: rolldice
 
 {{% docs/languages/propagation js %}}
 
-## 自動コンテキストプロパゲーション {#automatic-context-propagation}
+## 自動コンテキスト伝搬 {#automatic-context-propagation}
 
-[`@opentelemetry/instrumentation-http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)や[`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)などの[インストルメンテーションライブラリ](../libraries/)は、サービス間でのコンテキストのプロパゲーションを自動的に行います。
+[`@opentelemetry/instrumentation-http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)や[`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)などの[インストルメンテーションライブラリ](../libraries/)は、サービス間でのコンテキストの伝搬を自動的に行います。
 
 [Getting Startedガイド](../getting-started/nodejs)に従った場合、`/rolldice`エンドポイントにクエリを送信するクライアントアプリケーションを作成できます。
 
@@ -191,7 +191,7 @@ traceId（`cccd19c3a2d10e589f01bfe2dc896dc2`）とID（`6f64ce484217a7bf`）を�
 
 クライアントとサーバーアプリケーションは接続されたスパンを正常に報告します。これらを今バックエンドに送信すると、視覚化でこの依存関係が表示されます。
 
-## 手動コンテキストプロパゲーション {#manual-context-propagation}
+## 手動コンテキスト伝搬 {#manual-context-propagation}
 
 前のセクションで説明したように、コンテキストを自動的に伝搬できない場合があります。
 サービス間の通信に使用するライブラリに対応する計装ライブラリが存在しない場合があります。
@@ -442,7 +442,7 @@ Parsed JSON: { key: 'value' }
 
 {{% /alert %}}
 
-OpenTelemetryを有効にし、実際のコンテキストプロパゲーションを確認するために、以下の内容で`instrumentation.js`という追加ファイルを作成します。
+OpenTelemetryを有効にし、実際のコンテキスト伝搬を確認するために、以下の内容で`instrumentation.js`という追加ファイルを作成します。
 
 ```javascript
 // instrumentation.js
@@ -520,4 +520,4 @@ node -r ./instrumentation client.js
 
 ## 次のステップ {#next-steps}
 
-プロパゲーションについてさらに学ぶには、[Propagators API仕様](/docs/specs/otel/context/api-propagators/)をお読みください。
+伝搬についてさらに学ぶには、[Propagators API仕様](/docs/specs/otel/context/api-propagators/)をお読みください。
