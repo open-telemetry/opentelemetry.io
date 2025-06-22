@@ -670,7 +670,7 @@ public class CustomMetricReader implements MetricReader {
 
   @Override
   public Aggregation getDefaultAggregation(InstrumentType instrumentType) {
-    // オプションでインストルメント種別の関数としてデフォルト集約を指定
+    // オプションで計装種別の関数としてデフォルト集約を指定
     return Aggregation.defaultAggregation();
   }
 }
@@ -786,7 +786,7 @@ public class CustomMetricExporter implements MetricExporter {
 
   @Override
   public AggregationTemporality getAggregationTemporality(InstrumentType instrumentType) {
-    // インストルメント種別の関数として必要な集約時間性を指定
+    // 計装種別の関数として必要な集約時間性を指定
     return AggregationTemporalitySelector.deltaPreferred()
         .getAggregationTemporality(instrumentType);
   }
@@ -799,7 +799,7 @@ public class CustomMetricExporter implements MetricExporter {
 
   @Override
   public Aggregation getDefaultAggregation(InstrumentType instrumentType) {
-    // オプションでインストルメント種別の関数としてデフォルト集約を指定
+    // オプションで計装種別の関数としてデフォルト集約を指定
     return Aggregation.defaultAggregation();
   }
 }
