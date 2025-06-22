@@ -10,7 +10,7 @@ cSpell:ignore: rolldice
 
 ## 自動コンテキスト伝搬 {#automatic-context-propagation}
 
-[`@opentelemetry/instrumentation-http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)や[`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)などの[インストルメンテーションライブラリ](../libraries/)は、サービス間でのコンテキストの伝搬を自動的に行います。
+[`@opentelemetry/instrumentation-http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)や[`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)などの[計装ライブラリ](../libraries/)は、サービス間でのコンテキストの伝搬を自動的に行います。
 
 [Getting Startedガイド](../getting-started/nodejs)に従った場合、`/rolldice`エンドポイントにクエリを送信するクライアントアプリケーションを作成できます。
 
@@ -438,7 +438,7 @@ Parsed JSON: { key: 'value' }
 
 これは、サーバーとクライアントコードがライブラリである場合に特に重要です。
 ライブラリはOpenTelemetry APIのみを使用するべきだからです。
-その理由を理解するには、[ライブラリにインストルメンテーションを追加する方法のコンセプトページ](/docs/concepts/instrumentation/libraries/)をお読みください。
+その理由を理解するには、[ライブラリに計装を追加する方法のコンセプトページ](/docs/concepts/instrumentation/libraries/)をお読みください。
 
 {{% /alert %}}
 
