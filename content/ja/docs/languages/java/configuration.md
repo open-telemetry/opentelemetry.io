@@ -29,9 +29,9 @@ cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKC
 
 {{% alert %}}
 
-[Java agent](/docs/zero-code/java/agent/)と[Spring starter](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。
+[Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。
 
-すべての自動設定コンテンツは、Java agentとSpring starterユーザーに適用されます。
+すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
 
 {{% /alert %}}
 
@@ -75,8 +75,8 @@ public class AutoConfiguredSdk {
 
 {{% alert %}}
 
-[Java agent](/docs/zero-code/java/agent/)と[Spring starter](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。
-すべての自動設定コンテンツは、Java agentとSpring starterユーザーに適用されます。
+[Javaエージェント](/docs/zero-code/java/agent/)と[Springスターター](/docs/zero-code/java/spring-boot-starter/)は、ゼロコードSDK自動設定モジュールを使用してSDKを自動的に設定し、それとともに計装をインストールします。
+すべての自動設定コンテンツは、JavaエージェントとSpringスターターユーザーに適用されます。
 
 {{% /alert %}}
 
@@ -270,7 +270,7 @@ OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#inter
 **注意**: テキストプレースホルダー`{signal}`は、サポートされている[OpenTelemetry Signal](/docs/concepts/signals/)を指します。有効な値には`traces`、`metrics`、`logs`が含まれます。シグナル固有の設定は汎用バージョンよりも優先されます。
 たとえば、`otel.exporter.otlp.endpoint`と`otel.exporter.otlp.traces.endpoint`の両方を設定した場合、後者が優先されます。
 
-**[1]**: OpenTelemetry Java agent 2.xとOpenTelemetry Spring Boot starterは、デフォルトで`http/protobuf`を使用します。
+**[1]**: OpenTelemetry Javaエージェント 2.xとOpenTelemetry Spring Boot starterは、デフォルトで`http/protobuf`を使用します。
 
 **[2]**: [OTLP](/docs/specs/otlp/#otlpgrpc-response)は、[一時的](/docs/specs/otel/protocol/exporter/#retry)エラーをリトライストラテジーで処理することを要求します。リトライが有効な場合、リトライ可能なgRPCステータスコードはジッターアルゴリズムを使用した指数バックオフでリトライされます。`RetryPolicy`の特定のオプションは[プログラマティックカスタマイゼーション](#programmatic-customization)を介してのみカスタマイズできます。
 
@@ -293,7 +293,7 @@ OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#inter
 
 プログラムカスタマイゼーションは、[サポートされているプロパティ](#environment-variables-and-system-properties)を[プログラマティック設定](#programmatic-configuration)で補完するフックを提供します。
 
-[Spring starter](/docs/zero-code/java/spring-boot-starter/)を使用している場合は、[spring starterプログラマティック設定](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#programmatic-configuration)も参照してください。
+[Springスターター](/docs/zero-code/java/spring-boot-starter/)を使用している場合は、[Springスタータープログラマティック設定](/docs/zero-code/java/spring-boot-starter/sdk-configuration/#programmatic-configuration)も参照してください。
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomizedAutoConfiguredSdk.java"?>
@@ -632,5 +632,5 @@ public class CustomTextMapPropagatorProvider implements ConfigurablePropagatorPr
 詳細については、以下のリソースを参照してください。
 
 - [使用ドキュメント](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/incubator#declarative-configuration)
-- [Java agentでの例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#declarative-configuration)
-- [Java agentなしでの例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/declarative-configuration)
+- [Javaエージェントでの例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent#declarative-configuration)
+- [Javaエージェントなしでの例](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/declarative-configuration)
