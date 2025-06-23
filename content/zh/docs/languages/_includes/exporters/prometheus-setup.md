@@ -4,9 +4,11 @@ default_lang_commit: 8e37b19820e9ffded066ccfc5b5e282c896db362
 
 ## Prometheus
 
-要将你的指标（metrics）数据发送到 [Prometheus](https://prometheus.io/)，你可以选择
-[enable Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver)
-并且使用 [OTLP exporter](#otlp)，或者说使用 Prometheus exporter，这是一种 `MetricReader`，他启动一个 HTTP 服务器，根据请求收集 metrics 并将数据序列化为 Prometheus 文本格式。
+要将你的指标（metrics）数据发送到 [Prometheus](https://prometheus.io/)，
+你可以选择
+[启用 Prometheus 的 OTLP 接收器](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver)
+并且使用 [OTLP exporter](#otlp)，或者使用 Prometheus exporter，这是一种 `MetricReader`，
+他启动一个 HTTP 服务器，根据请求收集指标并将数据序列化为 Prometheus 文本格式。
 
 ### 后端设置 {#prometheus-setup}
 
@@ -37,8 +39,9 @@ docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090
 
 {{% alert title=注意 %}}
 
-当使用 Prometheus 的 OTLP 接收器（Reciever）时，确保在应用中设置 OTLP 端点为 `http://localhost:9090/api/v1/otlp`。
+当使用 Prometheus 的 OTLP 接收器（Reciever）时，确保在应用中设置 OTLP 端点为
+`http://localhost:9090/api/v1/otlp`。
 
-并非所有的 Docker 环境都支持 `host.docker.internal`. 在某些情况下，你可能需要将 `host.docker.internal` 替换为 `localhost` 或你机器的 IP 地址。
+并非所有的 Docker 环境都支持 `host.docker.internal`。在某些情况下，你可能需要将 `host.docker.internal` 替换为 `localhost` 或你机器的 IP 地址。
 
 {{% /alert %}}

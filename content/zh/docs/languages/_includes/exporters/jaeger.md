@@ -6,7 +6,7 @@ default_lang_commit: 8e37b19820e9ffded066ccfc5b5e282c896db362
 
 ### 后端设置 {#jaeger-backend-setup}
 
-[Jaeger](https://www.jaegertracing.io/) 原生支持 OTLP，用于接收追踪（trace）数据。你可以通过运行一个 Docker 容器来启动 Jaeger，其 UI 默认在端口 16686 上可访问，并在端口 4317 和 4318 上启用 OTLP：
+[Jaeger](https://www.jaegertracing.io/) 原生支持 OTLP，用于接收链路（trace）数据。你可以通过运行一个 Docker 容器来启动 Jaeger，其 UI 默认在端口 16686 上可访问，并在端口 4317 和 4318 上启用 OTLP：
 
 ```shell
 docker run --rm \
