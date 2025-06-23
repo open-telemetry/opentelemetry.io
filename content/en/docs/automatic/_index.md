@@ -12,6 +12,6 @@ Besides **code-based** instrumentation using the
 provides a set of solutions for **automatic** (or **zero-code**) and
 **assisted** instrumentation.
 
-You can learn about the difference between the three solutions and about their
+You can learn about the difference between code-based, automatic and assisted instrumentation, and about their
 different use cases on the
 [concept page about Instrumentation](/concepts/instrumentation/).
