@@ -86,11 +86,15 @@ brew install coreutils
 
 On Windows, use the PowerShell module as an Administrator.
 
-{{% alert title="Version note" color="warning" %}} Windows
+{{% alert title="Version note" color="warning" %}} 
+
+Windows
 [PowerShell Desktop](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions)
 (v5.1) is required. Other
 [versions](https://learn.microsoft.com/previous-versions/powershell/scripting/overview),
-including PowerShell Core (v6.0+) are not supported at this time.{{% /alert %}}
+including PowerShell Core (v6.0+) are not supported at this time.
+
+{{% /alert %}}
 
 ```powershell
 # PowerShell 5.1 is required
