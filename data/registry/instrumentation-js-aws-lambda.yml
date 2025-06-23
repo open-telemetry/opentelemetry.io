@@ -15,5 +15,5 @@ createdAt: 2021-07-08
 package:
   name: '@opentelemetry/instrumentation-aws-lambda'
   registry: npm
-  version: 0.51.1
+  version: 0.53.0
 isFirstParty: false

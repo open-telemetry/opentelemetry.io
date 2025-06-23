@@ -11,10 +11,10 @@ This page will show you how to get started with OpenTelemetry in Node.js.
 You will learn how to instrument both [traces][] and [metrics][] and log them to
 the console.
 
-{{% alert title="Note" color="info" %}} The logging library for OpenTelemetry
-for Node.js is still under development hence an example for it is not provided
-below. Look [here](/docs/languages/js) for more info about the status of
-OpenTelemetry in JavaScript. {{% /alert %}}
+{{% alert title="Note" %}} The logging library for OpenTelemetry for Node.js is
+still under development hence an example for it is not provided below. For
+status details, see
+[Status and Releases](/docs/languages/js/#status-and-releases). {{% /alert %}}
 
 ## Prerequisites
 

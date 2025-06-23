@@ -17,5 +17,5 @@ createdAt: 2024-04-18
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-psr16
-  version: 0.0.4
+  version: 0.0.5
 isFirstParty: false

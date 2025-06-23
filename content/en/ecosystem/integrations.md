@@ -52,7 +52,7 @@ following:
 - Link to the documentation that explains how enable observability using
   OpenTelemetry
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 If you provide external integration of OpenTelemetry for any kind of library,
 service, or app, then

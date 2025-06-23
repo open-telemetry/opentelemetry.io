@@ -13,7 +13,7 @@ OpenTelemetry at KubeCon EU, which was a blast. Can't wait for Chicago this
 fall!
 
 Are you a maintainer with something you’d like featured here? Get in touch with
-me [via email](mailto:austin@lightstep.com), or on the
+[Austin Parker via email](mailto:austin@lightstep.com), or on the
 [CNCF Slack #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
 channel.
 

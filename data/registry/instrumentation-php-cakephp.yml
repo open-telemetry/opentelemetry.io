@@ -18,5 +18,5 @@ createdAt: 2024-07-08
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-cakephp
-  version: 0.0.4
+  version: 0.0.6
 isFirstParty: false

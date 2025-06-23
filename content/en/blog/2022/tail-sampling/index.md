@@ -222,8 +222,8 @@ separate processors to do tail sampling will be more performant than just the
 tail sampling processor. It's important to note that nothing will be released
 without a backward-compatible solution. For the collector, there are limited
 options to monitor the collector, which is critical for troubleshooting. See
-[here](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/troubleshooting.md#observability)
-for more information.
+[Collector Troubleshooting](/docs/collector/troubleshooting/) for more
+information.
 
 _A version of this article was [originally posted][] on the New Relic blog._
 

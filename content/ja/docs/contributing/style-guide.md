@@ -3,7 +3,7 @@ title: ドキュメントスタイルガイド
 description: OpenTelemetry のドキュメントを書く際の用語とスタイル。
 linkTitle: スタイルガイド
 weight: 20
-default_lang_commit: 35fde3d29a49ddea001ef99ffcbbe702a003e70f
+default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
 cSpell:ignore: open-telemetry postgre style-guide textlintrc
 ---
 
@@ -14,7 +14,7 @@ cSpell:ignore: open-telemetry postgre style-guide textlintrc
 
 後述するセクションは、OpenTelemetry プロジェクト特有のガイドを含んでいます。
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 スタイルガイドの多くの要件されることは、自動化で強制されています。
 [pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)(PR) を提出する前に、ローカルで `npm run fix:all` を実行して、変更をコミットしてください。

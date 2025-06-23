@@ -50,7 +50,7 @@ This blog post shows how to set up this solution step by step.
 
 ## Configure Java application to output OTLP/JSON logs
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 Blog post instructions can easily get outdated. In case of issues, check this
 [sample application deployed on Kubernetes](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md),
@@ -100,7 +100,7 @@ The `-Dotel.logs.exporter=experimental-otlp/stdout` JVM argument and the
 environment variable `OTEL_LOGS_EXPORTER="experimental-otlp/stdout"` can be used
 interchangeably.
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 The OTLP logs exporter is experimental and subject to change. Check the
 [Specification PR](https://github.com/open-telemetry/opentelemetry-specification/pull/4183)

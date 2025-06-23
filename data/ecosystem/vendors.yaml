@@ -1,3 +1,9 @@
+- name: Digitate (ignio)
+  nativeOTLP: true
+  url: https://docs.digitate.com/docs/ignio-integrations/open-telemetry-and-ignio/
+  contact:
+  oss: false
+  commercial: true
 - name: AppDynamics (Cisco)
   nativeOTLP: true
   url: https://docs.appdynamics.com/latest/en/application-monitoring/cisco-appdynamics-for-opentelemetry
@@ -336,6 +342,12 @@
   contact: ploffay@redhat.com
   oss: true
   commercial: true
+- name: Randoli
+  nativeOTLP: true
+  url: https://docs.randoli.io/troubleshooting-observability/config/open-telemetry/
+  contact: rajith@randoli.ca
+  oss: false
+  commercial: true
 - name: Sentry Software
   nativeOTLP: true
   url: https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html
@@ -348,11 +360,17 @@
   contact:
   oss: false
   commercial: true
+- name: Scout
+  nativeOTLP: true
+  url: https://docs.base14.io/category/opentelemetry-collector-setup
+  contact: support@base14.io
+  oss: false
+  commercial: true
 - name: SigNoz
   nativeOTLP: true
   url: https://signoz.io
-  contact:
-  oss: false
+  contact: support@signoz.io
+  oss: true
   commercial: true
 - name: SolarWinds
   nativeOTLP: true
@@ -505,3 +523,16 @@
   contact: https://support.broadcom.com/web/ecx/software-contact-support
   oss: false
   commercial: true
+- name: vFunction
+  nativeOTLP: true
+  url: https://kb.vfunction.com/installations/install/dist-agent/
+  contact: support@vfunction.com
+  oss: false
+  commercial: true
+- name: Coroot
+  nativeOTLP: true
+  oss: true
+  commercial: true
+  url: https://github.com/coroot/coroot
+  documentation: https://docs.coroot.com/tracing/opentelemetry-go
+  contact: alamberton@coroot.com

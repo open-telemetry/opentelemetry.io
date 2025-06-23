@@ -75,7 +75,7 @@ model responses, providing a granular view of model interactions. These insights
 are invaluable for debugging and optimizing AI applications where unexpected
 behaviors may arise.
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 Note that we decided to use [events emitted] with the
 [Logs API](/docs/specs/otel/logs/api/) specification in the Semantic Conventions

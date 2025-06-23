@@ -26,3 +26,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm run check:format
+
+  check-branch-name:
+    name: BRANCH NAME check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/fail-if-branch-is-main

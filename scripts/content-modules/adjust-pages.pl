@@ -24,9 +24,9 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.45.0
-    otlp: 1.6.0
-    semconv: 1.33.0
+    spec: 1.46.0
+    otlp: 1.7.0
+    semconv: 1.34.0
   );
 # Versions map without the colon in the keys
 my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
@@ -95,11 +95,11 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-# sub patchSemConv1_30_0() {
-#   return unless $ARGV =~ /^tmp\/semconv\/docs\//
-#     && applyPatchOrPrintMsgIf('2025-01-24-emit-an-event-etc', 'semconv', '1.30.0-18-g');
+# sub patchSpec_because_of_SemConv_AttrRegRefactoring() {
+#   return unless $ARGV =~ /^tmp\/otel\/specification\//
+#     && applyPatchOrPrintMsgIf('2025-05-13-attribute-registry-refactoring', 'spec', '1.45.0-dev');
 
-#   s|Emit Event API|Log API|;
+#   s|/attributes-registry/|/registry/attributes/|g;
 # }
 
 sub getVersFromSubmodule() {

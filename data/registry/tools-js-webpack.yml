@@ -1,0 +1,20 @@
+# cSpell:ignore corlin
+title: OpenTelemetry Webpack Plugin
+registryType: utilities
+language: js
+tags:
+  - webpack
+  - bundler
+urls:
+  repo: https://github.com/DrewCorlin/opentelemetry-node-bundler-plugins
+  docs: https://github.com/DrewCorlin/opentelemetry-node-bundler-plugins/tree/main/packages/opentelemetry-webpack-plugin-node
+license: MIT
+description:
+  Webpack plugin which bundles OpenTelemetry node core and contrib
+  instrumentations into your code
+authors:
+  - name: Drew Corlin
+    url: https://github.com/DrewCorlin
+createdAt: 2025-05-24
+isNative: false
+isFirstParty: false

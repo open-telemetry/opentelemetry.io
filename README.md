@@ -1,10 +1,12 @@
+<!-- cSpell:ignore Chalin Ferri Benedetti Hrabusa jparsana -->
+
 # <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry.io
 
 This is the source repository for the [OpenTelemetry][] website, project
 documentation, and blog. The site is [built][contributing.md] using [Hugo][] and
 is hosted on [Netlify][].
 
-Public analytics for the website is [available here][].
+For website analytics, see [OpenTelemetry.io Analytics][] dashboard.
 
 ## Get involved
 
@@ -62,7 +64,7 @@ Here is a list of community roles with current and previous members:
   - [Austin Parker](https://github.com/austinlparker), Honeycomb
   - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
   - [Patrice Chalin](https://github.com/chalin), CNCF
-  - [Phillip Carter](https://github.com/cartermp), Honeycomb
+  - [Phillip Carter](https://github.com/cartermp), Salesforce
   - [Severin Neumann](https://github.com/svrnm)
   - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
 
@@ -97,6 +99,7 @@ already contributed][contributors]!
 [contributors]:
   https://github.com/open-telemetry/opentelemetry.io/graphs/contributors
 [opentelemetry]: https://opentelemetry.io
+[OpenTelemetry.io Analytics]: https://lookerstudio.google.com/s/jsDZ05i_YIo
 [registry]: https://opentelemetry.io/ecosystem/registry/
 [opentelemetry community calendar]:
   https://calendar.google.com/calendar/embed?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com
@@ -105,5 +108,3 @@ already contributed][contributors]!
 [slack]: https://slack.cncf.io/
 [hugo]: https://gohugo.io
 [netlify]: https://netlify.com
-[available here]:
-  https://lookerstudio.google.com/reporting/34c2a65a-39e8-44aa-afa0-094975fee55d/page/4VDGB

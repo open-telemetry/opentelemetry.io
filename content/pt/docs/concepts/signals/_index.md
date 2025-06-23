@@ -7,13 +7,14 @@ aliases: [data-sources, otel-concepts]
 default_lang_commit: c370886c9926e6cab3738ababbf6ff5692899bbd
 ---
 
-O propósito do OpenTelemetry é coletar, processar e exportar [sinais]. Sinais
-são dados emitidos que descrevem a atividade subjacente do sistema operacional e
-das aplicações que estão sendo executadas em uma plataforma. Um sinal pode ser
-algo que você deseja medir em um momento específico, como a temperatura ou o uso
-de memória, ou um evento que passa pelos componentes do seu sistema distribuído
-e que você gostaria de rastrear. Você pode agrupar diferentes sinais para
-observar o funcionamento interno de uma mesma tecnologia sob diferentes ângulos.
+O propósito do OpenTelemetry é coletar, processar e exportar [sinais][signals].
+Sinais são dados emitidos que descrevem a atividade subjacente do sistema
+operacional e das aplicações que estão sendo executadas em uma plataforma. Um
+sinal pode ser algo que você deseja medir em um momento específico, como a
+temperatura ou o uso de memória, ou um evento que passa pelos componentes do seu
+sistema distribuído e que você gostaria de rastrear. Você pode agrupar
+diferentes sinais para observar o funcionamento interno de uma mesma tecnologia
+sob diferentes ângulos.
 
 O OpenTelemetry atualmente suporta:
 
@@ -22,15 +23,15 @@ O OpenTelemetry atualmente suporta:
 - [Logs](logs)
 - [Bagagem](baggage)
 
-Também em desenvolvimento ou na fase de [proposta]:
+Também em desenvolvimento ou na fase de [proposta][proposal]:
 
-- [Eventos], um tipo específico de [log](logs)
-- [Perfilamento] está sendo trabalhado pelo Grupo de Trabalho de Perfilamento
-  _(Profiling Working Group)_.
+- [Eventos][Events], um tipo específico de [log](logs)
+- [Perfilamento][Profiles] está sendo trabalhado pelo Grupo de Trabalho de
+  Perfilamento _(Profiling Working Group)_.
 
-[Eventos]: /docs/specs/otel/logs/data-model/#events
-[Perfilamento]:
+[Events]: /docs/specs/otel/logs/data-model/#events
+[Profiles]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md
-[proposta]:
+[proposal]:
   https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme
-[sinais]: /docs/specs/otel/glossary/#signals
+[signals]: /docs/specs/otel/glossary/#signals
