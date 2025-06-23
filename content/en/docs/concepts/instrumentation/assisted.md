@@ -11,7 +11,7 @@ Different to
 provide a convenient way to quickly add OpenTelemetry to your application.
 
 An example for a technology that assists instrumentation are
-[**Instrumention Libraries**](/docs/concepts/instrumentation/libaries), which
+[**Instrumentation Libraries**](/docs/concepts/instrumentation/libaries), which
 are added by a developer to their application to extract telemetry from their
 dependencies. By using them, they are no longer required to write a wrapper
 themselves. Although they are an intermediate solution, until the libraries
