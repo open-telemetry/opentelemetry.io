@@ -76,7 +76,7 @@ Your development environment will be initialized via the
     nvm install lts && nvm use lts
     ```
 
-5.  Get npm packages and other prerequisites:
+4.  Get npm packages and other prerequisites:
 
     ```sh
     npm install
