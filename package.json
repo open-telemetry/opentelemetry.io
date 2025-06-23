@@ -132,7 +132,7 @@
     "markdownlint": "^0.38.0",
     "markdownlint-cli2": "^0.18.1",
     "postcss-cli": "^11.0.1",
-    "prettier": "3.5.3",
+    "prettier": "3.6.0",
     "puppeteer": "^24.10.1",
     "require-dir": "^1.2.0",
     "textlint": "^14.8.4",
