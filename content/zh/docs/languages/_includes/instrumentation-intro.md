@@ -1,4 +1,5 @@
 ---
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 [Instrumentation](/docs/concepts/instrumentation/) 是指向应用中添加可观察性代码的行为。

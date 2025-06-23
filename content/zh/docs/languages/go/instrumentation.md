@@ -6,6 +6,7 @@ aliases:
 weight: 30
 description: 在 OpenTelemetry Go 中实现手动埋点
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 {{% include instrumentation-intro.md %}}
@@ -104,7 +105,7 @@ func httpHandler(w http.ResponseWriter, r *http.Request) {
 	ctx, span := tracer.Start(r.Context(), "hello-span")
 	defer span.End()
 
-	// 执行需要被 hello-span 跟踪的逻辑。	
+	// 执行需要被 hello-span 跟踪的逻辑。
 }
 ```
 
@@ -247,7 +248,7 @@ if err != nil {
 
 Trace（链路）可以跨越多个进程执行。要实现这一点，就需要 _上下文传播（context propagation）_ 机制，即将 Trace 的表示信息传递给远程进程。
 
-为了在网络中传播 Trace 上下文，必须要在 Opentelemetry API 中注册一个传播器（Propagator）。
+为了在网络中传播 Trace 上下文，必须要在 OpenTelemetry API 中注册一个传播器（Propagator）。
 
 ```go
 import (
@@ -278,7 +279,7 @@ otel.SetTextMapPropagator(propagation.TraceContext{})
 更多关于同步和异步指标工具的区别，以及如何为你的场景选择合适的类型，请参阅
 [Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
 
-如果既没有自动埋点库创建  `MeterProvider`，也没有手动初始化，OpenTelemetry 的 Metrics API 会退化为 no-op（空操作），无法产出任何指标数据。
+如果既没有自动埋点库创建 `MeterProvider`，也没有手动初始化，OpenTelemetry 的 Metrics API 会退化为 no-op（空操作），无法产出任何指标数据。
 
 你可以在这里找到更详细的关于这个包的文档：
 
@@ -569,7 +570,7 @@ func init() {
 }
 ```
 
-### 使用 Observable（Async）  Counter{#using-observable-async-counters}
+### 使用 Observable（Async） Counter{#using-observable-async-counters}
 
 Observable counter 用于测量只增不减的累积值。
 
@@ -730,7 +731,7 @@ func init() {
 [`WithView`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#WithView)
 选项进行注册。
 
-下面这个例子展示了创建一个视图，并将 `http` 插桩库 v0.34.0 版本中名叫 `latency` 的 instrument 重命名为 `request.latency`： 
+下面这个例子展示了创建一个视图，并将 `http` 插桩库 v0.34.0 版本中名叫 `latency` 的 instrument 重命名为 `request.latency`：
 
 ```go
 view := metric.NewView(metric.Instrument{
@@ -746,7 +747,7 @@ meterProvider := metric.NewMeterProvider(
 )
 ```
 
-下面的例子中，如何创建一个视图，并将 http 插桩库中的名叫 `latency` 的 instrument 上报为二进制指数直方图（histogram）聚合：
+下面的例子中，如何创建一个视图，并将 HTTP 插桩库中的名叫 `latency` 的 instrument 上报为二进制指数直方图（histogram）聚合：
 
 ```go
 view := metric.NewView(
@@ -806,6 +807,7 @@ meterProvider := metric.NewMeterProvider(
 `Name` 字段支持通配符模式匹配。`*` 表示匹配零个或多个字符，而 `?` 表示精确匹配一个字符。例如，`*` 会匹配所有 instrument 的名称。
 
 下面的例子展示了如何创建一个视图，并将所有名称以 `.ms` 结尾的 instrument 的单位设置为毫秒：
+
 ```go
 view := metric.NewView(
   metric.Instrument{Name: "*.ms"},
@@ -864,7 +866,7 @@ meterProvider := metric.NewMeterProvider(
 使用步骤：
 
 - 配置 OpenTelemetry [Log SDK](#logs-sdk) 将日志导出到
-[collector][opentelemetry collector] 或其他目标。
+  [collector][opentelemetry collector] 或其他目标。
 - 选取合适的日志桥 [Log Bridge](#log-bridge)。
 
 #### 日志 SDK{#logs-sdk}
@@ -932,7 +934,7 @@ func main() {
 			fmt.Println(err)
 		}
 	}()
-	
+
 	// 注册为全局的 logger provider，后续可以通过 global.LoggerProvider 访问。
 	// 大多数日志桥默认采用全局的 LoggerProvider。
 	// 如果未设置全局 LoggerProvider，将会退化为 no-op 实现，无法生成数据。
@@ -987,20 +989,13 @@ API][logs bridge API] 将现有日志包产生的日志接入到 OpenTelemetry �
 [opentelemetry specification]: /docs/specs/otel/
 [trace semantic conventions]: /docs/specs/semconv/general/trace/
 [instrumentation library]: ../libraries/
-[opentelemetry collector]:
-  https://github.com/open-telemetry/opentelemetry-collector
+[opentelemetry collector]: https://github.com/open-telemetry/opentelemetry-collector
 [logs bridge API]: /docs/specs/otel/logs/api/
 [log data model]: /docs/specs/otel/logs/data-model
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
-[`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric
-[`go.opentelemetry.io/otel/metric`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/metric
-[`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp
-[`go.opentelemetry.io/otel/sdk/log`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/sdk/log
-[`go.opentelemetry.io/otel/sdk/metric`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric
-[`go.opentelemetry.io/otel/sdk/resource`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource
+[`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]: https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric
+[`go.opentelemetry.io/otel/metric`]: https://pkg.go.dev/go.opentelemetry.io/otel/metric
+[`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp`]: https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp
+[`go.opentelemetry.io/otel/sdk/log`]: https://pkg.go.dev/go.opentelemetry.io/otel/sdk/log
+[`go.opentelemetry.io/otel/sdk/metric`]: https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric
+[`go.opentelemetry.io/otel/sdk/resource`]: https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource

@@ -1,6 +1,7 @@
 ---
 title: 采样（Sampling）
 weight: 80
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 [Sampling](/docs/concepts/sampling/) 是一种限制系统生成的 span 数量的机制，你应根据自身的需求选择合适的采样器，但是一般建议在一个 trace 开始时就做出采样决策，并将该决策传递到其他服务中。

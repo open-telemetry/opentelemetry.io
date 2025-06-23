@@ -2,6 +2,7 @@
 title: 资源（Resources）
 weight: 70
 cSpell:ignore: sdktrace thirdparty
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 {{% docs/languages/resources-intro %}}
@@ -26,6 +27,7 @@ provider := sdktrace.NewTracerProvider(
 [conventional names](/docs/concepts/semantic-conventions/)，即语义约定名称，用于资源属性。这有助于确保使用这些语义约定生成的遥感数据更容易被下游系统识别和理解其含义。
 
 资源还可以通过 `resource.Detector` 来实现自动检测。这些 `Detector` 可能会发现以下信息：
+
 - 当前运行的进程信息；
 
 - 所在操作系统；
