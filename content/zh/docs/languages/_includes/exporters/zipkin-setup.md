@@ -1,17 +1,14 @@
 ## Zipkin
 
-### Backend Setup {#zipkin-setup}
+### 后端设置 {#zipkin-setup}
 
-{{% alert title=Note %}}
+{{% alert title=提示 %}}
 
-If you have Zipkin or a Zipkin-compatible backend already set up, you can skip
-this section and setup the [Zipkin exporter dependencies](#zipkin-dependencies)
-for your application.
+如果你已经设置了 Zipkin 或兼容 Zipkin 的后端，可以跳过本节并直接为你的应用设置 [Zipkin exporter dependencies](#zipkin-dependencies)
 
 {{% /alert %}}
 
-You can run [Zipkin](https://zipkin.io/) on in a Docker container by executing
-the following command:
+你可以通过执行以下命令，在 Docker 容器中运行 [Zipkin](https://zipkin.io/)：
 
 ```shell
 docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin

@@ -1,19 +1,12 @@
 ---
 ---
 
-[Instrumentation](/docs/concepts/instrumentation/) is the act of adding
-observability code to an app yourself.
+[Instrumentation](/docs/concepts/instrumentation/) 是指向应用中添加可观察性代码的行为。
 
-If you're instrumenting an app, you need to use the OpenTelemetry SDK for your
-language. You'll then use the SDK to initialize OpenTelemetry and the API to
-instrument your code. This will emit telemetry from your app, and any library
-you installed that also comes with instrumentation.
+如果你正在对一个应用进行埋点，需要使用适合你语言的 OpenTelemetry SDK。然后，你可以使用 SDK 初始化 OpenTelemetry，并使用 API 对代码进行埋点。这将从你的应用及其安装的任何带有埋点的库中导出遥测数据。
 
-If you're instrumenting a library, only install the OpenTelemetry API package
-for your language. Your library will not emit telemetry on its own. It will only
-emit telemetry when it is part of an app that uses the OpenTelemetry SDK. For
-more on instrumenting libraries, see
-[Libraries](/docs/concepts/instrumentation/libraries/).
+如果你正在对一个库进行埋点，只需安装适合你语言的 OpenTelemetry API 包。你的库不会自行导出遥测数据。只有当该库作为使用 OpenTelemetry SDK 的应用的一部分时，它才会导出遥测数据。有关如何对库进行埋点的更多信息，请参见
+[Libraries](/docs/concepts/instrumentation/libraries/)。
 
-For more information about the OpenTelemetry API and SDK, see the
-[specification](/docs/specs/otel/).
+有关 OpenTelemetry API 和 SDK 的更多信息，请参见
+[specification](/docs/specs/otel/)。

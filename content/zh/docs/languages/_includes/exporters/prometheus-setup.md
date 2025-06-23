@@ -1,25 +1,21 @@
 ## Prometheus
 
-To send your metric data to [Prometheus](https://prometheus.io/), you can either
+要将你的指标（metrics）数据发送到 [Prometheus](https://prometheus.io/)，你可以选择
 [enable Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver)
-and use the [OTLP exporter](#otlp) or you can use the Prometheus exporter, a
-`MetricReader` that starts an HTTP server that collects metrics and serialize to
-Prometheus text format on request.
+并且使用 [OTLP exporter](#otlp)，或者说使用 Prometheus exporter，这是一种 `MetricReader`，他启动一个 HTTP 服务器，根据请求收集 metrics 并将数据序列化为 Prometheus 文本格式。
 
-### Backend Setup {#prometheus-setup}
+### 后端设置 {#prometheus-setup}
 
-{{% alert title=Note %}}
+{{% alert title=注意 %}}
 
-If you have Prometheus or a Prometheus-compatible backend already set up, you
-can skip this section and setup the [Prometheus](#prometheus-dependencies) or
-[OTLP](#otlp-dependencies) exporter dependencies for your application.
+如果你已经设置了 Prometheus 或兼容 Prometheus 的后端，可以跳过本节，直接为你的应用设置 [Prometheus](#prometheus-dependencies) 或者
+[OTLP](#otlp-dependencies) exporter 依赖。
 
 {{% /alert %}}
 
-You can run [Prometheus](https://prometheus.io) in a docker container,
-accessible on port `9090` by following these instructions:
+你可以按照以下步骤在 Docker 容器中运行 [Prometheus](https://prometheus.io)，并通过端口 9090 访问：
 
-Create a file called `prometheus.yml` with the following content:
+创建一个名为 `prometheus.yml` 的文件，并将以下内容写入文件：
 
 ```yaml
 scrape_configs:
@@ -29,19 +25,16 @@ scrape_configs:
       - targets: [host.docker.internal:9464]
 ```
 
-Run Prometheus in a docker container with the UI accessible on port `9090`:
+使用以下命令在 Docker 容器中运行 Prometheus，UI 可通过端口 `9090` 访问：
 
 ```shell
 docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
 ```
 
-{{% alert title=Note %}}
+{{% alert title=注意 %}}
 
-When using Prometheus' OTLP Receiver, make sure that you set the OTLP endpoint
-for metrics in your application to `http://localhost:9090/api/v1/otlp`.
+当使用 Prometheus 的 OTLP 接收器（Reciever）时，确保在应用中设置 OTLP 端点为 `http://localhost:9090/api/v1/otlp`。
 
-Not all docker environments support `host.docker.internal`. In some cases you
-may need to replace `host.docker.internal` with `localhost` or the IP address of
-your machine.
+并非所有的 Docker 环境都支持 `host.docker.internal`. 在某些情况下，你可能需要将 `host.docker.internal` 替换为 `localhost` 或你机器的 IP 地址。
 
 {{% /alert %}}
