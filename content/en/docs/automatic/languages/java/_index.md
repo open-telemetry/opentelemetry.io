@@ -1,5 +1,5 @@
 ---
-title: Java automatic & assisted instrumentation
+title: Java automatic and assisted instrumentation
 linkTitle: Java
 aliases:
   - /docs/java/automatic_instrumentation

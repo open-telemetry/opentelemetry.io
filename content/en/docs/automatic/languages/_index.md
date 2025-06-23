@@ -1,4 +1,4 @@
 ---
-title: Language Specific
+title: Language specific
 weight: 10
 ---

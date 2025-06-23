@@ -7,6 +7,6 @@ description:
 weight: 30
 ---
 
-The OpenTelemetry eBPF Instrumentation (short **OBI**) is currently under
+The OpenTelemetry eBPF Instrumentation, or OBI, is currently under
 development. You can learn more about it in the
 [opentelemetry-ebpf-instrumentation repository](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/).

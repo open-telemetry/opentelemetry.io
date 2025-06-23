@@ -2,7 +2,7 @@
 title: OpenTelemetry eBPF Profiler
 linkTitle: Profiler
 description:
-  A whole-system, cross-language profiler for Linux via eBPF, implementing the
+  A whole-system, cross-language profiler for Linux through eBPF, implementing the
   profiling signal.
 weight: 40
 ---

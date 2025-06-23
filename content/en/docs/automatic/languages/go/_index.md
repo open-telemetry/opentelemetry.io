@@ -1,4 +1,4 @@
 ---
-title: Go automatic & assisted instrumentation
+title: Go automatic and assisted instrumentation
 linkTitle: Go
 ---
