@@ -86,7 +86,7 @@ brew install coreutils
 
 On Windows, use the PowerShell module as an Administrator.
 
-{{% alert title="Version note" color="warning" %}} 
+{{% alert title="Version note" color="warning" %}}
 
 Windows
 [PowerShell Desktop](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions)
