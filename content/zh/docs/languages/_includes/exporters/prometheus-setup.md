@@ -1,3 +1,7 @@
+---
+default_lang_commit: 4783d89491da787214f8eea848556bba2bacd282
+---
+
 ## Prometheus
 
 要将你的指标（metrics）数据发送到 [Prometheus](https://prometheus.io/)，你可以选择

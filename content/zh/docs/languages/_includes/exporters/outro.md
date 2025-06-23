@@ -1,3 +1,7 @@
+---
+default_lang_commit: 4783d89491da787214f8eea848556bba2bacd282
+---
+
 ## 自定义导出器（Exporter）{#custom-exporters}
 
 最后，你还可以编写自己的导出器。有关更多信息，请参见

@@ -1,3 +1,7 @@
+---
+default_lang_commit: 4783d89491da787214f8eea848556bba2bacd282
+---
+
 ## Jaeger
 
 ### 后端设置 {#jaeger-backend-setup}

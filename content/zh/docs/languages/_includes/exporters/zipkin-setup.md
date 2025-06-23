@@ -1,3 +1,7 @@
+---
+default_lang_commit: 4783d89491da787214f8eea848556bba2bacd282
+---
+
 ## Zipkin
 
 ### 后端设置 {#zipkin-setup}
