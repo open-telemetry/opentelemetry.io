@@ -1,9 +1,9 @@
 ---
 title: 开始
 weight: 10
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

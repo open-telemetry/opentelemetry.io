@@ -1,8 +1,8 @@
 ---
 title: 资源（Resources）
 weight: 70
-cSpell:ignore: sdktrace thirdparty
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+cSpell:ignore: sdktrace thirdparty
 ---
 
 {{% docs/languages/resources-intro %}}

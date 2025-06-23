@@ -5,8 +5,8 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: 在 OpenTelemetry Go 中实现手动埋点
-cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 ---
 
 {{% include instrumentation-intro.md %}}
