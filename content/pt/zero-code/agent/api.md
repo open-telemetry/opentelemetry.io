@@ -20,7 +20,7 @@ precisar fazer muitas alterações de código.
 
 Adiciona uma dependência na biblioteca `opentelemetry-api`.
 
-### Maven
+### Maven {#maven}
 
 ```xml
 <dependencies>
