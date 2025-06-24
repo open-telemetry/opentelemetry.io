@@ -1,18 +1,18 @@
 ---
-title: Extending instrumentations with the API
-linkTitle: Extend with the API
+title: Estendendo instrumentações com a API
+linkTitle: Estender com a API
 description:
-  Use the OpenTelemetry API in combination with the Java agent to extend the
-  automatically generated telemetry with custom spans and metrics
+  Use a API do OpenTelemetry em combinação com o Java agent para estender a
+  telemetria gerada automaticamente com spans e métricas personalizadas.
 weight: 21
 default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
 ---
 
 ## Introdução {#introduction}
 
-In addition to the out-of-the-box instrumentation, você pode estender o Java
-agent com instrumentações manuais personalizadas usando a API do OpenTelemetry.
-Isso permite que você crie [trechos](/docs/concepts/signals/traces/#spans) e
+Além da instrumentação pronta para uso, você pode estender o Java agent com
+instrumentações manuais personalizadas usando a API do OpenTelemetry. Isso
+permite que você crie [trechos](/docs/concepts/signals/traces/#spans) e
 [métricas](/docs/concepts/signals/metrics) para o seu próprio código sem
 precisar fazer muitas alterações de código.
 
