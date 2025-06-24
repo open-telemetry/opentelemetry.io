@@ -88,8 +88,8 @@ OpenTelemetry হলো [Cloud Native Computing Foundation][] (CNCF)-এর এ�
 [merger]: https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
 
 
-<a name="what-next"></a>
-## পরবর্তী ধাপ
+<h2 id="what-next">পরবর্তী ধাপ</h2>
+
 
 - [শুরু করুন](../getting-started/) —  OpenTelemetry ব্যবহার শুরু করুন সহজেই।
 - [OpenTelemetry এর কনসেপ্টগুলো](../concepts/)  সম্পর্কে জানুন।
