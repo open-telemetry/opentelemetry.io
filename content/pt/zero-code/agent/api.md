@@ -65,7 +65,7 @@ Tracer tracer = GlobalOpenTelemetry.getTracer("application");
 Use o `Tracer` para criar um trecho como explicado na seção de
 [trechos](/docs/languages/java/api/#span).
 
-Um exemplo completo pode ser encontrado no [repositório de exemplos].
+Um exemplo completo pode ser encontrado no [repositório de exemplos][example repository].
 
 ## Medidor
 
