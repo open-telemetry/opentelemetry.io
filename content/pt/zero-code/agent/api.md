@@ -51,7 +51,7 @@ agente. Uma simples chamada `GlobalOpenTelemetry.get()` para acessar a instânci
 {{% alert title="Note" %}}
 
 Para os casos de uso mais comum, use a notação `@WithSpan` ao invés da
-instrumentação manual. Veja [notações](../annotations) para mais informações.
+instrumentação manual. Veja [Anotações](../annotations) para mais informações.
 
 {{% /alert %}}
 
