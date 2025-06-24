@@ -234,7 +234,6 @@ function. The `connector.NewFactory` function instantiates and returns a
     and metrics to metrics.
 
     Parameters for the `createTracesToMetricsConnector`: {.h4}
-
     - `context.Context`: the reference to the collector’s `context.Context` so
       your trace receiver can properly manage its execution context.
     - `connector.CreateSettings`: the reference to some of the collector’s
