@@ -12,8 +12,7 @@ ready][CNCF-blog] for the inaugural</span> [**{{% param title %}}**][oss] and
 <span class="d-none d-sm-inline">co-located </span>[**OTel Community
 Day**][ocd], **Denver CO, <span class="text-nowrap">June 24-26</span>**
 
-[CNCF-blog]:
-  https://www.cncf.io/announcements/2025/05/21/cncf-shares-schedule-for-open-observability-summit-north-america-gears-up-for-inaugural-event/
+[CNCF-blog]: /blog/2025/otel-day/
 [oss]:
   https://events.linuxfoundation.org/open-source-summit-north-america/?utm_source=opentelemetry&utm_medium=all&utm_campaign=Open-Observability-Summit-2025&utm_content=slim-banner
 [ocd]:

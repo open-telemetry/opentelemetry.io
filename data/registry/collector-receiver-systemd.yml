@@ -16,4 +16,4 @@ createdAt: 2024-11-18
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/systemdreceiver
-  version: v0.127.0
+  version: v0.128.0

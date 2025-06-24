@@ -20,4 +20,4 @@ createdAt: 2023-12-05
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/sumologicprocessor
-  version: v0.127.0
+  version: v0.128.0

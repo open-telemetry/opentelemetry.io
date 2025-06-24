@@ -56,24 +56,20 @@ accessing the doc, get in touch in the `#otel-comms` channel on [Slack][].
 Here is a list of community roles with current and previous members:
 
 - Approvers: [@open-telemetry/docs-approvers][]
-
   - [Michael Hausenblas](https://github.com/mhausenblas), Amazon
 
 - Maintainers: [@open-telemetry/docs-maintainers][]
-
   - [Austin Parker](https://github.com/austinlparker), Honeycomb
   - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
   - [Patrice Chalin](https://github.com/chalin), CNCF
-  - [Phillip Carter](https://github.com/cartermp), Honeycomb
+  - [Phillip Carter](https://github.com/cartermp), Salesforce
   - [Severin Neumann](https://github.com/svrnm)
   - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
 
 - Emeritus approvers:
-
   - [Paul Bruce](https://github.com/paulsbruce)
 
 - Emeritus maintainers:
-
   - [Steve Flanders](https://github.com/flands)
   - [Morgan McLean](https://github.com/mtwo)
   - [jparsana](https://github.com/jparsana)

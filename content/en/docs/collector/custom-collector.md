@@ -26,7 +26,7 @@ get started.
 
 ## Step 1 - Install the builder
 
-{{% alert color="primary" title="NOTE" %}}
+{{% alert color="primary" title="Note" %}}
 
 The `ocb` tool requires Go to build the Collector distribution.
 [Install Go](https://go.dev/doc/install) on your machine, if you haven't done so
@@ -190,7 +190,7 @@ registry entries provide the full name and version you need to add to your
 
 ## Step 3a - Generate the code and build your Collector's distribution
 
-{{% alert color="primary" title="NOTE" %}}
+{{% alert color="primary" title="Note" %}}
 
 This step is used to build your custom collector distribution using the `ocb`
 binary. If you would like to build and deploy your custom Collector distribution
@@ -246,7 +246,7 @@ your components.
 
 ## Step 3b - Containerize your Collector's distribution
 
-{{% alert color="primary" title="NOTE" %}}
+{{% alert color="primary" title="Note" %}}
 
 This step will build your collector distribution inside a `Dockerfile`. Follow
 this step if you need to deploy your Collector distribution to a container
