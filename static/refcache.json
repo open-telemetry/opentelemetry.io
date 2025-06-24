@@ -10999,6 +10999,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-06-17T10:35:56.471796477Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.45.0/specification/entities/README.md#overview": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-24T10:36:17.227717435Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.45.0/specification/entities/data-model.md#minimally-sufficient-identity": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-24T10:36:11.562230217Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:48.297045-05:00"
@@ -12054,6 +12062,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/metrics/api.md#instrument-advisory-parameters": {
     "StatusCode": 206,
     "LastSeen": "2025-06-12T21:20:32.232372083Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/resource#overview": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-24T10:36:14.676989877Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.45.0/specification/resource/sdk.md": {
     "StatusCode": 206,
