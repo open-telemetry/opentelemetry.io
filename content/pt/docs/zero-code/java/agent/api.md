@@ -43,8 +43,8 @@ dependencies {
 ## OpenTelemetry {#opentelemetry}
 
 O Java agent é um caso especial onde `GlobalOpenTelemetry` é definido pelo
-agente. Simplesmente chame a função `GlobalOpenTelemetry.get()` para acessar a instância
-`OpenTelemetry`.
+agente. Simplesmente chame a função `GlobalOpenTelemetry.get()` para acessar a
+instância `OpenTelemetry`.
 
 ## Trecho {#span}
 
