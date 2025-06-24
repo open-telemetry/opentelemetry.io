@@ -81,5 +81,5 @@ seção de [medidores](/docs/languages/java/api/#meter).
 
 Um exemplo completo pode ser encontrado no [repositório de exemplos].
 
-[repositório de exemplos]:
+[example repository]:
   https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent
