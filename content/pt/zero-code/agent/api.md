@@ -67,7 +67,7 @@ Use o `Tracer` para criar um trecho como explicado na seção de
 
 Um exemplo completo pode ser encontrado no [repositório de exemplos][example repository].
 
-## Medidor
+## Medidor {#meter}
 
 ```java
 import io.opentelemetry.api.GlobalOpenTelemetry;
