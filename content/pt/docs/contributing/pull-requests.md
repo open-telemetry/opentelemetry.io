@@ -358,10 +358,8 @@ _Figura 4. Etapas para abrir um PR do seu fork para_
 1. No menu suspenso **comparar**, selecione sua _branch_.
 1. Selecione **Criar _Pull Request_**.
 1. Adicione uma descrição para o seu _pull request_:
-
    - **Título** (50 caracteres ou menos): Resuma a intenção da alteração.
    - **Descrição**: Descreva a alteração em mais detalhes.
-
      - Se houver uma _issue_ relacionada no GitHub, inclua `Fixes #12345` ou
        `Closes #12345` na descrição para que a automação do GitHub feche a
        _issue_ mencionada após o _merge_ do PR. Se houver outros PRs
