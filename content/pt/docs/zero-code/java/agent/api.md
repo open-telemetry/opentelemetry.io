@@ -65,7 +65,8 @@ Tracer tracer = GlobalOpenTelemetry.getTracer("application");
 Use o `Tracer` para criar um trecho como explicado na seção de
 [trechos](/docs/languages/java/api/#span).
 
-Um exemplo completo pode ser encontrado no [repositório de exemplos][example repository].
+Um exemplo completo pode ser encontrado no [repositório de
+exemplos][example repository].
 
 ## Medidor {#meter}
 
@@ -79,7 +80,8 @@ Meter meter = GlobalOpenTelemetry.getMeter("application");
 Use o `Meter` para criar contadores, medidores ou histogramas como explicados na
 seção de [medidores](/docs/languages/java/api/#meter).
 
-Um exemplo completo pode ser encontrado no [repositório de exemplos][example repository].
+Um exemplo completo pode ser encontrado no [repositório de
+exemplos][example repository].
 
 [example repository]:
   https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent
