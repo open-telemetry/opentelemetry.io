@@ -205,13 +205,13 @@ class changes,changes2 white
 
 \_Figura 3. Trabalhando a partir de um fork local para fazer suas alterações.\_
 
-### Faça o _fork_ do repositório
+### Faça o _fork_ do repositório {#fork-the-repository}
 
 1. Navegue até o repositório
    [`opentelemetry.io`](https://github.com/open-telemetry/opentelemetry.io/).
 1. Selecione **Fork**.
 
-### Clone e defina o repositório de origem (_upstream_)
+### Clone e defina o repositório de origem (_upstream_) {#clone-and-set-upstream}
 
 1. Em uma janela de terminal, clone seu _fork_ e instale as dependências:
 
@@ -255,7 +255,7 @@ class changes,changes2 white
    começar a fazer alterações. Envie alterações do _upstream_ para o _origin_
    regularmente para manter seu _fork_ sincronizado com o _upstream_.
 
-### Crie uma _branch_ (ramificação)
+### Crie uma _branch_ (ramificação) {#create-a-branch}
 
 1. Crie uma nova _branch_. Este exemplo assume que a _branch_ base é
    `upstream/main`:
@@ -269,7 +269,7 @@ class changes,changes2 white
 A qualquer momento, use o comando `git status` para ver quais arquivos você
 alterou.
 
-### _Commit_ suas alterações
+### _Commit_ suas alterações {#commit-your-changes}
 
 Quando você estiver pronto para enviar um _pull request_, confirme suas
 alterações.
@@ -428,7 +428,7 @@ local. O Hugo monitora as alterações e reconstrói o site conforme necessário
 Para parar a instância local do Hugo, volte ao terminal e digite `Ctrl+C`, ou
 feche a janela do terminal.
 
-### Implantações de site e prévias de PR
+### Implantações de site e prévias de PR {#site-deploys-and-pr-previews}
 
 Se você enviar um PR, o Netlify criará uma [prévia de
 implantação][deploy preview] para que você possa revisar suas alterações. Assim
@@ -441,7 +441,7 @@ servidor de produção.
 Para ver logs de implantação e mais, visite o [dashboard][] do projeto - login
 no Netlify é necessário.
 
-### Diretrizes de PR
+### Diretrizes de PR {#pr-guidelines}
 
 Antes que um PR seja mesclado, às vezes são necessárias algumas iterações de
 revisão e edição. Para nos ajudar e a si mesmo a tornar esse processo o mais
@@ -457,7 +457,7 @@ fácil possível, pedimos que você adira ao seguinte:
 - Certifique-se de que os mantenedores estão
   [autorizados a aplicar alterações ao seu _pull request_](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork).
 
-### Alterações dos revisores
+### Alterações dos revisores {#changes-from-reviewers}
 
 Às vezes, os revisores fazem _commits_ no seu _pull request_. Antes de fazer
 qualquer outra alteração, obtenha esses _commits_.
@@ -480,7 +480,7 @@ qualquer outra alteração, obtenha esses _commits_.
 Você também pode resolver conflitos de _merge_ (mesclar) pela interface do
 GitHub.
 
-### Conflitos de merge e rebase
+### Conflitos de merge e rebase {#merge-conflicts-and-rebasing}
 
 Se outro colaborador fizer _commits_ no mesmo arquivo em outro PR, isso pode
 criar um conflito de _merge_. Você deve resolver todos os conflitos de _merge_
