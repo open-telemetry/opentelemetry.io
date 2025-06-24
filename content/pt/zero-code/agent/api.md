@@ -16,7 +16,7 @@ permite que você crie [trechos](/docs/concepts/signals/traces/#spans) e
 [métricas](/docs/concepts/signals/metrics) para o seu próprio código sem
 precisar fazer muitas alterações de código.
 
-## Dependências
+## Dependências {#dependencies}
 
 Adiciona uma dependência na biblioteca `opentelemetry-api`.
 
