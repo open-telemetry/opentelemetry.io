@@ -32,7 +32,7 @@ Adiciona uma dependência na biblioteca `opentelemetry-api`.
 </dependencies>
 ```
 
-### Gradle
+### Gradle {#gradle}
 
 ```groovy
 dependencies {
