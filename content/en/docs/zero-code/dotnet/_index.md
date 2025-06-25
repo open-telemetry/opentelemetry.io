@@ -313,7 +313,7 @@ custom telemetry data.
 
 ## Uninstall
 
-### For Linux and macOS
+### Linux and macOS { #uninstall-unix }
 
 On Linux and macOS, the installation steps only affect the current shell session
 so no explicit uninstallation is required.
