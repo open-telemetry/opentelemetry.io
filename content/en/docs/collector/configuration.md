@@ -555,7 +555,7 @@ service:
 > For detailed connector configuration, see the
 > [connector README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
 
-## Extensions
+## Extensions <img width="32" class="img-initial" alt="" src="/img/logos/32x32/Extensions.svg"> {#extensions}
 
 Extensions are optional components that expand the capabilities of the Collector
 to accomplish tasks not directly involved with processing telemetry data. For
