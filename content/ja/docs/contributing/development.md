@@ -6,15 +6,15 @@ what-next: >
   これで、[ビルド](#build)、[サーブ](#serve)、Web サイトファイルの更新を行う準備が整いました。
   変更の提出方法の詳細については、[コンテンツの提出][Submitting content]を参照してください。
 weight: 60
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
+default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
 ---
 
-{{% alert-md title="サポートされているビルド環境" color=warning %}}
+{{% alert title="サポートされているビルド環境" color=warning %}}
 
 ビルドは Linux ベースの環境と macOS で公式にサポートされています。
 [DevContainers](#devcontainers) などの他の環境は、ベストエフォートベースでサポートされています。
 
-{{% /alert-md %}}
+{{% /alert %}}
 
 以下の手順では、この Web サイトの開発環境をセットアップする方法を説明します。
 

@@ -17,5 +17,5 @@ createdAt: 2023-12-18
 package:
   registry: go
   name: go.opentelemetry.io/collector/cmd/builder
-  version: v0.127.0
+  version: v0.128.0
   quickInstall: false
