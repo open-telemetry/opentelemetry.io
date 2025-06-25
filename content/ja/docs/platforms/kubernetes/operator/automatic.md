@@ -25,8 +25,6 @@ Helmチャートを使用する場合は、自己証明書を生成するオプ�
 ## OpenTelemetryコレクターの作成（オプション） {#create-an-opentelemetry-collector-optional}
 
 コレクターによって、シークレット管理が簡素化され、データエクスポートの問題（リトライが必要な場合など）がアプリから分離され、[k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)などを使用してテレメトリーにデータを追加できます。
-If you chose not to use a Collector, you can skip to the next
-section.
 コレクターを使用しない場合、次のセクションに進んでください。
 
 オペレーターは、オペレーターが管理するコレクターのインスタンスを作成するために使用される[OpenTelemetryコレクターのカスタムリソース定義 (CRD)](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md)です。
@@ -191,11 +189,11 @@ Denoプロセスは、`OTEL_DENO=true` 環境変数とともに起動される�
 
 #### 構成オプション {#deno-configuration-options}
 
-デフォルトでは、DenoのOpenTelemetry統合は `console.log()` の出力を[ログ](/docs/concepts/signals/logs/)としてエクスポートしますが、ログはstdout / stderrにも出力されます。
+デフォルトでは、DenoのOpenTelemetry統合は `console.log()` の出力を[ログ](/docs/concepts/signals/logs/)としてエクスポートしますが、ログは標準出力や標準エラーにも出力されます。
 これらは代替動作を構成できます。
 
-- `OTEL_DENO_CONSOLE=replace`: `console.log()` の出力をログとしてのみエクスポートし、stdout / stderrには出力しません。
-- `OTEL_DENO_CONSOLE=ignore`: `console.log()` の出力をログとしてエクスポートせず、stdout / stderrには出力します。
+- `OTEL_DENO_CONSOLE=replace`: `console.log()` の出力をログとしてのみエクスポートし、標準出力や標準エラーには出力しません。
+- `OTEL_DENO_CONSOLE=ignore`: `console.log()` の出力をログとしてエクスポートせず、標準出力や標準エラーには出力します。
 
 #### もっと詳しく {#deno-learn-more}
 
@@ -584,9 +582,7 @@ kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manage
 
 ### リソースは正しい順序でデプロイされましたか？ {#were-the-resources-deployed-in-the-right-order}
 
-順序は重要です!
-The `Instrumentation` resource needs to be deployed before
-deploying the application, otherwise the auto-instrumentation won’t work.
+順序は重要です！
 `Instrumentation` リソースは、アプリケーションをデプロイする前にデプロイする必要があり、さもないと自動計装は機能しません。
 
 自動計装のアノテーションを確認しましょう。
