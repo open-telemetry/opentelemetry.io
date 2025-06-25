@@ -211,7 +211,7 @@ OpenTelemetry is not an observability backend.
 ### Observability frontend
 
 The component of an observability platform that provides user interfaces for
-visualizing and analyzing telemetry data. It can often be often a part of an
+visualizing and analyzing telemetry data. It can be often a part of an
 observability backend, particularly when considering commercial offerings.
 
 ### OpAMP
