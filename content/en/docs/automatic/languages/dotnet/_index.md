@@ -310,3 +310,41 @@ After you have automatic instrumentation configured for your app or service, you
 might want to [send custom traces and metrics](./custom) or add
 [manual instrumentation](/docs/languages/dotnet/instrumentation) to collect
 custom telemetry data.
+
+## Uninstall
+
+### Linux and macOS { #uninstall-unix }
+
+On Linux and macOS, the installation steps only affect the current shell session
+so no explicit uninstallation is required.
+
+### Windows (PowerShell) { #uninstall-windows }
+
+On Windows, use the PowerShell module as an Administrator.
+
+{{% alert title="Version note" color="warning" %}}
+
+Windows
+[PowerShell Desktop](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions)
+(v5.1) is required. Other
+[versions](https://learn.microsoft.com/previous-versions/powershell/scripting/overview),
+including PowerShell Core (v6.0+) are not supported at this time.
+
+{{% /alert %}}
+
+```powershell
+# PowerShell 5.1 is required
+#Requires -PSEdition Desktop
+
+# Import the previously installed module
+Import-Module "OpenTelemetry.DotNet.Auto.psm1"
+
+# If IIS was previously registered, unregister it
+Unregister-OpenTelemetryForIIS
+
+# If Windows services were previously registered, unregister them
+Unregister-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName"
+
+# Finally, uninstall OpenTelemetry instrumentation
+Uninstall-OpenTelemetryCore
+```
