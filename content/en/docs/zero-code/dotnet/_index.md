@@ -318,7 +318,7 @@ custom telemetry data.
 On Linux and macOS, the installation steps only affect the current shell session
 so no explicit uninstallation is required.
 
-### For Windows (PowerShell)
+### Windows (PowerShell) { #uninstall-windows }
 
 On Windows, use the PowerShell module as an Administrator.
 
