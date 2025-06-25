@@ -5,7 +5,7 @@ default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
 cSpell:ignore: autoscaler statefulset
 ---
 
-OpenTelemetryオペレーターによって管理されるコレクターは、[水平Pod自動スケーリング(HPA)](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)をビルトインでサポーしています。
+OpenTelemetryオペレーターによって管理されるコレクターは、[水平Pod自動スケーリング(HPA)](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/)をビルトインでサポートしています。
 HPAは、一連のメトリクスに基づいて、KubernetesのPodのレプリカ（コピー）の数を増減させます。
 これらのメトリクスは通常、CPUやメモリの使用量です。
 OpenTelemetryオペレーターがコレクターのHPA機能を管理することで、コレクターの自動スケーリングのために別のKubernetes `HorizontalPodAutoscaler` リソースを作成する必要がなくなります。
@@ -17,7 +17,7 @@ HPAは、Kubernetesクラスターで実行されている[Metrics Server](https
 
 - [GKE (Google)](https://cloud.google.com/kubernetes-engine?hl=en)や[AKS (Microsoft Azure)](https://azure.microsoft.com/en-us/products/kubernetes-service)などのマネージドKubernetesクラスターは、クラスターのプロビジョニングの一環としてMetrics Serverを自動的にインストールします。
 - [EKS (AWS)にはデフォルトでMetrics Serverはインストールされていません](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html)。
-- マネージドでないKuberentesクラスターやローカルデスクトップのKubernetesクラスター(例えば[MiniKube](https://minikube.sigs.k8s.io/docs/)、
+- マネージドでないKuberentesクラスターやローカルデスクトップのKubernetesクラスター(たとえば[MiniKube](https://minikube.sigs.k8s.io/docs/)、
   [KinD](https://kind.sigs.k8s.io/)、[k0s](https://k0sproject.io))では、Metrics Serverを手動でインストールする必要があります。
 
 管理するKubernetesクラスターにMetrics Serverが事前にインストールされているかどうかを確認するには、クラウドプロバイダーのドキュメントを参照してください。
@@ -40,8 +40,6 @@ resources:
 `limits` 設定には、メモリとCPUの最大値が指定されます。
 このケースでは、これらの制限はCPUの100ミリコア（0.1コア）とRAMの128Mi（メビバイト、1メビバイト == 1024キロバイト）です。
 
-The `requests` configuration specifies the minimum guaranteed amount of
-resources allocated for the container.
 `requests` 設定には、コンテナに割り当てが保証されるリソースの最小量が指定されます。
 このケースでは、最小の割り当ては、100ミリコアのCPUと64メビバイトのRAMです。
 
