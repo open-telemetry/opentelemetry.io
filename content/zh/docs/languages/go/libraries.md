@@ -1,5 +1,5 @@
 ---
-title: 使用插桩库（Using instrumentation libraries）
+title: 使用插桩库
 linkTitle: Libraries
 aliases:
   - /docs/languages/go/using_instrumentation_libraries
