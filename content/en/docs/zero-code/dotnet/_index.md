@@ -201,7 +201,7 @@ performs an IIS restart. {{% /alert %}}
 {{% alert title="Note" color="warning" %}} The following instructions apply to
 .NET Framework applications. {{% /alert %}}
 
-For ASP.NET application you can configure
+For ASP.NET applications you can configure
 [the most common `OTEL_` settings](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)
 (like `OTEL_SERVICE_NAME`) via `appSettings` in `Web.config`.
 
