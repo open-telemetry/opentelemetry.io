@@ -153,8 +153,9 @@ Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName"
 Service after making configuration changes. You can do it by running
 `Restart-Service -Name $WindowsServiceName -Force` in PowerShell. {{% /alert %}}
 
-For .NET Framework applications you can configure the most common `OTEL_`
-settings (like `OTEL_RESOURCE_ATTRIBUTES`) via `appSettings` in `App.config`.
+For .NET Framework applications you can configure
+[the most common `OTEL_` settings](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)
+(like `OTEL_RESOURCE_ATTRIBUTES`) via `appSettings` in `App.config`.
 
 The alternative is to set environment variables for the Windows Service in the
 Windows Registry.
@@ -200,8 +201,9 @@ performs an IIS restart. {{% /alert %}}
 {{% alert title="Note" color="warning" %}} The following instructions apply to
 .NET Framework applications. {{% /alert %}}
 
-For ASP.NET application you can configure the most common `OTEL_` settings (like
-`OTEL_SERVICE_NAME`) via `appSettings` in `Web.config`.
+For ASP.NET applications you can configure
+[the most common `OTEL_` settings](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)
+(like `OTEL_SERVICE_NAME`) via `appSettings` in `Web.config`.
 
 If a service name is not explicitly configured, one will be generated for you.
 If the application is hosted on IIS in .NET Framework this will use

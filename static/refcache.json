@@ -16803,6 +16803,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-05-26T16:48:26.73412+03:00"
   },
+  "https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-25T14:35:48.528151427Z"
+  },
   "https://opentelemetry.io/ecosystem/registry/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-22T07:14:47.144521257-08:00"
