@@ -64,13 +64,15 @@ Here is a list of community roles with current and previous members:
 - [Severin Neumann](https://github.com/svrnm)
 - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
 
-For more information about the maintainer role, see the [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
+For more information about the maintainer role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
 
 ### Approvers
 
 - [Michael Hausenblas](https://github.com/mhausenblas), Amazon
 
-For more information about the approver role, see the [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
+For more information about the approver role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
 
 ### Emeritus maintainers
 
@@ -78,13 +80,15 @@ For more information about the approver role, see the [community repository](htt
 - [Morgan McLean](https://github.com/mtwo)
 - [jparsana](https://github.com/jparsana)
 
-For more information about the emeritus role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
+For more information about the emeritus role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
 
 ### Emeritus approvers
 
 - [Paul Bruce](https://github.com/paulsbruce)
 
-For more information about the emeritus role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
+For more information about the emeritus role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
 
 Learn more about roles in the [community repository][]. Thanks to [all who have
 already contributed][contributors]!
