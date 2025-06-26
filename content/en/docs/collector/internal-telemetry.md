@@ -350,27 +350,27 @@ its introduction. Note however that these metrics were inadvertently reverted to
 
 | Metric name                                           | Description                                                                               | Type      |
 | ----------------------------------------------------- | ----------------------------------------------------------------------------------------- | --------- |
-| `http_client_active_requests`                         | Number of active HTTP client requests.                                                    | Counter   |
-| `http_client_connection_duration`                     | Measures the duration of the successfully established outbound HTTP connections.          | Histogram |
-| `http_client_open_connections`                        | Number of outbound HTTP connections that are active or idle on the client.                | Counter   |
-| `http_client_request_size`                            | Measures the size of HTTP client request bodies.                                          | Counter   |
-| `http_client_duration`                                | Measures the duration of HTTP client requests.                                            | Histogram |
-| `http_client_response_size`                           | Measures the size of HTTP client response bodies.                                         | Counter   |
-| `http_server_active_requests`                         | Number of active HTTP server requests.                                                    | Counter   |
-| `http_server_request_size`                            | Measures the size of HTTP server request bodies.                                          | Counter   |
-| `http_server_duration`                                | Measures the duration of HTTP server requests.                                            | Histogram |
-| `http_server_response_size`                           | Measures the size of HTTP server response bodies.                                         | Counter   |
+| `http.client.active_requests`                         | Number of active HTTP client requests.                                                    | Counter   |
+| `http.client.connection.duration`                     | Measures the duration of the successfully established outbound HTTP connections.          | Histogram |
+| `http.client.open_connections`                        | Number of outbound HTTP connections that are active or idle on the client.                | Counter   |
+| `http.client.request.size`                            | Measures the size of HTTP client request bodies.                                          | Counter   |
+| `http.client.duration`                                | Measures the duration of HTTP client requests.                                            | Histogram |
+| `http.client.response.size`                           | Measures the size of HTTP client response bodies.                                         | Counter   |
+| `http.server.active_requests`                         | Number of active HTTP server requests.                                                    | Counter   |
+| `http.server.request.size`                            | Measures the size of HTTP server request bodies.                                          | Counter   |
+| `http.server.duration`                                | Measures the duration of HTTP server requests.                                            | Histogram |
+| `http.server.response.size`                           | Measures the size of HTTP server response bodies.                                         | Counter   |
 | `otelcol_processor_batch_batch_`<br>`send_size_bytes` | Number of bytes in the batch that was sent.                                               | Histogram |
-| `rpc_client_duration`                                 | Measures the duration of outbound RPC.                                                    | Histogram |
-| `rpc_client_request_size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
-| `rpc_client_requests_per_rpc`                         | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
-| `rpc_client_response_size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
-| `rpc_client_responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
-| `rpc_server_duration`                                 | Measures the duration of inbound RPC.                                                     | Histogram |
-| `rpc_server_request_size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
-| `rpc_server_requests_per_rpc`                         | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
-| `rpc_server_response_size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
-| `rpc_server_responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
+| `rpc.client.duration`                                 | Measures the duration of outbound RPC.                                                    | Histogram |
+| `rpc.client.request.size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
+| `rpc.client.requests_per_rpc`                         | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
+| `rpc.client.response.size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
+| `rpc.client.responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
+| `rpc.server.duration`                                 | Measures the duration of inbound RPC.                                                     | Histogram |
+| `rpc.server.request.size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
+| `rpc.server.requests_per_rpc`                         | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
+| `rpc.server.response.size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
+| `rpc.server.responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
 
 {{% alert title="Note" color="info" %}} The `http*` and `rpc*` metrics are not
 covered by the maturity levels below since they are not under the Collector SIG
@@ -380,7 +380,8 @@ The `otelcol_processor_batch_` metrics are unique to the `batchprocessor`.
 
 The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
 `otelcol_exporter_` metrics come from their respective `helper` packages. As
-such, some components not using those packages may not emit them. {{% /alert %}}
+such, some components not using those packages might not emit them.
+{{% /alert %}}
 
 ### Events observable with internal logs
 
