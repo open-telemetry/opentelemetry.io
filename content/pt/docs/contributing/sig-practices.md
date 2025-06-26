@@ -32,7 +32,7 @@ Outros recursos valiosos para revisão:
 
 - [Documentação do Hugo](https://gohugo.io/documentation/)
 - [Documentação do Docsy](https://www.docsy.dev/docs/)
-- [Diretrizes de Marketing](/community/marketing-guidelines/), incluindo as diretrizes de branding e
+- [Diretrizes de Marketing](/community/marketing-guidelines/), incluindo as diretrizes de uso de marca e
   [uso de marcas registradas da Linux Foundation](https://www.linuxfoundation.org/legal/trademark-usage).
   Esses recursos são especialmente importantes ao revisar entradas para o registro, integrações, fornecedores, adotantes ou distribuições.
 
