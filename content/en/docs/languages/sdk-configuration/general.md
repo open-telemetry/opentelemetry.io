@@ -108,7 +108,7 @@ be set as follows:
 
 Specifies Propagators to be used in a comma-separated list.
 
-**Default value:** `"tracecontext,baggage"
+**Default value:** `"tracecontext,baggage"`
 
 **Example:**
 
