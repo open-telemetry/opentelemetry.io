@@ -18,7 +18,7 @@ Quando uma pessoa colaboradora assume um papel com mais responsabilidade na docu
 - Será adicionada aos canais de Slack `#otel-comms`, `#otel-maintainers` e canais internos privados.
 - Será solicitada a se inscrever nos convites de calendário para as reuniões do
   [SIG de Comunicações](https://groups.google.com/a/opentelemetry.io/g/calendar-comms)
-  e
+  e das reuniões de
   [Mantenedores](https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting).
 - Será solicitada a verificar se o horário atual da reunião do SIG Comms funciona para ela. Caso contrário, deverá colaborar com os demais aprovadores e mantenedores para encontrar um horário viável para todos.
 - Será solicitada a revisar os diferentes recursos disponíveis para contribuidores:
