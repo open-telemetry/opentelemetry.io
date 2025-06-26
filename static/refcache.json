@@ -12895,6 +12895,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-06-17T10:36:03.643163049Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/2077": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-26T10:35:59.812546291Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/2197": {
     "StatusCode": 206,
     "LastSeen": "2025-06-17T10:36:08.709772791Z"
@@ -15730,6 +15734,10 @@
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#namespacestatus-v1-core": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:25:12.345Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#nodecondition-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-26T10:35:51.368817889Z"
   },
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#replicasetspec-v1-apps": {
     "StatusCode": 200,
@@ -19842,6 +19850,10 @@
   "https://v1-30.docs.kubernetes.io/docs/concepts/storage/volumes/#secret": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:30:12.345Z"
+  },
+  "https://v1-32.docs.kubernetes.io/docs/reference/node/node-status/#condition": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-26T10:35:56.905263779Z"
   },
   "https://v8.dev/docs/stack-trace-api": {
     "StatusCode": 206,
