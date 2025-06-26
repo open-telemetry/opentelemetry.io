@@ -5,27 +5,27 @@ description:
   Saiba como aprovadores e mantenedores gerenciam issues e contribuições.
 weight: 999
 cSpell:ignore: chalin Comms docsy onboarded mergeados branch
-default_lang_commit: 
+default_lang_commit: 9ed7149e924a9fb6b1c83862aad8b9858c0ebb06
 ---
 
 Esta página inclui diretrizes e algumas práticas comuns utilizadas por aprovadores e mantenedores.
 
-## Integração (Onboarding) {#onboarding}
+## Integração {#onboarding}
 
 Quando uma pessoa colaboradora assume um papel com mais responsabilidade na documentação (como aprovador ou mantenedor), será integrada pelos aprovadores e mantenedores existentes:
 
 - Será adicionada ao grupo `docs-approvers` (ou `docs-maintainers`).
 - Será adicionada aos canais de Slack `#otel-comms`, `#otel-maintainers` e canais internos privados.
 - Será solicitada a se inscrever nos convites de calendário para as reuniões do
-  [SIG Comms](https://groups.google.com/a/opentelemetry.io/g/calendar-comms)
+  [SIG de Comunicações](https://groups.google.com/a/opentelemetry.io/g/calendar-comms)
   e
-  [Maintainers Meeting](https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting).
+  [Mantenedores](https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting).
 - Será solicitada a verificar se o horário atual da reunião do SIG Comms funciona para ela. Caso contrário, deverá colaborar com os demais aprovadores e mantenedores para encontrar um horário viável para todos.
 - Será solicitada a revisar os diferentes recursos disponíveis para contribuidores:
   - [Recursos da Comunidade](https://github.com/open-telemetry/community/), especialmente o documento sobre
     [Níveis de Participação na Comunidade](https://github.com/open-telemetry/community/blob/main/community-membership.md)
     e o
-    [guia de redes sociais](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
+    [Guia de Redes Sociais](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
   - [Diretrizes de Contribuição](/docs/contributing) — como parte desse processo, a pessoa revisará os documentos e poderá sugerir melhorias por meio de issues ou pull requests.
 
 Outros recursos valiosos para revisão:
@@ -46,7 +46,7 @@ Outros recursos valiosos para revisão:
   [Código de Conduta da OTel](https://github.com/open-telemetry/community/?tab=coc-ov-file#opentelemetry-community-code-of-conduct)
   e os [Valores da Comunidade](/community/mission/#community-values). Eles devem ser amigáveis e prestativos com os contribuidores. Em caso de conflito, mal-entendido ou qualquer situação desconfortável, o aprovador ou mantenedor pode se afastar da conversa, issue ou PR e pedir que outra pessoa assuma.
 
-## Revisão de Código (Code Reviews) {#code-reviews}
+## Revisão de Código {#code-reviews}
 
 ### Geral {#general}
 
@@ -65,7 +65,7 @@ PRs que modificam documentação co-gerenciada por algum SIG (_collector_, _demo
   sinalizando ao SIG que ele deve revisar a PR.
 - Se não houver aprovação do SIG dentro de um prazo razoável (geralmente duas semanas, podendo ser menor em casos urgentes), o mantenedor de _docs_ pode usar seu julgamento para fazer o _merge_.
 
-### PRs de bots {#bot-prs}
+### PRs de bots {#prs-from-bots}
 
 PRs criadas por _bots_ seguem estas práticas:
 
