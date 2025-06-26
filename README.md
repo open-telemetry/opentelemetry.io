@@ -55,24 +55,36 @@ accessing the doc, get in touch in the `#otel-comms` channel on [Slack][].
 
 Here is a list of community roles with current and previous members:
 
-- Approvers: [@open-telemetry/docs-approvers][]
-  - [Michael Hausenblas](https://github.com/mhausenblas), Amazon
+### Maintainers
 
-- Maintainers: [@open-telemetry/docs-maintainers][]
-  - [Austin Parker](https://github.com/austinlparker), Honeycomb
-  - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
-  - [Patrice Chalin](https://github.com/chalin), CNCF
-  - [Phillip Carter](https://github.com/cartermp), Salesforce
-  - [Severin Neumann](https://github.com/svrnm)
-  - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
+- [Austin Parker](https://github.com/austinlparker), Honeycomb
+- [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
+- [Patrice Chalin](https://github.com/chalin), CNCF
+- [Phillip Carter](https://github.com/cartermp), Salesforce
+- [Severin Neumann](https://github.com/svrnm)
+- [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
 
-- Emeritus approvers:
-  - [Paul Bruce](https://github.com/paulsbruce)
+For more information about the maintainer role, see the [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
 
-- Emeritus maintainers:
-  - [Steve Flanders](https://github.com/flands)
-  - [Morgan McLean](https://github.com/mtwo)
-  - [jparsana](https://github.com/jparsana)
+### Approvers
+
+- [Michael Hausenblas](https://github.com/mhausenblas), Amazon
+
+For more information about the approver role, see the [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
+
+### Emeritus maintainers
+
+- [Steve Flanders](https://github.com/flands)
+- [Morgan McLean](https://github.com/mtwo)
+- [jparsana](https://github.com/jparsana)
+
+For more information about the emeritus role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
+
+### Emeritus approvers
+
+- [Paul Bruce](https://github.com/paulsbruce)
+
+For more information about the emeritus role, see the [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
 
 Learn more about roles in the [community repository][]. Thanks to [all who have
 already contributed][contributors]!
