@@ -31,7 +31,7 @@ It supports two methods for this injection:
 - **`/etc/preload.so`** hook that scans process invocations, intercepts them,
   and adds environment variables
 
-## Why Splunk Is Donating It
+## Why Splunk is donating it
 
 This component has reached production-grade stability, and Splunk is donating it
 to:
@@ -40,14 +40,14 @@ to:
 - Align more closely with OpenTelemetry’s long-term direction
 - Encourage broader collaboration and input from the ecosystem
 
-## Where to Find It
+## Where to find it
 
 You can explore the code in the
 [`opentelemetry-injector`](https://github.com/open-telemetry/opentelemetry-injector)
 repository. It includes the full implementation of the Linux injection mechanism
 and provides a foundation for ongoing contribution.
 
-## What’s Next
+## What’s next
 
 Together with contributors from **dash0** and **Omlet Stack**, the team will
 continue supporting and maintaining the code in the near term. More importantly,
@@ -57,7 +57,7 @@ OpenTelemetry community to shape the roadmap together.
 If you’re interested in improving auto-instrumentation workflows on Linux, this
 is a great opportunity to get involved.
 
-## Get Involved
+## Get involved
 
 Want to learn more or contribute?
 
