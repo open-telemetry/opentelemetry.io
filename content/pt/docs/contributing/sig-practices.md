@@ -4,8 +4,8 @@ linkTitle: Práticas do SIG
 description:
   Saiba como aprovadores e mantenedores gerenciam issues e contribuições.
 weight: 999
-cSpell:ignore: chalin Comms docsy onboarded mergeados branch
 default_lang_commit: 9ed7149e924a9fb6b1c83862aad8b9858c0ebb06
+cSpell:ignore: branch chalin Comms docsy mergeados
 ---
 
 Esta página inclui diretrizes e algumas práticas comuns utilizadas por aprovadores e mantenedores.
