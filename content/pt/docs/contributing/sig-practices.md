@@ -62,7 +62,7 @@ PRs que modificam documentação co-gerenciada por algum SIG (_collector_, _demo
 - O aprovador de _docs_ deve marcar o PR com `sig:<nome>` e marcar o grupo `-approvers` do SIG.
 - Após revisar e aprovar, o aprovador de _docs_ pode adicionar o _label_
   [`sig-approval-missing`](https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing),
-  sinalizando ao SIG que ele deve revisar a PR.
+  sinalizando ao SIG que ele deve revisar o PR.
 - Se não houver aprovação do SIG dentro de um prazo razoável (geralmente duas semanas, podendo ser menor em casos urgentes), o mantenedor da documentação pode usar seu próprio julgamento para fazer o _merge_.
 
 ### PRs de bots {#prs-from-bots}
