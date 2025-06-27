@@ -59,7 +59,7 @@ Outros recursos valiosos para revisão:
 
 PRs que modificam documentação co-gerenciada por algum SIG (_collector_, _demo_, linguagem específica etc.) devem buscar duas aprovações: uma de aprovador de _docs_ e outra de aprovador do SIG:
 
-- O aprovador de _docs_ deve marcar a PR com `sig:<nome>` e marcar o grupo `-approvers` do SIG.
+- O aprovador de _docs_ deve marcar o PR com `sig:<nome>` e marcar o grupo `-approvers` do SIG.
 - Após revisar e aprovar, o aprovador de _docs_ pode adicionar o _label_
   [`sig-approval-missing`](https://github.com/open-telemetry/opentelemetry.io/labels/sig-approval-missing),
   sinalizando ao SIG que ele deve revisar a PR.
