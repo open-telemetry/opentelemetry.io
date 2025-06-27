@@ -8643,6 +8643,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:14:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-injector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-27T18:42:43.048888+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:23.080955-05:00"
