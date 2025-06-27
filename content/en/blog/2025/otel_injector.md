@@ -1,5 +1,5 @@
 ---
-title: Adding Automatic Instrumentation to Your App, Made Easy
+title: Adding Automatic Instrumentation to Your App, Made Easy with the OpenTelemetry Injector
 linkTitle: OpenTelemetry Injector
 date: 2025-06-25
 author: >-
@@ -10,13 +10,13 @@ As OpenTelemetry adoption grows across infrastructure and application layers, ea
 
 This component has reached production stability and is now being donated to the community as the **OpenTelemetry Injector**. It helps streamline OpenTelemetry deployment across languages and systems.
 
-## What It Does
+## What it does
 
 The OpenTelemetry Injector intercepts process invocation on hosts and adds environment variables to set up OpenTelemetry Automatic Instrumentation for the language used by the program, such as Java, Node.js, .NET, or Python.
 
 It supports two methods for this injection:
 
-- **Systemd** environment variable configuration
+- **systemd** environment variable configuration
 - **`/etc/preload.so`** hook that scans process invocations, intercepts them, and adds environment variables
 
 ## Why Splunk Is Donating It
@@ -41,5 +41,5 @@ If you’re interested in improving auto-instrumentation workflows on Linux, thi
 
 Want to learn more or contribute?
 
-- 💬 Join the conversation in the `#otel-injector` channel on the [OpenTelemetry Slack](https://slack.cncf.io/)
-- 🔗 Check out the [opentelemetry-injector repository](https://github.com/open-telemetry/opentelemetry-injector)
+- 💬 Join the conversation in the `#otel-injector` channel on the [OpenTelemetry Slack](https://slack.cncf.io/).
+- 🔗 Check out the [opentelemetry-injector repository](https://github.com/open-telemetry/opentelemetry-injector).
