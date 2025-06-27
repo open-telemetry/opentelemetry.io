@@ -146,7 +146,6 @@ java -jar ./build/libs/java-simple.jar
    ```
 
    {{% alert title="重要" color="warning" %}}
-
    - 上記の`PATH/TO`を、JARへのパスに置き換えてください。
    - メトリクスが適切に生成されることを迅速に確認するために、**テスト中のみ**、上記のように`OTEL_METRIC_EXPORT_INTERVAL`をデフォルトよりもはるかに低い値に設定してください。
 
