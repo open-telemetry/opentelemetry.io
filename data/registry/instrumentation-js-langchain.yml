@@ -18,5 +18,5 @@ createdAt: 2024-06-05
 package:
   registry: npm
   name: '@arizeai/openinference-instrumentation-langchain'
-  version: 3.3.0
+  version: 3.3.1
 isFirstParty: false

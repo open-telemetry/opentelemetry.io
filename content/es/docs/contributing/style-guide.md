@@ -17,7 +17,7 @@ documentación de OpenTelemetry está inspirado en las siguientes guías de esti
 Las siguientes secciones contienen indicaciones específicas para el proyecto
 OpenTelemetry.
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 Muchos de los requisitos de nuestra guía de estilo se pueden aplicar
 automaticamente: antes de enviar un

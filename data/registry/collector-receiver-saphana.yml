@@ -19,4 +19,4 @@ createdAt: 2022-10-25
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/saphanareceiver
-  version: v0.127.0
+  version: v0.128.0

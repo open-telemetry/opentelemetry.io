@@ -201,6 +201,19 @@ series with [Metadata](#metadata). See [Metric].
 
 Short form for [OpenCensus](#opencensus).
 
+### Observability backend
+
+The component of an observability platform that is responsible for receiving,
+processing, storing, and querying telemetry data. Examples include open source
+tools like [Jaeger] and [Prometheus], as well as commercial offerings.
+OpenTelemetry is not an observability backend.
+
+### Observability frontend
+
+The component of an observability platform that provides user interfaces for
+visualizing and analyzing telemetry data. It can be often a part of an
+observability backend, particularly when considering commercial offerings.
+
 ### OpAMP
 
 Abbreviation for the
@@ -375,12 +388,14 @@ on web pages when requested. See [zPages].
 [field]: /docs/specs/otel/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
 [instrumented library]: /docs/specs/otel/glossary/#instrumented-library
+[Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
 [log record]: /docs/specs/otel/glossary#log-record
 [log]: /docs/specs/otel/glossary#log
 [metric]: ../signals/metrics/
 [opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
 [propagators]: /docs/languages/go/instrumentation/#propagators-and-context
+[Prometheus]: https://prometheus.io/
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call

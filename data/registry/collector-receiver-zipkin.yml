@@ -13,7 +13,7 @@ authors:
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver
-  version: v0.127.0
+  version: v0.128.0
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver
 createdAt: 2020-11-05

@@ -6,7 +6,7 @@ default_lang_commit: 1e4970e9193c8af1d1f9b86901b13492071aecc7
 cSpell:ignore: ottrace
 ---
 
-{{% alert title="Nota" color="info" %}}
+{{% alert title="Nota" %}}
 
 O suporte a variáveis de ambiente é opcional. Para informações detalhadas sobre
 quais variáveis de ambiente cada implementação de linguagem suporta, consulte a
