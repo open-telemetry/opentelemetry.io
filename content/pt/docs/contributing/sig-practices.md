@@ -77,7 +77,7 @@ PRs criadas por _bots_ seguem estas práticas:
 
 ### PRs de tradução {#translation-prs}
 
-PRs com mudanças em traduções devem ter duas aprovações: uma de aprovador de _docs_ e outra de aprovador de tradução. As mesmas práticas sugeridas para PRs co-gerenciadas se aplicam aqui.
+PRs com mudanças em traduções devem ter duas aprovações: uma de aprovador de _docs_ e outra de aprovador de tradução. As mesmas práticas sugeridas para PRs co-gerenciados se aplicam aqui.
 
 ### Fazendo merge dos PRs {#merging-prs}
 
