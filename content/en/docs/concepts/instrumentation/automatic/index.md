@@ -46,4 +46,4 @@ Other configuration options are available, including:
 
 The OpenTelemetry project provides Automatic Instrumentation solutions for many
 technologies, you can learn more about these on the page
-[Automatic & Assisted Instrumentation](/automatic)
+[Automatic & Assisted Instrumentation](/automatic).

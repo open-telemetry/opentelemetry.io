@@ -1,5 +1,5 @@
 ---
-title: Platform specific Automatic & assisted instrumentation
+title: Platform-specific automatic & assisted instrumentation
 linkTitle: Platform specific
 weight: 15
 ---

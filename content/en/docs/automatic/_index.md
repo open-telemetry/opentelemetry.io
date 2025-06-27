@@ -7,8 +7,8 @@ redirects:
 weight: 260
 ---
 
-Besides **code-based** instrumentation using the
-[language-specific APIs and SDKs](/docs/languages/) the OpenTelemetry project
+In addition to **code-based** instrumentation using the
+[language-specific APIs and SDKs](/docs/languages/), the OpenTelemetry project
 provides a set of solutions for **automatic** (or **zero-code**) and
 **assisted** instrumentation.
 
