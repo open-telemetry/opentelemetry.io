@@ -10883,6 +10883,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:17:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0232-maturity-of-otel.md#development": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-27T07:09:24.399296953Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0232-maturity-of-otel.md#stable": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-27T07:09:22.065954736Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T07:05:45.681053-05:00"
