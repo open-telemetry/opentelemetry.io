@@ -57,6 +57,8 @@ Here is a list of community roles with current and previous members:
 
 ### Maintainers
 
+These are the members of [@open-telemetry/docs-maintainers]:
+
 - [Austin Parker](https://github.com/austinlparker), Honeycomb
 - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
 - [Patrice Chalin](https://github.com/chalin), CNCF
@@ -68,6 +70,8 @@ For more information about the maintainer role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
 
 ### Approvers
+
+These are the members of [@open-telemetry/docs-approvers]:
 
 - [Michael Hausenblas](https://github.com/mhausenblas), Amazon
 
