@@ -15,19 +15,16 @@ cSpell:ignore: otlplog otlploggrpc otlploghttp otlpmetric otlpmetricgrpc otlpmet
 
 ### 控制台链路追踪{#console-traces}
 
-The
 [`go.opentelemetry.io/otel/exporters/stdout/stdouttrace`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdouttrace)
 该包实现了将链路（traces）数据输出到控制台的导出器（exporter）。
 
 ### 控制台指标{#console-metrics}
 
-The
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric)
 该包实现了将指标（metrics）数据输出到控制台的导出器。
 
 ### 控制台日志 (Experimental) {#console-logs}
 
-The
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutlog`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutlog)
 该包实现了将日志（logs）输出到控制台的导出器。
 
