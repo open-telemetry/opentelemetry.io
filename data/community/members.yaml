@@ -656,9 +656,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/5938087?v=4
   - name: jpkrohling
     teams:
-      - collector-contrib-approvers
-      - collector-contrib-maintainers
-      - collector-contrib-triagers
       - collector-releases-approvers
       - collector-triagers
       - docs-pt-approvers
