@@ -70,7 +70,7 @@ PRs que modificam documentação co-gerenciada por algum SIG (_collector_, _demo
 PRs criadas por _bots_ seguem estas práticas:
 
 - PRs que atualizam automaticamente versões no registro podem ser corrigidos, aprovados e _mergeados_ imediatamente.
-- PRs que atualizam automaticamente versões de SDKs, instrumentações _zero-code_ ou o _collector_ podem ser aprovadas e _mergeadas_, a menos que o SIG correspondente solicite adiamento.
+- PRs que atualizam automaticamente versões de SDKs, instrumentações _zero-code_ ou o _collector_ podem ser aprovadas e _mergeados_, a menos que o SIG correspondente solicite adiamento.
 - PRs que atualizam automaticamente versões de especificações frequentemente exigem atualizações em scripts para que os testes de CI passem. Nesse caso,
   [@chalin](https://github.com/chalin/)
   cuidará do PR. Caso contrário, também podem ser aprovados e _mergeados_, exceto quanto o SIG correspondente sinaliza que o merge deve ser adiado.
