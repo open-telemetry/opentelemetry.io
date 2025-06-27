@@ -14,7 +14,8 @@ Sélectionnez un rôle[^1] pour commencer :
 
 </div>
 
-Vous pouvez également essayer la [démo officielle d'OpenTelemetry][demo] pour _voir_ à quoi ressemble l'observabilité avec OpenTelemetry !
+Vous pouvez également essayer la [démo officielle d'OpenTelemetry][demo] pour
+_voir_ à quoi ressemble l'observabilité avec OpenTelemetry !
 
 <div class="l-primary-buttons justify-content-start mt-3 mb-5 ms-3">
 

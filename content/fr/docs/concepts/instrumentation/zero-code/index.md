@@ -1,39 +1,44 @@
 ---
 title: Instrumentation Zero-code
 description: >-
-  Apprenez comment ajouter l'observabilité à une application sans avoir besoin d'écrire du code
+  Apprenez comment ajouter l'observabilité à une application sans avoir besoin
+  d'écrire du code
 weight: 10
 aliases: [automatic]
 ---
 
-En tant qu'[Ops](/docs/getting-started/ops/) vous pourriez vouloir ajouter l'observabilité à une
-ou plusieurs applications sans avoir à modifier le code source. OpenTelemetry vous permet
-d'obtenir rapidement un certain degré d'observabilité pour un service sans avoir à utiliser l'API et le SDK
-d'OpenTelemetry pour l'[instrumentation avec du code](/docs/concepts/instrumentation/code-based).
+En tant qu'[Ops](/docs/getting-started/ops/) vous pourriez vouloir ajouter
+l'observabilité à une ou plusieurs applications sans avoir à modifier le code
+source. OpenTelemetry vous permet d'obtenir rapidement un certain degré
+d'observabilité pour un service sans avoir à utiliser l'API et le SDK
+d'OpenTelemetry pour
+l'[instrumentation avec du code](/docs/concepts/instrumentation/code-based).
 
 ![Zero Code](./zero-code.svg)
 
-L'instrumentation Zero-code ajoute les capacités de l'API et du SDK OpenTelemetry
-à votre application, généralement à l'aide d'un agent ou d'un concept similaire. Les mécanismes
-spécifiques impliqués peuvent différer selon le langage de programmation, allant de la manipulation de bytecode,
-du monkey patching, ou d'eBPF pour injecter des appels à l'API et au SDK OpenTelemetry dans
-votre application.
+L'instrumentation Zero-code ajoute les capacités de l'API et du SDK
+OpenTelemetry à votre application, généralement à l'aide d'un agent ou d'un
+concept similaire. Les mécanismes spécifiques impliqués peuvent différer selon
+le langage de programmation, allant de la manipulation de bytecode, du monkey
+patching, ou d'eBPF pour injecter des appels à l'API et au SDK OpenTelemetry
+dans votre application.
 
-Typiquement, l'instrumentation Zero-code ajoute une instrumentation pour les bibliothèques
-que vous utilisez. Cela signifie que les requêtes et réponses, les appels aux bases de données, les appels
-de file d'attente de messages, et autres, sont instrumentés. Le code de votre application,
-cependant, n'est généralement pas instrumenté. Pour instrumenter votre code, vous devrez
-utiliser l'[instrumentation avec du code](/docs/concepts/instrumentation/code-based).
+Typiquement, l'instrumentation Zero-code ajoute une instrumentation pour les
+bibliothèques que vous utilisez. Cela signifie que les requêtes et réponses, les
+appels aux bases de données, les appels de file d'attente de messages, et
+autres, sont instrumentés. Le code de votre application, cependant, n'est
+généralement pas instrumenté. Pour instrumenter votre code, vous devrez utiliser
+l'[instrumentation avec du code](/docs/concepts/instrumentation/code-based).
 
 De plus, l'instrumentation Zero-code vous permet de configurer les
 [librairies d'instrumentation](/docs/concepts/instrumentation/libraries) et les
 [exportateurs](/docs/concepts/components/#exporters) que vous auriez chargés.
 
-Vous pouvez configurer l'instrumentation Zero-code via des variables d'environnement et
-d'autres mécanismes spécifiques au langage, tels que les propriétés système ou les arguments
-passés aux méthodes d'initialisation. Pour commencer, vous n'avez besoin que d'un nom de service
-configuré afin de pouvoir identifier le service dans la solution d'observabilité de
-votre choix.
+Vous pouvez configurer l'instrumentation Zero-code via des variables
+d'environnement et d'autres mécanismes spécifiques au langage, tels que les
+propriétés système ou les arguments passés aux méthodes d'initialisation. Pour
+commencer, vous n'avez besoin que d'un nom de service configuré afin de pouvoir
+identifier le service dans la solution d'observabilité de votre choix.
 
 D'autres options de configuration sont disponibles, notamment :
 
