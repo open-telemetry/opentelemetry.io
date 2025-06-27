@@ -14,5 +14,5 @@ createdAt: 2020-11-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-redis'
-  version: 0.48.0
+  version: 0.49.1
 isFirstParty: false

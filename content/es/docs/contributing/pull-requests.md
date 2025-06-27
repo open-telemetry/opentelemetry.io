@@ -318,7 +318,6 @@ class first,second white
 1. En el menú desplegable **Comparar**, selecciona tu rama.
 1. Selecciona **Crear Pull Request**.
 1. Agrega una descripción para tu pull request:
-
    - **Título** (50 caracteres o menos): Resume la intención del cambio.
    - **Descripción**: Describe el cambio con más detalle.
 

@@ -113,9 +113,6 @@ This page lists the manual Span Attributes used throughout the demo:
 
 ## Shipping
 
-| Name                       | Type   | Description                   |
-| -------------------------- | ------ | ----------------------------- |
-| `app.shipping.cost.total`  | number | Total shipping cost           |
-| `app.shipping.items.count` | number | Total items to ship           |
-| `app.shipping.tracking.id` | string | Shipping tracking ID          |
-| `app.shipping.zip_code`    | string | Zip code used to ship item(s) |
+| Name                      | Type   | Description         |
+| ------------------------- | ------ | ------------------- |
+| `app.shipping.cost.total` | number | Total shipping cost |
