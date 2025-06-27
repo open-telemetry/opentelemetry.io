@@ -736,8 +736,8 @@ type tailtracerReceiver struct {
 }
 
 func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host component.Host) error {
-    tailtracerRcvr.host = host
-    ctx = context.Background()
+	tailtracerRcvr.host = host
+	ctx = context.Background()
 	ctx, tailtracerRcvr.cancel = context.WithCancel(ctx)
 
 	return nil
