@@ -323,10 +323,8 @@ class first,second white
 6. 点击 **Create Pull Request**。
 
 7. 添加你的PR的描述信息：
-
    - **Title**（50 个字符以内）：简要说明变更目的。
    - **Description**：更详细地说明你的变更内容。
-
      - 如果该变更关联某个 GitHub Issue，在描述中加入 `Fixes #12345` 或 `Closes #12345`，
        这样 GitHub 在合并 PR 后会自动关闭对应 issue。
      - 如果你有任何具体问题需要建议，可以在描述中写出你希望评审者关注的问题。
