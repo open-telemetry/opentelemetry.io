@@ -1,84 +1,53 @@
 ---
-title: Using Metrics and Traces to diagnose a memory leak
-linkTitle: Diagnosing memory leaks
+title: মেমরি লিক নির্ণয়ে মেট্রিকস ও ট্রেস ব্যবহারের উপায়
+linkTitle: মেমরি লিক নির্ণয়
 aliases:
   - ../scenarios/recommendation-cache/
   - ../scenarios/recommendation_cache
+default_lang_commit: 2571ec5a1e17744982e8dc6efe1fdf3115d0ebbc
 ---
 
-Application telemetry, such as the kind that OpenTelemetry can provide, is very
-useful for diagnosing issues in a distributed system. In this scenario, we will
-walk through a scenario demonstrating how to move from high-level metrics and
-traces to determine the cause of a memory leak.
+অ্যাপ্লিকেশন টেলিমেট্রি, যেমন OpenTelemetry যা সরবরাহ করতে পারে, একটি বিতরণকৃত সিস্টেমে সমস্যা নির্ণয়ের জন্য অত্যন্ত উপযোগী। এই পরিস্থিতিতে, আমরা একটি দৃশ্যের মধ্য দিয়ে হাঁটব যা দেখাবে কীভাবে উচ্চ-স্তরের মেট্রিকস এবং ট্রেস ব্যবহার করে একটি মেমরি লিকের কারণ নির্ধারণ করা যায়।
 
-## Setup
+## সেটআপ
 
-To run this scenario, you will need to deploy the demo application and enable
-the `recommendationServiceCacheFailure` feature flag. Let the application run
-for about 10 minutes or so after enabling the feature flag to allow for data to
-populate.
+এই দৃশ্য চালাতে, আপনাকে ডেমো অ্যাপ্লিকেশনটি ডিপ্লয় করতে হবে এবং `recommendationServiceCacheFailure` ফিচার ফ্ল্যাগ সক্রিয় করতে হবে। ফিচার ফ্ল্যাগ চালু করার পরে অ্যাপ্লিকেশনটিকে প্রায় ১০ মিনিট চালাতে দিন যাতে পর্যাপ্ত পরিমাণ ডেটা সংগ্রহ হয়।
 
-## Diagnosis
+## নির্ণয়
 
-The first step in diagnosing a problem is to determine that a problem exists.
-Often the first stop will be a metrics dashboard provided by a tool such as
-Grafana.
+সমস্যা নির্ণয়ের প্রথম ধাপ হল জানা যে কোন সমস্যা ঘটছে। প্রায়শই প্রথম নজরে পড়ে একটি মেট্রিকস ড্যাশবোর্ড, যেমন Grafana সরবরাহ করে।
 
-A [demo dashboard folder](http://localhost:8080/grafana/dashboards) should exist
-after launching the demo with two dashboards; One is to monitor your
-OpenTelemetry Collector, and the other contains several queries and charts to
-analyze latency and request rate from each service.
+একটি [ডেমো ড্যাশবোর্ড ফোল্ডার](http://localhost:8080/grafana/dashboards) থাকা উচিত ডেমো চালু করার পরে, যেখানে দুটি ড্যাশবোর্ড থাকবে; একটি OpenTelemetry Collector মনিটর করার জন্য, আরেকটি বিভিন্ন কোয়েরি ও চার্ট সহ সার্ভিসের লেটেন্সি ও অনুরোধ হার বিশ্লেষণের জন্য।
 
 ![Grafana dashboard](grafana-dashboard.png)
 
-This dashboard will contain a number of charts, but a few should appear
-interesting:
+এই ড্যাশবোর্ডে অনেক চার্ট থাকবে, তবে কিছু গুরুত্বপূর্ণভাবে নজর কাড়বে:
 
-- Recommendation Service (CPU% and Memory)
-- Service Latency (from SpanMetrics)
-- Error Rate
+- রেকমেন্ডেশন সার্ভিস (CPU% এবং মেমরি)
+- সার্ভিস লেটেন্সি (SpanMetrics থেকে)
+- ত্রুটি হার (Error Rate)
 
-Recommendation Service charts are generated from OpenTelemetry Metrics exported
-to Prometheus, while the Service Latency and Error Rate charts are generated
-through the OpenTelemetry Collector Span Metrics processor.
+রেকমেন্ডেশন সার্ভিস চার্টগুলো OpenTelemetry মেট্রিকস থেকে প্রোমিথিয়াসে এক্সপোর্ট করা হয়েছে, এবং সার্ভিস লেটেন্সি ও ত্রুটি হার চার্টগুলো OpenTelemetry Collector-এর Span Metrics প্রসেসরের মাধ্যমে তৈরি হয়েছে।
 
-From our dashboard, we can see that there seems to be anomalous behavior in the
-recommendation service -- spiky CPU utilization, as well as long tail latency in
-our p95, 99, and 99.9 histograms. We can also see that there are intermittent
-spikes in the memory utilization of this service.
+আমাদের ড্যাশবোর্ডে দেখা যাচ্ছে যে রেকমেন্ডেশন সার্ভিসে অস্বাভাবিক আচরণ রয়েছে — CPU ব্যবহারে হঠাৎ উঁচু স্পাইক, এবং p95, 99, ও 99.9 হিস্টোগ্রামে দীর্ঘ লেজ বিশিষ্ট লেটেন্সি। আমরা মাঝে মাঝে মেমরি ব্যবহারের স্পাইকও দেখতে পাচ্ছি।
 
-We know that we're emitting trace data from our application as well, so let's
-think about another way that we'd be able to determine that a problem exists.
+আমরা জানি যে আমাদের অ্যাপ্লিকেশন থেকে ট্রেস ডেটাও পাঠানো হচ্ছে, তাই চলুন ভাবি অন্যভাবে কিভাবে এই সমস্যাটি শনাক্ত করা যায়।
 
 ![Jaeger](jaeger.png)
 
-Jaeger allows us to search for traces and display the end-to-end latency of an
-entire request with visibility into each individual part of the overall request.
-Perhaps we noticed an increase in tail latency on our frontend requests. Jaeger
-allows us to then search and filter our traces to include only those that
-include requests to the recommendation service.
+Jaeger আমাদের ট্রেস খুঁজতে ও সম্পূর্ণ অনুরোধের প্রান্ত-থেকে-প্রান্ত লেটেন্সি দেখতে সাহায্য করে, প্রতিটি অংশের ভিতরে দৃশ্যমানতা প্রদান করে। ধরুন আমরা আমাদের ফ্রন্টএন্ড অনুরোধে লেটেন্সি বেড়ে গেছে লক্ষ্য করেছি। Jaeger আমাদের ট্রেস ফিল্টার করতে দেয় যেন আমরা শুধু সেই অনুরোধগুলো দেখি যেগুলো রেকমেন্ডেশন সার্ভিসে যায়।
 
-By sorting by latency, we're able to quickly find specific traces that took a
-long time. Clicking on a trace in the right panel, we're able to view the
-waterfall view.
+লেটেন্সি অনুযায়ী সাজালে আমরা দ্রুত দীর্ঘ সময় নেওয়া ট্রেসগুলো খুঁজে পেতে পারি। ডান পাশের প্যানেলে ট্রেসে ক্লিক করে আমরা ওয়াটারফল ভিউ দেখতে পারি।
 
 ![Jaeger waterfall](jaeger-waterfall.png)
 
-We can see that the recommendation service is taking a long time to complete its
-work, and viewing the details allows us to get a better idea of what's going on.
+এখানে দেখা যায় যে রেকমেন্ডেশন সার্ভিসটি কাজ শেষ করতে অনেক সময় নিচ্ছে, এবং বিশদে দেখলে আরও ভালো বোঝা যায় কী ঘটছে।
 
-## Confirming the Diagnosis
+## নির্ণয় নিশ্চিতকরণ
 
-We can see in our waterfall view that the `app.cache_hit` attribute is set to
-false, and that the `app.products.count` value is extremely high.
+আমরা ওয়াটারফল ভিউতে দেখতে পাচ্ছি যে `app.cache_hit` অ্যাট্রিবিউটটি false সেট করা আছে, এবং `app.products.count` মানটি অত্যন্ত বেশি।
 
-Returning to the search UI, select `recommendation` in the Service dropdown, and
-search for `app.cache_hit=true` in the Tags box. Notice that requests tend to be
-faster when the cache is hit. Now search for `app.cache_hit=false` and compare
-the latency. You should notice some changes in the visualization at the top of
-the trace list.
+অনুসন্ধান UI-তে ফিরে গিয়ে, Service ড্রপডাউন থেকে `recommendation` নির্বাচন করুন, এবং Tags বক্সে `app.cache_hit=true` দিয়ে অনুসন্ধান করুন। লক্ষ্য করুন যে যখন ক্যাশ হিট হয়, তখন অনুরোধগুলো দ্রুত হয়। এখন `app.cache_hit=false` দিয়ে অনুসন্ধান করুন এবং লেটেন্সি তুলনা করুন। আপনি দেখতে পাবেন যে ট্রেস তালিকার উপরের ভিজ্যুয়ালাইজেশনে কিছু পরিবর্তন হয়েছে।
 
-Now, since this is a contrived scenario, we know where to find the underlying
-bug in our code. However, in a real-world scenario, we may need to perform
-further searching to find out what's going on in our code, or the interactions
-between services that cause it.
+এখন, যেহেতু এটি একটি কৃত্রিম দৃশ্য, আমরা জানি কোথায় বাগ রয়েছে। তবে বাস্তব জগতে, আমাদের কোডে বা সার্ভিসগুলোর পারস্পরিক ক্রিয়ায় আরও গভীর অনুসন্ধান করতে হতে পারে।
+
