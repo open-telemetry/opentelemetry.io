@@ -68,11 +68,60 @@ Stay tuned, the next generation of semantic convention management is coming, and
 
 Getting started with Weaver is easy: it's available as a pre-built binary CLI and a Docker image, ready to drop into any CI/CD pipeline or local workflow. [ToDo add links]
 
-**1. Define Your Registry**
+### How the OTEL Semantic Conventions Community Uses Weaver
 
-Weaver allows you to specify your application's signals using a telemetry schema based on the concept of semantic conventions. You can define your own signals or reuse the signals and attributes already defined by the OTEL semantic conventions.
+The OTEL semantic conventions community relies on Weaver as its primary tool for building, validating, and evolving the official registry. Some key tasks include:
 
-First, create a `registry_manifest.yaml` file to specify your registry:
+**Checking the Official OTEL Registry:**<br/>
+Weaver ensures every change to the registry is consistent, validated, and follows the core policies.
+
+```bash
+weaver registry check -r registry-path
+```
+
+**Generating Markdown Documentation:**<br/>
+Weaver automatically produces the human-readable docs you see at opentelemetry.io.
+
+```bash
+weaver registry update-markdown -r registry-path --target=markdown
+```
+
+**Generating Constants for Client SDKs:**<br/>
+Every supported OpenTelemetry SDK benefits from auto-generated constants in their native language, ensuring no typos or inconsistencies.
+
+```bash
+weaver registry generate -r registry-path -t templates-root-dir go
+weaver registry generate -r registry-path -t templates-root-dir java
+# ...and more
+```
+
+
+**Tracking Changes and Schema Evolution:**<br/>
+Weaver tracks diffs between registry versions to highlight breaking changes or improvements.
+
+```bash
+weaver registry diff -r current-version-registry-path --baseline-registry previous-version-registry-path
+```
+
+**Live Instrumentation Checks and Coverage:**<br/>
+Users and maintainers can leverage Weaver to live-check that their application correctly emits telemetry conforming to the official semantic conventions. 
+
+```bash
+weaver registry live-check --registry registry-path
+```
+
+### Custom Registries: Defining and Checking Your Own Telemetry Schema
+
+While Weaver powers the core OTEL registry, you can also use it to define and manage your own application's telemetry schema. This lets you:
+
+- Reuse and extend the official conventions, while adding custom signals, attributes, and events tailored to your domain.
+- Statistically and live-check that your app's telemetry is up-to-date and complete.
+- Generate docs, constants, and even type-safe client SDKs (Go, Rust, ...).
+
+> Note:
+> We are actively working on making custom registries even easier to use, with better onboarding, simpler configs, and more integrated code generation and documentation support. Some complexities remain, but the community is already using these features and contributing new ideas, so now’s a great time to try it for your app!
+
+Here’s a quick example using a custom registry for a “ToDo” app. First, create a `registry_manifest.yaml` file to specify your registry:
 
 ```yaml
 name: todo_app
@@ -134,35 +183,21 @@ groups:
         requirement_level: required
 ```
 
-**2. Generate Docs and SDKs**
+**Key commands already supported for custom registries:**
+
+**Static Validation:**
 
 ```bash
-# Generate Markdown documentation
-weaver registry generate -r <registry> -t <tmpl-dir> markdown
-
-# Generate type-safe Go client
-weaver registry generate -r <registry> -t <tmpl-dir> go
-
-# Generate type-safe Rust client
-weaver registry generate -r <registry> -t <tmpl-dir> rust
+weaver registry check -r ./todo-app-registry
 ```
 
-**3. Validate Your Schema**
+**Live Instrumentation Checks (with coverage):**
 
 ```bash
-# Check for errors, missing attributes, or violations
-weaver registry check -r <registry-dir-or-url>
-
-# Run live checks against app telemetry
-weaver registry live-check --registry <path-to-your-registry>
+weaver registry live-check --registry ./todo-app-registry
 ```
 
-**4. Track Changes Safely**
-
-```bash
-# Diff registries to ensure safe upgrades/downgrades
-weaver registry diff -r <registry> --baseline-registry <registry> --diff-format markdown
-```
+[More ...]
 
 ## What's Next for Weaver?
 
