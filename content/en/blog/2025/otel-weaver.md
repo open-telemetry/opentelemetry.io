@@ -70,7 +70,10 @@ Getting started with Weaver is easy: it's available as a pre-built binary CLI an
 
 **1. Define Your Registry**
 
-A custom `registry_manifest.yaml`:
+Weaver allows you to specify your application's signals using a telemetry schema based on the concept of semantic conventions. You can define your own signals or reuse the signals and attributes already defined by the OTEL semantic conventions.
+
+First, create a `registry_manifest.yaml` file to specify your registry:
+
 ```yaml
 name: todo_app
 description: OTEL signals for my native ToDo app
@@ -80,17 +83,18 @@ dependencies:
     registry_path: https://github.com/open-telemetry/semantic-conventions/archive/refs/tags/v1.34.0.zip[model]
 ```
 
-Import, extend existing conventions and define your own signals and attributes:
+Import and extend existing conventions, and define your own signals and attributes:
+
 ```yaml
-imports:
+imports:             # import signals from the dependency registry, i.e. OTEL semantic conventions
   metrics:
-    - db.client.*    # import all db.client metrics
+    - db.client.*    # import all metrics with names starting with `db.client.` 
+  events:
+    - app.*          
+    - exception      # import the event named `exception`
   entities:
     - host
     - host.cpu
-  events:
-    - app.*
-    - exception
 
 groups:
   - id: metric.todo.completion_time
@@ -100,14 +104,14 @@ groups:
     instrument: histogram
     unit: s
     attributes:
-      - id: todo.priority
+      - id: todo.priority              # define your own attribute
         type: string
         brief: The priority of the ToDo item.
       - id: todo.category
         type: string
         brief: The category of the ToDo item.
-      - ref: user.id
-        requirement_level: required
+      - ref: user.id                   # reference an existing attribute from the imported registry
+        requirement_level: required    # refine the requirement level  
       - ref: os.name
         requirement_level: required
       - ref: os.version
