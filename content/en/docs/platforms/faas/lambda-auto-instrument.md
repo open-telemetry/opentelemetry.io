@@ -93,9 +93,9 @@ and the package on [RubyGem](https://rubygems.org/search?query=opentelemetry).
 ### Configure `AWS_LAMBDA_EXEC_WRAPPER`
 
 Change the entry point of your application by setting
-`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for Node.js, Java, or Ruby, and
-`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-instrument` for Python. These wrapper scripts
-will invoke your Lambda application with the automatic instrumentation applied.
+`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for Node.js, Java, Ruby, or Python.
+This wrapper script invokes your Lambda application with the automatic
+instrumentation applied.
 
 ### Add the ARN of Instrumentation Lambda Layer
 
