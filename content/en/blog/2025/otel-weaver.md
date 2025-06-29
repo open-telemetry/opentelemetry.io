@@ -2,13 +2,13 @@
 title: Observability by Design: Unlocking Consistency with OpenTelemetry Weaver
 linkTitle: OTEL Weaver
 date: 2025-06-27
-author: >-
-  [Laurent Quérel](https://github.com/lquerel) (F5), [Josh Suereth](https://github.com/jsuereth) (Google), [Jeremy Blythe](https://github.com/jerbly) 
+author: [OTEL Weaver Maintainers](https://github.com/orgs/open-telemetry/teams/weaver-maintainers) 
 sig: "Semantic Conventions: Tooling"
-cSpell:ignore: Quérel
 ---
 
-> Stop treating observability as an afterthought. Start building it in by design, with clear conventions, type safety, and automation.
+{{% alert title="TL;DR" %}}
+Stop treating observability as an afterthought. Start building it in by design, with clear conventions, type safety, and automation.
+{{% /alert %}}
 
 ## Have you ever experienced…?
 
@@ -27,7 +27,7 @@ The [OpenTelemetry Semantic Convention Registry](https://opentelemetry.io/docs/s
 
 - **Consistency**: One name, one meaning everywhere.
 - **Interoperability**: Tools, teams, and vendors can understand each other.
-- **Automation**: Machine-readable standards enable code and docs generation, compliance checks, and more.
+- **Automation**: Machine-readable standards enable code and docs generation, static and live compliance checks, and more.
 
 But maintaining and evolving such a registry across teams and tools isn't easy. That's where [OTEL Weaver](https://github.com/open-telemetry/weaver) comes in.
 
@@ -49,12 +49,12 @@ Observability by Design means integrating observability into your software devel
 What can Weaver do for you?
 
 - **Define and Version Your Registry**: Create your own semantic conventions or build on top of OTEL's. Version and share your schemas with your team or community.
-- **Policy-Based Validation**: Enforce best practices-naming, stability, immutability, and more. Detect breaking changes and maintain registry quality (you can even define your own policies!).
-- **Live Instrumentation Checks**: Check that your application's actual telemetry matches your defined schema. Never miss critical signals in production again.
-- **Code and Docs Generation**: Automatically generate type-safe SDKs (Go, Rust, etc.), Markdown docs, and more-so everyone implements things right, every time.
+- **Policy-Based Validation**: Enforce best practices-naming, stability, immutability, and more. Detect breaking changes and maintain registry quality. You can even define your own policies!.
+- **Live Instrumentation Checks**: Check that your application's telemetry matches your defined schema and measure instrumentation coverage, similar to code coverage, to ensure your unit and integration tests are actually exercising all your instrumented code. Never miss critical signals in production again.
+- **Code and Docs Generation**: Generate Markdown documentation and constants in many programming languages out of the box. We're also working on more advanced solutions to automatically generate type-safe SDKs (Go, Rust, ...) for even easier and safer integration.
 - **Diff and Evolution**: Safely evolve your telemetry schema with automatic diffs and upgrade/downgrade support.
 
-Weaver currently supports a basic form of multi-registry, allowing a custom registry to import and override another registry (for example, extending the official OTEL semantic conventions). At present, only two levels are supported: your custom registry and a single dependency. This covers many common cases, but we know there’s much more potential for flexibility and collaboration.
+Weaver currently supports a basic form of multi-registry, allowing a custom registry to import and override another registry (for example, extending the official OTEL semantic conventions). At present, only two levels are supported: your custom registry and a single dependency. This covers many common cases, but we know there's much more potential for flexibility and collaboration.
 
 We are actively developing advanced multi-registry support. This will enable:
 
@@ -66,13 +66,13 @@ Stay tuned, the next generation of semantic convention management is coming, and
 
 ## Weaver in Action: Key Commands
 
-Getting started with Weaver is easy: it's available as a pre-built binary CLI and a Docker image, ready to drop into any CI/CD pipeline or local workflow. 
+Getting started with Weaver is easy: it's available as a pre-built binary CLI and a Docker image, ready to drop into any CI/CD pipeline or local workflow. [ToDo add links]
 
 **1. Define Your Registry**
 
-A custom registry_manifest.yaml:
+A custom `registry_manifest.yaml`:
 ```yaml
-name: todo-app
+name: todo_app
 description: OTEL signals for my native ToDo app
 semconv_version: 0.1.0
 dependencies:
@@ -80,7 +80,7 @@ dependencies:
     registry_path: https://github.com/open-telemetry/semantic-conventions/archive/refs/tags/v1.34.0.zip[model]
 ```
 
-Import and extend existing conventions:
+Import, extend existing conventions and define your own signals and attributes:
 ```yaml
 imports:
   metrics:
