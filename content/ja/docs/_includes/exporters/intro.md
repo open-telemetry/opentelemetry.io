@@ -22,7 +22,7 @@ default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
 {{ end }}
 
 エクスポーターの中でも、[OpenTelemetry Protocol (OTLP)][OTLP]エクスポーターは、OpenTelemetryのデータモデルを考慮して設計されており、OTelデータを情報の損失なく出力します。
-さらに、多くのテレメトリデータを扱うツールがOTLPに対応しており（たとえば、[Prometheus]、[Jaeger]やほとんどの[ベンダー][vendors]）、必要なときに高い柔軟性を提供します。
+さらに、多くのテレメトリーデータを扱うツールがOTLPに対応しており（たとえば、[Prometheus]、[Jaeger]やほとんどの[ベンダー][vendors]）、必要なときに高い柔軟性を提供します。
 OTLPについて詳細に学習したい場合は、[OTLP仕様][OTLP]を参照してください。
 
 [Jaeger]: /blog/2022/jaeger-native-otlp/

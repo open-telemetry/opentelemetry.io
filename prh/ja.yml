@@ -1,0 +1,30 @@
+rules:
+  - expected: テレメトリー
+    patterns:
+      - /テレメトリ(?!ー)/
+  - expected: コレクター
+    patterns:
+      - /コレクタ(?!ー)/
+  - expected: メトリクス
+    patterns:
+      - メトリック
+  - expected: たとえば
+    patterns:
+      - 例えば
+  - expected: すべて
+    patterns:
+      - 全て
+  - expected: かわり
+    patterns:
+      - 代わり
+  - expected: 計装
+    patterns:
+      - インストゥルメンテーション
+      - インストルメンテーション
+      - インストルメント
+  - expected: エグザンプラー
+    patterns:
+      - 例示値
+  - expected: プログラム
+    patterns:
+      - プログラマティック
