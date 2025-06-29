@@ -8,7 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: OpenTelemetry Javaにおける計装エコシステム
-default_lang_commit: beb85b4f56de76aa8a8d6e96cd7528396476f95a
+default_lang_commit: 4a1ba639556beb117b556bf5825bb859e2361869
 cSpell:ignore: logback
 ---
 
@@ -114,7 +114,7 @@ OpenTelemetry APIは補完的に設計されており、全体が部分の合計
 ## セマンティック規約 {#semantic-conventions}
 
 [セマンティック規約](/docs/specs/semconv/)は、標準操作のテレメトリーを生成する方法を定義します。
-とりわけ、セマンティック規約は、スパン名、スパンの種類、メトリック計器、メトリック単位、メトリックタイプ、および属性キー、値、および要件レベルを指定します。
+とりわけ、セマンティック規約は、スパン名、スパンの種類、メトリクス計器、メトリクス単位、メトリクスタイプ、および属性キー、値、および要件レベルを指定します。
 
 計装を記述する際は、セマンティック規約を参照し、ドメインに適用可能なものに準拠してください。
 
@@ -151,7 +151,7 @@ OpenTelemetryでログ計装を使用するための2つの典型的なワーク
 
 トレースとのログ相関は、OpenTelemetryコンテキストをログフレームワークにブリッジする[シム](#shims)をインストールすることで利用できます。「OpenTelemetryコンテキストをLog4jにブリッジ」、「OpenTelemetryコンテキストをLogbackにブリッジ」のエントリを参照してください。
 
-{{% alert title="注意" color="info" %}}
+{{% alert title="注意" %}}
 
 標準出力を使用したログ計装のエンドツーエンドの例は、[Javaサンプルリポジトリ](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md)で入手できます。
 
