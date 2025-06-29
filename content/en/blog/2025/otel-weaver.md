@@ -66,7 +66,7 @@ Stay tuned, the next generation of semantic convention management is coming, and
 
 ## Weaver in Action: Key Commands
 
-Getting started with Weaver is easy: it's available as a pre-built binary CLI and a Docker image, ready to drop into any CI/CD pipeline or local workflow. [ToDo add links]
+Getting started with Weaver is easy: it's available as a pre-built binary CLI (see releases [page](https://github.com/open-telemetry/weaver/releases)) and a Docker [image](https://hub.docker.com/r/otel/weaver), ready to drop into any CI/CD pipeline or local workflow.
 
 ### How the OTEL Semantic Conventions Community Uses Weaver
 
@@ -78,6 +78,16 @@ Weaver ensures every change to the registry is consistent, validated, and follow
 ```bash
 weaver registry check -r registry-path
 ```
+
+The following table provides a brief overview of the policies implemented for the OTEL registry.
+
+| Policy Rule                                         | Policy Rule                                         | Policy Rule                                         |
+|-----------------------------------------------------|-----------------------------------------------------|-----------------------------------------------------|
+| No attributes outside registry                      | Names must follow format rules                      | No removal of elements                              |
+| Definitions require stability                       | IDs must match naming patterns                      | No stability downgrades                             |
+| No requirement levels on attributes                 | Attributes fully qualified                          | No type or unit changes                             |
+| No constant name collisions                         | No namespace collisions                             | Attribute sets immutable                            |
+| No duplicate attributes in group                    | Experimental attributes in stable groups must be opt-in | Enum values immutable                               |
 
 **Generating Markdown Documentation:**<br/>
 Weaver automatically produces the human-readable docs you see at opentelemetry.io.
@@ -109,6 +119,10 @@ Users and maintainers can leverage Weaver to live-check that their application c
 ```bash
 weaver registry live-check --registry registry-path
 ```
+
+This command generates a compliance report of the signals emitted by your application against a registry.
+
+![Live-check Report](otel-weaver/live-check.png)
 
 ### Custom Registries: Defining and Checking Your Own Telemetry Schema
 
