@@ -51,7 +51,7 @@ What can Weaver do for you?
 - **Define and Version Your Registry**: Create your own semantic conventions or build on top of OTEL's. Version and share your schemas with your team or community.
 - **Policy-Based Validation**: Enforce best practices-naming, stability, immutability, and more. Detect breaking changes and maintain quality. You can even define your own policies!
 - **Live Instrumentation Checks**: Check that your application's telemetry matches your defined schema and best practices. Measure instrumentation coverage, similar to code coverage, to ensure your unit and integration tests are actually exercising all your instrumented code. Never miss critical signals in production again.
-- **Code and Docs Generation**: Generate Markdown documentation and constants in many programming languages out of the box. We're also working on more advanced solutions to automatically generate type-safe SDKs (Go, Rust, ...) for even easier and safer integration.
+- **Code and Docs Generation**: Generate Markdown documentation and constants in many programming languages out of the box. We're also working on more advanced solutions to automatically generate type-safe instrumentation helpers (Go, Rust, ...) for even easier and safer integration.
 - **Diff and Evolution**: Safely evolve your telemetry schema with automatic diffs and upgrade/downgrade support.
 
 Weaver currently supports a basic form of multi-registry, allowing a custom registry to import and override another registry (for example, extending the official OTEL semantic conventions). At present, only two levels are supported: your custom registry and a single dependency. This covers many common cases, but we know there's much more potential for flexibility and collaboration.
