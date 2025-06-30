@@ -33,7 +33,7 @@ Para exemplos mais elaborados, veja [exemplos](../examples/).
 ### Dependências {#dependencies}
 
 Para começar, crie um ambiente em um novo diretório chamado `java-simple`.
-Dentro dele, crie um arquivo chamado `build.gradle.kts` com o seguinte conteúdo:
+Dentro dele, crie um arquivo chamado `build.gradle.kts` e adicione o seguinte conteúdo ao arquivo:
 
 ```kotlin
 plugins {
