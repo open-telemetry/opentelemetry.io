@@ -8,7 +8,7 @@ default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829
 <!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/getting-started"?>
 
-Esta página mostrará como começar a usar OpenTelemetry em Java.
+Esta página mostrará como começar a utilizar o OpenTelemetry em Java.
 
 Você aprenderá como instrumentalizar automaticamente uma aplicação Java simples,
 de modo que [rastros][], [métricas][], e [logs][] sejam emitidos para o console.
