@@ -247,7 +247,7 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 
 Para mais:
 
-- Execute este exemplo com outro [exportador][] para dados de telemetria.
+- Execute este exemplo com outro [exportador][exporter] para dados de telemetria.
 - Experimente a [instrumentação sem código](/docs/zero-code/java/agent/) em uma
   de suas próprias aplicações.
 - Para telemetria levemente personalizada, experimente [anotações][].
