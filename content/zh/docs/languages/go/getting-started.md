@@ -21,13 +21,15 @@ cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace 
 
 ## 前置条件{#prerequisites}
 
-确保你本地已经安装了:
+确保你本地已经安装了：
 
 - [Go](https://go.dev/) 1.22 及更高版本。
 
 ## 示例应用程序{#example-application}
 
-以下示例使用了一个基本的 [`net/http`](https://pkg.go.dev/net/http) 应用程序。 如果你没有使用 `net/http` 也没关系 —— 你仍然可以在其他 Web 框架中使用 OpenTelemetry Go，比如 Gin 和 Echo，有关支持框架的完整库列表，请参阅
+以下示例使用了一个基本的 [`net/http`](https://pkg.go.dev/net/http) 应用程序。
+如果你没有使用 `net/http` 也没关系 —— 你仍然可以在其他 Web 框架中使用
+OpenTelemetry Go，比如 Gin 和 Echo，有关支持框架的完整库列表，请参阅
 [registry](/ecosystem/registry/?component=instrumentation&language=go)。
 
 如果需要更复杂的示例，请参阅 [examples](/docs/languages/go/examples/)。
@@ -1131,7 +1133,7 @@ go run .
 
 如果想了解更多关于为你的代码插桩的内容，请参考[手动插桩](/docs/languages/go/instrumentation/)文档。
 
-此外，你或许还想要配置合适的导出器（Exporter）来[将你的遥测数据导出](/docs/languages/go/exporters/) 到一个或多个遥测后端。
+此外，你或许还想要配置合适的导出器（Exporter）来[将你的遥测数据导出](/docs/languages/go/exporters/)到一个或多个遥测后端。
 
 如果你想要进一步探索更复杂的示例，可以查看
 [OpenTelemetry 演示](/docs/demo/)，
