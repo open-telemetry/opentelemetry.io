@@ -22,7 +22,7 @@ branch at the moment of the release. For instance, if the latest version is
 
 Security fixes are given priority and might be enough to cause a new version to
 be released. Each repository is entitled to establish their own complementary
-processes. SIG-Security in conjunction with the TC can advise in case
+processes. The Security SIG in conjunction with the TC can advise in case
 clarifications are required.
 
 ## Reporting Process - For Vulnerability Reporters
