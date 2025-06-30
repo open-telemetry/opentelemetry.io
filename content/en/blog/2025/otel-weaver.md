@@ -99,7 +99,7 @@ For example, the code generated from Weaver for the Go client SDK can be found [
 weaver registry generate -r registry-path -t templates-root-dir go
 ```
 
-Similarly, the code generated for the Java client SDK is visible in this [project](https://github.com/open-telemetry/semantic-conventions-java). Weaver offers an embedded template system compatible with Jinja2, with a large number of custom functions to facilitate code generation in different languages.
+Similarly, the code generated for the OpenTelemetry Semantic Conventions for Java library is visible in this [project](https://github.com/open-telemetry/semantic-conventions-java). Weaver offers an embedded template system compatible with Jinja2, with a large number of custom functions to facilitate code generation in different languages.
 
 **Tracking Changes and Schema Evolution:**<br/>
 Weaver tracks diffs between registry versions to highlight breaking changes or improvements.
