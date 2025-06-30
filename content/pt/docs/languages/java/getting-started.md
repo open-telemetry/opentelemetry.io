@@ -131,7 +131,7 @@ java -jar ./build/libs/java-simple.jar
 
 ## Instrumentação {#instrumentation}
 
-Em seguida, você usará um [agente Java] para instrumentalizar automaticamente a
+Em seguida, você usará um [agente Java](/docs/zero-code/java/agent/) para instrumentalizar automaticamente a
 aplicação durante sua inicialização. Embora seja possível [configurar o agente
 Java][] de várias maneiras, os passos abaixo utilizam variáveis de ambiente.
 
