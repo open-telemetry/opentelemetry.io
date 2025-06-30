@@ -30,7 +30,7 @@ jobs:
                 )
                 | .dependencies |= with_entries(
                   select(.key | test("minisearch")))
-                | del(, .optionalDependencies)' \
+                | del(.optionalDependencies)' \
             package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
