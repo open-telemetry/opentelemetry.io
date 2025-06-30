@@ -262,7 +262,7 @@ Para mais:
 [metrics]: /docs/concepts/signals/metrics/
 [logs]: /docs/concepts/signals/logs/
 [anotações]: /docs/zero-code/java/agent/annotations/
-[configurar o agente java]: /docs/zero-code/java/agent/configuration/
+[configure the java agent]: /docs/zero-code/java/agent/configuration/
 [exportador de console]:
   /docs/languages/java/configuration/#properties-exporters
 [exportador]: /docs/languages/java/configuration/#properties-exporters
