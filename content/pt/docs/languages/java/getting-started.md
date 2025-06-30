@@ -258,8 +258,8 @@ Para mais:
   [Serviço de Detecção de Fraude](/docs/demo/services/fraud-detection/) baseado
   em Kotlin
 
-[rastros]: /docs/concepts/signals/traces/
-[métricas]: /docs/concepts/signals/metrics/
+[traces]: /docs/concepts/signals/traces/
+[metrics]: /docs/concepts/signals/metrics/
 [logs]: /docs/concepts/signals/logs/
 [anotações]: /docs/zero-code/java/agent/annotations/
 [configurar o agente java]: /docs/zero-code/java/agent/configuration/
