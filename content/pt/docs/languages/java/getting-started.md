@@ -183,7 +183,7 @@ Java][configure the java agent] de várias maneiras, os passos abaixo utilizam v
 
 5. Pare o processo do servidor.
 
-o passo 4, você deve ter visto o rastro e log na saída do console do servidor e
+No passo 4, você deve ter visto o rastro e log na saída do console do servidor e
 cliente que se parece com algo assim (a saída do rastro está quebrada em linhas
 para melhor visualização):
 
