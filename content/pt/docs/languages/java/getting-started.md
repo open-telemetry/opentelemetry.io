@@ -250,7 +250,7 @@ Para mais:
 - Execute este exemplo com outro [exportador][exporter] para dados de telemetria.
 - Experimente a [instrumentação sem código](/docs/zero-code/java/agent/) em uma
   de suas próprias aplicações.
-- Para telemetria levemente personalizada, experimente [anotações][].
+- Para telemetria levemente personalizada, experimente [anotações][annotations].
 - Aprenda sobre [instrumentação manual][] e experimente mais
   [exemplos](../examples/).
 - Dê uma olhada no [OpenTelemetry Demo](/docs/demo/), que inclui o
