@@ -23,7 +23,7 @@ If any of this sounds familiar, you're not alone. These are the symptoms of trea
 
 **Semantic conventions** are a set of rules and standard names for telemetry data. Think of them as the "grammar" for metrics, traces, and logs, so everyone and everything (including your tools) knows what you mean by 'http.request.method', 'db.system.name', or 'http.client.request.duration'.
 
-The [OpenTelemetry Semantic Convention Registry](https://opentelemetry.io/docs/specs/semconv/) is a massive, open catalog with 900+ attributes and signals in over 70 domains-maintained by nine special interest groups. This open catalog ensures:
+The [OpenTelemetry Semantic Convention](https://opentelemetry.io/docs/specs/semconv/) is a massive, open catalog with 900+ attributes and signals in over 70 domains-maintained by nine special interest groups. This open catalog ensures:
 
 - **Consistency**: One name, one meaning everywhere.
 - **Interoperability**: Tools, teams, and vendors can understand each other.
