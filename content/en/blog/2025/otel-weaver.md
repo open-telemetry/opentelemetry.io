@@ -33,14 +33,14 @@ But maintaining and evolving such a registry across teams and tools isn't easy. 
 
 ## Observability by Design: A Modern Engineering Approach
 
-Observability by Design means integrating observability into your software development life cycle (SDLC) from the start:
+Observability by Design means integrating observability into your software development life cycle (SDLC) from the start. This is often called "observability shift left":
 
 1. **Set Clear Goals**: Define observability objectives up front. What signals do you need?
 2. **Automate**: Use tools to generate code, docs, tests, and schemas from conventions.
 3. **Validate**: Catch observability issues early, in CI/CD, not in production.
 4. **Iterate**: Refine your telemetry based on real-world feedback and evolving needs.
 
-**Treat telemetry like a public API**. If you wouldn't break your app's API between releases, don't break your telemetry either.
+In other words, **treat telemetry like a public API**. If you wouldn't break your app's API between releases, don't break your telemetry either.
 
 ## OTEL Weaver: Empowering Semantic Conventions and Observability by Design
 
@@ -55,14 +55,6 @@ What can Weaver do for you?
 - **Diff and Evolution**: Safely evolve your telemetry schema with automatic diffs and upgrade/downgrade support.
 
 Weaver currently supports a basic form of multi-registry, allowing a custom registry to import and override another registry (for example, extending the official OTEL semantic conventions). At present, only two levels are supported: your custom registry and a single dependency. This covers many common cases, but we know there's much more potential for flexibility and collaboration.
-
-We are actively developing advanced multi-registry support. This will enable:
-
-- Multiple dependencies (with conflict resolution, provenance, and composability)
-- Deeper hierarchies and transitive dependencies
-- More powerful mechanisms for mixing, matching, and publishing registries, so vendors, OSS authors, and enterprises can independently define and share their conventions, all interoperable and versioned within the broader OpenTelemetry ecosystem.
-
-Stay tuned, the next generation of semantic convention management is coming, and Weaver will make it seamless for the whole community. 
 
 ## Weaver in Action: Key Commands
 
@@ -217,10 +209,12 @@ weaver registry live-check --registry ./todo-app-registry
 
 We're working hard to make Weaver easier to use andeven more powerful and flexible:
 
-- Multi-Registry Support: Compose, layer, and manage dependencies between multiple semantic convention registries.
-- Schema v2: Aligning with new OTEL schema standards for greater flexibility and ecosystem support.
-- Type-Safe SDK Generation: Auto-generate strongly typed client libraries, reducing errors and speeding up development.
-- Better Docs, Easier Onboarding: Improved templates, guides, and user experience for teams big and small.
+- **Better Docs, Easier Onboarding**: Improved templates, guides, and user experience for teams big and small.
+- **Multi-Registry Support**: Compose, layer, and manage dependencies between multiple semantic convention registries.
+- **Schema v2**: A new set of commands to package and publish resolved, self-contained telemetry schemas for applications and libraries. This standardization effort, known as telemetry schema v2, will make it easier for the entire observability ecosystem to build on top of semantic conventions and Weaver.
+- **Type-Safe SDK Generation**: Auto-generate strongly typed client libraries, reducing errors and speeding up development.
+
+Stay tuned, the next generation of semantic convention management is coming, and Weaver will make it seamless for the whole community.
 
 ## Get Involved!
 
