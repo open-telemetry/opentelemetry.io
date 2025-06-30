@@ -1,14 +1,14 @@
 ---
-title: Commencer pour les Ops
+title: Débuter pour les Ops
 linkTitle: Ops
 ---
 
-Cette page [Commencer pour les Ops](..) est faite pour vous si :
+Cette page à propos de [comment bien débuter](..) est faite pour vous si :
 
 - Vous exécutez un ensemble d'applications en production
 - Votre objectif est d'obtenir de la télémétrie de ces applications sans toucher
   à leur code
-- Vous voulez collecter des traces, des métriques et des logs de plusieurs
+- Vous souhaitez collecter des traces, des métriques et des logs de plusieurs
   services et les envoyer vers votre solution d'observabilité.
 
 OpenTelemetry peut vous aider ! Pour atteindre votre objectif d'obtenir de la

@@ -7,7 +7,7 @@ weight: 10
 aliases: [automatic]
 ---
 
-En tant qu'[Ops](/docs/getting-started/ops/) vous pourriez vouloir ajouter
+En tant qu'[Ops](/docs/getting-started/ops/) vous pourriez souhaiter ajouter
 l'observabilité à une ou plusieurs applications sans avoir à modifier le code
 source. OpenTelemetry vous permet d'obtenir rapidement un certain degré
 d'observabilité pour un service sans avoir à utiliser l'API et le SDK
@@ -18,9 +18,9 @@ l'[instrumentation avec du code](/docs/concepts/instrumentation/code-based).
 
 L'instrumentation Zero-code ajoute les capacités de l'API et du SDK
 OpenTelemetry à votre application, généralement à l'aide d'un agent ou d'un
-concept similaire. Les mécanismes spécifiques impliqués peuvent différer selon
-le langage de programmation, allant de la manipulation de bytecode, du monkey
-patching, ou d'eBPF pour injecter des appels à l'API et au SDK OpenTelemetry
+concept similaire. Les mécanismes spécifiques impliqués peuvent différer selon  
+le langage de programmation, allant de la manipulation de bytecode, au monkey  
+patching, en passant par eBPF pour injecter des appels à l'API et au SDK OpenTelemetry
 dans votre application.
 
 Typiquement, l'instrumentation Zero-code ajoute tout le nécessaire pour les
@@ -37,8 +37,8 @@ De plus, l'instrumentation Zero-code vous permet de configurer les
 Vous pouvez configurer l'instrumentation Zero-code via des variables
 d'environnement et d'autres mécanismes spécifiques au langage, tels que les
 propriétés système ou les arguments passés aux méthodes d'initialisation. Pour
-commencer, vous n'avez besoin que d'un nom de service configuré afin de pouvoir
-identifier le service dans la solution d'observabilité de votre choix.
+commencer, vous n'avez besoin que d'un nom de service configuré afin de pouvoir  
+identifier celui-ci dans la solution d'observabilité de votre choix.
 
 D'autres options de configuration sont disponibles, notamment :
 

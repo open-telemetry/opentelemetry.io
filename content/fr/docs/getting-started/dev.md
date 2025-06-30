@@ -3,7 +3,7 @@ title: Débuter pour les développeurs
 linkTitle: Dev
 ---
 
-Cett page [Débuter pour les dev](..) est faite pour vous si :
+Cette page à propos de [comment bien débuter](..) est faite pour vous si :
 
 - Vous développez des logiciels
 - Votre objectif est de rendre observable via l'écriture de code
