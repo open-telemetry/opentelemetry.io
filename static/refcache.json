@@ -13767,6 +13767,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-05-21T15:12:28.317486-04:00"
   },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.35.0//model/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-30T20:44:45.902032575Z"
+  },
   "https://github.com/open-telemetry/sig-contributor-experience": {
     "StatusCode": 206,
     "LastSeen": "2025-03-11T09:21:47.017232-04:00"
@@ -15751,6 +15755,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:24:12.345Z"
   },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#metrictarget-v2-autoscaling": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-30T20:45:16.054097514Z"
+  },
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.30/#namespacestatus-v1-core": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:25:12.345Z"
@@ -15830,6 +15838,10 @@
   "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/": {
     "StatusCode": 206,
     "LastSeen": "2025-06-03T14:24:50.356269055Z"
+  },
+  "https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#support-for-metrics-apis": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-30T20:45:19.926394012Z"
   },
   "https://kubewarden.io/": {
     "StatusCode": 206,
