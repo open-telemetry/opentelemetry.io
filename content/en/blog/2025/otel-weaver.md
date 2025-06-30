@@ -81,7 +81,7 @@ Below are some of the key policy checks enforced for the OTEL registry:
 | No requirement levels on attributes  | IDs must match naming patterns          | No stability downgrades                  |
 | No duplicate attributes in group     | Attributes must be fully qualified      | No type or unit changes                  |
 | Attribute sets must be immutable     | No namespace collisions                 | Definitions require stability            |
-| Experimental attributes in stable groups must be opt-in | No constant name collisions  | Enum values must be immutable            |
+| Experimental attributes in stable groups must be opt-in | No constant name collisions  | Enum values may not be changed, once defined            |
 
 **Generating Markdown Documentation:**<br/>
 Weaver automatically produces the human-readable docs you see at opentelemetry.io.
@@ -121,6 +121,16 @@ This command generates a compliance report of the signals emitted by your applic
 
 Weaver `live-check` is not only useful for verifying your application's compliance with semantic conventions, but it can also be applied to all the libraries you link to it, directly in your CI/CD workflow!
 Beyond basic model compliance, custom Rego policies enable organization-specific invariant and best practice checks. Every attribute and signal is passed through the policy engine as it's received. For example, you could define a policy for the range of a metric's value, or that a particular attribute's string value matches some regex. The policies are independent of the semantic convention registry, so you can define application or library specific checks as needed.
+
+**Simulating Telemetry with weaver emit**<br/>
+Instrumenting your code and building dashboards often happen at different times, and sometimes with different people. This can slow down your observability efforts: frontend and SRE teams can't build useful dashboards or alerts until the app emits real data in a staging or production environment. Weaver solves this chicken-and-egg problem with the emit command.
+
+```bash
+weaver registry emit --registry registry-path --endpoint http://localhost:4317
+```
+
+This command generates sample telemetry in OTLP format, which you can send directly to your collector, backend, or visualization tool.
+
 ### Custom Registries: Defining and Checking Your Own Telemetry Schema
 
 While Weaver powers the core OTEL registry, you can also use it to define and manage your own application's telemetry schema. This means you can reuse and extend the official conventions while adding custom signals, attributes, and events tailored to your domain, and you can both statically and live-check that your app's telemetry is up-to-date and complete.
@@ -197,7 +207,7 @@ We're working hard to make Weaver even more powerful, flexible, and easy to adop
 - **Better Docs & Easier Onboarding**: Expect more hands-on examples, step-by-step guides, and an improved focus on ease of use. We’re also creating templates and policies tailored for custom registries.
 - **Multi-Registry Support**: Enhanced support for composing, layering, and managing multiple semantic convention registries, including conflict resolution. This will also enable library authors to easily publish and share their own registries.
 - **Schema v2**: A new set of commands to package and publish resolved, self-contained telemetry schemas for applications and libraries. This standardization effort (telemetry schema v2) will make it easier for the entire observability ecosystem to build on top of semantic conventions and Weaver.
-- **Type-Safe SDK Generation**: Automatically generate strongly typed client libraries to reduce errors and accelerate development. An example of type-safe Go SDK for Prometheus is already in progress at [promconv](https://github.com/sh0rez/promconv/tree/main).
+- **Type-Safe SDK Generation**: Automatically generate strongly typed client libraries to reduce errors and accelerate development. An example of type-safe Go SDK for Prometheus is already in progress at [promconv](https://github.com/sh0rez/promconv/tree/main). A more general Go client SDK using Weaver and a type-safe API approach is also being developed at [MrAlias/semconv-go](https://github.com/MrAlias/semconv-go)
 
 Stay tuned, the next generation of semantic convention management is coming, and Weaver will make it seamless for the whole community.
 
