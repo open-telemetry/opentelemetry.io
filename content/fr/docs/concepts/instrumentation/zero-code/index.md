@@ -23,7 +23,7 @@ le langage de programmation, allant de la manipulation de bytecode, du monkey
 patching, ou d'eBPF pour injecter des appels à l'API et au SDK OpenTelemetry
 dans votre application.
 
-Typiquement, l'instrumentation Zero-code ajoute une instrumentation pour les
+Typiquement, l'instrumentation Zero-code ajoute tout le nécessaire pour les
 bibliothèques que vous utilisez. Cela signifie que les requêtes et réponses, les
 appels aux bases de données, les appels de file d'attente de messages, et
 autres, sont instrumentés. Le code de votre application, cependant, n'est
