@@ -109,7 +109,7 @@ weaver registry diff -r current-version-registry-path --baseline-registry previo
 ```
 
 **Live Instrumentation Checks and Coverage:**<br/>
-Users and maintainers can leverage Weaver to live-check that their application correctly emits telemetry conforming to the official semantic conventions. 
+Users and maintainers can leverage Weaver to [live-check](https://github.com/open-telemetry/weaver/tree/main/crates/weaver_live_check#readme) that their application correctly emits telemetry conforming to the official semantic conventions, or a custom registry (see below). 
 
 ```bash
 weaver registry live-check --registry registry-path
