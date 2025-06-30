@@ -11,7 +11,8 @@ default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829
 Esta página mostrará como começar a utilizar o OpenTelemetry em Java.
 
 Você aprenderá como instrumentalizar automaticamente uma aplicação Java simples,
-de modo que [rastros][traces], [métricas][metrics], e [logs][] sejam emitidos para o console.
+de modo que [rastros][traces], [métricas][metrics], e [logs][] sejam emitidos
+para o console.
 
 ## Pré-requisitos {#prerequisites}
 
@@ -33,7 +34,8 @@ Para exemplos mais elaborados, veja [exemplos](../examples/).
 ### Dependências {#dependencies}
 
 Para começar, configure um ambiente em um novo diretório chamado `java-simple`.
-Dentro dele, crie um arquivo chamado `build.gradle.kts` e adicione o seguinte conteúdo ao arquivo:
+Dentro dele, crie um arquivo chamado `build.gradle.kts` e adicione o seguinte
+conteúdo ao arquivo:
 
 ```kotlin
 plugins {
@@ -131,9 +133,10 @@ java -jar ./build/libs/java-simple.jar
 
 ## Instrumentação {#instrumentation}
 
-Em seguida, você usará um [agente Java](/docs/zero-code/java/agent/) para instrumentalizar automaticamente a
-aplicação durante sua inicialização. Embora seja possível [configurar o agente
-Java][configure the java agent] de várias maneiras, os passos abaixo utilizam variáveis de ambiente.
+Em seguida, você usará um [agente Java](/docs/zero-code/java/agent/) para
+instrumentalizar automaticamente a aplicação durante sua inicialização. Embora
+seja possível [configurar o agente Java][configure the java agent] de várias
+maneiras, os passos abaixo utilizam variáveis de ambiente.
 
 1. Faça o download do [opentelemetry-javaagent.jar][] na página de [releases][]
    do repositório `opentelemetry-java-instrumentation`. O arquivo JAR contém o
@@ -147,8 +150,8 @@ Java][configure the java agent] de várias maneiras, os passos abaixo utilizam v
    to the JAR file.{{% /alert %}}
 
 2. Configure e exporte as variáveis que especificam o JAR do agente Java e um
-   [exportador de console][console exporter], utilizando a notação adequada para seu ambiente
-   &mdash; aqui demonstramos a notação para shells do tipo bash:
+   [exportador de console][console exporter], utilizando a notação adequada para
+   seu ambiente &mdash; aqui demonstramos a notação para shells do tipo bash:
 
    ```sh
    export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
@@ -247,12 +250,13 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 
 Para mais:
 
-- Execute este exemplo com outro [exportador][exporter] para dados de telemetria.
+- Execute este exemplo com outro [exportador][exporter] para dados de
+  telemetria.
 - Experimente a [instrumentação sem código](/docs/zero-code/java/agent/) em uma
   de suas próprias aplicações.
 - Para telemetria levemente personalizada, experimente [anotações][annotations].
-- Aprenda sobre [instrumentação manual][manual instrumentation] e experimente mais
-  [exemplos](../examples/).
+- Aprenda sobre [instrumentação manual][manual instrumentation] e experimente
+  mais [exemplos](../examples/).
 - Dê uma olhada no [OpenTelemetry Demo](/docs/demo/), que inclui o
   [Serviço de Anúncios](/docs/demo/services/ad/) baseado em Java e o
   [Serviço de Detecção de Fraude](/docs/demo/services/fraud-detection/) baseado
@@ -263,8 +267,7 @@ Para mais:
 [logs]: /docs/concepts/signals/logs/
 [annotations]: /docs/zero-code/java/agent/annotations/
 [configure the java agent]: /docs/zero-code/java/agent/configuration/
-[console exporter]:
-  /docs/languages/java/configuration/#properties-exporters
+[console exporter]: /docs/languages/java/configuration/#properties-exporters
 [exporter]: /docs/languages/java/configuration/#properties-exporters
 [java-vers]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
