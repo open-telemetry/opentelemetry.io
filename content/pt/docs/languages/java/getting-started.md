@@ -147,7 +147,7 @@ Java][configure the java agent] de várias maneiras, os passos abaixo utilizam v
    to the JAR file.{{% /alert %}}
 
 2. Configure e exporte as variáveis que especificam o JAR do agente Java e um
-   [exportador de console][], utilizando a notação adequada para seu ambiente
+   [exportador de console][console exporter], utilizando a notação adequada para seu ambiente
    &mdash; aqui demonstramos a notação para shells do tipo bash:
 
    ```sh
