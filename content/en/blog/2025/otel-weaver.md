@@ -62,7 +62,7 @@ Getting started with Weaver is easy: it's available as a pre-built binary CLI (s
 
 ### How the OTEL Semantic Conventions Community Uses Weaver
 
-The OTEL semantic conventions community relies on Weaver as its primary tool for building, validating, and evolving the official registry. Some key tasks include:
+The OTEL semantic conventions community relies on Weaver as its primary tool for building, validating, and evolving the official registry. Below are some commands used by the community.
 
 **Checking the Official OTEL Registry:**<br/>
 Weaver ensures every change to the registry is consistent, validated, and follows the core policies.
@@ -73,13 +73,15 @@ weaver registry check -r registry-path
 
 The following table provides a brief overview of the policies implemented for the OTEL registry.
 
-| Policy Rule                                         | Policy Rule                                         | Policy Rule                                         |
-|-----------------------------------------------------|-----------------------------------------------------|-----------------------------------------------------|
-| No attributes outside registry                      | Names must follow format rules                      | No removal of elements                              |
-| Definitions require stability                       | IDs must match naming patterns                      | No stability downgrades                             |
-| No requirement levels on attributes                 | Attributes fully qualified                          | No type or unit changes                             |
-| No constant name collisions                         | No namespace collisions                             | Attribute sets immutable                            |
-| No duplicate attributes in group                    | Experimental attributes in stable groups must be opt-in | Enum values immutable                               |
+Below are some of the key policy checks enforced for the OTEL registry:
+
+| **Attribute Rules**                  | **Naming & Structure**                  | **Stability & Evolution**                |
+|--------------------------------------|-----------------------------------------|------------------------------------------|
+| No attributes outside registry       | Names must follow format rules          | No removal of elements                   |
+| No requirement levels on attributes  | IDs must match naming patterns          | No stability downgrades                  |
+| No duplicate attributes in group     | Attributes must be fully qualified      | No type or unit changes                  |
+| Attribute sets must be immutable     | No namespace collisions                 | Definitions require stability            |
+| Experimental attributes in stable groups must be opt-in | No constant name collisions  | Enum values must be immutable            |
 
 **Generating Markdown Documentation:**<br/>
 Weaver automatically produces the human-readable docs you see at opentelemetry.io.
