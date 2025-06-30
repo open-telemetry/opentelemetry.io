@@ -121,16 +121,12 @@ This command generates a compliance report of the signals emitted by your applic
 
 ### Custom Registries: Defining and Checking Your Own Telemetry Schema
 
-While Weaver powers the core OTEL registry, you can also use it to define and manage your own application's telemetry schema. This lets you:
+While Weaver powers the core OTEL registry, you can also use it to define and manage your own application's telemetry schema. This means you can reuse and extend the official conventions while adding custom signals, attributes, and events tailored to your domain, and you can both statically and live-check that your app's telemetry is up-to-date and complete.
 
-- Reuse and extend the official conventions, while adding custom signals, attributes, and events tailored to your domain.
-- Statistically and live-check that your app's telemetry is up-to-date and complete.
-- Generate docs, constants, and even type-safe client SDKs (Go, Rust, ...).
+> Note:  
+> We are actively working on making custom registries even easier to use, with better onboarding, simpler configs, and more integrated code generation and documentation support. We’re looking for feedback and help in this area.
 
-> Note:
-> We are actively working on making custom registries even easier to use, with better onboarding, simpler configs, and more integrated code generation and documentation support. Some complexities remain, but the community is already using these features and contributing new ideas, so now’s a great time to try it for your app!
-
-Here’s a quick example using a custom registry for a “ToDo” app. First, create a `registry_manifest.yaml` file to specify your registry:
+To help you get started, here's a quick example using a custom registry for a “ToDo” app. First, create a `registry_manifest.yaml` file to specify your registry:
 
 ```yaml
 name: todo_app
