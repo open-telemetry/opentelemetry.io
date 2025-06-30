@@ -268,7 +268,7 @@ Para mais:
 [exporter]: /docs/languages/java/configuration/#properties-exporters
 [java-vers]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
-[instrumentação manual]: ../instrumentation
+[manual instrumentation]: ../instrumentation
 [opentelemetry-javaagent.jar]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
 [releases]:
