@@ -49,7 +49,7 @@ In other words, **treat telemetry like a public API**. If you wouldn't break you
 What can Weaver do for you?
 
 - **Define and Version Your Registry**: Create your own semantic conventions or build on top of OTEL's. Version and share your schemas with your team or community.
-- **Policy-Based Validation**: Enforce best practices-naming, stability, immutability, and more. Detect breaking changes and maintain registry quality. You can even define your own policies!.
+- **Policy-Based Validation**: Enforce best practices-naming, stability, immutability, and more. Detect breaking changes and maintain quality. You can even define your own policies!
 - **Live Instrumentation Checks**: Check that your application's telemetry matches your defined schema and best practices. Measure instrumentation coverage, similar to code coverage, to ensure your unit and integration tests are actually exercising all your instrumented code. Never miss critical signals in production again.
 - **Code and Docs Generation**: Generate Markdown documentation and constants in many programming languages out of the box. We're also working on more advanced solutions to automatically generate type-safe SDKs (Go, Rust, ...) for even easier and safer integration.
 - **Diff and Evolution**: Safely evolve your telemetry schema with automatic diffs and upgrade/downgrade support.
