@@ -90,15 +90,16 @@ Weaver automatically produces the human-readable docs you see at opentelemetry.i
 weaver registry update-markdown -r registry-path --target=markdown
 ```
 
-**Generating Constants for Client SDKs:**<br/>
-Every supported OpenTelemetry SDK benefits from auto-generated constants in their native language, ensuring no typos or inconsistencies.
+**Generating Code for Client SDKs:**<br/>
+Every supported OpenTelemetry SDK benefits from auto-generated constants and code in their native language, ensuring no typos or inconsistencies.
+
+For example, the code generated from Weaver for the Go client SDK can be found [here](https://github.com/open-telemetry/opentelemetry-go/tree/main/semconv). The Weaver command used looks like:
 
 ```bash
 weaver registry generate -r registry-path -t templates-root-dir go
-weaver registry generate -r registry-path -t templates-root-dir java
-# ...and more
 ```
 
+Similarly, the code generated for the Java client SDK is visible in this [project](https://github.com/open-telemetry/semantic-conventions-java). Weaver offers an embedded template system compatible with Jinja2, with a large number of custom functions to facilitate code generation in different languages.
 
 **Tracking Changes and Schema Evolution:**<br/>
 Weaver tracks diffs between registry versions to highlight breaking changes or improvements.
