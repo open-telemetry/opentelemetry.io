@@ -60,7 +60,7 @@ dependencies {
 ### Criando e iniciando um servidor HTTP {#create-and-launch-an-http-server}
 
 No mesmo diretório, crie um arquivo chamado `DiceApplication.java` e adicione o
-seguinte código:
+seguinte código ao arquivo:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/DiceApplication.java"?>
