@@ -8,7 +8,7 @@ primary goal of this process is to reduce the total time users are vulnerable to
 publicly known exploits.
 
 The relevant OpenTelemetry repository maintainers, supported by the Security SIG and
-OpenTelemetry Technical Committee (OTel TC), are responsible for responding to
+OpenTelemetry Technical Committee (TC), are responsible for responding to
 the incident including internal communication and external disclosure.
 
 ## Supported Versions
