@@ -166,7 +166,7 @@ Java][] de várias maneiras, os passos abaixo utilizam variáveis de ambiente.
 
    {{% /alert %}}
 
-3. Rode sua **aplicação** mais uma vez:
+3. Execute a **aplicação** mais uma vez:
 
    ```console
    $ java -jar ./build/libs/java-simple.jar
