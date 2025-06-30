@@ -188,30 +188,14 @@ groups:
         requirement_level: required
 ```
 
-**Key commands already supported for custom registries:**
-
-**Static Validation:**
-
-```bash
-weaver registry check -r ./todo-app-registry
-```
-
-**Live Instrumentation Checks (with coverage):**
-
-```bash
-weaver registry live-check --registry ./todo-app-registry
-```
-
-[More ...]
-
 ## What's Next for Weaver?
 
-We're working hard to make Weaver easier to use andeven more powerful and flexible:
+We're working hard to make Weaver even more powerful, flexible, and easy to adopt:
 
-- **Better Docs, Easier Onboarding**: Improved templates, guides, and user experience for teams big and small.
-- **Multi-Registry Support**: Compose, layer, and manage dependencies between multiple semantic convention registries.
-- **Schema v2**: A new set of commands to package and publish resolved, self-contained telemetry schemas for applications and libraries. This standardization effort, known as telemetry schema v2, will make it easier for the entire observability ecosystem to build on top of semantic conventions and Weaver.
-- **Type-Safe SDK Generation**: Auto-generate strongly typed client libraries, reducing errors and speeding up development.
+- **Better Docs & Easier Onboarding**: Expect more hands-on examples, step-by-step guides, and an improved focus on ease of use. We’re also creating templates and policies tailored for custom registries.
+- **Multi-Registry Support**: Enhanced support for composing, layering, and managing multiple semantic convention registries, including conflict resolution. This will also enable library authors to easily publish and share their own registries.
+- **Schema v2**: A new set of commands to package and publish resolved, self-contained telemetry schemas for applications and libraries. This standardization effort (telemetry schema v2) will make it easier for the entire observability ecosystem to build on top of semantic conventions and Weaver.
+- **Type-Safe SDK Generation**: Automatically generate strongly typed client libraries to reduce errors and accelerate development. An example of type-safe Go SDK for Prometheus is already in progress at [promconv](https://github.com/sh0rez/promconv/tree/main).
 
 Stay tuned, the next generation of semantic convention management is coming, and Weaver will make it seamless for the whole community.
 
@@ -225,7 +209,7 @@ Stay tuned, the next generation of semantic convention management is coming, and
 - **Contribute**: Your feedback and contributions help shape the future of observability!
 
 Weaver is built to be highly extensible and configurable. You can create custom registries, write policies with Rego, and design templates with Jinja2, all using Weaver's built-in engines.
-If you want to get started or have questions, join us in #otel-weaver on Slack. We're happy to help and always interested in your ideas!
+If you want to get started or have questions, join us in [#otel-weaver](https://cloud-native.slack.com/archives/C0697EXNTL3) on Slack. We're happy to help and always interested in your ideas!
 
 
 > Observability is not just a tool, it's a practice. Build it by design, with clear, consistent, and automated workflows powered by OpenTelemetry Weaver.
