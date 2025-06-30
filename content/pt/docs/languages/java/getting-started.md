@@ -133,7 +133,7 @@ java -jar ./build/libs/java-simple.jar
 
 Em seguida, você usará um [agente Java](/docs/zero-code/java/agent/) para instrumentalizar automaticamente a
 aplicação durante sua inicialização. Embora seja possível [configurar o agente
-Java][] de várias maneiras, os passos abaixo utilizam variáveis de ambiente.
+Java][configure the java agent] de várias maneiras, os passos abaixo utilizam variáveis de ambiente.
 
 1. Faça o download do [opentelemetry-javaagent.jar][] na página de [releases][]
    do repositório `opentelemetry-java-instrumentation`. O arquivo JAR contém o
