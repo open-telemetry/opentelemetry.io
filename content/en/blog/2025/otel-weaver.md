@@ -120,7 +120,7 @@ This command generates a compliance report of the signals emitted by your applic
 ![Live-check Report](otel-weaver/live-check.png)
 
 Weaver `live-check` is not only useful for verifying your application's compliance with semantic conventions, but it can also be applied to all the libraries you link to it, directly in your CI/CD workflow!
-
+Beyond basic model compliance, custom Rego policies enable organization-specific invariant and best practice checks. Every attribute and signal is passed through the policy engine as it's received. For example, you could define a policy for the range of a metric's value, or that a particular attribute's string value matches some regex. The policies are independent of the semantic convention registry, so you can define application or library specific checks as needed.
 ### Custom Registries: Defining and Checking Your Own Telemetry Schema
 
 While Weaver powers the core OTEL registry, you can also use it to define and manage your own application's telemetry schema. This means you can reuse and extend the official conventions while adding custom signals, attributes, and events tailored to your domain, and you can both statically and live-check that your app's telemetry is up-to-date and complete.
