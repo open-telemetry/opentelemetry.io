@@ -122,7 +122,7 @@ go get "go.opentelemetry.io/otel" \
 
 ### 初始化 OpenTelemetry SDK{#initialize-the-opentelemetry-sdk}
 
-首先我们需要初始化 OpenTelemetry SDK。这对任何需要导出遥测数据的应用程序都是 _必须_ 的
+首先我们需要初始化 OpenTelemetry SDK。这对任何需要导出遥测数据的应用程序都是**必须**的
 
 创建一个 `otel.go` 文件，并在其中编写 OpenTelemetry SDK 的初始化代码：
 
@@ -1138,7 +1138,7 @@ go run .
 如果你想要进一步探索更复杂的示例，可以查看
 [OpenTelemetry 演示](/docs/demo/)，
 其中包含用 Go 编写的[结账服务](/docs/demo/services/checkout/)，
-[产品目录服务](/docs/demo/services/product-catalog/)以及[会计服务](/docs/demo/services/accounting/)
+[产品目录服务](/docs/demo/services/product-catalog/)以及[会计服务](/docs/demo/services/accounting/)。
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
