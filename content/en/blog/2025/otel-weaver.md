@@ -44,7 +44,7 @@ In other words, **treat telemetry like a public API**. If you wouldn't break you
 
 ## OTel Weaver: Empowering Semantic Conventions and Observability by Design
 
-**OTel Weaver** is the open-source CLI and automation platform that helps you manage, validate, and evolve semantic conventions and observability workflows.
+**OTel Weaver** is the open source CLI and automation platform that helps you manage, validate, and evolve semantic conventions and observability workflows.
 
 What can Weaver do for you?
 
@@ -95,7 +95,7 @@ weaver registry update-markdown -r registry-path --target=markdown
 **Generating Code for Instrumentation Helpers:**<br/>
 Every supported OpenTelemetry SDK benefits from auto-generated constants and code in their native language, ensuring no typos or inconsistencies.
 
-For example, the code generated from Weaver for the Go client SDK can be found [here](https://github.com/open-telemetry/opentelemetry-go/tree/main/semconv). The Weaver command used looks like:
+For example, the code generated from Weaver for the Go client SDK can be found in this [repository](https://github.com/open-telemetry/opentelemetry-go/tree/main/semconv). The Weaver command used looks like:
 
 ```bash
 weaver registry generate -r registry-path -t templates-root-dir go
@@ -111,7 +111,7 @@ weaver registry diff -r current-version-registry-path --baseline-registry previo
 ```
 
 **Live Instrumentation Checks and Coverage:**<br/>
-Users and maintainers can leverage Weaver to [live-check](https://github.com/open-telemetry/weaver/tree/main/crates/weaver_live_check#readme) that their application correctly emits telemetry conforming to the official semantic conventions, or a custom registry (see below). 
+Users and maintainers can leverage Weaver to [live-check](https://github.com/open-telemetry/weaver/tree/main/crates/weaver_live_check#readme) that their application correctly emits telemetry conforming to the official semantic conventions, or a custom registry (see below).
 
 ```bash
 weaver registry live-check --registry registry-path
@@ -122,7 +122,7 @@ This command generates a compliance report of the signals emitted by your applic
 ![Live-check Report](otel-weaver/live-check.png)
 
 Weaver `live-check` is not only useful for verifying your application's compliance with semantic conventions, but it can also be applied to all the libraries you link to it, directly in your CI/CD workflow!
-Beyond basic model compliance, custom Rego policies enable organization-specific invariant and best practice checks. Every attribute and signal is passed through the policy engine as it's received. For example, you could define a policy for the range of a metric's value, or that a particular attribute's string value matches some regex. The policies are independent of the semantic convention registry, so you can define application or library specific checks as needed.
+Beyond basic model compliance, custom Rego policies enable organization-specific invariant and best practice checks. Every attribute and signal is passed through the policy engine as it's received. For example, you could define a policy for the range of a metric's value, or that a particular attribute's string value matches some regular expression. The policies are independent of the semantic convention registry, so you can define application or library specific checks as needed.
 
 **Simulating Telemetry with weaver emit**<br/>
 Instrumenting your code and building dashboards often happen at different times, and sometimes with different people. This can slow down your observability efforts: frontend and SRE teams can't build useful dashboards or alerts until the app emits real data in a staging or production environment. Weaver solves this chicken-and-egg problem with the emit command.
@@ -137,7 +137,7 @@ This command generates sample telemetry in OTLP format, which you can send direc
 
 While Weaver powers the core OTel registry, you can also use it to define and manage your own application's telemetry schema. This means you can reuse and extend the official conventions while adding custom signals, attributes, and events tailored to your domain, and you can both statically and live-check that your app's telemetry is up-to-date and complete.
 
-> Note:  
+> Note:
 > We are actively working on making custom registries even easier to use, with better onboarding, simpler configs, and more integrated code generation and documentation support. We’re looking for feedback and help in this area.
 
 To help you get started, here's a quick example using a custom registry for a “ToDo” app. First, create a `registry_manifest.yaml` file to specify your registry:
