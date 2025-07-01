@@ -54,6 +54,8 @@ What can Weaver do for you?
 - **Code and Docs Generation**: Generate Markdown documentation and constants in many programming languages out of the box. We're also working on more advanced solutions to automatically generate type-safe instrumentation helpers (Go, Rust, ...) for even easier and safer integration.
 - **Diff and Evolution**: Safely evolve your telemetry schema with automatic diffs and upgrade/downgrade support.
 
+> Definition: A registry is a collection of semantic conventions, standardized definitions that describe how telemetry data (like metrics, logs, and traces) should be named and structured. OpenTelemetry maintains the official semantic convention registry, but it’s entirely possible for teams, projects, or vendors to define and publish their own custom registries to suit specific needs.
+
 Weaver currently supports a basic form of multi-registry, allowing a custom registry to import and override another registry (for example, extending the official OTEL semantic conventions). At present, only two levels are supported: your custom registry and a single dependency. This covers many common cases, but we know there's much more potential for flexibility and collaboration.
 
 ## Weaver in Action: Key Commands
