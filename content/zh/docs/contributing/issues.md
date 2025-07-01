@@ -39,7 +39,6 @@ default_lang_commit: e04e8da1f4527d65c162af9a670eb3be8e7e7fb9
    {{% alert title="首次贡献？" color="primary alert--first-timer" %}}
 
    可以选择带有以下标签的 Issue：
-
    - [Good first issue](<{{% param _issue %}}%22good+first+issue%22>)
    - [Help wanted](<{{% param _issue %}}%3A%22help+wanted%22>)
 
