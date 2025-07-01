@@ -3,6 +3,7 @@ title: Débuter
 description: Débutez avec OpenTelemetry selon votre rôle.
 no_list: true
 weight: 160
+default_lang_commit: 3512b0ae11f72d3a954d86da59ad7f98d064bdad
 ---
 
 Sélectionnez un rôle[^1] pour commencer :
