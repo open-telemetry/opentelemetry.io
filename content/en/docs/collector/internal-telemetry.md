@@ -350,16 +350,11 @@ its introduction. Note however that these metrics were inadvertently reverted to
 
 | Metric name                                           | Description                                                                               | Type      |
 | ----------------------------------------------------- | ----------------------------------------------------------------------------------------- | --------- |
-| `http.client.active_requests`                         | Number of active HTTP client requests.                                                    | Counter   |
-| `http.client.connection.duration`                     | Measures the duration of the successfully established outbound HTTP connections.          | Histogram |
-| `http.client.open_connections`                        | Number of outbound HTTP connections that are active or idle on the client.                | Counter   |
-| `http.client.request.size`                            | Measures the size of HTTP client request bodies.                                          | Counter   |
-| `http.client.duration`                                | Measures the duration of HTTP client requests.                                            | Histogram |
-| `http.client.response.size`                           | Measures the size of HTTP client response bodies.                                         | Counter   |
-| `http.server.active_requests`                         | Number of active HTTP server requests.                                                    | Counter   |
-| `http.server.request.size`                            | Measures the size of HTTP server request bodies.                                          | Counter   |
-| `http.server.duration`                                | Measures the duration of HTTP server requests.                                            | Histogram |
-| `http.server.response.size`                           | Measures the size of HTTP server response bodies.                                         | Counter   |
+| `http.client.request.body.size`                       | Measures the size of HTTP client request bodies.                                          | Counter   |
+| `http.client.request.duration`                        | Measures the duration of HTTP client requests.                                            | Histogram |
+| `http.server.request.body.size`                       | Measures the size of HTTP server request bodies.                                          | Counter   |
+| `http.server.request.duration`                        | Measures the duration of HTTP server requests.                                            | Histogram |
+| `http.server.response.body.size`                      | Measures the size of HTTP server response bodies.                                         | Counter   |
 | `otelcol_processor_batch_batch_`<br>`send_size_bytes` | Number of bytes in the batch that was sent.                                               | Histogram |
 | `rpc.client.duration`                                 | Measures the duration of outbound RPC.                                                    | Histogram |
 | `rpc.client.request.size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
