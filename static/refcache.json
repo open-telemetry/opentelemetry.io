@@ -13823,6 +13823,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:54:01.460623-05:00"
   },
+  "https://github.com/open-telemetry/sig-security/blob/main/security-response.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-01T06:08:12.561678305Z"
+  },
   "https://github.com/open-telemetry/weaver": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T20:08:32.827234548Z"
