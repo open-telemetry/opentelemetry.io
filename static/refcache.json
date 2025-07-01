@@ -3767,6 +3767,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T14:41:51.138475-05:00"
   },
+  "https://github.com/codeboten/opentelemetry-collector/blob/313167505b44e5dc9a29c0b9242cc4547db11ec3/CHANGELOG.md#v1250v01190": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-18T16:37:37.617753182-07:00"
+  },
   "https://github.com/codefromthecrypt": {
     "StatusCode": 200,
     "LastSeen": "2024-11-18T23:18:18.05798173Z"
@@ -5794,6 +5798,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9b28f76c02c18f7479d10e4b6a95a21467fd85d6/processor/transformprocessor/testdata/config.yaml": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:12.970839-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CHANGELOG.md#v01200": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-18T16:37:40.740047715-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/README.md": {
     "StatusCode": 206,
@@ -8635,6 +8643,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:14:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-injector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-27T18:42:43.048888+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:23.080955-05:00"
@@ -10882,6 +10894,14 @@
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0232-maturity-of-otel.md#beta": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:17:12.345Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0232-maturity-of-otel.md#development": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-27T07:09:24.399296953Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/0232-maturity-of-otel.md#stable": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-27T07:09:22.065954736Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/README.md": {
     "StatusCode": 206,
@@ -13726,6 +13746,10 @@
   "https://github.com/open-telemetry/sig-security": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:54:01.460623-05:00"
+  },
+  "https://github.com/open-telemetry/sig-security/blob/main/security-response.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-01T06:08:12.561678305Z"
   },
   "https://github.com/open-telemetry/weaver": {
     "StatusCode": 206,
@@ -16791,6 +16815,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-05-26T16:48:26.73412+03:00"
   },
+  "https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-25T14:35:48.528151427Z"
+  },
   "https://opentelemetry.io/ecosystem/registry/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-22T07:14:47.144521257-08:00"
@@ -18583,6 +18611,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-05-16T08:01:09.322908+02:00"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.17.0-alpha/opentelemetry-instrumentation-bom-alpha-2.17.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-27T12:45:37.689588958Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.7.0-alpha/opentelemetry-instrumentation-bom-alpha-2.7.0-alpha.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:08.34491-05:00"
@@ -18626,6 +18658,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.16.0/opentelemetry-instrumentation-bom-2.16.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2025-05-16T08:01:07.050126+02:00"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.17.0/opentelemetry-instrumentation-bom-2.17.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-27T12:45:36.025520717Z"
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.7.0/opentelemetry-instrumentation-bom-2.7.0.pom": {
     "StatusCode": 206,
