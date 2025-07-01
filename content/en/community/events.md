@@ -10,7 +10,6 @@ The OpenTelemetry community participates in and organizes various events through
 
 {{< community-event-list >}}
 
-You can also find the latest event announcements in our [RSS feed](/index.xml) and [announcements section](/announcements/).
 
 ## Key Community Events
 
