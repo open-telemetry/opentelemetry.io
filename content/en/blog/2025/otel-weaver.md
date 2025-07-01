@@ -4,7 +4,7 @@ linkTitle: OTel Weaver
 date: 2025-06-27
 author: [Laurent Quérel](https://github.com/lquerel), [Jeremy Blythe](https://github.com/jerbly), [Josh Suereth](https://github.com/jsuereth), [Liudmila Molkova](https://github.com/lmolkova)
 sig: "Semantic Conventions: Tooling"
-cSpell:ignore: Quérel, Liudmila, Molkova, Suereth, SDLC, promconv
+cSpell:ignore: Liudmila Molkova promconv Quérel SDLC Suereth
 ---
 
 {{% alert title="TL;DR" %}} Stop treating observability as an afterthought.
