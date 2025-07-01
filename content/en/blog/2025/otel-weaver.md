@@ -1,8 +1,8 @@
 ---
 title: Observability by Design: Unlocking Consistency with OpenTelemetry Weaver
-linkTitle: OTEL Weaver
+linkTitle: OTel Weaver
 date: 2025-06-27
-author: [OTEL Weaver Maintainers](https://github.com/orgs/open-telemetry/teams/weaver-maintainers) 
+author: [Laurent Querel](https://github.com/lquerel), [Jeremy Blythe](https://github.com/jerbly), [Josh Suereth](https://github.com/jsuereth), [Liudmila Molkova](https://github.com/lmolkova)
 sig: "Semantic Conventions: Tooling"
 ---
 
@@ -29,7 +29,7 @@ The [OpenTelemetry Semantic Convention](https://opentelemetry.io/docs/specs/semc
 - **Interoperability**: Tools, teams, and vendors can understand each other.
 - **Automation**: Machine-readable standards enable code and docs generation, static and live compliance checks, and more.
 
-But maintaining and evolving such a registry across teams and tools isn't easy. That's where [OTEL Weaver](https://github.com/open-telemetry/weaver) comes in.
+But maintaining and evolving such a registry across teams and tools isn't easy. That's where [OTel Weaver](https://github.com/open-telemetry/weaver) comes in.
 
 ## Observability by Design: A Modern Engineering Approach
 
@@ -42,9 +42,9 @@ Observability by Design means integrating observability into your software devel
 
 In other words, **treat telemetry like a public API**. If you wouldn't break your app's API between releases, don't break your telemetry either.
 
-## OTEL Weaver: Empowering Semantic Conventions and Observability by Design
+## OTel Weaver: Empowering Semantic Conventions and Observability by Design
 
-**OTEL Weaver** is the open-source CLI and automation platform that helps you manage, validate, and evolve semantic conventions and observability workflows.
+**OTel Weaver** is the open-source CLI and automation platform that helps you manage, validate, and evolve semantic conventions and observability workflows.
 
 What can Weaver do for you?
 
@@ -56,26 +56,26 @@ What can Weaver do for you?
 
 > Definition: A registry is a collection of semantic conventions, standardized definitions that describe how telemetry data (like metrics, logs, and traces) should be named and structured. OpenTelemetry maintains the official semantic convention registry, but it’s entirely possible for teams, projects, or vendors to define and publish their own custom registries to suit specific needs.
 
-Weaver currently supports a basic form of multi-registry, allowing a custom registry to import and override another registry (for example, extending the official OTEL semantic conventions). At present, only two levels are supported: your custom registry and a single dependency. This covers many common cases, but we know there's much more potential for flexibility and collaboration.
+Weaver currently supports a basic form of multi-registry, allowing a custom registry to import and override another registry (for example, extending the official OTel semantic conventions). At present, only two levels are supported: your custom registry and a single dependency. This covers many common cases, but we know there's much more potential for flexibility and collaboration.
 
 ## Weaver in Action: Key Commands
 
 Getting started with Weaver is easy: it's available as a pre-built binary CLI (see releases [page](https://github.com/open-telemetry/weaver/releases)) and a Docker [image](https://hub.docker.com/r/otel/weaver), ready to drop into any CI/CD pipeline or local workflow.
 
-### How the OTEL Semantic Conventions Community Uses Weaver
+### How the OTel Semantic Conventions Community Uses Weaver
 
-The OTEL semantic conventions community relies on Weaver as its primary tool for building, validating, and evolving the official registry. Below are some commands used by the community.
+The OTel semantic conventions community relies on Weaver as its primary tool for building, validating, and evolving the official registry. Below are some commands used by the community.
 
-**Checking the Official OTEL Registry:**<br/>
+**Checking the Official OTel Registry:**<br/>
 Weaver ensures every change to the registry is consistent, validated, and follows the core policies.
 
 ```bash
 weaver registry check -r registry-path
 ```
 
-The following table provides a brief overview of the policies implemented for the OTEL registry.
+The following table provides a brief overview of the policies implemented for the OTel registry.
 
-Below are some of the key policy checks enforced for the OTEL registry:
+Below are some of the key policy checks enforced for the OTel registry:
 
 | **Attribute Rules**                  | **Naming & Structure**                  | **Stability & Evolution**                |
 |--------------------------------------|-----------------------------------------|------------------------------------------|
@@ -135,7 +135,7 @@ This command generates sample telemetry in OTLP format, which you can send direc
 
 ### Custom Registries: Defining and Checking Your Own Telemetry Schema
 
-While Weaver powers the core OTEL registry, you can also use it to define and manage your own application's telemetry schema. This means you can reuse and extend the official conventions while adding custom signals, attributes, and events tailored to your domain, and you can both statically and live-check that your app's telemetry is up-to-date and complete.
+While Weaver powers the core OTel registry, you can also use it to define and manage your own application's telemetry schema. This means you can reuse and extend the official conventions while adding custom signals, attributes, and events tailored to your domain, and you can both statically and live-check that your app's telemetry is up-to-date and complete.
 
 > Note:  
 > We are actively working on making custom registries even easier to use, with better onboarding, simpler configs, and more integrated code generation and documentation support. We’re looking for feedback and help in this area.
@@ -144,7 +144,7 @@ To help you get started, here's a quick example using a custom registry for a �
 
 ```yaml
 name: todo_app
-description: OTEL signals for my native ToDo app
+description: OTel signals for my native ToDo app
 semconv_version: 0.1.0
 dependencies:
   - name: otel
@@ -154,7 +154,7 @@ dependencies:
 Import and extend existing conventions, and define your own signals and attributes:
 
 ```yaml
-imports:             # import signals from the dependency registry, i.e. OTEL semantic conventions
+imports:             # import signals from the dependency registry, i.e. OTel semantic conventions
   metrics:
     - db.client.*    # import all metrics with names starting with `db.client.` 
   events:
@@ -214,7 +214,7 @@ Stay tuned, the next generation of semantic convention management is coming, and
 ## Get Involved!
 
 - **Try Weaver**: [OpenTelemetry Weaver GitHub](https://github.com/open-telemetry/weaver)
-- **Learn More**: [OTEL Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/)
+- **Learn More**: [OTel Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/)
 - **Join the Conversation**: CNCF Slack:
   - [#otel-semantic-conventions](https://cloud-native.slack.com/archives/C041APFBYQP)
   - [#otel-weaver](https://cloud-native.slack.com/archives/C0697EXNTL3)
