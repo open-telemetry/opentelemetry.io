@@ -179,7 +179,7 @@ weaver registry live-check --registry registry-path
 This command generates a compliance report of the signals emitted by your
 application against a registry.
 
-![Live-check Report](otel-weaver/live-check.png)
+![Live-check Report](live-check.png)
 
 Weaver `live-check` is not only useful for verifying your application's
 compliance with semantic conventions, but it can also be applied to all the
