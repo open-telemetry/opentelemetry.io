@@ -611,6 +611,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:59:54.034804-05:00"
   },
+  "https://community.cncf.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-01T14:51:19.820849+05:30"
+  },
   "https://community.cncf.io/events/details/cncf-cloud-native-community-japan-presents-japan-community-day-at-kubecon-cloudnativecon-japan-2025/": {
     "StatusCode": 200,
     "LastSeen": "2025-05-16T10:23:42.024759425-07:00"
@@ -2318,6 +2322,10 @@
   "https://erlang.org/doc/design_principles/applications.html#configuring-an-application": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:07:12.345Z"
+  },
+  "https://events.linuxfoundation.org/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-01T14:51:18.768974+05:30"
   },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-china/": {
     "StatusCode": 200,
