@@ -179,11 +179,10 @@ groups:
         type: string
         brief: The category of the ToDo item.
       - ref: user.id                   # reference an existing attribute from the imported registry
-        requirement_level: required    # refine the requirement level  
-      - ref: os.name
-        requirement_level: required
-      - ref: os.version
-        requirement_level: required
+        requirement_level: required    # refine the requirement level
+    entity_associations:  
+      - os.name
+      - os.version
   - id: event.todo.deleted
     type: event
     brief: Emitted whenever a ToDo item is deleted by the user.
@@ -196,10 +195,9 @@ groups:
         brief: The priority of the deleted ToDo item.
       - ref: user.id
         requirement_level: required
-      - ref: os.name
-        requirement_level: required
-      - ref: os.version
-        requirement_level: required
+    entity_associations:  
+      - os.name
+      - os.version
 ```
 
 ## What's Next for Weaver?
