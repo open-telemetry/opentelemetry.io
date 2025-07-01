@@ -5,6 +5,9 @@ on:
   merge_group:
   pull_request:
 
+permissions:
+  contents: read
+
 env:
   CHANGED_FILES:
   PR_NUM: ${{ github.event.pull_request.number }}
