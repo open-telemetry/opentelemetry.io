@@ -44,5 +44,5 @@ go get go.opentelemetry.io/contrib/instrumentation/{import-path}/otel{package-na
 
 插桩库可以生成入站和出站 HTTP 请求的遥测数据，但不会对你的实际应用程序进行插桩。
 
-你可以通过在代码中集成[自定义插桩](../instrumentation/)来丰富你的遥感数据。
+你可以通过在代码中集成[自定义插桩](../instrumentation/)来丰富你的遥测数据。
 这补充了标准库生成的遥测数据，并且可以让你更深入地了解正在运行的应用程序。
