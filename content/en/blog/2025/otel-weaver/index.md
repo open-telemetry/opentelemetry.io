@@ -1,5 +1,5 @@
 ---
-title: Observability by Design: Unlocking Consistency with OpenTelemetry Weaver
+title: "Observability by Design: Unlocking Consistency with OpenTelemetry Weaver"
 linkTitle: OTel Weaver
 date: 2025-06-27
 author: [Laurent Quérel](https://github.com/lquerel), [Jeremy Blythe](https://github.com/jerbly), [Josh Suereth](https://github.com/jsuereth), [Liudmila Molkova](https://github.com/lmolkova)
