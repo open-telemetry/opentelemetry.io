@@ -7,8 +7,8 @@ Security vulnerabilities should be handled quickly and sometimes privately. The
 primary goal of this process is to reduce the total time users are vulnerable to
 publicly known exploits.
 
-The relevant OpenTelemetry repository maintainers, supported by the Security SIG and
-OpenTelemetry Technical Committee (TC), are responsible for responding to
+The relevant OpenTelemetry repository maintainers, supported by the Security SIG
+and OpenTelemetry Technical Committee (TC), are responsible for responding to
 the incident including internal communication and external disclosure.
 
 ## Supported Versions
@@ -36,8 +36,8 @@ communication channel between the reporter and the maintainers.
 
 If you are unable to or have strong reasons not to use the GitHub reporting
 workflow, please reach out to
-[security@opentelemetry.io](mailto:security@opentelemetry.io)
-and we will provide instruction on how to report the vulnerability.
+[security@opentelemetry.io](mailto:security@opentelemetry.io) and we will
+provide instruction on how to report the vulnerability.
 
 Reports should be acknowledged within 3 working days.
 
@@ -73,4 +73,6 @@ this vulnerability, if known, to help with scoring and prioritization.
 
 ## More Information
 
-For more information, please see the [Security SIG documentation](https://github.com/open-telemetry/sig-security/blob/main/security-response.md) on GitHub.
+For more information, please see the
+[Security SIG documentation](https://github.com/open-telemetry/sig-security/blob/main/security-response.md)
+on GitHub.
