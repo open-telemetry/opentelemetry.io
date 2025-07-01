@@ -2,8 +2,9 @@
 title: Observability by Design: Unlocking Consistency with OpenTelemetry Weaver
 linkTitle: OTel Weaver
 date: 2025-06-27
-author: [Laurent Querel](https://github.com/lquerel), [Jeremy Blythe](https://github.com/jerbly), [Josh Suereth](https://github.com/jsuereth), [Liudmila Molkova](https://github.com/lmolkova)
+author: [Laurent Quérel](https://github.com/lquerel), [Jeremy Blythe](https://github.com/jerbly), [Josh Suereth](https://github.com/jsuereth), [Liudmila Molkova](https://github.com/lmolkova)
 sig: "Semantic Conventions: Tooling"
+cSpell:ignore: Quérel, Liudmila, Molkova, Suereth, SDLC, promconv
 ---
 
 {{% alert title="TL;DR" %}}
@@ -222,6 +223,5 @@ Stay tuned, the next generation of semantic convention management is coming, and
 
 Weaver is built to be highly extensible and configurable. You can create custom registries, write policies with Rego, and design templates with Jinja2, all using Weaver's built-in engines.
 If you want to get started or have questions, join us in [#otel-weaver](https://cloud-native.slack.com/archives/C0697EXNTL3) on Slack. We're happy to help and always interested in your ideas!
-
 
 > Observability is not just a tool, it's a practice. Build it by design, with clear, consistent, and automated workflows powered by OpenTelemetry Weaver.
