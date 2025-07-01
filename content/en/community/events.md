@@ -1,7 +1,5 @@
 ---
 title: Events
-cascade:
-  type: docs
 ---
 
 The OpenTelemetry community participates in and organizes various events throughout the year to bring together contributors, maintainers, and end users. These events provide opportunities to learn, share experiences, collaborate on the project, and connect with the broader observability community.
