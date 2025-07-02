@@ -40,7 +40,7 @@ software design. That’s where semantic conventions come in.
 **Semantic conventions** are a set of rules and standard names for telemetry
 data. Think of them as the "grammar" for metrics, traces, and logs, so everyone
 and everything (including your tools) knows what you mean by
-'http.request.method', 'db.system.name', or 'http.client.request.duration'.
+`http.request.method`, `db.system.name`, or `http.client.request.duration`.
 
 The
 [OpenTelemetry Semantic Convention](https://opentelemetry.io/docs/specs/semconv/)
