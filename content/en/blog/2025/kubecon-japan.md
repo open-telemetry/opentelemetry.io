@@ -11,7 +11,7 @@ cSpell:ignore: Baazi Chauhan Hrabusa Kang Kasper Mostafa Nissen Radwan Shivay Si
 
 The OpenTelemetry project invites you to join members of the OpenTelemetry
 community at [KubeCon + CloudNativeCon Japan][] ([registration][]) and at the
-co-located [Community Day][] in Tokyo from June 15 to 17, 2025.
+co-located [Community Day][] in Tokyo spanning from June 14 to 17, 2025.
 
 This post covers all currently scheduled activities related to OpenTelemetry
 that are happening during KubeCon. Check back for updates before the start of

@@ -24,10 +24,16 @@ components:
     - open-telemetry/docs-maintainers
   content/en/docs/demo:
     - open-telemetry/demo-approvers
-  content/en/docs/kubernetes/helm:
+  content/en/docs/platform/kubernetes/collector:
+    - open-telemetry/collector-approvers
+  content/en/docs/platform/kubernetes/helm:
     - open-telemetry/helm-approvers
-  content/en/docs/kubernetes/operator:
+  content/en/docs/platform/kubernetes/operator:
     - open-telemetry/operator-approvers
+  content/en/docs/platform/android:
+    - open-telemetry/android-approvers
+  content/en/docs/platform/faas:
+    - open-telemetry/lambda-extension-approvers
   content/en/docs/languages/cpp:
     - open-telemetry/cpp-approvers
   content/en/docs/languages/erlang:

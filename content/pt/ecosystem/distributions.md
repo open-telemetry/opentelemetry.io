@@ -36,7 +36,7 @@ Para que sua distribuição seja listada, [envie um PR] com uma entrada adiciona
 - Usuário do GitHub ou e-mail como ponto de contato, para que possamos entrar em
   contato caso tenhamos dúvidas
 
-{{% alert title="Notas" color="info" %}}
+{{% alert title="Notas" %}}
 
 - Se você fornece integração externa do OpenTelemetry para qualquer tipo de
   biblioteca, serviço ou aplicativo, considere

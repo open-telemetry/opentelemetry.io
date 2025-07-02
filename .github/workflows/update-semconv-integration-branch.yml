@@ -6,6 +6,9 @@ on:
     - cron: '24 10 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   update-semconv-integration-branch:
     runs-on: ubuntu-latest
@@ -25,11 +28,11 @@ jobs:
           branch_prefix="opentelemetrybot/semconv-integration"
 
           version=$(git branch -r \
-                        | grep "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
+                        | grep -E "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
                         | sed "s|^ *origin/$branch_prefix-||" \
                         | sed "s|-dev$||")
 
-          if [[ -z "$versions" ]]; then
+          if [[ -z "$version" ]]; then
             latest_version=$(gh release view \
                           --repo open-telemetry/semantic-conventions \
                           --json tagName \
@@ -77,6 +80,7 @@ jobs:
 
           if git ls-remote --exit-code --tags origin $VERSION; then
             git reset --hard $VERSION
+            tag_exists=true
           else
             git reset --hard origin/main
           fi
@@ -85,6 +89,10 @@ jobs:
           cd ../..
 
           sed -i "s/^\tsemconv-pin = .*/\tsemconv-pin = $commit_desc/" .gitmodules
+
+          if [ "$tag_exists" == "true" ]; then
+            sed -i "s/^\(\s *\)semconv: .*/\1semconv: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
+          fi
 
           git add -A
 

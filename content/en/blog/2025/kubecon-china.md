@@ -9,8 +9,11 @@ cSpell:ignore: Delewski Hrabusa Przemek Purnesh Quesma Zihao Ziming
 ---
 
 The OpenTelemetry project invites you to join members of the OpenTelemetry
-community at [KubeCon + CloudNativeCon China][] ([registration][]) in Hong Kong
-from June 10 to 11, 2025.
+community at **KubeCon + CloudNativeCon** in Asia:
+
+- [KubeCon + CloudNativeCon China][] ([registration][]) in Hong Kong from June
+  10 to 11, 2025.
+- [KubeCon + CloudNativeCon Japan](../kubecon-japan/) the following week.
 
 This post covers all currently scheduled activities related to OpenTelemetry
 that are happening during KubeCon. Check back for updates before the start of

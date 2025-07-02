@@ -4,13 +4,13 @@ title: KubeCon + CloudNativeCon Japan 2025で、
 linkTitle: KubeCon Japan '25
 date: 2025-05-29
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
-default_lang_commit: 6d798b20803204f4a23ee454422fa79827948cef
+default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22
 # prettier-ignore
 cSpell:ignore: Baazi Chauhan Hrabusa Kang Kasper Mostafa Nissen Radwan Shivay Siddharth Vijay
 ---
 
 OpenTelemetryプロジェクトは、[KubeCon + CloudNativeCon Japan][]（[参加登録][registration]）
-および東京で同時開催される[Community Day][]（2025年6月15日〜17日）で、OpenTelemetryコミュニティのメンバーと一緒に過ごすことを皆さんにご案内します。
+および東京で同時開催される[Community Day][]（2025年6月14日〜17日）で、OpenTelemetryコミュニティのメンバーと一緒に過ごすことを皆さんにご案内します。
 
 この記事では、KubeCon期間中に予定されているOpenTelemetry関連のすべてのアクティビティを紹介しています。カンファレンス開始前に、随時更新情報をチェックしてください！
 

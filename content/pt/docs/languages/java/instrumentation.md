@@ -240,7 +240,7 @@ Correlação de Logs com rastros está disponível instalando um [shim](#shims) 
 conectar o contexto do OpenTelemetry no log framework. Veja os items "Bridge
 OpenTelemetry contexto em Log4j", "Bridge OpenTelemetry contexto em Logback".
 
-{{% alert title="Nota" color="info" %}}
+{{% alert title="Nota" %}}
 
 Um exemplo completo de instrumentação de logs utilizando stdout está disponível
 no

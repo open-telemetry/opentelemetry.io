@@ -3,7 +3,7 @@ title: 言語API & SDK
 description: OpenTelemetryのコード計装は、多くの一般的なプログラミング言語でサポートされています。
 weight: 250
 aliases: [/docs/instrumentation]
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
+default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
 redirects:
   - { from: 'net/*', to: 'dotnet/:splat' }
 ---
@@ -39,7 +39,7 @@ APIやSDKのステータスに関わらず、使用している計装が[セマ�
 
 {{% apidocs %}}
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 上記のリストは[`/api`](/api)へのエイリアスです。
 

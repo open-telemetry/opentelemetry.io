@@ -7,11 +7,12 @@ cascade:
 
 {{% community-lists %}}
 
-## Participate in End User Groups
+## End User Resources
 
-Interested in connecting with other end-users and providing feedback to
-OpenTelemetry maintainers? Check out the
-[End User Resources](/community/end-user/) to learn more.
+Do you have feedback that you want to share with maintainers as an OpenTelemetry
+user? Are you interested in sharing challenges and success stories with other
+fellow OpenTelemetry users? Then check out our
+[End User Resources](/community/end-user/) to learn more!
 
 ## Special Interest Groups
 

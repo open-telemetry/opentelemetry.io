@@ -9,7 +9,6 @@ cSpell:ignore: youtube
 OpenTelemetry is:
 
 - An **[observability] framework and toolkit** designed to facilitate the
-
   - [Generation][instr]
   - Export
   - [Collection](../concepts/components/#collector)

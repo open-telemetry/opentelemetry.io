@@ -1,3 +1,5 @@
+import MiniSearch from 'minisearch';
+
 const miniSearchOptions = {
   fields: [
     'title',

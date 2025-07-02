@@ -15,7 +15,7 @@ documentação do OpenTelemetry é influenciada pelos seguintes manuais de estil
 
 As seções a seguir contêm orientações específicas para o projeto OpenTelemetry.
 
-{{% alert title="Nota" color="primary" %}}
+{{% alert title="Nota" %}}
 
 Muitos requisitos do nosso manual de estilo podem ser aplicados automaticamente:
 antes de enviar uma

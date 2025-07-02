@@ -121,9 +121,8 @@ is a set of attributes defining the telemetry source. An application should
 associate the same resource with [SdkTracerProvider](#sdktracerprovider),
 [SdkMeterProvider](#sdkmeterprovider), [SdkLoggerProvider](#sdkloggerprovider).
 
-{{% alert color="info" %}}
-[ResourceProviders](../configuration/#resourceprovider) contribute contextual
-information to the
+{{% alert %}} [ResourceProviders](../configuration/#resourceprovider) contribute
+contextual information to the
 [autoconfigured](../configuration/#zero-code-sdk-autoconfigure) resource based
 on the environment. See documentation for list of available `ResourceProvider`s.
 {{% /alert %}}
@@ -196,7 +195,7 @@ A
 is a [plugin extension interface](#sdk-plugin-extension-interfaces) responsible
 for determining which spans are recorded and sampled.
 
-{{% alert color="info" %}} By default `SdkTracerProvider` is configured with the
+{{% alert %}} By default `SdkTracerProvider` is configured with the
 `ParentBased(root=AlwaysOn)` sampler. This results in 100% of spans being
 sampled if unless a calling application performs sampling. If this is too noisy
 / expensive, change the sampler. {{% /alert %}}
