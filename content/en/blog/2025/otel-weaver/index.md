@@ -295,10 +295,10 @@ groups:
 We're working hard to make Weaver even more powerful, flexible, and easy to
 adopt:
 
-- **Better Docs & Easier Onboarding**: Expect more hands-on examples,
+- **Better docs & easier onboarding**: Expect more hands-on examples,
   step-by-step guides, and an improved focus on ease of use. We’re also creating
   templates and policies tailored for custom registries.
-- **Multi-Registry Support**: Enhanced support for composing, layering, and
+- **Multi-registry support**: Enhanced support for composing, layering, and
   managing multiple semantic convention registries, including conflict
   resolution. This will also enable library authors to easily publish and share
   their own registries.
@@ -307,7 +307,7 @@ adopt:
   standardization effort (telemetry schema v2) will make it easier for the
   entire observability ecosystem to build on top of semantic conventions and
   Weaver.
-- **Type-Safe Semantic-Conventions API Generation**: Automatically generate
+- **Type-safe semantic-conventions API generation**: Automatically generate
   strongly typed instrumentation libraries to reduce errors and accelerate
   development. An example of a Go type-safe client API for Prometheus is already
   in progress at [promconv](https://github.com/sh0rez/promconv/tree/main). A
