@@ -856,8 +856,7 @@ meterProvider := metric.NewMeterProvider(
 ## 日志（Logs）{#logs}
 
 日志与指标和链路追踪不同，**OpenTelemetry 没有面向用户的日志 API**。目前主流的做法是通过日志桥（Log Bridge）将主流日志库（如slog，logrus，zap，logr）接入到 OpenTelemetry 生态。
-对于采取这样设计的原因，请参阅
-[日志规范](/docs/specs/otel/logs/).
+对于采取这样设计的原因，请参阅[日志规范](/docs/specs/otel/logs/).
 
 下面介绍的两种典型工作流适用于不同的应用场景。
 
@@ -865,8 +864,9 @@ meterProvider := metric.NewMeterProvider(
 
 **状态**： [Experimental](/docs/specs/otel/document-status/)
 
-在此工作流中，应用通过网络协议（如 OTLP）直接将日志从应用程序发送给 Collector，优点是部署简单，而无需额外的日志转发组件，还能天然生成符合
-[日志数据模型][log data model] 的结构化日志。缺点是应用需要承担将日志排队并将日志导出到网络位置的额外开销，对于一些性能敏感的场景可能并不适合。
+在此工作流中，应用通过网络协议（如 OTLP）直接将日志从应用程序发送给
+Collector，优点是部署简单，而无需额外的日志转发组件，还能天然生成符合[日志数据模型][log data model]
+的结构化日志。缺点是应用需要承担将日志排队并将日志导出到网络位置的额外开销，对于一些性能敏感的场景可能并不适合。
 
 使用步骤：
 
@@ -972,7 +972,7 @@ func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.Logger
 
 #### 日志桥（Log Bridge）{#log-bridge}
 
-日志桥是一种组件，借助 [日志桥 API][logs bridge API] 将现有日志包产生的日志接入到
+日志桥是一种组件，借助[日志桥 API][logs bridge API] 将现有日志包产生的日志接入到
 OpenTelemetry 的[日志 SDK](#logs-sdk)。
 
 可用日志桥的完整列表见
