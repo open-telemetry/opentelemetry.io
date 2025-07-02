@@ -317,7 +317,7 @@ adopt:
 Stay tuned, the next generation of semantic convention management is coming, and
 Weaver will make it seamless for the whole community.
 
-## Get Involved!
+## Get involved!
 
 - **Try Weaver**:
   [OpenTelemetry Weaver GitHub](https://github.com/open-telemetry/weaver)
