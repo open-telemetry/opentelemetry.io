@@ -38,8 +38,7 @@ De plus, l'instrumentation Zero-code vous permet de configurer les
 Vous pouvez configurer l'instrumentation Zero-code via des variables
 d'environnement et d'autres mécanismes spécifiques au langage, tels que les
 propriétés système ou les arguments passés aux méthodes d'initialisation. Pour
-commencer, vous n'avez besoin que d'un nom de service configuré afin de
-pouvoir
+commencer, vous n'avez besoin que d'un nom de service configuré afin de pouvoir
 identifier celui-ci dans la solution d'observabilité de votre choix.
 
 D'autres options de configuration sont disponibles, notamment :
