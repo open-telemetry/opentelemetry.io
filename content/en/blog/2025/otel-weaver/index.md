@@ -9,7 +9,7 @@ author: >-
   Suereth](https://github.com/jsuereth) (Google), [Liudmila
   Molkova](https://github.com/lmolkova) (Microsoft)
 sig: 'Semantic Conventions: Tooling'
-cSpell:ignore: Liudmila Molkova promconv Quérel SDLC Suereth
+cSpell:ignore: Liudmila Molkova promconv Quérel SDLC Suereth Evertz
 ---
 
 {{% alert title="TL;DR" %}}
