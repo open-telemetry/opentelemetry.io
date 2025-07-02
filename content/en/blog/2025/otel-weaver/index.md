@@ -215,7 +215,7 @@ weaver registry emit --registry registry-path --endpoint http://localhost:4317
 This command generates sample telemetry in OTLP format, which you can send
 directly to your collector, backend, or visualization tool.
 
-### Custom Registries: Defining and Checking Your Own Telemetry Schema
+### Custom registries: Defining and checking your own telemetry schema
 
 While Weaver powers the core OTel registry, you can also use it to define and
 manage your own application's telemetry schema. This means you can reuse and
