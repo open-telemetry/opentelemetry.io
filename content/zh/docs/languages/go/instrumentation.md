@@ -983,7 +983,7 @@ OpenTelemetry 的[日志 SDK](#logs-sdk)。
 ### 通过文件或 stdout 转发{#via-file-or-stdout}
 
 在这种工作流中，应用将日志写入文件或标准输出（stdout）。另一个组件（如 FluentBit）负责读取/跟随这些日志，
-将其解析为结构化格式转发给目标（例如 Collector）。如果当应用无法承担 [直接发送给 Collector](#direct-to-collector)
+将其解析为结构化格式转发给目标（例如 Collector）。如果当应用无法承担[直接发送给 Collector](#direct-to-collector)
 带来的额外开销时，那么该方案更为合适。但是它要求所有下游需要的日志字段必须已被编码到日志中，
 并且读取日志的组件必须把数据解析成[日志数据模型][log data model]，而日志转发组件的安装与配置超出了本文档的范围。
 
