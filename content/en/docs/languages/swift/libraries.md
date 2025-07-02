@@ -159,14 +159,39 @@ with OpenTelemetry to show their spans in a profiling app like `Instruments`. It
 also exports the `OSLog` it uses for posting so the user can add extra signpost
 events. This functionality is shown in `Simple Exporter` example.
 
-### Usage
+### Version Notice
 
-Add SignpostIntegration as any other Span Processor (see the
+- **iOS 15+, macOS 12+, tvOS 15+, watchOS 8+**:  
+  Use **`OSSignposterIntegration`**, which utilizes the modern `OSSignposter` API for improved efficiency and compatibility.
+- **Older systems**:  
+  Use **`SignPostIntegration`**, which relies on the traditional `os_signpost` API.
+
+### Usage 
+
+Add the appropriate span processor based on your deployment target (see the 
 [manual instrumentation](../instrumentation/)) docs for details on configuring
 your providers:
 
+#### For iOS 15+, macOS 12+, tvOS 15+, watchOS 8+:
+
+```swift
+OpenTelemetry.instance.tracerProvider.addSpanProcessor(OSSignposterIntegration())
+```
+
+#### For older systems
+
 ```swift
 OpenTelemetry.instance.tracerProvider.addSpanProcessor(SignPostIntegration())
+```
+
+#### Or, to select automatically at runtime:
+
+```swift
+if #available(iOS 15, macOS 12, tvOS 15, watchOS 8, *) {
+    OpenTelemetry.instance.tracerProvider.addSpanProcessor(OSSignposterIntegration())
+} else {
+    OpenTelemetry.instance.tracerProvider.addSpanProcessor(SignPostIntegration())
+}
 ```
 
 ## Available instrumentation libraries
