@@ -404,7 +404,7 @@ OpenTelemetry 的仪器分为同步和异步（可观测）两类.
 这个回调函数会为 SDK 返回一个测量值，并进行导出。
 所有的异步仪表测量都会在每次导出周期中执行一次，也就是说，每次导出时才会进行测量，而不是持续不断地进行测量。
 
-异步仪器适用于以下场景:
+异步仪器适用于以下场景：
 
 - 更新计数器的开销较大，不希望当前执行线程因记录测量而阻塞。
 - 观测程序的频率与程序执行无关，即当与请求生命周期相关联的时候，无法准确的去测量。
@@ -863,7 +863,7 @@ meterProvider := metric.NewMeterProvider(
 
 ### 直接发送给 Colletcor{#direct-to-collector}
 
-**状态**: [Experimental](/docs/specs/otel/document-status/)
+**状态**： [Experimental](/docs/specs/otel/document-status/)
 
 在此工作流中，应用通过网络协议（如 OTLP）直接将日志从应用程序发送给 Collector，优点是部署简单，而无需额外的日志转发组件，还能天然生成符合
 [日志数据模型][log data model] 的结构化日志。缺点是应用需要承担将日志排队并将日志导出到网络位置的额外开销，对于一些性能敏感的场景可能并不适合。
