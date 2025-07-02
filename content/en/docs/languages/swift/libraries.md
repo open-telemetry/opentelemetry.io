@@ -23,7 +23,7 @@ network requests made with NSURLSessions.
 ## Setup
 
 All instrumentation libraries are available in OpenTelemetry Swift. To turn on
-an instrumentation, follow its usage instructions.
+an instrumentation, follow its instructions.
 
 ## `SDKResourceExtension`
 
