@@ -7,10 +7,12 @@ sig: "Semantic Conventions: Tooling"
 cSpell:ignore: Liudmila Molkova promconv Quérel SDLC Suereth
 ---
 {{% alert title="TL;DR" %}}
-OpenTelemetry Weaver helps teams build observability by design—enabling consistent, type-safe, and automated telemetry through semantic conventions. With Weaver, you can define, validate, and evolve your telemetry schemas, ensuring reliability and clarity across your systems.
+OpenTelemetry Weaver helps teams build observability by design, enabling consistent, type-safe, and automated telemetry through semantic conventions. With Weaver, you can define, validate, and evolve your telemetry schemas, ensuring reliability and clarity across your systems.
 {{% /alert %}}
 
-## Have you ever experienced…?
+## Why Consistency Matters: Enter Semantic Conventions
+
+Have you ever experienced…
 
 - A deployment that breaks existing alerts or dashboards because a metric name
   changed?
@@ -22,9 +24,7 @@ OpenTelemetry Weaver helps teams build observability by design—enabling consis
 
 If any of this sounds familiar, you're not alone. These are the symptoms of
 treating telemetry as an afterthought, instead of an intentional part of your
-software design.
-
-## Semantic Conventions: The Foundation for Consistent Observability
+software design. That’s where semantic conventions come in.
 
 **Semantic conventions** are a set of rules and standard names for telemetry
 data. Think of them as the "grammar" for metrics, traces, and logs, so everyone
