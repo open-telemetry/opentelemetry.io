@@ -2,7 +2,7 @@
 title: Instrumentation Libraries
 linkTitle: Libraries
 weight: 40
-cSpell:ignore: darwin inout iphone NSURL wifi Signposter
+cSpell:ignore: darwin inout iphone NSURL Signposter wifi
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
