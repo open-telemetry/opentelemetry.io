@@ -43,7 +43,7 @@ and everything (including your tools) knows what you mean by
 `http.request.method`, `db.system.name`, or `http.client.request.duration`.
 
 The
-[OpenTelemetry Semantic Convention](https://opentelemetry.io/docs/specs/semconv/)
+[OpenTelemetry Semantic Convention](/docs/specs/semconv/)
 is a massive, open catalog with 900+ attributes and signals in over 70 domains,
 maintained by 9 special interest groups. This open catalog ensures:
 
