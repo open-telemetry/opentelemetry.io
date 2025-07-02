@@ -32,4 +32,4 @@ También en desarrollo o en fase de [proposal]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md
 [proposal]:
   https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme
-[signals]: /docs/specs/otel/glossary/#señales
+[señales]: /docs/specs/otel/glossary/#signals
