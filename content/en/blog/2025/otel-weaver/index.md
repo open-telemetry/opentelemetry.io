@@ -322,7 +322,7 @@ Weaver will make it seamless for the whole community.
 - **Try Weaver**:
   [OpenTelemetry Weaver GitHub](https://github.com/open-telemetry/weaver)
 - **Learn More**:
-  [OTel Semantic Conventions](https://opentelemetry.io/docs/specs/semconv/)
+  [OTel Semantic Conventions](/docs/specs/semconv/)
 - **Join the Conversation**: CNCF Slack:
   - [#otel-semantic-conventions](https://cloud-native.slack.com/archives/C041APFBYQP)
   - [#otel-weaver](https://cloud-native.slack.com/archives/C0697EXNTL3)
