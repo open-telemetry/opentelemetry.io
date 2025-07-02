@@ -206,7 +206,7 @@ building dashboards often happen at different times, and sometimes with
 different people. This can slow down your observability efforts: frontend and
 SRE teams can't build useful dashboards or alerts until the app emits real data
 in a staging or production environment. Weaver solves this chicken-and-egg
-problem with the emit command.
+problem with the `emit` command.
 
 ```bash
 weaver registry emit --registry registry-path --endpoint http://localhost:4317
