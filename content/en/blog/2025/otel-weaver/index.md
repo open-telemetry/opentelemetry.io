@@ -9,7 +9,7 @@ author: >-
   Suereth](https://github.com/jsuereth) (Google), [Liudmila
   Molkova](https://github.com/lmolkova) (Microsoft)
 sig: 'Semantic Conventions: Tooling'
-cSpell:ignore: Liudmila Molkova promconv Quérel SDLC Suereth Evertz
+cSpell:ignore: Evertz Liudmila Molkova promconv Quérel SDLC Suereth
 ---
 
 {{% alert title="TL;DR" %}}
@@ -44,8 +44,8 @@ and everything (including your tools) knows what you mean by
 
 The
 [OpenTelemetry Semantic Convention](https://opentelemetry.io/docs/specs/semconv/)
-is a massive, open catalog with 900+ attributes and signals in over 70
-domains, maintained by 9 special interest groups. This open catalog ensures:
+is a massive, open catalog with 900+ attributes and signals in over 70 domains,
+maintained by 9 special interest groups. This open catalog ensures:
 
 - **Consistency**: One name, one meaning everywhere.
 - **Interoperability**: Tools, teams, and vendors can understand each other.
@@ -321,8 +321,7 @@ Weaver will make it seamless for the whole community.
 
 - **Try Weaver**:
   [OpenTelemetry Weaver GitHub](https://github.com/open-telemetry/weaver)
-- **Learn More**:
-  [OTel Semantic Conventions](/docs/specs/semconv/)
+- **Learn More**: [OTel Semantic Conventions](/docs/specs/semconv/)
 - **Join the Conversation**: CNCF Slack:
   - [#otel-semantic-conventions](https://cloud-native.slack.com/archives/C041APFBYQP)
   - [#otel-weaver](https://cloud-native.slack.com/archives/C0697EXNTL3)
