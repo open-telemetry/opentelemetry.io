@@ -55,7 +55,7 @@ domains-maintained by nine special interest groups. This open catalog ensures:
 But maintaining and evolving such a registry across teams and tools isn't easy.
 That's where [OTel Weaver](https://github.com/open-telemetry/weaver) comes in.
 
-## Observability by Design: A Modern Engineering Approach
+## Observability by design: A modern engineering approach
 
 Observability by Design means integrating observability into your software
 development life cycle (SDLC) from the start. This is often called
