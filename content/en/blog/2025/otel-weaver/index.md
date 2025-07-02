@@ -21,7 +21,7 @@ ensuring reliability and clarity across your systems.
 
 {{% /alert %}}
 
-## Why Consistency Matters: Enter Semantic Conventions
+## Why consistency matters: Enter semantic conventions
 
 Have you ever experienced…
 
