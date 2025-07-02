@@ -866,8 +866,6 @@ maintainers:
       - go-instrumentation-triagers
       - go-maintainers
       - go-triagers
-      - proto-go-approvers
-      - proto-go-maintainers
       - specs-metrics-approvers
       - specs-triagers
     html_url: https://github.com/MrAlias
@@ -975,7 +973,6 @@ maintainers:
       - go-instrumentation-triagers
       - go-maintainers
       - go-triagers
-      - proto-go-approvers
       - semconv-code-attribute-approvers
       - semconv-log-approvers
       - specs-logs-approvers
