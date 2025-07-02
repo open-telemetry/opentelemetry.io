@@ -4,10 +4,10 @@ title:
 linkTitle: OTel Weaver
 date: 2025-07-02
 author: >-
-  [Laurent Quérel](https://github.com/lquerel), [Jeremy
-  Blythe](https://github.com/jerbly), [Josh
-  Suereth](https://github.com/jsuereth), [Liudmila
-  Molkova](https://github.com/lmolkova)
+  [Laurent Quérel](https://github.com/lquerel) (F5), [Jeremy
+  Blythe](https://github.com/jerbly) (Evertz), [Josh
+  Suereth](https://github.com/jsuereth) (Google), [Liudmila
+  Molkova](https://github.com/lmolkova) (Microsoft)
 sig: 'Semantic Conventions: Tooling'
 cSpell:ignore: Liudmila Molkova promconv Quérel SDLC Suereth
 ---
