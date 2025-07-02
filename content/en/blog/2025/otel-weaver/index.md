@@ -290,7 +290,7 @@ groups:
       - os.version
 ```
 
-## What's Next for Weaver?
+## What's next for Weaver?
 
 We're working hard to make Weaver even more powerful, flexible, and easy to
 adopt:
