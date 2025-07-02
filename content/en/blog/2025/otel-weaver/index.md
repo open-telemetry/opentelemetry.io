@@ -2,12 +2,16 @@
 title: "Observability by Design: Unlocking Consistency with OpenTelemetry Weaver"
 linkTitle: OTel Weaver
 date: 2025-07-02
-author: [Laurent Quérel](https://github.com/lquerel), [Jeremy Blythe](https://github.com/jerbly), [Josh Suereth](https://github.com/jsuereth), [Liudmila Molkova](https://github.com/lmolkova)
+author: >-
+  [Laurent Quérel](https://github.com/lquerel), [Jeremy Blythe](https://github.com/jerbly), [Josh Suereth](https://github.com/jsuereth), [Liudmila Molkova](https://github.com/lmolkova)
 sig: "Semantic Conventions: Tooling"
 cSpell:ignore: Liudmila Molkova promconv Quérel SDLC Suereth
 ---
+
 {{% alert title="TL;DR" %}}
+
 OpenTelemetry Weaver helps teams build observability by design, enabling consistent, type-safe, and automated telemetry through semantic conventions. With Weaver, you can define, validate, and evolve your telemetry schemas, ensuring reliability and clarity across your systems.
+
 {{% /alert %}}
 
 ## Why Consistency Matters: Enter Semantic Conventions
