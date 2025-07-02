@@ -161,14 +161,16 @@ events. This functionality is shown in `Simple Exporter` example.
 
 ### Version Notice
 
-- **iOS 15+, macOS 12+, tvOS 15+, watchOS 8+**:  
-  Use **`OSSignposterIntegration`**, which utilizes the modern `OSSignposter` API for improved efficiency and compatibility.
-- **Older systems**:  
-  Use **`SignPostIntegration`**, which relies on the traditional `os_signpost` API.
+- **iOS 15+, macOS 12+, tvOS 15+, watchOS 8+**:
+  Use **`OSSignposterIntegration`**, which utilizes the modern `OSSignposter`
+  API for improved efficiency and compatibility.
+- **Older systems**:
+  Use **`SignPostIntegration`**, which relies on the traditional `os_signpost`
+  API.
 
-### Usage 
+### Usage
 
-Add the appropriate span processor based on your deployment target (see the 
+Add the appropriate span processor based on your deployment target (see the
 [manual instrumentation](../instrumentation/)) docs for details on configuring
 your providers:
 
