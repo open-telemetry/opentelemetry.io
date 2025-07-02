@@ -1,14 +1,23 @@
 # cSpell:ignore textlintrc
-# For settings, see
+# For settings, see:
 # https://www.streetsidesoftware.com/vscode-spell-checker/docs/configuration/
+
 version: '0.2'
 language: en-US
+
 import:
   - '@cspell/dict-bn/cspell-ext.json'
   - '@cspell/dict-es-es/cspell-ext.json'
   - '@cspell/dict-fr-fr/cspell-ext.json'
   - '@cspell/dict-pt-br/cspell-ext.json'
+  - '@cspell/dict-python/cspell-ext.json'
+  - '@cspell/dict-kubernetes/cspell-ext.json'
+  - '@cspell/dict-rust/cspell-ext.json'
+  - '@cspell/dict-bash/cspell-ext.json'
+  - '@cspell/dict-aws/cspell-ext.json'
+
 caseSensitive: true
+
 ignorePaths:
   - '*.svg'
   - content/{ja,zh}
@@ -16,6 +25,13 @@ ignorePaths:
   - data/ecosystem/vendors.yaml
   - public/_redirects
   - static/refcache.json
+  - '**/node_modules'
+  - '**/dist'
+  - '**/build'
+  - '**/coverage'
+  - '**/*.lock'
+  - '**/*.log'
+
 patterns:
   - name: CodeBlock
     pattern: |
@@ -23,12 +39,16 @@ patterns:
           ^(\s*[~`]{3,})   # code-block start
           .*               # all languages and options, e.g. shell {hl_lines=[12]}
           [\s\S]*?         # content
-          \1               # code-block end - cSpell:disable-next-line
+          \1               # code-block end
       /igmx
+
 languageSettings:
   - languageId: markdown
     ignoreRegExpList:
       - CodeBlock
+      - "\\b[a-f0-9]{32}\\b"       # MD5
+      - "\\b[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\b"  # UUID
+
 dictionaryDefinitions:
   - name: en-words
     path: .cspell/en-words.txt
@@ -40,6 +60,7 @@ dictionaryDefinitions:
     path: .cspell/fr-mots.txt
   - name: pt-palavras
     path: .cspell/pt-palavras.txt
+
 dictionaries:
   # Natural languages
   - bn
@@ -58,11 +79,39 @@ dictionaries:
   - golang
   - node
   - softwareTerms
+  - python
+  - rust
+  - kubernetes
+  - bash
+  - aws
   # Other
   - companies
-words: # Valid words across all locales
-  - Docsy
-  - htmltest
-  - jsonify
-  - opentelemetrybot
-  - warnf
+
+# Words to allow globally
+words:
+  - Docsy               # Static site theme
+  - htmltest            # Tool name
+  - jsonify             # API terminology
+  - opentelemetrybot    # Bot name
+  - warnf               # Logging function in Go
+  - Istio               # Service mesh
+  - Prometheus          # Monitoring tool
+  - Grafana             # Visualization tool
+  - k8s                 # Kubernetes shorthand
+  - Helm                # Kubernetes package manager
+  - webhook             # Common in CI/CD
+  - GitHub              # Proper noun
+  - Terraform           # IaC tool
+  - Trivy               # Security scanner
+  - SonarQube           # Code quality tool
+  - ESLint              # Linter
+  - Prettier            # Formatter
+
+# Optional: Enable checking in specific file types (for VS Code)
+enableFiletypes:
+  - markdown
+  - yaml
+  - json
+  - javascript
+  - typescript
+  - python
