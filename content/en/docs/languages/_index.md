@@ -31,8 +31,8 @@ follows:
 {{% alert title="Important" color="warning" %}}
 
 Regardless of an API/SDK's status, if your instrumentation relies on [semantic
-conventions] that are marked as [Experimental] in the [semantic conventions
-specification], your data flow might be subject to **breaking changes**.
+conventions][] that are marked as [Experimental] in the [semantic conventions
+specification][], your data flow might be subject to **breaking changes**.
 
 [semantic conventions]: /docs/concepts/semantic-conventions/
 [Experimental]: /docs/specs/otel/document-status/
@@ -50,7 +50,7 @@ references are available:
 
 {{% apidocs %}}
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 The list above is aliased to [`/api`](/api).
 

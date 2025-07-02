@@ -86,7 +86,7 @@ instrumentations:
 OTEL_NODE_DISABLED_INSTRUMENTATIONS="fs,grpc"
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 If both environment variables are set, `OTEL_NODE_ENABLED_INSTRUMENTATIONS` is
 applied first, and then `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is applied to that

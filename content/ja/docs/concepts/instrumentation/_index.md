@@ -2,8 +2,7 @@
 title: 計装
 description: OpenTelemetryはどのように計装を促進するか
 weight: 15
-default_lang_commit: 94d77ab8cbfe5552a7cd68bf677be86c574a613a
-drifted_from_default: true
+default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
 ---
 
 システムを[観測可能][observable]にするため、システムが **計装** されなければなりません。
@@ -35,8 +34,8 @@ OpenTelemetryが提供するのは、ゼロコードやコードベースのテ�
 - APIとSDKの各言語固有の実装は、[OpenTelemetry仕様](/docs/specs/otel/)の要件と期待に従います。
 - [セマンティック規約](../semantic-conventions/)は、コードベースやプラットフォーム間で標準化のために使用できる共通の命名スキーマを提供します。
 
-[logs]: ../signals/traces/
-[metrics]: ../signals/traces/
+[logs]: ../signals/logs/
+[metrics]: ../signals/metrics/
 [observable]: ../observability-primer/#what-is-observability
 [signals]: ../signals/
 [traces]: ../signals/traces/

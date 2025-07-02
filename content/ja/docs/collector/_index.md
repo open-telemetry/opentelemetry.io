@@ -2,10 +2,9 @@
 title: コレクター
 description: テレメトリーデータを受信、処理、エクスポートするためのベンダー非依存な方法
 cascade:
-  vers: 0.121.0
+  vers: 0.128.0
 weight: 270
-default_lang_commit: e1209f387a604c493e8b41923a3b2ceacd7437a0
-drifted_from_default: true
+default_lang_commit: e8f94839e85df475fe8c5ff995c18eefa5220635
 ---
 
 ![Jaeger、OTLP、Prometheusを統合したOpenTelemetryコレクターのダイアグラム](img/otel-collector.svg)
@@ -15,7 +14,6 @@ drifted_from_default: true
 OpenTelemetryコレクターは、テレメトリーデータの受信、処理、エクスポート方法について、ベンダーにとらわれない実装を提供します。
 複数のエージェント／コレクターの実行、操作、メンテナンスの必要性を取り除きます。
 これはスケーラビリティを向上させ、1つ以上のオープンソースまたは商用バックエンドに送信するオープンソースのオブザーバビリティデータフォーマット（Jaeger、Prometheus、Fluent Bitなど）をサポートします。
-ローカルのコレクターエージェントは、計装ライブラリがテレメトリーデータをエクスポートするデフォルトの場所です。
 
 ## 目的 {#objectives}
 

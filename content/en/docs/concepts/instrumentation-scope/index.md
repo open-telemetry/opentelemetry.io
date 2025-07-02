@@ -3,7 +3,7 @@ title: Instrumentation scope
 weight: 80
 ---
 
-The [Instrumentation scope](/docs/specs/otel/glossary/#instrumentation-scope)
+The [Instrumentation scope](/docs/specs/otel/common/instrumentation-scope/)
 represents a logical unit within the application code with which the emitted
 telemetry can be associated.
 

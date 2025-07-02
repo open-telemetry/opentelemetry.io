@@ -59,7 +59,6 @@ Key IA updates include:
   documentation][java-reorg], introducing substantial improvements to the
   structure and clarity of the content. The bulk of this effort is reflected in
   these PRs:
-
   - [Refactor Java SDK and configuration #4966][#4966]
   - [Refactor Java instrumentation #5276][#5276]
   - [Move performance to Java agent, merge Javadoc into API page #5590][#5590]
@@ -158,13 +157,11 @@ Did you know that:
   the fourth most active contributor. Go bots!
 - The record for the PR with the most comments this year—and of all time is held
   by:
-
   - [Generative AI updates blog post (#5575)][#5575], with 150 comments!
 
   <!-- prettier-ignore -->
   A close second goes to:
   {.mt-3}
-
   - [Portuguese translation of Go instrumentation][#5380], with 146 comments
 
 [#5380]: https://github.com/open-telemetry/opentelemetry.io/pull/5380

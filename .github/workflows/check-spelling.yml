@@ -4,6 +4,9 @@ on:
   merge_group:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   spelling-check:
     name: SPELLING check
@@ -37,7 +40,7 @@ jobs:
         run: |
           CHANGES=`git status --porcelain`
           if [[ $CHANGES ]]; then
-            echo "Add comment '/fix:${{ env.FIX_CMD }}' to your PR in GitHub,"
+            echo "Add comment '/${{ env.FIX_CMD }}' to your PR in GitHub,"
             echo "or locally run 'npm run ${{ env.FIX_CMD }}' and commit the changes:"
             echo "$CHANGES"
             exit 1

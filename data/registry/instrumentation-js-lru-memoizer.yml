@@ -17,5 +17,5 @@ createdAt: 2022-10-27
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-lru-memoizer'
-  version: 0.46.0
+  version: 0.47.0
 isFirstParty: false

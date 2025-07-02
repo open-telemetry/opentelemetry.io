@@ -15,4 +15,4 @@ createdAt: 2022-12-07
 package:
   registry: npm
   name: '@opentelemetry/resource-detector-gcp'
-  version: 0.35.0
+  version: 0.36.0
