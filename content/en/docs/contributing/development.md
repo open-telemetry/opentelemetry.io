@@ -13,8 +13,8 @@ weight: 60
 
 Builds are officially supported on Linux-based environments and macOS. Other
 environments, such as [DevContainers](#devcontainers), are supported on a
-best-effort basis. For builds on Windows similar steps as of Linux can be
-followed on Windows Subsystem for Linux command line [WSL][windows-wsl].
+best-effort basis. For builds on Windows, you can follow steps similar to those
+for Linux using Windows Subsystem for Linux command line [WSL][windows-wsl].
 
 {{% /alert %}}
 
@@ -69,8 +69,8 @@ Your development environment will be initialized via the
     nvm install
     ```
 
-    To [install under Windows][nodejs-win], use [nvm-windows].
-    We recommend to use `cmd` and not windows powershell for the command below:
+    To [install under Windows][nodejs-win], use [nvm-windows]. We recommend
+    using `cmd` and not Windows PowerShell for the command below:
 
     ```cmd
     nvm install lts && nvm use lts
