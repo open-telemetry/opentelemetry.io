@@ -2,7 +2,8 @@
 title: 構成
 weight: 20
 description: ニーズに合わせてコレクターを設定する方法を確認してください
-cSpell: ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
+# prettier-ignore
+cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 ---
 
