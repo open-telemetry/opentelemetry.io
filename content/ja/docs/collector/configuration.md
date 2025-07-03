@@ -2,11 +2,9 @@
 title: 構成
 weight: 20
 description: ニーズに合わせてコレクターを設定する方法を確認してください
-# prettier-ignore
 cSpell: ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 ---
-
 
 <!-- markdownlint-disable link-fragments -->
 
@@ -791,4 +789,3 @@ otelcol --set "receivers::otlp::protocols::grpc={endpoint:localhost:4317, compre
 `--set` オプションは、ドットまたは等号を含むキーの設定に対応していません。
 
 {{% /alert %}}
-
