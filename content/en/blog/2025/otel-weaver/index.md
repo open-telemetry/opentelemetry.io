@@ -109,7 +109,7 @@ official OTel semantic conventions). At present, only two levels are supported:
 your custom registry and a single dependency. This covers many common cases, but
 we know there's much more potential for flexibility and collaboration.
 
-## Weaver in Action: Key Commands
+## Weaver in action: Key commands
 
 Getting started with Weaver is easy: it's available as a pre-built binary CLI
 (see releases [page](https://github.com/open-telemetry/weaver/releases)) and a
