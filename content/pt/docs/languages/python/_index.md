@@ -12,7 +12,7 @@ default_lang_commit: 3fd0bb513e5d3fa6f178a73584322bcc469f15e0 # patched
 
 ## Suporte de Versão {#status-and-releases}
 
-O OpenTelemetry suporta a versão Python 3.8 e superiores.
+O OpenTelemetry suporta a versão Python 3.9 e superiores.
 
 ## Instalação {#installation}
 
