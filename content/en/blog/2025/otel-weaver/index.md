@@ -129,7 +129,7 @@ registry is consistent, validated, and follows the core policies.
 weaver registry check -r registry-path
 ```
 
-The following table provides a brief overview of the policies implemented for
+The following lists provide a brief overview of the policies implemented for
 the OTel registry.
 
 Below are some of the key policy checks enforced for the OTel registry:
