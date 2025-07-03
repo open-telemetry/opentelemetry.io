@@ -4,6 +4,7 @@ weight: 20
 description: ニーズに合わせてコレクターを設定する方法を確認してください
 # prettier-ignore
 cSpell: ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 ---
 
 
@@ -564,9 +565,9 @@ service:
 
 `pipelines` サブセクションは、パイプラインを設定する場所です。
 
-- `traces:` トレースデータの収集と処理を行います。
-- `metrics:` メトリックデータの収集と処理を行います。
-- `logs:` ログデータの収集と処理を行います。
+- `traces:` トレースデータの収集と処理を行います
+- `metrics:` メトリックデータの収集と処理を行います
+- `logs:` ログデータの収集と処理を行います
 
 パイプラインは、レシーバー、プロセッサー、エクスポーターのセットで構成されます。
 パイプラインにレシーバー、プロセッサー、エクスポーターを含める前に、適切な節で設定を定義してください。
@@ -575,7 +576,7 @@ service:
 プロセッサーが複数のパイプラインで参照される場合、各パイプラインはプロセッサーの個別のインスタンスを取得します。
 
 以下はパイプラインの構成例です。
-プロセッサーの順番によって、データの処理順が決まることに注意。
+プロセッサーの順番によって、データの処理順が決まることに注意してください。
 
 ```yaml
 service:
@@ -590,7 +591,7 @@ service:
       exporters: [opencensus, zipkin]
 ```
 
-コンポーネントと同様に、`--set`構文を使用して、指定したタイプのパイプラインを追加作成します。
+コンポーネントと同様に、`type[/name]` 構文を使用して、指定したタイプのパイプラインを追加作成します。
 前述の設定を拡張した例を示します。
 
 ```yaml
@@ -605,19 +606,19 @@ service:
       exporters: [zipkin]
 ```
 
-### テレメトリー
+### テレメトリー {#telemetry}
 
-`telemetry`設定節では、コレクター自体の可観測性を設定します。
-これは 2 つのサブ節で構成されます。
-`metrics` および `cert.pem` です。
-これらのシグナルの設定方法については、[Activate internal telemetry in the コレクター](/docs/コレクター/internal-telemetry#activate-internal-telemetry-in-the-コレクター) を参照してください。
+`telemetry` 設定セクションでは、コレクター自体のオブザーバビリティを設定します。
+これは2つのサブセクションで構成されます。
+`logs` および `metrics` です。
+これらのシグナルの設定方法については、[コレクター内部のテレメトリーを有効にする](/docs/collector/internal-telemetry#activate-internal-telemetry-in-the-collector) を参照してください。
 
-## その他の情報
+## その他の情報 {#other-information}
 
-### 環境変数
+### 環境変数 {#environment-variables}
 
-コレクター 設定では、環境変数の使用と拡張がサポートされています。
-たとえば、`--set` および `--config` 環境変数に格納されている値を使用するには、以下のように記述します。
+コレクター設定では、環境変数の使用と拡張がサポートされています。
+たとえば、`DB_KEY` および `OPERATION` 環境変数に格納されている値を使用するには、以下のように記述します。
 
 ```yaml
 processors:
@@ -627,8 +628,8 @@ processors:
         action: ${env:OPERATION}
 ```
 
-リテラル `--config` を示すには `--set` を使用します。
-たとえば、`cert.pem`を表すと、次のようになります。
+リテラル `$` を示すには `$$` を使用します。
+たとえば、`$DataVisualization` 使うときは、次のようになります。
 
 ```yaml
 exporters:
@@ -637,46 +638,43 @@ exporters:
     namespace: $$DataVisualization
 ```
 
-### プロキシ対応
+### プロキシ対応 {#proxy-support}
 
-`net/http`](https://pkg.go.dev/net/http)パッケージを使用するエクスポーターは、以下のプロキシ環境変数を尊重します。
+[`net/http`](https://pkg.go.dev/net/http) パッケージを使用するエクスポーターは、以下のプロキシ環境変数を尊重します。
 
-- `HTTP_PROXY`。
-  HTTPプロキシのアドレス
-- `HTTPS_PROXY`。
-  HTTPSプロキシのアドレス
-- `NO_PROXY`。
-  プロキシを使ってはいけないアドレス
+- `HTTP_PROXY`: HTTPプロキシのアドレス
+- `HTTPS_PROXY`: HTTPSプロキシのアドレス
+- `NO_PROXY`: プロキシを使ってはいけないアドレス
 
 コレクターの開始時に設定されている場合、エクスポーターはプロトコルに関係なく、これらの環境変数によって定義されたプロキシトラフィックまたはバイパスプロキシトラフィックを使用します。
 
-### 認証
+### 認証 {#authentication}
 
 HTTPまたはgRPCポートを公開しているほとんどのレシーバーは、コレクターの認証メカニズムを使用して保護できます。
 同様に、HTTP または gRPC クライアントを使用するほとんどのエクスポーターは、送信リクエストに認証を追加できます。
 
 コレクターの認証メカニズムは拡張メカニズムを使用しており、カスタム認証機能をコレクターディストリビューションにプラグインできます。
-各認証拡張機能には 2 つの使用法があります。
+各認証拡張機能には2つの使用法があります。
 
 - エクスポーターのクライアント認証機能として、送信リクエストに認証データを追加します。
-- レシーバーのサーバオーセンティケータとして、着信接続を認証します。
+- レシーバーのサーバー認証機能として、着信接続を認証します。
 
-既知の認証機能のリストについては、[Registry](/ecosystem/registry/?s=authenticator&component=extension)を参照してください。
-カスタムオーセンティケータを開発したい場合は、[Building an authenticator extension](../building/authenticator-extension) を参照してください。
+既知の認証機能のリストについては、[レジストリ](/ecosystem/registry/?s=authenticator&component=extension)を参照してください。
+カスタムの認証機能を開発したい場合は、[認証機能の拡張を開発する](../building/authenticator-extension) を参照してください。
 
-コレクターのレシーバーにサーバ認証機能を追加するには、以下の手順にしたがいます。
+コレクターのレシーバーにサーバー認証機能を追加するには、以下の手順にしたがいます。
 
-1.認証機能拡張とその設定を `--set` に追加します。
-2.2. 認証機能への参照を `--config` に追加し、コレクターで読み込まれるようにします。
-3.3. `cert.pem` に認証子への参照を追加します。
+1. 認証機能拡張とその設定を `.extensions` に追加します。
+2. 認証機能への参照を `.services.extensions` に追加し、コレクターで読み込まれるようにします。
+3. `.receivers.<your-receiver>.<http-or-grpc-config>.auth` に認証子への参照を追加します。
 
-以下の例では、受信側で OIDC 認証を使用しているため、エージェントとして動作する OpenTelemetry コレクター からデータを受信するリモート コレクター に適しています。
+以下の例では、レシーバー側でOIDC認証を使用しているため、エージェントとして動作する OpenTelemetryコレクターからデータを受信するリモート コレクターに適しています。
 
 ```yaml
 extensions:
   oidc:
     issuer_url: http://localhost:8080/auth/realms/opentelemetry
-    audience: コレクター
+    audience: collector
 
 receivers:
   otlp/auth:
@@ -689,7 +687,7 @@ receivers:
 processors:
 
 exporters:
-  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
+  # NOTE: v0.86.0 以前では `debug` ではなく `logging` を使うこと
   debug:
 
 service:
@@ -743,9 +741,9 @@ service:
 
 本番環境では、セキュアな通信にTLS証明書を使用するか、相互認証にmTLSを使用します。
 以下の手順にしたがって、この例のように自己署名証明書を生成します。
-現在使用している証明書のプロビジョニング手順を使用して、本番環境で使用する証明書を調達するとよい。
+現在使用している証明書のプロビジョニング手順を使用して、本番環境で使用する証明書を調達するといいでしょう。
 
-`cfssl`](https://github.com/cloudflare/cfssl)をインストールし、以下の`--config`ファイルを作成します。
+[`cfssl`](https://github.com/cloudflare/cfssl)をインストールし、以下の `csr.json` ファイルを作成します。
 
 ```json
 {
@@ -771,15 +769,14 @@ cfssl gencert -ca ca.pem -ca-key ca-key.pem csr.json | cfssljson -bare cert
 
 これで2つの証明書が作成されます。
 
-- `ca-cert.pem`の "OpenTelemetry Example "認証局（CA）、`--config`のキー。
-- OpenTelemetry Example CA が署名した `cert.pem` のクライアント証明書。
+- `ca.pem` の "OpenTelemetry Example" 認証局（CA）とそれに紐づく `ca-key.pem` のキー
+- OpenTelemetry Example CA が署名した `cert.pem` のクライアント証明書、およびそれに紐づいた `cert-key.pem` のキー
 
-[dcc]。
-/ドキュメント/コンセプト/コンポーネント/#コレクター
+[dcc]: /docs/concepts/components/#collector
 
-## 設定を上書きします
+## 設定を上書きする {#override-settings}
 
-`--set`オプションを使用してコレクター設定をオーバーライドできます。
+`--set` オプションを使用してコレクター設定をオーバーライドできます。
 この方法で定義した設定は、すべての `--config` ソースが解決されてマージされた後に最終的な設定にマージされます。
 
 以下の例では、ネストされた節の内部で設定を上書きする方法を示します。
@@ -791,7 +788,7 @@ otelcol --set "receivers::otlp::protocols::grpc={endpoint:localhost:4317, compre
 
 {{% alert title="Important" color="warning" %}}
 
-`--set`オプションは、ドットまたは等号を含むキーの設定に対応していません。
+`--set` オプションは、ドットまたは等号を含むキーの設定に対応していません。
 
 {{% /alert %}}
 
