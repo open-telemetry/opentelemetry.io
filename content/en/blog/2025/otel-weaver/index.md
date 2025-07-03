@@ -116,7 +116,7 @@ Getting started with Weaver is easy: it's available as a pre-built binary CLI
 Docker [image](https://hub.docker.com/r/otel/weaver), ready to drop into any
 CI/CD pipeline or local workflow.
 
-### How the OTel Semantic Conventions Community Uses Weaver
+### How the OTel Semantic Conventions community uses Weaver
 
 The OTel semantic conventions community relies on Weaver as its primary tool for
 building, validating, and evolving the official registry. Below are some
