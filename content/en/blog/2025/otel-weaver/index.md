@@ -149,7 +149,7 @@ human-readable docs you see at opentelemetry.io.
 weaver registry update-markdown -r registry-path --target=markdown
 ```
 
-**Generating Code for Instrumentation Helpers:**<br/> Every supported
+**Generating code for instrumentation helpers:**<br/> Every supported
 OpenTelemetry SDK benefits from auto-generated constants and code in their
 native language, ensuring no typos or inconsistencies.
 
