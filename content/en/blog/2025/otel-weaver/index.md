@@ -175,7 +175,7 @@ registry versions to highlight breaking changes or improvements.
 weaver registry diff -r current-version-registry-path --baseline-registry previous-version-registry-path
 ```
 
-**Live Instrumentation Checks and Coverage:**<br/> Users and maintainers can
+**Live instrumentation checks and coverage:**<br/> Users and maintainers can
 leverage Weaver to
 [live-check](https://github.com/open-telemetry/weaver/tree/main/crates/weaver_live_check#readme)
 that their application correctly emits telemetry conforming to the official
