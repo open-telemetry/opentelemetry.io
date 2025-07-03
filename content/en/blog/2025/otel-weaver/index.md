@@ -168,7 +168,7 @@ Java library is visible in this
 offers an embedded template system compatible with Jinja2, with a large number
 of custom functions to facilitate code generation in different languages.
 
-**Tracking Changes and Schema Evolution:**<br/> Weaver tracks diffs between
+**Tracking changes and schema evolution:**<br/> Weaver tracks diffs between
 registry versions to highlight breaking changes or improvements.
 
 ```bash
