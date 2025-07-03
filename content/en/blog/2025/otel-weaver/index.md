@@ -200,7 +200,7 @@ metric's value, or that a particular attribute's string value matches some
 regular expression. The policies are independent of the semantic convention
 registry, so you can define application or library specific checks as needed.
 
-**Simulating Telemetry with weaver emit**<br/> Instrumenting your code and
+**Simulating telemetry with `weaver emit`**<br/> Instrumenting your code and
 building dashboards often happen at different times, and sometimes with
 different people. This can slow down your observability efforts: frontend and
 SRE teams can't build useful dashboards or alerts until the app emits real data
