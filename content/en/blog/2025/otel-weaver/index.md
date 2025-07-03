@@ -58,9 +58,9 @@ That's where [OTel Weaver](https://github.com/open-telemetry/weaver) comes in.
 
 Observability by design means integrating observability into your software
 development life cycle (SDLC) from the start. This is often called
-"observability shift left" because it moves observability concerns earlier
-(to the "left") in the development timeline—from post-deployment monitoring
-back to the design and development phases:
+"observability shift left" because it moves observability concerns earlier (to
+the "left") in the development timeline—from post-deployment monitoring back to
+the design and development phases:
 
 1. **Set Clear Goals**: Define observability objectives up front. What signals
    do you need?
@@ -98,11 +98,11 @@ What can Weaver do for you?
 - **Diff and evolution**: Safely evolve your telemetry schema with automatic
   diffs and upgrade/downgrade support.
 
-> Definition: A registry is a collection of semantic conventions, which are standardized
-> definitions that describe how telemetry data like metrics, logs, and traces
-> should be named and structured. OpenTelemetry maintains the official semantic
-> convention registry, but it’s possible for teams, projects, or
-> vendors to define and publish their own custom registries to suit specific
+> Definition: A registry is a collection of semantic conventions, which are
+> standardized definitions that describe how telemetry data like metrics, logs,
+> and traces should be named and structured. OpenTelemetry maintains the
+> official semantic convention registry, but it’s possible for teams, projects,
+> or vendors to define and publish their own custom registries to suit specific
 > needs.
 
 Weaver currently supports a basic form of multi-registry, allowing a custom
@@ -131,8 +131,8 @@ registry is consistent, validated, and follows the core policies.
 weaver registry check -r registry-path
 ```
 
-The following lists provide a brief overview of the policies implemented for
-the OTel registry.
+The following lists provide a brief overview of the policies implemented for the
+OTel registry.
 
 | **Attribute Rules**                                     | **Naming & Structure**             | **Stability & Evolution**                    |
 | ------------------------------------------------------- | ---------------------------------- | -------------------------------------------- |
