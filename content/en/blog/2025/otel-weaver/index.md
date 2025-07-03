@@ -58,7 +58,9 @@ That's where [OTel Weaver](https://github.com/open-telemetry/weaver) comes in.
 
 Observability by design means integrating observability into your software
 development life cycle (SDLC) from the start. This is often called
-"observability shift left":
+"observability shift left" because it moves observability concerns earlier
+(to the "left") in the development timeline—from post-deployment monitoring
+back to the design and development phases:
 
 1. **Set Clear Goals**: Define observability objectives up front. What signals
    do you need?
@@ -131,8 +133,6 @@ weaver registry check -r registry-path
 
 The following lists provide a brief overview of the policies implemented for
 the OTel registry.
-
-Below are some of the key policy checks enforced for the OTel registry:
 
 | **Attribute Rules**                                     | **Naming & Structure**             | **Stability & Evolution**                    |
 | ------------------------------------------------------- | ---------------------------------- | -------------------------------------------- |
