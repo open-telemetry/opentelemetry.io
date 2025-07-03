@@ -6,6 +6,9 @@ on:
     # At 04:31, every day
     - cron: 31 4 * * *
 
+permissions:
+  contents: read
+
 jobs:
   auto-update-versions:
     name: Auto-update registry versions
