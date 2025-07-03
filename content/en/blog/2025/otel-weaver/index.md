@@ -56,7 +56,7 @@ That's where [OTel Weaver](https://github.com/open-telemetry/weaver) comes in.
 
 ## Observability by design: A modern engineering approach
 
-Observability by Design means integrating observability into your software
+Observability by design means integrating observability into your software
 development life cycle (SDLC) from the start. This is often called
 "observability shift left":
 
