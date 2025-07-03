@@ -71,7 +71,7 @@ development life cycle (SDLC) from the start. This is often called
 In other words, **treat telemetry like a public API**. If you wouldn't break
 your app's API between releases, don't break your telemetry either.
 
-## OTel Weaver: Empowering Semantic Conventions and Observability by Design
+## OTel Weaver: Empowering semantic conventions and observability by design
 
 **OTel Weaver** is the open source CLI and automation platform that helps you
 manage, validate, and evolve semantic conventions and observability workflows.
