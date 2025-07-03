@@ -96,10 +96,10 @@ What can Weaver do for you?
 - **Diff and evolution**: Safely evolve your telemetry schema with automatic
   diffs and upgrade/downgrade support.
 
-> Definition: A registry is a collection of semantic conventions, standardized
-> definitions that describe how telemetry data (like metrics, logs, and traces)
+> Definition: A registry is a collection of semantic conventions, which are standardized
+> definitions that describe how telemetry data like metrics, logs, and traces
 > should be named and structured. OpenTelemetry maintains the official semantic
-> convention registry, but it’s entirely possible for teams, projects, or
+> convention registry, but it’s possible for teams, projects, or
 > vendors to define and publish their own custom registries to suit specific
 > needs.
 
