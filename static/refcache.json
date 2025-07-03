@@ -16007,6 +16007,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:26:12.345Z"
   },
+  "https://learn.microsoft.com/en-us/windows/wsl/install": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-02T15:26:11.023356727Z"
+  },
   "https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions": {
     "StatusCode": 206,
     "LastSeen": "2025-06-24T15:23:03.205400804Z"
