@@ -142,7 +142,7 @@ Below are some of the key policy checks enforced for the OTel registry:
 | Attribute sets must be immutable                        | No namespace collisions            | Definitions require stability                |
 | Experimental attributes in stable groups must be opt-in | No constant name collisions        | Enum values may not be changed, once defined |
 
-**Generating Markdown Documentation:**<br/> Weaver automatically produces the
+**Generating Markdown documentation:**<br/> Weaver automatically produces the
 human-readable docs you see at opentelemetry.io.
 
 ```bash
