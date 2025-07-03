@@ -427,9 +427,17 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-29T17:30:33.389601601Z"
   },
+  "https://cloud-native.slack.com/archives/C041APFBYQP": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-02T23:23:40.808529001Z"
+  },
   "https://cloud-native.slack.com/archives/C05PXDFTCPJ": {
     "StatusCode": 200,
     "LastSeen": "2025-01-29T09:52:40.815112084Z"
+  },
+  "https://cloud-native.slack.com/archives/C0697EXNTL3": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-02T23:23:45.490827015Z"
   },
   "https://cloud-native.slack.com/archives/C06TMJ2R0SK": {
     "StatusCode": 200,
@@ -2954,6 +2962,10 @@
   "https://github.com/MrAlias/redact": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:44:23.594991-05:00"
+  },
+  "https://github.com/MrAlias/semconv-go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-02T23:23:38.415771294Z"
   },
   "https://github.com/Mrod1598": {
     "StatusCode": 206,
@@ -8595,6 +8607,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:38.601751-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-go/tree/main/semconv": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-02T23:23:27.637993196Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-go/tree/main/semconv/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:54.798013-05:00"
@@ -13779,6 +13795,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-11T17:47:12.345Z"
   },
+  "https://github.com/open-telemetry/weaver/releases": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-02T23:23:24.71924589Z"
+  },
+  "https://github.com/open-telemetry/weaver/tree/main/crates/weaver_live_check#readme": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-02T23:23:30.357995474Z"
+  },
   "https://github.com/openclarity/apiclarity/tree/master/plugins/otel-collector": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:45.041259-05:00"
@@ -14382,6 +14406,10 @@
   "https://github.com/sh0rez": {
     "StatusCode": 200,
     "LastSeen": "2024-11-06T19:17:43.928734Z"
+  },
+  "https://github.com/sh0rez/promconv/tree/main": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-02T23:23:36.337020592Z"
   },
   "https://github.com/shalevr": {
     "StatusCode": 206,
@@ -15382,6 +15410,10 @@
   "https://hsqldb.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:37:01.182207-05:00"
+  },
+  "https://hub.docker.com/r/otel/weaver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-02T23:23:25.203074857Z"
   },
   "https://hyper.rs/": {
     "StatusCode": 200,
@@ -16830,6 +16862,10 @@
   "https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration": {
     "StatusCode": 206,
     "LastSeen": "2025-06-25T14:35:48.528151427Z"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-02T23:23:22.122093332Z"
   },
   "https://opentelemetry.io/ecosystem/registry/": {
     "StatusCode": 206,
