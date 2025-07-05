@@ -2,8 +2,8 @@
 title: Бібліотеки інструментів
 linkTitle: Бібліотеки
 weight: 40
-cSpell:ignore: darwin inout iphone NSURL wifi профілюючому urlsession
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: darwin inout iphone NSURL Signposter wifi профілюючому urlsession tvos
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -130,12 +130,37 @@ let sessionInstrumentation = URLSessionInstrumentation(configuration: URLSession
 за допомогою OpenTelemetry, щоб показувати їх відрізки в профілюючому застосунку, як `Instruments`. Він
 також експортує `OSLog`, який використовується для публікації, щоб користувач міг додати додаткові події signpost. Ця функціональність показана в прикладі `Simple Exporter`.
 
+### Повідомлення про версію {#version-notice}
+
+- **iOS 15+, macOS 12+, tvOS 15+, watchOS 8+**: використовуйте **`OSSignposterIntegration`**, який використовує сучасний API `OSSignposter` для підвищення ефективності та сумісності.
+- **Старі системи**: використовуйте **`SignPostIntegration`**, який базується на традиційному API `os_signpost`.
+
 ### Використання {#usage-2}
 
-Додайте SignpostIntegration як будь-який інший процесор відрізків (див. документи [ручного інструментування](../instrumentation/)) для деталей налаштування ваших постачальників:
+Add the appropriate span processor based on your deployment target (see the
+[manual instrumentation](../instrumentation/)) docs for details on configuring
+your providers:
+
+#### Для iOS 15+, macOS 12+, tvOS 15+, watchOS 8+: {#for-ios-15-macos-12-tvos-15-watchos-8}
+
+```swift
+OpenTelemetry.instance.tracerProvider.addSpanProcessor(OSSignposterIntegration())
+```
+
+#### Для старих систем {#for-older-systems}
 
 ```swift
 OpenTelemetry.instance.tracerProvider.addSpanProcessor(SignPostIntegration())
+```
+
+#### Або вибрати автоматично під час виконання: {#or-to-select-automatically-at-runtime}
+
+```swift
+if #available(iOS 15, macOS 12, tvOS 15, watchOS 8, *) {
+    OpenTelemetry.instance.tracerProvider.addSpanProcessor(OSSignposterIntegration())
+} else {
+    OpenTelemetry.instance.tracerProvider.addSpanProcessor(SignPostIntegration())
+}
 ```
 
 ## Доступні бібліотеки інструментів {#available-instrumentation-libraries}

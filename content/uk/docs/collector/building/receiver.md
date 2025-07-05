@@ -4,7 +4,7 @@ weight: 20
 aliases: [/docs/collector/trace-receiver/]
 # prettier-ignore
 cSpell:ignore: backendsystem crand debugexporter loggingexporter mapstructure pcommon pdata protogen ptrace rcvr struct structs tailtracer telemetrygen uber receiverfactory бутстрап тікером задіяних викликаючого викликачем викликача
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
@@ -578,8 +578,8 @@ type tailtracerReceiver struct {
 }
 
 func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host component.Host) error {
-    tailtracerRcvr.host = host
-    ctx = context.Background()
+	tailtracerRcvr.host = host
+	ctx = context.Background()
 	ctx, tailtracerRcvr.cancel = context.WithCancel(ctx)
 
 	return nil

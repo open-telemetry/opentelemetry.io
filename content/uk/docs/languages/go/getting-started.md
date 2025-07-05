@@ -3,7 +3,7 @@ title: Початок роботи
 weight: 10
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -23,7 +23,7 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 
 Переконайтеся, що у вас встановлено наступне:
 
-- [Go](https://go.dev/) 1.22 або новіше
+- [Go](https://go.dev/) 1.23 або новіше
 
 ## Приклад застосунку {#example-application}
 

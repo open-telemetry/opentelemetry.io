@@ -4,7 +4,7 @@ aliases: [/docs/collector/build-connector/]
 weight: 30
 # prettier-ignore
 cSpell:ignore: batchprocessor debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber configgo
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 ## Конектори в OpenTelemetry {#connectors-in-opentelemetry}

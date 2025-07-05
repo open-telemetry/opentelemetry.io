@@ -3,7 +3,7 @@ title: Експортери
 weight: 50
 description: Обробка та експорт ваших телеметричних даних
 cSpell:ignore: LOWMEMORY
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
