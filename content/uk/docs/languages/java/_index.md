@@ -6,12 +6,12 @@ description: >-
 aliases: [/java, /java/metrics, /java/tracing]
 cascade:
   vers:
-    instrumentation: 2.16.0
+    instrumentation: 2.17.0
     otel: 1.51.0
     contrib: 1.46.0
     semconv: 1.34.0
 weight: 18
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 {{% docs/languages/index-intro java /%}}

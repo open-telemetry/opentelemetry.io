@@ -6,7 +6,7 @@ aliases:
 weight: 30
 description: Ручне інструментування для OpenTelemetry в Go
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup обчислювально
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 {{% include instrumentation-intro %}}
@@ -40,7 +40,7 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.32.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -174,7 +174,7 @@ span.SetAttributes(myKey.String("a value"))
 
 #### Семантичні атрибути {#semantic-attributes}
 
-Семантичні атрибути — це атрибути, визначені [Специфікацією OpenTelemetry][специфікація opentelemetry], щоб забезпечити спільний набір ключів атрибутів для кількох мов, фреймворків та середовищ виконання для загальних концепцій, таких як HTTP методи, коди стану, агенти користувача тощо. Ці атрибути доступні в пакунку `go.opentelemetry.io/otel/semconv/v1.32.0`.
+Семантичні атрибути — це атрибути, визначені [Специфікацією OpenTelemetry][специфікація opentelemetry], щоб забезпечити спільний набір ключів атрибутів для кількох мов, фреймворків та середовищ виконання для загальних концепцій, таких як HTTP методи, коди стану, агенти користувача тощо. Ці атрибути доступні в пакунку `go.opentelemetry.io/otel/semconv/v1.34.0`.
 
 Для деталей дивіться [Семантичні конвенції трейсів][].
 
@@ -317,7 +317,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.32.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
 )
 
 func main() {
@@ -685,7 +685,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.32.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
 )
 
 func init() {
@@ -886,7 +886,7 @@ import (
 	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.32.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
 )
 
 func main() {

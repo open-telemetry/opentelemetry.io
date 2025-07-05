@@ -4,7 +4,7 @@ aliases: [manual]
 weight: 20
 description: Ручне інструментування для OpenTelemetry Python
 cSpell:ignore: millis ottrace textmap
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -366,7 +366,7 @@ set_logger_provider(provider)
 
 logger = get_logger(__name__)
 
-handler = LoggingHandler(level=logging.INFO, logger=logger)
+handler = LoggingHandler(level=logging.INFO, logger_provider=provider)
 logging.basicConfig(handlers=[handler], level=logging.INFO)
 
 logging.info("This is an OpenTelemetry log record!")

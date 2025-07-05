@@ -4,7 +4,7 @@ weight: 20
 description: Дізнайтеся, як налаштувати Collector відповідно до ваших потреб
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -484,7 +484,7 @@ service:
 
 > Для детальної конфігурації конекторів див. [README конектора](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
 
-## Розширення {#extensions}
+## Розширення <img width="32" class="img-initial" alt="" src="/img/logos/32x32/Extensions.svg"> {#extensions}
 
 Розширення є необовʼязковими компонентами, які розширюють можливості Collector для виконання завдань, не повʼязаних безпосередньо з обробкою телеметричних даних. Наприклад, ви можете додати розширення для моніторингу справності Collector, виявлення сервісів або пересилання даних, серед інших.
 

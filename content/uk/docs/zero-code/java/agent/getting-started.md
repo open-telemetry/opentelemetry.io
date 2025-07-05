@@ -2,7 +2,7 @@
 title: Початок роботи
 weight: 1
 cSpell:ignore: Dotel myapp jvms
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 ## Налаштування {#setup}
