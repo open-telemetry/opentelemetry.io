@@ -161,4 +161,75 @@ if err != nil {
 
 ## Logs
 
-TBD
+There are 2 approaches you can use to send your logs to the OpenTelemetry Collector - **Direct-to-Collector** or **via file or stdout**. You can find documentation specifying how to use both these approaches in the [Logs](https://opentelemetry.io/docs/languages/go/instrumentation/#logs) section of the [Manual Instrumentation](https://opentelemetry.io/docs/languages/go/instrumentation/) documentation.
+
+The Product Catalog service utilises the first approach (**Direct-to-Collector**) and a **Log Bridge** to send its logs to the Collector. We are bridging to the `slog` logging package, which allows us to output structured logs. 
+
+## LoggerProvider initialisation
+
+The OpenTelemetry SDK is initialised from `main` using the `initLoggerProvider`
+function.
+
+```go
+	ctx := context.Background()
+
+	logExporter, err := otlploggrpc.New(ctx)
+	if err != nil {
+		return nil
+	}
+
+	loggerProvider := sdklog.NewLoggerProvider(
+		sdklog.WithProcessor(sdklog.NewBatchProcessor(logExporter)),
+	)
+	global.SetLoggerProvider(loggerProvider)
+
+	return loggerProvider
+```
+
+You should call `LoggerProvider.Shutdown()` when your service is shutdown to
+ensure all logs are exported. This service makes that call as part of a
+deferred function in main
+
+```go
+	lp := initLoggerProvider()
+	defer func() {
+		if err := lp.Shutdown(context.Background()); err != nil {
+			logger.Error(fmt.Sprintf("Logger Provider Shutdown: %v", err))
+		}
+		logger.Info("Shutdown logger provider")
+	}()
+```
+
+### Logging functionality
+
+This service will send logs to the Collector using gRPC calls. The logs are output in a structured format using the `slog` package.
+
+The first thing we do is initialise our logger:
+
+```go
+	logger   *slog.Logger
+    logger = otelslog.NewLogger("product-catalog")
+```
+
+After it's initiliased we can go ahead and use our new `logger` to output our logs. The `logger` provides the usual `Info()`, `Error()` and other methods which correspond to logging levels.
+
+Note the use of `fmt.Sprintf` to format our output before we send it to our `logger`:
+
+```go
+        logger.Info("Loading Product Catalog...")
+        logger.Info(fmt.Sprintf("Product Catalog reload interval: %d", interval))
+        logger.Error(fmt.Sprintf("Error shutting down meter provider: %v", err))
+```
+
+Because we are using `slog`, we have the advantage of being able to attach **extra attributes** to our output. In the example below we are attaching the `product.name` and `product.id` as extra attributes.
+
+This makes it possible to view and parse these as part of the log output and makes it easier to view them as separate columns in Grafana:
+
+```go
+	logger.LogAttrs(
+		ctx,
+		slog.LevelInfo, "Product Found",
+		slog.String("app.product.name", found.Name),
+		slog.String("app.product.id", req.Id),
+	)
+```
