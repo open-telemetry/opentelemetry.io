@@ -2,7 +2,7 @@
 title: Початок роботи на прикладі
 description: Отримайте телеметрію для вашого застосунку менш ніж за 5 хвилин!
 weight: 10
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

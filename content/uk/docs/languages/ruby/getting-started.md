@@ -5,7 +5,7 @@ aliases: [getting_started]
 weight: 10
 # prettier-ignore
 cSpell:ignore: darwin rolldice sinatra struct tracestate truffleruby
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 Ця сторінка покаже вам, як почати роботу з OpenTelemetry у Ruby.
@@ -16,7 +16,7 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 
 Переконайтеся, що у вас встановлено наступне:
 
-- CRuby >= `3.0`, JRuby >= `9.3.2.0`, or TruffleRuby >= `22.1`
+- CRuby >= `3.1`, JRuby >= `9.3.2.0`, or TruffleRuby >= `22.1`
 - [Bundler](https://bundler.io/)
 
 {{% alert  title="Попередження" color="warning" %}} Хоча підтримка `jruby` та `truffleruby` тестувалася, вона наразі надається на основі найкращих зусиль. {{% /alert %}}
