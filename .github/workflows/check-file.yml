@@ -4,6 +4,9 @@ on:
   merge_group:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   check-expired:
     name: EXPIRED FILE check

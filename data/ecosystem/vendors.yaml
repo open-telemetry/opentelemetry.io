@@ -529,3 +529,10 @@
   contact: support@vfunction.com
   oss: false
   commercial: true
+- name: Coroot
+  nativeOTLP: true
+  oss: true
+  commercial: true
+  url: https://github.com/coroot/coroot
+  documentation: https://docs.coroot.com/tracing/opentelemetry-go
+  contact: alamberton@coroot.com

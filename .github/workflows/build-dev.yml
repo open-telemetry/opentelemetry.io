@@ -8,6 +8,9 @@ on:
         default: content-modules
         type: string
 
+permissions:
+  contents: read
+
 jobs:
   build-and-test:
     name: BUILD and CHECK LINKS

@@ -41,7 +41,6 @@ One of the best ways to help make OTel docs better is to fix an existing issue.
    {{% alert title="First time contributing?" color="primary alert--first-timer" %}}
 
    Select an issue with the following labels:
-
    - [Good first issue](<{{% param _issue %}}%22good+first+issue%22>)
    - [Help wanted](<{{% param _issue %}}%3A%22help+wanted%22>)
 

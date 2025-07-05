@@ -24,7 +24,6 @@ OpenTelemetry (OTel) es solucionando un problema ya identificado.
    {{% alert title="Contribuyendo por la primera vez?" color="primary alert--first-timer" %}}
 
    Seleccione una propuesta con las siguientes etiquetas:
-
    - [Good first issue]
    - [Help wanted]
 

@@ -16,3 +16,7 @@ monitoreo
 multilenguaje
 redireccionar
 prerrellenada
+autogenerado
+desincronizado
+desincronizadas
+subsección

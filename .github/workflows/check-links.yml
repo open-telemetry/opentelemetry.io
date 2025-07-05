@@ -5,6 +5,9 @@ on:
   merge_group:
   pull_request:
 
+permissions:
+  contents: read
+
 env:
   CHANGED_FILES:
   PR_NUM: ${{ github.event.pull_request.number }}
@@ -28,7 +31,9 @@ jobs:
           jq '.devDependencies |= with_entries(
                   select(.key | test("prefix|hugo|css"))
                 )
-                | del(.dependencies, .optionalDependencies)' \
+                | .dependencies |= with_entries(
+                  select(.key | test("minisearch")))
+                | del(.optionalDependencies)' \
             package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 

@@ -161,7 +161,6 @@ agent][] in a number of ways, the steps below use environment variables.
    ```
 
    {{% alert title="Important" color="warning" %}}
-
    - Replace `PATH/TO` above, with your path to the JAR.
    - Set `OTEL_METRIC_EXPORT_INTERVAL` to a value well below the default, as we
      illustrate above, **only during testing** to help you more quickly ensure

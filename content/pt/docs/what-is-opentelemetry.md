@@ -9,7 +9,6 @@ cSpell:ignore: youtube
 O OpenTelemetry é:
 
 - Um **_framework_ e conjunto de ferramentas** projetado para facilitar a
-
   - [Geração][instr]
   - Exportação
   - [Coleta](../concepts/components/#collector)

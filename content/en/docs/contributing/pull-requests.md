@@ -348,10 +348,8 @@ _Figure 4. Steps to open a PR from your fork to_
 1. From the **compare** drop-down menu, select your branch.
 1. Select **Create Pull Request**.
 1. Add a description for your pull request:
-
    - **Title** (50 characters or less): Summarize the intent of the change.
    - **Description**: Describe the change in more detail.
-
      - If there is a related GitHub issue, include `Fixes #12345` or
        `Closes #12345` in the description so that GitHub's automation closes the
        mentioned issue after merging the PR. If there are other related PRs,

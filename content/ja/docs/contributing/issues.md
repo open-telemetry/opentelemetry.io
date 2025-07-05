@@ -41,7 +41,6 @@ OTel を改善するための最も良い方法の 1 つは、既存のイシュ
    {{% alert title="最初のコントリビュートですか？" color="primary alert--first-timer" %}}
 
    以下のラベルのイシューを選択してください。
-
    - [Good first issue](<{{% param _issue %}}%22good+first+issue%22>)
    - [Help wanted](<{{% param _issue %}}%3A%22help+wanted%22>)
 

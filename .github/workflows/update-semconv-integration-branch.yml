@@ -6,6 +6,9 @@ on:
     - cron: '24 10 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   update-semconv-integration-branch:
     runs-on: ubuntu-latest

@@ -416,7 +416,7 @@ set_logger_provider(provider)
 
 logger = get_logger(__name__)
 
-handler = LoggingHandler(level=logging.INFO, logger=logger)
+handler = LoggingHandler(level=logging.INFO, logger_provider=provider)
 logging.basicConfig(handlers=[handler], level=logging.INFO)
 
 logging.info("This is an OpenTelemetry log record!")

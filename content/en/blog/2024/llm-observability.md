@@ -55,7 +55,6 @@ costs. Here are the key signals to monitor:
   variety of parameters (like `temperature` and `top_p`) that can drastically
   affect both the response quality and the cost. Specific aspects to monitor
   are:
-
   - **Temperature**: Indicates the level of creativity or randomness desired
     from the model's outputs. Varying this parameter can significantly impact
     the nature of the generated content.
@@ -73,7 +72,6 @@ costs. Here are the key signals to monitor:
 
 - **Response Metadata**: Given the API-based interaction with LLMs, tracking the
   specifics of the response is key for cost management and quality assessment:
-
   - **Tokens**: Directly impacts cost and is a measure of response length and
     complexity.
 
