@@ -5,7 +5,7 @@ description:
 weight: 200
 default_lang_commit: 1ef7e909832c9c1cbf97aa15af0516f1d5b6bde5
 ---
-এই শব্দকোষ OpenTelemetry প্রজেক্টে নতুন পরিভাষা এবং ধারণাগুলো ([concepts](/docs/concepts/)) সংজ্ঞায়িত করে, এবং 
+এই শব্দকোষ OpenTelemetry প্রজেক্টে নতুন পরিভাষা এবং ধারণাগুলো ([concepts](/docs/concepts/)) সংজ্ঞায়িত করে, এবং
 অবজারভেবিলিটি ক্ষেত্রে সাধারণ পরিভাষাগুলোর OpenTelemetry-সম্পর্কিত
 ব্যবহার স্পষ্ট করে।
 

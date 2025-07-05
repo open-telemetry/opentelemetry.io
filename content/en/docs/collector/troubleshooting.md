@@ -2,7 +2,7 @@
 title: Troubleshooting
 description: Recommendations for troubleshooting the Collector
 weight: 25
-cSpell:ignore: confmap pprof tracez zpages
+cSpell:ignore: confmap pprof tracez
 ---
 
 On this page, you can learn how to troubleshoot the health and performance of
