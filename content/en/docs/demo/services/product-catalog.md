@@ -198,9 +198,9 @@ function.
 	return loggerProvider
 ```
 
-You should call `LoggerProvider.Shutdown()` when your service is shutdown to
+Call `LoggerProvider.Shutdown()` when your service is down to
 ensure all logs are exported. This service makes that call as part of a deferred
-function in main
+function in `main`:
 
 ```go
 	lp := initLoggerProvider()
