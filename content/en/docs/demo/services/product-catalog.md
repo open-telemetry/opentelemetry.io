@@ -161,18 +161,21 @@ if err != nil {
 
 ## Logs
 
-There are 2 approaches you can use to send your logs to the OpenTelemetry
-Collector - **Direct-to-Collector** or **via file or stdout**. You can find
-documentation specifying how to use both these approaches in the
+You can send your logs to the OpenTelemetry Collector in two ways:
+
+ - Directly to thje Collector
+ - Through a file or stdout
+ 
+You can find documentation specifying how to use both these 
+approaches in the
 [Logs](https://opentelemetry.io/docs/languages/go/instrumentation/#logs) section
-of the
+of the 
 [Manual Instrumentation](https://opentelemetry.io/docs/languages/go/instrumentation/)
 documentation.
 
-The Product Catalog service utilises the first approach
-(**Direct-to-Collector**) and a **Log Bridge** to send its logs to the
-Collector. We are bridging to the `slog` logging package, which allows us to
-output structured logs.
+The Product Catalog service sends the logs directly to the Collector, and uses a 
+log bridge to send its logs, bridging to the `slog` logging package, which outputs
+structured logs.
 
 ## LoggerProvider initialisation
 
