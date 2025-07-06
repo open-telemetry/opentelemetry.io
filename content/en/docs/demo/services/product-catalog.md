@@ -179,7 +179,7 @@ structured logs.
 
 ## LoggerProvider initialization
 
-The OpenTelemetry SDK is initialised from `main` using the `initLoggerProvider`
+The OpenTelemetry SDK is initialized from `main` using the `initLoggerProvider`
 function.
 
 ```go
