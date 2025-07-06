@@ -214,19 +214,14 @@ function in `main`:
 
 ### Logging functionality
 
-This service will send logs to the Collector using gRPC calls. The logs are
+This service sends logs to the Collector using gRPC calls. The logs are
 output in a structured format using the `slog` package.
 
-The first thing we do is initialise our logger:
+First, initialize the logger:
 
 ```go
 	logger   *slog.Logger
     logger = otelslog.NewLogger("product-catalog")
-```
-
-After it's initiliased we can go ahead and use our new `logger` to output our
-logs. The `logger` provides the usual `Info()`, `Error()` and other methods
-which correspond to logging levels.
 
 Note the use of `fmt.Sprintf` to format our output before we send it to our
 `logger`:
