@@ -15911,6 +15911,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:26:59.999Z"
   },
+  "https://langfuse.com/docs/opentelemetry/get-started": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-05T16:36:41.645396004Z"
+  },
   "https://last9.io/docs/integrations-opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2025-04-08T07:13:45.660164039Z"
