@@ -232,12 +232,11 @@ logger:
         logger.Error(fmt.Sprintf("Error shutting down meter provider: %v", err))
 ```
 
-Because we are using `slog`, we have the advantage of being able to attach
-**extra attributes** to our output. In the example below we are attaching the
-`product.name` and `product.id` as extra attributes.
-
-This makes it possible to view and parse these as part of the log output and
-makes it easier to view them as separate columns in Grafana:
+The advantage of using `slog` is the ability to attach additional attributes
+to the output. The following example attaches the `product.name` and 
+`product.id` attributes. This makes it possible to view and parse these
+as part of the log output and makes it easier to view them as separate
+columns in Grafana:
 
 ```go
 	logger.LogAttrs(
