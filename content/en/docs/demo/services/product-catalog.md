@@ -223,8 +223,8 @@ First, initialize the logger:
 	logger   *slog.Logger
     logger = otelslog.NewLogger("product-catalog")
 
-Note the use of `fmt.Sprintf` to format our output before we send it to our
-`logger`:
+Note the use of `fmt.Sprintf` to format the output before it's sent to the
+logger:
 
 ```go
         logger.Info("Loading Product Catalog...")
