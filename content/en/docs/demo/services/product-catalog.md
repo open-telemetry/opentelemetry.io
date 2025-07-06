@@ -177,7 +177,7 @@ The Product Catalog service sends the logs directly to the Collector, and uses a
 log bridge to send its logs, bridging to the `slog` logging package, which outputs
 structured logs.
 
-## LoggerProvider initialisation
+## LoggerProvider initialization
 
 The OpenTelemetry SDK is initialised from `main` using the `initLoggerProvider`
 function.
