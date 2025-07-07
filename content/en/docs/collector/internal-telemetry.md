@@ -71,17 +71,20 @@ service:
                 port: 8888
 ```
 
-If you want to add additional labels to the Prometheus metrics you can add them with `prometheus::with_resource_constant_labels`:
+If you want to add additional labels to the Prometheus metrics you can add them
+with `prometheus::with_resource_constant_labels`:
+
 ```yaml
 prometheus:
   host: '0.0.0.0'
   port: 8888
   with_resource_constant_labels:
     included:
-    - label_key
+      - label_key
 ```
 
 And referencing the labels in `service::telemetry::resource`:
+
 ```yaml
 resource:
   label_key: label_value
