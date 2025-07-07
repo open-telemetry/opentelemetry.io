@@ -76,8 +76,8 @@ about supported JavaScript and Node.js versions, see the
 
 {{% /tab %}} {{% tab Python %}}
 
-The Lambda layer supports Python 3.9+ Lambda runtimes. For more
-information about supported Python versions, see the
+The Lambda layer supports Python 3.9+ Lambda runtimes. For more information
+about supported Python versions, see the
 [OpenTelemetry Python documentation](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#supported-runtimes)
 and the package on [PyPi](https://pypi.org/project/opentelemetry-api/).
 
