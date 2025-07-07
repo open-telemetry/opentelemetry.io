@@ -57,7 +57,7 @@ Lambdaレイヤーは、Node.js v14+のLambdaランタイムをサポートし�
 
 {{% /tab %}} {{% tab Python %}}
 
-LambdaレイヤーはPython 3.9以上のLambdaランタイムをサポートしています。
+LambdaレイヤーはPython 3.8とPython 3.9のLambdaランタイムをサポートしています。
 サポートされているPythonのバージョンについては、[OpenTelemetry Pythonドキュメント](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#supported-runtimes) と [PyPi](https://pypi.org/project/opentelemetry-api/) のパッケージを参照してください。
 
 {{% /tab %}} {{% tab Ruby %}}
