@@ -1,5 +1,5 @@
 ---
-title: 構成
+title: 設定
 weight: 20
 description: ニーズに合わせてコレクターを設定する方法を確認してください
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
