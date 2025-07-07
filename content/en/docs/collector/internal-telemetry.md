@@ -129,6 +129,29 @@ service:
       level: detailed
 ```
 
+It is possible to further configure how metrics from the Collector are
+emitted via the use of [Views](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#view).
+The following updates the metric named `otelcol_process_uptime` to
+emit a new name `process_uptime` and description:
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      views:
+      - selector:
+          instrument_name: otelcol_process_uptime
+          instrument_type: 
+        stream:
+          name: process_uptime
+          description: The amount of time the Collector has been up
+```
+
+Additional configuration options are available such as updating the
+resulting aggregation, attributes, and cardinality limits amongst them.
+For the full list of options, refer to the examples in the OpenTelemetry
+Configuration schema [repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/f4e9046682d4386ea533ef7ba6ad30a5ce4451b4/examples/kitchen-sink.yaml#L440).
+
 ### Configure internal logs
 
 Log output is found in `stderr`. You can configure logs in the config
