@@ -71,7 +71,7 @@ service:
                 port: 8888
 ```
 
-If you want to add additional labels to the Prometheus metrics you can add them
+If you want to add additional labels to the Prometheus metrics, you can add them
 with `prometheus::with_resource_constant_labels`:
 
 ```yaml
