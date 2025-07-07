@@ -426,6 +426,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/2471669?v=4
   - name: dmathieu
     teams:
+      - collector-approvers
       - collector-triagers
       - docs-fr-approvers
       - docs-fr-maintainers

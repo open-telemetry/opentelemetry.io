@@ -210,6 +210,12 @@
   contact: https://github.com/cartersocha
   oss: false
   commercial: true
+- name: Langfuse
+  nativeOTLP: true
+  url: https://langfuse.com/docs/opentelemetry/get-started
+  contact: support@langfuse.com
+  oss: true
+  commercial: true
 - name: Last9
   nativeOTLP: true
   url: https://last9.io/docs/integrations-opentelemetry/
