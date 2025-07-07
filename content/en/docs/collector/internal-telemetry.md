@@ -83,7 +83,7 @@ prometheus:
       - label_key
 ```
 
-And referencing the labels in `service::telemetry::resource`:
+And then reference the labels in `service::telemetry::resource`:
 
 ```yaml
 resource:
