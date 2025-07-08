@@ -13,6 +13,19 @@ the project, and connect with the broader observability community.
 
 ## Key Community Events
 
+### SIG End-User Virtual Events
+
+The OpenTelemetry SIG End-User group organizes regular virtual events to bring
+together end users, share experiences, and discuss real-world implementation
+challenges and successes. These events include:
+
+- Virtual meetups and discussions
+- End-user case studies and presentations
+- Q&A sessions with the community
+
+Find all SIG End-User virtual events and join the community at
+[community.cncf.io/opentelemetry/](https://community.cncf.io/opentelemetry/).
+
 ### KubeCon + CloudNativeCon
 
 OpenTelemetry has a strong presence at KubeCon + CloudNativeCon events
