@@ -70,7 +70,7 @@ OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-The Lambda layer supports Node.js v14+ Lambda runtimes. For more information
+The Lambda layer supports Node.js v18+ Lambda runtimes. For more information
 about supported JavaScript and Node.js versions, see the
 [OpenTelemetry JavaScript documentation](https://github.com/open-telemetry/opentelemetry-js).
 
