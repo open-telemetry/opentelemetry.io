@@ -76,8 +76,8 @@ about supported JavaScript and Node.js versions, see the
 
 {{% /tab %}} {{% tab Python %}}
 
-The Lambda layer supports Python 3.8 and Python 3.9 Lambda runtimes. For more
-information about supported Python versions, see the
+The Lambda layer supports Python 3.9+ Lambda runtimes. For more information
+about supported Python versions, see the
 [OpenTelemetry Python documentation](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#supported-runtimes)
 and the package on [PyPi](https://pypi.org/project/opentelemetry-api/).
 
@@ -93,9 +93,9 @@ and the package on [RubyGem](https://rubygems.org/search?query=opentelemetry).
 ### Configure `AWS_LAMBDA_EXEC_WRAPPER`
 
 Change the entry point of your application by setting
-`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for Node.js, Java, or Ruby, and
-`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-instrument` for Python. These wrapper scripts
-will invoke your Lambda application with the automatic instrumentation applied.
+`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for Node.js, Java, Ruby, or Python.
+This wrapper script invokes your Lambda application with the automatic
+instrumentation applied.
 
 ### Add the ARN of Instrumentation Lambda Layer
 

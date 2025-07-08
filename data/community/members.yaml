@@ -426,6 +426,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/2471669?v=4
   - name: dmathieu
     teams:
+      - collector-approvers
       - collector-triagers
       - docs-fr-approvers
       - docs-fr-maintainers
@@ -2656,9 +2657,6 @@ members:
   - name: samimusallam
     html_url: https://github.com/samimusallam
     avatar_url: https://avatars.githubusercontent.com/u/1358230?v=4
-  - name: sh0rez
-    html_url: https://github.com/sh0rez
-    avatar_url: https://avatars.githubusercontent.com/u/26971117?v=4
   - name: shivanshuraj1333
     html_url: https://github.com/shivanshuraj1333
     avatar_url: https://avatars.githubusercontent.com/u/26167974?v=4
@@ -2686,6 +2684,9 @@ members:
   - name: thisthat
     html_url: https://github.com/thisthat
     avatar_url: https://avatars.githubusercontent.com/u/992621?v=4
+  - name: tombrk
+    html_url: https://github.com/tombrk
+    avatar_url: https://avatars.githubusercontent.com/u/26971117?v=4
   - name: tonyredondo
     html_url: https://github.com/tonyredondo
     avatar_url: https://avatars.githubusercontent.com/u/69803?v=4
