@@ -129,9 +129,9 @@ service:
       level: detailed
 ```
 
-It is possible to further configure how metrics from the Collector are
-emitted via the use of [Views](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/sdk.md#view).
-The following updates the metric named `otelcol_process_uptime` to
+You can further configure how metrics from the Collector are
+emitted by using [`views`](/docs/specs/otel/metrics/sdk/#view).
+For example, the following configuration updates the metric named `otelcol_process_uptime` to
 emit a new name `process_uptime` and description:
 
 ```yaml
@@ -147,9 +147,9 @@ service:
           description: The amount of time the Collector has been up
 ```
 
-Additional configuration options are available such as updating the
-resulting aggregation, attributes, and cardinality limits amongst them.
-For the full list of options, refer to the examples in the OpenTelemetry
+You can also use `views` to update the
+resulting aggregation, attributes, and cardinality limits.
+For the full list of options, see the examples in the OpenTelemetry
 Configuration schema [repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/f4e9046682d4386ea533ef7ba6ad30a5ce4451b4/examples/kitchen-sink.yaml#L440).
 
 ### Configure internal logs
