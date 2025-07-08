@@ -1,0 +1,19 @@
+# cSpell:ignore datadogextension
+title: Datadog Collector Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+license: Apache 2.0
+description: The Datadog Extension for the OpenTelemetry Collector.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/datadogextension
+createdAt: 2025-06-30
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/datadogextension
+  version: v0.129.0
