@@ -619,6 +619,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-05-16T10:23:42.024759425-07:00"
   },
+  "https://community.cncf.io/opentelemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-08T14:16:49.991955+05:30"
+  },
   "https://communityinviter.com/apps/cloud-native/cncf": {
     "StatusCode": 200,
     "LastSeen": "2024-12-18T05:52:44.610968-05:00"
