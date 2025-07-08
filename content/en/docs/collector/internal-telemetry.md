@@ -129,28 +129,28 @@ service:
       level: detailed
 ```
 
-You can further configure how metrics from the Collector are
-emitted by using [`views`](/docs/specs/otel/metrics/sdk/#view).
-For example, the following configuration updates the metric named `otelcol_process_uptime` to
-emit a new name `process_uptime` and description:
+You can further configure how metrics from the Collector are emitted by using
+[`views`](/docs/specs/otel/metrics/sdk/#view). For example, the following
+configuration updates the metric named `otelcol_process_uptime` to emit a new
+name `process_uptime` and description:
 
 ```yaml
 service:
   telemetry:
     metrics:
       views:
-      - selector:
-          instrument_name: otelcol_process_uptime
-          instrument_type: 
-        stream:
-          name: process_uptime
-          description: The amount of time the Collector has been up
+        - selector:
+            instrument_name: otelcol_process_uptime
+            instrument_type:
+          stream:
+            name: process_uptime
+            description: The amount of time the Collector has been up
 ```
 
-You can also use `views` to update the
-resulting aggregation, attributes, and cardinality limits.
-For the full list of options, see the examples in the OpenTelemetry
-Configuration schema [repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/f4e9046682d4386ea533ef7ba6ad30a5ce4451b4/examples/kitchen-sink.yaml#L440).
+You can also use `views` to update the resulting aggregation, attributes, and
+cardinality limits. For the full list of options, see the examples in the
+OpenTelemetry Configuration schema
+[repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/f4e9046682d4386ea533ef7ba6ad30a5ce4451b4/examples/kitchen-sink.yaml#L440).
 
 ### Configure internal logs
 
