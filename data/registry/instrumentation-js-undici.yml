@@ -7,7 +7,7 @@ tags:
   - instrumentation
   - js
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-undici
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-undici
 license: Apache 2.0
 description:
   This module provides automatic instrumentation for
