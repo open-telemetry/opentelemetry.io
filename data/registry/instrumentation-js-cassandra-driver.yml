@@ -11,7 +11,7 @@ description: Instrumentation library for Cassandra driver.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-cassandra
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-cassandra-driver
 createdAt: 2021-07-08
 package:
   name: '@opentelemetry/instrumentation-cassandra-driver'

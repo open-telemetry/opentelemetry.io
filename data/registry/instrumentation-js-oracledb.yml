@@ -13,7 +13,7 @@ authors:
   - name: Sudarshan Soma (Oracle)
     email: sudarshan.ss.s@oracle.com
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-oracledb
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-oracledb
 createdAt: 2025-05-22
 package:
   registry: npm
