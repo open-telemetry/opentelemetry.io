@@ -221,7 +221,8 @@ First, initialize the logger:
 
 ```go
 	logger   *slog.Logger
-    logger = otelslog.NewLogger("product-catalog")
+	logger = otelslog.NewLogger("product-catalog")
+```
 
 Note the use of `fmt.Sprintf` to format the output before it's sent to the
 logger:
