@@ -2,8 +2,8 @@
 title: 管理
 description: OpenTelemetry Collectorのデプロイメントを大規模に管理する方法
 weight: 23
-cSpell:ignore: backpressure distro hostmetrics opampsupervisor
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+cSpell:ignore: hostmetrics opampsupervisor
 ---
 
 このドキュメントでは、OpenTelemetry コレクターのデプロイを大規模に管理する方法について説明します。
@@ -33,7 +33,7 @@ OpenTelemetryのコンテキストでは、タスク _4.ヘルスとパフォー
 
 オブザーバビリティベンダーやクラウドプロバイダーは、エージェント管理に独自のソリューションを提供しています。
 オープンソースのオブザーバビリティの領域では、エージェント管理に使用できる新しい標準があります。
-[Open Agent Management Protocol](OpAMP)です。
+[Open Agent Management Protocol] (OpAMP)です。
 
 [OpAMPの仕様][OpAMP specification]では、テレメトリーデータエージェントのフリート管理方法を定義しています。
 これらのエージェントは、[OpenTelemetry コレクター](/docs/collector/)、Fluent Bit、または他のエージェントを任意の組み合わせで使用できます。
@@ -54,10 +54,10 @@ OpAMPは、HTTPとWebSocketでの通信をサポートするクライアント/�
 
 ![OpAMPのセットアップ例](../img/opamp.svg)
 
-1.OpenTelemetry コレクターが、次のようなパイプラインで構成されているとします。
-  - (A) ダウンストリームのソースからシグナルを受信する
-  - (B) シグナルをアップストリームの宛先にエクスポートする。ここではコレクター自体のテレメトリーを含む可能性がある。（OpAMP `own_xxx` 接続設定で表されます）。
-1.サーバ側のOpAMPパートを実装するコントロールプレーンと、クライアント側のOpAMPを実装するコレクター（またはコレクターを制御するスーパーバイザー）の間の双方向のOpAMP制御フロー。
+1. OpenTelemetry コレクターが、次のようなパイプラインで構成されているとする
+   - (A) ダウンストリームのソースからシグナルを受信する
+   - (B) シグナルをアップストリームの宛先にエクスポートする。ここではコレクター自体のテレメトリーを含む可能性がある。（OpAMP `own_xxx` 接続設定で表されます）。
+1. サーバ側のOpAMPパートを実装するコントロールプレーンと、クライアント側のOpAMPを実装するコレクター（またはコレクターを制御するスーパーバイザー）の間の双方向のOpAMP制御フロー。
 
 ### 試してみてください {#try-it-out}
 
@@ -290,4 +290,3 @@ $ cat ./storage/agent.log
 [video-opamp-remote-control]: https://www.youtube.com/watch?v=t550FzDi054
 [video-opamp-bindplane]: https://www.youtube.com/watch?v=N18z2dOJSd8
 [video-opamp-lt]: https://www.youtube.com/watch?v=LUsfZFRM4yo
-
