@@ -9499,6 +9499,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:39:36.276663-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-express": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-09T14:42:15.307572774Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-fs": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:43.088777-05:00"
