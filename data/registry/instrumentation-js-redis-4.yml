@@ -22,4 +22,4 @@ deprecated:
   reason:
     This instrumentation has been deprecated. Use
     "@opentelemetry/instrumentation-redis", which (as of v0.50.0) includes
-    support for instrumenting redis v4.
+    support for instrumenting `redis` v4.
