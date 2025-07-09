@@ -52,7 +52,7 @@ if (process.argv.length < 3) {
     `USAGE: ${path.basename(process.argv[0])} ${path.basename(
       process.argv[1],
     )} <list>
-    <list> is a comma separated list of the following options: 
+    <list> is a comma separated list of the following options:
         - collector
         - python
         - ruby
@@ -63,7 +63,7 @@ if (process.argv.length < 3) {
         - php
         - go
     Use 'all' if you want to run all of them (except go).
-    
+
     Example: ${path.basename(process.argv[0])} ${path.basename(
       process.argv[1],
     )} python,ruby,erlang`,
@@ -80,12 +80,21 @@ const scanners = {
     );
   },
   js: () => {
-    scanByLanguage('instrumentation', 'js', 'plugins/node');
+    scanByLanguage(
+      'instrumentation',
+      'js',
+      'packages',
+      'md',
+      'opentelemetry-js-contrib',
+      (pkg) => pkg.name.startsWith('instrumentation-'),
+    );
     scanByLanguage(
       'resource-detector',
       'js',
-      'detectors/node',
-      'resource-detector',
+      'packages',
+      'md',
+      'opentelemetry-js-contrib',
+      (pkg) => pkg.name.startsWith('resource-detector-'),
     );
   },
   java: () => {
@@ -305,13 +314,14 @@ async function scanByLanguage(
     x
       .split(/[_-]/)
       .filter(
+        // TODO: This filter doesn't handle skipping registryType='resource-detector'.
         (y) =>
           !['opentelemetry', registryType].includes(y) &&
           !y.match(/^[0-9]+.[0-9]+$/),
       )
       .join(''),
 ) {
-  // https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/
+  // https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/
   const found = await scanForNew(path, repo, filter, keyMapper);
   const existing = await scanForExisting(`${registryType}-${language}`);
   createFilesFromScanResult(existing, found, {
