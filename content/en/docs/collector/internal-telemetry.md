@@ -71,6 +71,25 @@ service:
                 port: 8888
 ```
 
+If you want to add additional labels to the Prometheus metrics, you can add them
+with `prometheus::with_resource_constant_labels`:
+
+```yaml
+prometheus:
+  host: '0.0.0.0'
+  port: 8888
+  with_resource_constant_labels:
+    included:
+      - label_key
+```
+
+And then reference the labels in `service::telemetry::resource`:
+
+```yaml
+resource:
+  label_key: label_value
+```
+
 {{% alert title="Internal telemetry configuration changes" %}}
 
 As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
@@ -109,6 +128,29 @@ service:
     metrics:
       level: detailed
 ```
+
+You can further configure how metrics from the Collector are emitted by using
+[`views`](/docs/specs/otel/metrics/sdk/#view). For example, the following
+configuration updates the metric named `otelcol_process_uptime` to emit a new
+name `process_uptime` and description:
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      views:
+        - selector:
+            instrument_name: otelcol_process_uptime
+            instrument_type:
+          stream:
+            name: process_uptime
+            description: The amount of time the Collector has been up
+```
+
+You can also use `views` to update the resulting aggregation, attributes, and
+cardinality limits. For the full list of options, see the examples in the
+OpenTelemetry Configuration schema
+[repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/f4e9046682d4386ea533ef7ba6ad30a5ce4451b4/examples/kitchen-sink.yaml#L440).
 
 ### Configure internal logs
 
