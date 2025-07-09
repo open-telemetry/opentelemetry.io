@@ -2255,6 +2255,7 @@ triagers:
   - name: VihasMakwana
     teams:
       - collector-contrib-triagers
+      - collector-triagers
     html_url: https://github.com/VihasMakwana
     avatar_url: https://avatars.githubusercontent.com/u/121151420?v=4
   - name: willarmiros
