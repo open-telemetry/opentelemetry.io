@@ -66,7 +66,7 @@ OpAMPは、HTTPとWebSocketでの通信をサポートするクライアント/�
 
 OpAMPサーバの例で構成されるシンプルなOpAMPコントロールプレーンをセットアップし、OpenTelemetryコレクターを[OpAMPスーパーバイザー][opamp-supervisor]を使って接続させます。
 
-#### ステップ1 - OpAMPサーバーの起動
+#### ステップ1 - OpAMPサーバーの起動 {#step-1---start-the-opamp-server}
 
 `open-telemetry/opamp-go` リポジトリをクローンします。
 
@@ -82,13 +82,13 @@ $ go run .
 2025/04/20 15:10:35.308201 [MAIN] OpAMP Server running...
 ```
 
-#### ステップ 2 - OpenTelemetry コレクターのインストール
+#### ステップ 2 - OpenTelemetry コレクターのインストール {#step-2---install-the-opentelemetry-collector}
 
 OpAMPスーパーバイザーが管理できるOpenTelemetryコレクターのバイナリが必要です。
 そのために、[OpenTelemetry Collector Contrib][otelcolcontrib]ディストーションをインストールします。
 コレクターバイナリをインストールしたパスは、以下の設定では `$OTEL_COLLECTOR_BINARY` として参照されます。
 
-#### ステップ3 - OpAMP Supervisorのインストール
+#### ステップ3 - OpAMPスーパーバイザーのインストール {#step-3---install-the-opamp-supervisor}
 
 `opampsupervisor` バイナリは、OpenTelemetry コレクター [`cmd/opampsupervisor` タグが付いたリリース][tags]からダウンロード可能なアセットとして入手できます。
 OSとチップセットに基づいて命名されたアセットのリストがありますので、あなたの構成に合うものをダウンロードしてください。
@@ -144,7 +144,7 @@ Unblock-File -Path "opampsupervisor.exe"
 
 {{% /tab %}} {{< /tabpane >}}
 
-#### ステップ4 - OpAMP Supervisor設定ファイルの作成
+#### ステップ4 - OpAMPスーパーバイザーの設定ファイルの作成 {#step-4---create-an-opamp-supervisor-configuration-file}
 
 以下の内容で `supervisor.yaml` という名前のファイルを作成します。
 
@@ -177,7 +177,7 @@ storage:
 
 {{% /alert %}}
 
-#### ステップ5 - OpAMPスーパーバイザーの実行
+#### ステップ5 - OpAMPスーパーバイザーの実行 {#step-5---run-the-opamp-supervisor}
 
 さて、いよいよスーパーバイザーを起動し、OpenTelemetry コレクターを起動します。
 
@@ -192,7 +192,7 @@ $ ./opampsupervisor --config=./supervisor.yaml
 
 ![OpAMPの設定例](../img/opamp-server-ui.png)
 
-#### ステップ 6 - OpenTelemetry コレクターをリモートで設定する
+#### ステップ 6 - OpenTelemetry コレクターをリモートで設定する {#step-6---configure-the-opentelemetry-collector-remotely}
 
 サーバーUIでコレクターをクリックし、`Additional Configuration` ボックスに以下の内容を貼り付けます。
 
@@ -257,7 +257,7 @@ $ cat ./storage/agent.log
 {"level":"info","ts":"2025-04-20T15:11:14.025+0200","msg":"Metrics","resource metrics":1,"metrics":1,"data points":44}
 ```
 
-## その他の情報
+## その他の情報 {#other-information}
 
 - ブログ記事
   - [Open Agent Management Protocol (OpAMP) State of the Nation
