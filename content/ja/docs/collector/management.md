@@ -20,7 +20,7 @@ cSpell:ignore: hostmetrics opampsupervisor
 典型的なエージェント管理タスクは以下の通りです。
 
 1. エージェント情報と設定の照会。エージェント情報には、バージョン、オペレーティングシステム関連情報、または機能が含まれます。
-エージェントの設定は、OpenTelemetry コレクターの[設定][configuration]などのテレメトリー収集のセットアップを指します。
+   エージェントの設定は、OpenTelemetry コレクターの[設定][configuration]などのテレメトリー収集のセットアップを指します。
 1. エージェントのアップグレードやダウングレードと、基本的なエージェント機能とプラグインを含むエージェント固有のパッケージの管理。
 1. エージェントへの新しい設定の適用。これは、環境の変化やポリシーの変更により必要になる場合があります。
 1. エージェントのヘルスとパフォーマンスの監視。通常、CPU とメモリの使用量、またエージェント固有のメトリクス（たとえば、処理速度やバックプレッシャー関連情報）。
@@ -276,13 +276,10 @@ $ cat ./storage/agent.log
 [configuration]: /docs/collector/configuration/
 [Open Agent Management Protocol]: https://github.com/open-telemetry/opamp-spec
 [OpAMP specification]: /docs/specs/opamp/
-[opamp-in-otel-collector]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/opampsupervisor/specification/README.md
+[opamp-in-otel-collector]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/opampsupervisor/specification/README.md
 [opamp-go]: https://github.com/open-telemetry/opamp-go
-[opamp-supervisor]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor
-[otelcolcontrib]:
-  https://github.com/open-telemetry/opentelemetry-collector-releases/releases
+[opamp-supervisor]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor
+[otelcolcontrib]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases
 [tags]: https://github.com/open-telemetry/opentelemetry-collector-releases/tags
 [blog-opamp-status]: /blog/2023/opamp-status/
 [blog-opamp-service-telemetry]: /blog/2022/opamp/
