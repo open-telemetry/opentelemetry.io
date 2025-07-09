@@ -164,7 +164,7 @@ if err != nil {
 You can send your logs to the OpenTelemetry Collector in two ways:
 
  - Directly to the Collector
- - Through a file or stdout
+ - Through a file or `stdout`
  
 You can find documentation specifying how to use both these 
 approaches in the
