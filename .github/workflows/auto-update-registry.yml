@@ -6,10 +6,14 @@ on:
     # At 04:31, every day
     - cron: 31 4 * * *
 
+# Declare default permissions as read only.
+permissions: read-all
+
 jobs:
   auto-update-versions:
     name: Auto-update registry versions
     runs-on: ubuntu-latest
+    permissions: write
     # Remove the if statement below when testing against a fork
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
