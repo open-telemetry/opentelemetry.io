@@ -9487,6 +9487,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:15:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/auto-instrumentations-node#supported-instrumentations": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-09T11:58:53.821322-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-amqplib": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:39:31.909108-05:00"
