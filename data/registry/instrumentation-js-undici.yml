@@ -19,5 +19,5 @@ createdAt: 2024-04-18
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-undici'
-  version: 0.13.1
+  version: 0.14.0
 isFirstParty: false
