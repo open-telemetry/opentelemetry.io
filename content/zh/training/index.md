@@ -18,7 +18,7 @@ cSpell:ignore: otca
 ## 认证 {#certifications}
 
 通过获得 OpenTelemetry Certified Associate (OTCA) 认证，
-展示你在 OpenTelemetry方面的专业能力。
+展示你在 OpenTelemetry 方面的专业能力。
 你可以从[云原生认证][Cloud Native Certifications]页面查询：
 
 <!-- prettier-ignore -->
