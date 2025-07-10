@@ -18,7 +18,7 @@ cSpell:ignore: otca
 ## 认证 {#certifications}
 
 通过获得 OpenTelemetry Certified Associate (OTCA) 认证，
-展示你在 OpenTelemetry方面的专业能力。
+展示你在 OpenTelemetry 方面的专业能力。
 你可以从[云原生认证][Cloud Native Certifications]页面查询：
 
 <!-- prettier-ignore -->
@@ -34,32 +34,37 @@ cSpell:ignore: otca
 你可以查阅 Linux 基金会在 [OpenTelemetry 云原生培训课程][CNTCOT]中推出的**免费**课程：
 
 <div class="card--course-wrapper">
-  <div class="card card--course" style="width: 20rem">
-    <img src="LFS148-Course-Badge-300x300.avif"
-      class="img-initial pt-3 w-75 m-auto"
-      alt="LFS148 课程徽章">
-    <div class="card-body ps-4 pe-4 bg-light-subtle">
-      <div class="h4 card-title pt-2 pb-2">
-        <span class="badge text-bg-secondary float-end">免费</span>
-        OpenTelemetry 入门
-      </div>
-      <p class="card-text">
-        本课程专为软件开发人员、DevOps 工程师、站点可靠性工程师（SRE）
-        以及希望在各类应用和环境中实施遥测方案的人员设计。
-      </p>
-      <p class="card-text text-body-secondary small">
-        在线，自主进度，8–10 小时，<a href="{{% param LFS148 %}}">了解详情</a>。
-      </p>
-      <p class="text-center m-0 pt-1 pb-2">
-        <a href="{{% param LFS148 %}}" target="_blank" rel="noopener" class="btn btn-primary">
-          立即注册
-        </a>
-      </p>
-    </div>
+<div class="card card--course" style="width: 20rem">
+
+<!-- prettier-ignore -->
+![LFS148 course badge][]
+{.img-initial .pt-3 .w-75 .m-auto}
+
+<div class="card-body ps-4 pe-4 bg-light-subtle">
+  <div class="h4 card-title pt-2 pb-2">
+    <span class="badge text-bg-secondary float-end">FREE</span>
+    OpenTelemetry 入门
   </div>
+  <p class="card-text">
+    本课程专为软件开发人员、DevOps 工程师、站点可靠性工程师（SRE）
+    以及希望在各类应用和环境中实施遥测方案的人员设计。
+  </p>
+  <p class="card-text text-body-secondary small">
+    在线，自主进度，8–10 小时，
+    <a href="{{% param LFS148 %}}">了解详情</a>。
+  </p>
+  <p class="text-center m-0 pt-1 pb-2">
+    <a href="{{% param LFS148 %}}" target="_blank" rel="noopener" class="btn btn-primary">
+      立即注册
+    </a>
+  </p>
+</div>
+
+</div>
 </div>
 
 [CNTCOT]: https://www.cncf.io/training/courses/?_sft_lf-project=opentelemetry
+[LFS148 course badge]: LFS148-Course-Badge-300x300.avif
 
 {{% comment %}}
 
