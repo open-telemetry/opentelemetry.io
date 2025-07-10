@@ -81,9 +81,9 @@ For more information about the approver role, see the
 
 ### Emeritus maintainers
 
-- [Steve Flanders](https://github.com/flands)
-- [Morgan McLean](https://github.com/mtwo)
 - [jparsana](https://github.com/jparsana)
+- [Morgan McLean](https://github.com/mtwo)
+- [Steve Flanders](https://github.com/flands)
 
 For more information about the emeritus role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
