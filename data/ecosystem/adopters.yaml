@@ -159,7 +159,7 @@
   contact: 'santiago.lator@globalprocessing.com.ar'
 - name: UiPath
   url: https://www.uipath.com/
-  components: [Collector, .NET, ]
+  components: [Collector, .NET]
   reference: 'https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a'
   referenceTitle: blog post
   contact: ''
