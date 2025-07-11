@@ -1,24 +1,27 @@
 ---
 title: Instrumentation Zero-code .NET
-description: Envoyer des traces et métriques depuis des applications et services .NET.
+description:
+  Envoyer des traces et métriques depuis des applications et services .NET.
 linkTitle: .NET
 aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
 cSpell:ignore: coreutils HKLM iisreset myapp
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 ---
 
-Utilisez l'instrumentation Zero-code pour .NET pour envoyer des traces et métriques
-depuis des applications et services .NET vers des solutions d'observabilité sans avoir à
-modifier leur code source.
+Utilisez l'instrumentation Zero-code pour .NET pour envoyer des traces et
+métriques depuis des applications et services .NET vers des solutions
+d'observabilité sans avoir à modifier leur code source.
 
 Pour apprendre comment instrumenter votre code, lisez
 [Instrumentation manuelle](/docs/languages/dotnet/instrumentation).
 
 ## Compatibilité
 
-L'instrumentation Zero-code pour .NET devrait fonctionner avec tous les systèmes d'exploitation
-et versions de [.NET](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)
+L'instrumentation Zero-code pour .NET devrait fonctionner avec tous les systèmes
+d'exploitation et versions de
+[.NET](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)
 officiellement supportés.
 
 La version minimale supportée du
@@ -31,10 +34,11 @@ Les architectures de processeur supportées sont :
 - AMD64 (x86-64)
 - ARM64 ([Expérimental](/docs/specs/otel/versioning-and-stability))
 
-{{% alert title="Note" %}} La version ARM64 ne supporte pas les images basées sur CentOS.
-{{% /alert %}}
+{{% alert title="Note" %}} La version ARM64 ne supporte pas les images basées
+sur CentOS. {{% /alert %}}
 
-Les tests d'intégration continue s'exécutent sur les systèmes d'exploitation suivants :
+Les tests d'intégration continue s'exécutent sur les systèmes d'exploitation
+suivants :
 
 - [Alpine x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile)
 - [Alpine ARM64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile)
@@ -48,8 +52,8 @@ Les tests d'intégration continue s'exécutent sur les systèmes d'exploitation 
 
 ## Configuration
 
-Pour instrumenter automatiquement une application .NET, téléchargez et exécutez le script
-d'installation pour votre système d'exploitation.
+Pour instrumenter automatiquement une application .NET, téléchargez et exécutez
+le script d'installation pour votre système d'exploitation.
 
 ### Linux et macOS
 
@@ -74,7 +78,8 @@ OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,
 
 {{% alert title="Note" color="warning" %}} Sur macOS
 [`coreutils`](https://formulae.brew.sh/formula/coreutils) est requis. Si vous
-avez installé [homebrew](https://brew.sh/), vous pouvez simplement l'obtenir en exécutant:
+avez installé [homebrew](https://brew.sh/), vous pouvez simplement l'obtenir en
+exécutant:
 
 ```shell
 brew install coreutils
@@ -129,8 +134,8 @@ Get-Help Install-OpenTelemetryCore -Detailed
 
 ## Instrumenter un Service Windows exécutant une application .NET
 
-Utilisez le module PowerShell `OpenTelemetry.DotNet.Auto.psm1` pour configurer l'instrumentation
-automatique pour un Service Windows :
+Utilisez le module PowerShell `OpenTelemetry.DotNet.Auto.psm1` pour configurer
+l'instrumentation automatique pour un Service Windows :
 
 ```powershell
 # Importer le module
@@ -149,25 +154,27 @@ Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName"
 
 ### Configuration pour Service Windows
 
-{{% alert title="Note" color="warning" %}} N'oubliez pas de redémarrer le Service Windows
-après avoir effectué des changements. Vous pouvez le faire en exécutant
-`Restart-Service -Name $WindowsServiceName -Force` dans PowerShell. {{% /alert %}}
+{{% alert title="Note" color="warning" %}} N'oubliez pas de redémarrer le
+Service Windows après avoir effectué des changements. Vous pouvez le faire en
+exécutant `Restart-Service -Name $WindowsServiceName -Force` dans PowerShell.
+{{% /alert %}}
 
 Pour les applications .NET Framework, vous pouvez configurer
 [les paramètres `OTEL_` les plus courants](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)
 (comme `OTEL_RESOURCE_ATTRIBUTES`) via `appSettings` dans `App.config`.
 
-L'alternative est de définir des variables d'environnement pour le Service Windows dans le
-Registre Windows.
+L'alternative est de définir des variables d'environnement pour le Service
+Windows dans le Registre Windows.
 
-La clé de registre d'un Service Windows donné (nommé `$svcName`) est située sous :
+La clé de registre d'un Service Windows donné (nommé `$svcName`) est située sous
+:
 
 ```powershell
 HKLM\SYSTEM\CurrentControlSet\Services\$svcName
 ```
 
-Les variables d'environnement sont définies dans un `REG_MULTI_SZ` (valeur de registre multiligne)
-appelé `Environment` dans le format suivant :
+Les variables d'environnement sont définies dans un `REG_MULTI_SZ` (valeur de
+registre multiligne) appelé `Environment` dans le format suivant :
 
 ```env
 Var1=Value1
@@ -176,11 +183,11 @@ Var2=Value2
 
 ## Instrumenter une application ASP.NET déployée sur IIS
 
-{{% alert title="Note" color="warning" %}} Les instructions suivantes s'appliquent aux
-applications .NET Framework. {{% /alert %}}
+{{% alert title="Note" color="warning" %}} Les instructions suivantes
+s'appliquent aux applications .NET Framework. {{% /alert %}}
 
-Utilisez le module PowerShell `OpenTelemetry.DotNet.Auto.psm1` pour configurer l'instrumentation
-automatique pour IIS :
+Utilisez le module PowerShell `OpenTelemetry.DotNet.Auto.psm1` pour configurer
+l'instrumentation automatique pour IIS :
 
 ```powershell
 # Importer le module
@@ -198,15 +205,15 @@ redémarrera IIS. {{% /alert %}}
 
 ### Configuration pour les applications ASP.NET
 
-{{% alert title="Note" color="warning" %}} Les instructions suivantes s'appliquent aux
-applications .NET Framework. {{% /alert %}}
+{{% alert title="Note" color="warning" %}} Les instructions suivantes
+s'appliquent aux applications .NET Framework. {{% /alert %}}
 
 Pour les applications ASP.NET, vous pouvez configurer
 [les paramètres `OTEL_` les plus courants](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)
 (comme `OTEL_SERVICE_NAME`) via `appSettings` dans `Web.config`.
 
-Si un nom de service n'est pas explicitement configuré, un nom sera généré pour vous.
-Si l'application est hébergée sur IIS dans .NET Framework, cela utilisera
+Si un nom de service n'est pas explicitement configuré, un nom sera généré pour
+vous. Si l'application est hébergée sur IIS dans .NET Framework, cela utilisera
 `SiteName\VirtualDirectoryPath` ex : `MySite\MyApp`
 
 Pour les applications ASP.NET Core, vous pouvez utiliser les éléments
@@ -214,28 +221,32 @@ Pour les applications ASP.NET Core, vous pouvez utiliser les éléments
 à l'intérieur du bloc `<aspNetCore>` de votre fichier `Web.config` pour définir
 la configuration via des variables d'environnement.
 
-{{% alert title="Note" color="warning" %}} N'oubliez pas de redémarrer IIS après avoir effectué
-des changements de configuration. Vous pouvez le faire en exécutant `iisreset.exe`. {{% /alert %}}
+{{% alert title="Note" color="warning" %}} N'oubliez pas de redémarrer IIS après
+avoir effectué des changements de configuration. Vous pouvez le faire en
+exécutant `iisreset.exe`. {{% /alert %}}
 
 ### Configuration avancée
 
 Vous pouvez ajouter les
 [`<environmentVariables>`](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/)
-dans `applicationHost.config` pour définir des variables d'environnement pour des pools d'applications donnés.
+dans `applicationHost.config` pour définir des variables d'environnement pour
+des pools d'applications donnés.
 
-Envisagez de définir des variables d'environnement communes pour toutes les applications déployées sur
-IIS en définissant les variables d'environnement pour les Services Windows `W3SVC` et `WAS`.
+Envisagez de définir des variables d'environnement communes pour toutes les
+applications déployées sur IIS en définissant les variables d'environnement pour
+les Services Windows `W3SVC` et `WAS`.
 
-{{% alert title="Note" color="warning" %}} Pour les versions d'IIS antérieures à 10.0, vous
-pouvez envisager de créer un utilisateur distinct, définir ses variables d'environnement et l'utiliser
-comme utilisateur du pool d'applications. {{% /alert %}}
+{{% alert title="Note" color="warning" %}} Pour les versions d'IIS antérieures à
+10.0, vous pouvez envisager de créer un utilisateur distinct, définir ses
+variables d'environnement et l'utiliser comme utilisateur du pool
+d'applications. {{% /alert %}}
 
 ## Paquet NuGet
 
 Vous pouvez instrumenter les applications
 [`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained)
-en utilisant les paquets NuGet. Consulter [Paquets NuGet](./nuget-packages)
-pour plus d'informations.
+en utilisant les paquets NuGet. Consulter [Paquets NuGet](./nuget-packages) pour
+plus d'informations.
 
 ## Instrumenter un conteneur
 
@@ -253,16 +264,17 @@ Pour voir la gamme complète d'options de configuration, consultez
 
 ## Corrélation log vers trace
 
-{{% alert title="Note" color="warning" %}} La corrélation automatique log vers trace
-fournie par l'instrumentation Zero-code pour .NET fonctionne actuellement seulement
-pour les applications .NET utilisant `Microsoft.Extensions.Logging`. Voir
-[#2310](https://github.com/open-telemetry/opentelemetry-dotnet- instrumentation/issues/2310)
-pour plus de détails. {{% /alert %}}
+{{% alert title="Note" color="warning" %}} La corrélation automatique log vers
+trace fournie par l'instrumentation Zero-code pour .NET fonctionne actuellement
+seulement pour les applications .NET utilisant `Microsoft.Extensions.Logging`.
+Voir [#2310](https://github.com/open-telemetry/opentelemetry-dotnet-
+instrumentation/issues/2310) pour plus de détails. {{% /alert %}}
 
-Le SDK .NET OpenTelemetry corrèle automatiquement les logs aux données de trace. Quand les logs
-sont émis dans le contexte d'une trace active, les
+Le SDK .NET OpenTelemetry corrèle automatiquement les logs aux données de trace.
+Quand les logs sont émis dans le contexte d'une trace active, les
 [champs](/docs/specs/otel/logs/data-model#trace-context-fields) `TraceId`,
-`SpanId`, `TraceState`, qui forment le contexte de la trace, sont automatiquement remplis.
+`SpanId`, `TraceState`, qui forment le contexte de la trace, sont
+automatiquement remplis.
 
 Voici des logs produits par une application console servant d'exemple :
 
@@ -290,34 +302,36 @@ Pour plus d'informations, consultez :
 ## Bibliothèques et frameworks supportés
 
 L'instrumentation Zero-code pour .NET supporte une grande variété de
-bibliothèques. Pour une liste complète, voir [Instrumentations](./instrumentations).
+bibliothèques. Pour une liste complète, voir
+[Instrumentations](./instrumentations).
 
 ## Dépannage
 
-Pour voir la télémétrie de votre application directement sur la sortie standard, ajoutez
-`console` à la valeur des variables d'environnement suivantes avant de lancer votre
-application :
+Pour voir la télémétrie de votre application directement sur la sortie standard,
+ajoutez `console` à la valeur des variables d'environnement suivantes avant de
+lancer votre application :
 
 - `OTEL_TRACES_EXPORTER`
 - `OTEL_METRICS_EXPORTER`
 - `OTEL_LOGS_EXPORTER`
 
-Pour les étapes générales de dépannage et les solutions à des problèmes spécifiques, consultez la page
-[Dépannage](./troubleshooting).
+Pour les étapes générales de dépannage et les solutions à des problèmes
+spécifiques, consultez la page [Dépannage](./troubleshooting).
 
 ## Étapes suivantes
 
-Après avoir configuré l'instrumentation automatique pour votre application ou votre service, vous
-pourriez souhaiter [envoyer des traces et métriques personnalisées](./custom) ou ajouter une
-[instrumentation manuelle](/docs/languages/dotnet/instrumentation) pour collecter
-des données de télémétrie personnalisées.
+Après avoir configuré l'instrumentation automatique pour votre application ou
+votre service, vous pourriez souhaiter
+[envoyer des traces et métriques personnalisées](./custom) ou ajouter une
+[instrumentation manuelle](/docs/languages/dotnet/instrumentation) pour
+collecter des données de télémétrie personnalisées.
 
 ## Désinstallation
 
 ### Linux et macOS { #uninstall-unix }
 
-Sur Linux et macOS, les étapes d'installation n'affectent que la session shell actuelle
-donc aucune désinstallation explicite n'est requise.
+Sur Linux et macOS, les étapes d'installation n'affectent que la session shell
+actuelle donc aucune désinstallation explicite n'est requise.
 
 ### Windows (PowerShell) { #uninstall-windows }
 
@@ -348,3 +362,4 @@ Unregister-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceNam
 
 # Finalement, désinstaller l'instrumentation OpenTelemetry
 Uninstall-OpenTelemetryCore
+```

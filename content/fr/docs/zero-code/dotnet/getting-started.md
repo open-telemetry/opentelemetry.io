@@ -1,19 +1,21 @@
 ---
 title: Démarrage rapide
-description: Obtenez la télémétrie pour votre application en moins de 5 minutes !
+description:
+  Obtenez la télémétrie pour votre application en moins de 5 minutes !
 weight: 5
 cSpell:ignore: ASPNETCORE rolldice
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 ---
 
 Cette page vous montrera comment démarrer avec l'instrumentation Zero-code
 OpenTelemetry pour .NET.
 
-Si vous cherchez un moyen d'instrumenter manuellement votre application, consultez
-[ce guide](/docs/languages/dotnet/getting-started).
+Si vous cherchez un moyen d'instrumenter manuellement votre application,
+consultez [ce guide](/docs/languages/dotnet/getting-started).
 
-Vous apprendrez comment instrumenter automatiquement une application .NET simple,
-de manière à ce que les [traces][], [métriques][] et [logs][] soient émis vers la
-console.
+Vous apprendrez comment instrumenter automatiquement une application .NET
+simple, de manière à ce que les [traces][], [métriques][] et [logs][] soient
+émis vers la console.
 
 ## Prérequis
 
@@ -28,12 +30,13 @@ L'exemple suivant utilise une application basique
 Si vous n'utilisez pas ASP.NET Core, vous pouvez toujours utiliser
 l'instrumentation Zero-code OpenTelemetry pour .NET.
 
-Pour des exemples plus élaborés, consultez [exemples](/docs/languages/dotnet/examples/).
+Pour des exemples plus élaborés, consultez
+[exemples](/docs/languages/dotnet/examples/).
 
 ### Créer et lancer un serveur HTTP
 
-Pour commencer, configurez un environnement dans un nouveau répertoire appelé `dotnet-simple`.
-Dans ce répertoire, exécutez la commande suivante :
+Pour commencer, configurez un environnement dans un nouveau répertoire appelé
+`dotnet-simple`. Dans ce répertoire, exécutez la commande suivante :
 
 ```sh
 dotnet new web
@@ -76,8 +79,8 @@ app.MapGet("/rolldice/{player?}", HandleRollDice);
 app.Run();
 ```
 
-Dans le sous-répertoire `Properties`, remplacez le contenu de `launchSettings.json`
-par ce qui suit :
+Dans le sous-répertoire `Properties`, remplacez le contenu de
+`launchSettings.json` par ce qui suit :
 
 ```json
 {
@@ -97,7 +100,8 @@ par ce qui suit :
 ```
 
 Compilez et exécutez l'application avec la commande suivante, puis ouvrez
-<http://localhost:8080/rolldice> dans votre navigateur web pour vous assurer qu'elle fonctionne.
+<http://localhost:8080/rolldice> dans votre navigateur web pour vous assurer
+qu'elle fonctionne.
 
 ```sh
 dotnet build
@@ -106,15 +110,17 @@ dotnet run
 
 ## Instrumentation
 
-Ensuite, vous utiliserez l'[instrumentation Zero-code OpenTelemetry pour .NET](../) pour
-instrumenter l'application au moment du lancement. Bien que vous puissiez [configurer l'instrumentation
-Zero-code .NET][] de plusieurs façons, les étapes ci-dessous utilisent des scripts
-Unix-shell ou PowerShell.
+Ensuite, vous utiliserez
+l'[instrumentation Zero-code OpenTelemetry pour .NET](../) pour instrumenter
+l'application au moment du lancement. Bien que vous puissiez [configurer
+l'instrumentation Zero-code .NET][] de plusieurs façons, les étapes ci-dessous
+utilisent des scripts Unix-shell ou PowerShell.
 
-> **Note** : Les commandes PowerShell nécessitent des privilèges élevés (administrateur).
+> **Note** : Les commandes PowerShell nécessitent des privilèges élevés
+> (administrateur).
 
-1. Téléchargez les scripts d'installation depuis les [Releases][] du
-   dépôt `opentelemetry-dotnet-instrumentation` :
+1. Téléchargez les scripts d'installation depuis les [Releases][] du dépôt
+   `opentelemetry-dotnet-instrumentation` :
 
    {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
@@ -132,8 +138,8 @@ Unix-shell ou PowerShell.
 
    {{% /tab %}} {{< /tabpane >}}
 
-2. Exécutez le script suivant pour télécharger l'instrumentation automatique pour votre
-   environnement de développement :
+2. Exécutez le script suivant pour télécharger l'instrumentation automatique
+   pour votre environnement de développement :
 
    {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
@@ -150,10 +156,11 @@ Unix-shell ou PowerShell.
 
    {{% /tab %}} {{< /tabpane >}}
 
-3. Définissez et exportez les variables qui spécifient un [exportateur console][], puis exécutez
-   le script configurant les autres variables d'environnement nécessaires en utilisant une notation
-   adaptée à votre environnement shell/terminal &mdash; nous illustrons une notation
-   pour les shells de type bash et PowerShell :
+3. Définissez et exportez les variables qui spécifient un [exportateur
+   console][], puis exécutez le script configurant les autres variables
+   d'environnement nécessaires en utilisant une notation adaptée à votre
+   environnement shell/terminal &mdash; nous illustrons une notation pour les
+   shells de type bash et PowerShell :
 
    {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
@@ -192,7 +199,9 @@ Unix-shell ou PowerShell.
 
 6. Après environ 30 secondes, arrêtez le processus serveur.
 
-À ce stade, vous devriez voir les traces et logs du serveur et du client en console et ils ressemblent à quelque chose comme ceci (ces logs sont tronqués pour la lisibilité) :
+À ce stade, vous devriez voir les traces et logs du serveur et du client en
+console et ils ressemblent à quelque chose comme ceci (ces logs sont tronqués
+pour la lisibilité) :
 
 <details>
 <summary>Traces et Logs</summary>
@@ -289,12 +298,13 @@ Value: Sum: 1330.4766000000002 Count: 5 Min: 50.0333 Max: 465.7936
 
 Pour plus d'informations :
 
-- Pour configurer les exportateurs, échantillonneurs, ressources et plus, consultez
-  [Configuration et paramètres](../configuration)
+- Pour configurer les exportateurs, échantillonneurs, ressources et plus,
+  consultez [Configuration et paramètres](../configuration)
 - Consultez la liste des [instrumentations disponibles](../instrumentations)
-- Si vous voulez combiner instrumentation automatique et manuelle, apprenez comment vous
-  [pouvez créer des traces et métriques personnalisées](../custom)
-- Si vous rencontrez des problèmes, consultez le [Guide de dépannage](../troubleshooting)
+- Si vous voulez combiner instrumentation automatique et manuelle, apprenez
+  comment vous [pouvez créer des traces et métriques personnalisées](../custom)
+- Si vous rencontrez des problèmes, consultez le
+  [Guide de dépannage](../troubleshooting)
 
 [traces]: /docs/concepts/signals/traces/
 [métriques]: /docs/concepts/signals/metrics/
