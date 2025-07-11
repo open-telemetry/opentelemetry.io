@@ -25,7 +25,7 @@ for OTLP export, resource attributes, and service name.
 const FrontendTracer = async () => {
   const { ZoneContextManager } = await import('@opentelemetry/context-zone');
 
-  let resource = resourceFromAttributes({
+  let resource = new Resource({
     [SEMRESATTRS_SERVICE_NAME]: NEXT_PUBLIC_OTEL_SERVICE_NAME,
   });
   const detectedResources = detectResourcesSync({
@@ -166,7 +166,7 @@ import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
-import { resourceFromAttributes } from '@opentelemetry/resources';
+import { Resource } from '@opentelemetry/resources';
 import { SEMRESATTRS_SERVICE_NAME } from '@opentelemetry/semantic-conventions';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 
@@ -174,7 +174,7 @@ const FrontendTracer = async () => {
   const { ZoneContextManager } = await import('@opentelemetry/context-zone');
 
   const provider = new WebTracerProvider({
-    resource: resourceFromAttributes({
+    resource: new Resource({
       [SEMRESATTRS_SERVICE_NAME]: process.env.NEXT_PUBLIC_OTEL_SERVICE_NAME,
     }),
     spanProcessors: [new SimpleSpanProcessor(new OTLPTraceExporter())],
