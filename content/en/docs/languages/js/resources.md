@@ -248,7 +248,6 @@ DockerCGroupV1Detector found resource. Resource {
 
 There are more resource detectors you can add to your configuration, for example
 to get details about your [Cloud] environment or [Deployment]. For more, see the
-complete the
 [packages named `resource-detector-*` in the opentelemetry-js-contrib repository](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages).
 
 [getting started - node.js]: /docs/languages/js/getting-started/nodejs/
