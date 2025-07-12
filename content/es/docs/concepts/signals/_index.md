@@ -18,7 +18,7 @@ perspectivas.
 OpenTelemetry actualmente admite:
 
 - [Trazas](traces)
-- [Metricas](metrics)
+- [Métricas](metrics)
 - [Logs](logs)
 - [Baggage](baggage)
 
