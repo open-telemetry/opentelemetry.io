@@ -50,7 +50,7 @@ import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { XMLHttpRequestInstrumentation } from '@opentelemetry/instrumentation-xml-http-request';
 import { FetchInstrumentation } from '@opentelemetry/instrumentation-fetch';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
-import { Resource } from '@opentelemetry/resources';
+import { resourceFromAttributes } from '@opentelemetry/resources';
 import {
   ATTR_DEVICE_ID,
   ATTR_OS_NAME,
@@ -72,7 +72,7 @@ import { SessionIdProcessor } from '@/utils/SessionIdProcessor';
 const Tracer = async () => {
   const localhost = await getLocalhost();
 
-  const resource = new Resource({
+  const resource = resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'react-native-app',
     [ATTR_OS_NAME]: Platform.OS,
     [ATTR_OS_VERSION]: getSystemVersion(),
