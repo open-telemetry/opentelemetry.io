@@ -4,7 +4,7 @@ linkTitle: Apache APISIX-Opentelemetry Integration
 date: 2022-03-26
 author: '[Haochao Zhuang](https://github.com/dmsolr), Fei Han'
 canonical_url: https://apisix.apache.org/blog/2022/02/28/apisix-integration-opentelemetry-plugin/
-cSpell:ignore: APISIX Haochao httpbin pprof roundrobin Zhuang zpages
+cSpell:ignore: APISIX Haochao httpbin pprof roundrobin Zhuang
 ---
 
 This article introduces the Apache APISIX's `opentelemetry` plugin concept and

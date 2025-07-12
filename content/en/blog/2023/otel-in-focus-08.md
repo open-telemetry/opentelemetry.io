@@ -4,7 +4,7 @@ linkTitle: OTel in Focus 2023/08
 date: 2023-09-06
 author: '[Austin Parker](https://github.com/austinlparker)'
 # prettier-ignore
-cSpell:ignore: azuremonitor configgrpc googlecloudexporter jaegerreceiver Ktor loggingexporter postgresqlreceiver redisreceiver Tanzu zpages
+cSpell:ignore: azuremonitor configgrpc googlecloudexporter jaegerreceiver Ktor loggingexporter postgresqlreceiver redisreceiver Tanzu
 ---
 
 Welcome back to **OpenTelemetry in Focus** for August, 2023! It's been a busy

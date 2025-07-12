@@ -146,3 +146,4 @@ wordpress
 WSGI
 zend
 zipkin
+zpages
