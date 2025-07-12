@@ -11,7 +11,7 @@ authors:
 description:
   This module provides automatic instrumentation for the `redis@^4.0.0` package.
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-redis-4
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-redis-4
 createdAt: 2022-10-27
 package:
   registry: npm
