@@ -17,17 +17,17 @@ perspectivas.
 
 OpenTelemetry actualmente admite:
 
-- [Traces](traces)
-- [Metrics](metrics)
+- [Trazas](traces)
+- [Metricas](metrics)
 - [Logs](logs)
 - [Baggage](baggage)
 
-También en desarrollo o en fase de [proposal]:
+También en desarrollo o en fase de [propuesta]:
 
 - [Events], un tipo específico de [log](logs)
 - El Grupo de Trabajo de Perfiles está trabajando en los [Profiles].
 
-[Events]: /docs/specs/otel/logs/data-model/#events
+[Eventos]: /docs/specs/otel/logs/data-model/#events
 [Profiles]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md
 [proposal]:
