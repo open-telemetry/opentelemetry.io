@@ -1936,6 +1936,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/50715937?v=4
   - name: SylvainJuge
     teams:
+      - java-contrib-triagers
       - java-instrumentation-approvers
       - java-instrumentation-triagers
       - semconv-code-attribute-approvers
@@ -2034,6 +2035,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/5722339?v=4
   - name: zeitlinger
     teams:
+      - java-contrib-triagers
       - java-instrumentation-approvers
       - java-instrumentation-triagers
       - java-triagers
