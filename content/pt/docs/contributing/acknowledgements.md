@@ -10,7 +10,7 @@ Gostaríamos de agradecer às seguintes fontes por parte do conteúdo deste site
 
 1. [APM is Dying and That's Okay - Lightstep](https://lightstep.com/blog/apm-is-dying-and-thats-okay)
 2. [Alexandria Pigram](https://github.com/alexandriastech) via
-   [Honeycomb](https://www.honeycomb.io/) for tracing content in
+   [Honeycomb](https://www.honeycomb.io/) pelo conteúdo de rastros em
    [Traces](/docs/concepts/signals/traces/)
 3. [What is OpenTelemetry - Dynatrace](https://www.dynatrace.com/news/blog/what-is-opentelemetry-2/)
 4. [Understanding OpenTracing, OpenCensus, and OpenMetrics - BMC](https://www.bmc.com/blogs/opentracing-opencensus-openmetrics/)
