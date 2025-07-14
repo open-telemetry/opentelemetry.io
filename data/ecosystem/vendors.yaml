@@ -156,6 +156,12 @@
   contact:
   oss: false
   commercial: true
+- name: Heroku
+  nativeOTLP: true
+  url: https://devcenter.heroku.com/articles/heroku-telemetry
+  contact:
+  oss: false
+  commercial: true
 - name: Highlight
   nativeOTLP: true
   url: https://www.highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/
