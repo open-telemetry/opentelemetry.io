@@ -15,8 +15,8 @@ default_lang_commit: 3337aa6fbaccf5e8734a1ef2c6ca8b61496c3d93
 
 As compilações são oficialmente suportadas em ambientes baseados em Linux e
 macOS. Outros ambientes, como os [DevContainers](#devcontainers), são suportados
-da melhor forma possível. Para compilação no Windows, você pode seguir passos
-similares aos do Linux usando a linha de comando do Windows Subsystem for Linux
+com base na melhor forma que seja possível. Para compilação no Windows, você pode seguir passos
+similares aos do Linux usando a linha de comando do Windows Subsystem para Linux
 [WSL][windows-wsl].
 
 {{% /alert %}}
@@ -24,7 +24,7 @@ similares aos do Linux usando a linha de comando do Windows Subsystem for Linux
 As instruções a seguir explicam como configurar um ambiente de desenvolvimento
 para este site.
 
-## Configuração de Cloud-IDE {#cloud-ide-setup}
+## Configuração de IDE de nuvem {#cloud-ide-setup}
 
 ### Gitpod
 
@@ -49,7 +49,7 @@ você. {{% param what-next %}}
 Para trabalhar via GitHub [Codespaces]:
 
 1. Faça um [_Fork_] do repositório do site.
-2. Abra um Codespace a partir do seu _fork_.
+2. Abra um _Codespace_ a partir do seu _fork_.
 
 Seu ambiente de desenvolvimento será inicializado via a configuração
 [DevContainer](#devcontainers). {{% param what-next %}}
@@ -115,7 +115,7 @@ visite o site em [localhost:8888]:
 npm run serve:netlify
 ```
 
-O comando serve disponibiliza arquivos da memória, não do disco.
+O comando `serve` disponibiliza arquivos da memória, não do disco.
 
 Se você ver um erro como `too many open files` ou `pipe failed` no macOS, você
 precisar aumentar o limite de descritores de arquivo. Veja
@@ -150,7 +150,7 @@ do próprio submódulo.
 Contribuidores experientes podem trabalhar diretamente no submódulo. Você então
 consegue construir e disponibilizar diretamente suas alterações (do submódulo).
 Por padrão, os _scripts_ de CI obtêm submódulos a cada invocação. Para prevenir
-esse comportamento enquanto você trabalha dentro de um submódulo, define a
+esse comportamento enquanto você trabalha dentro de um submódulo, defina a
 variável de ambiente `GET=no`. Você também precisa executar
 `git fetch --unshallow` no submódulo antes de poder submeter um PR. De maneira
 alternativa, defina `DEPTH=100` e busque novamente os submódulos.
@@ -158,7 +158,7 @@ alternativa, defina `DEPTH=100` e busque novamente os submódulos.
 ## Suporte a DevContainer {#devcontainers}
 
 Este repositório está configurado para uso em [Development
-Containers][devcontainers], que são suportados por várias IDEs na nuvem e locais
+Containers][devcontainers], que são suportados por várias IDEs de nuvem e locais
 como (em ordem alfabética):
 
 - [Codespaces][cs-devc]
