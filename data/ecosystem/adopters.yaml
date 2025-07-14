@@ -67,8 +67,8 @@
   contact: ''
 - name: Heroku
   url: https://heroku.com
-  components: [Ruby]
-  reference: ''
+  components: [Collector, Go, Ruby, JavaScript, Operator]
+  reference: 'https://www.heroku.com/blog/opentelemetry-basics-on-heroku-fir/'
   contact: ''
 - name: MercadoLibre
   url: https://www.mercadolibre.com/
