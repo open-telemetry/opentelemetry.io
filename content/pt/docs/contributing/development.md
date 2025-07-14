@@ -15,9 +15,9 @@ default_lang_commit: 3337aa6fbaccf5e8734a1ef2c6ca8b61496c3d93
 
 As compilações são oficialmente suportadas em ambientes baseados em Linux e
 macOS. Outros ambientes, como os [DevContainers](#devcontainers), são suportados
-com base na melhor forma que seja possível. Para compilação no Windows, você pode seguir passos
-similares aos do Linux usando a linha de comando do Windows Subsystem para Linux
-[WSL][windows-wsl].
+com base na melhor forma que seja possível. Para compilação no Windows, você
+pode seguir passos similares aos do Linux usando a linha de comando do Windows
+Subsystem para Linux [WSL][windows-wsl].
 
 {{% /alert %}}
 
