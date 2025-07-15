@@ -247,9 +247,9 @@ Properties for exemplars:
 
 Properties for cardinality limits:
 
-| System property                               | Description                                                                                                                                                             | Default |
-| --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `otel.experimental.metrics.cardinality.limit` | If set, configure cardinality limit. The value dictates the maximum number of distinct points per metric. This option is experimental and subject to change or removal. | `2000`  |
+| System property                       | Description                                                                                               | Default |
+| --------------------------------------| --------------------------------------------------------------------------------------------------------- | ------- |
+| `otel.java.metrics.cardinality.limit` | If set, configure cardinality limit. The value dictates the maximum number of distinct points per metric. | `2000`  |
 
 #### Properties: logs
 
