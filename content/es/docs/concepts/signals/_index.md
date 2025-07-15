@@ -11,9 +11,9 @@ señales son salidas del sistema que describen la actividad subyacente del
 sistema operativo y las aplicaciones que se ejecutan en una plataforma. Una
 señal puede ser algo que se desea medir en un momento específico, como la
 temperatura o el uso de memoria, o un evento que atraviesa los componentes de tu
-sistema distribuido y que deseas rastrear. Puedes agrupar diferentes [señales][signals]
-para observar el funcionamiento interno de la misma tecnología desde diferentes
-perspectivas.
+sistema distribuido y que deseas rastrear. Puedes agrupar diferentes
+[señales][signals] para observar el funcionamiento interno de la misma
+tecnología desde diferentes perspectivas.
 
 OpenTelemetry actualmente admite:
 
