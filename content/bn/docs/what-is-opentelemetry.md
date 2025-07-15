@@ -3,8 +3,8 @@ title: OpenTelemetry কী?
 description: Opentelemetry কী এবং কী নয়, তার সংক্ষিপ্ত ব্যাখ্যা।
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
 weight: 150
-cSpell:ignore: youtube
 default_lang_commit: fb38bda3b4b9ae69c99b8d70543d0df37872aeac
+cSpell:ignore: youtube
 ---
 
 OpenTelemetry হলো:
@@ -13,8 +13,8 @@ OpenTelemetry হলো:
 
   - [জেনারেশন][instr]
   - এক্সপোর্ট
-  - [কালেকশন](../concepts/components/#collector) 
-  
+  - [কালেকশন](../concepts/components/#collector)
+
   কাজগুলোকে সহজ করে তুলতে তৈরি করা হয়েছে।
 
 - **ওপেন সোর্স** এবং **ভেন্ডর ও টুল নিরপেক্ষ** হওয়ায় এটি বিভিন্ন ধরনের অবজার্ভেবিলিটি ব্যাকএন্ডে ব্যবহার করা যায়, ওপেন সোর্স টুলে ব্যবহার করা যায় যেমন [Jaeger], [Prometheus], তেমনি যেকোনো কমার্শিয়াল সলিউশনের সঙ্গেও।\

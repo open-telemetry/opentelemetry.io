@@ -7,6 +7,9 @@ on:
     paths:
       - 'data/registry/**'
 
+permissions:
+  contents: read
+
 jobs:
   registry-validation:
     name: REGISTRY validation

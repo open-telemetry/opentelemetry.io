@@ -18,6 +18,6 @@ urls:
 package:
   name: '@azure/opentelemetry-instrumentation-azure-sdk'
   registry: npm
-  version: 1.0.0-beta.8
+  version: 1.0.0-beta.9
 createdAt: 2021-12-16
 isFirstParty: true

@@ -1,10 +1,12 @@
+<!-- cSpell:ignore Chalin Ferri Benedetti Hrabusa jparsana -->
+
 # <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry.io
 
 This is the source repository for the [OpenTelemetry][] website, project
 documentation, and blog. The site is [built][contributing.md] using [Hugo][] and
 is hosted on [Netlify][].
 
-Public analytics for the website is [available here][].
+For website analytics, see [OpenTelemetry.io Analytics][] dashboard.
 
 ## Get involved
 
@@ -53,28 +55,45 @@ accessing the doc, get in touch in the `#otel-comms` channel on [Slack][].
 
 Here is a list of community roles with current and previous members:
 
-- Approvers: [@open-telemetry/docs-approvers][]
+### Maintainers
 
-  - [Michael Hausenblas](https://github.com/mhausenblas), Amazon
+These are the members of [@open-telemetry/docs-maintainers]:
 
-- Maintainers: [@open-telemetry/docs-maintainers][]
+- [Austin Parker](https://github.com/austinlparker), Honeycomb
+- [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
+- [Patrice Chalin](https://github.com/chalin), CNCF
+- [Phillip Carter](https://github.com/cartermp), Salesforce
+- [Severin Neumann](https://github.com/svrnm)
+- [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
 
-  - [Austin Parker](https://github.com/austinlparker), Honeycomb
-  - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
-  - [Patrice Chalin](https://github.com/chalin), CNCF
-  - [Phillip Carter](https://github.com/cartermp), Honeycomb
-  - [Severin Neumann](https://github.com/svrnm)
-  - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
+For more information about the maintainer role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
 
-- Emeritus approvers:
+### Approvers
 
-  - [Paul Bruce](https://github.com/paulsbruce)
+These are the members of [@open-telemetry/docs-approvers]:
 
-- Emeritus maintainers:
+- [Michael Hausenblas](https://github.com/mhausenblas), Amazon
+- [Ted Young](https://github.com/tedsuo), Grafana Labs
 
-  - [Steve Flanders](https://github.com/flands)
-  - [Morgan McLean](https://github.com/mtwo)
-  - [jparsana](https://github.com/jparsana)
+For more information about the approver role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
+
+### Emeritus maintainers
+
+- [jparsana](https://github.com/jparsana)
+- [Morgan McLean](https://github.com/mtwo)
+- [Steve Flanders](https://github.com/flands)
+
+For more information about the emeritus role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
+
+### Emeritus approvers
+
+- [Paul Bruce](https://github.com/paulsbruce)
+
+For more information about the emeritus role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
 
 Learn more about roles in the [community repository][]. Thanks to [all who have
 already contributed][contributors]!
@@ -97,6 +116,7 @@ already contributed][contributors]!
 [contributors]:
   https://github.com/open-telemetry/opentelemetry.io/graphs/contributors
 [opentelemetry]: https://opentelemetry.io
+[OpenTelemetry.io Analytics]: https://lookerstudio.google.com/s/jsDZ05i_YIo
 [registry]: https://opentelemetry.io/ecosystem/registry/
 [opentelemetry community calendar]:
   https://calendar.google.com/calendar/embed?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com
@@ -105,5 +125,3 @@ already contributed][contributors]!
 [slack]: https://slack.cncf.io/
 [hugo]: https://gohugo.io
 [netlify]: https://netlify.com
-[available here]:
-  https://lookerstudio.google.com/reporting/34c2a65a-39e8-44aa-afa0-094975fee55d/page/4VDGB

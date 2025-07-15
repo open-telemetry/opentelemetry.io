@@ -16,10 +16,10 @@ authors:
   - name: Aspecto Authors
     email: amir@aspecto.io
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-aws-sdk
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-aws-sdk
 createdAt: 2020-06-15
 package:
   name: '@opentelemetry/instrumentation-aws-sdk'
   registry: npm
-  version: 0.53.0
+  version: 0.56.0
 isFirstParty: false

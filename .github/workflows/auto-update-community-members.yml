@@ -6,6 +6,9 @@ on:
     # At 03:41, every day
     - cron: 41 3 * * *
 
+permissions:
+  contents: read
+
 jobs:
   auto-update-versions:
     name: Auto-update community members page

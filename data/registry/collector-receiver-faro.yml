@@ -1,0 +1,20 @@
+# cSpell:ignore faroreceiver
+title: Faro Receiver
+registryType: receiver
+language: collector
+tags:
+  - go
+  - receiver
+  - faro
+  - collector
+license: Apache 2.0
+description: The OpenTelemetry Collector Receiver for Faro
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/faroreceiver
+createdAt: 2025-06-19
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/faroreceiver
+  version: v0.130.0
