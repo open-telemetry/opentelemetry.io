@@ -468,7 +468,6 @@ maintainers:
       - javascript-contrib-triagers
       - javascript-maintainers
       - javascript-triagers
-      - sandbox-web-js-maintainers
       - semconv-feature-flag-approvers
       - specs-entities-approvers
       - specs-semconv-approvers
@@ -811,17 +810,6 @@ maintainers:
       - ebpf-instrumentation-maintainers
     html_url: https://github.com/mariomac
     avatar_url: https://avatars.githubusercontent.com/u/939550?v=4
-  - name: martinkuba
-    teams:
-      - javascript-approvers
-      - javascript-contrib-triagers
-      - javascript-triagers
-      - sandbox-web-js-maintainers
-      - semconv-browser-approvers
-      - semconv-client-approvers
-      - semconv-log-approvers
-    html_url: https://github.com/martinkuba
-    avatar_url: https://avatars.githubusercontent.com/u/4933147?v=4
   - name: maryliag
     teams:
       - docs-pt-approvers
@@ -877,17 +865,6 @@ maintainers:
       - sig-security-maintainers
     html_url: https://github.com/ms-jcorley
     avatar_url: https://avatars.githubusercontent.com/u/55004047?v=4
-  - name: MSNev
-    teams:
-      - javascript-approvers
-      - javascript-contrib-triagers
-      - javascript-triagers
-      - sandbox-web-js-maintainers
-      - semconv-browser-approvers
-      - semconv-client-approvers
-      - semconv-log-approvers
-    html_url: https://github.com/MSNev
-    avatar_url: https://avatars.githubusercontent.com/u/54870357?v=4
   - name: musingvirtual
     teams:
       - sig-contributor-experience-approvers
@@ -1177,7 +1154,6 @@ maintainers:
     teams:
       - docs-approvers
       - docs-triagers
-      - sandbox-web-js-maintainers
       - semconv-browser-approvers
       - semconv-client-approvers
       - semconv-log-approvers
@@ -1754,6 +1730,16 @@ approvers:
       - ebpf-instrumentation-approvers
     html_url: https://github.com/marctc
     avatar_url: https://avatars.githubusercontent.com/u/280193?v=4
+  - name: martinkuba
+    teams:
+      - javascript-approvers
+      - javascript-contrib-triagers
+      - javascript-triagers
+      - semconv-browser-approvers
+      - semconv-client-approvers
+      - semconv-log-approvers
+    html_url: https://github.com/martinkuba
+    avatar_url: https://avatars.githubusercontent.com/u/4933147?v=4
   - name: maxgolov
     teams:
       - cpp-contrib-approvers
@@ -1780,6 +1766,16 @@ approvers:
       - docs-ja-approvers
     html_url: https://github.com/Msksgm
     avatar_url: https://avatars.githubusercontent.com/u/49427230?v=4
+  - name: MSNev
+    teams:
+      - javascript-approvers
+      - javascript-contrib-triagers
+      - javascript-triagers
+      - semconv-browser-approvers
+      - semconv-client-approvers
+      - semconv-log-approvers
+    html_url: https://github.com/MSNev
+    avatar_url: https://avatars.githubusercontent.com/u/54870357?v=4
   - name: mtwo
     teams:
       - blog-approvers
@@ -1940,6 +1936,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/50715937?v=4
   - name: SylvainJuge
     teams:
+      - java-contrib-triagers
       - java-instrumentation-approvers
       - java-instrumentation-triagers
       - semconv-code-attribute-approvers
@@ -2038,6 +2035,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/5722339?v=4
   - name: zeitlinger
     teams:
+      - java-contrib-triagers
       - java-instrumentation-approvers
       - java-instrumentation-triagers
       - java-triagers
@@ -2255,6 +2253,7 @@ triagers:
   - name: VihasMakwana
     teams:
       - collector-contrib-triagers
+      - collector-triagers
     html_url: https://github.com/VihasMakwana
     avatar_url: https://avatars.githubusercontent.com/u/121151420?v=4
   - name: willarmiros

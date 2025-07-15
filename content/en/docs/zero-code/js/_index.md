@@ -56,7 +56,7 @@ To see the full range of configuration options, see
 
 A number of popular Node.js libraries are auto-instrumented. For the full list,
 see
-[supported instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/metapackages/auto-instrumentations-node#supported-instrumentations).
+[supported instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/auto-instrumentations-node#supported-instrumentations).
 
 ## Troubleshooting
 
