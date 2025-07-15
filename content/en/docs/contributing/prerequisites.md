@@ -37,7 +37,7 @@ Conduct][CoC].
 For general OpenTelemetry community guidelines, including roles and
 expectations, see [OpenTelemetry New Contributor Guide][NCG]
 
-[CLA]: https://docs.linuxfoundation.org/lfx/easycla/contributors
+[CLA]: https://docs.linuxfoundation.org/lfx/easycla/v2-current/contributors
 [CoC]: https://github.com/cncf/foundation/blob/main/code-of-conduct.md
 [NCG]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor/README.md

@@ -1,0 +1,37 @@
+{{/* Get announcements and filter for current/upcoming events */}}
+{{ $announcements := site.GetPage "announcements" -}}
+{{ $now := now -}}
+
+{{ if $announcements -}}
+  {{ $currentEvents := slice -}}
+  
+  {{/* Collect current announcements that haven't expired */}}
+  {{ range $announcements.RegularPages -}}
+    {{ $expiryDate := .Params.expiryDate -}}
+    {{ $isValid := true -}}
+    
+    {{ if $expiryDate -}}
+      {{ $expiry := time $expiryDate -}}
+      {{ if $now.After $expiry -}}
+        {{ $isValid = false -}}
+      {{ end -}}
+    {{ end -}}
+    
+    {{ if $isValid -}}
+      {{ $currentEvents = $currentEvents | append . -}}
+    {{ end -}}
+  {{ end -}}
+
+  {{ if $currentEvents -}}
+    {{ range $currentEvents.ByWeight -}}
+      <div class="alert alert-primary" role="alert">
+        <div class="h5 alert-heading">{{ .Title }}</div>
+        {{ .Content }}
+      </div>
+    {{ end -}}
+  {{ else -}}
+    <p><em>No upcoming events at this time. Check back soon or subscribe to our <a href="/index.xml">RSS feed</a> for the latest announcements!</em></p>
+  {{ end -}}
+{{ else -}}
+  <p><em>No events currently available. Subscribe to our <a href="/index.xml">RSS feed</a> for the latest announcements!</em></p>
+{{ end -}} 
