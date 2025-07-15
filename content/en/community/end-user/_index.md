@@ -11,17 +11,17 @@ about your implementation or adoption that you'd like to share with project
 contributors, or you want to help prioritize project issues. You've come to the
 right place!
 
-- To connect with other end users and learn about upcoming events, join the
-  [Slack channel](slack-channel/).
+- To provide feedback and help prioritize work:
+  - [Vote and comment on GitHub issues](issue-participation/), it only takes one
+    click!
+  - Participate in a [direct interview/feedback session](interviews-feedback/)
+  - Take our [most recent survey](feedback-survey/)
 - To learn about OpenTelemetry, check out:
   - [OTel in practice](otel-in-practice/)
   - Curated content on the
     [OpenTelemetry YouTube channel](https://www.youtube.com/@otel-official)
-- To provide feedback and help prioritize issues:
-  - Participate in a [direct interview/feedback session](interviews-feedback/)
-  - Take a [survey](feedback-survey/)
-  - Join a panel discussion (more info coming soon!)
-  - Vote on issues (more info coming soon!)
+- To connect with other end users and learn about upcoming events, join the
+  [Slack channel](slack-channel/).
 
 These forums aim to bring together operations and development engineers from
 different organizations to discuss challenges and solutions to achieving

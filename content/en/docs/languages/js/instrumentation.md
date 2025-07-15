@@ -10,7 +10,7 @@ cSpell:ignore: dicelib Millis rolldice
 
 {{% include instrumentation-intro.md %}}
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 On this page you will learn how you can add traces, metrics and logs to your
 code _manually_. But, you are not limited to only use one kind of
@@ -196,8 +196,8 @@ npm install @opentelemetry/api @opentelemetry/resources @opentelemetry/semantic-
 
 ### Initialize the SDK
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
+step**. {{% /alert %}}
 
 If you instrument a Node.js application install the
 [OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node):
@@ -314,8 +314,8 @@ information, see [Libraries](/docs/languages/js/libraries/).
 
 ### Initialize Tracing
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
+step**. {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized
@@ -1248,8 +1248,7 @@ spans by helping to identify trends and providing application runtime telemetry.
 
 ### Initialize Metrics
 
-{{% alert color="info" %}} If you’re instrumenting a library, skip this step.
-{{% /alert %}}
+{{% alert %}} If you’re instrumenting a library, skip this step. {{% /alert %}}
 
 To enable [metrics](/docs/concepts/signals/metrics/) in your app, you'll need to
 have an initialized

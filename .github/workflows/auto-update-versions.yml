@@ -6,6 +6,9 @@ on:
     # hourly at minute 10
     - cron: 10 * * * *
 
+permissions:
+  contents: read
+
 jobs:
   auto-update-versions:
     name: Auto-update versions

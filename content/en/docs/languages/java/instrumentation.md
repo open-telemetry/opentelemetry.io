@@ -232,7 +232,7 @@ Log correlation with traces is available by installing a [shim](#shims) to
 bridge OpenTelemetry context into the log framework. See "Bridge OpenTelemetry
 context into Log4j", "Bridge OpenTelemetry context into Logback" entries.
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 An end-to-end example of log instrumentation using stdout is available in the
 [Java examples repository](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).

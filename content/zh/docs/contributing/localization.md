@@ -27,8 +27,8 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
     - 代码片段内的注释（可选）
   - [前端元数据][front matter] 中的 `title`、`linkTitle` 和 `description` 的字段值
   - **所有页面**内容和前置元数据，除非另有说明。
-- 保留原文的*内容*、*含义*以及*风格* 。
-- 如果您有任何疑问或问题，请通过以下方式向[maintainers] **咨询**:
+- 保留原文的**内容**、**含义**以及**风格**。
+- 如果您有任何疑问或问题，请通过以下方式**咨询**[维护人员][Maintainers]：
   - [Slack] 上的 `#otel-docs-localization` 或 `#otel-comms` 频道
   - [Discussion]、Issue 或者 PR 评论
 
@@ -51,18 +51,18 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
 - 创建**图像的副本**，除非你要[对图像中的文本进行本地化处理](#images)。
 - 新增新的和修改:
   - **内容** 与原来想表达的意思不相同
-  - 展示**风格**，包括：_排版_、*布局*以及*设计*风格（例如排版样式、字母大小写以及间距等方面）。
+  - 展示**风格**，包括：**排版**、**布局**以及**设计**风格（例如排版样式、字母大小写以及间距等方面）。
 
 [^*]: 关于一种可能的例外情况，请参阅[链接](#links)。
 
 </div>
 
-### 标题 Heading IDs {#headings}
+### 标题 ID {#headings}
 
-为确保标题的锚点目标在各种本地化版本中保持一致，在翻译标题时:
+为确保标题的锚点目标在各种本地化版本中保持一致，在翻译标题时：
 
-- 如果标题有显式的 ID，那么请保留该标题的显式 ID。 [标题 Heading ID 语法][Heading ID syntax]
-  是使用类似 `{ #some-id }` 这样的语法，写在标题文本之后。
+- 如果标题有显式的 ID，那么请保留该标题的显式 ID。
+  [标题 Heading ID 语法][Heading ID syntax]是使用类似 `{ #some-id }` 这样的语法，写在标题文本之后。
 - 否则，需明确声明一个与原始英文标题的自动生成 ID 相对应的标题 ID。
 
 [Heading ID syntax]: https://github.com/yuin/goldmark/blob/master/README.md#headings
@@ -70,17 +70,40 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
 ### 链接 {#links}
 
 请勿翻译链接引用。这同样适用于外部链接、网站页面的路径以及诸如[图片](#images)之类的局部资源路径。
+
 唯一的例外是指向外部页面的链接 (像这样的链接
 <https://en.wikipedia.org>) 即那些拥有针对你所在地区的特定版本的外部页面的链接。
 通常情况下，这意味着要将 URL 中的 `en` 替换为你所在地区的语言代码。
 
 {{% alert title="Note" %}}
 
-OTel网站的仓库中有一个自定义的 render-link 钩子，Hugo 会用它来转换指向文档页面的绝对链接路径。
+OTel 网站的仓库中有一个自定义的 render-link 钩子，Hugo 会用它来转换指向文档页面的绝对链接路径。
 像 `/docs/some-page` 这种形式的链接，在渲染链接时，会在路径开头加上页面的语言代码，从而使其特定于某个地区（本地化）。
-例如，上述示例中的路径，如果是从日语页面进行渲染的话，就会变成 `/ja/docs/some-page` 。
+例如，上述示例中的路径，如果是从中文页面进行渲染的话，就会变成 `/zh/docs/some-page` 。
 
 {{% /alert %}}
+
+### 链接定义标签 {#link-labels}
+
+请**不要**翻译 Markdown
+[链接定义](https://spec.commonmark.org/0.31.2/#link-reference-definitions)中的[标签](https://spec.commonmark.org/0.31.2/#link-label)。
+应将标签重写为翻译后的链接文本。例如，考虑以下 Markdown 内容：
+
+```markdown
+[Hello], world! Welcome to the [OTel website][].
+
+[hello]: https://code.org/helloworld
+[OTel website]: https://opentelemetry.io
+```
+
+以上 Markdown 将被翻译为法语：
+
+```markdown
+[Bonjour][hello], le monde! Bienvenue sur le [site OTel][OTel website].
+
+[hello]: https://code.org/helloworld
+[OTel website]: https://opentelemetry.io
+```
 
 ### 图片和图表 {#images}
 
@@ -94,7 +117,7 @@ OTel网站的仓库中有一个自定义的 render-link 钩子，Hugo 会用它�
 
 [Mermaid]: https://mermaid.js.org
 
-### Include文件 {#includes}
+### Include 文件 {#includes}
 
 你需要像翻译其他页面内容一样，对 `_includes` 目录下的页面片段进行翻译。
 
@@ -243,14 +266,16 @@ npm run check:i18n -- -c HEAD <新文件的路径>
 
 注意:
 
-- 对于想要添加的语言的 `LANG_ID`，请使用官方的[ISO 639-1 编码](https://en.wikipedia.org/wiki/ISO_639-1)
-- 请查找[cSpell 词典](https://github.com/streetsidesoftware/cspell-dicts)，并确认以 NPM 包形式提供的 [@cspell/dict-LANG_ID](https://www.npmjs.com/search?q=%40cspell%2Fdict)
+- 对于想要添加的语言的 `LANG_ID`，请使用官方的 [ISO 639-1 编码](https://en.wikipedia.org/wiki/ISO_639-1)
+- 请查找 [cSpell 词典](https://github.com/streetsidesoftware/cspell-dicts)，并确认以
+  NPM 包形式提供的 [@cspell/dict-LANG_ID](https://www.npmjs.com/search?q=%40cspell%2Fdict)
   是否可用。如果没有适合您所指的方言或地区的词典，请选择最接近该地区的词典。有关设置方法的示例，请参考 [PR #5386] 。
 
-当你创建了那个issue并且聚集了所需数量的贡献者后，维护人员会要求你创建一个包含[索引页面](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md)
-翻译内容的 PR (拉取请求）。请确保维护人员能够编辑该PR，以便为该 PR 添加启动本地化项目所需的额外修改内容。
+当你创建了那个 Issue 并且聚集了所需数量的贡献者后，
+维护人员会要求你创建一个包含[索引页面](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md)
+翻译内容的 PR。请确保维护人员能够编辑该PR，以便为该 PR 添加启动本地化项目所需的额外修改内容。
 
-在你的第一个PR被合并后，维护人员会负责设置issue标签、组织级别的群组以及组件负责人。
+在你的第一个 PR 被合并后，维护人员会负责设置 Issue 标签、组织级别的群组以及组件负责人。
 
 {{% alert title="重要" color="warning" %}}
 

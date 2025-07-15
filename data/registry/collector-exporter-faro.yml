@@ -1,0 +1,20 @@
+# cSpell:ignore faroexporter
+title: Faro Exporter
+registryType: exporter
+language: collector
+tags:
+  - go
+  - exporter
+  - faro
+  - collector
+license: Apache 2.0
+description: The OpenTelemetry Collector Exporter for Faro
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/faroexporter
+createdAt: 2025-06-19
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/faroexporter
+  version: v0.130.0
