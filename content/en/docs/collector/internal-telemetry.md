@@ -14,7 +14,7 @@ configure it to help you
 OpenTelemetry SDK
 [declarative configuration schema](https://github.com/open-telemetry/opentelemetry-configuration)
 for configuring how to export its internal telemetry. This schema is still under
-[development](/docs/specs/otel/document-status/#lifecycle-status) and may
+[development](/docs/specs/otel/document-status/) and may
 undergo **breaking changes** in future releases. We intend to keep supporting
 older schemas until a 1.0 schema release is available, and offer a transition
 period for users to update their configurations before dropping pre-1.0 schemas.
