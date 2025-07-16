@@ -92,9 +92,6 @@ receivers:
       http:
         endpoint: 0.0.0.0:4318
 
-processors:
-  batch:
-
 exporters:
   # NOTE: Prior to v0.86.0 use the `logging` instead of `debug`.
   debug:
@@ -106,7 +103,6 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [example]
     metrics:
       receivers: [example]
@@ -193,11 +189,10 @@ function. The `connector.NewFactory` function instantiates and returns a
     connector as a global constant.
 
     ```go
-    const (
-        defaultVal = "request.n"
-        // this is the name used to refer to the connector in the config.yaml
-        typeStr = "example"
-    )
+    const defaultVal string = "request.n"
+
+    // Type is the component type name for this connector
+    var Type = component.MustNewType("example")
     ```
 
 2.  Create the default configuration function. This is how you choose to
@@ -224,11 +219,7 @@ function. The `connector.NewFactory` function instantiates and returns a
     // createTracesToMetricsConnector defines the consumer type of the connector
     // We want to consume traces and export metrics, therefore, define nextConsumer as metrics, since consumer is the next component in the pipeline
     func createTracesToMetricsConnector(ctx context.Context, params connector.Settings, cfg component.Config, nextConsumer consumer.Metrics) (connector.Traces, error) {
-    c, err := newConnector(params.Logger, cfg, nextConsumer)
-    if err != nil {
-        return nil, err
-    }
-    return c, nil
+        return newConnector(params.Logger, cfg, nextConsumer)
     }
     ```
 
@@ -259,13 +250,8 @@ function. The `connector.NewFactory` function instantiates and returns a
     // NewFactory creates a factory for example connector.
     func NewFactory() connector.Factory {
         // OpenTelemetry connector factory to make a factory for connectors
-        newType, err := component.NewType(typeStr)
-        if err != nil {
-            panic(err) // or handle error appropriately
-        }
-
         return connector.NewFactory(
-            newType,
+            Type,
             createDefaultConfig,
             connector.WithTracesToMetrics(createTracesToMetricsConnector, component.StabilityLevelAlpha))
     }
@@ -287,22 +273,16 @@ import (
 	"go.opentelemetry.io/collector/consumer"
 )
 
-const (
-	defaultVal string = "request.n"
-	// this is the name used to refer to the connector in the config.yaml
-	typeStr string = "example"
-)
+const defaultVal string = "request.n"
+
+// Type is the component type name for this connector
+var Type = component.MustNewType("example")
 
 // NewFactory creates a factory for example connector.
 func NewFactory() connector.Factory {
 	// OpenTelemetry connector factory to make a factory for connectors
-	newType, err := component.NewType(typeStr)
-	if err != nil {
-		panic(err) // or handle error appropriately
-	}
-
 	return connector.NewFactory(
-		newType,
+		Type,
 		createDefaultConfig,
 		connector.WithTracesToMetrics(createTracesToMetricsConnector, component.StabilityLevelAlpha))
 }
@@ -316,11 +296,7 @@ func createDefaultConfig() component.Config {
 // createTracesToMetricsConnector defines the consumer type of the connector
 // We want to consume traces and export metrics, therefore, define nextConsumer as metrics, since consumer is the next component in the pipeline
 func createTracesToMetricsConnector(ctx context.Context, params connector.Settings, cfg component.Config, nextConsumer consumer.Metrics) (connector.Traces, error) {
-	c, err := newConnector(params.Logger, cfg, nextConsumer)
-	if err != nil {
-		return nil, err
-	}
-	return c, nil
+	return newConnector(params.Logger, cfg, nextConsumer)
 }
 ```
 
@@ -393,13 +369,10 @@ Traces connector and therefore must implement the interfaces: `baseConsumer`,
                 for k := 0; k < scopeSpan.Spans().Len(); k++ {
                     span := scopeSpan.Spans().At(k)
                     attrs := span.Attributes()
-                    mapping := attrs.AsRaw()
-                    for key := range mapping {
-                        if key == c.config.AttributeName {
-                            // create metric only if span of trace had the specific attribute
-                            metrics := pmetric.NewMetrics()
-                            return c.metricsConsumer.ConsumeMetrics(ctx, metrics)
-                        }
+                    if _, ok := attrs.Get(c.config.AttributeName); ok {
+                        // create metric only if span of trace had the specific attribute
+                        metrics := pmetric.NewMetrics()
+                        return c.metricsConsumer.ConsumeMetrics(ctx, metrics)
                     }
                 }
             }
@@ -470,13 +443,10 @@ func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) erro
 			for k := 0; k < scopeSpan.Spans().Len(); k++ {
 				span := scopeSpan.Spans().At(k)
 				attrs := span.Attributes()
-				mapping := attrs.AsRaw()
-				for key := range mapping {
-					if key == c.config.AttributeName {
-						// create metric only if span of trace had the specific attribute
-						metrics := pmetric.NewMetrics()
-						return c.metricsConsumer.ConsumeMetrics(ctx, metrics)
-					}
+				if _, ok := attrs.Get(c.config.AttributeName); ok {
+					// create metric only if span of trace had the specific attribute
+					metrics := pmetric.NewMetrics()
+					return c.metricsConsumer.ConsumeMetrics(ctx, metrics)
 				}
 			}
 		}
@@ -520,14 +490,12 @@ your own OpenTelemetry Collector binary. You can add or remove components
             go.opentelemetry.io/collector/exporter/debugexporter v0.129.0
 
 
-    processors:
-        - gomod:
-            go.opentelemetry.io/collector/processor/batchprocessor v0.129.0
-
-
     receivers:
         - gomod: 
             go.opentelemetry.io/collector/receiver/otlpreceiver v0.129.0
+
+    # Not used in this tutorial, but can be added if needed for your use case
+    # processors:
 
 
     connectors:
@@ -589,217 +557,190 @@ your own OpenTelemetry Collector binary. You can add or remove components
 
 ## Testing Your Connector
 
-Now that you have built and configured your example connector, you can test its functionality to ensure it works as expected. This section will guide you through creating and running tests that validate your connector's behavior.
+Now that you have built your example connector, let's validate its functionality with unit tests. Go unit tests provide better coverage and are easier to maintain.
 
-### Testing Overview
+### Writing Unit Tests
 
-The example connector is designed to:
+Create a test file `connector_test.go` in your connector directory:
 
-- Monitor incoming trace data for spans containing a specific attribute (`request.n` by default)
-- When a span with the target attribute is detected, it generates a metric
-- Pass the generated metric to the next component in the pipeline (debug exporter)
+> exampleconnector/connector_test.go
 
-### Expected Behavior
+```go
+package exampleconnector
 
-- **Trace with "request.n" attribute** → Connector detects → Generates metric → Debug output
-- **Trace without target attribute** → Connector ignores → No metric generated
+import (
+	"context"
+	"testing"
 
-### Prerequisites for Testing
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"go.opentelemetry.io/collector/consumer/consumertest"
+	"go.opentelemetry.io/collector/pdata/ptrace"
+	"go.uber.org/zap"
+)
 
-- Go 1.21+
-- Your custom OpenTelemetry Collector binary with the example connector built-in
+func TestConsumeTraces(t *testing.T) {
+	// Create a test consumer that captures metrics
+	metricsConsumer := &consumertest.MetricsSink{}
 
-### Test Setup
+	// Create connector with test configuration
+	cfg := &Config{
+		AttributeName: "request.n",
+	}
 
-This test uses the OpenTelemetry Go SDK to create and send traces, which is more realistic than manually crafting HTTP requests since it mimics how real applications would instrument their code.
+	connector, err := newConnector(zap.NewNop(), cfg, metricsConsumer)
+	require.NoError(t, err)
 
-1. **Create a test project directory:**
+	ctx := context.Background()
 
-   ```sh
-   mkdir connector-test
-   cd connector-test
-   ```
+	t.Run("span with target attribute generates metric", func(t *testing.T) {
+		// Reset the consumer
+		metricsConsumer.Reset()
 
-2. **Initialize a Go module:**
+		// Create trace data with target attribute
+		traces := ptrace.NewTraces()
+		resourceSpan := traces.ResourceSpans().AppendEmpty()
+		scopeSpan := resourceSpan.ScopeSpans().AppendEmpty()
+		span := scopeSpan.Spans().AppendEmpty()
 
-   ```sh
-   go mod init connector-test
-   ```
+		// Add the target attribute
+		span.Attributes().PutStr("request.n", "test-value")
+		span.Attributes().PutStr("http.method", "GET")
 
-3. **Create the test file:**
+		// Consume the traces
+		err := connector.ConsumeTraces(ctx, traces)
+		require.NoError(t, err)
 
-   Create a file named `test_connector.go` with the following content:
+		// Verify metric was generated
+		assert.Equal(t, 1, len(metricsConsumer.AllMetrics()))
+	})
 
-   > test_connector.go
+	t.Run("span without target attribute does not generate metric", func(t *testing.T) {
+		// Reset the consumer
+		metricsConsumer.Reset()
 
-   ```go
-   package main
+		// Create trace data without target attribute
+		traces := ptrace.NewTraces()
+		resourceSpan := traces.ResourceSpans().AppendEmpty()
+		scopeSpan := resourceSpan.ScopeSpans().AppendEmpty()
+		span := scopeSpan.Spans().AppendEmpty()
 
-   import (
-       "context"
-       "log"
-       "time"
+		// Add other attributes but not the target one
+		span.Attributes().PutStr("http.method", "POST")
+		span.Attributes().PutStr("user.id", "12345")
 
-       "go.opentelemetry.io/otel"
-       "go.opentelemetry.io/otel/attribute"
-       "go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp"
-       "go.opentelemetry.io/otel/sdk/resource"
-       sdktrace "go.opentelemetry.io/otel/sdk/trace"
-       semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
-   )
+		// Consume the traces
+		err := connector.ConsumeTraces(ctx, traces)
+		require.NoError(t, err)
 
-   func main() {
-       ctx := context.Background()
+		// Verify no metric was generated
+		assert.Equal(t, 0, len(metricsConsumer.AllMetrics()))
+	})
 
-       // Configure OTLP HTTP exporter (send to local Collector)
-       exporter, err := otlptracehttp.New(ctx,
-           otlptracehttp.WithEndpoint("http://localhost:4318"),
-           otlptracehttp.WithInsecure(),
-       )
-       if err != nil {
-           log.Fatal("Failed to create OTLP trace exporter: ", err)
-       }
+	t.Run("multiple spans with mixed attributes", func(t *testing.T) {
+		// Reset the consumer
+		metricsConsumer.Reset()
 
-       // Configure resource
-       res, err := resource.New(ctx,
-           resource.WithAttributes(
-               semconv.ServiceNameKey.String("test-service"),
-               semconv.ServiceVersionKey.String("1.0.0"),
-           ),
-       )
-       if err != nil {
-           log.Fatal("Failed to create resource: ", err)
-       }
+		// Create trace data with multiple spans
+		traces := ptrace.NewTraces()
+		resourceSpan := traces.ResourceSpans().AppendEmpty()
+		scopeSpan := resourceSpan.ScopeSpans().AppendEmpty()
 
-       // Configure trace provider
-       tp := sdktrace.NewTracerProvider(
-           sdktrace.WithBatcher(exporter),
-           sdktrace.WithResource(res),
-       )
-       defer func() {
-           if err := tp.Shutdown(ctx); err != nil {
-               log.Fatal("Failed to shutdown TracerProvider: ", err)
-           }
-       }()
+		// First span with target attribute
+		span1 := scopeSpan.Spans().AppendEmpty()
+		span1.Attributes().PutStr("request.n", "value1")
 
-       otel.SetTracerProvider(tp)
+		// Second span without target attribute
+		span2 := scopeSpan.Spans().AppendEmpty()
+		span2.Attributes().PutStr("other.attr", "value2")
 
-       // Create tracer
-       tracer := otel.Tracer("test-tracer")
+		// Consume the traces
+		err := connector.ConsumeTraces(ctx, traces)
+		require.NoError(t, err)
 
-       // Test case 1: span with "request.n" attribute (connector should react)
-       log.Println("🧪 Test 1: Sending trace with 'request.n' attribute...")
-       _, span1 := tracer.Start(ctx, "test-operation-with-trigger")
-       span1.SetAttributes(
-           attribute.String("request.n", "some-value"), // This should trigger the connector
-           attribute.String("http.method", "GET"),
-           attribute.String("http.url", "/api/test"),
-       )
-       time.Sleep(5 * time.Second)
-       span1.End()
+		// Should generate exactly one metric (from first span only)
+		assert.Equal(t, 1, len(metricsConsumer.AllMetrics()))
+	})
+}
 
-       // Test case 2: span without "request.n" attribute (connector should not react)
-       log.Println("🧪 Test 2: Sending trace without 'request.n' attribute...")
-       _, span2 := tracer.Start(ctx, "test-operation-without-trigger")
-       span2.SetAttributes(
-           attribute.String("http.method", "POST"),
-           attribute.String("http.url", "/api/other"),
-           attribute.String("user.id", "12345"),
-       )
-       time.Sleep(5 * time.Second)
-       span2.End()
+func TestConnectorCapabilities(t *testing.T) {
+	connector := &connectorImp{}
+	capabilities := connector.Capabilities()
+	assert.False(t, capabilities.MutatesData)
+}
 
-       // Wait for all spans to be sent
-       time.Sleep(2 * time.Second)
-       log.Println("✅ Test completed! Please check the Collector logs.")
-   }
-   ```
+func TestCreateDefaultConfig(t *testing.T) {
+	cfg := createDefaultConfig()
+	assert.NotNil(t, cfg)
 
-4. **Install dependencies:**
+	exampleConfig := cfg.(*Config)
+	assert.Equal(t, "request.n", exampleConfig.AttributeName)
+}
+
+func TestConfigValidation(t *testing.T) {
+	t.Run("valid config", func(t *testing.T) {
+		cfg := &Config{
+			AttributeName: "test.attribute",
+		}
+		err := cfg.Validate()
+		assert.NoError(t, err)
+	})
+
+	t.Run("invalid config - empty attribute name", func(t *testing.T) {
+		cfg := &Config{
+			AttributeName: "",
+		}
+		err := cfg.Validate()
+		assert.Error(t, err)
+		assert.Contains(t, err.Error(), "attribute_name must not be empty")
+	})
+}
+```
+
+### Running the Tests
+
+1. **Add test dependencies to your `go.mod`:**
 
    ```sh
    go mod tidy
    ```
 
-   This will automatically download the required OpenTelemetry Go SDK packages:
-   - `go.opentelemetry.io/otel`
-   - `go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp`
-   - `go.opentelemetry.io/otel/sdk`
-
-### Running the Test
-
-1. **Start your OpenTelemetry Collector** with the configuration that includes your example connector:
+2. **Run the tests:**
 
    ```sh
-   ./otelcol-dev/otelcol-dev-bin --config config.yaml
+   go test -cover -v ./...
    ```
 
-   Make sure your `config.yaml` includes the connector configuration:
+### Expected Test Output
 
-   ```yaml
-   receivers:
-     otlp:
-       protocols:
-         http:
-           endpoint: 0.0.0.0:4318
+When tests run successfully, you should see output similar to:
 
-   connectors:
-     example:
-
-   exporters:
-     debug:
-
-   service:
-     pipelines:
-       traces:
-         receivers: [otlp]
-         exporters: [example]
-       metrics:
-         receivers: [example]
-         exporters: [debug]
-   ```
-
-2. **Run the test in a separate terminal:**
-
-   ```sh
-   go run test_connector.go
-   ```
-
-### Expected Test Results
-
-**Test Script Output:**
 ```
-2025/07/15 22:19:05 🧪 Test 1: Sending trace with 'request.n' attribute...
-2025/07/15 22:19:10 🧪 Test 2: Sending trace without 'request.n' attribute...
-2025/07/15 22:19:17 ✅ Test completed! Please check the Collector logs.
+go test -cover -v ./...
+=== RUN   TestConsumeTraces
+=== RUN   TestConsumeTraces/span_with_target_attribute_generates_metric
+=== RUN   TestConsumeTraces/span_without_target_attribute_does_not_generate_metric
+=== RUN   TestConsumeTraces/multiple_spans_with_mixed_attributes
+--- PASS: TestConsumeTraces (0.00s)
+    --- PASS: TestConsumeTraces/span_with_target_attribute_generates_metric (0.00s)
+    --- PASS: TestConsumeTraces/span_without_target_attribute_does_not_generate_metric (0.00s)
+    --- PASS: TestConsumeTraces/multiple_spans_with_mixed_attributes (0.00s)
+=== RUN   TestConnectorCapabilities
+--- PASS: TestConnectorCapabilities (0.00s)
+=== RUN   TestCreateDefaultConfig
+--- PASS: TestCreateDefaultConfig (0.00s)
+=== RUN   TestConfigValidation
+=== RUN   TestConfigValidation/valid_config
+=== RUN   TestConfigValidation/invalid_config_-_empty_attribute_name
+--- PASS: TestConfigValidation (0.00s)
+    --- PASS: TestConfigValidation/valid_config (0.00s)
+    --- PASS: TestConfigValidation/invalid_config_-_empty_attribute_name (0.00s)
+PASS
+coverage: 90.5% of statements
+ok      github.com/gord02/exampleconnector      (cached)        coverage: 90.5% of statements
 ```
 
-**Collector Logs:**
-When the test runs successfully, you should see in your collector logs:
-
-- **Trace Reception:** OTLP receiver logs showing incoming trace data
-- **Connector Activation:** Connector building logs when processing Test 1
-- **Metric Generation:** Debug exporter showing metric output (only for Test Case 1)
-
-Example collector log output:
-```
-2025-07-15T22:19:07.123+0900    info    exampleconnector@v0.129.0/connector.go:26    Building exampleconnector connector
-2025-07-15T22:19:07.456+0900    info    Metrics {"resource metrics": 0, "metrics": 0, "data points": 0}
-```
-
-### Understanding the Results
-
-**✅ Success Indicators:**
-- Test script completes without errors
-- Collector shows metric generation logs for Test Case 1
-- No metric logs appear for Test Case 2
-
-**❌ Troubleshooting:**
-- **No metric logs:** Check if collector is running and configured correctly
-- **Connection errors:** Verify collector is listening on `localhost:4318`
-- **OTLP exporter errors:** Check endpoint URL format (`http://localhost:4318`)
-- **Module dependency errors:** Run `go mod tidy` to resolve OpenTelemetry SDK dependencies
-- **Span not being sent:** Ensure proper tracer shutdown with `tp.Shutdown(ctx)`
+These unit tests provide comprehensive coverage of your connector's functionality and are the recommended approach for validating component behavior in the OpenTelemetry Collector ecosystem.
 
 
 Additional resources on the OpenTelemetry Collector Builder:
