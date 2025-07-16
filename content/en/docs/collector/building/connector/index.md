@@ -574,6 +574,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"github.com/vibeus/opentelemetry-collector/confmap/xconfmap"
 	"go.opentelemetry.io/collector/consumer/consumertest"
 	"go.opentelemetry.io/collector/pdata/ptrace"
 	"go.uber.org/zap"
@@ -682,7 +683,7 @@ func TestConfigValidation(t *testing.T) {
 		cfg := &Config{
 			AttributeName: "test.attribute",
 		}
-		err := cfg.Validate()
+		err := xconfmap.Validate(cfg)
 		assert.NoError(t, err)
 	})
 
@@ -690,7 +691,7 @@ func TestConfigValidation(t *testing.T) {
 		cfg := &Config{
 			AttributeName: "",
 		}
-		err := cfg.Validate()
+		err := xconfmap.Validate(cfg)
 		assert.Error(t, err)
 		assert.Contains(t, err.Error(), "attribute_name must not be empty")
 	})
@@ -716,7 +717,7 @@ func TestConfigValidation(t *testing.T) {
 When tests run successfully, you should see output similar to:
 
 ```
-go test -cover -v ./...
+go test -cover -v ./...                                                                  
 === RUN   TestConsumeTraces
 === RUN   TestConsumeTraces/span_with_target_attribute_generates_metric
 === RUN   TestConsumeTraces/span_without_target_attribute_does_not_generate_metric
@@ -737,7 +738,7 @@ go test -cover -v ./...
     --- PASS: TestConfigValidation/invalid_config_-_empty_attribute_name (0.00s)
 PASS
 coverage: 90.5% of statements
-ok      github.com/gord02/exampleconnector      (cached)        coverage: 90.5% of statements
+ok      github.com/gord02/exampleconnector      0.501s  coverage: 90.5% of statements
 ```
 
 These unit tests provide comprehensive coverage of your connector's functionality and are the recommended approach for validating component behavior in the OpenTelemetry Collector ecosystem.
