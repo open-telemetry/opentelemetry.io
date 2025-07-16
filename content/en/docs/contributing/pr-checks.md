@@ -62,13 +62,18 @@ issues. Run `npm run check:text` again and manually fix the remaining issues.
 This check verifies that
 [standards and consistency for Markdown files are enforced](../style-guide/#markdown-standards).
 
-If any issues are found, run `npm run fix:format` to fix most issues. For more
-complex issues, run `npm run check:markdown` and apply the suggested changes.
+If any issues are found, run `npm run fix:markdown` to fix most issues
+automatically. For any remaining issues, run `npm run check:markdown` and apply
+the suggested changes manually.
 
 ### `SPELLING check` {.notranslate lang=en}
 
 This check verifies that
 [all words are spelled correctly](../style-guide/#spell-checking).
+
+If this check fails, run `npm run check:spelling` locally to see the misspelled
+words. If a word is spelled correctly, you may need to add it to the
+`cSpell:ignore` section in the front matter of the file.
 
 ### `CSPELL` check {.notranslate lang=en}
 
