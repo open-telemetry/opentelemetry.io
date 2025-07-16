@@ -1245,6 +1245,12 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/trask
     avatar_url: https://avatars.githubusercontent.com/u/218610?v=4
+  - name: trasktest
+    teams:
+      - sig-security-approvers
+      - sig-security-maintainers
+    html_url: https://github.com/trasktest
+    avatar_url: https://avatars.githubusercontent.com/u/64627853?v=4
   - name: trentm
     teams:
       - javascript-approvers
@@ -1936,6 +1942,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/50715937?v=4
   - name: SylvainJuge
     teams:
+      - java-contrib-triagers
       - java-instrumentation-approvers
       - java-instrumentation-triagers
       - semconv-code-attribute-approvers
@@ -2034,6 +2041,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/5722339?v=4
   - name: zeitlinger
     teams:
+      - java-contrib-triagers
       - java-instrumentation-approvers
       - java-instrumentation-triagers
       - java-triagers
