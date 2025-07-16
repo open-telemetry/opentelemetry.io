@@ -17023,6 +17023,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-20T09:23:52.447657347-08:00"
   },
+  "https://opentelemetry.io/docs/languages/go/instrumentation/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-16T09:09:36.885335703Z"
+  },
+  "https://opentelemetry.io/docs/languages/go/instrumentation/#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-16T09:09:35.857669945Z"
+  },
   "https://opentelemetry.io/docs/reference/specification/metrics/semantic_conventions/": {
     "StatusCode": 206,
     "LastSeen": "2025-05-26T16:48:26.73412+03:00"
