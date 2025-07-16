@@ -1245,6 +1245,12 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/trask
     avatar_url: https://avatars.githubusercontent.com/u/218610?v=4
+  - name: trasktest
+    teams:
+      - sig-security-approvers
+      - sig-security-maintainers
+    html_url: https://github.com/trasktest
+    avatar_url: https://avatars.githubusercontent.com/u/64627853?v=4
   - name: trentm
     teams:
       - javascript-approvers
