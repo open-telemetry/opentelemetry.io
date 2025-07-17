@@ -14031,6 +14031,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-06-30T20:44:45.902032575Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.36.0//model/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-17T20:51:44.60409+02:00"
+  },
   "https://github.com/open-telemetry/sig-contributor-experience": {
     "StatusCode": 206,
     "LastSeen": "2025-03-11T09:21:47.017232-04:00"
@@ -14511,6 +14515,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:44.400811-05:00"
   },
+  "https://github.com/ps48": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-17T06:12:18.987931922Z"
+  },
   "https://github.com/psx95": {
     "StatusCode": 206,
     "LastSeen": "2025-03-27T04:20:59.442452155Z"
@@ -14842,6 +14850,10 @@
   "https://github.com/sjs994": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:10:45.595107-05:00"
+  },
+  "https://github.com/skl": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-17T06:12:27.555020369Z"
   },
   "https://github.com/slsa-framework/slsa": {
     "StatusCode": 206,
@@ -16426,6 +16438,10 @@
   "https://learn.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors": {
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:29.705755+02:00"
+  },
+  "https://learn.microsoft.com/sql/t-sql/statements/set-context-info-transact-sql": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-17T20:51:48.429297+02:00"
   },
   "https://learn.microsoft.com/windows/win32/api/winsock2/nf-winsock2-connect#return-value": {
     "StatusCode": 206,
@@ -19167,6 +19183,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-06-06T20:20:40.263717361Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.52.0-alpha/opentelemetry-bom-alpha-1.52.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-17T19:19:21.695695798Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.42.1/opentelemetry-bom-1.42.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:05.242921-05:00"
@@ -19210,6 +19230,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.51.0/opentelemetry-bom-1.51.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2025-06-06T20:20:38.969599677Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.52.0/opentelemetry-bom-1.52.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-17T19:19:18.729927831Z"
   },
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "StatusCode": 206,
@@ -22014,6 +22038,10 @@
   "https://www.w3.org/TR/trace-context/#trace-id": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:32:12.345Z"
+  },
+  "https://www.w3.org/TR/trace-context/#traceparent-header": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-17T20:51:50.737494+02:00"
   },
   "https://www.w3.org/TR/trace-context/#tracestate-header": {
     "StatusCode": 200,
