@@ -159,7 +159,7 @@
 - name: Heroku
   nativeOTLP: true
   url: https://devcenter.heroku.com/articles/heroku-telemetry
-  contact:
+  contact: 'https://www.heroku.com/contact/'
   oss: false
   commercial: true
 - name: Highlight
