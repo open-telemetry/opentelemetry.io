@@ -3,7 +3,7 @@ title: Building a Connector
 aliases: [/docs/collector/build-connector/]
 weight: 30
 # prettier-ignore
-cSpell:ignore: batchprocessor debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
+cSpell:ignore: debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
 ---
 
 ## Connectors in OpenTelemetry
@@ -231,7 +231,7 @@ function. The `connector.NewFactory` function instantiates and returns a
     defines several of these functions for traces to metrics, logs to metrics
     and metrics to metrics.
 
-    #### Parameters for the `createTracesToMetricsConnector`: 
+    Parameters for the `createTracesToMetricsConnector`:
     - `context.Context`: the reference to the collector’s `context.Context` so
       your trace receiver can properly manage its execution context.
     - `connector.CreateSettings`: the reference to some of the collector’s
@@ -479,36 +479,30 @@ your own OpenTelemetry Collector binary. You can add or remove components
 
     ```yaml
     dist:
-        name: otelcol-dev-bin
-        description: Basic OpenTelemetry collector distribution for Developers
-        output_path: ./otelcol-dev
-
+      name: otelcol-dev-bin
+      description: Basic OpenTelemetry collector distribution for Developers
+      output_path: ./otelcol-dev
 
     exporters:
-        - gomod: 
-            # Note: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
-            go.opentelemetry.io/collector/exporter/debugexporter v0.129.0
-
+      - gomod:
+          # Note: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
+          go.opentelemetry.io/collector/exporter/debugexporter v0.129.0
 
     receivers:
-        - gomod: 
-            go.opentelemetry.io/collector/receiver/otlpreceiver v0.129.0
+      - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.129.0
 
     # Not used in this tutorial, but can be added if needed for your use case
     # processors:
 
-
     connectors:
-        - gomod: 
-            github.com/gord02/exampleconnector v0.129.0
-
+      - gomod: github.com/gord02/exampleconnector v0.129.0
 
     replaces:
-    # a list of "replaces" directives that will be part of the resulting go.mod
+      # a list of "replaces" directives that will be part of the resulting go.mod
 
-    # This replace statement is necessary since the newly added component is not found/published to GitHub yet. Replace references to GitHub path with the local path
-    -  github.com/gord02/exampleconnector => [PATH-TO-COMPONENT-CODE]/exampleconnector
-
+      # This replace statement is necessary since the newly added component is not found/published to GitHub yet. Replace references to GitHub path with the local path
+      - github.com/gord02/exampleconnector =>
+        [PATH-TO-COMPONENT-CODE]/exampleconnector
     ```
 
     It is necessary to include a replace statement. The replace section since
@@ -533,8 +527,9 @@ your own OpenTelemetry Collector binary. You can add or remove components
     directory that was in your config file.
 
     When the build is successful, you should see output similar to:
-     ```sh
-    ./ocb --config builder-config.yaml                
+
+    ```sh
+    ./ocb --config builder-config.yaml
     2025-07-15T22:10:10.351+0900    INFO    internal/command.go:99  OpenTelemetry Collector Builder {"version": "0.129.0"}
     2025-07-15T22:10:10.352+0900    INFO    internal/command.go:104 Using config file       {"path": "builder-config.yaml"}
     2025-07-15T22:10:10.353+0900    INFO    builder/config.go:160   Using go        {"go-executable": "/opt/homebrew/Cellar/go@1.23/1.23.6/bin/go"}
@@ -546,7 +541,8 @@ your own OpenTelemetry Collector binary. You can add or remove components
 
 4.  Run Your collector binary:
 
-    Now you can run your custom collector binary using the binary path from step 3 output (e.g., `{"binary": "./otelcol-dev/otelcol-dev-bin"}`):
+    Now you can run your custom collector binary using the binary path from step
+    3 output (e.g., `{"binary": "./otelcol-dev/otelcol-dev-bin"}`):
 
     ```sh
     ./otelcol-dev/otelcol-dev-bin --config [PATH-TO-CONFIG]/config.yaml
@@ -557,7 +553,9 @@ your own OpenTelemetry Collector binary. You can add or remove components
 
 ## Testing Your Connector
 
-Now that you have built your example connector, let's validate its functionality with unit tests. Go unit tests provide better coverage and are easier to maintain.
+Now that you have built your example connector, let's validate its functionality
+with unit tests. Go unit tests provide better coverage and are easier to
+maintain.
 
 ### Writing Unit Tests
 
@@ -716,8 +714,8 @@ func TestConfigValidation(t *testing.T) {
 
 When tests run successfully, you should see output similar to:
 
-```
-go test -cover -v ./...                                                                  
+```sh
+go test -cover -v ./...
 === RUN   TestConsumeTraces
 === RUN   TestConsumeTraces/span_with_target_attribute_generates_metric
 === RUN   TestConsumeTraces/span_without_target_attribute_does_not_generate_metric
@@ -741,8 +739,9 @@ coverage: 90.5% of statements
 ok      github.com/gord02/exampleconnector      0.501s  coverage: 90.5% of statements
 ```
 
-These unit tests provide comprehensive coverage of your connector's functionality and are the recommended approach for validating component behavior in the OpenTelemetry Collector ecosystem.
-
+These unit tests provide comprehensive coverage of your connector's
+functionality and are the recommended approach for validating component behavior
+in the OpenTelemetry Collector ecosystem.
 
 Additional resources on the OpenTelemetry Collector Builder:
 
