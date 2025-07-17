@@ -14031,6 +14031,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-06-30T20:44:45.902032575Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.36.0//model/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-17T20:51:44.60409+02:00"
+  },
   "https://github.com/open-telemetry/sig-contributor-experience": {
     "StatusCode": 206,
     "LastSeen": "2025-03-11T09:21:47.017232-04:00"
@@ -16426,6 +16430,10 @@
   "https://learn.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors": {
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:29.705755+02:00"
+  },
+  "https://learn.microsoft.com/sql/t-sql/statements/set-context-info-transact-sql": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-17T20:51:48.429297+02:00"
   },
   "https://learn.microsoft.com/windows/win32/api/winsock2/nf-winsock2-connect#return-value": {
     "StatusCode": 206,
@@ -22006,6 +22014,10 @@
   "https://www.w3.org/TR/trace-context/#trace-id": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:32:12.345Z"
+  },
+  "https://www.w3.org/TR/trace-context/#traceparent-header": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-17T20:51:50.737494+02:00"
   },
   "https://www.w3.org/TR/trace-context/#tracestate-header": {
     "StatusCode": 200,

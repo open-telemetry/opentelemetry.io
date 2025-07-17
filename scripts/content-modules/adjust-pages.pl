@@ -180,9 +180,13 @@ while(<>) {
   if ($ARGV =~ /^tmp\/semconv/) {
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
-
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
+
+    # Remove the .md extension from the link title
+    # TODO: remove this once the .md extension is removed from the link title
+    s|(<td><a href=")(.*)\.md(#.*">.*</a></td>)|$1$2$3|g;
   }
+
 
   # SPECIFICATION custom processing
 
