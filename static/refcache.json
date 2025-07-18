@@ -903,6 +903,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:48.044034-05:00"
   },
+  "https://devcenter.heroku.com/articles/heroku-telemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-17T22:19:24.614343-07:00"
+  },
   "https://developer.android.com/guide/components/activities/activity-lifecycle#lc": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:04:12.345Z"
@@ -20810,6 +20814,10 @@
   "https://www.graalvm.org/latest/reference-manual/native-image/": {
     "StatusCode": 206,
     "LastSeen": "2024-09-30T11:46:04.441837921+02:00"
+  },
+  "https://www.heroku.com/blog/opentelemetry-basics-on-heroku-fir/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-17T22:19:23.919614-07:00"
   },
   "https://www.highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/": {
     "StatusCode": 206,
