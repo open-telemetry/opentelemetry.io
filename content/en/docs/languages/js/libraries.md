@@ -210,7 +210,7 @@ const sdk = new NodeSDK({
 Some instrumentation libraries offer additional configuration options.
 
 For example,
-[Express instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options)
+[Express instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-express#express-instrumentation-options)
 offers ways to ignore specified middleware or enrich spans created automatically
 with a request hook:
 

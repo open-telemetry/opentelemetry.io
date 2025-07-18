@@ -272,7 +272,7 @@ OpenTelemetry の前身です。
 ### SDK {#sdk}
 
 ソフトウェア開発キット（Software Development Kit）の略称。
-OpenTelemetryの[API](#api)を実装する[ライブラリ](#library)を示すテレメトリSDKを指します。
+OpenTelemetryの[API](#api)を実装する[ライブラリ](#library)を示すテレメトリーSDKを指します。
 
 ### セマンティック規約 {#semantic-conventions}
 
