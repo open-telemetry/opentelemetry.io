@@ -34,6 +34,7 @@
   url: https://dyte.io
   components: [Go, JavaScript]
   reference: 'https://dyte.io/blog/opentelemetry-at-dyte-part-i/'
+  referenceTitle: blog post
   contact: https://github.com/ethicalmohit
 - name: eBay
   url: https://www.ebay.com
