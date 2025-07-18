@@ -144,7 +144,7 @@ pull-based হতে পারে।
 
 ### ইন্স্ট্রুমেন্টেড লাইব্রেরি (Instrumented library) {#instrumented-library}
 
-[Library](#library)-কে নির্দেশ করে, যার জন্য টেলিমেট্রি সিগন্যালগুলো
+[Library](#library)-কে নির্দেশ করে, যার জন্য টেলিমেট্রি সিগনালগুলো
 ([Traces](#trace), [Metrics](#metric), [Logs](#log)) সংগ্রহ করা হয়।
 [Instrumented library][] দেখুন।
 
@@ -232,7 +232,7 @@ OpenTelemetry-এর পূর্বসূরি। বিস্তারিত 
 
 [OpenTracing](#opentracing) এবং [OpenCensus](#opencensus) প্রকল্পের [merger] এর মাধ্যমে গঠিত, OpenTelemetry &mdash; এই
 ওয়েবসাইটের বিষয় হল [APIs](#api), [SDKs](#sdk), এবং
-টুলগুলোর একটি সংগ্রহ যা আপনি [instrument](/docs/concepts/instrumentation/),
+টুলসগুলোর একটি সংগ্রহ যা আপনি [instrument](/docs/concepts/instrumentation/),
 generate, [collect](/docs/concepts/components/#collector),
 এবং [export](/docs/concepts/components/#exporters) করতে
 ব্যবহার করতে
@@ -378,7 +378,7 @@ instances ডিপ্লয় করা হয়। একটি [Service](#s
 
 external exporters-এর একটি in-process বিকল্প।
 অন্তর্ভুক্ত করা হলে, তারা
-পটভূমিতে tracing এবং metrics তথ্য সংগ্রহ এবং একত্রিত করে; অনুরোধ করা হলে এই ডেটা ওয়েব পৃষ্ঠাগুলিতে পরিবেশিত হয়। [zPages] দেখুন।
+পটভূমিতে tracing এবং metrics তথ্য সংগ্রহ এবং একত্রিত করে; অনুরোধ করা হলে এই ডেটা ওয়েব পৃষ্ঠাগুলোতে পরিবেশিত হয়। [zPages] দেখুন।
 
 [attribute]: /docs/specs/otel/common/#attributes
 [baggage]: /docs/specs/otel/baggage/api/
