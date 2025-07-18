@@ -67,9 +67,10 @@
   contact: ''
 - name: Heroku
   url: https://heroku.com
-  components: [Ruby]
-  reference: ''
-  contact: ''
+  components: [Collector, Go, Ruby, JavaScript, Operator]
+  reference: 'https://youtu.be/5iM8n3uCo_U?si=PJ6tFYcYED3lhAcK'
+  referenceTitle: CNCF talk
+  contact: 'https://www.heroku.com/contact/'
 - name: MercadoLibre
   url: https://www.mercadolibre.com/
   components: [Collector, Go, Java, JavaScript, Python]
