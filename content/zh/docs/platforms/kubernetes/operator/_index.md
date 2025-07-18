@@ -59,7 +59,7 @@ spec:
         timeout: 10s
 
     exporters:
-      # 注意：v0.86.0 之前请使用 `logging` 替代 `debug`。
+      # 注意：较旧版本中请使用 `logging` 替代 `debug`。
       debug: {}
 
     service:
