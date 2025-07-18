@@ -34,7 +34,6 @@
   url: https://dyte.io
   components: [Go, JavaScript]
   reference: 'https://dyte.io/blog/opentelemetry-at-dyte-part-i/'
-  referenceTitle: blog post
   contact: https://github.com/ethicalmohit
 - name: eBay
   url: https://www.ebay.com
@@ -69,6 +68,7 @@
   url: https://heroku.com
   components: [Collector, Go, Ruby, JavaScript, Operator]
   reference: 'https://www.heroku.com/blog/opentelemetry-basics-on-heroku-fir/'
+  referenceTitle: blog post
   contact: 'https://www.heroku.com/contact/'
 - name: MercadoLibre
   url: https://www.mercadolibre.com/
