@@ -1,3 +1,4 @@
+# cSpell:ignore heroku
 title: Heroku
 registryType: application integration
 language: collector
@@ -6,7 +7,8 @@ tags:
   - heroku
 license: Commercial
 description:
-  Heroku Fir adds platform-native support for the collection and distribution of OpenTelemetry signals.
+  Heroku Fir adds platform-native support for the collection and distribution of
+  OpenTelemetry signals.
 authors:
   - name: Heroku Telemetry
     url: https://github.com/heroku
