@@ -2,8 +2,8 @@
 title: Dépannage des problèmes d'instrumentation Zero-code .NET
 linkTitle: Dépannage
 weight: 50
-cSpell:ignore: corehost netfx TRACEFILE
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+cSpell:ignore: corehost netfx TRACEFILE
 ---
 
 ## Étapes générales
@@ -13,11 +13,11 @@ pour .NET, il y a des étapes qui peuvent vous aider à comprendre le problème.
 
 ### Activer la journalisation détaillée
 
-Les logs de debug détaillés peuvent vous aider à dépanner les problèmes
+Les journaux de debug détaillés peuvent vous aider à dépanner les problèmes
 d'instrumentation, et peuvent être joints aux Issues du projet pour faciliter
 l'investigation.
 
-Pour obtenir les logs détaillés de l'instrumentation Zero-code OpenTelemetry
+Pour obtenir les journaux détaillés de l'instrumentation Zero-code OpenTelemetry
 pour .NET, définissez la variable d'environnement
 [`OTEL_LOG_LEVEL`](../configuration#internal-logs) à `debug` avant que le
 processus instrumenté ne démarre.
@@ -51,7 +51,7 @@ Puis redémarrez l'application pour collecter les logs.
 ### Aucune télémétrie n'est produite
 
 Il n'y a aucune télémétrie générée. Il n'y a aucun log dans
-[l'emplacement des logs internes](../configuration#internal-logs) de
+[l'emplacement des journaux internes](../configuration#internal-logs) de
 l'instrumentation Zero-code OpenTelemetry pour .NET.
 
 Il peut arriver que le Profiler .NET ne puisse pas s'attacher et donc aucun log

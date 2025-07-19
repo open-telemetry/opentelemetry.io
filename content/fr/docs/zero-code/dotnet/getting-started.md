@@ -3,8 +3,8 @@ title: Démarrage rapide
 description:
   Obtenez la télémétrie pour votre application en moins de 5 minutes !
 weight: 5
-cSpell:ignore: ASPNETCORE rolldice
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+cSpell:ignore: ASPNETCORE rolldice
 ---
 
 Cette page vous montrera comment démarrer avec l'instrumentation Zero-code
@@ -199,9 +199,9 @@ utilisent des scripts Unix-shell ou PowerShell.
 
 6. Après environ 30 secondes, arrêtez le processus serveur.
 
-À ce stade, vous devriez voir les traces et logs du serveur et du client en
-console et ils ressemblent à quelque chose comme ceci (ces logs sont tronqués
-pour la lisibilité) :
+À ce stade, vous devriez voir les traces et journaux du serveur et du client en
+console et ils ressemblent à quelque chose comme ceci (ces journaux sont
+tronqués pour la lisibilité) :
 
 <details>
 <summary>Traces et Logs</summary>

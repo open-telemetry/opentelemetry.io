@@ -3,9 +3,9 @@ title: Configuration et paramètres
 linkTitle: Configuration
 aliases: [/docs/languages/net/automatic/config]
 weight: 20
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 # prettier-ignore
 cSpell:ignore: AZUREAPPSERVICE CLSID CORECLR dylib NETFX OPERATINGSYSTEM PROCESSRUNTIME UNHANDLEDEXCEPTION
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 ---
 
 ## Méthodes de configuration
@@ -71,7 +71,7 @@ configuration. Cependant, si un paramètre donné le supporte, alors :
 | `OTEL_DOTNET_AUTO_HOME`              | Emplacement d'installation.                                                                                                                                                                                                                                          |                   | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES` | Noms des fichiers exécutables que le profileur ne peut pas instrumenter. Supporte plusieurs valeurs séparées par des virgules, par exemple : `ReservedProcess.exe,powershell.exe`. Si non défini, le profileur s'attache à tous les processus par défaut. \[1\]\[2\] |                   | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_FAIL_FAST_ENABLED` | Active la possibilité de faire échouer le processus quand l'instrumentation automatique ne peut pas être exécutée. Il est conçu à des fins de débogage. Il ne devrait pas être utilisé en environnement de production. \[1\]                                         | `false`           | [Expérimental](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_DOTNET_AUTO_LOGGER`            | Destination des logs de diagnostic AutoInstrumentation. (valeurs supportées : `none`,`file`,`console`)                                                                                                                                                               | `file`            | [Expérimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_DOTNET_AUTO_LOGGER`            | Destination des journaux de diagnostic AutoInstrumentation. (valeurs supportées : `none`,`file`,`console`)                                                                                                                                                           | `file`            | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_LOG_LEVEL`                     | Niveau de log du SDK. (valeurs supportées : `none`,`error`,`warn`,`info`,`debug`)                                                                                                                                                                                    | `info`            | [Stable](/docs/specs/otel/versioning-and-stability)       |
 
 \[1\] Si `OTEL_DOTNET_AUTO_FAIL_FAST_ENABLED` est défini à `true` alors les
@@ -378,19 +378,19 @@ sont utilisées pour atténuer les conflits de version d'assembly dans .NET.
 
 ## Logs internes
 
-Les chemins de répertoire par défaut pour les logs internes sont :
+Les chemins de répertoire par défaut pour les journaux internes sont :
 
 - Windows : `%ProgramData%\OpenTelemetry .NET AutoInstrumentation\logs`
 - Linux : `/var/log/opentelemetry/dotnet`
 - macOS : `/var/log/opentelemetry/dotnet`
 
-Si les répertoires de logs par défaut ne peuvent pas être créés,
+Si les répertoires de journaux par défaut ne peuvent pas être créés,
 l'instrumentation utilise le chemin du
 [dossier temporaire](https://docs.microsoft.com/en-us/dotnet/api/System.IO.Path.GetTempPath?view=net-6.0)
 de l'utilisateur actuel à la place.
 
 | Variable d'environnement                          | Description                                                                       | Valeur par défaut                                    | Statut                                                    |
 | ------------------------------------------------- | --------------------------------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------- |
-| `OTEL_DOTNET_AUTO_LOG_DIRECTORY`                  | Répertoire des logs du Traceur .NET.                                              | _Voir la note précédente sur les chemins par défaut_ | [Expérimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_DOTNET_AUTO_LOG_DIRECTORY`                  | Répertoire des journaux du Traceur .NET.                                          | _Voir la note précédente sur les chemins par défaut_ | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_LOG_LEVEL`                                  | Niveau de log du SDK. (valeurs supportées : `none`,`error`,`warn`,`info`,`debug`) | `info`                                               | [Stable](/docs/specs/otel/versioning-and-stability)       |
 | `OTEL_DOTNET_AUTO_LOGS_INCLUDE_FORMATTED_MESSAGE` | Si l'état du log doit être formaté.                                               | `false`                                              | [Expérimental](/docs/specs/otel/versioning-and-stability) |

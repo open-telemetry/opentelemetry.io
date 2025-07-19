@@ -81,10 +81,10 @@ Le niveau par défaut est `info`.
 
 - Dans un environnement de production, il est recommandé de définir
   `OTEL_LOG_LEVEL` à `info`.
-- Les logs sont toujours envoyés vers `console`, quel que soit l'environnement
-  ou le niveau de debug.
-- Les logs de debug sont extrêmement verbeux et peuvent impacter négativement
-  les performances de votre application. Activez les logs de debug seulement
-  quand c'est nécessaire.
+- Les journaux sont toujours envoyés vers `console`, quel que soit
+  l'environnement ou le niveau de debug.
+- Les journaux de debug sont extrêmement verbeux et peuvent impacter
+  négativement les performances de votre application. Activez les journaux de
+  debug seulement quand c'est nécessaire.
 
 {{% /alert %}}

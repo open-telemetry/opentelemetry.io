@@ -7,8 +7,8 @@ aliases:
   - /docs/languages/js/automatic/configuration
   - /docs/languages/js/automatic/module-config
 weight: 10
-cSpell:ignore: serviceinstance
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+cSpell:ignore: serviceinstance
 ---
 
 Ce module est hautement configurable via des

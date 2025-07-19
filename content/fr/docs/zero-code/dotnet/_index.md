@@ -6,8 +6,8 @@ linkTitle: .NET
 aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
-cSpell:ignore: coreutils HKLM iisreset myapp
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+cSpell:ignore: coreutils HKLM iisreset myapp
 ---
 
 Utilisez l'instrumentation Zero-code pour .NET pour envoyer des traces et
@@ -267,16 +267,15 @@ Pour voir la gamme complète d'options de configuration, consultez
 {{% alert title="Note" color="warning" %}} La corrélation automatique log vers
 trace fournie par l'instrumentation Zero-code pour .NET fonctionne actuellement
 seulement pour les applications .NET utilisant `Microsoft.Extensions.Logging`.
-Voir [#2310](https://github.com/open-telemetry/opentelemetry-dotnet-
-instrumentation/issues/2310) pour plus de détails. {{% /alert %}}
+Voir [#2310](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2310) pour plus de détails. {{% /alert %}}
 
-Le SDK .NET OpenTelemetry corrèle automatiquement les logs aux données de trace.
-Quand les logs sont émis dans le contexte d'une trace active, les
+Le SDK .NET OpenTelemetry corrèle automatiquement les journaux aux données de
+trace. Quand les journaux sont émis dans le contexte d'une trace active, les
 [champs](/docs/specs/otel/logs/data-model#trace-context-fields) `TraceId`,
 `SpanId`, `TraceState`, qui forment le contexte de la trace, sont
 automatiquement remplis.
 
-Voici des logs produits par une application console servant d'exemple :
+Voici des journaux produits par une application console servant d'exemple :
 
 ```json
 "logRecords": [

@@ -5,9 +5,9 @@ description:
   Bibliothèques supportées par l'instrumentation Zero-code OpenTelemetry pour
   .NET.
 weight: 10
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 # prettier-ignore
 cSpell:ignore: ASPNET ASPNETCORE Bootstrapper DBSTATEMENT ELASTICTRANSPORT ENTITYFRAMEWORKCORE GRPCNETCLIENT HOSTINGSTARTUPASSEMBLIES HTTPCLIENT ILOGGER MASSTRANSIT MYSQLCONNECTOR MYSQLDATA NETRUNTIME npgsql NSERVICEBUS ORACLEMDA RABBITMQ SQLCLIENT STACKEXCHANGEREDIS WCFCLIENT WCFSERVICE
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 ---
 
 L'instrumentation Zero-code OpenTelemetry pour .NET supporte une grande variété
