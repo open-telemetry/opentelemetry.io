@@ -52,7 +52,7 @@ ressources. Voir [Échantillonnage](/docs/languages/java/sdk/#sampler).
 
 ### Désactiver des instrumentations spécifiques
 
-Vous pouvez réduire davantage l'imapct de l'agent en désactivant les
+Vous pouvez réduire davantage l'impact de l'agent en désactivant les
 instrumentations qui ne sont pas nécessaires ou qui produisent trop de spans.
 Pour désactiver une instrumentation, utilisez
 `-Dotel.instrumentation.<name>.enabled=false` ou la variable d'environnement

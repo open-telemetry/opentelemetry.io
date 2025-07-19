@@ -10,7 +10,7 @@ cSpell:ignore: grpcio myapp psutil PYTHONPATH
 
 Si vous exécutez votre service Python dans Kubernetes, vous pouvez tirer parti
 de
-l'[Opérateur OpenTelemetry](htt<ps://github.com/open-telemetry/opentelemetry-operator)
+l'[Opérateur OpenTelemetry](https://github.com/open-telemetry/opentelemetry-operator)
 pour injecter l'auto-instrumentation sans avoir à modifier directement chacun de
 vos services.
 [Consultez la documentation sur l'auto-instrumentation de l'Opérateur OpenTelemetry pour plus de détails.](/docs/platforms/kubernetes/operator/automatic/)

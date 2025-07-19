@@ -267,7 +267,9 @@ Pour voir la gamme complète d'options de configuration, consultez
 {{% alert title="Note" color="warning" %}} La corrélation automatique log vers
 trace fournie par l'instrumentation Zero-code pour .NET fonctionne actuellement
 seulement pour les applications .NET utilisant `Microsoft.Extensions.Logging`.
-Voir [#2310](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2310) pour plus de détails. {{% /alert %}}
+Voir
+[#2310](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2310)
+pour plus de détails. {{% /alert %}}
 
 Le SDK .NET OpenTelemetry corrèle automatiquement les journaux aux données de
 trace. Quand les journaux sont émis dans le contexte d'une trace active, les

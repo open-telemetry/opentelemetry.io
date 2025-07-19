@@ -149,7 +149,7 @@ spécifiques, où [name] est le nom d'instrumentation correspondant :
 | OkHttp                                           | `okhttp`                                    |
 | OpenLiberty                                      | `liberty`                                   |
 | Annotations de l'extension OpenTelemetry         | `opentelemetry-extension-annotations`       |
-| Annotatons de l'instrumentation OpenTelemetry    | `opentelemetry-instrumentation-annotations` |
+| Annotations de l'instrumentation OpenTelemetry   | `opentelemetry-instrumentation-annotations` |
 | OpenTelemetry API                                | `opentelemetry-api`                         |
 | Oracle UCP                                       | `oracle-ucp`                                |
 | OSHI (Operating System and Hardware Information) | `oshi`                                      |
