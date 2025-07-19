@@ -120,7 +120,7 @@ classDef typescript fill:#e98516,color:black;
 ```
 
 ডেমো অ্যাপ্লিকেশনগুলোর
-[মেট্রিক](/docs/demo/telemetry-features/metric-coverage/) এবং 
+[মেট্রিক](/docs/demo/telemetry-features/metric-coverage/) এবং
 [ট্রেস](/docs/demo/telemetry-features/trace-coverage/) ইন্সট্রুমেন্টেশনের বর্তমান অবস্থা জানতে এই লিঙ্কগুলো অনুসরণ করুন।
 
 কলেক্টরের কনফিগারেশন পাওয়া যাবে
