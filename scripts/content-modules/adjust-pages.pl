@@ -24,9 +24,9 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.46.0
+    spec: 1.47.0
     otlp: 1.7.0
-    semconv: 1.35.0
+    semconv: 1.36.0
   );
 # Versions map without the colon in the keys
 my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
@@ -180,9 +180,13 @@ while(<>) {
   if ($ARGV =~ /^tmp\/semconv/) {
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
-
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
+
+    # Remove the .md extension from the link title
+    # TODO: remove this once the .md extension is removed from the link title
+    s|(<td><a href=")(.*)\.md(#.*">.*</a></td>)|$1$2$3|g;
   }
+
 
   # SPECIFICATION custom processing
 

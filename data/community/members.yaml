@@ -1196,8 +1196,18 @@ maintainers:
       - docs-approvers
       - docs-bn-approvers
       - docs-bn-maintainers
+      - docs-es-approvers
+      - docs-es-maintainers
+      - docs-fr-approvers
+      - docs-fr-maintainers
+      - docs-ja-approvers
+      - docs-ja-maintainers
       - docs-maintainers
+      - docs-pt-approvers
+      - docs-pt-maintainers
       - docs-triagers
+      - docs-zh-approvers
+      - docs-zh-maintainers
       - social-media-approvers
     html_url: https://github.com/tiffany76
     avatar_url: https://avatars.githubusercontent.com/u/30397949?v=4
@@ -1849,6 +1859,11 @@ approvers:
       - lambda-extension-approvers
     html_url: https://github.com/pragmaticivan
     avatar_url: https://avatars.githubusercontent.com/u/301291?v=4
+  - name: ps48
+    teams:
+      - demo-approvers
+    html_url: https://github.com/ps48
+    avatar_url: https://avatars.githubusercontent.com/u/4348487?v=4
   - name: psx95
     teams:
       - cpp-approvers
@@ -2665,6 +2680,9 @@ members:
   - name: shivanshuraj1333
     html_url: https://github.com/shivanshuraj1333
     avatar_url: https://avatars.githubusercontent.com/u/26167974?v=4
+  - name: skl
+    html_url: https://github.com/skl
+    avatar_url: https://avatars.githubusercontent.com/u/514343?v=4
   - name: sokoide
     html_url: https://github.com/sokoide
     avatar_url: https://avatars.githubusercontent.com/u/1452761?v=4
