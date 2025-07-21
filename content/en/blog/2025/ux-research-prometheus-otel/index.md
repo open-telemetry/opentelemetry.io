@@ -1,6 +1,6 @@
 ---
 title: How Should Prometheus Handle OpenTelemetry Resource Attributes?: A UX Research Report
-linkTitle: 
+linkTitle: How Should Prometheus Handle OTel Resource Attributes?
 date: 2025-07-11-21
 author: [Victoria Nduka](https://github.com/nwanduka)
 sig: End User
@@ -92,7 +92,7 @@ Here are the key findings:
 - Manual attribute promotion creates operational overhead that scales poorly with team size and complexity
 - 78% of respondents find documentation gaps a challenge in their use of resource attributes
 
-![A bar chart showing challenges with OpenTelemetry resource attributes in Prometheus](Chart.png)
+![A bar chart showing challenges with OpenTelemetry resource attributes in Prometheus](Chart.PNG)
 
 The survey patterns were consistent with what emerged from my qualitative research. For detailed results, see the [anonymized survey responses](https://github.com/prometheus-community/ux-research/blob/main/prom-otel-research/survey-results.csv)
 
