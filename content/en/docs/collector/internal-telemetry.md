@@ -30,17 +30,17 @@ By default, the Collector exposes its own telemetry in three ways:
 - [Logs](#configure-internal-logs)
 - [Traces](#configure-internal-traces)
 
-{{% alert title="Who monitors the monitor?" color="info" %}} As a matter of best
+{{% alert title="Who monitors the monitor?" %}} As a matter of best
 practice, the subject being monitored shouldn't also be the monitor. Internal
 Collector telemetry should ideally be exported to another OpenTelemetry
 Collector dedicated to processing telemetry from other Collectors, which then
 exports the telemetry to an OTLP backend for analysis.
 
 When a Collector is responsible for handling its own telemetry through a traces,
-metrics, or logs pipeline and encounters an issue (e.g. memory limiter blocking
+metrics, or logs pipeline and encounters an issue (for example, memory limiter blocking
 data), its internal telemetry won't be sent to its intended destination. This
 makes it difficult to detect problems with the Collector itself. Likewise, if
-the Collector generates additional telemetry related to the above issue, such
+the Collector generates additional telemetry related to the above issue, such as
 error logs, and those logs are sent into the same collector, it can create a
 feedback loop where more error logs lead to increased ingestion, which in turn
 produces even more error logs. {{% /alert %}}
