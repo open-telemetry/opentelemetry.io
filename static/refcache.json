@@ -935,6 +935,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:48.044034-05:00"
   },
+  "https://devcenter.heroku.com/articles/heroku-telemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-17T22:19:24.614343-07:00"
+  },
+  "https://devcenter.heroku.com/articles/opentelemetry-concepts-and-heroku": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-18T13:36:16.885085-07:00"
+  },
   "https://developer.android.com/guide/components/activities/activity-lifecycle#lc": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:04:12.345Z"
@@ -4622,6 +4630,10 @@
   "https://github.com/henrikrexed": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T11:26:04.307086-05:00"
+  },
+  "https://github.com/heroku": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-18T13:36:16.304791-07:00"
   },
   "https://github.com/hertz-contrib/obs-opentelemetry": {
     "StatusCode": 206,
@@ -21099,6 +21111,14 @@
     "StatusCode": 206,
     "LastSeen": "2024-09-30T11:46:04.441837921+02:00"
   },
+  "https://www.heroku.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-18T13:36:15.529247-07:00"
+  },
+  "https://www.heroku.com/blog/opentelemetry-basics-on-heroku-fir/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-17T22:19:23.919614-07:00"
+  },
   "https://www.highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T14:41:03.613423-05:00"
@@ -22402,6 +22422,10 @@
   "https://yaml.org/spec/1.2.2/#103-core-schema": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:32:12.345Z"
+  },
+  "https://youtu.be/5iM8n3uCo_U": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-18T13:36:14.755041-07:00"
   },
   "https://youtu.be/9iaGG-YZw5I": {
     "StatusCode": 200,
