@@ -14,11 +14,11 @@ configure it to help you
 OpenTelemetry SDK
 [declarative configuration schema](https://github.com/open-telemetry/opentelemetry-configuration)
 for configuring how to export its internal telemetry. This schema is still under
-[development](/docs/specs/otel/document-status/#lifecycle-status) and may
-undergo **breaking changes** in future releases. We intend to keep supporting
-older schemas until a 1.0 schema release is available, and offer a transition
-period for users to update their configurations before dropping pre-1.0 schemas.
-For details and to track progress see
+[development](/docs/specs/otel/document-status/) and may undergo **breaking
+changes** in future releases. We intend to keep supporting older schemas until a
+1.0 schema release is available, and offer a transition period for users to
+update their configurations before dropping pre-1.0 schemas. For details and to
+track progress see
 [issue #10808](https://github.com/open-telemetry/opentelemetry-collector/issues/10808).
 {{% /alert %}}
 
@@ -95,6 +95,25 @@ There are a couple of ways to export internal Collector metrics.
    Collector’s version of the exporter would be unnecessary.
 
    {{% /alert %}}
+   
+    If you want to add additional labels to the Prometheus metrics, you can add them
+    with `prometheus::with_resource_constant_labels`:
+
+    ```yaml
+    prometheus:
+      host: '0.0.0.0'
+      port: 8888
+      with_resource_constant_labels:
+        included:
+          - label_key
+    ```
+
+    And then reference the labels in `service::telemetry::resource`:
+
+    ```yaml
+    resource:
+      label_key: label_value
+    ```   
 
 2. To an OTLP destination
 
@@ -182,6 +201,29 @@ service:
     metrics:
       level: detailed
 ```
+
+You can further configure how metrics from the Collector are emitted by using
+[`views`](/docs/specs/otel/metrics/sdk/#view). For example, the following
+configuration updates the metric named `otelcol_process_uptime` to emit a new
+name `process_uptime` and description:
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      views:
+        - selector:
+            instrument_name: otelcol_process_uptime
+            instrument_type:
+          stream:
+            name: process_uptime
+            description: The amount of time the Collector has been up
+```
+
+You can also use `views` to update the resulting aggregation, attributes, and
+cardinality limits. For the full list of options, see the examples in the
+OpenTelemetry Configuration schema
+[repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/f4e9046682d4386ea533ef7ba6ad30a5ce4451b4/examples/kitchen-sink.yaml#L440).
 
 ### Configure internal logs
 
@@ -438,16 +480,11 @@ its introduction. Note however that these metrics were inadvertently reverted to
 
 | Metric name                                           | Description                                                                               | Type      |
 | ----------------------------------------------------- | ----------------------------------------------------------------------------------------- | --------- |
-| `http.client.active_requests`                         | Number of active HTTP client requests.                                                    | Counter   |
-| `http.client.connection.duration`                     | Measures the duration of the successfully established outbound HTTP connections.          | Histogram |
-| `http.client.open_connections`                        | Number of outbound HTTP connections that are active or idle on the client.                | Counter   |
-| `http.client.request.size`                            | Measures the size of HTTP client request bodies.                                          | Counter   |
-| `http.client.duration`                                | Measures the duration of HTTP client requests.                                            | Histogram |
-| `http.client.response.size`                           | Measures the size of HTTP client response bodies.                                         | Counter   |
-| `http.server.active_requests`                         | Number of active HTTP server requests.                                                    | Counter   |
-| `http.server.request.size`                            | Measures the size of HTTP server request bodies.                                          | Counter   |
-| `http.server.duration`                                | Measures the duration of HTTP server requests.                                            | Histogram |
-| `http.server.response.size`                           | Measures the size of HTTP server response bodies.                                         | Counter   |
+| `http.client.request.body.size`                       | Measures the size of HTTP client request bodies.                                          | Counter   |
+| `http.client.request.duration`                        | Measures the duration of HTTP client requests.                                            | Histogram |
+| `http.server.request.body.size`                       | Measures the size of HTTP server request bodies.                                          | Counter   |
+| `http.server.request.duration`                        | Measures the duration of HTTP server requests.                                            | Histogram |
+| `http.server.response.body.size`                      | Measures the size of HTTP server response bodies.                                         | Counter   |
 | `otelcol_processor_batch_batch_`<br>`send_size_bytes` | Number of bytes in the batch that was sent.                                               | Histogram |
 | `rpc.client.duration`                                 | Measures the duration of outbound RPC.                                                    | Histogram |
 | `rpc.client.request.size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
