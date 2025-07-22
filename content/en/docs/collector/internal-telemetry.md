@@ -95,25 +95,25 @@ There are a couple of ways to export internal Collector metrics.
    Collector’s version of the exporter would be unnecessary.
 
    {{% /alert %}}
-   
-    If you want to add additional labels to the Prometheus metrics, you can add them
-    with `prometheus::with_resource_constant_labels`:
 
-    ```yaml
-    prometheus:
-      host: '0.0.0.0'
-      port: 8888
-      with_resource_constant_labels:
-        included:
-          - label_key
-    ```
+   If you want to add additional labels to the Prometheus metrics, you can add
+   them with `prometheus::with_resource_constant_labels`:
 
-    And then reference the labels in `service::telemetry::resource`:
+   ```yaml
+   prometheus:
+     host: '0.0.0.0'
+     port: 8888
+     with_resource_constant_labels:
+       included:
+         - label_key
+   ```
 
-    ```yaml
-    resource:
-      label_key: label_value
-    ```   
+   And then reference the labels in `service::telemetry::resource`:
+
+   ```yaml
+   resource:
+     label_key: label_value
+   ```
 
 2. To an OTLP destination
 
@@ -154,14 +154,12 @@ There are a couple of ways to export internal Collector metrics.
                        value: '${API_TOKEN}'
    ```
 
-   {{% alert title="WARNING" color="warning" %}} 
-   Although the above approach is
+   {{% alert title="WARNING" color="warning" %}} Although the above approach is
    possible, it is not recommended, as each Collector in your fleet would send
    its own internal telemetry directly to the observability backend, causing
    traffic saturation at the ingest point. Instead, you should consider sending
    telemetry to a central Collector dedicated to ingesting telemetry from the
-   Collectors in your fleet. 
-   {{% /alert %}}
+   Collectors in your fleet. {{% /alert %}}
 
 {{% alert title="Internal telemetry configuration changes" color="info" %}}
 
