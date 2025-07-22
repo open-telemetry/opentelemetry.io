@@ -1,5 +1,5 @@
 ---
-title: Troubleshooting
+title: トラブルシューティング
 description: コレクターのトラブルシューティングに関する推奨事項
 weight: 25
 default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
