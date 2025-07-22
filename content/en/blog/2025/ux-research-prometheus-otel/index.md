@@ -1,7 +1,7 @@
 ---
 title: How Should Prometheus Handle OpenTelemetry Resource Attributes?: A UX Research Report
 linkTitle: How Should Prometheus Handle OTel Resource Attributes?
-date: 2025-07-11-21
+date: 2025-07-21
 author: [Victoria Nduka](https://github.com/nwanduka)
 sig: End User
 cSpell:ignore:
