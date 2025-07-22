@@ -8,6 +8,9 @@ on:
         default: content-modules
         type: string
 
+permissions:
+  contents: read
+
 jobs:
   build-and-test:
     name: BUILD and CHECK LINKS
@@ -22,8 +25,7 @@ jobs:
 
       - name: Create and use reduced-dependencies package.json
         run: |
-          jq 'del(.dependencies, .optionalDependencies)' \
-            package.json > tmp/package-min.json
+          jq '.dependencies |= {minisearch: .minisearch} | del(.optionalDependencies)' package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
       - uses: actions/setup-node@v4
