@@ -2,7 +2,7 @@
 title: トラブルシューティング
 description: コレクターのトラブルシューティングに関する推奨事項
 weight: 25
-default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
+default_lang_commit: 974cdea55c03089f4e86d6068ec133b04e2653da
 cSpell:ignore: confmap pprof tracez zpages
 ---
 
@@ -271,7 +271,6 @@ extensions:
 
 潜在的な問題については、コレクターの[logs](/docs/collector/internal-telemetry/#configure-internal-logs) と[zPages](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/zpagesextension/README.md)を確認してください。
 
-
 #### コレクターがデータを処理していない
 
 ほとんどの処理の問題は、プロセッサーの動作に関する誤解やプロセッサーの誤った設定が原因です。例:
@@ -317,7 +316,7 @@ v0.90.1以前では、Windows DockerコンテナでCollectorの起動に失敗�
 
 複数の設定ファイルを解決する際、後の設定値がnullであっても、前の設定ファイルの値は後の設定ファイルの値に置き換えられて削除されます。この問題は、以下の方法で修正できます:
 
-- `processors:` の代わりに `processors: {}` のように、空のマップを表すために `{}` を使用する。
+- `processors:` のかわりに `processors: {}` のように、空のマップを表すために `{}` を使用する。
 - `processors:` のような空の設定を構成から省略する。
 
 詳細については、[confmapのトラブルシューティング](https://github.com/open-telemetry/opentelemetry-collector/blob/main/confmap/README.md#null-maps)を参照してください。
