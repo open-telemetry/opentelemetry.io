@@ -79,7 +79,7 @@ Regarding mental models, many users (both interviewees and survey respondents) d
 > "I would expect resource attributes as a rule to be treated exactly the same way as the attributes attached to the tracer, the metric... I wouldn't draw a boundary between them."  
 > — *Interview Participant 1*
 
-I also learned about the various workarounds people use to handle resource attribute issues in their specific use cases. Some promote selected resource attributes to labels, others handle the conversion at the OpenTelemetry level to avoid dealing with it in Prometheus, and a few convert all attributes, though usually only when the number of attributes is small.
+I also learned about the various workarounds people use to handle resource attribute issues in their specific use cases. Some promote selected resource attributes to labels, others handle the conversion at the OpenTelemetry-Collector level to avoid dealing with it in Prometheus, and a few convert all attributes, though usually only when the number of attributes is small.
 
 ## Survey insights
 
