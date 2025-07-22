@@ -281,7 +281,7 @@ Again, it is recommended to send internal Collector telemetry to a Collector
 dedicated to processing only internal telemetry from other Collectors. If using
 a dedicated Collector for processing internal telemetry, you also need to
 include the port numbers in the `endpoint` configuration - `4317` for
-`grpc/protobuf`, and `4318` for `http/protobuf`.
+`grpc`, and `4318` for `http/protobuf`.
 
 See the [example configuration][kitchen-sink-config] for additional options.
 Note that the `logger_provider` section there corresponds to `logs` here.
