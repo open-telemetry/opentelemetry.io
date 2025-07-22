@@ -2,6 +2,7 @@
 title: Blog
 description: Saiba como enviar uma publicação para o blog.
 weight: 30
+default_lang_commit: 6c676267409eefc15a28c0e2fdd60b26a4687f74
 ---
 
 O [blog do OpenTelemetry](/blog/) comunica novas funcionalidades, relatórios da
