@@ -156,6 +156,12 @@
   contact:
   oss: false
   commercial: true
+- name: Heroku
+  nativeOTLP: true
+  url: https://devcenter.heroku.com/articles/heroku-telemetry
+  contact: 'https://www.heroku.com/contact/'
+  oss: false
+  commercial: true
 - name: Highlight
   nativeOTLP: true
   url: https://www.highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/
@@ -209,6 +215,12 @@
   url: https://docs.lightstep.com/docs/about-sending-data
   contact: https://github.com/cartersocha
   oss: false
+  commercial: true
+- name: Langfuse
+  nativeOTLP: true
+  url: https://langfuse.com/docs/opentelemetry/get-started
+  contact: support@langfuse.com
+  oss: true
   commercial: true
 - name: Last9
   nativeOTLP: true
@@ -529,3 +541,10 @@
   contact: support@vfunction.com
   oss: false
   commercial: true
+- name: Coroot
+  nativeOTLP: true
+  oss: true
+  commercial: true
+  url: https://github.com/coroot/coroot
+  documentation: https://docs.coroot.com/tracing/opentelemetry-go
+  contact: alamberton@coroot.com

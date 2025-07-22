@@ -6,10 +6,14 @@ on:
     # hourly at minute 10
     - cron: 10 * * * *
 
+permissions: read-all
+
 jobs:
   auto-update-versions:
     name: Auto-update versions
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: github.repository == 'open-telemetry/opentelemetry.io'
     env:
       DEPTH: --depth 999 # submodule clone depth
