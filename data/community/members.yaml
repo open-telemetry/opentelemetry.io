@@ -1749,6 +1749,8 @@ approvers:
   - name: martincostello
     teams:
       - dotnet-approvers
+      - dotnet-contrib-approvers
+      - dotnet-contrib-triagers
       - dotnet-triagers
     html_url: https://github.com/martincostello
     avatar_url: https://avatars.githubusercontent.com/u/1439341?v=4
