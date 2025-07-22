@@ -125,7 +125,8 @@ Stakeholders also discussed the idea of adding first-class metadata support to P
 
 - **Expanding for exploratory telemetry**  
 This might be a stretch, but Prometheus could consider expanding its scope to better support exploratory telemetry use cases. Stakeholders showed openness to change, as long as Prometheus’s core architecture remains intact and existing users aren’t alienated. That suggests there may be room for evolution, especially if new capabilities can complement, rather than replace, current behavior.
-
+  > I see OTel and Prometheus as coming from very different assumptions of how telemetry should work in general. So, while Prometheus is very opinionated on time series storage…OTel, on the other hand, comes from a tracing background, meaning it's more explorative than Prometheus. So [with] Prometheus, I kinda know upfront what I need. [With] OpenTelemetry, I don't know what I might need, so I store everything.
+  > — *Juraci Paixão Kröhling*
 - **Cross-signal correlation**  
 Users mention using platforms that can ingest all telemetry types and correlate metrics, traces, and logs within a single system. While Prometheus will likely remain focused on just metrics, it could enable tooling that correlates metrics with telemetry stored in other databases. Prometheus currently supports [exemplars](https://prometheus.io/docs/specs/om/open_metrics_spec/#exemplars), which allow linking metrics to traces, but that’s about the extent of their scope. They rely on tracing being present, which makes them less useful in environments where traces aren’t available or instrumented.
 
