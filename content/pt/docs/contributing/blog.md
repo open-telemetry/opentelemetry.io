@@ -80,13 +80,13 @@ modelo. Siga estes passos para criar um post a partir do modelo:
 1. Execute o seguinte comando a partir da raiz do repositório:
 
    ```sh
-   npx hugo new content/pt/blog/2025/nome-curto-da-publicacao.md
+   npx hugo new content/pt/blog/2025/nome-curto-da-publicação.md
    ```
 
    Caso seu post tenha imagens ou outros arquivos, execute o seguinte comando:
 
    ```sh
-   npx hugo new content/pt/blog/2025/nome-curto-da-publicacao/index.md
+   npx hugo new content/pt/blog/2025/nome-curto-da-publicação/index.md
    ```
 
 1. Edite o arquivo Markdown no caminho informado no comando anterior. O arquivo
@@ -113,7 +113,7 @@ utilizando a interface do GitHub:
 1.  Cole o conteúdo do modelo copiado no primeiro passo.
 
 1.  Nomeie seu arquivo, por exemplo
-    `content/pt/blog/2025/nome-curto-da-publicacao/index.md`.
+    `content/pt/blog/2025/nome-curto-da-publicação/index.md`.
 
 1.  Edite o arquivo Markdown diretamente no GitHub.
 
