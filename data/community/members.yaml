@@ -1250,6 +1250,7 @@ maintainers:
       - semconv-log-approvers
       - sig-project-infra-approvers
       - sig-project-infra-maintainers
+      - sig-security-approvers
       - specs-semconv-approvers
       - specs-semconv-maintainers
       - specs-triagers
@@ -1749,6 +1750,8 @@ approvers:
   - name: martincostello
     teams:
       - dotnet-approvers
+      - dotnet-contrib-approvers
+      - dotnet-contrib-triagers
       - dotnet-triagers
     html_url: https://github.com/martincostello
     avatar_url: https://avatars.githubusercontent.com/u/1439341?v=4
@@ -2389,6 +2392,9 @@ members:
   - name: crossoverJie
     html_url: https://github.com/crossoverJie
     avatar_url: https://avatars.githubusercontent.com/u/15684156?v=4
+  - name: cuichenli
+    html_url: https://github.com/cuichenli
+    avatar_url: https://avatars.githubusercontent.com/u/29245119?v=4
   - name: dao-jun
     html_url: https://github.com/dao-jun
     avatar_url: https://avatars.githubusercontent.com/u/21362791?v=4
