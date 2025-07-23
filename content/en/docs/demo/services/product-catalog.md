@@ -167,9 +167,9 @@ You can send your logs to the OpenTelemetry Collector in two ways:
 - Through a file or `stdout`
 
 You can find documentation specifying how to use both these approaches in the
-[Logs](https://opentelemetry.io/docs/languages/go/instrumentation/#logs) section
+[Logs](/docs/languages/go/instrumentation/#logs) section
 of the
-[Manual Instrumentation](https://opentelemetry.io/docs/languages/go/instrumentation/)
+[Manual Instrumentation](/docs/languages/go/instrumentation/)
 documentation.
 
 The Product Catalog service sends the logs directly to the Collector, and uses a
