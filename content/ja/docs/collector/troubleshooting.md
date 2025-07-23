@@ -306,7 +306,7 @@ extensions:
 #### Windows Dockerコンテナでコレクターの起動に失敗する
 
 v0.90.1以前では、Windows DockerコンテナでCollectorの起動に失敗し `The service process could not connect to the service controller` というエラーメッセージが表示されることがあります。この場合、
- `NO_WINDOWS_SERVICE=1` 環境変数を設定して、コレクターがWindowsサービスとして実行しようとせずに、インタラクティブなターミナルで実行されているかのように強制的に起動させる必要があります。
+`NO_WINDOWS_SERVICE=1` 環境変数を設定して、コレクターがWindowsサービスとして実行しようとせずに、インタラクティブなターミナルで実行されているかのように強制的に起動させる必要があります。
 
 ### コレクターで設定に関する問題が発生している
 
