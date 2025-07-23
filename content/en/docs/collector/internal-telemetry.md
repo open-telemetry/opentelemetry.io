@@ -133,8 +133,10 @@ There are a couple of ways to export internal Collector metrics.
                    endpoint: https://${OTLP_ENDPOINT}:4318
    ```
 
-   If you're using gRPC, then `protocol` would be `grpc/protobuf`, and
-   `endpoint` would be `https://${OTLP_ENDPOINT}:4317`.
+   {{% alert title="Notes" color="info" %}}
+   - If you're using gRPC instead of HTTP, then `protocol` would be `grpc`.
+   - Be sure to include a port number for your endpoint as needed.
+     {{% /alert %}}
 
    You can also send send telemetry directly to an OTLP backend for analysis. In
    this case, you will also need to include a `headers` configuration:
@@ -154,12 +156,15 @@ There are a couple of ways to export internal Collector metrics.
                        value: '${API_TOKEN}'
    ```
 
-   {{% alert title="WARNING" color="warning" %}} Although the above approach is
-   possible, it is not recommended, as each Collector in your fleet would send
-   its own internal telemetry directly to the observability backend, causing
-   traffic saturation at the ingest point. Instead, you should consider sending
-   telemetry to a central Collector dedicated to ingesting telemetry from the
-   Collectors in your fleet. {{% /alert %}}
+   {{% alert title="WARNING" color="warning" %}}
+
+   Although the above approach is possible, it is not recommended, as each
+   Collector in your fleet would send its own internal telemetry directly to the
+   observability backend, causing traffic saturation at the ingest point.
+   Instead, you should consider sending telemetry to a central Collector
+   dedicated to ingesting telemetry from the Collectors in your fleet.
+
+   {{% /alert %}}
 
 {{% alert title="Internal telemetry configuration changes" color="info" %}}
 
@@ -277,11 +282,13 @@ service:
                 endpoint: https://${OTLP_ENDPOINT}
 ```
 
+{{% alert title="Notes" color="info" %}}
+
+- If you're using gRPC instead of HTTP, then `protocol` would be `grpc`.
+- Be sure to include a port number for your endpoint as needed. {{% /alert %}}
+
 Again, it is recommended to send internal Collector telemetry to a Collector
-dedicated to processing only internal telemetry from other Collectors. If using
-a dedicated Collector for processing internal telemetry, you also need to
-include the port numbers in the `endpoint` configuration - `4317` for `grpc`,
-and `4318` for `http/protobuf`.
+dedicated to processing only internal telemetry from other Collectors.
 
 See the [example configuration][kitchen-sink-config] for additional options.
 Note that the `logger_provider` section there corresponds to `logs` here.
@@ -312,11 +319,13 @@ service:
                 endpoint: https://${OTLP_ENDPOINT}
 ```
 
+{{% alert title="Notes" color="info" %}}
+
+- If you're using gRPC instead of HTTP, then `protocol` would be `grpc`.
+- Be sure to include a port number for your endpoint as needed. {{% /alert %}}
+
 Again, it is recommended to send internal Collector telemetry to a Collector
-dedicated to processing only internal telemetry from other Collectors. If using
-a dedicated Collector for processing internal telemetry, you also need to
-include the port numbers in the `endpoint` configuration - `4317` for
-`grpc/protobuf`, and `4318` for `http/protobuf`.
+dedicated to processing only internal telemetry from other Collectors.
 
 See the [example configuration][kitchen-sink-config] for additional options.
 Note that the `tracer_provider` section there corresponds to `traces` here.
