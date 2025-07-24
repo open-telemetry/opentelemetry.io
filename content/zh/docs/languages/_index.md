@@ -8,7 +8,7 @@ redirects:
   - { from: 'net/*', to: 'dotnet/:splat' }
 ---
 
-OpenTelemetry 代码 [插桩][instrumentation] 该功能支持下表 [“状态与发布版本”](#status-and-releases) 中所列的编程语言。
+OpenTelemetry 代码[插桩][instrumentation]支持下表[“状态与发布版本”](#status-and-releases)中所列的各种编程语言。
 [其他语言](/docs/languages/other)的非官方实现版本也可获取。你可以在 [registry](/ecosystem/registry/) 中找到它们。
 
 Go, .NET, PHP, Python, Java and JavaScript 你可以使用[零代码解决方案](/docs/zero-code) 来添加插桩，无需修改代码。
