@@ -631,7 +631,7 @@ kubectl get events -n <your_app_namespace>
 いくつかの確認事項を挙げます。
 
 - **自動計装は言語向けに適切ですか?**
-  - 例えば、Pythonアプリケーションを計装する場合、アノテーションが誤って `instrumentation.opentelemetry.io/inject-java: "true"` と指定されていないことを確認します。
+  - たとえば、Pythonアプリケーションを計装する場合、アノテーションが誤って `instrumentation.opentelemetry.io/inject-java: "true"` と指定されていないことを確認します。
   - **Deno** の場合、`deno` という文字列を含むアノテーションではなく、`instrumentation.opentelemetry.io/inject-sdk: "true"` アノテーションを使用していることを確認します。
 - **自動計装のアノテーションは正しい場所にありますか？**
   `Deployment` を定義する際、アノテーションは `spec.metadata.annotations` と `spec.template.metadata.annotations` の2つのいずれかの場所に追加できます。
