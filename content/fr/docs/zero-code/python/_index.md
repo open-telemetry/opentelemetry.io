@@ -53,7 +53,7 @@ d'instrumentation recommandées à installer. Pour plus d'informations, voir
 utilisez le gestionnaire de paquets [uv](https://docs.astral.sh/uv/), vous
 pourriez rencontrer des difficultés lors de l'exécution de
 `opentelemetry-bootstrap -a install`. Pour plus de détails, voir
-[Bootstrap avec uv](troubleshooting/#bootstrap-using-uv). {{% /alert %}}
+[Bootstrap avec uv](troubleshooting/#bootstrap-avec-uv). {{% /alert %}}
 
 {#configuring-the-agent}
 

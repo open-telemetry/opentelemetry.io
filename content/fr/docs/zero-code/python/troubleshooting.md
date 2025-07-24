@@ -63,7 +63,7 @@ uv run opentelemetry-bootstrap -a requirements | uv pip install --requirement -
 ```
 
 Enfin, utilisez `uv run` pour démarrer votre application (voir
-[Configuration de l'agent](/docs/zero-code/python/#configuring-the-agent)) :
+[Configuration de l'agent](/docs/zero-code/python/#configuration-de-lagent)) :
 
 ```sh
 uv run opentelemetry-instrument python myapp.py
