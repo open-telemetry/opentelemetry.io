@@ -124,7 +124,8 @@ some customizations. See [Distributions].
 
 ### Entity
 
-An Entity represents an object of interest associated with produced telemetry: traces, metrics, logs, profiles etc.
+An Entity represents an object of interest associated with produced telemetry:
+traces, metrics, logs, profiles etc.
 
 ### Event
 
