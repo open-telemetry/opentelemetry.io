@@ -30,7 +30,7 @@ L'exemple suivant utilise une application basique
 Si vous n'utilisez pas ASP.NET Core, vous pouvez toujours utiliser
 l'instrumentation Zero-code OpenTelemetry pour .NET.
 
-Pour des exemples plus élaborés, consultez
+Pour des exemples plus élaborés, consultez la page
 [exemples](/docs/languages/dotnet/examples/).
 
 ### Créer et lancer un serveur HTTP
@@ -199,8 +199,8 @@ utilisent des scripts Unix-shell ou PowerShell.
 
 6. Après environ 30 secondes, arrêtez le processus serveur.
 
-À ce stade, vous devriez voir les traces et journaux du serveur et du client en
-console et ils ressemblent à quelque chose comme ceci (ces journaux sont
+À ce stade, vous devriez voir les traces et logs du serveur et du client en
+console et ils ressemblent à quelque chose comme ceci (ces logs sont
 tronqués pour la lisibilité) :
 
 <details>

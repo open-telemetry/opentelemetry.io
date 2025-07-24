@@ -44,7 +44,7 @@ dotnet add [<PROJECT>] package OpenTelemetry.AutoInstrumentation
 
 Si l'application référence des paquets qui peuvent être instrumentés, mais
 nécessitent d'autres paquets pour que l'instrumentation fonctionne, la
-compilation échouera et vous invitera à soit ajouter la bibliothèque
+compilation échouera et vous invitera soit à ajouter la bibliothèque
 d'instrumentation manquante, soit à ignorer l' instrumentation du paquet
 correspondant :
 

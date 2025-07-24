@@ -66,7 +66,7 @@ curl -sSfL https://github.com/open-telemetry/opentelemetry-dotnet-instrumentatio
 # Installer les fichiers principaux
 sh ./otel-dotnet-auto-install.sh
 
-# Autorisr l'exécution du script d'instrumentation
+# Autoriser l'exécution du script d'instrumentation
 chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 
 # Configurer l'instrumentation pour la session shell actuelle

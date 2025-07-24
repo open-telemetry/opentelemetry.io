@@ -35,7 +35,7 @@ surcharge inutile.
 
 Les
 [traces du serveur hôte](https://github.com/dotnet/runtime/blob/edd23fcb1b350cb1a53fa409200da55e9c33e99e/docs/design/features/host-tracing.md#host-tracing)
-peuvent être utilisé pour rassembler des informations nécessaires pour
+peuvent être utilisées pour rassembler des informations nécessaires pour
 investiguer les divers problèmes, comme les assemblies non trouvés. Définissez
 les variables d'environnement suivantes :
 
@@ -71,8 +71,8 @@ Could not install package 'OpenTelemetry.AutoInstrumentation.Runtime.Native 1.6.
 ```
 
 Les paquets NuGet ne supportent pas les projets `csproj` dans l'ancien format.
-Soit déployez l' instrumentation automatique sur la machine au lieu d'utiliser
-les paquets NuGet, soit migrez votre projet vers le format SDK.
+Vous pouvez soit déployer l' instrumentation automatique sur la machine au lieu d'utiliser
+les paquets NuGet, soit migrer votre projet vers le format SDK.
 
 ### Problèmes de performance
 
