@@ -5,9 +5,6 @@ description:
   Configure the routes decorator component before Beyla sends data to the next
   stage of the pipeline.
 weight: 50
-keywords:
-  - Beyla
-  - eBPF
 ---
 
 # Configure Beyla routes decorator

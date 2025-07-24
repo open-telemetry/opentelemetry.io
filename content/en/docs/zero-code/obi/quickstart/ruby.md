@@ -1,13 +1,9 @@
 ---
-title: 'Quickstart: instrument a Ruby service with Beyla'
+title: 'Quickstart: instrument a Ruby service with OBI'
 menuTitle: Ruby quickstart
 description:
-  Learn how to quickly set up and run Beyla to instrument a Ruby service
+  Learn how to quickly set up and run OBI to instrument a Ruby service
 weight: 2
-keywords:
-  - Beyla
-  - eBPF
-  - Ruby
 ---
 
 # Quickstart: instrument a Ruby service with Beyla

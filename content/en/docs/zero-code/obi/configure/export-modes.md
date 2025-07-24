@@ -1,14 +1,9 @@
 ---
-title: Configure Beyla export modes
+title: Configure OBI export modes
 menuTitle: Export modes
 description:
-  Configure Beyla to export data directly to an OTLP endpoint or through Alloy.
+  Configure OBI to export data directly to an OTLP endpoint or through Alloy.
 weight: 1
-keywords:
-  - Beyla
-  - eBPF
-aliases:
-  - /docs/grafana-cloud/monitor-applications/beyla/configure/export-modes/
 ---
 
 # Configure Beyla export modes
@@ -30,9 +25,9 @@ To run in Direct mode using the Prometheus scrape endpoint, see the
 
 ### Configure and run Beyla
 
-This tutorial assumes Beyla and OTEL Collector are running natively on the same host, so
-there is no need to secure the traffic nor provide authentication in the OTEL Collector
-OTLP receiver.
+This tutorial assumes Beyla and OTEL Collector are running natively on the same
+host, so there is no need to secure the traffic nor provide authentication in
+the OTEL Collector OTLP receiver.
 
 Install [OpenTelemetry eBPF Instrumentation](../../setup/) and download the
 example
@@ -47,8 +42,8 @@ discovery:
     - open_ports: 443
 ```
 
-Next, specify where the traces and the metrics are sent. If the OTEL collector is running on
-the local host, it uses port `4318`:
+Next, specify where the traces and the metrics are sent. If the OTEL collector
+is running on the local host, it uses port `4318`:
 
 ```yaml
 otel_metrics_export:

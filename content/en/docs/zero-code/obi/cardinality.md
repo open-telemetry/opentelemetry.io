@@ -7,10 +7,6 @@ description:
   OBI installation, considering the size and complexity of the instrumented
   environment.
 weight: 24
-keywords:
-  - Beyla
-  - eBPF
-  - cardinality
 ---
 
 # OBI metrics cardinality
@@ -21,8 +17,8 @@ simple and accurate formula.
 
 This document tries to provide an approximation of the metrics cardinality that
 might be produced by a default OBI installation. It is divided into several
-sections for each type of metric that OBI can produce, as each metric family
-can be selectively enabled or disabled.
+sections for each type of metric that OBI can produce, as each metric family can
+be selectively enabled or disabled.
 
 For simplicity, the formulas below assume a single cluster. You should multiply
 the cardinality for each of your clusters.
@@ -33,10 +29,10 @@ Before continuing, we should clarify some terms that might be vague or subject
 to interpretation:
 
 - **Instance**: is each instrumentation target. In application-level metrics, it
-  would be the service or client instance. In Kubernetes, it would be a Pod. An application
-  instance might run in multiple processes. In network-level metrics, each
-  instance is the OBI instance that instruments all the network flows in a
-  given host.
+  would be the service or client instance. In Kubernetes, it would be a Pod. An
+  application instance might run in multiple processes. In network-level
+  metrics, each instance is the OBI instance that instruments all the network
+  flows in a given host.
 - **Instance Owner**: in Kubernetes, most instances (Pods) have an owner
   resource. Sometimes you might prefer to report data about the owners instead
   of the instances, to keep cardinality under control. Examples of instance
@@ -64,13 +60,14 @@ to interpretation:
 - **Endpoint**: is an IP or hostname and port that identifies either a service,
   a server, or a client.
 - **Return code:** returned by each service invocation, describes some
-  meta-information about the result of the execution. For HTTP they are HTTP status codes,
-  for other protocols it's usually 0 (success) or 1 (error).
+  meta-information about the result of the execution. For HTTP they are HTTP
+  status codes, for other protocols it's usually 0 (success) or 1 (error).
 
 ## Application-level metrics
 
-For application-level metrics, we can't follow a simple multiplication formula, as there are multiple factors that
-influence cardinality, but they aren't linearly related.
+For application-level metrics, we can't follow a simple multiplication formula,
+as there are multiple factors that influence cardinality, but they aren't
+linearly related.
 
 For example, both the number of HTTP routes and Server addresses increase the
 cardinality, but we can't just multiply them because not all the server
@@ -87,8 +84,8 @@ However, here is a list of factors that can influence the overall cardinality:
 - **Instances**: the number of instrumented entities. They can be both services
   and clients.
 - **MetricNames**: the number of application-level metric names. This varies
-  depending on the type of applications that OBI instruments. Count one for
-  each metric that is going to be reported.
+  depending on the type of applications that OBI instruments. Count one for each
+  metric that is going to be reported.
 - Client-side metrics, when OBI instruments applications that perform requests
   to other applications:
   - `http.client.request.duration`
@@ -98,14 +95,14 @@ However, here is a list of factors that can influence the overall cardinality:
   - `redis.client.duration`
   - `messaging.publish.duration`
   - `messaging.process.duration`
-- Server-side metrics, when OBI instruments application that dispatches
-  requests from other applications:
+- Server-side metrics, when OBI instruments application that dispatches requests
+  from other applications:
   - `http.server.request.duration`
   - `http.server.request.body.size`
   - `rpc.server.duration`
 - **HistogramBuckets** need to be accounted and multiply each metric, as every
-  Application-level metric is an histogram. The buckets are configurable in
-  OBI, but the default number is 15 for duration metrics and 11 for body size
+  Application-level metric is an histogram. The buckets are configurable in OBI,
+  but the default number is 15 for duration metrics and 11 for body size
   metrics, plus 2 more metrics (histogram sum and count).
 - **Operations** is equivalent to the functionality that is invoked. In HTTP
   services, it would group the HTTP method and the HTTP route, in RPC it is the

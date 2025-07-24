@@ -3,12 +3,9 @@ title: OBI Quickstart guides
 menuTitle: Quickstart
 description: Learn how to set up and run OBI to instrument multiple languages.
 weight: 2
-keywords:
-  - OBI
-  - eBPF
 ---
 
-# Beyla quickstart guides
+# OBI quickstart guides
 
 This section shows how to quickly instrument your applications for different
 programming languages.

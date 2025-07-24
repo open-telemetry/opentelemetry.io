@@ -6,9 +6,6 @@ description:
   attributes reported, including instance ID decoration and metadata of
   instrumented Kubernetes pods.
 weight: 30
-keywords:
-  - Beyla
-  - eBPF
 ---
 
 # Configure Beyla metrics and traces attributes

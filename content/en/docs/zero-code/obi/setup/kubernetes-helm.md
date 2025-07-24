@@ -1,35 +1,28 @@
 ---
-title: Deploy Beyla in Kubernetes with Helm
+title: Deploy OBI in Kubernetes with Helm
 menuTitle: Helm chart
-description: Learn how to deploy Beyla as a Helm chart in Kubernetes.
+description: Learn how to deploy OBI as a Helm chart in Kubernetes.
 weight: 3
-keywords:
-  - Beyla
-  - eBPF
-  - Kubernetes
-  - Helm
-aliases:
-  - /docs/grafana-cloud/monitor-applications/beyla/setup/kubernetes-helm/
 ---
 
-# Deploy Beyla in Kubernetes with Helm
+# Deploy OBI in Kubernetes with Helm
 
 {{% alert type="note" %}} For more details about the diverse Helm configuration
 options, check out the
-[Beyla Helm chart options](https://github.com/grafana/beyla/blob/main/charts/beyla/README.md)
+[OBI Helm chart options](https://github.com/grafana/beyla/blob/main/charts/beyla/README.md)
 document. {{% /alert %}}
 
 Contents:
 
 <!-- TOC -->
 
-- [Deploying Beyla from helm](#deploying-beyla-from-helm)
-- [Configuring Beyla](#configuring-beyla)
-- [Configuring Beyla metadata](#configuring-beyla-metadata)
+- [Deploying OBI from helm](#deploying-obi-from-helm)
+- [Configuring OBI](#configuring-obi)
+- [Configuring OBI metadata](#configuring-obi-metadata)
 - [Providing secrets to the Helm configuration](#providing-secrets-to-the-helm-configuration)
 <!-- TOC -->
 
-## Deploying Beyla from helm
+## Deploying OBI from helm
 
 First, you need to add the Grafana helm repository to Helm:
 
@@ -37,31 +30,31 @@ First, you need to add the Grafana helm repository to Helm:
 helm repo add grafana https://grafana.github.io/helm-charts
 ```
 
-The following command deploys a Beyla DaemonSet with a default configuration in
+The following command deploys a OBI DaemonSet with a default configuration in
 the `beyla` namespace:
 
 ```sh
 helm install beyla -n beyla --create-namespace  grafana/beyla
 ```
 
-The default Beyla configuration:
+The default OBI configuration:
 
 - exports the metrics as Prometheus metrics in the Pod HTTP port `9090`,
   `/metrics` path.
 - tries to instrument all the applications in your cluster.
 - only provides application-level metrics and excludes
   [network-level metrics](../../network/) by default
-- configures Beyla to decorate the metrics with Kubernetes metadata labels, for
+- configures OBI to decorate the metrics with Kubernetes metadata labels, for
   example `k8s.namespace.name` or `k8s.pod.name`
 
-## Configuring Beyla
+## Configuring OBI
 
-You might want to override the default configuration of Beyla. For example, to
+You might want to override the default configuration of OBI. For example, to
 export the metrics and/or spans as OpenTelemetry instead of Prometheus, or to
 restrict the number of services to instrument.
 
-You can override the default [Beyla configuration options](../../configure/)
-with your own values.
+You can override the default [OBI configuration options](../../configure/) with
+your own values.
 
 For example, create a `helm-beyla.yml` file with a custom configuration:
 
@@ -77,8 +70,8 @@ config:
       unmatched: heuristic
 ```
 
-The `config.data` section contains a Beyla configuration file, documented in the
-[Beyla configuration options documentation](../../configure/options/).
+The `config.data` section contains a OBI configuration file, documented in the
+[OBI configuration options documentation](../../configure/options/).
 
 Then pass the overridden configuration to the `helm` command with the `-f` flag.
 For example:
@@ -87,7 +80,7 @@ For example:
 helm install beyla grafana/beyla -f helm-beyla.yml
 ```
 
-or, if the Beyla chart was previously deployed:
+or, if the OBI chart was previously deployed:
 
 ```sh
 helm upgrade beyla grafana/beyla -f helm-beyla.yml
@@ -95,8 +88,8 @@ helm upgrade beyla grafana/beyla -f helm-beyla.yml
 
 ## Configuring Beyla metadata
 
-If Beyla exports the data using the Prometheus exporter, you might need to
-override the Beyla Pod annotations to let it be discoverable by your Prometheus
+If OBI exports the data using the Prometheus exporter, you might need to
+override the OBI Pod annotations to let it be discoverable by your Prometheus
 scraper. You can add the following section to the example `helm-beyla.yml` file:
 
 ```yaml
@@ -107,9 +100,9 @@ podAnnotations:
 ```
 
 Analogously, the Helm chart allows overriding names, labels, and annotations for
-multiple resources involved in the deployment of Beyla, such as service
-accounts, cluster roles, security contexts, etc. The
-[Beyla Helm chart documentation](https://github.com/grafana/beyla/blob/main/charts/beyla/README.md)
+multiple resources involved in the deployment of OBI, such as service accounts,
+cluster roles, security contexts, etc. The
+[OBI Helm chart documentation](https://github.com/grafana/beyla/blob/main/charts/beyla/README.md)
 describes the diverse configuration options.
 
 ## Providing secrets to the Helm configuration

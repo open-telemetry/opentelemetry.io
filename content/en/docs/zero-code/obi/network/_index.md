@@ -3,10 +3,6 @@ title: Network metrics
 menuTitle: Network
 description: Configuring OBI to observe point-to-point network metrics.
 weight: 8
-keywords:
-  - OBI
-  - network
-  - metrics
 ---
 
 # Network metrics

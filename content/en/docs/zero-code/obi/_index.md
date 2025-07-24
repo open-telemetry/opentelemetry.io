@@ -18,12 +18,12 @@ languages and frameworks. However, getting started with distributed tracing can
 be complex. In some compiled languages like Go or Rust, you must manually add
 tracepoints to the code.
 
-OpenTelemetry eBPF Instrumentation (OBI) is an auto-instrumentation tool to easily get
-started with Application Observability. OBI uses eBPF to automatically inspect
-application executables and the OS networking layer, and capture trace spans
-related to web transactions and Rate Errors Duration (RED) metrics for Linux
-HTTP/S and gRPC services. All data capture occurs without any modifications to
-application code or configuration.
+OpenTelemetry eBPF Instrumentation (OBI) is an auto-instrumentation tool to
+easily get started with Application Observability. OBI uses eBPF to
+automatically inspect application executables and the OS networking layer, and
+capture trace spans related to web transactions and Rate Errors Duration (RED)
+metrics for Linux HTTP/S and gRPC services. All data capture occurs without any
+modifications to application code or configuration.
 
 OBI offers the following features:
 
@@ -58,7 +58,7 @@ OBI requires the following to run:
 - Administrative privileges (root access) or the specific capabilities listed in
   the [configuration reference](security/)
 
-![OBI eBPF architecture](https://grafana.com/media/docs/grafana-cloud/beyla/tutorial/ebpf-arch.svg)
+![OBI eBPF architecture](./ebpf-arch.svg)
 
 ## Compatibility
 

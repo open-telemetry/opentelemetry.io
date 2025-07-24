@@ -3,9 +3,6 @@ title: Configure Beyla OpenTelemetry trace sampling
 menuTitle: Sample traces
 description: Configure how to sample OpenTelemetry traces.
 weight: 70
-keywords:
-  - Beyla
-  - eBPF
 ---
 
 # Configure Beyla OpenTelemetry trace sampling
@@ -22,7 +19,6 @@ otel_traces_export:
     name: 'traceidratio'
     arg: '0.1'
 ```
-
 
 | YAML<br>environment variable       | Description                                                                                                                                                                                                                                                            | Type   | Default                 |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ----------------------- |

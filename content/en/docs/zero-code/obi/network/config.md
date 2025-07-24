@@ -1,16 +1,12 @@
 ---
-title: Beyla Network Metrics configuration options
+title: OBI Network Metrics configuration options
 menuTitle: Configuration
 description:
-  Learn about the configuration options available for Beyla network metrics
+  Learn about the configuration options available for OBI network metrics
 weight: 3
-keywords:
-  - Beyla
-  - eBPF
-  - Network
 ---
 
-# Beyla Network Metrics configuration options
+# OBI Network Metrics configuration options
 
 Network metrics are configured under the `network` property of the
 [Beyla Configuration YAML file](../../configure/options/) or with a set of

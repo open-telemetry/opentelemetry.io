@@ -1,11 +1,8 @@
 ---
 title: Filter metrics and traces by attribute values
 menuTitle: Filter data
-description: Configure Beyla to filter metrics and traces by attribute values.
+description: Configure OBI to filter metrics and traces by attribute values.
 weight: 40
-keywords:
-  - Beyla
-  - eBPF
 ---
 
 # Filter metrics and traces by attribute values

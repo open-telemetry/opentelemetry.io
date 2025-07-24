@@ -1,13 +1,9 @@
 ---
-title: 'Quickstart: instrument a Rust service with Beyla'
+title: 'Quickstart: instrument a Rust service with OBI'
 menuTitle: Rust quickstart
 description:
-  Learn how to quickly set up and run Beyla to instrument a Rust service
+  Learn how to quickly set up and run OBI to instrument a Rust service
 weight: 2
-keywords:
-  - Beyla
-  - eBPF
-  - Rust
 ---
 
 # Quickstart: instrument a Rust service with Beyla

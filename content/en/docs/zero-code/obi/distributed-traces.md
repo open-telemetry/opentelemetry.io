@@ -1,21 +1,15 @@
 ---
-title: Distributed traces with Beyla
+title: Distributed traces with OBI
 menuTitle: Distributed traces
-description: Learn about Beyla's distributed traces support.
+description: Learn about OBI's distributed traces support.
 weight: 22
-keywords:
-  - Beyla
-  - eBPF
-  - distributed traces
-aliases:
-  - /docs/grafana-cloud/monitor-applications/beyla/distributed-traces/
 ---
 
-# Distributed traces with Beyla
+# Distributed traces with OBI
 
 ## Introduction
 
-Beyla supports distributed traces for applications with some limitations and
+OBI supports distributed traces for applications with some limitations and
 kernel version restrictions.
 
 The distributed tracing is implemented through the propagation of the
@@ -23,12 +17,12 @@ The distributed tracing is implemented through the propagation of the
 `traceparent` context propagation is automatic and it doesn't require any action
 or configuration.
 
-Beyla reads any incoming trace context header values, tracks the program
-execution flow and propagates the trace context by automatically adding the
-`traceparent` field in outgoing HTTP/gRPC requests. If an application has
-already added the `traceparent` field in outgoing requests, Beyla uses that
-value for tracing instead its own generated trace context. If Beyla cannot find
-an incoming `traceparent` context value, it generates one according to the W3C
+OBI reads any incoming trace context header values, tracks the program execution
+flow and propagates the trace context by automatically adding the `traceparent`
+field in outgoing HTTP/gRPC requests. If an application has already added the
+`traceparent` field in outgoing requests, OBI uses that value for tracing
+instead its own generated trace context. If OBI cannot find an incoming
+`traceparent` context value, it generates one according to the W3C
 specification.
 
 ## Implementation
@@ -38,17 +32,16 @@ The trace context propagation is implemented in two different ways:
 1. By writing the outgoing header information at network level
 2. By writing the header information at library level for Go
 
-Depending on the programming language your service is written in, Beyla uses one
+Depending on the programming language your service is written in, OBI uses one
 or both approaches of context propagation. We use these multiple approaches to
 implement context propagation, because writing memory with eBPF depends on the
-kernel configuration and the Linux system capabilities granted to Beyla. For
-more details on this topic, see our KubeCon NA 2024 talk
+kernel configuration and the Linux system capabilities granted to OBI. For more
+details on this topic, see our KubeCon NA 2024 talk
 [So You Want to Write Memory with eBPF?](https://www.youtube.com/watch?v=TUiVX-44S9s).
 
 The context propagation at **network level** is **disabled** by default and can
 be enabled by setting the environment variable
-`BEYLA_BPF_CONTEXT_PROPAGATION=all` or by modifying the Beyla configuration
-file:
+`BEYLA_BPF_CONTEXT_PROPAGATION=all` or by modifying the OBI configuration file:
 
 ```yaml
 ebpf:
@@ -60,45 +53,45 @@ ebpf:
 The context propagation at network level is implemented by writing the trace
 context information in the outgoing HTTP headers as well at the TCP/IP packet
 level. HTTP context propagation is fully compatible with any other OpenTelemetry
-based tracing library. This means that Beyla instrumented services correctly
+based tracing library. This means that OBI instrumented services correctly
 propagate the trace information, when sending to and receiving from services
 instrumented with the OpenTelemetry SDKs. We use
 [Linux Traffic Control (TC)](<https://en.wikipedia.org/wiki/Tc_(Linux)>) to
 perform the adjustment of the network packets, which requires that other eBPF
-programs that use Linux Traffic Control chain properly with Beyla. For special
+programs that use Linux Traffic Control chain properly with OBI. For special
 considerations regarding Cilium CNI, consult our
 [Cilium Compatibility](../cilium-compatibility/) guide.
 
-For TLS encrypted traffic (HTTPS), Beyla is unable to inject the trace
-information in the outgoing HTTP headers and instead it injects the information
-at TCP/IP packet level. Because of this limitation, Beyla is only able to send
-the trace information to other Beyla instrumented services. L7 proxies and load
-balancers disrupt the TCP/IP context propagation, because the original packets
-are discarded and replayed downstream. Parsing incoming trace context
-information from OpenTelemetry SDK instrumented services still works.
+For TLS encrypted traffic (HTTPS), OBI is unable to inject the trace information
+in the outgoing HTTP headers and instead it injects the information at TCP/IP
+packet level. Because of this limitation, OBI is only able to send the trace
+information to other OBI instrumented services. L7 proxies and load balancers
+disrupt the TCP/IP context propagation, because the original packets are
+discarded and replayed downstream. Parsing incoming trace context information
+from OpenTelemetry SDK instrumented services still works.
 
 gRPC and HTTP2 are not supported at the moment.
 
 This type of context propagation works for any programming language and doesn't
-require that Beyla runs in `privileged` mode or has `CAP_SYS_ADMIN` granted. For
+require that OBI runs in `privileged` mode or has `CAP_SYS_ADMIN` granted. For
 more details, see the
 [Distributed traces and context propagation](../configure/metrics-traces-attributes/)
 configuration section.
 
 #### Kubernetes Configuration
 
-The recommended way to deploy Beyla on Kubernetes with distributed tracing
-support at network level is as `DaemonSet`.
+The recommended way to deploy OBI on Kubernetes with distributed tracing support
+at network level is as `DaemonSet`.
 
 The following `Kubernetes` configuration must be used:
 
-- Beyla must be deployed as a `DaemonSet` with host network access
+- OBI must be deployed as a `DaemonSet` with host network access
   (`hostNetwork: true`).
 - The `/sys/fs/cgroup` path from the host must be volume mounted as local
   `/sys/fs/cgroup` path.
-- The `CAP_NET_ADMIN` capability must be granted to the Beyla container.
+- The `CAP_NET_ADMIN` capability must be granted to the OBI container.
 
-The following YAML snippet shows an example Beyla deployment configuration:
+The following YAML snippet shows an example OBI deployment configuration:
 
 ```yaml
 spec:
@@ -151,7 +144,7 @@ spec:
         path: /sys/fs/cgroup
 ```
 
-If `/sys/fs/cgroup` is not mounted as a local volume path for the Beyla
+If `/sys/fs/cgroup` is not mounted as a local volume path for the OBI
 `DaemonSet` some requests may not have their context propagated. We use this
 volume path to listen to newly created sockets.
 
@@ -169,13 +162,13 @@ kernel includes the functionality but is lower than 5.17.
 This type of context propagation is only supported for Go applications and uses
 eBPF user memory write support (`bpf_probe_write_user`). The advantage of this
 approach is that it works for HTTP/HTTP2/HTTPS and gRPC with some limitations,
-however the use of `bpf_probe_write_user` requires the Beyla is granted
+however the use of `bpf_probe_write_user` requires the OBI is granted
 `CAP_SYS_ADMIN` or it's configured to run as `privileged` container.
 
 #### Kernel integrity mode limitations
 
 In order to write the `traceparent` value in outgoing HTTP/gRPC request headers,
-Beyla needs to write to the process memory using the
+OBI needs to write to the process memory using the
 [**bpf_probe_write_user**](https://www.man7.org/linux/man-pages/man7/bpf-helpers.7.html)
 eBPF helper. Since kernel 5.14 (with fixes backported to the 5.10 series) this
 helper is protected (and unavailable to BPF programs) if the Linux Kernel is
@@ -184,7 +177,7 @@ enabled by default if the Kernel has
 [**Secure Boot**](https://wiki.debian.org/SecureBoot) enabled, but it can also
 be enabled manually.
 
-Beyla automatically checks if it can use the `bpf_probe_write_user` helper, and
+OBI automatically checks if it can use the `bpf_probe_write_user` helper, and
 enables context propagation only if it's allowed by the kernel configuration.
 Verify the Linux Kernel **lockdown** mode by running the following command:
 
@@ -192,16 +185,16 @@ Verify the Linux Kernel **lockdown** mode by running the following command:
 cat /sys/kernel/security/lockdown
 ```
 
-If that file exists and the mode is anything other than `[none]`, Beyla cannot
+If that file exists and the mode is anything other than `[none]`, OBI cannot
 perform context propagation and distributed tracing is disabled.
 
 #### Distributed tracing for Go in containerized environments (including Kubernetes)
 
 Because of the Kernel **lockdown** mode restrictions, Docker and Kubernetes
 configuration files should mount the `/sys/kernel/security/` volume for the
-**Beyla docker container** from the host system. This way Beyla can correctly
+**OBI docker container** from the host system. This way OBI can correctly
 determine the Linux Kernel **lockdown** mode. Here's an example Docker compose
-configuration, which ensures Beyla has sufficient information to determine the
+configuration, which ensures OBI has sufficient information to determine the
 **lockdown** mode:
 
 ```yaml
@@ -216,5 +209,5 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup
 ```
 
-If the `/sys/kernel/security/` volume is not mounted, Beyla assumes that the
-Linux Kernel is not running in integrity mode.
+If the `/sys/kernel/security/` volume is not mounted, OBI assumes that the Linux
+Kernel is not running in integrity mode.

@@ -1,13 +1,9 @@
 ---
-title: 'Quickstart: instrument a Java service with Beyla'
+title: 'Quickstart: instrument a Java service with OBI'
 menuTitle: Java quickstart
 description:
-  Learn how to quickly set up and run Beyla to instrument a Java service
+  Learn how to quickly set up and run OBI to instrument a Java service
 weight: 2
-keywords:
-  - Beyla
-  - eBPF
-  - Java
 ---
 
 # Quickstart: instrument a Java service with Beyla

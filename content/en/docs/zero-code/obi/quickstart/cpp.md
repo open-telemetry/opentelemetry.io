@@ -1,14 +1,9 @@
 ---
-title: 'Quickstart: instrument a C/C++ service with Beyla'
+title: 'Quickstart: instrument a C/C++ service with OBI'
 menuTitle: C/C++ quickstart
 description:
-  Learn how to quickly set up and run Beyla to instrument a C/C++ service
+  Learn how to quickly set up and run OBI to instrument a C/C++ service
 weight: 2
-keywords:
-  - Beyla
-  - eBPF
-  - C
-  - C++
 ---
 
 # Quickstart: instrument a C/C++ service with Beyla

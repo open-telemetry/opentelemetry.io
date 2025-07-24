@@ -1,17 +1,14 @@
 ---
-title: Configure the Beyla internal metrics reporter
+title: Configure the OBI internal metrics reporter
 menuTitle: Internal metrics reporter
 description:
   Configure how the optional internal metrics reporter component reports metrics
   on the internal behavior of the auto-instrumentation tool in Prometheus
   format.
 weight: 80
-keywords:
-  - Beyla
-  - eBPF
 ---
 
-# Configure the Beyla internal metrics reporter
+# Configure the OBI internal metrics reporter
 
 YAML section: `internal_metrics`
 

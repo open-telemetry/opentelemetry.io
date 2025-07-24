@@ -1,43 +1,36 @@
 ---
-title: Deploy Beyla in Kubernetes
+title: Deploy OBI in Kubernetes
 menuTitle: Kubernetes
-description: Learn how to deploy Beyla in Kubernetes.
+description: Learn how to deploy OBI in Kubernetes.
 weight: 3
-keywords:
-  - Beyla
-  - eBPF
-  - Kubernetes
-aliases:
-  - /docs/grafana-cloud/monitor-applications/beyla/setup/kubernetes/
-  - /docs/beyla/latest/tutorial/k8s-walkthrough/
 ---
 
-# Deploy Beyla in Kubernetes
+# Deploy OBI in Kubernetes
 
-{{% alert type="note" %}} This document explains how to manually deploy Beyla in
+{{% alert type="note" %}} This document explains how to manually deploy OBI in
 Kubernetes, setting up all the required entities by yourself.
 
 You might prefer to follow the
-[Deploy Beyla in Kubernetes with Helm](../kubernetes-helm/) documentation
-instead. {{% /alert %}}
+[Deploy OBI in Kubernetes with Helm](../kubernetes-helm/) documentation instead.
+{{% /alert %}}
 
 Contents:
 
 <!-- TOC -->
 
-- [Deploy Beyla in Kubernetes](#deploy-beyla-in-kubernetes)
+- [Deploy OBI in Kubernetes](#deploy-obi-in-kubernetes)
   - [Configuring Kubernetes metadata decoration](#configuring-kubernetes-metadata-decoration)
-  - [Deploying Beyla](#deploying-beyla)
-    - [Deploy Beyla as a sidecar container](#deploy-beyla-as-a-sidecar-container)
-    - [Deploy Beyla as a Daemonset](#deploy-beyla-as-a-daemonset)
-    - [Deploy Beyla unprivileged](#deploy-beyla-unprivileged)
+  - [Deploying OBI](#deploying-obi)
+    - [Deploy OBI as a sidecar container](#deploy-obi-as-a-sidecar-container)
+    - [Deploy OBI as a Daemonset](#deploy-obi-as-a-daemonset)
+    - [Deploy OBI unprivileged](#deploy-obi-unprivileged)
   - [Providing an external configuration file](#providing-an-external-configuration-file)
   - [Providing secret configuration](#providing-secret-configuration)
   <!-- TOC -->
 
 ## Configuring Kubernetes metadata decoration
 
-Beyla can decorate your traces with the following Kubernetes labels:
+OBI can decorate your traces with the following Kubernetes labels:
 
 - `k8s.namespace.name`
 - `k8s.deployment.name`
@@ -89,14 +82,14 @@ roleRef:
   name: beyla
 ```
 
-(You need to change the `namespace: default` value if you are deploying Beyla in
+(You need to change the `namespace: default` value if you are deploying OBI in
 another namespace).
 
-2. Configure Beyla with the `BEYLA_KUBE_METADATA_ENABLE=true` environment
+2. Configure OBI with the `BEYLA_KUBE_METADATA_ENABLE=true` environment
    variable, or the `attributes.kubernetes.enable: true` YAML configuration.
 
-3. Don't forget to specify the `serviceAccountName: beyla` property in your
-   Beyla Pod (as shown in the later deployment examples).
+3. Don't forget to specify the `serviceAccountName: beyla` property in your OBI
+   Pod (as shown in the later deployment examples).
 
 Optionally, select which Kubernetes services to instrument in the
 `discovery -> instrument` section of the YAML configuration file. For more
@@ -105,22 +98,22 @@ information, refer to the _Service discovery_ section in the
 [Providing an external configuration file](#providing-an-external-configuration-file)
 section of this page.
 
-## Deploying Beyla
+## Deploying OBI
 
-You can deploy Beyla in Kubernetes in two different ways:
+You can deploy OBI in Kubernetes in two different ways:
 
 - As a sidecar container
 - As a DaemonSet
 
-### Deploy Beyla as a sidecar container
+### Deploy OBI as a sidecar container
 
-This is the way you can deploy Beyla if you want to monitor a given service that
-might not be deployed in all the hosts, so you only have to deploy one Beyla
+This is the way you can deploy OBI if you want to monitor a given service that
+might not be deployed in all the hosts, so you only have to deploy one OBI
 instance per each service instance.
 
 {{< youtube id="d7clTdz0bA4" >}}
 
-Deploying Beyla as a sidecar container has the following configuration
+Deploying OBI as a sidecar container has the following configuration
 requirements:
 
 - The process namespace must be shared between all containers in the Pod
@@ -140,7 +133,7 @@ requirements:
           - SYS_RESOURCE # not required for kernels 5.11+
     ```
 
-The following example instruments the `goblog` pod by attaching Beyla as a
+The following example instruments the `goblog` pod by attaching OBI as a
 container (image available at `grafana/beyla:latest`). The auto-instrumentation
 tool is configured to forward metrics and traces to Grafana Alloy, which is
 accessible behind the `grafana-alloy` service in the same namespace:
@@ -193,13 +186,13 @@ spec:
 For more information about the different configuration options, check the
 [Configuration](../../configure/options/) section of this documentation site.
 
-### Deploy Beyla as a Daemonset
+### Deploy OBI as a Daemonset
 
-You can also deploy Beyla as a Daemonset. This is the preferred way if:
+You can also deploy OBI as a Daemonset. This is the preferred way if:
 
 - You want to instrument a Daemonset
-- You want to instrument multiple processes from a single Beyla instance, or
-  even all of the processes in your cluster.
+- You want to instrument multiple processes from a single OBI instance, or even
+  all of the processes in your cluster.
 
 Using the previous example (the `goblog` pod), we cannot select the process to
 instrument by using its open port, because the port is internal to the Pod. At
@@ -246,31 +239,30 @@ spec:
               value: 'true'
 ```
 
-### Deploy Beyla unprivileged
+### Deploy OBI unprivileged
 
 In all of the examples so far, `privileged:true` or the `SYS_ADMIN` Linux
-capability was used in the Beyla deployment's `securityContext` section. While
-this works in all circumstances, there are ways to deploy Beyla in Kubernetes
-with reduced privileges if your security configuration requires you to do so.
-Whether this is possible depends on the Kubernetes version you have and the
-underlying container runtime used (e.g. **Containerd**, **CRI-O** or
-**Docker**).
+capability was used in the OBI deployment's `securityContext` section. While
+this works in all circumstances, there are ways to deploy OBI in Kubernetes with
+reduced privileges if your security configuration requires you to do so. Whether
+this is possible depends on the Kubernetes version you have and the underlying
+container runtime used (e.g. **Containerd**, **CRI-O** or **Docker**).
 
 The following guide is based on tests performed mainly by running `containerd`
 with `GKE`, `kubeadm`, `k3s`, `microk8s` and `kind`.
 
-To run Beyla unprivileged, you need to replace the `privileged:true` setting
-with a set of Linux
+To run OBI unprivileged, you need to replace the `privileged:true` setting with
+a set of Linux
 [capabilities](https://www.man7.org/linux/man-pages/man7/capabilities.7.html). A
-comprehensive list of capabilities required by Beyla can be found in
+comprehensive list of capabilities required by OBI can be found in
 [Security, permissions and capabilities](../../security/).
 
-**Note** Loading BPF programs requires that Beyla is able to read the Linux
+**Note** Loading BPF programs requires that OBI is able to read the Linux
 performance events, or at least be able to execute the Linux Kernel API
 `perf_event_open()`.
 
 This permission is granted by `CAP_PERFMON` or more liberally through
-`CAP_SYS_ADMIN`. Since both `CAP_PERFMON` and `CAP_SYS_ADMIN` grant Beyla the
+`CAP_SYS_ADMIN`. Since both `CAP_PERFMON` and `CAP_SYS_ADMIN` grant OBI the
 permission to read performance events, you should use `CAP_PERFMON` because it
 grants lesser permissions. However, at system level, the access to the
 performance events is controlled through the setting
@@ -287,8 +279,8 @@ are running on a distribution with `kernel.perf_event_paranoid` setting higher
 than `2`, you can either modify your configuration to lower it to `2` or use
 `CAP_SYS_ADMIN` instead of `CAP_PERFMON`.
 
-An example of a Beyla unprivileged container configuration can be found below,
-or you can download the
+An example of a OBI unprivileged container configuration can be found below, or
+you can download the
 [full example deployment](https://github.com/grafana/beyla/tree/main/examples/k8s/unprivileged.yaml)
 file:
 
@@ -371,15 +363,15 @@ metadata:
 
 ## Providing an external configuration file
 
-In the previous examples, Beyla was configured via environment variables.
-However, you can also configure it via an external YAML file (as documented in
-the [Configuration](../../configure/options/) section of this site).
+In the previous examples, OBI was configured via environment variables. However,
+you can also configure it via an external YAML file (as documented in the
+[Configuration](../../configure/options/) section of this site).
 
 To provide the configuration as a file, the recommended way is to deploy a
-ConfigMap with the intended configuration, then mount it into the Beyla Pod, and
+ConfigMap with the intended configuration, then mount it into the OBI Pod, and
 refer to it with the `BEYLA_CONFIG_PATH` environment variable.
 
-Example of ConfigMap with the Beyla YAML documentation:
+Example of ConfigMap with the OBI YAML documentation:
 
 ```yaml
 apiVersion: v1
@@ -401,7 +393,7 @@ data:
         - /factorial/{num}
 ```
 
-Example of Beyla DaemonSet configuration, mounting and accessing to the previous
+Example of OBI DaemonSet configuration, mounting and accessing to the previous
 ConfigMap:
 
 ```yaml
@@ -467,7 +459,7 @@ stringData:
 
 Then you can access the secret values as environment variables. Following the
 previous DaemonSet example, this would be achieved by adding the following `env`
-section to the Beyla container:
+section to the OBI container:
 
 ```yaml
 env:

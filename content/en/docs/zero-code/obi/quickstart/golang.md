@@ -1,14 +1,8 @@
 ---
-title: 'Quickstart: instrument a Go service with Beyla'
+title: 'Quickstart: instrument a Go service with OBI'
 menuTitle: Go quickstart
-description:
-  Learn how to quickly set up and run Beyla to instrument a Go service
+description: Learn how to quickly set up and run OBI to instrument a Go service
 weight: 2
-keywords:
-  - Beyla
-  - eBPF
-  - Go
-  - Golang
 ---
 
 # Quickstart: instrument a Go service with Beyla

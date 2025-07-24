@@ -1,21 +1,14 @@
 ---
-title: Configure Beyla
+title: Configure OBI
 menuTitle: Configure
-description: Learn how to configure Beyla.
+description: Learn how to configure OBI.
 weight: 4
-keywords:
-  - Beyla
-  - eBPF
-aliases:
-  - /docs/grafana-cloud/monitor-applications/beyla/configure/
 ---
 
-# Configure Beyla
-
-You can configure Beyla by setting [export modes](export-modes/), global
+You can configure OBI by setting [export modes](export-modes/), global
 properties, and component options.
 
-For information on the metrics Beyla exports, refer to the
+For information on the metrics OBI exports, refer to the
 [exported metrics](../metrics/) documentation.
 
 Refer to the [routes decorator](routes-decorator/) documentation to configure

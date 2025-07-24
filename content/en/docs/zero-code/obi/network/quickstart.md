@@ -5,10 +5,6 @@ description:
   A quickstart guide to produce Network Metrics from OpenTelemetry eBPF
   Instrumentation
 weight: 1
-keywords:
-  - OBI
-  - network
-  - quickstart
 ---
 
 # OBI network metrics quickstart

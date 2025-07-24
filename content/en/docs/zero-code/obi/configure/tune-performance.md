@@ -6,9 +6,6 @@ description:
   external processes and creates traces to forward to the next stage of the
   pipeline.
 weight: 90
-keywords:
-  - Beyla
-  - eBPF
 ---
 
 # Configure Beyla performance

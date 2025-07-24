@@ -3,13 +3,6 @@ title: OBI security, permissions, and capabilities
 menuTitle: Security
 description: Privileges and capabilities required by OBI
 weight: 22
-keywords:
-  - OBI
-  - eBPF
-  - security
-  - capabilities
-aliases:
-  - /docs/grafana-cloud/monitor-applications/beyla/security/
 ---
 
 # OBI security, permissions, and capabilities

@@ -1,16 +1,13 @@
 ---
-title: Beyla configuration YAML example
+title: OBI configuration YAML example
 menuTitle: YAML example
-description: Example Beyla configuration YAML example.
+description: Example OBI configuration YAML example.
 weight: 100
-keywords:
-  - Beyla
-  - eBPF
 ---
 
 ## YAML file example
 
-An example Beyla YAML configuration file to send OTLP data to Grafana Cloud OTLP
+An example OBI YAML configuration file to send OTLP data to Grafana Cloud OTLP
 endpoint:
 
 ```yaml

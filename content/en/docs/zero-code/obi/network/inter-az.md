@@ -4,10 +4,6 @@ menuTitle: Measure traffic between Cloud availability zones
 description:
   How to measure the network traffic between different Cloud availability zones
 weight: 1
-keywords:
-  - Beyla
-  - eBPF
-  - Network
 ---
 
 # Measure traffic between Cloud availability zones

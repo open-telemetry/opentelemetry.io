@@ -3,11 +3,6 @@ title: Run OBI as a standalone process
 menuTitle: Standalone
 description: Learn how to setup and run OBI as a standalone Linux process.
 weight: 4
-keywords:
-  - OBI
-  - standalone
-aliases:
-  - /docs/grafana-cloud/monitor-applications/beyla/setup/standalone/
 ---
 
 ![OpenTelemetry eBPF Instrumentation Logo](https://grafana.com/media/docs/grafana-cloud/beyla/beyla-logo-2.png)

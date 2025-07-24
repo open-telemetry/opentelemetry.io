@@ -1,16 +1,13 @@
 ---
-title: Configure Beyla service discovery
+title: Configure OBI service discovery
 menuTitle: Service discovery
 description:
-  Configure how the Beyla service discovery component searches for processes to
+  Configure how the OBI service discovery component searches for processes to
   instrument.
 weight: 20
-keywords:
-  - Beyla
-  - eBPF
 ---
 
-# Configure Beyla service discovery
+# Configure OBI service discovery
 
 The `BEYLA_AUTO_TARGET_EXE` and `BEYLA_OPEN_PORT` are environment variables that
 make it easier to configure Beyla to instrument a single service or a group of

@@ -3,11 +3,6 @@ title: Beyla global configuration properties
 menuTitle: Global properties
 description: Configure global configuration properties that apply to Beyla core.
 weight: 2
-keywords:
-  - Beyla
-  - eBPF
-aliases:
-  - /docs/grafana-cloud/monitor-applications/beyla/configure/options/
 ---
 
 <!-- vale Grafana.Paragraphs = NO -->

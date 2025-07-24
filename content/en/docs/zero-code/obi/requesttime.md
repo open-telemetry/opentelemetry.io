@@ -4,13 +4,6 @@ menuTitle: Request times
 description:
   How to measure total request times from the point of view of the client
 weight: 22
-keywords:
-  - OBI
-  - request time
-  - service time
-  - response time
-aliases:
-  - /docs/grafana-cloud/monitor-applications/beyla/requesttime/
 ---
 
 # Measuring total request times, instead of service times

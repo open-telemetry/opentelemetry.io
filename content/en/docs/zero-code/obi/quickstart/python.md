@@ -1,13 +1,9 @@
 ---
-title: 'Quickstart: instrument a Python service with Beyla'
+title: 'Quickstart: instrument a Python service with OBI'
 menuTitle: Python quickstart
 description:
-  Learn how to quickly set up and run Beyla to instrument a Python service
+  Learn how to quickly set up and run OBI to instrument a Python service
 weight: 2
-keywords:
-  - Beyla
-  - eBPF
-  - Python
 ---
 
 # Quickstart: instrument a Python service with Beyla

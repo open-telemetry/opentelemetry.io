@@ -1,31 +1,25 @@
 ---
-title: Run Beyla as a Docker container
+title: Run OBI as a Docker container
 menuTitle: Docker
 description:
-  Learn how to set up and run Beyla as a standalone Docker container that
+  Learn how to set up and run OBI as a standalone Docker container that
   instruments another container.
 weight: 2
-keywords:
-  - Beyla
-  - eBPF
-  - Docker
-aliases:
-  - /docs/grafana-cloud/monitor-applications/beyla/setup/docker/
 ---
 
-# Run Beyla as a Docker container
+# Run OBI as a Docker container
 
-Beyla can run a standalone Docker container that can instrument a process
-running in another container.
+OBI can run a standalone Docker container that can instrument a process running
+in another container.
 
-Find the latest image of Beyla on
+Find the latest image of OBI on
 [Docker Hub](https://hub.docker.com/r/grafana/beyla) with the following name:
 
 ```
 grafana/beyla:latest
 ```
 
-The Beyla container must be configured in following way:
+The OBI container must be configured in following way:
 
 - run as a **privileged** container, or as a container with the `SYS_ADMIN`
   capability (but this last option might not work in some container
@@ -46,7 +40,7 @@ The above command runs a simple HTTPS application. The process opens the
 container's internal port `8443`, which is then exposed at the host level as the
 port `18443`.
 
-Set environment variables to configure Beyla to print to stdout and listen to a
+Set environment variables to configure OBI to print to stdout and listen to a
 port (container) to inspect the executable:
 
 ```sh
@@ -54,7 +48,7 @@ export BEYLA_TRACE_PRINTER=text
 export BEYLA_OPEN_PORT=8443
 ```
 
-Beyla needs to be run with the following settings:
+OBI needs to be run with the following settings:
 
 - in `--privileged` mode, or with `SYS_ADMIN` capability (despite `SYS_ADMIN`
   might not be enough privileges in some container environments)
@@ -69,8 +63,8 @@ docker run --rm \
   grafana/beyla:latest
 ```
 
-After Beyla is running, open `https://localhost:18443` in your browser, use the
-app to generate test data, and verify that Beyla prints trace requests to stdout
+After OBI is running, open `https://localhost:18443` in your browser, use the
+app to generate test data, and verify that OBI prints trace requests to stdout
 similar to:
 
 ```sh
@@ -83,7 +77,7 @@ time=2023-05-22T14:03:42.526Z level=INFO msg="Starting main node"
 2023-05-22 14:13:47.52221347 (115µs[75.625µs]) 200 GET /static/style.css [172.17.0.1]->[localhost:18443] size:0B
 ```
 
-Now that Beyla is tracing the target HTTP service, configure it to send metrics
+Now that OBI is tracing the target HTTP service, configure it to send metrics
 and traces to an OpenTelemetry endpoint, or have metrics scraped by Prometheus.
 
 For information on how to export traces and metrics, refer to the

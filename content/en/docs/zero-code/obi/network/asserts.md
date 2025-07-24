@@ -1,13 +1,9 @@
 ---
-title: Set up Beyla network metrics in Kubernetes with Helm for Asserts
+title: Set up OBI network metrics in Kubernetes with Helm for Asserts
 menuTitle: Set up Asserts network
 description:
-  A guide to install Beyla network metrics in Kubernetes with Helm for Asserts.
+  A guide to install OBI network metrics in Kubernetes with Helm for Asserts.
 weight: 1
-keywords:
-  - Beyla
-  - eBPF
-  - Network
 ---
 
 # Set up Beyla network metrics in Kubernetes with Helm for Asserts
@@ -53,8 +49,8 @@ podAnnotations:
 
 ## Configure for OpenTelemetry Collector
 
-If you use an OpenTelemetry Collector for metrics collection, create a `values.yml` with the following
-configuration:
+If you use an OpenTelemetry Collector for metrics collection, create a
+`values.yml` with the following configuration:
 
 ```sh
 preset: network

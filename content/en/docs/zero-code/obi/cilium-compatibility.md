@@ -3,13 +3,6 @@ title: OBI and Cilium compatibility
 menuTitle: Cilium compatibility
 description: Compatibility notes when running OBI alongside Cilium
 weight: 23
-keywords:
-  - OBI
-  - eBPF
-  - Cilium
-  - compatibility
-aliases:
-  - /docs/grafana-cloud/monitor-applications/beyla/cilium-compatibility/
 ---
 
 # OBI and Cilium compatibility
@@ -69,8 +62,8 @@ This ensures that OBI programs always run before Cilium programs.
 
 Refer to the
 [configuration documentation](/docs/beyla/latest/configure/options/), to
-configure OBI TC attachment mode using the `OTEL_EBPF_BPF_TC_BACKEND` configuration
-option.
+configure OBI TC attachment mode using the `OTEL_EBPF_BPF_TC_BACKEND`
+configuration option.
 
 You can do the following:
 

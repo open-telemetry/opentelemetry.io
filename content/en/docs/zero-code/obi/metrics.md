@@ -1,17 +1,11 @@
 ---
-title: Beyla exported metrics
+title: OBI exported metrics
 menuTitle: Exported metrics
-description: Learn about the HTTP/gRPC metrics Beyla can export.
+description: Learn about the HTTP/gRPC metrics OBI can export.
 weight: 21
-keywords:
-  - Beyla
-  - eBPF
-  - metrics
-aliases:
-  - /docs/grafana-cloud/monitor-applications/beyla/metrics/
 ---
 
-# Beyla exported metrics
+# OBI exported metrics
 
 The following table describes the exported metrics in both OpenTelemetry and
 Prometheus format.
