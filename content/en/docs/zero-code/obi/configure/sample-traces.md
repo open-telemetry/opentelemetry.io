@@ -23,8 +23,6 @@ otel_traces_export:
     arg: '0.1'
 ```
 
-If you're using Grafana Alloy as your OTEL collector, you can configure the
-sampling policy at that level instead.
 
 | YAML<br>environment variable       | Description                                                                                                                                                                                                                                                            | Type   | Default                 |
 | ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ----------------------- |

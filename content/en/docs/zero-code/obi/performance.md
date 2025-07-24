@@ -23,8 +23,6 @@ We use the following methodology to measure the performance overhead:
 - Deploy [OpenTelemetry Demo](https://opentelemetry.io/docs/demo/architecture/)
   to showcase a real-world application with multiple services interacting with
   each other
-- Measure performance with `application_process`, instrumenting Beyla to extract
-  process-level metrics and measure CPU and memory usage
 - Each scenario is additive to the previous one, so we can measure the impact of
   each feature on the performance
 - Use Prometheus to collect metrics and Grafana to visualize them
