@@ -1,6 +1,6 @@
 ---
 title: Configure OBI OpenTelemetry trace sampling
-menuTitle: Sample traces
+linkTitle: Sample traces
 description: Configure how to sample OpenTelemetry traces.
 weight: 70
 ---

@@ -1,10 +1,12 @@
 ---
 title: Configure OBI service discovery
-menuTitle: Service discovery
+linkTitle: Service discovery
 description:
   Configure how the OBI service discovery component searches for processes to
   instrument.
 weight: 20
+# prettier-ignore
+cSpell:ignore: filestorecsi kube-node-lease kube-system replicaset statefulset volumepopulator
 ---
 
 The `OTEL_EBPF_AUTO_TARGET_EXE` and `OTEL_EBPF_OPEN_PORT` are environment

@@ -1,6 +1,6 @@
 ---
 title: Set up OBI
-menuTitle: Setup
+linkTitle: Setup
 description: Learn how to set up and run OBI.
 weight: 10
 ---

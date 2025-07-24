@@ -1,6 +1,6 @@
 ---
 title: Network metrics
-menuTitle: Network
+linkTitle: Network
 description: Configuring OBI to observe point-to-point network metrics.
 weight: 8
 cSpell:ignore: replicaset statefulset

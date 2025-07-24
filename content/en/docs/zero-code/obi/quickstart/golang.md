@@ -1,8 +1,9 @@
 ---
 title: 'Quickstart: instrument a Go service with OBI'
-menuTitle: Go quickstart
+linkTitle: Go quickstart
 description: Learn how to quickly set up and run OBI to instrument a Go service
 weight: 2
+cSpell:ignore: instrumentable
 ---
 
 ## 1. Run an instrumentable Go service

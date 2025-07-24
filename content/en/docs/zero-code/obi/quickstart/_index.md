@@ -1,6 +1,6 @@
 ---
 title: OBI Quickstart guides
-menuTitle: Quickstart
+linkTitle: Quickstart
 description: Learn how to set up and run OBI to instrument multiple languages.
 weight: 2
 ---

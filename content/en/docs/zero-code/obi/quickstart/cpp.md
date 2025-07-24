@@ -1,9 +1,10 @@
 ---
 title: 'Quickstart: instrument a C/C++ service with OBI'
-menuTitle: C/C++ quickstart
+linkTitle: C/C++ quickstart
 description:
   Learn how to quickly set up and run OBI to instrument a C/C++ service
 weight: 2
+cSpell:ignore: instrumentable
 ---
 
 ## 1. Run an instrumentable C/C++ service

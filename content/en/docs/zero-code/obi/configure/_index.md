@@ -1,6 +1,6 @@
 ---
 title: Configure OBI
-menuTitle: Configure
+linkTitle: Configure
 description: Learn how to configure OBI.
 weight: 4
 ---

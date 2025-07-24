@@ -1,6 +1,6 @@
 ---
 title: Configure OBI performance
-menuTitle: Tune performance
+linkTitle: Tune performance
 description:
   Configure how the eBPF tracer component instruments HTTP and GRPC services of
   external processes and creates traces to forward to the next stage of the

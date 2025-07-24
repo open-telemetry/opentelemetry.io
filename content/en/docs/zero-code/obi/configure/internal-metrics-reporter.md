@@ -1,6 +1,6 @@
 ---
 title: Configure the OBI internal metrics reporter
-menuTitle: Internal metrics reporter
+linkTitle: Internal metrics reporter
 description:
   Configure how the optional internal metrics reporter component reports metrics
   on the internal behavior of the auto-instrumentation tool in Prometheus

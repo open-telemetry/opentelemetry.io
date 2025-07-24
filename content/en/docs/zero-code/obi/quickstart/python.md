@@ -1,9 +1,10 @@
 ---
 title: 'Quickstart: instrument a Python service with OBI'
-menuTitle: Python quickstart
+linkTitle: Python quickstart
 description:
   Learn how to quickly set up and run OBI to instrument a Python service
 weight: 2
+cSpell:ignore: instrumentable
 ---
 
 ## 1. Run an instrumentable Python service

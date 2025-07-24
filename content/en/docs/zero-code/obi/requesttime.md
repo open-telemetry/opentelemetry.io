@@ -1,6 +1,6 @@
 ---
 title: Measuring total request times, instead of service times
-menuTitle: Request times
+linkTitle: Request times
 description:
   How to measure total request times from the point of view of the client
 weight: 22

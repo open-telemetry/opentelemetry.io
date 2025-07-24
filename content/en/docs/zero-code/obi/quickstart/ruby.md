@@ -1,9 +1,10 @@
 ---
 title: 'Quickstart: instrument a Ruby service with OBI'
-menuTitle: Ruby quickstart
+linkTitle: Ruby quickstart
 description:
   Learn how to quickly set up and run OBI to instrument a Ruby service
 weight: 2
+cSpell:ignore: instrumentable
 ---
 
 ## 1. Run an instrumentable Ruby service

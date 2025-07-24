@@ -1,10 +1,11 @@
 ---
 title: OBI and Kubernetes quickstart
-menuTitle: Kubernetes quickstart
+linkTitle: Kubernetes quickstart
 description:
   Learn how to instrument an application export data with Prometheus to Grafana
   Cloud.
 weight: 99
+cSpell:ignore: instrumentable replicaset sampleapps
 ---
 
 Kubernetes is fully integrated into the OBI operation mode.

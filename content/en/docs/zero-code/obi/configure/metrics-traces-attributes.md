@@ -1,11 +1,12 @@
 ---
 title: Configure OBI metrics and traces attributes
-menuTitle: Metrics attributes
+linkTitle: Metrics attributes
 description:
   Configure the metrics and traces attributes component that controls the
   attributes reported, including instance ID decoration and metadata of
   instrumented Kubernetes pods.
 weight: 30
+cSpell:ignore: kube kubecache kubeconfig replicaset statefulset
 ---
 
 You can configure how OBI decorates attributes for metrics and traces. Use the

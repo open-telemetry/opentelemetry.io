@@ -1,9 +1,10 @@
 ---
 title: 'Quickstart: instrument a Rust service with OBI'
-menuTitle: Rust quickstart
+linkTitle: Rust quickstart
 description:
   Learn how to quickly set up and run OBI to instrument a Rust service
 weight: 2
+cSpell:ignore: instrumentable
 ---
 
 ## 1. Run an instrumentable Rust service

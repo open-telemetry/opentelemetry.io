@@ -1,6 +1,6 @@
 ---
 title: OBI global configuration properties
-menuTitle: Global properties
+linkTitle: Global properties
 description: Configure global configuration properties that apply to OBI core.
 weight: 2
 ---

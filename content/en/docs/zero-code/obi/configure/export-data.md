@@ -1,6 +1,6 @@
 ---
 title: Configure OBI Prometheus and OpenTelemetry data export
-menuTitle: Export data
+linkTitle: Export data
 description:
   Configure the OBI components to export Prometheus and OpenTelemetry metrics
   and OpenTelemetry traces

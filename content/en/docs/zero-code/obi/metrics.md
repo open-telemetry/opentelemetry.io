@@ -1,8 +1,9 @@
 ---
 title: OBI exported metrics
-menuTitle: Exported metrics
+linkTitle: Exported metrics
 description: Learn about the HTTP/gRPC metrics OBI can export.
 weight: 21
+cSpell:ignore: replicaset statefulset
 ---
 
 The following table describes the exported metrics in both OpenTelemetry and

@@ -1,6 +1,6 @@
 ---
 title: OBI configuration YAML example
-menuTitle: YAML example
+linkTitle: YAML example
 description: Example OBI configuration YAML example.
 weight: 100
 ---

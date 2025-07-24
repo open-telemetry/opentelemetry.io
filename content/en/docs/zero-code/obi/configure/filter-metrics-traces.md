@@ -1,6 +1,6 @@
 ---
 title: Filter metrics and traces by attribute values
-menuTitle: Filter data
+linkTitle: Filter data
 description: Configure OBI to filter metrics and traces by attribute values.
 weight: 40
 ---

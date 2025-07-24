@@ -1,6 +1,6 @@
 ---
 title: Configure OBI Prometheus and OpenTelemetry metrics histograms
-menuTitle: Metrics histograms
+linkTitle: Metrics histograms
 description:
   Configure metrics histograms for Prometheus and OpenTelemetry, and whether to
   use native histograms and exponential histograms.

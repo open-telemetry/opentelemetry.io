@@ -1,6 +1,6 @@
 ---
 title: Measure traffic between Cloud availability zones
-menuTitle: Measure traffic between Cloud availability zones
+linkTitle: Measure traffic between Cloud availability zones
 description:
   How to measure the network traffic between different Cloud availability zones
 weight: 1

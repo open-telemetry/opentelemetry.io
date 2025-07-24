@@ -1,11 +1,10 @@
 ---
 title: OBI security, permissions, and capabilities
-menuTitle: Security
+linkTitle: Security
 description: Privileges and capabilities required by OBI
 weight: 22
+cSpell:ignore: BPF_PROG_TYPE_KPROBE CAP_PERFMON eksctl
 ---
-
-# OBI security, permissions, and capabilities
 
 OBI needs access to various Linux interfaces to instrument applications, such as
 reading from the `/proc` filesystem, loading eBPF programs, and managing network
@@ -168,7 +167,7 @@ nodeGroups:
         kernel.sys_paranoid: "1"
 ```
 
-Use the AWS Management Console, AWS CLI, or eksctl to apply the updated
+Use the AWS Management Console, AWS CLI, or `eksctl` to apply the updated
 configuration to your EKS cluster.
 
 For more information refer to the

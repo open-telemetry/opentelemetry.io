@@ -1,6 +1,6 @@
 ---
 title: Configure OBI routes decorator
-menuTitle: Routes decorator
+linkTitle: Routes decorator
 description:
   Configure the routes decorator component before OBI sends data to the next
   stage of the pipeline.

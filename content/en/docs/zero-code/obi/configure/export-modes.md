@@ -1,6 +1,6 @@
 ---
 title: Configure OBI export modes
-menuTitle: Export modes
+linkTitle: Export modes
 description: Configure OBI to export data directly to an OTLP endpoint
 weight: 1
 ---

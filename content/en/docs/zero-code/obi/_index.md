@@ -9,6 +9,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
+cSpell:ignore: CAP_PERFMON
 ---
 
 ## eBPF application auto-instrumentation

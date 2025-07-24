@@ -1,6 +1,6 @@
 ---
 title: OBI Network Metrics configuration options
-menuTitle: Configuration
+linkTitle: Configuration
 description:
   Learn about the configuration options available for OBI network metrics
 weight: 3

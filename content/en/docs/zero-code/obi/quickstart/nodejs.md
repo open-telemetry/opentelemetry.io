@@ -1,9 +1,10 @@
 ---
 title: 'Quickstart: instrument a Node.js service with OBI'
-menuTitle: Node.js quickstart
+linkTitle: Node.js quickstart
 description:
   Learn how to quickly set up and run OBI to instrument a Node.js service
 weight: 2
+cSpell:ignore: instrumentable
 ---
 
 ## 1. Run an instrumentable Node.js service

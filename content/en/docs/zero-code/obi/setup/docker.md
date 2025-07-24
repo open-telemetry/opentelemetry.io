@@ -1,10 +1,11 @@
 ---
 title: Run OBI as a Docker container
-menuTitle: Docker
+linkTitle: Docker
 description:
   Learn how to set up and run OBI as a standalone Docker container that
   instruments another container.
 weight: 2
+cSpell:ignore: goblog
 ---
 
 OBI can run a standalone Docker container that can instrument a process running

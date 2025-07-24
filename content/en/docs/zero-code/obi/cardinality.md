@@ -1,12 +1,12 @@
 ---
 title: OBI metrics cardinality
-menuTitle: Metrics cardinality
-
+linkTitle: Metrics cardinality
 description:
   Overview of how to calculate the cardinality of metrics produced by a default
   OBI installation, considering the size and complexity of the instrumented
   environment.
 weight: 24
+cSpell:ignore: kube-system spanmetrics
 ---
 
 The cardinality of [OBI metrics](../metrics/) highly depends on the size and

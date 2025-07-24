@@ -1,6 +1,6 @@
 ---
 title: OBI network metrics quickstart
-menuTitle: Quickstart
+linkTitle: Quickstart
 description:
   A quickstart guide to produce Network Metrics from OpenTelemetry eBPF
   Instrumentation

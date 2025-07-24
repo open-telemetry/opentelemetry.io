@@ -1,6 +1,6 @@
 ---
 title: Distributed traces with OBI
-menuTitle: Distributed traces
+linkTitle: Distributed traces
 description: Learn about OBI's distributed traces support.
 weight: 22
 ---

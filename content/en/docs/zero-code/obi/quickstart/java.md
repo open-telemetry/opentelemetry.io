@@ -1,9 +1,10 @@
 ---
 title: 'Quickstart: instrument a Java service with OBI'
-menuTitle: Java quickstart
+linkTitle: Java quickstart
 description:
   Learn how to quickly set up and run OBI to instrument a Java service
 weight: 2
+cSpell:ignore: instrumentable
 ---
 
 ## 1. Run an instrumentable Java service

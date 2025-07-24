@@ -1,6 +1,6 @@
 ---
 title: OBI and Cilium compatibility
-menuTitle: Cilium compatibility
+linkTitle: Cilium compatibility
 description: Compatibility notes when running OBI alongside Cilium
 weight: 23
 ---
