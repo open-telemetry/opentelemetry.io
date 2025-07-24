@@ -4,6 +4,7 @@ description:
   支持多种流行的编程语言的 OpenTelemetry 代码插桩
 weight: 250
 aliases: [/docs/instrumentation]
+default_lang_commit: f35b3300574b428f94dfeeca970d93c5a6ddbf35
 redirects:
   - { from: /docs/instrumentation/*, to: ':splat' } # Only for `en`
   - { from: 'net/*', to: 'dotnet/:splat' }
