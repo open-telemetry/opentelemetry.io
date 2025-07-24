@@ -1,5 +1,5 @@
 ---
-title: 语言 APIs & SDKs
+title: 各种编程语言的 API & SDK
 description: 支持多种流行的编程语言的 OpenTelemetry 代码插桩
 weight: 250
 aliases: [/docs/instrumentation]
