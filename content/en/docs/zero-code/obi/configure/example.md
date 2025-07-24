@@ -23,7 +23,7 @@ ebpf:
   wakeup_len: 100
 
 otel_traces_export:
-  endpoint: https://otlp-gateway-prod-eu-west-0.grafana.net/otlp
+  endpoint: http://localhost:4318
 
 prometheus_export:
   port: 8999
