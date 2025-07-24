@@ -70,7 +70,7 @@ disrupt the TCP/IP context propagation, because the original packets are
 discarded and replayed downstream. Parsing incoming trace context information
 from OpenTelemetry SDK instrumented services still works.
 
-gRPC and HTTP2 are not supported at the moment.
+gRPC and HTTP/2 are not supported at the moment.
 
 This type of context propagation works for any programming language and doesn't
 require that OBI runs in `privileged` mode or has `CAP_SYS_ADMIN` granted. For

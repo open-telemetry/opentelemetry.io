@@ -7,8 +7,6 @@ description:
 weight: 1
 ---
 
-# OBI network metrics quickstart
-
 OBI can generate network metrics in any environment (physical host, virtual
 host, or container). It's recommended to use a Kubernetes environment, as OBI is
 able to decorate each metric with the metadata of the source and destination
@@ -128,7 +126,7 @@ kubectl logs daemonset/obi -n obi | head
 
 The output would be something like:
 
-```
+```log
 network_flow: obi.ip=172.18.0.2 iface= direction=255 src.address=10.244.0.4 dst.address=10.96.0.1
 ```
 

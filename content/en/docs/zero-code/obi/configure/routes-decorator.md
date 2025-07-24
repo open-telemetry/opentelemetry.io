@@ -1,19 +1,17 @@
 ---
-title: Configure Beyla routes decorator
+title: Configure OBI routes decorator
 menuTitle: Routes decorator
 description:
-  Configure the routes decorator component before Beyla sends data to the next
+  Configure the routes decorator component before OBI sends data to the next
   stage of the pipeline.
 weight: 50
 ---
-
-# Configure Beyla routes decorator
 
 You can configure the component under the `routes` section of your YAML
 configuration or with environment variables.
 
 You must configure this section in the YAML file. If you don't provide a
-`routes` section, Beyla creates a default routes pipeline stage and uses the
+`routes` section, OBI creates a default routes pipeline stage and uses the
 `heuristic` routes decorator.
 
 | YAML               | Description                                                                                                                   | Type            | Default   |
@@ -26,7 +24,7 @@ You must configure this section in the YAML file. If you don't provide a
 
 ## Patterns
 
-Beyla matches the provided URL path patterns and sets the `http.route`
+OBI matches the provided URL path patterns and sets the `http.route`
 trace/metric property. Use the `routes` property whenever possible to reduce the
 cardinality of generated metrics.
 
@@ -45,7 +43,7 @@ routes:
 Traces with these HTTP paths include the same `http.route='/user/{id}'`
 property:
 
-```
+```text
 /user/123
 /user/456
 ```
@@ -53,7 +51,7 @@ property:
 Traces with these HTTP paths include the same
 `http.route='/user/{id}'/basket/{product}` property:
 
-```
+```text
 /user/123/basket/1
 /user/456/basket/3
 ```
@@ -70,7 +68,7 @@ routes:
 Any traces with HTTP paths starting with `/user` (including `/user` itself)
 match the route `/user/*`. All of the following paths match as `/user/*`:
 
-```
+```text
 /user
 /user/123
 /user/123/basket/1
@@ -79,8 +77,8 @@ match the route `/user/*`. All of the following paths match as `/user/*`:
 
 ## Ignored patterns
 
-Beyla matches the provided URL path against the defined patterns and discards
-the trace and/or metric events if they match any of the `ignored_patterns`. The
+OBI matches the provided URL path against the defined patterns and discards the
+trace and/or metric events if they match any of the `ignored_patterns`. The
 format for the `ignored_patterns` field is identical to the `patterns` field.
 You can define the ignored patterns with or without any of the wildcard options.
 For example, if you define these ignored patterns:
@@ -139,7 +137,7 @@ Possible values for the `unmatched` property are:
 ## Wildcard char
 
 Use this property with `unmatched: heuristic` to choose what character the path
-components identified by the heuristic mode are replaced by. By default, Beyla
+components identified by the heuristic mode are replaced by. By default, OBI
 uses an asterisk `'*'`. The value should be quoted and must be a single
 character.
 
@@ -159,13 +157,13 @@ version:
 
 Both URL paths below:
 
-```
+```text
 document/d/CfMkAGbE_aivhFydEpaRafPuGWbmHfG/edit (no numbers in the ID)
 document/d/C2fMkAGb3E_aivhFyd5EpaRafP123uGWbmHfG/edit
 ```
 
 are converted to a low cardinality route (using the default `wildcard_char`):
 
-```
+```text
 document/d/*/edit
 ```

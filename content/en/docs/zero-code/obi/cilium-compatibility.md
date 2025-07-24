@@ -7,7 +7,7 @@ weight: 23
 
 # OBI and Cilium compatibility
 
-Cilium is an open-source security, networking, and observability platform that
+Cilium is an open source security, networking, and observability platform that
 uses eBPF to provide networking and security for Kubernetes clusters. In some
 cases, the eBPF programs both Cilium and OBI use can conflict with the ePBF
 programs OBI uses and lead to issues.
@@ -371,5 +371,4 @@ propagation similar to this:
 2025-01-17 21:42:18.11794218 (4.281525ms[4.281525ms]) HTTP 200 GET /tracemetoo [10.244.1.92 as go-service.default:37450]->[10.244.2.32 as ruby-service.default:8080] size:178B svc=[default/ruby-service ruby] traceparent=[00-14f07e11b5e57f14fd2da0541f0ddc2f-2770ac4619aa0042[319fb03373427a41]-01]
 2025-01-17 21:42:18.11794218 (5.391191ms[5.391191ms]) HTTPClient 200 GET /gotracemetoo [10.244.2.144 as nodejs-service.default:57814]->[10.96.134.167 as go-service.default:8080] size:256B svc=[default/nodejs-service nodejs] traceparent=[00-14f07e11b5e57f14fd2da0541f0ddc2f-202ee68205e4ef3b[9408610968fa20f8]-01]
 2025-01-17 21:42:18.11794218 (6.939027ms[6.939027ms]) HTTP 200 GET /traceme [127.0.0.1 as 127.0.0.1:44720]->[127.0.0.1 as 127.0.0.1.default:3000] size:86B svc=[default/nodejs-service nodejs] traceparent=[00-14f07e11b5e57f14fd2da0541f0ddc2f-9408610968fa20f8[0000000000000000]-01]
-
 ```

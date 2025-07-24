@@ -109,7 +109,7 @@ However, here is a list of factors that can influence the overall cardinality:
   RPC method name.
 - **Endpoints** is the count of server addresses and ports.
 - **ReturnCodes** is the number of possible results of the operation. Typically
-  Ok/Err in GRPC, or the HTTP status code.
+  Ok/Err in gRPC, or the HTTP status code.
 
 ### Example calculation
 
@@ -167,17 +167,17 @@ In this simple scenario, we can manually count more the maximum cardinality to
 
 | #   | Instance | Metric                          | Endpoint      | Operation  | Code |
 | --- | -------- | ------------------------------- | ------------- | ---------- | ---- |
-| 1   | Client   | `rpc.client.duration`           | Backend       | Add        | Ok   |
+| 1   | Client   | `rpc.client.duration`           | Backend       | Add        | OK   |
 | 2   | Client   | `rpc.client.duration`           | Backend       | Add        | Err  |
-| 3   | Client   | `rpc.client.duration`           | Backend       | List       | Ok   |
+| 3   | Client   | `rpc.client.duration`           | Backend       | List       | OK   |
 | 4   | Client   | `rpc.client.duration`           | Backend       | List       | Err  |
-| 5   | Client   | `rpc.client.duration`           | Backend       | Delete     | Ok   |
+| 5   | Client   | `rpc.client.duration`           | Backend       | Delete     | OK   |
 | 6   | Client   | `rpc.client.duration`           | Backend       | Delete     | Err  |
-| 7   | Backend  | `rpc.server.duration`           |               | Add        | Ok   |
+| 7   | Backend  | `rpc.server.duration`           |               | Add        | OK   |
 | 8   | Backend  | `rpc.server.duration`           |               | Add        | Err  |
-| 9   | Backend  | `rpc.server.duration`           |               | List       | Ok   |
+| 9   | Backend  | `rpc.server.duration`           |               | List       | OK   |
 | 10  | Backend  | `rpc.server.duration`           |               | List       | Err  |
-| 11  | Backend  | `rpc.server.duration`           |               | Delete     | Ok   |
+| 11  | Backend  | `rpc.server.duration`           |               | Delete     | OK   |
 | 12  | Backend  | `rpc.server.duration`           |               | Delete     | Err  |
 | 13  | Backend  | `http.client.request.duration`  | Identity Prov | PUT /login | 200  |
 | 14  | Backend  | `http.client.request.duration`  | Identity Prov | PUT /login | 401  |
@@ -185,11 +185,11 @@ In this simple scenario, we can manually count more the maximum cardinality to
 | 16  | Backend  | `http.client.request.body.size` | Identity Prov | PUT /login | 200  |
 | 17  | Backend  | `http.client.request.body.size` | Identity Prov | PUT /login | 401  |
 | 18  | Backend  | `http.client.request.body.size` | Identity Prov | PUT /login | 500  |
-| 19  | Backend  | `sql.client.duration`           | DB            | Insert     | Ok   |
+| 19  | Backend  | `sql.client.duration`           | DB            | Insert     | OK   |
 | 20  | Backend  | `sql.client.duration`           | DB            | Insert     | Err  |
-| 21  | Backend  | `sql.client.duration`           | DB            | Select     | Ok   |
+| 21  | Backend  | `sql.client.duration`           | DB            | Select     | OK   |
 | 22  | Backend  | `sql.client.duration`           | DB            | Select     | Err  |
-| 23  | Backend  | `sql.client.duration`           | DB            | Delete     | Ok   |
+| 23  | Backend  | `sql.client.duration`           | DB            | Delete     | OK   |
 | 24  | Backend  | `sql.client.duration`           | DB            | Delete     | Err  |
 
 <!-- vale Grafana.OK = YES -->
@@ -313,16 +313,16 @@ To minimize the effects of attributes influencing non-linearly in the final
 cardinality, we calculate cardinality numbers for all the metric types
 separately (HTTP, gRPC and Kafka).
 
-**Http metrics:**
+**HTTP metrics:**
 
 - 4 metrics: client, server, request size, and time
 - 15 histogram buckets on average
-- Known operations: 75, measured from a running OTEL Demo with the PromQL query:
+- Known operations: 75, measured from a running OTel Demo with the PromQL query:
   `group by (http_request_method, http_route)({__name__=~"http_.*"})`
-- 26 endpoints, measured from a running OTEL Demo with the PromQL query:
+- 26 endpoints, measured from a running OTel Demo with the PromQL query:
   `group by (server_address, server_port)({__name__=~"http_.*"})`
 - 6 response status codes: 200, 301, 308, 403, 408 and 504, extracted from the
-  running OTEL demo
+  running OTel demo
 
 The total, maximum calculated limit for HTTP metrics is:
 

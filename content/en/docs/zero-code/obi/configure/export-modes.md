@@ -1,17 +1,14 @@
 ---
 title: Configure OBI export modes
 menuTitle: Export modes
-description:
-  Configure OBI to export data directly to an OTLP endpoint or through Alloy.
+description: Configure OBI to export data directly to an OTLP endpoint
 weight: 1
 ---
 
-# Configure Beyla export modes
+In Direct mode OBI pushes metrics and traces directly to a remote endpoint using
+the OpenTelemetry protocol (OTLP).
 
-In Direct mode Beyla pushes metrics and traces directly to a remote endpoint
-using the OpenTelemetry protocol (OTLP).
-
-Beyla can also expose a Prometheus HTTP endpoint ready to scrape, for example in
+OBI can also expose a Prometheus HTTP endpoint ready to scrape, for example in
 **pull** mode.
 
 To use Direct mode requires configuration with authentication credentials. Set
@@ -23,15 +20,14 @@ the OTLP endpoint authentication credentials with these environment variables:
 To run in Direct mode using the Prometheus scrape endpoint, see the
 [configuration documentation](../options/).
 
-### Configure and run Beyla
+### Configure and run OBI
 
-This tutorial assumes Beyla and OTEL Collector are running natively on the same
+This tutorial assumes OBI and OTel Collector are running natively on the same
 host, so there is no need to secure the traffic nor provide authentication in
-the OTEL Collector OTLP receiver.
+the OTel Collector OTLP receiver.
 
 Install [OpenTelemetry eBPF Instrumentation](../../setup/) and download the
-example
-[configuration file](https://github.com/grafana/beyla/blob/main/docs/sources/configure/resources/instrumenter-config.yml).
+example [configuration file](./resources/instrumenter-config.yml).
 
 First, specify the executable to instrument. For a service executable running on
 port `443`, add the `open_port` property to the YAML document:
@@ -42,7 +38,7 @@ discovery:
     - open_ports: 443
 ```
 
-Next, specify where the traces and the metrics are sent. If the OTEL collector
+Next, specify where the traces and the metrics are sent. If the OTel collector
 is running on the local host, it uses port `4318`:
 
 ```yaml
@@ -55,14 +51,14 @@ otel_traces_export:
 You can specify a combination of `otel_metrics_export` and `otel_traces_export`
 properties to export metrics, traces, or both.
 
-Run Beyla with a named configuration file:
+Run OBI with a named configuration file:
 
-```
+```shell
 beyla -config instrument-config.yml
 ```
 
 or
 
-```
-BEYLA_CONFIG_PATH=instrument-config.yml beyla
+```shell
+OTEL_EBF_CONFIG_PATH=instrument-config.yml beyla
 ```

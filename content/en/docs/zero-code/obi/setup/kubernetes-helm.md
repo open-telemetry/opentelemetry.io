@@ -5,12 +5,13 @@ description: Learn how to deploy OBI as a Helm chart in Kubernetes.
 weight: 3
 ---
 
-# Deploy OBI in Kubernetes with Helm
+{{% alert title="Note" %}}
 
-{{% alert type="note" %}} For more details about the diverse Helm configuration
-options, check out the
+For more details about the diverse Helm configuration options, check out the
 [OBI Helm chart options](https://github.com/grafana/beyla/blob/main/charts/beyla/README.md)
-document. {{% /alert %}}
+document.
+
+{{% /alert %}}
 
 Contents:
 
@@ -61,7 +62,7 @@ For example, create a `helm-beyla.yml` file with a custom configuration:
 ```yaml
 config:
   data:
-    # Contents of the actual Beyla configuration file
+    # Contents of the actual OBI configuration file
     discovery:
       instrument:
         - k8s_namespace: demo
@@ -86,11 +87,11 @@ or, if the OBI chart was previously deployed:
 helm upgrade beyla grafana/beyla -f helm-beyla.yml
 ```
 
-## Configuring Beyla metadata
+## Configuring OBI metadata
 
 If OBI exports the data using the Prometheus exporter, you might need to
 override the OBI Pod annotations to let it be discoverable by your Prometheus
-scraper. You can add the following section to the example `helm-beyla.yml` file:
+scraper. You can add the following section to the example `helm-obi.yml` file:
 
 ```yaml
 podAnnotations:

@@ -10,7 +10,7 @@ weight: 21
 The following table describes the exported metrics in both OpenTelemetry and
 Prometheus format.
 
-| Family              | Name (OTEL)                      | Name (Prometheus)                      | Type          | Unit    | Description                                                                                                                          |
+| Family              | Name (OTel)                      | Name (Prometheus)                      | Type          | Unit    | Description                                                                                                                          |
 | ------------------- | -------------------------------- | -------------------------------------- | ------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | Application         | `http.client.request.duration`   | `http_client_request_duration_seconds` | Histogram     | seconds | Duration of HTTP service calls from the client side                                                                                  |
 | Application         | `http.client.request.body.size`  | `http_client_request_body_size_bytes`  | Histogram     | bytes   | Size of the HTTP request body as sent by the client                                                                                  |
@@ -18,7 +18,7 @@ Prometheus format.
 | Application         | `http.server.request.duration`   | `http_server_request_duration_seconds` | Histogram     | seconds | Duration of HTTP service calls from the server side                                                                                  |
 | Application         | `http.server.request.body.size`  | `http_server_request_body_size_bytes`  | Histogram     | bytes   | Size of the HTTP request body as received at the server side                                                                         |
 | Application         | `http.server.response.body.size` | `http_server_response_body_size_bytes` | Histogram     | bytes   | Size of the HTTP response body as received at the server side                                                                        |
-| Application         | `rpc.client.duration`            | `rpc_client_duration_seconds`          | Histogram     | seconds | Duration of GRPC service calls from the client side                                                                                  |
+| Application         | `rpc.client.duration`            | `rpc_client_duration_seconds`          | Histogram     | seconds | Duration of gRPC service calls from the client side                                                                                  |
 | Application         | `rpc.server.duration`            | `rpc_server_duration_seconds`          | Histogram     | seconds | Duration of RPC service calls from the server side                                                                                   |
 | Application         | `sql.client.duration`            | `sql_client_duration_seconds`          | Histogram     | seconds | Duration of SQL client operations (Experimental)                                                                                     |
 | Application         | `redis.client.duration`          | `redis_client_duration_seconds`        | Histogram     | seconds | Duration of Redis client operations (Experimental)                                                                                   |
@@ -41,7 +41,7 @@ option.
 
 ## Attributes of Beyla metrics
 
-For the sake of brevity, the metrics and attributes in this list use the OTEL
+For the sake of brevity, the metrics and attributes in this list use the OTel
 `dot.notation`. When using the Prometheus exporter, the metrics use
 `underscore_notation`.
 
@@ -136,10 +136,10 @@ in Prometheus Format.
 | Name                                    | Type       | Description                                                                              |
 | --------------------------------------- | ---------- | ---------------------------------------------------------------------------------------- |
 | `beyla_ebpf_tracer_flushes`             | Histogram  | Length of the groups of traces flushed from the eBPF tracer to the next pipeline stage   |
-| `beyla_otel_metric_exports_total`       | Counter    | Length of the metric batches submitted to the remote OTEL collector                      |
-| `beyla_otel_metric_export_errors_total` | CounterVec | Error count on each failed OTEL metric export, by error type                             |
-| `beyla_otel_trace_exports_total`        | Counter    | Length of the trace batches submitted to the remote OTEL collector                       |
-| `beyla_otel_trace_export_errors_total`  | CounterVec | Error count on each failed OTEL trace export, by error type                              |
+| `beyla_otel_metric_exports_total`       | Counter    | Length of the metric batches submitted to the remote OTel collector                      |
+| `beyla_otel_metric_export_errors_total` | CounterVec | Error count on each failed OTel metric export, by error type                             |
+| `beyla_otel_trace_exports_total`        | Counter    | Length of the trace batches submitted to the remote OTel collector                       |
+| `beyla_otel_trace_export_errors_total`  | CounterVec | Error count on each failed OTel trace export, by error type                              |
 | `beyla_prometheus_http_requests_total`  | CounterVec | Number of requests towards the Prometheus Scrape endpoint, faceted by HTTP port and path |
 | `beyla_instrumented_processes`          | GaugeVec   | Instrumented processes by Beyla, with process name                                       |
 | `beyla_internal_build_info`             | GaugeVec   | Version information of the Beyla binary, including the build time and commit hash        |

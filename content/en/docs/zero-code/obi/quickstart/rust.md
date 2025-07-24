@@ -6,85 +6,64 @@ description:
 weight: 2
 ---
 
-# Quickstart: instrument a Rust service with Beyla
-
 ## 1. Run an instrumentable Rust service
 
 Run an instrumentable Rust service or download and run a simple example
 [Rust HTTP service](https://github.com/grafana/beyla/tree/main/examples/quickstart/rust).
 
-```
+```shell
 curl -OL https://raw.githubusercontent.com/grafana/beyla/main/examples/quickstart/rust/quickstart.rs
 rustc quickstart.rs && ./quickstart
 ```
 
-## 2. Download Beyla
+## 2. Download OBI
 
-Download the latest Beyla executable from the
-[Beyla releases page](https://github.com/grafana/beyla/releases). Uncompress and
-copy the Beyla executable to any location in your `$PATH`.
+Download the latest OBI executable from the
+[OBI releases page](https://github.com/grafana/beyla/releases). Uncompress and
+copy the OBI executable to any location in your `$PATH`.
 
-## 3. (Optional) get Grafana Cloud credentials
+## 4. Run OBI with minimal configuration
 
-Beyla can export metrics and traces to any OpenTelemetry endpoint, as well as
-exposing metrics as a Prometheus endpoint. However, we recommend using the
-OpenTelemetry endpoint in Grafana Cloud. You can get a
-[Free Grafana Cloud Account at Grafana's website](/pricing/).
-
-From the Grafana Cloud Portal, look for the **OpenTelemetry** box and click
-**Configure**.
-
-![OpenTelemetry Grafana Cloud portal](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/otel-cloud-portal-box.png)
-
-Under **Password / API token** click **Generate now** and follow the
-instructions to create a default API token.
-
-The **Environment Variables** will be populated with a set of standard
-OpenTelemetry environment variables which will provide the connection endpoint
-and credentials information for Beyla.
-
-![OTLP connection headers](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/otlp-connection-headers.png)
-
-Copy the **Environment Variables** and keep it for the next step.
-
-## 4. Run Beyla with minimal configuration
-
-To run Beyla, first set the following environment variables:
+To run OBI, first set the following environment variables:
 
 - The `OTEL_EXPORTER_OTLP_PROTOCOL`, `OTEL_EXPORTER_OTLP_ENDPOINT` and
   `OTEL_EXPORTER_OTLP_HEADERS` variables copied from the previous step.
-- `BEYLA_OPEN_PORT`: the port the instrumented service is using (for example,
-  `80` or `443`). If using the example service in the first section of this
-  guide, set this variable to `8080`.
+- `OTEL_EBPF_OPEN_PORT`: the port the instrumented service is using (for
+  example, `80` or `443`). If using the example service in the first section of
+  this guide, set this variable to `8080`.
 
-To facilitate local testing, set the `BEYLA_TRACE_PRINTER=text` environment
-variable. When this option is set, Beyla prints traces in text format to the
+To facilitate local testing, set the `OTEL_EBPF_TRACE_PRINTER=text` environment
+variable. When this option is set, OBI prints traces in text format to the
 standard output.
 
-Notice: Beyla requires administrative (sudo) privileges, or at least it needs to
-be granted the `CAP_SYS_ADMIN` capability.
+{{% alert title="Notice" %}}
+
+OBI requires administrative (sudo) privileges, or at least it needs to be
+granted the `CAP_SYS_ADMIN` capability.
+
+{{% /alert %}}
 
 ```sh
-export BEYLA_OPEN_PORT=8080
-export BEYLA_TRACE_PRINTER=text
+export OTEL_EBPF_OPEN_PORT=8080
+export OTEL_EBPF_TRACE_PRINTER=text
 export OTEL_EXPORTER_OTLP_PROTOCOL="http/protobuf"
-export OTEL_EXPORTER_OTLP_ENDPOINT="https://otlp-gateway-prod-eu-west-0.grafana.net/otlp"
+export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318"
 export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Basic ...your-encoded-credentials..."
 sudo -E beyla
 ```
 
 ## 5. Test the service
 
-With Beyla and the service running, make HTTP requests to the instrumented
+With OBI and the service running, make HTTP requests to the instrumented
 service:
 
-```
+```shell
 curl http://localhost:8080/foo
 ```
 
-Beyla should output traces to the standard output similar to this:
+OBI should output traces to the standard output similar to this:
 
-```
+```shell
 2024-01-09 10:31:33.19103133 (3.254486ms[3.254486ms]) 200 GET /foo [127.0.0.1]->[127.0.0.1:8080]
 size:80B svc=[{quickstart  rust lima-ubuntu-lts-5074}] traceparent=[00-46214bd23716280eef43cf798dbe5522-0000000000000000-01]
 ```
@@ -102,22 +81,24 @@ The above trace shows:
 - `traceparent` as received by the parent request, or a new random one if the
   parent request didn't specify it
 
-After a few minutes traces will appear in Grafana Cloud. For example, in the
-traces explorer:
+After a few minutes traces will appear in the logs of your OpenTelemetry
+Collector:
 
-![Beyla traces explorer](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/trace-generic.png)
+```text
+
+```
 
 ## 6. Configure routing
 
 The exposed span name in Grafana Cloud is a generic `GET /**`, where it should
 say something like `GET /foo` (the path of the test request URL).
 
-Beyla groups any unknown URL path as `/**` to avoid unexpected cardinality
+OBI groups any unknown URL path as `/**` to avoid unexpected cardinality
 explosions.
 
-Configure routing to tell Beyla about expected routes.
+Configure routing to tell OBI about expected routes.
 
-For this quickstart, let Beyla to heuristically group the routes.
+For this quickstart, let OBI to heuristically group the routes.
 
 First, create a `config.yml` file with the following content:
 
@@ -126,7 +107,7 @@ routes:
   unmatched: heuristic
 ```
 
-Then, run Beyla with the `-config` argument (or use the `BEYLA_CONFIG_PATH`
+Then, run OBI with the `-config` argument (or use the `OTEL_EBPF_CONFIG_PATH`
 environment variable instead):
 
 ```
@@ -149,6 +130,6 @@ route while `/user/1234` and `/user/5678` were grouped into the `/user/*` route.
 ## Next steps
 
 - Get more details of the different
-  [Beyla configuration options](../../configure/).
-- Learn how to deploy Beyla as a [Docker container](../../setup/docker/) or as a
+  [OBI configuration options](../../configure/).
+- Learn how to deploy OBI as a [Docker container](../../setup/docker/) or as a
   [Kubernetes DaemonSet or sidecar](../../setup/kubernetes/).

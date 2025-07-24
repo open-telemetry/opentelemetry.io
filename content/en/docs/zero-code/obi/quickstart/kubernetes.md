@@ -7,33 +7,31 @@ description:
 weight: 99
 ---
 
-# Beyla and Kubernetes quickstart
-
-Kubernetes is fully integrated into the Beyla operation mode.
+Kubernetes is fully integrated into the OBI operation mode.
 
 On one side, metrics and traces can be decorated with the metadata of the
 Kubernetes entities running the automatically instrumented services.
 
-On the other side, DaemonSet has become the preferred deployment mode for Beyla:
+On the other side, DaemonSet has become the preferred deployment mode for OBI:
 thanks to the versatility of the new service selectors, a user can precisely
 define which services need to be instrumented and which don't. A single instance
-of Beyla will be able to instrument the selected group of services within a
-single Kubernetes node.
+of OBI will be able to instrument the selected group of services within a single
+Kubernetes node.
 
-## Beyla service selectors
+## OBI service selectors
 
-A service selector is a set of properties that let Beyla to query which
-processes need to be instrumented.
+A service selector is a set of properties that let OBI to query which processes
+need to be instrumented.
 
-When Beyla is deployed as a regular operating system process that instrument
-other processes, the unique service selectors are the network port where the
+When OBI is deployed as a regular operating system process that instrument other
+processes, the unique service selectors are the network port where the
 instrumented process should be listening to (can be specified with the
-`BEYLA_OPEN_PORT` environment variable) or a
+`OTEL_EBPF_OPEN_PORT` environment variable) or a
 [Glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) to match against the
-executable filename of the process to instrument (`BEYLA_AUTO_TARGET_EXE`
+executable filename of the process to instrument (`OTEL_EBPF_AUTO_TARGET_EXE`
 environment variable).
 
-To select multiple groups of processes, the Beyla YAML configuration file format
+To select multiple groups of processes, the OBI YAML configuration file format
 provides a `discovery.instrument` section that accepts multiple selector groups:
 
 ```yaml
@@ -51,9 +49,9 @@ discovery:
 
 The above criteria are insufficient for Kubernetes pods where the ports are
 ephemeral and internal to the pods. Also, pods are a level of abstraction that
-should hide details such as the name of their executables. For that reason,
-Beyla makes it possible to use Kubernetes attributes in the service
-instrumentation selection criteria. All of them accept a
+should hide details such as the name of their executables. For that reason, OBI
+makes it possible to use Kubernetes attributes in the service instrumentation
+selection criteria. All of them accept a
 [glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) as value:
 
 - `k8s_namespace`: only instrument applications in the namespace matching the
@@ -167,17 +165,16 @@ website.
 
 ### 2. Create `beyla` namespace
 
-Before configuring and deploying Beyla, let's create a `beyla` namespace. We
-will group there all the permissions, configurations and deployments related to
-it:
+Before configuring and deploying OBI, let's create a `beyla` namespace. We will
+group there all the permissions, configurations and deployments related to it:
 
-```
+```shell
 kubectl create namespace beyla
 ```
 
 ### 3. Get Grafana Cloud credentials
 
-Beyla can export metrics and traces to any OpenTelemetry endpoint, as well as
+OBI can export metrics and traces to any OpenTelemetry endpoint, as well as
 exposing metrics as a Prometheus endpoint. However, we recommend using the
 OpenTelemetry endpoint in Grafana Cloud. You can get a
 [Free Grafana Cloud Account at Grafana's website](/pricing/).
@@ -192,7 +189,7 @@ instructions to create a default API token.
 
 The **Environment Variables** will be populated with a set of standard
 OpenTelemetry environment variables which will provide the connection endpoint
-and credentials information for Beyla.
+and credentials information for OBI.
 
 ![OTLP connection headers](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/otlp-connection-headers.png)
 
@@ -215,9 +212,9 @@ stringData:
 
 ### 3. Configure and run Beyla
 
-Next, you need to provide Beyla with permissions to watch and inspect the
-metadata of the diverse Kubernetes resources that Beyla's discovery mechanism
-requires. You must create the following YAML file and apply it:
+Next, you need to provide OBI with permissions to watch and inspect the metadata
+of the diverse Kubernetes resources that OBI's discovery mechanism requires. You
+must create the following YAML file and apply it:
 
 ```yaml
 apiVersion: v1
@@ -252,7 +249,7 @@ roleRef:
   name: beyla
 ```
 
-And now, deploy Beyla by creating the following Kubernetes entities:
+And now, deploy OBI by creating the following Kubernetes entities:
 
 - A `ConfigMap` storing the `beyla-config.yml` Beyla configuration file, which
   defines the service discovery criteria. To verify that Beyla is able to
@@ -260,7 +257,7 @@ And now, deploy Beyla by creating the following Kubernetes entities:
   executable, Beyla is configured to select ONLY the `docs` Apache web server.
 - A Beyla `DaemonSet` providing the Beyla pod and its configuration:
   - Loads the `beyla-config.yml` file from the `ConfigMap`, as specified in the
-    `BEYLA_CONFIG_PATH` environment variable.
+    `OTEL_EBPF_CONFIG_PATH` environment variable.
   - References to the `grafana-secrets` values for the endpoint and credentials.
   - Uses the `beyla` `ServiceAccount` to get all the permissions.
 
@@ -317,7 +314,7 @@ spec:
             - mountPath: /var/run/beyla
               name: var-run-beyla
           env:
-            - name: BEYLA_CONFIG_PATH
+            - name: OTEL_EBPF_CONFIG_PATH
               value: '/config/beyla-config.yml'
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               valueFrom:
@@ -339,11 +336,11 @@ spec:
 
 Also notice:
 
-- To run in DaemonSet mode, Beyla requires to have access to all the processes
-  in the node. Then the Beyla Pod requires to run with `hostPID: true`.
-- The Beyla container needs to run with `privileged: true`, as it requires to
+- To run in DaemonSet mode, OBI requires to have access to all the processes in
+  the node. Then the OBI Pod requires to run with `hostPID: true`.
+- The OBI container needs to run with `privileged: true`, as it requires to
   perform privileged actions such as loading BPF programs and creating BPF maps.
-  For running Beyla as `unprivileged` container, i.e. without the
+  For running OBI as `unprivileged` container, i.e. without the
   `privileged: true` option, visit the
   [Deploy Beyla unprivileged](../../setup/kubernetes/#deploy-beyla-unprivileged)
   guide.
@@ -376,7 +373,7 @@ the form empty, and click **Run query**:
 
 This will show the traces for the `docs` instance (port 8081). You might see
 traces from your own services, but shouldn't see traces from the `website`
-service, as it has not been instrumented by Beyla.
+service, as it has not been instrumented by OBI.
 
 ![Grafana Cloud list of traces](https://grafana.com/media/docs/grafana-cloud/beyla/tutorial/k8s/tut-traces-list.png)
 
@@ -387,5 +384,5 @@ the metadata of the Kubernetes Pod running the instrumented service:
 
 ## Links
 
-- [Documentation: Beyla configuration options](../../configure/options/)
-- [Documentation: run Beyla as Kubernetes DaemonSet](../../setup/kubernetes/)
+- [Documentation: OBI configuration options](../../configure/options/)
+- [Documentation: run OBI as Kubernetes DaemonSet](../../setup/kubernetes/)

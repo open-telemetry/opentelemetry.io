@@ -7,8 +7,6 @@ description:
 weight: 2
 ---
 
-# Run OBI as a Docker container
-
 OBI can run a standalone Docker container that can instrument a process running
 in another container.
 
@@ -28,7 +26,7 @@ The OBI container must be configured in following way:
 
 ## Docker CLI example
 
-For this example you need a container running an HTTP/S or GRPC service. If you
+For this example you need a container running an HTTP/S or gRPC service. If you
 don't have one, you can use this
 [simple blog engine service written in Go](http://macias.info):
 
@@ -44,8 +42,8 @@ Set environment variables to configure OBI to print to stdout and listen to a
 port (container) to inspect the executable:
 
 ```sh
-export BEYLA_TRACE_PRINTER=text
-export BEYLA_OPEN_PORT=8443
+export OTEL_EBPF_TRACE_PRINTER=text
+export OTEL_EBPF_OPEN_PORT=8443
 ```
 
 OBI needs to be run with the following settings:
@@ -56,8 +54,8 @@ OBI needs to be run with the following settings:
 
 ```sh
 docker run --rm \
-  -e BEYLA_OPEN_PORT=8443 \
-  -e BEYLA_TRACE_PRINTER=text \
+  -e OTEL_EBPF_OPEN_PORT=8443 \
+  -e OTEL_EBPF_TRACE_PRINTER=text \
   --pid="container:goblog" \
   --privileged \
   grafana/beyla:latest

@@ -5,9 +5,7 @@ description: Configure how to sample OpenTelemetry traces.
 weight: 70
 ---
 
-# Configure Beyla OpenTelemetry trace sampling
-
-Beyla accepts the standard OpenTelemetry environment variables to configure the
+OBI accepts the standard OpenTelemetry environment variables to configure the
 sampling ratio of traces.
 
 You can also configure sampling under the `sampler` YAML subsection of the

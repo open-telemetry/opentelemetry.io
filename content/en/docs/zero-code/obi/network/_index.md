@@ -3,9 +3,8 @@ title: Network metrics
 menuTitle: Network
 description: Configuring OBI to observe point-to-point network metrics.
 weight: 8
+cSpell:ignore: replicaset statefulset
 ---
-
-# Network metrics
 
 OpenTelemetry eBPF Instrumentation can be configured to provide network metrics
 between different endpoints. For example, between physical nodes, containers,
@@ -108,7 +107,7 @@ network:
 
 Then, the equivalent Prometheus metric would be:
 
-```
+```text
 obi_network_flow_bytes:
   k8s_src_owner_name="frontend"
   k8s_src_owner_type="deployment"
@@ -143,7 +142,7 @@ network:
 
 Then, the equivalent Prometheus metric would be:
 
-```
+```text
 obi_network_flow_bytes:
   src_cidr="cluster-internal"
   dst_cidr="private"

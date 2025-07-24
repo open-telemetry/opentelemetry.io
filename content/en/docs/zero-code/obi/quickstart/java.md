@@ -24,27 +24,6 @@ Download the latest Beyla executable from the
 [Beyla releases page](https://github.com/grafana/beyla/releases). Uncompress and
 copy the Beyla executable to any location in your `$PATH`.
 
-## 3. (Optional) get Grafana Cloud credentials
-
-Beyla can export metrics and traces to any OpenTelemetry endpoint, as well as
-exposing metrics as a Prometheus endpoint. However, we recommend using the
-OpenTelemetry endpoint in Grafana Cloud. You can get a
-[Free Grafana Cloud Account at Grafana's website](/pricing/).
-
-From the Grafana Cloud Portal, look for the **OpenTelemetry** box and click
-**Configure**.
-
-![OpenTelemetry Grafana Cloud portal](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/otel-cloud-portal-box.png)
-
-Under **Password / API token** click **Generate now** and follow the
-instructions to create a default API token.
-
-The **Environment Variables** will be populated with a set of standard
-OpenTelemetry environment variables which will provide the connection endpoint
-and credentials information for Beyla.
-
-![OTLP connection headers](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/otlp-connection-headers.png)
-
 Copy the **Environment Variables** and keep it for the next step.
 
 ## 4. Run Beyla with minimal configuration

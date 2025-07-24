@@ -6,8 +6,6 @@ description:
 weight: 2
 ---
 
-# Quickstart: instrument a Python service with Beyla
-
 ## 1. Run an instrumentable Python service
 
 Run an instrumentable Python service or download and run a simple example
@@ -18,34 +16,11 @@ curl -OL https://raw.githubusercontent.com/grafana/beyla/main/examples/quickstar
 python3 quickstart.py
 ```
 
-## 2. Download Beyla
+## 2. Download OBI
 
-Download the latest Beyla executable from the
-[Beyla releases page](https://github.com/grafana/beyla/releases). Uncompress and
-copy the Beyla executable to any location in your `$PATH`.
-
-## 3. (Optional) get Grafana Cloud credentials
-
-Beyla can export metrics and traces to any OpenTelemetry endpoint, as well as
-exposing metrics as a Prometheus endpoint. However, we recommend using the
-OpenTelemetry endpoint in Grafana Cloud. You can get a
-[Free Grafana Cloud Account at Grafana's website](/pricing/).
-
-From the Grafana Cloud Portal, look for the **OpenTelemetry** box and click
-**Configure**.
-
-![OpenTelemetry Grafana Cloud portal](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/otel-cloud-portal-box.png)
-
-Under **Password / API token** click **Generate now** and follow the
-instructions to create a default API token.
-
-The **Environment Variables** will be populated with a set of standard
-OpenTelemetry environment variables which will provide the connection endpoint
-and credentials information for Beyla.
-
-![OTLP connection headers](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/otlp-connection-headers.png)
-
-Copy the **Environment Variables** and keep it for the next step.
+Download the latest OBI executable from the
+[OBI releases page](https://github.com/grafana/beyla/releases). Uncompress and
+copy the OBI executable to any location in your `$PATH`.
 
 ## 4. Run Beyla with minimal configuration
 
@@ -61,12 +36,12 @@ To facilitate local testing, set the `BEYLA_TRACE_PRINTER=text` environment
 variable. When this option is set, Beyla prints traces in text format to the
 standard output.
 
-Beyla automatically reports the name of the process executable as service name:
+OBI automatically reports the name of the process executable as service name:
 `python3`. To override it, refer to the
 [override service name and namespace](../configure/service-discovery#override-service-name-and-namespace)
 documentation section.
 
-Notice: Beyla requires administrative (sudo) privileges, or at least it needs to
+Notice: OBI requires administrative (sudo) privileges, or at least it needs to
 be granted the `CAP_SYS_ADMIN` capability.
 
 ```sh
@@ -80,14 +55,14 @@ sudo -E beyla
 
 ## 5. Test the service
 
-With Beyla and the service running, make HTTP requests to the instrumented
+With OBI and the service running, make HTTP requests to the instrumented
 service:
 
 ```
 curl http://localhost:8080/foo
 ```
 
-Beyla should output traces to the standard output similar to this:
+OBI should output traces to the standard output similar to this:
 
 ```
 2024-01-09 10:31:33.19103133 (3.254486ms[3.254486ms]) 200 GET /foo [127.0.0.1]->[127.0.0.1:8080]
@@ -110,19 +85,19 @@ The above trace shows:
 After a few minutes traces will appear in Grafana Cloud. For example, in the
 traces explorer:
 
-![Beyla traces explorer](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/trace-generic.png)
+![OBI traces explorer](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/trace-generic.png)
 
 ## 6. Configure routing
 
 The exposed span name in Grafana Cloud is a generic `GET /**`, where it should
 say something like `GET /foo` (the path of the test request URL).
 
-Beyla groups any unknown URL path as `/**` to avoid unexpected cardinality
+OBI groups any unknown URL path as `/**` to avoid unexpected cardinality
 explosions.
 
-Configure routing to tell Beyla about expected routes.
+Configure routing to tell OBI about expected routes.
 
-For this quickstart, let Beyla to heuristically group the routes.
+For this quickstart, let OBI to heuristically group the routes.
 
 First, create a `config.yml` file with the following content:
 
@@ -131,7 +106,7 @@ routes:
   unmatched: heuristic
 ```
 
-Then, run Beyla with the `-config` argument (or use the `BEYLA_CONFIG_PATH`
+Then, run OBI with the `-config` argument (or use the `BEYLA_CONFIG_PATH`
 environment variable instead):
 
 ```
@@ -154,6 +129,6 @@ route while `/user/1234` and `/user/5678` were grouped into the `/user/*` route.
 ## Next steps
 
 - Get more details of the different
-  [Beyla configuration options](../../configure/).
-- Learn how to deploy Beyla as a [Docker container](../../setup/docker/) or as a
+  [OBI configuration options](../../configure/).
+- Learn how to deploy OBI as a [Docker container](../../setup/docker/) or as a
   [Kubernetes DaemonSet or sidecar](../../setup/kubernetes/).

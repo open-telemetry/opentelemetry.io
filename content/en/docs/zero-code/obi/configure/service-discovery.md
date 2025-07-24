@@ -7,26 +7,24 @@ description:
 weight: 20
 ---
 
-# Configure OBI service discovery
+The `OTEL_EBPF_AUTO_TARGET_EXE` and `OTEL_EBPF_OPEN_PORT` are environment
+variables that make it easier to configure OBI to instrument a single service or
+a group of related services.
 
-The `BEYLA_AUTO_TARGET_EXE` and `BEYLA_OPEN_PORT` are environment variables that
-make it easier to configure Beyla to instrument a single service or a group of
-related services.
-
-In some scenarios, Beyla instruments many services. For example, as a
+In some scenarios, OBI instruments many services. For example, as a
 [Kubernetes DaemonSet](../../setup/kubernetes/) that instruments all the
 services in a node. The `discovery` YAML section lets you specify more granular
-selection criteria for the services Beyla can instrument.
+selection criteria for the services OBI can instrument.
 
-| YAML<br>environment variable                                                                                 | Description                                                                                                                                                                                                                                                                                                | Type            | Default                                                                                                                                                       |
-| ------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `instrument`                                                                                                 | Specify different selection criteria for different services, and override their reported name or namespace. Refer to the [discovery services](#discovery-services) section for details. .                                                                                                                  | list of objects | (unset)                                                                                                                                                       |
-| `survey`                                                                                                     | specifying different selection criteria for Beyla survey mode. Refer to the [survey mode](#survey-mode) section for details.                                                                                                                                                                               | List of objects | (unset)                                                                                                                                                       |
-| `exclude_instrument`                                                                                         | Specify selection criteria for excluding services from being instrumented. Useful for avoiding instrumentation of services typically found in observability environments. Refer to the [exclude services from instrumentation](#exclude-services-from-instrumentation) section for details. .              | list of objects | (unset)                                                                                                                                                       |
-| `default_exclude_instrument`                                                                                 | Disables instrumentation of Beyla itself, Grafana Alloy, and the OpenTelemetry Collector. Set to empty to allow Beyla to instrument itself and these other components. Refer to the [default exclude services from instrumentation](#default-exclude-services-from-instrumentation) section for details. . | list of objects | Path: `{*beyla,*alloy,*prometheus-config-reloader,*ebpf-instrument,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}` and certain Kubernetes system namespaces |
-| `skip_go_specific_tracers`<br>`BEYLA_SKIP_GO_SPECIFIC_TRACERS`                                               | Disables the detection of Go specifics when the **ebpf** tracer inspects executables to be instrumented. The tracer falls back to using generic instrumentation, which is generally less efficient. Refer to the [skip go specific tracers](#skip-go-specific-tracers) section for details. .              | boolean         | false                                                                                                                                                         |
-| `exclude_otel_instrumented_services`<br>`BEYLA_EXCLUDE_OTEL_INSTRUMENTED_SERVICES`                           | Disables Beyla instrumentation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                                 | boolean         | true                                                                                                                                                          |
-| `exclude_otel_instrumented_services_span_metrics`<br>`BEYLA_EXCLUDE_OTEL_INSTRUMENTED_SERVICES_SPAN_METRICS` | Disables Beyla span metric/service graph metric generation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                     | boolean         | false                                                                                                                                                         |
+| YAML<br>environment variable                                                                                 | Description                                                                                                                                                                                                                                                                                            | Type            | Default                                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `instrument`                                                                                                 | Specify different selection criteria for different services, and override their reported name or namespace. Refer to the [discovery services](#discovery-services) section for details. .                                                                                                              | list of objects | (unset)                                                                                                                                                       |
+| `survey`                                                                                                     | specifying different selection criteria for OBI survey mode. Refer to the [survey mode](#survey-mode) section for details.                                                                                                                                                                             | List of objects | (unset)                                                                                                                                                       |
+| `exclude_instrument`                                                                                         | Specify selection criteria for excluding services from being instrumented. Useful for avoiding instrumentation of services typically found in observability environments. Refer to the [exclude services from instrumentation](#exclude-services-from-instrumentation) section for details. .          | list of objects | (unset)                                                                                                                                                       |
+| `default_exclude_instrument`                                                                                 | Disables instrumentation of OBI itself, Grafana Alloy, and the OpenTelemetry Collector. Set to empty to allow OBI to instrument itself and these other components. Refer to the [default exclude services from instrumentation](#default-exclude-services-from-instrumentation) section for details. . | list of objects | Path: `{*beyla,*alloy,*prometheus-config-reloader,*ebpf-instrument,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}` and certain Kubernetes system namespaces |
+| `skip_go_specific_tracers`<br>`BEYLA_SKIP_GO_SPECIFIC_TRACERS`                                               | Disables the detection of Go specifics when the **eBPF** tracer inspects executables to be instrumented. The tracer falls back to using generic instrumentation, which is generally less efficient. Refer to the [skip go specific tracers](#skip-go-specific-tracers) section for details. .          | boolean         | false                                                                                                                                                         |
+| `exclude_otel_instrumented_services`<br>`BEYLA_EXCLUDE_OTEL_INSTRUMENTED_SERVICES`                           | Disables OBI instrumentation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                               | boolean         | true                                                                                                                                                          |
+| `exclude_otel_instrumented_services_span_metrics`<br>`BEYLA_EXCLUDE_OTEL_INSTRUMENTED_SERVICES_SPAN_METRICS` | Disables OBI span metric/service graph metric generation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                   | boolean         | false                                                                                                                                                         |
 
 ## Discovery services
 
@@ -52,8 +50,8 @@ service type.
 
 ### Name
 
-Defines a name for the matching instrumented service. Beyla uses it to populate
-the `service.name` OTEL property and the `service_name` Prometheus property in
+Defines a name for the matching instrumented service. OBI uses it to populate
+the `service.name` OTel property and the `service_name` Prometheus property in
 the exported metrics and traces.
 
 This option is deprecated, as multiple matches for the same `instrument` entry
@@ -62,7 +60,7 @@ mean multiple services share the same name. Refer to the
 section to enable automatic configuration of service name and namespace from
 diverse metadata sources.
 
-If you don't set this property, Beyla uses the following properties, in order of
+If you don't set this property, OBI uses the following properties, in order of
 precedence:
 
 - If Kubernetes is enabled:
@@ -82,7 +80,7 @@ differentiate the different instances of the service.
 ### Namespace
 
 Defines a namespace for the matching instrumented service. If you don't set this
-property, Beyla uses the Kubernetes namespace of the instrumented process, if
+property, OBI uses the Kubernetes namespace of the instrumented process, if
 available, or leaves it empty if Kubernetes isn't available.
 
 This option is deprecated. Refer to the
@@ -90,7 +88,7 @@ This option is deprecated. Refer to the
 section to enable automatic configuration of service name and namespace from
 diverse metadata sources.
 
-This namespace is not a selector for Kubernetes namespaces. Beyla uses its value
+This namespace is not a selector for Kubernetes namespaces. OBI uses its value
 to set the value of standard telemetry attributes. For example, the
 [OpenTelemetry `service.namespace` attribute](https://opentelemetry.io/docs/specs/otel/common/attribute-naming/).
 
@@ -99,7 +97,7 @@ to set the value of standard telemetry attributes. For example, the
 Selects the process to instrument by the port it has open (listens to). This
 property accepts a comma-separated list of ports, for example `80`, and port
 ranges, for example `8000-8999`. If the executable matches only one of the ports
-in the list, Beyla considers it a match.
+in the list, OBI considers it a match.
 
 For example, specifying the following property:
 
@@ -109,16 +107,16 @@ discovery:
     - open_ports: 80,443,8000-8999
 ```
 
-Beyla selects any executable that opens port 80, 443, or any of the ports
-between 8000 and 8999 included.
+OBI selects any executable that opens port 80, 443, or any of the ports between
+8000 and 8999 included.
 
 If you specify other selectors in the same `instrument` entry, the processes
 must match all the selector properties.
 
 If an executable opens multiple ports, you only need to specify one of those
-ports for Beyla to instrument all the HTTP/S and GRPC requests on all
-application ports. Currently, you can't restrict the instrumentation only to the
-methods exposed through a specific port.
+ports for OBI to instrument all the HTTP/S and gRPC requests on all application
+ports. Currently, you can't restrict the instrumentation only to the methods
+exposed through a specific port.
 
 ### Executable path
 
@@ -126,9 +124,9 @@ Selects the processes to instrument by their executable name path. This property
 accepts a glob to match against the full executable command line, including the
 directory where the executable resides on the file system.
 
-Beyla tries to instrument all the processes with an executable path matching
-this property. For example, setting `exe_path: *` makes Beyla try to instrument
-all the executables in the host.
+OBI tries to instrument all the processes with an executable path matching this
+property. For example, setting `exe_path: *` makes OBI try to instrument all the
+executables in the host.
 
 If you specify other selectors in the same `instrument` entry, the processes
 must match all the selector properties.
@@ -136,8 +134,8 @@ must match all the selector properties.
 ### Containers only
 
 Selects processes to instrument which are running in an OCI container. To
-perform this check, Beyla inspects the process network namespace and matches it
-against its own network namespace. If Beyla doesn't have enough permissions to
+perform this check, OBI inspects the process network namespace and matches it
+against its own network namespace. If OBI doesn't have enough permissions to
 perform the network namespace inspection, it ignores this option.
 
 If you specify other selectors in the same `instrument` entry, the processes
@@ -244,11 +242,10 @@ annotation `beyla.instrument` with a value that matches the glob `true`.
 
 ## Survey mode
 
-In survey mode, Beyla only performs service discovery and detects the
-programming language of each service, but doesn't instrument any discovered
-services.
+In survey mode, OBI only performs service discovery and detects the programming
+language of each service, but doesn't instrument any discovered services.
 
-Beyla writes the discovered information from survey mode to a metric called
+OBI writes the discovered information from survey mode to a metric called
 `survey_info`, which uses the same attributes as the `target_info` metric. The
 Prometheus exporter creates this metric based on the OpenTelemetry metric
 resource attributes. You can use survey mode to build external automated
@@ -272,8 +269,8 @@ instrumenting Prometheus.
 
 ## Default exclude services from instrumentation
 
-The `default_exclude_instrument` section disables instrumentation of Beyla
-itself (self-instrumentation), as well as Grafana Alloy and the OpenTelemetry
+The `default_exclude_instrument` section disables instrumentation of OBI itself
+(self-instrumentation), as well as Grafana Alloy and the OpenTelemetry
 Collector. It also disables instrumentation of various Kubernetes system
 namespaces to reduce the overall cost of metric generation. The following
 section contains all excluded components:
@@ -287,7 +284,7 @@ section contains all excluded components:
   `gke-managed-system`, `gke-system`, `gke-managed-volumepopulator`,
   `gatekeeper-system`.
 
-Change this option to allow Beyla to instrument itself or some of the other
+Change this option to allow OBI to instrument itself or some of the other
 excluded components.
 
 Note: to enable such self-instrumentation, you still need to include them in the
@@ -297,30 +294,30 @@ inclusion criteria.
 ## Skip go specific tracers
 
 The `skip_go_specific_tracers` option disables the detection of Go specifics
-when the **ebpf** tracer inspects executables to be instrumented. The tracer
+when the **eBPF** tracer inspects executables to be instrumented. The tracer
 falls back to using generic instrumentation, which is generally less efficient.
 
-## Exclude otel instrumented services
+## Exclude OTel instrumented services
 
-The `exclude_otel_instrumented_services` option disables Beyla instrumentation
-of services already instrumented with OpenTelemetry. Since Beyla is often
-deployed to monitor all services in a Kubernetes cluster, monitoring already
-instrumented services can lead to duplicate telemetry data, unless you carefully
-craft the instrumentation selection (or exclusion) criteria. To avoid
-unnecessary configuration overhead, Beyla monitors for OpenTelemetry SDK calls
-to publish metrics and traces, and automatically turns off instrumentation of
-services that publish their own telemetry data. Turn this option off if your
-application-generated telemetry data doesn't conflict with the Beyla generated
+The `exclude_otel_instrumented_services` option disables OBI instrumentation of
+services already instrumented with OpenTelemetry. Since OBI is often deployed to
+monitor all services in a Kubernetes cluster, monitoring already instrumented
+services can lead to duplicate telemetry data, unless you carefully craft the
+instrumentation selection (or exclusion) criteria. To avoid unnecessary
+configuration overhead, OBI monitors for OpenTelemetry SDK calls to publish
+metrics and traces, and automatically turns off instrumentation of services that
+publish their own telemetry data. Turn this option off if your
+application-generated telemetry data doesn't conflict with the OBI generated
 metrics and traces.
 
 ## Override service name and namespace
 
-If you export instrumentation data via OpenTelemetry or Prometheus, Beyla
-follows the
+If you export instrumentation data via OpenTelemetry or Prometheus, OBI follows
+the
 [service name conventions from the OpenTelemetry operator](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#how-resource-attributes-are-calculated-from-the-pods-metadata)
 to improve interoperability with other instrumentation solutions.
 
-Beyla uses the following criteria in this order to automatically set the service
+OBI uses the following criteria in this order to automatically set the service
 name and namespace:
 
 1. Resource attributes set via `OTEL_RESOURCE_ATTRIBUTES` and

@@ -32,7 +32,7 @@ Refer to the [example YAML configuration file](../example/) for a configuration
 file template.
 
 Beyla consists of a pipeline of components that generate, transform, and export
-traces from HTTP and GRPC applications. In the YAML configuration, each
+traces from HTTP and gRPC applications. In the YAML configuration, each
 component has its own first-level section.
 
 Optionally, Beyla also provides network-level metrics, refer to the
@@ -85,7 +85,7 @@ grouping, follow the instructions in the
 [service discovery documentation](../service-discovery/).
 
 If an executable opens multiple ports, specifying one of those ports is enough
-for Beyla to instrument all HTTP/S and GRPC requests on all application ports.
+for Beyla to instrument all HTTP/S and gRPC requests on all application ports.
 Currently, there's no way to limit instrumentation to requests on a specific
 port.
 

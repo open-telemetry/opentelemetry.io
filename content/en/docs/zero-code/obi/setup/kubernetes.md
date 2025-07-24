@@ -5,8 +5,6 @@ description: Learn how to deploy OBI in Kubernetes.
 weight: 3
 ---
 
-# Deploy OBI in Kubernetes
-
 {{% alert type="note" %}} This document explains how to manually deploy OBI in
 Kubernetes, setting up all the required entities by yourself.
 
@@ -85,7 +83,7 @@ roleRef:
 (You need to change the `namespace: default` value if you are deploying OBI in
 another namespace).
 
-2. Configure OBI with the `BEYLA_KUBE_METADATA_ENABLE=true` environment
+2. Configure OBI with the `OTEL_EBPF_KUBE_METADATA_ENABLE=true` environment
    variable, or the `attributes.kubernetes.enable: true` YAML configuration.
 
 3. Don't forget to specify the `serviceAccountName: beyla` property in your OBI
@@ -358,7 +356,6 @@ metadata:
   namespace: beyla-demo
   ...
 ---
-
 ```
 
 ## Providing an external configuration file
