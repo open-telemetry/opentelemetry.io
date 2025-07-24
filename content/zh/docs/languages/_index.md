@@ -1,20 +1,17 @@
-  ---
+---
 title: 语言 APIs & SDKs
-description:
-  支持多种流行的编程语言的 OpenTelemetry 代码插桩
+description: 支持多种流行的编程语言的 OpenTelemetry 代码插桩
 weight: 250
 aliases: [/docs/instrumentation]
 default_lang_commit: f35b3300574b428f94dfeeca970d93c5a6ddbf35
 redirects:
-  - { from: /docs/instrumentation/*, to: ':splat' } # Only for `en`
   - { from: 'net/*', to: 'dotnet/:splat' }
 ---
 
 OpenTelemetry 代码 [插桩][instrumentation] 该功能支持下表 [“状态与发布版本”](#status-and-releases)  中所列的编程语言。 
 [其他语言](/docs/languages/other)的非官方实现版本也可获取。你可以在 [registry](/ecosystem/registry/) 中找到它们。
 
-Go, .NET, PHP, Python, Java and JavaScript 你可以使用
-[零代码解决方案](/docs/zero-code) 来添加插桩，无需修改代码。
+Go, .NET, PHP, Python, Java and JavaScript 你可以使用[零代码解决方案](/docs/zero-code) 来添加插桩，无需修改代码。
 
 如果您正在使用 Kubernetes，可以借助 [Kubernetes 的 OpenTelemetry Operator][otel-op] 向您的应用程序中[注入这些零代码解决方案] [zero-code]。
 
