@@ -13,7 +13,7 @@ OpenTelemetry 代码[插桩][instrumentation]支持下表[“状态与发布版�
 
 对于 Go、.NET、PHP、Python、Java 和 JavaScript，你可以使用[零代码解决方案](/docs/zero-code)将插桩添加到你的应用，无需修改代码。
 
-如果您正在使用 Kubernetes，可以借助 [Kubernetes 的 OpenTelemetry Operator][otel-op] 向您的应用程序中[注入这些零代码解决方案] [zero-code]。
+如果你正在使用 Kubernetes，可以借助 [Kubernetes 的 OpenTelemetry Operator][otel-op] 向你的应用中[注入这些零代码解决方案][zero-code]。
 
 ## 状态与发布版本 {#status-and-releases}
 
