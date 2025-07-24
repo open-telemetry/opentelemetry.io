@@ -17,7 +17,7 @@ OpenTelemetry 代码[插桩][instrumentation]支持下表[“状态与发布版�
 
 ## 状态与发布版本 {#status-and-releases}
 
-当前 OpenTelemetry 主要功能组件的状态如下：
+OpenTelemetry 主要功能组件的当前状态如下：
 
 {{% alert title="重要" color="warning" %}}
 
