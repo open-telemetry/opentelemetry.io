@@ -18,7 +18,7 @@ languages and frameworks. However, getting started with distributed tracing can
 be complex. In some compiled languages like Go or Rust, you must manually add
 tracepoints to the code.
 
-OpenTelemetry eBPF Instrumentation is an auto-instrumentation tool to easily get
+OpenTelemetry eBPF Instrumentation (OBI) is an auto-instrumentation tool to easily get
 started with Application Observability. OBI uses eBPF to automatically inspect
 application executables and the OS networking layer, and capture trace spans
 related to web transactions and Rate Errors Duration (RED) metrics for Linux
@@ -89,7 +89,7 @@ level trace span information. Language agents and manual instrumentation is
 still recommended, so that you can specify the custom attributes and events you
 want to capture.
 
-While most eBPF programs require elevated privileges, OBI allow you to specify
+While most eBPF programs require elevated privileges, OBI allows you to specify
 finer grained permissions to run with minimum required permissions, such as:
 `CAP_DAC_READ_SEARCH`, `CAP_SYS_PTRACE`, `CAP_PERFMON`, `CAP_BPF`,
 `CAP_CHECKPOINT_RESTORE`, and others.

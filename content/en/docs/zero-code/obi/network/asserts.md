@@ -53,8 +53,7 @@ podAnnotations:
 
 ## Configure for OpenTelemetry Collector
 
-If you use an OpenTelemetry Collector for metrics collection, either Grafana
-Alloy the upstream collector, create a `values.yml` with the following
+If you use an OpenTelemetry Collector for metrics collection, create a `values.yml` with the following
 configuration:
 
 ```sh

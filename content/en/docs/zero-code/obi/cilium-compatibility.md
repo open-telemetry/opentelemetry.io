@@ -65,16 +65,11 @@ bpf:
 
 This ensures that OBI programs always run before Cilium programs.
 
-## Bypass default priority checks
-
-You can bypass the default priority checks by setting the
-`BEYLA_BPF_IGNORE_TC_PRIORITY` environment variable to `1`.
-
 ## OBI attachment mode configuration
 
 Refer to the
 [configuration documentation](/docs/beyla/latest/configure/options/), to
-configure OBI TC attachment mode using the `BEYLA_BPF_TC_BACKEND` configuration
+configure OBI TC attachment mode using the `OTEL_EBPF_BPF_TC_BACKEND` configuration
 option.
 
 You can do the following:
@@ -339,7 +334,7 @@ spec:
       dnsPolicy: ClusterFirstWithHostNet
       containers:
         - name: obi
-          image: grafana/beyla:main
+          image: otel/ebpf-instrument:main
           securityContext:
             privileged: true
             readOnlyRootFilesystem: true
@@ -349,7 +344,7 @@ spec:
             - mountPath: /var/run/obi
               name: var-run-obi
           env:
-            - name: BEYLA_CONFIG_PATH
+            - name: OTEL_EBPF_CONFIG_PATH
               value: '/config/obi-config.yml'
       volumes:
         - name: obi-config
