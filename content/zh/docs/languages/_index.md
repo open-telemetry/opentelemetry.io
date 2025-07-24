@@ -50,3 +50,5 @@ specification][], your data flow might be subject to **breaking changes**.
 [zero-code]: /docs/platforms/kubernetes/operator/automatic/
 [instrumentation]: /docs/concepts/instrumentation/
 [otel-op]: /docs/platforms/kubernetes/operator/
+
+#Error: error building site: process: readAndProcessContent: "/root/opentelemetry.io/content/zh/docs/languages/_index.md:5:1": failed to unmarshal YAML: yaml: line 5: could not find expected ':' 请确认在哪里
