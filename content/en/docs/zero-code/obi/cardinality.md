@@ -33,8 +33,7 @@ Before continuing, we should clarify some terms that might be vague or subject
 to interpretation:
 
 - **Instance**: is each instrumentation target. In application-level metrics, it
-  would be the service or client instance. In Kubernetes, it would be a Pod. In
-  process-level metrics, each instance is each reported process. An application
+  would be the service or client instance. In Kubernetes, it would be a Pod. An application
   instance might run in multiple processes. In network-level metrics, each
   instance is the OBI instance that instruments all the network flows in a
   given host.
@@ -48,7 +47,7 @@ to interpretation:
   received by the Server, for example: `/clients/348579843/command/833`.
 - **URL Route**: is an aggregated path of a URL request, semantically grouped to
   keep the cardinality under control. It usually mimics the way that some web
-  frameworks let you defining HTTP requests in code, for example:
+  frameworks let you define HTTP requests in code, for example:
   `/clients/{clientId}/command/{command_num}`.
 - **Operation**: describes what functionality has been requested:
   - HTTP: all HTTP verbs, for example `GET`, followed by the URL route
@@ -57,59 +56,20 @@ to interpretation:
     followed by the target table
   - Kafka: Produce/Fetch
 - **Server**: is any instance that receives and processes HTTP or gRPC requests.
-  A server can be also a client.
+  A server can also be a client.
 - **Client**: is any instance that submits HTTP, gRPC, database or MQ requests.
-  A client can be also a server.
+  A client can also be a server.
 - **Service**: in the Kubernetes context, is functionality provided by a group
   of servers that are accessed through a common host name and port.
 - **Endpoint**: is an IP or hostname and port that identifies either a service,
   a server, or a client.
 - **Return code:** returned by each service invocation, describes some
-  meta-information about how the execution. For HTTP they are HTTP status codes,
+  meta-information about the result of the execution. For HTTP they are HTTP status codes,
   for other protocols it's usually 0 (success) or 1 (error).
-
-## Process-level metrics
-
-Process-level metrics are the simplest metrics to calculate, as processes are
-not connected between them, and a process instance belongs to a unique
-application instance.
-
-Cardinality, according to the default set of enabled attributes in OBI:
-
-```text
-#Instances * #Metrics * #AttributeValues
-```
-
-- Instances is the number of instrumented process
-- Metrics are the number of reported metrics for each process, and
-  AttributeValues are some instance-level attributes that need to multiply each
-  metric instance:
-  - `process.cpu.utilization`
-    - `cpu.mode={user, system, wait}`
-  - `Process.cpu.time`
-    - `cpu.mode={user, system, wait}`
-  - `Process.memory.usage`
-  - `Process.memory.virtual`
-  - `process.disk.io`
-    - `disk.io.direction={read, write}`
-  - `process.network.io`
-    - `network.io.direction={receive, transmit}`
-
-Summarizing, the formula to calculate the cardinality of processes is:
-
-```text
-#ProcessInstances * 12
-```
-
-Where `12` is the number of the above enumerated `#Metrics * #AttributeValues`.
-
-<!-- we are referring to Ok as HTTP status but Vale still complains. Disabling it -->
-<!-- vale Grafana.OK = NO -->
 
 ## Application-level metrics
 
-For application-level metrics, we can't follow a simple multiplication formula
-as we did for process-level metrics, as there are multiple factors that
+For application-level metrics, we can't follow a simple multiplication formula, as there are multiple factors that
 influence cardinality, but they aren't linearly related.
 
 For example, both the number of HTTP routes and Server addresses increase the
@@ -342,26 +302,6 @@ In this section we calculate the cardinality of the
 in a local cluster of 3 nodes. We disabled all the bundled OpenTelemetry
 instrumentation in the example applications, and deployed Beyla to perform the
 instrumentation.
-
-### Measure process-level metrics
-
-It's difficult to determine the number of running processes unless you have a
-deep knowledge of the internals of your applications. We have experimentally
-measured that the OpenTelemetry demo runs around 140 processes.
-
-Following the formula:
-
-#Instances #Metrics #AttributeValues
-
-Being 12 the sum of all the known process metrics and attribute values, we would
-analytically expect that the process-level metrics cardinality to be:
-
-```
-141 * 12 = 1680
-```
-
-Which is pretty close to our measured Cardinality value via PromQL:
-`count({__name__=~"process_.*"})`: **~1,600**
 
 ### Measure application-level metrics
 
