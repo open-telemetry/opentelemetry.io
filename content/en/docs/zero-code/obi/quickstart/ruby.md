@@ -16,7 +16,7 @@ curl -OL https://raw.githubusercontent.com/grafana/beyla/main/examples/quickstar
 ruby quickstart.rb
 ```
 
-## 2. Download Beyla
+## 2. Download OBI
 
 Download the latest OBI executable from the
 [OBI releases page](https://github.com/grafana/beyla/releases). Uncompress and
@@ -28,11 +28,11 @@ To run OBI, first set the following environment variables:
 
 - The `OTEL_EXPORTER_OTLP_PROTOCOL`, `OTEL_EXPORTER_OTLP_ENDPOINT` and
   `OTEL_EXPORTER_OTLP_HEADERS` variables copied from the previous step.
-- `BEYLA_OPEN_PORT`: the port the instrumented service is using (for example,
-  `80` or `443`). If using the example service in the first section of this
-  guide, set this variable to `8080`.
+- `OTEL_EBPF_OPEN_PORT`: the port the instrumented service is using (for
+  example, `80` or `443`). If using the example service in the first section of
+  this guide, set this variable to `8080`.
 
-To facilitate local testing, set the `BEYLA_TRACE_PRINTER=text` environment
+To facilitate local testing, set the `OTEL_EBPF_TRACE_PRINTER=text` environment
 variable. When this option is set, OBI prints traces in text format to the
 standard output.
 
@@ -45,8 +45,8 @@ Notice: OBI requires administrative (sudo) privileges, or at least it needs to
 be granted the `CAP_SYS_ADMIN` capability.
 
 ```sh
-export BEYLA_OPEN_PORT=8080
-export BEYLA_TRACE_PRINTER=text
+export OTEL_EBPF_OPEN_PORT=8080
+export OTEL_EBPF_TRACE_PRINTER=text
 export OTEL_EXPORTER_OTLP_PROTOCOL="http/protobuf"
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://otlp-gateway-prod-eu-west-0.grafana.net/otlp"
 export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Basic ...your-encoded-credentials..."
@@ -85,7 +85,7 @@ The above trace shows:
 After a few minutes traces will appear in Grafana Cloud. For example, in the
 traces explorer:
 
-![Beyla traces explorer](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/trace-generic.png)
+![OBI traces explorer](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/trace-generic.png)
 
 ## 6. Configure routing
 
@@ -106,7 +106,7 @@ routes:
   unmatched: heuristic
 ```
 
-Then, run OBI with the `-config` argument (or use the `BEYLA_CONFIG_PATH`
+Then, run OBI with the `-config` argument (or use the `OTEL_EBPF_CONFIG_PATH`
 environment variable instead):
 
 ```
@@ -124,7 +124,7 @@ curl http://localhost:8080/user/5678
 Grafana will now heuristically assign a route to each trace. `/foo` got its own
 route while `/user/1234` and `/user/5678` were grouped into the `/user/*` route.
 
-![Beyla grouped traces](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/grouped-traces.png)
+![OBI grouped traces](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/grouped-traces.png)
 
 ## Next steps
 

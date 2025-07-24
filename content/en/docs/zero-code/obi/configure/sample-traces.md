@@ -1,5 +1,5 @@
 ---
-title: Configure Beyla OpenTelemetry trace sampling
+title: Configure OBI OpenTelemetry trace sampling
 menuTitle: Sample traces
 description: Configure how to sample OpenTelemetry traces.
 weight: 70

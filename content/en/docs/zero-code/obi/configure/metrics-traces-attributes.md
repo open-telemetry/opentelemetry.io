@@ -34,7 +34,7 @@ Example:
 attributes:
   select:
     otel_ebpf_network_flow_bytes:
-      # limit the beyla_network_flow_bytes attributes to only the three attributes
+      # limit the OTEL_EBPF_network_flow_bytes attributes to only the three attributes
       include:
         - beyla.ip
         - src.name
@@ -79,11 +79,11 @@ take precedence over wildcard matches.
 The following configuration options are accessible under the `attributes.select`
 property:
 
-| YAML<br>environment variable                                           | Description                                                                                                                                                                      | Type    | Default  |
-| ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- |
-| `enable_context_propagation`<br>`BEYLA_BPF_ENABLE_CONTEXT_PROPAGATION` | Deprecated. Use `context_propagation` instead. For more information, refer to the [enable context propagation section](#enable-context-propagation).                             | boolean | false    |
-| `context_propagation`<br>`BEYLA_BPF_CONTEXT_PROPAGATION`               | Controls trace context propagation method. Accepted: `all`, `headers`, `ip`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
-| `track_request_headers`<br>`BEYLA_BPF_TRACK_REQUEST_HEADERS`           | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                | boolean | false    |
+| YAML<br>environment variable                                               | Description                                                                                                                                                                      | Type    | Default  |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- |
+| `enable_context_propagation`<br>`OTEL_EBPF_BPF_ENABLE_CONTEXT_PROPAGATION` | Deprecated. Use `context_propagation` instead. For more information, refer to the [enable context propagation section](#enable-context-propagation).                             | boolean | false    |
+| `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`               | Controls trace context propagation method. Accepted: `all`, `headers`, `ip`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
+| `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS`           | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                | boolean | false    |
 
 ### Enable context propagation
 
@@ -143,9 +143,9 @@ affect metrics.
 
 ### Other attributes
 
-| YAML option<br>Environment variable                    | Description                                                   | Type    | Default |
-| ------------------------------------------------------ | ------------------------------------------------------------- | ------- | ------- |
-| `heuristic_sql_detect`<br>`BEYLA_HEURISTIC_SQL_DETECT` | Enable heuristic SQL client detection. See below for details. | boolean | (false) |
+| YAML option<br>Environment variable                        | Description                                                   | Type    | Default |
+| ---------------------------------------------------------- | ------------------------------------------------------------- | ------- | ------- |
+| `heuristic_sql_detect`<br>`OTEL_EBPF_HEURISTIC_SQL_DETECT` | Enable heuristic SQL client detection. See below for details. | boolean | (false) |
 
 The `heuristic sql detect` option lets OBI detect SQL client requests by
 inspecting query statements, even if the protocol is not directly supported. By
@@ -172,10 +172,10 @@ attributes:
     dns: false
 ```
 
-| YAML<br>environment variable             | Description                                                                                                                                                                             | Type    | Default |
-| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------- |
-| `dns`<br>`BEYLA_HOSTNAME_DNS_RESOLUTION` | If `true`, OBI tries to resolve the local hostname against the network DNS. If `false`, uses local name. For more information, refer to the [dns section](#dns).                        | boolean | true    |
-| `override_hostname`<br>`BEYLA_HOSTNAME`  | If set, OBI uses the provided string as the host part of the Instance ID. Overrides DNS resolution. For more information, refer to the [override hostname section](#override-hostname). | string  | (unset) |
+| YAML<br>environment variable                 | Description                                                                                                                                                                             | Type    | Default |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------- |
+| `dns`<br>`OTEL_EBPF_HOSTNAME_DNS_RESOLUTION` | If `true`, OBI tries to resolve the local hostname against the network DNS. If `false`, uses local name. For more information, refer to the [dns section](#dns).                        | boolean | true    |
+| `override_hostname`<br>`OTEL_EBPF_HOSTNAME`  | If set, OBI uses the provided string as the host part of the Instance ID. Overrides DNS resolution. For more information, refer to the [override hostname section](#override-hostname). | string  | (unset) |
 
 ### DNS
 
@@ -189,15 +189,15 @@ of trying to resolve the host name. This option takes precedence over `dns`.
 
 ## Kubernetes decorator
 
-| YAML<br>environment variable                                        | Description                                                                                                                                                                                   | Type           | Default        |
-| ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- |
-| `enable`<br>`BEYLA_KUBE_METADATA_ENABLE`                            | Enable or disable Kubernetes metadata decoration. Set to `autodetect` to enable if running in Kubernetes. For more information, refer to the [enable Kubernetes section](#enable-kubernetes). | boolean/string | false          |
-| `kubeconfig_path`<br>`KUBECONFIG`                                   | Path to the Kubernetes config file. For more information, refer to the [kubeconfig path section](#kubeconfig-path).                                                                           | string         | ~/.kube/config |
-| `disable_informers`<br>`BEYLA_KUBE_DISABLE_INFORMERS`               | List of informers to disable (`node`, `service`). For more information, refer to the [disable informers section](#disable-informers).                                                         | string         | (empty)        |
-| `meta_restrict_local_node`<br>`BEYLA_KUBE_META_RESTRICT_LOCAL_NODE` | Restrict metadata to local node only. For more information, refer to the [meta restrict local node section](#meta-restrict-local-node).                                                       | boolean        | false          |
-| `informers_sync_timeout`<br>`BEYLA_KUBE_INFORMERS_SYNC_TIMEOUT`     | Maximum time to wait for Kubernetes metadata before starting. For more information, refer to the [informers sync timeout section](#informers-sync-timeout).                                   | Duration       | 30s            |
-| `informers_resync_period`<br>`BEYLA_KUBE_INFORMERS_RESYNC_PERIOD`   | Periodically resynchronize all Kubernetes metadata. For more information, refer to the [informers resync period section](#informers-resync-period).                                           | Duration       | 30m            |
-| `service_name_template`<br>`BEYLA_SERVICE_NAME_TEMPLATE`            | Go template for service names. For more information, refer to the [service name template section](#service-name-template).                                                                    | string         | (empty)        |
+| YAML<br>environment variable                                            | Description                                                                                                                                                                                   | Type           | Default        |
+| ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- |
+| `enable`<br>`OTEL_EBPF_KUBE_METADATA_ENABLE`                            | Enable or disable Kubernetes metadata decoration. Set to `autodetect` to enable if running in Kubernetes. For more information, refer to the [enable Kubernetes section](#enable-kubernetes). | boolean/string | false          |
+| `kubeconfig_path`<br>`KUBECONFIG`                                       | Path to the Kubernetes config file. For more information, refer to the [kubeconfig path section](#kubeconfig-path).                                                                           | string         | ~/.kube/config |
+| `disable_informers`<br>`OTEL_EBPF_KUBE_DISABLE_INFORMERS`               | List of informers to disable (`node`, `service`). For more information, refer to the [disable informers section](#disable-informers).                                                         | string         | (empty)        |
+| `meta_restrict_local_node`<br>`OTEL_EBPF_KUBE_META_RESTRICT_LOCAL_NODE` | Restrict metadata to local node only. For more information, refer to the [meta restrict local node section](#meta-restrict-local-node).                                                       | boolean        | false          |
+| `informers_sync_timeout`<br>`OTEL_EBPF_KUBE_INFORMERS_SYNC_TIMEOUT`     | Maximum time to wait for Kubernetes metadata before starting. For more information, refer to the [informers sync timeout section](#informers-sync-timeout).                                   | Duration       | 30s            |
+| `informers_resync_period`<br>`OTEL_EBPF_KUBE_INFORMERS_RESYNC_PERIOD`   | Periodically resynchronize all Kubernetes metadata. For more information, refer to the [informers resync period section](#informers-resync-period).                                           | Duration       | 30m            |
+| `service_name_template`<br>`OTEL_EBPF_SERVICE_NAME_TEMPLATE`            | Go template for service names. For more information, refer to the [service name template section](#service-name-template).                                                                    | string         | (empty)        |
 
 ### Enable Kubernetes
 

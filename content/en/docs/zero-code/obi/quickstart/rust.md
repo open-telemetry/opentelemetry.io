@@ -125,7 +125,7 @@ curl http://localhost:8080/user/5678
 Grafana will now heuristically assign a route to each trace. `/foo` got its own
 route while `/user/1234` and `/user/5678` were grouped into the `/user/*` route.
 
-![Beyla grouped traces](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/grouped-traces.png)
+![OBI grouped traces](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/grouped-traces.png)
 
 ## Next steps
 

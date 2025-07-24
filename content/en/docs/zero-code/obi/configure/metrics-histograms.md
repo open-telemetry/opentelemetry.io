@@ -1,5 +1,5 @@
 ---
-title: Configure Beyla Prometheus and OpenTelemetry metrics histograms
+title: Configure OBI Prometheus and OpenTelemetry metrics histograms
 menuTitle: Metrics histograms
 description:
   Configure metrics histograms for Prometheus and OpenTelemetry, and whether to
@@ -51,7 +51,7 @@ Set the bucket boundaries for metrics related to request and response sizes:
 - `http.client.response.body.size` (OTel) /
   `http_client_response_body_size_bytes` (Prometheus)
 
-If you leave the value unset, Beyla uses these default bucket boundaries:
+If you leave the value unset, OBI uses these default bucket boundaries:
 
 ```text
 0, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192

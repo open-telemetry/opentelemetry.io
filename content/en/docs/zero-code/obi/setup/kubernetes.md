@@ -5,26 +5,15 @@ description: Learn how to deploy OBI in Kubernetes.
 weight: 3
 ---
 
-{{% alert type="note" %}} This document explains how to manually deploy OBI in
-Kubernetes, setting up all the required entities by yourself.
+{{% alert type="note" %}}
+
+This document explains how to manually deploy OBI in Kubernetes, setting up all
+the required entities by yourself.
 
 You might prefer to follow the
 [Deploy OBI in Kubernetes with Helm](../kubernetes-helm/) documentation instead.
+
 {{% /alert %}}
-
-Contents:
-
-<!-- TOC -->
-
-- [Deploy OBI in Kubernetes](#deploy-obi-in-kubernetes)
-  - [Configuring Kubernetes metadata decoration](#configuring-kubernetes-metadata-decoration)
-  - [Deploying OBI](#deploying-obi)
-    - [Deploy OBI as a sidecar container](#deploy-obi-as-a-sidecar-container)
-    - [Deploy OBI as a Daemonset](#deploy-obi-as-a-daemonset)
-    - [Deploy OBI unprivileged](#deploy-obi-unprivileged)
-  - [Providing an external configuration file](#providing-an-external-configuration-file)
-  - [Providing secret configuration](#providing-secret-configuration)
-  <!-- TOC -->
 
 ## Configuring Kubernetes metadata decoration
 
@@ -122,6 +111,7 @@ requirements:
     configuration, but it might not work with all the container runtime
     configurations, as some of them confine the containers and remove some
     permissions:
+
     ```yaml
     securityContext:
       runAsUser: 0
@@ -165,19 +155,19 @@ spec:
           ports:
             - containerPort: 8443
               name: https
-        # Sidecar container with Beyla - the eBPF auto-instrumentation tool
+        # Sidecar container with OBI - the eBPF auto-instrumentation tool
         - name: beyla
           image: grafana/beyla:latest
           securityContext: # Privileges are required to install the eBPF probes
             privileged: true
           env:
             # The internal port of the goblog application container
-            - name: BEYLA_OPEN_PORT
+            - name: OTEL_EBPF_OPEN_PORT
               value: '8443'
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: 'http://grafana-alloy:4318'
               # required if you want kubernetes metadata decoration
-            - name: BEYLA_KUBE_METADATA_ENABLE
+            - name: OTEL_EBPF_KUBE_METADATA_ENABLE
               value: 'true'
 ```
 
@@ -227,13 +217,13 @@ spec:
           securityContext:
             privileged: true
           env:
-            # Select the executable by its name instead of BEYLA_OPEN_PORT
-            - name: BEYLA_AUTO_TARGET_EXE
+            # Select the executable by its name instead of OTEL_EBPF_OPEN_PORT
+            - name: OTEL_EBPF_AUTO_TARGET_EXE
               value: '*/goblog'
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
               value: 'http://grafana-alloy:4318'
               # required if you want kubernetes metadata decoration
-            - name: BEYLA_KUBE_METADATA_ENABLE
+            - name: OTEL_EBPF_KUBE_METADATA_ENABLE
               value: 'true'
 ```
 
@@ -302,15 +292,15 @@ spec:
         k8s-app: beyla
     spec:
       serviceAccount: beyla
-      hostPID: true           # <-- Important. Required in Daemonset mode so Beyla can discover all monitored processes
+      hostPID: true           # <-- Important. Required in Daemonset mode so OBI can discover all monitored processes
       containers:
       - name: beyla
         terminationMessagePolicy: FallbackToLogsOnError
         image: grafana/beyla:latest
         env:
-          - name: BEYLA_TRACE_PRINTER
+          - name: OTEL_EBPF_TRACE_PRINTER
             value: "text"
-          - name: BEYLA_KUBE_METADATA_ENABLE
+          - name: OTEL_EBPF_KUBE_METADATA_ENABLE
             value: "autodetect"
           - name: KUBE_NAMESPACE
             valueFrom:
@@ -323,12 +313,12 @@ spec:
           capabilities:
             add:
               - BPF                 # <-- Important. Required for most eBPF probes to function correctly.
-              - SYS_PTRACE          # <-- Important. Allows Beyla to access the container namespaces and inspect executables.
-              - NET_RAW             # <-- Important. Allows Beyla to use socket filters for http requests.
-              - CHECKPOINT_RESTORE  # <-- Important. Allows Beyla to open ELF files.
-              - DAC_READ_SEARCH     # <-- Important. Allows Beyla to open ELF files.
-              - PERFMON             # <-- Important. Allows Beyla to load BPF programs.
-              #- SYS_RESOURCE       # <-- pre 5.11 only. Allows Beyla to increase the amount of locked memory.
+              - SYS_PTRACE          # <-- Important. Allows OBI to access the container namespaces and inspect executables.
+              - NET_RAW             # <-- Important. Allows OBI to use socket filters for http requests.
+              - CHECKPOINT_RESTORE  # <-- Important. Allows OBI to open ELF files.
+              - DAC_READ_SEARCH     # <-- Important. Allows OBI to open ELF files.
+              - PERFMON             # <-- Important. Allows OBI to load BPF programs.
+              #- SYS_RESOURCE       # <-- pre 5.11 only. Allows OBI to increase the amount of locked memory.
               #- SYS_ADMIN          # <-- Required for Go application trace context propagation, or if kernel.perf_event_paranoid >= 3 on Debian distributions.
             drop:
               - ALL
@@ -366,7 +356,7 @@ you can also configure it via an external YAML file (as documented in the
 
 To provide the configuration as a file, the recommended way is to deploy a
 ConfigMap with the intended configuration, then mount it into the OBI Pod, and
-refer to it with the `BEYLA_CONFIG_PATH` environment variable.
+refer to it with the `OTEL_EBPF_CONFIG_PATH` environment variable.
 
 Example of ConfigMap with the OBI YAML documentation:
 
@@ -424,7 +414,7 @@ spec:
               name: var-run-beyla
           env:
             # tell beyla where to find the configuration file
-            - name: BEYLA_CONFIG_PATH
+            - name: OTEL_EBPF_CONFIG_PATH
               value: '/config/beyla-config.yml'
       volumes:
         - name: beyla-config

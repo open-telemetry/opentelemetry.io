@@ -210,7 +210,7 @@ stringData:
   otlp-headers: 'Authorization=Basic ...rest of the secret header value...'
 ```
 
-### 3. Configure and run Beyla
+### 3. Configure and run OBI
 
 Next, you need to provide OBI with permissions to watch and inspect the metadata
 of the diverse Kubernetes resources that OBI's discovery mechanism requires. You
@@ -251,11 +251,11 @@ roleRef:
 
 And now, deploy OBI by creating the following Kubernetes entities:
 
-- A `ConfigMap` storing the `beyla-config.yml` Beyla configuration file, which
-  defines the service discovery criteria. To verify that Beyla is able to
+- A `ConfigMap` storing the `beyla-config.yml` OBI configuration file, which
+  defines the service discovery criteria. To verify that OBI is able to
   discriminate by service instance even if they run the same image and
-  executable, Beyla is configured to select ONLY the `docs` Apache web server.
-- A Beyla `DaemonSet` providing the Beyla pod and its configuration:
+  executable, OBI is configured to select ONLY the `docs` Apache web server.
+- A OBI `DaemonSet` providing the OBI pod and its configuration:
   - Loads the `beyla-config.yml` file from the `ConfigMap`, as specified in the
     `OTEL_EBPF_CONFIG_PATH` environment variable.
   - References to the `grafana-secrets` values for the endpoint and credentials.
@@ -342,7 +342,7 @@ Also notice:
   perform privileged actions such as loading BPF programs and creating BPF maps.
   For running OBI as `unprivileged` container, i.e. without the
   `privileged: true` option, visit the
-  [Deploy Beyla unprivileged](../../setup/kubernetes/#deploy-beyla-unprivileged)
+  [Deploy OBI unprivileged](../../setup/kubernetes/#deploy-beyla-unprivileged)
   guide.
 
 ### 4. Test your instrumented services and see the results in Grafana

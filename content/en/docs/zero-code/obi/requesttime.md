@@ -6,8 +6,6 @@ description:
 weight: 22
 ---
 
-# Measuring total request times, instead of service times
-
 OpenTelemetry eBPF Instrumentation is an eBPF based application
 auto-instrumentation tool that is able to track the total request time, for your
 server side application code.

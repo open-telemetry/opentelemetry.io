@@ -5,8 +5,6 @@ description: Learn how to quickly set up and run OBI to instrument a Go service
 weight: 2
 ---
 
-# Quickstart: instrument a Go service with Beyla
-
 ## 1. Run an instrumentable Go service
 
 Run an instrumentable Go service or download and run a simple example
@@ -17,39 +15,39 @@ curl -OL https://raw.githubusercontent.com/grafana/beyla/main/examples/quickstar
 go run quickstart.go
 ```
 
-## 2. Download Beyla
+## 2. Download OBI
 
-Download the latest Beyla executable from the
-[Beyla releases page](https://github.com/grafana/beyla/releases). Uncompress and
-copy the Beyla executable to any location in your `$PATH`.
+Download the latest OBI executable from the
+[OBI releases page](https://github.com/grafana/beyla/releases). Uncompress and
+copy the OBI executable to any location in your `$PATH`.
 
 As an alternative (if your host has the Go toolset installed), you can directly
-download the Beyla executable with the `go install` command:
+download the OBI executable with the `go install` command:
 
 ```sh
 go install github.com/grafana/beyla/cmd/beyla@latest
 ```
 
-## 4. Run Beyla with minimal configuration
+## 4. Run OBI with minimal configuration
 
-To run Beyla, first set the following environment variables:
+To run OBI, first set the following environment variables:
 
 - The `OTEL_EXPORTER_OTLP_PROTOCOL`, `OTEL_EXPORTER_OTLP_ENDPOINT` and
   `OTEL_EXPORTER_OTLP_HEADERS` variables copied from the previous step.
-- `BEYLA_OPEN_PORT`: the port the instrumented service is using (for example,
-  `80` or `443`). If using the example service in the first section of this
-  guide, set this variable to `8080`.
+- `OTEL_EBPF_OPEN_PORT`: the port the instrumented service is using (for
+  example, `80` or `443`). If using the example service in the first section of
+  this guide, set this variable to `8080`.
 
-To facilitate local testing, set the `BEYLA_TRACE_PRINTER=text` environment
-variable. When this option is set, Beyla prints traces in text format to the
+To facilitate local testing, set the `OTEL_EBPF_TRACE_PRINTER=text` environment
+variable. When this option is set, OBI prints traces in text format to the
 standard output.
 
-Notice: Beyla requires administrative (sudo) privileges, or at least it needs to
+Notice: OBI requires administrative (sudo) privileges, or at least it needs to
 be granted the `CAP_SYS_ADMIN` capability.
 
 ```sh
-export BEYLA_OPEN_PORT=8080
-export BEYLA_TRACE_PRINTER=text
+export OTEL_EBPF_OPEN_PORT=8080
+export OTEL_EBPF_TRACE_PRINTER=text
 export OTEL_EXPORTER_OTLP_PROTOCOL="http/protobuf"
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://otlp-gateway-prod-eu-west-0.grafana.net/otlp"
 export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Basic ...your-encoded-credentials..."
@@ -58,14 +56,14 @@ sudo -E beyla
 
 ## 5. Test the service
 
-With Beyla and the service running, make HTTP requests to the instrumented
+With OBI and the service running, make HTTP requests to the instrumented
 service:
 
 ```
 curl http://localhost:8080/foo
 ```
 
-Beyla should output traces to the standard output similar to this:
+OBI should output traces to the standard output similar to this:
 
 ```
 2024-01-08 14:06:14.182614 (432.191µs[80.421µs]) 200 GET /foo [127.0.0.1]->[localhost:8080]
@@ -92,19 +90,19 @@ The above trace shows:
 After a few minutes traces will appear in Grafana Cloud. For example, in the
 traces explorer:
 
-![Beyla traces explorer](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/trace.png)
+![OBI traces explorer](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/trace.png)
 
 ## 6. Configure routing
 
 The exposed span name in Grafana Cloud is a generic `GET /**`, where it should
 say something like `GET /foo` (the path of the test request URL).
 
-Beyla groups any unknown URL path as `/**` to avoid unexpected cardinality
+OBI groups any unknown URL path as `/**` to avoid unexpected cardinality
 explosions.
 
-Configure routing to tell Beyla about expected routes.
+Configure routing to tell OBI about expected routes.
 
-For this quickstart, let Beyla to heuristically group the routes.
+For this quickstart, let OBI to heuristically group the routes.
 
 First, create a `config.yml` file with the following content:
 
@@ -113,7 +111,7 @@ routes:
   unmatched: heuristic
 ```
 
-Then, run Beyla with the `-config` argument (or use the `BEYLA_CONFIG_PATH`
+Then, run OBI with the `-config` argument (or use the `OTEL_EBPF_CONFIG_PATH`
 environment variable instead):
 
 ```
@@ -131,11 +129,11 @@ curl http://localhost:8080/user/5678
 Grafana will now heuristically assign a route to each trace. `/foo` got its own
 route while `/user/1234` and `/user/5678` were grouped into the `/user/*` route.
 
-![Beyla grouped traces](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/grouped-traces.png)
+![OBI grouped traces](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/grouped-traces.png)
 
 ## Next steps
 
 - Get more details of the different
-  [Beyla configuration options](../../configure/).
-- Learn how to deploy Beyla as a [Docker container](../../setup/docker/) or as a
+  [OBI configuration options](../../configure/).
+- Learn how to deploy OBI as a [Docker container](../../setup/docker/) or as a
   [Kubernetes DaemonSet or sidecar](../../setup/kubernetes/).

@@ -103,8 +103,8 @@ services:
     pid: 'service:goblog'
     privileged: true
     environment:
-      BEYLA_TRACE_PRINTER: text
-      BEYLA_OPEN_PORT: 8443
+      OTEL_EBPF_TRACE_PRINTER: text
+      OTEL_EBPF_OPEN_PORT: 8443
 ```
 
 Run the Docker compose file with the following command and use the app to

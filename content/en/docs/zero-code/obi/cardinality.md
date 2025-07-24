@@ -9,8 +9,6 @@ description:
 weight: 24
 ---
 
-# OBI metrics cardinality
-
 The cardinality of [OBI metrics](../metrics/) highly depends on the size and
 complexity of the instrumented environment, so there is no way to provide a
 simple and accurate formula.
@@ -128,14 +126,14 @@ When you calculate the cardinality, set optimistic and pessimistic bounds for
 your calculations.
 
 The following example illustrates how to calculate the cardinality of the
-example system. Both client and Backend are instrumented by Beyla. The other
+example system. Both client and Backend are instrumented by OBI. The other
 components are external:
 
 ![Example architecture](/media/docs/beyla/cardinality/cardinality_example.png)
 
 The pessimistic calculation would be:
 
-```
+```text
 #Instances * #MetricNames * #HistoBuckets * #Operations * #Endpoints * #ReturnCodes =
 = 2 * 5 * 177/3 * 37/3 =2771
 ```
@@ -192,8 +190,6 @@ In this simple scenario, we can manually count more the maximum cardinality to
 | 23  | Backend  | `sql.client.duration`           | DB            | Delete     | OK   |
 | 24  | Backend  | `sql.client.duration`           | DB            | Delete     | Err  |
 
-<!-- vale Grafana.OK = YES -->
-
 For the sake of brevity, we haven't counted the histogram buckets. Next we
 multiply the metrics instances by the histogram buckets, plus histogram `_count`
 and `_sum`:
@@ -212,10 +208,10 @@ about the applications and how they are interconnected.
 ## Network-level metrics
 
 It is simpler to calculate network-level metrics than application-level metrics,
-as Beyla only provides a single Counter: `beyla.network.flow.bytes`. However the
-cardinality also depend on how much your applications are interconnected.
+as OBI only provides a single Counter: `otel_ebpf.network.flow.bytes`. However
+the cardinality also depend on how much your applications are interconnected.
 
-The default attributes for `beyla.network.flow.bytes` are:
+The default attributes for `otel_ebpf.network.flow.bytes` are:
 
 - Direction (request/response)
 - Source and destination endpoint owners in Kubernetes: `k8s_src_owner_name`,
@@ -226,7 +222,7 @@ The default attributes for `beyla.network.flow.bytes` are:
 
 The simplified, pessimistic formula, would be:
 
-```
+```text
 #Directions * #SourceOwners * #DestinationOwners
 ```
 
@@ -282,7 +278,7 @@ Attributes that might add cardinality to each metric are:
 
 Maximum cardinality could be roughly calculated as:
 
-```
+```text
 19 metric buckets * 3 span kinds * #Instances * #Operations * #ReturnCodes
 ```
 
@@ -297,15 +293,15 @@ subset of the total routes.
 In this section we calculate the cardinality of the
 [OpenTelemetry Demo](https://opentelemetry.io/docs/demo/architecture/) deployed
 in a local cluster of 3 nodes. We disabled all the bundled OpenTelemetry
-instrumentation in the example applications, and deployed Beyla to perform the
+instrumentation in the example applications, and deployed OBI to perform the
 instrumentation.
 
 ### Measure application-level metrics
 
 As most instrumented instances are both client and services, we ignore the
-#instances argument in the formula to be more accurate:
+`#instances` argument in the formula to be more accurate:
 
-```
+```text
 #MetricNames * (#HistoBuckets+2) * #Operations * #Endpoints * #ReturnCodes
 ```
 
@@ -326,7 +322,7 @@ separately (HTTP, gRPC and Kafka).
 
 The total, maximum calculated limit for HTTP metrics is:
 
-```
+```text
 4 x 15 x 75 x 26 x 6 =~ 702,000
 ```
 
@@ -353,13 +349,13 @@ Network metrics measure the OpenTelemetry Demo connections, other internal
 cluster connections, and instrumentation traffic, so the real cardinality is
 higher:
 
-`count(beyla_network_flow_bytes_total)` **→ 330**
+`count(otel_ebpf_network_flow_bytes_total)` **→ 330**
 
 We can group traffic between namespaces to get a better idea of which part
 belongs to the OpenTelemetry demo with the following query:
 
-```
-count(beyla_network_flow_bytes_total) by (k8s_src_namespace, k8s_dst_namespace)
+```text
+count(otel_ebpf_network_flow_bytes_total) by (k8s_src_namespace, k8s_dst_namespace)
 ```
 
 Which returns the following information:

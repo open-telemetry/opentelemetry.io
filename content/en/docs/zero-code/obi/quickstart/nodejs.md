@@ -11,7 +11,7 @@ weight: 2
 Run an instrumentable Node.js service or download and run a simple example
 [Node.js HTTP service](https://github.com/grafana/beyla/tree/main/examples/quickstart/nodejs).
 
-```
+```shell
 curl -OL https://raw.githubusercontent.com/grafana/beyla/main/examples/quickstart/nodejs/package.json
 curl -OL https://raw.githubusercontent.com/grafana/beyla/main/examples/quickstart/nodejs/quickstart.js
 npm install && npm start
@@ -29,11 +29,11 @@ To run OBI, first set the following environment variables:
 
 - The `OTEL_EXPORTER_OTLP_PROTOCOL`, `OTEL_EXPORTER_OTLP_ENDPOINT` and
   `OTEL_EXPORTER_OTLP_HEADERS` variables copied from the previous step.
-- `BEYLA_OPEN_PORT`: the port the instrumented service is using (for example,
-  `80` or `443`). If using the example service in the first section of this
-  guide, set this variable to `8080`.
+- `OTEL_EBPF_OPEN_PORT`: the port the instrumented service is using (for
+  example, `80` or `443`). If using the example service in the first section of
+  this guide, set this variable to `8080`.
 
-To facilitate local testing, set the `BEYLA_TRACE_PRINTER=text` environment
+To facilitate local testing, set the `OTEL_EBPF_TRACE_PRINTER=text` environment
 variable. When this option is set, OBI prints traces in text format to the
 standard output.
 
@@ -42,12 +42,12 @@ OBI automatically reports the name of the process executable as service name:
 [override service name and namespace](../configure/service-discovery#override-service-name-and-namespace)
 documentation section.
 
-Notice: Beyla requires administrative (sudo) privileges, or at least it needs to
+Notice: OBI requires administrative (sudo) privileges, or at least it needs to
 be granted the `CAP_SYS_ADMIN` capability.
 
 ```sh
-export BEYLA_OPEN_PORT=8080
-export BEYLA_TRACE_PRINTER=text
+export OTEL_EBPF_OPEN_PORT=8080
+export OTEL_EBPF_TRACE_PRINTER=text
 export OTEL_EXPORTER_OTLP_PROTOCOL="http/protobuf"
 export OTEL_EXPORTER_OTLP_ENDPOINT="https://otlp-gateway-prod-eu-west-0.grafana.net/otlp"
 export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Basic ...your-encoded-credentials..."
@@ -59,13 +59,13 @@ sudo -E beyla
 With OBI and the service running, make HTTP requests to the instrumented
 service:
 
-```
+```shell
 curl http://localhost:8080/foo
 ```
 
 OBI should output traces to the standard output similar to this:
 
-```
+```shell
 2024-01-09 10:31:33.19103133 (3.254486ms[3.254486ms]) 200 GET /foo [127.0.0.1]->[127.0.0.1:8080]
 size:80B svc=[{quickstart nodejs lima-ubuntu-lts-5074}] traceparent=[00-46214bd23716280eef43cf798dbe5522-0000000000000000-01]
 ```
@@ -86,7 +86,7 @@ The above trace shows:
 After a few minutes traces will appear in Grafana Cloud. For example, in the
 traces explorer:
 
-![Beyla traces explorer](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/trace-generic.png)
+![OBI traces explorer](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/trace-generic.png)
 
 ## 6. Configure routing
 
@@ -107,16 +107,16 @@ routes:
   unmatched: heuristic
 ```
 
-Then, run OBI with the `-config` argument (or use the `BEYLA_CONFIG_PATH`
+Then, run OBI with the `-config` argument (or use the `OTEL_EBPF_CONFIG_PATH`
 environment variable instead):
 
-```
+```shell
 sudo -E beyla -config config.yml
 ```
 
 Finally, make HTTP requests:
 
-```
+```shell
 curl http://localhost:8080/foo
 curl http://localhost:8080/user/1234
 curl http://localhost:8080/user/5678
@@ -125,11 +125,11 @@ curl http://localhost:8080/user/5678
 Grafana will now heuristically assign a route to each trace. `/foo` got its own
 route while `/user/1234` and `/user/5678` were grouped into the `/user/*` route.
 
-![Beyla grouped traces](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/grouped-traces.png)
+![OBI grouped traces](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/grouped-traces.png)
 
 ## Next steps
 
 - Get more details of the different
-  [Beyla configuration options](../../configure/).
-- Learn how to deploy Beyla as a [Docker container](../../setup/docker/) or as a
+  [OBI configuration options](../../configure/).
+- Learn how to deploy OBI as a [Docker container](../../setup/docker/) or as a
   [Kubernetes DaemonSet or sidecar](../../setup/kubernetes/).

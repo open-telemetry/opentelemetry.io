@@ -41,7 +41,8 @@ details on this topic, see our KubeCon NA 2024 talk
 
 The context propagation at **network level** is **disabled** by default and can
 be enabled by setting the environment variable
-`BEYLA_BPF_CONTEXT_PROPAGATION=all` or by modifying the OBI configuration file:
+`OTEL_EBPF__BPF_CONTEXT_PROPAGATION=all` or by modifying the OBI configuration
+file:
 
 ```yaml
 ebpf:
@@ -95,23 +96,23 @@ The following YAML snippet shows an example OBI deployment configuration:
 
 ```yaml
 spec:
-  serviceAccount: beyla
-  hostPID: true # <-- Important. Required in DaemonSet mode so Beyla can discover all monitored processes
-  hostNetwork: true # <-- Important. Required in DaemonSet mode so Beyla can see all network packets
+  serviceAccount: OTEL_EBPF_
+  hostPID: true # <-- Important. Required in DaemonSet mode so OBI can discover all monitored processes
+  hostNetwork: true # <-- Important. Required in DaemonSet mode so OBI can see all network packets
   dnsPolicy: ClusterFirstWithHostNet
   containers:
-    - name: beyla
+    - name: OTEL_EBPF_
       resources:
         limits:
           memory: 120Mi
       terminationMessagePolicy: FallbackToLogsOnError
-      image: 'beyla:latest'
+      image: 'OTEL_EBPF_:latest'
       imagePullPolicy: 'Always'
-      command: ['/beyla', '--config=/config/beyla-config.yml']
+      command: ['/OTEL_EBPF_', '--config=/config/OTEL_EBPF_-config.yml']
       env:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
           value: 'http://otelcol:4318'
-        - name: BEYLA_KUBE_METADATA_ENABLE
+        - name: OTEL_EBPF__KUBE_METADATA_ENABLE
           value: 'autodetect'
       securityContext:
         runAsUser: 0
@@ -119,26 +120,26 @@ spec:
         capabilities:
           add:
             - BPF # <-- Important. Required for most eBPF probes to function correctly.
-            - SYS_PTRACE # <-- Important. Allows Beyla to access the container namespaces and inspect executables.
-            - NET_RAW # <-- Important. Allows Beyla to use socket filters for http requests.
-            - CHECKPOINT_RESTORE # <-- Important. Allows Beyla to open ELF files.
-            - DAC_READ_SEARCH # <-- Important. Allows Beyla to open ELF files.
-            - PERFMON # <-- Important. Allows Beyla to load BPF programs.
-            - NET_ADMIN # <-- Important. Allows Beyla to inject HTTP and TCP context propagation information.
+            - SYS_PTRACE # <-- Important. Allows OBI to access the container namespaces and inspect executables.
+            - NET_RAW # <-- Important. Allows OBI to use socket filters for http requests.
+            - CHECKPOINT_RESTORE # <-- Important. Allows OBI to open ELF files.
+            - DAC_READ_SEARCH # <-- Important. Allows OBI to open ELF files.
+            - PERFMON # <-- Important. Allows OBI to load BPF programs.
+            - NET_ADMIN # <-- Important. Allows OBI to inject HTTP and TCP context propagation information.
       volumeMounts:
         - name: cgroup
-          mountPath: /sys/fs/cgroup # <-- Important. Allows Beyla to monitor all newly sockets to track outgoing requests.
+          mountPath: /sys/fs/cgroup # <-- Important. Allows OBI to monitor all newly sockets to track outgoing requests.
         - mountPath: /config
-          name: beyla-config
+          name: OTEL_EBPF_-config
   tolerations:
     - effect: NoSchedule
       operator: Exists
     - effect: NoExecute
       operator: Exists
   volumes:
-    - name: beyla-config
+    - name: OTEL_EBPF_-config
       configMap:
-        name: beyla-config
+        name: OTEL_EBPF_-config
     - name: cgroup
       hostPath:
         path: /sys/fs/cgroup
@@ -154,8 +155,8 @@ The network level context propagation incoming headers parsing generally
 requires kernel 5.17 or newer for the addition and use of BPF loops.
 
 Some patched kernels, such as RHEL 9.2, may have this functionality ported back.
-Setting BEYLA_OVERRIDE_BPF_LOOP_ENABLED skips kernel checks in the case your
-kernel includes the functionality but is lower than 5.17.
+Setting OTEL_EBPF\_\_OVERRIDE_BPF_LOOP_ENABLED skips kernel checks in the case
+your kernel includes the functionality but is lower than 5.17.
 
 ### Go context propagation by instrumenting at library level
 
@@ -200,10 +201,10 @@ configuration, which ensures OBI has sufficient information to determine the
 ```yaml
 services:
   ...
-  beyla:
-    image: grafana/beyla:latest
+  OTEL_EBPF_:
+    image: grafana/OTEL_EBPF_:latest
     environment:
-      BEYLA_CONFIG_PATH: "/configs/beyla-config.yml"
+      OTEL_EBPF__CONFIG_PATH: "/configs/OTEL_EBPF_-config.yml"
     volumes:
       - /sys/kernel/security:/sys/kernel/security
       - /sys/fs/cgroup:/sys/fs/cgroup
