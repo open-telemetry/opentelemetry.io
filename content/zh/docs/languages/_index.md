@@ -19,7 +19,7 @@ OpenTelemetry 代码[插桩][instrumentation]支持下表[“状态与发布版�
 
 当前 OpenTelemetry 主要功能组件的状态如下：
 
-{{% alert title="Important" color="warning" %}}
+{{% alert title="重要" color="warning" %}}
 
 无论 API/SDK 的状态如何，如果你的插桩依赖于在[语义约定规范][semantic conventions specification]中被标记为[实验性][Experimental]的[语义约定][semantic conventions]，你的数据流可能会发生**破坏性变更**。
 
