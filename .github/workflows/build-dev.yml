@@ -25,8 +25,7 @@ jobs:
 
       - name: Create and use reduced-dependencies package.json
         run: |
-          jq 'del(.dependencies, .optionalDependencies)' \
-            package.json > tmp/package-min.json
+          jq '.dependencies |= {minisearch: .minisearch} | del(.optionalDependencies)' package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
       - uses: actions/setup-node@v4
