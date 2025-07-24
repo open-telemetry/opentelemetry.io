@@ -21,10 +21,7 @@ OpenTelemetry 代码[插桩][instrumentation]支持下表[“状态与发布版�
 
 {{% alert title="Important" color="warning" %}}
 
-Regardless of an API/SDK's status, if your instrumentation relies on [semantic
-conventions][] that are marked as [Experimental] in the [semantic conventions
-specification][], your data flow might be subject to **breaking changes**.
-无论 API/SDK 的状态如何，如果你的插桩依赖于 [语义约定][semantic conventions] 中被标记为 [实验性][Experimental] 的内容（参见 [语义约定规范][semantic conventions specification]），那么你的数据流可能会发生**破坏性变更**。
+无论 API/SDK 的状态如何，如果你的插桩依赖于[语义约定][semantic conventions]中被标记为[实验性][Experimental]的内容（参见[语义约定规范][semantic conventions specification]），那么你的数据流可能会发生**破坏性变更**。
 
 [semantic conventions]: /docs/concepts/semantic-conventions/
 [Experimental]: /docs/specs/otel/document-status/
