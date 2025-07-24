@@ -12,8 +12,6 @@ cascade:
 cSpell:ignore: CAP_PERFMON
 ---
 
-## eBPF application auto-instrumentation
-
 OpenTelemetry libraries provide telemetry collection for popular programming
 languages and frameworks. However, getting started with distributed tracing can
 be complex. In some compiled languages like Go or Rust, you must manually add

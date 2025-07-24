@@ -5,8 +5,6 @@ description: Learn about OBI's distributed traces support.
 weight: 22
 ---
 
-# Distributed traces with OBI
-
 ## Introduction
 
 OBI supports distributed traces for applications with some limitations and
@@ -41,7 +39,7 @@ details on this topic, see our KubeCon NA 2024 talk
 
 The context propagation at **network level** is **disabled** by default and can
 be enabled by setting the environment variable
-`OTEL_EBPF__BPF_CONTEXT_PROPAGATION=all` or by modifying the OBI configuration
+`OTEL_EBPF_BPF_CONTEXT_PROPAGATION=all` or by modifying the OBI configuration
 file:
 
 ```yaml
@@ -96,23 +94,23 @@ The following YAML snippet shows an example OBI deployment configuration:
 
 ```yaml
 spec:
-  serviceAccount: OTEL_EBPF_
+  serviceAccount: beyla
   hostPID: true # <-- Important. Required in DaemonSet mode so OBI can discover all monitored processes
   hostNetwork: true # <-- Important. Required in DaemonSet mode so OBI can see all network packets
   dnsPolicy: ClusterFirstWithHostNet
   containers:
-    - name: OTEL_EBPF_
+    - name: beyla
       resources:
         limits:
           memory: 120Mi
       terminationMessagePolicy: FallbackToLogsOnError
-      image: 'OTEL_EBPF_:latest'
+      image: 'beyla:latest'
       imagePullPolicy: 'Always'
-      command: ['/OTEL_EBPF_', '--config=/config/OTEL_EBPF_-config.yml']
+      command: ['/beyla', '--config=/config/beyla-config.yml']
       env:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
           value: 'http://otelcol:4318'
-        - name: OTEL_EBPF__KUBE_METADATA_ENABLE
+        - name: OTEL_EBPF_KUBE_METADATA_ENABLE
           value: 'autodetect'
       securityContext:
         runAsUser: 0
@@ -130,16 +128,16 @@ spec:
         - name: cgroup
           mountPath: /sys/fs/cgroup # <-- Important. Allows OBI to monitor all newly sockets to track outgoing requests.
         - mountPath: /config
-          name: OTEL_EBPF_-config
+          name: beyla-config
   tolerations:
     - effect: NoSchedule
       operator: Exists
     - effect: NoExecute
       operator: Exists
   volumes:
-    - name: OTEL_EBPF_-config
+    - name: beyla-config
       configMap:
-        name: OTEL_EBPF_-config
+        name: beyla-config
     - name: cgroup
       hostPath:
         path: /sys/fs/cgroup
@@ -155,8 +153,8 @@ The network level context propagation incoming headers parsing generally
 requires kernel 5.17 or newer for the addition and use of BPF loops.
 
 Some patched kernels, such as RHEL 9.2, may have this functionality ported back.
-Setting OTEL_EBPF\_\_OVERRIDE_BPF_LOOP_ENABLED skips kernel checks in the case
-your kernel includes the functionality but is lower than 5.17.
+Setting OTEL_EBPF_OVERRIDE_BPF_LOOP_ENABLED skips kernel checks in the case your
+kernel includes the functionality but is lower than 5.17.
 
 ### Go context propagation by instrumenting at library level
 
@@ -201,10 +199,10 @@ configuration, which ensures OBI has sufficient information to determine the
 ```yaml
 services:
   ...
-  OTEL_EBPF_:
-    image: grafana/OTEL_EBPF_:latest
+  beyla:
+    image: grafana/beyla:latest
     environment:
-      OTEL_EBPF__CONFIG_PATH: "/configs/OTEL_EBPF_-config.yml"
+      OTEL_EBPF_CONFIG_PATH: "/configs/beyla-config.yml"
     volumes:
       - /sys/kernel/security:/sys/kernel/security
       - /sys/fs/cgroup:/sys/fs/cgroup

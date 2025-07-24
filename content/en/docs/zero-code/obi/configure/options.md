@@ -35,7 +35,15 @@ Optionally, OBI also provides network-level metrics, refer to the
 [network metrics documentation](../../network/) for more information.
 
 The following sections explain the global configuration properties that apply to
-the entire OBI configuration:
+the entire OBI configuration.
+
+For example:
+
+```yaml
+trace_printer: json
+shutdown_timeout: 30s
+channel_buffer_len: 33
+```
 
 | YAML<br>environment variable                       | Description                                                                                                                                | Type    | Default    |
 | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------- | ---------- |

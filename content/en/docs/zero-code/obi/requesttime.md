@@ -16,7 +16,7 @@ different from the measured response time at the server.
 The following diagram illustrates the different delays that can occur from the
 client perspective:
 
-![Life cycle of a web service request](https://grafana.com/media/docs/grafana-cloud/beyla/req-life-cycle_2.png)
+![Life cycle of a web service request](./req-life-cycle_2.png)
 
 - **Total Request Time**: The time from the client's perspective, including
   latency from the network, load balancer, and time spent in the service.
@@ -35,7 +35,7 @@ perspective of the client.
 
 OBI reports traces that are divided in different spans:
 
-![OBI traces and spans](https://grafana.com/media/docs/grafana-cloud/beyla/server-side-trace.png)
+![OBI traces and spans](./server-side-trace.png)
 
 The above image shows the typical structure of a trace as reported by OBI:
 

@@ -6355,6 +6355,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:34.16915-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/servicegraphconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T22:10:09.859416+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:08.131057-05:00"
@@ -11393,7 +11397,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/semantic_conventions/http-metrics.md": {
     "StatusCode": 404,
-    "LastSeen": "2025-07-24T21:30:33.414651+02:00"
+    "LastSeen": "2025-07-24T22:11:21.357127+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind": {
     "StatusCode": 200,

@@ -15,6 +15,16 @@ also choose to use native histograms and exponential histograms.
 You can override the histogram bucket boundaries for OpenTelemetry and
 Prometheus metrics exporters by setting the `buckets` YAML configuration option:
 
+YAML section: `otel_metrics_export.buckets`
+
+For example:
+
+```yaml
+otel_metrics_export:
+  buckets:
+    duration_histogram: [0, 1, 2]
+```
+
 | YAML                 | Type        |
 | -------------------- | ----------- |
 | `duration_histogram` | `[]float64` |
@@ -33,6 +43,15 @@ If you leave the value unset, OBI uses the default bucket boundaries from the
 
 ```text
 0, 0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.25, 0.5, 0.75, 1, 2.5, 5, 7.5, 10
+```
+
+YAML section: `prometheus_export.buckets`
+
+```yaml
+prometheus_export:
+  buckets:
+    request_size_histogram: [0, 10, 20, 22]
+    response_size_histogram: [0, 10, 20, 22]
 ```
 
 | YAML                      | Type        |

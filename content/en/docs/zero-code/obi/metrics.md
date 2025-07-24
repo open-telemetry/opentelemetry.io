@@ -33,8 +33,9 @@ Prometheus format.
 | Network             | `otel_ebpf.network.inter.zone.bytes` | `otel_ebpf_network_inter_zone_bytes`   | Counter       | bytes   | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes)                |
 
 OBI can also export
-[Span metrics](/docs/tempo/latest/metrics-generator/span_metrics/) and
-[Service graph metrics](/docs/tempo/latest/metrics-generator/service-graph-view/),
+[Span metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector)
+and
+[Service graph metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/servicegraphconnector),
 which you can enable via the [features](../configure/options/) configuration
 option.
 

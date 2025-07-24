@@ -11,6 +11,8 @@ OBI can export OpenTelemetry metrics and traces to a OTLP endpoint.
 
 ## OpenTelemetry metrics exporter component
 
+YAML section: `otel_metrics_export`
+
 Enable the OpenTelemetry metrics export component by setting the endpoint
 attribute in your configuration file or via an environment variable, refer to
 [metric export configuration options](#metrics-export-configuration-options).
@@ -22,8 +24,18 @@ In addition to the configuration documented in this article, the component
 supports environment variables from the
 [standard OpenTelemetry exporter configuration](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/).
 
-OBI uses lowercase fields for YAML configuration and uppercase names for
-environment variable configuration.
+For example:
+
+```yaml
+otel_metrics_export:
+  ttl: 5m
+  endpoint: http://otelcol:4318
+  protocol: grpc
+  features: ['network', 'network_inter_zone']
+  buckets:
+    duration_histogram: [0, 1, 2]
+  histogram_aggregation: base2_exponential_bucket_histogram
+```
 
 | YAML<br>environment variable                                                                  | Description                                                                                                                                                                                                                                                                                                                                                  | Type            | Default                     |
 | --------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- | --------------------------- |
@@ -86,12 +98,21 @@ other instrumentation.
 
 ## OpenTelemetry traces exporter component
 
+YAML section: `otel_traces_export`
+
 You can configure the component under the `otel_traces_export` section of your
 YAML configuration or via environment variables.
 
 In addition to the configuration documented in this article, the component
 supports the environment variables from the
 [standard OpenTelemetry exporter configuration](https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/).
+
+```yaml
+otel_traces_export:
+  endpoint: http://jaeger:4317
+  protocol: grpc
+  instrumentations: ["http, "sql"]
+```
 
 | YAML<br>environment variable                                                        | Description                                                                                                                                                                                                                                                                                               | Type            | Default                  |
 | ----------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------ |
@@ -125,10 +146,30 @@ other instrumentation.
 
 ## Prometheus exporter component
 
+YAML section: `prometheus_export`
+
 You can configure the component under the `prometheus_export` section of your
 YAML configuration or via environment variables. This component opens an HTTP
 endpoint in the auto-instrumentation tool that allows any external scraper to
 pull metrics in Prometheus format. It is enabled if the `port` property is set.
+
+```yaml
+prometheus_export:
+  port: 8999
+  path: /metrics
+  extra_resource_attributes: ["deployment_environment"]
+  ttl: 1s
+  buckets:
+    request_size_histogram: [0, 10, 20, 22]
+    response_size_histogram: [0, 10, 20, 22]
+  features:
+    - application
+    - network
+    - application_process
+    - application_span
+    - application_service_graph
+  instrumentations: ["http, "sql"]
+```
 
 | YAML<br>environment variable                                                                        | Description                                                                                                                                                                                                                       | Type            | Default           |
 | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------- |

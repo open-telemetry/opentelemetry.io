@@ -151,7 +151,7 @@ spec:
 To test that they are up and running, open two terminal sessions and run one of
 each command below on a different session:
 
-```
+```shell
 # Redirect website to local port 8080
 kubectl port-forward services/website 8080:80
 
@@ -171,44 +171,6 @@ group there all the permissions, configurations and deployments related to it:
 
 ```shell
 kubectl create namespace beyla
-```
-
-### 3. Get Grafana Cloud credentials
-
-OBI can export metrics and traces to any OpenTelemetry endpoint, as well as
-exposing metrics as a Prometheus endpoint. However, we recommend using the
-OpenTelemetry endpoint in Grafana Cloud. You can get a
-[Free Grafana Cloud Account at Grafana's website](/pricing/).
-
-From the Grafana Cloud Portal, look for the **OpenTelemetry** box and click
-**Configure**.
-
-![OpenTelemetry Grafana Cloud portal](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/otel-cloud-portal-box.png)
-
-Under **Password / API token** click **Generate now** and follow the
-instructions to create a default API token.
-
-The **Environment Variables** will be populated with a set of standard
-OpenTelemetry environment variables which will provide the connection endpoint
-and credentials information for OBI.
-
-![OTLP connection headers](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/otlp-connection-headers.png)
-
-From the **Environment Variables** section, copy the
-`OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` values and create
-a new secret from them. For example, create the following secret file and apply
-it:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  namespace: beyla
-  name: grafana-credentials
-type: Opaque
-stringData:
-  otlp-endpoint: 'https://otlp-gateway-prod-eu-west-0.grafana.net/otlp'
-  otlp-headers: 'Authorization=Basic ...rest of the secret header value...'
 ```
 
 ### 3. Configure and run OBI
@@ -351,7 +313,7 @@ Also notice:
 With the `kubectl port-forward` commands from the firs step still running, test
 both web server instances. For example:
 
-```
+```shell
 curl http://localhost:8080
 curl http://localhost:8080/foo
 curl http://localhost:8081

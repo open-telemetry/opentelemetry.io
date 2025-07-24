@@ -77,8 +77,10 @@ take precedence over wildcard matches.
 
 ## Distributed traces and context propagation
 
-The following configuration options are accessible under the `attributes.select`
-property:
+YAML section: `ebpf`
+
+You can configure the component under the `ebpf` section of your YAML
+configuration or via environment variables.
 
 | YAML<br>environment variable                                               | Description                                                                                                                                                                      | Type    | Default  |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- |
@@ -159,6 +161,8 @@ PostgreSQL and MySQL binary protocols.
 
 ## Instance ID decoration
 
+YAML section: `attributes.instance_id`
+
 OBI decorates metrics and traces with a unique instance ID string, identifying
 each instrumented application. By default, OBI uses the host name that runs OBI
 (can be a container or Pod name), followed by the PID of the instrumented
@@ -190,6 +194,29 @@ of trying to resolve the host name. This option takes precedence over `dns`.
 
 ## Kubernetes decorator
 
+YAML section: `attributes.kubernetes`
+
+You can configure the component under the `attributes.kubernetes` section of
+your YAML configuration or via environment variables.
+
+To enable this feature, you must provide extra permissions to the OBI Pod. See
+the
+["Configuring Kubernetes metadata decoration section" in the "Running OBI in Kubernetes"](../../setup/kubernetes/)
+page.
+
+If you set this option to `true`, OBI decorates metrics and traces with
+Kubernetes metadata. If you set it to `false`, OBI disables the Kubernetes
+metadata decorator. If you set it to `autodetect`, OBI tries to detect if it is
+running inside Kubernetes and enables metadata decoration if so.
+
+For example:
+
+```yaml
+attributes:
+  kubernetes:
+    enable: true
+```
+
 | YAML<br>environment variable                                            | Description                                                                                                                                                                                   | Type           | Default        |
 | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- |
 | `enable`<br>`OTEL_EBPF_KUBE_METADATA_ENABLE`                            | Enable or disable Kubernetes metadata decoration. Set to `autodetect` to enable if running in Kubernetes. For more information, refer to the [enable Kubernetes section](#enable-kubernetes). | boolean/string | false          |
@@ -217,26 +244,7 @@ traces and metrics with the standard OpenTelemetry labels:
 - `k8s.pod.start_time`
 - `k8s.cluster.name`
 
-In YAML, this section is named `kubernetes` and is under the `attributes`
-top-level section. For example:
-
-```yaml
-attributes:
-  kubernetes:
-    enable: true
-```
-
-To enable this feature, you must provide extra permissions to the OBI Pod. See
-the
-["Configuring Kubernetes metadata decoration section" in the "Running OBI in Kubernetes"](../../setup/kubernetes/)
-page.
-
-If you set this option to `true`, OBI decorates metrics and traces with
-Kubernetes metadata. If you set it to `false`, OBI disables the Kubernetes
-metadata decorator. If you set it to `autodetect`, OBI tries to detect if it is
-running inside Kubernetes and enables metadata decoration if so.
-
-### Kubeconfig path
+### Kubernetes configuration path
 
 This is a standard Kubernetes configuration environment variable. Use it to tell
 OBI where to find the Kubernetes configuration to communicate with the
@@ -275,7 +283,7 @@ starting to decorate metrics and traces. If this timeout is reached, OBI starts
 normally, but the metadata attributes might be incomplete until all the
 Kubernetes metadata is updated in the background.
 
-### Informers resync period
+### Informers resynchronization period
 
 OBI immediately receives any update on resources' metadata. In addition, OBI
 periodically resynchronizes all Kubernetes metadata at the frequency you specify

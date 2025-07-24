@@ -34,22 +34,22 @@ internal_metrics:
 
 ## Configuration summary
 
-| YAML              | Environment Variable                         | Type   | Default             | Summary                                                      |
-| ----------------- | -------------------------------------------- | ------ | ------------------- | ------------------------------------------------------------ |
-| `exporter`        | `OTEL_EBPF_INTERNAL_METRICS_EXPORTER`        | string | `disabled`          | [Selects the internal metrics exporter.](#exporter)          |
-| `prometheus.port` | `OTEL_EBPF_INTERNAL_METRICS_PROMETHEUS_PORT` | int    | (unset)             | [HTTP port for Prometheus scrape endpoint.](#prometheusport) |
-| `prometheus.path` | `OTEL_EBPF_INTERNAL_METRICS_PROMETHEUS_PATH` | string | `/internal/metrics` | [HTTP query path for Prometheus metrics.](#prometheuspath)   |
+| YAML              | Environment Variable                         | Type   | Default             | Summary                                                              |
+| ----------------- | -------------------------------------------- | ------ | ------------------- | -------------------------------------------------------------------- |
+| `exporter`        | `OTEL_EBPF_INTERNAL_METRICS_EXPORTER`        | string | `disabled`          | [Selects the internal metrics exporter.](#internal-metrics-exporter) |
+| `prometheus.port` | `OTEL_EBPF_INTERNAL_METRICS_PROMETHEUS_PORT` | int    | (unset)             | [HTTP port for Prometheus scrape endpoint.](#prometheus-port)        |
+| `prometheus.path` | `OTEL_EBPF_INTERNAL_METRICS_PROMETHEUS_PATH` | string | `/internal/metrics` | [HTTP query path for Prometheus metrics.](#prometheus-path)          |
 
 ---
 
-## `exporter`
+## Internal metrics exporter
 
 Set the internal metrics exporter. You can use `disabled`, `prometheus`, or
 `otel`.
 
 ---
 
-## `prometheus.port`
+## Prometheus port
 
 Set the HTTP port for the Prometheus scrape endpoint. If you leave it unset or
 set it to 0, OBI doesn't open a Prometheus endpoint and doesn't report metrics.
@@ -61,7 +61,7 @@ different value (OBI opens two HTTP servers for the different metric families).
 
 ---
 
-## `prometheus.path`
+## Prometheus path
 
 Set the HTTP query path to fetch Prometheus metrics.
 
