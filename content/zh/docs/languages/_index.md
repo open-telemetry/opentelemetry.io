@@ -33,7 +33,7 @@ OpenTelemetry 代码[插桩][instrumentation]支持下表[“状态与发布版�
 
 ## API 参考文档 {#api-references}
 
-特定语言的 OpenTelemetry API 和 SDK 实现的特别兴趣小组（SIGs）也会为开发者发布 API 参考文档。
+各个特别兴趣小组（SIG）以特定语言实现 OpenTelemetry API 和 SDK，他们也会为开发者发布 API 参考文档。
 以下是可用的参考文档：
 
 {{% apidocs %}}
