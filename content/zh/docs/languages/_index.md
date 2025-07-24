@@ -38,7 +38,7 @@ OpenTelemetry 代码[插桩][instrumentation]支持下表[“状态与发布版�
 
 {{% apidocs %}}
 
-{{% alert title="Note" %}}
+{{% alert title="注意" %}}
 
 上述列表是 [`/api`](/api) 的别名。
 
