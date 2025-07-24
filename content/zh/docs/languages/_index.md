@@ -8,7 +8,7 @@ redirects:
   - { from: 'net/*', to: 'dotnet/:splat' }
 ---
 
-OpenTelemetry 代码 [插桩][instrumentation] 该功能支持下表 [“状态与发布版本”](#status-and-releases)  中所列的编程语言。 
+OpenTelemetry 代码 [插桩][instrumentation] 该功能支持下表 [“状态与发布版本”](#status-and-releases) 中所列的编程语言。
 [其他语言](/docs/languages/other)的非官方实现版本也可获取。你可以在 [registry](/ecosystem/registry/) 中找到它们。
 
 Go, .NET, PHP, Python, Java and JavaScript 你可以使用[零代码解决方案](/docs/zero-code) 来添加插桩，无需修改代码。
@@ -21,7 +21,7 @@ Go, .NET, PHP, Python, Java and JavaScript 你可以使用[零代码解决方案
 
 {{% alert title="Important" color="warning" %}}
 
- Regardless of an API/SDK's status, if your instrumentation relies on [semantic
+Regardless of an API/SDK's status, if your instrumentation relies on [semantic
 conventions][] that are marked as [Experimental] in the [semantic conventions
 specification][], your data flow might be subject to **breaking changes**.
 无论 API/SDK 的状态如何，如果你的插桩依赖于 [语义约定][semantic conventions] 中被标记为 [实验性][Experimental] 的内容（参见 [语义约定规范][semantic conventions specification]），那么你的数据流可能会发生**破坏性变更**。
