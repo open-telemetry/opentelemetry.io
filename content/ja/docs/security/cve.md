@@ -4,7 +4,7 @@ weight: 100
 default_lang_commit: 179f03bf118e1e8a3cc195ab56fc09d85c476394
 ---
 
-このページは[OpenTelemetry organization on GitHub](https://github.com/open-telemetry/)上の全リポジトリで報告されたCVEsの一覧です。
+このページは[GitHubのOpenTelemetry Organization](https://github.com/open-telemetry/)上の全リポジトリで報告されたCVEsの一覧です。
 元のデータは、[sig-security](https://github.com/open-telemetry/sig-security) リポジトリで管理され、日次で更新されます。
 
 <table id="cve-table">

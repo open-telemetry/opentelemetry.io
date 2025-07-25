@@ -1,6 +1,6 @@
 ---
 title: コレクターの設定のベストプラクティス
-linkTitle: Collector configuration
+linkTitle: コレクターの設定
 weight: 112
 default_lang_commit: 179f03bf118e1e8a3cc195ab56fc09d85c476394
 cSpell:ignore: exporterhelper
@@ -54,7 +54,7 @@ rootユーザーでの実行は避けてください。ただし、いくつか�
 オブザーバーはエクステンションとして実装されます。エクステンションは、Collector の主要機能の上に機能を追加するコンポーネントの一種です。
 エクステンションはテレメトリーに直接アクセスする必要はなく、パイプラインの一部でもありませんが、特別なパーミッションが必要な場合、セキュリティリスクを引き起こす可能性があります。
 
-オブザーバーは、[receiver creator](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/receivercreator/README.md)に代わって、Kubernetes Pod、Dockerコンテナ、またはローカルのリスニングポートなどのネットワーク接続されたエンドポイントを検出します。
+オブザーバーは、[receiver creator](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/receivercreator/README.md)にかわって、Kubernetes Pod、Dockerコンテナ、またはローカルのリスニングポートなどのネットワーク接続されたエンドポイントを検出します。
 サービスを検出するために、オブザーバーは上位のアクセス権限を要求する場合があります。
 たとえば、`k8s_observer`がKubernetes上で要求する権限については [role-based access control (RBAC) permissions](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/k8sobserver#setting-up-rbac-permissions) を参照してください。
 
@@ -62,7 +62,7 @@ rootユーザーでの実行は避けてください。ただし、いくつか�
 
 これらのセキュリティ上の脅威をブロックするようにコレクターを設定してください。
 
-### DoS攻撃からの保護
+### DoS攻撃からの保護　{#protect-against-denial-of-service-attacks}
 
 サーバーのようなレシーバーや拡張機能では、これらのコンポーネントのエンドポイントを、許可されたユーザーへの接続を制限するアドレスにバインドすることで、コレクターがインターネット上に公開されたり、必要以上に広いネットワークに公開されたりするのを防ぐことができます。
 PodのIPや、`0.0.0.0`のかわりに`localhost`など、常に特定のインターフェイスを使用するようにしてください。
@@ -99,7 +99,7 @@ receivers:
   otlp:
     protocols:
       grpc:
-        endpoint: my-hostname:4317 # Use the same hostname from your docker run command
+        endpoint: my-hostname:4317 # docker runコマンドと同じホスト名を指定
 ```
 
 `docker run`コマンド上で、コレクターの`my-hostname`アドレスをバインドするために`--hostname`引数を使用してください。
@@ -132,7 +132,7 @@ receivers:
   otlp:
     protocols:
       grpc:
-        endpoint: otel-collector:4317 # Use the service name from your Docker compose file
+        endpoint: otel-collector:4317 # docker composeのfileに記載のサービス名を使用。
 ```
 
 同一のネットワーク上に存在する別のDockerコンテナから`otel-collector:4317`でコレクターに接続することができます。
@@ -223,13 +223,13 @@ processors:
       - name
     ignored_keys:
       - safe_attribute
-    blocked_values: # Regular expressions for blocking values of allowed span attributes
-      - '4[0-9]{12}(?:[0-9]{3})?' # Visa credit card number
-      - '(5[1-5][0-9]{14})' # MasterCard number
+    blocked_values: # 許可されたspanの属性値をブロックするための正規表現
+      - '4[0-9]{12}(?:[0-9]{3})?' # VISAクレジットカード番号
+      - '(5[1-5][0-9]{14})' # MasterCardクレジットカード番号
     summary: debug
 ```
 
-コレクターの設定に`redaction`プロセッサーをどのように追加するかについては、[こちら](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor)を参照してください。
+コレクターの設定に`redaction`プロセッサーをどのように追加するかについては、[ドキュメント](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor)を参照してください。
 
 ### リソース利用の保護 {#safeguard-resource-utilization}
 
