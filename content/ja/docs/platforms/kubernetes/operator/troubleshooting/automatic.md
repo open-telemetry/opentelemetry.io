@@ -235,7 +235,7 @@ kubectl get events -n <namespace>
 
 また、イベントコマンドの出力のエラーを確認することで、問題の原因を特定するのに役立つ場合があります。
 
-### 自動計装アノテーションを確認する
+### 自動計装アノテーションを確認する {#check-the-auto-instrumentation-annotation}
 
 次のような自動計装アノテーションのスニペットを考えてみましょう。
 
@@ -255,7 +255,7 @@ annotations:
 
 ここでの `opentelemetry` は `Instrumentation` リソースの名前空間で、`my-instrumentation` は `Instrumentation` リソースの名前です。
 
-[アノテーションに利用できる値は次のとおりです。](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md?plain=1#L151-L156)
+[アノテーションに利用できる値は次のとおりです](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md?plain=1#L151-L156)。
 
 - "true" - 名前空間から `OpenTelemetryCollector` リソースを挿入する。
 - "sidecar-for-my-app" - 現在の名前空間内の `OpenTelemetryCollector` カスタムリソースインスタンスの名前。
