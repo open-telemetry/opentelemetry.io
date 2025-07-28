@@ -60,7 +60,8 @@ com os seguintes detalhes:
 
 Os mantenedores do SIG de Comunicação irão verificar se sua publicação atende a
 todos os requisitos para ser aceita. Caso não consiga indicar um
-SIG/patrocinador inicialmente, eles poderão te direcionar a um SIG apropriado.
+SIG/patrocinador inicialmente na sua _issue_, eles poderão te direcionar a um SIG apropriado,
+com o qual você pode entrar em contato para obter patrocínio.
 Ter um patrocinador é opcional, mas aumenta a chance de a publicação ser
 revisada e aprovada mais rapidamente.
 
