@@ -132,4 +132,4 @@ significa que:
 - A publicação pode ser adiada se necessário, e os mantenedores não podem
   garantir que a publicação ocorra antes ou em uma determinada data.
 - Alguns _posts_ no _blog_ (anúncios importantes) podem ter prioridade e serem
-  publicados antes da sua.
+  publicados antes do seu.
