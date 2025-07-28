@@ -5,7 +5,7 @@ weight: 30
 default_lang_commit: 6c676267409eefc15a28c0e2fdd60b26a4687f74
 ---
 
-O [blog do OpenTelemetry](/blog/) comunica novas funcionalidades, relatórios da
+O [_blog_ do OpenTelemetry](/blog/) comunica novas funcionalidades, relatórios da
 comunidade e quaisquer novidades que possam ser relevantes para a comunidade
 OpenTelemetry. Isso inclui tanto usuários finais quanto desenvolvedores. Qualquer pessoa
 pode escrever uma publicação — veja abaixo quais são os requisitos.
@@ -23,7 +23,7 @@ de revisão.
 
 ## Antes de enviar um post no blog {#before-submitting-a-blog-post}
 
-As publicações no blog não devem ter caráter comercial e devem conter conteúdo
+As publicações no _blog_ não devem ter caráter comercial e devem conter conteúdo
 original que seja amplamente relevante para a comunidade OpenTelemetry. As
 publicações devem seguir as políticas descritas no
 [Guia de Mídias Sociais](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
@@ -71,7 +71,7 @@ autorizar a submissão do conteúdo.
 Você pode enviar um _post_ no _blog_ criando um _fork_ do repositório e escrevendo-o
 localmente ou usando a interface do GitHub. Em ambos os casos, pedimos que siga
 as instruções fornecidas pelo
-[modelo de post no blog](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md).
+[modelo de _post_ no _blog_](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md).
 
 ### Criar um _fork_ e escrever localmente {#fork-and-write-locally}
 
@@ -123,7 +123,7 @@ utilizando a interface do GitHub:
 
 ## Prazos de publicação {#publication-timelines}
 
-O blog do OpenTelemetry não segue um prazo de publicação rigoroso, o que
+O _blog_ do OpenTelemetry não segue um prazo de publicação rigoroso, o que
 significa que:
 
 - Seu _post_ será publicado quando tiver todas as aprovações necessárias.
