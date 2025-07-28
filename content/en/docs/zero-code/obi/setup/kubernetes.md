@@ -125,7 +125,7 @@ requirements:
 
 The following example instruments the `goblog` pod by attaching OBI as a
 container (image available at `otel/ebpf-instrument:latest`). The auto-instrumentation
-tool is configured to forward metrics and traces to OpenTelemetry collector, which is
+tool is configured to forward metrics and traces to OpenTelemetry Collector, which is
 accessible behind the `otelcol` service in the same namespace:
 
 ```yaml

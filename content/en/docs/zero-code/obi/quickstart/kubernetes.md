@@ -2,7 +2,7 @@
 title: OBI and Kubernetes quickstart
 linkTitle: Kubernetes quickstart
 description:
-  Learn how to instrument an application export data with OpenTelemetry eBPF Instrument to an OpenTelemetry collector.
+  Learn how to instrument an application export data with OpenTelemetry eBPF Instrument to an OpenTelemetry Collector.
 weight: 99
 cSpell:ignore: instrumentable replicaset sampleapps
 ---
