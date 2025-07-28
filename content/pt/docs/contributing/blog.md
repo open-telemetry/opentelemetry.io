@@ -120,7 +120,7 @@ utilizando a interface do GitHub:
 
 1.  Edite o arquivo Markdown diretamente no GitHub.
 
-1.  Quando a publicação estiver pronta, selecione **Propose changes** e siga as
+1.  Quando a publicação estiver pronta, selecione **Propose changes** (Proponha mudanças) e siga as
     instruções.
 
 ## Prazos de publicação {#publication-timelines}
