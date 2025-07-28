@@ -214,7 +214,7 @@ spec:
     spec:
       containers:
         - name: ruby-service
-          image: ghcr.io/grafana/beyla-test/rails-testserver
+          image: ghcr.io/open-telemetry/obi-testimg:rails-0.1.0
           ports:
             - containerPort: 3000
           env:

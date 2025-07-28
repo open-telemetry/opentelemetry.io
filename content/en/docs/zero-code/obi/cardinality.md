@@ -249,7 +249,7 @@ Service Graph Metrics produce the following metrics:
 
 Each metric also has the following attributes:
 
-- `source`: Beyla
+- `source`: obi
 - `client` and `client_namespace`
 - `server` and `server_namespace`
 

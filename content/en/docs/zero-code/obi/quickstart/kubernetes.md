@@ -2,8 +2,7 @@
 title: OBI and Kubernetes quickstart
 linkTitle: Kubernetes quickstart
 description:
-  Learn how to instrument an application export data with Prometheus to Grafana
-  Cloud.
+  Learn how to instrument an application export data with OpenTelemetry eBPF Instrument to an OpenTelemetry Collector.
 weight: 99
 cSpell:ignore: instrumentable replicaset sampleapps
 ---
@@ -164,13 +163,13 @@ hypothetical request to the company website and each request to
 `http://localhost:8081` will be a hypothetical request to the documentation
 website.
 
-### 2. Create `beyla` namespace
+### 2. Create `obi` namespace
 
-Before configuring and deploying OBI, let's create a `beyla` namespace. We will
+Before configuring and deploying OBI, let's create a `obi` namespace. We will
 group there all the permissions, configurations and deployments related to it:
 
 ```shell
-kubectl create namespace beyla
+kubectl create namespace obi
 ```
 
 ### 3. Configure and run OBI
@@ -183,13 +182,13 @@ must create the following YAML file and apply it:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  namespace: beyla
-  name: beyla
+  namespace: obi
+  name: obi
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: beyla
+  name: obi
 rules:
   - apiGroups: ['apps']
     resources: ['replicasets']
@@ -201,28 +200,28 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: beyla
+  name: obi
 subjects:
   - kind: ServiceAccount
-    name: beyla
-    namespace: beyla
+    name: obi
+    namespace: obi
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: beyla
+  name: obi
 ```
 
 And now, deploy OBI by creating the following Kubernetes entities:
 
-- A `ConfigMap` storing the `beyla-config.yml` OBI configuration file, which
+- A `ConfigMap` storing the `obi-config.yml` OBI configuration file, which
   defines the service discovery criteria. To verify that OBI is able to
   discriminate by service instance even if they run the same image and
   executable, OBI is configured to select ONLY the `docs` Apache web server.
 - A OBI `DaemonSet` providing the OBI pod and its configuration:
-  - Loads the `beyla-config.yml` file from the `ConfigMap`, as specified in the
+  - Loads the `obi-config.yml` file from the `ConfigMap`, as specified in the
     `OTEL_EBPF_CONFIG_PATH` environment variable.
-  - References to the `grafana-secrets` values for the endpoint and credentials.
-  - Uses the `beyla` `ServiceAccount` to get all the permissions.
+  - References to the `obi-secrets` values for the endpoint and credentials.
+  - Uses the `obi` `ServiceAccount` to get all the permissions.
 
 Copy and deploy the following YAML file:
 
@@ -230,10 +229,10 @@ Copy and deploy the following YAML file:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  namespace: beyla
-  name: beyla-config
+  namespace: obi
+  name: obi-config
 data:
-  beyla-config.yml: |
+  obi-config.yml: |
     # this is required to enable kubernetes discovery and metadata
     attributes:
       kubernetes:
@@ -251,49 +250,41 @@ data:
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  namespace: beyla
-  name: beyla
+  namespace: obi
+  name: obi
 spec:
   selector:
     matchLabels:
-      instrumentation: beyla
+      instrumentation: obi
   template:
     metadata:
       labels:
-        instrumentation: beyla
+        instrumentation: obi
     spec:
-      serviceAccountName: beyla
+      serviceAccountName: obi
       hostPID: true # mandatory!
       containers:
-        - name: beyla
-          image: grafana/beyla:latest
+        - name: obi
+          image: otel/ebpf-instrument:latest
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true # mandatory!
             readOnlyRootFilesystem: true
           volumeMounts:
             - mountPath: /config
-              name: beyla-config
-            - mountPath: /var/run/beyla
-              name: var-run-beyla
+              name: obi-config
+            - mountPath: /var/run/obi
+              name: var-run-obi
           env:
             - name: OTEL_EBPF_CONFIG_PATH
-              value: '/config/beyla-config.yml'
+              value: '/config/obi-config.yml'
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              valueFrom:
-                secretKeyRef:
-                  name: grafana-credentials
-                  key: otlp-endpoint
-            - name: OTEL_EXPORTER_OTLP_HEADERS
-              valueFrom:
-                secretKeyRef:
-                  name: grafana-credentials
-                  key: otlp-headers
+              value: "localhost:4317"
       volumes:
-        - name: beyla-config
+        - name: obi-config
           configMap:
-            name: beyla-config
-        - name: var-run-beyla
+            name: obi-config
+        - name: var-run-obi
           emptyDir: {}
 ```
 
@@ -305,10 +296,10 @@ Also notice:
   perform privileged actions such as loading BPF programs and creating BPF maps.
   For running OBI as `unprivileged` container, i.e. without the
   `privileged: true` option, visit the
-  [Deploy OBI unprivileged](../../setup/kubernetes/#deploy-beyla-unprivileged)
+  [Deploy OBI unprivileged](../setup/kubernetes.md#deploy-obi-unprivileged)
   guide.
 
-### 4. Test your instrumented services and see the results in Grafana
+### 4. Test your instrumented services and see the results in your observability solution
 
 With the `kubectl port-forward` commands from the firs step still running, test
 both web server instances. For example:
@@ -323,29 +314,28 @@ curl http://localhost:8081/foo
 Some requests will return 404 error, but it's OK because they are also
 instrumented.
 
-Now, go to the instance in Grafana Cloud, and from the **Explore** section in
-the left panel, select the data source for the traces (usually named
-`grafanacloud-<your user name>-traces`).
+Now, go to your observability UI. For example, Grafana, and select the data source
+for the traces.
 
-![Select the traces data source](https://grafana.com/media/docs/grafana-cloud/beyla/tutorial/k8s/select-traces.png)
+![Select the traces data source](img/select-traces.png)
 
 To search for all the traces, select the **Search** box in the Query bar, leave
 the form empty, and click **Run query**:
 
-![Searching for all the traces in the system](https://grafana.com/media/docs/grafana-cloud/beyla/tutorial/k8s/run-query.png)
+![Searching for all the traces in the system](img/run-query.png)
 
 This will show the traces for the `docs` instance (port 8081). You might see
 traces from your own services, but shouldn't see traces from the `website`
 service, as it has not been instrumented by OBI.
 
-![Grafana Cloud list of traces](https://grafana.com/media/docs/grafana-cloud/beyla/tutorial/k8s/tut-traces-list.png)
+![List of traces](img/tut-traces-list.png)
 
 In the trace details, the resource attributes of the traces are decorated with
 the metadata of the Kubernetes Pod running the instrumented service:
 
-![Details of the trace](https://grafana.com/media/docs/grafana-cloud/beyla/tutorial/k8s/tut-trace-details.png)
+![Details of the trace](img/tut-trace-details.png)
 
 ## Links
 
-- [Documentation: OBI configuration options](../../configure/options/)
-- [Documentation: run OBI as Kubernetes DaemonSet](../../setup/kubernetes/)
+- [Documentation: OBI configuration options](../configure/options.md)
+- [Documentation: run OBI as Kubernetes DaemonSet](../setup/kubernetes.md)

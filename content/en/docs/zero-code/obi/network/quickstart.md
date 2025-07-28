@@ -94,7 +94,7 @@ spec:
           configMap:
             name: obi-config
         - name: obi
-          image: grafana/beyla:main
+          image: otel/ebpf-instrument:latest
           securityContext:
             privileged: true
           volumeMounts:
@@ -107,7 +107,7 @@ spec:
 
 Some observations about this configuration:
 
-- The container image uses the latest under-development `grafana/beyla:main`
+- The container image uses the latest under-development `otel/ebpf-instrument:latest`
   image.
 - OBI needs to run as a DaemonSet, as it is requires only one OBI instance per
   node
@@ -135,45 +135,8 @@ network_flow: obi.ip=172.18.0.2 iface= direction=255 src.address=10.244.0.4 dst.
 After you have confirmed that network metrics are being collected, configure OBI
 to export the metrics in OpenTelemetry format to a collector endpoint.
 
-Check the [data export documentation](../../configure/export-data/) to configure
+Check the [data export documentation](../configure/export-data.md#opentelemetry-metrics-exporter-component) to configure
 the OpenTelemetry exporter.
-
-## Advanced setup
-
-OBI works with any OpenTelemetry endpoint. This quickstart uses the
-OpenTelemetry endpoint in Grafana Cloud. You can get a
-[Free Grafana Cloud Account at Grafana's website](/pricing/).
-
-From your Grafana Cloud portal, look for the "OpenTelemetry" option in the left
-side panel, under the "Connections" section.
-
-![OpenTelemetry Grafana Cloud portal](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/otel-cloud-portal-box.png)
-
-In the OpenTelemetry page, you can consult the connection information that you
-need to pass as endpoint and credentials information for OBI.
-
-![OTLP connection headers](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/otlp-connection-headers.png)
-
-To send metrics to Grafana Cloud, you must provide the
-`OTEL_EXPORTER_OTLP_ENDPOINT` and `OTEL_EXPORTER_OTLP_HEADERS` environment
-variables to your OBI process.
-
-More details about them in the [configuration options](../../configure/options/)
-reference.
-
-Also Add `OTEL_EXPORTER_OTLP_ENDPOINT` and its value as an environment variable
-to the OBI container in the Kubernetes manifest. The `env` section of the `obi`
-container in the manifest from the start of this document should look like:
-
-```yaml
-env:
-  - name: OBI_CONFIG_PATH
-    value: '/config/obi-config.yml'
-  - name: OTEL_EXPORTER_OTLP_ENDPOINT
-    value: 'https://otlp-gateway-prod-us-central-0.grafana.net/otlp'
-  - name: OTEL_EXPORTER_OTLP_HEADERS
-    value: 'Authorization=Basic <your-cloud-credentials>'
-```
 
 ### Allowed attributes
 

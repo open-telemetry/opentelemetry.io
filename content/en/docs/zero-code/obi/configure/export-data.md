@@ -75,10 +75,10 @@ processes matching entries in the [metrics discovery](./) configuration.
 - `application_process`: Metrics about the processes that runs the instrumented
   application
 - `network`: Network-level metrics, refer to the
-  [network metrics](/docs/beyla/latest/network/) configuration documentation to
+  [network metrics](../network) configuration documentation to
   learn more
 - `network_inter_zone`: Network inter-zone metrics, refer to the
-  [network metrics](/docs/beyla/latest/network/) configuration documentation to
+  [network metrics](../network/) configuration documentation to
   learn more
 
 ### Metrics instrumentation
@@ -215,10 +215,10 @@ The Prometheus metrics exporter can export the following metrics data groups:
 - `application_process`: Metrics about the processes that runs the instrumented
   application
 - `network`: Network-level metrics, refer to the
-  [network metrics](/docs/beyla/latest/network/) configuration documentation to
+  [network metrics](../network/) configuration documentation to
   learn more
 - `network_inter_zone`: Network inter-zone metrics, refer to the
-  [network metrics](/docs/beyla/latest/network/) configuration documentation to
+  [network metrics](../network/) configuration documentation to
   learn more
 
 ### Prometheus instrumentation

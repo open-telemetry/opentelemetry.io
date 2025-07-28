@@ -94,24 +94,25 @@ The following YAML snippet shows an example OBI deployment configuration:
 
 ```yaml
 spec:
-  serviceAccount: beyla
+  serviceAccount: obi
   hostPID: true # <-- Important. Required in DaemonSet mode so OBI can discover all monitored processes
   hostNetwork: true # <-- Important. Required in DaemonSet mode so OBI can see all network packets
   dnsPolicy: ClusterFirstWithHostNet
   containers:
-    - name: beyla
+    - name: obi
       resources:
         limits:
           memory: 120Mi
       terminationMessagePolicy: FallbackToLogsOnError
-      image: 'beyla:latest'
+      image: 'docker.io/otel/ebpf-instrument:latest'
       imagePullPolicy: 'Always'
-      command: ['/beyla', '--config=/config/beyla-config.yml']
       env:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
           value: 'http://otelcol:4318'
         - name: OTEL_EBPF_KUBE_METADATA_ENABLE
           value: 'autodetect'
+        - name: OTEL_EBPF_CONFIG_PATH
+          value: "/config/obi-config.yml"
       securityContext:
         runAsUser: 0
         readOnlyRootFilesystem: true
@@ -128,16 +129,16 @@ spec:
         - name: cgroup
           mountPath: /sys/fs/cgroup # <-- Important. Allows OBI to monitor all newly sockets to track outgoing requests.
         - mountPath: /config
-          name: beyla-config
+          name: obi-config
   tolerations:
     - effect: NoSchedule
       operator: Exists
     - effect: NoExecute
       operator: Exists
   volumes:
-    - name: beyla-config
+    - name: obi-config
       configMap:
-        name: beyla-config
+        name: obi-config
     - name: cgroup
       hostPath:
         path: /sys/fs/cgroup
@@ -199,10 +200,10 @@ configuration, which ensures OBI has sufficient information to determine the
 ```yaml
 services:
   ...
-  beyla:
-    image: grafana/beyla:latest
+  obi:
+    image: 'docker.io/otel/ebpf-instrument:latest'
     environment:
-      OTEL_EBPF_CONFIG_PATH: "/configs/beyla-config.yml"
+      OTEL_EBPF_CONFIG_PATH: "/configs/obi-config.yml"
     volumes:
       - /sys/kernel/security:/sys/kernel/security
       - /sys/fs/cgroup:/sys/fs/cgroup

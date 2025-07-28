@@ -15,13 +15,13 @@ following command line, the `OTEL_EBPF_LOG_LEVEL` option overrides any
 **Config argument:**
 
 ```sh
-OTEL_EBPF_LOG_LEVEL=debug beyla -config /path/to/config.yaml
+OTEL_EBPF_LOG_LEVEL=debug obi -config /path/to/config.yaml
 ```
 
 **Config environment variable:**
 
 ```sh
-OTEL_EBPF_LOG_LEVEL=debug OTEL_EBPF_CONFIG_PATH=/path/to/config.yaml beyla
+OTEL_EBPF_LOG_LEVEL=debug OTEL_EBPF_CONFIG_PATH=/path/to/config.yaml obi
 ```
 
 Refer to the [example YAML configuration file](../example/) for a configuration
