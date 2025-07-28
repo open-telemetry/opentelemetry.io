@@ -111,7 +111,7 @@ utilizando a interface do GitHub:
     e clique em **Copy raw content** (Copiar conteúdo) no canto superior direito do menu.
 
 1.  Vá para
-    [Create a new file](https://github.com/open-telemetry/opentelemetry.io/new/main).
+    [Create a new file (Crie um novo arquivo)](https://github.com/open-telemetry/opentelemetry.io/new/main).
 
 1.  Cole o conteúdo do modelo copiado no primeiro passo.
 
