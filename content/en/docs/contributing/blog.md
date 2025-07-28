@@ -127,3 +127,19 @@ The OpenTelemetry blog doesn't follow a strict publication timeline, this means:
   publication at or before a certain date.
 - Certain blog posts (major announcements) take precedence and may be published
   before your blog post.
+
+## Cross-posting blog content
+
+If you'd like to share your OpenTelemetry blog post on another platform,
+you're welcome to do so. Just keep the following in mind:
+
+- Decide which version will be the canonical post (typically the original OpenTelemetry blog post).
+- Other versions of the post should:
+  - Clearly mention that the original post appeared on the OpenTelemetry blog.
+  - Include a link back to the original at the top or bottom of the page.
+  - Set a canonical URL tag pointing to the OpenTelemetry blog post, 
+    if the platform supports it.
+
+This helps ensure proper attribution, supports SEO best practices, and avoids 
+content duplication.
+
