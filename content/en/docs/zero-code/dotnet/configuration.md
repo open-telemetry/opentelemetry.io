@@ -380,4 +380,3 @@ instead.
 | ------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_LOG_DIRECTORY`                  | Directory of the .NET Tracer logs.                                      | _See the previous note on default paths_ | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_LOG_LEVEL`                                  | SDK log level. (supported values: `none`,`error`,`warn`,`info`,`debug`) | `info`                                   | [Stable](/docs/specs/otel/versioning-and-stability)       |
-| `OTEL_DOTNET_AUTO_LOGS_INCLUDE_FORMATTED_MESSAGE` | Whether the log state should be formatted.                              | `false`                                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
