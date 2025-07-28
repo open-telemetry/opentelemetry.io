@@ -12,8 +12,8 @@ mostrando ou ocultando banners automaticamente dependendo da data de compilaçã
 determinando a ordem dos banners, lidando com _fallback_ para banners em inglês,
 etc.
 
-> Atualmente, os anúncios são usados apenas como banners. Eventualmente,
-> também poderemos oferecer suporte a anúncios um pouco mais gerais.
+> Atualmente, os anúncios são usados apenas como banners. Eventualmente, também
+> poderemos oferecer suporte a anúncios um pouco mais gerais.
 
 ### Criando um anúncio {#creating-an-announcement}
 
@@ -38,16 +38,16 @@ certifique-se de usar o **mesmo nome de arquivo** do anúncio em inglês.
 
 ### Lista de anúncios {#announcement-list}
 
-Um anúncio específico será exibido em uma compilação do site quando a data de compilação
-estiver entre os campos `date` e `expiryDate` do anúncio. Quando esses campos
-estiverem ausentes, os valores padrão serão considerados como "agora" e "para
-sempre", respectivamente.
+Qualquer anúncio aparecerá no site quando sua data de compilação estiver entre
+os campos `date` e `expiryDate` do anúncio. Quando esses campos estiverem
+ausentes, os valores padrão serão considerados como "agora" e "para sempre",
+respectivamente.
 
 Os anúncios aparecerão na ordem padrão das páginas, determinada através da
 função [Regular pages](https://gohugo.io/methods/site/regularpages/) do Hugo. Ou
-seja, os anúncios mais "leves" (por peso: `weight`) aparecerão primeiro; quando os
-pesos forem iguais ou não especificados, os anúncios mais recentes (por data: `date`)
-aparecerão primeiro, etc.
+seja, os anúncios mais "leves" (por peso: `weight`) aparecerão primeiro; quando
+os pesos forem iguais ou não especificados, os anúncios mais recentes (por data:
+`date`) aparecerão primeiro, etc.
 
 Portanto, se você quiser forçar um anúncio ao topo, utilize um valor negativo
 para o campo `weight`.
