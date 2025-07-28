@@ -46,7 +46,7 @@ sempre", respectivamente.
 Os anúncios aparecerão na ordem padrão das páginas, determinada através da
 função [Regular pages](https://gohugo.io/methods/site/regularpages/) do Hugo. Ou
 seja, os os anúncios mais "leves" (por `weight`) aparecerão primeiro; quando os
-pesos forem iguais ou não especificados, os anúncios mais recentes (por `date`)
+pesos forem iguais ou não especificados, os anúncios mais recentes (por data: `date`)
 aparecerão primeiro, etc.
 
 Portanto, se você quiser forçar um anúncio ao topo, utilize um valor negativo
