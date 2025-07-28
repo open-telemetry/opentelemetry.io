@@ -108,7 +108,7 @@ utilizando a interface do GitHub:
 
 1.  Acesse o
     [modelo de publicação](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md)
-    e clique em **Copy raw content** no canto superior direito do menu.
+    e clique em **Copy raw content** (Copiar conteúdo) no canto superior direito do menu.
 
 1.  Vá para
     [Create a new file](https://github.com/open-telemetry/opentelemetry.io/new/main).
