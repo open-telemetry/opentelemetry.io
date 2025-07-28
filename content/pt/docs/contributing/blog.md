@@ -12,7 +12,7 @@ pode escrever uma publicação — veja abaixo quais são os requisitos.
 
 ## Documentação ou post no blog? {#documentation-or-blog-post}
 
-Antes de escrever um post no blog, pergunte a si mesmo se o conteúdo também
+Antes de escrever um _post_ no _blog_, pergunte a si mesmo se o conteúdo também
 poderia ser uma boa adição à documentação. Se a resposta for "sim", crie uma
 nova _issue_ ou _pull request_ (PR) com seu conteúdo para que seja adicionado à
 documentação.
