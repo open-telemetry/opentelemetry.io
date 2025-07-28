@@ -12,8 +12,8 @@ mostrando ou ocultando banners automaticamente dependendo da data de compilaçã
 determinando a ordem dos banners, lidando com _fallback_ para banners em inglês,
 etc.
 
-> Atualmente, os anúncios são usados apenas como banners. Nós podemos
-> eventualmente dar suporte a anúncios um pouco mais gerais também.
+> Atualmente, os anúncios são usados apenas como banners. Eventualmente,
+> também poderemos oferecer suporte a anúncios um pouco mais gerais.
 
 ### Criando um anúncio {#creating-an-announcement}
 
