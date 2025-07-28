@@ -5,10 +5,11 @@ weight: 30
 default_lang_commit: 6c676267409eefc15a28c0e2fdd60b26a4687f74
 ---
 
-O [_blog_ do OpenTelemetry](/blog/) comunica novas funcionalidades, relatórios da
-comunidade e quaisquer novidades que possam ser relevantes para a comunidade
-OpenTelemetry. Isso inclui tanto usuários finais quanto desenvolvedores. Qualquer pessoa
-pode escrever uma publicação — veja abaixo quais são os requisitos.
+O [_blog_ do OpenTelemetry](/blog/) comunica novas funcionalidades, relatórios
+da comunidade e quaisquer novidades que possam ser relevantes para a comunidade
+OpenTelemetry. Isso inclui tanto usuários finais quanto desenvolvedores.
+Qualquer pessoa pode escrever uma publicação — veja abaixo quais são os
+requisitos.
 
 ## Documentação ou post no blog? {#documentation-or-blog-post}
 
@@ -68,15 +69,15 @@ autorizar a submissão do conteúdo.
 
 ## Enviar um post no blog {#submit-a-blog-post}
 
-Você pode enviar um _post_ no _blog_ criando um _fork_ do repositório e escrevendo-o
-localmente ou usando a interface do GitHub. Em ambos os casos, pedimos que siga
-as instruções fornecidas pelo
+Você pode enviar um _post_ no _blog_ criando um _fork_ do repositório e
+escrevendo-o localmente ou usando a interface do GitHub. Em ambos os casos,
+pedimos que siga as instruções fornecidas pelo
 [modelo de _post_ no _blog_](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md).
 
 ### Criar um _fork_ e escrever localmente {#fork-and-write-locally}
 
-Depois de configurar o _fork_ local, você pode criar um _post_ no _blog_ usando um
-modelo. Siga estes passos para criar um _post_ a partir do modelo:
+Depois de configurar o _fork_ local, você pode criar um _post_ no _blog_ usando
+um modelo. Siga estes passos para criar um _post_ a partir do modelo:
 
 1. Execute o seguinte comando a partir da raiz do repositório:
 
