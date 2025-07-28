@@ -5,7 +5,7 @@ default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 cSpell:ignore: Dotel myapp
 ---
 
-## Configuration
+## Configuration {#setup}
 
 1.  Téléchargez [opentelemetry-javaagent.jar][] depuis les [Releases][] du dépôt
     `opentelemetry-java-instrumentation` et placez le JAR dans le répertoire de
@@ -28,7 +28,7 @@ cSpell:ignore: Dotel myapp
       java -jar myapp.jar
       ```
 
-## Configuration de l'agent
+## Configuration de l'agent {#configuring-the-agent}
 
 L'agent est hautement configurable.
 
@@ -73,13 +73,13 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
 Pour voir toutes les options de configuration, consultez
 [Configuration de l'agent](../configuration).
 
-## Bibliothèques, frameworks, services d'application et JVM supportés
+## Bibliothèques, frameworks, services d'application et JVM supportés {#supported-libraries-frameworks-application-services-and-jvms}
 
 L'agent Java est livré avec des bibliothèques d'instrumentation pour de nombreux
 composants populaires. Pour la liste complète, consultez [Bibliothèques,
 frameworks, services d'application et JVM supportés][support].
 
-## Dépannage
+## Dépannage {#troubleshooting}
 
 {{% config_option name="otel.javaagent.debug" %}}
 
@@ -88,7 +88,7 @@ verbeux.
 
 {{% /config_option %}}
 
-## Prochaines étapes
+## Prochaines étapes {#next-steps}
 
 Après avoir configuré l'instrumentation automatique pour votre application ou
 service, vous pourriez [annoter](../annotations) des méthodes sélectionnées ou

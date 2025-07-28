@@ -9,7 +9,7 @@ weight: 21
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 ---
 
-## Introduction
+## Introduction {#introduction}
 
 En plus de l'instrumentation prête à l'emploi, vous pouvez étendre le Spring
 Boot starter avec une instrumentation manuelle personnalisée en utilisant l'API
@@ -20,13 +20,13 @@ trop de changements de code.
 
 Les dépendances requises sont déjà incluses dans le starter Spring Boot.
 
-## OpenTelemetry
+## OpenTelemetry {#opentelemetry}
 
 Le Spring Boot starter est un cas particulier où `OpenTelemetry` est disponible
 en tant que Beans Spring Boot. Injectez simplement `OpenTelemetry` dans vos
 composants Spring.
 
-## Span
+## Span {#span}
 
 {{% alert title="Note" %}}
 
@@ -55,7 +55,7 @@ Utilisez le `Tracer` pour créer un span comme expliqué dans la section
 
 Un exemple complet peut être trouvé dans le [dépôt d'exemples].
 
-## Meter
+## Meter {#meter}
 
 ```java
 import io.opentelemetry.api.OpenTelemetry;

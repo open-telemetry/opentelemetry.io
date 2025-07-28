@@ -12,7 +12,7 @@ Lors de l'instrumentation d'une application qui s'exécute sur un serveur
 d'applications Java avec un agent Java, vous devez ajouter le chemin `javaagent`
 aux arguments de la JVM. La manière de le faire diffère d'un serveur à l'autre.
 
-## JBoss EAP / WildFly
+## JBoss EAP / WildFly {#jboss-eap--wildfly}
 
 Vous pouvez ajouter l'argument `javaagent` à la fin du fichier de configuration
 :
@@ -22,7 +22,7 @@ Vous pouvez ajouter l'argument `javaagent` à la fin du fichier de configuration
 {{% tab header="Linux" lang=Linux %}}
 
 ```sh
-# Ajouter à standalone.conf
+# Ajouter à standalone.conf {#add-to-standaloneconf}
 JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
 ```
 
@@ -35,7 +35,7 @@ set "JAVA_OPTS=%JAVA_OPTS% -javaagent:<Drive>:\path\to\opentelemetry-javaagent.j
 
 {{% /tab %}} {{< /tabpane >}}
 
-## Jetty
+## Jetty {#jetty}
 
 Pour définir le chemin vers l'agent Java, utilisez l'argument `-javaagent` :
 
@@ -55,13 +55,13 @@ ajoutez l'argument `javaagent` après l'option `--exec` :
 
 ```ini
 #===========================================================
-# Exemple de fichier start.ini pour Jetty
+# Exemple de fichier start.ini pour Jetty {#sample-jetty-startini-file}
 #-----------------------------------------------------------
 --exec
 -javaagent:/path/to/opentelemetry-javaagent.jar
 ```
 
-## Glassfish / Payara
+## Glassfish / Payara {#glassfish--payara}
 
 Ajoutez le chemin vers l'agent Java en utilisant l'outil `asadmin` :
 
@@ -92,7 +92,7 @@ d'administration. Par exemple :
 Assurez-vous que le fichier domain.xml dans votre répertoire de domaine contient
 une entrée `<jmv-options>` pour l'agent.
 
-## Tomcat / TomEE
+## Tomcat / TomEE {#tomcat--tomee}
 
 Ajoutez le chemin vers l'agent Java à votre script de démarrage :
 
@@ -101,7 +101,7 @@ Ajoutez le chemin vers l'agent Java à votre script de démarrage :
 {{% tab header="Linux" lang=Linux %}}
 
 ```sh
-# Ajouter à <tomcat_home>/bin/setenv.sh
+# Ajouter à <tomcat_home>/bin/setenv.sh {#add-to-tomcat_homebinsetenvsh}
 CATALINA_OPTS="$CATALINA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
 ```
 
@@ -114,7 +114,7 @@ set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:"<Drive>:\path\to\opentelemetry-jav
 
 {{% /tab %}} {{< /tabpane >}}
 
-## WebLogic
+## WebLogic {#weblogic}
 
 Ajoutez le chemin vers l'agent Java à votre script de démarrage de domaine :
 
@@ -123,7 +123,7 @@ Ajoutez le chemin vers l'agent Java à votre script de démarrage de domaine :
 {{% tab header="Linux" lang=Linux %}}
 
 ```sh
-# Ajouter à <domain_home>/bin/startWebLogic.sh
+# Ajouter à <domain_home>/bin/startWebLogic.sh {#add-to-domain_homebinstartweblogicsh}
 export JAVA_OPTIONS="$JAVA_OPTIONS -javaagent:/path/to/opentelemetry-javaagent.jar"
 ```
 
@@ -139,7 +139,7 @@ set JAVA_OPTIONS=%JAVA_OPTIONS% -javaagent:"<Drive>:\path\to\opentelemetry-javaa
 Pour les instances de serveur géré, ajoutez l'argument `-javaagent` en utilisant
 la console d'administration.
 
-## WebSphere Liberty Profile
+## WebSphere Liberty Profile {#websphere-liberty-profile}
 
 Ajoutez le chemin vers l'agent Java au fichier `jvm.options`. Pour un seul
 serveur, éditez `${server.config.dir}/jvm.options`, et pour tous les serveurs,
@@ -151,7 +151,7 @@ serveur, éditez `${server.config.dir}/jvm.options`, et pour tous les serveurs,
 
 Redémarrez le serveur après avoir enregistré le fichier.
 
-## WebSphere Traditional
+## WebSphere Traditional {#websphere-traditional}
 
 Ouvrez la console d'administration de WebSphere et suivez ces étapes :
 

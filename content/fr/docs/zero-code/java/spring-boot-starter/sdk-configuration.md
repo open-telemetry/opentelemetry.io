@@ -13,7 +13,7 @@ Ce Spring Starter supporte les
 ce qui signifie que vous pouvez voir et autocompléter toutes les propriétés
 disponibles, depuis votre IDE.
 
-## Configuration générale
+## Configuration générale {#general-configuration}
 
 L'OpenTelemetry Starter supporte toute l'
 [autoconfiguration du SDK](/docs/zero-code/java/agent/configuration/#sdk-configuration)
@@ -54,7 +54,7 @@ export OTEL_PROPAGATORS="tracecontext,b3"
 export OTEL_RESOURCE_ATTRIBUTES="deployment.environment=dev,service.name=cart,service.namespace=shop"
 ```
 
-## Surcharge des attributs de ressource
+## Surcharge des attributs de ressource {#overriding-resource-attributes}
 
 Comme d'habitude dans Spring Boot, vous pouvez surcharger les propriétés dans
 les fichiers `application.properties` et `application.yaml` avec des variables
@@ -84,7 +84,7 @@ la liaison
 [Relaxed Binding](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.typesafe-configuration-properties.relaxed-binding.environment-variables)
 de Spring Boot.
 
-## Désactiver le OpenTelemetry Starter
+## Désactiver le OpenTelemetry Starter {#disable-the-opentelemetry-starter}
 
 {{% config_option name="otel.sdk.disabled" %}}
 
@@ -93,14 +93,14 @@ de test.
 
 {{% /config_option %}}
 
-## Configuration programmatique
+## Configuration programmatique {#programmatic-configuration}
 
 Vous pouvez utiliser le `AutoConfigurationCustomizerProvider` pour la
 configuration programmatique. La configuration programmatique est recommandée
 pour les cas d'utilisation avancés, qui ne sont pas configurables à l'aide de
 propriétés.
 
-### Exclure les traces des les points de terminaison de l'actuateur
+### Exclure les traces des les points de terminaison de l'actuateur {#exclude-actuator-endpoints-from-tracing}
 
 Par exemple, vous pouvez personnaliser l'échantillonneur pour exclure les traces
 des points de terminaison de vérification de la disponibilité :
@@ -155,7 +155,7 @@ public class FilterPaths {
 ```
 <!-- prettier-ignore-end -->
 
-### Configurer programmatiquement l'exportateur
+### Configurer programmatiquement l'exportateur {#configure-the-exporter-programmatically}
 
 Vous pouvez également configurer programmatiquement les exportateurs OTLP. Cette
 configuration remplace l'exportateur OTLP par défaut et ajoute un en-tête
@@ -200,7 +200,7 @@ public class CustomAuth {
 ```
 <!-- prettier-ignore-end -->
 
-## Fournisseurs de ressources
+## Fournisseurs de ressources {#resource-providers}
 
 L'OpenTelemetry Starter inclut les mêmes fournisseurs de ressources que l'agent
 Java :
@@ -211,7 +211,7 @@ Java :
 De plus, l'OpenTelemetry Starter inclut les fournisseurs de ressources
 spécifiques à Spring Boot suivants :
 
-### Fournisseur de ressources de distribution
+### Fournisseur de ressources de distribution {#distribution-resource-provider}
 
 FQN:
 `io.opentelemetry.instrumentation.spring.autoconfigure.resources.DistroVersionResourceProvider`
@@ -221,7 +221,7 @@ FQN:
 | `telemetry.distro.name`    | `opentelemetry-spring-boot-starter` |
 | `telemetry.distro.version` | version du starter                  |
 
-### Fournisseur de ressources Spring
+### Fournisseur de ressources Spring {#spring-resource-provider}
 
 FQN:
 `io.opentelemetry.instrumentation.spring.autoconfigure.resources.SpringResourceProvider`
@@ -231,7 +231,7 @@ FQN:
 | `service.name`    | `spring.application.name` ou `build.name` de `build-info.properties` (voir [Nom du service](#nom-du-service)) |
 | `service.version` | `build.version` de `build-info.properties`                                                                    |
 
-## Nom du service
+## Nom du service {#service-name}
 
 En utilisant ces fournisseurs de ressources, le nom du service est déterminé par
 les règles de précédence suivantes, conformément à la

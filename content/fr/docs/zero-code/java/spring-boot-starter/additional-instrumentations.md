@@ -8,7 +8,7 @@ Le Spring Boot starter OpenTelemetry fournit une
 [instrumentation prête à l'emploi](../out-of-the-box-instrumentation) que vous
 pouvez augmenter avec des instrumentations supplémentaires.
 
-## Instrumentation Log4j2
+## Instrumentation Log4j2 {#log4j2-instrumentation}
 
 Vous devez ajouter l'appender OpenTelemetry à votre fichier `log4j2.xml` :
 
@@ -34,7 +34,7 @@ OpenTelemetry dans la bibliothèque d'instrumentation
 | --------------------------------------------- | ------- | ------ | -------------------------------------------------------------------------------------------- |
 | `otel.instrumentation.log4j-appender.enabled` | Boolean | true   | Active la configuration de l'appender Log4j OpenTelemetry avec une instance `OpenTelemetry`. |
 
-## Bibliothèques d'instrumentation
+## Bibliothèques d'instrumentation {#instrumentation-libraries}
 
 Vous pouvez configurer d'autres instrumentations en utilisant les
 [bibliothèques d'instrumentation OpenTelemetry](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks).

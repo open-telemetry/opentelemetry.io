@@ -123,7 +123,7 @@ l'annotation `SpanAttribute` :
 | ------- | -------- | ----------------- | ------------------------------ |
 | `value` | `String` | Nom de l'attribut | Nom du paramètre de la méthode |
 
-## Prochaines étapes
+## Prochaines étapes {#next-steps}
 
 Au-delà de l'utilisation d'annotations, l'API OpenTelemetry vous permet
 d'obtenir un traceur qui peut être utilisé pour

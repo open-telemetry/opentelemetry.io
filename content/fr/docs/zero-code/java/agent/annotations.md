@@ -14,7 +14,7 @@ cependant, les utilisateurs souhaitent créer des
 changer beaucoup de code. Les annotations `WithSpan` et `SpanAttribute`
 supportent ces cas d'usage.
 
-## Dépendances
+## Dépendances {#dependencies}
 
 Vous devrez ajouter une dépendance à `opentelemetry-instrumentation-annotations`
 pour utiliser l'annotation `@WithSpan`.
@@ -33,7 +33,7 @@ pour utiliser l'annotation `@WithSpan`.
 
 {{% /tab %}} {{% tab "Gradle" %}}
 
-### Gradle
+### Gradle {#gradle}
 
 ```groovy
 dependencies {
@@ -43,7 +43,7 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane >}}
 
-## Créer des spans autour de méthodes avec `@WithSpan`
+## Créer des spans autour de méthodes avec `@WithSpan` {#creating-spans-around-methods-with-withspan}
 
 Pour créer un [span](/docs/concepts/signals/traces/#spans) qui instrumente une
 méthode particulière, annotez la méthode avec `@WithSpan`.
@@ -82,7 +82,7 @@ termine.
 - [io.reactivex.Flowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Flowable.html)
 - [io.reactivex.parallel.ParallelFlowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/parallel/ParallelFlowable.html)
 
-### Paramètres
+### Paramètres {#parameters}
 
 L'attribut `@WithSpan` supporte les paramètres optionnels suivants pour
 permettre la personnalisation des spans :
@@ -107,7 +107,7 @@ public void myOtherMethod() {
 }
 ```
 
-## Ajouter des attributs au span avec `@SpanAttribute`
+## Ajouter des attributs au span avec `@SpanAttribute` {#adding-attributes-to-the-span-with-spanattribute}
 
 Quand un [span](/docs/concepts/signals/traces/#spans) est créé pour une méthode
 annotée, les valeurs des arguments de l'invocation de méthode peuvent être
@@ -133,7 +133,7 @@ Sauf si spécifié comme argument de l'annotation, le nom de l'attribut sera
 dérivé des noms de paramètres formels s'ils sont compilés dans les fichiers
 `.class` en passant l'option `-parameters` au compilateur `javac`.
 
-## Supprimer l'instrumentation `@WithSpan`
+## Supprimer l'instrumentation `@WithSpan` {#suppressing-withspan-instrumentation}
 
 Supprimer `@WithSpan` est utile si vous avez du code qui est sur-instrumenté en
 utilisant `@WithSpan` et que vous voulez en supprimer certains sans modifier le
@@ -145,7 +145,7 @@ l'instrumentation `@WithSpan` pour des méthodes spécifiques. Le format est
 `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`.
 {{% /config_option %}}
 
-## Créer des spans autour de méthodes avec `otel.instrumentation.methods.include`
+## Créer des spans autour de méthodes avec `otel.instrumentation.methods.include` {#creating-spans-around-methods-with-otelinstrumentationmethodsinclude}
 
 Dans les cas où vous ne pouvez pas modifier le code, vous pouvez toujours
 configurer l'agent Java pour capturer des spans autour de méthodes spécifiques.
@@ -160,7 +160,7 @@ Si une méthode est surchargée (apparaît plus d'une fois sur la même classe a
 le même nom mais des paramètres différents), toutes les versions de la méthode
 seront instrumentées.
 
-## Prochaines étapes
+## Prochaines étapes {#next-steps}
 
 Au-delà de l'utilisation d'annotations, l'API OpenTelemetry vous permet
 d'obtenir un traceur qui peut être utilisé pour

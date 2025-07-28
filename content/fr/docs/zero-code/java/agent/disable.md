@@ -3,11 +3,11 @@ title: Suppression d'instrumentation spécifique
 linkTitle: Suppression d'instrumentation
 weight: 11
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-# prettier-ignore
+# prettier-ignore {#prettier-ignore}
 cSpell:ignore: akka armeria clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
-## Désactivation complète de l'agent
+## Désactivation complète de l'agent {#disabling-the-agent-entirely}
 
 {{% config_option name="otel.javaagent.enabled" %}}
 
@@ -15,7 +15,7 @@ Définissez la valeur à `false` pour désactiver complètement l'agent.
 
 {{% /config_option %}}
 
-## Activer uniquement une instrumentation spécifique
+## Activer uniquement une instrumentation spécifique {#enable-only-specific-instrumentation}
 
 Vous pouvez désactiver toute l'instrumentation automatique par défaut et
 réactiver sélectivement les instrumentations individuelles. Cela peut être
@@ -37,14 +37,14 @@ transitives. La détermination de cette relation de dépendance est laissée à
 l'utilisateur. Ceci est considéré comme une utilisation avancée et n'est pas
 recommandé pour la plupart des utilisateurs. {{% /alert %}}
 
-## Activer uniquement l'instrumentation manuelle
+## Activer uniquement l'instrumentation manuelle {#enable-manual-instrumentation-only}
 
 Vous pouvez supprimer toutes les instrumentations automatiques mais avoir le
 support pour l'instrumentation manuelle avec `@WithSpan` et les interactions API
 normales en utilisant
 `-Dotel.instrumentation.common.default-enabled=false -Dotel.instrumentation.opentelemetry-api.enabled=true -Dotel.instrumentation.opentelemetry-instrumentation-annotations.enabled=true`
 
-## Suppression de l'instrumentation spécifique de l'agent
+## Suppression de l'instrumentation spécifique de l'agent {#suppressing-specific-agent-instrumentation}
 
 Vous pouvez supprimer l'instrumentation de l'agent pour des bibliothèques
 spécifiques.
@@ -199,7 +199,7 @@ doivent être convertis en tirets bas (`_`). Par exemple, pour supprimer les
 traces de la bibliothèque `akka-actor`, définissez
 `OTEL_INSTRUMENTATION_AKKA_ACTOR_ENABLED` à `false`.
 
-## Suppression des spans de contrôleur et/ou de vue
+## Suppression des spans de contrôleur et/ou de vue {#suppressing-controller-andor-view-spans}
 
 Certaines instrumentations (par exemple, l'instrumentation Spring Web MVC)
 produisent des spans [SpanKind.Internal](/docs/specs/otel/trace/api/#spankind)
@@ -221,7 +221,7 @@ default=false
 %}} Définissez à `true` pour activer la télémétrie de la vue.
 {{% /config_option %}}
 
-## Comportement de l'instrumentation dans la suppression de span
+## Comportement de l'instrumentation dans la suppression de span {#instrumentation-span-suppression-behavior}
 
 Certaines bibliothèques que cet agent instrumente utilisent à leur tour des
 bibliothèques de niveau inférieur, qui sont également instrumentées. Cela

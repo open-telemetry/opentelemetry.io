@@ -11,7 +11,7 @@ cSpell:ignore: autoconfigurations
 Au lieu d'utiliser le Spring starter OpenTelemetry, vous pouvez utiliser le
 Zipkin starter OpenTelemetry.
 
-## Zipkin starter
+## Zipkin starter {#zipkin-starter}
 
 Le "OpenTelemetry Zipkin Exporter Starter" est un paquet de démarrage qui inclut
 `opentelemetry-api`, `opentelemetry-sdk`, `opentelemetry-extension-annotations`,
@@ -49,7 +49,7 @@ dependencies {
 
 {{% /tab %}} {{< /tabpane>}}
 
-### Configurations
+### Configurations {#configurations}
 
 | Propriété                      | Valeur par défaut | ConditionalOnClass   |
 | ------------------------------ | ----------------- | -------------------- |

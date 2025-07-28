@@ -9,7 +9,7 @@ cSpell:ignore: enduser hset serverlessapis
 Cette page décrit les paramètres courants qui s'appliquent à plusieurs
 instrumentations à la fois.
 
-## Nom du service pair
+## Nom du service pair {#peer-service-name}
 
 Le
 [nom du service pair](/docs/specs/semconv/general/attributes/#general-remote-service-attributes)
@@ -51,7 +51,7 @@ Alors, les requêtes vers `1.2.3.4` n'auront pas de surcharge pour l'attribut
 
 {{% /config_option %}}
 
-## Nettoyage des instructions de base de données
+## Nettoyage des instructions de base de données {#db-statement-sanitization}
 
 L'agent nettoie toutes les requêtes/instructions de base de données avant de
 définir l'attribut sémantique `db.statement`. Toutes les valeurs (chaînes de
@@ -78,7 +78,7 @@ default=true
 %}} Active le nettoyage des instructions de base de données.
 {{% /config_option %}}
 
-## Capture de la télémétrie de réception de messages des consommateurs dans les instrumentations de messagerie
+## Capture de la télémétrie de réception de messages des consommateurs dans les instrumentations de messagerie {#capturing-consumer-message-receive-telemetry-in-messaging-instrumentations}
 
 Vous pouvez configurer l'agent pour capturer la télémétrie de réception de
 messages des consommateurs dans l'instrumentation de messagerie. Utilisez la
@@ -96,7 +96,7 @@ seulement un lien de span le connectant à la trace du producteur.
 > **Note** : Les noms de propriété/variable d'environnement listés dans le
 > tableau sont encore expérimentaux, et sont donc susceptibles de changer.
 
-## Capture des attributs de l'utilisateur final
+## Capture des attributs de l'utilisateur final {#capturing-enduser-attributes}
 
 Vous pouvez configurer l'agent pour capturer les
 [attributs d'identité généraux](/docs/specs/semconv/registry/attributes/enduser/)
@@ -130,7 +130,7 @@ default=false
 %}} Détermine s'il faut capturer l'attribut sémantique `enduser.scope`.
 {{% /config_option %}}
 
-### Spring Security
+### Spring Security {#spring-security}
 
 Pour les utilisateurs de Spring Security qui utilisent des
 [préfixes d'autorité accordée (granted authority prefixes)](https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities)

@@ -8,7 +8,7 @@ weight: 21
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 ---
 
-## Introduction
+## Introduction {#introduction}
 
 En plus de l'instrumentation prête à l'emploi, vous pouvez étendre l'agent Java
 avec une instrumentation manuelle personnalisée en utilisant l'API
@@ -17,11 +17,11 @@ OpenTelemetry. Cela vous permet de créer des
 [métriques](/docs/concepts/signals/metrics) pour votre propre code sans faire
 trop de changements de code.
 
-## Dépendances
+## Dépendances {#dependencies}
 
 Ajoutez une dépendance à la bibliothèque `opentelemetry-api`.
 
-### Maven
+### Maven {#maven}
 
 ```xml
 <dependencies>
@@ -33,7 +33,7 @@ Ajoutez une dépendance à la bibliothèque `opentelemetry-api`.
 </dependencies>
 ```
 
-### Gradle
+### Gradle {#gradle}
 
 ```groovy
 dependencies {
@@ -41,13 +41,13 @@ dependencies {
 }
 ```
 
-## OpenTelemetry
+## OpenTelemetry {#opentelemetry}
 
 L'agent Java est un cas particulier où `GlobalOpenTelemetry` est défini par l'
 agent. Appelez simplement `GlobalOpenTelemetry.get()` pour accéder à l'instance
 `OpenTelemetry`.
 
-## Span
+## Span {#span}
 
 {{% alert title="Note" %}}
 
@@ -69,7 +69,7 @@ Utilisez le `Tracer` pour créer un span comme expliqué dans la section
 
 Un exemple complet peut être trouvé dans le [dépôt d'exemples].
 
-## Meter
+## Meter {#meter}
 
 ```java
 import io.opentelemetry.api.GlobalOpenTelemetry;

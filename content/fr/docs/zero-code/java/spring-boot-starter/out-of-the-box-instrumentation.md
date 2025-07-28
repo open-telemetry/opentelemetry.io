@@ -24,7 +24,7 @@ frameworks :
 | Micrometer            | `otel.instrumentation.micrometer.enabled`       | false             |
 | R2DBC (reactive JDBC) | `otel.instrumentation.r2dbc.enabled`            | true              |
 
-## Activer les instrumentations de manière sélective
+## Activer les instrumentations de manière sélective {#turn-on-instrumentations-selectively}
 
 Pour n'utiliser que des instrumentations spécifiques, désactivez d'abord toutes
 les instrumentations en définissant la propriété
@@ -34,7 +34,7 @@ instrumentations une par une.
 Par exemple, si vous souhaitez uniquement activer l'instrumentation JDBC,
 définissez `otel.instrumentation.jdbc.enabled` à `true`.
 
-## Configuration commune de l'instrumentation
+## Configuration commune de l'instrumentation {#common-instrumentation-configuration}
 
 Propriétés communes à toutes les instrumentations de base de données :
 
@@ -42,13 +42,13 @@ Propriétés communes à toutes les instrumentations de base de données :
 | ------------------------------------------------------------ | ------- | ------ | -------------------------------------------------------- |
 | `otel.instrumentation.common.db-statement-sanitizer.enabled` | Boolean | true   | Active le nettoyage des instructions de base de données. |
 
-## Instrumentation JDBC
+## Instrumentation JDBC {#jdbc-instrumentation}
 
 | Propriété système                                       | Type    | Défaut | Description                                              |
 | ------------------------------------------------------- | ------- | ------ | -------------------------------------------------------- |
 | `otel.instrumentation.jdbc.statement-sanitizer.enabled` | Boolean | true   | Active le nettoyage des instructions de base de données. |
 
-## Logback
+## Logback {#logback}
 
 Vous pouvez activer des fonctionnalités expérimentales à l'aide des propriétés
 système pour capturer des attributs :
@@ -94,7 +94,7 @@ Logback OpenTelemetry dans votre fichier `logback.xml` ou `logback-spring.xml` :
 </configuration>
 ```
 
-## Autoconfiguration Spring Web
+## Autoconfiguration Spring Web {#spring-web-autoconfiguration}
 
 Fournit une autoconfiguration pour l'intercepteur de trace `RestTemplate` défini
 dans
@@ -194,7 +194,7 @@ entités suivantes :
 - [Méthodes HTTP connues](/docs/zero-code/java/agent/instrumentation/http/#configuring-known-http-methods)
 - [Télémétrie HTTP expérimentale](/docs/zero-code/java/agent/instrumentation/http/#enabling-experimental-http-telemetry)
 
-## Autoconfiguration Spring Web MVC
+## Autoconfiguration Spring Web MVC {#spring-web-mvc-autoconfiguration}
 
 Cette fonctionnalité autoconfigure l'instrumentation pour les contrôleurs Spring
 WebMVC en ajoutant un bean
@@ -212,7 +212,7 @@ entités suivantes :
 - [Méthodes HTTP connues](/docs/zero-code/java/agent/instrumentation/http/#configuring-known-http-methods)
 - [Télémétrie HTTP expérimentale](/docs/zero-code/java/agent/instrumentation/http/#enabling-experimental-http-telemetry)
 
-## Autoconfiguration Spring WebFlux
+## Autoconfiguration Spring WebFlux {#spring-webflux-autoconfiguration}
 
 Fournit des autoconfigurations pour le filtre d'échange WebClient OpenTelemetry
 défini dans
@@ -263,7 +263,7 @@ public class WebClientController {
 ```
 <!-- prettier-ignore-end -->
 
-## Instrumentation Kafka
+## Instrumentation Kafka {#kafka-instrumentation}
 
 Fournit une autoconfiguration pour l'instrumentation du client Kafka.
 
@@ -271,11 +271,11 @@ Fournit une autoconfiguration pour l'instrumentation du client Kafka.
 | --------------------------------------------------------- | ------- | ------ | ------------------------------------------------------ |
 | `otel.instrumentation.kafka.experimental-span-attributes` | Boolean | false  | Active la capture des attributs de span expérimentaux. |
 
-## Instrumentation Micrometer
+## Instrumentation Micrometer {#micrometer-instrumentation}
 
 Fournit une autoconfiguration pour le pont Micrometer vers OpenTelemetry.
 
-## Instrumentation MongoDB
+## Instrumentation MongoDB {#mongodb-instrumentation}
 
 Fournit une autoconfiguration pour l'instrumentation du client MongoDB.
 
@@ -283,7 +283,7 @@ Fournit une autoconfiguration pour l'instrumentation du client MongoDB.
 | -------------------------------------------------------- | ------- | ------ | -------------------------------------------------------- |
 | `otel.instrumentation.mongo.statement-sanitizer.enabled` | Boolean | true   | Active le nettoyage des instructions de base de données. |
 
-## Instrumentation R2DBC
+## Instrumentation R2DBC {#r2dbc-instrumentation}
 
 Fournit une autoconfiguration pour l'instrumentation R2DBC OpenTelemetry.
 

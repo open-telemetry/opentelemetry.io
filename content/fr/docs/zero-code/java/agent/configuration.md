@@ -11,7 +11,7 @@ manières dont la configuration peut être fournie à l'agent Java. Pour des
 informations sur les options de configuration elles-mêmes, consultez
 [Configurer le SDK](/docs/languages/java/configuration). {{% /alert %}}
 
-## Configuration de l'agent
+## Configuration de l'agent {#agent-configuration}
 
 L'agent peut trouver sa configuration d'une ou plusieurs des sources suivantes
 (classées de la plus haute à la plus basse priorité) :
@@ -24,7 +24,7 @@ L'agent peut trouver sa configuration d'une ou plusieurs des sources suivantes
   ; en utilisant l'interface de prestation de service (SPI)
   [`AutoConfigurationCustomizerProvider`](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.java)
 
-## Configurer avec des variables d'environnement
+## Configurer avec des variables d'environnement {#configuring-with-environment-variables}
 
 Dans certains environnements, la configuration des paramètres via des variables
 d'environnement est souvent préférée. Tout paramètre qui peut être configuré en
@@ -40,7 +40,7 @@ système souhaitée :
 Par exemple, `otel.instrumentation.common.default-enabled` se convertirait en
 `OTEL_INSTRUMENTATION_COMMON_DEFAULT_ENABLED`.
 
-## Fichier de configuration
+## Fichier de configuration {#configuration-file}
 
 Vous pouvez fournir un chemin vers un fichier de configuration d'agent en
 définissant la propriété suivante :
@@ -49,7 +49,7 @@ définissant la propriété suivante :
 fichier de propriétés Java valide qui contient la configuration de l'agent.
 {{% /config_option %}}
 
-## Extensions
+## Extensions {#extensions}
 
 Vous pouvez activer les [extensions][] en définissant la propriété suivante :
 
@@ -61,7 +61,7 @@ comme une extension distincte et indépendante.
 
 {{% /config_option %}}
 
-## Sortie de journalisation de l'agent Java
+## Sortie de journalisation de l'agent Java {#java-agent-logging-output}
 
 La sortie de journalisation de l'agent peut être configurée en définissant la
 propriété suivante :
@@ -86,7 +86,7 @@ L'agent Java supporte ces 3 modes de journalisation :
 
 {{% /config_option %}}
 
-## Configuration du SDK
+## Configuration du SDK {#sdk-configuration}
 
 Le module d'autoconfiguration du SDK est utilisé pour la configuration de base
 de l'agent. Lisez la [documentation](/docs/languages/java/configuration) pour
@@ -101,7 +101,7 @@ par défaut, et non `grpc`.
 
 {{% /alert %}}
 
-## Activer les fournisseurs de ressources qui sont désactivés par défaut
+## Activer les fournisseurs de ressources qui sont désactivés par défaut {#enable-resource-providers-that-are-disabled-by-default}
 
 En plus de la configuration des ressources de l'autoconfiguration du SDK, vous
 pouvez activer des fournisseurs de ressources supplémentaires qui sont

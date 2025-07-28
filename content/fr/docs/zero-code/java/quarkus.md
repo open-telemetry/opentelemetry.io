@@ -33,7 +33,7 @@ Quarkus peut également être instrumenté avec
 l'[agent Java OpenTelemetry](../agent/) si vous n'exécutez pas une application
 native.
 
-## Démarrage rapide
+## Démarrage rapide {#getting-started}
 
 Pour activer OpenTelemetry dans votre application Quarkus, ajoutez l'extension
 `quarkus-opentelemetry` comme dépendance à votre projet.
@@ -70,7 +70,7 @@ Pour plus de détails concernant ces options de configuration et d'autres,
 consultez
 [Référence de configuration OpenTelemetry](https://quarkus.io/guides/opentelemetry#configuration-reference).
 
-## En savoir plus
+## En savoir plus {#learn-more}
 
 - [Utilisation d'OpenTelemetry](https://quarkus.io/guides/opentelemetry), une
   référence générale couvrant toutes les

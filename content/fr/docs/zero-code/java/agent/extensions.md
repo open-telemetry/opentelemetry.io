@@ -8,7 +8,7 @@ weight: 300
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 ---
 
-## Introduction
+## Introduction {#introduction}
 
 Les extensions sont conçues pour surcharger ou personnaliser l'instrumentation
 fournie par l'agent sans avoir à créer une nouvelle distribution OpenTelemetry
@@ -52,7 +52,7 @@ ce scénario qui peuvent être résolus en utilisant des extensions :
   vous avez vos propres `Advice`, vous pouvez contrôler quel `Tracer` vous
   utilisez.
 
-## Exemples d'extensions
+## Exemples d'extensions {#extension-examples}
 
 Pour obtenir une démonstration de la création d'une extension pour l'agent
 d'instrumentation Java OpenTelemetry,

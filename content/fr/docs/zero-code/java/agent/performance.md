@@ -38,19 +38,19 @@ OpenTelemetry, ainsi que les contraintes potentielles ayant un impact sur les
 performances, et des lignes directrices pour optimiser les performances de
 l'agent.
 
-## Lignes directrices pour réduire l'impact de l'agent
+## Lignes directrices pour réduire l'impact de l'agent {#guidelines-to-reduce-agent-overhead}
 
 Les bonnes pratiques et les techniques suivantes peuvent aider à réduire la
 consommation en ressources de l'agent Java.
 
-### Configurer l'échantillonnage des traces
+### Configurer l'échantillonnage des traces {#configure-trace-sampling}
 
 Le volume de spans traités par l'instrumentation peut avoir un impact sur la
 consommation de ressources de l'agent. Vous pouvez configurer l'échantillonnage
 des traces pour ajuster le volume de spans et réduire l'utilisation des
 ressources. Voir [Échantillonnage](/docs/languages/java/sdk/#sampler).
 
-### Désactiver des instrumentations spécifiques
+### Désactiver des instrumentations spécifiques {#turn-off-specific-instrumentations}
 
 Vous pouvez réduire davantage l'impact de l'agent en désactivant les
 instrumentations qui ne sont pas nécessaires ou qui produisent trop de spans.
@@ -62,21 +62,21 @@ l'instrumentation.
 Par exemple, l'option suivante désactive l'instrumentation JDBC :
 `-Dotel.instrumentation.jdbc.enabled=false`
 
-### Allouer plus de mémoire pour l'application
+### Allouer plus de mémoire pour l'application {#allocate-more-memory-for-the-application}
 
 Augmenter la taille maximale du tas de la JVM en utilisant l'option `-Xmx<size>`
 peut aider à atténuer les problèmes de consommation de ressources de l'agent,
 car les instrumentations peuvent générer un grand nombre d'objets à courte durée
 de vie en mémoire.
 
-### Réduire l'instrumentation manuelle à ce dont vous avez besoin
+### Réduire l'instrumentation manuelle à ce dont vous avez besoin {#reduce-manual-instrumentation-to-what-you-need}
 
 Trop d'instrumentation manuelle pourrait introduire des inefficacités qui
 augmentent l'impact de l'agent. Par exemple, utiliser `@WithSpan` sur chaque
 méthode entraîne un volume élevé de spans, ce qui à son tour augmente le bruit
 dans les données et consomme plus de ressources système.
 
-### Provisionner des ressources adéquates
+### Provisionner des ressources adéquates {#provision-adequate-resources}
 
 Assurez-vous de provisionner suffisamment de ressources pour votre
 instrumentation et pour le Collecteur. La quantité de ressources telles que la
@@ -87,7 +87,7 @@ ce cas, envisagez de dimensionner correctement les ressources pour le Collecteur
 et d'optimiser ses paramètres. Voir
 [Mise à l'échelle](/docs/collector/scaling/).
 
-## Contraintes ayant un impact sur les performances de l'agent Java
+## Contraintes ayant un impact sur les performances de l'agent Java {#constraints-impacting-the-performance-of-the-java-agent}
 
 En général, plus vous collectez de télémétrie de votre application, plus l'
 impact de l'agent est important. Par exemple, générer les traces de méthodes qui
@@ -112,7 +112,7 @@ plus sûres en termes de performance de l'agent.
 
 {{% /alert %}}
 
-## Dépannage des problèmes de l'impact de l'agent
+## Dépannage des problèmes de l'impact de l'agent {#troubleshooting-agent-overhead-issues}
 
 Lors du dépannage des problèmes d'impact de l'agent, procédez comme suit :
 
@@ -134,14 +134,14 @@ Envisagez de prendre les mesures suivantes pour diminuer l'impact de l'agent :
 - Contrôlez l'instrumentation manuelle pour vérifier qu'il n'y a pas de
   génération inutile de spans.
 
-## Lignes directrices pour mesurer l'impact de l'agent
+## Lignes directrices pour mesurer l'impact de l'agent {#guidelines-for-measuring-agent-overhead}
 
 Mesurer l'impact de l'agent dans votre propre environnement fournit des données
 précises sur l'impact de l'instrumentation sur les performances de votre
 application. Les lignes directrices suivantes décrivent les étapes générales
 pour collecter et comparer des mesures fiables des performances de l'agent.
 
-### Décidez de ce que vous voulez mesurer
+### Décidez de ce que vous voulez mesurer {#decide-what-you-want-to-measure}
 
 Différents utilisateurs de votre application peuvent remarquer différents
 aspects de l'impact de l'agent. Par exemple, alors que les utilisateurs finaux
@@ -163,7 +163,7 @@ non pertinentes. Quelques exemples de mesures :
 - Latence de service moyenne et au 95e centile (p95)
 - Débit moyen de lecture et d'écriture réseau
 
-### Préparez un environnement de test approprié
+### Préparez un environnement de test approprié {#prepare-a-suitable-test-environment}
 
 En mesurant l'impact de l'agent dans un environnement de test contrôlé, vous
 pouvez mieux identifier les facteurs affectant les performances. Lors de la
@@ -177,7 +177,7 @@ préparation d'un environnement de test, procédez comme suit :
 4.  Assurez-vous que l'application dispose de suffisamment de ressources système
     pour gérer la charge de travail de test.
 
-### Créez une batterie de tests réalistes
+### Créez une batterie de tests réalistes {#create-a-battery-of-realistic-tests}
 
 Concevez les tests que vous exécuterez sur l'environnement de test pour qu'ils
 ressemblent autant que possible aux charges de travail nominales. Par exemple,
@@ -207,13 +207,13 @@ backends auto-hébergés ou exécutés localement.
 
 {{% /alert %}}
 
-### Collectez des mesures comparables
+### Collectez des mesures comparables {#collect-comparable-measurements}
 
 Pour identifier les facteurs qui pourraient affecter les performances et causer
 une surconsommation de ressources de l'agent, collectez des mesures dans le même
 environnement après avoir modifié un seul facteur ou une seule condition.
 
-### Analysez les données de consommation de l'agent
+### Analysez les données de consommation de l'agent {#analyze-the-agent-overhead-data}
 
 Après avoir collecté des données de plusieurs passages, vous pouvez tracer les
 résultats dans un graphique ou comparer les moyennes en utilisant des tests

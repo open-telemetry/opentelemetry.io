@@ -1,3 +1,5 @@
+actuateur
+autocompléter
 extensibilité
 observabilité
 télémétrie
