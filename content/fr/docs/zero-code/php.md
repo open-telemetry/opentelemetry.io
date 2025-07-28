@@ -7,7 +7,7 @@ default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 cSpell:ignore: centos democlass epel myapp pecl phar remi
 ---
 
-## Prérequis
+## Prérequis {#requirements}
 
 L'instrumentation automatique avec PHP nécessite :
 
@@ -19,7 +19,7 @@ L'instrumentation automatique avec PHP nécessite :
   [des bibliothèques d'instrumentation](/ecosystem/registry/?component=instrumentation&language=php)
 - [une configuration](#configuration)
 
-## Installer l'extension OpenTelemetry
+## Installer l'extension OpenTelemetry {#install-the-opentelemetry-extension}
 
 {{% alert title="Important" color="warning" %}}L'installation de l'extension
 OpenTelemetry seule ne génère pas de traces. {{% /alert %}}
@@ -31,7 +31,7 @@ L'extension peut être installée via pecl,
 (spécifique à docker). Il existe également des versions packagées de l'extension
 disponibles pour certains gestionnaires de paquets Linux.
 
-### Paquets Linux
+### Paquets Linux {#linux-packages}
 
 Les paquets RPM et APK sont fournis par les sources suivantes :
 
@@ -123,7 +123,7 @@ php --ri opentelemetry
    php -m | grep opentelemetry
    ```
 
-## Installer le SDK et les bibliothèques d'instrumentation
+## Installer le SDK et les bibliothèques d'instrumentation {#install-sdk-and-instrumentation-libraries}
 
 Maintenant que l'extension est installée, installez le SDK OpenTelemetry et une
 ou plusieurs bibliothèques d'instrumentation.
@@ -153,7 +153,7 @@ Lorsqu'elle est utilisée conjointement avec le SDK OpenTelemetry, vous pouvez
 utiliser des variables d'environnement ou le fichier `php.ini` pour configurer
 l'auto-instrumentation.
 
-### Configuration par variables d'environnement
+### Configuration par variables d'environnement {#environment-configuration}
 
 ```sh
 OTEL_PHP_AUTOLOAD_ENABLED=true \
@@ -165,7 +165,7 @@ OTEL_PROPAGATORS=baggage,tracecontext \
 php myapp.php
 ```
 
-### Configuration php.ini
+### Configuration php.ini {#phpini-configuration}
 
 Ajoutez ce qui suit à `php.ini`, ou à un autre fichier `ini` qui sera traité par
 PHP :
@@ -179,9 +179,9 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://collector:4318
 OTEL_PROPAGATORS=baggage,tracecontext
 ```
 
-## Exécuter votre application
+## Exécuter votre application {#run-your-application}
 
-Après que tout ce qui précède soit installé et configuré, démarrez votre
+Une fois que tout ce qui précède soit installé et configuré, démarrez votre
 application comme vous le feriez normalement.
 
 Les traces exportées vers le Collecteur OpenTelemetry dépendent des
@@ -198,7 +198,7 @@ Notez que l'instrumentation du client PSR-18 ajoute des en-têtes de
 [trace distribuée](/docs/concepts/context-propagation/#propagation) aux requêtes
 HTTP sortantes.
 
-## Comment ça fonctionne
+## Comment ça fonctionne {#how-it-works}
 
 {{% alert title="Optionnel" %}} Vous pouvez ignorer cette section si vous voulez
 juste démarrer rapidement, et qu'il existe des bibliothèques d'instrumentation
@@ -267,7 +267,7 @@ démarre et active un span, tandis que la fonction `post` le termine.
 Si `DemoClass::run()` lève une exception, la fonction `post` l'enregistre sans
 affecter la propagation de l'exception.
 
-## Étapes suivantes
+## Étapes suivantes {#next-steps}
 
 Après avoir configuré l'instrumentation automatique pour votre application, vous
 pourriez ajouter une
