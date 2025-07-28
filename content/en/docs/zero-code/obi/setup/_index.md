@@ -18,7 +18,7 @@ For information on configuration options and data export modes, see the
 You can run OBI as a standalone process. This approach is suitable for running
 with bare metal installations, in virtual machines, for local development, or
 advanced use cases. Consult the documentation in the
-[Git repository](https://github.com/grafana/beyla/blob/main/docs/sources/setup/standalone.md)
+[Git repository](../setup/standalone.md)
 to learn how to set up OBI as a standalone process.
 
 {{% alert title="Note" %}}

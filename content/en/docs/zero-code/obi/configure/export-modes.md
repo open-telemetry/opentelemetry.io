@@ -54,11 +54,11 @@ properties to export metrics, traces, or both.
 Run OBI with a named configuration file:
 
 ```shell
-beyla -config instrument-config.yml
+ebpf-instrument -config instrument-config.yml
 ```
 
 or
 
 ```shell
-OTEL_EBF_CONFIG_PATH=instrument-config.yml beyla
+OTEL_EBF_CONFIG_PATH=instrument-config.yml ebpf-instrument
 ```

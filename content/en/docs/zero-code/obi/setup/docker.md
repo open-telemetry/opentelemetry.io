@@ -12,10 +12,10 @@ OBI can run a standalone Docker container that can instrument a process running
 in another container.
 
 Find the latest image of OBI on
-[Docker Hub](https://hub.docker.com/r/grafana/beyla) with the following name:
+[Docker Hub](https://hub.docker.com/r/otel/ebpf-instrument) with the following name:
 
 ```
-grafana/beyla:latest
+docker.io/otel/ebpf-instrument:latest
 ```
 
 The OBI container must be configured in following way:
@@ -23,7 +23,7 @@ The OBI container must be configured in following way:
 - run as a **privileged** container, or as a container with the `SYS_ADMIN`
   capability (but this last option might not work in some container
   environments)
-- share the PID space with the container that is being instrumented
+- Use the `host` PID namespace to allow accessing to the processes in other containers.
 
 ## Docker CLI example
 
@@ -51,15 +51,15 @@ OBI needs to be run with the following settings:
 
 - in `--privileged` mode, or with `SYS_ADMIN` capability (despite `SYS_ADMIN`
   might not be enough privileges in some container environments)
-- a container PID namespace, with the option `--pid="container:goblog"`.
+- the host PID namespace, with the option `--pid=host`.
 
 ```sh
 docker run --rm \
   -e OTEL_EBPF_OPEN_PORT=8443 \
   -e OTEL_EBPF_TRACE_PRINTER=text \
-  --pid="container:goblog" \
+  --pid=host \
   --privileged \
-  grafana/beyla:latest
+  docker.io/otel/ebpf-instrument:latest
 ```
 
 After OBI is running, open `https://localhost:18443` in your browser, use the
@@ -100,8 +100,8 @@ services:
       - '18443:8443'
 
   autoinstrumenter:
-    image: grafana/beyla:latest
-    pid: 'service:goblog'
+    image: docker.io/otel/ebpf-instrument:latest
+    pid: 'host'
     privileged: true
     environment:
       OTEL_EBPF_TRACE_PRINTER: text

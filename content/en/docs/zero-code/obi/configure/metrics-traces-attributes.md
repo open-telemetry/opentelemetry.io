@@ -37,7 +37,7 @@ attributes:
     otel_ebpf_network_flow_bytes:
       # limit the OTEL_EBPF_network_flow_bytes attributes to only the three attributes
       include:
-        - beyla.ip
+        - obi.ip
         - src.name
         - dst.port
     sql_client_duration:

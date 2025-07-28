@@ -7,7 +7,7 @@ weight: 100
 
 ## YAML file example
 
-An example OBI YAML configuration file to send OTLP data to Grafana Cloud OTLP
+An example OBI YAML configuration file to send OTLP data to an OpenTelemetry Collector
 endpoint:
 
 ```yaml

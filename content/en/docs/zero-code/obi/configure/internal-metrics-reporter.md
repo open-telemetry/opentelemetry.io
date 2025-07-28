@@ -19,8 +19,7 @@ To export metrics with Prometheus, set `exporter` to `prometheus` in the
 `internal_metrics` section. Then set `port` in the `prometheus` subsection.
 
 To export metrics with OpenTelemetry, set `exporter` to `otel` in the
-`internal_metrics` section. Then set an endpoint in the `otel_metrics_export` or
-`grafana.otlp` section.
+`internal_metrics` section. Then set an endpoint in the `otel_metrics_export`.
 
 Example:
 

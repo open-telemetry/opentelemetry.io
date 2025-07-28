@@ -43,12 +43,12 @@ To enable metadata decoration, you need to:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: beyla
+  name: obi
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: beyla
+  name: obi
 rules:
   - apiGroups: ['apps']
     resources: ['replicasets']
@@ -60,15 +60,15 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: beyla
+  name: obi
 subjects:
   - kind: ServiceAccount
-    name: beyla
+    name: obi
     namespace: default
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: beyla
+  name: obi
 ```
 
 (You need to change the `namespace: default` value if you are deploying OBI in
@@ -77,7 +77,7 @@ another namespace).
 2. Configure OBI with the `OTEL_EBPF_KUBE_METADATA_ENABLE=true` environment
    variable, or the `attributes.kubernetes.enable: true` YAML configuration.
 
-3. Don't forget to specify the `serviceAccountName: beyla` property in your OBI
+3. Don't forget to specify the `serviceAccountName: obi` property in your OBI
    Pod (as shown in the later deployment examples).
 
 Optionally, select which Kubernetes services to instrument in the
@@ -124,9 +124,9 @@ requirements:
     ```
 
 The following example instruments the `goblog` pod by attaching OBI as a
-container (image available at `grafana/beyla:latest`). The auto-instrumentation
-tool is configured to forward metrics and traces to Grafana Alloy, which is
-accessible behind the `grafana-alloy` service in the same namespace:
+container (image available at `otel/ebpf-instrument:latest`). The auto-instrumentation
+tool is configured to forward metrics and traces to OpenTelemetry collector, which is
+accessible behind the `otelcol` service in the same namespace:
 
 ```yaml
 apiVersion: apps/v1
@@ -147,7 +147,7 @@ spec:
     spec:
       # Required so the sidecar instrument tool can access the service process
       shareProcessNamespace: true
-      serviceAccountName: beyla # required if you want kubernetes metadata decoration
+      serviceAccountName: obi # required if you want kubernetes metadata decoration
       containers:
         # Container for the instrumented service
         - name: goblog
@@ -158,8 +158,8 @@ spec:
             - containerPort: 8443
               name: https
         # Sidecar container with OBI - the eBPF auto-instrumentation tool
-        - name: beyla
-          image: grafana/beyla:latest
+        - name: obi
+          image: otel/ebpf-instrument:latest
           securityContext: # Privileges are required to install the eBPF probes
             privileged: true
           env:
@@ -167,7 +167,7 @@ spec:
             - name: OTEL_EBPF_OPEN_PORT
               value: '8443'
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: 'http://grafana-alloy:4318'
+              value: 'http://otelcol:4318'
               # required if you want kubernetes metadata decoration
             - name: OTEL_EBPF_KUBE_METADATA_ENABLE
               value: 'true'
@@ -199,23 +199,23 @@ enabled, so that it can access all the processes running on the same host.
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: beyla
+  name: obi
   labels:
-    app: beyla
+    app: obi
 spec:
   selector:
     matchLabels:
-      app: beyla
+      app: obi
   template:
     metadata:
       labels:
-        app: beyla
+        app: obi
     spec:
       hostPID: true # Required to access the processes on the host
-      serviceAccountName: beyla # required if you want kubernetes metadata decoration
+      serviceAccountName: obi # required if you want kubernetes metadata decoration
       containers:
         - name: autoinstrument
-          image: grafana/beyla:latest
+          image: otel/ebpf-instrument:latest
           securityContext:
             privileged: true
           env:
@@ -223,7 +223,7 @@ spec:
             - name: OTEL_EBPF_AUTO_TARGET_EXE
               value: '*/goblog'
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: 'http://grafana-alloy:4318'
+              value: 'http://otelcol:4318'
               # required if you want kubernetes metadata decoration
             - name: OTEL_EBPF_KUBE_METADATA_ENABLE
               value: 'true'
@@ -280,25 +280,25 @@ file:
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: beyla
-  namespace: beyla-demo
+  name: obi
+  namespace: obi-demo
   labels:
-    k8s-app: beyla
+    k8s-app: obi
 spec:
   selector:
     matchLabels:
-      k8s-app: beyla
+      k8s-app: obi
   template:
     metadata:
       labels:
-        k8s-app: beyla
+        k8s-app: obi
     spec:
-      serviceAccount: beyla
+      serviceAccount: obi
       hostPID: true           # <-- Important. Required in Daemonset mode so OBI can discover all monitored processes
       containers:
-      - name: beyla
+      - name: obi
         terminationMessagePolicy: FallbackToLogsOnError
-        image: grafana/beyla:latest
+        image: otel/ebpf-instrument:latest
         env:
           - name: OTEL_EBPF_TRACE_PRINTER
             value: "text"
@@ -325,8 +325,8 @@ spec:
             drop:
               - ALL
         volumeMounts:
-        - name: var-run-beyla
-          mountPath: /var/run/beyla
+        - name: var-run-obi
+          mountPath: /var/run/obi
         - name: cgroup
           mountPath: /sys/fs/cgroup
       tolerations:
@@ -335,7 +335,7 @@ spec:
       - effect: NoExecute
         operator: Exists
       volumes:
-      - name: var-run-beyla
+      - name: var-run-obi
         emptyDir: {}
       - name: cgroup
         hostPath:
@@ -345,7 +345,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: some-service
-  namespace: beyla-demo
+  namespace: obi-demo
   ...
 ---
 ```
@@ -366,14 +366,12 @@ Example of ConfigMap with the OBI YAML documentation:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: beyla-config
+  name: obi-config
 data:
-  beyla-config.yml: |
+  obi-config.yml: |
     trace_printer: text
-    grafana:
-      otlp:
-        submit: ["metrics","traces"]
     otel_traces_export:
+      endpoint: http://otelcol:4317
       sampler:
         name: parentbased_traceidratio
         arg: "0.01"
@@ -389,21 +387,21 @@ ConfigMap:
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: beyla
+  name: obi
 spec:
   selector:
     matchLabels:
-      instrumentation: beyla
+      instrumentation: obi
   template:
     metadata:
       labels:
-        instrumentation: beyla
+        instrumentation: obi
     spec:
-      serviceAccountName: beyla
+      serviceAccountName: obi
       hostPID: true #important!
       containers:
-        - name: beyla
-          image: grafana/beyla:latest
+        - name: obi
+          image: otel/ebpf-instrument:latest
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true
@@ -411,18 +409,18 @@ spec:
           # mount the previous ConfigMap as a folder
           volumeMounts:
             - mountPath: /config
-              name: beyla-config
-            - mountPath: /var/run/beyla
-              name: var-run-beyla
+              name: obi-config
+            - mountPath: /var/run/obi
+              name: var-run-obi
           env:
-            # tell beyla where to find the configuration file
+            # tell OBI where to find the configuration file
             - name: OTEL_EBPF_CONFIG_PATH
-              value: '/config/beyla-config.yml'
+              value: '/config/obi-config.yml'
       volumes:
-        - name: beyla-config
+        - name: obi-config
           configMap:
-            name: beyla-config
-        - name: var-run-beyla
+            name: obi-config
+        - name: var-run-obi
           emptyDir: {}
 ```
 
@@ -432,18 +430,17 @@ The previous example is valid for regular configuration but should not be used
 to pass secret information like passwords or API keys.
 
 To provide secret information, the recommended way is to deploy a Kubernetes
-Secret. For example, this secret contains some fictional Grafana Cloud
+Secret. For example, this secret contains some fictional OpenTelemetry Collector
 credentials:
 
 ```yaml
 apiVersion: v1
 kind: Secret
 metadata:
-  name: grafana-secret
+  name: otelcol-secret
 type: Opaque
 stringData:
-  grafana-user: '123456'
-  grafana-api-key: 'xxxxxxxxxxxxxxx'
+  headers: 'Authorization=Bearer Z2hwX0l4Y29QOWhr....ScQo='
 ```
 
 Then you can access the secret values as environment variables. Following the
@@ -452,16 +449,9 @@ section to the OBI container:
 
 ```yaml
 env:
-  - name: GRAFANA_CLOUD_ZONE
-    value: prod-eu-west-0
-  - name: GRAFANA_CLOUD_INSTANCE_ID
+  - name: OTEL_EXPORTER_OTLP_HEADERS
     valueFrom:
       secretKeyRef:
-        key: grafana-user
-        name: grafana-secret
-  - name: GRAFANA_CLOUD_API_KEY
-    valueFrom:
-      secretKeyRef:
-        key: grafana-api-key
-        name: grafana-secret
+        key: otelcol-secret
+        name: headers
 ```
