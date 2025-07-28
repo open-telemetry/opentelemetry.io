@@ -6,7 +6,7 @@ weight: 9
 ---
 
 OpenTelemetry Java 是为 Java 生态系统打造的一套 OpenTelemetry 可观测性工具集。
-从宏观层面来看，它由 API、SDK 和 插桩（instrumentation）三部分组成。
+从宏观层面来看，它由 API、SDK 和插桩（instrumentation）三部分组成。
 
 本页面将介绍该生态系统，包括概念性的[概述](#overview)、一份[文档导航](#navigating-the-docs)指南
 ，以及一份含发版信息和构件等关键详情的[仓库](#repositories)清单。
