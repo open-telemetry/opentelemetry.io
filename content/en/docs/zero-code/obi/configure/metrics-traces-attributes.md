@@ -34,7 +34,7 @@ Example:
 ```yaml
 attributes:
   select:
-    otel_ebpf_network_flow_bytes:
+    obi_network_flow_bytes:
       # limit the OTEL_EBPF_network_flow_bytes attributes to only the three attributes
       include:
         - obi.ip

@@ -29,8 +29,8 @@ Prometheus format.
 | Application process | `process.memory.virtual`             | `process_memory_virtual_bytes`         | UpDownCounter | bytes   | The amount of committed virtual memory                                                                                               |
 | Application process | `process.disk.io`                    | `process_disk_io_bytes_total`          | Counter       | bytes   | Disk bytes transferred                                                                                                               |
 | Application process | `process.network.io`                 | `process_network_io_bytes_total`       | Counter       | bytes   | Network bytes transferred                                                                                                            |
-| Network             | `otel_ebpf.network.flow.bytes`       | `otel_ebpf_network_flow_bytes`         | Counter       | bytes   | Bytes submitted from a source network endpoint to a destination network endpoint                                                     |
-| Network             | `otel_ebpf.network.inter.zone.bytes` | `otel_ebpf_network_inter_zone_bytes`   | Counter       | bytes   | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes)                |
+| Network             | `obi.network.flow.bytes`             | `obi_network_flow_bytes`               | Counter       | bytes   | Bytes submitted from a source network endpoint to a destination network endpoint                                                     |
+| Network             | `obi.network.inter.zone.bytes`       | `obi_network_inter_zone_bytes`         | Counter       | bytes   | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes)                |
 
 OBI can also export
 [Span metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector)
@@ -84,46 +84,46 @@ check the `attributes`->`select` section in the
 | Application `rpc.*`            | `rpc.method`                 | shown                                             |
 | Application `rpc.*`            | `rpc.system`                 | shown                                             |
 | Application (server)           | `client.address`             | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `otel_ebpf.ip`               | hidden                                            |
+| `obi.network.flow.bytes`       | `obi.ip`                     | hidden                                            |
 | `db.client.operation.duration` | `db.operation.name`          | shown                                             |
 | `db.client.operation.duration` | `db.collection.name`         | hidden                                            |
 | `messaging.publish.duration`   | `messaging.system`           | shown                                             |
 | `messaging.publish.duration`   | `messaging.destination.name` | shown                                             |
 | `messaging.process.duration`   | `messaging.system`           | shown                                             |
 | `messaging.process.duration`   | `messaging.destination.name` | shown                                             |
-| `otel_ebpf.network.flow.bytes` | `client.port`                | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `direction`                  | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `dst.address`                | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `dst.cidr`                   | shown if the `cidrs` configuration section exists |
-| `otel_ebpf.network.flow.bytes` | `dst.name`                   | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `dst.port`                   | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `dst.zone` (only Kubernetes) | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `iface`                      | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `k8s.cluster.name`           | shown if Kubernetes is enabled                    |
-| `otel_ebpf.network.flow.bytes` | `k8s.dst.name`               | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `k8s.dst.namespace`          | shown if Kubernetes is enabled                    |
-| `otel_ebpf.network.flow.bytes` | `k8s.dst.node.ip`            | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `k8s.dst.node.name`          | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `k8s.dst.owner.type`         | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `k8s.dst.type`               | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `k8s.dst.owner.name`         | shown if Kubernetes is enabled                    |
-| `otel_ebpf.network.flow.bytes` | `k8s.src.name`               | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `k8s.src.namespace`          | shown if Kubernetes is enabled                    |
-| `otel_ebpf.network.flow.bytes` | `k8s.src.node.ip`            | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `k8s.src.owner.name`         | shown if Kubernetes is enabled                    |
-| `otel_ebpf.network.flow.bytes` | `k8s.src.owner.type`         | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `k8s.src.type`               | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `server.port`                | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `src.address`                | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `src.cidr`                   | shown if the `cidrs` configuration section exists |
-| `otel_ebpf.network.flow.bytes` | `src.name`                   | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `src.port`                   | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `src.zone` (only Kubernetes) | hidden                                            |
-| `otel_ebpf.network.flow.bytes` | `transport`                  | hidden                                            |
+| `obi.network.flow.bytes`       | `client.port`                | hidden                                            |
+| `obi.network.flow.bytes`       | `direction`                  | hidden                                            |
+| `obi.network.flow.bytes`       | `dst.address`                | hidden                                            |
+| `obi.network.flow.bytes`       | `dst.cidr`                   | shown if the `cidrs` configuration section exists |
+| `obi.network.flow.bytes`       | `dst.name`                   | hidden                                            |
+| `obi.network.flow.bytes`       | `dst.port`                   | hidden                                            |
+| `obi.network.flow.bytes`       | `dst.zone` (only Kubernetes) | hidden                                            |
+| `obi.network.flow.bytes`       | `iface`                      | hidden                                            |
+| `obi.network.flow.bytes`       | `k8s.cluster.name`           | shown if Kubernetes is enabled                    |
+| `obi.network.flow.bytes`       | `k8s.dst.name`               | hidden                                            |
+| `obi.network.flow.bytes`       | `k8s.dst.namespace`          | shown if Kubernetes is enabled                    |
+| `obi.network.flow.bytes`       | `k8s.dst.node.ip`            | hidden                                            |
+| `obi.network.flow.bytes`       | `k8s.dst.node.name`          | hidden                                            |
+| `obi.network.flow.bytes`       | `k8s.dst.owner.type`         | hidden                                            |
+| `obi.network.flow.bytes`       | `k8s.dst.type`               | hidden                                            |
+| `obi.network.flow.bytes`       | `k8s.dst.owner.name`         | shown if Kubernetes is enabled                    |
+| `obi.network.flow.bytes`       | `k8s.src.name`               | hidden                                            |
+| `obi.network.flow.bytes`       | `k8s.src.namespace`          | shown if Kubernetes is enabled                    |
+| `obi.network.flow.bytes`       | `k8s.src.node.ip`            | hidden                                            |
+| `obi.network.flow.bytes`       | `k8s.src.owner.name`         | shown if Kubernetes is enabled                    |
+| `obi.network.flow.bytes`       | `k8s.src.owner.type`         | hidden                                            |
+| `obi.network.flow.bytes`       | `k8s.src.type`               | hidden                                            |
+| `obi.network.flow.bytes`       | `server.port`                | hidden                                            |
+| `obi.network.flow.bytes`       | `src.address`                | hidden                                            |
+| `obi.network.flow.bytes`       | `src.cidr`                   | shown if the `cidrs` configuration section exists |
+| `obi.network.flow.bytes`       | `src.name`                   | hidden                                            |
+| `obi.network.flow.bytes`       | `src.port`                   | hidden                                            |
+| `obi.network.flow.bytes`       | `src.zone` (only Kubernetes) | hidden                                            |
+| `obi.network.flow.bytes`       | `transport`                  | hidden                                            |
 | Traces (SQL, Redis)            | `db.query.text`              | hidden                                            |
 
-{{< alert type="note" >}} The `otel_ebpf.network.inter.zone.bytes` metric
-supports the same set of attributes as `otel_ebpf.network.flow.bytes`, but all
+{{< alert type="note" >}} The `obi.network.inter.zone.bytes` metric
+supports the same set of attributes as `obi.network.flow.bytes`, but all
 of them are hidden by default, except `k8s.cluster.name`, `src.zone` and
 `dst.zone`. {{< /alert >}}
 
@@ -133,13 +133,13 @@ OBI can be
 [configured to report internal metrics](../configure/internal-metrics-reporter/)
 in Prometheus Format.
 
-| Name                                        | Type       | Description                                                                              |
-| ------------------------------------------- | ---------- | ---------------------------------------------------------------------------------------- |
-| `otel_ebpf_ebpf_tracer_flushes`             | Histogram  | Length of the groups of traces flushed from the eBPF tracer to the next pipeline stage   |
-| `otel_ebpf_otel_metric_exports_total`       | Counter    | Length of the metric batches submitted to the remote OTel collector                      |
-| `otel_ebpf_otel_metric_export_errors_total` | CounterVec | Error count on each failed OTel metric export, by error type                             |
-| `otel_ebpf_otel_trace_exports_total`        | Counter    | Length of the trace batches submitted to the remote OTel collector                       |
-| `otel_ebpf_otel_trace_export_errors_total`  | CounterVec | Error count on each failed OTel trace export, by error type                              |
-| `otel_ebpf_prometheus_http_requests_total`  | CounterVec | Number of requests towards the Prometheus Scrape endpoint, faceted by HTTP port and path |
-| `otel_ebpf_instrumented_processes`          | GaugeVec   | Instrumented processes by OBI, with process name                                         |
-| `otel_ebpf_internal_build_info`             | GaugeVec   | Version information of the OBI binary, including the build time and commit hash          |
+| Name                                  | Type       | Description                                                                              |
+| ------------------------------------- | ---------- | ---------------------------------------------------------------------------------------- |
+| `obi_ebpf_tracer_flushes`             | Histogram  | Length of the groups of traces flushed from the eBPF tracer to the next pipeline stage   |
+| `obi_metric_exports_total`            | Counter    | Length of the metric batches submitted to the remote OTel collector                      |
+| `obi_metric_export_errors_total`      | CounterVec | Error count on each failed OTel metric export, by error type                             |
+| `obi_trace_exports_total`             | Counter    | Length of the trace batches submitted to the remote OTel collector                       |
+| `obi_trace_export_errors_total`       | CounterVec | Error count on each failed OTel trace export, by error type                              |
+| `obi_prometheus_http_requests_total`  | CounterVec | Number of requests towards the Prometheus Scrape endpoint, faceted by HTTP port and path |
+| `obi_instrumented_processes`          | GaugeVec   | Instrumented processes by OBI, with process name                                         |
+| `obi_internal_build_info`             | GaugeVec   | Version information of the OBI binary, including the build time and commit hash          |

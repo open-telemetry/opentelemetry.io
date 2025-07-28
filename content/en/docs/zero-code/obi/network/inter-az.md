@@ -15,8 +15,8 @@ This feature is currently only available in Kubernetes clusters.
 Traffic between Cloud Availability Zones might incur additional costs. OBI is
 able to measure it either by adding `src.zone` and `dst.zone` attributes to
 regular network metrics, or by providing a separate
-`otel_ebpf.network.inter.zone.bytes` (OTel) /
-`otel_ebpf_network_inter_zone_bytes_total` (Prometheus) metric.
+`obi.network.inter.zone.bytes` (OTel) /
+`obi_network_inter_zone_bytes_total` (Prometheus) metric.
 
 ## Add `src.zone` and `dst.zone` attributes to regular network metrics
 
@@ -27,7 +27,7 @@ attributes in the OBI YAML configuration:
 ```
 attributes:
   select:
-    otel_ebpf_network_flow_bytes:
+    obi_network_flow_bytes:
       include:
         - k8s.src.owner.name
         - k8s.src.namespace
@@ -39,7 +39,7 @@ attributes:
 ```
 
 This configuration makes inter-zone traffic visible for each
-`otel_ebpf_network_flow_bytes_total` metric with different `src_zone` and
+`obi_network_flow_bytes_total` metric with different `src_zone` and
 `dst_zone` attributes.
 
 If you require higher granularity in your inter-zone traffic measurement (for
@@ -47,15 +47,15 @@ example, source/destination pods or nodes), adding zone attributes would impact
 the cardinality of the metric, even for traffic within the same availability
 zone.
 
-## Use the `otel_ebpf.network.inter.zone` metric
+## Use the `obi.network.inter.zone` metric
 
 Using a separate metric for inter-zone traffic reduces the metric cardinality
 impact of collecting this data, because the `src.zone` and `dst.zone` attributes
 are not added to the regular network metrics.
 
-To enable the `otel_ebpf.network.inter.zone` metric, add the
+To enable the `obi.network.inter.zone` metric, add the
 `network_inter_zone` option to the
-[otel_ebpf_OTEL_METRICS_FEATURES or otel_ebpf_PROMETHEUS_FEATURES](../../configure/export-data/)
+[OTEL_EBPF_METRICS_FEATURES or OTEL_EBPF_PROMETHEUS_FEATURES](../../configure/export-data/)
 configuration option, or its equivalent YAML options. For example, if OBI is
 configured to export metrics via OpenTelemetry:
 
@@ -74,25 +74,25 @@ enabled, you can use the following PromQL queries to measure inter-zone traffic:
 Overall inter-zone traffic throughput:
 
 ```promql
-sum(rate(otel_ebpf_network_inter_zone_bytes_total[$__rate_interval]))
+sum(rate(obi_network_inter_zone_bytes_total[$__rate_interval]))
 ```
 
 Inter-zone traffic throughput, summarized by source and destination zones:
 
 ```promql
-sum(rate(otel_ebpf_network_inter_zone_bytes_total[$__rate_interval])) by(src_zone,dst_zone)
+sum(rate(obi_network_inter_zone_bytes_total[$__rate_interval])) by(src_zone,dst_zone)
 ```
 
 Overall same-zone traffic throughput:
 
 ```promql
-sum(rate(otel_ebpf_network_flow_bytes_total[$__rate_interval]))
-  - sum(rate(otel_ebpf_network_inter_zone_bytes_total[$__rate_interval]))
+sum(rate(obi_network_flow_bytes_total[$__rate_interval]))
+  - sum(rate(obi_network_inter_zone_bytes_total[$__rate_interval]))
 ```
 
 Percentage of inter-zone traffic from the total:
 
 ```promql
-100 * sum(rate(otel_ebpf_network_inter_zone_bytes_total[$__rate_interval]))
-  / sum(rate(otel_ebpf_network_flow_bytes_total[$__rate_interval]))
+100 * sum(rate(obi_network_inter_zone_bytes_total[$__rate_interval]))
+  / sum(rate(obi_network_flow_bytes_total[$__rate_interval]))
 ```

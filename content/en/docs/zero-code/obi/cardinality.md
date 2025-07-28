@@ -208,10 +208,10 @@ about the applications and how they are interconnected.
 ## Network-level metrics
 
 It is simpler to calculate network-level metrics than application-level metrics,
-as OBI only provides a single Counter: `otel_ebpf.network.flow.bytes`. However
+as OBI only provides a single Counter: `obi.network.flow.bytes`. However
 the cardinality also depend on how much your applications are interconnected.
 
-The default attributes for `otel_ebpf.network.flow.bytes` are:
+The default attributes for `obi.network.flow.bytes` are:
 
 - Direction (request/response)
 - Source and destination endpoint owners in Kubernetes: `k8s_src_owner_name`,
@@ -349,13 +349,13 @@ Network metrics measure the OpenTelemetry Demo connections, other internal
 cluster connections, and instrumentation traffic, so the real cardinality is
 higher:
 
-`count(otel_ebpf_network_flow_bytes_total)` **→ 330**
+`count(obi_network_flow_bytes_total)` **→ 330**
 
 We can group traffic between namespaces to get a better idea of which part
 belongs to the OpenTelemetry demo with the following query:
 
 ```text
-count(otel_ebpf_network_flow_bytes_total) by (k8s_src_namespace, k8s_dst_namespace)
+count(obi_network_flow_bytes_total) by (k8s_src_namespace, k8s_dst_namespace)
 ```
 
 Which returns the following information:
