@@ -38,7 +38,7 @@ certifique-se de usar o **mesmo nome de arquivo** do anúncio em inglês.
 
 ### Lista de anúncios {#announcement-list}
 
-Um determinado anúncio será exibido no site quando a data de compilação cair
+Um anúncio específico será exibido em uma compilação do site quando a data de compilação
 estiver entre os campos `date` e `expiryDate` do anúncio. Quando esses campos
 estiverem ausentes, os valores padrão serão considerados como "agora" e "para
 sempre", respectivamente.
