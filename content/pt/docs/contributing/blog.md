@@ -48,10 +48,10 @@ com os seguintes detalhes:
 
 - Título da publicação
 - Breve descrição e estrutura do conteúdo
-- Se aplicável, liste as tecnologias utilizadas. Todas devem ser de código aberto, e
-  deve-se dar preferência a projetos da CNCF em relação a projetos fora da CNCF
-  (por exemplo, use Jaeger para visualização de rastros e Prometheus para
-  visualização de métricas)
+- Se aplicável, liste as tecnologias utilizadas. Todas devem ser de código
+  aberto, e deve-se dar preferência a projetos da CNCF em relação a projetos
+  fora da CNCF (por exemplo, use Jaeger para visualização de rastros e
+  Prometheus para visualização de métricas)
 - Nome de um [SIG](https://github.com/open-telemetry/community/) relacionado ao
   conteúdo
 - Nome de um patrocinador (mantenedor ou aprovador) desse SIG, que ajudará a
@@ -60,8 +60,8 @@ com os seguintes detalhes:
 
 Os mantenedores do SIG de Comunicação irão verificar se sua publicação atende a
 todos os requisitos para ser aceita. Caso não consiga indicar um
-SIG/patrocinador inicialmente na sua _issue_, eles poderão te direcionar a um SIG apropriado,
-com o qual você pode entrar em contato para obter patrocínio.
+SIG/patrocinador inicialmente na sua _issue_, eles poderão te direcionar a um
+SIG apropriado, com o qual você pode entrar em contato para obter patrocínio.
 Ter um patrocinador é opcional, mas aumenta a chance de a publicação ser
 revisada e aprovada mais rapidamente.
 
@@ -108,7 +108,8 @@ utilizando a interface do GitHub:
 
 1.  Acesse o
     [modelo de publicação](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md)
-    e clique em **Copy raw content** (Copiar conteúdo) no canto superior direito do menu.
+    e clique em **Copy raw content** (Copiar conteúdo) no canto superior direito
+    do menu.
 
 1.  Vá para
     [Create a new file (Crie um novo arquivo)](https://github.com/open-telemetry/opentelemetry.io/new/main).
@@ -120,8 +121,8 @@ utilizando a interface do GitHub:
 
 1.  Edite o arquivo Markdown diretamente no GitHub.
 
-1.  Quando a publicação estiver pronta, selecione **Propose changes** (Proponha mudanças) e siga as
-    instruções.
+1.  Quando a publicação estiver pronta, selecione **Propose changes** (Proponha
+    mudanças) e siga as instruções.
 
 ## Prazos de publicação {#publication-timelines}
 
