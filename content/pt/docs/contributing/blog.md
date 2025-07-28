@@ -48,7 +48,7 @@ com os seguintes detalhes:
 
 - Título da publicação
 - Breve descrição e estrutura do conteúdo
-- Se aplicável, liste as tecnologias utilizadas. Todas devem ser open source, e
+- Se aplicável, liste as tecnologias utilizadas. Todas devem ser de código aberto, e
   deve-se dar preferência a projetos da CNCF em relação a projetos fora da CNCF
   (por exemplo, use Jaeger para visualização de rastros e Prometheus para
   visualização de métricas)
