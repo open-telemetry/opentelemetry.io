@@ -34,7 +34,7 @@ OpenTelemetry. Exemplos de conteúdos adequados incluem:
 
 - Novas funcionalidades do OpenTelemetry
 - Atualizações de projetos do OpenTelemetry
-- Atualizações de Grupos de Interesse Específico (SIGs)
+- Atualizações de Grupos de Interesse Especial (SIGs)
 - Tutoriais e guias passo a passo
 - Integrações com OpenTelemetry
 
