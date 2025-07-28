@@ -143,7 +143,6 @@ Esse script também valida fragmentos de URL, que o verificador de links não fa
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 
-Se essa verificação falhar, revise o log `BUILD and CHECK LINKS`,
-na etapa `npm run log:check:links`, para identificar possíveis problemas
-adicionais. Caso não tenha certeza de como resolver, peça ajuda aos
-mantenedores.
+Se essa verificação falhar, revise o log `BUILD and CHECK LINKS`, na etapa
+`npm run log:check:links`, para identificar possíveis problemas adicionais. Caso
+não tenha certeza de como resolver, peça ajuda aos mantenedores.
