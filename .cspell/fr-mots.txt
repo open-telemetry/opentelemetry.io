@@ -2,3 +2,4 @@ extensibilité
 observabilité
 télémétrie
 traçage
+packagées
