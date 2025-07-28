@@ -68,15 +68,15 @@ autorizar a submissão do conteúdo.
 
 ## Enviar um post no blog {#submit-a-blog-post}
 
-Você pode enviar um post no blog criando um _fork_ do repositório e escrevendo-o
+Você pode enviar um _post_ no _blog_ criando um _fork_ do repositório e escrevendo-o
 localmente ou usando a interface do GitHub. Em ambos os casos, pedimos que siga
 as instruções fornecidas pelo
 [modelo de post no blog](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md).
 
 ### Criar um _fork_ e escrever localmente {#fork-and-write-locally}
 
-Depois de configurar o _fork_ local, você pode criar um post no blog usando um
-modelo. Siga estes passos para criar um post a partir do modelo:
+Depois de configurar o _fork_ local, você pode criar um _post_ no _blog_ usando um
+modelo. Siga estes passos para criar um _post_ a partir do modelo:
 
 1. Execute o seguinte comando a partir da raiz do repositório:
 
@@ -84,14 +84,14 @@ modelo. Siga estes passos para criar um post a partir do modelo:
    npx hugo new content/pt/blog/2025/nome-curto-da-publicação.md
    ```
 
-   Caso seu post tenha imagens ou outros arquivos, execute o seguinte comando:
+   Caso seu _post_ tenha imagens ou outros arquivos, execute o seguinte comando:
 
    ```sh
    npx hugo new content/pt/blog/2025/nome-curto-da-publicação/index.md
    ```
 
 1. Edite o arquivo Markdown no caminho informado no comando anterior. O arquivo
-   é inicializado a partir do modelo de post no blog localizado em
+   é inicializado a partir do modelo de _post_ no _blog_ localizado em
    [archetypes](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/).
 
 1. Adicione imagens ou outros arquivos na pasta criada.
@@ -126,8 +126,8 @@ utilizando a interface do GitHub:
 O blog do OpenTelemetry não segue um prazo de publicação rigoroso, o que
 significa que:
 
-- Seu post será publicado quando tiver todas as aprovações necessárias.
+- Seu _post_ será publicado quando tiver todas as aprovações necessárias.
 - A publicação pode ser adiada se necessário, e os mantenedores não podem
   garantir que a publicação ocorra antes ou em uma determinada data.
-- Alguns posts no blog (anúncios importantes) podem ter prioridade e serem
+- Alguns _posts_ no _blog_ (anúncios importantes) podem ter prioridade e serem
   publicados antes da sua.
