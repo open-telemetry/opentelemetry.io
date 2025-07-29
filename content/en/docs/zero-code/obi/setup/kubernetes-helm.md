@@ -108,9 +108,9 @@ describes the diverse configuration options.
 
 ## Providing secrets to the Helm configuration
 
-If you are submitting directly the metrics and traces to your observability backend via the
-OpenTelemetry Endpoint, you might need to provide credentials via the
-`OTEL_EXPORTER_OTLP_HEADERS` environment variable.
+If you are submitting directly the metrics and traces to your observability
+backend via the OpenTelemetry Endpoint, you might need to provide credentials
+via the `OTEL_EXPORTER_OTLP_HEADERS` environment variable.
 
 The recommended way is to store such value in a Kubernetes Secret and then
 specify the environment variable referring to it from the Helm configuration.
