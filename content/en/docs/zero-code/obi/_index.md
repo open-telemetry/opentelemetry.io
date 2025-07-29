@@ -104,6 +104,3 @@ For a comprehensive list of capabilities required by OBI, refer to
 
 - Follow the [setup](setup/) documentation to get started with OBI either with
   Docker or Kubernetes.
-- For application observability, refer to the
-  [language specific quickstart guides](quickstart/) for examples about how to
-  set up OBI to instrument applications written in a particular language.

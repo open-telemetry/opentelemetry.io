@@ -31,7 +31,7 @@ The OBI container must be configured in following way:
 
 For this example you need a container running an HTTP/S or gRPC service. If you
 don't have one, you can use this
-[simple blog engine service written in Go](http://macias.info):
+[simple blog engine service written in Go](https://macias.info):
 
 ```sh
 docker run -p 18443:8443 --name goblog mariomac/goblog:dev
