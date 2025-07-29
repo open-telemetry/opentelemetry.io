@@ -103,7 +103,7 @@ spec:
     spec:
       containers:
         - name: nodejs-service
-          image: ghcr.io/grafana/beyla-test/nodejs-testserver
+          image: ghcr.io/open-teletry/obi-testimg:node-0.1.1
           ports:
             - containerPort: 3000
           env:
@@ -139,7 +139,7 @@ spec:
     spec:
       containers:
         - name: go-service
-          image: ghcr.io/grafana/beyla-test/go-testserver
+          image: ghcr.io/open-teletry/obi-testimg:go-0.1.1
           ports:
             - containerPort: 8080
           env:
@@ -175,7 +175,7 @@ spec:
     spec:
       containers:
         - name: python-service
-          image: ghcr.io/grafana/beyla-test/python-testserver
+          image: ghcr.io/open-teletry/obi-testimg:python-0.1.1
           ports:
             - containerPort: 8080
           env:
@@ -211,7 +211,7 @@ spec:
     spec:
       containers:
         - name: ruby-service
-          image: ghcr.io/open-telemetry/obi-testimg:rails-0.1.0
+          image: ghcr.io/open-telemetry/obi-testimg:rails-0.1.1
           ports:
             - containerPort: 3000
           env:
