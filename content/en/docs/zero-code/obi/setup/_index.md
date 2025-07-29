@@ -15,12 +15,6 @@ There are different options to set up and run OBI:
 For information on configuration options and data export modes, see the
 [Configure OBI](../configure/) documentation.
 
-You can run OBI as a standalone process. This approach is suitable for running
-with bare metal installations, in virtual machines, for local development, or
-advanced use cases. Consult the documentation in the
-[Git repository](../setup/standalone.md)
-to learn how to set up OBI as a standalone process.
-
 {{% alert title="Note" %}}
 
 If you will be using OBI to generate traces, please make sure you've read our

@@ -22,7 +22,7 @@ go install github.com/grafana/beyla/cmd/beyla@latest
 ## Set up OBI
 
 1. Create a configuration file following the
-   [configuration options](../configure/options/) documentation.
+   [configuration options](../../configure/options/) documentation.
 
 2. Run OBI as a privileged process:
 
@@ -79,13 +79,13 @@ sudo ./obi --config=obi-config.yml
 ## Configuration options
 
 For a complete list of configuration options, see the
-[configuration documentation](../configure/options/).
+[configuration documentation](../../configure/options/).
 
 ## Permissions
 
 OBI requires elevated privileges to function properly. For more information
 about the specific capabilities required, see the
-[security documentation](../security/).
+[security documentation](../../security/).
 
 ## Example: Docker instrumentation
 

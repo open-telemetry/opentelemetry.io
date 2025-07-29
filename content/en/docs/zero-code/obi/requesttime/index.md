@@ -16,7 +16,7 @@ different from the measured response time at the server.
 The following diagram illustrates the different delays that can occur from the
 client perspective:
 
-![Life cycle of a web service request](./req-life-cycle_2.png)
+![Life cycle of a web service request](./req-life-cycle-2.png)
 
 - **Total Request Time**: The time from the client's perspective, including
   latency from the network, load balancer, and time spent in the service.

@@ -27,7 +27,8 @@ host, so there is no need to secure the traffic nor provide authentication in
 the OTel Collector OTLP receiver.
 
 Install [OpenTelemetry eBPF Instrumentation](../../setup/) and download the
-example [configuration file](./resources/instrumenter-config.yml).
+example
+[configuration file](/docs/zero-code/obi/configure/resources/instrumenter-config.yml).
 
 First, specify the executable to instrument. For a service executable running on
 port `443`, add the `open_port` property to the YAML document:

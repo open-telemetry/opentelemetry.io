@@ -45,7 +45,7 @@ More information can be found in the
 OBI can operate in two distinct modes: _application observability_ and _network
 observability_. These modes are not mutually exclusive and can be used together
 as needed. For more details on enabling these modes, refer to the
-[configuration documentation](/docs/beyla/latest/configure/options/).
+[configuration documentation](../configure/options/).
 
 OBI reads its configuration and checks for the required capabilities, if any are
 missing it displays a warning, for example:
@@ -109,7 +109,7 @@ this, keep in mind that your results may vary depending on your specific setup.
 
 #### AKS
 
-**Create a configuration file**
+##### Create AKS configuration file
 
 ```json
 {
@@ -119,7 +119,7 @@ this, keep in mind that your results may vary depending on your specific setup.
 }
 ```
 
-**Create or update your AKS cluster**
+##### Create or update your AKS cluster
 
 ```sh
 az aks create --name myAKSCluster --resource-group myResourceGroup --linux-os-config ./linuxosconfig.json
@@ -130,7 +130,7 @@ For more information, see
 
 #### EKS (using EKS Anywhere Configuration)
 
-**Create a configuration file**
+##### Create EKS Anywhere configuration file
 
 ```yaml
 apiVersion: anywhere.eks.amazonaws.com/v1alpha1
@@ -144,7 +144,7 @@ spec:
         kernel.sys_paranoid: '1'
 ```
 
-**Deploy or update your EKS Anywhere cluster**
+##### Deploy or update your EKS Anywhere cluster
 
 ```sh
 eksctl create cluster --config-file hostosconfig.yaml
@@ -152,7 +152,7 @@ eksctl create cluster --config-file hostosconfig.yaml
 
 #### EKS (modifying node group settings)
 
-**Update the node group**
+##### Update the node group
 
 ```yaml
 apiVersion: eks.eks.amazonaws.com/v1beta1

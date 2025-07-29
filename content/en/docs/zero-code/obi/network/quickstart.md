@@ -107,8 +107,8 @@ spec:
 
 Some observations about this configuration:
 
-- The container image uses the latest under-development `otel/ebpf-instrument:latest`
-  image.
+- The container image uses the latest under-development
+  `otel/ebpf-instrument:latest` image.
 - OBI needs to run as a DaemonSet, as it is requires only one OBI instance per
   node
 - To listen to network packets on the host, OBI requires the `hostNetwork: true`
@@ -126,7 +126,7 @@ kubectl logs daemonset/obi -n obi | head
 
 The output would be something like:
 
-```log
+```text
 network_flow: obi.ip=172.18.0.2 iface= direction=255 src.address=10.244.0.4 dst.address=10.96.0.1
 ```
 
@@ -135,8 +135,9 @@ network_flow: obi.ip=172.18.0.2 iface= direction=255 src.address=10.244.0.4 dst.
 After you have confirmed that network metrics are being collected, configure OBI
 to export the metrics in OpenTelemetry format to a collector endpoint.
 
-Check the [data export documentation](../configure/export-data.md#opentelemetry-metrics-exporter-component) to configure
-the OpenTelemetry exporter.
+Check the
+[data export documentation](/docs/zero-code/obi/configure/export-data#opentelemetry-metrics-exporter-component)
+to configure the OpenTelemetry exporter.
 
 ### Allowed attributes
 
@@ -165,7 +166,7 @@ network:
 
 The equivalent Prometheus metric would be:
 
-```
+```text
 obi.network.flow.bytes:
   k8s_src_owner_name="frontend"
   k8s_src_owner_type="deployment"
@@ -201,7 +202,7 @@ network:
 
 Then, the equivalent Prometheus metric would be:
 
-```
+```text
 obi_network_flow_bytes:
   src_cidr="cluster-internal"
   dst_cidr="private"

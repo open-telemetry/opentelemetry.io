@@ -5,8 +5,6 @@ description: Compatibility notes when running OBI alongside Cilium
 weight: 23
 ---
 
-# OBI and Cilium compatibility
-
 Cilium is an open source security, networking, and observability platform that
 uses eBPF to provide networking and security for Kubernetes clusters. In some
 cases, the eBPF programs both Cilium and OBI use can conflict with the ePBF
@@ -60,10 +58,9 @@ This ensures that OBI programs always run before Cilium programs.
 
 ## OBI attachment mode configuration
 
-Refer to the
-[configuration documentation](/docs/beyla/latest/configure/options/), to
-configure OBI TC attachment mode using the `OTEL_EBPF_BPF_TC_BACKEND`
-configuration option.
+Refer to the [configuration documentation](../configure/options/), to configure
+OBI TC attachment mode using the `OTEL_EBPF_BPF_TC_BACKEND` configuration
+option.
 
 You can do the following:
 
@@ -363,7 +360,7 @@ for i in `kubectl get pods -n obi -o name | cut -d '/' -f2`; do kubectl logs -n 
 You should see output that shows requests detected by OBI with trace-context
 propagation similar to this:
 
-```
+```text
 2025-01-17 21:42:18.11794218 (5.045099ms[5.045099ms]) HTTPClient 200 GET /tracemetoo [10.244.1.92 as go-service.default:37450]->[10.96.214.17 as python-service.default:8080] size:0B svc=[default/go-service go] traceparent=[00-14f07e11b5e57f14fd2da0541f0ddc2f-319fb03373427a41[cfa6d5d448e40b00]-01]
 2025-01-17 21:42:18.11794218 (5.284521ms[5.164701ms]) HTTP 200 GET /gotracemetoo [10.244.2.144 as nodejs-service.default:57814]->[10.244.1.92 as go-service.default:8080] size:0B svc=[default/go-service go] traceparent=[00-14f07e11b5e57f14fd2da0541f0ddc2f-cfa6d5d448e40b00[cce1e6b5e932b89a]-01]
 2025-01-17 21:42:18.11794218 (1.934744ms[1.934744ms]) HTTP 403 GET /users [10.244.2.32 as ruby-service.default:46876]->[10.244.2.176 as ruby-service.default:3000] size:222B svc=[default/ruby-service ruby] traceparent=[00-14f07e11b5e57f14fd2da0541f0ddc2f-57d77d99e9665c54[3d97d26b0051112b]-01]

@@ -72,14 +72,14 @@ OBI is tested with the following Linux distributions:
 - openSUSE Leap 15.3, 15.4
 - SUSE Linux Enterprise Server 15 SP4
 
-* OBI also supports RedHat-based distributions: RHEL8, CentOS 8, Rocky8,
+- OBI also supports RedHat-based distributions: RHEL8, CentOS 8, Rocky8,
   AlmaLinux8, and others, which ship a Kernel 4.18 that backports eBPF-related
   patches.
 
-* For instrumenting Go programs, compile with at least Go 1.17. OBI support Go
+- For instrumenting Go programs, compile with at least Go 1.17. OBI support Go
   applications built with a major **Go version no earlier than 3 versions**
   behind the current stable major release.
-* Administrative access rights to execute OBI.
+- Administrative access rights to execute OBI.
 
 ## Limitations
 

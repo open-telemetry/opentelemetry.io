@@ -39,7 +39,7 @@ Set the bucket boundaries for metrics related to request duration. Specifically:
 - `rpc.client.duration` (OTel) / `rpc_client_duration_seconds` (Prometheus)
 
 If you leave the value unset, OBI uses the default bucket boundaries from the
-[OpenTelemetry semantic conventions](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/semantic_conventions/http-metrics.md):
+[OpenTelemetry semantic conventions](/docs/specs/semconv/http/http-metrics/):
 
 ```text
 0, 0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.25, 0.5, 0.75, 1, 2.5, 5, 7.5, 10
@@ -87,9 +87,9 @@ by
 [enabling the `native-histograms` feature in your Prometheus collector](https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms).
 
 For OpenTelemetry, you can use
-[exponential histograms](https://opentelemetry.io/docs/specs/otel/metrics/data-model/#exponentialhistogram)
+[exponential histograms](/docs/specs/otel/metrics/data-model/#exponentialhistogram)
 for the predefined histograms instead of defining the buckets manually. Set the
 standard
-[OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION](https://opentelemetry.io/docs/specs/otel/metrics/sdk_exporters/otlp/#additional-configuration)
+[OTEL_EXPORTER_OTLP_METRICS_DEFAULT_HISTOGRAM_AGGREGATION](/docs/specs/otel/metrics/sdk_exporters/otlp/#additional-environment-variable-configuration)
 environment variable. See the `histogram_aggregation` section in the
 [OTel metrics exporter](../export-data/) section for more information.

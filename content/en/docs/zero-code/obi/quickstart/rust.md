@@ -86,12 +86,12 @@ After a few minutes traces will appear in the logs of your OpenTelemetry
 Collector:
 
 ```text
-
+TODO: Add log lines from collector
 ```
 
 ## 6. Configure routing
 
-The exposed span name in Grafana Cloud is a generic `GET /**`, where it should
+The exposed span name is a generic `GET /**`, where it should
 say something like `GET /foo` (the path of the test request URL).
 
 OBI groups any unknown URL path as `/**` to avoid unexpected cardinality
@@ -111,22 +111,17 @@ routes:
 Then, run OBI with the `-config` argument (or use the `OTEL_EBPF_CONFIG_PATH`
 environment variable instead):
 
-```
+```shell
 sudo -E beyla -config config.yml
 ```
 
 Finally, make HTTP requests:
 
-```
+```shell
 curl http://localhost:8080/foo
 curl http://localhost:8080/user/1234
 curl http://localhost:8080/user/5678
 ```
-
-Grafana will now heuristically assign a route to each trace. `/foo` got its own
-route while `/user/1234` and `/user/5678` were grouped into the `/user/*` route.
-
-![OBI grouped traces](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/grouped-traces.png)
 
 ## Next steps
 

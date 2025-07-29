@@ -220,11 +220,11 @@ attributes:
 | YAML<br>environment variable                                            | Description                                                                                                                                                                                   | Type           | Default        |
 | ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- |
 | `enable`<br>`OTEL_EBPF_KUBE_METADATA_ENABLE`                            | Enable or disable Kubernetes metadata decoration. Set to `autodetect` to enable if running in Kubernetes. For more information, refer to the [enable Kubernetes section](#enable-kubernetes). | boolean/string | false          |
-| `kubeconfig_path`<br>`KUBECONFIG`                                       | Path to the Kubernetes config file. For more information, refer to the [kubeconfig path section](#kubeconfig-path).                                                                           | string         | ~/.kube/config |
+| `kubeconfig_path`<br>`KUBECONFIG`                                       | Path to the Kubernetes config file. For more information, refer to the [Kubernetes configuration path section](#kubernetes-configuration-path).                                               | string         | ~/.kube/config |
 | `disable_informers`<br>`OTEL_EBPF_KUBE_DISABLE_INFORMERS`               | List of informers to disable (`node`, `service`). For more information, refer to the [disable informers section](#disable-informers).                                                         | string         | (empty)        |
 | `meta_restrict_local_node`<br>`OTEL_EBPF_KUBE_META_RESTRICT_LOCAL_NODE` | Restrict metadata to local node only. For more information, refer to the [meta restrict local node section](#meta-restrict-local-node).                                                       | boolean        | false          |
 | `informers_sync_timeout`<br>`OTEL_EBPF_KUBE_INFORMERS_SYNC_TIMEOUT`     | Maximum time to wait for Kubernetes metadata before starting. For more information, refer to the [informers sync timeout section](#informers-sync-timeout).                                   | Duration       | 30s            |
-| `informers_resync_period`<br>`OTEL_EBPF_KUBE_INFORMERS_RESYNC_PERIOD`   | Periodically resynchronize all Kubernetes metadata. For more information, refer to the [informers resync period section](#informers-resync-period).                                           | Duration       | 30m            |
+| `informers_resync_period`<br>`OTEL_EBPF_KUBE_INFORMERS_RESYNC_PERIOD`   | Periodically resynchronize all Kubernetes metadata. For more information, refer to the [informers resynchronization period section](#informers-resynchronization-period).                     | Duration       | 30m            |
 | `service_name_template`<br>`OTEL_EBPF_SERVICE_NAME_TEMPLATE`            | Go template for service names. For more information, refer to the [service name template section](#service-name-template).                                                                    | string         | (empty)        |
 
 ### Enable Kubernetes
@@ -317,13 +317,13 @@ source file.
 
 Service name template examples:
 
-```
+```go
 {{- .Meta.Namespace }}/{{ index .Meta.Labels "app.kubernetes.io/name" }}/{{ index .Meta.Labels "app.kubernetes.io/component" -}}{{ if .ContainerName }}/{{ .ContainerName -}}{{ end -}}
 ```
 
 or
 
-```
+```go
 {{- .Meta.Namespace }}/{{ index .Meta.Labels "app.kubernetes.io/name" }}/{{ index .Meta.Labels "app.kubernetes.io/component" -}}
 ```
 
@@ -378,31 +378,27 @@ The following table describes the default group attributes.
 | `k8s_app_meta` | `k8s.cluster.name`     |
 | `k8s_app_meta` | `k8s.owner.name`       |
 
-And the following table describes the metrics and their associated groups. |
-Group | OTel Metric | Prom Metric |
-|---------------------|---------------------------------|---------------------------------|
-| `k8s_app_meta` | `process.cpu.utilization` | `process_cpu_utilization_ratio` |
-| `k8s_app_meta` | `process.cpu.time` | `process_cpu_time_seconds_total` | |
-`k8s_app_meta` | `process.memory.usage` | `process_memory_usage_bytes` | |
-`k8s_app_meta` | `process.memory.virtual` | `process_memory_virtual_bytes` | |
-`k8s_app_meta` | `process.disk.io` | `process_disk_io_bytes_total` | |
-`k8s_app_meta` | `messaging.publish.duration` |
-`messaging_publish_duration_seconds` | | `k8s_app_meta` |
-`messaging.process.duration` | `messaging_process_duration_seconds` | |
-`k8s_app_meta` | `http.server.request.duration` |
-`http_server_request_duration_seconds` | | `k8s_app_meta` |
-`http.server.request.body.size` | `http_server_request_body_size_bytes` | |
-`k8s_app_meta` | `http.server.response.body.size` |
-`http_server_response_body_size_bytes` | | `k8s_app_meta` |
-`http.client.request.duration` | `http_client_request_duration_seconds` | |
-`k8s_app_meta` | `http.client.request.body.size` |
-`http_client_request_body_size_bytes` | | `k8s_app_meta` |
-`http.client.response.body.size` | `http_client_response_body_size_bytes` | |
-`k8s_app_meta` | `rpc.client.duration` | `rpc_client_duration_seconds` | |
-`k8s_app_meta` | `rpc.server.duration` | `rpc_server_duration_seconds` | |
-`k8s_app_meta` | `db.client.operation.duration` |
-`db_client_operation_duration_seconds` | | `k8s_app_meta` |
-`gpu.kernel.launch.calls` | `gpu_kernel_launch_calls_total` | | `k8s_app_meta` |
-`gpu.kernel.grid.size` | `gpu_kernel_grid_size_total` | | `k8s_app_meta` |
-`gpu.kernel.block.size` | `gpu_kernel_block_size_total` | | `k8s_app_meta` |
-`gpu.memory.allocations` | `gpu_memory_allocations_bytes_total` |
+And the following table describes the metrics and their associated groups.
+
+| Group          | OTel Metric                      | Prom Metric                            |
+| -------------- | -------------------------------- | -------------------------------------- |
+| `k8s_app_meta` | `process.cpu.utilization`        | `process_cpu_utilization_ratio`        |
+| `k8s_app_meta` | `process.cpu.time`               | `process_cpu_time_seconds_total`       |
+| `k8s_app_meta` | `process.memory.usage`           | `process_memory_usage_bytes`           |
+| `k8s_app_meta` | `process.memory.virtual`         | `process_memory_virtual_bytes`         |
+| `k8s_app_meta` | `process.disk.io`                | `process_disk_io_bytes_total`          |
+| `k8s_app_meta` | `messaging.publish.duration`     | `messaging_publish_duration_seconds`   |
+| `k8s_app_meta` | `messaging.process.duration`     | `messaging_process_duration_seconds`   |
+| `k8s_app_meta` | `http.server.request.duration`   | `http_server_request_duration_seconds` |
+| `k8s_app_meta` | `http.server.request.body.size`  | `http_server_request_body_size_bytes`  |
+| `k8s_app_meta` | `http.server.response.body.size` | `http_server_response_body_size_bytes` |
+| `k8s_app_meta` | `http.client.request.duration`   | `http_client_request_duration_seconds` |
+| `k8s_app_meta` | `http.client.request.body.size`  | `http_client_request_body_size_bytes`  |
+| `k8s_app_meta` | `http.client.response.body.size` | `http_client_response_body_size_bytes` |
+| `k8s_app_meta` | `rpc.client.duration`            | `rpc_client_duration_seconds`          |
+| `k8s_app_meta` | `rpc.server.duration`            | `rpc_server_duration_seconds`          |
+| `k8s_app_meta` | `db.client.operation.duration`   | `db_client_operation_duration_seconds` |
+| `k8s_app_meta` | `gpu.kernel.launch.calls`        | `gpu_kernel_launch_calls_total`        |
+| `k8s_app_meta` | `gpu.kernel.grid.size`           | `gpu_kernel_grid_size_total`           |
+| `k8s_app_meta` | `gpu.kernel.block.size`          | `gpu_kernel_block_size_total`          |
+| `k8s_app_meta` | `gpu.memory.allocations`         | `gpu_memory_allocations_bytes_total`   |

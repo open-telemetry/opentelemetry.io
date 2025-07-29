@@ -2,7 +2,8 @@
 title: OBI and Kubernetes quickstart
 linkTitle: Kubernetes quickstart
 description:
-  Learn how to instrument an application export data with OpenTelemetry eBPF Instrument to an OpenTelemetry Collector.
+  Learn how to instrument an application export data with OpenTelemetry eBPF
+  Instrument to an OpenTelemetry Collector.
 weight: 99
 cSpell:ignore: instrumentable replicaset sampleapps
 ---
@@ -279,7 +280,7 @@ spec:
             - name: OTEL_EBPF_CONFIG_PATH
               value: '/config/obi-config.yml'
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: "localhost:4317"
+              value: 'localhost:4317'
       volumes:
         - name: obi-config
           configMap:
@@ -296,46 +297,10 @@ Also notice:
   perform privileged actions such as loading BPF programs and creating BPF maps.
   For running OBI as `unprivileged` container, i.e. without the
   `privileged: true` option, visit the
-  [Deploy OBI unprivileged](../setup/kubernetes.md#deploy-obi-unprivileged)
+  [Deploy OBI unprivileged](/docs/zero-code/obi/setup/kubernetes/#deploy-obi-unprivileged)
   guide.
-
-### 4. Test your instrumented services and see the results in your observability solution
-
-With the `kubectl port-forward` commands from the firs step still running, test
-both web server instances. For example:
-
-```shell
-curl http://localhost:8080
-curl http://localhost:8080/foo
-curl http://localhost:8081
-curl http://localhost:8081/foo
-```
-
-Some requests will return 404 error, but it's OK because they are also
-instrumented.
-
-Now, go to your observability UI. For example, Grafana, and select the data source
-for the traces.
-
-![Select the traces data source](img/select-traces.png)
-
-To search for all the traces, select the **Search** box in the Query bar, leave
-the form empty, and click **Run query**:
-
-![Searching for all the traces in the system](img/run-query.png)
-
-This will show the traces for the `docs` instance (port 8081). You might see
-traces from your own services, but shouldn't see traces from the `website`
-service, as it has not been instrumented by OBI.
-
-![List of traces](img/tut-traces-list.png)
-
-In the trace details, the resource attributes of the traces are decorated with
-the metadata of the Kubernetes Pod running the instrumented service:
-
-![Details of the trace](img/tut-trace-details.png)
 
 ## Links
 
-- [Documentation: OBI configuration options](../configure/options.md)
-- [Documentation: run OBI as Kubernetes DaemonSet](../setup/kubernetes.md)
+- [Documentation: OBI configuration options](../../configure/options)
+- [Documentation: run OBI as Kubernetes DaemonSet](../../setup/kubernetes)

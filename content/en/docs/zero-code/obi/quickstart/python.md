@@ -12,7 +12,7 @@ cSpell:ignore: instrumentable
 Run an instrumentable Python service or download and run a simple example
 [Python HTTP service](https://github.com/grafana/beyla/tree/main/examples/quickstart/python).
 
-```
+```bash
 curl -OL https://raw.githubusercontent.com/grafana/beyla/main/examples/quickstart/python/quickstart.py
 python3 quickstart.py
 ```
@@ -39,7 +39,7 @@ standard output.
 
 OBI automatically reports the name of the process executable as service name:
 `python3`. To override it, refer to the
-[override service name and namespace](../configure/service-discovery#override-service-name-and-namespace)
+[override service name and namespace](/docs/zero-code/obi/configure/service-discovery/#override-service-name-and-namespace)
 documentation section.
 
 Notice: OBI requires administrative (sudo) privileges, or at least it needs to
@@ -49,8 +49,7 @@ be granted the `CAP_SYS_ADMIN` capability.
 export OTEL_EBPF_OPEN_PORT=8080
 export OTEL_EBPF_TRACE_PRINTER=text
 export OTEL_EXPORTER_OTLP_PROTOCOL="http/protobuf"
-export OTEL_EXPORTER_OTLP_ENDPOINT="https://otlp-gateway-prod-eu-west-0.grafana.net/otlp"
-export OTEL_EXPORTER_OTLP_HEADERS="Authorization=Basic ...your-encoded-credentials..."
+export OTEL_EXPORTER_OTLP_ENDPOINT="https//localhost:4318"
 sudo -E beyla
 ```
 
@@ -59,13 +58,13 @@ sudo -E beyla
 With OBI and the service running, make HTTP requests to the instrumented
 service:
 
-```
+```bash
 curl http://localhost:8080/foo
 ```
 
 OBI should output traces to the standard output similar to this:
 
-```
+```text
 2024-01-09 10:31:33.19103133 (3.254486ms[3.254486ms]) 200 GET /foo [127.0.0.1]->[127.0.0.1:8080]
 size:80B svc=[{quickstart python lima-ubuntu-lts-5074}] traceparent=[00-46214bd23716280eef43cf798dbe5522-0000000000000000-01]
 ```
@@ -83,14 +82,9 @@ The above trace shows:
 - `traceparent` as received by the parent request, or a new random one if the
   parent request didn't specify it
 
-After a few minutes traces will appear in Grafana Cloud. For example, in the
-traces explorer:
-
-![OBI traces explorer](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/trace-generic.png)
-
 ## 6. Configure routing
 
-The exposed span name in Grafana Cloud is a generic `GET /**`, where it should
+The exposed span name is a generic `GET /**`, where it should
 say something like `GET /foo` (the path of the test request URL).
 
 OBI groups any unknown URL path as `/**` to avoid unexpected cardinality
@@ -102,7 +96,7 @@ For this quickstart, let OBI to heuristically group the routes.
 
 First, create a `config.yml` file with the following content:
 
-```yml
+```yaml
 routes:
   unmatched: heuristic
 ```
@@ -110,22 +104,17 @@ routes:
 Then, run OBI with the `-config` argument (or use the `OTEL_EBPF_CONFIG_PATH`
 environment variable instead):
 
-```
+```bash
 sudo -E beyla -config config.yml
 ```
 
 Finally, make HTTP requests:
 
-```
+```bash
 curl http://localhost:8080/foo
 curl http://localhost:8080/user/1234
 curl http://localhost:8080/user/5678
 ```
-
-Grafana will now heuristically assign a route to each trace. `/foo` got its own
-route while `/user/1234` and `/user/5678` were grouped into the `/user/*` route.
-
-![OBI grouped traces](https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/grouped-traces.png)
 
 ## Next steps
 
