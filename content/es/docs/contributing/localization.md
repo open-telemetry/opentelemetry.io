@@ -5,7 +5,7 @@ description:
   en inglés.
 linkTitle: Localización
 weight: 25
-default_lang_commit: e1bf6c870fbf82791a3826baaf276bc0ca79c88b # patched
+default_lang_commit: cdb7966001fe8c85ea1933d69155d9dd3a9d2e79 # patched
 cSpell:ignore: shortcodes
 ---
 
