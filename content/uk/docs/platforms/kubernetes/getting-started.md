@@ -1,9 +1,9 @@
 ---
 title: Початок роботи
 weight: 1
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 # prettier-ignore
 cSpell:ignore: filelog filelogreceiver kubelet kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Ця сторінка проведе вас через найшвидший спосіб почати моніторинг вашого кластера Kubernetes за допомогою OpenTelemetry. Вона зосереджується на зборі метрик та логів для кластерів Kubernetes, вузлів, podʼів та контейнерів, а також на налаштуванні кластера для підтримки сервісів, що передають дані OTLP.

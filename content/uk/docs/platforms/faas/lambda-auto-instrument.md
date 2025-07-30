@@ -2,8 +2,8 @@
 title: Автоматична інструменталізація Lambda
 weight: 11
 description: Автоматично інструментуйте ваші Lambda за допомогою OpenTelemetry
-cSpell:ignore: Corretto
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
+cSpell:ignore: Corretto
 ---
 
 Спільнота OpenTelemetry надає окремі шари інструменталізації Lambda для наступних мов:

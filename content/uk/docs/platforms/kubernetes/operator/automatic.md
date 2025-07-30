@@ -4,9 +4,9 @@ linkTitle: Автоінструментування
 weight: 11
 description:
   Реалізація автоінструментування за допомогою OpenTelemetry Operator.
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 # prettier-ignore
 cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 OpenTelemetry Operator підтримує інʼєкцію та налаштування бібліотек автоінструментування для .NET, Java, Node.js, Python та Go сервісів.

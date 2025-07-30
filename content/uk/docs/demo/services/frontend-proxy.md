@@ -2,8 +2,8 @@
 title: Проксі-сервер фронтенда (Envoy)
 linkTitle: Проксі-сервер фронтенда
 aliases: [frontendproxy]
-cSpell:ignore: upstreams
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: upstreams
 ---
 
 Проксі-сервер фронтенда використовується як зворотний проксі для вебінтерфейсів, що орієнтовані на користувача, таких як фронтенд, Jaeger, Grafana, генератор навантаження та сервіс прапорців функцій.

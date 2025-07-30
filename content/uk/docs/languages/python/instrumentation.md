@@ -3,8 +3,8 @@ title: Інструментування
 aliases: [manual]
 weight: 20
 description: Ручне інструментування для OpenTelemetry Python
-cSpell:ignore: millis ottrace textmap
 default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+cSpell:ignore: millis ottrace textmap
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

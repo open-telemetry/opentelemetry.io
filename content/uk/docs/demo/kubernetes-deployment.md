@@ -2,8 +2,8 @@
 title: Розгортання Kubernetes
 linkTitle: Kubernetes
 aliases: [kubernetes_deployment]
-cSpell:ignore: loadgen otlphttp spanmetrics
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+cSpell:ignore: loadgen otlphttp spanmetrics
 ---
 
 Ми надаємо [Helm-чарт OpenTelemetry Demo](/docs/platforms/kubernetes/helm/demo/), щоб допомогти розгорнути демо на наявному кластері Kubernetes.

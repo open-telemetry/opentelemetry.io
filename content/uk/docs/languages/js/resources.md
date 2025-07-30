@@ -2,8 +2,8 @@
 title: Ресурси
 weight: 70
 description: Додайте деталі про середовище вашого застосунку до вашої телеметрії
-cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
+cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 ---
 
 {{% docs/languages/resources-intro %}}

@@ -9,8 +9,8 @@ hide_feedback: true
 # https://training.linuxfoundation.org/wp-content/uploads/2024/10/LFS148-Course-Badge-300x300.png
 params:
   LFS148: https://training.linuxfoundation.org/training/getting-started-with-opentelemetry-lfs148/
-cSpell:ignore: otca
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
+cSpell:ignore: otca
 ---
 
 Ця сторінка демонструє навчальні ресурси для OpenTelemetry. Частіше перевіряйте оновлення!

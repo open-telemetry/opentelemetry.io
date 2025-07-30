@@ -7,8 +7,8 @@ aliases:
   - /docs/languages/ruby/context-propagation
 weight: 20
 description: Інструментування для OpenTelemetry Ruby
-cSpell:ignore: SIGHUP потокобезпечними
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: SIGHUP потокобезпечними
 ---
 
 {{% include instrumentation-intro %}}

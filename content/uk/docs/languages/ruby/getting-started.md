@@ -3,9 +3,8 @@ title: Початок роботи
 description: Отримайте телеметрію з вашого застосунку менш ніж за 5 хвилин!
 aliases: [getting_started]
 weight: 10
-# prettier-ignore
-cSpell:ignore: darwin rolldice sinatra struct tracestate truffleruby
 default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+cSpell:ignore: darwin rolldice sinatra struct tracestate truffleruby
 ---
 
 Ця сторінка покаже вам, як почати роботу з OpenTelemetry у Ruby.

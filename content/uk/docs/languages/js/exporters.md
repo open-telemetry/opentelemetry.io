@@ -2,8 +2,8 @@
 title: Експортери
 weight: 50
 description: Обробка та експорт ваших телеметричних даних
-cSpell:ignore: csps
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: csps
 ---
 
 {{% docs/languages/exporters/intro %}}

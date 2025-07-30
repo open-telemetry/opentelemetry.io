@@ -3,8 +3,8 @@ title: Семплінг
 weight: 80
 # For the writing of behaviour, see
 # https://www.erlang.org/doc/reference_manual/modules.html#behaviour-module-attribute
-cSpell:ignore: alwaysoff alwayson behaviour defmodule healthcheck
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: alwaysoff alwayson behaviour defmodule healthcheck
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

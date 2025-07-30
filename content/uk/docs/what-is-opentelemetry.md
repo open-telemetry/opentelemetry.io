@@ -3,8 +3,8 @@ title: Що таке OpenTelemetry?
 description: Коротке пояснення, чим є та чим не є OpenTelemetry.
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
 weight: 150
-cSpell:ignore: youtube
 default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+cSpell:ignore: youtube
 ---
 
 OpenTelemetry це:

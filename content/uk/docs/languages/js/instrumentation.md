@@ -5,8 +5,8 @@ aliases:
   - manual
 weight: 30
 description: Інструментування для OpenTelemetry JavaScript
-cSpell:ignore: dicelib Millis rolldice
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+cSpell:ignore: dicelib Millis rolldice
 ---
 
 {{% include instrumentation-intro %}}

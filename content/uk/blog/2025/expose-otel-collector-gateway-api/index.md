@@ -5,9 +5,9 @@ date: 2025-06-05
 author: >
   [Vipin Vijaykumar](https://github.com/vipinvkmenon) (SAP SE)
 sig: End-User SIG
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 # prettier-ignore
 cSpell:ignore: gateway gatewayclass ingress ingressgateway Vijaykumar Vipin безсерверних термінується
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
 Метою цієї публікації є демонстрація того, як можна безпечно експонувати Колектор OpenTelemetry (OTel), що працює в Kubernetes, для зовнішнього світу, використовуючи [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io/) та [mutual TLS (mTLS)](https://www.buoyant.io/mtls-guide) для автентифікації та шифрування.

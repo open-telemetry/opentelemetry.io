@@ -2,8 +2,8 @@
 title: Сервіс доставки
 linkTitle: Доставка
 aliases: [shippingservice]
-cSpell:ignore: sdktrace
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+cSpell:ignore: sdktrace
 ---
 
 Цей сервіс відповідає за надання інформації про доставку, включаючи ціни та інформацію про відстеження, коли це запитується з сервісу оформлення замовлення.

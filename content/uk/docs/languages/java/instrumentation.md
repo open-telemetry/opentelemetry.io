@@ -8,8 +8,8 @@ aliases:
   - libraries
 weight: 10
 description: Екосистема інструментування в OpenTelemetry Java
-cSpell:ignore: logback
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+cSpell:ignore: logback
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

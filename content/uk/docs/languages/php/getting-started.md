@@ -3,8 +3,9 @@ title: Початок роботи
 description: Почніть працювати з OpenTelemetry для PHP.
 aliases: [getting_started]
 weight: 10
-cSpell:ignore: darwin myapp pecl rolldice strval автозавантажений
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+# prettier-ignore
+cSpell:ignore: darwin myapp pecl rolldice strval автозавантажений
 ---
 
 OpenTelemetry для PHP можна використовувати для генерації та експорту [трасувань][трасування], [метрик][метрики] та [логів][логи].

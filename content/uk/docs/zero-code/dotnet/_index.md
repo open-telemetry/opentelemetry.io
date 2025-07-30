@@ -5,8 +5,8 @@ linkTitle: .NET
 aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
-cSpell:ignore: coreutils HKLM iisreset myapp
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
+cSpell:ignore: coreutils HKLM iisreset myapp
 ---
 
 Використовуйте OpenTelemetry .NET Automatic Instrumentation для надсилання трасування та метрик з .NET застосунків та сервісів до систем спостереження без необхідності змінювати їх вихідний код.

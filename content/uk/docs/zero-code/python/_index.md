@@ -3,8 +3,8 @@ title: Інструментування Python без коду
 linkTitle: Python
 weight: 30
 aliases: [/docs/languages/python/automatic]
-cSpell:ignore: distro myapp
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+cSpell:ignore: distro myapp
 ---
 
 Автоматичне інструментування з Python використовує агент Python, який можна підʼєднати до будь-якого застосунку Python. Цей агент в основному використовує [monkey patching](https://en.wikipedia.org/wiki/Monkey_patch), щоб змінювати функції бібліотек під час виконання, дозволяючи захоплювати телеметричні дані з багатьох популярних бібліотек та фреймворків.

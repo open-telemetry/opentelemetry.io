@@ -3,8 +3,8 @@ title: Інструментування PHP без коду
 linkTitle: PHP
 weight: 30
 aliases: [/docs/languages/php/automatic]
-cSpell:ignore: centos democlass epel myapp pecl phar phpini remi
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+cSpell:ignore: centos democlass epel myapp pecl phar phpini remi
 ---
 
 ## Вимоги {#requirements}

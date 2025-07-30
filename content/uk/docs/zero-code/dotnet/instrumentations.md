@@ -3,9 +3,9 @@ title: Доступні інструментування
 linkTitle: Інструментування
 description: Підтримувані бібліотеки автоматичного інструментування OpenTelemetry .NET.
 weight: 10
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 # prettier-ignore
 cSpell:ignore: ASPNET ASPNETCORE Bootstrapper DBSTATEMENT ELASTICTRANSPORT ENTITYFRAMEWORKCORE GRPCNETCLIENT HOSTINGSTARTUPASSEMBLIES HTTPCLIENT ILOGGER MASSTRANSIT MYSQLCONNECTOR MYSQLDATA NETRUNTIME npgsql NSERVICEBUS ORACLEMDA RABBITMQ SQLCLIENT STACKEXCHANGEREDIS WCFCLIENT WCFSERVICE
-default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 Автоматичне інструментування OpenTelemetry .NET підтримує широкий спектр бібліотек.

@@ -3,8 +3,8 @@ title: Node.js
 description: Отримайте телеметрію для вашого застосунку менш ніж за 5 хвилин!
 aliases: [/docs/js/getting_started/nodejs]
 weight: 10
-cSpell:ignore: autoinstrumentations KHTML rolldice
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+cSpell:ignore: autoinstrumentations KHTML rolldice
 ---
 
 Ця сторінка покаже вам, як почати роботу з OpenTelemetry у Node.js.

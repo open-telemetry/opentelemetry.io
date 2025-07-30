@@ -1,7 +1,7 @@
 ---
 title: Kafka
-cSpell:ignore: Dotel
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: Dotel
 ---
 
 Kafka використовується як служба черги повідомлень для зʼєднання служби оформлення замовлень зі службами бухгалтерського обліку та виявлення шахрайства.

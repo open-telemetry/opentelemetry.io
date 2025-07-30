@@ -1,8 +1,8 @@
 ---
 title: Генератор навантаження
 aliases: [loadgenerator]
-cSpell:ignore: instrumentor locustfile urllib
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: instrumentor locustfile urllib
 ---
 
 Генератор навантаження базується на фреймворку для тестування навантаження [Locust](https://locust.io). Стандартно він буде імітувати користувачів, які запитують різні маршрути з фронтенду.

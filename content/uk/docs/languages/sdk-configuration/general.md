@@ -2,8 +2,8 @@
 title: Загальна конфігурація SDK
 linkTitle: Загальна
 aliases: [general-sdk-configuration]
-cSpell:ignore: ottrace
 default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+cSpell:ignore: ottrace
 ---
 
 {{% alert title="Примітка" %}}

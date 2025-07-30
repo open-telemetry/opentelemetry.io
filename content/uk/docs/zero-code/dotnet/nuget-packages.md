@@ -2,8 +2,8 @@
 title: Використання пакунків NuGet OpenTelemetry.AutoInstrumentation
 linkTitle: Пакунки NuGet
 weight: 40
-cSpell:ignore: buildtasks
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: buildtasks
 ---
 
 Використовуйте пакунки NuGet у наступних випадках:

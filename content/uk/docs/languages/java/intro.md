@@ -1,9 +1,9 @@
 ---
 title: Вступ до OpenTelemetry Java
 description: Вступ до екосистеми OpenTelemetry Java
-cSpell:ignore: boms
 weight: 9
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: boms
 ---
 
 OpenTelemetry Java — це набір інструментів спостереження OpenTelemetry для екосистеми Java. На високому рівні він складається з API, SDK та інструментів.

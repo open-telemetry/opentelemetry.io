@@ -1,9 +1,9 @@
 ---
 title: Перетворення телеметрії
 weight: 26
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 # prettier-ignore
 cSpell:ignore: accountid clustername k8sattributes metricstransform OTTL resourcedetection
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 OpenTelemetry Collector — це зручне місце для перетворення даних перед надсиланням їх постачальнику або іншим системам. Це часто робиться з міркувань якості даних, управління, вартості та безпеки.

@@ -2,8 +2,8 @@
 title: Логи
 description: Запис події.
 weight: 3
-cSpell:ignore: filelogreceiver semistructured transformprocessor
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
 
 **Лог** — це текстовий запис з часовою міткою, структурований (рекомендовано) або неструктурований, з додатковими метаданими. З усіх сигналів телеметрії, логи мають найбільшу спадщину. Більшість мов програмування мають вбудовані можливості логування або добре відомі, широко використовувані бібліотеки логування.

@@ -4,8 +4,8 @@ description: >-
   <img width="35" class="img-initial" src="/img/logos/32x32/Rust.svg"
   alt="Rust"> Специфічна для мови реалізація OpenTelemetry на Rust.
 weight: 26
-cSpell:ignore: stackdriver
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: stackdriver
 ---
 
 {{% docs/languages/index-intro rust /%}}
