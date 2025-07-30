@@ -5,7 +5,7 @@ weight: 50
 default_lang_commit: 645760e1961cb45d9ce6b291887c74ce4efa0398
 ---
 
-Um anúncio é uma página regular do Hugo contida no diretório `announcements` de
+Um anúncio é uma _regular page_ do Hugo, contida no diretório `announcements` de
 um idioma. Isso significa que aproveitamos o tratamento nativo do Hugo para
 páginas com datas (futuras ou expiradas), internacionalização e outros,
 mostrando ou ocultando banners automaticamente dependendo da data de compilação,
