@@ -3,3 +3,4 @@ observabilité
 télémétrie
 traçage
 packagées
+phpini
