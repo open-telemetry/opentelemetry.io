@@ -17,8 +17,8 @@ L'agent peut trouver sa configuration d'une ou plusieurs des sources suivantes
 (classées de la plus haute à la plus basse priorité) :
 
 - Propriétés système
-- [Variables d'environnement](#configurer-avec-des-variables-d-environnement)
-- [Fichier de configuration](#fichier-de-configuration)
+- [Variables d'environnement](#configuring-with-environment-variables)
+- [Fichier de configuration](#configuration-file)
 - Propriétés fournies par la fonction
   [`AutoConfigurationCustomizer#addPropertiesSupplier()`](https://github.com/open-telemetry/opentelemetry-java/blob/f92e02e4caffab0d964c02a32fe305d6d6ba372e/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizer.java#L73)
   ; en utilisant l'interface de prestation de service (SPI)

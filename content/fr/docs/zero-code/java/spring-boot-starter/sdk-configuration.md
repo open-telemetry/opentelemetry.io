@@ -228,7 +228,7 @@ FQN:
 
 | Attribut          | Valeur                                                                                                        |
 | ----------------- | ------------------------------------------------------------------------------------------------------------- |
-| `service.name`    | `spring.application.name` ou `build.name` de `build-info.properties` (voir [Nom du service](#nom-du-service)) |
+| `service.name`    | `spring.application.name` ou `build.name` de `build-info.properties` (voir [Nom du service](#service-name)) |
 | `service.version` | `build.version` de `build-info.properties`                                                                    |
 
 ## Nom du service {#service-name}

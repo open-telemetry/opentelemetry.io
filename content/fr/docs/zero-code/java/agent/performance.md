@@ -101,7 +101,7 @@ les opérations d'écriture sur le disque et l'utilisation de la mémoire.
 Certaines instrumentations, par exemple JDBC ou Redis, produisent des volumes
 élevés de spans qui augmentent l'impact de l'agent. Pour plus d'informations sur
 la façon de désactiver les instrumentations inutiles, voir
-[Désactiver des instrumentations spécifiques](#désactiver-des-instrumentations-spécifiques).
+[Désactiver des instrumentations spécifiques](#turn-off-specific-instrumentations).
 
 {{% alert title="Note" %}}
 
