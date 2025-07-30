@@ -23,7 +23,7 @@ default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 
 {{% alert title="Важливо" color="warning" %}}
 
-Незалежно від статусу API/SDK, якщо ваше інструментування залежить від [семантичних домовленостей][semantic conventions], які позначені як [Експериментальні][Experimental] у [специфікації семантичних домовленостей][специфікація семантичних конвенцій][semantic conventions specification], ваш потік даних може підлягати **змінам, що порушують сумісність**.
+Незалежно від статусу API/SDK, якщо ваше інструментування залежить від [семантичних домовленостей][semantic conventions], які позначені як [Експериментальні][Experimental] у [специфікація семантичних конвенцій][semantic conventions specification], ваш потік даних може підлягати **змінам, що порушують сумісність**.
 
 [semantic conventions]: /docs/concepts/semantic-conventions/
 [Experimental]: /docs/specs/otel/document-status/
