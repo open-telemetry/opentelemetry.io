@@ -1,8 +1,8 @@
 ---
 title: Внутрішня телеметрія
 weight: 25
-cSpell:ignore: alloc batchprocessor journalctl
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
+cSpell:ignore: alloc batchprocessor journalctl
 ---
 
 Ви можете перевірити стан будь-якого екземпляра OpenTelemetry Collector за допомогою його внутрішньої телеметрії. Читайте далі, щоб дізнатися про цю телеметрію та як її налаштувати, щоб допомогти вам [моніторити](#use-internal-telemetry-to-monitor-the-collector) та [усувати несправності](/docs/collector/troubleshooting/) Колектора.

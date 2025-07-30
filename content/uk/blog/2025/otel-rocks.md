@@ -2,9 +2,9 @@
 title: OTel — відстій (але також крутий!)
 date: 2025-04-03
 author: '[Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)'
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 # prettier-ignore
 cSpell:ignore: Liatrio Olly Pismo Адріелу Адріель Адріеля Магно Моессіс Моессісу
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 OpenTelemetry (OTel) часто рекламують як майбутнє спостережуваності, обіцяючи нейтральність до постачальників та всебічний збір даних. Але якою є реальність для тих, хто використовує його щодня? Ми поспілкувалися з кількома інженерами та SRE, щоб дізнатися їх відверту думку про OTel. Що вийшло? Відверта розмова про хороші, погані та іноді такі, що розчаровують, аспекти роботи з OTel.

@@ -2,9 +2,9 @@
 title: Сервіс оформлення замовлення
 linkTitle: Оформлення замовлення
 aliases: [checkoutservice]
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 # prettier-ignore
 cSpell:ignore: fatalf otelgrpc otelsarama otlpmetricgrpc otlptracegrpc sarama sdkmetric sdktrace
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Цей сервіс відповідає за обробку замовлення користувача. Сервіс оформлення замовлення викликає багато інших сервісів для обробки замовлення.

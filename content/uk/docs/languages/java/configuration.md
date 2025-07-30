@@ -3,9 +3,9 @@ title: Налаштування SDK
 linkTitle: Налаштування SDK
 weight: 13
 aliases: [config]
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
-default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

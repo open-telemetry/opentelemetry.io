@@ -3,8 +3,8 @@ title: Використання OpenTelemetry Operator для впровадже
 linkTitle: Оператор
 aliases: [/docs/languages/python/automatic/operator]
 weight: 30
-cSpell:ignore: django grpcio myapp psutil PYTHONPATH
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: django grpcio myapp psutil PYTHONPATH
 ---
 
 Якщо ви запускаєте свій Python сервіс у Kubernetes, ви можете скористатися [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) для впровадження автоматичної інструментації без необхідності змінювати кожен з ваших сервісів

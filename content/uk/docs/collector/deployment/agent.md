@@ -3,8 +3,8 @@ title: Агент
 description:
   Чому і як надсилати сигнали до колекторів і звідти до бекендів
 weight: 2
-cSpell:ignore: prometheusremotewrite
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: prometheusremotewrite
 ---
 
 Шаблон розгортання колектора-агента складається з застосунків — [інструментованих][instrumentation] за допомогою OpenTelemetry SDK з використанням [протоколу OpenTelemetry (OTLP)][otlp] — або інших колекторів (з використанням OTLP експортера), які надсилають телеметричні сигнали до [колектора][collector], що працює з застосунком або на тому ж хості, що й застосунок (наприклад, як sidecar або daemonset).

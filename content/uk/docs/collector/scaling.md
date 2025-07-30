@@ -1,9 +1,9 @@
 ---
 title: Масштабування Колектора
 weight: 26
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 # prettier-ignore
 cSpell:ignore: fluentd hostmetrics Linkerd loadbalancer loadbalancing statefulset
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Плануючи вашу систему спостереження з OpenTelemetry Collector, слід враховувати способи масштабування системи у міру збільшення збору телеметрії.

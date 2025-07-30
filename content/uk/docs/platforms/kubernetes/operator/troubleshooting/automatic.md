@@ -1,8 +1,8 @@
 ---
 title: Автоінструментування
-cSpell:ignore: PYTHONPATH
 weight: 10
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: PYTHONPATH
 ---
 
 Якщо ви використовуєте можливість [OpenTelemetry Operator](/docs/platforms/kubernetes/operator) робити інʼєкцію [автоінструментування](/docs/platforms/kubernetes/operator/automatic) і не бачите жодних трейсів або метрик, дотримуйтесь цих кроків з усунення несправностей, щоб зрозуміти, що відбувається.

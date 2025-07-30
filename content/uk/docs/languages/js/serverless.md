@@ -2,8 +2,8 @@
 title: Serverless
 weight: 100
 description: Інструментуйте свої безсерверні функції за допомогою OpenTelemetry JavaScript
-cSpell:ignore: otelwrapper новорозгорнуту
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+cSpell:ignore: otelwrapper новорозгорнуту
 ---
 
 Цей посібник показує, як почати відстежувати безсерверні функції за допомогою бібліотек інструментування OpenTelemetry.

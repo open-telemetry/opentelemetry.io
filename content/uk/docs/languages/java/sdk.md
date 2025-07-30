@@ -2,8 +2,8 @@
 title: Керування телеметрією за допомогою SDK
 weight: 12
 aliases: [exporters]
-cSpell:ignore: FQCNs Interceptable Logback okhttp
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+cSpell:ignore: FQCNs Interceptable Logback okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

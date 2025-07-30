@@ -2,8 +2,8 @@
 title: Конфігурація
 weight: 10
 aliases: [agent-config]
-cSpell:ignore: customizer logback
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: customizer logback
 ---
 
 {{% alert title="Розʼяснення" %}} На цій сторінці описано різні способи постачання конфігурації Java-агенту. Інформацію про самі параметри конфігурації наведено у розділі [Налаштування SDK](/docs/languages/java/configuration). {{% /alert %}}

@@ -13,8 +13,8 @@ cascade:
     otelPhoenix: 1.1
     otelCowboy: 0.2
     otelEcto: 1.2
-cSpell:ignore: ecto
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: ecto
 ---
 
 {{% docs/languages/index-intro erlang /%}}

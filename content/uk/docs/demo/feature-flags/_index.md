@@ -5,8 +5,8 @@ aliases:
   - scenarios
   - services/feature-flag
   - services/featureflagservice
-cSpell:ignore: OLJCESPC7Z
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: OLJCESPC7Z
 ---
 
 Демо надає кілька прапорців функцій, які ви можете використовувати для імітації різних сценаріїв. Ці прапорці керуються за допомогою [`flagd`](https://flagd.dev), простого сервісу прапорців функцій, який підтримує [OpenFeature](https://openfeature.dev).

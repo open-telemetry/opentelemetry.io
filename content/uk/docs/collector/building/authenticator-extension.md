@@ -2,8 +2,8 @@
 title: Створення розширення автентифікатора
 weight: 40
 aliases: [/docs/collector/custom-auth/]
-cSpell:ignore: configauth oidc
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: configauth oidc
 ---
 
 OpenTelemetry Collector дозволяє підключати приймачі та експортери до автентифікаторів, забезпечуючи спосіб автентифікації вхідних зʼєднань на стороні приймача, а також додавання даних автентифікації до вихідних запитів на стороні експортера.

@@ -2,9 +2,9 @@
 title: Початок роботи
 description: Отримайте телеметрію для вашого застосунку менш ніж за 5 хвилин!
 weight: 10
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 # prettier-ignore
 cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
-default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 Ця сторінка покаже вам, як почати роботу з OpenTelemetry у Python.

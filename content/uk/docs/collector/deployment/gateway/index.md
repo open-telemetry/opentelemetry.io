@@ -3,9 +3,9 @@ title: Шлюз
 description:
   Чому і як надсилати сигнали на єдину точку доступу OTLP, а звідти до бекендів
 weight: 3
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 # prettier-ignore
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 Шаблон розгортання колектора-шлюзу складається з застосунків (або інших колекторів), які надсилають сигнали телеметрії на єдину точку доступу OTLP, що надається одним або кількома екземплярами колектора, які працюють як окрема служба (наприклад, розгортання в Kubernetes), зазвичай на кластер, центр обробки даних або регіон.

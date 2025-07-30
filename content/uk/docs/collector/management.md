@@ -2,8 +2,8 @@
 title: Управління
 description: Як керувати розгортанням OpenTelemetry Collector у масштабі
 weight: 23
-cSpell:ignore: hostmetrics opampsupervisor
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: hostmetrics opampsupervisor
 ---
 
 Цей документ описує, як ви можете керувати розгортанням OpenTelemetry Collector у масштабі.

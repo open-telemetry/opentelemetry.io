@@ -2,8 +2,9 @@
 title: Бібліотеки інструментів
 linkTitle: Бібліотеки
 weight: 40
-cSpell:ignore: darwin inout iphone NSURL Signposter tvos urlsession wifi профілюючому
 default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+# prettier-ignore
+cSpell:ignore: darwin inout iphone NSURL Signposter tvos urlsession wifi профілюючому
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

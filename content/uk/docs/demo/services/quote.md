@@ -2,8 +2,8 @@
 title: Сервіс котирувань
 linkTitle: Котирування
 aliases: [quoteservice]
-cSpell:ignore: getquote
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: getquote
 ---
 
 Цей сервіс відповідає за розрахунок вартості доставки, залежно від кількості предметів для надсилання. Сервіс котирувань викликається з Сервісу Доставки через HTTP.

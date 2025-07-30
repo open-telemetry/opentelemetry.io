@@ -4,8 +4,8 @@ description: >-
   <img width="35" class="img-initial" src="/img/logos/32x32/PHP.svg" alt="PHP">
   Специфічна для мови реалізація OpenTelemetry на PHP.
 weight: 21
-cSpell:ignore: mbstring opcache
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: mbstring opcache
 ---
 
 {{% docs/languages/index-intro php /%}}

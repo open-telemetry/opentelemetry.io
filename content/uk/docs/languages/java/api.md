@@ -5,8 +5,8 @@ aliases:
   - /docs/languages/java/api-components/
 logBridgeWarning: >
   Хоча API `LoggerProvider` / `Logger` структурно схожі на еквівалентні API трасування та метрик, вони служать іншій меті. На даний момент, `LoggerProvider` / `Logger` та повʼязані класи представляють [Log Bridge API](/docs/specs/otel/logs/api/), який існує для написання доповнювачів логів для перенесення логів, записаних через інші лог-API / фреймворки, в OpenTelemetry. Вони не призначені для кінцевих користувачів як заміна для Log4j / SLF4J / Logback / тощо.
-cSpell:ignore: Dotel kotlint Logback updowncounter
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: Dotel kotlint Logback updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

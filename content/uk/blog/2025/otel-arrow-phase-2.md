@@ -7,8 +7,8 @@ author: >-
   Quérel](https://github.com/lquerel) (F5)
 issue: 6410
 sig: OTel-Arrow
-cSpell:ignore: Greptime OTAP Quérel
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: Greptime OTAP Quérel
 ---
 
 Ми раді оголосити про наступний етап проєкту OpenTelemetry Protocol з Apache Arrow (OTel-Arrow). Ми розпочали цей проєкт кілька років тому з метою налагодження звʼязку між даними OpenTelemetry та екосистемою Apache Arrow. Apache Arrow - це фреймворк, призначений для обміну структурованими даними без копіювання між постачальниками та споживачами даних, орієнтованих на стовпці.

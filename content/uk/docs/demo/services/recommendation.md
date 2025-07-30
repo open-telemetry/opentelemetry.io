@@ -2,8 +2,8 @@
 title: Сервіс рекомендацій
 linkTitle: Рекомендації
 aliases: [recommendationservice]
-cSpell:ignore: cpython NOTSET
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: cpython NOTSET
 ---
 
 Цей сервіс відповідає за отримання списку рекомендованих продуктів для користувача на основі наявних ідентифікаторів продуктів, які переглядає користувач.

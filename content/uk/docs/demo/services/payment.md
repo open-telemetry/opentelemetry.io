@@ -2,8 +2,8 @@
 title: Сервіс оплати
 linkTitle: Оплата
 aliases: [paymentservice]
-cSpell:ignore: nanos
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: nanos
 ---
 
 Цей сервіс відповідає за обробку платежів кредитними картками для замовлень. Він поверне помилку, якщо кредитна картка недійсна або платіж не може бути оброблений.

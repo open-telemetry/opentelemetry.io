@@ -3,8 +3,9 @@ title: Анотації
 description: Використання анотацій інструментування з Java агентом.
 aliases: [/docs/instrumentation/java/annotations]
 weight: 20
-cSpell:ignore: Flowable javac otelinstrumentationmethodsinclude reactivestreams reactivex spanattribute
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+# prettier-ignore
+cSpell:ignore: Flowable javac otelinstrumentationmethodsinclude reactivestreams reactivex spanattribute
 ---
 
 Для більшості користувачів достатньо інструментування з коробки, і нічого більше робити не потрібно. Однак іноді користувачі бажають створювати [відрізки](/docs/concepts/signals/traces/#spans) для свого власного коду без значних змін у коді. Анотації `WithSpan` та `SpanAttribute` підтримують ці варіанти використання.

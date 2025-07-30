@@ -1,9 +1,9 @@
 ---
 title: Важливі для Kubernetes компоненти
 linkTitle: Компоненти
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 # prettier-ignore
 cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics k8sattributes kubelet kubeletstats replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 [OpenTelemetry Collector](/docs/collector/) підтримує багато різних приймачів та процесорів для полегшення моніторингу Kubernetes. У цьому розділі розглядаються компоненти, які є найважливішими для збору даних Kubernetes та їх покращення.

@@ -3,8 +3,8 @@ title: Конфігурація сервера застосунків
 linkTitle: Конфігурація сервера застосунків
 description: Дізнайтеся, як визначити шляхи агента для серверів застосунків Java
 weight: 215
-cSpell:ignore: asadmin Glassfish Payara setenv
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: asadmin Glassfish Payara setenv
 ---
 
 При інструментуванні застосунку, який працює на сервері застосунків Java з Java агентом, необхідно додати шлях `javaagent` до аргументів JVM. Спосіб зробити це відрізняється від сервера до сервера.

@@ -2,8 +2,8 @@
 title: Конфігурація інструментування .NET Framework
 linkTitle: .NET Framework
 weight: 100
-cSpell:ignore: asax LINQ
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: asax LINQ
 ---
 
 OpenTelemetry підтримує як [.NET](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet), так і [.NET Framework](https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet-framework) (старіша реалізація .NET для Windows).

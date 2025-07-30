@@ -3,8 +3,8 @@ title: Конфігурація Lambda Collector
 linkTitle: Конфігурація Lambda Collector
 weight: 11
 description: Додайте та налаштуйте Collector Lambda layer до вашої Lambda
-cSpell:ignore: ADOT awsxray configmap confmap
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: ADOT awsxray configmap confmap
 ---
 
 Спільнота OpenTelemetry пропонує Collector в окремому Lambda шарі від інструментальних шарів, щоб надати користувачам максимальну гнучкість. Це відрізняється від поточної реалізації AWS Distribution of OpenTelemetry (ADOT), яка обʼєднує інструментування та Collector разом.

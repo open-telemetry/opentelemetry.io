@@ -1,9 +1,9 @@
 ---
 title: Початок роботи
 weight: 10
+default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
-default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

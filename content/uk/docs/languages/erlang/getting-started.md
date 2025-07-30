@@ -1,9 +1,9 @@
 ---
 title: Початок роботи
 weight: 10
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 # prettier-ignore
 cSpell:ignore: bogons defmodule defp ecto elixirc erts Eshell hipe KHTML mixrebar postgres rebar relx rolldice stdlib
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

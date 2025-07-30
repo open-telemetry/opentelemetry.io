@@ -3,8 +3,8 @@ title: Швидкий старт
 description: Налаштуйте та збирайте телеметрію за кілька хвилин!
 aliases: [getting-started]
 weight: 1
-cSpell:ignore: docker dokey gobin okey telemetrygen
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: docker dokey gobin okey telemetrygen
 ---
 
 <!-- markdownlint-disable ol-prefix blanks-around-fences -->

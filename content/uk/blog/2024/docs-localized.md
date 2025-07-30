@@ -6,8 +6,8 @@ author: >-
   [Северін Нойманн](https://github.com/svrnm) (Cisco)
 issue: 4863
 sig: Comms
-cSpell:ignore: Нойманн
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: Нойманн
 ---
 
 Ми раді повідомити, що вебсайт OpenTelemetry доступний кількома мовами! Команди з локалізації вже почали перекладати сторінки вебсайту на [китайську](/zh), [японську](/ja), [португальську](/pt) та [іспанську](/es).

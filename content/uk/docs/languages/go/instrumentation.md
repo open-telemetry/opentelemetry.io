@@ -5,8 +5,9 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: Ручне інструментування для OpenTelemetry в Go
-cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup обчислювально
 default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+# prettier-ignore
+cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup обчислювально
 ---
 
 {{% include instrumentation-intro %}}

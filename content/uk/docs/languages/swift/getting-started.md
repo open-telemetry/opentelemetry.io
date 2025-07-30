@@ -2,8 +2,8 @@
 title: Початок роботи
 description: Отримайте телеметрію для вашого застосунку менш ніж за 5 хвилин!
 weight: 10
-cSpell:ignore: rolldice
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: rolldice
 ---
 
 Ця сторінка покаже вам, як почати роботу з OpenTelemetry у Swift.

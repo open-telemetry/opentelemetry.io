@@ -1,8 +1,8 @@
 ---
 title: Ресурси
 weight: 70
-cSpell:ignore: myhost pcarter uuidgen
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: myhost pcarter uuidgen
 ---
 
 {{% docs/languages/resources-intro %}}

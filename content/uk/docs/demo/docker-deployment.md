@@ -2,8 +2,8 @@
 title: Розгортання Docker
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otelcollector otlphttp spanmetrics tracetest tracetesting
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+cSpell:ignore: otelcollector otlphttp spanmetrics tracetest tracetesting
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->

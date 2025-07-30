@@ -2,9 +2,9 @@
 title: Сервіс каталогу продуктів
 linkTitle: Каталог продуктів
 aliases: [productcatalogservice]
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 # prettier-ignore
 cSpell:ignore: fatalf loggerprovider otelcodes otelgrpc otlpmetricgrpc otlptracegrpc sdkmetric sdktrace sprintf
-default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 Цей сервіс відповідає за повернення інформації про продукти. Сервіс може бути використаний для отримання всіх продуктів, пошуку конкретних продуктів або повернення деталей про будь-який окремий продукт.
