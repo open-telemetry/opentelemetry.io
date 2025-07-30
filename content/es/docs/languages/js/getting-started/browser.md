@@ -3,6 +3,7 @@ title: Navegador
 aliases: [/docs/js/getting_started/browser]
 description: Aprende cómo agregar OpenTelemetry a tu aplicación de navegador.
 weight: 20
+default_lang_commit: cdb7966001fe8c85ea1933d69155d9dd3a9d2e79
 ---
 
 {{% include browser-instrumentation-warning.md %}}
