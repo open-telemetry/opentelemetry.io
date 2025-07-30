@@ -2,7 +2,7 @@
 title: Бібліотеки інструментів
 linkTitle: Бібліотеки
 weight: 40
-cSpell:ignore: darwin inout iphone NSURL Signposter wifi профілюючому urlsession tvos
+cSpell:ignore: darwin inout iphone NSURL Signposter tvos urlsession wifi профілюючому
 default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
@@ -119,7 +119,9 @@ let sessionInstrumentation = URLSessionInstrumentation(configuration: URLSession
 | Атрибут                     | Приклад значення                 | Опис                                                                                 |
 | --------------------------- | -------------------------------- | ------------------------------------------------------------------------------------ |
 | `net.host.connection.type`  | `wifi`, `cell`, `unavailable`    | Тип зʼєднання, який використовував пристрій на момент запиту.                        |
-| `net.host.connection.subtype`| `EDGE` `LTE`, тощо               | Тип стільникового зʼєднання. Заповнюється лише якщо тип зʼєднання `cell`.            | | `net.host.carrier.name`     | `T-Mobile`, `Verizon`, тощо      | Назва стільникового оператора. Заповнюється лише для типів стільникового зʼєднання.  | | `net.host.carrier.icc`      | `DE`                             | Двосимвольний код країни ISO 3166-1 alpha-2, повʼязаний з мобільною мережею оператора.|
+| `net.host.connection.subtype`| `EDGE` `LTE`, тощо               | Тип стільникового зʼєднання. Заповнюється лише якщо тип зʼєднання `cell`.            |
+| `net.host.carrier.name`     | `T-Mobile`, `Verizon`, тощо      | Назва стільникового оператора. Заповнюється лише для типів стільникового зʼєднання.  |
+|`net.host.carrier.icc`       | `DE`                             | Двосимвольний код країни ISO 3166-1 alpha-2, повʼязаний з мобільною мережею оператора.|
 | `net.host.carrier.mcc`      | `310`                            | Мобільний код країни                                                                 |
 | `net.host.carrier.mnc`      | `001`                            | Мобільний мережевий код                                                              |
 

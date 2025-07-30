@@ -2,7 +2,8 @@
 title: OTel — відстій (але також крутий!)
 date: 2025-04-03
 author: '[Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)'
-cSpell:ignore: Kovalenko Liatrio Moessis Olly Pismo Магно Адріелу Моессісу Моессіс Адріеля Адріель
+# prettier-ignore
+cSpell:ignore: Liatrio Olly Pismo Адріелу Адріель Адріеля Магно Моессіс Моессісу
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 

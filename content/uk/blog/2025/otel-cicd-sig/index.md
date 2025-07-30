@@ -9,7 +9,7 @@ canonical_url: https://www.cncf.io/blog/2024/11/04/opentelemetry-is-expanding-in
 issue: 5546
 sig: CI/CD Observability
 # prettier-ignore
-cSpell:ignore: andrzej bäck bäckmark chacin cicd frittoli grassi helmuth horovits jemmic joao kamphaus keptn kowalski liatrio liudmila molkova robb ruech safyan sarahan shkuro skyscanner slsa stencel suereth tekton voss opentelemetrys Стенцелю Воссу Сараан Суерет Траск Сталнекер Фріттолі Бекмарк Молькова Камфаус Кальво Кідд Часін Верт
+cSpell:ignore: cicd frittoli horovits jemmic keptn liatrio opentelemetrys skyscanner slsa tekton Бекмарк Верт Воссу Кальво Камфаус Кідд Молькова Сараан Сталнекер Стенцелю Суерет Траск Фріттолі Часін
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 

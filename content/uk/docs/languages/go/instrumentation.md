@@ -846,7 +846,7 @@ meterProvider := metric.NewMeterProvider(
 
 Щоб використовувати цей робочий процес:
 
-- Налаштуйте [SDK логів](#logs-sdk) OpenTelemetry для експорту записів логів до бажаного місця призначення (колектора [opentelemetry collector] або іншого).
+- Налаштуйте [SDK логів](#logs-sdk) OpenTelemetry для експорту записів логів до бажаного місця призначення ([колектора][opentelemetry collector] або іншого).
 - Використовуйте відповідний [Міст логів](#log-bridge).
 
 #### SDK логів {#logs-sdk}
@@ -962,7 +962,7 @@ func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.Logger
 [специфікація opentelemetry]: /docs/specs/otel/
 [семантичні конвенції трейсів]: /docs/specs/semconv/general/trace/
 [бібліотека інструментування]: ../libraries/
-[колектор opentelemetry]:
+[opentelemetry collector]:
   https://github.com/open-telemetry/opentelemetry-collector
 [API мосту логів]: /docs/specs/otel/logs/api/
 [модель даних логів]: /docs/specs/otel/logs/data-model

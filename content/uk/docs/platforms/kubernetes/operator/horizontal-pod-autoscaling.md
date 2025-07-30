@@ -2,7 +2,7 @@
 title: Горизонтальне автомасштабування подів
 description:
   Налаштування горизонтального автомасштабування подів з вашим OpenTelemetry Collector
-cSpell:ignore: autoscaler mebibyte mebibytes statefulset міліядер мебібайти мебібайт
+cSpell:ignore: autoscaler statefulset мебібайт мебібайти міліядер
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 

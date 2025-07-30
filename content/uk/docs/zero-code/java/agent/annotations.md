@@ -3,7 +3,7 @@ title: Анотації
 description: Використання анотацій інструментування з Java агентом.
 aliases: [/docs/instrumentation/java/annotations]
 weight: 20
-cSpell:ignore: Flowable javac reactivestreams reactivex otelinstrumentationmethodsinclude spanattribute
+cSpell:ignore: Flowable javac otelinstrumentationmethodsinclude reactivestreams reactivex spanattribute
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 

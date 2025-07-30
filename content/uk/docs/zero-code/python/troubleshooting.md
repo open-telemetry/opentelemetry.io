@@ -56,7 +56,7 @@ uv pip install opentelemetry-distro opentelemetry-exporter-otlp
 uv run opentelemetry-bootstrap -a requirements | uv pip install --requirement -
 ```
 
-Нарешті, використовуйте `uv run` для запуску вашого застосунку (дивіться [Налаштування агента](#configuring-the-agent)):
+Нарешті, використовуйте `uv run` для запуску вашого застосунку (дивіться [Налаштування агента](/docs/zero-code/python/#configuring-the-agent)):
 
 ```sh
 uv run opentelemetry-instrument python myapp.py

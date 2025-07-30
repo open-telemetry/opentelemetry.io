@@ -3,7 +3,6 @@ title: Обробка конфіденційних даних
 description:
   Найкращі практики та рекомендації щодо обробки конфіденційних даних в OpenTelemetry
 weight: 100
-cSpell:ignore: anonymization
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 

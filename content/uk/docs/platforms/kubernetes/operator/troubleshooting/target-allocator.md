@@ -1,8 +1,7 @@
 ---
 title: Розподільник цілей
-cSpell:ignore: bleh targetallocator
 weight: 30
-cSpell:ignore: podmonitor podmonitorselector
+cSpell:ignore: bleh podmonitor podmonitorselector targetallocator
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 

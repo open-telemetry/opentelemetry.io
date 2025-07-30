@@ -12,9 +12,9 @@ OpenTelemetry складається з [декількох компоненті
 
 ## API та SDK мов {#language-apis-sdks}
 
-Статус розробки або рівень зрілості [ API або SDK для мови](/docs/languages/) див. у наступній таблиці:
+Статус розробки або рівень зрілості [API або SDK для мови](/docs/languages/) див. у наступній таблиці:
 
-{{% telemetry-support-table " " %}}
+{{% uk/telemetry-support-table " " %}}
 
 Для більш детальної інформації про відповідність специфікації для кожної реалізації див. [Матрицю відповідності специфікації](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
 
@@ -33,4 +33,3 @@ OpenTelemetry складається з [декількох компоненті
 ## Специфікації {#specifications}
 
 Про стан розробки або рівень зрілості [специфікації](/docs/specs/otel/) див. нижче: [Зведений опис стану специфікації](/docs/specs/status/).
-

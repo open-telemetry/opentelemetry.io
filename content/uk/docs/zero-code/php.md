@@ -3,7 +3,7 @@ title: Інструментування PHP без коду
 linkTitle: PHP
 weight: 30
 aliases: [/docs/languages/php/automatic]
-cSpell:ignore: centos democlass epel myapp pecl phar remi phpini
+cSpell:ignore: centos democlass epel myapp pecl phar phpini remi
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
@@ -18,7 +18,7 @@ default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 - Одна або більше [бібліотек інструментування](/ecosystem/registry/?component=instrumentation&language=php)
 - [Конфігурація](#configuration)
 
-## Встановлення розширення OpenTelemetry {#installation-the-opentelemetry-extension}
+## Встановлення розширення OpenTelemetry {#install-the-opentelemetry-extension}
 
 {{% alert title="Важливо" color="warning" %}}Встановлення розширення OpenTelemetry само по собі не генерує трасування. {{% /alert %}}
 

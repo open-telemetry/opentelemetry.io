@@ -2,7 +2,7 @@
 title: Управління
 description: Як керувати розгортанням OpenTelemetry Collector у масштабі
 weight: 23
-cSpell:ignore: AFVGQT backpressure distro GRRKNBJE hostmetrics opampsupervisor
+cSpell:ignore: hostmetrics opampsupervisor
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 

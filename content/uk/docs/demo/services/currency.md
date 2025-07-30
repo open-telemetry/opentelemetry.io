@@ -2,7 +2,7 @@
 title: Сервіс Валют
 linkTitle: Валюта
 aliases: [currencyservice]
-cSpell:ignore: decltype labelkv noexcept nostd loggerprovider
+cSpell:ignore: decltype labelkv loggerprovider noexcept nostd
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 

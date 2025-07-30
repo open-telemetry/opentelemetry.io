@@ -3,7 +3,7 @@ title: Сервіс каталогу продуктів
 linkTitle: Каталог продуктів
 aliases: [productcatalogservice]
 # prettier-ignore
-cSpell:ignore: fatalf otelcodes otelgrpc otlpmetricgrpc otlptracegrpc sdkmetric sdktrace sprintf loggerprovider
+cSpell:ignore: fatalf loggerprovider otelcodes otelgrpc otlpmetricgrpc otlptracegrpc sdkmetric sdktrace sprintf
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 

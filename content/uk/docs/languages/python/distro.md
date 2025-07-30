@@ -2,7 +2,7 @@
 title: OpenTelemetry Distro
 linkTitle: Distro
 weight: 110
-cSpell:ignore: distro distros
+cSpell:ignore: distro
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
@@ -14,7 +14,7 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 
 Пакунок також надає стартову точку для всіх, хто зацікавлений у створенні альтернативного дистрибутиву. Інтерфейси, реалізовані пакунком, завантажуються автоматичною інструментацією через точки входу `opentelemetry_distro` та `opentelemetry_configurator` для конфігурації застосунку перед виконанням будь-якого іншого коду.
 
-Для автоматичного експорту даних з OpenTelemetry до OpenTelemetry collector, встановлення пакунка налаштує всі необхідні точки входу.
+Для автоматичного експорту даних з OpenTelemetry до OpenTelemetry Collector, встановлення пакунка налаштує всі необхідні точки входу.
 
 ```sh
 pip install opentelemetry-distro[otlp] opentelemetry-instrumentation
