@@ -3,9 +3,9 @@ title: Колектор
 description: Незалежний від постачальника спосіб отримання, обробки та експорту телеметричних даних.
 aliases: [./about]
 cascade:
-  vers: 0.128.0
+  vers: 0.130.1
 weight: 270
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 ![Схема OpenTelemetry Collector з інтеграцією Jaeger, OTLP та Prometheus](img/otel-collector.svg)

@@ -1,10 +1,10 @@
 ---
 title: Безпека
 cascade:
-  collector_vers: 0.128.0
+  collector_vers: 0.130.1
 weight: 970
 cSpell:ignore: cves
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 У цьому розділі дізнайтеся, як проєкт OpenTelemetry розкриває вразливості та реагує на інциденти, а також дізнайтеся, що ви можете зробити для безпечного збору та передачі ваших даних спостереження.

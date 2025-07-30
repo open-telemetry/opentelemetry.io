@@ -5,7 +5,7 @@ aliases: [/docs/languages/net/automatic/config]
 weight: 20
 # prettier-ignore
 cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib NETFX OPERATINGSYSTEM PROCESSRUNTIME UNHANDLEDEXCEPTION LOGС EXPORTЕР вебконфігурації
-default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 ## Методи конфігурації {#configuration-methods}
@@ -307,8 +307,7 @@ CORECLR_PROFILER_PATH_64
 
 Якщо типові теки логів не можуть бути створені, інструментація використовує шлях до [тимчасової теки](https://docs.microsoft.com/en-us/dotnet/api/System.IO.Path.GetTempPath?view=net-6.0) поточного користувача.
 
-| Змінна середовища                              | Опис                                                             | Стандартне значення                            | Статус                                                    |
-| ------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------- |
-| `OTEL_DOTNET_AUTO_LOG_DIRECTORY`                  | Тека логів .NET Tracer.                                      | _Дивіться попередню примітку про типові шляхи_ | [Експериментальний](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_LOG_LEVEL`                                  | Рівень журналу SDK. (підтримувані значення: `none`,`error`,`warn`,`info`,`debug`) | `info`                                   | [Стабільний](/docs/specs/otel/versioning-and-stability)       |
-| `OTEL_DOTNET_AUTO_LOGS_INCLUDE_FORMATTED_MESSAGE` | Чи слід форматувати стан журналу.                              | `false`                                  | [Експериментальний](/docs/specs/otel/versioning-and-stability) |
+| Змінна середовища                | Опис                                                                              | Стандартне значення                            | Статус                                                         |
+| -------------------------------- | --------------------------------------------------------------------------------- | ---------------------------------------------- | -------------------------------------------------------------- |
+| `OTEL_DOTNET_AUTO_LOG_DIRECTORY` | Тека логів .NET Tracer.                                                           | _Дивіться попередню примітку про типові шляхи_ | [Експериментальний](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_LOG_LEVEL`                 | Рівень журналу SDK. (підтримувані значення: `none`,`error`,`warn`,`info`,`debug`) | `info`                                         | [Стабільний](/docs/specs/otel/versioning-and-stability)        |

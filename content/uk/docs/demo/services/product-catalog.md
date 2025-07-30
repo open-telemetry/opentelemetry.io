@@ -3,8 +3,8 @@ title: Сервіс каталогу продуктів
 linkTitle: Каталог продуктів
 aliases: [productcatalogservice]
 # prettier-ignore
-cSpell:ignore: fatalf otelcodes otelgrpc otlpmetricgrpc otlptracegrpc sdkmetric sdktrace sprintf
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+cSpell:ignore: fatalf otelcodes otelgrpc otlpmetricgrpc otlptracegrpc sdkmetric sdktrace sprintf loggerprovider
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 Цей сервіс відповідає за повернення інформації про продукти. Сервіс може бути використаний для отримання всіх продуктів, пошуку конкретних продуктів або повернення деталей про будь-який окремий продукт.
@@ -145,4 +145,77 @@ if err != nil {
 
 ## Логи {#logs}
 
-TBD
+You can send your logs to the OpenTelemetry Collector in two ways:
+
+- Directly to the Collector
+- Through a file or `stdout`
+
+You can find documentation specifying how to use both these approaches in the
+[Logs](/docs/languages/go/instrumentation/#logs) section of the
+[Manual Instrumentation](/docs/languages/go/instrumentation/) documentation.
+
+The Product Catalog service sends the logs directly to the Collector, and uses a
+log bridge to send its logs, bridging to the `slog` logging package, which
+outputs structured logs.
+
+## Ініціалізація LoggerProvider {#loggerprovider-initialization}
+
+OpenTelemetry SDK ініціалізується з `main` за допомогою функції `initLoggerProvider`.
+
+```go
+ctx := context.Background()
+
+logExporter, err := otlploggrpc.New(ctx)
+if err != nil {
+	return nil
+}
+
+loggerProvider := sdklog.NewLoggerProvider(
+	sdklog.WithProcessor(sdklog.NewBatchProcessor(logExporter)),
+)
+global.SetLoggerProvider(loggerProvider)
+
+return loggerProvider
+```
+
+Зробіть виклик `LoggerProvider.Shutdown()`, коли ваш сервіс не працює, щоб переконатися, що всі журнали експортовано. Цей сервіс виконує цей виклик як частину відкладеної функції у `main`:
+
+```go
+lp := initLoggerProvider()
+defer func() {
+	if err := lp.Shutdown(context.Background()); err != nil {
+		logger.Error(fmt.Sprintf("Logger Provider Shutdown: %v", err))
+	}
+	logger.Info("Shutdown logger provider")
+}()
+```
+
+### Функціональність ведення журналу {#logging-functionality}
+
+Цей сервіс надсилає логи до Collector за допомогою викликів gRPC. Логи виводяться у структурованому форматі за допомогою пакета `slog`.
+
+Спочатку ініціалізуйте логер:
+
+```go
+logger   *slog.Logger
+logger = otelslog.NewLogger("product-catalog")
+```
+
+Зверніть увагу на використання `fmt.Sprintf` для форматування виводу перед надсиланням до журналу:
+
+```go
+logger.Info("Loading Product Catalog...")
+logger.Info(fmt.Sprintf("Product Catalog reload interval: %d", interval))
+logger.Error(fmt.Sprintf("Error shutting down meter provider: %v", err))
+```
+
+Перевагою використання `log` є можливість додавання додаткових атрибутів до виводу. У наступному прикладі додано атрибути `product.name` та `product.id`. Це дозволяє переглядати і аналізувати їх як частину виводу журналу, а також полегшує їх перегляд як окремих стовпців у Grafana:
+
+```go
+logger.LogAttrs(
+	ctx,
+	slog.LevelInfo, "Product Found",
+	slog.String("app.product.name", found.Name),
+	slog.String("app.product.id", req.Id),
+)
+```

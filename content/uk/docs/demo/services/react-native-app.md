@@ -1,6 +1,6 @@
 ---
 title: Застосунок React Native
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 Застосунок React Native надає мобільний інтерфейс для користувачів на пристроях Android та iOS для взаємодії з демонстраційними сервісами. Він створений за допомогою [Expo](https://docs.expo.dev/get-started/introduction/) і використовує файлову маршрутизацію Expo для компонування екранів застосунку.
@@ -38,7 +38,7 @@ import { BatchSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { XMLHttpRequestInstrumentation } from '@opentelemetry/instrumentation-xml-http-request';
 import { FetchInstrumentation } from '@opentelemetry/instrumentation-fetch';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
-import { Resource } from '@opentelemetry/resources';
+import { resourceFromAttributes } from '@opentelemetry/resources';
 import {
   ATTR_DEVICE_ID,
   ATTR_OS_NAME,
@@ -60,7 +60,7 @@ import { SessionIdProcessor } from '@/utils/SessionIdProcessor';
 const Tracer = async () => {
   const localhost = await getLocalhost();
 
-  const resource = new Resource({
+  const resource = new resourceFromAttributes({
     [ATTR_SERVICE_NAME]: 'react-native-app',
     [ATTR_OS_NAME]: Platform.OS,
     [ATTR_OS_VERSION]: getSystemVersion(),

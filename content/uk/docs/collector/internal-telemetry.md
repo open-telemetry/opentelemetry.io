@@ -2,12 +2,12 @@
 title: Внутрішня телеметрія
 weight: 25
 cSpell:ignore: alloc batchprocessor journalctl
-default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 Ви можете перевірити стан будь-якого екземпляра OpenTelemetry Collector за допомогою його внутрішньої телеметрії. Читайте далі, щоб дізнатися про цю телеметрію та як її налаштувати, щоб допомогти вам [моніторити](#use-internal-telemetry-to-monitor-the-collector) та [усувати несправності](/docs/collector/troubleshooting/) Колектора.
 
-{{% alert title="Важливо" color="warning" %}} Колектор використовує [декларативну схему конфігурації](https://github.com/open-telemetry/opentelemetry-configuration) OpenTelemetry SDK для налаштування експорту внутрішньої телеметрії. Ця схема все ще перебуває на стадії [розробки](/docs/specs/otel/document-status/#lifecycle-status) і може зазнати **суттєвих змін** у майбутніх випусках. Ми маємо намір продовжувати підтримувати старі схеми до випуску схеми 1.0 і пропонуємо перехідний період для користувачів, щоб оновити свої конфігурації перед тим, як відмовитися від схем pre-1.0. Для отримання детальної інформації та відстеження прогресу див. [Issue #10808](https://github.com/open-telemetry/opentelemetry-collector/issues/10808).
+{{% alert title="Важливо" color="warning" %}} Колектор використовує [декларативну схему конфігурації](https://github.com/open-telemetry/opentelemetry-configuration) OpenTelemetry SDK для налаштування експорту внутрішньої телеметрії. Ця схема все ще перебуває на стадії [розробки](/docs/specs/otel/document-status/) і може зазнати **суттєвих змін** у майбутніх випусках. Ми маємо намір продовжувати підтримувати старі схеми до випуску схеми 1.0 і пропонуємо перехідний період для користувачів, щоб оновити свої конфігурації перед тим, як відмовитися від схем pre-1.0. Для отримання детальної інформації та відстеження прогресу див. [Issue #10808](https://github.com/open-telemetry/opentelemetry-collector/issues/10808).
 {{% /alert %}}
 
 ## Активація внутрішньої телеметрії у колекторі {#activate-internal-telemetry-in-the-collector}
@@ -51,6 +51,24 @@ service:
                 port: 8888
 ```
 
+Якщо ви хочете додати додаткові мітки до метрик Prometheus, ви можете додати їх за допомогою `prometheus::with_resource_constant_labels`:
+
+```yaml
+prometheus:
+  host: '0.0.0.0'
+  port: 8888
+  with_resource_constant_labels:
+    included:
+      - label_key
+```
+
+А потім зробіть посилання на мітки в `service::telemetry::resource`:
+
+```yaml
+resource:
+  label_key: label_value
+```
+
 {{% alert title="Зміни конфігурації внутрішньої телеметрії" %}}
 
 Починаючи з колектора [v0.123.0], параметр `service::telemetry::metrics::address` ігнорується. У попередніх версіях його можна було налаштувати за допомогою:
@@ -84,6 +102,23 @@ service:
     metrics:
       level: detailed
 ```
+
+Ви можете додатково налаштувати виведення метрик з колектора за допомогою [`views`](/docs/specs/otel/metrics/sdk/#view). Наприклад, у наведених нижче налаштуваннях метрику з назвою `otelcol_process_uptime` буде оновлено на нову назву `process_uptime` та опис:
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      views:
+        - selector:
+            instrument_name: otelcol_process_uptime
+            instrument_type:
+          stream:
+            name: process_uptime
+            description: The amount of time the Collector has been up
+```
+
+Ви також можете використовувати `views` для оновлення кінцевої агрегації, атрибутів та лімітів кардинальності. Для повного списку опцій дивіться приклади у схемі конфігурації OpenTelemetry [репозиторій](https://github.com/open-telemetry/opentelemetry-configuration/blob/f4e9046682d4386ea533ef7ba6ad30a5ce4451b4/examples/kitchen-sink.yaml#L440).
 
 ### Налаштування внутрішніх журналів {#configure-internal-logs}
 

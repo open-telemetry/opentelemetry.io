@@ -4,7 +4,7 @@ linkTitle: Бібліотеки
 weight: 40
 description: Як інструментувати бібліотеки, від яких залежить застосунок
 cSpell:ignore: metapackage metapackages
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 {{% uk/docs/languages/libraries-intro "js" %}}
@@ -186,7 +186,7 @@ const sdk = new NodeSDK({
 
 Деякі бібліотеки інструментування пропонують додаткові параметри конфігурації.
 
-Наприклад, [інструментування Express](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options) пропонує способи ігнорування вказаних проміжних програм або збагачення відрізків, створених автоматично,
+Наприклад, [інструментування Express](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-express#express-instrumentation-options) пропонує способи ігнорування вказаних проміжних програм або збагачення відрізків, створених автоматично,
 за допомогою хука запиту:
 
 {{< tabpane text=true >}}

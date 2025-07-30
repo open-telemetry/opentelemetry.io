@@ -5,14 +5,14 @@ description: >-
   alt="Python"> Реалізація OpenTelemetry для Python.
 aliases: [/python, /python/metrics, /python/tracing]
 weight: 22
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 {{% docs/languages/index-intro python /%}}
 
 ## Підтримка версій {#version-support}
 
-OpenTelemetry-Python підтримує Python 3.8 і вище.
+OpenTelemetry-Python підтримує Python 3.9 і вище.
 
 ## Встановлення {#installation}
 
