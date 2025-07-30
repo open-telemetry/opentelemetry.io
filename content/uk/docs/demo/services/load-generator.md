@@ -1,7 +1,7 @@
 ---
 title: Генератор навантаження
 aliases: [loadgenerator]
-cSpell:ignore: instrumentor instrumentors locustfile urllib
+cSpell:ignore: instrumentor locustfile urllib
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 

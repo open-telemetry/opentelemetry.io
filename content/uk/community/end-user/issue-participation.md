@@ -4,7 +4,7 @@ linkTitle: Пріоритизація тікетів
 description: >-
   Допоможіть нам визначити пріоритети у роботі над OpenTelemetry, долучившись до обговорення тікетів на GitHub за допомогою ваших голосів та коментарів.
 weight: 5
-cSpell:ignore: triagers upvote doesnt
+cSpell:ignore: doesnt
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 

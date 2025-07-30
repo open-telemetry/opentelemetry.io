@@ -8,7 +8,7 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 
 Під час налаштування OpenTelemetry (OTel) Collector враховуйте ці найкращі практики для захисту вашого екземпляра Collector.
 
-## Створення безпечних конфігурацій {#creating-secure-configurations}
+## Створення безпечних конфігурацій {#create-secure-configurations}
 
 Дотримуйтесь цих рекомендацій, щоб захистити конфігурацію вашого Collector та його конвеєри.
 

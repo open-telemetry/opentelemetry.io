@@ -5,11 +5,12 @@ date: 2025-06-05
 author: >
   [Vipin Vijaykumar](https://github.com/vipinvkmenon) (SAP SE)
 sig: End-User SIG
+# prettier-ignore
 cSpell:ignore: gateway gatewayclass ingress ingressgateway Vijaykumar Vipin безсерверних термінується
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 
-Метою цієї публікації є демонстрація того, як можна безпечно експонувати Колектор OpenTelemetry (OTel), що працює в Kubernetes, для зовнішнього світу, використовуючи [Kubernetes Gateway API](https://gateway-api. sigs.k8s.io/) та [mutual TLS (mTLS)](https://www.buoyant.io/mtls-guide) для автентифікації та шифрування.
+Метою цієї публікації є демонстрація того, як можна безпечно експонувати Колектор OpenTelemetry (OTel), що працює в Kubernetes, для зовнішнього світу, використовуючи [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io/) та [mutual TLS (mTLS)](https://www.buoyant.io/mtls-guide) для автентифікації та шифрування.
 
 Оскільки спостережуваність стає все більш важливою в сучасних розподілених системах, централізація телеметричних даних за допомогою Колекторів OTel, розгорнутих в одному або декількох кластерах Kubernetes, є загальноприйнятою практикою. Часто служби або агенти, що працюють поза вашим кластером Kubernetes, повинні надсилати дані до цих Колекторів. Експонування внутрішніх сервісів вимагає ретельного розгляду питань безпеки та стандартизації. Саме тут Kubernetes Gateway API та mTLS показують свої переваги.
 

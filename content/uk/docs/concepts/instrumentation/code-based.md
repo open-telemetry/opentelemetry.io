@@ -3,7 +3,6 @@ title: На основі коду
 description: Дізнайтеся про основні кроки налаштування інструментування на основі коду
 weight: 20
 aliases: [manual]
-cSpell:ignore: proxying
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 

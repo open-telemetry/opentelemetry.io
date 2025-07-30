@@ -53,23 +53,25 @@ languages:
       description: Сайт проєкту OpenTelemetry
       copyright:
         authors: >-
-          Автори OpenTelemetry | Документація [CC&nbsp;BY&nbsp;4.0](https://creativecommons.org/licenses/by/4.0/deed.uk)
+          Автори OpenTelemetry | Документація
+          [CC&nbsp;BY&nbsp;4.0](https://creativecommons.org/licenses/by/4.0/deed.uk)
         from_year: 2019
       tagline: Ефективна спостережуваність вимагає високоякісної телеметрії
       sub_tagline: >-
-        **OpenTelemetry** робить надійну, переносиму телеметрію вбудованою функцією
-        хмарного програмного забезпечення.
+        **OpenTelemetry** робить надійну, переносиму телеметрію вбудованою
+        функцією хмарного програмного забезпечення.
       sub_description: >-
-        **OpenTelemetry** надає єдиний набір API, бібліотек, агентів та
-        сервісів колекторів для захоплення розподілених трейсів і метрик з вашого
-        застосунку. Ви можете аналізувати їх за допомогою Prometheus, Jaeger та інших
-        інструментів спостережуваності.
+        **OpenTelemetry** надає єдиний набір API, бібліотек, агентів та сервісів
+        колекторів для захоплення розподілених трейсів і метрик з вашого
+        застосунку. Ви можете аналізувати їх за допомогою Prometheus, Jaeger та
+        інших інструментів спостережуваності.
       ui:
         feedback:
           'yes': >-
             Дякуємо. Ми цінуємо ваші відгуки!
           'no': >-
-            Будь ласка, дайте нам знати <a class="external-link" target="_blank" rel="noopener"
+            Будь ласка, дайте нам знати <a class="external-link" target="_blank"
+            rel="noopener"
             href="https://github.com/open-telemetry/opentelemetry.io/issues/new?template=PAGE_FEEDBACK.yml&title=[Page+feedback]%3A+ADD+A+SUMMARY+OF+YOUR+FEEDBACK+HERE">як
             ми можемо покращити цю сторінку</a>. Ми цінуємо ваші відгуки!
       links:
@@ -86,7 +88,8 @@ languages:
             url: https://x.com/opentelemetry
             icon: fab fa-x-twitter
             desc:
-              Слідкуйте за нами в X, раніше відомому як Twitter, щоб отримувати останні новини!
+              Слідкуйте за нами в X, раніше відомому як Twitter, щоб отримувати
+              останні новини!
           - name: Stack Overflow
             url: https://stackoverflow.com/questions/tagged/open-telemetry
             icon: fab fa-stack-overflow
@@ -113,8 +116,8 @@ languages:
             icon: fab fa-slack
             desc: >-
               Спілкуйтеся з іншими розробниками проєкту. Зареєструйтеся у
-              [slack.cncf.io](https://slack.cncf.io). Також дивіться інші канали,
-              що починаються з префіксу `#otel-`.
+              [slack.cncf.io](https://slack.cncf.io). Також дивіться інші
+              канали, що починаються з префіксу `#otel-`.
           - name: CNCF DevStats
             url: https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m
             icon: fas fa-chart-area
@@ -131,8 +134,8 @@ languages:
             url: /uk/community/marketing-guidelines/
             icon: fas fa-bullhorn
             desc: >-
-              Важлива інформація про те, як представляти ваші особисті або корпоративні
-              внески або участь у проєкті OpenTelemetry.
+              Важлива інформація про те, як представляти ваші особисті або
+              корпоративні внески або участь у проєкті OpenTelemetry.
           - name: Інформація про збірку сайту
             url: /uk/site/
             icon: fa-solid fa-hammer
@@ -543,34 +546,6 @@ module:
     - source: content/en/ecosystem
       target: content/ecosystem
       lang: pt
-
-    ## uk
-    - source: content/uk
-      target: content
-      lang: uk
-    # fallback pages
-    - source: content/en/_includes
-      target: content/_includes
-      lang: uk
-    - source: content/en/announcements
-      target: content/announcements
-      lang: uk
-    - source: content/en/ecosystem
-      target: content/ecosystem
-      lang: uk
-    # Specs, currently en only
-    - source: tmp/otel/specification
-      target: content/docs/specs/otel
-      lang: uk
-    - source: tmp/opamp
-      target: content/docs/specs/opamp
-      lang: uk
-    - source: tmp/otlp/docs/specification.md
-      target: content/docs/specs/otlp/_index.md
-      lang: uk
-    - source: tmp/otlp/docs/img
-      target: content/docs/specs/otlp/img
-      lang: uk
 
     ## static
     - source: static

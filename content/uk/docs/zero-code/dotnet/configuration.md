@@ -4,7 +4,7 @@ linkTitle: Конфігурація
 aliases: [/docs/languages/net/automatic/config]
 weight: 20
 # prettier-ignore
-cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib NETFX OPERATINGSYSTEM PROCESSRUNTIME UNHANDLEDEXCEPTION LOGС EXPORTЕР вебконфігурації
+cSpell:ignore: AZUREAPPSERVICE CLSID CORECLR dylib EXPORTЕР LOGС NETFX OPERATINGSYSTEM PROCESSRUNTIME UNHANDLEDEXCEPTION вебконфігурації
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 

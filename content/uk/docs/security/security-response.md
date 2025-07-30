@@ -2,7 +2,7 @@
 title: Керівництво спільноти щодо реагування на інциденти
 linkTitle: Реагування на інциденти
 weight: 102
-cSpell:ignore: комітах пріоритизацією
+cSpell:ignore: пріоритизацією
 default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 

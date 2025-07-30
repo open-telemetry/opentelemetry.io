@@ -3,8 +3,7 @@ title: Використання OpenTelemetry Operator для впровадже
 linkTitle: Оператор
 aliases: [/docs/languages/python/automatic/operator]
 weight: 30
-# prettier-ignore
-cSpell:ignore: grpcio myapp psutil PYTHONPATH django
+cSpell:ignore: django grpcio myapp psutil PYTHONPATH
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 

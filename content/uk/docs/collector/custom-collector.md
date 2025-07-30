@@ -2,7 +2,7 @@
 title: Створення власного колектора
 weight: 29
 # prettier-ignore
-cSpell:ignore: batchprocessor chipset darwin debugexporter gomod loggingexporter otlpexporter otlpreceiver wyrtw
+cSpell:ignore: batchprocessor darwin debugexporter gomod loggingexporter otlpexporter otlpreceiver wyrtw
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
 

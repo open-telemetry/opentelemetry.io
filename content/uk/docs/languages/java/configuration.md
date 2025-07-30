@@ -4,7 +4,7 @@ linkTitle: Налаштування SDK
 weight: 13
 aliases: [config]
 # prettier-ignore
-cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS retryable
+cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 

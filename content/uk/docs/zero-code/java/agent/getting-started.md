@@ -1,7 +1,7 @@
 ---
 title: Початок роботи
 weight: 1
-cSpell:ignore: Dotel myapp jvms
+cSpell:ignore: Dotel jvms myapp
 default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
 
@@ -64,7 +64,7 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
 
 Щоб побачити повний спектр параметрів конфігурації, дивіться [Конфігурація агента](../configuration).
 
-## Підтримувані бібліотеки, фреймворки, сервіси додатків та JVM {#supported-libraries-frameworks-applications-services-and-jvms}
+## Підтримувані бібліотеки, фреймворки, сервіси додатків та JVM {#supported-libraries-frameworks-application-services-and-jvms}
 
 Java-агент постачається з бібліотеками інструментування для багатьох популярних компонентів. Для повного списку дивіться [Підтримувані бібліотеки, фреймворки, сервіси додатків та JVM][support].
 

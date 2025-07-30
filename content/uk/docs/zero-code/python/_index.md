@@ -3,7 +3,6 @@ title: Інструментування Python без коду
 linkTitle: Python
 weight: 30
 aliases: [/docs/languages/python/automatic]
-# prettier-ignore
 cSpell:ignore: distro myapp
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---

@@ -3,7 +3,7 @@ title: Створення приймача
 weight: 20
 aliases: [/docs/collector/trace-receiver/]
 # prettier-ignore
-cSpell:ignore: backendsystem crand debugexporter loggingexporter mapstructure pcommon pdata protogen ptrace rcvr struct structs tailtracer telemetrygen uber receiverfactory бутстрап тікером задіяних викликаючого викликачем викликача
+cSpell:ignore: backendsystem crand debugexporter loggingexporter mapstructure pcommon pdata protogen ptrace rcvr receiverfactory struct tailtracer telemetrygen uber бутстрап викликача викликачем викликаючого задіяних тікером
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 

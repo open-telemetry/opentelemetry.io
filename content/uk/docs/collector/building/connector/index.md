@@ -3,7 +3,7 @@ title: Створення Конектора
 aliases: [/docs/collector/build-connector/]
 weight: 30
 # prettier-ignore
-cSpell:ignore: debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber configgo
+cSpell:ignore: configgo debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
