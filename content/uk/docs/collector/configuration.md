@@ -4,7 +4,7 @@ weight: 20
 description: Дізнайтеся, як налаштувати Collector відповідно до ваших потреб
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
-default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -579,6 +579,16 @@ processors:
     actions:
       - key: ${env:DB_KEY}
         action: ${env:OPERATION}
+```
+
+Ви можете передати стандартне значення до змінної оточення за допомогою синтаксису bash: `${env:DB_KEY:-some-default-var}`
+
+```yaml
+processors:
+  attributes/example:
+    actions:
+      - key: ${env:DB_KEY:-mydefault}
+        action: ${env:OPERATION:-}
 ```
 
 Використовуйте `$$`, щоб вказати буквальний символ `$`. Наприклад, представлення `$DataVisualization` виглядатиме наступним чином:

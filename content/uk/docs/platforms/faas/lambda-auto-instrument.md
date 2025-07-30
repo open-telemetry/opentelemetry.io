@@ -3,7 +3,7 @@ title: Автоматична інструменталізація Lambda
 weight: 11
 description: Автоматично інструментуйте ваші Lambda за допомогою OpenTelemetry
 cSpell:ignore: Corretto regionalized
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 Спільнота OpenTelemetry надає окремі шари інструменталізації Lambda для наступних мов:
@@ -48,11 +48,11 @@ OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-Шар Lambda підтримує середовища виконання Node.js v14+. Для отримання додаткової інформації про підтримувані версії JavaScript та Node.js дивіться [документацію OpenTelemetry JavaScript](https://github.com/open-telemetry/opentelemetry-js).
+Шар Lambda підтримує середовища виконання Node.js v18+. Для отримання додаткової інформації про підтримувані версії JavaScript та Node.js дивіться [документацію OpenTelemetry JavaScript](https://github.com/open-telemetry/opentelemetry-js).
 
 {{% /tab %}} {{% tab Python %}}
 
-Шар Lambda підтримує середовища виконання Python 3.8 та Python 3.9. Для отримання додаткової інформації про підтримувані версії Python дивіться [документацію OpenTelemetry Python](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#supported-runtimes) та пакет на [PyPi](https://pypi.org/project/opentelemetry-api/).
+Шар Lambda підтримує середовища виконання Python 3.9+. Для отримання додаткової інформації про підтримувані версії Python дивіться [документацію OpenTelemetry Python](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#supported-runtimes) та пакет на [PyPi](https://pypi.org/project/opentelemetry-api/).
 
 {{% /tab %}} {{% tab Ruby %}}
 
@@ -62,7 +62,7 @@ OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
 
 ### Налаштуйте `AWS_LAMBDA_EXEC_WRAPPER` {#configure-aws_lambda_exec_wrapper}
 
-Змініть точку входу вашого застосунку, встановивши `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` для Node.js, Java або Ruby, та `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-instrument` для Python. Ці скрипти-обгортки викликатимуть ваш застосунок Lambda з застосованою автоматичною інструменталізацією.
+Змініть точку входу вашого застосунку, встановивши `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` для Node.js, Java, Ruby чи Python. Ця скрипт-обгортка викликатиме ваш застосунок Lambda з застосованою автоматичною інструменталізацією.
 
 ### Додайте ARN шару інструменталізації Lambda {#add-the-arn-of-instrumentation-lambda-layer}
 

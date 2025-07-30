@@ -3,7 +3,7 @@ title: Ресурси
 weight: 70
 description: Додайте деталі про середовище вашого застосунку до вашої телеметрії
 cSpell:ignore: myhost SIGINT uuidgen WORKDIR
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 {{% docs/languages/resources-intro %}}
@@ -225,7 +225,7 @@ DockerCGroupV1Detector found resource. Resource {
 
 ## Наступні кроки {#next-steps}
 
-До конфігурації можна додати більше детекторів ресурсів, наприклад, щоб отримати деталі про ваше [Хмарне][хмара] середовище або [Розгортання][]. Для отримання додаткової інформації дивіться [перелік детекторів](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node).
+До конфігурації можна додати більше детекторів ресурсів, наприклад, щоб отримати деталі про ваше [Хмарне][хмара] середовище або [Розгортання][]. Для отримання додаткової інформації дивіться [пакунки з назвою `resource-detector-*` у сховищі opentelemetry-js-contrib](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages).
 
 [початок роботи - node.js]: /docs/languages/js/getting-started/nodejs/
 [ресурси процесу та середовища процесу]: /docs/specs/semconv/resource/process/

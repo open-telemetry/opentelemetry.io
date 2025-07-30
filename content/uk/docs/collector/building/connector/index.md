@@ -3,8 +3,8 @@ title: Створення Конектора
 aliases: [/docs/collector/build-connector/]
 weight: 30
 # prettier-ignore
-cSpell:ignore: batchprocessor debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber configgo
-default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+cSpell:ignore: debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber configgo
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 ## Конектори в OpenTelemetry {#connectors-in-opentelemetry}
@@ -63,7 +63,6 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [example]
     metrics:
       receivers: [example]
@@ -95,11 +94,16 @@ service:
 
 Щоб надати вашому конектору доступ до його налаштувань, створіть структуру `Config`. Структура повинна мати експортоване поле для кожного з налаштувань конектора. Поля параметрів, додані до структури, будуть доступні з файлу config.yaml. Їх імʼя у конфігураційному файлі встановлюється через теґ структури. Створіть структуру і додайте параметри. Ви можете додатково додати функцію валідатора, щоб перевірити, чи є задані стандартні значення є дійсними для екземпляра вашого конектора.
 
+Ось як має виглядати файл `config.go`:
+
+> exampleconnector/config.go
+
 ```go
 package exampleconnector
 
 import "fmt"
 
+// Config представляє налаштування конфігурації коннектора у файлі config.yaml колектора
 type Config struct {
     AttributeName string `mapstructure:"attribute_name"`
 }
@@ -125,11 +129,10 @@ func (c *Config) Validate() error {
 1.  Створіть файл factory.go і визначте унікальний рядок для ідентифікації вашого конектора як глобальну константу.
 
     ```go
-    const (
-        defaultVal = "request.n"
-        // це ім'я, яке використовується для посилання на конектор у config.yaml
-        typeStr = "example"
-    )
+    const defaultVal string = "request.n"
+
+    // Type — назва типу компонента для цього конектора
+    var Type = component.MustNewType("example")
     ```
 
 2.  Створіть функцію стандартної конфігурації. Це спосіб ініціалізації вашого обʼєкта конектора стандартними значеннями.
@@ -147,19 +150,14 @@ func (c *Config) Validate() error {
     ```go
     // createTracesToMetricsConnector визначає тип споживача конектора
     // Ми хочемо отримувати трейси і експортувати метрики, тому визначаємо nextConsumer як метрики, оскільки споживач є наступним компонентом у конвеєрі
-    func createTracesToMetricsConnector(ctx context.Context, params connector.CreateSettings, cfg component.Config, nextConsumer consumer.Metrics) (connector.Traces, error) {
-        c, err := newConnector(params.Logger, cfg)
-        if err != nil {
-            return nil, err
-        }
-        c.metricsConsumer = nextConsumer
-        return c, nil
+    func createTracesToMetricsConnector(ctx context.Context, params connector.Settings, cfg component.Config, nextConsumer consumer.Metrics) (connector.Traces, error) {
+        return newConnector(params.Logger, cfg, nextConsumer)
     }
     ```
 
     `createTracesToMetricsConnector` — це функція, яка додатково ініціалізує компонент конектора, визначаючи його компонент споживача, або наступний компонент, який буде споживати дані після передачі їх конектором. Слід зазначити, що конектор не обмежується однією впорядкованою комбінацією типів, як у нас тут. Наприклад, конектор count визначає кілька таких функцій для трасування до метрик, логів до метрик і метрик до метрик.
 
-    Параметри для `createTracesToMetricsConnector`: {.h4}
+    Параметри для `createTracesToMetricsConnector`:
 
     - `context.Context`: посилання на `context.Context` колектора, щоб ваш приймач трейсів міг правильно керувати своїм контекстом виконання.
     - `connector.CreateSettings`: посилання на деякі налаштування колектора, під якими створюється ваш приймач.
@@ -173,9 +171,9 @@ func (c *Config) Validate() error {
     func NewFactory() connector.Factory {
         // Фабрика конекторів OpenTelemetry для створення фабрики для конекторів
         return connector.NewFactory(
-        typeStr,
-        createDefaultConfig,
-        connector.WithTracesToMetrics(createTracesToMetricsConnector, component.StabilityLevelAlpha))
+            Type,
+            createDefaultConfig,
+            connector.WithTracesToMetrics(createTracesToMetricsConnector, component.StabilityLevelAlpha))
     }
     ```
 
@@ -187,47 +185,37 @@ func (c *Config) Validate() error {
 package exampleconnector
 
 import (
-    "context"
+	"context"
 
-    "go.opentelemetry.io/collector/component"
-    "go.opentelemetry.io/collector/connector"
-    "go.opentelemetry.io/collector/consumer"
+	"go.opentelemetry.io/collector/component"
+	"go.opentelemetry.io/collector/connector"
+	"go.opentelemetry.io/collector/consumer"
 )
 
-const (
-    defaultVal = "request.n"
-    // це імʼя, яке використовується для посилання на конектор у config.yaml
-    typeStr = "example"
-)
+const defaultVal string = "request.n"
 
+// Type — назва типу компонента для цього конектора
+var Type = component.MustNewType("example")
 
-// NewFactory створює фабрику для прикладного конектора.
+// NewFactory створює фабрику для зразка конектора.
 func NewFactory() connector.Factory {
-    // Фабрика конекторів OpenTelemetry для створення фабрики для конекторів
-
-    return connector.NewFactory(
-    typeStr,
-    createDefaultConfig,
-    connector.WithTracesToMetrics(createTracesToMetricsConnector, component.StabilityLevelAlpha))
+	// Фабрика конекторів OpenTelemetry для створення фабрики для конекторів
+	return connector.NewFactory(
+		Type,
+		createDefaultConfig,
+		connector.WithTracesToMetrics(createTracesToMetricsConnector, component.StabilityLevelAlpha))
 }
-
 
 func createDefaultConfig() component.Config {
-    return &Config{
-        AttributeName: defaultVal,
-    }
+	return &Config{
+		AttributeName: defaultVal,
+	}
 }
 
-
-// createTracesToMetricsConnector визначає тип споживача конектора
-// Ми хочемо споживати трейси і експортувати метрики, тому визначаємо nextConsumer як метрики, оскільки споживач є наступним компонентом у конвеєрі
-func createTracesToMetricsConnector(ctx context.Context, params connector.CreateSettings, cfg component.Config, nextConsumer consumer.Metrics) (connector.Traces, error) {
-    c, err := newConnector(params.Logger, cfg)
-    if err != nil {
-        return nil, err
-    }
-    c.metricsConsumer = nextConsumer
-    return c, nil
+// createTracesToMetricsConnector визначає тип споживача коннектора
+// Ми хочемо споживати трейси та експортувати метрики, тому визначаємо nextConsumer як метрики, оскільки споживач є наступним компонентом в конвеєрі
+func createTracesToMetricsConnector(ctx context.Context, params connector.Settings, cfg component.Config, nextConsumer consumer.Metrics) (connector.Traces, error) {
+	return newConnector(params.Logger, cfg, nextConsumer)
 }
 ```
 
@@ -240,9 +228,12 @@ func createTracesToMetricsConnector(ctx context.Context, params connector.Create
     ```go
     // схема для конектора
     type connectorImp struct {
-        config Config
+        config          Config
         metricsConsumer consumer.Metrics
-        logger *zap.Logger
+        logger          *zap.Logger
+        // Включіть ці параметри, якщо не потрібна спеціальна реалізація для функцій запуску та завершення роботи
+        component.StartFunc
+        component.ShutdownFunc
     }
     ```
 
@@ -250,13 +241,14 @@ func createTracesToMetricsConnector(ctx context.Context, params connector.Create
 
     ```go
     // newConnector - це функція для створення нового конектора
-    func newConnector(logger *zap.Logger, config component.Config) (*connectorImp, error) {
-        logger.Info("Створення конектора exampleconnector")
+    func newConnector(logger *zap.Logger, config component.Config, nextConsumer consumer.Metrics) (*connectorImp, error) {
+        logger.Info("Building exampleconnector connector")
         cfg := config.(*Config)
 
         return &connectorImp{
-            config: *cfg,
-            logger: logger,
+            config:          *cfg,
+            logger:          logger,
+            metricsConsumer: nextConsumer,
         }, nil
     }
     ```
@@ -278,8 +270,8 @@ func createTracesToMetricsConnector(ctx context.Context, params connector.Create
 
     ```go
     // Метод ConsumeTraces викликається для кожного екземпляра трасування, переданого конектору
-    func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) error{
-    // перебір рівнів спанів одного спожитого трасування
+    func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) error {
+        // перебір рівнів спанів одного спожитого трасування
         for i := 0; i < td.ResourceSpans().Len(); i++ {
             resourceSpan := td.ResourceSpans().At(i)
 
@@ -289,13 +281,10 @@ func createTracesToMetricsConnector(ctx context.Context, params connector.Create
                 for k := 0; k < scopeSpan.Spans().Len(); k++ {
                     span := scopeSpan.Spans().At(k)
                     attrs := span.Attributes()
-                    mapping := attrs.AsRaw()
-                    for key, _ := range mapping {
-                        if key == c.config.AttributeName {
-                            // створити метрику тільки якщо спан трасування мав певний атрибут
-                            metrics := pmetric.NewMetrics()
-                            return c.metricsConsumer.ConsumeMetrics(ctx, metrics)
-                        }
+                    if _, ok := attrs.Get(c.config.AttributeName); ok {
+                        // створювати метрику тільки якщо відрізок трейса має певний атрибут
+                        metrics := pmetric.NewMetrics()
+                        return c.metricsConsumer.ConsumeMetrics(ctx, metrics)
                     }
                 }
             }
@@ -306,75 +295,72 @@ func createTracesToMetricsConnector(ctx context.Context, params connector.Create
 
 5.  Необовʼязково: Реалізуйте методи `Start` і `Shutdown`, щоб правильно реалізувати інтерфейс, тільки якщо потрібна конкретна реалізація. В іншому випадку достатньо включити `component.StartFunc` і `component.ShutdownFunc` як частину визначеної структури конектора.
 
-Повний файл конектора:
+Повний файл конектора має виглядати наступним чином:
 
 ```go
 package exampleconnector
 
 import (
-    "context"
-    "fmt"
+	"context"
 
-    "go.uber.org/zap"
+	"go.uber.org/zap"
 
-    "go.opentelemetry.io/collector/component"
-    "go.opentelemetry.io/collector/consumer"
-    "go.opentelemetry.io/collector/pdata/pmetric"
-    "go.opentelemetry.io/collector/pdata/ptrace"
+	"go.opentelemetry.io/collector/component"
+	"go.opentelemetry.io/collector/consumer"
+	"go.opentelemetry.io/collector/pdata/pmetric"
+	"go.opentelemetry.io/collector/pdata/ptrace"
 )
 
 
 // схема для конектора
 type connectorImp struct {
-    config Config
-    metricsConsumer consumer.Metrics
-    logger *zap.Logger
-    // Включіть ці параметри, якщо не потрібна конкретна реалізація функцій Start і Shutdown
-    component.StartFunc
+	config          Config
+	metricsConsumer consumer.Metrics
+	logger          *zap.Logger
+	// Включіть ці параметри, якщо не потрібна конкретна реалізація функцій Start і Shutdown
+	component.StartFunc
 	component.ShutdownFunc
 }
 
 // newConnector - це функція для створення нового конектора
-func newConnector(logger *zap.Logger, config component.Config) (*connectorImp, error) {
-    logger.Info("Створення конектора exampleconnector")
-    cfg := config.(*Config)
+func newConnector(logger *zap.Logger, config component.Config, nextConsumer consumer.Metrics) (*connectorImp, error) {
+	logger.Info("Building exampleconnector connector")
+	cfg := config.(*Config)
 
-    return &connectorImp{
-    config: *cfg,
-    logger: logger,
-    }, nil
+	return &connectorImp{
+		config:          *cfg,
+		logger:          logger,
+		metricsConsumer: nextConsumer,
+	}, nil
 }
 
 
 // Capabilities реалізує інтерфейс споживача.
 func (c *connectorImp) Capabilities() consumer.Capabilities {
-    return consumer.Capabilities{MutatesData: false}
+	return consumer.Capabilities{MutatesData: false}
 }
 
 // Метод ConsumeTraces викликається для кожного екземпляра трасування, переданого конектору
 func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) error {
-    // перебір рівнів спанів одного спожитого трасування
-    for i := 0; i < td.ResourceSpans().Len(); i++ {
-        resourceSpan := td.ResourceSpans().At(i)
+	// перебір рівнів спанів одного спожитого трасування
+	for i := 0; i < td.ResourceSpans().Len(); i++ {
+		resourceSpan := td.ResourceSpans().At(i)
 
-        for j := 0; j < resourceSpan.ScopeSpans().Len(); j++ {
-            scopeSpan := resourceSpan.ScopeSpans().At(j)
+		for j := 0; j < resourceSpan.ScopeSpans().Len(); j++ {
+			scopeSpan := resourceSpan.ScopeSpans().At(j)
 
-            for k := 0; k < scopeSpan.Spans().Len(); k++ {
-                span := scopeSpan.Spans().At(k)
-                attrs := span.Attributes()
-                mapping := attrs.AsRaw()
-                for key, _ := range mapping {
-                    if key == c.config.AttributeName {
-                        // створити метрику тільки якщо спан трасування мав певний атрибут
-                        metrics := pmetric.NewMetrics()
-                        return c.metricsConsumer.ConsumeMetrics(ctx, metrics)
-                    }
-                }
-            }
-        }
-    }
-    return nil
+			for k := 0; k < scopeSpan.Spans().Len(); k++ {
+				span := scopeSpan.Spans().At(k)
+				attrs := span.Attributes()
+				if _, ok := attrs.Get(c.config.AttributeName); ok {
+					// створювати метрику тільки якщо відрізок трейсу має певний атрибут
+					metrics := pmetric.NewMetrics()
+					return c.metricsConsumer.ConsumeMetrics(ctx, metrics)
+				}
+			}
+		}
+	}
+	return nil
 }
 ```
 
@@ -394,36 +380,30 @@ func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) erro
 
     ```yaml
     dist:
-        name: otelcol-dev-bin
-        description: Basic OpenTelemetry collector distribution for Developers
-        output_path: ./otelcol-dev
-
+      name: otelcol-dev-bin
+      description: Basic OpenTelemetry collector distribution for Developers
+      output_path: ./otelcol-dev
 
     exporters:
-        - gomod:
-        # ЗАУВАЖЕННЯ: До v0.86.0 використовуйте `loggingexporter` замість `debugexporter`.
-        go.opentelemetry.io/collector/exporter/debugexporter v0.86.0
-
-
-    processors:
-        - gomod:
-        go.opentelemetry.io/collector/processor/batchprocessor v0.86.0
-
+      - gomod:
+          # Примітка: До версії 0.86.0 використовуйте `loggingexporter` замість `debugexporter`.
+          go.opentelemetry.io/collector/exporter/debugexporter v0.129.0
 
     receivers:
-        - gomod:
-    go.opentelemetry.io/collector/receiver/otlpreceiver v0.86.0
+      - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.129.0
 
+    # Не використовується в цьому прикладі, але може бути доданий, якщо це необхідно для вашого випадку використання
+    # processors:
 
     connectors:
-        - gomod: github.com/gord02/exampleconnector v0.86.0
-
+      - gomod: github.com/gord02/exampleconnector v0.129.0
 
     replaces:
-    # список директив "replaces", які будуть частиною результативного go.mod
+      # список директив "replaces", які будуть частиною результуючого go.mod
 
-    # Ця директива заміни необхідна, оскільки новостворений компонент ще не знайдено/опубліковано на GitHub. Замініть посилання на шлях GitHub на локальний шлях
-    - github.com/gord02/exampleconnector => [PATH-TO-COMPONENT-CODE]/exampleconnector
+      # Цей оператор заміни необхідний, оскільки щойно доданий компонент ще не знайдено/опубліковано на GitHub. Замініть посилання на шлях до GitHub на локальний шлях
+      - github.com/gord02/exampleconnector =>
+        [PATH-TO-COMPONENT-CODE]/exampleconnector
     ```
 
     Необхідно включити директиву заміни. Розділ заміни, оскільки ваш новостворений компонент ще не опубліковано на GitHub. Посилання на шлях GitHub для вашого компонента потрібно замінити на локальний шлях до вашого коду.
@@ -435,20 +415,221 @@ func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) erro
     Запустіть збирач, передаючи конфігураційний файл збирача, який деталізує включений компонент конектора, що потім збере власний двійковий файл колектора:
 
     ```sh
-    builder --config [PATH-TO-CONFIG]/builder-config.yaml
+    ./ocb --config [PATH-TO-CONFIG]/builder-config.yaml
     ```
 
     Це створить двійковий файл колектора в зазначеній теці виводу, яка була у вашому конфігураційному файлі.
 
-4.  Запустіть ваш двійковий файл колектора:
-
-    Тепер ви можете запустити ваш власний двійковий файл колектора:
+    Коли збірка буде успішною, ви повинні побачити вихідні дані, подібні до:
 
     ```sh
-    ./[OUTPUT_PATH]/[NAME-OF-DIST] --config [PATH-TO-CONFIG]/config.yaml
+    ./ocb --config builder-config.yaml
+    2025-07-15T22:10:10.351+0900    INFO    internal/command.go:99  OpenTelemetry Collector Builder {"version": "0.129.0"}
+    2025-07-15T22:10:10.352+0900    INFO    internal/command.go:104 Using config file       {"path": "builder-config.yaml"}
+    2025-07-15T22:10:10.353+0900    INFO    builder/config.go:160   Using go        {"go-executable": "/opt/homebrew/Cellar/go@1.23/1.23.6/bin/go"}
+    2025-07-15T22:10:10.354+0900    INFO    builder/main.go:99      Sources created {"path": "./otelcol-dev"}
+    2025-07-15T22:10:10.516+0900    INFO    builder/main.go:201     Getting go modules
+    2025-07-15T22:10:10.554+0900    INFO    builder/main.go:110     Compiling
+    2025-07-15T22:10:13.369+0900    INFO    builder/main.go:140     Compiled        {"binary": "./otelcol-dev/otelcol-dev-bin"}
+    ```
+
+4.  Запустіть ваш двійковий файл колектора:
+
+    Тепер ви можете запустити ваш власний двійковий файл колектора, використовуючи шлях до двійкового файлу з виводу на кроці 3 (наприклад, `{"binary": "./otelcol-dev/otelcol-dev-bin"}`):
+
+    ```sh
+    ./otelcol-dev/otelcol-dev-bin --config [PATH-TO-CONFIG]/config.yaml
     ```
 
     Імʼя вихідного шляху та імʼя dist детально описані у `build-config.yaml`.
+
+## Тестування вашого конектора {#testing-your-connector}
+
+Тепер, коли ви створили свій приклад конектора, давайте перевіримо його функціональність за допомогою модульних тестів. Модульні тести Go забезпечують краще покриття і їх легше підтримувати.
+
+### Написання модульних тестів {#writing-unit-tests}
+
+Створіть файл тесту `connector_test.go` у теці вашого конектора:
+
+> exampleconnector/connector_test.go
+
+```go
+package exampleconnector
+
+import (
+	"context"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"github.com/vibeus/opentelemetry-collector/confmap/xconfmap"
+	"go.opentelemetry.io/collector/consumer/consumertest"
+	"go.opentelemetry.io/collector/pdata/ptrace"
+	"go.uber.org/zap"
+)
+
+func TestConsumeTraces(t *testing.T) {
+	// Створіть тестового споживача, який фіксує метрики
+	metricsConsumer := &consumertest.MetricsSink{}
+
+	// Створіть конектор з тестовою конфігурацією
+	cfg := &Config{
+		AttributeName: "request.n",
+	}
+
+	connector, err := newConnector(zap.NewNop(), cfg, metricsConsumer)
+	require.NoError(t, err)
+
+	ctx := context.Background()
+
+	t.Run("span with target attribute generates metric", func(t *testing.T) {
+		// Перезавантажити споживача
+		metricsConsumer.Reset()
+
+		// Створити дані трасування з атрибутом target
+		traces := ptrace.NewTraces()
+		resourceSpan := traces.ResourceSpans().AppendEmpty()
+		scopeSpan := resourceSpan.ScopeSpans().AppendEmpty()
+		span := scopeSpan.Spans().AppendEmpty()
+
+		// Додати атрибут target
+		span.Attributes().PutStr("request.n", "test-value")
+		span.Attributes().PutStr("http.method", "GET")
+
+		// Споживати трейси
+		err := connector.ConsumeTraces(ctx, traces)
+		require.NoError(t, err)
+
+		// Переконайтеся, що метрика була згенерована
+		assert.Equal(t, 1, len(metricsConsumer.AllMetrics()))
+	})
+
+	t.Run("span without target attribute does not generate metric", func(t *testing.T) {
+		// Перезавантажити споживача
+		metricsConsumer.Reset()
+
+		// Створити дані трасування без атрибута target
+		traces := ptrace.NewTraces()
+		resourceSpan := traces.ResourceSpans().AppendEmpty()
+		scopeSpan := resourceSpan.ScopeSpans().AppendEmpty()
+		span := scopeSpan.Spans().AppendEmpty()
+
+		// Додати інші атрибути, крім target
+		span.Attributes().PutStr("http.method", "POST")
+		span.Attributes().PutStr("user.id", "12345")
+
+		// Споживати трейси
+		err := connector.ConsumeTraces(ctx, traces)
+		require.NoError(t, err)
+
+		// Переконайтеся, що метрика не була згенерована
+		assert.Equal(t, 0, len(metricsConsumer.AllMetrics()))
+	})
+
+	t.Run("multiple spans with mixed attributes", func(t *testing.T) {
+		// Перезавантажити споживача
+		metricsConsumer.Reset()
+
+		// Створити дані трасування з кількома відрізками
+		traces := ptrace.NewTraces()
+		resourceSpan := traces.ResourceSpans().AppendEmpty()
+		scopeSpan := resourceSpan.ScopeSpans().AppendEmpty()
+
+		// Перший відрізок з атрибутом target
+		span1 := scopeSpan.Spans().AppendEmpty()
+		span1.Attributes().PutStr("request.n", "value1")
+
+		// Другий відрізок без атрибута target
+		span2 := scopeSpan.Spans().AppendEmpty()
+		span2.Attributes().PutStr("other.attr", "value2")
+
+		// Споживати трейси
+		err := connector.ConsumeTraces(ctx, traces)
+		require.NoError(t, err)
+
+		// Має згенерувати рівно одну метрику (тільки з першого відрізка)
+		assert.Equal(t, 1, len(metricsConsumer.AllMetrics()))
+	})
+}
+
+func TestConnectorCapabilities(t *testing.T) {
+	connector := &connectorImp{}
+	capabilities := connector.Capabilities()
+	assert.False(t, capabilities.MutatesData)
+}
+
+func TestCreateDefaultConfig(t *testing.T) {
+	cfg := createDefaultConfig()
+	assert.NotNil(t, cfg)
+
+	exampleConfig := cfg.(*Config)
+	assert.Equal(t, "request.n", exampleConfig.AttributeName)
+}
+
+func TestConfigValidation(t *testing.T) {
+	t.Run("valid config", func(t *testing.T) {
+		cfg := &Config{
+			AttributeName: "test.attribute",
+		}
+		err := xconfmap.Validate(cfg)
+		assert.NoError(t, err)
+	})
+
+	t.Run("invalid config - empty attribute name", func(t *testing.T) {
+		cfg := &Config{
+			AttributeName: "",
+		}
+		err := xconfmap.Validate(cfg)
+		assert.Error(t, err)
+		assert.Contains(t, err.Error(), "attribute_name must not be empty")
+	})
+}
+```
+
+### Запуск тестів {#running-the-tests}
+
+1. **Add test dependencies to your `go.mod`:**
+
+   ```sh
+   go mod tidy
+   ```
+
+2. **Run the tests:**
+
+   ```sh
+   go test -cover -v ./...
+   ```
+
+### Очікувані результати тестування {#expected-test-output}
+
+Після успішного запуску тестів ви побачите вивід, подібний до цього:
+
+```sh
+go test -cover -v ./...
+=== RUN   TestConsumeTraces
+=== RUN   TestConsumeTraces/span_with_target_attribute_generates_metric
+=== RUN   TestConsumeTraces/span_without_target_attribute_does_not_generate_metric
+=== RUN   TestConsumeTraces/multiple_spans_with_mixed_attributes
+--- PASS: TestConsumeTraces (0.00s)
+    --- PASS: TestConsumeTraces/span_with_target_attribute_generates_metric (0.00s)
+    --- PASS: TestConsumeTraces/span_without_target_attribute_does_not_generate_metric (0.00s)
+    --- PASS: TestConsumeTraces/multiple_spans_with_mixed_attributes (0.00s)
+=== RUN   TestConnectorCapabilities
+--- PASS: TestConnectorCapabilities (0.00s)
+=== RUN   TestCreateDefaultConfig
+--- PASS: TestCreateDefaultConfig (0.00s)
+=== RUN   TestConfigValidation
+=== RUN   TestConfigValidation/valid_config
+=== RUN   TestConfigValidation/invalid_config_-_empty_attribute_name
+--- PASS: TestConfigValidation (0.00s)
+    --- PASS: TestConfigValidation/valid_config (0.00s)
+    --- PASS: TestConfigValidation/invalid_config_-_empty_attribute_name (0.00s)
+PASS
+coverage: 90.5% of statements
+ok      github.com/gord02/exampleconnector      0.501s  coverage: 90.5% of statements
+```
+
+Ці модульні тести забезпечують повне покриття функціональності вашого конектора і є рекомендованим підходом для перевірки поведінки компонентів в екосистемі OpenTelemetry Collector.
 
 Додаткові ресурси про OpenTelemetry Collector Builder:
 

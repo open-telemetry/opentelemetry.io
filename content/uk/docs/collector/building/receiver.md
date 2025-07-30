@@ -4,7 +4,7 @@ weight: 20
 aliases: [/docs/collector/trace-receiver/]
 # prettier-ignore
 cSpell:ignore: backendsystem crand debugexporter loggingexporter mapstructure pcommon pdata protogen ptrace rcvr struct structs tailtracer telemetrygen uber receiverfactory бутстрап тікером задіяних викликаючого викликачем викликача
-default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
@@ -1205,7 +1205,7 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
 
 Отже, коли ви подивитеся на сутність `BackendSystem`, вона має поля, що представляють інформацію, повʼязану з [Операційною системою](/docs/specs/semconv/resource/os/) та [Хмарою](/docs/specs/semconv/resource/cloud/), і ми будемо використовувати імена та значення атрибутів, визначені семантичною угодою про ресурси, для представлення цієї інформації на її `Resource`.
 
-Усі імена атрибутів семантичної конвенції ресурсів та добре відомі значення зберігаються у файлі [/semconv/v1.9.0/generated_resource.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/semconv/v1.9.0/generated_resource.go>) у GitHub-проекті Collector'а.
+Усі імена атрибутів семантичної конвенції ресурсів та добре відомі значення зберігаються у файлі [/semconv/v1.9.0/generated_resource.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/semconv/v1.9.0/generated_resource.go) у GitHub-проекті Collector'а.
 
 Створимо функцію для зчитування значень полів з екземпляра `BackendSystem` і запису їх як атрибутів в екземпляр `pcommon.Resource`. Відкрийте файл `tailtracer/model.go` і додайте наступну функцію:
 

@@ -4,7 +4,7 @@ linkTitle: JavaScript
 description:
   Захоплюйте телеметрію з вашого застосунку без змін у вихідному коді
 aliases: [/docs/languages/js/automatic]
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
 
 Інструментування JavaScript без коду надає спосіб інструментувати будь-який застосунок Node.js та захоплювати телеметричні дані з багатьох популярних бібліотек і фреймворків без змін у коді.
@@ -48,7 +48,7 @@ node app.js
 
 ## Підтримувані бібліотеки та фреймворки {#supported-libraries-and-frameworks}
 
-Автоматично інструментуються багато популярних бібліотек Node.js. Для повного списку, дивіться [підтримувані інструментування](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/metapackages/auto-instrumentations-node#supported-instrumentations).
+Автоматично інструментуються багато популярних бібліотек Node.js. Для повного списку, дивіться [підтримувані інструментування](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/auto-instrumentations-node#supported-instrumentations).
 
 ## Розвʼязання проблем {#troubleshooting}
 
