@@ -226,10 +226,10 @@ FQN:
 FQN:
 `io.opentelemetry.instrumentation.spring.autoconfigure.resources.SpringResourceProvider`
 
-| Attribut          | Valeur                                                                                                        |
-| ----------------- | ------------------------------------------------------------------------------------------------------------- |
+| Attribut          | Valeur                                                                                                      |
+| ----------------- | ----------------------------------------------------------------------------------------------------------- |
 | `service.name`    | `spring.application.name` ou `build.name` de `build-info.properties` (voir [Nom du service](#service-name)) |
-| `service.version` | `build.version` de `build-info.properties`                                                                    |
+| `service.version` | `build.version` de `build-info.properties`                                                                  |
 
 ## Nom du service {#service-name}
 
