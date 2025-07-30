@@ -17,7 +17,7 @@ d'observabilité sans avoir à modifier leur code source.
 Pour apprendre comment instrumenter votre code, lisez
 [Instrumentation manuelle](/docs/languages/dotnet/instrumentation).
 
-## Compatibilité
+## Compatibilité {#compatibility}
 
 L'instrumentation Zero-code pour .NET devrait fonctionner avec tous les systèmes
 d'exploitation et versions de
@@ -50,29 +50,29 @@ suivants :
 - [Ubuntu 20.04 LTS x64](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2004-Readme.md)
 - Ubuntu 22.04 LTS ARM64
 
-## Configuration
+## Configuration {#setup}
 
 Pour instrumenter automatiquement une application .NET, téléchargez et exécutez
 le script d'installation pour votre système d'exploitation.
 
-### Linux et macOS
+### Linux et macOS {#linux-and-macos}
 
 Téléchargez et exécutez le script `.sh` :
 
 ```shell
-# Télécharger le script bash
+# Télécharger le script bash {#download-the-bash-script}
 curl -sSfL https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/otel-dotnet-auto-install.sh -O
 
-# Installer les fichiers principaux
+# Installer les fichiers principaux {#install-core-files} {#install-core-files} {#install-core-files}
 sh ./otel-dotnet-auto-install.sh
 
-# Autoriser l'exécution du script d'instrumentation
+# Autoriser l'exécution du script d'instrumentation {#enable-execution-for-the-instrumentation-script}
 chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 
-# Configurer l'instrumentation pour la session shell actuelle
+# Configurer l'instrumentation pour la session shell actuelle {#setup-the-instrumentation-for-the-current-shell-session}
 . $HOME/.otel-dotnet-auto/instrument.sh
 
-# Exécuter votre application avec instrumentation
+# Exécuter votre application avec instrumentation {#run-your-application-with-instrumentation} {#run-your-application-with-instrumentation}
 OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
 ```
 
@@ -87,7 +87,7 @@ brew install coreutils
 
 {{% /alert %}}
 
-### Windows (PowerShell)
+### Windows (PowerShell) {#windows-powershell}
 
 Sur Windows, utilisez le module PowerShell en tant qu'Administrateur.
 
@@ -102,37 +102,37 @@ incluant PowerShell Core (v6.0+) ne sont pas supportées pour le moment.
 {{% /alert %}}
 
 ```powershell
-# PowerShell 5.1 est requis
+# PowerShell 5.1 est requis {#powershell-51-is-required} {#powershell-51-is-required}
 #Requires -PSEdition Desktop
 
-# Télécharger le module
+# Télécharger le module {#download-the-module}
 $module_url = "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/OpenTelemetry.DotNet.Auto.psm1"
 $download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
 Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
 
-# Importer le module pour utiliser ses fonctions
+# Importer le module {#import-the-module} {#import-the-module} pour utiliser ses fonctions {#import-the-module-to-use-its-functions}
 Import-Module $download_path
 
-# Installer les fichiers principaux (méthode en ligne vs hors ligne)
+# Installer les fichiers principaux (méthode en ligne vs hors ligne) {#install-core-files-online-vs-offline-method}
 Install-OpenTelemetryCore
 Install-OpenTelemetryCore -LocalPath "C:\Path\To\OpenTelemetry.zip"
 
-# Configurer l'instrumentation pour la session PowerShell actuelle
+# Configurer l'instrumentation pour la session PowerShell actuelle {#set-up-the-instrumentation-for-the-current-powershell-session}
 Register-OpenTelemetryForCurrentSession -OTelServiceName "MyServiceDisplayName"
 
 # Exécuter votre application avec instrumentation
 .\MyNetApp.exe
 
-# Vous pouvez obtenir des informations d'utilisation en appelant les commandes suivantes
+# Vous pouvez obtenir des informations d'utilisation en appelant les commandes suivantes {#you-can-get-usage-information-by-calling-the-following-commands}
 
-# Lister toutes les commandes disponibles
+# Lister toutes les commandes disponibles {#list-all-available-commands}
 Get-Command -Module OpenTelemetry.DotNet.Auto
 
-# Obtenir les informations d'utilisation d'une commande
+# Obtenir les informations d'utilisation d'une commande {#get-commands-usage-information}
 Get-Help Install-OpenTelemetryCore -Detailed
 ```
 
-## Instrumenter un Service Windows exécutant une application .NET
+## Instrumenter un Service Windows exécutant une application .NET {#instrument-a-windows-service-running-a-net-application}
 
 Utilisez le module PowerShell `OpenTelemetry.DotNet.Auto.psm1` pour configurer
 l'instrumentation automatique pour un Service Windows :
@@ -144,7 +144,7 @@ Import-Module "OpenTelemetry.DotNet.Auto.psm1"
 # Installer les fichiers principaux
 Install-OpenTelemetryCore
 
-# Configurer l'instrumentation de votre Service Windows
+# Configurer l'instrumentation de votre Service Windows {#set-up-your-windows-service-instrumentation}
 Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName" -OTelServiceName "MyServiceDisplayName"
 ```
 
@@ -152,7 +152,7 @@ Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName"
 `Register-OpenTelemetryForWindowsService` effectue un redémarrage du service.
 {{% /alert %}}
 
-### Configuration pour Service Windows
+### Configuration pour Service Windows {#configuration-for-windows-service}
 
 {{% alert title="Note" color="warning" %}} N'oubliez pas de redémarrer le
 Service Windows après avoir effectué des changements. Vous pouvez le faire en
@@ -181,7 +181,7 @@ Var1=Value1
 Var2=Value2
 ```
 
-## Instrumenter une application ASP.NET déployée sur IIS
+## Instrumenter une application ASP.NET déployée sur IIS {#instrument-an-aspnet-application-deployed-on-iis}
 
 {{% alert title="Note" color="warning" %}} Les instructions suivantes
 s'appliquent aux applications .NET Framework. {{% /alert %}}
@@ -196,14 +196,14 @@ Import-Module "OpenTelemetry.DotNet.Auto.psm1"
 # Installer les fichiers principaux
 Install-OpenTelemetryCore
 
-# Configurer l'instrumentation IIS
+# Configurer l'instrumentation IIS {#setup-iis-instrumentation}
 Register-OpenTelemetryForIIS
 ```
 
 {{% alert title="Note" color="warning" %}} `Register-OpenTelemetryForIIS`
 redémarrera IIS. {{% /alert %}}
 
-### Configuration pour les applications ASP.NET
+### Configuration pour les applications ASP.NET {#configuration-for-aspnet-applications}
 
 {{% alert title="Note" color="warning" %}} Les instructions suivantes
 s'appliquent aux applications .NET Framework. {{% /alert %}}
@@ -225,7 +225,7 @@ la configuration via des variables d'environnement.
 avoir effectué des changements de configuration. Vous pouvez le faire en
 exécutant `iisreset.exe`. {{% /alert %}}
 
-### Configuration avancée
+### Configuration avancée {#advanced-configuration}
 
 Vous pouvez ajouter les
 [`<environmentVariables>`](https://docs.microsoft.com/en-us/iis/configuration/system.applicationhost/applicationpools/add/environmentvariables/)
@@ -241,14 +241,14 @@ les Services Windows `W3SVC` et `WAS`.
 variables d'environnement et l'utiliser comme utilisateur du pool
 d'applications. {{% /alert %}}
 
-## Paquet NuGet
+## Paquet NuGet {#nuget-package}
 
 Vous pouvez instrumenter les applications
 [`self-contained`](https://learn.microsoft.com/en-us/dotnet/core/deploying/#publish-self-contained)
 en utilisant les paquets NuGet. Consulter [Paquets NuGet](./nuget-packages) pour
 plus d'informations.
 
-## Instrumenter un conteneur
+## Instrumenter un conteneur {#instrument-a-container}
 
 Pour un exemple d'instrumentation de conteneur Docker, consultez
 [cet exemple](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/tree/main/examples/demo)
@@ -257,12 +257,12 @@ sur GitHub.
 Vous pouvez également utiliser l'
 [Opérateur OpenTelemetry pour Kubernetes](/docs/platforms/kubernetes/operator/).
 
-## Configuration de l'agent
+## Configuration de l'agent {#configuring-the-agent}
 
 Pour voir la gamme complète d'options de configuration, consultez
 [Configuration et paramètres](./configuration).
 
-## Corrélation log vers trace
+## Corrélation log vers trace {#log-to-trace-correlation}
 
 {{% alert title="Note" color="warning" %}} La corrélation automatique log vers
 trace fournie par l'instrumentation Zero-code pour .NET fonctionne actuellement
@@ -300,13 +300,13 @@ Pour plus d'informations, consultez :
 - [SDK .NET OpenTelemetry](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/docs/logs/correlation)
 - [Spécification OpenTelemetry](/docs/specs/otel/logs/data-model#trace-context-fields)
 
-## Bibliothèques et frameworks supportés
+## Bibliothèques et frameworks supportés {#supported-libraries-and-frameworks}
 
 L'instrumentation Zero-code pour .NET supporte une grande variété de
 bibliothèques. Pour une liste complète, voir
 [Instrumentations](./instrumentations).
 
-## Dépannage
+## Dépannage {#troubleshooting}
 
 Pour voir la télémétrie de votre application directement sur la sortie standard,
 ajoutez `console` à la valeur des variables d'environnement suivantes avant de
@@ -319,7 +319,7 @@ lancer votre application :
 Pour les étapes générales de dépannage et les solutions à des problèmes
 spécifiques, consultez la page [Dépannage](./troubleshooting).
 
-## Étapes suivantes
+## Étapes suivantes {#next-steps}
 
 Après avoir configuré l'instrumentation automatique pour votre application ou
 votre service, vous pourriez souhaiter
@@ -327,14 +327,14 @@ votre service, vous pourriez souhaiter
 [instrumentation manuelle](/docs/languages/dotnet/instrumentation) pour
 collecter des données de télémétrie personnalisées.
 
-## Désinstallation
+## Désinstallation {#uninstall}
 
-### Linux et macOS { #uninstall-unix }
+### Linux et macOS { #uninstall-unix } {#linux-and-macos--uninstall-unix-}
 
 Sur Linux et macOS, les étapes d'installation n'affectent que la session shell
 actuelle donc aucune désinstallation explicite n'est requise.
 
-### Windows (PowerShell) { #uninstall-windows }
+### Windows (PowerShell) { #uninstall-windows } {#windows-powershell--uninstall-windows-}
 
 Sur Windows, utilisez le module PowerShell en tant qu'Administrateur.
 
@@ -352,15 +352,15 @@ incluant PowerShell Core (v6.0+) ne sont pas supportées pour le moment.
 # PowerShell 5.1 est requis
 #Requires -PSEdition Desktop
 
-# Importer le module précédemment installé
+# Importer le module précédemment installé {#import-the-previously-installed-module}
 Import-Module "OpenTelemetry.DotNet.Auto.psm1"
 
-# Si IIS était précédemment enregistré, le désenregistrer
+# Si IIS était précédemment enregistré, le désenregistrer {#if-iis-was-previously-registered-unregister-it}
 Unregister-OpenTelemetryForIIS
 
-# Si des services Windows étaient précédemment enregistrés, les désenregistrer
+# Si des services Windows étaient précédemment enregistrés, les désenregistrer {#if-windows-services-were-previously-registered-unregister-them}
 Unregister-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName"
 
-# Finalement, désinstaller l'instrumentation OpenTelemetry
+# Finalement, désinstaller l'instrumentation OpenTelemetry {#finally-uninstall-opentelemetry-instrumentation}
 Uninstall-OpenTelemetryCore
 ```

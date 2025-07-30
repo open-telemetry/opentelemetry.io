@@ -17,13 +17,13 @@ Vous apprendrez comment instrumenter automatiquement une application .NET
 simple, de manière à ce que les [traces][], [métriques][] et [logs][] soient
 émis vers la console.
 
-## Prérequis
+## Prérequis {#prerequisites}
 
 Assurez-vous d'avoir installé localement :
 
 - [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 6+
 
-## Exemple d'application
+## Exemple d'application {#example-application}
 
 L'exemple suivant utilise une application basique
 [API minimale avec ASP.NET Core](https://learn.microsoft.com/aspnet/core/tutorials/min-web-api).
@@ -33,7 +33,7 @@ l'instrumentation Zero-code OpenTelemetry pour .NET.
 Pour des exemples plus élaborés, consultez la page
 [exemples](/docs/languages/dotnet/examples/).
 
-### Créer et lancer un serveur HTTP
+### Créer et lancer un serveur HTTP {#create-and-launch-an-http-server}
 
 Pour commencer, configurez un environnement dans un nouveau répertoire appelé
 `dotnet-simple`. Dans ce répertoire, exécutez la commande suivante :
@@ -108,7 +108,7 @@ dotnet build
 dotnet run
 ```
 
-## Instrumentation
+## Instrumentation {#instrumentation}
 
 Ensuite, vous utiliserez
 l'[instrumentation Zero-code OpenTelemetry pour .NET](../) pour instrumenter
@@ -294,7 +294,7 @@ Value: Sum: 1330.4766000000002 Count: 5 Min: 50.0333 Max: 465.7936
 
 </details>
 
-## Et ensuite ?
+## Et ensuite ? {#what-next}
 
 Pour plus d'informations :
 

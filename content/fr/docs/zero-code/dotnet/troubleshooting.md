@@ -6,12 +6,12 @@ default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 cSpell:ignore: corehost netfx TRACEFILE pjanotti
 ---
 
-## Étapes générales
+## Étapes générales {#general-steps}
 
 Si vous rencontrez un problème avec l'instrumentation Zero-code OpenTelemetry
 pour .NET, il y a des étapes qui peuvent vous aider à comprendre le problème.
 
-### Activer la journalisation détaillée
+### Activer la journalisation détaillée {#enable-detailed-logging}
 
 Les journaux de debug détaillés peuvent vous aider à dépanner les problèmes
 d'instrumentation, et peuvent être joints aux Issues du projet pour faciliter
@@ -31,7 +31,7 @@ Après avoir obtenu les logs, supprimez la variable d'environnement
 `OTEL_LOG_LEVEL`, ou définissez-la à un niveau moins verbeux pour éviter une
 surcharge inutile.
 
-### Activer les traces pour le serveur hôte
+### Activer les traces pour le serveur hôte {#enable-host-tracing}
 
 Les
 [traces du serveur hôte](https://github.com/dotnet/runtime/blob/edd23fcb1b350cb1a53fa409200da55e9c33e99e/docs/design/features/host-tracing.md#host-tracing)
@@ -46,9 +46,9 @@ COREHOST_TRACEFILE=corehost_verbose_tracing.log
 
 Puis redémarrez l'application pour collecter les logs.
 
-## Problèmes courants
+## Problèmes courants {#common-issues}
 
-### Aucune télémétrie n'est produite
+### Aucune télémétrie n'est produite {#no-telemetry-is-produced}
 
 Il n'y a aucune télémétrie générée. Il n'y a aucun log dans
 [l'emplacement des journaux internes](../configuration#internal-logs) de
@@ -61,7 +61,7 @@ La raison la plus courante est que l'application instrumentée n'a pas les
 permissions pour charger les assemblies de l'instrumentation Zero-code
 OpenTelemetry pour .NET.
 
-### Impossible d'installer le paquet 'OpenTelemetry.AutoInstrumentation.Runtime.Native'
+### Impossible d'installer le paquet 'OpenTelemetry.AutoInstrumentation.Runtime.Native' {#could-not-install-package-opentelemetryautoinstrumentationruntimenative}
 
 Lors de l'ajout des paquets NuGet à votre projet, vous obtenez un message
 d'erreur similaire à :
@@ -74,7 +74,7 @@ Les paquets NuGet ne supportent pas les projets `csproj` dans l'ancien format.
 Vous pouvez soit déployer l' instrumentation automatique sur la machine au lieu d'utiliser
 les paquets NuGet, soit migrer votre projet vers le format SDK.
 
-### Problèmes de performance
+### Problèmes de performance {#performance-issues}
 
 Si une utilisation élevée du CPU se produit, assurez-vous que vous n'avez pas
 activé l'instrumentation automatique partout, en définissant les variables
@@ -85,7 +85,7 @@ les variables d'environnement
 [`OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES`](../configuration#global-settings) pour
 exclure certaines applications de l'instrumentation automatique.
 
-### L'outil CLI `dotnet` plante
+### L'outil CLI `dotnet` plante {#dotnet-cli-tool-is-crashing}
 
 Vous obtenez des messages d'erreur similaires à celui ci-dessous lors de
 l'exécution d'une application, par exemple avec `dotnet run` :
@@ -110,7 +110,7 @@ Voir
 [#1744](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1744)
 pour plus d'informations.
 
-### Conflits de versions d'assemblies
+### Conflits de versions d'assemblies {#assembly-version-conflicts}
 
 Vous voyez un message d'erreur similaire à celui ci-dessous :
 
@@ -186,9 +186,9 @@ et
 [#2296](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2296)
 pour plus d'informations.
 
-### Assembly dans AdditionalDeps non trouvé
+### Assembly dans AdditionalDeps non trouvé {#assembly-in-additionaldeps-was-not-found}
 
-#### Symptômes
+#### Symptômes {#symptoms}
 
 Vous obtenez un message d'erreur similaire au suivant :
 
@@ -201,7 +201,7 @@ Cela peut être lié aux problèmes suivants :
 - [#1744](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/1744)
 - [#2181](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2181)
 
-## Autres problèmes
+## Autres problèmes {#other-issues}
 
 Si vous rencontrez un problème non listé sur cette page, voir
 [Étapes générales](#étapes-générales) pour collecter des informations de

@@ -17,7 +17,7 @@ Utilisez les paquets NuGet dans les scénarios suivants :
 1. Résoudre les conflits de versions entre les dépendances utilisées par
    l'application et l'instrumentation Zero-code.
 
-## Limitations
+## Limitations {#limitations}
 
 Bien que les paquets NuGet soient un moyen pratique de déployer
 l'instrumentation Zero-code, ils ne peuvent pas être utilisés dans tous les cas.
@@ -33,7 +33,7 @@ suivantes :
 1. Une application héritée qui ne peut pas être migrée vers le
    [format de projet de type SDK](https://learn.microsoft.com/fr-fr/nuget/resources/check-project-format#check-the-project-format).
 
-## Utilisation des paquets NuGet
+## Utilisation des paquets NuGet {#using-the-nuget-packages}
 
 Pour instrumenter automatiquement votre application avec OpenTelemetry .NET,
 ajoutez le paquet `OpenTelemetry.AutoInstrumentation` à votre projet :
@@ -52,8 +52,8 @@ correspondant :
 ~packages/opentelemetry.autoinstrumentation.buildtasks/1.6.0/build/OpenTelemetry.AutoInstrumentation.BuildTasks.targets(29,5): error : OpenTelemetry.AutoInstrumentation: add a reference to the instrumentation package 'MongoDB.Driver.Core.Extensions.DiagnosticSources' version 1.4.0 or add 'MongoDB.Driver.Core' to the property 'SkippedInstrumentations' to suppress this error.
 ```
 
-Pour résoudre l'erreur, soit ajoutez la bibliothèque d'instrumentation
-recommandée, soit ignorez l'instrumentation du paquet listé en l'ajoutant à la
+Pour résoudre l'erreur, ajoutez la bibliothèque d'instrumentation
+recommandée, ou ignorez l'instrumentation du paquet listé en l'ajoutant à la
 propriété `SkippedInstrumentation`, exemple :
 
 ```csproj

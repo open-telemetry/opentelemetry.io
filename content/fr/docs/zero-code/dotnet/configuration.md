@@ -4,11 +4,11 @@ linkTitle: Configuration
 aliases: [/docs/languages/net/automatic/config]
 weight: 20
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-# prettier-ignore
+# prettier-ignore {#prettier-ignore}
 cSpell:ignore: AZUREAPPSERVICE CLSID CORECLR dylib NETFX OPERATINGSYSTEM PROCESSRUNTIME UNHANDLEDEXCEPTION
 ---
 
-## Méthodes de configuration
+## Méthodes de configuration {#configuration-methods}
 
 Vous pouvez appliquer ou modifier les paramètres de configuration de la manière
 suivante, les variables d'environnement ayant la priorité sur le fichier
@@ -64,7 +64,7 @@ configuration. Cependant, si un paramètre donné le supporte, alors :
   Framework),
 - utilisez `App.config` pour configurer un Service Windows (.NET Framework).
 
-## Paramètres globaux
+## Paramètres globaux {#global-settings}
 
 | Variable d'environnement             | Description                                                                                                                                                                                                                                                          | Valeur par défaut | Statut                                                    |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | --------------------------------------------------------- |
@@ -81,21 +81,21 @@ processus exclus de l'instrumentation par `OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES`
 \[2\] Notez que les applications lancées via `dotnet MyApp.dll` ont le nom de
 processus `dotnet` ou `dotnet.exe`.
 
-## Ressources
+## Ressources {#resources}
 
 Une ressource est la représentation immuable de l'entité produisant la
 télémétrie. Voir
 [Conventions sémantiques des ressources](/docs/specs/semconv/resource/) pour
 plus de détails.
 
-### Attributs de ressource
+### Attributs de ressource {#resource-attributes}
 
 | Variable d'environnement   | Description                                                                                                                                                                                                         | Valeur par défaut                                                                                                                                  | Statut                                              |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
 | `OTEL_RESOURCE_ATTRIBUTES` | Paires clé-valeur à utiliser comme attributs de ressource. Voir [SDK de ressource](/docs/specs/otel/resource/sdk#specifying-resource-information-via-an-environment-variable) pour plus de détails.                 | Voir [Conventions sémantiques des ressources](/docs/specs/semconv/resource/#semantic-attributes-with-sdk-provided-default-value) pour les détails. | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_SERVICE_NAME`        | Définit la valeur de l'attribut de ressource [`service.name`](/docs/specs/semconv/resource/#service). Si `service.name` est fourni dans `OTEL_RESOURCE_ATTRIBUTES`, la valeur de `OTEL_SERVICE_NAME` a la priorité. | Voir [Détection automatique du nom de service](#configuration-methods) sous la section Méthode de configuration.                                   | [Stable](/docs/specs/otel/versioning-and-stability) |
 
-### Détecteurs de ressource
+### Détecteurs de ressource {#resource-detectors}
 
 | Variable d'environnement                         | Description                                                                                                                                                                                                          | Valeur par défaut | Statut                                                    |
 | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | --------------------------------------------------------- |
@@ -113,7 +113,7 @@ Les détecteurs de ressource suivants sont inclus et activés par défaut :
 | `PROCESS`         | Détecteur de processus              | [Documentation du détecteur de ressource Process](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Process-0.1.0-beta.3/src/OpenTelemetry.Resources.Process/README.md)                                           | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 | `PROCESSRUNTIME`  | Détecteur de runtime de processus   | [Documentation du détecteur de ressource Process Runtime](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.ProcessRuntime-0.1.0-beta.2/src/OpenTelemetry.Resources.ProcessRuntime/README.md)                     | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 
-## Propagateurs
+## Propagateurs {#propagators}
 
 Les propagateurs permettent aux applications de partager le contexte. Voir
 [la spécification OpenTelemetry](/docs/specs/otel/context/api-propagators) pour
@@ -123,7 +123,7 @@ plus de détails.
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
 | `OTEL_PROPAGATORS`       | Liste séparée par des virgules de propagateurs. Options supportées : `tracecontext`, `baggage`, `b3multi`, `b3`. Voir [la spécification OpenTelemetry](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.14.0/specification/sdk-environment-variables.md#general-sdk-configuration) pour plus de détails. | `tracecontext,baggage` |
 
-## Échantillonneurs
+## Échantillonneurs {#samplers}
 
 Les échantillonneurs vous permettent de contrôler le bruit potentiel et la
 surcharge introduits par l'instrumentation OpenTelemetry en sélectionnant
@@ -149,7 +149,7 @@ pour plus de détails.
 Probabilité d'échantillonnage, un nombre dans la plage [0..1], ex. "0.25". La
 valeur par défaut est 1.0.
 
-## Exportateurs
+## Exportateurs {#exporters}
 
 Les exportateurs sortent la télémétrie.
 
@@ -159,7 +159,7 @@ Les exportateurs sortent la télémétrie.
 | `OTEL_METRICS_EXPORTER`  | Liste séparée par des virgules d'exportateurs. Options supportées : `otlp`, `prometheus`, `console`, `none`. | `otlp`            | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_LOGS_EXPORTER`     | Liste séparée par des virgules d'exportateurs. Options supportées : `otlp`, `console`, `none`.               | `otlp`            | [Stable](/docs/specs/otel/versioning-and-stability) |
 
-### Exportateur de traces
+### Exportateur de traces {#traces-exporter}
 
 | Variable d'environnement         | Description                                                                        | Valeur par défaut | Statut                                              |
 | -------------------------------- | ---------------------------------------------------------------------------------- | ----------------- | --------------------------------------------------- |
@@ -168,20 +168,20 @@ Les exportateurs sortent la télémétrie.
 | `OTEL_BSP_MAX_QUEUE_SIZE`        | Taille maximale de la file d'attente.                                              | `2048`            | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_BSP_MAX_EXPORT_BATCH_SIZE` | Taille maximale du lot. Doit être inférieure ou égale à `OTEL_BSP_MAX_QUEUE_SIZE`. | `512`             | [Stable](/docs/specs/otel/versioning-and-stability) |
 
-### Exportateur de métriques
+### Exportateur de métriques {#metrics-exporter}
 
 | Variable d'environnement      | Description                                                                          | Valeur par défaut                                                   | Statut                                              |
 | ----------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------- | --------------------------------------------------- |
 | `OTEL_METRIC_EXPORT_INTERVAL` | L'intervalle de temps (en millisecondes) entre le début de deux tentatives d'export. | `60000` pour l'exportateur OTLP, `10000` pour l'exportateur console | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_METRIC_EXPORT_TIMEOUT`  | Temps maximum autorisé (en millisecondes) pour exporter les données.                 | `30000` pour l'exportateur OTLP, aucun pour l'exportateur console   | [Stable](/docs/specs/otel/versioning-and-stability) |
 
-### Exportateur de logs
+### Exportateur de logs {#logs-exporter}
 
 | Variable d'environnement                          | Description                                           | Valeur par défaut | Statut                                                    |
 | ------------------------------------------------- | ----------------------------------------------------- | ----------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_LOGS_INCLUDE_FORMATTED_MESSAGE` | Si le message de log formaté doit être défini ou non. | `false`           | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 
-### OTLP
+### OTLP {#otlp}
 
 **Statut** : [Stable](/docs/specs/otel/versioning-and-stability)
 
@@ -250,7 +250,7 @@ Les variables d'environnement importantes incluent :
     [spécification](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.35.0/specification/metrics/sdk_exporters/otlp.md?plain=1#L48)
     n'est pas supportée.
 
-### Prometheus
+### Prometheus {#prometheus}
 
 **Statut** : [Expérimental](/docs/specs/otel/versioning-and-stability)
 
@@ -278,7 +278,7 @@ Voir la
 [documentation Prometheus Exporter HttpListener](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.5.0-rc.1/src/OpenTelemetry.Exporter.Prometheus.HttpListener).
 pour en savoir plus.
 
-### Zipkin
+### Zipkin {#zipkin}
 
 **Statut** : [Stable](/docs/specs/otel/versioning-and-stability)
 
@@ -294,7 +294,7 @@ Les variables d'environnement importantes incluent :
 | ------------------------------- | ----------- | ------------------------------------ | --------------------------------------------------- |
 | `OTEL_EXPORTER_ZIPKIN_ENDPOINT` | URL Zipkin  | `http://localhost:9411/api/v2/spans` | [Stable](/docs/specs/otel/versioning-and-stability) |
 
-## Paramètres supplémentaires
+## Paramètres supplémentaires {#additional-settings}
 
 | Variable d'environnement                            | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Valeur par défaut | Statut                                                    |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | --------------------------------------------------------- |
@@ -309,7 +309,7 @@ Les variables d'environnement importantes incluent :
 | `OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES`       | Liste séparée par des virgules de noms `System.Diagnostics.Metrics.Meter` supplémentaires à ajouter au compteur au démarrage. Utilisez-le pour capturer des spans instrumentés manuellement.                                                                                                                                                                                                                                                                                                                                                   |                   | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_PLUGINS`                          | Liste séparée par des deux-points de types de plugins d'instrumentation SDK OTel, spécifiés avec le [nom qualifié d'assembly](https://docs.microsoft.com/en-us/dotnet/api/system.type.assemblyqualifiedname?view=net-6.0#system-type-assemblyqualifiedname). _Note : Cette liste doit être séparée par des deux-points car les noms de types peuvent inclure des virgules._ Voir plus d'infos sur comment écrire des plugins à [plugins.md](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/plugins.md). |                   | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 
-## RuleEngine
+## RuleEngine {#ruleengine}
 
 RuleEngine est une fonctionnalité qui valide les assemblies API, SDK,
 Instrumentation, et Exporter OpenTelemetry pour des scénarios non supportés,
@@ -325,7 +325,7 @@ quand l'application redémarre.
 | -------------------------------------- | ------------------ | ----------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_RULE_ENGINE_ENABLED` | Active RuleEngine. | `true`            | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 
-## Profileur .NET CLR
+## Profileur .NET CLR {#net-clr-profiler}
 
 Le CLR utilise les variables d'environnement suivantes pour configurer le
 profileur. Voir
@@ -359,7 +359,7 @@ CORECLR_PROFILER_PATH_32
 CORECLR_PROFILER_PATH_64
 ```
 
-## Runtime .NET
+## Runtime .NET {#net-runtime}
 
 Sur .NET, il est requis de définir la variable d'environnement
 [`DOTNET_STARTUP_HOOKS`](https://github.com/dotnet/runtime/blob/main/docs/design/features/host-startup-hook.md).
@@ -376,7 +376,7 @@ sont utilisées pour atténuer les conflits de version d'assembly dans .NET.
 | `DOTNET_ADDITIONAL_DEPS` | `$INSTALL_DIR/AdditionalDeps`                                        | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 | `DOTNET_SHARED_STORE`    | `$INSTALL_DIR/store`                                                 | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 
-## Logs internes
+## Logs internes {#internal-logs}
 
 Les chemins de répertoire par défaut pour les journaux internes sont :
 

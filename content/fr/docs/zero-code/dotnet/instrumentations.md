@@ -6,14 +6,14 @@ description:
   .NET.
 weight: 10
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-# prettier-ignore
+# prettier-ignore {#prettier-ignore}
 cSpell:ignore: ASPNET ASPNETCORE Bootstrapper DBSTATEMENT ELASTICTRANSPORT ENTITYFRAMEWORKCORE GRPCNETCLIENT HOSTINGSTARTUPASSEMBLIES HTTPCLIENT ILOGGER MASSTRANSIT MYSQLCONNECTOR MYSQLDATA NETRUNTIME npgsql NSERVICEBUS ORACLEMDA RABBITMQ SQLCLIENT STACKEXCHANGEREDIS WCFCLIENT WCFSERVICE
 ---
 
 L'instrumentation Zero-code OpenTelemetry pour .NET supporte une grande variété
 de bibliothèques.
 
-## Instrumentations
+## Instrumentations {#instrumentations}
 
 Toutes les instrumentations sont activées par défaut pour tous les types de
 signaux (traces, métriques et logs).
@@ -38,7 +38,7 @@ le nom sensible à la casse de l'instrumentation.
 | `OTEL_DOTNET_AUTO_LOGS_INSTRUMENTATION_ENABLED`        | Désactive toutes les instrumentations de logs. Remplace `OTEL_DOTNET_AUTO_INSTRUMENTATION_ENABLED`.                                                                                                                         | Héritée de la valeur actuelle de `OTEL_DOTNET_AUTO_INSTRUMENTATION_ENABLED`         | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_LOGS_{0}_INSTRUMENTATION_ENABLED`    | Modèle de configuration pour activer une instrumentation de log spécifique, où `{0}` est l'ID en majuscules de l'instrumentation que vous voulez activer. Remplace `OTEL_DOTNET_AUTO_LOGS_INSTRUMENTATION_ENABLED`.         | Héritée de la valeur actuelle de `OTEL_DOTNET_AUTO_LOGS_INSTRUMENTATION_ENABLED`    | [Expérimental](/docs/specs/otel/versioning-and-stability) |
 
-## Instrumentations de traces
+## Instrumentations de traces {#traces-instrumentations}
 
 **Statut** : [Mixte](/docs/specs/otel/versioning-and-stability). Les traces sont
 stables, mais certaines bibliothèques d'instrumentation sont en statut
@@ -93,7 +93,7 @@ Vous pouvez voir la raison du
 [problème](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4243).
 `System.Data.SqlClient` est supporté à partir de la version 4.8.5.
 
-## Instrumentations de métriques
+## Instrumentations de métriques {#metrics-instrumentations}
 
 **Statut** : [Mixte](/docs/specs/otel/versioning-and-stability). Les métriques
 sont stables, mais certaines instrumentations sont en statut Expérimental en
@@ -120,7 +120,7 @@ en raison du
 [problème](https://github.com/open-telemetry/opentelemetry-dotnet/issues/4243).
 `System.Data.SqlClient` est supporté à partir de la version 4.8.5.
 
-## Instrumentations de logs
+## Instrumentations de logs {#logs-instrumentations}
 
 **Statut** : [Expérimental](/docs/specs/otel/versioning-and-stability).
 
@@ -134,7 +134,7 @@ peut être activée sans utiliser le Profiler .NET CLR en définissant la variab
 d'environnement `ASPNETCORE_HOSTINGSTARTUPASSEMBLIES` à
 `OpenTelemetry.AutoInstrumentation.AspNetCoreBootstrapper`.
 
-### Options d'instrumentation
+### Options d'instrumentation {#instrumentation-options}
 
 | Variable d'environnement                                                          | Description                                                                                                                                                                                                                                                                                                                  | Valeur par défaut | Statut                                                    |
 | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | --------------------------------------------------------- |

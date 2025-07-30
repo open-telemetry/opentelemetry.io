@@ -14,7 +14,7 @@ utilisant à la fois l'instrumentation automatique et manuelle, vous pouvez mieu
 instrumenter la logique et les fonctionnalités de vos applications, clients et
 frameworks.
 
-## Traces
+## Traces {#traces}
 
 Pour créer vos traces personnalisées manuellement, suivez ces étapes :
 
@@ -50,7 +50,7 @@ Pour créer vos traces personnalisées manuellement, suivez ces étapes :
 l'`ActivitySource` `NonRegistered.ManualInstrumentations` n'est pas gérée par
 l'instrumentation Zero-code OpenTelemetry. {{% /alert %}}
 
-## Métriques
+## Métriques {#metrics}
 
 Pour créer vos métriques personnalisées manuellement, suivez ces étapes :
 
@@ -90,6 +90,6 @@ Pour créer vos métriques personnalisées manuellement, suivez ces étapes :
    Vous pouvez définir la valeur soit à `Examples.Service` soit à `Examples.*`,
    ce qui enregistre tout le préfixe.
 
-## Lectures complémentaires
+## Lectures complémentaires {#further-reading}
 
 - [Documentation OpenTelemetry.io pour l'Instrumentation Manuelle .NET](/docs/languages/dotnet/instrumentation#setting-up-an-activitysource)
