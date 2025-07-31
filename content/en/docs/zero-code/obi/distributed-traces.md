@@ -112,7 +112,7 @@ spec:
         - name: OTEL_EBPF_KUBE_METADATA_ENABLE
           value: 'autodetect'
         - name: OTEL_EBPF_CONFIG_PATH
-          value: "/config/obi-config.yml"
+          value: '/config/obi-config.yml'
       securityContext:
         runAsUser: 0
         readOnlyRootFilesystem: true

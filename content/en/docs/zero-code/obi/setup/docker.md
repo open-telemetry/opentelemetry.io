@@ -12,9 +12,10 @@ OBI can run a standalone Docker container that can instrument a process running
 in another container.
 
 Find the latest image of OBI on
-[Docker Hub](https://hub.docker.com/r/otel/ebpf-instrument) with the following name:
+[Docker Hub](https://hub.docker.com/r/otel/ebpf-instrument) with the following
+name:
 
-```
+```text
 docker.io/otel/ebpf-instrument:latest
 ```
 
@@ -23,13 +24,14 @@ The OBI container must be configured in following way:
 - run as a **privileged** container, or as a container with the `SYS_ADMIN`
   capability (but this last option might not work in some container
   environments)
-- Use the `host` PID namespace to allow accessing to the processes in other containers.
+- Use the `host` PID namespace to allow accessing to the processes in other
+  containers.
 
 ## Docker CLI example
 
 For this example you need a container running an HTTP/S or gRPC service. If you
 don't have one, you can use this
-[simple blog engine service written in Go](http://macias.info):
+[simple blog engine service written in Go](https://macias.info):
 
 ```sh
 docker run -p 18443:8443 --name goblog mariomac/goblog:dev

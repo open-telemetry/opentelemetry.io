@@ -108,9 +108,9 @@ describes the diverse configuration options.
 
 ## Providing secrets to the Helm configuration
 
-If you are submitting directly the metrics and traces to Grafana Cloud via the
-OpenTelemetry Endpoint, you need to provide the credentials via the
-`OTEL_EXPORTER_OTLP_HEADERS` environment variable.
+If you are submitting directly the metrics and traces to your observability
+backend via the OpenTelemetry Endpoint, you might need to provide credentials
+via the `OTEL_EXPORTER_OTLP_HEADERS` environment variable.
 
 The recommended way is to store such value in a Kubernetes Secret and then
 specify the environment variable referring to it from the Helm configuration.
@@ -121,7 +121,7 @@ For example, deploy the following secret:
 apiVersion: v1
 kind: Secret
 metadata:
-  name: grafana-secret
+  name: obi-secret
 type: Opaque
 stringData:
   otlp-headers: 'Authorization=Basic ....'
@@ -131,10 +131,10 @@ Then refer to it from the `helm-config.yml` file via the `envValueFrom` section:
 
 ```yaml
 env:
-  OTEL_EXPORTER_OTLP_ENDPOINT: '<...your Grafana Cloud OTLP endpoint URL...>'
+  OTEL_EXPORTER_OTLP_ENDPOINT: '<...your OTLP endpoint URL...>'
 envValueFrom:
   OTEL_EXPORTER_OTLP_HEADERS:
     secretKeyRef:
       key: otlp-headers
-      name: grafana-secret
+      name: obi-secret
 ```

@@ -12,8 +12,7 @@ YAML section: `internal_metrics`
 
 This component reports internal metrics about the auto-instrumentation tool's
 behavior. You can export these metrics using
-[Prometheus](https://prometheus.io/) or
-[OpenTelemetry](https://opentelemetry.io/).
+[Prometheus](https://prometheus.io/) or [OpenTelemetry](/).
 
 To export metrics with Prometheus, set `exporter` to `prometheus` in the
 `internal_metrics` section. Then set `port` in the `prometheus` subsection.
@@ -54,7 +53,7 @@ Set the HTTP port for the Prometheus scrape endpoint. If you leave it unset or
 set it to 0, OBI doesn't open a Prometheus endpoint and doesn't report metrics.
 
 You can use the same value as
-[`prometheus_export.port`](../export-data/#prometheus-http-endpoint) (both
+[`prometheus_export.port`](../export-data/#prometheus-exporter-component) (both
 metric families share the same HTTP server, but use different paths), or use a
 different value (OBI opens two HTTP servers for the different metric families).
 
@@ -64,7 +63,7 @@ different value (OBI opens two HTTP servers for the different metric families).
 
 Set the HTTP query path to fetch Prometheus metrics.
 
-If [`prometheus_export.port`](../export-data/#prometheus-http-endpoint) and
+If [`prometheus_export.port`](../export-data/#prometheus-exporter-component) and
 `internal_metrics.prometheus.port` use the same value, you can set
 `internal_metrics.prometheus.path` to a different value than
 `prometheus_export.path` to keep the metric families separate, or use the same

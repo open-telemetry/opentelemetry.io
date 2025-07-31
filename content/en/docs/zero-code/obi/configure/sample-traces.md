@@ -20,10 +20,10 @@ otel_traces_export:
     arg: '0.1'
 ```
 
-| YAML<p>environment variable</p>       | Description                                                                                                                                                                                                                                                            | Type   | Default                 |
-| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ----------------------- |
-| `name`<p>`OTEL_TRACES_SAMPLER`</p>    | Specifies the name of the sampler. Accepts standard sampler names from the [OpenTelemetry specification](https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_traces_sampler). Refer to [sampler name](#sampler-name) for details. | string | `parentbased_always_on` |
-| `arg`<p>`OTEL_TRACES_SAMPLER_ARG`</p> | Specifies the argument for the selected sampler. Only `traceidratio` and `parentbased_traceidratio` require an argument. Refer to [sampler argument](#sampler-argument) for details.                                                                                   | string | (unset)                 |
+| YAML<p>environment variable</p>       | Description                                                                                                                                                                                                                   | Type   | Default                 |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ | ----------------------- |
+| `name`<p>`OTEL_TRACES_SAMPLER`</p>    | Specifies the name of the sampler. Accepts standard sampler names from the [OpenTelemetry specification](/docs/languages/sdk-configuration/general/#otel_traces_sampler). Refer to [sampler name](#sampler-name) for details. | string | `parentbased_always_on` |
+| `arg`<p>`OTEL_TRACES_SAMPLER_ARG`</p> | Specifies the argument for the selected sampler. Only `traceidratio` and `parentbased_traceidratio` require an argument. Refer to [sampler argument](#sampler-argument) for details.                                          | string | (unset)                 |
 
 ## Sampler name
 

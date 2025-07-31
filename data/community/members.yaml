@@ -971,14 +971,6 @@ maintainers:
       - javascript-triagers
     html_url: https://github.com/pichlermarc
     avatar_url: https://avatars.githubusercontent.com/u/22105064?v=4
-  - name: pjanotti
-    teams:
-      - collector-contrib-triagers
-      - dotnet-instrumentation-approvers
-      - dotnet-instrumentation-maintainers
-      - dotnet-instrumentation-triagers
-    html_url: https://github.com/pjanotti
-    avatar_url: https://avatars.githubusercontent.com/u/5600755?v=4
   - name: plantfansam
     teams:
       - ruby-approvers
@@ -2010,6 +2002,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/6406592?v=4
   - name: vitorvasc
     teams:
+      - docs-approvers
       - docs-pt-approvers
       - docs-triagers
     html_url: https://github.com/vitorvasc
@@ -2199,6 +2192,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/onurtemizkan
     avatar_url: https://avatars.githubusercontent.com/u/4020638?v=4
+  - name: pjanotti
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/pjanotti
+    avatar_url: https://avatars.githubusercontent.com/u/5600755?v=4
   - name: punya
     teams:
       - javascript-contrib-triagers

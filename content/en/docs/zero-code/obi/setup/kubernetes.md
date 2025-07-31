@@ -39,46 +39,46 @@ To enable metadata decoration, you need to:
   permissions for both Pods and ReplicaSets. You can do it by deploying this
   example file:
 
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: obi
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: obi
-rules:
-  - apiGroups: ['apps']
-    resources: ['replicasets']
-    verbs: ['list', 'watch']
-  - apiGroups: ['']
-    resources: ['pods', 'services', 'nodes']
-    verbs: ['list', 'watch']
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: obi
-subjects:
-  - kind: ServiceAccount
+  ```yaml
+  apiVersion: v1
+  kind: ServiceAccount
+  metadata:
     name: obi
-    namespace: default
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
   kind: ClusterRole
-  name: obi
-```
+  metadata:
+    name: obi
+  rules:
+    - apiGroups: ['apps']
+      resources: ['replicasets']
+      verbs: ['list', 'watch']
+    - apiGroups: ['']
+      resources: ['pods', 'services', 'nodes']
+      verbs: ['list', 'watch']
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: obi
+  subjects:
+    - kind: ServiceAccount
+      name: obi
+      namespace: default
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: obi
+  ```
 
-(You need to change the `namespace: default` value if you are deploying OBI in
-another namespace).
+  (You need to change the `namespace: default` value if you are deploying OBI in
+  another namespace).
 
-2. Configure OBI with the `OTEL_EBPF_KUBE_METADATA_ENABLE=true` environment
-   variable, or the `attributes.kubernetes.enable: true` YAML configuration.
+- Configure OBI with the `OTEL_EBPF_KUBE_METADATA_ENABLE=true` environment
+  variable, or the `attributes.kubernetes.enable: true` YAML configuration.
 
-3. Don't forget to specify the `serviceAccountName: obi` property in your OBI
-   Pod (as shown in the later deployment examples).
+- Don't forget to specify the `serviceAccountName: obi` property in your OBI Pod
+  (as shown in the later deployment examples).
 
 Optionally, select which Kubernetes services to instrument in the
 `discovery -> instrument` section of the YAML configuration file. For more
@@ -99,8 +99,6 @@ You can deploy OBI in Kubernetes in two different ways:
 This is the way you can deploy OBI if you want to monitor a given service that
 might not be deployed in all the hosts, so you only have to deploy one OBI
 instance per each service instance.
-
-{{< youtube id="d7clTdz0bA4" >}}
 
 Deploying OBI as a sidecar container has the following configuration
 requirements:
@@ -124,9 +122,10 @@ requirements:
     ```
 
 The following example instruments the `goblog` pod by attaching OBI as a
-container (image available at `otel/ebpf-instrument:latest`). The auto-instrumentation
-tool is configured to forward metrics and traces to OpenTelemetry Collector, which is
-accessible behind the `otelcol` service in the same namespace:
+container (image available at `otel/ebpf-instrument:latest`). The
+auto-instrumentation tool is configured to forward metrics and traces to
+OpenTelemetry Collector, which is accessible behind the `otelcol` service in the
+same namespace:
 
 ```yaml
 apiVersion: apps/v1

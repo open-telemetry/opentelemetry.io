@@ -24,7 +24,7 @@ Source and destination availability zone attributes are disabled by default in
 OBI. To enable it, explicitly add them to the list of included network
 attributes in the OBI YAML configuration:
 
-```
+```yaml
 attributes:
   select:
     obi_network_flow_bytes:

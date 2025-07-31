@@ -129,7 +129,7 @@ The following example illustrates how to calculate the cardinality of the
 example system. Both client and Backend are instrumented by OBI. The other
 components are external:
 
-![Example architecture](/media/docs/beyla/cardinality/cardinality_example.png)
+![Example architecture](./cardinality-example.png)
 
 The pessimistic calculation would be:
 
@@ -291,10 +291,9 @@ subset of the total routes.
 ## Case study: cardinality of OpenTelemetry Demo
 
 In this section we calculate the cardinality of the
-[OpenTelemetry Demo](https://opentelemetry.io/docs/demo/architecture/) deployed
-in a local cluster of 3 nodes. We disabled all the bundled OpenTelemetry
-instrumentation in the example applications, and deployed OBI to perform the
-instrumentation.
+[OpenTelemetry Demo](/docs/demo/architecture/) deployed in a local cluster of 3
+nodes. We disabled all the bundled OpenTelemetry instrumentation in the example
+applications, and deployed OBI to perform the instrumentation.
 
 ### Measure application-level metrics
 

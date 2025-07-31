@@ -11395,10 +11395,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-07-07T22:46:40.456342004Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/metrics/semantic_conventions/http-metrics.md": {
-    "StatusCode": 404,
-    "LastSeen": "2025-07-24T22:11:21.357127+02:00"
-  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/trace/api.md#spankind": {
     "StatusCode": 200,
     "LastSeen": "2025-03-21T21:16:12.345Z"
@@ -16198,6 +16194,10 @@
   "https://hub.docker.com/r/grafana/beyla": {
     "StatusCode": 200,
     "LastSeen": "2025-07-24T21:20:17.987768+02:00"
+  },
+  "https://hub.docker.com/r/otel/ebpf-instrument": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-28T15:15:42.999277+02:00"
   },
   "https://hub.docker.com/r/otel/weaver": {
     "StatusCode": 200,
