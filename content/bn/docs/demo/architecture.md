@@ -1,5 +1,5 @@
 ---
-title: নমুনা আর্কিটেকচার
+title: ডেমো আর্কিটেকচার
 linkTitle: আর্কিটেকচার
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
