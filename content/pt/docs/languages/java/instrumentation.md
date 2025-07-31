@@ -8,7 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: Ecossistema de Instrumentação no OpenTelemetry Java
-default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
+default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b # patched
 cSpell:ignore: logback
 ---
 

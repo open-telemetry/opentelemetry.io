@@ -3,25 +3,23 @@
 
 {{ if $noIntegrations }}
 
-<div class="alert alert-secondary" role="alert">
-<div class="h4 alert-title">Help wanted!</div>
+{{% alert title="Help wanted!" color=secondary %}}
 
-As of today, we don't know about any {{ $name }} library that has
-OpenTelemetry natively integrated. If you know about such a library,
-[let us know][].
+As of today, we don't know about any {{ $name }} library that has OpenTelemetry
+natively integrated. If you know about such a library, [let us know][].
 
-</div>
+{{% /alert %}}
 
 {{ end }}
 
 {{ if not $noIntegrations }}
 
-<div class="alert alert-info" role="alert">
+{{% alert color=info %}}
 
-If you know a {{ $name }} library that has OpenTelemetry natively
-integrated, [let us know][].
+If you know a {{ $name }} library that has OpenTelemetry natively integrated,
+[let us know][].
 
-</div>
+{{% /alert %}}
 
 {{ end }}
 
