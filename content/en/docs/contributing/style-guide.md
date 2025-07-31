@@ -65,9 +65,9 @@ OpenTelemetry website, see the
 [`.cspell.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml)
 file.
 
-If `cspell` indicates an `Unknown word` error, verify if you wrote that word
-correctly. If so, add this word to the `cSpell:ignore` section at the top of
-your file. If no such section exists, you can add it to the front matter of a
+If `cspell` indicates an "Unknown word" error, check whether you wrote the word
+correctly. If so, add the word to the `cSpell:ignore` section at the top of your
+file. If no such section exists, you can add it to the front matter of a
 Markdown file:
 
 ```markdown
