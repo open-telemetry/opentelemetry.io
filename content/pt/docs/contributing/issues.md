@@ -8,7 +8,7 @@ _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+i
 cSpell:ignore: prepopulated
 ---
 
-## Corrigindo um problema existente
+## Corrigindo uma _issue_ existente {#fixing-an-existing-issue}
 
 Uma das melhores formas de contribuir para a melhoria da documentação do OTel é corrigir um problema já existente.
 
