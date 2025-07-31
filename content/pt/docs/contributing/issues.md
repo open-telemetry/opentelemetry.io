@@ -58,7 +58,7 @@ Se você tem uma ideia para um novo conteúdo ou funcionalidade, mas não sabe e
 
 ### Como enviar boas issues {#how-to-file-great-issues}
 
-Ao criar uma issue, considere as seguintes boas práticas:
+Ao criar uma _issue_, considere as seguintes boas práticas:
 
 - Forneça uma descrição clara do problema. Explique exatamente o que está incorreto, desatualizado, ausente ou pode ser melhorado.
 - Descreva o impacto específico do problema para os usuários.
