@@ -42,7 +42,7 @@ Se você encontrar um erro ou quiser sugerir melhorias em conteúdos existentes,
 
 Após enviar a issue, acompanhe as atualizações ou ative as notificações do GitHub. Pode levar alguns dias até que mantenedores e aprovadores respondam. Revisores e membros da comunidade podem fazer perguntas antes de agir sobre sua issue.
 
-## Sugerindo novos conteúdos ou funcionalidades
+## Sugerindo novos conteúdos ou funcionalidades {#suggesting-new-content-or-features}
 
 Se você tem uma ideia para um novo conteúdo ou funcionalidade, mas não sabe exatamente onde ela se encaixa, ainda assim pode abrir uma issue. Também é possível relatar bugs ou vulnerabilidades de segurança.
 
