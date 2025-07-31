@@ -8,7 +8,7 @@
     "_build": "npm run _hugo -- -e dev --buildDrafts --buildFuture --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
     "__check:format": "./scripts/npx-helper.sh prettier",
     "_check:format:any": "npm run __check:format -- --check --ignore-path ''",
-    "_check:format:ja+zh": "npm run _check:format:nowrap -- content/ja content/uk content/zh",
+    "_check:format:ja+uk+zh": "npm run _check:format:nowrap -- content/ja content/uk content/zh",
     "_check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve",
     "_check:format": "npm run __check:format -- --check .",
     "_check:links--md": "npx markdown-link-check --config .markdown-link-check.json *.md",
