@@ -32,7 +32,7 @@ Uma das melhores formas de contribuir para a melhoria da documentação do OTel 
 6. Trabalhe na correção do problema. Caso enfrente dificuldades, avise os mantenedores.
 7. Quando estiver pronto, [submeta seu trabalho via pull request](../pull-requests) (PR).
 
-## Reportando um problema
+## Reportando um problema {#reporting-an-issue}
 
 Se você encontrar um erro ou quiser sugerir melhorias em conteúdos existentes, abra uma nova issue.
 
