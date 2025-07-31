@@ -2,7 +2,7 @@
 title: Загальна конфігурація SDK
 linkTitle: Загальна
 aliases: [general-sdk-configuration]
-default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 cSpell:ignore: ottrace
 ---
 
@@ -140,7 +140,7 @@ export OTEL_TRACES_SAMPLER_ARG="0.5"
 
 - `"otlp"`: [OTLP][]
 - `"prometheus"`:
-  [Prometheus](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md)
+  [Prometheus](https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md)
 - `"console"`: [Стандартний вивід](/docs/specs/otel/metrics/sdk_exporters/stdout/)
 - `"none"`: Немає автоматично налаштованого експортера для метрик.
 

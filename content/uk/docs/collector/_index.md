@@ -3,7 +3,7 @@ title: Колектор
 description: Незалежний від постачальника спосіб отримання, обробки та експорту телеметричних даних.
 aliases: [./about]
 cascade:
-  vers: 0.130.1
+  vers: 0.131.0
 weight: 270
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
