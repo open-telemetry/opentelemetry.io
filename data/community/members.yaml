@@ -2002,6 +2002,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/6406592?v=4
   - name: vitorvasc
     teams:
+      - docs-approvers
       - docs-pt-approvers
       - docs-triagers
     html_url: https://github.com/vitorvasc
