@@ -54,7 +54,7 @@ Se você tem uma ideia para um novo conteúdo ou funcionalidade, mas não sabe e
 
 4. Preencha o template.
 
-5. Envie a issue.
+5. Envie a _issue_.
 
 ### Como enviar boas issues {#how-to-file-great-issues}
 
