@@ -2,7 +2,7 @@
 title: Configurações gerais de SDK
 linkTitle: Geral
 aliases: [general-sdk-configuration]
-default_lang_commit: 1e4970e9193c8af1d1f9b86901b13492071aecc7
+default_lang_commit: 1e4970e9193c8af1d1f9b86901b13492071aecc7 # patched
 cSpell:ignore: ottrace
 ---
 
@@ -170,7 +170,7 @@ Os valores aceitos para `OTEL_METRICS_EXPORTER` são:
 
 - `"otlp"`: [OTLP][]
 - `"prometheus"`:
-  [Prometheus](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md)
+  [Prometheus](https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md)
 - `"console"`: [Saída Padrão](/docs/specs/otel/metrics/sdk_exporters/stdout/)
 - `"none"`: Nenhum exportador de métricas configurado automaticamente.
 

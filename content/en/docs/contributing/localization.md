@@ -45,7 +45,6 @@ guidance offered in this section.
 - **Translate**:
   - **File or directory** names of resources in this repository
   - [Links](#links), this includes [heading IDs](#headings) [^*]
-  - Markdown [link definition labels](#link-labels)
   - Inline code-spans like these: `inline code example`
   - Markdown elements marked as `notranslate` (usually as a CSS class), in
     particular for [headings](#headings)
@@ -96,8 +95,11 @@ path would become `/ja/docs/some-page` when rendered from a Japanese page.
 
 ### Link definition labels {#link-labels}
 
-Do **not** translate [labels] of Markdown [link definitions][]. Instead, rewrite
-the label as translated link text. For example, consider the following Markdown:
+Locale authors can choose or not to translate [labels] of Markdown [link
+definitions][]. If you choose to keep the English label, then follow the
+guidance given in this section.
+
+For example, consider the following Markdown:
 
 ```markdown
 [Hello], world! Welcome to the [OTel website][].
