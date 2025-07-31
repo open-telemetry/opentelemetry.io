@@ -399,18 +399,27 @@ If no dictionary is available, then skip the rest of this subsection. Otherwise:
 - Prettier support: if `LANG_ID` isn't well supported by Prettier, add ignore
   rules to `.prettierignore`
 
-## English-language maintainer guidance
+## Approver and maintainer guidance
 
-### Avoid PRs with doc changes across locales {#prs-should-not-span-locales}
+### PRs with semantic changes should not span locales {#prs-should-not-span-locales}
 
-Contributors should avoid submitting PRs that make doc changes spanning locales.
-The only exception is documented in the next section.
+Approvers should ensure that PRs making **semantic** changes to doc pages do not
+span multiple locales. A semantic change is one that impacts the _meaning_ of
+the page content. Our docs [localization process](.) ensures that locale
+approvers will, in time, review the English-language edits to determine if the
+changes are appropriate for their locale, and how best to incorporate them into
+their locale. If changes are necessary, the locale approvers will make them via
+their own locale-specific PRs.
 
-### When link checking fails for non-English pages {#patch-locale-links}
+### Purely editorial changes across locales are OK {#patch-locale-links}
 
-Sometimes changes to English language documentation can result in link-check
-failures for non-English locales. This happens when documentation pages are
-moved or deleted.
+**Purely editorial** page updates such as fixing broken link paths can span
+locales. A purely editorial change is one that **does not** impact the meaning
+of the page content.
+
+For example, sometimes changes to English language documentation can result in
+link-check failures for non-English locales. This happens when documentation
+pages are moved or deleted.
 
 In such situations, make the following updates to each non-English page that has
 a path that fails link checking:
@@ -420,6 +429,14 @@ a path that fails link checking:
   `default_lang_commit` front matter line.
 - Make no other changes to the file.
 - Rerun `npm run check:links` and ensure that no link failures remain.
+
+When an _external link_ to a **moved** (but otherwise semantically
+**unchanged**) resource (such as a GitHub file) results in a link-check failure,
+consider:
+
+- Removing the broken link from the refcache
+- Updating the link across all locales using the method described earlier in
+  this section.
 
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
