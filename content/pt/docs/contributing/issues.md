@@ -56,7 +56,7 @@ Se você tem uma ideia para um novo conteúdo ou funcionalidade, mas não sabe e
 
 5. Envie a issue.
 
-### Como escrever boas issues
+### Como enviar boas issues {#how-to-file-great-issues}
 
 Ao criar uma issue, considere as seguintes boas práticas:
 
