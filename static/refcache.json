@@ -14811,14 +14811,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T13:35:17.361251-05:00"
   },
-  "https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md": {
-    "StatusCode": 206,
-    "LastSeen": "2025-01-16T13:34:58.350786-05:00"
-  },
-  "https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md#text-based-format": {
-    "StatusCode": 200,
-    "LastSeen": "2025-02-06T02:21:12.345Z"
-  },
   "https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md": {
     "StatusCode": 206,
     "LastSeen": "2025-06-05T10:38:34.828266434Z"
