@@ -64,6 +64,6 @@ Ao criar uma _issue_, considere as seguintes boas práticas:
 - Descreva o impacto específico do problema para os usuários.
 - Limite o escopo da _issue_ para uma quantia razoável. Problemas com escopo muito amplo devem ser divididos em _issues_ menores. Por exemplo, "Corrigir a documentação de segurança" é vago demais; "Adicionar detalhes ao tópico 'Restringindo o acesso à rede'" é específico o suficiente para ser acionável.
 - Pesquise entre as _issues_ existentes para ver se não há outra relacionada ou semelhante a sua nova _issue_.
-- Se a nova issue estiver relacionada a outra issue ou pull request, faça referência usando a URL completa ou o número precedido por `#`, por exemplo: `Introduzido por #987654`.
+- Se a nova _issue_ estiver relacionada a outra _issue_ ou _pull request_, faça referência usando a URL completa ou o número precedido por `#`, por exemplo: `Introduzido por #987654`.
 - Siga o [Código de Conduta](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md). Respeite os demais colaboradores. Comentários como "A documentação está péssima" não são úteis nem apropriados.
 
