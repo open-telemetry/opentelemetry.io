@@ -3,7 +3,7 @@ title: 前提条件
 description: コントリビュートするために、 以下の技術とツールに精通している必要があります。
 aliases: [requirements]
 weight: 1
-default_lang_commit: 24146bd1368e4c6082c7d6077efd29dba0d51055
+default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
 ---
 
 このリポジトリにコントリビュートするために、 以下の技術とツールに精通している必要があります。
@@ -30,6 +30,6 @@ CLA への署名を終えていないコントリビューターからのプル�
 
 役割や期待事項を含む OpenTelemetry コミュニティの一般的なガイドラインは、[OpenTelemetry New Contributor Guide][NCG] を参照してください。
 
-[CLA]: https://docs.linuxfoundation.org/lfx/easycla/contributors
+[CLA]: https://docs.linuxfoundation.org/lfx/easycla/v2-current/contributors
 [CoC]: https://github.com/cncf/foundation/blob/main/code-of-conduct.md
 [NCG]: https://github.com/open-telemetry/community/blob/main/guides/contributor/README.md

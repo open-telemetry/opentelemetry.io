@@ -6,13 +6,14 @@ what-next: >
   これで、[ビルド](#build)、[サーブ](#serve)、Web サイトファイルの更新を行う準備が整いました。
   変更の提出方法の詳細については、[コンテンツの提出][Submitting content]を参照してください。
 weight: 60
-default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
+default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
 ---
 
 {{% alert title="サポートされているビルド環境" color=warning %}}
 
 ビルドは Linux ベースの環境と macOS で公式にサポートされています。
 [DevContainers](#devcontainers) などの他の環境は、ベストエフォートベースでサポートされています。
+Windows でのビルドについては、Windows Subsystem for Linux コマンドライン [WSL][windows-wsl] を使用して Linux と同様の手順に従うことができます。
 
 {{% /alert %}}
 
@@ -63,6 +64,7 @@ GitHub [Codespaces] で作業するには、下記にしたがってください
     ```
 
     Windows で [インストールする場合][nodejs-win] は、[nvm-windows] を使用してください。
+    `cmd` を使用し、Windows PowerShell を使用しないことをお勧めします。
 
     ```cmd
     nvm install lts && nvm use lts
@@ -155,6 +157,7 @@ Web サイトは以下のコンテンツを基に構築されます。
 [nodejs-win]: https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows
 [nvm]: https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
+[windows-wsl]: https://learn.microsoft.com/en-us/windows/wsl/install
 
 <!-- markdownlint-disable link-image-reference-definitions -->
 
