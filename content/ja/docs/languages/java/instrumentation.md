@@ -68,7 +68,7 @@ Spring Bootスターターは、Springの自動構成を活用して[ライブ�
 OpenTelemetryは、[API](../api/)を使用してネイティブ計装を追加することをライブラリ作成者に推奨しています。
 長期的には、ネイティブ計装が標準になることを期待しており、[opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)でOpenTelemetryによって維持される計装は、ギャップを埋める一時的な手段と見なしています。
 
-{{% docs/languages/native-libraries "java" %}}
+{{% docs/languages/native-libraries %}}
 
 ### 手動計装 {#manual-instrumentation}
 
