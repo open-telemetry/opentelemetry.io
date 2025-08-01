@@ -17,13 +17,13 @@ De nombreux aspects du comportement de l'auto-instrumentation peuvent être
 configurés selon vos besoins, tels que les détecteurs de ressources, les
 exportateurs, les en-têtes de propagation du contexte de trace, et plus encore.
 
-## Configuration du SDK et des exportateurs
+## Configuration du SDK et des exportateurs {#sdk-and-exporter-configuration}
 
 La
 [configuration du SDK et des exportateurs](/docs/languages/sdk-configuration/)
 peut être définie en utilisant des variables d'environnement.
 
-## Configuration des détecteurs de ressources du SDK
+## Configuration des détecteurs de ressources du SDK {#sdk-resource-detector-configuration}
 
 Par défaut, le module activera tous les détecteurs de ressources du SDK. Vous
 pouvez utiliser la variable d'environnement `OTEL_NODE_RESOURCE_DETECTORS` pour
@@ -49,14 +49,14 @@ définir :
 OTEL_NODE_RESOURCE_DETECTORS=env,host
 ```
 
-## Exclure des bibliothèques d'instrumentation
+## Exclure des bibliothèques d'instrumentation {#excluding-instrumentation-libraries}
 
 Par défaut, toutes les
 [bibliothèques d'instrumentation supportées](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations)
 sont activées, mais vous pouvez utiliser des variables d'environnement pour
 activer ou désactiver des instrumentations spécifiques.
 
-### Activer des instrumentations spécifiques
+### Activer des instrumentations spécifiques {#enable-specific-instrumentations}
 
 Utilisez la variable d'environnement `OTEL_NODE_ENABLED_INSTRUMENTATIONS` pour
 activer seulement certaines instrumentations en fournissant une liste séparée
@@ -73,7 +73,7 @@ et
 OTEL_NODE_ENABLED_INSTRUMENTATIONS="http,express"
 ```
 
-### Désactiver des instrumentations spécifiques
+### Désactiver des instrumentations spécifiques {#disable-specific-instrumentations}
 
 Utilisez la variable d'environnement `OTEL_NODE_DISABLED_INSTRUMENTATIONS` pour
 conserver la liste complètement activée et désactiver seulement certaines
@@ -82,7 +82,7 @@ bibliothèques d'instrumentation sans le préfixe
 `@opentelemetry/instrumentation-`.
 
 Par exemple, pour désactiver seulement les instrumentations
-[@opentelemetry/instrumentation-fs](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-fs)
+[@opentelemetry/instrumentation-fs](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-fs)
 et
 [@opentelemetry/instrumentation-grpc](https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-instrumentation-grpc)
 :

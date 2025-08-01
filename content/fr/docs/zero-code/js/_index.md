@@ -12,7 +12,7 @@ L'instrumentation Zero-code pour JavaScript fournit un moyen d'instrumenter
 toute application Node.js et de capturer les données de télémétrie de nombreuses
 bibliothèques et frameworks populaires sans aucune modification de code.
 
-## Configuration
+## Configuration {#setup}
 
 Exécutez les commandes suivantes pour installer les paquets appropriés.
 
@@ -24,7 +24,7 @@ npm install --save @opentelemetry/auto-instrumentations-node
 Les paquets `@opentelemetry/api` et `@opentelemetry/auto-instrumentations-node`
 installent l'API, le SDK et les outils d'instrumentation.
 
-## Configuration du module
+## Configuration du module {#configuring-the-module}
 
 Le module est hautement configurable.
 
@@ -56,13 +56,13 @@ pour les désactiver complètement.
 Pour voir la gamme complète des options de configuration, consultez
 [Configuration du Module](configuration).
 
-## Bibliothèques et frameworks supportés
+## Bibliothèques et frameworks supportés {#supported-libraries-and-frameworks}
 
 Un certain nombre de bibliothèques Node.js populaires sont auto-instrumentées.
 Pour la liste complète, consultez la page
 [instrumentation supportée](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/metapackages/auto-instrumentations-node#supported-instrumentations).
 
-## Dépannage
+## Dépannage {#troubleshooting}
 
 Vous pouvez définir le niveau de log en définissant la variable d'environnement
 `OTEL_LOG_LEVEL` à l'une des valeurs suivantes :
