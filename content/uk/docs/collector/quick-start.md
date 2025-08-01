@@ -28,8 +28,7 @@ OpenTelemetry Collector отримує [трейси](/docs/concepts/signals/tra
   export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
   ```
 
-[^1]:
-    Для отримання додаткової інформації дивіться [Ваша перша програма](https://go.dev/doc/code#Command).
+[^1]: Для отримання додаткової інформації дивіться [Ваша перша програма](https://go.dev/doc/code#Command).
 
 ## Налаштування середовища {#set-up-the-environment}
 
@@ -127,6 +126,5 @@ OpenTelemetry Collector отримує [трейси](/docs/concepts/signals/tra
 [gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
 [logs]: /docs/concepts/signals/logs/
 [metrics]: /docs/concepts/signals/metrics/
-[telemetrygen]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen
+[telemetrygen]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen
 [traces]: /docs/concepts/signals/traces/

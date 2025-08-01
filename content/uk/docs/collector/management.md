@@ -253,13 +253,10 @@ $ cat ./storage/agent.log
 [configuration]: /docs/collector/configuration/
 [Open Agent Management Protocol]: https://github.com/open-telemetry/opamp-spec
 [OpAMP specification]: /docs/specs/opamp/
-[opamp-in-otel-collector]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/opampsupervisor/specification/README.md
+[opamp-in-otel-collector]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/cmd/opampsupervisor/specification/README.md
 [opamp-go]: https://github.com/open-telemetry/opamp-go
-[opamp-supervisor]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor
-[otelcolcontrib]:
-  https://github.com/open-telemetry/opentelemetry-collector-releases/releases
+[opamp-supervisor]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor
+[otelcolcontrib]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases
 [tags]: https://github.com/open-telemetry/opentelemetry-collector-releases/tags
 [blog-opamp-status]: /blog/2023/opamp-status/
 [blog-opamp-service-telemetry]: /blog/2022/opamp/

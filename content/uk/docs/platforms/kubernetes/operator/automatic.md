@@ -2,8 +2,7 @@
 title: Інʼєкція Автоінструментування
 linkTitle: Автоінструментування
 weight: 11
-description:
-  Реалізація автоінструментування за допомогою OpenTelemetry Operator.
+description: Реалізація автоінструментування за допомогою OpenTelemetry Operator.
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 # prettier-ignore
 cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA
@@ -404,8 +403,7 @@ spec:
   python:
     env:
       - name: OTEL_PYTHON_DISABLED_INSTRUMENTATIONS
-        value:
-          <comma-separated list of package names to exclude from
+        value: <comma-separated list of package names to exclude from
           instrumentation>
 ```
 
@@ -586,7 +584,7 @@ kubectl get events -n <your_app_namespace>
 
 - **Чи автоінструментування обрано для відповідної мови?**
   - Наприклад, при інструментуванні Python застосунку, переконайтеся, що анотація не вказує `instrumentation.opentelemetry.io/inject-java: "true"` замість цього.
-  - Для **Deno** переконайтеся, що ви використовуєте  `instrumentation.opentelemetry.io/inject-sdk: "true"` анотацію, а не а не анотацію, що містить рядок `deno`.
+  - Для **Deno** переконайтеся, що ви використовуєте `instrumentation.opentelemetry.io/inject-sdk: "true"` анотацію, а не а не анотацію, що містить рядок `deno`.
 - **Чи анотація автоінструментування знаходиться в правильному місці?** При визначенні `Deployment`, анотації можна додати в одне з двох місць: `spec.metadata.annotations` та `spec.template.metadata.annotations`. Анотація автоінструментування повинна бути додана до `spec.template.metadata.annotations`, інакше вона не працюватиме.
 
 ### Чи правильно налаштована точка доступу автоінструментування? {#was-the-auto-instrumentation-endpoint-configured-correctly}

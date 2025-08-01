@@ -13,17 +13,14 @@ cSpell:ignore: traceidratiobased
 
 Зокрема, стандартний семплер є композицією [ParentBased][] та [ALWAYS_ON][], що гарантує, що кореневий відрізок у трейсі завжди семплюється, і що всі дочірні відрізки поважають прапорець семплювання свого пращура для прийняття рішення про семплювання. Це гарантує, що всі відрізки у трейсі стандартно семплюються.
 
-[ParentBased]:
-  https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/ParentBased
-[ALWAYS_ON]:
-  https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers
+[ParentBased]: https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/ParentBased
+[ALWAYS_ON]: https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers
 
 ## Семплер TraceIdRatioBased {#traceidratiobased-sampler}
 
 Найпоширеніший головний семплер - це семплер [TraceIdRatioBased][]. Він детерміновано семплює відсоток трейсів, який ви передаєте як параметр.
 
-[TraceIdRatioBased]:
-  https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased
+[TraceIdRatioBased]: https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased
 
 ### Змінні середовища {#environment-variables}
 

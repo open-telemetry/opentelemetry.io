@@ -104,7 +104,7 @@ def child_work
 end
 ```
 
-У наведеному вище прикладі створюються два відрізки, з іменами `parent` і `child`,  де `child` вкладений у `parent`. Якщо ви переглянете трейс з цими відрізками в інструменті візуалізації трейсів, `child` буде вкладений у `parent`.
+У наведеному вище прикладі створюються два відрізки, з іменами `parent` і `child`, де `child` вкладений у `parent`. Якщо ви переглянете трейс з цими відрізками в інструменті візуалізації трейсів, `child` буде вкладений у `parent`.
 
 ### Додавання атрибутів до відрізка {#add-attributes-to-a-span}
 
@@ -304,8 +304,6 @@ API та SDK для логів наразі розробляються.
 Вам також потрібно буде налаштувати відповідний експортер для [експорту ваших телеметричних даних](/docs/languages/ruby/exporters) до одного або більше бекендів телеметрії.
 
 [глосарій]: /docs/concepts/glossary/
-[propagators]:
-  https://github.com/open-telemetry/opentelemetry-ruby/tree/main/propagator
-[auto-instrumentation]:
-  https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation
+[propagators]: https://github.com/open-telemetry/opentelemetry-ruby/tree/main/propagator
+[auto-instrumentation]: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation
 [semconv-spec]: /docs/specs/semconv/general/trace/

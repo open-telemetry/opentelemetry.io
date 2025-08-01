@@ -24,5 +24,4 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 
 {{% include keep-up-to-date.md користувачів %}}
 
-[adopters list]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml
+[adopters list]: https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml

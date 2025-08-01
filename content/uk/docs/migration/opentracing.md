@@ -103,12 +103,9 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 
 [.net]: /docs/languages/dotnet/shim/
 [go]: https://pkg.go.dev/go.opentelemetry.io/otel/bridge/opentracing
-[java]:
-  https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim
+[java]: https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim
 [javascript]: https://www.npmjs.com/package/@opentelemetry/shim-opentracing
 [opentracing]: https://opentracing.io
 [ot_spec]: /docs/specs/otel/compatibility/opentracing/
-[python]:
-  https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html
-[c++]:
-  https://github.com/open-telemetry/opentelemetry-cpp/tree/main/opentracing-shim
+[python]: https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html
+[c++]: https://github.com/open-telemetry/opentelemetry-cpp/tree/main/opentracing-shim

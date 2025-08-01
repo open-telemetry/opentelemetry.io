@@ -335,15 +335,9 @@ sdk.start();
 
 {{% /tab %}} {{< /tabpane >}}
 
-[політики безпеки вмісту]:
-  https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/
-[заголовки cross-origin resource sharing]:
-  https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-[opentelemetry collector exporter з grpc]:
-  https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc
-[opentelemetry collector exporter з http/protobuf]:
-  https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto
-[opentelemetry collector exporter з http/json]:
-  https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http
-[функцію]:
-  https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md
+[політики безпеки вмісту]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/
+[заголовки cross-origin resource sharing]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+[opentelemetry collector exporter з grpc]: https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc
+[opentelemetry collector exporter з http/protobuf]: https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto
+[opentelemetry collector exporter з http/json]: https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http
+[функцію]: https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md

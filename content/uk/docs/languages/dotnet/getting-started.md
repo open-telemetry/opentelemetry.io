@@ -257,6 +257,5 @@ Value: Sum: 1330.4766000000002 Count: 5 Min: 50.0333 Max: 465.7936
 [трейси]: /docs/concepts/signals/traces/
 [метрики]: /docs/concepts/signals/metrics/
 [логи]: /docs/concepts/signals/logs/
-[експортер]:
-  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#exporters
+[експортер]: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#exporters
 [ручне інструментування]: ../instrumentation

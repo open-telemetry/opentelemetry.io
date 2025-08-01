@@ -10,18 +10,18 @@ cSpell:ignore: logback webflux webmvc бінів
 
 Інструментування з коробки доступне для кількох фреймворків:
 
-| Функція               | Властивість                                      | Стандартне значення |
-| --------------------- | ----------------------------------------------- | ------------------------- |
-| JDBC                  | `otel.instrumentation.jdbc.enabled`             | true                      |
-| Logback               | `otel.instrumentation.logback-appender.enabled` | true                      |
-| Logback MDC           | `otel.instrumentation.logback-mdc.enabled`      | true                      |
-| Spring Web            | `otel.instrumentation.spring-web.enabled`       | true                      |
-| Spring Web MVC        | `otel.instrumentation.spring-webmvc.enabled`    | true                      |
-| Spring WebFlux        | `otel.instrumentation.spring-webflux.enabled`   | true                      |
-| Kafka                 | `otel.instrumentation.kafka.enabled`            | true                      |
-| MongoDB               | `otel.instrumentation.mongo.enabled`            | true                      |
-| Micrometer            | `otel.instrumentation.micrometer.enabled`       | false                     |
-| R2DBC (reactive JDBC) | `otel.instrumentation.r2dbc.enabled`            | true                      |
+| Функція               | Властивість                                     | Стандартне значення |
+| --------------------- | ----------------------------------------------- | ------------------- |
+| JDBC                  | `otel.instrumentation.jdbc.enabled`             | true                |
+| Logback               | `otel.instrumentation.logback-appender.enabled` | true                |
+| Logback MDC           | `otel.instrumentation.logback-mdc.enabled`      | true                |
+| Spring Web            | `otel.instrumentation.spring-web.enabled`       | true                |
+| Spring Web MVC        | `otel.instrumentation.spring-webmvc.enabled`    | true                |
+| Spring WebFlux        | `otel.instrumentation.spring-webflux.enabled`   | true                |
+| Kafka                 | `otel.instrumentation.kafka.enabled`            | true                |
+| MongoDB               | `otel.instrumentation.mongo.enabled`            | true                |
+| Micrometer            | `otel.instrumentation.micrometer.enabled`       | false               |
+| R2DBC (reactive JDBC) | `otel.instrumentation.r2dbc.enabled`            | true                |
 
 ## Вибіркове увімкнення інструментувань {#turn-on-instrumentations-selectively}
 
@@ -33,31 +33,30 @@ cSpell:ignore: logback webflux webmvc бінів
 
 Загальні властивості для всіх інструментувань баз даних:
 
-| Системна властивість                                          | Тип    | Стандартне значення | Опис                                      |
-| ------------------------------------------------------------- | -------| ------------------------- | ----------------------------------------- |
-| `otel.instrumentation.common.db-statement-sanitizer.enabled`  | Boolean| true                      | Увімкнення санітизації запитів до БД.     |
+| Системна властивість                                         | Тип     | Стандартне значення | Опис                                  |
+| ------------------------------------------------------------ | ------- | ------------------- | ------------------------------------- |
+| `otel.instrumentation.common.db-statement-sanitizer.enabled` | Boolean | true                | Увімкнення санітизації запитів до БД. |
 
 ## Інструментування JDBC {#jdbc-instrumentation}
 
-| Системна властивість                                         | Тип    | Стандартне значення | Опис                                      |
-| ------------------------------------------------------------ | -------| ------------------------- | ----------------------------------------- |
-| `otel.instrumentation.jdbc.statement-sanitizer.enabled`      | Boolean| true                      | Увімкнення санітизації запитів до БД.     |
+| Системна властивість                                    | Тип     | Стандартне значення | Опис                                  |
+| ------------------------------------------------------- | ------- | ------------------- | ------------------------------------- |
+| `otel.instrumentation.jdbc.statement-sanitizer.enabled` | Boolean | true                | Увімкнення санітизації запитів до БД. |
 
 ## Logback
 
 Ви можете увімкнути експериментальні функції за допомогою системних властивостей для захоплення атрибутів:
 
-| Системна властивість                                                                        | Тип    | Стандартне значення | Опис                                                                                                                                   |
-| ------------------------------------------------------------------------------------------- | -------| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| `otel.instrumentation.logback-appender.experimental-log-attributes`                         | Boolean| false                     | Увімкнення захоплення експериментальних атрибутів журналу `thread.name` та `thread.id`.                                                 |
-| `otel.instrumentation.logback-appender.experimental.capture-code-attributes`                | Boolean| false                     | Увімкнення захоплення [атрибутів вихідного коду][атрибути вихідного коду]. Зверніть увагу, що захоплення атрибутів вихідного коду на місцях журналювання може додати навантаження на продуктивність. |
-| `otel.instrumentation.logback-appender.experimental.capture-marker-attribute`               | Boolean| false                     | Увімкнення захоплення маркерів Logback як атрибутів.                                                                                    |
-| `otel.instrumentation.logback-appender.experimental.capture-key-value-pair-attributes`      | Boolean| false                     | Увімкнення захоплення пар ключ-значення Logback як атрибутів.                                                                           |
-| `otel.instrumentation.logback-appender.experimental.capture-logger-context-attributes`      | Boolean| false                     | Увімкнення захоплення властивостей контексту логера Logback як атрибутів.                                                               |
-| `otel.instrumentation.logback-appender.experimental.capture-mdc-attributes`                 | String |                           | Список атрибутів MDC, які потрібно захопити, розділений комами. Використовуйте символ підстановки `*` для захоплення всіх атрибутів.    |
+| Системна властивість                                                                   | Тип     | Стандартне значення | Опис                                                                                                                                                                                                 |
+| -------------------------------------------------------------------------------------- | ------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `otel.instrumentation.logback-appender.experimental-log-attributes`                    | Boolean | false               | Увімкнення захоплення експериментальних атрибутів журналу `thread.name` та `thread.id`.                                                                                                              |
+| `otel.instrumentation.logback-appender.experimental.capture-code-attributes`           | Boolean | false               | Увімкнення захоплення [атрибутів вихідного коду][атрибути вихідного коду]. Зверніть увагу, що захоплення атрибутів вихідного коду на місцях журналювання може додати навантаження на продуктивність. |
+| `otel.instrumentation.logback-appender.experimental.capture-marker-attribute`          | Boolean | false               | Увімкнення захоплення маркерів Logback як атрибутів.                                                                                                                                                 |
+| `otel.instrumentation.logback-appender.experimental.capture-key-value-pair-attributes` | Boolean | false               | Увімкнення захоплення пар ключ-значення Logback як атрибутів.                                                                                                                                        |
+| `otel.instrumentation.logback-appender.experimental.capture-logger-context-attributes` | Boolean | false               | Увімкнення захоплення властивостей контексту логера Logback як атрибутів.                                                                                                                            |
+| `otel.instrumentation.logback-appender.experimental.capture-mdc-attributes`            | String  |                     | Список атрибутів MDC, які потрібно захопити, розділений комами. Використовуйте символ підстановки `*` для захоплення всіх атрибутів.                                                                 |
 
-[атрибути вихідного коду]:
-  /docs/specs/semconv/general/attributes/#source-code-attributes
+[атрибути вихідного коду]: /docs/specs/semconv/general/attributes/#source-code-attributes
 
 Альтернативно, ви можете увімкнути ці функції, додавши доповнювач OpenTelemetry Logback у ваш файл `logback.xml` або `logback-spring.xml`:
 
@@ -237,9 +236,9 @@ public class WebClientController {
 
 Забезпечує автоконфігурацію для інструментування клієнта Kafka.
 
-| Системна властивість                                           | Тип    | Стандартне значення | Опис                                          |
-| -------------------------------------------------------------- | -------| ------------------------- | --------------------------------------------- |
-| `otel.instrumentation.kafka.experimental-span-attributes`      | Boolean| false                     | Увімкнення захоплення експериментальних атрибутів відрізків. |
+| Системна властивість                                      | Тип     | Стандартне значення | Опис                                                         |
+| --------------------------------------------------------- | ------- | ------------------- | ------------------------------------------------------------ |
+| `otel.instrumentation.kafka.experimental-span-attributes` | Boolean | false               | Увімкнення захоплення експериментальних атрибутів відрізків. |
 
 ## Інструментування Micrometer {#micrometer-instrumentation}
 
@@ -249,14 +248,14 @@ public class WebClientController {
 
 Забезпечує автоконфігурацію для інструментування клієнта MongoDB.
 
-| Системна властивість                                          | Тип    | Стандартне значення | Опис                                      |
-| ------------------------------------------------------------- | -------| ------------------------- | ----------------------------------------- |
-| `otel.instrumentation.mongo.statement-sanitizer.enabled`      | Boolean| true                      | Увімкнення санітизації запитів до БД.     |
+| Системна властивість                                     | Тип     | Стандартне значення | Опис                                  |
+| -------------------------------------------------------- | ------- | ------------------- | ------------------------------------- |
+| `otel.instrumentation.mongo.statement-sanitizer.enabled` | Boolean | true                | Увімкнення санітизації запитів до БД. |
 
 ## Інструментування R2DBC {#r2dbc-instrumentation}
 
 Забезпечує автоконфігурацію для інструментування OpenTelemetry R2DBC.
 
-| Системна властивість                                          | Тип    | Стандартне значення | Опис                                      |
-| ------------------------------------------------------------- | -------| ------------------------- | ----------------------------------------- |
-| `otel.instrumentation.r2dbc.statement-sanitizer.enabled`      | Boolean| true                      | Увімкнення санітизації запитів до БД.     |
+| Системна властивість                                     | Тип     | Стандартне значення | Опис                                  |
+| -------------------------------------------------------- | ------- | ------------------- | ------------------------------------- |
+| `otel.instrumentation.r2dbc.statement-sanitizer.enabled` | Boolean | true                | Увімкнення санітизації запитів до БД. |

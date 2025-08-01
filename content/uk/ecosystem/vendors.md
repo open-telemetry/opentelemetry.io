@@ -33,5 +33,4 @@ cSpell:ignore: хостять
 
 {{% include keep-up-to-date.md постачальника %}}
 
-[vendors list]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml
+[vendors list]: https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/vendors.yaml

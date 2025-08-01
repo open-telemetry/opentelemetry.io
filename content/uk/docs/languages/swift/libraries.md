@@ -41,27 +41,27 @@ OpenTelemetry.registerTracerProvider(tracerProvider: TracerProviderBuilder()
 
 #### Інформація про застосунок {#application-info}
 
-| Атрибут              | Приклад значення               | Опис                                                                                              |
-| -------------------- | ------------------------------ | ------------------------------------------------------------------------------------------------- |
-| `service.name`       | `MyApplication`                | `CFBundleName`; Назва застосунку, визначена в info.plist застосунку.                                    |
-| `service.version`    | `1.0 (1234)`                   | `CFBundleShortVersion` & (`CFBundleVersion`); Версія застосунку, визначена в info.plist застосунку.     |
-| `service.namespace`  | `com.myCompany.myApplication`  | `CFBundleIdentifier`                                                                              |
+| Атрибут             | Приклад значення              | Опис                                                                                                |
+| ------------------- | ----------------------------- | --------------------------------------------------------------------------------------------------- |
+| `service.name`      | `MyApplication`               | `CFBundleName`; Назва застосунку, визначена в info.plist застосунку.                                |
+| `service.version`   | `1.0 (1234)`                  | `CFBundleShortVersion` & (`CFBundleVersion`); Версія застосунку, визначена в info.plist застосунку. |
+| `service.namespace` | `com.myCompany.myApplication` | `CFBundleIdentifier`                                                                                |
 
 #### Інформація про пристрій {#device-info}
 
-| Атрибут                  | Приклад значення           | Опис                                    |
-| ------------------------ | -------------------------- | --------------------------------------- |
-| `device.model.identifier`| `iphone13,3`               | отримано з `sysctl` залежно від типу пристрою |
-| `device.id`              | `00000000-0000-0000000`    | рядок uuid `identifierForVendor`        |
+| Атрибут                   | Приклад значення        | Опис                                          |
+| ------------------------- | ----------------------- | --------------------------------------------- |
+| `device.model.identifier` | `iphone13,3`            | отримано з `sysctl` залежно від типу пристрою |
+| `device.id`               | `00000000-0000-0000000` | рядок uuid `identifierForVendor`              |
 
 #### Інформація про операційну систему {#operating-system-info}
 
-| Атрибути         | Приклад значення                  | Опис                                            |
-| ---------------- | --------------------------------- | ------------------------------------------------|
-| `os.type`        | `darwin`                          | визначено в `ResourceAttributes`                |
+| Атрибути         | Приклад значення                  | Опис                                                    |
+| ---------------- | --------------------------------- | ------------------------------------------------------- |
+| `os.type`        | `darwin`                          | визначено в `ResourceAttributes`                        |
 | `os.name`        | `iOS`, `watchOS`, `macOS`         | `UIDevice.current.systemName` або залежно від платформи |
-| `os.version`     | `15.4.0`                          | `ProcessInfo.processInfo.operatingSystemVersion`|
-| `os.description` | `iOS Version 15.4 (Build 19E240)` | Поєднання назви ОС, версії та збірки.           |
+| `os.version`     | `15.4.0`                          | `ProcessInfo.processInfo.operatingSystemVersion`        |
+| `os.description` | `iOS Version 15.4 (Build 19E240)` | Поєднання назви ОС, версії та збірки.                   |
 
 ## Інструментування `NSURLSession` {#urlsession-instrumentation}
 
@@ -117,14 +117,14 @@ let sessionInstrumentation = URLSessionInstrumentation(configuration: URLSession
 
 Інструментування `NSURLSession` також надає додаткові атрибути, що надають деталі про стан мережі пристрою на момент мережевих запитів.
 
-| Атрибут                     | Приклад значення                 | Опис                                                                                 |
-| --------------------------- | -------------------------------- | ------------------------------------------------------------------------------------ |
-| `net.host.connection.type`  | `wifi`, `cell`, `unavailable`    | Тип зʼєднання, який використовував пристрій на момент запиту.                        |
-| `net.host.connection.subtype`| `EDGE` `LTE`, тощо               | Тип стільникового зʼєднання. Заповнюється лише якщо тип зʼєднання `cell`.            |
-| `net.host.carrier.name`     | `T-Mobile`, `Verizon`, тощо      | Назва стільникового оператора. Заповнюється лише для типів стільникового зʼєднання.  |
-|`net.host.carrier.icc`       | `DE`                             | Двосимвольний код країни ISO 3166-1 alpha-2, повʼязаний з мобільною мережею оператора.|
-| `net.host.carrier.mcc`      | `310`                            | Мобільний код країни                                                                 |
-| `net.host.carrier.mnc`      | `001`                            | Мобільний мережевий код                                                              |
+| Атрибут                       | Приклад значення              | Опис                                                                                   |
+| ----------------------------- | ----------------------------- | -------------------------------------------------------------------------------------- |
+| `net.host.connection.type`    | `wifi`, `cell`, `unavailable` | Тип зʼєднання, який використовував пристрій на момент запиту.                          |
+| `net.host.connection.subtype` | `EDGE` `LTE`, тощо            | Тип стільникового зʼєднання. Заповнюється лише якщо тип зʼєднання `cell`.              |
+| `net.host.carrier.name`       | `T-Mobile`, `Verizon`, тощо   | Назва стільникового оператора. Заповнюється лише для типів стільникового зʼєднання.    |
+| `net.host.carrier.icc`        | `DE`                          | Двосимвольний код країни ISO 3166-1 alpha-2, повʼязаний з мобільною мережею оператора. |
+| `net.host.carrier.mcc`        | `310`                         | Мобільний код країни                                                                   |
+| `net.host.carrier.mnc`        | `001`                         | Мобільний мережевий код                                                                |
 
 ## `SignpostIntegration`
 

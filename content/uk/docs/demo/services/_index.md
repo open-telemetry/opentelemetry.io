@@ -22,4 +22,4 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 | [quote](quote/)                       | PHP           | Розраховує вартість доставки залежно від кількості товарів для відправлення.                                                                        |
 | [recommendation](recommendation/)     | Python        | Рекомендує інші продукти на основі вмісту кошика.                                                                                                   |
 | [shipping](shipping/)                 | Rust          | Надає оцінки вартості доставки на основі кошика. Доставляє товари за вказаною адресою (макет/).                                                     |
-| [react-native-app](react-native-app/) | TypeScript    | React Native мобільний застосунок, який надає користувацький інтерфейс на додачу до сервісів для шопінгу.                                          |
+| [react-native-app](react-native-app/) | TypeScript    | React Native мобільний застосунок, який надає користувацький інтерфейс на додачу до сервісів для шопінгу.                                           |

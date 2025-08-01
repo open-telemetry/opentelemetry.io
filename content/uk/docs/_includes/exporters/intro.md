@@ -1,6 +1,7 @@
 ---
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
+
 Надсилайте телеметрію до [OpenTelemetry Collector](/docs/collector/), щоб переконатися, що вона експортується правильно. Використання Collector у виробничих середовищах є найкращою практикою. Щоб візуалізувати вашу телеметрію, експортуйте її до бекенду, такого як [Jaeger](https://jaegertracing.io/), [Zipkin](https://zipkin.io/), [Prometheus](https://prometheus.io/) або [бекенд, специфічний для постачальника](/ecosystem/vendors/).
 
 {{ if $name }}
@@ -20,8 +21,7 @@ default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 
 [Jaeger]: /blog/2022/jaeger-native-otlp/
 [OTLP]: /docs/specs/otlp/
-[Prometheus]:
-  https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver
+[Prometheus]: https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver
 [reg]: </ecosystem/registry/?component=exporter&language={{ $lang }}>
 [vendors]: /ecosystem/vendors/
 

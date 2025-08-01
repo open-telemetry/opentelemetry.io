@@ -104,7 +104,7 @@ export OTEL_RUBY_INSTRUMENTATION_FARADAY_CONFIG_OPTS="peer_service=new_service;s
 
 Наступна таблиця містить прийнятний формат значень відповідно до типу даних параметра:
 
-| Тип даних | Значення                    | Приклад          |
+| Тип даних | Значення                   | Приклад          |
 | --------- | -------------------------- | ---------------- |
 | Array     | string with `,` separation | `option=a,b,c,d` |
 | Boolean   | true/false                 | `option=true`    |

@@ -104,7 +104,7 @@ service:
 
 ### Клієнтські автентифікатори {#client-authenticators}
 
-_Клієнтський автентифікатор_ — це той, який реалізує один або більше інтерфейсів визначених в [клієнтських автентифікаторах][client authenticators].
+*Клієнтський автентифікатор* — це той, який реалізує один або більше інтерфейсів визначених в [клієнтських автентифікаторах][client authenticators].
 
 Подібно до серверних автентифікаторів, вони є, по суті, розширеннями з додатковими функціями, кожна з яких отримує обʼєкт, який дає автентифікатору можливість вставити дані автентифікації. Наприклад, HTTP клієнтський автентифікатор надає [`http.RoundTripper`](https://pkg.go.dev/net/http#RoundTripper), тоді як gRPC клієнтський автентифікатор може створити [`credentials.PerRPCCredentials`](https://pkg.go.dev/google.golang.org/grpc/credentials#PerRPCCredentials).
 
@@ -112,12 +112,8 @@ _Клієнтський автентифікатор_ — це той, який
 
 Власні автентифікатори повинні бути частиною того ж бінарного файлу, що й основний колектор. При створенні власного автентифікатора, вам, ймовірно, доведеться створити власний дистрибутив або надати засоби для ваших користувачів, щоб використовувати ваше розширення як частину їхніх власних дистрибутивів. На щастя, власний дистрибутив можна зробити за допомогою утиліти [OpenTelemetry Collector Builder][builder].
 
-[authenticators]:
-  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth
-[builder]:
-  https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
-[client authenticators]:
-  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
+[authenticators]: https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth
+[builder]: https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
+[client authenticators]: https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
 [extensions]: ../../configuration/#extensions
-[sa]:
-  https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators
+[sa]: https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators

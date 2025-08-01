@@ -189,19 +189,19 @@ OpenTelemetry Starter включає ті ж провайдери ресурсі
 
 FQN: `io.opentelemetry.instrumentation.spring.autoconfigure.resources.DistroVersionResourceProvider`
 
-| Атрибут                    | Значення                               |
-| -------------------------- | -------------------------------------- |
-| `telemetry.distro.name`    | `opentelemetry-spring-boot-starter`    |
-| `telemetry.distro.version` | версія стартера                        |
+| Атрибут                    | Значення                            |
+| -------------------------- | ----------------------------------- |
+| `telemetry.distro.name`    | `opentelemetry-spring-boot-starter` |
+| `telemetry.distro.version` | версія стартера                     |
 
 ### Провайдер ресурсів Spring {#spring-resource-provider}
 
 FQN: `io.opentelemetry.instrumentation.spring.autoconfigure.resources.SpringResourceProvider`
 
-| Атрибут           | Значення                                                                                                      |
-| ----------------- | ------------------------------------------------------------------------------------------------------------- |
-| `service.name`    | `spring.application.name` або `build.name` з `build-info.properties` (див. [Назва сервісу](#service-name))    |
-| `service.version` | `build.version` з `build-info.properties`                                                                     |
+| Атрибут           | Значення                                                                                                   |
+| ----------------- | ---------------------------------------------------------------------------------------------------------- |
+| `service.name`    | `spring.application.name` або `build.name` з `build-info.properties` (див. [Назва сервісу](#service-name)) |
+| `service.version` | `build.version` з `build-info.properties`                                                                  |
 
 ## Назва сервісу {#service-name}
 

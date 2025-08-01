@@ -26,9 +26,9 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 
 Ви можете знайти більше варіантів конфігурації для доповнювача OpenTelemetry в [документації Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md) інструментальної бібліотеки.
 
-| Системна властивість                          | Тип     | Стандартно | Опис                                                                                           |
-| --------------------------------------------- | ------- | ---------------- | ---------------------------------------------------------------------------------------------- |
-| `otel.instrumentation.log4j-appender.enabled` | Boolean | true             | Вмикає конфігурацію доповнювача Log4j OpenTelemetry з екземпляром `OpenTelemetry`.                |
+| Системна властивість                          | Тип     | Стандартно | Опис                                                                               |
+| --------------------------------------------- | ------- | ---------- | ---------------------------------------------------------------------------------- |
+| `otel.instrumentation.log4j-appender.enabled` | Boolean | true       | Вмикає конфігурацію доповнювача Log4j OpenTelemetry з екземпляром `OpenTelemetry`. |
 
 ## Інструментальні бібліотеки {#instrumentation-libraries}
 

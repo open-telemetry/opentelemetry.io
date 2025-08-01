@@ -35,159 +35,159 @@ cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp D
 
 {{% config_option name="otel.instrumentation.[name].enabled" %}} Встановіть значення `false`, щоб придушити інструментацію агента для конкретних бібліотек, де [name] — це відповідна назва інструментації: {{% /config_option %}}
 
-| Бібліотека/Фреймворк                              | Назва інструментації                        |
-| ------------------------------------------------- | ------------------------------------------- |
-| Додаткове трасування методів                      | `methods`                                   |
-| Додаткові анотації трасування                     | `external-annotations`                      |
-| Activej HTTP                                      | `activej-http`                              |
-| Avaje Jex                                         | `avaje-jex`                                 |
-| Akka Actor                                        | `akka-actor`                                |
-| Akka HTTP                                         | `akka-http`                                 |
-| Alibaba Druid                                     | `alibaba-druid`                             |
-| Apache Axis2                                      | `axis2`                                     |
-| Apache Camel                                      | `camel`                                     |
-| Apache Cassandra                                  | `cassandra`                                 |
-| Apache CXF                                        | `cxf`                                       |
-| Apache DBCP                                       | `apache-dbcp`                               |
-| Apache Dubbo                                      | `apache-dubbo`                              |
-| Apache Geode                                      | `geode`                                     |
-| Apache HttpAsyncClient                            | `apache-httpasyncclient`                    |
-| Apache HttpClient                                 | `apache-httpclient`                         |
-| Apache Kafka                                      | `kafka`                                     |
-| Apache MyFaces                                    | `jsf-myfaces`                               |
-| Apache Pekko Actor                                | `pekko-actor`                               |
-| Apache Pekko HTTP                                 | `pekko-http`                                |
-| Apache Pulsar                                     | `pulsar`                                    |
-| Apache RocketMQ                                   | `rocketmq-client`                           |
-| Apache Shenyu                                     | `apache-shenyu`                             |
-| Apache Struts 2                                   | `struts`                                    |
-| Apache Tapestry                                   | `tapestry`                                  |
-| Apache Tomcat                                     | `tomcat`                                    |
-| Apache Wicket                                     | `wicket`                                    |
-| Armeria                                           | `armeria`                                   |
-| AsyncHttpClient (AHC)                             | `async-http-client`                         |
-| AWS Lambda                                        | `aws-lambda`                                |
-| AWS SDK                                           | `aws-sdk`                                   |
-| Azure SDK                                         | `azure-core`                                |
-| Clickhouse Client                                 | `clickhouse`                                |
-| Couchbase                                         | `couchbase`                                 |
-| C3P0                                              | `c3p0`                                      |
-| Dropwizard Views                                  | `dropwizard-views`                          |
-| Dropwizard Metrics                                | `dropwizard-metrics`                        |
-| Eclipse Grizzly                                   | `grizzly`                                   |
-| Eclipse Jersey                                    | `jersey`                                    |
-| Eclipse Jetty                                     | `jetty`                                     |
-| Eclipse Jetty HTTP Client                         | `jetty-httpclient`                          |
-| Eclipse Metro                                     | `metro`                                     |
-| Eclipse Mojarra                                   | `jsf-mojarra`                               |
-| Eclipse Vert.x HttpClient                         | `vertx-http-client`                         |
-| Eclipse Vert.x Kafka Client                       | `vertx-kafka-client`                        |
-| Eclipse Vert.x Redis Client                       | `vertx-redis-client`                        |
-| Eclipse Vert.x RxJava                             | `vertx-rx-java`                             |
-| Eclipse Vert.x SQL Client                         | `vertx-sql-client`                          |
-| Eclipse Vert.x Web                                | `vertx-web`                                 |
-| Elasticsearch API client                          | `elasticsearch-api-client`                  |
-| Elasticsearch client                              | `elasticsearch-transport`                   |
-| Elasticsearch REST client                         | `elasticsearch-rest`                        |
-| Finagle                                           | `finagle-http`                              |
-| Google Guava                                      | `guava`                                     |
-| Google HTTP client                                | `google-http-client`                        |
-| Google Web Toolkit                                | `gwt`                                       |
-| Grails                                            | `grails`                                    |
-| GraphQL Java                                      | `graphql-java`                              |
-| GRPC                                              | `grpc`                                      |
-| Hibernate                                         | `hibernate`                                 |
-| Hibernate Reactive                                | `hibernate-reactive`                        |
-| HikariCP                                          | `hikaricp`                                  |
-| InfluxDB                                          | `influxdb`                                  |
-| Java HTTP Client                                  | `java-http-client`                          |
-| Java HTTP Server                                  | `java-http-server`                          |
-| Java `HttpURLConnection`                          | `http-url-connection`                       |
-| Java JDBC                                         | `jdbc`                                      |
-| Java JDBC `DataSource`                            | `jdbc-datasource`                           |
-| Java RMI                                          | `rmi`                                       |
-| Java Runtime                                      | `runtime-telemetry`                         |
-| Java Servlet                                      | `servlet`                                   |
-| java.util.concurrent                              | `executors`                                 |
-| java.util.logging                                 | `java-util-logging`                         |
-| Javalin                                           | `javalin`                                   |
-| JAX-RS (Client)                                   | `jaxrs-client`                              |
-| JAX-RS (Server)                                   | `jaxrs`                                     |
-| JAX-WS                                            | `jaxws`                                     |
-| JBoss Logging Appender                            | `jboss-logmanager-appender`                 |
-| JBoss Logging MDC                                 | `jboss-logmanager-mdc`                      |
-| JMS                                               | `jms`                                       |
-| Jodd HTTP                                         | `jodd-http`                                 |
-| JSP                                               | `jsp`                                       |
-| K8s Client                                        | `kubernetes-client`                         |
-| Ktor                                              | `ktor`                                      |
-| kotlinx.coroutines                                | `kotlinx-coroutines`                        |
-| Log4j Appender                                    | `log4j-appender`                            |
-| Log4j MDC (1.x)                                   | `log4j-mdc`                                 |
-| Log4j Context Data (2.x)                          | `log4j-context-data`                        |
-| Logback Appender                                  | `logback-appender`                          |
-| Logback MDC                                       | `logback-mdc`                               |
-| Micrometer                                        | `micrometer`                                |
-| MongoDB                                           | `mongo`                                     |
-| MyBatis                                           | `mybatis`                                   |
-| Netflix Hystrix                                   | `hystrix`                                   |
-| Netty                                             | `netty`                                     |
-| OkHttp                                            | `okhttp`                                    |
-| OpenLiberty                                       | `liberty`                                   |
-| OpenAI                                            | `openai`                                    |
-| OpenSearch REST                                   | `opensearch-rest`                           |
-| OpenTelemetry Extension Annotations               | `opentelemetry-extension-annotations`       |
-| OpenTelemetry Instrumentation Annotations         | `opentelemetry-instrumentation-annotations` |
-| OpenTelemetry API                                 | `opentelemetry-api`                         |
-| Oracle UCP                                        | `oracle-ucp`                                |
-| OSHI (Operating System and Hardware Information)  | `oshi`                                      |
-| Payara                                            | `payara`                                    |
-| Play Framework                                    | `play`                                      |
-| Play WS HTTP Client                               | `play-ws`                                   |
-| Powerjob                                          | `powerjob`                                  |
-| Quarkus                                           | `quarkus`                                   |
-| Quartz                                            | `quartz`                                    |
-| R2DBC                                             | `r2dbc`                                     |
-| RabbitMQ Client                                   | `rabbitmq`                                  |
-| Ratpack                                           | `ratpack`                                   |
-| ReactiveX RxJava                                  | `rxjava`                                    |
-| Reactor                                           | `reactor`                                   |
-| Reactor Kafka                                     | `reactor-kafka`                             |
-| Reactor Netty                                     | `reactor-netty`                             |
-| Redis Jedis                                       | `jedis`                                     |
-| Redis Lettuce                                     | `lettuce`                                   |
-| Rediscala                                         | `rediscala`                                 |
-| Redisson                                          | `redisson`                                  |
-| Restlet                                           | `restlet`                                   |
-| Scala ForkJoinPool                                | `scala-fork-join`                           |
-| Spark Web Framework                               | `spark`                                     |
-| Spring Batch                                      | `spring-batch`                              |
-| Spring Boot Actuator Autoconfigure                | `spring-boot-actuator-autoconfigure`        |
-| Spring Cloud AWS                                  | `spring-cloud-aws`                          |
-| Spring Cloud Gateway                              | `spring-cloud-gateway`                      |
-| Spring Core                                       | `spring-core`                               |
-| Spring Data                                       | `spring-data`                               |
-| Spring JMS                                        | `spring-jms`                                |
-| Spring Integration                                | `spring-integration`                        |
-| Spring Kafka                                      | `spring-kafka`                              |
-| Spring Pulsar                                     | `spring-pulsar`                             |
-| Spring RabbitMQ                                   | `spring-rabbit`                             |
-| Spring RMI                                        | `spring-rmi`                                |
-| Spring Scheduling                                 | `spring-scheduling`                         |
-| Spring Security Config                            | `spring-security-config`                    |
-| Spring Web                                        | `spring-web`                                |
-| Spring WebFlux                                    | `spring-webflux`                            |
-| Spring Web MVC                                    | `spring-webmvc`                             |
-| Spring Web Services                               | `spring-ws`                                 |
-| Spymemcached                                      | `spymemcached`                              |
-| Tomcat JDBC                                       | `tomcat-jdbc`                               |
-| Twilio SDK                                        | `twilio`                                    |
-| Twitter Finatra                                   | `finatra`                                   |
-| Undertow                                          | `undertow`                                  |
-| Vaadin                                            | `vaadin`                                    |
-| Vibur DBCP                                        | `vibur-dbcp`                                |
-| XXL-JOB                                           | `xxl-job`                                   |
-| ZIO                                               | `zio`                                       |
+| Бібліотека/Фреймворк                             | Назва інструментації                        |
+| ------------------------------------------------ | ------------------------------------------- |
+| Додаткове трасування методів                     | `methods`                                   |
+| Додаткові анотації трасування                    | `external-annotations`                      |
+| Activej HTTP                                     | `activej-http`                              |
+| Avaje Jex                                        | `avaje-jex`                                 |
+| Akka Actor                                       | `akka-actor`                                |
+| Akka HTTP                                        | `akka-http`                                 |
+| Alibaba Druid                                    | `alibaba-druid`                             |
+| Apache Axis2                                     | `axis2`                                     |
+| Apache Camel                                     | `camel`                                     |
+| Apache Cassandra                                 | `cassandra`                                 |
+| Apache CXF                                       | `cxf`                                       |
+| Apache DBCP                                      | `apache-dbcp`                               |
+| Apache Dubbo                                     | `apache-dubbo`                              |
+| Apache Geode                                     | `geode`                                     |
+| Apache HttpAsyncClient                           | `apache-httpasyncclient`                    |
+| Apache HttpClient                                | `apache-httpclient`                         |
+| Apache Kafka                                     | `kafka`                                     |
+| Apache MyFaces                                   | `jsf-myfaces`                               |
+| Apache Pekko Actor                               | `pekko-actor`                               |
+| Apache Pekko HTTP                                | `pekko-http`                                |
+| Apache Pulsar                                    | `pulsar`                                    |
+| Apache RocketMQ                                  | `rocketmq-client`                           |
+| Apache Shenyu                                    | `apache-shenyu`                             |
+| Apache Struts 2                                  | `struts`                                    |
+| Apache Tapestry                                  | `tapestry`                                  |
+| Apache Tomcat                                    | `tomcat`                                    |
+| Apache Wicket                                    | `wicket`                                    |
+| Armeria                                          | `armeria`                                   |
+| AsyncHttpClient (AHC)                            | `async-http-client`                         |
+| AWS Lambda                                       | `aws-lambda`                                |
+| AWS SDK                                          | `aws-sdk`                                   |
+| Azure SDK                                        | `azure-core`                                |
+| Clickhouse Client                                | `clickhouse`                                |
+| Couchbase                                        | `couchbase`                                 |
+| C3P0                                             | `c3p0`                                      |
+| Dropwizard Views                                 | `dropwizard-views`                          |
+| Dropwizard Metrics                               | `dropwizard-metrics`                        |
+| Eclipse Grizzly                                  | `grizzly`                                   |
+| Eclipse Jersey                                   | `jersey`                                    |
+| Eclipse Jetty                                    | `jetty`                                     |
+| Eclipse Jetty HTTP Client                        | `jetty-httpclient`                          |
+| Eclipse Metro                                    | `metro`                                     |
+| Eclipse Mojarra                                  | `jsf-mojarra`                               |
+| Eclipse Vert.x HttpClient                        | `vertx-http-client`                         |
+| Eclipse Vert.x Kafka Client                      | `vertx-kafka-client`                        |
+| Eclipse Vert.x Redis Client                      | `vertx-redis-client`                        |
+| Eclipse Vert.x RxJava                            | `vertx-rx-java`                             |
+| Eclipse Vert.x SQL Client                        | `vertx-sql-client`                          |
+| Eclipse Vert.x Web                               | `vertx-web`                                 |
+| Elasticsearch API client                         | `elasticsearch-api-client`                  |
+| Elasticsearch client                             | `elasticsearch-transport`                   |
+| Elasticsearch REST client                        | `elasticsearch-rest`                        |
+| Finagle                                          | `finagle-http`                              |
+| Google Guava                                     | `guava`                                     |
+| Google HTTP client                               | `google-http-client`                        |
+| Google Web Toolkit                               | `gwt`                                       |
+| Grails                                           | `grails`                                    |
+| GraphQL Java                                     | `graphql-java`                              |
+| GRPC                                             | `grpc`                                      |
+| Hibernate                                        | `hibernate`                                 |
+| Hibernate Reactive                               | `hibernate-reactive`                        |
+| HikariCP                                         | `hikaricp`                                  |
+| InfluxDB                                         | `influxdb`                                  |
+| Java HTTP Client                                 | `java-http-client`                          |
+| Java HTTP Server                                 | `java-http-server`                          |
+| Java `HttpURLConnection`                         | `http-url-connection`                       |
+| Java JDBC                                        | `jdbc`                                      |
+| Java JDBC `DataSource`                           | `jdbc-datasource`                           |
+| Java RMI                                         | `rmi`                                       |
+| Java Runtime                                     | `runtime-telemetry`                         |
+| Java Servlet                                     | `servlet`                                   |
+| java.util.concurrent                             | `executors`                                 |
+| java.util.logging                                | `java-util-logging`                         |
+| Javalin                                          | `javalin`                                   |
+| JAX-RS (Client)                                  | `jaxrs-client`                              |
+| JAX-RS (Server)                                  | `jaxrs`                                     |
+| JAX-WS                                           | `jaxws`                                     |
+| JBoss Logging Appender                           | `jboss-logmanager-appender`                 |
+| JBoss Logging MDC                                | `jboss-logmanager-mdc`                      |
+| JMS                                              | `jms`                                       |
+| Jodd HTTP                                        | `jodd-http`                                 |
+| JSP                                              | `jsp`                                       |
+| K8s Client                                       | `kubernetes-client`                         |
+| Ktor                                             | `ktor`                                      |
+| kotlinx.coroutines                               | `kotlinx-coroutines`                        |
+| Log4j Appender                                   | `log4j-appender`                            |
+| Log4j MDC (1.x)                                  | `log4j-mdc`                                 |
+| Log4j Context Data (2.x)                         | `log4j-context-data`                        |
+| Logback Appender                                 | `logback-appender`                          |
+| Logback MDC                                      | `logback-mdc`                               |
+| Micrometer                                       | `micrometer`                                |
+| MongoDB                                          | `mongo`                                     |
+| MyBatis                                          | `mybatis`                                   |
+| Netflix Hystrix                                  | `hystrix`                                   |
+| Netty                                            | `netty`                                     |
+| OkHttp                                           | `okhttp`                                    |
+| OpenLiberty                                      | `liberty`                                   |
+| OpenAI                                           | `openai`                                    |
+| OpenSearch REST                                  | `opensearch-rest`                           |
+| OpenTelemetry Extension Annotations              | `opentelemetry-extension-annotations`       |
+| OpenTelemetry Instrumentation Annotations        | `opentelemetry-instrumentation-annotations` |
+| OpenTelemetry API                                | `opentelemetry-api`                         |
+| Oracle UCP                                       | `oracle-ucp`                                |
+| OSHI (Operating System and Hardware Information) | `oshi`                                      |
+| Payara                                           | `payara`                                    |
+| Play Framework                                   | `play`                                      |
+| Play WS HTTP Client                              | `play-ws`                                   |
+| Powerjob                                         | `powerjob`                                  |
+| Quarkus                                          | `quarkus`                                   |
+| Quartz                                           | `quartz`                                    |
+| R2DBC                                            | `r2dbc`                                     |
+| RabbitMQ Client                                  | `rabbitmq`                                  |
+| Ratpack                                          | `ratpack`                                   |
+| ReactiveX RxJava                                 | `rxjava`                                    |
+| Reactor                                          | `reactor`                                   |
+| Reactor Kafka                                    | `reactor-kafka`                             |
+| Reactor Netty                                    | `reactor-netty`                             |
+| Redis Jedis                                      | `jedis`                                     |
+| Redis Lettuce                                    | `lettuce`                                   |
+| Rediscala                                        | `rediscala`                                 |
+| Redisson                                         | `redisson`                                  |
+| Restlet                                          | `restlet`                                   |
+| Scala ForkJoinPool                               | `scala-fork-join`                           |
+| Spark Web Framework                              | `spark`                                     |
+| Spring Batch                                     | `spring-batch`                              |
+| Spring Boot Actuator Autoconfigure               | `spring-boot-actuator-autoconfigure`        |
+| Spring Cloud AWS                                 | `spring-cloud-aws`                          |
+| Spring Cloud Gateway                             | `spring-cloud-gateway`                      |
+| Spring Core                                      | `spring-core`                               |
+| Spring Data                                      | `spring-data`                               |
+| Spring JMS                                       | `spring-jms`                                |
+| Spring Integration                               | `spring-integration`                        |
+| Spring Kafka                                     | `spring-kafka`                              |
+| Spring Pulsar                                    | `spring-pulsar`                             |
+| Spring RabbitMQ                                  | `spring-rabbit`                             |
+| Spring RMI                                       | `spring-rmi`                                |
+| Spring Scheduling                                | `spring-scheduling`                         |
+| Spring Security Config                           | `spring-security-config`                    |
+| Spring Web                                       | `spring-web`                                |
+| Spring WebFlux                                   | `spring-webflux`                            |
+| Spring Web MVC                                   | `spring-webmvc`                             |
+| Spring Web Services                              | `spring-ws`                                 |
+| Spymemcached                                     | `spymemcached`                              |
+| Tomcat JDBC                                      | `tomcat-jdbc`                               |
+| Twilio SDK                                       | `twilio`                                    |
+| Twitter Finatra                                  | `finatra`                                   |
+| Undertow                                         | `undertow`                                  |
+| Vaadin                                           | `vaadin`                                    |
+| Vibur DBCP                                       | `vibur-dbcp`                                |
+| XXL-JOB                                          | `xxl-job`                                   |
+| ZIO                                              | `zio`                                       |
 
 **Примітка:** При використанні змінних середовища, дефіси (`-`) слід замінити на підкреслення (`_`). Наприклад, щоб придушити трасування з бібліотеки `akka-actor`, встановіть `OTEL_INSTRUMENTATION_AKKA_ACTOR_ENABLED` на `false`.
 

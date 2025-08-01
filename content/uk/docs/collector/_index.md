@@ -53,9 +53,7 @@ OpenTelemetry Collector пропонує незалежну від постач�
 
 [configured]: /docs/security/config-best-practices/
 [hosted]: /docs/security/hosting-best-practices/
-[latest release]:
-  https://github.com/open-telemetry/opentelemetry-collector-releases/releases/latest
+[latest release]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases/latest
 [mixed]: /docs/specs/otel/document-status/#mixed
 [registry]: /ecosystem/registry/?language=collector
-[stability levels]:
-  https://github.com/open-telemetry/opentelemetry-collector#stability-levels
+[stability levels]: https://github.com/open-telemetry/opentelemetry-collector#stability-levels

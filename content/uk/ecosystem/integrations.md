@@ -1,7 +1,6 @@
 ---
 title: Інтеграції
-description:
-  Бібліотеки, сервіси та застосунки з підтримкою OpenTelemetry.
+description: Бібліотеки, сервіси та застосунки з підтримкою OpenTelemetry.
 aliases: [/integrations]
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---

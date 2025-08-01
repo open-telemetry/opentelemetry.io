@@ -147,7 +147,6 @@ java -jar ./build/libs/java-simple.jar
    ```
 
    {{% alert title="Важливо" color="warning" %}}
-
    - Замініть `PATH/TO` вище на ваш шлях до JAR файлу.
    - Встановіть `OTEL_METRIC_EXPORT_INTERVAL` у значення значно нижче за стандартне, як ми ілюструємо вище, **тільки під час тестування**, щоб допомогти вам швидше переконатися, що метрики правильно генеруються.
 
@@ -243,11 +242,8 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 [налаштувати Java агент]: /docs/zero-code/java/agent/configuration/
 [консольний експортер]: /docs/languages/java/configuration/#properties-exporters
 [експортер]: /docs/languages/java/configuration/#properties-exporters
-[java-vers]:
-  https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
+[java-vers]: https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
 [ручне інструментування]: ../instrumentation
-[opentelemetry-javaagent.jar]:
-  https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
-[releases]:
-  https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
+[opentelemetry-javaagent.jar]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
+[releases]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases
 [Spring Boot]: https://spring.io/guides/gs/spring-boot/

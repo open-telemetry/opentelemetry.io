@@ -77,7 +77,7 @@ config :opentelemetry, sampler: {:parent_based, %{root: {:trace_id_ratio_based, 
 
 #### Змінні середовища {#environment-variables}
 
-Ви можете налаштувати `ParentBasedSampler` для використання або `AlwaysOnSampler`, або AlwaysOffSampler` за допомогою змінної середовища `OTEL_TRACES_SAMPLER`:
+Ви можете налаштувати `ParentBasedSampler` для використання або `AlwaysOnSampler`, або AlwaysOffSampler`за допомогою змінної середовища`OTEL_TRACES_SAMPLER`:
 
 ```shell
 export OTEL_TRACES_SAMPLER="parentbased_always_on"

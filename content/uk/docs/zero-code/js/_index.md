@@ -1,8 +1,7 @@
 ---
 title: Інструментування JavaScript без коду
 linkTitle: JavaScript
-description:
-  Захоплюйте телеметрію з вашого застосунку без змін у вихідному коді
+description: Захоплюйте телеметрію з вашого застосунку без змін у вихідному коді
 aliases: [/docs/languages/js/automatic]
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---

@@ -10,7 +10,6 @@ cSpell:ignore: youtube
 OpenTelemetry це:
 
 - **Фреймворк та інструменти [спостережуваності][observability]** створені для допомоги у
-
   - [Генерації][instr]
   - Експорті
   - [Збиранні](../concepts/components/#collector)
@@ -84,8 +83,7 @@ OpenTelemetry є проєктом [Cloud Native Computing Foundation (CNCF)][Clo
 
 У випадку якщо ви вже використовуєте OpenTracing або OpenCensus, ви можете дізнатися, як перейти на OpenTelemetry в [Посібнику з міграції](../migration/).
 
-[merger]:
-  https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
+[merger]: https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
 
 ## Що далі? {#what-next}
 
@@ -100,8 +98,7 @@ OpenTelemetry є проєктом [Cloud Native Computing Foundation (CNCF)][Clo
 [logs]: ../concepts/signals/logs/
 [metrics]: ../concepts/signals/metrics/
 [observability]: ../concepts/observability-primer/#what-is-observability
-[OTel for beginners]:
-  https://www.youtube.com/playlist?list=PLVYDBkQ1TdyyWjeWJSjXYUaJFVhplRtvN
+[OTel for beginners]: https://www.youtube.com/playlist?list=PLVYDBkQ1TdyyWjeWJSjXYUaJFVhplRtvN
 [playlists]: https://www.youtube.com/@otel-official/playlists
 [Prometheus]: https://prometheus.io/
 [telemetry data]: ../concepts/signals/

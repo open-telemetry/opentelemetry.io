@@ -14,7 +14,5 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 
 Випуски, зокрема [останній випуск][latest release], див. у розділі [Випуски][Releases]. {{ $.Inner }}
 
-[latest release]:
-  <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases/latest>
-[Releases]:
-  <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases>
+[latest release]: <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases/latest>
+[Releases]: <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases>

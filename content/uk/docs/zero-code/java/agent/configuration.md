@@ -89,5 +89,4 @@ default=false
 %}} Увімкнення [Постачальника ресурсів Azure](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/azure-resources).
 {{% /config_option %}}
 
-[розширення]:
-  https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension#readme
+[розширення]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension#readme

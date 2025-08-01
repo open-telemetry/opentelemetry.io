@@ -1,7 +1,6 @@
 ---
 title: Вибірка
-description:
-  Дізнайтеся про вибірку та різні варіанти вибірки, доступні в OpenTelemetry.
+description: Дізнайтеся про вибірку та різні варіанти вибірки, доступні в OpenTelemetry.
 weight: 80
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---

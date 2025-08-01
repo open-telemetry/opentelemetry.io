@@ -1,7 +1,6 @@
 ---
 title: Агент
-description:
-  Чому і як надсилати сигнали до колекторів і звідти до бекендів
+description: Чому і як надсилати сигнали до колекторів і звідти до бекендів
 weight: 2
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 cSpell:ignore: prometheusremotewrite
@@ -120,7 +119,5 @@ service:
 [collector]: /docs/collector/
 [instrument-java-metrics]: /docs/languages/java/api/#meterprovider
 [otlp-exporter]: /docs/specs/otel/protocol/exporter/
-[java-otlp-example]:
-  https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/otlp
-[py-otlp-example]:
-  https://opentelemetry-python.readthedocs.io/en/stable/examples/metrics/instruments/README.html
+[java-otlp-example]: https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/otlp
+[py-otlp-example]: https://opentelemetry-python.readthedocs.io/en/stable/examples/metrics/instruments/README.html

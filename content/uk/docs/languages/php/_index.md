@@ -29,13 +29,13 @@ OpenTelemetry SDK для PHP прагне підтримувати всі офі
 
 ### Необовʼязкові розширення PHP {#optional-php-extensions}
 
-| Розширення                                                                | Призначення                                                       |
-| ------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| [ext-grpc](https://github.com/grpc/grpc/tree/master/src/php)              | Потрібно для використання gRPC як транспорту для OTLP експортера  |
-| [ext-mbstring](https://www.php.net/manual/en/book.mbstring.php)           | Більш продуктивне, ніж резервне, `symfony/polyfill-mbstring`      |
-| [ext-zlib](https://www.php.net/manual/en/book.zlib.php)                   | Якщо ви хочете стискати експортовані дані                         |
-| [ext-ffi](https://www.php.net/manual/en/book.ffi.php)                     | Контекстне зберігання на основі fiber                           |
-| [ext-protobuf](https://github.com/protocolbuffers/protobuf/tree/main/php) | _Значне_ покращення продуктивності для otlp+protobuf експорту     |
+| Розширення                                                                | Призначення                                                      |
+| ------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| [ext-grpc](https://github.com/grpc/grpc/tree/master/src/php)              | Потрібно для використання gRPC як транспорту для OTLP експортера |
+| [ext-mbstring](https://www.php.net/manual/en/book.mbstring.php)           | Більш продуктивне, ніж резервне, `symfony/polyfill-mbstring`     |
+| [ext-zlib](https://www.php.net/manual/en/book.zlib.php)                   | Якщо ви хочете стискати експортовані дані                        |
+| [ext-ffi](https://www.php.net/manual/en/book.ffi.php)                     | Контекстне зберігання на основі fiber                            |
+| [ext-protobuf](https://github.com/protocolbuffers/protobuf/tree/main/php) | _Значне_ покращення продуктивності для otlp+protobuf експорту    |
 
 #### ext-ffi
 

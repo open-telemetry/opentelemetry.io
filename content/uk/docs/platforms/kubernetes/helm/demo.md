@@ -34,13 +34,13 @@ kubectl port-forward svc/my-otel-demo-frontendproxy 8080:8080
 
 Після того, як проксі буде відкрито, ви також можете відвідати наступні шляхи:
 
-| Компонент         | Шлях                              |
-| ----------------- | --------------------------------- |
-| Вебмагазин        | <http://localhost:8080>           |
-| Grafana           | <http://localhost:8080/grafana>   |
-| Інтерфейс Feature Flags | <http://localhost:8080/feature>   |
+| Компонент                         | Шлях                              |
+| --------------------------------- | --------------------------------- |
+| Вебмагазин                        | <http://localhost:8080>           |
+| Grafana                           | <http://localhost:8080/grafana>   |
+| Інтерфейс Feature Flags           | <http://localhost:8080/feature>   |
 | Інтерфейс генератора навантаження | <http://localhost:8080/loadgen>   |
-| Інтерфейс Jaeger  | <http://localhost:8080/jaeger/ui> |
+| Інтерфейс Jaeger                  | <http://localhost:8080/jaeger/ui> |
 
 Для того, щоб відрізки трейсів з вебмагазину збиралися, необхідно експонувати OTLP/HTTP приймач OpenTelemetry Collector:
 

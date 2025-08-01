@@ -297,6 +297,5 @@ class TestExporter implements SpanExporter {
 }
 ```
 
-[instrumentation libraries]:
-  /docs/specs/otel/overview/#instrumentation-libraries
+[instrumentation libraries]: /docs/specs/otel/overview/#instrumentation-libraries
 [span events]: /docs/specs/otel/trace/api/#add-events

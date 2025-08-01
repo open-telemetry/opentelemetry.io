@@ -279,7 +279,5 @@ Value: Sum: 1330.4766000000002 Count: 5 Min: 50.0333 Max: 465.7936
 [метрики]: /docs/concepts/signals/metrics/
 [логи]: /docs/concepts/signals/logs/
 [configure .NET Automatic Instrumentation]: ../configuration
-[консольний експортер]:
-  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#internal-logs
-[releases]:
-  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases
+[консольний експортер]: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#internal-logs
+[releases]: https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases

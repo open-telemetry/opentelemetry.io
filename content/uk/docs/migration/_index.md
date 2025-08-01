@@ -18,7 +18,5 @@ OpenTelemetry було створено як злиття OpenTracing та OpenC
 
 Бекенд Jaeger може отримувати дані трасування через протокол OpenTelemetry (OTLP) з версії v1.35. Тому ви можете мігрувати свої OpenTelemetry SDK та колектори з використанням експортера Jaeger на експортер OTLP.
 
-[наступною основною версією як OpenTracing, так і OpenCensus]:
-  https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
-[ключових цілей]:
-  https://medium.com/opentracing/merging-opentracing-and-opencensus-f0fe9c7ca6f0
+[наступною основною версією як OpenTracing, так і OpenCensus]: https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
+[ключових цілей]: https://medium.com/opentracing/merging-opentracing-and-opencensus-f0fe9c7ca6f0

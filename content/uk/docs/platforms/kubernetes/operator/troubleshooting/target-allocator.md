@@ -448,5 +448,4 @@ Kubernetes podʼи, які відповідають міткам, простор
 
 {{% /alert %}}
 
-[PodMonitor]:
-  https://prometheus-operator.dev/docs/developer/getting-started/#using-podmonitors
+[PodMonitor]: https://prometheus-operator.dev/docs/developer/getting-started/#using-podmonitors

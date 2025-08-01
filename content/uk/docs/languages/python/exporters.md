@@ -150,7 +150,6 @@ export OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE="DELTA"
 Доступні значення та їх відповідні налаштування для цієї змінної середовища:
 
 - `CUMULATIVE`
-
   - `Counter`: `CUMULATIVE`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `CUMULATIVE`
@@ -159,7 +158,6 @@ export OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE="DELTA"
   - `ObservableGauge`: `CUMULATIVE`
 
 - `DELTA`
-
   - `Counter`: `DELTA`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `DELTA`

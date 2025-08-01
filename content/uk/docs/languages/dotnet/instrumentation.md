@@ -599,7 +599,7 @@ private int rollOnce()
 
 ## Логи {#logs}
 
-Документація для API та SDK логів відсутня. Ви можете допомогти зробити її доступною,  [редагуючи цю сторінку](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/languages/dotnet/instrumentation.md).
+Документація для API та SDK логів відсутня. Ви можете допомогти зробити її доступною, [редагуючи цю сторінку](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/languages/dotnet/instrumentation.md).
 
 ## Наступні кроки {#next-steps}
 

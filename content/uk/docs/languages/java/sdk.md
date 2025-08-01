@@ -154,15 +154,15 @@ public class SdkTracerProviderConfig {
 
 Семплери, вбудовані в SDK та підтримувані спільнотою в `opentelemetry-java-contrib`:
 
-| Клас                     | Артефакт                                                                                      | Опис                                                                                                                               |
-| ------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Семплює відрізки на основі статусу семплінгу батьківського відрізка.                                                                              |
-| `AlwaysOn`                | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Семплює всі відрізки.                                                                                                                        |
-| `AlwaysOff`               | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Відкидає всі відрізки.                                                                                                                          |
-| `TraceIdRatioBased`       | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Семплює відрізки на основі конфігурованого співвідношення.                                                                                              |
+| Клас                      | Артефакт                                                                                      | Опис                                                                                                                                          |
+| ------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Семплює відрізки на основі статусу семплінгу батьківського відрізка.                                                                          |
+| `AlwaysOn`                | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Семплює всі відрізки.                                                                                                                         |
+| `AlwaysOff`               | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Відкидає всі відрізки.                                                                                                                        |
+| `TraceIdRatioBased`       | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | Семплює відрізки на основі конфігурованого співвідношення.                                                                                    |
 | `JaegerRemoteSampler`     | `io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler:{{% param vers.otel %}}`  | Семплює відрізки на основі конфігурації з віддаленого сервера.                                                                                |
 | `LinksBasedSampler`       | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Семплює відрізки на основі статусу семплінгу посилань відрізка.                                                                               |
-| `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Семплює відрізки на основі конфігурованих правил.                                                                                                |
+| `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | Семплює відрізки на основі конфігурованих правил.                                                                                             |
 | `ConsistentSamplers`      | `io.opentelemetry.contrib:opentelemetry-consistent-sampling:{{% param vers.contrib %}}-alpha` | Різні реалізації консистентного семплінгу, як визначено в [ймовірнісному семплінгу](/docs/specs/otel/trace/tracestate-probability-sampling/). |
 
 Наступний фрагмент коду демонструє програмну конфігурацію `Sampler`:
@@ -257,14 +257,14 @@ public class CustomSampler implements Sampler {
 
 Процесори відрізків, вбудовані в SDK та підтримувані спільнотою в `opentelemetry-java-contrib`:
 
-| Клас                     | Артефакт                                                                                    | Опис                                                               |
-| ------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Клас                      | Артефакт                                                                                    | Опис                                                                            |
+| ------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | `BatchSpanProcessor`      | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Пакує семпльовані відрізки та експортує їх через конфігурований `SpanExporter`. |
-| `SimpleSpanProcessor`     | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Експортує кожен семпльований відрізок через конфігурований `SpanExporter`.              |
-| `BaggageSpanProcessor`    | `io.opentelemetry.contrib:opentelemetry-baggage-processor:{{% param vers.contrib %}}-alpha` | Збагачує відрізки багажем.                                              |
-| `JfrSpanProcessor`        | `io.opentelemetry.contrib:opentelemetry-jfr-events:{{% param vers.contrib %}}-alpha`        | Створює події JFR зі відрізків.                                            |
-| `StackTraceSpanProcessor` | `io.opentelemetry.contrib:opentelemetry-span-stacktrace:{{% param vers.contrib %}}-alpha`   | Збагачує вибрані відрізки даними стеку викликів.                              |
-| `InferredSpansProcessor`  | `io.opentelemetry.contrib:opentelemetry-inferred-spans:{{% param vers.contrib %}}-alpha`    | Генерує відрізки з async profiler замість інструментування.           |
+| `SimpleSpanProcessor`     | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | Експортує кожен семпльований відрізок через конфігурований `SpanExporter`.      |
+| `BaggageSpanProcessor`    | `io.opentelemetry.contrib:opentelemetry-baggage-processor:{{% param vers.contrib %}}-alpha` | Збагачує відрізки багажем.                                                      |
+| `JfrSpanProcessor`        | `io.opentelemetry.contrib:opentelemetry-jfr-events:{{% param vers.contrib %}}-alpha`        | Створює події JFR зі відрізків.                                                 |
+| `StackTraceSpanProcessor` | `io.opentelemetry.contrib:opentelemetry-span-stacktrace:{{% param vers.contrib %}}-alpha`   | Збагачує вибрані відрізки даними стеку викликів.                                |
+| `InferredSpansProcessor`  | `io.opentelemetry.contrib:opentelemetry-inferred-spans:{{% param vers.contrib %}}-alpha`    | Генерує відрізки з async profiler замість інструментування.                     |
 
 Наступний фрагмент коду демонструє програмну конфігурацію `SpanProcessor`:
 
@@ -355,16 +355,16 @@ public class CustomSpanProcessor implements SpanProcessor {
 
 Експортери відрізків, вбудовані в SDK та підтримувані спільнотою в `opentelemetry-java-contrib`:
 
-| Клас                          | Артефакт                                                                                 | Опис                                                                   |
-| ------------------------------ | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `OtlpHttpSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Експортує відрізки через OTLP `http/protobuf`.                                       |
-| `OtlpGrpcSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Експортує відрізки через OTLP `grpc`.                                                |
-| `LoggingSpanExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`                | Логує відрізки до JUL у форматі налагодження.                                      |
-| `OtlpJsonLoggingSpanExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`           | Логує відрізки до JUL у кодуванні OTLP JSON.                                   |
+| Клас                           | Артефакт                                                                                 | Опис                                                                             |
+| ------------------------------ | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `OtlpHttpSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Експортує відрізки через OTLP `http/protobuf`.                                   |
+| `OtlpGrpcSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | Експортує відрізки через OTLP `grpc`.                                            |
+| `LoggingSpanExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`                | Логує відрізки до JUL у форматі налагодження.                                    |
+| `OtlpJsonLoggingSpanExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`           | Логує відрізки до JUL у кодуванні OTLP JSON.                                     |
 | `OtlpStdoutSpanExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`           | Логує відрізки до `System.out` у OTLP [JSON file encoding][] (експериментально). |
-| `ZipkinSpanExporter`           | `io.opentelemetry:opentelemetry-exporter-zipkin:{{% param vers.otel %}}`                 | Експортує відрізки до Zipkin.                                                       |
+| `ZipkinSpanExporter`           | `io.opentelemetry:opentelemetry-exporter-zipkin:{{% param vers.otel %}}`                 | Експортує відрізки до Zipkin.                                                    |
 | `InterceptableSpanExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha`     | Передає відрізки до гнучкого перехоплювача перед експортом.                      |
-| `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | Експортує відрізки, записуючи їх до теми Kafka.                                    |
+| `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | Експортує відрізки, записуючи їх до теми Kafka.                                  |
 
 **[1]**: Дивіться [OTLP exporters](#otlp-exporters) для деталей реалізації.
 
@@ -540,10 +540,10 @@ public class SdkMeterProviderConfig {
 
 Читачі метрик, вбудовані в SDK та підтримувані спільнотою в `opentelemetry-java-contrib`:
 
-| Клас                  | Артефакт                                                                           | Опис                                                                             |
-| ---------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Клас                   | Артефакт                                                                           | Опис                                                                                       |
+| ---------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
 | `PeriodicMetricReader` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                       | Читає метрики на періодичній основі та експортує їх через конфігурований `MetricExporter`. |
-| `PrometheusHttpServer` | `io.opentelemetry:opentelemetry-exporter-prometheus:{{% param vers.otel %}}-alpha` | Обслуговує метрики на HTTP-сервері у різних форматах prometheus.                         |
+| `PrometheusHttpServer` | `io.opentelemetry:opentelemetry-exporter-prometheus:{{% param vers.otel %}}-alpha` | Обслуговує метрики на HTTP-сервері у різних форматах prometheus.                           |
 
 Наступний фрагмент коду демонструє програмну конфігурацію `MetricReader`:
 
@@ -660,12 +660,12 @@ public class CustomMetricReader implements MetricReader {
 
 Експортери метрик, вбудовані в SDK та підтримувані спільнотою в `opentelemetry-java-contrib`:
 
-| Клас                            | Артефакт                                                                             | Опис                                                                     |
+| Клас                             | Артефакт                                                                             | Опис                                                                            |
 | -------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
-| `OtlpHttpMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Експортує метрики через OTLP `http/protobuf`.                                       |
-| `OtlpGrpcMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Експортує метрики через OTLP `grpc`.                                                |
-| `LoggingMetricExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Логує метрики до JUL у форматі налагодження.                                      |
-| `OtlpJsonLoggingMetricExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Логує метрики до JUL у кодуванні OTLP JSON.                                  |
+| `OtlpHttpMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Експортує метрики через OTLP `http/protobuf`.                                   |
+| `OtlpGrpcMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Експортує метрики через OTLP `grpc`.                                            |
+| `LoggingMetricExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Логує метрики до JUL у форматі налагодження.                                    |
+| `OtlpJsonLoggingMetricExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Логує метрики до JUL у кодуванні OTLP JSON.                                     |
 | `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Логує метрики до `System.out` у OTLP [JSON file encoding][] (експериментально). |
 | `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Передає метрики до гнучкого перехоплювача перед експортом.                      |
 
@@ -877,11 +877,11 @@ public class SdkLoggerProviderConfig {
 
 Процесори логів, вбудовані в SDK та підтримувані спільнотою в `opentelemetry-java-contrib`:
 
-| Клас                      | Артефакт                                                                             | Опис                                                                  |
-| -------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| Клас                       | Артефакт                                                                             | Опис                                                                 |
+| -------------------------- | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
 | `BatchLogRecordProcessor`  | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Пакує логи та експортує їх через конфігурований `LogRecordExporter`. |
-| `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Експортує кожен лог через конфігурований `LogRecordExporter`.            |
-| `EventToSpanEventBridge`   | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Записує події логів як події відрізків на поточному відрізку.                |
+| `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | Експортує кожен лог через конфігурований `LogRecordExporter`.        |
+| `EventToSpanEventBridge`   | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Записує події логів як події відрізків на поточному відрізку.        |
 
 Наступний фрагмент коду демонструє програмну конфігурацію `LogRecordProcessor`:
 
@@ -955,12 +955,12 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 
 Експортери логів, вбудовані в SDK та підтримувані спільнотою в `opentelemetry-java-contrib`:
 
-| Клас                                      | Артефакт                                                                             | Опис                                                                         |
-| ------------------------------------------ | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
-| `OtlpHttpLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Експортує логи через OTLP `http/protobuf`.                                       |
-| `OtlpGrpcLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Експортує логи через OTLP `grpc`.                                                |
-| `SystemOutLogRecordExporter`               | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Логує логи до system out у форматі налагодження.                               |
-| `OtlpJsonLoggingLogRecordExporter` **[2]** | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Логує логи до JUL у кодуванні OTLP JSON.                                  |
+| Клас                                       | Артефакт                                                                             | Опис                                                                         |
+| ------------------------------------------ | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| `OtlpHttpLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Експортує логи через OTLP `http/protobuf`.                                   |
+| `OtlpGrpcLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | Експортує логи через OTLP `grpc`.                                            |
+| `SystemOutLogRecordExporter`               | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | Логує логи до system out у форматі налагодження.                             |
+| `OtlpJsonLoggingLogRecordExporter` **[2]** | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Логує логи до JUL у кодуванні OTLP JSON.                                     |
 | `OtlpStdoutLogRecordExporter`              | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | Логує логи до `System.out` у OTLP [JSON file encoding][] (експериментально). |
 | `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | Передає логи до гнучкого перехоплювача перед експортом.                      |
 
@@ -1084,16 +1084,16 @@ public class LogLimitsConfig {
 
 TextMapPropagators, вбудовані в SDK та підтримувані спільнотою в `opentelemetry-java-contrib`:
 
-| Клас                       | Артефакт                                                                                      | Опис                                                                             |
-| --------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `W3CTraceContextPropagator` | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | Поширює контекст трасування за допомогою протоколу поширення W3C trace context.                   |
-| `W3CBaggagePropagator`      | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | Поширює багаж за допомогою протоколу поширення W3C baggage.                               |
-| `MultiTextMapPropagator`    | `io.opentelemetry:opentelemetry-context:{{% param vers.otel %}}`                              | Компонує кілька поширювачів.                                                           |
-| `JaegerPropagator`          | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Поширює контекст трасування за допомогою протоколу поширення Jaeger.                         |
-| `B3Propagator`              | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Поширює контекст трасування за допомогою протоколу поширення B3.                             |
-| `OtTracePropagator`         | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Поширює контекст трасування за допомогою протоколу поширення OpenTracing.                    |
-| `PassThroughPropagator`     | `io.opentelemetry:opentelemetry-api-incubator:{{% param vers.otel %}}-alpha`                  | Поширює конфігурований набір полів без участі в телеметрії.                 |
-| `AwsXrayPropagator`         | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | Поширює контекст трасування за допомогою протоколу поширення AWS X-Ray.                           |
+| Клас                        | Артефакт                                                                                      | Опис                                                                                          |
+| --------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `W3CTraceContextPropagator` | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | Поширює контекст трасування за допомогою протоколу поширення W3C trace context.               |
+| `W3CBaggagePropagator`      | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | Поширює багаж за допомогою протоколу поширення W3C baggage.                                   |
+| `MultiTextMapPropagator`    | `io.opentelemetry:opentelemetry-context:{{% param vers.otel %}}`                              | Компонує кілька поширювачів.                                                                  |
+| `JaegerPropagator`          | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Поширює контекст трасування за допомогою протоколу поширення Jaeger.                          |
+| `B3Propagator`              | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Поширює контекст трасування за допомогою протоколу поширення B3.                              |
+| `OtTracePropagator`         | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Поширює контекст трасування за допомогою протоколу поширення OpenTracing.                     |
+| `PassThroughPropagator`     | `io.opentelemetry:opentelemetry-api-incubator:{{% param vers.otel %}}-alpha`                  | Поширює конфігурований набір полів без участі в телеметрії.                                   |
+| `AwsXrayPropagator`         | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | Поширює контекст трасування за допомогою протоколу поширення AWS X-Ray.                       |
 | `AwsXrayLambdaPropagator`   | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | Поширює контекст трасування за допомогою змінних середовища та протоколу поширення AWS X-Ray. |
 
 Наступний фрагмент коду демонструє програмну конфігурацію `TextMapPropagator`:
@@ -1209,7 +1209,7 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 - `OtlpHttp{Signal}Exporter` експортує дані через OTLP `http/protobuf`.
 - `OtlpGrpc{Signal}Exporter` експортує дані через OTLP `grpc`.
 
-Експортери для всіх сигналів доступні через `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`  і мають значний збіг між версіями `grpc` та `http/protobuf` протоколу OTLP протоколу OTLP, а також між сигналами. У наступних розділах детально розглянуто ці ключові поняття:
+Експортери для всіх сигналів доступні через `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}` і мають значний збіг між версіями `grpc` та `http/protobuf` протоколу OTLP протоколу OTLP, а також між сигналами. У наступних розділах детально розглянуто ці ключові поняття:
 
 - [Відправники](#senders): абстракція для різних клієнтських бібліотек HTTP / gRPC.
 - [Автентифікація](#authentication): опції для експортерів OTLP.
@@ -1218,17 +1218,17 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 
 Експортери залежать від різних клієнтських бібліотек для виконання HTTP та gRPC запитів. Немає єдиної клієнтської бібліотеки HTTP / gRPC, яка задовольняє всі випадки використання в екосистемі Java:
 
-- Java 11+ приносить вбудований `java.net.http.HttpClient`, але `opentelemetry-java` потрібно підтримувати користувачів Java 8+, і це не можна використовувати для експорту через `gRPC`, оскільки немає підтримки  trailer header.
-- [OkHttp](https://square.github.io/okhttp/) надає потужний HTTP клієнт з підтримкою  trailer header, але залежить від стандартної бібліотеки kotlin.
+- Java 11+ приносить вбудований `java.net.http.HttpClient`, але `opentelemetry-java` потрібно підтримувати користувачів Java 8+, і це не можна використовувати для експорту через `gRPC`, оскільки немає підтримки trailer header.
+- [OkHttp](https://square.github.io/okhttp/) надає потужний HTTP клієнт з підтримкою trailer header, але залежить від стандартної бібліотеки kotlin.
 - [grpc-java](https://github.com/grpc/grpc-java) надає власну абстракцію `ManagedChannel` з різними [реалізаціями транспорту](https://github.com/grpc/grpc-java#transport), але не підходить для `http/protobuf`.
 
 Щоб задовольнити різні випадки використання, `opentelemetry-exporter-otlp` використовує внутрішню абстракцію "відправника" з різними реалізаціями, щоб відобразити обмеження застосунку. Щоб вибрати іншу реалізацію, виключіть стандартну залежність `io.opentelemetry:opentelemetry-exporter-sender-okhttp` та додайте залежність від альтернативи.
 
-| Артефакт                                                                                              | Опис                                               | Протоколи OTLP          | Стандартно |
-| ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------------------- | ------- |
-| `io.opentelemetry:opentelemetry-exporter-sender-okhttp:{{% param vers.otel %}}`                       | Реалізація на основі OkHttp.                              | `grpc`, `http/protobuf` | Так     |
-| `io.opentelemetry:opentelemetry-exporter-sender-jdk:{{% param vers.otel %}}`                          | Реалізація на основі `java.net.http.HttpClient` Java 11+. | `http/protobuf`         | Ні      |
-| `io.opentelemetry:opentelemetry-exporter-sender-grpc-managed-channel:{{% param vers.otel %}}` **[1]** | Реалізація на основі `ManagedChannel` `grpc-java`.        | `grpc`                  | Ні      |
+| Артефакт                                                                                              | Опис                                                      | Протоколи OTLP          | Стандартно |
+| ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------------------- | ---------- |
+| `io.opentelemetry:opentelemetry-exporter-sender-okhttp:{{% param vers.otel %}}`                       | Реалізація на основі OkHttp.                              | `grpc`, `http/protobuf` | Так        |
+| `io.opentelemetry:opentelemetry-exporter-sender-jdk:{{% param vers.otel %}}`                          | Реалізація на основі `java.net.http.HttpClient` Java 11+. | `http/protobuf`         | Ні         |
+| `io.opentelemetry:opentelemetry-exporter-sender-grpc-managed-channel:{{% param vers.otel %}}` **[1]** | Реалізація на основі `ManagedChannel` `grpc-java`.        | `grpc`                  | Ні         |
 
 **[1]**: Щоб використовувати `opentelemetry-exporter-sender-grpc-managed-channel`, ви також повинні додати залежність від [реалізацій транспорту gRPC](https://github.com/grpc/grpc-java#transport).
 
@@ -1342,5 +1342,4 @@ public class OtlpAuthenticationConfig {
 
 TODO: документувати інструменти, доступні для тестування SDK
 
-[JSON file encoding]:
-  /docs/specs/otel/protocol/file-exporter/#json-file-serialization
+[JSON file encoding]: /docs/specs/otel/protocol/file-exporter/#json-file-serialization

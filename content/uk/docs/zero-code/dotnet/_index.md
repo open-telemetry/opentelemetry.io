@@ -212,7 +212,7 @@ Register-OpenTelemetryForIIS
 
 {{% alert title="Примітка" color="warning" %}} Автоматична кореляція логів з трейсами, надана OpenTelemetry .NET Automatic Instrumentation, наразі працює тільки для .NET застосунків, що використовують `Microsoft.Extensions.Logging`. Дивіться тікет [#2310](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2310) для отримання додаткової інформації. {{% /alert %}}
 
-OpenTelemetry .NET SDK автоматично корелює логи з даними трасування. Коли логи генеруються в контексті активного трасування, [поля](/docs/specs/otel/logs/data-model#trace-context-fields) контексту трасування  `TraceId`, `SpanId`, `TraceState` заповнюються автоматично.
+OpenTelemetry .NET SDK автоматично корелює логи з даними трасування. Коли логи генеруються в контексті активного трасування, [поля](/docs/specs/otel/logs/data-model#trace-context-fields) контексту трасування `TraceId`, `SpanId`, `TraceState` заповнюються автоматично.
 
 Наступні логи створені демонстраційним консольним застосунком:
 

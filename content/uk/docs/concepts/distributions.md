@@ -68,5 +68,4 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 
 > Будь-яка підтримка дистрибутиву надається авторами дистрибутиву, а не авторами OpenTelemetry.
 
-[guidelines]:
-  https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md
+[guidelines]: https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md

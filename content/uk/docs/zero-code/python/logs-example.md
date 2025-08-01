@@ -138,7 +138,5 @@ Span ID: f318281c4654edc5
 
 Зверніть увагу, що подія відрізка та лог мають однаковий SpanID (`f318281c4654edc5`). SDK логування додає SpanID поточного відрізка до будь-яких зареєстрованих подій для покращення можливості кореляції телеметрії.
 
-[api reference]:
-  https://opentelemetry-python.readthedocs.io/en/latest/index.html
-[репозиторій OpenTelemetry Python]:
-  https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/logs
+[api reference]: https://opentelemetry-python.readthedocs.io/en/latest/index.html
+[репозиторій OpenTelemetry Python]: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/logs

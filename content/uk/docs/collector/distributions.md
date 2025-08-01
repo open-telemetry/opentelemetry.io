@@ -6,8 +6,7 @@ default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 
 Проєкт OpenTelemetry наразі пропонує попередньо зібрані [дистрибутиви][distributions] Колектора. Компоненти, включені в дистрибутиви, можна знайти в `manifest.yaml` кожного дистрибутиву.
 
-[distributions]:
-  https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions
+[distributions]: https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions
 
 {{% uk/ecosystem/distributions-table filter="first-party-collector" %}}
 
@@ -30,5 +29,4 @@ default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 - Обліковий запис GitHub або адреса електронної пошти контактної особи, щоб ми могли звʼязатися у разі виникнення запитань
 
 [submit a PR]: /docs/contributing/pull-requests/
-[distributions list]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml
+[distributions list]: https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml

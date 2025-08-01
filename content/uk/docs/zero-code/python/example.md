@@ -299,13 +299,8 @@ opentelemetry-instrument --traces_exporter console --metrics_exporter none --log
 ```
 
 [semantic convention]: /docs/specs/semconv/http/http-spans/
-[api reference]:
-  https://opentelemetry-python.readthedocs.io/en/latest/index.html
-[instrumentation]:
-  https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
-[monkey-patching]:
-  https://stackoverflow.com/questions/5626193/what-is-monkey-patching
-[opentracing example]:
-  https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
-[source files]:
-  https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation
+[api reference]: https://opentelemetry-python.readthedocs.io/en/latest/index.html
+[instrumentation]: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation
+[monkey-patching]: https://stackoverflow.com/questions/5626193/what-is-monkey-patching
+[opentracing example]: https://github.com/yurishkuro/opentracing-tutorial/tree/master/python
+[source files]: https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/auto-instrumentation

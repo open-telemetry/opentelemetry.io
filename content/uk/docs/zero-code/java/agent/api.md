@@ -1,8 +1,7 @@
 ---
 title: Розширення інструментацій за допомогою API
 linkTitle: Розширення за допомогою API
-description:
-  Використовуйте OpenTelemetry API разом з Java-агентом для розширення автоматично згенерованої телеметрії власними відрізками та метриками
+description: Використовуйте OpenTelemetry API разом з Java-агентом для розширення автоматично згенерованої телеметрії власними відрізками та метриками
 weight: 21
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ---
@@ -72,5 +71,4 @@ Meter meter = GlobalOpenTelemetry.getMeter("application");
 
 Повний приклад можна знайти в [репозиторії з прикладами][example repository].
 
-[example repository]:
-  https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent
+[example repository]: https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent

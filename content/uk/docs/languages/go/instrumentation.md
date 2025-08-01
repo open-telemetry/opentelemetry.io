@@ -963,20 +963,13 @@ func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.Logger
 [специфікація opentelemetry]: /docs/specs/otel/
 [семантичні конвенції трейсів]: /docs/specs/semconv/general/trace/
 [бібліотека інструментування]: ../libraries/
-[opentelemetry collector]:
-  https://github.com/open-telemetry/opentelemetry-collector
+[opentelemetry collector]: https://github.com/open-telemetry/opentelemetry-collector
 [API мосту логів]: /docs/specs/otel/logs/api/
 [модель даних логів]: /docs/specs/otel/logs/data-model
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
-[`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric
-[`go.opentelemetry.io/otel/metric`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/metric
-[`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp
-[`go.opentelemetry.io/otel/sdk/log`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/sdk/log
-[`go.opentelemetry.io/otel/sdk/metric`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric
-[`go.opentelemetry.io/otel/sdk/resource`]:
-  https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource
+[`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]: https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric
+[`go.opentelemetry.io/otel/metric`]: https://pkg.go.dev/go.opentelemetry.io/otel/metric
+[`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp`]: https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp
+[`go.opentelemetry.io/otel/sdk/log`]: https://pkg.go.dev/go.opentelemetry.io/otel/sdk/log
+[`go.opentelemetry.io/otel/sdk/metric`]: https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric
+[`go.opentelemetry.io/otel/sdk/resource`]: https://pkg.go.dev/go.opentelemetry.io/otel/sdk/resource

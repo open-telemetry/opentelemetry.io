@@ -39,21 +39,14 @@ cSpell:ignore: july
 
 Одним винятком є репозиторій [census-instrumentation/opencensus-python][][^python-timeline].
 
-[go shim]:
-  https://github.com/open-telemetry/opentelemetry-go/tree/main/bridge/opencensus
-[java shim]:
-  https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim
-[python shim]:
-  https://github.com/open-telemetry/opentelemetry-python/tree/main/shim/opentelemetry-opencensus-shim
-[js shim]:
-  https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/shim-opencensus
-[census-instrumentation/opencensus-python]:
-  https://github.com/census-instrumentation/opencensus-python
+[go shim]: https://github.com/open-telemetry/opentelemetry-go/tree/main/bridge/opencensus
+[java shim]: https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim
+[python shim]: https://github.com/open-telemetry/opentelemetry-python/tree/main/shim/opentelemetry-opencensus-shim
+[js shim]: https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/shim-opencensus
+[census-instrumentation/opencensus-python]: https://github.com/census-instrumentation/opencensus-python
 
-[^python-timeline]:
-    Деякі проєкти в репозиторії `opencensus-python` все ще використовуються як рекомендовані промислові рішення. Ці проєкти будуть продовжувати підтримуватися. Для деталей щодо термінів підтримки, наступних кроків для міграції та загальних питань підтримки, звертайтеся до підтримувачів репозиторію.
+[^python-timeline]: Деякі проєкти в репозиторії `opencensus-python` все ще використовуються як рекомендовані промислові рішення. Ці проєкти будуть продовжувати підтримуватися. Для деталей щодо термінів підтримки, наступних кроків для міграції та загальних питань підтримки, звертайтеся до підтримувачів репозиторію.
 
 [^shim-next-release]: Пакунки мостів для Python та JavaScript будуть випущені незабаром.
 
-[^shim-support]:
-    Ці мости реалізують стабільну [специфікацію сумісності OpenCensus](/docs/specs/otel/compatibility/opencensus#migration-path) та будуть підтримуватися принаймні один рік відповідно до [довгострокових рекомендацій підтримки OpenTelemetry](/docs/specs/otel/versioning-and-stability/#long-term-support).
+[^shim-support]: Ці мости реалізують стабільну [специфікацію сумісності OpenCensus](/docs/specs/otel/compatibility/opencensus#migration-path) та будуть підтримуватися принаймні один рік відповідно до [довгострокових рекомендацій підтримки OpenTelemetry](/docs/specs/otel/versioning-and-stability/#long-term-support).

@@ -163,8 +163,7 @@ env OTEL_TRACES_EXPORTER=console rails server -p 8080
 - [Демо OpenTelemetry](/docs/demo/) включає оснований на Ruby [Email Service](/docs/demo/services/email/).
 
 [трейси]: /docs/concepts/signals/traces/
-[інструментування]:
-  https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation
+[інструментування]: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation
 [config]: ../libraries/#configuring-specific-instrumentation-libraries
 [експортери]: ../exporters/
 [поширення контексту]: ../instrumentation/#context-propagation

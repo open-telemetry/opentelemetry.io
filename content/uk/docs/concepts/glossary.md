@@ -1,7 +1,6 @@
 ---
 title: Глосарій
-description:
-  Визначення та домовленості для термінів телеметрії, що використовуються в OpenTelemetry.
+description: Визначення та домовленості для термінів телеметрії, що використовуються в OpenTelemetry.
 weight: 200
 default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 ---
@@ -200,8 +199,7 @@ default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 
 > **Правопис**: Пишіть «OTEPs» у формі множини. Не використовуйте `OTep` або `otep` в описах.
 
-[OpenTelemetry Enhancement Proposal]:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/README.md
+[OpenTelemetry Enhancement Proposal]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/README.md
 
 ### OTLP
 
@@ -317,5 +315,4 @@ default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
 [status]: /docs/specs/otel/trace/api#set-status
 [tracer]: /docs/specs/otel/trace/api#tracer
 [traces]: /docs/specs/otel/overview#traces
-[zpages]:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/main/development/trace/zpages.md
+[zpages]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/development/trace/zpages.md

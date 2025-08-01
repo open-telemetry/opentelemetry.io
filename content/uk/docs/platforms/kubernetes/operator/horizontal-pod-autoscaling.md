@@ -1,7 +1,6 @@
 ---
 title: Горизонтальне автомасштабування подів
-description:
-  Налаштування горизонтального автомасштабування подів з вашим OpenTelemetry Collector
+description: Налаштування горизонтального автомасштабування подів з вашим OpenTelemetry Collector
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 # prettier-ignore
 cSpell:ignore: autoscaler statefulset мебібайт мебібайти міліядер
@@ -63,8 +62,7 @@ metadata:
   namespace: opentelemetry
 spec:
   mode: statefulset
-  image:
-    otel/opentelemetry-collector-contrib:{{% version-from-registry
+  image: otel/opentelemetry-collector-contrib:{{% version-from-registry
     collector-processor-batch %}}
   serviceAccount: otelcontribcol
   autoscaler:

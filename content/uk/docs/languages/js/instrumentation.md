@@ -112,9 +112,7 @@ const app: Express = express();
 app.get('/rolldice', (req, res) => {
   const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
   if (isNaN(rolls)) {
-    res
-      .status(400)
-      .send("Параметр запиту 'rolls' відсутній або не є числом.");
+    res.status(400).send("Параметр запиту 'rolls' відсутній або не є числом.");
     return;
   }
   res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));
@@ -138,9 +136,7 @@ const app = express();
 app.get('/rolldice', (req, res) => {
   const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
   if (isNaN(rolls)) {
-    res
-      .status(400)
-      .send("Параметр запиту 'rolls' відсутній або не є числом.");
+    res.status(400).send("Параметр запиту 'rolls' відсутній або не є числом.");
     return;
   }
   res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));
@@ -450,9 +446,7 @@ const app: Express = express();
 app.get('/rolldice', (req, res) => {
   const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
   if (isNaN(rolls)) {
-    res
-      .status(400)
-      .send("Параметр запиту 'rolls' відсутній або не є числом.");
+    res.status(400).send("Параметр запиту 'rolls' відсутній або не є числом.");
     return;
   }
   res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));
@@ -479,9 +473,7 @@ const app = express();
 app.get('/rolldice', (req, res) => {
   const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
   if (isNaN(rolls)) {
-    res
-      .status(400)
-      .send("Параметр запиту 'rolls' відсутній або не є числом.");
+    res.status(400).send("Параметр запиту 'rolls' відсутній або не є числом.");
     return;
   }
   res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));
@@ -1319,9 +1311,7 @@ const app: Express = express();
 app.get('/rolldice', (req, res) => {
   const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
   if (isNaN(rolls)) {
-    res
-      .status(400)
-      .send("Параметр запиту 'rolls' відсутній або не є числом.");
+    res.status(400).send("Параметр запиту 'rolls' відсутній або не є числом.");
     return;
   }
   res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));
@@ -1349,9 +1339,7 @@ const app = express();
 app.get('/rolldice', (req, res) => {
   const rolls = req.query.rolls ? parseInt(req.query.rolls.toString()) : NaN;
   if (isNaN(rolls)) {
-    res
-      .status(400)
-      .send("Параметр запиту 'rolls' відсутній або не є числом.");
+    res.status(400).send("Параметр запиту 'rolls' відсутній або не є числом.");
     return;
   }
   res.send(JSON.stringify(rollTheDice(rolls, 1, 6)));

@@ -13,7 +13,5 @@ default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 
 [blog]: /blog/2025/kubecon-japan/
 [kubecon]: https://www.cncf.io/kubecon-cloudnativecon-events
-[LF-Japan]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-Japan-2025&utm_content=slim-banner
-[LF-India]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-india/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-India-2025&utm_content=slim-banner
+[LF-Japan]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-Japan-2025&utm_content=slim-banner
+[LF-India]: https://events.linuxfoundation.org/kubecon-cloudnativecon-india/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-India-2025&utm_content=slim-banner

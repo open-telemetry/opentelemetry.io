@@ -1,8 +1,7 @@
 ---
 title: OpenTelemetry Operator для Kubernetes
 linkTitle: Kubernetes Operator
-description:
-  Реалізація Kubernetes Operator, який керує колекторами та автоматичним інструментуванням робочого навантаження за допомогою бібліотек інструментування OpenTelemetry.
+description: Реалізація Kubernetes Operator, який керує колекторами та автоматичним інструментуванням робочого навантаження за допомогою бібліотек інструментування OpenTelemetry.
 aliases:
   - /docs/operator
   - /docs/k8s-operator

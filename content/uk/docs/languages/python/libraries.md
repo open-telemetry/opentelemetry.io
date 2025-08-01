@@ -90,5 +90,4 @@ HTTPXClientInstrumentor().uninstrument()
 
 Ви також можете перевірити [Інструментування для Python без коду](/docs/zero-code/python/).
 
-[opentelemetry-python-contrib]:
-  https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation#readme
+[opentelemetry-python-contrib]: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation#readme

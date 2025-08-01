@@ -18,12 +18,10 @@ OpenTelemetry наразі підтримує:
 Також в процесі розробки або в стадії [розгляду пропозицій][proposal]:
 
 - [Події][Events], є специфічним типом
-[логування](logs)
+  [логування](logs)
 - [Профілі][Profiles], зараз над ними працює Робоча група з профілювання.
 
 [Events]: /docs/specs/otel/logs/data-model/#events
-[Profiles]:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md
-[proposal]:
-  https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme
+[Profiles]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md
+[proposal]: https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme
 [signals]: /docs/specs/otel/glossary/#signals

@@ -1,8 +1,7 @@
 ---
 title: Демонстрація OpenTelemetry
 linkTitle: Демонстрація
-description:
-  OpenTelemetry Demo — це розподілена система на основі мікросервісів, призначена для ілюстрації реалізації OpenTelemetry в середовищі, наближеному до реального світу.
+description: OpenTelemetry Demo — це розподілена система на основі мікросервісів, призначена для ілюстрації реалізації OpenTelemetry в середовищі, наближеному до реального світу.
 aliases:
   - /community/demo
   - /docs/getting-started/demo

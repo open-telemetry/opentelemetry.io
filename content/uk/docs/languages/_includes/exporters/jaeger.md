@@ -1,6 +1,7 @@
 ---
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
 ---
+
 ## Jaeger
 
 ### Налаштування бекенду {#jaeger-backend-setup}

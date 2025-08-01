@@ -1,7 +1,6 @@
 ---
 title: Шлюз
-description:
-  Чому і як надсилати сигнали на єдину точку доступу OTLP, а звідти до бекендів
+description: Чому і як надсилати сигнали на єдину точку доступу OTLP, а звідти до бекендів
 weight: 3
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 # prettier-ignore
@@ -199,12 +198,9 @@ service:
 - Додана затримка у випадку каскадних колекторів
 - Вищі загальні витрати ресурсів (витрати)
 
-[lb-exporter]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter
-[tailsample-processor]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
-[spanmetrics-connector]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector
+[lb-exporter]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter
+[tailsample-processor]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor
+[spanmetrics-connector]: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector
 
 ## Кілька колекторів та принцип єдиного записувача {#multiple-collectors-and-the-single-writer-principle}
 

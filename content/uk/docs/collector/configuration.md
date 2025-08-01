@@ -76,8 +76,7 @@ otelcol validate --config=customconfig.yaml
 
 Хоча зазвичай краще привʼязувати точки доступу до `localhost`, коли всі клієнти локальні, наші приклади конфігурацій використовують "невизначену" адресу `0.0.0.0` для зручності. Collector наразі стандартно використовує `0.0.0.0`, але це значення буде змінено на `localhost` найближчим часом. Для отримання деталей щодо будь-якого з цих виборів як значення конфігурації кінцевої точки, див. [Захист від атак на відмову в обслуговуванні].
 
-[Захист від атак на відмову в обслуговуванні]:
-  https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md#safeguards-against-denial-of-service-attacks
+[Захист від атак на відмову в обслуговуванні]: https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md#safeguards-against-denial-of-service-attacks
 
 {{% /alert %}}
 

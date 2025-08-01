@@ -20,7 +20,5 @@ Change blog to refer to OTel blog post when it comes out:
 
 {{< /comment >}}
 
-[blog]:
-  https://www.cncf.io/announcements/2025/05/07/cncf-announces-speakers-and-sessions-for-kubecon-cloudnativecon-india/
-[LF]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-india/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-India-2025&utm_content=slim-banner
+[blog]: https://www.cncf.io/announcements/2025/05/07/cncf-announces-speakers-and-sessions-for-kubecon-cloudnativecon-india/
+[LF]: https://events.linuxfoundation.org/kubecon-cloudnativecon-india/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-India-2025&utm_content=slim-banner
