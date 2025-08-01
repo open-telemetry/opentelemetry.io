@@ -9,6 +9,28 @@ _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+i
 default_lang_commit: 41257fb00aaa8e04ac8a80b6ca10bee216d80f6b
 ---
 
+<style>
+  /* Force all list to be compact. */
+  li > p {
+    margin-bottom: 0;
+  }
+
+  /* Style "first time" alert */
+  .alert--first-timer {
+    margin: 0.5rem 0 !important;
+
+    > blockquote {
+      margin-top: 1rem;
+      margin-bottom: 0;
+      border-left-color: var(--bs-warning);
+      background-color: var(--bs-danger-bg-subtle);
+      > *:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+</style>
+
 ## Corrigindo uma _issue_ existente {#fixing-an-existing-issue}
 
 Uma das melhores formas de contribuir para a melhoria da documentação do OTel é
