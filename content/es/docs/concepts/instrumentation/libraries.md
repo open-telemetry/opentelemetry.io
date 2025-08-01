@@ -4,6 +4,7 @@ description: Aprende a añadir instrumentación nativa a tu librería
 aliases: [../instrumenting-library]
 weight: 40
 default_lang_commit: d8e58463c6e7c324b01115ab4f88d1f2bcf802c2
+Spell:ignore: cardinalidad definirlos serialización desactívalos muestreados
 ---
 
 OpenTelemetry proporciona [librerías de
