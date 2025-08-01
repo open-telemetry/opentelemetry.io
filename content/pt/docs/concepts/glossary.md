@@ -99,6 +99,15 @@ incluindo [Atributos](#attribute) e [Recursos](#resource). Outros campos também
 podem ser considerados `Metadados`, incluindo severidade e informações de
 rastreamento. Consulte a [especificação de campos][field].
 
+### Cardinalidade {#cardinality}
+
+O número de valores únicos para um determinado [Atributo](#attribute) ou
+conjunto de atributos. Alta cardinalidade significa muitos valores únicos, o que
+pode impactar o desempenho e os requisitos de armazenamento dos backends de
+telemetria. Por exemplo, um atributo `user_id` teria alta cardinalidade,
+enquanto um atributo `status_code` com valores como "200", "404", "500" teria
+baixa cardinalidade.
+
 ### Collector
 
 O [OpenTelemetry Collector], ou simplesmente Collector, é uma implementação
