@@ -16,7 +16,7 @@ L'agent est hautement configurable, soit par :
 - La définition de
   [variables d'environnement](/docs/specs/otel/configuration/sdk-environment-variables/)
 
-## Propriétés de configuration
+## Propriétés de configuration {#configuration-properties}
 
 Voici un exemple de configuration de l'agent via des propriétés de configuration
 :
@@ -54,7 +54,7 @@ Voici une explication de ce que chaque configuration fait :
   l'exportateur OTLP, voir
   [OTEL_EXPORTER_OTLP_HEADERS](/docs/languages/sdk-configuration/otlp-exporter/#otel_exporter_otlp_headers).
 
-## Variables d'environnement
+## Variables d'environnement {#environment-variables}
 
 Dans certains cas, la configuration via des
 [variables d'environnement](/docs/languages/sdk-configuration/) est préférable.
@@ -70,12 +70,12 @@ correct de la propriété de configuration souhaitée :
 Par exemple, `exporter_otlp_endpoint` est converti en
 `OTEL_EXPORTER_OTLP_ENDPOINT`.
 
-## Configuration spécifique à Python
+## Configuration spécifique à Python {#python-specific-configuration}
 
 Il existe des options de configuration spécifiques à Python que vous pouvez
 définir en préfixant les variables d'environnement avec `OTEL_PYTHON_`.
 
-### URLs à exclure
+### URLs à exclure {#excluded-urls}
 
 Utilisez une liste d'expressions régulières séparées par des virgules
 représentant les URLs à exclure dans toutes les instrumentations avec:
@@ -95,7 +95,7 @@ export OTEL_PYTHON_URLLIB3_EXCLUDED_URLS="client/.*/info"
 export OTEL_PYTHON_REQUESTS_EXCLUDED_URLS="healthcheck"
 ```
 
-### Noms d'attributs de requête
+### Noms d'attributs de requête {#request-attribute-names}
 
 Utilisez une liste de noms séparés par des virgules qui seront extraits de la
 requête et définis comme attributs sur les spans.
@@ -112,7 +112,7 @@ export OTEL_PYTHON_FALCON_TRACED_REQUEST_ATTRS='query_string,uri_template'
 export OTEL_PYTHON_TORNADO_TRACED_REQUEST_ATTRS='uri,query'
 ```
 
-### Journalisation
+### Journalisation {#logging}
 
 Il existe des options de configuration utilisables pour contrôler les journaux
 qui sont générés.
@@ -137,7 +137,7 @@ export OTEL_PYTHON_LOG_LEVEL=debug
 export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 ```
 
-### Autre
+### Autre {#other}
 
 Il existe d'autres options de configuration qui peuvent être définies et qui
 n'entrent pas dans une catégorie spécifique.
@@ -164,7 +164,7 @@ export OTEL_PYTHON_ID_GENERATOR=xray
 export OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS=true
 ```
 
-## Désactivation d'instrumentations spécifiques
+## Désactivation d'instrumentations spécifiques {#disabling-specific-instrumentations}
 
 Par défaut, l'agent Python détectera les paquets d'un programme Python et
 instrumentera tous les paquets qu'il peut. Cela facilite l'instrumentation, mais

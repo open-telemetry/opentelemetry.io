@@ -45,7 +45,7 @@ from opentelemetry import trace
 
 tracer = trace.get_tracer_provider().get_tracer(__name__)
 
-# Corrélation du contexte de trace
+# Corrélation du contexte de trace {#trace-context-correlation}
 with tracer.start_as_current_span("foo"):
     # Faire quelque chose
     current_span = trace.get_current_span()
@@ -57,7 +57,7 @@ Ouvrez et copiez l'exemple
 [otel-collector-config.yaml](https://github.com/open-telemetry/opentelemetry-python/blob/main/docs/examples/logs/otel-collector-config.yaml)
 , et enregistrez-le dans `python-logs-example/otel-collector-config.yaml`
 
-## Préparation
+## Préparation {#prepare}
 
 Exécutez l'exemple suivant, nous vous recommandons d'utiliser un environnement
 virtuel pour le faire. Exécutez les commandes suivantes pour vous préparer à
@@ -69,7 +69,7 @@ virtualenv python_logs_example
 source python_logs_example/bin/activate
 ```
 
-## Installation
+## Installation {#install}
 
 Les commandes suivantes installent les paquets appropriés. Le paquet
 `opentelemetry-distro` dépend de quelques autres, comme `opentelemetry-sdk` pour
@@ -97,7 +97,7 @@ télémétrie à d'autres destinations, comme un Collecteur OpenTelemetry.
 > pouvez également étendre l'instrumentation automatique en important l'API
 > OpenTelemetry. Pour plus de détails, voir la [référence de l'API][].
 
-## Exécution
+## Exécution {#execute}
 
 Cette section vous guide à travers le processus d'exécution d'une journalisation
 instrumentée automatiquement.

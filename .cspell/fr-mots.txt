@@ -1,4 +1,5 @@
 extensibilité
 observabilité
+réexécuté
 télémétrie
 traçage

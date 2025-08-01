@@ -20,7 +20,7 @@ est la manière dont ils sont instrumentés :
 3. `server_programmatic.py` est instrumenté _programmatiquement_.
 
 L'instrumentation
-[_programmatique_](#exécuter-le-serveur-instrumenté-programmatiquement) est un
+[_programmatique_](#programmatically-instrumented-server) est un
 type d'instrumentation qui nécessite un minimum de code d'instrumentation à
 ajouter à l'application. Seules quelques bibliothèques d'instrumentation offrent
 des capacités supplémentaires qui vous donnent un plus grand contrôle sur le
@@ -38,7 +38,7 @@ nécessaire pour intégrer OpenTelemetry dans le code de votre application.
 Ci-dessous, vous verrez la différence entre une route Flask instrumentée
 manuellement, automatiquement et programmatiquement.
 
-### Serveur instrumenté manuellement
+### Serveur instrumenté manuellement {#manually-instrumented-server}
 
 `server_manual.py`
 
@@ -55,7 +55,7 @@ def server_request():
         return "served"
 ```
 
-### Serveur instrumenté automatiquement
+### Serveur instrumenté automatiquement {#automatically-instrumented-server}
 
 `server_automatic.py`
 
@@ -66,7 +66,7 @@ def server_request():
     return "served"
 ```
 
-### Serveur instrumenté programmatiquement
+### Serveur instrumenté programmatiquement {#programmatically-instrumented-server}
 
 `server_programmatic.py`
 
@@ -76,14 +76,14 @@ instrumentor = FlaskInstrumentor()
 app = Flask(__name__)
 
 instrumentor.instrument_app(app)
-# instrumentor.instrument_app(app, excluded_urls="/server_request")
+# instrumentor.instrument_app(app, excluded_urls="/server_request") {#instrumentorinstrument_appapp-excluded_urlsserver_request}
 @app.route("/server_request")
 def server_request():
     print(request.args.get("param"))
     return "served"
 ```
 
-## Préparation
+## Préparation {#prepare}
 
 Exécutez l'exemple suivant dans un environnement virtuel séparé. Exécutez les
 commandes suivantes pour préparer l'auto-instrumentation :
@@ -95,7 +95,7 @@ python -m venv venv
 source ./venv/bin/activate
 ```
 
-## Installation
+## Installation {#install}
 
 Exécutez les commandes suivantes pour installer les paquets appropriés. Le
 paquet `opentelemetry-distro` dépend de quelques autres, comme
@@ -129,13 +129,13 @@ télémétrie à d'autres destinations, comme un Collecteur OpenTelemetry.
 > pouvez également étendre l'instrumentation automatique en important l'API
 > OpenTelemetry. Pour plus de détails, voir la [référence de l'API][].
 
-## Exécution
+## Exécution {#execute}
 
 Cette section vous guide à travers le processus manuel d'instrumentation d'un
 serveur ainsi que le processus d'exécution d'un serveur instrumenté
 automatiquement.
 
-### Exécuter le serveur instrumenté manuellement
+### Exécuter le serveur instrumenté manuellement {#execute-the-manually-instrumented-server}
 
 Exécutez le serveur dans deux consoles séparées, une pour chacun des scripts à
 exécuter qui composent cet exemple :
@@ -190,7 +190,7 @@ suivant :
 }
 ```
 
-### Exécuter le serveur instrumenté automatiquement
+### Exécuter le serveur instrumenté automatiquement {#execute-the-automatically-instrumented-server}
 
 Arrêtez l'exécution de `server_manual.py` en appuyant sur <kbd>Control+C</kbd>
 et exécutez la commande suivante à la place :
@@ -253,7 +253,7 @@ suivant :
 Vous pouvez voir que les deux sorties sont les mêmes car l'instrumentation
 automatique fait exactement ce que fait l'instrumentation manuelle.
 
-### Exécuter le serveur instrumenté programmatiquement
+### Exécuter le serveur instrumenté programmatiquement {#execute-the-programmatically-instrumented-server}
 
 Il est également possible d'utiliser les bibliothèques d'instrumentation (telles
 que `opentelemetry-instrumentation-flask`) par elles-mêmes, ce qui peut avoir
@@ -278,7 +278,7 @@ python client.py testing
 Les résultats devraient être les mêmes que lors de l'exécution avec
 l'instrumentation manuelle.
 
-#### Utilisation des fonctionnalités d'instrumentation programmatique
+#### Utilisation des fonctionnalités d'instrumentation programmatique {#using-programmatic-instrumentation-features}
 
 Certaines bibliothèques d'instrumentation incluent des fonctionnalités qui
 permettent un contrôle plus précis lors de l'instrumentation programmatique, la
@@ -287,7 +287,7 @@ bibliothèque d'instrumentation pour Flask en est une.
 Cet exemple a une ligne commentée, changez-la comme ceci :
 
 ```python
-# instrumentor.instrument_app(app)
+# instrumentor.instrument_app(app) {#instrumentorinstrument_appapp}
 instrumentor.instrument_app(app, excluded_urls="/server_request")
 ```
 
@@ -296,7 +296,7 @@ côté serveur. Ceci est dû à l'option `excluded_urls` passée à `instrument_
 qui empêche effectivement la fonction `server_request` d'être instrumentée car
 son URL correspond à l'expression régulière passée à `excluded_urls`.
 
-### Instrumentation pendant le débogage
+### Instrumentation pendant le débogage {#instrumentation-while-debugging}
 
 Le mode de débogage peut être activé dans l'application Flask comme ceci :
 
@@ -314,12 +314,12 @@ if __name__ == "__main__":
     app.run(port=8082, debug=True, use_reloader=False)
 ```
 
-## Configuration
+## Configuration {#configure}
 
 L'auto-instrumentation peut consommer la configuration à partir des variables
 d'environnement.
 
-### Capturer les en-têtes de requête et de réponse HTTP
+### Capturer les en-têtes de requête et de réponse HTTP {#capture-http-request-and-response-headers}
 
 Vous pouvez capturer les en-têtes HTTP prédéfinis en tant qu'attributs de span,
 conformément à la [convention sémantique][].

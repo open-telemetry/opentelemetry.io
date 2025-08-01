@@ -5,9 +5,9 @@ weight: 40
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 ---
 
-## Problèmes d'installation
+## Problèmes d'installation {#installation-issues}
 
-### Échec de l'installation du paquet Python
+### Échec de l'installation du paquet Python {#python-package-installation-failure}
 
 Les installations de paquets Python nécessitent `gcc` et `gcc-c++`, que vous
 devrez peut-être installer si vous utilisez une version allégée de Linux, telle
@@ -40,7 +40,7 @@ apk add build-base
 
 {#bootstrap-using-uv}
 
-### Bootstrap avec uv
+### Bootstrap avec uv {#bootstrap-using-uv}
 
 L'exécution de `opentelemetry-bootstrap -a install` lors de l'utilisation du
 gestionnaire de paquets [uv](https://docs.astral.sh/uv/) peut entraîner des
@@ -63,7 +63,7 @@ uv run opentelemetry-bootstrap -a requirements | uv pip install --requirement -
 ```
 
 Enfin, utilisez `uv run` pour démarrer votre application (voir
-[Configuration de l'agent](/docs/zero-code/python/#configuration-de-lagent)) :
+[Configuration de l'agent](/docs/zero-code/python/#configuring-the-agent)) :
 
 ```sh
 uv run opentelemetry-instrument python myapp.py
@@ -74,9 +74,9 @@ vous exécutez `uv sync` ou mettez à jour des paquets existants. Il est donc
 recommandé de faire de l'installation une partie de votre pipeline de
 construction.
 
-## Problèmes d'instrumentation
+## Problèmes d'instrumentation {#instrumentation-issues}
 
-### Le mode de débogage de Flask avec le rechargeur casse l'instrumentation
+### Le mode de débogage de Flask avec le rechargeur casse l'instrumentation {#flask-debug-mode-with-reloader-breaks-instrumentation}
 
 Le mode de débogage peut être activé dans l'application Flask comme ceci :
 
@@ -94,9 +94,9 @@ if __name__ == "__main__":
     app.run(port=8082, debug=True, use_reloader=False)
 ```
 
-## Problèmes de connectivité
+## Problèmes de connectivité {#connectivity-issues}
 
-### Connectivité gRPC
+### Connectivité gRPC {#grpc-connectivity}
 
 Pour déboguer les problèmes de connectivité gRPC de Python, définissez les
 variables d'environnement de débogage gRPC suivantes :

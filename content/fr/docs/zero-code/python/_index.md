@@ -14,7 +14,7 @@ le [monkey patching](https://fr.wikipedia.org/wiki/Monkey_patch) (ou
 l'exécution, permettant la capture de données de télémétrie de nombreuses
 bibliothèques et frameworks populaires.
 
-## Installation
+## Installation {#setup}
 
 Exécutez les commandes suivantes pour installer les paquets appropriés.
 
@@ -53,11 +53,11 @@ d'instrumentation recommandées à installer. Pour plus d'informations, voir
 utilisez le gestionnaire de paquets [uv](https://docs.astral.sh/uv/), vous
 pourriez rencontrer des difficultés lors de l'exécution de
 `opentelemetry-bootstrap -a install`. Pour plus de détails, voir
-[Bootstrap avec uv](troubleshooting/#bootstrap-avec-uv). {{% /alert %}}
+[Bootstrap avec uv](troubleshooting/#bootstrap-using-uv). {{% /alert %}}
 
 {#configuring-the-agent}
 
-## Configuration de l'agent
+## Configuration de l'agent {#configuring-the-agent}
 
 L'agent est hautement configurable.
 
@@ -88,7 +88,7 @@ opentelemetry-instrument \
 Pour voir la gamme complète des options de configuration, voir
 [Configuration de l'agent](configuration).
 
-## Bibliothèques et frameworks supportés
+## Bibliothèques et frameworks supportés {#supported-libraries-and-frameworks}
 
 Un certain nombre de bibliothèques Python populaires sont auto-instrumentées, y
 compris
@@ -98,7 +98,7 @@ et
 Pour la liste complète, voir le
 [Registre](/ecosystem/registry/?language=python&component=instrumentation).
 
-## Dépannage
+## Dépannage {#troubleshooting}
 
 Pour les étapes de dépannage générales et les solutions à des problèmes
 spécifiques, voir [Dépannage](./troubleshooting/).
