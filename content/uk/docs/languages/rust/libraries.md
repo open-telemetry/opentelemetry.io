@@ -6,7 +6,7 @@ description: Як інструментувати бібліотеки, від я
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 ---
 
-{{% uk/docs/languages/libraries-intro rust %}}
+{{% docs/languages/libraries-intro rust %}}
 
 ## Використання бібліотек інструментування {#use-instrumentation-libraries}
 

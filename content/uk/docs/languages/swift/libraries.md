@@ -9,7 +9,7 @@ cSpell:ignore: darwin inout iphone NSURL Signposter tvos urlsession wifi про�
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% uk/docs/languages/libraries-intro "swift" %}}
+{{% docs/languages/libraries-intro "swift" %}}
 
 ## Використання бібліотек інструментів {#use-instrumentation-libraries}
 

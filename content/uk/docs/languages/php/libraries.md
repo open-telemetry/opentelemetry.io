@@ -6,7 +6,7 @@ default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
 cSpell:ignore: Packagist
 ---
 
-{{% uk/docs/languages/libraries-intro "php" %}}
+{{% docs/languages/libraries-intro "php" %}}
 
 ## Використання бібліотек інструментування {#use-instrumentation-libraries}
 
