@@ -103,7 +103,7 @@ la instrumentación totalmente automática y sigue siendo útil en otros.
 El resto de este documento proporciona una guía sobre qué y cómo instrumentar tu
 aplicación.
 
-## API de OpenTelemetry {#opetelemetry-api}
+## API de OpenTelemetry {#opentelemetry-api}
 
 El primer paso al instrumentar una aplicación es incluir el paquete de la API de
 OpenTelemetry como una dependencia.
@@ -114,7 +114,7 @@ implementaciones no operativas. A menos que tu aplicación importe el SDK de
 OpenTelemetry, tu instrumentación no hace nada y no afecta al rendimiento de la
 aplicación.
 
-### Las librerías solo deben usar la API de OpenTelemetry {#sibraries-should-only-use-the-openTelemetry-api}
+### Las librerías solo deben usar la API de OpenTelemetry {#libraries-should-only-use-the-openTelemetry-api}
 
 Si te preocupa añadir nuevas dependencias, aquí tienes algunas consideraciones
 para ayudarte a decidir cómo minimizar los conflictos de dependencias:
@@ -263,8 +263,8 @@ trazas.
 Si tu aplicación usa un módulo de logging o similar, este módulo podría ya tener
 integración con OpenTelemetry. Para averiguarlo, consulta el
 [registro](/ecosystem/registry/). Las integraciones suelen estampar el contexto
-de traza activo en todos los logs, para que los usuarios puedan
-correlacionarlos.
+de traza activo en todos los logs, para que los usuarios los puedan
+correlacionar.
 
 Si tu lenguaje y ecosistema no tienen soporte de logging común, usa los [eventos
 de span][span events] para compartir detalles adicionales de la aplicación. Los
@@ -312,7 +312,7 @@ try (Scope unused = span.makeCurrent()) {
 ```
 
 En el caso de un sistema de mensajería, es posible que recibas más de un mensaje
-a la vez. Los mensajes recibidos se convierten en enlades en el span que creas.
+a la vez. Los mensajes recibidos se convierten en enlaces en el span que creas.
 Consulta las
 [convenciones de mensajería](/docs/specs/semconv/messaging/messaging-spans/)
 para más detalles.
