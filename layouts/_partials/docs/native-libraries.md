@@ -1,4 +1,4 @@
-{{ $langIndex := partial "func/get-lang.html" (dict
+{{ $langIndex := partial "docs/get-lang.html" (dict
     "page" .Page
     "lang" (.Get 0)
     "componentName" "native-libraries.md")

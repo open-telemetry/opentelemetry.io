@@ -857,6 +857,12 @@ maintainers:
       - collector-releases-maintainers
     html_url: https://github.com/MovieStoreGuy
     avatar_url: https://avatars.githubusercontent.com/u/30928402?v=4
+  - name: mowies
+    teams:
+      - collector-releases-approvers
+      - collector-releases-maintainers
+    html_url: https://github.com/mowies
+    avatar_url: https://avatars.githubusercontent.com/u/6901203?v=4
   - name: MrAlias
     teams:
       - configuration-approvers
@@ -1788,11 +1794,6 @@ approvers:
       - semconv-security-approvers
     html_url: https://github.com/mjwolf
     avatar_url: https://avatars.githubusercontent.com/u/2590169?v=4
-  - name: mowies
-    teams:
-      - collector-releases-approvers
-    html_url: https://github.com/mowies
-    avatar_url: https://avatars.githubusercontent.com/u/6901203?v=4
   - name: Msksgm
     teams:
       - docs-ja-approvers
