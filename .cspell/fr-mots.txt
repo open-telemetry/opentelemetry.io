@@ -1,4 +1,9 @@
 extensibilité
+multiligne
 observabilité
+opentelemetryautoinstrumentationruntimenative
+additionaldeps
+packagées
+phpini
 télémétrie
 traçage
