@@ -1,6 +1,11 @@
+{{ $langIndex := partial "func/get-lang.html" (dict
+    "page" .Page
+    "lang" (.Get 0)
+    "componentName" "native-libraries.md")
+-}}
 {{ $howMany := .Get 1 | default 10 -}}
-{{ $langIndex := .Get 0 -}}
-{{ $lang := index $.Site.Data.instrumentation $langIndex -}}
+
+{{ $langData := index $.Site.Data.instrumentation $langIndex -}}
 {{ $integrations := slice -}}
 
 {{ range $entry := $.Site.Data.registry -}}
@@ -13,27 +18,14 @@
 - [{{ .title }}]({{ .urls.docs }})
 {{- end }}
 
-{{ if eq (len $integrations) 0 -}}
+{{ $langName := $langData.name | default "ERROR-LANG-MISSING" -}}
+{{ $noIntegrations := eq (len $integrations) 0 -}}
 
-<div class="alert alert-secondary" role="alert">
-<div class="h4 alert-title">Help wanted!</div>
+{{ $args := dict
+    "_dot" .
+    "_path" "native-lib-alert.md"
+    "name" $langName
+    "noIntegrations" $noIntegrations
+-}}
 
-As of today, we don't know about any {{ $lang.name }} library that has
-OpenTelemetry natively integrated. If you know about such a library,
-[let us know][].
-
-</div>
-
-{{- else -}}
-
-<div class="alert alert-info" role="alert">
-
-If you know a {{ $lang.name }} library that has OpenTelemetry natively
-integrated, [let us know][].
-
-</div>
-
-{{- end }}
-
-[let us know]:
-  https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
+{{ partial "include" $args -}}
