@@ -19219,6 +19219,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:29:12.345Z"
   },
+  "https://prometheus.io/docs/practices/naming/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-31T21:38:01.448135-04:00"
+  },
   "https://prometheus.io/docs/practices/naming/#metric-names": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:29:12.345Z"
@@ -19254,6 +19258,18 @@
   "https://prometheus.io/docs/prometheus/latest/querying/basics/#staleness": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:29:12.345Z"
+  },
+  "https://prometheus.io/docs/specs/native_histograms/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-31T21:37:59.23311-04:00"
+  },
+  "https://prometheus.io/docs/specs/native_histograms/#flavors": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-31T21:37:59.635309-04:00"
+  },
+  "https://prometheus.io/docs/specs/native_histograms/#gauge-histograms-vs-counter-histograms": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-31T21:38:01.671676-04:00"
   },
   "https://prometheus.io/docs/specs/om/open_metrics_spec/#exemplars": {
     "StatusCode": 200,
@@ -21014,6 +21030,10 @@
   "https://www.cockroachlabs.com/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-24T14:36:50.470824-05:00"
+  },
+  "https://www.collectd.org/wiki/index.php/Binary_protocol": {
+    "StatusCode": 206,
+    "LastSeen": "2025-06-17T10:38:54.910755496Z"
   },
   "https://www.controltheory.com/use-case/otel-collector-management/": {
     "StatusCode": 200,
