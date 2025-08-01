@@ -8,7 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: OpenTelemetry Javaにおける計装エコシステム
-default_lang_commit: beb85b4f56de76aa8a8d6e96cd7528396476f95a
+default_lang_commit: beb85b4f56de76aa8a8d6e96cd7528396476f95a # patched
 cSpell:ignore: logback
 ---
 
@@ -68,7 +68,7 @@ Spring Bootスターターは、Springの自動構成を活用して[ライブ�
 OpenTelemetryは、[API](../api/)を使用してネイティブ計装を追加することをライブラリ作成者に推奨しています。
 長期的には、ネイティブ計装が標準になることを期待しており、[opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)でOpenTelemetryによって維持される計装は、ギャップを埋める一時的な手段と見なしています。
 
-{{% docs/languages/native-libraries "java" %}}
+{{% docs/languages/native-libraries %}}
 
 ### 手動計装 {#manual-instrumentation}
 
@@ -114,7 +114,7 @@ OpenTelemetry APIは補完的に設計されており、全体が部分の合計
 ## セマンティック規約 {#semantic-conventions}
 
 [セマンティック規約](/docs/specs/semconv/)は、標準操作のテレメトリーを生成する方法を定義します。
-とりわけ、セマンティック規約は、スパン名、スパンの種類、メトリック計器、メトリック単位、メトリックタイプ、および属性キー、値、および要件レベルを指定します。
+とりわけ、セマンティック規約は、スパン名、スパンの種類、メトリクス計器、メトリクス単位、メトリクスタイプ、および属性キー、値、および要件レベルを指定します。
 
 計装を記述する際は、セマンティック規約を参照し、ドメインに適用可能なものに準拠してください。
 
