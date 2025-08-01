@@ -41,13 +41,13 @@ corrigir um problema já existente.
    uma que possa ser resolvida em pouco tempo. <a name="first-issue"></a>
    {{% alert title="É sua primeira contribuição?" color="primary alert--first-timer" %}}
 
-   Procure por issues com os seguintes rótulos:
+   Procure por issues com os seguintes rótulos _(labels)_:
    - [Good first issue](<{{% param _issue %}}%22good+first+issue%22>)
    - [Help wanted](<{{% param _issue %}}%3A%22help+wanted%22>)
 
    > **NOTA**: nós **_não atribuímos issues_** a quem ainda não contribuiu com a
    > organização [OpenTelemetry][org], exceto quando fizer parte de um processo
-   > de tutoria ou de onboarding.
+   > de tutoria ou de _onboarding_.
    >
    > [org]: https://github.com/open-telemetry
 
@@ -56,47 +56,47 @@ corrigir um problema já existente.
 3. Leia os comentários existentes na _issue_, se houver.
 4. Pergunte aos mantenedores se a _issue_ ainda é relevante e esclareça eventuais
    dúvidas comentando na própria _issue_.
-5. Declare sua intenção de trabalhar na issue adicionando um comentário.
+5. Declare sua intenção de trabalhar na _issue_ adicionando um comentário.
 6. Trabalhe na correção do problema. Caso enfrente dificuldades, avise os
    mantenedores.
 7. Quando estiver pronto,
-   [submeta seu trabalho via pull request](../pull-requests) (PR).
+   [submeta seu trabalho via _pull request_](../pull-requests) (PR).
 
 ## Reportando um problema {#reporting-an-issue}
 
 Se você encontrar um erro ou quiser sugerir melhorias em conteúdos existentes,
-abra uma nova issue.
+abra uma nova _issue_.
 
 1. Clique no link **Create documentation issue** disponível em qualquer
    documento. Isso redirecionará você para uma página no GitHub com um modelo de
-   issue pré-preenchido.
+   _issue_ pré-preenchido.
 2. Descreva o problema ou sugestão de melhoria. Forneça o máximo de detalhes
    possível.
-3. Clique em **Create**.
+3. Clique em **Create** (Criar).
 
-Após enviar a issue, acompanhe as atualizações ou ative as notificações do
+Após enviar a _issue_, acompanhe as atualizações ou ative as notificações do
 GitHub. Pode levar alguns dias até que mantenedores e aprovadores respondam.
 Revisores e membros da comunidade podem fazer perguntas antes de agir sobre sua
-issue.
+_issue_.
 
 ## Sugerindo novos conteúdos ou funcionalidades {#suggesting-new-content-or-features}
 
 Se você tem uma ideia para um novo conteúdo ou funcionalidade, mas não sabe
-exatamente onde ela se encaixa, ainda assim pode abrir uma issue. Também é
+exatamente onde ela se encaixa, ainda assim pode abrir uma _issue_. Também é
 possível relatar bugs ou vulnerabilidades de segurança.
 
 1. Acesse a aba de
-   [Issues no GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/).
+   [_Issues_ no GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/).
 
 2. Clique em **New issue**.
 
-3. Escolha o tipo de issue mais apropriado para sua sugestão ou dúvida.
+3. Escolha o tipo de _issue_ mais apropriado para sua sugestão ou dúvida.
 
 4. Preencha o template.
 
 5. Envie a _issue_.
 
-### Como enviar boas issues {#how-to-file-great-issues}
+### Como enviar boas _issues_ {#how-to-file-great-issues}
 
 Ao criar uma _issue_, considere as seguintes boas práticas:
 
