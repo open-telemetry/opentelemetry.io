@@ -2523,6 +2523,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:58:39.235074-05:00"
   },
+  "https://fr.wikipedia.org/wiki/Monkey_patch": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-01T11:06:53.152210232+02:00"
+  },
   "https://galaxy.ansible.com/ui/repo/published/grafana/grafana/content/role/opentelemetry_collector": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:59:12.836669-05:00"
