@@ -1,0 +1,22 @@
+{{/*
+  ARGS: .lang .page .componentName
+
+  RETURNS: .lang if truthy, otherwise the language extracted from
+  .page.RelPermalink when of the form `/docs/languages/LANG/...` optionally
+  prefixed with a locale code.
+
+  EXAMPLE: when .page is `docs/languages/go/...`, the return value is `go`.
+*/ -}}
+
+{{ $lang := .lang -}}
+{{ if not $lang }}
+  {{ $matches := findRESubmatch `docs/languages/([^/]+)` .page.RelPermalink -}}
+  {{ $lang = index (index $matches 0) 1 -}}
+  {{ if not $lang -}}
+    {{ $msg := printf "%q: Cannot determine language from page file path." .page.File.Path -}}
+    {{ $fix := printf "Add a language argument to the shortcode or partial call of %q" .componentName -}}
+    {{ errorf "%s %s" $msg $fix -}}
+  {{ end -}}
+{{ end -}}
+
+{{ return $lang -}}

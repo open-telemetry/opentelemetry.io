@@ -104,7 +104,7 @@ instrumentation maintained by OpenTelemetry in
 [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 as a temporary means of filling the gap.
 
-{{% docs/languages/native-libraries "java" %}}
+{{% docs/languages/native-libraries %}}
 
 ### Manual instrumentation
 

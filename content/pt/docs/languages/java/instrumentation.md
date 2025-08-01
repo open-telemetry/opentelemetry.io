@@ -8,7 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: Ecossistema de Instrumentação no OpenTelemetry Java
-default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
+default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b # patched
 cSpell:ignore: logback
 ---
 
@@ -106,7 +106,7 @@ padrão, e que a instrumentação mantida pelo OpenTelemetry em
 [opentelemetry-java-instrumentação](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 seja um meio temporário de preencher a lacuna.
 
-{{% docs/languages/native-libraries "java" %}}
+{{% docs/languages/native-libraries %}}
 
 ### Instrumentação manual {#manual-instrumentation}
 
