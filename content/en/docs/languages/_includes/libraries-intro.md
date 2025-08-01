@@ -6,7 +6,7 @@ metrics to the third-party libraries and frameworks you use.
 Many libraries and frameworks already support OpenTelemetry or are supported
 through OpenTelemetry
 [instrumentation](/docs/concepts/instrumentation/libraries/), so that they can
-generate telemetry you can export to an observability back end.
+generate telemetry you can export to an observability backend.
 
 If you are instrumenting an app or service that use third-party libraries or
 frameworks, follow these instructions to learn how to use natively instrumented
