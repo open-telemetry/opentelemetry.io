@@ -19,9 +19,8 @@ est la manière dont ils sont instrumentés :
 2. `server_automatic.py` est instrumenté _automatiquement_.
 3. `server_programmatic.py` est instrumenté _programmatiquement_.
 
-L'instrumentation
-[_programmatique_](#programmatically-instrumented-server) est un
-type d'instrumentation qui nécessite un minimum de code d'instrumentation à
+L'instrumentation [_programmatique_](#programmatically-instrumented-server) est
+un type d'instrumentation qui nécessite un minimum de code d'instrumentation à
 ajouter à l'application. Seules quelques bibliothèques d'instrumentation offrent
 des capacités supplémentaires qui vous donnent un plus grand contrôle sur le
 processus d'instrumentation lorsqu'elles sont utilisées programmatiquement.
