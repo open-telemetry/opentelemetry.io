@@ -4,7 +4,7 @@ description: Criando e mantendo páginas do site em localizações não inglesas
 linkTitle: Localização
 weight: 25
 default_lang_commit: b089f21094014118017cf32ffeea6b50afc3579f
-cSpell:ignore: shortcodes
+cSpell:ignore: shortcodes ptbr mergeado
 ---
 
 O site do OTel usa o [framework multilíngue] do Hugo para dar suporte a
@@ -275,7 +275,7 @@ campo `default_lang_commit`.
 
 {{% /alert %}}
 
-Se você atualizou em lote todas as suas páginas de localização que possuiam
+Se você atualizou em lote todas as suas páginas de localização que possuíam
 inconsistências, você pode atualizar o hash do commit desses arquivos usando a
 flag `-c` seguida por um hash de commit ou 'HEAD' para usar `main@HEAD`.
 
