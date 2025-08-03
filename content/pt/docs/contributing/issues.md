@@ -6,6 +6,7 @@ description:
 weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
 _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
+cSpell:ignore: prepopulated
 default_lang_commit: 41257fb00aaa8e04ac8a80b6ca10bee216d80f6b
 ---
 
@@ -42,7 +43,7 @@ corrigir um problema já existente.
    {{% alert title="É sua primeira contribuição?" color="primary alert--first-timer" %}}
 
    Procure por issues com os seguintes _labels_ (rótulos):
-   - [Good first issue](<{{% param _issue %}}%22good+first+issue%22>)
+   - [Good first issue](<{{% param _issue %}}%22good+first-issue%22>)
    - [Help wanted](<{{% param _issue %}}%3A%22help+wanted%22>)
 
    > **NOTA**: nós **_não atribuímos issues_** a quem ainda não contribuiu com a
