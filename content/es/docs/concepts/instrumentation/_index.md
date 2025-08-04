@@ -24,7 +24,7 @@ código.
 
 Las soluciones **sin código** son excelentes para empezar o cuando no puedes
 modificar la aplicación de la que necesitas obtener telemetría. Proporcionan una
-telemetría rica de las librerías que utilizas y/o del entorno en el que se
+telemetría abundante de las librerías que utilizas y/o del entorno en el que se
 ejecuta tu aplicación. Otra forma de verlo es que proporcionan información sobre
 lo que está sucediendo _en los límites_ de tu aplicación.
 
