@@ -19223,6 +19223,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:29:12.345Z"
   },
+  "https://prometheus.io/docs/practices/naming/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:20:24.420099513Z"
+  },
   "https://prometheus.io/docs/practices/naming/#metric-names": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:29:12.345Z"
@@ -19258,6 +19262,18 @@
   "https://prometheus.io/docs/prometheus/latest/querying/basics/#staleness": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:29:12.345Z"
+  },
+  "https://prometheus.io/docs/specs/native_histograms/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:20:30.867990786Z"
+  },
+  "https://prometheus.io/docs/specs/native_histograms/#flavors": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:20:35.344777635Z"
+  },
+  "https://prometheus.io/docs/specs/native_histograms/#gauge-histograms-vs-counter-histograms": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:20:38.933558261Z"
   },
   "https://prometheus.io/docs/specs/om/open_metrics_spec/#exemplars": {
     "StatusCode": 200,
