@@ -33,7 +33,7 @@ Puedes utilizar ambas soluciones simultáneamente.
 ## Beneficios adicionales de OpenTelemetry {#additional-openTelemetry-benefits}
 
 OpenTelemetry ofrece más que solo soluciones de telemetría sin código y basadas
-en código. Los siguientes puntos también forman parte de OpenTelemetry:
+en código. Los siguientes aspectos también forman parte de OpenTelemetry:
 
 - Las librerías pueden usar la API de OpenTelemetry como una dependencia, lo que
   no tendrá ningún impacto en las aplicaciones que usen esa librería, a menos
