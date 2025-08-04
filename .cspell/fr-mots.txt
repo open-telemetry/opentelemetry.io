@@ -1,5 +1,16 @@
+actuateur
+autocompléter
 extensibilité
+glassfish
+jvms
 observabilité
+otelinstrumentationmethodsinclude
+payara
+spanattribute
 réexécuté
 télémétrie
+tomee
 traçage
+weblogic
+websphere
+wildfly
