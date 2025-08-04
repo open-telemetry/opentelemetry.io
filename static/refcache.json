@@ -155,6 +155,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:22.467349-04:00"
   },
+  "https://aws.amazon.com/bedrock": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:21:18.130714687Z"
+  },
   "https://aws.amazon.com/bedrock/": {
     "StatusCode": 200,
     "LastSeen": "2025-05-13T13:34:35.263245-04:00"
@@ -214,6 +218,10 @@
   "https://azure.microsoft.com/global-infrastructure/geographies/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T17:00:21.851654-05:00"
+  },
+  "https://azure.microsoft.com/products/ai-services/openai-service/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:21:29.097362455Z"
   },
   "https://azure.microsoft.com/products/cosmos-db/": {
     "StatusCode": 200,
@@ -547,6 +555,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T01:48:12.345Z"
   },
+  "https://cloud.google.com/products/gemini": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:21:31.146936612Z"
+  },
   "https://cloud.google.com/pubsub": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T16:54:33.636642-05:00"
@@ -575,6 +587,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-12-04T08:46:55.63530878Z"
   },
+  "https://cloud.google.com/vertex-ai": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:21:33.959371247Z"
+  },
   "https://cloud.google.com/vpc/docs/configure-serverless-vpc-access": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:18.428574-04:00"
@@ -602,6 +618,10 @@
   "https://code.visualstudio.com/docs/devcontainers/containers#_installation": {
     "StatusCode": 200,
     "LastSeen": "2025-05-03T11:57:12.345Z"
+  },
+  "https://cohere.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:21:33.426753586Z"
   },
   "https://collectd.org/wiki/index.php/Binary_protocol": {
     "StatusCode": 206,
@@ -6174,6 +6194,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/receiver/receivercreator/README.md#generate-receiver-configurations-from-provided-hints": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:10:12.345Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.119.0/receiver/k8sclusterreceiver/documentation.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-04T18:21:04.213480317Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.127.0/receiver/k8sclusterreceiver/documentation.md": {
     "StatusCode": 206,
@@ -12723,6 +12747,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-07-18T18:23:24.894774955Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.47.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-04T18:20:47.96677907Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.47.0/oteps/0232-maturity-of-otel.md#explanation": {
     "StatusCode": 206,
     "LastSeen": "2025-07-18T18:23:13.639187855Z"
@@ -12822,6 +12850,18 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.47.0/oteps/trace/0250-Composite_Samplers.md": {
     "StatusCode": 206,
     "LastSeen": "2025-07-18T18:23:30.069188446Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.47.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-04T18:21:13.994286075Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.47.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-04T18:20:47.086687668Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.47.0/specification/logs/data-model.md#type-any": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-04T18:20:41.242009873Z"
   },
   "https://github.com/open-telemetry/opentelemetry-swift": {
     "StatusCode": 206,
@@ -13562,6 +13602,14 @@
   "https://github.com/open-telemetry/semantic-conventions/pull/2178": {
     "StatusCode": 206,
     "LastSeen": "2025-06-17T10:36:00.738575402Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2319": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-04T18:21:08.818776155Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2392": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-04T18:21:00.677185961Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/981": {
     "StatusCode": 206,
@@ -15903,6 +15951,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:58:38.718058-05:00"
   },
+  "https://groq.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:21:36.138143993Z"
+  },
   "https://groups.google.com/a/opentelemetry.io/g/calendar-comms": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:12:02.550579-05:00"
@@ -16990,6 +17042,10 @@
   "https://mishmash.io": {
     "StatusCode": 200,
     "LastSeen": "2024-10-18T16:50:17.995881058+03:00"
+  },
+  "https://mistral.ai/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:21:43.135600765Z"
   },
   "https://mlflow.org/": {
     "StatusCode": 206,
@@ -19091,6 +19147,26 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:28:12.345Z"
   },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#ContainerStats": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:20:49.696714149Z"
+  },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#FsStats": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:20:48.117918955Z"
+  },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#NodeStats": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:21:02.968730909Z"
+  },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#PodStats": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:20:49.49844405Z"
+  },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#VolumeStats": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:20:51.156537405Z"
+  },
   "https://pkg.go.dev/k8s.io/kubernetes@v1.19.16/pkg/kubelet/apis/stats/v1alpha1": {
     "StatusCode": 200,
     "LastSeen": "2025-05-26T16:48:28.218593+03:00"
@@ -20547,6 +20623,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T14:41:12.181209-05:00"
   },
+  "https://ucum.org/ucum": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:20:51.388693821Z"
+  },
   "https://ucum.org/ucum.html#para-curly": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:30:12.345Z"
@@ -20878,6 +20958,10 @@
   "https://www.ansible.com/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:58:40.727522-05:00"
+  },
+  "https://www.anthropic.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-04T18:21:12.233484275Z"
   },
   "https://www.anthropic.com/research/building-effective-agents": {
     "StatusCode": 200,
@@ -21282,6 +21366,10 @@
   "https://www.ibm.com/products/netezza": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:37:08.324371-05:00"
+  },
+  "https://www.ibm.com/products/watsonx-ai": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-04T18:21:39.663273306Z"
   },
   "https://www.ibm.com/think/topics/ai-agents": {
     "StatusCode": 206,
@@ -22258,6 +22346,14 @@
   "https://www.rfc-editor.org/rfc/rfc9110.html#name-uri-origin": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:32:12.345Z"
+  },
+  "https://www.rfc-editor.org/rfc/rfc9112.html#name-request-target": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-04T18:20:38.145749988Z"
+  },
+  "https://www.rfc-editor.org/rfc/rfc9112.html#section-3.2.2": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-04T18:20:41.565455299Z"
   },
   "https://www.robustperception.io/scaling-and-federating-prometheus/": {
     "StatusCode": 206,
