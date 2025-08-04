@@ -41,7 +41,7 @@ corrigir um problema já existente.
    uma que possa ser resolvida em pouco tempo. <a name="first-issue"></a>
    {{% alert title="É sua primeira contribuição?" color="primary alert--first-timer" %}}
 
-   Procure por issues com os seguintes _labels_ (rótulos):
+   Procure por _issues_ com os seguintes _labels_ (rótulos):
    - [Good first issue](<{{% param _issue %}}%22good+first-issue%22>)
    - [Help wanted](<{{% param _issue %}}%3A%22help+wanted%22>)
 
