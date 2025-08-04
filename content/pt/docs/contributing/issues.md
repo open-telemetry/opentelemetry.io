@@ -54,8 +54,8 @@ corrigir um problema já existente.
    {{% /alert %}}
 
 3. Leia os comentários existentes na _issue_, se houver.
-4. Pergunte aos mantenedores se a _issue_ ainda é relevante e esclareça eventuais
-   dúvidas comentando na própria _issue_.
+4. Pergunte aos mantenedores se a _issue_ ainda é relevante e esclareça
+   eventuais dúvidas comentando na própria _issue_.
 5. Declare sua intenção de trabalhar na _issue_ adicionando um comentário.
 6. Trabalhe na correção do problema. Caso enfrente dificuldades, avise os
    mantenedores.
