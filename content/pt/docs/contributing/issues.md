@@ -92,7 +92,7 @@ possível relatar bugs ou vulnerabilidades de segurança.
 
 3. Escolha o tipo de _issue_ mais apropriado para sua sugestão ou dúvida.
 
-4. Preencha o template.
+4. Preencha o modelo.
 
 5. Envie a _issue_.
 
