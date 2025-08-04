@@ -46,6 +46,11 @@ languages:
     languageCode: pt-BR
     params:
       description: Site do Projeto OpenTelemetry
+  uk:
+    languageName: Українська (Ukrainian)
+    languageCode: uk-UA
+    params:
+      description: Сайт проєкту OpenTelemetry
   zh:
     languageName: 中文 (Chinese)
     languageCode: zh-cn
@@ -277,6 +282,8 @@ module:
       target: content/docs/specs/semconv/registry/_index.md
     - source: tmp/semconv/docs/registry/attributes/README.md
       target: content/docs/specs/semconv/registry/attributes/_index.md
+    - source: tmp/semconv/docs/registry/entities/README.md
+      target: content/docs/specs/semconv/registry/entities/_index.md
     - source: tmp/semconv/docs/azure/README.md
       target: content/docs/specs/semconv/azure/_index.md
     - source: tmp/semconv/docs/cloud-providers/README.md
@@ -399,6 +406,22 @@ module:
       source: content/en/docs
       target: content/docs
       lang: ja
+
+    ## uk
+    - source: content/uk
+      target: content
+      lang: uk
+    # fallback pages
+    - source: content/en/_includes
+      target: content/_includes
+      lang: uk
+    - source: content/en/announcements
+      target: content/announcements
+      lang: uk
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: uk
 
     ## zh
     - source: content/zh

@@ -21,6 +21,9 @@ filters:
       # Other:
       - /<https?:\/\/.*?>/ # Raw URLs
 rules:
+  prh:
+    rulePaths:
+      - ./prh/ja.yml
   terminology:
     defaultTerms: false
     skip: []
