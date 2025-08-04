@@ -4,7 +4,7 @@ description: Criando e mantendo páginas do site em localizações não inglesas
 linkTitle: Localização
 weight: 25
 default_lang_commit: b089f21094014118017cf32ffeea6b50afc3579f
-cSpell:ignore: shortcodes ptbr mergeado
+cSpell:ignore: mergeado ptbr shortcodes
 ---
 
 O site do OTel usa o [framework multilíngue] do Hugo para dar suporte a
