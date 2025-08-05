@@ -195,7 +195,7 @@ internal static partial class LoggerExtensions
 
 ## Configuration
 
-You can configure the dedicated logging pipeline through appsettings.json:
+You can configure the dedicated logging pipeline through `appsettings.json`:
 
 ```json
 {
