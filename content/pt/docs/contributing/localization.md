@@ -30,7 +30,8 @@ nesta seção.
     - Comentários de trechos de código (opcional)
   - Valores dos campos _[Front matter][]_ para `title`, `linkTitle`, e
     `description`
-  - **Todo** conteúdo da página e _front matter_, a menos que indicado o contrário
+  - **Todo** conteúdo da página e _front matter_, a menos que indicado o
+    contrário
 - **Preservar** o _conteúdo_, _significado_, e _estilo_ do texto original
 - **Perguntar** aos [mantenedores][maintainers] em caso de dúvidas, através de:
   - Canais do [Slack], como `#otel-docs-localization`, `#otel-localization-ptbr`
@@ -52,9 +53,9 @@ nesta seção.
   - Trechos de código em linha como estes: `exemplo de código inline`
   - Elementos _Markdown_ marcados como `notranslate` (geralmente como uma classe
     CSS), em particular para [cabeçalhos](#headings)
-  - Campos _[Front matter][]_ diferentes daqueles listados em [O que fazer](#do).
-    Especificamente, não traduza `aliases`. Na dúvida, pergunte aos
-    mantenedores.
+  - Campos _[Front matter][]_ diferentes daqueles listados em
+    [O que fazer](#do). Especificamente, não traduza `aliases`. Na dúvida,
+    pergunte aos mantenedores.
   - Código
 - Não criar **cópias de imagens**, a menos que você
   [localize texto nas imagens](#images)
@@ -98,15 +99,15 @@ para converter caminhos de links absolutos referindo-se a páginas de
 documentação. **Links da forma `/docs/some-page` são tornados específicos da
 localização** prefixando o caminho com o código do idioma da página ao
 renderizar o link. Por exemplo, o caminho de exemplo anterior se tornaria
-`/ja/docs/some-page` quando renderizado de uma página japonesa.
+`/pt/docs/some-page` quando renderizado de uma página em português.
 
 {{% /alert %}}
 
 ### Labels de definição de links {#link-labels}
 
 Autores de localização podem escolher traduzir ou não _[labels]_ de [definições
-de links][link definitions] _Markdown_. Se você escolher manter o _label_ em inglês,
-então siga a orientação dada nesta seção.
+de links][link definitions] _Markdown_. Se você escolher manter o _label_ em
+inglês, então siga a orientação dada nesta seção.
 
 Por exemplo, considere o seguinte _Markdown_:
 
@@ -167,7 +168,7 @@ Se você precisar criar uma versão localizada de um _shortcode_, coloque-o em
 partir daí, use o mesmo caminho relativo do _shortcode_ base original.
 
 [layouts/shortcodes/docs]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/shortcodes/docs
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
 
 ## Acompanhando inconsistências em páginas localizadas {#track-changes}
 
@@ -203,7 +204,7 @@ seguinte comando:
 
 ```console
 $ npm run check:i18n
-1       1       content/en/docs/platforms/kubernetes/_index.md - content/zh/docs/platforms/kubernetes/_index.md
+1       1       content/en/docs/platforms/kubernetes/_index.md - content/pt/docs/platforms/kubernetes/_index.md
 ...
 ```
 
@@ -222,7 +223,7 @@ fornecendo os caminhos para suas páginas localizadas, ou omitir os caminhos par
 ver todas. Por exemplo:
 
 ```console
-$ npm run check:i18n -- -d content/zh/docs/platforms/kubernetes
+$ npm run check:i18n -- -d content/pt/docs/platforms/kubernetes
 diff --git a/content/en/docs/platforms/kubernetes/_index.md b/content/en/docs/platforms/kubernetes/_index.md
 index 3592df5d..c7980653 100644
 --- a/content/en/docs/platforms/kubernetes/_index.md
@@ -250,8 +251,8 @@ _commit_ `<hash>`. Você pode especificar `HEAD` como argumento se suas páginas
 estão agora sincronizadas com a `main` em `HEAD`. Por exemplo:
 
 ```sh
-npm run check:i18n -- -n -c 1ca30b4d content/ja
-npm run check:i18n -- -n -c HEAD content/zh/docs/concepts
+npm run check:i18n -- -n -c 1ca30b4d content/pt
+npm run check:i18n -- -n -c HEAD content/pt/docs/concepts
 ```
 
 Para listar arquivos de páginas de localização com chaves de _hash_ faltando,
@@ -288,7 +289,7 @@ npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 
 {{% alert title="Importante" %}}
 
-Ao utilizar `HEAD` como referência de _hash_, o script utilizará o _hash_ da
+Ao utilizar `HEAD` como referência de _hash_, o _script_ utilizará o _hash_ da
 _branch_ `main` no seu **ambiente local**. Certifique-se de executar _fetch_ e
 _pull_ da `main` caso queira que HEAD corresponda ao estado atual da `main` no
 GitHub.
@@ -304,7 +305,7 @@ versão em inglês correspondente.
 
 ### Ajuda do script {#script-help}
 
-Para mais detalhes sobre o script, execute `npm run check:i18n -- -h`.
+Para mais detalhes sobre o _script_, execute `npm run check:i18n -- -h`.
 
 ## Novas localizações {#new-localizations}
 
@@ -333,7 +334,8 @@ Uma vez que você estiver pronto:
    quer adicionar. Vamos nos referir a este código de idioma como `LANG_ID` no
    restante desta seção.
 
-4. Adicione a seguinte lista de tarefas ao comentário de abertura da sua _issue_:
+4. Adicione a seguinte lista de tarefas ao comentário de abertura da sua
+   _issue_:
 
    ```markdown
    - [ ] Informações do idioma:
