@@ -2523,6 +2523,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:58:39.235074-05:00"
   },
+  "https://fr.wikipedia.org/wiki/Monkey_patch": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-01T11:06:53.152210232+02:00"
+  },
   "https://galaxy.ansible.com/ui/repo/published/grafana/grafana/content/role/opentelemetry_collector": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:59:12.836669-05:00"
@@ -7762,6 +7766,26 @@
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.130.1/receiver/receiver.go#L58": {
     "StatusCode": 206,
     "LastSeen": "2025-07-22T20:15:22.029944294Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.131.0/component/config.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T10:33:20.059487948Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.131.0/pdata/internal/data/protogen/trace/v1/trace.pb.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T10:33:30.653613891Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.131.0/pdata/pcommon/map.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T10:33:36.591729049Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.131.0/receiver/receiver.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T10:33:27.544593005Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.131.0/receiver/receiver.go#L58": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T10:33:24.162819019Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/10469": {
     "StatusCode": 206,
@@ -14791,14 +14815,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T13:35:17.361251-05:00"
   },
-  "https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md": {
-    "StatusCode": 206,
-    "LastSeen": "2025-01-16T13:34:58.350786-05:00"
-  },
-  "https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md#text-based-format": {
-    "StatusCode": 200,
-    "LastSeen": "2025-02-06T02:21:12.345Z"
-  },
   "https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md": {
     "StatusCode": 206,
     "LastSeen": "2025-06-05T10:38:34.828266434Z"
@@ -15058,6 +15074,10 @@
   "https://github.com/shalevr": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:10:45.345805-05:00"
+  },
+  "https://github.com/shanduur": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-31T09:03:23.267157745Z"
   },
   "https://github.com/shaun-cox": {
     "StatusCode": 206,
