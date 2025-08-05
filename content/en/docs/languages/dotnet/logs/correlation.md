@@ -1,5 +1,5 @@
 ---
-title: Log Correlation in .NET
+title: Log correlation
 linkTitle: Correlation
 description: Learn how to correlate logs with traces in OpenTelemetry .NET
 weight: 30

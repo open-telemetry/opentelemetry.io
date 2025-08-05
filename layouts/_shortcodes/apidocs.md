@@ -1,10 +1,10 @@
 {{ $pages := slice -}}
 {{ range $key,$value := $.Site.Data.instrumentation -}}
     {{ if eq $key "dotnet" -}}
-      {{ with $.Site.GetPage "/docs/languages/dotnet/traces-api" -}}
+      {{ with $.Site.GetPage "/docs/languages/dotnet/traces/traces-api" -}}
           {{ $pages = $pages | append (dict "lang" $value "page" .) -}}
       {{ end }}
-      {{ with $.Site.GetPage "/docs/languages/dotnet/metrics-api" -}}
+      {{ with $.Site.GetPage "/docs/languages/dotnet/metrics/metrics-api" -}}
           {{ $pages = $pages | append (dict "lang" $value "page" .) -}}
       {{ end }}
     {{ else -}}

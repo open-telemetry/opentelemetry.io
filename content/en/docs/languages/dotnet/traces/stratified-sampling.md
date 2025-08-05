@@ -1,6 +1,6 @@
 ---
-title: Stratified Sampling in .NET
-linkTitle: Stratified Sampling
+title: Stratified sampling
+linkTitle: Stratified sampling
 description:
   Learn how to implement stratified sampling for OpenTelemetry traces in .NET
 weight: 28

@@ -1,6 +1,6 @@
 ---
-title: Getting Started with OpenTelemetry .NET Metrics - Console
-linkTitle: Getting Started - Console
+title: Getting started metrics - Console
+linkTitle: Console
 description:
   Learn how to use OpenTelemetry Metrics in a .NET Console application
 weight: 10

@@ -1,6 +1,6 @@
 ---
-title: Reporting Exceptions in OpenTelemetry .NET Traces
-linkTitle: Reporting Exceptions
+title: Reporting exceptions
+linkTitle: Exceptions
 description: Learn how to report exceptions in OpenTelemetry .NET traces
 weight: 40
 cSpell:ignore: AppDomain

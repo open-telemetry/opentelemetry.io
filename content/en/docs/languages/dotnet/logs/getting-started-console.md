@@ -1,6 +1,6 @@
 ---
-title: Getting Started with OpenTelemetry .NET Logs - Console
-linkTitle: Getting Started - Console
+title: Getting started logs - Console
+linkTitle: Console
 description: Learn how to use OpenTelemetry Logs in a .NET Console application
 weight: 10
 # prettier-ignore

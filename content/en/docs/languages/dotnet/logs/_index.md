@@ -2,7 +2,7 @@
 title: OpenTelemetry .NET Logs
 linkTitle: Logs
 description: Use OpenTelemetry .NET to collect and export log telemetry data
-weight: 20
+weight: 35
 ---
 
 This section contains information about using OpenTelemetry .NET for logging.

@@ -1,6 +1,6 @@
 ---
-title: Getting Started with OpenTelemetry .NET Logs - ASP.NET Core
-linkTitle: Getting Started - ASP.NET Core
+title: Getting started with logs - ASP.NET Core
+linkTitle: ASP.NET Core
 description: Learn how to use OpenTelemetry Logs in an ASP.NET Core application
 weight: 20
 cSpell:ignore: aspnetcoreapp

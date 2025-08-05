@@ -1,6 +1,6 @@
 ---
-title: Creating Links Between Traces in OpenTelemetry .NET
-linkTitle: Creating Links
+title: Creating links between traces
+linkTitle: Links
 description: Learn how to create links between traces with OpenTelemetry .NET
 weight: 50
 cSpell:ignore: activitycontext nestedActivity

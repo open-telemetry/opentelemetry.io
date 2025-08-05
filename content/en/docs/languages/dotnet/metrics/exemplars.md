@@ -1,5 +1,5 @@
 ---
-title: Using Exemplars in OpenTelemetry .NET
+title: Using exemplars
 linkTitle: Exemplars
 description:
   Learn how to use exemplars to link metrics with traces in OpenTelemetry .NET
