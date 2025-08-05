@@ -196,10 +196,11 @@ internal static partial class LoggerExtensions
 
 This approach:
 
-- Delivers better performance than string interpolation
-- Ensures type safety for log parameters
-- Produces structured logs with named parameters
-
+- Delivers better performance than string interpolation.
+- Ensures type safety for log parameters.
+- Produces structured logs with named parameters.
+- Automatically produces `EventName` on `LogRecord`.
+- 
 ## Learn more
 
 - [Getting Started with Console](/docs/languages/dotnet/logs/getting-started-console/)
