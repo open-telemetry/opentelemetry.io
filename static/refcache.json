@@ -2251,6 +2251,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:07:12.345Z"
   },
+  "https://embrace.io/docs/web/getting-started/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-04T19:22:53.721011626Z"
+  },
   "https://embrace.io/opentelemetry-for-mobile/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:03.661155-05:00"
@@ -4286,6 +4290,10 @@
   "https://github.com/embrace-io/embrace-react-native-sdk": {
     "StatusCode": 206,
     "LastSeen": "2025-02-04T15:55:51.560154052Z"
+  },
+  "https://github.com/embrace-io/embrace-web-sdk/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-04T19:22:50.801095675Z"
   },
   "https://github.com/emdneto": {
     "StatusCode": 206,
@@ -13103,9 +13111,9 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T12:10:58.178169-05:00"
   },
-  "https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/shortcodes/docs": {
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs": {
     "StatusCode": 206,
-    "LastSeen": "2025-02-02T12:10:59.64214-05:00"
+    "LastSeen": "2025-08-05T10:54:57.168579813Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/templates/registry-entry.yml": {
     "StatusCode": 206,
@@ -15794,6 +15802,10 @@
   "https://github.com/yuin/goldmark/blob/master/README.md#headings": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:22:12.345Z"
+  },
+  "https://github.com/yumosx": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-05T10:32:01.749049531Z"
   },
   "https://github.com/yuriolisa": {
     "StatusCode": 200,
