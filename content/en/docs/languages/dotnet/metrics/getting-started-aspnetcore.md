@@ -1,6 +1,6 @@
 ---
-title: Getting Started with OpenTelemetry .NET Metrics - ASP.NET Core
-linkTitle: Getting Started - ASP.NET Core
+title: Getting started metrics - ASP.NET Core
+linkTitle: ASP.NET Core
 description:
   Learn how to use OpenTelemetry Metrics in an ASP.NET Core application
 weight: 20

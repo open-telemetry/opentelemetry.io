@@ -2,7 +2,7 @@
 title: OpenTelemetry .NET Metrics
 linkTitle: Metrics
 description: Use OpenTelemetry .NET to collect and export metric telemetry data
-weight: 30
+weight: 20
 ---
 
 This section contains information about using OpenTelemetry .NET for metrics.

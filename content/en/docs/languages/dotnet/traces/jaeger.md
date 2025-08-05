@@ -1,6 +1,6 @@
 ---
-title: Getting Started with Jaeger and OpenTelemetry .NET
-linkTitle: Getting Started with Jaeger
+title: Export to Jaeger
+linkTitle: Export to Jaeger
 description: Learn how to export traces to Jaeger with OpenTelemetry .NET
 weight: 30
 cSpell:ignore: Gantt OTLP

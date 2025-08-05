@@ -1,6 +1,6 @@
 ---
-title: Logging Complex Objects in .NET
-linkTitle: Complex Objects
+title: Logging complex objects
+linkTitle: Complex objects
 description: Learn how to log complex objects with OpenTelemetry .NET
 weight: 20
 # prettier-ignore

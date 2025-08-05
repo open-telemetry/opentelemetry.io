@@ -1,6 +1,6 @@
 ---
-title: Setting up a Dedicated Logging Pipeline in OpenTelemetry .NET
-linkTitle: Dedicated Pipeline
+title: Setting up a dedicated logging pipeline
+linkTitle: Dedicated pipeline
 description: Learn how to set up a dedicated logging pipeline for specific logs
 weight: 50
 cSpell:ignore: dedicatedLogger IConfiguration

@@ -1,5 +1,5 @@
 ---
-title: Implementing Log Redaction in OpenTelemetry .NET
+title: Log redaction
 linkTitle: Redaction
 description: Learn how to implement log redaction for sensitive data
 weight: 60

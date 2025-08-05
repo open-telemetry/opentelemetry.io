@@ -1,6 +1,6 @@
 ---
-title: Getting Started with Prometheus and Grafana
-linkTitle: Getting Started - Prometheus & Grafana
+title: Export to Prometheus and Grafana
+linkTitle: Export to Prometheus
 description:
   Learn how to export metrics to Prometheus and visualize them in Grafana
 weight: 30

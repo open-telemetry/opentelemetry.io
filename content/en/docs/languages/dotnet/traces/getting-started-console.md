@@ -1,6 +1,6 @@
 ---
-title: Getting Started with OpenTelemetry .NET Traces - Console
-linkTitle: Getting Started - Console
+title: Getting started traces - Console
+linkTitle: Console
 description: Learn how to use OpenTelemetry Traces in a .NET Console application
 weight: 10
 cSpell:ignore: baz DiagnosticSource tracerprovider

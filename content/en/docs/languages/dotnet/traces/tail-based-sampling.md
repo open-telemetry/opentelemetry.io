@@ -1,6 +1,6 @@
 ---
-title: Tail-Based Sampling in .NET
-linkTitle: Tail-Based Sampling
+title: Tail-based sampling
+linkTitle: Tail-based sampling
 description:
   Learn how to implement tail-based sampling for capturing all failed spans in
   OpenTelemetry .NET

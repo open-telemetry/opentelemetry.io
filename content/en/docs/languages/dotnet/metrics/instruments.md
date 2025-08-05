@@ -1,5 +1,5 @@
 ---
-title: Metric Instruments in OpenTelemetry .NET
+title: Metric instruments
 linkTitle: Instruments
 description:
   Learn about the different types of metric instruments available in
