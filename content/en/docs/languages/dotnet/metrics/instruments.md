@@ -5,7 +5,7 @@ description:
   Learn about the different types of metric instruments available in
   OpenTelemetry .NET
 weight: 50
-cSpell:ignore: updowncounter
+cSpell:ignore: updowncounter kibibytes mebibytes
 ---
 
 This guide explains the different types of metric instruments available in
