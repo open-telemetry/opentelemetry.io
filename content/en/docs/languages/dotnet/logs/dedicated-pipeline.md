@@ -227,16 +227,6 @@ builder.Services.AddDedicatedLogging(
     });
 ```
 
-## Best practices
-
-1. **Clearly define the purpose** of your dedicated pipeline to avoid confusion
-2. **Document which logs** go to which pipeline for the team
-3. **Use meaningful names** for your dedicated logger interfaces and
-   implementations
-4. **Consider performance impacts** of having multiple logging pipelines
-5. **Apply appropriate filters** to prevent duplicate logging
-6. **Use source generation** for high-performance logging
-
 ## Learn more
 
 - [ASP.NET Core Dependency Injection](https://learn.microsoft.com/aspnet/core/fundamentals/dependency-injection)
