@@ -16,27 +16,27 @@ There are several scenarios where you might want to use a dedicated logging
 pipeline:
 
 1. **Security logs**: Sending security-related logs to a specialized security
-   information and event management (SIEM) system
-2. **Audit logs**: Sending audit logs to a compliant storage system
-3. **Access logs**: Separating user access logs from application logs
+   information and event management (SIEM) system.
+2. **Audit logs**: Sending audit logs to a compliant storage system.
+3. **Access logs**: Separating user access logs from application logs.
 4. **Debugging**: Sending verbose debugging logs to a separate destination
-   during troubleshooting
+   during troubleshooting.
 
-A dedicated pipeline allows you to:
+Among other things, a dedicated pipeline allows you to:
 
-- Apply different processors and exporters to specific logs
-- Control log retention policies independently
-- Manage access permissions separately
-- Optimize performance by sending only relevant logs to each system
+- Apply different processors and exporters to specific logs.
+- Control log retention policies independently.
+- Manage access permissions separately.
+- Optimize performance by sending only relevant logs to each system.
 
 ## Creating a dedicated logging pipeline
 
 To create a dedicated logging pipeline, you need to:
 
-1. Create a dedicated logger interface
-2. Implement a logger provider for this interface
-3. Configure OpenTelemetry for this provider
-4. Register the dedicated logging services
+1. Create a dedicated logger interface.
+2. Implement a logger provider for this interface.
+3. Configure OpenTelemetry for this provider.
+4. Register the dedicated logging services.
 
 Let's walk through a complete example:
 
