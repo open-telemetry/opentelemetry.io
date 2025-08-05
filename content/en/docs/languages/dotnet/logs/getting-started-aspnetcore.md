@@ -130,6 +130,11 @@ For demonstration purposes, the sample clears the default .NET logging providers
 to better showcase the OpenTelemetry console output:
 
 ```csharp
+// For instructional purposes only, disable the default .NET logging providers.
+// We remove the console logging provider in this demo to use the verbose
+// OpenTelemetry console exporter instead. For most development and production
+// scenarios the default console provider works well and there is no need to
+// clear these providers.
 builder.Logging.ClearProviders();
 ```
 
