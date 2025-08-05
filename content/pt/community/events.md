@@ -3,8 +3,10 @@ title: Eventos
 default_lang_commit: 91afb20322a5358e54b6d9278a66d2917efd4a60
 ---
 
-A comunidade OpenTelemetry participa e organiza diversos eventos ao longo do ano para reunir contribuidores, mantenedores e usuários finais.
-Esses eventos oferecem oportunidades para aprender, compartilhar experiências, colaborar no projeto e se conectar com a comunidade de observabilidade mais ampla.
+A comunidade OpenTelemetry participa e organiza diversos eventos ao longo do ano
+para reunir contribuidores, mantenedores e usuários finais. Esses eventos
+oferecem oportunidades para aprender, compartilhar experiências, colaborar no
+projeto e se conectar com a comunidade de observabilidade mais ampla.
 
 ## Eventos Futuros {#upcoming-events}
 
@@ -14,17 +16,21 @@ Esses eventos oferecem oportunidades para aprender, compartilhar experiências, 
 
 ### Eventos Virtuais do SIG End-User {#sig-end-user-virtual-events}
 
-O SIG End-User do OpenTelemetry organiza eventos virtuais regulares para reunir usuários finais, compartilhar experiências e discutir desafios e sucessos de implementação no mundo real. Esses eventos incluem:
+O SIG End-User do OpenTelemetry organiza eventos virtuais regulares para reunir
+usuários finais, compartilhar experiências e discutir desafios e sucessos de
+implementação no mundo real. Esses eventos incluem:
 
 - Encontros virtuais e discussões
 - Estudos de caso e apresentações de usuários finais
 - Sessões de perguntas e respostas com a comunidade
 
-Encontre todos os eventos virtuais do SIG End-User e junte-se à comunidade em [community.cncf.io/opentelemetry/](https://community.cncf.io/opentelemetry/).
+Encontre todos os eventos virtuais do SIG End-User e junte-se à comunidade em
+[community.cncf.io/opentelemetry/](https://community.cncf.io/opentelemetry/).
 
 ### KubeCon + CloudNativeCon {#kubecon-cloudnativecon}
 
-O OpenTelemetry possui uma forte presença em eventos KubeCon + CloudNativeCon em todo o mundo. Esses eventos incluem:
+O OpenTelemetry possui uma forte presença em eventos KubeCon + CloudNativeCon em
+todo o mundo. Esses eventos incluem:
 
 - Palestras e _workshops_
 - Encontros comunitários no Observatório OpenTelemetry
@@ -33,7 +39,8 @@ O OpenTelemetry possui uma forte presença em eventos KubeCon + CloudNativeCon e
 
 ### OpenTelemetry Community Day {#open-telemetry-community-day}
 
-O OpenTelemetry Community Day é um evento dedicado focado exclusivamente no OpenTelemetry, com:
+O OpenTelemetry Community Day é um evento dedicado focado exclusivamente no
+OpenTelemetry, com:
 
 - Sessões técnicas profundas
 - Estudos de caso e histórias de sucesso de usuários finais
@@ -41,11 +48,13 @@ O OpenTelemetry Community Day é um evento dedicado focado exclusivamente no Ope
 - Discussões sobre o _roadmap_ da comunidade
 - _Networking_ com mantenedores e contribuidores
 
-Confira a [página de eventos da CNCF](https://events.linuxfoundation.org/) para as últimas notificações do OpenTelemetry Community Day.
+Confira a [página de eventos da CNCF](https://events.linuxfoundation.org/) para
+as últimas notificações do OpenTelemetry Community Day.
 
 ### Kubernetes Community Days (KCD) {#kubernetes-community-days}
 
-Os contribuidores do OpenTelemetry falam regularmente em eventos locais de Kubernetes Community Days em todo o mundo. Esses eventos oferecem:
+Os contribuidores do OpenTelemetry falam regularmente em eventos locais de
+Kubernetes Community Days em todo o mundo. Esses eventos oferecem:
 
 - Encontros comunitários locais
 - Histórias de adoção do OpenTelemetry
@@ -56,7 +65,8 @@ Encontre seu KCD local em [community.cncf.io](https://community.cncf.io/).
 
 ### Open Observability Summit {#open-observability-summit}
 
-O Open Observability Summit reúne a comunidade de observabilidade, incluindo contribuidores e usuários do OpenTelemetry, para discutir:
+O Open Observability Summit reúne a comunidade de observabilidade, incluindo
+contribuidores e usuários do OpenTelemetry, para discutir:
 
 - Últimos desenvolvimentos na observabilidade
 - Padrões de integração do OpenTelemetry
@@ -67,7 +77,9 @@ O Open Observability Summit reúne a comunidade de observabilidade, incluindo co
 
 ### Humans of OpenTelemetry {#humans-of-open-telemetry}
 
-Em eventos principais, realizamos entrevistas "Humans of OpenTelemetry" com contribuidores, mantenedores e usuários finais para compartilhar suas histórias e experiências com o projeto. Essas entrevistas fornecem insights sobre:
+Em eventos principais, realizamos entrevistas "Humans of OpenTelemetry" com
+contribuidores, mantenedores e usuários finais para compartilhar suas histórias
+e experiências com o projeto. Essas entrevistas fornecem insights sobre:
 
 - Como as pessoas se envolveram com o OpenTelemetry
 - Padrões de uso no mundo real e histórias de sucesso
