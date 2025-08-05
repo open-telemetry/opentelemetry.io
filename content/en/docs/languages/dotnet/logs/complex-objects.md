@@ -24,8 +24,7 @@ extension package called
 
 - Complete the
   [Getting Started with Console](/docs/languages/dotnet/logs/getting-started-console/)
-  tutorial
-- [.NET SDK](https://dotnet.microsoft.com/download) installed on your computer
+  tutorial.
 
 ## Implementation steps
 
