@@ -241,6 +241,4 @@ builder.Services.AddOpenTelemetry()
 
 ## Learn more
 
-- <!-- [OpenTelemetry .NET Logs](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Extensions.Logging) -->
-- <!-- [Data Privacy and Compliance in Logging](https://www.cisa.gov/sites/default/files/publications/Log_Sanitization_508c.pdf) -->
 - [Regular Expressions in .NET](https://learn.microsoft.com/dotnet/standard/base-types/regular-expressions)
