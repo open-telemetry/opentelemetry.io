@@ -161,13 +161,13 @@ compartilhado de página.
 {{% /alert %}}
 
 Alguns dos _shortcodes_ base contêm texto em inglês que você pode precisar
-localizar -- especialmente para aqueles contidos em [layouts/shortcodes/docs].
+localizar -- especialmente para aqueles contidos em [layouts/_shortcodes/docs].
 
 Se você precisar criar uma versão localizada de um _shortcode_, coloque-o em
-`layouts/shortcodes/pt`, onde `pt` é o código do idioma da sua localização. A
+`layouts/_shortcodes/pt`, onde `pt` é o código do idioma da sua localização. A
 partir daí, use o mesmo caminho relativo do _shortcode_ base original.
 
-[layouts/shortcodes/docs]:
+[layouts/_shortcodes/docs]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
 
 ## Acompanhando inconsistências em páginas localizadas {#track-changes}
