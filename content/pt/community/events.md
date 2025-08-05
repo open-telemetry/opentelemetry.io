@@ -1,6 +1,6 @@
 ---
 title: Eventos
-default_lang_commit: 91afb20322a5358e54b6d9278a66d2917efd4a60
+default_lang_commit: 4f38b130938b017a283457de2404a4cd0fd77819
 ---
 
 A comunidade OpenTelemetry participa e organiza diversos eventos ao longo do ano

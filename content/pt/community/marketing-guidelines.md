@@ -2,7 +2,7 @@
 title: Diretrizes de Marketing do OpenTelemetry para Organizações Contribuintes
 linkTitle: Diretrizes de Marketing
 weight: 999
-default_lang_commit: fe3765d1d3493c5bb1bb4571a38d5b02cbb2a583
+default_lang_commit: 6a865f53d8e40c17f42772fb8fb100d62a61fb7e
 cSpell:ignore: devstats
 ---
 

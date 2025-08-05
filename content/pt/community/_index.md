@@ -3,7 +3,7 @@ title: Comunidade
 menu: { main: { weight: 40 } }
 cascade:
   type: docs
-default_lang_commit: 1f88cd39457dc0f62dd86b35ba4f1841aac0462c
+default_lang_commit: e40c49c4e9ebb094067c1b552bb5afee7b9896d1
 ---
 
 {{% community-lists %}}
