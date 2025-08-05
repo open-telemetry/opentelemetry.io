@@ -53,8 +53,8 @@ public struct FoodRecallNotice
 
 ### 3. Create a logger extension method with LogPropertiesAttribute
 
-Define an extension method for your logger that uses the
-Define an extension method to `ILogger` that uses the
+Define an extension method for your logger that uses the Define an extension
+method to `ILogger` that uses the
 
 ```csharp
 using Microsoft.Extensions.Logging;
