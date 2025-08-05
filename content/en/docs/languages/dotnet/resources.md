@@ -1,10 +1,40 @@
 ---
-title: Resources
-weight: 70
+title: Resources in OpenTelemetry .NET
+linkTitle: Resources
+description: Learn about resources and how to use them in OpenTelemetry .NET
+weight: 40
 cSpell:ignore: myhost pcarter uuidgen
 ---
 
 {{% docs/languages/resources-intro %}}
+
+## What are resources?
+
+In OpenTelemetry, a resource is an immutable representation of the entity
+producing telemetry. For example, a resource could represent a Kubernetes
+container, a Linux or Windows process, or an application running within a
+process.
+
+Resources are a fundamental concept in OpenTelemetry, and they are used to
+describe the source of telemetry data. This information is valuable for
+debugging and analyzing telemetry data.
+
+## Resource attributes
+
+Resource attributes are key-value pairs that provide metadata about the
+resource. OpenTelemetry defines a set of
+[semantic conventions](/docs/specs/semconv/resource/) for resource attributes,
+which should be used when applicable.
+
+Common resource attributes include:
+
+- `service.name`: The name of the service generating telemetry
+- `service.version`: The version of the service
+- `service.namespace`: A namespace for the service
+- `service.instance.id`: A unique identifier for the service instance
+- `host.name`: The name of the host
+- `deployment.environment`: The deployment environment (e.g., production,
+  staging)
 
 ## Setup
 
@@ -143,3 +173,8 @@ to get details about your [Cloud] environment or [Deployment][].
 [deployment]: /docs/specs/semconv/resource/deployment-environment/
 [service]: /docs/specs/semconv/resource/#service
 [os]: /docs/specs/semconv/resource/os/
+
+## Learn more
+
+For more information about resources in OpenTelemetry, see the
+[Resources SDK specification](/docs/specs/otel/resource/sdk/).
