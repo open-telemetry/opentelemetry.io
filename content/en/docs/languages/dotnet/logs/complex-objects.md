@@ -38,7 +38,7 @@ dotnet add package Microsoft.Extensions.Telemetry.Abstractions
 
 ### 2. Define a complex data type
 
-Create a class, record or struct to represent your complex object:
+Create a struct to represent your complex object:
 
 ```csharp
 public struct FoodRecallNotice
