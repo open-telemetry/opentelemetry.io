@@ -122,7 +122,7 @@ This code:
 3. Sets up metrics collection with `WithMetrics()`
 4. Adds automatic instrumentation for ASP.NET Core with
    `AddAspNetCoreInstrumentation()`
-5. Configures the console exporter to export metrics every 1000 milliseconds
+5. Configures the console exporter to export metrics every second
 
 ### ASP.NET Core Instrumentation
 
