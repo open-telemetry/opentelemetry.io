@@ -5,6 +5,7 @@ date: 2025-08-05
 author: >-
   [Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)
 sig: End-User
+cSpell:ignore: Huxing Zhang Quesma youtube
 ---
 
 In the latest session of
