@@ -125,13 +125,13 @@ request, making it easy to find all logs related to a specific request.
 Log correlation provides several benefits:
 
 1. **Unified view**: You can see logs and traces together in a unified view in
-   your observability tool
+   your observability tool.
 2. **Context enrichment**: Logs are enriched with trace context, making them
-   more informative
+   more informative.
 3. **Troubleshooting**: Quickly find all logs related to a specific trace when
-   debugging issues
-4. **Performance analysis**: Understand how logging affects the performance of
-   your application
+   debugging issues.
+4. **Performance analysis**: Understand what affects the performance of
+   your application.
 
 ## Learn more
 
