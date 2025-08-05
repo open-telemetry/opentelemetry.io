@@ -4,21 +4,21 @@ description: Criando e mantendo páginas do site em localizações não inglesas
 linkTitle: Localização
 weight: 25
 default_lang_commit: b089f21094014118017cf32ffeea6b50afc3579f
-cSpell:ignore: mergeado ptbr shortcodes
+cSpell:ignore: merge ptbr shortcodes
 ---
 
-O site do OTel usa o [framework multilíngue] do Hugo para dar suporte a
-localizações de páginas. O inglês é o idioma padrão, com o inglês americano como
-localização padrão (implícita). Um número crescente de outras localizações é
-suportado, como pode ser visto no menu suspenso de idiomas na navegação
-superior.
+O site do OTel usa o [framework multilíngue][multilingual framework] do Hugo
+para dar suporte a localizações de páginas. O inglês é o idioma padrão, com o
+inglês americano como localização padrão (implícita). Um número crescente de
+outras localizações é suportado, como pode ser visto no menu suspenso de idiomas
+na navegação superior.
 
-## Orientação para tradução
+## Orientação para tradução {#translation-guidance}
 
 Ao traduzir páginas do inglês, recomendamos que você siga a orientação oferecida
 nesta seção.
 
-### Resumo
+### Resumo {#summary}
 
 #### ✅ O que fazer {#do}
 
@@ -28,14 +28,14 @@ nesta seção.
   - Conteúdo das páginas, incluindo:
     - Campos de texto de [diagramas](#images) Mermaid
     - Comentários de trechos de código (opcional)
-  - Valores dos campos [Front matter][] para `title`, `linkTitle`, e
+  - Valores dos campos _[Front matter][]_ para `title`, `linkTitle`, e
     `description`
-  - **Todo** conteúdo da página e front matter, a menos que indicado o contrário
+  - **Todo** conteúdo da página e _front matter_, a menos que indicado o contrário
 - **Preservar** o _conteúdo_, _significado_, e _estilo_ do texto original
-- **Perguntar** aos [maintainers] se você tiver dúvidas ou perguntas através de:
+- **Perguntar** aos [mantenedores][maintainers] em caso de dúvidas, através de:
   - Canais do [Slack], como `#otel-docs-localization`, `#otel-localization-ptbr`
     ou `#otel-comms`
-  - [Discussion], issue, ou comentário de PR
+  - [Discussões][Discussion], _issue_, ou comentário de PR
 
 [Discussion]:
   https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
@@ -49,11 +49,12 @@ nesta seção.
 - **Não traduzir**:
   - **Nomes de arquivos ou diretórios** de recursos neste repositório
   - [Links](#links), isso inclui [IDs de cabeçalho](#headings) [^*]
-  - Trechos de código inline como estes: `exemplo de código inline`
-  - Elementos Markdown marcados como `notranslate` (geralmente como uma classe
+  - Trechos de código em linha como estes: `exemplo de código inline`
+  - Elementos _Markdown_ marcados como `notranslate` (geralmente como uma classe
     CSS), em particular para [cabeçalhos](#headings)
-  - Campos [Front matter][] diferentes daqueles listados em [O que fazer](#do).
-    Especificamente, não traduza `aliases`. Na dúvida, pergunte aos maintainers.
+  - Campos _[Front matter][]_ diferentes daqueles listados em [O que fazer](#do).
+    Especificamente, não traduza `aliases`. Na dúvida, pergunte aos
+    mantenedores.
   - Código
 - Não criar **cópias de imagens**, a menos que você
   [localize texto nas imagens](#images)
@@ -103,11 +104,11 @@ renderizar o link. Por exemplo, o caminho de exemplo anterior se tornaria
 
 ### Labels de definição de links {#link-labels}
 
-Autores de localização podem escolher traduzir ou não [labels] de [definições de
-links][] Markdown. Se você escolher manter o label em inglês, então siga a
-orientação dada nesta seção.
+Autores de localização podem escolher traduzir ou não _[labels]_ de [definições
+de links][link definitions] _Markdown_. Se você escolher manter o _label_ em inglês,
+então siga a orientação dada nesta seção.
 
-Por exemplo, considere o seguinte Markdown:
+Por exemplo, considere o seguinte _Markdown_:
 
 ```markdown
 [Hello], world! Welcome to the [OTel website][].
@@ -126,7 +127,7 @@ Isso seria traduzido em português como:
 ```
 
 [labels]: https://spec.commonmark.org/0.31.2/#link-label
-[definições de links]:
+[link definitions]:
   https://spec.commonmark.org/0.31.2/#link-reference-definitions
 
 ### Imagens e diagramas {#images}
@@ -152,18 +153,18 @@ forma que você traduziria qualquer outro conteúdo de página.
 
 {{% alert title="Nota" %}}
 
-A partir de fevereiro de 2025, estamos no processo de migração de shortcodes
+A partir de fevereiro de 2025, estamos no processo de migração de _shortcodes_
 para [arquivos de inclusão](#includes) como meio de suportar conteúdo
 compartilhado de página.
 
 {{% /alert %}}
 
-Alguns dos shortcodes base contêm texto em inglês que você pode precisar
+Alguns dos _shortcodes_ base contêm texto em inglês que você pode precisar
 localizar -- especialmente para aqueles contidos em [layouts/shortcodes/docs].
 
-Se você precisar criar uma versão localizada de um shortcode, coloque-o em
+Se você precisar criar uma versão localizada de um _shortcode_, coloque-o em
 `layouts/shortcodes/pt`, onde `pt` é o código do idioma da sua localização. A
-partir daí, use o mesmo caminho relativo do shortcode base original.
+partir daí, use o mesmo caminho relativo do _shortcode_ base original.
 
 [layouts/shortcodes/docs]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/shortcodes/docs
@@ -174,13 +175,13 @@ Um dos principais desafios de manter páginas localizadas é identificar quando 
 páginas correspondentes em inglês foram atualizadas. Esta seção explica como
 lidamos com isso.
 
-### O campo de front-matter `default_lang_commit`
+### O campo de front-matter `default_lang_commit` {#the-default_lang_commit-front-matter-field}
 
 Quando uma página localizada é escrita, como `content/pt/<some-path>/page.md`,
-esta tradução é baseada em um commit específico da [branch `main`][main] da
+esta tradução é baseada em um _commit_ específico da [_branch_ `main`][main] da
 versão correspondente em inglês da página em `content/en/<some-path>/page.md`.
-Neste repositório, toda página localizada identifica o commit da página em
-inglês no front matter da página localizada da seguinte forma:
+Neste repositório, toda página localizada identifica o _commit_ da página em
+inglês no _front matter_ da página localizada da seguinte forma:
 
 ```markdown
 ---
@@ -190,11 +191,11 @@ default_lang_commit: <commit-hash-mais-recente-da-pagina-original>
 ---
 ```
 
-O front matter acima estaria em `content/pt/<some-path>/page.md`. O hash do
-commit corresponderia ao commit mais recente de `content/en/<some-path>/page.md`
-da branch `main`.
+O _front matter_ acima estaria em `content/pt/<some-path>/page.md`. O _hash_ do
+_commit_ corresponderia ao _commit_ mais recente de
+`content/en/<some-path>/page.md` da _branch_ `main`.
 
-### Acompanhando mudanças nas páginas em inglês
+### Acompanhando mudanças nas páginas em inglês {#tracking-changes-to-english-pages}
 
 À medida que atualizações são feitas nas páginas em inglês, você pode acompanhar
 as páginas localizadas correspondentes que precisam de atualização executando o
@@ -213,10 +214,10 @@ caminho(s) assim:
 npm run check:i18n -- content/pt
 ```
 
-### Visualizando detalhes das mudanças
+### Visualizando detalhes das mudanças {#viewing-change-details}
 
 Para quaisquer páginas localizadas que precisem de atualização, você pode ver os
-detalhes do diff das páginas correspondentes em inglês usando a flag `-d` e
+detalhes do diff das páginas correspondentes em inglês usando a _flag_ `-d` e
 fornecendo os caminhos para suas páginas localizadas, ou omitir os caminhos para
 ver todas. Por exemplo:
 
@@ -236,48 +237,49 @@ index 3592df5d..c7980653 100644
  ---
 ```
 
-### Adicionando `default_lang_commit` a novas páginas
+### Adicionando `default_lang_commit` a novas páginas {#adding-default_lang_commit-to-new-pages}
 
 Ao criar páginas para sua localização, lembre-se de adicionar
-`default_lang_commit` ao front matter da página junto com um hash de commit
-apropriado da `main`.
+`default_lang_commit` ao _front matter_ da página junto com um _hash_ de
+_commit_ apropriado da _branch_ `main`.
 
 Se sua tradução de página é baseada em uma página em inglês na `main` em
 `<hash>`, então execute o seguinte comando para adicionar automaticamente
-`default_lang_commit` ao front matter do arquivo da sua página usando o commit
-`<hash>`. Você pode especificar `HEAD` como argumento se suas páginas estão
-agora sincronizadas com a `main` em `HEAD`. Por exemplo:
+`default_lang_commit` ao _front matter_ do arquivo da sua página usando o
+_commit_ `<hash>`. Você pode especificar `HEAD` como argumento se suas páginas
+estão agora sincronizadas com a `main` em `HEAD`. Por exemplo:
 
 ```sh
 npm run check:i18n -- -n -c 1ca30b4d content/ja
 npm run check:i18n -- -n -c HEAD content/zh/docs/concepts
 ```
 
-Para listar arquivos de páginas de localização com chaves de hash faltando,
+Para listar arquivos de páginas de localização com chaves de _hash_ faltando,
 execute:
 
 ```sh
 npm run check:i18n -- -n
 ```
 
-### Atualizando `default_lang_commit` para páginas existentes
+### Atualizando `default_lang_commit` para páginas existentes {#updating-default_lang_commit-for-existing-pages}
 
 Ao atualizar suas páginas localizadas para corresponder às mudanças feitas na
 página correspondente em inglês, certifique-se de que você também atualize o
-hash do commit `default_lang_commit`.
+_hash_ do _commit_ `default_lang_commit`.
 
 {{% alert title="Dica" %}}
 
 Se sua página localizada agora corresponde à versão em inglês na `main` em
-`HEAD`, então apague o valor do hash do commit no front matter, e execute o
-comando **add** dado na seção anterior para atualizar automaticamente o valor do
-campo `default_lang_commit`.
+`HEAD`, então apague o valor do _hash_ do _commit_ no _front matter_, e execute
+o comando **add** mostrado na seção anterior para atualizar automaticamente o
+valor do campo `default_lang_commit`.
 
 {{% /alert %}}
 
 Se você atualizou em lote todas as suas páginas de localização que possuíam
-inconsistências, você pode atualizar o hash do commit desses arquivos usando a
-flag `-c` seguida por um hash de commit ou 'HEAD' para usar `main@HEAD`.
+inconsistências, é possível atualizar o _hash_ do _commit_ desses arquivos
+utilizando a _flag_ `-c` seguida por um _hash_ de _commit_ ou 'HEAD' para usar
+`main@HEAD`.
 
 ```sh
 npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
@@ -286,48 +288,52 @@ npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 
 {{% alert title="Importante" %}}
 
-Quando você usa `HEAD` como especificador de hash, o script usará o hash da
-`main` em HEAD no seu **ambiente local**. Certifique-se de fazer fetch e pull da
-`main`, se você quiser que HEAD corresponda à `main` no GitHub.
+Ao utilizar `HEAD` como referência de _hash_, o script utilizará o _hash_ da
+_branch_ `main` no seu **ambiente local**. Certifique-se de executar _fetch_ e
+_pull_ da `main` caso queira que HEAD corresponda ao estado atual da `main` no
+GitHub.
 
 {{% /alert %}}
 
-### Status de inconsistência
+### Status de inconsistência {#drift-status}
 
-Execute `npm run fix:i18n:status` para adicionar um campo de front-matter
-`drifted_from_default` àquelas páginas de localização alvo que possuem
-inconsistências. Este campo será usado em breve para exibir um banner no topo
-das páginas que derivaram em relação às suas respectivas páginas em inglês.
+Execute `npm run fix:i18n:status` para adicionar o campo `drifted_from_default`
+no _front matter_ das páginas localizadas que estão divergentes. Este campo será
+utilizado em breve para exibir um banner no topo das páginas que se desviaram da
+versão em inglês correspondente.
 
-### Ajuda do script
+### Ajuda do script {#script-help}
 
 Para mais detalhes sobre o script, execute `npm run check:i18n -- -h`.
 
-## Novas localizações
+## Novas localizações {#new-localizations}
 
-### Nova equipe de localização
+### Nova equipe de localização {#new-localization-team}
 
 Para iniciar uma nova localização para o site do OpenTelemetry, você precisa de:
 
 1. Um **mentor de localização** que seja familiar com seu idioma, como um
-   [aprovador ativo][] do [Glossário CNCF][], ou do [site do Kubernetes][].
+   [aprovador ativo][active approver] do [Glossário CNCF][CNCF Glossary], ou do
+   [site do Kubernetes][Kubernetes website].
 2. Pelo menos dois contribuidores interessados.
 
-[aprovador ativo]: https://github.com/cncf/glossary/blob/main/CODEOWNERS
-[Glossário CNCF]: https://glossary.cncf.io/
-[site do Kubernetes]: https://github.com/kubernetes/website
+[active approver]: https://github.com/cncf/glossary/blob/main/CODEOWNERS
+[CNCF Glossary]: https://glossary.cncf.io/
+[Kubernetes website]: https://github.com/kubernetes/website
 
 Uma vez que você estiver pronto:
 
-1. Crie uma [nova issue][] para compartilhar seu interesse em contribuir.
+1. Crie uma [nova _issue_][new issue] para compartilhar seu interesse em
+   contribuir.
 
-2. Adicione os usernames do GitHub do mentor e dos possíveis contribuidores.
+2. Adicione os nomes de usuário do GitHub do mentor e dos possíveis
+   contribuidores.
 
-3. Procure o [código ISO 639-1][] oficial para o idioma que você quer adicionar.
-   Vamos nos referir a este código de idioma como `LANG_ID` no restante desta
-   seção.
+3. Procure o [código ISO 639-1][ISO 639-1 code] oficial para o idioma que você
+   quer adicionar. Vamos nos referir a este código de idioma como `LANG_ID` no
+   restante desta seção.
 
-4. Adicione a seguinte lista de tarefas ao comentário de abertura da sua issue:
+4. Adicione a seguinte lista de tarefas ao comentário de abertura da sua _issue_:
 
    ```markdown
    - [ ] Informações do idioma:
@@ -348,35 +354,36 @@ Uma vez que você estiver pronto:
      - [ ] Atualizar proprietários de componentes para `content/LANG_ID`
    ```
 
-5. [Submeta um pull request](../pull-requests/) com uma tradução da [homepage]
-   do site, e _nada mais_, no arquivo `content/LANG_ID/_index.md`. Certifique-se
-   de que os maintainers tenham as permissões necessárias para editar seu PR, já
-   que eles adicionarão mudanças adicionais ao seu PR que são necessárias para
-   iniciar seu projeto de localização.
+5. [Submeta um _pull request_](../pull-requests/) com uma tradução da [página
+   inicial][homepage] do site, e _nada mais_, no arquivo
+   `content/LANG_ID/_index.md`. Certifique-se de que os mantenedores tenham as
+   permissões necessárias para editar seu PR, já que eles adicionarão mudanças
+   adicionais ao seu PR que são necessárias para iniciar seu projeto de
+   localização.
 
-[código ISO 639-1]: https://en.wikipedia.org/wiki/ISO_639-1
+[ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
 [homepage]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
-Após seu primeiro PR ser mergeado, os maintainers configurarão o label da issue,
-o grupo de nível de organização e os proprietários do componente.
+Após o _merge_ do seu primeiro PR, os mantenedores configurarão o rótulo
+_(label)_ da _issue_, o grupo de nível organizacional e os responsáveis pelo
+componente.
 
 {{% alert title="Nota" %}}
 
-Você não precisa ser um contribuidor existente do projeto OpenTelemetry para
-iniciar uma nova localização. No entanto, você não será adicionado como membro
-da [organização GitHub OpenTelemetry](https://github.com/open-telemetry/) ou
-como membro do grupo de aprovadores para sua localização. Você precisará
-satisfazer os requisitos para se tornar um membro oficial e aprovador conforme
-descrito nas
-[diretrizes de membership](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
+Você não precisa ser um contribuidor atual do projeto OpenTelemetry para iniciar
+uma nova localização. No entanto, você não será adicionado como membro da
+[organização GitHub OpenTelemetry](https://github.com/open-telemetry/) ou como
+membro do grupo de aprovadores para sua localização. Você precisará satisfazer
+os requisitos para se tornar um membro oficial e aprovador conforme descrito nas
+[diretrizes de associação](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
 
-Ao iniciar o projeto de localização, os maintainers tratarão suas revisões como
+Ao iniciar o projeto de localização, os mantenedores tratarão suas revisões como
 se você já fosse um aprovador.
 
 {{% /alert %}}
 
-### Lista de verificação do maintainer OTel
+### Lista de verificação do maintainer OTel {#otel-maintainer-checklist}
 
 #### Hugo
 
@@ -384,13 +391,13 @@ Atualize o arquivo `hugo.yaml`. Adicione entradas apropriadas para `LANG_ID` em:
 
 - `languages`
 - `module.mounts`. Adicione pelo menos uma entrada `source`-`target` para
-  `content`. Considere adicionar entradas para páginas de fallback `en` apenas
+  `content`. Considere adicionar entradas para páginas de _fallback_ `en` apenas
   quando a localização tiver conteúdo suficiente.
 
-#### Ortografia
+#### Ortografia {#spelling}
 
-Procure por [dicionários cSpell][] disponíveis como pacotes NPM
-[@cspell/dict-LANG_ID][]. Se um dicionário não estiver disponível para seu
+Procure por [dicionários cSpell][cSpell dictionaries] disponíveis como pacotes
+NPM [@cspell/dict-LANG_ID][]. Caso um dicionário não esteja disponível para seu
 dialeto ou região, escolha a região mais próxima.
 
 Se nenhum dicionário estiver disponível, então pule o resto desta subseção. Caso
@@ -406,15 +413,15 @@ contrário:
   - `dictionaries`: adicione duas entradas aqui, uma para `LANG_ID` e uma para
     `LANG_ID-words.txt`
 
-[dicionários cSpell]: https://github.com/streetsidesoftware/cspell-dicts
+[cSpell dictionaries]: https://github.com/streetsidesoftware/cspell-dicts
 [@cspell/dict-LANG_ID]: https://www.npmjs.com/search?q=%40cspell%2Fdict
 
-#### Suporte de outras ferramentas
+#### Suporte de outras ferramentas {#other-tooling-support}
 
 - Suporte do Prettier: se `LANG_ID` não for bem suportado pelo Prettier,
   adicione regras de ignore a `.prettierignore`
 
-## Orientação para aprovadores e maintainers
+## Orientação para aprovadores e maintainers {#approver-and-maintainer-guidance}
 
 ### PRs com mudanças semânticas não devem abranger localizações {#prs-should-not-span-locales}
 
@@ -441,8 +448,8 @@ Em tais situações, faça as seguintes atualizações para cada página não in
 que tem um caminho que falha na verificação de links:
 
 - Atualize a referência do link para o novo caminho da página.
-- Adicione o comentário YAML `# patched` no final da linha para a linha de front
-  matter `default_lang_commit`.
+- Adicione o comentário YAML `# patched` no final da linha para a linha de
+  _front matter_ `default_lang_commit`.
 - Não faça outras mudanças no arquivo.
 - Execute novamente `npm run check:links` e certifique-se de que não restam
   falhas de links.
@@ -458,6 +465,6 @@ de link, considere:
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
-[framework multilíngue]: https://gohugo.io/content-management/multilingual/
-[nova issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
+[multilingual framework]: https://gohugo.io/content-management/multilingual/
+[new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
 [slack]: https://slack.cncf.io/
