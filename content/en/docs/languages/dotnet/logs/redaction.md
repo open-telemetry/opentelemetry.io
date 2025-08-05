@@ -18,7 +18,7 @@ Redacting sensitive information from logs is crucial for:
 2. **Security**: Preventing exposure of sensitive data in log files or log
    management systems
 3. **Privacy**: Protecting user privacy by removing personally identifiable
-   information
+   information (PII)
 4. **Risk reduction**: Minimizing the impact of potential log data breaches
 
 ## Implementing a basic redaction processor
