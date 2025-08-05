@@ -125,8 +125,10 @@ in the output.
 
 ## Advanced redaction strategies
 
-In real-world applications, you'll want more sophisticated redaction strategies.
-Here are some approaches:
+In real-world applications, you'll want more sophisticated redaction strategies,
+either through the SDK or OTel Collector processors.
+
+Here are some approaches that use the SDK:
 
 ### 1. Pattern matching with regular expressions
 
@@ -212,19 +214,6 @@ public KeyValuePair<string, object?> this[int index]
     }
 }
 ```
-
-## Best practices for log redaction
-
-1. **Redact early**: Apply redaction as early as possible in the logging
-   pipeline
-2. **Be thorough**: Identify all types of sensitive data that need redaction
-3. **Test your redaction**: Verify that your redaction logic works correctly
-4. **Document patterns**: Document what gets redacted and how
-5. **Consider performance**: Complex redaction logic can impact performance
-6. **Update regularly**: Keep your redaction patterns updated as new data types
-   emerge
-7. **Validate compliance**: Ensure your redaction meets relevant regulatory
-   requirements
 
 ## Integration with ASP.NET Core
 
