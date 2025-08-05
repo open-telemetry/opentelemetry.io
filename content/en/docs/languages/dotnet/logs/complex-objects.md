@@ -20,12 +20,6 @@ This attribute and the corresponding code generation logic are provided by an
 extension package called
 [`Microsoft.Extensions.Telemetry.Abstractions`](https://www.nuget.org/packages/Microsoft.Extensions.Telemetry.Abstractions/).
 
-> **Note**: Although `Microsoft.Extensions.Telemetry.Abstractions` was
-> introduced in .NET 8.0, it supports previous versions of the target framework
-> (e.g., .NET 6.0). Refer to the
-> [compatible target frameworks](https://www.nuget.org/packages/Microsoft.Extensions.Telemetry.Abstractions/#supportedframeworks-body-tab)
-> for more information.
-
 ## Prerequisites
 
 - Complete the
