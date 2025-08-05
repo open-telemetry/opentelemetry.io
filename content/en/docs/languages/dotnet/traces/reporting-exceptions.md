@@ -107,8 +107,7 @@ using (var activity = MyActivitySource.StartActivity("Foo"))
 ### Option 4: Record the full exception
 
 For the richest debugging experience, use `Activity.RecordException()` to store
-the exception in the activity as an event following the
-[OpenTelemetry conventions](/docs/specs/semconv/exceptions/exceptions-spans.md):
+the exception in the activity as an event:
 
 ```csharp
 using (var activity = MyActivitySource.StartActivity("Foo"))
@@ -207,5 +206,4 @@ When reporting exceptions in OpenTelemetry traces:
 
 ## Learn more
 
-- [OpenTelemetry Semantic Conventions for Exceptions](/docs/specs/semconv/exceptions/exceptions-spans.md)
 - [Activity API Reference](https://learn.microsoft.com/dotnet/core/diagnostics/distributed-tracing-concepts)

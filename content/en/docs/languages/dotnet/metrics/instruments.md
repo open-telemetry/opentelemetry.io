@@ -202,4 +202,3 @@ Common units include:
 
 - [OpenTelemetry Metric Instruments Specification](/docs/specs/otel/metrics/api/#instrument)
 - [.NET Metrics API](https://learn.microsoft.com/en-us/dotnet/core/diagnostics/metrics-instrumentation)
-- [Semantic Conventions for Metrics](/docs/specs/semconv/metrics/)

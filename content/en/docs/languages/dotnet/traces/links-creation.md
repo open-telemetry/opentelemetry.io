@@ -176,5 +176,4 @@ While links provide flexibility, there are some considerations:
 ## Learn more
 
 - [OpenTelemetry Specification: Links between spans](/docs/specs/otel/overview/#links-between-spans)
-- [Creating new root activities in .NET](/docs/instrumentation/net/manual/#creating-new-root-activities)
 - [Activity Creation Options](https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Api#activity-creation-options)
