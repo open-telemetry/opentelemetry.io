@@ -1435,6 +1435,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-11T08:05:07.564567-05:00"
   },
+  "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/filtering-and-searching-issues-and-pull-requests#sorting-issues-and-pull-requests": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-05T09:17:21.602705+01:00"
+  },
   "https://docs.github.com/en/pull-requests": {
     "StatusCode": 206,
     "LastSeen": "2024-09-28T12:02:48.071874-04:00"
@@ -4067,6 +4071,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:18:29.106Z"
   },
+  "https://github.com/dgomezblanco": {
+    "StatusCode": 404,
+    "LastSeen": "2025-08-05T09:17:18.245547+01:00"
+  },
   "https://github.com/dineshg13": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:13:03.82493-05:00"
@@ -5762,6 +5770,14 @@
   "https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#requirements": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:10:12.345Z"
+  },
+  "https://github.com/open-telemetry/community/blob/main/guides/maintainer/popular-issues.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-05T09:17:24.564457+01:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/guides/maintainer/popular-issues.md#recommended-footnote-on-issue-templates": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-05T09:17:29.499582+01:00"
   },
   "https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md": {
     "StatusCode": 206,
@@ -17610,6 +17626,10 @@
   "https://opentelemetry.io/blog/2025/contribex-survey-results/": {
     "StatusCode": 206,
     "LastSeen": "2025-06-12T14:07:51.914716+02:00"
+  },
+  "https://opentelemetry.io/community/end-user/issue-participation/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-05T09:17:26.323873+01:00"
   },
   "https://opentelemetry.io/docs/concepts/instrumentation/": {
     "StatusCode": 206,
