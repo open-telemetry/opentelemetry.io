@@ -13007,10 +13007,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T12:10:58.178169-05:00"
   },
-  "https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/shortcodes/docs": {
-    "StatusCode": 206,
-    "LastSeen": "2025-02-02T12:10:59.64214-05:00"
-  },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/templates/registry-entry.yml": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T12:11:00.926611-05:00"

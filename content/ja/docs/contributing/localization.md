@@ -137,7 +137,7 @@ Markdown の[リンク定義][link definitions]の[ラベル][labels]は**翻訳
 ここで `xx` はローカリゼーション対象の言語コードを指します。
 その際、元の基本ショートコードと同じ相対パスを使用してください。
 
-[layouts/shortcodes/docs]: https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/shortcodes/docs
+[layouts/shortcodes/docs]: https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
 
 ## ローカリゼーションページの乖離を追跡する {#track-changes}
 
