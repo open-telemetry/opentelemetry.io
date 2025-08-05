@@ -2,8 +2,8 @@
 title: Diretrizes de Marketing do OpenTelemetry para Organizações Contribuintes
 linkTitle: Diretrizes de Marketing
 weight: 999
-cSpell:ignore: devstats
 default_lang_commit: fe3765d1d3493c5bb1bb4571a38d5b02cbb2a583
+cSpell:ignore: devstats
 ---
 
 O OpenTelemetry (também conhecido como OTel) é uma colaboração entre usuários

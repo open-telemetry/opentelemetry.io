@@ -2,8 +2,8 @@
 title: Membros do Projeto OpenTelemetry
 linkTitle: Membros
 weight: 30
-cSpell:ignore: subproject triagers
 default_lang_commit: 79e85315d3bc43ec883115f01fabb3eda53df9ef
+cSpell:ignore: triagers
 ---
 
 A comunidade OpenTelemetry é formada por diversas pessoas de diferentes origens,
