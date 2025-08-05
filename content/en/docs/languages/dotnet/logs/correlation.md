@@ -62,7 +62,6 @@ var activitySource = new ActivitySource("MyCompany.MyProduct.MyLibrary");
 using (var activity = activitySource.StartActivity("SayHello"))
 {
     // Log within the activity context
-    logger.LogInformation("Hello from OpenTelemetry .NET Logs!");
     logger.FoodPriceChanged("artichoke", 9.99);
 }
 
