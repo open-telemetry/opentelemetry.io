@@ -96,8 +96,8 @@ logger.FoodRecallNotice(foodRecallNotice);
 
 ### 5. Run the application
 
-Run the application, for example using `dotnet run`, and you should see the log output on
-the console:
+Run the application, for example using `dotnet run`, and you should see the log
+output on the console:
 
 ```text
 LogRecord.Timestamp:               2024-01-12T19:01:16.0604084Z
