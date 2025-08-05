@@ -102,7 +102,7 @@ logger.FoodRecallNotice(foodRecallNotice);
 
 ### 5. Run the application
 
-Run the application (using `dotnet run`) and you should see the log output on
+Run the application, for example using `dotnet run`, and you should see the log output on
 the console:
 
 ```text
