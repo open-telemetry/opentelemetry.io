@@ -2,8 +2,8 @@
 title: ইমেইল সার্ভিস
 linkTitle: ইমেইল
 aliases: [emailservice]
-cSpell:ignore: sinatra
 default_lang_commit: ae417344d183999236c22834435e0dfeb109da29
+cSpell:ignore: sinatra
 ---
 
 অর্ডার দেওয়ার পর এই সার্ভিসটি ব্যবহারকারীর কাছে একটি নিশ্চিতকরণ ইমেইল পাঠায়।
