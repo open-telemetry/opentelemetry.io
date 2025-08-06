@@ -92,3 +92,6 @@ components:
   content/bn:
     - open-telemetry/docs-maintainers
     - open-telemetry/docs-bn-approvers
+  content/uk:
+    - open-telemetry/docs-maintainers
+    - open-telemetry/docs-uk-approvers
