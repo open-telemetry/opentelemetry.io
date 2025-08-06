@@ -3,7 +3,7 @@ title: Navegador
 aliases: [/docs/js/getting_started/browser]
 description: Aprende cómo agregar OpenTelemetry a tu aplicación de navegador.
 weight: 20
-default_lang_commit: cdb7966001fe8c85ea1933d69155d9dd3a9d2e79
+default_lang_commit: 139af493bd95fb5917ffe54db23cc9a8ef88c606
 ---
 
 {{% include browser-instrumentation-warning.md %}}
@@ -57,7 +57,7 @@ Copia el siguiente archivo en un directorio vacío y llámalo `index.html`.
 
 ### Instalación
 
-Para crear traces en el navegador, necesitarás `@opentelemetry/sdk-trace-web`, y
+Para crear trazas en el navegador, necesitarás `@opentelemetry/sdk-trace-web`, y
 la instrumentación `@opentelemetry/instrumentation-document-load`:
 
 ```shell
@@ -139,21 +139,21 @@ npx parcel index.html
 y abre el servidor web de desarrollo (por ejemplo, en `http://localhost:1234`)
 para verificar si tu código funciona.
 
-Aún no habrá salida de traces; para ello, necesitamos agregar un exportador.
+Aún no habrá salida de trazas; para ello, necesitamos agregar un exportador.
 
 ### Creación de un exportador
 
 En el siguiente ejemplo, usaremos `ConsoleSpanExporter`, que imprime todos los
 spans en la consola.
 
-Para visualizar y analizar tus traces, necesitarás exportarlos a un backend de
+Para visualizar y analizar tus trazas, necesitarás exportarlos a un backend de
 trazas. Sigue [estas instrucciones](../../exporters) para configurar un backend
 y un exportador.
 
 También podrías querer usar `BatchSpanProcessor` para exportar los spans en
 lotes y así utilizar los recursos de manera más eficiente.
 
-Para exportar traces a la consola, modifica `document-load.ts|js` para que
+Para exportar trazas a la consola, modifica `document-load.ts|js` para que
 coincida con el siguiente fragmento de código:
 
 ```js
@@ -183,7 +183,7 @@ registerInstrumentations({
 ```
 
 Ahora, vuelve a compilar tu aplicación y abre el navegador nuevamente. En la
-consola de las herramientas de desarrollador deberías ver algunos traces siendo
+consola de las herramientas de desarrollador deberías ver algunas trazas siendo
 exportados:
 
 ```json
@@ -257,4 +257,4 @@ registerInstrumentations({
 
 Para aprovechar las instrumentaciones más comunes en un solo paquete, puedes
 simplemente usar los
-[Metapaquetes de OpenTelemetry para la web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)
+[Meta paquetes de OpenTelemetry para la web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)
