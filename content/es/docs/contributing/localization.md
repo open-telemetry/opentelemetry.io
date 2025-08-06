@@ -160,8 +160,9 @@ localizar, especialmente aquellos que se encuentran en
 [layouts/_shortcodes/docs].
 
 Si necesitas crear una versión localizada de un _shortcode_, colócala en
-`layouts/_shortcodes/xx`, donde `xx` es el código de idioma de tu localización. A
-partir de ahí, utiliza la misma ruta relativa que el _shortcode_ base original.
+`layouts/_shortcodes/xx`, donde `xx` es el código de idioma de tu localización.
+A partir de ahí, utiliza la misma ruta relativa que el _shortcode_ base
+original.
 
 [layouts/_shortcodes/docs]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
