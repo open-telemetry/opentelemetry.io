@@ -164,7 +164,7 @@ Si necesitas crear una versión localizada de un _shortcode_, colócala en
 partir de ahí, utiliza la misma ruta relativa que el _shortcode_ base original.
 
 [layouts/shortcodes/docs]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/shortcodes/docs
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
 
 ## Seguimiento de cambios en páginas localizadas {#track-changes}
 
