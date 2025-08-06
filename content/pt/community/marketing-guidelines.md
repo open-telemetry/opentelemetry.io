@@ -75,7 +75,8 @@ Existem três áreas principais de foco para esses objetivos e diretrizes.
 
 - O que fazer:
   - "Gritar aos quatro ventos" sobre a compatibilidade com o OTel – quanto mais
-    os usuários finais entenderem o que podem fazer com os dados do OTel, melhor.
+    os usuários finais entenderem o que podem fazer com os dados do OTel,
+    melhor.
   - Enfatizar a neutralidade do fornecedor e a portabilidade de qualquer
     integração do OTel.
 - O que não fazer:
