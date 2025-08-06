@@ -3,7 +3,7 @@ title: コンテンツの提出
 description: GitHub UI 利用して、またはローカルのフォークから、新しいコンテンツまたはコンテンツの変更を提出する方法を学びます
 aliases: [new-content]
 weight: 15
-default_lang_commit: ba402271eeb1bd5e83c37f2fadc3b50e89aca66b
+default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
 ---
 
 新しいドキュメントの内容を追加や改善するには、[プルリクエスト][PR] （PR）を提出してください。
@@ -330,7 +330,6 @@ _図 4. フォークから、PR を公開する手順_
    - **説明**: 変更を詳細に記述してください。
      - GitHub イシューに関連する場合、`Fixes #12345` や `Closes #12345` を説明に記述することで、PR のマージしたあとに GitHub の自動化が該当イシューをクローズします。 他の関連する PR がある場合もリンクしてください。
      - 特定のことに対してアドバイスを求める場合、説明にレビュアーが考えて欲しい質問を含めてください。
-
 1. **Create pull request** ボタンを選択してください。
 
 プルリクエストは、[Pull requests](https://github.com/open-telemetry/opentelemetry.io/pulls) で確認できます。

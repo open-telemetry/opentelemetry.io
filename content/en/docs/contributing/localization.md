@@ -157,7 +157,7 @@ If you need to create a localized version of a shortcode, place it under
 there, use the same relative path as the original base shortcode.
 
 [layouts/shortcodes/docs]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/shortcodes/docs
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
 
 ## Keeping track of localized-page drift {#track-changes}
 
