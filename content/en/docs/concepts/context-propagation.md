@@ -21,7 +21,7 @@ correlate one signal with another.
 
 When Service A calls Service B, it includes a trace ID and a span ID as part of
 the context. Service B uses these values to create a new span that belongs to
-the same trace and sets the span from Service A as its parent. This makes it
+the same trace, setting the span from Service A as its parent. This makes it
 possible to track the full flow of a request across service boundaries.
 
 ## Propagation
