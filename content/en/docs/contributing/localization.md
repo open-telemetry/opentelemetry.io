@@ -415,9 +415,16 @@ their own locale-specific PRs.
 
 ### Purely editorial changes across locales are OK {#patch-locale-links}
 
-**Purely editorial** page updates such as fixing broken link paths can span
-locales. A purely editorial change is one that **does not** impact the meaning
-of the page content.
+**Purely editorial** page updates are changes that **do not** affect the
+existing content and can span multiple locales. These include:
+
+- **Link maintenance**: Fixing broken link paths when pages are moved or
+  deleted.
+- **Targeted content additions**: Adding specific new definitions or sections to
+  files that have drifted, when updating the entire file isn't feasible.
+- **Resource updates**: Updating links to moved external resources.
+
+#### Link fixes and resource updates {#link-fixes-and-resource-updates}
 
 For example, sometimes changes to English language documentation can result in
 link-check failures for non-English locales. This happens when documentation
@@ -439,6 +446,23 @@ consider:
 - Removing the broken link from the refcache
 - Updating the link across all locales using the method described earlier in
   this section.
+
+#### Targeted content additions to drifted files {#targeted-content-additions}
+
+When adding specific new content to a localized file that has drifted from the
+English version, you mau choose to make a targeted update rather than updating
+the entire file.
+
+In such situations, make the following updates:
+
+- Add only the specific new content required.
+- Add the `# patched` YAML comment at the end of the line for the
+  `default_lang_commit` front matter line.
+- Make no other changes to the existing content.
+- In the PR description, clearly explain:
+  - What specific content was added.
+  - That other parts of the file remain drifted.
+  - The rationale for not updating the entire file.
 
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
