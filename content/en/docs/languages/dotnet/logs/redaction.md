@@ -95,6 +95,9 @@ configuration:
 using Microsoft.Extensions.Logging;
 using OpenTelemetry.Logs;
 
+// Assume MyRedactionProcessor is defined elsewhere
+// public class MyRedactionProcessor : BaseProcessor<LogRecord> { ... }
+
 var loggerFactory = LoggerFactory.Create(builder =>
 {
     builder.AddOpenTelemetry(logging =>
@@ -105,19 +108,10 @@ var loggerFactory = LoggerFactory.Create(builder =>
 });
 
 var logger = loggerFactory.CreateLogger<Program>();
+// Message will be redacted by MyRedactionProcessor
+logger.FoodPriceChanged("", 9.99);
 
-// This sensitive data will be redacted
-logger.LogInformation("User password is <secret>");
-
-// Create source-generated logging methods for better performance
-internal static partial class LoggerExtensions
-{
-    [LoggerMessage(LogLevel.Information, "Food `{name}` price changed to `{price}`.")]
-    public static partial void FoodPriceChanged(this ILogger logger, string name, double price);
-}
-
-// Usage with sensitive data
-logger.FoodPriceChanged("<secret>", 9.99);
+loggerFactory.Dispose();
 ```
 
 When you run this code, any log attribute containing "<secret>" will be redacted
