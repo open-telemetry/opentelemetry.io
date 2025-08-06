@@ -145,6 +145,7 @@ maintainers:
       - collector-contrib-maintainers
       - collector-contrib-triagers
       - collector-releases-approvers
+      - collector-releases-maintainers
       - collector-triagers
     html_url: https://github.com/andrzej-stencel
     avatar_url: https://avatars.githubusercontent.com/u/70892616?v=4
@@ -183,10 +184,12 @@ maintainers:
       - collector-contrib-maintainers
       - collector-contrib-triagers
       - collector-releases-approvers
+      - collector-releases-maintainers
       - collector-triagers
       - injector-approvers
       - injector-maintainers
       - network-triagers
+      - operator-approvers
       - operator-triagers
     html_url: https://github.com/atoulme
     avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
@@ -250,6 +253,7 @@ maintainers:
       - collector-contrib-triagers
       - collector-maintainers
       - collector-releases-approvers
+      - collector-releases-maintainers
       - collector-triagers
       - specs-triagers
     html_url: https://github.com/bogdandrutu
@@ -364,6 +368,7 @@ maintainers:
       - collector-contrib-triagers
       - collector-maintainers
       - collector-releases-approvers
+      - collector-releases-maintainers
       - collector-triagers
       - configuration-approvers
       - configuration-maintainers
@@ -444,6 +449,7 @@ maintainers:
       - collector-contrib-triagers
       - collector-maintainers
       - collector-releases-approvers
+      - collector-releases-maintainers
       - collector-triagers
       - helm-approvers
       - helm-maintainers
@@ -481,6 +487,15 @@ maintainers:
       - go-instrumentation-triagers
     html_url: https://github.com/edeNFed
     avatar_url: https://avatars.githubusercontent.com/u/5587419?v=4
+  - name: edmocosta
+    teams:
+      - collector-contrib-approvers
+      - collector-contrib-maintainers
+      - collector-contrib-triagers
+      - collector-releases-approvers
+      - collector-releases-maintainers
+    html_url: https://github.com/edmocosta
+    avatar_url: https://avatars.githubusercontent.com/u/11836452?v=4
   - name: ericmustin
     teams:
       - ruby-approvers
@@ -503,6 +518,7 @@ maintainers:
       - collector-contrib-maintainers
       - collector-contrib-triagers
       - collector-releases-approvers
+      - collector-releases-maintainers
       - collector-triagers
       - opamp-go-approvers
     html_url: https://github.com/evan-bradley
@@ -838,8 +854,15 @@ maintainers:
       - collector-contrib-maintainers
       - collector-contrib-triagers
       - collector-releases-approvers
+      - collector-releases-maintainers
     html_url: https://github.com/MovieStoreGuy
     avatar_url: https://avatars.githubusercontent.com/u/30928402?v=4
+  - name: mowies
+    teams:
+      - collector-releases-approvers
+      - collector-releases-maintainers
+    html_url: https://github.com/mowies
+    avatar_url: https://avatars.githubusercontent.com/u/6901203?v=4
   - name: MrAlias
     teams:
       - configuration-approvers
@@ -896,6 +919,7 @@ maintainers:
       - collector-contrib-triagers
       - collector-maintainers
       - collector-releases-approvers
+      - collector-releases-maintainers
       - collector-triagers
       - docs-es-approvers
       - semconv-container-approvers
@@ -1105,6 +1129,7 @@ maintainers:
       - collector-contrib-maintainers
       - collector-contrib-triagers
       - collector-releases-approvers
+      - collector-releases-maintainers
       - collector-triagers
     html_url: https://github.com/songy23
     avatar_url: https://avatars.githubusercontent.com/u/10536136?v=4
@@ -1285,6 +1310,7 @@ maintainers:
       - collector-contrib-maintainers
       - collector-contrib-triagers
       - collector-releases-approvers
+      - collector-releases-maintainers
       - collector-triagers
       - helm-approvers
       - helm-maintainers
@@ -1534,12 +1560,6 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/drewby
     avatar_url: https://avatars.githubusercontent.com/u/192652?v=4
-  - name: edmocosta
-    teams:
-      - collector-contrib-approvers
-      - collector-contrib-triagers
-    html_url: https://github.com/edmocosta
-    avatar_url: https://avatars.githubusercontent.com/u/11836452?v=4
   - name: emdneto
     teams:
       - docs-pt-approvers
@@ -1774,11 +1794,6 @@ approvers:
       - semconv-security-approvers
     html_url: https://github.com/mjwolf
     avatar_url: https://avatars.githubusercontent.com/u/2590169?v=4
-  - name: mowies
-    teams:
-      - collector-releases-approvers
-    html_url: https://github.com/mowies
-    avatar_url: https://avatars.githubusercontent.com/u/6901203?v=4
   - name: Msksgm
     teams:
       - docs-ja-approvers
@@ -2641,6 +2656,9 @@ members:
   - name: samimusallam
     html_url: https://github.com/samimusallam
     avatar_url: https://avatars.githubusercontent.com/u/1358230?v=4
+  - name: shanduur
+    html_url: https://github.com/shanduur
+    avatar_url: https://avatars.githubusercontent.com/u/32583062?v=4
   - name: shivanshuraj1333
     html_url: https://github.com/shivanshuraj1333
     avatar_url: https://avatars.githubusercontent.com/u/26167974?v=4
@@ -2707,6 +2725,9 @@ members:
   - name: YanivD
     html_url: https://github.com/YanivD
     avatar_url: https://avatars.githubusercontent.com/u/5182244?v=4
+  - name: yumosx
+    html_url: https://github.com/yumosx
+    avatar_url: https://avatars.githubusercontent.com/u/141902143?v=4
   - name: yurishkuro
     html_url: https://github.com/yurishkuro
     avatar_url: https://avatars.githubusercontent.com/u/3523016?v=4
