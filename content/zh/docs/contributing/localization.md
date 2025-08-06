@@ -134,7 +134,7 @@ OTel 网站的仓库中有一个自定义的 render-link 钩子，Hugo 会用它
 如果你需要创建某个短代码的本地化版本，可将其放置在 `layouts/shortcodes/xx` 目录下，
 其中 `xx` 是你所在地区的语言代码。之后，使用与原始基础短代码相同的相对路径。
 
-[layouts/shortcodes/docs]: https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/shortcodes/docs
+[layouts/shortcodes/docs]: https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
 
 ## 跟踪本地化页面的差异 {#track-changes}
 
