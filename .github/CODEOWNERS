@@ -13,9 +13,4 @@
 #
 
 # Global owners, will be the owners for everything in the repo.
-*             @open-telemetry/docs-approvers
-
-# Localization maintainers should be able to approve & merge PRs on their own
-# This is experimental
-content/pt    @open-telemetry/docs-pt-maintainers
-content/ja    @open-telemetry/docs-ja-maintainers
+* @open-telemetry/docs-approvers
