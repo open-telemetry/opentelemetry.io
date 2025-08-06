@@ -450,7 +450,7 @@ consider:
 #### Targeted content additions to drifted files {#targeted-content-additions}
 
 When adding specific new content to a localized file that has drifted from the
-English version, you mau choose to make a targeted update rather than updating
+English version, you may choose to make a targeted update rather than updating
 the entire file.
 
 In such situations, make the following updates:
