@@ -57,7 +57,7 @@ restrict the number of services to instrument.
 You can override the default [OBI configuration options](../../configure/) with
 your own values.
 
-For example, create a `helm-beyla.yml` file with a custom configuration:
+For example, create a `helm-obi.yml` file with a custom configuration:
 
 ```yaml
 config:
