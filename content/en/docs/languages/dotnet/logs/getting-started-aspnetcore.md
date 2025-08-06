@@ -200,7 +200,8 @@ This approach:
 - Ensures type safety for log parameters.
 - Produces structured logs with named parameters.
 - Automatically produces `EventName` on `LogRecord`.
-- 
+-
+
 ## Learn more
 
 - [Getting Started with Console](/docs/languages/dotnet/logs/getting-started-console/)

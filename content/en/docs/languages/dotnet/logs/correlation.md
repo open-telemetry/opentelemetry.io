@@ -129,8 +129,8 @@ Log correlation provides several benefits:
    more informative.
 3. **Troubleshooting**: Quickly find all logs related to a specific trace when
    debugging issues.
-4. **Performance analysis**: Understand what affects the performance of
-   your application.
+4. **Performance analysis**: Understand what affects the performance of your
+   application.
 
 ## Learn more
 
