@@ -115,16 +115,17 @@ This table summarizes the current support of telemetry export by
 auto-instrumented web server gateways that have been pre-forked with multiple
 workers:
 
-| Stack                    | Traces             | Metrics            | Logs               |
-| ------------------------ | ------------------ | ------------------ | ------------------ |
-| Uvicorn                  | x                  |                    | x                  |
-| Gunicorn                 | x                  |                    | x                  |
-| Gunicorn + UvicornWorker | x                  | x                  | x                  |
+| Stack                    | Traces | Metrics | Logs |
+| ------------------------ | ------ | ------- | ---- |
+| Uvicorn                  | x      |         | x    |
+| Gunicorn                 | x      |         | x    |
+| Gunicorn + UvicornWorker | x      | x       | x    |
 
 To instrument a server with multiple workers, it is recommended to deploy using
-Gunicorn with `uvicorn.workers.UvicornWorker` if it is an Asynchronous Server Gateway Interface (ASGI) app (FastAPI,
-Starlette, etc). The UvicornWorker class is specifically designed to handle
-forks with preservation of background processes and threads. For example:
+Gunicorn with `uvicorn.workers.UvicornWorker` if it is an Asynchronous Server
+Gateway Interface (ASGI) app (FastAPI, Starlette, etc). The UvicornWorker class
+is specifically designed to handle forks with preservation of background
+processes and threads. For example:
 
 ```sh
 opentelemetry-instrument gunicorn \
