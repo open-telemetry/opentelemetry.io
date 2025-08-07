@@ -16,7 +16,7 @@ Find the latest image of OBI on
 name:
 
 ```text
-docker.io/otel/ebpf-instrument:latest
+ebpf-instrument:main
 ```
 
 The OBI container must be configured in following way:
@@ -61,7 +61,7 @@ docker run --rm \
   -e OTEL_EBPF_TRACE_PRINTER=text \
   --pid=host \
   --privileged \
-  docker.io/otel/ebpf-instrument:latest
+  docker.io/otel/ebpf-instrument:main
 ```
 
 After OBI is running, open `https://localhost:18443` in your browser, use the

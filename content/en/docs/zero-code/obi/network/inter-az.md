@@ -15,8 +15,8 @@ This feature is currently only available in Kubernetes clusters.
 Traffic between Cloud Availability Zones might incur additional costs. OBI is
 able to measure it either by adding `src.zone` and `dst.zone` attributes to
 regular network metrics, or by providing a separate
-`obi.network.inter.zone.bytes` (OTel) /
-`obi_network_inter_zone_bytes_total` (Prometheus) metric.
+`obi.network.inter.zone.bytes` (OTel) / `obi_network_inter_zone_bytes_total`
+(Prometheus) metric.
 
 ## Add `src.zone` and `dst.zone` attributes to regular network metrics
 
@@ -39,8 +39,8 @@ attributes:
 ```
 
 This configuration makes inter-zone traffic visible for each
-`obi_network_flow_bytes_total` metric with different `src_zone` and
-`dst_zone` attributes.
+`obi_network_flow_bytes_total` metric with different `src_zone` and `dst_zone`
+attributes.
 
 If you require higher granularity in your inter-zone traffic measurement (for
 example, source/destination pods or nodes), adding zone attributes would impact
@@ -53,8 +53,8 @@ Using a separate metric for inter-zone traffic reduces the metric cardinality
 impact of collecting this data, because the `src.zone` and `dst.zone` attributes
 are not added to the regular network metrics.
 
-To enable the `obi.network.inter.zone` metric, add the
-`network_inter_zone` option to the
+To enable the `obi.network.inter.zone` metric, add the `network_inter_zone`
+option to the
 [OTEL_EBPF_METRICS_FEATURES or OTEL_EBPF_PROMETHEUS_FEATURES](../../configure/export-data/)
 configuration option, or its equivalent YAML options. For example, if OBI is
 configured to export metrics via OpenTelemetry:

@@ -208,8 +208,8 @@ about the applications and how they are interconnected.
 ## Network-level metrics
 
 It is simpler to calculate network-level metrics than application-level metrics,
-as OBI only provides a single Counter: `obi.network.flow.bytes`. However
-the cardinality also depend on how much your applications are interconnected.
+as OBI only provides a single Counter: `obi.network.flow.bytes`. However the
+cardinality also depend on how much your applications are interconnected.
 
 The default attributes for `obi.network.flow.bytes` are:
 

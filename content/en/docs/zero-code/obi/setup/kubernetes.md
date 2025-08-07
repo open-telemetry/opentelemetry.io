@@ -268,10 +268,7 @@ are running on a distribution with `kernel.perf_event_paranoid` setting higher
 than `2`, you can either modify your configuration to lower it to `2` or use
 `CAP_SYS_ADMIN` instead of `CAP_PERFMON`.
 
-An example of a OBI unprivileged container configuration can be found below, or
-you can download the
-[full example deployment](https://github.com/grafana/beyla/tree/main/examples/k8s/unprivileged.yaml)
-file:
+An example of a OBI unprivileged container configuration can be found below:
 
 ```yaml
 ...

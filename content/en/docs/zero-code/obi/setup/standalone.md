@@ -11,13 +11,7 @@ inspect other running processes.
 ## Download and install
 
 You can download the OBI executable from the
-[OBI releases page](https://github.com/grafana/beyla/releases).
-
-Alternatively, download the OBI executable with the `go install` command:
-
-```bash
-go install github.com/grafana/beyla/cmd/beyla@latest
-```
+[OBI releases page](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases).
 
 ## Set up OBI
 

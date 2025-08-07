@@ -3,12 +3,13 @@ title: Deploy OBI in Kubernetes with Helm
 linkTitle: Helm chart
 description: Learn how to deploy OBI as a Helm chart in Kubernetes.
 weight: 3
+toc_hide: true
 ---
 
 {{% alert title="Note" %}}
 
 For more details about the diverse Helm configuration options, check out the
-[OBI Helm chart options](https://github.com/grafana/beyla/blob/main/charts/beyla/README.md)
+[OBI Helm chart options](https://github.com/open-telemetry/opentelemetry-helm-charts/)
 document.
 
 {{% /alert %}}
@@ -25,17 +26,17 @@ Contents:
 
 ## Deploying OBI from helm
 
-First, you need to add the Grafana helm repository to Helm:
+First, you need to add the OpenTelemetry helm repository to Helm:
 
 ```sh
-helm repo add grafana https://grafana.github.io/helm-charts
+helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 ```
 
 The following command deploys a OBI DaemonSet with a default configuration in
-the `beyla` namespace:
+the `obi` namespace:
 
 ```sh
-helm install beyla -n beyla --create-namespace  grafana/beyla
+helm install obi -n obi --create-namespace open-telemetry/opentelemetry-ebpf-instrumentation
 ```
 
 The default OBI configuration:
@@ -78,13 +79,13 @@ Then pass the overridden configuration to the `helm` command with the `-f` flag.
 For example:
 
 ```sh
-helm install beyla grafana/beyla -f helm-beyla.yml
+helm install obi open-telemetry/opentelemetry-ebpf-instrumentation -f helm-obi.yml
 ```
 
 or, if the OBI chart was previously deployed:
 
 ```sh
-helm upgrade beyla grafana/beyla -f helm-beyla.yml
+helm upgrade obi open-telemetry/opentelemetry-ebpf-instrumentation -f helm-obi.yml
 ```
 
 ## Configuring OBI metadata
@@ -103,7 +104,7 @@ podAnnotations:
 Analogously, the Helm chart allows overriding names, labels, and annotations for
 multiple resources involved in the deployment of OBI, such as service accounts,
 cluster roles, security contexts, etc. The
-[OBI Helm chart documentation](https://github.com/grafana/beyla/blob/main/charts/beyla/README.md)
+[OBI Helm chart documentation](https://github.com/open-telemetry/opentelemetry-helm-charts/)
 describes the diverse configuration options.
 
 ## Providing secrets to the Helm configuration

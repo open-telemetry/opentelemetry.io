@@ -48,15 +48,15 @@ To enable network metrics add one of the following `features` to either the
 [prometheus_export](../../configure/export-data/#prometheus-exporter-component))
 configuration properties:
 
-- `network` enables the `obi_network_flow_bytes` metric: the number of
-  bytes between two endpoints of your cluster
-- `network_inter_zone` enables `obi_network_inter_zone_bytes` metric: the
-  number of bytes between different availability zones in your Cloud cluster
+- `network` enables the `obi_network_flow_bytes` metric: the number of bytes
+  between two endpoints of your cluster
+- `network_inter_zone` enables `obi_network_inter_zone_bytes` metric: the number
+  of bytes between different availability zones in your Cloud cluster
 
-{{< alert type="caution" >}} The `obi_network_inter_zone_bytes`
-specification is currently in experimental and only available for Kubernetes
-cluster. The specification is not final and future version of OBI may introduce
-breaking changes. {{< /alert >}}
+{{< alert type="caution" >}} The `obi_network_inter_zone_bytes` specification is
+currently in experimental and only available for Kubernetes cluster. The
+specification is not final and future version of OBI may introduce breaking
+changes. {{< /alert >}}
 
 | YAML     | Environment variable       | Type   | Default         |
 | -------- | -------------------------- | ------ | --------------- |
@@ -104,8 +104,8 @@ OTEL_EBPF_NETWORK_CIDRS=10.0.0.0/8,192.168.0.0/16
 | ---------- | ---------------------------- | ------ | --------- |
 | `agent_ip` | `OTEL_EBPF_NETWORK_AGENT_IP` | string | (not set) |
 
-Allows overriding the reported `obi.ip` attribute on each metric. If not
-set, OBI automatically detects its own IP address from the specified network
+Allows overriding the reported `obi.ip` attribute on each metric. If not set,
+OBI automatically detects its own IP address from the specified network
 interface (see next property).
 
 | YAML             | Environment variable               | Type   | Default    |
@@ -113,8 +113,8 @@ interface (see next property).
 | `agent_ip_iface` | `OTEL_EBPF_NETWORK_AGENT_IP_IFACE` | string | `external` |
 
 Specifies which interface OBI should use to pick its own IP address to set the
-value of the `obi.ip` attribute. Accepted values are: `external`
-(default), `local`, or `name:<interface name>` (e.g. `name:eth0`).
+value of the `obi.ip` attribute. Accepted values are: `external` (default),
+`local`, or `name:<interface name>` (e.g. `name:eth0`).
 
 If the `agent_ip` configuration property is set, this property has no effect.
 
@@ -123,9 +123,9 @@ If the `agent_ip` configuration property is set, this property has no effect.
 | `agent_ip_type` | `OTEL_EBPF`          | string | `any`   |
 
 Specifies which type of IP address (IPv4 or IPv6 or both) OBI should report in
-the `obi.ip` field of each flow. Accepted values are: `any` (default),
-`ipv4`, `ipv6`. If the `agent_ip` configuration property is set, this property
-has no effect.
+the `obi.ip` field of each flow. Accepted values are: `any` (default), `ipv4`,
+`ipv6`. If the `agent_ip` configuration property is set, this property has no
+effect.
 
 | YAML         | Environment variable           | Type     | Default |
 | ------------ | ------------------------------ | -------- | ------- |

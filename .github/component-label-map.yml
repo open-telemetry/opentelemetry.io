@@ -108,3 +108,7 @@ sig:spec:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/docs/specs/**
+sig:obi:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/zero-code/obi/**

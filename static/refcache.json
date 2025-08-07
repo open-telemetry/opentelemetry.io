@@ -8579,6 +8579,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:27.610217-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-07T11:36:10.445321+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-profiler": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:22.597683+02:00"
@@ -8875,6 +8879,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:31:49.391415-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-07T11:41:49.637837+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/aaa70bde1bf8bf15fc411282468ac6d2d07f772d/charts/opentelemetry-collector/templates/_config.tpl#L206-L282": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:14:12.345Z"
@@ -8886,6 +8894,14 @@
   "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-demo/values.yaml": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:39:14.886208-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-ebpf-instrumentation/README.m": {
+    "StatusCode": 404,
+    "LastSeen": "2025-08-07T11:37:33.810043+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-ebpf-instrumentation/README.md": {
+    "StatusCode": 404,
+    "LastSeen": "2025-08-07T11:37:33.177696+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-operator/values.yaml": {
     "StatusCode": 206,
@@ -16958,6 +16974,10 @@
   "https://lwn.net/Articles/696216/": {
     "StatusCode": 200,
     "LastSeen": "2025-07-24T21:20:18.721115+02:00"
+  },
+  "https://macias.info": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-07T11:36:04.473+02:00"
   },
   "https://man7.org/linux/man-pages/man1/free.1.html": {
     "StatusCode": 206,
