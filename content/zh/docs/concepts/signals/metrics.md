@@ -5,11 +5,11 @@ description: 在运行时捕获的测量值。
 default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
 ---
 
-一个**metric**是在运行时捕获的服务的**测量值**。捕获测量值的时刻称为**metric事件**，它不仅包括测量值本身，还包括捕获它的时间和相关的元数据。
+一个 **metric** 是在运行时捕获的服务的**测量值**。捕获测量值的时刻称为 **metric 事件**，它不仅包括测量值本身，还包括捕获它的时间和相关的元数据。
 
-应用和请求的metrics是可用性和性能的重要指标。自定义metric可以在‘可用性因素是如何影响到用户体验和业务’方面提供见解。收集的数据可以用于异常警告或触发调度决策，以在高要求时自动扩展部署。
+应用和请求的 metrics 是可用性和性能的重要指标。自定义 metric 可以在‘可用性因素是如何影响到用户体验和业务’方面提供见解。收集的数据可以用于异常警告或触发调度决策，以在高要求时自动扩展部署。
 
-要了解 OpenTelemetry 中的metrics是如何工作的，让我们看看在对代码进行观测时会涉及的一系列组件。
+要了解 OpenTelemetry 中的 metrics 是如何工作的，让我们看看在对代码进行观测时会涉及的一系列组件。
 
 ## Meter Provider {#meter-provider}
 
@@ -17,7 +17,7 @@ Meter Provider（有时称为 `MeterProvider`）是 `Meter` 的提供者。在�
 
 ## Meter {#meter}
 
-Meter 创建[metric instruments](#metric-instruments)，在运行时捕获有关服务的测量值。Meter 是由 Meter Provider 创建的。
+Meter 创建 [metric instruments](#metric-instruments)，在运行时捕获有关服务的测量值。Meter 是由 Meter Provider 创建的。
 
 ## Metric Exporter {#metric-exporter}
 
@@ -25,7 +25,7 @@ Metric Exporter 将度量数据发送给消费者。这个消费者可以是开�
 
 ## Metric Instruments（测量仪器）{#metric-instruments}
 
-在 OpenTelemetry 中，测量值是由**metric instruments**捕获的。Metric instruments由以下部分定义：
+在 OpenTelemetry 中，测量值是由 **metric instruments** 捕获的。Metric instruments 由以下部分定义：
 
 - 名称
 - 类型
