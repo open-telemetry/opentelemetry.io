@@ -109,7 +109,7 @@ Specifically, the PeriodicExportingMetricReader spawns its own thread to
 periodically flush data to the exporter. After forking, each child seeks a
 thread object in memory that is not actually run, and any original locks may not
 unlock for each child. See also forks and deadlocks described in
-[Python issue6721](https://bugs.python.org/issue6721).
+[Python issue 6721](https://bugs.python.org/issue6721).
 
 This table summarizes the current support of telemetry export by
 auto-instrumented web server gateways that have been pre-forked with multiple
