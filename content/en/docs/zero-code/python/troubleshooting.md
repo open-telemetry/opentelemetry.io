@@ -94,19 +94,48 @@ if __name__ == "__main__":
 
 ### Pre-fork servers can break metrics export
 
-A pre-fork server, such as Gunicorn with multiple workers, can be run like this:
+A pre-fork server, such as Gunicorn with multiple workers, could be run like
+this:
 
 ```sh
-gunicorn YOUR_APP:app --workers 4
+gunicorn myapp.main:app --workers 4
 ```
 
-Specifying more than one `--workers` may not generate expected metrics when
-instrumentation is applied. This is because each worker maintains its own meters
-and exporter(s) instead of sharing a single state.
+However, specifying more than one `--workers` may break the generation metrics when
+auto-instrumentation is applied. This is because forking, the creation of
+worker/child processes, creates inconsistencies between each child in the
+background threads and locks assumed by key OpenTelemetry SDK components.
+Specifically, the PeriodicExportingMetricReader spawns its own thread to
+periodically flush data to the exporter. After forking, each child seeks a
+thread object in memory that is not actually run, and any original locks may not
+unlock for each child. See also forks and deadlocks described in
+[Python issue6721](https://bugs.python.org/issue6721).
 
-To instrument a server with multiple workers, consider setting up a separate
-instance of [Prometheus](/docs/languages/python/exporters/#prometheus-setup) to
-collect metrics from all workers.
+This table summarizes the current support of telemetry export by auto-instrumented
+web server gateways that have been pre-forked with multiple workers:
+
+| Stack                    | Traces             | Metrics            | Logs               |
+| ------------------------ | ------------------ | ------------------ | ------------------ |
+| Uvicorn                  | :white_check_mark: | :x:                | :white_check_mark: |
+| Gunicorn                 | :white_check_mark: | :x:                | :white_check_mark: |
+| Gunicorn + UvicornWorker | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+
+To instrument a server with multiple workers, it is recommended to deploy using
+Gunicorn with `uvicorn.workers.UvicornWorker` if it is an ASGI app (FastAPI,
+Starlette, etc). The UvicornWorker class is specifically designed to handle
+forks with preservation of background processes and threads. For example:
+
+```sh
+opentelemetry-instrument gunicorn \
+  --workers 4 \
+  --worker-class uvicorn.workers.UvicornWorker \
+  --bind 0.0.0.0:8000 \
+  myapp.main:app
+```
+
+If the app is not ASGI-based, consider setting up a separate instance of
+[Prometheus](/docs/languages/python/exporters/#prometheus-setup) to collect
+metrics from all workers.
 
 Or, initialize OpenTelemetry inside the worker process with
 [manual or programmatic instrumentation](/docs/zero-code/python/example/) after
