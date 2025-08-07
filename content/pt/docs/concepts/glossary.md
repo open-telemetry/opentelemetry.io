@@ -4,7 +4,7 @@ description: >-
   Definições e convenções para termos de telemetria conforme usados no
   OpenTelemetry.
 weight: 200
-default_lang_commit: 389e023192e051a3a835bfc6a71089c98af3b8a8
+default_lang_commit: 389e023192e051a3a835bfc6a71089c98af3b8a8 # patched
 drifted_from_default: true
 ---
 
