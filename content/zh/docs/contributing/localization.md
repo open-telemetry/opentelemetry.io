@@ -3,7 +3,7 @@ title: 网站本地化
 description: 创建和维护非英语本地化的网站页面。
 linkTitle: 本地化
 weight: 25
-default_lang_commit: adf1731535b21711a7fba3cf46bd6bf4e7b923ee
+default_lang_commit: adf1731535b21711a7fba3cf46bd6bf4e7b923ee # patched
 cSpell:ignore: shortcodes
 ---
 
