@@ -8579,10 +8579,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:27.610217-05:00"
   },
-  "https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Extensions.Logging": {
-    "StatusCode": 404,
-    "LastSeen": "2025-08-05T12:35:30.269928+02:00"
-  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-profiler": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:22.597683+02:00"
@@ -13302,10 +13298,6 @@
   "https://github.com/open-telemetry/semantic-conventions/blob/main/docs/general/metrics.md#instrument-naming": {
     "StatusCode": 206,
     "LastSeen": "2025-05-26T16:48:07.30351+03:00"
-  },
-  "https://github.com/open-telemetry/semantic-conventions/blob/main/docs/metrics/README.md": {
-    "StatusCode": 404,
-    "LastSeen": "2025-08-05T12:27:26.457767+02:00"
   },
   "https://github.com/open-telemetry/semantic-conventions/blob/main/docs/resource/README.md": {
     "StatusCode": 206,
@@ -21106,10 +21098,6 @@
   "https://www.causely.ai/blog/using-opentelemetry-and-the-otel-collector-for-logs-metrics-and-traces": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:09:56.736063-05:00"
-  },
-  "https://www.cisa.gov/sites/default/files/publications/Log_Sanitization_508c.pdf": {
-    "StatusCode": 404,
-    "LastSeen": "2025-08-05T12:35:30.822155+02:00"
   },
   "https://www.cisco.com": {
     "StatusCode": 200,
