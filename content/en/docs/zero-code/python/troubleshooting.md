@@ -101,8 +101,8 @@ this:
 gunicorn myapp.main:app --workers 4
 ```
 
-However, specifying more than one `--workers` may break the generation metrics when
-auto-instrumentation is applied. This is because forking, the creation of
+However, specifying more than one `--workers` may break the generation metrics
+when auto-instrumentation is applied. This is because forking, the creation of
 worker/child processes, creates inconsistencies between each child in the
 background threads and locks assumed by key OpenTelemetry SDK components.
 Specifically, the PeriodicExportingMetricReader spawns its own thread to
@@ -111,8 +111,9 @@ thread object in memory that is not actually run, and any original locks may not
 unlock for each child. See also forks and deadlocks described in
 [Python issue6721](https://bugs.python.org/issue6721).
 
-This table summarizes the current support of telemetry export by auto-instrumented
-web server gateways that have been pre-forked with multiple workers:
+This table summarizes the current support of telemetry export by
+auto-instrumented web server gateways that have been pre-forked with multiple
+workers:
 
 | Stack                    | Traces             | Metrics            | Logs               |
 | ------------------------ | ------------------ | ------------------ | ------------------ |
