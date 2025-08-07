@@ -117,9 +117,9 @@ workers:
 
 | Stack                    | Traces             | Metrics            | Logs               |
 | ------------------------ | ------------------ | ------------------ | ------------------ |
-| Uvicorn                  | :white_check_mark: | :x:                | :white_check_mark: |
-| Gunicorn                 | :white_check_mark: | :x:                | :white_check_mark: |
-| Gunicorn + UvicornWorker | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| Uvicorn                  | x                  |                    | x                  |
+| Gunicorn                 | x                  |                    | x                  |
+| Gunicorn + UvicornWorker | x                  | x                  | x                  |
 
 To instrument a server with multiple workers, it is recommended to deploy using
 Gunicorn with `uvicorn.workers.UvicornWorker` if it is an Asynchronous Server Gateway Interface (ASGI) app (FastAPI,
