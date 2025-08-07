@@ -272,8 +272,8 @@ instrumenting Prometheus.
 ## Default exclude services from instrumentation
 
 The `default_exclude_instrument` section disables instrumentation of OBI itself
-(self-instrumentation), as well as Grafana Alloy and the OpenTelemetry
-Collector. It also disables instrumentation of various Kubernetes system
+(self-instrumentation), the OpenTelemetry Collector and other observability
+components. It also disables instrumentation of various Kubernetes system
 namespaces to reduce the overall cost of metric generation. The following
 section contains all excluded components:
 
