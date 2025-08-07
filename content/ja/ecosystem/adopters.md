@@ -24,7 +24,7 @@ OpenTelemetryのミッションは、すべてのエンドユーザーに効果�
 
 あなたの組織がOpenTelemetryを利用して**エンドユーザーにオブザーバビリティを提供する**ソリューションを提供している場合は、[ベンダー](/ecosystem/vendors/)を参照してください。
 
-{{% include keep-up-to-date.md adopter %}}
+{{% include keep-up-to-date.md アダプター %}}
 
 [アダプター一覧]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml
