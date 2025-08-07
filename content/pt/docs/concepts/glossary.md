@@ -104,7 +104,7 @@ rastreamento. Consulte a [especificação de campos][field].
 
 O número de valores únicos para um determinado [Atributo](#attribute) ou
 conjunto de atributos. Alta cardinalidade significa muitos valores únicos, o que
-pode impactar o desempenho e os requisitos de armazenamento dos backends de
+pode impactar o desempenho e os requisitos de armazenamento dos _backends_ de
 telemetria. Por exemplo, um atributo `user_id` teria alta cardinalidade,
 enquanto um atributo `status_code` com valores como "200", "404", "500" teria
 baixa cardinalidade.
