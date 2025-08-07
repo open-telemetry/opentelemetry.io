@@ -263,6 +263,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:10:08.035583-05:00"
   },
+  "https://bugs.python.org/issue6721": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-07T21:11:22.382445657Z"
+  },
   "https://bundler.io/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:28.410343-05:00"
