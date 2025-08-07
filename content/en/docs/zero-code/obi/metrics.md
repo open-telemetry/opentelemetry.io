@@ -9,28 +9,22 @@ cSpell:ignore: replicaset statefulset
 The following table describes the exported metrics in both OpenTelemetry and
 Prometheus format.
 
-| Family              | Name (OTel)                      | Name (Prometheus)                      | Type          | Unit    | Description                                                                                                                          |
-| ------------------- | -------------------------------- | -------------------------------------- | ------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| Application         | `http.client.request.duration`   | `http_client_request_duration_seconds` | Histogram     | seconds | Duration of HTTP service calls from the client side                                                                                  |
-| Application         | `http.client.request.body.size`  | `http_client_request_body_size_bytes`  | Histogram     | bytes   | Size of the HTTP request body as sent by the client                                                                                  |
-| Application         | `http.client.response.body.size` | `http_client_response_body_size_bytes` | Histogram     | bytes   | Size of the HTTP response body as sent by the client                                                                                 |
-| Application         | `http.server.request.duration`   | `http_server_request_duration_seconds` | Histogram     | seconds | Duration of HTTP service calls from the server side                                                                                  |
-| Application         | `http.server.request.body.size`  | `http_server_request_body_size_bytes`  | Histogram     | bytes   | Size of the HTTP request body as received at the server side                                                                         |
-| Application         | `http.server.response.body.size` | `http_server_response_body_size_bytes` | Histogram     | bytes   | Size of the HTTP response body as received at the server side                                                                        |
-| Application         | `rpc.client.duration`            | `rpc_client_duration_seconds`          | Histogram     | seconds | Duration of gRPC service calls from the client side                                                                                  |
-| Application         | `rpc.server.duration`            | `rpc_server_duration_seconds`          | Histogram     | seconds | Duration of RPC service calls from the server side                                                                                   |
-| Application         | `sql.client.duration`            | `sql_client_duration_seconds`          | Histogram     | seconds | Duration of SQL client operations (Experimental)                                                                                     |
-| Application         | `redis.client.duration`          | `redis_client_duration_seconds`        | Histogram     | seconds | Duration of Redis client operations (Experimental)                                                                                   |
-| Application         | `messaging.publish.duration`     | `messaging_publish_duration`           | Histogram     | seconds | Duration of Messaging (Kafka) publish operations (Experimental)                                                                      |
-| Application         | `messaging.process.duration`     | `messaging_process_duration`           | Histogram     | seconds | Duration of Messaging (Kafka) process operations (Experimental)                                                                      |
-| Application process | `process.cpu.time`               | `process_cpu_time_seconds_total`       | Counter       | seconds | Total CPU seconds broken down by different states (system/user/wait)                                                                 |
-| Application process | `process.cpu.utilization`        | `process_cpu_utilization_ratio`        | Gauge         | ratio   | Difference in `process.cpu.time` since the last measurement, divided by the elapsed time and number of CPUs available to the process |
-| Application process | `process.memory.usage`           | `process_memory_usage_bytes`           | UpDownCounter | bytes   | The amount of physical memory in use                                                                                                 |
-| Application process | `process.memory.virtual`         | `process_memory_virtual_bytes`         | UpDownCounter | bytes   | The amount of committed virtual memory                                                                                               |
-| Application process | `process.disk.io`                | `process_disk_io_bytes_total`          | Counter       | bytes   | Disk bytes transferred                                                                                                               |
-| Application process | `process.network.io`             | `process_network_io_bytes_total`       | Counter       | bytes   | Network bytes transferred                                                                                                            |
-| Network             | `obi.network.flow.bytes`         | `obi_network_flow_bytes`               | Counter       | bytes   | Bytes submitted from a source network endpoint to a destination network endpoint                                                     |
-| Network             | `obi.network.inter.zone.bytes`   | `obi_network_inter_zone_bytes`         | Counter       | bytes   | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes)                |
+| Family      | Name (OTel)                      | Name (Prometheus)                      | Type      | Unit    | Description                                                                                                           |
+| ----------- | -------------------------------- | -------------------------------------- | --------- | ------- | --------------------------------------------------------------------------------------------------------------------- |
+| Application | `http.client.request.duration`   | `http_client_request_duration_seconds` | Histogram | seconds | Duration of HTTP service calls from the client side                                                                   |
+| Application | `http.client.request.body.size`  | `http_client_request_body_size_bytes`  | Histogram | bytes   | Size of the HTTP request body as sent by the client                                                                   |
+| Application | `http.client.response.body.size` | `http_client_response_body_size_bytes` | Histogram | bytes   | Size of the HTTP response body as sent by the client                                                                  |
+| Application | `http.server.request.duration`   | `http_server_request_duration_seconds` | Histogram | seconds | Duration of HTTP service calls from the server side                                                                   |
+| Application | `http.server.request.body.size`  | `http_server_request_body_size_bytes`  | Histogram | bytes   | Size of the HTTP request body as received at the server side                                                          |
+| Application | `http.server.response.body.size` | `http_server_response_body_size_bytes` | Histogram | bytes   | Size of the HTTP response body as received at the server side                                                         |
+| Application | `rpc.client.duration`            | `rpc_client_duration_seconds`          | Histogram | seconds | Duration of gRPC service calls from the client side                                                                   |
+| Application | `rpc.server.duration`            | `rpc_server_duration_seconds`          | Histogram | seconds | Duration of RPC service calls from the server side                                                                    |
+| Application | `sql.client.duration`            | `sql_client_duration_seconds`          | Histogram | seconds | Duration of SQL client operations (Experimental)                                                                      |
+| Application | `redis.client.duration`          | `redis_client_duration_seconds`        | Histogram | seconds | Duration of Redis client operations (Experimental)                                                                    |
+| Application | `messaging.publish.duration`     | `messaging_publish_duration`           | Histogram | seconds | Duration of Messaging (Kafka) publish operations (Experimental)                                                       |
+| Application | `messaging.process.duration`     | `messaging_process_duration`           | Histogram | seconds | Duration of Messaging (Kafka) process operations (Experimental)                                                       |
+| Network     | `obi.network.flow.bytes`         | `obi_network_flow_bytes`               | Counter   | bytes   | Bytes submitted from a source network endpoint to a destination network endpoint                                      |
+| Network     | `obi.network.inter.zone.bytes`   | `obi_network_inter_zone_bytes`         | Counter   | bytes   | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes) |
 
 OBI can also export
 [Span metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector)
@@ -72,14 +66,6 @@ check the `attributes`->`select` section in the
 | Application (all)              | `url.path`                   | hidden                                            |
 | Application (client)           | `server.address`             | hidden                                            |
 | Application (client)           | `server.port`                | hidden                                            |
-| Application (process)          | `process.command`            | shown if process metrics are enabled              |
-| Application (process)          | `process.command_args`       | shown if process metrics are enabled              |
-| Application (process)          | `process.command_line`       | shown if process metrics are enabled              |
-| Application (process)          | `process.executable.name`    | shown if process metrics are enabled              |
-| Application (process)          | `process.executable.path`    | shown if process metrics are enabled              |
-| Application (process)          | `process.owner`              | shown if process metrics are enabled              |
-| Application (process)          | `process.parent_pid`         | shown if process metrics are enabled              |
-| Application (process)          | `process.pid`                | shown if process metrics are enabled              |
 | Application `rpc.*`            | `rpc.grpc.status_code`       | shown                                             |
 | Application `rpc.*`            | `rpc.method`                 | shown                                             |
 | Application `rpc.*`            | `rpc.system`                 | shown                                             |

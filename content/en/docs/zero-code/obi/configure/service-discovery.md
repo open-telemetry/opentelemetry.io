@@ -215,11 +215,11 @@ discovery:
   instrument:
     - k8s_namespace: frontend
       k8s_pod_labels:
-        instrument: beyla
+        instrument: obi
 ```
 
 The preceding example discovers all Pods in the `frontend` namespace that have a
-label `instrument` with a value that matches the glob `beyla`.
+label `instrument` with a value that matches the glob `obi`.
 
 ### K8s Pod annotations
 
@@ -236,11 +236,11 @@ discovery:
   instrument:
     - k8s_namespace: backend
       k8s_pod_annotations:
-        beyla.instrument: 'true'
+        obi.instrument: 'true'
 ```
 
 The preceding example discovers all Pods in the `backend` namespace that have an
-annotation `beyla.instrument` with a value that matches the glob `true`.
+annotation `obi.instrument` with a value that matches the glob `true`.
 
 ## Survey mode
 
