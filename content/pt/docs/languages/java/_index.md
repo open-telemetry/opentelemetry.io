@@ -12,6 +12,7 @@ cascade:
     semconv: 1.32.0
 weight: 18
 default_lang_commit: 3512b0ae11f72d3a954d86da59ad7f98d064bdad
+drifted_from_default: true
 ---
 
 {{% docs/languages/index-intro java /%}}

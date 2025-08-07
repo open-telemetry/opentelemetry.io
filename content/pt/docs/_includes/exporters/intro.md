@@ -1,5 +1,6 @@
 ---
 default_lang_commit: 02efe39c47d3dbb1a6be680420af7491568a2de3
+drifted_from_default: true
 ---
 
 Envie dados de telemetria para o [OpenTelemetry Collector](/docs/collector/)

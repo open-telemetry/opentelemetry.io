@@ -3,6 +3,7 @@ title: Primeiros Passos
 description: Obtenha telemetria para sua aplicação em menos de 5 minutos!
 weight: 10
 default_lang_commit: 43e2cb3b4d0dd513b436add73236503a8d592b39
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
 ---
