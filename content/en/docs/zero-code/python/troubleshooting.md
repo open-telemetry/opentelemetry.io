@@ -2,7 +2,7 @@
 title: Troubleshooting Python automatic instrumentation issues
 linkTitle: Troubleshooting
 weight: 40
-cSpell:ignore: gunicorn
+cSpell:ignore: gunicorn Uvicorn ASGI
 ---
 
 ## Installation issues
