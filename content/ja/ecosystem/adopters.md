@@ -6,7 +6,7 @@ default_lang_commit: b6ddba1118d07bc3c8d1d07b293f227686d0290e
 
 OpenTelemetryのミッションは、すべてのエンドユーザーに効果的なオブザーバビリティを可能にすることです。
 もしあなたの組織がOpenTelemetryの導入を検討しているなら、他の組織の導入にいたる経緯に興味があるかもしれません。
-下記の表は、[Observability](/docs/concepts/observability-primer/)のためにOpenTelemetryを採用した[_エンドユーザー_ 組織](https://www.cncf.io/enduser/)を網羅したものではありません。
+下記の表は、[オブザーバビリティ](/docs/concepts/observability-primer/)のためにOpenTelemetryを採用した[_エンドユーザー_ 組織](https://www.cncf.io/enduser/)を網羅したものではありません。
 
 {{% ecosystem/adopters-table %}}
 
