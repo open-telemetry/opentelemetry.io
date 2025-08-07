@@ -1,5 +1,5 @@
 ---
-default_lang_commit: b6ddba1118d07bc3c8d1d07b293f227686d0290e
+default_lang_commit: 0458d947ff552527f88cd617377a8148e5e72bd7
 ---
 
 {{ $lang := .Get 0 -}}
