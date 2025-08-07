@@ -14,6 +14,6 @@ default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57
 
 ## リポジトリ
 
-- [OpenTelemetry for Ruby リポジトリ][repo]
+- [OpenTelemetry for Rubyリポジトリ][repo]
 
 [repo]: https://github.com/open-telemetry/opentelemetry-ruby
