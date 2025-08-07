@@ -1,6 +1,7 @@
 ---
-title: Keeping registry and list information current
+title: レジストリと一覧の情報を最新の状態に保つ
 linkTitle: Updating
+default_lang_commit: 8a15d0d668c516ccb255cd0a92e0bcd442e83b4d
 ---
 
 We periodically review [registry](..) entry and [list data], such as external
