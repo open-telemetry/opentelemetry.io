@@ -122,7 +122,7 @@ workers:
 | Gunicorn + UvicornWorker | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 To instrument a server with multiple workers, it is recommended to deploy using
-Gunicorn with `uvicorn.workers.UvicornWorker` if it is an ASGI app (FastAPI,
+Gunicorn with `uvicorn.workers.UvicornWorker` if it is an Asynchronous Server Gateway Interface (ASGI) app (FastAPI,
 Starlette, etc). The UvicornWorker class is specifically designed to handle
 forks with preservation of background processes and threads. For example:
 
