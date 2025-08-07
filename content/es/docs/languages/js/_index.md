@@ -35,7 +35,7 @@ OpenTelemetry en JavaScript consta de los siguientes repositorios:
 - [opentelemetry-js-contrib](https://github.com/open-telemetry/opentelemetry-js-contrib):
   contribuciones que no son parte de la distribución básica de la API y SDK.
 
-## Ayuda o Comentarios
+## Ayuda o comentarios
 
 Si tienes preguntas sobre OpenTelemetry JavaScript, por favor comunícate a
 través de
