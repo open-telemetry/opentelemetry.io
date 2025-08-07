@@ -161,4 +161,85 @@ if err != nil {
 
 ## Logs
 
-TBD
+You can send your logs to the OpenTelemetry Collector in two ways:
+
+- Directly to the Collector
+- Through a file or `stdout`
+
+You can find documentation specifying how to use both these approaches in the
+[Logs](/docs/languages/go/instrumentation/#logs) section of the
+[Manual Instrumentation](/docs/languages/go/instrumentation/) documentation.
+
+The Product Catalog service sends the logs directly to the Collector, and uses a
+log bridge to send its logs, bridging to the `slog` logging package, which
+outputs structured logs.
+
+## LoggerProvider initialization
+
+The OpenTelemetry SDK is initialized from `main` using the `initLoggerProvider`
+function.
+
+```go
+ctx := context.Background()
+
+logExporter, err := otlploggrpc.New(ctx)
+if err != nil {
+	return nil
+}
+
+loggerProvider := sdklog.NewLoggerProvider(
+	sdklog.WithProcessor(sdklog.NewBatchProcessor(logExporter)),
+)
+global.SetLoggerProvider(loggerProvider)
+
+return loggerProvider
+```
+
+Call `LoggerProvider.Shutdown()` when your service is down to ensure all logs
+are exported. This service makes that call as part of a deferred function in
+`main`:
+
+```go
+lp := initLoggerProvider()
+defer func() {
+	if err := lp.Shutdown(context.Background()); err != nil {
+		logger.Error(fmt.Sprintf("Logger Provider Shutdown: %v", err))
+	}
+	logger.Info("Shutdown logger provider")
+}()
+```
+
+### Logging functionality
+
+This service sends logs to the Collector using gRPC calls. The logs are output
+in a structured format using the `slog` package.
+
+First, initialize the logger:
+
+```go
+logger   *slog.Logger
+logger = otelslog.NewLogger("product-catalog")
+```
+
+Note the use of `fmt.Sprintf` to format the output before it's sent to the
+logger:
+
+```go
+logger.Info("Loading Product Catalog...")
+logger.Info(fmt.Sprintf("Product Catalog reload interval: %d", interval))
+logger.Error(fmt.Sprintf("Error shutting down meter provider: %v", err))
+```
+
+The advantage of using `slog` is the ability to attach additional attributes to
+the output. The following example attaches the `product.name` and `product.id`
+attributes. This makes it possible to view and parse these as part of the log
+output and makes it easier to view them as separate columns in Grafana:
+
+```go
+logger.LogAttrs(
+	ctx,
+	slog.LevelInfo, "Product Found",
+	slog.String("app.product.name", found.Name),
+	slog.String("app.product.id", req.Id),
+)
+```

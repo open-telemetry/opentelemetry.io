@@ -2,7 +2,7 @@
 title: 一般的なSDK設定
 linkTitle: 一般
 aliases: [general-sdk-configuration]
-default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
+default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a # patched
 cSpell:ignore: ottrace
 ---
 
@@ -148,7 +148,7 @@ export OTEL_TRACES_SAMPLER_ARG="0.5"
 
 - `"otlp"`: [OTLP][]
 - `"prometheus"`:
-  [Prometheus](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md)
+  [Prometheus](https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md)
 - `"console"`: [標準出力](/docs/specs/otel/metrics/sdk_exporters/stdout/)
 - `"none"`: メトリクスのエクスポーターが自動的に設定されない。
 

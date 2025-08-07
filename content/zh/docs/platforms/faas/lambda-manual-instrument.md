@@ -10,15 +10,15 @@ drifted_from_default: file not found
 
 用户需要遵循其选定语言的通用插桩指导，并添加 Collector Lambda 层来提交数据。
 
-### 添加 OTel Collector Lambda 层的 ARN
+### 添加 OTel Collector Lambda 层的 ARN {#add-the-arn-of-the-otel-collector-lambda-layer}
 
-参见 [Collector Lambda 层指导](../../platforms/faas/lambda-collector/?i18n-patch)将层添加到你的应用程序并配置
+参见 [Collector Lambda 层指导](../lambda-collector/)将层添加到你的应用程序并配置
 Collector。我们建议首先添加此层。
 
-### 使用 OTel 插桩 Lambda
+### 使用 OTel 插桩 Lambda {#instrument-the-lambda-with-otel}
 
 查看[语言插桩指导](/docs/languages/)，了解如何手动插桩你的应用程序。
 
-### 发布你的 Lambda
+### 发布你的 Lambda {#publish-your-lambda}
 
 发布新的 Lambda 版本以部署新更改和插桩器。
