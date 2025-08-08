@@ -142,12 +142,6 @@ opentelemetry-instrument gunicorn \
   myapp.main:app
 ```
 
-##### Use Prometheus
-
-If the app is not ASGI-based, consider setting up a separate instance of
-[Prometheus](/docs/languages/python/exporters/#prometheus-setup) to collect
-metrics from all workers.
-
 ##### Use manual or programmatic instrumentation
 
 Initialize OpenTelemetry inside the worker process with
@@ -160,6 +154,38 @@ initialize()
 
 from your_app import app
 ```
+
+If using FastAPI, note that `initialize()` must be called before importing
+`FastAPI` because of how instrumentation is patched. For example:
+
+```python
+from opentelemetry.instrumentation.auto_instrumentation import initialize
+initialize()
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+```
+
+Then, run the server with:
+
+```sh
+gunicorn \
+  --workers 4 \
+  --worker-class uvicorn.workers.UvicornWorker \
+  --bind 0.0.0.0:8000 \
+  myapp.main:app
+```
+
+##### Use Prometheus
+
+If the app is not ASGI-based, consider setting up a separate instance of
+[Prometheus](/docs/languages/python/exporters/#prometheus-setup) to collect
+metrics from all workers.
 
 ##### Use a single worker
 
