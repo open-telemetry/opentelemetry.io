@@ -44,8 +44,6 @@ OBI offers the following features:
   cardinality for cost reduction
 - **Network observability**: Capture network flows between services
 - **SQL database traces**: Capture database queries and connections
-- **Trace context propagation**: Propagate trace context across services
-  automatically
 
 ## Requirements
 
