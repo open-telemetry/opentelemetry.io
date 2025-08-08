@@ -99,17 +99,6 @@ all processes that own one of the ports in that range.
 If you set both `OTEL_EBPF_AUTO_TARGET_EXE` and `OTEL_EBPF_OPEN_PORT`
 properties, OBI selects only executables matching both selection criteria.
 
-## Service name and namespace
-
-These configuration options are deprecated.
-
-Defining these properties is equivalent to adding a `name` entry to the
-[`discovery.instrument` YAML section](../service-discovery/). When a single
-instance of OBI instruments multiple processes, they share the same service name
-even if they differ. To give multiple services different names, see how to
-[override the service name and namespace](../service-discovery/) in the service
-discovery documentation.
-
 ## Trace printer formats
 
 This option prints any instrumented trace on the standard output using one of
