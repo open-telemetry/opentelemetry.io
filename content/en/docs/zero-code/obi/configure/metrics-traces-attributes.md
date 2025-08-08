@@ -87,10 +87,6 @@ configuration or via environment variables.
 | `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`               | Controls trace context propagation method. Accepted: `all`, `headers`, `ip`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
 | `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS`           | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                | boolean | false    |
 
-### Enable context propagation
-
-Deprecated. Use `context_propagation` instead.
-
 ### Context propagation
 
 OBI injects the `Traceparent` header value for outgoing HTTP requests, so it can
