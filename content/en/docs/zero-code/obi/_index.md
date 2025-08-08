@@ -43,7 +43,7 @@ OBI offers the following features:
 - **Low cardinality metrics**: Prometheus-compatible metrics with low
   cardinality for cost reduction
 - **Network observability**: Capture network flows between services
-- **database traces**: Capture database queries and connections
+- **Database traces**: Capture database queries and connections
 
 ## Requirements
 
