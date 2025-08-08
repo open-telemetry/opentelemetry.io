@@ -18,14 +18,12 @@
 - [{{ .title }}]({{ .urls.docs }})
 {{- end }}
 
-{{ $langName := $langData.name | default "ERROR-LANG-MISSING" -}}
-{{ $noIntegrations := eq (len $integrations) 0 -}}
+{{ $langName := $langData.name | default "" -}}
 
 {{ $args := dict
     "_dot" .
     "_path" "propagation.md"
     "lang" $langName
-    "noIntegrations" $noIntegrations
 -}}
 
 {{ partial "include" $args -}}
