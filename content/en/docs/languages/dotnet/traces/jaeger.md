@@ -81,7 +81,7 @@ internal static class Program
 
 When you run this application, it will output traces to the console via the
 `ConsoleExporter` and also attempt to send traces to Jaeger using the
-`OtlpExporter`. Since we haven't set up Jaeger yet, those traces will initially
+`OtlpExporter`. Since Jaeger isn't set up yet, those traces will initially
 be dropped.
 
 ## Setting up Jaeger
