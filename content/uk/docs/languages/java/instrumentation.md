@@ -8,7 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: Екосистема інструментування в OpenTelemetry Java
-default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
+default_lang_commit: d9b41af1f01873cce900ce37f1c07afb2758f028
 cSpell:ignore: logback
 ---
 
