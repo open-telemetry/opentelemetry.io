@@ -84,7 +84,6 @@ configuration or via environment variables.
 
 | YAML<br>environment variable                                               | Description                                                                                                                                                                      | Type    | Default  |
 | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- |
-| `enable_context_propagation`<br>`OTEL_EBPF_BPF_ENABLE_CONTEXT_PROPAGATION` | Deprecated. Use `context_propagation` instead. For more information, refer to the [enable context propagation section](#enable-context-propagation).                             | boolean | false    |
 | `context_propagation`<br>`OTEL_EBPF_BPF_CONTEXT_PROPAGATION`               | Controls trace context propagation method. Accepted: `all`, `headers`, `ip`, `disabled`. For more information, refer to the [context propagation section](#context-propagation). | string  | disabled |
 | `track_request_headers`<br>`OTEL_EBPF_BPF_TRACK_REQUEST_HEADERS`           | Track incoming `Traceparent` headers for trace spans. For more information, refer to the [track request headers section](#track-request-headers).                                | boolean | false    |
 
