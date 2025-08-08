@@ -101,7 +101,7 @@ ASP.NET Core application.
 
 ## How it works
 
-### OpenTelemetry Registration
+### OpenTelemetry registration
 
 The application registers OpenTelemetry services using the dependency injection
 container provided by ASP.NET Core:
