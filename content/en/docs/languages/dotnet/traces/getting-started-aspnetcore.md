@@ -1,5 +1,5 @@
 ---
-title: Getting started traces - ASP.NET Core
+title: Getting started with traces - ASP.NET Core
 linkTitle: ASP.NET Core
 description:
   Learn how to use OpenTelemetry Traces in an ASP.NET Core application
