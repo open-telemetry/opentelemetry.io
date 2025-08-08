@@ -12,7 +12,7 @@ visualization and analysis.
 ## Prerequisites
 
 - [.NET SDK](https://dotnet.microsoft.com/download) installed on your computer
-- [Jaeger](https://www.jaegertracing.io/download/) downloaded (we'll cover
+- [Jaeger](https://www.jaegertracing.io/download/) downloaded (this guide covers
   installation)
 - Familiarity with basic OpenTelemetry concepts (see
   [Getting Started with Console](/docs/languages/dotnet/traces/getting-started-console/))
