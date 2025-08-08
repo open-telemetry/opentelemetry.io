@@ -65,7 +65,7 @@ Run the application:
 dotnet run
 ```
 
-Browse to the URL shown in the console (e.g., `http://localhost:5000`).
+Browse to the URL shown in the console (for example, `http://localhost:5000`).
 
 You should see trace output in the console similar to:
 
