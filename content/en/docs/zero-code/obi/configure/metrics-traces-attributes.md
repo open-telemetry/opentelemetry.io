@@ -238,6 +238,7 @@ traces and metrics with the standard OpenTelemetry labels:
 - `k8s.pod.uid`
 - `k8s.pod.start_time`
 - `k8s.cluster.name`
+- `k8s.owner.name`
 
 ### Kubernetes configuration path
 
