@@ -1,7 +1,7 @@
 ---
 title: "OTel in Practice: Alibaba's OpenTelemetry Journey"
 linkTitle: 'OTiP: Alibaba'
-date: 2025-08-05
+date: 2025-08-07
 author: >-
   [Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)
 sig: End-User
