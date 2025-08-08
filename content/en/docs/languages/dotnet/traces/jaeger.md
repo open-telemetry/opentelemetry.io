@@ -98,8 +98,6 @@ troubleshoot microservices-based applications.
 
 ````shell
 ./jaeger-all-in-one --collector.otlp.enabled
-```shell
-./jaeger-all-in-one --collector.otlp.enabled
 ````
 
 This starts:
