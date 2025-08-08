@@ -1,5 +1,5 @@
 ---
-title: Client-Side Apps
+title: Client-side Apps
 ---
 
 Instrumentation for apps running on end-user devices like phones and desktop
