@@ -4,6 +4,7 @@ description: Obtenha telemetria para sua aplicação em menos de 5 minutos!
 aliases: [/docs/js/getting_started/nodejs]
 weight: 10
 default_lang_commit: 1f6a173c26d1e194696ba77e95b6c3af40234952
+drifted_from_default: true
 cSpell:ignore: autoinstrumentations KHTML rolldice
 ---
 

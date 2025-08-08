@@ -5,7 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: OpenTelemetry Goのマニュアルインストルメンテーション
-default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22
+default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 ---
 
@@ -40,7 +40,7 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.32.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -179,7 +179,7 @@ span.SetAttributes(myKey.String("a value"))
 #### セマンティック属性 {#semantic-attributes}
 
 セマンティック属性は、HTTPメソッド、ステータスコード、ユーザーエージェントなどの一般的な概念について、複数の言語、フレームワーク、ランタイム間で共有される属性キーのセットを提供するために[OpenTelemetry仕様][OpenTelemetry Specification]によって定義された属性です。
-これらの属性は`go.opentelemetry.io/otel/semconv/v1.32.0`パッケージで利用できます。
+これらの属性は`go.opentelemetry.io/otel/semconv/v1.34.0`パッケージで利用できます。
 
 詳細については、[トレースセマンティック規約][Trace semantic conventions]を参照してください。
 
@@ -333,7 +333,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.32.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
 )
 
 func main() {
@@ -711,7 +711,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.32.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
 )
 
 func init() {
@@ -920,7 +920,7 @@ import (
 	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.32.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
 )
 
 func main() {

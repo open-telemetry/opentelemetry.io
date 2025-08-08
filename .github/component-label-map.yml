@@ -30,6 +30,10 @@ lang:bn:
   - changed-files:
       - any-glob-to-any-file:
           - content/bn/**
+lang:uk:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/uk/**
 sig:cpp:
   - changed-files:
       - any-glob-to-any-file:

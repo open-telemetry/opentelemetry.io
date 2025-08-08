@@ -19,11 +19,10 @@ Context is an object that contains the information for the sending and receiving
 service, or [execution unit](/docs/specs/otel/glossary/#execution-unit), to
 correlate one signal with another.
 
-For example, if service A calls service B, then a span from service A whose ID
-is in context will be used as the parent span for the next span created in
-service B. The trace ID that is in context will be used for the next span
-created in service B as well, which means that the span is part of the same
-trace as the span from service A.
+When Service A calls Service B, it includes a trace ID and a span ID as part of
+the context. Service B uses these values to create a new span that belongs to
+the same trace, setting the span from Service A as its parent. This makes it
+possible to track the full flow of a request across service boundaries.
 
 ## Propagation
 

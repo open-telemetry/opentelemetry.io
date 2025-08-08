@@ -4,6 +4,7 @@ description:
   Bibliotecas, serviços e aplicações com suporte nativo para o OpenTelemetry.
 aliases: [/integrations]
 default_lang_commit: b6ddba1118d07bc3c8d1d07b293f227686d0290e
+drifted_from_default: true
 ---
 
 A missão do OpenTelemetry é
