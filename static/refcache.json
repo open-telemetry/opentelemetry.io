@@ -10431,6 +10431,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:39.359537-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-python/issues/2767": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T17:39:28.524851942Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-python/issues/3307#issuecomment-1579101152": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T17:39:33.31970197Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-python/pull/4091": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:12:25.85413-05:00"
