@@ -92,7 +92,7 @@ if __name__ == "__main__":
     app.run(port=8082, debug=True, use_reloader=False)
 ```
 
-### Pre-fork servers can break metrics export
+### Pre-fork server issues
 
 A pre-fork server, such as Gunicorn with multiple workers, could be run like
 this:
@@ -101,30 +101,37 @@ this:
 gunicorn myapp.main:app --workers 4
 ```
 
-However, specifying more than one `--workers` may break the generation metrics
-when auto-instrumentation is applied. This is because forking, the creation of
-worker/child processes, creates inconsistencies between each child in the
-background threads and locks assumed by key OpenTelemetry SDK components.
+However, specifying more than one `--workers` may break the generation of
+metrics when auto-instrumentation is applied. This is because forking, the
+creation of worker/child processes, creates inconsistencies between each child
+in the background threads and locks assumed by key OpenTelemetry SDK components.
 Specifically, the PeriodicExportingMetricReader spawns its own thread to
-periodically flush data to the exporter. After forking, each child seeks a
-thread object in memory that is not actually run, and any original locks may not
-unlock for each child. See also forks and deadlocks described in
-[Python issue 6721](https://bugs.python.org/issue6721).
+periodically flush data to the exporter. See also issues
+[#2767](https://github.com/open-telemetry/opentelemetry-python/issues/2767) and
+[#3307](https://github.com/open-telemetry/opentelemetry-python/issues/3307#issuecomment-1579101152).
+After forking, each child seeks a thread object in memory that is not actually
+run, and any original locks may not unlock for each child. See also forks and
+deadlocks described in [Python issue 6721](https://bugs.python.org/issue6721).
 
-This table summarizes the current support of telemetry export by
-auto-instrumented web server gateways that have been pre-forked with multiple
-workers:
+#### Workarounds
 
-| Stack                    | Traces | Metrics | Logs |
-| ------------------------ | ------ | ------- | ---- |
-| Uvicorn                  | x      |         | x    |
-| Gunicorn                 | x      |         | x    |
-| Gunicorn + UvicornWorker | x      | x       | x    |
+There are some workarounds for pre-fork servers with OpenTelemetry. The
+following table summarizes the current support of signal export by different
+auto-instrumented web server gateway stacks that have been pre-forked with
+multiple workers. See below for more details and options:
 
-To instrument a server with multiple workers, it is recommended to deploy using
-Gunicorn with `uvicorn.workers.UvicornWorker` if it is an Asynchronous Server
-Gateway Interface (ASGI) app (FastAPI, Starlette, etc). The UvicornWorker class
-is specifically designed to handle forks with preservation of background
+| Stack with multiple workers | Traces | Metrics | Logs |
+| --------------------------- | ------ | ------- | ---- |
+| Uvicorn                     | x      |         | x    |
+| Gunicorn                    | x      |         | x    |
+| Gunicorn + UvicornWorker    | x      | x       | x    |
+
+##### Deploy with Gunicorn and UvicornWorker
+
+To auto-instrument a server with multiple workers, it is recommended to deploy
+using Gunicorn with `uvicorn.workers.UvicornWorker` if it is an Asynchronous
+Server Gateway Interface (ASGI) app (FastAPI, Starlette, etc). The UvicornWorker
+class is specifically designed to handle forks with preservation of background
 processes and threads. For example:
 
 ```sh
@@ -135,20 +142,26 @@ opentelemetry-instrument gunicorn \
   myapp.main:app
 ```
 
+##### Use Prometheus
+
 If the app is not ASGI-based, consider setting up a separate instance of
 [Prometheus](/docs/languages/python/exporters/#prometheus-setup) to collect
 metrics from all workers.
 
-Or, initialize OpenTelemetry inside the worker process with
+##### Use manual or programmatic instrumentation
+
+Initialize OpenTelemetry inside the worker process with
 [manual or programmatic instrumentation](/docs/zero-code/python/example/) after
-the server fork, instead of automatically. For example:
+the server fork, instead of with auto-instrumentation. For example:
 
 ```python
-from opentelemetry.instrumentation.auto_instrumentation.sitecustomize import initialize
+from opentelemetry.instrumentation.auto_instrumentation import initialize
 initialize()
 
 from your_app import app
 ```
+
+##### Use a single worker
 
 Alternatively, use a single worker in pre-fork with zero-code instrumentation:
 
