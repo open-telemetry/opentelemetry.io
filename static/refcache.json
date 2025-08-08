@@ -16011,6 +16011,22 @@
     "StatusCode": 206,
     "LastSeen": "2025-07-02T15:26:11.023356727Z"
   },
+  "https://learn.microsoft.com/fr-fr/dotnet/core/deploying/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T16:25:15.444139271+02:00"
+  },
+  "https://learn.microsoft.com/fr-fr/dotnet/core/deploying/#publish-self-contained": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T16:25:00.182092941+02:00"
+  },
+  "https://learn.microsoft.com/fr-fr/dotnet/core/rid-catalog": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T16:25:09.780258777+02:00"
+  },
+  "https://learn.microsoft.com/fr-fr/nuget/resources/check-project-format#check-the-project-format": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-08T16:25:03.244888712+02:00"
+  },
   "https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions": {
     "StatusCode": 206,
     "LastSeen": "2025-06-24T15:23:03.205400804Z"

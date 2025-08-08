@@ -3,7 +3,7 @@ title: Dépannage des problèmes d'instrumentation Zero-code .NET
 linkTitle: Dépannage
 weight: 50
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-cSpell:ignore: corehost netfx TRACEFILE pjanotti
+cSpell:ignore: corehost netfx pjanotti TRACEFILE
 ---
 
 ## Étapes générales {#general-steps}
@@ -71,8 +71,8 @@ Could not install package 'OpenTelemetry.AutoInstrumentation.Runtime.Native 1.6.
 ```
 
 Les paquets NuGet ne supportent pas les projets `csproj` dans l'ancien format.
-Vous pouvez soit déployer l' instrumentation automatique sur la machine au lieu d'utiliser
-les paquets NuGet, soit migrer votre projet vers le format SDK.
+Vous pouvez soit déployer l' instrumentation automatique sur la machine au lieu
+d'utiliser les paquets NuGet, soit migrer votre projet vers le format SDK.
 
 ### Problèmes de performance {#performance-issues}
 
@@ -204,5 +204,5 @@ Cela peut être lié aux problèmes suivants :
 ## Autres problèmes {#other-issues}
 
 Si vous rencontrez un problème non listé sur cette page, voir
-[Étapes générales](#étapes-générales) pour collecter des informations de
+[Étapes générales](#general-steps) pour collecter des informations de
 diagnostic supplémentaires. Cela peut aider à faciliter le dépannage.

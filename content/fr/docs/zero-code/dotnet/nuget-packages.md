@@ -52,9 +52,9 @@ correspondant :
 ~packages/opentelemetry.autoinstrumentation.buildtasks/1.6.0/build/OpenTelemetry.AutoInstrumentation.BuildTasks.targets(29,5): error : OpenTelemetry.AutoInstrumentation: add a reference to the instrumentation package 'MongoDB.Driver.Core.Extensions.DiagnosticSources' version 1.4.0 or add 'MongoDB.Driver.Core' to the property 'SkippedInstrumentations' to suppress this error.
 ```
 
-Pour résoudre l'erreur, ajoutez la bibliothèque d'instrumentation
-recommandée, ou ignorez l'instrumentation du paquet listé en l'ajoutant à la
-propriété `SkippedInstrumentation`, exemple :
+Pour résoudre l'erreur, ajoutez la bibliothèque d'instrumentation recommandée,
+ou ignorez l'instrumentation du paquet listé en l'ajoutant à la propriété
+`SkippedInstrumentation`, exemple :
 
 ```csproj
 <PropertyGroup>

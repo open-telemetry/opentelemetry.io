@@ -4,7 +4,7 @@ linkTitle: Configuration
 aliases: [/docs/languages/net/automatic/config]
 weight: 20
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-# prettier-ignore {#prettier-ignore}
+# prettier-ignore
 cSpell:ignore: AZUREAPPSERVICE CLSID CORECLR dylib NETFX OPERATINGSYSTEM PROCESSRUNTIME UNHANDLEDEXCEPTION
 ---
 
@@ -49,13 +49,13 @@ suivante, les variables d'environnement ayant la priorité sur le fichier
 
 3. Détection automatique du nom de service
 
-   Si aucun nom de service n'est explicitement configuré, un sera généré pour
+   Si aucun nom de service n'est explicitement configuré, il sera généré pour
    vous. Cela peut être utile dans certaines circonstances.
    - Si l'application est hébergée sur IIS dans .NET Framework, ce sera
      `SiteName\VirtualPath` ex : `MySite\MyApp`
-   - Si ce n'est pas le cas, il utilisera le nom de l'
+   - Si ce n'est pas le cas, le nom de l'
      [Assembly d'entrée](https://learn.microsoft.com/en-us/dotnet/api/system.reflection.assembly.getentryassembly?view=net-7.0)
-     de l'application.
+     de l'application sera utilisé.
 
 Par défaut, nous recommandons d'utiliser les variables d'environnement pour la
 configuration. Cependant, si un paramètre donné le supporte, alors :
@@ -151,7 +151,7 @@ valeur par défaut est 1.0.
 
 ## Exportateurs {#exporters}
 
-Les exportateurs sortent la télémétrie.
+Les exportateurs transmettent la télémétrie.
 
 | Variable d'environnement | Description                                                                                                  | Valeur par défaut | Statut                                              |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------ | ----------------- | --------------------------------------------------- |

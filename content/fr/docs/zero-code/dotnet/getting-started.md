@@ -200,8 +200,8 @@ utilisent des scripts Unix-shell ou PowerShell.
 6. Après environ 30 secondes, arrêtez le processus serveur.
 
 À ce stade, vous devriez voir les traces et logs du serveur et du client en
-console et ils ressemblent à quelque chose comme ceci (ces logs sont
-tronqués pour la lisibilité) :
+console et ils ressemblent à quelque chose comme ceci (ces logs sont tronqués
+pour la lisibilité) :
 
 <details>
 <summary>Traces et Logs</summary>

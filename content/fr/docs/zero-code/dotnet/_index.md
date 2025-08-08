@@ -102,33 +102,33 @@ incluant PowerShell Core (v6.0+) ne sont pas supportées pour le moment.
 {{% /alert %}}
 
 ```powershell
-# PowerShell 5.1 est requis {#powershell-51-is-required} {#powershell-51-is-required}
+# PowerShell 5.1 est requis
 #Requires -PSEdition Desktop
 
-# Télécharger le module {#download-the-module}
+# Télécharger le module
 $module_url = "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/OpenTelemetry.DotNet.Auto.psm1"
 $download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
 Invoke-WebRequest -Uri $module_url -OutFile $download_path -UseBasicParsing
 
-# Importer le module {#import-the-module} {#import-the-module} pour utiliser ses fonctions {#import-the-module-to-use-its-functions}
+# Importer le module pour utiliser ses fonctions
 Import-Module $download_path
 
-# Installer les fichiers principaux (méthode en ligne vs hors ligne) {#install-core-files-online-vs-offline-method}
+# Installer les fichiers principaux (méthode en ligne vs hors ligne)
 Install-OpenTelemetryCore
 Install-OpenTelemetryCore -LocalPath "C:\Path\To\OpenTelemetry.zip"
 
-# Configurer l'instrumentation pour la session PowerShell actuelle {#set-up-the-instrumentation-for-the-current-powershell-session}
+# Configurer l'instrumentation pour la session PowerShell actuelle
 Register-OpenTelemetryForCurrentSession -OTelServiceName "MyServiceDisplayName"
 
 # Exécuter votre application avec instrumentation
 .\MyNetApp.exe
 
-# Vous pouvez obtenir des informations d'utilisation en appelant les commandes suivantes {#you-can-get-usage-information-by-calling-the-following-commands}
+# Vous pouvez obtenir des informations d'utilisation en appelant les commandes suivantes
 
-# Lister toutes les commandes disponibles {#list-all-available-commands}
+# Lister toutes les commandes disponibles
 Get-Command -Module OpenTelemetry.DotNet.Auto
 
-# Obtenir les informations d'utilisation d'une commande {#get-commands-usage-information}
+# Obtenir les informations d'utilisation d'une commande
 Get-Help Install-OpenTelemetryCore -Detailed
 ```
 
@@ -144,7 +144,7 @@ Import-Module "OpenTelemetry.DotNet.Auto.psm1"
 # Installer les fichiers principaux
 Install-OpenTelemetryCore
 
-# Configurer l'instrumentation de votre Service Windows {#set-up-your-windows-service-instrumentation}
+# Configurer l'instrumentation de votre Service Windows
 Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName" -OTelServiceName "MyServiceDisplayName"
 ```
 
@@ -196,7 +196,7 @@ Import-Module "OpenTelemetry.DotNet.Auto.psm1"
 # Installer les fichiers principaux
 Install-OpenTelemetryCore
 
-# Configurer l'instrumentation IIS {#setup-iis-instrumentation}
+# Configurer l'instrumentation IIS
 Register-OpenTelemetryForIIS
 ```
 
@@ -352,15 +352,15 @@ incluant PowerShell Core (v6.0+) ne sont pas supportées pour le moment.
 # PowerShell 5.1 est requis
 #Requires -PSEdition Desktop
 
-# Importer le module précédemment installé {#import-the-previously-installed-module}
+# Importer le module précédemment installé
 Import-Module "OpenTelemetry.DotNet.Auto.psm1"
 
-# Si IIS était précédemment enregistré, le désenregistrer {#if-iis-was-previously-registered-unregister-it}
+# Si IIS était précédemment enregistré, le désenregistrer
 Unregister-OpenTelemetryForIIS
 
-# Si des services Windows étaient précédemment enregistrés, les désenregistrer {#if-windows-services-were-previously-registered-unregister-them}
+# Si des services Windows étaient précédemment enregistrés, les désenregistrer
 Unregister-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName"
 
-# Finalement, désinstaller l'instrumentation OpenTelemetry {#finally-uninstall-opentelemetry-instrumentation}
+# Finalement, désinstaller l'instrumentation OpenTelemetry
 Uninstall-OpenTelemetryCore
 ```
