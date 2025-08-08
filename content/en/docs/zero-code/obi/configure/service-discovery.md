@@ -21,7 +21,6 @@ selection criteria for the services OBI can instrument.
 | YAML<br>environment variable                                                                                     | Description                                                                                                                                                                                                                                                                                                             | Type            | Default                                                                                                                                                       |
 | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `instrument`                                                                                                     | Specify different selection criteria for different services, and override their reported name or namespace. Refer to the [discovery services](#discovery-services) section for details. .                                                                                                                               | list of objects | (unset)                                                                                                                                                       |
-| `survey`                                                                                                         | specifying different selection criteria for OBI survey mode. Refer to the [survey mode](#survey-mode) section for details.                                                                                                                                                                                              | List of objects | (unset)                                                                                                                                                       |
 | `exclude_instrument`                                                                                             | Specify selection criteria for excluding services from being instrumented. Useful for avoiding instrumentation of services typically found in observability environments. Refer to the [exclude services from instrumentation](#exclude-services-from-instrumentation) section for details.                             | list of objects | (unset)                                                                                                                                                       |
 | `default_exclude_instrument`                                                                                     | Disables instrumentation of OBI itself, the OpenTelemetry Collector, and other observability components. Set to empty to allow OBI to instrument itself and these other components. Refer to the [default exclude services from instrumentation](#default-exclude-services-from-instrumentation) section for details. . | list of objects | Path: `{*beyla,*alloy,*prometheus-config-reloader,*ebpf-instrument,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}` and certain Kubernetes system namespaces |
 | `skip_go_specific_tracers`<br>`OTEL_EBPF_SKIP_GO_SPECIFIC_TRACERS`                                               | Disables the detection of Go specifics when the **eBPF** tracer inspects executables to be instrumented. The tracer falls back to using generic instrumentation, which is generally less efficient. Refer to the [skip go specific tracers](#skip-go-specific-tracers) section for details. .                           | boolean         | false                                                                                                                                                         |
@@ -35,8 +34,6 @@ service type.
 
 | YAML                   | Description                                                                                                                              | Type                     | Default                  |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ------------------------ |
-| `name`                 | Defines a name for the matching instrumented service. Refer to [name](#name).                                                            | string                   | (see description)        |
-| `namespace`            | Defines a namespace for the matching instrumented service. Refer to [namespace](#namespace).                                             | string                   | (empty or K8s namespace) |
 | `open_ports`           | Selects the process to instrument by the port it has open (listens to). Refer to [open ports](#open-ports).                              | string                   | (unset)                  |
 | `exe_path`             | Selects the processes to instrument by their executable name path. Refer to [executable path](#executable-path).                         | string (glob)            | (unset)                  |
 | `containers_only`      | Selects processes to instrument which are running in an OCI container. Refer to [containers only](#containers-only).                     | boolean                  | false                    |
@@ -49,50 +46,6 @@ service type.
 | `k8s_owner_name`       | Filter services by Kubernetes Pod owner (Deployment, ReplicaSet, DaemonSet, or StatefulSet). Refer to [K8s owner name](#k8s-owner-name). | string (glob)            | (unset)                  |
 | `k8s_pod_labels`       | Filter services by Kubernetes Pod labels. Refer to [K8s Pod labels](#k8s-pod-labels).                                                    | map[string]string (glob) | (unset)                  |
 | `k8s_pod_annotations`  | Filter services by Kubernetes Pod annotations. Refer to [K8s Pod annotations](#k8s-pod-annotations).                                     | map[string]string (glob) | (unset)                  |
-
-### Name
-
-Defines a name for the matching instrumented service. OBI uses it to populate
-the `service.name` OTel property and the `service_name` Prometheus property in
-the exported metrics and traces.
-
-This option is deprecated, as multiple matches for the same `instrument` entry
-mean multiple services share the same name. Refer to the
-[override service name and namespace](#override-service-name-and-namespace)
-section to enable automatic configuration of service name and namespace from
-diverse metadata sources.
-
-If you don't set this property, OBI uses the following properties, in order of
-precedence:
-
-- If Kubernetes is enabled:
-  1. The name of the Deployment that runs the instrumented process, if any
-  2. The name of the ReplicaSet, DaemonSet, or StatefulSet that runs the
-     instrumented process, if any
-  3. The name of the Pod that runs the instrumented process
-- If Kubernetes isn't enabled:
-  1. The name of the process executable file
-
-If multiple processes match the service selection criteria, the metrics and
-traces for all the instances might share the same service name. For example,
-when multiple instrumented processes run under the same Deployment, or have the
-same executable name. In that case, the reported `instance` attribute lets you
-differentiate the different instances of the service.
-
-### Namespace
-
-Defines a namespace for the matching instrumented service. If you don't set this
-property, OBI uses the Kubernetes namespace of the instrumented process, if
-available, or leaves it empty if Kubernetes isn't available.
-
-This option is deprecated. Refer to the
-[overriding service name and namespace](#override-service-name-and-namespace)
-section to enable automatic configuration of service name and namespace from
-diverse metadata sources.
-
-This namespace is not a selector for Kubernetes namespaces. OBI uses its value
-to set the value of standard telemetry attributes. For example, the
-[OpenTelemetry `service.namespace` attribute](/docs/specs/otel/common/attribute-naming/).
 
 ### Open ports
 
@@ -241,22 +194,6 @@ discovery:
 
 The preceding example discovers all Pods in the `backend` namespace that have an
 annotation `obi.instrument` with a value that matches the glob `true`.
-
-## Survey mode
-
-In survey mode, OBI only performs service discovery and detects the programming
-language of each service, but doesn't instrument any discovered services.
-
-OBI writes the discovered information from survey mode to a metric called
-`survey_info`, which uses the same attributes as the `target_info` metric. The
-Prometheus exporter creates this metric based on the OpenTelemetry metric
-resource attributes. You can use survey mode to build external automated
-instrumentation solutions. For example, you can use the `survey_info` metric to
-list available instrumentation targets and choose which ones to instrument.
-
-Configure the `survey` section exactly like the `instrument` section. For more
-details, see the [discovery services section](#discovery-services) of this
-document.
 
 ## Exclude services from instrumentation
 
