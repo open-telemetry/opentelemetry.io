@@ -53,6 +53,14 @@ examples include bytecode injection or monkey patching.
 A mechanism for propagating [Metadata](#metadata) to help establish a causal
 relationship between events and services. See [baggage spec][baggage].
 
+### Cardinality
+
+The number of unique values for a given [Attribute](#attribute) or set of
+attributes. High cardinality means many unique values, which can impact the
+performance and storage requirements of telemetry backends. For example, a
+`user_id` attribute would have high cardinality, while a `status_code` attribute
+with values like "200", "404", "500" would have low cardinality.
+
 ### Client library
 
 See [Instrumented library](#instrumented-library).
