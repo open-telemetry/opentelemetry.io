@@ -6,7 +6,7 @@ description: >-
   en JavaScript (para Node.js y el navegador).
 aliases: [/js, /js/metrics, /js/tracing]
 weight: 20
-default_lang_commit: 139af493bd95fb5917ffe54db23cc9a8ef88c606
+default_lang_commit: 546f3e88ca3673de8aad69358d416256d1fe6411
 ---
 
 {{% docs/languages/index-intro js /%}}
