@@ -49,7 +49,7 @@ OBI offers the following features:
 
 OBI requires the following to run:
 
-- Linux kernel version 4.19 or later
+- Linux kernel version 5.8 or later (or 4.18 for Redhat Enterprise Linux)
 - An x86_64 or arm64 processor
 - Runtime support for eBPF (most modern Linux distributions)
 - Administrative privileges (root access) or the specific capabilities listed in
