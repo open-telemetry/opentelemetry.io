@@ -1,5 +1,5 @@
 ---
-title: Getting started traces - Console
+title: Getting started with traces - Console
 linkTitle: Console
 description: Learn how to use OpenTelemetry Traces in a .NET Console application
 weight: 10
