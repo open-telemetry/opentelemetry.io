@@ -137,7 +137,7 @@ HTTP requests, including:
 These traces are collected without requiring any additional code in your
 controllers or middleware.
 
-### Accessing the Current Activity
+### Accessing the current Activity
 
 In OpenTelemetry .NET, the `Activity` class represents the OpenTelemetry
 specification's "Span". In our example, we access the current Activity to
