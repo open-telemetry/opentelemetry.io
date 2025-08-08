@@ -79,10 +79,10 @@ internal static class Program
 }
 ```
 
-When you run this application, it will output traces to the console via the
+When you run this application, it will output traces to the console through the
 `ConsoleExporter` and also attempt to send traces to Jaeger using the
-`OtlpExporter`. Since Jaeger isn't set up yet, those traces will initially
-be dropped.
+`OtlpExporter`. Since Jaeger isn't set up yet, those traces will initially be
+dropped.
 
 ## Setting up Jaeger
 
@@ -96,9 +96,9 @@ troubleshoot microservices-based applications.
 2. Extract it to a location on your machine.
 3. Run the Jaeger all-in-one executable with OTLP enabled:
 
-````shell
+```shell
 ./jaeger-all-in-one --collector.otlp.enabled
-````
+```
 
 This starts:
 
@@ -120,7 +120,7 @@ see the detailed Gantt chart view of all spans in the trace.
 
 ## Understanding the code
 
-### Trace Provider Configuration
+### Trace provider configuration
 
 The application configures OpenTelemetry with:
 
@@ -143,7 +143,7 @@ This code:
 3. Adds automatic instrumentation for HttpClient
 4. Configures console and OTLP exporters
 
-### Activity Creation
+### Activity creation
 
 The application creates spans using the ActivitySource:
 
@@ -160,16 +160,16 @@ using (var slow = MyActivitySource.StartActivity("SomethingSlow"))
 }
 ```
 
-### Trace Export Flow
+### Trace export flow
 
 The trace data flows through the following components:
 
 1. Application creates spans using ActivitySource
 2. TracerProvider collects and processes spans
-3. OTLP Exporter sends spans to Jaeger via the OTLP protocol
+3. OTLP Exporter sends spans to Jaeger through the OTLP protocol
 4. Jaeger stores and allows you to query and visualize the traces
 
-## Production Usage
+## Production usage
 
 For production use, you should remove the Console Exporter and only use the OTLP
 Exporter:

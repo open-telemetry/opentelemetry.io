@@ -167,8 +167,8 @@ The tracing pipeline in OpenTelemetry .NET follows this flow:
 
 In OpenTelemetry .NET, the terms `ActivitySource` and `Activity` are used
 instead of `Tracer` and `Span` from the OpenTelemetry specification. This is
-because tracing in OpenTelemetry .NET is implemented on top of the .NET runtime's
-built-in diagnostics system.
+because tracing in OpenTelemetry .NET is implemented on top of the .NET
+runtime's built-in diagnostics system.
 
 You can instrument your application by depending on the
 `System.Diagnostics.DiagnosticSource` package, which provides `Activity` and

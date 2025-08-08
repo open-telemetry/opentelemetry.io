@@ -30,7 +30,7 @@ You should see the following output:
 Hello World!
 ```
 
-## Adding OpenTelemetry Metrics
+## Adding OpenTelemetry metrics
 
 Install the OpenTelemetry Console Exporter package:
 
@@ -76,11 +76,11 @@ shown below:
 
 ```text
 Export MyFruitCounter, Meter: MyCompany.MyProduct.MyLibrary/1.0
-(2021-09-23T22:00:08.4399776Z, 2021-09-23T22:00:08.4510115Z] color:red name:apple LongSum
+(2021-09-23T22:00:08.4399776Z, 2021-09-23T22:00:08.4510115Z) color:red name:apple LongSum
 Value: 6
-(2021-09-23T22:00:08.4399776Z, 2021-09-23T22:00:08.4510115Z] color:yellow name:lemon LongSum
+(2021-09-23T22:00:08.4399776Z, 2021-09-23T22:00:08.4510115Z) color:yellow name:lemon LongSum
 Value: 7
-(2021-09-23T22:00:08.4399776Z, 2021-09-23T22:00:08.4510115Z] color:green name:apple LongSum
+(2021-09-23T22:00:08.4399776Z, 2021-09-23T22:00:08.4510115Z) color:green name:apple LongSum
 Value: 2
 ```
 

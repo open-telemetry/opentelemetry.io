@@ -29,7 +29,7 @@ A Counter records a value that is summed over time and never decreases. It's
 ideal for metrics that only increase, such as request counts, completed
 operations, or error counts.
 
-### Creating a Counter
+### Creating a counter
 
 ```csharp
 using System.Diagnostics.Metrics;
@@ -83,14 +83,14 @@ A Histogram records a distribution of values, capturing statistics like count,
 sum, min, max, and percentiles. It's ideal for measuring durations, sizes, and
 other distributed values.
 
-### Creating a Histogram
+### Creating a histogram
 
 ```csharp
 // Create a histogram
 var requestDurationHistogram = meter.CreateHistogram<double>("request_duration", "ms", "Request duration in milliseconds");
 ```
 
-### Recording Histogram measurements
+### Recording histogram measurements
 
 ```csharp
 // Record a duration
@@ -106,7 +106,7 @@ Observable instruments allow you to collect measurements on-demand when metrics
 are collected rather than recording them directly in your code. This is useful
 for metrics that are better sampled periodically.
 
-### Observable Counter
+### Observable counter
 
 ```csharp
 // Create an observable counter
@@ -132,7 +132,7 @@ meter.CreateObservableUpDownCounter("active_tasks", () =>
 }, "tasks", "Current number of active tasks");
 ```
 
-### Observable Gauge
+### Observable gauge
 
 ```csharp
 // Create an observable gauge

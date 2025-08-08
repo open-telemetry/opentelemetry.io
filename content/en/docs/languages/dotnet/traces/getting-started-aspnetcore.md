@@ -23,7 +23,7 @@ dotnet new web -o aspnetcoreapp
 cd aspnetcoreapp
 ```
 
-## Adding OpenTelemetry Traces
+## Adding OpenTelemetry traces
 
 Install the required OpenTelemetry packages:
 
@@ -124,7 +124,7 @@ This code:
    `AddAspNetCoreInstrumentation()`
 5. Configures the console exporter to output traces to the console
 
-### ASP.NET Core Instrumentation
+### ASP.NET Core instrumentation
 
 The `AddAspNetCoreInstrumentation()` method automatically creates traces for
 HTTP requests, including:
@@ -137,7 +137,7 @@ HTTP requests, including:
 These traces are collected without requiring any additional code in your
 controllers or middleware.
 
-### Accessing the current Activity
+### Accessing the current activity
 
 In OpenTelemetry .NET, the `Activity` class represents the OpenTelemetry
 specification's "Span". In our example, we access the current Activity to

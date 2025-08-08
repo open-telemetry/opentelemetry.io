@@ -23,7 +23,7 @@ dotnet new web -o aspnetcoreapp
 cd aspnetcoreapp
 ```
 
-## Adding OpenTelemetry Metrics
+## Adding OpenTelemetry metrics
 
 Install the required OpenTelemetry packages:
 
@@ -67,13 +67,13 @@ Run the application:
 dotnet run
 ```
 
-Browse to the URL shown in the console (e.g., `http://localhost:5000`).
+Browse to the URL shown in the console (for example, `http://localhost:5000`).
 
 You should see metrics output in the console similar to:
 
 ```text
 Export http.server.duration, Measures the duration of inbound HTTP requests., Unit: ms, Meter: OpenTelemetry.Instrumentation.AspNetCore/1.0.0.0
-(2023-04-11T21:49:43.6915232Z, 2023-04-11T21:50:50.6564690Z] http.flavor: 1.1 http.method: GET http.route: / http.scheme: http http.status_code: 200 net.host.name: localhost net.host.port: 5000 Histogram
+(2023-04-11T21:49:43.6915232Z, 2023-04-11T21:50:50.6564690Z) http.flavor: 1.1 http.method: GET http.route: / http.scheme: http http.status_code: 200 net.host.name: localhost net.host.port: 5000 Histogram
 Value: Sum: 3.5967 Count: 11 Min: 0.073 Max: 2.5539
 (-Infinity,0]:0
 (0,5]:11
@@ -98,7 +98,7 @@ application using OpenTelemetry.
 
 ## How it works
 
-### OpenTelemetry Registration
+### OpenTelemetry registration
 
 The application registers OpenTelemetry services using the dependency injection
 container provided by ASP.NET Core:
@@ -124,7 +124,7 @@ This code:
    `AddAspNetCoreInstrumentation()`
 5. Configures the console exporter to export metrics every second
 
-### ASP.NET Core Instrumentation
+### ASP.NET Core instrumentation
 
 The `AddAspNetCoreInstrumentation()` method automatically collects HTTP request
 metrics, including:

@@ -1,5 +1,5 @@
 ---
-title: OpenTelemetry .NET Traces
+title: OpenTelemetry .NET traces
 linkTitle: Traces
 description: Use OpenTelemetry .NET to collect and export trace telemetry data
 weight: 10

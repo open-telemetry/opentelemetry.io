@@ -22,7 +22,7 @@ dotnet new web -o aspnetcoreapp
 cd aspnetcoreapp
 ```
 
-## Adding OpenTelemetry Logs
+## Adding OpenTelemetry logs
 
 Install the required OpenTelemetry packages:
 
@@ -52,7 +52,7 @@ builder.Services.AddOpenTelemetry()
     .WithLogging(logging => logging
         /* Note: ConsoleExporter is used for demo purpose only. In production
            environment, ConsoleExporter should be replaced with other exporters
-           (e.g. OTLP Exporter). */
+           (for example, OTLP Exporter). */
         .AddConsoleExporter());
 
 var app = builder.Build();
@@ -86,7 +86,7 @@ Run the application:
 dotnet run
 ```
 
-Browse to the URL shown in the console (e.g., `http://localhost:5000`).
+Browse to the URL shown in the console (for example, `http://localhost:5000`).
 
 You should see log output in the console similar to:
 

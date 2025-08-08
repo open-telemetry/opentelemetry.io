@@ -30,7 +30,7 @@ You should see the following output:
 Hello World!
 ```
 
-## Adding OpenTelemetry Logs
+## Adding OpenTelemetry logs
 
 Install the OpenTelemetry Console Exporter package:
 
@@ -150,7 +150,7 @@ type-checked parameters.
 
 For applications which use `ILogger` with
 [dependency injection (DI)](https://learn.microsoft.com/dotnet/core/extensions/dependency-injection)
-(e.g. [ASP.NET Core](https://learn.microsoft.com/aspnet/core) and
+(for example, [ASP.NET Core](https://learn.microsoft.com/aspnet/core) and
 [.NET Worker](https://learn.microsoft.com/dotnet/core/extensions/workers)), the
 common practice is to add OpenTelemetry as a
 [logging provider](https://docs.microsoft.com/dotnet/core/extensions/logging-providers)

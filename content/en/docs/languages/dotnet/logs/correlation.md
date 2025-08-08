@@ -8,7 +8,7 @@ weight: 30
 This guide explains how logs can be correlated with traces in OpenTelemetry
 .NET.
 
-## Logging Data Model support for correlation
+## Logging data model support for correlation
 
 The
 [OpenTelemetry Logging Data Model](/docs/specs/otel/logs/data-model/#trace-context-fields)
@@ -21,7 +21,7 @@ corresponding `Activity`.
 In OpenTelemetry .NET SDK, there is no user action required to enable
 correlation. The SDK automatically enables logs to `Activity` correlation by
 populating the fields `TraceId`, `SpanId`, and `TraceFlags` from the active
-activity (i.e., `Activity.Current`), if one exists.
+activity (that is, `Activity.Current`), if one exists.
 
 ## Example
 

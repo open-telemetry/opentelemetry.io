@@ -206,9 +206,9 @@ Resource associated with Activity:
 
 This shows that:
 
-1. Error activities are always included (via tail-based sampling)
+1. Error activities are always included (through tail-based sampling)
 2. Some OK activities are dropped (if not selected by head-based sampling)
-3. Some OK activities are included (via head-based sampling)
+3. Some OK activities are included (through head-based sampling)
 
 ## Complete example
 

@@ -23,8 +23,8 @@ all sub-populations are represented.
 The SDK achieves this by using a custom `Sampler` that internally holds two
 samplers. Based on the stratum, the appropriate sampler is invoked.
 
-One prerequisite for this is that the tag (for example, `queryType`) used for the
-stratified sampling decision must be provided as part of activity creation.
+One prerequisite for this is that the tag (for example, `queryType`) used for
+the stratified sampling decision must be provided as part of activity creation.
 
 The SDK uses disproportionate stratified sampling, also known as "unequal
 probability sampling". For example, the sample size of each sub-population is

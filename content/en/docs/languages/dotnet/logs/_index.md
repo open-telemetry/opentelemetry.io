@@ -1,5 +1,5 @@
 ---
-title: OpenTelemetry .NET Logs
+title: OpenTelemetry .NET logs
 linkTitle: Logs
 description: Use OpenTelemetry .NET to collect and export log telemetry data
 weight: 35

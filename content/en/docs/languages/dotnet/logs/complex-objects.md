@@ -14,7 +14,7 @@ to log complex objects.
 
 ## Complex object logging in .NET
 
-Complex object logging was introduced in .NET 8.0 via the
+Complex object logging was introduced in .NET 8.0 through the
 [`LogPropertiesAttribute`](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.logpropertiesattribute).
 This attribute and the corresponding code generation logic are provided by an
 extension package called
@@ -125,7 +125,7 @@ are included in logs:
 
 - **OmitReferenceName**: When set to `true`, the parameter name is omitted from
   attribute keys. In the example above, attribute keys are just the property
-  names (e.g., "BrandName") rather than "foodRecallNotice.BrandName".
+  names (for example, "BrandName") rather than "foodRecallNotice.BrandName".
 
 - **IncludeProperties**: Used to specify which properties should be included. If
   not specified, all properties are included.
