@@ -8927,14 +8927,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:39:14.886208-05:00"
   },
-  "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-ebpf-instrumentation/README.m": {
-    "StatusCode": 404,
-    "LastSeen": "2025-08-07T11:37:33.810043+02:00"
-  },
-  "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-ebpf-instrumentation/README.md": {
-    "StatusCode": 404,
-    "LastSeen": "2025-08-07T11:37:33.177696+02:00"
-  },
   "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-operator/values.yaml": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:39:15.147906-05:00"
