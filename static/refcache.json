@@ -17794,6 +17794,13 @@
   "https://opentelemetry.io/docs/instrumentation/net/manual/#creating-new-root-activities": {
     "StatusCode": 206,
     "LastSeen": "2025-08-05T12:22:28.818593+02:00"
+  "https://opentelemetry.io/docs/languages/go/instrumentation/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T10:40:59.076620479Z"
+  },
+  "https://opentelemetry.io/docs/languages/go/instrumentation/#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T10:40:55.19518975Z"
   },
   "https://opentelemetry.io/docs/reference/specification/metrics/semantic_conventions/": {
     "StatusCode": 206,
