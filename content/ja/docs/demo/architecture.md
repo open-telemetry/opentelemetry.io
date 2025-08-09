@@ -120,7 +120,7 @@ classDef rust fill:#dea584,color:black;
 classDef typescript fill:#e98516,color:black;
 ```
 
-デモアプリケーションの[メトリック](/docs/demo/telemetry-features/metric-coverage/) と [トレース](/docs/demo/telemetry-features/trace-coverage/) の計装の現状については、リンクをご確認ください。
+デモアプリケーションの[ログ](/docs/demo/telemetry-features/log-coverage/)、[メトリック](/docs/demo/telemetry-features/metric-coverage/)、[トレース](/docs/demo/telemetry-features/trace-coverage/)の計装の現状については、リンクをご確認ください。
 
 コレクターの設定は [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml) で行われており、代替のエクスポーターをここで設定することができます。
 
@@ -142,18 +142,24 @@ subgraph tdf[テレメトリーデータフロー]
            oc-grpc[/"OTLPレシーバー<br/>リッスン先：<br/>grpc://localhost:4317"/]
            oc-http[/"OTLPレシーバー<br/>リッスン先：<br/>localhost:4318<br/>"/]
            oc-proc(プロセッサー)
+           oc-spanmetrics[/"スパンメトリクス<br/>コネクター"/]
            oc-prom[/"OTLP HTTPエクスポーター"/]
            oc-otlp[/"OTLPエクスポーター"/]
+           oc-opensearch[/"OpenSearchエクスポーター"/]
 
            oc-grpc --> oc-proc
            oc-http --> oc-proc
 
            oc-proc --> oc-prom
            oc-proc --> oc-otlp
+           oc-proc --> oc-opensearch
+           oc-proc --> oc-spanmetrics
+           oc-spanmetrics --> oc-prom
        end
 
        oc-prom -->|"localhost:9090/api/v1/otlp"| pr-sc
        oc-otlp -->|gRPC| ja-col
+       oc-opensearch -->|HTTP| os-http
 
        subgraph pr[Prometheus]
            style pr fill:#e75128,color:black;
@@ -178,6 +184,14 @@ subgraph tdf[テレメトリーデータフロー]
            ja-db --> ja-http
        end
 
+       subgraph os[OpenSearch]
+           style os fill:#005eb8,color:white;
+           os-http[/"OpenSearch<br/>リッスン先：<br/>localhost:9200"/]
+           os-db[(OpenSearchインデックス)]
+
+           os-http --> os-db
+       end
+
        subgraph gr[Grafana]
            style gr fill:#f8b91e,color:black;
            gr-srv["Grafanaサーバー"]
@@ -188,6 +202,7 @@ subgraph tdf[テレメトリーデータフロー]
 
        pr-http --> |"localhost:9090/api"| gr-srv
        ja-http --> |"localhost:16686/api"| gr-srv
+       os-http --> |"localhost:9200/api"| gr-srv
 
        ja-b{{"ブラウザ<br/>Jaeger UI"}}
        ja-http ---->|"localhost:16686/search"| ja-b
