@@ -120,7 +120,8 @@ classDef rust fill:#dea584,color:black;
 classDef typescript fill:#e98516,color:black;
 ```
 
-Follow these links for the current state of [log](/docs/demo/telemetry-features/log-coverage/),
+Follow these links for the current state of
+[log](/docs/demo/telemetry-features/log-coverage/),
 [metric](/docs/demo/telemetry-features/metric-coverage/) and
 [trace](/docs/demo/telemetry-features/trace-coverage/) instrumentation of the
 demo applications.
@@ -160,7 +161,7 @@ subgraph tdf[Telemetry Data Flow]
             oc-proc --> oc-opensearch
             oc-proc --> oc-spanmetrics
             oc-spanmetrics --> oc-prom
-          
+
         end
 
         oc-prom -->|"localhost:9090/api/v1/otlp"| pr-sc

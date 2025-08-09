@@ -192,7 +192,7 @@ subgraph tdf[Telemetry Data Flow]
             style os fill:#005eb8,color:white;
             os-http[/"OpenSearch<br/>listening on<br/>localhost:9200"/]
             os-db[(OpenSearch Index)]
-            
+
             os-http --> os-db
         end
 

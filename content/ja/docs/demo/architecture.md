@@ -188,7 +188,7 @@ subgraph tdf[テレメトリーデータフロー]
            style os fill:#005eb8,color:white;
            os-http[/"OpenSearch<br/>リッスン先：<br/>localhost:9200"/]
            os-db[(OpenSearchインデックス)]
-           
+
            os-http --> os-db
        end
 

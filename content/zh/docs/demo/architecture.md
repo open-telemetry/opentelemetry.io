@@ -191,7 +191,7 @@ subgraph tdf[遥测数据流]
             style os fill:#005eb8,color:white;
             os-http[/"OpenSearch<br/>监听地址<br/>localhost:9200"/]
             os-db[(OpenSearch 索引)]
-            
+
             os-http --> os-db
         end
 
