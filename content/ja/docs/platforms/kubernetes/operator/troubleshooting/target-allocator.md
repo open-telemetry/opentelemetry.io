@@ -196,7 +196,7 @@ curl localhost:8080/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F0/targets
 ```json
 {
   "otelcol-collector-0": {
-    "_link": "/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F0/targets？collector_id=otelcol-collector-0",
+    "_link": "/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F0/targets?collector_id=otelcol-collector-0",
     "targets": [
       {
         "targets": ["10.244.0.11:8080"],
@@ -274,7 +274,7 @@ curl localhost:8080/jobs/serviceMonitor%2Fopentelemetry%2Fsm-example%2F0/targets
 ターゲットアロケーターは明示的に有効化する必要があります。
 さらに、[Prometheusのサービスディスカバリー](https://github.com/open-telemetry/opentelemetry-operator/blob/main/cmd/otel-allocator/README.md#discovery-of-prometheus-custom-resources)を使用する場合は、明示的に有効化する必要があります。
 
-- `spec.targetAllocator.enabled` を `true` ni設定する
+- `spec.targetAllocator.enabled` を `true` に設定する
 - `spec.targetAllocator.prometheusCR.enabled` を `true` に設定する
 
 `OpenTelemetryCollector` リソースは次のようになります。
