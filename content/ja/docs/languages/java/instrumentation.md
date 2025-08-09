@@ -8,7 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: OpenTelemetry Javaにおける計装エコシステム
-default_lang_commit: beb85b4f56de76aa8a8d6e96cd7528396476f95a # patched
+default_lang_commit: f9a0439ac56dba1515283e1a1cb6d6a90634a20f
 cSpell:ignore: logback
 ---
 
@@ -151,7 +151,7 @@ OpenTelemetryでログ計装を使用するための2つの典型的なワーク
 
 トレースとのログ相関は、OpenTelemetryコンテキストをログフレームワークにブリッジする[シム](#shims)をインストールすることで利用できます。「OpenTelemetryコンテキストをLog4jにブリッジ」、「OpenTelemetryコンテキストをLogbackにブリッジ」のエントリを参照してください。
 
-{{% alert title="注意" color="info" %}}
+{{% alert title="注意" %}}
 
 標準出力を使用したログ計装のエンドツーエンドの例は、[Javaサンプルリポジトリ](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md)で入手できます。
 
