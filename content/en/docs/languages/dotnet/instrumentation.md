@@ -1,6 +1,6 @@
 ---
 title: Instrumentation
-weight: 20
+weight: 36
 aliases: [manual]
 description: Instrumentation for OpenTelemetry .NET
 cSpell:ignore: dicelib rolldice

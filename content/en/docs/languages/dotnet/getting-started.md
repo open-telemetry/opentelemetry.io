@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-weight: 10
+weight: 8
 cSpell:ignore: ASPNETCORE rolldice
 ---
 
