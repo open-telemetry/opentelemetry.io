@@ -5,7 +5,7 @@ cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
 default_lang_commit: 2571ec5a1e17744982e8dc6efe1fdf3115d0ebbc
-cSpell:ignore: diagnostícala OLJCESPC preconfigurados
+cSpell:ignore: preconfigurados
 ---
 
 Aquí tienes la documentación de la [Demo de OpenTelemetry](/ecosystem/demo/),
