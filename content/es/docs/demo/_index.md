@@ -30,8 +30,8 @@ Comienza aquí.
 | C++        |                                                         |                                                                                                        | [Servicio de Moneda](services/currency/)                                                               |
 | Go         |                                                         | [Servicio de Pago](services/checkout/), [Servicio de Catálogo de Productos](services/product-catalog/) | [Servicio de Pago](services/checkout/), [Servicio de Catálogo de Productos](services/product-catalog/) |
 | Java       | [Servicio de Publicidad](services/ad/)                  |                                                                                                        | [Servicio de Publicidad](services/ad/)                                                                 |
-| JavaScript |                                                    |                                                                                              | [Servicio de Pagos](services/payment/)                                                         |
-| TypeScript |                                                    | [Frontend](services/frontend/), [Aplicación React Nativa](services/react-native-app/)               | [Frontend](services/frontend/)                                                               |
+| JavaScript |                                                         |                                                                                                        | [Servicio de Pagos](services/payment/)                                                                 |
+| TypeScript |                                                         | [Frontend](services/frontend/), [Aplicación React Nativa](services/react-native-app/)                  | [Frontend](services/frontend/)                                                                         |
 | Kotlin     |                                                         | [Servicio de Detección de Fraude](services/fraud-detection/)                                           |                                                                                                        |
 | PHP        |                                                         | [Servicio de Cotizaciones](services/quote/)                                                            | [Servicio de Cotizaciones](services/quote/)                                                            |
 | Python     | [Servicio de Recomendaciones](services/recommendation/) |                                                                                                        | [Servicio de Recomendaciones](services/recommendation/)                                                |
@@ -60,7 +60,10 @@ en cada servicio aquí:
 
 ## Feature Flag Scenarios
 
-¿Cómo puedes resolver problemas con OpenTelemetry? Estos [escenarios habilitados por `feature flags`](feature-flags/) te guiarán a través de algunos problemas preconfigurados y te mostrarán cómo interpretar los datos de OpenTelemetry para resolverlos.
+¿Cómo puedes resolver problemas con OpenTelemetry? Estos
+[escenarios habilitados por `feature flags`](feature-flags/) te guiarán a través
+de algunos problemas preconfigurados y te mostrarán cómo interpretar los datos
+de OpenTelemetry para resolverlos.
 
 ## Referencia
 
