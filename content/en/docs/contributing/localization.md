@@ -420,9 +420,9 @@ existing content and can span multiple locales. These include:
 
 - **Link maintenance**: Fixing broken link paths when pages are moved or
   deleted.
+- **Resource updates**: Updating links to moved external resources.
 - **Targeted content additions**: Adding specific new definitions or sections to
   files that have drifted, when updating the entire file isn't feasible.
-- **Resource updates**: Updating links to moved external resources.
 
 #### Link fixes and resource updates {#link-fixes-and-resource-updates}
 
