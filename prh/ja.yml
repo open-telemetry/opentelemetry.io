@@ -31,3 +31,7 @@ rules:
   - expected: プログラム
     patterns:
       - プログラマティック
+  - expected: オブザーバビリティ
+    patterns:
+      - 観測可能性
+      - オブザーバビリティー
