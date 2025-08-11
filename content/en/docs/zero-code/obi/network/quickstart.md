@@ -17,6 +17,7 @@ Kubernetes with the kubectl command line utility. This tutorial describes how to
 deploy OBI in Kubernetes from scratch. To use Helm, consult the
 [Deploy OBI in Kubernetes with Helm](../../setup/kubernetes-helm/)
 documentation.
+
 ## Deploy OBI with network metrics
 
 To enable network metrics, set the following option in your OBI configuration:
