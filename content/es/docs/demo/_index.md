@@ -31,7 +31,7 @@ Comienza aquí.
 | Go         |                                                         | [Servicio de Pago](services/checkout/), [Servicio de Catálogo de Productos](services/product-catalog/) | [Servicio de Pago](services/checkout/), [Servicio de Catálogo de Productos](services/product-catalog/) |
 | Java       | [Servicio de Publicidad](services/ad/)                  |                                                                                                        | [Servicio de Publicidad](services/ad/)                                                                 |
 | JavaScript |                                                         |                                                                                                        | [Servicio de Pagos](services/payment/)                                                                 |
-| TypeScript |                                                         | [Frontend](services/frontend/), [Aplicación React Nativa](services/react-native-app/)                  | [Frontend](services/frontend/)                                                                         |
+| TypeScript |                                                         | [Frontend](services/frontend/), [Aplicación React Native](services/react-native-app/)                  | [Frontend](services/frontend/)                                                                         |
 | Kotlin     |                                                         | [Servicio de Detección de Fraude](services/fraud-detection/)                                           |                                                                                                        |
 | PHP        |                                                         | [Servicio de Cotizaciones](services/quote/)                                                            | [Servicio de Cotizaciones](services/quote/)                                                            |
 | Python     | [Servicio de Recomendaciones](services/recommendation/) |                                                                                                        | [Servicio de Recomendaciones](services/recommendation/)                                                |
@@ -56,7 +56,7 @@ en cada servicio aquí:
 - [Servicio de Recomendaciones](services/recommendation/)
 - [Servicio de Envío](services/shipping/)
 - [Servicio Proveedor de Imágenes](services/image-provider/?i18n-patch)
-- [Aplicación React Nativa](services/react-native-app/)
+- [Aplicación React Native](services/react-native-app/)
 
 ## Escenarios de Feature Flags
 
