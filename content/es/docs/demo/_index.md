@@ -58,7 +58,7 @@ en cada servicio aquí:
 - [Servicio Proveedor de Imágenes](services/image-provider/?i18n-patch)
 - [Aplicación React Nativa](services/react-native-app/)
 
-## Feature Flag Scenarios
+## Escenarios de Feature Flags
 
 ¿Cómo puedes resolver problemas con OpenTelemetry? Estos
 [escenarios habilitados por `feature flags`](feature-flags/) te guiarán a través
