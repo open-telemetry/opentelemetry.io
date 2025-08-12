@@ -15,7 +15,7 @@ cSpell:ignore: darwin rolldice sinatra struct tracestate truffleruby
 
 以下がローカルにインストールされていることを確認してください。
 
-- CRuby >= `3.1`, JRuby >= `9.3.2.0`, or TruffleRuby >= `22.1`
+- CRuby >= `3.1`, JRuby >= `9.3.2.0`, または TruffleRuby >= `22.1`
 - [Bundler](https://bundler.io/)
 
 {{% alert  title="Warning" color="warning" %}}
@@ -55,7 +55,7 @@ cd dice-ruby
 rails generate controller dice
 ```
 
-`app/controllers/dice_controller.rb` というファイルを作成します。
+このコマンドは、`app/controllers/dice_controller.rb` というファイルを作成します。
 任意のエディタでそのファイルを開き、以下のコードに更新します。
 
 ```ruby
