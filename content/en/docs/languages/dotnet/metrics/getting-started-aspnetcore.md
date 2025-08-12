@@ -1,5 +1,5 @@
 ---
-title: Getting started metrics - ASP.NET Core
+title: Getting started with metrics - ASP.NET Core
 linkTitle: ASP.NET Core
 description:
   Learn how to use OpenTelemetry Metrics in an ASP.NET Core application
