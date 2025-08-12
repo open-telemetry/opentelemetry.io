@@ -7,6 +7,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-24T14:46:01.790558-05:00"
   },
+  "http://macias.info": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:18.386726+02:00"
+  },
   "http://publicsuffix.org": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:22.17757-05:00"
@@ -54,6 +58,10 @@
   "https://ai.pydantic.dev/": {
     "StatusCode": 200,
     "LastSeen": "2025-02-22T07:14:43.97163372-08:00"
+  },
+  "https://anywhere.eks.amazonaws.com/docs/getting-started/optional/hostosconfig/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:20.615345+02:00"
   },
   "https://apicontext.com/": {
     "StatusCode": 200,
@@ -238,6 +246,10 @@
   "https://blog.logrocket.com/understanding-schema-stitching-graphql/": {
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:28.075977-04:00"
+  },
+  "https://blog.olly.garden/how-to-name-your-spans": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-07T16:56:56.220013+02:00"
   },
   "https://blog.remirepo.net/pages/PECL-extensions-RPM-status": {
     "StatusCode": 200,
@@ -2239,6 +2251,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-11-18T16:20:41.311419+01:00"
   },
+  "https://elixir.bootlin.com/linux/v6.8.7/source/include/uapi/linux/in.h#L28": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:18.085055+02:00"
+  },
   "https://embrace.io/docs/open-telemetry/integration/": {
     "StatusCode": 206,
     "LastSeen": "2024-11-02T22:02:32.429124483Z"
@@ -2318,6 +2334,10 @@
   "https://en.wikipedia.org/wiki/Futures_and_promises": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:20.366927-05:00"
+  },
+  "https://en.wikipedia.org/wiki/Glob_%28programming%29": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:15.821583+02:00"
   },
   "https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol": {
     "StatusCode": 200,
@@ -2410,6 +2430,10 @@
   "https://en.wikipedia.org/wiki/Subnormal_number": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:23:53.580822-05:00"
+  },
+  "https://en.wikipedia.org/wiki/Tc_%28Linux%29": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:19.437358+02:00"
   },
   "https://en.wikipedia.org/wiki/Zip_bomb": {
     "StatusCode": 200,
@@ -4483,6 +4507,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:39:17.309514-05:00"
   },
+  "https://github.com/gobwas/glob": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:19.506902+02:00"
+  },
   "https://github.com/gofiber/": {
     "StatusCode": 200,
     "LastSeen": "2024-11-14T11:47:48.179159+01:00"
@@ -4550,6 +4578,50 @@
   "https://github.com/grafana/alloy": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:07.09925-05:00"
+  },
+  "https://github.com/grafana/beyla/blob/main/charts/beyla/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:17.290188+02:00"
+  },
+  "https://github.com/grafana/beyla/blob/main/docs/sources/setup/standalone.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:17.189848+02:00"
+  },
+  "https://github.com/grafana/beyla/releases": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:17.488278+02:00"
+  },
+  "https://github.com/grafana/beyla/tree/main/examples/k8s/unprivileged.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:19.948267+02:00"
+  },
+  "https://github.com/grafana/beyla/tree/main/examples/quickstart/cpp": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:17.138165+02:00"
+  },
+  "https://github.com/grafana/beyla/tree/main/examples/quickstart/golang": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:16.962642+02:00"
+  },
+  "https://github.com/grafana/beyla/tree/main/examples/quickstart/java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:17.053331+02:00"
+  },
+  "https://github.com/grafana/beyla/tree/main/examples/quickstart/nodejs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:16.965089+02:00"
+  },
+  "https://github.com/grafana/beyla/tree/main/examples/quickstart/python": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:16.227203+02:00"
+  },
+  "https://github.com/grafana/beyla/tree/main/examples/quickstart/ruby": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:19.056454+02:00"
+  },
+  "https://github.com/grafana/beyla/tree/main/examples/quickstart/rust": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:17.499378+02:00"
   },
   "https://github.com/grafana/docker-otel-lgtm": {
     "StatusCode": 206,
@@ -6322,6 +6394,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/otlpjsonconnector": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:34:34.16915-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/servicegraphconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T22:10:09.859416+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector": {
     "StatusCode": 206,
@@ -8579,6 +8655,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:27.610217-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-07T11:36:10.445321+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-profiler": {
     "StatusCode": 200,
     "LastSeen": "2024-10-24T15:10:22.597683+02:00"
@@ -8874,6 +8954,10 @@
   "https://github.com/open-telemetry/opentelemetry-helm-charts": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:31:49.391415-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-07T11:41:49.637837+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/aaa70bde1bf8bf15fc411282468ac6d2d07f772d/charts/opentelemetry-collector/templates/_config.tpl#L206-L282": {
     "StatusCode": 200,
@@ -10242,6 +10326,10 @@
   "https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:45:54.691595-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#how-resource-attributes-are-calculated-from-the-pods-metadata": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:18.55304+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection": {
     "StatusCode": 200,
@@ -16018,6 +16106,53 @@
   "https://grafana.com/docs/grafana/latest/setup-grafana/installation/#supported-operating-systems": {
     "StatusCode": 200,
     "LastSeen": "2025-08-05T12:22:32.290893+02:00"
+  "https://grafana.com/media/docs/grafana-cloud/beyla/beyla-logo-2.png": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:16.722097+02:00"
+  },
+  "https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/grouped-traces.png": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:19.798569+02:00"
+  },
+  "https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/otel-cloud-portal-box.png": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:17.093822+02:00"
+  },
+  "https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/otlp-connection-headers.png": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:16.832137+02:00"
+  },
+  "https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/trace-generic.png": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:17.301484+02:00"
+  },
+  "https://grafana.com/media/docs/grafana-cloud/beyla/quickstart/trace.png": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:17.660671+02:00"
+  },
+  "https://grafana.com/media/docs/grafana-cloud/beyla/req-life-cycle_2.png": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:16.413698+02:00"
+  },
+  "https://grafana.com/media/docs/grafana-cloud/beyla/server-side-trace.png": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:17.836646+02:00"
+  },
+  "https://grafana.com/media/docs/grafana-cloud/beyla/tutorial/k8s/run-query.png": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:19.948125+02:00"
+  },
+  "https://grafana.com/media/docs/grafana-cloud/beyla/tutorial/k8s/select-traces.png": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:18.993886+02:00"
+  },
+  "https://grafana.com/media/docs/grafana-cloud/beyla/tutorial/k8s/tut-trace-details.png": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:21.700895+02:00"
+  },
+  "https://grafana.com/media/docs/grafana-cloud/beyla/tutorial/k8s/tut-traces-list.png": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:21.075403+02:00"
   },
   "https://grafana.com/oss/grafana/": {
     "StatusCode": 200,
@@ -16214,6 +16349,14 @@
   "https://hsqldb.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:37:01.182207-05:00"
+  },
+  "https://hub.docker.com/r/grafana/beyla": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:17.987768+02:00"
+  },
+  "https://hub.docker.com/r/otel/ebpf-instrument": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-28T15:15:42.999277+02:00"
   },
   "https://hub.docker.com/r/otel/weaver": {
     "StatusCode": 200,
@@ -16878,6 +17021,9 @@
   "https://learn.microsoft.com/dotnet/standard/base-types/regular-expressions": {
     "StatusCode": 206,
     "LastSeen": "2025-08-05T12:22:31.756177+02:00"
+  "https://learn.microsoft.com/en-us/azure/aks/custom-node-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:20.030551+02:00"
   },
   "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable": {
     "StatusCode": 206,
@@ -17011,6 +17157,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:38:15.172732-05:00"
   },
+  "https://lwn.net/Articles/696216/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:18.721115+02:00"
+  },
+  "https://macias.info": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-07T11:36:04.473+02:00"
+  },
   "https://man7.org/linux/man-pages/man1/free.1.html": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:06.681144-05:00"
@@ -17046,6 +17200,10 @@
   "https://man7.org/linux/man-pages/man5/proc_meminfo.5.html": {
     "StatusCode": 206,
     "LastSeen": "2025-01-24T14:36:57.902029-05:00"
+  },
+  "https://man7.org/linux/man-pages/man7/capabilities.7.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:15.648636+02:00"
   },
   "https://man7.org/linux/man-pages/man7/cgroups.7.html": {
     "StatusCode": 206,
@@ -17779,6 +17937,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-31T13:07:33.766024682Z"
   },
+  "https://opentelemetry.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:16.939217+02:00"
+  },
   "https://opentelemetry.io/blog/2025/contribex-survey-results/": {
     "StatusCode": 206,
     "LastSeen": "2025-06-12T14:07:51.914716+02:00"
@@ -17794,6 +17956,22 @@
   "https://opentelemetry.io/docs/instrumentation/net/manual/#creating-new-root-activities": {
     "StatusCode": 206,
     "LastSeen": "2025-08-05T12:22:28.818593+02:00"
+  "https://opentelemetry.io/docs/concepts/sdk-configuration/general-sdk-configuration/#otel_traces_sampler": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:16.853244+02:00"
+  },
+  "https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:15.767147+02:00"
+  },
+  "https://opentelemetry.io/docs/concepts/sdk-configuration/otlp-exporter-configuration/#otel_exporter_otlp_protocol": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:16.262492+02:00"
+  },
+  "https://opentelemetry.io/docs/demo/architecture/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:17.218848+02:00"
+  },
   "https://opentelemetry.io/docs/languages/go/instrumentation/": {
     "StatusCode": 206,
     "LastSeen": "2025-08-08T10:40:59.076620479Z"
@@ -17806,9 +17984,29 @@
     "StatusCode": 206,
     "LastSeen": "2025-05-26T16:48:26.73412+03:00"
   },
+  "https://opentelemetry.io/docs/specs/otel/common/attribute-naming/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:18.130793+02:00"
+  },
   "https://opentelemetry.io/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration": {
     "StatusCode": 206,
     "LastSeen": "2025-06-25T14:35:48.528151427Z"
+  },
+  "https://opentelemetry.io/docs/specs/otel/metrics/data-model/#exponentialhistogram": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:19.941353+02:00"
+  },
+  "https://opentelemetry.io/docs/specs/otel/metrics/sdk/#base2-exponential-bucket-histogram-aggregation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:16.975398+02:00"
+  },
+  "https://opentelemetry.io/docs/specs/otel/metrics/sdk/#explicit-bucket-histogram-aggregation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:16.562323+02:00"
+  },
+  "https://opentelemetry.io/docs/specs/otel/metrics/sdk_exporters/otlp/#additional-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:21.401564+02:00"
   },
   "https://opentelemetry.io/docs/specs/semconv/": {
     "StatusCode": 206,
@@ -19374,6 +19572,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:29:12.345Z"
   },
+  "https://prometheus.io/docs/concepts/metric_types/#histogram": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:18.696701+02:00"
+  },
   "https://prometheus.io/docs/guides/opentelemetry/#promoting-resource-attributes": {
     "StatusCode": 200,
     "LastSeen": "2025-07-22T11:21:41.444671225-07:00"
@@ -19437,6 +19639,9 @@
   "https://prometheus.io/docs/prometheus/latest/feature_flags/#exemplars-storage": {
     "StatusCode": 200,
     "LastSeen": "2025-08-05T12:22:35.772331+02:00"
+  "https://prometheus.io/docs/prometheus/latest/feature_flags/#native-histograms": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:19.423118+02:00"
   },
   "https://prometheus.io/docs/prometheus/latest/federation/": {
     "StatusCode": 206,
@@ -19770,6 +19975,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-07-17T19:19:21.695695798Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.53.0-alpha/opentelemetry-bom-alpha-1.53.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T20:25:21.445618832Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.42.1/opentelemetry-bom-1.42.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:05.242921-05:00"
@@ -19817,6 +20026,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.52.0/opentelemetry-bom-1.52.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2025-07-17T19:19:18.729927831Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.53.0/opentelemetry-bom-1.53.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T20:25:20.787140184Z"
   },
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "StatusCode": 206,
@@ -20902,6 +21115,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:30:12.345Z"
   },
+  "https://wiki.debian.org/SecureBoot": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:21.994527+02:00"
+  },
   "https://wiki.osdev.org/CPUID": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T16:48:42.124589-05:00"
@@ -21838,6 +22055,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:32:06.227955-05:00"
   },
+  "https://www.kernel.org/doc/Documentation/admin-guide/perf-security.rst": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:16.86584+02:00"
+  },
+  "https://www.kernel.org/doc/Documentation/sysctl/kernel.txt": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:16.344393+02:00"
+  },
   "https://www.keycloak.org": {
     "StatusCode": 206,
     "LastSeen": "2024-10-30T21:33:55.346508746Z"
@@ -21893,6 +22118,14 @@
   "https://www.logicmonitor.com/support/tracing/getting-started-with-tracing": {
     "StatusCode": 206,
     "LastSeen": "2025-01-06T11:32:39.303245-05:00"
+  },
+  "https://www.man7.org/linux/man-pages/man7/bpf-helpers.7.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:21.253042+02:00"
+  },
+  "https://www.man7.org/linux/man-pages/man7/capabilities.7.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-24T21:20:18.973727+02:00"
   },
   "https://www.markdownguide.org/basic-syntax/#line-breaks": {
     "StatusCode": 200,
@@ -22701,6 +22934,10 @@
   "https://www.youtube.com/embed/bsfMECwmsm0": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:10:38.092527-05:00"
+  },
+  "https://www.youtube.com/embed/d7clTdz0bA4": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-24T21:20:17.650647+02:00"
   },
   "https://www.youtube.com/embed/eZ3OrhxUAmU": {
     "StatusCode": 200,

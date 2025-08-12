@@ -72,6 +72,8 @@ components:
   content/en/docs/zero-code/net:
     - open-telemetry/dotnet-approvers
     - open-telemetry/dotnet-instrumentation-approvers
+  content/en/docs/zero-code/obi:
+    - open-telemetry/ebpf-instrumentation-approvers
   content/en/ecosystem/demo:
     - open-telemetry/demo-approvers
   content/zh:
