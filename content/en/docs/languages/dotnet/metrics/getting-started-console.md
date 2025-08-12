@@ -1,5 +1,5 @@
 ---
-title: Getting started metrics - Console
+title: Getting started with metrics - Console
 linkTitle: Console
 description:
   Learn how to use OpenTelemetry Metrics in a .NET Console application
