@@ -5,7 +5,7 @@ description: Vendor-agnostic resources for OpenTelemetry users
 weight: 40
 ---
 
-Looking to connect with other OpenTelemetry end users in a vendor-agnostic
+<!--Looking to connect with other OpenTelemetry end users in a vendor-agnostic
 space, or to learn more about OpenTelemetry? Perhaps you have some feedback
 about your implementation or adoption that you'd like to share with project
 contributors, or you want to help prioritize project issues. You've come to the
@@ -55,4 +55,4 @@ OpenTelemetry.
 
 You can find members of the
 [OpenTelemetry End User SIG](https://github.com/open-telemetry/sig-end-user) in
-[#otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ).
+[#otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ).-->
