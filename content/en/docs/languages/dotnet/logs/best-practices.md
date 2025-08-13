@@ -54,12 +54,12 @@ As a general rule:
   pipeline is disposed. Refer to the
   [.NET official document](https://learn.microsoft.com/dotnet/core/extensions/logging#integration-with-hosts-and-dependency-injection)
   and
-  [Getting Started with OpenTelemetry .NET Logs in 5 Minutes - ASP.NET Core Application](./getting-started-aspnetcore/)
+  [Getting Started with OpenTelemetry .NET Logs in 5 Minutes - ASP.NET Core Application](/docs/languages/dotnet/logs/getting-started-aspnetcore/)
   tutorial to learn more.
 - If you are building an application without DI, create a
   [LoggerFactory](#loggerfactory) instance and configure OpenTelemetry to work
   with it. Refer to the
-  [Getting Started with OpenTelemetry .NET Logs in 5 Minutes - Console Application](./getting-started-console/)
+  [Getting Started with OpenTelemetry .NET Logs in 5 Minutes - Console Application](/docs/languages/dotnet/logs/getting-started-console/)
   tutorial to learn more.
 
 Use dot-separated [UpperCamelCase](https://en.wikipedia.org/wiki/Camel_case) as
@@ -143,7 +143,8 @@ Use
 from
 [Microsoft.Extensions.Telemetry.Abstractions](https://www.nuget.org/packages/Microsoft.Extensions.Telemetry.Abstractions/)
 if you need to log complex objects. Check out the
-[Logging with Complex Objects](./complex-objects/) tutorial for more details.
+[Logging with Complex Objects](/docs/languages/dotnet/logs/complex-objects/)
+tutorial for more details.
 
 Avoid the extension methods from
 [LoggerExtensions](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions),
@@ -332,8 +333,10 @@ instances if they are created by you.
 
 ## Log correlation
 
-In OpenTelemetry, logs are automatically correlated to [traces](../traces/).
-Check the [Log Correlation](./correlation/) tutorial to learn more.
+In OpenTelemetry, logs are automatically correlated to
+[traces](/docs/languages/dotnet/traces/). Check the
+[Log Correlation](/docs/languages/dotnet/logs/correlation/) tutorial to learn
+more.
 
 ## Log filtering
 
@@ -346,4 +349,5 @@ progress or provide feedback and suggestions.
 
 Logs might contain sensitive information such as passwords and credit card
 numbers, proper redaction is required to prevent privacy and security incidents.
-Check the [Log Redaction](./redaction/) tutorial to learn more.
+Check the [Log Redaction](/docs/languages/dotnet/logs/redaction/) tutorial to
+learn more.

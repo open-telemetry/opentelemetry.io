@@ -32,8 +32,7 @@ Avoid creating
 [`System.Diagnostics.ActivitySource`](https://learn.microsoft.com/dotnet/api/system.diagnostics.activitysource)
 too frequently. `ActivitySource` is fairly expensive and meant to be reused
 throughout the application. For most applications, it can be modeled as static
-readonly field (e.g. [Program.cs](./getting-started-console/Program.cs)) or
-singleton via dependency injection.
+readonly field or singleton via dependency injection.
 
 Use dot-separated [UpperCamelCase](https://en.wikipedia.org/wiki/Camel_case) as
 the
@@ -65,8 +64,7 @@ using (var activity = MyActivitySource.StartActivity("SayHello"))
 
 Use
 [Activity.SetTag](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity.settag)
-to
-[set attributes](/docs/specs/semconv/specification/trace/api.md#set-attributes).
+to [set attributes](/docs/specs/otel/trace/api/#set-attributes).
 
 Finish or stop the activity properly. This can be done implicitly via a `using`
 statement, which is recommended. You can also explicitly call
@@ -80,7 +78,8 @@ or
 Avoid calling
 [Activity.AddEvent](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity.addevent)
 in a loop. Activities are not designed to handle hundreds or thousands of
-events, a better model is to use [correlated logs](../logs/#log-correlation) or
+events, a better model is to use
+[correlated logs](/docs/languages/dotnet/logs/correlation/) or
 [Activity.Links](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity.links).
 For example:
 
@@ -117,11 +116,11 @@ As a general rule:
   [.NET Worker](https://learn.microsoft.com/dotnet/core/extensions/workers)), in
   most cases you should create the `TracerProvider` instance and let DI manage
   its lifecycle. Refer to the
-  [Getting Started with OpenTelemetry .NET Traces in 5 Minutes - ASP.NET Core Application](./getting-started-aspnetcore/)
+  [Getting Started with OpenTelemetry .NET Traces in 5 Minutes - ASP.NET Core Application](/docs/languages/dotnet/traces/getting-started-aspnetcore/)
   tutorial to learn more.
 - If you are building an application without DI, create a `TracerProvider`
   instance and manage the lifecycle explicitly. Refer to the
-  [Getting Started with OpenTelemetry .NET Traces in 5 Minutes - Console Application](./getting-started-console/)
+  [Getting Started with OpenTelemetry .NET Traces in 5 Minutes - Console Application](/docs/languages/dotnet/traces/getting-started-console/)
   tutorial to learn more.
 - If you forget to dispose the `TracerProvider` instance before the application
   ends, activities might get dropped due to the lack of proper flush.
@@ -131,17 +130,19 @@ As a general rule:
 ## Correlation
 
 In OpenTelemetry, traces are automatically
-[correlated to logs](../logs/#log-correlation) and can be
-[correlated to metrics](../metrics/#metrics-correlation) through
-[exemplars](../metrics/exemplars/).
+[correlated to logs](/docs/languages/dotnet/logs/best-practices/#log-correlation)
+and can be
+[correlated to metrics](/docs/languages/dotnet/metrics/best-practices/#metrics-correlation)
+through [exemplars](/docs/languages/dotnet/metrics/exemplars/).
 
 ### Manually creating Activities
 
-As shown in the [getting started](getting-started-console/) guide, it is very
-easy to manually create `Activity`. Due to this, it can be tempting to create
-too many activities (for example, for each method call). In addition to being
-expensive, excessive activities can also make trace visualization harder.
-Instead of manually creating `Activity`, check if you can leverage
+As shown in the
+[getting started](/docs/languages/dotnet/traces/getting-started-console/) guide,
+it is very easy to manually create `Activity`. Due to this, it can be tempting
+to create too many activities (for example, for each method call). In addition
+to being expensive, excessive activities can also make trace visualization
+harder. Instead of manually creating `Activity`, check if you can leverage
 instrumentation libraries, such as
 [ASP.NET Core](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.AspNetCore/README.md),
 [HttpClient](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.Http/README.md)

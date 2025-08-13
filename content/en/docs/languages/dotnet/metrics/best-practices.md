@@ -16,10 +16,9 @@ APIs from the latest stable version of
 [System.Diagnostics.DiagnosticSource](https://www.nuget.org/packages/System.Diagnostics.DiagnosticSource/)
 package, regardless of the .NET runtime version being used:
 
-- If you are using the latest stable version of
-  OpenTelemetry .NET SDK, you do not have to worry
-  about the version of `System.Diagnostics.DiagnosticSource` package because it
-  is already taken care of for you via package dependency.
+- If you are using the latest stable version of OpenTelemetry .NET SDK, you do
+  not have to worry about the version of `System.Diagnostics.DiagnosticSource`
+  package because it is already taken care of for you via package dependency.
 - The .NET runtime team is holding a high bar for backward compatibility on
   `System.Diagnostics.DiagnosticSource` even during major version bumps, so
   compatibility is not a concern here.
@@ -53,23 +52,23 @@ Understand and pick the right instrument type.
 
 {{% alert title="Note" %}} .NET runtime has provided several instrument types
 based on the
-[OpenTelemetry Specification](/docs/specs/semconv/specification/metrics/api.md#instrument).
-Picking the right instrument type for your use case is crucial to ensure the
-correct semantics and performance. Check the
-[Instrument Selection](/docs/specs/semconv/specification/metrics/supplementary-guidelines.md#instrument-selection)
+[OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument). Picking
+the right instrument type for your use case is crucial to ensure the correct
+semantics and performance. Check the
+[Instrument Selection](/docs/specs/otel/metrics/supplementary-guidelines#instrument-selection)
 section from the supplementary guidelines for more information.
 
 > {{% /alert %}}
 
-| OpenTelemetry Specification                                                                               | .NET Instrument Type                                                                                                        |
-| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| [Asynchronous Counter](/docs/specs/semconv/specification/metrics/api.md#asynchronous-counter)             | [`ObservableCounter<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.observablecounter-1)             |
-| [Asynchronous Gauge](/docs/specs/semconv/specification/metrics/api.md#asynchronous-gauge)                 | [`ObservableGauge<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.observablegauge-1)                 |
-| [Asynchronous UpDownCounter](/docs/specs/semconv/specification/metrics/api.md#asynchronous-updowncounter) | [`ObservableUpDownCounter<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.observableupdowncounter-1) |
-| [Counter](/docs/specs/semconv/specification/metrics/api.md#counter)                                       | [`Counter<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.counter-1)                                 |
-| [Gauge](/docs/specs/semconv/specification/metrics/api.md#gauge)                                           | [`Gauge<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.gauge-1)                                     |
-| [Histogram](/docs/specs/semconv/specification/metrics/api.md#histogram)                                   | [`Histogram<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.histogram-1)                             |
-| [UpDownCounter](/docs/specs/semconv/specification/metrics/api.md#updowncounter)                           | [`UpDownCounter<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.updowncounter-1)                     |
+| OpenTelemetry Specification                                                            | .NET Instrument Type                                                                                                        |
+| -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| [Asynchronous Counter](/docs/specs/otel/metrics/api/#asynchronous-counter)             | [`ObservableCounter<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.observablecounter-1)             |
+| [Asynchronous Gauge](/docs/specs/otel/metrics/api/#asynchronous-gauge)                 | [`ObservableGauge<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.observablegauge-1)                 |
+| [Asynchronous UpDownCounter](/docs/specs/otel/metrics/api/#asynchronous-updowncounter) | [`ObservableUpDownCounter<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.observableupdowncounter-1) |
+| [Counter](/docs/specs/otel/metrics/api/#counter)                                       | [`Counter<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.counter-1)                                 |
+| [Gauge](/docs/specs/otel/metrics/api/#gauge)                                           | [`Gauge<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.gauge-1)                                     |
+| [Histogram](/docs/specs/otel/metrics/api/#histogram)                                   | [`Histogram<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.histogram-1)                             |
+| [UpDownCounter](/docs/specs/otel/metrics/api/#updowncounter)                           | [`UpDownCounter<T>`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.updowncounter-1)                     |
 
 Avoid creating instruments (for example, `Counter<T>`) too frequently.
 Instruments are fairly expensive and meant to be reused throughout the
@@ -80,7 +79,7 @@ Avoid invalid instrument names.
 
 > {{% alert title="Note" %}} OpenTelemetry will not collect metrics from
 > instruments that are using invalid names. Refer to the
-> [OpenTelemetry Specification](/docs/specs/semconv/specification/metrics/api.md#instrument-name-syntax)
+> [OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument-name-syntax)
 > for the valid syntax. {{% /alert %}}
 
 Avoid changing the order of tags while reporting measurements. For example:
@@ -187,11 +186,11 @@ As a general rule:
   [.NET Worker](https://learn.microsoft.com/dotnet/core/extensions/workers)), in
   most cases you should create the `MeterProvider` instance and let DI manage
   its lifecycle. Refer to the
-  [Getting Started with OpenTelemetry .NET Metrics in 5 Minutes - ASP.NET Core Application](./getting-started-aspnetcore/)
+  [Getting Started with OpenTelemetry .NET Metrics in 5 Minutes - ASP.NET Core Application](/docs/languages/dotnet/metrics/getting-started-aspnetcore/)
   tutorial to learn more.
 - If you are building an application without DI, create a `MeterProvider`
   instance and manage the lifecycle explicitly. Refer to the
-  [Getting Started with OpenTelemetry .NET Metrics in 5 Minutes - Console Application](./getting-started-console/)
+  [Getting Started with OpenTelemetry .NET Metrics in 5 Minutes - Console Application](/docs/languages/dotnet/metrics/getting-started-console/)
   tutorial to learn more.
 - If you forget to dispose the `MeterProvider` instance before the application
   ends, metrics might get dropped due to the lack of proper flush.
@@ -200,18 +199,17 @@ As a general rule:
 
 ## Memory management
 
-In OpenTelemetry,
-[measurements](/docs/specs/semconv/specification/metrics/api.md#measurement) are
+In OpenTelemetry, [measurements](/docs/specs/otel/metrics/api/#measurement) are
 reported via the metrics API. The SDK
-[aggregates](/docs/specs/semconv/specification/metrics/sdk.md#aggregation)
-metrics using certain algorithms and memory management strategies to achieve
-good performance and efficiency. Here are the rules which OpenTelemetry .NET
-follows while implementing the metrics aggregation logic:
+[aggregates](/docs/specs/otel/metrics/sdk/#aggregation) metrics using certain
+algorithms and memory management strategies to achieve good performance and
+efficiency. Here are the rules which OpenTelemetry .NET follows while
+implementing the metrics aggregation logic:
 
 1. [**Pre-Aggregation**](#pre-aggregation): aggregation occurs within the SDK.
 2. [**Cardinality Limits**](#cardinality-limits): the aggregation logic respects
-   [cardinality limits](/docs/specs/semconv/specification/metrics/sdk.md#cardinality-limits),
-   so the SDK does not use indefinite amount of memory when there is cardinality
+   [cardinality limits](/docs/specs/otel/metrics/sdk/#cardinality-limits), so
+   the SDK does not use indefinite amount of memory when there is cardinality
    explosion.
 3. [**Memory Preallocation**](#memory-preallocation): the memory used by
    aggregation logic is allocated during the SDK initialization, so the SDK does
@@ -236,7 +234,7 @@ Let us take the following example:
   - value = 3, name = `lemon`, color = `yellow`
 
 If we aggregate and export the metrics using
-[Cumulative Aggregation Temporality](/docs/specs/semconv/specification/metrics/data-model.md#temporality):
+[Cumulative Aggregation Temporality](/docs/specs/otel/metrics/data-model/#temporality):
 
 - (T0, T1]
   - attributes: {name = `apple`, color = `red`}, count: `1`
@@ -250,7 +248,7 @@ If we aggregate and export the metrics using
   - attributes: {verb = `lemon`, color = `yellow`}, count: `12`
 
 If we aggregate and export the metrics using
-[Delta Aggregation Temporality](/docs/specs/semconv/specification/metrics/data-model.md#temporality):
+[Delta Aggregation Temporality](/docs/specs/otel/metrics/data-model/#temporality):
 
 - (T0, T1]
   - attributes: {name = `apple`, color = `red`}, count: `1`
@@ -344,20 +342,20 @@ explosion is a well-known challenge in the metrics space. For example, it can
 cause surprisingly high costs in the observability system, or even be leveraged
 by hackers to launch a denial-of-service attack.
 
-[Cardinality limit](/docs/specs/semconv/specification/metrics/sdk.md#cardinality-limits)
-is a throttling mechanism which allows the metrics collection system to have a
+[Cardinality limit](/docs/specs/otel/metrics/sdk/#cardinality-limits) is a
+throttling mechanism which allows the metrics collection system to have a
 predictable and reliable behavior when excessive cardinality happens, whether it
 was due to a malicious attack or developer making mistakes while writing code.
 
 OpenTelemetry has a default cardinality limit of `2000` per metric. This limit
 can be configured at the individual metric level using the
-[View API](/docs/specs/semconv/specification/metrics/sdk.md#view) and the
+[View API](/docs/specs/otel/metrics/sdk/#view) and the
 `MetricStreamConfiguration.CardinalityLimit` setting.
 
 As of `1.10.0` once a metric has reached the cardinality limit, any new
 measurement that could not be independently aggregated will be automatically
 aggregated using the
-[overflow attribute](/docs/specs/semconv/specification/metrics/sdk.md#overflow-attribute).
+[overflow attribute](/docs/specs/otel/metrics/sdk/#overflow-attribute).
 
 > {{% alert title="Note" %}} In SDK versions `1.6.0` - `1.9.0` the overflow
 > attribute was an experimental feature that could be enabled by setting the
@@ -366,7 +364,7 @@ aggregated using the
 > {{% /alert %}}
 
 As of `1.10.0` when
-[Delta Aggregation Temporality](/docs/specs/semconv/specification/metrics/data-model.md#temporality)
+[Delta Aggregation Temporality](/docs/specs/otel/metrics/data-model/#temporality)
 is used, it is possible to choose a smaller cardinality limit because the SDK
 will reclaim unused metric points.
 
@@ -391,9 +389,10 @@ while measuring an operation which normally takes 10 milliseconds).
 
 ## Metrics correlation
 
-In OpenTelemetry, metrics can be correlated to [traces](../trace/README.md) via
-[exemplars](/docs/specs/semconv/specification/metrics/sdk.md#exemplar). Check
-the [Exemplars](./exemplars/) tutorial to learn more.
+In OpenTelemetry, metrics can be correlated to
+[traces](/docs/languages/dotnet/traces/) via
+[exemplars](/docs/specs/otel/metrics/sdk/#exemplar). Check the
+[Exemplars](/docs/languages/dotnet/metrics/exemplars/) tutorial to learn more.
 
 ## Metrics enrichment
 
@@ -405,24 +404,24 @@ For basic scenarios, all the dimensions can be reported during the
 [Metrics API](#metrics-api) invocation, however, for less trivial scenarios, the
 dimensions can come from different sources:
 
-- [Measurements](/docs/specs/semconv/specification/metrics/api.md#measurement)
-  reported via the [Metrics API](#metrics-api).
+- [Measurements](/docs/specs/otel/metrics/api/#measurement) reported via the
+  [Metrics API](#metrics-api).
 - Additional tags provided at instrument creation time. For example, the
   [`Meter.CreateCounter<T>(name, unit, description, tags)`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.meter.createcounter)
   overload.
 - Additional tags provided at meter creation time. For example, the
   [`Meter(name, version, tags, scope)`](https://learn.microsoft.com/dotnet/api/system.diagnostics.metrics.meter.-ctor)
   overload.
-- [Resources](/docs/specs/semconv/specification/resource/sdk.md) configured at
-  the `MeterProvider` level.
+- [Resources](/docs/specs/otel/resource/sdk) configured at the `MeterProvider`
+  level.
 - Additional attributes provided by the exporter or collector. For example,
   [jobs and instances](https://prometheus.io/docs/concepts/jobs_instances/) in
   Prometheus.
 
 > {{% alert title="Note" %}} Instrument level tags support is not yet
 > implemented in OpenTelemetry .NET since the
-> [OpenTelemetry Specification](/docs/specs/semconv/specification/metrics/api.md#instrument)
-> does not support it. {{% /alert %}}
+> [OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument) does
+> not support it. {{% /alert %}}
 
 As a general rule:
 
