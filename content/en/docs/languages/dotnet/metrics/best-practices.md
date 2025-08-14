@@ -357,11 +357,11 @@ measurement that could not be independently aggregated will be automatically
 aggregated using the
 [overflow attribute](/docs/specs/otel/metrics/sdk/#overflow-attribute).
 
-> {{% alert title="Note" %}} In SDK versions `1.6.0` - `1.9.0` the overflow
-> attribute was an experimental feature that could be enabled by setting the
-> environment variable
-> `OTEL_DOTNET_EXPERIMENTAL_METRICS_EMIT_OVERFLOW_ATTRIBUTE=true`.
-> {{% /alert %}}
+{{% alert title="Note" %}} In SDK versions `1.6.0` - `1.9.0` the overflow
+attribute was an experimental feature that could be enabled by setting the
+environment variable
+`OTEL_DOTNET_EXPERIMENTAL_METRICS_EMIT_OVERFLOW_ATTRIBUTE=true`.
+{{% /alert %}}
 
 As of `1.10.0` when
 [Delta Aggregation Temporality](/docs/specs/otel/metrics/data-model/#temporality)
