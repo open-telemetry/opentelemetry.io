@@ -83,9 +83,9 @@ events, a better model is to use
 [Activity.Links](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity.links).
 For example:
 
-> {{% alert title="Warning" color="warning" %}} The following code is not
-> modeling `Activity.Events` correctly, and is very likely to have usability and
-> performance problems. {{% /alert %}}
+{{% alert title="Warning" color="warning" %}} The following code is not
+modeling `Activity.Events` correctly, and is very likely to have usability and
+performance problems. {{% /alert %}}
 
 ```csharp
 private static async Task Test()
