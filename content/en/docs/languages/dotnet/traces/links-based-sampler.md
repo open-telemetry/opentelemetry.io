@@ -38,9 +38,10 @@ that decides to sample an activity if any of the linked contexts are sampled.
 This may be a good option to consider if you want to get more complete traces
 across linked traces. However, there are a few tradeoffs to consider:
 
-- **Not guaranteed to give consistent sampling in all situations**: This
-  approach doesn't guarantee that you will get complete traces across linked
-  traces in all situations.
+### Not guaranteed to give consistent sampling in all situations
+
+This approach doesn't guarantee that you will get complete traces across linked
+traces in all situations.
 
 Let's look at a couple of cases using the same producer-consumer example
 scenario. Let's say we have a producer activity (say with ID S1 in Trace T1)
