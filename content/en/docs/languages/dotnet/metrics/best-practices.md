@@ -437,12 +437,12 @@ As a general rule:
 - If the dimension value is dynamic, report it via the
   [Metrics API](#metrics-api).
 
-> {{% alert title="Note" %}} There were discussions around adding a new concept
-> called `MeasurementProcessor`, which allows dimensions to be added to /
-> removed from measurements dynamically. This idea did not get traction due to
-> the complexity and performance implications, refer to this
-> [pull request](https://github.com/open-telemetry/opentelemetry-specification/pull/1938)
-> for more context. {{% /alert %}}
+{{% alert title="Note" %}} There were discussions around adding a new concept
+called `MeasurementProcessor`, which allows dimensions to be added to /
+removed from measurements dynamically. This idea did not get traction due to
+the complexity and performance implications, refer to this
+[pull request](https://github.com/open-telemetry/opentelemetry-specification/pull/1938)
+for more context. {{% /alert %}}
 
 ## Common issues that lead to missing metrics
 
