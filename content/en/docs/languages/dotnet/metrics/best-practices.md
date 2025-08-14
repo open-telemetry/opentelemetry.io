@@ -380,7 +380,7 @@ OpenTelemetry .NET SDK aims to avoid memory allocation on the hot code path.
 When this is combined with [proper use of Metrics API](#metrics-api), heap
 allocation can be avoided on the hot code path.
 
-:heavy_check_mark: You should measure memory allocation on hot code path, and
+You should measure memory allocation on hot code path, and
 ideally avoid any heap allocation while using the metrics API and SDK,
 especially when you use metrics to measure the performance of your application
 (for example, you do not want to spend 2 seconds doing
