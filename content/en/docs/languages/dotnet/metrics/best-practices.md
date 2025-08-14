@@ -368,11 +368,11 @@ As of `1.10.0` when
 is used, it is possible to choose a smaller cardinality limit because the SDK
 will reclaim unused metric points.
 
-> {{% alert title="Note" %}} In SDK versions `1.7.0` - `1.9.0`, metric point
-> reclaim was an experimental feature that could be enabled by setting the
-> environment variable
-> `OTEL_DOTNET_EXPERIMENTAL_METRICS_RECLAIM_UNUSED_METRIC_POINTS=true`.
-> {{% /alert %}}
+{{% alert title="Note" %}} In SDK versions `1.7.0` - `1.9.0`, metric point
+reclaim was an experimental feature that could be enabled by setting the
+environment variable
+`OTEL_DOTNET_EXPERIMENTAL_METRICS_RECLAIM_UNUSED_METRIC_POINTS=true`.
+{{% /alert %}}
 
 ### Memory preallocation
 
