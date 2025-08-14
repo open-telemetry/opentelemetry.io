@@ -102,10 +102,10 @@ logger.LogInformation("Hello from {food} {price}.", food, price);
 
 Avoid string interpolation. For example:
 
-> {{% alert title="Warning" color="warning" %}} The following code has bad
-> performance due to
-> [string interpolation](https://learn.microsoft.com/dotnet/csharp/tutorials/string-interpolation):
-> {{% /alert %}}
+{{% alert title="Warning" color="warning" %}} The following code has bad
+performance due to
+[string interpolation](https://learn.microsoft.com/dotnet/csharp/tutorials/string-interpolation):
+{{% /alert %}}
 
 ```csharp
 var food = "tomato";
