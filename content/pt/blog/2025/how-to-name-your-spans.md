@@ -47,9 +47,9 @@ Vejamos alguns exemplos:
 | :---------------------------------------- | :------------------------- | :-------------------------------------------------------------------------------------- |
 | processar_pagamento_para_usuario_jane_doe | processar pagamento        | O verbo e objeto são claros. O ID do usuário deve estar em um atributo.                 |
 | enviar*fatura*#98765                      | enviar fatura              | Agregável. É fácil calcular a latência P95 para o envio de todas as faturas.            |
-| renderizar_anuncio_para_campanha_de_verao | renderizar anúncio         | A campanha específica é um detalhe, não a operação principal. Coloque-a em um atributo. |
+| renderizar_anuncio_para_campanha_de_verão | renderizar anúncio         | A campanha específica é um detalhe, não a operação principal. Coloque-a em um atributo. |
 | calcular_frete_para_cep_90210             | calcular frete             | A operação é consistente. O CEP é um parâmetro, não parte do nome.                      |
-| validacao_falhou                          | validar entrada do usuário | Foque na operação, não no resultado. O resultado pertence ao estado do trecho.          |
+| validação_falhou                          | validar entrada do usuário | Foque na operação, não no resultado. O resultado pertence ao estado do trecho.          |
 
 Ao seguir o formato `{verbo} {objeto}`, você cria um vocabulário claro e
 consistente para suas operações de negócio. Isso torna seus rastros extremamente
