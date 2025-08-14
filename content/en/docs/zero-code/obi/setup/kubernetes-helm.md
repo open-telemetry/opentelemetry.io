@@ -3,6 +3,9 @@ title: Deploy OBI in Kubernetes with Helm
 linkTitle: Helm chart
 description: Learn how to deploy OBI as a Helm chart in Kubernetes.
 weight: 3
+build:
+  list: never
+draft: true
 toc_hide: true
 ---
 
