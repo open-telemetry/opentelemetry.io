@@ -1,13 +1,14 @@
 ---
 default_lang_commit: 7a0dbea4d75fa9c5eca209c483e901f1f88d5f57
---- 
+---
 
 <i class="fa-solid fa-triangle-exclamation" style="margin-left: -1.9rem; padding-right: 0.5rem;"></i>
-O conteúdo desta página pode estar <b>desatualizado</b> e alguns links podem ser inválidos.
+O conteúdo desta página pode estar <b>desatualizado</b> e alguns links podem ser
+inválidos.
 
-{{ if $show_details }}
-Uma <b>versão mais recente</b> desta página existe em
+{{ if $show_details }} Uma <b>versão mais recente</b> desta página existe em
 <a href="{{$default_lang_page_url}}">Inglês</a>.
+
 <details class="mt-2">
   <summary>Mais informações ...</summary>
   <p>
@@ -20,6 +21,5 @@ Uma <b>versão mais recente</b> desta página existe em
 </details>
 {{ end }}
 
-{{ if $no_default_lang_page }}
-Esta página não possui uma página correspondente em inglês.
-{{ end }}
+{{ if $no_default_lang_page }} Esta página não possui uma página correspondente
+em inglês. {{ end }}

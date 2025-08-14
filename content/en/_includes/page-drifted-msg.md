@@ -4,9 +4,9 @@
 <i class="fa-solid fa-triangle-exclamation" style="margin-left: -1.9rem; padding-right: 0.5rem;"></i>
 The content of this page may be <b>outdated</b> and some links may be invalid.
 
-{{ if $show_details }}
-A <b>newer version</b> of this page exists in
+{{ if $show_details }} A <b>newer version</b> of this page exists in
 <a href="{{$default_lang_page_url}}">English</a>.
+
 <details class="mt-2">
   <summary>More information ...</summary>
   <p>
@@ -19,6 +19,5 @@ A <b>newer version</b> of this page exists in
 </details>
 {{ end }}
 
-{{ if $no_default_lang_page }}
-This page no longer has a corresponding English page.
-{{ end }}
+{{ if $no_default_lang_page }} This page no longer has a corresponding English
+page. {{ end }}
