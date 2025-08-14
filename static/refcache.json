@@ -13059,6 +13059,114 @@
     "StatusCode": 206,
     "LastSeen": "2025-07-18T18:23:30.069188446Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/0035-opentelemetry-protocol.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:00.684683687Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/0152-telemetry-schemas.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:37:50.025277817Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/0232-maturity-of-otel.md#explanation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:37:49.964764008Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/logs/0091-logs-vocabulary.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:01.717880995Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/logs/0092-logs-vision.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:04.546117403Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/logs/0097-log-data-model.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:37:59.926649931Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/logs/0097-log-data-model.md#appendix-a-example-mappings": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:01.594285277Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/logs/0150-logging-library-sdk.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:01.574086212Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0003-measure-metric-type.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:17.414434109Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0008-metric-observer.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:19.106208838Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0009-metric-handles.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:22.246032523Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0010-cumulative-to-counter.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:26.352188362Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0049-metric-label-set.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:17.230515642Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0070-metric-bound-instrument.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:30.588850965Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0072-metric-observer.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:33.63947439Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0080-remove-metric-gauge.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:37.510948185Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0088-metric-instrument-optional-refinements.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:42.087265571Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0090-remove-labelset-from-metrics-api.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:47.14020013Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0098-metric-instruments-explained.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:52.220366722Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0108-naming-guidelines.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:56.342587228Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0113-exemplars.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:15.660052919Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0126-Configurable-Metric-Aggregations.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:18.133021564Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0131-otlp-export-behavior.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:14.572176923Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/metrics/0146-metrics-prototype-scenarios.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:15.599376685Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/profiles/0239-profiles-data-model.md#message-mapping": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:37:53.17819196Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/trace/0235-sampling-threshold-in-trace-state.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:15.619555556Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/oteps/trace/0250-Composite_Samplers.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-13T18:38:17.117282548Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-swift": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:31.834306-05:00"
@@ -19807,6 +19915,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-08-05T12:22:33.517603+02:00"
   },
+  "https://prometheus.io/docs/practices/naming/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-13T18:38:19.753984414Z"
+  },
   "https://prometheus.io/docs/practices/naming/#metric-names": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:29:12.345Z"
@@ -19850,6 +19962,18 @@
   "https://prometheus.io/docs/prometheus/latest/querying/basics/#staleness": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:29:12.345Z"
+  },
+  "https://prometheus.io/docs/specs/native_histograms/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-13T18:38:08.418747931Z"
+  },
+  "https://prometheus.io/docs/specs/native_histograms/#flavors": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-13T18:38:12.923085949Z"
+  },
+  "https://prometheus.io/docs/specs/native_histograms/#gauge-histograms-vs-counter-histograms": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-13T18:38:17.3135932Z"
   },
   "https://prometheus.io/docs/specs/om/open_metrics_spec/#exemplars": {
     "StatusCode": 200,
