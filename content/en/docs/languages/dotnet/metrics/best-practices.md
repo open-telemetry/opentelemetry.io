@@ -418,10 +418,10 @@ dimensions can come from different sources:
   [jobs and instances](https://prometheus.io/docs/concepts/jobs_instances/) in
   Prometheus.
 
-> {{% alert title="Note" %}} Instrument level tags support is not yet
-> implemented in OpenTelemetry .NET since the
-> [OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument) does
-> not support it. {{% /alert %}}
+{{% alert title="Note" %}} Instrument level tags support is not yet
+implemented in OpenTelemetry .NET since the
+[OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument) does
+not support it. {{% /alert %}}
 
 As a general rule:
 
