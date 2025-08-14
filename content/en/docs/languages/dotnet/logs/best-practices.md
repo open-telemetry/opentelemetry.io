@@ -131,12 +131,12 @@ internal static partial class LoggerExtensions
 }
 ```
 
-> {{% alert title="Note" %}} There is no need to pass in an explicit
-> [EventId](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.eventid)
-> while using
-> [LoggerMessageAttribute](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loggermessageattribute).
-> A durable `EventId` will be automatically assigned based on the hash of the
-> method name during code generation. {{% /alert %}}
+{{% alert title="Note" %}} There is no need to pass in an explicit
+[EventId](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.eventid)
+while using
+[LoggerMessageAttribute](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loggermessageattribute).
+A durable `EventId` will be automatically assigned based on the hash of the
+method name during code generation. {{% /alert %}}
 
 Use
 [LogPropertiesAttribute](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.logpropertiesattribute)
