@@ -2,7 +2,6 @@
 title: Componentes clave para Kubernetes
 linkTitle: Componentes
 default_lang_commit: 3815d1481fe753df10ea3dc26cbe64dba0230579 # with patched links
-drifted_from_default: file not found
 # prettier-ignore
 cSpell:ignore: alertmanagers asignador containerd crio filelog gotime horizontalpodautoscalers hostfs hostmetrics iostream k8sattributes kubelet kubeletstats logtag paginación replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---
@@ -60,9 +59,9 @@ predeterminada, los datos que pasan por el procesador se asocian a un pod a
 través de la dirección IP de la solicitud entrante, pero se pueden configurar
 diferentes reglas. Dado que el procesador utiliza la API de Kubernetes, requiere
 permisos especiales (consulta el ejemplo a continuación). Si está utilizando el
-[gráfico Helm de OpenTelemetry Collector](../../../platforms/kubernetes/helm/collector/),
+[gráfico Helm de OpenTelemetry Collector](/docs/platforms/kubernetes/helm/collector/),
 puede usar el
-[ajuste preestablecido `kubernetesAttributes`](../../../platforms/kubernetes/helm/collector/#kubernetes-attributes-preset)
+[ajuste preestablecido `kubernetesAttributes`](/docs/platforms/kubernetes/helm/collector/#kubernetes-attributes-preset)
 para comenzar.
 
 Los siguientes atributos se agregan de forma predeterminada:
@@ -202,9 +201,9 @@ nodo.
 Existen diferentes métodos de autenticación, pero normalmente una cuenta de
 servicio se utiliza. La cuenta de servicio también necesitará los permisos
 adecuados para extraer datos de el Kubelet (ver más abajo). Si estás usando el
-[Gráfico de timón de OpenTelemetry Collector](../../../platforms/kubernetes/helm/collector/)
+[Gráfico de timón de OpenTelemetry Collector](/docs/platforms/kubernetes/helm/collector/)
 puede utilizar el
-[`kubeletMetrics` preset](../../../platforms/kubernetes/helm/collector/#kubelet-metrics-preset)
+[`kubeletMetrics` preset](/docs/platforms/kubernetes/helm/collector/#kubelet-metrics-preset)
 para empezar.
 
 De forma predeterminada, se recopilan métricas para pods y nodos, pero también
@@ -281,9 +280,9 @@ El receptor de Filelog está compuesto por operadores que se encadenan entre sí
 para procesar un registro. Cada operador realiza una responsabilidad simple,
 como analizar una marca de tiempo o JSON. Configurar un receptor de Filelog no
 es trivial. Si está usando el
-[diagrama de Helm de OpenTelemetry Collector](../../../platforms/kubernetes/helm/collector/)
+[diagrama de Helm de OpenTelemetry Collector](/docs/platforms/kubernetes/helm/collector/)
 puede usar el
-[ajuste preestablecido `logsCollection`](../../../platforms/kubernetes/helm/collector/#logs-collection-preset)
+[ajuste preestablecido `logsCollection`](/docs/platforms/kubernetes/helm/collector/#logs-collection-preset)
 para comenzar.
 
 Dado que los logs de Kubernetes normalmente se ajustan a un conjunto de formatos
@@ -433,9 +432,9 @@ Existen diferentes métodos de autenticación, pero normalmente se utiliza una
 cuenta de servicio. La cuenta de servicio también necesita los permisos
 adecuados para extraer datos del servidor API de Kubernetes (consulte a
 continuación). Si estás utilizando el gráfico Helm de OpenTelemetry Collector
-(../../../platforms/kubernetes/helm/collector/), puedes utilizar el valor
+(/docs/platforms/kubernetes/helm/collector/), puedes utilizar el valor
 preestablecido
-[`clusterMetrics`](../../../platforms/kubernetes/helm/collector/#cluster-metrics-preset)
+[`clusterMetrics`](/docs/platforms/kubernetes/helm/collector/#cluster-metrics-preset)
 para comenzar.
 
 Para las condiciones del nodo, el receptor solo recopila `Ready` de manera
@@ -565,9 +564,9 @@ receptor en todo el clúster para recopilar todos los datos.
 Actualmente, solo se puede usar una cuenta de servicio para la autenticación. La
 cuenta de servicio también necesita los permisos adecuados para extraer datos
 del servidor de API de Kubernetes (ver a continuación). Si estás usando el
-[gráfico Helm de OpenTelemetry Collector](../../../platforms/kubernetes/helm/collector/)
+[gráfico Helm de OpenTelemetry Collector](/docs/platforms/kubernetes/helm/collector/)
 y desea ingresar eventos, puedes usar el
-[ajuste preestablecido `kubernetesEvents`](../../../platforms/kubernetes/helm/collector/#cluster-metrics-preset)
+[ajuste preestablecido `kubernetesEvents`](/docs/platforms/kubernetes/helm/collector/#cluster-metrics-preset)
 para comenzar.
 
 Para los objetos que se configuran para extraer, el receptor usa la API de
@@ -729,7 +728,7 @@ usarlo:
 
 Para facilitar la configuración del receptor Prometheus, el operador
 OpenTelemetry incluye un componente opcional llamado
-[Asignador de destino](../../../platforms/kubernetes/operator/target-allocator).
+[Asignador de destino](/docs/platforms/kubernetes/operator/target-allocator).
 Este componente se puede utilizar para indicarle a un recopilador qué puntos
 finales de Prometheus debe rastrear.
 
@@ -751,9 +750,9 @@ ambos, puede que valga la pena deshabilitar estas métricas duplicadas.
 
 En Kubernetes, el receptor necesita acceso al volumen `hostfs` para funcionar
 correctamente. Si estás utilizando el
-[gráfico Helm de OpenTelemetry Collector](../../../platforms/kubernetes/helm/collector/),
+[gráfico Helm de OpenTelemetry Collector](/docs/platforms/kubernetes/helm/collector/),
 usa el
-[ajuste preestablecido `hostMetrics`](../../../platforms/kubernetes/helm/collector/#host-metrics-preset)
+[ajuste preestablecido `hostMetrics`](/docs/platforms/kubernetes/helm/collector/#host-metrics-preset)
 para comenzar.
 
 Los scrapers disponibles son:
