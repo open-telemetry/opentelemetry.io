@@ -169,9 +169,9 @@ The logging API is highly optimized for the scenario where most loggers are
 **disabled** for certain log levels. Making an extra call to `IsEnabled` before
 logging will not give you any performance gain. For example:
 
-> {{% alert title="Warning" color="warning" %}} The
-> `logger.IsEnabled(LogLevel.Information)` call in the following code is not
-> going to give any performance gain. {{% /alert %}}
+{{% alert title="Warning" color="warning" %}} The
+`logger.IsEnabled(LogLevel.Information)` call in the following code is not
+going to give any performance gain. {{% /alert %}}
 
 ```csharp
 var food = "tomato";
