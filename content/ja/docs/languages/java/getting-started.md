@@ -3,6 +3,7 @@ title: サンプルによる入門
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
 default_lang_commit: beb85b4f56de76aa8a8d6e96cd7528396476f95a
+drifted_from_default: true
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

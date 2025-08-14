@@ -3,6 +3,7 @@ title: 博客
 description: 了解如何提交博客文章。
 weight: 30
 default_lang_commit: 2f850a610b5f7da5730265b32c25c9226dc09e5f
+drifted_from_default: true
 ---
 
 [OpenTelemetry 博客](/blog/)用于发布新特性、社区报告以及对 OpenTelemetry
