@@ -77,10 +77,10 @@ readonly fields or singleton through dependency injection.
 
 Avoid invalid instrument names.
 
-> {{% alert title="Note" %}} OpenTelemetry will not collect metrics from
-> instruments that are using invalid names. Refer to the
-> [OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument-name-syntax)
-> for the valid syntax. {{% /alert %}}
+{{% alert title="Note" %}} OpenTelemetry will not collect metrics from
+instruments that are using invalid names. Refer to the
+[OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument-name-syntax)
+for the valid syntax. {{% /alert %}}
 
 Avoid changing the order of tags while reporting measurements. For example:
 
