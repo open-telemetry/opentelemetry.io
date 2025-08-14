@@ -84,8 +84,8 @@ for the valid syntax. {{% /alert %}}
 
 Avoid changing the order of tags while reporting measurements. For example:
 
-> {{% alert title="Warning" color="warning" %}} The last line of code has bad
-> performance since the tags are not following the same order: {{% /alert %}}
+{{% alert title="Warning" color="warning" %}} The last line of code has bad
+performance since the tags are not following the same order: {{% /alert %}}
 
 ```csharp
 counter.Add(2, new("name", "apple"), new("color", "red"));
