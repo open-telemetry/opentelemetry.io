@@ -5,6 +5,7 @@ date: 2025-08-11
 author: >-
   [Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)
 canonical_url: https://blog.olly.garden/how-to-name-your-spans
+default_lang_commit: 79619e1eba717a87f893989b5d016c3ddb4fb4e9
 cSpell:ignore: jpkrohling OllyGarden SemConv
 ---
 
