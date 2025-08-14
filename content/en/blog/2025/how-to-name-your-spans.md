@@ -1,6 +1,6 @@
 ---
-title: How to Name Your Spans
-linkTitle: How to Name Your Spans
+title: Como Nomear Seus Spans
+linkTitle: Como Nomear Seus Spans
 date: 2025-08-11
 author: >-
   [Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)
@@ -8,124 +8,130 @@ canonical_url: https://blog.olly.garden/how-to-name-your-spans
 cSpell:ignore: aggregability Aggregable jpkrohling OllyGarden SemConv
 ---
 
-One of the most fundamental yet often overlooked aspects of good instrumentation
-is naming. This post is the first in a series dedicated to the art and science
-of naming things in OpenTelemetry. We'll start with spans, the building blocks
-of a distributed trace, and give you the most important takeaway right at the
-beginning: how to name the spans that describe your unique business logic.
+Um dos aspectos mais fundamentais - e muitas vezes negligenciados - de uma boa
+instrumentação é a nomenclatura. Esta publicação é a primeira de uma série
+dedicada à arte e ciência de nomear coisas no OpenTelemetry. Vamos começar com
+os trechos _(spans)_, os blocos de construção de um rastro _(trace)_
+distribuído, e logo no início apresentaremos a você o ponto mais importante:
+como nomear os trechos que descrevem sua lógica de negócio exclusiva.
 
-## Naming your business spans
+## Nomeando seus trechos de negócio {#naming-your-business-spans}
 
-While OpenTelemetry's automatic instrumentation is fantastic for covering
-standard operations (like incoming HTTP requests or database calls), the most
-valuable insights often come from the custom spans you add to your own business
-logic. These are the operations unique to your application's domain.
+Embora a instrumentação automática do OpenTelemetry seja fantástica para cobrir
+operações padrão (como requisições HTTP de entrada ou chamadas a banco de
+dados), os _insights_ mais valiosos geralmente vêm dos trechos personalizados
+que você adiciona à sua própria lógica de negócio. Estas são as operações únicas
+do domínio da sua aplicação.
 
-For these custom spans, we recommend a pattern that borrows from basic grammar.
-Simple, clear sentences often follow a subject -> verb -> direct object
-structure. The "subject" (the service performing the work) is already part of
-the trace's context. We can use the rest of that structure for our span name:
+Para estes trechos personalizados, recomendamos um padrão inspirado na gramática
+básica. Frases simples e claras geralmente seguem uma estrutura sujeito -> verbo
+-> objeto direto. O "sujeito" (o serviço que está executando o trabalho) já faz
+parte do contexto do rastro. Podemos usar o restante dessa estrutura para nomear
+o trecho:
 
-## {verb} {object}
+## {verbo} {objeto} {#verb-object}
 
-This pattern is descriptive, easy to understand, and helps maintain low
-[cardinality](/docs/concepts/glossary/#cardinality)—a crucial concept we'll
-touch on later.
+Este padrão é descritivo, fácil de entender e ajuda a manter baixa
+[cardinalidade](/docs/concepts/glossary/#cardinality)—um conceito crucial que
+abordaremos mais adiante.
 
-- **{verb}**: A verb describing the work being done (for example: process, send,
-  calculate, render).
-- **{object}**: A noun describing what is being acted upon (for example:
-  payment, invoice, shopping_cart, ad).
+- **{verbo}**: Um verbo descrevendo o que está sendo feito (por exemplo:
+  processar, enviar, calcular, renderizar).
+- **{objeto}**: Um substantivo descrevendo sobre o que se está atuando (por
+  exemplo: pagamento, fatura, carrinho_de_compras, anúncio).
 
-Let's look at some examples:
+Vejamos alguns exemplos:
 
-| Bad Name                           | Good Span Name      | Why It's Better                                                                    |
-| :--------------------------------- | :------------------ | :--------------------------------------------------------------------------------- |
-| process_payment_for_user_jane_doe  | process payment     | The verb and object are clear. The user ID belongs in an attribute.                |
-| send*invoice*#98765                | send invoice        | Aggregable. You can easily find the P95 latency for sending all invoices.          |
-| render_ad_for_campaign_summer_sale | render ad           | The specific campaign is a detail, not the core operation. Put it in an attribute. |
-| calculate_shipping_for_zip_90210   | calculate shipping  | The operation is consistent. The zip code is a parameter, not part of the name.    |
-| validation_failed                  | validate user_input | Focus on the operation, not the outcome. The result belongs in the span's status.  |
+| Nome ruim                                 | Bom nome de trecho         | Por que é melhor                                                                        |
+| :---------------------------------------- | :------------------------- | :-------------------------------------------------------------------------------------- |
+| processar_pagamento_para_usuario_jane_doe | processar pagamento        | O verbo e objeto são claros. O ID do usuário deve estar em um atributo.                 |
+| enviar*fatura*#98765                      | enviar fatura              | Agregável. É fácil calcular a latência P95 para o envio de todas as faturas.            |
+| renderizar_anuncio_para_campanha_de_verao | renderizar anúncio         | A campanha específica é um detalhe, não a operação principal. Coloque-a em um atributo. |
+| calcular_frete_para_cep_90210             | calcular frete             | A operação é consistente. O CEP é um parâmetro, não parte do nome.                      |
+| validacao_falhou                          | validar entrada do usuário | Foque na operação, não no resultado. O resultado pertence ao estado do trecho.          |
 
-By adhering to the `{verb} {object}` format, you create a clear, consistent
-vocabulary for your business operations. This makes your traces incredibly
-powerful. A product manager could ask, "How long does it take to process
-payments?" and an engineer can immediately filter for those spans and get an
-answer.
+Ao seguir o formato `{verbo} {objeto}`, você cria um vocabulário claro e
+consistente para suas operações de negócio. Isso torna seus rastros extremamente
+poderosos. Um gerente de produto poderia perguntar: "Quanto tempo leva para
+processar pagamentos?" e um engenheiro poderia filtrar estes trechos
+imediatamente e obter a resposta.
 
-## Why this pattern works
+## Por que este padrão funciona {#why-this-pattern-works}
 
-So why is `process payment` good and `process*invoice*#98765` bad? The reason is
-**cardinality**.
+Então, por que `processar pagamento` é bom e `processar fatura #98765` é ruim? O
+motivo é a **cardinalidade**.
 
-Cardinality refers to the number of unique values a piece of data can have. A
-span name should have **low cardinality**. If you include unique identifiers
-like a user ID or an invoice number in the span name, you will create a unique
-name for every single operation. This floods your observability backend, makes
-it impossible to group and analyze similar operations, and can significantly
-increase costs.
+Cardinalidade refere-se ao número de valores únicos que um dado pode ter. Um
+nome de trecho deve ter **baixa cardinalidade**. Se você incluir identificadores
+únicos, como um ID de usuário ou número de fatura, no nome do trecho, criará um
+nome único para cada operação. Isso inunda seu _backend_ de observabilidade,
+dificulta o agrupamento e análise de operações similares, e pode aumentar
+significativamente os custos.
 
-The `{verb} {object}` pattern naturally produces low-cardinality names. The
-unique, high-cardinality details (`invoice\_#98765, user_jane_doe`) belong in
-**span attributes**, which we will cover in a future blog post.
+O padrão `{verbo} {objeto}` naturalmente gera nomes de baixa cardinalidade. Os
+detalhes únicos e de alta cardinalidade (`fatura\_#98765, usuario_jane_doe`)
+pertencem aos **atributos do trecho**, que abordaremos em uma próxima
+publicação.
 
-## Learning from Semantic Conventions
+## Aprendendo com as Convenções Semânticas {#learning-from-semantic-conventions}
 
-This `{verb} {object}` approach isn't arbitrary. It's a best practice that
-reflects the principles behind the official **OpenTelemetry Semantic Conventions
-(SemConv)**. SemConv provides a standardized set of names for common operations,
-ensuring that a span for an HTTP request is named consistently, regardless of
-the language or framework.
+A abordagem `{verbo} {objeto}` não é arbitrária. É uma prática recomendada que
+reflete os princípios por trás das **Convenções Semânticas do OpenTelemetry
+(SemConv)**. A SemConv fornece um conjunto padronizado de nomes para operações
+comuns, garantindo que um trecho para uma requisição HTTP seja nomeado de forma
+consistente, independentemente da linguagem ou _framework_.
 
-When you look closely, you'll see this same pattern of describing an operation
-on a resource echoed throughout the conventions. By following it for your custom
-spans, you are aligning with the established philosophy of the entire
-OpenTelemetry ecosystem.
+Ao analisar de perto, você verá esse mesmo padrão de descrever uma operação em
+um recurso refletido em todas as convenções. Ao seguir este padrão para seus
+trechos personalizados, você estará alinhado com a filosofia estabelecida de
+todo o ecossistema OpenTelemetry.
 
-Let's look at a few examples from SemConv.
+Vamos ver alguns exemplos da SemConv.
 
-### HTTP spans
+### Trechos HTTP {#http-spans}
 
-For server-side HTTP spans, the convention is `{method} {route}`.
+Para trechos HTTP no lado do servidor, a convenção é `{method} {route}`.
 
-- **Example:** `GET /api/users/:ID`
-- **Analysis:** This is a verb (`GET`) acting on an object (`/api/users/:id`).
-  The use of a route template instead of the actual path (`/api/users/123`) is a
-  perfect example of maintaining low cardinality.
+- **Exemplo:** `GET /api/users/:ID`
+- **Análise:** Este é um verbo (`GET`) atuando sobre um objeto
+  (`/api/users/:id`). O uso de um _template_ de rota no lugar do caminho real
+  (`/api/users/123`) é um exemplo perfeito de manutenção de baixa cardinalidade.
 
-### Database spans
+### Trechos de banco de dados {#database-spans}
 
-Database spans are often named `{db.operation} {db.name}.{db.sql.table}`.
+Trechos de banco de dados geralmente seguem
+`{db.operation} {db.name}.{db.sql.table}`.
 
-- **Example:** `INSERT my_database.users`
-- **Analysis:** This is a verb (`INSERT`) acting on an object
-  (`my_database`.users). The specific values being inserted are high-cardinality
-  and are rightly excluded from the name.
+- **Exemplo:** `INSERT my_database.users`
+- **Análise:** Este é um verbo (`INSERT`) atuando sobre um objeto
+  (`my_database.users`). Os valores específicos sendo inseridos são de alta
+  cardinalidade e, corretamente, não fazem parte do nome.
 
-### RPC spans
+### Trechos RPC {#rpc-spans}
 
-For Remote Procedure Calls, the convention is `{rpc.service}/{rpc.method}`.
+Para _Remote Procedure Calls (RPC)_, a convenção é `{rpc.service}/{rpc.method}`.
 
-- **Example:** `com.example.UserService/GetUser`
-- **Analysis:** While the format is different, the principle is the same. It
-  describes a method (`GetUser`), which is a verb, within a service
-  (`com.example.UserService`), which is the object or resource.
+- **Exemplo:** `com.example.UserService/GetUser`
+- **Análise:** Embora o formato seja diferente, o princípio é o mesmo. Descreve
+  um método (`GetUser`), que é um verbo, dentro de um serviço
+  (`com.example.UserService`), que é o objeto ou recurso.
 
-The key takeaway is that by using `{verb} {object}`, you are speaking the same
-language as the rest of your instrumentation.
+A principal lição é: ao usar `{verbo} {objeto}`, você está falando a mesma
+"língua" do restante da sua instrumentação.
 
-## Cultivating a healthy system
+## Cultivando um sistema saudável {#cultivating-a-healthy-system}
 
-Naming spans is not a trivial task. It's a foundational practice for building a
-robust and effective observability strategy. By adopting a clear, consistent
-pattern like `{verb} {object}` for your business-specific spans, you can
-transform your telemetry data from a tangled mess into a well-tended garden.
+Nomear trechos não é uma tarefa trivial. É uma prática fundamental para
+construir uma estratégia de observabilidade robusta e eficaz. Ao adotar um
+padrão claro e consistente como `{verbo} {objeto}` para seus trechos específicos
+de negócio, você pode transformar seus dados de telemetria de um emaranhado
+confuso em um jardim bem cuidado.
 
-A well-named span is a gift to your future self and your team. It provides
-clarity during stressful outages, enables powerful performance analysis, and
-ultimately helps you build better, more reliable software.
+Um trecho bem nomeado é um presente para seu eu do futuro e sua equipe.
+Proporciona clareza durante incidentes, possibilita análises poderosas de
+desempenho e, no fim, ajuda você a construir _software_ melhor e mais confiável.
 
-In our next post in this series, we will dig into the next layer of detail:
-**span attributes**. We'll explore how to add the rich, high-cardinality context
-to your spans that is necessary for deep debugging, without compromising the
-aggregability of your span names.
+Na próxima publicação desta série, exploraremos a próxima camada de detalhes:
+**atributos de trecho**. Veremos como adicionar contexto rico e de alta
+cardinalidade aos seus trechos, necessário para depuração _(debugging)_
+profunda, sem comprometer a capacidade de agregação dos nomes dos trechos.
