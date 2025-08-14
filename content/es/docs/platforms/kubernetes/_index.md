@@ -4,7 +4,6 @@ linkTitle: Kubernetes
 weight: 350
 description: Usando OpenTelemetry con Kubernetes
 default_lang_commit: d638c386ae327328ff35604df54fa6ddd8b51b65
-drifted_from_default: file not found
 ---
 
 ## Introducción
