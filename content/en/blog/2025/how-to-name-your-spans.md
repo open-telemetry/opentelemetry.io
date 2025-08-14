@@ -5,7 +5,7 @@ date: 2025-08-11
 author: >-
   [Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)
 canonical_url: https://blog.olly.garden/how-to-name-your-spans
-cSpell:ignore: jpkrohling OllyGarden SemConv
+cSpell:ignore: aggregability Aggregable jpkrohling OllyGarden SemConv
 ---
 
 One of the most fundamental yet often overlooked aspects of good instrumentation
