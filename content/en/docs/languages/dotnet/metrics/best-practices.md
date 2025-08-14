@@ -134,10 +134,10 @@ As a general rule:
   to its better readability and maintainability.
 
 {{% alert title="Note" %}} When reporting measurements with more than 8 tags,
-the API allocates memory on the hot code path. You SHOULD try to keep the
-number of tags less than or equal to 8. If you are exceeding this, check if
-you can model some of the tags as Resource, as
-[shown here](#metrics-enrichment). {{% /alert %}}
+the API allocates memory on the hot code path. You SHOULD try to keep the number
+of tags less than or equal to 8. If you are exceeding this, check if you can
+model some of the tags as Resource, as [shown here](#metrics-enrichment).
+{{% /alert %}}
 
 ## MeterProvider management
 
@@ -360,8 +360,7 @@ aggregated using the
 {{% alert title="Note" %}} In SDK versions `1.6.0` - `1.9.0` the overflow
 attribute was an experimental feature that could be enabled by setting the
 environment variable
-`OTEL_DOTNET_EXPERIMENTAL_METRICS_EMIT_OVERFLOW_ATTRIBUTE=true`.
-{{% /alert %}}
+`OTEL_DOTNET_EXPERIMENTAL_METRICS_EMIT_OVERFLOW_ATTRIBUTE=true`. {{% /alert %}}
 
 As of `1.10.0` when
 [Delta Aggregation Temporality](/docs/specs/otel/metrics/data-model/#temporality)
@@ -380,10 +379,10 @@ OpenTelemetry .NET SDK aims to avoid memory allocation on the hot code path.
 When this is combined with [proper use of Metrics API](#metrics-api), heap
 allocation can be avoided on the hot code path.
 
-You should measure memory allocation on hot code path, and
-ideally avoid any heap allocation while using the metrics API and SDK,
-especially when you use metrics to measure the performance of your application
-(for example, you do not want to spend 2 seconds doing
+You should measure memory allocation on hot code path, and ideally avoid any
+heap allocation while using the metrics API and SDK, especially when you use
+metrics to measure the performance of your application (for example, you do not
+want to spend 2 seconds doing
 [garbage collection](https://learn.microsoft.com/dotnet/standard/garbage-collection/)
 while measuring an operation which normally takes 10 milliseconds).
 
@@ -418,10 +417,10 @@ dimensions can come from different sources:
   [jobs and instances](https://prometheus.io/docs/concepts/jobs_instances/) in
   Prometheus.
 
-{{% alert title="Note" %}} Instrument level tags support is not yet
-implemented in OpenTelemetry .NET since the
-[OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument) does
-not support it. {{% /alert %}}
+{{% alert title="Note" %}} Instrument level tags support is not yet implemented
+in OpenTelemetry .NET since the
+[OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument) does not
+support it. {{% /alert %}}
 
 As a general rule:
 
@@ -438,9 +437,9 @@ As a general rule:
   [Metrics API](#metrics-api).
 
 {{% alert title="Note" %}} There were discussions around adding a new concept
-called `MeasurementProcessor`, which allows dimensions to be added to /
-removed from measurements dynamically. This idea did not get traction due to
-the complexity and performance implications, refer to this
+called `MeasurementProcessor`, which allows dimensions to be added to / removed
+from measurements dynamically. This idea did not get traction due to the
+complexity and performance implications, refer to this
 [pull request](https://github.com/open-telemetry/opentelemetry-specification/pull/1938)
 for more context. {{% /alert %}}
 

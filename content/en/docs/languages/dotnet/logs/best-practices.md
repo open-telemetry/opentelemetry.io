@@ -170,8 +170,8 @@ The logging API is highly optimized for the scenario where most loggers are
 logging will not give you any performance gain. For example:
 
 {{% alert title="Warning" color="warning" %}} The
-`logger.IsEnabled(LogLevel.Information)` call in the following code is not
-going to give any performance gain. {{% /alert %}}
+`logger.IsEnabled(LogLevel.Information)` call in the following code is not going
+to give any performance gain. {{% /alert %}}
 
 ```csharp
 var food = "tomato";
@@ -235,13 +235,13 @@ internal static partial class LoggerExtensions
 ```
 
 {{% alert title="Note" %}} When using the compile-time source generator the
-first `Exception` parameter detected is automatically given special handling.
-It **SHOULD NOT** be part of the message template. For details see:
+first `Exception` parameter detected is automatically given special handling. It
+**SHOULD NOT** be part of the message template. For details see:
 [Log method anatomy](https://learn.microsoft.com/dotnet/core/extensions/logger-message-generator#log-method-anatomy).
 {{% /alert %}}
 
-You should use the dedicated overloads to log exceptions when
-using the logging extensions methods.
+You should use the dedicated overloads to log exceptions when using the logging
+extensions methods.
 
 ```csharp
 var food = "tomato";

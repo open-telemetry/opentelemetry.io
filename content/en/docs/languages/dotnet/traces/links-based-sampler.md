@@ -72,13 +72,12 @@ partial trace as it will not include activity S3 but will include activity S2.
 
 ### Can lead to higher volume of data
 
-Since this approach will sample in
-activities even if one of the linked activities is sampled, it can lead to
-higher volumes of data, as compared to regular head based sampling. This is
-because we are making a non-probabilistic sampling decision here based on the
-sampling decisions of linked activities. For example, if there are 20 linked
-activities and even if only one of them is sampled, then the linking activity
-will be sampled.
+Since this approach will sample in activities even if one of the linked
+activities is sampled, it can lead to higher volumes of data, as compared to
+regular head based sampling. This is because we are making a non-probabilistic
+sampling decision here based on the sampling decisions of linked activities. For
+example, if there are 20 linked activities and even if only one of them is
+sampled, then the linking activity will be sampled.
 
 ## Sample output
 
