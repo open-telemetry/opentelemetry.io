@@ -150,10 +150,10 @@ Avoid the extension methods from
 [LoggerExtensions](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions),
 these methods are not optimized for performance. For example:
 
-> {{% alert title="Warning" color="warning" %}} The following code has bad
-> performance due to
-> [boxing](https://learn.microsoft.com/dotnet/csharp/programming-guide/types/boxing-and-unboxing):
-> {{% /alert %}}
+{{% alert title="Warning" color="warning" %}} The following code has bad
+performance due to
+[boxing](https://learn.microsoft.com/dotnet/csharp/programming-guide/types/boxing-and-unboxing):
+{{% /alert %}}
 
 ```csharp
 var food = "tomato";
