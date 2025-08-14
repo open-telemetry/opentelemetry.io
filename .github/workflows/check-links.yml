@@ -104,7 +104,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with: { name: build-log-etc }
       - name: Fail when refcache contains entries with HTTP status 4XX
         run: |
@@ -123,7 +123,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with: { name: build-log-etc }
       - run: cat tmp/build-log.txt
       - run: scripts/check-build-log.sh
