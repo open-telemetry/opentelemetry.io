@@ -240,7 +240,7 @@ It **SHOULD NOT** be part of the message template. For details see:
 [Log method anatomy](https://learn.microsoft.com/dotnet/core/extensions/logger-message-generator#log-method-anatomy).
 {{% /alert %}}
 
-:heavy_check_mark: You should use the dedicated overloads to log exceptions when
+You should use the dedicated overloads to log exceptions when
 using the logging extensions methods.
 
 ```csharp
