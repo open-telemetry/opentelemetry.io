@@ -6,7 +6,7 @@ author: >-
   [Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)
 canonical_url: https://blog.olly.garden/how-to-name-your-spans
 default_lang_commit: 79619e1eba717a87f893989b5d016c3ddb4fb4e9
-cSpell:ignore: jpkrohling OllyGarden SemConv cardinalidad
+cSpell:ignore: Agregable cardinalidad jpkrohling OllyGarden SemConv
 ---
 
 Uno de los aspectos más fundamentales - y a menudo pasados por alto - de una
@@ -49,7 +49,7 @@ Veamos algunos ejemplos:
 | enviar*factura*#98765                            | enviar factura          | Agregable. Es fácil encontrar la latencia P95 para el envío de todas las facturas.        |
 | renderizar_anuncio_para_campaña_verano_de_ventas | renderizar anuncio      | La campaña específica es un detalle, no la operación principal. Ponlo en un atributo.     |
 | calcular_envío_para_zip_90210                    | calcular envío          | La operación es consistente. El código postal es un parámetro, no parte del nombre.       |
-| validación_fallida                               | validar entrada_usuario | Enfócate en la operación, no en el resultado. El resultado debe ir en el estado del span. |
+| validación_fallida                               | validar entrada_usuario | Focalizarse en la operación, no en el resultado. El resultado debe ir en el estado del span. |
 
 Al seguir el formato `{verbo} {objeto}`, creas un vocabulario claro y
 consistente para tus operaciones de negocio. Esto hace que tus trazas sean
