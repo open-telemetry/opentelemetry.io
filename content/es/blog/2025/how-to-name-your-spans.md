@@ -98,7 +98,7 @@ Para spans HTTP del lado del servidor, la convención es `{método} {ruta}`.
   El uso de una plantilla de ruta en lugar de la ruta real (`/api/users/123`) es
   un excelente ejemplo de cómo mantener baja la cardinalidad.
 
-### Spans de Base de Datos {#database-spans}
+### Spans de base de datos {#database-spans}
 
 Los spans de base de datos suelen seguir
 `{db.operation} {db.name}.{db.sql.table}`.
