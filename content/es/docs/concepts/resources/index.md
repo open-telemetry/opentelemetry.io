@@ -11,7 +11,7 @@ default_lang_commit: 788277e362bc602b72a90aa9191f9c05c403458e
 Si utilizas [Jaeger](https://www.jaegertracing.io/) como tu backend de
 observabilidad, los atributos de recurso se agrupan en la pestaña **Process**:
 
-![A screenshot from Jaeger showing an example output of resource attributes associated to a trace](screenshot-jaeger-resources.png)
+![Una captura de pantalla de Jaeger que muestra un ejemplo de los atributos de recursos asociados a una traza](screenshot-jaeger-resources.png)
 
 Un recurso se añade al `TracerProvider` o `MetricProvider` cuando son creados
 durante la inicialización. Esta asociación no se puede cambiar posteriormente.
