@@ -1101,6 +1101,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/23463253?v=4
   - name: rogercoll
     teams:
+      - collector-contrib-triagers
       - demo-approvers
       - demo-maintainers
       - semconv-system-approvers
