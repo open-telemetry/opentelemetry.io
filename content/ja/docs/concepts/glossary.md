@@ -44,7 +44,7 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 ### バゲッジ {#baggage}
 
-イベントとサービスの因果関係を確立するための[メタデータ](#metadata)を伝播するメカニズム。
+イベントとサービスの因果関係を確立するための[メタデータ](#metadata)を伝搬するメカニズム。
 [バゲッジ仕様][baggage]を参照のこと。
 
 ### クライアントライブラリ {#client-library}
@@ -72,7 +72,7 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 ### コンテキスト伝搬（プロパゲーション） {#context-propagation}
 
 すべての[データソース](#data-source)が、[トランザクション](#transaction)の寿命にわたって状態を保存したりデータにアクセスしたりするための基盤となるコンテキストメカニズムを共有できるようにします。
-[コンテキスト伝播仕様][context propagation]を参照。
+[コンテキスト伝搬仕様][context propagation]を参照。
 
 ### DAG {#dag}
 

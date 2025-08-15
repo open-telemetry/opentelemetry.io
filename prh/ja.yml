@@ -31,3 +31,6 @@ rules:
   - expected: プログラム
     patterns:
       - プログラマティック
+  - expected: 伝搬
+    patterns:
+      - 伝播
