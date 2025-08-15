@@ -12,8 +12,8 @@ cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefu
 This document explains how to manually deploy OBI in Kubernetes, setting up all
 the required entities by yourself.
 
-You might prefer to follow the
-[Deploy OBI in Kubernetes with Helm](../kubernetes-helm/) documentation instead.
+<!-- You might prefer to follow the
+[Deploy OBI in Kubernetes with Helm](../kubernetes-helm/) documentation instead. -->
 
 {{% /alert %}}
 
