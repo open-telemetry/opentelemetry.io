@@ -3,22 +3,22 @@ title: Señales
 description: Conozca las categorías de telemetría compatibles con OpenTelemetry
 aliases: [data-sources, otel-concepts]
 weight: 11
-default_lang_commit: f2a520b85d72db706bff91d879f5bb10fd2e7367
+default_lang_commit: c370886c9926e6cab3738ababbf6ff5692899bbd
 ---
 
-El propósito de OpenTelemetry es recopilar, procesar y exportar [señales]. Las
-señales son salidas del sistema que describen la actividad subyacente del
-sistema operativo y las aplicaciones que se ejecutan en una plataforma. Una
-señal puede ser algo que se desea medir en un momento específico, como la
-temperatura o el uso de memoria, o un evento que atraviesa los componentes de tu
-sistema distribuido y que deseas rastrear. Puedes agrupar diferentes
-[señales][signals] para observar el funcionamiento interno de la misma
+El propósito de OpenTelemetry es recopilar, procesar y exportar
+[señales][signals]. Las señales son salidas del sistema que describen la
+actividad subyacente del sistema operativo y las aplicaciones que se ejecutan en
+una plataforma. Una señal puede ser algo que se desea medir en un momento
+específico, como la temperatura o el uso de memoria, o un evento que atraviesa
+los componentes de tu sistema distribuido y que deseas rastrear. Puedes agrupar
+diferentes señales para observar el funcionamiento interno de la misma
 tecnología desde diferentes perspectivas.
 
 OpenTelemetry actualmente admite:
 
-- [Traces]
-- [Metrics]
+- [Trazas](traces)
+- [Métricas](metrics)
 - [Logs](logs)
 - [Baggage](baggage)
 
