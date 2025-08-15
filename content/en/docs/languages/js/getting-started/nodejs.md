@@ -48,7 +48,6 @@ Next, install Express dependencies.
 
 ```sh
 npm install typescript \
-  ts-node \
   @types/node \
   express \
   @types/express
@@ -122,7 +121,7 @@ Run the application with the following command and open
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
-$ npx ts-node app.ts
+$ npx tsx app.ts
 Listening for requests on http://localhost:8080
 ```
 
@@ -234,7 +233,7 @@ sure you don't have other conflicting `--require` flags such as
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
-$ npx ts-node --require ./instrumentation.ts app.ts
+$ npx tsx --require ./instrumentation.ts app.ts
 Listening for requests on http://localhost:8080
 ```
 
