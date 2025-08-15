@@ -18,9 +18,9 @@ nombrar los spans que describen tu lógica de negocio única.
 
 ## Nombrando tus spans de negocio {#naming-your-business-spans}
 
-Si bien la instrumentación automática de OpenTelemetry es fantástica para
-cubrir operaciones estándar (como solicitudes HTTP entrantes o llamadas a la
-base de datos), los conocimientos más valiosos suelen provenir de los spans
+Si bien la instrumentación automática de OpenTelemetry es fantástica para cubrir
+operaciones estándar (como solicitudes HTTP entrantes o llamadas a la base de
+datos), los conocimientos más valiosos suelen provenir de los spans
 personalizados que agregas a tu propia lógica de negocio. Estas son las
 operaciones únicas de tu dominio de aplicación.
 
@@ -43,13 +43,13 @@ veremos más adelante.
 
 Veamos algunos ejemplos:
 
-| Nombre incorrecto                                | Nombre de span recomendado     | Por qué es mejor                                                                             |
-| :----------------------------------------------- | :---------------------- | :------------------------------------------------------------------------------------------- |
-| procesar_pago_para_usuario_jane_doe              | procesar pago           | El verbo y el objeto son claros. El ID de usuario debe ir en un atributo.                    |
-| enviar*factura*#98765                            | enviar factura          | Agregable. Es fácil encontrar la latencia P95 para el envío de todas las facturas.           |
-| renderizar_anuncio_para_campaña_verano_de_ventas | renderizar anuncio      | La campaña específica es un detalle, no la operación principal. Ponlo en un atributo.        |
-| calcular_envío_para_zip_90210                    | calcular envío          | La operación es consistente. El código postal es un parámetro, no parte del nombre.          |
-| validación_fallida                               | validar entrada_usuario | Focalizarse en la operación, no en el resultado. El resultado debe ir en el estado del span. |
+| Nombre incorrecto                                | Nombre de span recomendado | Por qué es mejor                                                                             |
+| :----------------------------------------------- | :------------------------- | :------------------------------------------------------------------------------------------- |
+| procesar_pago_para_usuario_jane_doe              | procesar pago              | El verbo y el objeto son claros. El ID de usuario debe ir en un atributo.                    |
+| enviar*factura*#98765                            | enviar factura             | Agregable. Es fácil encontrar la latencia P95 para el envío de todas las facturas.           |
+| renderizar_anuncio_para_campaña_verano_de_ventas | renderizar anuncio         | La campaña específica es un detalle, no la operación principal. Ponlo en un atributo.        |
+| calcular_envío_para_zip_90210                    | calcular envío             | La operación es consistente. El código postal es un parámetro, no parte del nombre.          |
+| validación_fallida                               | validar entrada_usuario    | Focalizarse en la operación, no en el resultado. El resultado debe ir en el estado del span. |
 
 Al seguir el formato `{verbo} {objeto}`, creas un vocabulario claro y
 consistente para tus operaciones de negocio. Esto hace que tus trazas sean
