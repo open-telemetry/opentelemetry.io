@@ -256,7 +256,9 @@ unpacking.
 
 ## Windows
 
-Windows [releases][] are available as MSI installers and gzipped tarballs (`.tar.gz`). Every Collector release includes an `otelcol.exe` executable that you can run after installation.
+Windows [releases][] are available as MSI installers and gzipped tarballs
+(`.tar.gz`). Every Collector release includes an `otelcol.exe` executable that
+you can run after installation.
 
 ### MSI Installation
 
