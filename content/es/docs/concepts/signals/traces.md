@@ -290,7 +290,7 @@ representa un punto significativo y singular en el tiempo.
 
 #### Cuándo usar eventos de span en lugar de atributos de span {#when-to-use-span-events-versus-span-attributes}
 
-SDado que los eventos de span también contienen atributos, la pregunta de cuándo
+Dado que los eventos de span también contienen atributos, la pregunta de cuándo
 usar eventos en lugar de atributos podría no tener siempre una respuesta obvia.
 Para ayudarte a decidir, considera si una marca de tiempo específica es
 significativa.
