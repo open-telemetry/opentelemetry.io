@@ -20179,6 +20179,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-07-21T20:14:04.583498443Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.19.0-alpha/opentelemetry-instrumentation-bom-alpha-2.19.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-17T13:48:06.238484633Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.7.0-alpha/opentelemetry-instrumentation-bom-alpha-2.7.0-alpha.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:08.34491-05:00"
@@ -20238,6 +20242,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.18.1/opentelemetry-instrumentation-bom-2.18.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2025-07-21T20:13:59.719257768Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.19.0/opentelemetry-instrumentation-bom-2.19.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-17T13:48:04.158823205Z"
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.7.0/opentelemetry-instrumentation-bom-2.7.0.pom": {
     "StatusCode": 206,
@@ -23142,6 +23150,10 @@
   "https://www.uber.com/blog/flipr/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T22:06:20.869Z"
+  },
+  "https://www.velodb.io/solutions/use-cases/observability": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-17T14:00:24.895684766Z"
   },
   "https://www.w3.org/TR/NOTE-datetime": {
     "StatusCode": 206,
