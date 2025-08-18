@@ -4,6 +4,8 @@ description:
   Definiciones y convenciones para términos de telemetría tal como se usan en
   OpenTelemetry.
   weight: 200
+
+default_lang_commit: 530c8fd130c93dd95e9638c8919518dbbc9c6b0a
 ---
 
 Este glosario define términos y [conceptos](/docs/concepts/) que son nuevos para
