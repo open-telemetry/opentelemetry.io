@@ -18255,10 +18255,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-06-12T14:07:51.914716+02:00"
   },
-  "https://opentelemetry.io/community/end-user/issue-participation/": {
-    "StatusCode": 206,
-    "LastSeen": "2025-08-05T09:17:26.323873+01:00"
-  },
   "https://opentelemetry.io/docs/concepts/instrumentation/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-20T09:23:52.447657347-08:00"

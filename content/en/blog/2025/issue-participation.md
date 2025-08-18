@@ -57,7 +57,7 @@ To make this change stick, we’ve rolled out a few things. We’ve published
 [recommendations](https://github.com/open-telemetry/community/blob/main/guides/maintainer/popular-issues.md)
 for OpenTelemetry maintainers on how to manage and interpret these reactions,
 and our website now has a section explaining
-[what this means for end-users](https://opentelemetry.io/community/end-user/issue-participation/).
+[what this means for end-users](/community/end-user/issue-participation/).
 You'll also see a friendly reminder in a new footnote on
 [issue templates](https://github.com/open-telemetry/community/blob/main/guides/maintainer/popular-issues.md#recommended-footnote-on-issue-templates)
 across all OTel repositories. If you're opening a new issue, please leave that
