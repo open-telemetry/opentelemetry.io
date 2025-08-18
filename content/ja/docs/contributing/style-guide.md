@@ -4,6 +4,7 @@ description: OpenTelemetry のドキュメントを書く際の用語とスタ�
 linkTitle: スタイルガイド
 weight: 20
 default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
+drifted_from_default: true
 cSpell:ignore: open-telemetry postgre style-guide textlintrc
 ---
 

@@ -3,7 +3,8 @@ title: サイトのローカリゼーション
 description: 非英語ローカリゼーションのサイトページの作成と管理
 linkTitle: ローカリゼーション
 weight: 25
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
+default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f # patched
+drifted_from_default: true
 cSpell:ignore: shortcodes
 ---
 
@@ -131,13 +132,13 @@ Markdown の[リンク定義][link definitions]の[ラベル][labels]は**翻訳
 {{% /alert %}}
 
 一部の基本ショートコードには英語のテキストが含まれており、ローカリゼーションが必要になる場合があります。
-特に、[layouts/shortcodes/docs] に含まれるものについては、その傾向が強いです。
+特に、[layouts/_shortcodes/docs] に含まれるものについては、その傾向が強いです。
 
-ローカリゼーションしたショートコードを作成する必要がある場合は、`layouts/shortcodes/xx` に配置してください。
+ローカリゼーションしたショートコードを作成する必要がある場合は、`layouts/_shortcodes/xx` に配置してください。
 ここで `xx` はローカリゼーション対象の言語コードを指します。
 その際、元の基本ショートコードと同じ相対パスを使用してください。
 
-[layouts/shortcodes/docs]: https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/shortcodes/docs
+[layouts/_shortcodes/docs]: https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
 
 ## ローカリゼーションページの乖離を追跡する {#track-changes}
 
