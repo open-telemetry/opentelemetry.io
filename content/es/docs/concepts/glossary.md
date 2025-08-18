@@ -348,7 +348,7 @@ Todos estos atributos pueden ser incluidos en el `Recurso`.
 
 Un registro de datos con una marca de tiempo y una severidad. También puede
 tener un [ID de Traza](#trace) y un [ID de Span](#span) cuando está
-correlacionado con una traza. Ver [Registro de Log][log-record].
+correlacionado con una traza. Ver [Registro de Log][log record].
 
 ### REST
 
