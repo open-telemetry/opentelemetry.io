@@ -1,7 +1,7 @@
 ---
 title: 'More Signal, Less Noise: How GitHub Issue Reactions Help Prioritize'
 linkTitle: GitHub Issue Reactions
-date: 2025-08-04
+date: 2025-08-18
 author: >-
   [Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)
 sig: End-User SIG
@@ -29,7 +29,7 @@ With such an active project, one of the biggest challenges has always been
 understanding what's the most important thing to focus on, as seen by
 OpenTelemetry users and contributors. And, when we consider GitHub issues, a
 stream of "+1" or "me too!" comments does not make this any easier. While the
-sentiment is valuable, the method creates a lot of noise and makes it incredibly
+sentiment is valuable, the method creates a lot of noise and makes it more
 difficult for maintainers to gauge how many people are _really_ affected by an
 issue.
 
@@ -55,12 +55,13 @@ of data that helps give the issue more weight.
 
 To make this change stick, we’ve rolled out a few things. We’ve published
 [recommendations](https://github.com/open-telemetry/community/blob/main/guides/maintainer/popular-issues.md)
-for all OpenTelemetry maintainers on how to manage and interpret these
-reactions, and our website now has a section explaining
+for OpenTelemetry maintainers on how to manage and interpret these reactions,
+and our website now has a section explaining
 [what this means for end-users](https://opentelemetry.io/community/end-user/issue-participation/).
 You'll also see a friendly reminder in a new footnote on
 [issue templates](https://github.com/open-telemetry/community/blob/main/guides/maintainer/popular-issues.md#recommended-footnote-on-issue-templates)
-across all OTel repositories.
+across all OTel repositories. If you're opening a new issue, please leave that
+footer in place so that others have first-hand access to this advice.
 
 ### Your Quick Guide to Making an Impact
 
@@ -80,4 +81,4 @@ doesn’t automatically guarantee an issue becomes the top priority.
 Open source is a team sport, and this is a perfect example of how small actions
 can collectively have a huge impact.
 
-Thanks for helping us make OpenTelemetry better, together. 🚀
+Thanks for helping us make OpenTelemetry better, together.
