@@ -2067,6 +2067,12 @@ approvers:
       - ruby-contrib-approvers
     html_url: https://github.com/xuan-cao-swi
     avatar_url: https://avatars.githubusercontent.com/u/112967240?v=4
+  - name: y1yang0
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/y1yang0
+    avatar_url: https://avatars.githubusercontent.com/u/5010047?v=4
   - name: yuriolisa
     teams:
       - operator-approvers
