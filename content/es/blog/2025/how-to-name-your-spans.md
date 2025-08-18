@@ -33,7 +33,7 @@ estructura para el nombre del span:
 ## {verbo} {objeto} {#verb-object}
 
 Este patrón es descriptivo, fácil de entender y ayuda a mantener baja la
-[cardinalidad](/docs/concepts/glossary/#cardinalidad) - un concepto crucial que
+[cardinalidad](/docs/concepts/glossary/#cardinality) - un concepto crucial que
 veremos más adelante.
 
 - **{verbo}**: Un verbo que describe el trabajo que se está realizando (por
