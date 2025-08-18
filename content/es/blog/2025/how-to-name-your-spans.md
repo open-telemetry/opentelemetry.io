@@ -1,6 +1,6 @@
 ---
-title: Cómo Nombrar tus Spans
-linkTitle: Cómo Nombrar tus Spans
+title: Cómo nombrar tus spans
+linkTitle: Cómo nombrar tus spans
 date: 2025-08-11
 author: >-
   [Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)
