@@ -4,6 +4,7 @@ menu: { main: { weight: 45 } }
 description: OpenTelemetry certificações e cursos
 type: docs
 body_class: ot-training
+default_lang_commit: fa827427ce31631a0b11d5c0151cb8c8e43d8f5b
 hide_feedback: true
 # LF course image from:
 # https://training.linuxfoundation.org/wp-content/uploads/2024/10/LFS148-Course-Badge-300x300.png
@@ -12,11 +13,13 @@ params:
 cSpell:ignore: otca
 ---
 
-Está página apresenta recursos de treinamento cada vez mais amplos sobre OpenTelemetry. Volte sempre para verificar atualizações!
+Está página apresenta recursos de treinamento cada vez mais amplos sobre
+OpenTelemetry. Volte sempre para verificar atualizações!
 
 ## Certificações {#certifications}
 
-Evidencie sua experiência em OpenTelemetry obtendo a certificação OpenTelemetry Certified Associate (OTCA), disponível em [Cloud Native Certifications][]:
+Evidencie sua experiência em OpenTelemetry obtendo a certificação OpenTelemetry
+Certified Associate (OTCA), disponível em [Cloud Native Certifications][]:
 
 <!-- prettier-ignore -->
 [![OTCA badge]][OTCA certification]
@@ -28,7 +31,9 @@ Evidencie sua experiência em OpenTelemetry obtendo a certificação OpenTelemet
 
 ## Cursos {#courses}
 
-Você pode obter um curso **Grátis** de OpenTelemetry através da plataforma [Cloud Native Training Courses for OpenTelemetry][CNTCOT] oferecido pela Linux Foundation:
+Você pode obter um curso **Gratuito** de OpenTelemetry através da plataforma
+[Cloud Native Training Courses for OpenTelemetry][CNTCOT] oferecido pela Linux
+Foundation:
 
 <div class="card--course-wrapper">
 <div class="card card--course" style="width: 20rem">
