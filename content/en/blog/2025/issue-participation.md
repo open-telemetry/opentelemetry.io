@@ -1,7 +1,7 @@
 ---
 title: 'More Signal, Less Noise: How GitHub Issue Reactions Help Prioritize'
 linkTitle: GitHub Issue Reactions
-date: 2025-08-18
+date: 2025-08-19
 author: >-
   [Dan Gomez Blanco](https://github.com/danielgblanco) (New Relic)
 sig: End-User SIG
