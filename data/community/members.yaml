@@ -1139,13 +1139,6 @@ maintainers:
       - lambda-extension-maintainers
     html_url: https://github.com/serkan-ozal
     avatar_url: https://avatars.githubusercontent.com/u/3143425?v=4
-  - name: shalevr
-    teams:
-      - opentelemetry-python-contrib-approvers
-      - opentelemetry-python-contrib-maintainers
-      - python-approvers
-    html_url: https://github.com/shalevr
-    avatar_url: https://avatars.githubusercontent.com/u/65566801?v=4
   - name: sjs994
     teams:
       - sqlcommenter-approvers
@@ -1463,6 +1456,7 @@ approvers:
   - name: ArielDemarco
     teams:
       - swift-approvers
+      - swift-triagers
     html_url: https://github.com/ArielDemarco
     avatar_url: https://avatars.githubusercontent.com/u/25651947?v=4
   - name: ArthurSens
@@ -1605,6 +1599,12 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/drewby
     avatar_url: https://avatars.githubusercontent.com/u/192652?v=4
+  - name: DylanRussell
+    teams:
+      - opentelemetry-python-contrib-approvers
+      - python-approvers
+    html_url: https://github.com/DylanRussell
+    avatar_url: https://avatars.githubusercontent.com/u/7339604?v=4
   - name: fatsheep9146
     teams:
       - collector-contrib-approvers
@@ -1955,6 +1955,12 @@ approvers:
       - blog-approvers
     html_url: https://github.com/SergeyKanzhelev
     avatar_url: https://avatars.githubusercontent.com/u/9950081?v=4
+  - name: shalevr
+    teams:
+      - opentelemetry-python-contrib-approvers
+      - python-approvers
+    html_url: https://github.com/shalevr
+    avatar_url: https://avatars.githubusercontent.com/u/65566801?v=4
   - name: shaun-cox
     teams:
       - rust-approvers
