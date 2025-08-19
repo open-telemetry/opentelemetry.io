@@ -36,7 +36,6 @@ jobs:
 
       - name: Fix refcache
         run: |
-          npm install --omit=optional
           npm run fix:refcache
 
           git add -A
