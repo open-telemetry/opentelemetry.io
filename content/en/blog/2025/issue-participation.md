@@ -7,9 +7,8 @@ author: >-
 sig: End-User SIG
 ---
 
-Did you know that OpenTelemetry has had more than 23,000 contributors —that's
-individuals who shared issues, commits, pull requests, or comments on GitHub—
-since the project started? We always encourage everyone to get involved, whether
+Did you know that OpenTelemetry has had more than 23,000 contributors—that's
+individuals who shared issues, commits, pull requests, or comments on GitHub—since the project started? We always encourage everyone to get involved, whether
 that’s by joining one of our (many!) [CNCF Slack](https://slack.cncf.io/)
 channels, or dropping into any
 [public meeting](https://github.com/open-telemetry/community/?tab=readme-ov-file#calendar)
@@ -68,13 +67,13 @@ footer in place so that others have first-hand access to this advice.
 So what does this mean for you in practice? It's easy.
 
 The next time you’re browsing issues, don’t just read and leave. When you find
-an issue that describes a problem you're also facing, or that you'd like to see
+an issue that describes a problem you're also facing or a feature you'd like to see
 implemented, **just give the issue description a 👍 reaction**. That’s it. Like
 and subscribe. That’s the signal.
 
 Of course, if you have a new, unique use case, a technical detail that hasn't
 been mentioned, or other information that would help a maintainer solve the
-problem, then please **do leave a comment**. That kind of context is incredibly
+problem, then please do leave a comment. That kind of context is incredibly
 valuable! Just remember that a high reaction count is a strong signal, but it
 doesn’t automatically guarantee an issue becomes the top priority.
 
