@@ -34,6 +34,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
+      - name: Fix refcache
+        run: |
+          npm run fix:refcache
+
+          git add -A
+
+          if ! git diff-index --quiet --cached HEAD; then
+            git commit -am "Fix refcache"
+            git push
+          fi
+
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
