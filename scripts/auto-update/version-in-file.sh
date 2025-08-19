@@ -4,6 +4,7 @@
 
 GH=gh
 GIT=git
+NPM=npm
 
 if [[ -n "$GITHUB_ACTIONS" ]]; then
   # Ensure that we're starting from a clean state
@@ -113,6 +114,10 @@ fi
 
 $GIT checkout -b "$branch"
 $GIT commit -a -m "$message"
+
+$NPM run fix:refcache
+$GIT commit -a -m "Fix refcache"
+
 $GIT push --set-upstream origin "$branch"
 
 echo "Submitting auto-update PR '$message'."
