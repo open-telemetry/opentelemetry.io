@@ -127,6 +127,10 @@ if [[ -n $(git status --porcelain) ]]; then
 
     $GIT checkout -b "$branch"
     $GIT commit -a -m "$message"
+
+    $NPM run fix:refcache
+    $GIT commit -a -m "Fix refcache"
+
     $GIT push --set-upstream origin "$branch"
 
     body_file=$(mktemp)
