@@ -142,11 +142,11 @@ opentelemetry-instrument gunicorn \
   myapp.main:app
 ```
 
-##### Use manual or programmatic instrumentation
+##### Use programmatic auto-instrumentation
 
 Initialize OpenTelemetry inside the worker process with
-[manual or programmatic instrumentation](/docs/zero-code/python/example/) after
-the server fork, instead of with auto-instrumentation. For example:
+[programmatic auto-instrumentation](https://github.com/open-telemetry/opentelemetry-python-contrib/blob/main/opentelemetry-instrumentation/README.rst#programmatic-auto-instrumentation)
+after the server fork, instead of with `opentelemetry-instrument`. For example:
 
 ```python
 from opentelemetry.instrumentation.auto_instrumentation import initialize
