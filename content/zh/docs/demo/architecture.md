@@ -4,6 +4,7 @@ linkTitle: 架构
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
 default_lang_commit: d7a38b0eb268f62d48aee2fb77f544eb987f6f6e
+drifted_from_default: true
 ---
 
 **OpenTelemetry 演示内容**由使用不同编程语言编写的微服务组成，

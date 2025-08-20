@@ -1,6 +1,6 @@
 ---
 title: Instrumentation
-weight: 20
+weight: 36
 aliases: [manual]
 description: Instrumentation for OpenTelemetry .NET
 cSpell:ignore: dicelib rolldice
@@ -663,18 +663,6 @@ private int rollOnce()
     }
 }
 ```
-
-## Metrics
-
-The documentation for the metrics API & SDK is missing, you can help make it
-available by
-[editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/languages/dotnet/instrumentation.md).
-
-## Logs
-
-The documentation for the logs API and SDK is missing. You can help make it
-available by
-[editing this page](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/languages/dotnet/instrumentation.md).
 
 ## Next steps
 

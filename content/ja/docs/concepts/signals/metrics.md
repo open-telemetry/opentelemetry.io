@@ -3,6 +3,7 @@ title: メトリクス
 weight: 2
 description: 実行時に取得された測定値
 default_lang_commit: f15873cbe9b2c3f3b51ef4629a6116de84eae08f
+drifted_from_default: true
 ---
 
 **メトリクス**とは、実行時に取得されるサービスの**測定値**のことです。

@@ -175,4 +175,89 @@ if err != nil {
 
 ## Logs
 
-TBD
+You can send your logs to the OpenTelemetry Collector in two ways:
+
+- Directly to the Collector
+- Through a file or `stdout`
+
+You can find documentation specifying how to use both these approaches in the
+[Logs](/docs/languages/go/instrumentation/#logs) section of the
+[Manual Instrumentation](/docs/languages/go/instrumentation/) documentation.
+
+The Checkout service sends the logs directly to the Collector, and uses a log
+bridge to send its logs, bridging to the `slog` logging package, which outputs
+structured logs.
+
+## LoggerProvider initialization
+
+The OpenTelemetry SDK is initialized from `main` using the `initLoggerProvider`
+function.
+
+```go
+ctx := context.Background()
+
+logExporter, err := otlploggrpc.New(ctx)
+if err != nil {
+	return nil
+}
+
+loggerProvider := sdklog.NewLoggerProvider(
+	sdklog.WithProcessor(sdklog.NewBatchProcessor(logExporter)),
+)
+global.SetLoggerProvider(loggerProvider)
+
+return loggerProvider
+```
+
+Call `LoggerProvider.Shutdown()` when your service is down to ensure all logs
+are exported. This service makes that call as part of a deferred function in
+`main`:
+
+```go
+lp := initLoggerProvider()
+defer func() {
+	if err := lp.Shutdown(context.Background()); err != nil {
+		logger.Error(fmt.Sprintf("Logger Provider Shutdown: %v", err))
+	}
+	logger.Info("Shutdown logger provider")
+}()
+```
+
+### Logging functionality
+
+This service sends logs to the Collector using gRPC calls. The logs are output
+in a structured format using the `slog` package.
+
+First, initialize the logger:
+
+```go
+logger   *slog.Logger
+logger = otelslog.NewLogger("checkout")
+```
+
+Note the use of `fmt.Sprintf` to format the output before it's sent to the
+logger:
+
+```go
+logger.Info(fmt.Sprintf("order confirmation email sent to %q", req.Email))
+logger.Warn(fmt.Sprintf("failed to send order confirmation to %q: %+v", req.Email, err))
+logger.Error(fmt.Sprintf("Error shutting down logger provider: %v", err))
+```
+
+The advantage of using `slog` is the ability to attach additional attributes to
+the output. The following example attaches a few attributes such as `orderID`,
+`shippingCost` and `totalPrice`. This makes it possible to view and parse these
+as part of the log output and makes it easier to view them as separate columns
+in Grafana:
+
+```go
+logger.LogAttrs(
+    ctx,
+    slog.LevelInfo, "order placed",
+    slog.String("app.order.id", orderID.String()),
+    slog.Float64("app.shipping.amount", shippingCostFloat),
+    slog.Float64("app.order.amount", totalPriceFloat),
+    slog.Int("app.order.items.count", len(prep.orderItems)),
+    slog.String("app.shipping.tracking.id", shippingTrackingID),
+)
+```

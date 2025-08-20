@@ -3,6 +3,7 @@ title: 自動計装の例
 linkTitle: Example
 weight: 20
 default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
+drifted_from_default: true
 ---
 
 このページでは、OpenTelemetry で Python 自動計装を使う方法を示します。

@@ -20,3 +20,5 @@ autogenerado
 desincronizado
 desincronizadas
 subsección
+react-native-app
+cardinalidad

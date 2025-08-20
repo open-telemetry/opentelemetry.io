@@ -20,7 +20,7 @@ see how all the monitoring responds to an active workload.
 If you're looking to start migrating from Prometheus to OpenTelemetry, or if
 you're interested in using the OpenTelemetry Collector to collect Prometheus
 metrics, see
-[Prometheus Receiver](../collector/components/#prometheus-receiver).
+[Prometheus Receiver](/docs/platforms/kubernetes/collector/components/#prometheus-receiver).
 
 ## Overview
 
@@ -41,12 +41,13 @@ metrics for nodes, pods, and containers. The deployment installation of the
 collector will be used to collect metrics for the cluster and events.
 
 To install the collector, we'll use the
-[OpenTelemetry Collector Helm chart](../helm/collector/), which comes with a few
-configuration options that will make configure the collector easier. If you're
-unfamiliar with Helm, check out [the Helm project site](https://helm.sh/). If
-you're interested in using a Kubernetes operator, see
-[OpenTelemetry Operator](../operator/), but this guide will focus on the Helm
-chart.
+[OpenTelemetry Collector Helm chart](/docs/platforms/kubernetes/helm/collector/),
+which comes with a few configuration options that will make configure the
+collector easier. If you're unfamiliar with Helm, check out
+[the Helm project site](https://helm.sh/). If you're interested in using a
+Kubernetes operator, see
+[OpenTelemetry Operator](/docs/platforms/kubernetes/operator/), but this guide
+will focus on the Helm chart.
 
 ## Preparation
 
@@ -81,12 +82,12 @@ This instance of the collector will use the following components:
 
 - [OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver):
   to collect application traces, metrics and logs.
-- [Kubernetes Attributes Processor](../collector/components/#kubernetes-attributes-processor):
+- [Kubernetes Attributes Processor](/docs/platforms/kubernetes/collector/components/#kubernetes-attributes-processor):
   to add Kubernetes metadata to incoming application telemetry.
-- [Kubeletstats Receiver](../collector/components/#kubeletstats-receiver): to
-  pull node, pod, and container metrics from the API server on a kubelet.
-- [Filelog Receiver](../collector/components/#filelog-receiver): to collect
-  Kubernetes logs and application logs written to stdout/stderr.
+- [Kubeletstats Receiver](/docs/platforms/kubernetes/collector/components/#kubeletstats-receiver):
+  to pull node, pod, and container metrics from the API server on a kubelet.
+- [Filelog Receiver](/docs/platforms/kubernetes/collector/components/#filelog-receiver):
+  to collect Kubernetes logs and application logs written to stdout/stderr.
 
 Let's break these down.
 
@@ -108,7 +109,7 @@ Kubernetes metadata using the `k8sattributes` processor.
 ### Kubernetes Attributes Processor
 
 The
-[Kubernetes Attributes Processor](../collector/components/#kubernetes-attributes-processor)
+[Kubernetes Attributes Processor](/docs/platforms/kubernetes/collector/components/#kubernetes-attributes-processor)
 is a highly recommended component in any collector receive telemetry from
 Kubernetes pods. This processor automatically discovers Kubernetes pods,
 extracts their metadata such as pod name or node name, and adds the extracted
@@ -119,8 +120,9 @@ Kubernetes telemetry, such as pod metrics and traces.
 
 ### Kubeletstats Receiver
 
-The [Kubeletstats Receiver](../collector/components/#kubeletstats-receiver) is
-the receiver that gathers metrics about the node. It will gather metrics like
+The
+[Kubeletstats Receiver](/docs/platforms/kubernetes/collector/components/#kubeletstats-receiver)
+is the receiver that gathers metrics about the node. It will gather metrics like
 container memory usage, pod cpu usage, and node network errors. All of the
 telemetry includes Kubernetes metadata like pod name or node name. Since we're
 using the Kubernetes Attributes Processor, we'll be able to correlate our
@@ -129,10 +131,12 @@ Kubeletstats Receiver.
 
 ### Filelog Receiver
 
-The [Filelog Receiver](../collector/components/#filelog-receiver) will collect
-logs written to stdout/stderr by tailing the logs Kubernetes writes to
-`/var/log/pods/*/*/*.log`. Like most log tailers, the filelog receiver provides
-a robust set of actions that allow you to parse the file however you need.
+The
+[Filelog Receiver](/docs/platforms/kubernetes/collector/components/#filelog-receiver)
+will collect logs written to stdout/stderr by tailing the logs Kubernetes writes
+to `/var/log/pods/*/*/*.log`. Like most log tailers, the filelog receiver
+provides a robust set of actions that allow you to parse the file however you
+need.
 
 Someday you may need to configure a Filelog Receiver on your own, but for this
 walkthrough the OpenTelemetry Helm Chart will handle all the complex
@@ -205,9 +209,9 @@ data.
 
 This instance of the Collector will use the following components:
 
-- [Kubernetes Cluster Receiver](../collector/components/#kubernetes-cluster-receiver):
+- [Kubernetes Cluster Receiver](/docs/platforms/kubernetes/collector/components/#kubernetes-cluster-receiver):
   to collect cluster-level metrics and entity events.
-- [Kubernetes Objects Receiver](../collector/components/#kubernetes-objects-receiver):
+- [Kubernetes Objects Receiver](/docs/platforms/kubernetes/collector/components/#kubernetes-objects-receiver):
   to collect objects, such as events, from the Kubernetes API server.
 
 Let's break these down.
@@ -215,7 +219,7 @@ Let's break these down.
 ### Kubernetes Cluster Receiver
 
 The
-[Kubernetes Cluster Receiver](../collector/components/#kubernetes-cluster-receiver)
+[Kubernetes Cluster Receiver](/docs/platforms/kubernetes/collector/components/#kubernetes-cluster-receiver)
 is the Collector's solution for collecting metrics about the state of the
 cluster as a whole. This receiver can gather metrics about node conditions, pod
 phases, container restarts, available and desired deployments, and more.
@@ -223,7 +227,7 @@ phases, container restarts, available and desired deployments, and more.
 ### Kubernetes Objects Receiver
 
 The
-[Kubernetes Objects Receiver](../collector/components/#kubernetes-objects-receiver)
+[Kubernetes Objects Receiver](/docs/platforms/kubernetes/collector/components/#kubernetes-objects-receiver)
 is the Collector's solution for collecting Kubernetes objects as logs. Although
 any object can be collected, a common and important use case is to collect
 Kubernetes events.

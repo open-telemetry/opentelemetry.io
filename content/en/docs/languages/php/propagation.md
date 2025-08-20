@@ -4,7 +4,7 @@ description: Context propagation for the PHP API
 weight: 60
 ---
 
-{{% docs/languages/propagation php %}}
+{{% docs/languages/propagation %}}
 
 Propagation is the mechanism that moves data between services and processes.
 Although not limited to tracing, propagation allows traces to build causal

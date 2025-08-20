@@ -3,6 +3,7 @@ title: 一般的なSDK設定
 linkTitle: 一般
 aliases: [general-sdk-configuration]
 default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a # patched
+drifted_from_default: true
 cSpell:ignore: ottrace
 ---
 

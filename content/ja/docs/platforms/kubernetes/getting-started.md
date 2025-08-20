@@ -2,6 +2,7 @@
 title: はじめに
 weight: 1
 default_lang_commit: 0cdf20f0dcbf7305541f8eab3001c95ce805fbc0
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: filelog kubelet kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
 ---

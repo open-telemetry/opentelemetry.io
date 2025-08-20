@@ -4,6 +4,7 @@ description: 为了参与贡献，你需要熟悉以下技术和工具。
 aliases: [requirements]
 weight: 1
 default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22
+drifted_from_default: true
 ---
 
 要参与本仓库的贡献，你需要熟悉以下技术和工具：
