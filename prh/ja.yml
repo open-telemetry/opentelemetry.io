@@ -34,3 +34,4 @@ rules:
   - expected: 伝搬
     patterns:
       - 伝播
+      - プロパゲーション
