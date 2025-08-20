@@ -3,7 +3,7 @@ title: Node.js
 description: Get telemetry for your app in less than 5 minutes!
 aliases: [/docs/js/getting_started/nodejs]
 weight: 10
-cSpell:ignore: autoinstrumentations KHTML rolldice
+cSpell:ignore: autoinstrumentations rolldice
 ---
 
 This page will show you how to get started with OpenTelemetry in Node.js.
