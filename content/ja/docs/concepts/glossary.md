@@ -2,7 +2,7 @@
 title: 用語集
 description: OpenTelemetry で使用されるテレメトリー用語の定義と規則
 weight: 200
-default_lang_commit: 6c676267409eefc15a28c0e2fdd60b26a4687f74
+default_lang_commit: 530c8fd130c93dd95e9638c8919518dbbc9c6b0a
 drifted_from_default: true
 ---
 
@@ -46,6 +46,12 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 イベントとサービスの因果関係を確立するための[メタデータ](#metadata)を伝播するメカニズム。
 [バゲッジ仕様][baggage]を参照のこと。
+
+### カーディナリティ {#cardinality}
+
+特定の[属性](#attribute)または属性のセットに対する一意の値の数。
+カーディナリティが高いということは、一意の値が多いことを意味しており、テレメトリーバックエンドのパフォーマンスやストレージ要件に影響を与える可能性があります。
+たとえば、`user_id` 属性は高いカーディナリティを持ちますが、"200"、"404"、"500" などの値を持つ `status_code` 属性は低いカーディナリティを持ちます。
 
 ### クライアントライブラリ {#client-library}
 
