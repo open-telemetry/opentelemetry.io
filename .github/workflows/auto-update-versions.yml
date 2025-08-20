@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    # if: github.repository == 'open-telemetry/opentelemetry.io'
+    if: github.repository == 'open-telemetry/opentelemetry.io'
     env:
       DEPTH: --depth 999 # submodule clone depth
 
