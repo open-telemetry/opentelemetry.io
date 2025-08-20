@@ -105,7 +105,7 @@ However, specifying more than one `--workers` may break the generation of
 metrics when auto-instrumentation is applied. This is because forking, the
 creation of worker/child processes, creates inconsistencies between each child
 in the background threads and locks assumed by key OpenTelemetry SDK components.
-Specifically, the PeriodicExportingMetricReader spawns its own thread to
+Specifically, the `PeriodicExportingMetricReader` spawns its own thread to
 periodically flush data to the exporter. See also issues
 [#2767](https://github.com/open-telemetry/opentelemetry-python/issues/2767) and
 [#3307](https://github.com/open-telemetry/opentelemetry-python/issues/3307#issuecomment-1579101152).
@@ -174,7 +174,7 @@ async def root():
 Then, run the server with:
 
 ```sh
-myapp.main:app
+uvicorn main:app --workers 2
 ```
 
 ##### Use Prometheus
