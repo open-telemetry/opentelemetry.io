@@ -10179,6 +10179,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:30.820029-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-python-contrib/blob/main/opentelemetry-instrumentation/README.rst#programmatic-auto-instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-20T20:58:38.969744818Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/exporter": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:48:28.369231-05:00"
