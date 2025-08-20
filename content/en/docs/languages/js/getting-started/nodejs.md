@@ -48,7 +48,7 @@ Next, install Express dependencies.
 
 ```sh
 npm install express @types/express
-npm install -D tsx  # a tool that to run TypeScript (.ts) files directly with node
+npm install -D tsx  # a tool to run TypeScript (.ts) files directly with node
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -341,7 +341,6 @@ few times. After a while you should see the spans printed in the console by the
   events: [],
   links: []
 }
-
 ```
 
 </details>
@@ -355,8 +354,6 @@ the console output, such as the following:
 <summary>View example output</summary>
 
 ```yaml
-
-
 {
   descriptor: {
     name: 'http.server.duration',
