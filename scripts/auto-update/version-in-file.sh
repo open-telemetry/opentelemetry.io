@@ -115,8 +115,12 @@ fi
 $GIT checkout -b "$branch"
 $GIT commit -a -m "$message"
 
+echo "Running fix:refcache..."
+
 $NPM run fix:refcache
 $GIT commit -a -m "Fix refcache"
+
+echo "Pushing the changes..."
 
 $GIT push --set-upstream origin "$branch"
 
