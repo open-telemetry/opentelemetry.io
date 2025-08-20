@@ -16,7 +16,7 @@ jobs:
     permissions:
       contents: write
     # Remove the if statement below when testing against a fork
-    # if: github.repository == 'open-telemetry/opentelemetry.io'
+    if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - name: Checkout
         uses: actions/checkout@v5
