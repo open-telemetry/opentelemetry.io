@@ -3,6 +3,7 @@ title: 用語集
 description: OpenTelemetry で使用されるテレメトリー用語の定義と規則
 weight: 200
 default_lang_commit: 6c676267409eefc15a28c0e2fdd60b26a4687f74
+drifted_from_default: true
 ---
 
 この用語集は、OpenTelemetry プロジェクトに対して新しい、用語と[概念](/docs/concepts/)を定義し、オブザーバビリティの分野で一般的に使われている OpenTelemetry 特有の使用法を明確にします。

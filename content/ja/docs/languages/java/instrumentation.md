@@ -9,6 +9,7 @@ aliases:
 weight: 10
 description: OpenTelemetry Javaにおける計装エコシステム
 default_lang_commit: beb85b4f56de76aa8a8d6e96cd7528396476f95a # patched
+drifted_from_default: true
 cSpell:ignore: logback
 ---
 
