@@ -6,6 +6,7 @@ description:
 linkTitle: Localización
 weight: 25
 default_lang_commit: e1bf6c870fbf82791a3826baaf276bc0ca79c88b # patched
+drifted_from_default: true
 cSpell:ignore: shortcodes
 ---
 
@@ -157,13 +158,14 @@ entre páginas.
 
 Algunos de los _shortcodes_ base contienen texto en inglés que podrías necesitar
 localizar, especialmente aquellos que se encuentran en
-[layouts/shortcodes/docs].
+[layouts/_shortcodes/docs].
 
 Si necesitas crear una versión localizada de un _shortcode_, colócala en
-`layouts/shortcodes/xx`, donde `xx` es el código de idioma de tu localización. A
-partir de ahí, utiliza la misma ruta relativa que el _shortcode_ base original.
+`layouts/_shortcodes/xx`, donde `xx` es el código de idioma de tu localización.
+A partir de ahí, utiliza la misma ruta relativa que el _shortcode_ base
+original.
 
-[layouts/shortcodes/docs]:
+[layouts/_shortcodes/docs]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
 
 ## Seguimiento de cambios en páginas localizadas {#track-changes}

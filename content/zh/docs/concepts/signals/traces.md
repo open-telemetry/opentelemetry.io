@@ -3,6 +3,7 @@ title: 链路（Trace）
 weight: 1
 description: 请求通过应用的路径。
 default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
+drifted_from_default: true
 ---
 
 **链路**为我们提供了向应用发出请求时会发生什么的总览图。

@@ -3,6 +3,7 @@ title: PR 检查
 description: 了解如何使你的 PR 成功通过所有检查
 weight: 40
 default_lang_commit: e04e8da1f4527d65c162af9a670eb3be8e7e7fb9
+drifted_from_default: true
 ---
 
 当你向 [opentelemetry.io 仓库](https://github.com/open-telemetry/opentelemetry.io)提交
