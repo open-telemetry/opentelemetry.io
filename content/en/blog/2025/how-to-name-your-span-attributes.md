@@ -23,20 +23,21 @@ This guide targets developers who are:
 The attribute naming decisions you make directly impact the usability and
 maintainability of your observability data. Let's get them right.
 
-## Start with Semantic Conventions
+## Start with semantic conventions
 
 Here's the most important rule that will save you time and improve
-interoperability: **if an OpenTelemetry semantic convention exists and the
-semantics match your use case, use it**.
+interoperability: **if an OpenTelemetry
+[semantic convention exists](https://opentelemetry.io/docs/specs/semconv/registry/attributes/)
+and the semantics match your use case, use it**.
 
 This isn't just about convenience—it's about building telemetry that integrates
 seamlessly with the broader OpenTelemetry ecosystem. When you use standardized
 attribute names, your data automatically works with existing dashboards,
 alerting rules, and analysis tools.
 
-### When Semantics Match, Use the Convention
+### When semantics match, use the convention
 
-| Your Need                | Use This Semantic Convention | Why                                             |
+| Your need                | Use this semantic convention | Why                                             |
 | :----------------------- | :--------------------------- | :---------------------------------------------- |
 | HTTP request method      | `http.request.method`        | Standardized across all HTTP instrumentation    |
 | Database collection name | `db.collection.name`         | Works with database monitoring tools            |
@@ -48,11 +49,11 @@ The key principle is **semantic match over naming preference**. Even if you
 prefer `database_table` over `db.collection.name`, use the semantic convention
 when it accurately describes your data.
 
-### When Semantics Don't Match, Don't Force It
+### When semantics don't match, don't force it
 
 Resist the temptation to misuse semantic conventions:
 
-| Don't Do This                                    | Why It's Wrong                                        |
+| Don't do this                                    | Why it's wrong                                        |
 | :----------------------------------------------- | :---------------------------------------------------- |
 | Using `db.collection.name` for a file name       | Files and database collections are different concepts |
 | Using `http.request.method` for business actions | "approve_payment" isn't an HTTP method                |
@@ -61,7 +62,7 @@ Resist the temptation to misuse semantic conventions:
 Misusing semantic conventions is worse than creating custom attributes—it
 creates confusion and breaks tooling that expects the standard semantics.
 
-## The Golden Rule: Domain First, Never Company First
+## The golden rule: Domain first, never company first
 
 When you need custom attributes beyond the semantic conventions, the most
 critical principle is: **start with the domain or technology, never your company
@@ -70,9 +71,9 @@ or application name**.
 This principle seems obvious but is consistently violated across the industry.
 Here's why it matters and how to get it right.
 
-### Why Company-First Naming Fails
+### Why company-first naming fails
 
-| Bad Attribute Name          | Problems                                             |
+| Bad attribute name          | Problems                                             |
 | :-------------------------- | :--------------------------------------------------- |
 | `og.user.id`                | Company prefix pollutes global namespace             |
 | `myapp.request.size`        | Application-specific, not reusable                   |
@@ -86,9 +87,9 @@ These approaches create attributes that are:
 - Vendor-locked and inflexible
 - Inconsistent with OpenTelemetry's interoperability goals
 
-### Domain-First Success Stories
+### Domain-first success stories
 
-| Good Attribute Name  | Why It Works                       |
+| Good attribute name  | Why it works                       |
 | :------------------- | :--------------------------------- |
 | `user.id`            | Universal concept, vendor-neutral  |
 | `request.size`       | Reusable across applications       |
@@ -99,13 +100,13 @@ These approaches create attributes that are:
 This approach creates attributes that are universally understandable, reusable
 by others facing similar problems, and future-proof.
 
-## Understanding the Structure: Dots and Underscores
+## Understanding the structure: Dots and underscores
 
 OpenTelemetry attribute names follow a specific structural pattern that balances
 readability with consistency. Understanding this pattern helps you create
 attributes that feel natural alongside standard semantic conventions.
 
-### Use Dots for Hierarchical Separation
+### Use dots for hierarchical separation
 
 Dots (`.`) separate hierarchical components, following the pattern:
 `{domain}.{component}.{property}`
@@ -116,14 +117,14 @@ Examples from semantic conventions:
 - `db.collection.name` - Database domain, collection component, name property
 - `service.instance.id` - Service domain, instance component, ID property
 
-### Use Underscores for Multi-Word Components
+### Use underscores for multi-word components
 
 When a single component contains multiple words, use underscores (`_`):
 
 - `http.response.status_code` - "status_code" is one logical component
 - `system.memory.usage_percent` - "usage_percent" is one measurement concept
 
-### Create Deeper Hierarchies When Needed
+### Create deeper hierarchies when needed
 
 You can nest further when it adds clarity:
 
@@ -133,12 +134,12 @@ You can nest further when it adds clarity:
 
 Each level should represent a meaningful conceptual boundary.
 
-## Reserved Namespaces: What You Must Never Use
+## Reserved namespaces: What you must never use
 
 Certain namespaces are strictly reserved, and violating these rules can break
 your telemetry data.
 
-### The `otel.*` Namespace is Off-Limits
+### The `otel.*` namespace is off-limits
 
 The `otel.*` prefix is exclusively reserved for the OpenTelemetry specification
 itself. It's used to express OpenTelemetry concepts in telemetry formats that
@@ -153,7 +154,7 @@ Reserved `otel.*` attributes include:
 **Never create attributes starting with `otel.`** Any additions to this
 namespace must be approved as part of the OpenTelemetry specification.
 
-### Other Reserved Attributes
+### Other reserved attributes
 
 The specification also reserves these specific attribute names:
 
@@ -164,52 +165,52 @@ The specification also reserves these specific attribute names:
 - `telemetry.sdk.language`, `telemetry.sdk.name`, `telemetry.sdk.version`
 - `url.scheme`
 
-## Semantic Convention Patterns
+## Semantic convention patterns
 
 The best way to develop good attribute naming intuition is studying
 OpenTelemetry's semantic conventions. These represent thousands of hours of
 design work by observability experts.
 
-### Domain Organization Patterns
+### Domain organization patterns
 
 Notice how semantic conventions organize around clear domains:
 
-#### Infrastructure Domains
+#### Infrastructure domains
 
 - `service.*` - Service identity and metadata
 - `host.*` - Host/machine information
 - `container.*` - Container runtime information
 - `process.*` - Operating system processes
 
-#### Communication Domains
+#### Communication domains
 
 - `http.*` - HTTP protocol specifics
 - `network.*` - Network layer information
 - `rpc.*` - Remote procedure call attributes
 - `messaging.*` - Message queue systems
 
-#### Data Domains
+#### Data domains
 
 - `db.*` - Database operations
 - `url.*` - URL components
 
-### Universal Property Patterns
+### Universal property patterns
 
 Across all domains, consistent patterns emerge for common properties:
 
-#### Identity Properties
+#### Identity properties
 
 - `.name` - Human-readable identifiers (`service.name`, `container.name`)
 - `.id` - System identifiers (`container.id`, `process.pid`)
 - `.version` - Version information (`service.version`)
 - `.type` - Classification (`messaging.operation.type`, `error.type`)
 
-#### Network Properties
+#### Network properties
 
 - `.address` - Network addresses (`server.address`, `client.address`)
 - `.port` - Port numbers (`server.port`, `client.port`)
 
-#### Measurement Properties
+#### Measurement properties
 
 - `.size` - Byte measurements (`http.request.body.size`)
 - `.count` - Quantities (`messaging.batch.message_count`)
@@ -223,29 +224,29 @@ management, consider:
 - `inventory.location.address`
 - `inventory.batch.count`
 
-## Creating Custom Domains Safely
+## Creating custom domains safely
 
 Sometimes your business logic requires attributes outside existing semantic
 conventions. This is normal—OpenTelemetry can't cover every possible business
 domain.
 
-### Guidelines for Safe Custom Domains
+### Guidelines for safe custom domains
 
-1. **Choose descriptive, generic names** that others could reuse
-2. **Avoid company-specific terminology** in the domain name
-3. **Follow hierarchical patterns** established by semantic conventions
-4. **Consider if your domain could become a future semantic convention**
+1. **Choose descriptive, generic names** that others could reuse.
+2. **Avoid company-specific terminology** in the domain name.
+3. **Follow hierarchical patterns** established by semantic conventions.
+4. **Consider if your domain could become a future semantic convention**.
 
-### Examples of Well-Designed Custom Attributes
+### Examples of well-designed custom attributes
 
-| Domain    | Good Attributes                          | Why They Work                     |
+| Domain    | Good attributes                          | Why they work                     |
 | :-------- | :--------------------------------------- | :-------------------------------- |
 | Business  | `payment.method`, `order.status`         | Clear, reusable business concepts |
 | Logistics | `inventory.location`, `shipment.carrier` | Domain-specific but transferable  |
 | Process   | `workflow.step.name`, `approval.status`  | Generic process management        |
 | Content   | `document.format`, `media.codec`         | Universal content concepts        |
 
-## The Rare Exception: When Prefixes Make Sense
+## The rare exception: When prefixes make sense
 
 In rare cases, you might need company or application prefixes. This typically
 happens when your custom attribute might conflict with attributes from other
@@ -253,22 +254,23 @@ sources in a distributed system.
 
 **Consider prefixes when:**
 
-- Your attribute might conflict with vendor attributes in a distributed system
-- You're instrumenting proprietary technology that's truly company-specific
-- You're capturing internal implementation details that shouldn't be generalized
+- Your attribute might conflict with vendor attributes in a distributed system.
+- You're instrumenting proprietary technology that's truly company-specific.
+- You're capturing internal implementation details that shouldn't be
+  generalized.
 
 For most business logic attributes, stick with domain-first naming.
 
-## Your Action Plan
+## Your action plan
 
 Naming span attributes well creates telemetry data that's maintainable,
 interoperable, and valuable across your organization. Here's your roadmap:
 
-1. **Always check semantic conventions first** - Use them when semantics match
-2. **Lead with domain, never company** - Create vendor-neutral attributes
-3. **Respect reserved namespaces** - Especially avoid `otel.*`
-4. **Follow hierarchical patterns** - Use dots and underscores consistently
-5. **Build for reusability** - Think beyond your current needs
+1. **Always check semantic conventions first** - Use them when semantics match.
+2. **Lead with domain, never company** - Create vendor-neutral attributes.
+3. **Respect reserved namespaces** - Especially avoid `otel.*`.
+4. **Follow hierarchical patterns** - Use dots and underscores consistently.
+5. **Build for reusability** - Think beyond your current needs.
 
 By following these principles, you're not just solving today's instrumentation
 challenges—you're contributing to a more coherent, interoperable observability
