@@ -119,7 +119,7 @@ Attributes:
 otelcol components
 ```
 
-出力例:
+以下は出力例です。
 
 ```yaml
 buildinfo:
