@@ -164,10 +164,10 @@ application code. One tool commonly used for this task is the
 [--import](https://nodejs.org/api/cli.html#--importmodule) flag.
 
 Create a file named `instrumentation.ts` (or `instrumentation.mjs` if not using
-TypeScript), which will contain your instrumentation setup code. (Limitation:
-The following examples using `--import instrumentation.ts` (TypeScript) require
-Node.js v20 or later. If you are using Node.js v18, please use the JavaScript
-example.)
+TypeScript), which will contain your instrumentation setup code. 
+
+{{% alert title="Note" %}} The following examples using `--import instrumentation.ts` (TypeScript) require
+Node.js v.20 or later. If you are using Node.js v.18, please use the JavaScript example. {{% /alert %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
