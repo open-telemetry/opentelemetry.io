@@ -21,11 +21,10 @@ cSpell:ignore: SIGHUP
 gem install opentelemetry-sdk
 ```
 
-次に、プログラムの初期化時に実行されるここコードを記述します。
-
+次に、プログラムの初期化時に実行される、設定コードを記述します。
 サービス名を設定して、`service.name` が設定されていることを確認してください。
 
-## トレース #{traces}
+## トレース {#traces}
 
 ### トレーサーの取得 {#acquiring-a-tracer}
 
@@ -167,7 +166,7 @@ Rubyでセマンティック属性を使用するには、適切なgemを追加�
 gem install opentelemetry-semantic_conventions
 ```
 
-Then you can use it in code:
+次に、コードで使用できます。
 
 ```ruby
 require 'opentelemetry/sdk'
@@ -229,9 +228,9 @@ span_to_link_from = OpenTelemetry::Trace.current_span
 link = OpenTelemetry::Trace::Link.new(span_to_link_from.context)
 
 MyAppTracer.in_span("new-span", links: [link])
-  # `new_spaan` が追跡する何らかの処理を実行
+  # `new_span` が追跡する何らかの処理を実行
 
-  # `new_span` は、リンク元のスパンとリンクされていますが、必ずしも子スパンではありません。
+  # `new_span` リンクは、リンク元のスパンと偶然関連付けられていますが、必ずしも子スパンではありません。
 end
 ```
 
