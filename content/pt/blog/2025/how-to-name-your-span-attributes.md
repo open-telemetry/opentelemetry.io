@@ -11,7 +11,7 @@ cSpell:ignore: jpkrohling OllyGarden shopify
 
 Sejam bem-vindos à segunda parte da nossa série sobre boas práticas de
 nomenclatura no OpenTelemetry. Em nossa
-[publicação anterior](/blog/2025/how-to-name-your-spans/), exploramos ocmo
+[publicação anterior](/blog/2025/how-to-name-your-spans/), exploramos como
 nomear trechos utilizando o padrão `{verbo} {objeto}`. Hoje, vamos mergulhar nos
 atributos de trecho _(span)_ — os dados contextuais ricos que transformam seus
 rastros _(traces)_ de simples registros de operação em poderosas ferramentas de
@@ -279,7 +279,7 @@ primeiro" _(domain-first)_.
 
 ## Seu plano de ação {#your-action-plan}
 
-Nomear bem os atributos de ttrechos cria dados de telemetria que são
+Nomear bem os atributos de trechos cria dados de telemetria que são
 manuteníveis, interoperáveis e valiosos em toda a sua organização. Aqui está seu
 roteiro:
 
