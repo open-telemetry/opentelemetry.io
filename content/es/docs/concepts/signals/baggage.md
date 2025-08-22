@@ -3,6 +3,7 @@ title: Baggage
 weight: 4
 description: Información contextual que se pasa entre señales.
 default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
+cSpell:ignore: embedidas
 ---
 
 En OpenTelemetry, el `Baggage` es información contextual que viaja con el
@@ -11,7 +12,7 @@ te permite [propagar](../../context-propagation/#propagation) cualquier dato que
 desees junto con el [contexto](../../context-propagation/#context).
 
 El `Baggage` te permite pasar datos a través de servicios y procesos,
-permitinedo que se puedan añadir a [trazas](../traces/), [métricas](../metrics/)
+permitiendo que se puedan añadir a [trazas](../traces/), [métricas](../metrics/)
 o [logs](../logs/) en esos servicios.
 
 ## Ejemplo {#example}
