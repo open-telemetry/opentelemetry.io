@@ -248,7 +248,7 @@ few times. After a while you should see the spans printed in the console by the
 <details>
 <summary>View example output</summary>
 
-```json
+```js
 {
   resource: {
     attributes: {
