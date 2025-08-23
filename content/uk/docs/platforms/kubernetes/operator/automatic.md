@@ -3,7 +3,7 @@ title: Інʼєкція Автоінструментування
 linkTitle: Автоінструментування
 weight: 11
 description: Реалізація автоінструментування за допомогою OpenTelemetry Operator.
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 873e42833f8e17860becdff26de4717194eb11ca
 # prettier-ignore
 cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA
 ---
@@ -22,7 +22,7 @@ OpenTelemetry Operator підтримує інʼєкцію та налаштув
 
 ## Створення OpenTelemetry Collector (Необовʼязково) {#create-an-opentelemetry-collector-optional}
 
-Найкраще надсилати телеметрію з контейнерів до [OpenTelemetry Collector](../../collector/) замість безпосередньо до бекенду. Collector допомагає спростити управління секретами, розділяє проблеми експорту даних (наприклад, необхідність повторних спроб) від ваших застосунків, і дозволяє додавати додаткові дані до вашої телеметрії, наприклад, за допомогою [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor) компонента. Якщо ви вирішили не використовувати Collector, ви можете перейти до наступного розділу.
+Найкраще надсилати телеметрію з контейнерів до [OpenTelemetry Collector](/docs/platforms/kubernetes/collector/) замість безпосередньо до бекенду. Collector допомагає спростити управління секретами, розділяє проблеми експорту даних (наприклад, необхідність повторних спроб) від ваших застосунків, і дозволяє додавати додаткові дані до вашої телеметрії, наприклад, за допомогою [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor) компонента. Якщо ви вирішили не використовувати Collector, ви можете перейти до наступного розділу.
 
 Operator надає [Custom Resource Definition (CRD) для OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md) який використовується для створення екземпляра Collector, яким керує Operator. Наступний приклад розгортає Collector як Deployment (стандартно), але є інші [режими розгортання](https://github.com/open-telemetry/opentelemetry-operator#deployment-modes) які можна використовувати.
 

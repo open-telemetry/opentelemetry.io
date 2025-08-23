@@ -2,11 +2,11 @@
 title: Поширення
 description: Поширення контексту для JS SDK
 weight: 65
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 873e42833f8e17860becdff26de4717194eb11ca
 cSpell:ignore: rolldice
 ---
 
-{{% uk/docs/languages/propagation js %}}
+{{% docs/languages/propagation %}}
 
 ## Автоматичне поширення контексту {#automatic-context-propagation}
 

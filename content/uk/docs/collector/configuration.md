@@ -2,7 +2,7 @@
 title: Конфігурація
 weight: 20
 description: Дізнайтеся, як налаштувати Collector відповідно до ваших потреб
-default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
+default_lang_commit: 873e42833f8e17860becdff26de4717194eb11ca
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
 ---
@@ -97,8 +97,11 @@ exporters:
 
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 
 service:
   extensions: [health_check, pprof, zpages]
@@ -144,8 +147,11 @@ exporters:
 
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 
 service:
   extensions: [health_check, pprof, zpages]
@@ -496,8 +502,11 @@ service:
 ```yaml
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 ```
 
 > Для детальної конфігурації розширень див. [README розширення](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md).

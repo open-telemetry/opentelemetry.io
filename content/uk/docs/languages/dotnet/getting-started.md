@@ -1,8 +1,8 @@
 ---
 title: Початок роботи
 description: Отримайте телеметрію для вашого застосунку менш ніж за 5 хвилин!
-weight: 10
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+weight: 8
+default_lang_commit: 873e42833f8e17860becdff26de4717194eb11ca
 cSpell:ignore: ASPNETCORE rolldice
 ---
 

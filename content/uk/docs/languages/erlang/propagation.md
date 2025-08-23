@@ -1,11 +1,11 @@
 ---
 title: Поширення
 weight: 60
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 873e42833f8e17860becdff26de4717194eb11ca
 cSpell:ignore: elli
 ---
 
-{{% uk/docs/languages/propagation erlang %}}
+{{% docs/languages/propagation %}}
 
 ## Автоматичне поширення контексту {#automatic-context-propagation}
 

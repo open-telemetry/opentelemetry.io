@@ -1,9 +1,9 @@
 ---
 title: Інструментування
-weight: 20
+weight: 36
 aliases: [manual]
 description: Інструментування для OpenTelemetry .NET
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 873e42833f8e17860becdff26de4717194eb11ca
 cSpell:ignore: activitysource dicelib rolldice
 ---
 
@@ -592,14 +592,6 @@ private int rollOnce()
     }
 }
 ```
-
-## Метрики {#metrics}
-
-Документація для API та SDK метрик відсутня, ви можете допомогти зробити її доступною, [редагуючи цю сторінку](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/languages/dotnet/instrumentation.md).
-
-## Логи {#logs}
-
-Документація для API та SDK логів відсутня. Ви можете допомогти зробити її доступною, [редагуючи цю сторінку](https://github.com/open-telemetry/opentelemetry.io/edit/main/content/en/docs/languages/dotnet/instrumentation.md).
 
 ## Наступні кроки {#next-steps}
 

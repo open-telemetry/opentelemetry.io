@@ -1,9 +1,9 @@
 ---
 title: Безпека
 cascade:
-  collector_vers: 0.131.0
+  collector_vers: 0.132.0
 weight: 970
-default_lang_commit: d9b41af1f01873cce900ce37f1c07afb2758f028
+default_lang_commit: 873e42833f8e17860becdff26de4717194eb11ca
 cSpell:ignore: cves
 ---
 

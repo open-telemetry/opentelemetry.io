@@ -3,7 +3,7 @@ title: Архітектура Demo
 linkTitle: Архітектура
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 873e42833f8e17860becdff26de4717194eb11ca
 ---
 
 **OpenTelemetry Demo** складається з мікросервісів, написаних різними мовами програмування, які взаємодіють між собою через gRPC та HTTP; і генератора навантаження, який використовує [Locust](https://locust.io/) для імітації користувацького трафіку.
@@ -120,7 +120,7 @@ classDef rust fill:#dea584,color:black;
 classDef typescript fill:#e98516,color:black;
 ```
 
-Перейдіть за цими посиланнями, щоб дізнатися про поточний стан [метрик](/docs/demo/telemetry-features/metric-coverage/) та [трасування](/docs/demo/telemetry-features/trace-coverage/) інструментування демонстраційних застосунків.
+Перейдіть за цими посиланнями, щоб дізнатися про поточний стан [логів](/docs/demo/telemetry-features/log-coverage/), [метрик](/docs/demo/telemetry-features/metric-coverage/) та [трасування](/docs/demo/telemetry-features/trace-coverage/) інструментування демонстраційних застосунків.
 
 Колектор налаштований в [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml), альтернативні експортери можна налаштувати тут.
 
@@ -142,18 +142,25 @@ subgraph tdf[Потік Даних Телеметрії]
             oc-grpc[/"OTLP Приймач<br/>слухає на<br/>grpc://localhost:4317"/]
             oc-http[/"OTLP Приймач<br/>слухає на <br/>localhost:4318<br/>"/]
             oc-proc(Процесори)
+            oc-spanmetrics[/"Конектор метрик відрізків"/]
             oc-prom[/"OTLP HTTP Експортер"/]
             oc-otlp[/"OTLP Експортер"/]
+            oc-opensearch[/"OpenSearch Експортер"/]
 
             oc-grpc --> oc-proc
             oc-http --> oc-proc
 
             oc-proc --> oc-prom
             oc-proc --> oc-otlp
+            oc-proc --> oc-opensearch
+            oc-proc --> oc-spanmetrics
+            oc-spanmetrics --> oc-prom
+
         end
 
         oc-prom -->|"localhost:9090/api/v1/otlp"| pr-sc
         oc-otlp -->|gRPC| ja-col
+        oc-opensearch -->|HTTP| os-http
 
         subgraph pr[Prometheus]
             style pr fill:#e75128,color:black;
@@ -178,6 +185,14 @@ subgraph tdf[Потік Даних Телеметрії]
             ja-db --> ja-http
         end
 
+        subgraph os[OpenSearch]
+            style os fill:#005eb8,color:black;
+            os-http[/"OpenSearch<br/>listening on<br/>localhost:9200"/]
+            os-db[(OpenSearch Index)]
+
+            os-http ---> os-db
+        end
+
         subgraph gr[Grafana]
             style gr fill:#f8b91e,color:black;
             gr-srv["Сервер Grafana"]
@@ -188,6 +203,7 @@ subgraph tdf[Потік Даних Телеметрії]
 
         pr-http --> |"localhost:9090/api"| gr-srv
         ja-http --> |"localhost:16686/api"| gr-srv
+        os-http --> |"localhost:9200/api"| gr-srv
 
         ja-b{{"Оглядач<br/>Jaeger UI"}}
         ja-http ---->|"localhost:16686/search"| ja-b

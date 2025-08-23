@@ -1,11 +1,32 @@
 ---
-title: Ресурси
-weight: 70
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+title: Ресурси в OpenTelemetry .NET
+linkTitle: Ресурси
+description: Дізнайтеся про ресурси та способи їх використання в OpenTelemetry .NET
+weight: 40
+default_lang_commit: 873e42833f8e17860becdff26de4717194eb11ca
 cSpell:ignore: myhost pcarter uuidgen
 ---
 
 {{% docs/languages/resources-intro %}}
+
+## Що таке ресурси? {#what-are-resources}
+
+В OpenTelemetry ресурс — це незмінне подання сутності, що продукує телеметрію. Наприклад, ресурс може представляти контейнер Kubernetes, процес Linux або Windows, або застосунок, що працює в межах процесу.
+
+Ресурси є фундаментальною концепцією в OpenTelemetry, і вони використовуються для опису джерела телеметричних даних. Ця інформація є цінною для налагодження та аналізу телеметричних даних.
+
+## Атрибути ресурсу {#resource-attributes}
+
+Атрибути ресурсу — це пари ключ-значення, які надають метадані про ресурс. OpenTelemetry визначає набір [семантичних домовленостей](/docs/specs/semconv/resource/) для атрибутів ресурсу, які слід використовувати, коли це можливо.
+
+Загальні атрибути ресурсу включають:
+
+- `service.name`: Назва сервісу, що генерує телеметрію
+- `service.version`: Версія сервісу
+- `service.namespace`: Простір імен для сервісу
+- `service.instance.id`: Унікальний ідентифікатор для екземпляра сервісу
+- `host.name`: Назва хосту
+- `deployment.environment`: Середовище розгортання (наприклад, production, staging)
 
 ## Налаштування {#setup}
 
@@ -130,3 +151,7 @@ Resource associated with Activity:
 [deployment]: /docs/specs/semconv/resource/deployment-environment/
 [service]: /docs/specs/semconv/resource/#service
 [os]: /docs/specs/semconv/resource/os/
+
+## Дізнатись більше {#learn-more}
+
+Для отримання додаткової інформації про ресурси в OpenTelemetry дивіться [Resources SDK specification](/docs/specs/otel/resource/sdk/).
