@@ -2,8 +2,7 @@
 title: プルリクエストのチェック
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
-drifted_from_default: true
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -51,12 +50,15 @@ PRに `/fix:all` というコメントを追加することもできます。
 
 このチェックは、[Markdown ファイルの標準と一貫性が強制されていること](../style-guide/#markdown-standards)を検証します。
 
-問題が見つかった場合、`npm run fix:format` を実行すると、ほとんどの問題を修正できます。
-より複雑な問題がある場合は、`npm run check:markdown` を実行し、提案された変更を適用してください。
+問題が見つかった場合、`npm run fix:markdown` を実行すると、ほとんどの問題を自動的に修正できます。
+残りの問題については、`npm run check:markdown` を実行し、提案された変更を手動で適用してください。
 
 ### `SPELLING check` {#spelling-check .notranslate lang=en}
 
 このチェックは、[すべての単語が正しく綴られていること](../style-guide/#spell-checking) を検証します。
+
+このチェックが失敗した場合、`npm run check:spelling` をローカルで実行して、スペルミスのある単語を確認してください。
+単語のスペルが正しい場合は、ファイルのフロントマターの `cSpell:ignore` セクションに追加する必要があるかもしれません。
 
 ### `CSPELL` check {#cspell-check .notranslate lang=en}
 
