@@ -515,7 +515,7 @@ secure connections, as described in
 ## Connectors <img width="32" class="img-initial" alt="" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
 
 Connectors join two pipelines, acting as both exporter and receiver. A connector
-consumes data as an exporter at the end of one pipeline and emits data as a
+emits data as an exporter at the end of one pipeline and consumes data as a
 receiver at the beginning of another pipeline. The data consumed and emitted may
 be of the same type or of different data types. You can use connectors to
 summarize consumed data, replicate it, or route it.
