@@ -122,6 +122,11 @@ See [Distributed tracing][distributed tracing].
 A distribution is a wrapper around an upstream OpenTelemetry repository with
 some customizations. See [Distributions].
 
+### Entity
+
+An Entity represents an object of interest associated with produced telemetry:
+traces, metrics, logs, profiles etc.
+
 ### Event
 
 An Event is a [Log Record](#log-record) with an event name and a well-known
