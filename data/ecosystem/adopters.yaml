@@ -98,6 +98,12 @@
   components: [Ruby]
   reference: ''
   contact: ''
+- name: QuintoAndar
+  url: https://www.quintoandar.com.br/
+  components: [Collector, Operator, Go, Java, JavaScript, Python]
+  reference: ''
+  referenceTitle: ''
+  contact: https://github.com/andrefrco
 - name: Shopify
   url: https://www.shopify.com/
   components: [Collector, Go, Ruby]
