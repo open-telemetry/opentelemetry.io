@@ -37,7 +37,7 @@ instrumentaciones se encargan de propagar automáticamente el `Baggage` por ti.
 ## ¿Para qué debes usar el `Baggage` de OTel? {#what-should-otel-baggage-be-used-for}
 
 El `Baggage` se usa típicamente para incluir información que sólo está
-disponible al inicio de una solicitud en los servicios downstream. Por ejemplo,
+disponible al inicio de una solicitud en los servicios posteriores. Por ejemplo,
 se pueden incluir la Identificación de la Cuenta, el ID del Usuario, el ID del
 Producto o la IP de origen.
 
@@ -46,7 +46,7 @@ la telemetría en un backend. Por ejemplo, si incluyes información como un ID d
 Usuario en un span que rastrea una llamada a una base de datos, puedes responder
 con mucha más facilidad a preguntas como: “¿qué usuarios están experimentando
 más lentitud en las llamadas a la base de datos?”. También puedes registrar
-información sobre una operación downstream adjuntando ese mismo ID de Usuario a
+información sobre una operación posterior adjuntando ese mismo ID de Usuario a
 los logs.
 
 ![Baggage en OpenTelemetry](../otel-baggage-2.svg)
@@ -60,7 +60,7 @@ servicio. Específicamente, el `Baggage` y otras partes del contexto de traza se
 envían en encabezados HTTP, haciéndolos visibles para cualquiera que esté
 inspeccionando tu tráfico de red. Si el tráfico está restringido dentro de tu
 red, este riesgo podría no aplicarse, pero ten en cuenta que los servicios
-downstream podrían propagar el `Baggage` fuera de tu red.
+posteriores podrían propagar el `Baggage` fuera de tu red.
 
 Además, no hay verificaciones de integridad embedidas que permitan asegurar que
 los elementos del `Baggage` son tuyos, así que ten precaución al leerlos.
