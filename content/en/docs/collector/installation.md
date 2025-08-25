@@ -257,8 +257,9 @@ unpacking.
 ## Windows
 
 Windows [releases][] are available as MSI installers and gzipped tarballs
-(`.tar.gz`). Every Collector release includes an `otelcol.exe` executable that
-you can run after installation.
+(`.tar.gz`). The MSI installs the Collector as a Windows service named after the
+distribution, with the display name "OpenTelemetry Collector", and registers an
+Application Event Log source with the distribution name.
 
 ### MSI installation
 
@@ -269,9 +270,12 @@ msiexec /i "https://github.com/open-telemetry/opentelemetry-collector-releases/r
 ### Manual installation
 
 ```powershell
-Invoke-WebRequest -Uri "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_windows_amd64.tar.gz" -OutFile "otelcol.tar.gz"
-tar -xvzf otelcol.tar.gz
+Invoke-WebRequest -Uri "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_windows_amd64.tar.gz" -OutFile "otelcol_{{% param vers %}}_windows_amd64.tar.gz"
+tar -xvzf otelcol_{{% param vers %}}_windows_amd64.tar.gz
 ```
+
+Every release includes the Collector executable that you can run after
+installation.
 
 ## Build from source
 
