@@ -17719,6 +17719,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:23.371728-05:00"
   },
+  "https://nodejs.org/api/cli.html#--importmodule": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-20T14:56:41.743648-07:00"
+  },
   "https://nodejs.org/api/cli.html#-r---require-module": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:27:12.345Z"
