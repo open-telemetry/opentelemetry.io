@@ -1,7 +1,7 @@
 # cSpell:ignore langchain openinference arize Arize arizeai
 title: LangChain JavaScript Instrumentation
 registryType: instrumentation
-language: javascript
+language: js
 tags:
   - javascript
   - instrumentation
