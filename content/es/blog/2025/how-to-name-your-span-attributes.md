@@ -27,7 +27,7 @@ Esta guía está dirigida a desarrolladores que están:
 
 Las decisiones que tomas sobre la nomenclatura de atributos impactan
 directamente en la usabilidad y el mantenimiento de tus datos de observabilidad.
-Hagámoslo bien.
+Es importante hacerlo bien.
 
 ## Empieza con las convenciones semánticas {#start-with-semantic-conventions}
 
