@@ -6,7 +6,7 @@ author: >-
   [Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)
 canonical_url: https://blog.olly.garden/how-to-name-your-span-attributes
 default_lang_commit: d8fdf95e39753fb3b3eedad308bbd8ceda4c859e
-cSpell:ignore: jpkrohling OllyGarden shopify
+cSpell:ignore: interoperabilidad jpkrohling OllyGarden shopify
 ---
 
 Bienvenidos a la segunda entrega de nuestra serie sobre buenas prácticas de
@@ -57,7 +57,7 @@ convención semántica cuando describa con precisión tus datos.
 
 ### Cuando la semántica no coincide, no la fuerces {#when-semantics-dont-match-dont-force-it}
 
-Resiste la tentación de malutilizar convenciones semánticas:
+Resista la tentación de hacer un mal uso de las convenciones semánticas:
 
 | No hagas esto                                       | Por qué está incorrecto                              |
 | :-------------------------------------------------- | :--------------------------------------------------- |
@@ -278,7 +278,7 @@ dominio-primero.
 
 ## Tu plan de acción {#your-action-plan}
 
-Nombrar bien los atributos de span crea datos de telemetría que son mantenibles,
+Nombrar bien los atributos de span genera datos de telemetría fáciles de mantener,
 interoperables y valiosos en toda tu organización. Aquí tu hoja de ruta:
 
 1. **Revisa siempre primero las convenciones semánticas** - Úsalas cuando
