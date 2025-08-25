@@ -46,7 +46,7 @@ instrumentar, generar, recopilar y exportar datos de telemetría (métricas, log
 y trazas) para que te ayuden a analizar el rendimiento y comportamiento de tu
 aplicación.
 
-> OpenTelemetry está actualmente disponible para
+> OpenTelemetry está actualmente [disponible](/status/) para
 > [varios lenguajes de programación](docs/languages) y puede usarse en entornos
 > de producción.
 
@@ -54,13 +54,14 @@ aplicación.
 
 {{% blocks/section color="dark" type="row" %}}
 
-{{% blocks/feature icon="fas fa-chart-line" title="Trazas, métricas y logs"%}}
+{{% blocks/feature icon="fas fa-chart-line" title="Trazas, métricas y logs" url="docs/concepts/observability-primer/" %}}
 
 Genera y recopila datos de telemetría desde tus servicios y aplicaciones y
 reenvía los datos a una amplia variedad de herramientas de análisis.
+
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fas fa-magic" title="Instrumentación fácil de desplegar"%}}
+{{% blocks/feature icon="fas fa-magic" title="Instrumentación & Integraciones listas para usar"%}}
 
 OpenTelemetry [se integra] con muchas librerías y frameworks populares, y admite
 la [instrumentación] _manual y sin código_.
