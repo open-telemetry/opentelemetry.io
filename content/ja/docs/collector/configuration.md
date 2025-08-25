@@ -12,7 +12,7 @@ cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca o
 観測のニーズに合わせて OpenTelemetry Collector を設定できます。
 コレクターの設定方法を学ぶ前に、以下の内容を理解してください。
 
-- [データ収集の概念][dcc]、OpenTelemetry コレクター に適用可能なリポジトリを理解します。
+- [データ収集の概念][dcc]、OpenTelemetry コレクターに適用可能なリポジトリを理解します。
 - [エンドユーザー向けセキュリティガイダンス](/docs/security/config-best-practices/)
 - [コンポーネント開発者のためのセキュリティガイダンス](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
