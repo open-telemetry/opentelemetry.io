@@ -278,8 +278,9 @@ dominio-primero.
 
 ## Tu plan de acción {#your-action-plan}
 
-Nombrar bien los atributos de span genera datos de telemetría fáciles de mantener,
-interoperables y valiosos en toda tu organización. Aquí tu hoja de ruta:
+Nombrar bien los atributos de span genera datos de telemetría fáciles de
+mantener, interoperables y valiosos en toda tu organización. Aquí tu hoja de
+ruta:
 
 1. **Revisa siempre primero las convenciones semánticas** - Úsalas cuando
    coincidan.
