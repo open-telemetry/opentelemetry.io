@@ -19,7 +19,7 @@ cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca o
 ## ロケーション {#location}
 
 デフォルトでは、コレクターの設定は `/etc/<otel-directory>/config.yaml` に配置されます。
-ここで、 `<otel-directory>` はコレクターのバージョンや使っているコレクターのディストーションによって `otelcol` 、 `otelcol-contrib` あるいは他の値となります。
+ここで、 `<otel-directory>` はコレクターのバージョンや使っているコレクターのディストリビューションによって `otelcol` 、 `otelcol-contrib` あるいは他の値となります。
 
 `--config` オプションを使用して、1つまたは複数の設定を指定できます。
 たとえば次のように行います。
