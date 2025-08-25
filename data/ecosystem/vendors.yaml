@@ -548,3 +548,15 @@
   url: https://github.com/coroot/coroot
   documentation: https://docs.coroot.com/tracing/opentelemetry-go
   contact: alamberton@coroot.com
+- name: Apache Doris
+  nativeOTLP: true
+  oss: true
+  commercial: false
+  url: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/dorisexporter
+  contact: kxiao@apache.org
+- name: VeloDB
+  nativeOTLP: true
+  oss: false
+  commercial: true
+  url: https://www.velodb.io/solutions/use-cases/observability
+  contact: owen@velodb.io
