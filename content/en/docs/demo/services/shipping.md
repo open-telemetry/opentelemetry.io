@@ -2,183 +2,241 @@
 title: Shipping Service
 linkTitle: Shipping
 aliases: [shippingservice]
-cSpell:ignore: itemct oteldemo reqwest sdktrace semcov shiporder tokio
+cSpell:ignore: sdktrace
 ---
 
 This service is responsible for providing shipping information including pricing
 and tracking information, when requested from Checkout Service.
 
-Shipping service is built primarily with Tonic, Reqwest, and OpenTelemetry
-Libraries/Components. Other sub-dependencies are included in `Cargo.toml`.
+Shipping service is built with [Actix Web](https://actix.rs/),
+[Tracing](https://tracing.rs/) for logs and OpenTelemetry Libraries. All other
+sub-dependencies are included in `Cargo.toml`.
 
 Depending on your framework and runtime, you may consider consulting
 [Rust docs](/docs/languages/rust/) to supplement. You'll find examples of async
 and sync spans in quote requests and tracking IDs respectively.
 
-The `build.rs` supports development outside docker, given a Rust installation.
-Otherwise, consider building with `docker compose` to edit / assess changes as
-needed.
-
 [Shipping service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/)
 
-## Traces
+## Instrumentation
 
-### Initializing Tracing
+The OpenTelemetry SDK is configured in the `telemetry_conf` file.
 
-The OpenTelemetry SDK is initialized from `main`.
+A function `get_resource()` is implemented to create a Resource using the
+default Resource Detectors plus `OS` and `Process` detectors:
 
 ```rust
-fn init_tracer() -> Result<sdktrace::Tracer, TraceError> {
-    global::set_text_map_propagator(TraceContextPropagator::new());
-    let os_resource = OsResourceDetector.detect(Duration::from_secs(0));
-    let process_resource = ProcessResourceDetector.detect(Duration::from_secs(0));
-    let sdk_resource = SdkProvidedResourceDetector.detect(Duration::from_secs(0));
-    let env_resource = EnvResourceDetector::new().detect(Duration::from_secs(0));
-    let telemetry_resource = TelemetryResourceDetector.detect(Duration::from_secs(0));
-    opentelemetry_otlp::new_pipeline()
-        .tracing()
-        .with_exporter(
-            opentelemetry_otlp::new_exporter()
-                .tonic()
-                .with_endpoint(format!(
-                    "{}{}",
-                    env::var("OTEL_EXPORTER_OTLP_TRACES_ENDPOINT")
-                        .unwrap_or_else(|_| "http://otelcol:4317".to_string()),
-                    "/v1/traces"
-                )), // TODO: assume this ^ is true from config when opentelemetry crate > v0.17.0
-                    // https://github.com/open-telemetry/opentelemetry-rust/pull/806 includes the environment variable.
-        )
-        .with_trace_config(
-            sdktrace::config()
-                .with_resource(os_resource.merge(&process_resource).merge(&sdk_resource).merge(&env_resource).merge(&telemetry_resource)),
-        )
-        .install_batch(opentelemetry::runtime::Tokio)
+fn get_resource() -> Resource {
+    let detectors: Vec<Box<dyn ResourceDetector>> = vec![
+        Box::new(OsResourceDetector),
+        Box::new(ProcessResourceDetector),
+    ];
+
+    Resource::builder().with_detectors(&detectors).build()
 }
 ```
 
-Spans and other metrics are created in this example throughout `tokio` async
-runtimes found within
-[`tonic` server functions](https://github.com/hyperium/tonic/blob/master/examples/helloworld-tutorial.md#writing-our-server).
-Be mindful of async runtime,
-[context guards](https://docs.rs/opentelemetry/latest/opentelemetry/context/struct.ContextGuard.html),
-and inability to move and clone `spans` when replicating from these samples.
+With `get_resource()` in place, the function can be called multiple times across
+all provider initializations.
 
-### Adding gRPC instrumentation
-
-This service receives gRPC requests, which are instrumented in the middleware.
-
-The root span is started and passed down as reference in the same thread to
-another closure where we call `quote`.
+### Initializing Tracer Provider
 
 ```rust
-    let tracer = global::tracer("shipping");
-    let mut span = tracer.span_builder("oteldemo.ShippingService/GetQuote").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
-    span.set_attribute(semcov::trace::RPC_SYSTEM.string(RPC_SYSTEM_GRPC));
+fn init_tracer_provider() {
+    global::set_text_map_propagator(TraceContextPropagator::new());
 
-    span.add_event("Processing get quote request".to_string(), vec![]);
+    let tracer_provider = opentelemetry_sdk::trace::SdkTracerProvider::builder()
+        .with_resource(get_resource())
+        .with_batch_exporter(
+            opentelemetry_otlp::SpanExporter::builder()
+                .with_tonic()
+                .build()
+                .expect("Failed to initialize tracing provider"),
+        )
+        .build();
 
-    let cx = Context::current_with_span(span);
-    let q = match create_quote_from_count(itemct)
-        .with_context(cx.clone())
-        .await
-//-> create_quote_from_count()...
-    let f = match request_quote(count).await {
-        Ok(float) => float,
+    global::set_tracer_provider(tracer_provider);
+}
+```
+
+### Initializing Meter Provider
+
+```rust
+fn init_meter_provider() -> opentelemetry_sdk::metrics::SdkMeterProvider {
+    let meter_provider = opentelemetry_sdk::metrics::SdkMeterProvider::builder()
+        .with_resource(get_resource())
+        .with_periodic_exporter(
+            opentelemetry_otlp::MetricExporter::builder()
+                .with_temporality(opentelemetry_sdk::metrics::Temporality::Delta)
+                .with_tonic()
+                .build()
+                .expect("Failed to initialize metric exporter"),
+        )
+        .build();
+    global::set_meter_provider(meter_provider.clone());
+
+    meter_provider
+}
+```
+
+### Initializing Logger Provider
+
+For logs, the Shipping service uses Tracing, so the `OpenTelemetryTracingBridge`
+is used to bridge logs from the tracing crate to OpenTelemetry.
+
+```rust
+fn init_logger_provider() {
+    let logger_provider = opentelemetry_sdk::logs::SdkLoggerProvider::builder()
+        .with_resource(get_resource())
+        .with_batch_exporter(
+            opentelemetry_otlp::LogExporter::builder()
+                .with_tonic()
+                .build()
+                .expect("Failed to initialize logger provider"),
+        )
+        .build();
+
+    let otel_layer = OpenTelemetryTracingBridge::new(&logger_provider);
+    let filter_otel = EnvFilter::new("info");
+    let otel_layer = otel_layer.with_filter(filter_otel);
+
+    tracing_subscriber::registry().with(otel_layer).init();
+}
+```
+
+### Instrumentation Initialization
+
+After defining the functions to initialize the providers for Traces, Metrics and
+Logs, a public function `init_otel()` is created:
+
+```rust
+pub fn init_otel() -> Result<()> {
+    init_logger_provider();
+    init_tracer_provider();
+    init_meter_provider();
+    Ok(())
+}
+```
+
+This function calls all initializers and returns `OK(())` if everything starts
+properly.
+
+The `init_otel()` function is then called on `main`:
+
+```rust
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    match init_otel() {
+        Ok(_) => {
+            info!("Successfully configured OTel");
+        }
         Err(err) => {
-            let msg = format!("{}", err);
-            return Err(tonic::Status::unknown(msg));
+            panic!("Couldn't start OTel: {0}", err);
         }
     };
 
-    Ok(get_active_span(|span| {
-        let q = create_quote_from_float(f);
-        span.add_event(
-            "Received Quote".to_string(),
-            vec![KeyValue::new("app.shipping.cost.total", format!("{}", q))],
-        );
-        span.set_attribute(KeyValue::new("app.shipping.items.count", count as i64));
-        span.set_attribute(KeyValue::new("app.shipping.cost.total", format!("{}", q)));
-        q
-    }))
-//<- create_quote_from_count()...
-    cx.span().set_attribute(semcov::trace::RPC_GRPC_STATUS_CODE.i64(RPC_GRPC_STATUS_CODE_OK));
+    [...]
+
+}
 ```
 
-Note that we create a context around the root span and send a clone to the async
-function create_quote_from_count(). After create_quote_from_count() completes,
-we can add additional attributes to the root span as appropriate.
+### Instrumentation Configuration
 
-You may also notice the `attributes` set on the span in this example, and
-`events` propagated similarly. With any valid `span` pointer (attached to
-context) the
-[OpenTelemetry API](https://docs.rs/opentelemetry/0.17.0/opentelemetry/trace/struct.SpanRef.html)
-will work.
+With the providers now configured and initialized, Shipping uses the
+[`opentelemetry-instrumentation-actix-web` crate](https://crates.io/crates/opentelemetry-instrumentation-actix-web)
+to instrument the application during server-side and client-side configuration.
 
-### Adding HTTP instrumentation
+#### Server side
 
-A child _client_ span is also produced for the outgoing HTTP call to quote via
-the `reqwest` client. This span pairs up with the corresponding quote _server_
-span. The tracing instrumentation is implemented in the client middleware making
-use of the available `reqwest-middleware`, `reqwest-tracing` and
-`tracing-opentelemetry` libraries:
+The server is wrapped with `RequestTracing` and `RequestMetrics` to
+automatically create Traces and Metrics when receiving requests:
 
 ```rust
-let reqwest_client = reqwest::Client::new();
-let client = ClientBuilder::new(reqwest_client)
-    .with(TracingMiddleware::<SpanBackendWithUrl>::new())
-    .build();
+HttpServer::new(|| {
+    App::new()
+        .wrap(RequestTracing::new())
+        .wrap(RequestMetrics::default())
+        .service(get_quote)
+        .service(ship_order)
+})
 ```
 
-### Add span attributes
+#### Client side
 
-Provided you are on the same thread, or in a context passed from a span-owning
-thread, or a `ContextGuard` is in scope, you can get an active span with
-`get_active_span`. You can find examples of all of these in the demo, with
-context available in `shipping_service` for sync/async runtime. You should
-consult `quote.rs` and/or the example above to see context-passed-to-async
-runtime.
-
-See below for a snippet from `shiporder` that holds context and a span in scope.
-This is appropriate in our case of a sync runtime.
+When making a request to another service, `trace_request()` is added to the
+call:
 
 ```rust
-let parent_cx =
-global::get_text_map_propagator(|prop| prop.extract(&MetadataMap(request.metadata())));
-// in this case, generating a tracking ID is trivial
-// we'll create a span and associated events all in this function.
-let tracer = global::tracer("shipping");
-let mut span = tracer
-    .span_builder("oteldemo.ShippingService/ShipOrder").with_kind(SpanKind::Server).start_with_context(&tracer, &parent_cx);
+let mut response = client
+    .post(quote_service_addr)
+    .trace_request()
+    .send_json(&reqbody)
+    .await
+    .map_err(|err| anyhow::anyhow!("Failed to call quote service: {err}"))?;
 ```
 
-You must add attributes to a span in context with `set_attribute`, followed by a
-`KeyValue` object, containing a key, and value.
+### Manual instrumentation
+
+The `opentelemetry-instrumentation-actix-web` crate allows us to instrument
+server and client side by adding the commands mentioned in the previous section.
+
+In the Demo we also demonstrate how to manually enhance automatically created
+spans and how to create manual metrics on the application.
+
+#### Manual spans
+
+In the following snippet, the current active span is enhanced with a span event
+and a span attribute:
 
 ```rust
-let tid = create_tracking_id();
-span.set_attribute(KeyValue::new("app.shipping.tracking.id", tid.clone()));
-info!("Tracking ID Created: {}", tid);
+Ok(get_active_span(|span| {
+    let q = create_quote_from_float(f);
+    span.add_event(
+        "Received Quote".to_string(),
+        vec![KeyValue::new("app.shipping.cost.total", format!("{}", q))],
+    );
+    span.set_attribute(KeyValue::new("app.shipping.cost.total", format!("{}", q)));
+    q
+}))
 ```
 
-### Add span events
+#### Manual metrics
 
-Adding span events is accomplished using `add_event` on the span object. Both
-server routes, for `ShipOrderRequest` (sync) and `GetQuoteRequest` (async), have
-events on spans. Attributes are not included here, but are
-[simple to include](https://docs.rs/opentelemetry/latest/opentelemetry/trace/trait.Span.html#method.add_event).
-
-Adding a span event:
+A custom metric counter is created to count how many items are in the shipping
+request:
 
 ```rust
-let tid = create_tracking_id();
-span.set_attribute(KeyValue::new("app.shipping.tracking.id", tid.clone()));
-info!("Tracking ID Created: {}", tid);
+let meter = global::meter("otel_demo.shipping.quote");
+let counter = meter.u64_counter("app.shipping.items_count").build();
+counter.add(count as u64, &[]);
 ```
 
-## Metrics
+### Logs
 
-TBD
+Because the Shipping service is using Tracing as a log interface, it uses the
+`opentelemetry-appender-tracing` crate to bridge Tracing logs into OpenTelemetry
+logs.
 
-## Logs
+The appender was already configured during the
+[initialization of the logger provider](#initializing-logger-provider), with the
+following two lines:
 
-TBD
+```rust
+let otel_layer = OpenTelemetryTracingBridge::new(&logger_provider);
+tracing_subscriber::registry().with(otel_layer).init();
+```
+
+With that in place, we can use Tracing as we would normally, for example:
+
+```rust
+info!(
+    name = "SendingQuoteValue",
+    quote.dollars = quote.dollars,
+    quote.cents = quote.cents,
+    message = "Sending Quote"
+);
+```
+
+The `opentelemetry-appender-tracing` crate takes care of adding OpenTelemetry
+context to the log entry, and the final exported log contains all resource
+attributes configured and `TraceContext` information.

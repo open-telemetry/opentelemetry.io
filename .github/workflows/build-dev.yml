@@ -8,12 +8,15 @@ on:
         default: content-modules
         type: string
 
+permissions:
+  contents: read
+
 jobs:
   build-and-test:
     name: BUILD and CHECK LINKS
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Create NPM cache-hash input file
         run: |
@@ -22,8 +25,7 @@ jobs:
 
       - name: Create and use reduced-dependencies package.json
         run: |
-          jq 'del(.dependencies, .optionalDependencies)' \
-            package.json > tmp/package-min.json
+          jq '.dependencies |= {minisearch: .minisearch} | del(.optionalDependencies)' package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
       - uses: actions/setup-node@v4
@@ -53,8 +55,8 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v5
         with: { name: build-log-etc }
       - name: Fail when refcache contains entries with HTTP status 4XX
         run: |
@@ -70,8 +72,8 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v5
         with: { name: build-log-etc }
       - run: cat tmp/build-log.txt
       - run: scripts/check-build-log.sh

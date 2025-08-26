@@ -24,9 +24,9 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.45.0
+    spec: 1.48.0
     otlp: 1.7.0
-    semconv: 1.34.0
+    semconv: 1.36.0
   );
 # Versions map without the colon in the keys
 my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
@@ -95,12 +95,12 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-sub patchSpec_because_of_SemConv_AttrRegRefactoring() {
-  return unless $ARGV =~ /^tmp\/otel\/specification\//
-    && applyPatchOrPrintMsgIf('2025-05-13-attribute-registry-refactoring', 'spec', '1.45.0-dev');
+# sub patchSpec_because_of_SemConv_AttrRegRefactoring() {
+#   return unless $ARGV =~ /^tmp\/otel\/specification\//
+#     && applyPatchOrPrintMsgIf('2025-05-13-attribute-registry-refactoring', 'spec', '1.45.0-dev');
 
-  s|/attributes-registry/|/registry/attributes/|g;
-}
+#   s|/attributes-registry/|/registry/attributes/|g;
+# }
 
 sub getVersFromSubmodule() {
   my %repoNames = qw(
@@ -180,17 +180,19 @@ while(<>) {
   if ($ARGV =~ /^tmp\/semconv/) {
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
-
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
+
+    # Remove the .md extension from the link title
+    # TODO: remove this once the .md extension is removed from the link title
+    s|(<td><a href=")(.*)\.md(#.*">.*</a></td>)|$1$2$3|g;
   }
+
 
   # SPECIFICATION custom processing
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;
   s|\.\./specification/(.*?\))|../otel/$1|g if $ARGV =~ /otel\/specification/;
-
-  patchSpec_because_of_SemConv_AttrRegRefactoring();
 
   # Match markdown inline links or link definitions to OTel spec pages: "[...](URL)" or "[...]: URL"
   s|(\]:\s+\|\()https://github.com/open-telemetry/opentelemetry-specification/\w+/(main\|v$otelSpecVers)/specification(.*?\)?)|$1$specBasePath/otel$3|;

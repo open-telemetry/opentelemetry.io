@@ -4,12 +4,15 @@ on:
   merge_group:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   text-linter:
     name: TEXT linter
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Create and use reduced-dependencies package.json
         run: |
           mkdir -p tmp
@@ -29,7 +32,7 @@ jobs:
     name: MARKDOWN linter
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Create and use reduced-dependencies package.json
         run: |
           mkdir -p tmp

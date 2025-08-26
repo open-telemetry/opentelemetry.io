@@ -4,6 +4,7 @@ description: Obtenha telemetria para sua aplicação em menos de 5 minutos!
 aliases: [/docs/js/getting_started/nodejs]
 weight: 10
 default_lang_commit: 1f6a173c26d1e194696ba77e95b6c3af40234952
+drifted_from_default: true
 cSpell:ignore: autoinstrumentations KHTML rolldice
 ---
 
@@ -12,10 +13,10 @@ Esta página mostrará como começar a usar o OpenTelemetry no Node.js.
 Você aprenderá como instrumentar [rastros][] e [métricas][] e exibi-los no
 console.
 
-{{% alert title="Nota" color="info" %}} A biblioteca para logs do OpenTelemetry
-para Node.js ainda está em desenvolvimento, portanto, este exemplo não será
-fornecido a seguir. Consulte [esta página](/docs/languages/js) para mais
-informações sobre o status do OpenTelemetry para JavaScript. {{% /alert %}}
+{{% alert title="Nota" %}} A biblioteca para logs do OpenTelemetry para Node.js
+ainda está em desenvolvimento, portanto, este exemplo não será fornecido a
+seguir. Consulte [esta página](/docs/languages/js) para mais informações sobre o
+status do OpenTelemetry para JavaScript. {{% /alert %}}
 
 ## Pré-requisitos {#prerequisites}
 

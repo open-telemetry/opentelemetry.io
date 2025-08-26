@@ -12,7 +12,6 @@ cSpell:ignore: Dotel myapp
     libraries.
 2.  Add `-javaagent:path/to/opentelemetry-javaagent.jar` and other config to
     your JVM startup arguments and launch your app:
-
     - Directly on the startup command:
 
       ```shell

@@ -51,8 +51,8 @@ If applicable, use the
 [semantic conventions for your resource attributes](/docs/specs/semconv/resource).
 For example, you can provide the name of your
 [deployment environment](/docs/specs/semconv/resource/deployment-environment/)
-using `deployment.environment`:
+using `deployment.environment.name`:
 
 ```shell
-env OTEL_RESOURCE_ATTRIBUTES=deployment.environment=production yourApp
+env OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=production yourApp
 ```

@@ -16,7 +16,7 @@ isFirstParty: false
 package:
   name: github.com/XSAM/otelsql
   registry: go
-  version: v0.38.0
+  version: v0.39.0
 urls:
   repo: https://github.com/XSAM/otelsql
 createdAt: 2021-10-12

@@ -3,13 +3,13 @@ title: O que é o OpenTelemetry?
 description: Uma breve explicação sobre o que o OpenTelemetry é e não é.
 weight: 150
 default_lang_commit: fb38bda3b4b9ae69c99b8d70543d0df37872aeac
+drifted_from_default: true
 cSpell:ignore: youtube
 ---
 
 O OpenTelemetry é:
 
 - Um **_framework_ e conjunto de ferramentas** projetado para facilitar a
-
   - [Geração][instr]
   - Exportação
   - [Coleta](../concepts/components/#collector)

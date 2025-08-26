@@ -4,12 +4,15 @@ on:
   merge_group:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   spelling-check:
     name: SPELLING check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
@@ -31,13 +34,13 @@ jobs:
     env:
       FIX_CMD: fix:dict
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: npm run ${{ env.FIX_CMD }}
       - name: Any changed files?
         run: |
           CHANGES=`git status --porcelain`
           if [[ $CHANGES ]]; then
-            echo "Add comment '/fix:${{ env.FIX_CMD }}' to your PR in GitHub,"
+            echo "Add comment '/${{ env.FIX_CMD }}' to your PR in GitHub,"
             echo "or locally run 'npm run ${{ env.FIX_CMD }}' and commit the changes:"
             echo "$CHANGES"
             exit 1

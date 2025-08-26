@@ -3,6 +3,7 @@ const trimCodeBlockRule = require('./_md-rules/' + tcb_rule_name);
 const gulp = require('gulp');
 const through2 = require('through2');
 const markdownlint = require('markdownlint/async').lint;
+const markdownIt = require('markdown-it');
 const { taskArgs, trimBlankLinesFromArray } = require('./_util');
 const fs = require('fs');
 
@@ -40,6 +41,7 @@ function markdownLintFile(file, encoding, callback) {
     },
     config: config,
     customRules: [trimCodeBlockRule],
+    markdownItFactory: markdownIt,
   };
 
   markdownlint(options, function (err, result) {

@@ -17,4 +17,4 @@ createdAt: 2022-11-07
 package:
   registry: nuget
   name: OpenTelemetry.Exporter.Geneva
-  version: 1.12.0
+  version: 1.13.0-alpha.1

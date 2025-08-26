@@ -6,7 +6,7 @@ cSpell:ignore: fastcgi pecl
 
 {{% docs/languages/exporters/intro %}}
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 If you use [zero-code instrumentation](/docs/zero-code/php/) you can set up
 exporters with

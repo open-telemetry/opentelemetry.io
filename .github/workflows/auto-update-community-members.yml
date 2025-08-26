@@ -6,6 +6,9 @@ on:
     # At 03:41, every day
     - cron: 41 3 * * *
 
+permissions:
+  contents: read
+
 jobs:
   auto-update-versions:
     name: Auto-update community members page
@@ -14,7 +17,7 @@ jobs:
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -30,6 +33,17 @@ jobs:
         run: node generate.js ../../data/community/members.yaml
         env:
           GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+
+      - name: Fix refcache
+        run: |
+          npm run fix:refcache
+
+          git add -A
+
+          if ! git diff-index --quiet --cached HEAD; then
+            git commit -am "Fix refcache"
+            git push
+          fi
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7

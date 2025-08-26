@@ -8,7 +8,8 @@ aliases:
   - libraries
 weight: 10
 description: Ecossistema de Instrumentação no OpenTelemetry Java
-default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
+default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b # patched
+drifted_from_default: true
 cSpell:ignore: logback
 ---
 
@@ -106,7 +107,7 @@ padrão, e que a instrumentação mantida pelo OpenTelemetry em
 [opentelemetry-java-instrumentação](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 seja um meio temporário de preencher a lacuna.
 
-{{% docs/languages/native-libraries "java" %}}
+{{% docs/languages/native-libraries %}}
 
 ### Instrumentação manual {#manual-instrumentation}
 
@@ -240,7 +241,7 @@ Correlação de Logs com rastros está disponível instalando um [shim](#shims) 
 conectar o contexto do OpenTelemetry no log framework. Veja os items "Bridge
 OpenTelemetry contexto em Log4j", "Bridge OpenTelemetry contexto em Logback".
 
-{{% alert title="Nota" color="info" %}}
+{{% alert title="Nota" %}}
 
 Um exemplo completo de instrumentação de logs utilizando stdout está disponível
 no

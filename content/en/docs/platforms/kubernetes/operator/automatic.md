@@ -35,10 +35,10 @@ chart, there is an option to generate a self-signed cert instead.
 ## Create an OpenTelemetry Collector (Optional)
 
 It is a best practice to send telemetry from containers to an
-[OpenTelemetry Collector](../../collector/) instead of directly to a backend.
-The Collector helps simplify secret management, decouples data export problems
-(such as a need to do retries) from your apps, and lets you add additional data
-to your telemetry, such as with the
+[OpenTelemetry Collector](/docs/platforms/kubernetes/collector/) instead of
+directly to a backend. The Collector helps simplify secret management, decouples
+data export problems (such as a need to do retries) from your apps, and lets you
+add additional data to your telemetry, such as with the
 [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
 component. If you chose not to use a Collector, you can skip to the next
 section.
@@ -108,7 +108,7 @@ an endpoint for auto-instrumentation in your pods.
 To be able to manage automatic instrumentation, the Operator needs to be
 configured to know what pods to instrument and which automatic instrumentation
 to use for those pods. This is done via the
-[Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#instrumentation).
+[Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/instrumentations.md).
 
 Creating the Instrumentation resource correctly is paramount to getting
 auto-instrumentation working. Making sure all endpoints and env vars are correct
@@ -217,7 +217,7 @@ endpoint must be able to receive OTLP over `http/proto`. Therefore, the example
 uses `http://demo-collector:4318`, which connects to the `http/proto` port of
 the `otlpreceiver` of the Collector created in the previous step.
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 [Deno's OpenTelemetry integration][deno-docs] is not yet stable. As a result all
 workloads that want to be instrumented with Deno must have the `--unstable-otel`
@@ -415,7 +415,7 @@ spec:
         value: fs,grpc # comma-separated list of the instrumentation package names without the `@opentelemetry/instrumentation-` prefix.
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 If both environment variables are set, `OTEL_NODE_ENABLED_INSTRUMENTATIONS` is
 applied first, and then `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is applied to that

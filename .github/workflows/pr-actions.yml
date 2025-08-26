@@ -28,11 +28,11 @@ jobs:
       patch_skipped: ${{ steps.check_patch.outputs.skipped }}
 
     steps:
-      - uses: step-security/harden-runner@0634a2670c59f64b4a01f0f96f84700a4088b9f0 # v2.12.0
+      - uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           fetch-depth: 999
 
@@ -93,11 +93,11 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: step-security/harden-runner@0634a2670c59f64b4a01f0f96f84700a4088b9f0 # v2.12.0
+      - uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           fetch-depth: 999
 
@@ -106,16 +106,18 @@ jobs:
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
       - name: Download patch
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: ${{ needs.generate-patch.outputs.patch_name }}
 
       - name: Apply patch
         run: |
-          git apply --check pr-fix.patch && git apply pr-fix.patch || {
-            echo "Patch failed to apply"
+          if ! git apply --verbose pr-fix.patch; then
+            echo "Patch failed to apply. For details, see output above. To debug this locally,"
+            echo "get the patch file from the workflow summary artifact section."
             exit 1
-          }
+          fi
+          rm pr-fix.patch
 
       - name: Commit and push changes, if any
         run: |
@@ -131,7 +133,7 @@ jobs:
             echo remote_repo=$remote_repo
             remote_branch=$(git config --get branch.${current_branch}.merge)
             echo remote_branch=$remote_branch
-            git commit -m "Results from /fix:${PR_ACTION}"
+            git commit -m "Results from /fix directive"
             git push ${remote_repo} HEAD:${remote_branch}
           else
             echo "No changes to commit"

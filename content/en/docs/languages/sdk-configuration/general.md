@@ -5,7 +5,7 @@ aliases: [general-sdk-configuration]
 cSpell:ignore: ottrace
 ---
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 Support for environment variables is optional. For detailed information on which
 environment variables each language implementation supports, please consult the
@@ -108,7 +108,7 @@ be set as follows:
 
 Specifies Propagators to be used in a comma-separated list.
 
-**Default value:** `"tracecontext,baggage"
+**Default value:** `"tracecontext,baggage"`
 
 **Example:**
 
@@ -165,7 +165,7 @@ Accepted values for `OTEL_METRICS_EXPORTER` are:
 
 - `"otlp"`: [OTLP][]
 - `"prometheus"`:
-  [Prometheus](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md)
+  [Prometheus](https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md)
 - `"console"`: [Standard Output](/docs/specs/otel/metrics/sdk_exporters/stdout/)
 - `"none"`: No automatically configured exporter for metrics.
 

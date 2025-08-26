@@ -24,10 +24,16 @@ components:
     - open-telemetry/docs-maintainers
   content/en/docs/demo:
     - open-telemetry/demo-approvers
-  content/en/docs/kubernetes/helm:
+  content/en/docs/platforms/kubernetes/collector:
+    - open-telemetry/collector-approvers
+  content/en/docs/platforms/kubernetes/helm:
     - open-telemetry/helm-approvers
-  content/en/docs/kubernetes/operator:
+  content/en/docs/platforms/kubernetes/operator:
     - open-telemetry/operator-approvers
+  content/en/docs/platforms/client-apps/android:
+    - open-telemetry/android-approvers
+  content/en/docs/platforms/faas:
+    - open-telemetry/lambda-extension-approvers
   content/en/docs/languages/cpp:
     - open-telemetry/cpp-approvers
   content/en/docs/languages/erlang:
@@ -66,6 +72,8 @@ components:
   content/en/docs/zero-code/net:
     - open-telemetry/dotnet-approvers
     - open-telemetry/dotnet-instrumentation-approvers
+  content/en/docs/zero-code/obi:
+    - open-telemetry/ebpf-instrumentation-approvers
   content/en/ecosystem/demo:
     - open-telemetry/demo-approvers
   content/zh:
@@ -86,3 +94,6 @@ components:
   content/bn:
     - open-telemetry/docs-maintainers
     - open-telemetry/docs-bn-approvers
+  content/uk:
+    - open-telemetry/docs-maintainers
+    - open-telemetry/docs-uk-approvers

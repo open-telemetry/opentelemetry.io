@@ -50,7 +50,7 @@ otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR --config=https://server/config.yaml
 otelcol --config="yaml:exporters::debug::verbosity: normal"
 ```
 
-{{% alert title="Tip" color="primary" %}}
+{{% alert title="Tip" %}}
 
 When referring to nested keys in YAML paths, make sure to use double colons (::)
 to avoid confusion with namespaces that contain dots. For example:
@@ -120,8 +120,11 @@ exporters:
 
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 
 service:
   extensions: [health_check, pprof, zpages]
@@ -170,8 +173,11 @@ exporters:
 
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 
 service:
   extensions: [health_check, pprof, zpages]
@@ -555,7 +561,7 @@ service:
 > For detailed connector configuration, see the
 > [connector README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
 
-## Extensions
+## Extensions <img width="32" class="img-initial" alt="" src="/img/logos/32x32/Extensions.svg"> {#extensions}
 
 Extensions are optional components that expand the capabilities of the Collector
 to accomplish tasks not directly involved with processing telemetry data. For
@@ -576,8 +582,11 @@ extensions configured in the same file:
 ```yaml
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 ```
 
 > For detailed extension configuration, see the
@@ -675,6 +684,17 @@ processors:
     actions:
       - key: ${env:DB_KEY}
         action: ${env:OPERATION}
+```
+
+You can pass defaults to an environment variable using the bash syntax:
+`${env:DB_KEY:-some-default-var}`
+
+```yaml
+processors:
+  attributes/example:
+    actions:
+      - key: ${env:DB_KEY:-mydefault}
+        action: ${env:OPERATION:-}
 ```
 
 Use `$$` to indicate a literal `$`. For example, representing
