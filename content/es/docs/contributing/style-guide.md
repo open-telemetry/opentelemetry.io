@@ -5,6 +5,7 @@ description:
 linkTitle: Guía de estilo de documentación
 weight: 20
 default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167
+drifted_from_default: true
 cSpell:ignore: open-telemetry opentelemetryio postgre style-guide textlintrc
 ---
 
@@ -17,7 +18,7 @@ documentación de OpenTelemetry está inspirado en las siguientes guías de esti
 Las siguientes secciones contienen indicaciones específicas para el proyecto
 OpenTelemetry.
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 Muchos de los requisitos de nuestra guía de estilo se pueden aplicar
 automaticamente: antes de enviar un

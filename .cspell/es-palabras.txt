@@ -16,3 +16,9 @@ monitoreo
 multilenguaje
 redireccionar
 prerrellenada
+autogenerado
+desincronizado
+desincronizadas
+subsección
+react-native-app
+cardinalidad

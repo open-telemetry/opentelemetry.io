@@ -81,7 +81,6 @@ restarts, you can enable persistent storage for the sending queue using the
   after the Collector restarts. Guarantees might not be as strong as dedicated
   message queues.
 - Configuration:
-
   1.  Define the `file_storage` extension.
   2.  Reference the storage ID in the exporter's `sending_queue` configuration.
 
@@ -132,7 +131,6 @@ backend, you can introduce a dedicated message queue like Kafka.
   failure, topic misconfiguration, data expiration) or failure of the producer
   to send to Kafka without adequate local buffering.
 - Configuration:
-
   - _Agent Collector Config (Producer):_
 
     ```yaml

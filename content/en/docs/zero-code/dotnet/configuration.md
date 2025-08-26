@@ -24,7 +24,6 @@ environment variables taking precedence over `App.config` or `Web.config` file:
 
    ⚠️ Only settings starting with `OTEL_` can be set using `App.config` or
    `Web.config`. However, the following settings are not supported:
-
    - `OTEL_DOTNET_AUTO_HOME`
    - `OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES`
    - `OTEL_DOTNET_AUTO_FAIL_FAST_ENABLED`
@@ -48,7 +47,6 @@ environment variables taking precedence over `App.config` or `Web.config` file:
 
    If no service name is explicitly configured one will be generated for you.
    This can be helpful in some circumstances.
-
    - If the application is hosted on IIS in .NET Framework this will be
      `SiteName\VirtualPath` ex: `MySite\MyApp`
    - If that is not the case it will use the name of the application
@@ -378,8 +376,7 @@ path of the current user's
 [temporary folder](https://docs.microsoft.com/en-us/dotnet/api/System.IO.Path.GetTempPath?view=net-6.0)
 instead.
 
-| Environment variable                              | Description                                                             | Default value                            | Status                                                    |
-| ------------------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------- |
-| `OTEL_DOTNET_AUTO_LOG_DIRECTORY`                  | Directory of the .NET Tracer logs.                                      | _See the previous note on default paths_ | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_LOG_LEVEL`                                  | SDK log level. (supported values: `none`,`error`,`warn`,`info`,`debug`) | `info`                                   | [Stable](/docs/specs/otel/versioning-and-stability)       |
-| `OTEL_DOTNET_AUTO_LOGS_INCLUDE_FORMATTED_MESSAGE` | Whether the log state should be formatted.                              | `false`                                  | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| Environment variable             | Description                                                             | Default value                            | Status                                                    |
+| -------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------- |
+| `OTEL_DOTNET_AUTO_LOG_DIRECTORY` | Directory of the .NET Tracer logs.                                      | _See the previous note on default paths_ | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_LOG_LEVEL`                 | SDK log level. (supported values: `none`,`error`,`warn`,`info`,`debug`) | `info`                                   | [Stable](/docs/specs/otel/versioning-and-stability)       |

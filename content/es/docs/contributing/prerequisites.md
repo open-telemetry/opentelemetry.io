@@ -6,6 +6,7 @@ description:
 aliases: [requisitos]
 weight: 1
 default_lang_commit: 2127d75cef0be2f2554f5b47520a108ba381b790
+drifted_from_default: true
 ---
 
 Para contribuir a este repositorio, necesitas estar familiarizado con las

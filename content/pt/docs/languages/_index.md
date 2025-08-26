@@ -5,6 +5,7 @@ description:
   populares de programação.
 weight: 250
 default_lang_commit: d1ef521ee4a777881fb99c3ec2b506e068cdec4c
+drifted_from_default: true
 ---
 
 A [instrumentação][] de código do OpenTelemetry é suportada para as linguagens
@@ -29,8 +30,8 @@ seguir:
 {{% alert title="Importante" color="warning" %}}
 
 Independente do estado de um API/SDK, se a sua instrumentação depende de
-[convenções semânticas] que são marcadas como [Experimental] na [especificação
-de convenções semânticas], seu fluxo de dados pode estar sujeito à **quebra de
+[convenções semânticas][] que são marcadas como [Experimental] na [especificação
+de convenções semânticas][], seu fluxo de dados pode estar sujeito à **quebra de
 compatibilidade**
 
 [convenções semânticas]: /docs/concepts/semantic-conventions/
@@ -49,7 +50,7 @@ API para desenvolvedores. As referências a seguir estão disponíveis:
 
 {{% apidocs %}}
 
-{{% alert title="Nota" color="info" %}}
+{{% alert title="Nota" %}}
 
 A lista acima é um alias para [`/api`](/api).
 

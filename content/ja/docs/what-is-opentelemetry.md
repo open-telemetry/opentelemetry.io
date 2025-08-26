@@ -2,13 +2,12 @@
 title: OpenTelemetryとは
 description: OpenTelemetryが何であり、何でないかについての簡潔な説明。
 weight: 150
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
 ---
 
 OpenTelemetry とは、次のようなものです。
 
 - **[オブザーバビリティ](/docs/concepts/observability-primer/#what-is-observability)フレームワークでありツールキット**です。[トレース][traces]、[メトリクス][metrics]、[ログ][logs]のような[テレメトリーデータ][telemetry data] の次の処理を容易にするために設計されています
-
   - [生成][instr]
   - エクスポート
   - [収集](../concepts/components/#collector)

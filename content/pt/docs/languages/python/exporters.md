@@ -3,6 +3,7 @@ title: Exporters
 weight: 50
 description: Processar e exportar seus dados de telemetria
 default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
+drifted_from_default: true
 cSpell:ignore: LOWMEMORY
 ---
 
@@ -144,7 +145,7 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% alert title="Nota" color="info" %}}
+{{% alert title="Nota" %}}
 
 Existem predefinições de temporalidade para cada tipo de instrumentação. Essas
 predefinições podem ser definidas com a variável de ambiente
@@ -161,7 +162,6 @@ Os valores disponíveis e suas configurações correspondentes para esta variáv
 de ambiente são:
 
 - `CUMULATIVE`
-
   - `Counter`: `CUMULATIVE`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `CUMULATIVE`
@@ -170,7 +170,6 @@ de ambiente são:
   - `ObservableGauge`: `CUMULATIVE`
 
 - `DELTA`
-
   - `Counter`: `DELTA`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `DELTA`

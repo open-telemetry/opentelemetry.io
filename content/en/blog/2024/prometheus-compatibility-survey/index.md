@@ -21,7 +21,7 @@ At this point, there is a
 describing how to convert between the
 [OpenTelemetry metrics data model](/docs/specs/otel/metrics/data-model/#opentelemetry-protocol-data-model)
 and
-[Prometheus metric formats](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md).
+[Prometheus metric formats](https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md).
 It has been used to implement Prometheus
 [(pull) exporters for OpenTelemetry SDKs](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/prometheus),
 [OTLP export from Prometheus libraries](https://prometheus.github.io/client_java/otel/otlp/),

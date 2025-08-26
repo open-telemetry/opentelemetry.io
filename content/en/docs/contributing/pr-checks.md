@@ -14,7 +14,7 @@ a set of checks are executed. The PR checks verify that:
 - Your PR successfully [deploys through Netlify](#netlify-deployment)
 - Your changes are compliant with our [style guide](#checks)
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 If any of the PR checks fails, try to
 [fix content issues](../pull-requests/#fix-issues) first by running
@@ -62,13 +62,18 @@ issues. Run `npm run check:text` again and manually fix the remaining issues.
 This check verifies that
 [standards and consistency for Markdown files are enforced](../style-guide/#markdown-standards).
 
-If any issues are found, run `npm run fix:format` to fix most issues. For more
-complex issues, run `npm run check:markdown` and apply the suggested changes.
+If any issues are found, run `npm run fix:markdown` to fix most issues
+automatically. For any remaining issues, run `npm run check:markdown` and apply
+the suggested changes manually.
 
 ### `SPELLING check` {.notranslate lang=en}
 
 This check verifies that
 [all words are spelled correctly](../style-guide/#spell-checking).
+
+If this check fails, run `npm run check:spelling` locally to see the misspelled
+words. If a word is spelled correctly, you may need to add it to the
+`cSpell:ignore` section in the front matter of the file.
 
 ### `CSPELL` check {.notranslate lang=en}
 
@@ -117,7 +122,7 @@ success status for, you can add the following query parameter to your URL to
 have the link checker ignore it: `?no-link-check`. For example,
 <https:/some-example.org?no-link-check> will be ignored by the link checker.
 
-{{% alert-md title="Maintainers tip" color=info %}}
+{{% alert title="Maintainers tip" %}}
 
 Maintainers can run the following script immediately after having run the link
 checker to have Puppeteer attempt to validate links with non-success statuses
@@ -128,7 +133,7 @@ checker to have Puppeteer attempt to validate links with non-success statuses
 
 This script also validates URL fragments, which the link checker doesn't do.
 
-{{% /alert-md %}}
+{{% /alert %}}
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 

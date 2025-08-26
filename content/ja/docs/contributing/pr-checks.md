@@ -2,8 +2,7 @@
 title: プルリクエストのチェック
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
-drifted_from_default: true
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -13,12 +12,12 @@ PR のチェックは次のことを検証します。
 - PR が[Netlify を通じてデプロイ](#netlify-deployment)に成功しているか
 - [スタイルガイド](#checks)に変更が従っているか
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 もし何らかの PR チェックが失敗していれば、最初にローカルで `npm run fix:all` を実行することで[内容の問題を修正](../pull-requests/#fix-issues)してください。
 
 PRに `/fix:all` というコメントを追加することもできます。
-これにより、OpenTelemetry ボットが代わりにそのコマンドを実行して、PR を更新します。
+これにより、OpenTelemetry ボットがかわりにそのコマンドを実行して、PR を更新します。
 ローカルに変更をプルすることを忘れないでください。
 
 問題が残り続けている場合のみ、以下を読んで様々なチェックの内容と、失敗した状態からの修正する方法を確認してください。
@@ -51,12 +50,15 @@ PRに `/fix:all` というコメントを追加することもできます。
 
 このチェックは、[Markdown ファイルの標準と一貫性が強制されていること](../style-guide/#markdown-standards)を検証します。
 
-問題が見つかった場合、`npm run fix:format` を実行すると、ほとんどの問題を修正できます。
-より複雑な問題がある場合は、`npm run check:markdown` を実行し、提案された変更を適用してください。
+問題が見つかった場合、`npm run fix:markdown` を実行すると、ほとんどの問題を自動的に修正できます。
+残りの問題については、`npm run check:markdown` を実行し、提案された変更を手動で適用してください。
 
 ### `SPELLING check` {#spelling-check .notranslate lang=en}
 
 このチェックは、[すべての単語が正しく綴られていること](../style-guide/#spell-checking) を検証します。
+
+このチェックが失敗した場合、`npm run check:spelling` をローカルで実行して、スペルミスのある単語を確認してください。
+単語のスペルが正しい場合は、ファイルのフロントマターの `cSpell:ignore` セクションに追加する必要があるかもしれません。
 
 ### `CSPELL` check {#cspell-check .notranslate lang=en}
 
@@ -97,7 +99,7 @@ LinkedIn などの一部のサーバーは 999 を報告します。
 チェッカーが成功ステータスを取得できない外部リンクを手動で検証した場合は、URL にクエリパラメーター`?no-link-check`を追加して、リンクチェッカーに無視させることができます。
 たとえば、<https:/some-example.org?no-link-check> はリンクチェッカーによって無視されます。
 
-{{% alert-md title="メンテナーのヒント" color=info %}}
+{{% alert title="メンテナーのヒント" %}}
 
 メンテナーは、リンクチェッカーを実行した直後に次のスクリプトを実行して、Puppeteer に成功ステータスでないリンクの検証を試みさせることができます。
 
@@ -107,7 +109,7 @@ LinkedIn などの一部のサーバーは 999 を報告します。
 
 このスクリプトは、リンクチェッカーが実行しない URL フラグメントも検証します。
 
-{{% /alert-md %}}
+{{% /alert %}}
 
 ### `WARNINGS in build log?` {#warnings-in-build-log .notranslate lang=en}
 

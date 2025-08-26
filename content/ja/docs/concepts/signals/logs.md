@@ -13,7 +13,7 @@ cSpell:ignore: filelogreceiver semistructured transformprocessor
 ## OpenTelemetry のログ {#opentelemetry-logs}
 
 OpenTelemetry はログを作成するための独自の API や SDK を定義しません。
-代わりに、OpenTelemetry のログは、ログフレームワークやインフラコンポーネントから得られるログを指します。
+かわりに、OpenTelemetry のログは、ログフレームワークやインフラコンポーネントから得られるログを指します。
 OpenTelemetry SDK と自動計装は、複数のコンポーネントを活用しログを[トレース](../traces)と関連付けます。
 
 OpenTelemetry のログサポートは、既存のログと完全に互換性を持つように設計されており、追加のコンテキストを付与したり、さまざまなソースからのログを共通のフォーマットに解析・変換するための統一ツールキットを提供します。

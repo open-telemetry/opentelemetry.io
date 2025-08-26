@@ -142,7 +142,7 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 There are temporality presets for each instrumentation kind. These presets can
 be set with the environment variable
@@ -159,7 +159,6 @@ The available values and their corresponding settings for this environment
 variable are:
 
 - `CUMULATIVE`
-
   - `Counter`: `CUMULATIVE`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `CUMULATIVE`
@@ -168,7 +167,6 @@ variable are:
   - `ObservableGauge`: `CUMULATIVE`
 
 - `DELTA`
-
   - `Counter`: `DELTA`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `DELTA`

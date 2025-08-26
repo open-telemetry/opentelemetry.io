@@ -6,6 +6,7 @@ aliases:
 weight: 30
 description: Instrumentação manual para OpenTelemetry Go
 default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
+drifted_from_default: true
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup updown
 ---
 
@@ -338,8 +339,8 @@ A seguir, você poderá encontrar uma documentação mais detalhada para os paco
 
 ### Inicializar Métricas {#initialize-metrics}
 
-{{% alert color="info" %}} Caso você esteja instrumentando uma biblioteca, pule
-esta etapa. {{% /alert %}}
+{{% alert %}} Caso você esteja instrumentando uma biblioteca, pule esta etapa.
+{{% /alert %}}
 
 Para habilitar [métricas](/docs/concepts/signals/metrics/) em sua aplicação,
 você precisará de um

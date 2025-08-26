@@ -5,14 +5,14 @@ weight: 65
 cSpell:ignore: rolldice
 ---
 
-{{% docs/languages/propagation js %}}
+{{% docs/languages/propagation %}}
 
 ## Automatic context propagation
 
 [Instrumentation libraries](../libraries/) like
 [`@opentelemetry/instrumentation-http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
 or
-[`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
+[`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
 propagate context across services for you.
 
 If you followed the [Getting Started Guide](../getting-started/nodejs) you can

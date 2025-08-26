@@ -1,7 +1,7 @@
 ---
 title: はじめに
 weight: 1
-default_lang_commit: 0cdf20f0dcbf7305541f8eab3001c95ce805fbc0
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
 # prettier-ignore
 cSpell:ignore: filelog kubelet kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
 ---
@@ -13,7 +13,7 @@ Kubernetes で OpenTelemetry が動いているところを見たいのであれ
 このデモは OpenTelemetry の実装を説明するためのものですが、Kubernetes 自体を監視する方法の例ではありません。
 このウォークスルーを終えたら、デモをインストールして、すべての監視がアクティブなワークロードにどのように反応するかを見るのは楽しい実験になるでしょう。
 
-PrometheusからOpenTelemetryへの移行を始めようとしている場合、あるいはOpenTelemetryコレクターを使ってPrometheusメトリクスを収集することに興味がある場合は、[Prometheusレシーバーa](../collector/components/#prometheus-receiver) を参照してください。
+PrometheusからOpenTelemetryへの移行を始めようとしている場合、あるいはOpenTelemetryコレクターを使ってPrometheusメトリクスを収集することに興味がある場合は、[Prometheusレシーバー](/docs/platforms/kubernetes/collector/components/#prometheus-receiver) を参照してください。
 
 ## 概要 {#overview}
 
@@ -28,10 +28,10 @@ Kubernetesは多くの重要なテレメトリーをさまざまな方法で公�
 コレクターのデーモンセットインストールは、ノード、ポッド、コンテナのサービス、ログ、メトリクスが発するテレメトリーを収集するために使用されます。
 コレクターのデプロイメントインストールは、クラスタのメトリクスとイベントの収集に使用されます。
 
-コレクターをインストールするには、[OpenTelemetry Collector Helm チャート](../helm/collector/) を使用します。
+コレクターをインストールするには、[OpenTelemetry Collector Helm チャート](/docs/platforms/kubernetes/helm/collector/) を使用します。
 Helm には、コレクターを簡単に設定するためのいくつかの設定オプションが付属しています。
 Helm に慣れていない場合は、[Helm プロジェクトサイト](https://helm.sh/) を確認してください。
-Kubernetes オペレーターを使うことに興味があるなら、[OpenTelemetry Operator](../operator/) を参照してほしいですが、このガイドでは Helm チャートにフォーカスします。
+Kubernetes オペレーターを使うことに興味があるなら、[OpenTelemetry Operator](/docs/platforms/kubernetes/operator/) を参照してほしいですが、このガイドでは Helm チャートにフォーカスします。
 
 ## 準備 {#preparation}
 
@@ -58,9 +58,9 @@ Kubernetesのテレメトリーを収集する最初のステップは、ノー�
 コレクターのこのインスタンスは、以下のコンポーネントを使用します。
 
 - [OTLP レシーバー](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver): アプリケーションのトレース、メトリクス、ログを収集します。
-- [Kubernetes 属性プロセッサー](../collector/components/#kubernetes-attributes-processor): 受信するアプリケーションのテレメトリーにKubernetesメタデータを追加します。
-- [Kubeletstats レシーバー](../collector/components/#kubeletstats-receiver): Kubelet上のAPIサーバーからノード、ポッド、コンテナのメトリクスをプルします。
-- [Filelog レシーバー](../collector/components/#filelog-receiver): Kubernetesログとstdout/stderrに書き込まれたアプリケーションログを収集します。
+- [Kubernetes 属性プロセッサー](/docs/platforms/kubernetes/collector/components/#kubernetes-attributes-processor): 受信するアプリケーションのテレメトリーにKubernetesメタデータを追加します。
+- [Kubeletstats レシーバー](/docs/platforms/kubernetes/collector/components/#kubeletstats-receiver): Kubelet上のAPIサーバーからノード、ポッド、コンテナのメトリクスをプルします。
+- [Filelog レシーバー](/docs/platforms/kubernetes/collector/components/#filelog-receiver): Kubernetesログとstdout/stderrに書き込まれたアプリケーションログを収集します。
 
 これらを1つひとつ見ていきましょう。
 
@@ -74,20 +74,20 @@ Kubernetesのテレメトリーを収集する最初のステップは、ノー�
 
 ### Kubernetes属性プロセッサー (Kubernetes Atributes Processor) {#kubernetes-attributes-processor}
 
-[Kubernetes属性プロセッサー](../collector/components/#kubernetes-attributes-processor)は、Kubernetesポッドからテレメトリーを受信するコレクターで強く推奨されるコンポーネントです。
+[Kubernetes属性プロセッサー](/docs/platforms/kubernetes/collector/components/#kubernetes-attributes-processor)は、Kubernetesポッドからテレメトリーを受信するコレクターで強く推奨されるコンポーネントです。
 このプロセッサーは、Kubernetesポッドを自動的に検出し、ポッド名やノード名などのメタデータを抽出し、抽出したメタデータをリソース属性としてスパン、メトリクス、ログに追加します。
 テレメトリーにKubernetesコンテキストを追加するため、Kubernetes属性プロセッサーを使用すると、アプリケーションのトレース、メトリクス、ログのシグナルを、ポッドのメトリクスやトレースなどのKubernetesテレメトリーと関連付けられます。
 
 ### Kubeletstatsレシーバー (Kubeletstats Receiver) {#kubeletstats-receiver}
 
-[Kubeletstatsレシーバー](../collector/components/#kubeletstats-receiver) は、ノードに関するメトリクスを収集するレシーバーです。
+[Kubeletstatsレシーバー](/docs/platforms/kubernetes/collector/components/#kubeletstats-receiver) は、ノードに関するメトリクスを収集するレシーバーです。
 コンテナのメモリ使用量、ポッドのCPU使用量、ノードのネットワークエラーなどのメトリクスを収集します。
 すべてのテレメトリーには、ポッド名やノード名などのKubernetesメタデータが含まれます。
 ここではKubernetes属性プロセッサーを使用しているため、アプリケーションのトレース、メトリクス、ログをKubeletstatsレシーバーが生成したメトリクスと関連付けることができます。
 
 ### ファイルログレシーバー (Filelog Receiver) {#filelog-receiver}
 
-[ファイルログレシーバー](../collector/components/#filelog-receiver)は、Kubernetesが `/var/log/pods/*/*.log` に書き込むログをテイルすることで、標準出力/標準エラーに書き込まれたログを収集します。
+[ファイルログレシーバー](/docs/platforms/kubernetes/collector/components/#filelog-receiver)は、Kubernetesが `/var/log/pods/*/*.log` に書き込むログをテイルすることで、標準出力/標準エラーに書き込まれたログを収集します。
 ほとんどのログテイルツールと同様に、ファイルログレシーバーは、必要な方法でファイルをパースできるように、堅牢なアクションセットを提供します。
 
 いつか自分でファイルログレシーバーを設定する必要が出てくるかもしれませんが、このウォークスルーでは、OpenTelemetry Helmチャートが複雑な設定をすべて処理してくれます。
@@ -151,19 +151,19 @@ Kubernetesのテレメトリーを収集する次のステップは、クラス�
 
 コレクターのこのインスタンスは、以下のコンポーネントを使用します。
 
-- [Kubernetesクラスターレシーバー](../collector/components/#kubernetes-cluster-receiver): クラスターレベルのメトリクスとエンティティイベントを収集します。
-- [Kubernetesオブジェクトレシーバー](../collector/components/#kubernetes-objects-receiver): Kubernetes APIサーバーからイベントなどのオブジェクトを収集します。
+- [Kubernetesクラスターレシーバー](/docs/platforms/kubernetes/collector/components/#kubernetes-cluster-receiver): クラスターレベルのメトリクスとエンティティイベントを収集します。
+- [Kubernetesオブジェクトレシーバー](/docs/platforms/kubernetes/collector/components/#kubernetes-objects-receiver): Kubernetes APIサーバーからイベントなどのオブジェクトを収集します。
 
 これらを1つずつ見ていきましょう。
 
 ### Kubernetesクラスターレシーバー (Kubernetes Cluster Receiver) {#kubernetes-cluster-receiver}
 
-[Kubernetesクラスターレシーバー](../collector/components/#kubernetes-cluster-receiver)は、クラスター全体の状態に関するメトリクスを収集するためのコレクターのソリューションです。
+[Kubernetesクラスターレシーバー](/docs/platforms/kubernetes/collector/components/#kubernetes-cluster-receiver)は、クラスター全体の状態に関するメトリクスを収集するためのコレクターのソリューションです。
 このレシーバーは、ノードの状態、ポッドのフェーズ、コンテナの再起動、利用可能なデプロイメントと希望するデプロイメントなどに関するメトリクスを収集できます。
 
 ### Kubernetesオブジェクトレシーバー (Kubernetes Objects Receiver) {#kubernetes-objects-receiver}
 
-[Kubernetesオブジェクトレシーバー](../collector/components/#kubernetes-objects-receiver) は、Kubernetesオブジェクトをログとして収集するためのコレクターのソリューションです。
+[Kubernetesオブジェクトレシーバー](/docs/platforms/kubernetes/collector/components/#kubernetes-objects-receiver) は、Kubernetesオブジェクトをログとして収集するためのコレクターのソリューションです。
 どんなオブジェクトでも収集できますが、一般的で重要なユースケースはKubernetesイベントを収集することです。
 
 ---
