@@ -43,7 +43,7 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 ### バゲッジ {#baggage}
 
-イベントとサービスの因果関係を確立するための[メタデータ](#metadata)を伝播するメカニズム。
+イベントとサービスの因果関係を確立するための[メタデータ](#metadata)を伝搬するメカニズム。
 [バゲッジ仕様][baggage]を参照のこと。
 
 ### カーディナリティ {#cardinality}
@@ -74,10 +74,12 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 いくつかの[計装ライブラリ](#instrumentation-library)と[コレクター](#collector)はコア機能のセットと、ベンダーの `エクスポーター` を含む非コア機能専用のcontribリポジトリを提供しています。
 
+<!-- prettier-ignore-start -->
 ### コンテキスト伝搬（プロパゲーション） {#context-propagation}
+<!-- prettier-ignore-end -->
 
 すべての[データソース](#data-source)が、[トランザクション](#transaction)の寿命にわたって状態を保存したりデータにアクセスしたりするための基盤となるコンテキストメカニズムを共有できるようにします。
-[コンテキスト伝播仕様][context propagation]を参照。
+[コンテキスト伝搬仕様][context propagation]を参照。
 
 ### DAG {#dag}
 
