@@ -1,30 +1,33 @@
 ---
 title: Getting Started
-description: Get started with OpenTelemetry based on your role.
-no_list: true
+description: Learn how to instrument your application step-by-step
 weight: 160
 ---
 
-Select a role[^1] to get started:
+In this tutorial you will learn how you can add OpenTelemetry to the code of an
+application, such that it emits telemetry (traces, metrics, logs) to an
+OpenTelemetry Collector.
 
-<div class="l-get-started-buttons justify-content-start mt-3 ms-3">
+You will be starting with an uninstrumented distributed sample app.
+Uninstrumented means, that this app will initially not have any code, that will
+emit telemetry.
 
-- [Dev](dev/)
-- [Ops](ops/)
+You will add the OpenTelemetry SDK to that application, and afterwards
+instrument the application by adding traces, metrics and logs. You will do that,
+for your dependencies and for your custom code.
 
-</div>
+When you have successfully instrumented the app, you will learn how to export
+your telemetry to the console and then using OTLP to the OpenTelemetry
+Collector. You will see how you can receive telemetry with the collector,
+process that telemetry and eventually export it to a backend, that can visualize
+your data.
 
-You can also try out the official [OpenTelemetry demo][demo] to _see_ what
-observability with OpenTelemetry looks like!
+Finally, you will learn how OpenTelemetry can correlate telemetry across service
+boundaries, and how you can add more context, like service, container or host
+information to your telemetry.
 
-<div class="l-primary-buttons justify-content-start mt-3 mb-5 ms-3">
+By the end of the tutorial, you will have learned how to instrument your own app
+using OpenTelemetry.
 
-- [Try the demo][demo]
-
-</div>
-
-[^1]: If none of these roles apply to you, [let us know][].
-
-[demo]: /ecosystem/demo/
-[let us know]:
-  https://github.com/open-telemetry/opentelemetry.io/issues/new?title=Add%20a%20new%20persona:%20My%20Persona&body=Provide%20a%20description%20of%20your%20role%20and%20responsibilities%20and%20what%20your%20observability%20goals%20are
+Start by setting up the sample application that will be used throughout the
+tutorial.
