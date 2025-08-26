@@ -520,4 +520,4 @@ node -r ./instrumentation client.js
 
 ## 次のステップ {#next-steps}
 
-伝搬についてさらに学ぶには、[Propagators API仕様](/docs/specs/otel/context/api-propagators/)をお読みください。
+伝搬についてさらに学ぶには、[Propagators API仕様](/docs/specs/otel/context/api-propagators/)を確認してください。
