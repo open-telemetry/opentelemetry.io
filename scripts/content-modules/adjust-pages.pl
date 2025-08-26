@@ -26,7 +26,7 @@ my %versionsRaw = # Keyname must end with colons because the auto-version update
   qw(
     spec: 1.48.0
     otlp: 1.7.0
-    semconv: 1.36.0
+    semconv: 1.37.0
   );
 # Versions map without the colon in the keys
 my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
