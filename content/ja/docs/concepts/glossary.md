@@ -69,7 +69,9 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 いくつかの[計装ライブラリ](#instrumentation-library)と[コレクター](#collector)はコア機能のセットと、ベンダーの `エクスポーター` を含む非コア機能専用のcontribリポジトリを提供しています。
 
+<!-- prettier-ignore-start -->
 ### コンテキスト伝搬（プロパゲーション） {#context-propagation}
+<!-- prettier-ignore-end -->
 
 すべての[データソース](#data-source)が、[トランザクション](#transaction)の寿命にわたって状態を保存したりデータにアクセスしたりするための基盤となるコンテキストメカニズムを共有できるようにします。
 [コンテキスト伝搬仕様][context propagation]を参照。

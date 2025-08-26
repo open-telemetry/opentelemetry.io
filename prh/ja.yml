@@ -34,4 +34,4 @@ rules:
   - expected: 伝搬
     patterns:
       - 伝播
-      - プロパゲーション
+      - プロパゲーション # 「伝搬（プロパゲーション）」といった説明書きの場合は、prettier-ignoreでLintを無視する
