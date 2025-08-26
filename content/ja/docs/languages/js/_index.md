@@ -20,7 +20,7 @@ OpenTelemetry JavaScriptは、Node.jsのすべてのアクティブまたはメ�
 OpenTelemetry JavaScriptには、ブラウザの公式サポートリストはありません。
 主要ブラウザの現在サポートされているバージョンで動作することを目指しています。
 
-OpenTelemetry JavaScriptは、TypeScriptについてDefinitelyTypeのサポートポリシーに従い、2年のサポートウィンドウを設定しています。
+OpenTelemetry JavaScriptは、TypeScriptについてDefinitelyTypeのサポートポリシーに従い、2年のサポート期間を設定しています。
 2年より古いTypeScriptバージョンのサポートは、OpenTelemetry JavaScriptのマイナーリリースで削除されます。
 
 ランタイムサポートの詳細については、[この概要](https://github.com/open-telemetry/opentelemetry-js#supported-runtimes)を参照してください。
