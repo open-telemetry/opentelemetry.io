@@ -81,14 +81,12 @@ request('http://localhost:8080/rolldice').then((response) => {
 
 ```js
 /* instrumentation.mjs */
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const {
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import {
   SimpleSpanProcessor,
   ConsoleSpanExporter,
-} = require('@opentelemetry/sdk-trace-node');
-const {
-  UndiciInstrumentation,
-} = require('@opentelemetry/instrumentation-undici');
+} from '@opentelemetry/sdk-trace-node';
+import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici';
 
 const sdk = new NodeSDK({
   spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
@@ -474,11 +472,11 @@ additional file called `instrumentation.js` with the following content:
 
 ```javascript
 // instrumentation.mjs
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const {
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import {
   ConsoleSpanExporter,
   SimpleSpanProcessor,
-} = require('@opentelemetry/sdk-trace-node');
+} from '@opentelemetry/sdk-trace-node';
 
 const sdk = new NodeSDK({
   spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
