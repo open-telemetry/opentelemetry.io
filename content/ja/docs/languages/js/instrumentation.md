@@ -1059,7 +1059,7 @@ try {
 
 {{% /tab %}} {{< /tabpane >}}
 
-### `sdk-trace-base`の使用と手動でのスパンコンテキストの伝播 {#using-sdk-trace-base-and-manually-propagating-span-context}
+### `sdk-trace-base`の使用と手動でのスパンコンテキストの伝搬 {#using-sdk-trace-base-and-manually-propagating-span-context}
 
 場合によっては、Node.js SDKもWeb SDKも使用できない場合があります。
 初期化コード以外の最大の違いは、ネストされたスパンを作成できるように、現在のコンテキストでスパンを手動でアクティブに設定する必要があることです。
