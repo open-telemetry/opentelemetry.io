@@ -120,19 +120,19 @@ Sigue estos pasos para agregar una publicación usando la interfaz:
 El blog de OpenTelemetry no sigue un plazo de publicación estricto. Esto significa que:
 
 - Tu entrada se publicará cuando cuenta con todas las aprobaciones necesarias.
-- La publicación puede posponerse si es necesario, pero los mantenedores no pueden 
+- La publicación puede posponerse si es necesario, pero los mantenedores no pueden
 garantizar su publicación en una fecha determinada o antes.
 - Ciertas entradas (anuncios importantes) tienen prioridad y podrían publicarse antes que la tuya.
 
 ## Publicación cruzada de contenido del blog
 
-Si deseas compartir tu entrada de OpenTelemetry en otra plataforma, puedes hacerlo. 
+Si deseas compartir tu entrada de OpenTelemetry en otra plataforma, puedes hacerlo.
 Solo ten en cuenta lo siguiente:
 
 - Decide qué versión será la publicación canónica (normalmente la entrada original de OpenTelemetry).
 - Las demás versiones de la entrada deben:
   - Mencionar claramente que la entrada original apareció en el blog de OpenTelemetry.
-  - Incluir un enlace a la publicación original en la parte superior o inferior de la página. 
+  - Incluir un enlace a la publicación original en la parte superior o inferior de la página.
   - Establezca una etiqueta URL canónica que apunta a la entrada del blog de OpenTelemetry, si la plataforma lo permite.
 
 Esto ayuda a garantizar una atribución correcta, apoya las mejores prácticas de SEO y evita la duplicación del contenido.
