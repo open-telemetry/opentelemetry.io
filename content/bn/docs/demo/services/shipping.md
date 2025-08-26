@@ -33,7 +33,6 @@ fn get_resource() -> Resource {
 
 `get_resource()` যুক্ত করার পর, ফাংশনটি সব ধরনের প্রোভাইডার ইনিশিয়ালাইজেশনের সময় একাধিকবার ডাকা যেতে পারে।
 
-
 ### ট্রেসার প্রোভাইডার ইনিশিয়ালাইজেশন (#initializing-tracer-provider)
 
 ```rust
@@ -77,7 +76,6 @@ fn init_meter_provider() -> opentelemetry_sdk::metrics::SdkMeterProvider {
 ### লগার প্রোভাইডার ইনিশিয়ালাইজেশন (#initializing-logger-provider)
 
 লগের জন্য শিপিং সার্ভিসে ট্রেসিং ব্যবহার করা হয়, তাই `OpenTelemetryTracingBridge` ব্যবহার করা হয়েছে যাতে ট্রেসিং ক্রেট থেকে লগগুলোকে OpenTelemetry-এর সাথে সংযুক্ত করা যায়।
-
 
 ```rust
 fn init_logger_provider() {
@@ -137,7 +135,6 @@ async fn main() -> std::io::Result<()> {
 
 প্রোভাইডারগুলো কনফিগার এবং ইনিশিয়ালাইজ হওয়ার পরে, শিপিং সার্ভিস সার্ভার-সাইড এবং ক্লায়েন্ট-সাইড কনফিগারেশনের সময় অ্যাপ্লিকেশনকে ইন্সট্রুমেন্ট করার জন্য [`opentelemetry-instrumentation-actix-web` crate](https://crates.io/crates/opentelemetry-instrumentation-actix-web) ব্যবহার করে।
 
-
 #### সার্ভার সাইড (#server-side)
 
 সার্ভারটি `RequestTracing` এবং `RequestMetrics` দিয়ে র‍্যাপ করা হয়েছে, যাতে রিকোয়েস্ট পাওয়ার সময় স্বয়ংক্রিয়ভাবে ট্রেস এবং মেট্রিকস তৈরি হয়:
@@ -171,11 +168,9 @@ let mut response = client
 
 এছাড়া ডেমোতে আমরা দেখাই কিভাবে স্বয়ংক্রিয়ভাবে তৈরি হওয়া স্প্যানগুলোকে ম্যানুয়ালি উন্নত করা যায় এবং অ্যাপ্লিকেশনে ম্যানুয়াল মেট্রিকস তৈরি করা যায়।
 
-
 #### ম্যানুয়াল স্প্যান (#manual-spans)
 
 নিম্নলিখিত কোড স্নিপেটে, বর্তমান অ্যাকটিভ স্প্যানটি একটি স্প্যান ইভেন্ট এবং একটি স্প্যান অ্যাট্রিবিউট দিয়ে উন্নত করা হয়েছে:
-
 
 ```rust
 Ok(get_active_span(|span| {
@@ -192,7 +187,6 @@ Ok(get_active_span(|span| {
 #### ম্যানুয়াল মেট্রিকস (#manual-metrics)
 
 শিপিং রিকোয়েস্টে মোট কতটি আইটেম রয়েছে তা গণনা করার জন্য একটি কাস্টম মেট্রিক কাউন্টার তৈরি করা হয়েছে:
-
 
 ```rust
 let meter = global::meter("otel_demo.shipping.quote");
@@ -223,4 +217,3 @@ info!(
 ```
 
 `opentelemetry-appender-tracing` ক্রেটটি লগ এন্ট্রিতে OpenTelemetry কনটেক্সট যোগ করার কাজ করে, এবং চূড়ান্ত এক্সপোর্ট হওয়া লগে সব কনফিগার করা রিসোর্স অ্যাট্রিবিউট এবং `TraceContext` তথ্য অন্তর্ভুক্ত থাকে।
-
