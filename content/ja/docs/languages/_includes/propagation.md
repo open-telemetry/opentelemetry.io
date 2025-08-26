@@ -10,7 +10,7 @@ default_lang_commit: f9a0439ac56dba1515283e1a1cb6d6a90634a20f
 
 {{ if $lang }}
 
-詳細については、[コンテキスト伝播](/docs/concepts/context-propagation)を参照してください。
+詳細については、[コンテキスト伝搬](/docs/concepts/context-propagation)を参照してください。
 
 {{ end }}
 
