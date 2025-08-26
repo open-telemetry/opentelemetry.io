@@ -169,8 +169,6 @@ similar to the following:
 Take note of the traceId (`cccd19c3a2d10e589f01bfe2dc896dc2`) and ID
 (`6f64ce484217a7bf`). Both can be found in the output of client as well:
 
-XXX HERE nope on express and http isntr. Was that added before? Sigh, no.
-
 ```javascript {hl_lines=[6,9]}
 {
   resource: {
