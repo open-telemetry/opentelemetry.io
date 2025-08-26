@@ -438,7 +438,7 @@ Parsed JSON: { key: 'value' }
 
 これは、サーバーとクライアントコードがライブラリである場合に特に重要です。
 ライブラリはOpenTelemetry APIのみを使用するべきだからです。
-その理由を理解するには、[ライブラリに計装を追加する方法のコンセプトページ](/docs/concepts/instrumentation/libraries/)をお読みください。
+その理由を理解するには、[ライブラリに計装を追加する方法のコンセプトページ](/docs/concepts/instrumentation/libraries/)を確認してください。
 
 {{% /alert %}}
 
