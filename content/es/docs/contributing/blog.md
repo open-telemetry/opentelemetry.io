@@ -8,7 +8,7 @@ default_lang_commit: 493a530efd3c2a058cc4aa055d7c8aadb5348beb
 El [blog de OpenTelemetry] [OpenTelemetry blog](/blog/) comunica nuevas
 funciones, informes de la comunidad y cualquier noticia relevante para la
 comunidad de OpenTelemetry. Esto incluye a usuarios finales y desarrolladores.
-Cualquiera puede escribir una entrada de blog. Lea a continuación los
+Cualquiera puede escribir una entrada de blog. Lee a continuación los
 requisitos.
 
 ## ¿Documentación o publicación de blog?
