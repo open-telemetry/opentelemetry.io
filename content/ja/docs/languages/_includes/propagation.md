@@ -16,6 +16,10 @@ default_lang_commit: f9a0439ac56dba1515283e1a1cb6d6a90634a20f
 
 {{ if not $lang }}
 
+<!-- prettier-ignore-start -->
+
 コンテキスト伝搬を理解するには、コンテキストと伝搬（プロパゲーション）という2つの独立した概念を理解する必要があります。
+
+<!-- prettier-ignore-end -->
 
 {{ end }}
