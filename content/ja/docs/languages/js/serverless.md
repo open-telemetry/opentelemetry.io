@@ -18,7 +18,7 @@ cSpell:ignore: otelwrapper
 
 以下では、OpenTelemetryでLambdaラッパーを使用してAWS Lambda関数を手動で計装し、設定されたバックエンドにトレースを送信する方法を示します。
 
-プラグアンドプレイのユーザーエクスペリエンスに興味がある場合は、[OpenTelemetry Lambda Layers](https://github.com/open-telemetry/opentelemetry-lambda)を参照してください。
+プラグアンドプレイのユーザー体験に興味がある場合は、[OpenTelemetry Lambda Layers](https://github.com/open-telemetry/opentelemetry-lambda)を参照してください。
 
 ### 依存関係 {#dependencies}
 
