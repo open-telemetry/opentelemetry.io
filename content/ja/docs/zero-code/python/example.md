@@ -2,8 +2,7 @@
 title: 自動計装の例
 linkTitle: Example
 weight: 20
-default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
-drifted_from_default: true
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
 ---
 
 このページでは、OpenTelemetry で Python 自動計装を使う方法を示します。
@@ -127,7 +126,7 @@ python server_manual.py
 
 ```sh
 source ./venv/bin/activate
-python client.py testing
+python client.py
 ```
 
 `server_manual.py` を実行しているコンソールは計装によって生成されたスパンをJSONとして表示します。
@@ -180,7 +179,7 @@ opentelemetry-instrument --traces_exporter console --metrics_exporter none --log
 以前 `client.py` を実行したコンソールで、もう一度以下のコマンドを実行します。
 
 ```sh
-python client.py testing
+python client.py
 ```
 
 `server_automatic.py` を実行しているコンソールは計装によって生成されたスパンを JSON として表示します。
@@ -242,7 +241,7 @@ python server_programmatic.py
 
 ```sh
 source ./venv/bin/activate
-python client.py testing
+python client.py
 ```
 
 結果は、手動の計装を使った場合と同じになるはずです。
