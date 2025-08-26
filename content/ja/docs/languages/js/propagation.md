@@ -197,7 +197,7 @@ traceId（`cccd19c3a2d10e589f01bfe2dc896dc2`）とID（`6f64ce484217a7bf`）を�
 サービス間の通信に使用するライブラリに対応する計装ライブラリが存在しない場合があります。
 または、そのようなライブラリが存在していても満たせない要件がある場合があります。
 
-コンテキストを手動で伝搬する必要がある場合は、[context API](/docs/languages/js/context)を使用できます。
+コンテキストを手動で伝搬する必要がある場合は、[コンテキストAPI](/docs/languages/js/context)を使用できます。
 
 ### 汎用例 {#generic-example}
 
