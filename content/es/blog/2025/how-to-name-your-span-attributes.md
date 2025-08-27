@@ -5,7 +5,7 @@ date: 2025-08-27
 author: >-
   [Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)
 canonical_url: https://blog.olly.garden/how-to-name-your-span-attributes
-default_lang_commit: d8fdf95e39753fb3b3eedad308bbd8ceda4c859e
+default_lang_commit: 421fe301e49dbcec3202d0aaaf939da4a499f020
 cSpell:ignore: interoperabilidad jpkrohling OllyGarden shopify
 ---
 
