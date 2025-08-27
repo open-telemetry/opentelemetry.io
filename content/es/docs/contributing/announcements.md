@@ -2,7 +2,6 @@
 title: Anuncios
 description: Crea anuncios o banners para eventos especiales.
 weight: 50
-cSpell:ignore: Ajústalo
 default_lang_commit: a1bfd8388dad69255e3fde796562d473a076f2f9
 ---
 
@@ -24,7 +23,7 @@ carpeta `anuncios` de su localización usando el siguiente comando:
 hugo new --kind announcement content/YOUR-LOCALE/announcements/announcement-file-name.md
 ```
 
-Ajústalo según la configuración regional y el nombre de archivo que desees.
+Modifícalo según la configuración regional y el nombre de archivo que desees.
 Agrega el texto del anuncio como cuerpo de la página.
 
 > En el caso de los banners, el cuerpo del anuncio debe ser una frase corta.
