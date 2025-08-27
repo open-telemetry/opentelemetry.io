@@ -1,10 +1,9 @@
 ---
 title: OpenTelemetry con Kubernetes
 linkTitle: Kubernetes
-weight: 350
 description: Usando OpenTelemetry con Kubernetes
-default_lang_commit: d638c386ae327328ff35604df54fa6ddd8b51b65
-drifted_from_default: true
+redirects: [{ from: /docs/kubernetes/*, to: ':splat' }]
+default_lang_commit: b40fc66196670983a01fea6de011175cce41dd40
 ---
 
 ## Introducción

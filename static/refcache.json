@@ -1447,6 +1447,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-11T08:05:07.564567-05:00"
   },
+  "https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/filtering-and-searching-issues-and-pull-requests#sorting-issues-and-pull-requests": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-05T09:17:21.602705+01:00"
+  },
   "https://docs.github.com/en/pull-requests": {
     "StatusCode": 206,
     "LastSeen": "2024-09-28T12:02:48.071874-04:00"
@@ -2910,6 +2914,10 @@
   "https://github.com/DrewCorlin/opentelemetry-node-bundler-plugins/tree/main/packages/opentelemetry-webpack-plugin-node": {
     "StatusCode": 206,
     "LastSeen": "2025-05-27T08:20:24.281573-04:00"
+  },
+  "https://github.com/DylanRussell": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-19T11:26:24.371086917Z"
   },
   "https://github.com/Dynatrace/dynatrace-otel-collector": {
     "StatusCode": 206,
@@ -5879,6 +5887,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:10:12.345Z"
   },
+  "https://github.com/open-telemetry/community/blob/main/guides/maintainer/popular-issues.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-05T09:17:24.564457+01:00"
+  },
+  "https://github.com/open-telemetry/community/blob/main/guides/maintainer/popular-issues.md#recommended-footnote-on-issue-templates": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-05T09:17:29.499582+01:00"
+  },
   "https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:22:52.070486-05:00"
@@ -7926,6 +7942,26 @@
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.132.0/receiver/receiver.go#L58": {
     "StatusCode": 206,
     "LastSeen": "2025-08-13T12:23:07.564784666Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.133.0/component/config.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-26T01:37:41.677823984Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.133.0/pdata/internal/data/protogen/trace/v1/trace.pb.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-26T01:37:49.266818796Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.133.0/pdata/pcommon/map.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-26T01:37:51.823678361Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.133.0/receiver/receiver.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-26T01:37:47.988817842Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.133.0/receiver/receiver.go#L58": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-26T01:37:46.152510502Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/10469": {
     "StatusCode": 206,
@@ -16003,6 +16039,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:13:15.109615-05:00"
   },
+  "https://github.com/y1yang0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-18T09:20:22.577953365Z"
+  },
   "https://github.com/yangxikun": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:13:04.270333-05:00"
@@ -17698,6 +17738,10 @@
   "https://nodejs.org/api/async_hooks.html": {
     "StatusCode": 200,
     "LastSeen": "2025-01-06T11:32:23.371728-05:00"
+  },
+  "https://nodejs.org/api/cli.html#--importmodule": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-20T14:56:41.743648-07:00"
   },
   "https://nodejs.org/api/cli.html#-r---require-module": {
     "StatusCode": 200,
@@ -20179,6 +20223,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-07-21T20:14:04.583498443Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.19.0-alpha/opentelemetry-instrumentation-bom-alpha-2.19.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-17T13:48:06.238484633Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.7.0-alpha/opentelemetry-instrumentation-bom-alpha-2.7.0-alpha.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:08.34491-05:00"
@@ -20238,6 +20286,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.18.1/opentelemetry-instrumentation-bom-2.18.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2025-07-21T20:13:59.719257768Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.19.0/opentelemetry-instrumentation-bom-2.19.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-17T13:48:04.158823205Z"
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.7.0/opentelemetry-instrumentation-bom-2.7.0.pom": {
     "StatusCode": 206,
@@ -23142,6 +23194,10 @@
   "https://www.uber.com/blog/flipr/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T22:06:20.869Z"
+  },
+  "https://www.velodb.io/solutions/use-cases/observability": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-17T14:00:24.895684766Z"
   },
   "https://www.w3.org/TR/NOTE-datetime": {
     "StatusCode": 206,
