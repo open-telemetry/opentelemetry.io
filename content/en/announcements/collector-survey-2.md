@@ -4,7 +4,7 @@ date: 2025-08-27
 expiryDate: 2025-09-03
 ---
 
-<i class="fas fa-bullhorn"></i> Help us [improve the OTel collector] (5-10 min).
+<i class="fas fa-bullhorn"></i> Help us [improve the OTel collector] (5-10 min)!
 Survey closes on September 3rd.
 
 [improve the OTel collector]:
