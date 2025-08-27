@@ -27,7 +27,7 @@ maintainability of your observability data. Let's get them right.
 
 Here's the most important rule that will save you time and improve
 interoperability: **if an OpenTelemetry
-[semantic convention exists](https://opentelemetry.io/docs/specs/semconv/registry/attributes/)
+[semantic convention exists](/docs/specs/semconv/registry/attributes/)
 and the semantics match your use case, use it**.
 
 This isn't just about convenience—it's about building telemetry that integrates
