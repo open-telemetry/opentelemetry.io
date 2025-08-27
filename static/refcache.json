@@ -15655,6 +15655,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:13:13.272457-05:00"
   },
+  "https://github.com/sveltejs/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-26T09:58:46.452374+02:00"
+  },
+  "https://github.com/sveltejs/kit": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-26T09:58:45.319281+02:00"
+  },
   "https://github.com/svetlanabrennan": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:10:49.515794-05:00"
@@ -21170,6 +21178,14 @@
   "https://support.google.com/webmasters/answer/10347851": {
     "StatusCode": 200,
     "LastSeen": "2025-01-24T14:36:51.45282-05:00"
+  },
+  "https://svelte.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-26T09:57:53.357505+02:00"
+  },
+  "https://svelte.dev/docs/kit/observability": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-26T09:57:54.243595+02:00"
   },
   "https://svnbook.red-bean.com/en/1.7/svn.tour.revs.specifiers.html": {
     "StatusCode": 206,
