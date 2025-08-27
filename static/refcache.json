@@ -247,6 +247,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:28.075977-04:00"
   },
+  "https://blog.olly.garden/how-to-name-your-span-attributes": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-27T08:48:18.571347-03:00"
+  },
   "https://blog.olly.garden/how-to-name-your-spans": {
     "StatusCode": 200,
     "LastSeen": "2025-08-07T16:56:56.220013+02:00"
@@ -1522,6 +1526,10 @@
   "https://docs.google.com/forms/d/e/1FAIpQLScoG279ZhRuMu8J_8BebGEVtMOS8BgD9cpQUJ6xSnNIAUtedw/viewform": {
     "StatusCode": 200,
     "LastSeen": "2025-01-31T13:07:08.936780845Z"
+  },
+  "https://docs.google.com/forms/d/e/1FAIpQLSfbpqBcCVfmRj_Rk_Sd6zaBGpfzGSBvSZ6CdVn6PPBbbmPIOw/viewform": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-27T07:08:20.568520677Z"
   },
   "https://docs.google.com/forms/d/e/1FAIpQLSfpxKvN3_5VN6FQ5dF5-XLfNdOhVYtjreetkxlRCF8qS7AW2w/viewform": {
     "StatusCode": 200,
@@ -15675,6 +15683,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:13:13.272457-05:00"
   },
+  "https://github.com/sveltejs/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-26T09:58:46.452374+02:00"
+  },
+  "https://github.com/sveltejs/kit": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-26T09:58:45.319281+02:00"
+  },
   "https://github.com/svetlanabrennan": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:10:49.515794-05:00"
@@ -17410,6 +17426,22 @@
   "https://learn.microsoft.com/en-us/windows/wsl/install": {
     "StatusCode": 206,
     "LastSeen": "2025-07-02T15:26:11.023356727Z"
+  },
+  "https://learn.microsoft.com/fr-fr/dotnet/core/deploying/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T16:25:15.444139271+02:00"
+  },
+  "https://learn.microsoft.com/fr-fr/dotnet/core/deploying/#publish-self-contained": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T16:25:00.182092941+02:00"
+  },
+  "https://learn.microsoft.com/fr-fr/dotnet/core/rid-catalog": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T16:25:09.780258777+02:00"
+  },
+  "https://learn.microsoft.com/fr-fr/nuget/resources/check-project-format#check-the-project-format": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-08T16:25:03.244888712+02:00"
   },
   "https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions": {
     "StatusCode": 206,
@@ -21194,6 +21226,14 @@
   "https://support.google.com/webmasters/answer/10347851": {
     "StatusCode": 200,
     "LastSeen": "2025-01-24T14:36:51.45282-05:00"
+  },
+  "https://svelte.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-26T09:57:53.357505+02:00"
+  },
+  "https://svelte.dev/docs/kit/observability": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-26T09:57:54.243595+02:00"
   },
   "https://svnbook.red-bean.com/en/1.7/svn.tour.revs.specifiers.html": {
     "StatusCode": 206,
