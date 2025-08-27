@@ -23,8 +23,8 @@ carpeta `anuncios` de su localización usando el siguiente comando:
 hugo new --kind announcement content/YOUR-LOCALE/announcements/announcement-file-name.md
 ```
 
-Modifícalo según la configuración regional y el nombre de archivo que desees.
-Agrega el texto del anuncio como cuerpo de la página.
+Modifica el archivo según la configuración regional y el nombre de archivo que
+desees. Agrega el texto del anuncio como cuerpo de la página.
 
 > En el caso de los banners, el cuerpo del anuncio debe ser una frase corta.
 
@@ -44,10 +44,11 @@ Cuando estos campos faltan, se asume que son "ahora" y "para siempre",
 respectivamente.
 
 Los anuncios aparecerán en el orden de páginas estándar según lo determinado
-mediante la función de [Páginas relacionadas](https://gohugo.io/methods/site/regularpages/) de Hugo. Es decir,
-los anuncios más "ligeros" (por `peso`) aparecerán primero; cuando los pesos
-sean iguales o no estén especificados, los anuncios más recientes (por `fecha`)
-aparecerán primero, etc.
+mediante la función de
+[Páginas relacionadas](https://gohugo.io/methods/site/regularpages/) de Hugo. Es
+decir, los anuncios más "ligeros" (por `peso`) aparecerán primero; cuando los
+pesos sean iguales o no estén especificados, los anuncios más recientes (por
+`fecha`) aparecerán primero, etc.
 
 Por lo tanto, si deseas que un anuncio aparezca en la parte superior, utilice un
 `peso` negativo en la portada.
@@ -55,11 +56,13 @@ Por lo tanto, si deseas que un anuncio aparezca en la parte superior, utilice un
 Si encuentras un error o un problema con el contenido de este repositorio, o si
 deseas solicitar una mejora, [crea un issue][new-issue].
 
-Si descubres un problema de seguridad, lee la [Política de Seguridad](https://github.com/open-telemetry/opentelemetry.io/security/policy)
+Si descubres un problema de seguridad, lee la
+[Política de Seguridad](https://github.com/open-telemetry/opentelemetry.io/security/policy)
 antes de abrir un issue.
 
 Antes de reportar un nuevo problema, asegúrate de que no se haya reportado o
-solucionado previamente buscando en nuestra [lista de issues](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc).
+solucionado previamente buscando en nuestra
+[lista de issues](https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc).
 
 Al crear un nuevo issue, incluye un título breve y conciso, así como una
 descripción clara. Añade toda la información relevante posible y, si es posible,
