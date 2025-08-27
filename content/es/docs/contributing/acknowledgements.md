@@ -2,8 +2,8 @@
 title: Reconocimientos
 description: Reconocimientos por las fuentes del contenido de este sitio
 aliases: [/acknowledgements, /docs/acknowledgements]
-cSpell:ignore: Pigram
 default_lang_commit: 83f96d36f2757bdb102753cb6ffcac584250449e
+cSpell:ignore: Pigram
 ---
 
 Nos gustaría reconocer las siguientes fuentes de parte del contenido de este
