@@ -1,4 +1,4 @@
-# cSpell:ignore nestjs vercel
+# cSpell:ignore sveltekit vercel
 title: Instrumentation for SvelteKit
 registryType: instrumentation
 language: js
