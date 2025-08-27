@@ -204,5 +204,5 @@ Cela peut être lié aux problèmes suivants :
 ## Autres problèmes {#other-issues}
 
 Si vous rencontrez un problème non listé sur cette page, voir
-[Étapes générales](#general-steps) pour collecter des informations de
-diagnostic supplémentaires. Cela peut aider à faciliter le dépannage.
+[Étapes générales](#general-steps) pour collecter des informations de diagnostic
+supplémentaires. Cela peut aider à faciliter le dépannage.
