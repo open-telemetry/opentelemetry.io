@@ -11,10 +11,10 @@ description: OpenTelemetry NestJS automatic instrumentation library
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-nestjs-core
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-nestjs-core
 createdAt: 2021-07-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-nestjs-core'
-  version: 0.48.0
+  version: 0.49.0
 isFirstParty: false

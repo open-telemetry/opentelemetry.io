@@ -14,11 +14,11 @@ configure it to help you
 OpenTelemetry SDK
 [declarative configuration schema](https://github.com/open-telemetry/opentelemetry-configuration)
 for configuring how to export its internal telemetry. This schema is still under
-[development](/docs/specs/otel/document-status/#lifecycle-status) and may
-undergo **breaking changes** in future releases. We intend to keep supporting
-older schemas until a 1.0 schema release is available, and offer a transition
-period for users to update their configurations before dropping pre-1.0 schemas.
-For details and to track progress see
+[development](/docs/specs/otel/document-status/) and may undergo **breaking
+changes** in future releases. We intend to keep supporting older schemas until a
+1.0 schema release is available, and offer a transition period for users to
+update their configurations before dropping pre-1.0 schemas. For details and to
+track progress see
 [issue #10808](https://github.com/open-telemetry/opentelemetry-collector/issues/10808).
 {{% /alert %}}
 
@@ -71,6 +71,25 @@ service:
                 port: 8888
 ```
 
+If you want to add additional labels to the Prometheus metrics, you can add them
+with `prometheus::with_resource_constant_labels`:
+
+```yaml
+prometheus:
+  host: '0.0.0.0'
+  port: 8888
+  with_resource_constant_labels:
+    included:
+      - label_key
+```
+
+And then reference the labels in `service::telemetry::resource`:
+
+```yaml
+resource:
+  label_key: label_value
+```
+
 {{% alert title="Internal telemetry configuration changes" %}}
 
 As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
@@ -109,6 +128,29 @@ service:
     metrics:
       level: detailed
 ```
+
+You can further configure how metrics from the Collector are emitted by using
+[`views`](/docs/specs/otel/metrics/sdk/#view). For example, the following
+configuration updates the metric named `otelcol_process_uptime` to emit a new
+name `process_uptime` and description:
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      views:
+        - selector:
+            instrument_name: otelcol_process_uptime
+            instrument_type:
+          stream:
+            name: process_uptime
+            description: The amount of time the Collector has been up
+```
+
+You can also use `views` to update the resulting aggregation, attributes, and
+cardinality limits. For the full list of options, see the examples in the
+OpenTelemetry Configuration schema
+[repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/f4e9046682d4386ea533ef7ba6ad30a5ce4451b4/examples/kitchen-sink.yaml#L440).
 
 ### Configure internal logs
 

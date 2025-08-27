@@ -2,7 +2,7 @@
 title: 用語集
 description: OpenTelemetry で使用されるテレメトリー用語の定義と規則
 weight: 200
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
+default_lang_commit: 530c8fd130c93dd95e9638c8919518dbbc9c6b0a
 ---
 
 この用語集は、OpenTelemetry プロジェクトに対して新しい、用語と[概念](/docs/concepts/)を定義し、オブザーバビリティの分野で一般的に使われている OpenTelemetry 特有の使用法を明確にします。
@@ -43,8 +43,14 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 ### バゲッジ {#baggage}
 
-イベントとサービスの因果関係を確立するための[メタデータ](#metadata)を伝播するメカニズム。
+イベントとサービスの因果関係を確立するための[メタデータ](#metadata)を伝搬するメカニズム。
 [バゲッジ仕様][baggage]を参照のこと。
+
+### カーディナリティ {#cardinality}
+
+特定の[属性](#attribute)または属性のセットに対する一意の値の数。
+カーディナリティが高いということは、一意の値が多いことを意味しており、テレメトリーバックエンドのパフォーマンスやストレージ要件に影響を与える可能性があります。
+たとえば、`user_id` 属性は高いカーディナリティを持ちますが、"200"、"404"、"500" などの値を持つ `status_code` 属性は低いカーディナリティを持ちます。
 
 ### クライアントライブラリ {#client-library}
 
@@ -68,10 +74,12 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 いくつかの[計装ライブラリ](#instrumentation-library)と[コレクター](#collector)はコア機能のセットと、ベンダーの `エクスポーター` を含む非コア機能専用のcontribリポジトリを提供しています。
 
+<!-- prettier-ignore-start -->
 ### コンテキスト伝搬（プロパゲーション） {#context-propagation}
+<!-- prettier-ignore-end -->
 
 すべての[データソース](#data-source)が、[トランザクション](#transaction)の寿命にわたって状態を保存したりデータにアクセスしたりするための基盤となるコンテキストメカニズムを共有できるようにします。
-[コンテキスト伝播仕様][context propagation]を参照。
+[コンテキスト伝搬仕様][context propagation]を参照。
 
 ### DAG {#dag}
 
@@ -179,6 +187,17 @@ OpenTelemetryはこれらのペアを[属性](#attribute)と呼びます。
 
 [OpenCensus](#opencensus)の略称。
 
+### オブザーバビリティバックエンド {#observability-backend}
+
+テレメトリーデータの受信、処理、保存、クエリを担うオブザーバビリティプラットフォームのコンポーネントです。
+商用製品だけではなく、たとえば [Jaeger] や [Prometheus] のようなオープンソースツールも含みます。
+OpenTelemetry はオブザーバビリティバックエンドではありません。
+
+### オブザーバビリティフロントエンド {#observability-frontend}
+
+テレメトリーデータの可視化と分析のためのユーザーインターフェースを提供するオブザーバビリティプラットフォームのコンポーネントです。
+特に商用製品を検討すると、オブザーバビリティバックエンドの一部である場合がしばしばあります。
+
 ### OpAMP {#opamp}
 
 [Open Agent Management Protocol](/docs/collector/management/#opamp) の省略形。
@@ -272,7 +291,7 @@ OpenTelemetry の前身です。
 ### SDK {#sdk}
 
 ソフトウェア開発キット（Software Development Kit）の略称。
-OpenTelemetryの[API](#api)を実装する[ライブラリ](#library)を示すテレメトリSDKを指します。
+OpenTelemetryの[API](#api)を実装する[ライブラリ](#library)を示すテレメトリーSDKを指します。
 
 ### セマンティック規約 {#semantic-conventions}
 
@@ -343,12 +362,14 @@ OpenTelemetryにおいては[トレース](#trace)、[メトリクス](#metric)�
 [field]: /docs/specs/otel/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
 [instrumented library]: /docs/specs/otel/glossary/#instrumented-library
+[Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
 [log record]: /docs/specs/otel/glossary#log-record
 [log]: /docs/specs/otel/glossary#log
 [metric]: ../signals/metrics/
 [opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
 [propagators]: /docs/languages/go/instrumentation/#propagators-and-context
+[Prometheus]: https://prometheus.io/
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call

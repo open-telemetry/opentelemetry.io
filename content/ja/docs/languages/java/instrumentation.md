@@ -8,7 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: OpenTelemetry Javaにおける計装エコシステム
-default_lang_commit: beb85b4f56de76aa8a8d6e96cd7528396476f95a
+default_lang_commit: f9a0439ac56dba1515283e1a1cb6d6a90634a20f
 cSpell:ignore: logback
 ---
 
@@ -68,7 +68,7 @@ Spring Bootスターターは、Springの自動構成を活用して[ライブ�
 OpenTelemetryは、[API](../api/)を使用してネイティブ計装を追加することをライブラリ作成者に推奨しています。
 長期的には、ネイティブ計装が標準になることを期待しており、[opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)でOpenTelemetryによって維持される計装は、ギャップを埋める一時的な手段と見なしています。
 
-{{% docs/languages/native-libraries "java" %}}
+{{% docs/languages/native-libraries %}}
 
 ### 手動計装 {#manual-instrumentation}
 
@@ -93,7 +93,7 @@ OpenTelemetry Javaエコシステムで維持されているシム。
 | OpenTelemetryコンテキストを[Log4j](https://logging.apache.org/log4j/2.x/index.html)にブリッジ                | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure) | コンテキスト         | `io.opentelemetry.instrumentation:opentelemetry-log4j-context-data-2.17-autoconfigure:{{% param vers.instrumentation %}}-alpha` |
 | OpenTelemetryコンテキストを[Logback](https://logback.qos.ch/)にブリッジ                                      | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-mdc-1.0/library)                                        | コンテキスト         | `io.opentelemetry.instrumentation:opentelemetry-logback-mdc-1.0:{{% param vers.instrumentation %}}-alpha`                       |
 
-## コンテキスト伝播 {#context-propagation}
+## コンテキスト伝搬 {#context-propagation}
 
 OpenTelemetry APIは補完的に設計されており、全体が部分の合計よりも大きくなります。
 各シグナルには独自の強みがあり、集合的に説得力のあるオブザーバビリティストーリーをつなぎ合わせます。
@@ -104,7 +104,7 @@ OpenTelemetry APIは補完的に設計されており、全体が部分の合計
 - メトリクスは、特定の測定のトレースコンテキストを記録する[エグザンプラー](/docs/specs/otel/metrics/data-model/#exemplars)を介してスパンに関連付けられています。
 - ログは、ログレコードにトレースコンテキストを記録することによってスパンに関連付けられています。
 
-この相関が機能するためには、トレースコンテキストがアプリケーション全体（関数呼び出しやスレッド間）およびアプリケーション境界を越えて伝播される必要があります。
+この相関が機能するためには、トレースコンテキストがアプリケーション全体（関数呼び出しやスレッド間）およびアプリケーション境界を越えて伝搬される必要があります。
 [コンテキストAPI](../api/#context-api)はこれを促進します。計装は、コンテキストを認識する方法で記述される必要があります。
 
 - アプリケーションへのエントリポイントを表すライブラリ（HTTPサーバー、メッセージコンシューマーなど）は、受信メッセージから[コンテキストを抽出](../api/#contextpropagators)する必要があります。
@@ -114,7 +114,7 @@ OpenTelemetry APIは補完的に設計されており、全体が部分の合計
 ## セマンティック規約 {#semantic-conventions}
 
 [セマンティック規約](/docs/specs/semconv/)は、標準操作のテレメトリーを生成する方法を定義します。
-とりわけ、セマンティック規約は、スパン名、スパンの種類、メトリック計器、メトリック単位、メトリックタイプ、および属性キー、値、および要件レベルを指定します。
+とりわけ、セマンティック規約は、スパン名、スパンの種類、メトリクス計器、メトリクス単位、メトリクスタイプ、および属性キー、値、および要件レベルを指定します。
 
 計装を記述する際は、セマンティック規約を参照し、ドメインに適用可能なものに準拠してください。
 
@@ -151,7 +151,7 @@ OpenTelemetryでログ計装を使用するための2つの典型的なワーク
 
 トレースとのログ相関は、OpenTelemetryコンテキストをログフレームワークにブリッジする[シム](#shims)をインストールすることで利用できます。「OpenTelemetryコンテキストをLog4jにブリッジ」、「OpenTelemetryコンテキストをLogbackにブリッジ」のエントリを参照してください。
 
-{{% alert title="注意" color="info" %}}
+{{% alert title="注意" %}}
 
 標準出力を使用したログ計装のエンドツーエンドの例は、[Javaサンプルリポジトリ](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md)で入手できます。
 

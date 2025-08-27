@@ -1516,7 +1516,7 @@ convention to represent that information on its `Resource`.
 
 All the resource semantic convention attribute names and well known-values are
 kept within the
-[/semconv/v1.9.0/generated_resource.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/semconv/v1.9.0/generated_resource.go>)
+[/semconv/v1.9.0/generated_resource.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/semconv/v1.9.0/generated_resource.go)
 file within the Collector's GitHub project.
 
 Let's create a function to read the field values from an `BackendSystem`

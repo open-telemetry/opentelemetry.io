@@ -53,6 +53,9 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://twitter.com
   - ^https://www.youtube.com/playlist\?list= # htmltest doesn't process query parameters
   - ^https://x.com
+  - ^https://x.ai
+  - ^https://www.deepseek.com
+  - ^https://www.perplexity.ai
 
   # Ignore Docsy-generated GitHub links for now, until
   # https://github.com/google/docsy/issues/1432 is fixed

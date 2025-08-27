@@ -120,8 +120,11 @@ exporters:
 
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 
 service:
   extensions: [health_check, pprof, zpages]
@@ -170,8 +173,11 @@ exporters:
 
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 
 service:
   extensions: [health_check, pprof, zpages]
@@ -576,8 +582,11 @@ extensions configured in the same file:
 ```yaml
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 ```
 
 > For detailed extension configuration, see the
@@ -675,6 +684,17 @@ processors:
     actions:
       - key: ${env:DB_KEY}
         action: ${env:OPERATION}
+```
+
+You can pass defaults to an environment variable using the bash syntax:
+`${env:DB_KEY:-some-default-var}`
+
+```yaml
+processors:
+  attributes/example:
+    actions:
+      - key: ${env:DB_KEY:-mydefault}
+        action: ${env:OPERATION:-}
 ```
 
 Use `$$` to indicate a literal `$`. For example, representing

@@ -75,15 +75,16 @@ These are the members of [@open-telemetry/docs-approvers]:
 
 - [Michael Hausenblas](https://github.com/mhausenblas), Amazon
 - [Ted Young](https://github.com/tedsuo), Grafana Labs
+- [Vitor Vasconcellos](https://github.com/vitorvasc), MercadoLibre, Inc.
 
 For more information about the approver role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
 
 ### Emeritus maintainers
 
-- [Steve Flanders](https://github.com/flands)
-- [Morgan McLean](https://github.com/mtwo)
 - [jparsana](https://github.com/jparsana)
+- [Morgan McLean](https://github.com/mtwo)
+- [Steve Flanders](https://github.com/flands)
 
 For more information about the emeritus role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
