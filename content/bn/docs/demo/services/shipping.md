@@ -14,7 +14,7 @@ cSpell:ignore: sdktrace
 
 [শিপিং সার্ভিস সোর্স](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/shipping/)
 
-## ইন্সট্রুমেন্টেশন (#instrumentation)
+## ইন্সট্রুমেন্টেশন {#instrumentation}
 
 OpenTelemetry SDK `telemetry_conf` ফাইলে কনফিগার করা হয়েছে।
 
@@ -33,7 +33,7 @@ fn get_resource() -> Resource {
 
 `get_resource()` যুক্ত করার পর, ফাংশনটি সব ধরনের প্রোভাইডার ইনিশিয়ালাইজেশনের সময় একাধিকবার ডাকা যেতে পারে।
 
-### ট্রেসার প্রোভাইডার ইনিশিয়ালাইজেশন (#initializing-tracer-provider)
+### ট্রেসার প্রোভাইডার ইনিশিয়ালাইজেশন {#initializing-tracer-provider}
 
 ```rust
 fn init_tracer_provider() {
@@ -53,7 +53,7 @@ fn init_tracer_provider() {
 }
 ```
 
-### মিটার প্রোভাইডার ইনিশিয়ালাইজেশন (#initializing-meter-provider)
+### মিটার প্রোভাইডার ইনিশিয়ালাইজেশন {#initializing-meter-provider}
 
 ```rust
 fn init_meter_provider() -> opentelemetry_sdk::metrics::SdkMeterProvider {
@@ -73,7 +73,7 @@ fn init_meter_provider() -> opentelemetry_sdk::metrics::SdkMeterProvider {
 }
 ```
 
-### লগার প্রোভাইডার ইনিশিয়ালাইজেশন (#initializing-logger-provider)
+### লগার প্রোভাইডার ইনিশিয়ালাইজেশন {#initializing-logger-provider}
 
 লগের জন্য শিপিং সার্ভিসে ট্রেসিং ব্যবহার করা হয়, তাই `OpenTelemetryTracingBridge` ব্যবহার করা হয়েছে যাতে ট্রেসিং ক্রেট থেকে লগগুলোকে OpenTelemetry-এর সাথে সংযুক্ত করা যায়।
 
@@ -97,7 +97,7 @@ fn init_logger_provider() {
 }
 ```
 
-### ইন্সট্রুমেন্টেশন ইনিশিয়ালাইজেশন (#initializing-instrumentation)
+### ইন্সট্রুমেন্টেশন ইনিশিয়ালাইজেশন {#initializing-instrumentation}
 
 Tracer, Metrics ও Logs provider ইনিশিয়ালাইজ করার জন্য একটি পাবলিক ফাংশন `init_otel()` তৈরি করা হয়েছে:
 
@@ -131,11 +131,11 @@ async fn main() -> std::io::Result<()> {
 }
 ```
 
-### ইন্সট্রুমেন্টেশন কনফিগারেশন (#instrumentation-configuration)
+### ইন্সট্রুমেন্টেশন কনফিগারেশন {#instrumentation-configuration}
 
 প্রোভাইডারগুলো কনফিগার এবং ইনিশিয়ালাইজ হওয়ার পরে, শিপিং সার্ভিস সার্ভার-সাইড এবং ক্লায়েন্ট-সাইড কনফিগারেশনের সময় অ্যাপ্লিকেশনকে ইন্সট্রুমেন্ট করার জন্য [`opentelemetry-instrumentation-actix-web` crate](https://crates.io/crates/opentelemetry-instrumentation-actix-web) ব্যবহার করে।
 
-#### সার্ভার সাইড (#server-side)
+#### সার্ভার সাইড {#server-side}
 
 সার্ভারটি `RequestTracing` এবং `RequestMetrics` দিয়ে র‍্যাপ করা হয়েছে, যাতে রিকোয়েস্ট পাওয়ার সময় স্বয়ংক্রিয়ভাবে ট্রেস এবং মেট্রিকস তৈরি হয়:
 
@@ -149,7 +149,7 @@ HttpServer::new(|| {
 })
 ```
 
-#### ক্লায়েন্ট সাইড (#client-side)
+#### ক্লায়েন্ট সাইড {#client-side}
 
 যখন অন্য সার্ভিসে রিকোয়েস্ট পাঠানো হয়, তখন কলের সাথে `trace_request()` যোগ করা হয়:
 
@@ -162,13 +162,13 @@ let mut response = client
     .map_err(|err| anyhow::anyhow!("Failed to call quote service: {err}"))?;
 ```
 
-### ম্যানুয়াল ইন্সট্রুমেন্টেশন (#manual-instrumentation)
+### ম্যানুয়াল ইন্সট্রুমেন্টেশন {#manual-instrumentation}
 
 পূর্ববর্তী সেকশনে উল্লেখিত কমান্ডগুলো যোগ করার মাধ্যমে `opentelemetry-instrumentation-actix-web` ক্রেটটি আমাদেরকে সার্ভার এবং ক্লায়েন্ট সাইডে ইন্সট্রুমেন্ট করতে দেয়।
 
 এছাড়া ডেমোতে আমরা দেখাই কিভাবে স্বয়ংক্রিয়ভাবে তৈরি হওয়া স্প্যানগুলোকে ম্যানুয়ালি উন্নত করা যায় এবং অ্যাপ্লিকেশনে ম্যানুয়াল মেট্রিকস তৈরি করা যায়।
 
-#### ম্যানুয়াল স্প্যান (#manual-spans)
+#### ম্যানুয়াল স্প্যান {#manual-spans}
 
 নিম্নলিখিত কোড স্নিপেটে, বর্তমান অ্যাকটিভ স্প্যানটি একটি স্প্যান ইভেন্ট এবং একটি স্প্যান অ্যাট্রিবিউট দিয়ে উন্নত করা হয়েছে:
 
@@ -184,7 +184,7 @@ Ok(get_active_span(|span| {
 }))
 ```
 
-#### ম্যানুয়াল মেট্রিকস (#manual-metrics)
+#### ম্যানুয়াল মেট্রিকস {#manual-metrics}
 
 শিপিং রিকোয়েস্টে মোট কতটি আইটেম রয়েছে তা গণনা করার জন্য একটি কাস্টম মেট্রিক কাউন্টার তৈরি করা হয়েছে:
 
@@ -194,7 +194,7 @@ let counter = meter.u64_counter("app.shipping.items_count").build();
 counter.add(count as u64, &[]);
 ```
 
-### লগ (#logs)
+### লগ {#logs}
 
 যেহেতু শিপিং সার্ভিস লগ ইন্টারফেস হিসেবে ট্রেসিং ব্যবহার করছে, এটি `opentelemetry-appender-tracing` ক্রেট ব্যবহার করে ট্রেসিং লগগুলোকে OpenTelemetry লগের সাথে সংযুক্ত করে।
 
