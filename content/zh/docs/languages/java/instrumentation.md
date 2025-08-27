@@ -1,6 +1,7 @@
 ---
 title: 插桩生态系统
 default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
+drifted_from_default: true
 aliases:
   - /docs/java/getting_started
   - /docs/java/manual_instrumentation
