@@ -5,9 +5,9 @@ language: js
 tags:
   - Node.js
   - instrumentation
-  - svelte
+  - sveltekit
 license: MIT
-description: Svelte supports OpenTelemetry instrumentation out of the box.
+description: SvelteKit supports OpenTelemetry instrumentation out of the box.
 authors:
   - name: Svelte contributors
     url: https://github.com/sveltejs/
