@@ -28,7 +28,7 @@ desees. Agrega el texto del anuncio como cuerpo de la página.
 
 > En el caso de los banners, el cuerpo del anuncio debe ser una frase corta.
 
-{{% alert title="For localizations" %}}
+{{% alert title="Para localizaciones" %}}
 
 Si estás creando una **anulación de anuncio específica de la configuración
 regional**, asegúrate de utilizar el **mismo nombre de archivo** que el anuncio
