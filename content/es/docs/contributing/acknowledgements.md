@@ -2,7 +2,7 @@
 title: Reconocimientos
 description: Reconocimientos por las fuentes del contenido de este sitio
 aliases: [/acknowledgements, /docs/acknowledgements]
-default_lang_commit: 83f96d36f2757bdb102753cb6ffcac584250449e
+default_lang_commit: 3011904d6125ff8322cd38f987bd290a370fde65
 cSpell:ignore: Pigram
 ---
 
