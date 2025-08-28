@@ -169,7 +169,7 @@ Here are examples following OpenTelemetry
 
 | Traditional (Context+Units in Name) | OpenTelemetry (Clean Separation)                                             | Why It's Better                               |
 | :---------------------------------- | :--------------------------------------------------------------------------- | :-------------------------------------------- |
-| `payment_transaction_total`         | `transaction.count` + `service.name=payment` + unit `1`                      | Aggregable across services                  |
+| `payment_transaction_total`         | `transaction.count` + `service.name=payment` + unit `1`                      | Aggregable across services                    |
 | `user_service_auth_latency_ms`      | `auth.duration` + `service.name=user` + unit `ms`                            | Standard operation name, proper unit metadata |
 | `inventory_db_query_seconds`        | `db.client.operation.duration` + `service.name=inventory` + unit `s`         | Follows semantic conventions                  |
 | `api_gateway_requests_per_second`   | `http.server.request.rate` + `service.name=api-gateway` + unit `{request}/s` | Clean name, proper rate unit                  |
