@@ -8,7 +8,7 @@ default_lang_commit: a1bfd8388dad69255e3fde796562d473a076f2f9
 Un anuncio es una _página de Hugo normal_, ubicada en la sección `anuncios` de
 una configuración regional. Esto significa que aprovechamos la gestión integrada
 de Hugo de fechas de página (futuras o vencidas), internacionalización y más,
-para mostrar o ocultar banners automáticamente según la fecha de compilación,
+para mostrar u ocultar banners automáticamente según la fecha de compilación,
 determinar el orden de los banners, gestionar el uso de banners en inglés, etc.
 
 > Actualmente, los anuncios se usan solo como banners. Es _posible_ que, con el
@@ -16,7 +16,7 @@ determinar el orden de los banners, gestionar el uso de banners en inglés, etc.
 
 ### Creando un anuncio
 
-Para agregar un nuevo anuncio, cree un archivo Markdown de anuncios en la
+Para agregar un nuevo anuncio, crea un archivo Markdown de anuncios en la
 carpeta `anuncios` de su localización usando el siguiente comando:
 
 ```sh
