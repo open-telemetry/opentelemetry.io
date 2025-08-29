@@ -1,9 +1,14 @@
 actuateur
+additionaldeps
 autocompléter
 extensibilité
 glassfish
 jvms
+multiligne
+packagées
+phpini
 observabilité
+opentelemetryautoinstrumentationruntimenative
 otelinstrumentationmethodsinclude
 packagées
 payara

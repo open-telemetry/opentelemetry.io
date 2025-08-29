@@ -102,7 +102,7 @@ services:
       - '18443:8443'
 
   autoinstrumenter:
-    image: docker.io/otel/ebpf-instrument:latest
+    image: docker.io/otel/ebpf-instrument:main
     pid: 'host'
     privileged: true
     environment:
