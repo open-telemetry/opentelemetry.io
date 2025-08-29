@@ -156,7 +156,7 @@ OpenTelemetry Configuration schema
 
 Log output is found in `stderr`. You can configure logs in the config
 `service::telemetry::logs`. The
-[configuration options](https://github.com/open-telemetry/opentelemetry-collector/blob/ed09fb912b2ff7cb3998cdb0b54027471ed65eaa/service%2Ftelemetry%2Fotelconftelemetry%2Fconfig.go)
+[configuration options](https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/telemetry/otelconftelemetry/config.go)
 are:
 
 | Field name             | Default value | Description                                                                                                                                                                                                                                                                                       |
