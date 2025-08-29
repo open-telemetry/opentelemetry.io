@@ -7527,6 +7527,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:08:06.815186-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/telemetry/otelconftelemetry/config.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-29T12:44:18.469858282Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/master/docs/vision.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:08:29.724977-05:00"
