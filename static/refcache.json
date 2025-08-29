@@ -7487,6 +7487,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-05-03T13:11:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/ed09fb912b2ff7cb3998cdb0b54027471ed65eaa/service%2Ftelemetry%2Fotelconftelemetry%2Fconfig.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-12T19:54:18.355513797Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/VERSIONING.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:08:30.542918-05:00"
@@ -7570,6 +7574,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/telemetry/config.go": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:08:06.815186-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/telemetry/otelconftelemetry/config.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-29T12:44:18.469858282Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/master/docs/vision.md": {
     "StatusCode": 206,
