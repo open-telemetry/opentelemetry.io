@@ -13,7 +13,7 @@ cSpell:ignore: faraday sinatra
 
 ライブラリにOpenTelemetryが組み込まれていない場合は、[計装ライブラリ](/docs/specs/otel/glossary/#instrumentation-library)を使用して、ライブラリやフレームワークのテレメトリーデータを生成できます。
 
-たとえば、Railsを使用していて、[`opentelemetry-instrumentation-rails`](https://rubygems.org/gems/opentelemetry-instrumentation-rails/)を有効にしている場合、実行中のRailsアプリはコントーラーへの受信リクエストのテレメトリーデータを自動的に生成します。
+たとえば、Railsを使用していて、[`opentelemetry-instrumentation-rails`](https://rubygems.org/gems/opentelemetry-instrumentation-rails/)を有効にしている場合、実行中のRailsアプリはコントローラーへの受信リクエストのテレメトリーデータを自動的に生成します。
 
 ### すべての計装ライブラリの構成 {#configuring-all-instrumentation-libraries}
 
