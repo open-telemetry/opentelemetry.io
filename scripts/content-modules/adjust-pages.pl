@@ -100,7 +100,7 @@ sub patchSpec_because_of_SemConv_MetricReqLevelHashDNE() {
     && applyPatchOrPrintMsgIf('2025-08-28-metric-request-level-hash-dne', 'semconv', '1.37.0-dev');
 
   # See https://github.com/open-telemetry/semantic-conventions/issues/2690#issuecomment-3235079573
-  s|/docs/general/metrics.md#metric-requirement-levels|/docs/general/attribute-requirement-level.md#recommended|g;
+  s|/docs/general/metrics.md#metric-requirement-levels|/docs/general/metric-requirement-level.md#recommended|g;
 }
 
 sub patchSpec_because_of_SemConv_GenAiSpanRelativePath() {
