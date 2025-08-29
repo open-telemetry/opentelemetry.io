@@ -103,8 +103,7 @@ end
 例によって、環境変数は計装の名前を大文字にして `::` をアンダースコアに置き換え、`OPENTELEMETRY` を `OTEL_{LANG}` に短縮し、最後に `_CONFIG_OPTS` を追加したものです。
 
 たとえば、`OpenTelemetry::Instrumentation::Faraday` の環境変数名は `OTEL_RUBY_INSTRUMENTATION_FARADAY_CONFIG_OPTS` です。
-A value of
-`peer_service=new_service;span_kind=client` は、[前のセクション](#configuring-specific-instrumentation-libraries)でFaradayに設定されたオプションを上書きします。
+`peer_service=new_service;span_kind=client` の値は、[前のセクション](#configuring-specific-instrumentation-libraries)でFaradayに設定されたオプションを上書きします。
 
 ```bash
 export OTEL_RUBY_INSTRUMENTATION_FARADAY_CONFIG_OPTS="peer_service=new_service;span_kind=client"
@@ -112,14 +111,14 @@ export OTEL_RUBY_INSTRUMENTATION_FARADAY_CONFIG_OPTS="peer_service=new_service;s
 
 次の表は、オプションのデータ型に応じた許容される値の形式を示しています。
 
-| Data Type | Value              | Example          |
-| --------- | ------------------ | ---------------- |
-| Array     | `,` 区切りの文字列 | `option=a,b,c,d` |
-| Boolean   | true/false         | `option=true`    |
-| Integer   | 文字列             | `option=string`  |
-| String    | 文字列             | `option=string`  |
-| Enum      | 文字列             | `option=string`  |
-| Callable  | 許容されない       | N\A              |
+| データ型 | 値                 | 例               |
+| -------- | ------------------ | ---------------- |
+| Array    | `,` 区切りの文字列 | `option=a,b,c,d` |
+| Boolean  | true/false         | `option=true`    |
+| Integer  | 文字列             | `option=string`  |
+| String   | 文字列             | `option=string`  |
+| Enum     | 文字列             | `option=string`  |
+| Callable | 許容されない       | N\A              |
 
 ### 次のステップ {#next-steps}
 
