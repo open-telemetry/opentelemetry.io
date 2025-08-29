@@ -1,7 +1,8 @@
 ---
 title: Recursos de usuário-final
 linkTitle: Usuário Final
-description: Recursos agnósticos em relação a fornecedores para usuários do OpenTelemetry
+description:
+  Recursos agnósticos em relação a fornecedores para usuários do OpenTelemetry
 weight: 40
 default_lang_commit: ee09a3383facebe1937529e9a0129ccf53f94937
 ---
@@ -13,7 +14,8 @@ gostaria de compartilhar com os contribuidores do projeto, ou você quer ajudar 
 priorizar os problemas do projeto. Você veio ao lugar certo!
 
 - Para dar feedback e ajudar a priorizar o trabalho:
-  - [Vote e comente nas issues do GitHub](issue-participation/), basta um clique!
+  - [Vote e comente nas issues do GitHub](issue-participation/), basta um
+    clique!
   - participe de uma [conversa direta/sessão de feedback](interviews-feedback/)
   - Responda à [nossa pesquisa mais recente](feedback-survey/)
 - Para aprender sobre OpenTelemetry, confira:
@@ -23,11 +25,12 @@ priorizar os problemas do projeto. Você veio ao lugar certo!
 - Para conectar com outros usuários finais e saber dos próximos eventos, entre
   no [canal do Slack](slack-channel/).
 
-Esses fóruns têm como objetivo reunir e trazer engenheiros de operações e desenvolvimento de
-diferentes organizações para discutir desafios e soluções para alcançar a
-observabilidade ubíqua. Nós encorajamos você a compartilhar seus sucessos e
-falhas, descobrir melhores práticas, e conhecer outras pessoas que também estão
-nesta jornada de implementar observabilidade junto com OpenTelemetry.
+Esses fóruns têm como objetivo reunir e trazer engenheiros de operações e
+desenvolvimento de diferentes organizações para discutir desafios e soluções
+para alcançar a observabilidade ubíqua. Nós encorajamos você a compartilhar seus
+sucessos e falhas, descobrir melhores práticas, e conhecer outras pessoas que
+também estão nesta jornada de implementar observabilidade junto com
+OpenTelemetry.
 
 ### Tópicos {#topics}
 
