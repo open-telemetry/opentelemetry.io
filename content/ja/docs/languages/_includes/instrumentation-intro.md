@@ -12,4 +12,4 @@ default_lang_commit: 1ececa0615b64c5dfd93fd6393f3e4052e0cc496
 ライブラリ自体はテレメトリーを出力しません。
 ライブラリの計装についての詳細は、[ライブラリ](/docs/concepts/instrumentation/libraries/)を参照してください。
 
-OpenTelemetry APIとSDKついての詳細は、[仕様](/docs/specs/otel/)を参照してください。
+OpenTelemetry APIとSDKについての詳細は、[仕様](/docs/specs/otel/)を参照してください。

@@ -1,7 +1,7 @@
 # cSpell:ignore openai OpenAI Arize openinference arizeai
 title: OpenAI JavaScript Instrumentation
 registryType: instrumentation
-language: javascript
+language: js
 tags:
   - javascript
   - instrumentation

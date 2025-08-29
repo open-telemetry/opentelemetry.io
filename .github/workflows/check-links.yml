@@ -115,7 +115,11 @@ jobs:
             exit 1
           fi
       - name: Does the refcache need updating?
-        run: npm run diff:fail
+        run: |
+          echo "If the diff check below fails, then update static/refcache.json by"
+          echo "running 'npm run fix:refcache' locally and committing the changes"
+          echo "or adding the comment '/fix:refcache' to your PR in GitHub."
+          npm run _diff:fail
 
   check-build-log-for-issues:
     name: WARNINGS in build log?

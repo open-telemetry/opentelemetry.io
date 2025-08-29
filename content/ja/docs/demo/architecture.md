@@ -3,8 +3,7 @@ title: デモのアーキテクチャ
 linkTitle: アーキテクチャ
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
-default_lang_commit: e8f94839e85df475fe8c5ff995c18eefa5220635
-drifted_from_default: true
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
 ---
 
 **OpenTelemetryデモ** は、異なるプログラミング言語で書かれた複数のマイクロサービスから構成されており、gRPCとHTTPを使って相互に通信を行います。
@@ -121,7 +120,7 @@ classDef rust fill:#dea584,color:black;
 classDef typescript fill:#e98516,color:black;
 ```
 
-デモアプリケーションの[メトリック](/docs/demo/telemetry-features/metric-coverage/) と [トレース](/docs/demo/telemetry-features/trace-coverage/) の計装の現状については、リンクをご確認ください。
+デモアプリケーションの[ログ](/docs/demo/telemetry-features/log-coverage/)、[メトリクス](/docs/demo/telemetry-features/metric-coverage/) と[トレース](/docs/demo/telemetry-features/trace-coverage/) の計装の現状については、これらのリンクをご確認ください。
 
 コレクターの設定は [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml) で行われており、代替のエクスポーターをここで設定することができます。
 
@@ -143,18 +142,24 @@ subgraph tdf[テレメトリーデータフロー]
            oc-grpc[/"OTLPレシーバー<br/>リッスン先：<br/>grpc://localhost:4317"/]
            oc-http[/"OTLPレシーバー<br/>リッスン先：<br/>localhost:4318<br/>"/]
            oc-proc(プロセッサー)
+           oc-spanmetrics[/"Span Metricsコネクター"/]
            oc-prom[/"OTLP HTTPエクスポーター"/]
            oc-otlp[/"OTLPエクスポーター"/]
+           oc-opensearch[/"OpenSearchエクスポーター"/]
 
            oc-grpc --> oc-proc
            oc-http --> oc-proc
 
            oc-proc --> oc-prom
            oc-proc --> oc-otlp
+           oc-proc --> oc-opensearch
+           oc-proc --> oc-spanmetrics
+           oc-spanmetrics --> oc-prom
        end
 
        oc-prom -->|"localhost:9090/api/v1/otlp"| pr-sc
        oc-otlp -->|gRPC| ja-col
+       oc-opensearch -->|HTTP| os-http
 
        subgraph pr[Prometheus]
            style pr fill:#e75128,color:black;
@@ -179,6 +184,14 @@ subgraph tdf[テレメトリーデータフロー]
            ja-db --> ja-http
        end
 
+       subgraph os[OpenSearch]
+           style os fill:#005eb8,color:black;
+           os-http[/"OpenSearch<br/>リッスン先：<br/>localhost:9200"/]
+           os-db[(OpenSearchインデックス)]
+
+           os-http ---> os-db
+       end
+
        subgraph gr[Grafana]
            style gr fill:#f8b91e,color:black;
            gr-srv["Grafanaサーバー"]
@@ -189,6 +202,7 @@ subgraph tdf[テレメトリーデータフロー]
 
        pr-http --> |"localhost:9090/api"| gr-srv
        ja-http --> |"localhost:16686/api"| gr-srv
+       os-http --> |"localhost:9200/api"| gr-srv
 
        ja-b{{"ブラウザ<br/>Jaeger UI"}}
        ja-http ---->|"localhost:16686/search"| ja-b
