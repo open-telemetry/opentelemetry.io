@@ -3,7 +3,7 @@ title: Запустіть OBI як контейнер Docker
 linkTitle: Docker
 description: Дізнайтеся, як налаштувати та запустити OBI як окремий контейнер Docker, який інструментує інший контейнер.
 weight: 2
-default_lang_commit: 873e42833f8e17860becdff26de4717194eb11ca
+default_lang_commit: ca5073d7daa61c4293248c523e832116fa1b949c
 cSpell:ignore: goblog
 ---
 
@@ -84,7 +84,7 @@ services:
       - '18443:8443'
 
   autoinstrumenter:
-    image: docker.io/otel/ebpf-instrument:latest
+    image: docker.io/otel/ebpf-instrument:main
     pid: 'host'
     privileged: true
     environment:

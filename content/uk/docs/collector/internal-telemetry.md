@@ -1,7 +1,7 @@
 ---
 title: Внутрішня телеметрія
 weight: 25
-default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
+default_lang_commit: ca5073d7daa61c4293248c523e832116fa1b949c
 cSpell:ignore: alloc batchprocessor journalctl
 ---
 
@@ -121,7 +121,7 @@ service:
 
 ### Налаштування внутрішніх журналів {#configure-internal-logs}
 
-Вивід логів знаходиться у файлі `stderr`. Налаштувати логи можна у конфігураційному файлі `service::telemetry::logs`. Ось [параметри конфігурації](https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/telemetry/config.go):
+Вивід логів знаходиться у файлі `stderr`. Налаштувати логи можна у конфігураційному файлі `service::telemetry::logs`. Ось [параметри конфігурації](https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/telemetry/otelconftelemetry/config.go):
 
 | Назва поля             | Стандартне значення | Опис                                                                                                                                                                                                                                                                                                                                                                            |
 | ---------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

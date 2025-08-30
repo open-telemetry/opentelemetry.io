@@ -5,7 +5,7 @@ aliases:
   - /docs/languages/java/api-components/
 logBridgeWarning: >
   Хоча API `LoggerProvider` / `Logger` структурно схожі на еквівалентні API трасування та метрик, вони служать іншій меті. На даний момент, `LoggerProvider` / `Logger` та повʼязані класи представляють [Log Bridge API](/docs/specs/otel/logs/api/), який існує для написання доповнювачів логів для перенесення логів, записаних через інші лог-API / фреймворки, в OpenTelemetry. Вони не призначені для кінцевих користувачів як заміна для Log4j / SLF4J / Logback / тощо.
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: ca5073d7daa61c4293248c523e832116fa1b949c
 cSpell:ignore: Dotel kotlint Logback updowncounter
 ---
 
@@ -1143,7 +1143,7 @@ public class AsyncGaugeUsage {
   public static void asyncGaugeUsage(Meter meter) {
     AtomicReference<Double> processingLineTemp = new AtomicReference<>(273.0);
 
-    // Construct an async counter to observe an existing counter in a callback
+    // Construct an async gauge to observe an existing gauge in a callback
     ObservableDoubleGauge asyncGauge =
         meter
             .gaugeBuilder("fully.qualified.gauge")

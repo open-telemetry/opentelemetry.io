@@ -2,7 +2,7 @@
 title: Поширення
 description: Поширення контексту для JS SDK
 weight: 65
-default_lang_commit: 873e42833f8e17860becdff26de4717194eb11ca
+default_lang_commit: ca5073d7daa61c4293248c523e832116fa1b949c
 cSpell:ignore: rolldice
 ---
 
@@ -26,15 +26,10 @@ cSpell:ignore: rolldice
 
 ```sh
 npm init -y
-npm install typescript \
-  ts-node \
-  @types/node \
-  undici \
+npm install undici \
   @opentelemetry/instrumentation-undici \
   @opentelemetry/sdk-node
-
-# ініціалізація typescript
-npx tsc --init
+npm install -D tsx  # інструмент для безпосереднього запуску файлів TypeScript (.ts) за допомогою node
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -48,11 +43,12 @@ npm install undici \
 
 {{% /tab %}} {{< /tabpane >}}
 
-Далі створіть новий файл з назвою `client.ts` (або client.js) з наступним вмістом:
+Далі створіть новий файл з назвою `client.ts` (або `client.js`) з наступним вмістом:
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
+/* client.ts */
 import { NodeSDK } from '@opentelemetry/sdk-node';
 import {
   SimpleSpanProcessor,
@@ -76,14 +72,13 @@ request('http://localhost:8080/rolldice').then((response) => {
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const {
+/* instrumentation.mjs */
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import {
   SimpleSpanProcessor,
   ConsoleSpanExporter,
-} = require('@opentelemetry/sdk-trace-node');
-const {
-  UndiciInstrumentation,
-} = require('@opentelemetry/instrumentation-undici');
+} from '@opentelemetry/sdk-trace-node';
+import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici';
 
 const sdk = new NodeSDK({
   spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
@@ -105,14 +100,14 @@ request('http://localhost:8080/rolldice').then((response) => {
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
-$ npx ts-node --require ./instrumentation.ts app.ts
+$ npx tsx --import ./instrumentation.ts app.ts
 Listening for requests on http://localhost:8080
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```console
-$ node --require ./instrumentation.js app.js
+$ node --import ./instrumentation.mjs app.js
 Listening for requests on http://localhost:8080
 ```
 
@@ -123,7 +118,7 @@ Listening for requests on http://localhost:8080
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```shell
-npx ts-node client.ts
+npx tsx client.ts
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -144,7 +139,7 @@ node client.js
     }
   },
   traceId: 'cccd19c3a2d10e589f01bfe2dc896dc2',
-  parentId: undefined,
+  parentSpanContext: undefined,
   traceState: undefined,
   name: 'GET',
   id: '6f64ce484217a7bf',
@@ -163,14 +158,19 @@ node client.js
 
 Зверніть увагу на traceId (`cccd19c3a2d10e589f01bfe2dc896dc2`) та ID (`6f64ce484217a7bf`). Обидва можна знайти у виводі клієнта також:
 
-```javascript {hl_lines=["6-7"]}
+```javascript {hl_lines=["6,9"]}
 {
   resource: {
     attributes: {
       // ...
   },
   traceId: 'cccd19c3a2d10e589f01bfe2dc896dc2',
-  parentId: '6f64ce484217a7bf',
+  parentSpanContext: {
+    traceId: 'cccd19c3a2d10e589f01bfe2dc896dc2',
+    spanId: '6f64ce484217a7bf',
+    traceFlags: 1,
+    isRemote: true
+  },
   traceState: undefined,
   name: 'GET /rolldice',
   id: '027c5c8b916d29da',
@@ -438,12 +438,12 @@ node client.js
 Щоб увімкнути OpenTelemetry та побачити поширення контексту в дії, створіть додатковий файл з назвою `instrumentation.js` з наступним вмістом:
 
 ```javascript
-// instrumentation.js
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const {
+// instrumentation.mjs
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import {
   ConsoleSpanExporter,
   SimpleSpanProcessor,
-} = require('@opentelemetry/sdk-trace-node');
+} from '@opentelemetry/sdk-trace-node';
 
 const sdk = new NodeSDK({
   spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
@@ -455,14 +455,14 @@ sdk.start();
 Використовуйте цей файл для запуску як сервера, так і клієнта, з увімкненим інструментуванням:
 
 ```console
-$ node -r ./instrumentation.js server.js
+$ node --import ./instrumentation.mjs server.js
 Сервер слухає на порту 8124
 ```
 
 та
 
 ```shell
-node -r ./instrumentation client.js
+node --import ./instrumentation.mjs client.js
 ```
 
 Після того, як клієнт відправив дані на сервер і завершив роботу, ви повинні побачити відрізки у виводі консолі обох терміналів.

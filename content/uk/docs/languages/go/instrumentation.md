@@ -5,7 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: Ручне інструментування для OpenTelemetry в Go
-default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+default_lang_commit: ca5073d7daa61c4293248c523e832116fa1b949c
 # prettier-ignore
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup обчислювально
 ---
@@ -41,7 +41,7 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -175,7 +175,7 @@ span.SetAttributes(myKey.String("a value"))
 
 #### Семантичні атрибути {#semantic-attributes}
 
-Семантичні атрибути — це атрибути, визначені [Специфікацією OpenTelemetry][специфікація opentelemetry], щоб забезпечити спільний набір ключів атрибутів для кількох мов, фреймворків та середовищ виконання для загальних концепцій, таких як HTTP методи, коди стану, агенти користувача тощо. Ці атрибути доступні в пакунку `go.opentelemetry.io/otel/semconv/v1.34.0`.
+Семантичні атрибути — це атрибути, визначені [Специфікацією OpenTelemetry][специфікація opentelemetry], щоб забезпечити спільний набір ключів атрибутів для кількох мов, фреймворків та середовищ виконання для загальних концепцій, таких як HTTP методи, коди стану, агенти користувача тощо. Ці атрибути доступні в пакунку `go.opentelemetry.io/otel/semconv/v1.37.0`.
 
 Для деталей дивіться [Семантичні конвенції трейсів][].
 
@@ -318,7 +318,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 func main() {
@@ -351,11 +351,14 @@ func main() {
 }
 
 func newResource() (*resource.Resource, error) {
-	return resource.Merge(resource.Default(),
-		resource.NewWithAttributes(semconv.SchemaURL,
+	return resource.Merge(
+    resource.Default(),
+		resource.NewWithAttributes(
+      semconv.SchemaURL,
 			semconv.ServiceName("my-service"),
 			semconv.ServiceVersion("0.1.0"),
-		))
+		),
+  )
 }
 
 func newMeterProvider(res *resource.Resource) (*metric.MeterProvider, error) {
@@ -686,7 +689,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 func init() {
@@ -887,7 +890,7 @@ import (
 	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 func main() {
@@ -921,11 +924,14 @@ func main() {
 }
 
 func newResource() (*resource.Resource, error) {
-	return resource.Merge(resource.Default(),
-		resource.NewWithAttributes(semconv.SchemaURL,
+	return resource.Merge(
+    resource.Default(),
+		resource.NewWithAttributes(
+      semconv.SchemaURL,
 			semconv.ServiceName("my-service"),
 			semconv.ServiceVersion("0.1.0"),
-		))
+		),
+  )
 }
 
 func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.LoggerProvider, error) {

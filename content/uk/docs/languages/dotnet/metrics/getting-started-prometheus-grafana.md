@@ -79,7 +79,7 @@ while (!Console.KeyAvailable)
 meterProvider.Dispose();
 ```
 
-Коли ви запустите цей застосунок, вона спробує експортувати метрики до Prometheus за адресою `http://localhost:9090/api/v1/otlp/v1/metrics`. Спочатку це не вдасться, оскільки ми ще не налаштували Prometheus, що ми зробимо далі.
+Коли ви запустите цей застосунок, він спробує експортувати метрики до Prometheus за адресою `http://localhost:9090/api/v1/otlp/v1/metrics`. Спочатку це не вдасться, оскільки ми ще не налаштували Prometheus, що ми зробимо далі.
 
 ## Налаштування Prometheus {#setting-up-prometheus}
 

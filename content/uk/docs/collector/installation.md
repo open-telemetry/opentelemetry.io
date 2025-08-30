@@ -1,7 +1,7 @@
 ---
 title: Встановлення Колектора
 weight: 2
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: ca5073d7daa61c4293248c523e832116fa1b949c
 cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
 ---
 
@@ -230,7 +230,22 @@ tar -xvf otelcol_{{% param vers %}}_darwin_arm64.tar.gz
 
 ## Windows
 
-[Випуски][] для Windows упаковані у вигляді архівів tarball (`.tar.gz`). Кожен випуск Колектора включає виконуваний файл `otelcol.exe`, який ви можете запустити після розпакування.
+[Випуски][] для Windows доступні у вигляді MSI-інсталяторів та стиснених архівів tarball (`.tar.gz`). MSI встановлює Колектор як службу Windows, названу на честь дистрибутиву, з відображуваною назвою "OpenTelemetry Collector", і реєструє джерело журналу подій програми з назвою дистрибутиву.
+
+### Встановлення MSI {#msi-installation}
+
+```powershell
+msiexec /i "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_windows_x64.msi"
+```
+
+### Встановлення вручну {#manual-installation}
+
+```powershell
+Invoke-WebRequest -Uri "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_windows_amd64.tar.gz" -OutFile "otelcol_{{% param vers %}}_windows_amd64.tar.gz"
+tar -xvzf otelcol_{{% param vers %}}_windows_amd64.tar.gz
+```
+
+Кожен випуск включає виконуваний файл Колектора, який ви можете запустити після встановлення.
 
 ## Збирання з сирців {#building-from-source}
 
