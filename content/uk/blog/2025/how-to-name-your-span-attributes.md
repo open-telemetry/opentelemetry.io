@@ -5,8 +5,8 @@ date: 2025-08-27
 author: >-
   [Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)
 canonical_url: https://blog.olly.garden/how-to-name-your-span-attributes
-cSpell:ignore: jpkrohling OllyGarden shopify пропрієтарну
 default_lang_commit: ca5073d7daa61c4293248c523e832116fa1b949c
+cSpell:ignore: jpkrohling OllyGarden shopify пропрієтарну
 ---
 
 Ласкаво просимо до другої частини нашої серії про найкращі практики іменування в OpenTelemetry. У [попередньому дописі](/blog/2025/how-to-name-your-spans/), ми розглянули як називати відрізки, використовуючи шаблон `{verb} {object}`. Сьогодні ми заглибимось в атрибути відрізків — багаті контекстуальні дані, які перетворюють ваші трейси з простих журналів операцій на потужні інструменти для налагодження та аналізу.
