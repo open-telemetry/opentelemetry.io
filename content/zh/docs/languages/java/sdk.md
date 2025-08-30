@@ -45,7 +45,7 @@ cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
 以下章节将介绍该 SDK 中面向用户的核心组件。每个组件章节均包含：
 
 - 一段简要说明，包含指向该组件类型 Javadoc 参考文档的链接。
-- 如果该组件是[插件扩展接口](#sdk-plugin-extension-interfaces)，
+- 如果该组件是一个[插件扩展接口](#sdk-plugin-extension-interfaces)，
 则包含一张列出可用的内置实现和 `opentelemetry-java-contrib` 实现的表格。
 - [程序化配置](../configuration/#programmatic-configuration)的简单演示。
 - 如果该组件是一个[插件扩展接口](#sdk-plugin-extension-interfaces)，则包含一个自定义实现的简单演示。
@@ -167,12 +167,12 @@ SDK 内置的以及社区在 opentelemetry-java-contrib 中维护的采样器包
 
 | Class                     | Artifact                                                                                      | 描述                                                                                                                               |
 | ------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | 根据 Span 的采样状态对其进行采样。parent.                                                                              |
+| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | 根据父级 Span 的采样状态对 Span 进行采样。parent.                                                                              |
 | `AlwaysOn`                | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | 对所有 Span 进行采样。                                                                                                                        |
 | `AlwaysOff`               | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | 对所有 Span 进行丢弃。                                                                                                                         |
 | `TraceIdRatioBased`       | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | 根据可配置的比例对 Span 进行采样。                                                                                              |
 | `JaegerRemoteSampler`     | `io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler:{{% param vers.otel %}}`  | 根据来自远程服务器的配置对 Span 进行采样。                                                                              |
-| `LinksBasedSampler`       | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | 根据 Span 关联项（links）的采样状态对其进行采样。                                                                               |
+| `LinksBasedSampler`       | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | 根据 Span 关联项的采样状态对其进行采样。                                                                               |
 | `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | 根据配置规则对 Span 进行采样。                                                                                                |
 | `ConsistentSamplers`      | `io.opentelemetry.contrib:opentelemetry-consistent-sampling:{{% param vers.contrib %}}-alpha` | 根据[概率采样](/docs/specs/otel/trace/tracestate-probability-sampling/)定义的各种一致性采样器实现。 |
 
@@ -391,7 +391,7 @@ SDK 内置的以及社区在 `opentelemetry-java-contrib` 中维护的 Span 导�
 
 **[1]**： 有关实现细节请参见 [OTLP 导出器](#otlp-exporters)。
 
-以下代码片段演示了 SpanExporter 的编程式配置：
+以下代码片段演示了 `SpanExporter` 的编程式配置：
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/SpanExporterConfig.java"?>
@@ -517,7 +517,7 @@ public class SpanLimitsConfig {
   - 可以选择配合 [CardinalityLimitSelector](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/CardinalityLimitSelector.html)，
   按仪表（instrument）类型覆盖基数限制。
   若未设置，则在每个收集周期内，每个仪表的属性唯一组合数上限为 2000。
-  基数限制也可通过[views](#views)为单个仪表进行配置。
+  基数限制也可通过 [views](#views) 为单个仪表进行配置。
   更多详情请见[基数限制](/docs/specs/otel/metrics/sdk/#cardinality-limits)
 - [MetricExporter](#metricexporter): 将指标数据导出到进程外（需与关联的 `MetricReader` 配合使用）。
 - [Views](#views): 配置指标数据流，包括丢弃未使用的指标数据。
@@ -699,7 +699,7 @@ SDK 内置的以及社区在 `opentelemetry-java-contrib` 中维护的指标导�
 | `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | 将指标以 OTLP [JSON 文件编码]（实验性） 记录到 `System.out` 中。 |
 | `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | 在导出前将度量数据传递给灵活的拦截器。                      |
 
-**[1]**: 实现细节请见 [OTLP exporters](#otlp-exporters)。
+**[1]**: 实现细节请见 [OTLP 导出器](#otlp-exporters)。
 
 以下代码片段演示了 `MetricExporter` 的编程式配置：
 
@@ -743,8 +743,7 @@ public class MetricExporterConfig {
 ```
 <!-- prettier-ignore-end -->
 
-Implement the `MetricExporter` interface to provide your own custom metric
-export logic. For example:
+实现 `MetricExporter` 接口以提供自定义的指标导出逻辑。例如：
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomMetricExporter.java"?>
@@ -770,7 +769,6 @@ public class CustomMetricExporter implements MetricExporter {
   @Override
   public CompletableResultCode export(Collection<MetricData> metrics) {
     // 导出指标记录。通常，记录通过某种网络协议发送到进程外，但为了演示说明我们仅进行日志记录。
-
     logger.log(Level.INFO, "Exporting metrics");
     metrics.forEach(metric -> logger.log(Level.INFO, "Metric: " + metric));
     return CompletableResultCode.ofSuccess();
@@ -953,8 +951,7 @@ public class LogRecordProcessorConfig {
 ```
 <!-- prettier-ignore-end -->
 
-Implement the `LogRecordProcessor` interface to provide your own custom log
-processing logic. For example:
+实现 `LogRecordProcessor` 接口以提供自定义的日志处理逻辑。例如：
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomLogRecordProcessor.java"?>
@@ -995,7 +992,7 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 
 [LogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/export/LogRecordExporter.html)
 是一个[插件扩展接口](#sdk-plugin-extension-interfaces) ，负责将日志记录导出到进程外。
-与 `SdkLoggerProvider` 直接注册不同，它们与 [LogRecordProcessors](#logrecordprocessor) 配对使用，
+与 `SdkLoggerProvider` 直接注册不同，它们与 [LogRecordProcessors](#logrecordprocessor) 配对使用
 （通常是 `BatchLogRecordProcessor`）。
 
 SDK 内置的日志记录导出器和社区维护的 `opentelemetry-java-contrib` 中的日志记录导出器包括：
@@ -1016,7 +1013,7 @@ SDK 内置的日志记录导出器和社区维护的 `opentelemetry-java-contrib
 并可能导致无限循环（即 JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry Log SDK -> JUL），
 如果未正确配置。
 
-以下代码片段演示了 `LogRecordProcessor` 的编程式配置：
+以下代码片段演示了 `LogRecordExporter` 的编程式配置：
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogRecordExporterConfig.java"?>
@@ -1058,8 +1055,7 @@ public class LogRecordExporterConfig {
 ```
 <!-- prettier-ignore-end -->
 
-Implement the `LogRecordExporter` interface to provide your own custom log
-record export logic. For example:
+实现 `LogRecordExporter` 接口以提供自定义的日志记录导出逻辑。例如：
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomLogRecordExporter.java"?>
@@ -1170,8 +1166,7 @@ public class ContextPropagatorsConfig {
 ```
 <!-- prettier-ignore-end -->
 
-Implement the `TextMapPropagator` interface to provide your own custom
-propagator logic. For example:
+实现 `TextMapPropagator` 接口以提供自定义的传播逻辑。例如：
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/CustomTextMapPropagator.java"?>
