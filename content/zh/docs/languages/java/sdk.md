@@ -3,7 +3,7 @@ title: 使用 SDK 管理遥测数据
 weight: 12
 aliases: [exporters]
 default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
-cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
+cSpell:ignore: Interceptable Logback okhttp
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -46,7 +46,7 @@ cSpell:ignore: autoconfigured FQCNs Interceptable Logback okhttp
 
 - 一段简要说明，包含指向该组件类型 Javadoc 参考文档的链接。
 - 如果该组件是一个[插件扩展接口](#sdk-plugin-extension-interfaces)，
-则包含一张列出可用的内置实现和 `opentelemetry-java-contrib` 实现的表格。
+  则包含一张列出可用的内置实现和 `opentelemetry-java-contrib` 实现的表格。
 - [程序化配置](../configuration/#programmatic-configuration)的简单演示。
 - 如果该组件是一个[插件扩展接口](#sdk-plugin-extension-interfaces)，则包含一个自定义实现的简单演示。
 
@@ -118,7 +118,7 @@ public class ResourceConfig {
 ### SdkTracerProvider {#sdktracerprovider}
 
 [SdkTracerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SdkTracerProvider.html)
-是 [TracerProvider](../api/#tracerprovider) 的 SDK 实现， 
+是 [TracerProvider](../api/#tracerprovider) 的 SDK 实现，
 并负责处理由 API 生成的链路遥测数据。
 
 `SdkTracerProvider` 由应用所有者进行配置，其包含：
@@ -165,15 +165,15 @@ public class SdkTracerProviderConfig {
 
 SDK 内置的以及社区在 opentelemetry-java-contrib 中维护的采样器包括：
 
-| Class                     | Artifact                                                                                      | 描述                                                                                                                               |
-| ------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | 根据父级 Span 的采样状态对 Span 进行采样。parent.                                                                              |
-| `AlwaysOn`                | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | 对所有 Span 进行采样。                                                                                                                        |
-| `AlwaysOff`               | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | 对所有 Span 进行丢弃。                                                                                                                         |
-| `TraceIdRatioBased`       | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | 根据可配置的比例对 Span 进行采样。                                                                                              |
-| `JaegerRemoteSampler`     | `io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler:{{% param vers.otel %}}`  | 根据来自远程服务器的配置对 Span 进行采样。                                                                              |
-| `LinksBasedSampler`       | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | 根据 Span 关联项的采样状态对其进行采样。                                                                               |
-| `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | 根据配置规则对 Span 进行采样。                                                                                                |
+| Class                     | Artifact                                                                                      | 描述                                                                                                |
+| ------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `ParentBased`             | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | 根据父级 Span 的采样状态对 Span 进行采样。parent.                                                   |
+| `AlwaysOn`                | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | 对所有 Span 进行采样。                                                                              |
+| `AlwaysOff`               | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | 对所有 Span 进行丢弃。                                                                              |
+| `TraceIdRatioBased`       | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                  | 根据可配置的比例对 Span 进行采样。                                                                  |
+| `JaegerRemoteSampler`     | `io.opentelemetry:opentelemetry-sdk-extension-jaeger-remote-sampler:{{% param vers.otel %}}`  | 根据来自远程服务器的配置对 Span 进行采样。                                                          |
+| `LinksBasedSampler`       | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | 根据 Span 关联项的采样状态对其进行采样。                                                            |
+| `RuleBasedRoutingSampler` | `io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha`            | 根据配置规则对 Span 进行采样。                                                                      |
 | `ConsistentSamplers`      | `io.opentelemetry.contrib:opentelemetry-consistent-sampling:{{% param vers.contrib %}}-alpha` | 根据[概率采样](/docs/specs/otel/trace/tracestate-probability-sampling/)定义的各种一致性采样器实现。 |
 
 以下代码片段展示了 `Sampler` 的编程式配置：
@@ -268,7 +268,7 @@ public class CustomSampler implements Sampler {
 ```
 <!-- prettier-ignore-end -->
 
-#### SpanProcessor  {#spanprocessor}
+#### SpanProcessor {#spanprocessor}
 
 [SpanProcessor](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SpanProcessor.html)
 是一个 [插件扩展接口](#sdk-plugin-extension-interfaces)，
@@ -278,14 +278,14 @@ public class CustomSampler implements Sampler {
 
 SDK 内置的以及社区在 `opentelemetry-java-contrib` 中维护的 Span 处理器包括：
 
-| Class                     | Artifact                                                                                    | 描述                                                               |
-| ------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| Class                     | Artifact                                                                                    | 描述                                                      |
+| ------------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
 | `BatchSpanProcessor`      | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | 批处理采样 Span，并通过可配置的 `SpanExporter` 导出它们。 |
-| `SimpleSpanProcessor`     | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | 通过可配置的 `SpanExporter` 导出每个经过采样的 Span。              |
-| `BaggageSpanProcessor`    | `io.opentelemetry.contrib:opentelemetry-baggage-processor:{{% param vers.contrib %}}-alpha` | 使用 Baggage 增强 Span。                                            |
-| `JfrSpanProcessor`        | `io.opentelemetry.contrib:opentelemetry-jfr-events:{{% param vers.contrib %}}-alpha`        | 根据 Span 创建 JFR 事件。                                          |
-| `StackTraceSpanProcessor` | `io.opentelemetry.contrib:opentelemetry-span-stacktrace:{{% param vers.contrib %}}-alpha`   | 为选定的 Span 添加堆栈跟踪数据以增强其信息。                            |
-| `InferredSpansProcessor`  | `io.opentelemetry.contrib:opentelemetry-inferred-spans:{{% param vers.contrib %}}-alpha`    | 从异步分析器而非从插桩生成 Span。           |
+| `SimpleSpanProcessor`     | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                                | 通过可配置的 `SpanExporter` 导出每个经过采样的 Span。     |
+| `BaggageSpanProcessor`    | `io.opentelemetry.contrib:opentelemetry-baggage-processor:{{% param vers.contrib %}}-alpha` | 使用 Baggage 增强 Span。                                  |
+| `JfrSpanProcessor`        | `io.opentelemetry.contrib:opentelemetry-jfr-events:{{% param vers.contrib %}}-alpha`        | 根据 Span 创建 JFR 事件。                                 |
+| `StackTraceSpanProcessor` | `io.opentelemetry.contrib:opentelemetry-span-stacktrace:{{% param vers.contrib %}}-alpha`   | 为选定的 Span 添加堆栈跟踪数据以增强其信息。              |
+| `InferredSpansProcessor`  | `io.opentelemetry.contrib:opentelemetry-inferred-spans:{{% param vers.contrib %}}-alpha`    | 从异步分析器而非从插桩生成 Span。                         |
 
 以下代码片段展示了 `SpanProcessor` 的编程式配置：
 
@@ -378,16 +378,16 @@ public class CustomSpanProcessor implements SpanProcessor {
 
 SDK 内置的以及社区在 `opentelemetry-java-contrib` 中维护的 Span 导出器包括：
 
-| Class                          | Artifact                                                                                 | 描述                                                                   |
-| ------------------------------ | ---------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `OtlpHttpSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | 通过 OTLP `http/protobuf` 来导出 Span。                                      |
-| `OtlpGrpcSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | 通过 OTLP `grpc` 来导出 Span。                                                |
-| `LoggingSpanExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`                | 以调试格式将 Span 记录到 JUL 中。                                     |
-| `OtlpJsonLoggingSpanExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`           | 以 OTLP JSON 编码格式将 Span 记录到 JUL 中。                                  |
+| Class                          | Artifact                                                                                 | 描述                                                                     |
+| ------------------------------ | ---------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `OtlpHttpSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | 通过 OTLP `http/protobuf` 来导出 Span。                                  |
+| `OtlpGrpcSpanExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`                   | 通过 OTLP `grpc` 来导出 Span。                                           |
+| `LoggingSpanExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`                | 以调试格式将 Span 记录到 JUL 中。                                        |
+| `OtlpJsonLoggingSpanExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`           | 以 OTLP JSON 编码格式将 Span 记录到 JUL 中。                             |
 | `OtlpStdoutSpanExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`           | 以 OTLP [JSON 文件编码][]（实验性） 将 Span 格式记录到 `System.out` 中。 |
-| `ZipkinSpanExporter`           | `io.opentelemetry:opentelemetry-exporter-zipkin:{{% param vers.otel %}}`                 | 将 Span 导出到 Zipkin。                                                      |
-| `InterceptableSpanExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha`     | 在导出前将 Span 传递给灵活的拦截器。                      |
-| `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | 通过写入 Kafka topic 来导出 Span。                                    |
+| `ZipkinSpanExporter`           | `io.opentelemetry:opentelemetry-exporter-zipkin:{{% param vers.otel %}}`                 | 将 Span 导出到 Zipkin。                                                  |
+| `InterceptableSpanExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha`     | 在导出前将 Span 传递给灵活的拦截器。                                     |
+| `KafkaSpanExporter`            | `io.opentelemetry.contrib:opentelemetry-kafka-exporter:{{% param vers.contrib %}}-alpha` | 通过写入 Kafka topic 来导出 Span。                                       |
 
 **[1]**： 有关实现细节请参见 [OTLP 导出器](#otlp-exporters)。
 
@@ -476,7 +476,7 @@ public class CustomSpanExporter implements SpanExporter {
 ```
 <!-- prettier-ignore-end -->
 
-#### SpanLimits {#spanlimits} 
+#### SpanLimits {#spanlimits}
 
 [SpanLimits](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-trace/latest/io/opentelemetry/sdk/trace/SpanLimits.html)
 定义了对 Span 所捕获数据的约束，包括最大属性长度、最大属性数量等。
@@ -515,13 +515,12 @@ public class SpanLimitsConfig {
 - [Resource](#resource): 指标数据与资源相关联。
 - [MetricReader](#metricreader): 读取指标数据的聚合状态。
   - 可以选择配合 [CardinalityLimitSelector](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/export/CardinalityLimitSelector.html)，
-  按仪表（instrument）类型覆盖基数限制。
-  若未设置，则在每个收集周期内，每个仪表的属性唯一组合数上限为 2000。
-  基数限制也可通过 [views](#views) 为单个仪表进行配置。
-  更多详情请见[基数限制](/docs/specs/otel/metrics/sdk/#cardinality-limits)
+    按仪表（instrument）类型覆盖基数限制。
+    若未设置，则在每个收集周期内，每个仪表的属性唯一组合数上限为 2000。
+    基数限制也可通过 [views](#views) 为单个仪表进行配置。
+    更多详情请见[基数限制](/docs/specs/otel/metrics/sdk/#cardinality-limits)
 - [MetricExporter](#metricexporter): 将指标数据导出到进程外（需与关联的 `MetricReader` 配合使用）。
 - [Views](#views): 配置指标数据流，包括丢弃未使用的指标数据。
-
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/SdkMeterProviderConfig.java"?>
@@ -570,10 +569,10 @@ public class SdkMeterProviderConfig {
 
 SDK 中内置的并由社区在 `opentelemetry-java-contrib` 中维护的指标读取器包括：
 
-| Class                  | Artifact                                                                           | 描述                                                                             |
-| ---------------------- | ---------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `PeriodicMetricReader` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                       | 定期读取度量数据，并通过可配置的  `MetricExporter` 导出这些数据。 |
-| `PrometheusHttpServer` | `io.opentelemetry:opentelemetry-exporter-prometheus:{{% param vers.otel %}}-alpha` | 在 HTTP 服务器上以多种 Prometheus 格式提供度量数据。                         |
+| Class                  | Artifact                                                                           | 描述                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `PeriodicMetricReader` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                       | 定期读取度量数据，并通过可配置的 `MetricExporter` 导出这些数据。 |
+| `PrometheusHttpServer` | `io.opentelemetry:opentelemetry-exporter-prometheus:{{% param vers.otel %}}-alpha` | 在 HTTP 服务器上以多种 Prometheus 格式提供度量数据。             |
 
 以下代码片段演示了 `MetricReader` 的编程式配置：
 
@@ -690,14 +689,14 @@ public class CustomMetricReader implements MetricReader {
 
 SDK 内置的以及社区在 `opentelemetry-java-contrib` 中维护的指标导出器包括：
 
-| Class                            | Artifact                                                                             | 描述                                                                     |
-| -------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- |
-| `OtlpHttpMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | 通过 OTLP `http/protobuf` 导出指标。                                       |
-| `OtlpGrpcMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | 通过 OTLP `grpc` 导出指标。                                                |
-| `LoggingMetricExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | 将指标以 Debug 格式记录到 JUL 中。                                      |
-| `OtlpJsonLoggingMetricExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | 将指标以 OTLP JSON 格式记录到 JUL 中。                                  |
+| Class                            | Artifact                                                                             | 描述                                                             |
+| -------------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------- |
+| `OtlpHttpMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | 通过 OTLP `http/protobuf` 导出指标。                             |
+| `OtlpGrpcMetricExporter` **[1]** | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | 通过 OTLP `grpc` 导出指标。                                      |
+| `LoggingMetricExporter`          | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | 将指标以 Debug 格式记录到 JUL 中。                               |
+| `OtlpJsonLoggingMetricExporter`  | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | 将指标以 OTLP JSON 格式记录到 JUL 中。                           |
 | `OtlpStdoutMetricExporter`       | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | 将指标以 OTLP [JSON 文件编码]（实验性） 记录到 `System.out` 中。 |
-| `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | 在导出前将度量数据传递给灵活的拦截器。                      |
+| `InterceptableMetricExporter`    | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | 在导出前将度量数据传递给灵活的拦截器。                           |
 
 **[1]**: 实现细节请见 [OTLP 导出器](#otlp-exporters)。
 
@@ -816,11 +815,11 @@ public class CustomMetricExporter implements MetricExporter {
 允许自定义指标流，包括更改指标名称、指标描述、指标聚合方式（例如，直方图桶边界）、要保留的属性键集合、基数（cardinality）限制等。
 
 {{% alert %}} 当多个视图匹配某个特定仪表时，视图会表现出一定程度不符合直觉的行为。
- 如果一个匹配的视图更改了指标名称，而另一个匹配的视图更改了指标聚合方式，
- 你可能会期望名称和聚合方式都会被更改，但实际情况并非如此。
- 相反，会生成两个指标流：一个使用配置的指标名称和默认聚合方式，另一个使用原始指标名称和配置的聚合方式。
- 换句话说，匹配的视图**不会合并**。为获得最佳效果，请配置具有精确选择条件的视图（即仅选择单个特定的仪表）。
- {{% /alert %}}
+如果一个匹配的视图更改了指标名称，而另一个匹配的视图更改了指标聚合方式，
+你可能会期望名称和聚合方式都会被更改，但实际情况并非如此。
+相反，会生成两个指标流：一个使用配置的指标名称和默认聚合方式，另一个使用原始指标名称和配置的聚合方式。
+换句话说，匹配的视图**不会合并**。为获得最佳效果，请配置具有精确选择条件的视图（即仅选择单个特定的仪表）。
+{{% /alert %}}
 
 以下代码片段演示了 `View` 的编程式配置：
 
@@ -878,7 +877,7 @@ public class ViewConfig {
 `SdkLoggerProvider` 由应用程序所有者配置，它包含以下部分：
 
 - [Resource](#resource): 日志与资源相关联。
-- [LogRecordProcessor](#logrecordprocessor): 在日志被输出（emitted）时对其进行处理。
+- [LogRecordProcessor](#logrecordprocessor): 在日志被输出时对其进行处理。
 - [LogRecordExporter](#logrecordexporter): （结合关联的 `LogRecordProcessor`）将日志导出到进程外。
 - [LogLimits](#loglimits): 控制与日志关联的数据限制。
 
@@ -915,14 +914,13 @@ public class SdkLoggerProviderConfig {
 
 SDK 内置的日志记录处理器和社区维护的 `opentelemetry-java-contrib` 中的日志记录处理器包括：
 
+| Class                      | Artifact                                                                             | 描述                                                                    |
+| -------------------------- | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- |
+| `BatchLogRecordProcessor`  | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | 它会对日志记录进行批处理，并通过可配置的 `LogRecordExporter` 将其导出。 |
+| `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | 它会通过可配置的 `LogRecordExporter` 逐条导出每条日志记录。             |
+| `EventToSpanEventBridge`   | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | 将事件类日志记录为当前 Span 上的 Span 事件。                            |
 
-| Class                      | Artifact                                                                             | 描述                                                                  |
-| -------------------------- | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
-| `BatchLogRecordProcessor`  | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | 它会对日志记录进行批处理，并通过可配置的 `LogRecordExporter` 将其导出。|
-| `SimpleLogRecordProcessor` | `io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}`                         | 它会通过可配置的 `LogRecordExporter` 逐条导出每条日志记录。          |
-| `EventToSpanEventBridge`   | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | 将事件类日志记录为当前 Span 上的 Span 事件。              |
-
-以下代码片段演示了 `LogRecordProcessor` 的编程式配置： 
+以下代码片段演示了 `LogRecordProcessor` 的编程式配置：
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogRecordProcessorConfig.java"?>
@@ -997,15 +995,14 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 
 SDK 内置的日志记录导出器和社区维护的 `opentelemetry-java-contrib` 中的日志记录导出器包括：
 
-
-| Class                                      | Artifact                                                                             | 描述                                                                         |
-| ------------------------------------------ | ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------- |
-| `OtlpHttpLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | 通过 OTLP `http/protobuf` 导出日志记录。                                      |
-| `OtlpGrpcLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | 通过 OTLP `grpc` 导出日志记录。                                              |
-| `SystemOutLogRecordExporter`               | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | 将日志记录以 Debug 格式输出到系统标准输出。                              |
-| `OtlpJsonLoggingLogRecordExporter` **[2]** | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | 通过 OTLP JSON 编码将日志记录输出到 JUL。                                  |
+| Class                                      | Artifact                                                                             | 描述                                                           |
+| ------------------------------------------ | ------------------------------------------------------------------------------------ | -------------------------------------------------------------- |
+| `OtlpHttpLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | 通过 OTLP `http/protobuf` 导出日志记录。                       |
+| `OtlpGrpcLogRecordExporter` **[1]**        | `io.opentelemetry:opentelemetry-exporter-otlp:{{% param vers.otel %}}`               | 通过 OTLP `grpc` 导出日志记录。                                |
+| `SystemOutLogRecordExporter`               | `io.opentelemetry:opentelemetry-exporter-logging:{{% param vers.otel %}}`            | 将日志记录以 Debug 格式输出到系统标准输出。                    |
+| `OtlpJsonLoggingLogRecordExporter` **[2]** | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | 通过 OTLP JSON 编码将日志记录输出到 JUL。                      |
 | `OtlpStdoutLogRecordExporter`              | `io.opentelemetry:opentelemetry-exporter-logging-otlp:{{% param vers.otel %}}`       | 将日志记录以 OTLP JSON 文件编码输出到 `System.out`（实验性）。 |
-| `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | 在导出前将日志记录传递给一个灵活的拦截器。                      |
+| `InterceptableLogRecordExporter`           | `io.opentelemetry.contrib:opentelemetry-processors:{{% param vers.contrib %}}-alpha` | 在导出前将日志记录传递给一个灵活的拦截器。                     |
 
 **[1]**: 实现细节请见 [OTLP exporters](#otlp-exporters)。
 
@@ -1130,18 +1127,18 @@ public class LogLimitsConfig {
 
 SDK 内置的 TextMapPropagators 以及社区维护的 `opentelemetry-java-contrib` 中的 TextMapPropagators 包括：
 
-| Class                       | Artifact                                                                                      | Description                                                                             |
-| --------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-| `W3CTraceContextPropagator` | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | 使用 W3C 追踪上下文传播协议来传播追踪上下文。 |
-| `W3CBaggagePropagator`      | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | 使用 W3C  baggage 传播协议来传播 baggage。 |
-| `MultiTextMapPropagator`    | `io.opentelemetry:opentelemetry-context:{{% param vers.otel %}}`                              | 组合多个传播器。 |
-| `JaegerPropagator`          | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | 使用 Jaeger 传播协议来传播追踪上下文。 |
-| `B3Propagator`              | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | 使用 B3 传播协议来传播追踪上下文。 |
-| `OtTracePropagator`         | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | 使用 OpenTracing 传播协议来传播追踪上下文。 |
-| `B3Propagator`              | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | 使用 B3 传播协议来传播追踪上下文。 |
-| `OtTracePropagator`         | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | 使用 OpenTracing 传播协议来传播追踪上下文。 |
-| `PassThroughPropagator`     | `io.opentelemetry:opentelemetry-api-incubator:{{% param vers.otel %}}-alpha`                  | 传播可配置的字段集，而不参与遥测。 |
-| `AwsXrayPropagator`         | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | 使用 AWS X-Ray 传播协议来传播追踪上下文。 |
+| Class                       | Artifact                                                                                      | Description                                         |
+| --------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------- |
+| `W3CTraceContextPropagator` | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | 使用 W3C 追踪上下文传播协议来传播追踪上下文。       |
+| `W3CBaggagePropagator`      | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | 使用 W3C baggage 传播协议来传播 baggage。           |
+| `MultiTextMapPropagator`    | `io.opentelemetry:opentelemetry-context:{{% param vers.otel %}}`                              | 组合多个传播器。                                    |
+| `JaegerPropagator`          | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | 使用 Jaeger 传播协议来传播追踪上下文。              |
+| `B3Propagator`              | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | 使用 B3 传播协议来传播追踪上下文。                  |
+| `OtTracePropagator`         | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | 使用 OpenTracing 传播协议来传播追踪上下文。         |
+| `B3Propagator`              | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | 使用 B3 传播协议来传播追踪上下文。                  |
+| `OtTracePropagator`         | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | 使用 OpenTracing 传播协议来传播追踪上下文。         |
+| `PassThroughPropagator`     | `io.opentelemetry:opentelemetry-api-incubator:{{% param vers.otel %}}-alpha`                  | 传播可配置的字段集，而不参与遥测。                  |
+| `AwsXrayPropagator`         | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | 使用 AWS X-Ray 传播协议来传播追踪上下文。           |
 | `AwsXrayLambdaPropagator`   | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | 使用环境变量和 AWS X-Ray 传播协议来传播追踪上下文。 |
 
 以下代码片段演示了 `TextMapPropagator` 的编程式配置：
@@ -1217,7 +1214,7 @@ SDK 组件会将各类信息记录到 [java.util.logging](https://docs.oracle.co
 可以提高特定类的日志级别，以忽略来自该类的错误；
 或者安装自定义处理器（handler）或过滤器（filter），以便在 OpenTelemetry 记录特定消息时执行自定义代码。
 目前没有维护详细的日志记录器名称和日志信息列表。
-不过，所有 OpenTelemetry 的 API、SDK、 贡献组件（contrib）和 插桩组件（instrumentation）都共享相同的 `io.opentelemetry.*` 包前缀。
+不过，所有 OpenTelemetry 的 API、SDK、 贡献 （contrib） 组件和插桩 （instrumentation） 都共享相同的 `io.opentelemetry.*` 包前缀。
 为所有 `io.opentelemetry.*` 启用更细粒度的日志会很有用，您可以检查输出，然后缩小到感兴趣的包或全限定类名（FQCN）。
 
 例如：
@@ -1270,8 +1267,7 @@ io.opentelemetry.sdk.trace.export.BatchSpanProcessor = io.opentelemetry.extensio
 以下部分详细说明了这些关键概念：
 
 - [发送器（Sender）](#senders)：不同的 HTTP / gRPC 客户端库的抽象。
-- OTLP 导出器的[认证](#authentication) 选项。
-
+- OTLP 导出器的[认证](#authentication)选项。
 
 #### 发送器 {#senders}
 
@@ -1291,12 +1287,11 @@ Java 生态系统中没有单一的 HTTP / gRPC 客户端库能够满足所有�
 要选择其他实现，请排除 `io.opentelemetry:opentelemetry-exporter-sender-okhttp` 默认依赖，
 并添加替代实现的依赖。
 
-
-| Artifact                                                                                              | 描述                                               | OTLP 协议          | 默认值 |
-| ----------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ----------------------- | ------- |
-| `io.opentelemetry:opentelemetry-exporter-sender-okhttp:{{% param vers.otel %}}`                       | 基于 OkHttp 的实现。                             | `grpc`, `http/protobuf` | Yes     |
-| `io.opentelemetry:opentelemetry-exporter-sender-jdk:{{% param vers.otel %}}`                          | 基于 Java 11+ 中 `java.net.http.HttpClient` 的实现。 | `http/protobuf`         | No      |
-| `io.opentelemetry:opentelemetry-exporter-sender-grpc-managed-channel:{{% param vers.otel %}}` **[1]** | 基于 `grpc-java` `ManagedChannel` 的实现。        | `grpc`                  | No      |
+| Artifact                                                                                              | 描述                                                 | OTLP 协议               | 默认值 |
+| ----------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | ----------------------- | ------ |
+| `io.opentelemetry:opentelemetry-exporter-sender-okhttp:{{% param vers.otel %}}`                       | 基于 OkHttp 的实现。                                 | `grpc`, `http/protobuf` | Yes    |
+| `io.opentelemetry:opentelemetry-exporter-sender-jdk:{{% param vers.otel %}}`                          | 基于 Java 11+ 中 `java.net.http.HttpClient` 的实现。 | `http/protobuf`         | No     |
+| `io.opentelemetry:opentelemetry-exporter-sender-grpc-managed-channel:{{% param vers.otel %}}` **[1]** | 基于 `grpc-java` `ManagedChannel` 的实现。           | `grpc`                  | No     |
 
 **[1]**: 要使用 `opentelemetry-exporter-sender-grpc-managed-channel`，
 您必须添加对 [gRPC 传输实现](https://github.com/grpc/grpc-java#transport) 的依赖。
@@ -1408,5 +1403,4 @@ public class OtlpAuthenticationConfig {
 
 TODO: 可用于测试 SDK 的工具文档
 
-[JSON 文件编码]:
-  /docs/specs/otel/protocol/file-exporter/#json-file-serialization
+[JSON 文件编码]: /docs/specs/otel/protocol/file-exporter/#json-file-serialization
