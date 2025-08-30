@@ -1193,8 +1193,7 @@ public class CustomLogRecordExporter implements LogRecordExporter {
 defines constraints for the data captured by log records, including max
 attribute length, and max number of attributes.
 
-The following code snippet demonstrates `LogLimits` programmatic
-configuration:
+The following code snippet demonstrates `LogLimits` programmatic configuration:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogLimitsConfig.java"?>
