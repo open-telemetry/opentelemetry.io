@@ -6,7 +6,7 @@ default_lang_commit: ae417344d183999236c22834435e0dfeb109da29
 cSpell:ignore: sinatra
 ---
 
-অর্ডার দেওয়ার পর এই সার্ভিসটি ব্যবহারকারীর কাছে একটি নিশ্চিতকরণ ইমেইল পাঠায়।
+অর্ডার দেওয়ার পর এই সার্ভিসটি ব্যবহারকারীর কাছে একটি কনফার্মেশন ইমেইল পাঠায়।
 
 [ইমেইল সার্ভিস সোর্স](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/email/)
 
