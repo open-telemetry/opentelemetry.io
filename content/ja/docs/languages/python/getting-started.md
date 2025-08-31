@@ -1,6 +1,6 @@
 ---
 title: はじめに
-description: 5分以内にアプリのテレメトリを取得しましょう！
+description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
 default_lang_commit: e04e8da1f4527d65c162af9a670eb3be8e7e7fb9
 # prettier-ignore
