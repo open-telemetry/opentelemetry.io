@@ -1311,7 +1311,7 @@ public class AsyncGaugeUsage {
   public static void asyncGaugeUsage(Meter meter) {
     AtomicReference<Double> processingLineTemp = new AtomicReference<>(273.0);
 
-    // Construct an async counter to observe an existing counter in a callback
+    // Construct an async gauge to observe an existing gauge in a callback
     ObservableDoubleGauge asyncGauge =
         meter
             .gaugeBuilder("fully.qualified.gauge")
