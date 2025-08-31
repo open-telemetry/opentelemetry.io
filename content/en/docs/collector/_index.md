@@ -3,7 +3,7 @@ title: Collector
 description: Vendor-agnostic way to receive, process and export telemetry data.
 aliases: [./about]
 cascade:
-  vers: 0.133.0
+  vers: 0.134.0-nightly.202508310234
 weight: 270
 ---
 
