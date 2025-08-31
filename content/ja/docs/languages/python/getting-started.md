@@ -624,17 +624,17 @@ opentelemetry-instrument \
 ## OpenTelemetry Collector へのテレメトリー送信 {#send-telemetry-to-an-opentelemetry-collector}
 
 [OpenTelemetry Collector](/docs/collector/) は、ほとんどの本番デプロイメントの重要なコンポーネントです。
-Collector を使用することが有益な場合の例をいくつか示します。
+コレクターを使用することが有益な場合の例をいくつか示します。
 
 - 複数のサービスで共有される単一のテレメトリーシンク（エクスポーターの切り替えのオーバーヘッドを削減）
 - 複数のホストで実行される複数のサービス間でのトレースの集約
 - バックエンドにエクスポートする前にトレースを処理する中央の場所
 
-単一のサービスがあるだけの場合や実験している場合を除き、本番デプロイメントでは Collector を使用したいでしょう。
+単一のサービスがあるだけの場合や実験している場合を除き、本番デプロイメントではコレクターを使用したいでしょう。
 
-### ローカル Collector の設定と実行 {#configure-and-run-a-local-collector}
+### ローカルコレクターの設定と実行 {#configure-and-run-a-local-collector}
 
-まず、次の Collector 設定コードを `/tmp/` ディレクトリのファイルに保存します。
+まず、次のコレクター設定コードを `/tmp/` ディレクトリのファイルに保存します。
 
 ```yaml
 # /tmp/otel-collector-config.yaml
@@ -667,7 +667,7 @@ service:
       processors: [batch]
 ```
 
-次に、docker コマンドを実行して、この設定に基づいて Collector を取得して実行します。
+次に、docker コマンドを実行して、この設定に基づいてコレクターを取得して実行します。
 
 ```shell
 docker run -p 4317:4317 \
@@ -676,11 +676,11 @@ docker run -p 4317:4317 \
     --config=/etc/otel-collector-config.yaml
 ```
 
-これで、ポート 4317 でリッスンする Collector インスタンスがローカルで実行されます。
+これで、ポート 4317 でリッスンするコレクターインスタンスがローカルで実行されます。
 
 ### OTLP 経由でスパンとメトリクスをエクスポートするためのコマンドの変更 {#modify-the-command-to-export-spans-and-metrics-via-otlp}
 
-次のステップは、コンソールのかわりに OTLP 経由で Collector にスパンとメトリクスを送信するようにコマンドを変更することです。
+次のステップは、コンソールのかわりに OTLP 経由でコレクターにスパンとメトリクスを送信するようにコマンドを変更することです。
 
 これを行うには、OTLP エクスポーターパッケージをインストールします。
 
@@ -699,9 +699,9 @@ export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument --logs_exporter otlp flask run -p 8080
 ```
 
-デフォルトでは、`opentelemetry-instrument` は OTLP/gRPC でトレースとメトリクスをエクスポートし、Collector がリッスンしている `localhost:4317` に送信します。
+デフォルトでは、`opentelemetry-instrument` は OTLP/gRPC でトレースとメトリクスをエクスポートし、コレクターがリッスンしている `localhost:4317` に送信します。
 
-`/rolldice` ルートにアクセスすると、flask プロセスではなく Collector プロセスで出力が表示され、次のようになります。
+`/rolldice` ルートにアクセスすると、flask プロセスではなくコレクタープロセスで出力が表示され、次のようになります。
 
 <details>
 <summary>サンプル出力を表示</summary>
