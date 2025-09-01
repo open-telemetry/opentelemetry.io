@@ -363,6 +363,8 @@ docker run -it --rm -p 4317:4317 -p 4318:4318 \
 
 - [Building a Trace Receiver](/docs/collector/building/receiver)
 - [Building a Connector](/docs/collector/building/connector)
+- [Official release Docker image](https://hub.docker.com/r/otel/opentelemetry-collector-builder)
+
 
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
