@@ -461,14 +461,14 @@ The workflow for this targeted update:
 
 - Add only the "cardinality" definition block to the localized glossary file
 - Update the front matter by adding `# patched` as a comment at the end of the
-   `default_lang_commit` line
+  `default_lang_commit` line
 - Leave all other existing content unchanged
 - In the PR description, clearly document:
-   - The specific content added ("cardinality" definition)
-   - That the file remains drifted for other content
-   - The rationale for the targeted update (e.g., "Providing critical new
-     terminology to localized readers without requiring full file
-     synchronization")
+  - The specific content added ("cardinality" definition)
+  - That the file remains drifted for other content
+  - The rationale for the targeted update (e.g., "Providing critical new
+    terminology to localized readers without requiring full file
+    synchronization")
 
 This approach enables incremental improvements to localized content while
 maintaining awareness that the file still requires future attention for complete
