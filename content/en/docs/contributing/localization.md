@@ -451,11 +451,9 @@ consider:
 
 When adding specific new content to a localized file that has drifted from the
 English version, you may choose to make a targeted update rather than updating
-the entire file.
-
-For example, when a new glossary term such as "cardinality" is added to the
-English glossary, you might want to add just that term to the localized glossary
-without updating all other drifted content.
+the entire file. For example, when a new glossary term such as "cardinality" 
+is added to the English glossary, you can add just that term to the localized 
+glossary without addressing other drifted content.
 
 The workflow for this targeted update:
 
