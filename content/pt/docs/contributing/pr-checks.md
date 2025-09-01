@@ -4,6 +4,7 @@ description:
   Saiba como fazer seu pull request passar por todas as verificações com sucesso
 weight: 40
 default_lang_commit: 6c676267409eefc15a28c0e2fdd60b26a4687f74
+drifted_from_default: true
 ---
 
 Ao abrir um

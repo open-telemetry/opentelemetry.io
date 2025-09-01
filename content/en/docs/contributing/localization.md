@@ -150,13 +150,13 @@ As of February 2025, we are in the process of migrating from shortcodes to
 {{% /alert %}}
 
 Some of the base shortcodes contain English text that you might need to localize
--- this is particularly true of those contained in [layouts/shortcodes/docs].
+-- this is particularly true of those contained in [layouts/_shortcodes/docs].
 
 If you need to create a localized version of a shortcode, place it under
-`layouts/shortcodes/xx`, where `xx` is your localization's language code. From
+`layouts/_shortcodes/xx`, where `xx` is your localization's language code. From
 there, use the same relative path as the original base shortcode.
 
-[layouts/shortcodes/docs]:
+[layouts/_shortcodes/docs]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
 
 ## Keeping track of localized-page drift {#track-changes}

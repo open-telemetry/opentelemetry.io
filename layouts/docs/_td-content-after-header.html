@@ -27,37 +27,41 @@
 
   {{ $resultsArray := where .Translations "Lang" "en" -}}
   {{ $defaultLangPage := index $resultsArray 0 -}}
+  {{/* Prepare variables for the include */ -}}
+  {{ $has_default := false -}}
+  {{ with $defaultLangPage -}}{{ $has_default = true }}{{ end -}}
+  {{ $show_details := and $has_default .Params.default_lang_commit -}}
+  {{ $no_default_lang_page := not $has_default -}}
+  {{ $compareUrl := "" -}}
+  {{ $default_lang_commit_short := "" -}}
+  {{ $default_lang_hash_short := "" -}}
+  {{ $def_lang_path := "" -}}
+  {{ $default_lang_page_url := "" -}}
+  {{ if $show_details -}}
+    {{ $compareUrl = printf "%s/compare/%s..%s" .Site.Params.github_repo .Params.default_lang_commit $defaultLangPage.GitInfo.Hash -}}
+    {{ $default_lang_commit_short = substr .Params.default_lang_commit 0 8 -}}
+    {{ $default_lang_hash_short = $defaultLangPage.GitInfo.AbbreviatedHash -}}
+    {{ $def_lang_path = strings.TrimPrefix (add hugo.WorkingDir "/") $defaultLangPage.File.Filename -}}
+    {{ $default_lang_page_url = $defaultLangPage.RelPermalink -}}
+  {{ end -}}
 
   <div class="pageinfo pageinfo-secondary">
     <div class="ps-4">
       <p>
-        <i class="fa-solid fa-triangle-exclamation" style="margin-left: -1.9rem; padding-right: 0.5rem;"></i>
-        The content of this page may be <b>outdated</b> and some links may be invalid.
-
-        {{- if and $defaultLangPage .Params.default_lang_commit }}
-          A <strong>newer version</strong> of this page exists in
-          <a href="{{ $defaultLangPage.RelPermalink }}">English</a>.
-          <details class="mt-2">
-            <summary>More information ...</summary>
-            <p>
-              To see the changes to the English page since this page was last updated: visit
-              {{ $compareUrl := printf "%s/compare/%s..%s"
-                  .Site.Params.github_repo .Params.default_lang_commit $defaultLangPage.GitInfo.Hash -}}
-              <a href="{{ $compareUrl }}" class="external-link" target="_blank" rel="noopener" data-proofer-ignore>
-                GitHub compare
-                {{ substr .Params.default_lang_commit 0 8 }}..{{ $defaultLangPage.GitInfo.AbbreviatedHash -}}
-              </a>
-              and search for
-              {{ $defLangPath := strings.TrimPrefix (add hugo.WorkingDir "/") $defaultLangPage.File.Filename -}}
-              <code>{{ $defLangPath }}</code>.
-            </p>
-          </details>
-        {{ else if not $defaultLangPage }}
-          This page no longer has a corresponding English page.
-        {{ end -}}
+        {{ partial "include.html" (dict
+            "_dot" .
+            "_path" "page-drifted-msg.md"
+            "show_details" $show_details
+            "default_lang_page_url" $default_lang_page_url
+            "compare_url" $compareUrl
+            "default_lang_commit_short" $default_lang_commit_short
+            "default_lang_hash_short" $default_lang_hash_short
+            "def_lang_path" $def_lang_path
+            "no_default_lang_page" $no_default_lang_page
+        ) -}}
       </p>
     </div>
-</div>
+  </div>
 {{ end -}}
 
 

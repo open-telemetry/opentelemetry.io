@@ -1,7 +1,7 @@
 ---
 title: Kubernetesのための重要なコンポーネント
 linkTitle: コンポーネント
-default_lang_commit: e8f18928513b726068be250802ebe7ece25e8851
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
 # prettier-ignore
 cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics k8sattributes kubelet kubeletstats replicasets replicationcontrollers resourcequotas statefulsets varlibdockercontainers varlogpods
 ---
@@ -36,7 +36,7 @@ Kubernetes属性プロセッサーはテレメトリーにKubernetesのコンテ
 
 Kubernetes属性プロセッサーは、Kubernetes APIを使用してクラスタ内で実行されているすべてのポッドを検出し、それらのIPアドレス、ポッドのUID、および興味深いメタデータの記録を保持します。
 デフォルトでは、プロセッサーを通過するデータは、受信リクエストのIPアドレスを介してポッドに関連付けられますが、異なるルールを設定することもできます。
-プロセッサーはKubernetes APIを使用するため、特別なパーミッションが必要です（以下の例を参照）。 [OpenTelemetryコレクターHelmチャート](../../helm/collector/) を使っている場合は、[`kubernetesAttributes` preset](../../helm/collector/#kubernetes-attributes-preset) を使って開始できます。
+プロセッサーはKubernetes APIを使用するため、特別なパーミッションが必要です（以下の例を参照）。 [OpenTelemetryコレクターHelmチャート](/docs/platforms/kubernetes/helm/collector/) を使っている場合は、[`kubernetesAttributes` preset](/docs/platforms/kubernetes/helm/collector/#kubernetes-attributes-preset) を使って開始できます。
 
 デフォルトでは以下の属性が追加されます。
 
@@ -164,7 +164,7 @@ KubeletstatsレシーバーはAPIサーバーを介してそのkubeletに接続�
 
 認証にはさまざまな方法がありますが、通常はサービスアカウントが使用されます。
 サービスアカウントは、Kubeletからデータをプルするための適切なパーミッションも必要となります（下記参照）。
-[OpenTelemetryコレクターHelmチャート](../../helm/collector/) を使用している場合は、[`kubeletMetrics` preset](../../helm/collector/#kubelet-metrics-preset) を使用して開始できます。
+[OpenTelemetryコレクターHelmチャート](/docs/platforms/kubernetes/helm/collector/) を使用している場合は、[`kubeletMetrics` preset](/docs/platforms/kubernetes/helm/collector/#kubelet-metrics-preset) を使用して開始できます。
 
 デフォルトでは、メトリクスはポッドとノードに対して収集されますが、コンテナとボリュームのメトリクスも収集するようにレシーバーを設定できます。
 レシーバーでは、メトリクスを収集する頻度も設定できます。
@@ -232,7 +232,7 @@ Kubernetesに特化したレシーバーではないですが、Kubernetesから
 ファイルログレシーバーは、ログを処理するために連結されるオペレーターで構成されます。
 各オペレーターは、タイムスタンプやJSONの解析など、単純な責任を実行します。
 ファイルログレシーバーの設定は簡単ではありません。
-[OpenTelemetryコレクターHelmチャート](../../helm/collector/) を使っている場合は、[`logsCollection` preset](../../helm/collector/#logs-collection-preset) を使って開始できます。
+[OpenTelemetryコレクターHelmチャート](/docs/platforms/kubernetes/helm/collector/) を使っている場合は、[`logsCollection` preset](/docs/platforms/kubernetes/helm/collector/#logs-collection-preset) を使って開始できます。
 
 Kubernetesのログは通常、一連の標準フォーマットに適合するため、Kubernetes用の典型的なFilelogレシーバー設定は次のようになります。
 
@@ -307,7 +307,7 @@ Kubernetesクラスターレシーバーは、Kubernetes APIサーバーを使�
 
 認証にはさまざまな方法がありますが、通常はサービスアカウントが使われます。
 サービスアカウントには、Kubernetes API サーバーからデータを引き出すための適切なパーミッションも必要です（下記参照）。
-[OpenTelemetryコレクターHelmチャート](../../helm/collector/) を使っている場合は、[`clusterMetrics` preset](../../helm/collector/#cluster-metrics-preset) を使って開始できます。
+[OpenTelemetryコレクターHelmチャート](/docs/platforms/kubernetes/helm/collector/) を使っている場合は、[`clusterMetrics` preset](/docs/platforms/kubernetes/helm/collector/#cluster-metrics-preset) を使って開始できます。
 
 ノードの状態については、デフォルトでは `Ready` のみを収集しますが、それ以上を収集するように設定することもできます。
 また、`cpu` や `memory` などの割り当て可能なリソースを報告するように設定することも可能です。
@@ -426,7 +426,7 @@ Kubernetesオブジェクトレシーバーは、Kubernetes APIサーバから�
 
 現在、認証に使用できるのはサービスアカウントのみです。
 サービスアカウントはまた、Kubernetes API サーバーからデータを取り込むために適切なパーミッションが必要です（下記参照）。
-[OpenTelemetryコレクターHelmチャート](../../helm/collector/) を使用していて、イベントを取り込みたい場合は、[`kubernetesEvents` preset](../../helm/collector/#cluster-metrics-preset) を使用して開始できます。
+[OpenTelemetryコレクターHelmチャート](/docs/platforms/kubernetes/helm/collector/) を使用していて、イベントを取り込みたい場合は、[`kubernetesEvents` preset](/docs/platforms/kubernetes/helm/collector/#cluster-metrics-preset) を使用して開始できます。
 
 プル用に設定されたオブジェクトについては、レシーバーはKubernetes APIを使用して、クラスタ内のすべてのオブジェクトを定期的にリストします。
 各オブジェクトは独自のログに変換されます。
@@ -569,7 +569,7 @@ Prometheusのレシーバーは[ステートフル](https://github.com/open-tele
 - コレクターの複数のレプリカを同じ設定で実行すると、ターゲットを複数回スクレイピングします。
 - 手動でスクレイピングプロセスをシャーディングしたい場合、ユーザーは各レプリカを異なるスクレイピング構成で構成する必要があります。
 
-Prometheus レシーバーの設定を簡単にするために、OpenTelemetryオペレーターには [ターゲットアロケーター](../../operator/target-allocator) というオプションのコンポーネントがあります。
+Prometheus レシーバーの設定を簡単にするために、OpenTelemetryオペレーターには [ターゲットアロケーター](/docs/platforms/kubernetes/operator/target-allocator) というオプションのコンポーネントがあります。
 このコンポーネントを使用して、どの Prometheus エンドポイントをスクレイピングすべきかをコレクターに指示できます。
 
 レシーバーの設計については、[設計](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/DESIGN.md)を参照のこと。
@@ -586,7 +586,7 @@ Prometheus レシーバーの設定を簡単にするために、OpenTelemetry�
 [Kubeletstatsレシーバー](#kubeletstats-receiver)と重複する部分があるので、両方を使うことにした場合は、これらの重複するメトリクスを無効にしたほうがいいかもしれません。
 
 Kubernetes では、レシーバーが正しく動作するためには `hostfs` ボリュームにアクセスする必要があります。
-[OpenTelemetryコレクターHelmチャート](../../helm/collector/) を使っている場合は、[`hostMetrics` preset](../../helm/collector/#host-metrics-preset) を使って開始できます。
+[OpenTelemetryコレクターHelmチャート](/docs/platforms/kubernetes/helm/collector/) を使っている場合は、[`hostMetrics` preset](/docs/platforms/kubernetes/helm/collector/#host-metrics-preset) を使って開始できます。
 
 使用可能なスクレーパーは以下の通りです。
 
