@@ -453,16 +453,26 @@ When adding specific new content to a localized file that has drifted from the
 English version, you may choose to make a targeted update rather than updating
 the entire file.
 
-In such situations, make the following updates:
+For example, when a new glossary term such as "cardinality" is added to the
+English glossary, you might want to add just that term to the localized glossary
+without updating all other drifted content.
 
-- Add only the specific new content required.
-- Add the `# patched` YAML comment at the end of the line for the
-  `default_lang_commit` front matter line.
-- Make no other changes to the existing content.
-- In the PR description, clearly explain:
-  - What specific content was added.
-  - That other parts of the file remain drifted.
-  - The rationale for not updating the entire file.
+The workflow for this targeted update:
+
+- Add only the "cardinality" definition block to the localized glossary file
+- Update the front matter by adding `# patched` as a comment at the end of the
+   `default_lang_commit` line
+- Leave all other existing content unchanged
+- In the PR description, clearly document:
+   - The specific content added ("cardinality" definition)
+   - That the file remains drifted for other content
+   - The rationale for the targeted update (e.g., "Providing critical new
+     terminology to localized readers without requiring full file
+     synchronization")
+
+This approach enables incremental improvements to localized content while
+maintaining awareness that the file still requires future attention for complete
+synchronization with the English version.
 
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
