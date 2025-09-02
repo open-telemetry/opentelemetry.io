@@ -12,11 +12,11 @@ algum feedback sobre sua implementação ou adoção que você gostaria de
 compartilhar com os contribuidores do projeto, ou você quer ajudar a priorizar
 os problemas do projeto. Você veio ao lugar certo!
 
-- Para dar feedback e ajudar a priorizar o trabalho:
+- Para dar _feedback_ e ajudar a priorizar o trabalho:
   - [Vote e comente nas _issues_ do GitHub](issue-participation/), basta um
     clique!
   - Participe de uma
-    [entrevista direta/sessão de feedback](interviews-feedback/)
+    [entrevista direta/sessão de _feedback_](interviews-feedback/)
   - Responda à [nossa pesquisa mais recente](feedback-survey/)
 - Para aprender sobre OpenTelemetry, confira:
   - [OTel na prática](otel-in-practice/)
@@ -55,6 +55,5 @@ organizações que estejam avaliando ou utilizando OpenTelemetry.
 
 **Eu tenho perguntas sobre isso, como posso entrar em contato?**
 
-Você pode encontrar os membros do
-[SIG de usuários finais do OpenTelemetry](https://github.com/open-telemetry/sig-end-user)
+Você pode encontrar os membros do [SIG de usuários finais do OpenTelemetry](https://github.com/open-telemetry/sig-end-user)
 em [#otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ).
