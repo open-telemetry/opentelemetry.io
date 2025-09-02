@@ -117,7 +117,7 @@ Some Python instrumentations support sqlcommenter, which enriches database query
 statements with contextual information. Queries made with sqlcommenter enabled
 will have configurable key-value pairs appended to them. For example:
 
-```
+```sql
 "select * from auth_users; /*traceparent=00-01234567-abcd-01*/"
 ```
 
