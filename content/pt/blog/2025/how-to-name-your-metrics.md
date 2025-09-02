@@ -43,13 +43,13 @@ Mas isso cria vários problemas:
 
 - **_Backend_ de observabilidade desordenado**: Cada componente recebe seu
   próprio _namespace_ de métricas, dificultando encontrar a métrica certa entre
-  dezenas ou centenas de métricas com nomes semelhantes
+  dezenas ou centenas de métricas com nomes semelhantes.
 - **Agregação inflexível**: Não é fácil somar métricas entre diferentes
-  componentes
+  componentes.
 - **Dependência de fornecedor**: Os nomes das métricas ficam vinculados a
-  implementações específicas
+  implementações específicas.
 - **Sobrecarga de manutenção**: Adicionar novos serviços requer novos nomes de
-  métricas
+  métricas.
 
 ## O anti-padrão principal: Nomes de serviços em nomes de métricas {#the-core-anti-pattern-service-name-in-metric-names}
 
@@ -142,13 +142,13 @@ O OpenTelemetry trata unidades como metadados, separados do nome:
 
 Esta abordagem tem vários benefícios:
 
-1. **Nomes limpos**: Sem sufixos poluindo os nomes das suas métricas
+1. **Nomes limpos**: Sem sufixos poluindo os nomes das suas métricas.
 2. **Unidades padronizadas**: Seguindo o
-   [Código Unificado para Unidades de Medida (UCUM)](/docs/specs/semconv/general/metrics/#instrument-units)
+   [Código Unificado para Unidades de Medida (UCUM)](/docs/specs/semconv/general/metrics/#instrument-units).
 3. **Flexibilidade do _backend_**: Os sistemas podem lidar com conversão de
-   unidades automaticamente
+   unidades automaticamente.
 4. **Convenções consistentes**: Alinhado às
-   [convenções semânticas](/docs/specs/semconv/metrics/) do OpenTelemetry
+   [convenções semânticas](/docs/specs/semconv/metrics/) do OpenTelemetry.
 
 A especificação recomenda usar unidades não prefixadas como `By` (bytes) em vez
 de `MiBy` (mebibytes), a menos que haja razões técnicas para fazer o contrário.
@@ -161,9 +161,9 @@ aprendemos para trechos, quando fizer sentido:
 1. **Foque na operação**: O que está sendo medido?
 2. **Não no operador**: Quem está fazendo a medição?
 3. **Siga as convenções semânticas**: Utilize
-   [padrões estabelecidos](/docs/specs/semconv/metrics/) quando disponíveis
+   [padrões estabelecidos](/docs/specs/semconv/metrics/) quando disponíveis.
 4. **Mantenha unidades como metadados**: Não adicione sufixos de unidades aos
-   nomes
+   nomes.
 
 Aqui estão exemplos seguindo as
 [convenções semânticas](/docs/specs/semconv/metrics/) do OpenTelemetry:
@@ -175,13 +175,13 @@ Aqui estão exemplos seguindo as
 
 ## Exemplos reais de migração {#real-world-migration-examples}
 
-| Tradicional (Contexto+Unidades no Nome) | OpenTelemetry (Separação Limpa)                                                 | Por que é melhor                                        |
-| :-------------------------------------- | :------------------------------------------------------------------------------ | :------------------------------------------------------ |
-| `payment_transaction_total`             | `transaction.count` + `service.name=payment` + unidade `1`                      | Agregável entre serviços                                |
-| `user_service_auth_latency_ms`          | `auth.duration` + `service.name=user` + unidade `ms`                            | Nome de operação padrão, metadados de unidade adequados |
-| `inventory_db_query_seconds`            | `db.client.operation.duration` + `service.name=inventory` + unidade `s`         | Segue convenções semânticas                             |
-| `api_gateway_requests_per_second`       | `http.server.request.rate` + `service.name=api-gateway` + unidade `{request}/s` | Nome limpo, unidade de taxa adequada                    |
-| `redis_cache_hit_ratio_percent`         | `cache.hit_ratio` + `service.name=redis` + unidade `1`                          | Proporções são adimensionais                            |
+| Tradicional (Contexto + unidades no nome) | OpenTelemetry (Separação limpa)                                                 | Por que é melhor                                        |
+| :---------------------------------------- | :------------------------------------------------------------------------------ | :------------------------------------------------------ |
+| `payment_transaction_total`               | `transaction.count` + `service.name=payment` + unidade `1`                      | Agregável entre serviços                                |
+| `user_service_auth_latency_ms`            | `auth.duration` + `service.name=user` + unidade `ms`                            | Nome de operação padrão, metadados de unidade adequados |
+| `inventory_db_query_seconds`              | `db.client.operation.duration` + `service.name=inventory` + unidade `s`         | Segue convenções semânticas                             |
+| `api_gateway_requests_per_second`         | `http.server.request.rate` + `service.name=api-gateway` + unidade `{request}/s` | Nome limpo, unidade de taxa adequada                    |
+| `redis_cache_hit_ratio_percent`           | `cache.hit_ratio` + `service.name=redis` + unidade `1`                          | Proporções são adimensionais                            |
 
 ## Benefícios da nomenclatura limpa {#benefits-of-clean-naming}
 
