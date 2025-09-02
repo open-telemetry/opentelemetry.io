@@ -4,6 +4,11 @@
   components: [Collector]
   reference: ''
   contact: ''
+- name: Alibaba
+  url: https://www.alibaba.com/
+  reference: /blog/2025/otip-alibaba/
+  components: [Collector, Go, Java, JavaScript, PHP, Python]
+  referenceTitle: blog post
 - name: Bureau.id
   url: https://bureau.id/
   components: [Collector, Python, Go, Lambda]
