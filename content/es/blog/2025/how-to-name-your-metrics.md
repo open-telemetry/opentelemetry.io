@@ -178,7 +178,7 @@ Aquí algunos ejemplos siguiendo las
 
 ## Ejemplos reales de migración {#real-world-migration-examples}
 
-| Tradicional (Contexto+Unidades en el nombre) | OpenTelemetry (Separación limpia)                                              | Por qué es mejor                              |
+| Tradicional (Contexto + Unidades en el nombre) | OpenTelemetry (Separación limpia)                                              | Por qué es mejor                              |
 | :------------------------------------------- | :----------------------------------------------------------------------------- | :-------------------------------------------- |
 | `payment_transaction_total`                  | `transaction.count` + `service.name=payment` + unidad `1`                      | Agregable entre servicios                     |
 | `user_service_auth_latency_ms`               | `auth.duration` + `service.name=user` + unidad `ms`                            | Nombre estándar de operación, unidad correcta |
