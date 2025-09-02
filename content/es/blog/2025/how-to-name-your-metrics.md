@@ -6,7 +6,8 @@ author: >-
   [Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)
 canonical_url: https://blog.olly.garden/how-to-name-your-metrics
 default_lang_commit: b570deff7bac1978dd636ee724d3c00c18727c05
-cSpell:ignore: apiserver jpkrohling kubelet OllyGarden scheduler
+# prettier-ignore
+cSpell:ignore: apiserver jpkrohling kubelet mantenlas mebibytes OllyGarden scheduler UCUM
 ---
 
 Las métricas son la columna vertebral cuantitativa de la observabilidad: los
