@@ -7,7 +7,7 @@ author: >-
 canonical_url: https://blog.olly.garden/how-to-name-your-metrics
 default_lang_commit: abc123de
 # prettier-ignore
-cSpell:ignore: Aggregable apiserver ecommerce jpkrohling kubelet mebibytes OllyGarden postgres scheduler UCUM
+cSpell:ignore: apiserver ecommerce jpkrohling kubelet mebibytes OllyGarden postgres scheduler UCUM
 ---
 
 As métricas são a espinha dorsal quantitativa da observabilidade — os números
