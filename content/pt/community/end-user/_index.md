@@ -55,5 +55,6 @@ organizações que estejam avaliando ou utilizando OpenTelemetry.
 
 **Eu tenho perguntas sobre isso, como posso entrar em contato?**
 
-Você pode encontrar os membros do [SIG de usuários finais do OpenTelemetry](https://github.com/open-telemetry/sig-end-user)
+Você pode encontrar os membros do
+[SIG de usuários finais do OpenTelemetry](https://github.com/open-telemetry/sig-end-user)
 em [#otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ).
