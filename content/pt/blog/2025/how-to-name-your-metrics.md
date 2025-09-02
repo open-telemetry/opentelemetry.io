@@ -7,7 +7,7 @@ author: >-
 canonical_url: https://blog.olly.garden/how-to-name-your-metrics
 default_lang_commit: b570deff7bac1978dd636ee724d3c00c18727c05
 # prettier-ignore
-cSpell:ignore: apiserver ecommerce jpkrohling kubelet mebibytes OllyGarden postgres scheduler UCUM
+cSpell:ignore: apiserver ecommerce jpkrohling kubelet mebibytes OllyGarden opentelemetrys postgres scheduler UCUM
 ---
 
 As métricas são a espinha dorsal quantitativa da observabilidade — os números
@@ -212,7 +212,7 @@ mostra centenas de variações específicas de serviços: `apiserver_request_tot
 `inventory_service_request_total`, e assim por diante. Encontrar a métrica certa
 se torna um exercício de rolagem e busca entre variações redundantes. Com
 nomenclatura limpa, você tem um nome de métrica (`request.count`) com atributos
-capturando o co1ntexto. Isso torna a descoberta de métricas direta — você
+capturando o contexto. Isso torna a descoberta de métricas direta — você
 encontra a medição que precisa, então filtra pelo serviço que lhe interessa.
 
 O tratamento de unidades torna-se sistemático quando as unidades são metadados
