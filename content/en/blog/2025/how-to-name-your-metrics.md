@@ -40,11 +40,11 @@ But this creates several problems:
 
 - **Cluttered observability backend**: Every component gets its own metric
   namespace, making it harder to find the right metric among dozens or hundreds
-  of similarly-named metrics
+  of similarly-named metrics.
 - **Inflexible aggregation**: Can't easily sum metrics across different
-  components
-- **Vendor lock-in**: Metric names become tied to specific implementations
-- **Maintenance overhead**: Adding new services requires new metric names
+  components.
+- **Vendor lock-in**: Metric names become tied to specific implementations.
+- **Maintenance overhead**: Adding new services requires new metric names.
 
 ## The core anti-pattern: Service names in metric names
 
@@ -136,12 +136,12 @@ OpenTelemetry treats units as metadata, separate from the name:
 
 This approach has several benefits:
 
-1. **Clean names**: No ugly suffixes cluttering your metric names
+1. **Clean names**: No ugly suffixes cluttering your metric names.
 2. **Standardized units**: Follow the
-   [Unified Code for Units of Measure (UCUM)](/docs/specs/semconv/general/metrics/#instrument-units)
-3. **Backend flexibility**: Systems can handle unit conversion automatically
+   [Unified Code for Units of Measure (UCUM)](/docs/specs/semconv/general/metrics/#instrument-units).
+3. **Backend flexibility**: Systems can handle unit conversion automatically.
 4. **Consistent conventions**: Aligns with OpenTelemetry
-   [semantic conventions](/docs/specs/semconv/metrics/)
+   [semantic conventions](/docs/specs/semconv/metrics/).
 
 The specification recommends using non-prefixed units like `By` (bytes) rather
 than `MiBy` (mebibytes) unless there are technical reasons to do otherwise.
@@ -154,8 +154,8 @@ learned for spans, where it makes sense:
 1. **Focus on the operation**: What is being measured?
 2. **Not the operator**: Who is doing the measuring?
 3. **Follow semantic conventions**: Use
-   [established patterns](/docs/specs/semconv/metrics/) when available
-4. **Keep units as metadata**: Don't suffix names with units
+   [established patterns](/docs/specs/semconv/metrics/) when available.
+4. **Keep units as metadata**: Don't suffix names with units.
 
 Here are examples following OpenTelemetry
 [semantic conventions](/docs/specs/semconv/metrics/):
@@ -167,13 +167,13 @@ Here are examples following OpenTelemetry
 
 ## Real-world migration examples
 
-| Traditional (Context+Units in Name) | OpenTelemetry (Clean Separation)                                             | Why It's Better                               |
-| :---------------------------------- | :--------------------------------------------------------------------------- | :-------------------------------------------- |
-| `payment_transaction_total`         | `transaction.count` + `service.name=payment` + unit `1`                      | Aggregable across services                    |
-| `user_service_auth_latency_ms`      | `auth.duration` + `service.name=user` + unit `ms`                            | Standard operation name, proper unit metadata |
-| `inventory_db_query_seconds`        | `db.client.operation.duration` + `service.name=inventory` + unit `s`         | Follows semantic conventions                  |
-| `api_gateway_requests_per_second`   | `http.server.request.rate` + `service.name=api-gateway` + unit `{request}/s` | Clean name, proper rate unit                  |
-| `redis_cache_hit_ratio_percent`     | `cache.hit_ratio` + `service.name=redis` + unit `1`                          | Ratios are unitless                           |
+| Traditional (Context + units in name) | OpenTelemetry (Clean separation)                                             | Why it's better                               |
+| :------------------------------------ | :--------------------------------------------------------------------------- | :-------------------------------------------- |
+| `payment_transaction_total`           | `transaction.count` + `service.name=payment` + unit `1`                      | Aggregable across services                    |
+| `user_service_auth_latency_ms`        | `auth.duration` + `service.name=user` + unit `ms`                            | Standard operation name, proper unit metadata |
+| `inventory_db_query_seconds`          | `db.client.operation.duration` + `service.name=inventory` + unit `s`         | Follows semantic conventions                  |
+| `api_gateway_requests_per_second`     | `http.server.request.rate` + `service.name=api-gateway` + unit `{request}/s` | Clean name, proper rate unit                  |
+| `redis_cache_hit_ratio_percent`       | `cache.hit_ratio` + `service.name=redis` + unit `1`                          | Ratios are unitless                           |
 
 ## Benefits of clean naming
 
