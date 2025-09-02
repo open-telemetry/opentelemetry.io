@@ -235,48 +235,48 @@ métricas vêm de qual fonte.
 Engenheiros frequentemente incorporam informações específicas de _deploy_
 diretamente nos nomes de métricas, criando padrões como
 `user_service_v2_latency`. Isso quebra quando a versão 3 é implantada — todos os
-_dashboards_, alertas e consultas que referenciam esse nome de métrica devem ser atualizados.
-O mesmo problema ocorre com nomes específicos de instância, como
-`node_42_memory_usage`. Em um _cluster_ com escalonamento dinâmico, você acaba com
-centenas de nomes distintos de métricas que representam a mesma medição,
+_dashboards_, alertas e consultas que referenciam esse nome de métrica devem ser
+atualizados. O mesmo problema ocorre com nomes específicos de instância, como
+`node_42_memory_usage`. Em um _cluster_ com escalonamento dinâmico, você acaba
+com centenas de nomes distintos de métricas que representam a mesma medição,
 tornando impossível escrever consultas de agregação simples.
 
 Prefixos específicos de ambiente causam problemas de manutenção similares. Com
 métricas nomeadas `prod_payment_errors` e `staging_auth_count`, você não pode
-escrever uma única consulta que funcione em todos os ambientes. Um _dashboard_ que
-monitora produção não pode ser utilizado para _staging_ sem modificação. Quando você
-precisa comparar métricas entre ambientes — uma tarefa comum de depuração _(debugging)_ — é necessário escrever consultas complexas que referenciam explicitamente os nomes de
-métricas para cada ambiente.
+escrever uma única consulta que funcione em todos os ambientes. Um _dashboard_
+que monitora produção não pode ser utilizado para _staging_ sem modificação.
+Quando você precisa comparar métricas entre ambientes — uma tarefa comum de
+depuração _(debugging)_ — é necessário escrever consultas complexas que
+referenciam explicitamente os nomes de métricas para cada ambiente.
 
 Detalhes de _stack_ tecnológica nos nomes de métricas criam dores de cabeça para
 migrações futuras. Uma métrica nomeada `nodejs_payment_memory` torna-se enganosa
 quando você reescreve o serviço em Go. Da mesma forma, `postgres_user_queries`
-precisa ser renomeada se você migrar para outro banco de dados. Esses nomes específicos de
-tecnologia também impedem consultas que funcionem em serviços
-usando diferentes _stacks_, mesmo quando eles executam a mesma função
-de negócio.
+precisa ser renomeada se você migrar para outro banco de dados. Esses nomes
+específicos de tecnologia também impedem consultas que funcionem em serviços
+usando diferentes _stacks_, mesmo quando eles executam a mesma função de
+negócio.
 
 Misturar domínios de negócio com métricas de infraestrutura viola a separação
 entre o que um sistema faz e como ele faz. Uma métrica como
 `ecommerce_cpu_usage` confunde o propósito de negócio (e-commerce) com a medição
 técnica (uso de CPU). Isso torna mais difícil reutilizar monitoramento de
-infraestrutura através de diferentes domínios de negócio e complica
-_deployments multi-tenant_ onde a mesma infraestrutura serve múltiplas
-funções.
+infraestrutura através de diferentes domínios de negócio e complica _deployments
+multi-tenant_ onde a mesma infraestrutura serve múltiplas funções.
 
-A prática de incluir unidades nos nomes — `latency_ms`,
-`memory_bytes`, `count_total` — cria redundância agora que o OpenTelemetry fornece
-metadados de unidade adequados. Também impede conversão automática de unidades.
-Com `request_duration_ms` e `request_duration_seconds` como métricas separadas,
-você precisa de consultas diferentes para diferentes escalas de tempo. Com uma
-única métrica `request.duration` que inclui metadados de unidade, a plataforma
-de observabilidade lida com conversão automaticamente.
+A prática de incluir unidades nos nomes — `latency_ms`, `memory_bytes`,
+`count_total` — cria redundância agora que o OpenTelemetry fornece metadados de
+unidade adequados. Também impede conversão automática de unidades. Com
+`request_duration_ms` e `request_duration_seconds` como métricas separadas, você
+precisa de consultas diferentes para diferentes escalas de tempo. Com uma única
+métrica `request.duration` que inclui metadados de unidade, a plataforma de
+observabilidade lida com conversão automaticamente.
 
 O padrão é claro: contexto que varia por _deployment_, instância, ambiente ou
 versão pertence aos atributos, não ao nome da métrica. O nome da métrica deve
 identificar o que você está medindo. Todo o resto — quem está medindo, onde está
-executando, qual versão — vai para a camada de atributos, onde pode ser filtrado,
-agrupado e agregado conforme necessário.
+executando, qual versão — vai para a camada de atributos, onde pode ser
+filtrado, agrupado e agregado conforme necessário.
 
 ## Cultivando melhores métricas {#cultivating-better-metrics}
 
@@ -291,8 +291,8 @@ contexto — quem está medindo, onde, quando e como — vive na rica hierarquia
 atributos que o OpenTelemetry fornece.
 
 Na próxima publicação, mergulharemos profundamente nos **atributos de métricas**
-— a camada de contexto que torna as métricas verdadeiramente poderosas.
-Vamos explorar como estruturar a informação contextual rica que não pertence aos
+— a camada de contexto que torna as métricas verdadeiramente poderosas. Vamos
+explorar como estruturar a informação contextual rica que não pertence aos
 nomes, e como equilibrar informatividade com preocupações de cardinalidade.
 
 Até lá, lembre-se: um nome de métrica limpo é como um caminho de jardim bem
