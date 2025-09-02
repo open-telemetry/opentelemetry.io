@@ -13,7 +13,7 @@ compartilhar com os contribuidores do projeto, ou você quer ajudar a priorizar
 os problemas do projeto. Você veio ao lugar certo!
 
 - Para dar _feedback_ e ajudar a priorizar o trabalho:
-  - [Vote e comente nas _issues_ do GitHub](/community/end-user/issue-participation//), basta um
+  - [Vote e comente nas _issues_ do GitHub](/community/end-user/issue-participation/), basta um
     clique!
   - Participe de uma
     [entrevista direta/sessão de _feedback_](/community/end-user/interviews-feedback/)
