@@ -13,17 +13,17 @@ compartilhar com os contribuidores do projeto, ou você quer ajudar a priorizar
 os problemas do projeto. Você veio ao lugar certo!
 
 - Para dar _feedback_ e ajudar a priorizar o trabalho:
-  - [Vote e comente nas _issues_ do GitHub](issue-participation/), basta um
+  - [Vote e comente nas _issues_ do GitHub](/community/end-user/issue-participation//), basta um
     clique!
   - Participe de uma
-    [entrevista direta/sessão de _feedback_](interviews-feedback/)
+    [entrevista direta/sessão de _feedback_](/community/end-user/interviews-feedback/)
   - Responda à [nossa pesquisa mais recente](feedback-survey/)
 - Para aprender sobre OpenTelemetry, confira:
-  - [OTel na prática](otel-in-practice/)
+  - [OTel na prática](/community/end-user/otel-in-practice/)
   - Conteúdo selecionado no
     [canal do YouTube do OpenTelemetry](https://www.youtube.com/@otel-official)
 - Para conectar-se com outros usuários finais e saber dos próximos eventos,
-  entre no [canal do Slack](slack-channel/).
+  entre no [canal do Slack](/community/end-user/slack-channel/).
 
 Esses fóruns têm como objetivo reunir engenheiros de operações e desenvolvimento
 de diferentes organizações para discutir desafios e soluções para alcançar a
