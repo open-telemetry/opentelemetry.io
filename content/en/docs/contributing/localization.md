@@ -455,7 +455,7 @@ the entire file. For example, when a new glossary term such as "cardinality" is
 added to the English glossary, you can add just that term to the localized
 glossary without addressing other drifted content.
 
-The workflow for this targeted update:
+Here's an example of the workflow for this targeted update:
 
 - Add only the "cardinality" definition block to the localized glossary file
 - Update the front matter by adding `# patched` as a comment at the end of the
