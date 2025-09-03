@@ -30,7 +30,7 @@ Let's find out.
 
 ### Stage 1: Basic Health Monitoring (Is the System Stable?)
 
-Our first goal is to get vital signs monitor on our application. We need to see its CPU and memory usage to ensure it’s not about to fail. We can achieve this with the OpenTelemetry Java Agent by simply attaching it to the application using the `-javaagent` flag in the JVM startup arguments. In our example, we can do this using the `_JAVA_OPTIONS` environment variable.
+Our first goal is to get vital signs monitored for our application. We need to see its CPU and memory usage to ensure it’s not about to fail. We can achieve this with the OpenTelemetry Java Agent by simply attaching it to the application using the `-javaagent` flag in the JVM startup arguments. In our example, we can do this using the `_JAVA_OPTIONS` environment variable.
 
 **Step 1: Set up the Environment**
 
@@ -48,7 +48,7 @@ export OTEL_METRICS_EXPORTER=otlp
 # 3. Point the agent to the collector's gRPC endpoint
 export OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4317
 
-# 4. Specify OTLP protocol (grpc is often default, but explicit is clear)
+# 4. Specify OTLP protocol
 export OTEL_EXPORTER_OTLP_PROTOCOL=grpc
 
 # 5. Enable runtime metrics for Java 8
