@@ -177,11 +177,14 @@ Then, run the server with:
 uvicorn main:app --workers 2
 ```
 
-##### Use Prometheus
+##### Use Prometheus with direct OTLP
 
-If the app is not ASGI-based, consider setting up a separate instance of
-[Prometheus](/docs/languages/python/exporters/#prometheus-setup) to collect
-metrics from all workers.
+Consider using a recent version of
+[Prometheus](/docs/languages/python/exporters/#prometheus-setup) to receive OTLP
+metrics directly. Set up a `PeriodicExportingMetricReader` and one OTLP worker
+per process to push to Prometheus server. We recommend _not_ using
+`PrometheusMetricReader` with forking -- see issue
+[#3747](https://github.com/open-telemetry/opentelemetry-python/issues/3747).
 
 ##### Use a single worker
 
