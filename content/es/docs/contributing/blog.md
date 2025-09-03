@@ -5,11 +5,10 @@ weight: 30
 default_lang_commit: 493a530efd3c2a058cc4aa055d7c8aadb5348beb
 ---
 
-El [blog de OpenTelemetry](/blog/) comunica nuevas
-funciones, informes de la comunidad y cualquier noticia relevante para la
-comunidad de OpenTelemetry. Esto incluye a usuarios finales y desarrolladores.
-Cualquiera puede escribir una entrada de blog. Lee a continuación los
-requisitos.
+El [blog de OpenTelemetry](/blog/) comunica nuevas funciones, informes de la
+comunidad y cualquier noticia relevante para la comunidad de OpenTelemetry. Esto
+incluye a usuarios finales y desarrolladores. Cualquiera puede escribir una
+entrada de blog. Lee a continuación los requisitos.
 
 ## ¿Documentación o publicación de blog?
 
@@ -27,7 +26,8 @@ blog tendrá una menor prioridad de revisión.
 Las publicaciones del blog no deben ser de naturaleza comercial y deben
 consistir en contenido original que se aplica ampliamente a la comunidad de
 OpenTelemetry. Las publicaciones del blog deben seguir las políticas descritas
-en la [Guía de Redes Sociales](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
+en la
+[Guía de Redes Sociales](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
 
 Verifique que el contenido que deseas incluir se aplique ampliamente a la
 Comunidad OpenTelemetry. El contenido adecuado incluye:
@@ -42,8 +42,8 @@ El contenido inadecuado incluye:
 
 - Presentaciones de productos de proveedores
 
-Si tu publicación de blog se ajusta a la lista de contenido apropiado, [plantea
-un issue](https://github.com/open-telemetry/opentelemetry.io/issues/new?title=New%20Blog%20Post:%20%3Ctitle%3E)
+Si tu publicación de blog se ajusta a la lista de contenido apropiado,
+[plantea un issue](https://github.com/open-telemetry/opentelemetry.io/issues/new?title=New%20Blog%20Post:%20%3Ctitle%3E)
 con la siguiente información:
 
 - Título de la entrada
@@ -72,7 +72,8 @@ puedes enviar tu entrada de blog.
 
 Puedes enviar una entrada de blog bifurcando este repositorio y escribiéndola
 localmente o usando la interfaz de GitHub. En ambos casos, te pedimos que sigues
-las instrucciones proporcionadas por la [plantilla de publicación de blog](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md).
+las instrucciones proporcionadas por la
+[plantilla de publicación de blog](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md).
 
 ### Bifurcar y escribir localmente
 
@@ -108,11 +109,13 @@ Si prefieres no crear una bifurcación local, puedes usar la interfaz de GitHub
 para crear una nueva publicación. Sigue estos pasos para agregar una publicación
 usando la interfaz:
 
-1.  Va a la [plantilla de publicación de blog](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md)
+1.  Va a la
+    [plantilla de publicación de blog](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/blog.md)
     y haz clic en **Copiar contenido sin procesar** en la parte superior derecha
     del menú.
 
-2.  Selecciona [Crear un nuevo archivo](https://github.com/open-telemetry/opentelemetry.io/new/main).
+2.  Selecciona
+    [Crear un nuevo archivo](https://github.com/open-telemetry/opentelemetry.io/new/main).
 
 3.  Pega el contenido de la plantilla que copiaste en el primer paso.
 
