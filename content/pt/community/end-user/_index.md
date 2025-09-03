@@ -8,7 +8,7 @@ default_lang_commit: ee09a3383facebe1937529e9a0129ccf53f94937
 
 Procurando se conectar com outros usuários finais do OpenTelemetry em um espaço
 agnóstico a fornecedor, ou aprender mais sobre OpenTelemetry? Talvez você tenha
-algum feedback sobre sua implementação ou adoção que você gostaria de
+algum _feedback_ sobre sua implementação ou adoção que você gostaria de
 compartilhar com os contribuidores do projeto, ou você quer ajudar a priorizar
 os problemas do projeto. Você veio ao lugar certo!
 
