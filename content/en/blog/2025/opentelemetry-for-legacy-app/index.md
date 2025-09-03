@@ -30,7 +30,7 @@ Let's find out.
 
 ### Stage 1: Basic Health Monitoring (Is the System Stable?)
 
-Our first goal is to get vital signs monitor on our application. We need to see its CPU and memory usage to ensure it’s not about to fail. We can achieve this with the OpenTelemetry Java Agent, activated using a standard JVM environment variable.
+Our first goal is to get vital signs monitor on our application. We need to see its CPU and memory usage to ensure it’s not about to fail. We can achieve this with the OpenTelemetry Java Agent by simply attaching it to the application using the `-javaagent` flag in the JVM startup arguments. In our example, we can do this using the `_JAVA_OPTIONS` environment variable.
 
 **Step 1: Set up the Environment**
 
@@ -48,11 +48,14 @@ export OTEL_METRICS_EXPORTER=otlp
 # 3. Point the agent to the collector's gRPC endpoint
 export OTEL_EXPORTER_OTLP_ENDPOINT=http://127.0.0.1:4317
 
-# 4. Attach the agent and enable all runtime metrics for Java 8
-export _JAVA_OPTIONS="\
--javaagent:./opentelemetry-javaagent.jar \
--Dotel.exporter.otlp.protocol=grpc \
--Dotel.instrumentation.runtime-telemetry-java8.enabled=true"
+# 4. Specify OTLP protocol (grpc is often default, but explicit is clear)
+export OTEL_EXPORTER_OTLP_PROTOCOL=grpc
+
+# 5. Enable runtime metrics for Java 8
+export OTEL_INSTRUMENTATION_RUNTIME_TELEMETRY_JAVA8_ENABLED=true
+
+# 6. Attach the OpenTelemetry Java agent
+export _JAVA_OPTIONS="-javaagent:./opentelemetry-javaagent.jar"
 ```
 
 **Step 2: Run the Unmodified Application and confirm it's working**
@@ -111,11 +114,8 @@ We add few more environment variables to tell the agent to specifically measure 
 # 1. Enable traces exporters
 export OTEL_TRACES_EXPORTER=otlp
 
-# 2. Attach the agent and tell it which method to instrument
-export _JAVA_OPTIONS="\
--javaagent:./opentelemetry-javaagent.jar \
--Dotel.exporter.otlp.protocol=grpc \
--Dotel.instrumentation.methods.include=LegacyJavaProcessor[processData]"
+# 2. Tell the agent which method to instrument
+export OTEL_INSTRUMENTATION_METHODS_INCLUDE="LegacyJavaProcessor[processData]"
 ```
 
 The trace spans we're now collecting are the raw material for a much richer dashboard. Our OTel Collector is configured to analyze these spans and generate the "Golden Signals" of application monitoring. Let's head back to Grafana and add charts for our three core metrics: calls per minute, average response time, and errors per minute.
