@@ -18,7 +18,7 @@ exploramos [como nomear trechos](/blog/2025/how-to-name-your-spans/) e
 Agora, vamos abordar a arte de nomear as medições que realmente importam.
 
 Ao contrário dos trechos _(spans)_ que contam histórias sobre o que aconteceu,
-as métricas nos falam sobre quantidades: quantos, quão rápido, quanto. Mas aqui
+as métricas nos falam sobre quantidades: quais, quantos e quão rápido. Mas aqui
 está a questão — nomeá-las bem é tão crucial quanto nomear trechos, e os
 princípios que aprendemos também se aplicam aqui. O "quem" ainda pertence aos
 atributos, não aos nomes.
