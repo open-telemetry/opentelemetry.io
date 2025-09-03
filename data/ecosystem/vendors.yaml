@@ -255,7 +255,7 @@
 - name: Mackerel
   nativeOTLP: true
   url: https://mackerel.io/docs/entry/tracing/guide/what-is-opentelemetry
-  contact:
+  contact: mackerel-developers@hatena.ne.jp
   oss: false
   commercial: true
 - name: MetricsHub
