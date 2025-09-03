@@ -10,7 +10,7 @@ default_lang_commit: b570deff7bac1978dd636ee724d3c00c18727c05
 cSpell:ignore: apiserver ecommerce jpkrohling kubelet mebibytes OllyGarden opentelemetrys postgres scheduler UCUM
 ---
 
-As métricas são a espinha dorsal quantitativa da observabilidade — os números
+Métricas são a espinha dorsal quantitativa da observabilidade — os números
 que nos dizem como nossos sistemas estão se comportando. Esta é a terceira
 publicação em nossa série sobre nomenclatura do OpenTelemetry, onde já
 exploramos [como nomear trechos](/blog/2025/how-to-name-your-spans/) e
