@@ -128,7 +128,7 @@ The trace spans we're now collecting are the raw material for a much richer dash
 
 Result: Core business KPIs for our legacy application!
 
-The OpenTelemetry agent now measures every single transaction. Using an OTel Collector with the spanmetrics processor, we get crucial performance indicators:
+The OpenTelemetry agent now measures every single transaction. Using an OTel Collector with the spanmetrics connector, we get crucial performance indicators:
 
 * Latency (Processing Time): We finally know how long it takes to process one transaction. Is it fast enough? Are we meeting our SLOs?
 
