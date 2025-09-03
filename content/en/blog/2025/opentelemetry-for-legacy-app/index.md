@@ -85,6 +85,8 @@ First, let's verify that our legacy application is running. A quick look at the 
 
 The data from our application follows a standard path: the OTel agent sends metrics to the OpenTelemetry Collector, which are then scraped by Prometheus for storage. We then use Grafana to connect to Prometheus and visualize the data. Since this is a common and well-documented setup, we'll skip the specific configuration files and jump right into what this visibility allows us to see.
 
+**Step 3: Build Basic Monitoring Dashboard**
+
 This is the moment it all comes together. We can now head over to Grafana, and with just three simple queries, instantly build our first dashboard. And just like that, we have basic monitoring for our application, covering average CPU utilization, average memory consumption, and time spent in garbage collection.
 
 ![Basic Monitoring Dashboard](basic-monitoring.png)
@@ -106,7 +108,7 @@ Health is one thing, but performance is another. After reviewing the code, we ca
 
 **Step 1: Update the Environment**
 
-We add few more environment variables to tell the agent to specifically measure this method.
+We add few more environment variables to tell the agent to specifically measure this method. For scenarios where you can't modify the application's source code, OpenTelemetry's Java agent offers a powerful solution: [otel.instrumentation.methods.include](https://opentelemetry.io/docs/zero-code/java/agent/annotations/#creating-spans-around-methods-with-otelinstrumentationmethodsinclude). This setting allows you to instruct the agent to automatically create spans around specific methods.
 
 ```bash
 # --- Part 2: Application Performance Configuration ---
@@ -117,6 +119,8 @@ export OTEL_TRACES_EXPORTER=otlp
 # 2. Tell the agent which method to instrument
 export OTEL_INSTRUMENTATION_METHODS_INCLUDE="LegacyJavaProcessor[processData]"
 ```
+
+**Step 2: Run the Application and Modify Existing Dashboard**
 
 The trace spans we're now collecting are the raw material for a much richer dashboard. Our OTel Collector is configured to analyze these spans and generate the "Golden Signals" of application monitoring. Let's head back to Grafana and add charts for our three core metrics: calls per minute, average response time, and errors per minute.
 
