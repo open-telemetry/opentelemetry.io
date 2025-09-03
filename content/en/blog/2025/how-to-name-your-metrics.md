@@ -41,7 +41,7 @@ But this creates several problems:
 - **Cluttered observability backend**: Every component gets its own metric
   namespace, making it harder to find the right metric among dozens or hundreds
   of similarly-named metrics.
-- **Inflexible aggregation**: Can't easily sum metrics across different
+- **Inflexible aggregation**: It's difficult to sum metrics across different
   components.
 - **Vendor lock-in**: Metric names become tied to specific implementations.
 - **Maintenance overhead**: Adding new services requires new metric names.
@@ -189,7 +189,7 @@ for monitoring HTTP requests in your authentication service works without
 modification for your payment service, inventory service, or any other
 HTTP-serving component. You write the query once—`http.server.request.duration`
 filtered by `service.name`—and apply it everywhere. No more maintaining dozens
-of nearly-identical dashboards. Some observability vendors now take this
+of nearly identical dashboards. Some observability vendors now take this
 further, automatically generating dashboards based on semantic convention metric
 names—when your services emit `http.server.request.duration`, the platform knows
 exactly what visualizations and aggregations make sense for that metric.
