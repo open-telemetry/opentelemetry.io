@@ -21,9 +21,6 @@ filters:
       # Other:
       - /<https?:\/\/.*?>/ # Raw URLs
 rules:
-  prh:
-    rulePaths:
-      - ./prh/ja.yml
   terminology:
     defaultTerms: false
     skip: []
@@ -176,3 +173,22 @@ rules:
       # Enable the following to find and replace "instrumentation module/package" with "instrumentation library":
       # - ["(auto(matic)?[- ])?instrumentation (module|package)", "instrumentation library"]
       # - ["(auto(matic)?[- ])?instrumentation (modules|packages)", "instrumentation libraries"]
+overrides:
+  - files: ['content/ja/**/*.md']
+    rules:
+      terminology:
+        terms:
+          - ['テレメトリ(?!ー)', 'テレメトリー']
+          - ['コレクタ(?!ー)', 'コレクター']
+          - ['メトリック', 'メトリクス']
+          - ['例えば', 'たとえば']
+          - ['全て', 'すべて']
+          - ['代わり', 'かわり']
+          - ['代わって', 'かわって']
+          - [
+              'インストゥルメンテーション|インストルメンテーション|インストルメント',
+              '計装',
+            ]
+          - ['例示値', 'エグザンプラー']
+          - ['プログラマティック', 'プログラム']
+          - ['伝播|プロパゲーション', '伝搬']
