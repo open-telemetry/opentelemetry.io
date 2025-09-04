@@ -4,6 +4,7 @@
 
 GH=gh
 GIT=git
+NPM=npm
 
 if [[ -n "$GITHUB_ACTIONS" ]]; then
   # Ensure that we're starting from a clean state
