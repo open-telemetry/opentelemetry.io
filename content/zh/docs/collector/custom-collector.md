@@ -98,7 +98,7 @@ Collector 发行版的组件信息。
 | name:        | 发行版的可执行文件名                                     | 是   | `otelcol-custom`                              |
 | description: | 应用的完整描述                                           | 是   | `Custom OpenTelemetry Collector distribution` |
 | output_path: | 输出路径（包括源代码和可执行）                           | 是   | `/var/folders/.../otelcol-distribution...`    |
-| version:     | 定制 OpenTelemetry Collector 的版本                    | 是   | `1.0.0`                                       |
+| version:     | 定制 OpenTelemetry Collector 的版本                      | 是   | `1.0.0`                                       |
 | go:          | 用于编译生成源代码的 Go 可执行路径                       | 是   | 默认使用 PATH 中的 Go                         |
 
 如表中所示，所有 `dist` 标签都是可选的，你可以根据是否希望将 Collector 发布给他人使用，
