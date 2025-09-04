@@ -58,7 +58,7 @@ this with the OpenTelemetry Java agent by simply attaching it to the application
 using the `-javaagent` flag in the JVM startup arguments. In our example, we can
 do this using the `_JAVA_OPTIONS` environment variable.
 
-**Step 1: Set up the environment**
+#### Step 1: Set up the environment
 
 In our terminal, we'll configure the agent without touching the application
 itself.
@@ -85,7 +85,7 @@ export OTEL_INSTRUMENTATION_RUNTIME_TELEMETRY_JAVA8_ENABLED=true
 export _JAVA_OPTIONS="-javaagent:./opentelemetry-javaagent.jar"
 ```
 
-**Step 2: Run the unmodified application and confirm it's working**
+#### Step 2: Run the unmodified application and confirm it's working
 
 ```bash
 ./legacy_app
@@ -118,7 +118,7 @@ storage. We then use Grafana to connect to Prometheus and visualize the data.
 Since this is a common and well-documented setup, we'll skip the specific
 configuration files and jump right into what this visibility allows us to see.
 
-**Step 3: Build basic monitoring dashboard**
+#### Step 3: Build basic monitoring dashboard
 
 This is the moment it all comes together. We can now head over to Grafana, and
 with just three simple queries, instantly build our first dashboard. And just
@@ -148,12 +148,12 @@ can see our app's core logic is in a processTransaction() method. But static
 code can't answer dynamic questions. How long does this take to execute under
 real-world load? Is it a bottleneck?
 
-**Step 1: Update the environment**
+#### Step 1: Update the environment
 
 We add a few more environment variables to tell the agent to specifically
 measure this method. For scenarios where you can't modify the application's
 source code, OpenTelemetry's Java agent offers a powerful solution:
-[otel.instrumentation.methods.include](https://opentelemetry.io/docs/zero-code/java/agent/annotations/#creating-spans-around-methods-with-otelinstrumentationmethodsinclude).
+[otel.instrumentation.methods.include](/docs/zero-code/java/agent/annotations/#creating-spans-around-methods-with-otelinstrumentationmethodsinclude).
 This setting allows you to instruct the agent to automatically create spans
 around specific methods.
 
@@ -167,7 +167,7 @@ export OTEL_TRACES_EXPORTER=otlp
 export OTEL_INSTRUMENTATION_METHODS_INCLUDE="LegacyJavaProcessor[processData]"
 ```
 
-**Step 2: Run the application and modify existing dashboard**
+#### Step 2: Run the application and modify existing dashboard
 
 The trace spans we're now collecting are the raw material for a much richer
 dashboard. Our OTel Collector is configured to analyze these spans and generate
