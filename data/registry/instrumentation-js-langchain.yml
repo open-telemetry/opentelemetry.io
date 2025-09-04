@@ -1,7 +1,7 @@
 # cSpell:ignore langchain openinference arize Arize arizeai
 title: LangChain JavaScript Instrumentation
 registryType: instrumentation
-language: javascript
+language: js
 tags:
   - javascript
   - instrumentation
@@ -18,5 +18,5 @@ createdAt: 2024-06-05
 package:
   registry: npm
   name: '@arizeai/openinference-instrumentation-langchain'
-  version: 3.4.1
+  version: 3.4.2
 isFirstParty: false

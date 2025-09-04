@@ -4,18 +4,17 @@ default_lang_commit: 2f850a610b5f7da5730265b32c25c9226dc09e5f
 
 ## Prometheus
 
-要将你的指标（metrics）数据发送到 [Prometheus](https://prometheus.io/)，
-你可以选择
-[启用 Prometheus 的 OTLP 接收器](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver)
-并且使用 [OTLP exporter](#otlp)，或者使用 Prometheus exporter，这是一种 `MetricReader`，
+要将你的指标数据发送到 [Prometheus](https://prometheus.io/)，
+你可以选择[启用 Prometheus 的 OTLP 接收器](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver)并且使用
+[OTLP 导出器](#otlp)，或者使用 Prometheus 导出器，这是一种 `MetricReader`，
 他启动一个 HTTP 服务器，根据请求收集指标并将数据序列化为 Prometheus 文本格式。
 
 ### 后端设置 {#prometheus-setup}
 
 {{% alert title=注意 %}}
 
-如果你已经设置了 Prometheus 或兼容 Prometheus 的后端，可以跳过本节，直接为你的应用设置 [Prometheus](#prometheus-dependencies) 或者
-[OTLP](#otlp-dependencies) exporter 依赖。
+如果你已经设置了 Prometheus 或兼容 Prometheus 的后端，可以跳过本节，直接为你的应用设置
+[Prometheus](#prometheus-dependencies) 或者 [OTLP](#otlp-dependencies) 导出器依赖。
 
 {{% /alert %}}
 
@@ -39,9 +38,10 @@ docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090
 
 {{% alert title=注意 %}}
 
-当使用 Prometheus 的 OTLP 接收器（Reciever）时，确保在应用中设置 OTLP 端点为
+当使用 Prometheus 的 OTLP 接收器时，确保在应用中设置 OTLP 端点为
 `http://localhost:9090/api/v1/otlp`。
 
-并非所有的 Docker 环境都支持 `host.docker.internal`。在某些情况下，你可能需要将 `host.docker.internal` 替换为 `localhost` 或你机器的 IP 地址。
+并非所有的 Docker 环境都支持 `host.docker.internal`。在某些情况下，你可能需要将
+`host.docker.internal` 替换为 `localhost` 或你机器的 IP 地址。
 
 {{% /alert %}}

@@ -150,13 +150,13 @@ As of February 2025, we are in the process of migrating from shortcodes to
 {{% /alert %}}
 
 Some of the base shortcodes contain English text that you might need to localize
--- this is particularly true of those contained in [layouts/shortcodes/docs].
+-- this is particularly true of those contained in [layouts/_shortcodes/docs].
 
 If you need to create a localized version of a shortcode, place it under
-`layouts/shortcodes/xx`, where `xx` is your localization's language code. From
+`layouts/_shortcodes/xx`, where `xx` is your localization's language code. From
 there, use the same relative path as the original base shortcode.
 
-[layouts/shortcodes/docs]:
+[layouts/_shortcodes/docs]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
 
 ## Keeping track of localized-page drift {#track-changes}
@@ -415,9 +415,16 @@ their own locale-specific PRs.
 
 ### Purely editorial changes across locales are OK {#patch-locale-links}
 
-**Purely editorial** page updates such as fixing broken link paths can span
-locales. A purely editorial change is one that **does not** impact the meaning
-of the page content.
+**Purely editorial** page updates are changes that **do not** affect the
+existing content and can span multiple locales. These include:
+
+- **Link maintenance**: Fixing broken link paths when pages are moved or
+  deleted.
+- **Resource updates**: Updating links to moved external resources.
+- **Targeted content additions**: Adding specific new definitions or sections to
+  files that have drifted, when updating the entire file isn't feasible.
+
+#### Link fixes and resource updates {#link-fixes-and-resource-updates}
 
 For example, sometimes changes to English language documentation can result in
 link-check failures for non-English locales. This happens when documentation
@@ -439,6 +446,31 @@ consider:
 - Removing the broken link from the refcache
 - Updating the link across all locales using the method described earlier in
   this section.
+
+#### Targeted content additions to drifted files {#targeted-content-additions}
+
+When adding specific new content to a localized file that has drifted from the
+English version, you may choose to make a targeted update rather than updating
+the entire file. For example, when a new glossary term such as "cardinality" is
+added to the English glossary, you can add just that term to the localized
+glossary without addressing other drifted content.
+
+Here's an example of the workflow for this targeted update:
+
+- Add only the "cardinality" definition block to the localized glossary file
+- Update the front matter by adding `# patched` as a comment at the end of the
+  `default_lang_commit` line
+- Leave all other existing content unchanged
+- In the PR description, clearly document:
+  - The specific content added ("cardinality" definition)
+  - That the file remains drifted for other content
+  - The rationale for the targeted update (e.g., "Providing critical new
+    terminology to localized readers without requiring full file
+    synchronization")
+
+This approach enables incremental improvements to localized content while
+maintaining awareness that the file still requires future attention for complete
+synchronization with the English version.
 
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/

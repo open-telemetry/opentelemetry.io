@@ -3,6 +3,7 @@ title: 术语表
 description: OpenTelemetry 中遥测术语的定义与惯例。
 weight: 200
 default_lang_commit: 7535ae5560fb961cbf02df25f92af65fb9c7c745
+drifted_from_default: true
 ---
 
 本术语表定义了 OpenTelemetry 项目中出现的新术语和[概念](/docs/concepts/)，

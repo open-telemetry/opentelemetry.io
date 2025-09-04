@@ -3,7 +3,7 @@ title: サイトのローカリゼーション
 description: 非英語ローカリゼーションのサイトページの作成と管理
 linkTitle: ローカリゼーション
 weight: 25
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
 cSpell:ignore: shortcodes
 ---
 
@@ -43,7 +43,6 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
 - **翻訳**
   - このレポジトリ内のリソースの **ファイルやディレクトリ** の名前
   - [見出しID](#headings) を含む [リンク](#links) [^*]
-  - Markdown の[リンク定義ラベル](#link-labels)
   - `inline code-spans` のようなインラインコードスパン
   - `notranslate`（CSSクラスとして）でマークされたMarkdown の要素、特に[見出し](#headings)に対して
   - [すべきこと](#do) で指示されていない [フロントマター][front matter] のフィールド。特に、`aliases` は翻訳しないこと。よくわからない場合はメンテナーに質問すること。
@@ -84,8 +83,10 @@ OTelウェブサイトのリポジトリには、Hugoがドキュメントペー
 
 ### リンク定義ラベル {#link-labels}
 
-Markdown の[リンク定義][link definitions]の[ラベル][labels]は**翻訳しないでください**。
-かわりに、翻訳されたリンクテキストとしてラベルを書き直してください。たとえば、次の Markdown を考えてみます。
+ロケールの著者は、Markdownの[リンク定義][link definitions]の[ラベル][labels]を翻訳するかしないかを選択できます。
+英語のラベルを保持することを選択した場合は、このセクションのガイダンスに従ってください。
+
+たとえば、次の Markdown を考えてみます。
 
 ```markdown
 [Hello], world! Welcome to the [OTel website][].
@@ -131,13 +132,13 @@ Markdown の[リンク定義][link definitions]の[ラベル][labels]は**翻訳
 {{% /alert %}}
 
 一部の基本ショートコードには英語のテキストが含まれており、ローカリゼーションが必要になる場合があります。
-特に、[layouts/shortcodes/docs] に含まれるものについては、その傾向が強いです。
+特に、[layouts/_shortcodes/docs] に含まれるものについては、その傾向が強いです。
 
-ローカリゼーションしたショートコードを作成する必要がある場合は、`layouts/shortcodes/xx` に配置してください。
+ローカリゼーションしたショートコードを作成する必要がある場合は、`layouts/_shortcodes/xx` に配置してください。
 ここで `xx` はローカリゼーション対象の言語コードを指します。
 その際、元の基本ショートコードと同じ相対パスを使用してください。
 
-[layouts/shortcodes/docs]: https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
+[layouts/_shortcodes/docs]: https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
 
 ## ローカリゼーションページの乖離を追跡する {#track-changes}
 
@@ -338,16 +339,21 @@ NPMパッケージ[@cspell/dict-LANG_ID][]として利用可能な[cSpell辞書]
 
 - Prettierサポート：`LANG_ID`がPrettierで十分にサポートされていない場合は、`.prettierignore`に無視ルールを追加します
 
-## 英語メンテナーガイド {#english-language-maintainer-guidance}
+## 承認者およびメンテナー向けガイダンス {#approver-and-maintainer-guidance}
 
-### ロケールをまたぐドキュメント変更のPRを避ける {#prs-should-not-span-locales}
+### 意味的な変更を含むPRは複数のロケールにまたがるべきではない {#prs-should-not-span-locales}
 
-コントリビューターは、ロケールをまたぐドキュメント変更のPRを提出することを避けるべきです。
-唯一の例外は次のセクションで説明されています。
+承認者は、ドキュメントページに**意味的な**変更を加えるPRが複数のロケールにまたがらないようにする必要があります。
+意味的な変更とは、ページコンテンツの _意味_ に影響を与える変更です。
+私たちのドキュメントの[ローカリゼーションプロセス](.)により、ロケールの承認者は、時期を見て、英語の編集内容を確認し、その変更がそのロケールに適切かどうか、およびそのロケールにどのように組み込むのが最善かを判断します。
+変更が必要な場合、ロケールの承認者は独自のロケール固有のPRを通じて変更を行います。
 
-### 非英語ページのリンクチェックが失敗したとき {#patch-locale-links}
+### ロケール間での純粋に編集上の変更は問題ない {#patch-locale-links}
 
-英語のドキュメントへの変更により、非英語のロケールでリンクチェックの失敗が発生することがあります。
+壊れたリンクパスの修正などの**純粋に編集上の**ページ更新は、ロケールにまたがることができます。
+純粋に編集上の変更とは、ページコンテンツの意味に影響を**与えない**変更です。
+
+たとえば、英語のドキュメントへの変更により、非英語のロケールでリンクチェックの失敗が発生することがあります。
 これはドキュメントページが移動または削除された場合に発生します。
 
 このような状況では、リンクチェックに失敗するパスを持つ各非英語ページに対して以下の更新を行います。
@@ -356,6 +362,11 @@ NPMパッケージ[@cspell/dict-LANG_ID][]として利用可能な[cSpell辞書]
 - `default_lang_commit`フロントマター行の末尾に`# patched`というYAMLコメントを追加します。
 - ファイルに他の変更を加えないでください。
 - `npm run check:links`を再実行して、リンクの失敗が残っていないことを確認します。
+
+**移動した**（ただし、意味的には**変更されていない**）リソース（GitHubファイルなど）への _外部リンク_ がリンクチェックの失敗を引き起こす場合は、以下を検討してください。
+
+- refcacheから壊れたリンクを削除する
+- このセクションで説明した方法を使用して、すべてのロケールでリンクを更新する
 
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
