@@ -2,10 +2,10 @@
 title: Your Critical Legacy App is a Black Box? Let's Change That in 5 Minutes!
 author: '[Lukasz Ciukaj](https://github.com/luke6Lh43) (Splunk)'
 linkTitle: OpenTelemetry for Legacy Apps
-date: 2025-09-01
+date: 2025-09-04
 issue: 7678
 sig: Java SIG
-cSpell:ignore: ciuka lukasz spanmetrics
+cSpell:ignore: ciukaj lukasz spanmetrics
 ---
 In almost every established enterprise, there's THAT one system. It’s the one running in the corner, performing a critical function for years. It’s reliable, but it’s also a complete black box. No one wants to touch it for fear of breaking it, and the original developers are long gone. It could be a core banking ledger from the 90s, a logistics routing engine in a warehouse, or a data aggregator on a factory floor. You know it works because, well, it hasn't failed... yet.
 
