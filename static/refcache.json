@@ -17619,6 +17619,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-08-07T11:36:04.473+02:00"
   },
+  "https://mackerel.io/docs/entry/tracing/guide/what-is-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-04T09:00:44.450808035Z"
+  },
   "https://man7.org/linux/man-pages/man1/free.1.html": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:10:06.681144-05:00"
