@@ -87,14 +87,14 @@ to start the Collector with receivers for both HTTP and gRPC that then export to
 Zipkin also run by [docker-compose](https://docs.docker.com/compose/).
 
 To export to the running Collector the `opentelemetry_exporter` package must be
-added to the project's dependencies:
+added to the project's dependencies before other `opentelemetry` dependencies:
 
 {{< tabpane text=true >}} {{% tab Erlang %}}
 
 ```erlang
-{deps, [{opentelemetry_api, "~> {{% param versions.otelApi %}}"},
-        {opentelemetry, "~> {{% param versions.otelSdk %}}"},
-        {opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"}]}.
+{deps, [{opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"},
+        {opentelemetry_api, "~> {{% param versions.otelApi %}}"},
+        {opentelemetry, "~> {{% param versions.otelSdk %}}"}]}.
 ```
 
 {{% /tab %}} {{% tab Elixir %}}
@@ -102,9 +102,9 @@ added to the project's dependencies:
 ```elixir
 def deps do
   [
+    {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"},
     {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
-    {:opentelemetry, "~> {{% param versions.otelSdk %}}"},
-    {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"}
+    {:opentelemetry, "~> {{% param versions.otelSdk %}}"}
   ]
 end
 ```
