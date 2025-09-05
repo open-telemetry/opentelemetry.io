@@ -106,7 +106,8 @@ public class AutoConfiguredSdk {
 #### 属性: 通用 {#properties-general}
 
 禁用 [SDK](../sdk/#opentelemetrysdk) 的相关属性：
-| 系统属性 | 描述 | 默认值 |
+
+| 系统属性            | 描述                                              | 默认值  |
 | ------------------- | ------------------------------------------------- | ------- |
 | `otel.sdk.disabled` | 如果为 true，则会禁用 OpenTelemetry SDK。 **[1]** | `false` |
 
@@ -241,7 +242,7 @@ public class AutoConfiguredSdk {
 | `otel.logs.exporter`             | 逗号分隔的日志记录导出器列表。已知值包括 `otlp`、`console`、`logging-otlp`、`none`。 **[1]**                                                                                  | `otlp`          |
 | `otel.java.exporter.memory_mode` | 如果设置为 `reusable_data`，则启用可重用内存模式（在支持该模式的导出器上）以减少内存分配。已知值包括 `reusable_data`（可重用数据）和 `immutable_data`（不可变数据）。 **[2]** | `reusable_data` |
 
-**[1]**：已知的导出器及其构件（请参阅[ Span 导出器](../sdk/#spanexporter)、[指标导出器](../sdk/#metricexporter)、[日志导出器](../sdk/#logrecordexporter)以获取导出器构件坐标）：
+**[1]**：已知的导出器及其构件（请参阅[Span 导出器](../sdk/#spanexporter)、[指标导出器](../sdk/#metricexporter)、[日志导出器](../sdk/#logrecordexporter)以获取导出器构件坐标）：
 
 - `otlp` 配置 `OtlpHttp{Signal}Exporter`、`OtlpGrpc{Signal}Exporter`。
 - `zipkin` 配置 `ZipkinSpanExporter`。
