@@ -145,13 +145,14 @@ import (
 
 // setupOTelSDK завантажує конвеєр OpenTelemetry.
 // Якщо він не повертає помилку, обов'язково викличте shutdown для правильного очищення.
-func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, err error) {
+func setupOTelSDK(ctx context.Context) (func(context.Context) error, error) {
 	var shutdownFuncs []func(context.Context) error
+	var err error
 
 	// shutdown викликає функції очищення, зареєстровані через shutdownFuncs.
 	// Помилки з викликів обʼєднуються.
 	// Кожне зареєстроване очищення буде викликано один раз.
-	shutdown = func(ctx context.Context) error {
+	shutdown := func(ctx context.Context) error {
 		var err error
 		for _, fn := range shutdownFuncs {
 			err = errors.Join(err, fn(ctx))
@@ -173,7 +174,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	tracerProvider, err := newTracerProvider()
 	if err != nil {
 		handleErr(err)
-		return
+		return shutdown, err
 	}
 	shutdownFuncs = append(shutdownFuncs, tracerProvider.Shutdown)
 	otel.SetTracerProvider(tracerProvider)
@@ -182,7 +183,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	meterProvider, err := newMeterProvider()
 	if err != nil {
 		handleErr(err)
-		return
+		return return shutdown, err
 	}
 	shutdownFuncs = append(shutdownFuncs, meterProvider.Shutdown)
 	otel.SetMeterProvider(meterProvider)
@@ -191,12 +192,12 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	loggerProvider, err := newLoggerProvider()
 	if err != nil {
 		handleErr(err)
-		return
+		return return shutdown, err
 	}
 	shutdownFuncs = append(shutdownFuncs, loggerProvider.Shutdown)
 	global.SetLoggerProvider(loggerProvider)
 
-	return
+	return return shutdown, err
 }
 
 func newPropagator() propagation.TextMapPropagator {
@@ -281,7 +282,7 @@ func main() {
 	}
 }
 
-func run() (err error) {
+func run() error {
 	// Належна обробка SIGINT (CTRL+C).
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
@@ -289,7 +290,7 @@ func run() (err error) {
 	// Налаштування OpenTelemetry.
 	otelShutdown, err := setupOTelSDK(ctx)
 	if err != nil {
-		return
+		return err
 	}
 	// Правильне завершення роботи, щоб нічого не витікало.
 	defer func() {
@@ -313,7 +314,7 @@ func run() (err error) {
 	select {
 	case err = <-srvErr:
 		// Помилка при запуску HTTP сервера.
-		return
+		return err
 	case <-ctx.Done():
 		// Очікування першого CTRL+C.
 		// Припинення отримання повідомлень про сигнали якомога швидше.
@@ -322,7 +323,7 @@ func run() (err error) {
 
 	// Коли викликається Shutdown, ListenAndServe негайно повертає ErrServerClosed.
 	err = srv.Shutdown(context.Background())
-	return
+	return err
 }
 
 func newHTTPHandler() http.Handler {

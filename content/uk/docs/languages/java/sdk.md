@@ -968,7 +968,7 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 
 **[2]**: `OtlpJsonLoggingLogRecordExporter` логує до JUL і може викликати нескінченні цикли (тобто JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry Log SDK -> JUL), якщо не налаштований обережно.
 
-Наступний фрагмент коду демонструє програмну конфігурацію `LogRecordProcessor`:
+Наступний фрагмент коду демонструє програмну конфігурацію `LogRecordExporter`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogRecordExporterConfig.java"?>
@@ -1058,7 +1058,7 @@ public class CustomLogRecordExporter implements LogRecordExporter {
 
 [LogLimits](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/LogLimits.html) визначає обмеження для даних, захоплених логами, включаючи максимальну довжину атрибутів та максимальну кількість атрибутів.
 
-Наступний фрагмент коду демонструє програмну конфігурацію `LogRecordProcessor`:
+Наступний фрагмент коду демонструє програмну конфігурацію `LogLimits`:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogLimitsConfig.java"?>
