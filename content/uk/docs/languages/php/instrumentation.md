@@ -3,7 +3,7 @@ title: Інструментування
 weight: 20
 aliases: [manual]
 description: Ручне інструментування для OpenTelemetry PHP
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 4f2df45798ecb448e9029f155e8eaa64d23555ff
 cSpell:ignore: guzzlehttp myapp ініціюючими
 ---
 

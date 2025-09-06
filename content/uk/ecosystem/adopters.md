@@ -1,7 +1,7 @@
 ---
 title: Користувачі
 description: Організації, що використовують OpenTelemetry
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 4f2df45798ecb448e9029f155e8eaa64d23555ff
 ---
 
 Місія OpenTelemetry полягає в забезпеченні ефективної спостережуваності для всіх його кінцевих користувачів. Якщо ви думаєте про впровадження OpenTelemetry у вашій організації, вам може бути цікаво дізнатися про інші шляхи впровадження. Нижче наведена таблиця є неповним списком [організацій _кінцевих користувачів_](https://www.cncf.io/enduser/), які впровадили OpenTelemetry для [Спостережуваності](/docs/concepts/observability-primer/).

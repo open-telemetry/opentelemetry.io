@@ -1,7 +1,7 @@
 ---
 title: Внутрішня телеметрія
 weight: 25
-default_lang_commit: ca5073d7daa61c4293248c523e832116fa1b949c
+default_lang_commit: 4f2df45798ecb448e9029f155e8eaa64d23555ff
 cSpell:ignore: alloc batchprocessor journalctl
 ---
 
