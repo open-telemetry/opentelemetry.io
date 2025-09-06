@@ -252,6 +252,12 @@
   contact:
   oss: false
   commercial: true
+- name: Mackerel
+  nativeOTLP: true
+  url: https://mackerel.io/docs/entry/tracing/guide/what-is-opentelemetry
+  contact: mackerel-developers@hatena.ne.jp
+  oss: false
+  commercial: true
 - name: MetricsHub
   nativeOTLP: true
   url: https://www.metricshub.com/docs/latest/
@@ -358,6 +364,12 @@
   nativeOTLP: true
   url: https://docs.randoli.io/troubleshooting-observability/config/open-telemetry/
   contact: rajith@randoli.ca
+  oss: false
+  commercial: true
+- name: s2.dev
+  nativeOTLP: true
+  url: https://s2.dev/docs/integrations/otlp
+  contact: hi@s2.dev
   oss: false
   commercial: true
 - name: Sentry Software

@@ -22,33 +22,31 @@ existentes:
 - Se agregan a los canales `#otel-comms` y `#otel-maintainers` y a los canales
   privados de Slack del equipo.
 - Se les pide que se inscriban para recibir las invitaciones del calendario para
-  la [reunión SIG Comms]
-  [SIG Comms meeting](https://groups.google.com/a/opentelemetry.io/g/calendar-comms)
-  y [reunión de los mantenedores]
-  [maintainers meeting](https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting).
+  la
+  [reunión SIG Comms](https://groups.google.com/a/opentelemetry.io/g/calendar-comms)
+  y
+  [reunión de los mantenedores](https://groups.google.com/a/opentelemetry.io/g/calendar-maintainer-meeting).
 - Se les pide que verifiquen que el horario actual de la reunión de SIG Comms
   les convenga y, de no ser así, que colaboren con los aprobadores y
   mantenedores existentes para encontrar un horario que les convenga a todos.
 - Se les pide revisar los diferentes recursos disponibles para los
   colaboradores:
-  - [Recursos Comunitarios]
-    [Community Resources](https://github.com/open-telemetry/community/),
-    especialmente el documento alrededor [Membresía de la Comunidad]
-    [Community Membership](https://github.com/open-telemetry/community/blob/main/community-membership.md)
-    y la [guía de redes sociales]
-    [social media guide](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
-  - [Pautas de Contribución] [Contributing Guidelines](/docs/contributing) Como
-    parte de esto, revisarán dichos documentos y compartirán sugerencias para
-    mejorarlos mediante incidencias o solicitudes de incorporación de cambios.
+  - [Recursos Comunitarios](https://github.com/open-telemetry/community/),
+    especialmente el documento alrededor
+    [Membresía de la Comunidad](https://github.com/open-telemetry/community/blob/main/community-membership.md)
+    y la
+    [guía de redes sociales](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
+  - [Pautas de Contribución](/docs/contributing) Como parte de esto, revisarán
+    dichos documentos y compartirán sugerencias para mejorarlos mediante
+    incidencias o solicitudes de incorporación de cambios.
 
 Otros recursos valiosos para revisar son
 
-- [documentación de Hugo] [Hugo documentation](https://gohugo.io/documentation/)
-- [documentación de Docsy] [Docsy documentation](https://www.docsy.dev/docs/)
-- [directrices de Marketing]
-  [Marketing guidelines](/community/marketing-guidelines/), incluyendo la marca
-  de la Fundación Linux y [pautas de uso de marcas registradas]
-  [trademark usage guidelines](https://www.linuxfoundation.org/legal/trademark-usage).
+- [documentación de Hugo](https://gohugo.io/documentation/)
+- [documentación de Docsy](https://www.docsy.dev/docs/)
+- [directrices de Marketing](/community/marketing-guidelines/), incluyendo la
+  marca de la Fundación Linux y
+  [pautas de uso de marcas registradas](https://www.linuxfoundation.org/legal/trademark-usage).
   Esos son especialmente valiosos al revisar entradas al registro,
   integraciones, proveedores, adoptantes o distribuciones.
 
@@ -62,14 +60,13 @@ Otros recursos valiosos para revisar son
   durante ese período, debe comunicarlo a través del canal
   [#otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6) y
   actualizar el estado de GitHub.
-- El aprobador y el mantenedor se adhieren al [Código de Conducta de OTel]
-  [OTel Code of Conduct](https://github.com/open-telemetry/community/?tab=coc-ov-file#opentelemetry-community-code-of-conduct)
-  y a los [Valores de la Comunidad]
-  [Community Values](/community/mission/#community-values). Son amables y
-  serviciales con los colaboradores. En caso de conflicto, malentendido o
-  cualquier otra situación que incomode al aprobador o mantenedor, puede
-  retirarse de la conversación, problema o solicitud de relaciones públicas y
-  pedirle a otro aprobador o mantenedor que intervenga.
+- El aprobador y el mantenedor se adhieren al
+  [Código de Conducta de OTel](https://github.com/open-telemetry/community/?tab=coc-ov-file#opentelemetry-community-code-of-conduct)
+  y a los [Valores de la Comunidad](/community/mission/#community-values). Son
+  amables y serviciales con los colaboradores. En caso de conflicto,
+  malentendido o cualquier otra situación que incomode al aprobador o
+  mantenedor, puede retirarse de la conversación, problema o solicitud de
+  relaciones públicas y pedirle a otro aprobador o mantenedor que intervenga.
 
 ## Revisiones de código
 
