@@ -5,6 +5,15 @@ rules:
   - expected: コレクター
     patterns:
       - /コレクタ(?!ー)/
+  - expected: レシーバー
+    patterns:
+      - /レシーバ(?!ー)/
+  - expected: エクスポーター
+    patterns:
+      - /エクスポータ(?!ー)/
+  - expected: プロセッサー
+    patterns:
+      - /プロセッサ(?!ー)/
   - expected: メトリクス
     patterns:
       - メトリック
