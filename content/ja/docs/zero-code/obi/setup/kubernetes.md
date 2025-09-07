@@ -217,7 +217,6 @@ OBIに必要なケーパビリティの包括的なリストは、[セキュリ�
 **Note** BPFプログラムのロードには、OBIがLinuxのパフォーマンスイベントを読み取るか、少なくともLinuxカーネルAPI `perf_event_open()` を実行できる必要があります。
 
 この権限は、`CAP_PERFMON` またはより広範囲に `CAP_SYS_ADMIN` によって付与されます。
-Since both `CAP_PERFMON` and `CAP_SYS_ADMIN` grant OBI the
 `CAP_PERFMON` および `CAP_SYS_ADMIN` はいずれもOBIにパフォーマンスイベントを読み取る権限を付与するため、より少ない権限で済む`CAP_PERFMON` を使用することを推奨します。
 ただし、システムレベルでは、パフォーマンスイベントへのアクセスは `kernel.perf_event_paranoid` 設定によって制限され、`sysctl` を使用するか `/proc/sys/kernel/perf_event_paranoid` ファイルを変更することで読み書きできます。
 `kernel.perf_event_paranoid` のデフォルト設定は通常 `2` であり、これは[カーネルのドキュメント](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt)の `perf_event_paranoid` セクションで説明されています。
