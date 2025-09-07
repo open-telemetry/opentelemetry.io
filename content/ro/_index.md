@@ -59,13 +59,13 @@ să analizezi performanța și comportamentul software-ului tău.
 
 {{% blocks/feature icon="fas fa-chart-line" title="Traces, Metrics, Logs" url="docs/concepts/observability-primer/" %}}
 
-Crează și colectează date telemetrice de la serviciile tale și de la software-ul tău, apoi transmite-le către o varietate de instrumente de analiză.
+Creează și colectează date telemetrice de la serviciile tale și de la software-ul tău, apoi transmite-le către o varietate de instrumente de analiză.
 
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fas fa-magic" title="Drop-in Instrumentation & Integrations" %}}
 
-OpenTelemetry se [integrează] cu multe biblioteci și framework-uri, și
+OpenTelemetry [se integrează] cu multe biblioteci și framework-uri, și
 suportă [instrumentarea] _bazată pe cod și zero-code_ .
 
 [instrumentare]: /docs/concepts/instrumentation/
