@@ -53,7 +53,7 @@ node app.js
 
 ## トラブルシューティング {#troubleshooting}
 
-`OTEL_LOG_LEVEL` 環境変数を以下のいずれかに設定いsて、ログレベルを設定できます。
+`OTEL_LOG_LEVEL` 環境変数を以下のいずれかに設定して、ログレベルを設定できます。
 
 - `none`
 - `error`

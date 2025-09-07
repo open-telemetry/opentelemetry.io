@@ -61,7 +61,7 @@ OTEL_NODE_ENABLED_INSTRUMENTATIONS="http,express"
 
 ### 特定の計装を無効化 {#disable-specific-instrumentations}
 
-環境変数を `OTEL_NODE_DISABLED_INSTRUMENTATIONS` を使用して、完全に有効化されたリストを保持し、`@opentelemetry/instrumentation-` プレフィックスなしの計装ライブラリ名のカンマ区切りのリストを提供することで、特定の計装のみを無効化します。
+環境変数 `OTEL_NODE_DISABLED_INSTRUMENTATIONS` を使用して、完全に有効化されたリストを保持し、`@opentelemetry/instrumentation-` プレフィックスなしの計装ライブラリ名のカンマ区切りのリストを提供することで、特定の計装のみを無効化します。
 
 たとえば、
 [@opentelemetry/instrumentation-fs](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-fs)
