@@ -69,7 +69,7 @@ OpenTelemetry [se integrează] cu multe biblioteci și framework-uri, și
 suportă [instrumentarea] _bazată pe cod și zero-code_ .
 
 [instrumentare]: /docs/concepts/instrumentation/
-[integrează]: /ecosystem/integrations/
+[se integrează]: /ecosystem/integrations/
 
 {{% /blocks/feature %}}
 
