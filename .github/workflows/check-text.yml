@@ -20,7 +20,7 @@ jobs:
               | del(.dependencies, .optionalDependencies)' \
               package.json > tmp/package-ci.json
           cp tmp/package-ci.json package.json
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -42,7 +42,7 @@ jobs:
                 | del(.dependencies, .optionalDependencies)' \
             package.json > tmp/package-ci.json
           cp tmp/package-ci.json package.json
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
           cache: npm
