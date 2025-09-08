@@ -21,8 +21,8 @@ and metric exemplars.
 
 Sampling SIG has completed work on several inter-related OpenTelemetry
 specifications that bring us this foundation and let us resolve [a
-very old "TODO" in the tracing specification
-https://github.com/open-telemetry/opentelemetry-specification/issues/1413].
+very old "TODO" in the tracing specification](
+https://github.com/open-telemetry/opentelemetry-specification/issues/1413).
 
 To begin with, we specify two ways to derive randomness from an
 OpenTelemetry trace context, layered upon [W3C Trace Context Level
@@ -81,6 +81,7 @@ With our new OpenTelemetry sampling specifications:
 
 - The SDKs will upgrade to W3C Trace Context Level 2 for Trace ID generation
 - The built-in samplers AlwaysOn, AlwaysOff, ParentBased will be upgraded to use the OpenTelemetry tracestate
+- The TraceIdRatioBased sampler will be deprecated, replaced with a new Probability sampler
 - SDKs will implement new Composite, AnyOf, RateLimiting, and RuleBased composable samplers, along with composable forms of AlwaysOn, AlwaysOff, and ParentBased that participate in calculating sampling thresholds
 - SDKs will communicate sampling thresholds via TraceState as part of the context
 - SDKs will record the tracestate field as part of the OTLP span record
@@ -101,8 +102,8 @@ bit more detail.
 We are going to explain how the `probabilisticsampler` processor was
 upgraded to record the correct sampling threshold without changing its
 algorithm. Like our new specification, this component makes a
-consistent decision and, essentially, all consistent sampling
-decisions are alike.
+consistent decision. This works, essentially, because all consistent
+sampling decisions are alike.
 
 The original logic uses 14 bits of the 32-bit
 [fnv32](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function)
