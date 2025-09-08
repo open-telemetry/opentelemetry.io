@@ -146,8 +146,9 @@ specific category.
 - `OTEL_PYTHON_ID_GENERATOR`: to specify which IDs generator to use for the
   global Tracer Provider
 - `OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS`: to enable query sanitization
-- `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH`: set to `patch_all`
-  to call gevent monkeypatch `patch_all` method before initializing the SDK
+- `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH`: set to
+  `patch_all` to call gevent monkeypatch `patch_all` method before initializing
+  the SDK
 
 Examples:
 
