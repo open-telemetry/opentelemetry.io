@@ -34,7 +34,7 @@ sampling:
 ```
 tracestate: ot=th:0
 ```
-
+<
 The above assumes the context was created with the W3C Trace Context
 Level 2 [Random Trace ID
 flag](https://www.w3.org/TR/trace-context-2/#random-trace-id-flag)
@@ -55,7 +55,7 @@ header is not used.
 ## Sampling is for counting
 
 The important thing about probability sampling in OpenTelemetry, to
-us, is that it preserves the elements of a statistical science.  When
+us, is that it preserves the elements of a statistical science. When
 users configure sampling (many ways) and collect records of
 OpenTelemetry data (many ways), they want to know "how much" sampling
 was applied. The act of sampling is fundamentally about counting and
@@ -92,7 +92,7 @@ they re-sample traces and logs data on the collection path, in order
 to preserve sampling information. As a demonstration, we have upgraded
 the [OpenTelemetry `probabilisticsampler`
 processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/probabilisticsamplerprocessor/README.md)
-Collector-Contrib component, this makes a good example because it
+Collector-Contrib component. This makes a good example because it
 applies to both trace and logs data and it makes use of the explicit
 trace randomness feature described above. To explain this requires a
 bit more detail.
@@ -106,10 +106,10 @@ consistent decision. This works, essentially, because all consistent
 sampling decisions are alike.
 
 The original logic uses 14 bits of the 32-bit
-[fnv32](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function)
+[FNV](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function)
 hash function over the data for its decision. To configure itself, the
 component computes the desired probability (e.g., 1%) as a ratio, then
-multiplies by 2^14 (i.e., 16384) yielding a threshold.  In this case
+multiplies by 2^14 (i.e., 16384) yielding a threshold. In this case
 the value is 164 (i.e., 0.01 * 16384), meaning it decides to sample if
 the hash value is less than 164 out of 16384. Note, as well, that the
 selection probability can be derived from the value 164 here, and note
@@ -120,7 +120,7 @@ approximately 99.9 in this case.
 Now, we can see the correspondence between this component's decision
 and the new OpenTelemetry sampling specification:
 
-- The 14-bit hash function is this component's random variable, based on `fnv32`
+- The 14-bit hash function is this component's random variable
 - The number 164 is a sampling threshold for acceptance
 - Threshold 0 corresponds with 0% sampling
 - Threshold 16384 corresponds with 100% sampling.
@@ -131,13 +131,13 @@ on a threshold for rejection, which is how the OpenTelemetry
 specification works. The OpenTelemetry sampling threshold `th:0` that
 we saw above indicates 100% sampling, and now we understand that it
 encodes the number of rejected values (out of 2^56) after removing
-removed trailing zeros.  For the example `th:c`, representing 25%
+removed trailing zeros. For the example `th:c`, representing 25%
 sampling in OpenTelemetry:
 
 - The 56-bit random value is a random variable derived from W3C Trace Context Level 2 Trace ID or OpenTelemetry tracestate explicit randomness value
 - The number `c` is a sampling threshold for rejection, which after
-  extending with 0s corresponds with `0xc0000000000000` out of
-  `0x100000000000000` or 75% of random values being rejected
+ extending with 0s corresponds with `0xc0000000000000` out of
+ `0x100000000000000` or 75% of random values being rejected
 - Threshold `0` corresponds with 100% sampling
 - Threshold `0xffffffffffffff` corresponds with rejecting all except 1 of 2^56.
 
@@ -148,7 +148,7 @@ will re-encode its threshold for acceptance as a threshold for
 rejection, extending it from 14 bits to 56 bits in the process, in the
 form of an OpenTelemetry tracestate. Then, to establish consistency,
 it encodes the original 14 bits and 42 pseudo-random bits derived from
-the 32-bit fnv32 hash. For the example using a 1%
+the 32-bit FNV hash. For the example using a 1%
 `probabilisticsampler` configuration, we may expect to see spans with
 OpenTelemetry tracestate values like this:
 
@@ -170,13 +170,13 @@ The `probabilisticsampler` component supports two new modes that are
 suited for additional down-sampling on the collection path:
 
 - `equalizing`: the component respects the arriving OpenTelemetry
-  sampling threshold and reduces sampling probability item-by-item to
-  the configured sampling probability level.
+ sampling threshold and reduces sampling probability item-by-item to
+ the configured sampling probability level.
 - `proportional`: the component respects the arriving OpenTelemetry
-  sampling threshold and reduces the volume of data without
-  considering how much sampling was already applied, reducing the
-  probability of all items that pass through, limited to the minimum
-  supported sampling probability.
+ sampling threshold and reduces the volume of data without
+ considering how much sampling was already applied, reducing the
+ probability of all items that pass through, limited to the minimum
+ supported sampling probability.
 
 For more details on the OpenTelemetry sampling specifications
 described above, please see the update [Trace SDK Sampling
@@ -191,7 +191,7 @@ documentation.
 
 We recognize that there is more to do for this to be widely applicable
 for OpenTelemetry users. Here are some of the objectives on our
-roadmap for sampling in coming years.  With these specifications, we
+roadmap for sampling in coming years. With these specifications, we
 will soon have a foundation for probability sampling across
 OpenTelemetry that includes:
 
@@ -247,7 +247,7 @@ rate-limited sampling, architectural changes will be required.
 Guided by the Jaeger system, and taking inspiration from adaptive
 sampling systems used in several vendor-specific telemetry agents, we
 are looking forward to new and improved feedback-oriented sampling
-systems for OpenTelemetry users.  When OpenTelemetry SDKs can be
+systems for OpenTelemetry users. When OpenTelemetry SDKs can be
 remotely configured through an endpoint, users will seek to build
 adaptive sampling pipelines using OpenTelemetry components.
 
