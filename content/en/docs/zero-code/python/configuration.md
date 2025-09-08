@@ -5,7 +5,8 @@ weight: 10
 aliases:
   - /docs/languages/python/automatic/configuration
   - /docs/languages/python/automatic/agent-config
-cSpell:ignore: gevent healthcheck instrumentor monkeypatch myapp pyproject Starlette urllib
+cSpell:ignore:
+  gevent healthcheck instrumentor monkeypatch myapp pyproject Starlette urllib
 ---
 
 The agent is highly configurable, either by:
