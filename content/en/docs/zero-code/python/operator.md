@@ -3,7 +3,7 @@ title: Using the OpenTelemetry Operator to Inject Auto-Instrumentation
 linkTitle: Operator
 aliases: [/docs/languages/python/automatic/operator]
 weight: 30
-cSpell:ignore: grpcio myapp psutil PYTHONPATH
+cSpell:ignore: grpcio myapp psutil PYTHONPATH gevent monkeypatch
 ---
 
 If you run your Python service in Kubernetes, you can take advantage of the
@@ -43,7 +43,7 @@ your deployment file two environment variables:
 
 #### gevent applications
 
-Since the OpenTelemetry Python 1.37.0/0.58b0 release if you set in your deployment filethe
+Since the OpenTelemetry Python 1.37.0/0.58b0 release if you set in your deployment file
 the `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH` environment variable
 to `patch_all` the auto-instrumentation code will call the gevent monkeypatch method
 with the same name before initializing itself.
