@@ -70,7 +70,7 @@ docker run -d --name jaeger \
   jaegertracing/all-in-one:latest
 ```
 
-## Zipkin
+## Zipkin {#zipkin}
 
 可能な限り早くZipkinをセットアップするには、Dockerコンテナで実行します。
 
