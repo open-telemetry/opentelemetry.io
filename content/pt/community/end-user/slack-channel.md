@@ -17,12 +17,12 @@ da CNCF. Em seguida, junte-se ao canal
 apresente-se, se desejar.
 
 Incentivamos perguntas e discussões sobre adoção e implementação. Você também
-pode saber sobre os próximos eventos e ter a chance de contribuir com o projeto
+pode ficar sabendo sobre os próximos eventos e ter a chance de contribuir com o projeto
 participando de pesquisas e sessões de feedback de usuários. Observe o seguinte:
 
 - Perguntas sobre resolução de problemas ou questões táticas específicas do SDK
-  são mais bem direcionadas para os canais individuais de cada SIG ou para o
+  são melhores direcionadas para os canais individuais de cada SIG ou para o
   canal [`#opentelemetry`](https://cloud-native.slack.com/archives/CJFCJHG4Q).
-- Perguntas específicas de fornecedores são mais bem direcionadas para os canais
+- Perguntas específicas de fornecedores são melhores direcionadas para os canais
   do fornecedor ou, se não existir um, para o canal
   [`#otel-vendor`](https://cloud-native.slack.com/archives/C031SAMGV2A).

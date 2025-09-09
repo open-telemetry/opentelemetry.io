@@ -18,7 +18,7 @@ Nossos objetivos são:
 
 Cada sessão do _OTel em Prática_ geralmente inclui uma ou mais palestras de
 usuários finais ou contribuidores do projeto, com espaço para discussão.
-Palestrantes de todos os contextos são bem-vindos! Se você tem interesse em
+Damos boas-vindas a palestrantes de todas as origens! Se você tem interesse em
 compartilhar o que aprendeu em uma palestra relâmpago de 15 minutos ou em uma
 sessão mais longa de 30 minutos, entre em contato no
 [canal #otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
