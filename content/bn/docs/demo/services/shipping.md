@@ -75,7 +75,7 @@ fn init_meter_provider() -> opentelemetry_sdk::metrics::SdkMeterProvider {
 
 ### লগার প্রোভাইডার ইনিশিয়ালাইজেশন {#initializing-logger-provider}
 
-লগের জন্য শিপিং সার্ভিসে ট্রেসিং ব্যবহার করা হয়, তাই `OpenTelemetryTracingBridge` ব্যবহার করা হয়েছে যাতে ট্রেসিং ক্রেট থেকে লগগুলোকে OpenTelemetry-এর সাথে সংযুক্ত করা যায়।
+লগের জন্য শিপিং সার্ভিস ট্রেসিং ব্যবহার করে, তাই `OpenTelemetryTracingBridge` ব্যবহার করা হয়েছে যাতে ট্রেসিং ক্রেট থেকে লগগুলোকে OpenTelemetry-এর সাথে সংযুক্ত করা যায়।
 
 ```rust
 fn init_logger_provider() {
