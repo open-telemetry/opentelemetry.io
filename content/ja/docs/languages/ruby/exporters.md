@@ -8,7 +8,7 @@ default_lang_commit: 5db74ea69e5f5f8918cf2ef2030560bd083a7cda
 
 ## OTLPエンドポイント {#otlp-endpoint}
 
-（[コレクター](/docs/collector)やJaegerなどの）OTLPエンドポイントにトレースデータを送信するには、`opentelemetry-exporter-otlp`などのエクスポーターパッケージを使用します。
+OTLPエンドポイント（[コレクター](/docs/collector)やJaegerなど）にトレースデータを送信するには、`opentelemetry-exporter-otlp`のようなエクスポーターパッケージを使用します。
 
 {{< tabpane text=true >}} {{% tab bundler %}}
 
