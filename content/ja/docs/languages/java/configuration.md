@@ -100,7 +100,7 @@ OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#inter
 - 名前を大文字に変換します
 - すべての`.`と`-`文字を`_`に置き換えます
 
-たとえば、`otel.sdk.disabled`システムプロパティは`OTEL_SDK_DISABLED`環境変数と同等です。
+たとえば、`otel.sdk.enabled`システムプロパティは`OTEL_SDK_ENABLED`環境変数と同等です。
 
 プロパティがシステムプロパティと環境変数の両方として定義されている場合、システムプロパティが優先されます。
 
