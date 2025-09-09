@@ -17,8 +17,9 @@ da CNCF. Em seguida, junte-se ao canal
 apresente-se, se desejar.
 
 Incentivamos perguntas e discussões sobre adoção e implementação. Você também
-pode ficar sabendo sobre os próximos eventos e ter a chance de contribuir com o projeto
-participando de pesquisas e sessões de feedback de usuários. Observe o seguinte:
+pode ficar sabendo sobre os próximos eventos e ter a chance de contribuir com o
+projeto participando de pesquisas e sessões de feedback de usuários. Observe o
+seguinte:
 
 - Perguntas sobre resolução de problemas ou questões táticas específicas do SDK
   são melhores direcionadas para os canais individuais de cada SIG ou para o

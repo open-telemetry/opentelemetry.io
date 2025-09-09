@@ -17,8 +17,8 @@ Nossos objetivos são:
 - Melhorar a experiência de implementação do OpenTelemetry em produção
 
 Cada sessão do _OTel em Prática_ geralmente inclui uma ou mais palestras de
-usuários finais ou contribuidores do projeto, com espaço para discussão.
-Damos boas-vindas a palestrantes de todas as origens! Se você tem interesse em
+usuários finais ou contribuidores do projeto, com espaço para discussão. Damos
+boas-vindas a palestrantes de todas as origens! Se você tem interesse em
 compartilhar o que aprendeu em uma palestra relâmpago de 15 minutos ou em uma
 sessão mais longa de 30 minutos, entre em contato no
 [canal #otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
