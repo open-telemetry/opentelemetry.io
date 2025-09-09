@@ -5,7 +5,7 @@ description: >-
   Junte-se a um canal do Slack para discutir sobre OpenTelemetry com outros
   usuários finais.
 weight: 40
-default_lang_commit: 7c8eb7c48c0631b7109f19fc5c7398d22b64fa47
+default_lang_commit: eb19d1dd5ab2f66343ec76adbfb31f81024da3a1
 ---
 
 Junte-se ao nosso canal do Slack para se conectar com outros usuários finais do

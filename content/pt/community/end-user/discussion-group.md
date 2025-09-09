@@ -4,7 +4,7 @@ linkTitle: Discussões Mensais
 description:
   Discussões mensais sobre o uso do OpenTelemetry, todos são bem-vindos!
 weight: 20
-default_lang_commit: 7c8eb7c48c0631b7109f19fc5c7398d22b64fa47
+default_lang_commit: 7244f2d859de55d3857c692510634bd860d81459
 ---
 
 **Desde de Abril de 2024, as sessões de discussão em grupo foram descontinuadas

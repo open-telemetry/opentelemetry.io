@@ -5,7 +5,7 @@ description: >-
   _OTel em Prática_ é uma _série_ de palestras iniciada por alguns membros do
   SIG de Usuários Finais.
 weight: 30
-default_lang_commit: 7c8eb7c48c0631b7109f19fc5c7398d22b64fa47
+default_lang_commit: a093ce28ab80f26b61aad5f621625d112ebc6153
 ---
 
 Nossos objetivos são:
