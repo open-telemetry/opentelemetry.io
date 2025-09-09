@@ -1,7 +1,7 @@
 ---
 title: JavaScriptのゼロコード計装
 linkTitle: JavaScript
-description: ソースコードの変更なしでアプリケーションからテレメトリをキャプチャする
+description: ソースコードの変更なしでアプリケーションからテレメトリーをキャプチャする
 aliases: [/docs/languages/js/automatic]
 default_lang_commit: 55f8de69ad3cf54f24243c200f70cd0b3a608ad4
 ---
