@@ -99,7 +99,7 @@ fn init_logger_provider() {
 
 ### ইন্সট্রুমেন্টেশন ইনিশিয়ালাইজেশন {#initializing-instrumentation}
 
-Tracer, Metrics ও Logs provider ইনিশিয়ালাইজ করার জন্য একটি পাবলিক ফাংশন `init_otel()` তৈরি করা হয়েছে:
+ট্রেস, মেট্রিক্স এবং লগের জন্য প্রোভাইডারগুলি ইনিশিয়ালাইজ করার জন্য ফাংশনগুলি  ডিফাইন করার পরে, একটি পাবলিক ফাংশন `init_otel()` তৈরি করা হয়েছে:
 
 ```rust
 pub fn init_otel() -> Result<()> {
