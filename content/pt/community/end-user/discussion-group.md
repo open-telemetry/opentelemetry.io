@@ -1,7 +1,8 @@
 ---
 title: Grupo de Discussão Mensal
 linkTitle: Discussões Mensais
-description: Discussões Mensais Sobre o uso do OpenTelemetry, todos são bem-vindos!
+description:
+  Discussões Mensais Sobre o uso do OpenTelemetry, todos são bem-vindos!
 weight: 20
 default_lang_commit: 7c8eb7c48c0631b7109f19fc5c7398d22b64fa47
 ---
