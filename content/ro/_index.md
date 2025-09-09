@@ -1,7 +1,8 @@
 ---
 title: OpenTelemetry
 description: >-
-  Telemetrie de înaltă calitate, omniprezentă și portabilă pentru a permite o observabilitate eficientă
+  Telemetrie de înaltă calitate, omniprezentă și portabilă pentru a permite o
+  observabilitate eficientă
 outputs:
   - HTML
   # Include the following for `content/en` ONLY
@@ -45,13 +46,14 @@ show_banner: true
 
 {{% blocks/lead color="white" %}}
 
-OpenTelemetry este o colecție de API-uri, SDK-uri și instrumente. Folosește-o pentru a instrumenta,
-genera, colecta și exporta date de telemetrie (metrici, jurnale și urme) pentru a te ajuta
-să analizezi performanța și comportamentul software-ului tău.
-
+OpenTelemetry este o colecție de API-uri, SDK-uri și instrumente. Folosește-o
+pentru a instrumenta, genera, colecta și exporta date de telemetrie (metrici,
+jurnale și urme) pentru a te ajuta să analizezi performanța și comportamentul
+software-ului tău.
 
 > OpenTelemetry este [disponibil în general](/status/) în
-> [mai multe limbi](docs/languages/) și este potrivit pentru a fi utilizat în producție.
+> [mai multe limbi](docs/languages/) și este potrivit pentru a fi utilizat în
+> producție.
 
 {{% /blocks/lead %}}
 
@@ -59,23 +61,25 @@ să analizezi performanța și comportamentul software-ului tău.
 
 {{% blocks/feature icon="fas fa-chart-line" title="Traces, Metrics, Logs" url="docs/concepts/observability-primer/" %}}
 
-Creează și colectează date telemetrice de la serviciile tale și de la software-ul tău, apoi transmite-le către o varietate de instrumente de analiză.
+Creează și colectează date telemetrice de la serviciile tale și de la
+software-ul tău, apoi transmite-le către o varietate de instrumente de analiză.
 
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fas fa-magic" title="Drop-in Instrumentation & Integrations" %}}
 
-OpenTelemetry [se integrează] cu multe biblioteci și framework-uri, și
-suportă [instrumentarea] _bazată pe cod și zero-code_ .
+OpenTelemetry [se integrează] cu multe biblioteci și framework-uri, și suportă
+[instrumentarea] _bazată pe cod și zero-code_ .
 
-[instrumentare]: /docs/concepts/instrumentation/
+[instrumentarea]: /docs/concepts/instrumentation/
 [se integrează]: /ecosystem/integrations/
 
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fab fa-github" title="Open Source, Vendor Neutral" %}}
 
-100% gratuit și open source, OpenTelemetry este [adoptat] și susținut de [lideri din industrie] din domeniul observabilității.
+100% gratuit și open source, OpenTelemetry este [adoptat] și susținut de [lideri
+din industrie] din domeniul observabilității.
 
 [adoptat]: /ecosystem/adopters/
 [lideri din industrie]: /ecosystem/vendors/
@@ -93,6 +97,6 @@ fuziune alte proiectelor OpenTracing și OpenCensus.
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[incubating]: https://www.cncf.io/projects/
+[incubare]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}

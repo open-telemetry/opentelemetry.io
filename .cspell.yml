@@ -9,6 +9,7 @@ import:
   - '@cspell/dict-fr-fr/cspell-ext.json'
   - '@cspell/dict-pt-br/cspell-ext.json'
   - '@cspell/dict-uk-ua/cspell-ext.json'
+  - '@cspell/dict-ro-ro/cspell-ext.json'
 caseSensitive: true
 ignorePaths:
   - '*.svg'
@@ -43,6 +44,8 @@ dictionaryDefinitions:
     path: .cspell/pt-palavras.txt
   - name: uk-words
     path: .cspell/uk-words.txt
+  - name: ro-words
+    path: .cspell/ro-words.txt
 dictionaries:
   # Natural languages
   - bn
@@ -50,6 +53,7 @@ dictionaries:
   - fr-fr
   - pt-br
   - uk-ua
+  - ro-ro
   # Local word lists
   - bn-words
   - en-words
@@ -57,6 +61,7 @@ dictionaries:
   - fr-mots
   - pt-palavras
   - uk-words
+  - ro-words
   # Programming languages and software terms
   - cpp
   - dotnet
