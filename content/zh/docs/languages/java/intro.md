@@ -1,8 +1,8 @@
 ---
-title: OpenTelemetry Java 入门
-description: OpenTelemetry Java 生态系统入门
+title: OpenTelemetry Java 介绍
+description: OpenTelemetry Java 生态系统介绍
 default_lang_commit: 5472965d7714ed898b008d41fa97561591320196
-weight: 9
+weight: 8
 ---
 
 OpenTelemetry Java 是为 Java 生态系统打造的一套 OpenTelemetry 可观测性工具集。

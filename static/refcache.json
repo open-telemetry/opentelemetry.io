@@ -287,6 +287,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:10:08.035583-05:00"
   },
+  "https://bugs.python.org/issue6721": {
+    "StatusCode": 200,
+    "LastSeen": "2025-08-07T21:11:22.382445657Z"
+  },
   "https://bundler.io/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:28.410343-05:00"
@@ -10963,6 +10967,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:30.820029-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-python-contrib/blob/main/opentelemetry-instrumentation/README.rst#programmatic-auto-instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-20T20:58:38.969744818Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/exporter": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:48:28.369231-05:00"
@@ -11214,6 +11222,18 @@
   "https://github.com/open-telemetry/opentelemetry-python/blob/stable/docs/examples/logs/example.py": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:39.359537-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-python/issues/2767": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T17:39:28.524851942Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-python/issues/3307#issuecomment-1579101152": {
+    "StatusCode": 206,
+    "LastSeen": "2025-08-08T17:39:33.31970197Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-python/issues/3747": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-03T19:31:31.195839909Z"
   },
   "https://github.com/open-telemetry/opentelemetry-python/pull/4091": {
     "StatusCode": 206,
