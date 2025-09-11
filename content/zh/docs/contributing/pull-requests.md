@@ -4,6 +4,7 @@ description: 了解如何通过 GitHub UI 或本地 Fork 提交新增或修改�
 aliases: [new-content]
 weight: 15
 default_lang_commit: e04e8da1f4527d65c162af9a670eb3be8e7e7fb9
+drifted_from_default: true
 ---
 
 若要贡献新的或改进现有的文档，请提交一个 [pull request][PR]：

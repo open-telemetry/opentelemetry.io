@@ -4,6 +4,7 @@ description:
   Aprenda cómo hacer que su PR pase con éxito todas las comprobaciones
 weight: 40
 default_lang_commit: 565307515b288bf5e8bee88d73ff4fac1fd93d5e # patched
+drifted_from_default: true
 cSpell:ignore: REFCACHE
 ---
 

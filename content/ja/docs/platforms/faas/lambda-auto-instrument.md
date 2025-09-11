@@ -2,7 +2,7 @@
 title: Lambda 自動計装
 weight: 11
 description: あなたのLambdaをOpenTelemetryで自動的に計装する
-default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
 cSpell:ignore: Corretto
 ---
 
@@ -52,12 +52,12 @@ OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-Lambdaレイヤーは、Node.js v14+のLambdaランタイムをサポートしています。
+Lambdaレイヤーは、Node.js v18+のLambdaランタイムをサポートしています。
 サポートされるJavaScriptとNode.jsのバージョンの詳細については、[OpenTelemetry JavaScriptドキュメント](https://github.com/open-telemetry/opentelemetry-js)を参照してください。
 
 {{% /tab %}} {{% tab Python %}}
 
-LambdaレイヤーはPython 3.8とPython 3.9のLambdaランタイムをサポートしています。
+LambdaレイヤーはPython 3.9+のLambdaランタイムをサポートしています。
 サポートされているPythonのバージョンについては、[OpenTelemetry Pythonドキュメント](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#supported-runtimes) と [PyPi](https://pypi.org/project/opentelemetry-api/) のパッケージを参照してください。
 
 {{% /tab %}} {{% tab Ruby %}}
@@ -69,8 +69,8 @@ Lambda レイヤーは、Ruby 3.2 と 3.3 の Lambda ランタイムをサポー
 
 ### `AWS_LAMBDA_EXEC_WRAPPER` を設定する {#configure-aws_lambda_exec_wrapper}
 
-Node.js、Java、Rubyの場合は `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` 、Pythonの場合は`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-instrument` を設定して、アプリケーションのエントリーポイントを変更します。
-これらのラッパースクリプトは、自動計装を適用したLambdaアプリケーションを起動します。
+Node.js、Java、Ruby、Pythonの場合は `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` を設定して、アプリケーションのエントリーポイントを変更します。
+このラッパースクリプトは、自動計装を適用したLambdaアプリケーションを起動します。
 
 ### 計装LambdaレイヤーのARNを追加する {#add-the-arn-of-instrumentation-lambda-layer}
 

@@ -94,7 +94,7 @@ Collectors might cause a harmful side effect.
 Again, one way to catch this situation is by looking at the metrics
 `otelcol_exporter_queue_size` and `otelcol_exporter_queue_capacity`. If you keep
 having the queue size close to the queue capacity, it’s a sign that exporting
-data is slower than receiving data. You can try to increase the queue size,
+data is slower than receiving data. You can try to increase the queue capacity,
 which will cause the Collector to consume more memory, but it will also give
 some room for the backend to breathe without permanently dropping telemetry
 data. But if you keep increasing the queue capacity and the queue size keeps

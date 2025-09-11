@@ -1,7 +1,7 @@
 ---
 title: Getting Started（入門）
 weight: 10
-default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
+default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9 # patched
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
@@ -150,13 +150,14 @@ import (
 
 // setupOTelSDKは、OpenTelemetryのパイプラインを初期化します。
 // エラーが返されなかった場合は、適切にクリーンアップを行うためにshutdownを必ず呼び出してください。
-func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, err error) {
+func setupOTelSDK(ctx context.Context) (func(context.Context) error, error) {
 	var shutdownFuncs []func(context.Context) error
+	var err error
 
 	// shutdown は、shutdownFuncsを通じて登録されたクリーンアップ関数を呼び出します。
 	// 各クリーンアップ関数の呼び出しで発生したエラーはjoinされます。
 	// 登録された各クリーンアップ関数は一度だけ実行されます。
-	shutdown = func(ctx context.Context) error {
+	shutdown := func(ctx context.Context) error {
 		var err error
 		for _, fn := range shutdownFuncs {
 			err = errors.Join(err, fn(ctx))
@@ -178,7 +179,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	tracerProvider, err := newTracerProvider()
 	if err != nil {
 		handleErr(err)
-		return
+		return shutdown, err
 	}
 	shutdownFuncs = append(shutdownFuncs, tracerProvider.Shutdown)
 	otel.SetTracerProvider(tracerProvider)
@@ -187,7 +188,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	meterProvider, err := newMeterProvider()
 	if err != nil {
 		handleErr(err)
-		return
+		return shutdown, err
 	}
 	shutdownFuncs = append(shutdownFuncs, meterProvider.Shutdown)
 	otel.SetMeterProvider(meterProvider)
@@ -196,12 +197,12 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
 	loggerProvider, err := newLoggerProvider()
 	if err != nil {
 		handleErr(err)
-		return
+		return shutdown, err
 	}
 	shutdownFuncs = append(shutdownFuncs, loggerProvider.Shutdown)
 	global.SetLoggerProvider(loggerProvider)
 
-	return
+	return shutdown, err
 }
 
 func newPropagator() propagation.TextMapPropagator {
@@ -286,7 +287,7 @@ func main() {
 	}
 }
 
-func run() (err error) {
+func run() error {
 	// SIGINT（CTRL+C）を適切に処理するようにします。
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
 	defer stop()
@@ -294,7 +295,7 @@ func run() (err error) {
 	// OpenTelemetryのセットアップ。
 	otelShutdown, err := setupOTelSDK(ctx)
 	if err != nil {
-		return
+		return err
 	}
 	// リークが発生しないよう、適切にシャットダウン処理を行います。
 	defer func() {
@@ -319,7 +320,7 @@ func run() (err error) {
 	case err = <-srvErr:
 		// Error when starting HTTP server.
 		// HTTPサーバーの起動中のエラー。
-		return
+		return err
 	case <-ctx.Done():
 		// 最初の CTRL+C を待機します。
 		// 可能な限り早くシグナル通知の受信を停止します。
@@ -328,7 +329,7 @@ func run() (err error) {
 
 	// Shutdownが呼び出されると、ListenAndServeは即座にErrServerClosedを返します。
 	err = srv.Shutdown(context.Background())
-	return
+	return err
 }
 
 func newHTTPHandler() http.Handler {

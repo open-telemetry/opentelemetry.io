@@ -1081,7 +1081,7 @@ for exporting log records out of process. Rather than directly registering with
 [LogRecordProcessors](#logrecordprocessor) (typically
 `BatchLogRecordProcessor`).
 
-Span exporters built-in to the SDK and maintained by the community in
+Log record exporters built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
 | Class                                      | Artifact                                                                             | Description                                                                         |
@@ -1099,7 +1099,7 @@ Span exporters built-in to the SDK and maintained by the community in
 loops (i.e. JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry
 Log SDK -> JUL) if not carefully configured.
 
-The following code snippet demonstrates `LogRecordProcessor` programmatic
+The following code snippet demonstrates `LogRecordExporter` programmatic
 configuration:
 
 <!-- prettier-ignore-start -->
@@ -1193,8 +1193,7 @@ public class CustomLogRecordExporter implements LogRecordExporter {
 defines constraints for the data captured by log records, including max
 attribute length, and max number of attributes.
 
-The following code snippet demonstrates `LogRecordProcessor` programmatic
-configuration:
+The following code snippet demonstrates `LogLimits` programmatic configuration:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogLimitsConfig.java"?>

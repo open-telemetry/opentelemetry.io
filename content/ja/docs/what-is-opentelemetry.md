@@ -2,7 +2,7 @@
 title: OpenTelemetryとは
 description: OpenTelemetryが何であり、何でないかについての簡潔な説明。
 weight: 150
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
 ---
 
 OpenTelemetry とは、次のようなものです。
@@ -72,7 +72,7 @@ OpenTelemetryは拡張できるように設計されています。どのよう�
 - カスタム計装ライブラリをSDKにロードする
 - 特定のユースケースに合わせたSDKまたはコレクターの[ディストリビューション](../concepts/distributions/)の作成
 - OpenTelemetryプロトコル(OTLP)をまだサポートしていないカスタムバックエンド用の新しいエクスポーターの作成
-- 非標準のコンテキスト伝播形式用のカスタムプロパゲーターの作成
+- 非標準のコンテキスト伝搬形式用のカスタムプロパゲーターの作成
 
 ほとんどのユーザーはOpenTelemetryを拡張する必要はないかもしれませんが、このプロジェクトはほぼすべてのレベルで拡張できるように設計されています。
 

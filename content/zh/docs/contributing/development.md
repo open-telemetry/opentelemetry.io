@@ -6,6 +6,7 @@ what-next: >
   你现在已经可以开始[构建](#build)、[提供](#serve)并更新网站文件。
 weight: 60
 default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22
+drifted_from_default: true
 ---
 
 {{% alert title="支持的构建环境" color=warning %}}

@@ -1,5 +1,5 @@
 ---
-title: Status
+title: Estado
 menu: { main: { weight: 30 } }
 aliases: [/project-status, /releases]
 description: Nivel de madurez de los principales componentes de OpenTelemetry

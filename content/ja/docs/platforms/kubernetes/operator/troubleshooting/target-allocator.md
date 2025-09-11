@@ -123,7 +123,7 @@ spec:
 kubectl port-forward svc/otelcol-targetallocator -n opentelemetry 8080:80
 ```
 
-`otelcol-targetallocator` は `OpenTelemetryCollector` CRの `metadata.name` の値と `-targetallocator` サフィックスを連結したもので、`opentelemetry` は `OpenTelemetryCollector` CRがデプロイされている名前空間です。
+`otelcol-targetallocator` は `OpenTelemetryCollector` CRの `metadata.name` の値と `-targetallocator` 接尾辞を連結したもので、`opentelemetry` は `OpenTelemetryCollector` CRがデプロイされている名前空間です。
 
 {{% alert title="Tip" %}}
 
