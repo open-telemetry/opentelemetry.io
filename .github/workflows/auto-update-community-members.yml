@@ -60,10 +60,11 @@ jobs:
           npm install --omit=optional
           npm run fix:refcache
 
-          git checkout update-community-members
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
+            git checkout update-community-members
+
             git commit -am "Fix refcache"
             git push
           fi
