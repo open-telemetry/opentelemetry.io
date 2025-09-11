@@ -45,11 +45,13 @@ Some of the channels you might want to keep an eye on are:
 - #otel-collector
 - #otel-semantic-conventions
 - #otel-community-demo
+- #otel-vendor
 
 Not sure where to ask? Post in #otel-end-user, and we will help you find the
 channel for you.
 
-<!--➡️ TODO: Add a CTA "[Join CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf)")-->
+[Join CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf)"
+<!--➡️ TODO: Turn link to a button -->
 
 ## Respond to a survey
 
@@ -64,14 +66,12 @@ Example surveys:
 - [Docs Usability Survey](https://opentelemetry.io/blog/2024/otel-docs-survey/)
 <!--➡️ TODO: Turn links into embeds-->
 
-<!-- 
-➡️ TODO:
+Currently, we are running the OTel Collector survey, and we want to hear from you:
 
-Currently, we are running the OTel Collector survey, and we want to hear from you
+[Respond to survey](https://forms.gle/Q2Ndq7HyWheVWAia8)
+<!-- ➡️ TODO: Turn link into a button -->
 
-Add a CTA "[Respond to survey](https://forms.gle/Q2Ndq7HyWheVWAia8)"-->
-
-<!--➡️ TODO: Add an info link to a page about surveys: [Learn more about how we run surveys]()-->
+<!--➡️ TODO: Add an info link to a page about surveys: [Learn more about how we run surveys](feedback-survey/) once we have the page ready-->
 
 ## Join a podcasts
 
@@ -89,9 +89,9 @@ podcasts. We regularly do 2 types of them:
 
 We do the podcasts live and recordings are posted on OpenTelemetry YouTube
 channel. If you want to talk about your experience with OpenTelemetry, please,
-let us know in #otel-sig-end-user channel in the CNCF Slack workspace. 
+let us know in *#otel-sig-end-user channel* in the CNCF Slack workspace. 
 
-[Learn more about how we do podcasts](otel-in-practice/)
+[Learn more about how we do podcasts](interviews-feedback/)
 
 Do you have any questions or tips how to improve end user feedback collection
 for OpenTelemetry? Let us know in #otel-sig-end-user in CNCF Slack.
