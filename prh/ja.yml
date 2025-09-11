@@ -17,6 +17,9 @@ rules:
   - expected: かわり
     patterns:
       - 代わり
+  - expected: かわって
+    patterns:
+      - 代わって
   - expected: 計装
     patterns:
       - インストゥルメンテーション

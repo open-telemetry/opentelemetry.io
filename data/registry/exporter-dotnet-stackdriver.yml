@@ -16,4 +16,4 @@ createdAt: 2022-11-07
 package:
   registry: nuget
   name: OpenTelemetry.Exporter.Stackdriver
-  version: 1.0.0-beta.6
+  version: 1.12.0-beta.1

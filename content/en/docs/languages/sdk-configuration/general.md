@@ -165,7 +165,7 @@ Accepted values for `OTEL_METRICS_EXPORTER` are:
 
 - `"otlp"`: [OTLP][]
 - `"prometheus"`:
-  [Prometheus](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md)
+  [Prometheus](https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md)
 - `"console"`: [Standard Output](/docs/specs/otel/metrics/sdk_exporters/stdout/)
 - `"none"`: No automatically configured exporter for metrics.
 

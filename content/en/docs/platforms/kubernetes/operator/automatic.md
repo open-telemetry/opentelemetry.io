@@ -35,10 +35,10 @@ chart, there is an option to generate a self-signed cert instead.
 ## Create an OpenTelemetry Collector (Optional)
 
 It is a best practice to send telemetry from containers to an
-[OpenTelemetry Collector](../../collector/) instead of directly to a backend.
-The Collector helps simplify secret management, decouples data export problems
-(such as a need to do retries) from your apps, and lets you add additional data
-to your telemetry, such as with the
+[OpenTelemetry Collector](/docs/platforms/kubernetes/collector/) instead of
+directly to a backend. The Collector helps simplify secret management, decouples
+data export problems (such as a need to do retries) from your apps, and lets you
+add additional data to your telemetry, such as with the
 [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
 component. If you chose not to use a Collector, you can skip to the next
 section.

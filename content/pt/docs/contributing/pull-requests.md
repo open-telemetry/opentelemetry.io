@@ -6,6 +6,7 @@ description:
 aliases: [new-content]
 weight: 15
 default_lang_commit: bc14fe46c2f358c8c0b6dc7f394535787bd4fff3
+drifted_from_default: true
 ---
 
 Para contribuir com novos conteúdos ou melhorar a documentação existente,

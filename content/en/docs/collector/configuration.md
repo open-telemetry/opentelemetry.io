@@ -677,6 +677,17 @@ processors:
         action: ${env:OPERATION}
 ```
 
+You can pass defaults to an environment variable using the bash syntax:
+`${env:DB_KEY:-some-default-var}`
+
+```yaml
+processors:
+  attributes/example:
+    actions:
+      - key: ${env:DB_KEY:-mydefault}
+        action: ${env:OPERATION:-}
+```
+
 Use `$$` to indicate a literal `$`. For example, representing
 `$DataVisualization` would look like the following:
 

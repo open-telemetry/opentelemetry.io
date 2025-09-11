@@ -56,8 +56,9 @@ interesting metadata. By default, data passing through the processor is
 associated to a pod via the incoming request's IP address, but different rules
 can be configured. Since the processor uses the Kubernetes API, it requires
 special permissions (see example below). If you're using the
-[OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
-[`kubernetesAttributes` preset](../../helm/collector/#kubernetes-attributes-preset)
+[OpenTelemetry Collector Helm chart](/docs/platforms/kubernetes/helm/collector/)
+you can use the
+[`kubernetesAttributes` preset](/docs/platforms/kubernetes/helm/collector/#kubernetes-attributes-preset)
 to get started.
 
 The following attributes are added by default:
@@ -194,9 +195,10 @@ the node and the workloads running on the node.
 There are different methods for authentication, but typically a service account
 is used. The service account will also need proper permissions to pull data from
 the Kubelet (see below). If you're using the
-[OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
-[`kubeletMetrics` preset](../../helm/collector/#kubelet-metrics-preset) to get
-started.
+[OpenTelemetry Collector Helm chart](/docs/platforms/kubernetes/helm/collector/)
+you can use the
+[`kubeletMetrics` preset](/docs/platforms/kubernetes/helm/collector/#kubelet-metrics-preset)
+to get started.
 
 By default, metrics will be collected for pods and nodes, but you can configure
 the receiver to collect container and volume metrics as well. The receiver also
@@ -269,8 +271,10 @@ any logs from Kubernetes.
 The Filelog Receiver is composed of Operators that are chained together to
 process a log. Each Operator performs a simple responsibility, such as parsing a
 timestamp or JSON. Configuring a Filelog Receiver is not trivial. If you're
-using the [OpenTelemetry Collector Helm chart](../../helm/collector/) you can
-use the [`logsCollection` preset](../../helm/collector/#logs-collection-preset)
+using the
+[OpenTelemetry Collector Helm chart](/docs/platforms/kubernetes/helm/collector/)
+you can use the
+[`logsCollection` preset](/docs/platforms/kubernetes/helm/collector/#logs-collection-preset)
 to get started.
 
 Since Kubernetes logs normally fit a set of standard formats, a typical Filelog
@@ -354,9 +358,10 @@ the data.
 There are different methods for authentication, but typically a service account
 is used. The service account also needs proper permissions to pull data from the
 Kubernetes API server (see below). If you're using the
-[OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
-[`clusterMetrics` preset](../../helm/collector/#cluster-metrics-preset) to get
-started.
+[OpenTelemetry Collector Helm chart](/docs/platforms/kubernetes/helm/collector/)
+you can use the
+[`clusterMetrics` preset](/docs/platforms/kubernetes/helm/collector/#cluster-metrics-preset)
+to get started.
 
 For node conditions, the receiver only collects `Ready` by default, but it can
 be configured to collect more. The receiver can also be configured to report a
@@ -483,10 +488,10 @@ all the data.
 Currently only a service account can be used for authentication. The service
 account also needs proper permissions to pull data from the Kubernetes API
 server (see below). If you're using the
-[OpenTelemetry Collector Helm chart](../../helm/collector/) and you want to
-ingest events, you can use the
-[`kubernetesEvents` preset](../../helm/collector/#cluster-metrics-preset) to get
-started.
+[OpenTelemetry Collector Helm chart](/docs/platforms/kubernetes/helm/collector/)
+and you want to ingest events, you can use the
+[`kubernetesEvents` preset](/docs/platforms/kubernetes/helm/collector/#cluster-metrics-preset)
+to get started.
 
 For objects configuring for pulling, the receiver will use the Kubernetes API to
 periodically list all the objects in the Cluster. Each object will be converted
@@ -643,8 +648,9 @@ which means there are important details to consider when using it:
 
 To make configuring the Prometheus receiver easier, the OpenTelemetry Operator
 includes an optional component called the
-[Target Allocator](../../operator/target-allocator). This component can be used
-to tell a collector which Prometheus endpoints it should scrape.
+[Target Allocator](/docs/platforms/kubernetes/operator/target-allocator). This
+component can be used to tell a collector which Prometheus endpoints it should
+scrape.
 
 For more information on the design of the receiver, see
 [Design](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/DESIGN.md).
@@ -664,9 +670,10 @@ may be worth it to disable these duplicate metrics.
 
 In Kubernetes, the receiver needs access to the `hostfs` volume to work
 properly. If you're using the
-[OpenTelemetry Collector Helm chart](../../helm/collector/) you can use the
-[`hostMetrics` preset](../../helm/collector/#host-metrics-preset) to get
-started.
+[OpenTelemetry Collector Helm chart](/docs/platforms/kubernetes/helm/collector/)
+you can use the
+[`hostMetrics` preset](/docs/platforms/kubernetes/helm/collector/#host-metrics-preset)
+to get started.
 
 The available scrapers are:
 

@@ -2,6 +2,7 @@
 title: Primeiros Passos
 weight: 10
 default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---

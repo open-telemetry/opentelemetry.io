@@ -30,6 +30,10 @@ lang:bn:
   - changed-files:
       - any-glob-to-any-file:
           - content/bn/**
+lang:uk:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/uk/**
 sig:cpp:
   - changed-files:
       - any-glob-to-any-file:
@@ -108,3 +112,7 @@ sig:spec:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/docs/specs/**
+sig:obi:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/zero-code/obi/**

@@ -4,7 +4,8 @@ description: >-
   Definições e convenções para termos de telemetria conforme usados no
   OpenTelemetry.
 weight: 200
-default_lang_commit: 389e023192e051a3a835bfc6a71089c98af3b8a8
+default_lang_commit: 389e023192e051a3a835bfc6a71089c98af3b8a8 # patched
+drifted_from_default: true
 ---
 
 Esse glossário define termos e [conceitos](/docs/concepts/) que são novos no
@@ -98,6 +99,15 @@ Um termo utilizado especificamente por [Registros de Log](#log-record).
 incluindo [Atributos](#attribute) e [Recursos](#resource). Outros campos também
 podem ser considerados `Metadados`, incluindo severidade e informações de
 rastreamento. Consulte a [especificação de campos][field].
+
+### Cardinalidade {#cardinality}
+
+O número de valores únicos para um determinado [Atributo](#attribute) ou
+conjunto de atributos. Alta cardinalidade significa muitos valores únicos, o que
+pode impactar o desempenho e os requisitos de armazenamento dos _backends_ de
+telemetria. Por exemplo, um atributo `user_id` teria alta cardinalidade,
+enquanto um atributo `status_code` com valores como "200", "404", "500" teria
+baixa cardinalidade.
 
 ### Collector
 

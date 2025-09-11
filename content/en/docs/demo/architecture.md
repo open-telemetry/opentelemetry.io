@@ -121,6 +121,7 @@ classDef typescript fill:#e98516,color:black;
 ```
 
 Follow these links for the current state of
+[log](/docs/demo/telemetry-features/log-coverage/),
 [metric](/docs/demo/telemetry-features/metric-coverage/) and
 [trace](/docs/demo/telemetry-features/trace-coverage/) instrumentation of the
 demo applications.
@@ -147,18 +148,25 @@ subgraph tdf[Telemetry Data Flow]
             oc-grpc[/"OTLP Receiver<br/>listening on<br/>grpc://localhost:4317"/]
             oc-http[/"OTLP Receiver<br/>listening on <br/>localhost:4318<br/>"/]
             oc-proc(Processors)
+            oc-spanmetrics[/"Span Metrics Connector"/]
             oc-prom[/"OTLP HTTP Exporter"/]
             oc-otlp[/"OTLP Exporter"/]
+            oc-opensearch[/"OpenSearch Exporter"/]
 
             oc-grpc --> oc-proc
             oc-http --> oc-proc
 
             oc-proc --> oc-prom
             oc-proc --> oc-otlp
+            oc-proc --> oc-opensearch
+            oc-proc --> oc-spanmetrics
+            oc-spanmetrics --> oc-prom
+
         end
 
         oc-prom -->|"localhost:9090/api/v1/otlp"| pr-sc
         oc-otlp -->|gRPC| ja-col
+        oc-opensearch -->|HTTP| os-http
 
         subgraph pr[Prometheus]
             style pr fill:#e75128,color:black;
@@ -183,6 +191,14 @@ subgraph tdf[Telemetry Data Flow]
             ja-db --> ja-http
         end
 
+        subgraph os[OpenSearch]
+            style os fill:#005eb8,color:black;
+            os-http[/"OpenSearch<br/>listening on<br/>localhost:9200"/]
+            os-db[(OpenSearch Index)]
+
+            os-http ---> os-db
+        end
+
         subgraph gr[Grafana]
             style gr fill:#f8b91e,color:black;
             gr-srv["Grafana Server"]
@@ -193,6 +209,7 @@ subgraph tdf[Telemetry Data Flow]
 
         pr-http --> |"localhost:9090/api"| gr-srv
         ja-http --> |"localhost:16686/api"| gr-srv
+        os-http --> |"localhost:9200/api"| gr-srv
 
         ja-b{{"Browser<br/>Jaeger UI"}}
         ja-http ---->|"localhost:16686/search"| ja-b
