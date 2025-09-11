@@ -124,8 +124,10 @@ some customizations. See [Distributions].
 
 ### Entity
 
-An Entity represents an object of interest associated with produced telemetry:
-traces, metrics, logs, profiles etc.
+A collection of [attributes](#attribute) that identify and describe a physical
+or logical object. Entities are typically associated with telemetry, e.g. a CPU
+entity describes a physical CPU, a service entity describes a logical grouping
+of processes that compose an HTTP or other service.
 
 ### Event
 
@@ -310,11 +312,8 @@ See [Distributed Tracing](#distributed-tracing).
 
 ### Resource
 
-Captures information about the entity producing telemetry as
-[Attributes](#attribute). For example, a process producing telemetry that is
-running in a container on Kubernetes has a process name, a pod name, a
-namespace, and possibly a deployment name. All these attributes can be included
-in the `Resource`.
+A collection of [entities](#entity) or [attributes](#attribute) that identify or
+describe a physical or logical object that produces telemetry.
 
 ### REST
 
