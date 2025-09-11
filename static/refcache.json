@@ -283,6 +283,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:28.075977-04:00"
   },
+  "https://blog.olly.garden/how-to-name-your-metrics": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-11T16:36:20.094311-04:00"
+  },
   "https://blog.olly.garden/how-to-name-your-span-attributes": {
     "StatusCode": 200,
     "LastSeen": "2025-08-27T08:48:18.571347-03:00"
@@ -415,6 +419,22 @@
     "StatusCode": 200,
     "LastSeen": "2025-09-11T16:06:56.758056-04:00"
   },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-aws-sdk-1.11": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-11T17:37:14.375458-04:00"
+  },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-aws-sdk-1.11-autoconfigure": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-11T17:43:35.049323-04:00"
+  },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-aws-sdk-2.2": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-11T17:37:14.718483-04:00"
+  },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-aws-sdk-2.2-autoconfigure": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-11T17:37:15.098305-04:00"
+  },
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-c3p0-0.9": {
     "StatusCode": 200,
     "LastSeen": "2025-09-11T16:07:05.375543-04:00"
@@ -454,6 +474,14 @@
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-jdbc": {
     "StatusCode": 200,
     "LastSeen": "2025-09-11T16:07:57.996727-04:00"
+  },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-jetty-httpclient-12.0": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-11T17:37:16.683373-04:00"
+  },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-jetty-httpclient-9.2": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-11T17:37:16.051014-04:00"
   },
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-kafka-clients-2.6": {
     "StatusCode": 200,
@@ -11390,6 +11418,38 @@
   "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.7.0/opentelemetry/proto/collector/trace/v1/trace_service.proto": {
     "StatusCode": 206,
     "LastSeen": "2025-05-21T15:13:38.682438465Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/README.md#maturity-level": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-11T16:35:59.232537-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/examples/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-11T16:36:02.408254-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/opentelemetry/proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-11T16:35:57.25492-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/opentelemetry/proto/collector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-11T16:35:55.826945-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/opentelemetry/proto/collector/logs/v1/logs_service.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-11T16:35:45.343482-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/opentelemetry/proto/collector/metrics/v1/metrics_service.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-11T16:35:47.413354-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/opentelemetry/proto/collector/profiles/v1development/profiles_service.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-11T16:35:52.989901-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/opentelemetry/proto/collector/trace/v1/trace_service.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-11T16:35:49.081127-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-python": {
     "StatusCode": 206,
