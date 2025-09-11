@@ -283,10 +283,6 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T10:46:28.075977-04:00"
   },
-  "https://blog.olly.garden/how-to-name-your-metrics": {
-    "StatusCode": 200,
-    "LastSeen": "2025-09-10T14:48:08.983465-03:00"
-  },
   "https://blog.olly.garden/how-to-name-your-span-attributes": {
     "StatusCode": 200,
     "LastSeen": "2025-08-27T08:48:18.571347-03:00"
@@ -11394,38 +11390,6 @@
   "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.7.0/opentelemetry/proto/collector/trace/v1/trace_service.proto": {
     "StatusCode": 206,
     "LastSeen": "2025-05-21T15:13:38.682438465Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/README.md#maturity-level": {
-    "StatusCode": 206,
-    "LastSeen": "2025-09-11T16:30:58.308246017Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/examples/README.md": {
-    "StatusCode": 206,
-    "LastSeen": "2025-09-11T16:31:02.890242559Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/opentelemetry/proto": {
-    "StatusCode": 206,
-    "LastSeen": "2025-09-11T16:30:56.406308129Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/opentelemetry/proto/collector": {
-    "StatusCode": 206,
-    "LastSeen": "2025-09-11T16:30:52.558327173Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/opentelemetry/proto/collector/logs/v1/logs_service.proto": {
-    "StatusCode": 206,
-    "LastSeen": "2025-09-11T16:30:37.021282367Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/opentelemetry/proto/collector/metrics/v1/metrics_service.proto": {
-    "StatusCode": 206,
-    "LastSeen": "2025-09-11T16:30:41.011404289Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/opentelemetry/proto/collector/profiles/v1development/profiles_service.proto": {
-    "StatusCode": 206,
-    "LastSeen": "2025-09-11T16:30:48.092269368Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.8.0/opentelemetry/proto/collector/trace/v1/trace_service.proto": {
-    "StatusCode": 206,
-    "LastSeen": "2025-09-11T16:30:44.188044863Z"
   },
   "https://github.com/open-telemetry/opentelemetry-python": {
     "StatusCode": 206,
