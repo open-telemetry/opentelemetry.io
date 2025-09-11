@@ -124,7 +124,10 @@ some customizations. See [Distributions].
 
 ### Entity
 
-A collection of [attributes](#attribute) that identify and describe a physical or logical object. Entities are typically associated with telemetry, e.g. a CPU entity describes a physical CPU, a service entity describes a logical grouping of processes that compose an HTTP or other service.
+A collection of [attributes](#attribute) that identify and describe a physical
+or logical object. Entities are typically associated with telemetry, e.g. a CPU
+entity describes a physical CPU, a service entity describes a logical grouping
+of processes that compose an HTTP or other service.
 
 ### Event
 
@@ -309,7 +312,8 @@ See [Distributed Tracing](#distributed-tracing).
 
 ### Resource
 
-A collection of [entities](#entity) or [attributes](#attribute) that identify or describe a physical or logical object that produces telemetry.
+A collection of [entities](#entity) or [attributes](#attribute) that identify or
+describe a physical or logical object that produces telemetry.
 
 ### REST
 
