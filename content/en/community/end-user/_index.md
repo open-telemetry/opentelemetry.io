@@ -49,7 +49,7 @@ Some of the channels you might want to keep an eye on are:
 Not sure where to ask? Post in #otel-end-user, and we will help you find the
 channel for you.
 
-<!--➡️ TODO: Add a CTA "Join CNCF Slack" linking to the a page explaining how to join CNCF Slack)-->
+<!--➡️ TODO: Add a CTA "[Join CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf)")-->
 
 ## Respond to a survey
 
@@ -59,37 +59,39 @@ better informed decisions when building OTel. We have already run XXX surveys
 and sourced feedback from XXX respondents.
 
 Example surveys:
+- [Contributor Experience Survey](https://opentelemetry.io/blog/2025/contribex-survey-results/)
+- [Developer Experience Survey](https://opentelemetry.io/blog/2025/devex-survey/)
+- [Docs Usability Survey](https://opentelemetry.io/blog/2024/otel-docs-survey/)
+<!--➡️ TODO: Turn links into embeds-->
 
-<!--➡️ TODO: Add links/embeds to a blogposts for 3-5 surveys-->
+<!-- 
+➡️ TODO:
 
-Currently, we are running a
-<!--Name of the survey (this whole line could be updated regularly based on the task in Survey template)-->
-survey, and we want to hear from you as well.
+Currently, we are running the OTel Collector survey, and we want to hear from you
 
-<!--➡️ TODO: Add a CTA "Take a survey" linking to the survey that is currently running)-->
+Add a CTA "[Respond to survey](https://forms.gle/Q2Ndq7HyWheVWAia8)"-->
 
-[Learn more about how we run surveys]() <!--➡️ TODO: Add an url-->
+<!--➡️ TODO: Add an info link to a page about surveys: [Learn more about how we run surveys]()-->
 
 ## Join a podcasts
 
 The ultimate way to share your experience in our toolbox is joining our
 podcasts. We regularly do 2 types of them:
 
-- OTel-Me
+- OTel Me
   - A discussion between our host and end users about their experience with
     OpenTeletry.
-  - <!--Embedded/link to the most recent session -->
+  - [OTel Me...with Jerome Johnson & Cal Loomis](https://www.youtube.com/live/DrD35XxTDsY?si=d_9s2tGVUszQliwF)
 - OTel in practice
   - A presentation of interesting OTel concepts by contributors.
-  - <!--Embedded/link to the most recent session -->
+  - [OTel in Practice: Alibaba's OpenTelemetry Journey](https://www.youtube.com/live/fgbB0HhVBq8?si=64Sr6vdv4w6ZYg8s)
+  <!--➡️ TODO: Turn links into embeds-->
 
 We do the podcasts live and recordings are posted on OpenTelemetry YouTube
 channel. If you want to talk about your experience with OpenTelemetry, please,
-let us know.
+let us know in #otel-sig-end-user channel in the CNCF Slack workspace. 
 
-<!--➡️ TODO: Add a CTA "Share your topic idea" linking to the survey that is currently running)-->
-
-[Learn more about how we do podcasts]() <!--➡️ TODO: Add an url-->
+[Learn more about how we do podcasts](otel-in-practice/)
 
 Do you have any questions or tips how to improve end user feedback collection
 for OpenTelemetry? Let us know in #otel-sig-end-user in CNCF Slack.
