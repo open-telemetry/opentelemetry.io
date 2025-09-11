@@ -1,7 +1,7 @@
 ---
 title: Cómo nombrar tus métricas
 linkTitle: Cómo nombrar tus métricas
-date: 2025-09-10
+date: 2025-09-11
 author: >-
   [Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)
 canonical_url: https://blog.olly.garden/how-to-name-your-metrics
