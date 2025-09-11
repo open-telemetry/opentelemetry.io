@@ -10,8 +10,8 @@ default_lang_commit: 710cf5e9afcb8a9bc14366a65d242687f917c893
 cSpell:ignore: apiserver ecommerce jpkrohling kubelet mebibytes OllyGarden opentelemetrys postgres scheduler UCUM
 ---
 
-Métricas são a espinha dorsal quantitativa da observabilidade — os números
-que nos dizem como nossos sistemas estão se comportando. Esta é a terceira
+Métricas são a espinha dorsal quantitativa da observabilidade — os números que
+nos dizem como nossos sistemas estão se comportando. Esta é a terceira
 publicação em nossa série sobre nomenclatura do OpenTelemetry, onde já
 exploramos [como nomear trechos](/blog/2025/how-to-name-your-spans/) e
 [como enriquecê-los com atributos significativos](/blog/2025/how-to-name-your-span-attributes/).
@@ -85,9 +85,9 @@ limpos, uma única consulta funciona para tudo.
 ## O modelo de contexto rico do OpenTelemetry {#opentelemetrys-rich-context-model}
 
 As métricas do OpenTelemetry se beneficiam do mesmo
-[modelo de contexto rico](/docs/specs/otel/common/#attribute) que
-discutimos em nosso artigo sobre atributos de trechos. Em vez de forçar tudo no
-nome da métrica, temos múltiplas camadas onde o contexto pode viver:
+[modelo de contexto rico](/docs/specs/otel/common/#attribute) que discutimos em
+nosso artigo sobre atributos de trechos. Em vez de forçar tudo no nome da
+métrica, temos múltiplas camadas onde o contexto pode viver:
 
 ### Abordagem tradicional (estilo Prometheus): {#traditional-approach-prometheus-style}
 
@@ -148,7 +148,8 @@ Esta abordagem tem vários benefícios:
 3. **Flexibilidade do _backend_**: Os sistemas podem lidar com conversão de
    unidades automaticamente.
 4. **Convenções consistentes**: Alinhado às
-   [convenções semânticas](/docs/specs/semconv/general/metrics/) do OpenTelemetry.
+   [convenções semânticas](/docs/specs/semconv/general/metrics/) do
+   OpenTelemetry.
 
 A especificação recomenda usar unidades não prefixadas como `By` (bytes) em vez
 de `MiBy` (mebibytes), a menos que haja razões técnicas para fazer o contrário.
@@ -161,7 +162,8 @@ aprendemos para trechos, quando fizer sentido:
 1. **Foque na operação**: O que está sendo medido?
 2. **Não no operador**: Quem está fazendo a medição?
 3. **Siga as convenções semânticas**: Utilize
-   [padrões estabelecidos](/docs/specs/semconv/general/metrics/) quando disponíveis.
+   [padrões estabelecidos](/docs/specs/semconv/general/metrics/) quando
+   disponíveis.
 4. **Mantenha unidades como metadados**: Não adicione sufixos de unidades aos
    nomes.
 
