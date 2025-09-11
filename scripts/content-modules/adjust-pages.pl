@@ -25,7 +25,7 @@ my $lineNum;
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
     spec: 1.48.0
-    otlp: 1.7.0
+    otlp: 1.8.0
     semconv: 1.37.0
   );
 # Versions map without the colon in the keys
@@ -152,6 +152,12 @@ while(<>) {
     $frontMatterFromFile = '';
     $title = '';
     $lineNum = 1;
+    # Skip single-line markdownlint directives at top of file. Added to handle
+    # https://github.com/open-telemetry/opentelemetry.io/issues/7750
+    if (/^<!--\s*markdownlint.*-->\s*$/) {
+      $_ = <>;
+    }
+    # Extract Hugo front matter encoded as a comment:
     if (/^(<!)?--- (# )?Hugo/) {
         while(<>) {
           $lineNum++;
