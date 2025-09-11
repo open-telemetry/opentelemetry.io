@@ -3,7 +3,7 @@ title: Налаштування SDK
 linkTitle: Налаштування SDK
 weight: 13
 aliases: [config]
-default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
+default_lang_commit: 0da44011230e4781fdf6209ac27e0ccc59fa38b2
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---
@@ -67,7 +67,7 @@ public class AutoConfiguredSdk {
 - Перетворіть імʼя на великі літери.
 - Замініть усі символи `.` та `-` на `_`.
 
-Наприклад, системна властивість `otel.sdk.enabled` еквівалентна змінній середовища `OTEL_SDK_ENABLED`.
+Наприклад, системна властивість `otel.sdk.disabled` еквівалентна змінній середовища `OTEL_SDK_DISABLED`.
 
 Якщо властивість визначена як системна властивість і змінна середовища, пріоритет має системна властивість.
 
