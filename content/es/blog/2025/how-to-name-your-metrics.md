@@ -85,9 +85,9 @@ limpios, una sola consulta funciona para todo.
 ## El modelo de contexto enriquecido de OpenTelemetry {#the-enriched-context-model-of-opentelemetry}
 
 Las métricas en OpenTelemetry se benefician del mismo
-[modelo de contexto enriquecido](/docs/specs/otel/common/#attribute)
-que discutimos en nuestro artículo sobre atributos de spans. En lugar de forzar
-todo en el nombre de la métrica, tenemos múltiples capas donde puede vivir el
+[modelo de contexto enriquecido](/docs/specs/otel/common/#attribute) que
+discutimos en nuestro artículo sobre atributos de spans. En lugar de forzar todo
+en el nombre de la métrica, tenemos múltiples capas donde puede vivir el
 contexto:
 
 ### Enfoque tradicional (estilo Prometheus): {#traditional-approach-prometheus-style}
@@ -149,7 +149,8 @@ Este enfoque ofrece varios beneficios:
 3. **Flexibilidad del backend**: Los sistemas pueden manejar la conversión de
    unidades automáticamente.
 4. **Convenciones consistentes**: Se alinea con las
-   [convenciones semánticas](/docs/specs/semconv/general/metrics/) de OpenTelemetry.
+   [convenciones semánticas](/docs/specs/semconv/general/metrics/) de
+   OpenTelemetry.
 
 La especificación recomienda usar unidades sin prefijos como `By` (bytes) en
 lugar de `MiBy` (mebibytes), a menos que haya razones técnicas para lo
@@ -169,7 +170,8 @@ aprendimos para los spans, cuando tenga sentido:
    nombres.
 
 Aquí algunos ejemplos siguiendo las
-[convenciones semánticas](/docs/specs/semconv/general/metrics/) de OpenTelemetry:
+[convenciones semánticas](/docs/specs/semconv/general/metrics/) de
+OpenTelemetry:
 
 - `http.server.request.duration` (no `payment_http_requests_ms`)
 - `db.client.operation.duration` (no `user_service_db_queries_seconds`)
@@ -179,12 +181,12 @@ Aquí algunos ejemplos siguiendo las
 ## Ejemplos reales de migración {#real-world-migration-examples}
 
 | Tradicional (Contexto + Unidades en el nombre) | OpenTelemetry (Separación limpia)                                              | Por qué es mejor                              |
-| :------------------------------------------- | :----------------------------------------------------------------------------- | :-------------------------------------------- |
-| `payment_transaction_total`                  | `transaction.count` + `service.name=payment` + unidad `1`                      | Agregable entre servicios                     |
-| `user_service_auth_latency_ms`               | `auth.duration` + `service.name=user` + unidad `ms`                            | Nombre estándar de operación, unidad correcta |
-| `inventory_db_query_seconds`                 | `db.client.operation.duration` + `service.name=inventory` + unidad `s`         | Sigue convenciones semánticas                 |
-| `api_gateway_requests_per_second`            | `http.server.request.rate` + `service.name=api-gateway` + unidad `{request}/s` | Nombre limpio, unidad de tasa adecuada        |
-| `redis_cache_hit_ratio_percent`              | `cache.hit_ratio` + `service.name=redis` + unidad `1`                          | Las razones no tienen unidad                  |
+| :--------------------------------------------- | :----------------------------------------------------------------------------- | :-------------------------------------------- |
+| `payment_transaction_total`                    | `transaction.count` + `service.name=payment` + unidad `1`                      | Agregable entre servicios                     |
+| `user_service_auth_latency_ms`                 | `auth.duration` + `service.name=user` + unidad `ms`                            | Nombre estándar de operación, unidad correcta |
+| `inventory_db_query_seconds`                   | `db.client.operation.duration` + `service.name=inventory` + unidad `s`         | Sigue convenciones semánticas                 |
+| `api_gateway_requests_per_second`              | `http.server.request.rate` + `service.name=api-gateway` + unidad `{request}/s` | Nombre limpio, unidad de tasa adecuada        |
+| `redis_cache_hit_ratio_percent`                | `cache.hit_ratio` + `service.name=redis` + unidad `1`                          | Las razones no tienen unidad                  |
 
 ## Beneficios de nombres limpios {#benefits-of-clean-naming}
 
