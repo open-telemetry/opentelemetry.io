@@ -49,7 +49,7 @@ jobs:
           title: Update community members
           body: |
             This pull request contains automated updates to files by the GitHub Action.
-      
+
       - name: Use CLA approved github bot
         run: |
           git config user.name opentelemetrybot
