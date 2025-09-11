@@ -5,7 +5,7 @@ date: 2025-09-11
 author: >-
   [Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)
 canonical_url: https://blog.olly.garden/how-to-name-your-metrics
-default_lang_commit: b570deff7bac1978dd636ee724d3c00c18727c05
+default_lang_commit: 710cf5e9afcb8a9bc14366a65d242687f917c893
 # prettier-ignore
 cSpell:ignore: apiserver ecommerce jpkrohling kubelet mebibytes OllyGarden opentelemetrys postgres scheduler UCUM
 ---
