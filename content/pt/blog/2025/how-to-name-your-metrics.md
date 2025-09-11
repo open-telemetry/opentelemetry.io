@@ -85,7 +85,7 @@ limpos, uma única consulta funciona para tudo.
 ## O modelo de contexto rico do OpenTelemetry {#opentelemetrys-rich-context-model}
 
 As métricas do OpenTelemetry se beneficiam do mesmo
-[modelo de contexto rico](/docs/concepts/signals/metrics/#metric-attributes) que
+[modelo de contexto rico](/docs/specs/otel/common/#attribute) que
 discutimos em nosso artigo sobre atributos de trechos. Em vez de forçar tudo no
 nome da métrica, temos múltiplas camadas onde o contexto pode viver:
 
@@ -148,7 +148,7 @@ Esta abordagem tem vários benefícios:
 3. **Flexibilidade do _backend_**: Os sistemas podem lidar com conversão de
    unidades automaticamente.
 4. **Convenções consistentes**: Alinhado às
-   [convenções semânticas](/docs/specs/semconv/metrics/) do OpenTelemetry.
+   [convenções semânticas](/docs/specs/semconv/general/metrics/) do OpenTelemetry.
 
 A especificação recomenda usar unidades não prefixadas como `By` (bytes) em vez
 de `MiBy` (mebibytes), a menos que haja razões técnicas para fazer o contrário.
@@ -161,12 +161,12 @@ aprendemos para trechos, quando fizer sentido:
 1. **Foque na operação**: O que está sendo medido?
 2. **Não no operador**: Quem está fazendo a medição?
 3. **Siga as convenções semânticas**: Utilize
-   [padrões estabelecidos](/docs/specs/semconv/metrics/) quando disponíveis.
+   [padrões estabelecidos](/docs/specs/semconv/general/metrics/) quando disponíveis.
 4. **Mantenha unidades como metadados**: Não adicione sufixos de unidades aos
    nomes.
 
 Aqui estão exemplos seguindo as
-[convenções semânticas](/docs/specs/semconv/metrics/) do OpenTelemetry:
+[convenções semânticas](/docs/specs/semconv/general/metrics/) do OpenTelemetry:
 
 - `http.server.request.duration` (não `payment_http_requests_ms`)
 - `db.client.operation.duration` (não `user_service_db_queries_seconds`)
