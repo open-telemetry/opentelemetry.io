@@ -79,9 +79,9 @@ everything.
 ## OpenTelemetry's rich context model
 
 OpenTelemetry metrics benefit from the same
-[rich context model](/docs/specs/otel/common/#attribute) we
-discussed in our span attributes article. Instead of forcing everything into the
-metric name, we have multiple layers where context can live:
+[rich context model](/docs/specs/otel/common/#attribute) we discussed in our
+span attributes article. Instead of forcing everything into the metric name, we
+have multiple layers where context can live:
 
 ### Traditional approach (Prometheus style):
 
