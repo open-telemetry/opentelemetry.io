@@ -64,6 +64,9 @@ components:
     - open-telemetry/sig-security-maintainers
   content/en/docs/specs:
     - open-telemetry/specs-approvers
+  content/en/docs/zero-code/go:
+    - open-telemetry/go-approvers
+    - open-telemetry/go-instrumentation-approvers
   content/en/docs/zero-code/java:
     - open-telemetry/java-approvers
     - open-telemetry/java-instrumentation-approvers
