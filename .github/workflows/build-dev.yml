@@ -28,7 +28,7 @@ jobs:
           jq '.dependencies |= {minisearch: .minisearch} | del(.optionalDependencies)' package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
           cache: npm
