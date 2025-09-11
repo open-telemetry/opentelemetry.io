@@ -46,6 +46,11 @@ languages:
     languageCode: pt-BR
     params:
       description: Site do Projeto OpenTelemetry
+  ro:
+    languageName: Română (Romanian)
+    languageCode: ro-RO
+    params:
+      description: Site-ul proiectului OpenTelemetry
   uk:
     languageName: Українська (Ukrainian)
     languageCode: uk-UA
@@ -406,6 +411,22 @@ module:
       source: content/en/docs
       target: content/docs
       lang: ja
+
+    ## ro
+    - source: content/ro
+      target: content
+      lang: ro
+    # fallback pages
+    - source: content/en/_includes
+      target: content/_includes
+      lang: ro
+    - source: content/en/announcements
+      target: content/announcements
+      lang: ro
+    - excludeFiles: specs/*
+      source: content/en/docs
+      target: content/docs
+      lang: ro
 
     ## uk
     - source: content/uk

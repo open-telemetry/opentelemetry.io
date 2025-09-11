@@ -120,6 +120,7 @@
     "@cspell/dict-fr-fr": "^2.3.2",
     "@cspell/dict-pt-br": "^2.4.2",
     "@cspell/dict-uk-ua": "^4.0.6",
+    "@cspell/dict-ro-ro": "^2.0.6",
     "ajv": "^8.17.1",
     "ajv-errors": "^3.0.0",
     "ajv-formats": "^3.0.1",
