@@ -39,7 +39,7 @@ OpenTelemetry SDK для PHP прагне підтримувати всі офі
 
 #### ext-ffi
 
-Підтримка fiber може бути увімкнена шляхом встановлення змінної середовища `OTEL_PHP_FIBERS_ENABLED` до `true`. Використання fiber з не-`CLI` SAPIs може вимагати попереднього завантаження зв'язків. Один зі способів досягти цього — встановити [`ffi.preload`](https://www.php.net/manual/en/ffi.configuration.php#ini.ffi.preload) до `src/Context/fiber/zend_observer_fiber.h` та встановити [`opcache.preload`](https://www.php.net/manual/en/opcache.preloading.php) до `vendor/autoload.php`.
+Підтримка fiber може бути увімкнена шляхом встановлення змінної середовища `OTEL_PHP_FIBERS_ENABLED` до `true`. Використання fiber з не-`CLI` SAPIs може вимагати попереднього завантаження звʼязків. Один зі способів досягти цього — встановити [`ffi.preload`](https://www.php.net/manual/en/ffi.configuration.php#ini.ffi.preload) до `src/Context/fiber/zend_observer_fiber.h` та встановити [`opcache.preload`](https://www.php.net/manual/en/opcache.preloading.php) до `vendor/autoload.php`.
 
 #### ext-protobuf
 

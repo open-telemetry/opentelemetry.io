@@ -83,7 +83,7 @@ HttpTextMapCarrier<opentelemetry::ext::http::client::Headers> carrier;
 auto propagator =
     opentelemetry::context::propagation::GlobalTextMapPropagator::GetGlobalPropagator();
 
-// ін'єкція контексту в заголовки
+// інʼєкція контексту в заголовки
 auto current_ctx = opentelemetry::context::RuntimeContext::GetCurrent();
 propagator->Inject(carrier, current_ctx);
 

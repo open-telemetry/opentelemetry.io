@@ -104,7 +104,7 @@ kubectl kustomize "github.com/kubernetes-sigs/gateway-api/config/crd/experimenta
 # Змінні (налаштуйте домен/імена за потреби)
 export ROOT_CA_SUBJ="/CN=MyDemoRootCA"
 # Використовуйте відповідний CN/SAN для сервера/шлюзу. Якщо клієнти підключаються через IP, включіть його.
-# Для DNS використовуйте ім'я хоста, яке клієнти будуть використовувати (наприклад, otel.example.com)
+# Для DNS використовуйте імʼя хоста, яке клієнти будуть використовувати (наприклад, otel.example.com)
 export SERVER_HOSTNAME="otel-gateway.example.com"
 export SERVER_SUBJ="/CN=${SERVER_HOSTNAME}"
 export CLIENT_SUBJ="/CN=external-otel-client"
@@ -364,14 +364,14 @@ processors:
 
 exporters:
   otlp/grpc:
-    # ВАЖЛИВО: Вкажіть зовнішню IP-адресу/ім'я хоста та порт шлюзу
+    # ВАЖЛИВО: Вкажіть зовнішню IP-адресу/імʼя хоста та порт шлюзу
     # Замініть <GATEWAY_EXTERNAL_IP_OR_HOSTNAME> на фактичну адресу
-    # Він повинен відповідати імені хоста/SAN у сертифікаті сервера, якщо використовується ім'я хоста
-    # Використовуйте ім'я хоста 'otel-gateway.example.com', якщо у вас налаштовано DNS на шлюзі.
+    # Він повинен відповідати імені хоста/SAN у сертифікаті сервера, якщо використовується імʼя хоста
+    # Використовуйте імʼя хоста 'otel-gateway.example.com', якщо у вас налаштовано DNS на шлюзі.
     endpoint: <GATEWAY_EXTERNAL_IP_OR_HOSTNAME>:4317
 
     tls:
-      # Ми ОБОВ'ЯЗКОВО повинні ввімкнути конфігурацію TLS для клієнта для mTLS
+      # Ми ОБОВʼЯЗКОВО повинні ввімкнути конфігурацію TLS для клієнта для mTLS
       insecure: false # Переконайтеся, що сертифікат сервера перевірено центром сертифікації
       # Шлях до файлу сертифіката ЦС для перевірки сервера
       ca_file: /etc/cert/rootCA.crt
@@ -379,9 +379,9 @@ exporters:
       cert_file: /etc/cert/client.crt
       # Шлях до файлу приватного ключа клієнта
       key_file: /etc/cert/client.key
-      # Додатково, але рекомендовано: Вкажіть ім'я сервера для перевірки
+      # Додатково, але рекомендовано: Вкажіть імʼя сервера для перевірки
       # Повинно відповідати CN або SAN у сертифікаті сервера (server.crt)
-      # Це обов'язково, якщо DNS не налаштовано на шлюзі та endpoint не відповідає імені хосту шлюзу
+      # Це обовʼязково, якщо DNS не налаштовано на шлюзі та endpoint не відповідає імені хосту шлюзу
       server_name_override: otel-gateway.example.com
 service:
   pipelines:

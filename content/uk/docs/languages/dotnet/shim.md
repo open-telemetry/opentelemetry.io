@@ -55,7 +55,7 @@ using var tracerProvider = Sdk.CreateTracerProviderBuilder()
 
 ### ASP.NET Core
 
-Щоб почати [трасування](/docs/concepts/signals/traces/) у додатку на основі ASP.NET Core, використовуйте розширення OpenTelemetry для налаштування ASP.NET Core.
+Щоб почати [трасування](/docs/concepts/signals/traces/) у застосунку на основі ASP.NET Core, використовуйте розширення OpenTelemetry для налаштування ASP.NET Core.
 
 Спочатку переконайтеся, що у вас є правильні пакунки:
 

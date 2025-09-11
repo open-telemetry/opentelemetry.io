@@ -158,9 +158,9 @@ TracerProvider є центральним компонентом SDK OpenTelemetr
 
 ## OpenTelemetry .NET та .NET Activity API {#opentelemetry-net-and-net-activity-api}
 
-В OpenTelemetry .NET терміни `ActivitySource` і `Activity` використовуються замість `Tracer` і `Span` з специфікації OpenTelemetry. Це пов'язано з тим, що трасування в OpenTelemetry .NET реалізовано на основі вбудованої системи діагностики .NET.
+В OpenTelemetry .NET терміни `ActivitySource` і `Activity` використовуються замість `Tracer` і `Span` з специфікації OpenTelemetry. Це повʼязано з тим, що трасування в OpenTelemetry .NET реалізовано на основі вбудованої системи діагностики .NET.
 
-Ви можете інструментувати свій додаток, додаючи залежність від пакунка `System.Diagnostics.DiagnosticSource`, який надає класи `Activity` і `ActivitySource`, що представляють концепції OpenTelemetry [Span](/docs/specs/otel/trace/api/#span) і [Tracer](/docs/specs/otel/trace/api/#tracer) відповідно.
+Ви можете інструментувати свій застосунок, додаючи залежність від пакунка `System.Diagnostics.DiagnosticSource`, який надає класи `Activity` і `ActivitySource`, що представляють концепції OpenTelemetry [Span](/docs/specs/otel/trace/api/#span) і [Tracer](/docs/specs/otel/trace/api/#tracer) відповідно.
 
 ## Дізнатись більше {#learn-more}
 

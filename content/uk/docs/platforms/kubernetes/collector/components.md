@@ -14,7 +14,7 @@ cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics
 - [Приймач kubeletstats](#kubeletstats-receiver): отримує метрики вузлів, podʼів та контейнерів з API сервера у kubelet.
 - [Приймач filelog](#filelog-receiver): збирає логи Kubernetes та журнали застосунків, записані в stdout/stderr.
 - [Приймач кластера Kubernetes](#kubernetes-cluster-receiver): збирає метрики на рівні кластера та події сутностей.
-- [Приймач об'єктів Kubernetes](#kubernetes-objects-receiver): збирає обʼєкти, такі як події, з API сервера Kubernetes.
+- [Приймач обʼєктів Kubernetes](#kubernetes-objects-receiver): збирає обʼєкти, такі як події, з API сервера Kubernetes.
 - [Приймач Prometheus](#prometheus-receiver): отримує метрики у форматі [Prometheus](https://prometheus.io/).
 - [Приймач метрик хосту](#host-metrics-receiver): збирає метрики хосту з вузлів Kubernetes.
 
@@ -402,7 +402,7 @@ subjects:
 
 Для обʼєктів, налаштованих для отримання, приймач буде використовувати API Kubernetes для періодичного отримання переліку всіх обʼєктів у кластері. Кожен обʼєкт буде перетворено на власний журнал. Для обʼєктів, налаштованих для спостереження, приймач створює потік з API Kubernetes, який отримує оновлення, коли обʼєкти змінюються.
 
-Щоб побачити, які об'єкти доступні для збору у вашому кластері, запустіть `kubectl api-resources`:
+Щоб побачити, які обʼєкти доступні для збору у вашому кластері, запустіть `kubectl api-resources`:
 
 <!-- cspell:disable -->
 

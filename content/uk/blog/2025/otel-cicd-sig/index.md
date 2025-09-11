@@ -124,7 +124,7 @@ cSpell:ignore: cicd frittoli horovits jemmic keptn liatrio opentelemetrys skysca
 - Джованні Ліва - Dynatrace, Keptn
 - Іван Кальво - Elastic, Jenkins
 - Армін Рюх - Dynatrace
-- Майкл Саф'ян - Google
+- Майкл Сафʼян - Google
 - Робб Кідд - Honeycomb
 - Пабло Часін - Grafana Labs
 - Александра Конрад - Elastic

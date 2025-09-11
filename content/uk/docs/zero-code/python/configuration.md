@@ -68,7 +68,7 @@ export OTEL_PYTHON_REQUESTS_EXCLUDED_URLS="healthcheck"
 
 ### Імена атрибутів запиту {#request-attribute-names}
 
-Розділений комами список імен, які будуть витягнуті з об'єкта запиту та встановлені як атрибути на відрізках.
+Розділений комами список імен, які будуть витягнуті з обʼєкта запиту та встановлені як атрибути на відрізках.
 
 - `OTEL_PYTHON_DJANGO_TRACED_REQUEST_ATTRS`
 - `OTEL_PYTHON_FALCON_TRACED_REQUEST_ATTRS`

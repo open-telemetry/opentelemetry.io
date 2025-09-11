@@ -8,7 +8,7 @@ default_lang_commit: 873e42833f8e17860becdff26de4717194eb11ca
 cSpell:ignore: BrandName CompanyName Contoso FoodRecallNotice Listeria monocytogenes ProductDescription ProductType RecallReasonDescription
 ---
 
-У посібнику [Початок роботи з OpenTelemetry .NET Logs — Консоль](/docs/languages/dotnet/logs/getting-started-console/) ми дізналися, як реєструвати примітивні типи даних. У цьому посібнику ви дізнаєтеся, як реєструвати комплексі об'єкти.
+У посібнику [Початок роботи з OpenTelemetry .NET Logs — Консоль](/docs/languages/dotnet/logs/getting-started-console/) ми дізналися, як реєструвати примітивні типи даних. У цьому посібнику ви дізнаєтеся, як реєструвати комплексі обʼєкти.
 
 ## Логування комплексних обʼєктів у .NET {#complex-object-logging-in-net}
 
@@ -62,7 +62,7 @@ internal static partial class LoggerExtensions
 Атрибут `[LogProperties(OmitReferenceName = true)]` вказує генератору джерела:
 
 - Включити всі властивості `FoodRecallNotice` як окремі атрибути журналу
-- Опустити ім'я посилання (імʼя параметра) з ключів атрибутів
+- Опустити імʼя посилання (імʼя параметра) з ключів атрибутів
 
 ### 4. Логування комплексного обʼєкта {#4-log-the-complex-object}
 

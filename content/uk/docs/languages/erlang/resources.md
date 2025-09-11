@@ -69,7 +69,7 @@ config :opentelemetry, resource: %{deployment: %{environment: "development" }}
 
 {{% /tab %}} {{< /tabpane >}}
 
-Атрибути ресурсів у змінній середовища `resource` застосунку OTP розгортаються та об'єднуються з `.` таким чином, що `#{deployment => #{environment => <<"development">> }` є тим самим, що і `#{'deployment.environment' => <<"development">>}`.
+Атрибути ресурсів у змінній середовища `resource` застосунку OTP розгортаються та обʼєднуються з `.` таким чином, що `#{deployment => #{environment => <<"development">> }` є тим самим, що і `#{'deployment.environment' => <<"development">>}`.
 
 ## Користувацькі детектори ресурсів {#custom-resource-detectors}
 

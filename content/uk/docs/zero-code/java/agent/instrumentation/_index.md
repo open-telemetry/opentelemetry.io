@@ -40,7 +40,7 @@ cSpell:ignore: enduser hset serverlessapis
 
 Агент очищує всі запити/заяви до бази даних перед встановленням семантичного атрибута `db.statement`. Усі значення (рядки, числа) у рядку запиту замінюються знаком питання (`?`).
 
-Примітка: Параметри привʼязки JDBC не захоплюються у `db.statement`. Дивіться [відповідне питання](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7413) якщо ви хочете захопити параметри прив'язки.
+Примітка: Параметри привʼязки JDBC не захоплюються у `db.statement`. Дивіться [відповідне питання](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7413) якщо ви хочете захопити параметри привʼязки.
 
 Приклади:
 

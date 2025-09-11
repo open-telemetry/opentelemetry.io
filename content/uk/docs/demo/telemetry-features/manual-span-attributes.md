@@ -11,7 +11,7 @@ default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 | Назва                       | Тип    | Опис                                                       |
 | --------------------------- | ------ | ---------------------------------------------------------- |
 | `app.ads.category`          | string | Категорія для поверненої реклами                           |
-| `app.ads.contextKeys`       | string | Ключі контексту, використані для пошуку пов'язаної реклами |
+| `app.ads.contextKeys`       | string | Ключі контексту, використані для пошуку повʼязаної реклами |
 | `app.ads.contextKeys.count` | number | Кількість унікальних ключів контексту                      |
 | `app.ads.count`             | number | Кількість реклами, поверненої користувачу                  |
 | `app.ads.ad_request_type`   | string | Або `targeted`, або `not_targeted`                         |

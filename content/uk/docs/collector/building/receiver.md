@@ -1133,7 +1133,7 @@ func generateTraces(numberOfTraces int) ptrace.Traces{
 Оновіть функцію `generateTrace()` наступними змінами:
 
 - додано змінну з іменем `resourceSpan` для представлення діапазону ресурсів `ResourceSpan
-- додайте змінну з іменем `atmResource` для представлення `pcommon.Resource`, пов'язаного з `ResourceSpan`.
+- додайте змінну з іменем `atmResource` для представлення `pcommon.Resource`, повʼязаного з `ResourceSpan`.
 - Для ініціалізації обох змінних використовуйте методи, згадані вище.
 
 Ось як має виглядати функція після внесення цих змін:

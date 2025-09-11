@@ -65,7 +65,7 @@ const sdk = new opentelemetry.NodeSDK({
   metricReader: new PeriodicExportingMetricReader({
     exporter: new OTLPMetricExporter({
       url: '<your-otlp-endpoint>/v1/metrics', // url необовʼязковий і може бути пропущений - стандартно http://localhost:4318/v1/metrics
-      headers: {}, // необовʼязковий об'єкт, що містить користувацькі заголовки, які будуть відправлені з кожним запитом
+      headers: {}, // необовʼязковий обʼєкт, що містить користувацькі заголовки, які будуть відправлені з кожним запитом
     }),
   }),
   instrumentations: [getNodeAutoInstrumentations()],
@@ -99,7 +99,7 @@ const sdk = new opentelemetry.NodeSDK({
   metricReader: new PeriodicExportingMetricReader({
     exporter: new OTLPMetricExporter({
       url: '<your-otlp-endpoint>/v1/metrics', // url необовʼязковий і може бути пропущений - стандартно http://localhost:4318/v1/metrics
-      headers: {}, // необовʼязковий об'єкт, що містить користувацькі заголовки, які будуть відправлені з кожним запитом
+      headers: {}, // необовʼязковий обʼєкт, що містить користувацькі заголовки, які будуть відправлені з кожним запитом
       concurrencyLimit: 1, // необовʼязкове обмеження на кількість очікуючих запитів
     }),
   }),

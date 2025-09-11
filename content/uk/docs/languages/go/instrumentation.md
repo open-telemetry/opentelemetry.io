@@ -651,7 +651,7 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 
 Спостережувані датчики слід використовувати для вимірювання неадитивних значень.
 
-Наприклад, ось як ви повідомляєте використання пам'яті об'єктів купи, що використовуються в додатку:
+Наприклад, ось як ви повідомляєте використання памʼяті обʼєктів купи, що використовуються в застосунку:
 
 ```go
 import (
@@ -665,7 +665,7 @@ func init() {
 	if _, err := meter.Int64ObservableGauge(
 		"memory.heap",
 		metric.WithDescription(
-			"Використання пам'яті обʼєктів купи.",
+			"Використання памʼяті обʼєктів купи.",
 		),
 		metric.WithUnit("By"),
 		metric.WithInt64Callback(func(_ context.Context, o metric.Int64Observer) error {

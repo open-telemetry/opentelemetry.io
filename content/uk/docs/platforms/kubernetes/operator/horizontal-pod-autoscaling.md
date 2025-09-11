@@ -6,7 +6,7 @@ default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 cSpell:ignore: autoscaler statefulset мебібайт мебібайти міліядер
 ---
 
-Колектори, що управляються OpenTelemetry Operator, мають вбудовану підтримку [горизонтального автоматичного масштабування подів (HPA)](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/). HPA збільшує або зменшує кількість реплік (копій) ваших подів Kubernetes на основі набору метрик. Зазвичай цими метриками є споживання CPU та/або пам'яті.
+Колектори, що управляються OpenTelemetry Operator, мають вбудовану підтримку [горизонтального автоматичного масштабування подів (HPA)](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/). HPA збільшує або зменшує кількість реплік (копій) ваших подів Kubernetes на основі набору метрик. Зазвичай цими метриками є споживання CPU та/або памʼяті.
 
 Якщо OpenTelemetry Operator керує функціональністю HPA для Колектора, вам не потрібно створювати окремий ресурс Kubernetes `HorizontalPodAutoscaler` для автоматичного масштабування вашого Колектора.
 

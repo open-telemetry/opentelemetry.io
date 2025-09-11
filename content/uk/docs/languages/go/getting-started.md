@@ -118,7 +118,7 @@ go get "go.opentelemetry.io/otel" \
 
 ### Ініціалізація SDK OpenTelemetry {#initialize-the-opentelemetry-sdk}
 
-Спочатку ми ініціалізуємо SDK OpenTelemetry. Це _обов'язково_ для будь-якого застосунку, який експортує телеметрію.
+Спочатку ми ініціалізуємо SDK OpenTelemetry. Це _обовʼязково_ для будь-якого застосунку, який експортує телеметрію.
 
 Створіть `otel.go` з кодом для завантаження SDK OpenTelemetry:
 
@@ -144,7 +144,7 @@ import (
 )
 
 // setupOTelSDK завантажує конвеєр OpenTelemetry.
-// Якщо він не повертає помилку, обов'язково викличте shutdown для правильного очищення.
+// Якщо він не повертає помилку, обовʼязково викличте shutdown для правильного очищення.
 func setupOTelSDK(ctx context.Context) (func(context.Context) error, error) {
 	var shutdownFuncs []func(context.Context) error
 	var err error
