@@ -69,7 +69,7 @@ components:
     - open-telemetry/java-instrumentation-approvers
   content/en/docs/zero-code/js:
     - open-telemetry/javascript-approvers
-  content/en/docs/zero-code/net:
+  content/en/docs/zero-code/dotnet:
     - open-telemetry/dotnet-approvers
     - open-telemetry/dotnet-instrumentation-approvers
   content/en/docs/zero-code/obi:
