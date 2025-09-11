@@ -152,6 +152,12 @@ while(<>) {
     $frontMatterFromFile = '';
     $title = '';
     $lineNum = 1;
+    # Skip single-line markdownlint directives at top of file. Added to handle
+    # https://github.com/open-telemetry/opentelemetry.io/issues/7750
+    if (/^<!--\s*markdownlint.*-->\s*$/) {
+      $_ = <>;
+    }
+    # Extract Hugo front matter encoded as a comment:
     if (/^(<!)?--- (# )?Hugo/) {
         while(<>) {
           $lineNum++;
