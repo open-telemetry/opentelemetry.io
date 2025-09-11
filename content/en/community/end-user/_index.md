@@ -67,11 +67,10 @@ Example surveys:
 <!--➡️ TODO: Turn links into embeds-->
 
 Currently, we are running the OTel Collector survey, and we want to hear from you:
-
 [Respond to survey](https://forms.gle/Q2Ndq7HyWheVWAia8)
 <!-- ➡️ TODO: Turn link into a button -->
 
-<!--➡️ TODO: Add an info link to a page about surveys: [Learn more about how we run surveys](feedback-survey/) once we have the page ready-->
+[Learn more about how we run surveys](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys)
 
 ## Join a podcasts
 
