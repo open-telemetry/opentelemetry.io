@@ -77,6 +77,8 @@ components:
     - open-telemetry/dotnet-instrumentation-approvers
   content/en/docs/zero-code/obi:
     - open-telemetry/ebpf-instrumentation-approvers
+  content/en/docs/zero-code/php:
+    - open-telemetry/php-approvers
   content/en/docs/zero-code/python:
     - open-telemetry/python-approvers
   content/en/ecosystem/demo:
