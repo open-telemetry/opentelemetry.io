@@ -5,7 +5,7 @@ date: 2025-09-11
 author: >-
   [Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)
 canonical_url: https://blog.olly.garden/how-to-name-your-metrics
-default_lang_commit: b570deff7bac1978dd636ee724d3c00c18727c05
+default_lang_commit: 710cf5e9afcb8a9bc14366a65d242687f917c893
 # prettier-ignore
 cSpell:ignore: apiserver descubribilidad jpkrohling kubelet mantenlas mebibytes OllyGarden scheduler UCUM
 ---
@@ -85,7 +85,7 @@ limpios, una sola consulta funciona para todo.
 ## El modelo de contexto enriquecido de OpenTelemetry {#the-enriched-context-model-of-opentelemetry}
 
 Las métricas en OpenTelemetry se benefician del mismo
-[modelo de contexto enriquecido](/docs/concepts/signals/metrics/#metric-attributes)
+[modelo de contexto enriquecido](/docs/specs/otel/common/#attribute)
 que discutimos en nuestro artículo sobre atributos de spans. En lugar de forzar
 todo en el nombre de la métrica, tenemos múltiples capas donde puede vivir el
 contexto:
@@ -149,7 +149,7 @@ Este enfoque ofrece varios beneficios:
 3. **Flexibilidad del backend**: Los sistemas pueden manejar la conversión de
    unidades automáticamente.
 4. **Convenciones consistentes**: Se alinea con las
-   [convenciones semánticas](/docs/specs/semconv/metrics/) de OpenTelemetry.
+   [convenciones semánticas](/docs/specs/semconv/general/metrics/) de OpenTelemetry.
 
 La especificación recomienda usar unidades sin prefijos como `By` (bytes) en
 lugar de `MiBy` (mebibytes), a menos que haya razones técnicas para lo
@@ -163,13 +163,13 @@ aprendimos para los spans, cuando tenga sentido:
 1. **Concéntrate en la operación**: ¿Qué se está midiendo?
 2. **No en el operador**: ¿Quién está midiendo?
 3. **Sigue las convenciones semánticas**: Usa
-   [patrones establecidos](/docs/specs/semconv/metrics/) cuando estén
+   [patrones establecidos](/docs/specs/semconv/general/metrics/) cuando estén
    disponibles.
 4. **Mantén las unidades como metadatos**: No añadas sufijos de unidades en los
    nombres.
 
 Aquí algunos ejemplos siguiendo las
-[convenciones semánticas](/docs/specs/semconv/metrics/) de OpenTelemetry:
+[convenciones semánticas](/docs/specs/semconv/general/metrics/) de OpenTelemetry:
 
 - `http.server.request.duration` (no `payment_http_requests_ms`)
 - `db.client.operation.duration` (no `user_service_db_queries_seconds`)
