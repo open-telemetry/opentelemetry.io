@@ -2,7 +2,7 @@
 title: 通过示例入门
 description: 5 分钟内为你的应用接入遥测数据！
 default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829
-weight: 10
+weight: 9
 ---
 
 <?code-excerpt path-base="examples/java/getting-started"?>
