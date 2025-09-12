@@ -45,14 +45,6 @@ vasto, que abrange inúmeros componentes, diversas linguagens de programação e
 funcionalidades com vários níveis de complexidade. Considere o que mais ressoa
 com você.
 
-Um ótimo ponto de partida é juntar-se a um Grupo de Interesse Especial (SIG)
-dentro do OpenTelemetry. Esses grupos focam em áreas específicas do projeto. Ao
-se imergir em um SIG, você terá acesso às suas prioridades atuais e identificará
-tarefas relevantes. Não sinta que precisa falar nessas reuniões imediatamente,
-não há pressão! Você pode se apresentar se quiser, mas, em geral, pode
-simplesmente entrar, ouvir e determinar se a área lhe interessa. Se interessar,
-você pode começar a participar das discussões ou trazer seus próprios tópicos.
-
 Esta página lista todos os SIGs existentes com seus respectivos canais no Slack
 e horários de reunião:
 [SIGs](https://github.com/open-telemetry/community?tab=readme-ov-file#special-interest-groups).
@@ -78,6 +70,14 @@ partida, pois beneficia diretamente um público amplo. Você pode encontrar mais
 detalhes sobre como contribuir para a documentação aqui:
 https://opentelemetry.io/docs/contributing, o que inclui os esforços de
 [localização](https://opentelemetry.io/docs/contributing/localization/).
+
+Outro ótimo ponto de partida é juntar-se a um Grupo de Interesse Especial (SIG)
+dentro do OpenTelemetry. Esses grupos focam em áreas específicas do projeto. Ao
+se imergir em um SIG, você terá acesso às suas prioridades atuais e identificará
+tarefas relevantes. Não sinta que precisa falar nessas reuniões imediatamente,
+não há pressão! Você pode se apresentar se quiser, mas, em geral, pode
+simplesmente entrar, ouvir e determinar se a área lhe interessa. Se interessar,
+você pode começar a participar das discussões ou trazer seus próprios tópicos.
 
 ## Contribuições substanciais
 
