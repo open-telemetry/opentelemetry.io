@@ -47,3 +47,9 @@ rules:
   - expected: フィーチャーフラグ
     patterns:
       - フューチャーフラグ
+  - expected: 接頭辞
+    patterns:
+      - プレフィックス
+  - expected: 接尾辞
+    patterns:
+      - サフィックス

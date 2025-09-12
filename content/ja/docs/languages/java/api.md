@@ -1395,7 +1395,7 @@ public class NoopUsage {
 
 {{% alert %}}
 
-`opentelemetry-semconv`と`opentelemetry-semconv-incubating`の両方に`-alpha`サフィックスが含まれ、破壊的変更の対象となりますが、意図は`opentelemetry-semconv`を安定化し、`opentelemetry-semconv-incubating`には永続的に`-alpha`サフィックスを残すことです。
+`opentelemetry-semconv`と`opentelemetry-semconv-incubating`の両方に`-alpha`接尾辞が含まれ、破壊的変更の対象となりますが、意図は`opentelemetry-semconv`を安定化し、`opentelemetry-semconv-incubating`には永続的に`-alpha`接尾辞を残すことです。
 ライブラリはテスト用に`opentelemetry-semconv-incubating`を使用できますが、依存関係として含めるべきではありません。
 属性はバージョンから別のバージョンに来たり行ったりする可能性があるため、依存関係として含めると、推移的バージョンの競合が発生したときにエンドユーザーがランタイムエラーにさらされる可能性があります。
 
