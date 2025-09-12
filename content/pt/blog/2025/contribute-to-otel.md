@@ -1,6 +1,6 @@
 ---
-title: Como Começar a Contribuir para o OpenTelemetry
-linkTitle: Como Começar a Contribuir para o OpenTelemetry
+title: Como Contribuir para o OpenTelemetry
+linkTitle: Como Contribuir para o OpenTelemetry
 date: 2025-09-12
 author: >-
   [Marylia Gutierrez](https://github.com/maryliag) (Grafana Labs)
