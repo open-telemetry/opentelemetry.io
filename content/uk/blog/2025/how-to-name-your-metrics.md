@@ -127,7 +127,7 @@ OpenTelemetry трактує одиниці виміру як метадані, 
 3. **Дотримуйтесь семантичних домовленостей**: використовуйте [встановлені патерни](/docs/specs/semconv/general/metrics/), коли вони доступні.
 4. **Тримайте одиниці як метадані**: не додавайте суфікси з одиницями.
 
-Ось приклади згідно з  [семантичними домовленостями](/docs/specs/semconv/general/metrics/) OpenTelemetry:
+Ось приклади згідно з [семантичними домовленостями](/docs/specs/semconv/general/metrics/) OpenTelemetry:
 
 - `http.server.request.duration` (не `payment_http_requests_ms`)
 - `db.client.operation.duration` (не `user_service_db_queries_seconds`)
@@ -136,13 +136,13 @@ OpenTelemetry трактує одиниці виміру як метадані, 
 
 ## Приклади міграції в реальному світі {#real-world-migration-examples}
 
-| Традиційно (контекст + одиниці в імені) | OpenTelemetry (чисте розділення)                                             | Чому це краще                               |
-| :------------------------------------ | :--------------------------------------------------------------------------- | :-------------------------------------------- |
-| `payment_transaction_total`           | `transaction.count` + `service.name=payment` + unit `1`                      | Агрегується між сервісами                    |
-| `user_service_auth_latency_ms`        | `auth.duration` + `service.name=user` + unit `ms`                            | Стандартна назва операції, правильно вказана одиниця |
-| `inventory_db_query_seconds`          | `db.client.operation.duration` + `service.name=inventory` + unit `s`         | Відповідає семантичним домовленостям                  |
-| `api_gateway_requests_per_second`     | `http.server.request.rate` + `service.name=api-gateway` + unit `{request}/s` | Чиста назва, правильна одиниця для rate            |
-| `redis_cache_hit_ratio_percent`       | `cache.hit_ratio` + `service.name=redis` + unit `1`                          | Співвідношення без одиниць виміру                         |
+| Традиційно (контекст + одиниці в імені) | OpenTelemetry (чисте розділення)                                             | Чому це краще                                        |
+| :-------------------------------------- | :--------------------------------------------------------------------------- | :--------------------------------------------------- |
+| `payment_transaction_total`             | `transaction.count` + `service.name=payment` + unit `1`                      | Агрегується між сервісами                            |
+| `user_service_auth_latency_ms`          | `auth.duration` + `service.name=user` + unit `ms`                            | Стандартна назва операції, правильно вказана одиниця |
+| `inventory_db_query_seconds`            | `db.client.operation.duration` + `service.name=inventory` + unit `s`         | Відповідає семантичним домовленостям                 |
+| `api_gateway_requests_per_second`       | `http.server.request.rate` + `service.name=api-gateway` + unit `{request}/s` | Чиста назва, правильна одиниця для rate              |
+| `redis_cache_hit_ratio_percent`         | `cache.hit_ratio` + `service.name=redis` + unit `1`                          | Співвідношення без одиниць виміру                    |
 
 ## Переваги чистого іменування {#benefits-of-clean-naming}
 
