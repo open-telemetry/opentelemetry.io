@@ -179,7 +179,7 @@ view execution. See
 **[6]** Database client metrics are available for those who opt-in to
 [semantic convention stability](/docs/specs/semconv/non-normative/db-migration/).
 
-[Elasticsearch Client Spans]: docs/specs/semconv/database/elasticsearch/
+[Elasticsearch Client Spans]: /docs/specs/semconv/database/elasticsearch/
 [HTTP Server Spans]: /docs/specs/semconv/http/http-spans/#http-server
 [HTTP Client Spans]: /docs/specs/semconv/http/http-spans/#http-client
 [HTTP Server Metrics]: /docs/specs/semconv/http/http-metrics/#http-server
