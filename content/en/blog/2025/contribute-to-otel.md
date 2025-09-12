@@ -4,6 +4,7 @@ linkTitle: How to Contribute to OpenTelemetry
 date: 2025-09-12
 author: >-
   [Marylia Gutierrez](https://github.com/maryliag) (Grafana Labs)
+cSpell:ignore: marylia
 ---
 
 You might have heard about OpenTelemetry, found it interesting and want to get
@@ -100,7 +101,7 @@ During your contribution journey, you might identify gaps or areas for
 improvement in the existing contributing documentation. This presents a valuable
 opportunity to contribute by creating a pull request that adds the missing
 information. By doing so, you'll not only contribute to the project but also
-significantly assist future contributors who may have similar questions. 
+significantly assist future contributors who may have similar questions.
 Documentation contributions are just as important as code contributions.
 
 ## Final thoughts
@@ -111,7 +112,7 @@ willing to provide guidance.
 
 If you have ideas on how to improve the overall experience for OpenTelemetry
 contributors, we encourage you to share them on the Slack channel
-#otel-contributor-experience. Your suggestions are highly valued and can help
+`#otel-contributor-experience`. Your suggestions are highly valued and can help
 shape a more welcoming and efficient environment for everyone involved!
 
 Happy coding!
