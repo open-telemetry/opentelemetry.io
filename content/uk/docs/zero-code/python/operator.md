@@ -5,7 +5,7 @@ aliases: [/docs/languages/python/automatic/operator]
 weight: 30
 default_lang_commit: beee9035dba8128dc3b970aa73e8b2a8d17d16dc
 drifted_from_default: true
-cSpell:ignore: gevent grpcio monkeypatch myapp psutil PYTHONPATH django
+cSpell:ignore: django gevent grpcio monkeypatch myapp psutil PYTHONPATH
 ---
 
 Якщо ви запускаєте свій Python сервіс у Kubernetes, ви можете скористатися [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) для впровадження автоматичної інструментації без необхідності змінювати кожен з ваших сервісів

@@ -5,9 +5,9 @@ date: 2025-09-11
 author: >-
   [Juraci Paixão Kröhling](https://github.com/jpkrohling) (OllyGarden)
 canonical_url: https://blog.olly.garden/how-to-name-your-metrics
-# prettier-ignore
-cSpell:ignore: apiserver ecommerce jpkrohling kubelet OllyGarden postgres scheduler UCUM антипатерн opentelemetrys алерт
 default_lang_commit: beee9035dba8128dc3b970aa73e8b2a8d17d16dc
+# prettier-ignore
+cSpell:ignore: apiserver ecommerce jpkrohling kubelet OllyGarden opentelemetrys postgres scheduler UCUM алерт антипатерн
 ---
 
 Метрики — кількісна основа спостережуваності, числа, що показують, як працюють наші системи. Це третя публікація в нашій серії про іменування в OpenTelemetry; раніше ми вже розглядали [як називати відрізки](/blog/2025/how-to-name-your-spans/) та [як збагачувати їх корисними атрибутами](/blog/2025/how-to-name-your-span-attributes/). Тепер розглянемо мистецтво називати вимірювання, які мають значення.
