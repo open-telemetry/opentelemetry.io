@@ -1,0 +1,18 @@
+---
+title: Java
+description: >-
+  <img width="35" class="img-initial" src="/img/logos/32x32/Java_SDK.svg"
+  alt="Java"> Специфічна для мови реалізація OpenTelemetry на Java.
+aliases: [/java, /java/metrics, /java/tracing]
+cascade:
+  vers:
+    instrumentation: 2.19.0
+    otel: 1.54.0
+    contrib: 1.49.0
+    semconv: 1.37.0
+weight: 18
+default_lang_commit: beee9035dba8128dc3b970aa73e8b2a8d17d16dc
+drifted_from_default: true
+---
+
+{{% docs/languages/index-intro java /%}}
