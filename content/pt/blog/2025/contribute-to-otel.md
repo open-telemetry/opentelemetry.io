@@ -4,7 +4,7 @@ linkTitle: Como Contribuir para o OpenTelemetry
 date: 2025-09-12
 author: >-
   [Marylia Gutierrez](https://github.com/maryliag) (Grafana Labs)
-
+cSpell:ignore: marylia
 # default_lang_commit:  TODO once en PR gets merged
 ---
 
@@ -46,11 +46,9 @@ funcionalidades com vários níveis de complexidade. Considere o que mais ressoa
 com você.
 
 Esta página lista todos os SIGs existentes com seus respectivos canais no Slack
-e horários de reunião:
-[SIGs](https://github.com/open-telemetry/community?tab=readme-ov-file#special-interest-groups).
-Você também pode se inscrever no calendário do OpenTelemetry e verificar as
-reuniões de seu interesse:
-[Calendário](https://github.com/open-telemetry/community?tab=readme-ov-file#calendar).
+e horários de reunião: [SIGs][sigs]. Você também pode se inscrever no calendário
+do OpenTelemetry e verificar as reuniões de seu interesse:
+[Calendário][calendar].
 
 Embora possa ser tentador escolher repositórios muito ativos, já que você
 provavelmente receberá feedback em seu PR e respostas mais rapidamente, não
@@ -58,8 +56,7 @@ ignore os menos ativos, pois eles se beneficiariam muito da ajuda de novas
 pessoas. Se seu objetivo de longo prazo é alcançar um status como "Aprovador" ou
 "Mantenedor", contribuir para repositórios menos ativos pode acelerar essa
 progressão devido ao maior impacto que suas contribuições terão. Saiba mais
-sobre o status de membro aqui:
-[_Membership_](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
+sobre o status de membro aqui: [_Membership_][membership].
 
 Para os recém-chegados, procurar _issues_ com o label "good first issue" (boa
 primeira _issue_) nestes repositórios é uma excelente estratégia. Essas _issues_
@@ -67,9 +64,8 @@ geralmente são projetadas para serem acessíveis a novos contribuidores,
 oferecendo um ponto de entrada mais acessível para o projeto. Se você não tem
 certeza por onde começar a contribuir, a documentação é um excelente ponto de
 partida, pois beneficia diretamente um público amplo. Você pode encontrar mais
-detalhes sobre como contribuir para a documentação aqui:
-https://opentelemetry.io/docs/contributing, o que inclui os esforços de
-[localização](https://opentelemetry.io/docs/contributing/localization/).
+detalhes sobre como contribuir para a documentação [aqui][contrib], o que inclui
+os esforços de [localização][localization].
 
 Outro ótimo ponto de partida é juntar-se a um Grupo de Interesse Especial (SIG)
 dentro do OpenTelemetry. Esses grupos focam em áreas específicas do projeto. Ao
@@ -87,25 +83,23 @@ informações valiosas e ajudar a determinar se a sua tarefa proposta se alinha
 com os objetivos atuais do projeto e faz sentido para você desenvolver naquele
 momento.
 
-Todos os repositórios do OpenTelemetry podem ser encontrados em
-[Repositórios OTel](https://github.com/orgs/open-telemetry/repositories). Esta
-página fornece uma visão geral de cada repositório, incluindo as linguagens de
-programação utilizadas e uma breve descrição.
+Todos os repositórios do OpenTelemetry podem ser encontrados em [Repositórios
+OTel][repos]. Esta página fornece uma visão geral de cada repositório, incluindo
+as linguagens de programação utilizadas e uma breve descrição.
 
 A maioria dos repositórios do OpenTelemetry inclui uma aba "contributing"
 (contribuindo). Esta aba fornece orientação específica para o repositório,
 cobrindo informações essenciais como dependências, instruções para rodar testes
 localmente e outros procedimentos de configuração. Caso você encontre alguma
 informação ausente nestes documentos de contribuição, não hesite em fazer
-perguntas nos respectivos
-[canais do Slack](https://opentelemetry.io/community/end-user/slack-channel/).
+perguntas nos respectivos [canais do Slack][slack].
 
 Durante sua jornada de contribuição, você pode identificar lacunas ou áreas para
 melhoria na documentação de contribuição existente. Isso apresenta uma
 oportunidade valiosa de contribuir criando um pull request que adicione a
 informação que está faltando. Ao fazer isso, você não apenas contribuirá para o
 projeto, mas também ajudará significativamente futuros contribuidores que possam
-ter perguntas semelhantes. Contribuições de documentação são tão importantes 
+ter perguntas semelhantes. Contribuições de documentação são tão importantes
 quanto contribuições de código.
 
 ## Conclusão
@@ -119,3 +113,14 @@ Suas sugestões são altamente valiosas e podem ajudar a moldar um ambiente mais
 acolhedor e eficiente para todos os envolvidos!
 
 Boa contribuição!
+
+[sigs]:
+  https://github.com/open-telemetry/community?tab=readme-ov-file#special-interest-groups
+[calendar]:
+  https://github.com/open-telemetry/community?tab=readme-ov-file#calendar
+[membership]:
+  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+[contrib]: /docs/contributing
+[localization]: /docs/contributing/localization/
+[repos]: https://github.com/orgs/open-telemetry/repositories
+[slack]: /community/end-user/slack-channel/
