@@ -110,13 +110,13 @@ shape a more welcoming and efficient environment for everyone involved!
 
 Happy coding!
 
-[sigs]
-https://github.com/open-telemetry/community?tab=readme-ov-file#special-interest-groups
-[calendar]
-https://github.com/open-telemetry/community?tab=readme-ov-file#calendar
-[membership]
-https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
-[contrib] https://opentelemetry.io/docs/contributing [localization]
-https://opentelemetry.io/docs/contributing/localization/ [repos]
-https://github.com/orgs/open-telemetry/repositories [slack]
-https://opentelemetry.io/community/end-user/slack-channel/
+[sigs]:
+  https://github.com/open-telemetry/community?tab=readme-ov-file#special-interest-groups
+[calendar]:
+  https://github.com/open-telemetry/community?tab=readme-ov-file#calendar
+[membership]:
+  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+[contrib]: https://opentelemetry.io/docs/contributing
+[localization]: https://opentelemetry.io/docs/contributing/localization/
+[repos]: https://github.com/orgs/open-telemetry/repositories
+[slack]: https://opentelemetry.io/community/end-user/slack-channel/
