@@ -42,11 +42,8 @@ encompassing numerous components, diverse programming languages, and features
 spanning various levels of complexity. Consider what resonates most with you.
 
 This page lists all existing SIG with their respective slack channels and
-meeting times:
-[SIGs](https://github.com/open-telemetry/community?tab=readme-ov-file#special-interest-groups).
-You can also subscribe to the OpenTelemetry calendar and check the meetings
-you're interested in:
-[Calendar](https://github.com/open-telemetry/community?tab=readme-ov-file#calendar).
+meeting times: [SIGs][sigs]. You can also subscribe to the OpenTelemetry
+calendar and check the meetings you're interested in: [Calendar][calendar].
 
 While it might be tempting to pick repositories that are very active, since you
 will probably get feedback on your PR and questions quicker, don't overlook less
@@ -54,8 +51,7 @@ active ones, because they would really benefit from people helping out. If your
 long-term goal is to achieve a status like "Approver" or "Maintainer",
 contributing to less active repositories can accelerate this progression due to
 the higher impact your contributions will have. Find out more about membership
-status here:
-[Membership](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
+status here: [Membership][membership].
 
 For newcomers, looking for issues tagged with "good first issue" within those
 repositories is an excellent strategy. These issues are typically designed to be
@@ -64,10 +60,8 @@ project.
 
 If you're unsure where to start contributing, documentation is an excellent
 starting point, as it directly benefits a wide audience. You can see more
-details on how to contribute to documentation here:
-https://opentelemetry.io/docs/contributing, which includes the
-[localization](https://opentelemetry.io/docs/contributing/localization/)
-efforts.
+details on how to contribute to documentation [here][contrib], which includes
+the [localization][localization] efforts.
 
 Another great starting point is to join a Special Interest Group (SIG) within
 OpenTelemetry. These groups focus on specific areas of the project. By immersing
@@ -85,8 +79,7 @@ to consult with the maintainers of the relevant SIG. They can provide valuable
 input and help determine if your proposed task aligns with current project goals
 and makes sense for you to undertake at that particular moment.
 
-All OpenTelemetry repositories can be found at
-[OTel Repositories](https://github.com/orgs/open-telemetry/repositories). This
+All OpenTelemetry repositories can be found at [OTel Repositories][repos]. This
 page provides an overview of each repository, including the programming
 languages used and a brief description.
 
@@ -94,8 +87,8 @@ The majority of OpenTelemetry repositories include a "contributing" tab. This
 tab provides repository-specific guidance, covering essential information such
 as dependencies, instructions for running tests locally, and other setup
 procedures. Should you find any missing information in these contributing
-documents, don't hesitate to ask questions on the respective
-[Slack channels](https://opentelemetry.io/community/end-user/slack-channel/).
+documents, don't hesitate to ask questions on the respective [Slack
+channels][slack].
 
 During your contribution journey, you might identify gaps or areas for
 improvement in the existing contributing documentation. This presents a valuable
@@ -116,3 +109,14 @@ contributors, we encourage you to share them on the Slack channel
 shape a more welcoming and efficient environment for everyone involved!
 
 Happy coding!
+
+[sigs]
+https://github.com/open-telemetry/community?tab=readme-ov-file#special-interest-groups
+[calendar]
+https://github.com/open-telemetry/community?tab=readme-ov-file#calendar
+[membership]
+https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+[contrib] https://opentelemetry.io/docs/contributing [localization]
+https://opentelemetry.io/docs/contributing/localization/ [repos]
+https://github.com/orgs/open-telemetry/repositories [slack]
+https://opentelemetry.io/community/end-user/slack-channel/
