@@ -5,8 +5,10 @@ weight: 10
 aliases:
   - /docs/languages/python/automatic/configuration
   - /docs/languages/python/automatic/agent-config
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
-cSpell:ignore: healthcheck instrumentor myapp pyproject Starlette urllib
+default_lang_commit: beee9035dba8128dc3b970aa73e8b2a8d17d16dc
+drifted_from_default: true
+# prettier-ignore
+cSpell:ignore: gevent healthcheck instrumentor monkeypatch myapp pyproject Starlette urllib
 ---
 
 Агент має широкі можливості для налаштування, або через:
@@ -110,6 +112,7 @@ export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 - `OTEL_PYTHON_GRPC_EXCLUDED_SERVICES`: розділений комами список конкретних сервісів, які потрібно виключити для інструменту gRPC
 - `OTEL_PYTHON_ID_GENERATOR`: для вказівки, який генератор ID використовувати для глобального постачальника трасування
 - `OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS`: для увімкнення санітаризації запитів
+- `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH`: встановіть значення `patch_all`, щоб викликати метод gevent monkeypatch `patch_all` перед ініціалізацією SDK.
 
 Приклади:
 
@@ -119,6 +122,7 @@ export OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX=my-custom-prefix
 export OTEL_PYTHON_GRPC_EXCLUDED_SERVICES="GRPCTestServer,GRPCHealthServer"
 export OTEL_PYTHON_ID_GENERATOR=xray
 export OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS=true
+export OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH=patch_all
 ```
 
 ## Вимкнення конкретних інструментів {#disabling-specific-instrumentations}

@@ -3,8 +3,9 @@ title: Використання OpenTelemetry Operator для впровадже
 linkTitle: Оператор
 aliases: [/docs/languages/python/automatic/operator]
 weight: 30
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
-cSpell:ignore: django grpcio myapp psutil PYTHONPATH
+default_lang_commit: beee9035dba8128dc3b970aa73e8b2a8d17d16dc
+drifted_from_default: true
+cSpell:ignore: gevent grpcio monkeypatch myapp psutil PYTHONPATH django
 ---
 
 Якщо ви запускаєте свій Python сервіс у Kubernetes, ви можете скористатися [OpenTelemetry Operator](https://github.com/open-telemetry/opentelemetry-operator) для впровадження автоматичної інструментації без необхідності змінювати кожен з ваших сервісів
@@ -26,3 +27,7 @@ cSpell:ignore: django grpcio myapp psutil PYTHONPATH
 
 - `PYTHONPATH`, зі шляхом до кореневої теки застосунку Django, наприклад "/app"
 - `DJANGO_SETTINGS_MODULE`, з назвою модуля налаштувань Django, наприклад "myapp.settings"
+
+#### gevent застосунки {#gevent-application}
+
+Починаючи з випуску OpenTelemetry Python 1.37.0/0.58b0, якщо ви встановите у файлі розгортання змінну середовища `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH` на значення `patch_all`, код автоматичної інструментації перед ініціалізацією викличе метод gevent monkeypatch з такою ж назвою.

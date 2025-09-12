@@ -4,7 +4,6 @@ cascade:
   collector_vers: 0.135.0
 weight: 970
 default_lang_commit: 0da44011230e4781fdf6209ac27e0ccc59fa38b2
-drifted_from_default: true
 cSpell:ignore: cves
 ---
 

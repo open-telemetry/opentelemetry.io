@@ -3,7 +3,8 @@ title: Конфігурація сервера застосунків
 linkTitle: Конфігурація сервера застосунків
 description: Дізнайтеся, як визначити шляхи агента для серверів застосунків Java
 weight: 215
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: beee9035dba8128dc3b970aa73e8b2a8d17d16dc
+drifted_from_default: true
 cSpell:ignore: asadmin Glassfish Payara setenv
 ---
 
@@ -85,7 +86,15 @@ JAVA_OPTIONS="${JAVA_OPTIONS} -javaagent:/path/to/opentelemetry-javaagent.jar"
 
 ## Tomcat / TomEE
 
-Додайте шлях до Java агента до вашого стартового скрипту:
+Додайте шлях до Java агента до вашого стартового скрипту. Спосіб налаштування залежить від вашої інсталяції:
+
+**Для встановлення за допомогою пакунків** (apt-get/yum), додайте до `/etc/tomcat*/tomcat*.conf`:
+
+```sh
+JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
+```
+
+**Для встановлення через завантаження**, створіть або змініть `<tomcat>/bin/setenv.sh` (Linux) або `<tomcat>/bin/setenv.bat` (Windows):
 
 {{< tabpane text=true persist=lang >}}
 
@@ -104,6 +113,8 @@ set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:"<Drive>:\path\to\opentelemetry-jav
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+**Для встановлення служб Windows** використовуйте `<tomcat>/bin/tomcat*w.exe`, щоб додати `-javaagent:<Drive>:\path\to\opentelemetry-javaagent.jar` до опцій Java на вкладці Java.
 
 ## WebLogic
 
