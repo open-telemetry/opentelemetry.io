@@ -64,16 +64,23 @@ components:
     - open-telemetry/sig-security-maintainers
   content/en/docs/specs:
     - open-telemetry/specs-approvers
+  content/en/docs/zero-code/go:
+    - open-telemetry/go-approvers
+    - open-telemetry/go-instrumentation-approvers
   content/en/docs/zero-code/java:
     - open-telemetry/java-approvers
     - open-telemetry/java-instrumentation-approvers
   content/en/docs/zero-code/js:
     - open-telemetry/javascript-approvers
-  content/en/docs/zero-code/net:
+  content/en/docs/zero-code/dotnet:
     - open-telemetry/dotnet-approvers
     - open-telemetry/dotnet-instrumentation-approvers
   content/en/docs/zero-code/obi:
     - open-telemetry/ebpf-instrumentation-approvers
+  content/en/docs/zero-code/php:
+    - open-telemetry/php-approvers
+  content/en/docs/zero-code/python:
+    - open-telemetry/python-approvers
   content/en/ecosystem/demo:
     - open-telemetry/demo-approvers
   content/zh:
