@@ -105,7 +105,8 @@ melhoria na documentação de contribuição existente. Isso apresenta uma
 oportunidade valiosa de contribuir criando um pull request que adicione a
 informação que está faltando. Ao fazer isso, você não apenas contribuirá para o
 projeto, mas também ajudará significativamente futuros contribuidores que possam
-ter perguntas semelhantes.
+ter perguntas semelhantes. Contribuições de documentação são tão importantes 
+quanto contribuições de código.
 
 ## Conclusão
 
