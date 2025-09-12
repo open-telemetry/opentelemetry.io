@@ -62,12 +62,8 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           add-paths: 'data/community/members.yaml'
-          author:
-            otelbot
-            <197425009+otelbot@users.noreply.github.com>
-          committer:
-            otelbot
-            <197425009+otelbot@users.noreply.github.com>
+          author: otelbot <197425009+otelbot@users.noreply.github.com>
+          committer: otelbot <197425009+otelbot@users.noreply.github.com>
           token: ${{ steps.otelbot-token.outputs.token }}
           branch: otelbot/update-community-members
           title: Update community members
