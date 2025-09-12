@@ -60,8 +60,8 @@ project.
 
 If you're unsure where to start contributing, documentation is an excellent
 starting point, as it directly benefits a wide audience. You can see more
-details on how to contribute to documentation [here][contrib], which includes
-the [localization][localization] efforts.
+details on how to contribute to documentation here: [Contributing][contrib],
+which includes the [localization][localization] efforts.
 
 Another great starting point is to join a Special Interest Group (SIG) within
 OpenTelemetry. These groups focus on specific areas of the project. By immersing
@@ -116,7 +116,7 @@ Happy coding!
   https://github.com/open-telemetry/community?tab=readme-ov-file#calendar
 [membership]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
-[contrib]: https://opentelemetry.io/docs/contributing
-[localization]: https://opentelemetry.io/docs/contributing/localization/
+[contrib]: /docs/contributing
+[localization]: /docs/contributing/localization/
 [repos]: https://github.com/orgs/open-telemetry/repositories
-[slack]: https://opentelemetry.io/community/end-user/slack-channel/
+[slack]: /community/end-user/slack-channel/
