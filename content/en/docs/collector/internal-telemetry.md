@@ -24,11 +24,26 @@ track progress see
 
 ## Activate internal telemetry in the Collector
 
-By default, the Collector exposes its own telemetry in two ways:
+By default, the Collector exposes its own telemetry in three ways:
 
-- Internal [metrics](#configure-internal-metrics) are exposed using a Prometheus
-  interface which defaults to port `8888`.
-- [Logs](#configure-internal-logs) are emitted to `stderr` by default.
+- [Metrics](#configure-internal-metrics)
+- [Logs](#configure-internal-logs)
+- [Traces](#configure-internal-traces)
+
+{{% alert title="Who monitors the monitor?" %}} As a matter of best practice,
+the subject being monitored shouldn't also be the monitor. Internal Collector
+telemetry should ideally be exported to another OpenTelemetry Collector
+dedicated to processing telemetry from other Collectors, which then exports the
+telemetry to an OTLP backend for analysis.
+
+When a Collector is responsible for handling its own telemetry through a traces,
+metrics, or logs pipeline and encounters an issue (for example, memory limiter
+blocking data), its internal telemetry won't be sent to its intended
+destination. This makes it difficult to detect problems with the Collector
+itself. Likewise, if the Collector generates additional telemetry related to the
+above issue, such as error logs, and those logs are sent into the same
+collector, it can create a feedback loop where more error logs lead to increased
+ingestion, which in turn produces even more error logs. {{% /alert %}}
 
 ### Configure internal metrics
 
@@ -38,59 +53,120 @@ exposes them using the OpenTelemetry Go
 [Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus)
 for scraping at `http://127.0.0.1:8888/metrics`.
 
-The Collector can push its internal metrics to an OTLP backend via the following
-configuration:
+There are a couple of ways to export internal Collector metrics.
 
-```yaml
-service:
-  telemetry:
-    metrics:
-      readers:
-        - periodic:
-            exporter:
-              otlp:
-                protocol: http/protobuf
-                endpoint: https://backend:4318
-```
+1. To Prometheus
 
-Alternatively, you can expose the Prometheus endpoint to one specific or all
-network interfaces when needed. For containerized environments, you might want
-to expose this port on a public interface.
+   Here, your Collector exports its internal telemetry to Prometheus. This
+   happens behind the scenes via the
+   [Go Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus).
 
-Set the Prometheus config under `service::telemetry::metrics`:
+   You can expose the Prometheus endpoint to one specific or all network
+   interfaces when needed. For containerized environments, you might want to
+   expose this port on a public interface.
 
-```yaml
-service:
-  telemetry:
-    metrics:
-      readers:
-        - pull:
-            exporter:
-              prometheus:
-                host: '0.0.0.0'
-                port: 8888
-```
+   Set the Prometheus export configuration under `service::telemetry::metrics`:
 
-If you want to add additional labels to the Prometheus metrics, you can add them
-with `prometheus::with_resource_constant_labels`:
+   ```yaml
+   service:
+     telemetry:
+       metrics:
+         readers:
+           - pull:
+               exporter:
+                 prometheus:
+                   host: '0.0.0.0'
+                   port: 8888
+   ```
 
-```yaml
-prometheus:
-  host: '0.0.0.0'
-  port: 8888
-  with_resource_constant_labels:
-    included:
-      - label_key
-```
+   Keep in mind that
+   [internal metrics exported over Prometheus may differ from previous versions](/docs/collector/internal-telemetry/#_total-suffix).
 
-And then reference the labels in `service::telemetry::resource`:
+   {{% alert title="Note" color="info" %}}
 
-```yaml
-resource:
-  label_key: label_value
-```
+   The
+   [Go Prometheus exporter](https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/prometheus)
+   is not the same as the
+   [Collector’s Prometheus exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter).
+   The Collector’s exporter is designed to aggregate metrics from multiple
+   resources/targets together, whereas the Go SDK exporter is designed to only
+   handle metrics from a single resource. This makes sense, since the only
+   metrics source is the Collector’s own metrics, which means that using the
+   Collector’s version of the exporter would be unnecessary.
 
-{{% alert title="Internal telemetry configuration changes" %}}
+   {{% /alert %}}
+
+   If you want to add additional labels to the Prometheus metrics, you can add
+   them with `prometheus::with_resource_constant_labels`:
+
+   ```yaml
+   prometheus:
+     host: '0.0.0.0'
+     port: 8888
+     with_resource_constant_labels:
+       included:
+         - label_key
+   ```
+
+   And then reference the labels in `service::telemetry::resource`:
+
+   ```yaml
+   resource:
+     label_key: label_value
+   ```
+
+2. To an OTLP destination
+
+   The Collector can push its internal metrics to an OpenTelemetry Collector
+   dedicated to processing internal telemetry from other Collectors using the
+   following configuration:
+
+   ```yaml
+   service:
+     telemetry:
+       metrics:
+         readers:
+           - periodic:
+               exporter:
+                 otlp:
+                   protocol: http/protobuf
+                   endpoint: https://${OTLP_ENDPOINT}:4318
+   ```
+
+   {{% alert title="Notes" color="info" %}}
+   - If you're using gRPC instead of HTTP, then `protocol` would be `grpc`.
+   - Be sure to include a port number for your endpoint as needed.
+     {{% /alert %}}
+
+   You can also send send telemetry directly to an OTLP backend for analysis. In
+   this case, you will also need to include a `headers` configuration:
+
+   ```yaml
+   service:
+     telemetry:
+       metrics:
+         readers:
+           - periodic:
+               exporter:
+                 otlp:
+                   protocol: http/protobuf
+                   endpoint: https://${OTLP_ENDPOINT}
+                   headers:
+                     - name: ${HEADER}
+                       value: '${API_TOKEN}'
+   ```
+
+   {{% alert title="WARNING" color="warning" %}}
+
+   Although the above approach is possible, it is not recommended, as each
+   Collector in your fleet would send its own internal telemetry directly to the
+   observability backend, causing traffic saturation at the ingest point.
+   Instead, you should consider sending telemetry to a central Collector
+   dedicated to ingesting telemetry from the Collectors in your fleet.
+
+   {{% /alert %}}
+
+{{% alert title="Internal telemetry configuration changes" color="info" %}}
 
 As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
 is ignored. In earlier versions, it could be configured with:
@@ -192,7 +268,7 @@ journalctl | grep otelcol | grep Error
 {{% /tab %}} {{< /tabpane >}}
 
 The following configuration can be used to emit internal logs from the Collector
-to an OTLP/HTTP backend:
+to an OTLP/HTTP destination:
 
 ```yaml
 service:
@@ -203,8 +279,19 @@ service:
             exporter:
               otlp:
                 protocol: http/protobuf
-                endpoint: https://backend:4318
+                endpoint: https://${OTLP_ENDPOINT}
 ```
+
+{{% alert title="Notes" color="info" %}}
+
+- If you're using gRPC instead of HTTP, then `protocol` would be `grpc`.
+- Be sure to include a port number for your endpoint as needed. {{% /alert %}}
+
+Again, it is recommended to send internal Collector telemetry to a Collector
+dedicated to processing only internal telemetry from other Collectors.
+
+See the [example configuration][kitchen-sink-config] for additional options.
+Note that the `logger_provider` section there corresponds to `logs` here.
 
 ### Configure internal traces
 
@@ -218,7 +305,7 @@ the stability of the emitted span names and attributes.
 {{% /alert %}}
 
 The following configuration can be used to emit internal traces from the
-Collector to an OTLP backend:
+Collector to an OTLP/HTTP destination:
 
 ```yaml
 service:
@@ -229,8 +316,16 @@ service:
             exporter:
               otlp:
                 protocol: http/protobuf
-                endpoint: https://backend:4318
+                endpoint: https://${OTLP_ENDPOINT}
 ```
+
+{{% alert title="Notes" color="info" %}}
+
+- If you're using gRPC instead of HTTP, then `protocol` would be `grpc`.
+- Be sure to include a port number for your endpoint as needed. {{% /alert %}}
+
+Again, it is recommended to send internal Collector telemetry to a Collector
+dedicated to processing only internal telemetry from other Collectors.
 
 See the [example configuration][kitchen-sink-config] for additional options.
 Note that the `tracer_provider` section there corresponds to `traces` here.
