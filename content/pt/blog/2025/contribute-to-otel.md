@@ -4,8 +4,8 @@ linkTitle: Como Contribuir para o OpenTelemetry
 date: 2025-09-12
 author: >-
   [Marylia Gutierrez](https://github.com/maryliag) (Grafana Labs)
-cSpell:ignore: marylia
 # default_lang_commit:  TODO once en PR gets merged
+cSpell:ignore: marylia
 ---
 
 Você pode ter ouvido falar sobre o OpenTelemetry, o achou interessante e quer se
