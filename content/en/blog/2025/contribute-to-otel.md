@@ -40,15 +40,6 @@ expertise or ignite your curiosity. OpenTelemetry is a vast project,
 encompassing numerous components, diverse programming languages, and features
 spanning various levels of complexity. Consider what resonates most with you.
 
-A great starting point is to join a Special Interest Group (SIG) within
-OpenTelemetry. These groups focus on specific areas of the project. By immersing
-yourself in a SIG, you'll gain insights into their current priorities and
-identify relevant tasks. Don't feel like you need to speak at those meetings
-right away, there is no pressure! You can introduce yourself if you want, but in
-general you can simply join, listen in, and determine if the area interests you.
-If it does, you can then start chiming in on discussions or bringing your own
-topics.
-
 This page lists all existing SIG with their respective slack channels and
 meeting times:
 [SIGs](https://github.com/open-telemetry/community?tab=readme-ov-file#special-interest-groups).
@@ -77,6 +68,15 @@ https://opentelemetry.io/docs/contributing, which includes the
 [localization](https://opentelemetry.io/docs/contributing/localization/)
 efforts.
 
+Another great starting point is to join a Special Interest Group (SIG) within
+OpenTelemetry. These groups focus on specific areas of the project. By immersing
+yourself in a SIG, you'll gain insights into their current priorities and
+identify relevant tasks. Don't feel like you need to speak at those meetings
+right away, there is no pressure! You can introduce yourself if you want, but in
+general you can simply join, listen in, and determine if the area interests you.
+If it does, you can then start chiming in on discussions or bringing your own
+topics.
+
 ## Substantial contributions
 
 If you're considering a more substantial or novel contribution, it's advisable
@@ -100,7 +100,8 @@ During your contribution journey, you might identify gaps or areas for
 improvement in the existing contributing documentation. This presents a valuable
 opportunity to contribute by creating a pull request that adds the missing
 information. By doing so, you'll not only contribute to the project but also
-significantly assist future contributors who may have similar questions.
+significantly assist future contributors who may have similar questions. 
+Documentation contributions are just as important as code contributions.
 
 ## Final thoughts
 
