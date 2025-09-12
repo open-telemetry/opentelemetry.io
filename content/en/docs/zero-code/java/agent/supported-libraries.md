@@ -181,11 +181,11 @@ view execution. See
 
 [Elasticsearch Client Spans]: /docs/specs/semconv/database/elasticsearch/
 [HTTP Server Spans]: /docs/specs/semconv/http/http-spans/#http-server
-[HTTP Client Spans]: /docs/specs/semconv/http/http-spans/#http-client
+[HTTP Client Spans]: /docs/specs/semconv/http/http-spans/#http-client-span
 [HTTP Server Metrics]: /docs/specs/semconv/http/http-metrics/#http-server
 [HTTP Client Metrics]: /docs/specs/semconv/http/http-metrics/#http-client
-[RPC Server Spans]: /docs/specs/semconv/rpc/rpc-spans/#rpc-server
-[RPC Client Spans]: /docs/specs/semconv/rpc/rpc-spans/#rpc-client
+[RPC Server Spans]: /docs/specs/semconv/rpc/rpc-spans/#rpc-server-span
+[RPC Client Spans]: /docs/specs/semconv/rpc/rpc-spans/#rpc-client-span
 [RPC Server Metrics]: /docs/specs/semconv/rpc/rpc-metrics/#rpc-server
 [RPC Client Metrics]: /docs/specs/semconv/rpc/rpc-metrics/#rpc-client
 [Messaging Spans]: /docs/specs/semconv/messaging/messaging-spans/
