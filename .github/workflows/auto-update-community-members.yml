@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22'
 
@@ -34,8 +34,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
+      - name: Use CLA approved github bot
+        run: |
+          git config user.name opentelemetrybot
+          git config user.email 107717825+opentelemetrybot@users.noreply.github.com
+
       - name: Fix refcache
         run: |
+          npm install --omit=optional
           npm run fix:refcache
 
           git add -A
