@@ -82,9 +82,7 @@ processors:
 **プロセッサー**: [メトリクス変換プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
 
 [メトリクス変換プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
-はいくつかの機能を
-[変換プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor),
-と共有しますが、名前変更やその他のメトリクス固有の機能もサポートしています。
+は[属性プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor)といくつかの機能を共有しますが、名前変更やその他のメトリクス固有の機能もサポートしています。
 
 ```yaml
 processors:
