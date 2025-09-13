@@ -139,8 +139,7 @@ processors:
 
 ## スパンステータスの設定 {#setting-a-span-status}
 
-**プロセッサー**:
-[変換プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
+**プロセッサー**: [変換プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
 
 変換プロセッサーを使用してスパンのステータスを設定します。
 次の例では、`http.request.status_code`属性が400の場合、スパンステータスを`Ok`に設定します。
@@ -150,7 +149,7 @@ processors:
 ```yaml
 transform:
   error_mode: ignore
-  trace_statements:k
+  trace_statements:
     - set(span.status.code, STATUS_CODE_OK) where span.attributes["http.request.status_code"] == 400
 ```
 
