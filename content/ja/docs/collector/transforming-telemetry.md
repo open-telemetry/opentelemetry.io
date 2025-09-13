@@ -16,13 +16,12 @@ OpenTelemetryコレクターは、データをベンダーや他のシステム�
 
 ## 基本的なフィルタリング {#basic-filtering}
 
-**プロセッサー**:
-[フィルタープロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor)
+**プロセッサー**: [フィルタープロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor)
 
 フィルタープロセッサーを使用すると、ユーザーは[OTTL](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md)を使用してテレメトリーをフィルタリングできます。
 任意の条件に一致するテレメトリーはドロップされます。
 
-たとえば、サービスapp1、app2、およびapp3からのスパンドメインのみを許可し、他のすべてのサービスからのデータをドロップするには次のようにします。
+たとえば、サービスapp1、app2、およびapp3からのスパンデータ _のみ_ を許可し、他のすべてのサービスからのデータをドロップするには次のようにします。
 
 ```yaml
 processors:
@@ -47,15 +46,11 @@ processors:
         - resource.attributes["service.name"] == "service1"
 ```
 
-[フィルタープロセッサーのドキュメント](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor)
-には、ログとメトリクスのフィルタリングを含むさらに多くの例があります。
+[フィルタープロセッサーのドキュメント](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor)には、ログとメトリクスのフィルタリングを含むさらに多くの例があります。
 
 ## 属性の追加または削除 {#adding-or-deleting-attributes}
 
-**プロセッサー**:
-[属性プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor)
-または
-[リソースプロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourceprocessor)
+**プロセッサー**: [属性プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor)または[リソースプロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourceprocessor)
 
 属性プロセッサーは、メトリクスまたはトレースの既存の属性を更新、挿入、削除、または置換するために使用できます。
 たとえば、すべてのスパンにaccount_idという属性を追加する構成は次のとおりです。
@@ -84,8 +79,7 @@ processors:
 
 ## メトリクスまたはメトリクスラベルの名前変更 {#renaming-metrics-or-metric-labels}
 
-**プロセッサー**:
-[メトリクス変換プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
+**プロセッサー**: [メトリクス変換プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
 
 [メトリクス変換プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
 はいくつかの機能を
@@ -101,8 +95,7 @@ processors:
         new_name: system.cpu.usage_time
 ```
 
-[メトリクス変換プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
-は、複数メトリクス名またはメトリクスラベルに同時に変換ルールを適用するための正規表現もサポートしています。
+[メトリクス変換プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)は、複数メトリクス名またはメトリクスラベルに同時に変換ルールを適用するための正規表現もサポートしています。
 この例では、すべてのメトリクスのcluster_nameをcluster-nameに変更します。
 
 ```yaml
@@ -120,10 +113,7 @@ processors:
 
 ## リソース属性によるテレメトリーの強化 {#enriching-telemetry-with-resource-attributes}
 
-**プロセッサー**:
-[リソース検出プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
-および
-[k8sattributesプロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
+**プロセッサー**: [リソース検出プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)および[k8sattributesプロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)
 
 これらのプロセッサーを使用すると、関連するインフラストラクチャのメタデータでテレメトリーを強化でき、基礎となるインフラストラクチャがサービスの健全性やパフォーマンスに影響を与えているかどうかをチームが迅速に特定できるようになります。
 
@@ -167,12 +157,9 @@ transform:
 <!-- prettier-ignore-end -->
 
 変換プロセッサーを使用して、スパン名をその属性に基づいて変更したり、スパン名からスパン属性を抽出したりできます。
-例については、変換プロセッサーの
-[構成ファイル](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9b28f76c02c18f7479d10e4b6a95a21467fd85d6/processor/transformprocessor/testdata/config.yaml)
-の例を参照してください。
+例については、変換プロセッサーの[構成ファイル](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9b28f76c02c18f7479d10e4b6a95a21467fd85d6/processor/transformprocessor/testdata/config.yaml)の例を参照してください。
 
 ## 高度な変換 {#advanced-transformations}
 
-[変換プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor).
-では、より高度な属性変換も利用できます。
+[変換プロセッサー](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)では、より高度な属性変換も利用できます。
 変換プロセッサーを使用すると、エンドユーザーは[OpenTelemetry変換言語](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl)を使用して、メトリクス、ログ、トレースの変換を指定できます。
