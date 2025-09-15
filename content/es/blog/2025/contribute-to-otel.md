@@ -10,10 +10,10 @@ cSpell:ignore: marylia
 
 Quizás hayas oído hablar de OpenTelemetry, lo encontraste interesante y quieres
 involucrarte, pero el camino hacia la contribución no es inmediatamente claro.
-Puede que empieces a enviar mensajes a personas pidiendo que te asignen _issues_, 
-o simplemente anunciar diciendo "Estoy aquí para ayudar, solo avísenme", pero
-nunca recibes respuesta. Entonces, ¿cómo puedes empezar realmente a contribuir a 
-OpenTelemetry?
+Puede que empieces a enviar mensajes a personas pidiendo que te asignen
+_issues_, o simplemente anunciar diciendo "Estoy aquí para ayudar, solo
+avísenme", pero nunca recibes respuesta. Entonces, ¿cómo puedes empezar
+realmente a contribuir a OpenTelemetry?
 
 El _open source_ prospera gracias a la comunidad, al apoyo mutuo y al desarrollo
 colaborativo de tecnología innovadora. Pero también trae desafíos, especialmente
@@ -58,10 +58,10 @@ acelerar este proceso debido al mayor impacto que tendrán tus aportes. Puedes
 obtener más información sobre los niveles de membresía aquí:
 [Membership][membership].
 
-Para quienes recién comienzan, buscar _issues_ marcados como _"good first issue"_ß
-dentro de esos repositorios es una excelente estrategia. Estos _issues_ suelen
-estar diseñados para ser accesibles a nuevos colaboradores, ofreciendo un punto
-de entrada manejable al proyecto.
+Para quienes recién comienzan, buscar _issues_ marcados como "_good first
+issue_" dentro de esos repositorios es una excelente estrategia. Estos _issues_
+suelen estar diseñados para ser accesibles a nuevos colaboradores, ofreciendo un
+punto de entrada manejable al proyecto.
 
 Si no estás seguro por dónde empezar a contribuir, la documentación es un
 excelente punto inicial, ya que beneficia directamente a una amplia audiencia.
@@ -74,8 +74,8 @@ de OpenTelemetry. Estos grupos se centran en áreas específicas del proyecto. A
 involucrarte en un SIG, obtendrás información sobre sus prioridades actuales e
 identificarás tareas relevantes. No sientas que debes hablar en esas reuniones
 desde el primer momento, ¡no hay presión! Puedes presentarte si lo deseas, pero
-en general basta con unirte, escuchar y determinar si el área te interesa. Si
-es así, luego puedes comenzar a participar en las discusiones o proponer tus
+en general basta con unirte, escuchar y determinar si el área te interesa. Si es
+así, luego puedes comenzar a participar en las discusiones o proponer tus
 propios temas.
 
 ## Contribuciones de mayor impacto {#substantial-contributions}
@@ -86,17 +86,16 @@ pueden darte aportes valiosos y ayudarte a determinar si tu propuesta se alinea
 con los objetivos actuales del proyecto y si tiene sentido que la emprendas en
 ese momento.
 
-Todos los repositorios de OpenTelemetry pueden encontrarse en
-[OTel Repositories][repos]. Esta página ofrece una visión general de cada
-repositorio, incluyendo los lenguajes de programación utilizados y una breve
-descripción.
+Todos los repositorios de OpenTelemetry pueden encontrarse en [OTel
+Repositories][repos]. Esta página ofrece una visión general de cada repositorio,
+incluyendo los lenguajes de programación utilizados y una breve descripción.
 
 La mayoría de los repositorios de OpenTelemetry incluyen una pestaña
-"_contributing_". Esta pestaña ofrece orientación específica para el repositorio,
-cubriendo información esencial como dependencias, instrucciones para ejecutar
-tests localmente y otros procedimientos de configuración. Si encuentras
-información faltante en estos documentos de contribución, no dudes en hacer
-preguntas en los respectivos [canales de Slack][slack].
+"_contributing_". Esta pestaña ofrece orientación específica para el
+repositorio, cubriendo información esencial como dependencias, instrucciones
+para ejecutar tests localmente y otros procedimientos de configuración. Si
+encuentras información faltante en estos documentos de contribución, no dudes en
+hacer preguntas en los respectivos [canales de Slack][slack].
 
 Durante tu camino de contribución, podrías identificar vacíos o áreas de mejora
 en la documentación de contribución existente. Esto presenta una valiosa
