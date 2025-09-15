@@ -1,7 +1,7 @@
 ---
 title: How to Contribute to OpenTelemetry
 linkTitle: How to Contribute to OpenTelemetry
-date: 2025-09-12
+date: 2025-09-15
 author: >-
   [Marylia Gutierrez](https://github.com/maryliag) (Grafana Labs)
 cSpell:ignore: marylia
