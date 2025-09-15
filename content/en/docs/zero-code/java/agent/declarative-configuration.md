@@ -4,19 +4,26 @@ linkTitle: Declarative configuration
 weight: 11
 ---
 
-Declarative configuration uses a YAML file instead of environment variables or system
-properties. This is useful when you have many configuration options to set, or if you
-want to use configuration options that are not available as environment variables or system
-properties.
+Declarative configuration uses a YAML file instead of environment variables or system properties.
 
-## Supported versions
+This approach is useful when:
+- You have many configuration options to set
+- You want to use configuration options that are not available as environment variables or system properties
 
-Declarative configuration is supported in OpenTelemetry Java agent version 2.20.0 and later.
+## Supported Versions
 
-## Getting started
+Declarative configuration is supported in **OpenTelemetry Java agent version 2.20.0 and later**.
 
-1. save the configuration file below as `otel-config.yaml`
-2. add `-Dotel.experimental.config.file=/path/to/file.yaml` to your JVM startup arguments
+## Getting Started
+
+1. Save the configuration file below as `otel-config.yaml`.
+2. Add the following to your JVM startup arguments:
+
+   ```shell
+   -Dotel.experimental.config.file=/path/to/file.yaml
+   ```
+
+Example configuration file:
 
 ```yaml
 file_format: "1.0-rc.1"
@@ -49,13 +56,18 @@ logger_provider:
             endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/logs
 ```
 
-### Environment variables and system properties
+## Environment Variables and System Properties
 
-Declarative configuration supports syntax to read environment variables, but not system properties.
+- Declarative configuration supports syntax to read **environment variables**, but not system properties.
+- All environment variables are **ignored unless you explicitly add them to the config file**.
 
-If you set `OTEL_RESOURCE_ATTRIBUTES=service.version=1.1,deployment.environment.name=staging`,
-the following config would create a resource with `service.version=1.1` and
-`deployment.environment.name=staging` - the same way it works without declarative config.
+For example, if you set:
+
+```shell
+OTEL_RESOURCE_ATTRIBUTES=service.version=1.1,deployment.environment.name=staging
+```
+
+The following config will create a resource with `service.version=1.1` and `deployment.environment.name=staging`:
 
 ```yaml
 resource:
@@ -63,23 +75,18 @@ resource:
 ```
 
 {{% alert title="Alert" %}}
-
 All environment variables are ignored unless you explicitly add them to the config file.
-
 {{% /alert %}}
 
-### Migration configuration
+## Migration Configuration
 
-If you have an existing configuration via environment variables, you can use the
-[migration configuration](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml)
-as a starting point to migrate to declarative configuration.
+If you have an existing configuration via environment variables, you can use the [migration configuration](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml) as a starting point to migrate to declarative configuration.
 
-### Available config options
+## Available Config Options
 
-A complete list of config options can be found in the
-[kitchen sink example](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml).
+A complete list of config options can be found in the [kitchen sink example](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml).
 
-### Endpoint per signal
+## Endpoint Per Signal
 
 If you have different endpoints for traces, metrics, and logs, use the following config:
 
@@ -89,7 +96,7 @@ If you have different endpoints for traces, metrics, and logs, use the following
 | Metrics            | `${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}` |
 | Logs               | `${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}`       |
 
-### GRPC exporter
+## GRPC Exporter
 
 Instead of `otlp_http`, you can also use `otlp_grpc` to export via gRPC:
 
@@ -98,12 +105,12 @@ otlp_grpc:
   endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4317}
 ```
 
-### Duration format
+## Duration Format
 
-Declarative configuration only supports durations in milliseconds, e.g. `5000` for 5 seconds.
+- Declarative configuration **only supports durations in milliseconds** (e.g. `5000` for 5 seconds).
+- You will get an error if you use `OTEL_BSP_SCHEDULE_DELAY=5s` (valid for environment variables, but not for declarative configuration).
 
-You will get an error if `OTEL_BSP_SCHEDULE_DELAY=5s` - which is valid for environment variables
-without declarative configuration.
+Example:
 
 ```yaml
 tracer_provider:
@@ -112,17 +119,17 @@ tracer_provider:
         schedule_delay: ${OTEL_BSP_SCHEDULE_DELAY:-5000}
 ```
 
-## Features only possible with declarative configuration
+## Features Only Possible with Declarative Configuration
 
-- method call instrumentation (setting span type)
-- todo
+- Method call instrumentation (setting span type)
+- (todo)
 
-## Differences from other configuration methods
+## Differences from Other Configuration Methods
 
-- distro name is `opentelemetry-javaagent` (instead of `opentelemetry-java-instrumentation`, will be aligned again with 3.0 release)
-- common-enabled syntax is different
+- Distro name is `opentelemetry-javaagent` (instead of `opentelemetry-java-instrumentation`; will be aligned again with 3.0 release)
+- Common-enabled syntax is different
 
-## Missing features
+## Missing Features
 
-- resource attributes for MDC
-- thread details processor
+- Resource attributes for MDC
+- Thread details processor
