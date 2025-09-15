@@ -9,6 +9,10 @@ properties. This is useful when you have many configuration options to set, or i
 want to use configuration options that are not available as environment variables or system
 properties.
 
+## Supported versions
+
+Declarative configuration is supported in OpenTelemetry Java agent version 2.20.0 and later.
+
 ## Getting started
 
 1. save the configuration file below as `otel-config.yaml`
