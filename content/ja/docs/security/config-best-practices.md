@@ -65,7 +65,7 @@ rootユーザーでの実行は避けてください。ただし、いくつか�
 ### DoS攻撃からの保護　{#protect-against-denial-of-service-attacks}
 
 サーバーのようなレシーバーや拡張機能では、これらのコンポーネントのエンドポイントを、許可されたユーザーへの接続を制限するアドレスにバインドすることで、コレクターがインターネット上に公開されたり、必要以上に広いネットワークに公開されたりするのを防ぐことができます。
-PodのIPや、`0.0.0.0`のかわりに`localhost`など、常に特定のインターフェイスを使用するようにしてください。
+PodのIPや、`0.0.0.0`のかわりに`localhost`など、常に特定のインターフェースを使用するようにしてください。
 詳しくは [CWE-1327: Binding to an Unrestricted IP Address](https://cwe.mitre.org/data/definitions/1327.html) を参照してください。
 
 コレクターv0.110.0以降、コレクターコンポーネントのすべてのサーバのデフォルトホストは `localhost` です。
@@ -175,7 +175,7 @@ spec:
                   fieldPath: status.podIP
 ```
 
-この例では、Pod自身ののIPアドレスを取得するために[Kubernetes Downward API](https://kubernetes.io/docs/concepts/workloads/pods/downward-api/)を利用し、ネットワークインターフェイスとバインドしています。
+この例では、Pod自身ののIPアドレスを取得するために[Kubernetes Downward API](https://kubernetes.io/docs/concepts/workloads/pods/downward-api/)を利用し、ネットワークインターフェースとバインドしています。
 さらに、`hostPort`オプションを利用してコレクターがホスト上に公開されるようになります。
 コレクターの設定は以下のようになります。
 

@@ -158,7 +158,7 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 ### ライブラリ {#library}
 
-インターフェイスによって呼び出される動作の言語固有のコレクション。
+インターフェースによって呼び出される動作の言語固有のコレクション。
 
 ### ログ {#log}
 
@@ -257,7 +257,7 @@ OpenTelemetry の前身です。
 
 ### Proto {#proto}
 
-言語に依存しないインターフェイス型。[opentelemetry-proto]を参照してください。
+言語に依存しないインターフェース型。[opentelemetry-proto]を参照してください。
 
 ### レシーバー {#receiver}
 
