@@ -76,24 +76,29 @@ components:
     - open-telemetry/ebpf-instrumentation-approvers
   content/en/ecosystem/demo:
     - open-telemetry/demo-approvers
-  content/zh:
+
+  ## Localization Teams
+  content/bn:
     - open-telemetry/docs-maintainers
-    - open-telemetry/docs-zh-approvers
-  content/ja:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-ja-approvers
-  content/pt:
-    - open-telemetry/docs-maintainers
-    - open-telemetry/docs-pt-approvers
+    - open-telemetry/docs-bn-approvers
   content/es:
     - open-telemetry/docs-maintainers
     - open-telemetry/docs-es-approvers
   content/fr:
     - open-telemetry/docs-maintainers
     - open-telemetry/docs-fr-approvers
-  content/bn:
+  content/ja:
     - open-telemetry/docs-maintainers
-    - open-telemetry/docs-bn-approvers
+    - open-telemetry/docs-ja-approvers
+  content/pt:
+    - open-telemetry/docs-maintainers
+    - open-telemetry/docs-pt-approvers
+  content/ro:
+    - open-telemetry/docs-maintainers
+    - open-telemetry/docs-ro-approvers
   content/uk:
     - open-telemetry/docs-maintainers
     - open-telemetry/docs-uk-approvers
+  content/zh:
+    - open-telemetry/docs-maintainers
+    - open-telemetry/docs-zh-approvers
