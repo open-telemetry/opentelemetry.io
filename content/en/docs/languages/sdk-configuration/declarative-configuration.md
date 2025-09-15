@@ -4,11 +4,14 @@ linkTitle: Declarative configuration
 weight: 30
 ---
 
-Declarative configuration uses a YAML file instead of environment variables or system properties.
+Declarative configuration uses a YAML file instead of environment variables or
+system properties.
 
 This approach is useful when:
+
 - You have many configuration options to set
-- You want to use configuration options that are not available as environment variables or system properties
+- You want to use configuration options that are not available as environment
+  variables or system properties
 
 ## Supported Languages
 
@@ -31,7 +34,7 @@ For details, refer to the
 Recommended configuration file:
 
 ```yaml
-file_format: "1.0-rc.1"
+file_format: '1.0-rc.1'
 
 resource:
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
@@ -63,8 +66,10 @@ logger_provider:
 
 ## Environment Variables and System Properties
 
-- Declarative configuration supports syntax to read **environment variables**, but not system properties.
-- All environment variables are **ignored unless you explicitly add them to the config file**.
+- Declarative configuration supports syntax to read **environment variables**,
+  but not system properties.
+- All environment variables are **ignored unless you explicitly add them to the
+  config file**.
 
 For example, if you set:
 
@@ -72,31 +77,35 @@ For example, if you set:
 OTEL_RESOURCE_ATTRIBUTES=service.version=1.1,deployment.environment.name=staging
 ```
 
-The following config will create a resource with `service.version=1.1` and `deployment.environment.name=staging`:
+The following config will create a resource with `service.version=1.1` and
+`deployment.environment.name=staging`:
 
 ```yaml
 resource:
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
 ```
 
-{{% alert title="Alert" %}}
-All environment variables are ignored unless you explicitly add them to the config file.
-{{% /alert %}}
+{{% alert title="Alert" %}} All environment variables are ignored unless you
+explicitly add them to the config file. {{% /alert %}}
 
 ## Migration Configuration
 
-If you have an existing configuration via environment variables, you can use the [migration configuration](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml) as a starting point to migrate to declarative configuration.
+If you have an existing configuration via environment variables, you can use the
+[migration configuration](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml)
+as a starting point to migrate to declarative configuration.
 
 ## Available Config Options
 
-A complete list of config options can be found in the [kitchen sink example](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml).
+A complete list of config options can be found in the
+[kitchen sink example](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml).
 
 ## Endpoint Per Signal
 
-If you have different endpoints for traces, metrics, and logs, use the following config:
+If you have different endpoints for traces, metrics, and logs, use the following
+config:
 
 | OTLP HTTP Exporter | Endpoint value                                                             |
-|--------------------|----------------------------------------------------------------------------|
+| ------------------ | -------------------------------------------------------------------------- |
 | Traces             | `${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318/v1/traces}`   |
 | Metrics            | `${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}` |
 | Logs               | `${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}`       |
@@ -109,4 +118,3 @@ Instead of `otlp_http`, you can also use `otlp_grpc` to export via gRPC:
 otlp_grpc:
   endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4317}
 ```
-
