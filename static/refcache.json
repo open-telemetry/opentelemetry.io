@@ -11675,6 +11675,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:51:53.297046-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#declarative-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-15T16:49:24.384119304Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:17:12.345Z"
