@@ -26,6 +26,15 @@ cSpell:ignore: Dotel myapp
       java -jar myapp.jar
       ```
 
+## Declarative configuration
+
+Declarative configuration uses a YAML file instead of environment variables or system
+properties. This is useful when you have many configuration options to set, or if you
+want to use configuration options that are not available as environment variables or system
+properties.
+
+Refer to the [Declarative configuration](../declarative-configuration) page for more details.
+
 ## Configuring the agent
 
 The agent is highly configurable.
