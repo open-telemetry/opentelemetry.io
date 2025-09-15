@@ -1,3 +1,9 @@
+- name: Apica
+  nativeOTLP: true
+  url: https://docs.apica.io/technologies/ascent-with-opentelemetry
+  contact:
+  oss: false
+  commercial: true
 - name: Digitate (ignio)
   nativeOTLP: true
   url: https://docs.digitate.com/docs/ignio-integrations/open-telemetry-and-ignio/
