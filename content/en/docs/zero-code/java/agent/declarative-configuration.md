@@ -123,6 +123,7 @@ tracer_provider:
 
 - Method call instrumentation (setting span type)
 - (todo)
+- do as separate pages
 
 ## Differences from Other Configuration Methods
 
@@ -133,3 +134,4 @@ tracer_provider:
 
 - Resource attributes for MDC
 - Thread details processor
+- https://github.com/open-telemetry/opentelemetry-java-instrumentation/pull/14591
