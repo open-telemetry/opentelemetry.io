@@ -1,7 +1,7 @@
 ---
 title: Como Contribuir para o OpenTelemetry
 linkTitle: Como Contribuir para o OpenTelemetry
-date: 2025-09-12
+date: 2025-09-15
 author: >-
   [Marylia Gutierrez](https://github.com/maryliag) (Grafana Labs)
 default_lang_commit: 9383da27dd1d08b0c47e2792376dbd6ebbac1192
