@@ -18,3 +18,4 @@ sitio:
 5. [Ask Miss O11y: Baggage in OTel - Honeycomb](https://www.honeycomb.io/blog/ask-miss-o11y-opentelemetry-baggage/)
 6. [Observability Whitepaper - CNCF Tag Observability](https://github.com/cncf/tag-observability/blob/whitepaper-v1.0.0/whitepaper.md)
    para el contenido en [Signals](/docs/concepts/signals/)
+   7. [Read more on What is Observability?](https://middleware.io/blog/observability/)
