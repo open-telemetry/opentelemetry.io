@@ -4,14 +4,13 @@ linkTitle: Declarative configuration
 weight: 30
 ---
 
-Declarative configuration uses a YAML file instead of environment variables or
-system properties.
+Declarative configuration uses a YAML file instead of environment variables.
 
 This approach is useful when:
 
 - You have many configuration options to set
 - You want to use configuration options that are not available as environment
-  variables or system properties
+  variables
 
 ## Supported Languages
 
@@ -64,10 +63,9 @@ logger_provider:
             endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/logs
 ```
 
-## Environment Variables and System Properties
+## Environment Variables
 
-- Declarative configuration supports syntax to read **environment variables**,
-  but not system properties.
+- Declarative configuration supports syntax to read **environment variables**.
 - All environment variables are **ignored unless you explicitly add them to the
   config file**.
 
@@ -110,11 +108,29 @@ config:
 | Metrics            | `${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}` |
 | Logs               | `${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}`       |
 
-## GRPC Exporter
+## gRPC Exporter
 
 Instead of `otlp_http`, you can also use `otlp_grpc` to export via gRPC:
 
 ```yaml
 otlp_grpc:
   endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4317}
+```
+
+## Resource Attributes
+
+The recommended approach to set resource attributes is via environment
+variables, because it works well with tools that set environment variables, such
+as
+[OpenTelemetry Operator for Kubernetes](/docs/platforms/kubernetes/operator/).
+
+However, you can also set resource attributes directly in the config file:
+
+```yaml
+resource:
+  attributes:
+    - name: service.name
+      value: shopping_cart
+    - name: deployment.environment.name
+      value: staging
 ```
