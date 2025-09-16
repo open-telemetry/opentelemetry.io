@@ -83,7 +83,7 @@ resource:
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
 ```
 
-{{% alert title="Alert" %}} All environment variables are ignored unless you
+{{% alert title="Warning" %}} All environment variables are ignored unless you
 explicitly add them to the config file. {{% /alert %}}
 
 ## Migration configuration
