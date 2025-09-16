@@ -8,11 +8,11 @@ Declarative configuration uses a YAML file instead of environment variables.
 
 This approach is useful when:
 
-- You have many configuration options to set
+- You have many configuration options to set.
 - You want to use configuration options that are not available as environment
-  variables
+  variables.
 
-## Supported Languages
+## Supported languages
 
 The following OpenTelemetry SDKs support declarative configuration:
 
@@ -21,10 +21,10 @@ The following OpenTelemetry SDKs support declarative configuration:
 For details, refer to the
 [Compliance Matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#declarative-configuration)
 
-## Getting Started
+## Getting started
 
-1. Save the configuration file below as `otel-config.yaml`.
-2. Add the following to your JVM startup arguments:
+1. Save the following configuration file as `otel-config.yaml`.
+2. Add the following argument to your JVM startup arguments:
 
    ```shell
    -Dotel.experimental.config.file=/path/to/file.yaml
@@ -63,7 +63,7 @@ logger_provider:
             endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/logs
 ```
 
-## Environment Variables
+## Environment variables
 
 - Declarative configuration supports syntax to read **environment variables**.
 - All environment variables are **ignored unless you explicitly add them to the
@@ -86,18 +86,18 @@ resource:
 {{% alert title="Alert" %}} All environment variables are ignored unless you
 explicitly add them to the config file. {{% /alert %}}
 
-## Migration Configuration
+## Migration configuration
 
-If you have an existing configuration via environment variables, you can use the
+If your existing configuration relies on environment variables, you can use the
 [migration configuration](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml)
 as a starting point to migrate to declarative configuration.
 
-## Available Config Options
+## Available config options
 
 A complete list of config options can be found in the
 [kitchen sink example](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml).
 
-## Endpoint Per Signal
+## Endpoint per signal
 
 If you have different endpoints for traces, metrics, and logs, use the following
 config:
