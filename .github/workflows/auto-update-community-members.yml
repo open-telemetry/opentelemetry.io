@@ -44,17 +44,12 @@ jobs:
           npm install --omit=optional
           npm run fix:refcache
 
-          git add -A
-
-          if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Fix refcache"
-            git push
-          fi
-
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
-          add-paths: 'data/community/members.yaml'
+          add-paths: |
+            data/community/members.yaml
+            static/refcache.json
           author:
             opentelemetrybot
             <107717825+opentelemetrybot@users.noreply.github.com>

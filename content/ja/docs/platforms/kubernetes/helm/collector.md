@@ -20,7 +20,7 @@ Kubernetesへのコレクターのデプロイメントを容易にし、管理�
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 helm install my-opentelemetry-collector open-telemetry/opentelemetry-collector \
    --set image.repository="otel/opentelemetry-collector-k8s" \
-   --set mode=<daemonset|deployment|statefulset> \
+   --set mode=<daemonset|deployment|statefulset>
 ```
 
 ### 設定 {#configuration}
