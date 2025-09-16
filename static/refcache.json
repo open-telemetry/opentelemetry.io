@@ -9635,6 +9635,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:38.952312-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-xray": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-16T14:18:16.865148896+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/azure-resources": {
     "StatusCode": 206,
     "LastSeen": "2025-04-08T07:20:52.864031848Z"
