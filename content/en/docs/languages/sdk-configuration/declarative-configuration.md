@@ -100,7 +100,7 @@ A complete list of config options can be found in the
 ## Endpoint per signal
 
 If you have different endpoints for traces, metrics, and logs, use the following
-config:
+config when using `otlp_http`:
 
 | OTLP HTTP Exporter | Endpoint value                                                             |
 | ------------------ | -------------------------------------------------------------------------- |
