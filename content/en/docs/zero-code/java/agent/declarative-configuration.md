@@ -2,6 +2,7 @@
 title: Declarative configuration
 linkTitle: Declarative configuration
 weight: 11
+cSpell:ignore: genai
 ---
 
 Declarative configuration uses a YAML file instead of environment variables or
