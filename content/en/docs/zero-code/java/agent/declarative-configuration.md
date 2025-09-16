@@ -13,11 +13,11 @@ This approach is useful when:
 Just like environment variables, the configuration syntax is language-agnostic and works for all
 OpenTelemetry Java SDKs that support declarative configuration, including the OpenTelemetry Java agent.
 
-## Supported Versions
+## Supported versions
 
 Declarative configuration is supported in **OpenTelemetry Java agent version 2.20.0 and later**.
 
-## Getting Started
+## Getting started
 
 1. Save the configuration file below as `otel-config.yaml`.
 2. Add the following to your JVM startup arguments:
@@ -104,7 +104,7 @@ available via environment variables or system properties:
 
 These options are needed at agent startup, before the declarative configuration file is read.
 
-## Duration Format
+## Duration format
 
 - Declarative configuration **only supports durations in milliseconds** (e.g. `5000` for 5 seconds).
 - You will get an error if you use `OTEL_BSP_SCHEDULE_DELAY=5s` (valid for environment variables, but not for declarative configuration).
@@ -118,7 +118,7 @@ tracer_provider:
         schedule_delay: ${OTEL_BSP_SCHEDULE_DELAY:-5000}
 ```
 
-## Behavior Differences
+## Behavior differences
 
 - The resource attribute `telemetry.distro.name` (that is added by default by the Java agent) has
   the value `opentelemetry-javaagent` instead of `opentelemetry-java-instrumentation`
