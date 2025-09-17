@@ -2131,6 +2131,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-12-23T14:51:42.30807+02:00"
   },
+  "https://docs.oodle.ai/integrations/metrics/otel/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-17T12:11:50.412974509Z"
+  },
   "https://docs.openfaas.com/architecture/metrics/": {
     "StatusCode": 206,
     "LastSeen": "2024-12-18T05:52:18.080718-05:00"
