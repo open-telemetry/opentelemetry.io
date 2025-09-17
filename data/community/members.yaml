@@ -2320,6 +2320,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/d4nyll
     avatar_url: https://avatars.githubusercontent.com/u/9997953?v=4
+  - name: douglascamata
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/douglascamata
+    avatar_url: https://avatars.githubusercontent.com/u/159076?v=4
   - name: facostaembrace
     teams:
       - javascript-contrib-triagers
@@ -2589,9 +2594,6 @@ members:
   - name: DotSpy
     html_url: https://github.com/DotSpy
     avatar_url: https://avatars.githubusercontent.com/u/11577813?v=4
-  - name: douglascamata
-    html_url: https://github.com/douglascamata
-    avatar_url: https://avatars.githubusercontent.com/u/159076?v=4
   - name: edsoncelio
     html_url: https://github.com/edsoncelio
     avatar_url: https://avatars.githubusercontent.com/u/5833278?v=4
