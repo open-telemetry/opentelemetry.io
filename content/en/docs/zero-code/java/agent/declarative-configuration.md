@@ -1,5 +1,5 @@
 ---
-title: Declarative configuration
+title: Java Agent Declarative configuration
 linkTitle: Declarative configuration
 weight: 11
 cSpell:ignore: genai
@@ -20,7 +20,7 @@ configuration, including the OpenTelemetry Java agent.
 
 ## Supported versions
 
-Declarative configuration is supported in **OpenTelemetry Java agent version
+Declarative configuration is supported in the **OpenTelemetry Java agent version
 2.20.0 and later**.
 
 ## Getting started
@@ -32,10 +32,11 @@ Declarative configuration is supported in **OpenTelemetry Java agent version
    -Dotel.experimental.config.file=/path/to/otel-config.yaml
    ```
 
-Follow [Declarative configuration][] as a getting started guide for declarative
-configuration.
+Reference the [SDK Declarative configuration][] documentation for a more general
+getting started guide for declarative configuration.
 
-This page focuses on specifics for the OpenTelemetry Java agent.
+This page focuses on specifics for the
+[OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation).
 
 ## Mapping of configuration options
 
@@ -60,8 +61,8 @@ configuration to declarative configuration, use the following rules:
    migration config.
 4. Use `.` to create an indentation level.
 5. Convert `-` to `_`.
-6. Convert the option value to the appropriate type (e.g. `true` to boolean
-   `true`, `5000` to integer `5000`).
+6. Use YAML boolean and integer types where appropriate (e.g. `true` instead of
+   `"true"`, `5000` instead of `"5000"`).
 7. Options that have special mapping are called out below.
 
 ```yaml
