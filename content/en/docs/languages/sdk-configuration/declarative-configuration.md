@@ -16,7 +16,7 @@ This approach is useful when:
 
 The following OpenTelemetry SDKs support declarative configuration:
 
-- Java
+- [Java](/docs/zero-code/java/agent/declarative-configuration/)
 
 For details, refer to the
 [Compliance Matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#declarative-configuration)

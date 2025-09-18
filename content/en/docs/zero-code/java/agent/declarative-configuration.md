@@ -191,5 +191,5 @@ not yet support declarative configuration:
 - however, you can already use `application.yaml` to configure the OpenTelemetry
   Spring Boot starter
 
-[Declarative configuration]:
+[SDK Declarative configuration]:
   /docs/languages/sdk-configuration/declarative-configuration
