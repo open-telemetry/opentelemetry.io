@@ -1218,7 +1218,7 @@ Now, within the `model.go` file, add the definition for the `Atm` and the
 package tailtracer
 
 type Atm struct{
-    ID           int64
+	ID           int64
 	Version      string
 	Name         string
 	StateID      string
@@ -1230,10 +1230,9 @@ type BackendSystem struct{
 	Version       string
 	ProcessName   string
 	OSType        string
-    OSVersion     string
+	OSVersion     string
 	CloudProvider string
 	CloudRegion   string
-	ServiceName   string
 	Endpoint      string
 }
 ```
@@ -1256,7 +1255,7 @@ import (
 )
 
 type Atm struct{
-    ID           int64
+	ID           int64
 	Version      string
 	Name         string
 	StateID      string
@@ -1268,7 +1267,7 @@ type BackendSystem struct{
 	Version       string
 	ProcessName   string
 	OSType        string
-    OSVersion     string
+	OSVersion     string
 	CloudProvider string
 	CloudRegion   string
 	Endpoint      string
@@ -1276,7 +1275,7 @@ type BackendSystem struct{
 
 func generateAtm() Atm{
 	i := getRandomNumber(1, 2)
-    var newAtm Atm
+	var newAtm Atm
 
 	switch i {
 		case 1:
@@ -1305,10 +1304,10 @@ func generateAtm() Atm{
 }
 
 func generateBackendSystem() BackendSystem{
-    i := getRandomNumber(1, 3)
+	i := getRandomNumber(1, 3)
 
 	newBackend := BackendSystem{
-    	ProcessName: "accounts",
+		ProcessName: "accounts",
 		Version: "v2.5",
 		OSType: "lnx",
 		OSVersion: "4.16.10-300.fc28.x86_64",
@@ -1332,7 +1331,7 @@ func generateBackendSystem() BackendSystem{
 func getRandomNumber(min int, max int) int {
 	rand.Seed(time.Now().UnixNano())
 	i := (rand.Intn(max - min + 1) + min)
-    return i
+	return i
 }
 ```
 
@@ -1772,10 +1771,10 @@ the ATM system's instrumentation scope and its spans. Open the
 `tailtracer/model.go` file and add the following function:
 
 ```go
-func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) (ptrace.ScopeSpans){
+func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {
 	scopeSpans := resourceSpans.ScopeSpans().AppendEmpty()
 
-    return scopeSpans
+	return scopeSpans
 }
 ```
 
@@ -1800,7 +1799,7 @@ name and version of the instrumentation scope for the new `ptrace.ScopeSpans`.
 Here is what `appendAtmSystemInstrScopeSpans` looks like after the update:
 
 ```go
- func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) (ptrace.ScopeSpans){
+func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {
 	scopeSpans := resourceSpans.ScopeSpans().AppendEmpty()
 	scopeSpans.Scope().SetName("atm-system")
 	scopeSpans.Scope().SetVersion("v1.0")
@@ -2189,7 +2188,8 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {
 	scopeSpans := resourceSpans.ScopeSpans().AppendEmpty()
-
+	scopeSpans.Scope().SetName("atm-system")
+	scopeSpans.Scope().SetVersion("v1.0")
 	return scopeSpans
 }
 
@@ -2237,8 +2237,8 @@ follow:
 
 ```go
 func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host component.Host) error {
-    tailtracerRcvr.host = host
-    ctx = context.Background()
+	tailtracerRcvr.host = host
+	ctx = context.Background()
 	ctx, tailtracerRcvr.cancel = context.WithCancel(ctx)
 
 	interval, _ := time.ParseDuration(tailtracerRcvr.config.Interval)
@@ -2403,9 +2403,9 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 		}
 
 	atmSpanId := NewSpanID()
-    atmSpanStartTime := time.Now()
-    atmDuration, _ := time.ParseDuration("4s")
-    atmSpanFinishTime := atmSpanStartTime.Add(atmDuration)
+	atmSpanStartTime := time.Now()
+	atmDuration, _ := time.ParseDuration("4s")
+	atmSpanFinishTime := atmSpanStartTime.Add(atmDuration)
 
 	atmSpan := atmScopeSpans.Spans().AppendEmpty()
 	atmSpan.SetTraceID(traceId)
@@ -2419,7 +2419,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 	backendSpanId := NewSpanID()
 
 	backendDuration, _ := time.ParseDuration("2s")
-    backendSpanStartTime := atmSpanStartTime.Add(backendDuration)
+	backendSpanStartTime := atmSpanStartTime.Add(backendDuration)
 
 	backendSpan := backendScopeSpans.Spans().AppendEmpty()
 	backendSpan.SetTraceID(atmSpan.TraceID())
@@ -2601,7 +2601,8 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {
 	scopeSpans := resourceSpans.ScopeSpans().AppendEmpty()
-
+	scopeSpans.Scope().SetName("atm-system")
+	scopeSpans.Scope().SetVersion("v1.0")
 	return scopeSpans
 }
 

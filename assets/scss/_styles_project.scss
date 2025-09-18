@@ -218,6 +218,14 @@
   @extend .td-max-width-on-larger-screens;
 }
 
+.td-content .img-initial {
+  filter: none;
+}
+
+[data-bs-theme='dark'] .td-content .img-initial {
+  filter: brightness(0) invert(1);
+}
+
 .td-blog.otel-with-contributions-from {
   .td-content {
     .td-byline {
