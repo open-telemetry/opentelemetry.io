@@ -1,8 +1,9 @@
 ---
 title: Конфігурація OTLP Exporter
 linkTitle: OTLP Exporter
+weight: 20
 aliases: [otlp-exporter-configuration]
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 4a179f9723936afce996e0ae71b305f15064e4d8
 cSpell:ignore: EXPORTЕР
 ---
 

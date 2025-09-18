@@ -5,7 +5,7 @@ aliases:
   - scenarios
   - services/feature-flag
   - services/featureflagservice
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 4a179f9723936afce996e0ae71b305f15064e4d8
 cSpell:ignore: OLJCESPC7Z
 ---
 
@@ -27,6 +27,7 @@ cSpell:ignore: OLJCESPC7Z
 | `adServiceManualGc`                 | Ad              | Викликати повне ручне збирання сміття в сервісі оголошень                                                                                                   |
 | `adServiceHighCpu`                  | Ad              | Викликати високе навантаження на процесор у сервісі оголошень. Якщо ви хочете продемонструвати обмеження процесора, встановіть обмеження ресурсів процесора |
 | `cartServiceFailure`                | Cart            | Генерувати помилку кожного разу, коли викликається `EmptyCart`                                                                                              |
+| `emailMemoryLeak`                   | Email           | Імітувати витік памʼяті в сервісі `email`.                                                                                                                  |
 | `productCatalogFailure`             | Product Catalog | Генерувати помилку для запитів `GetProduct` з ідентифікатором продукту: `OLJCESPC7Z`                                                                        |
 | `recommendationServiceCacheFailure` | Recommendation  | Створити витік памʼяті через кеш, що зростає експоненційно. Зростання 1.4x, 50% запитів викликають зростання.                                               |
 | `paymentServiceFailure`             | Payment         | Генерувати помилку при виклику методу `charge`.                                                                                                             |

@@ -1,6 +1,6 @@
 ---
 title: Швидкий старт
-description: Налаштуйте та збирайте телеметрію за кілька хвилин!
+description: Налаштуйте та збирайте телеметричні дані за лічені хвилини!
 aliases: [getting-started]
 weight: 1
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
@@ -9,7 +9,7 @@ cSpell:ignore: docker dokey gobin okey telemetrygen
 
 <!-- markdownlint-disable ol-prefix blanks-around-fences -->
 
-OpenTelemetry Collector отримує [трейси](/docs/concepts/signals/traces/), [метрики](/docs/concepts/signals/metrics/) та [логи](/docs/concepts/signals/logs/), обробляє телеметрію та експортує її до різноманітних бекендів спостереження за допомогою своїх компонентів. Для концептуального огляду Collector дивіться [Collector](/docs/collector).
+OpenTelemetry Collector отримує [трейси](/docs/concepts/signals/traces/), [метрики](/docs/concepts/signals/metrics/) та [логи](/docs/concepts/signals/logs/), обробляє телеметрію та експортує її до широкого спектру бекендів спостереження за допомогою своїх компонентів. Концептуальний огляд Collector дивіться у розділі [Collector](/docs/collector).
 
 Ви навчитеся робити наступне менш ніж за пʼять хвилин:
 
@@ -18,7 +18,7 @@ OpenTelemetry Collector отримує [трейси](/docs/concepts/signals/tra
 
 ## Передумови {#prerequisites}
 
-Переконайтеся, що ваше середовище розробника має наступне. Ця сторінка передбачає, що ви використовуєте `bash`. Адаптуйте конфігурацію та команди відповідно до вашого улюбленого shell.
+Переконайтеся, що ваше середовище розробника має наступне. Ця сторінка передбачає, що ви використовуєте `bash`. Адаптуйте конфігурацію та команди відповідно до вашої улюбленої оболонки.
 
 - [Docker](https://www.docker.com/) або будь-яке сумісне середовище виконання контейнерів.
 - [Go](https://go.dev/) 1.20 або вище
@@ -28,7 +28,7 @@ OpenTelemetry Collector отримує [трейси](/docs/concepts/signals/tra
   export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
   ```
 
-[^1]: Для отримання додаткової інформації дивіться [Ваша перша програма](https://go.dev/doc/code#Command).
+[^1]: Для отримання додаткової інформації дивіться [Ваш перший застосунок](https://go.dev/doc/code#Command).
 
 ## Налаштування середовища {#set-up-the-environment}
 
@@ -114,7 +114,7 @@ OpenTelemetry Collector отримує [трейси](/docs/concepts/signals/tra
 
 ## Наступні кроки {#next-steps}
 
-У цьому підручнику ви запустили OpenTelemetry Collector та надіслали телеметрію до нього. Як наступні кроки, розгляньте можливість зробити наступне:
+У цьому навчальному посібнику ви запустили OpenTelemetry Collector та надіслали телеметрію до нього. Як наступні кроки, розгляньте можливість зробити наступне:
 
 - Досліджуйте різні способи [встановлення Collector](../installation/).
 - Дізнайтеся про різні режими Collector у [Методах розгортання](../deployment/).

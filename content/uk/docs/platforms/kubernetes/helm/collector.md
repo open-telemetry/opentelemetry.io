@@ -1,7 +1,7 @@
 ---
 title: Чарт OpenTelemetry Collector
 linkTitle: Чарт Collector
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: 4a179f9723936afce996e0ae71b305f15064e4d8
 # prettier-ignore
 cSpell:ignore: debugexporter filelog filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
 ---
@@ -18,7 +18,7 @@ cSpell:ignore: debugexporter filelog filelogreceiver hostmetricsreceiver kubelet
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 helm install my-opentelemetry-collector open-telemetry/opentelemetry-collector \
    --set image.repository="otel/opentelemetry-collector-k8s" \
-   --set mode=<daemonset|deployment|statefulset> \
+   --set mode=<daemonset|deployment|statefulset>
 ```
 
 ### Конфігурація {#configuration}

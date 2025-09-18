@@ -1,8 +1,9 @@
 ---
 title: Загальна конфігурація SDK
 linkTitle: Загальна
+weight: 10
 aliases: [general-sdk-configuration]
-default_lang_commit: d9b41af1f01873cce900ce37f1c07afb2758f028
+default_lang_commit: 4a179f9723936afce996e0ae71b305f15064e4d8
 cSpell:ignore: ottrace
 ---
 

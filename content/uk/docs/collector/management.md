@@ -156,7 +156,7 @@ storage:
 
 {{% alert color="primary" title="Примітки" %}}
 
-Переконайтеся, що ви замінили `$OTEL_COLLECTOR_BINARY` на справжній шлях до файлу. Наприклад, у Linux або macOS, якщо ви встановили колектор у `/usr/local/bin/`, вам слід замінити `$OTEL_COLLECTOR_BINARY` на `/usr/local/bin/otelcol`.
+Переконайтеся, що ви замінили `$OTEL_COLLECTOR_BINARY` на справжній шлях до файлу. Наприклад, у Linux або macOS, якщо ви встановили колектор у `/usr/local/bin/`, вам слід замінити значення `$OTEL_COLLECTOR_BINARY` на `/usr/local/bin/otelcol`.
 
 {{% /alert %}}
 
@@ -241,7 +241,7 @@ $ cat ./storage/agent.log
 
 ## Інша інформація {#other-information}
 
-- Дописи в блозі posts:
+- Дописи в блозі:
   - [Open Agent Management Protocol (OpAMP) State of the Nation 2023][blog-opamp-status]
   - [Using OpenTelemetry OpAMP to modify service telemetry on the go][blog-opamp-service-telemetry]
 - Відео на YouTube:

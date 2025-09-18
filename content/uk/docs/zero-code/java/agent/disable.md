@@ -1,8 +1,8 @@
 ---
 title: Придушення конкретної інструментації
 linkTitle: Придушення інструментації
-weight: 11
-default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
+weight: 12
+default_lang_commit: 4a179f9723936afce996e0ae71b305f15064e4d8
 # prettier-ignore
 cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---

@@ -1,7 +1,7 @@
 ---
 title: Початок роботи
 weight: 1
-default_lang_commit: d96ebd8b6acadb9bd26a36f91eeb3410a2050c7e
+default_lang_commit: 4a179f9723936afce996e0ae71b305f15064e4d8
 cSpell:ignore: Dotel jvms myapp
 ---
 
@@ -22,6 +22,12 @@ cSpell:ignore: Dotel jvms myapp
       export OTEL_SERVICE_NAME="your-service-name"
       java -jar myapp.jar
       ```
+
+## Декларативна конфігурація {#declarative-configuration}
+
+Декларативна конфігурація використовує файл YAML замість змінних середовища або властивостей системи. Це корисно, коли потрібно встановити багато параметрів конфігурації або якщо ви хочете використовувати параметри конфігурації, які недоступні як змінні середовища або властивості системи.
+
+Докладнішу інформацію дивіться на сторінці [Декларативна конфігурація](../declarative-configuration).
 
 ## Налаштування агента {#configuring-the-agent}
 

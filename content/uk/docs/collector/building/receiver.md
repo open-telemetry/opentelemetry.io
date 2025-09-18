@@ -9,7 +9,7 @@ cSpell:ignore: backendsystem crand debugexporter loggingexporter mapstructure pc
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
 
-Якщо ви читаєте цей підручник, ви, ймовірно, вже маєте уявлення про концепції OpenTelemetry, повʼязані з [розподіленим трасуванням](/docs/concepts/signals/traces/).
+Якщо ви читаєте це керівництво, ви, ймовірно, вже маєте уявлення про концепції OpenTelemetry, повʼязані з [розподіленим трасуванням](/docs/concepts/signals/traces/).
 
 Ось визначення цих концепцій згідно з OpenTelemetry:
 
@@ -111,7 +111,7 @@ service:
 ./otelcol-dev/otelcol-dev --config config.yaml
 ```
 
-Вихід може виглядати так:
+Вивід може виглядати так:
 
 ```log
 2023-11-08T18:38:37.183+0800	info	service@v0.88.0/telemetry.go:84	Setting up own telemetry...
@@ -186,7 +186,7 @@ receivers:
     number_of_traces: 1
 ```
 
-Створіть файл під назвою `config.go` у теці `tailtracer`, де ви напишете весь код для підтримки налаштувань вашого приймача.
+Створіть файл з назвою `config.go` у теці `tailtracer`, де ви напишете весь код для підтримки налаштувань вашого приймача.
 
 ```sh
 touch tailtracer/config.go
@@ -385,7 +385,7 @@ func NewFactory() receiver.Factory {
 
 Компонент приймача може обробляти трейси, метрики та логи. Фабрика приймача відповідає за визначення можливостей, які буде надавати приймач.
 
-Оскільки темою цього підручника є трасування, ми увімкнемо приймач `tailtracer` для роботи лише з трасуванням. Пакет `receiver` надає наступні функції та типи, які допомагають фабриці описати можливості обробки трасування:
+Оскільки темою цього посібника є трасування, ми увімкнемо приймач `tailtracer` для роботи лише з трасуванням. Пакет `receiver` надає наступні функції та типи, які допомагають фабриці описати можливості обробки трасування:
 
 ```go
 func WithTraces(createTracesReceiver CreateTracesFunc, sl component.StabilityLevel) FactoryOption
@@ -1120,7 +1120,7 @@ func generateTraces(numberOfTraces int) ptrace.Traces{
 }
 ```
 
-На даний момент ви вже достатньо почули і прочитали про те, як трейси складаються з відрізків (Spans). Можливо, ви також написали деякий інструментальний код, використовуючи функції та типи SDK для їх створення, але ви, мабуть, не знали, що у API колектора існують інші типи “span", які беруть участь у створенні трейсів.
+На даний момент ви вже достатньо почули і прочитали про те, як трейси складаються з відрізків (Spans). Можливо, ви також написали деякий інструментальний код, використовуючи функції та типи SDK для їх створення, але ви, мабуть, не знали, що у API колектора існують інші типи "span", які беруть участь у створенні трейсів.
 
 Ви почнете з типу з назвою `ptrace.ResourceSpans`, який представляє ресурс і всі операції, які він створив або отримав під час участі у трасуванні. Його визначення можна знайти у [/pdata/internal/data/protogen/trace/v1/trace.pb.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/pdata/internal/data/protogen/trace/v1/trace.pb.go>).
 
@@ -1132,7 +1132,7 @@ func generateTraces(numberOfTraces int) ptrace.Traces{
 
 Оновіть функцію `generateTrace()` наступними змінами:
 
-- додано змінну з іменем `resourceSpan` для представлення діапазону ресурсів `ResourceSpan
+- додано змінну з іменем `resourceSpan` для представлення діапазону ресурсів `ResourceSpan`
 - додайте змінну з іменем `atmResource` для представлення `pcommon.Resource`, повʼязаного з `ResourceSpan`.
 - Для ініціалізації обох змінних використовуйте методи, згадані вище.
 
@@ -1202,7 +1202,7 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
 
 Отже, коли ви подивитеся на сутність `BackendSystem`, вона має поля, що представляють інформацію, повʼязану з [Операційною системою](/docs/specs/semconv/resource/os/) та [Хмарою](/docs/specs/semconv/resource/cloud/), і ми будемо використовувати імена та значення атрибутів, визначені семантичною угодою про ресурси, для представлення цієї інформації на її `Resource`.
 
-Усі імена атрибутів семантичної конвенції ресурсів та добре відомі значення зберігаються у файлі [/semconv/v1.9.0/generated_resource.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/semconv/v1.9.0/generated_resource.go) у GitHub-проекті Collector'а.
+Усі імена атрибутів семантичної конвенції ресурсів та добре відомі значення зберігаються у файлі [/semconv/v1.9.0/generated_resource.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/semconv/v1.9.0/generated_resource.go) у GitHub-проєкті Collector'а.
 
 Створимо функцію для зчитування значень полів з екземпляра `BackendSystem` і запису їх як атрибутів в екземпляр `pcommon.Resource`. Відкрийте файл `tailtracer/model.go` і додайте наступну функцію:
 
@@ -1429,9 +1429,9 @@ func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.
 }
 ```
 
-У `ptrace.ScopeSpans` є метод з назвою `Scope()`, який повертає посилання на екземпляр `pcommon.InstrumentationScope`, що представляє діапазон інструментарію, який згенерував проміжки.
+У `ptrace.ScopeSpans` є метод з назвою `Scope()`, який повертає посилання на екземпляр `pcommon.InstrumentationScope`, що представляє діапазон інструментарію, який згенерував відрізки.
 
-pcommon.InstrumentationScope` має наступні методи для опису діапазону інструментування:
+`pcommon.InstrumentationScope` має наступні методи для опису діапазону інструментування:
 
 - `SetName(v рядок)` встановлює імʼя для бібліотеки інструментарію
 
@@ -1507,11 +1507,11 @@ func generateTraces(numberOfTraces int) ptrace.Traces{
 
 Пакет `pcommon` надає наступні типи для генерування ідентифікаторів проміжків:
 
-- `type TraceID [16]byte
+- `type TraceID [16]byte`
 
-- `type SpanID [8]byte
+- `type SpanID [8]byte`
 
-У цьому підручнику ви створюватимете ідентифікатори за допомогою функцій з пакунка `github.com/google/uuid` для `pcommon.TraceID` та функцій з пакунка `crypto/rand` для випадкової генерації `pcommon.SpanID`. Відкрийте файл `tailtracer/model.go` і додайте обидва пакунки до оператора `import`; після цього додайте наступні функції для генерації обох ідентифікаторів:
+У цьому посібнику ви створюватимете ідентифікатори за допомогою функцій з пакунка `github.com/google/uuid` для `pcommon.TraceID` та функцій з пакунка `crypto/rand` для випадкової генерації `pcommon.SpanID`. Відкрийте файл `tailtracer/model.go` і додайте обидва пакунки до оператора `import`; після цього додайте наступні функції для генерації обох ідентифікаторів:
 
 ```go
 import (
@@ -1570,7 +1570,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 {{% alert title="Перевірте свою роботу" %}}
 
 - Додано змінні `traceId` та `backendSpanId` для представлення відповідно ідентифікатора трейсу та ідентифікатора відрізка та ініціалізовано їх за допомогою допоміжних функцій, створених раніше.
-- Додано змінні `backendSpanStartTime` та `backendSpanFinishTime` для представлення часу початку та закінчення операції. У підручнику будь-яка операція `BackendSystem` триватиме 1 секунду.
+- Додано змінні `backendSpanStartTime` та `backendSpanFinishTime` для представлення часу початку та закінчення операції. У посібнику будь-яка операція `BackendSystem` триватиме 1 секунду.
 - Додано змінну з назвою `backendSpan`, яка зберігатиме екземпляр `ptrace.Span`, що представляє цю операцію.
 - Встановлення `Name` відрізка значенням поля `Endpoint` з екземпляра `BackendSystem`.
 - Встановлення `Kind` відрізка як `ptrace.SpanKindServer`. Погляньте на [SpanKind section](/docs/specs/otel/trace/api/#spankind) у специфікації трасування, щоб зрозуміти, як правильно визначити SpanKind.
@@ -1848,7 +1848,7 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 
 {{% alert title="Перевірте свою роботу" %}}
 
-- Додано рядок під умовою `case <=ticker.C`, що викликає метод `tailtracerRcvr.nextConsumer.ConsumeTraces()` з передачею нового контексту, створеного у методі `Start()` (`ctx`) та виклик функції `generateTraces`, щоб згенеровані трейси можна було передати наступному споживачу у конвеєрі.
+- Додано рядок з умовою `case <=ticker.C`, що викликає метод `tailtracerRcvr.nextConsumer.ConsumeTraces()` з передачею нового контексту, створеного у методі `Start()` (`ctx`) та виклик функції `generateTraces`, щоб згенеровані трейси можна було передати наступному споживачу у конвеєрі.
 
 {{% /alert %}}
 
@@ -2249,6 +2249,6 @@ go run ./otelcol-dev --config config.yaml
 
 Ось детальний вигляд одного з таких трейсів у Jaeger: ![Jaeger trace](/img/docs/tutorials/Jaeger-FullSystem-Trace-Details.png)
 
-Це все! Ви дійшли до кінця цього підручника і успішно реалізували приймач трасування, вітаємо!
+Це все! Ви дійшли до кінця цього посібника і успішно реалізували приймач трасування, вітаємо!
 
 [^1]: До версії v0.86.0 використовуйте `loggingexporter` замість `debugexporter`.

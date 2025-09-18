@@ -7,7 +7,7 @@ cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
 
 Ви можете розгорнути OpenTelemetry Collector в різних операційних системах та архітектурах. Наступні інструкції показують, як завантажити та встановити останню стабільну версію Колектора.
 
-Якщо ви не знайомі з моделями розгортання, компонентами та репозиторіями, що застосовуються до OpenTelemetry Collector, спочатку перегляньте сторінки [Збір даних][] та [Методи розгортання][].
+Якщо ви не знайомі з моделями розгортання, компонентами та репозиторіями, що застосовуються до OpenTelemetry Collector, спочатку перегляньте сторінки [Збір даних][data collection] та [Методи розгортання][deployment methods].
 
 ## Docker
 
@@ -76,11 +76,11 @@ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-
 
 Ви також можете використовувати [OpenTelemetry Operator][] для забезпечення та підтримки екземпляра OpenTelemetry Collector з такими функціями, як автоматичне оновлення, налаштування `Service` на основі конфігурації OpenTelemetry, автоматичне впровадження sidecar у розгортання та інше.
 
-Для отримання інструкцій щодо використання Колектора з Kubernetes дивіться [Kubernetes Getting Started](/docs/platforms/kubernetes/getting-started/).
+Для отримання інструкцій щодо використання Колектора з Kubernetes дивіться [Початок роботи з Kubernetes](/docs/platforms/kubernetes/getting-started/).
 
 ## Nomad
 
-Ви можете знайти референсні файли завдань для розгортання Колектора як агента, шлюзу та повної демонстрації у [Getting Started with OpenTelemetry on HashiCorp Nomad][].
+Ви можете знайти референсні файли завдань (job) для розгортання Колектора як агента, шлюзу та повної демонстрації у [Getting Started with OpenTelemetry on HashiCorp Nomad][].
 
 ## Linux
 
@@ -156,7 +156,7 @@ sudo rpm -ivh otelcol_{{% param vers %}}_linux_386.rpm
 
 ### Ручне встановлення в Linux {#manual-linux-installation}
 
-[Випуски][] для Linux доступні для різних архітектур. Ви можете завантажити файл, що містить бінарний файл, і встановити його на свій компʼютер вручну:
+[Випуски][releases] для Linux доступні для різних архітектур. Ви можете завантажити файл, що містить бінарний файл, і встановити його на свій компʼютер вручну:
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
@@ -208,7 +208,7 @@ sudo journalctl -u otelcol
 
 ## macOS
 
-[Випуски][] для macOS доступні для систем Intel та ARM. Випуски упаковані у вигляді архівів tarball (`.tar.gz`). Щоб розпакувати їх, виконайте наступні команди:
+[Випуски][releases] для macOS доступні для систем Intel та ARM. Випуски упаковані у вигляді архівів tarball (`.tar.gz`). Щоб розпакувати їх, виконайте наступні команди:
 
 {{< tabpane text=true >}} {{% tab Intel %}}
 
@@ -230,7 +230,7 @@ tar -xvf otelcol_{{% param vers %}}_darwin_arm64.tar.gz
 
 ## Windows
 
-[Випуски][] для Windows доступні у вигляді MSI-інсталяторів та стиснених архівів tarball (`.tar.gz`). MSI встановлює Колектор як службу Windows, названу на честь дистрибутиву, з відображуваною назвою "OpenTelemetry Collector", і реєструє джерело журналу подій програми з назвою дистрибутиву.
+[Випуски][releases] для Windows доступні у вигляді MSI-інсталяторів та стиснених архівів tarball (`.tar.gz`). MSI встановлює Колектор як службу Windows, названу на честь дистрибутиву, з назвою "OpenTelemetry Collector", і реєструє джерело Application Event Log з назвою дистрибутиву.
 
 ### Встановлення MSI {#msi-installation}
 
@@ -249,7 +249,7 @@ tar -xvzf otelcol_{{% param vers %}}_windows_amd64.tar.gz
 
 ## Збирання з сирців {#building-from-source}
 
-Ви можете зібрати останню версію Колектора на основі локальної операційної системи, використовуючи наступні команди:
+Ви можете зібрати останню версію Колектора для вашої локальної операційної системи, використовуючи наступні команди:
 
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-collector.git
@@ -258,9 +258,9 @@ make install-tools
 make otelcorecol
 ```
 
-[збір даних]: /docs/concepts/components/#collector
-[методи розгортання]: ../deployment/
+[data collection]: /docs/concepts/components/#collector
+[deployment methods]: ../deployment/
 [opentelemetry helm charts]: /docs/platforms/kubernetes/helm/
 [opentelemetry operator]: /docs/platforms/kubernetes/operator/
 [getting started with opentelemetry on hashicorp nomad]: https://github.com/hashicorp/nomad-open-telemetry-getting-started
-[випуски]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases
+[releases]: https://github.com/open-telemetry/opentelemetry-collector-releases/releases
