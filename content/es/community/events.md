@@ -12,9 +12,9 @@ en el proyecto y conectar con la comunidad de observabilidad en general.
 
 {{< community-event-list >}}
 
-## Eventos Comunitarios Clave
+## Eventos comunitarios clave
 
-### SIG Eventos Virtuales para Usuarios Finales
+### Eventos virtuales para usuarios finales
 
 El grupo de usuarios finales del SIG de OpenTelemetry organiza eventos virtuales
 periódicos para reunir a usuarios finales, compartir experiencias y debatir los
