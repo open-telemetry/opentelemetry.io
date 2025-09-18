@@ -28,7 +28,7 @@ room at the [CNCF Slack workspace](https://slack.cncf.io).
 ## Architecture
 
 [Authenticators] are regular extensions that also satisfy one or more interfaces
-related to the authentication mechanism. [Server authenticators] are used with
+related to the authentication mechanism. [Server authenticators][sa] are used with
 receivers, and are able to intercept HTTP and gRPC requests, while client
 authenticators are used with exporters, able to add authentication data to HTTP
 and gRPC requests. It is possible for authenticators to implement both
