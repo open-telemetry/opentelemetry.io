@@ -572,3 +572,9 @@
   commercial: true
   url: https://www.velodb.io/solutions/use-cases/observability
   contact: owen@velodb.io
+- name: Oodle AI
+  nativeOTLP: true
+  url: https://docs.oodle.ai/integrations/metrics/otel/
+  contact: support@oodle.ai
+  oss: false
+  commercial: true
