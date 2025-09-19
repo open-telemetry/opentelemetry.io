@@ -14,7 +14,7 @@ about any single product.
 
 ## Traces
 
-### Initializing Tracing
+### Initializing tracing
 
 The OpenTelemetry SDK is initialized from `main` using the `initTracerProvider`
 function.
@@ -115,7 +115,7 @@ span.AddEvent(msg)
 
 ## Metrics
 
-### Initializing Metrics
+### Initializing metrics
 
 The OpenTelemetry SDK is initialized from `main` using the `initMeterProvider`
 function.

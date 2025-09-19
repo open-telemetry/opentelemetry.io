@@ -12,7 +12,7 @@ The content of this page is most applicable if you already have an instrumented
 application generating some kind of tracing telemetry data and already have an
 understanding of the [OpenTelemetry Collector](/docs/collector).
 
-## What is a Connector?
+## What is a connector?
 
 A connector acts as the means of sending telemetry data between different
 collector pipelines by connecting them. A connector acts as an exporter to one
@@ -21,7 +21,7 @@ acts on one type of telemetry data. There may exist the need to process one form
 of telemetry data into another one, but it is required to route the according
 data to its proper collector pipeline.
 
-## Why use a Connector?
+## Why use a connector?
 
 The connector is beneficial at merging, routing and replicating data streams.
 Along with sequential pipelining, which is to connect pipelines together, the
@@ -52,15 +52,15 @@ following links:
 [What are Connectors in OpenTelemetry?](https://observiq.com/blog/what-are-connectors-in-opentelemetry/),
 [OpenTelemetry Connector Configurations](/docs/collector/configuration/#connectors)
 
-### The Old Architecture:
+### The old architecture:
 
 ![Before picture of how processors emitted data directly to another pipelines exporter](./otel-collector-before-connector.svg)
 
-### New Architecture Using a Connector:
+### New architecture using a connector:
 
 ![How the pipeline should work using the connector component](./otel-collector-after-connector.svg)
 
-## Building Example Connector
+## Building example connector
 
 For this tutorial, we will write an example connector that takes traces and
 converts them into metrics as a basic example of how the connector component in
@@ -70,7 +70,7 @@ count of these occurrences are stored in the connector.
 
 ## Configurations
 
-### Setting up Collector Config:
+### Setting up collector config:
 
 Setup the configuration you will use for the OpenTelemetry Collector in the
 `config.yaml` file. This file defines how your data will be routed, processed
@@ -131,7 +131,7 @@ connector we will create in this tutorial.
     - `config.go` - A file to define the connector's settings
     - `factory.go` - A file to create instances of the connector
 
-### Create your connector settings in config.go
+### Create your connector settings in config.Go
 
 In order to be instantiated and participate in pipelines, the collector needs to
 identify your connector and properly load its settings from within its
@@ -170,7 +170,7 @@ func (c *Config) Validate() error {
 Further details about mapstructure can be found at
 [Go mapstructure](https://pkg.go.dev/github.com/mitchellh/mapstructure).
 
-## Implement the Factory
+## Implement the factory
 
 To instantiate the object, you will need to use the `NewFactory` function
 associated with each of the components. We will use the `connector.NewFactory`
@@ -300,7 +300,7 @@ func createTracesToMetricsConnector(ctx context.Context, params connector.Settin
 }
 ```
 
-## Implementing the Trace Connector
+## Implementing the trace connector
 
 Implement the methods from the interface component specific to the type of the
 component in the `connector.go` file. In this tutorial we will implement the
@@ -455,9 +455,9 @@ func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) erro
 }
 ```
 
-## Using the Component
+## Using the component
 
-### Summary of Using OpenTelemetry Collector Builder:
+### Summary of using OpenTelemetry Collector builder:
 
 You can use the
 [OpenTelemetry Collector Builder](/docs/collector/custom-collector/) to build
@@ -551,13 +551,13 @@ your own OpenTelemetry Collector binary. You can add or remove components
     The output path name and name of dist is detailed in the
     `build-config.yaml`.
 
-## Testing Your Connector
+## Testing your connector
 
 Now that you have built your example connector, let's validate its functionality
 with unit tests. Go unit tests provide better coverage and are easier to
 maintain.
 
-### Writing Unit Tests
+### Writing unit tests
 
 Create a test file `connector_test.go` in your connector directory:
 
@@ -696,7 +696,7 @@ func TestConfigValidation(t *testing.T) {
 }
 ```
 
-### Running the Tests
+### Running the tests
 
 1. **Add test dependencies to your `go.mod`:**
 
@@ -710,7 +710,7 @@ func TestConfigValidation(t *testing.T) {
    go test -cover -v ./...
    ```
 
-### Expected Test Output
+### Expected test output
 
 When tests run successfully, you should see output similar to:
 

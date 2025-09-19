@@ -15,7 +15,7 @@ with a Valkey caching service for fast access to shopping cart data.
 
 ## Traces
 
-### Initializing Tracing
+### Initializing tracing
 
 OpenTelemetry is configured in the .NET dependency injection container. The
 `AddOpenTelemetry()` builder method is used to configure desired instrumentation
@@ -72,7 +72,7 @@ activity?.AddEvent(new("Fetch cart"));
 
 ## Metrics
 
-### Initializing Metrics
+### Initializing metrics
 
 Similar to configuring OpenTelemetry Traces, the .NET dependency injection
 container requires a call to `AddOpenTelemetry()`. This builder configures

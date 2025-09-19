@@ -10,7 +10,7 @@ in which configuration can be supplied to the Java agent. For information on the
 configuration options themselves, see
 [Configure the SDK](/docs/languages/java/configuration). {{% /alert %}}
 
-## Agent Configuration
+## Agent configuration
 
 The agent can consume configuration from one or more of the following sources
 (ordered from highest to lowest priority):
@@ -24,7 +24,7 @@ The agent can consume configuration from one or more of the following sources
   [`AutoConfigurationCustomizerProvider`](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.java)
   SPI
 
-## Configuring with Environment Variables
+## Configuring with environment variables
 
 In certain environments, configuring settings through environment variables is
 often preferred. Any setting that can be configured using a system property can
@@ -81,7 +81,7 @@ The Java agent logging mode. The following 3 modes are supported:
 
 {{% /config_option %}}
 
-## SDK Configuration
+## SDK configuration
 
 The SDK's autoconfiguration module is used for basic configuration of the agent.
 Read the [docs](/docs/languages/java/configuration) to find settings such as
@@ -95,7 +95,7 @@ not `grpc`.
 
 {{% /alert %}}
 
-## Enable Resource Providers that are disabled by default
+## Enable resource providers that are disabled by default
 
 In addition to the resource configuration from the SDK autoconfiguration, you
 can enable additional resource providers that are disabled by default:

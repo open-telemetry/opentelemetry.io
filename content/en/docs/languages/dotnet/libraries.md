@@ -6,7 +6,7 @@ weight: 40
 
 {{% docs/languages/libraries-intro "dotnet" %}}
 
-## Use Instrumentation Libraries
+## Use instrumentation libraries
 
 If a library does not come with OpenTelemetry out of the box, you can use
 [instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)
@@ -29,7 +29,7 @@ dotnet add package OpenTelemetry.Instrumentation.{library-name-or-type}
 It is typically then registered at application startup time, such as when
 creating a [TracerProvider](/docs/concepts/signals/traces/#tracer-provider).
 
-## Note on Versioning
+## Note on versioning
 
 The Semantic Conventions (Standards) for attribute names are not currently
 stable therefore the instrumentation library is currently not in a released

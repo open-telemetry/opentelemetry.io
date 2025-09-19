@@ -6,7 +6,7 @@ and use the [OTLP exporter](#otlp) or you can use the Prometheus exporter, a
 `MetricReader` that starts an HTTP server that collects metrics and serialize to
 Prometheus text format on request.
 
-### Backend Setup {#prometheus-setup}
+### Backend setup {#prometheus-setup}
 
 {{% alert title=Note %}}
 

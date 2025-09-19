@@ -143,7 +143,7 @@ code.
 `my.package.MyClass1[method1,method2];my.package.MyClass2[method3]`.
 {{% /config_option %}}
 
-## Creating spans around methods with `otel.instrumentation.methods.include`
+## Creating spans around methods with `OTel.instrumentation.methods.include`
 
 In cases where you are unable to modify the code, you can still configure the
 Java agent to capture spans around specific methods.

@@ -7,7 +7,7 @@ The OpenTelemetry Spring Boot starter provides
 [out of the box instrumentation](../out-of-the-box-instrumentation) that you can
 augment with additional instrumentations.
 
-## Log4j2 Instrumentation
+## Log4j2 instrumentation
 
 You have to add the OpenTelemetry appender to your `log4j2.xml` file:
 

@@ -2,7 +2,7 @@
 title: Prometheus Alerts Runbooks
 ---
 
-## Manager Rules
+## Manager rules
 
 ### ReconcileErrors
 

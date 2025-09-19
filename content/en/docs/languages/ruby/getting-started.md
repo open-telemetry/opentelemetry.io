@@ -21,7 +21,7 @@ Ensure that you have the following installed locally:
 {{% alert  title="Warning" color="warning" %}} While tested, support for `jruby`
 and `truffleruby` are on a best-effort basis at this time. {{% /alert %}}
 
-## Example Application
+## Example application
 
 The following example uses a basic [Rails](https://rubyonrails.org/)
 application. If you are not using Rails, that's OK — you can use OpenTelemetry

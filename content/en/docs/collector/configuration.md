@@ -250,7 +250,7 @@ service:
       exporters: [otlp]
 ```
 
-## Receivers <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Receivers.svg"> {#receivers}
+## Receivers <img width="35" class="img-initial" alt="" src="/img/logos/32x32/receivers.svg"> {#receivers}
 
 Receivers collect telemetry from one or more sources. They can be pull or push
 based, and may support one or more [data sources](/docs/concepts/signals/).
@@ -329,7 +329,7 @@ receivers:
 > For detailed receiver configuration, see the
 > [receiver README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
 
-## Processors <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Processors.svg"> {#processors}
+## Processors <img width="35" class="img-initial" alt="" src="/img/logos/32x32/processors.svg"> {#processors}
 
 Processors take the data collected by receivers and modify or transform it
 before sending it to the exporters. Data processing happens according to rules
@@ -429,7 +429,7 @@ processors:
 > For detailed processor configuration, see the
 > [processor README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
 
-## Exporters <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Exporters.svg"> {#exporters}
+## Exporters <img width="35" class="img-initial" alt="" src="/img/logos/32x32/exporters.svg"> {#exporters}
 
 Exporters send data to one or more backends or destinations. Exporters can be
 pull or push based, and may support one or more
@@ -561,7 +561,7 @@ service:
 > For detailed connector configuration, see the
 > [connector README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
 
-## Extensions <img width="32" class="img-initial" alt="" src="/img/logos/32x32/Extensions.svg"> {#extensions}
+## Extensions <img width="32" class="img-initial" alt="" src="/img/logos/32x32/extensions.svg"> {#extensions}
 
 Extensions are optional components that expand the capabilities of the Collector
 to accomplish tasks not directly involved with processing telemetry data. For
@@ -670,7 +670,7 @@ Collector itself. It consists of two subsections: `logs` and `metrics`. To learn
 how to configure these signals, see
 [Activate internal telemetry in the Collector](/docs/collector/internal-telemetry#activate-internal-telemetry-in-the-collector).
 
-## Other Information
+## Other information
 
 ### Environment variables
 

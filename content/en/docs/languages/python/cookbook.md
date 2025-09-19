@@ -126,7 +126,7 @@ finally:
     context.detach(token)
 ```
 
-## Using multiple tracer providers with different Resource
+## Using multiple tracer providers with different resource
 
 ```python
 from opentelemetry import trace

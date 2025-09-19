@@ -35,7 +35,7 @@ package, regardless of the .NET runtime version being used:
   backward compatibility on `Microsoft.Extensions.Logging` even during major
   version bumps, so compatibility is not a concern here.
 
-#### Get Logger
+#### Get logger
 
 To use the `ILogger` interface, you need to first get a logger. How to get a
 logger depends on two things:

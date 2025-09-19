@@ -59,7 +59,7 @@ initialized instrumentation will be exporting using this OTLP exporter.
 
 ## Traces
 
-### Acquiring a Tracer
+### Acquiring a tracer
 
 To do tracing, you will need a tracer. A tracer is acquired through the tracer
 provider and is responsible for creating spans. The OpenTelemetry manages the
@@ -70,7 +70,7 @@ instrumentation name, and an optional version to be created:
 let  tracer = OpenTelemetry.instance.tracerProvider.get(instrumentationName: "instrumentation-library-name", instrumentationVersion: "1.0.0")
 ```
 
-### Creating Spans
+### Creating spans
 
 A [span](/docs/concepts/signals/traces/#spans) represents a unit of work or
 operation. Spans are the building blocks of Traces. To create a span use the
@@ -84,7 +84,7 @@ span.end()
 
 It is required to call `end()` to end the span.
 
-### Creating Nested Spans
+### Creating nested spans
 
 Spans are used to build relationship between operations. Below is an example of
 how we can manually build relationship between spans.
@@ -128,7 +128,7 @@ func child() {
 }
 ```
 
-### Getting the Current Span
+### Getting the current span
 
 Sometimes it's useful to do something with the current/active span. Here's how
 to access the current span from an arbitrary point in your code.
@@ -137,7 +137,7 @@ to access the current span from an arbitrary point in your code.
 let currentSpan = OpenTelemetry.instance.contextProvider.activeSpan
 ```
 
-### Span Attributes
+### Span attributes
 
 Spans can also be annotated with additional attributes. All spans will be
 automatically annotated with the `Resource` attributes attached to the tracer
@@ -152,7 +152,7 @@ span.setAttribute("http.method", "GET");
 span.setAttribute("http.url", url.toString());
 ```
 
-### Creating Span Events
+### Creating span events
 
 A Span Event can be thought of as a structured log message (or annotation) on a
 Span, typically used to denote a meaningful, singular point in time during the
@@ -166,7 +166,7 @@ let attributes = [
 span.addEvent(name: "computation complete", attributes: attributes)
 ```
 
-### Setting Span Status
+### Setting span status
 
 {{% include "span-status-preamble.md" %}}
 
@@ -184,7 +184,7 @@ func myFunction() {
 }
 ```
 
-### Recording exceptions in Spans
+### Recording exceptions in spans
 
 Semantic conventions provide special demarcation for events that record
 exceptions:
@@ -214,7 +214,7 @@ available by
 
 The logs API & SDK are currently under development.
 
-## SDK Configuration
+## SDK configuration
 
 ### Processors
 

@@ -60,7 +60,7 @@ docker compose -f docker-compose-tests.yml run traceBasedTests
 
     {{% /tab %}} {{< /tabpane >}}
 
-## Verify the web store and Telemetry
+## Verify the web store and telemetry
 
 Once the images are built and containers are started you can access:
 

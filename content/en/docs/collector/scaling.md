@@ -13,7 +13,7 @@ The following sections will guide you through the planning phase discussing
 which components to scale, how to determine when it’s time to scale up, and how
 to execute the plan.
 
-## What to Scale
+## What to scale
 
 While the OpenTelemetry Collector handles all telemetry signal types in a single
 binary, the reality is that each type may have different scaling needs and might
@@ -38,7 +38,7 @@ pipeline. Given that the OTLP receiver enables the ingestion of all telemetry
 types, we can keep the application metrics and traces on the same instance,
 scaling them horizontally when needed.
 
-## When to Scale
+## When to scale
 
 Once again, we should understand our workload to decide when it’s time to scale
 up or down, but a few metrics emitted by the Collector can give you good hints
@@ -108,7 +108,7 @@ Another sign that the backend might be having problems is an increase in the
 the backend failed permanently. Scaling up the Collector will likely only worsen
 the situation when this is consistently happening.
 
-## How to Scale
+## How to scale
 
 At this point, we know which parts of our pipeline needs scaling. Regarding
 scaling, we have three types of components: stateless, scrapers, and stateful.
@@ -246,7 +246,7 @@ spec:
             path: collector.yaml
 ```
 
-### Scaling the Scrapers
+### Scaling the scrapers
 
 Some receivers are actively obtaining telemetry data to place in the pipeline,
 like the hostmetrics and prometheus receivers. While getting host metrics isn’t
@@ -344,7 +344,7 @@ provisioned. Now, to scale the collectors, change the “replicas” attribute o
 the CR and the Target Allocator will distribute the load accordingly by
 providing a custom `http_sd_config` per collector instance (pod).
 
-### Scaling Stateful Collectors
+### Scaling stateful collectors
 
 Certain components might hold data in memory, yielding different results when
 scaled up. It is the case for the tail-sampling processor, which holds spans in

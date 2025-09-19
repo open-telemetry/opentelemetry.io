@@ -8,7 +8,7 @@ weight: 28
 
 {{% docs/languages/index-intro swift /%}}
 
-## Further Reading
+## Further reading
 
 - [OpenTelemetry for Swift on GitHub](https://github.com/open-telemetry/opentelemetry-swift)
 - [Installation](https://github.com/open-telemetry/opentelemetry-swift#installation)

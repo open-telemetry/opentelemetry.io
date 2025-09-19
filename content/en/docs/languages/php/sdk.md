@@ -29,7 +29,7 @@ $tracerProvider =  new TracerProvider(
 );
 ```
 
-## SDK Builder
+## SDK builder
 
 The SDK builder provides a convenient interface to configure parts of the SDK.
 However, it doesn't support all of the features that manual setup does.

@@ -30,7 +30,7 @@ Application configuration:
 {{% /tab %}} {{% tab Elixir %}}
 
 ```elixir
-## runtime.exs
+## Runtime.exs
 config :opentelemetry, resource_detectors: [:otel_resource_env_var, :otel_resource_app_env]
 ```
 
@@ -71,7 +71,7 @@ Alternatively, use the `resource` OTP application environment under the
 {{% /tab %}} {{% tab Elixir %}}
 
 ```elixir
-## runtime.exs
+## Runtime.exs
 config :opentelemetry, resource: %{deployment: %{environment: "development" }}
 ```
 

@@ -32,7 +32,7 @@ chart, there is an option to generate a self-signed cert instead.
 > [Controlling Instrumentation Capabilities](https://github.com/open-telemetry/opentelemetry-operator#controlling-instrumentation-capabilities)
 > for details.
 
-## Create an OpenTelemetry Collector (Optional)
+## Create an OpenTelemetry Collector (optional)
 
 It is a best practice to send telemetry from containers to an
 [OpenTelemetry Collector](/docs/platforms/kubernetes/collector/) instead of
@@ -103,7 +103,7 @@ EOF
 The above command results in a deployment of the Collector that you can use as
 an endpoint for auto-instrumentation in your pods.
 
-## Configure Automatic Instrumentation
+## Configure automatic instrumentation
 
 To be able to manage automatic instrumentation, the Operator needs to be
 configured to know what pods to instrument and which automatic instrumentation
@@ -571,7 +571,7 @@ all services in that namespace to opt-in to automatic instrumentation. See the
 [Operators auto-instrumentation documentation](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)
 for more details.
 
-### Opt-in a Go Service
+### Opt-in a Go service
 
 Unlike other languages' auto-instrumentation, Go works via an eBPF agent running
 via a sidecar. When opted in, the Operator will inject this sidecar into your
@@ -619,7 +619,7 @@ instrumentation.opentelemetry.io/otel-python-platform: "musl"
 If you run into problems trying to auto-instrument your code, here are a few
 things that you can try.
 
-### Did the Instrumentation resource install?
+### Did the instrumentation resource install?
 
 After installing the `Instrumentation` resource, verify that it installed
 correctly by running this command, where `<namespace>` is the namespace in which
@@ -676,7 +676,7 @@ Spec:
 Events:  <none>
 ```
 
-### Do the OTel Operator logs show any auto-instrumentation errors?
+### Do the OTel operator logs show any auto-instrumentation errors?
 
 Check the OTel Operator logs for any errors pertaining to auto-instrumentation
 by running this command:

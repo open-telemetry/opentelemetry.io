@@ -292,7 +292,7 @@ for more information on the `/jobs` endpoint.
 
 {{% /alert %}}
 
-### Is the Target Allocator enabled? Is Prometheus service discovery enabled?
+### Is the target allocator enabled? is prometheus service discovery enabled?
 
 If the `curl` commands above don't show a list of expected `ServiceMonitor`s and
 `PodMonitor`s, you need to check whether the features that populate those values
@@ -421,7 +421,7 @@ This configuration means that it will match on all `PodMonitor` and
 `ServiceMonitor` resources. See the
 [full OpenTelemetryCollector definition in "Do you know if metrics are actually being scraped?"](#do-you-know-if-metrics-are-actually-being-scraped).
 
-### Do your labels, namespaces, and ports match for your ServiceMonitor and your Service (or PodMonitor and your Pod)?
+### Do your labels, namespaces, and ports match for your ServiceMonitor and your service (or PodMonitor and your pod)?
 
 The `ServiceMonitor` is configured to pick up Kubernetes
 [Services](https://kubernetes.io/docs/concepts/services-networking/service/)

@@ -123,7 +123,7 @@ default=false
 %}} Determines whether to capture `enduser.scope` semantic attribute.
 {{% /config_option %}}
 
-### Spring Security
+### Spring security
 
 For users of Spring Security who use custom
 [granted authority prefixes](https://docs.spring.io/spring-security/reference/servlet/authorization/architecture.html#authz-authorities),

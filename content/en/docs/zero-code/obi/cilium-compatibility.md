@@ -33,7 +33,7 @@ When OBI and Cilium use TCX they don't interfere with each other. OBI attaches
 its eBPF programs to the head of the list and Cilium to the tail. TCX is the
 preferred operation mode when possible.
 
-## Fallback to Netlink
+## Fallback to netlink
 
 When TCX isn't available, both OBI and Cilium use Netlink interface to install
 eBPF programs. If OBI detects Cilium runs programs with priority 1, OBI exits
@@ -68,7 +68,7 @@ You can do the following:
 - Set the value to `netlink` to use Netlink interface
 - Set the value to `auto` to auto-detect the best available option
 
-## OBI and Cilium demo
+## OBI and cilium demo
 
 The following example demonstrates OBI and Cilium working together to propagate
 trace context in Kubernetes environments.

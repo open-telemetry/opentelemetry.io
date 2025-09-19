@@ -5,7 +5,7 @@ weight: 9
 cSpell:ignore: webshop
 ---
 
-## What is Observability?
+## What is observability?
 
 Observability lets you understand a system from the outside by letting you ask
 questions about that system without knowing its inner workings. Furthermore, it

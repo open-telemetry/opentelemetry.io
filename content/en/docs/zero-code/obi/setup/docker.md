@@ -84,7 +84,7 @@ and traces to an OpenTelemetry endpoint, or have metrics scraped by Prometheus.
 For information on how to export traces and metrics, refer to the
 [configuration options](../../configure/options/) documentation.
 
-## Docker Compose example
+## Docker compose example
 
 The following Docker compose file replicates the same functionality of the
 Docker CLI example:

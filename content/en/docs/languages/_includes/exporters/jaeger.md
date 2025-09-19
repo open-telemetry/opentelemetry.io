@@ -1,6 +1,6 @@
 ## Jaeger
 
-### Backend Setup {#jaeger-backend-setup}
+### Backend setup {#jaeger-backend-setup}
 
 [Jaeger](https://www.jaegertracing.io/) natively supports OTLP to receive trace
 data. You can run Jaeger in a docker container with the UI accessible on port

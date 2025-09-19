@@ -11,7 +11,7 @@ The relevant OpenTelemetry repository maintainers, supported by the Security SIG
 and OpenTelemetry Technical Committee (TC), are responsible for responding to
 the incident including internal communication and external disclosure.
 
-## Supported Versions
+## Supported versions
 
 The OTel project provides community support only for the last overall minor
 version: bug fixes are released either as part of the next minor version or as
@@ -25,9 +25,9 @@ be released. Each repository is entitled to establish their own complementary
 processes. The Security SIG in conjunction with the TC can advise in case
 clarifications are required.
 
-## Reporting Process - For Vulnerability Reporters
+## Reporting process - for vulnerability reporters
 
-### Reporting Methods
+### Reporting methods
 
 In order for the vulnerability reports to reach maintainers as soon as possible,
 the preferred way is to use the `Report a vulnerability` button on the
@@ -52,7 +52,7 @@ part of that report. You can ask GitHub to delete the issue but this shouldn't
 be considered a sufficient mitigation and the vulnerability should be considered
 publicly disclosed.
 
-### Non-Public Vulnerabilities
+### Non-public vulnerabilities
 
 If a vulnerability appears to be not publicly known or disclosed, the repository
 maintainers will engage and the reporter is requested to honor an embargo period
@@ -63,7 +63,7 @@ they are asked to negotiate the disclosure date with the maintainers fixing the
 vulnerability. The repository maintainers will in any case do their best to move
 swiftly with the fix and release process.
 
-### Publicly Known Vulnerabilities
+### Publicly known vulnerabilities
 
 If you discover an unreported publicly disclosed/known vulnerability please
 IMMEDIATELY use the reporting methods above to inform the team about the
@@ -71,7 +71,7 @@ vulnerability so they may start the patch, release and communication process.
 Please include any relevant information about current public exploitations of
 this vulnerability, if known, to help with scoring and prioritization.
 
-## More Information
+## More information
 
 For more information, please see the
 [Security SIG documentation](https://github.com/open-telemetry/sig-security/blob/main/security-response.md)

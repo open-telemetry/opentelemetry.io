@@ -28,7 +28,7 @@ extension package called
 
 ## Implementation steps
 
-### 1. Install the required package
+### 1. install the required package
 
 Install the `Microsoft.Extensions.Telemetry.Abstractions` package:
 
@@ -36,7 +36,7 @@ Install the `Microsoft.Extensions.Telemetry.Abstractions` package:
 dotnet add package Microsoft.Extensions.Telemetry.Abstractions
 ```
 
-### 2. Define a complex data type
+### 2. define a complex data type
 
 Create a struct to represent your complex object:
 
@@ -51,7 +51,7 @@ public struct FoodRecallNotice
 }
 ```
 
-### 3. Create a logger extension method with LogPropertiesAttribute
+### 3. create a logger extension method with LogPropertiesAttribute
 
 Define an extension method for your logger that uses the Define an extension
 method to `ILogger` that uses the
@@ -74,7 +74,7 @@ generator to:
 - Include all properties of the `FoodRecallNotice` as individual log attributes
 - Omit the reference name (the parameter name) from the attribute keys
 
-### 4. Log the complex object
+### 4. log the complex object
 
 Create an instance of your complex object and log it:
 
@@ -93,7 +93,7 @@ var foodRecallNotice = new FoodRecallNotice
 logger.FoodRecallNotice(foodRecallNotice);
 ```
 
-### 5. Run the application
+### 5. run the application
 
 Run the application, for example using `dotnet run`, and you should see the log
 output on the console:

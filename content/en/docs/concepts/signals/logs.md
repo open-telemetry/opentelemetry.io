@@ -177,7 +177,7 @@ parsers to allow for analysis at scale.
 The following lists of concepts and components power OpenTelemetry's logging
 support.
 
-### Log Appender / Bridge
+### Log appender / bridge
 
 As an application developer, the **Logs Bridge API** should not be called by you
 directly, as it is provided for logging library authors to build log appenders /
@@ -187,7 +187,7 @@ OpenTelemetry LogRecordExporter.
 
 OpenTelemetry language SDKs offer this functionality.
 
-### Logger Provider
+### Logger provider
 
 > Part of the **Logs Bridge API** and should only be used if you are the author
 > of a logging library.
@@ -204,13 +204,13 @@ also includes Resource and Exporter initialization.
 
 A Logger creates log records. Loggers are created from Log Providers.
 
-### Log Record Exporter
+### Log record exporter
 
 Log Record Exporters send log records to a consumer. This consumer can be
 standard output for debugging and development-time, the OpenTelemetry Collector,
 or any open source or vendor backend of your choice.
 
-### Log Record
+### Log record
 
 A log record represents the recording of an event. In OpenTelemetry a log record
 contains two kinds of fields:

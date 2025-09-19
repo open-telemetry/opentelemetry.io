@@ -52,7 +52,7 @@ export OTEL_PROPAGATORS="tracecontext,b3"
 export OTEL_RESOURCE_ATTRIBUTES="deployment.environment=dev,service.name=cart,service.namespace=shop"
 ```
 
-## Overriding Resource Attributes
+## Overriding resource attributes
 
 As usual in Spring Boot, you can override properties in the
 `application.properties` and `application.yaml` files with environment
@@ -81,7 +81,7 @@ Note that `DEPLOYMENT_ENVIRONMENT` gets converted to `deployment.environment` by
 Spring Boot's
 [Relaxed Binding](https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.external-config.typesafe-configuration-properties.relaxed-binding.environment-variables).
 
-## Disable the OpenTelemetry Starter
+## Disable the OpenTelemetry starter
 
 {{% config_option name="otel.sdk.disabled" %}}
 
@@ -194,7 +194,7 @@ public class CustomAuth {
 ```
 <!-- prettier-ignore-end -->
 
-## Resource Providers
+## Resource providers
 
 The OpenTelemetry Starter includes the same resource providers as the Java
 agent:
@@ -205,7 +205,7 @@ agent:
 In addition, the OpenTelemetry Starter includes the following Spring Boot
 specific resource providers:
 
-### Distribution Resource Provider
+### Distribution resource provider
 
 FQN:
 `io.opentelemetry.instrumentation.spring.autoconfigure.resources.DistroVersionResourceProvider`
@@ -215,7 +215,7 @@ FQN:
 | `telemetry.distro.name`    | `opentelemetry-spring-boot-starter` |
 | `telemetry.distro.version` | version of the starter              |
 
-### Spring Resource Provider
+### Spring resource provider
 
 FQN:
 `io.opentelemetry.instrumentation.spring.autoconfigure.resources.SpringResourceProvider`

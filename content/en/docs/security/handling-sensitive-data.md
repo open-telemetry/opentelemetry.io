@@ -86,7 +86,7 @@ processors:
         action: delete
 ```
 
-### Replacing `user.id` with `user.hash`
+### Replacing `user.ID` with `user.hash`
 
 The following configuration for the `transform` processor can be used to remove
 the `user.id` and replace it with a `user.hash`:

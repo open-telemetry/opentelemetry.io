@@ -15,7 +15,7 @@ Node.js SDK.
 Follow the instructions in the [Getting Started - Node.js][], so that you have
 the files `package.json`, `app.js` and `tracing.js`.
 
-## Process & Environment Resource Detection
+## Process & environment resource detection
 
 Out of the box, the Node.js SDK detects [process and process runtime
 resources][] and takes attributes from the environment variable
@@ -112,7 +112,7 @@ values set via the environment variable take precedence.
 
 {{% /alert %}}
 
-## Container Resource Detection
+## Container resource detection
 
 Use the same setup (`package.json`, `app.js` and `tracing.js` with debugging
 turned on) and `Dockerfile` with the following content in the same directory:

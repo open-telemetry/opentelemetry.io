@@ -18,7 +18,7 @@ automatically upon high demand.
 To understand how metrics in OpenTelemetry works, let's look at a list of
 components that will play a part in instrumenting our code.
 
-## Meter Provider
+## Meter provider
 
 A Meter Provider (sometimes called `MeterProvider`) is a factory for `Meter`s.
 In most applications, a Meter Provider is initialized once and its lifecycle
@@ -33,13 +33,13 @@ A Meter creates [metric instruments](#metric-instruments), capturing
 measurements about a service at runtime. Meters are created from Meter
 Providers.
 
-## Metric Exporter
+## Metric exporter
 
 Metric Exporters send metric data to a consumer. This consumer can be standard
 output for debugging during development, the OpenTelemetry Collector, or any
 open source or vendor backend of your choice.
 
-## Metric Instruments
+## Metric instruments
 
 In OpenTelemetry measurements are captured by **metric instruments**. A metric
 instrument is defined by:
@@ -111,7 +111,7 @@ by the SDK. You can customize which metric instruments are to be processed or
 ignored. You can also customize aggregation and what attributes you want to
 report on metrics.
 
-## Language Support
+## Language support
 
 Metrics are a [stable](/docs/specs/otel/versioning-and-stability/#stable) signal
 in the OpenTelemetry specification. For the individual language specific

@@ -59,7 +59,7 @@ in observability.
 The steps below present a careful, incremental approach to transitioning to
 OpenTelemetry.
 
-### Step 1: Install the OpenTelemetry SDK
+### Step 1: install the OpenTelemetry SDK
 
 Before changing any instrumentation, ensure that you can switch to the
 OpenTelemetry SDK without causing any break in the telemetry the application
@@ -84,7 +84,7 @@ application and still receive the same OpenTracing-based telemetry. In other
 words, confirm that your dashboards, alerts, and other tracing-based analysis
 tools are still working.
 
-### Step 2: Progressively replace instrumentation
+### Step 2: progressively replace instrumentation
 
 Once the OpenTelemetry SDK is installed, all new instrumentation can now be
 written using the OpenTelemetry API. With few exceptions, OpenTelemetry and

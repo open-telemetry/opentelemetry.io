@@ -175,7 +175,7 @@ spec:
 For more information about the different configuration options, check the
 [Configuration](../../configure/options/) section of this documentation site.
 
-### Deploy OBI as a Daemonset
+### Deploy OBI as a daemonset
 
 You can also deploy OBI as a Daemonset. This is the preferred way if:
 

@@ -14,7 +14,7 @@ cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 
 ## Traces
 
-### Getting a Tracer
+### Getting a tracer
 
 To create spans, you'll need to acquire or initialize a tracer first.
 
@@ -92,7 +92,7 @@ func main() {
 
 You can now access `tracer` to manually instrument your code.
 
-### Creating Spans
+### Creating spans
 
 Spans are created by tracers. If you don't have one initialized, you'll need to
 do that.
@@ -161,7 +161,7 @@ func childFunction(ctx context.Context) {
 
 Once a span has completed, it is immutable and can no longer be modified.
 
-### Span Attributes
+### Span attributes
 
 Attributes are keys and values that are applied as metadata to your spans and
 are useful for aggregating, filtering, and grouping traces. Attributes can be
@@ -182,7 +182,7 @@ var myKey = attribute.Key("myCoolAttribute")
 span.SetAttributes(myKey.String("a value"))
 ```
 
-#### Semantic Attributes
+#### Semantic attributes
 
 Semantic Attributes are attributes that are defined by the [OpenTelemetry
 Specification][] in order to provide a shared set of attribute keys across
@@ -264,7 +264,7 @@ It is highly recommended that you also set a span's status to `Error` when using
 operation as an error span. The `RecordError` function does **not**
 automatically set a span status when called.
 
-### Propagators and Context
+### Propagators and context
 
 Traces can extend beyond a single process. This requires _context propagation_,
 a mechanism where identifiers for a trace are sent to remote processes.
@@ -323,7 +323,7 @@ Here you can find more detailed package documentation for:
 - Metrics API: [`go.opentelemetry.io/otel/metric`][]
 - Metrics SDK: [`go.opentelemetry.io/otel/sdk/metric`][]
 
-### Initialize Metrics
+### Initialize metrics
 
 {{% alert %}} If you’re instrumenting a library, skip this step. {{% /alert %}}
 
@@ -427,7 +427,7 @@ func newMeterProvider(res *resource.Resource) (*metric.MeterProvider, error) {
 
 Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 
-### Acquiring a Meter
+### Acquiring a meter
 
 Anywhere in your application where you have manually instrumented code you can
 call [`otel.Meter`](https://pkg.go.dev/go.opentelemetry.io/otel#Meter) to
@@ -467,7 +467,7 @@ In cases like these, it's often better to observe a cumulative value directly,
 rather than aggregate a series of deltas in post-processing (the synchronous
 example).
 
-### Using Counters
+### Using counters
 
 Counters can be used to measure a non-negative, increasing value.
 
@@ -497,7 +497,7 @@ func init() {
 }
 ```
 
-### Using UpDown Counters
+### Using UpDown counters
 
 UpDown counters can increment and decrement, allowing you to observe a
 cumulative value that goes up or down.
@@ -538,7 +538,7 @@ func removeItem() {
 }
 ```
 
-### Using Gauges
+### Using gauges
 
 Gauges are used to measure non-additive values when changes occur.
 
@@ -595,7 +595,7 @@ func recordFanSpeed() {
 }
 ```
 
-### Using Histograms
+### Using histograms
 
 Histograms are used to measure a distribution of values over time.
 
@@ -630,7 +630,7 @@ func init() {
 }
 ```
 
-### Using Observable (Async) Counters
+### Using observable (async) counters
 
 Observable counters can be used to measure an additive, non-negative,
 monotonically increasing value.
@@ -661,7 +661,7 @@ func init() {
 }
 ```
 
-### Using Observable (Async) UpDown Counters
+### Using observable (async) UpDown counters
 
 Observable UpDown counters can increment and decrement, allowing you to measure
 an additive, non-negative, non-monotonically increasing cumulative value.
@@ -714,7 +714,7 @@ func registerDBMetrics(db *sql.DB, meter metric.Meter, poolName string) (metric.
 }
 ```
 
-### Using Observable (Async) Gauges
+### Using observable (async) gauges
 
 Observable Gauges should be used to measure non-additive values.
 
@@ -782,7 +782,7 @@ func init() {
 }
 ```
 
-### Registering Views
+### Registering views
 
 A view provides SDK users with the flexibility to customize the metrics output
 by the SDK. You can customize which metric instruments are to be processed or
@@ -945,7 +945,7 @@ ecosystem. For rationale behind this design decision, see
 The two typical workflows discussed below each cater to different application
 requirements.
 
-### Direct-to-Collector
+### Direct-to-collector
 
 **Status**: [Experimental](/docs/specs/otel/document-status/)
 
@@ -1070,7 +1070,7 @@ func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.Logger
 Now that a `LoggerProvider` is configured, you can use it to set up a
 [Log Bridge](#log-bridge).
 
-#### Log Bridge
+#### Log bridge
 
 A log bridge is a component that bridges logs from an existing log package into
 the OpenTelemetry [Log SDK](#logs-sdk) using the [Logs Bridge
@@ -1094,7 +1094,7 @@ reading the logs parse the data into the [log data model][log data model]. The
 installation and configuration of log forwarding components is outside the scope
 of this document.
 
-## Next Steps
+## Next steps
 
 You’ll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/languages/go/exporters) to one or more

@@ -22,7 +22,7 @@ decision. This guarantees that all spans in a trace are sampled by default.
 [ALWAYS_ON]:
   https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers
 
-## TraceIDRatioBased Sampler
+## TraceIDRatioBased sampler
 
 The most common head sampler to use is the [TraceIdRatioBased][] sampler. It
 deterministically samples a percentage of traces that you pass in as a
@@ -31,7 +31,7 @@ parameter.
 [TraceIdRatioBased]:
   https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased
 
-### Environment Variables
+### Environment variables
 
 You can configure a `TraceIdRatioBased` sampler with environment variables:
 
@@ -42,7 +42,7 @@ export OTEL_TRACES_SAMPLER_ARG="0.1"
 
 This tells the SDK to sample spans such that only 10% of traces get exported.
 
-### Configuration in Code
+### Configuration in code
 
 Although it is possible to configure a `TraceIdRatioBased` sampler in code, it's
 not recommended. Doing so requires you to manually set up a Tracer Provider with

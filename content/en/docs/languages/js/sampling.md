@@ -19,7 +19,7 @@ When sampling, the most common head sampler to use is the
 TraceIdRatioBasedSampler. It deterministically samples a percentage of traces
 that you pass in as a parameter.
 
-### Environment Variables
+### Environment variables
 
 You can configure the TraceIdRatioBasedSampler with environment variables:
 

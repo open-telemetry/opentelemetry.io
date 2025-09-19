@@ -50,7 +50,7 @@ docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-t
 
 {{% /tab %}} {{< /tabpane >}}
 
-## Docker Compose
+## Docker compose
 
 You can add OpenTelemetry Collector to your existing `docker-compose.yaml` file
 as in the following example:
@@ -104,7 +104,7 @@ amd64/arm64/i386 systems. You can find the default configuration in
 
 > Note: `systemd` is required for automatic service configuration.
 
-### DEB Installation
+### DEB installation
 
 To get started on Debian systems run the following commands:
 
@@ -137,7 +137,7 @@ sudo dpkg -i otelcol_{{% param vers %}}_linux_386.deb
 
 {{% /tab %}} {{< /tabpane >}}
 
-### RPM Installation
+### RPM installation
 
 To get started on Red Hat systems run the following commands:
 
@@ -170,7 +170,7 @@ sudo rpm -ivh otelcol_{{% param vers %}}_linux_386.rpm
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Manual Linux installation
+### Manual linux installation
 
 Linux [releases][] are available for various architectures. You can download the
 file containing the binary and install it on your machine manually:

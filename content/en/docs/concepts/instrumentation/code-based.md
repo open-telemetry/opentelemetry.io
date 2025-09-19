@@ -36,7 +36,7 @@ We recommend that this configuration be handled programmatically through a
 configuration file or some other mechanism. There are also per-language tuning
 options you may wish to take advantage of.
 
-## Create Telemetry Data
+## Create telemetry data
 
 Once you've configured the API and SDK, you'll then be free to create traces and
 metric events through the tracer and meter objects you obtained from the
@@ -44,7 +44,7 @@ provider. Make use of Instrumentation Libraries for your dependencies -- check
 out the [registry](/ecosystem/registry/) or your language's repository for more
 information on these.
 
-## Export Data
+## Export data
 
 Once you've created telemetry data, you'll want to send it somewhere.
 OpenTelemetry supports two primary methods of exporting data from your process

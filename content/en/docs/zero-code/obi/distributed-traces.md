@@ -77,7 +77,7 @@ more details, see the
 [Distributed traces and context propagation](../configure/metrics-traces-attributes/)
 configuration section.
 
-#### Kubernetes Configuration
+#### Kubernetes configuration
 
 The recommended way to deploy OBI on Kubernetes with distributed tracing support
 at network level is as `DaemonSet`.

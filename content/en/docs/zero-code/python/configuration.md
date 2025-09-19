@@ -50,7 +50,7 @@ Here's an explanation of what each configuration does:
   backend. For more information on OTLP exporter headers, see
   [OTEL_EXPORTER_OTLP_HEADERS](/docs/languages/sdk-configuration/otlp-exporter/#otel_exporter_otlp_headers).
 
-## Environment Variables
+## Environment variables
 
 In some cases, configuring via
 [environment variables](/docs/languages/sdk-configuration/) is more preferred.
@@ -66,7 +66,7 @@ desired configuration property:
 For example, `exporter_otlp_endpoint` would convert to
 `OTEL_EXPORTER_OTLP_ENDPOINT`.
 
-## Python-specific Configuration
+## Python-specific configuration
 
 There are some Python specific configuration options you can set by prefixing
 environment variables with `OTEL_PYTHON_`.
@@ -91,7 +91,7 @@ export OTEL_PYTHON_URLLIB3_EXCLUDED_URLS="client/.*/info"
 export OTEL_PYTHON_REQUESTS_EXCLUDED_URLS="healthcheck"
 ```
 
-### Request Attribute Names
+### Request attribute names
 
 Comma-separated list of names that will be extracted from the request object and
 set as attributes on spans.
@@ -162,7 +162,7 @@ export OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS=true
 export OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH=patch_all
 ```
 
-## Disabling Specific Instrumentations
+## Disabling specific instrumentations
 
 The Python agent by default will detect a Python program's packages and
 instrument any packages it can. This makes instrumentation easy, but can result

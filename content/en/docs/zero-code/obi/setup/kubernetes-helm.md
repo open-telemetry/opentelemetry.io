@@ -110,7 +110,7 @@ cluster roles, security contexts, etc. The
 [OBI Helm chart documentation](https://github.com/open-telemetry/opentelemetry-helm-charts/)
 describes the diverse configuration options.
 
-## Providing secrets to the Helm configuration
+## Providing secrets to the helm configuration
 
 If you are submitting directly the metrics and traces to your observability
 backend via the OpenTelemetry Endpoint, you might need to provide credentials

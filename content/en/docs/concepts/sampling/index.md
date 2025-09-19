@@ -96,7 +96,7 @@ resources for observability instead, either with a vendor or compute when
 self-hosting, depending on your observability backend, the nature of your data,
 and your attempts to sample effectively.
 
-## Head Sampling
+## Head sampling
 
 Head sampling is a sampling technique used to make a sampling decision as early
 as possible. A decision to sample or drop a span or trace is not made by
@@ -121,7 +121,7 @@ sampling decision based on data in the entire trace. For example, you cannot
 ensure that all traces with an error within them are sampled with head sampling
 alone. For this situation and many others, you need tail sampling.
 
-## Tail Sampling
+## Tail sampling
 
 Tail sampling is where the decision to sample a trace takes place by considering
 all or most of the spans within the trace. Tail Sampling gives you the option to

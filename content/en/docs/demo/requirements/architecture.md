@@ -19,7 +19,7 @@ customization by end-users, vendors, and other stakeholders.
 - [OpenTelemetry Requirements](../opentelemetry/)
 - [System Requirements](../system/)
 
-### Application Goals
+### Application goals
 
 - Provide developers with a robust sample application they can use in learning
   OpenTelemetry instrumentation.
@@ -33,7 +33,7 @@ customization by end-users, vendors, and other stakeholders.
 The following is a general description of the logical components of the demo
 application.
 
-## Main Application
+## Main application
 
 The bulk of the demo app is a self-contained microservice-based application that
 does some useful 'real-world' work, such as an eCommerce site. This application
@@ -51,14 +51,14 @@ Each service should be able to communicate with a feature flag service in order
 to enable/disable faults that can be used to illustrate how telemetry helps
 solve problems in distributed applications.
 
-## Feature Flag Component
+## Feature flag component
 
 Feature flagging is a crucial part of cloud native application development. The
 demo uses OpenFeature, a CNCF incubating project, to manage feature flags.
 
 Feature flags can be set through the flagd configurator user interface.
 
-## Orchestration and Deployment
+## Orchestration and deployment
 
 All services run on Kubernetes. The OpenTelemetry Collector should be deployed
 via the OpenTelemetry Operator, and run in a sidecar + gateway mode. Telemetry

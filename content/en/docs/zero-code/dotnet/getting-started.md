@@ -21,7 +21,7 @@ Ensure that you have the following installed locally:
 
 - [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 6+
 
-## Example Application
+## Example application
 
 The following example uses a basic
 [Minimal API with ASP.NET Core](https://learn.microsoft.com/aspnet/core/tutorials/min-web-api)
@@ -30,7 +30,7 @@ OpenTelemetry .NET Automatic Instrumentation.
 
 For more elaborate examples, see [examples](/docs/languages/dotnet/examples/).
 
-### Create and launch an HTTP Server
+### Create and launch an HTTP server
 
 To begin, set up an environment in a new directory called `dotnet-simple`.
 Within that directory, execute following command:

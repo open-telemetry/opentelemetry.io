@@ -81,7 +81,7 @@ OBI requires elevated privileges to function properly. For more information
 about the specific capabilities required, see the
 [security documentation](../../security/).
 
-## Example: Docker instrumentation
+## Example: docker instrumentation
 
 To instrument a Docker container, you can run OBI on the host:
 
@@ -99,7 +99,7 @@ discovery:
       exe_path: /proc/*/root/app/my-app
 ```
 
-## Example: System-wide instrumentation
+## Example: system-wide instrumentation
 
 To instrument all services on a system:
 

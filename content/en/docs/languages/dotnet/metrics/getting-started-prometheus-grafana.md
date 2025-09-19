@@ -88,12 +88,12 @@ When you run this application, it will attempt to export metrics to Prometheus
 at `http://localhost:9090/api/v1/otlp/v1/metrics`. Initially, this will fail
 because we haven't set up Prometheus yet, which we'll do next.
 
-## Setting up Prometheus
+## Setting up prometheus
 
 Prometheus is an open source monitoring and alerting system that can scrape and
 store metrics.
 
-### Installing and running Prometheus
+### Installing and running prometheus
 
 1. Download Prometheus from the [official site](https://prometheus.io/download/)
 2. Extract it to a location on your machine
@@ -107,7 +107,7 @@ store metrics.
 Prometheus to receive metrics through the OpenTelemetry Protocol (OTLP).
 {{% /alert %}}
 
-### Viewing metrics in Prometheus
+### Viewing metrics in prometheus
 
 1. Run your .NET application (it should now successfully export metrics to
    Prometheus)
@@ -118,12 +118,12 @@ Prometheus to receive metrics through the OpenTelemetry Protocol (OTLP).
 You should see a graph showing the increasing counter values for each
 combination of fruit name and color.
 
-## Setting up Grafana
+## Setting up grafana
 
 Grafana provides more powerful visualization capabilities than the basic
 Prometheus UI.
 
-### Installing and running Grafana
+### Installing and running grafana
 
 1. Install Grafana following the
    [official instructions](https://grafana.com/docs/grafana/latest/installation/)
@@ -132,7 +132,7 @@ Prometheus UI.
 4. Log in with the default credentials (username: `admin`, password: `admin`)
    and set a new password when prompted
 
-### Configuring Prometheus as a data source
+### Configuring prometheus as a data source
 
 1. In Grafana, hover over the Configuration (gear) icon in the left sidebar and
    click "Data sources"

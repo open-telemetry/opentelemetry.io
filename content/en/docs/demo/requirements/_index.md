@@ -11,7 +11,7 @@ the ongoing SIG meeting.
 2. [OpenTelemetry Requirements](opentelemetry/)
 3. [System Requirements](system/)
 
-## Target Personas
+## Target personas
 
 We're building the demo application with several different target personas in
 mind:

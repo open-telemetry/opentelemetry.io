@@ -21,7 +21,7 @@ pip install opentelemetry-sdk
 
 ## Traces
 
-### Acquire Tracer
+### Acquire tracer
 
 To start tracing, you'll need to initialize a
 [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) and
@@ -247,7 +247,7 @@ By default, OpenTelemetry Python will use the following propagation formats:
 If you have a need to change the defaults, you can do so either via environment
 variables or in code:
 
-#### Using Environment Variables
+#### Using environment variables
 
 You can set the `OTEL_PROPAGATORS` environment variable with a comma-separated
 list. Accepted values are:
@@ -286,7 +286,7 @@ set_global_textmap(B3Format())
 
 Note that environment variables will override what's configured in code.
 
-### Further Reading
+### Further reading
 
 - [Trace Concepts](/docs/concepts/signals/traces/)
 - [Trace Specification](/docs/specs/otel/overview/#tracing-signal)
@@ -387,7 +387,7 @@ meter.create_observable_gauge(
 )
 ```
 
-### Further Reading
+### Further reading
 
 - [Metrics Concepts](/docs/concepts/signals/metrics/)
 - [Metrics Specification](/docs/specs/otel/metrics/)
@@ -422,14 +422,14 @@ logging.basicConfig(handlers=[handler], level=logging.INFO)
 logging.info("This is an OpenTelemetry log record!")
 ```
 
-### Further Reading
+### Further reading
 
 - [Logs Concepts](/docs/concepts/signals/logs/)
 - [Logs Specification](/docs/specs/otel/logs/)
 - [Python Logs API Documentation](https://opentelemetry-python.readthedocs.io/en/latest/api/_logs.html)
 - [Python Logs SDK Documentation](https://opentelemetry-python.readthedocs.io/en/latest/sdk/_logs.html)
 
-## Next Steps
+## Next steps
 
 You’ll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/languages/python/exporters) to one or more

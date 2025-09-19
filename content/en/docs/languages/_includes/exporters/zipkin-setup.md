@@ -1,6 +1,6 @@
 ## Zipkin
 
-### Backend Setup {#zipkin-setup}
+### Backend setup {#zipkin-setup}
 
 {{% alert title=Note %}}
 

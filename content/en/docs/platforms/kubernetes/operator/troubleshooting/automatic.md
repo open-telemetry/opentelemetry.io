@@ -70,7 +70,7 @@ Spec:
 Events:  <none>
 ```
 
-### Check the OpenTelemetry Operator logs
+### Check the OpenTelemetry operator logs
 
 Check the OpenTelemetry Operator logs for errors by running this command:
 

@@ -18,7 +18,7 @@ Ensure that you have the following installed locally:
 - [TypeScript](https://www.typescriptlang.org/download), if you will be using
   TypeScript.
 
-## Example Application
+## Example application
 
 This is a very simple guide, if you'd like to see more complex examples go to
 [examples/opentelemetry-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/opentelemetry-web).
@@ -67,7 +67,7 @@ npm install @opentelemetry/api \
   @opentelemetry/context-zone
 ```
 
-### Initialization and Configuration
+### Initialization and configuration
 
 If you are coding in TypeScript, then run the following command:
 
@@ -103,7 +103,7 @@ the following code to your HTML right before the `</body>` closing tag:
 We will add some code that will trace the document load timings and output those
 as OpenTelemetry Spans.
 
-### Creating a Tracer Provider
+### Creating a tracer provider
 
 Add the following code to the `document-load.ts|js` to create a tracer provider,
 which brings the instrumentation to trace document load:
@@ -139,7 +139,7 @@ your code works.
 
 There will be no output of traces yet, for this we need to add an exporter.
 
-### Creating an Exporter
+### Creating an exporter
 
 In the following example, we will use the `ConsoleSpanExporter` which prints all
 spans to the console.
@@ -236,7 +236,7 @@ developer toolbar you should see some traces being exported:
 }
 ```
 
-### Add Instrumentations
+### Add instrumentations
 
 If you want to instrument Ajax requests, User Interactions and others, you can
 register additional instrumentations for those:
@@ -250,7 +250,7 @@ registerInstrumentations({
 });
 ```
 
-## Meta Packages for Web
+## Meta packages for web
 
 To leverage the most common instrumentations all in one you can simply use the
 [OpenTelemetry Meta Packages for Web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)

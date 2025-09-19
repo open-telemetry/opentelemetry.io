@@ -87,7 +87,7 @@ upstream collector4318 {
 }
 ```
 
-### load-balancing exporter
+### Load-balancing exporter
 
 For a concrete example of the centralized collector deployment pattern we first
 need to have a closer look at the load-balancing exporter. It has two main
@@ -201,7 +201,7 @@ The load-balancing exporter emits metrics including
 that you can use for health and performance monitoring of the OTLP endpoint
 collector.
 
-## Combined deployment of Collectors as agents and gateways
+## Combined deployment of collectors as agents and gateways
 
 Often a deployment of multiple OpenTelemetry collectors involves running both
 Collector as gateways and as [agents](/docs/collector/deployment/agent/).

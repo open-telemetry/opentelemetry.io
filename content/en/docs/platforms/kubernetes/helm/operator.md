@@ -14,7 +14,7 @@ Operator is via the
 For detailed use of the OpenTelemetry Operator visit its
 [docs](/docs/platforms/kubernetes/operator).
 
-### Installing the Chart
+### Installing the chart
 
 To install the chart with the release name `my-opentelemetry-operator`, run the
 following commands:

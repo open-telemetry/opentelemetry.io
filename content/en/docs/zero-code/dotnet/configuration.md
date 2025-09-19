@@ -312,7 +312,7 @@ restarts.
 | -------------------------------------- | ------------------- | ------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_RULE_ENGINE_ENABLED` | Enables RuleEngine. | `true`        | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
-## .NET CLR Profiler
+## .NET CLR profiler
 
 The CLR uses the following environment variables to set up the profiler. See
 [.NET Runtime Profiler Loading](https://github.com/dotnet/runtime/blob/main/docs/design/coreclr/profiling/Profiler%20Loading.md)
@@ -345,7 +345,7 @@ CORECLR_PROFILER_PATH_32
 CORECLR_PROFILER_PATH_64
 ```
 
-## .NET Runtime
+## .NET runtime
 
 On .NET it is required to set the
 [`DOTNET_STARTUP_HOOKS`](https://github.com/dotnet/runtime/blob/main/docs/design/features/host-startup-hook.md)

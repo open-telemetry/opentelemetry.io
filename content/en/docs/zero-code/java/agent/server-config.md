@@ -59,7 +59,7 @@ argument after the `--exec` option:
 -javaagent:/path/to/opentelemetry-javaagent.jar
 ```
 
-## Glassfish / Payara
+## Glassfish / payara
 
 Add the path to the Java agent using the `asadmin` tool:
 
@@ -151,7 +151,7 @@ set JAVA_OPTIONS=%JAVA_OPTIONS% -javaagent:"<Drive>:\path\to\opentelemetry-javaa
 For managed server instances, add the `-javaagent` argument using the admin
 console.
 
-## WebSphere Liberty Profile
+## WebSphere liberty profile
 
 Add the path to the Java agent to the `jvm.options` file. For a single server,
 edit `${server.config.dir}/jvm.options`, and for all servers, edit
@@ -163,7 +163,7 @@ edit `${server.config.dir}/jvm.options`, and for all servers, edit
 
 Restart the server after saving the file.
 
-## WebSphere Traditional
+## WebSphere traditional
 
 Open the WebSphere Admin Console and follow these steps:
 

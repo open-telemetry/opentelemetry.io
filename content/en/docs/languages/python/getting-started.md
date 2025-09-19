@@ -18,7 +18,7 @@ Ensure that you have the following installed locally:
 
 - [Python 3](https://www.python.org/)
 
-## Example Application
+## Example application
 
 The following example uses a basic [Flask](https://flask.palletsprojects.com/)
 application. If you are not using Flask, that's OK — you can use OpenTelemetry
@@ -45,7 +45,7 @@ Now install Flask:
 pip install flask
 ```
 
-### Create and launch an HTTP Server
+### Create and launch an HTTP server
 
 Create a file `app.py` and add the following code to it:
 

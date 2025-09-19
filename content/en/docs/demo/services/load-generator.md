@@ -12,7 +12,7 @@ several different routes from the frontend.
 
 ## Traces
 
-### Initializing Tracing
+### Initializing tracing
 
 Since this service is a
 [locustfile](https://docs.locust.io/en/stable/writing-a-locustfile.html), the

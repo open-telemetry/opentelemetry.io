@@ -142,7 +142,7 @@ command:
 docker run --hostname my-hostname --name container-name -p 127.0.0.1:4567:4317 otel/opentelemetry-collector:{{% param collector_vers %}}
 ```
 
-#### Docker Compose
+#### Docker compose
 
 Similarly to plain Docker, you can run the Collector in Docker by binding to the
 correct address.

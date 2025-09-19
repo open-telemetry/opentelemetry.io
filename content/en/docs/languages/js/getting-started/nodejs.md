@@ -24,7 +24,7 @@ Ensure that you have the following installed locally:
 - [TypeScript](https://www.typescriptlang.org/download), if you will be using
   TypeScript.
 
-## Example Application
+## Example application
 
 The following example uses a basic [Express](https://expressjs.com/)
 application. If you are not using Express, that's OK — you can use OpenTelemetry
@@ -59,7 +59,7 @@ npm install express
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Create and launch an HTTP Server
+### Create and launch an HTTP server
 
 Create a file named `app.ts` (or `app.js` if not using TypeScript) and add the
 following code to it:
@@ -134,7 +134,7 @@ Listening for requests on http://localhost:8080
 The following shows how to install, initialize, and run an application
 instrumented with OpenTelemetry.
 
-### More Dependencies
+### More dependencies
 
 First, install the Node SDK and autoinstrumentations package.
 
@@ -504,7 +504,7 @@ the console output, such as the following:
 
 </details>
 
-## Next Steps
+## Next steps
 
 Enrich your instrumentation generated automatically with
 [manual instrumentation](/docs/languages/js/instrumentation) of your own

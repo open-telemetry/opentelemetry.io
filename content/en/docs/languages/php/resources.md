@@ -5,7 +5,7 @@ weight: 70
 
 {{% docs/languages/resources-intro %}}
 
-## Resource Detection
+## Resource detection
 
 The PHP SDK detects resources from a variety of sources, and by default will use
 all available resource detectors:

@@ -405,7 +405,7 @@ public class CustomizedAutoConfiguredSdk {
 ```
 <!-- prettier-ignore-end -->
 
-#### SPI (Service provider interface)
+#### SPI (service provider interface)
 
 [SPIs](https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html) (artifact
 `io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:{{% param vers.otel %}}`)

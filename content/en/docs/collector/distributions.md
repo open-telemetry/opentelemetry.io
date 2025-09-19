@@ -12,7 +12,7 @@ Collector. The components included in the distributions can be found by in the
 
 {{% ecosystem/distributions-table filter="first-party-collector" %}}
 
-## Custom Distributions
+## Custom distributions
 
 Existing distributions provided by the OpenTelemetry project may not meet your
 needs. For example, you may want a smaller binary or need to implement custom
@@ -23,7 +23,7 @@ functionality like
 [ocb](../custom-collector) (OpenTelemetry Collector Builder) is available to
 build your own distributions.
 
-## Third-party Distributions
+## Third-party distributions
 
 Some organizations provide a Collector distribution with additional capabilities
 or for improved ease of use. What follows is a list of Collector distributions
@@ -31,7 +31,7 @@ maintained by third parties.
 
 {{% ecosystem/distributions-table filter="third-party-collector" %}}
 
-## Adding your Collector distribution {#how-to-add}
+## Adding your collector distribution {#how-to-add}
 
 To have your Collector distribution listed, [submit a PR][] with an entry added
 to the [distributions list][]. The entry should include the following:

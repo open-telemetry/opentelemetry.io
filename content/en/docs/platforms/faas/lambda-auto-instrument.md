@@ -18,13 +18,13 @@ instrument your application. These layers do not include the Collector which is
 a required addition unless you configure an external Collector instance to send
 your data.
 
-### Add the ARN of the OTel Collector Lambda layer
+### Add the ARN of the OTel collector lambda layer
 
 See the [Collector Lambda layer guidance](../lambda-collector/) to add the layer
 to your application and configure the Collector. We recommend you add this
 first.
 
-### Language Requirements
+### Language requirements
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
@@ -97,7 +97,7 @@ Change the entry point of your application by setting
 This wrapper script invokes your Lambda application with the automatic
 instrumentation applied.
 
-### Add the ARN of Instrumentation Lambda Layer
+### Add the ARN of instrumentation lambda layer
 
 To enable the OTel auto-instrumentation in your Lambda function, you need to add
 and configure the instrumentation and Collector layers, and then enable tracing.
@@ -146,7 +146,7 @@ uses the protocol `http/protobuf`
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Publish your Lambda
+### Publish your lambda
 
 Publish a new version of your Lambda to deploy the new changes and
 instrumentation.

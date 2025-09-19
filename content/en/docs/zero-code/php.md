@@ -162,7 +162,7 @@ OTEL_PROPAGATORS=baggage,tracecontext \
 php myapp.php
 ```
 
-### php.ini configuration
+### PHP.ini configuration
 
 Append the following to `php.ini`, or another `ini` file that will be processed
 by PHP:

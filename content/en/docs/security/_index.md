@@ -9,7 +9,7 @@ In this section, learn how the OpenTelemetry project discloses vulnerabilities
 and responds to incidents and discover what you can do to securely collect and
 transmit your observability data.
 
-## Common Vulnerabilities and Exposures (CVEs)
+## Common vulnerabilities and exposures (CVEs)
 
 For CVEs across all repositories, see
 [Common Vulnerabilities and Exposures](cve/).

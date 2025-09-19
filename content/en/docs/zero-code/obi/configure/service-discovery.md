@@ -104,7 +104,7 @@ the Kubernetes Namespaces with a name matching the provided glob.
 If you specify other selectors in the same `instrument` entry, the processes
 must match all the selector properties.
 
-### K8s Pod name
+### K8s pod name
 
 This selector property limits the instrumentation to the applications running in
 the Kubernetes Pods with a name matching the provided glob.
@@ -153,7 +153,7 @@ with a name matching the provided glob.
 If you specify other selectors in the same `instrument` entry, the processes
 must match all the selector properties.
 
-### K8s Pod labels
+### K8s pod labels
 
 This selector property limits the instrumentation to the applications running in
 the Pods with labels matching the provided value as glob.
@@ -174,7 +174,7 @@ discovery:
 The preceding example discovers all Pods in the `frontend` namespace that have a
 label `instrument` with a value that matches the glob `obi`.
 
-### K8s Pod annotations
+### K8s pod annotations
 
 This selector property limits the instrumentation to the applications running in
 the Pods with annotations matching the provided value as glob.
@@ -230,7 +230,7 @@ Note: to enable such self-instrumentation, you still need to include them in the
 `instrument` section, or these components need to be a part of a encompassing
 inclusion criteria.
 
-## Skip go specific tracers
+## Skip Go specific tracers
 
 The `skip_go_specific_tracers` option disables the detection of Go specifics
 when the **eBPF** tracer inspects executables to be instrumented. The tracer

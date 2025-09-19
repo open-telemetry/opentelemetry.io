@@ -69,7 +69,7 @@ Tail-sampling this way involves several tradeoffs:
 
 The implementation consists of two main components:
 
-### 1. A custom parent-based sampler that allows "Record-Only" decisions:
+### 1. A custom parent-based sampler that allows "record-only" decisions:
 
 ```csharp
 public class ParentBasedElseAlwaysRecordSampler : Sampler

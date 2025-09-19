@@ -111,7 +111,7 @@ span.setAttributes({
 });
 ```
 
-### Span Exceptions and status
+### Span exceptions and status
 
 You can use the span object's `recordException` function to create a span event
 with the full stack trace of a handled error. When recording an exception also
@@ -125,7 +125,7 @@ span.setStatus({ code: opentelemetry.SpanStatusCode.ERROR });
 
 ## Metrics
 
-### Creating Meters and Instruments
+### Creating meters and instruments
 
 Meters can be created using the `@opentelemetry/api-metrics` package. You can
 create meters as seen below, and then use the created meter to create

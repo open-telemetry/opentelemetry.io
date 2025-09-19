@@ -25,7 +25,7 @@ sure that `service.name` is set by configuring a service name.
 
 ## Traces
 
-### Acquiring a Tracer
+### Acquiring a tracer
 
 To begin [tracing](/docs/concepts/signals/traces), you will need to ensure you
 have an initialized [`Tracer`](/docs/concepts/signals/traces#tracer) that comes
@@ -72,7 +72,7 @@ def track_extended_warranty(extended_warranty)
 end
 ```
 
-### Creating New Spans
+### Creating new spans
 
 To create a [span](/docs/concepts/signals/traces#spans), you’ll need a
 [configured `Tracer`](#acquiring-a-tracer).
@@ -198,7 +198,7 @@ current_span.add_attributes({
 })
 ```
 
-### Add Span Events
+### Add span events
 
 A [span event](/docs/concepts/signals/traces#span-events) is a human-readable
 message on a span that represents "something happening" during it's lifetime.
@@ -236,7 +236,7 @@ span.add_event("Cancelled wait due to external signal", attributes: {
 })
 ```
 
-### Add Span Links
+### Add span links
 
 A [span](/docs/concepts/signals/traces#spans) can be created with zero or more
 [span links](/docs/concepts/signals/traces#span-links) that causally link it to
@@ -311,7 +311,7 @@ Exceptions can also be recorded with additional attributes:
 current_span.record_exception(ex, attributes: { "some.attribute" => 12 })
 ```
 
-### Context Propagation
+### Context propagation
 
 > Distributed Tracing tracks the progression of a single Request, called a
 > Trace, as it is handled by Services that make up an Application. A Distributed
@@ -351,7 +351,7 @@ The metrics API & SDK are currently under development.
 
 The logs API & SDK are currently under development.
 
-## Next Steps
+## Next steps
 
 You’ll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/languages/ruby/exporters) to one or more

@@ -11,7 +11,7 @@ application servers right out of the box. If you do not see the framework or
 technology you are looking for, consider
 [filing an issue](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues).
 
-## Libraries and Frameworks
+## Libraries and frameworks
 
 These are the supported libraries and frameworks. Versions listed are the
 minimum versions supported unless otherwise noted.
@@ -200,7 +200,7 @@ view execution. See
 [GenAI Client Metrics]:
   /docs/specs/semconv/gen-ai/gen-ai-metrics/#generative-ai-client-metrics
 
-## Application Servers
+## Application servers
 
 These are the application servers that are regularly tested with the agent:
 

@@ -39,7 +39,7 @@ Common properties for all database instrumentations:
 | ------------------------------------------------------------ | ------- | ------- | -------------------------------------- |
 | `otel.instrumentation.common.db-statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
 
-## JDBC Instrumentation
+## JDBC instrumentation
 
 | System property                                         | Type    | Default | Description                            |
 | ------------------------------------------------------- | ------- | ------- | -------------------------------------- |
@@ -91,7 +91,7 @@ appender in your `logback.xml` or `logback-spring.xml` file:
 </configuration>
 ```
 
-## Spring Web Autoconfiguration
+## Spring web autoconfiguration
 
 Provides autoconfiguration for the `RestTemplate` trace interceptor defined in
 [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1/library).
@@ -189,7 +189,7 @@ following entities:
 - [Known HTTP methods](/docs/zero-code/java/agent/instrumentation/http/#configuring-known-http-methods)
 - [Experimental HTTP telemetry](/docs/zero-code/java/agent/instrumentation/http/#enabling-experimental-http-telemetry)
 
-## Spring Web MVC Autoconfiguration
+## Spring web MVC autoconfiguration
 
 This feature autoconfigures instrumentation for Spring WebMVC controllers by
 adding a
@@ -207,7 +207,7 @@ following entities:
 - [Known HTTP methods](/docs/zero-code/java/agent/instrumentation/http/#configuring-known-http-methods)
 - [Experimental HTTP telemetry](/docs/zero-code/java/agent/instrumentation/http/#enabling-experimental-http-telemetry)
 
-## Spring WebFlux Autoconfiguration
+## Spring WebFlux autoconfiguration
 
 Provides autoconfigurations for the OpenTelemetry WebClient ExchangeFilter
 defined in
@@ -258,7 +258,7 @@ public class WebClientController {
 ```
 <!-- prettier-ignore-end -->
 
-## Kafka Instrumentation
+## Kafka instrumentation
 
 Provides autoconfiguration for the Kafka client instrumentation.
 
@@ -266,11 +266,11 @@ Provides autoconfiguration for the Kafka client instrumentation.
 | --------------------------------------------------------- | ------- | ------- | ---------------------------------------------------- |
 | `otel.instrumentation.kafka.experimental-span-attributes` | Boolean | false   | Enables the capture of experimental span attributes. |
 
-## Micrometer Instrumentation
+## Micrometer instrumentation
 
 Provides autoconfiguration for the Micrometer to OpenTelemetry bridge.
 
-## MongoDB Instrumentation
+## MongoDB instrumentation
 
 Provides autoconfiguration for the MongoDB client instrumentation.
 
@@ -278,7 +278,7 @@ Provides autoconfiguration for the MongoDB client instrumentation.
 | -------------------------------------------------------- | ------- | ------- | -------------------------------------- |
 | `otel.instrumentation.mongo.statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
 
-## R2DBC Instrumentation
+## R2DBC instrumentation
 
 Provides autoconfiguration for the OpenTelemetry R2DBC instrumentation.
 

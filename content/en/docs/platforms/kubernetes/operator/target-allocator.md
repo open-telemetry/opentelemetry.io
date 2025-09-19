@@ -19,7 +19,7 @@ The TA serves two functions:
 1. Even distribution of Prometheus targets among a pool of Collectors
 2. Discovery of Prometheus Custom Resources
 
-## Getting Started
+## Getting started
 
 When creating an OpenTelemetryCollector Custom Resource (CR) and setting the TA
 as enabled, the Operator will create a new deployment and service to serve

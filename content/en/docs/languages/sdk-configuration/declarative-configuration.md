@@ -108,7 +108,7 @@ config when using `otlp_http`:
 | Metrics            | `${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}` |
 | Logs               | `${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}`       |
 
-## gRPC Exporter
+## gRPC exporter
 
 Instead of `otlp_http`, you can also use `otlp_grpc` to export via gRPC:
 
@@ -117,7 +117,7 @@ otlp_grpc:
   endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4317}
 ```
 
-## Resource Attributes
+## Resource attributes
 
 The recommended approach to set resource attributes is via environment
 variables, because it works well with tools that set environment variables, such

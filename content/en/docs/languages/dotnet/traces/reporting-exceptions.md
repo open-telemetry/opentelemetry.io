@@ -41,7 +41,7 @@ catch (Exception ex)
 OpenTelemetry .NET provides several options for reporting these exceptions in
 your traces.
 
-### Option 1: Set activity status manually
+### Option 1: set activity status manually
 
 The most basic option is to set the Activity status to Error to indicate that an
 exception has occurred:
@@ -66,7 +66,7 @@ using (var activity = MyActivitySource.StartActivity("Foo"))
 }
 ```
 
-### Option 2: Use SetErrorStatusOnException feature
+### Option 2: use SetErrorStatusOnException feature
 
 If you have deeply nested activities or activities created in third-party
 libraries, manually setting the status can be difficult. Instead, you can
@@ -85,7 +85,7 @@ will automatically set that activity's status to Error.
 {{% alert title="Note" %}} This feature is platform-dependent as it relies on
 `System.Runtime.InteropServices.Marshal.GetExceptionPointers`. {{% /alert %}}
 
-### Option 3: Include error description
+### Option 3: include error description
 
 You can include the exception message as the status description for more
 context:
@@ -104,7 +104,7 @@ using (var activity = MyActivitySource.StartActivity("Foo"))
 }
 ```
 
-### Option 4: Record the full exception
+### Option 4: record the full exception
 
 For the richest debugging experience, use `Activity.RecordException()` to store
 the exception in the activity as an event:

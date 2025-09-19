@@ -9,7 +9,7 @@ leveraged by the UI or other clients. The application is based on
 
 [Frontend source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/frontend/)
 
-## Server Instrumentation
+## Server instrumentation
 
 It is recommended to use a Node required module when starting your Node.js
 application to initialize the SDK and auto-instrumentation. When initializing
@@ -91,7 +91,7 @@ the application using `npm start`.
 
 ## Traces
 
-### Span Exceptions and status
+### Span exceptions and status
 
 You can use the span object's `recordException` function to create a span event
 with the full stack trace of a handled error. When recording an exception also
@@ -133,7 +133,7 @@ span = tracer.startSpan(`HTTP ${method}`, {
 });
 ```
 
-## Browser Instrumentation
+## Browser instrumentation
 
 The web-based UI that the frontend provides is also instrumented for web
 browsers. OpenTelemetry instrumentation is included as part of the Next.js App

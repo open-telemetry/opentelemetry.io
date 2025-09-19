@@ -13,7 +13,7 @@ OpenTelemetry supports both
 If you're already using the modern, cross-platform implementation of .NET, you
 can skip this article.
 
-## ASP.NET Initialization
+## ASP.NET initialization
 
 Initialization for ASP.NET is a little different than for ASP.NET Core.
 

@@ -71,7 +71,7 @@ This page lists the manual Span Attributes used throughout the demo:
 | `app.session.id`         | string | Session ID                    |
 | `app.user.id`            | string | User ID                       |
 
-## Load Generator
+## Load generator
 
 | Name     | Type | Description |
 | -------- | ---- | ----------- |
@@ -86,7 +86,7 @@ This page lists the manual Span Attributes used throughout the demo:
 | `app.payment.card_valid` | boolean | Was the card used valid                               |
 | `app.payment.charged`    | boolean | Was the charge successful (false with load generator) |
 
-## Product Catalog
+## Product catalog
 
 | Name                        | Type   | Description                           |
 | --------------------------- | ------ | ------------------------------------- |

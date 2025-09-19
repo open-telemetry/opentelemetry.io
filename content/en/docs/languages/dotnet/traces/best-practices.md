@@ -135,7 +135,7 @@ and can be
 [correlated to metrics](/docs/languages/dotnet/metrics/best-practices/#metrics-correlation)
 through [exemplars](/docs/languages/dotnet/metrics/exemplars/).
 
-### Manually creating Activities
+### Manually creating activities
 
 As shown in the
 [getting started](/docs/languages/dotnet/traces/getting-started-console/) guide,
@@ -153,7 +153,7 @@ If the `Activity` produced by the instrumentation library is missing some
 information you need, it is generally recommended to enrich the existing
 `Activity` with that information, as opposed to creating a new one.
 
-### Modelling static tags as Resource
+### Modelling static tags as resource
 
 Tags such as `MachineName`, `Environment`, and so on, which are static
 throughout the process lifetime, should be modelled as `Resource`, instead of

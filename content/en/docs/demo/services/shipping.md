@@ -39,7 +39,7 @@ fn get_resource() -> Resource {
 With `get_resource()` in place, the function can be called multiple times across
 all provider initializations.
 
-### Initializing Tracer Provider
+### Initializing tracer provider
 
 ```rust
 fn init_tracer_provider() {
@@ -59,7 +59,7 @@ fn init_tracer_provider() {
 }
 ```
 
-### Initializing Meter Provider
+### Initializing meter provider
 
 ```rust
 fn init_meter_provider() -> opentelemetry_sdk::metrics::SdkMeterProvider {
@@ -79,7 +79,7 @@ fn init_meter_provider() -> opentelemetry_sdk::metrics::SdkMeterProvider {
 }
 ```
 
-### Initializing Logger Provider
+### Initializing logger provider
 
 For logs, the Shipping service uses Tracing, so the `OpenTelemetryTracingBridge`
 is used to bridge logs from the tracing crate to OpenTelemetry.
@@ -104,7 +104,7 @@ fn init_logger_provider() {
 }
 ```
 
-### Instrumentation Initialization
+### Instrumentation initialization
 
 After defining the functions to initialize the providers for Traces, Metrics and
 Logs, a public function `init_otel()` is created:
@@ -140,7 +140,7 @@ async fn main() -> std::io::Result<()> {
 }
 ```
 
-### Instrumentation Configuration
+### Instrumentation configuration
 
 With the providers now configured and initialized, Shipping uses the
 [`opentelemetry-instrumentation-actix-web` crate](https://crates.io/crates/opentelemetry-instrumentation-actix-web)

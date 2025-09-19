@@ -58,7 +58,7 @@ npm install express
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Create and launch an HTTP Server
+### Create and launch an HTTP server
 
 To highlight the difference between instrumenting a _library_ and a standalone
 _app_, split out the dice rolling into a _library file_, which then will be
@@ -311,7 +311,7 @@ information, see [Libraries](/docs/languages/js/libraries/).
 
 ## Traces
 
-### Initialize Tracing
+### Initialize tracing
 
 {{% alert title="Note" %}} If you’re instrumenting a library, **skip this
 step**. {{% /alert %}}
@@ -946,7 +946,7 @@ function rollTheDice(rolls, min, max) {
 
 {{% /tab %}} {{< /tabpane >}}
 
-#### Semantic Attributes
+#### Semantic attributes
 
 There are semantic conventions for spans representing operations in well-known
 protocols like HTTP or database calls. Semantic conventions for these spans are
@@ -1046,7 +1046,7 @@ const someFunction = (spanToLinkFrom) => {
 };
 ```
 
-### Span Status
+### Span status
 
 {{% include "span-status-preamble.md" %}}
 
@@ -1135,14 +1135,14 @@ try {
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Using `sdk-trace-base` and manually propagating span context
+### Using `SDK-trace-base` and manually propagating span context
 
 In some cases, you may not be able to use either the Node.js SDK nor the Web
 SDK. The biggest difference, aside from initialization code, is that you'll have
 to manually set spans as active in the current context to be able to create
 nested spans.
 
-#### Initializing tracing with `sdk-trace-base`
+#### Initializing tracing with `SDK-trace-base`
 
 Initializing tracing is similar to how you'd do it with Node.js or the Web SDK.
 
@@ -1215,7 +1215,7 @@ const tracer = opentelemetry.trace.getTracer('example-basic-tracer-node');
 Like the other examples in this document, this exports a tracer you can use
 throughout the app.
 
-#### Creating nested spans with `sdk-trace-base`
+#### Creating nested spans with `SDK-trace-base`
 
 To create nested spans, you need to set whatever the currently-created span is
 as the active span in the current context. Don't bother using `startActiveSpan`
@@ -1263,7 +1263,7 @@ aggregates, and produce data which is constant as a function of system load.
 Aggregates lack details required to diagnose low level issues, but complement
 spans by helping to identify trends and providing application runtime telemetry.
 
-### Initialize Metrics
+### Initialize metrics
 
 {{% alert %}} If you’re instrumenting a library, skip this step. {{% /alert %}}
 
@@ -1283,7 +1283,7 @@ If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
 above, you have a `MeterProvider` setup for you already. You can continue with
 [acquiring a meter](#acquiring-a-meter).
 
-##### Initializing metrics with `sdk-metrics`
+##### Initializing metrics with `SDK-metrics`
 
 In some cases you may not be able or may not want to use the
 [full OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node).
@@ -1400,7 +1400,7 @@ node --import ./instrumentation.mjs app.js
 
 Now that a `MeterProvider` is configured, you can acquire a `Meter`.
 
-### Acquiring a Meter
+### Acquiring a meter
 
 Anywhere in your application where you have manually instrumented code you can
 call `getMeter` to acquire a meter. For example:
@@ -1598,7 +1598,7 @@ function rollOnce(min, max) {
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Using UpDown Counters
+### Using UpDown counters
 
 UpDown counters can increment and decrement, allowing you to observe a
 cumulative value that goes up or down.
@@ -1615,7 +1615,7 @@ counter.add(1);
 counter.add(-1);
 ```
 
-### Using Histograms
+### Using histograms
 
 Histograms are used to measure a distribution of values over time.
 
@@ -1666,7 +1666,7 @@ app.get('/', (_req, _res) => {
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Using Observable (Async) Counters
+### Using observable (async) counters
 
 Observable counters can be used to measure an additive, non-negative,
 monotonically increasing value.
@@ -1687,7 +1687,7 @@ counter.addCallback((result) => {
 //... calls to addEvent
 ```
 
-### Using Observable (Async) UpDown Counters
+### Using observable (async) UpDown counters
 
 Observable UpDown counters can increment and decrement, allowing you to measure
 an additive, non-negative, non-monotonically increasing cumulative value.
@@ -1712,7 +1712,7 @@ counter.addCallback((result) => {
 //... calls to addEvent and removeEvent
 ```
 
-### Using Observable (Async) Gauges
+### Using observable (async) gauges
 
 Observable Gauges should be used to measure non-additive values.
 
@@ -1764,7 +1764,7 @@ const counter = myMeter.createCounter('my.counter');
 counter.add(1, { 'some.optional.attribute': 'some value' });
 ```
 
-### Configure Metric Views
+### Configure metric views
 
 A Metric View provides developers with the ability to customize metrics exposed
 by the Metrics SDK.

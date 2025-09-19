@@ -128,9 +128,9 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --linux-os-co
 For more information, see
 "[Customize node configuration for Azure Kubernetes Service (AKS) node pools](https://learn.microsoft.com/en-us/azure/aks/custom-node-configuration?tabs=linux-node-pools)"
 
-#### EKS (using EKS Anywhere Configuration)
+#### EKS (using EKS anywhere configuration)
 
-##### Create EKS Anywhere configuration file
+##### Create EKS anywhere configuration file
 
 ```yaml
 apiVersion: anywhere.eks.amazonaws.com/v1alpha1
@@ -144,7 +144,7 @@ spec:
         kernel.sys_paranoid: '1'
 ```
 
-##### Deploy or update your EKS Anywhere cluster
+##### Deploy or update your EKS anywhere cluster
 
 ```sh
 eksctl create cluster --config-file hostosconfig.yaml

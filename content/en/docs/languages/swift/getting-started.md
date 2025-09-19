@@ -16,7 +16,7 @@ Ensure that you have the following installed locally:
 
 - [Swift](https://www.swift.org/)
 
-## Example Application
+## Example application
 
 The following example uses a basic [Vapor](https://vapor.codes) application. If
 you are not using Vapor, that's OK — you can use OpenTelemetry Swift with any
@@ -53,7 +53,7 @@ let package = Package(
 )
 ```
 
-### Create and launch an HTTP Server
+### Create and launch an HTTP server
 
 In the same folder, create a file called `main.swift` and add the following code
 to the file:
@@ -194,7 +194,7 @@ convenience):
 }
 ```
 
-## Next Steps
+## Next steps
 
 Enrich your instrumentation generated automatically with
 [manual instrumentation](/docs/languages/swift/instrumentation) of your own

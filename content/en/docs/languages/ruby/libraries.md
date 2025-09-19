@@ -8,7 +8,7 @@ cSpell:ignore: faraday metapackage sinatra
 
 {{% docs/languages/libraries-intro ruby %}}
 
-## Use Instrumentation Libraries
+## Use instrumentation libraries
 
 If a library does not come with OpenTelemetry out of the box, you can use
 [instrumentation libraries](/docs/specs/otel/glossary/#instrumentation-library)

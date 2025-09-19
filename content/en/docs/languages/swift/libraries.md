@@ -47,7 +47,7 @@ about the iOS device, OS details, and application details. It applies these
 values to the appropriate
 [semantic attributes](/docs/specs/semconv/resource/#semantic-attributes-with-sdk-provided-default-value).
 
-#### Application Info
+#### Application info
 
 | Attribute           | Value example                 | Description                                                                                              |
 | ------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------- |
@@ -55,14 +55,14 @@ values to the appropriate
 | `service.version`   | `1.0 (1234)`                  | `CFBundleShortVersion` & (`CFBundleVersion`); The application version as defined in the App's info.plist |
 | `service.namespace` | `com.myCompany.myApplication` | `CFBundleIdentifier`                                                                                     |
 
-#### Device Info
+#### Device info
 
 | Attribute                 | Value example           | Description                                    |
 | ------------------------- | ----------------------- | ---------------------------------------------- |
 | `device.model.identifier` | `iphone13,3`            | fetched from `sysctl` depending on device type |
 | `device.id`               | `00000000-0000-0000000` | `identifierForVendor` uuid string              |
 
-#### Operating System Info
+#### Operating system info
 
 | Attributes       | Value example                     | Description                                            |
 | ---------------- | --------------------------------- | ------------------------------------------------------ |
@@ -159,7 +159,7 @@ with OpenTelemetry to show their spans in a profiling app like `Instruments`. It
 also exports the `OSLog` it uses for posting so the user can add extra signpost
 events. This functionality is shown in `Simple Exporter` example.
 
-### Version Notice
+### Version notice
 
 - **iOS 15+, macOS 12+, tvOS 15+, watchOS 8+**: Use
   **`OSSignposterIntegration`**, which utilizes the modern `OSSignposter` API

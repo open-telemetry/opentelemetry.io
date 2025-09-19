@@ -41,7 +41,7 @@ your deployment file two environment variables:
 - `DJANGO_SETTINGS_MODULE`, with the name of the Django settings module, e.g.
   "myapp.settings"
 
-#### gevent applications
+#### Gevent applications
 
 Since the OpenTelemetry Python 1.37.0/0.58b0 release if you set in your
 deployment file the `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH`

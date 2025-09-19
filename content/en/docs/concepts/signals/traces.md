@@ -134,7 +134,7 @@ end-to-end view of any system.
 To understand how tracing in OpenTelemetry works, let's look at a list of
 components that will play a part in instrumenting our code.
 
-## Tracer Provider
+## Tracer provider
 
 A Tracer Provider (sometimes called `TracerProvider`) is a factory for
 `Tracer`s. In most applications, a Tracer Provider is initialized once and its
@@ -149,13 +149,13 @@ A Tracer creates spans containing more information about what is happening for a
 given operation, such as a request in a service. Tracers are created from Tracer
 Providers.
 
-## Trace Exporters
+## Trace exporters
 
 Trace Exporters send traces to a consumer. This consumer can be standard output
 for debugging and development-time, the OpenTelemetry Collector, or any open
 source or vendor backend of your choice.
 
-## Context Propagation
+## Context propagation
 
 Context Propagation is the core concept that enables Distributed Tracing. With
 Context Propagation, Spans can be correlated with each other and assembled into
@@ -219,7 +219,7 @@ Spans can be nested, as is implied by the presence of a parent span ID: child
 spans represent sub-operations. This allows spans to more accurately capture the
 work done in an application.
 
-### Span Context
+### Span context
 
 Span context is an immutable object on every span that contains the following:
 
@@ -260,7 +260,7 @@ naming conventions for metadata that is typically present in common operations.
 It's helpful to use semantic attribute naming wherever possible so that common
 kinds of metadata are standardized across systems.
 
-### Span Events
+### Span events
 
 A Span Event can be thought of as a structured log message (or annotation) on a
 Span, typically used to denote a meaningful, singular point in time during the
@@ -290,7 +290,7 @@ completes, you might want to add data from the operation to your telemetry.
   attach the data to a span event.
 - If the timestamp isn't meaningful, attach the data as span attributes.
 
-### Span Links
+### Span links
 
 Links exist so that you can associate one span with one or more spans, implying
 a causal relationship. For example, let’s say we have a distributed system where
@@ -312,7 +312,7 @@ another.
 
 For more information see [Span Links](/docs/specs/otel/trace/api/#link).
 
-### Span Status
+### Span status
 
 Each span has a status. The three possible values are:
 
@@ -340,7 +340,7 @@ To reiterate: `Unset` represents a span that completed without an error. `Ok`
 represents when a developer explicitly marks a span as successful. In most
 cases, it is not necessary to explicitly mark a span as `Ok`.
 
-### Span Kind
+### Span kind
 
 When a span is created, it is one of `Client`, `Server`, `Internal`, `Producer`,
 or `Consumer`. This span kind provides a hint to the tracing backend as to how

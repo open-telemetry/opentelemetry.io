@@ -141,7 +141,7 @@ using CMake, following these steps:
 With Oat++ and OpenTelemetry C++ ready, you can continue with creating the HTTP
 Server, that we want to instrument eventually.
 
-## Create and launch an HTTP Server
+## Create and launch an HTTP server
 
 In your `otel-cpp-starter` folder, create a subfolder `roll-dice`, where the
 Oat++ library will be used by referencing the oatpp headers and linking them

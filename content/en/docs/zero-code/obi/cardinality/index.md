@@ -233,7 +233,7 @@ other owners on average, would have a cardinality of:
 
 2 directions x 100 SourceOwners x 2 Destination Owners = **400**
 
-## Service Graph metrics
+## Service graph metrics
 
 Service Graph metrics are produced for instances that can be instrumented with
 Application metrics, for example HTTP, RPC, SQL, Redis, and Kafka. Network
@@ -288,7 +288,7 @@ we've made assumptions that the large number of HTTP return codes would only
 multiply to HTTP services, or that some groups of instances would have only a
 subset of the total routes.
 
-## Case study: cardinality of OpenTelemetry Demo
+## Case study: cardinality of OpenTelemetry demo
 
 In this section we calculate the cardinality of the
 [OpenTelemetry Demo](/docs/demo/architecture/) deployed in a local cluster of 3

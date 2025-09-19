@@ -5,7 +5,7 @@ weight: 20
 aliases: [otlp-exporter-configuration]
 ---
 
-## Endpoint Configuration
+## Endpoint configuration
 
 The following environment variables let you configure an OTLP/gRPC or OTLP/HTTP
 endpoint for your traces, metrics, and logs.
@@ -125,7 +125,7 @@ A list of headers to apply to all outgoing logs.
 **Example:**
 `export OTEL_EXPORTER_OTLP_LOGS_HEADERS="api-key=key,other-config-value=value"`
 
-## Timeout Configuration
+## Timeout configuration
 
 The following environment variables configure the maximum time (in milliseconds)
 an OTLP Exporter will wait before transmitting the net batch of data.

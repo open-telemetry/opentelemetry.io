@@ -56,7 +56,7 @@ you can learn how to set up exporters by following the
 
 ## OTLP
 
-### Collector Setup
+### Collector setup
 
 {{% alert title=Note %}}
 

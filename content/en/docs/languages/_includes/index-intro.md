@@ -7,7 +7,7 @@ the generation and collection of application telemetry data such as metrics,
 logs, and traces. This documentation is designed to help you understand how to
 get started using OpenTelemetry {{ $name }}.
 
-## Status and Releases
+## Status and releases
 
 The current status of the major functional components for OpenTelemetry
 {{ $name }} is as follows:

@@ -45,7 +45,7 @@ directories.
 To find related projects like exporters, instrumentation libraries, tracer
 implementations, etc., visit the [Registry](/ecosystem/registry/?s=python).
 
-### Installing Cutting-edge Packages
+### Installing cutting-edge packages
 
 There is some functionality that has not yet been released to PyPI. In that
 situation, you may want to install the packages directly from the repository.

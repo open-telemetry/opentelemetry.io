@@ -12,7 +12,7 @@ variables and possibly replacing some container images.
 Live demos can be added to the demo
 [README](https://github.com/open-telemetry/opentelemetry-demo/blob/main/README.md?plain=1).
 
-## Suggestions for Fork Maintainers
+## Suggestions for fork maintainers
 
 - If you'd like to enhance the telemetry data emitted or collected by the demo,
   then we strongly encourage you to backport your changes to this repository.

@@ -88,7 +88,7 @@ try (Scope ignored = span.makeCurrent()) {
 
 ## Metrics
 
-### Initializing Metrics
+### Initializing metrics
 
 Similar to creating spans, the first step in creating metrics is initializing a
 `Meter` instance, e.g. `GlobalOpenTelemetry.getMeter("ad")`. From there, use the
@@ -102,7 +102,7 @@ meter
   .build();
 ```
 
-### Current Metrics Produced
+### Current metrics produced
 
 Note that all the metric names below appear in Prometheus/Grafana with `.`
 characters transformed to `_`.

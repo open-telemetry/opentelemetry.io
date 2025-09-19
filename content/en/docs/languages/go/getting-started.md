@@ -96,13 +96,13 @@ go run .
 Open <http://localhost:8080/rolldice> in your web browser to ensure it is
 working.
 
-## Add OpenTelemetry Instrumentation
+## Add OpenTelemetry instrumentation
 
 Now we'll show how to add OpenTelemetry instrumentation to the sample app. If
 you are using your own application, you can follow along, just note that your
 code may be slightly different.
 
-### Add Dependencies
+### Add dependencies
 
 Install the following packages:
 
@@ -363,7 +363,7 @@ func newHTTPHandler() http.Handler {
 ```
 <!-- prettier-ignore-end -->
 
-### Add Custom Instrumentation
+### Add custom instrumentation
 
 Instrumentation libraries capture telemetry at the edges of your systems, such
 as inbound and outbound HTTP requests, but they don't capture what's going on in
@@ -439,7 +439,7 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
 Note that if you're only using tracing or metrics, you can omit the
 corresponding code that instruments the other telemetry type.
 
-### Run the Application
+### Run the application
 
 Build and run the application with the following command:
 

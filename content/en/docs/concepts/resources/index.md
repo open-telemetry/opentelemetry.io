@@ -17,7 +17,7 @@ created during initialization. This association cannot be changed later. After a
 resource is added, all spans and metrics produced from a `Tracer` or `Meter`
 from the provider will have the resource associated with them.
 
-## Semantic Attributes with SDK-provided Default Value
+## Semantic attributes with SDK-provided default value
 
 There are attributes provided by the OpenTelemetry SDK. One of them is the
 `service.name`, which represents the logical name of the service. By default,
@@ -29,7 +29,7 @@ Additionally, the SDK will also provides the following resource attributes to
 identify itself: `telemetry.sdk.name`, `telemetry.sdk.language` and
 `telemetry.sdk.version`.
 
-## Resource Detectors
+## Resource detectors
 
 Most language-specific SDKs provide a set of resource detectors that can be used
 to automatically detect resource information from the environment. Common

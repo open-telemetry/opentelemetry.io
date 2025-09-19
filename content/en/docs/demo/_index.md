@@ -10,14 +10,14 @@ Welcome to the [OpenTelemetry Demo](/ecosystem/demo/) documentation, which
 covers how to install and run the demo, and some scenarios you can use to view
 OpenTelemetry in action.
 
-## Running the Demo
+## Running the demo
 
 Want to deploy the demo and see it in action? Start here.
 
 - [Docker](docker-deployment/)
 - [Kubernetes](kubernetes-deployment/)
 
-## Language Feature Reference
+## Language feature reference
 
 Want to understand how a particular language's instrumentation works? Start
 here.
@@ -36,7 +36,7 @@ here.
 | Ruby       |                                                    | [Email Service](services/email/)                                                             | [Email Service](services/email/)                                                             |
 | Rust       |                                                    | [Shipping Service](services/shipping/)                                                       | [Shipping Service](services/shipping/)                                                       |
 
-## Service Documentation
+## Service documentation
 
 Specific information about how OpenTelemetry is deployed in each service can be
 found here:
@@ -56,7 +56,7 @@ found here:
 - [Image Provider Service](services/image-provider/)
 - [React Native App](services/react-native-app/)
 
-## Feature Flag Scenarios
+## Feature flag scenarios
 
 How can you solve problems with OpenTelemetry? These
 [feature flag enabled scenarios](feature-flags/) walk you through some

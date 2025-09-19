@@ -116,7 +116,7 @@ sdk.start();
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Usage in the Browser
+### Usage in the browser
 
 When you use the OTLP exporter in a browser-based application, you need to note
 that:

@@ -77,7 +77,7 @@ instrumented application on the same host as the OpenTelemetry Collector. In
 that case, consider rightsizing the resources for the Collector and optimize its
 settings. See [Scaling](/docs/collector/scaling/).
 
-## Constraints impacting the performance of the Java agent
+## Constraints impacting the performance of the java agent
 
 In general, the more telemetry you collect from your application, the greater
 the impact on agent overhead. For example, tracing methods that aren't relevant

@@ -25,7 +25,7 @@ The
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutmetric)
 package contains an implementation of the console metrics exporter.
 
-### Console logs (Experimental) {#console-logs}
+### Console logs (experimental) {#console-logs}
 
 The
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutlog`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/stdout/stdoutlog)
@@ -74,18 +74,18 @@ protobuf payloads.
 [`go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetricgrpc)
 contains an implementation of OTLP metrics exporter using gRPC.
 
-### OTLP logs over HTTP (Experimental)
+### OTLP logs over HTTP (experimental)
 
 [`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp)
 contains an implementation of OTLP logs exporter using HTTP with binary protobuf
 payloads.
 
-### OTLP logs over gRPC (Experimental)
+### OTLP logs over gRPC (experimental)
 
 [`go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc`](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc)
 contains an implementation of OTLP logs exporter using gRPC.
 
-## Prometheus (Experimental)
+## Prometheus (experimental)
 
 A Prometheus exporter is used to report metrics via Prometheus scrape HTTP
 endpoint.

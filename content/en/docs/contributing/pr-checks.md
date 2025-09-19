@@ -29,7 +29,7 @@ can recover from a failed state.
 
 {{% /alert %}}
 
-## `Easy CLA` {.notranslate lang=en}
+## `easy CLA` {.notranslate lang=en}
 
 This check fails if you haven't [signed the CLA](../prerequisites/#cla).
 
@@ -57,7 +57,7 @@ If any issues are found, annotations are added to your files in the
 alternative, you can run `npm run check:text -- --fix` locally to fix most
 issues. Run `npm run check:text` again and manually fix the remaining issues.
 
-### `MARKDOWN linter` {.notranslate lang=en}
+### `Markdown linter` {.notranslate lang=en}
 
 This check verifies that
 [standards and consistency for Markdown files are enforced](../style-guide/#markdown-standards).

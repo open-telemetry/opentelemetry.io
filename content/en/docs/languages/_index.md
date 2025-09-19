@@ -23,7 +23,7 @@ If you are using Kubernetes, you can use the [OpenTelemetry Operator for
 Kubernetes][otel-op] to [inject these zero-code solutions][zero-code] into your
 application.
 
-## Status and Releases
+## Status and releases
 
 The current status of the major functional components for OpenTelemetry is as
 follows:

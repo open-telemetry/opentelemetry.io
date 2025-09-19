@@ -69,7 +69,7 @@ add the OpenTelemetry Collector Helm chart so it can be installed later.
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 ```
 
-## Daemonset Collector
+## Daemonset collector
 
 The first step to collecting Kubernetes telemetry is to deploy a daemonset
 instance of the OpenTelemetry Collector to gather telemetry related to nodes and
@@ -91,7 +91,7 @@ This instance of the collector will use the following components:
 
 Let's break these down.
 
-### OTLP Receiver
+### OTLP receiver
 
 The
 [OTLP Receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
@@ -106,7 +106,7 @@ a node to emit their traces, metrics, and logs to a collector running on the
 same node. This keeps network interactions simple and allows easy correlation of
 Kubernetes metadata using the `k8sattributes` processor.
 
-### Kubernetes Attributes Processor
+### Kubernetes attributes processor
 
 The
 [Kubernetes Attributes Processor](/docs/platforms/kubernetes/collector/components/#kubernetes-attributes-processor)
@@ -118,7 +118,7 @@ Kubernetes context to your telemetry, the Kubernetes Attributes Processor lets
 you correlate your application's traces, metrics, and logs signals with your
 Kubernetes telemetry, such as pod metrics and traces.
 
-### Kubeletstats Receiver
+### Kubeletstats receiver
 
 The
 [Kubeletstats Receiver](/docs/platforms/kubernetes/collector/components/#kubeletstats-receiver)
@@ -129,7 +129,7 @@ using the Kubernetes Attributes Processor, we'll be able to correlate our
 application traces, metrics, and logs with the metrics produced by the
 Kubeletstats Receiver.
 
-### Filelog Receiver
+### Filelog receiver
 
 The
 [Filelog Receiver](/docs/platforms/kubernetes/collector/components/#filelog-receiver)
@@ -175,7 +175,7 @@ presets:
     enabled: true
 ## The chart only includes the loggingexporter by default
 ## If you want to send your data somewhere you need to
-## configure an exporter, such as the otlpexporter
+## Configure an exporter, such as the otlpexporter
 # config:
 #   exporters:
 #     otlp:
@@ -200,7 +200,7 @@ helm install otel-collector open-telemetry/opentelemetry-collector --values <pat
 You should now have a daemonset installation of the OpenTelemetry Collector
 running in your cluster collecting telemetry from each node!
 
-## Deployment Collector
+## Deployment collector
 
 The next step to collecting Kubernetes telemetry is to deploy a deployment
 instance of the Collector to gather telemetry related to the cluster as a whole.
@@ -216,7 +216,7 @@ This instance of the Collector will use the following components:
 
 Let's break these down.
 
-### Kubernetes Cluster Receiver
+### Kubernetes cluster receiver
 
 The
 [Kubernetes Cluster Receiver](/docs/platforms/kubernetes/collector/components/#kubernetes-cluster-receiver)
@@ -224,7 +224,7 @@ is the Collector's solution for collecting metrics about the state of the
 cluster as a whole. This receiver can gather metrics about node conditions, pod
 phases, container restarts, available and desired deployments, and more.
 
-### Kubernetes Objects Receiver
+### Kubernetes objects receiver
 
 The
 [Kubernetes Objects Receiver](/docs/platforms/kubernetes/collector/components/#kubernetes-objects-receiver)
@@ -262,7 +262,7 @@ presets:
     enabled: true
 ## The chart only includes the loggingexporter by default
 ## If you want to send your data somewhere you need to
-## configure an exporter, such as the otlpexporter
+## Configure an exporter, such as the otlpexporter
 # config:
 # exporters:
 #   otlp:

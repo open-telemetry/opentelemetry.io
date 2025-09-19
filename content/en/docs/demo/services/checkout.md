@@ -13,7 +13,7 @@ checkout service will call many other services in order to process an order.
 
 ## Traces
 
-### Initializing Tracing
+### Initializing tracing
 
 The OpenTelemetry SDK is initialized from `main` using the `initTracerProvider`
 function.
@@ -72,7 +72,7 @@ func createClient(ctx context.Context, svcAddr string) (*grpc.ClientConn, error)
 }
 ```
 
-### Adding Kafka ( Sarama ) auto-instrumentation
+### Adding Kafka ( sarama ) auto-instrumentation
 
 This service will write the processed results onto a Kafka topic which will then
 be in turn be processed by other microservices. To instrument the Kafka client
@@ -129,7 +129,7 @@ span.AddEvent("charged",
 
 ## Metrics
 
-### Initializing Metrics
+### Initializing metrics
 
 The OpenTelemetry SDK is initialized from `main` using the `initMeterProvider`
 function.

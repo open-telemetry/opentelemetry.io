@@ -30,7 +30,7 @@ baggage for you.
 
 ![OTel Baggage](../otel-baggage.svg)
 
-## What should OTel Baggage be used for?
+## What should OTel baggage be used for?
 
 Baggage is best used to include information typically available only at the
 start of a request further downstream. This can include things like Account

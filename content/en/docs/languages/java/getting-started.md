@@ -20,7 +20,7 @@ Ensure that you have the following installed locally:
 - Java JDK 17+, due to the use of Spring Boot 3; [Java 8+ otherwise][java-vers]
 - [Gradle](https://gradle.org/)
 
-## Example Application
+## Example application
 
 The following example uses a basic [Spring Boot] application. You can use
 another web framework, such as Apache Wicket or Play. For a complete list of
@@ -57,7 +57,7 @@ dependencies {
 }
 ```
 
-### Create and launch an HTTP Server
+### Create and launch an HTTP server
 
 In that same folder, create a file called `DiceApplication.java` and add the
 following code to the file:

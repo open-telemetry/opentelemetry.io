@@ -33,7 +33,7 @@ linked activities is sampled.
 The links based sampler is not a probabilistic sampler. It is a biased sampler
 that decides to sample an activity if any of the linked contexts are sampled.
 
-## When should you consider such an option? What are the tradeoffs?
+## When should you consider such an option? what are the tradeoffs?
 
 This may be a good option to consider if you want to get more complete traces
 across linked traces. However, there are a few tradeoffs to consider:

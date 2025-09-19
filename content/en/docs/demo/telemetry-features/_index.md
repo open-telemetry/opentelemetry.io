@@ -19,7 +19,7 @@ aliases: [demo_features, features]
   via gRPC. The received traces are then exported to the logs and to Jaeger;
   received metrics and exemplars are exported to logs and Prometheus.
 
-## Observability Solutions
+## Observability solutions
 
 - **[Grafana](https://grafana.com/)**: all metric dashboards are stored in
   Grafana.
@@ -44,7 +44,7 @@ aliases: [demo_features, features]
 - **[HTTP](https://www.rfc-editor.org/rfc/rfc9110.html)**: microservices use
   HTTP where gRPC is unavailable or not well supported.
 
-## Other Components
+## Other components
 
 - **[Envoy](https://www.envoyproxy.io/)**: Envoy is used as a reverse proxy for
   user-facing web interfaces such as the frontend, load generator, and feature

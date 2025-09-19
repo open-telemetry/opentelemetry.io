@@ -49,7 +49,7 @@ library, follow the instructions here to adapt the process to your own code.
 
 - [.NET SDK](https://dotnet.microsoft.com/download/dotnet) 6+
 
-### Create and launch an HTTP Server
+### Create and launch an HTTP server
 
 To begin, set up an environment in a new directory called `dotnet-otel-example`.
 Within that directory, execute following command:
@@ -326,7 +326,7 @@ dotnet run
 
 ## Traces
 
-### Initialize Tracing
+### Initialize tracing
 
 {{% alert title="Note" %}} If you’re instrumenting a library, you don't need to
 initialize a TracerProvider. {{% /alert %}}
@@ -473,7 +473,7 @@ public class Dice
 }
 ```
 
-### Create Activities
+### Create activities
 
 Now that you have [activitySources](/docs/concepts/signals/traces/#tracer)
 initialized, you can create [activities](/docs/concepts/signals/traces/#spans).
@@ -532,7 +532,7 @@ Resource associated with Activity:
     telemetry.sdk.version: 1.7.0
 ```
 
-### Create nested Activities
+### Create nested activities
 
 Nested [spans](/docs/concepts/signals/traces/#spans) let you track work that's
 nested in nature. For example, the `rollOnce()` function below represents a
@@ -556,7 +556,7 @@ private int rollOnce()
 When you view the spans in a trace visualization tool, `rollOnce` childActivity
 will be tracked as a nested operation under `rollTheDice` activity.
 
-### Get the current Activity
+### Get the current activity
 
 Sometimes it’s helpful to do something with the current/active Activity/Span at
 a particular point in program execution.
@@ -565,7 +565,7 @@ a particular point in program execution.
 var activity = Activity.Current;
 ```
 
-### Activity Tags
+### Activity tags
 
 Tags (the equivalent of [Attributes](/docs/concepts/signals/traces/#attributes))
 let you attach key/value pairs to an
@@ -587,7 +587,7 @@ private int rollOnce()
 }
 ```
 
-### Add Events to Activities
+### Add events to activities
 
 [Spans](/docs/concepts/signals/traces/#spans) can be annotated with named events
 (called [Span Events](/docs/concepts/signals/traces/#span-events)) that can
@@ -610,7 +610,7 @@ var eventTags = new ActivityTagsCollection
 activity?.AddEvent(new("End Computation", DateTimeOffset.Now, eventTags));
 ```
 
-### Create Activities with links
+### Create activities with links
 
 A [Span](/docs/concepts/signals/traces/#spans) may be linked to zero or more
 other Spans that are causally related via a
@@ -632,7 +632,7 @@ var activity = MyActivitySource.StartActivity(
     links: links);
 ```
 
-### Set Activity status
+### Set activity status
 
 {{% include "span-status-preamble.md" %}}
 

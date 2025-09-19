@@ -45,7 +45,7 @@ metric. They allow you to:
 ./jaeger-all-in-one --collector.otlp.enabled
 ```
 
-### Install and run Prometheus
+### Install and run prometheus
 
 1. Download the [latest release](https://prometheus.io/download/) of Prometheus
 2. Extract it to a local directory
@@ -55,7 +55,7 @@ metric. They allow you to:
 ./prometheus --enable-feature=exemplar-storage --web.enable-otlp-receiver
 ```
 
-### Install and configure Grafana
+### Install and configure grafana
 
 1. Follow the
    [operating system specific instructions](https://grafana.com/docs/grafana/latest/setup-grafana/installation/#supported-operating-systems)
@@ -149,7 +149,7 @@ Console.WriteLine("Application running and sending data. Press any key to exit."
 Console.ReadKey();
 ```
 
-## Viewing exemplars in Grafana
+## Viewing exemplars in grafana
 
 1. Open Grafana and navigate to Explore
 2. Select Prometheus as the data source

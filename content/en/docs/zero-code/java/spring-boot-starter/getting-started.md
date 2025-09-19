@@ -101,7 +101,7 @@ with the `io.spring.dependency-management` plugin.
 
 {{% /alert %}}
 
-#### OpenTelemetry Starter dependency
+#### OpenTelemetry starter dependency
 
 Add the dependency given below to enable the OpenTelemetry starter.
 

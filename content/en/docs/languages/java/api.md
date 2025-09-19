@@ -59,7 +59,7 @@ components, see
 [javadoc.io/doc/io.opentelemetry](https://javadoc.io/doc/io.opentelemetry).
 {{% /alert %}}
 
-## API Components
+## API components
 
 The following sections describe the OpenTelemetry API. Each component section
 includes:
@@ -372,7 +372,7 @@ contains the OpenTelemetry API, including traces, metrics, logs, noop
 implementation, baggage, key `TextMapPropagator` implementations, and a
 dependency on the [context API](#context-api).
 
-### Providers and Scopes
+### Providers and scopes
 
 Providers and scopes are recurring concepts in the OpenTelemetry API. A scope is
 a logical unit within the application which telemetry is associated with. A
@@ -976,7 +976,7 @@ public class CounterUsage {
 ```
 <!-- prettier-ignore-end -->
 
-#### Async Counter
+#### Async counter
 
 [ObservableLongCounter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableLongCounter.html)
 and
@@ -1280,7 +1280,7 @@ public class GaugeUsage {
 ```
 <!-- prettier-ignore-end -->
 
-#### Async Gauge
+#### Async gauge
 
 [ObservableDoubleGauge](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/metrics/ObservableDoubleGauge.html)
 and

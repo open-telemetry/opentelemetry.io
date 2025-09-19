@@ -42,7 +42,7 @@ Within the `ParentBasedSampler` the most common is the
 `TraceIdRatioBasedSampler`. It deterministically samples a percentage of traces
 that you pass in as a parameter.
 
-#### Environment Variables
+#### Environment variables
 
 You can configure the `TraceIdRatioBasedSampler` with environment variables:
 
@@ -82,12 +82,12 @@ config :opentelemetry, sampler: {:parent_based, %{root: {:trace_id_ratio_based, 
 
 {{% /tab %}} {{< /tabpane >}}
 
-### AlwaysOn and AlwaysOff Sampler
+### AlwaysOn and AlwaysOff sampler
 
 The other two built-in samplers are the `AlwaysOnSampler` and the
 `AlwaysOffSampler`.
 
-#### Environment Variables
+#### Environment variables
 
 You can configure the `ParentBasedSampler` to use either the `AlwaysOnSampler`
 or `AlwaysOffSampler` with the environment variable `OTEL_TRACES_SAMPLER`:
@@ -131,7 +131,7 @@ config :opentelemetry, sampler: {:parent_based, %{root: :always_on,
 
 {{% /tab %}} {{< /tabpane >}}
 
-## Custom Sampler
+## Custom sampler
 
 Custom samplers can be created by implementing the
 [`otel_sampler` behaviour](https://hexdocs.pm/opentelemetry/1.3.0/otel_sampler.html#callbacks).

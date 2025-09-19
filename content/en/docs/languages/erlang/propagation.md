@@ -41,7 +41,7 @@ variable `text_map_propagators`:
 {{% /tab %}} {{% tab Elixir %}}
 
 ```elixir
-## runtime.exs
+## Runtime.exs
 ...
 text_map_propagators: [:baggage, :trace_context],
 ...

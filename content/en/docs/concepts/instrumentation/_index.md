@@ -28,7 +28,7 @@ the edges_ of your application.
 
 You can use both solutions simultaneously.
 
-## Additional OpenTelemetry Benefits
+## Additional OpenTelemetry benefits
 
 OpenTelemetry provides more than just zero-code and code-based telemetry
 solutions. The following things are also a part of OpenTelemetry:

@@ -110,7 +110,7 @@ You are now collecting traces using OpenTelemetry.
 
 ## How it works
 
-### ActivitySource (Tracer)
+### ActivitySource (tracer)
 
 The program creates an `ActivitySource` which represents an
 [OpenTelemetry Tracer](/docs/specs/otel/trace/api/#tracer):
@@ -122,7 +122,7 @@ private static readonly ActivitySource MyActivitySource = new ActivitySource(
 
 The `ActivitySource` is used to create and start new activities.
 
-### Activity (Span)
+### Activity (span)
 
 The `ActivitySource` instance is used to start an `Activity` which represents an
 [OpenTelemetry Span](/docs/specs/otel/trace/api/#span). You can set several tags
@@ -163,7 +163,7 @@ The tracing pipeline in OpenTelemetry .NET follows this flow:
 3. Processor processes Activities
 4. Exporter exports Activities to a backend
 
-## OpenTelemetry .NET and .NET Activity API
+## OpenTelemetry .NET and .NET activity API
 
 In OpenTelemetry .NET, the terms `ActivitySource` and `Activity` are used
 instead of `Tracer` and `Span` from the OpenTelemetry specification. This is

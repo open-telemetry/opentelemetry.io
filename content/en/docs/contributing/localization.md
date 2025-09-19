@@ -18,7 +18,7 @@ guidance offered in this section.
 
 ### Summary
 
-#### ✅ Do {#do}
+#### ✅ do {#do}
 
 <div class="border-start border-success bg-success-subtle">
 
@@ -38,7 +38,7 @@ guidance offered in this section.
 
 </div>
 
-#### ❌ Do NOT {#do-not}
+#### ❌ do NOT {#do-not}
 
 <div class="border-start border-warning bg-warning-subtle">
 
@@ -186,7 +186,7 @@ The front matter above would be in `content/zh/<some-path>/page.md`. The commit
 hash would correspond to the latest commit of `content/en/<some-path>/page.md`
 from the `main` branch.
 
-### Tracking changes to English pages
+### Tracking changes to english pages
 
 As updates are made to English language pages, you can keep track of the
 corresponding localized pages that need updating by running the following

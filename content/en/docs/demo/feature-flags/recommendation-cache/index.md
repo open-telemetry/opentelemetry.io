@@ -67,7 +67,7 @@ waterfall view.
 We can see that the recommendation service is taking a long time to complete its
 work, and viewing the details allows us to get a better idea of what's going on.
 
-## Confirming the Diagnosis
+## Confirming the diagnosis
 
 We can see in our waterfall view that the `app.cache_hit` attribute is set to
 false, and that the `app.products.count` value is extremely high.

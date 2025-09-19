@@ -16,7 +16,7 @@ Ensure that you have the following installed locally:
 - [Rust](https://www.rust-lang.org/)
 - [Cargo](https://doc.rust-lang.org/cargo/)
 
-## Example Application
+## Example application
 
 The following example uses a basic [hyper](https://hyper.rs/) application. If
 you are not using hyper, that's OK — you can use OpenTelemetry Rust with other
@@ -45,7 +45,7 @@ hyper-util = { version = "0.1", features = ["full"] }
 rand = "0.9.0"
 ```
 
-### Create and launch an HTTP Server
+### Create and launch an HTTP server
 
 Modify `main.rs` to the following:
 

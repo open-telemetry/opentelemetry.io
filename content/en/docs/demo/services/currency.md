@@ -12,7 +12,7 @@ currencies.
 
 ## Traces
 
-### Initializing Tracing
+### Initializing tracing
 
 The OpenTelemetry SDK is initialized from `main` using the `initTracer` function
 defined in `tracer_common.h`
@@ -138,7 +138,7 @@ options.parent   = GetSpan(new_context)->GetContext();
 
 ## Metrics
 
-### Initializing Metrics
+### Initializing metrics
 
 The OpenTelemetry `MeterProvider` is initialized from `main()` using the
 `initMeter()` function defined in `meter_common.h`.

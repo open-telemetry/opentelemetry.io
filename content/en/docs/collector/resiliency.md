@@ -8,7 +8,7 @@ minimize data loss during telemetry processing and exporting. However,
 understanding the potential scenarios where data loss can occur and how to
 mitigate them is crucial for a resilient observability pipeline.
 
-## Understanding Collector resilience
+## Understanding collector resilience
 
 A resilient Collector maintains telemetry data flow and processing capabilities
 even when facing adverse conditions, ensuring the overall observability pipeline

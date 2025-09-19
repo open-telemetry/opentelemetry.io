@@ -16,7 +16,7 @@ More information:
 - [Context specification](/docs/specs/otel/context/)
 - [Context API reference](https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api.ContextAPI.html)
 
-## Context Manager
+## Context manager
 
 The context API depends on a context manager to work. The examples in this
 document will assume you have already configured a context manager. Typically
@@ -32,13 +32,13 @@ contextManager.enable();
 api.context.setGlobalContextManager(contextManager);
 ```
 
-## Root Context
+## Root context
 
 The `ROOT_CONTEXT` is the empty context. If no context is active, the
 `ROOT_CONTEXT` is active. Active context is explained below
 [Active Context](#active-context).
 
-## Context Keys
+## Context keys
 
 Context entries are key-value pairs. Keys can be created by calling
 `api.createContextKey(description)`.
@@ -50,9 +50,9 @@ const key1 = api.createContextKey('My first key');
 const key2 = api.createContextKey('My second key');
 ```
 
-## Basic Operations
+## Basic operations
 
-### Get Entry
+### Get entry
 
 Entries are accessed using the `context.getValue(key)` method.
 
@@ -66,7 +66,7 @@ const ctx = api.ROOT_CONTEXT;
 const value = ctx.getValue(key);
 ```
 
-### Set Entry
+### Set entry
 
 Entries are created by using the `context.setValue(key, value)` method. Setting
 a context entry creates a new context with all the entries of the previous
@@ -89,7 +89,7 @@ console.log(ctx2.getValue(key)); // "context 2"
 console.log(ctx.getValue(key)); // undefined
 ```
 
-### Delete Entry
+### Delete entry
 
 Entries are removed by calling `context.deleteValue(key)`. Deleting a context
 entry creates a new context with all the entries of the previous context, but
@@ -115,7 +115,7 @@ console.log(ctx2.getValue(key)); // "context 2"
 console.log(ctx.getValue(key)); // undefined
 ```
 
-## Active Context
+## Active context
 
 **IMPORTANT**: This assumes you have configured a Context Manager. Without one,
 `api.context.active()` will _ALWAYS_ return the `ROOT_CONTEXT`.
@@ -134,7 +134,7 @@ web in order to propagate the context through a single execution. If no context
 is active, the `ROOT_CONTEXT` is returned, which is just the empty context
 object.
 
-### Get Active Context
+### Get active context
 
 The active context is the context which is returned by `api.context.active()`.
 
@@ -146,7 +146,7 @@ import * as api from '@opentelemetry/api';
 const ctx = api.context.active();
 ```
 
-### Set Active Context
+### Set active context
 
 A context can be made active by use of `api.context.with(ctx, callback)`. During
 execution of the `callback`, the context passed to `with` will be returned by

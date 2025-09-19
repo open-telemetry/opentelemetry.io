@@ -25,7 +25,7 @@ HTTP requests.
 To learn more about signals and components, see the OTel specification
 [Overview](/docs/specs/otel/overview/).
 
-## Component Lifecycle
+## Component lifecycle
 
 Components follow a development lifecycle: Draft, Experimental, Stable,
 Deprecated, Removed.
@@ -40,7 +40,7 @@ Deprecated, Removed.
 For complete definitions of lifecycles and long term support, see
 [Versioning and stability](/docs/specs/otel/versioning-and-stability/).
 
-## Current Status
+## Current status
 
 The following is a high level status report for currently available signals.
 Note that while the OpenTelemetry clients conform to a shared specification,

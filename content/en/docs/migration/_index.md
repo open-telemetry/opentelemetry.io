@@ -15,7 +15,7 @@ and a migration story for existing users.
 If you come from one of these projects, you can follow the migration guides for
 both [OpenTracing](opentracing/) and [OpenCensus](opencensus/)
 
-## Jaeger Client
+## Jaeger client
 
 The [Jaeger community](https://www.jaegertracing.io/) deprecated their client
 libraries and recommends

@@ -31,7 +31,7 @@ For application traces, metrics, or logs, we recommend the
 [OTLP receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver),
 but any receiver that fits your data is appropriate.
 
-## Kubernetes Attributes Processor
+## Kubernetes attributes processor
 
 | Deployment Pattern   | Usable |
 | -------------------- | ------ |
@@ -180,7 +180,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-## Kubeletstats Receiver
+## Kubeletstats receiver
 
 | Deployment Pattern   | Usable                                                             |
 | -------------------- | ------------------------------------------------------------------ |
@@ -256,7 +256,7 @@ subjects:
     namespace: default
 ```
 
-## Filelog Receiver
+## Filelog receiver
 
 | Deployment Pattern   | Usable                                                          |
 | -------------------- | --------------------------------------------------------------- |
@@ -340,7 +340,7 @@ spec:
         ...
 ```
 
-## Kubernetes Cluster Receiver
+## Kubernetes cluster receiver
 
 | Deployment Pattern   | Usable                                                   |
 | -------------------- | -------------------------------------------------------- |
@@ -470,7 +470,7 @@ subjects:
     namespace: default
 ```
 
-## Kubernetes Objects Receiver
+## Kubernetes objects receiver
 
 | Deployment Pattern   | Usable                                                   |
 | -------------------- | -------------------------------------------------------- |
@@ -609,7 +609,7 @@ subjects:
     namespace: default
 ```
 
-## Prometheus Receiver
+## Prometheus receiver
 
 | Deployment Pattern   | Usable |
 | -------------------- | ------ |
@@ -655,7 +655,7 @@ scrape.
 For more information on the design of the receiver, see
 [Design](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/DESIGN.md).
 
-## Host Metrics Receiver
+## Host metrics receiver
 
 | Deployment Pattern   | Usable                                                         |
 | -------------------- | -------------------------------------------------------------- |

@@ -58,7 +58,7 @@ The
 [filter processor docs](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor)
 have more examples, including filtering on logs and metrics.
 
-## Adding or Deleting Attributes
+## Adding or deleting attributes
 
 **Processor**:
 [attributes processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/attributesprocessor)
@@ -92,7 +92,7 @@ processors:
         action: insert
 ```
 
-## Renaming Metrics or Metric Labels
+## Renaming metrics or metric labels
 
 **Processor:**
 [metrics transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)
@@ -131,7 +131,7 @@ processors:
             new_label: cluster-name
 ```
 
-## Enriching Telemetry with Resource Attributes
+## Enriching telemetry with resource attributes
 
 **Processor**:
 [resource detection processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
@@ -190,7 +190,7 @@ example
 [config file](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9b28f76c02c18f7479d10e4b6a95a21467fd85d6/processor/transformprocessor/testdata/config.yaml)
 file for the transform processor.
 
-## Advanced Transformations
+## Advanced transformations
 
 More advanced attribute transformations are also available in the
 [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor).

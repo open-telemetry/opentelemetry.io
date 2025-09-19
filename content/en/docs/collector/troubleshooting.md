@@ -119,7 +119,7 @@ Attributes:
      -> peer.service: Str(telemetrygen)
 ```
 
-### Check Collector components
+### Check collector components
 
 Use the following sub-command to list the available components in a Collector
 distribution, including their stability levels. Please note that the output
@@ -219,7 +219,7 @@ extensions:
 
 Here is a list of extensions you can enable for debugging the Collector.
 
-#### Performance Profiler (pprof)
+#### Performance profiler (pprof)
 
 The
 [pprof extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/pprofextension/README.md),
@@ -269,7 +269,7 @@ other component in your pipeline, it’s important to verify the following:
 - How is the next hop configured?
 - Are there any network policies that prevent data from getting in or out?
 
-## Common Collector issues
+## Common collector issues
 
 This section covers how to resolve common Collector issues.
 
@@ -348,7 +348,7 @@ The Collector might exit or restart due to:
   memory.
 - Infrastructure resource limits. For example, Kubernetes.
 
-#### Collector fails to start in Windows Docker containers
+#### Collector fails to start in windows docker containers
 
 With v0.90.1 and earlier, the Collector might fail to start in a Windows Docker
 container, producing the error message

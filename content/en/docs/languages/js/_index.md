@@ -12,7 +12,7 @@ weight: 20
 
 {{% include browser-instrumentation-warning.md %}}
 
-## Version Support
+## Version support
 
 OpenTelemetry JavaScript supports all active or maintenance LTS versions of
 Node.js. Previous versions of Node.js may work, but are not tested by
@@ -37,7 +37,7 @@ OpenTelemetry JavaScript consists of the following repositories:
 - [opentelemetry-js-contrib](https://github.com/open-telemetry/opentelemetry-js-contrib),
   contributions that are not part of the core distribution of the API and SDK.
 
-## Help or Feedback
+## Help or feedback
 
 If you have questions about OpenTelemetry JavaScript, please reach out via
 [GitHub Discussions](https://github.com/open-telemetry/opentelemetry-js/discussions)

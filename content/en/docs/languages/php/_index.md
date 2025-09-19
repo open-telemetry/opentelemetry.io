@@ -9,7 +9,7 @@ cSpell:ignore: mbstring opcache
 
 {{% docs/languages/index-intro php /%}}
 
-## Further Reading
+## Further reading
 
 - [OpenTelemetry for PHP on GitHub](https://github.com/open-telemetry/opentelemetry-php)
 - [Examples](https://github.com/open-telemetry/opentelemetry-php/tree/main/examples)
@@ -48,7 +48,7 @@ to find a `php-http/async-client` implementation.
 | [ext-ffi](https://www.php.net/manual/en/book.ffi.php)                     | Fiber-based context storage                                       |
 | [ext-protobuf](https://github.com/protocolbuffers/protobuf/tree/main/php) | _Significant_ performance improvement for otlp+protobuf exporting |
 
-#### ext-ffi
+#### Ext-ffi
 
 Fibers support can be enabled by setting the `OTEL_PHP_FIBERS_ENABLED`
 environment variable to `true`. Using fibers with non-`CLI` SAPIs may require
@@ -58,7 +58,7 @@ to `src/Context/fiber/zend_observer_fiber.h` and setting
 [`opcache.preload`](https://www.php.net/manual/en/opcache.preloading.php) to
 `vendor/autoload.php`.
 
-#### ext-protobuf
+#### Ext-protobuf
 
 The [native protobuf library](https://packagist.org/packages/google/protobuf) is
 significantly slower than the extension. We strongly encourage the use of the

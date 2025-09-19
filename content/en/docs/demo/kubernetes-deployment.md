@@ -18,7 +18,7 @@ Helm's [documentation](https://helm.sh/docs/) to get started.
 - 6 GB of free RAM for the application
 - Helm 3.14+ (for Helm installation method only)
 
-## Install using Helm (recommended)
+## Install using helm (recommended)
 
 Add OpenTelemetry Helm repository:
 
@@ -72,7 +72,7 @@ convenience. It is recommended to use the Helm chart for installation.
 
 {{% /alert %}}
 
-## Use the Demo
+## Use the demo
 
 The demo application will need the services exposed outside of the Kubernetes
 cluster in order to use them. You can expose the services to your local system
@@ -105,7 +105,7 @@ With the frontend-proxy port-forward set up, you can access:
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
 - Flagd configurator UI: <http://localhost:8080/feature>
 
-### Expose Demo components using service or ingress configurations
+### Expose demo components using service or ingress configurations
 
 {{% alert title="Note" %}} We recommend that you use a values file when
 installing the Helm chart in order to specify additional configuration options.

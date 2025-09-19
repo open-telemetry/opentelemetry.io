@@ -29,7 +29,7 @@ end
 
 ## Traces
 
-### Initialize Tracing
+### Initialize tracing
 
 To start [tracing](/docs/concepts/signals/traces/) a
 [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) is required
@@ -42,7 +42,7 @@ If a TracerProvider is not successfully created (for example, the
 `opentelemetry` application is not booted or fails to boot), the OpenTelemetry
 APIs for tracing will use a no-op implementation and will not generate data.
 
-### Acquiring a Tracer
+### Acquiring a tracer
 
 Each OTP Application has a `Tracer` created for it when the `opentelemetry`
 Application boots. The name and version of each `Tracer` is the same as the name
@@ -70,7 +70,7 @@ opentelemetry:get_application_tracer(?MODULE)
 This is how the Erlang and Elixir macros for starting and updating `Spans` get a
 `Tracer` automatically without need for you to pass the variable in each call.
 
-### Create Spans
+### Create spans
 
 Now that you have [Tracer](/docs/concepts/signals/traces/#tracer)s initialized,
 you can create [Spans](/docs/concepts/signals/traces/#spans).
@@ -102,7 +102,7 @@ end
 The above code sample shows how to create an active Span, which is the most
 common kind of Span to create.
 
-### Create Nested Spans
+### Create nested spans
 
 {{< tabpane text=true >}} {{% tab Erlang %}}
 
@@ -141,7 +141,7 @@ end
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Spans in Separate Processes
+### Spans in separate processes
 
 The examples in the previous section were Spans with a child-parent relationship
 within the same process where the parent is available in the process dictionary
@@ -197,7 +197,7 @@ _ = Task.await(task)
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Linking the New Span
+### Linking the new span
 
 A [Span](/docs/concepts/signals/traces/#spans) can be created with zero or more
 [Span Links](/docs/concepts/signals/traces/#span-links) that causally link it to
@@ -232,7 +232,7 @@ task = Task.async(fn ->
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Adding Attributes to a Span
+### Adding attributes to a span
 
 [Attributes](/docs/concepts/signals/traces/#attributes) let you attach key/value
 pairs to a Span so it carries more information about the current operation that
@@ -263,7 +263,7 @@ end
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Semantic Attributes
+### Semantic attributes
 
 Semantic Attributes are attributes that are defined by the [OpenTelemetry
 Specification][] in order to provide a shared set of attribute keys across
@@ -298,7 +298,7 @@ end
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Adding Events
+### Adding events
 
 A [Span Event](/docs/concepts/signals/traces/#span-events) is a human-readable
 message on an [Span](/docs/concepts/signals/traces/#spans) that represents a
@@ -343,7 +343,7 @@ Tracer.add_event("Process exited with reason", pid: pid, reason: Reason)
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Set Span Status
+### Set span status
 
 A [Status](/docs/concepts/signals/traces/#span-status) can be set on a
 [Span](/docs/concepts/signals/traces/#spans), typically used to specify that a
@@ -381,7 +381,7 @@ The logs API, found in `apps/opentelemetry_experimental_api` of the
 [opentelemetry-erlang](https://github.com/open-telemetry/opentelemetry-erlang)
 repository, is currently unstable, documentation TBA.
 
-## Next Steps
+## Next steps
 
 You’ll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/languages/erlang/exporters) to one or more

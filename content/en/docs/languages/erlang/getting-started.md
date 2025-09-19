@@ -24,7 +24,7 @@ choice), and Phoenix installed locally. The Phoenix
 [installation guide](https://hexdocs.pm/phoenix/installation.html) will help you
 get set up with everything you need.
 
-### Example Application
+### Example application
 
 The following example will take you through creating a basic
 [Phoenix](https://www.phoenixframework.org/) web application and instrumenting
@@ -35,7 +35,7 @@ build can be found here:
 Additional examples can be found in
 [opentelemetry-erlang-contrib examples](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples).
 
-### Initial Setup
+### Initial setup
 
 Run `mix phx.new roll_dice`. Type "y" to install dependencies.
 
@@ -126,7 +126,7 @@ config :opentelemetry, traces_exporter: {:otel_exporter_stdout, []}
 Now we can use the new `mix setup` command to install the dependencies, build
 the assets, and create and migrate the database.
 
-### Try It Out
+### Try it out
 
 Run `mix phx.server`.
 
@@ -170,7 +170,7 @@ are.)
 These are the raw Erlang records that will get serialized and sent when you
 configure the exporter for your preferred service.
 
-### Rolling The Dice
+### Rolling the dice
 
 Now we'll create the API endpoint that will let us roll the dice and return a
 random number between 1 and 6.
@@ -307,7 +307,7 @@ get a random number in response, and 3 spans in your console.
 </details>
 <!-- markdownlint-disable heading-increment -->
 
-##### `<<"/api/rolldice">>`
+##### `<<"/API/rolldice">>`
 
 This is the first span in the request, aka the root span. That `undefined` next
 to the span name tells you that it doesn't have a parent span. The two very
@@ -339,7 +339,7 @@ part of the same trace as our `<<"/api/rolldice">>` span,
 That means that this span is a child of that one, and will be shown below it
 when rendered in your tracing tool of choice.
 
-### Next Steps
+### Next steps
 
 Enrich your automatically generated instrumentation with
 [manual instrumentation](/docs/languages/erlang/instrumentation) of your own
@@ -350,7 +350,7 @@ You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/languages/erlang/exporters) to one or more
 telemetry backends.
 
-## Creating a New Mix/Rebar Project
+## Creating a new mix/rebar project
 
 To get started with this guide, create a new project with `rebar3` or `mix`:
 
@@ -439,7 +439,7 @@ there are separate packages for exporting over the
 [OpenTelemetry Protocol (OTLP)](https://hex.pm/packages/opentelemetry_exporter)
 and the [Zipkin protocol](https://hex.pm/packages/opentelemetry_zipkin).
 
-## Initialization and Configuration
+## Initialization and configuration
 
 Configuration is done through the
 [OTP application environment](https://erlang.org/doc/design_principles/applications.html#configuring-an-application)
@@ -450,7 +450,7 @@ The SDK (`opentelemetry` Application) uses the configuration to initialize a
 [Span Processors](https://hexdocs.pm/opentelemetry/otel_span_processor.html) and
 the [Exporter](https://hexdocs.pm/opentelemetry/otel_exporter.html).
 
-### Using the Console Exporter
+### Using the console exporter
 
 Exporters are packages that allow telemetry data to be emitted somewhere -
 either to the console (which is what we're doing here), or to a remote system or
@@ -485,7 +485,7 @@ config :opentelemetry,
 
 {{% /tab %}} {{< /tabpane >}}
 
-## Working with Spans
+## Working with spans
 
 Now that the dependencies and configuration are set up, we can create a module
 with a function `hello/0` that starts some spans:
@@ -616,7 +616,7 @@ iex(2)>
 
 {{% /tab %}} {{< /tabpane >}}
 
-## Next Steps
+## Next steps
 
 Enrich your instrumentation with more
 [manual instrumentation](/docs/languages/erlang/instrumentation).

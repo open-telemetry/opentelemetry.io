@@ -54,7 +54,7 @@ would be emitted.
 The most common reason is that the instrumented application has no permissions
 to load the OpenTelemetry .NET Automatic Instrumentation assemblies.
 
-### Could not install package 'OpenTelemetry.AutoInstrumentation.Runtime.Native'
+### Could not install package 'OpenTelemetry.AutoInstrumentation.runtime.native'
 
 When adding the NuGet packages to your project you get an error message similar
 to:

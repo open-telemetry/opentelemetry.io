@@ -124,7 +124,7 @@ either through the SDK or OTel Collector processors.
 
 Here are some approaches that use the SDK:
 
-### 1. Pattern matching with regular expressions
+### 1. pattern matching with regular expressions
 
 ```csharp
 public KeyValuePair<string, object?> this[int index]
@@ -158,7 +158,7 @@ public KeyValuePair<string, object?> this[int index]
 }
 ```
 
-### 2. Field-based redaction
+### 2. field-based redaction
 
 You may want to redact specific field names regardless of their content:
 
@@ -181,7 +181,7 @@ public KeyValuePair<string, object?> this[int index]
 }
 ```
 
-### 3. Partial redaction
+### 3. partial redaction
 
 For some data types, you might want to show part of the value:
 

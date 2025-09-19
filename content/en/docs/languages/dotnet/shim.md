@@ -177,7 +177,7 @@ location so that you have access to it throughout your service.
 You can instantiate as many `Tracer`s as you'd like per service, although it's
 generally sufficient to just have one defined per service.
 
-## Creating Spans
+## Creating spans
 
 To create a [span](/docs/concepts/signals/traces/#spans), give it a name and
 create it from your `Tracer`.
@@ -188,7 +188,7 @@ using var span = MyTracer.StartActiveSpan("SayHello");
 // do work that 'span' will now track
 ```
 
-## Creating nested Spans
+## Creating nested spans
 
 If you have a distinct sub-operation you'd like to track as a part of another
 one, you can create spans to represent the relationship.
@@ -216,7 +216,7 @@ public static void ChildOperation(Tracer tracer)
 When you view spans in a trace visualization tool, `child-span` will be tracked
 as a nested operation under `parent-span"`.
 
-### Nested Spans in the same scope
+### Nested spans in the same scope
 
 You may wish to create a parent-child relationship in the same scope. Although
 possible, this is generally not recommended because you need to be careful to
@@ -242,7 +242,7 @@ In the preceding example, `childSpan` is ended because the scope of the `using`
 block is explicitly defined, rather than scoped to `DoWork` itself like
 `parentSpan`.
 
-## Creating independent Spans
+## Creating independent spans
 
 The previous examples showed how to create
 [Spans](/docs/concepts/signals/traces/#spans) that follow a nested hierarchy. In
@@ -267,7 +267,7 @@ public static void DoWork(Tracer tracer)
 }
 ```
 
-## Creating new root Spans
+## Creating new root spans
 
 You can also create new root [spans](/docs/concepts/signals/traces/#spans) that
 are completely detached from the current trace.
@@ -279,7 +279,7 @@ public static void DoWork(Tracer tracer)
 }
 ```
 
-## Get the current Span
+## Get the current span
 
 Sometimes it's helpful to access whatever the current `TelemetrySpan` is at a
 point in time so you can enrich it with more information.
@@ -293,7 +293,7 @@ Note that `using` is not used in the prior example. Doing so will end current
 `TelemetrySpan` when it goes out of scope, which is unlikely to be desired
 behavior.
 
-## Add Attributes to a Span
+## Add attributes to a span
 
 [Attributes](/docs/concepts/signals/traces/#attributes) let you attach key/value
 pairs to a `TelemetrySpan` so it carries more information about the current

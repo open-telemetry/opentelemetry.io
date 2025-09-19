@@ -16,7 +16,7 @@ collector, which can then export Spans to a self-hosted service like Zipkin or
 Jaeger, as well as commercial services. For a full list of available exporters,
 see the [registry](/ecosystem/registry/?component=exporter).
 
-## Setting up the Collector
+## Setting up the collector
 
 For testing purposes, you can start with the following Collector configuration
 at the root of your project:

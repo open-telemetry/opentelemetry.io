@@ -15,7 +15,7 @@ the OpenTelemetry community created the
 This helm chart can be used to install a collector as a Deployment, Daemonset,
 or Statefulset.
 
-### Installing the Chart
+### Installing the chart
 
 To install the chart with the release name `my-opentelemetry-collector`, run the
 following commands:
@@ -161,7 +161,7 @@ configuration of these components it is recommend to NOT use the preset and
 instead manually configure the component and anything it requires (volumes,
 RBAC, etc.).
 
-#### Logs Collection Preset
+#### Logs collection preset
 
 The OpenTelemetry Collector can be used to collect logs sent to standard output
 by Kubernetes containers.
@@ -227,7 +227,7 @@ config:
           - otlphttp
 ```
 
-#### Kubernetes Attributes Preset
+#### Kubernetes attributes preset
 
 The OpenTelemetry Collector can be configured to add Kubernetes metadata, such
 as `k8s.pod.name`, `k8s.namespace.name`, and `k8s.node.name`, to logs, metrics
@@ -255,7 +255,7 @@ presets:
     enabled: true
 ```
 
-#### Kubelet Metrics Preset
+#### Kubelet metrics preset
 
 The OpenTelemetry Collector can be configured to collect node, pod, and
 container metrics from the API server on a kubelet.
@@ -284,7 +284,7 @@ presets:
     enabled: true
 ```
 
-#### Cluster Metrics Preset
+#### Cluster metrics preset
 
 The OpenTelemetry Collector can be configured to collect cluster-level metrics
 from the Kubernetes API server. These metrics include many of the metrics
@@ -314,7 +314,7 @@ presets:
     enabled: true
 ```
 
-#### Kubernetes Events Preset
+#### Kubernetes events preset
 
 The OpenTelemetry Collector can be configured to collect Kubernetes events.
 
@@ -343,7 +343,7 @@ presets:
     enabled: true
 ```
 
-#### Host Metrics Preset
+#### Host metrics preset
 
 The OpenTelemetry Collector can be configured to collect host metrics from
 Kubernetes nodes.

@@ -32,7 +32,7 @@ php -v
 composer -v
 ```
 
-## Example Application
+## Example application
 
 The following example uses a basic
 [Slim Framework](https://www.slimframework.com/) application. If you are not
@@ -53,7 +53,7 @@ composer init \
 composer update
 ```
 
-### Create and launch an HTTP Server
+### Create and launch an HTTP server
 
 In that same directory, create a file called `index.php` with the following
 content:

@@ -28,6 +28,6 @@ OpenTelemetry for Rust publishes the following crates:
 - [`opentelemetry-stackdriver`](https://crates.io/crates/opentelemetry-stackdriver)
 - [`opentelemetry-zipkin`](https://crates.io/crates/opentelemetry-zipkin)
 
-## Further Reading
+## Further reading
 
 - [Overview of crates](https://github.com/open-telemetry/opentelemetry-rust#overview-of-crates)

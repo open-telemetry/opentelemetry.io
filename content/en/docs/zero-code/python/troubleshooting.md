@@ -126,7 +126,7 @@ multiple workers. See below for more details and options:
 | Gunicorn                    | x      |         | x    |
 | Gunicorn + UvicornWorker    | x      | x       | x    |
 
-##### Deploy with Gunicorn and UvicornWorker
+##### Deploy with gunicorn and UvicornWorker
 
 To auto-instrument a server with multiple workers, it is recommended to deploy
 using Gunicorn with `uvicorn.workers.UvicornWorker` if it is an Asynchronous
@@ -177,7 +177,7 @@ Then, run the server with:
 uvicorn main:app --workers 2
 ```
 
-##### Use Prometheus with direct OTLP
+##### Use prometheus with direct OTLP
 
 Consider using a recent version of
 [Prometheus](/docs/languages/python/exporters/#prometheus-setup) to receive OTLP
@@ -196,7 +196,7 @@ opentelemetry-instrument gunicorn your_app:app --workers 1
 
 ## Connectivity issues
 
-### gRPC Connectivity
+### gRPC connectivity
 
 To debug Python gRPC connectivity issues, set the following gRPC debug
 environment variables:

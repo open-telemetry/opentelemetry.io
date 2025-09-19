@@ -33,7 +33,7 @@ composer init \
 composer update
 ```
 
-### Create and launch an HTTP Server
+### Create and launch an HTTP server
 
 To highlight the difference between instrumenting a library and a standalone
 app, split out the dice rolling into a library file, which then will be imported
@@ -266,7 +266,7 @@ API or implementation.
 Alternative methods exist for setting up resource attributes. For more
 information, see [Resources](/docs/languages/php/resources/).
 
-#### Global Providers
+#### Global providers
 
 Throughout the following examples we will usually obtain the globally registered
 providers via `OpenTelemetry\API\Globals`:
@@ -294,7 +294,7 @@ function as part of PHP's shutdown process:
 
 ## Traces
 
-### Initialize Tracing
+### Initialize tracing
 
 {{% alert title="Note" %}} If you’re instrumenting a library, **skip this
 step**. {{% /alert %}}
@@ -311,7 +311,7 @@ If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
 above, you have a `TracerProvider` setup for you already. You can continue with
 [acquiring a tracer](#acquiring-a-tracer).
 
-### Acquiring a Tracer
+### Acquiring a tracer
 
 Anywhere in your application where you write manual tracing code should call
 `getTracer` to acquire a tracer. For example:
@@ -411,7 +411,7 @@ class Dice {
 }
 ```
 
-### Create Spans
+### Create spans
 
 Now that you have [tracers](/docs/concepts/signals/traces/#tracer) initialized,
 you can create [spans](/docs/concepts/signals/traces/#spans).
@@ -505,7 +505,7 @@ After a while, you should see the spans printed in the console by the
 }
 ```
 
-### Create nested Spans
+### Create nested spans
 
 Nested [spans](/docs/concepts/signals/traces/#spans) let you track work that's
 nested in nature. For example, the `rollOnce()` function below represents a
@@ -546,7 +546,7 @@ from a given context that isn't necessarily the active span.
 $span = OpenTelemetry\API\Trace\Span::fromContext($context);
 ```
 
-### Span Attributes
+### Span attributes
 
 [Attributes](/docs/concepts/signals/traces/#attributes) let you attach key/value
 pairs to a [`Span`](/docs/concepts/signals/traces/#spans) so it carries more
@@ -568,7 +568,7 @@ private function rollOnce() {
 }
 ```
 
-#### Semantic Attributes
+#### Semantic attributes
 
 There are semantic conventions for spans representing operations in well-known
 protocols like HTTP or database calls. Semantic conventions for these spans are
@@ -595,7 +595,7 @@ $span->setAttribute(CodeAttributes::CODE_FUNCTION_NAME, 'rollOnce');
 $span->setAttribute(CodeAttributes::CODE_FILE_PATH, __FILE__);
 ```
 
-### Create Spans with events
+### Create spans with events
 
 [Spans](/docs/concepts/signals/traces/#spans) can be annotated with named events
 (called [Span Events](/docs/concepts/signals/traces/#span-events)) that can
@@ -616,7 +616,7 @@ $eventAttributes = Attributes::create([
 $span->addEvent("End Computation", $eventAttributes);
 ```
 
-### Create Spans with links
+### Create spans with links
 
 A [Span](/docs/concepts/signals/traces/#spans) may be linked to zero or more
 other Spans that are causally related via a
@@ -661,7 +661,7 @@ try {
 }
 ```
 
-### Span Processor
+### Span processor
 
 Different Span processors are offered by OpenTelemetry. The
 `SimpleSpanProcessor` immediately forwards ended spans to the exporter, while
@@ -1021,7 +1021,7 @@ $monolog->error('oh no', [
 
 </details>
 
-## Error Handling
+## Error handling
 
 By default, OpenTelemetry will log errors and warnings via PHP's
 [`error_log`](https://www.php.net/manual/en/function.error-log.php) function.

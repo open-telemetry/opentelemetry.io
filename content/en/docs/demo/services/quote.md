@@ -18,7 +18,7 @@ The PHP instrumentation may vary when using a different framework.
 
 ## Traces
 
-### Initializing Tracing
+### Initializing tracing
 
 In this demo, the OpenTelemetry SDK has been automatically created as part of
 SDK autoloading, which happens as part of composer autoloading.
