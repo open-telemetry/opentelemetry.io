@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+GIT=git
+NPM=npm
+
 function auto_update_versions() {
   local cmd="./scripts/auto-update/version-in-file.sh"
   local repo_and_files_to_update=(
@@ -36,6 +39,17 @@ function auto_update_versions() {
       $cmd $args
       echo
   done
+
+  echo "Running fix:refcache..."
+  $NPM run fix:refcache
+
+  if ! git diff --quiet; then
+    echo "Committing refcache fixes..."
+    $GIT commit -a -m "Fix refcache"
+    $GIT push
+  else
+    echo "No refcache changes to commit."
+  fi
 }
 
 auto_update_versions
