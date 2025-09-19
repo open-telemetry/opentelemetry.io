@@ -31,7 +31,7 @@ maintained by third parties.
 
 {{% ecosystem/distributions-table filter="third-party-collector" %}}
 
-## Adding your collector distribution {#how-to-add}
+## Adding your Collector distribution {#how-to-add}
 
 To have your Collector distribution listed, [submit a PR][] with an entry added
 to the [distributions list][]. The entry should include the following:

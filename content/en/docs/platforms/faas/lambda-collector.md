@@ -11,7 +11,7 @@ the instrumentation layers to give users maximum flexibility. This is different
 than the current AWS Distribution of OpenTelemetry (ADOT) implementation which
 bundles instrumentation and the Collector together.
 
-### Add the ARN of the OTel collector lambda layer
+### Add the ARN of the OTel Collector lambda layer
 
 Once you've instrumented your application you should add the Collector Lambda
 layer to collect and submit your data to your chosen backend.
@@ -26,7 +26,7 @@ used in the Region in which they are published. Make sure to use the layer in
 the same region as your Lambda functions. The community publishes layers in all
 available regions.
 
-### Configure the OTel collector
+### Configure the OTel Collector
 
 The configuration of the OTel Collector Lambda layer follows the OpenTelemetry
 standard.
@@ -79,7 +79,7 @@ service:
 
 Publish a new version of your Lambda to enable the changes you made.
 
-### Advanced OTel collector configuration
+### Advanced OTel Collector configuration
 
 Please find the list of available components supported for custom configuration
 here. To enable debugging, you can use the configuration file to set log level
@@ -136,7 +136,7 @@ the confmap provider as its value. for e.g, if you are using a file configmap
 provider, set its value to `/var/task/<path>/<to>/<filename>`. This will tell
 the extension where to find the collector configuration.
 
-##### Custom collector configuration using the CLI
+##### Custom Collector configuration using the CLI
 
 You can set this via the Lambda console, or via the AWS CLI.
 

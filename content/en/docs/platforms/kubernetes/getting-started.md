@@ -69,7 +69,7 @@ add the OpenTelemetry Collector Helm chart so it can be installed later.
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 ```
 
-## Daemonset collector
+## Daemonset Collector
 
 The first step to collecting Kubernetes telemetry is to deploy a daemonset
 instance of the OpenTelemetry Collector to gather telemetry related to nodes and
@@ -200,7 +200,7 @@ helm install otel-collector open-telemetry/opentelemetry-collector --values <pat
 You should now have a daemonset installation of the OpenTelemetry Collector
 running in your cluster collecting telemetry from each node!
 
-## Deployment collector
+## Deployment Collector
 
 The next step to collecting Kubernetes telemetry is to deploy a deployment
 instance of the Collector to gather telemetry related to the cluster as a whole.

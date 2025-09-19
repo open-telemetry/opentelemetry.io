@@ -40,7 +40,7 @@ To create a dedicated logging pipeline, you need to:
 
 Let's walk through a complete example:
 
-### Step 1: define the dedicated logger interface
+### Step 1: Define the dedicated logger interface
 
 First, create an interface for your dedicated logger:
 
@@ -59,7 +59,7 @@ namespace DedicatedLogging
 }
 ```
 
-### Step 2: implement the logger provider
+### Step 2: Implement the logger provider
 
 Next, create the implementation of your dedicated logger:
 
@@ -84,7 +84,7 @@ namespace DedicatedLogging
 }
 ```
 
-### Step 3: create extension methods for configuration
+### Step 3: Create extension methods for configuration
 
 Create extension methods to register your dedicated logging services:
 
@@ -131,7 +131,7 @@ namespace DedicatedLogging
 }
 ```
 
-### Step 4: use the dedicated logger in your application
+### Step 4: Use the dedicated logger in your application
 
 Now you can use your dedicated logger in your ASP.NET Core application:
 
@@ -177,7 +177,7 @@ app.MapGet("/", (HttpContext context, ILogger<Program> logger, IDedicatedLogger<
 app.Run();
 ```
 
-### Step 5: using source-generated logging methods
+### Step 5: Using source-generated logging methods
 
 For better performance, you can use the `LoggerMessage` attribute to generate
 logging methods:

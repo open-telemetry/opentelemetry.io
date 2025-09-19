@@ -654,7 +654,7 @@ collector:
 Unless you have just a single service or are experimenting, you'll want to use a
 collector in production deployments.
 
-### Configure and run a local collector
+### Configure and run a local Collector
 
 First, save the following collector configuration code to a file in the `/tmp/`
 directory:

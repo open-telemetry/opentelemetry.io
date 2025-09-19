@@ -18,7 +18,7 @@ instrument your application. These layers do not include the Collector which is
 a required addition unless you configure an external Collector instance to send
 your data.
 
-### Add the ARN of the OTel collector lambda layer
+### Add the ARN of the OTel Collector lambda layer
 
 See the [Collector Lambda layer guidance](../lambda-collector/) to add the layer
 to your application and configure the Collector. We recommend you add this

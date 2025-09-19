@@ -28,7 +28,7 @@ Fluent Bit, etc.) sending to one or more open source or commercial backends.
 - _Unification_: Single codebase, deployable as an agent or collector with
   support for traces, metrics, and logs.
 
-## When to use a collector
+## When to use a Collector
 
 For most language specific instrumentation libraries you have exporters for
 popular backends and OTLP. You might wonder,

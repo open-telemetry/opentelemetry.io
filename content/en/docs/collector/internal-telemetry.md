@@ -22,7 +22,7 @@ track progress see
 [issue #10808](https://github.com/open-telemetry/opentelemetry-collector/issues/10808).
 {{% /alert %}}
 
-## Activate internal telemetry in the collector
+## Activate internal telemetry in the Collector
 
 By default, the Collector exposes its own telemetry in two ways:
 
@@ -499,7 +499,7 @@ Deleted metrics are no longer published and cannot be used.
 Individual log entries and their formatting might change from one release to the
 next. There are no stability guarantees at this time.
 
-## Use internal telemetry to monitor the collector
+## Use internal telemetry to monitor the Collector
 
 This section recommends best practices for monitoring the Collector using its
 own telemetry.

@@ -24,7 +24,7 @@ As part of the process the `ocb` will generate the Collector's source code,
 which you can use to help build and debug your own custom components, so let's
 get started.
 
-## Step 1 - install the builder
+## Step 1 - Install the builder
 
 {{% alert color="primary" title="Note" %}}
 
@@ -94,7 +94,7 @@ To make sure the `ocb` is ready to be used, go to your terminal and type
 `./ocb help`, and once you hit enter you should have the output of the `help`
 command showing up in your console.
 
-## Step 2 - create a builder manifest file
+## Step 2 - Create a builder manifest file
 
 The builder's `manifest` file is a `yaml` where you pass information about the
 code generation and compile process combined with the components that you would
@@ -188,7 +188,7 @@ registry entries provide the full name and version you need to add to your
 
 {{% /alert %}}
 
-## Step 3a - generate the code and build your collector's distribution
+## Step 3a - Generate the code and build your Collector's distribution
 
 {{% alert color="primary" title="Note" %}}
 
@@ -244,7 +244,7 @@ You can now use the generated code to bootstrap your component development
 projects and easily build and distribute your own collector distribution with
 your components.
 
-## Step 3b - containerize your collector's distribution
+## Step 3b - Containerize your Collector's distribution
 
 {{% alert color="primary" title="Note" %}}
 

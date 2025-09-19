@@ -10,7 +10,7 @@ community does not have a standalone instrumentation layer.
 Users will need to follow the generic instrumentation guidance for their chosen
 language and add the Collector Lambda layer to submit their data.
 
-### Add the ARN of the OTel collector lambda layer
+### Add the ARN of the OTel Collector lambda layer
 
 See the [Collector Lambda layer guidance](../lambda-collector/) to add the layer
 to your application and configure the Collector. We recommend you add this

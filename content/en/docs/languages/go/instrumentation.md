@@ -945,7 +945,7 @@ ecosystem. For rationale behind this design decision, see
 The two typical workflows discussed below each cater to different application
 requirements.
 
-### Direct-to-collector
+### Direct-to-Collector
 
 **Status**: [Experimental](/docs/specs/otel/document-status/)
 

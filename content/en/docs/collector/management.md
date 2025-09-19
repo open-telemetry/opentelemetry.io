@@ -91,7 +91,7 @@ We will set up a simple OpAMP control plane consisting of an example OpAMP
 server and let an OpenTelemetry Collector connect to it using the [OpAMP
 Supervisor][opamp-supervisor].
 
-#### Step 1 - start the OpAMP server
+#### Step 1 - Start the OpAMP server
 
 Clone the `open-telemetry/opamp-go` repository:
 
@@ -107,14 +107,14 @@ $ go run .
 2025/04/20 15:10:35.308201 [MAIN] OpAMP Server running...
 ```
 
-#### Step 2 - install the OpenTelemetry Collector
+#### Step 2 - Install the OpenTelemetry Collector
 
 We need an OpenTelemetry Collector binary that the OpAMP Supervisor can manage.
 For that, install the [OpenTelemetry Collector Contrib][otelcolcontrib] distro.
 The path where you installed the Collector binary is referred to as
 `$OTEL_COLLECTOR_BINARY` in the following configuration.
 
-#### Step 3 - install the OpAMP supervisor
+#### Step 3 - Install the OpAMP Supervisor
 
 The `opampsupervisor` binary is available as a downloadable asset from
 OpenTelemetry Collector [releases with `cmd/opampsupervisor` tags][tags]. You
@@ -172,7 +172,7 @@ Unblock-File -Path "opampsupervisor.exe"
 
 {{% /tab %}} {{< /tabpane >}}
 
-#### Step 4 - create an OpAMP supervisor configuration file
+#### Step 4 - Create an OpAMP Supervisor configuration file
 
 Create a file named `supervisor.yaml` with the following content:
 
@@ -206,7 +206,7 @@ then you would replace `$OTEL_COLLECTOR_BINARY` with `/usr/local/bin/otelcol`.
 
 {{% /alert %}}
 
-#### Step 5 - run the OpAMP supervisor
+#### Step 5 - Run the OpAMP Supervisor
 
 Now it's time to launch the supervisor, which in turn launches your
 OpenTelemetry Collector:
@@ -223,7 +223,7 @@ You should see your Collector listed among the agents managed by the Supervisor:
 
 ![OpAMP example setup](../img/opamp-server-ui.png)
 
-#### Step 6 - configure the OpenTelemetry Collector remotely
+#### Step 6 - Configure the OpenTelemetry Collector remotely
 
 Click on the Collector in the server UI and paste the following content to the
 `Additional Configuration` box:

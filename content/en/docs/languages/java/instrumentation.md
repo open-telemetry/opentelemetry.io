@@ -190,7 +190,7 @@ OpenTelemetry. They are not intended for end user use as a replacement for Log4j
 There are two typical workflows for consuming log instrumentation in
 OpenTelemetry catering to different application requirements:
 
-### Direct to collector
+### Direct to Collector
 
 In the direct to collector workflow, logs are emitted directly from an
 application to a collector using a network protocol (e.g. OTLP). This workflow

@@ -307,7 +307,7 @@ get a random number in response, and 3 spans in your console.
 </details>
 <!-- markdownlint-disable heading-increment -->
 
-##### `<<"/API/rolldice">>`
+##### `<<"/api/rolldice">>`
 
 This is the first span in the request, aka the root span. That `undefined` next
 to the span name tells you that it doesn't have a parent span. The two very

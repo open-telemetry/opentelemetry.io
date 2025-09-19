@@ -180,7 +180,7 @@ receivers:
           max_age: 7200
 ```
 
-#### Securely expose your collector
+#### Securely expose your Collector
 
 To receive telemetry from a web application you need to allow the browsers of
 your end-users to send data to your collector. If your web application is

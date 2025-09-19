@@ -70,7 +70,7 @@ count of these occurrences are stored in the connector.
 
 ## Configurations
 
-### Setting up collector config:
+### Setting up Collector config:
 
 Setup the configuration you will use for the OpenTelemetry Collector in the
 `config.yaml` file. This file defines how your data will be routed, processed
@@ -131,7 +131,7 @@ connector we will create in this tutorial.
     - `config.go` - A file to define the connector's settings
     - `factory.go` - A file to create instances of the connector
 
-### Create your connector settings in config.Go
+### Create your connector settings in config.go
 
 In order to be instantiated and participate in pipelines, the collector needs to
 identify your connector and properly load its settings from within its

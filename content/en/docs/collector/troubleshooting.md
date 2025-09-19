@@ -119,7 +119,7 @@ Attributes:
      -> peer.service: Str(telemetrygen)
 ```
 
-### Check collector components
+### Check Collector components
 
 Use the following sub-command to list the available components in a Collector
 distribution, including their stability levels. Please note that the output
@@ -269,7 +269,7 @@ other component in your pipeline, it’s important to verify the following:
 - How is the next hop configured?
 - Are there any network policies that prevent data from getting in or out?
 
-## Common collector issues
+## Common Collector issues
 
 This section covers how to resolve common Collector issues.
 

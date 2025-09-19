@@ -948,7 +948,7 @@ func NewFactory() receiver.Factory {
 
 Till now, the skeleton of the receiver has been fully implemented.
 
-## Updating the collector's initialization process with the receiver
+## Updating the Collector's initialization process with the receiver
 
 In order to let the receiver participate in the Collector pipelines, we need
 some updates into the generated `otelcol-dev/components.go` file, where all the
@@ -1155,7 +1155,7 @@ of now:
 In the next section, you will learn more about the OpenTelemetry Trace data
 model so the `tailtracer` receiver can finally generate meaningful traces!
 
-## The collector's trace data model
+## The Collector's trace data model
 
 You might be familiar with OpenTelemetry traces by using the SDKs and
 instrumenting an application so you can see and evaluate your traces within a
