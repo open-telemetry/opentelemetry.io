@@ -2951,6 +2951,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-15T13:17:29.684999-05:00"
   },
+  "https://failsafe.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:01:39.379149+02:00"
+  },
   "https://farfetch.github.io/kafkaflow/docs/guides/open-telemetry": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T17:00:38.881533-05:00"
@@ -5206,6 +5210,10 @@
   "https://github.com/grpc/grpc/tree/master/src/php": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:43.658211-05:00"
+  },
+  "https://github.com/grpc/grpc/tree/master/src/ruby": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:03:41.410709+02:00"
   },
   "https://github.com/grpc/proposal/blob/master/A66-otel-stats.md": {
     "StatusCode": 206,
@@ -9131,6 +9139,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:39:07.808359-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.ServiceFabricRemoting": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:01:19.690838+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.SqlClient": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:39:08.332011-05:00"
@@ -9851,6 +9863,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:14:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/activej-http-6.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:01:28.269854+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/akka/akka-actor-2.3/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:41:32.120209-05:00"
@@ -9895,6 +9911,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:41:41.473718-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/avaje-jex-3.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:01:29.765133+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/aws-lambda": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:41:42.099353-05:00"
@@ -9919,6 +9939,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:41:44.957887-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/clickhouse": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:01:34.260623+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/clickhouse-client-0.5": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:41:45.531816-05:00"
@@ -9938,6 +9962,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/executors": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:41:46.032665-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/failsafe-3.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:01:38.370297+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/finagle-http-23.11": {
     "StatusCode": 206,
@@ -10002,6 +10030,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/java-http-client": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:41:55.787029-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/java-http-server": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:01:47.130333+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/java-util-logging": {
     "StatusCode": 206,
@@ -10150,6 +10182,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/okhttp": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:42:09.742387-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/openai": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:01:54.966751+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/opencensus-shim": {
     "StatusCode": 206,
@@ -11095,6 +11131,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:44.93646-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/AwsSdk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:02:22.795078+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/CakePHP": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:00.184524-05:00"
@@ -11106,6 +11146,10 @@
   "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Curl": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:01.161494-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Doctrine": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:02:26.871265+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/ExtAmqp": {
     "StatusCode": 206,
@@ -11135,6 +11179,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:04.1211-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/MySqli": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:02:32.825839+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/OpenAIPHP": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:04.616214-05:00"
@@ -11142,6 +11190,10 @@
   "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/PDO": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:05.155999-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/PostgreSql": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:02:37.729084+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Psr14": {
     "StatusCode": 206,
@@ -11166,6 +11218,14 @@
   "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Psr6": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:08.018955-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/ReactPHP": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:02:42.746183+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Session": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:02:45.904953+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Slim": {
     "StatusCode": 206,
@@ -11571,6 +11631,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:49:01.929593-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-asyncclick": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:02:52.14727+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-asyncio": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:49:05.13545-05:00"
@@ -11602,6 +11666,10 @@
   "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-celery": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:49:11.937483-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-click": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:02:58.671486+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-confluent-kafka": {
     "StatusCode": 206,
@@ -11678,6 +11746,10 @@
   "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pymongo": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:49:21.157181-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pymssql": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:03:19.684924+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pymysql": {
     "StatusCode": 206,
@@ -11879,6 +11951,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:25.306968-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/active_storage": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:03:23.62945+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/active_support": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:25.79232-05:00"
@@ -11886,6 +11962,10 @@
   "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/all": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:26.17777-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/anthropic": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:03:29.872102+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/aws_lambda": {
     "StatusCode": 206,
@@ -11934,6 +12014,10 @@
   "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/graphql": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:32.057858-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/grpc": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T08:03:39.288656+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/gruf": {
     "StatusCode": 206,
@@ -18647,9 +18731,33 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-06T02:26:59.999Z"
   },
+  "https://maven.org/artifact/io.opentelemetry.instrumentation/opentelemetry-activej-http-6.0": {
+    "StatusCode": 403,
+    "LastSeen": "2025-09-19T08:04:29.969385+02:00"
+  },
+  "https://maven.org/artifact/io.opentelemetry.instrumentation/opentelemetry-avaje-jex-3.0": {
+    "StatusCode": 403,
+    "LastSeen": "2025-09-19T08:04:36.231013+02:00"
+  },
+  "https://maven.org/artifact/io.opentelemetry.instrumentation/opentelemetry-clickhouse-3.0": {
+    "StatusCode": 403,
+    "LastSeen": "2025-09-19T08:04:39.45786+02:00"
+  },
+  "https://maven.org/artifact/io.opentelemetry.instrumentation/opentelemetry-failsafe-3.0": {
+    "StatusCode": 403,
+    "LastSeen": "2025-09-19T08:04:40.445737+02:00"
+  },
+  "https://maven.org/artifact/io.opentelemetry.instrumentation/opentelemetry-java-http-server-3.0": {
+    "StatusCode": 403,
+    "LastSeen": "2025-09-19T08:04:45.342719+02:00"
+  },
   "https://maven.org/artifact/io.opentelemetry.instrumentation/opentelemetry-okhttp-3.0": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T22:17:12.896Z"
+  },
+  "https://maven.org/artifact/io.opentelemetry.instrumentation/opentelemetry-openai-3.0": {
+    "StatusCode": 403,
+    "LastSeen": "2025-09-19T08:04:57.54887+02:00"
   },
   "https://maven.org/artifact/io.opentelemetry.javaagent.instrumentation/opentelemetry-javaagent-finatra-2.9": {
     "StatusCode": 200,
@@ -19651,6 +19759,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-08-09T11:02:21.246316-04:00"
   },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-auto-aws-sdk": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-19T08:02:23.75046+02:00"
+  },
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-cakephp": {
     "StatusCode": 200,
     "LastSeen": "2024-12-03T11:06:06.86216+01:00"
@@ -19662,6 +19774,10 @@
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-curl": {
     "StatusCode": 200,
     "LastSeen": "2024-12-03T10:13:27.914323+01:00"
+  },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-auto-doctrine": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-19T08:02:28.776138+02:00"
   },
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-ext-amqp": {
     "StatusCode": 200,
@@ -19691,6 +19807,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-13T12:42:26.493898-05:00"
   },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-auto-mysqli": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-19T08:02:35.162117+02:00"
+  },
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-openai-php": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:39:27.544437-05:00"
@@ -19698,6 +19818,10 @@
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-pdo": {
     "StatusCode": 200,
     "LastSeen": "2025-01-13T12:42:27.015467-05:00"
+  },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-auto-postgresql": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-19T08:02:38.465881+02:00"
   },
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-psr14": {
     "StatusCode": 200,
@@ -19722,6 +19846,14 @@
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-psr6": {
     "StatusCode": 200,
     "LastSeen": "2024-12-03T10:13:31.800557+01:00"
+  },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-auto-reactphp": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-19T08:02:44.671801+02:00"
+  },
+  "https://packagist.org/packages/open-telemetry/opentelemetry-auto-session": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-19T08:02:47.203247+02:00"
   },
   "https://packagist.org/packages/open-telemetry/opentelemetry-auto-slim": {
     "StatusCode": 200,
@@ -21655,6 +21787,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-13T12:42:33.565928-05:00"
   },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-active_storage": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-19T08:03:26.800311+02:00"
+  },
   "https://rubygems.org/gems/opentelemetry-instrumentation-active_support": {
     "StatusCode": 200,
     "LastSeen": "2025-01-13T12:42:33.84473-05:00"
@@ -21662,6 +21798,10 @@
   "https://rubygems.org/gems/opentelemetry-instrumentation-all": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T10:58:51.740893-05:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-anthropic": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-19T08:03:32.983684+02:00"
   },
   "https://rubygems.org/gems/opentelemetry-instrumentation-aws_lambda": {
     "StatusCode": 200,
@@ -21710,6 +21850,10 @@
   "https://rubygems.org/gems/opentelemetry-instrumentation-graphql": {
     "StatusCode": 200,
     "LastSeen": "2025-01-13T12:42:38.027028-05:00"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-grpc": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-19T08:03:43.958563+02:00"
   },
   "https://rubygems.org/gems/opentelemetry-instrumentation-gruf": {
     "StatusCode": 200,
@@ -24170,6 +24314,10 @@
   "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Runtime": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T14:41:06.769039-05:00"
+  },
+  "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.ServiceFabricRemoting": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-19T08:01:21.059955+02:00"
   },
   "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.SqlClient": {
     "StatusCode": 200,

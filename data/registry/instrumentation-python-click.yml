@@ -1,0 +1,15 @@
+title: OpenTelemetry click Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - click
+  - instrumentation
+  - python
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-click
+license: Apache 2.0
+description: This library allows tracing requests made by the click library.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+isFirstParty: false

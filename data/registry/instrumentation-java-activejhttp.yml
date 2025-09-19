@@ -1,0 +1,16 @@
+# cSpell:ignore activejhttp
+title: activejhttp
+registryType: instrumentation
+language: java
+tags:
+  - activejhttp
+  - instrumentation
+  - java
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/activej-http-6.0
+license: Apache 2.0
+description:
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+isFirstParty: false

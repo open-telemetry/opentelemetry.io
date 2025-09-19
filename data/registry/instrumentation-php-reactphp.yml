@@ -1,0 +1,21 @@
+# cSpell:ignore reactphp
+title: OpenTelemetry ReactPHP HTTP Browser auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - reactphp
+  - instrumentation
+  - php
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/ReactPHP
+license: Apache 2.0
+description:
+  This is a read-only subtree split of
+  https://github.com/open-telemetry/opentelemetry-php-contrib.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-reactphp
+isFirstParty: false
