@@ -12,6 +12,9 @@ This approach is useful when:
 - You want to use configuration options that are not available as environment
   variables.
 
+{{% alert title="Warning" %}} Declarative configuration is experimental.
+{{% /alert %}}
+
 ## Supported languages
 
 The following OpenTelemetry SDKs support declarative configuration:
@@ -24,11 +27,8 @@ For details, refer to the
 ## Getting started
 
 1. Save the following configuration file as `otel-config.yaml`.
-2. Add the following argument to your JVM startup arguments:
-
-   ```shell
-   -Dotel.experimental.config.file=/path/to/file.yaml
-   ```
+2. Set the environment variable
+   `OTEL_EXPERIMENTAL_CONFIG_FILE=/path/to/otel-config.yaml`
 
 Recommended configuration file:
 
