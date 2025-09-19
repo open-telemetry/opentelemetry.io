@@ -1,6 +1,7 @@
 ---
 title: General SDK Configuration
 linkTitle: General
+weight: 10
 aliases: [general-sdk-configuration]
 cSpell:ignore: ottrace
 ---

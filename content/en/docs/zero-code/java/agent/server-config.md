@@ -91,7 +91,18 @@ Make sure that the domain.xml file in your domain directory contains a
 
 ## Tomcat / TomEE
 
-Add the path to the Java agent to your startup script:
+Add the path to the Java agent to your startup script. The configuration method
+depends on your installation:
+
+**For package-managed installations** (apt-get/yum), add to
+`/etc/tomcat*/tomcat*.conf`:
+
+```sh
+JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
+```
+
+**For download installations**, create or modify `<tomcat>/bin/setenv.sh`
+(Linux) or `<tomcat>/bin/setenv.bat` (Windows):
 
 {{< tabpane text=true persist=lang >}}
 
@@ -110,6 +121,10 @@ set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:"<Drive>:\path\to\opentelemetry-jav
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+**For Windows service installations**, use `<tomcat>/bin/tomcat*w.exe` to add
+`-javaagent:<Drive>:\path\to\opentelemetry-javaagent.jar` to the Java Options
+under the Java tab.
 
 ## WebLogic
 
