@@ -12,6 +12,9 @@ permissions:
 jobs:
   update-semconv-integration-branch:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - uses: actions/checkout@v5
@@ -121,10 +124,25 @@ jobs:
         env:
           # not using secrets.GITHUB_TOKEN since pull requests from that token do not run workflows
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+        id: check-pr
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
-            gh pr create --title "DRAFT Update semantic conventions to unreleased $VERSION-dev" \
-                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) semantic conventions." \
-                         --draft
+            echo "should_create_pr=true" >> $GITHUB_OUTPUT
+            echo "pr_title=DRAFT Update semantic conventions to unreleased $VERSION-dev" >> $GITHUB_OUTPUT
+            echo "pr_body=This is a draft PR used for identifying issues integrating the latest (unreleased) semantic conventions." >> $GITHUB_OUTPUT
+          else
+            echo "should_create_pr=false" >> $GITHUB_OUTPUT
           fi
+
+      - name: Create pull request
+        if: steps.check-pr.outputs.should_create_pr == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          author: opentelemetrybot <107717825+opentelemetrybot@users.noreply.github.com>
+          committer: opentelemetrybot <107717825+opentelemetrybot@users.noreply.github.com>
+          branch: ${{ env.BRANCH }}
+          title: ${{ steps.check-pr.outputs.pr_title }}
+          body: ${{ steps.check-pr.outputs.pr_body }}
+          draft: true
