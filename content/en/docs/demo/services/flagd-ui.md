@@ -2,7 +2,6 @@
 title: Flagd-UI Service
 linkTitle: Flagd-UI
 aliases: [flagd-uiservice]
-cSpell:ignore: sinatra
 ---
 
 This service acts as a frontend where users can toggle and edit feature flags to alter the behavior of the
