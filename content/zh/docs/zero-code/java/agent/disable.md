@@ -206,7 +206,7 @@ cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp D
 **注意：** 使用环境变量时，破折号（`-`）应转换为下划线（`_`）。
 例如，要禁用来自 `akka-actor` 库的跟踪，请将 `OTEL_INSTRUMENTATION_AKKA_ACTOR_ENABLED` 设置为 `false`。
 
-## 禁用控制器视图 Span {#suppressing-controller-and-or-view-spans}
+## 禁用控制器视图 Span {#suppressing-controller-andor-view-spans}
 
 某些插桩（例如 Spring Web MVC 插桩）会生成 [SpanKind.Internal](/docs/specs/otel/trace/api/#spankind) Span 来捕获控制器、视图的执行情况。
 可以使用以下配置设置来禁用这些 Span，而无需禁用整个插桩，
