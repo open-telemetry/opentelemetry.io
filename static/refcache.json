@@ -1407,6 +1407,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:41.305963-05:00"
   },
+  "https://docs.apica.io/integrations/list-of-integrations/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-19T19:27:49.160852044Z"
+  },
   "https://docs.apimetrics.io/docs/export-with-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:12:10.15929-05:00"
