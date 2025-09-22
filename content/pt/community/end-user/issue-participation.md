@@ -5,15 +5,14 @@ description: >-
   Nos ajude a priorizar o trabalho no OpenTelemetry contribuindo para issues do
   GitHub com seus votos e comentários.
 weight: 5
-cSpell:ignore: triagers upvote
 default_lang_commit: 653100b19c63cd3db6e19e578455d16c9d5949f8
 ---
 
 No OpenTelemetry, sempre estamos procurando maneiras de facilitar para que
 nossos usuários finais e membros da comunidade tenham suas vozes ouvidas.
-Sabemos que nem todos podem participar de reuniões de Grupo de Interesse Especial (SIG) ou participar de todas
-as discussões no Slack, mas sua contribuição é crucial para moldar a direção do
-projeto.
+Sabemos que nem todos podem participar de reuniões de Grupo de Interesse
+Especial (SIG) ou participar de todas as discussões no Slack, mas sua
+contribuição é crucial para moldar a direção do projeto.
 
 ## Como você pode ajudar {#how-you-can-help}
 
@@ -21,11 +20,11 @@ Você pode ajudar o OpenTelemetry de duas maneiras simples:
 
 1. Deixe uma 👍
    **[reação](https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/)**
-   na descrição da _issue_ para dar um voto positivo às _issues_ que você gostaria que
-   priorizássemos. Isso evita a necessidade de comentários como _"eu também"_,
-   _"+1"_ ou comentários com apenas um emoji, que às vezes podem gerar ruído.
-   Também permite que os mantenedores identifiquem as _issues_ mais populares em
-   seus repositórios de forma padronizada.
+   na descrição da _issue_ para dar um voto positivo às _issues_ que você
+   gostaria que priorizássemos. Isso evita a necessidade de comentários como
+   _"eu também"_, _"+1"_ ou comentários com apenas um emoji, que às vezes podem
+   gerar ruído. Também permite que os mantenedores identifiquem as _issues_ mais
+   populares em seus repositórios de forma padronizada.
 2. Comente em _issues_ para **fornecer contexto adicional** que pode ajudar os
    triadores e mantenedores a entender o impacto. Você pode nos contar como um
    determinado _bug_ ou funcionalidade está afetando seu ambiente ou sua
