@@ -6,6 +6,7 @@ description: >-
   GitHub com seus votos e comentários.
 weight: 5
 default_lang_commit: e40c49c4e9ebb094067c1b552bb5afee7b9896d1
+cSpell:ignore: doesnt
 ---
 
 No OpenTelemetry, sempre estamos procurando maneiras de facilitar para que
