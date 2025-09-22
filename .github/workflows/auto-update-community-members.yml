@@ -34,22 +34,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
 
+      - name: Use CLA approved github bot
+        run: |
+          git config user.name opentelemetrybot
+          git config user.email 107717825+opentelemetrybot@users.noreply.github.com
+
       - name: Fix refcache
         run: |
           npm install --omit=optional
           npm run fix:refcache
 
-          git add -A
-
-          if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Fix refcache"
-            git push
-          fi
-
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
-          add-paths: 'data/community/members.yaml'
+          add-paths: |
+            data/community/members.yaml
+            static/refcache.json
           author:
             opentelemetrybot
             <107717825+opentelemetrybot@users.noreply.github.com>
