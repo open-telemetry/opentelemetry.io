@@ -5,7 +5,7 @@ description: >-
   Nos ajude a priorizar o trabalho no OpenTelemetry contribuindo para issues do
   GitHub com seus votos e comentários.
 weight: 5
-default_lang_commit: 653100b19c63cd3db6e19e578455d16c9d5949f8
+default_lang_commit: e40c49c4e9ebb094067c1b552bb5afee7b9896d1
 ---
 
 No OpenTelemetry, sempre estamos procurando maneiras de facilitar para que
