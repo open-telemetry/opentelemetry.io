@@ -2,6 +2,7 @@
 title: Flagd-UI Service
 linkTitle: Flagd-UI
 aliases: [flagd-uiservice]
+cSpell:ignore: uiservice
 ---
 
 This service acts as a frontend where users can toggle and edit feature flags to alter the behavior of the
@@ -43,7 +44,6 @@ OpentelemetryPhoenix.setup(adapter: :bandit)
 ### Create new spans
 
 New spans can be created requiring the Tracer module and using it.
-
 
 ```elixir
 require OpenTelemetry.Tracer, as: Tracer
