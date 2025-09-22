@@ -1407,6 +1407,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:41.305963-05:00"
   },
+  "https://docs.apica.io/integrations/list-of-integrations/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-19T19:27:49.160852044Z"
+  },
   "https://docs.apimetrics.io/docs/export-with-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:12:10.15929-05:00"
@@ -21511,6 +21515,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-09-10T08:32:10.878488351Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.54.1-alpha/opentelemetry-bom-alpha-1.54.1-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T07:35:13.217306674Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.42.1/opentelemetry-bom-1.42.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:05.242921-05:00"
@@ -21566,6 +21574,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.54.0/opentelemetry-bom-1.54.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2025-09-10T08:32:07.647131515Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.54.1/opentelemetry-bom-1.54.1.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T07:35:10.592844289Z"
   },
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "StatusCode": 206,

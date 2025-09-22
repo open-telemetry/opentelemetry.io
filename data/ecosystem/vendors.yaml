@@ -10,6 +10,12 @@
   contact:
   oss: false
   commercial: true
+- name: Apica
+  nativeOTLP: true
+  url: https://docs.apica.io/integrations/list-of-integrations/opentelemetry
+  contact: support@apica.io
+  oss: false
+  commercial: true
 - name: Aria by VMware (Wavefront)
   nativeOTLP: true
   url: https://docs.wavefront.com/opentelemetry_tracing.html
