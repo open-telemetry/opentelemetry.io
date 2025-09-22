@@ -9,10 +9,10 @@ default_lang_commit: e40c49c4e9ebb094067c1b552bb5afee7b9896d1
 cSpell:ignore: doesnt
 ---
 
-No OpenTelemetry, sempre estamos procurando maneiras de facilitar que
-nossos usuários finais e membros da comunidade tenham suas vozes ouvidas.
-Sabemos que nem todos podem participar de reuniões de Grupo de Interesse
-Especial (SIG, Special Interest Group) ou participar de todas as discussões no Slack, mas sua
+No OpenTelemetry, sempre estamos procurando maneiras de facilitar que nossos
+usuários finais e membros da comunidade tenham suas vozes ouvidas. Sabemos que
+nem todos podem participar de reuniões de Grupo de Interesse Especial (SIG,
+Special Interest Group) ou participar de todas as discussões no Slack, mas sua
 contribuição é crucial para moldar a direção do projeto.
 
 ## Como você pode ajudar {#how-you-can-help}
@@ -53,5 +53,5 @@ priorizada imediatamente:
 - Alinhamento do Projeto: Solicitações ou propostas que não se alinham com a
   direção estratégica do projeto podem não ser priorizadas.
 
-Suas reações fornecem informações valiosas sobre o interesse da comunidade, e nós
-agradecemos seu engajamento.
+Suas reações fornecem informações valiosas sobre o interesse da comunidade, e
+nós agradecemos seu engajamento.
