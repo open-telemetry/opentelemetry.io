@@ -2683,6 +2683,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-07-24T21:20:18.085055+02:00"
   },
+  "https://embrace.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-22T15:41:39.936001+01:00"
+  },
   "https://embrace.io/docs/open-telemetry/integration/": {
     "StatusCode": 206,
     "LastSeen": "2024-11-02T22:02:32.429124483Z"
@@ -4847,6 +4851,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-08-04T19:22:50.801095675Z"
   },
+  "https://github.com/embrace-io/opentelemetry-kotlin": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-22T15:41:44.686904+01:00"
+  },
   "https://github.com/emdneto": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:40:54.035395-05:00"
@@ -6586,6 +6594,10 @@
   "https://github.com/open-telemetry/community/issues/2679": {
     "StatusCode": 206,
     "LastSeen": "2025-04-16T08:38:20.431545775-07:00"
+  },
+  "https://github.com/open-telemetry/community/issues/2975": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-22T15:41:43.03199+01:00"
   },
   "https://github.com/open-telemetry/community/issues/3022": {
     "StatusCode": 206,
@@ -23870,6 +23882,10 @@
   "https://www.jenkins.io/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:55:23.156467-05:00"
+  },
+  "https://www.jetbrains.com/kotlin-multiplatform/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-22T15:41:39.386128+01:00"
   },
   "https://www.jsonrpc.org/": {
     "StatusCode": 206,
