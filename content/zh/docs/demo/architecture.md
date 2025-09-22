@@ -4,7 +4,6 @@ linkTitle: 架构
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
 default_lang_commit: d7a38b0eb268f62d48aee2fb77f544eb987f6f6e
-drifted_from_default: true
 ---
 
 **OpenTelemetry 演示内容**由使用不同编程语言编写的微服务组成，
@@ -122,7 +121,7 @@ classDef rust fill:#dea584,color:black;
 classDef typescript fill:#e98516,color:black;
 ```
 
-点击以下链接可查看演示应用中目前的[指标](/docs/demo/telemetry-features/metric-coverage/)和[链路](/docs/demo/telemetry-features/trace-coverage/)监控覆盖情况。
+点击以下链接可查看演示应用中目前的[日志](/docs/demo/telemetry-features/log-coverage/)、[指标](/docs/demo/telemetry-features/metric-coverage/)和[链路](/docs/demo/telemetry-features/trace-coverage/)监控覆盖情况。
 
 Collector 的配置文件位于
 [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml)，
@@ -146,18 +145,24 @@ subgraph tdf[遥测数据流]
             oc-grpc[/"OTLP 接收器<br/>监听地址<br/>grpc://localhost:4317"/]
             oc-http[/"OTLP 接收器<br/>监听地址<br/>localhost:4318<br/>"/]
             oc-proc(处理器)
+            oc-spanmetrics[/"Span Metrics 连接器"/]
             oc-prom[/"OTLP HTTP 导出器"/]
             oc-otlp[/"OTLP 导出器"/]
+            oc-opensearch[/"OpenSearch 导出器"/]
 
             oc-grpc --> oc-proc
             oc-http --> oc-proc
 
             oc-proc --> oc-prom
             oc-proc --> oc-otlp
+            oc-proc --> oc-opensearch
+            oc-proc --> oc-spanmetrics
+            oc-spanmetrics --> oc-prom
         end
 
         oc-prom -->|"localhost:9090/api/v1/otlp"| pr-sc
         oc-otlp -->|gRPC| ja-col
+        oc-opensearch -->|HTTP| os-http
 
         subgraph pr[Prometheus（指标系统）]
             style pr fill:#e75128,color:black;
@@ -182,6 +187,14 @@ subgraph tdf[遥测数据流]
             ja-db --> ja-http
         end
 
+        subgraph os[OpenSearch]
+            style os fill:#005eb8,color:black;
+            os-http[/"OpenSearch<br/>监听地址<br/>localhost:9200"/]
+            os-db[(OpenSearch 索引)]
+
+            os-http ---> os-db
+        end
+
         subgraph gr[Grafana（可视化）]
             style gr fill:#f8b91e,color:black;
             gr-srv["Grafana 服务器"]
@@ -192,6 +205,7 @@ subgraph tdf[遥测数据流]
 
         pr-http --> |"localhost:9090/api"| gr-srv
         ja-http --> |"localhost:16686/api"| gr-srv
+        os-http --> |"localhost:9200/api"| gr-srv
 
         ja-b{{"浏览器<br/>Jaeger UI"}}
         ja-http ---->|"localhost:16686/search"| ja-b

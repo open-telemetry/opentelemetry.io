@@ -5,7 +5,6 @@ cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
 default_lang_commit: c2cd5b14 # patched
-drifted_from_default: true
 ---
 
 欢迎使用 [OpenTelemetry 演示](/ecosystem/demo/)文档，
@@ -24,11 +23,12 @@ drifted_from_default: true
 
 | 语言       | 自动插桩                             | 插桩库                                                                                                      | 手动插桩                                                                   |
 | ---------- | ------------------------------------ | ----------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| .NET       |                                      | [购物车服务](services/cart/)                                                                                | [购物车服务](services/cart/)                                               |
+| .NET       | [会计服务](services/accounting/)     | [购物车服务](services/cart/)                                                                                | [购物车服务](services/cart/)                                               |
 | C++        |                                      |                                                                                                             | [货币服务](services/currency/)                                             |
-| Go         |                                      | [会计服务](services/accounting/)、[结账服务](services/checkout/)、[产品目录服务](services/product-catalog/) | [结账服务](services/checkout/)、 [产品目录服务](services/product-catalog/) |
+| Go         |                                      | [结账服务](services/checkout/)、[产品目录服务](services/product-catalog/)                                     | [结账服务](services/checkout/)、 [产品目录服务](services/product-catalog/) |
 | Java       | [广告服务](services/ad/)             |                                                                                                             | [广告服务](services/ad/)                                                   |
-| JavaScript |                                      | [前端](services/frontend/)                                                                                  | [前端](services/frontend/)、[支付服务](services/payment/)                  |
+| JavaScript |                                      |                                                                                                             | [支付服务](services/payment/)                                              |
+| TypeScript |                                      | [前端](services/frontend/)、[React Native 应用](services/react-native-app/)                                 | [前端](services/frontend/)                                                 |
 | Kotlin     |                                      | [欺诈检测服务](services/fraud-detection/)                                                                   |                                                                            |
 | PHP        |                                      | [报价服务](services/quote/)                                                                                 | [报价服务](services/quote/)                                                |
 | Python     | [推荐服务](services/recommendation/) |                                                                                                             | [推荐服务](services/recommendation/)                                       |

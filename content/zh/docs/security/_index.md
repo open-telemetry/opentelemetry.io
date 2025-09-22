@@ -4,7 +4,6 @@ cascade:
   collector_vers: 0.131.0
 weight: 970
 default_lang_commit: f35b3300574b428f94dfeeca970d93c5a6ddbf35
-drifted_from_default: true
 ---
 
 在本节中，你将了解 OpenTelemetry 项目如何披露漏洞以及对安全事件的响应，以及如何安全地收集和传输可观测性数据。
