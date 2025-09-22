@@ -193,7 +193,7 @@ requerir parsers diferentes para permitir el análisis a escala.
 Las siguientes listas de conceptos y componentes son la clave para el soporte de
 logging en OpenTelemetry.
 
-### Log Appender / Bridge {#log-appender-bridge}
+### Log Appender / Bridge {#log-appender--bridge}
 
 Como desarrollador de aplicaciones, la **`Logs Bridge API`** no debe ser llamada
 directamente por ti, ya que se proporciona para que los autores de librerías de
