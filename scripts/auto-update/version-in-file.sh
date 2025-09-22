@@ -111,9 +111,10 @@ if [[ "$repo" == "opentelemetry-specification"
   )
 fi
 
-$GIT checkout -b "$branch"
-$GIT commit -a -m "$message"
-$GIT push --set-upstream origin "$branch"
-
-echo "Submitting auto-update PR '$message'."
-$GH pr create --title "$message" --body "$body"
+# Output variables for GitHub Actions
+echo "should_create_pr=true" >> $GITHUB_OUTPUT
+echo "pr_title=$message" >> $GITHUB_OUTPUT
+echo "branch_name=$branch" >> $GITHUB_OUTPUT
+echo "pr_body<<EOF" >> $GITHUB_OUTPUT
+echo "$body" >> $GITHUB_OUTPUT
+echo "EOF" >> $GITHUB_OUTPUT
