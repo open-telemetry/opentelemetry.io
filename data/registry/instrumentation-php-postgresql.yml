@@ -10,7 +10,7 @@ urls:
 license: Apache 2.0
 description:
   Please read https://opentelemetry.io/docs/instrumentation/php/automatic/ for
-  instructions on how to
+  instructions on how to enable and configure OpenTelemetry auto-instrumentation for PostgreSQL in PHP applications.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2025-09-19
