@@ -14,8 +14,8 @@ alter the behavior of the demo environment.
 
 Once installed the necessary dependencies for auto-instrumentation of Phoenix
 endpoints and requests, we configure them according to the
-[official documentation](https://opentelemetry.io/docs/languages/erlang/getting-started/),
-editing the `config/runtime.exs` file:
+[official documentation](/docs/languages/erlang/getting-started/), editing the
+`config/runtime.exs` file:
 
 ```elixir
 otel_endpoint =
