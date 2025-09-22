@@ -9,7 +9,7 @@ tags:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/avaje-jex-3.0
 license: Apache 2.0
-description:
+description: Provides OpenTelemetry instrumentation for applications built with the Avaje Jex web framework, enabling distributed tracing and observability for Java services.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2025-09-19

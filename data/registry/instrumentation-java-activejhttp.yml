@@ -9,7 +9,7 @@ tags:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/activej-http-6.0
 license: Apache 2.0
-description:
+description: Provides OpenTelemetry instrumentation for ActiveJ HTTP servers and clients, enabling distributed tracing and metrics collection for Java applications using ActiveJ HTTP.
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2025-09-19
