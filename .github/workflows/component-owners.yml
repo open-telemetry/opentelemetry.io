@@ -15,8 +15,15 @@ jobs:
       pull-requests: write
     if: github.repository_owner == 'open-telemetry'
     steps:
+      - uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
       - uses: dyladan/component-owners@v0.1.0
         with:
           config-file: .github/component-owners.yml
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          # secrets.GITHUB_TOKEN can't be used here because
+          # assigning org teams requires a higher privileged token
+          repo-token: ${{ steps.otelbot-token.outputs.token }}
           assign-owners: false
