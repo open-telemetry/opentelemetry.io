@@ -31,7 +31,8 @@ config :opentelemetry, :processors,
 ```
 
 And we initialize the OpenTelemetry Bandit adapter and the Phoenix library as
-well inside [`lib/flagd_ui/application.ex`](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/flagd-ui/lib/flagd_ui/application.ex):
+well inside
+[`lib/flagd_ui/application.ex`](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/flagd-ui/lib/flagd_ui/application.ex):
 
 ```elixir
 OpentelemetryBandit.setup()
@@ -40,19 +41,7 @@ OpentelemetryPhoenix.setup(adapter: :bandit)
 
 ## Traces
 
-### Create new spans
-
-New spans can be created requiring the Tracer module and using it.
-
-```elixir
-require OpenTelemetry.Tracer, as: Tracer
-
-def some_business_logic do
-  Tracer.with_span :business_logic do
-    # business logic goes here
-  end
-end
-```
+Phoenix and Bandit are auto-instrumented through the dedicated libraries.
 
 ## Metrics
 
