@@ -45,7 +45,7 @@ Coisas a ter em mente:
   isso é promover a conscientização e adoção do _software_, além de registrar
   casos de uso interessantes. Estes posts podem ser anonimizados caso sua
   organização tenha preocupações de conformidade.
-- As sessões são abertas ao público, então outros usuários podem participar e
+- As sessões são abertas ao público, para que outros usuários possam participar e
   fazer perguntas.
 
 Você pode assistir às
