@@ -41,7 +41,7 @@ Coisas a ter em mente:
 - Essas sessões são gravadas. No entanto, caso sua organização tenha
   preocupações de conformidade, podemos deletá-las depois de resumirmos as
   anotações e o _feedback_.
-- Escreveremos um post resumido para o blog do OpenTelemetry. Nosso objetivo com
+- Escreveremos um post de resumo para o blog do OpenTelemetry. Nosso objetivo com
   isso é aumentar a conscientização e adoção do _software_, além de registrar
   casos de uso interessantes. Estes resumos podem ser anonimizados caso sua
   organização tenha preocupações de conformidade.
