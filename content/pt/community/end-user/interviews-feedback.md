@@ -13,7 +13,7 @@ coletando _feedback_ de usuários finais e compartilhando-os com os SIGs
 apropriados para ajudar a impulsionar a priorização de melhorias e mudanças no
 projeto.
 
-Entrevistas diretas ou sessões de _feedback_ entre uma organização e a
+Entrevistas ou sessões de _feedback_ feitas diretamente entre uma organização e a
 Comunidade OpenTelemetry são um desses recursos. Nessas sessões de uma hora,
 aprendemos sobre a adoção e implementação do OTel pela organização, com
 interesse especial nos seguintes aspectos:
