@@ -13,8 +13,8 @@ coletando _feedback_ de usuários finais e compartilhando-os com os SIGs
 apropriados para ajudar a impulsionar a priorização de melhorias e mudanças no
 projeto.
 
-Entrevistas ou sessões de _feedback_ feitas diretamente entre uma organização e a
-Comunidade OpenTelemetry são um desses recursos. Nessas sessões de uma hora,
+Entrevistas ou sessões de _feedback_ feitas diretamente entre uma organização e
+a Comunidade OpenTelemetry são um desses recursos. Nessas sessões de uma hora,
 aprendemos sobre a adoção e implementação do OTel pela organização, com
 interesse especial nos seguintes aspectos:
 
@@ -25,14 +25,14 @@ interesse especial nos seguintes aspectos:
 - Desafios com a adoção dentro da organização -- como a Comunidade pode ajudar
   você a impulsionar a adoção com suas equipes?
 
-Em seguida, transformamos o _feedback_ que você compartilhou em tarefas
-práticas para os SIGs relevantes, além de fornecer contexto e informações para
-você durante a sessão, conforme apropriado.
+Em seguida, transformamos o _feedback_ que você compartilhou em tarefas práticas
+para os SIGs relevantes, além de fornecer contexto e informações para você
+durante a sessão, conforme apropriado.
 
 Tentamos agendar essas sessões uma vez por mês, geralmente durante uma das
 reuniões do SIG de usuários finais (às quintas-feiras alternadas, às 10h,
-horário do Pacífico), mas podemos agendar em outro horário caso esse não funcione
-para você. Normalmente, as sessões contam com a participação de alguns
+horário do Pacífico), mas podemos agendar em outro horário caso esse não
+funcione para você. Normalmente, as sessões contam com a participação de alguns
 mantenedores do projeto e/ou membros do Comitê de Governança, bem como alguns
 membros curiosos da Comunidade.
 
@@ -41,12 +41,12 @@ Coisas a ter em mente:
 - Essas sessões são gravadas. No entanto, caso sua organização tenha
   preocupações de conformidade, podemos deletá-las depois de resumirmos as
   anotações e o _feedback_.
-- Escreveremos um post de resumo para o blog do OpenTelemetry. Nosso objetivo com
-  isso é promover a conscientização e adoção do _software_, além de registrar
-  casos de uso interessantes. Estes posts podem ser anonimizados caso sua
-  organização tenha preocupações de conformidade.
-- As sessões são abertas ao público, para que outros usuários possam participar e
-  fazer perguntas.
+- Escreveremos um post de resumo para o blog do OpenTelemetry. Nosso objetivo
+  com isso é promover a conscientização e adoção do _software_, além de
+  registrar casos de uso interessantes. Estes posts podem ser anonimizados caso
+  sua organização tenha preocupações de conformidade.
+- As sessões são abertas ao público, para que outros usuários possam participar
+  e fazer perguntas.
 
 Você pode assistir às
 [gravações anteriores](https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43)
