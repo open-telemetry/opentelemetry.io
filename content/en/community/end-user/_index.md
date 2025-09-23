@@ -1,9 +1,8 @@
 ---
-title: End user feedback
+title: End-user resources
 linkTitle: End user
 description:
-  Different ways how end users can provide feedback to the OpenTelemetry
-  project.
+  Vendor-agnostic resources for OpenTelemetry users
 weight: 40
 ---
 
@@ -14,9 +13,7 @@ in building a project that meets real-world needs, and they need your input,
 regardless if you work in a giant corp, tiny startup, or you are just hacking in
 your garage.
 
-Different people prefer different ways to share their feedback. Some like to
-have a conversation, others prefer responding to a survey, for others giving a
-👍 is enough. We have them all covered.
+Different people prefer different ways to share their feedback and learn from each other. Some like to have a conversation, others prefer responding to a survey, for others giving a 👍 is enough. We have them all covered.
 
 ## Give thumbs up
 
@@ -26,11 +23,11 @@ one of the most effective ways to help improve the project.
 First, review the OpenTelemetry issues to see if anyone already reported it
 before you. Giving a thumbs up or sharing more context in a comment is exactly
 what we’re looking for. Are you the first person who bumped into this problem?
-File an issue in our repository.
+File an issue in one of our repositories.
 
 <!--➡️ TODO: Add a CTA "Review issues" linking to a list of projects in OTel org ) -->
 
-[Learn more about how we track reactions to issues](issue-participation/) <!--➡️ TODO: Add an url-->
+[Learn more about how we track reactions to issues](issue-participation/)
 
 ## Chat on Slack
 
@@ -39,10 +36,9 @@ just as important. You can voice them in OpenTelemetry related channels in CNCF
 Slack workspace. OTel maintainers, contributors, and other end users hang out
 there and can answer your questions.
 
-Some of the channels you might want to keep an eye on are:
+Any channel staring with *#otel-* is good, but some of the channels you might want to keep an eye on are:
 
 - #opentelemetry
-- #otel-collector
 - #otel-semantic-conventions
 - #otel-community-demo
 - #otel-vendor
@@ -57,38 +53,32 @@ channel for you.
 
 Sometimes it is us who want to ask questions. Different Special Interest Groups
 in OpenTelemetry run surveys to better understand our users’ needs and make
-better informed decisions when building OTel. We have already run XXX surveys
-and sourced feedback from XXX respondents.
+better informed decisions when building OTel. Here are a few examples:
 
-Example surveys:
 - [Contributor Experience Survey](https://opentelemetry.io/blog/2025/contribex-survey-results/)
 - [Developer Experience Survey](https://opentelemetry.io/blog/2025/devex-survey/)
 - [Docs Usability Survey](https://opentelemetry.io/blog/2024/otel-docs-survey/)
 <!--➡️ TODO: Turn links into embeds-->
 
-Currently, we are running the OTel Collector survey, and we want to hear from you:
-[Respond to survey](https://forms.gle/Q2Ndq7HyWheVWAia8)
-<!-- ➡️ TODO: Turn link into a button -->
-
 [Learn more about how we run surveys](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys)
 
-## Join a podcasts
+## Join a podcast
 
 The ultimate way to share your experience in our toolbox is joining our
-podcasts. We regularly do 2 types of them:
+podcasts. We regularly do two types of them:
 
 - OTel Me
   - A discussion between our host and end users about their experience with
     OpenTeletry.
-  - [OTel Me...with Jerome Johnson & Cal Loomis](https://www.youtube.com/live/DrD35XxTDsY?si=d_9s2tGVUszQliwF)
+  - [OTel Me Playlist](https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43)
 - OTel in practice
   - A presentation of interesting OTel concepts by contributors.
-  - [OTel in Practice: Alibaba's OpenTelemetry Journey](https://www.youtube.com/live/fgbB0HhVBq8?si=64Sr6vdv4w6ZYg8s)
+  - [OTel in Practice Playlist](https://www.youtube.com/playlist?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x)
   <!--➡️ TODO: Turn links into embeds-->
 
 We do the podcasts live and recordings are posted on OpenTelemetry YouTube
 channel. If you want to talk about your experience with OpenTelemetry, please,
-let us know in *#otel-sig-end-user channel* in the CNCF Slack workspace. 
+let us know in *#otel-sig-end-user* channel in the CNCF Slack workspace or open an issue in https://github.com/open-telemetry/sig-end-user repo. 
 
 [Learn more about how we do podcasts](interviews-feedback/)
 
