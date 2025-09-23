@@ -24,13 +24,10 @@ otel_endpoint =
     environment variable OTEL_EXPORTER_OTLP_ENDPOINT is missing.
     """
 
-config :opentelemetry,
-  span_processor: :batch,
-  traces_exporter: :otlp
-
-config :opentelemetry_exporter,
-  otlp_protocol: :http_protobuf,
-  otlp_endpoint: otel_endpoint
+config :opentelemetry, :processors,
+    otel_batch_processor: %{
+      exporter: {:opentelemetry_exporter, %{endpoints: [otel_endpoint]}}
+    }
 ```
 
 And we initialize the OpenTelemetry Bandit adapter and the Phoenix library as
