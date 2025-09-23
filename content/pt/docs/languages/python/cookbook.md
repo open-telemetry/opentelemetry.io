@@ -11,7 +11,7 @@ Esta página é um _cookbook_ para cenários comuns.
 ```python
 from opentelemetry import trace
 
-tracer = trace.get_tracer("meu.rastro")
+tracer = trace.get_tracer("meu.rastreador")
 with tracer.start_as_current_span("imprimindo") as span:
     print("foo")
     span.set_attribute("imprimindo_caracter", "foo")
@@ -32,7 +32,7 @@ current_span.set_attribute("cidade_natal", "Fortaleza")
 from opentelemetry import trace
 import time
 
-tracer = trace.get_tracer("meu.rastro")
+tracer = trace.get_tracer("meu.rastreador")
 
 # Criar um novo trecho para rastrear alguma tarefa
 with tracer.start_as_current_span("pai"):
@@ -54,7 +54,7 @@ with tracer.start_as_current_span("pai"):
 ```python
 from opentelemetry import trace, baggage
 
-tracer = trace.get_tracer("meu.rastro")
+tracer = trace.get_tracer("meu.rastreador")
 with tracer.start_as_current_span(name="trecho raiz") as root_span:
     parent_ctx = baggage.set_baggage("contexto", "pai")
     with tracer.start_as_current_span(
@@ -69,7 +69,7 @@ print(baggage.get_baggage("contexto", child_ctx))
 ## Definir contexto de trecho manualmente {#manually-setting-span-context}
 
 Geralmente sua aplicação ou _framework_ de servidor cuidará da propagação do
-contexto de rastro para você. Mas em alguns casos, você pode precisar salvar seu
+contexto de rastro para você. Mas, em alguns casos, você pode precisar salvar seu
 contexto de rastro (com `.inject`) e recuperá-lo em outro lugar (com `.extract`)
 por conta própria.
 
@@ -84,25 +84,25 @@ from opentelemetry.trace.propagation.tracecontext import TraceContextTextMapProp
 trace.set_tracer_provider(TracerProvider())
 trace.get_tracer_provider().add_span_processor(BatchSpanProcessor(ConsoleSpanExporter()))
 
-tracer = trace.get_tracer("meu.rastro")
+tracer = trace.get_tracer("meu.rastreador")
 
-# Um TextMapPropagator funciona com qualquer objeto tipo dicionário como seu Carrier por padrão. Você também pode implementar getters e setters personalizados.
+# Um TextMapPropagator funciona com qualquer objeto tipo dicionário como seu Transportador (Carrier) por padrão. Você também pode implementar getters e setters personalizados.
 with tracer.start_as_current_span('primeiro-trecho'):
     carrier = {}
     # Escrever o contexto atual no carrier.
     TraceContextTextMapPropagator().inject(carrier)
 
 # O código abaixo pode estar em uma _thread_ diferente, em uma máquina diferente, etc.
-# Como um exemplo típico, estaria em um microsserviço diferente e o carrier teria
+# Como um exemplo típico, estaria em um microsserviço diferente e o transportador teria
 # sido encaminhado via cabeçalhos HTTP.
 
-# Extrair o contexto de rastro do carrier.
-# Aqui está como um carrier típico pode parecer, como teria sido injetado acima.
+# Extrair o contexto de rastro do transportador.
+# Aqui está como um transportador típico pode parecer, como teria sido injetado acima.
 carrier = {'traceparent': '00-a9c3b99a95cc045e573e163c3ac80a77-d99d251a8caecd06-01'}
 # Então usamos um propagador para obter um contexto dele.
 ctx = TraceContextTextMapPropagator().extract(carrier=carrier)
 
-# Em vez de extrair o contexto de rastro do carrier, se você já tem um objeto SpanContext
+# Em vez de extrair o contexto de rastro do transportador, se você já tem um objeto SpanContext
 # você pode obter um contexto de rastro dele assim.
 span_context = SpanContext(
     trace_id=2604504634922341076776623263868986797,
@@ -142,9 +142,9 @@ trace.set_tracer_provider(
 )
 trace.get_tracer_provider().add_span_processor(BatchSpanProcessor(ConsoleSpanExporter()))
 
-tracer = trace.get_tracer("tracer.one")
-with tracer.start_as_current_span("some-name") as span:
-    span.set_attribute("key", "value")
+tracer = trace.get_tracer("rastreador.um")
+with tracer.start_as_current_span("algum-nome") as span:
+    span.set_attribute("key", "valor")
 
 
 
@@ -153,7 +153,7 @@ another_tracer_provider = TracerProvider(
 )
 another_tracer_provider.add_span_processor(BatchSpanProcessor(ConsoleSpanExporter()))
 
-another_tracer = trace.get_tracer("tracer.two", tracer_provider=another_tracer_provider)
-with another_tracer.start_as_current_span("name-here") as span:
-    span.set_attribute("another-key", "another-value")
+another_tracer = trace.get_tracer("rastreador.dois", tracer_provider=another_tracer_provider)
+with another_tracer.start_as_current_span("outro-nome") as span:
+    span.set_attribute("another-key", "outro valor")
 ```
