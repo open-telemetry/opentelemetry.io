@@ -43,7 +43,7 @@ Coisas a ter em mente:
   anotações e o _feedback_.
 - Escreveremos um post de resumo para o blog do OpenTelemetry. Nosso objetivo com
   isso é promover a conscientização e adoção do _software_, além de registrar
-  casos de uso interessantes. Estes resumos podem ser anonimizados caso sua
+  casos de uso interessantes. Estes posts podem ser anonimizados caso sua
   organização tenha preocupações de conformidade.
 - As sessões são abertas ao público, então outros usuários podem participar e
   fazer perguntas.
