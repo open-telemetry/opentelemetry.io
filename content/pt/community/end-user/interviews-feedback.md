@@ -42,7 +42,7 @@ Coisas a ter em mente:
   preocupações de conformidade, podemos deletá-las depois de resumirmos as
   anotações e o _feedback_.
 - Escreveremos um post de resumo para o blog do OpenTelemetry. Nosso objetivo com
-  isso é aumentar a conscientização e adoção do _software_, além de registrar
+  isso é promover a conscientização e adoção do _software_, além de registrar
   casos de uso interessantes. Estes resumos podem ser anonimizados caso sua
   organização tenha preocupações de conformidade.
 - As sessões são abertas ao público, então outros usuários podem participar e
