@@ -69,9 +69,9 @@ print(baggage.get_baggage("contexto", child_ctx))
 ## Definir contexto de trecho manualmente {#manually-setting-span-context}
 
 Geralmente sua aplicação ou _framework_ de servidor cuidará da propagação do
-contexto de rastro para você. Mas, em alguns casos, você pode precisar salvar seu
-contexto de rastro (com `.inject`) e recuperá-lo em outro lugar (com `.extract`)
-por conta própria.
+contexto de rastro para você. Mas, em alguns casos, você pode precisar salvar
+seu contexto de rastro (com `.inject`) e recuperá-lo em outro lugar (com
+`.extract`) por conta própria.
 
 ```python
 from opentelemetry import trace, context
