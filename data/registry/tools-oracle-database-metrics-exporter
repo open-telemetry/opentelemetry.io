@@ -1,6 +1,6 @@
 title: Oracle Database Metrics Exporter
-registryType: exporter
-language: collector
+registryType: utilities
+language: go
 tags:
   - oracle
   - database
