@@ -1,8 +1,7 @@
 ---
 title: End-user resources
 linkTitle: End user
-description:
-  Vendor-agnostic resources for OpenTelemetry users
+description: Vendor-agnostic resources for OpenTelemetry users
 weight: 40
 ---
 
@@ -69,7 +68,7 @@ podcasts. We regularly do two types of them:
 
 - OTel Me
   - A discussion between our host and end users about their experience with
-    OpenTeletry.
+    OpenTelemetry.
   - [OTel Me Playlist](https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43)
 - OTel in practice
   - A presentation of interesting OTel concepts by contributors.
