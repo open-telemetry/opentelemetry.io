@@ -20655,6 +20655,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-29T17:30:03.308377379Z"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/auto/sdk": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-23T14:39:58.159481-04:00"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/collector/cmd/builder": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:38:20.496673-05:00"
