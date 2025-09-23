@@ -12,7 +12,7 @@ cSpell:ignore: doesnt
 No OpenTelemetry, sempre estamos procurando maneiras de facilitar que nossos
 usuários finais e membros da comunidade tenham suas vozes ouvidas. Sabemos que
 nem todos podem participar de reuniões de Grupo de Interesse Especial (SIG,
-Special Interest Group) ou participar de todas as discussões no Slack, mas sua
+_Special Interest Group_) ou participar de todas as discussões no Slack, mas sua
 contribuição é crucial para moldar a direção do projeto.
 
 ## Como você pode ajudar {#how-you-can-help}
