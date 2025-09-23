@@ -26,7 +26,7 @@ interesse especial nos seguintes aspectos:
   você a impulsionar a adoção com suas equipes?
 
 Em seguida, transformamos o _feedback_ que você compartilhou em tarefas
-acionáveis para os SIGs relevantes, além de fornecer contexto e informações para
+práticas para os SIGs relevantes, além de fornecer contexto e informações para
 você durante a sessão, conforme apropriado.
 
 Tentamos agendar essas sessões uma vez por mês, geralmente durante uma das
