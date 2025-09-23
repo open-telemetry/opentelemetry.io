@@ -8,7 +8,7 @@ cSpell:ignore: uiservice
 This service acts as a frontend where users can toggle and edit feature flags to
 alter the behavior of the demo environment.
 
-[Email service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/flagd-ui/)
+[Flagd-UI service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/flagd-ui/)
 
 ## Initializing Tracing
 
