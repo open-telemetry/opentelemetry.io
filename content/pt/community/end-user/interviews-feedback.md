@@ -31,7 +31,7 @@ você durante a sessão, conforme apropriado.
 
 Tentamos agendar essas sessões uma vez por mês, geralmente durante uma das
 reuniões do SIG de usuários finais (às quintas-feiras alternadas, às 10h,
-horário do Pacífico), mas podemos marcar em outro horário caso esse não funcione
+horário do Pacífico), mas podemos agendar em outro horário caso esse não funcione
 para você. Normalmente, as sessões contam com a participação de alguns
 mantenedores do projeto e/ou membros do Comitê de Governança, bem como alguns
 membros curiosos da Comunidade.
