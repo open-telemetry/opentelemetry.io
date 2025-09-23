@@ -31,7 +31,7 @@ config :opentelemetry, :processors,
 ```
 
 And we initialize the OpenTelemetry Bandit adapter and the Phoenix library as
-well inside `application.ex`:
+well inside [`lib/flagd_ui/application.ex`](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/flagd-ui/lib/flagd_ui/application.ex):
 
 ```elixir
 OpentelemetryBandit.setup()
