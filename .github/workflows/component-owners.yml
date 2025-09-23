@@ -1,200 +1,22 @@
 name: Component owners
 on:
   pull_request_target:
-  merge_group:
 
 permissions:
   contents: read
 
 jobs:
-  run_pull_request:
+  run_self:
     runs-on: ubuntu-latest
     name: Assign component owners
     permissions:
       contents: read
       issues: write
       pull-requests: write
-    if: github.repository_owner == 'open-telemetry' && github.event_name != 'merge_group'
+    if: github.repository_owner == 'open-telemetry'
     steps:
       - uses: dyladan/component-owners@v0.1.0
         with:
           config-file: .github/component-owners.yml
           repo-token: ${{ secrets.OPENTELEMETRYBOT_OPENTELEMETRY_IO_PAT }}
           assign-owners: false
-
-  run_merge_group:
-    if: github.repository_owner == 'open-telemetry' && github.event_name == 'merge_group' 
-    runs-on: ubuntu-latest
-    name: Validate merge queue permissions
-    permissions:
-      contents: read
-      pull-requests: read
-    env:
-      ORG: open-telemetry
-      FALLBACK_TEAM: open-telemetry/docs-maintainers
-      # change this to secrets.GITHUB_TOKEN when testing against a fork
-      GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
-    steps:
-      - name: Resolve PRs and triggering actor in the merge group
-        id: ctx
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const core = require('@actions/core');
-            const ctx = context;
-
-            // Who initiated the run (Add to queue / re-run UI)
-            const triggeringActor = ctx.triggering_actor || ctx.actor;
-
-            // Map the merge_group head SHA -> PRs in the group
-            const res = await github.rest.repos.listPullRequestsAssociatedWithCommit({
-              owner: ctx.repo.owner,
-              repo: ctx.repo.repo,
-              commit_sha: ctx.sha,
-            });
-            if (!res.data.length) {
-              core.setFailed(`No PRs associated with merge_group sha ${ctx.sha}`);
-              return;
-            }
-            core.setOutput('prs', JSON.stringify(res.data.map(p => p.number)));
-            core.setOutput('actor', triggeringActor);
-
-      - name: Validate PR files against component-owners.yml
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const core = require('@actions/core');
-            const { Buffer } = require('node:buffer');
-
-            const ctx = context;
-            const actor = core.getInput('actor', { required: true }) || process.env.TRIGGERING_ACTOR;
-            const prs = JSON.parse(core.getInput('prs', { required: true }));
-
-            // --- helpers ------------------------------------------------------
-            async function fetchOwnersYml(ref) {
-              // Load policy from default branch (matches what runs as required checks)
-              const repo = await github.rest.repos.get({ owner: ctx.repo.owner, repo: ctx.repo.repo });
-              const def = repo.data.default_branch;
-              const res = await github.rest.repos.getContent({
-                owner: ctx.repo.owner,
-                repo: ctx.repo.repo,
-                path: '.github/component-owners.yml',
-                ref: def
-              });
-              const text = Buffer.from(res.data.content, res.data.encoding).toString('utf8');
-              return text;
-            }
-
-            // Very small YAML reader tailored to your file structure:
-            function parseOwnersYml(text) {
-              const components = {};
-              const lines = text.split(/\r?\n/);
-              let inComponents = false;
-              let current = null;
-              for (const line of lines) {
-                if (!inComponents) {
-                  if (/^components:\s*$/.test(line)) inComponents = true;
-                  continue;
-                }
-                // stop if we dedent to top-level (non-indented)
-                if (/^[^\s]/.test(line)) break;
-
-                const key = line.match(/^\s{2}(.+?):\s*$/);
-                if (key) {
-                  current = key[1].trim();
-                  components[current] = [];
-                  continue;
-                }
-                const owner = line.match(/^\s{4}-\s+(.+)\s*$/);
-                if (owner && current) components[current].push(owner[1].trim());
-              }
-              return components;
-            }
-
-            function longestMatch(components, file) {
-              // choose the component key with the longest matching prefix
-              let bestKey = null;
-              for (const k of Object.keys(components)) {
-                const prefix = k.endsWith('/') ? k : `${k}/`;
-                if (file === k || file.startsWith(prefix)) {
-                  if (!bestKey || k.length > bestKey.length) bestKey = k;
-                }
-              }
-              return bestKey;
-            }
-
-            function splitTeam(team) {
-              // supports "org/slug" or bare "slug" (assume ORG)
-              if (team.includes('/')) {
-                const [org, slug] = team.split('/', 2);
-                return { org, slug };
-              }
-              return { org: process.env.ORG, slug: team };
-            }
-
-            const membershipCache = new Map();
-            async function isMember(org, slug, username) {
-              const key = `${org}/${slug}/${username}`;
-              if (membershipCache.has(key)) return membershipCache.get(key);
-              try {
-                const res = await github.request('GET /orgs/{org}/teams/{team_slug}/memberships/{username}', {
-                  org, team_slug: slug, username,
-                  headers: { authorization: `token ${process.env.AUTH_TOKEN}` }
-                });
-                const ok = res.status === 200 && (res.data.state === 'active' || res.data.state === 'maintainer');
-                membershipCache.set(key, ok);
-                return ok;
-              } catch (e) {
-                if (e.status === 404) { membershipCache.set(key, false); return false; }
-                throw e;
-              }
-            }
-
-            async function memberOfAny(teams, username) {
-              for (const t of teams) {
-                const { org, slug } = splitTeam(t);
-                if (await isMember(org, slug, username)) return true;
-              }
-              return false;
-            }
-
-            async function listChangedFiles(pull_number) {
-              const files = await github.paginate(github.rest.pulls.listFiles, {
-                owner: ctx.repo.owner, repo: ctx.repo.repo, pull_number, per_page: 100
-              });
-              return files.map(f => f.filename);
-            }
-
-            // --- load policy --------------------------------------------------
-            const ownersText = await fetchOwnersYml();
-            const components = parseOwnersYml(ownersText);
-
-            // --- evaluate every PR in the merge group ------------------------
-            const fallbackTeam = process.env.FALLBACK_TEAM || 'open-telemetry/docs-maintainers';
-            for (const pr of prs) {
-              const files = await listChangedFiles(pr);
-
-              const violations = [];
-              for (const file of files) {
-                const key = longestMatch(components, file);
-                const teams = key ? components[key] : [fallbackTeam];
-                const ok = await memberOfAny(teams, actor);
-                if (!ok) {
-                  violations.push({ file, required: teams });
-                }
-              }
-
-              if (violations.length) {
-                const details = violations
-                  .map(v => `- \`${v.file}\` requires one of: ${v.required.join(', ')}`)
-                  .join('\n');
-                core.setFailed(`@${actor} is not allowed to queue PR #${pr} for these paths:\n${details}`);
-                return;
-              }
-            }
-
-            core.info(`All files in ${prs.length} PR(s) comply with component-owners.yml for @${actor}.`);
-            // Success => job passes
-        env:
-          prs: ${{ steps.ctx.outputs.prs }}
-          actor: ${{ steps.ctx.outputs.actor }}
