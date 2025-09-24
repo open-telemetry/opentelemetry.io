@@ -1139,6 +1139,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:54:04.638867-05:00"
   },
+  "https://datatracker.ietf.org/doc/draft-ietf-httpbis-safe-method-w-body/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T10:35:50.540803357Z"
+  },
   "https://datatracker.ietf.org/doc/draft-moriarty-acme-client/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:48:58.121727-05:00"
@@ -1174,6 +1178,10 @@
   "https://datatracker.ietf.org/doc/html/rfc5424": {
     "StatusCode": 206,
     "LastSeen": "2025-07-18T18:23:13.113196446Z"
+  },
+  "https://datatracker.ietf.org/doc/html/rfc5531": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T10:35:39.339755614Z"
   },
   "https://datatracker.ietf.org/doc/html/rfc6455": {
     "StatusCode": 206,
@@ -2170,6 +2178,10 @@
   "https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:05:12.345Z"
+  },
+  "https://docs.oracle.com/en/database/oracle/oracle-database/23/refrn/V-SESSION.html": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-24T10:35:52.962504497Z"
   },
   "https://docs.oracle.com/en/error-help/db/": {
     "StatusCode": 200,
@@ -13967,6 +13979,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-09-17T09:40:35.878405108Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.49.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T10:36:39.825817116Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.49.0/oteps/0232-maturity-of-otel.md#explanation": {
     "StatusCode": 206,
     "LastSeen": "2025-09-17T09:40:23.805915321Z"
@@ -14066,6 +14082,18 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.49.0/oteps/trace/0250-Composite_Samplers.md": {
     "StatusCode": 206,
     "LastSeen": "2025-09-17T09:40:32.72175873Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.49.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T10:35:44.987770036Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.49.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T10:35:53.702004698Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.49.0/specification/logs/data-model.md#type-any": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T10:36:34.84712634Z"
   },
   "https://github.com/open-telemetry/opentelemetry-swift": {
     "StatusCode": 206,
@@ -14770,6 +14798,10 @@
   "https://github.com/open-telemetry/semantic-conventions/issues/2074": {
     "StatusCode": 206,
     "LastSeen": "2025-06-17T10:36:03.643163049Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/2075": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T10:35:49.774797878Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/issues/2077": {
     "StatusCode": 206,
@@ -17974,6 +18006,10 @@
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/": {
     "StatusCode": 206,
     "LastSeen": "2025-06-17T10:36:01.657251328Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#podstatus-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T10:35:53.722112569Z"
   },
   "https://kubernetes.io/docs/reference/kubectl/": {
     "StatusCode": 206,
