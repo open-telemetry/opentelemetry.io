@@ -45,14 +45,14 @@ Any channel staring with *#otel-* is good, but some of the channels you might wa
 Not sure where to ask? Post in #otel-end-user, and we will help you find the
 channel for you.
 
-[Join CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf)"
+[Join CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf)
 <!--➡️ TODO: Turn link to a button -->
 
 ## Respond to a survey
 
 Sometimes it is us who want to ask questions. Different Special Interest Groups
 in OpenTelemetry run surveys to better understand our users’ needs and make
-better informed decisions when building OTel. Here are a few examples:
+better-informed decisions when building OTel. Here are a few examples:
 
 - [Contributor Experience Survey](https://opentelemetry.io/blog/2025/contribex-survey-results/)
 - [Developer Experience Survey](https://opentelemetry.io/blog/2025/devex-survey/)
