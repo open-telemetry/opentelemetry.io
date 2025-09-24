@@ -6,12 +6,12 @@ default_lang_commit: 5b82e8f9c057d4d4961d41091a4bc75fc9b5b37c
 ---
 
 OpenTelemetryを計装する際には、機密データの取り扱いに注意することが重要です。
-テレメトリーデータの収集には、さまざまなプライバシー規制やコンプライアンス要件の対象となる可能性のある木津情報や個人情報を、知らず知らずのうちにキャプチャしてしまうリスクが常に伴います。
+テレメトリーデータの収集には、さまざまなプライバシー規制やコンプライアンス要件の対象となる可能性のある機密情報や個人情報を、知らず知らずのうちにキャプチャしてしまうリスクが常に伴います。
 
 ## あなたの責任 {#your-responsibility}
 
 OpenTelemetryはテレメトリーデータを収集しますが、あなたの特定のコンテキストでどのデータが機密であるかを独自に判断することはできません。
-計装する者には以下の責任があります。
+計装する人には以下の責任があります。
 
 - 適用されるプライバシー法および規制の遵守を確保する。
 - テレメトリーデータ内の機密情報を保護する。
@@ -108,9 +108,9 @@ transform:
   trace_statements:
     - context: span
       statements:
-        - replace_pattern(attributes[], "\\.\\d+$", ".0")
+        - replace_pattern(attributes["client.address"], "\\.\\d+$", ".0")
 ```
 
-### redactionプロセッサーで属性を削除する
+### redactionプロセッサーで属性を削除する {#delete-attributes-with-redaction-processor}
 
 最後に、`redaction` プロセッサーで特定の属性を削除する例は、コレクター構成のセキュリティベストプラクティスページの[「機密データの削除」](/docs/security/config-best-practices/#scrub-sensitive-data)セクションに記載されています。
