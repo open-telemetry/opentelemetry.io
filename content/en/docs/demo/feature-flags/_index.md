@@ -38,6 +38,7 @@ user interface:
 | `adServiceManualGc`                 | Ad              | Trigger full manual garbage collections in the ad service                                                 |
 | `adServiceHighCpu`                  | Ad              | Trigger high cpu load in the ad service. If you want to demo cpu throttling, set cpu resource limits      |
 | `cartServiceFailure`                | Cart            | Generate an error whenever `EmptyCart` is called                                                          |
+| `emailMemoryLeak`                   | Email           | Simulate a memory leak in the `email` service.                                                            |
 | `productCatalogFailure`             | Product Catalog | Generate an error for `GetProduct` requests with product ID: `OLJCESPC7Z`                                 |
 | `recommendationServiceCacheFailure` | Recommendation  | Create a memory leak due to an exponentially growing cache. 1.4x growth, 50% of requests trigger growth.  |
 | `paymentServiceFailure`             | Payment         | Generate an error when calling the `charge` method.                                                       |

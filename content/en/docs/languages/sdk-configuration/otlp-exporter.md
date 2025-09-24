@@ -1,6 +1,7 @@
 ---
 title: OTLP Exporter Configuration
 linkTitle: OTLP Exporter
+weight: 20
 aliases: [otlp-exporter-configuration]
 ---
 

@@ -175,3 +175,9 @@
   reference: 'https://medium.com/inside-picpay/observabilidade-com-hyperf-e-opentelemetry-dd698844eda'
   referenceTitle: blog post
   contact: 'observability@picpay.com'
+- name: PagBank
+  url: https://pagbank.com.br/
+  components: [Collector, Operator, Java, JavaScript, PHP, Python, .NET, Go]
+  reference: ''
+  referenceTitle: ''
+  contact: 'https://github.com/ezeqme'
