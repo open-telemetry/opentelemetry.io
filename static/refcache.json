@@ -6435,6 +6435,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:22:47.811861-05:00"
   },
+  "https://github.com/open-telemetry/community/blob/main/guides/contributor/donations.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T14:33:05.004459+02:00"
+  },
   "https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:22:47.985212-05:00"
