@@ -22,7 +22,7 @@ cSpell:ignore: OLJCESPC7Z
 
 ## 実装済みフィーチャーフラグ {#implemented-feature-flags}
 
-| フューチャーフラグ                  | サービス           | 説明                                                                                                                                 |
+| フィーチャーフラグ                  | サービス           | 説明                                                                                                                                 |
 | ----------------------------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `adServiceFailure`                  | 広告               | 10分の1の確率で `GetAds` のエラーを生成します                                                                                        |
 | `adServiceManualGc`                 | 広告               | 広告サービスで完全手動のガベージコレクションを引き起こします                                                                         |
@@ -40,6 +40,6 @@ cSpell:ignore: OLJCESPC7Z
 
 `recommendationServiceCacheFailure` シナリオには、OpenTelemetry を使用してメモリリークをデバッグする方法を理解するのに役立つ[専用のウォークスルードキュメント](recommendation-cache/)があります。
 
-## フューチャーフラグアーキテクチャ {#feature-flag-architecture}
+## フィーチャーフラグアーキテクチャ {#feature-flag-architecture}
 
 flagd の動作の詳細については [flagd documentation](https://flagd.dev) を、OpenFeature の動作の詳細については [OpenFeature](https://openfeature.dev) と OpenFeature API を参照してください。

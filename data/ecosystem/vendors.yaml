@@ -10,6 +10,12 @@
   contact:
   oss: false
   commercial: true
+- name: Apica
+  nativeOTLP: true
+  url: https://docs.apica.io/integrations/list-of-integrations/opentelemetry
+  contact: support@apica.io
+  oss: false
+  commercial: true
 - name: Aria by VMware (Wavefront)
   nativeOTLP: true
   url: https://docs.wavefront.com/opentelemetry_tracing.html
@@ -250,6 +256,12 @@
   nativeOTLP: true
   url: https://docs.lumigo.io/docs/opentelemetry
   contact:
+  oss: false
+  commercial: true
+- name: Mackerel
+  nativeOTLP: true
+  url: https://mackerel.io/docs/entry/tracing/guide/what-is-opentelemetry
+  contact: mackerel-developers@hatena.ne.jp
   oss: false
   commercial: true
 - name: MetricsHub
@@ -566,3 +578,9 @@
   commercial: true
   url: https://www.velodb.io/solutions/use-cases/observability
   contact: owen@velodb.io
+- name: Oodle AI
+  nativeOTLP: true
+  url: https://docs.oodle.ai/integrations/metrics/otel/
+  contact: support@oodle.ai
+  oss: false
+  commercial: true
