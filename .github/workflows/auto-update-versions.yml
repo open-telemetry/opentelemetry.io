@@ -23,21 +23,31 @@ jobs:
       matrix:
         include:
           - repo: opentelemetry-collector-releases
-            args: "vers content/en/docs/collector/_index.md collector_vers content/en/docs/security/_index.md"
+            args:
+              'vers content/en/docs/collector/_index.md collector_vers
+              content/en/docs/security/_index.md'
           - repo: opentelemetry-java
-            args: "otel content/en/docs/languages/java/_index.md otel content/en/docs/zero-code/java/_index.md"
+            args:
+              'otel content/en/docs/languages/java/_index.md otel
+              content/en/docs/zero-code/java/_index.md'
           - repo: opentelemetry-java-instrumentation
-            args: "instrumentation content/en/docs/languages/java/_index.md instrumentation content/en/docs/zero-code/java/_index.md"
+            args:
+              'instrumentation content/en/docs/languages/java/_index.md
+              instrumentation content/en/docs/zero-code/java/_index.md'
           - repo: opentelemetry-java-contrib
-            args: "contrib content/en/docs/languages/java/_index.md"
+            args: 'contrib content/en/docs/languages/java/_index.md'
           - repo: opentelemetry-specification
-            args: "spec scripts/content-modules/adjust-pages.pl spec .gitmodules"
+            args:
+              'spec scripts/content-modules/adjust-pages.pl spec .gitmodules'
           - repo: opentelemetry-proto
-            args: "otlp scripts/content-modules/adjust-pages.pl otlp .gitmodules"
+            args:
+              'otlp scripts/content-modules/adjust-pages.pl otlp .gitmodules'
           - repo: semantic-conventions
-            args: "semconv scripts/content-modules/adjust-pages.pl semconv .gitmodules"
+            args:
+              'semconv scripts/content-modules/adjust-pages.pl semconv
+              .gitmodules'
           - repo: semantic-conventions-java
-            args: "semconv content/en/docs/languages/java/_index.md"
+            args: 'semconv content/en/docs/languages/java/_index.md'
 
     steps:
       - uses: actions/checkout@v5
@@ -49,7 +59,9 @@ jobs:
 
       - name: Update ${{ matrix.repo }} version
         id: version-update
-        run: ./scripts/auto-update/version-in-file.sh ${{ matrix.repo }} ${{ matrix.args }}
+        run:
+          ./scripts/auto-update/version-in-file.sh ${{ matrix.repo }} ${{
+          matrix.args }}
         env:
           # change this to secrets.GITHUB_TOKEN when testing against a fork
           GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
@@ -59,8 +71,12 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
-          author: opentelemetrybot <107717825+opentelemetrybot@users.noreply.github.com>
-          committer: opentelemetrybot <107717825+opentelemetrybot@users.noreply.github.com>
+          author:
+            opentelemetrybot
+            <107717825+opentelemetrybot@users.noreply.github.com>
+          committer:
+            opentelemetrybot
+            <107717825+opentelemetrybot@users.noreply.github.com>
           branch: ${{ steps.version-update.outputs.branch_name }}
           title: ${{ steps.version-update.outputs.pr_title }}
           body: ${{ steps.version-update.outputs.pr_body }}

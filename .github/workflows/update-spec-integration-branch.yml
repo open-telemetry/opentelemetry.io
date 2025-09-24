@@ -140,8 +140,12 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
-          author: opentelemetrybot <107717825+opentelemetrybot@users.noreply.github.com>
-          committer: opentelemetrybot <107717825+opentelemetrybot@users.noreply.github.com>
+          author:
+            opentelemetrybot
+            <107717825+opentelemetrybot@users.noreply.github.com>
+          committer:
+            opentelemetrybot
+            <107717825+opentelemetrybot@users.noreply.github.com>
           branch: ${{ env.BRANCH }}
           title: ${{ steps.check-pr.outputs.pr_title }}
           body: ${{ steps.check-pr.outputs.pr_body }}
