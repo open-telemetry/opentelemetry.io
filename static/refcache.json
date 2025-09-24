@@ -13955,6 +13955,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-08-28T17:30:02.495164-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/specification/common/README.md#attribute": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T10:03:19.850216-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/specification/compatibility/prometheus_and_openmetrics.md": {
     "StatusCode": 206,
     "LastSeen": "2025-09-17T09:41:42.589233485Z"
@@ -15722,6 +15726,10 @@
   "https://github.com/open-telemetry/semantic-conventions/tree/v1.36.0//model/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-07-17T20:51:44.60409+02:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.37.0//model/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T10:03:17.68086-04:00"
   },
   "https://github.com/open-telemetry/sig-contributor-experience": {
     "StatusCode": 206,
