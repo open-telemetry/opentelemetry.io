@@ -19,6 +19,12 @@ Note, that the focus of maintainers and approvers of the OpenTelemetry Website
 is to improve the documentation of the project, so your blog post will have a
 lower priority for review.
 
+## Social Media Content Request
+
+If you want to request the publication of content on the social media channels
+of the OpenTelemetry project, which aren't a blog post,
+[use this form](https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml).
+
 ## Before submitting a blog post
 
 Blog posts should not be commercial in nature and should consist of original
@@ -34,6 +40,7 @@ Verify that your intended content broadly applies to the OpenTelemetry Community
 - Updates from Special Interest Groups
 - Tutorials and walkthroughs
 - OpenTelemetry Integrations
+- [Call for Contributors](#call-for-contributors)
 
 Unsuitable content includes:
 
@@ -63,6 +70,18 @@ quickly.
 
 If your issue has everything needed, a maintainer will verify that you can go
 ahead and submit your blog post.
+
+### Call for Contributors
+
+If you are proposing the creation of a new project or SIG, or if you are
+offering a donation to the OpenTelemetry project, you will need additional
+contributors to be successful with your proposal. To help you with that, you can
+propose a blog post that is a "Call for Contributors" (CfC).
+
+This requires, that you follow the processes for
+[new projects](https://github.com/open-telemetry/community/blob/main/project-management.md)
+and
+[donations](https://github.com/open-telemetry/community/blob/main/guides/contributor/donations.md).
 
 ## Submit a blog post
 
