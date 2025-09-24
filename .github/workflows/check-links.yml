@@ -1,6 +1,6 @@
 name: Links
 
-# cSpell:ignore nvmrc opentelemetrybot
+# cSpell:ignore nvmrc otelbot
 on:
   merge_group:
   pull_request:
@@ -11,8 +11,8 @@ permissions:
 env:
   CHANGED_FILES:
   PR_NUM: ${{ github.event.pull_request.number }}
-  USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
-  USER_NAME: opentelemetrybot
+  USER_EMAIL: 197425009+otelbot@users.noreply.github.com
+  USER_NAME: otelbot
 
 jobs:
   build-and-check-links:
@@ -96,7 +96,7 @@ jobs:
         #   echo "Failing workflow so that changes can be reviewed, and checks rerun."
         #   exit 1
         # env:
-        #   GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+        #   GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
   check-refcache:
     name: REFCACHE updates?
