@@ -20,4 +20,8 @@ The content of this page may be <b>outdated</b> and some links may be invalid.
 {{ end }}
 
 {{ if $no_default_lang_page }} This page no longer has a corresponding English
-page. {{ end }}
+page.
+
+<!-- prettier-ignore-start -->
+{{ end }}
+<!-- prettier-ignore-end -->

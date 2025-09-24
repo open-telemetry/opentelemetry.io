@@ -22,4 +22,8 @@ inválidos.
 {{ end }}
 
 {{ if $no_default_lang_page }} Esta página não possui uma página correspondente
-em inglês. {{ end }}
+em inglês.
+
+<!-- prettier-ignore-start -->
+{{ end }}
+<!-- prettier-ignore-end -->
