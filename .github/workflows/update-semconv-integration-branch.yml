@@ -105,15 +105,18 @@ jobs:
         with:
           node-version-file: .nvmrc
 
-      - name: Fix refcache
+      - name: Update refcache
         run: |
           npm install --omit=optional
-          npm run fix:refcache
+          # Ignore link-check failures so we can still commit refcache updates
+          npm run fix:refcache || true
+          # Prune 404 entries, if any
+          npm run _refcache:prune
 
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Fix refcache"
+            git commit -am "Update refcache"
             git push
           fi
 
