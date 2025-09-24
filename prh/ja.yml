@@ -53,6 +53,6 @@ rules:
   - expected: 接尾辞
     patterns:
       - サフィックス
-  - expected: インターフェース
+  - expected: インターフェイス
     patterns:
-      - インターフェイス
+      - インターフェース
