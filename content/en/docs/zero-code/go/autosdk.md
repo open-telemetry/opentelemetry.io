@@ -121,5 +121,5 @@ auto-instrumented by eBPF to unify context propagation with other
 eBPF-instrumented libraries.
 
 Essentially the Auto SDK is how OpenTelemetry eBPF identifies and orchestrates
-context propagation with the standard OpenTelemetry SDK, by instrumenting
+context propagation with the standard OpenTelemetry API, by instrumenting
 OpenTelemetry function symbols much like it does for any other library.
