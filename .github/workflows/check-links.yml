@@ -15,8 +15,8 @@ env:
   USER_NAME: otelbot
 
 jobs:
-  build-and-check-links:
-    name: BUILD and CHECK LINKS
+  build:
+    name: BUILD
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -54,8 +54,43 @@ jobs:
           echo "submodule(s); or undo the submodule update(s) if it happened by mistake."
           npm run _diff:fail
 
+      - name: Build the site
+        run: npm run log:build
+        continue-on-error: true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            public/
+            tmp/build-log.txt
+            tmp/package*.json
+
+  check-links:
+    name: CHECK LINKS
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v5
+        with: { name: build-artifacts }
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
+
+      # This is probably not needed in this job
+      - name: Install dependencies
+        if: false
+        run: |
+          cp tmp/package-min.json package.json
+          npm install --omit=optional
+          git restore package.json
+
       - run: |
-          npm run log:check:links
+          npm run log:_check:links
           CHANGED_FILES=$(git status --porcelain)
           echo "CHANGED_FILES=$CHANGED_FILES" >> "$GITHUB_ENV"
         continue-on-error: true
@@ -100,7 +135,7 @@ jobs:
 
   check-refcache:
     name: REFCACHE updates?
-    needs: build-and-check-links
+    needs: check-links
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -123,11 +158,11 @@ jobs:
 
   check-build-log-for-issues:
     name: WARNINGS in build log?
-    needs: build-and-check-links
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
       - uses: actions/download-artifact@v5
-        with: { name: build-log-etc }
+        with: { name: build-artifacts }
       - run: cat tmp/build-log.txt
       - run: scripts/check-build-log.sh
