@@ -13,7 +13,7 @@ through the Auto SDK.
 
 The Auto SDK is a fully implemented, custom OpenTelemetry Go SDK that is designed
 for compatibility with Go eBPF auto-instrumentation. This allows automatically
-instrumented libraries (like `net/http`, for example) to support context
+instrumented packages (like `net/http`, for example) to support context
 propagation with manual spans.
 
 ## When should I use it?
