@@ -68,19 +68,19 @@ jobs:
             tmp/package*.json
 
   check-links:
-    name: CHECK LINKS (${{ matrix.shard.name }})
+    name: CHECK LINKS (${{ matrix.shard.id }})
     needs: build
     runs-on: ubuntu-latest
     strategy:
       matrix:
         shard:
-          - name: 'en'
+          - id: en
             regex: '^../' # Ignore all locale directories. This works because
             # English docs folders have more than two characters in their names
-          - name: 'locales-a-to-m'
+          - id: locales-A-to-M
             # Regex ignores en doc folders and locales n to z.
             regex: '^(...*|[n-z]*)/'
-          - name: 'locales-n-to-z'
+          - id: locales-N-to-Z
             # Regex ignores en doc folders and locales a to m.
             regex: '^(...*|[a-m]*)/'
     steps:
@@ -94,9 +94,9 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - name: Update htmltest config with regex
+      - name: Update htmltest config with shard IgnoreDirs regex
         run: |
-          perl -i -pe 's/^(IgnoreDirs:.*)$/$1\n  - ${{ matrix.shard.regex }}/' .htmltest.yml
+          perl -i -ne 'print; print "  - ${{ matrix.shard.regex }}\n" if /^IgnoreDirs:/' .htmltest.yml
           cat .htmltest.yml
 
       # This is probably not needed in this job
@@ -117,7 +117,7 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: refcache-${{ matrix.shard.name }}
+          name: refcache-${{ matrix.shard.id }}
           path: |
             static/refcache.json
 
