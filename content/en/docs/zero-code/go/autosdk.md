@@ -89,7 +89,7 @@ not initialize your own global TracerProvider.
 ### Auto SDK TracerProvider
 
 In most use cases, it is unnecessary to manually interact with the Auto SDK's
-built in TracerProvider. However, for certain advanced use cases you may wish to
+built-in TracerProvider. However, for certain advanced use cases you may wish to
 manually configure the Auto SDK's TracerProvider. You can access it with the
 [`auto.TracerProvider()`](https://pkg.go.dev/go.opentelemetry.io/auto/sdk)
 function:
