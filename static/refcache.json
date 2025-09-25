@@ -15935,6 +15935,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:27:23.844221-05:00"
   },
+  "https://github.com/oracle": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-25T05:59:26.808089731Z"
+  },
+  "https://github.com/oracle/oracle-db-appdev-monitoring": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-25T05:59:26.340756427Z"
+  },
   "https://github.com/orgs/open-telemetry/projects/38": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T20:08:43.090144339Z"
@@ -19598,6 +19606,10 @@
   "https://operatorhub.io/operator/opentelemetry-operator": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:31:50.907716-05:00"
+  },
+  "https://oracle.github.io/oracle-db-appdev-monitoring/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-25T05:59:26.860826076Z"
   },
   "https://osquery.io/": {
     "StatusCode": 206,
