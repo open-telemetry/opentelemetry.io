@@ -114,7 +114,7 @@ jobs:
           git restore package.json
 
       - run: |
-          npm run log:_check:links
+          npm run log:__check:links
           git restore .htmltest.yml
           # Capture any changes to refcache.json etc
           CHANGED_FILES=$(git status --porcelain)
@@ -126,6 +126,7 @@ jobs:
           name: refcache-${{ matrix.shard.id }}
           path: |
             static/refcache.json
+            tmp/*log.txt
 
       - name: Push changes if any, and fail check (DISABLED)
         if: ${{ env.CHANGED_FILES }}
@@ -167,7 +168,6 @@ jobs:
         with:
           pattern: refcache-*
           path: tmp/check-refcache
-          merge-multiple: true
       - run: ls -lR tmp
       - name: Does the refcache need updating?
         run: .github/workflows/scripts/check-refcache.sh
