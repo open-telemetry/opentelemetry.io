@@ -1,6 +1,6 @@
 name: Links
 
-# cSpell:ignore nvmrc opentelemetrybot
+# cSpell:ignore minisearch otelbot
 on:
   merge_group:
   pull_request:
@@ -11,12 +11,13 @@ permissions:
 env:
   CHANGED_FILES:
   PR_NUM: ${{ github.event.pull_request.number }}
-  USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
-  USER_NAME: opentelemetrybot
+  USER_EMAIL: 197425009+otelbot@users.noreply.github.com
+  USER_NAME: otelbot
 
 jobs:
-  build-and-check-links:
-    name: BUILD and CHECK LINKS
+  # Build site first because htmltest checks the generated HTML files
+  build:
+    name: BUILD
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -54,21 +55,54 @@ jobs:
           echo "submodule(s); or undo the submodule update(s) if it happened by mistake."
           npm run _diff:fail
 
+      - name: Build the site
+        run: npm run log:build
+        continue-on-error: true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            public/
+            tmp/build-log.txt
+            tmp/package*.json
+
+  check-links:
+    name: CHECK LINKS
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v5
+        with: { name: build-artifacts }
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
+
+      # This is probably not needed in this job
+      - name: Install dependencies
+        if: false
+        run: |
+          cp tmp/package-min.json package.json
+          npm install --omit=optional
+          git restore package.json
+
       - run: |
-          npm run log:check:links
+          npm run log:_check:links
           CHANGED_FILES=$(git status --porcelain)
           echo "CHANGED_FILES=$CHANGED_FILES" >> "$GITHUB_ENV"
         continue-on-error: true
 
       - uses: actions/upload-artifact@v4
         with:
-          name: build-log-etc
+          name: refcache-all
           path: |
-            tmp/build-log.txt
-            tmp/package*.json
             static/refcache.json
 
-      - name: Push changes if any, and fail check
+      - name: Push changes if any, and fail check (DISABLED)
         if: ${{ env.CHANGED_FILES }}
         run: |
           echo "Changes detected in the refcache etc:"
@@ -96,38 +130,38 @@ jobs:
         #   echo "Failing workflow so that changes can be reviewed, and checks rerun."
         #   exit 1
         # env:
-        #   GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+        #   GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
   check-refcache:
     name: REFCACHE updates?
-    needs: build-and-check-links
+    needs: check-links
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
       - uses: actions/download-artifact@v5
-        with: { name: build-log-etc }
+        with:
+          pattern: refcache-*
+          path: tmp/check-refcache
+          merge-multiple: true
+      - run: ls -l tmp
       - name: Fail when refcache contains entries with HTTP status 4XX
         run: |
-          if grep -B 1 -e '"StatusCode": 4' static/refcache.json; then
+          if grep -B 1 -e '"StatusCode": 4' tmp/refcache-all/static/refcache.json; then
             echo "Run 'npm run _refcache:prune' to remove 404 entries from refcache.json,"
             echo "or run './scripts/double-check-refcache-400s.mjs' locally to address"
             echo "other 400-status entries."
             exit 1
           fi
       - name: Does the refcache need updating?
-        run: |
-          echo "If the diff check below fails, then update static/refcache.json by"
-          echo "running 'npm run fix:refcache' locally and committing the changes"
-          echo "or adding the comment '/fix:refcache' to your PR in GitHub."
-          npm run _diff:fail
+        run: .github/workflows/scripts/check-refcache.sh
 
   check-build-log-for-issues:
     name: WARNINGS in build log?
-    needs: build-and-check-links
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
       - uses: actions/download-artifact@v5
-        with: { name: build-log-etc }
+        with: { name: build-artifacts }
       - run: cat tmp/build-log.txt
       - run: scripts/check-build-log.sh
