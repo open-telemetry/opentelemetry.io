@@ -111,7 +111,7 @@ func main() {
 When an application is instrumented by OpenTelemetry eBPF, the eBPF program will
 look for the presence of the `go.opentelemetry.io/auto/sdk` dependency in the
 application (remember, this dependency is included by default in
-`opentelemetry-go`; it does not need to be an explicit import). If it is found,
+`go.opentelemetry.io/otel`; it does not need to be an explicit import). If it is found,
 the eBPF program will enable a boolean value in the global OpenTelemetry SDK to
 instruct OpenTelemetry to use the Auto SDK TracerProvider.
 
