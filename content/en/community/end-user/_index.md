@@ -77,7 +77,7 @@ podcasts. We regularly do two types of them:
 
 We do the podcasts live and recordings are posted on OpenTelemetry YouTube
 channel. If you want to talk about your experience with OpenTelemetry, please,
-let us know in *#otel-sig-end-user* channel in the CNCF Slack workspace or open an issue in https://github.com/open-telemetry/sig-end-user repo. 
+let us know in [*#otel-sig-end-user*](https://cloud-native.slack.com/archives/C01RT3MSWGZ) channel in the CNCF Slack workspace or open an issue in https://github.com/open-telemetry/sig-end-user repo. Not on CNCF Slack yet? Join [here](https://communityinviter.com/apps/cloud-native/cncf)!
 
 [Learn more about how we do podcasts](interviews-feedback/)
 
