@@ -1407,6 +1407,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:41.305963-05:00"
   },
+  "https://docs.apica.io/integrations/list-of-integrations/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-19T19:27:49.160852044Z"
+  },
   "https://docs.apimetrics.io/docs/export-with-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:12:10.15929-05:00"
@@ -2130,6 +2134,10 @@
   "https://docs.odigos.io": {
     "StatusCode": 206,
     "LastSeen": "2024-12-23T14:51:42.30807+02:00"
+  },
+  "https://docs.oodle.ai/integrations/metrics/otel/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-17T12:11:50.412974509Z"
   },
   "https://docs.openfaas.com/architecture/metrics/": {
     "StatusCode": 206,
@@ -6427,6 +6435,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:22:47.811861-05:00"
   },
+  "https://github.com/open-telemetry/community/blob/main/guides/contributor/donations.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T14:33:05.004459+02:00"
+  },
   "https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T14:22:47.985212-05:00"
@@ -9683,6 +9695,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:38.952312-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-xray": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-16T14:18:16.865148896+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/azure-resources": {
     "StatusCode": 206,
     "LastSeen": "2025-04-08T07:20:52.864031848Z"
@@ -12179,6 +12195,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-17T16:51:53.297046-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#declarative-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-15T16:49:24.384119304Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:17:12.345Z"
@@ -13850,6 +13870,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/spec-compliance-matrix.md#logs": {
     "StatusCode": 206,
     "LastSeen": "2025-08-28T17:30:02.495164-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/specification/common/README.md#attribute": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T10:03:19.850216-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/specification/compatibility/prometheus_and_openmetrics.md": {
     "StatusCode": 206,
@@ -15618,6 +15642,10 @@
   "https://github.com/open-telemetry/semantic-conventions/tree/v1.36.0//model/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-07-17T20:51:44.60409+02:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.37.0//model/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T10:03:17.68086-04:00"
   },
   "https://github.com/open-telemetry/sig-contributor-experience": {
     "StatusCode": 206,
@@ -21379,6 +21407,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-09-15T09:41:08.229153333Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.20.1-alpha/opentelemetry-instrumentation-bom-alpha-2.20.1-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-22T17:34:01.495739002Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.7.0-alpha/opentelemetry-instrumentation-bom-alpha-2.7.0-alpha.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:08.34491-05:00"
@@ -21447,6 +21479,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-09-15T09:41:05.427133368Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.20.1/opentelemetry-instrumentation-bom-2.20.1.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-22T17:33:59.442670714Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.7.0/opentelemetry-instrumentation-bom-2.7.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:07.402964-05:00"
@@ -21511,6 +21547,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-09-10T08:32:10.878488351Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.54.1-alpha/opentelemetry-bom-alpha-1.54.1-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T07:35:13.217306674Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.42.1/opentelemetry-bom-1.42.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2024-10-23T20:20:05.242921-05:00"
@@ -21566,6 +21606,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.54.0/opentelemetry-bom-1.54.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2025-09-10T08:32:07.647131515Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom/1.54.1/opentelemetry-bom-1.54.1.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-19T07:35:10.592844289Z"
   },
   "https://research.facebook.com/file/877841159827226/holistic-configuration-management-at-facebook.pdf": {
     "StatusCode": 206,
