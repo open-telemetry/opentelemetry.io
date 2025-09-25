@@ -11,15 +11,12 @@ issue: https://github.com/open-telemetry/opentelemetry.io/issues/7870
 sig: SIG OpenTelemetry on Mainframes
 ---
 
-Which [OpenTelemetry](https://opentelemetry.io/) features are considered most
-important by users for enhancing the observability of mainframes? Earlier this
-year, the
+Which [OpenTelemetry](/) features are considered most important by users for
+enhancing the observability of mainframes? Earlier this year, the
 [OpenTelemetry on Mainframes Special Interest Group](https://github.com/open-telemetry/community/?tab=readme-ov-file#sig-mainframes)
 (SIG) and the [Open Mainframe Project](https://openmainframeproject.org/)
-conducted a
-[survey](https://opentelemetry.io/blog/2025/otel-mainframe-priorities-survey/)
-to address this question. This blog presents a detailed overview of the survey’s
-findings.
+conducted a [survey](/blog/2025/otel-mainframe-priorities-survey/) to address
+this question. This blog presents a detailed overview of the survey’s findings.
 
 ## Background and Purpose
 
@@ -263,8 +260,8 @@ important use case by one respondent.
 The survey participants would like to see OpenTelemetry instrumentation with
 priority for Online Transaction Processing (30), followed by Batch Processing
 (23), Database-centric Applications (19) and other application deployment
-models. Instrumentation of the Analytics and AI workloads (10) and Cloud-native,
-Containerized Workloads (7) are in focus for some of the respondents,
+models. Instrumentation of the Analytics and AI workloads (10) and cloud native,
+containerized workloads (7) are in focus for some of the respondents,
 highlighting the growing use of newer application deployment models on the
 mainframe.
 
