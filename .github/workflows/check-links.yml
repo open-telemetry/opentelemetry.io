@@ -74,15 +74,21 @@ jobs:
     strategy:
       matrix:
         shard:
+          # Each entry in this list is a shard, with:
+          #  id: identifier for the shard (used in job name and artifact name)
+          #  regex: regex to add to IgnoreDirs in .htmltest.yml for this shard
+          #
+          # Each shard ignores a subset of locale directories, so that all shards
+          # together cover all locale directories but each shard checks fewer links.
           - id: en
             regex: '^../' # Ignore all locale directories. This works because
             # English docs folders have more than two characters in their names
           - id: locales-A-to-M
-            # Regex ignores en doc folders and locales n to z.
-            regex: '^(...*|[n-z]*)/'
+            # Regex to ignore English doc folders and locales n to z.
+            regex: '^(..[^/]|[n-z]./)'
           - id: locales-N-to-Z
-            # Regex ignores en doc folders and locales a to m.
-            regex: '^(...*|[a-m]*)/'
+            # Regex to ignore English doc folders and locales a to m.
+            regex: '^(..[^/]|[a-m]./)'
     steps:
       - uses: actions/checkout@v5
       - uses: actions/download-artifact@v5
