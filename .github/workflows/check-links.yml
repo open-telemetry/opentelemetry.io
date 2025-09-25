@@ -141,7 +141,7 @@ jobs:
       - uses: actions/download-artifact@v5
         with:
           pattern: refcache-*
-          path: tmp
+          path: tmp/check-refcache
           merge-multiple: true
       - run: ls -l tmp
       - name: Fail when refcache contains entries with HTTP status 4XX
@@ -153,12 +153,7 @@ jobs:
             exit 1
           fi
       - name: Does the refcache need updating?
-        run: |
-          echo "If the diff check below fails, then update static/refcache.json by"
-          echo "running 'npm run fix:refcache' locally and committing the changes"
-          echo "or adding the comment '/fix:refcache' to your PR in GitHub."
-          cp tmp/refcache-all/refcache.json static/refcache.json
-          npm run _diff:fail
+        run: .github/workflows/scripts/check-refcache.sh
 
   check-build-log-for-issues:
     name: WARNINGS in build log?
