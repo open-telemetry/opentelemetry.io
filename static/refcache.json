@@ -9599,6 +9599,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:31:49.889748-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.36.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-25T12:58:22.305714-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/otlp": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:35.925346-05:00"

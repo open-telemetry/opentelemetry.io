@@ -5,31 +5,31 @@ description: Integrate manual spans with zero-code eBPF spans with the Auto SDK.
 weight: 16
 ---
 
-The OpenTelemetry Go eBPF Instrumentation framework, used by tools like [OBI](/docs/zero-code/obi),
-provides support for integrating with manually instrumented OpenTelemetry spans
-through the Auto SDK.
+The OpenTelemetry Go eBPF Instrumentation framework, used by tools like
+[OBI](/docs/zero-code/obi), provides support for integrating with manually
+instrumented OpenTelemetry spans through the Auto SDK.
 
 ## What is the Auto SDK?
 
-The Auto SDK is a fully implemented, custom OpenTelemetry Go SDK that is designed
-for compatibility with Go eBPF auto-instrumentation. This allows automatically
-instrumented packages (like `net/http`, for example) to support context
-propagation with manual spans.
+The Auto SDK is a fully implemented, custom OpenTelemetry Go SDK that is
+designed for compatibility with Go eBPF auto-instrumentation. This allows
+automatically instrumented packages (like `net/http`, for example) to support
+context propagation with manual spans.
 
 ## When should I use it?
 
-OpenTelemetry Go eBPF instrumentation currently only supports a limited number of
-packages. You may still want to extend this instrumentation and create
-custom spans within your code. The Auto SDK enables this by instrumenting your
-custom spans with a shared trace context that will also be used by automatic
-spans.
+OpenTelemetry Go eBPF instrumentation currently only supports a limited number
+of packages. You may still want to extend this instrumentation and create custom
+spans within your code. The Auto SDK enables this by instrumenting your custom
+spans with a shared trace context that will also be used by automatic spans.
 
 ## How do I use it?
 
-Since the release of [Opentelemetry Go v1.36.0](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.36.0), the Auto SDK is automatically
-imported as an indirect dependency with the standard Go API. You can confirm
-that your project has the Auto SDK by checking your `go.mod` for
-`go.opentelemetry.io/auto/sdk`.
+Since the release of
+[OpenTelemetry Go v1.36.0](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.36.0),
+the Auto SDK is automatically imported as an indirect dependency with the
+standard Go API. You can confirm that your project has the Auto SDK by checking
+your `go.mod` for `go.opentelemetry.io/auto/sdk`.
 
 Creating manual spans using the Auto SDK is essentially the same as creating
 spans using standard [Go instrumentation](/docs/languages/go/instrumentation/).
@@ -111,9 +111,9 @@ func main() {
 When an application is instrumented by OpenTelemetry eBPF, the eBPF program will
 look for the presence of the `go.opentelemetry.io/auto/sdk` dependency in the
 application (remember, this dependency is included by default in
-`go.opentelemetry.io/otel`; it does not need to be an explicit import). If it is found,
-the eBPF program will enable a boolean value in the global OpenTelemetry SDK to
-instruct OpenTelemetry to use the Auto SDK TracerProvider.
+`go.opentelemetry.io/otel`; it does not need to be an explicit import). If it is
+found, the eBPF program will enable a boolean value in the global OpenTelemetry
+SDK to instruct OpenTelemetry to use the Auto SDK TracerProvider.
 
 The Auto SDK then works very similarly to any other SDK, implementing all of the
 specification-required functionality. The main difference is that it is also
