@@ -6,7 +6,6 @@ author: '[Ruediger Schulze](https://github.com/rrschulze) (IBM)'
 canonical_url: https://openmainframeproject.org/blog/opentelemetry-on-mainframe-priorities-survey/
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/6045
 sig: SIG OpenTelemetry on Mainframe
-cSpell:ignore: Ruediger Schulze
 ---
 
 The [OpenTelemetry](/) project and
