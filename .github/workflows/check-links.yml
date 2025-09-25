@@ -143,6 +143,7 @@ jobs:
           pattern: refcache-*
           path: tmp
           merge-multiple: true
+      - run: ls -l tmp
       - name: Fail when refcache contains entries with HTTP status 4XX
         run: |
           if grep -B 1 -e '"StatusCode": 4' tmp/refcache-all/static/refcache.json; then
@@ -156,7 +157,7 @@ jobs:
           echo "If the diff check below fails, then update static/refcache.json by"
           echo "running 'npm run fix:refcache' locally and committing the changes"
           echo "or adding the comment '/fix:refcache' to your PR in GitHub."
-          cp tmp/refcache-all/static/refcache.json static/refcache.json
+          cp tmp/refcache-all/refcache.json static/refcache.json
           npm run _diff:fail
 
   check-build-log-for-issues:
