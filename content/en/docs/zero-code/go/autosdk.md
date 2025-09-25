@@ -5,7 +5,7 @@ description: Integrate manual spans with zero-code eBPF spans with the Auto SDK.
 weight: 16
 ---
 
-The OpenTelemetry Go eBPF Instrumentation framework (used by tools like OBI)
+The OpenTelemetry Go eBPF Instrumentation framework, used by tools like [OBI](/docs/zero-code/obi),
 provides support for integrating with manually instrumented OpenTelemetry spans
 through the Auto SDK.
 
