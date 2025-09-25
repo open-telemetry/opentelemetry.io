@@ -3,12 +3,12 @@ default_lang_commit: e35c8a3652c3c937a1323822c85f7db2fc6862fb
 ---
 
 <i class="fa-solid fa-triangle-exclamation" style="margin-left: -1.9rem; padding-right: 0.5rem;"></i>
-O conteúdo desta página pode estar <b>desatualizado</b> e alguns links podem ser
+O conteúdo desta página pode estar **desatualizado** e alguns links podem ser
 inválidos.
 
 {{ if $show_details }}
 
-Uma <b>versão mais recente</b> desta página existe em
+Uma **versão mais recente** desta página existe em
 <a href="{{$default_lang_page_url}}">Inglês</a>.
 
 <details class="mt-2">

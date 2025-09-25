@@ -2,7 +2,7 @@
 ---
 
 <i class="fa-solid fa-triangle-exclamation" style="margin-left: -1.9rem; padding-right: 0.5rem;"></i>
-The content of this page may be <b>outdated</b> and some links may be invalid.
+The content of this page may be **outdated** and some links may be invalid.
 
 {{ if $show_details }}
 
