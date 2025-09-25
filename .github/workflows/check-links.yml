@@ -1,6 +1,6 @@
 name: Links
 
-# cSpell:ignore nvmrc otelbot
+# cSpell:ignore minisearch nvmrc otelbot
 on:
   merge_group:
   pull_request:
@@ -15,6 +15,7 @@ env:
   USER_NAME: otelbot
 
 jobs:
+  # Build site first because htmltest checks the generated HTML files
   build:
     name: BUILD
     runs-on: ubuntu-latest
