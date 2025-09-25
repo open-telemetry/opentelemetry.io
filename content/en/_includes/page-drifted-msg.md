@@ -6,7 +6,7 @@ The content of this page may be <b>outdated</b> and some links may be invalid.
 
 {{ if $show_details }}
 
-A <b>newer version</b> of this page exists in
+A **newer version** of this page exists in
 <a href="{{$default_lang_page_url}}">English</a>.
 
 <details class="mt-2">
@@ -19,7 +19,6 @@ A <b>newer version</b> of this page exists in
     and search for <code>{{$def_lang_path}}</code>.
   </p>
 </details>
-
 {{ end }}
 
 {{ if $no_default_lang_page }}

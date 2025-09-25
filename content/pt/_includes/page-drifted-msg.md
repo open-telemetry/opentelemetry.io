@@ -21,7 +21,6 @@ Uma <b>versão mais recente</b> desta página existe em
     e procure por <code>{{$def_lang_path}}</code>.
   </p>
 </details>
-
 {{ end }}
 
 {{ if $no_default_lang_page }}
