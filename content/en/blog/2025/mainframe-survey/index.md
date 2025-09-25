@@ -42,11 +42,11 @@ Key insights for prioritizing mainframe SIG activities:
 1. Enhance OpenTelemetry expertise within the mainframe community. Of 26
    beginners using OpenTelemetry, 21 have over a decade of mainframe experience,
    yet 11 report no knowledge of its features.
-2. Prioritise Semantic Conventions for System Performance metrics, followed by
+2. Prioritize Semantic Conventions for System Performance metrics, followed by
    Job Processing, Databases, and Applications. Among respondents, 30 want
    OpenTelemetry to focus on metrics first, and when asked about categories of
    metrics, about 32 highlight system metrics as the main priority.
-3. Prioritise Java and Python SDKs for z/OS and develop a COBOL SDK. All
+3. Prioritize Java and Python SDKs for z/OS and develop a COBOL SDK. All
    respondents wanting Java (25) and Python (20) SDKs also require OpenTelemetry
    SDKs for z/OS. COBOL SDK was requested by 26, giving it a similar level of
    importance as the Java SDK.
