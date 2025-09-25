@@ -27,7 +27,7 @@ spans.
 ## How do I use it?
 
 Since the release of [Opentelemetry Go v1.36.0](https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.36.0), the Auto SDK is automatically
-imported as a transitive dependency with the standard Go SDK. You can confirm
+imported as an indirect dependency with the standard Go API. You can confirm
 that your project has the Auto SDK by checking your `go.mod` for
 `go.opentelemetry.io/auto/sdk`.
 
