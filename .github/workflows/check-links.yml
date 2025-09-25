@@ -1,6 +1,6 @@
 name: Links
 
-# cSpell:ignore minisearch nvmrc otelbot
+# cSpell:ignore minisearch otelbot
 on:
   merge_group:
   pull_request:
@@ -98,13 +98,11 @@ jobs:
 
       - uses: actions/upload-artifact@v4
         with:
-          name: build-log-etc
+          name: refcache-all
           path: |
-            tmp/build-log.txt
-            tmp/package*.json
             static/refcache.json
 
-      - name: Push changes if any, and fail check
+      - name: Push changes if any, and fail check (DISABLED)
         if: ${{ env.CHANGED_FILES }}
         run: |
           echo "Changes detected in the refcache etc:"
@@ -141,10 +139,13 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: actions/download-artifact@v5
-        with: { name: build-log-etc }
+        with:
+          pattern: refcache-*
+          path: tmp
+          merge-multiple: true
       - name: Fail when refcache contains entries with HTTP status 4XX
         run: |
-          if grep -B 1 -e '"StatusCode": 4' static/refcache.json; then
+          if grep -B 1 -e '"StatusCode": 4' tmp/refcache-all/static/refcache.json; then
             echo "Run 'npm run _refcache:prune' to remove 404 entries from refcache.json,"
             echo "or run './scripts/double-check-refcache-400s.mjs' locally to address"
             echo "other 400-status entries."
@@ -155,6 +156,7 @@ jobs:
           echo "If the diff check below fails, then update static/refcache.json by"
           echo "running 'npm run fix:refcache' locally and committing the changes"
           echo "or adding the comment '/fix:refcache' to your PR in GitHub."
+          cp tmp/refcache-all/static/refcache.json static/refcache.json
           npm run _diff:fail
 
   check-build-log-for-issues:
