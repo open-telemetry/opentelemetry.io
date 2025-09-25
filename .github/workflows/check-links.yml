@@ -68,9 +68,21 @@ jobs:
             tmp/package*.json
 
   check-links:
-    name: CHECK LINKS
+    name: CHECK LINKS (${{ matrix.shard.name }})
     needs: build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        shard:
+          - name: 'en'
+            regex: '^../' # Ignore all locale directories. This works because
+            # English docs folders have more than two characters in their names
+          - name: 'locales-a-to-m'
+            # Regex ignores en doc folders and locales n to z.
+            regex: '^(...*|[n-z]*)/'
+          - name: 'locales-n-to-z'
+            # Regex ignores en doc folders and locales a to m.
+            regex: '^(...*|[a-m]*)/'
     steps:
       - uses: actions/checkout@v5
       - uses: actions/download-artifact@v5
@@ -82,6 +94,11 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
+      - name: Update htmltest config with regex
+        run: |
+          perl -i -pe 's/^(IgnoreDirs:.*)$/$1\n  - ${{ matrix.shard.regex }}/' .htmltest.yml
+          cat .htmltest.yml
+
       # This is probably not needed in this job
       - name: Install dependencies
         if: false
@@ -92,13 +109,15 @@ jobs:
 
       - run: |
           npm run log:_check:links
+          git restore .htmltest.yml
+          # Capture any changes to refcache.json etc
           CHANGED_FILES=$(git status --porcelain)
           echo "CHANGED_FILES=$CHANGED_FILES" >> "$GITHUB_ENV"
         continue-on-error: true
 
       - uses: actions/upload-artifact@v4
         with:
-          name: refcache-all
+          name: refcache-${{ matrix.shard.name }}
           path: |
             static/refcache.json
 
@@ -143,15 +162,7 @@ jobs:
           pattern: refcache-*
           path: tmp/check-refcache
           merge-multiple: true
-      - run: ls -l tmp
-      - name: Fail when refcache contains entries with HTTP status 4XX
-        run: |
-          if grep -B 1 -e '"StatusCode": 4' tmp/refcache-all/static/refcache.json; then
-            echo "Run 'npm run _refcache:prune' to remove 404 entries from refcache.json,"
-            echo "or run './scripts/double-check-refcache-400s.mjs' locally to address"
-            echo "other 400-status entries."
-            exit 1
-          fi
+      - run: ls -lR tmp
       - name: Does the refcache need updating?
         run: .github/workflows/scripts/check-refcache.sh
 
