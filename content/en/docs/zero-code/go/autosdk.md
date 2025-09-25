@@ -18,8 +18,8 @@ propagation with manual spans.
 
 ## When should I use it?
 
-OpenTelemetry Go eBPF instrumentation currently only supports a select common
-libraries. Even with eBPF auto-instrumentation, you may still want to create
+OpenTelemetry Go eBPF instrumentation currently only supports a limited number of
+packages. You may still want to extend this instrumentation and create
 custom spans within your code. The Auto SDK enables this by instrumenting your
 custom spans with a shared trace context that will also be used by automatic
 spans.
