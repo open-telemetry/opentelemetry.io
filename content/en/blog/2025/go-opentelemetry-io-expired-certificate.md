@@ -8,7 +8,7 @@ author: >-
 cSpell:ignore: baeyens goog
 ---
 
-On September 26th, at 10:35 UTC, we were notified that the
+On September 25th, at 10:35 UTC, we were notified that the
 `go.opentelemetry.io`’s SSL certificate had expired.
 
 This endpoint is the canonical URL for most Go modules within the OpenTelemetry
@@ -24,12 +24,12 @@ certificate is managed by Google. This is the only endpoint under the
 Last July, we were alerted by a security researcher that the root OpenTelemetry
 domain ([opentelemetry.io](http://opentelemetry.io)) lacked
 [CAA DNS records](https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization).
-We therefore added one for LetsEncrypt, since that’s
+We therefore added one with LetsEncrypt as the sole issuer, since that’s
 [the authority used for the root domain’s certificate](https://docs.netlify.com/manage/domains/secure-domains-with-https/https-ssl/#netlify-managed-certificates).
 
-Because of that configuration change, the AppEngine platform couldn’t renew the
+Since Google's CA was not listed as an issuer in the CAA record,the AppEngine platform couldn’t renew the
 [go.opentelemetry.io](http://go.opentelemetry.io) certificate. So on September
-26th at 10:08:10 UTC, when it expired, every request returned an error with the
+25th at 10:08:10 UTC, when it expired, every request returned an error with the
 expired certificate. This caused issues on build systems and when viewing the
 documentation of [go.opentelemetry.io](http://go.opentelemetry.io) packages.
 
@@ -95,7 +95,7 @@ We are therefore
 into moving away from the AppEngine platform and into Netlify, the platform that
 runs the [opentelemetry.io](http://opentelemetry.io) website.
 
-We also identified with the help of an user a number of unused subdomains of
+We also identified with the help of a user a number of unused subdomains of
 [opentelemetry.io](http://opentelemetry.io) that are serving an expired
 certificate. While these have no impact for our users, we are going to
 [look into removing them](https://github.com/open-telemetry/community/issues/3022).
