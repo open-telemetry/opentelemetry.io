@@ -80,9 +80,9 @@ across the globe, this was a positive thing to notice.
 
 We are lacking knowledge of the platform this application runs on, which caused
 this incident to last much longer than it needed to. However, we were glad that
-[a little over a year ago](/blog/2024/go-opentelemetry-io/),
-we changed the Google account this app runs on, as we previously wouldn’t even
-have been able to fix this issue ourselves.
+[a little over a year ago](/blog/2024/go-opentelemetry-io/), we changed the
+Google account this app runs on, as we previously wouldn’t even have been able
+to fix this issue ourselves.
 
 ## Action items
 
@@ -98,6 +98,6 @@ into moving away from the AppEngine platform and into Netlify, the platform that
 runs the [opentelemetry.io](/) website.
 
 We also identified with the help of a user a number of unused subdomains of
-[opentelemetry.io](/) that are serving an expired
-certificate. While these have no impact for our users, we are going to
+[opentelemetry.io](/) that are serving an expired certificate. While these have
+no impact for our users, we are going to
 [look into removing them](https://github.com/open-telemetry/community/issues/3022).
