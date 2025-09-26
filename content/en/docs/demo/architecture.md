@@ -33,6 +33,9 @@ recommendation(Recommendation):::python
 shipping(Shipping):::rust
 queue[(queue<br/>&#40Kafka&#41)]:::java
 react-native-app(React Native App):::typescript
+postgresql[(Database<br/>&#40PostgreSQL&#41)]
+
+accounting ---> postgresql
 
 ad ---->|gRPC| flagd
 
