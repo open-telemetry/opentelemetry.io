@@ -5,6 +5,7 @@ date: 2025-09-26
 author: >-
   [Damien Mathieu](https://github.com/dmathieu) (Elastic)
   [Pablo Baeyens](https://github.com/mx-psi) (Datadog)
+cSpell:ignore: baeyens goog
 ---
 
 On September 26th, at 10:35 UTC, we were notified that the `go.opentelemetry.io`’s SSL certificate had expired.
