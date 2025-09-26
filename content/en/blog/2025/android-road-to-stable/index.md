@@ -107,7 +107,7 @@ agent.
 In the mobile world, user generated events are everywhere. Real User Monitoring
 (RUM) often shows user behavior as a series of events within a session. When
 OpenTelemetry Android first began, the
-[OpenTelemetry events signal](https://opentelemetry.io/docs/specs/semconv/general/events/)
+[OpenTelemetry events signal](/docs/specs/semconv/general/events/)
 was in its infancy, and all events were clumsily modeled as zero-duration Spans.
 Furthermore, there were very few semantic conventions in this domain, and span
 names and attributes didn’t follow common OpenTelemetry conventions, like dots
