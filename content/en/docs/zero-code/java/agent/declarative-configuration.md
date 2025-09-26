@@ -18,6 +18,9 @@ Just like environment variables, the configuration syntax is language-agnostic
 and works for all OpenTelemetry Java SDKs that support declarative
 configuration, including the OpenTelemetry Java agent.
 
+{{% alert title="Warning" %}} Declarative configuration is experimental.
+{{% /alert %}}
+
 ## Supported versions
 
 Declarative configuration is supported in the **OpenTelemetry Java agent version
@@ -89,15 +92,15 @@ instrumentation/development:
         response_captured_headers: # was otel.instrumentation.http.server.capture-response-headers
           - Content-Type
           - Content-Encoding
-    java:
-      agent:
-        # was otel.instrumentation.common.default-enabled
-        # instrumentation_mode: none  # was false
-        instrumentation_mode: default # was true
-      spring_batch:
-        experimental:
-          chunk:
-            new_trace: true
+  java:
+    agent:
+      # was otel.instrumentation.common.default-enabled
+      # instrumentation_mode: none  # was false
+      instrumentation_mode: default # was true
+    spring_batch:
+      experimental:
+        chunk:
+          new_trace: true
 ```
 
 ## Environment variables and system properties only options
