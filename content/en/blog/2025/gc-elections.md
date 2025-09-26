@@ -27,7 +27,7 @@ with all members of standing and approved exceptions is available [here](https:/
 and approved exceptions will be added continuously.
 
 Voting will be open between 27 October 2025 00:00 UTC and 29 October 2025 23:59
-in the International Date Line West timezone on
+29 October 2025, end of day, [Anywhere on Earth](https://en.wikipedia.org/wiki/Anywhere_on_Earth) (30 October 2025 12:00 UTC) on
 [Helios Voting](https://vote.heliosvoting.org/helios/elections/f94a7c58-990b-11f0-a16d-5270fb641b4c/view);
 voters will need to sign in with their GitHub account.
 
