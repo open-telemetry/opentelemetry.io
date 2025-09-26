@@ -12,7 +12,7 @@ OpenTelemetry este:
 - Un **cadru și un set de instrumente [de observabilitate]** concepute pentru a
   facilita
   - [Generarea][instr]
-  - Exportul
+  - Exportarea
   - [Colectarea](../concepts/components/#collector)
 
   de [date de telemetrie][] cum ar fi [urme], [metrici], și [jurnale].
@@ -35,7 +35,7 @@ Pentru mai multe videoclipuri din această serie și resurse suplimentare, vezi
 
 ## Ce este observabilitatea?
 
-[Observabilitate] este abilitatea de a înțelege starea internă a unui sistem
+[Observabilitatea] este abilitatea de a înțelege starea internă a unui sistem
 prin examinarea ieșirilor sale. În contextul software-ului, aceasta înseamnă a
 fi capabil să înțelegi starea internă a unui sistem prin examinarea datelor sale
 de telemetrie, care includ urme, metrici și jurnale.
