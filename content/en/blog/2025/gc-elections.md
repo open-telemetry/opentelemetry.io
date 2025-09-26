@@ -23,7 +23,7 @@ terms.
 If you have made contributions to our ecosystem not measured by the automatic
 process, you can [request an exception](https://docs.google.com/forms/d/e/1FAIpQLSeSA09xDIv0uyb6vrP8xBbLjm8NsgihrG8GHxacbigF17sNDw/viewform?usp=dialog) to
 participate in the election before 23:59 UTC on 24 October 2025. The voter roll
-with all members of standing and approved exceptions will be published shortly,
+with all members of standing and approved exceptions is available [here](https://github.com/open-telemetry/community/blob/main/elections/2025/voters-roll.csv),
 and approved exceptions will be added continuously.
 
 Voting will be open between 27 October 2025 00:00 UTC and 29 October 2025 23:59
