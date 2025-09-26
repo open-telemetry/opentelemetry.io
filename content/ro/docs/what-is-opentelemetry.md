@@ -40,10 +40,9 @@ prin examinarea ieșirilor sale. În contextul software-ului, aceasta înseamnă
 fi capabil să înțelegi starea internă a unui sistem prin examinarea datelor sale
 de telemetrie, care includ urme, metrici și jurnale.
 
-Pentru a face un sistem observabil, acesta trebuie să fie
-[instrumentat][instr.]. Adică, codul trebuie să emită [urme], [metrici] sau
-[jurnale]. Datele instrumentate trebuie apoi trimise către un backend de
-observabilitate.
+Pentru a face un sistem observabil, acesta trebuie să fie [instrumentat][instr].
+Adică, codul trebuie să emită [urme], [metrici] sau [jurnale]. Datele
+instrumentate trebuie apoi trimise către un backend de observabilitate.
 
 ## De ce OpenTelemetry?
 
@@ -127,7 +126,7 @@ a-și combina punctele forte, oferind în același timp o soluție unică.
 Dacă utilizezi în prezent OpenTracing sau OpenCensus, poți afla cum să migrezi
 la OpenTelemetry în [Ghidul de migrare](../migration/).
 
-[fuziune]:
+[fuziuni]:
   https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
 
 ## Ce urmează?

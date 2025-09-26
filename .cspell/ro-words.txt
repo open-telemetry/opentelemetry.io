@@ -1,3 +1,6 @@
+colectorului
+migrare
+nestandard
 observabilitate
 observabilității
 telemetrie
