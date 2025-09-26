@@ -2,8 +2,9 @@
 title: エージェント設定
 linkTitle: Configuration
 weight: 10
-default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
-drifted_from_default: true
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+# prettier-ignore
+cSpell:ignore: gevent healthcheck instrumentor myapp pyproject Starlette urllib
 ---
 
 エージェントは次のいずれかの方法で高度に設定可能です。
@@ -119,6 +120,7 @@ export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 - `OTEL_PYTHON_GRPC_EXCLUDED_SERVICES`: gRPC 計装から除外するサービスをカンマ区切りで指定します。
 - `OTEL_PYTHON_ID_GENERATOR`: グローバルトレーサプロバイダーに使用する ID ジェネレータを指定します。
 - `OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS`: クエリーのサニタイズ処理を有効にします。
+- `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH`: SDKを初期化する前にgevent monkeypatch `patch_all` メソッドを呼び出すために `patch_all` に設定します。
 
 例を挙げましょう。
 
@@ -128,6 +130,7 @@ export OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX=my-custom-prefix
 export OTEL_PYTHON_GRPC_EXCLUDED_SERVICES="GRPCTestServer,GRPCHealthServer"
 export OTEL_PYTHON_ID_GENERATOR=xray
 export OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS=true
+export OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH=patch_all
 ```
 
 ## 特定の計装を無効にする {#disabling-specific-instrumentations}
