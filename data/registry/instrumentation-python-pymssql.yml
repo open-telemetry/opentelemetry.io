@@ -1,0 +1,16 @@
+# cSpell:ignore pymssql
+title: OpenTelemetry pymssql Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - pymssql
+  - instrumentation
+  - python
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-pymssql
+license: Apache 2.0
+description: Instrumentation for the pymssql library.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+isFirstParty: false

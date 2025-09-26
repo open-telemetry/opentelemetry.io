@@ -1,0 +1,20 @@
+title: OpenTelemetry ActiveStorage Instrumentation
+registryType: instrumentation
+language: ruby
+tags:
+  - activestorage
+  - instrumentation
+  - ruby
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-ruby-contrib/tree/main/instrumentation/active_storage
+license: Apache 2.0
+description:
+  The ActiveStorage instrumentation is a community-maintained instrumentation
+  for the ActiveStorage portion of the Ruby on Rails web-application framework.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+package:
+  registry: gems
+  name: opentelemetry-instrumentation-active_storage
+isFirstParty: false

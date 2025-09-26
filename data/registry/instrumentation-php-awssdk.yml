@@ -1,0 +1,21 @@
+# cSpell:ignore awssdk
+title: OpenTelemetry AWS SDK auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - awssdk
+  - instrumentation
+  - php
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/AwsSdk
+license: Apache 2.0
+description:
+  This is a read-only subtree split of
+  https://github.com/open-telemetry/opentelemetry-php-contrib.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-aws-sdk
+isFirstParty: false
