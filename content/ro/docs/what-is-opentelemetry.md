@@ -121,7 +121,7 @@ Ambele proiecte au fost create pentru a rezolva aceeași problemă: lipsa unui
 standard pentru instrumentarea codului și trimiterea datelor de telemetrie către
 un backend Observability. Întrucât niciunul dintre proiecte nu a reușit să
 rezolve problema independent, ele au fuzionat pentru a forma OpenTelemetry și
-a-și combina punctele forte, oferind în același timp o soluție unică.
+a-își combina punctele forte, oferind în același timp o soluție unică.
 
 Dacă utilizezi în prezent OpenTracing sau OpenCensus, poți afla cum să migrezi
 la OpenTelemetry în [Ghidul de migrare](../migration/).
@@ -131,7 +131,7 @@ la OpenTelemetry în [Ghidul de migrare](../migration/).
 
 ## Ce urmează?
 
-- [Începe](../getting-started/) &mdash; dă-i drumul!
+- [Începe](../getting-started/) &mdash; treci la acțiune!
 - Învață despre [conceptele OpenTelemetry](../concepts/).
 - [Urmărește videoclipuri][] din [OTel pentru începători][] sau alte [liste de
   redare].
