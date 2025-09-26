@@ -132,6 +132,12 @@
   contact:
   oss: false
   commercial: true
+- name: Descope
+  nativeOTLP: true
+  url: https://docs.descope.com/connectors/connector-configuration-guides/analytics/open-telemetry
+  contact: support@descope.com
+  oss: false
+  commercial: true
 - name: Dynatrace
   nativeOTLP: true
   url: https://www.dynatrace.com/support/help/how-to-use-dynatrace/transactions-and-services/service-monitoring-settings/opentelemetry/
