@@ -15,6 +15,9 @@ cSpell:ignore: genai
 
 Так само, як і змінні середовища, синтаксис конфігурації є незалежним від мови і працює для всіх OpenTelemetry Java SDK, які підтримують декларативну конфігурацію, включаючи OpenTelemetry Java agent.
 
+{{% alert title="Попередження" %}} Декларативна конфігурація є експериментальною.
+{{% /alert %}}
+
 ## Підтримувані версії {#supported-versions}
 
 Декларативна конфігурація підтримується в **OpenTelemetry Java agent версії 2.20.0 і пізніших**.
@@ -69,15 +72,15 @@ instrumentation/development:
         response_captured_headers: # було otel.instrumentation.http.server.capture-response-headers
           - Content-Type
           - Content-Encoding
-    java:
-      agent:
-        # було otel.instrumentation.common.default-enabled
-        # instrumentation_mode: none  # було false
-        instrumentation_mode: default # було true
-      spring_batch:
-        experimental:
-          chunk:
-            new_trace: true
+  java:
+    agent:
+      # було otel.instrumentation.common.default-enabled
+      # instrumentation_mode: none  # було false
+      instrumentation_mode: default # було true
+    spring_batch:
+      experimental:
+        chunk:
+          new_trace: true
 ```
 
 ## Тільки параметри змінних середовища та властивостей системи {#environment-variables-and-system-properties-only-options}
