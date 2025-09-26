@@ -6,9 +6,9 @@ author: OpenTelemetry Governance Committee
 ---
 
 The OpenTelemetry project is excited to announce the 2025 OpenTelemetry
-Governance Committee (GC) election. Nominations are due by 17 October 2024 23:59
+Governance Committee (GC) election. Nominations are due by 17 October 2025 23:59
 UTC. The list of eligible candidates will be shared on 20 October 2025. Voting
-will take place between 29 October 2024 00:00 UTC and 29 October 2025 end of day,
+will take place between 27 October 2025 00:00 UTC and 29 October 2025 end of day,
 and the final election results will be announced 31 October 2025.
 
 ## Vote!
