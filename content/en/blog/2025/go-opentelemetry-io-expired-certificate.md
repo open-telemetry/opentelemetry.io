@@ -27,11 +27,12 @@ domain ([opentelemetry.io](http://opentelemetry.io)) lacked
 We therefore added one with LetsEncrypt as the sole issuer, since that’s
 [the authority used for the root domain’s certificate](https://docs.netlify.com/manage/domains/secure-domains-with-https/https-ssl/#netlify-managed-certificates).
 
-Since Google's CA was not listed as an issuer in the CAA record,the AppEngine platform couldn’t renew the
-[go.opentelemetry.io](http://go.opentelemetry.io) certificate. So on September
-25th at 10:08:10 UTC, when it expired, every request returned an error with the
-expired certificate. This caused issues on build systems and when viewing the
-documentation of [go.opentelemetry.io](http://go.opentelemetry.io) packages.
+Since Google's CA was not listed as an issuer in the CAA record,the AppEngine
+platform couldn’t renew the [go.opentelemetry.io](http://go.opentelemetry.io)
+certificate. So on September 25th at 10:08:10 UTC, when it expired, every
+request returned an error with the expired certificate. This caused issues on
+build systems and when viewing the documentation of
+[go.opentelemetry.io](http://go.opentelemetry.io) packages.
 
 Since this is the only app we maintain that runs on that platform, only a few
 people based in the US have experience with it, so until they were awake we had
@@ -85,8 +86,9 @@ have been able to fix this issue ourselves.
 
 ## Action items
 
-We have started [improving our playbooks](https://github.com/open-telemetry/community/pull/3021) to access the AppEngine console, so we
-can get access more quickly.
+We have started
+[improving our playbooks](https://github.com/open-telemetry/community/pull/3021)
+to access the AppEngine console, so we can get access more quickly.
 
 We need to ensure this application is not a snowflake anymore, so we can operate
 it the same way we operate every other public website OpenTelemetry maintains.
