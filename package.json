@@ -84,8 +84,6 @@
     "fix": "npm run all -- $(npm -s run _list:fix:*)",
     "format": "npm run _check:format -- --write && npm run _check:format:nowrap -- --write",
     "get:submodule": "npm run _get:${GET:-submodule} --",
-    "log:__check:links NOTE": "This target uses DEBUG log-level so that we can filter out the files processed (not ignored) by htmltest.",
-    "log:__check:links": "HTMLTEST_ARGS='--log-level 0' npm run __check:links 2>&1 | tee tmp/check-links-log.txt | grep -Ev ' --- |^[0-9]+:|ignored |testDocument on|DOCTYPE'",
     "log:build": "npm run build 2>&1 | tee tmp/build-log.txt",
     "log:check:links": "npm run check:links 2>&1 | tee tmp/check-links-log.txt",
     "log:test-and-fix": "npm run test-and-fix 2>&1 | tee tmp/test-log.txt",
