@@ -19,10 +19,10 @@ impossible.
 
 This endpoint currently runs on the Google App Engine platform, and its SSL
 certificate is managed by Google. This is the only endpoint under the
-[opentelemetry.io](https://opentelemetry.io) domain that runs on this platform.
+[opentelemetry.io](/) domain that runs on this platform.
 
 Last July, we were alerted by a security researcher that the root OpenTelemetry
-domain ([opentelemetry.io](https://opentelemetry.io)) lacked
+domain ([opentelemetry.io](/)) lacked
 [CAA DNS records](https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization).
 We therefore added one with LetsEncrypt as the sole issuer, since that’s
 [the authority used for the root domain’s certificate](https://docs.netlify.com/manage/domains/secure-domains-with-https/https-ssl/#netlify-managed-certificates).
@@ -80,7 +80,7 @@ across the globe, this was a positive thing to notice.
 
 We are lacking knowledge of the platform this application runs on, which caused
 this incident to last much longer than it needed to. However, we were glad that
-[a little over a year ago](https://opentelemetry.io/blog/2024/go-opentelemetry-io/),
+[a little over a year ago](/blog/2024/go-opentelemetry-io/),
 we changed the Google account this app runs on, as we previously wouldn’t even
 have been able to fix this issue ourselves.
 
@@ -95,9 +95,9 @@ it the same way we operate every other public website OpenTelemetry maintains.
 We are therefore
 [going to look](https://github.com/open-telemetry/opentelemetry-go-vanityurls/issues/83)
 into moving away from the AppEngine platform and into Netlify, the platform that
-runs the [opentelemetry.io](https://opentelemetry.io) website.
+runs the [opentelemetry.io](/) website.
 
 We also identified with the help of a user a number of unused subdomains of
-[opentelemetry.io](https://opentelemetry.io) that are serving an expired
+[opentelemetry.io](/) that are serving an expired
 certificate. While these have no impact for our users, we are going to
 [look into removing them](https://github.com/open-telemetry/community/issues/3022).
