@@ -4451,6 +4451,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-09-14T20:07:37.505555711Z"
   },
+  "https://github.com/constanca-m": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-26T03:48:42.447910186Z"
+  },
   "https://github.com/container-storage-interface/spec": {
     "StatusCode": 200,
     "LastSeen": "2024-10-09T10:19:28.231645+02:00"
@@ -9598,6 +9602,10 @@
   "https://github.com/open-telemetry/opentelemetry-go/releases/latest": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:31:49.889748-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-go/releases/tag/v1.36.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-25T12:58:22.305714-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-go/tree/main/exporters/otlp": {
     "StatusCode": 206,
@@ -15851,6 +15859,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:27:23.844221-05:00"
   },
+  "https://github.com/oracle": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-25T05:59:26.808089731Z"
+  },
+  "https://github.com/oracle/oracle-db-appdev-monitoring": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-25T05:59:26.340756427Z"
+  },
   "https://github.com/orgs/open-telemetry/projects/38": {
     "StatusCode": 206,
     "LastSeen": "2025-01-17T20:08:43.090144339Z"
@@ -19495,6 +19511,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:31:50.907716-05:00"
   },
+  "https://oracle.github.io/oracle-db-appdev-monitoring/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-25T05:59:26.860826076Z"
+  },
   "https://osquery.io/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-13T12:41:43.832653-05:00"
@@ -20658,6 +20678,10 @@
   "https://pkg.go.dev/github.com/segmentio/kafka-go": {
     "StatusCode": 200,
     "LastSeen": "2025-01-29T17:30:03.308377379Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/auto/sdk": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-23T14:39:58.159481-04:00"
   },
   "https://pkg.go.dev/go.opentelemetry.io/collector/cmd/builder": {
     "StatusCode": 200,
