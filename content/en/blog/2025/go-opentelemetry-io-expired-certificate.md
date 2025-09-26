@@ -1,6 +1,6 @@
 ---
 title: Retrospective of September 25th go.opentelemetry.io incident
-linkTitle: Retrospective for September 25th incident on go.opentelemetry.io
+linkTitle: Retrospective of go.opentelemetry.io incident
 date: 2025-09-26
 author: >-
   [Damien Mathieu](https://github.com/dmathieu) (Elastic) [Pablo
