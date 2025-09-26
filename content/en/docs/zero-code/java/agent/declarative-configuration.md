@@ -92,15 +92,15 @@ instrumentation/development:
         response_captured_headers: # was otel.instrumentation.http.server.capture-response-headers
           - Content-Type
           - Content-Encoding
-    java:
-      agent:
-        # was otel.instrumentation.common.default-enabled
-        # instrumentation_mode: none  # was false
-        instrumentation_mode: default # was true
-      spring_batch:
-        experimental:
-          chunk:
-            new_trace: true
+  java:
+    agent:
+      # was otel.instrumentation.common.default-enabled
+      # instrumentation_mode: none  # was false
+      instrumentation_mode: default # was true
+    spring_batch:
+      experimental:
+        chunk:
+          new_trace: true
 ```
 
 ## Environment variables and system properties only options

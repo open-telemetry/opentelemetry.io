@@ -1,0 +1,104 @@
+name: Blog Post Request
+description: Request to submit a blog post to the OpenTelemetry blog
+title: '[Blog Post]: '
+labels: ['blog']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Blog Post Submission Request
+
+        Thank you for your interest in contributing to the OpenTelemetry blog! 
+
+        **Before submitting this request, please read the [blog submission guidelines](https://opentelemetry.io/docs/contributing/blog/) to ensure your content meets our requirements.**
+
+        Blog posts should not be commercial in nature and should consist of original content that applies broadly to the OpenTelemetry community.
+
+  - type: input
+    id: title
+    attributes:
+      label: Blog Post Title
+      description: What is the title of your proposed blog post?
+      placeholder: 'e.g., Getting Started with OpenTelemetry Metrics in Go'
+    validations:
+      required: true
+
+  - type: textarea
+    id: outline
+    attributes:
+      label: Blog Post Outline
+      description:
+        Provide a short description and outline of your blog post. Include the
+        main topics you plan to cover.
+      placeholder: |
+        Brief description of the blog post...
+
+        Outline:
+        1. Introduction
+        2. Main topic 1
+        3. Main topic 2
+        4. Conclusion
+    validations:
+      required: true
+
+  - type: textarea
+    id: technologies
+    attributes:
+      label: Technologies Used
+      description:
+        List the technologies that will be mentioned or used in your blog post.
+        Please ensure all technologies are open source and prefer CNCF projects
+        (e.g., use Jaeger for trace visualization, Prometheus for metrics).
+      placeholder: |
+        - OpenTelemetry Go SDK
+        - Prometheus
+        - Jaeger
+        - Kubernetes
+    validations:
+      required: false
+
+  - type: textarea
+    id: related_sigs
+    attributes:
+      label: Related Special Interest Groups (SIGs)
+      description:
+        List the SIGs that are related to this blog post. This helps us route
+        your request to the appropriate reviewers.
+      placeholder: |
+        - SIG Go
+        - SIG Collector
+        - SIG Specification
+    validations:
+      required: false
+
+  - type: input
+    id: sponsoring_sig
+    attributes:
+      label: Sponsoring SIG
+      description:
+        Name of the SIG that will sponsor this blog post (if known). Having a
+        sponsor increases the chance of faster review and approval.
+      placeholder: 'e.g., SIG Go'
+    validations:
+      required: false
+
+  - type: input
+    id: sponsor_name
+    attributes:
+      label: Sponsor Name
+      description:
+        Name of a maintainer or approver from the sponsoring SIG who will help
+        review the PR (ideally from a different company).
+      placeholder: 'e.g., @username'
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Additional Information
+      description:
+        Any additional information that might be helpful for reviewers
+      placeholder: 'Timeline preferences, related issues/PRs, etc.'
+    validations:
+      required: false
