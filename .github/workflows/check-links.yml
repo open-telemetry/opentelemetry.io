@@ -1,6 +1,6 @@
 name: Links
 
-# cSpell:ignore minisearch nvmrc otelbot
+# cSpell:ignore minisearch otelbot
 on:
   merge_group:
   pull_request:
@@ -68,9 +68,27 @@ jobs:
             tmp/package*.json
 
   check-links:
-    name: CHECK LINKS
+    name: CHECK LINKS (${{ matrix.shard.id }})
     needs: build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        shard:
+          # Each entry in this list is a shard, with:
+          #  id: identifier for the shard (used in job name and artifact name)
+          #  regex: regex to add to IgnoreDirs in .htmltest.yml for this shard
+          #
+          # Each shard ignores a subset of locale directories, so that all shards
+          # together cover all locale directories but each shard checks fewer links.
+          - id: en
+            regex: '^../' # Ignore all locale directories. This works because
+            # English docs folders have more than two characters in their names
+          - id: locales-A-to-M
+            # Regex to ignore English doc folders and locales n to z.
+            regex: '^(..[^/]|[n-z]./)'
+          - id: locales-N-to-Z
+            # Regex to ignore English doc folders and locales a to m.
+            regex: '^(..[^/]|[a-m]./)'
     steps:
       - uses: actions/checkout@v5
       - uses: actions/download-artifact@v5
@@ -82,6 +100,11 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
+      - name: Update htmltest config with shard IgnoreDirs regex
+        run: |
+          perl -i -ne 'print; print "  - ${{ matrix.shard.regex }}\n" if /^IgnoreDirs:/' .htmltest.yml
+          cat .htmltest.yml
+
       # This is probably not needed in this job
       - name: Install dependencies
         if: false
@@ -91,20 +114,21 @@ jobs:
           git restore package.json
 
       - run: |
-          npm run log:_check:links
+          npm run log:__check:links
+          git restore .htmltest.yml
+          # Capture any changes to refcache.json etc
           CHANGED_FILES=$(git status --porcelain)
           echo "CHANGED_FILES=$CHANGED_FILES" >> "$GITHUB_ENV"
         continue-on-error: true
 
       - uses: actions/upload-artifact@v4
         with:
-          name: build-log-etc
+          name: refcache-${{ matrix.shard.id }}
           path: |
-            tmp/build-log.txt
-            tmp/package*.json
             static/refcache.json
+            tmp/*log.txt
 
-      - name: Push changes if any, and fail check
+      - name: Push changes if any, and fail check (DISABLED)
         if: ${{ env.CHANGED_FILES }}
         run: |
           echo "Changes detected in the refcache etc:"
@@ -141,21 +165,12 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: actions/download-artifact@v5
-        with: { name: build-log-etc }
-      - name: Fail when refcache contains entries with HTTP status 4XX
-        run: |
-          if grep -B 1 -e '"StatusCode": 4' static/refcache.json; then
-            echo "Run 'npm run _refcache:prune' to remove 404 entries from refcache.json,"
-            echo "or run './scripts/double-check-refcache-400s.mjs' locally to address"
-            echo "other 400-status entries."
-            exit 1
-          fi
+        with:
+          pattern: refcache-*
+          path: tmp/check-refcache
+      - run: ls -lR tmp
       - name: Does the refcache need updating?
-        run: |
-          echo "If the diff check below fails, then update static/refcache.json by"
-          echo "running 'npm run fix:refcache' locally and committing the changes"
-          echo "or adding the comment '/fix:refcache' to your PR in GitHub."
-          npm run _diff:fail
+        run: .github/workflows/scripts/check-refcache.sh
 
   check-build-log-for-issues:
     name: WARNINGS in build log?
