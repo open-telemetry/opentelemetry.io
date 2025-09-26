@@ -43,11 +43,8 @@ npm init -y
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
-npm install typescript \
-  ts-node \
-  @types/node \
-  express \
-  @types/express
+npm install express @types/express
+npm install -D tsx  # TypeScript (.ts)ファイルをnodeで直接実行するためのツール
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -109,7 +106,7 @@ module.exports = { rollTheDice };
 
 ```ts
 /*app.ts*/
-import express, { Express } from 'express';
+import express, { type Express } from 'express';
 import { rollTheDice } from './dice';
 
 const PORT: number = parseInt(process.env.PORT || '8080');
@@ -164,7 +161,7 @@ app.listen(PORT, () => {
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
-$ npx ts-node app.ts
+$ npx tsx app.ts
 Listening for requests on http://localhost:8080
 ```
 
@@ -237,18 +234,18 @@ sdk.start();
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-/*instrumentation.js*/
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
-const {
+/*instrumentation.mjs*/
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
-} = require('@opentelemetry/sdk-metrics');
-const { resourceFromAttributes } = require('@opentelemetry/resources');
-const {
+} from '@opentelemetry/sdk-metrics';
+import { resourceFromAttributes } from '@opentelemetry/resources';
+import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
-} = require('@opentelemetry/semantic-conventions');
+} from '@opentelemetry/semantic-conventions';
 
 const sdk = new NodeSDK({
   resource: resourceFromAttributes({
@@ -275,16 +272,23 @@ sdk.start();
 
 コードを確認するには、ライブラリを要求してアプリケーションを実行します。
 
+{{% alert title="注意" %}}
+
+以下の`--import instrumentation.ts`（TypeScript）を使用した例は、Node.js v20以降が必要です。
+Node.js v18を使用している場合は、JavaScriptの例を使用してください。
+
+{{% /alert %}}
+
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
-npx ts-node --require ./instrumentation.ts app.ts
+npx tsx --import ./instrumentation.ts app.ts
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
-node --require ./instrumentation.js app.js
+node --import ./instrumentation.mjs app.js
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -468,7 +472,7 @@ const tracer = opentelemetry.trace.getTracer(
 ```ts
 /*app.ts*/
 import { trace } from '@opentelemetry/api';
-import express, { Express } from 'express';
+import express, { type Express } from 'express';
 import { rollTheDice } from './dice';
 
 const tracer = trace.getTracer('dice-server', '0.1.0');
@@ -587,7 +591,7 @@ OpenTelemetry JavaScript APIは、スパンを作成できる2つのメソッド
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import { trace, Span } from '@opentelemetry/api';
+import { trace, type Span } from '@opentelemetry/api';
 
 /* ... */
 
@@ -632,13 +636,13 @@ function rollTheDice(rolls, min, max) {
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
-ts-node --require ./instrumentation.ts app.ts
+npx tsx --import ./instrumentation.ts app.ts
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
-node --require ./instrumentation.js app.js
+node --import ./instrumentation.mjs app.js
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -646,19 +650,28 @@ node --require ./instrumentation.js app.js
 しばらくすると、`ConsoleSpanExporter`によってコンソールにスパンが出力されるのが表示されるはずです。
 次のようなものです。
 
-```json
+```js
 {
-  "traceId": "6cc927a05e7f573e63f806a2e9bb7da8",
-  "parentId": undefined,
-  "name": "rollTheDice",
-  "id": "117d98e8add5dc80",
-  "kind": 0,
-  "timestamp": 1688386291908349,
-  "duration": 501,
-  "attributes": {},
-  "status": { "code": 0 },
-  "events": [],
-  "links": []
+  resource: {
+    attributes: {
+      'service.name': 'dice-server',
+      'service.version': '0.1.0',
+      // ...
+    }
+  },
+  instrumentationScope: { name: 'dice-lib', version: undefined, schemaUrl: undefined },
+  traceId: '30d32251088ba9d9bca67b09c43dace0',
+  parentSpanContext: undefined,
+  traceState: undefined,
+  name: 'rollTheDice',
+  id: 'cc8a67c2d4840402',
+  kind: 0,
+  timestamp: 1756165206470000,
+  duration: 35.584,
+  attributes: {},
+  status: { code: 0 },
+  events: [],
+  links: []
 }
 ```
 
@@ -722,32 +735,41 @@ function rollTheDice(rolls, min, max) {
 
 このコードは、各 _ロール_ に対して、`parentSpan`のIDを親IDとして持つ子スパンを作成します。
 
-```json
+```js
 {
-  "traceId": "ff1d39e648a3dc53ba710e1bf1b86e06",
-  "parentId": "9214ff209e6a8267",
-  "name": "rollOnce:4",
-  "id": "7eccf70703e2bccd",
-  "kind": 0,
-  "timestamp": 1688387049511591,
-  "duration": 22,
-  "attributes": {},
-  "status": { "code": 0 },
-  "events": [],
-  "links": []
+  traceId: '6469e115dc1562dd768c999da0509615',
+  parentSpanContext: {
+    traceId: '6469e115dc1562dd768c999da0509615',
+    spanId: '38691692d6bc3395',
+    // ...
+  },
+  name: 'rollOnce:0',
+  id: '36423bc1ce7532b0',
+  timestamp: 1756165362215000,
+  duration: 85.667,
+  // ...
 }
 {
-  "traceId": "ff1d39e648a3dc53ba710e1bf1b86e06",
-  "parentId": undefined,
-  "name": "rollTheDice",
-  "id": "9214ff209e6a8267",
-  "kind": 0,
-  "timestamp": 1688387049510303,
-  "duration": 1314,
-  "attributes": {},
-  "status": { "code": 0 },
-  "events": [],
-  "links": []
+  traceId: '6469e115dc1562dd768c999da0509615',
+  parentSpanContext: {
+    traceId: '6469e115dc1562dd768c999da0509615',
+    spanId: '38691692d6bc3395',
+    // ...
+  },
+  name: 'rollOnce:1',
+  id: 'ed9bbba2264d6872',
+  timestamp: 1756165362215000,
+  duration: 16.834,
+  // ...
+}
+{
+  traceId: '6469e115dc1562dd768c999da0509615',
+  parentSpanContext: undefined,
+  name: 'rollTheDice',
+  id: '38691692d6bc3395',
+  timestamp: 1756165362214000,
+  duration: 1022.209,
+  // ...
 }
 ```
 
@@ -756,7 +778,7 @@ function rollTheDice(rolls, min, max) {
 前の例では、アクティブなスパンを作成する方法を示しました。
 場合によっては、ネストされているのではなく、互いに兄弟である非アクティブなスパンを作成したいことがあります。
 
-```javascript
+```js
 const doWork = () => {
   const span1 = tracer.startSpan('work-1');
   // 何かの作業
@@ -896,8 +918,8 @@ npm install --save @opentelemetry/semantic-conventions
 
 ```ts
 import {
-  SEMATTRS_CODE_FUNCTION,
-  SEMATTRS_CODE_FILEPATH,
+  ATTR_CODE_FUNCTION_NAME,
+  ATTR_CODE_FILE_PATH,
 } from '@opentelemetry/semantic-conventions';
 ```
 
@@ -905,8 +927,8 @@ import {
 
 ```js
 const {
-  SEMATTRS_CODE_FUNCTION,
-  SEMATTRS_CODE_FILEPATH,
+  ATTR_CODE_FUNCTION_NAME,
+  ATTR_CODE_FILE_PATH,
 } = require('@opentelemetry/semantic-conventions');
 ```
 
@@ -914,11 +936,11 @@ const {
 
 最後に、セマンティック属性を含めるようにファイルを更新できます。
 
-```javascript
+```js
 const doWork = () => {
   tracer.startActiveSpan('app.doWork', (span) => {
-    span.setAttribute(SEMATTRS_CODE_FUNCTION, 'doWork');
-    span.setAttribute(SEMATTRS_CODE_FILEPATH, __filename);
+    span.setAttribute(ATTR_CODE_FUNCTION_NAME, 'doWork');
+    span.setAttribute(ATTR_CODE_FILE_PATH, __filename);
 
     // 何かの作業を行う...
 
@@ -1295,18 +1317,18 @@ opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
 
 {{% /tab %}} {{< /tabpane >}}
 
-アプリケーションを実行するときに、このファイルを`--require`する必要があります。
+アプリケーションを実行するときに、このファイルを`--import`する必要があります。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
-ts-node --require ./instrumentation.ts app.ts
+npx tsx --import ./instrumentation.ts app.ts
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
-node --require ./instrumentation.js app.js
+node --import ./instrumentation.mjs app.js
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -1361,7 +1383,7 @@ const myMeter = opentelemetry.metrics.getMeter(
 ```ts
 /*app.ts*/
 import { metrics, trace } from '@opentelemetry/api';
-import express, { Express } from 'express';
+import express, { type Express } from 'express';
 import { rollTheDice } from './dice';
 
 const tracer = trace.getTracer('dice-server', '0.1.0');
