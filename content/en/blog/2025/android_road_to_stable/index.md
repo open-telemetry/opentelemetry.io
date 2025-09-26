@@ -61,7 +61,7 @@ new instrumentation libraries. These include:
 * [android-log](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/android-log) -
   the ability to generate OTel log records from idiomatic Android `Log.x(...)` calls.
 * [httpurlconnection](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/httpurlconnection) -
-  tracing instrumentation for this runtime-supplied http client with a lot of history.
+  tracing instrumentation for this runtime-supplied HTTP client with a lot of history.
 * [view-click](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/view-click) –
   generates click events for user presses on Android Views.
 * [compose-click](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/compose/click) –
@@ -72,14 +72,14 @@ new instrumentation libraries. These include:
 ### Auto-Instrumentation
 
 Unlike its older cousin the
-[OpenTelemetry Javaagent](https://github.com/open-telemetry/opentelemetry-java-instrumentation),
+[OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation),
 the Android agent is unable to do bytecode weaving to instrument classes at runtime, due to
 platform restrictions. The ability to have your code automatically instrumented for you is super
 powerful, though, and users often prefer instrumentation without making code changes.
 
 Some instrumentation can now be applied with a gradle plugin at build time, without the need for
 manual code changes or the explicit use of OpenTelemetry wrapper classes. At the time of this
-writing, this includes the Android log instrumentation and the http client instrumentation, and
+writing, this includes the Android log instrumentation and the HTTP client instrumentation, and
 we expect more auto-instrumentation in the future.
 
 ### Documentation
