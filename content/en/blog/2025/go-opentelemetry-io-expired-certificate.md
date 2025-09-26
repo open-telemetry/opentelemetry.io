@@ -19,20 +19,20 @@ impossible.
 
 This endpoint currently runs on the Google App Engine platform, and its SSL
 certificate is managed by Google. This is the only endpoint under the
-[opentelemetry.io](http://opentelemetry.io) domain that runs on this platform.
+[opentelemetry.io](https://opentelemetry.io) domain that runs on this platform.
 
 Last July, we were alerted by a security researcher that the root OpenTelemetry
-domain ([opentelemetry.io](http://opentelemetry.io)) lacked
+domain ([opentelemetry.io](https://opentelemetry.io)) lacked
 [CAA DNS records](https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization).
 We therefore added one with LetsEncrypt as the sole issuer, since that’s
 [the authority used for the root domain’s certificate](https://docs.netlify.com/manage/domains/secure-domains-with-https/https-ssl/#netlify-managed-certificates).
 
 Since Google's CA was not listed as an issuer in the CAA record,the AppEngine
-platform couldn’t renew the [go.opentelemetry.io](http://go.opentelemetry.io)
+platform couldn’t renew the [go.opentelemetry.io](https://go.opentelemetry.io)
 certificate. So on September 25th at 10:08:10 UTC, when it expired, every
 request returned an error with the expired certificate. This caused issues on
 build systems and when viewing the documentation of
-[go.opentelemetry.io](http://go.opentelemetry.io) packages.
+[go.opentelemetry.io](https://go.opentelemetry.io) packages.
 
 Since this is the only app we maintain that runs on that platform, only a few
 people based in the US have experience with it, so until they were awake we had
@@ -58,7 +58,7 @@ requests succeeding again.
 ## Detailed timeline
 
 - 10:08 UTC – SSL certificate for
-  [go.opentelemetry.io](http://go.opentelemetry.io) expired
+  [go.opentelemetry.io](https://go.opentelemetry.io) expired
 - 10:35 UTC – First notification from users about the issue
 - 11:31 UTC – Created
   [public issue tracking this incident](https://github.com/open-telemetry/opentelemetry-go-vanityurls/issues/81)
@@ -70,7 +70,7 @@ requests succeeding again.
   had not been renewed
 - 14:54 UTC – Disabled and enabled managed security on the SSL certificate
 - 15:16 UTC – Confirmed a new SSL certificate had been issued for
-  [go.opentelemetry.io](http://go.opentelemetry.io)
+  [go.opentelemetry.io](https://go.opentelemetry.io)
 
 ## Lessons learned
 
@@ -95,9 +95,9 @@ it the same way we operate every other public website OpenTelemetry maintains.
 We are therefore
 [going to look](https://github.com/open-telemetry/opentelemetry-go-vanityurls/issues/83)
 into moving away from the AppEngine platform and into Netlify, the platform that
-runs the [opentelemetry.io](http://opentelemetry.io) website.
+runs the [opentelemetry.io](https://opentelemetry.io) website.
 
 We also identified with the help of a user a number of unused subdomains of
-[opentelemetry.io](http://opentelemetry.io) that are serving an expired
+[opentelemetry.io](https://opentelemetry.io) that are serving an expired
 certificate. While these have no impact for our users, we are going to
 [look into removing them](https://github.com/open-telemetry/community/issues/3022).
