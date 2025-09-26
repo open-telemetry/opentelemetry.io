@@ -85,7 +85,7 @@ have been able to fix this issue ourselves.
 
 ## Action items
 
-We have started improving our playbooks to access the AppEngine console, so we
+We have started [improving our playbooks](https://github.com/open-telemetry/community/pull/3021) to access the AppEngine console, so we
 can get access more quickly.
 
 We need to ensure this application is not a snowflake anymore, so we can operate
