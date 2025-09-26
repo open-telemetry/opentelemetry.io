@@ -15,7 +15,7 @@ This endpoint is the canonical URL for most Go modules within the OpenTelemetry
 organization. As a result, downloading any modules from that endpoint was
 impossible.
 
-## What happened ?
+## What happened?
 
 This endpoint currently runs on the Google App Engine platform, and its SSL
 certificate is managed by Google. This is the only endpoint under the
