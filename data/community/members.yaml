@@ -505,6 +505,7 @@ maintainers:
       - go-approvers
       - go-maintainers
       - go-triagers
+      - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
     html_url: https://github.com/dmathieu
     avatar_url: https://avatars.githubusercontent.com/u/9347?v=4
@@ -807,6 +808,7 @@ maintainers:
     teams:
       - demo-approvers
       - demo-maintainers
+      - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
     html_url: https://github.com/julianocosta89
     avatar_url: https://avatars.githubusercontent.com/u/15364991?v=4
