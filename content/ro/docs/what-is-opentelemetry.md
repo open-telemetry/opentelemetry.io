@@ -23,6 +23,10 @@ OpenTelemetry este:
   [Prometheus], ​​precum și oferte comerciale. OpenTelemetry **nu** este un
   backend de observabilitate în sine.
 
+Un obiectiv important al OpenTelemetry este de a permite o instrumentare ușoară
+a aplicațiilor și sistemelor tale, indiferent de limbajul de programare,
+infrastructura și mediile de execuție utilizate.
+
 Backend-ul (stocarea) și frontend-ul (vizualizarea) datelor de telemetrie sunt
 lăsate în mod intenționat altor instrumente.
 
