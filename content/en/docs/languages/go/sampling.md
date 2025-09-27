@@ -19,6 +19,8 @@ provider := trace.NewTracerProvider(
 )
 ```
 
+## Built-in Samplers
+
 [`AlwaysSample`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#AlwaysSample)
 and
 [`NeverSample`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#NeverSample)
@@ -43,3 +45,77 @@ By default, the tracer provider uses a `ParentBased` sampler with the
 
 When in a production environment, consider using the `ParentBased` sampler with
 the `TraceIDRatioBased` sampler.
+
+## Custom Samplers
+
+You can also create custom samplers by implementing the
+[`Sampler`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#Sampler)
+interface. This allows you to define your own sampling logic based on your
+specific requirements.
+
+To create a custom sampler, you need to implement the `ShouldSample` method
+which takes a `SamplingParameters` struct and returns a `SamplingResult`:
+
+```go
+type Sampler interface {
+    ShouldSample(parameters SamplingParameters) SamplingResult
+    Description() string
+}
+```
+
+Here's an example of a custom sampler that samples spans based on an attribute value:
+
+```go
+package sampler
+
+import (
+  "go.opentelemetry.io/otel/attribute"
+  sdktrace "go.opentelemetry.io/otel/sdk/trace"
+  "go.opentelemetry.io/otel/trace"
+)
+
+// CustomSampler is a sampler that samples spans based on a specific attribute name and value.
+type CustomSampler struct {
+  attributeName  string
+  attributeValue string
+}
+
+// NewCustomSampler creates a new CustomSampler with the specified attribute name and value.
+func NewCustomSampler(attributeName, attributeValue string) *CustomSampler {
+  return &CustomSampler{
+    attributeName:  attributeName,
+    attributeValue: attributeValue,
+  }
+}
+
+// ShouldSample implements the sdktrace.Sampler interface.
+func (s *CustomSampler) ShouldSample(p sdktrace.SamplingParameters) sdktrace.SamplingResult {
+  // Check if the span has the specified attribute with the specified value
+  for _, attr := range p.Attributes {
+    if string(attr.Key) == s.attributeName && attr.Value.AsString() == s.attributeValue {
+      return sdktrace.SamplingResult{
+        Decision:   sdktrace.RecordAndSample,
+        Attributes: []attribute.KeyValue{},
+        Tracestate: trace.SpanContextFromContext(p.ParentContext).TraceState(),
+      }
+    }
+  }
+
+  // For spans that don't match our criteria, don't sample them
+  return sdktrace.SamplingResult{
+    Decision:   sdktrace.Drop,
+    Attributes: []attribute.KeyValue{},
+    Tracestate: trace.SpanContextFromContext(p.ParentContext).TraceState(),
+  }
+}
+
+// Description returns the description of the sampler.
+func (s *CustomSampler) Description() string {
+  return "CustomSampler"
+}
+```
+
+In this example, the custom sampler will sample spans that have an attribute
+named "environment" with the value "production", otherwise spans is dropped.
+
+This approach gives you full control over the sampling decision logic.
