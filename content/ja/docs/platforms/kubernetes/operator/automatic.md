@@ -24,7 +24,7 @@ Helmチャートを使用する場合は、自己証明書を生成するオプ�
 
 ## OpenTelemetryコレクターの作成（オプション） {#create-an-opentelemetry-collector-optional}
 
-コンテナから[OpenTelemetryコレクター](/docs/platforms/kubernetes/collector/)にテレメトリーを送信することは、バックエンドに直接送信するのではなく、ベストプラクティスです。
+コンテナからテレメトリーをバックエンドに直接送信するのではなく、[OpenTelemetryコレクター](/docs/platforms/kubernetes/collector/)に送信するのがベストプラクティスです
 コレクターによって、シークレット管理が簡素化され、データエクスポートの問題（リトライが必要な場合など）がアプリから分離され、[k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)コンポーネントなどを使用してテレメトリーにデータを追加できます。
 コレクターを使用しない場合、次のセクションに進んでください。
 
