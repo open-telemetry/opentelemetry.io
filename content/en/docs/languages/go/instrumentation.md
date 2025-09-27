@@ -92,6 +92,15 @@ func main() {
 
 You can now access `tracer` to manually instrument your code.
 
+{{% alert title="Important" color="warning" %}}
+
+If you are adding manual spans in conjunction with eBPF-based
+[Go zero-code instrumentation](/docs/zero-code/go), such as with
+[OBI](/docs/zero-code/obi), do not set a global Tracer Provider. See the
+[Auto SDK](/docs/zero-code/go/autosdk) docs for more information.
+
+{{% /alert %}}
+
 ### Creating Spans
 
 Spans are created by tracers. If you don't have one initialized, you'll need to

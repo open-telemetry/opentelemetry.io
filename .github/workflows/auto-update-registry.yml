@@ -34,7 +34,7 @@ jobs:
 
       - name: Auto-update
         run: |
-          .github/workflows/scripts/update-registry-versions.sh
+          .github/scripts/update-registry-versions.sh
         env:
           # change to ${{ secrets.GITHUB_TOKEN }} and comment out the step above when testing against a fork
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}

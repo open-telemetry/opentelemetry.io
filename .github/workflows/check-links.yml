@@ -102,7 +102,7 @@ jobs:
 
       - name: Check links for shard
         run: |
-          .github/workflows/scripts/check-links-shard.sh '${{ matrix.shard.id }}' '${{ matrix.shard.regex }}'
+          .github/scripts/check-links-shard.sh '${{ matrix.shard.id }}' '${{ matrix.shard.regex }}'
           # Capture any changes to refcache.json etc
           CHANGED_FILES=$(git status --porcelain)
           echo "CHANGED_FILES=$CHANGED_FILES" >> "$GITHUB_ENV"
@@ -157,7 +157,7 @@ jobs:
           path: tmp/check-refcache
       - run: ls -lR tmp
       - name: Does the refcache need updating?
-        run: .github/workflows/scripts/check-refcache.sh
+        run: .github/scripts/check-refcache.sh
 
   check-build-log-for-issues:
     name: WARNINGS in build log?
