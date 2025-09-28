@@ -4,7 +4,9 @@ linkTitle: Accounting
 aliases: [accountingservice]
 ---
 
-This service calculates the total amount of sold products. This calculation is currently mocked and received orders are printed out. Once a record is retrieved from Kafka, it is saved to the database (PostgreSQL).
+This service calculates the total amount of sold products. This calculation is
+currently mocked and received orders are printed out. Once a record is retrieved
+from Kafka, it is saved to the database (PostgreSQL).
 
 [Accounting Service](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/accounting/)
 
