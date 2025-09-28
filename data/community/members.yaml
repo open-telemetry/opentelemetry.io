@@ -505,6 +505,7 @@ maintainers:
       - go-approvers
       - go-maintainers
       - go-triagers
+      - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
     html_url: https://github.com/dmathieu
     avatar_url: https://avatars.githubusercontent.com/u/9347?v=4
@@ -807,6 +808,7 @@ maintainers:
     teams:
       - demo-approvers
       - demo-maintainers
+      - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
     html_url: https://github.com/julianocosta89
     avatar_url: https://avatars.githubusercontent.com/u/15364991?v=4
@@ -842,6 +844,7 @@ maintainers:
       - dotnet-instrumentation-approvers
       - dotnet-instrumentation-maintainers
       - dotnet-instrumentation-triagers
+      - dotnet-maintainers
       - dotnet-triagers
     html_url: https://github.com/Kielek
     avatar_url: https://avatars.githubusercontent.com/u/5972917?v=4
@@ -2315,6 +2318,11 @@ triagers:
       - php-triagers
     html_url: https://github.com/beniamin
     avatar_url: https://avatars.githubusercontent.com/u/811812?v=4
+  - name: constanca-m
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/constanca-m
+    avatar_url: https://avatars.githubusercontent.com/u/113898685?v=4
   - name: d4nyll
     teams:
       - javascript-contrib-triagers
