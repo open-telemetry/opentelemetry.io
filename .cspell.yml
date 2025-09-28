@@ -74,5 +74,6 @@ words: # Valid words across all locales
   - Docsy
   - htmltest
   - jsonify
+  - nvmrc
   - opentelemetrybot
   - warnf
