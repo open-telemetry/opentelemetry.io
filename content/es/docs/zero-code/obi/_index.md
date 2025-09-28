@@ -12,7 +12,7 @@ cSpell:ignore: CAP_PERFMON
 default_lang_commit: c6df1ca98613ce886d3ea5ecb7ea50d02a31f18a
 ---
 
-Las bibliotecas de OpenTelemetry proporcionan la recolección de telemetría para lenguajes de programación y frameworks populares. Sin embargo, comenzar con trazas distribuidas puede ser complejo. En algunos lenguajes compilados como Go o Rust, debes agregar manualmente *tracepoints* en el código.
+Las librerías de OpenTelemetry proporcionan la recolección de telemetría para lenguajes de programación y frameworks populares. Sin embargo, comenzar con trazas distribuidas puede ser complejo. En algunos lenguajes compilados como Go o Rust, debes agregar manualmente *tracepoints* en el código.
 
 OpenTelemetry eBPF Instrumentation (OBI) es una herramienta de auto-instrumentación para empezar fácilmente con la observabilidad de aplicaciones. OBI usa eBPF para inspeccionar automáticamente los ejecutables de las aplicaciones y la capa de red del sistema operativo, y capturar *spans de traza* relacionados con transacciones web y métricas RED (*Rate, Errors, Duration*) para servicios HTTP/S y gRPC en Linux. Toda la captura de datos ocurre sin modificaciones al código o configuración de la aplicación.
 
