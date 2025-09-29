@@ -8887,6 +8887,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T18:15:57.569765671Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/flagd-ui/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-22T13:34:21.572767054Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/flagd-ui/lib/flagd_ui/application.ex": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-23T14:33:23.224272155Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/fraud-detection/": {
     "StatusCode": 206,
     "LastSeen": "2025-04-17T05:21:01.749919499-07:00"
