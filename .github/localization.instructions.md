@@ -1,3 +1,15 @@
+---
+applyTo:
+  - 'content/bn/**'
+  - 'content/es/**'
+  - 'content/fr/**'
+  - 'content/ja/**'
+  - 'content/pt/**'
+  - 'content/ro/**'
+  - 'content/uk/**'
+  - 'content/zh/**'
+---
+
 # OpenTelemetry.io Localization Instructions
 
 Always reference these instructions first and fallback to search or bash
