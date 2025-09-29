@@ -14,18 +14,24 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
+      - uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: otelbot-token
+        with:
+          # the higher privileged docs token is needed to push commits to an existing PR
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
       - uses: actions/checkout@v5
         with:
           # this is needed to do the rebase below
           fetch-depth: 0
-          # this is needed to trigger workflows when pushing new commits to the PR
-          token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          token: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Set environment variables
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          branch_prefix="opentelemetrybot/spec-integration"
+          branch_prefix="otelbot/spec-integration"
 
           version=$(git branch -r \
                         | grep -E "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
@@ -61,8 +67,8 @@ jobs:
 
       - name: Use CLA approved github bot
         run: |
-          git config user.name opentelemetrybot
-          git config user.email 107717825+opentelemetrybot@users.noreply.github.com
+          git config user.name otelbot
+          git config user.email 197425009+otelbot@users.noreply.github.com
 
       - name: Merge from main
         run: |
@@ -101,7 +107,7 @@ jobs:
             git push
           fi
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
 
@@ -120,7 +126,7 @@ jobs:
       - name: Create pull request if needed
         env:
           # not using secrets.GITHUB_TOKEN since pull requests from that token do not run workflows
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then

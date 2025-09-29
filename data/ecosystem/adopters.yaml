@@ -169,3 +169,15 @@
   reference: 'https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a'
   referenceTitle: blog post
   contact: 'junda.yin@uipath.com'
+- name: PicPay
+  url: https://picpay.com/
+  components: [Collector, Go, Java, PHP, Python]
+  reference: 'https://medium.com/inside-picpay/observabilidade-com-hyperf-e-opentelemetry-dd698844eda'
+  referenceTitle: blog post
+  contact: 'observability@picpay.com'
+- name: PagBank
+  url: https://pagbank.com.br/
+  components: [Collector, Operator, Java, JavaScript, PHP, Python, .NET, Go]
+  reference: ''
+  referenceTitle: ''
+  contact: 'https://github.com/ezeqme'

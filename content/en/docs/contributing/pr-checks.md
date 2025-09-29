@@ -98,12 +98,12 @@ This check verifies that all
 If this check fails, run `npm run fix:filenames` locally and push the changes in
 a new commit.
 
-### `BUILD and CHECK LINKS` {.notranslate lang=en}
+### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
-This check builds the website and verifies that all links are valid.
+These two checks build the website and verify that all links are valid.
 
-To check links locally, run `npm run check:links`. This command also updates the
-reference cache. Push any changes to the refcache in a new commit.
+To build and check links locally, run `npm run check:links`. This command also
+updates the reference cache. Push any changes to the refcache in a new commit.
 
 #### Fix 404s
 
