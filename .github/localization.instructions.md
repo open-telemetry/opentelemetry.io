@@ -1,13 +1,7 @@
 ---
 applyTo:
-  - 'content/bn/**'
-  - 'content/es/**'
-  - 'content/fr/**'
-  - 'content/ja/**'
-  - 'content/pt/**'
-  - 'content/ro/**'
-  - 'content/uk/**'
-  - 'content/zh/**'
+  - "content/*/**",
+  - "!content/en/**"
 ---
 
 # OpenTelemetry.io Localization Instructions
