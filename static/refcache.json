@@ -327,6 +327,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-15T13:17:28.410343-05:00"
   },
+  "https://bytebuddy.net/#/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:00.789721+02:00"
+  },
   "https://calendar.google.com/calendar": {
     "StatusCode": 200,
     "LastSeen": "2025-02-24T16:02:34.66521577Z"
@@ -2715,6 +2719,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:12:46.109395-05:00"
   },
+  "https://en.wikipedia.org/wiki/Abstract_syntax_tree": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-29T11:48:03.688984+02:00"
+  },
   "https://en.wikipedia.org/wiki/Aggregate_function#Decomposable_aggregate_functions": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:07:12.345Z"
@@ -4183,6 +4191,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:15:19.758388-05:00"
   },
+  "https://github.com/bpftrace/bpftrace": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:05.137156+02:00"
+  },
   "https://github.com/braydonk": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:12:39.695711-05:00"
@@ -4230,6 +4242,30 @@
   "https://github.com/cartermp": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:10:39.679456-05:00"
+  },
+  "https://github.com/causely-oss/automatic-instrumentation-lab": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:47:57.702752+02:00"
+  },
+  "https://github.com/causely-oss/automatic-instrumentation-lab#byte-code-instrumentation-java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:01.132413+02:00"
+  },
+  "https://github.com/causely-oss/automatic-instrumentation-lab#compile-time-instrumentation-go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:04.223842+02:00"
+  },
+  "https://github.com/causely-oss/automatic-instrumentation-lab#ebpf-based-instrumentation-go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:09.582114+02:00"
+  },
+  "https://github.com/causely-oss/automatic-instrumentation-lab#monkey-patching-nodejs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:47:58.227285+02:00"
+  },
+  "https://github.com/causely-oss/automatic-instrumentation-lab#php-observer-api-php": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:12.056881+02:00"
   },
   "https://github.com/ccaraman": {
     "StatusCode": 206,
@@ -5407,6 +5443,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:00.408787-05:00"
   },
+  "https://github.com/iovisor/bcc": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:06.323677+02:00"
+  },
   "https://github.com/iredelmeier": {
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:19:05.148Z"
@@ -5886,6 +5926,10 @@
   "https://github.com/liatrio/liatrio-otel-collector": {
     "StatusCode": 206,
     "LastSeen": "2025-01-15T11:25:38.224135-05:00"
+  },
+  "https://github.com/libbpf/libbpf": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:07.910987+02:00"
   },
   "https://github.com/lightstep": {
     "StatusCode": 206,
@@ -6370,6 +6414,10 @@
   "https://github.com/open-telemetry/community/": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T07:09:55.34103-05:00"
+  },
+  "https://github.com/open-telemetry/community/#special-interest-groups": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:16.111569+02:00"
   },
   "https://github.com/open-telemetry/community/blob/47813530864b9fe5a5146f466a58bd2bb94edc72/maturity-matrix.yaml#L57": {
     "StatusCode": 200,
@@ -9023,6 +9071,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-07-15T10:04:54.288728991Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:03.16115+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Exporter.Geneva": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:11.498677-05:00"
@@ -9318,6 +9370,10 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/src/OpenTelemetry.Exporter.Zipkin": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:27.610217-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:10.793665+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases": {
     "StatusCode": 206,
@@ -9850,6 +9906,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension#readme": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:14:12.345Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:01.780723+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/akka/akka-actor-2.3/": {
     "StatusCode": 206,
@@ -11094,6 +11154,10 @@
   "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/examples": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:37:44.93646-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:15.089113+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/CakePHP": {
     "StatusCode": 206,
@@ -15954,6 +16018,10 @@
   "https://github.com/petethepig": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:10:43.603241-05:00"
+  },
+  "https://github.com/php/php-src/blob/PHP-8.0/Zend/zend_observer.h": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T11:48:11.502161+02:00"
   },
   "https://github.com/php/pie": {
     "StatusCode": 206,
@@ -22990,6 +23058,10 @@
   "https://www.buoyant.io/mtls-guide": {
     "StatusCode": 200,
     "LastSeen": "2025-05-31T10:26:15.812524+05:30"
+  },
+  "https://www.causely.ai/blog/demystifying-automatic-instrumentation": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-29T11:47:54.750203+02:00"
   },
   "https://www.causely.ai/blog/using-opentelemetry-and-the-otel-collector-for-logs-metrics-and-traces": {
     "StatusCode": 200,
