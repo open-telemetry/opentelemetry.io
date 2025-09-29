@@ -56,3 +56,4 @@ rules:
   - expected: インターフェイス
     patterns:
       - インターフェース
+      - インタフェース
