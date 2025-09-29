@@ -8,8 +8,8 @@ author: OpenTelemetry Governance Committee
 The OpenTelemetry project is excited to announce the 2025 OpenTelemetry
 Governance Committee (GC) election. Nominations are due by 17 October 2025 23:59
 UTC. The list of eligible candidates will be shared on 20 October 2025. Voting
-will take place between 27 October 2025 00:00 UTC and 29 October 2025 end of day,
-and the final election results will be announced 31 October 2025.
+will take place between 27 October 2025 00:00 UTC and 29 October 2025 end of
+day, and the final election results will be announced 31 October 2025.
 
 ## Vote!
 
@@ -21,12 +21,17 @@ Committee. In this election five people must be elected, each with two-year
 terms.
 
 If you have made contributions to our ecosystem not measured by the automatic
-process, you can [request an exception](https://docs.google.com/forms/d/e/1FAIpQLSeSA09xDIv0uyb6vrP8xBbLjm8NsgihrG8GHxacbigF17sNDw/viewform?usp=dialog) before 23:59 UTC on 24 October 2025 to
-participate in the election. See the [voter roll](https://github.com/open-telemetry/community/blob/main/elections/2025/voters-roll.csv)
-with all members of standing and approved exceptions. Approved exceptions will be added to the roll continuously.
+process, you can
+[request an exception](https://docs.google.com/forms/d/e/1FAIpQLSeSA09xDIv0uyb6vrP8xBbLjm8NsgihrG8GHxacbigF17sNDw/viewform?usp=dialog)
+before 23:59 UTC on 24 October 2025 to participate in the election. See the
+[voter roll](https://github.com/open-telemetry/community/blob/main/elections/2025/voters-roll.csv)
+with all members of standing and approved exceptions. Approved exceptions will
+be added to the roll continuously.
 
 Voting will be open between 27 October 2025 00:00 UTC and 29 October 2025 23:59
-29 October 2025, end of day, [Anywhere on Earth](https://en.wikipedia.org/wiki/Anywhere_on_Earth) (30 October 2025 12:00 UTC) on
+29 October 2025, end of day,
+[Anywhere on Earth](https://en.wikipedia.org/wiki/Anywhere_on_Earth) (30 October
+2025 12:00 UTC) on
 [Helios Voting](https://vote.heliosvoting.org/helios/elections/f94a7c58-990b-11f0-a16d-5270fb641b4c/view);
 voters will need to sign in with their GitHub account.
 
@@ -48,9 +53,10 @@ by 17 October 2025 23:59 UTC — see the detailed requirements under
 [nominations](https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-election.md#nominations)
 for the Governance Committee election.
 
-We would like to thank the GC members whose term expires this year; they have helped grow OpenTelemetry, and
-invite them to run for re-election if they so choose: Austin Parker, Daniel Gomez Blanco,
-Juraci Paixão Kröhling, Severin Neumann, and Ted Young.
+We would like to thank the GC members whose term expires this year; they have
+helped grow OpenTelemetry, and invite them to run for re-election if they so
+choose: Austin Parker, Daniel Gomez Blanco, Juraci Paixão Kröhling, Severin
+Neumann, and Ted Young.
 
 ## Questions?
 
