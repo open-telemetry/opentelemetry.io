@@ -13,6 +13,7 @@ To visualize request flows, see the [Service Diagram](../architecture/).
 | [checkout](checkout/)                 | Go            | Retrieves user cart, prepares order and orchestrates the payment, shipping and the email notification.                               |
 | [currency](currency/)                 | C++           | Converts one money amount to another currency. Uses real values fetched from European Central Bank. It's the highest QPS service.    |
 | [email](email/)                       | Ruby          | Sends users an order confirmation email (mock/).                                                                                     |
+| [flagd-ui](flagd-ui/)                 | Elixir        | Allows toggling and editing of feature flags.                                                                                        |
 | [fraud-detection](fraud-detection/)   | Kotlin        | Analyzes incoming orders and detects fraud attempts (mock/).                                                                         |
 | [frontend](frontend/)                 | TypeScript    | Exposes an HTTP server to serve the website. Does not require sign up / login and generates session IDs for all users automatically. |
 | [load-generator](load-generator/)     | Python/Locust | Continuously sends requests imitating realistic user shopping flows to the frontend.                                                 |
