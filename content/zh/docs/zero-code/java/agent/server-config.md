@@ -2,7 +2,7 @@
 title: 应用服务器配置
 linkTitle: 应用服务器配置
 description: 如何为 Java 应用服务器定义代理路径
-default_lang_commit: 748555c22f43476291ae0c7974ca4a2577da0472
+default_lang_commit: 908a1cd58d5a1c0a1c59993e099fc4ed99185590
 weight: 215
 cSpell:ignore: asadmin Glassfish Payara setenv
 ---
@@ -85,9 +85,17 @@ JAVA_OPTIONS="${JAVA_OPTIONS} -javaagent:/path/to/opentelemetry-javaagent.jar"
 
 确保你的域目录下的 domain.xml 文件中包含针对代理的 `<jmv-options>` 条目。
 
-## Tomcat / TomEE {#tomcat-tomee}
+## Tomcat、TomEE {#tomcat-tomee}
 
-将 Java 代理的路径添加到启动脚本中：
+将 Java 代理的路径添加到启动脚本中。配置方法取决于你的安装方式：
+
+**对于包管理安装**（apt-get/yum），添加到 `/etc/tomcat*/tomcat*.conf`：
+
+```sh
+JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
+```
+
+**对于下载安装**，创建或修改 `<tomcat>/bin/setenv.sh`（Linux）或 `<tomcat>/bin/setenv.bat`（Windows）：
 
 {{< tabpane text=true persist=lang >}}
 
@@ -106,6 +114,8 @@ set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:"<Drive>:\path\to\opentelemetry-jav
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+**对于 Windows 服务安装**，使用 `<tomcat>/bin/tomcat*w.exe` 将 `-javaagent:<Drive>:\path\to\opentelemetry-javaagent.jar` 添加到 Java 选项的 Java 选项卡下。
 
 ## WebLogic {#weblogic}
 
