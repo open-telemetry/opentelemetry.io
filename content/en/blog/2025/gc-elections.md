@@ -1,7 +1,7 @@
 ---
 title: Announcing the 2025 OpenTelemetry Governance Committee Election
 linkTitle: 2025 GC Election
-date: 2025-09-26
+date: 2025-09-29
 author: OpenTelemetry Governance Committee
 ---
 
