@@ -1,7 +1,7 @@
 ---
 title: Introducción para Operaciones
 linkTitle: Ops
-default_lang_commit: ede5b715791550eccf1c0dc3d57e2713ca6350ab
+default_lang_commit: 99a39c5e4e51daba968bfbb3eb078be4a14ad363
 ---
 
 Esta es tu página de [introducción](..) si:
@@ -17,7 +17,7 @@ las aplicaciones sin tocar su código, te recomendamos aprender lo siguiente:
 - [¿Qué es OpenTelemetry?](../../what-is-opentelemetry/)
 - [¿Cómo puedo instrumentar aplicaciones sin tocar su código?](../../concepts/instrumentation/zero-code/)
 - [¿Cómo puedo configurar un colector?](../../collector/)
-- [¿Cómo puedo automatizar Kubernetes con el OpenTelemetry Operator?](../../kubernetes/operator/)
+- [¿Cómo puedo automatizar Kubernetes con el OpenTelemetry Operator?](../../platforms/kubernetes/operator/)
 
 Si estás buscando un conjunto de aplicaciones para hacer pruebas, encontrarás
 útil nuestra [demo oficial de OpenTelemetry](/ecosystem/demo/).

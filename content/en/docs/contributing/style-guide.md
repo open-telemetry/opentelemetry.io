@@ -15,7 +15,7 @@ documentation style is inspired by the following style guides:
 The following sections contain guidance that is specific to the OpenTelemetry
 project.
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 Many requirements of our style guide can be enforced by running automation:
 before submitting a
@@ -30,17 +30,16 @@ guide and learn what you can do to fix certain common issues.
 ## OpenTelemetry.io word list
 
 A list of OpenTelemetry-specific terms and words to be used consistently across
-the site.
+the site:
 
-<!-- prettier-ignore-start -->
-| Term | Usage |
-| --- | --- |
-| OpenTelemetry | OpenTelemetry should always be capitalized. Don't use Open-Telemetry. |
-| OTel | OTel is the accepted short form of OpenTelemetry. Don't use OTEL. |
-| Collector | When referring to the OpenTelemetry Collector, always capitalize Collector. Write "The Collector" or "The Opentelemetry Collector" if you're starting a sentence. Write "the Collector" or "the OpenTelemetry Collector" in the middle or end of a sentence. Use just "Collector" if you are using Collector as an adjective (for example, "Collector configuration").|
-| OTEP | OpenTelemetry Enhancement Proposal. Write "OTEPs" as plural form. Don't write "OTep" or "otep". |
-| OpAMP | Open Agent Management Protocol. Don't write "OPAMP" or "opamp" in descriptions or instructions. |
-<!-- prettier-ignore-end -->
+- [OpenTelemetry](/docs/concepts/glossary/#opentelemetry) and
+  [OTel](/docs/concepts/glossary/#otel)
+- [Collector](/docs/concepts/glossary/#collector)
+- [OTEP](/docs/concepts/glossary/#otep)
+- [OpAMP](/docs/concepts/glossary/#opamp)
+
+For a complete list of OpenTelemetry terms and their definition, see
+[Glossary](/docs/concepts/glossary/).
 
 Make sure that proper nouns, such as other CNCF projects or third-party tools,
 are properly written and use the original capitalization. For example, write
@@ -48,27 +47,15 @@ are properly written and use the original capitalization. For example, write
 [`.textlintrc.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml)
 file.
 
-See also the [Glossary](/docs/concepts/glossary/) for a list of OpenTelemetry
-terms and their definition.
-
-Run `npm run check:text` to verify that all terms and words are written
-properly.
-
-Run `npm run check:text -- --fix` to fix terms and words that are not written
-properly.
-
 ## Markdown standards
 
 To enforce standards and consistency for Markdown files, all files should follow
-certain rules, enforced by
-[markdownlint](https://github.com/DavidAnson/markdownlint). For a full list,
-check the
-[`.markdownlint.json`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json)
-file.
+certain rules, enforced by [markdownlint]. For a full list, check the
+[.markdownlint.json] file.
 
-Run `npm run check:markdown` to verify that all files follow the standard.
-
-Run `npm run fix:markdown` to fix Markdown related formatting issues.
+We also enforce Markdown [file format](#file-format) and strip files of trailing
+whitespace. This precludes the [line break syntax] of 2+ spaces; use `<br>`
+instead or reformat your text.
 
 ## Spell checking
 
@@ -78,11 +65,10 @@ OpenTelemetry website, see the
 [`.cspell.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml)
 file.
 
-Run `npm run check:spelling` to verify that all your words are spelled
-correctly. If `cspell` indicates an `Unknown word` error, verify if you wrote
-that word correctly. If so, add this word to the `cSpell:ignore` section at the
-top of your file. If no such section exists, you can add it to the front matter
-of a Markdown file:
+If `cspell` indicates an "Unknown word" error, check whether you wrote the word
+correctly. If so, add the word to the `cSpell:ignore` section at the top of your
+file. If no such section exists, you can add it to the front matter of a
+Markdown file:
 
 ```markdown
 ---
@@ -92,27 +78,30 @@ cSpell:ignore: <word>
 ```
 
 For any other file, add `cSpell:ignore <word>` in a comment line appropriate for
-the file's context. For a [registry](/ecosystem/registry/) entry YAML file file,
-it might look like this:
+the file's context. For a [registry](/ecosystem/registry/) entry YAML file, it
+might look like this:
 
 ```yaml
 # cSpell:ignore <word>
 title: registryEntryTitle
 ```
 
-Website tooling normalizes page-specific dictionaries (that is, the
-`cSpell:ignore` word lists), by removing duplicate words, deleting words in the
-global word list, and sorting words. To normalize page-specific dictionaries,
-run `npm run fix:dict`.
-
 ## File format
 
-To enforce a certain standard on how files are structured, all files should be
-formatted by [prettier](https://prettier.io). Run `npm run fix:format` before
-submitting a PR, or run it afterwards and push an additional commit.
+We enforce file formatting using [Prettier]. Invoke it using
+`npm run fix:format`.
 
 ## File names
 
 All file names should be in
-[kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case). Run
-`npm run fix:filenames` to automatically rename your files.
+[kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case).
+
+## Fixing validation issues
+
+To learn how to fix validation issues, see [Pull request checks](../pr-checks).
+
+[.markdownlint.json]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json
+[line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
+[markdownlint]: https://github.com/DavidAnson/markdownlint
+[Prettier]: https://prettier.io

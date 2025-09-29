@@ -5,10 +5,10 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: Manual instrumentation for OpenTelemetry Go
-cSpell:ignore: fatalf logr logrus otelslog otlplog otlploghttp sdktrace sighup
+cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 ---
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 ## Setup
 
@@ -39,7 +39,7 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -49,7 +49,7 @@ func newExporter(ctx context.Context)  /* (someExporter.Exporter, error) */ {
 	// Your preferred exporter: console, jaeger, zipkin, OTLP, etc.
 }
 
-func newTraceProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
+func newTracerProvider(exp sdktrace.SpanExporter) *sdktrace.TracerProvider {
 	// Ensure default SDK resources and the required service name are set.
 	r, err := resource.Merge(
 		resource.Default(),
@@ -78,7 +78,7 @@ func main() {
 	}
 
 	// Create a new tracer provider with a batch span processor and the given exporter.
-	tp := newTraceProvider(exp)
+	tp := newTracerProvider(exp)
 
 	// Handle shutdown properly so nothing leaks.
 	defer func() { _ = tp.Shutdown(ctx) }()
@@ -91,6 +91,15 @@ func main() {
 ```
 
 You can now access `tracer` to manually instrument your code.
+
+{{% alert title="Important" color="warning" %}}
+
+If you are adding manual spans in conjunction with eBPF-based
+[Go zero-code instrumentation](/docs/zero-code/go), such as with
+[OBI](/docs/zero-code/obi), do not set a global Tracer Provider. See the
+[Auto SDK](/docs/zero-code/go/autosdk) docs for more information.
+
+{{% /alert %}}
 
 ### Creating Spans
 
@@ -185,10 +194,10 @@ span.SetAttributes(myKey.String("a value"))
 #### Semantic Attributes
 
 Semantic Attributes are attributes that are defined by the [OpenTelemetry
-Specification][] in order to provide a shared set of attribute keys across multiple
-languages, frameworks, and runtimes for common concepts like HTTP methods, status
-codes, user agents, and more. These attributes are available in the `go.opentelemetry.io/otel/semconv/v1.26.0`
-package.
+Specification][] in order to provide a shared set of attribute keys across
+multiple languages, frameworks, and runtimes for common concepts like HTTP
+methods, status codes, user agents, and more. These attributes are available in
+the `go.opentelemetry.io/otel/semconv/v1.37.0` package.
 
 For details, see [Trace semantic conventions][].
 
@@ -221,7 +230,7 @@ span.AddEvent("Cancelled wait due to external signal", trace.WithAttributes(attr
 
 ### Set span status
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 ```go
 import (
@@ -302,7 +311,7 @@ OpenTelemetry Go currently supports the following instruments:
 - Histogram, a synchronous instrument that supports arbitrary values that are
   statistically meaningful, such as histograms, summaries, or percentile
 - Synchronous Gauge, a synchronous instrument that supports non-additive values,
-  such as room temperature.
+  such as room temperature
 - Asynchronous Gauge, an asynchronous instrument that supports non-additive
   values, such as room temperature
 - UpDownCounter, a synchronous instrument that supports increments and
@@ -325,8 +334,7 @@ Here you can find more detailed package documentation for:
 
 ### Initialize Metrics
 
-{{% alert color="info" %}} If you’re instrumenting a library, skip this step.
-{{% /alert %}}
+{{% alert %}} If you’re instrumenting a library, skip this step. {{% /alert %}}
 
 To enable [metrics](/docs/concepts/signals/metrics/) in your app, you'll need to
 have an initialized
@@ -366,7 +374,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 func main() {
@@ -400,11 +408,14 @@ func main() {
 }
 
 func newResource() (*resource.Resource, error) {
-	return resource.Merge(resource.Default(),
-		resource.NewWithAttributes(semconv.SchemaURL,
+	return resource.Merge(
+    resource.Default(),
+		resource.NewWithAttributes(
+      semconv.SchemaURL,
 			semconv.ServiceName("my-service"),
 			semconv.ServiceVersion("0.1.0"),
-		))
+		),
+  )
 }
 
 func newMeterProvider(res *resource.Resource) (*metric.MeterProvider, error) {
@@ -549,10 +560,14 @@ import (
 	"go.opentelemetry.io/otel/metric"
 )
 
-var fanSpeedSubscription chan int64
+var (
+  fanSpeedSubscription chan int64
+  speedGauge metric.Int64Gauge
+)
 
 func init() {
-	speedGauge, err := meter.Int64Gauge(
+	var err error
+	speedGauge, err = meter.Int64Gauge(
 		"cpu.fan.speed",
 		metric.WithDescription("Speed of CPU fan"),
 		metric.WithUnit("RPM"),
@@ -755,7 +770,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 func init() {
@@ -1003,7 +1018,7 @@ import (
 	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 func main() {
@@ -1037,11 +1052,14 @@ func main() {
 }
 
 func newResource() (*resource.Resource, error) {
-	return resource.Merge(resource.Default(),
-		resource.NewWithAttributes(semconv.SchemaURL,
+	return resource.Merge(
+    resource.Default(),
+		resource.NewWithAttributes(
+      semconv.SchemaURL,
 			semconv.ServiceName("my-service"),
 			semconv.ServiceVersion("0.1.0"),
-		))
+		),
+  )
 }
 
 func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.LoggerProvider, error) {
@@ -1096,7 +1114,7 @@ telemetry backends.
 [instrumentation library]: ../libraries/
 [opentelemetry collector]:
   https://github.com/open-telemetry/opentelemetry-collector
-[logs bridge API]: /docs/specs/otel/logs/bridge-api
+[logs bridge API]: /docs/specs/otel/logs/api/
 [log data model]: /docs/specs/otel/logs/data-model
 [`go.opentelemetry.io/otel`]: https://pkg.go.dev/go.opentelemetry.io/otel
 [`go.opentelemetry.io/otel/exporters/stdout/stdoutmetric`]:

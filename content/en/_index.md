@@ -5,7 +5,9 @@ description: >-
   observability
 outputs:
   - HTML
-  - REDIRECTS # Include this `content/en` ONLY
+  # Include the following for `content/en` ONLY
+  - REDIRECTS
+  - RSS
 developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.

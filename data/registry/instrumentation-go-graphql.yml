@@ -12,7 +12,8 @@ description:
   Instrumentation for graphql-go GraphQL Server that records GraphQL operations
   using OpenTelemetry Tracing API.
 authors:
-  - name: Benjamin Ziehms
+  - name: Uptrace
+    url: https://github.com/uptrace
 urls:
   repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelgraphql
 createdAt: 2021-10-25

@@ -8,6 +8,8 @@ The OpenTelemetry Collector consists of a single binary which you can use in
 different ways, for different use cases. This section describes deployment
 patterns, their use cases along with pros and cons and best practices for
 collector configurations for cross-environment and multi-backend deployments.
+For deployment security considerations, see [Collector hosting best
+practices][security].
 
 ## Resources
 
@@ -15,6 +17,7 @@ collector configurations for cross-environment and multi-backend deployments.
   Patterns][y-patterns]
 - [Deployment Patterns][gh-patterns] accompanying the talk
 
+[security]: /docs/security/hosting-best-practices/
 [gh-patterns]:
   https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/
 [y-patterns]: https://www.youtube.com/watch?v=WhRrwSHDBFs

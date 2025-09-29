@@ -1,8 +1,8 @@
 ---
 title: Context
 weight: 55
-cSpell:ignore: Swoole
 description: Learn how the context API works in instrumented applications.
+cSpell:ignore: Swoole
 ---
 
 OpenTelemetry works by storing and propagating telemetry data. For example, when
@@ -25,7 +25,7 @@ like asynchronous or concurrent execution with `fibers`.
 
 ## Context keys
 
-Values as stored in context as key-value pairs. Context keys are used to store
+Values are stored in context as key-value pairs. Context keys are used to store
 and retrieve values from context.
 
 Keys can be created by calling `OpenTelemetry\Context\Context::createKey()`, for

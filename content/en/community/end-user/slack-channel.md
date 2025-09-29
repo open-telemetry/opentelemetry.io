@@ -6,21 +6,17 @@ description: >-
 weight: 40
 ---
 
-Previously, we had a private channel to provide a space for end users to discuss
-adoption and implementation issues while allowing them to maintain a layer of
-privacy and to meet compliance concerns. Now that the project and community have
-grown, and with the transition of the End User WG to End User SIG, we believe
-that this private channel is no longer needed.
+Join our Slack channel to connect with other OpenTelemetry end users!
 
-As of April 2024, we will begin shifting all of our communications to the
-[`#otel-sig-end-user`](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
-channel (previously named the `#otel-user-research` channel), and will be
-archiving the private channel by **April 30, 2024**.
+First, [request an invitation](https://slack.cncf.io/) to CNCF's Slack instance.
+Next, join
+[`#otel-sig-end-user`](https://cloud-native.slack.com/archives/C01RT3MSWGZ), and
+introduce yourself if you'd like.
 
-We encourage you to join us over at
-[`#otel-sig-end-user`](https://cloud-native.slack.com/archives/C01RT3MSWGZ) to
-learn about our new charter, what you can expect from us as an end user, and
-more. Note the following:
+We encourage questions and discussions about adoption and implementation. You
+can also hear about upcoming events and get a chance to contribute to the
+project by participating in surveys and user feedback sessions. Note the
+following:
 
 - Troubleshooting or tactical SDK specific questions are still best directed to
   individual SIG channels or the

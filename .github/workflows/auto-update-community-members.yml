@@ -1,0 +1,66 @@
+name: Auto-update community members page
+
+on:
+  workflow_dispatch:
+  schedule:
+    # At 03:41, every day
+    - cron: 41 3 * * *
+
+permissions:
+  contents: read
+
+jobs:
+  auto-update-versions:
+    name: Auto-update community members page
+    runs-on: ubuntu-latest
+    # Remove the if statement below when testing against a fork
+    if: github.repository == 'open-telemetry/opentelemetry.io'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        working-directory: ./scripts/generate-community-data
+        run: npm install
+
+      - uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: otelbot-token
+        with:
+          # the higher privileged docs token is needed to push commits to an existing PR
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
+      - name: Run script
+        working-directory: ./scripts/generate-community-data
+        run: node generate.js ../../data/community/members.yaml
+        env:
+          GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+
+      - name: Use CLA approved github bot
+        run: |
+          git config user.name otelbot
+          git config user.email 197425009+otelbot@users.noreply.github.com
+
+      - name: Fix refcache
+        run: |
+          npm install --omit=optional
+          npm run fix:refcache
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          add-paths: |
+            data/community/members.yaml
+            static/refcache.json
+          author: otelbot <197425009+otelbot@users.noreply.github.com>
+          committer: otelbot <197425009+otelbot@users.noreply.github.com>
+          token: ${{ steps.otelbot-token.outputs.token }}
+          branch: otelbot/update-community-members
+          title: Update community members
+          body: |
+            This pull request contains automated updates to files by the GitHub Action.

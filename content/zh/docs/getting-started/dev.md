@@ -2,6 +2,7 @@
 title: 开发人员入门
 linkTitle: Dev
 default_lang_commit: e771c886739c4847b332b74f24b09d2769aab875
+drifted_from_default: true
 ---
 
 如果你符合以下条件，那么这个[入门指南](..)就是为你准备的：
@@ -23,7 +24,7 @@ API 手动为你自己的代码添加插桩——我们建议你先学习以下�
 接下来，你可以深入了解一些你会用到的[编程语言](../../languages/)文档：
 
 - [C++](../../languages/cpp/)
-- [.NET](../../languages/net/)
+- [.NET](../../languages/dotnet/)
 - [Erlang / Elixir](../../languages/erlang/)
 - [Go](../../languages/go/)
 - [Java](../../languages/java/)

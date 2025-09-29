@@ -5,14 +5,12 @@ description: >-
   alt="JavaScript"> A language-specific implementation of OpenTelemetry in
   JavaScript (for Node.js & the browser).
 aliases: [/js, /js/metrics, /js/tracing]
-cSpell:ignore: Roadmap
 weight: 20
 ---
 
 {{% docs/languages/index-intro js /%}}
 
-{{% alert title="Warning" color="warning" %}}
-{{% _param notes.browser-instrumentation %}} {{% /alert %}}
+{{% include browser-instrumentation-warning.md %}}
 
 ## Version Support
 
@@ -22,6 +20,10 @@ OpenTelemetry.
 
 OpenTelemetry JavaScript has no official supported list of browsers. It is aimed
 to work on currently supported versions of major browsers.
+
+OpenTelemetry JavaScript follows DefinitelyTyped's support policy for TypeScript
+which sets a support window of 2 years. Support for TypeScript versions older
+than 2 years will be dropped in minor releases of OpenTelemetry JavaScript.
 
 For more details on runtime support see
 [this overview](https://github.com/open-telemetry/opentelemetry-js#supported-runtimes).

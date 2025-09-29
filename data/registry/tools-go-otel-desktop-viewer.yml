@@ -1,0 +1,18 @@
+title: otel-desktop-viewer
+registryType: utilities
+language: go
+tags:
+  - otel
+  - desktop
+  - viewer
+urls:
+  repo: https://github.com/CtrlSpice/otel-desktop-viewer
+license: Apache 2.0
+description:
+  otel-desktop-viewer is a CLI tool for receiving OpenTelemetry traces while
+  working on your local machine that helps you visualize and explore your trace
+  data without needing to send it on to a telemetry vendor.
+authors:
+  - name: CtrlSpice
+    url: https://github.com/CtrlSpice
+createdAt: 2024-12-12

@@ -163,6 +163,10 @@ async function collectDetails() {
   // Sort committees to the top of the output
   const sortedResult = { ...committees, ...result };
 
+  for (const key in sortedResult) {
+    sortedResult[key].sort((a, b) => a.name.localeCompare(b.name));
+  }
+
   // Convert result to a plain JSON object to avoid YAML anchors
   const plainResult = JSON.parse(JSON.stringify(sortedResult));
 

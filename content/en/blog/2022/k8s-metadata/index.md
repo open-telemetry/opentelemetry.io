@@ -7,10 +7,10 @@ author: '[Ruben Vargas](https://github.com/rubenvp8510)'
 cSpell:ignore: k8sattributes k8sattributesprocessor k8sprocessor KUBE replicaset replicasetname resourcedetection
 ---
 
-{{% alert title="Note" color="info" %}} The most up to date information for how
+{{% alert title="Note" %}} The most up to date information for how
 to enhance telemetry with Kubernetes metadata can be found in the docs. See
-[Getting Started with Kubernetes](/docs/kubernetes/getting-started/) for more
-info. {{% /alert %}}
+[Getting Started with Kubernetes](/docs/platforms/kubernetes/getting-started/)
+for more info. {{% /alert %}}
 
 Attaching Kubernetes resource metadata to OpenTelemetry traces is useful to
 identify which resource (such as a pod) is failing or having performance
@@ -172,10 +172,11 @@ reducing the scope of the collector service account to a single namespace.
 
 ## Using Resource detector processor
 
-As of [recently][pr#832], the [OpenTelemetry operator][] sets the `OTEL_RESOURCE_ATTRIBUTES`
-environment variable on the collector container with the K8s pod attributes. This
-lets you to use the resource detector processor, which attaches the environment variable
-values to the spans. This only works when the collector is deployed in sidecar mode.
+As of [recently][pr#832], the [OpenTelemetry operator][] sets the
+`OTEL_RESOURCE_ATTRIBUTES` environment variable on the collector container with
+the K8s pod attributes. This lets you to use the resource detector processor,
+which attaches the environment variable values to the spans. This only works
+when the collector is deployed in sidecar mode.
 
 For example, if you deploy the following manifest:
 

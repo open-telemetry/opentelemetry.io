@@ -11,7 +11,7 @@ having a great summer (or if you're in the southern hemisphere, a great winter!)
 Let's get into the updates and releases from the past month.
 
 Are you a maintainer with something you’d like featured here? Get in touch with
-me [via email](mailto:austin+otel@ap2.io), or on the
+[Austin Parker via email](mailto:austin+otel@ap2.io), or on the
 [CNCF Slack #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
 channel.
 
@@ -72,7 +72,7 @@ includes updates to OTLP and log support.
 includes metric bug fixes for histograms and exponential histograms. In
 addition, OTLP support has been updated.
 
-#### [.NET](/docs/languages/net/)
+#### [.NET](/docs/languages/dotnet/)
 
 [Version 1.6.0-alpha.1](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.6.0-alpha.1)
 has been released. 1.6 re-introduces support for exemplars, as well as

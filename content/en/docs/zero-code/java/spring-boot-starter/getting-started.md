@@ -4,7 +4,7 @@ weight: 20
 cSpell:ignore: springboot
 ---
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 You can also use the [Java agent](../../agent) to instrument your Spring Boot
 application. For the pros and cons, see [Java zero-code instrumentation](..).
@@ -29,14 +29,14 @@ To ensure version alignment across all OpenTelemetry dependencies, you must
 import the `opentelemetry-instrumentation-bom` BOM when using the OpenTelemetry
 starter.
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 When using Maven, import the OpenTelemetry BOMs before any other BOMs in your
 project. For example, if you import the `spring-boot-dependencies` BOM, you have
 to declare it after the OpenTelemetry BOMs.
 
 Gradle selects the
-[latest version](https://docs.gradle.org/current/userguide/dependency_resolution.html#sec:version-conflict)
+[latest version](https://docs.gradle.org/current/userguide/dependency_resolution.html#2_perform_conflict_resolution)
 of a dependency when multiple BOMs, so the order of BOMs is not important.
 
 {{% /alert %}}
@@ -92,7 +92,7 @@ dependencyManagement {
 }
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 Be careful not to mix up the different ways of configuring things with Gradle.
 For example, don't use
@@ -106,25 +106,21 @@ with the `io.spring.dependency-management` plugin.
 Add the dependency given below to enable the OpenTelemetry starter.
 
 The OpenTelemetry starter uses OpenTelemetry Spring Boot
-[autoconfiguration](https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.auto-configuration).
+[autoconfiguration](https://docs.spring.io/spring-boot/reference/using/auto-configuration.html).
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
 ```xml
-<dependencies>
-  <dependency>
+<dependency>
     <groupId>io.opentelemetry.instrumentation</groupId>
     <artifactId>opentelemetry-spring-boot-starter</artifactId>
-  </dependency>
-</dependencies>
+</dependency>
 ```
 
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+{{% /tab %}} {{% tab header="Gradle (`build.gradle`)" lang=Gradle %}}
 
 ```kotlin
-dependencies {
-	implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter")
-}
+implementation("io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter")
 ```
 
 {{% /tab %}} {{< /tabpane>}}

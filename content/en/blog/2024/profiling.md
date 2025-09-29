@@ -58,7 +58,7 @@ utilization at a code-level and allows for this profiling data to be stored,
 queried, and analyzed over time and across different attributes. It’s an
 important technique for developers and performance engineers to understand
 exactly what’s happening in their code. OpenTelemetry’s
-[profiling signal](https://github.com/open-telemetry/oteps/blob/main/text/profiles/0239-profiles-data-model.md)
+[profiling signal](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0239-profiles-data-model.md)
 expands upon the work that has been done in this space and, as a first for the
 industry, connects profiles with other telemetry signals from applications and
 infrastructure. This allows developers and operators to correlate resource
@@ -120,7 +120,7 @@ many more.
 2024 promises to be another big year for OpenTelemetry as we continue to
 implement and stabilize our existing tracing, metrics, and log signals while
 adding support for profiling, client-side RUM, and more. It’s a great time to
-get involved – check out our [website](https://opentelemetry.io) to learn more!
+get involved! To learn more, check out the rest of the [website](/).
 
 [^1]: Pending due diligence and review by the OpenTelemetry maintainers.
 

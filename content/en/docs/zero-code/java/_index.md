@@ -6,10 +6,11 @@ aliases:
   - /docs/languages/java/automatic_instrumentation
 cascade:
   vers:
-    instrumentation: 2.6.0
-    otel: 1.40.0
+    instrumentation: 2.20.1
+    otel: 1.54.1
 ---
 
-Zero-code instrumentation with Java uses a Java agent JAR or Spring Boot
-Starter. To learn how to manually instrument your service or app code, see
+Common options for zero-code instrumentation with Java are the Java agent JAR,
+Spring Boot Starter, and the Quarkus OpenTelemetry Extension. To learn how to
+manually instrument your service or app code, see
 [Manual instrumentation](/docs/languages/java/instrumentation/).

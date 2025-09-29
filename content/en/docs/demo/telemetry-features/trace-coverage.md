@@ -4,21 +4,23 @@ linkTitle: Trace Coverage
 aliases: [trace_service_features, trace-features, ../trace-features]
 ---
 
-| Service            | Language   | Instrumentation Libraries | Manual Span Creation | Span Data Enrichment | RPC Context Propagation | Span Links | Baggage | Resource Detection |
-| ------------------ | ---------- | ------------------------- | -------------------- | -------------------- | ----------------------- | ---------- | ------- | ------------------ |
-| Accounting Service | Go         | 🚧                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | ✅                 |
-| Ad                 | Java       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
-| Cart               | .NET       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | ✅                 |
-| Checkout           | Go         | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | ✅                 |
-| Currency           | C++        | 🔕                        | ✅                   | ✅                   | ✅                      | 🔕         | 🔕      | 🚧                 |
-| Email              | Ruby       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
-| Fraud Detection    | Kotlin     | ✅                        | 🚧                   | 🚧                   | 🚧                      | ✅         | 🚧      | 🚧                 |
-| Frontend           | JavaScript | ✅                        | ✅                   | ✅                   | 🔕                      | ✅         | ✅      | ✅                 |
-| Payment            | JavaScript | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | ✅      | ✅                 |
-| Product Catalog    | Go         | ✅                        | 🔕                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
-| Quote Service      | PHP        | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
-| Recommendation     | Python     | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
-| Shipping           | Rust       | 🔕                        | ✅                   | ✅                   | ✅                      | 🔕         | 🔕      | 🚧                 |
+| Service         | Language   | Instrumentation Libraries | Manual Span Creation | Span Data Enrichment | RPC Context Propagation | Span Links | Baggage | Resource Detection |
+| --------------- | ---------- | ------------------------- | -------------------- | -------------------- | ----------------------- | ---------- | ------- | ------------------ |
+| Accounting      | .NET       | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | ✅                 |
+| Ad              | Java       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
+| Cart            | .NET       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | ✅                 |
+| Checkout        | Go         | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | ✅                 |
+| Currency        | C++        | 🔕                        | ✅                   | ✅                   | ✅                      | 🔕         | 🔕      | 🚧                 |
+| Email           | Ruby       | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
+| Flagd-ui        | TypeScript | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | 🚧                 |
+| Fraud Detection | Kotlin     | ✅                        | 🚧                   | 🚧                   | 🚧                      | ✅         | 🚧      | 🚧                 |
+| Frontend        | TypeScript | ✅                        | ✅                   | ✅                   | 🔕                      | ✅         | ✅      | ✅                 |
+| Load Generator  | Python     | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | 🚧                 |
+| Payment         | JavaScript | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | ✅      | ✅                 |
+| Product Catalog | Go         | ✅                        | 🔕                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
+| Quote Service   | PHP        | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
+| Recommendation  | Python     | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
+| Shipping        | Rust       | ✅                        | ✅                   | ✅                   | ✅                      | 🔕         | 🔕      | ✅                 |
 
 Emoji Legend:
 

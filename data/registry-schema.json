@@ -1,4 +1,5 @@
 {
+  "cspell:ignore": "matlab",
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://opentelemetry.io/ecosystem/registry/schema.json",
   "$comment": "https://opentelemetry.io/ecosystem/registry/adding/",
@@ -8,7 +9,7 @@
     "title": {
       "type": "string",
       "description": "The title of the entry",
-      "errorMessage": "The title of the entry must be a string and can not be empty",
+      "errorMessage": "The title of the entry must be a string and cannot be empty",
       "minLength": 1
     },
     "registryType": {
@@ -22,6 +23,7 @@
         "instrumentation",
         "log-bridge",
         "processor",
+        "provider",
         "receiver",
         "resource-detector",
         "utilities"
@@ -30,13 +32,38 @@
     "language": {
       "type": "string",
       "description": "The programming language of the entry",
-      "examples": ["collector"],
-      "pattern": "^[a-z0-9]+$"
+      "enum": [
+        "collector",
+        "cpp",
+        "crystal",
+        "dart",
+        "dotnet",
+        "elixir",
+        "erlang",
+        "go",
+        "haskell",
+        "java",
+        "js",
+        "julia",
+        "kotlin",
+        "lua",
+        "matlab",
+        "ocaml",
+        "perl",
+        "php",
+        "python",
+        "ruby",
+        "rust",
+        "scala",
+        "shell",
+        "swift",
+        "yaml"
+      ]
     },
     "description": {
       "type": "string",
       "description": "A description of the entry",
-      "errorMessage": "The description of the entry must be a string and can not be empty"
+      "errorMessage": "The description of the entry must be a string and cannot be empty"
     },
     "license": {
       "type": "string",
@@ -66,7 +93,7 @@
             "oneOf": [
               {
                 "pattern": "OpenTelemetry Authors",
-                "errorMessage": "The name of the author can not contain 'OpenTelemetry' except for 'OpenTelemetry Authors'"
+                "errorMessage": "The name of the author cannot contain 'OpenTelemetry' except for 'OpenTelemetry Authors'"
               },
               {
                 "pattern": "^(?!.*OpenTelemetry).*$"
@@ -82,9 +109,9 @@
           },
           "url": {
             "type": "string",
-            "description": "The URL of the author",
-            "pattern": "^https:\\/\\/github\\.com\\/([a-zA-Z0-9](?:-?[a-zA-Z0-9]){0,38})$",
-            "errorMessage": "The URL of the author must be a valid GitHub user URL"
+            "description": "The URL of the author. This can be a website or a GitHub handle URL.",
+            "format": "uri",
+            "pattern": "^https://.*$"
           }
         },
         "if": {
@@ -185,7 +212,7 @@
         "reason": {
           "type": "string",
           "description": "The reason for deprecation",
-          "errorMessage": "The reason for deprecation must be a string and can not be empty"
+          "errorMessage": "The reason for deprecation must be a string and cannot be empty"
         }
       },
       "required": ["reason"],

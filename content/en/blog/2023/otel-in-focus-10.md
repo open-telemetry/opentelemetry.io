@@ -4,7 +4,7 @@ linkTitle: OTel in Focus 2023/10
 date: 2023-11-01
 author: '[Austin Parker](https://github.com/austinlparker)'
 # prettier-ignore
-cSpell:ignore: Contribfest distro dockerstats dockerstatsreceiver k8sclusterreceiver parquetexporter pdata Pekko receiver resourcetype signalfxexporter splunkhecexporter structs
+cSpell:ignore: Contribfest distro dockerstatsreceiver k8sclusterreceiver parquetexporter pdata Pekko resourcetype signalfxexporter splunkhecexporter structs
 ---
 
 Welcome back to **OpenTelemetry in Focus** for October, 2023! It's been another
@@ -12,7 +12,7 @@ busy month as we prepare for KubeCon North America in Chicago. We've got a lot
 to talk about once we're there, and we're excited to see you all in person!
 
 Are you a maintainer with something you’d like featured here? Get in touch with
-me [via email](mailto:austin+otel@ap2.io), or on the
+[Austin Parker via email](mailto:austin+otel@ap2.io), or on the
 [CNCF Slack #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
 channel.
 
@@ -27,8 +27,8 @@ Here are the latest updates from some of our core repositories.
 Version 1.26.0 of the OpenTelemetry Specification has been released. This
 release includes several small changes, along with a new section that explains
 how OpenTelemetry handles upgrading and version management for components. For
-full details, please visit the full changelog
-[here](https://github.com/open-telemetry/opentelemetry-specification/compare/v1.25.0...v1.26.0)
+full details, see the
+[changes between v1.25.0 and v1.26.0](https://github.com/open-telemetry/opentelemetry-specification/compare/v1.25.0...v1.26.0)
 
 Semantic Conventions v1.22.0 introduces critical changes to the JVM, HTTP,
 System, and Messaging namespaces.
@@ -119,7 +119,7 @@ fixes several bugs in tracing and metrics. Experimental builds include several
 bug fixes and enhancements to the logging exporter, the deprecation of direct
 Jaeger export, and more.
 
-#### [.NET](/docs/languages/net/)
+#### [.NET](/docs/languages/dotnet/)
 
 [Version 1.7.0-alpha](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.7.0-alpha.1)
 includes many bug fixes and updates, including some breaking changes.

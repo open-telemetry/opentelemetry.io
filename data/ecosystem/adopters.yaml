@@ -1,13 +1,19 @@
-# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner VTEX
+# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip
 - name: AppDirect
   url: https://www.appdirect.com/
   components: [Collector]
   reference: ''
   contact: ''
+- name: Alibaba
+  url: https://www.alibaba.com/
+  reference: /blog/2025/otip-alibaba/
+  components: [Collector, Go, Java, JavaScript, PHP, Python]
+  referenceTitle: blog post
 - name: Bureau.id
   url: https://bureau.id/
   components: [Collector, Python, Go, Lambda]
   reference: 'https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c29'
+  referenceTitle: blog post
   contact: https://github.com/ethicalmohit
 - name: Care.com
   url: https://www.care.com
@@ -19,6 +25,11 @@
   components: [Collector, Python]
   reference: ''
   contact: ''
+- name: Delivery Hero
+  url: https://www.deliveryhero.com/
+  components: [Collector, Go, Java]
+  reference: ''
+  contact: https://github.com/ekovalenk0
 - name: Dropbox DocSend
   url: https://www.docsend.com/
   components: [Ruby]
@@ -26,8 +37,9 @@
   contact: ''
 - name: Dyte
   url: https://dyte.io
-  components: [Go, Javascript]
+  components: [Go, JavaScript]
   reference: 'https://dyte.io/blog/opentelemetry-at-dyte-part-i/'
+  referenceTitle: blog post
   contact: https://github.com/ethicalmohit
 - name: eBay
   url: https://www.ebay.com
@@ -60,9 +72,10 @@
   contact: ''
 - name: Heroku
   url: https://heroku.com
-  components: [Ruby]
-  reference: ''
-  contact: ''
+  components: [Collector, Go, Ruby, JavaScript, Operator]
+  reference: 'https://youtu.be/5iM8n3uCo_U?si=PJ6tFYcYED3lhAcK'
+  referenceTitle: CNCF talk
+  contact: 'https://www.heroku.com/contact/'
 - name: MercadoLibre
   url: https://www.mercadolibre.com/
   components: [Collector, Go, Java, JavaScript, Python]
@@ -103,7 +116,7 @@
   contact: https://github.com/igorestevanjasinski
 - name: Skyscanner
   url: https://www.skyscanner.net/
-  components: [Collector, Go, Java, Javascript, Python]
+  components: [Collector, Go, Java, JavaScript, Python]
   reference: https://www.infoq.com/presentations/opentelemetry-observability/
   referenceTitle: presentation
   contact: https://github.com/danielgblanco/
@@ -117,6 +130,11 @@
   components: []
   reference: ''
   contact: ''
+- name: Tranzzo
+  url: https://tranzzo.com/
+  components: [Collector, Java]
+  reference: ''
+  contact: https://github.com/illenko
 - name: Uplight
   url: https://uplight.com/
   components: [Collector, Ruby, Java, Python, .NET]
@@ -127,6 +145,7 @@
   url: https://www.vtex.com/
   components: [Collector, Go, JavaScript, .NET]
   reference: 'https://colocatedeventseu2023.sched.com/event/1Jo8E/ingesting-65-tb-of-telemetry-data-daily-through-open-telemetry-protocol-and-collectors-gustavo-pantuza-vtex'
+  referenceTitle: presentation
   contact: 'sre-observability@vtex.com'
 - name: Wandera
   url: https://www.wandera.com/
@@ -138,3 +157,27 @@
   components: []
   reference: ''
   contact: ''
+- name: Global Processing
+  url: https://www.globalprocessing.com.ar/
+  components: [Collector, .NET, Python, Java, Go]
+  reference: 'https://www.linkedin.com/posts/santiago-lator_opentelemetry-opentelemetry-observabilidad-activity-7258132675268354050-oP1q'
+  referenceTitle: post
+  contact: 'santiago.lator@globalprocessing.com.ar'
+- name: UiPath
+  url: https://www.uipath.com/
+  components: [Collector, .NET]
+  reference: 'https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a'
+  referenceTitle: blog post
+  contact: 'junda.yin@uipath.com'
+- name: PicPay
+  url: https://picpay.com/
+  components: [Collector, Go, Java, PHP, Python]
+  reference: 'https://medium.com/inside-picpay/observabilidade-com-hyperf-e-opentelemetry-dd698844eda'
+  referenceTitle: blog post
+  contact: 'observability@picpay.com'
+- name: PagBank
+  url: https://pagbank.com.br/
+  components: [Collector, Operator, Java, JavaScript, PHP, Python, .NET, Go]
+  reference: ''
+  referenceTitle: ''
+  contact: 'https://github.com/ezeqme'

@@ -1,8 +1,8 @@
 ---
 title: Migrating from OpenTracing
 linkTitle: OpenTracing
-cSpell:ignore: codebases
 weight: 2
+cSpell:ignore: codebases
 ---
 
 Backward compatibility with [OpenTracing][] has been a priority for the
@@ -181,7 +181,7 @@ For details on how each OpenTracing shim works, see the appropriate
 language-specific documentation. For details on the design of the OpenTracing
 shim, see [OpenTracing Compatibility][ot_spec].
 
-[.net]: /docs/languages/net/shim/
+[.net]: /docs/languages/dotnet/shim/
 [go]: https://pkg.go.dev/go.opentelemetry.io/otel/bridge/opentracing
 [java]:
   https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim

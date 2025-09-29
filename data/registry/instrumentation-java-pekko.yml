@@ -1,0 +1,17 @@
+# cSpell:ignore pekko
+title: Instrumentation for Apache Pekko
+registryType: instrumentation
+language: java
+tags:
+  - pekko
+  - instrumentation
+  - java
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/pekko
+license: Apache 2.0
+description:
+  This library provides a Apache Pekko instrumentation to track requests through
+  OpenTelemetry.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18

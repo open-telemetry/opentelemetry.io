@@ -2,7 +2,6 @@
 title: The State of Profiling
 linkTitle: Profiling state
 date: 2024-10-25
-cSpell:ignore: Baeyens Florian Geisendörfer Kalkanis Lehner Mathieu Rühsen
 author: >-
   [Damien Mathieu](https://github.com/dmathieu) (Elastic), [Pablo
   Baeyens](https://github.com/mx-psi) (Datadog), [Felix
@@ -13,6 +12,7 @@ author: >-
   Rühsen](https://github.com/rockdaboot) (Elastic)
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/5477
 sig: Profiling SIG
+cSpell:ignore: Baeyens Florian Geisendörfer Kalkanis Lehner Mathieu Rühsen
 ---
 
 A little over six months ago, OpenTelemetry announced
@@ -97,7 +97,7 @@ this effort, you can
 ## Semantic Conventions and Specification
 
 To improve interoperability, the Profiling SIG worked also on
-[OpenTelemetry Semantic Conventions for profiling](/docs/specs/semconv/attributes-registry/profile/).
+[OpenTelemetry Semantic Conventions for profiling](/docs/specs/semconv/registry/attributes/profile/).
 There is also ongoing work to introduce a
 [profiling OpenTelemetry specification](https://github.com/open-telemetry/opentelemetry-specification/pull/4197).
 This work will continue and should enable wide adoption across different

@@ -8,7 +8,7 @@ author: >
 issue: https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/11581
 sig: Java
 # prettier-ignore
-cSpell:ignore: Bisutti Customizer customizers Gregor Logback logback petclinic Zeitlinger
+cSpell:ignore: Bisutti Customizer customizers Gregor logback petclinic Zeitlinger
 ---
 
 We're proud to announce that the OpenTelemetry Spring Boot starter is now

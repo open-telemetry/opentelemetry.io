@@ -13,8 +13,9 @@ description:
   behavior.
 authors:
   - name: Traefik Labs
+    url: https://github.com/immanuelfodor
 urls:
   website: https://traefik.io/traefik-hub/
   docs: https://doc.traefik.io/traefik-hub/operations/metrics
-createdAt: '2024-08-06'
+createdAt: 2024-08-06
 isNative: true

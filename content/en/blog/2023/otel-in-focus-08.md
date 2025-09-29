@@ -11,7 +11,7 @@ Welcome back to **OpenTelemetry in Focus** for August, 2023! It's been a busy
 summer, so let's get into the updates without further ado.
 
 Are you a maintainer with something you’d like featured here? Get in touch with
-me [via email](mailto:austin+otel@ap2.io), or on the
+[Austin Parker via email](mailto:austin+otel@ap2.io), or on the
 [CNCF Slack #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
 channel.
 
@@ -89,7 +89,7 @@ the OTLP exporter.
 [Version 1.15.2](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.15.1)
 fixes several bugs.
 
-#### [.NET](/docs/languages/net/)
+#### [.NET](/docs/languages/dotnet/)
 
 [Version 1.6.0-rc.1](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.6.0-rc.1)
 has been released, bringing small changes to metrics, export, and an

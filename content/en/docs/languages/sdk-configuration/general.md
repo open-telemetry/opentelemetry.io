@@ -1,11 +1,12 @@
 ---
 title: General SDK Configuration
 linkTitle: General
+weight: 10
 aliases: [general-sdk-configuration]
 cSpell:ignore: ottrace
 ---
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 Support for environment variables is optional. For detailed information on which
 environment variables each language implementation supports, please consult the
@@ -108,7 +109,7 @@ be set as follows:
 
 Specifies Propagators to be used in a comma-separated list.
 
-**Default value:** `"tracecontext,baggage"
+**Default value:** `"tracecontext,baggage"`
 
 **Example:**
 
@@ -133,7 +134,8 @@ Accepted values for `OTEL_PROPAGATORS` are:
 
 ## `OTEL_TRACES_EXPORTER`
 
-Specifies which exporter is used for traces.
+Specifies which exporter is used for traces. Depending on the implementation it
+may be a comma-separated list.
 
 **Default value:** `"otlp"`
 
@@ -146,11 +148,13 @@ Accepted values for are:
 - `"otlp"`: [OTLP][]
 - `"jaeger"`: export in Jaeger data model
 - `"zipkin"`: [Zipkin](https://zipkin.io/zipkin-api/)
+- `"console"`: [Standard Output](/docs/specs/otel/trace/sdk_exporters/stdout/)
 - `"none"`: No automatically configured exporter for traces.
 
 ## `OTEL_METRICS_EXPORTER`
 
-Specifies which exporter is used for metrics.
+Specifies which exporter is used for metrics. Depending on the implementation it
+may be a comma-separated list.
 
 **Default value:** `"otlp"`
 
@@ -162,12 +166,14 @@ Accepted values for `OTEL_METRICS_EXPORTER` are:
 
 - `"otlp"`: [OTLP][]
 - `"prometheus"`:
-  [Prometheus](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md)
+  [Prometheus](https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md)
+- `"console"`: [Standard Output](/docs/specs/otel/metrics/sdk_exporters/stdout/)
 - `"none"`: No automatically configured exporter for metrics.
 
 ## `OTEL_LOGS_EXPORTER`
 
-Specifies which exporter is used for logs.
+Specifies which exporter is used for logs. Depending on the implementation it
+may be a comma-separated list.
 
 **Default value:** `"otlp"`
 
@@ -178,6 +184,7 @@ Specifies which exporter is used for logs.
 Accepted values for `OTEL_LOGS_EXPORTER` are:
 
 - `"otlp"`: [OTLP][]
+- `"console"`: [Standard Output](/docs/specs/otel/logs/sdk_exporters/stdout/)
 - `"none"`: No automatically configured exporter for logs.
 
 [otlp]: /docs/specs/otlp/

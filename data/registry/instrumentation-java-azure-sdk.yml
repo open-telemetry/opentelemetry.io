@@ -10,6 +10,7 @@ license: MIT
 description: Instrumentation for Azure SDK for Java (Track 2 libraries).
 authors:
   - name: Microsoft Authors
+    url: https://www.microsoft.com/
 urls:
   repo: https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/core/azure-core-tracing-opentelemetry
 createdAt: 2021-12-16

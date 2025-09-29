@@ -5,16 +5,15 @@ aliases: [instrumenting]
 weight: 15
 ---
 
-In order to make a system observable, it must be **instrumented**: That is, code
-from the system's components must emit [traces](/docs/concepts/signals/traces/),
-[metrics](/docs/concepts/signals/metrics/), and
-[logs](/docs/concepts/signals/logs/).
+For a system to be [observable], it must be **instrumented**: that is, code from
+the system's components must emit [signals], such as [traces], [metrics], and
+[logs].
 
 Using OpenTelemetry, you can instrument your code in two primary ways:
 
-1. [Code-based solutions](/docs/concepts/instrumentation/code-based) via
-   official [APIs and SDKs for most languages](/docs/languages/)
-2. [Zero-code solutions](/docs/concepts/instrumentation/zero-code/)
+1. [Code-based solutions](code-based/) via official
+   [APIs and SDKs for most languages](/docs/languages/)
+2. [Zero-code solutions](zero-code/)
 
 **Code-based** solutions allow you to get deeper insight and rich telemetry from
 your application itself. They let you use the OpenTelemetry API to generate
@@ -37,20 +36,24 @@ solutions. The following things are also a part of OpenTelemetry:
 - Libraries can leverage the OpenTelemetry API as a dependency, which will have
   no impact on applications using that library, unless the OpenTelemetry SDK is
   imported.
-- For each [signal](/docs/concepts/signals) (traces, metrics, logs) you have
-  several methods at your disposals to create, process, and export them.
-- With [context propagation](/docs/concepts/context-propagation) built into the
+- For each of the [signals] you have several methods at your disposal to create,
+  process, and export them.
+- With [context propagation](../context-propagation/) built into the
   implementations, you can correlate signals regardless of where they are
   generated.
-- [Resources](/docs/concepts/resources) and
-  [Instrumentation Scopes](/docs/concepts/instrumentation-scope) allow grouping
-  of signals, by different entities, like, the
-  [host](/docs/specs/semconv/resource/host/),
+- [Resources](../resources/) and
+  [Instrumentation Scopes](../instrumentation-scope/) allow grouping of signals,
+  by different entities, like, the [host](/docs/specs/semconv/resource/host/),
   [operating system](/docs/specs/semconv/resource/os/) or
   [K8s cluster](/docs/specs/semconv/resource/k8s/#cluster)
 - Each language-specific implementation of the API and SDK follows the
   requirements and expectations of the
   [OpenTelemetry specification](/docs/specs/otel/).
-- [Semantic Conventions](/docs/concepts/semantic-conventions) provide a common
-  naming schema that can be used for standardization across code bases and
-  platforms.
+- [Semantic Conventions](../semantic-conventions/) provide a common naming
+  schema that can be used for standardization across code bases and platforms.
+
+[logs]: ../signals/logs/
+[metrics]: ../signals/metrics/
+[observable]: ../observability-primer/#what-is-observability
+[signals]: ../signals/
+[traces]: ../signals/traces/

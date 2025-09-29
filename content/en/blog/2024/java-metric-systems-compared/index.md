@@ -13,7 +13,8 @@ across many popular languages, OpenTelemetry reduces the cognitive load of
 polyglot teams by providing one vocabulary and one toolkit.
 
 While that’s all true, today I’d like to zoom in on a specific signal and
-language, and talk about the performance of the [OpenTelemetry Java][] metrics SDK.
+language, and talk about the performance of the [OpenTelemetry Java][] metrics
+SDK.
 
 ## Metrics Primer
 
@@ -284,7 +285,7 @@ The result is a configurable option unique to OpenTelemetry Java called
 what their memory mode is based on whether they read metric state concurrently
 or not. Right now you opt into the optimized memory behavior (which we call
 `MemoryMode.reusable_data`) via an
-[environment variable](https://github.com/open-telemetry/opentelemetry-java/tree/main/sdk-extensions/autoconfigure#exporters).
+[environment variable](/docs/languages/java/configuration/#properties-exporters).
 In the future, the optimized memory mode will be enabled by default, since only
 exceptional cases need concurrent access to the metric state. It turns out that
 the objects holding the metric state (`MetricData` in OpenTelemetry Java terms)
@@ -358,8 +359,8 @@ And now a description of the methodology and how to interpret the data:
 
 - The code supporting these benchmarks is available on at
   [github.com/jack-berg/metric-system-benchmarks](https://github.com/jack-berg/metric-system-benchmarks),
-  with raw result data available
-  [here](https://docs.google.com/spreadsheets/d/1I2ACFAgzWaa1H5EQx99-rLTro2FHlS44gsWuQsU8Ssw/edit#gid=191407209).
+  the
+  [raw result data is available as a Google Sheet](https://docs.google.com/spreadsheets/d/1I2ACFAgzWaa1H5EQx99-rLTro2FHlS44gsWuQsU8Ssw/edit#gid=191407209).
 - Benchmarks were run on my local machine, a MacBook Pro w/ M1 Max, 64GB ram,
   running Sonoma 14.3.1.
 - There are three distinct benchmarks to compare key aspects of the system:
@@ -472,9 +473,11 @@ benefit every application, but are especially important to applications with
 high cardinality and with strict performance SLAs.
 
 If you’re reading this and considering Java metric systems, I hope you chose
-[OpenTelemetry Java][]. It’s a powerful and highly performant tool on its own, but
-comes with APIs for other key observability signals, a [rich instrumentation ecosystem](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md),
-[implementations in a variety of other languages](/docs/languages/), and a well-supported
+[OpenTelemetry Java][]. It’s a powerful and highly performant tool on its own,
+but comes with APIs for other key observability signals, a
+[rich instrumentation ecosystem](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md),
+[implementations in a variety of other languages](/docs/languages/), and a
+well-supported
 [open governance structure](https://github.com/open-telemetry/community).
 
 ## Acknowledgements

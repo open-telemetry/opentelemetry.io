@@ -42,17 +42,17 @@ have a CNCF logo beside their name.
 
 {{% ecosystem/integrations-table "application integrations" %}}
 
-## How to add your integration {#how-to-add}
+## Adding your integration {#how-to-add}
 
-To have your library, service, or app listed, submit a PR with an entry added to
-the [registry](/ecosystem/registry/adding). The entry should include the
+To have your library, service, or app listed, [submit a PR] with an entry added
+to the [registry](/ecosystem/registry/adding). The entry should include the
 following:
 
 - Link to the main page of your library, service, or app
 - Link to the documentation that explains how enable observability using
   OpenTelemetry
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 If you provide external integration of OpenTelemetry for any kind of library,
 service, or app, then
@@ -65,3 +65,7 @@ If you provide a solution that consumes OpenTelemetry to offer observability to
 end users, see [Vendors](/ecosystem/vendors).
 
 {{% /alert %}}
+
+[submit a PR]: /docs/contributing/pull-requests/
+
+{{% include keep-up-to-date.md integration %}}

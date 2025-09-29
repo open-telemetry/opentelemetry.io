@@ -5,7 +5,7 @@ weight: 30
 description: Instrumentation for OpenTelemetry Erlang/Elixir
 ---
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
 ## Setup
 
@@ -200,9 +200,8 @@ _ = Task.await(task)
 ### Linking the New Span
 
 A [Span](/docs/concepts/signals/traces/#spans) can be created with zero or more
-Span Links that causally link it to another Span. A
-[Link](/docs/concepts/signals/traces/#span-links) needs a Span context to be
-created.
+[Span Links](/docs/concepts/signals/traces/#span-links) that causally link it to
+another Span. A Span Link needs a Span context to be created.
 
 {{< tabpane text=true >}} {{% tab Erlang %}}
 
@@ -267,10 +266,11 @@ end
 ### Semantic Attributes
 
 Semantic Attributes are attributes that are defined by the [OpenTelemetry
-Specification][] in order to provide a shared set of attribute keys across multiple
-languages, frameworks, and runtimes for common concepts like HTTP methods, status
-codes, user agents, and more. These attribute keys are generated from the specification
-and provided in [opentelemetry_semantic_conventions](https://hex.pm/packages/opentelemetry_semantic_conventions).
+Specification][] in order to provide a shared set of attribute keys across
+multiple languages, frameworks, and runtimes for common concepts like HTTP
+methods, status codes, user agents, and more. These attribute keys are generated
+from the specification and provided in
+[opentelemetry_semantic_conventions](https://hex.pm/packages/opentelemetry_semantic_conventions).
 
 For example, an instrumentation for an HTTP client or server would need to
 include semantic attributes like the scheme of the URL:

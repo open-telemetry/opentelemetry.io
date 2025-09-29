@@ -13,6 +13,7 @@ description: >
   Cloud `X-Cloud-Trace-Context` format.
 authors:
   - name: Google
+    url: https://github.com/GoogleCloudPlatform/
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/tree/main/opentelemetry-propagator-gcp
 createdAt: 2020-08-13

@@ -9,6 +9,7 @@ license: MIT
 description: An OpenTelemetry middleware for Perl's Plack.
 authors:
   - name: abh
+    url: https://github.com/abh
 urls:
   repo: https://github.com/abh/Plack-Middleware-OpenTelemetry
 createdAt: 2023-12-05

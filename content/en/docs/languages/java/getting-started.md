@@ -1,5 +1,5 @@
 ---
-title: Getting Started
+title: Getting Started by Example
 description: Get telemetry for your app in less than 5 minutes!
 weight: 10
 ---
@@ -22,9 +22,10 @@ Ensure that you have the following installed locally:
 
 ## Example Application
 
-The following example uses a basic [Spring Boot] application. You can use another
-web framework, such as Apache Wicket or Play. For a complete list of libraries and
-supported frameworks, consult the [registry](/ecosystem/registry/?component=instrumentation&language=java).
+The following example uses a basic [Spring Boot] application. You can use
+another web framework, such as Apache Wicket or Play. For a complete list of
+libraries and supported frameworks, consult the
+[registry](/ecosystem/registry/?component=instrumentation&language=java).
 
 For more elaborate examples, see [examples](../examples/).
 
@@ -137,16 +138,19 @@ agent][] in a number of ways, the steps below use environment variables.
    `opentelemetry-java-instrumentation` repository. The JAR file contains the
    agent and all automatic instrumentation packages:
 
-   ```console
+   ```sh
    curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
    ```
 
-   {{% alert color="info" %}}<i class="fas fa-edit"></i> Take note of the path
-   to the JAR file.{{% /alert %}}
+   {{% alert %}}
+
+   <i class="fas fa-edit"></i> Take note of the path to the JAR file.
+
+   {{% /alert %}}
 
 2. Set and export variables that specify the Java agent JAR and a [console
-   exporter][], using a notation suitable for your shell/terminal environment &mdash;
-   we illustrate a notation for bash-like shells:
+   exporter][], using a notation suitable for your shell/terminal environment
+   &mdash; we illustrate a notation for bash-like shells:
 
    ```sh
    export JAVA_TOOL_OPTIONS="-javaagent:PATH/TO/opentelemetry-javaagent.jar" \
@@ -157,7 +161,6 @@ agent][] in a number of ways, the steps below use environment variables.
    ```
 
    {{% alert title="Important" color="warning" %}}
-
    - Replace `PATH/TO` above, with your path to the JAR.
    - Set `OTEL_METRIC_EXPORT_INTERVAL` to a value well below the default, as we
      illustrate above, **only during testing** to help you more quickly ensure
@@ -244,11 +247,12 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 
 For more:
 
-- Run this example with another [exporter][] for telemetry data.
+- Run this example with another [exporter] for telemetry data.
 - Try [zero-code instrumentation](/docs/zero-code/java/agent/) on one of your
   own apps.
-- For light-weight customized telemetry, try [annotations][].
-- Learn about [manual instrumentation][] and try out more [examples](../examples/).
+- For light-weight customized telemetry, try [annotations].
+- Learn about [manual instrumentation][] and try out more
+  [examples](../examples/).
 - Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes Java
   based [Ad Service](/docs/demo/services/ad/) and Kotlin based
   [Fraud Detection Service](/docs/demo/services/fraud-detection/)
@@ -258,10 +262,8 @@ For more:
 [logs]: /docs/concepts/signals/logs/
 [annotations]: /docs/zero-code/java/agent/annotations/
 [configure the java agent]: /docs/zero-code/java/agent/configuration/
-[console exporter]:
-  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#logging-exporter
-[exporter]:
-  https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure/README.md#exporters
+[console exporter]: /docs/languages/java/configuration/#properties-exporters
+[exporter]: /docs/languages/java/configuration/#properties-exporters
 [java-vers]:
   https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility
 [manual instrumentation]: ../instrumentation

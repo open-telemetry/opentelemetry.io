@@ -1,0 +1,79 @@
+name: Dev build
+
+on:
+  workflow_dispatch:
+    inputs:
+      submodule_path_regex:
+        description: Regex of submodule paths to update to HEAD before building.
+        default: content-modules
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    name: BUILD and CHECK LINKS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Create NPM cache-hash input file
+        run: |
+          mkdir -p tmp
+          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
+
+      - name: Create and use reduced-dependencies package.json
+        run: |
+          jq '.dependencies |= {minisearch: .minisearch} | del(.optionalDependencies)' package.json > tmp/package-min.json
+          cp tmp/package-min.json package.json
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
+
+      - run: npm install --omit=optional
+
+      - run: npm run log:test-and-fix
+        env:
+          CMD_SKIP: i18n|registry
+          GET: no # For details, see: https://opentelemetry.io/docs/contributing/development/#submodule-changes
+          PIN_SKIP: ${{ inputs.submodule_path_regex }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: build-log-etc
+          path: |
+            tmp/build-log.txt
+            tmp/package*.json
+            static/refcache.json
+
+  check-refcache:
+    name: REFCACHE updates?
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v5
+        with: { name: build-log-etc }
+      - name: Fail when refcache contains entries with HTTP status 4XX
+        run: |
+          if grep -B 1 -e '"StatusCode": 4' static/refcache.json; then
+            echo "Run 'npx gulp prune' to remove 4xx entries from the refcache"
+            exit 1
+          fi
+      - name: Does the refcache need updating?
+        run: npm run diff:fail
+
+  check-build-log-for-issues:
+    name: WARNINGS in build log?
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/download-artifact@v5
+        with: { name: build-log-etc }
+      - run: cat tmp/build-log.txt
+      - run: scripts/check-build-log.sh

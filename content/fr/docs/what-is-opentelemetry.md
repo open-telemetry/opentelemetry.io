@@ -4,6 +4,7 @@ description:
   Une brève explication de ce qu'est OpenTelemetry, et de ce qu'il n'est pas.
 weight: 150
 default_lang_commit: 71833a5f8b84110dadf1e98604b87a900724ac33
+drifted_from_default: true
 ---
 
 OpenTelemetry, c'est :
@@ -12,7 +13,7 @@ OpenTelemetry, c'est :
   d'[observabilité](/docs/concepts/observability-primer/#what-is-observability)
   et des outils conçus pour créer et gérer des données de télémétrie telles que
   des [traces](/docs/concepts/signals/traces/), des
-  [metriques](/docs/concepts/signals/metrics/), et des
+  [métriques](/docs/concepts/signals/metrics/), et des
   [logs](/docs/concepts/signals/logs/)
 - Indépendant d'un fournisseur et d'un outil, ce qui signifie qu'il peut être
   utilisé avec une grande variété de backends d'observabilité, y compris des
@@ -26,7 +27,7 @@ OpenTelemetry, c'est :
   infrastructure, ou environnement d'exécution. Le stockage et la visualisation
   des données sont intentionnellement laissés à d'autres outils
 
-## Qu'est-ce que l'observabilité ?
+## Qu'est-ce que l'observabilité ? {#what-is-observability}
 
 L'[observabilité](/docs/concepts/observability-primer/#what-is-observability)
 est la capacité de comprendre l'état interne d'un système en examinant ses
@@ -41,7 +42,7 @@ Pour rendre un système observable, il doit être
 [logs](/docs/concepts/signals/logs/). Les données produites doivent être
 transmises à un backend d'observabilité.
 
-## Pourquoi OpenTelemetry ?
+## Pourquoi OpenTelemetry ? {#why-opentelemetry}
 
 Avec l'essor du cloud computing, des architectures en microservices, et des
 exigences commerciales de plus en plus complexes, le besoin
@@ -59,10 +60,10 @@ Ces deux principes combinés offrent aux équipes et aux organisations la
 flexibilité dont elles ont besoin dans le monde informatique moderne
 d’aujourd’hui.
 
-Si vous souhaitez en savoir plus, jetez un oeil à la
-[mission, la vision et les valeurs](/community/mission/) d'OpenTelemetry.
+Si vous souhaitez en savoir plus, consultez la page
+[Mission, vision et valeurs](/community/mission/) d'OpenTelemetry.
 
-## Composants principaux d'OpenTelemetry
+## Composants principaux d'OpenTelemetry {#main-opentelemetry-components}
 
 OpenTelemetry se compose des principaux composants suivants :
 
@@ -81,9 +82,9 @@ OpenTelemetry se compose des principaux composants suivants :
 - Le [Collector OpenTelemetry](/docs/collector), un proxy qui reçoit, modifie et
   exporte les données de télémétrie
 - Divers autres outils, tels que
-  l'[Opérateur Kubernetes pour OpenTelemetry](/docs/kubernetes/operator/), les
-  [Helm Charts pour OpenTelemetry](/docs/kubernetes/helm/) et des
-  [ressources communautaires pour les FaaS](/docs/faas/)
+  l'[Opérateur Kubernetes pour OpenTelemetry](/docs/platforms/kubernetes/operator/),
+  les [Helm Charts pour OpenTelemetry](/docs/platforms/kubernetes/helm/) et des
+  [ressources communautaires pour les FaaS](/docs/platforms/faas/)
 
 OpenTelemetry est utilisé par une grande variété de
 [bibliothèques, services et applications](/ecosystem/integrations/) qui
@@ -93,7 +94,7 @@ OpenTelemetry est pris en charge par de nombreux
 [fournisseurs](/ecosystem/vendors/), dont beaucoup fournissent un support
 commercial à OpenTelemetry et contribuent au projet directement.
 
-## Extensibilité
+## Extensibilité {#extensibility}
 
 OpenTelemetry est conçu pour être extensible. Quelques exemples de la façon dont
 il peut être étendu incluent :
@@ -111,7 +112,7 @@ il peut être étendu incluent :
 Bien que la plupart des utilisateurs n’aient pas besoin d’étendre OpenTelemetry,
 le projet est conçu pour rendre cela possible presque à tous les niveaux.
 
-## Histoire
+## Histoire {#history}
 
 OpenTelemetry est un projet de la
 [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io) qui trouve son
@@ -127,7 +128,7 @@ Si vous utilisez actuellement OpenTracing ou OpenCensus, vous pouvez découvrir
 comment migrer vers OpenTelemetry dans le
 [guide de migration](/docs/migration/).
 
-## Et ensuite ?
+## Et ensuite ? {#what-next}
 
 - [Pour commencer](/docs/getting-started/) &mdash; Lancez-vous directement !
 - Découvrez les [concepts d'OpenTelemetry](/docs/concepts/)

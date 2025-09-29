@@ -1,0 +1,10 @@
+{{ if .Date.Before (now.AddDate -1 0 0) -}}
+<div class="pageinfo pageinfo-warning">
+  <p>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    Blog posts are not updated after publication. This post is more
+    than a year old, so its content may be outdated, and some links may be
+    invalid. Cross-verify any information before relying on it.
+  </p>
+</div>
+{{ end -}}

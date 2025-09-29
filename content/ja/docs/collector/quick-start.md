@@ -1,7 +1,7 @@
 ---
 title: クイックスタート
 description: コレクターをセットアップとテレメトリーの収集をすぐに始めてみましょう！
-default_lang_commit: 78f1d31
+default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
 ---
 
 <!-- markdownlint-disable ol-prefix blanks-around-fences -->
@@ -31,10 +31,10 @@ OpenTelemetryコレクターは、[トレース](/docs/concepts/signals/traces/)
 
 ## 環境の設定
 
-1. OpenTelemetryコレクターのDockerイメージをプルします。
+1. OpenTelemetryコレクターの Contrib Dockerイメージをプルします。
 
    ```sh
-   docker pull otel/opentelemetry-collector:{{% param vers %}}
+   docker pull otel/opentelemetry-collector-contrib:{{% param vers %}}
    ```
 
 2. [telemetrygen]ユーティリティをインストールします。
@@ -52,8 +52,9 @@ OpenTelemetryコレクターは、[トレース](/docs/concepts/signals/traces/)
    ```sh
    docker run \
      -p 127.0.0.1:4317:4317 \
+     -p 127.0.0.1:4318:4318 \
      -p 127.0.0.1:55679:55679 \
-     otel/opentelemetry-collector:{{% param vers %}} \
+     otel/opentelemetry-collector-contrib:{{% param vers %}} \
      2>&1 | tee collector-output.txt # 補足的に出力をteeして後で検索しやすくする
    ```
 

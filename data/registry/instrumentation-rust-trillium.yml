@@ -9,11 +9,12 @@ license: Apache 2.0 OR MIT
 description: OpenTelemetry integration for the Trillium web framework.
 authors:
   - name: Jacob Rothstein
+    url: https://github.com/jbr
 urls:
   repo: https://github.com/trillium-rs/trillium-opentelemetry
 createdAt: 2021-04-25
 package:
   registry: crates
-  name: opentelemetry-trillium-opentelemetry
+  name: trillium-opentelemetry
   version: 0.2.16
 isFirstParty: true

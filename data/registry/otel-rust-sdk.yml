@@ -13,4 +13,4 @@ createdAt: 2020-02-04
 package:
   registry: crates
   name: opentelemetry_sdk
-  version: 0.22.1
+  version: 0.28.0

@@ -10,6 +10,7 @@ description:
   tracing data.
 authors:
   - name: MrAlias
+    url: https://github.com/MrAlias/
 urls:
   repo: https://github.com/MrAlias/redact
 createdAt: 2022-09-07

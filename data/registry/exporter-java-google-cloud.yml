@@ -11,6 +11,7 @@ license: Apache 2.0
 description: The OpenTelemetry Google Cloud Monitoring/Trace Exporters for Java.
 authors:
   - name: Google
+    url: https://github.com/GoogleCloudPlatform/
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-java/tree/main/exporters/trace
 createdAt: 2020-08-13

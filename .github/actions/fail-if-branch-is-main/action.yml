@@ -1,0 +1,23 @@
+name: fail-if-branch-is-main
+description:
+  Fail if PR branch name is 'main' and it is from a forked repository.
+runs:
+  using: composite
+  steps:
+    - name: Print PR and repo info
+      run: |
+        echo "Repo: ${{ github.repository }}"
+        echo "Head Repo: ${{ github.event.pull_request.head.repo.full_name }}"
+        echo "Forked: ${{ github.event.pull_request.head.repo.fork }}"
+        echo "Branch: ${{ github.event.pull_request.head.ref }}"
+      shell: bash
+    - if: github.event_name == 'pull_request'
+      run: |
+        if [ "${{ github.event.pull_request.head.repo.fork }}" == "true" ] && [ "${{ github.event.pull_request.head.ref }}" == 'main' ]; then
+          echo "PR branch name cannot be 'main' when from forked repositories."
+          echo "Resubmit your PR with a different branch name."
+          exit 1
+        fi
+      shell: bash
+#
+# Inspired by https://github.com/jaegertracing/jaeger/blob/main/.github/actions/block-pr-from-main-branch

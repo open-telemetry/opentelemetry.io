@@ -20,7 +20,7 @@ package that simplify the task of deploying and configuring the collection of
 telemetry. The automatic instrumentation is fully compatible with manual
 instrumentation in case you need to send custom spans or metrics.
 
-To get started, [read the documentation](/docs/zero-code/net) or browse the
+To get started, [read the documentation](/docs/zero-code/dotnet) or browse the
 [examples](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/tree/main/examples)
 for demonstrations of different instrumentation scenarios covered by the
 OpenTelemetry .NET Automatic Instrumentation.
@@ -29,5 +29,4 @@ Feedback is welcome:
 
 - [Submit a GitHub issue](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/new).
 - Write to us on [Slack](https://cloud-native.slack.com/archives/C01NR1YLSE7).
-  If you are new, you can create a CNCF Slack account
-  [here](https://slack.cncf.io/).
+  If you are new, you can [create a CNCF Slack account](https://slack.cncf.io/).

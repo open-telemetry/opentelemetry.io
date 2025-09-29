@@ -1,0 +1,38 @@
+name: Files
+
+on:
+  merge_group:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check-expired:
+    name: EXPIRED FILE check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: npm run check:expired
+      - run: npm run _diff:fail
+
+  check-filenames:
+    name: FILENAME check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: npm run check:filenames
+
+  check-formatting:
+    name: FILE FORMAT
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: npm run check:format
+
+  check-branch-name:
+    name: BRANCH NAME check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: ./.github/actions/fail-if-branch-is-main

@@ -3,8 +3,8 @@ title: Forking the demo repository
 linkTitle: Forking
 ---
 
-The [demo repository][] is designed to be forked and used as a tool to show off what
-you are doing with OpenTelemetry.
+The [demo repository][] is designed to be forked and used as a tool to show off
+what you are doing with OpenTelemetry.
 
 Setting up a fork or a demo usually only requires overriding some environment
 variables and possibly replacing some container images.
@@ -30,4 +30,4 @@ Live demos can be added to the demo
 If you have any questions or would like to suggest ways that we can make your
 life easier as a fork maintainer, please open an issue.
 
-[demo repository]: {{% param repo %}}
+[demo repository]: <{{% param repo %}}>

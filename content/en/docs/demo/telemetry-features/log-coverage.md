@@ -6,19 +6,24 @@ aliases: [log_service_features, logging-features, ../logging-features]
 
 | Service         | Language   | OTLP Logs |
 | --------------- | ---------- | --------- |
-| Accounting      | Go         | 🚧        |
+| Accounting      | .NET       | ✅        |
 | Ad              | Java       | ✅        |
 | Cart            | .NET       | ✅        |
 | Checkout        | Go         | 🚧        |
-| Currency        | C++        | 🚧        |
+| Currency        | C++        | ✅        |
 | Email           | Ruby       | 🚧        |
+| Flagd           | Go         | 🚧        |
+| Flagd-ui        | TypeScript | 🚧        |
 | Fraud Detection | Kotlin     | ✅        |
 | Frontend        | TypeScript | 🚧        |
+| Frontend Proxy  | Envoy      | ✅        |
+| Image Provider  | NGINX      | 🚧        |
+| Load Generator  | Python     | ✅        |
 | Payment         | JavaScript | 🚧        |
 | Product Catalog | Go         | 🚧        |
 | Quote           | PHP        | ✅        |
 | Recommendation  | Python     | ✅        |
-| Shipping        | Rust       | 🚧        |
+| Shipping        | Rust       | ✅        |
 
 Emoji Legend:
 

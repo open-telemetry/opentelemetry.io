@@ -2,7 +2,7 @@ name: otel_io_excerpts
 publish_to: none
 
 environment:
-  sdk: ^3.2.0
+  sdk: ^3.5.4
 
 dev_dependencies:
   build_runner: ^2.4.6

@@ -9,9 +9,9 @@ cSpell:ignore: decltype labelkv nostd nullptr
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-{{% docs/languages/instrumentation-intro %}}
+{{% include instrumentation-intro.md %}}
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 OpenTelemetry C++ doesn't support automatic instrumentation when the source code
 of the library you want to instrument isn't available.

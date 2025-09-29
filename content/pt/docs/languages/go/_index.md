@@ -5,10 +5,10 @@ description: >-
   alt="Go"> A language-specific implementation of OpenTelemetry in Go.
 aliases: [/golang, /golang/metrics, /golang/tracing]
 weight: 16
-default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57
+default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57 # patched
 ---
 
-{{% pt/docs/languages/index-intro go /%}}
+{{% docs/languages/index-intro go /%}}
 
 ## Mais
 

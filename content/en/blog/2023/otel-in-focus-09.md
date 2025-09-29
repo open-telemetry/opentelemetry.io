@@ -4,7 +4,7 @@ linkTitle: OTel in Focus 2023/09
 date: 2023-10-01
 author: '[Austin Parker](https://github.com/austinlparker)'
 # prettier-ignore
-cSpell:ignore: attributesprocessor Autoscaler checkapi Contribfest coreinternal gopkg jaegerthrifthttp obsreport ottl resourcedetection resourceprocessor structs tailsampling ucum unmanaged
+cSpell:ignore: attributesprocessor Autoscaler checkapi Contribfest coreinternal jaegerthrifthttp obsreport ottl resourcedetection resourceprocessor structs tailsampling ucum unmanaged
 ---
 
 Welcome back to **OpenTelemetry in Focus** for September, 2023! The autumn winds
@@ -13,7 +13,7 @@ Observability Day. Are you attending? We hope to see you there for our inaugural
 OpenTelemetry Contribfest, Project Pavilion, and more!
 
 Are you a maintainer with something you’d like featured here? Get in touch with
-me [via email](mailto:austin+otel@ap2.io), or on the
+[Austin Parker via email](mailto:austin+otel@ap2.io), or on the
 [CNCF Slack #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
 channel.
 
@@ -41,8 +41,8 @@ Compatibility updates include changes in OpenTracing Shim and Prometheus, the
 latter is permitted to change metric names by default as it translates from
 Prometheus to OpenTelemetry.
 
-For full details, please visit the full changelog
-[here](https://github.com/open-telemetry/opentelemetry-specification/compare/v1.24.0...v1.25.0)
+For full details, see the
+[changes between v1.24.0 and v1.25.0](https://github.com/open-telemetry/opentelemetry-specification/compare/v1.24.0...v1.25.0)
 
 ##### [Collector](/docs/collector/)
 
@@ -188,7 +188,7 @@ fixes an unintentional breaking change in previous releases.
 There have been several important changes in the experimental packages,
 including deprecation of legacy configuration APIs.
 
-#### [.NET](/docs/languages/net/)
+#### [.NET](/docs/languages/dotnet/)
 
 [Version 1.6.0](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.6.0)
 includes minor updates to metrics.

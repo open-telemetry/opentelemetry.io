@@ -1,0 +1,52 @@
+{{/*
+
+This partial implements the core functionality of the `include` shortcode,
+allowing reuse across other partials and shortcodes. You can use it to include
+markdown snippets or other content files. The included content can contain
+shortcodes, and you can pass arguments to replace placeholders in the included
+content.
+
+This partial expects the following arguments -- beyond those used for the
+include functionality:
+
+- `_dot`: the '.' context of the page or shortcode invoking this partial
+- `_path`: the path to the file to be included
+
+*/ -}}
+
+{{ $path := ._path -}}
+{{ $args := . -}}
+{{ $page := ._page |
+    default (partial "func/find-include.html"  (dict "path" $path "page" ._dot.Page)) -}}
+{{ with $page -}}
+  {{ $content := .RenderShortcodes -}}
+  {{ range $_k, $v := $args -}}
+    {{ $k := string $_k -}}
+    {{ if not (hasPrefix $k "_") -}}
+      {{ $regex := printf `\{\{\s*\$%s\s*\}\}` $k -}}
+      {{ $content = replaceRE $regex $v $content -}}
+      {{ $_regex := `(?ms)^\{\{\s*if%s\s+\$%s\s*\}\}(.+?)^\{\{\s*end\s*\}\}` -}}
+      {{ $regexIf    := printf $_regex "" $k -}}
+      {{ $regexIfNot := printf $_regex " not" $k -}}
+      {{ if $v -}}
+        {{ $content = replaceRE $regexIf    "$1" $content -}}
+        {{ $content = replaceRE $regexIfNot ""   $content -}}
+      {{ else -}}
+        {{ $content = replaceRE $regexIf    ""   $content -}}
+        {{ $content = replaceRE $regexIfNot "$1" $content -}}
+      {{ end -}}
+    {{ end -}}
+  {{ end -}}
+  {{/* `safeHTML` is needed to prevent escaping of HTML entities in markdown. */ -}}
+  {{ $content | safeHTML -}}
+{{ else -}}
+  {{ $msg := printf
+      "Can't include '%s': file not found in page or ancestor contexts of page %s."
+      $path .Page.Path -}}
+  {{ warnf $msg -}}
+
+  <div class="alert alert-warning">
+  <div class="h4 alert-heading">INTERNAL SITE ERROR</div>
+  {{ $msg }}
+  </div>
+{{ end -}}

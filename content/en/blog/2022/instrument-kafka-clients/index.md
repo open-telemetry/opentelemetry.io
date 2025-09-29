@@ -11,7 +11,7 @@ system in a distributed environment. Different services communicate with each
 other by using Apache Kafka as a messaging system but even more as en event or
 data streaming platform.
 
-Taking into account the cloud-native approach for developing microservices,
+Taking into account the cloud native approach for developing microservices,
 quite often [Kubernetes](https://kubernetes.io/) is also used to run the
 workloads. In this scenario, you can also easily deploy and manage an Apache
 Kafka cluster on top of it, by using a project like
@@ -65,7 +65,7 @@ The simpler and automatic approach is by adding tracing to your application with
 no changes or additions into your application code. You also don't need to add
 any dependencies to OpenTelemetry specific libraries. It is possible by using
 the OpenTelemetry agent you can download from
-[here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
+[opentelemetry-java-instrumentation/releases](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
 This agent has to run alongside your application in order to inject the logic
 for tracing messages sent and received to/from a Kafka cluster.
 

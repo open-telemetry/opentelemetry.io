@@ -8,28 +8,26 @@ aliases:
   - libraries
 weight: 10
 description: Instrumentation ecosystem in OpenTelemetry Java
-cSpell:ignore: Logback logback
+cSpell:ignore: logback
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
 
-Instrumentation records telemetry using the [API](../api-components/). The
-[SDK](../sdk/) is the built-in reference implementation of the API, and is
+Instrumentation records telemetry using the [API](../api/). The [SDK](../sdk/)
+is the built-in reference implementation of the API, and is
 [configured](../configuration/) to process and export the telemetry produced by
 instrumentation API calls. This page discusses the OpenTelemetry ecosystem in
 OpenTelemetry Java, including resources for end users and cross-cutting
 instrumentation topics:
 
-- [Instrumentation categories](#instrumentation-categories): There are a variety
-  of categories of instrumentation addressing different use cases and
-  installation patterns.
-- [Context propagation](#context-propagation): Context propagation provides
-  correlation between traces, metrics, and logs, allowing the signals to
-  complement each other.
-- [Semantic conventions](#semantic-conventions): The semantic conventions define
-  how to produce telemetry for standard operations.
-- [Log instrumentation](#log-instrumentation): The semantic conventions define
-  how to produce telemetry for standard operations.
+- [Instrumentation categories](#instrumentation-categories) addressing different
+  use cases and installation patterns.
+- [Context propagation](#context-propagation) provides correlation between
+  traces, metrics, and logs, allowing the signals to complement each other.
+- [Semantic conventions](#semantic-conventions) define how to produce telemetry
+  for standard operations.
+- [Log instrumentation](#log-instrumentation), which is used to get logs from an
+  existing Java logging framework into OpenTelemetry.
 
 {{% alert %}} While [instrumentation categories](#instrumentation-categories)
 enumerates several options for instrumenting an application, we recommend users
@@ -53,6 +51,8 @@ There are several categories of instrumentation:
   libraries and frameworks.
 - [Manual instrumentation](#manual-instrumentation) is written by application
   authors, and typically specific to the application domain.
+- [Shims](#shims) bridge data from one observability library to another,
+  typically _from_ some library into OpenTelemetry.
 
 **[1]**: Zero-code instrumentation is installed automatically based on detected
 libraries / frameworks.
@@ -98,13 +98,13 @@ Instrumentation" column on
 
 [Native instrumentation](/docs/specs/otel/glossary/#natively-instrumented) is
 built directly into libraries or frameworks. OpenTelemetry encourages library
-authors to add native instrumentation using the [API](../api-components/). In
-the long term, we hope the native instrumentation becomes the norm, and view the
+authors to add native instrumentation using the [API](../api/). In the long
+term, we hope the native instrumentation becomes the norm, and view the
 instrumentation maintained by OpenTelemetry in
 [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 as a temporary means of filling the gap.
 
-{{% docs/languages/native-libraries "java" %}}
+{{% docs/languages/native-libraries %}}
 
 ### Manual instrumentation
 
@@ -124,7 +124,7 @@ Shims maintained in the OpenTelemetry Java ecosystem:
 | Bridge [OpenTracing](https://opentracing.io/) into OpenTelemetry                                              | [README](https://github.com/open-telemetry/opentelemetry-java/tree/main/opentracing-shim)                                                                                       | Traces          | `io.opentelemetry:opentelemetry-opentracing-shim:{{% param vers.otel %}}`                                                       |
 | Bridge [Opencensus](https://opencensus.io/) into OpenTelemetry                                                | [README](https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim)                                                                                        | Traces, Metrics | `io.opentelemetry:opentelemetry-opencensus-shim:{{% param vers.otel %}}-alpha`                                                  |
 | Bridge [Micrometer](https://micrometer.io/) into OpenTelemetry                                                | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/micrometer/micrometer-1.5/library)                                      | Metrics         | `io.opentelemetry.instrumentation:opentelemetry-micrometer-1.5:{{% param vers.instrumentation %}}-alpha`                        |
-| Bridge [JMX](https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html) into OpenTelemetry | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/README.md)                                        | Metrics         | `io.opentelemetry.instrumentation:opentelemetry-jmx-metrics:{{% param vers.instrumentation %}}-alpha`                           |
+| Bridge [JMX](https://docs.oracle.com/javase/7/docs/technotes/guides/management/agent.html) into OpenTelemetry | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md)                                                  | Metrics         | `io.opentelemetry.instrumentation:opentelemetry-jmx-metrics:{{% param vers.instrumentation %}}-alpha`                           |
 | Bridge OpenTelemetry into [Prometheus Java client](https://github.com/prometheus/client_java)                 | [README](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/prometheus-client-bridge)                                                                       | Metrics         | `io.opentelemetry.contrib:opentelemetry-prometheus-client-bridge:{{% param vers.contrib %}}-alpha`                              |
 | Bridge OpenTelemetry into [Micrometer](https://micrometer.io/)                                                | [README](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/micrometer-meter-provider)                                                                      | Metrics         | `io.opentelemetry.contrib:opentelemetry-micrometer-meter-provider:{{% param vers.contrib %}}-alpha`                             |
 | Bridge [Log4j](https://logging.apache.org/log4j/2.x/index.html) into OpenTelemetry                            | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-appender-2.17/library)                                      | Logs            | `io.opentelemetry.instrumentation:opentelemetry-log4j-appender-2.17:{{% param vers.instrumentation %}}-alpha`                   |
@@ -150,20 +150,17 @@ context:
 
 For this correlation to work, trace context must be propagated throughout an
 application (across function calls and threads), and across application
-boundaries. The [context API](../api-components/#context-api) facilitates this.
+boundaries. The [context API](../api/#context-api) facilitates this.
 Instrumentation needs to be written in a manner which is context aware:
 
 - Libraries that represent the entry point to an application (i.e. HTTP servers,
-  message consumers, etc.) should
-  [extract context](../api-components/#contextpropagators) from incoming
-  messages.
+  message consumers, etc.) should [extract context](../api/#contextpropagators)
+  from incoming messages.
 - Libraries that represent an exit point from an application (i.e. HTTP clients,
-  message producers, etc.) should
-  [inject context](../api-components/#contextpropagators) into outgoing
-  messages.
-- Libraries should implicitly or explicitly pass
-  [Context](../api-components/#context) through the callstack and across any
-  threads.
+  message producers, etc.) should [inject context](../api/#contextpropagators)
+  into outgoing messages.
+- Libraries should implicitly or explicitly pass [Context](../api/#context)
+  through the callstack and across any threads.
 
 ## Semantic conventions
 
@@ -175,22 +172,18 @@ attribute key, value, and requirement levels.
 When writing instrumentation, consult the semantic conventions and conform to
 any which are applicable to the domain.
 
-OpenTelemetry Java [publishes artifacts](../api-components/#semantic-attributes)
-to assist in conforming to the semantic conventions, including generated
-constants for attribute keys and values.
-
-TODO: discuss instrumentation API and how it helps conform to semantic
-conventions
+OpenTelemetry Java [publishes artifacts](../api/#semantic-attributes) to assist
+in conforming to the semantic conventions, including generated constants for
+attribute keys and values.
 
 ## Log instrumentation
 
-While the [LoggerProvider](../api-components/#loggerprovider) /
-[Logger](../api-components/#logger) APIs are structurally similar to the
-equivalent [trace](../api-components/#tracerprovider) and
-[metric](../api-components/#meterprovider) APIs, they serve a different use
-case. As of now, `LoggerProvider` / `Logger` and associated classes represent
-the [Log Bridge API](/docs/specs/otel/logs/bridge-api/), which exists to write
-log appenders to bridge logs recorded through other log APIs / frameworks into
+While the [LoggerProvider](../api/#loggerprovider) / [Logger](../api/#logger)
+APIs are structurally similar to the equivalent [trace](../api/#tracerprovider)
+and [metric](../api/#meterprovider) APIs, they serve a different use case. As of
+now, `LoggerProvider` / `Logger` and associated classes represent the
+[Log Bridge API](/docs/specs/otel/logs/api/), which exists to write log
+appenders to bridge logs recorded through other log APIs / frameworks into
 OpenTelemetry. They are not intended for end user use as a replacement for Log4j
 / SLF4J / Logback / etc.
 
@@ -238,3 +231,10 @@ document.
 Log correlation with traces is available by installing a [shim](#shims) to
 bridge OpenTelemetry context into the log framework. See "Bridge OpenTelemetry
 context into Log4j", "Bridge OpenTelemetry context into Logback" entries.
+
+{{% alert title="Note" %}}
+
+An end-to-end example of log instrumentation using stdout is available in the
+[Java examples repository](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).
+
+{{% /alert %}}

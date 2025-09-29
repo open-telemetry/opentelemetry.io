@@ -2,9 +2,9 @@
 title: The roadmap to v1 for the OpenTelemetry Collector
 linkTitle: Collector Roadmap
 date: 2024-05-06
+author: '[Alex Boten](https://github.com/codeboten) (Honeycomb)'
 # prettier-ignore
 cSpell:ignore: Antipatterns Boten Broadbridge Helmuth Hrabovcak Ishan Jaglowski OTTL Pantuza pushback Shishi Vijay
-author: '[Alex Boten](https://github.com/codeboten) (Honeycomb)'
 ---
 
 The [OpenTelemetry Collector](/docs/collector/) is a very popular component in
@@ -65,7 +65,7 @@ wanted to focus on:
    OTLP exporter.
 2. Individual Go modules that the Collector components rely upon must also be
    marked as stable as per the project's
-   [versioning guidelines](https://github.com/open-telemetry/opentelemetry-collector/blob/main/VERSIONING.md#public-api-expectations).
+   [versioning guidelines](https://github.com/open-telemetry/opentelemetry-collector/blob/main/VERSIONING.md#general-go-api-considerations).
 
 Aside from this, there were a few areas the contributors wanted to improve based
 on user feedback:

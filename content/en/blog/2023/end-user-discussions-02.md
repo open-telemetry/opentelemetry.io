@@ -18,7 +18,7 @@ Americas (AMER), Europe Middle-East & Africa (EMEA), and Asia-Pacific (APAC).
 The discussions take place using a
 [Lean Coffee format](https://agilecoffee.com/leancoffee/), whereby folks are
 invited to post their topics to the
-[Agile Coffee board like this one](http://agile.coffee/#3716060f-183a-4966-8da4-60daab2842c4),
+[Agile Coffee board like this one](http://agile.coffee/?disable_http_check#3716060f-183a-4966-8da4-60daab2842c4),
 and everyone in attendance votes on what they want to talk about.
 
 ## What we talked about
@@ -134,8 +134,8 @@ out metrics in Prometheus format, you can configure your OTel Collector to
 scrape Prometheus metrics. There is also a
 [statsd receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/statsdreceiver)
 that is available. If you have something that is already working, then you don’t
-need to change it. You can check the list of receivers
-[here](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver).
+need to change it. You can check the
+[list of receivers](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver).
 
 #### 2 - Emitting business metrics
 
@@ -195,9 +195,8 @@ endpoints via the Kubernetes API.
 Azure to collect telemetry from Azure App Services and Azure functions?
 
 **A:** Usually, the community relies on folks from Microsoft to provide best
-practices. There is some issue with the latest version of OTel and Azure
-functions. You can track it
-[here](https://github.com/Azure/azure-functions-host/issues/8938).
+practices. There was an
+[issue with the 1.4 version of OTel and Azure functions 7](https://github.com/Azure/azure-functions-host/issues/8938).
 
 ## Meeting Notes & Recordings
 

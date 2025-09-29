@@ -13,3 +13,15 @@ deserializar
 Muestreadores
 muestreadores
 monitoreo
+multilenguaje
+redireccionar
+prerrellenada
+autogenerado
+desincronizado
+desincronizadas
+subsección
+react-native-app
+cardinalidad
+agregable
+milisegundos
+autoinstrumentación

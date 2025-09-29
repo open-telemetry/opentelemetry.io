@@ -10,6 +10,7 @@ license: Apache 2.0
 description: The OpenTelemetry Google Cloud Monitoring Exporters for Python.
 authors:
   - name: Google
+    url: https://github.com/GoogleCloudPlatform/
 urls:
   repo: https://github.com/GoogleCloudPlatform/opentelemetry-operations-python/tree/main/opentelemetry-exporter-gcp-monitoring
 createdAt: 2020-08-13

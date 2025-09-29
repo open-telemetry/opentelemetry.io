@@ -385,4 +385,4 @@ For a list of OpenTelemetry vendors, see [Vendors](/ecosystem/vendors/).
 
 _A version of this article was [originally posted][] on the Aspecto blog._
 
-[originally posted]: {{% param canonical_url %}}
+[originally posted]: <{{% param canonical_url %}}>

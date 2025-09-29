@@ -1,0 +1,24 @@
+# cSpell:ignore Stäber Zeitlinger
+title: docker-otel-lgtm
+registryType: utilities
+language: go
+tags:
+  - collector
+  - testing
+  - docker
+  - backend
+  - traces
+  - logs
+  - metrics
+  - utilities
+license: Apache 2.0
+description: |
+  docker-otel-lgtm is an OpenTelemetry backend in a Docker image.
+authors:
+  - name: Gregor Zeitlinger
+    url: https://github.com/zeitlinger
+  - name: Fabian Stäber
+    url: https://github.com/fstab
+urls:
+  repo: https://github.com/grafana/docker-otel-lgtm
+createdAt: 2024-12-19

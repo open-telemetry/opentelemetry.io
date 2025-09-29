@@ -19,6 +19,12 @@ Note, that the focus of maintainers and approvers of the OpenTelemetry Website
 is to improve the documentation of the project, so your blog post will have a
 lower priority for review.
 
+## Social Media Content Request
+
+If you want to request the publication of content on the social media channels
+of the OpenTelemetry project, which aren't a blog post,
+[use this form](https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml).
+
 ## Before submitting a blog post
 
 Blog posts should not be commercial in nature and should consist of original
@@ -34,6 +40,7 @@ Verify that your intended content broadly applies to the OpenTelemetry Community
 - Updates from Special Interest Groups
 - Tutorials and walkthroughs
 - OpenTelemetry Integrations
+- [Call for Contributors](#call-for-contributors)
 
 Unsuitable content includes:
 
@@ -55,7 +62,7 @@ with the following details:
   review that PR. That sponsor should ideally be from a different company.
 
 Maintainers of SIG Communication will verify, that your blog post satisfies all
-the requirements for being accepted. If you can not name a SIG/sponsor in your
+the requirements for being accepted. If you cannot name a SIG/sponsor in your
 initial issue details, they will also point you to an appropriate SIG, you can
 reach out to for sponsorship. Having a sponsor is optional, but having one
 increases the chance of having your blog post reviewed and approved more
@@ -63,6 +70,18 @@ quickly.
 
 If your issue has everything needed, a maintainer will verify that you can go
 ahead and submit your blog post.
+
+### Call for Contributors
+
+If you are proposing the creation of a new project or SIG, or if you are
+offering a donation to the OpenTelemetry project, you will need additional
+contributors to be successful with your proposal. To help you with that, you can
+propose a blog post that is a "Call for Contributors" (CfC).
+
+This requires, that you follow the processes for
+[new projects](https://github.com/open-telemetry/community/blob/main/project-management.md)
+and
+[donations](https://github.com/open-telemetry/community/blob/main/guides/contributor/donations.md).
 
 ## Submit a blog post
 
@@ -127,3 +146,19 @@ The OpenTelemetry blog doesn't follow a strict publication timeline, this means:
   publication at or before a certain date.
 - Certain blog posts (major announcements) take precedence and may be published
   before your blog post.
+
+## Cross-posting blog content
+
+If you'd like to share your OpenTelemetry blog post on another platform, you're
+welcome to do so. Just keep the following in mind:
+
+- Decide which version will be the canonical post (typically the original
+  OpenTelemetry blog post).
+- Other versions of the post should:
+  - Clearly mention that the original post appeared on the OpenTelemetry blog.
+  - Include a link back to the original at the top or bottom of the page.
+  - Set a canonical URL tag pointing to the OpenTelemetry blog post, if the
+    platform supports it.
+
+This helps ensure proper attribution, supports SEO best practices, and avoids
+content duplication.

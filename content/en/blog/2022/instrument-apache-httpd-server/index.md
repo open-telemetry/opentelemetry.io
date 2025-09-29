@@ -8,12 +8,13 @@ cSpell:ignore: Centos centos7 Debajit debuggability libmod uncompress webserver
 ---
 
 If you are using Apache HTTP Server and in dire need of some observability tool
-to monitor your web server, the [OpenTelemetry Module for Apache HTTP Server][] is
-the right candidate for you: it enables tracing of incoming requests to the server
-and it will capture the response time of many modules (including `mod_proxy`) involved
-in such an incoming request. With that you will get hierarchical time consumption
-by each module. This article demonstrates the monitoring capabilities of the OpenTelemetry
-Module for Apache HTTP Server and quick guide to get started with the module.
+to monitor your web server, the [OpenTelemetry Module for Apache HTTP Server][]
+is the right candidate for you: it enables tracing of incoming requests to the
+server and it will capture the response time of many modules (including
+`mod_proxy`) involved in such an incoming request. With that you will get
+hierarchical time consumption by each module. This article demonstrates the
+monitoring capabilities of the OpenTelemetry Module for Apache HTTP Server and
+quick guide to get started with the module.
 
 ## Getting Started with OpenTelemetry Module
 
@@ -253,7 +254,7 @@ writing this blog, support for other architectures is not provided.
 - Now, restart the Apache HTTP Server and OpenTelemetry module should be
   instrumented.
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}
 
 [docker-compose.yml]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/blob/main/instrumentation/otel-webserver-module/docker-compose.yml

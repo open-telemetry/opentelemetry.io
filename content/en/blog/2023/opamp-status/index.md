@@ -53,7 +53,7 @@ want to use OpAMP both as an collector extension, with limited functionality, as
 well as as an (collector-external) supervisor that implements a broader set of
 OpAMP capabilities.
 
-{{% alert title="Note" color="info" %}} For a deeper dive, see
+{{% alert title="Note" %}} For a deeper dive, see
 [OpAMP for OpenTelemetry Collector document](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor/specification),
 which describes how to implement both options while minimizing code duplication.
 {{% /alert %}}
@@ -105,15 +105,15 @@ with a backlog of issues created to guide further development.
 ## OpAMP in Kubernetes
 
 In OTel we have dedicated support for Kubernetes as a compute platform via the
-[OpenTelemetry Operator for Kubernetes](/docs/kubernetes/operator/). In this
-context, we're also working on OpAMP support in Kubernetes which will be
+[OpenTelemetry Operator for Kubernetes](/docs/platforms/kubernetes/operator/).
+In this context, we're also working on OpAMP support in Kubernetes which will be
 available through a
 [bridge component](https://docs.google.com/document/d/1M8VLNe_sv1MIfu5bUR5OV_vrMBnAI7IJN-7-IAr37JY/)
 to be deployed by the OpenTelemetry Operator:
 
 ![OpAMP bridge in the OTel Operator](opamp-kubernetes-bridge.png)
 
-{{% alert title="Note" color="info" %}} Currently, we don't have support for
+{{% alert title="Note" %}} Currently, we don't have support for
 deployment via Helm chart, however, if you'd like to contribute to this, you're
 welcome to contribute.{{% /alert %}}
 

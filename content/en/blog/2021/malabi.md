@@ -10,4 +10,4 @@ cSpell:ignore: Malabi
 This article introduces you to Malabi, a new open source tool for trace-based
 testing. For all the details, see the [original post][].
 
-[original post]: {{% param canonical_url %}}
+[original post]: <{{% param canonical_url %}}>

@@ -10,6 +10,7 @@ license: Apache 2.0
 description: Instrumentation for the `k8s.io/client-go` package.
 authors:
   - name: Splunk Inc.
+    url: https://www.splunk.com/
 urls:
   repo: https://github.com/signalfx/splunk-otel-go/tree/main/instrumentation/k8s.io/client-go/splunkclient-go
 createdAt: 2022-01-20

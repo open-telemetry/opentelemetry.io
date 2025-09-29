@@ -15,7 +15,7 @@ fall back to English banners, etc.
 
 ### Creating an announcement
 
-To add a new announcement, create an announcement markdown file under the
+To add a new announcement, create an announcement Markdown file under the
 `announcements` folder of your localization using the following command:
 
 ```sh

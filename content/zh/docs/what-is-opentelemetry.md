@@ -3,13 +3,14 @@ title: 什么是 OpenTelemetry？
 description: 简短说明 OpenTelemetry 是什么，不是什么。
 weight: 150
 default_lang_commit: d638c386
+drifted_from_default: true
 ---
 
 OpenTelemetry
 是一个[可观测性](/docs/concepts/observability-primer/#what-is-observability)框架和工具包，
 旨在创建和管理遥测数据，如[链路](/docs/concepts/signals/traces/)、
 [指标](/docs/concepts/signals/metrics/)和[日志](/docs/concepts/signals/logs/)。
-重要的是，OpenTelemetry 是供应商和工具无关的，这意味着它可以与各种可观测性后端一起使用，
+重要的是，OpenTelemetry 对供应商和工具是中立的，这意味着它可以与各种可观测性后端一起使用，
 包括 [Jaeger](https://www.jaegertracing.io/) 和
 [Prometheus](https://prometheus.io/) 这类开源工具以及商业化产品。
 
@@ -53,9 +54,9 @@ OpenTelemetry 包括以下主要组件：
 - 可自动生成遥测数据的自动仪表化组件，无需更改代码
 - [OpenTelemetry Collector](/docs/collector)：接收、处理和导出遥测数据的代理
 - 各种其他工具，
-  如[用于 Kubernetes 的 OpenTelemetry Operator](/docs/kubernetes/operator/)、
-  [OpenTelemetry Helm Charts](/docs/kubernetes/helm/) 和
-  [FaaS 的社区资产](/docs/faas/)
+  如[用于 Kubernetes 的 OpenTelemetry Operator](/docs/platforms/kubernetes/operator/)、
+  [OpenTelemetry Helm Charts](/docs/platforms/kubernetes/helm/) 和
+  [FaaS 的社区资产](/docs/platforms/faas/)
 
 OpenTelemetry 广泛应用于许多已集成 OpenTelemetry
 提供默认可观测性的[库、服务和应用](/ecosystem/integrations/)。

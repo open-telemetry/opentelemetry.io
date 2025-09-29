@@ -2,8 +2,8 @@
 title: Using instrumentation libraries
 linkTitle: Libraries
 aliases: [configuring_automatic_instrumentation, automatic]
-cSpell:ignore: faraday metapackage sinatra
 weight: 30
+cSpell:ignore: faraday metapackage sinatra
 ---
 
 {{% docs/languages/libraries-intro ruby %}}

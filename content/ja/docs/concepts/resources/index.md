@@ -1,10 +1,10 @@
 ---
 title: リソース
 weight: 70
-default_lang_commit: 825b6e2
+default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
 ---
 
-## はじめに
+## はじめに {#introduction}
 
 {{% docs/languages/resources-intro %}}
 
@@ -12,11 +12,11 @@ default_lang_commit: 825b6e2
 
 ![トレースに関連するリソース属性の出力例を示すJaegerのスクリーンショット](screenshot-jaeger-resources.png)
 
-リソースは `TraceProvider` または `MetricProvider` の初期化時に追加されます。
+リソースは `TracerProvider` または `MetricProvider` の初期化時に追加されます。
 この関連付けは後で変更することはできません。
 リソースが追加されると、そのプロバイダーに紐づいた `Tracer` または `Meter` から生成されるすべてのスパンとメトリクスに、そのリソースが関連付けられます。
 
-## SDKが提供するデフォルト値を持つセマンティック属性
+## SDKが提供するデフォルト値を持つセマンティック属性 {#semantic-attributes-with-sdk-provided-default-value}
 
 OpenTelemetry SDK が提供する属性があります。
 そのうちの1つが `service.name` で、これはサービスの論理名を表します。
@@ -24,7 +24,7 @@ OpenTelemetry SDK が提供する属性があります。
 
 さらに、SDKは自身を識別するために、`telemetry.sdk.name`、`telemetry.sdk.language`、`telemetry.sdk.version` といったリソース属性も提供します。
 
-## リソース検出器
+## リソース検出器 {#resource-detectors}
 
 ほとんどの言語固有のSDKは、環境からリソース情報を自動的に検出できるリソース検出器のセットを提供しています。
 一般的なリソース検出器には次のようなものがあります。
@@ -42,8 +42,8 @@ OpenTelemetry SDK が提供する属性があります。
 独自のリソース属性を指定することもできます。
 リソース属性はコードで指定することも、環境変数 `OTEL_RESOURCE_ATTRIBUTES` に設定することもできます。
 該当する場合は、[リソース属性のセマンティック規約](/docs/specs/semconv/resource) を使用してください。
-たとえば、`deployment.environment` を使用して、[デプロイ環境](/docs/specs/semconv/resource/deployment-environment/) の名前を指定できます。
+たとえば、`deployment.environment.name` を使用して、[デプロイ環境](/docs/specs/semconv/resource/deployment-environment/) の名前を指定できます。
 
 ```shell
-env OTEL_RESOURCE_ATTRIBUTES=deployment.environment=production yourApp
+env OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=production yourApp
 ```

@@ -1,0 +1,18 @@
+{{ $counter := 0 -}}
+{{ $entries := slice -}}
+{{ range $key, $entry := .Site.Data.registry -}}
+  {{ $flags := slice -}}
+  {{ if .isNative -}}
+    {{ $flags = $flags | append "native" -}}
+  {{ end -}}
+  {{ if .isFirstParty -}}
+    {{ $flags = $flags | append "first party" -}}
+  {{ end -}}
+  {{ if .deprecated -}}
+    {{ $flags = $flags | append "deprecated" -}}
+  {{ end -}}
+  {{ $entry = merge $entry (dict "_key" $key "id" $counter "flags" $flags) -}}
+  {{ $entries = $entries | append $entry -}}
+  {{ $counter = add $counter 1 -}}
+{{ end -}}
+{{ jsonify (dict "indent" "  ") $entries -}}
