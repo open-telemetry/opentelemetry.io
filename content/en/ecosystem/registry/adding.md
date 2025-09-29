@@ -32,7 +32,7 @@ When adding your project to the registry, you need to specify a `registryType`. 
 ### `exporter`
 **Use for**: Exporter components of the OpenTelemetry Collector or exporter libraries within language-specific SDKs.
 
-**Examples**: OTLP exporters, Jaeger exporters, Prometheus exporters, or any component that sends telemetry data to external systems.
+**Examples**: OTLP exporters, Prometheus exporters, or any component that sends telemetry data to external systems.
 
 **Note**: Not applicable for third-party components that are exporting telemetry data.
 
