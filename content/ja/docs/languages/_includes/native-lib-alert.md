@@ -1,5 +1,5 @@
 ---
-default_lang_commit: 5fdcac03a4be4f063089a72a82348ec90cce9874
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 ---
 
 {{ if $noIntegrations }}
