@@ -1859,6 +1859,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-01-31T13:07:08.936780845Z"
   },
+  "https://docs.google.com/forms/d/e/1FAIpQLSeSA09xDIv0uyb6vrP8xBbLjm8NsgihrG8GHxacbigF17sNDw/viewform": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-29T06:00:32.66684632Z"
+  },
   "https://docs.google.com/forms/d/e/1FAIpQLSfbpqBcCVfmRj_Rk_Sd6zaBGpfzGSBvSZ6CdVn6PPBbbmPIOw/viewform": {
     "StatusCode": 200,
     "LastSeen": "2025-08-27T07:08:20.568520677Z"
@@ -2726,6 +2730,10 @@
   "https://en.wikipedia.org/wiki/Aggregate_function#Decomposable_aggregate_functions": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:07:12.345Z"
+  },
+  "https://en.wikipedia.org/wiki/Anywhere_on_Earth": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-29T06:00:39.437037756Z"
   },
   "https://en.wikipedia.org/wiki/Asynchronous_method_invocation": {
     "StatusCode": 200,
@@ -6434,6 +6442,22 @@
   "https://github.com/open-telemetry/community/blob/main/elections/2024/governance-committee-election.md#voter-eligibility": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:10:12.345Z"
+  },
+  "https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-candidates.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T06:00:51.713237749Z"
+  },
+  "https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-election.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T06:00:48.260928798Z"
+  },
+  "https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-election.md#nominations": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T06:00:55.356784753Z"
+  },
+  "https://github.com/open-telemetry/community/blob/main/elections/2025/voters-roll.csv": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T06:00:35.769294029Z"
   },
   "https://github.com/open-telemetry/community/blob/main/gc-check-ins.md": {
     "StatusCode": 206,
@@ -22954,6 +22978,10 @@
   "https://vote.heliosvoting.org/helios/elections/176e7ca8-647d-11ef-9b9a-2a30e2a223da/view": {
     "StatusCode": 200,
     "LastSeen": "2024-09-02T11:59:00.266487+01:00"
+  },
+  "https://vote.heliosvoting.org/helios/elections/f94a7c58-990b-11f0-a16d-5270fb641b4c/view": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-29T06:00:43.272391792Z"
   },
   "https://vunetsystems.com/vuapp360/": {
     "StatusCode": 206,
