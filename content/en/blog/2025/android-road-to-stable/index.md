@@ -80,7 +80,7 @@ number of useful new instrumentation libraries. These include:
 
 ### Auto-Instrumentation
 
-Unlike its older cousin the
+Unlike its cousin the
 [OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation),
 the Android agent is unable to do bytecode weaving to instrument classes at
 runtime, due to platform restrictions. The ability to have your code
