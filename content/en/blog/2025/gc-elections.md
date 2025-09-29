@@ -36,8 +36,8 @@ For more information, see the
 
 ## Interested in joining the Governance Committee?
 
-If you’ve been working on OpenTelemetry and seeing it grow, or are an end-user
-that wants to help us make OpenTelemetry better, now’s the time to consider
+If you’ve been working on OpenTelemetry and seeing it grow or you're an end-user
+who wants to help us make OpenTelemetry better, now’s the time to consider
 running for a seat on the Governance Committee. You can read about the
 Governance Committee's role in
 [this blog](/blog/2019/opentelemetry-governance-committee-explained/) post or
