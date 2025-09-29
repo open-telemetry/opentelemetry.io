@@ -64,7 +64,7 @@ When adding your project to the registry, you need to specify a `registryType`. 
 ### `receiver`
 **Use for**: OpenTelemetry Collector receiver components.
 
-**Examples**: OTLP receivers, Jaeger receivers, Prometheus receivers, or any component that receives telemetry data from external sources.
+**Examples**: OTLP receivers, Prometheus receivers, or any component that receives telemetry data from external sources.
 
 **Note**: Not applicable for third-party components that are receiving OpenTelemetry telemetry.
 
