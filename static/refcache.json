@@ -443,6 +443,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-09-11T16:07:01.612259-04:00"
   },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-failsafe-3.0": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-29T14:30:39.62287-04:00"
+  },
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-graphql-java-12.0": {
     "StatusCode": 200,
     "LastSeen": "2025-09-11T16:07:20.768069-04:00"
@@ -2970,6 +2974,10 @@
   "https://expressjs.com/": {
     "StatusCode": 200,
     "LastSeen": "2025-01-15T13:17:29.684999-05:00"
+  },
+  "https://failsafe.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T14:30:39.215802-04:00"
   },
   "https://farfetch.github.io/kafkaflow/docs/guides/open-telemetry": {
     "StatusCode": 206,
