@@ -161,7 +161,7 @@
   },
   "optionalDependencies": {
     "netlify-cli": "^23.0.0",
-    "npm-check-updates": "^18.0.2"
+    "npm-check-updates": "^19.0.0"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
