@@ -2,7 +2,7 @@
 title: 'OpenTelemetry Android: Road to Stable'
 author: >-
   [Jason Plumb](https://github.com/breedx-splk) (Splunk)
-linkTitle: 'OpenTelemetry Android: Road to Stable'
+linkTitle: 'OTel Android: Road to Stable'
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/7902
 sig: Android
 date: 2025-09-29
