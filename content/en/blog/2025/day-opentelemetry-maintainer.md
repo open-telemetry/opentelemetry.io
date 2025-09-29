@@ -4,6 +4,7 @@ linkTitle: A day in the life of an OpenTelemetry maintainer
 date: 2025-09-30
 author: >-
   [Damien Mathieu](https://github.com/dmathieu) (Elastic)
+canonical_url: https://www.elastic.co/observability-labs/blog/day-opentelemetry-maintainer
 ---
 
 When people think about open source, they often picture lines of code, clever
