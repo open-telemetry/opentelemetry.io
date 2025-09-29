@@ -10,8 +10,8 @@ permissions:
 env:
   COMMENT: ${{ github.event.comment.body }}
   PR_NUM: ${{ github.event.issue.number }}
-  USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
-  USER_NAME: opentelemetrybot
+  USER_EMAIL: 197425009+otelbot@users.noreply.github.com
+  USER_NAME: otelbot
   MAX_PATCH_SIZE_KB: 1024
 
 jobs:
@@ -28,7 +28,7 @@ jobs:
       patch_skipped: ${{ steps.check_patch.outputs.skipped }}
 
     steps:
-      - uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+      - uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
         with:
           egress-policy: audit
 
@@ -93,7 +93,7 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+      - uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
         with:
           egress-policy: audit
 
@@ -101,9 +101,16 @@ jobs:
         with:
           fetch-depth: 999
 
+      - uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: otelbot-token
+        with:
+          # the higher privileged docs token is needed to push commits to an existing PR
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
       - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
         env:
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Download patch
         uses: actions/download-artifact@v5
@@ -139,21 +146,21 @@ jobs:
             echo "No changes to commit"
           fi
         env:
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Comment success
         if: ${{ !failure() && !cancelled() }}
         run: |
           gh pr comment $PR_NUM --body "✅ \`fix:${{ needs.generate-patch.outputs.action_name }}\` applied successfully in [this run]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)."
         env:
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Comment failure
         if: ${{ failure() || cancelled() }}
         run: |
           gh pr comment $PR_NUM --body "❌ \`fix:${{ needs.generate-patch.outputs.action_name }}\` failed. See logs: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
         env:
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
   notify-noop:
     name: Comment no-op patch
@@ -161,8 +168,14 @@ jobs:
     if: needs.generate-patch.outputs.patch_skipped == 'true'
     needs: generate-patch
     steps:
+      - uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+
       - name: Comment no-op
         run: |
           gh pr comment $PR_NUM --body "ℹ️ \`fix:${{ needs.generate-patch.outputs.action_name }}\` made no changes – nothing to commit."
         env:
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
