@@ -7,10 +7,10 @@ author: >-
 ---
 
 When people think about open source, they often picture lines of code, clever
-algorithms, or maybe a GitHub repo full of issues and pull requests. What can be
-harder to see is the human side. The people who quietly keep things moving, who
-make sure contributions land smoothly and help the community grow in a healthy
-way. That's the work of a maintainer.
+algorithms, or maybe a GitHub repository full of issues and pull requests. What
+can be harder to see is the human side. The people who quietly keep things
+moving, who make sure contributions land smoothly and help the community grow in
+a healthy way. That's the work of a maintainer.
 
 Maintainers are more than just code reviewers. They are the stewards of the
 SIG's
@@ -63,10 +63,10 @@ That means asking questions like:
 Sometimes the answer is "not yet" or even "no", and it’s on us to communicate
 that clearly while still encouraging contributions.
 
-Roadmapping isn't about dictating every detail. It's about setting priorities
-together with the community—listening to feedback, balancing what users need
-today with where the project should be tomorrow, and making tradeoffs that keep
-the project sustainable.
+Shaping a roadmap isn't about dictating every detail. It's about setting
+priorities together with the community—listening to feedback, balancing what
+users need today with where the project should be tomorrow, and making tradeoffs
+that keep the project sustainable.
 
 The roadmap gives everyone a shared sense of direction. Contributors know where
 their work fits in, users can see what's coming next, and the project as a whole
@@ -126,7 +126,7 @@ will be reviewed thoughtfully, users trust the software to be stable, and the
 community grows because people want to come back.
 
 Good project maintenance builds momentum. A contributor who feels supported on
-their first pull request is more likely to return for a second. Clear roadmaps
+their first pull request is more likely to return for a second. Clear roadmap
 and consistent standards give people confidence that their effort matters and
 will fit into the bigger picture. And when conflicts are handled with respect
 and transparency, it reinforces the culture of trust that makes open source
