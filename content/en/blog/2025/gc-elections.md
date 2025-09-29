@@ -49,7 +49,7 @@ by 17 October 2025 23:59 UTC — see the detailed requirements under
 [nominations](https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-election.md#nominations)
 for the Governance Committee election.
 
-We would like to thank the GC members who have helped grow OpenTelemetry, and
+We would like to thank the GC members whose term expires this year; they have helped grow OpenTelemetry, and
 invite them to run for re-election if they so choose: Austin Parker, Daniel Gomez Blanco,
 Juraci Paixão Kröhling, Severin Neumann, and Ted Young.
 
