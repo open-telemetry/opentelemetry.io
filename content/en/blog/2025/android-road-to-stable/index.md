@@ -36,7 +36,7 @@ The community rallied, and we assembled a crew of maintainers and approvers
 (across 4 different vendors) to shepherd the code and guide continuous
 improvement of the project.
 
-## What We Have Accomplished
+## What we have accomplished
 
 It didn’t take long for us to identify some areas for improvement, and we’ve
 made some considerable progress over the last 1250+ pull requests from more than
