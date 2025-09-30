@@ -1,4 +1,4 @@
----
+-custom--
 title: 定制 Collector
 weight: 29
 default_lang_commit: 9a1f7271288a46049ae28785f04a67fb77f677f7
@@ -246,7 +246,7 @@ Collector 发行版的所有源代码和可执行文件。
 FROM alpine:3.19 AS certs
 RUN apk --update add ca-certificates
 
-FROM golang:1.23.6 AS build-stage
+FROM golang:1.25.0 AS build-stage
 WORKDIR /build
 
 COPY ./builder-config.yaml builder-config.yaml
