@@ -159,8 +159,8 @@ intentionally cause problems, such as slow rendering and crashing the app.
 We have reached a point where it is time to start thinking about the next phase
 of OpenTelemetry Android: Stability. After many PRs, much discussion,
 refactoring, deliberation, and continuous refinement, we believe we are
-approaching an initialization API that we are happy to maintain as “stable” for the
-life of a 1.x lineage.
+approaching an initialization API that we are happy to maintain as “stable” for
+the life of a 1.x lineage.
 
 The October 2025 release will be our first release candidate: `1.0.0-rc1`.
 
