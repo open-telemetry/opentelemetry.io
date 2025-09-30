@@ -29,7 +29,7 @@ if [ ! -f "$REFERENCE_FILE" ]; then
   echo "ERROR: Reference file '$REFERENCE_FILE' does not exist"
   exit 1
 else
-  echo "We will compare files against '$REFERENCE_FILE', listing those that differ."
+  echo "Compare shard refcache files against '$REFERENCE_FILE':"
 fi
 
 # Find all refcache.json files in the directory
@@ -45,6 +45,8 @@ for file in $REFCACHE_FILES; do
   if ! diff -q "$REFERENCE_FILE" "$file" >/dev/null 2>&1; then
     echo " - $file differs"
     DIFFS_FOUND=1
+  else
+    echo " - $file is identical"
   fi
 done
 
@@ -56,6 +58,6 @@ fi
 
 echo ""
 echo "WARNING: the main refcache.json file needs to be updated."
-echo "Run 'npm run fix:refcache' locally and commit the changes,"
-echo "or add the comment '/fix:refcache' to your PR in GitHub."
+echo "  Run 'npm run fix:refcache' locally and commit the changes,"
+echo "  or add the comment '/fix:refcache' to your PR in GitHub."
 exit 1
