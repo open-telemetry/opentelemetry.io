@@ -23503,6 +23503,10 @@
     "StatusCode": 206,
     "LastSeen": "2024-10-09T10:19:38.749703+02:00"
   },
+  "https://www.ibm.com/docs/en/instana-observability/1.0.304": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T06:59:31.281764653Z"
+  },
   "https://www.ibm.com/docs/en/instana-observability/current": {
     "StatusCode": 206,
     "LastSeen": "2025-06-17T16:12:39.207756653Z"
