@@ -60,7 +60,7 @@ In addition to publishing separate modules, we also
 which can be used by developers to keep the versions of these many modules in
 sync.
 
-### New Instrumentation
+### New instrumentation
 
 Through community contributions, the OpenTelemetry Android project gained a
 number of useful new instrumentation libraries. These include:
