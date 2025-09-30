@@ -78,7 +78,7 @@ OpenTelemetry constă din următoarele componente principale:
 - API-uri care definesc modul de generare a datelor de telemetrie
 - [SDK-uri lingvistice](../languages) care implementează specificațiile,
   API-urile și exportul datelor de telemetrie
-- Un [ecosistem de biblioteci](/ecosistem/registry) care implementează
+- Un [ecosistem de biblioteci](/ecosystem/registry) care implementează
   instrumentație pentru biblioteci și framework-uri comune
 - Componente de instrumentație automată care generează date de telemetrie fără a
   necesita modificări de cod
@@ -116,7 +116,7 @@ Deși majoritatea utilizatorilor s-ar putea să nu aibă nevoie să extindă
 OpenTelemetry, proiectul este conceput pentru a face acest lucru posibil la
 aproape orice nivel.
 
-## Istorie
+## Istorie {#history}
 
 OpenTelemetry este un proiect al [Cloud Native Computing Foundation][] (CNCF)
 care este rezultatul unei [fuziuni] între două proiecte anterioare,
@@ -133,7 +133,7 @@ la OpenTelemetry în [Ghidul de migrare](../migration/).
 [fuziuni]:
   https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
 
-## Ce urmează?
+## Ce urmează? {#what-next}
 
 - [Începe](../getting-started/) &mdash; treci la acțiune!
 - Învață despre [conceptele OpenTelemetry](../concepts/).
