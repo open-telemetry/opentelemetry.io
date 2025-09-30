@@ -78,7 +78,7 @@ number of useful new instrumentation libraries. These include:
 - [sessions](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/sessions)
   – generates events when the session lifecycle changes
 
-### Auto-Instrumentation
+### Auto-instrumentation
 
 Unlike its cousin the
 [OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation),
