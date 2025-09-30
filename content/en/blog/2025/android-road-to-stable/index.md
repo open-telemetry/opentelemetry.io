@@ -5,7 +5,7 @@ author: >-
 linkTitle: 'OTel Android: Road to Stable'
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/7902
 sig: Android
-date: 2025-09-29
+date: 2025-10-02
 cSpell:ignore: httpurlconnection Jetpack
 ---
 
