@@ -23,10 +23,16 @@ jobs:
 
       - name: Use CLA approved github bot
         run: |
-          git config user.name opentelemetrybot
-          git config user.email 107717825+opentelemetrybot@users.noreply.github.com
+          git config user.name otelbot
+          git config user.email 197425009+otelbot@users.noreply.github.com
+
+      - uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
 
       - run: ./scripts/auto-update/all-versions.sh
         env:
-          # change this to secrets.GITHUB_TOKEN when testing against a fork
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          # change to ${{ secrets.GITHUB_TOKEN }} and comment out the step above when testing against a fork
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
