@@ -152,7 +152,7 @@ and tracing telemetry.
 To demonstrate some more realistic mobile concerns, there are also features that
 intentionally cause problems, such as slow rendering and crashing the app.
 
-## Looking Ahead
+## Looking ahead
 
 [We want your feedback on the agent API!](https://github.com/open-telemetry/opentelemetry-android/issues/1257)
 
