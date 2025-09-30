@@ -18,7 +18,7 @@ main initialization and configuration APIs in order to prepare for a 1.0.0
 stable release. What does this mean for the mobile RUM developer? Are you
 interested in helping out? Read on to learn more.
 
-## Where We Came From
+## Where we came from
 
 Two years ago, OpenTelemetry Android was a newborn – warmly received by the
 community as a
