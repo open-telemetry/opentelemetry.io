@@ -1,16 +1,16 @@
 ---
-title: Miembros del Proyecto OpenTelemetry
+title: Miembros del proyecto OpenTelemetry
 linkTitle: Miembros
 weight: 30
-cSpell:ignore: triagers
 default_lang_commit: 54b262d6b6703e304f6c42b41805a715d7ebee20
+cSpell:ignore: triagers
 ---
 
 La comunidad de OpenTelemetry está formada por muchas personas de diferentes
 orígenes que contribuyen a lograr la [visión y misión](/community/mission/) del
 proyecto.
 
-A continuación, encontraras a todos los miembros establecidos de la comunidad en
+A continuación, encontrarás a todos los miembros establecidos de la comunidad en
 sus diferentes roles para el proyecto.
 
 Si ya colaboras en el proyecto OpenTelemetry y no apareces aquí, es posible que
@@ -21,22 +21,22 @@ o que necesitas consultar nuestras
 para que te ayuden a iniciar tu colaboración como miembro y ascender hasta
 llegar a mantenedor!
 
-## Comité de Gobernanza
+## Comité de gobernanza
 
-El Comité de Gobernanza (CG) es el órgano rector del proyecto OpenTelemetry. Los
+El comité de gobernanza (CG) es el órgano rector del proyecto OpenTelemetry. Los
 miembros del CG son
 [elegidos por los miembros de la comunidad OpenTelemetry](https://github.com/open-telemetry/community/blob/main/governance-charter.md#elections).
 
 {{% community/members-list "governance-committee" %}}
 
-## Comité Técnico
+## Comité técnico
 
-El Comité Técnico (CT) es responsable de todo el desarrollo técnico dentro del
+El comité técnico (CT) es responsable de todo el desarrollo técnico dentro del
 proyecto OpenTelemetry.
 
 {{% community/members-list "technical-committee" %}}
 
-## Patrocinadores de Especificaciones
+## Patrocinadores de especificaciones
 
 Los patrocinadores de la especificación son colaboradores de confianza del
 comité técnico y trabajan para revisar, aprobar y patrocinar los problemas y las
