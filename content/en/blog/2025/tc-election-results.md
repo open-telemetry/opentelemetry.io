@@ -6,8 +6,6 @@ author: OpenTelemetry Technical Committee
 cSpell:ignore: Ashpole
 ---
 
-## Announcing new OpenTelemetry Technical Committee members
-
 The OpenTelemetry
 [Technical Committee](https://github.com/open-telemetry/community/blob/main/community-members.md#technical-committee)
 is delighted to announce two new elected members! Please join us in
