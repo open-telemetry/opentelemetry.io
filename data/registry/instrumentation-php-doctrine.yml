@@ -1,0 +1,20 @@
+title: OpenTelemetry Doctrine auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - doctrine
+  - instrumentation
+  - php
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/Doctrine
+license: Apache 2.0
+description:
+  This is a read-only subtree split of
+  https://github.com/open-telemetry/opentelemetry-php-contrib.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+package:
+  registry: packagist
+  name: open-telemetry/opentelemetry-auto-doctrine
+isFirstParty: false
