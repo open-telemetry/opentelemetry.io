@@ -1,7 +1,7 @@
 # cSpell:ignore wbollock
 title: OpenTelemetry Collector Release Notes Comparator
 registryType: utilities
-language: collector
+language: go
 tags:
   - collector
   - upgrade
