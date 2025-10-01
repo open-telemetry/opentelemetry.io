@@ -1,4 +1,5 @@
 name: Update specification integration branch
+# cSpell:ignore otelbot
 
 on:
   schedule:
@@ -9,12 +10,17 @@ on:
 permissions:
   contents: read
 
+env:
+  REPO: opentelemetry-specification
+  # Abbreviation of REPO used in branch and submodule names
+  ABBR: spec
+
 jobs:
-  update-spec-integration-branch:
+  update-integration-branch:
     runs-on: ubuntu-latest
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
-      - uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+      - uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2.1.4
         id: otelbot-token
         with:
           # the higher privileged docs token is needed to push commits to an existing PR
@@ -31,7 +37,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          branch_prefix="otelbot/spec-integration"
+          branch_prefix="otelbot/${{ env.ABBR }}-integration"
 
           version=$(git branch -r \
                         | grep -E "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
@@ -40,7 +46,7 @@ jobs:
 
           if [[ -z "$version" ]]; then
             latest_version=$(gh release view \
-                          --repo open-telemetry/opentelemetry-specification \
+                          --repo open-telemetry/${{ env.REPO }} \
                           --json tagName \
                           --jq .tagName)
             if [[ $latest_version =~ ^v([0-9]+)\.([0-9]+)\. ]]; then
@@ -81,8 +87,8 @@ jobs:
 
       - name: Update submodule
         run: |
-          git submodule update --init content-modules/opentelemetry-specification
-          cd content-modules/opentelemetry-specification
+          git submodule update --init content-modules/${{ env.REPO }}
+          cd content-modules/${{ env.REPO }}
 
           if git ls-remote --exit-code --tags origin $VERSION; then
             git reset --hard $VERSION
@@ -94,16 +100,16 @@ jobs:
           commit_desc=$(git describe --tags)
           cd ../..
 
-          sed -i "s/^\tspec-pin = .*/\tspec-pin = $commit_desc/" .gitmodules
+          sed -i "s/^\t${{ env.ABBR }}-pin = .*/\t${{ env.ABBR }}-pin = $commit_desc/" .gitmodules
 
           if [ "$tag_exists" == "true" ]; then
-            sed -i "s/^\(\s *\)spec: .*/\1spec: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
+            sed -i "s/^\(\s *\)${{ env.ABBR }}: .*/\1${{ env.ABBR }}: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
           fi
 
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Update spec submodule to $commit_desc"
+            git commit -am "Update ${{ env.ABBR }} submodule to $commit_desc"
             git push
           fi
 
@@ -111,15 +117,18 @@ jobs:
         with:
           node-version-file: .nvmrc
 
-      - name: Fix refcache
+      - name: Update refcache
         run: |
           npm install --omit=optional
-          npm run fix:refcache
+          # Ignore link-check failures so we can still commit refcache updates
+          npm run fix:refcache || true
+          # Prune 404 entries, if any
+          npm run _refcache:prune
 
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Fix refcache"
+            git commit -am "Update refcache"
             git push
           fi
 
@@ -130,7 +139,7 @@ jobs:
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
-            gh pr create --title "DRAFT Update specification to unreleased $VERSION-dev" \
-                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) specification." \
+            gh pr create --title "DRAFT Update ${{ env.REPO }} to unreleased $VERSION-dev" \
+                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) [${{ env.REPO }}](https://github.com/open-telemetry/${{ env.REPO }})." \
                          --draft
           fi
