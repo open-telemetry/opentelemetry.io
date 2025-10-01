@@ -198,6 +198,16 @@ _Read the full deep dive on
 While the post uses Dash0 in the examples, the same setup works with any
 OTLP-based backend._
 
+
+## OpenTelemetry signal support at a glance
+
+| **Ingress Controller** | **Tracing** | **Metrics** | **Logs** |
+|---|---|---|---|
+| **Ingress-NGINX** | Native OTLP spans via module or annotations | Prometheus only; needs Collector scrape | Classic NGINX logs; add trace/span IDs; Collector parses |
+| **Contour** | Envoy OTel driver; enabled via CRDs | Envoy + Contour metrics in Prometheus; Collector needed | Envoy access logs with traceparent; Collector parses |
+| **Emissary** | Envoy OTel driver; TracingService config | Envoy + `ambassador_*` series in Prometheus; Collector needed | Envoy logs with traceparent; Collector parses |
+| **Traefik** | Native OTLP spans; configurable verbosity | Native OTLP metrics (semantic conventions) or Prometheus | Experimental OTLP logs; JSON fallback tailed by Collector |
+
 ## Comparing the controllers
 
 Comparing the four controllers shows the arc of OpenTelemetry adoption. Tracing
@@ -246,6 +256,7 @@ all equip you with the same level of observability. Some give you a narrow
 peephole, while others give you a panoramic view - but in every case, adding the
 right attributes and instrumenting downstream systems is what turns raw signals
 into actionable insight.
+
 
 ## Patterns and maturity
 
