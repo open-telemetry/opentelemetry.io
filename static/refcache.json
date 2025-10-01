@@ -4851,6 +4851,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:40:54.035395-05:00"
   },
+  "https://github.com/emissary-ingress/emissary": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T10:54:51.383402+02:00"
+  },
   "https://github.com/emreyalvac": {
     "StatusCode": 200,
     "LastSeen": "2024-11-18T23:18:28.709266912Z"
@@ -5719,6 +5723,10 @@
     "StatusCode": 200,
     "LastSeen": "2024-11-06T19:17:40.539758Z"
   },
+  "https://github.com/kaspernissen": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T18:45:54.218976+02:00"
+  },
   "https://github.com/katzchang": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:13:09.035999-05:00"
@@ -5854,6 +5862,10 @@
   "https://github.com/kubernetes/cri-api/blob/c75ef5b473bbe2d0a4fc92f82235efd665ea8e9f/pkg/apis/runtime/v1/api.proto#L1237-L1238": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:10:12.345Z"
+  },
+  "https://github.com/kubernetes/ingress-nginx": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T10:54:49.142829+02:00"
   },
   "https://github.com/kubernetes/kubernetes/blob/8adc0f041b8e7ad1d30e29cc59c6ae7a15e19828/staging/src/k8s.io/kubelet/pkg/apis/stats/v1alpha1/types.go#L230-L233": {
     "StatusCode": 206,
@@ -16131,6 +16143,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:39:51.88017-05:00"
   },
+  "https://github.com/projectcontour/contour": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T10:54:50.238437+02:00"
+  },
   "https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T13:29:34.292488-05:00"
@@ -16918,6 +16934,10 @@
   "https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-weaviate": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:22.374038-05:00"
+  },
+  "https://github.com/traefik/traefik": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T10:54:52.785355+02:00"
   },
   "https://github.com/trask": {
     "StatusCode": 206,
@@ -23254,6 +23274,30 @@
   "https://www.dash0.com/": {
     "StatusCode": 200,
     "LastSeen": "2024-10-28T11:30:33.016936+01:00"
+  },
+  "https://www.dash0.com/blog/observability-at-the-edge-opentelemetry-support-in-kubernetes-ingress-controllers": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T10:54:47.034497+02:00"
+  },
+  "https://www.dash0.com/blog/observability-at-the-edge-otel-support-in-k8s-ingress": {
+    "StatusCode": 404,
+    "LastSeen": "2025-09-29T18:45:52.062937+02:00"
+  },
+  "https://www.dash0.com/blog/observing-contour-with-opentelemetry-and-dash0": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-29T18:45:55.029222+02:00"
+  },
+  "https://www.dash0.com/blog/observing-emissary-ingress-with-opentelemetry-and-dash0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T18:45:57.718341+02:00"
+  },
+  "https://www.dash0.com/blog/observing-ingress-nginx-with-opentelemetry-and-dash0": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-29T18:45:54.618608+02:00"
+  },
+  "https://www.dash0.com/blog/observing-traefik-with-opentelemetry-and-dash0": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-29T18:45:58.232987+02:00"
   },
   "https://www.docker.com/": {
     "StatusCode": 206,
