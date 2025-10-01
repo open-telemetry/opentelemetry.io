@@ -80,12 +80,23 @@ jobs:
         with:
           node-version-file: .nvmrc
 
-      - name: Update refcache
-        if: ${{ env.IS_NEW_BRANCH == 'true' || env.PRUNE_MORE == 'true' }}
+      - run: npm install --omit=optional
+
+      - name: Prune refcache
+        if: ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' }}
         run: |
-          npm install --omit=optional
+          echo "List the oldest entry"
+          npm run _refcache:prune -- --list -n 1
+          echo "Pruning $PRUNE_N oldest refcache entries"
+          npm run _refcache:prune -- -n $PRUNE_N
+
+      - name: List the oldest entry
+        run: npm run _refcache:prune -- --list -n 1
+
+      - name: Update refcache
+        run: |
           # Ignore link-check failures so we can still commit refcache updates
-          npm run fix:refcache:refresh || true
+          npm run fix:refcache || true
           # Prune 404 entries, if any
           npm run _refcache:prune
 
