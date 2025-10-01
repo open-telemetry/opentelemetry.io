@@ -100,6 +100,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | Elasticsearch API client                         | `elasticsearch-api-client`                  |
 | Elasticsearch client                             | `elasticsearch-transport`                   |
 | Elasticsearch REST client                        | `elasticsearch-rest`                        |
+| Failsafe                                         | `failsafe`                                  |
 | Finagle                                          | `finagle-http`                              |
 | Google Guava                                     | `guava`                                     |
 | Google HTTP client                               | `google-http-client`                        |
