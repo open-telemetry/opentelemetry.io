@@ -9,7 +9,7 @@ draft: true # TODO: remove this line once your post is ready to be published
 canonical_url: https://openmainframeproject.org/blog/exploring-opentelemetry-priorities-for-mainframes-insights-from-survey-responses/
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/7870
 sig: SIG OpenTelemetry on Mainframes
-cSpell:ignore: CICS IDMS VSAM REXX VSAM Ruediger Schulze 
+cSpell:ignore: CICS HLASM IDMS REXX Ruediger Schulze VSAM
 ---
 
 Which [OpenTelemetry](/) features are considered most important by users for
@@ -120,8 +120,8 @@ shows that the survey participants have a mainframe background.
 
 A substantial majority of respondents came from the Financial Services sector
 (22 out of 45 total responses). A smaller contingent originated from diverse
-Logistics (in total 8). Thirteen respondents were primarily engaged in software and IT
-related fields such as Software Development, Independent Software Vendors
+Logistics (in total 8). Thirteen respondents were primarily engaged in software
+and IT related fields such as Software Development, Independent Software Vendors
 (ISVs), Service Providers, IBM zStack Software, Observability and Information
 Technology (IT).
 
@@ -140,19 +140,19 @@ including z/VSE and zTPF.
 ### Question 5: Which of the z/OS System Software do you work with?
 
 Most of the respondents (38) work with one of the transaction processing
-systems, CICS or IMS or both. Thirty-nine survey participants utilize Db2 and 31 make use
-of VSAM, while a notable subgroup of respondents also uses ADABAS, IDMS, DVM or
-Datacom as data backend.
+systems, CICS or IMS or both. Thirty-nine survey participants utilize Db2 and 31
+make use of VSAM, while a notable subgroup of respondents also uses ADABAS,
+IDMS, DVM or Datacom as data backend.
 
 ![z/OS System Software in use](q5.png)
 
 ### Question 6: What is your level of familiarity with OpenTelemetry?
 
 The beginners in OpenTelemetry adoption (26) made the largest group among the
-respondents. Fifteen of them are not familiar with any of the OpenTelemetry features
-or components. Only three self-identified as experts, while all participants
-with intermediate knowledge also claimed familiarity with the OpenTelemetry
-Collector.
+respondents. Fifteen of them are not familiar with any of the OpenTelemetry
+features or components. Only three self-identified as experts, while all
+participants with intermediate knowledge also claimed familiarity with the
+OpenTelemetry Collector.
 
 ![Familiarity with OpenTelemetry](q6.png)
 
@@ -271,8 +271,8 @@ mainframe.
 
 Java (25) and Python (20) are the two programming languages which are
 prioritized highest for the implementation of OpenTelemetry SDK support for the
-mainframe platform. 20% of the respondents would like to have the SDK for C++
-be available on the mainframe platform.
+mainframe platform. 20% of the respondents would like to have the SDK for C++ be
+available on the mainframe platform.
 
 ![Prioritization of OpenTelemetry SDKs](q16.png)
 
@@ -323,6 +323,21 @@ respondents and the use of the OpenTelemetry Collector for these use cases is of
 interest for them.
 
 ![Prioritization of OpenTelemetry Collector telemetry collection by category](q20.png)
+
+### Summary
+
+The survey outcomes reveal that most of the mainframe practitioners are new to
+OpenTelemetry, prioritizing system performance metrics for adoption. There is a
+demand for Java, Python and COBOL SDKs, alongside with collector support. These
+findings highlight the necessity for education, semantic conventions, and
+targeted efforts to port OpenTelemetry components to the mainframe platform.
+
+Join the OpenTelemetry on Mainframe SIG to contribute to language SDKs,
+instrumentation, and community expertise that will accelerate the OpenTelemetry
+adoption on mainframes. Connect with members of the SIG via the Slack channel
+[#otel-mainframes](https://cloud-native.slack.com/archives/C05PXDFTCPJ) or the
+[SIG meeting](https://github.com/open-telemetry/community/?tab=readme-ov-file#sig-mainframes)
+on Wednesday at 10:00 PT.
 
 _A version of this article was [originally posted] on the Open Mainframe Project
 blog._
