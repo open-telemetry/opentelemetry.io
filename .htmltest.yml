@@ -80,27 +80,6 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
   - ^https://shorturl.at/vLYZ0$
 
-  # Temporary until semconv is updated to 1.30.0+
-  - ^https://cloud.google.com/apis/design/resource_names#full_resource_name
-  - ^https://cloud.google.com/functions/docs/concepts/exec#function_scope_versus_global_scope
-  - ^https://developer.apple.com/documentation/uikit/uiapplicationdelegate#1656902
-  - ^https://docs.docker.com/registry/spec/manifest-v2-2/#example-image-manifest
-  - ^https://www.openssl.org/docs/man1.1.1/man3/SSL_get_version.html#RETURN-VALUES
-  - ^https://www.erlang.org/doc/man/erl_error.html#format_exception-3
-  # Fixed via https://github.com/open-telemetry/semantic-conventions/pull/1814
-  - ^https://github.com/open-telemetry/opentelemetry-specification/tree/v1.41.0/specification/logs/api.md#emit-an-event
-
   # Temporary until
-  # https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth@v0.120.0+
-  # is published to include
-  # https://github.com/open-telemetry/opentelemetry-collector/pull/12309
-  - ^https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
-  - ^https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators
-
-  # Temporary until
-  # https://github.com/open-telemetry/opentelemetry.io/issues/6237 is resolved
-  - ^https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#
-
-  # Temporary until
-  # https://github.com/open-telemetry/opentelemetry-specification/pull/4554 is resolved
-  - ^/docs/specs/semconv/attributes-registry/process/#process-attributes
+  # https://github.com/open-telemetry/semantic-conventions/issues/2844
+  - ^https://learn.microsoft.com/rest/api/subscription/subscriptions/list-locations
