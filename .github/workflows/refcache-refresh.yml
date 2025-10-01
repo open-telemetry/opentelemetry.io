@@ -60,6 +60,9 @@ jobs:
           else
             git checkout $BRANCH
             echo "PRUNE_N=\"1 --list\"" >> $GITHUB_ENV
+
+            PR_URL=$(gh pr view --json url --jq '.url')
+            echo "PR_URL=$PR_URL"
           fi
 
       - name: Use CLA approved github bot
@@ -116,4 +119,8 @@ jobs:
             gh pr create --title "Refresh refcache" \
                          --body "- Refreshes the oldest ${{ env.REFRESH_COUNT }} refcache entries." \
                          --draft
+            PR_URL=$(gh pr view --json url --jq '.url')
+            echo "PR created: $PR_URL"
+          else
+            echo "PR already exists: $prs"
           fi
