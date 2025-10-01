@@ -19791,6 +19791,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:59:03.790494-05:00"
   },
+  "https://pkg.go.dev/github.com/XSAM/otelsql": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T13:30:46.538477762Z"
+  },
   "https://pkg.go.dev/github.com/XSAM/otelsql#Open": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:27:12.345Z"
@@ -20554,6 +20558,22 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/webhookeventreceiver": {
     "StatusCode": 200,
     "LastSeen": "2025-10-01T12:47:27.322345402Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/windowseventlogreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T13:30:45.323333026Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/windowsperfcountersreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T13:30:45.216006103Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zipkinreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T13:30:45.504564723Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/zookeeperreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T13:30:45.748338648Z"
   },
   "https://pkg.go.dev/github.com/openclarity/apiclarity/plugins/otel-collector/apiclarityexporter": {
     "StatusCode": 200,
