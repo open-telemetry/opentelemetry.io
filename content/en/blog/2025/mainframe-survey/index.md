@@ -9,7 +9,7 @@ draft: true # TODO: remove this line once your post is ready to be published
 canonical_url: https://openmainframeproject.org/blog/exploring-opentelemetry-priorities-for-mainframes-insights-from-survey-responses/
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/7870
 sig: SIG OpenTelemetry on Mainframes
-cSpell:ignore: CICS IDMS VSAM REXX Ruediger Schulze 
+cSpell:ignore: CICS IDMS VSAM REXX VSAM Ruediger Schulze 
 ---
 
 Which [OpenTelemetry](/) features are considered most important by users for

@@ -142,7 +142,6 @@ unsampled
 unshallow
 upstreamed
 Villela
-VSAM
 wordpress
 WSGI
 zend
