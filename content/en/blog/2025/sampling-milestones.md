@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Sampling update
 linkTitle: OpenTelemetry Sampling update
-date: 2025-09-08
+date: 2025-10-01
 author: >-
   [Joshua MacDonald](https://github.com/jmacd) (Microsoft)
 sig: SIG Sampling
@@ -9,250 +9,228 @@ sig: SIG Sampling
 cSpell:ignore:
 ---
 
-## Intro
+## Introduction
 
-The OpenTelemetry sampling project promotes features and
-specifications for probability sampling in OpenTelemetry SDKs and
-collectors. Users look to OpenTelemetry to provide a consistent
-experience across programming langauges, kinds of signal, and modes of
-collection, and we aim to provide the this foundation for distributed
-trace collection and anywhere events are sampled, including log records
-and metric exemplars.
+When OpenTelemetry first launched its Tracing specification over five
+years ago, there was a [conspicuous "TODO" involving probability
+sampling](https://github.com/open-telemetry/opentelemetry-specification/issues/1413)
+left behind, it warned users of inconsistent results except when used
+at the root span of a trace.
 
-Sampling SIG has completed work on several inter-related OpenTelemetry
-specifications that bring us this foundation and let us resolve [a
-very old "TODO" in the tracing specification](
-https://github.com/open-telemetry/opentelemetry-specification/issues/1413).
+This meant OpenTelemetry users could not safely configure independent
+probabilty sampling policies in a distributed system, as the
+specification did not cover how to acheive consistency. This feature,
+the ability to configure unequal-probability sampling policies within
+a trace and still expect complete traces, is something users expect;
+it lets service owners configure independent limits on the volume of
+tracing data collected in a system.
 
-To begin with, we specify two ways to derive randomness from an
-OpenTelemetry trace context, layered upon [W3C Trace Context Level
-2](https://www.w3.org/TR/trace-context-2/). OpenTelemetry defines its
-own `tracestate` header field value, under the key "ot". Here is an
-example of an OpenTelemetry tracestate indicating 100% probability
-sampling:
+## Consistency by example
+
+To see why consistency is important, consider a system with a Frontend
+and two backend services, Cache and Storage. The Frontend handles
+high-value user requests, therefore frontend requests are sampled at
+100%. The root span is significant because errors are visible to the
+end user, so it forms the basis of a SLO measurement in this example
+and the system operator is willing to collect every span.
+
+The Cache service receives a relatively high volume of requests, so to
+save on observability costs, this service is configured to sample
+1-in-1000 traces.  Because of the high rate of requests, this 0.1%
+policy ensures the Cache service produces enough traces for many
+observability scenarios.
+
+The Storage service receives a relatively low volume of requests,
+compared with the Cache server, but still a lot of requests compared
+with the Frontend service; Storage is configured to sample 1-in-10
+traces.
+
+When we ask for consistency in distribute tracing, the goal is to
+ensure that when the smallest probability sampler (here 0.1%) chooses
+to sample, that higher probability samplers make the same
+decision. Here are the properties we can rely on thanks to
+consistency:
+
+- All Frontend spans are collected
+- 1-in-10 spans will consist of Frontend and Storage spans
+- 1-in-1000 traces will be complete.
+
+## Problems with TraceIdRatioBased
+
+OpenTelemetry's initial tracing specification featured the
+`TraceIdRatioBased` probability sampler. It was intended to be
+consistent from the start, however the working group had a hard time
+agreeing over specific details.  The rest of the specification was
+ready to release; the leftover TODO about sampling consistency was
+mitigated by the fact that root-only sampling was the norm for
+contemporary open-source tracing systems.
+
+The "ratio-based" part of the name hints at the form of solution to
+the consistent sampling problem:
+
+1. Consider the TraceID value as an N-bit random value
+2. Compute the Nth power of two
+3. Multiply the power-of-two by the ratio, yields a "threshold" value
+4. Compare the TraceID with the threshold value, yields a consistent decision.
+
+We had trouble agreeing on this form of solution because of a larger
+question. *Which bits of the TraceID can we trust to be random?*
+Without foundational requirements about randomness, OpenTelemetry
+could not specify a consistent sampling decision.
+
+Lacking firm randomness requirements, a common approach is to use a
+hash function instead. Using `Hash(TraceID)` to produce N-bits
+randomness works reasonably well if the hash function is good, but
+this approach is not suitable in a cross-language SDK specification.
+
+The details here are tricky. How many bits of the TraceID would be
+enough? Could every language SDK efficiently implement the required
+logic?
+
+## Introducing W3C TraceContext Level 2
+
+OpenTelemetry defines its TraceID based on the W3C TraceContext
+specification. This was a [_Candidate
+Recommendation_](https://www.w3.org/standards/types/#x4-2-candidate-recommendation)
+at the time of the initial OpenTelemetry Tracing specification, it was
+finished as a [W3C
+Recommendation](https://www.w3.org/standards/types/#x5-1-recommendation)
+in the [W3C Trace Context Level
+1](https://www.w3.org/TR/trace-context-1/) standard.
+
+OpenTelemetry turned to the W3C Trace Context working group with this
+larger problem in mind. Could we including OpenTelemetry and
+non-OpenTelemetry tracing systems agree on how many bits of the
+TraceID were random?
+
+The [W3C TraceContext Level 2](https://www.w3.org/TR/trace-context-2/)
+specification, currently a [Candidate Recommendation
+Draft](https://www.w3.org/standards/types/#x4-2-1-candidate-recommendation-draft),
+answers this question with a new [`Random` Trace Flag
+value](https://www.w3.org/TR/trace-context-2/#random-trace-id-flag). With
+this flag, the new W3C specification requires the least-significant 56
+bits of the TraceID to be "sufficiently" random. This means, for
+example, when we [represent the TraceID as 32 hexadecimal
+digits](https://opentelemetry.io/docs/specs/otel/trace/api/#retrieving-the-traceid-and-spanid),
+the last, rightmost 14 digits are random. Represented as 16 bytes, the
+rightmost 7 are random.
+
+OpenTelemetry is adopting the W3C TraceContext Level 2 draft
+recommendation as the foundation for consistent sampling. All SDKs
+will set the `Random` flag and ensure that TraceIDs they generate have
+the required 56 bits of randomness.
+
+## Consistent sampling threshold for rejection
+
+Back to the "ratio-based" example, now we're able to obtain 56 bits of
+randomness from a TraceID, and the decision process described in
+outline above calls for a threshold for comparison. 
+
+There was one more thing we as a group wanted for the probability
+sampling specification, a way for SDKs to communicate their sampling
+decisions, both to one another via TraceContext as well as on the
+collection path after they are finished. 
+
+The new specification lets OpenTelemetry components communicate about
+"how much sampling" has been applied to a span. This supports many
+advanced sampling architectures:
+
+- Accurate counting of sampled spans
+- Consistent rate-limited sampling
+- Adapative sampling
+- Consistent multi-stage sampling.
+
+The key points of our design are summarized next, [curious readers
+will want to see the full
+specification](https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/).
+
+Given the number of bits, there is not much left to specify, however we
+wanted an approach that:
+
+- Supports both lexicographical and numerical comparison
+- Minimizes TraceContext overhead
+- Is legible for advanced OpenTelemetry users.
+
+Our approach is based on what we call the _sampling threshold for
+rejection_. Given randomness value `R` and threshold for rejection
+`T`, we make a positive sampling decision when `T <= R`. Equivalently,
+we make a negative sampling decision when `T > R`.
+
+By design, the threshold value `0` corresponds with 100% sampling, so
+users can easily recognize this configuration. Abstractly, both `R`
+and `T` have a range of 56 bits, can be represented as unsigned
+integers, 7-byte slices, or 14-hex-digit strings.
+
+## OpenTelemetry TraceState
+
+The W3C TraceContext specification defines two HTTP headers for use in
+distributed tracing systems, the `tracecontext` header, which contains
+version, TraceID, SpanID, and flags, and `tracestate` which supports
+"vendor-specific" additions to the context. OpenTelemetry Tracing SDKs
+will soon begin using adding an entry under the key "ot" in the
+`tracestate` header. Here's an example:
 
 ```
 tracestate: ot=th:0
 ```
-<
-The above assumes the context was created with the W3C Trace Context
-Level 2 [Random Trace ID
-flag](https://www.w3.org/TR/trace-context-2/#random-trace-id-flag)
-set, which specifies how to set at least 56 random bits in the 128-bit
-Trace Context. When a Trace ID does not meet these requirements (and
-for other reasons), they can supply an **explicit randomness value**,
-using the OpenTelemetry TraceState to express the 56 bits instead:
+
+In a 100% sampling configuration, OpenTelemetry Tracing SDKs will
+insert `ot=th:0` in the TraceState. TraceState values, once entered in
+the context, are both propagated and recorded in the OpenTelemetry
+span data model. By design, the new OpenTelemetry TraceState value is
+only encoded and transmitted for positive sampling decisions, no
+`tracestate` header will appear as a result of negative sampling
+decisions.
+
+In this representation, sampling thresholds logically represent 14
+hexadecimal digits or 56 bits of information.
+
+However, to communicate the sampling threshold efficiently, we drop
+trailing zeros (except for `0` itself). This lets us limit threshold
+precision to fewer than 56 bits, which lowers the number of bytes per
+context. For example, threshold can be limited to 4 hexadecimal digits
+to avoid carrying around 10 more bytes of precision. Here is an
+example tracestate indicating 1% sampling, limited to 12-bits of
+precision:
 
 ```
-tracestate: ot=rv:03d09c0d05f5c9
+tracestate: ot=th:fd7
 ```
 
-The threshold and randomness values shown above can be combined,
-however we have optimized for the common case of an unsampled (Level
-2) context without explicit randomness, in which case the `tracestate`
-header is not used.
+We gave a lot of consideration to backwards compatibility, but we also
+wanted to be sure we could always use the stated sampling threshold
+for extrapolation, in a reliable, statistical sense. With this in
+mind, we there is one more OpenTelemetry TraceState value in our
+specification, a way to provide explicit randomness in the
+`tracestate` header.
 
-## Sampling is for counting
-
-The important thing about probability sampling in OpenTelemetry, to
-us, is that it preserves the elements of a statistical science. When
-users configure sampling (many ways) and collect records of
-OpenTelemetry data (many ways), they want to know "how much" sampling
-was applied. The act of sampling is fundamentally about counting and
-estimation, and we find this "how much" term is easiest to reason
-about when it represents a count. We use the term **adjusted count**
-to describe how much sampling was applied, it is a representivity
-score. Adjusted count is the mathematical reciprocal of selection
-probability. Here are a few examples of the term in use:
-
-- _25% probability sampling is communicated by `ot=th:c`, corresponding with an adjusted count of 4 per item._
-- _An adjusted count of N means we would expect to see N-1 similar items had we collected all of the data._
-
-Our goal is that OpenTelemetry users can lower telemetry data
-collection costs through sampling, while preserving adjusted count
-information, everywhere that sampling is applied in OpenTelemetry.
-
-There is an important requirement to ensure what we call "consistency"
-that deserves to be mentioned. Consistent sampling ensures that when
-multiple actors sample a trace independently, that they arrive at the
-same decision when configured at the same or larger probability.
-
-With our new OpenTelemetry sampling specifications:
-
-- The SDKs will upgrade to W3C Trace Context Level 2 for Trace ID generation
-- The built-in samplers AlwaysOn, AlwaysOff, ParentBased will be upgraded to use the OpenTelemetry tracestate
-- The TraceIdRatioBased sampler will be deprecated, replaced with a new Probability sampler
-- SDKs will implement new Composite, AnyOf, RateLimiting, and RuleBased composable samplers, along with composable forms of AlwaysOn, AlwaysOff, and ParentBased that participate in calculating sampling thresholds
-- SDKs will communicate sampling thresholds via TraceState as part of the context
-- SDKs will record the tracestate field as part of the OTLP span record
-- Collectors and backends will be able to count using adjusted counts, enabling acculate metrics calculated from sampled data.
-
-We have supplemental guidelines for OpenTelemetry collectors in case
-they re-sample traces and logs data on the collection path, in order
-to preserve sampling information. As a demonstration, we have upgraded
-the [OpenTelemetry `probabilisticsampler`
-processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/probabilisticsamplerprocessor/README.md)
-Collector-Contrib component. This makes a good example because it
-applies to both trace and logs data and it makes use of the explicit
-trace randomness feature described above. To explain this requires a
-bit more detail.
-
-## Example upgrade for a custom sampler
-
-We are going to explain how the `probabilisticsampler` processor was
-upgraded to record the correct sampling threshold without changing its
-algorithm. Like our new specification, this component makes a
-consistent decision. This works, essentially, because all consistent
-sampling decisions are alike.
-
-The original logic uses 14 bits of the 32-bit
-[FNV](https://en.wikipedia.org/wiki/Fowler%E2%80%93Noll%E2%80%93Vo_hash_function)
-hash function over the data for its decision. To configure itself, the
-component computes the desired probability (e.g., 1%) as a ratio, then
-multiplies by 2^14 (i.e., 16384) yielding a threshold. In this case
-the value is 164 (i.e., 0.01 * 16384), meaning it decides to sample if
-the hash value is less than 164 out of 16384. Note, as well, that the
-selection probability can be derived from the value 164 here, and note
-that the use of 14 bits introduces a slight error. The exact selection
-probability is approximately .01001, the exactadjusted count
-approximately 99.9 in this case.
-
-Now, we can see the correspondence between this component's decision
-and the new OpenTelemetry sampling specification:
-
-- The 14-bit hash function is this component's random variable
-- The number 164 is a sampling threshold for acceptance
-- Threshold 0 corresponds with 0% sampling
-- Threshold 16384 corresponds with 100% sampling.
-
-The decision to select values less than an threshold for acceptance is
-arbitrary, we can also formulate a consistent sampling decision based
-on a threshold for rejection, which is how the OpenTelemetry
-specification works. The OpenTelemetry sampling threshold `th:0` that
-we saw above indicates 100% sampling, and now we understand that it
-encodes the number of rejected values (out of 2^56) after removing
-removed trailing zeros. For the example `th:c`, representing 25%
-sampling in OpenTelemetry:
-
-- The 56-bit random value is a random variable derived from W3C Trace Context Level 2 Trace ID or OpenTelemetry tracestate explicit randomness value
-- The number `c` is a sampling threshold for rejection, which after
- extending with 0s corresponds with `0xc0000000000000` out of
- `0x100000000000000` or 75% of random values being rejected
-- Threshold `0` corresponds with 100% sampling
-- Threshold `0xffffffffffffff` corresponds with rejecting all except 1 of 2^56.
-
-Since the component was written before the specification, we expect
-there to be no OpenTelemetry tracestate field present in the data.
-Therefore, to emit its own sampling threshold, `probabilisticsampler`
-will re-encode its threshold for acceptance as a threshold for
-rejection, extending it from 14 bits to 56 bits in the process, in the
-form of an OpenTelemetry tracestate. Then, to establish consistency,
-it encodes the original 14 bits and 42 pseudo-random bits derived from
-the 32-bit FNV hash. For the example using a 1%
-`probabilisticsampler` configuration, we may expect to see spans with
-OpenTelemetry tracestate values like this:
+To enable consistent sampling and continue using non-random TraceIDs,
+for example, users can opt for explicit randomness:
 
 ```
-tracestate: ot=th:fd71;rv:fd7eaf7d5261ed
+tracestate: ot=rv:abcdef01234567
 ```
 
-Here, `fd71` is a 16-bit representation of the sampling threshold that
-rejects values less than `0xfd710000000000`, corresponding with
-1.00002% sampling probability.
+Explicit randomness values have a number of other uses in
+OpenTelemetry.
 
-## Coordinated sampling with OpenTelemetry
+## Looking forward
 
-When the user is ready to adopt OpenTelemetry consistent probability
-sampling in their SDKs, it becomes possible to coordinate sampling
-strategies across the SDK and collector components. 
+This post covers an essential upgrade to OpenTelemetry Tracing
+specification, enabling a new generation of sampling components in
+both SDKs and Collector components. We couldn't cover everything here
+and plan to cover more in the future. 
 
-The `probabilisticsampler` component supports two new modes that are
-suited for additional down-sampling on the collection path:
+For now, here are some useful references including the four
+OpenTelemetry enhancement proposals that plotted our course:
 
-- `equalizing`: the component respects the arriving OpenTelemetry
- sampling threshold and reduces sampling probability item-by-item to
- the configured sampling probability level.
-- `proportional`: the component respects the arriving OpenTelemetry
- sampling threshold and reduces the volume of data without
- considering how much sampling was already applied, reducing the
- probability of all items that pass through, limited to the minimum
- supported sampling probability.
+- [0168 Sampling Propagation](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0168-sampling-propagation.md)
+- [0170 Sampling Probability](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0170-sampling-probability.md)
+- [0235 Sampling Threshold in TraceSate](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0235-sampling-threshold-in-trace-state.md)
+- [0250 Composite Samplers](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0250-Composite_Samplers.md)
 
-For more details on the OpenTelemetry sampling specifications
-described above, please see the update [Trace SDK Sampling
-specification](https://opentelemetry.io/docs/specs/otel/trace/sdk/#sampling),
-the [implementation
-guidelines](https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/),
-and the [OpenTelemetry
-tracestate](https://opentelemetry.io/docs/specs/otel/trace/tracestate-handling/)
-documentation.
+and our primary specification documents:
 
-## OpenTelemetry Sampling Roadmap
-
-We recognize that there is more to do for this to be widely applicable
-for OpenTelemetry users. Here are some of the objectives on our
-roadmap for sampling in coming years. With these specifications, we
-will soon have a foundation for probability sampling across
-OpenTelemetry that includes:
-
-- W3C Trace Context Level 2 identifiers
-- OpenTelemetry tracestate sampling threshold and 56-bit randomness
-- New SDK ProbabilitySampler, RuleBased, and updated built-in samplers.
-
-OpenTelemetry users can expect more powerful options for sampling from
-SDKs and Collectors in the near future. Here are a few of the items we
-are planning:
-
-### Configurable OpenTelemetry sampling
-
-The OpenTelemetry Configuration SIG has developed a schema-based model
-for configuring SDKs across the ecosystem. We are planning to
-introduce a Sampling configuration model for OpenTelelemtry tracer
-configuration. This would allow, for example, a block of JSON or YAML
-to control the behavior of the SDK sampler based on the primitive
-samplers including composable AlwaysOn, AlwaysOff, AnyOf, RuleBased,
-ParentBased and the basic Probability sampler.
-
-This work will enable a new generation of coordinated and adaptive
-sampling strategies for OpenTelemetry users. As we look ahead in this
-direction, we take inspiration from a two precursors.
-
-The [Jaeger Remote
-Sampling](https://www.jaegertracing.io/docs/2.10/architecture/sampling/#remote-sampling)
-system is directly relevent, with an rule-based head sampler
-configuration for SDKs distributed through a remote endpoint. We
-believe that OpenTelemetry users want similar capabilities from their
-SDKs, however we also expect Samplers to preserve and propagate
-correct sampling thresholds, so that we can count the things we
-sample.
-
-The [OpenTelemetry Collector's `tailsampling`
-processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/tailsamplingprocessor/README.md)
-is another example system with a rule-based configurable sampler that
-we reference in our design. We see this as an important user-validated
-approach to configurable sampling policies for OpenTelemetry users,
-and we aim to cover this component's features in our model.
-
-We are also looking at retrofitting OpenTelemetry sampling threshold
-logic onto both of these samplers, following the approach taken with
-`probabilisticsampler`. It will not be necessary for OpenTelemetry
-users to change their sampler configuration just to take advantage of
-metrics calculated accurately from span data, since we can introduce
-this support to those components without otherwise changing their
-approach to sampling. However, in some cases, especially with
-rate-limited sampling, architectural changes will be required.
-
-### OpenTelemetry sampling systems with feedback
-
-Guided by the Jaeger system, and taking inspiration from adaptive
-sampling systems used in several vendor-specific telemetry agents, we
-are looking forward to new and improved feedback-oriented sampling
-systems for OpenTelemetry users. When OpenTelemetry SDKs can be
-remotely configured through an endpoint, users will seek to build
-adaptive sampling pipelines using OpenTelemetry components.
-
-For users, this will bring the ability to automatically quiet a noisy
-span or log event, without losing the ability to count approximately
-how many of those events are happening. At this milestone, we think
-users will be at last well served with a complete and
-OpenTelemetry-based approach to distributed trace sampling.
+- [Trace Probability Sampling](https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/)
+- [Trace SDK Samplers](https://opentelemetry.io/docs/specs/otel/trace/sdk/#sampler)
+- [TraceID Randomness](https://opentelemetry.io/docs/specs/otel/trace/sdk/#traceid-randomness)
