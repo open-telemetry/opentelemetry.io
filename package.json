@@ -173,5 +173,5 @@
     "proseWrap": "always",
     "singleQuote": true
   },
-  "spelling": "cSpell:ignore docsy elemetry htmltest hugo loglevel netlify nowrap postnetlify prebuild precheck preinstall postbuild postget refcache textlint -"
+  "spelling": "cSpell:ignore docsy elemetry htmltest hugo loglevel minisearch netlify nowrap postnetlify prebuild precheck preinstall postbuild postget refcache textlint -"
 }
