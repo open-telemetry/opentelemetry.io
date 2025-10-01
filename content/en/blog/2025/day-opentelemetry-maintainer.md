@@ -1,6 +1,6 @@
 ---
 title: A day in the life of an OpenTelemetry maintainer
-linkTitle: A day in the life of an OpenTelemetry maintainer
+linkTitle: Life of an OTel maintainer
 date: 2025-09-30
 author: >-
   [Damien Mathieu](https://github.com/dmathieu) (Elastic)
