@@ -24,7 +24,6 @@ backoff
 caml
 cartservice
 cassandra
-CICS
 checkoutservice
 Chronosphere
 classpath
@@ -51,9 +50,7 @@ github
 gitpod
 grafana
 Hausenblas
-HLASM
 hugo
-IDMS
 initializers
 instana
 istio
@@ -117,8 +114,6 @@ react-native-app
 recommendationservice
 redis
 Rexed
-REXX
-Ruediger
 runbook
 runbooks
 Rynn
@@ -127,7 +122,6 @@ servlet
 Severin
 Sharma
 shippingservice
-Schulze
 Socha
 Stalnaker
 stdoutmetric

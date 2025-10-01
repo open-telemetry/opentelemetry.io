@@ -9,6 +9,7 @@ draft: true # TODO: remove this line once your post is ready to be published
 canonical_url: https://openmainframeproject.org/blog/exploring-opentelemetry-priorities-for-mainframes-insights-from-survey-responses/
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/7870
 sig: SIG OpenTelemetry on Mainframes
+cSpell:ignore: CICS IDMS VSAM REXX Ruediger Schulze 
 ---
 
 Which [OpenTelemetry](/) features are considered most important by users for
@@ -18,7 +19,7 @@ enhancing the observability of mainframes? Earlier this year, the
 conducted a [survey](/blog/2025/otel-mainframe-priorities-survey/) to address
 this question. This blog presents a detailed overview of the survey’s findings.
 
-## Background and Purpose
+## Background and purpose
 
 The OpenTelemetry project aims to enable an effective observability by making
 high-quality, portable telemetry available from any source to any target. The
@@ -35,9 +36,9 @@ the mainframe. With the results from the survey available now, the SIG will
 prioritize and implement targeted activities to accelerate the adoption of
 OpenTelemetry on the mainframe platform.
 
-## Key Insights
+## Key insights
 
-Key insights for prioritizing mainframe SIG activities:
+Here are the key insights for prioritizing mainframe SIG activities:
 
 1. Enhance OpenTelemetry expertise within the mainframe community. Of 26
    beginners using OpenTelemetry, 21 have over a decade of mainframe experience,
@@ -119,8 +120,7 @@ shows that the survey participants have a mainframe background.
 
 A substantial majority of respondents came from the Financial Services sector
 (22 out of 45 total responses). A smaller contingent originated from diverse
-industries including Insurance, Health Care, Manufacturing, and Transport &
-Logistics (in total 8). 13 respondents were primarily engaged in software and IT
+Logistics (in total 8). Thirteen respondents were primarily engaged in software and IT
 related fields such as Software Development, Independent Software Vendors
 (ISVs), Service Providers, IBM zStack Software, Observability and Information
 Technology (IT).
@@ -140,7 +140,7 @@ including z/VSE and zTPF.
 ### Question 5: Which of the z/OS System Software do you work with?
 
 Most of the respondents (38) work with one of the transaction processing
-systems, CICS or IMS or both. 39 survey participants utilize Db2 and 31 make use
+systems, CICS or IMS or both. Thirty-nine survey participants utilize Db2 and 31 make use
 of VSAM, while a notable subgroup of respondents also uses ADABAS, IDMS, DVM or
 Datacom as data backend.
 
@@ -149,7 +149,7 @@ Datacom as data backend.
 ### Question 6: What is your level of familiarity with OpenTelemetry?
 
 The beginners in OpenTelemetry adoption (26) made the largest group among the
-respondents. 15 of them are not familiar with any of the OpenTelemetry features
+respondents. Fifteen of them are not familiar with any of the OpenTelemetry features
 or components. Only three self-identified as experts, while all participants
 with intermediate knowledge also claimed familiarity with the OpenTelemetry
 Collector.
@@ -177,18 +177,18 @@ not advanced or expert levels.
 Three fourth of the respondents claim to use observability or performance
 monitoring tools (35). Most users have visibility to mainframe platforms (30).
 From the group of respondents using tools for both distributed and mainframe
-platforms (19), two-third claim to spend more than 20 % of their time with
+platforms (19), two-third claim to spend more than 20% of their time with
 observability and monitoring activities (13), and five of them work almost
-full-time on those activities (above 80 % of their time).
+full-time on those activities (above 80% of their time).
 
 ![Usage of observability or performance monitoring tools](q8.png)
 
 ### Question 9: How much of your time do you spend on observability or performance monitoring activities?
 
-Around one fourth of the respondents (11) dedicate more than 60 % of their time
+Around one-fourth of the respondents (11) dedicate more than 60% of their time
 to observability and performance monitoring activities. Most of the survey
-participants (19) are less than 20 % involved in those of activities, which can
-be attributed by the nature of their job roles. 12 of them claim familiarity
+participants (19) are less than 20% involved in those of activities, which can
+be attributed by the nature of their job roles. Twelve of them claim familiarity
 with OpenTelemetry above the beginner level.
 
 ![Time spent on observability and performance monitoring activities](q9.png)
@@ -215,7 +215,7 @@ traces (18).
 
 The respondents view Mainframe Operations as the primary users for mainframe
 telemetry in OpenTelemetry format. From the group of respondents prioritizing
-Mainframe Operations, 80 % have more than seven years of experience in working
+Mainframe Operations, 80% have more than seven years of experience in working
 with mainframe. Notable, 22 individuals can look back at more than a decade of
 experience, indicating a strong preference for a simplified approach to consume
 mainframe telemetry, even among those who are experienced users of the platform.
@@ -225,7 +225,7 @@ by other roles across of various domains of an organization.
 
 ![Primary industry of the organizations](q12.png)
 
-### Question 13: Which category of metrics are the most important to your organization to be emitted in OpenTelemetry format.
+### Question 13: Which category of metrics are the most important to your organization to be emitted in OpenTelemetry format?
 
 For most respondents, the OpenTelemetry support of System Performance Metrics
 (32) in combination with various other workload and infrastructure related
@@ -271,7 +271,7 @@ mainframe.
 
 Java (25) and Python (20) are the two programming languages which are
 prioritized highest for the implementation of OpenTelemetry SDK support for the
-mainframe platform. 20 % of the respondents would like to have the SDK for C++
+mainframe platform. 20% of the respondents would like to have the SDK for C++
 be available on the mainframe platform.
 
 ![Prioritization of OpenTelemetry SDKs](q16.png)
@@ -282,7 +282,7 @@ COBOL is the programming languages for the mainframe that most respondents (26)
 would like to have an OpenTelemetry SDK developed for. The SDK for COBOL is
 primarily requested by survey participants who have more than seven years of
 mainframe experience but also by five respondents which have less than three
-years of experience. More than 40 % of the respondents asked in the survey
+years of experience. More than 40% of the respondents asked in the survey
 response for an SDK for REXX and JCL. Above one-fourth of the survey
 participants asked for an OpenTelemetry SDK for HLASM, and 20% for a PL/1 and C
 SDK. Three indicate an interest in an SDK for Metal C.
@@ -307,7 +307,7 @@ collector in an agent deployment (20) and from any system using receivers (19)
 scored highest in the responses. In addition, data aggregation for metrics is a
 high importance feature for the respondents (20). Data processing (15) and
 export (16), trace sampling (14) and the gateway deployment (14) are of interest
-for more than 30 % of the respondents. Hardware-based compression and encryption
+for more than 30% of the respondents. Hardware-based compression and encryption
 are important for nine of survey participants.
 
 ![Prioritization of OpenTelemetry Collector functionality](q19.png)
