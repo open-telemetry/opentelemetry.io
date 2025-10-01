@@ -8,9 +8,10 @@ cSpell:ignore: Ashpole
 
 ## Announcing new OpenTelemetry Technical Committee members
 
-The OpenTelemetry Technical Committee is delighted to announce two new elected
-members! Please join us in congratulating
-[David Ashpole](https://github.com/dashpole) and
+The OpenTelemetry
+[Technical Committee](https://github.com/open-telemetry/community/blob/main/community-members.md)
+is delighted to announce two new elected members! Please join us in
+congratulating [David Ashpole](https://github.com/dashpole) and
 [Josh MacDonald](https://github.com/jmacd)!
 
 Both David and Josh are long-time OpenTelemetry contributors and specification
