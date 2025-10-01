@@ -14215,6 +14215,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:22:12.345Z"
   },
+  "https://github.com/wbollock": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T19:23:47.866121932Z"
+  },
+  "https://github.com/wbollock/otel_upgrade_helper": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T19:23:47.593024827Z"
+  },
   "https://github.com/wdalmut/opentelemetry-plugin-mongoose": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:33:05.399186-05:00"
@@ -19506,6 +19514,10 @@
   "https://w3c.github.io/trace-context/": {
     "StatusCode": 206,
     "LastSeen": "2025-01-07T10:31:46.708362-05:00"
+  },
+  "https://wbollock.github.io/otel_upgrade_helper/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T19:23:47.945122208Z"
   },
   "https://web.archive.org/web/20180321091318/http://www.onlamp.com/pub/a/linux/2000/11/16/LinuxAdmin.html": {
     "StatusCode": 200,
