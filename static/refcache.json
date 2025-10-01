@@ -343,6 +343,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T14:41:06.741129-05:00"
   },
+  "https://central.sonatype.com/artifact/io.opentelemetry.android/opentelemetry-android-bom": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T18:03:08.810196181Z"
+  },
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/openai-java-1.1": {
     "StatusCode": 200,
     "LastSeen": "2025-09-11T16:08:26.248903-04:00"
@@ -6243,6 +6247,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-13T11:43:26.811155-05:00"
   },
+  "https://github.com/open-telemetry/community/issues/1400": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T18:03:00.923284623Z"
+  },
   "https://github.com/open-telemetry/community/issues/1859": {
     "StatusCode": 206,
     "LastSeen": "2025-05-30T18:08:07.168225711Z"
@@ -6350,6 +6358,42 @@
   "https://github.com/open-telemetry/opamp-spec/tree/main/specification.md": {
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:38:04.32664-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-android": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T18:03:06.455290711Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-android/issues/1257": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T18:02:55.635570026Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-android/issues/742": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T18:03:16.948289181Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-android/tree/main/demo-app": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T18:03:17.898738169Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/android-log": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T18:03:12.63760604Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/compose/click": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T18:03:15.864850958Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/httpurlconnection": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T18:03:14.562997853Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/sessions": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T18:03:16.165946596Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/view-click": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T18:03:15.561464859Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector": {
     "StatusCode": 200,
@@ -19366,6 +19410,10 @@
   "https://web.archive.org/web/20240223142649/https://kofo.dev/how-to-mtls-in-golang": {
     "StatusCode": 200,
     "LastSeen": "2024-11-02T23:00:15.805376094Z"
+  },
+  "https://web.archive.org/web/20250000000000*/https://github.com/open-telemetry/opentelemetry-android": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T18:03:17.628644329Z"
   },
   "https://web.dev/articles/cls": {
     "StatusCode": 200,
