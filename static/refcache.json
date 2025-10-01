@@ -20403,9 +20403,17 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-01T10:04:04.935686175Z"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/nsxtreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.060557254Z"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/ntpreceiver": {
     "StatusCode": 200,
     "LastSeen": "2024-11-18T16:20:14.124536+01:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/oracledbreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.141574175Z"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/osqueryreceiver": {
     "StatusCode": 200,
@@ -20415,17 +20423,137 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:58:49.090942-05:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/otlpjsonfilereceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.48010268Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/podmanreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.265297955Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/postgresqlreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.330791999Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.383092663Z"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/prometheusremotewritereceiver": {
     "StatusCode": 200,
     "LastSeen": "2024-11-18T16:20:16.052286+01:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/pulsarreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.565577277Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/purefareceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.620443626Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/purefbreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.733685104Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/rabbitmqreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.724397543Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/receivercreator": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.79694284Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/redisreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.867225954Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/riakreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.920305884Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/saphanareceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:25.976898795Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/signalfxreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:26.064247112Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/simpleprometheusreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:26.137713596Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/skywalkingreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:26.258997378Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snmpreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:26.321956396Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/snowflakereceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:26.373733014Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/solacereceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:26.439847966Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/splunkenterprisereceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:26.653787466Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/splunkhecreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:26.496900065Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/sqlqueryreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:26.73133705Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/sqlserverreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:26.817099219Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/sshcheckreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:26.886279746Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/statsdreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:26.959248194Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/syslogreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:27.017698122Z"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/systemdreceiver": {
     "StatusCode": 200,
     "LastSeen": "2024-11-18T16:20:19.146223+01:00"
   },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/tcplogreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:27.084768412Z"
+  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/tlscheckreceiver": {
     "StatusCode": 200,
     "LastSeen": "2024-11-18T16:20:19.910099+01:00"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/udplogreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:27.195184062Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/vcenterreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:27.261520826Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/wavefrontreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:27.331649934Z"
+  },
+  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/webhookeventreceiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-01T12:47:27.322345402Z"
   },
   "https://pkg.go.dev/github.com/openclarity/apiclarity/plugins/otel-collector/apiclarityexporter": {
     "StatusCode": 200,
