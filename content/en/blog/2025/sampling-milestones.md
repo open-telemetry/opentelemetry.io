@@ -11,11 +11,28 @@ cSpell:ignore:
 
 ## Introduction
 
-When OpenTelemetry first launched its Tracing specification over five
-years ago, there was a [conspicuous "TODO" involving probability
+OpenTelemetry published version 1.0 of its Tracing specification in
+over four years ago, and the same year [W3C TraceContext Level
+1][TRACECONTEXT1] was published with W3C Recommendation status. We as
+a community, we the observability industry had two new standards for
+distributed tracing. Of course, we weren't finished.
+
+[TRACECONTEXT1]: https://www.w3.org/TR/trace-context-1
+[TRACECONTEXT2]: https://www.w3.org/TR/trace-context-2
+[JAEGERREMOTE]: https://www.jaegertracing.io/docs/1.22/architecture/sampling/
+
+Sampling is a major topic of the Tracing SDK specification, and the
+original specification included a set of built-in Samplers,
+`AlwaysOn`, `AlwaysOff`, `ParentBased`, and `TraceIdRatioBased`,
+along with an interface allowing new samplers to be implemented,
+primarily [Jaeger Remote][JAEGERREMOTE].
+
+However, there was a [conspicuous "TODO" involving probability
 sampling](https://github.com/open-telemetry/opentelemetry-specification/issues/1413)
-left behind, it warned users of inconsistent results except when used
-at the root span of a trace.
+left in the 1.0 Tracing specification affecting the
+`TraceIdRatioBased` sampler.  The TODO warned specification users of
+"inconsistent" results, that `TraceIdRatioBased` samplers were only
+safe to configure for root spans.
 
 This meant OpenTelemetry users could not safely configure independent
 probabilty sampling policies in a distributed system, as the
@@ -51,8 +68,7 @@ to sample, that higher probability samplers make the same
 decision. Here are the properties we can rely on thanks to
 consistency:
 
-- All Frontend spans are collected
-- 1-in-10 spans will consist of Frontend and Storage spans
+- 1-in-10 traces will consist of Frontend and Storage spans
 - 1-in-1000 traces will be complete.
 
 ## Problems with TraceIdRatioBased
