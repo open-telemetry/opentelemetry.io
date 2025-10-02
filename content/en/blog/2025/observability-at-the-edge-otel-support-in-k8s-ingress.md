@@ -157,7 +157,7 @@ Envoy to deliver it.
 Tracing is configured through a TracingService resource. Once set, Envoy uses
 its OpenTelemetry driver to generate spans. Like Contour, these spans join
 existing traces or start new ones. Metrics come from both Envoy and
-Emissary-specific ambassador\_\* series, exposed in Prometheus format on
+Emissary-specific `ambassador_*` series, exposed in Prometheus format on
 port 8877. Logs again follow the Envoy convention, with the ability to include
 traceparent fields. Once parsed by the Collector, these logs are tied to the
 corresponding traces.
