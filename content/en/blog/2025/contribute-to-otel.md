@@ -119,4 +119,4 @@ Happy coding!
 [contrib]: /docs/contributing
 [localization]: /docs/contributing/localization/
 [repos]: https://github.com/orgs/open-telemetry/repositories
-[slack]: /community/end-user/slack-channel/
+[slack]: /community/end-user/#slack
