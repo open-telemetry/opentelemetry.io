@@ -187,7 +187,7 @@ enabled, log records include trace and span IDs by default, making correlation
 seamless.
 
 Traefik therefore comes closest to being OpenTelemetry-native. All three signals
-can flow natively as OTLP, reducing the need for translation. The Collector
+can flow natively via OTLP, reducing the need for translation. The Collector
 still plays an important role in enriching and routing signals, but the data
 arrives in a more standard, convention-aligned form than with other controllers.
 
