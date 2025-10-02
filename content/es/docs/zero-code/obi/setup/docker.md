@@ -4,6 +4,7 @@ linkTitle: Docker
 description:
   Aprenda a configurar y ejecutar OBI como un contenedor Docker independiente que instrumenta otro contenedor.
 weight: 2
+default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 cSpell:ignore: goblog
 ---
 
