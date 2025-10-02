@@ -5,6 +5,7 @@ description:
   Aprende como usar la OpenTelemetry eBPF Instrumentation para 
   instrumentación automática.
 weight: 3
+default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
