@@ -3,6 +3,7 @@ title: Implementar OBI en Kubernetes
 linkTitle: Kubernetes
 description: Aprenda a implementar OBI en Kubernetes.
 weight: 3
+default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 # prettier-ignore
 cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefulset
 ---
