@@ -3,6 +3,7 @@ title: Seguridad, permisos y capacidades de OBI
 linkTitle: Seguridad
 description: Privilegios y capacidades requeridos por OBI
 weight: 22
+default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 cSpell:ignore: BPF_PROG_TYPE_KPROBE CAP_PERFMON eksctl
 ---
 
