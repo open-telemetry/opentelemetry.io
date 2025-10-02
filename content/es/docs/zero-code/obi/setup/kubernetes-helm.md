@@ -3,6 +3,7 @@ title: Implementar OBI en Kubernetes con Helm
 linkTitle: Helm chart
 description:  Aprenda a implementar OBI como un gráfico Helm en Kubernetes.
 weight: 3
+default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 build:
   list: never
 draft: true
