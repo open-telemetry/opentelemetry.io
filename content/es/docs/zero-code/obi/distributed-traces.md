@@ -4,6 +4,7 @@ linkTitle: Trazas distribuidas
 description: Más información sobre la compatibilidad con trazas distribuidas de
   OBI.
 weight: 22
+default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 ---
 
 ## Introducción
