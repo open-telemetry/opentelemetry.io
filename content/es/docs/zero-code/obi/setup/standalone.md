@@ -4,6 +4,7 @@ linkTitle: Independiente
 description: Aprenda a configurar y ejecutar OBI como un proceso 
   independiente en Linux.
 weight: 4
+default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 ---
 
 OBI puede ejecutarse como un proceso independiente del sistema 
