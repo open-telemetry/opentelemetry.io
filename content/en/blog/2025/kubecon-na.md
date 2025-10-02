@@ -1,26 +1,29 @@
 ---
 title: Join us for OpenTelemetry Talks and Activities at KubeCon NA 2025
 linkTitle: KubeCon NA '25
-date: 2025-10-01
+date: 2025-10-03
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
 # prettier-ignore
-cSpell:ignore: Aditya Agno Alipio Amir Aronoff Artem Bagga Bodhish Caldwell Chauhan Chomiak CLDF Contribfest CopperPoint Cutsail Célestin Dixit EBPF Fairwinds Faseela Forrester Furst Grcevski Harshita Hodgson Hrabusa Hrittik Jakoby Jitendra Juspay Khallai Kubecon Kubestronaut Kusha Mackie Macías Maharshi Mancioppi Markou Melamed Mohsine Nduka Nilson Octopus Olly Omlet OTEPs Pająk Panos Pavlick Payal Pech Pyroscope Raveesh Reimagining Sandeep Sawmills Shiran Suereth Tkachuk Tsilopoulos Varma Veeam Verma Vijay Wijay Wrike Yahn Zscaler
+cSpell:ignore: Aditya Agno Alipio Amir Aronoff Artem Bagga Bodhish Caldwell Chauhan Chomiak CLDF Contribfest CopperPoint Cutsail Célestin Dixit EBPF Fairwinds Faseela Forrester Furst Grcevski Harshita Hodgson Hrabusa Hrittik Jakoby Jitendra Juspay Khallai Kubecon Kubestronaut Kusha Mackie Macías Maharshi Mancioppi Markou Melamed Mohsine Nduka Nilson Octopus Olly Omlet OTEPs Pająk Panos Pavlick Payal Pech Pyroscope Raveesh Reimagining Sandeep Sawmills Shiran Suereth Tkachuk Tsilopoulos unconference Varma Veeam Verma Vijay Wijay Wrike Yahn Zscaler
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
 technical committee are thrilled to be at [KubeCon NA] in Atlanta from November
-10 - 13, 2025.
+10 - 13, 2025. [Register][kubecon registration] today to join us!
 
 Read on to learn about all the events related to OpenTelemetry during KubeCon.
 
-<!-- ## OpenTelemetry Contribfest
+{{% comment %}}
+
+## OpenTelemetry Contribfest
 
 Join the OpenTelemetry maintainers for the
 [OpenTelemetry Contribfest](https://sched.co/1hoyF) to make the project better
 for everyone. You can choose between several opportunities to contribute, and
 you can count on maintainers from different project areas to help you on your
 first steps: documentation, Collector, Java, JS, Ruby, Python, .NET, and more.
--->
+
+{{% /comment %}}
 
 ## KubeCon Talks and Maintainer Sessions
 
@@ -105,31 +108,54 @@ first steps: documentation, Collector, Java, JS, Ruby, Python, .NET, and more.
   by Aditya Soni, Forrester Research & Hrittik Roy, Loft Labs<br> Thursday
   November 13 • 14:30 - 15:00
 
+## Maintainer Summit
+
+Held on November 9, one day prior to the co-located events and conference, the
+Maintainer Summit is an exclusive opportunity for the people behind the project
+to gather face-to-face. [Members][membership] of the OpenTelemetry organization
+will come together to collaborate, learn, share ideas, solve problems, and
+enrich their projects. Prepared talks, project meetings, and unconference
+sessions run from 9:00 to 17:00. See the
+[full schedule](https://maintainersummitna2025.sched.com/) for all the details.
+[Sign up][maintainer summit] today!
+
+{{% alert title="Important access note" %}}
+
+You must be registered for KubeCon + CloudNativeCon to access the **Maintainer
+Summit**. You also must be a member of a CNCF incubating project, such as
+OpenTelemetry. For eligibility requirements, see [Maintainer Summit].
+
+{{% /alert %}}
+
 ## Observability Day
 
-_[Observability Day] fosters collaboration, discussion, and knowledge sharing of
-cloud native observability projects_. This event will be held on November 10,
-2025 from 9am to 6pm.
-[Check the full schedule](https://colocatedeventsna2025.sched.com/overview/type/Observability+Day)
-to find your favorite talks about Observability and OpenTelemetry.
+[Observability Day] fosters collaboration, discussion, and knowledge sharing
+with a focus on cloud native observability projects. This event will be held on
+November 10, 2025 from 9am to 6pm. Check the
+[full schedule](https://colocatedeventsna2025.sched.com/overview/type/Observability+Day)
+to find your favorite talks about observability and OpenTelemetry.
 
-> <i class="far fa-exclamation-triangle"></i> **IMPORTANT access note**: You
-> need an _in-person all-access_ pass for on-site access to **Observability
-> Day**. For details, see [KubeCon registration].
+{{% alert title="Important access note" %}}
 
-<!-- ## OpenTelemetry Observatory
+You need an _all-access_ pass to attend **Observability Day**. For details, see
+[KubeCon registration].
+
+{{% /alert %}}
+
+{{% comment %}}
+
+## OpenTelemetry Observatory
 
 Drop by and say _"Hi!"_ at OpenTelemetry Observatory presented by Splunk in the
 Expo Hall. This will be a place for informal chats, meetups, and other
 discussions led by OpenTelemetry community members and maintainers.
 
-Note, that the Observatory may show up as "Splunk Activation Booth" on the event
-map.
+Note that the Observatory might show up as "Splunk Activation Booth" on the
+event map.
 
-For the activity schedule, see the
-[OTel Observatory Schedule](https://docs.google.com/spreadsheets/d/1E23Dkz1B2us71BtlQq8oG4o_QFsTeLPeh-X2uVnlubg/edit?usp=sharing).
-Note that this schedule may be updated up until the day of the event, so check
-back for the latest!
+For activity details, see the [OTel Observatory Schedule]. Note that this
+schedule might be updated up until the day of the event, so check back for the
+latest!
 
 New for this year!
 
@@ -149,7 +175,19 @@ your OpenTelemetry adoption, implementation, and usage.
 We will create action items from your comments as appropriate. Check
 [#otel-sig-end-user] in CNCF's Slack instance for results and action item
 updates to come after KubeCon EU.
--->
+
+{{% /comment %}}
+
+## OpenTelemetry Community Awards
+
+OpenTelemetry is a community-driven project, fueled by a group of awesome humans
+who are actively revolutionizing the field of observability with their
+contributions. Whether it’s through code, documentation, project management,
+outreach, adoption, or simply helping others, we want to recognize these
+contributions and the people behind them.
+
+Nominations for this year's awards will open soon, and we'll announce the
+winners during KubeCon + CloudNativeCon North America!
 
 Come join us to listen, learn, and get involved in OpenTelemetry.
 
@@ -161,3 +199,9 @@ See you in Atlanta!
   https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/observability-day/
 [kubecon registration]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/register/
+[maintainer summit]:
+  https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/features-add-ons/maintainer-summit/
+[membership]:
+  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#member
+[otel observatory schedule]:
+  https://docs.google.com/spreadsheets/d/1E23Dkz1B2us71BtlQq8oG4o_QFsTeLPeh-X2uVnlubg/edit?usp=sharing
