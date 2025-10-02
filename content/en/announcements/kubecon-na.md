@@ -7,4 +7,4 @@ expiryDate: 2025-11-13
 <i class="fas fa-bullhorn"></i> Join us in Atlanta, Georgia for [**KubeCon +
 CloudNativeCon North America 2025**][blog], November 10 - 13, 2025
 
-[blog]: https://opentelemetry.io/blog/2025/kubecon-na/
+[blog]: /blog/2025/kubecon-na/
