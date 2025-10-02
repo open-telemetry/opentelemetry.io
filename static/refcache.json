@@ -16183,73 +16183,9 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-01T13:46:45.216Z"
   },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-koa": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:06:50.346129-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-long-task": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:06:57.055396-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-lru-memoizer": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:07:03.266325-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-memcached": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:07:09.607229-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-mongodb": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:07:15.733603-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-mongoose": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:07:22.017833-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-mysql": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:07:33.75506-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-mysql2": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:07:40.536462-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-nestjs-core": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:07:47.129036-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-net": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:07:52.613505-04:00"
-  },
   "https://npmjs.com/package/@opentelemetry/instrumentation-oracledb": {
     "StatusCode": 200,
     "LastSeen": "2025-05-22T13:12:27.838725+05:30"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-pg": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:07:58.943129-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-pino": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:08:11.529404-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-redis": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:08:18.299225-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-redis-4": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:08:24.576317-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-restify": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:08:05.326969-04:00"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-router": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:08:30.949613-04:00"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-runtime-node": {
     "StatusCode": 200,
