@@ -180,7 +180,7 @@ Traefik has taken the most OpenTelemetry-native approach of the group.
 
 Tracing is built-in. Traefik can export spans directly as OTLP without sidecars
 or external plugins. Metrics are treated as first-class citizens and follow
-OpenTelemetry semantic conventions. You can export them directly as OTLP,
+OpenTelemetry semantic conventions. You can export them directly via OTLP,
 bypassing Prometheus entirely, or fall back to Prometheus if needed. Logs can
 also be exported over OTLP, although that feature is still experimental. When
 enabled, log records include trace and span IDs by default, making correlation
