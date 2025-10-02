@@ -106,10 +106,14 @@ _Read the full deep dive on
 The examples use Dash0, but the same configuration works with any backend that
 supports OTLP._
 
-**Note on the future of Ingress-NGINX: While not officially deprecated, the
+{% alert title="Note on the future of Ingress-NGINX" %}
+
+While not officially deprecated, the
 Ingress-NGINX project is effectively in maintenance mode. Maintainers have
 indicated that only critical bug fixes and security updates will be accepted
-going forward, with no new features planned.**
+going forward, with no new features planned.
+
+{% /alert %}
 
 ### Contour
 
