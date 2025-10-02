@@ -48,7 +48,7 @@ To see why consistency is important, consider a system with a Frontend
 and two backend services, Cache and Storage. The Frontend handles
 high-value user requests, therefore frontend requests are sampled at
 100%. The root span is significant because errors are visible to the
-end user, so it forms the basis of a SLO measurement in this example
+end user, so it forms the basis of an SLO measurement in this example
 and the system operator is willing to collect every span.
 
 The Cache service receives a relatively high volume of requests, so to
@@ -73,13 +73,12 @@ consistency:
 
 ## Problems with TraceIdRatioBased
 
-OpenTelemetry's initial tracing specification featured the
-`TraceIdRatioBased` probability sampler. It was intended to be
-consistent from the start, however the working group had a hard time
-agreeing over specific details.  The rest of the specification was
-ready to release; the leftover TODO about sampling consistency was
-mitigated by the fact that root-only sampling was the norm for
-contemporary open-source tracing systems.
+OpenTelemetry's `TraceIdRatioBased` probability sampler was intended
+to be consistent from the start, however the working group had a hard
+time agreeing over specific details.  The TODO about sampling
+consistency was mitigated by the fact that root-only sampling was the
+norm for contemporary open-source tracing systems, the model embraced
+by Jaeger.
 
 The "ratio-based" part of the name hints at the form of solution to
 the consistent sampling problem:
@@ -105,18 +104,9 @@ logic?
 
 ## Introducing W3C TraceContext Level 2
 
-OpenTelemetry defines its TraceID based on the W3C TraceContext
-specification. This was a [_Candidate
-Recommendation_](https://www.w3.org/standards/types/#x4-2-candidate-recommendation)
-at the time of the initial OpenTelemetry Tracing specification, it was
-finished as a [W3C
-Recommendation](https://www.w3.org/standards/types/#x5-1-recommendation)
-in the [W3C Trace Context Level
-1](https://www.w3.org/TR/trace-context-1/) standard.
-
 OpenTelemetry turned to the W3C Trace Context working group with this
-larger problem in mind. Could we including OpenTelemetry and
-non-OpenTelemetry tracing systems agree on how many bits of the
+larger problem in mind. Could we, including OpenTelemetry and
+non-OpenTelemetry tracing systems, agree on how many bits of the
 TraceID were random?
 
 The [W3C TraceContext Level 2](https://www.w3.org/TR/trace-context-2/)
@@ -129,23 +119,23 @@ bits of the TraceID to be "sufficiently" random. This means, for
 example, when we [represent the TraceID as 32 hexadecimal
 digits](https://opentelemetry.io/docs/specs/otel/trace/api/#retrieving-the-traceid-and-spanid),
 the last, rightmost 14 digits are random. Represented as 16 bytes, the
-rightmost 7 are random.
+last, rightmost 7 bytes are random.
 
 OpenTelemetry is adopting the W3C TraceContext Level 2 draft
 recommendation as the foundation for consistent sampling. All SDKs
 will set the `Random` flag and ensure that TraceIDs they generate have
-the required 56 bits of randomness.
+the required 56 bits of randomness by default.
 
 ## Consistent sampling threshold for rejection
 
-Back to the "ratio-based" example, now we're able to obtain 56 bits of
-randomness from a TraceID, and the decision process described in
-outline above calls for a threshold for comparison. 
+Turning back to consistent "ratio-based" logic, now we're able to
+obtain 56 bits of randomness from a TraceID, and the decision process
+described in outline above calls for a threshold to compare with.
 
 There was one more thing we as a group wanted for the probability
 sampling specification, a way for SDKs to communicate their sampling
-decisions, both to one another via TraceContext as well as on the
-collection path after they are finished. 
+decisions, both to one another in the TraceContext, as well as on the
+collection path after spans are finished.
 
 The new specification lets OpenTelemetry components communicate about
 "how much sampling" has been applied to a span. This supports many
@@ -192,9 +182,9 @@ tracestate: ot=th:0
 
 In a 100% sampling configuration, OpenTelemetry Tracing SDKs will
 insert `ot=th:0` in the TraceState. TraceState values, once entered in
-the context, are both propagated and recorded in the OpenTelemetry
-span data model. By design, the new OpenTelemetry TraceState value is
-only encoded and transmitted for positive sampling decisions, no
+the context, are both propagated and recorded in OpenTelemetry span
+data. By design, the new OpenTelemetry TraceState value is only
+encoded and transmitted for positive sampling decisions, no
 `tracestate` header will appear as a result of negative sampling
 decisions.
 
@@ -204,10 +194,8 @@ hexadecimal digits or 56 bits of information.
 However, to communicate the sampling threshold efficiently, we drop
 trailing zeros (except for `0` itself). This lets us limit threshold
 precision to fewer than 56 bits, which lowers the number of bytes per
-context. For example, threshold can be limited to 4 hexadecimal digits
-to avoid carrying around 10 more bytes of precision. Here is an
-example tracestate indicating 1% sampling, limited to 12-bits of
-precision:
+context. Here is an example tracestate indicating 1% sampling, limited
+to 12-bits of precision:
 
 ```
 tracestate: ot=th:fd7
