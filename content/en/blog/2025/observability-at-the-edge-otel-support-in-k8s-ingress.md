@@ -85,8 +85,8 @@ because it leveraged the popularity and performance of the NGINX proxy. Its long
 history means that many teams trust it for production workloads.
 
 In terms of observability, tracing is the strongest signal. Ingress-NGINX
-includes an OpenTelemetry module that can emit spans directly using the OTLP
-protocol. These spans represent each incoming request. If a trace context
+includes an OpenTelemetry module that can emit spans directly using the OpenTelemetry
+Protocol (OTLP). These spans represent each incoming request. If a trace context
 arrives with the request, ingress continues it. If no headers are present,
 ingress starts a new root span. This flexibility means that ingress can be
 either the first hop of a trace or a continuation of one started upstream at a
