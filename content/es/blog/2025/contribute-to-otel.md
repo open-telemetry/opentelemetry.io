@@ -128,4 +128,4 @@ a crear un entorno más acogedor y eficiente para todos los involucrados.
 [contrib]: /docs/contributing
 [localization]: /docs/contributing/localization/
 [repos]: https://github.com/orgs/open-telemetry/repositories
-[slack]: /community/end-user/slack-channel/
+[slack]: /community/end-user/#slack
