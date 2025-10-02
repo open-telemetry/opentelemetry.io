@@ -227,7 +227,7 @@ But observability isn’t only about what signals a controller produces - it’s
 also about how you enrich and correlate them. Raw metrics or traces by
 themselves often lack the context needed to be useful. This is where Kubernetes
 resource attributes make the difference. Traefik, for example, has since v3.5.0
-automatically injected k8s.pod.uid and k8s.pod.name into every span and log it
+automatically injected `k8s.pod.uid` and `k8s.pod.name` into every span and log it
 emits. That small detail has a big payoff: it guarantees reliable correlation,
 even in service-mesh environments where the IP-based heuristics of the
 Collector’s k8sattributes processor can break down.
