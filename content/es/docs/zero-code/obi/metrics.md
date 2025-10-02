@@ -3,6 +3,7 @@ title: Métricas exportadas por OBI
 linkTitle: Métricas exportadas
 description: Obtenga información sobre las métricas HTTP/gRPC que OBI puede exportar.
 weight: 21
+default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 cSpell:ignore: replicaset statefulset
 ---
 
