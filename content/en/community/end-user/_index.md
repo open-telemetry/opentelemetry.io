@@ -20,7 +20,7 @@ Different people prefer different ways to share their feedback and learn from
 each other. Some like to have a conversation, others prefer responding to a
 survey, and for others, giving a 👍 is enough. We have you covered.
 
-## Give a thumbs up
+## Report an issue or give a thumbs up
 
 If you encounter a bug, unexpected behavior, or a limitation, reporting it is
 one of the most effective ways to help improve the project.
