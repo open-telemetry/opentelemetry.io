@@ -192,7 +192,7 @@ still plays an important role in enriching and routing signals, but the data
 arrives in a more standard, convention-aligned form than with other controllers.
 
 From version 3.5.0, Traefik automatically injects Kubernetes resource attributes
-like k8s.pod.uid and k8s.pod.name into every span and log it emits. That small
+like `k8s.pod.uid` and `k8s.pod.name` into every span and log it emits. That small
 detail has a big payoff: it guarantees reliable correlation, even in
 service-mesh environments where the IP-based heuristics of the Collector’s
 k8sattributes processor can break down.
