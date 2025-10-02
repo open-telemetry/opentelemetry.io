@@ -18,7 +18,7 @@ your garage.
 
 Different people prefer different ways to share their feedback and learn from
 each other. Some like to have a conversation, others prefer responding to a
-survey, and for others, giving a 👍 is enough. We have you all covered.
+survey, and for others, giving a 👍 is enough. We have you covered.
 
 ## Give a thumbs up
 
