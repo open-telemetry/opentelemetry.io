@@ -3,6 +3,7 @@ title: OBI Configuración
 linkTitle: Configuración
 description: Aprende como configurar y ejecutar OBI.
 weight: 10
+default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 ---
 
 Hay diferentes opciones para configurar y ejecutar OBI:
