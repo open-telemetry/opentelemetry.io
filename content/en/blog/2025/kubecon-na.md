@@ -115,9 +115,8 @@ Maintainer Summit is an exclusive opportunity for the people behind the project
 to gather face-to-face. [Members][membership] of the OpenTelemetry organization
 will come together to collaborate, learn, share ideas, solve problems, and
 enrich their projects. Prepared talks, project meetings, and unconference
-sessions run from 9:00 to 17:00. See the
-[full schedule](https://maintainersummitna2025.sched.com/) for all the details.
-[Sign up][maintainer summit] today!
+sessions run from 9:00 to 17:00. See the [full schedule][summit schedule] for
+all the details. [Sign up][maintainer summit] today!
 
 {{% alert title="Important access note" %}}
 
@@ -131,9 +130,8 @@ OpenTelemetry. For eligibility requirements, see [Maintainer Summit].
 
 [Observability Day] fosters collaboration, discussion, and knowledge sharing
 with a focus on cloud native observability projects. This event will be held on
-November 10, 2025 from 9am to 6pm. Check the
-[full schedule](https://colocatedeventsna2025.sched.com/overview/type/Observability+Day)
-to find your favorite talks about observability and OpenTelemetry.
+November 10, 2025 from 9:00 to 18:00. Look for your favorite talks about
+Observability and OpenTelemetry in the [schedule][obs-day-sched].
 
 {{% alert title="Important access note" %}}
 
@@ -142,41 +140,24 @@ You need an _all-access_ pass to attend **Observability Day**. For details, see
 
 {{% /alert %}}
 
-{{% comment %}}
-
 ## OpenTelemetry Observatory
 
 Drop by and say _"Hi!"_ at OpenTelemetry Observatory presented by Splunk in the
 Expo Hall. This will be a place for informal chats, meetups, and other
-discussions led by OpenTelemetry community members and maintainers.
-
-Note that the Observatory might show up as "Splunk Activation Booth" on the
-event map.
-
-For activity details, see the [OTel Observatory Schedule]. Note that this
-schedule might be updated up until the day of the event, so check back for the
-latest!
-
-New for this year!
+discussions led by OpenTelemetry community members and maintainers, such as:
 
 - SIG Office Hours: Come meet the people behind the project, learn about their
   work, ask questions, share feedback, or find out how to contribute.
-- Special Topic Discussions: Come learn about two of the hottest OTEPs right
-  now, Events and Entities!
+- Special Topic Discussions: Come learn about the hottest topics in the OTel
+  community.
 
 If you'd like to participate by leading a discussion, or if there is a
-discussion topic you're interested in, please reach out to the
-[OpenTelemetry End User SIG](https://cloud-native.slack.com/archives/C01RT3MSWGZ)
-to let us know, and we will see what we can do.
+discussion topic you're interested in, please reach out to the [OpenTelemetry
+End User SIG][end user] to let us know, and we will see what we can do.
 
-You can help us improve the project by sharing your thoughts and feedback about
-your OpenTelemetry adoption, implementation, and usage.
-
-We will create action items from your comments as appropriate. Check
-[#otel-sig-end-user] in CNCF's Slack instance for results and action item
-updates to come after KubeCon EU.
-
-{{% /comment %}}
+For activity details, see the [OTel Observatory Schedule]. This schedule is a
+work in progress and will be updated up until the day of the event. Check back
+often for the latest!
 
 ## OpenTelemetry Community Awards
 
@@ -199,9 +180,13 @@ See you in Atlanta!
   https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/co-located-events/observability-day/
 [kubecon registration]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/register/
+[summit schedule]: https://maintainersummitna2025.sched.com/
 [maintainer summit]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/features-add-ons/maintainer-summit/
 [membership]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#member
+[obs-day-sched]:
+  https://colocatedeventsna2025.sched.com/overview/type/Observability+Day
+[end user]: https://cloud-native.slack.com/archives/C01RT3MSWGZ
 [otel observatory schedule]:
-  https://docs.google.com/spreadsheets/d/1E23Dkz1B2us71BtlQq8oG4o_QFsTeLPeh-X2uVnlubg/edit?usp=sharing
+  https://docs.google.com/spreadsheets/d/1Kk6io9V6Q1nluq6H05zGjwvWlXwxh9IwjiThBGJP1Rw/edit?usp=sharing
