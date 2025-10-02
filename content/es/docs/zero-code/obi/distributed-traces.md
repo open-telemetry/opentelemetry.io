@@ -30,7 +30,7 @@ especificación W3C.
 El propagación de contexto de traza es implementado en dos maneras distintas:
 
 1. Escribiendo la información del encabezado saliente a nivel de red.
-2. Escribiendo la información del encabezado entrante a nivel de librerias para 
+2. Escribiendo la información del encabezado entrante a nivel de librerías para 
    Go.
 
 Dependiendo del lenguaje de programación en el que esté escrito su servicio, OBI 
@@ -164,7 +164,7 @@ reincorporada. Al configurar OTEL_EBPF_OVERRIDE_BPF_LOOP_ENABLED se omiten las
 comprobaciones del núcleo en caso de que este incluya la funcionalidad, pero sea 
 inferior a 5.17.
 
-### Propagación de contexto en Go para instrumentación a nivel libreria
+### Propagación de contexto en Go para instrumentación a nivel librería
 
 
 
@@ -204,7 +204,7 @@ cat /sys/kernel/security/lockdown
 Si ese archivo existe y el modo es distinto a `[none]`, OBI no puede realizar la 
 propagación del contexto y se desactiva el rastreo distribuido.
 
-#### Rastreo distribuido para Go en ambientes containerizados (incluyendo Kubernetes)
+#### Rastreo distribuido para Go en ambientes en contenedores (incluyendo Kubernetes)
 
 Debido a la restricciones del modo **lockdown**, los archivos de configuración de Docker y Kubernetes deben montar el volumen `/sys/kernel/security/` para el **container docker OBI** del sistema host. De esta manera OBI puede determinar correctamente el modo **lockdown** del Kernel Linux. Aquí hay un ejemplo de configuración con Docker compose, el cual se asegura que OBI tenga suficiente información para determinar el modo **lockdown**:
 

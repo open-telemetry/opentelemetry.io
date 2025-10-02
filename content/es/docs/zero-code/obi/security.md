@@ -21,7 +21,7 @@ para su configuración actual.
 
 Las capacidades del kernel de Linux son un sistema detallado para controlar el 
 acceso a operaciones privilegiadas. Permiten otorgar permisos específicos a los
-procesos sin darles acceso completo de superusuario o root, lo que ayuda a 
+procesos sin darles acceso completo de super usuario o root, lo que ayuda a 
 mejorar la seguridad al adherirse al principio del mínimo privilegio. Las 
 capacidades dividen los privilegios normalmente asociados con root en 
 operaciones privilegiadas más pequeñas en el kernel.
@@ -37,7 +37,7 @@ sudo setcap cap_net_admin,cap_net_raw+ep myprogram
 
 Este ejemplo otorga las capacidades `CAP_NET_ADMIN` y `CAP_NET_RAW` a 
 `myprogram`, lo que le permite administrar la configuración de red sin 
-necesidad de privilegios de superusuario completos.
+necesidad de privilegios de super usuario completos.
 
 Al elegir y asignar cuidadosamente las capacidades, puede reducir el riesgo 
 de escalada de privilegios y, al mismo tiempo, permitir que los procesos hagan 
@@ -259,7 +259,7 @@ La siguiente lista asigna a cada rastreador interno las capacidades que
 requiere, con el fin de servir de referencia para los desarrolladores, 
 colaboradores y personas interesadas en el funcionamiento interno de OBI:
 
-**(Observabilidad de la red) Obtenedor de flujo de socket:**
+**(Observabilidad de la red) obtiene el flujo de socket:**
 
 - `CAP_BPF`: para `BPF_PROG_TYPE_SOCK_FILTER`
 - `CAP_NET_RAW`: para crear un socket `AF_PACKET` y adjuntar filtros de socket 
