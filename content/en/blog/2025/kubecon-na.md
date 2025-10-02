@@ -11,7 +11,7 @@ The OpenTelemetry project maintainers, members of the governance committee, and
 technical committee are thrilled to be at [KubeCon NA] in Atlanta from November
 10 - 13, 2025.
 
-Read on to learn about all the things related OpenTelemetry during KubeCon.
+Read on to learn about all the events related to OpenTelemetry during KubeCon.
 
 <!-- ## OpenTelemetry Contribfest
 
