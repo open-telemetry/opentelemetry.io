@@ -94,7 +94,7 @@ load balancer or API gateway. Tracing can be enabled cluster-wide through Helm
 values or selectively through annotations on specific Ingress resources.
 
 Metrics and logs are less advanced. Metrics are still exposed in Prometheus
-format, available on port 10254, and need to be scraped by the Collector. Logs
+format, available on port `10254`, and need to be scraped by the Collector. Logs
 are classic NGINX access logs, one line per request. To make them useful in
 OpenTelemetry pipelines, the log format must be extended to include trace and
 span IDs. Once that is done, the Collector can parse the logs and enrich them
