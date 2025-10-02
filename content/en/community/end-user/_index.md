@@ -4,6 +4,8 @@ linkTitle: End user
 description: Vendor-agnostic resources for OpenTelemetry users
 redirects:
   - { from: slack-channel, to: '#slack' }
+  - { from: discussion-group, to: '#podcast' }
+  - { from: feedback-survey, to: '#survey' }
 weight: 40
 ---
 
@@ -54,7 +56,7 @@ right channel.
 
 <!--➡️ TODO: Turn link to a button -->
 
-## Respond to a survey
+## Respond to a survey {#survey}
 
 Sometimes it's us who want to ask the questions! Special Interest Groups (SIGs)
 in OpenTelemetry run surveys to better understand our users’ needs and make
@@ -67,7 +69,7 @@ better-informed decisions when building OTel. Here are a few examples:
 
 [Learn more about how we run surveys](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys)
 
-## Join a podcast
+## Join a podcast {#podcast}
 
 The ultimate way to share your experience in our toolbox is joining our
 podcasts. We regularly do two types of them:
