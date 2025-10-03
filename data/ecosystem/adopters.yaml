@@ -128,7 +128,7 @@
   reference: 'https://www.cncf.io/case-studies/meltwaters-live-migration-to-cilium-for-richer-features/'
   referenceTitle: CNCF case study
   contact: ''
-- name: MercadoLibre
+- name: Mercado Libre
   url: https://www.mercadolibre.com/
   components: [Collector, Go, Java, JavaScript, Python]
   reference: 'https://medium.com/mercadolibre-tech/building-a-large-scale-observability-ecosystem-1edf654b249e'
