@@ -39,7 +39,7 @@
 - name: DeFacto
   url: https://www.defacto.com.tr/
   components: [Collector]
-  reference: 'https://www.cncf.io/case-studies/how-defacto-migrated-to-an-event-driven-architecture/'
+  reference: 'https://www.cncf.io/case-studies/defacto/'
   referenceTitle: CNCF case study
   contact: ''
 - name: Delivery Hero
@@ -96,7 +96,7 @@
 - name: HDFC Bank
   url: https://www.hdfcbank.com/
   components: [Collector]
-  reference: 'https://www.cncf.io/case-studies/throttling-incoming-traffic-requests-without-changing-the-core-banking-system/'
+  reference: 'https://www.cncf.io/case-studies/hdfc-bank/'
   referenceTitle: CNCF case study
   contact: ''
 - name: Heroku
@@ -113,19 +113,19 @@
 - name: Lockheed Martin
   url: https://www.lockheedmartin.com/
   components: [Collector]
-  reference: 'https://www.cncf.io/case-studies/lockheed-martins-enterprise-operations-chose-otel-for-better-observability/'
+  reference: 'https://www.cncf.io/case-studies/lockheedmartin/'
   referenceTitle: CNCF case study
   contact: ''
 - name: loveholidays
   url: https://www.loveholidays.com/
   components: [Collector]
-  reference: 'https://www.cncf.io/case-studies/reducing-mttd-and-increasing-observability-with-linkerd-at-loveholidays/'
+  reference: 'https://www.cncf.io/case-studies/loveholidays/'
   referenceTitle: CNCF case study
   contact: ''
 - name: Meltwater
   url: https://www.meltwater.com/
   components: [Collector]
-  reference: 'https://www.cncf.io/case-studies/meltwaters-live-migration-to-cilium-for-richer-features/'
+  reference: 'https://www.cncf.io/case-studies/meltwater/'
   referenceTitle: CNCF case study
   contact: ''
 - name: Mercado Libre
