@@ -8,7 +8,7 @@ default_lang_commit: 788277e362bc602b72a90aa9191f9c05c403458e
 OpenTelemetry [instrumentación de código cero][zero-code instrumentation] es
 compatible con los idiomas que se enumeran a continuación.
 
-Si usa Kubernetes, puede usar el [Operador OpenTelemetry para
+Si usa Kubernetes, puedes usar el [Operador OpenTelemetry para
 Kubernetes][otel-op] para [inyectar instrumentación de código
 cero][inject zero-code instrumentation] para .NET, Java, Node.js, Python o Go en
 su aplicación.
