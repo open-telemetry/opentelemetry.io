@@ -1,4 +1,4 @@
-# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip
+# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip Kelkoo
 - name: AppDirect
   url: https://www.appdirect.com/
   components: [Collector]
@@ -76,6 +76,11 @@
   reference: 'https://youtu.be/5iM8n3uCo_U?si=PJ6tFYcYED3lhAcK'
   referenceTitle: CNCF talk
   contact: 'https://www.heroku.com/contact/'
+- name: KelkooGroup
+  url: https://www.kelkoogroup.com/
+  components: [Java, Python]
+  reference: ''
+  contact: gael.jourdan-weil@kelkoogroup.com
 - name: MercadoLibre
   url: https://www.mercadolibre.com/
   components: [Collector, Go, Java, JavaScript, Python]
@@ -169,3 +174,15 @@
   reference: 'https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a'
   referenceTitle: blog post
   contact: 'junda.yin@uipath.com'
+- name: PicPay
+  url: https://picpay.com/
+  components: [Collector, Go, Java, PHP, Python]
+  reference: 'https://medium.com/inside-picpay/observabilidade-com-hyperf-e-opentelemetry-dd698844eda'
+  referenceTitle: blog post
+  contact: 'observability@picpay.com'
+- name: PagBank
+  url: https://pagbank.com.br/
+  components: [Collector, Operator, Java, JavaScript, PHP, Python, .NET, Go]
+  reference: ''
+  referenceTitle: ''
+  contact: 'https://github.com/ezeqme'

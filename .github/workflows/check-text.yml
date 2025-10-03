@@ -1,4 +1,4 @@
-name: Linter
+name: Linter # cSpell:ignore yargs
 
 on:
   merge_group:
@@ -20,13 +20,13 @@ jobs:
               | del(.dependencies, .optionalDependencies)' \
               package.json > tmp/package-ci.json
           cp tmp/package-ci.json package.json
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
           cache: npm
           cache-dependency-path: tmp/package-ci.json
       - run: npm install --ignore-scripts --omit=optional
-      - run: .github/workflows/scripts/textlint.sh
+      - run: .github/scripts/textlint.sh
 
   markdown-linter:
     name: MARKDOWN linter
@@ -42,7 +42,7 @@ jobs:
                 | del(.dependencies, .optionalDependencies)' \
             package.json > tmp/package-ci.json
           cp tmp/package-ci.json package.json
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
           cache: npm

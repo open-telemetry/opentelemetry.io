@@ -9,7 +9,7 @@ logBridgeWarning: >
   [Log Bridge API](/docs/specs/otel/logs/api/)を表しており、これは他のログAPI/フレームワークを通じて
   記録されたログをOpenTelemetryにブリッジするためのログアペンダーを作成するために存在します。
   これらはLog4j / SLF4J / Logback / などの代替として、エンドユーザーが使用することを意図していません。
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 cSpell:ignore: Dotel kotlint Logback updowncounter
 ---
 
@@ -1177,7 +1177,7 @@ public class AsyncGaugeUsage {
   public static void asyncGaugeUsage(Meter meter) {
     AtomicReference<Double> processingLineTemp = new AtomicReference<>(273.0);
 
-    // コールバックで既存のカウンターを観測する非同期カウンターを構築
+    // コールバックで既存のゲージを観測する非同期ゲージを構築
     ObservableDoubleGauge asyncGauge =
         meter
             .gaugeBuilder("fully.qualified.gauge")
@@ -1395,7 +1395,7 @@ public class NoopUsage {
 
 {{% alert %}}
 
-`opentelemetry-semconv`と`opentelemetry-semconv-incubating`の両方に`-alpha`サフィックスが含まれ、破壊的変更の対象となりますが、意図は`opentelemetry-semconv`を安定化し、`opentelemetry-semconv-incubating`には永続的に`-alpha`サフィックスを残すことです。
+`opentelemetry-semconv`と`opentelemetry-semconv-incubating`の両方に`-alpha`接尾辞が含まれ、破壊的変更の対象となりますが、意図は`opentelemetry-semconv`を安定化し、`opentelemetry-semconv-incubating`には永続的に`-alpha`接尾辞を残すことです。
 ライブラリはテスト用に`opentelemetry-semconv-incubating`を使用できますが、依存関係として含めるべきではありません。
 属性はバージョンから別のバージョンに来たり行ったりする可能性があるため、依存関係として含めると、推移的バージョンの競合が発生したときにエンドユーザーがランタイムエラーにさらされる可能性があります。
 
