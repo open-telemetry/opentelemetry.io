@@ -6,6 +6,7 @@ description:
 linkTitle: Localización
 weight: 25
 default_lang_commit: e1bf6c870fbf82791a3826baaf276bc0ca79c88b # patched
+drifted_from_default: true
 cSpell:ignore: shortcodes
 ---
 

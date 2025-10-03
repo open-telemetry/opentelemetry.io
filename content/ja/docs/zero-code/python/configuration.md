@@ -48,7 +48,7 @@ opentelemetry-instrument \
 以下の手順を適用して、目的の構成プロパティの正しい名前マッピングを決定できます。
 
 - 設定プロパティを大文字に変換します。
-- 環境変数のプレフィックスを `OTEL_` にします。
+- 環境変数の接頭辞を `OTEL_` にします。
 
 たとえば、`exporter_otlp_endpoint` は `OTEL_EXPORTER_OTLP_ENDPOINT` に変換されます。
 
@@ -114,7 +114,7 @@ export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 特定のカテゴリーに分類されない設定オプションもいくつかあります。
 
 - `OTEL_PYTHON_DJANGO_INSTRUMENT`: Django 計装のデフォルトの有効状態を無効にするために `false` を設定します。
-- `OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX`: Elasticsearch の操作名のデフォルトのプレフィックスを "Elasticsearch" からここで設定したものに変更します。
+- `OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX`: Elasticsearch の操作名のデフォルトの接頭辞を "Elasticsearch" からここで設定したものに変更します。
 - `OTEL_PYTHON_GRPC_EXCLUDED_SERVICES`: gRPC 計装から除外するサービスをカンマ区切りで指定します。
 - `OTEL_PYTHON_ID_GENERATOR`: グローバルトレーサプロバイダーに使用する ID ジェネレータを指定します。
 - `OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS`: クエリーのサニタイズ処理を有効にします。

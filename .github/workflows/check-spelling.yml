@@ -12,8 +12,8 @@ jobs:
     name: SPELLING check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version-file: .nvmrc
       - run: npm run _install:dict --ignore-scripts
@@ -34,7 +34,7 @@ jobs:
     env:
       FIX_CMD: fix:dict
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - run: npm run ${{ env.FIX_CMD }}
       - name: Any changed files?
         run: |

@@ -9,7 +9,7 @@ logBridgeWarning: >
   [Log Bridge API](/docs/specs/otel/logs/api/)を表しており、これは他のログAPI/フレームワークを通じて
   記録されたログをOpenTelemetryにブリッジするためのログアペンダーを作成するために存在します。
   これらはLog4j / SLF4J / Logback / などの代替として、エンドユーザーが使用することを意図していません。
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 cSpell:ignore: Dotel kotlint Logback updowncounter
 ---
 
@@ -22,7 +22,7 @@ APIは、主要なオブザーバビリティシグナル全体にわたって�
 
 APIは以下のトップレベルコンポーネントで構成されています。
 
-- [Context](#context-api)：アプリケーション全体およびアプリケーション境界を越えてコンテキストを伝播するためのスタンドアロンAPI（トレースコンテキストとバゲージを含む）
+- [Context](#context-api)：アプリケーション全体およびアプリケーション境界を越えてコンテキストを伝搬するためのスタンドアロンAPI（トレースコンテキストとバゲージを含む）
 - [TracerProvider](#tracerprovider)：トレースのAPIエントリポイント
 - [MeterProvider](#meterprovider)：メトリクスのAPIエントリポイント
 - [LoggerProvider](#loggerprovider)：ログのAPIエントリポイント
@@ -54,20 +54,20 @@ APIには[強力な後方互換性保証](https://github.com/open-telemetry/open
 
 ## Context API {#context-api}
 
-`io.opentelemetry:opentelemetry-api-context:{{% param vers.otel %}}` アーティファクトには、アプリケーション全体およびアプリケーション境界を越えてコンテキストを伝播するためのスタンドアロンAPI（たとえば、[OpenTelemetry API](#opentelemetry-api)から別々にパッケージ化）が含まれています。
+`io.opentelemetry:opentelemetry-api-context:{{% param vers.otel %}}` アーティファクトには、アプリケーション全体およびアプリケーション境界を越えてコンテキストを伝搬するためのスタンドアロンAPI（たとえば、[OpenTelemetry API](#opentelemetry-api)から別々にパッケージ化）が含まれています。
 
 これは以下で構成されています。
 
-- [Context](#context)：アプリケーション全体で暗黙的または明示的に伝播される不変のキー値ペアのバンドル
+- [Context](#context)：アプリケーション全体で暗黙的または明示的に伝搬される不変のキー値ペアのバンドル
 - [ContextStorage](#contextstorage)：現在のコンテキストを保存および取得するメカニズム（デフォルトはスレッドローカル）
-- [ContextPropagators](#context)：アプリケーション境界を越えて`Context`を伝播するための登録されたプロパゲーターのコンテナ
+- [ContextPropagators](#context)：アプリケーション境界を越えて`Context`を伝搬するための登録されたプロパゲーターのコンテナ
 
-`io.opentelemetry:opentelemetry-extension-kotlint:{{% param vers.otel %}}` は、コルーチンにコンテキストを伝播するためのツールを含む拡張機能です。
+`io.opentelemetry:opentelemetry-extension-kotlint:{{% param vers.otel %}}` は、コルーチンにコンテキストを伝搬するためのツールを含む拡張機能です。
 
 ### Context {#context}
 
-[Context](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/Context.html)は不変のキー値ペアのバンドルで、アプリケーション全体およびスレッド間で暗黙的に伝播するためのユーティリティを備えています。
-暗黙的伝播とは、引数として明示的に渡すことなく、コンテキストにアクセスできることを意味します。
+[Context](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/Context.html)は不変のキー値ペアのバンドルで、アプリケーション全体およびスレッド間で暗黙的に伝搬するためのユーティリティを備えています。
+暗黙的伝搬とは、引数として明示的に渡すことなく、コンテキストにアクセスできることを意味します。
 ContextはOpenTelemetry APIにおける繰り返し出現する概念です。
 
 - 現在アクティブな[スパン](#span)はコンテキストに保存され、デフォルトでスパンの親は現在コンテキストにあるスパンに割り当てられます
@@ -183,7 +183,7 @@ public class ContextUsage {
 
 ### ContextPropagators {#contextpropagators}
 
-[ContextPropagators](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/ContextPropagators.html)は、アプリケーション境界を越えて`Context`を伝播するための登録されたプロパゲーターのコンテナです。
+[ContextPropagators](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/ContextPropagators.html)は、アプリケーション境界を越えて`Context`を伝搬するための登録されたプロパゲーターのコンテナです。
 コンテキストは、アプリケーションを離れる際（アウトバウンドHTTPリクエストなど）にキャリアに注入され、アプリケーションに入る際（HTTPリクエストの処理など）にキャリアから抽出されます。
 
 プロパゲーター実装については、[SDK TextMapPropagators](../sdk/#textmappropagator)を参照してください。
@@ -527,7 +527,7 @@ Spring Boot starterは特別なケースで、`OpenTelemetry`がSpring Beanと�
 - [TracerProvider](#tracerprovider)：トレースのAPIエントリポイント
 - [MeterProvider](#meterprovider)：メトリクスのAPIエントリポイント
 - [LoggerProvider](#loggerprovider)：ログのAPIエントリポイント
-- [ContextPropagators](#contextpropagators)：コンテキスト伝播のAPIエントリポイント
+- [ContextPropagators](#contextpropagators)：コンテキスト伝搬のAPIエントリポイント
 
 以下のコードスニペットは`OpenTelemetry` API使用法を調査します。
 
@@ -580,7 +580,7 @@ Javaエージェントは特別なケースで、`GlobalOpenTelemetry`はエー�
 
 [autoconfigure](../configuration/#zero-code-sdk-autoconfigure)が存在する場合、`GlobalOpenTelemetry`は`-Dotel.java.global-autoconfigure.enabled=true`を設定することで自動的に初期化できます（または環境変数`export OTEL_JAVA_GLOBAL_AUTOCONFIGURE_ENABLED=true`を介して）。有効にされると、`GlobalOpenTelemetry.get()`への最初の呼び出しが自動設定をトリガーし、結果の`OpenTelemetry`インスタンスで`GlobalOpenTelemetry.set(..)`を呼び出します。
 
-以下のコードスニペットは`GlobalOpenTelemetry` APIコンテキスト伝播を調査します。
+以下のコードスニペットは`GlobalOpenTelemetry` APIコンテキスト伝搬を調査します。
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/GlobalOpenTelemetryUsage.java"?>
@@ -717,9 +717,9 @@ public class SpanUsage {
 
 スパンの親子関係は、トレーシングの重要な側面です。各スパンには、オプションの親があります。トレース内のすべてのスパンを収集し、各スパンの親を辿ることで、階層を構築できます。スパンAPIは[context](#context)の上に構築されており、スパンコンテキストがアプリケーション全体およびスレッド間で暗黙的に渡されることを可能にします。スパンが作成されるとき、その親は、スパンが存在しないかコンテキストが明示的にオーバーライドされない限り、`Context.current()`に存在するスパンに設定されます。
 
-コンテキストAPIの使用ガイダンスのほとんどはスパンに適用されます。スパンコンテキストは、[W3CTraceContextPropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/propagation/W3CTraceContextPropagator.html)および他の[TextMapPropagators](../sdk/#textmappropagator)でアプリケーション境界を越えて伝播されます。
+コンテキストAPIの使用ガイダンスのほとんどはスパンに適用されます。スパンコンテキストは、[W3CTraceContextPropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/trace/propagation/W3CTraceContextPropagator.html)および他の[TextMapPropagators](../sdk/#textmappropagator)でアプリケーション境界を越えて伝搬されます。
 
-以下のコードスニペットは`Span` APIコンテキスト伝播を調査します。
+以下のコードスニペットは`Span` APIコンテキスト伝搬を調査します。
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/SpanAndContextUsage.java"?>
@@ -1177,7 +1177,7 @@ public class AsyncGaugeUsage {
   public static void asyncGaugeUsage(Meter meter) {
     AtomicReference<Double> processingLineTemp = new AtomicReference<>(273.0);
 
-    // コールバックで既存のカウンターを観測する非同期カウンターを構築
+    // コールバックで既存のゲージを観測する非同期ゲージを構築
     ObservableDoubleGauge asyncGauge =
         meter
             .gaugeBuilder("fully.qualified.gauge")
@@ -1395,7 +1395,7 @@ public class NoopUsage {
 
 {{% alert %}}
 
-`opentelemetry-semconv`と`opentelemetry-semconv-incubating`の両方に`-alpha`サフィックスが含まれ、破壊的変更の対象となりますが、意図は`opentelemetry-semconv`を安定化し、`opentelemetry-semconv-incubating`には永続的に`-alpha`サフィックスを残すことです。
+`opentelemetry-semconv`と`opentelemetry-semconv-incubating`の両方に`-alpha`接尾辞が含まれ、破壊的変更の対象となりますが、意図は`opentelemetry-semconv`を安定化し、`opentelemetry-semconv-incubating`には永続的に`-alpha`接尾辞を残すことです。
 ライブラリはテスト用に`opentelemetry-semconv-incubating`を使用できますが、依存関係として含めるべきではありません。
 属性はバージョンから別のバージョンに来たり行ったりする可能性があるため、依存関係として含めると、推移的バージョンの競合が発生したときにエンドユーザーがランタイムエラーにさらされる可能性があります。
 
@@ -1444,7 +1444,7 @@ public class SemanticAttributesUsage {
 バゲージAPIは[context](#context)の上に構築されており、スパンコンテキストがアプリケーション全体およびスレッド間で暗黙的に渡されることを可能にします。
 コンテキストAPIの使用ガイダンスのほとんどはバゲージに適用されます。
 
-バゲージは、[W3CBaggagePropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/propagation/W3CBaggagePropagator.html)でアプリケーション境界を越えて伝播されます（詳細については[TextMapPropagator](../sdk/#textmappropagator)を参照）。
+バゲージは、[W3CBaggagePropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/baggage/propagation/W3CBaggagePropagator.html)でアプリケーション境界を越えて伝搬されます（詳細については[TextMapPropagator](../sdk/#textmappropagator)を参照）。
 
 以下のコードスニペットは`Baggage` API使用法を調査します。
 

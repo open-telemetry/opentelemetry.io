@@ -21,3 +21,8 @@ desincronizado
 desincronizadas
 subsección
 react-native-app
+cardinalidad
+agregable
+milisegundos
+subproyecto
+autoinstrumentación

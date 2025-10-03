@@ -8,7 +8,8 @@ default_lang_commit: 2f850a610b5f7da5730265b32c25c9226dc09e5f
 
 {{% alert title=提示 %}}
 
-如果你已经设置了 Zipkin 或兼容 Zipkin 的后端，可以跳过本节并直接为你的应用设置 [Zipkin exporter 依赖](#zipkin-dependencies)。
+如果你已经设置了 Zipkin 或兼容 Zipkin 的后端，可以跳过本节并直接为你的应用设置
+[Zipkin 导出器依赖](#zipkin-dependencies)。
 
 {{% /alert %}}
 

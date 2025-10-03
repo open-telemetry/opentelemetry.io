@@ -2,7 +2,7 @@
 title: SDKによるテレメトリーの管理
 weight: 12
 aliases: [exporters]
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 cSpell:ignore: Interceptable Logback okhttp
 ---
 
@@ -18,7 +18,7 @@ SDKは以下のトップレベルコンポーネントで構成されていま�
 - [SdkTracerProvider](#sdktracerprovider)：`TracerProvider`のSDK実装で、スパンのサンプリング、処理、エクスポートのためのツールを含みます
 - [SdkMeterProvider](#sdkmeterprovider)：`MeterProvider`のSDK実装で、メトリクスストリームの設定とメトリクスの読み取り/エクスポートのためのツールを含みます
 - [SdkLoggerProvider](#sdkloggerprovider)：`LoggerProvider`のSDK実装で、ログの処理とエクスポートのためのツールを含みます
-- [TextMapPropagator](#textmappropagator)：プロセス境界を越えてコンテキストを伝播します
+- [TextMapPropagator](#textmappropagator)：プロセス境界を越えてコンテキストを伝搬します
 
 これらは[OpenTelemetrySdk](#opentelemetrysdk)に結合され、完全に設定された[SDKコンポーネント](#sdk-components)を計装に渡すのに便利なキャリアオブジェクトです。
 
@@ -35,7 +35,7 @@ SDKには多くの使用例に十分な様々な組み込みコンポーネン�
 - [MetricExporter](#metricexporter)：メトリクスをプロセス外にエクスポートします
 - [LogRecordProcessor](#logrecordprocessor)：ログレコードの発行時に処理します
 - [LogRecordExporter](#logrecordexporter)：ログレコードをプロセス外にエクスポートします
-- [TextMapPropagator](#textmappropagator)：プロセス境界を越えてコンテキストを伝播します
+- [TextMapPropagator](#textmappropagator)：プロセス境界を越えてコンテキストを伝搬します
 
 ## SDKコンポーネント {#sdk-components}
 
@@ -58,7 +58,7 @@ SDKには多くの使用例に十分な様々な組み込みコンポーネン�
 - [SdkTracerProvider](#sdktracerprovider)：`TracerProvider`のSDK実装
 - [SdkMeterProvider](#sdkmeterprovider)：`MeterProvider`のSDK実装
 - [SdkLoggerProvider](#sdkloggerprovider)：`LoggerProvider`のSDK実装
-- [ContextPropagators](#textmappropagator)：プロセス境界を越えてコンテキストを伝播します
+- [ContextPropagators](#textmappropagator)：プロセス境界を越えてコンテキストを伝搬します
 
 以下のコードスニペットは`OpenTelemetrySdk`のプログラム設定を示します。
 
@@ -988,7 +988,7 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 [LogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/export/LogRecordExporter.html)は、ログレコードをプロセス外にエクスポートする責任を持つ[プラグイン拡張インターフェース](#sdk-plugin-extension-interfaces)です。
 `SdkLoggerProvider`に直接登録するのではなく、[LogRecordProcessors](#logrecordprocessor)（通常は`BatchLogRecordProcessor`）と組み合わせます。
 
-下表は、SDKに組み込まれ、`opentelemetry-java-contrib`でコミュニティによって維持されているスパンエクスポーターです。
+下表は、SDKに組み込まれ、`opentelemetry-java-contrib`でコミュニティによって維持されているログレコードエクスポーターです。
 
 | クラス                                     | アーティファクト                                                                     | 説明                                                                                          |
 | ------------------------------------------ | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
@@ -1003,7 +1003,7 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 
 **[2]**: `OtlpJsonLoggingLogRecordExporter`はJULにログ出力し、適切に設定されていない場合、無限ループ（JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry Log SDK -> JUL）を引き起こす可能性があります。
 
-以下のコードスニペットは`LogRecordProcessor`のプログラム設定を示します。
+以下のコードスニペットは`LogRecordExporter`のプログラム設定を示します。
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogRecordExporterConfig.java"?>
@@ -1094,7 +1094,7 @@ public class CustomLogRecordExporter implements LogRecordExporter {
 
 [LogLimits](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/LogLimits.html)は、最大属性長や最大属性数を含む、ログレコードによってキャプチャされるデータの制約を定義します。
 
-以下のコードスニペットは`LogRecordProcessor`のプログラム設定を示します。
+以下のコードスニペットは`LogLimits`のプログラム設定を示します。
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogLimitsConfig.java"?>
@@ -1116,21 +1116,21 @@ public class LogLimitsConfig {
 
 ### TextMapPropagator {#textmappropagator}
 
-[TextMapPropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/TextMapPropagator.html)は、テキスト形式でプロセス境界を越えてコンテキストを伝播する責任を持つ[プラグイン拡張インターフェース](#sdk-plugin-extension-interfaces)です。
+[TextMapPropagator](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/TextMapPropagator.html)は、テキスト形式でプロセス境界を越えてコンテキストを伝搬する責任を持つ[プラグイン拡張インターフェース](#sdk-plugin-extension-interfaces)です。
 
 SDKに組み込まれ、`opentelemetry-java-contrib`でコミュニティによって維持されているTextMapPropagators。
 
 | クラス                      | アーティファクト                                                                              | 説明                                                                              |
 | --------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `W3CTraceContextPropagator` | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | W3Cトレースコンテキスト伝播プロトコルを使用してトレースコンテキストを伝播します。 |
-| `W3CBaggagePropagator`      | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | W3Cバゲージ伝播プロトコルを使用してバゲージを伝播します。                         |
+| `W3CTraceContextPropagator` | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | W3Cトレースコンテキスト伝搬プロトコルを使用してトレースコンテキストを伝搬します。 |
+| `W3CBaggagePropagator`      | `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}`                                  | W3Cバゲージ伝搬プロトコルを使用してバゲージを伝搬します。                         |
 | `MultiTextMapPropagator`    | `io.opentelemetry:opentelemetry-context:{{% param vers.otel %}}`                              | 複数のプロパゲーターを構成します。                                                |
-| `JaegerPropagator`          | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Jaeger伝播プロトコルを使用してトレースコンテキストを伝播します。                  |
-| `B3Propagator`              | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | B3伝播プロトコルを使用してトレースコンテキストを伝播します。                      |
-| `OtTracePropagator`         | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | OpenTracing伝播プロトコルを使用してトレースコンテキストを伝播します。             |
-| `PassThroughPropagator`     | `io.opentelemetry:opentelemetry-api-incubator:{{% param vers.otel %}}-alpha`                  | テレメトリーに参加することなく、設定可能なフィールドセットを伝播します。          |
-| `AwsXrayPropagator`         | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | AWS X-Ray伝播プロトコルを使用してトレースコンテキストを伝播します。               |
-| `AwsXrayLambdaPropagator`   | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | 環境変数とAWS X-Ray伝播プロトコルを使用してトレースコンテキストを伝播します。     |
+| `JaegerPropagator`          | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | Jaeger伝搬プロトコルを使用してトレースコンテキストを伝搬します。                  |
+| `B3Propagator`              | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | B3伝搬プロトコルを使用してトレースコンテキストを伝搬します。                      |
+| `OtTracePropagator`         | `io.opentelemetry:opentelemetry-extension-trace-propagators:{{% param vers.otel %}}`          | OpenTracing伝搬プロトコルを使用してトレースコンテキストを伝搬します。             |
+| `PassThroughPropagator`     | `io.opentelemetry:opentelemetry-api-incubator:{{% param vers.otel %}}-alpha`                  | テレメトリーに参加することなく、設定可能なフィールドセットを伝搬します。          |
+| `AwsXrayPropagator`         | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | AWS X-Ray伝搬プロトコルを使用してトレースコンテキストを伝搬します。               |
+| `AwsXrayLambdaPropagator`   | `io.opentelemetry.contrib:opentelemetry-aws-xray-propagator:{{% param vers.contrib %}}-alpha` | 環境変数とAWS X-Ray伝搬プロトコルを使用してトレースコンテキストを伝搬します。     |
 
 以下のコードスニペットは`TextMapPropagator`のプログラム設定を示します。
 
@@ -1203,7 +1203,7 @@ SDKコンポーネントは、関連するコンポーネントの完全修飾�
 OpenTelemetryのロガーの動作を変更したい場合があります。
 たとえば、デバッグ時に追加情報を出力するためにログレベルを下げたり、特定のクラスからのエラーを無視するために特定のクラスのレベルを上げたり、OpenTelemetryが特定のメッセージをログ出力するたびにカスタムコードを実行するためにカスタムハンドラーまたはフィルターをインストールしたりできます。
 ロガー名とログ情報の詳細なリストは維持されていません。
-ただし、すべてのOpenTelemetry API、SDK、contrib、および計装コンポーネントは同じ`io.opentelemetry.*`パッケージプレフィックスを共有しています。
+ただし、すべてのOpenTelemetry API、SDK、contrib、および計装コンポーネントは同じ`io.opentelemetry.*`パッケージ接頭辞を共有しています。
 すべての`io.opentelemetry.*`に対してより細かいログを有効にし、出力を検査し、興味のあるパッケージやFQCNに絞り込むことが有用です。
 
 例を挙げましょう。
