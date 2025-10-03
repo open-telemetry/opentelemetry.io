@@ -23,6 +23,10 @@ on:
         description: Prune more entries from existing PR branch (if any).
         default: false
         type: boolean
+      rebase_from_main:
+        description: Rebase from main instead of merging.
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -45,12 +49,13 @@ jobs:
 
       - uses: actions/checkout@v5
         with:
-          # this is needed to do the rebase below
           fetch-depth: 0
-          # this is needed to trigger workflows when pushing new commits to an existing PR
+          # Needed to trigger workflows when pushing new commits to an existing PR
           token: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Checkout or create branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if ! git ls-remote --exit-code --heads origin $BRANCH; then
             git checkout -b $BRANCH origin/main
@@ -70,13 +75,19 @@ jobs:
           git config user.name otelbot
           git config user.email 197425009+otelbot@users.noreply.github.com
 
-      - name: Merge from main
+      - name: Merge (or rebase) from main
         run: |
+          merge_or_rebase="merge"
+          push_args=""
+          if [ "$REBASE_FROM_MAIN" == "true" ]; then
+            merge_or_rebase="rebase"
+            push_args="--force-with-lease"
+          fi
           previous=$(git rev-parse HEAD)
           git fetch origin
-          git merge origin/main
+          git $merge_or_rebase origin/main
           if [ "$(git rev-parse HEAD)" != "$previous" ]; then
-            git push
+            git push $push_args origin $BRANCH
           fi
 
       - uses: actions/setup-node@v5
@@ -115,12 +126,11 @@ jobs:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
-          if [ -z "$prs" ]; then
+          echo "Existing PR(s):\n${prs:-none}"
+          if [[ -z "$prs" ]]; then
             gh pr create --title "Refresh refcache" \
                          --body "- Refreshes the oldest ${{ env.REFRESH_COUNT }} refcache entries." \
                          --draft
             PR_URL=$(gh pr view --json url --jq '.url')
             echo "PR created: $PR_URL"
-          else
-            echo "PR already exists: $prs"
           fi
