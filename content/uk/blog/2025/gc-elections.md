@@ -3,7 +3,7 @@ title: Оголошення про вибори до Керівного комі
 linkTitle: 2025 Вибори до GC
 date: 2025-09-29
 author: OpenTelemetry Governance Committee
-default_lang_commit: 624a5ad2ea3c8f07660370aab626532469f946a3
+default_lang_commit: 5b55172d51fb21f69c2f4fc9eb014f72a2b1c50a
 cspell:ignore: Юраці Пайшао Крелінг Нойманн
 ---
 
@@ -14,9 +14,10 @@ cspell:ignore: Юраці Пайшао Крелінг Нойманн
 
 Якщо ви є [постійним членом](https://github.com/open-telemetry/community/blob/main/governance-charter.md#members-of-standing) спільноти OpenTelemetry, запрошуємо вас взяти участь у голосуванні на цих виборах, щоб забезпечити належне представництво спільноти в Керівному комітеті. На цих виборах має бути обрано пʼять осіб, кожна з яких буде виконувати свої обовʼязки протягом двох років.
 
-Якщо ви зробили внесок у нашу екосистему, який не вимірюється автоматичним процесом, ви можете [подати запит участь](https://docs.google.com/forms/d/e/1FAIpQLSeSA09xDIv0uyb6vrP8xBbLjm8NsgihrG8GHxacbigF17sNDw/viewform?usp=dialog) до 23:59 UTC 24 жовтня 2025 року, щоб взяти участь у виборах. Дивіться [список виборців](https://github.com/open-telemetry/community/blob/main/elections/2025/voters-roll.csv) з усіма постійними членами та затвердженими запитами. Затверджені запити будуть додаватися до списку постійно.
+Якщо ви зробили внесок у нашу екосистему, який не вимірюється автоматичним процесом, ви можете [подати запит на участь](https://docs.google.com/forms/d/e/1FAIpQLSeSA09xDIv0uyb6vrP8xBbLjm8NsgihrG8GHxacbigF17sNDw/viewform?usp=dialog) до 23:59 UTC 24 жовтня 2025 року, щоб взяти участь у виборах. Дивіться [список виборців](https://github.com/open-telemetry/community/blob/f7b99ef75580e4d88159e66730e1b8bc6719ce30%5E/elections/2025/voters-roll.csv) з усіма постійними членами та затвердженими запитами. Затверджені запити будуть додаватися до списку постійно.
 
-Голосування буде відкрито з 00:00 UTC 27 жовтня 2025 року до 23:59 29 жовтня 2025 року, кінець дня, [Anywhere on Earth](https://en.wikipedia.org/wiki/Anywhere_on_Earth) (30 жовтня 2025 року о 12:00 UTC) на [Helios Voting](https://vote.heliosvoting.org/helios/elections/f94a7c58-990b-11f0-a16d-5270fb641b4c/view); виборці повинні будуть увійти за допомогою свого облікового запису GitHub.
+Голосування буде відкрито з [~~00:00~~](https://github.com/open-telemetry/community/issues/3001#issuecomment-3449011021)
+12:00 UTC 27 жовтня 2025 року до кінця дня 29 жовтня 2025 року, [Anywhere on Earth](https://en.wikipedia.org/wiki/Anywhere_on_Earth) (30 жовтня 2025 року о 12:00 UTC) на [Helios Voting](https://vote.heliosvoting.org/helios/elections/f94a7c58-990b-11f0-a16d-5270fb641b4c/view); виборці повинні будуть увійти за допомогою свого облікового запису GitHub.
 
 Для отримання додаткової інформації див. [Вибори до Керівного комітету OpenTelemetry 2025](https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-election.md).
 
