@@ -8,7 +8,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
-cSpell:ignore: CAP_PERFMON
+cSpell:ignore: CAP_PERFMON reinicios compílalos
 default_lang_commit: c6df1ca98613ce886d3ea5ecb7ea50d02a31f18a
 ---
 
