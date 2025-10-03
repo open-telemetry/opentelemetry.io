@@ -39,6 +39,7 @@ jobs:
       IS_NEW_BRANCH: 'false'
       REFRESH_COUNT: ${{ github.event.inputs.number_of_entries_to_refresh }}
       PRUNE_MORE: ${{ github.event.inputs.prune_more_in_same_PR }}
+      REBASE_FROM_MAIN: ${{ github.event.inputs.rebase_from_main }}
     steps:
       - uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2.1.4
         id: otelbot-token
@@ -52,6 +53,13 @@ jobs:
           fetch-depth: 0
           # Needed to trigger workflows when pushing new commits to an existing PR
           token: ${{ steps.otelbot-token.outputs.token }}
+
+      - name: Validate inputs
+        run: |
+          if [[ ! "$REFRESH_COUNT" =~ ^[0-9]+$ ]] || [[ "$REFRESH_COUNT" -lt 1 ]]; then
+            echo "Error: REFRESH_COUNT must be a positive integer, got: $REFRESH_COUNT"
+            exit 1
+          fi
 
       - name: Checkout or create branch
         env:
@@ -104,15 +112,15 @@ jobs:
           echo "Pruning $PRUNE_N oldest refcache entries"
           npm run _refcache:prune -- -n $PRUNE_N
 
-      - name: List the oldest entry
+      - name: List oldest entry
         run: npm run _refcache:prune -- --list -n 1
 
       - name: Update refcache
         run: |
           # Ignore link-check failures so we can still commit refcache updates
           npm run fix:refcache || true
-          # Prune 404 entries, if any
-          npm run _refcache:prune
+          # Don't prune 4xx entries so we can further process them via the PR
+          # npm run _refcache:prune
 
           git add -A
 
@@ -126,11 +134,20 @@ jobs:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
-          echo "Existing PR(s):\n${prs:-none}"
-          if [[ -z "$prs" ]]; then
-            gh pr create --title "Refresh refcache" \
-                         --body "- Refreshes the oldest ${{ env.REFRESH_COUNT }} refcache entries." \
-                         --draft
+          echo "Existing PR(s):"
+          echo "${prs:-none}"
+          if [[ -n "$prs" ]]; then
+            echo "PR already exists, so we're done."
+            exit 0
+          fi
+
+          if gh pr create --title "Refresh refcache" \
+              --body "Refreshes the oldest ${{ env.REFRESH_COUNT }} refcache entries." \
+              --draft;
+          then
             PR_URL=$(gh pr view --json url --jq '.url')
-            echo "PR created: $PR_URL"
+            printf "PR created: %s\n" "$PR_URL"
+          else
+            echo "Failed to create PR - likely no commits to create PR from"
+            exit 0  # Don't fail the workflow, just skip PR creation
           fi
