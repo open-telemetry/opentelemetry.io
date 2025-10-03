@@ -1363,6 +1363,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:12:10.15929-05:00"
   },
+  "https://docs.appdynamics.com/latest/en/application-monitoring/cisco-appdynamics-for-opentelemetry": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-03T23:21:41.13771129Z"
+  },
   "https://docs.arize.com/phoenix/tracing/how-to-tracing/setup-tracing/setup-tracing-python": {
     "StatusCode": 200,
     "LastSeen": "2024-08-30T17:38:37.903633988Z"
@@ -16251,9 +16255,25 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:59:10.761951-05:00"
   },
+  "https://npmjs.com/package/@opentelemetry/instrumentation-socket.io": {
+    "StatusCode": 403,
+    "LastSeen": "2025-10-03T23:21:43.118809759Z"
+  },
+  "https://npmjs.com/package/@opentelemetry/instrumentation-tedious": {
+    "StatusCode": 403,
+    "LastSeen": "2025-10-03T23:21:43.20380083Z"
+  },
   "https://npmjs.com/package/@opentelemetry/instrumentation-undici": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T06:59:12.285328-05:00"
+  },
+  "https://npmjs.com/package/@opentelemetry/instrumentation-user-interaction": {
+    "StatusCode": 403,
+    "LastSeen": "2025-10-03T23:21:43.300240221Z"
+  },
+  "https://npmjs.com/package/@opentelemetry/instrumentation-winston": {
+    "StatusCode": 403,
+    "LastSeen": "2025-10-03T23:21:43.422054037Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-xml-http-request": {
     "StatusCode": 200,
@@ -16294,6 +16314,10 @@
   "https://npmjs.com/package/@prisma/instrumentation": {
     "StatusCode": 200,
     "LastSeen": "2025-01-13T12:42:17.580568-05:00"
+  },
+  "https://npmjs.com/package/@sap/opentelemetry-exporter-for-sap-cloud-logging": {
+    "StatusCode": 403,
+    "LastSeen": "2025-10-03T23:21:41.804657156Z"
   },
   "https://npmjs.com/package/opentelemetry-instrumentation-remix": {
     "StatusCode": 200,
