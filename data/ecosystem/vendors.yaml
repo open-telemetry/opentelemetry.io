@@ -6,7 +6,7 @@
   commercial: true
 - name: AppDynamics (Cisco)
   nativeOTLP: true
-  url: https://docs.appdynamics.com/latest/en/application-monitoring/cisco-appdynamics-for-opentelemetry
+  url: https://docs.appdynamics.com/latest/en/application-monitoring/splunk-appdynamics-for-opentelemetry
   contact:
   oss: false
   commercial: true

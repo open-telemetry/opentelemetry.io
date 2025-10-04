@@ -717,7 +717,7 @@
   },
   "https://cloud-native.slack.com/archives/C076RUAGP37": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-20T08:40:41.563366481Z"
+    "LastSeen": "2025-10-03T16:15:09.463481491Z"
   },
   "https://cloud-native.slack.com/archives/C088D8GSSSF": {
     "StatusCode": 200,
@@ -1364,8 +1364,12 @@
     "LastSeen": "2025-02-01T07:12:10.15929-05:00"
   },
   "https://docs.appdynamics.com/latest/en/application-monitoring/cisco-appdynamics-for-opentelemetry": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-03T19:47:14.111984-04:00"
+  },
+  "https://docs.appdynamics.com/latest/en/application-monitoring/splunk-appdynamics-for-opentelemetry": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:17:15.278849-04:00"
+    "LastSeen": "2025-10-03T19:52:53.130921-04:00"
   },
   "https://docs.arize.com/phoenix/tracing/how-to-tracing/setup-tracing/setup-tracing-python": {
     "StatusCode": 200,
@@ -1757,7 +1761,7 @@
   },
   "https://docs.google.com/document/d/1-23Sf7-xZK3OL5Ogv2pK0NP9YotlSa0PKU9bvvtQwp8": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-15T15:44:20.868165+02:00"
+    "LastSeen": "2025-10-03T16:18:30.904695236Z"
   },
   "https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w": {
     "StatusCode": 200,
@@ -1825,7 +1829,7 @@
   },
   "https://docs.groundcover.com/integrations/data-sources/opentelemetry/traces-and-logs": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-18T14:44:07.000049769Z"
+    "LastSeen": "2025-10-03T16:15:41.902607353Z"
   },
   "https://docs.honeycomb.io/getting-data-in/": {
     "StatusCode": 206,
@@ -3492,8 +3496,8 @@
     "LastSeen": "2025-02-01T07:10:34.06119-05:00"
   },
   "https://github.com/SAP/opentelemetry-exporter-for-sap-cloud-logging-for-nodejs": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-20T13:16:13.951088019Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-03T16:18:52.668885998Z"
   },
   "https://github.com/SAP/opentelemetry-exporter-for-sap-cloud-logging-for-nodejs#readme": {
     "StatusCode": 200,
@@ -5400,8 +5404,8 @@
     "LastSeen": "2025-01-13T11:43:22.244829-05:00"
   },
   "https://github.com/jpkrohling/talks": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-15T15:44:17.548487+02:00"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-03T16:18:25.113100877Z"
   },
   "https://github.com/jpmunz": {
     "StatusCode": 206,
@@ -6080,8 +6084,8 @@
     "LastSeen": "2025-02-18T04:17:05.364919203Z"
   },
   "https://github.com/oolong-dev": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:09:07.226162-04:00"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-03T16:18:55.844078411Z"
   },
   "https://github.com/oolong-dev/OpenTelemetry.jl": {
     "StatusCode": 206,
@@ -14052,8 +14056,8 @@
     "LastSeen": "2025-07-02T07:36:18.993406485Z"
   },
   "https://github.com/tonglil": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:09:12.635672-04:00"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-03T16:18:56.29140729Z"
   },
   "https://github.com/tonglil/opentelemetry-go-datadog-propagator": {
     "StatusCode": 206,
@@ -14485,7 +14489,7 @@
   },
   "https://go.opentelemetry.io": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-23T20:33:45.025738962Z"
+    "LastSeen": "2025-10-03T16:18:29.154748924Z"
   },
   "https://go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda": {
     "StatusCode": 200,
@@ -16369,11 +16373,11 @@
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-socket.io": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:08:37.351664-04:00"
+    "LastSeen": "2025-10-03T23:48:04.045Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-tedious": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:08:43.746511-04:00"
+    "LastSeen": "2025-10-03T23:48:06.937Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-undici": {
     "StatusCode": 200,
@@ -16381,11 +16385,11 @@
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-user-interaction": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:08:50.348243-04:00"
+    "LastSeen": "2025-10-03T23:48:09.943Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-winston": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:08:56.074327-04:00"
+    "LastSeen": "2025-10-03T23:48:12.659Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-xml-http-request": {
     "StatusCode": 200,
@@ -16429,7 +16433,7 @@
   },
   "https://npmjs.com/package/@sap/opentelemetry-exporter-for-sap-cloud-logging": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-20T13:16:23.955663593Z"
+    "LastSeen": "2025-10-03T19:47:23.489603-04:00"
   },
   "https://npmjs.com/package/opentelemetry-instrumentation-remix": {
     "StatusCode": 200,
@@ -17785,7 +17789,7 @@
   },
   "https://pkg.go.dev/github.com/openclarity/apiclarity/plugins/otel-collector/apiclarityexporter": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-12T17:56:07.964057+02:00"
+    "LastSeen": "2025-10-03T16:18:51.612247494Z"
   },
   "https://pkg.go.dev/github.com/r0mdau/fluentforwardexporter": {
     "StatusCode": 200,
@@ -18729,7 +18733,7 @@
   },
   "https://rubygems.org/gems/opentelemetry-instrumentation-redis": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-09T11:09:01.750552-04:00"
+    "LastSeen": "2025-10-03T16:18:55.13501204Z"
   },
   "https://rubygems.org/gems/opentelemetry-instrumentation-resque": {
     "StatusCode": 200,
