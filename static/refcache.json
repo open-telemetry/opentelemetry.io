@@ -4919,6 +4919,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:09:12.345Z"
   },
+  "https://github.com/google/cadvisor/blob/v0.53.0/docs/storage/prometheus.md#prometheus-container-metrics": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-04T10:35:45.708795373Z"
+  },
   "https://github.com/google/oss-fuzz": {
     "StatusCode": 200,
     "LastSeen": "2024-12-20T14:53:23.420338032Z"
@@ -12403,6 +12407,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:20:12.345Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1490": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-04T10:35:46.981688794Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/1530": {
     "StatusCode": 206,
     "LastSeen": "2025-02-20T09:23:50.9712701-08:00"
@@ -18058,6 +18066,18 @@
   "https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#VolumeStats": {
     "StatusCode": 200,
     "LastSeen": "2025-08-28T17:29:59.409762-04:00"
+  },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#MemoryStats": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-04T10:35:43.067209727Z"
+  },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#NodeStats": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-04T10:35:56.107614398Z"
+  },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#PodStats": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-04T10:35:45.224841422Z"
   },
   "https://pkg.go.dev/k8s.io/kubernetes@v1.19.16/pkg/kubelet/apis/stats/v1alpha1": {
     "StatusCode": 200,
