@@ -17,7 +17,7 @@ on:
     inputs:
       number_of_entries_to_refresh:
         description: Number of (oldest) refcache entries to refresh.
-        default: 128
+        default: &default_refresh_count 128
         type: number
       prune_more_in_same_PR:
         description: Prune more entries from existing PR branch (if any).
@@ -36,6 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BRANCH: otelbot/refcache-refresh
+      DEFAULT_REFRESH_COUNT: *default_refresh_count
       IS_NEW_BRANCH: 'false'
       REFRESH_COUNT: ${{ github.event.inputs.number_of_entries_to_refresh }}
       PRUNE_MORE: ${{ github.event.inputs.prune_more_in_same_PR }}
@@ -56,8 +57,10 @@ jobs:
 
       - name: Validate inputs
         run: |
-          if [[ ! "$REFRESH_COUNT" =~ ^[0-9]+$ ]] || [[ "$REFRESH_COUNT" -lt 1 ]]; then
-            echo "Error: REFRESH_COUNT must be a positive integer, got: $REFRESH_COUNT"
+          if [[ -z "$REFRESH_COUNT" ]]; then
+            echo "REFRESH_COUNT=$DEFAULT_REFRESH_COUNT" >> $GITHUB_ENV
+          elif [[ ! "$REFRESH_COUNT" =~ ^[0-9]+$ ]]; then
+            echo "Error: REFRESH_COUNT must be a non-negative number, got: $REFRESH_COUNT"
             exit 1
           fi
 
@@ -66,16 +69,15 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if ! git ls-remote --exit-code --heads origin $BRANCH; then
+            echo "IS_NEW_BRANCH=true" >> $GITHUB_ENV
             git checkout -b $BRANCH origin/main
             git push -u origin $BRANCH
-            echo "IS_NEW_BRANCH=true" >> $GITHUB_ENV
-            echo "PRUNE_N=$REFRESH_COUNT" >> $GITHUB_ENV
           else
+            echo "Branch $BRANCH already exists, doing checkout."
             git checkout $BRANCH
-            echo "PRUNE_N=\"1 --list\"" >> $GITHUB_ENV
 
             PR_URL=$(gh pr view --json url --jq '.url')
-            echo "PR_URL=$PR_URL"
+            echo "Branch PR: $PR_URL"
           fi
 
       - name: Use CLA approved github bot
@@ -107,12 +109,12 @@ jobs:
       - name: Prune refcache
         if: ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' }}
         run: |
-          echo "List the oldest entry"
+          echo "List the oldest entry before pruning:"
           npm run _refcache:prune -- --list -n 1
-          echo "Pruning $PRUNE_N oldest refcache entries"
-          npm run _refcache:prune -- -n $PRUNE_N
+          echo "Pruning $REFRESH_COUNT oldest refcache entries:"
+          npm run _refcache:prune -- -n $REFRESH_COUNT
 
-      - name: List oldest entry
+      - name: List oldest entry after pruning
         run: npm run _refcache:prune -- --list -n 1
 
       - name: Update refcache

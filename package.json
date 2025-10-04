@@ -78,7 +78,7 @@
     "fix:i18n": "npm run seq -- fix:i18n:new fix:i18n:status",
     "fix:markdown": "npm run check:markdown -- --fix; echo '\nTrimming trailing whitespace'; npm run _fix:trailing-spaces",
     "fix:refcache:refresh": "npm run _refcache:prune -- -n ${PRUNE_N:-128}",
-    "fix:refcache": "npm run check:links",
+    "fix:refcache": "npm run _refcache:prune; npm run check:links",
     "fix:submodule": "npm run pin:submodule",
     "fix:text": "npm run check:text -- --fix",
     "fix": "npm run all -- $(npm -s run _list:fix:*)",
