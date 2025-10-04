@@ -653,7 +653,7 @@
   },
   "https://cloud-native.slack.com/archives/C01NPAXACKT": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-23T20:33:45.460332059Z"
+    "LastSeen": "2025-10-04T14:15:01.890392266Z"
   },
   "https://cloud-native.slack.com/archives/C01QZFGMLQ7": {
     "StatusCode": 200,
@@ -1362,10 +1362,6 @@
   "https://docs.apimetrics.io/docs/export-with-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2025-02-01T07:12:10.15929-05:00"
-  },
-  "https://docs.appdynamics.com/latest/en/application-monitoring/cisco-appdynamics-for-opentelemetry": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-03T19:47:14.111984-04:00"
   },
   "https://docs.appdynamics.com/latest/en/application-monitoring/splunk-appdynamics-for-opentelemetry": {
     "StatusCode": 200,
@@ -4280,8 +4276,8 @@
     "LastSeen": "2024-11-14T11:48:37.574508+01:00"
   },
   "https://github.com/confluentinc/confluent-kafka-go": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-25T09:39:34.657068291Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-04T14:15:26.562882544Z"
   },
   "https://github.com/congim": {
     "StatusCode": 200,
@@ -5428,12 +5424,12 @@
     "LastSeen": "2025-07-22T11:21:39.1318987-07:00"
   },
   "https://github.com/jurabek": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-25T09:39:30.336608946Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-04T14:15:26.228399897Z"
   },
   "https://github.com/jurabek/otelkafka": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-25T09:39:26.927388436Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-04T14:15:25.87453464Z"
   },
   "https://github.com/justindsmith/opentelemetry-instrumentations-js/tree/main/packages/instrumentation-remix": {
     "StatusCode": 206,
@@ -6296,8 +6292,8 @@
     "LastSeen": "2025-02-01T07:10:28.050899-05:00"
   },
   "https://github.com/open-telemetry/community/issues/2260": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-23T20:33:47.852068252Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-04T14:15:07.76528021Z"
   },
   "https://github.com/open-telemetry/community/issues/2329": {
     "StatusCode": 200,
@@ -8880,8 +8876,8 @@
     "LastSeen": "2025-01-29T17:30:12.02761941Z"
   },
   "https://github.com/open-telemetry/opentelemetry-go-vanityurls": {
-    "StatusCode": 200,
-    "LastSeen": "2024-08-23T20:33:46.750242014Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-04T14:15:03.642310725Z"
   },
   "https://github.com/open-telemetry/opentelemetry-go-vanityurls/issues/81": {
     "StatusCode": 206,
@@ -16897,7 +16893,7 @@
   },
   "https://pkg.go.dev/github.com/jurabek/otelkafka": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-25T09:39:41.322663747Z"
+    "LastSeen": "2025-10-04T14:15:26.832876109Z"
   },
   "https://pkg.go.dev/github.com/mitchellh/mapstructure": {
     "StatusCode": 200,
@@ -17841,7 +17837,7 @@
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc": {
     "StatusCode": 200,
-    "LastSeen": "2024-08-26T18:58:45.152084327Z"
+    "LastSeen": "2025-10-04T14:10:04.694218953Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp": {
     "StatusCode": 200,
