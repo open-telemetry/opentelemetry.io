@@ -11311,6 +11311,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-01T13:51:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T12:40:48.755464-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/3967": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:28.518782-05:00"
