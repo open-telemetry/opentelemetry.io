@@ -17,7 +17,7 @@ on:
     inputs:
       number_of_entries_to_refresh:
         description: Number of (oldest) refcache entries to refresh.
-        default: 128
+        default: &default_refresh_count 128
         type: number
       prune_more_in_same_PR:
         description: Prune more entries from existing PR branch (if any).
@@ -36,6 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       BRANCH: otelbot/refcache-refresh
+      DEFAULT_REFRESH_COUNT: *default_refresh_count
       IS_NEW_BRANCH: 'false'
       REFRESH_COUNT: ${{ github.event.inputs.number_of_entries_to_refresh }}
       PRUNE_MORE: ${{ github.event.inputs.prune_more_in_same_PR }}
@@ -56,8 +57,10 @@ jobs:
 
       - name: Validate inputs
         run: |
-          if [[ ! "$REFRESH_COUNT" =~ ^[0-9]+$ ]] || [[ "$REFRESH_COUNT" -lt 1 ]]; then
-            echo "Error: REFRESH_COUNT must be a positive integer, got: $REFRESH_COUNT"
+          if [[ -z "$REFRESH_COUNT" ]]; then
+            echo "REFRESH_COUNT=$DEFAULT_REFRESH_COUNT" >> $GITHUB_ENV
+          elif [[ ! "$REFRESH_COUNT" =~ ^[0-9]+$ ]]; then
+            echo "Error: REFRESH_COUNT must be a non-negative number, got: $REFRESH_COUNT"
             exit 1
           fi
 
