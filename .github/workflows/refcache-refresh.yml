@@ -69,16 +69,15 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if ! git ls-remote --exit-code --heads origin $BRANCH; then
+            echo "IS_NEW_BRANCH=true" >> $GITHUB_ENV
             git checkout -b $BRANCH origin/main
             git push -u origin $BRANCH
-            echo "IS_NEW_BRANCH=true" >> $GITHUB_ENV
-            echo "PRUNE_N=$REFRESH_COUNT" >> $GITHUB_ENV
           else
+            echo "Branch $BRANCH already exists, doing checkout."
             git checkout $BRANCH
-            echo "PRUNE_N=\"1 --list\"" >> $GITHUB_ENV
 
             PR_URL=$(gh pr view --json url --jq '.url')
-            echo "PR_URL=$PR_URL"
+            echo "Branch PR: $PR_URL"
           fi
 
       - name: Use CLA approved github bot
@@ -110,12 +109,12 @@ jobs:
       - name: Prune refcache
         if: ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' }}
         run: |
-          echo "List the oldest entry"
+          echo "List the oldest entry before pruning:"
           npm run _refcache:prune -- --list -n 1
-          echo "Pruning $PRUNE_N oldest refcache entries"
-          npm run _refcache:prune -- -n $PRUNE_N
+          echo "Pruning $REFRESH_COUNT oldest refcache entries:"
+          npm run _refcache:prune -- -n $REFRESH_COUNT
 
-      - name: List oldest entry
+      - name: List oldest entry after pruning
         run: npm run _refcache:prune -- --list -n 1
 
       - name: Update refcache
