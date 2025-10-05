@@ -23,7 +23,7 @@ UTC on November 6th, 2025**[^1]. You can nominate up to five people per
 submission.
 
 Winners will be announced at
-[KubeCon + CloudNativeCon North America 2025](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/).
+[KubeCon + CloudNativeCon North America 2025](/blog/2025/kubecon-na/).
 
 [^1]:
     Although we require sign-in to ensure only one form submission per person,
