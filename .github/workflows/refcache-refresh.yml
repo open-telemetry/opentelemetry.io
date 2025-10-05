@@ -117,12 +117,15 @@ jobs:
       - name: List oldest entry after pruning
         run: npm run _refcache:prune -- --list -n 1
 
-      - name: Update refcache
+      - name: Build site and update refcache
         run: |
           # Ignore link-check failures so we can still commit refcache updates
           npm run fix:refcache || true
+
           # Don't prune 4xx entries so we can further process them via the PR
           # npm run _refcache:prune
+
+          ./scripts/clean-refcache.sh
 
           git add -A
 
