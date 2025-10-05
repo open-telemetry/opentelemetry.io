@@ -18,11 +18,13 @@ Awards**! This is your chance to nominate individuals who have made a notable
 impact to OpenTelemetry over the past year. _Everyone_ can nominate _anyone_ in
 the community, be they a contributor, end-user, or community member.
 
-Submit nominations using
-[this Google Form](https://forms.gle/Y3UwmQrjVif4NQJs5).
+[Submit nominations online](https://forms.gle/Y3UwmQrjVif4NQJs5) by **midnight
+UTC on November 6th, 2025**[^1]. You can nominate up to five people per
+submission.
 
-Although we require sign-in to ensure only one form submission per person,
-nominations are completely anonymous. You can nominate up to five people per
-submission, and nominations will be open **until midnight UTC on November 6th,
-2025**. Winners will be announced at
+Winners will be announced at
 [KubeCon + CloudNativeCon North America 2025](https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/).
+
+[^1]:
+    Although we require sign-in to ensure only one form submission per person,
+    nominations are completely anonymous.
