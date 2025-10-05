@@ -10,7 +10,7 @@
  * 1. Read the current refcache.json file
  * 2. Read the EXTERNAL_LINKS_PATH file
  * 3. Remove any entries from refcache.json whose URLs don't appear in
- *    EXTERNAL_LINKS_PATH Note that URLs from EXTERNAL_LINKS_PATH are normalized
+ *    EXTERNAL_LINKS_PATH. Note that URLs from EXTERNAL_LINKS_PATH are normalized
  *    to match how htmltest saves external URLs (see `normalizeUrl` below).
  * 4. Write the cleaned refcache.json back to the file
  */
