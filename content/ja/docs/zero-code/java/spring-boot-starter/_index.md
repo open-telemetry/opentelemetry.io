@@ -12,7 +12,7 @@ default_lang_commit: 9958669fbbc5664acded963fedb51c7cbf63c6a3
 1. Spring Bootアプリケーションを計装するためのデフォルトの選択肢は、バイトコード計装を使用した [**OpenTelemetry Java エージェント**](../agent) です。
    - OpenTelemetryスターターよりも**多くの計装機能がすぐに使える**
 2. **OpenTelemetry Spring Boot スターター**は以下の場合に役立ちます。
-   - OpenTelemetry Javaエージェントが動作しない**Spring Boot Native イメージ**アプリケーション
+   - OpenTelemetry Javaエージェントが動作しない**Spring Bootネイティブイメージ**アプリケーション
    - OpenTelemetry Javaエージェントの**起動オーバーヘッド**が要件を超えている場合
    - OpenTelemetry Javaエージェントが他のエージェントと動作しない可能性があるため、Java 監視エージェントがすでに使用されている場合
    - OpenTelemetry Javaエージェントでは動作しないOpenTelemetry Spring Bootスターターを設定するための**Spring Boot 設定ファイル**(`application.properties`、`application.yml`)
