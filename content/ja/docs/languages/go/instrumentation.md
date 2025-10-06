@@ -958,9 +958,9 @@ func main() {
 
 func newResource() (*resource.Resource, error) {
 	return resource.Merge(
-    resource.Default(),
+    	resource.Default(),
 		resource.NewWithAttributes(
-      semconv.SchemaURL,
+			semconv.SchemaURL,
 			semconv.ServiceName("my-service"),
 			semconv.ServiceVersion("0.1.0"),
 		),
