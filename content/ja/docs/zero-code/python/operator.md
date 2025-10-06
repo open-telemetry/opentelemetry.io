@@ -31,4 +31,4 @@ Django のように独自の実行ファイルから実行されるアプリケ�
 
 #### gevent アプリケーション {#gevent-applications}
 
-OpenTelemetry Python 1.37.0/0.58b0 リリース以降、デプロイファイルで `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH` 環境変数を `patch_all` に設定すると、自動計装コードはそれ自体を初期化する前に、同じ名前のgevent monkeyPatchメソッドを呼び出します。
+OpenTelemetry Python 1.37.0/0.58b0 リリース以降、デプロイファイルで `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH` 環境変数を `patch_all` に設定すると、自動計装コードはそれ自体を初期化する前に、同じ名前のgeventのモンキーパッチメソッドを呼び出します。
