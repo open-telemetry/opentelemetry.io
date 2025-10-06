@@ -7,7 +7,7 @@ author: >-
 canonical_url: https://www.causely.ai/blog/demystifying-automatic-instrumentation
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/7810
 sig: Comms
-cspell:ignore: bpftrace Causely libbpf
+cspell:ignore: Beyla bpftrace Causely libbpf
 ---
 
 Despite the rise of OpenTelemetry and [eBPF](https://ebpf.io/), most developers
