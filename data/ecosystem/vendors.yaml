@@ -270,6 +270,12 @@
   contact: https://github.com/iguitton
   oss: true
   commercial: true
+- name: Monocle (LF AI & Data)
+  nativeOTLP: true
+  url: http://monocle2ai.org/
+  contact: 
+  oss: true
+  commercial: false
 - name: Middleware
   nativeOTLP: true
   url: https://docs.middleware.io/open-telemetry
