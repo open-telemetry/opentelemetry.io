@@ -21,7 +21,7 @@ language runtime APIs. Each technique leverages the unique characteristics of
 different programming languages and runtime environments to add observability
 without code changes.
 
-## What is Automatic Instrumentation?
+## What is automatic instrumentation?
 
 According to [the glossary](/docs/concepts/glossary), automatic instrumentation
 refers to “_telemetry collection methods that do not require the end-user to
