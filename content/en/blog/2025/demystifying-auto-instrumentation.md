@@ -200,7 +200,7 @@ for
 or
 [.NET](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src).
 
-### Compile-Time Instrumentation: Baking Observability into the Binary
+### Compile-time instrumentation: Baking observability into the binary
 
 For statically compiled languages like Go, compile-time instrumentation offers a
 different approach. Instead of modifying code at runtime, we transform the
