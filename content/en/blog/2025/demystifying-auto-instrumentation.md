@@ -79,7 +79,7 @@ code.
 
 Now let’s explore how these techniques work under the hood.
 
-### Monkey Patching: Runtime Function Replacement
+### Monkey patching: Runtime function replacement
 
 Monkey patching is perhaps the most straightforward automatic instrumentation
 technique, commonly used in dynamic languages like JavaScript, Python, and Ruby.
