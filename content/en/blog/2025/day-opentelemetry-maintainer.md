@@ -1,7 +1,7 @@
 ---
 title: A day in the life of an OpenTelemetry maintainer
 linkTitle: Life of an OTel maintainer
-date: 2025-09-30
+date: 2025-10-07
 author: >-
   [Damien Mathieu](https://github.com/dmathieu) (Elastic)
 canonical_url: https://www.elastic.co/observability-labs/blog/day-opentelemetry-maintainer
