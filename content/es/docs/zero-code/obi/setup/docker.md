@@ -27,7 +27,6 @@ El contenedor OBI debe configurarse de la siguiente manera:
   los procesos de otros contenedores.
   
 ## Ejemplo de CLI de Docker {#docker-cli-example}
-
 Para este ejemplo, necesita un contenedor que ejecute un servicio HTTP/S 
 o gRPC. Si no tiene uno, puede utilizar este 
 [sencillo servicio de motor de blog escrito en Go](https://macias.info):
@@ -39,7 +38,6 @@ docker run -p 18443:8443 --name goblog mariomac/goblog:dev
 El comando anterior ejecuta una aplicación HTTPS sencilla. El proceso
 abre el puerto interno del contenedor `8443`, que luego se expone en el 
 nivel del host como el puerto `18443`.
-
 Establezca las variables de entorno para configurar OBI para que imprima 
 en stdout y escuche un puerto (contenedor) para inspeccionar el 
 ejecutable:
