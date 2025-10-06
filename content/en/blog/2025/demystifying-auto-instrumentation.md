@@ -320,7 +320,7 @@ instrumentation, you can take a look into the
 project (short “OBI”), which is the outcome of
 [the donation of Belay by Grafana](https://github.com/open-telemetry/community/issues/2406).
 
-### Language Runtime APIs: Native Instrumentation Support
+### Language runtime APIs: Native instrumentation support
 
 Some languages provide built-in APIs for instrumentation, offering a more
 integrated approach.
