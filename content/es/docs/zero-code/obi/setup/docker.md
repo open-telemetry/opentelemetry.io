@@ -25,12 +25,12 @@ El contenedor OBI debe configurarse de la siguiente manera:
   algunos entornos de contenedores).
 - Utilizar el espacio de nombres PID `host` para permitir el acceso a
   los procesos de otros contenedores.
+  
 ## Ejemplo de CLI de Docker {#docker-cli-example}
 
 Para este ejemplo, necesita un contenedor que ejecute un servicio HTTP/S 
 o gRPC. Si no tiene uno, puede utilizar este 
 [sencillo servicio de motor de blog escrito en Go](https://macias.info):
-
 
 ```sh
 docker run -p 18443:8443 --name goblog mariomac/goblog:dev

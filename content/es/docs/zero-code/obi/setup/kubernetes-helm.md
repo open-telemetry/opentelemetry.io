@@ -19,8 +19,6 @@ de Helm, consulte el documento[Opciones del gráfico Helm de OBI](https://github
 
 Contenido:
 
-<!-- TOC -->
-
 - [Implementación de OBI desde Helm {#deploying-obi-from-helm}](#implementación-de-obi-desde-helm-deploying-obi-from-helm)
 - [Configuración de OBI {#configuring-obi}](#configuración-de-obi-configuring-obi)
 - [Configuración de los metadatos de OBI {#configuring-obi-metadata}](#configuración-de-los-metadatos-de-obi-configuring-obi-metadata)
