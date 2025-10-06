@@ -261,7 +261,7 @@ instrumentation, you can take a look into the
 [OpenTelemetry Go Compile Instrumentation](https://github.com/open-telemetry/opentelemetry-go-compile-instrumentation)
 project.
 
-### eBPF Instrumentation: Kernel-Level Observability
+### eBPF instrumentation: Kernel-level observability
 
 [eBPF](https://ebpf.io/) (Extended Berkeley Packet Filter) represents a
 fundamentally different approach to automatic instrumentation. Instead of
