@@ -12,8 +12,6 @@ toc_hide: true
 
 {{% alert title="Nota" %}}
 
-
-
 Para obtener más detalles sobre las diversas opciones de configuración 
 de Helm, consulte el documento[Opciones del gráfico Helm de OBI](https://github.com/open-telemetry/opentelemetry-helm-charts/).
 
