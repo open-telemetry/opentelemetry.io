@@ -1,4 +1,4 @@
-# cSpell:ignore loki lokireceiver
+# cSpell:ignore lightstepreceiver zalando
 title: OpenTelemetry Collector Lightstep Receiver
 registryType: receiver
 language: collector
