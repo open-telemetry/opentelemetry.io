@@ -21,11 +21,7 @@ Each component has a stability level that indicates its maturity:
 - **stable** - Ready for production use
 - **beta** - Mostly stable, but may have minor changes
 - **alpha** - Early development, expect breaking changes
-- **development** - Experimental, not recommended for production
+- **development** - Experimental, subject to change or removal
 - **unmaintained** - No longer actively maintained
 
 For signal-based components (receivers, processors, exporters, connectors), stability is shown per signal type (traces/metrics/logs).
-
-## Contributing
-
-To learn more about developing Collector components, see the [Collector development documentation](https://github.com/open-telemetry/opentelemetry-collector/blob/main/CONTRIBUTING.md).
