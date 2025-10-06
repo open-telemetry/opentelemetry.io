@@ -60,10 +60,8 @@ application.
 
 ## Want to try the techniques yourself?
 
-This blog post contains small code snippets to illustrate the concepts. A full
-working examples can be found in a lab repository at
-[https://github.com/causely-oss/automatic-instrumentation-lab](https://github.com/causely-oss/automatic-instrumentation-lab)
-where you can try them out yourself.
+This blog post contains small code snippets to illustrate the concepts. You can try out full
+working examples in the [lab repository](https://github.com/causely-oss/automatic-instrumentation-lab).
 
 Before we explore these techniques, it’s important to note that you should not
 build your own automatic instrumentation from scratch, especially not using this
