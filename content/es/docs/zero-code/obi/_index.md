@@ -50,7 +50,7 @@ OBI ofrece las siguientes características:
 - **Observabilidad de la red**: captura los flujos de red entre servicios.
 - **Trazas de bases de datos**: captura consultas y conexiones de bases de datos
 
-## Requisitos
+## Requisitos {#requirements}
 
 OBI requiere lo siguiente para pode ejecutarse:
 
@@ -63,7 +63,7 @@ OBI requiere lo siguiente para pode ejecutarse:
 
 ![Arquitectura OBI eBPF](./ebpf-arch.svg)
 
-## Compatibilidad
+## Compatibilidad {#compatibility}
 
 OBI fue probado con las siguientes distribuciones Linux:
 
@@ -85,7 +85,7 @@ OBI fue probado con las siguientes distribuciones Linux:
   en más de tres versiones** a la versión principal estable actual.
 - Accesos de administrador para ejecutar OBI.
 
-## Limitaciones
+## Limitaciones {#limitations}
 
 OBI también tiene sus limitaciones. Solo proporciona métricas genéricas e 
 información de trazado a nivel de transacción. Se sigue recomendando el uso de los 
@@ -104,7 +104,7 @@ una función que se puede habilitar opcionalmente.
 Para obtener una lista completa de las capacidades que requiere OBI, consulte [Seguridad, 
 permisos y capacidades](security/).
 
-## Empezar con OBI
+## Empezar con OBI {#get-started-with-obi}
 
 - Siga la documentación de [configuración](setup/) para empezar a utilizar OBI con 
   Docker o Kubernetes.

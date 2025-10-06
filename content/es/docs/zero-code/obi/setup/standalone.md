@@ -11,11 +11,11 @@ OBI puede ejecutarse como un proceso independiente del sistema
 operativo Linux con privilegios elevados que pueden inspeccionar 
 otros procesos en ejecución.
 
-## Descargar e instalar
+## Descargar e instalar {#download-and-install}
 
 Puede descargar el ejecutable de OBI desde la [página de versiones de OBI](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases).
 
-## Configurar OBI
+## Configurar OBI {#set-up-obi}
 
 1. Cree un archivo de configuración siguiendo la documentación de 
    [opciones de configuración](../../configure/options/).
@@ -26,7 +26,7 @@ Puede descargar el ejecutable de OBI desde la [página de versiones de OBI](http
 sudo ./obi --config=<path to config file>
 ```
 
-## Ejemplo de configuración
+## Ejemplo de configuración {#example-configuration}
 
 A continuación se muestra un ejemplo de archivo de configuración 
 (`obi-config.yml`):
@@ -65,7 +65,7 @@ metrics:
 log_level: info
 ```
 
-## Ejecutar OBI
+## Ejecutar OBI {#run-obi}
 
 Ejecute OBI con el archivo de configuración:
 
@@ -73,15 +73,15 @@ Ejecute OBI con el archivo de configuración:
 sudo ./obi --config=obi-config.yml
 ```
 
-## Opciones de configuración
+## Opciones de configuración {#configuration-options}
 
 Para obtener una lista completa de las opciones de configuración, consulte la [documentación de configuración](../../configure/options/).
 
-## Permisos
+## Permisos {#permissions}
 
 OBI requiere privilegios elevados para funcionar correctamente. Para obtener más información sobre las capacidades específicas necesarias, consulte la [documentación de seguridad](../../security/).
 
-## Ejemplo: Instrumentación de Docker
+## Ejemplo: Instrumentación de Docker {#example-docker-instrumentation}
 
 Para instrumentar un contenedor Docker, puede ejecutar OBI en el host:
 ```bash
@@ -98,7 +98,7 @@ discovery:
       exe_path: /proc/*/root/app/my-app
 ```
 
-## Ejemplo: Instrumentación en todo el sistema
+## Ejemplo: Instrumentación en todo el sistema {#example-system-wide-instrumentation}
 
 Para instrumentar todos los servicios de un sistema:
 

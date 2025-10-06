@@ -84,7 +84,7 @@ Prometheus recopile las métricas.
 Para obtener información sobre cómo exportar trazas y métricas, consulte 
 la documentación de [opciones de configuración](../../configure/options/).
 
-## Ejemplo de Docker Compose 
+## Ejemplo de Docker Compose {#docker-compose-example}
 
 El siguiente archivo Docker Compose reproduce la misma funcionalidad 
 del ejemplo de la CLI de Docker:

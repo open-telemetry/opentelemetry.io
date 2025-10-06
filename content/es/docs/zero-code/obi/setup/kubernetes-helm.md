@@ -21,13 +21,13 @@ Contenido:
 
 <!-- TOC -->
 
-- [Implementación de OBI desde Helm](#implementación-de-obi-desde-helm)
-- [Configuración de OBI](#configuración-de-obi)
-- [Configuración de los metadatos de OBI](#configuración-de-los-metadatos-de-obi)
-- [Proporcionar secretos a la configuración de Helm](#proporcionar-secretos-a-la-configuración-de-helm)
+- [Implementación de OBI desde Helm {#deploying-obi-from-helm}](#implementación-de-obi-desde-helm-deploying-obi-from-helm)
+- [Configuración de OBI {#configuring-obi}](#configuración-de-obi-configuring-obi)
+- [Configuración de los metadatos de OBI {#configuring-obi-metadata}](#configuración-de-los-metadatos-de-obi-configuring-obi-metadata)
+- [Proporcionar secretos a la configuración de Helm {#providing-secrets-to-helm-configuration}](#proporcionar-secretos-a-la-configuración-de-helm-providing-secrets-to-helm-configuration)
 <!-- TOC -->
 
-##  Implementación de OBI desde Helm
+##  Implementación de OBI desde Helm {#deploying-obi-from-helm}
 
 En primer lugar, debe agregar el repositorio de OpenTelemetry Helm a 
 Helm:
@@ -55,7 +55,7 @@ La configuración predeterminada de OBI:
   de Kubernetes, por ejemplo `k8s.namespace.name` o `k8s.pod.name`
 
 
-## Configuración de OBI
+## Configuración de OBI {#configuring-obi}
 
 Es posible que desee anular la configuración predeterminada de OBI. 
 Por ejemplo, para exportar las métricas y/o los intervalos como 
@@ -97,7 +97,7 @@ o, si el gráfico OBI fue implementado previamente:
 helm upgrade obi open-telemetry/opentelemetry-ebpf-instrumentation -f helm-obi.yml
 ```
 
-## Configuración de los metadatos de OBI
+## Configuración de los metadatos de OBI {#configuring-obi-metadata}
 
 Si OBI exporta los datos utilizando el exportador Prometheus, es 
 posible que tenga que anular las anotaciones del pod OBI para que 
@@ -117,7 +117,7 @@ de OBI, tales como cuentas de servicio, roles de clúster, contextos de
 seguridad, etc. La [documentación del gráfico Helm de OBI](https://github.com/open-telemetry/opentelemetry-helm-charts/) 
 describe las diversas opciones de configuración.
 
-## Proporcionar secretos a la configuración de Helm
+## Proporcionar secretos a la configuración de Helm {#providing-secrets-to-helm-configuration}
 
 Si envía directamente las métricas y los rastros a su backend de 
 observabilidad a través del punto final de OpenTelemetry, es posible que 

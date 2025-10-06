@@ -18,7 +18,7 @@ configurando todas las entidades necesarias por su cuenta.
 
 {{% /alert %}}
 
-## Configuración de la decoración de metadatos de Kubernetes
+## Configuración de la decoración de metadatos de Kubernetes {#configuring-kubernetes-metadata-decoration}
 
 OBI puede decorar sus trazas con las siguientes etiquetas de Kubernetes:
 
@@ -88,14 +88,14 @@ obtener más información, consulte la sección _Detección de servicios_ en el
 [Proporcionar un archivo de configuración externo](#proporcionar-un-archivo-de-configuración-externo) 
 de esta página.
 
-## Implementación de OBI
+## Implementación de OBI {#deploying-obi}
 
 Puede implementar OBI en Kubernetes de dos maneras diferentes:
 
 - Como contenedor auxiliar
 - Como DaemonSet
 
-### Implementar OBI como contenedor auxiliar
+### Implementar OBI como contenedor auxiliar {#deploying-obi-as-a-sidecar-container}
 
 Esta es la forma en que puede implementar OBI si desea supervisar un servicio 
 determinado que puede que no esté implementado en todos los hosts, por lo 
@@ -178,7 +178,7 @@ Para obtener más información sobre las diferentes opciones de configuración,
 consulte la sección [Configuración](../../configure/options/) de este sitio 
 de documentación.
 
-### Implementar OBI como un Daemonset
+### Implementar OBI como un Daemonset {#deploying-obi-as-a-daemonset}
 
 También puede implementar OBI como un Daemonset. Esta es la forma preferida si:
 
@@ -233,7 +233,7 @@ spec:
               value: 'true'
 ```
 
-### Implementar OBI sin privilegios
+### Implementar OBI sin privilegios {#deploying-obi-unprivileged}
 
 En todos los ejemplos anteriores, se utilizó `privileged:true` o la capacidad 
 Linux `SYS_ADMIN` en la sección `securityContext` de la implementación de OBI. 
@@ -353,7 +353,7 @@ metadata:
 ---
 ```
 
-## Proporcionar un archivo de configuración externo
+## Proporcionar un archivo de configuración externo {#providing-an-external-configuration-file}
 
 En los ejemplos anteriores, OBI se configuró mediante variables de entorno. Sin 
 embargo, también se puede configurar mediante un archivo YAML externo (tal y como 
@@ -428,7 +428,7 @@ spec:
           emptyDir: {}
 ```
 
-## Proporcionar configuración secreta
+## Proporcionar configuración secreta {#providing-secret-configuration}
 
 El ejemplo anterior es válido para la configuración normal, pero no 
 debe utilizarse para transmitir información secreta, como contraseñas 

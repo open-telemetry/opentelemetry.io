@@ -32,7 +32,7 @@ OBI también puede exportar
 y [métricas de gráficos de servicio](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/servicegraphconnector), que 
 se pueden habilitar mediante la opción de configuración [features](../configure/options/).
 
-## Atributos de las métricas OBI
+## Atributos de las métricas OBI {#attributes-of-obi-metrics}
 
 En pro de la brevedad, las métricas y los atributos de esta lista utilizan la 
 notación OTel «dot.notation». Cuando se utiliza el exportador Prometheus, las 
@@ -112,7 +112,7 @@ admite el mismo conjunto de atributos que `obi.network.flow.bytes`, pero
 todos ellos están ocultos de forma predeterminada, excepto `k8s.cluster.name`, 
 `src.zone` y `dst.zone`. {{< /alert >}}
 
-## Métricas internas
+## Métricas internas {#internal-metrics}
 
 OBI se puede configurar para informar de métricas internas en formato 
 Prometheus.

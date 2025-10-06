@@ -17,7 +17,7 @@ para utilizar solo las capacidades específicas del kernel de Linux necesarias
 para su configuración actual.
 
 
-## Capacidades del kernel de Linux
+## Capacidades del kernel de Linux {#linux-kernel-capabilities}
 
 Las capacidades del kernel de Linux son un sistema detallado para controlar el 
 acceso a operaciones privilegiadas. Permiten otorgar permisos específicos a los
@@ -45,7 +45,7 @@ lo que necesitan.
 
 Puede encontrar más información en la [página del manual de capacidades](https://man7.org/linux/man-pages/man7/capabilities.7.html).
 
-## Modos de funcionamiento de OBI
+## Modos de funcionamiento de OBI {#obi-operation-modes}
 
 OBI puede funcionar en dos modos distintos: _observabilidad de aplicaciones_ y 
 _observabilidad de redes_. Estos modos no son mutuamente excluyentes y pueden 
@@ -65,7 +65,7 @@ puede provocar errores más adelante.
 Puede establecer `OBI_ENFORCE_SYS_CAPS=1`, lo que hace que OBI falle 
 inmediatamente si no están disponibles las capacidades necesarias.
 
-## Lista de capacidades necesarias para OBI
+## Lista de capacidades necesarias para OBI {#list-of-capabilities-required-by-obi}
 
 OBI requiere la siguiente lista de capacidades para su funcionamiento:
 
@@ -81,7 +81,7 @@ OBI requiere la siguiente lista de capacidades para su funcionamiento:
 | `CAP_SYS_RESOURCE`       | Aumentar la cantidad de memoria bloqueada disponible, **kernels < 5.11** solamente                                                                                                                                   |
 | `CAP_SYS_ADMIN`          | Propagación del contexto de trazado Go a nivel de biblioteca mediante `bpf_probe_write_user()` y acceso a los datos BTF por parte del exportador de métricas BPF.                     |
 
-### Tareas de supervisión del rendimiento
+### Tareas de supervisión del rendimiento {#performance-monitoring-tasks}
 
 El acceso a `CAP_PERFMON` está sujeto a los controles de acceso `perf_events` 
 regidos por la configuración del kernel `kernel.perf_event_paranoid`, que se puede 
@@ -99,7 +99,7 @@ distribución con la configuración de `kernel.perf_event_paranoid` superior a
 `2`, puede modificar su configuración para reducirla a `2` o utilizar `CAP_SYS_ADMIN` en 
 lugar de `CAP_PERFMON`.
 
-### Implementación en AKS/EKS
+### Implementación en AKS/EKS {#deployment-on-aks-eks}
 
 Tanto los entornos AKS como EKS incluyen kernels que, de forma predeterminada, 
 establecen `sys.perf_event_paranoid > 1`, lo que significa que OBI necesita
@@ -112,9 +112,9 @@ Si prefiere utilizar solo `CAP_PERFMON`, puede configurar su nodo para establece
 hacerlo, pero tenga en cuenta que los resultados pueden variar en función de su 
 configuración específica
 
-#### AKS
+#### AKS {#aks}
 
-##### Crear archivo de configuración AKS
+##### Crear archivo de configuración AKS {#create-aks-configuration-file}
 
 ```json
 {
@@ -124,7 +124,7 @@ configuración específica
 }
 ```
 
-##### Crear o actualizar tu cluster AKS
+##### Crear o actualizar tu cluster AKS {#create-or-update-your-aks-cluster}
 
 ```sh
 az aks create --name myAKSCluster --resource-group myResourceGroup --linux-os-config ./linuxosconfig.json
@@ -133,9 +133,9 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --linux-os-co
 Para más información, ver
 "[Personalizar la configuración de nodos para los grupos de nodos de Azure Kubernetes Service (AKS)](https://learn.microsoft.com/en-us/azure/aks/custom-node-configuration?tabs=linux-node-pools)"
 
-#### EKS (utilizando la configuración de EKS Anywhere)
+#### EKS (utilizando la configuración de EKS Anywhere) {#eks-using-eks-anywhere-configuration}
 
-##### Crear el archivo de configuración de EKS Anywhere
+##### Crear el archivo de configuración de EKS Anywhere {#create-eks-anywhere-configuration-file}
 
 ```yaml
 apiVersion: anywhere.eks.amazonaws.com/v1alpha1
@@ -149,15 +149,15 @@ spec:
         kernel.sys_paranoid: '1'
 ```
 
-##### Implementar o actualizar tu cluster EKS Anywhere
+##### Implementar o actualizar tu cluster EKS Anywhere {#deploy-or-update-your-eks-anywhere-cluster}
 
 ```sh
 eksctl create cluster --config-file hostosconfig.yaml
 ```
 
-#### EKS (modificar la configuración del grupo de nodos)
+#### EKS (modificar la configuración del grupo de nodos) {#eks-modify-node-group-settings} 
 
-##### Actualizar el grupo de nodos
+##### Actualizar el grupo de nodos {#update-the-node-group}
 
 ```yaml
 apiVersion: eks.eks.amazonaws.com/v1beta1
@@ -177,12 +177,12 @@ aplicar la configuración actualizada a su clúster EKS.
 
 Para obtener más información, consulte la [documentación sobre la configuración del sistema operativo host de EKS](https://anywhere.eks.amazonaws.com/docs/getting-started/optional/hostosconfig/).
 
-## Ejemplos de escenarios
+## Ejemplos de escenarios {#example-scenarios}
 
 Los siguientes ejemplos de escenarios muestran cómo ejecutar OBI como usuario 
 no root:
 
-### Métricas de red a través de un filtro de socket
+### Métricas de red a través de un filtro de socket {#network-metrics-via-a-socket-filter}
 
 Capacidades necesarias:
 
@@ -196,7 +196,7 @@ sudo setcap cap_bpf,cap_net_raw+ep ./bin/obi
 OBI_NETWORK_METRICS=1 OBI_NETWORK_PRINT_FLOWS=1 bin/obi
 ```
 
-### Métricas de red mediante control de tráfico
+### Métricas de red mediante control de tráfico {#network-metrics-via-traffic-control}
 
 Capacidades necesarias:
 
@@ -211,7 +211,7 @@ sudo setcap cap_bpf,cap_net_admin,cap_perfmon+ep ./bin/obi
 OBI_NETWORK_METRICS=1 OBI_NETWORK_PRINT_FLOWS=1 OBI_NETWORK_SOURCE=tc bin/obi
 ```
 
-### Observabilidad de la aplicación
+### Observabilidad de la aplicación {#application-observability}
 
 Capacidades requeridas:
 
@@ -229,7 +229,7 @@ sudo setcap cap_bpf,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace+e
 OBI_OPEN_PORT=8080 OBI_TRACE_PRINTER=text bin/obi
 ```
 
-### Observabilidad de aplicaciones con propagación del contexto de trazado
+### Observabilidad de aplicaciones con propagación del contexto de trazado {#application-observability-with-trace-context-propagation}
 
 Capacidades requeridas:
 
@@ -248,7 +248,7 @@ sudo setcap cap_bpf,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace,c
 OBI_ENABLE_CONTEXT_PROPAGATION=all OBI_OPEN_PORT=8080 OBI_TRACE_PRINTER=text bin/obi
 ```
 
-## Referencia de requisitos de capacidad del rastreador eBPF interno
+## Referencia de requisitos de capacidad del rastreador eBPF interno {#internal-ebpf-tracer-capability-requirement-reference}
 
 OBI utiliza _rastreadores_, un conjunto de programas eBPF que implementan la 
 funcionalidad subyacente. Un rastreador puede cargar y utilizar diferentes 

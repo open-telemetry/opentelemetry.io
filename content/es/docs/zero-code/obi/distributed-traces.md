@@ -7,7 +7,7 @@ weight: 22
 default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 ---
 
-## Introducción
+## Introducción {#introduction}
 
 OBI admite trazas distribuidas para aplicaciones con algunas limitaciones y 
 restricciones de versión del kernel
@@ -25,7 +25,7 @@ para el trazado en lugar de su propio contexto de trazado generado. Si OBI no pu
 encontrar un valor de contexto `traceparent` entrante, genera uno de acuerdo con la 
 especificación W3C.
 
-## Implementación
+## Implementación {#implementation}
 
 El propagación de contexto de traza es implementado en dos maneras distintas:
 
@@ -50,7 +50,7 @@ ebpf:
   context_propagation: 'all'
 ```
 
-### Propagación de contexto a nivel de red
+### Propagación de contexto a nivel de red {#context-propagation-at-network-level}
 
 La propagación del contexto a nivel de red se implementa escribiendo la 
 información del contexto de trazado en los encabezados HTTP salientes, así como en 
@@ -80,7 +80,7 @@ y no requiere que OBI se ejecute en modo `privileged` ni que tenga concedido
 `CAP_SYS_ADMIN`. Para obtener más detalles, consulte la sección de configuración 
 [Trazas distribuidas y propagación de contexto](../configure/metrics-traces-attributes/).
 
-#### Configuración de Kubernetes 
+#### Configuración de Kubernetes {#kubernetes-configuration}
 
 La manera recomendada de implementar OBI en Kubernetes con soporte de trazas 
 distribuidas a nivel de red es con `DaemonSet`.
@@ -152,8 +152,7 @@ Si `/sys/fs/cgroup` no está montado como una ruta de volumen local para el
 `DaemonSet` de OBI, es posible que algunas solicitudes no propaguen su contexto. 
 Usamos esta ruta de volumen para escuchar los sockets recién creados.
 
-#### Limitaciones de versión Kernel
-
+#### Limitaciones de versión Kernel {#kernel-version-limitations}
 
 El análisis de los encabezados entrantes de propagación de contexto a nivel de 
 red generalmente requiere el kernel 5.17 o posterior para la adición y el uso 
@@ -164,9 +163,7 @@ reincorporada. Al configurar OTEL_EBPF_OVERRIDE_BPF_LOOP_ENABLED se omiten las
 comprobaciones del núcleo en caso de que este incluya la funcionalidad, pero sea 
 inferior a 5.17.
 
-### Propagación de contexto en Go para instrumentación a nivel librería
-
-
+### Propagación de contexto en Go para instrumentación a nivel librería {#go-context-propagation-by-instrumenting-at-library-level}
 
 Este tipo de propagación de contexto solo es compatible con aplicaciones Go y 
 utiliza la compatibilidad con escritura en memoria de usuario eBPF 
@@ -175,13 +172,13 @@ HTTP/HTTP2/HTTPS y gRPC con algunas limitaciones; sin embargo, el uso de
 `bpf_probe_write_user` requiere que se le conceda a OBI `CAP_SYS_ADMIN` o que se 
 configure para ejecutarse como contenedor `privilegiado`.container.
 
-#### Integración con instrumentación manual de Go
+#### Integración con instrumentación manual de Go {#intergation-with-go-manual-instrumentation}
 
 OBI integra automáticamente con un intervalo manual usando el 
 [Auto SDK](/docs/zero-code/go/autosdk). Refiera a los documentos en Auto SDK para 
 conocer más.
 
-#### Limitaciones del modo de integridad del Kernel
+#### Limitaciones del modo de integridad del Kernel {#kernel-integrity-mode-limitations}
 
 Para poder escribir el valor `traceparent` en los encabezados de las solicitudes 
 HTTP/gRPC salientes, OBI necesita escribir en la memoria del proceso utilizando el 
@@ -204,7 +201,7 @@ cat /sys/kernel/security/lockdown
 Si ese archivo existe y el modo es distinto a `[none]`, OBI no puede realizar la 
 propagación del contexto y se desactiva el trazado distribuido.
 
-#### Rastreo distribuido para Go en ambientes en contenedores (incluyendo Kubernetes)
+#### Rastreo distribuido para Go en ambientes en contenedores (incluyendo Kubernetes) {#distributed-tracing-for-go-in-containerized-environments-including-kubernetes}
 
 Debido a la restricciones del modo **lockdown**, los archivos de configuración de Docker y Kubernetes deben montar el volumen `/sys/kernel/security/` para el **container docker OBI** del sistema host. De esta manera OBI puede determinar correctamente el modo **lockdown** del Kernel Linux. Aquí hay un ejemplo de configuración con Docker compose, el cual se asegura que OBI tenga suficiente información para determinar el modo **lockdown**:
 
