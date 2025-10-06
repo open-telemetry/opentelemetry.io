@@ -27,7 +27,7 @@ El contenedor OBI debe configurarse de la siguiente manera:
   los procesos de otros contenedores.
 ## Docker CLI example
 
-## Ejemplo de CLI de Docker
+## Ejemplo de CLI de Docker {#docker-cli-example}
 
 Para este ejemplo, necesita un contenedor que ejecute un servicio HTTP/S 
 o gRPC. Si no tiene uno, puede utilizar este 
