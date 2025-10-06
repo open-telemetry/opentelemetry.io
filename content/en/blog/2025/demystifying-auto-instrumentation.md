@@ -135,7 +135,7 @@ take a look into the instrumentation libraries provided by OpenTelemetry for
 or
 [Python](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation).
 
-### Bytecode Instrumentation: Modifying the Virtual Machine
+### Bytecode instrumentation: Modifying the virtual machine
 
 For languages that run on virtual machines, bytecode instrumentation offers a
 powerful approach. This technique works by modifying the compiled bytecode as
