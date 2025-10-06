@@ -25,8 +25,6 @@ El contenedor OBI debe configurarse de la siguiente manera:
   algunos entornos de contenedores).
 - Utilizar el espacio de nombres PID `host` para permitir el acceso a
   los procesos de otros contenedores.
-
-
 ## Docker CLI example
 
 ## Ejemplo de CLI de Docker
