@@ -61,7 +61,7 @@ OBI requiere lo siguiente para pode ejecutarse:
 - Privilegios administrativos (root access) o las capacidades específicas 
   enumeradas en la [referencia de configuración](security/)
 
-![Arquirectue OBI eBPF](./ebpf-arch.svg)
+![Arquitectura OBI eBPF](./ebpf-arch.svg)
 
 ## Compatibilidad
 

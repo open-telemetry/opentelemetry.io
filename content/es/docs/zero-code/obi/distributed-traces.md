@@ -91,7 +91,7 @@ Se debe utilizar la siguiente configuración de Kubernetes:
   (`hostNetwork: true`).
 - La ruta `/sys/fs/cgroup` del host debe montarse como volumen en la ruta 
   local `/sys/fs/cgroup`.
-- Se debe conceder la caàcodad `CAP_NET_ADMIN` al contenedor OBI.
+- Se debe conceder la capacidad `CAP_NET_ADMIN` al contenedor OBI.
 
 El siguiente recorde de YAML muestra un ejemplo de la configuración para 
 implementar OBI:
