@@ -317,8 +317,8 @@ from the lab.
 If you’d like to see actively used implementations of compile-time
 instrumentation, you can take a look into the
 [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation)
-project (short “OBI”), which is the outcome of
-[the donation of Belay by Grafana](https://github.com/open-telemetry/community/issues/2406).
+project (“OBI”), which is the outcome of
+[the donation of Beyla by Grafana Labs](https://github.com/open-telemetry/community/issues/2406).
 
 ### Language runtime APIs: Native instrumentation support
 
