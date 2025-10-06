@@ -1,7 +1,7 @@
 ---
 title: Métricas exportadas por OBI
 linkTitle: Métricas exportadas
-description: Obtenga información sobre las métricas HTTP/gRPC que OBI puede exportar.
+description: Obtener información sobre las métricas HTTP/gRPC que OBI puede exportar.
 weight: 21
 default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 cSpell:ignore: replicaset statefulset
@@ -38,7 +38,7 @@ En pro de la brevedad, las métricas y los atributos de esta lista utilizan la
 notación OTel «dot.notation». Cuando se utiliza el exportador Prometheus, las 
 métricas utilizan la notación «underscore_notation».
 
-Para configurar qué atributos mostrar u ocultar, consulte la sección 
+Para configurar qué atributos mostrar u ocultar, consulta la sección 
 `attributes`->`select` en la [documentación de configuración](../configure/options/).
 
 

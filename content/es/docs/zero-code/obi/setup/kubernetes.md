@@ -1,7 +1,7 @@
 ---
 title: Implementar OBI en Kubernetes
 linkTitle: Kubernetes
-description: Aprenda a implementar OBI en Kubernetes.
+description: Aprende a implementar OBI en Kubernetes.
 weight: 3
 default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 # prettier-ignore
@@ -13,7 +13,7 @@ cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefu
 Este documento explica cómo implementar OBI manualmente en Kubernetes, 
 configurando todas las entidades necesarias por su cuenta.
 
-<!-- Quizás prefiera seguir la documentación
+<!-- Quizás prefieras seguir la documentación
 [Implementar OBI en Kubernetes con Helm](../kubernetes-helm/) en su lugar. -->
 
 {{% /alert %}}
@@ -37,7 +37,7 @@ OBI puede decorar sus trazas con las siguientes etiquetas de Kubernetes:
 Para habilitar la decoración de metadatos, debe hacer lo siguiente:
 
 - Crear una ServiceAccount y vincular una lista de concesión de ClusterRole 
-  y permisos de observación tanto para Pods como para ReplicaSets. Puede 
+  y permisos de observación tanto para Pods como para ReplicaSets. Puedes 
   hacerlo implementando este archivo de ejemplo:
   
   ```yaml
@@ -72,34 +72,34 @@ Para habilitar la decoración de metadatos, debe hacer lo siguiente:
     name: obi
   ```
 
-  (Debe cambiar el valor «namespace: default» si va a implementar OBI 
+  (Debes cambiar el valor «namespace: default» si va a implementar OBI 
   en otro espacio de nombres).
 
-- Configure OBI con la variable de entorno `OTEL_EBPF_KUBE_METADATA_ENABLE=true` 
+- Configura OBI con la variable de entorno `OTEL_EBPF_KUBE_METADATA_ENABLE=true` 
   o la configuración YAML `attributes.kubernetes.enable: true`.
 
-- No olvide especificar la propiedad `serviceAccountName: obi` en su pod 
+- No olvides especificar la propiedad `serviceAccountName: obi` en su pod 
 - OBI (como se muestra en los ejemplos de implementación posteriores).
 
-Opcionalmente, seleccione qué servicios de Kubernetes desea instrumentar en 
+Opcionalmente, selecciona qué servicios de Kubernetes deseas instrumentar en 
 la sección `discovery -> instrument` del archivo de configuración YAML. Para 
-obtener más información, consulte la sección _Detección de servicios_ en el 
+obtener más información, consulta la sección _Detección de servicios_ en el 
 [documento de configuración](../../configure/options/), así como la sección 
 [Proporcionar un archivo de configuración externo](#proporcionar-un-archivo-de-configuración-externo) 
 de esta página.
 
 ## Implementación de OBI {#deploying-obi}
 
-Puede implementar OBI en Kubernetes de dos maneras diferentes:
+Puedes implementar OBI en Kubernetes de dos maneras diferentes:
 
 - Como contenedor auxiliar
 - Como DaemonSet
 
 ### Implementar OBI como contenedor auxiliar {#deploying-obi-as-a-sidecar-container}
 
-Esta es la forma en que puede implementar OBI si desea supervisar un servicio 
+Esta es la forma en que puedes implementar OBI si deseas supervisar un servicio 
 determinado que puede que no esté implementado en todos los hosts, por lo 
-que solo tiene que implementar una instancia de OBI por cada instancia de 
+que solo tienes que implementar una instancia de OBI por cada instancia de 
 servicio.
 
 La implementación de OBI como contenedor auxiliar tiene los siguientes 
@@ -175,15 +175,15 @@ spec:
 ```
 
 Para obtener más información sobre las diferentes opciones de configuración, 
-consulte la sección [Configuración](../../configure/options/) de este sitio 
+consulta la sección [Configuración](../../configure/options/) de este sitio 
 de documentación.
 
 ### Implementar OBI como un Daemonset {#deploying-obi-as-a-daemonset}
 
-También puede implementar OBI como un Daemonset. Esta es la forma preferida si:
+También puedes implementar OBI como un Daemonset. Esta es la forma preferida si:
 
-- Desea instrumentar un Daemonset
-- Desea instrumentar varios procesos desde una única instancia de OBI, o incluso 
+- Deseas instrumentar un Daemonset
+- Deseas instrumentar varios procesos desde una única instancia de OBI, o incluso 
   todos los procesos de su clúster.
 
 Utilizando el ejemplo anterior (el pod `goblog`), no podemos seleccionar el 
@@ -193,7 +193,7 @@ diferentes puertos abiertos.
 En este caso, tendremos que instrumentar utilizando el nombre ejecutable del 
 servicio de la aplicación (véase el ejemplo posterior).
 
-Además de los requisitos de privilegios del escenario auxiliar (sidecar), deberá 
+Además de los requisitos de privilegios del escenario auxiliar (sidecar), deberás 
 configurar la plantilla de pod de autoinstrumentación con la opción `hostPID: true` 
 habilitada, para que pueda acceder a todos los procesos que se ejecutan en el 
 mismo host.
@@ -448,7 +448,7 @@ stringData:
   headers: 'Authorization=Bearer Z2hwX0l4Y29QOWhr....ScQo='
 ```
 
-A continuación, puede acceder a los valores secretos como variables de entorno. Siguiendo el ejemplo anterior de DaemonSet, esto se lograría añadiendo la siguiente sección `env` al contenedor OBI:
+A continuación, puedes acceder a los valores secretos como variables de entorno. Siguiendo el ejemplo anterior de DaemonSet, esto se lograría añadiendo la siguiente sección `env` al contenedor OBI:
 
 ```yaml
 env:

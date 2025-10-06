@@ -2,16 +2,16 @@
 title: Ejecutar OBI como un contenedor Docker
 linkTitle: Docker
 description:
-  Aprenda a configurar y ejecutar OBI como un contenedor Docker independiente que instrumenta otro contenedor.
+  Aprende a configurar y ejecutar OBI como un contenedor Docker independiente que instrumenta otro contenedor.
 weight: 2
 default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 cSpell:ignore: goblog
 ---
 
-OBI puede ejecutar un contenedor Docker independiente que puede
+OBI puedes ejecutar un contenedor Docker independiente que puede
 instrumentar un proceso que se ejecuta en otro contenedor.
 
-Encuentre la última imagen de OBI en [Docker Hub](https://hub.docker.com/r/otel/ebpf-instrument) 
+Encuentra la última imagen de OBI en [Docker Hub](https://hub.docker.com/r/otel/ebpf-instrument) 
 con el siguiente nombre:
 
 ```text
@@ -27,8 +27,8 @@ El contenedor OBI debe configurarse de la siguiente manera:
   los procesos de otros contenedores.
   
 ## Ejemplo de CLI de Docker {#docker-cli-example}
-Para este ejemplo, necesita un contenedor que ejecute un servicio HTTP/S 
-o gRPC. Si no tiene uno, puede utilizar este 
+Para este ejemplo, se necesita un contenedor que ejecute un servicio HTTP/S 
+o gRPC. Si no tiene uno, puedes utilizar este 
 [sencillo servicio de motor de blog escrito en Go](https://macias.info):
 
 ```sh
@@ -38,7 +38,7 @@ docker run -p 18443:8443 --name goblog mariomac/goblog:dev
 El comando anterior ejecuta una aplicación HTTPS sencilla. El proceso
 abre el puerto interno del contenedor `8443`, que luego se expone en el 
 nivel del host como el puerto `18443`.
-Establezca las variables de entorno para configurar OBI para que imprima 
+Establece las variables de entorno para configurar OBI para que imprima 
 en stdout y escuche un puerto (contenedor) para inspeccionar el 
 ejecutable:
 
@@ -61,9 +61,9 @@ docker run --rm \
   docker.io/otel/ebpf-instrument:main
 ```
 
-Una vez que OBI esté en funcionamiento, abra `https://localhost:18443` en 
-su navegador, utilice la aplicación para generar datos de prueba y 
-compruebe que OBI imprime solicitudes de trazado en stdout similares a:
+Una vez que OBI esté en funcionamiento, abre `https://localhost:18443` en 
+tu navegador, utiliza la aplicación para generar datos de prueba y 
+comprueba que OBI imprime solicitudes de trazado en stdout similares a:
 
 ```sh
 time=2023-05-22T14:03:42.402Z level=INFO msg="creating instrumentation pipeline"
@@ -75,11 +75,11 @@ time=2023-05-22T14:03:42.526Z level=INFO msg="Starting main node"
 2023-05-22 14:13:47.52221347 (115µs[75.625µs]) 200 GET /static/style.css [172.17.0.1]->[localhost:18443] size:0B
 ```
 
-Ahora que OBI está rastreando el servicio HTTP de destino, configúrelo 
-para enviar métricas y trazas a un endpoint de OpenTelemetry, o haga que 
+Ahora que OBI está rastreando el servicio HTTP de destino, configuralo 
+para enviar métricas y trazas a un endpoint de OpenTelemetry, o haz que 
 Prometheus recopile las métricas.
 
-Para obtener información sobre cómo exportar trazas y métricas, consulte 
+Para obtener información sobre cómo exportar trazas y métricas, consulta 
 la documentación de [opciones de configuración](../../configure/options/).
 
 ## Ejemplo de Docker Compose {#docker-compose-example}
@@ -108,7 +108,7 @@ services:
       OTEL_EBPF_OPEN_PORT: 8443
 ```
 
-Ejecute el archivo Docker Compose con el siguiente comando y utilice la aplicación para generar trazas:
+Ejecuta el archivo Docker Compose con el siguiente comando y utiliza la aplicación para generar trazas:
 
 ```sh
 docker compose -f compose-example.yml up

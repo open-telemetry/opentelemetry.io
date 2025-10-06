@@ -222,7 +222,7 @@ Capacidades requeridas:
 - `CAP_NET_RAW`
 - `CAP_SYS_PTRACE`
 
-Configure las capacidades requeridas e inicie OBI:
+Configura las capacidades requeridas e inicie OBI:
 
 ```shell
 sudo setcap cap_bpf,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace+ep ./bin/obi
@@ -241,7 +241,7 @@ Capacidades requeridas:
 - `CAP_SYS_PTRACE`
 - `CAP_NET_ADMIN`
 
-Configure las capacidades requeridas e inicie OBI:
+Configura las capacidades requeridas e inicie OBI:
 
 ```shell
 sudo setcap cap_bpf,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace,cap_net_admin+ep ./bin/obi

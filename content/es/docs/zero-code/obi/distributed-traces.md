@@ -38,7 +38,7 @@ utiliza uno o ambos enfoques de propagación de contexto. Utilizamos estos
 múltiples enfoques para implementar la propagación de contexto, ya que escribir 
 en la memoria con eBPF depende de la configuración del kernel y de las capacidades 
 del sistema Linux concedidas a OBI. Para obtener más detalles sobre este tema, 
-consulte nuestra charla en KubeCon NA 2024 [So You Want to Write Memory with eBPF?](https://www.youtube.com/watch?v=TUiVX-44S9s).
+consulta nuestra charla en KubeCon NA 2024 [So You Want to Write Memory with eBPF?](https://www.youtube.com/watch?v=TUiVX-44S9s).
 
 El propagación de contexto a **nivel de red** está **deshabilitado** por 
 defecto y puede ser habilitado configurando la variable de ambiente 
@@ -61,7 +61,7 @@ información de trazado cuando envían y reciben desde servicios instrumentados 
 los SDK de OpenTelemetry. Utilizamos [Linux Traffic Control (TC)](<https://en.wikipedia.org/wiki/Tc_(Linux)>)
 para realizar el ajuste de los paquetes de red, lo que requiere que otros programas 
 eBPF que utilizan Linux Traffic Control se encadenen correctamente con OBI. Para 
-consideraciones especiales relacionadas con Cilium CNI, consulte nuestra guía de 
+consideraciones especiales relacionadas con Cilium CNI, consulta nuestra guía de 
 [Compatibilidad con Cilium](../cilium-compatibility/).
 
 En el caso del tráfico cifrado con TLS (HTTPS), OBI no puede inyectar la 
@@ -77,7 +77,7 @@ Por el momento, gRPC y HTTP/2 no son compatibles.
 
 Este tipo de propagación de contexto funciona para cualquier lenguaje de programación 
 y no requiere que OBI se ejecute en modo `privileged` ni que tenga concedido 
-`CAP_SYS_ADMIN`. Para obtener más detalles, consulte la sección de configuración 
+`CAP_SYS_ADMIN`. Para obtener más detalles, consulta la sección de configuración 
 [Trazas distribuidas y propagación de contexto](../configure/metrics-traces-attributes/).
 
 #### Configuración de Kubernetes {#kubernetes-configuration}
@@ -93,7 +93,7 @@ Se debe utilizar la siguiente configuración de Kubernetes:
   local `/sys/fs/cgroup`.
 - Se debe conceder la capacidad `CAP_NET_ADMIN` al contenedor OBI.
 
-El siguiente recorde de YAML muestra un ejemplo de la configuración para 
+El siguiente recorte de YAML muestra un ejemplo de la configuración para 
 implementar OBI:
 
 ```yaml
@@ -172,10 +172,10 @@ HTTP/HTTP2/HTTPS y gRPC con algunas limitaciones; sin embargo, el uso de
 `bpf_probe_write_user` requiere que se le conceda a OBI `CAP_SYS_ADMIN` o que se 
 configure para ejecutarse como contenedor `privilegiado`.container.
 
-#### Integración con instrumentación manual de Go {#intergation-with-go-manual-instrumentation}
+#### Integración con instrumentación manual de Go {#integration-with-go-manual-instrumentation}
 
 OBI integra automáticamente con un intervalo manual usando el 
-[Auto SDK](/docs/zero-code/go/autosdk). Refiera a los documentos en Auto SDK para 
+[Auto SDK](/docs/zero-code/go/autosdk). Refiere a los documentos en Auto SDK para 
 conocer más.
 
 #### Limitaciones del modo de integridad del Kernel {#kernel-integrity-mode-limitations}

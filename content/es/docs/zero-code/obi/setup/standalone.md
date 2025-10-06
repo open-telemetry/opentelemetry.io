@@ -1,7 +1,7 @@
 ---
 title: Ejecutar OBI como un proceso independiente
 linkTitle: Independiente
-description: Aprenda a configurar y ejecutar OBI como un proceso 
+description: Aprende a configurar y ejecutar OBI como un proceso 
   independiente en Linux.
 weight: 4
 default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
@@ -13,14 +13,14 @@ otros procesos en ejecución.
 
 ## Descargar e instalar {#download-and-install}
 
-Puede descargar el ejecutable de OBI desde la [página de versiones de OBI](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases).
+Puedes descargar el ejecutable de OBI desde la [página de versiones de OBI](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases).
 
 ## Configurar OBI {#set-up-obi}
 
-1. Cree un archivo de configuración siguiendo la documentación de 
+1. Crea un archivo de configuración siguiendo la documentación de 
    [opciones de configuración](../../configure/options/).
 
-2. Ejecute OBI como un proceso con privilegios:
+2. Ejecuta OBI como un proceso con privilegios:
 
 ```bash
 sudo ./obi --config=<path to config file>
@@ -67,7 +67,7 @@ log_level: info
 
 ## Ejecutar OBI {#run-obi}
 
-Ejecute OBI con el archivo de configuración:
+Ejecuta OBI con el archivo de configuración:
 
 ```bash
 sudo ./obi --config=obi-config.yml
@@ -75,15 +75,15 @@ sudo ./obi --config=obi-config.yml
 
 ## Opciones de configuración {#configuration-options}
 
-Para obtener una lista completa de las opciones de configuración, consulte la [documentación de configuración](../../configure/options/).
+Para obtener una lista completa de las opciones de configuración, consulta la [documentación de configuración](../../configure/options/).
 
 ## Permisos {#permissions}
 
-OBI requiere privilegios elevados para funcionar correctamente. Para obtener más información sobre las capacidades específicas necesarias, consulte la [documentación de seguridad](../../security/).
+OBI requiere privilegios elevados para funcionar correctamente. Para obtener más información sobre las capacidades específicas necesarias, consulta la [documentación de seguridad](../../security/).
 
 ## Ejemplo: Instrumentación de Docker {#example-docker-instrumentation}
 
-Para instrumentar un contenedor Docker, puede ejecutar OBI en el host:
+Para instrumentar un contenedor Docker, puedes ejecutar OBI en el host:
 ```bash
 sudo ./obi --config=obi-config.yml
 ```
