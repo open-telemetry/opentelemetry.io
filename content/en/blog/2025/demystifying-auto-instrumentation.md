@@ -60,8 +60,9 @@ application.
 
 ## Want to try the techniques yourself?
 
-This blog post contains small code snippets to illustrate the concepts. You can try out full
-working examples in the [lab repository](https://github.com/causely-oss/automatic-instrumentation-lab).
+This blog post contains small code snippets to illustrate the concepts. You can
+try out full working examples in the
+[lab repository](https://github.com/causely-oss/automatic-instrumentation-lab).
 
 Before we explore these techniques, it’s important to note that you should not
 build your own automatic instrumentation from scratch, especially not using this
@@ -366,9 +367,8 @@ To try this out yourself, take a look at the
 [PHP Observer API example](https://github.com/causely-oss/automatic-instrumentation-lab#php-observer-api-php)
 from the lab.
 
-If you’d like to see actively used implementations of API instrumentation,
-you can take a look into the instrumentation libraries provided by OpenTelemetry
-for
+If you’d like to see actively used implementations of API instrumentation, you
+can take a look into the instrumentation libraries provided by OpenTelemetry for
 [PHP](https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation).
 
 ## A note on context propagation
