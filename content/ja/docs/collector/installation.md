@@ -241,7 +241,7 @@ tar -xvf otelcol_{{% param vers %}}_darwin_arm64.tar.gz
 ## Windows {#windows}
 
 Windows向けの [リリース][releases] はMSIインストーラーと gzip された tarball (`.tar.gz`) として利用できます。
-MSIはコレクターをディストリビューション名のWindowsサービスとしてインストールし、表示名を「OpenTelemetry Collector」とし、ディストリビューション名でアプリケーションイベントログソースを登録します。
+MSIはディストリビューション名をつけたWindowsサービスとしてコレクターをインストールし、表示名を「OpenTelemetry Collector」として、ディストリビューション名でアプリケーションイベントログのソースを登録します。
 
 ### MSIインストール {#msi-installation}
 
