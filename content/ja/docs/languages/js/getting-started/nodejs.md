@@ -158,8 +158,8 @@ npm install @opentelemetry/sdk-node \
 計装セットアップコードを含む`instrumentation.ts`（TypeScriptを使用しない場合は`instrumentation.mjs`）という名前のファイルを作成します。
 
 {{% alert title="注意" %}}
-以下の`--import instrumentation.ts`（TypeScript）を使用した例は、Node.js v20以降が必要です。
-Node.js v18を使用している場合は、JavaScriptの例を使用してください。
+以下の`--import instrumentation.ts`（TypeScript）を使用した例は、Node.js v.20以降が必要です。
+Node.js v.18を使用している場合は、JavaScriptの例を使用してください。
 {{% /alert %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
