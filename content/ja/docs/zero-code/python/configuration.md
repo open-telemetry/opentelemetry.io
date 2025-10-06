@@ -4,7 +4,7 @@ linkTitle: Configuration
 weight: 10
 default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 # prettier-ignore
-cSpell:ignore: gevent healthcheck instrumentor monkeypatch myapp pyproject Starlette urllib
+cSpell:ignore: gevent healthcheck instrumentor myapp pyproject Starlette urllib
 ---
 
 エージェントは次のいずれかの方法で高度に設定可能です。
