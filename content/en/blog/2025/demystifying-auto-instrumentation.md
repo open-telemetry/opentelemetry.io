@@ -371,7 +371,7 @@ you can take a look into the instrumentation libraries provided by OpenTelemetry
 for
 [PHP](https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation).
 
-## A Note on Context Propagation
+## A note on context propagation
 
 While we've covered the core techniques of automatic instrumentation, there's an
 important aspect we haven't discussed:
