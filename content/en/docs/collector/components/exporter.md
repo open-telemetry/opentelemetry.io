@@ -6,6 +6,24 @@ weight: 330
 
 Exporters send telemetry data to observability backends and destinations.
 
+## Core Distribution
+
+Components from the [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector) core distribution.
+
+The **Traces**, **Metrics**, and **Logs** columns show the stability level for each signal type.
+
+| Name | Traces | Metrics | Logs |
+|------|--------|---------|------|
+| [debugexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/debugexporter) | alpha | alpha | alpha |
+| [nopexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/nopexporter) | beta | beta | beta |
+| [otlpexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter) | stable | stable | stable |
+| [otlphttpexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter) | stable | stable | stable |
+| [xexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/xexporter) | - | - | - |
+
+## Contrib Distribution
+
+Components from the [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib) distribution.
+
 The **Traces**, **Metrics**, and **Logs** columns show the stability level for each signal type.
 
 | Name | Traces | Metrics | Logs |

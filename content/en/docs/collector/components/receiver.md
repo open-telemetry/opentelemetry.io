@@ -6,6 +6,22 @@ weight: 310
 
 Receivers collect telemetry data from various sources and formats.
 
+## Core Distribution
+
+Components from the [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector) core distribution.
+
+The **Traces**, **Metrics**, and **Logs** columns show the stability level for each signal type.
+
+| Name | Traces | Metrics | Logs |
+|------|--------|---------|------|
+| [nopreceiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/nopreceiver) | beta | beta | beta |
+| [otlpreceiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver) | stable | stable | stable |
+| [xreceiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/xreceiver) | - | - | - |
+
+## Contrib Distribution
+
+Components from the [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib) distribution.
+
 The **Traces**, **Metrics**, and **Logs** columns show the stability level for each signal type.
 
 | Name | Traces | Metrics | Logs |

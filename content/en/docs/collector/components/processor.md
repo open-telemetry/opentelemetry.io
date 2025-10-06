@@ -6,6 +6,22 @@ weight: 320
 
 Processors transform, filter, and enrich telemetry data as it flows through the pipeline.
 
+## Core Distribution
+
+Components from the [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector) core distribution.
+
+The **Traces**, **Metrics**, and **Logs** columns show the stability level for each signal type.
+
+| Name | Traces | Metrics | Logs |
+|------|--------|---------|------|
+| [batchprocessor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor) | beta | beta | beta |
+| [memorylimiterprocessor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor) | beta | beta | beta |
+| [xprocessor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/xprocessor) | - | - | - |
+
+## Contrib Distribution
+
+Components from the [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib) distribution.
+
 The **Traces**, **Metrics**, and **Logs** columns show the stability level for each signal type.
 
 | Name | Traces | Metrics | Logs |
