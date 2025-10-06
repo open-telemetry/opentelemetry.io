@@ -112,7 +112,7 @@ OpenTelemetryでプリフォークサーバーを使用するためのいくつ�
 
 ##### GunicornとUvicornWorkerでデプロイ {#deploy-with-gunicorn-and-uvicornworker}
 
-複数のワーカーでサーバーを自動計装するには、ASGI（非同期サーバーゲートウェイインターフェース）アプリ（FastAPI、Starletteなど）の場合、`uvicorn.workers.UvicornWorker` を使用してGunicornでデプロイすることを推奨します。
+複数のワーカーを持つサーバーを自動計装するには、非同期サーバーゲートウェイインターフェース（ASGI）アプリ（FastAPI、Starletteなど）の場合、`uvicorn.workers.UvicornWorker` を使ったGunicornによるデプロイが推奨されます。
 UvicornWorkerクラスは、バックグラウンドプロセスとスレッドの保持でフォークを処理するように特別に設計されています。
 例を挙げましょう。
 
