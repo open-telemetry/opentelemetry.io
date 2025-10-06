@@ -1,7 +1,7 @@
 ---
 title: 'Demystifying Automatic Instrumentation: How the Magic Actually Works'
 linkTitle: Demystifying Auto-Instrumentation
-date: 2025-09-29
+date: 2025-10-08
 author: >-
   [Severin Neumann](https://github.com/svrnm) (Causely)
 canonical_url: https://www.causely.ai/blog/demystifying-automatic-instrumentation
