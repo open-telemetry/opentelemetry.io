@@ -248,7 +248,7 @@ be integrated into existing build processes.
 That said, it does come with trade-offs. It requires access to the source code
 and build system, which makes it impractical for instrumenting third-party
 applications or libraries. It also demands more sophisticated tooling to
-manipulate the abstract syntax tree (AST) correctly and consistently adding
+manipulate the abstract syntax tree (AST) correctly and consistently, adding
 complexity to the build pipeline and potentially requiring changes to your CI/CD
 workflows.
 
