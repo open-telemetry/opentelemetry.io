@@ -122,7 +122,7 @@ Prometheus.
 | `obi_ebpf_tracer_flushes`            | Histograma | Longitud de los grupos de trazas enviadas desde el rastreador eBPF a la siguiente etapa del proceso.     |
 | `obi_metric_exports_total`           | Counter    | Longitud de los batches métricos enviados al recolector OTel remoto                      |
 | `obi_metric_export_errors_total`     | CounterVec | Recuento de errores en cada exportación fallida de métricas OTel, por tipo de error |
-| `obi_trace_exports_total`            | Counter    | Longitud de los lotes de rastreo enviados al recolector OTel remoto                      |
+| `obi_trace_exports_total`            | Counter    | Longitud de los lotes de trazado enviados al recolector OTel remoto                      |
 | `obi_trace_export_errors_total`      | CounterVec | Recuento de errores en cada exportación fallida de trazas OTel, por tipo de error   |
 | `obi_prometheus_http_requests_total` | CounterVec | Número de solicitudes al endpoint de Prometheus Scrape, filtradas por puerto HTTP y ruta |
 | `obi_instrumented_processes`         | GaugeVec   | Procesos instrumentados por OBI, con nombre del proceso                                 |

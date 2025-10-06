@@ -65,7 +65,7 @@ docker run --rm \
 
 Una vez que OBI esté en funcionamiento, abra `https://localhost:18443` en 
 su navegador, utilice la aplicación para generar datos de prueba y 
-compruebe que OBI imprime solicitudes de rastreo en stdout similares a:
+compruebe que OBI imprime solicitudes de trazado en stdout similares a:
 
 ```sh
 time=2023-05-22T14:03:42.402Z level=INFO msg="creating instrumentation pipeline"

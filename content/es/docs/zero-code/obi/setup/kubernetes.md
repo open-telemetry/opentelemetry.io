@@ -324,7 +324,7 @@ spec:
               - DAC_READ_SEARCH     # <-- Importante. Permite a OBI abrir archivos ELF.
               - PERFMON             # <-- Importante. Permite a OBI cargar programas BPF.
               #- SYS_RESOURCE       # <-- solo anterior a 5.11. Permite a OBI aumentar la cantidad de memoria bloqueada.
-              #- SYS_ADMIN          # <-- Necesario para la propagación del contexto de rastreo de la aplicación Go, o si kernel.perf_event_paranoid >= 3 en distribuciones Debian.
+              #- SYS_ADMIN          # <-- Necesario para la propagación del contexto de trazado de la aplicación Go, o si kernel.perf_event_paranoid >= 3 en distribuciones Debian.
             drop:
               - ALL
         volumeMounts:

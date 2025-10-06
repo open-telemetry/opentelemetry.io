@@ -18,10 +18,10 @@ propagación del contexto «traceparent» es automática y no requiere ninguna a
 ni configuración.
 
 OBI lee los valores de encabezado del contexto de trazas entrantes, rastrea el flujo 
-de ejecución del programa y propaga el contexto de rastreo añadiendo automáticamente 
+de ejecución del programa y propaga el contexto de trazado añadiendo automáticamente 
 el campo `traceparent` en las solicitudes HTTP/gRPC salientes. Si una aplicación ya ha 
 añadido el campo `traceparent` en las solicitudes salientes, OBI utiliza ese valor 
-para el rastreo en lugar de su propio contexto de rastreo generado. Si OBI no puede 
+para el trazado en lugar de su propio contexto de trazado generado. Si OBI no puede 
 encontrar un valor de contexto `traceparent` entrante, genera uno de acuerdo con la 
 especificación W3C.
 
@@ -53,11 +53,11 @@ ebpf:
 ### Propagación de contexto a nivel de red
 
 La propagación del contexto a nivel de red se implementa escribiendo la 
-información del contexto de rastreo en los encabezados HTTP salientes, así como en 
+información del contexto de trazado en los encabezados HTTP salientes, así como en 
 el nivel de paquetes TCP/IP. La propagación del contexto HTTP es totalmente 
-compatible con cualquier otra biblioteca de rastreo basada en OpenTelemetry. Esto 
+compatible con cualquier otra biblioteca de trazado basada en OpenTelemetry. Esto 
 significa que los servicios instrumentados con OBI propagan correctamente la 
-información de rastreo cuando envían y reciben desde servicios instrumentados con 
+información de trazado cuando envían y reciben desde servicios instrumentados con 
 los SDK de OpenTelemetry. Utilizamos [Linux Traffic Control (TC)](<https://en.wikipedia.org/wiki/Tc_(Linux)>)
 para realizar el ajuste de los paquetes de red, lo que requiere que otros programas 
 eBPF que utilizan Linux Traffic Control se encadenen correctamente con OBI. Para 
@@ -65,12 +65,12 @@ consideraciones especiales relacionadas con Cilium CNI, consulte nuestra guía d
 [Compatibilidad con Cilium](../cilium-compatibility/).
 
 En el caso del tráfico cifrado con TLS (HTTPS), OBI no puede inyectar la 
-información de rastreo en los encabezados HTTP salientes, sino que la inyecta a 
+información de trazado en los encabezados HTTP salientes, sino que la inyecta a 
 nivel de paquetes TCP/IP. Debido a esta limitación, OBI solo puede enviar la 
-información de rastreo a otros servicios instrumentados con OBI. Los proxies L7 y los 
+información de trazado a otros servicios instrumentados con OBI. Los proxies L7 y los 
 equilibradores de carga interrumpen la propagación del contexto TCP/IP, ya que los 
 paquetes originales se descartan y se reproducen aguas abajo. El análisis de la 
-información de contexto de rastreo entrante de los servicios instrumentados con 
+información de contexto de trazado entrante de los servicios instrumentados con 
 OpenTelemetry SDK sigue funcionando.
 
 Por el momento, gRPC y HTTP/2 no son compatibles.
@@ -202,7 +202,7 @@ cat /sys/kernel/security/lockdown
 ```
 
 Si ese archivo existe y el modo es distinto a `[none]`, OBI no puede realizar la 
-propagación del contexto y se desactiva el rastreo distribuido.
+propagación del contexto y se desactiva el trazado distribuido.
 
 #### Rastreo distribuido para Go en ambientes en contenedores (incluyendo Kubernetes)
 

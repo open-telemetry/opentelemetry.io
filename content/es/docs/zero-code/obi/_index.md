@@ -15,15 +15,15 @@ cSpell:ignore: CAP_PERFMON
 
 Las bibliotecas OpenTelemetry proporcionan una recopilación de telemetría para 
 lenguajes de programación y frameworks populares. Sin embargo, empezar a 
-utilizar el rastreo distribuido puede resultar complejo. En algunos lenguajes 
-compilados, como Go o Rust, es necesario añadir manualmente puntos de rastreo 
+utilizar el trazado distribuido puede resultar complejo. En algunos lenguajes 
+compilados, como Go o Rust, es necesario añadir manualmente puntos de trazado 
 (tracepoints) al código.
 
 OpenTelemetry eBPF Instrumentation (OBI) es una herramienta de 
 autoinstrumentación que facilita el inicio en la observabilidad de aplicaciones. 
 OBI utiliza eBPF para inspeccionar automáticamente los ejecutables de las 
 aplicaciones y la capa de red del sistema operativo, y capturar los intervalos 
-de rastreo relacionados con las transacciones web y las métricas de duración de 
+de trazado relacionados con las transacciones web y las métricas de duración de 
 los errores de tasa (RED) para los servicios HTTP/S y gRPC de Linux. Toda la 
 captura de datos se realiza sin modificar el código o la configuración de la 
 aplicación.
@@ -36,13 +36,13 @@ OBI ofrece las siguientes características:
   ni reiniciar.
 - **Instrumentación eficiente**: las sondas (probes) eBPF capturan trazas y 
   métricas con una sobrecarga mínima.
-- **Rastreo distribuído**: os intervalos de rastreo distribuidos se capturan y se 
+- **Rastreo distribuído**: os intervalos de trazado distribuidos se capturan y se 
   envían a un collector.
 - **Kubernetes-nativo**: proporciona instrumentación automática sin necesidad de
   volver a configurar para aplicaciones Kubernetes.
 - **Visibilidad de las comunicaciones cifradas**: captura transacciones a través 
   de  TLS/SSL sin descifrado.
-- **Propagación de contexto**: propaga el contexto de rastreo entre servicios 
+- **Propagación de contexto**: propaga el contexto de trazado entre servicios 
   automáticamente.
 - **Compatibilidad con protocolos**: HTTP/S, gRPC y gRPC-Web.
 - ***Métricas de baja cardinalidad**: métricas compatibles con Prometheus con baja  
@@ -88,7 +88,7 @@ OBI fue probado con las siguientes distribuciones Linux:
 ## Limitaciones
 
 OBI también tiene sus limitaciones. Solo proporciona métricas genéricas e 
-información de rastreo a nivel de transacción. Se sigue recomendando el uso de los 
+información de trazado a nivel de transacción. Se sigue recomendando el uso de los 
 agentes de lenguaje e instrumentación manual, para poder especificar los atributos y 
 eventos personalizados que se deseen capturar. 
 

@@ -73,13 +73,13 @@ OBI requiere la siguiente lista de capacidades para su funcionamiento:
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `CAP_BPF`                | Habilita la funcionalidad BPF general y los programas de filtro de socket (`BPF_PROG_TYPE_SOCK_FILTER`), utilizados para capturar flujos de red en el modo de observabilidad de red.                                                      |
 | `CAP_NET_RAW`            | Se utiliza para crear sockets sin procesar `AF_PACKET`, que es el mecanismo utilizado para adjuntar programas de filtrado de sockets que se utilizan para capturar flujos de red en el modo de observabilidad de red.                                                            |
-| `CAP_NET_ADMIN`          | Se requiere cargar programas TC `BPF_PROG_TYPE_SCHED_CLS`: estos programas se utilizan para capturar flujos de red y para la propagación del contexto de rastreo, tanto para la observabilidad de la red como de las aplicaciones.                                 |
-| `CAP_PERFMON`            | Se utiliza para la propagación del contexto de rastreo, la _observabilidad general de las aplicaciones_ y la supervisión del flujo de red. Permite el acceso directo a los paquetes por parte de los programas TC, la carga de sondas (probes) eBPF en el núcleo y la aritmética de punteros utilizada por estos programas. |
+| `CAP_NET_ADMIN`          | Se requiere cargar programas TC `BPF_PROG_TYPE_SCHED_CLS`: estos programas se utilizan para capturar flujos de red y para la propagación del contexto de trazado, tanto para la observabilidad de la red como de las aplicaciones.                                 |
+| `CAP_PERFMON`            | Se utiliza para la propagación del contexto de trazado, la _observabilidad general de las aplicaciones_ y la supervisión del flujo de red. Permite el acceso directo a los paquetes por parte de los programas TC, la carga de sondas (probes) eBPF en el núcleo y la aritmética de punteros utilizada por estos programas. |
 | `CAP_DAC_READ_SEARCH`    | Acceso a `/proc/self/mem` para determinar la versión del kernel, utilizada por OBI para determinar el conjunto adecuado de funciones compatibles que se deben habilitar.                                                                                             |
 | `CAP_CHECKPOINT_RESTORE` | Acceso a los symlink en el sistema de archivos `/proc`, utilizado por OBI para obtener diversa información sobre los procesos y el sistema.                                                                                                                       |
 | `CAP_SYS_PTRACE`         | Acceso a `/proc/pid/exe` y módulos ejecutables, utilizados por OBI para escanear símbolos ejecutables e instrumentar diferentes partes de un programa.                                                                                             |
 | `CAP_SYS_RESOURCE`       | Aumentar la cantidad de memoria bloqueada disponible, **kernels < 5.11** solamente                                                                                                                                   |
-| `CAP_SYS_ADMIN`          | Propagación del contexto de rastreo Go a nivel de biblioteca mediante `bpf_probe_write_user()` y acceso a los datos BTF por parte del exportador de métricas BPF.                     |
+| `CAP_SYS_ADMIN`          | Propagación del contexto de trazado Go a nivel de biblioteca mediante `bpf_probe_write_user()` y acceso a los datos BTF por parte del exportador de métricas BPF.                     |
 
 ### Tareas de supervisión del rendimiento
 
@@ -229,7 +229,7 @@ sudo setcap cap_bpf,cap_dac_read_search,cap_perfmon,cap_net_raw,cap_sys_ptrace+e
 OBI_OPEN_PORT=8080 OBI_TRACE_PRINTER=text bin/obi
 ```
 
-### Observabilidad de aplicaciones con propagación del contexto de rastreo
+### Observabilidad de aplicaciones con propagación del contexto de trazado
 
 Capacidades requeridas:
 
@@ -295,7 +295,7 @@ colaboradores y personas interesadas en el funcionamiento interno de OBI:
 - `CAP_PERFMON`
 - `CAP_NET_ADMIN`: permite cargar `BPF_PROG_TYPE_SCHED_CLS`,
   `BPF_PROG_TYPE_SOCK_OPS` y `BPF_PROG_TYPE_SK_MSG`, todos ellos utilizados por la 
-  propagación del contexto de rastreo y la supervisión de la red
+  propagación del contexto de trazado y la supervisión de la red
 
 **(Observabilidad de la aplicación) Rastreador GO:**
 
