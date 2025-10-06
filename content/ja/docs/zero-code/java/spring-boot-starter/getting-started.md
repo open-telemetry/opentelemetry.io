@@ -50,7 +50,7 @@ Gradleは依存関係の[最新バージョン](https://docs.gradle.org/current/
 
 GradleとSpring Bootでは、BOMをインポートする方法が2つあります。
 
-Gradleのネイティブなサポートを使用して`dependencies`を追加できます。
+GradleのネイティブなBOMサポートを使用して`dependencies`を追加できます。
 
 ```kotlin
 import org.springframework.boot.gradle.plugin.SpringBootPlugin
