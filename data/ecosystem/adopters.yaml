@@ -221,7 +221,8 @@
   url: https://www.zalando.com/
   components: [Collector]
   reference: https://www.youtube.com/watch?v=VAgT7CY572U
-  contact: Conference Talk
+  referenceTitle: conference talk
+  contact: ''
 - name: Zocdoc
   url: https://www.zocdoc.com/
   components: []
