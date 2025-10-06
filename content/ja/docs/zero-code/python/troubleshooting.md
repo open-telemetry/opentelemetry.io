@@ -92,7 +92,7 @@ gunicorn myapp.main:app --workers 4
 ```
 
 ただし、複数の `--workers` を指定すると、自動計装を適用した場合にメトリクスの生成が壊れる可能性があります。
-これは、ワーカー/子プロセスの作成であるフォークが、OpenTelemetry SDKの主要コンポーネントが想定するバックグラウンドスレッドとロック間で、各子プロセス間で不整合を生成するためです。
+これは、ワーカー/子プロセスの作成であるフォークが、バックグラウンドスレッドとOpenTelemetry SDKの主要なコンポーネントが想定しているロックとの間に、各子プロセス間で不整合を生じさせるためです。
 特に、`PeriodicExportingMetricReader` は、データをエクスポーターに定期的にフラッシュするための独自のスレッドを生成します。
 イシュー[#2767](https://github.com/open-telemetry/opentelemetry-python/issues/2767) および [#3307](https://github.com/open-telemetry/opentelemetry-python/issues/3307#issuecomment-1579101152) も参照してください。
 フォーク後、各子プロセスは実際には実行されていないメモリ内のスレッドオブジェクトを探し、元のロックは各子プロセスでアンロックされない可能性があります。
