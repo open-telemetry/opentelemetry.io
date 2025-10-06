@@ -14371,6 +14371,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-02T15:46:40.61Z"
   },
+  "https://github.com/zalando": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-06T13:34:21.709236+02:00"
+  },
+  "https://github.com/zalando/otelcol-lightstep-receiver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-06T13:34:21.086215+02:00"
+  },
   "https://github.com/zeitlinger": {
     "StatusCode": 206,
     "LastSeen": "2025-02-02T10:40:46.826519-05:00"
@@ -17742,6 +17750,10 @@
   "https://pkg.go.dev/github.com/segmentio/kafka-go": {
     "StatusCode": 200,
     "LastSeen": "2025-01-29T17:30:03.308377379Z"
+  },
+  "https://pkg.go.dev/github.com/zalando/otelcol-lightstep-receiver": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-06T13:34:24.854806+02:00"
   },
   "https://pkg.go.dev/go.opentelemetry.io/auto/sdk": {
     "StatusCode": 200,
