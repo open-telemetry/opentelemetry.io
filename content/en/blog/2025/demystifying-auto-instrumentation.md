@@ -75,7 +75,7 @@ this field, the best approach is to
 where you can learn from experienced maintainers and work with production-ready
 code.
 
-## Automatic Instrumentation Techniques
+## Automatic instrumentation techniques
 
 Now let’s explore how these techniques work under the hood.
 
