@@ -11,15 +11,15 @@ OpenTelemetry para o ecossistema Java. Em alto nível, consiste na API, no SDK e
 na instrumentação.
 
 Esta página apresenta o ecossistema, com uma [visão geral](#overview)
-conceitual, um guia para [navegar na documentação](#navigating-the-docs), uma
+conceitual, um guia para [navegar pela documentação](#navigating-the-docs), uma
 lista de [repositórios](#repositories) com detalhes importantes sobre
 lançamentos e artefatos.
 
 ## Visão geral {#overview}
 
-A API é um conjunto de classes e _interfaces_ para registrar telemetria através
-de sinais-chave de observabilidade. Ela suporta múltiplas implementações,
-incluindo uma implementação minimalista _Noop_ (ou seja, pronunciado "no-op") e
+A API é um conjunto de classes e interfaces para registrar telemetria em
+sinais-chave de observabilidade. Ela suporta múltiplas implementações,
+incluindo uma implementação minimalista _Noop_ de baixo _overhead_ (pronunciada "no-op", de "no operation", significando "sem operação") e
 uma implementação de referência de SDK fornecida de forma nativa. Ela foi
 projetada para ser utilizada como dependência direta por bibliotecas,
 _frameworks_ e responsáveis por aplicações que desejam adicionar instrumentação.
@@ -33,13 +33,13 @@ passo essencial para integrar o OpenTelemetry a uma aplicação. O SDK possui
 opções de configuração automática e programática.
 
 A instrumentação registra telemetria através da API. Existem várias categorias
-de instrumentação, incluindo: agente Java sem código, inicializador do Spring
-Boot sem código, biblioteca, nativa, manual e _shims_.
+de instrumentação, incluindo: agente Java sem código, inicializador do _Spring
+Boot_ sem código, biblioteca, nativa, manual e _shims_.
 
 Para uma visão geral independente de linguagem, consulte
 [conceitos do OpenTelemetry](/docs/concepts/).
 
-## Navegando na documentação {#navigating-the-docs}
+## Navegando pela documentação {#navigating-the-docs}
 
 A documentação do OpenTelemetry Java está organizada da seguinte forma:
 
@@ -74,7 +74,7 @@ A documentação do OpenTelemetry Java está organizada da seguinte forma:
 
 O código-fonte do OpenTelemetry Java está organizado em vários repositórios:
 
-| Repositório | Descrição | Group ID | Versão atual | Cadência de lançamento
+| Repositório | Descrição | ID do Grupo | Versão atual | Cadência de lançamento
 |\n|
 
 ---
@@ -84,7 +84,7 @@ O código-fonte do OpenTelemetry Java está organizado em vários repositórios:
 ## | ---------------------------------- | ------------------------------------ |
 
 | | [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java) |
-Componentes principais da API e SDK | `io.opentelemetry` |
+Componentes principais da API e do SDK | `io.opentelemetry` |
 `{{% param vers.otel %}}` |
 [Sexta-feira após a primeira segunda-feira do mês](https://github.com/open-telemetry/opentelemetry-java/blob/main/RELEASING.md#release-cadence)
 | |
@@ -116,14 +116,14 @@ API, SDK e instrumentação | n/a | n/a | n/a |
 `opentelemetry-java`, `opentelemetry-java-instrumentation` e
 `opentelemetry-java-contrib` publicam grandes catálogos de artefatos. Consulte
 os repositórios para mais detalhes ou veja a coluna "Dependências gerenciadas"
-na tabela de [Dependências e BOMs](#dependencies-and-boms) para conferir a lista
-completa.
+na tabela de [Declaração de Materiais](#dependencies-and-boms) para conferir a lista
+completa de dependências gerenciadas.
 
 Como regra geral, artefatos publicados a partir do mesmo repositório possuem a
 mesma versão. A exceção é o `opentelemetry-java-contrib`, que pode ser entendido
 como um conjunto de projetos independentes que compartilham o mesmo repositório
-para aproveitar ferramentas compartilhadas. Atualmente, os artefatos do
-`opentelemetry-java-contrib` estão alinhados, mas isso é uma coincidência e pode
+para aproveitar ferramentas compartilhadas. Por enquanto, os artefatos do
+`opentelemetry-java-contrib` estão alinhados, mas isso é uma coincidência e vai
 mudar no futuro.
 
 Os repositórios têm uma cadência de lançamento que reflete sua estrutura de
@@ -138,32 +138,32 @@ dependência em alto nível:
   `opentelemetry-java-instrumentation`, é um artefato independente e possui seu
   próprio cronograma de lançamento.
 
-## Dependências e BOMs {#dependencies-and-boms}
+## Dependências e declaração de materiais (BOMs) {#dependencies-and-boms}
 
-Um
-[_bill of materials_](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Bill_of_Materials_.28BOM.29_POMs),
-ou BOM de forma abreviada, é um artefato que ajuda a manter alinhadas as versões
-de dependências relacionadas. O OpenTelemetry Java publica vários BOMs para
+Uma
+[declaração de materiais](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Bill_of_Materials_.28BOM.29_POMs),
+ou BOM (_bill of materials_) de forma abreviada, é um artefato que ajuda a manter alinhadas as versões
+de dependências relacionadas. O OpenTelemetry Java publica várias BOMs para
 diferentes casos de uso, listados abaixo em ordem crescente de escopo.
-Recomendamos fortemente o uso de um BOM.
+Recomendamos fortemente o uso de uma BOM.
 
-{{% alert %}} Como os BOMs são hierárquicos, adicionar dependências em múltiplos
+{{% alert %}} Como as BOMs são hierárquicas, adicionar dependências em múltiplas
 BOMs não é recomendado, pois é redundante e pode levar a resoluções de versão de
 dependência não intuitivas. {{% /alert %}}
 
 Clique no link na coluna "Dependências gerenciadas" para ver uma lista dos
-artefatos gerenciados pelo BOM.
+artefatos gerenciados pela BOM.
 
-| Descrição                                                                                         | Repositório                          | Group ID                           | Artifact ID                               | Versão atual                               | Dependências gerenciadas                                  |
+| Descrição                                                                                         | Repositório                          | ID do grupo                           | ID do artefato                               | Versão atual                               | Dependências gerenciadas                                  |
 | ------------------------------------------------------------------------------------------------- | ------------------------------------ | ---------------------------------- | ----------------------------------------- | ------------------------------------------ | --------------------------------------------------------- |
-| Artefatos estáveis de API e SDK                                                                   | `opentelemetry-java`                 | `io.opentelemetry`                 | `opentelemetry-bom`                       | `{{% param vers.otel %}}`                  | [latest pom.xml][opentelemetry-bom]                       |
-| Artefatos experimentais de API e SDK, incluindo todos de `opentelemetry-bom`                      | `opentelemetry-java`                 | `io.opentelemetry`                 | `opentelemetry-bom-alpha`                 | `{{% param vers.otel %}}-alpha`            | [latest pom.xml][opentelemetry-bom-alpha]                 |
-| Artefatos estáveis de instrumentação, incluindo todos de `opentelemetry-bom`                      | `opentelemetry-java-instrumentation` | `io.opentelemetry.instrumentation` | `opentelemetry-instrumentation-bom`       | `{{% param vers.instrumentation %}}`       | [latest pom.xml][opentelemetry-instrumentation-bom]       |
-| Artefatos experimentais de instrumentação, incluindo todos de `opentelemetry-instrumentation-bom` | `opentelemetry-java-instrumentation` | `io.opentelemetry.instrumentation` | `opentelemetry-instrumentation-bom-alpha` | `{{% param vers.instrumentation %}}-alpha` | [latest pom.xml][opentelemetry-instrumentation-alpha-bom] |
+| Artefatos principais estáveis de API e SDK                                                                   | `opentelemetry-java`                 | `io.opentelemetry`                 | `opentelemetry-bom`                       | `{{% param vers.otel %}}`                  | [pom.xml mais recente][opentelemetry-bom]                       |
+| Artefatos principais experimentais de API e SDK, incluindo todos de `opentelemetry-bom`                      | `opentelemetry-java`                 | `io.opentelemetry`                 | `opentelemetry-bom-alpha`                 | `{{% param vers.otel %}}-alpha`            | [pom.xml mais recente][opentelemetry-bom-alpha]                 |
+| Artefatos estáveis de instrumentação, incluindo todos de `opentelemetry-bom`                      | `opentelemetry-java-instrumentation` | `io.opentelemetry.instrumentation` | `opentelemetry-instrumentation-bom`       | `{{% param vers.instrumentation %}}`       | [pom.xml mais recente][opentelemetry-instrumentation-bom]       |
+| Artefatos experimentais de instrumentação, incluindo todos de `opentelemetry-instrumentation-bom` | `opentelemetry-java-instrumentation` | `io.opentelemetry.instrumentation` | `opentelemetry-instrumentation-bom-alpha` | `{{% param vers.instrumentation %}}-alpha` | [pom.xml mais recente][opentelemetry-instrumentation-alpha-bom] |
 
 O trecho de código a seguir demonstra como adicionar uma dependência de BOM, com
 `{{bomGroupId}}`, `{{bomArtifactId}}` e `{{bomVersion}}` referindo-se,
-respectivamente, às colunas "Group ID", "Artifact ID" e "Versão atual" da
+respectivamente, às colunas "ID do grupo", "ID do artefato" e "Versão atual" da
 tabela.
 
 {{< tabpane text=true >}} {{% tab "Gradle" %}}
@@ -171,7 +171,7 @@ tabela.
 ```kotlin
 dependencies {
   implementation(platform("{{bomGroupId}}:{{bomArtifactId}}:{{bomVersion}}"))
-  // Add a dependency on an artifact whose version is managed by the bom
+  // Adiciona uma dependência em um artefato cuja versão é gerenciada pela BOM
   implementation("io.opentelemetry:opentelemetry-api")
 }
 ```
@@ -191,7 +191,7 @@ dependencies {
       </dependency>
     </dependencies>
   </dependencyManagement>
-  <!-- Add a dependency on an artifact whose version is managed by the bom -->
+  <!-- Adiciona uma dependência em um artefato cuja versão é gerenciada pela BOM -->
   <dependencies>
     <dependency>
       <groupId>io.opentelemetry</groupId>
