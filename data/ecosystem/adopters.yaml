@@ -1,9 +1,4 @@
 # cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip Kelkoo loveholidays HDFC
-- name: AppDirect
-  url: https://www.appdirect.com/
-  components: [Collector]
-  reference: ''
-  contact: ''
 - name: Alibaba
   url: https://www.alibaba.com/
   reference: /blog/2025/otip-alibaba/
@@ -222,6 +217,11 @@
   components: [Collector]
   reference: ''
   contact: ''
+- name: Zalando
+  url: https://www.zalando.com/
+  components: [Collector]
+  reference: https://www.youtube.com/watch?v=VAgT7CY572U
+  contact: Conference Talk
 - name: Zocdoc
   url: https://www.zocdoc.com/
   components: []
