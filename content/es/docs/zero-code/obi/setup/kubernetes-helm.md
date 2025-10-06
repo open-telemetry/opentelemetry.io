@@ -21,7 +21,6 @@ Contenido:
 
 <!-- TOC -->
 
-
 - [Implementación de OBI desde Helm](#implementación-de-obi-desde-helm)
 - [Configuración de OBI](#configuración-de-obi)
 - [Configuración de los metadatos de OBI](#configuración-de-los-metadatos-de-obi)
