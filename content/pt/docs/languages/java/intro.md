@@ -18,13 +18,13 @@ lançamentos e artefatos.
 ## Visão geral {#overview}
 
 A API é um conjunto de classes e interfaces para registrar telemetria em
-sinais-chave de observabilidade. Ela suporta múltiplas implementações,
-incluindo uma implementação minimalista _Noop_ de baixo _overhead_ (pronunciada "no-op", de "no operation", significando "sem operação") e
-uma implementação de referência de SDK fornecida de forma nativa. Ela foi
-projetada para ser utilizada como dependência direta por bibliotecas,
-_frameworks_ e responsáveis por aplicações que desejam adicionar instrumentação.
-Possui fortes garantias de compatibilidade retroativa, nenhuma dependência
-transitiva e suporte ao Java 8+.
+sinais-chave de observabilidade. Ela suporta múltiplas implementações, incluindo
+uma implementação minimalista _Noop_ de baixo _overhead_ (pronunciada "no-op",
+de "no operation", significando "sem operação") e uma implementação de
+referência de SDK fornecida de forma nativa. Ela foi projetada para ser
+utilizada como dependência direta por bibliotecas, _frameworks_ e responsáveis
+por aplicações que desejam adicionar instrumentação. Possui fortes garantias de
+compatibilidade retroativa, nenhuma dependência transitiva e suporte ao Java 8+.
 
 O SDK é a implementação de referência integrada da API, responsável por
 processar e exportar a telemetria produzida pelas chamadas da API de
@@ -116,8 +116,8 @@ API, SDK e instrumentação | n/a | n/a | n/a |
 `opentelemetry-java`, `opentelemetry-java-instrumentation` e
 `opentelemetry-java-contrib` publicam grandes catálogos de artefatos. Consulte
 os repositórios para mais detalhes ou veja a coluna "Dependências gerenciadas"
-na tabela de [Declaração de Materiais](#dependencies-and-boms) para conferir a lista
-completa de dependências gerenciadas.
+na tabela de [Declaração de Materiais](#dependencies-and-boms) para conferir a
+lista completa de dependências gerenciadas.
 
 Como regra geral, artefatos publicados a partir do mesmo repositório possuem a
 mesma versão. A exceção é o `opentelemetry-java-contrib`, que pode ser entendido
@@ -142,10 +142,10 @@ dependência em alto nível:
 
 Uma
 [declaração de materiais](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Bill_of_Materials_.28BOM.29_POMs),
-ou BOM (_bill of materials_) de forma abreviada, é um artefato que ajuda a manter alinhadas as versões
-de dependências relacionadas. O OpenTelemetry Java publica várias BOMs para
-diferentes casos de uso, listados abaixo em ordem crescente de escopo.
-Recomendamos fortemente o uso de uma BOM.
+ou BOM (_bill of materials_) de forma abreviada, é um artefato que ajuda a
+manter alinhadas as versões de dependências relacionadas. O OpenTelemetry Java
+publica várias BOMs para diferentes casos de uso, listados abaixo em ordem
+crescente de escopo. Recomendamos fortemente o uso de uma BOM.
 
 {{% alert %}} Como as BOMs são hierárquicas, adicionar dependências em múltiplas
 BOMs não é recomendado, pois é redundante e pode levar a resoluções de versão de
@@ -154,10 +154,10 @@ dependência não intuitivas. {{% /alert %}}
 Clique no link na coluna "Dependências gerenciadas" para ver uma lista dos
 artefatos gerenciados pela BOM.
 
-| Descrição                                                                                         | Repositório                          | ID do grupo                           | ID do artefato                               | Versão atual                               | Dependências gerenciadas                                  |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------ | ---------------------------------- | ----------------------------------------- | ------------------------------------------ | --------------------------------------------------------- |
-| Artefatos principais estáveis de API e SDK                                                                   | `opentelemetry-java`                 | `io.opentelemetry`                 | `opentelemetry-bom`                       | `{{% param vers.otel %}}`                  | [pom.xml mais recente][opentelemetry-bom]                       |
-| Artefatos principais experimentais de API e SDK, incluindo todos de `opentelemetry-bom`                      | `opentelemetry-java`                 | `io.opentelemetry`                 | `opentelemetry-bom-alpha`                 | `{{% param vers.otel %}}-alpha`            | [pom.xml mais recente][opentelemetry-bom-alpha]                 |
+| Descrição                                                                                         | Repositório                          | ID do grupo                        | ID do artefato                            | Versão atual                               | Dependências gerenciadas                                        |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------ | ---------------------------------- | ----------------------------------------- | ------------------------------------------ | --------------------------------------------------------------- |
+| Artefatos principais estáveis de API e SDK                                                        | `opentelemetry-java`                 | `io.opentelemetry`                 | `opentelemetry-bom`                       | `{{% param vers.otel %}}`                  | [pom.xml mais recente][opentelemetry-bom]                       |
+| Artefatos principais experimentais de API e SDK, incluindo todos de `opentelemetry-bom`           | `opentelemetry-java`                 | `io.opentelemetry`                 | `opentelemetry-bom-alpha`                 | `{{% param vers.otel %}}-alpha`            | [pom.xml mais recente][opentelemetry-bom-alpha]                 |
 | Artefatos estáveis de instrumentação, incluindo todos de `opentelemetry-bom`                      | `opentelemetry-java-instrumentation` | `io.opentelemetry.instrumentation` | `opentelemetry-instrumentation-bom`       | `{{% param vers.instrumentation %}}`       | [pom.xml mais recente][opentelemetry-instrumentation-bom]       |
 | Artefatos experimentais de instrumentação, incluindo todos de `opentelemetry-instrumentation-bom` | `opentelemetry-java-instrumentation` | `io.opentelemetry.instrumentation` | `opentelemetry-instrumentation-bom-alpha` | `{{% param vers.instrumentation %}}-alpha` | [pom.xml mais recente][opentelemetry-instrumentation-alpha-bom] |
 
