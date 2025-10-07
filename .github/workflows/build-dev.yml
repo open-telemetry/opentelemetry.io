@@ -1,4 +1,5 @@
 name: Dev build
+# cSpell:ignore minisearch
 
 on:
   workflow_dispatch:

@@ -33,6 +33,12 @@ function is4XXForFragments(StatusCode, lastSeenDate) {
   );
 }
 
+// Ensure LastSeen format matches what htmltest uses.
+function normalizeLastSeenDate(lastSeenDate) {
+  // Drop trailing zero in milliseconds, if present: e.g., `.340Z` -> `.34Z`
+  return lastSeenDate.replace(/(\.\d\d)0Z$/, '$1Z');
+}
+
 async function readRefcache() {
   try {
     const data = await fs.readFile(CACHE_FILE, 'utf8');
@@ -44,6 +50,9 @@ async function readRefcache() {
 }
 
 async function writeRefcache(cache) {
+  Object.values(cache).forEach((entry) => {
+    entry.LastSeen = normalizeLastSeenDate(entry.LastSeen);
+  });
   await fs.writeFile(CACHE_FILE, JSON.stringify(cache, null, 2) + '\n', 'utf8');
   console.log(`Wrote updated ${CACHE_FILE}.`);
 }

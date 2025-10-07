@@ -61,9 +61,9 @@ We'll need a few other dependencies that Phoenix doesn't come with.
 def deps do
   [
     # other default deps...
+    {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"},
     {:opentelemetry, "~> {{% param versions.otelSdk %}}"},
     {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
-    {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"},
     {:opentelemetry_phoenix, "~> {{% param versions.otelPhoenix %}}"},
     {:opentelemetry_cowboy, "~> {{% param versions.otelCowboy %}}"},
     {:opentelemetry_ecto, "~> {{% param versions.otelEcto %}}"} # if using ecto

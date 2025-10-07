@@ -3,7 +3,7 @@ title: 自動計装の注入
 linkTitle: 自動計装
 weight: 11
 description: OpenTelemetryオペレーターを使用した自動計装の実装。
-default_lang_commit: a1ae4e3a4e759db02c32bc86fc53321ebf611f92
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 # prettier-ignore
 cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA
 ---
@@ -24,7 +24,8 @@ Helmチャートを使用する場合は、自己証明書を生成するオプ�
 
 ## OpenTelemetryコレクターの作成（オプション） {#create-an-opentelemetry-collector-optional}
 
-コレクターによって、シークレット管理が簡素化され、データエクスポートの問題（リトライが必要な場合など）がアプリから分離され、[k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)などを使用してテレメトリーにデータを追加できます。
+コンテナからテレメトリーをバックエンドに直接送信するのではなく、[OpenTelemetryコレクター](/docs/platforms/kubernetes/collector/)に送信するのがベストプラクティスです
+コレクターによって、シークレット管理が簡素化され、データエクスポートの問題（リトライが必要な場合など）がアプリから分離され、[k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)コンポーネントなどを使用してテレメトリーにデータを追加できます。
 コレクターを使用しない場合、次のセクションに進んでください。
 
 オペレーターは、オペレーターが管理するコレクターのインスタンスを作成するために使用される[OpenTelemetryコレクターのカスタムリソース定義 (CRD)](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md)です。

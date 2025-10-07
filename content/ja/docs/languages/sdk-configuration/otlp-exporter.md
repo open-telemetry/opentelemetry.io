@@ -1,8 +1,9 @@
 ---
 title: OTLPエクスポーター設定
 linkTitle: OTLPエクスポーター
+weight: 20
 aliases: [otlp-exporter-configuration]
-default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 ---
 
 ## エンドポイントの設定 {#endpoint-configuration}
