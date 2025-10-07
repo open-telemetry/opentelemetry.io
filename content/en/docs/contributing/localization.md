@@ -300,14 +300,14 @@ involved in starting a new localization.
 
 {{% alert title="Note" %}}
 
-You don't have to be an existing contributor to the OpenTelemetry project, to
-start a new localization. However, you will not be added as a member of the
+You don't have to be an existing contributor to the OpenTelemetry project to
+start a new localization. However, you cannot be added as a member of the
 [OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as a
-member of the approvers group for your localization. You will need to satisfy
+member of the approvers group for your localization until you satisfy
 the requirements for becoming an established member and approver as outlined in
 the [membership guidelines][].
 
-During the startup of the localization project, maintainers will treat your
+Before you earn approver status, you can indicate your approval of a localization PR by adding a "looks good to me" or "LGTM" comment. During this startup phase, maintainers will treat your
 reviews as if you are an approver already.
 
 [membership guidelines]:
