@@ -121,7 +121,9 @@ async function retry400sAndUpdateCache() {
       maxNumEntriesToUpdate !== null &&
       updatedCount >= maxNumEntriesToUpdate
     ) {
-      console.log(`Updated ${updatedCount} entries. Reach our max of ${maxNumEntriesToUpdate}, exiting.`);
+      console.log(
+        `Updated ${updatedCount} entries. Reach our max of ${maxNumEntriesToUpdate}, exiting.`,
+      );
       exitingBeforeEnd = true;
       break;
     }
