@@ -68,7 +68,7 @@ spec:
         timeout: 10s
 
     exporters:
-      # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
+      # NOTA: Antes de v0.86.0 utiliza `logging` en lugar de `debug`.
       debug: {}
 
     service:
