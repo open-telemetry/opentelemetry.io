@@ -75,7 +75,7 @@ time=2023-05-22T14:03:42.526Z level=INFO msg="Starting main node"
 2023-05-22 14:13:47.52221347 (115µs[75.625µs]) 200 GET /static/style.css [172.17.0.1]->[localhost:18443] size:0B
 ```
 
-Ahora que OBI está rastreando el servicio HTTP de destino, configuralo 
+Ahora que OBI está rastreando el servicio HTTP de destino, puedes configurarlo 
 para enviar métricas y trazas a un endpoint de OpenTelemetry, o haz que 
 Prometheus recopile las métricas.
 
