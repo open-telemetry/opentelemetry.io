@@ -1,6 +1,6 @@
 ---
 title: Operador de OpenTelemetry para Kubernetes
-linkTitle: Operator de Kubernetes
+linkTitle: Operador de Kubernetes
 description:
   Una implementación de un operador de Kubernetes, que gestiona colectores y la
   auto-instrumentación de la carga de trabajo usando librerías de
