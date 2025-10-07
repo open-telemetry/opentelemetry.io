@@ -20,10 +20,10 @@ documento[Opciones del gráfico Helm de OBI](https://github.com/open-telemetry/o
 
 Contenido:
 
-- [Implementación de OBI desde Helm {#deploying-obi-from-helm}](#implementación-de-obi-desde-helm-deploying-obi-from-helm)
-- [Configuración de OBI {#configuring-obi}](#configuración-de-obi-configuring-obi)
-- [Configuración de los metadatos de OBI {#configuring-obi-metadata}](#configuración-de-los-metadatos-de-obi-configuring-obi-metadata)
-- [Proporcionar secretos a la configuración de Helm {#providing-secrets-to-helm-configuration}](#proporcionar-secretos-a-la-configuración-de-helm-providing-secrets-to-helm-configuration)
+- [Implementación de OBI desde Helm {#deploying-obi-from-helm}](#deploying-obi-from-helm)
+- [Configuración de OBI {#configuring-obi}](#configuring-obi)
+- [Configuración de los metadatos de OBI {#configuring-obi-metadata}](#configuring-obi-metadata)
+- [Proporcionar secretos a la configuración de Helm {#providing-secrets-to-helm-configuration}](#providing-secrets-to-helm-configuration)
 
 ## Implementación de OBI desde Helm {#deploying-obi-from-helm}
 
