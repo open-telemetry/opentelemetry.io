@@ -1,14 +1,17 @@
 #!/usr/bin/env node
 
 import fs from 'fs/promises';
+import { parseArgs } from 'node:util';
 import { getUrlStatus, isHttp2XX } from './get-url-status.mjs';
 import { exit } from 'process';
 
 const CACHE_FILE = 'static/refcache.json';
 const GOOGLE_DOCS_URL = 'https://docs.google.com/';
-let checkForFragments = false;
-let maxNumEntriesToUpdate = 3;
 const cratesIoURL = 'https://crates.io/crates/';
+const DEFAULT_MAX_NUM_TO_UPDATE = null; // no max
+
+let checkForFragments = false;
+let maxNumEntriesToUpdate = DEFAULT_MAX_NUM_TO_UPDATE;
 
 // Magic numbers that we use to determine if a URL with a fragment has been
 // checked with this script. Since we can't add new fields to the cache, we
@@ -66,6 +69,7 @@ async function retry400sAndUpdateCache() {
   let urlWithFragmentCount = 0;
   let urlWithInvalidFragCount = 0;
   let statusCounts = {};
+  let exitingBeforeEnd = false;
 
   for (const [url, details] of Object.entries(cache)) {
     entriesCount++;
@@ -113,8 +117,12 @@ async function retry400sAndUpdateCache() {
       */
     }
 
-    if (maxNumEntriesToUpdate && updatedCount >= maxNumEntriesToUpdate) {
-      console.log(`Updated max of ${maxNumEntriesToUpdate} entries, exiting.`);
+    if (
+      maxNumEntriesToUpdate !== null &&
+      updatedCount >= maxNumEntriesToUpdate
+    ) {
+      console.log(`Updated ${updatedCount} entries. Reach our max of ${maxNumEntriesToUpdate}, exiting.`);
+      exitingBeforeEnd = true;
       break;
     }
 
@@ -150,9 +158,9 @@ async function retry400sAndUpdateCache() {
     updatedCount++;
   }
 
-  if (updatedCount) {
+  if (updatedCount > 0) {
     await writeRefcache(cache);
-  } else {
+  } else if (!exitingBeforeEnd) {
     console.log(`No updates needed.`);
   }
 
@@ -179,29 +187,103 @@ function countStatuses(StatusCode, parsedUrl, lastSeenDate, statusCounts) {
   statusCounts[sc] = (statusCounts[sc] || 0) + 1;
 }
 
-function getNumericFlagValue(flagName) {
-  const flagArg = process.argv.find((arg) => arg.startsWith(flagName));
-  if (!flagArg) return;
+// ============================================================================
+// CLI Argument Parsing
+// ============================================================================
 
-  const valueArg = flagArg.includes('=')
-    ? flagArg.split('=')[1]
-    : process.argv[process.argv.indexOf(flagName) + 1];
-  let value = parseInt(valueArg);
+function usage(exitCode = 0) {
+  console.log(`
+Usage: double-check-refcache-400s.mjs [OPTIONS]
 
-  if (value < 0) {
-    console.error(
-      `ERROR: invalid value for ${flagName}: ${valueArg}. ` +
-        `Must be a number > 0. Using default ${maxNumEntriesToUpdate}.`,
-    );
-    exit(1);
-  }
-  return value;
+Check and update refcache.json for URLs with 4XX status codes.
+
+Options:
+  --help, -h                 Show this help message and exit
+  --max-updates=<N>, -m <N>  Maximum number of entries to update (default: no maximum).
+                             Use 0 to have file scanned and checked for updates.
+  --check-fragments, -f      Also check URLs with fragments for validity
+
+Examples:
+  ./double-check-refcache-400s.mjs
+  ./double-check-refcache-400s.mjs --max-updates=10
+  ./double-check-refcache-400s.mjs -m 5 -f
+  ./double-check-refcache-400s.mjs --check-fragments
+`);
+  exit(exitCode);
 }
 
-const _maxNumEntriesToUpdateFlag = getNumericFlagValue('--max-num-to-update');
-if (_maxNumEntriesToUpdateFlag >= 0)
-  maxNumEntriesToUpdate = _maxNumEntriesToUpdateFlag;
-checkForFragments =
-  process.argv.includes('--check-for-fragments') || process.argv.includes('-f');
+function parseCliArgs() {
+  const options = {
+    help: {
+      type: 'boolean',
+      short: 'h',
+      default: false,
+    },
+    'max-updates': {
+      type: 'string', // Note: parseArgs only supports 'string' and 'boolean' types
+      short: 'm',
+    },
+    'check-fragments': {
+      type: 'boolean',
+      short: 'f',
+      default: false,
+    },
+  };
 
-await retry400sAndUpdateCache();
+  let args;
+  try {
+    args = parseArgs({ options, strict: true });
+  } catch (error) {
+    console.error(`ERROR: ${error.message}\n`);
+    usage(1);
+  }
+
+  if (args.values.help) {
+    usage();
+  }
+
+  // Parse and validate max-num-to-update.
+  let maxNumValue = DEFAULT_MAX_NUM_TO_UPDATE;
+  if (args.values['max-updates'] !== undefined) {
+    maxNumValue = parseInt(args.values['max-updates']);
+    if (isNaN(maxNumValue) || maxNumValue < 0) {
+      console.error(
+        `ERROR: invalid value for --max-updates: ${args.values['max-updates']}. ` +
+          `Must be a non-negative number.`,
+      );
+      usage(1);
+    }
+  }
+
+  return {
+    maxNumEntriesToUpdate: maxNumValue,
+    checkForFragments: args.values['check-fragments'],
+  };
+}
+
+// ============================================================================
+// Main Function
+// ============================================================================
+
+async function main() {
+  const config = parseCliArgs();
+
+  // Set global configuration variables
+  maxNumEntriesToUpdate = config.maxNumEntriesToUpdate;
+  checkForFragments = config.checkForFragments;
+
+  await retry400sAndUpdateCache();
+}
+
+// ============================================================================
+// Main Execution
+// ============================================================================
+
+try {
+  await main();
+} catch (error) {
+  console.error('ERROR:', error.message);
+  exit(1);
+}
+
+exit(0);
