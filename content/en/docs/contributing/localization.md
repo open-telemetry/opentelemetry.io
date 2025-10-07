@@ -403,8 +403,8 @@ content][ali-dowair-2024].
 With terminology established, you can now localize the remaining site pages.
 
 When submitting PRs, keep them small: preferably limited to one file or a few
-small files. Smaller PRs are easier to review and so typically get
-merged more quickly.
+small files. Smaller PRs are easier to review and so typically get merged more
+quickly.
 
 ### OTel maintainer checklist
 
