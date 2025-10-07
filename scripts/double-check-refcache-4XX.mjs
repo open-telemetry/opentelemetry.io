@@ -195,7 +195,7 @@ function countStatuses(StatusCode, parsedUrl, lastSeenDate, statusCounts) {
 
 function usage(exitCode = 0) {
   console.log(`
-Usage: double-check-refcache-400s.mjs [OPTIONS]
+Usage: double-check-refcache-4XX.mjs [OPTIONS]
 
 Check and update refcache.json for URLs with 4XX status codes.
 
@@ -203,13 +203,8 @@ Options:
   --help, -h                 Show this help message and exit
   --max-updates=<N>, -m <N>  Maximum number of entries to update (default: no maximum).
                              Use 0 to have file scanned and checked for updates.
-  --check-fragments, -f      Also check URLs with fragments for validity
-
-Examples:
-  ./double-check-refcache-400s.mjs
-  ./double-check-refcache-400s.mjs --max-updates=10
-  ./double-check-refcache-400s.mjs -m 5 -f
-  ./double-check-refcache-400s.mjs --check-fragments
+  --check-fragments, -f      Also check URLs with fragments for validity,
+                             which htmltest doesn't do.
 `);
   exit(exitCode);
 }

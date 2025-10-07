@@ -125,13 +125,16 @@ have the link checker ignore it: `?no-link-check`. For example,
 {{% alert title="Maintainers tip" %}}
 
 Maintainers can run the following script immediately after having run the link
-checker to have Puppeteer attempt to validate links with non-success statuses
+checker to have Puppeteer attempt to validate links with non-ok statuses:
 
 ```sh
-./scripts/double-check-refcache-400s.mjs -f --max-num-to-update 99
+./scripts/double-check-refcache-4XX.mjs
 ```
 
-This script also validates URL fragments, which the link checker doesn't do.
+Use the `-f` flag to also validate URL fragments (anchors) in external links,
+which `htmltest` doesn't do. We don't currently run this often, so you will
+probably want to limit the number of updated entries using the `-m N` flag. For
+usage info, run with `-h`.
 
 {{% /alert %}}
 
