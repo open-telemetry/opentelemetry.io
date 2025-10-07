@@ -3,9 +3,8 @@ title:
   Exploring OpenTelemetry Priorities for Mainframes - Insights from Survey
   Responses
 linkTitle: OpenTelemetry on Mainframes Survey Insights
-date: 2025-09-25
+date: 2025-10-09
 author: '[Ruediger Schulze](https://github.com/rrschulze) (IBM)'
-draft: true # TODO: remove this line once your post is ready to be published
 canonical_url: https://openmainframeproject.org/blog/exploring-opentelemetry-priorities-for-mainframes-insights-from-survey-responses/
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/7870
 sig: SIG OpenTelemetry on Mainframes
