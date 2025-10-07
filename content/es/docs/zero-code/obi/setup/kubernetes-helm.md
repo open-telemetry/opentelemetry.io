@@ -1,7 +1,7 @@
 ---
 title: Implementar OBI en Kubernetes con Helm
 linkTitle: Helm chart
-description:  Aprende a implementar OBI como un gráfico Helm en Kubernetes.
+description: Aprende a implementar OBI como un gráfico Helm en Kubernetes.
 weight: 3
 default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
 build:
@@ -12,28 +12,29 @@ toc_hide: true
 
 {{% alert title="Nota" %}}
 
-Para obtener más detalles sobre las diversas opciones de configuración 
-de Helm, consulta el documento[Opciones del gráfico Helm de OBI](https://github.com/open-telemetry/opentelemetry-helm-charts/).
+Para obtener más detalles sobre las diversas opciones de configuración de Helm,
+consulta el
+documento[Opciones del gráfico Helm de OBI](https://github.com/open-telemetry/opentelemetry-helm-charts/).
 
 {{% /alert %}}
 
 Contenido:
+
 - [Implementación de OBI desde Helm {#deploying-obi-from-helm}](#implementación-de-obi-desde-helm-deploying-obi-from-helm)
 - [Configuración de OBI {#configuring-obi}](#configuración-de-obi-configuring-obi)
 - [Configuración de los metadatos de OBI {#configuring-obi-metadata}](#configuración-de-los-metadatos-de-obi-configuring-obi-metadata)
 - [Proporcionar secretos a la configuración de Helm {#providing-secrets-to-helm-configuration}](#proporcionar-secretos-a-la-configuración-de-helm-providing-secrets-to-helm-configuration)
 
-##  Implementación de OBI desde Helm {#deploying-obi-from-helm}
+## Implementación de OBI desde Helm {#deploying-obi-from-helm}
 
-En primer lugar, debes agregar el repositorio de OpenTelemetry Helm a 
-Helm:
+En primer lugar, debes agregar el repositorio de OpenTelemetry Helm a Helm:
 
 ```sh
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 ```
 
-El siguiente comando implementa un DaemonSet de OBI con una 
-configuración predeterminada en el namespace `obi`:
+El siguiente comando implementa un DaemonSet de OBI con una configuración
+predeterminada en el namespace `obi`:
 
 ```sh
 helm install obi -n obi --create-namespace open-telemetry/opentelemetry-ebpf-instrumentation
@@ -41,28 +42,25 @@ helm install obi -n obi --create-namespace open-telemetry/opentelemetry-ebpf-ins
 
 La configuración predeterminada de OBI:
 
-- exporta las métricas como métricas de Prometheus en el puerto HTTP 
-  del pod `9090`, ruta `/metrics`.
+- exporta las métricas como métricas de Prometheus en el puerto HTTP del pod
+  `9090`, ruta `/metrics`.
 - intenta instrumentar todas las aplicaciones de su clúster.
 - solo proporciona métricas a nivel de aplicación y excluye
-  [las métricas a nivel de red](../../network/) de forma 
-  predeterminada.
-- configura OBI para decorar las métricas con etiquetas de metadatos 
-  de Kubernetes, por ejemplo `k8s.namespace.name` o `k8s.pod.name`
-
+  [las métricas a nivel de red](../../network/) de forma predeterminada.
+- configura OBI para decorar las métricas con etiquetas de metadatos de
+  Kubernetes, por ejemplo `k8s.namespace.name` o `k8s.pod.name`
 
 ## Configuración de OBI {#configuring-obi}
 
-Es posible que desees anular la configuración predeterminada de OBI. 
-Por ejemplo, para exportar las métricas y/o los intervalos como 
-OpenTelemetry en lugar de Prometheus, o para restringir el número de 
-servicios que se van a instrumentar.
+Es posible que desees anular la configuración predeterminada de OBI. Por
+ejemplo, para exportar las métricas y/o los intervalos como OpenTelemetry en
+lugar de Prometheus, o para restringir el número de servicios que se van a
+instrumentar.
 
-Puedes anular las opciones de configuración predeterminadas de OBI con 
-sus propios valores.
+Puedes anular las opciones de configuración predeterminadas de OBI con sus
+propios valores.
 
-Por ejemplo, cree un archivo `helm-obi.yml` con una configuración 
-personalizada:
+Por ejemplo, cree un archivo `helm-obi.yml` con una configuración personalizada:
 
 ```yaml
 config:
@@ -76,12 +74,12 @@ config:
       unmatched: heuristic
 ```
 
-La sección `config.data` contiene un archivo de configuración OBI, 
-documentado en la [documentación de opciones de configuración OBI](../../configure/options/).
+La sección `config.data` contiene un archivo de configuración OBI, documentado
+en la
+[documentación de opciones de configuración OBI](../../configure/options/).
 
-A continuación, pasa la configuración sobrescrita al comando `helm` 
-con el indicador `-f`.
-Por ejemplo:
+A continuación, pasa la configuración sobrescrita al comando `helm` con el
+indicador `-f`. Por ejemplo:
 
 ```sh
 helm install obi open-telemetry/opentelemetry-ebpf-instrumentation -f helm-obi.yml
@@ -95,10 +93,10 @@ helm upgrade obi open-telemetry/opentelemetry-ebpf-instrumentation -f helm-obi.y
 
 ## Configuración de los metadatos de OBI {#configuring-obi-metadata}
 
-Si OBI exporta los datos utilizando el exportador Prometheus, es 
-posible que tengas que anular las anotaciones del pod OBI para que 
-su rastreador Prometheus pueda detectarlo. Puedes añadir la siguiente 
-sección al archivo de ejemplo `helm-obi.yml`:
+Si OBI exporta los datos utilizando el exportador Prometheus, es posible que
+tengas que anular las anotaciones del pod OBI para que su rastreador Prometheus
+pueda detectarlo. Puedes añadir la siguiente sección al archivo de ejemplo
+`helm-obi.yml`:
 
 ```yaml
 podAnnotations:
@@ -107,22 +105,21 @@ podAnnotations:
   prometheus.io/port: '9090'
 ```
 
-Análogamente, el gráfico Helm permite anular nombres, etiquetas y 
-anotaciones para múltiples recursos involucrados en la implementación 
-de OBI, tales como cuentas de servicio, roles de clúster, contextos de 
-seguridad, etc. La [documentación del gráfico Helm de OBI](https://github.com/open-telemetry/opentelemetry-helm-charts/) 
+Análogamente, el gráfico Helm permite anular nombres, etiquetas y anotaciones
+para múltiples recursos involucrados en la implementación de OBI, tales como
+cuentas de servicio, roles de clúster, contextos de seguridad, etc. La
+[documentación del gráfico Helm de OBI](https://github.com/open-telemetry/opentelemetry-helm-charts/)
 describe las diversas opciones de configuración.
 
 ## Proporcionar secretos a la configuración de Helm {#providing-secrets-to-helm-configuration}
 
-Si envías directamente las métricas y los rastros a su backend de 
-observabilidad a través del punto final de OpenTelemetry, es posible que 
-debas proporcionar credenciales a través de la variable de entorno 
-`OTEL_EXPORTER_OTLP_HEADERS`.
+Si envías directamente las métricas y los rastros a su backend de observabilidad
+a través del punto final de OpenTelemetry, es posible que debas proporcionar
+credenciales a través de la variable de entorno `OTEL_EXPORTER_OTLP_HEADERS`.
 
-Lo recomendable es almacenar dicho valor en un Kubernetes Secret y, a 
-continuación, especificar la variable de entorno que hace referencia a 
-él desde la configuración de Helm.
+Lo recomendable es almacenar dicho valor en un Kubernetes Secret y, a
+continuación, especificar la variable de entorno que hace referencia a él desde
+la configuración de Helm.
 
 Por ejemplo, implementa el siguiente secreto:
 
@@ -136,8 +133,8 @@ stringData:
   otlp-headers: 'Authorization=Basic ....'
 ```
 
-Luego, hacer referencia a él desde el archivo `helm-config.yml` en la 
-sección `envValueFrom`:
+Luego, hacer referencia a él desde el archivo `helm-config.yml` en la sección
+`envValueFrom`:
 
 ```yaml
 env:
