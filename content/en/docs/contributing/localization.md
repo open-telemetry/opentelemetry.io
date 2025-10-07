@@ -387,7 +387,7 @@ org-level group and the component owners.
 
 The second page to localize is the [Glossary](/docs/concepts/glossary/). This is
 a **critical** page for localized readers, since it defines the key terms used
-in the telemetry, observability and OpenTelemetry in particular. This is
+in observability and OpenTelemetry in particular. This is
 especially critical if no such terms exist in your language.
 
 For guidance, see the [video][ali-d-youtube] of Ali Dowair's talk at Write the
