@@ -303,12 +303,14 @@ involved in starting a new localization.
 You don't have to be an existing contributor to the OpenTelemetry project to
 start a new localization. However, you cannot be added as a member of the
 [OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as a
-member of the approvers group for your localization until you satisfy
-the requirements for becoming an established member and approver as outlined in
-the [membership guidelines][].
+member of the approvers group for your localization until you satisfy the
+requirements for becoming an established member and approver as outlined in the
+[membership guidelines][].
 
-Before you earn approver status, you can indicate your approval of a localization PR by adding a "looks good to me" or "LGTM" comment. During this startup phase, maintainers will treat your
-reviews as if you are an approver already.
+Before you earn approver status, you can indicate your approval of a
+localization PR by adding an "LGTM" (Looks Good To Me) comment. During this
+startup phase, maintainers will treat your reviews as if you are an approver
+already.
 
 [membership guidelines]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
@@ -338,6 +340,8 @@ with the task list given below:
    section. If you have doubts about which tag to use, especially when it comes
    to choosing a subregion, ask maintainers.
 
+   [ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
+
 2. Identify the GitHub handles of the
    [mentor and potential contributors](#team).
 
@@ -363,11 +367,10 @@ with the task list given below:
      - [ ] Create an issue label for `lang:LANG_ID`
      - [ ] Create org-level group for `LANG_ID` approvers
      - [ ] Update components owners for `content/LANG_ID`
-- [ ] Next step: Localize the
-     [Glossary](https://opentelemetry.io/docs/concepts/glossary/)
+   - [ ] Create an issue to track the localization of the **glossary**. Add the
+         issue number here. For details, see
+         [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
    ```
-
-[ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
 
 ### 3. Localize the homepage {#homepage}
 
@@ -387,8 +390,8 @@ org-level group and the component owners.
 
 The second page to localize is the [Glossary](/docs/concepts/glossary/). This is
 a **critical** page for localized readers, since it defines the key terms used
-in observability and OpenTelemetry in particular. This is
-especially critical if no such terms exist in your language.
+in observability and OpenTelemetry in particular. This is especially critical if
+no such terms exist in your language.
 
 For guidance, see the [video][ali-d-youtube] of Ali Dowair's talk at Write the
 Docs 2024: [The art of translation: How to localize technical
