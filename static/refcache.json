@@ -21423,6 +21423,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-09-11T16:09:12.449701-04:00"
   },
+  "https://www.writethedocs.org/conf/atlantic/2024/speakers/#speaker-ali-dowair-what-s-in-a-word-lessons-from-localizing-kubernetes-documentation-to-arabic-ali-dowair": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-07T12:47:46.473215-04:00"
+  },
   "https://www.xuxueli.com/xxl-job/en/": {
     "StatusCode": 206,
     "LastSeen": "2025-09-11T16:09:09.41627-04:00"
@@ -21470,6 +21474,10 @@
   "https://youtu.be/5iM8n3uCo_U": {
     "StatusCode": 200,
     "LastSeen": "2025-07-18T13:36:14.755041-07:00"
+  },
+  "https://youtu.be/HY3LZOQqdig": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-07T16:35:24.881116-04:00"
   },
   "https://youtube.com/@otel-official": {
     "StatusCode": 200,
