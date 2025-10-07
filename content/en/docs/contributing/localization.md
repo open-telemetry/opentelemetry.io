@@ -363,7 +363,7 @@ with the task list given below:
      - [ ] Create an issue label for `lang:LANG_ID`
      - [ ] Create org-level group for `LANG_ID` approvers
      - [ ] Update components owners for `content/LANG_ID`
-   - Next step: Localize the
+- [ ] Next step: Localize the
      [Glossary](https://opentelemetry.io/docs/concepts/glossary/)
    ```
 
