@@ -85,7 +85,7 @@ Opcionalmente, selecciona qué servicios de Kubernetes deseas instrumentar en la
 sección `discovery -> instrument` del archivo de configuración YAML. Para
 obtener más información, consulta la sección _Detección de servicios_ en el
 [documento de configuración](../../configure/options/), así como la sección
-[Proporcionar un archivo de configuración externo](#proporcionar-un-archivo-de-configuracion-externo)
+[Proporcionar un archivo de configuración externo](#proporcionar-un-archivo-de-configuración-externo)
 de esta página.
 
 ## Implementación de OBI {#deploying-obi}
