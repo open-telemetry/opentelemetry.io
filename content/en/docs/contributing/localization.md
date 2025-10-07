@@ -341,7 +341,7 @@ with the task list given below:
 2. Identify the GitHub handles of the
    [mentor and potential contributors](#team).
 
-3. Create a [new issue][] containing the following task list to the opening
+3. Create a [new issue][] containing the following task list in the opening
    comment:
 
    ```markdown
