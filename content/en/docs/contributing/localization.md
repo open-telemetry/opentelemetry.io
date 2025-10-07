@@ -3,7 +3,7 @@ title: Site localization
 description: Creating and maintaining site pages in non-English localizations.
 linkTitle: Localization
 weight: 25
-cSpell:ignore: shortcodes Dowair
+cSpell:ignore: Dowair shortcodes
 ---
 
 The OTel website uses Hugo's [multilingual framework] to support page
