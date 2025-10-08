@@ -1601,7 +1601,7 @@
   },
   "https://docs.daocloud.io/en/insight/06UserGuide/01quickstart/otel/otel/": {
     "StatusCode": 404,
-    "LastSeen": "2025-10-08T09:46:09.411756219Z"
+    "LastSeen": "2025-10-08T12:54:53.006528315Z"
   },
   "https://docs.dapr.io/operations/observability/tracing/otel-collector/open-telemetry-collector/": {
     "StatusCode": 206,
@@ -16325,7 +16325,7 @@
   },
   "https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api.ContextAPI.html": {
     "StatusCode": 404,
-    "LastSeen": "2025-10-08T09:45:54.812070022Z"
+    "LastSeen": "2025-10-08T12:54:43.84526067Z"
   },
   "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startActiveSpan": {
     "StatusCode": 200,
@@ -19772,8 +19772,8 @@
     "LastSeen": "2025-02-01T06:58:48.631427-05:00"
   },
   "https://www.bmc.com/blogs/opentracing-opencensus-openmetrics/": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T09:46:05.64609643Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-08T12:55:25.642Z"
   },
   "https://www.britannica.com/dictionary/pipeline": {
     "StatusCode": 200,
@@ -20673,15 +20673,15 @@
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc": {
     "StatusCode": 403,
-    "LastSeen": "2025-10-08T09:46:07.671547667Z"
+    "LastSeen": "2025-10-08T12:54:51.890446631Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T09:46:08.829470921Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-08T12:55:31.818Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto": {
     "StatusCode": 403,
-    "LastSeen": "2025-10-08T09:46:08.718569198Z"
+    "LastSeen": "2025-10-08T12:54:53.125177561Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-zipkin": {
     "StatusCode": 200,
@@ -20689,7 +20689,7 @@
   },
   "https://www.npmjs.com/package/@opentelemetry/instrumentation-aws-lambda": {
     "StatusCode": 403,
-    "LastSeen": "2025-10-08T09:45:55.325998719Z"
+    "LastSeen": "2025-10-08T12:54:44.534804567Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/instrumentation-express": {
     "StatusCode": 200,
