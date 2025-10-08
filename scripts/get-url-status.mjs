@@ -111,7 +111,7 @@ async function getUrlHeadless(url) {
 
     let status = response.status();
     const title = await page.title();
-    log(`${status}; page title: '${title}'; checking page content ... `);
+    log(`${status}; page title: '${title}'; checking page content: `);
 
     // Handles special case of crates.io. For details, see:
     // https://github.com/rust-lang/crates.io/issues/788
@@ -123,16 +123,18 @@ async function getUrlHeadless(url) {
       if (!crateNameRegex.test(title)) status = 404;
     }
 
-    // NPMJS.com will return 200 and direct your to a signin page if the package
-    // doesn't exist. Ensure that the package name is in the page.
-    if (url.startsWith(NPMJS_URL)) {
+    // npmjs.com can redirect to a signin page for non-existent packages.
+    // Confirm that the package name is in the title.
+    if (isHttp2XX(status) && url.startsWith(NPMJS_URL)) {
       const packageName = npmPackageNameFromUrl(url);
       if (
         !packageName ||
         !title.includes(packageName) ||
         /Sign In/i.test(title)
-      )
+      ) {
         status = 404;
+        log(`not a valid package page; `);
+      }
     }
 
     status = await checkForFragment(url, page, status);
@@ -190,11 +192,12 @@ export async function getUrlStatus(url, _verbose = false) {
     isHttp2XX(status) ||
     status === 404 ||
     status === STATUS_OK_BUT_FRAG_NOT_FOUND
-  )
+  ) {
     return status;
+  }
 
   // Special handling for npmjs.com package URLs
-  if (url.startsWith(NPMJS_URL)) {
+  if (status === 403 && url.startsWith(NPMJS_URL)) {
     let _status = checkNpmPackageUrlViaCLI(url);
     if (isHttp2XX(_status)) return _status;
   }
