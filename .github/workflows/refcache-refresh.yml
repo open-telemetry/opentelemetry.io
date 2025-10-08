@@ -134,7 +134,11 @@ jobs:
 
       - name: Try to resolve status 4XX URLs if any
         if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
         run: |
+          echo "Chrome path: $CHROME_PATH"
+          $CHROME_PATH --version
           ./scripts/double-check-refcache-4XX.mjs
 
       - name: Commit refcache updates if any
