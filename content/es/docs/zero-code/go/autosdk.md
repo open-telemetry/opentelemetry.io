@@ -2,7 +2,6 @@
 title: Auto SDK de instrumentación de Go
 linkTitle: Auto SDK
 description: Integra spans manuales con spans eBPF sin código con el Auto SDK
-cSpell:ignore: correlacionen autoinstrumentado
 weight: 16
 default_lang_commit: 28d760e734e5b20c9af47efce57484ae691e3975
 ---
