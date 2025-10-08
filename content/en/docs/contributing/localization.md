@@ -401,7 +401,7 @@ content][ali-dowair-2024].
   https://www.writethedocs.org/conf/atlantic/2024/speakers/#speaker-ali-dowair-what-s-in-a-word-lessons-from-localizing-kubernetes-documentation-to-arabic-ali-dowair
 [ali-d-youtube]: https://youtu.be/HY3LZOQqdig
 
-### 5. Localize the remaining site pages
+### 5. Localize the remaining site pages {#rest}
 
 With terminology established, you can now localize the remaining site pages.
 
