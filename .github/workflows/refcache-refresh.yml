@@ -121,14 +121,30 @@ jobs:
         run: |
           # Ignore link-check failures so we can still commit refcache updates
           npm run fix:refcache || true
-
-          # Don't prune 4xx entries so we can further process them via the PR
-          # npm run _refcache:prune
-
           ./scripts/clean-refcache.sh
 
-          git add -A
+          REFCACHE_NUM_STATUS_4XX=$(grep '"StatusCode": 4' static/refcache.json | wc -l | xargs)
+          echo "REFCACHE_NUM_STATUS_4XX=$REFCACHE_NUM_STATUS_4XX" >> $GITHUB_ENV
 
+      - uses: browser-actions/setup-chrome@v2
+        id: setup-chrome
+        if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
+        with:
+          chrome-version: stable
+          install-dependencies: true # pulls required Linux libs
+
+      - name: Try to resolve status 4XX URLs if any
+        if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+        run: |
+          echo "Chrome path: $CHROME_PATH"
+          $CHROME_PATH --version
+          ./scripts/double-check-refcache-4XX.mjs
+
+      - name: Commit refcache updates if any
+        run: |
+          git add -A
           if ! git diff-index --quiet --cached HEAD; then
             git commit -am "Update refcache"
             git push
