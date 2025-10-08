@@ -10,6 +10,7 @@ const GOOGLE_DOCS_URL = 'https://docs.google.com/';
 const cratesIoURL = 'https://crates.io/crates/';
 const DEFAULT_MAX_NUM_TO_UPDATE = null; // no max
 
+let verbose = false;
 let checkForFragments = false;
 let maxNumEntriesToUpdate = DEFAULT_MAX_NUM_TO_UPDATE;
 
@@ -134,7 +135,7 @@ async function retry400sAndUpdateCache() {
       } ${url} (was ${StatusCode}) ... `,
     );
 
-    let status = await getUrlStatus(url);
+    let status = await getUrlStatus(url, verbose);
     console.log(`${status}.`);
 
     let now = new Date();
@@ -205,6 +206,7 @@ Options:
                              Use 0 to have file scanned and checked for updates.
   --check-fragments, -f      Also check URLs with fragments for validity,
                              which htmltest doesn't do.
+  --verbose, -v              Show verbose output.
 `);
   exit(exitCode);
 }
@@ -223,6 +225,11 @@ function parseCliArgs() {
     'check-fragments': {
       type: 'boolean',
       short: 'f',
+      default: false,
+    },
+    verbose: {
+      type: 'boolean',
+      short: 'v',
       default: false,
     },
   };
@@ -255,6 +262,7 @@ function parseCliArgs() {
   return {
     maxNumEntriesToUpdate: maxNumValue,
     checkForFragments: args.values['check-fragments'],
+    verbose: args.values['verbose'],
   };
 }
 
@@ -268,6 +276,7 @@ async function main() {
   // Set global configuration variables
   maxNumEntriesToUpdate = config.maxNumEntriesToUpdate;
   checkForFragments = config.checkForFragments;
+  verbose = config.verbose;
 
   await retry400sAndUpdateCache();
 }
