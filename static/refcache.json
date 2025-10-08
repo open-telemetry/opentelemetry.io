@@ -876,8 +876,8 @@
     "LastSeen": "2025-02-01T06:38:26.831311-05:00"
   },
   "https://colocatedeventsna2024.sched.com/overview/type/Observability+Day": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T00:38:08.861083305Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-08T01:08:43.399Z"
   },
   "https://colocatedeventsna2025.sched.com/overview/type/Observability+Day": {
     "StatusCode": 206,
@@ -18768,16 +18768,16 @@
     "LastSeen": "2025-10-06T10:10:40.992Z"
   },
   "https://sched.co/1i7ot": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T00:37:59.51905299Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-08T01:08:46.871Z"
   },
   "https://sched.co/1i7pd": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T00:38:04.213818968Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-08T01:08:50.153Z"
   },
   "https://sched.co/1iW8S": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T00:37:55.765879388Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-08T01:08:52.837Z"
   },
   "https://sched.co/1iW8Y": {
     "StatusCode": 200,
@@ -20716,8 +20716,8 @@
     "LastSeen": "2025-01-13T11:43:30.252508-05:00"
   },
   "https://www.npmjs.com/search": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T00:38:19.871378396Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-08T01:08:54.925Z"
   },
   "https://www.nuget.org/packages/Azure.Monitor.OpenTelemetry.Exporter": {
     "StatusCode": 200,
