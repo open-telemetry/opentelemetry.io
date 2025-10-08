@@ -18,7 +18,7 @@ quando um fornecedor possui requisitos específicos.
 
 A lista a seguir contém exemplos de distribuições do OpenTelemetry que não são
 do Collector e o componente que elas customizam. Para distribuições do
-[OpenTelemetry COllector](/docs/collector), consulte
+[OpenTelemetry Collector](/docs/collector), consulte
 [Distribuições do Collector](/docs/collector/distributions/).
 
 {{% ecosystem/distributions-table filter="non-collector" %}}
