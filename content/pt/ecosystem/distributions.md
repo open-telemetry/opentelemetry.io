@@ -16,8 +16,8 @@ finais. É possível utilizar componentes do OpenTelemetry sem uma distribuiçã
 mas uma distribuição pode facilitar as coisas em alguns casos, por exemplo
 quando um fornecedor possui requisitos específicos.
 
-A lista a seguir contém uma amostra de distribuições do OpenTelemetry que não são
-do Collector e o componente que elas customizam. Para distribuições do
+A lista a seguir contém uma amostra de distribuições do OpenTelemetry que não
+são do Collector e o componente que elas customizam. Para distribuições do
 [OpenTelemetry Collector](/docs/collector), consulte
 [Distribuições do Collector](/docs/collector/distributions/).
 
