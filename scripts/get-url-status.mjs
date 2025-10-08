@@ -1,23 +1,14 @@
 #!/usr/bin/env node
 
-import puppeteer from 'puppeteer'; // Consider using puppeteer-core
+import puppeteer from 'puppeteer-core';
 import { URL } from 'url';
+import { execSync } from 'child_process';
 
 const DOCS_ORACLE_URL = 'https://docs.oracle.com/';
 const STATUS_OK_BUT_FRAG_NOT_FOUND = 422;
 
 const cratesIoURL = 'https://crates.io/crates/';
 let verbose = false;
-
-export function log(...args) {
-  if (!verbose) return;
-  const lastArg = args[args.length - 1];
-  if (typeof lastArg === 'string' && lastArg.endsWith(' ')) {
-    process.stdout.write(args.join(' '));
-  } else {
-    console.log(...args);
-  }
-}
 
 // Check for fragment and corresponding anchor ID in page.
 async function checkForFragment(_url, page, status) {
@@ -94,10 +85,13 @@ async function getUrlHeadless(url) {
       '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
 
     browser = await puppeteer.launch({
+      executablePath: getChromePath(),
       headless: true,
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-gpu',
         `--user-agent=${userAgent}`,
       ],
     });
@@ -143,7 +137,10 @@ async function getUrlInBrowser(url) {
   let browser;
 
   try {
-    browser = await puppeteer.launch({ headless: false });
+    browser = await puppeteer.launch({
+      executablePath: getChromePath(),
+      headless: false,
+    });
 
     const page = await browser.newPage();
     const response = await page.goto(url, {
@@ -199,3 +196,47 @@ async function mainCLI() {
 
 // Only run if script is executed directly (CLI)
 if (import.meta.url === `file://${process.argv[1]}`) await mainCLI();
+
+// ================================
+// Utility functions
+
+// Get Chrome executable path
+function getChromePath() {
+  // Check environment variable first (allows override)
+  if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+    return process.env.PUPPETEER_EXECUTABLE_PATH;
+  }
+
+  try {
+    // Use `npx puppeteer browsers install chrome` which outputs:
+    // "chrome@<buildID> <path>"
+    // This will install Chrome if not present, or just return the path if already installed
+    const output = execSync('npx puppeteer browsers install chrome', {
+      encoding: 'utf-8',
+      stdio: ['pipe', 'pipe', 'ignore']
+    }).trim();
+
+    // Parse output: "chrome@141.0.7390.54 /path/to/chrome"
+    const spaceIndex = output.indexOf(' ');
+    if (spaceIndex !== -1) {
+      const path = output.substring(spaceIndex + 1);
+      return path;
+    }
+  } catch (error) {
+    // Continue to next attempt
+  }
+
+  throw new Error(
+    'Chrome not found. Install with: npx puppeteer browsers install chrome'
+  );
+}
+
+export function log(...args) {
+  if (!verbose) return;
+  const lastArg = args[args.length - 1];
+  if (typeof lastArg === 'string' && lastArg.endsWith(' ')) {
+    process.stdout.write(args.join(' '));
+  } else {
+    console.log(...args);
+  }
+}
