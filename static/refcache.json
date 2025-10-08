@@ -953,7 +953,7 @@
   },
   "https://crates.io/": {
     "StatusCode": 404,
-    "LastSeen": "2025-10-08T16:09:51.974545176Z"
+    "LastSeen": "2025-10-08T17:32:20.570846796Z"
   },
   "https://crates.io/crates/actix-web-opentelemetry": {
     "StatusCode": 200,
@@ -16024,8 +16024,8 @@
     "LastSeen": "2025-01-30T09:08:03.616878745Z"
   },
   "https://npmjs.com/package/@google-cloud/opentelemetry-cloud-monitoring-exporter": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T16:10:14.559184269Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-08T17:33:13.738Z"
   },
   "https://npmjs.com/package/@google-cloud/opentelemetry-cloud-trace-exporter": {
     "StatusCode": 200,
