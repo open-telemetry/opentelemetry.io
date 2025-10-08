@@ -354,7 +354,7 @@ crie uma _issue_ com a seguinte lista de tarefas:
    restante desta seção. Caso tenha dúvidas sobre qual código utilizar,
    especialmente ao escolher uma sub-região, consulte os mantenedores.
 
-[ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
+   [ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
 
 2. Identifique os usuários do GitHub do
    [mentor e dos possíveis contribuidores](#team).
