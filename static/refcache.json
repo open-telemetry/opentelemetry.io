@@ -20660,8 +20660,8 @@
     "LastSeen": "2025-07-15T10:04:48.980771015Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T14:32:46.675852094Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-08T15:56:56.718Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web": {
     "StatusCode": 200,
@@ -20704,16 +20704,16 @@
     "LastSeen": "2025-01-30T16:54:12.824137-05:00"
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-node": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T14:32:46.686025173Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-08T15:57:00.637Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/sdk-trace-node": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T16:54:10.210482-05:00"
   },
   "https://www.npmjs.com/package/@opentelemetry/shim-opentracing": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T14:32:54.6310204Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-08T15:57:05.648Z"
   },
   "https://www.npmjs.com/search": {
     "StatusCode": 200,
