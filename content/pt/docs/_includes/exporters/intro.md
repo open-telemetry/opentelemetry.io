@@ -65,7 +65,7 @@ aprender a configurar os exporters através do
 
 ### Configuração do Collector {#collector-setup}
 
-{{% alert title=Note %}}
+{{% alert title=Nota %}}
 
 Caso já possua um coletor ou _backend_ OTLP configurado, poderá pular para
 [configurar as dependências do exportador OTLP](#otlp-dependencies) para a sua
