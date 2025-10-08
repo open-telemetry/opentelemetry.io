@@ -121,7 +121,7 @@ OpenTelemetry para indicarle que use el TracerProvider del Auto SDK.
 El Auto SDK funciona de forma muy similar a cualquier otro SDK, implementando
 todas las funciones requeridas por la especificación. La principal diferencia es
 que también está preparado por eBPF para unificar la propagación del contexto
-con otras librerias instrumentadas por eBPF.
+con otras librerías instrumentadas por eBPF.
 
 En esencia, el Auto SDK es la forma en que OpenTelemetry eBPF identifica y
 organiza la propagación del contexto con la API estándar de OpenTelemetry,
