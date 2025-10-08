@@ -171,11 +171,19 @@ export function isHttp2XX(status) {
 export async function getUrlStatus(url, _verbose = false) {
   verbose = _verbose;
   let status = await getUrlHeadless(url);
-  // If headless fetch fails, try in browser for non-404 statuses
-  if (!isHttp2XX(status) && status !== 404 && status !== 422) {
-    log(`\n\t retrying in browser ... `);
-    status = await getUrlInBrowser(url);
-  }
+  if (
+    isHttp2XX(status) ||
+    status === 404 ||
+    status === STATUS_OK_BUT_FRAG_NOT_FOUND
+  )
+    return status;
+
+  // Headless fetch failed, try in browser (local only)
+  const isCI = !!process.env.CI || !!process.env.CHROME_PATH;
+  if (isCI) return status;
+
+  log(`\n\t retrying in browser ... `);
+  status = await getUrlInBrowser(url);
   return status;
 }
 
