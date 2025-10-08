@@ -48,7 +48,7 @@ Esta página reúne informações sobre os principais exportadores do OpenTeleme
 
 {{ if $zeroConfigPageExists }}
 
-{{% alert title=Note %}}
+{{% alert title=Nota %}}
 
 Caso você esteja utilizando
 [instrumentação sem código](</docs/zero-code/{{ $langIdAsPath }}>), você poderá
