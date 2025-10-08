@@ -8,6 +8,7 @@ const DOCS_ORACLE_URL = 'https://docs.oracle.com/';
 const STATUS_OK_BUT_FRAG_NOT_FOUND = 422;
 
 const cratesIoURL = 'https://crates.io/crates/';
+const NPMJS_URL = 'https://www.npmjs.com/package/';
 let verbose = false;
 
 // Check for fragment and corresponding anchor ID in page.
@@ -110,6 +111,7 @@ async function getUrlHeadless(url) {
 
     let status = response.status();
     const title = await page.title();
+    log(`${status}; page title: '${title}'; checking page content: `);
 
     // Handles special case of crates.io. For details, see:
     // https://github.com/rust-lang/crates.io/issues/788
@@ -121,8 +123,22 @@ async function getUrlHeadless(url) {
       if (!crateNameRegex.test(title)) status = 404;
     }
 
+    // npmjs.com can redirect to a signin page for non-existent packages.
+    // Confirm that the package name is in the title.
+    if (isHttp2XX(status) && url.startsWith(NPMJS_URL)) {
+      const packageName = npmPackageNameFromUrl(url);
+      if (
+        !packageName ||
+        !title.includes(packageName) ||
+        /Sign In/i.test(title)
+      ) {
+        status = 404;
+        log(`not a valid package page; `);
+      }
+    }
+
     status = await checkForFragment(url, page, status);
-    log(`${status}; page title: '${title}'`);
+    log(`${status}`);
 
     return status;
   } catch (error) {
@@ -170,18 +186,34 @@ export function isHttp2XX(status) {
 
 export async function getUrlStatus(url, _verbose = false) {
   verbose = _verbose;
+
   let status = await getUrlHeadless(url);
-  // If headless fetch fails, try in browser for non-404 statuses
-  if (!isHttp2XX(status) && status !== 404 && status !== 422) {
-    log(`\n\t retrying in browser ... `);
-    status = await getUrlInBrowser(url);
+  if (
+    isHttp2XX(status) ||
+    status === 404 ||
+    status === STATUS_OK_BUT_FRAG_NOT_FOUND
+  ) {
+    return status;
   }
+
+  // Special handling for npmjs.com package URLs
+  if (status === 403 && url.startsWith(NPMJS_URL)) {
+    let _status = checkNpmPackageUrlViaCLI(url);
+    if (isHttp2XX(_status)) return _status;
+  }
+
+  // Headless fetch failed, try in browser (local only)
+  const isCI = !!process.env.CI || !!process.env.CHROME_PATH;
+  if (isCI) return status;
+
+  log(`\n\t retrying in browser ... `);
+  status = await getUrlInBrowser(url);
   return status;
 }
 
 async function mainCLI() {
   const url = process.argv[2];
-  verbose = !process.argv.includes('--quiet');
+  verbose = !process.argv.includes('--quiet') && !process.argv.includes('-q');
 
   if (!url) {
     console.error(`Usage: ${process.argv[1]} URL`);
@@ -199,6 +231,41 @@ if (import.meta.url === `file://${process.argv[1]}`) await mainCLI();
 
 // ================================
 // Utility functions
+
+// Extract package name from URL
+// Handle scoped packages: @scope/package or regular packages: package
+function npmPackageNameFromUrl(url) {
+  if (!url.startsWith(NPMJS_URL)) return null;
+
+  const urlPath = url.substring(NPMJS_URL.length);
+  // Handle scoped packages: @scope/package or regular packages: package
+  const packageName = urlPath.startsWith('@')
+    ? urlPath.split('/').slice(0, 2).join('/') // @scope/package
+    : urlPath.split('/')[0]; // package
+  return packageName;
+}
+
+// Check if an npm package exists using npm CLI
+function checkNpmPackageUrlViaCLI(url) {
+  const packageName = npmPackageNameFromUrl(url);
+
+  if (!packageName) {
+    log(`Unable to extract package name from: ${url}`);
+    return 404;
+  }
+
+  try {
+    execSync(`npm view ${packageName} name`, {
+      encoding: 'utf-8',
+      stdio: ['pipe', 'pipe', 'pipe'],
+    });
+    log(`> npm view '${packageName}' successful - package exists`);
+    return 206;
+  } catch (error) {
+    log(`> npm view '${packageName}' failed - package not found`);
+    return 404;
+  }
+}
 
 // Get Chrome executable path
 function getChromePath() {
