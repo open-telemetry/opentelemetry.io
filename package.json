@@ -136,6 +136,7 @@
     "postcss-cli": "^11.0.1",
     "prettier": "3.6.2",
     "puppeteer": "^24.23.0",
+    "puppeteer-core": "^24.23.0",
     "require-dir": "^1.2.0",
     "textlint": "^15.2.2",
     "textlint-filter-rule-allowlist": "^4.0.0",
