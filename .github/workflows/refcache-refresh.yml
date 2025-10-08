@@ -126,10 +126,15 @@ jobs:
           REFCACHE_NUM_STATUS_4XX=$(grep '"StatusCode": 4' static/refcache.json | wc -l | xargs)
           echo "REFCACHE_NUM_STATUS_4XX=$REFCACHE_NUM_STATUS_4XX" >> $GITHUB_ENV
 
-      - name: Try to resolve status 400 URLs if any
+      - uses: browser-actions/setup-chrome@v2
+        if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
+        with:
+          chrome-version: stable
+          install-dependencies: true # pulls required Linux libs
+
+      - name: Try to resolve status 4XX URLs if any
         if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
         run: |
-          npx puppeteer browsers install chrome
           ./scripts/double-check-refcache-4XX.mjs
 
       - name: Commit refcache updates if any
