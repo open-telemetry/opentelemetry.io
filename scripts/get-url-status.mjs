@@ -202,21 +202,20 @@ if (import.meta.url === `file://${process.argv[1]}`) await mainCLI();
 
 // Get Chrome executable path
 function getChromePath() {
-  // Check environment variable first (allows override)
-  if (process.env.PUPPETEER_EXECUTABLE_PATH) {
-    return process.env.PUPPETEER_EXECUTABLE_PATH;
+  // Use path set by GitHub workflow if available
+  if (process.env.CHROME_PATH) {
+    return process.env.CHROME_PATH;
   }
 
   try {
-    // Use `npx puppeteer browsers install chrome` which outputs:
-    // "chrome@<buildID> <path>"
-    // This will install Chrome if not present, or just return the path if already installed
+    // Install Chrome if not present, or just return the path if already installed.
+    // Output is of the form: chrome@<buildID> <path>
     const output = execSync('npx puppeteer browsers install chrome', {
       encoding: 'utf-8',
       stdio: ['pipe', 'pipe', 'ignore'],
     }).trim();
 
-    // Parse output: "chrome@141.0.7390.54 /path/to/chrome"
+    // Parse output, for example: chrome@141.0.7390.54 /path/to/chrome
     const spaceIndex = output.indexOf(' ');
     if (spaceIndex !== -1) {
       const path = output.substring(spaceIndex + 1);
