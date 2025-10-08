@@ -130,7 +130,7 @@ jobs:
         if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
         with:
           chrome-version: stable
-          install-dependencies: true   # pulls required Linux libs
+          install-dependencies: true # pulls required Linux libs
 
       - name: Try to resolve status 4XX URLs if any
         if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}

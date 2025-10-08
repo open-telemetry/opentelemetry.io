@@ -213,7 +213,7 @@ function getChromePath() {
     // This will install Chrome if not present, or just return the path if already installed
     const output = execSync('npx puppeteer browsers install chrome', {
       encoding: 'utf-8',
-      stdio: ['pipe', 'pipe', 'ignore']
+      stdio: ['pipe', 'pipe', 'ignore'],
     }).trim();
 
     // Parse output: "chrome@141.0.7390.54 /path/to/chrome"
@@ -227,7 +227,7 @@ function getChromePath() {
   }
 
   throw new Error(
-    'Chrome not found. Install with: npx puppeteer browsers install chrome'
+    'Chrome not found. Install with: npx puppeteer browsers install chrome',
   );
 }
 
