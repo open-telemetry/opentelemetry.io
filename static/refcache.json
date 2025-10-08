@@ -1599,9 +1599,9 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T14:41:04.33143-05:00"
   },
-  "https://docs.daocloud.io/en/insight/06UserGuide/01quickstart/otel/otel/": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-08T12:54:53.006528315Z"
+  "https://docs.daocloud.io/en/insight/quickstart/otel/otel/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-08T09:08:24.806086-04:00"
   },
   "https://docs.dapr.io/operations/observability/tracing/otel-collector/open-telemetry-collector/": {
     "StatusCode": 206,
@@ -16323,9 +16323,9 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-30T16:54:05.646284-05:00"
   },
-  "https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api.ContextAPI.html": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-08T12:54:43.84526067Z"
+  "https://open-telemetry.github.io/opentelemetry-js/classes/_opentelemetry_api._opentelemetry_api.ContextAPI.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-08T09:08:50.834658-04:00"
   },
   "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startActiveSpan": {
     "StatusCode": 200,
@@ -20672,24 +20672,24 @@
     "LastSeen": "2025-01-30T16:54:23.636813-05:00"
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T12:54:51.890446631Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-08T13:07:52.513Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http": {
     "StatusCode": 200,
     "LastSeen": "2025-10-08T12:55:31.818Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T12:54:53.125177561Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-08T13:07:55.157Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/exporter-zipkin": {
     "StatusCode": 200,
     "LastSeen": "2025-01-30T16:54:27.189107-05:00"
   },
   "https://www.npmjs.com/package/@opentelemetry/instrumentation-aws-lambda": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-08T12:54:44.534804567Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-08T13:07:58.264Z"
   },
   "https://www.npmjs.com/package/@opentelemetry/instrumentation-express": {
     "StatusCode": 200,
