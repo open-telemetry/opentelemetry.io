@@ -1,5 +1,5 @@
 ---
-title: Distribuições
+title: Distribuições de terceiros
 description:
   Lista de distribuições de código aberto do OpenTelemetry mantidas por
   terceiros.
