@@ -127,6 +127,7 @@ jobs:
           echo "REFCACHE_NUM_STATUS_4XX=$REFCACHE_NUM_STATUS_4XX" >> $GITHUB_ENV
 
       - uses: browser-actions/setup-chrome@v2
+        id: setup-chrome
         if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
         with:
           chrome-version: stable
