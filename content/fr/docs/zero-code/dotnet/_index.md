@@ -48,7 +48,7 @@ suivants :
 - [CentOS Stream 9 x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/centos-stream9.dockerfile)
 - [macOS Ventura 13 x64](https://github.com/actions/runner-images/blob/main/images/macos/macos-13-Readme.md)
 - [Microsoft Windows Server 2022 x64](https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md)
-- [Ubuntu 20.04 LTS x64](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2004-Readme.md)
+- [Ubuntu 20.04 LTS x64](https://github.com/actions/runner-images/blob/e82adb8a25d915d5a4598ced53814bdacac218cc/images/ubuntu/Ubuntu2004-Readme.md)
 - Ubuntu 22.04 LTS ARM64
 
 ## Configuration {#setup}

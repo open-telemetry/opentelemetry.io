@@ -189,7 +189,7 @@ const sdk = new NodeSDK({
 
 一部の計装ライブラリは追加の設定オプションを提供しています。
 
-たとえば、[Express計装](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options)は、指定されたミドルウェアを無視したり、リクエストフックで自動的に作成されるスパンを強化したりする方法を提供しています。
+たとえば、[Express計装](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/52dd28deae0ebfbec43bdaed82f4749fc9803797/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options)は、指定されたミドルウェアを無視したり、リクエストフックで自動的に作成されるスパンを強化したりする方法を提供しています。
 
 {{< tabpane text=true >}}
 
