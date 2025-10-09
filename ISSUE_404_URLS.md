@@ -14,7 +14,8 @@ https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2004-Read
 **Context:** Ubuntu 20.04 reached end-of-life and the documentation has been removed from the runner-images repository.
 
 **Suggested Replacement URLs:**
-- **Recommended:** `https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md` (Ubuntu 22.04 - Current LTS)
+- **Recommended (last valid commit):** `https://github.com/actions/runner-images/blob/e82adb8a25d915d5a4598ced53814bdacac218cc/images/ubuntu/Ubuntu2004-Readme.md` (Last version before removal, from April 11, 2025)
+- **Recommended (current):** `https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md` (Ubuntu 22.04 - Current LTS)
 - Alternative: `https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md` (Ubuntu 24.04 - Latest LTS)
 - General: `https://github.com/actions/runner-images` (Main repository)
 

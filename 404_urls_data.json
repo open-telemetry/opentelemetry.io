@@ -9,6 +9,12 @@
       "context": "Ubuntu 20.04 reached end-of-life and the documentation has been removed from the runner-images repository.",
       "replacement_urls": [
         {
+          "url": "https://github.com/actions/runner-images/blob/e82adb8a25d915d5a4598ced53814bdacac218cc/images/ubuntu/Ubuntu2004-Readme.md",
+          "description": "Last version before removal (commit from April 11, 2025)",
+          "verified": true,
+          "recommended": true
+        },
+        {
           "url": "https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md",
           "description": "Ubuntu 22.04 - Current LTS",
           "verified": true,
