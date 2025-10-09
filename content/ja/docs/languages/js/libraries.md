@@ -3,7 +3,7 @@ title: 計装ライブラリの使用
 linkTitle: ライブラリ
 weight: 40
 description: アプリが依存するライブラリをインストルメントする方法
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91 # patched
 drifted_from_default: true
 ---
 
