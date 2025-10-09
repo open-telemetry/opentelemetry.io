@@ -33,7 +33,7 @@ vote in order to communicate what your priorities are for this next year.
 
 ## When and where is it happening?
 
-OTel Unplugged will be happening on Monday, February 2nd, the day after FOSDEM.
+OTel Unplugged will be happening on Monday, February 2nd, the day after [FOSDEM](https://fosdem.org/2026/).
 The event will be  will be the lovely Sparks meeting hall located in central Brussels.
 
 ## How do I attend?
