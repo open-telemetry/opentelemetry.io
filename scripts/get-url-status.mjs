@@ -112,14 +112,15 @@ async function getUrlHeadless(url) {
     const title = await page.title();
     log(`${status}; page title: '${title}'; checking page content: `);
 
-    // Handles special case of crates.io. For details, see:
-    // https://github.com/rust-lang/crates.io/issues/788
     if (url.startsWith(cratesIoURL)) {
-      const crateName = url.split('/').pop();
-      // E.g. 'https://crates.io/crates/opentelemetry-sdk' -> 'opentelemetry-sdk'
-      const crateNameRegex = new RegExp(crateName.replace(/-/g, '[-_]'));
-      // Crate found if title starts with createName (in kebab or snake case)
-      if (!crateNameRegex.test(title)) status = 404;
+      // Crates.io either always returns 200 (when Accept is text/html) or 404
+      // otherwise. For details, see:
+      // https://github.com/rust-lang/crates.io/issues/788
+
+      // If response body contains "Page not found", return 404, otherwise
+      // assume 200.
+      const bodyText = await page.content();
+      status = /(Page|Crate ["\w\-]+) not found/i.test(bodyText) ? 404 : 200;
     }
 
     // npmjs.com can redirect to a signin page for non-existent packages.
@@ -186,23 +187,7 @@ export function isHttp2XX(status) {
 export async function getUrlStatus(url, _verbose = false) {
   verbose = _verbose;
 
-  let status;
-
-  // Special handling for crates.io URLs.
-  if (url.startsWith(cratesIoURL)) {
-    // Use a restricted Accept header, otherwise crates.io returns a 404. For
-    // details, see: https://github.com/rust-lang/crates.io/issues/788
-    if (url.includes('#')) {
-      // We'll probably ever have a crates.io URL with a fragment, but warn the
-      // user if it happens. We could instead use the headless get, but it would
-      // need to use the same Accept header as used here.
-      console.log(`WARNING: ignoring crates.io URL fragment: ${url}`);
-    }
-    status = await fetchUrl(url, { Accept: 'text/html' });
-    if (isHttp2XX(status)) return status;
-  }
-
-  status = await getUrlHeadless(url);
+  let status = await getUrlHeadless(url);
   if (
     isHttp2XX(status) ||
     status === 404 ||
@@ -246,18 +231,6 @@ if (import.meta.url === `file://${process.argv[1]}`) await mainCLI();
 
 // ================================
 // Utility functions
-
-async function fetchUrl(url, { method = 'HEAD', Accept } = {}) {
-  const headers = {
-    'User-Agent': userAgent,
-  };
-  if (Accept) headers.Accept = Accept;
-  const response = await fetch(url, {
-    method,
-    headers,
-  });
-  return response.status;
-}
 
 // Extract package name from URL
 // Handle scoped packages: @scope/package or regular packages: package
