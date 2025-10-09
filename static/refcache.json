@@ -957,7 +957,7 @@
   },
   "https://crates.io/": {
     "StatusCode": 404,
-    "LastSeen": "2025-10-09T09:44:00.217262568Z"
+    "LastSeen": "2025-10-09T17:06:54.176601868Z"
   },
   "https://crates.io/crates/actix-web-opentelemetry": {
     "StatusCode": 200,
