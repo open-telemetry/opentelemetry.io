@@ -69,9 +69,9 @@ traces.
 When we ask for consistency in distribute tracing, the goal is to
 ensure that when the smallest probability sampler (here 0.1%) chooses
 to sample, that higher probability samplers make the same
-decision. Here are the properties we can rely on thanks to
-consistency:
+decision. Here are the properties we can rely on in this configuration:
 
+- 100% of Frontend spans will be collected
 - 1-in-10 traces will consist of Frontend and Storage spans
 - 1-in-1000 traces will be complete.
 
@@ -219,8 +219,21 @@ for example, users can opt for explicit randomness:
 tracestate: ot=rv:abcdef01234567
 ```
 
-Explicit randomness values have a number of other uses in
-OpenTelemetry.
+Explicit randomness values have several other uses, for example:
+
+- Achieve consistent sampling across multiple traces, by applying the
+  same explicit randomness value to independent trace roots
+- Translate external consistent sampling decisions (e.g., hash
+  function-based) into OpenTelemetry consistent sampling decisions.
+
+As a demonstration, we upgraded the OpenTelemetry Collector-Contrib
+[`probabilisticsampler` processor][PROBABILISTICSAMPLERPROCESSOR] to
+keep its original consistent sampling decision and still encode
+sampling probability in the OpenTelemetry TraceState. It does this by
+synthesizing an explicit randomness value from the hash function that
+it uses.
+
+[PROBABILISTICSAMPLERPROCESSOR]: https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/probabilisticsamplerprocessor/README.md
 
 ## Looking forward
 
