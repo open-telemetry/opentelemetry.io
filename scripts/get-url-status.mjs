@@ -7,8 +7,13 @@ import { execSync } from 'child_process';
 const DOCS_ORACLE_URL = 'https://docs.oracle.com/';
 const STATUS_OK_BUT_FRAG_NOT_FOUND = 422;
 
-const cratesIoURL = 'https://crates.io/crates/';
+const cratesIoURL = 'https://crates.io/';
 const NPMJS_URL = 'https://www.npmjs.com/package/';
+// cSpell:ignore KHTML
+const userAgent =
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
+  '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
+
 let verbose = false;
 
 // Check for fragment and corresponding anchor ID in page.
@@ -80,11 +85,6 @@ async function getUrlHeadless(url) {
 
   let browser;
   try {
-    // cSpell:ignore KHTML
-    const userAgent =
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
-      '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
-
     browser = await puppeteer.launch({
       executablePath: getChromePath(),
       headless: true,
@@ -187,7 +187,16 @@ export function isHttp2XX(status) {
 export async function getUrlStatus(url, _verbose = false) {
   verbose = _verbose;
 
-  let status = await getUrlHeadless(url);
+  let status;
+
+  // Special handling for crates.io URLs. For details, see:
+  // https://github.com/rust-lang/crates.io/issues/788
+  if (url.startsWith(cratesIoURL)) {
+    status = await fetchUrl(url, { Accept: 'text/html' });
+    if (isHttp2XX(status)) return status;
+  }
+
+  status = await getUrlHeadless(url);
   if (
     isHttp2XX(status) ||
     status === 404 ||
@@ -221,7 +230,7 @@ async function mainCLI() {
   }
 
   const status = await getUrlStatus(url, verbose);
-  if (!verbose) console.log(status);
+  console.log({ status });
 
   process.exit(isHttp2XX(status) ? 0 : 1);
 }
@@ -231,6 +240,18 @@ if (import.meta.url === `file://${process.argv[1]}`) await mainCLI();
 
 // ================================
 // Utility functions
+
+async function fetchUrl(url, { method = 'HEAD', Accept } = {}) {
+  const headers = {
+    'User-Agent': userAgent,
+  };
+  if (Accept) headers.Accept = Accept;
+  const response = await fetch(url, {
+    method,
+    headers,
+  });
+  return response.status;
+}
 
 // Extract package name from URL
 // Handle scoped packages: @scope/package or regular packages: package

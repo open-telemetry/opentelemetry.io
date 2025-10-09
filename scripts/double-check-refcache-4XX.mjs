@@ -7,7 +7,6 @@ import { exit } from 'process';
 
 const CACHE_FILE = 'static/refcache.json';
 const GOOGLE_DOCS_URL = 'https://docs.google.com/';
-const cratesIoURL = 'https://crates.io/crates/';
 const DEFAULT_MAX_NUM_TO_UPDATE = null; // no max
 
 let verbose = false;
@@ -79,8 +78,6 @@ async function retry400sAndUpdateCache() {
     const { StatusCode, LastSeen } = details;
     const lastSeenDate = new Date(LastSeen);
 
-    countStatuses(StatusCode, parsedUrl, lastSeenDate, statusCounts);
-
     if (
       checkForFragments && parsedUrl.hash
         ? isHttp2XXForFragments(StatusCode, lastSeenDate)
@@ -91,10 +88,7 @@ async function retry400sAndUpdateCache() {
     }
 
     if (
-      (StatusCode === 404 &&
-        // Handles special case of crates.io. For details, see:
-        // https://github.com/rust-lang/crates.io/issues/788
-        !url.startsWith(cratesIoURL)) ||
+      StatusCode === 404 ||
       (parsedUrl.hash && is4XXForFragments(StatusCode, lastSeenDate))
     ) {
       console.log(
@@ -167,6 +161,14 @@ async function retry400sAndUpdateCache() {
     console.log(`No updates needed.`);
   }
 
+  // Gather per-status stats about the updated refcache entries.
+  for (const [url, details] of Object.entries(cache)) {
+    const parsedUrl = new URL(url);
+    const { StatusCode, LastSeen } = details;
+    const lastSeenDate = new Date(LastSeen);
+    countStatuses(StatusCode, parsedUrl, lastSeenDate, statusCounts);
+  }
+
   console.log(
     `Processed ${entriesCount} URLs${
       checkForFragments
@@ -174,8 +176,10 @@ async function retry400sAndUpdateCache() {
         : ''
     }`,
   );
+  console.log(`Updated ${updatedCount} entries.\n`);
+  console.log(`Final status counts:`);
   for (const [status, count] of Object.entries(statusCounts)) {
-    console.log(`Status ${status}: ${count}`);
+    console.log(`  ${status}: ${count}`);
   }
 }
 
