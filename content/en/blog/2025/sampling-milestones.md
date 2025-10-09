@@ -147,7 +147,7 @@ advanced sampling architectures:
 
 - Accurate counting of sampled spans
 - Consistent rate-limited sampling
-- Adapative sampling
+- Adaptive sampling
 - Consistent multi-stage sampling.
 
 The key points of our design are summarized next, [curious readers
