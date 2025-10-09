@@ -46,4 +46,3 @@ The OpenTelemetry community needs sponsors in order to put on events! You can
 
 This year's OTel Unplugged EU is hosted by Grafana Labs, with the agenda
 organized and run by the OpenTelemetry Governance Committee.
-
