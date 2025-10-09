@@ -5,8 +5,7 @@ date: 2025-10-07
 author: >-
   [Ted Young](https://github.com/tedsuo)
 sig: End User
-# prettier-ignore
-cSpell:ignore: FOSDEM unconference roadmapping
+cSpell:ignore: FOSDEM roadmapping unconference
 ---
 
 ![demo app screen1](otel-unplugged-logo.jpeg)
