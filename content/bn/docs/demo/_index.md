@@ -5,6 +5,7 @@ cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
 default_lang_commit: 2571ec5a1e17744982e8dc6efe1fdf3115d0ebbc
+drifted_from_default: true
 ---
 
 [OpenTelemetry ডেমো](/ecosystem/demo/) ডকুমেন্টেশনে স্বাগতম, যেখানে ডেমো কীভাবে ইনস্টল ও চালাতে হয় এবং কিছু সিনারিও দেখানো হয়েছে, যার মাধ্যমে আপনি OpenTelemetry-কে অ্যাকশনে দেখতে পারবেন।
