@@ -3663,10 +3663,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-05T14:08:07.215377044Z"
   },
-  "https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2004-Readme.md": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-09T19:47:22.348760991Z"
-  },
   "https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md": {
     "StatusCode": 206,
     "LastSeen": "2025-07-15T10:04:36.863995332Z"
@@ -9791,10 +9787,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-01-16T11:40:51.129965-05:00"
   },
-  "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-09T19:48:28.666906441Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/metapackages/auto-instrumentations-node#supported-instrumentations": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:15:12.345Z"
@@ -10006,10 +9998,6 @@
   "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-instana": {
     "StatusCode": 206,
     "LastSeen": "2025-07-10T09:53:57.850909-07:00"
-  },
-  "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-09T19:47:34.84128091Z"
   },
   "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options": {
     "StatusCode": 200,
