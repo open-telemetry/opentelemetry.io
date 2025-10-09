@@ -6,12 +6,23 @@ import { execSync } from 'child_process';
 
 const DOCS_ORACLE_URL = 'https://docs.oracle.com/';
 const STATUS_OK_BUT_FRAG_NOT_FOUND = 422;
+const STATUS_OK_BY_ANALYSIS = 206; // Partial Content
 
-const cratesIoURL = 'https://crates.io/';
 const NPMJS_URL = 'https://www.npmjs.com/package/';
 const userAgent = // cSpell:ignore KHTML
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
   '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
+
+// NOTE about crates.io
+// --------------------
+// The crates.io server always returns 404. For details,
+// see: https://github.com/rust-lang/crates.io/issues/788. To determine if a
+// link into crates.io is valid, we need to inspect the response body. So, we'll
+// assume that a 404 from crates.io is not a real 404.
+//
+// (Actually, you can get it to always return 200, even for invalid paths, by
+// doing requests with 'Accept: text/html'.)
+const cratesIoURL = 'https://crates.io/';
 
 let verbose = false;
 
@@ -113,14 +124,13 @@ async function getUrlHeadless(url) {
     log(`${status}; page title: '${title}'; checking page content: `);
 
     if (url.startsWith(cratesIoURL)) {
-      // Crates.io either always returns 200 (when Accept is text/html) or 404
-      // otherwise. For details, see:
-      // https://github.com/rust-lang/crates.io/issues/788
-
-      // If response body contains "Page not found", return 404, otherwise
-      // assume 200.
+      // Ignore status code, and check body. For details, see "Note about
+      // crates.io" above. If response body contains "... not found" return
+      // 404, otherwise assume OK.
       const bodyText = await page.content();
-      status = /(Page|Crate ["\w\-]+) not found/i.test(bodyText) ? 404 : 200;
+      status = /(Page|Crate ["\w\-]+) not found/i.test(bodyText)
+        ? 404
+        : STATUS_OK_BY_ANALYSIS;
     }
 
     // npmjs.com can redirect to a signin page for non-existent packages.
@@ -260,7 +270,7 @@ function checkNpmPackageUrlViaCLI(url) {
       stdio: ['pipe', 'pipe', 'pipe'],
     });
     log(`> npm view '${packageName}' successful - package exists`);
-    return 206;
+    return STATUS_OK_BY_ANALYSIS;
   } catch (error) {
     log(`> npm view '${packageName}' failed - package not found`);
     return 404;
@@ -295,6 +305,13 @@ function getChromePath() {
   throw new Error(
     'Chrome not found. Install with: npx puppeteer browsers install chrome',
   );
+}
+
+// Returns true iff status is 404 and URL is assumed Not Found. See "Note about
+// crates.io" for an explanation of the special handling of crates.io.
+export function isStatusNotFound(status, url = '') {
+  if (url && url.startsWith(cratesIoURL)) return false;
+  return status === 404;
 }
 
 export function log(...args) {
