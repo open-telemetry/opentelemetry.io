@@ -3,7 +3,11 @@ title: OpenTelemetry Sampling update
 linkTitle: OpenTelemetry Sampling update
 date: 2025-10-01
 author: >-
-  [Joshua MacDonald](https://github.com/jmacd) (Microsoft)
+  [Joshua MacDonald](https://github.com/jmacd) (Microsoft),
+  [Kent Quirk](https://github.com/kentquirk) (Honeycomb),
+  [Otmer Ertl](https://github.com/oertl) (DynaTrace),
+  [Peter Findesian](https://github.com/PeterF778) (Cisco),
+  [Yuanyuan Zhao](https://github.com/yuanyuanzhao3) (DataDog)
 sig: SIG Sampling
 # prettier-ignore
 cSpell:ignore:
