@@ -1,0 +1,94 @@
+{
+  "source": "PR #8043",
+  "scan_date": "2025-01-16",
+  "total_404_urls": 3,
+  "urls": [
+    {
+      "url": "https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2004-Readme.md",
+      "status": 404,
+      "context": "Ubuntu 20.04 reached end-of-life and the documentation has been removed from the runner-images repository.",
+      "replacement_urls": [
+        {
+          "url": "https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md",
+          "description": "Ubuntu 22.04 - Current LTS",
+          "verified": true,
+          "recommended": true
+        },
+        {
+          "url": "https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md",
+          "description": "Ubuntu 24.04 - Latest LTS",
+          "verified": true,
+          "recommended": false
+        },
+        {
+          "url": "https://github.com/actions/runner-images",
+          "description": "Main repository",
+          "verified": true,
+          "recommended": false
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node",
+      "status": 404,
+      "context": "The repository structure has been reorganized. The detectors/node path no longer exists; detector packages have been moved to the packages/ directory.",
+      "replacement_urls": [
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages",
+          "description": "All packages including detectors",
+          "verified": true,
+          "recommended": true
+        },
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-js-contrib#resource-detectors",
+          "description": "README section on resource detectors",
+          "verified": true,
+          "recommended": true
+        },
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-aws",
+          "description": "AWS resource detector package",
+          "verified": true,
+          "recommended": false
+        },
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-gcp",
+          "description": "GCP resource detector package",
+          "verified": true,
+          "recommended": false
+        },
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-azure",
+          "description": "Azure resource detector package",
+          "verified": true,
+          "recommended": false
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express",
+      "status": 404,
+      "context": "The repository structure has been reorganized. The plugins/node/ path has been changed to packages/ directory.",
+      "replacement_urls": [
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-express",
+          "description": "New location of the express instrumentation package",
+          "verified": true,
+          "recommended": true
+        },
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-js-contrib#plugins-instrumentations-maintained-by-opentelemetry-authors",
+          "description": "README section on instrumentations",
+          "verified": true,
+          "recommended": false
+        },
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-js-contrib",
+          "description": "Main repository",
+          "verified": true,
+          "recommended": false
+        }
+      ]
+    }
+  ]
+}
