@@ -39,8 +39,8 @@ left in the 1.0 Tracing specification affecting the
 safe to configure for root spans.
 
 This meant OpenTelemetry users could not safely configure independent
-probabilty sampling policies in a distributed system, as the
-specification did not cover how to acheive consistency. This feature,
+probability sampling policies in a distributed system, as the
+specification did not cover how to achieve consistency. This feature,
 the ability to configure unequal-probability sampling policies within
 a trace and still expect complete traces, is something users expect;
 it lets service owners configure independent limits on the volume of
@@ -147,7 +147,7 @@ advanced sampling architectures:
 
 - Accurate counting of sampled spans
 - Consistent rate-limited sampling
-- Adapative sampling
+- Adaptive sampling
 - Consistent multi-stage sampling.
 
 The key points of our design are summarized next, [curious readers
