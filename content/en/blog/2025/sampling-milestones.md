@@ -40,7 +40,7 @@ safe to configure for root spans.
 
 This meant OpenTelemetry users could not safely configure independent
 probability sampling policies in a distributed system, as the
-specification did not cover how to acheive consistency. This feature,
+specification did not cover how to achieve consistency. This feature,
 the ability to configure unequal-probability sampling policies within
 a trace and still expect complete traces, is something users expect;
 it lets service owners configure independent limits on the volume of
