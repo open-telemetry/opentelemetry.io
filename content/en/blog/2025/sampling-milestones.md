@@ -39,7 +39,7 @@ left in the 1.0 Tracing specification affecting the
 safe to configure for root spans.
 
 This meant OpenTelemetry users could not safely configure independent
-probabilty sampling policies in a distributed system, as the
+probability sampling policies in a distributed system, as the
 specification did not cover how to acheive consistency. This feature,
 the ability to configure unequal-probability sampling policies within
 a trace and still expect complete traces, is something users expect;
