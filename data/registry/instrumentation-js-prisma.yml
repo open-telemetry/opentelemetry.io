@@ -17,5 +17,5 @@ createdAt: 2022-08-25
 package:
   registry: npm
   name: '@prisma/instrumentation'
-  version: 6.16.3
+  version: 6.17.0
 isFirstParty: true

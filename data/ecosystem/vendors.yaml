@@ -122,7 +122,7 @@
   commercial: true
 - name: DaoCloud
   nativeOTLP: true
-  url: https://docs.daocloud.io/en/insight/06UserGuide/01quickstart/otel/otel/
+  url: https://docs.daocloud.io/en/insight/quickstart/otel/otel/
   contact:
   oss: false
   commercial: true

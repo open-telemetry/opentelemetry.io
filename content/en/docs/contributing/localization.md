@@ -3,7 +3,7 @@ title: Site localization
 description: Creating and maintaining site pages in non-English localizations.
 linkTitle: Localization
 weight: 25
-cSpell:ignore: shortcodes
+cSpell:ignore: Dowair shortcodes
 ---
 
 The OTel website uses Hugo's [multilingual framework] to support page
@@ -293,29 +293,60 @@ For more details about the script, run `npm run check:i18n -- -h`.
 
 ## New localizations
 
-### New localization team
+Interested in starting a new localization for the OTel website? Reach out to
+maintainers to express your interest, for example through a GitHub discussion or
+via the Slack `#otel-docs-localization` channel. This section explains the steps
+involved in starting a new localization.
 
-To start a new localization for the OpenTelemetry website you need:
+{{% alert title="Note" %}}
+
+You don't have to be an existing contributor to the OpenTelemetry project to
+start a new localization. However, you cannot be added as a member of the
+[OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as a
+member of the approvers group for your localization until you satisfy the
+requirements for becoming an established member and approver as outlined in the
+[membership guidelines][].
+
+Before you earn approver status, you can indicate your approval of a
+localization PR by adding an "LGTM" (Looks Good To Me) comment. During this
+startup phase, maintainers will treat your reviews as if you are an approver
+already.
+
+[membership guidelines]:
+  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+
+{{% /alert %}}
+
+### 1. Assemble a localization team {#team}
+
+Creating a localization is about growing an active and supportive community. To
+start a new localization for the OpenTelemetry website you need:
 
 1. A **localization mentor** who is familiar with your language, such as an
-   [active approver][] of the [CNCF Glossary][], or the [Kubernetes website][].
+   [active approver][] of the [CNCF Glossary][] or the [Kubernetes website][].
 2. At least two potential contributors.
 
 [active approver]: https://github.com/cncf/glossary/blob/main/CODEOWNERS
 [CNCF Glossary]: https://glossary.cncf.io/
 [Kubernetes website]: https://github.com/kubernetes/website
 
-Once you are ready:
+### 2. Localization kickoff: create an issue {#kickoff}
 
-1. Create a [new issue][] to share your interest to contribute.
+With a [localization team](#team) in place or coming together, create an issue
+with the task list given below:
 
-2. Add the GitHub handles of the mentor and potential contributors.
-
-3. Look up the official [ISO 639-1 code][] for the language you want to add.
+1. Look up the official [ISO 639-1 code][] for the language you want to add.
    We'll refer to this language code as `LANG_ID` in the remainder of this
-   section.
+   section. If you have doubts about which tag to use, especially when it comes
+   to choosing a subregion, ask maintainers.
 
-4. Add the following task list to your issue's opening comment:
+   [ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
+
+2. Identify the GitHub handles of the
+   [mentor and potential contributors](#team).
+
+3. Create a [new issue][] containing the following task list in the opening
+   comment:
 
    ```markdown
    - [ ] Language info:
@@ -327,42 +358,56 @@ Once you are ready:
    - [ ] Read through
          [Localization](https://opentelemetry.io/docs/contributing/localization/)
          and all other pages in the Contributing section
-   - [ ] Localize site homepage to YOUR_LANGUAGE_NAME
+   - [ ] Localize site homepage (only) to YOUR_LANGUAGE_NAME and submit a PR.
+         For details, see
+         [Localize the homepage](https://opentelemetry.io/docs/contributing/localization/#homepage).
    - [ ] OTel maintainers:
      - [ ] Update `hugo.yaml`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
      - [ ] Create org-level group for `LANG_ID` approvers
      - [ ] Update components owners for `content/LANG_ID`
+   - [ ] Create an issue to track the localization of the **glossary**. Add the
+         issue number here. For details, see
+         [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
    ```
 
-5. [Submit a pull request](../pull-requests/) with a translation of the website
-   [homepage], and _nothing else_, in the file `content/LANG_ID/_index.md`.
-   Ensure that maintainers have the necessary permissions to edit your PR, since
-   they will add additional changes to your PR that are required to get your
-   localization project started.
+### 3. Localize the homepage {#homepage}
 
-[ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
+[Submit a pull request](../pull-requests/) with a translation of the website
+[homepage], and _nothing else_, in the file `content/LANG_ID/_index.md`. Ensure
+that maintainers have the necessary permissions to edit your PR, since they will
+add additional changes to your PR that are required to get your localization
+project started.
+
 [homepage]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
 After your first PR is merged, maintainers will set up the issue label, the
 org-level group and the component owners.
 
-{{% alert title="Note" %}}
+### 4. Localize the glossary {#glossary}
 
-You don't have to be an existing contributor to the OpenTelemetry project, to
-start a new localization. However, you will not be added as a member of the
-[OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as a
-member of the approvers group for your localization. You will need to satisfy
-the requirements for becoming an established member and approver as outlined in
-the
-[membership guidelines](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
+The second page to localize is the [Glossary](/docs/concepts/glossary/). This is
+a **critical** page for localized readers, since it defines the key terms used
+in observability and OpenTelemetry in particular. This is especially critical if
+no such terms exist in your language.
 
-When starting the localization project, maintainers will treat your reviews as
-if you are an approver already.
+For guidance, see the [video][ali-d-youtube] of Ali Dowair's talk at Write the
+Docs 2024: [The art of translation: How to localize technical
+content][ali-dowair-2024].
 
-{{% /alert %}}
+[ali-dowair-2024]:
+  https://www.writethedocs.org/conf/atlantic/2024/speakers/#speaker-ali-dowair-what-s-in-a-word-lessons-from-localizing-kubernetes-documentation-to-arabic-ali-dowair
+[ali-d-youtube]: https://youtu.be/HY3LZOQqdig
+
+### 5. Localize the remaining site pages {#rest}
+
+With terminology established, you can now localize the remaining site pages.
+
+When submitting PRs, keep them small: preferably limited to one file or a few
+small files. Smaller PRs are easier to review and so typically get merged more
+quickly.
 
 ### OTel maintainer checklist
 
