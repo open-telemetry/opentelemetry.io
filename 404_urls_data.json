@@ -40,6 +40,12 @@
       "context": "The repository structure has been reorganized. The detectors/node path no longer exists; detector packages have been moved to the packages/ directory.",
       "replacement_urls": [
         {
+          "url": "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/52dd28deae0ebfbec43bdaed82f4749fc9803797/detectors/node",
+          "description": "Last version before reorganization (commit from July 7, 2025)",
+          "verified": true,
+          "recommended": true
+        },
+        {
           "url": "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages",
           "description": "All packages including detectors",
           "verified": true,
@@ -76,6 +82,12 @@
       "status": 404,
       "context": "The repository structure has been reorganized. The plugins/node/ path has been changed to packages/ directory.",
       "replacement_urls": [
+        {
+          "url": "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/52dd28deae0ebfbec43bdaed82f4749fc9803797/plugins/node/opentelemetry-instrumentation-express",
+          "description": "Last version before reorganization (commit from July 7, 2025)",
+          "verified": true,
+          "recommended": true
+        },
         {
           "url": "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-express",
           "description": "New location of the express instrumentation package",

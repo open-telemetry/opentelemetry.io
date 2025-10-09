@@ -33,7 +33,8 @@ https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/n
 **Context:** The repository structure has been reorganized. The `detectors/node` path no longer exists; detector packages have been moved to the `packages/` directory.
 
 **Suggested Replacement URLs:**
-- **Recommended (general):** `https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages` (All packages including detectors)
+- **Recommended (last valid commit):** `https://github.com/open-telemetry/opentelemetry-js-contrib/tree/52dd28deae0ebfbec43bdaed82f4749fc9803797/detectors/node` (Last version before reorganization, from July 7, 2025)
+- **Recommended (current, general):** `https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages` (All packages including detectors)
 - **Recommended (with anchor):** `https://github.com/open-telemetry/opentelemetry-js-contrib#resource-detectors` (README section on resource detectors)
 - **Specific detector examples:**
   - `https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-aws`
@@ -54,7 +55,8 @@ https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/nod
 **Context:** The repository structure has been reorganized. The `plugins/node/` path has been changed to `packages/` directory.
 
 **Suggested Replacement URLs:**
-- **Recommended:** `https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-express` (New location of the package)
+- **Recommended (last valid commit):** `https://github.com/open-telemetry/opentelemetry-js-contrib/tree/52dd28deae0ebfbec43bdaed82f4749fc9803797/plugins/node/opentelemetry-instrumentation-express` (Last version before reorganization, from July 7, 2025)
+- **Recommended (current):** `https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-express` (New location of the package)
 - **Alternative (with anchor):** `https://github.com/open-telemetry/opentelemetry-js-contrib#plugins-instrumentations-maintained-by-opentelemetry-authors` (README section on instrumentations)
 - General: `https://github.com/open-telemetry/opentelemetry-js-contrib` (Main repository)
 

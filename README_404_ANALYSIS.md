@@ -68,9 +68,9 @@ gh api /repos/open-telemetry/opentelemetry.io/issues \
 
 **Total 404 URLs found:** 3
 
-1. **Ubuntu 20.04 Runner Images** - EOL, last valid commit or replaced with Ubuntu 22.04 or 24.04
-2. **OpenTelemetry JS Contrib Node Detectors** - Moved to `/packages/` directory
-3. **OpenTelemetry JS Contrib Express Instrumentation** - Moved from `/plugins/node/` to `/packages/`
+1. **Ubuntu 20.04 Runner Images** - EOL, last valid commit (e82adb8a - April 11, 2025) or replaced with Ubuntu 22.04 or 24.04
+2. **OpenTelemetry JS Contrib Node Detectors** - Moved to `/packages/` directory, last valid commit (52dd28d - July 7, 2025)
+3. **OpenTelemetry JS Contrib Express Instrumentation** - Moved from `/plugins/node/` to `/packages/`, last valid commit (52dd28d - July 7, 2025)
 
 All replacement URLs have been verified as working (HTTP 200 status).
 
