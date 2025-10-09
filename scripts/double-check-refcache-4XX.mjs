@@ -2,7 +2,11 @@
 
 import fs from 'fs/promises';
 import { parseArgs } from 'node:util';
-import { getUrlStatus, isStatusNotFound, isHttp2XX } from './get-url-status.mjs';
+import {
+  getUrlStatus,
+  isStatusNotFound,
+  isHttp2XX,
+} from './get-url-status.mjs';
 import { exit } from 'process';
 
 const CACHE_FILE = 'static/refcache.json';
