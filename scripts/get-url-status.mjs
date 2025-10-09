@@ -9,8 +9,7 @@ const STATUS_OK_BUT_FRAG_NOT_FOUND = 422;
 
 const cratesIoURL = 'https://crates.io/';
 const NPMJS_URL = 'https://www.npmjs.com/package/';
-// cSpell:ignore KHTML
-const userAgent =
+const userAgent = // cSpell:ignore KHTML
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
   '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
 
@@ -189,9 +188,16 @@ export async function getUrlStatus(url, _verbose = false) {
 
   let status;
 
-  // Special handling for crates.io URLs. For details, see:
-  // https://github.com/rust-lang/crates.io/issues/788
+  // Special handling for crates.io URLs.
   if (url.startsWith(cratesIoURL)) {
+    // Use a restricted Accept header, otherwise crates.io returns a 404. For
+    // details, see: https://github.com/rust-lang/crates.io/issues/788
+    if (url.includes('#')) {
+      // We'll probably ever have a crates.io URL with a fragment, but warn the
+      // user if it happens. We could instead use the headless get, but it would
+      // need to use the same Accept header as used here.
+      console.log(`WARNING: ignoring crates.io URL fragment: ${url}`);
+    }
     status = await fetchUrl(url, { Accept: 'text/html' });
     if (isHttp2XX(status)) return status;
   }
