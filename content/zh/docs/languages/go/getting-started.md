@@ -2,6 +2,7 @@
 title: 开始
 weight: 10
 default_lang_commit: 3512b0ae11f72d3a954d86da59ad7f98d064bdad # patched
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
