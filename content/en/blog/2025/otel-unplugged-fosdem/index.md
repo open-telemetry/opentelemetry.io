@@ -13,8 +13,9 @@ cSpell:ignore: FOSDEM roadmapping unconference
 ## OpenTelemetry is coming to FOSDEM!
 
 When we put out our community survey, you requested more meetups and we have
-heard you! We're happy to announce that we are bringing back [OTel Unplugged](https://events.humanitix.com/otelunplugged-eu2026),
-the OpenTelemetry unconference that we first ran in 2022.
+heard you! We're happy to announce that we are bringing back
+[OTel Unplugged](https://events.humanitix.com/otelunplugged-eu2026), the
+OpenTelemetry unconference that we first ran in 2022.
 
 ## What is OTel Unplugged?
 
@@ -32,8 +33,9 @@ vote in order to communicate what your priorities are for this next year.
 
 ## When and where is it happening?
 
-OTel Unplugged will be happening on Monday, February 2nd, the day after [FOSDEM](https://fosdem.org/2026/).
-The event will be  will be the lovely Sparks meeting hall located in central Brussels.
+OTel Unplugged will be happening on Monday, February 2nd, the day after
+[FOSDEM](https://fosdem.org/2026/). The event will be will be the lovely Sparks
+meeting hall located in central Brussels.
 
 ## How do I attend?
 
