@@ -7,8 +7,12 @@ import { execSync } from 'child_process';
 const DOCS_ORACLE_URL = 'https://docs.oracle.com/';
 const STATUS_OK_BUT_FRAG_NOT_FOUND = 422;
 
-const cratesIoURL = 'https://crates.io/crates/';
+const cratesIoURL = 'https://crates.io/';
 const NPMJS_URL = 'https://www.npmjs.com/package/';
+const userAgent = // cSpell:ignore KHTML
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
+  '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
+
 let verbose = false;
 
 // Check for fragment and corresponding anchor ID in page.
@@ -80,11 +84,6 @@ async function getUrlHeadless(url) {
 
   let browser;
   try {
-    // cSpell:ignore KHTML
-    const userAgent =
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
-      '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
-
     browser = await puppeteer.launch({
       executablePath: getChromePath(),
       headless: true,
@@ -113,14 +112,15 @@ async function getUrlHeadless(url) {
     const title = await page.title();
     log(`${status}; page title: '${title}'; checking page content: `);
 
-    // Handles special case of crates.io. For details, see:
-    // https://github.com/rust-lang/crates.io/issues/788
     if (url.startsWith(cratesIoURL)) {
-      const crateName = url.split('/').pop();
-      // E.g. 'https://crates.io/crates/opentelemetry-sdk' -> 'opentelemetry-sdk'
-      const crateNameRegex = new RegExp(crateName.replace(/-/g, '[-_]'));
-      // Crate found if title starts with createName (in kebab or snake case)
-      if (!crateNameRegex.test(title)) status = 404;
+      // Crates.io either always returns 200 (when Accept is text/html) or 404
+      // otherwise. For details, see:
+      // https://github.com/rust-lang/crates.io/issues/788
+
+      // If response body contains "Page not found", return 404, otherwise
+      // assume 200.
+      const bodyText = await page.content();
+      status = /(Page|Crate ["\w\-]+) not found/i.test(bodyText) ? 404 : 200;
     }
 
     // npmjs.com can redirect to a signin page for non-existent packages.
@@ -221,7 +221,7 @@ async function mainCLI() {
   }
 
   const status = await getUrlStatus(url, verbose);
-  if (!verbose) console.log(status);
+  console.log({ status });
 
   process.exit(isHttp2XX(status) ? 0 : 1);
 }
