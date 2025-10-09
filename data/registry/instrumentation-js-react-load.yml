@@ -14,5 +14,5 @@ createdAt: 2020-11-09
 package:
   registry: npm
   name: '@opentelemetry/plugin-react-load'
-  version: 0.35.1
+  version: 0.38.0
 isFirstParty: false

@@ -105,12 +105,6 @@
   }
 }
 
-// Adjust the spacing of page-meta and page-TOC (https://github.com/open-telemetry/opentelemetry.io/pull/354)
-// TODO: upstream
-.td-toc #TableOfContents {
-  padding-top: 1rem;
-}
-
 .td-home {
   .cncf {
     text-align: center;
@@ -216,6 +210,14 @@
   border: $border-width solid $border-color;
   margin-bottom: $paragraph-margin-bottom;
   @extend .td-max-width-on-larger-screens;
+}
+
+.td-content .img-initial {
+  filter: none;
+}
+
+[data-bs-theme='dark'] .td-content .img-initial {
+  filter: brightness(0) invert(1);
 }
 
 .td-blog.otel-with-contributions-from {
