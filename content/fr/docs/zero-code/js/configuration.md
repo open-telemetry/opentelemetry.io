@@ -7,7 +7,7 @@ aliases:
   - /docs/languages/js/automatic/configuration
   - /docs/languages/js/automatic/module-config
 weight: 10
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
 drifted_from_default: true
 cSpell:ignore: serviceinstance
 ---
@@ -67,7 +67,7 @@ par des virgules des noms de bibliothèques d'instrumentation sans le préfixe
 Par exemple, pour activer seulement les instrumentations
 [@opentelemetry/instrumentation-http](https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-instrumentation-http)
 et
-[@opentelemetry/instrumentation-express](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express)
+[@opentelemetry/instrumentation-express](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/52dd28deae0ebfbec43bdaed82f4749fc9803797/plugins/node/opentelemetry-instrumentation-express)
 :
 
 ```shell
