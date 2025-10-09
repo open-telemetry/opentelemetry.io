@@ -271,7 +271,7 @@ For example, consider two scenarios in a web browser:
 1. Tracking a page load
 2. Denoting when a page becomes interactive
 
-A Span is best used to the first scenario because it's an operation with a start
+A Span is best used to track the first scenario because it's an operation with a start
 and an end.
 
 A Span Event is best used to track the second scenario because it represents a
