@@ -2,19 +2,25 @@
 
 ## Overview
 
-This directory contains the analysis of 404 URLs found in `static/refcache.json` from PR #8043, along with verified replacement URLs.
+This directory contains the analysis of 404 URLs found in `static/refcache.json`
+from PR #8043, along with verified replacement URLs.
 
 ## Files
 
 ### 1. `ISSUE_404_URLS.md`
-Complete issue description in markdown format, ready to be posted as a GitHub issue. Contains:
+
+Complete issue description in Markdown format, ready to be posted as a GitHub
+issue. Contains:
+
 - List of all 404 URLs
 - Context for each URL
 - Verified replacement URLs with recommendations
 - Summary and next steps
 
 ### 2. `404_urls_data.json`
+
 Machine-readable JSON format containing:
+
 - All 404 URLs
 - Status codes
 - Context information
@@ -22,6 +28,7 @@ Machine-readable JSON format containing:
 - Recommendation flags
 
 ### 3. `create_404_issue.sh`
+
 Bash script to automatically create the GitHub issue using the `gh` CLI tool.
 
 ## How to Create the Issue
@@ -68,16 +75,20 @@ gh api /repos/open-telemetry/opentelemetry.io/issues \
 
 **Total 404 URLs found:** 3
 
-1. **Ubuntu 20.04 Runner Images** - EOL, last valid commit (e82adb8a - April 11, 2025) or replaced with Ubuntu 22.04 or 24.04
-2. **OpenTelemetry JS Contrib Node Detectors** - Moved to `/packages/` directory, last valid commit (52dd28d - July 7, 2025)
-3. **OpenTelemetry JS Contrib Express Instrumentation** - Moved from `/plugins/node/` to `/packages/`, last valid commit (52dd28d - July 7, 2025)
+1. **Ubuntu 20.04 Runner Images** - EOL, last valid commit (e82adb8a - April
+   11, 2025) or replaced with Ubuntu 22.04 or 24.04
+2. **OpenTelemetry JS Contrib Node Detectors** - Moved to `/packages/`
+   directory, last valid commit (52dd28d - July 7, 2025)
+3. **OpenTelemetry JS Contrib Express Instrumentation** - Moved from
+   `/plugins/node/` to `/packages/`, last valid commit (52dd28d - July 7, 2025)
 
 All replacement URLs have been verified as working (HTTP 200 status).
 
 ## Next Steps After Issue Creation
 
 1. Update documentation references to use the new URLs
-2. The `static/refcache.json` will be automatically updated on the next cache refresh
+2. The `static/refcache.json` will be automatically updated on the next cache
+   refresh
 3. Consider updating any other references to the old URLs in:
    - `content/ja/docs/languages/js/resources.md`
    - `content/fr/docs/zero-code/js/configuration.md`
@@ -86,10 +97,12 @@ All replacement URLs have been verified as working (HTTP 200 status).
 ## Methodology
 
 The analysis was performed by:
+
 1. Comparing PR #8043 changes to `static/refcache.json`
 2. Identifying URLs that changed from non-404 to 404 status
 3. Researching the reason for each 404
 4. Finding and verifying replacement URLs using HTTP requests
 5. Documenting context and recommendations
 
-All replacement URLs were verified as working before being included in this report.
+All replacement URLs were verified as working before being included in this
+report.
