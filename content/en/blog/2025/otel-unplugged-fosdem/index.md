@@ -1,7 +1,7 @@
 ---
 title: OTel Unplugged EU at FOSDEM 2026
 linkTitle: OTel Unplugged EU at FOSDEM 2026
-date: 2025-10-07
+date: 2025-10-09
 author: >-
   [Ted Young](https://github.com/tedsuo)
 sig: End User
@@ -34,7 +34,7 @@ vote in order to communicate what your priorities are for this next year.
 ## When and where is it happening?
 
 OTel Unplugged will be happening on Monday, February 2nd, the day after
-[FOSDEM](https://fosdem.org/2026/). The event will be will be the lovely Sparks
+[FOSDEM](https://fosdem.org/2026/). The event will be held in the lovely Sparks
 meeting hall located in central Brussels.
 
 ## How do I attend?
