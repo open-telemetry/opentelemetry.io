@@ -6,6 +6,7 @@ aliases:
 weight: 30
 description: 在 OpenTelemetry Go 中实现手动插桩
 default_lang_commit: 369126d9f754c248c11e82046cbcb633c17e594c
+drifted_from_default: true
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 ---
 
