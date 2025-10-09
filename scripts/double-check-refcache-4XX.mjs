@@ -2,7 +2,11 @@
 
 import fs from 'fs/promises';
 import { parseArgs } from 'node:util';
-import { getUrlStatus, isHttp2XX } from './get-url-status.mjs';
+import {
+  getUrlStatus,
+  isStatusNotFound,
+  isHttp2XX,
+} from './get-url-status.mjs';
 import { exit } from 'process';
 
 const CACHE_FILE = 'static/refcache.json';
@@ -88,7 +92,7 @@ async function retry400sAndUpdateCache() {
     }
 
     if (
-      StatusCode === 404 ||
+      isStatusNotFound(StatusCode, url) ||
       (parsedUrl.hash && is4XXForFragments(StatusCode, lastSeenDate))
     ) {
       console.log(
