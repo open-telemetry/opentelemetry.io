@@ -2415,9 +2415,9 @@
     "StatusCode": 206,
     "LastSeen": "2025-09-11T16:09:04.768022-04:00"
   },
-  "https://docs.thousandeyes.com/product-documentation/api/opentelemetry": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-09T18:26:40.286878158Z"
+  "https://docs.thousandeyes.com/product-documentation/integration-guides/opentelemetry/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-09T15:04:10.491061-04:00"
   },
   "https://docs.tracetest.io/configuration/connecting-to-data-stores/opentelemetry-collector": {
     "StatusCode": 206,
