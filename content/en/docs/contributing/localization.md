@@ -456,9 +456,9 @@ If no dictionary is available, then skip the rest of this subsection. Otherwise:
 
 ### PRs with semantic changes should not span locales {#prs-should-not-span-locales}
 
-Approvers should ensure that PRs making **semantic** changes to doc pages do not
-span multiple locales. A semantic change is one that impacts the _meaning_ of
-the page content. Our docs [localization process](.) ensures that locale
+Approvers should ensure that [PRs] making **semantic** changes to doc pages do
+not span multiple locales. A semantic change is one that impacts the _meaning_
+of the page content. Our docs [localization process](.) ensures that locale
 approvers will, in time, review the English-language edits to determine if the
 changes are appropriate for their locale, and how best to incorporate them into
 their locale. If changes are necessary, the locale approvers will make them via
