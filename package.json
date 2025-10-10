@@ -24,7 +24,7 @@
     "_fail": "exit 1",
     "_filename-error": "echo 'ERROR: the following files violate naming conventions; fix using: `npm run fix:filenames`'; echo; npm run -s _ls-bad-filenames; exit 1",
     "_fix:trailing-spaces": "find content -name '*.md' -exec perl -i -pe 's/[ \t]+$//g' {} +",
-    "_fix:format:diff": "npm run __check:format:nowrap -- --write $(npm -s run _list:diff)",
+    "_fix:format:diff": "npm run __check:format -- --write $(npm -s run _list:diff)",
     "_get:no": "echo SKIPPING get operation",
     "_get:submodule": "set -x && git submodule update --init ${DEPTH:- --depth 999}",
     "_hugo": "hugo --cleanDestinationDir",
