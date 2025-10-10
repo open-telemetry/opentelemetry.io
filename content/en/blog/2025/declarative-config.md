@@ -294,12 +294,10 @@ some additional resources to explore:
   https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/samplers
 [complete-config]:
   https://gist.github.com/zeitlinger/09585b1ab57c454f87e6dcb9a6f50a5c
-[declarative-docs]:
-  https://opentelemetry.io/docs/languages/sdk-configuration/declarative-configuration
+[declarative-docs]: /docs/languages/sdk-configuration/declarative-configuration
 [compliance-matrix]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#declarative-configuration
-[java-declarative-config]:
-  https://opentelemetry.io/docs/zero-code/java/agent/declarative-configuration/
+[java-declarative-config]: /docs/zero-code/java/agent/declarative-configuration/
 [slack-java]: https://cloud-native.slack.com/archives/C014L2KCTE3
 [slack-js]: https://cloud-native.slack.com/archives/C01NL1GRPQR
 [slack-php]: https://cloud-native.slack.com/archives/C01NFPCV44V
@@ -320,4 +318,4 @@ some additional resources to explore:
 [declarative-repo]:
   https://github.com/open-telemetry/opentelemetry-configuration
 [list-not-supported]:
-  https://opentelemetry.io/docs/zero-code/java/agent/declarative-configuration/#not-yet-supported-features
+  /docs/zero-code/java/agent/declarative-configuration/#not-yet-supported-features
