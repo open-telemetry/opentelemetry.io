@@ -6,7 +6,7 @@ author: >-
   [Joshua MacDonald](https://github.com/jmacd) (Microsoft),
   [Kent Quirk](https://github.com/kentquirk) (Honeycomb),
   [Otmer Ertl](https://github.com/oertl) (DynaTrace),
-  [Peter Findesian](https://github.com/PeterF778) (Cisco),
+  [Peter Findeisen](https://github.com/PeterF778) (Cisco),
   [Yuanyuan Zhao](https://github.com/yuanyuanzhao3) (DataDog)
 sig: SIG Sampling
 # prettier-ignore
@@ -145,7 +145,7 @@ The new specification lets OpenTelemetry components communicate about
 "how much sampling" has been applied to a span. This supports many
 advanced sampling architectures:
 
-- Accurate counting of sampled spans
+- Reliable estimates of span count
 - Consistent rate-limited sampling
 - Adaptive sampling
 - Consistent multi-stage sampling.
@@ -208,7 +208,7 @@ tracestate: ot=th:fd7
 We gave a lot of consideration to backwards compatibility, but we also
 wanted to be sure we could always use the stated sampling threshold
 for extrapolation, in a reliable, statistical sense. With this in
-mind, we there is one more OpenTelemetry TraceState value in our
+mind, there is one more OpenTelemetry TraceState value in our
 specification, a way to provide explicit randomness in the
 `tracestate` header.
 
@@ -238,12 +238,11 @@ it uses.
 ## Looking forward
 
 This post covers an essential upgrade to OpenTelemetry Tracing
-specification, enabling a new generation of sampling components in
-both SDKs and Collector components. We couldn't cover everything here
-and plan to cover more in the future. 
+specification, enabling a new generation of samplers for OpenTelemetry
+SDKs and Collector components.
 
-For now, here are some useful references including the four
-OpenTelemetry enhancement proposals that plotted our course:
+Here are some useful references including the four OpenTelemetry
+enhancement proposals that plotted our course:
 
 - [0168 Sampling Propagation](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0168-sampling-propagation.md)
 - [0170 Sampling Probability](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0170-sampling-probability.md)
@@ -254,4 +253,4 @@ and our primary specification documents:
 
 - [Trace Probability Sampling](https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/)
 - [Trace SDK Samplers](https://opentelemetry.io/docs/specs/otel/trace/sdk/#sampler)
-- [TraceID Randomness](https://opentelemetry.io/docs/specs/otel/trace/sdk/#traceid-randomness)
+- [TraceID Randomness](https://opentelemetry.io/docs/specs/otel/trace/sdk/#traceid-randomness).
