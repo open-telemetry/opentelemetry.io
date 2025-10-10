@@ -224,7 +224,7 @@ Slack.
 So why did it actually take us five years to ignore health check endpoints in
 tracing?
 
-The journey to declarative configuration, and consequently, the solution for
+The journey to declarative configuration, and consecutively, the solution for
 health check exclusion, highlights a core tenet of OpenTelemetry: building
 sustainable solutions through rigorous specifications.
 
