@@ -15991,6 +15991,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-10T13:26:39.88288634Z"
   },
+  "https://openmainframeproject.org/blog/exploring-opentelemetry-priorities-for-mainframes-insights-from-survey-responses/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-25T12:41:56.722626963Z"
+  },
   "https://openmainframeproject.org/blog/opentelemetry-on-mainframe-priorities-survey/": {
     "StatusCode": 200,
     "LastSeen": "2025-10-10T13:26:30.88971531Z"
