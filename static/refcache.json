@@ -876,8 +876,8 @@
     "LastSeen": "2025-08-28T17:30:05.484176-04:00"
   },
   "https://colocatedeventseu2023.sched.com/event/1Jo8E/ingesting-65-tb-of-telemetry-data-daily-through-open-telemetry-protocol-and-collectors-gustavo-pantuza-vtex": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-10T13:26:57.597808486Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-10T15:38:27.887Z"
   },
   "https://colocatedeventsna2024.sched.com/overview/type/Observability+Day": {
     "StatusCode": 200,
@@ -15620,8 +15620,8 @@
     "LastSeen": "2025-10-01T13:45:13.814Z"
   },
   "https://npmjs.com/package/@fastify/otel": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-10T13:27:44.174242834Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-10T15:38:30.132Z"
   },
   "https://npmjs.com/package/@google-cloud/opentelemetry-cloud-monitoring-exporter": {
     "StatusCode": 200,
@@ -15652,8 +15652,8 @@
     "LastSeen": "2025-10-08T16:11:16.537Z"
   },
   "https://npmjs.com/package/@opentelemetry/exporter-zipkin": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-10T13:27:34.047783529Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-10T15:38:32.435Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-amqplib": {
     "StatusCode": 200,
@@ -19399,9 +19399,9 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-10T13:27:37.27218727Z"
   },
-  "https://www.cloudwego.io/docs/hertz/tutorials/observability/open-telemetry/": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-10T13:27:37.368895817Z"
+  "https://www.cloudwego.io/docs/hertz/tutorials/third-party/open-telemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T11:42:50.404398-04:00"
   },
   "https://www.cncf.io": {
     "StatusCode": 200,
@@ -19532,8 +19532,8 @@
     "LastSeen": "2025-10-10T13:21:49.899483291Z"
   },
   "https://www.docsend.com/": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-10T13:26:40.853481115Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-10T15:38:36.576Z"
   },
   "https://www.docsy.dev/docs/": {
     "StatusCode": 206,
@@ -19802,6 +19802,10 @@
   "https://www.instantdb.com/": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T13:25:39.463779042Z"
+  },
+  "https://www.intersystems.com/products/cache/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T15:50:00Z"
   },
   "https://www.iso.org/iso-8601-date-and-time-format.html": {
     "StatusCode": 200,
@@ -20230,6 +20234,10 @@
   "https://www.mongodb.com/docs/manual/reference/error-codes/": {
     "StatusCode": 206,
     "LastSeen": "2025-10-06T09:44:22.0009979Z"
+  },
+  "https://www.mysql.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-10T15:43:55.094Z"
   },
   "https://www.netlify.com/": {
     "StatusCode": 206,
