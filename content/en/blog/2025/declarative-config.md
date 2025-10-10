@@ -207,7 +207,7 @@ reach out in [`#otel-js`][slack-js] on the CNCF Slack.
 
 The PHP implementation is partially compliant, and you can start using it by
 [initializing from your config file][php-docs]. For help or feedback, reach out
-on [`#otel-php`][slack-php] on the CNCF Slack.
+in [`#otel-php`][slack-php] on the CNCF Slack.
 
 ### Go
 
