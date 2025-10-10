@@ -40,8 +40,8 @@ exclusion in Java.
 The configuration file is language agnostic, so once you create one file, you
 can use it for all your SDKs. The only exceptions are the parameters with the
 specific language name that are only relevant to that language (for example,
-`java spring batch` parameter). Keep in mind that declarative configuration is
-**experimental**, so things might still change.
+`instrumentation/development.java.spring_batch` parameter). Keep in mind that
+declarative configuration is **experimental**, so things might still change.
 
 The following example is a basic configuration file you can use to get started:
 
@@ -59,21 +59,21 @@ tracer_provider:
     - batch:
         exporter:
           otlp_http:
-            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/traces
+            endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318}/v1/traces
 
 meter_provider:
   readers:
     - periodic:
         exporter:
           otlp_http:
-            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/metrics
+            endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318}/v1/metrics
 
 logger_provider:
   processors:
     - batch:
         exporter:
           otlp_http:
-            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/logs
+            endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318}/v1/logs
 ```
 
 All you have to do is pass
@@ -116,7 +116,9 @@ removing the `otel.instrumentation` prefix, splitting at . and converting - to
 
 ```yaml
 file_format: '1.0-rc.1'
----
+
+# ...
+
 instrumentation/development:
   java:
     spring_batch:
@@ -146,19 +148,19 @@ file_format: '1.0-rc.1'
 # ... the rest of the configuration ....
 
 tracer_provider:
-# Configure sampling to exclude health check endpoints.
-sampler:
-  rule_based_routing:
-    fallback_sampler:
-      always_on:
-    span_kind: SERVER
-    rules:
-      # Action to take when the rule matches. Must be DROP or RECORD_AND_SAMPLE.
-      - action: DROP
-        # The span attribute to match against.
-        attribute: url.path
-        # The pattern to compare the span attribute to.
-        pattern: /actuator.*
+  # Configure sampling to exclude health check endpoints.
+  sampler:
+    rule_based_routing:
+      fallback_sampler:
+        always_on:
+      span_kind: SERVER
+      rules:
+        # Action to take when the rule matches. Must be DROP or RECORD_AND_SAMPLE.
+        - action: DROP
+          # The span attribute to match against.
+          attribute: url.path
+          # The pattern to compare the span attribute to.
+          pattern: /actuator.*
 # ... the rest of the tracer_provider configuration ...
 ```
 
@@ -178,7 +180,8 @@ is available and how you can start using it. You can find guidance on how to get
 started and which languages are supported in the
 [documentation][declarative-docs]. As of the time of writing of this post, Java
 is fully compliant and PHP, JavaScript and Go are partially compliant. To see
-the latest status, check the [compliance matrix][compliance-matrix].
+the latest status, check the [compliance matrix][compliance-matrix] or the
+[language implementations tracking issue][tracking-issue].
 
 ### Java
 
@@ -319,3 +322,5 @@ some additional resources to explore:
   https://github.com/open-telemetry/opentelemetry-configuration
 [list-not-supported]:
   /docs/zero-code/java/agent/declarative-configuration/#not-yet-supported-features
+[tracking-issue]:
+  https://github.com/open-telemetry/opentelemetry-configuration/issues/100
