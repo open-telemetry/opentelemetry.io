@@ -1,8 +1,8 @@
 ---
 title:
-  'The Declarative configuration journey: Why it took 5 years to ignore health
-  check endpoints in tracing'
-linkTitle: Declarative configuration journey
+  'A jornada da configuração declarativa: Por que levou 5 anos para ignorar os
+  endpoints de verificação de integridade no rastreamento'
+linkTitle: Jornada de configuração declarative
 date: 2025-10-17
 author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger)(Grafana Labs), [Jay
@@ -12,39 +12,43 @@ author: >-
 cSpell:ignore: Dotel marylia otelconf zeitlinger
 ---
 
-One of the most persistent and popular feature requests for Java OpenTelemetry
-over the past couple of years has been the ability to efficiently [drop spans
-for health check endpoints][drop-spans-issue] – or any other low-value,
-cost-driving endpoints. This issue was first raised in August 2020, yet a
-comprehensive solution remained elusive for a surprisingly long time. Why did it
-take us five years to address this seemingly straightforward problem? The answer
-lies in the fundamental principles of OpenTelemetry's configuration system and
-the journey towards a more robust, flexible approach: declarative configuration.
+Uma das solicitações de recursos mais persistentes e populares para o Java
+OpenTelemetry nos últimos anos tem sido a capacidade de [eliminar com eficiência
+trechos para endpoints de verificação de integridade][drop-spans-issue] – ou
+quaisquer outros endpoints que sejam de baixo valor ou custosos. Essa questão
+foi levantada pela primeira vez em agosto de 2020, mas uma solução abrangente
+permaneceu indefinida por um tempo surpreendentemente longo. Por que demoramos
+cinco anos para resolver esse problema aparentemente simples? A resposta está
+nos princípios fundamentais do sistema de configuração do OpenTelemetry e na
+jornada em direção a uma abordagem mais robusta e flexível: a configuração
+declarativa.
 
-From the outset, OpenTelemetry relied on environment variables for
-configuration, a choice driven by their universal availability across languages
-and ease of parsing. However, as the need for more complex configuration use
-cases grew, the limitations of simple string-based environment variables became
-increasingly apparent, making advanced configurations cumbersome and difficult
-to manage.
+Desde o início, o OpenTelemetry se baseia em variáveis ​​de ambiente para
+configuração, uma escolha motivada por sua disponibilidade universal em todas as
+linguagens e facilidade de análise. No entanto, à medida que a necessidade de
+casos de uso de configuração mais complexos cresceu, as limitações de variáveis
+​​de ambiente simples baseadas em strings tornaram-se cada vez mais aparentes,
+tornando as configurações avançadas complexas e difíceis de gerenciar.
 
-Enter declarative configuration, a powerful evolution that leverages YAML files
-to define OpenTelemetry settings. This shift allows for reading data from any
-tree-shaped source, fundamentally transforming how we approach complex
-configurations. Throughout this post, we'll explore how declarative
-configuration provides an elegant solution to the challenges of the past, and
-demonstrate its immediate impact with practical use cases like health check
-exclusion in Java.
+Entra em cena a configuração declarativa, uma evolução poderosa que utiliza
+arquivos YAML para definir as configurações do OpenTelemetry. Essa mudança
+permite a leitura de dados de qualquer fonte em formato de árvore, transformando
+fundamentalmente a forma como abordamos configurações complexas. Ao longo deste
+artigo, exploraremos como a configuração declarativa oferece uma solução
+elegante para os desafios do passado e demonstraremos seu impacto imediato em
+casos de uso práticos, como a exclusão de verificação de integridade em Java.
 
-## Getting started {#getting-started}
+## Guia de primeiros passos {#getting-started}
 
-The configuration file is language agnostic, so once you create one file, you
-can use it for all your SDKs. The only exceptions are the parameters with the
-specific language name that are only relevant to that language (for example,
-`java spring batch` parameter). Keep in mind that declarative configuration is
-**experimental**, so things might still change.
+O arquivo de configuração é independente de linguagem de programação, portanto,
+depois de criar um arquivo, você pode usá-lo para todos os seus SDKs. As únicas
+exceções são os parâmetros com o nome da linguagem específica que são relevantes
+apenas para aquela linguagem (por exemplo, `java spring batch` do Java Spring).
+Lembre-se de que a configuração declarativa é **experimental**, portanto, as
+coisas ainda podem mudar.
 
-The following example is a basic configuration file you can use to get started:
+O exemplo a seguir é um arquivo de configuração básico que você pode usar para
+começar:
 
 ```yaml
 file_format: '1.0-rc.1'
@@ -53,7 +57,7 @@ resource:
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
   detection/development:
     detectors:
-      - service: # will add "service.instance.id" and "service.name" from OTEL_SERVICE_NAME
+      - service: # vai adicionar "service.instance.id" e "service.name" do OTEL_SERVICE_NAME
 
 tracer_provider:
   processors:
@@ -77,43 +81,44 @@ logger_provider:
             endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/logs
 ```
 
-All you have to do is pass
-`OTEL_EXPERIMENTAL_CONFIG_FILE=/path/to/otel-config.yaml` to the application to
-activate the experimental declarative configuration option. This variable only
-works in the Java agent and JavaScript at the time of writing.
+Tudo o que você precisa fazer é passar
+`OTEL_EXPERIMENTAL_CONFIG_FILE=/path/to/otel-config.yaml` para a aplicação para
+ativar a opção de configuração declarativa experimental. Esta variável só
+funciona no agente Java e no JavaScript no momento.
 
-## Declarative configuration in Java {#declarative-configuration-in-java}
+## Configuração declarativa em Java {#declarative-configuration-in-java}
 
-Let's now look at the broader implementation of declarative configuration within
-the Java ecosystem. As the pioneering language in this area, Java agent 2.21+
-now fully supports declarative configuration, with most instrumentations and
-features already functional. We are working to incorporate the remaining
-features throughout 2026, and you can track our progress on the [project
-board][java-project] and see the [list of features not yet
-supported][list-not-supported].
+Vejamos agora a implementação da configuração declarativa no ecossistema Java.
+Como linguagem pioneira nessa área, o agente Java 2.21+ agora oferece suporte
+total à configuração declarativa, com a maioria das instrumentações e recursos
+já funcionais. Estamos trabalhando para incorporar os recursos restantes ao
+longo de 2026, e você pode acompanhar nosso progresso no [quadro do
+projeto][java-project] e ver a [lista de recursos ainda não
+suportados][list-not-supported].
 
-Depending on whether you are starting fresh or migrating from using environment
-variables, there’s a few resources you can leverage:
+Dependendo se você está começando do zero ou migrando do uso de variáveis ​​de
+ambiente, há alguns recursos que você pode aproveitar:
 
-- The basic (language agnostic) configuration file example from the introduction
-  section is the quickest way to get started when you don’t need any further
-  customizations.
-- The [migration configuration file][migration-file] maps the old environment
-  variables into the YAML schema, allowing for a drop in replacement for users
-  using workloads already configured with environment variables.
-- The [full configuration file][full-file] (“kitchen sink”) shows the entire
-  schema, annotated with documentation as comments. This is useful for users who
-  want to see all available options and their defaults.
+- O exemplo de arquivo de configuração básico (independente de linguagem) da
+  seção anterior é a maneira mais rápida de começar quando você não precisa de
+  mais personalizações.
+- O [arquivo de configuração de migração][migration-file] mapeia as variáveis
+  ​​de ambiente antigas para o esquema YAML, permitindo uma substituição
+  imediata para usuários que usam workloads já configurados com variáveis ​​de
+  ambiente.
+- O [arquivo de configuração completo][full-file] ("kitchen sink") mostra o
+  esquema completo, anotado com documentação como comentários. Isso é útil para
+  usuários que desejam ver todas as opções disponíveis e seus padrões.
 
-All of the above files work for any language that supports declarative
-configuration.
+Todos os arquivos acima funcionam para qualquer linguagem que ofereça suporte à
+configuração declarativa.
 
-In addition, there are many settings specific to Java agent that go into the
-instrumentation section of your configuration file. For example, if you have the
-system property `otel.instrumentation.spring-batch.experimental.chunk.new-trace`
-in your application, you can create the declarative configuration file by
-removing the `otel.instrumentation` prefix, splitting at . and converting - to
-\_.
+Além disso, há muitas configurações específicas do agente Java que vão para a
+seção de instrumentação do seu arquivo de configuração. Por exemplo, se você
+tiver a propriedade de sistema
+`otel.instrumentation.spring-batch.experimental.chunk.new-trace` em sua
+aplicação, poderá criar o arquivo de configuração declarativo removendo o
+prefixo `otel.instrumentation`, dividindo em . e convertendo - para \_.
 
 ```yaml
 file_format: '1.0-rc.1'
@@ -126,163 +131,171 @@ instrumentation/development:
           new_trace: true
 ```
 
-With this configuration in place, developers can continue to use their Java
-instrumentation as they normally would, sending telemetry data to their chosen
-observability backend. Furthermore, the declarative configuration file provides
-the flexibility to expand and add more parameters as needed, allowing for highly
-customized and nuanced control over the observability setup.
+Com essa configuração implementada, os desenvolvedores podem continuar a usar
+sua instrumentação Java normalmente, enviando dados de telemetria para o backend
+de observabilidade escolhido. Além disso, o arquivo de configuração declarativo
+oferece flexibilidade para expandir e adicionar mais parâmetros conforme
+necessário, permitindo um controle altamente personalizado e detalhado sobre a
+configuração de observabilidade.
 
-## Health check exclusion {#health-check-exclusion}
+## Exclusão de verificação de integridade {#health-check-exclusion}
 
-As mentioned in the introduction, one of the most popular feature requests in
-the Java community was to be able to exclude health checks (or other unimportant
-or noisy resources) from generating traces.
+Como mencionado na introdução, uma das solicitações de recursos mais populares
+na comunidade Java era a possibilidade de excluir verificações de integridade
+(ou outros recursos sem importância ou com ruído) de gerarem rastros.
 
-To achieve this, you need to add a new `sampler` block within your
-`tracer_provider` configuration, as shown below:
+Para isso, você precisa adicionar um novo bloco `sampler` à sua configuração
+`tracer_provider`, conforme mostrado abaixo:
 
 ```yaml
 file_format: '1.0-rc.1'
 
-# ... the rest of the configuration ....
+# ... o resto da configuração ....
 
 tracer_provider:
-# Configure sampling to exclude health check endpoints.
+# Configurar amostragem para excluir endpoints de verificação de integridade.
 sampler:
   rule_based_routing:
     fallback_sampler:
       always_on:
     span_kind: SERVER
     rules:
-      # Action to take when the rule matches. Must be DROP or RECORD_AND_SAMPLE.
+      # Ação a ser tomada quando a regra corresponder. Deve ser DROP ou RECORD_AND_SAMPLE.
       - action: DROP
-        # The span attribute to match against.
+        # O atributo do trecho a ser correspondido.
         attribute: url.path
-        # The pattern to compare the span attribute to.
+        # O padrão ao qual comparar o atributo do trecho.
         pattern: /actuator.*
-# ... the rest of the tracer_provider configuration ...
+# ... o resto da configuração do tracer_provider ...
 ```
 
-See the [Java sampler documentation][java-sampler] for more details on the
-available options.
+Consulte a [documentação do Java Sampler][java-sampler] para obter mais detalhes
+sobre as opções disponíveis.
 
-Try it for yourself:
+Experimente você mesmo:
 
-1. Save [the complete configuration][complete-config]
-2. Run the Java agent with
+1. Salve [a configuração completa][complete-config]
+2. Execute o agente Java com
    `-Dotel.experimental.config.file=/path/to/otel-config.yaml`
 
-## Availability {#availability}
+## Disponibilidade {#availability}
 
-After reading about declarative configuration, you might be wondering where it
-is available and how you can start using it. You can find guidance on how to get
-started and which languages are supported in the
-[documentation][declarative-docs]. As of the time of writing of this post, Java
-is fully compliant and PHP, JavaScript and Go are partially compliant. To see
-the latest status, check the [compliance matrix][compliance-matrix].
+Depois de ler sobre configuração declarativa, você pode estar se perguntando
+onde ela está disponível e como pode começar a usá-la. Você pode encontrar
+orientações sobre como começar e quais linguagens são suportadas na
+[documentação][declarative-docs]. No momento da criação deste artigo, Java é
+totalmente compatível e PHP, JavaScript e Go são parcialmente compatíveis. Para
+ver o status mais recente, consulte a [matriz de
+conformidade][compliance-matrix].
 
 ### Java {#java}
 
-As described previously, declarative configuration in
-[Java][java-declarative-config] is experimental but ready to use. Use the
-example we discussed earlier to set up your new configuration. If you have
-questions or feedback reach out on [`#otel-java`][slack-java] on the CNCF Slack.
+Conforme descrito anteriormente, a configuração declarativa em
+[Java][java-declarative-config] é experimental, mas está pronta para uso. Use o
+exemplo discutido anteriormente para definir sua nova configuração. Se tiver
+dúvidas ou feedback, entre em contato pelo [`#otel-java`][slack-java] no Slack
+do CNCF.
 
-_Note to other language maintainers: It is useful to create a bridge module that
-adapts declarative config settings and environment variables to a common
-interface. For Java, this is the [Declarative Config Bridge][java-bridge]._
+_Observação para mantenedores de outras linguagens: É útil criar um módulo de
+ponte que adapte as configurações declarativas e as variáveis ​​de ambiente a
+uma interface comum. Para Java, esta é a [Declarative Config
+Bridge][java-bridge] (Ponte de Configuração Declarativa). _
 
 ### JavaScript {#javascript}
 
-The implementation in the JavaScript SDK is currently under development. A new
-package called [opentelemetry-configuration][js-package] has been created, and
-it handles both environment variables and declarative configuration. With this
-approach, the user doesn't need to change their instrumentation when they switch
-between environment variables and configuration file, since the new package
-handles it and returns the same configuration model for both cases. Currently,
-this configuration package is being added to other instrumentation packages, so
-they can take advantage of the declarative configuration. If you have questions,
-reach out on [`#otel-js`][slack-js] on the CNCF Slack.
+A implementação no SDK do JavaScript está atualmente em desenvolvimento. Um novo
+pacote chamado [opentelemetry-configuration][js-package] foi criado e lida tanto
+com variáveis ​​de ambiente quanto com configuração declarativa. Com essa
+abordagem, o usuário não precisa alterar sua instrumentação ao alternar entre
+variáveis ​​de ambiente e arquivo de configuração, pois o novo pacote lida com
+isso e retorna o mesmo modelo de configuração para ambos os casos. Atualmente,
+este pacote de configuração está sendo adicionado a outros pacotes de
+instrumentação, para que possam aproveitar a configuração declarativa. Se tiver
+dúvidas, entre em contato pelo [`#otel-js`][slack-js] no Slack do CNCF.
 
 ### PHP {#php}
 
-The PHP implementation is partially compliant, and you can start using it by
-[initializing from your config file][php-docs]. For help or feedback, reach out
-on [`#otel-php`][slack-php] on the CNCF Slack.
+A implementação do PHP é parcialmente compatível e você pode começar a usá-la
+[inicializando a partir do seu arquivo de configuração][php-docs]. Para obter
+ajuda ou feedback, entre em contato pelo [`#otel-php`][slack-php] no Slack do
+CNCF.
 
 ### Go {#go}
 
-Go has a [partial implementation][go-package] of declarative configuration. Each
-supported schema version has its own corresponding package directory. For
-example, importing `go.opentelemetry.io/contrib/otelconf/v0.3.0` gives you the
-code that supports version 0.3.0 of the configuration schema. You can find all
-available versions in the [package index][go-package-index]. If you have
-questions on how to use it, reach out to [`#otel-go`][slack-go] on the CNCF
-Slack.
+Go possui uma [implementação parcial][go-package] de configuração declarativa.
+Cada versão de esquema suportada possui seu próprio diretório de pacotes
+correspondente. Por exemplo, importar
+`go.opentelemetry.io/contrib/otelconf/v0.3.0` fornece o código que suporta a
+versão 0.3.0 do esquema de configuração. Você pode encontrar todas as versões
+disponíveis no [índice de pacotes][go-package-index]. Caso tenha dúvidas sobre
+como usá-lo, entre em contato com [`#otel-go`][slack-go] no Slack do CNCF.
 
-## The journey {#the-journey}
+## A jornada {#the-journey}
 
-So why did it actually take us five years to ignore health check endpoints in
-tracing?
+Então, por que levamos cinco anos para ignorar os endpoints de verificação de
+integridade no rastreamento?
 
-The journey to declarative configuration, and consequently, the solution for
-health check exclusion, highlights a core tenet of OpenTelemetry: building
-sustainable solutions through rigorous specifications.
+A jornada rumo à configuração declarativa e, consequentemente, a solução para a
+exclusão de verificações de integridade, destaca um princípio fundamental do
+OpenTelemetry: construir soluções sustentáveis ​​por meio de especificações
+rigorosas.
 
-From the outset, OpenTelemetry's reliance on environment variables, while
-universally available, proved increasingly complex for advanced configurations.
-New environment variables were eventually disallowed, creating a void that a
-more robust solution needed to fill.
+Desde o início, a dependência do OpenTelemetry em variáveis ​​de ambiente,
+embora universalmente disponível, mostrou-se cada vez mais complexa para
+configurações avançadas. Novas variáveis ​​de ambiente acabaram sendo
+desautorizadas, criando uma lacuna que uma solução mais robusta precisava
+preencher.
 
-The replacement, as we’ve presented in this blog post, is declarative
-configuration. Crafting and agreeing upon the precise syntax and semantics was a
-time-consuming, and sometimes exhausting, process. For example, we discussed
-several proposals on how environment variables could be embedded until we came
-up with the current solution of using
-`${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}`.
+A substituição, como apresentamos neste artigo, é a configuração declarativa.
+Elaborar e concordar com a sintaxe e a semântica precisas foi um processo
+demorado e, às vezes, exaustivo. Por exemplo, discutimos diversas propostas
+sobre como as variáveis ​​de ambiente poderiam ser incorporadas até chegarmos à
+solução atual de usar `${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}`.
 
-This process serves as a powerful case study for how the OpenTelemetry community
-operates. It's a testament to establishing consensus, fostering collaboration,
-and the collective effort required to introduce significant new features and
-drive their implementation across diverse projects.
+Este processo serve como um poderoso estudo de caso sobre como a comunidade
+OpenTelemetry opera. É uma prova do estabelecimento de consenso, do fomento à
+colaboração e do esforço coletivo necessário para introduzir novos recursos
+significativos e impulsionar sua implementação em diversos projetos.
 
-## What's next for declarative configuration? {#Whats-next-for-declarative-configuration}
+## O que vem a seguir para a configuração declarativa? {#Whats-next-for-declarative-configuration}
 
-The journey of declarative configuration is far from over. Our current focus
-involves a substantial effort to expand language support, which is crucial for
-ensuring that developers, regardless of their preferred tools, can leverage the
-benefits of a declarative approach.
+A jornada da configuração declarativa está longe de terminar. Nosso foco atual
+envolve um esforço substancial para expandir o suporte em várias linguagens, o
+que é crucial para garantir que os desenvolvedores, independentemente de suas
+ferramentas preferidas, possam aproveitar os benefícios de uma abordagem
+declarativa.
 
-We are keenly interested in user feedback as we continue to develop and refine
-these features. We encourage you to begin experimenting with the current
-implementations and to actively communicate any missing functionalities, pain
-points, or areas for improvement. This collaborative approach will help us
-prioritize development efforts and ensure that the solutions we build truly meet
-the needs of the community. You share your feedback or questions using the
-channel [`#otel-config-file`][slack-config] from CNCF Slack.
+Estamos muito interessados ​​no feedback dos usuários à medida que continuamos a
+desenvolver e refinar esses recursos. Incentivamos você a começar a experimentar
+as implementações atuais e a comunicar quaisquer funcionalidades ausentes,
+pontos problemáticos ou áreas que precisam de melhoria. Essa abordagem
+colaborativa nos ajudará a priorizar os esforços de desenvolvimento e a garantir
+que as soluções que criamos realmente atendam às necessidades da comunidade.
+Compartilhe seu feedback ou perguntas usando o canal
+[`#otel-config-file`][slack-config] do Slack do CNCF.
 
-Beyond providing feedback, there are other ways to get involved and contribute
-to the growth of declarative configuration. Each OpenTelemetry SDK has a
-[Special Interest Groups (SIGs)][sigs] dedicated to its implementation. Joining
-these SIGs offers a direct avenue to understand the current status of
-development, participate in discussions, and identify opportunities to
-contribute. Whether it's through code contributions, documentation enhancements,
-or simply sharing your experiences, every contribution helps to advance the
-declarative configuration ecosystem. Your active participation is key to
-fostering a robust and versatile set of tools for modern application
-development.
+Além de fornecer feedback, existem outras maneiras de se envolver e contribuir
+para o crescimento da configuração declarativa. Cada SDK do OpenTelemetry possui
+[Grupos de Interesse Especial (SIGs)][sigs] dedicados à sua implementação.
+Participar desses SIGs oferece um canal direto para entender o estado atual do
+desenvolvimento, participar de discussões e identificar oportunidades de
+contribuição. Seja por meio de contribuições de código, melhorias na
+documentação ou simplesmente compartilhando suas experiências, cada contribuição
+ajuda a avançar o ecossistema de configuração declarativa. Sua participação é
+fundamental para promover um conjunto robusto e versátil de ferramentas para o
+desenvolvimento de aplicações modernas.
 
-We hope to hear from you!
+Esperamos ouvir de você!
 
-## Additional resources {#additional-resources}
+## Recursos adicionais {#additional-resources}
 
-To learn more about the work going on for declarative configuration, here are
-some additional resources to explore:
+Para saber mais sobre o trabalho em andamento na configuração declarativa, aqui
+estão alguns recursos adicionais para explorar:
 
-- [Simplifying OpenTelemetry with Configuration - Alex Boten, Honeycomb & Jack
-  Berg, New Relic][yt-config]
-- [Declarative configuration documentation](/docs/languages/sdk-configuration/declarative-configuration/)
-- [Declarative configuration repository][declarative-repo]
+- [_Simplifying OpenTelemetry with Configuration - Alex Boten, Honeycomb & Jack
+  Berg, New Relic_][yt-config]
+- [Documentação para configuração declarativa](/docs/languages/sdk-configuration/declarative-configuration/)
+- [Repositório para configuração declarativa][declarative-repo]
 
 [drop-spans-issue]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/1060
