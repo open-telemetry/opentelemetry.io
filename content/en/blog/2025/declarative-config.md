@@ -201,7 +201,7 @@ between environment variables and configuration file, since the new package
 handles it and returns the same configuration model for both cases. Currently,
 this configuration package is being added to other instrumentation packages, so
 they can take advantage of the declarative configuration. If you have questions,
-reach out on [`#otel-js`][slack-js] on the CNCF Slack.
+reach out in [`#otel-js`][slack-js] on the CNCF Slack.
 
 ### PHP
 
