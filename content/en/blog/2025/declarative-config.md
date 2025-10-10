@@ -8,7 +8,7 @@ author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger)(Grafana Labs), [Jay
   DeLuca](https://github.com/jaydeluca) (Grafana Labs), [Marylia
   Gutierrez](https://github.com/maryliag) (Grafana Labs)
-cSpell:ignore: marylia zeitlinger
+cSpell:ignore: marylia zeitlinger Dotel otelconf
 ---
 
 One of the most persistent and popular feature requests for Java OpenTelemetry
@@ -45,7 +45,7 @@ specific language name that are only relevant to that language (for example,
 
 The following example is a basic configuration file you can use to get started:
 
-```
+```yaml
 file_format: '1.0-rc.1'
 
 resource:
@@ -114,7 +114,7 @@ in your application, you can create the declarative configuration file by
 removing the `otel.instrumentation` prefix, splitting at . and converting - to
 \_.
 
-```
+```yaml
 file_format: '1.0-rc.1'
 ...
 instrumentation/development:
@@ -140,7 +140,7 @@ or noisy resources) from generating traces.
 To achieve this, you need to add a new `sampler` block within your
 `tracer_provider` configuration, as shown below:
 
-```
+  ```yaml
 file_format: "1.0-rc.1"
 
 # ... the rest of the configuration ....
@@ -163,7 +163,7 @@ tracer_provider:
 # ... the rest of the tracer_provider configuration ...
 ```
 
-See the [Java sampler documentation][] for more details on the available
+See the [Java sampler documentation][java-sampler] for more details on the available
 options.
 
 Try it for yourself:
@@ -320,3 +320,4 @@ some additional resources to explore:
 [yt-config]: https://www.youtube.com/watch?v=u6svjtGpXO4
 [declarative-repo]:
   https://github.com/open-telemetry/opentelemetry-configuration
+[list-not-supported]: https://opentelemetry.io/docs/zero-code/java/agent/declarative-configuration/#not-yet-supported-features
