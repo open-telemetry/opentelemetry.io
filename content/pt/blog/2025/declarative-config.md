@@ -43,9 +43,10 @@ casos de uso práticos, como a exclusão de verificação de integridade em Java
 O arquivo de configuração é independente de linguagem de programação, portanto,
 depois de criar um arquivo, você pode usá-lo para todos os seus SDKs. As únicas
 exceções são os parâmetros com o nome da linguagem específica que são relevantes
-apenas para aquela linguagem (por exemplo, `java spring batch` do Java Spring).
-Lembre-se de que a configuração declarativa é **experimental**, portanto, as
-coisas ainda podem mudar.
+apenas para aquela linguagem (por exemplo,
+`instrumentation/development.java.spring_batch` do Java Spring). Lembre-se de
+que a configuração declarativa é **experimental**, portanto, as coisas ainda
+podem mudar.
 
 O exemplo a seguir é um arquivo de configuração básico que você pode usar para
 começar:
@@ -64,21 +65,21 @@ tracer_provider:
     - batch:
         exporter:
           otlp_http:
-            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/traces
+            endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318}/v1/traces
 
 meter_provider:
   readers:
     - periodic:
         exporter:
           otlp_http:
-            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/metrics
+            endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318}/v1/metrics
 
 logger_provider:
   processors:
     - batch:
         exporter:
           otlp_http:
-            endpoint: ${OTEL_EXPORTER_OTLP_ENDPOINT:-http://localhost:4318}/v1/logs
+            endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318}/v1/logs
 ```
 
 Tudo o que você precisa fazer é passar
@@ -122,7 +123,9 @@ prefixo `otel.instrumentation`, dividindo em . e convertendo - para \_.
 
 ```yaml
 file_format: '1.0-rc.1'
----
+
+# ...
+
 instrumentation/development:
   java:
     spring_batch:
@@ -153,20 +156,20 @@ file_format: '1.0-rc.1'
 # ... o resto da configuração ....
 
 tracer_provider:
-# Configurar amostragem para excluir endpoints de verificação de integridade.
-sampler:
-  rule_based_routing:
-    fallback_sampler:
-      always_on:
-    span_kind: SERVER
-    rules:
-      # Ação a ser tomada quando a regra corresponder. Deve ser DROP ou RECORD_AND_SAMPLE.
-      - action: DROP
-        # O atributo do trecho a ser correspondido.
-        attribute: url.path
-        # O padrão ao qual comparar o atributo do trecho.
-        pattern: /actuator.*
-# ... o resto da configuração do tracer_provider ...
+  # Configurar amostragem para excluir endpoints de verificação de integridade.
+  sampler:
+    rule_based_routing:
+      fallback_sampler:
+        always_on:
+      span_kind: SERVER
+      rules:
+        # Ação a ser tomada quando a regra corresponder. Deve ser DROP ou RECORD_AND_SAMPLE.
+        - action: DROP
+          # O atributo do trecho a ser correspondido.
+          attribute: url.path
+          # O padrão ao qual comparar o atributo do trecho.
+          pattern: /actuator.*
+  # ... o resto da configuração do tracer_provider ...
 ```
 
 Consulte a [documentação do Java Sampler][java-sampler] para obter mais detalhes
@@ -186,7 +189,8 @@ orientações sobre como começar e quais linguagens são suportadas na
 [documentação][declarative-docs]. No momento da criação deste artigo, Java é
 totalmente compatível e PHP, JavaScript e Go são parcialmente compatíveis. Para
 ver o status mais recente, consulte a [matriz de
-conformidade][compliance-matrix].
+conformidade][compliance-matrix] ou a _issue_ de [implementações em diferentes
+linguagens][tracking-issue].
 
 ### Java {#java}
 
@@ -333,3 +337,5 @@ estão alguns recursos adicionais para explorar:
   https://github.com/open-telemetry/opentelemetry-configuration
 [list-not-supported]:
   /docs/zero-code/java/agent/declarative-configuration/#not-yet-supported-features
+[tracking-issue]:
+  https://github.com/open-telemetry/opentelemetry-configuration/issues/100
