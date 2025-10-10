@@ -3,7 +3,7 @@ title:
   'The Declarative configuration journey: Why it took 5 years to ignore health
   check endpoints in tracing'
 linkTitle: Declarative configuration journey
-date: 2025-10-10
+date: 2025-10-17
 author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger)(Grafana Labs), [Jay
   DeLuca](https://github.com/jaydeluca) (Grafana Labs), [Marylia
@@ -94,7 +94,7 @@ supported][list-not-supported].
 Depending on whether you are starting fresh or migrating from using environment
 variables, there’s a few resources you can leverage:
 
-- The basic (language agnostic) configuration file example from the introduction
+- The basic (language agnostic) configuration file example from the previous
   section is the quickest way to get started when you don’t need any further
   customizations.
 - The [migration configuration file][migration-file] maps the old environment
