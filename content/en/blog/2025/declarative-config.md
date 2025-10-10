@@ -185,7 +185,7 @@ the latest status, check the [compliance matrix][compliance-matrix].
 As described previously, declarative configuration in
 [Java][java-declarative-config] is experimental but ready to use. Use the
 example we discussed earlier to set up your new configuration. If you have
-questions or feedback reach out on [`#otel-java`][slack-java] on the CNCF Slack.
+questions or feedback reach out in [`#otel-java`][slack-java] on the CNCF Slack.
 
 _Note to other language maintainers: It is useful to create a bridge module that
 adapts declarative config settings and environment variables to a common
