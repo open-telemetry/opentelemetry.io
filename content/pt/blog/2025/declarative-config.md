@@ -3,11 +3,12 @@ title:
   'The Declarative configuration journey: Why it took 5 years to ignore health
   check endpoints in tracing'
 linkTitle: Declarative configuration journey
-date: 2025-10-10
+date: 2025-10-17
 author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger)(Grafana Labs), [Jay
   DeLuca](https://github.com/jaydeluca) (Grafana Labs), [Marylia
   Gutierrez](https://github.com/maryliag) (Grafana Labs)
+# default_lang_commit: 9383da27dd1d08b0c47e2792376dbd6ebbac1192 Update with value once EN gets merged
 cSpell:ignore: Dotel marylia otelconf zeitlinger
 ---
 
