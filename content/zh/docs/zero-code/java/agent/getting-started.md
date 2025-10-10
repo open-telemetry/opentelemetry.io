@@ -2,6 +2,7 @@
 title: 快速开始
 weight: 1
 default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829
+drifted_from_default: true
 cSpell:ignore: Dotel myapp
 ---
 
