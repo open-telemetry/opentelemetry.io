@@ -4,6 +4,7 @@ linkTitle: Exemple
 weight: 20
 aliases: [/docs/languages/python/automatic/example]
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+drifted_from_default: true
 cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette venv
 ---
 

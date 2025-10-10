@@ -5,6 +5,7 @@ description:
   Obtener información sobre las métricas HTTP/gRPC que OBI puede exportar.
 weight: 21
 default_lang_commit: f7cb8b65a478450d80d703b34c8473c579702108
+drifted_from_default: true
 cSpell:ignore: replicaset statefulset
 ---
 

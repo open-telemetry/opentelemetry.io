@@ -3,6 +3,7 @@ title: 禁用特定插桩
 linkTitle: 禁用插桩
 weight: 11
 default_lang_commit: a4dcd0236fb8d57f53a6167905c9114afd55df4b
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
