@@ -216,7 +216,7 @@ supported schema version has its own corresponding package directory. For
 example, importing `go.opentelemetry.io/contrib/otelconf/v0.3.0` gives you the
 code that supports version 0.3.0 of the configuration schema. You can find all
 available versions in the [package index][go-package-index]. If you have
-questions on how to use it, reach out to [`#otel-go`][slack-go] on the CNCF
+questions on how to use it, reach out in [`#otel-go`][slack-go] on the CNCF
 Slack.
 
 ## The journey
