@@ -199,7 +199,7 @@ do CNCF.
 _Observação para mantenedores de outras linguagens: É útil criar um módulo de
 ponte que adapte as configurações declarativas e as variáveis ​​de ambiente a
 uma interface comum. Para Java, esta é a [Declarative Config
-Bridge][java-bridge] (Ponte de Configuração Declarativa). _
+Bridge][java-bridge](Ponte de Configuração Declarativa)._
 
 ### JavaScript {#javascript}
 
