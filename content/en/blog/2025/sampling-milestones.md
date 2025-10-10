@@ -22,7 +22,6 @@ a community, we the observability industry had two new standards for
 distributed tracing. Of course, we weren't finished.
 
 [TRACECONTEXT1]: https://www.w3.org/TR/trace-context-1
-[TRACECONTEXT2]: https://www.w3.org/TR/trace-context-2
 [JAEGERREMOTE]: https://www.jaegertracing.io/docs/1.22/architecture/sampling/
 
 Sampling is a major topic of the Tracing SDK specification, and the
@@ -113,7 +112,7 @@ larger problem in mind. Could we, including OpenTelemetry and
 non-OpenTelemetry tracing systems, agree on how many bits of the
 TraceID were random?
 
-The [W3C TraceContext Level 2](https://www.w3.org/TR/trace-context-2/)
+The [W3C TraceContext Level 2][TRACECONTEXT2]
 specification, currently a [Candidate Recommendation
 Draft](https://www.w3.org/standards/types/#x4-2-1-candidate-recommendation-draft),
 answers this question with a new [`Random` Trace Flag
@@ -124,6 +123,8 @@ example, when we [represent the TraceID as 32 hexadecimal
 digits](https://opentelemetry.io/docs/specs/otel/trace/api/#retrieving-the-traceid-and-spanid),
 the last, rightmost 14 digits are random. Represented as 16 bytes, the
 last, rightmost 7 bytes are random.
+
+[TRACECONTEXT2]: https://www.w3.org/TR/trace-context-2
 
 OpenTelemetry is adopting the W3C TraceContext Level 2 draft
 recommendation as the foundation for consistent sampling. All SDKs
