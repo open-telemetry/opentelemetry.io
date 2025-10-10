@@ -185,7 +185,7 @@ the latest status, check the [compliance matrix][compliance-matrix].
 As described previously, declarative configuration in
 [Java][java-declarative-config] is experimental but ready to use. Use the
 example we discussed earlier to set up your new configuration. If you have
-questions or feedback reach out on [`#otel-java`][slack-java] on the CNCF Slack.
+questions or feedback reach out in [`#otel-java`][slack-java] on the CNCF Slack.
 
 _Note to other language maintainers: It is useful to create a bridge module that
 adapts declarative config settings and environment variables to a common
@@ -201,13 +201,13 @@ between environment variables and configuration file, since the new package
 handles it and returns the same configuration model for both cases. Currently,
 this configuration package is being added to other instrumentation packages, so
 they can take advantage of the declarative configuration. If you have questions,
-reach out on [`#otel-js`][slack-js] on the CNCF Slack.
+reach out in [`#otel-js`][slack-js] on the CNCF Slack.
 
 ### PHP
 
 The PHP implementation is partially compliant, and you can start using it by
 [initializing from your config file][php-docs]. For help or feedback, reach out
-on [`#otel-php`][slack-php] on the CNCF Slack.
+in [`#otel-php`][slack-php] on the CNCF Slack.
 
 ### Go
 
@@ -216,7 +216,7 @@ supported schema version has its own corresponding package directory. For
 example, importing `go.opentelemetry.io/contrib/otelconf/v0.3.0` gives you the
 code that supports version 0.3.0 of the configuration schema. You can find all
 available versions in the [package index][go-package-index]. If you have
-questions on how to use it, reach out to [`#otel-go`][slack-go] on the CNCF
+questions on how to use it, reach out in [`#otel-go`][slack-go] on the CNCF
 Slack.
 
 ## The journey
@@ -224,7 +224,7 @@ Slack.
 So why did it actually take us five years to ignore health check endpoints in
 tracing?
 
-The journey to declarative configuration, and consequently, the solution for
+The journey to declarative configuration, and consecutively, the solution for
 health check exclusion, highlights a core tenet of OpenTelemetry: building
 sustainable solutions through rigorous specifications.
 
