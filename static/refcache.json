@@ -1087,6 +1087,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-10T13:26:58.154653018Z"
   },
+  "https://datatracker.ietf.org/doc/draft-ietf-httpbis-safe-method-w-body/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T22:50:28.584146861Z"
+  },
   "https://datatracker.ietf.org/doc/draft-moriarty-acme-client/": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T13:24:38.389933507Z"
@@ -1122,6 +1126,10 @@
   "https://datatracker.ietf.org/doc/html/rfc5424": {
     "StatusCode": 206,
     "LastSeen": "2025-07-18T18:23:13.113196446Z"
+  },
+  "https://datatracker.ietf.org/doc/html/rfc5531": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-24T22:50:27.670445918Z"
   },
   "https://datatracker.ietf.org/doc/html/rfc6455": {
     "StatusCode": 206,
@@ -1675,6 +1683,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-14T12:56:48.913623945Z"
   },
+  "https://docs.docker.com/reference/api/engine/version/v1.51/#tag/Container/operation/ContainerStats": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-30T10:39:40.848145022Z"
+  },
   "https://docs.dynatrace.com/docs/shortlink/opentelemetry-collector": {
     "StatusCode": 206,
     "LastSeen": "2025-03-28T08:01:17.634111921Z"
@@ -2062,6 +2074,10 @@
   "https://docs.oracle.com/en-us/iaas/application-performance-monitoring/doc/configure-open-source-tracing-systems.html#GUID-4D941163-F357-4839-8B06-688876D4C61F": {
     "StatusCode": 200,
     "LastSeen": "2025-10-14T12:56:27.910620537Z"
+  },
+  "https://docs.oracle.com/en/database/oracle/oracle-database/23/refrn/V-SESSION.html": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-24T22:50:43.308612952Z"
   },
   "https://docs.oracle.com/en/error-help/db/": {
     "StatusCode": 200,
@@ -2934,6 +2950,10 @@
   "https://gethelios.dev/": {
     "StatusCode": 206,
     "LastSeen": "2025-10-08T01:26:36.496469112Z"
+  },
+  "https://gist.github.com/braydonk/b2381da98dc3c4fd5ac064045d556634": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-30T10:39:47.777375485Z"
   },
   "https://gist.github.com/fardjad/ea3c38d566c845e0b353237d3959e365": {
     "StatusCode": 206,
@@ -4939,6 +4959,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-14T12:56:40.079626727Z"
   },
+  "https://github.com/google/cadvisor/blob/v0.53.0/docs/storage/prometheus.md#prometheus-container-metrics": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-04T10:35:45.708795373Z"
+  },
   "https://github.com/google/oss-fuzz": {
     "StatusCode": 206,
     "LastSeen": "2025-10-08T01:29:09.073012573Z"
@@ -5642,6 +5666,10 @@
   "https://github.com/kubernetes/kubernetes/blob/8adc0f041b8e7ad1d30e29cc59c6ae7a15e19828/staging/src/k8s.io/kubelet/pkg/apis/stats/v1alpha1/types.go#L230-L233": {
     "StatusCode": 200,
     "LastSeen": "2025-10-01T13:47:12.345Z"
+  },
+  "https://github.com/kubernetes/kubernetes/blob/dbc7fe1b7fec4a76562d5e1565072a447fec5439/staging/src/k8s.io/kubelet/pkg/apis/stats/v1alpha1/types.go#L230-L233": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-30T10:39:38.217889565Z"
   },
   "https://github.com/kubernetes/website": {
     "StatusCode": 206,
@@ -11351,6 +11379,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-01T11:51:18.321076-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.37.0/specification/trace/api.md#span": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-02T10:36:46.80984999Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/logs/api.md#emit-an-event": {
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:18:12.345Z"
@@ -11359,6 +11391,18 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-10T13:26:26.53506569Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.42.0/specification/document-status.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-02T10:36:45.035172298Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.42.0/specification/metrics/api.md#instrument-advisory-parameters": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-02T10:36:19.969558561Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.43.0/specification/trace/api.md#span": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-02T10:36:53.757343976Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.45.0/specification/entities/README.md#overview": {
     "StatusCode": 200,
     "LastSeen": "2025-10-01T13:51:12.345Z"
@@ -11366,6 +11410,14 @@
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.45.0/specification/entities/data-model.md#minimally-sufficient-identity": {
     "StatusCode": 200,
     "LastSeen": "2025-10-01T13:51:12.345Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-02T10:36:59.345979963Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-02T10:36:16.588881715Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/3967": {
     "StatusCode": 206,
@@ -11855,6 +11907,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-09-17T09:40:35.878405108Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.49.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T22:51:22.809105809Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.49.0/oteps/0232-maturity-of-otel.md#explanation": {
     "StatusCode": 206,
     "LastSeen": "2025-09-17T09:40:23.805915321Z"
@@ -11954,6 +12010,18 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.49.0/oteps/trace/0250-Composite_Samplers.md": {
     "StatusCode": 206,
     "LastSeen": "2025-09-17T09:40:32.72175873Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.49.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T22:50:28.620424276Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.49.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T22:50:29.850395776Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.49.0/specification/logs/data-model.md#type-any": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T22:51:21.894302794Z"
   },
   "https://github.com/open-telemetry/opentelemetry-swift": {
     "StatusCode": 206,
@@ -12387,6 +12455,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-06T02:20:12.345Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1490": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-04T10:35:46.981688794Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/1530": {
     "StatusCode": 206,
     "LastSeen": "2025-02-20T09:23:50.9712701-08:00"
@@ -12399,9 +12471,17 @@
     "StatusCode": 206,
     "LastSeen": "2025-03-31T17:26:32.658279325Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1873": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-30T10:39:51.839110555Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/2074": {
     "StatusCode": 206,
     "LastSeen": "2025-06-17T10:36:03.643163049Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/2075": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T22:50:26.933615359Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/issues/2077": {
     "StatusCode": 206,
@@ -12958,6 +13038,10 @@
   "https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md#text-based-format": {
     "StatusCode": 206,
     "LastSeen": "2025-06-05T10:38:38.399428492Z"
+  },
+  "https://github.com/prometheus/node_exporter/blob/b959d48df950d5c446660eca3354c26eb997ca44/docs/node-mixin/lib/prom-mixin.libsonnet#L85-L87": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T17:52:50.155539176Z"
   },
   "https://github.com/prometheus/prometheus/blob/main/prompb/remote.proto": {
     "StatusCode": 206,
@@ -14707,6 +14791,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-06-17T10:36:01.657251328Z"
   },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#podstatus-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-24T22:50:28.879948309Z"
+  },
   "https://kubernetes.io/docs/reference/kubectl/": {
     "StatusCode": 206,
     "LastSeen": "2025-05-31T10:26:21.502766+05:30"
@@ -15230,6 +15318,10 @@
   "https://learn.microsoft.com/rest/api/resources/resources/get-by-id": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T13:24:37.480973571Z"
+  },
+  "https://learn.microsoft.com/rest/api/resources/subscriptions/list-locations": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T17:52:31.815229736Z"
   },
   "https://learn.microsoft.com/sql/connect/jdbc/building-the-connection-url#named-and-multiple-sql-server-instances": {
     "StatusCode": 200,
@@ -17554,6 +17646,18 @@
   "https://pkg.go.dev/k8s.io/kubelet@v0.33.0/pkg/apis/stats/v1alpha1#VolumeStats": {
     "StatusCode": 200,
     "LastSeen": "2025-08-28T17:29:59.409762-04:00"
+  },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#MemoryStats": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-04T10:35:43.067209727Z"
+  },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#NodeStats": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-04T10:35:56.107614398Z"
+  },
+  "https://pkg.go.dev/k8s.io/kubelet@v0.34.0/pkg/apis/stats/v1alpha1#PodStats": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-04T10:35:45.224841422Z"
   },
   "https://pkg.go.dev/k8s.io/kubernetes@v1.19.16/pkg/kubelet/apis/stats/v1alpha1": {
     "StatusCode": 200,
