@@ -6551,6 +6551,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-24T18:45:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/filelogreceiver/README.md#operators": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-11T10:35:55.03399078Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/k8sclusterreceiver/documentation.md": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T09:39:27.497876296Z"
@@ -11346,6 +11350,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.45.0/specification/entities/data-model.md#minimally-sufficient-identity": {
     "StatusCode": 200,
     "LastSeen": "2025-10-01T13:51:12.345Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T12:40:48.755464-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/3967": {
     "StatusCode": 206,
