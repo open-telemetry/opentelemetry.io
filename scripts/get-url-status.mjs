@@ -9,9 +9,6 @@ const STATUS_OK_BUT_FRAG_NOT_FOUND = 422;
 const STATUS_OK_BY_ANALYSIS = 206; // Partial Content
 
 const NPMJS_URL = 'https://www.npmjs.com/package/';
-const userAgent = // cSpell:ignore KHTML
-  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
-  '(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
 
 // NOTE about crates.io
 // --------------------
@@ -97,17 +94,21 @@ async function getUrlHeadless(url) {
   try {
     browser = await puppeteer.launch({
       executablePath: getChromePath(),
-      headless: true,
+      headless: 'new',
       args: [
         '--no-sandbox',
         '--disable-setuid-sandbox',
+        '--no-zygote',
         '--disable-dev-shm-usage',
         '--disable-gpu',
-        `--user-agent=${userAgent}`,
       ],
     });
+
+    const defaultUA = await browser.userAgent();
+    const cleanUA = defaultUA.replace(/Headless(Chrome)?/gi, 'Chrome');
+
     const page = await browser.newPage();
-    await page.setUserAgent(userAgent);
+    await page.setUserAgent({ userAgent: cleanUA });
     await page.setExtraHTTPHeaders({
       'Accept-Language': 'en-US,en;q=0.9',
     });
