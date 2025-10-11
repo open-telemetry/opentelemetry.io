@@ -11263,6 +11263,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-10T10:51:12.275035485Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/4673-experimental-probability-sampling.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-11T10:15:59.874903-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T10:46:30.12192264Z"
