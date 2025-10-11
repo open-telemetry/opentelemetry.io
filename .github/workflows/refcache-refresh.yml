@@ -168,7 +168,8 @@ jobs:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           PR_BODY: |-
             - Refreshes the oldest ${{ env.REFRESH_COUNT }} refcache entries.
-            - Oldest entry after pruning: `${{ env.OLDEST_ENTRY }}`
+            - Oldest entry after pruning:
+            ${{ env.OLDEST_ENTRY }}
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           echo "Existing PR(s):"
