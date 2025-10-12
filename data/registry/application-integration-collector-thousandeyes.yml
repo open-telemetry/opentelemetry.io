@@ -13,6 +13,6 @@ authors:
     url: https://github.com/thousandeyes
 urls:
   website: https://www.thousandeyes.com/
-  docs: https://docs.thousandeyes.com/product-documentation/api/opentelemetry
-createdAt: '2024-08-06'
+  docs: https://docs.thousandeyes.com/product-documentation/integration-guides/opentelemetry/
+createdAt: 2024-08-06
 isNative: true

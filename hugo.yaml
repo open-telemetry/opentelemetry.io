@@ -58,7 +58,7 @@ languages:
       description: Сайт проєкту OpenTelemetry
   zh:
     languageName: 中文 (Chinese)
-    languageCode: zh-cn
+    languageCode: zh-CN
     params:
       description: OpenTelemetry 项目网站
 
@@ -138,6 +138,7 @@ params:
     sidebar_menu_compact: true
     sidebar_menu_foldable: true
     sidebar_search_disable: true
+    sidebar_cache_limit: 1
     feedback:
       enable: true
       'yes': >-
