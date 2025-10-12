@@ -64,7 +64,7 @@ cSpell:ignore: cicd frittoli horovits jemmic keptn liatrio opentelemetrys skysca
 
 ### Артефакти для безпеки ланцюга постачання, приведені у відповідність до специфікації SLSA {#artifacts-for-supply-chain-security-aligned-with-the-slsa-specification}
 
-Простір назв атрибутів артефактів [artifact attribute namespace](/docs/specs/semconv/registry/attributes/artifact/) у своїй першій реалізації мав декілька атрибутів. Один з ключових наборів атрибутів у цьому просторі імен охоплює [attestations](https://slsa.dev/attestation-model), що тісно повʼязано з моделлю [SLSA](https://slsa.dev/spec/v1.0/about). Це дійсно перший випадок, коли встановлюється прямий звʼязок між спостережуваністю та безпекою ланцюга постачання програмного забезпечення. Розглянемо наступну [модель загроз ланцюга постачання](https://slsa.dev/spec/v1.0/threats), визначену SLSA: {{< figure class="figure" src="SLSA-supply-chain-model.png" attr="SLSA Community Specification License 1.0" attrlink=`https://github.com/slsa-framework/slsa?tab=License-1-ov-file` >}}
+Простір назв атрибутів артефактів ([artifact attribute namespace](/docs/specs/semconv/registry/attributes/artifact/)) у своїй першій реалізації мав декілька атрибутів. Один з ключових наборів атрибутів у цьому просторі імен охоплює [attestations](https://slsa.dev/attestation-model), що тісно повʼязано з моделлю [SLSA](https://slsa.dev/spec/v1.0/about). Це дійсно перший випадок, коли встановлюється прямий звʼязок між спостережуваністю та безпекою ланцюга постачання програмного забезпечення. Розглянемо наступну [модель загроз ланцюга постачання](https://slsa.dev/spec/v1.0/threats), визначену SLSA: {{< figure class="figure" src="SLSA-supply-chain-model.png" attr="SLSA Community Specification License 1.0" attrlink=`https://github.com/slsa-framework/slsa?tab=License-1-ov-file` >}}
 
 Ці нові атрибути для артефактів та атестацій допомагають спостерігати послідовність подій, змодельовану на наведеній вище діаграмі, в реальному часі. Насправді домовленості, які існують сьогодні, і ті, що будуть додані у майбутньому, уможливлюють інтероперабельність між основними можливостями постачання програмного забезпечення, такими як безпека та створення платформ, використовуючи семантику спостережуваності.
 
@@ -74,7 +74,7 @@ cSpell:ignore: cicd frittoli horovits jemmic keptn liatrio opentelemetrys skysca
 
 Другою важливою віхою є [OTEP #258](https://github.com/open-telemetry/oteps/pull/258) для розповсюдження контексту змінних середовища, який щойно було затверджено та інтегровано. Цей OTEP створює основу для написання специфікації.
 
-Оскільки ми досягли прогресу у виконанні наших початкових етапів, ми оновили [CI/CD Observability SIG milestones for the rest of 2024](https://github.com/open-telemetry/community/blob/main/projects/ci-cd.md). Наша мета — завершити якомога більше визначених проміжних результатів до кінця року. Зокрема, ми зосереджені на
+Оскільки ми досягли прогресу у виконанні наших початкових етапів, ми оновили [CI/CD Observability SIG milestones for the rest of 2024](https://github.com/open-telemetry/community/blob/main/projects/ci-cd.md). Наша мета — завершити якомога більше визначених проміжних результатів до кінця року. Зокрема, ми зосереджені на:
 
 - Додаванні [домовленостей для метрик для систем контролю версій](https://github.com/open-telemetry/semantic-conventions/pull/1383).
 - Створення прототипів трасування в системах CICD (наприклад, ArgoCD, GitHub, GitLab, Jenkins).
