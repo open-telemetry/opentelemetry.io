@@ -6,6 +6,7 @@ description:
   source
 aliases: [/docs/languages/js/automatic]
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+drifted_from_default: true
 ---
 
 L'instrumentation Zero-code pour JavaScript fournit un moyen d'instrumenter

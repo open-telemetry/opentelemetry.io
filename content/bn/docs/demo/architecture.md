@@ -4,6 +4,7 @@ linkTitle: আর্কিটেকচার
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
 default_lang_commit: f92688f04b7162bd5ab6dbf7578bfb9e5c4263b2
+drifted_from_default: true
 ---
 
 **OpenTelemetry ডেমো** বিভিন্ন প্রোগ্রামিং ভাষায় লেখা মাইক্রোসার্ভিস নিয়ে গঠিত, যা gRPC ও HTTP-এর মাধ্যমে একে অপরের সাথে যোগাযোগ করে। এছাড়াও এটি একটি লোড জেনারেটর যা [Locust](https://locust.io/) ব্যবহার করে নকল ইউজার ট্রাফিক তৈরি করে।
