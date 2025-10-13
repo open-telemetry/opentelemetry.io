@@ -1,5 +1,5 @@
 name: Refcache refresh
-# cSpell:ignore otelbot
+# cSpell:ignore chalin otelbot pushd
 
 # Creates (or updates) the PR that refreshes a number of the oldest refcache
 # entries. We say "the PR", because there can be at most one such PR at a time.
@@ -109,6 +109,19 @@ jobs:
 
       - run: npm install --omit=optional
 
+      - uses: actions/setup-go@v5
+
+      - name: Install htmltest
+        run: |
+          HTMLTEST_REPO=github.com/chalin/htmltest
+          BRANCH=dev/main
+          REPO_DIR=tmp/htmltest
+          git clone --branch $BRANCH https://$HTMLTEST_REPO.git $REPO_DIR
+          pushd $REPO_DIR
+          make build
+          HTMLTEST=$REPO_DIR/bin/htmltest
+          echo "HTMLTEST=$HTMLTEST" >> $GITHUB_ENV
+
       - name: Prune refcache
         if: ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' }}
         run: |
@@ -125,6 +138,7 @@ jobs:
 
       - name: Build site and update refcache
         run: |
+          $HTMLTEST -v
           # Ignore link-check failures so we can still commit refcache updates
           npm run fix:refcache || true
           ./scripts/clean-refcache.sh
