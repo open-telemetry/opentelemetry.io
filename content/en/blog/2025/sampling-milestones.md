@@ -88,8 +88,8 @@ the consistent sampling problem:
 
 1. Consider the TraceID value as an N-bit random value
 2. Compute the Nth power of two
-3. Multiply the power-of-two by the ratio, yields a "threshold" value
-4. Compare the TraceID with the threshold value, yields a consistent decision.
+3. Multiply the power-of-two by the ratio, yielding a "threshold" value
+4. Compare the TraceID with the threshold value, yielding a consistent decision.
 
 We had trouble agreeing on this form of solution because of a larger
 question. *Which bits of the TraceID can we trust to be random?*
