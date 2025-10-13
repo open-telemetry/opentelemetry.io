@@ -3,6 +3,7 @@ title: Pythonの自動計装に関する問題のトラブルシューティン�
 linkTitle: Troubleshooting
 weight: 40
 default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
+drifted_from_default: true
 ---
 
 ## インストールに関する問題 {#installation-issues}
