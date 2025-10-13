@@ -4,6 +4,7 @@ description: OpenTelemetry JavaScript Context API ドキュメント
 aliases: [api/context]
 weight: 60
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91 # patched
+drifted_from_default: true
 ---
 
 OpenTelemetryが動作するためには、重要なテレメトリーデータを保存し、伝搬する必要があります。

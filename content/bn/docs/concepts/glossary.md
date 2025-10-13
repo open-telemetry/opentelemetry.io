@@ -4,6 +4,7 @@ description:
   OpenTelemetry-তে ব্যবহৃত টেলিমেট্রি টার্মস-এর সংজ্ঞা এবং প্রচলিত নিয়ম।
 weight: 200
 default_lang_commit: 1ef7e909832c9c1cbf97aa15af0516f1d5b6bde5
+drifted_from_default: true
 ---
 এই শব্দকোষ OpenTelemetry প্রজেক্টে নতুন টার্মস
 এবং ধারণাগুলো ([concepts](/docs/concepts/)) সংজ্ঞায়িত করে, এবং
