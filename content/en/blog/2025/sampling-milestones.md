@@ -120,7 +120,7 @@ value](https://www.w3.org/TR/trace-context-2/#random-trace-id-flag). With
 this flag, the new W3C specification requires the least-significant 56
 bits of the TraceID to be "sufficiently" random. This means, for
 example, when we [represent the TraceID as 32 hexadecimal
-digits](https://opentelemetry.io/docs/specs/otel/trace/api/#retrieving-the-traceid-and-spanid),
+digits](/docs/specs/otel/trace/api/#retrieving-the-traceid-and-spanid),
 the last, rightmost 14 digits are random. Represented as 16 bytes, the
 last, rightmost 7 bytes are random.
 
