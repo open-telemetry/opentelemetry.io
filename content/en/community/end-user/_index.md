@@ -60,7 +60,7 @@ right channel.
 
 Sometimes it's us who want to ask the questions! Special Interest Groups (SIGs)
 in OpenTelemetry run surveys to better understand our users’ needs and make
-better-informed decisions when building OTel. Here are a few examples of surveys 
+better-informed decisions when building OTel. Here are a few examples of surveys
 we've run previously:
 
 - [Contributor Experience Survey](/blog/2025/contribex-survey-results/)
@@ -76,10 +76,10 @@ The ultimate way to share your experience in our toolbox is joining our
 podcasts. We regularly do two types of them:
 
 - [OTel Me](https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43):
-  A discussion between our host and end users about their OpenTelemetry adoption 
+  A discussion between our host and end users about their OpenTelemetry adoption
   and implementation.
 - [OTel in Practice](https://www.youtube.com/playlist?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x):
-  An interactive enablement session on different aspects of OpenTelemetry 
+  An interactive enablement session on different aspects of OpenTelemetry
   by contributors and end users.
   <!--➡️ TODO: Turn links into embeds-->
 
@@ -88,7 +88,7 @@ channel. If you want to talk about your experience with OpenTelemetry, [let us
 know](#contact).
 
 channel in the CNCF Slack workspace or open an issue in [sig-end-user]
-repository. 
+repository.
 
 [Learn more about how we do podcasts](interviews-feedback/)
 
