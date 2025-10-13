@@ -7,6 +7,8 @@ IgnoreInternalEmptyHash: true # TODO: remove after resolution of https://github.
 CheckMailto: false
 # StripQueryString: false # TODO: enable once htmltest is fixed
 TestFilesConcurrently: true
+# RetryCachedErrors: for docs, see https://github.com/chalin/htmltest/blob/dev/main/README.md
+RetryCachedErrors: false
 IgnoreDirs:
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
   # Ignore blog index pages for all locales and in all blog sections (top-level and years)
