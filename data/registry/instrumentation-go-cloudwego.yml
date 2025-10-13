@@ -16,7 +16,7 @@ authors:
 urls:
   website: https://www.cloudwego.io/
   repo: https://github.com/hertz-contrib/obs-opentelemetry
-  docs: https://www.cloudwego.io/docs/hertz/tutorials/observability/open-telemetry/
+  docs: https://www.cloudwego.io/docs/hertz/tutorials/third-party/open-telemetry/
 createdAt: '2024-08-06'
 isFirstParty: true
 package:

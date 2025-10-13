@@ -18,7 +18,7 @@ jobs:
       - name: Any files missing hash key?
         run: |
           scripts/check-i18n.sh -n -x -v
-          .github/workflows/scripts/check-i18n-helper.sh
+          .github/scripts/check-i18n-helper.sh
       - name: Any files with invalid hash keys?
         run: scripts/check-i18n.sh -v
       - name: Drifted status needs updating?

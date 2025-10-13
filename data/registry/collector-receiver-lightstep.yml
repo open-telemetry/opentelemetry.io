@@ -1,0 +1,23 @@
+# cSpell:ignore lightstepreceiver zalando
+title: OpenTelemetry Collector Lightstep Receiver
+registryType: receiver
+language: collector
+tags:
+  - lightstep
+  - receiver
+  - collector
+license: MIT
+description:
+  The lightstepreceiver receives OpenTracing traces from Lightstep tracers in
+  various supported formats converting them into OpenTelemetry'a ptrace.Traces
+  propagating it further in pipelines
+authors:
+  - name: Zalando SE
+    url: https://github.com/zalando
+urls:
+  repo: https://github.com/zalando/otelcol-lightstep-receiver
+createdAt: 2020-11-05
+package:
+  registry: go-collector
+  name: github.com/zalando/otelcol-lightstep-receiver
+  version: v0.0.15
