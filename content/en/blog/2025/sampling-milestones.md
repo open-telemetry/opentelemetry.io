@@ -65,7 +65,7 @@ compared with the Cache server, but still a lot of requests compared
 with the Frontend service; Storage is configured to sample 1-in-10
 traces.
 
-When we ask for consistency in distribute tracing, the goal is to
+When we ask for consistency in distributed tracing, the goal is to
 ensure that when the smallest probability sampler (here 0.1%) chooses
 to sample, that higher probability samplers make the same
 decision. Here are the properties we can rely on in this configuration:
