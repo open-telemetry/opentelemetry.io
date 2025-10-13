@@ -15,7 +15,7 @@ no-trailing-spaces:
   br_spaces: 0
   strict: true
 
-# table-column-style: false
+table-column-style: false # Causes problems in ja and zh pages
 
 # Custom rules below this point:
 trim-code-block-and-unindent: true

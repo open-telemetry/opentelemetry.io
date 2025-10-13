@@ -16,7 +16,7 @@ const markdownFiles = [
   '!examples/**',
   '!layouts/**',
   '!**/node_modules/**',
-  '!tools/examples/**',
+  '!tools/**',
   '!themes/**',
   '!tmp/**',
 ];
