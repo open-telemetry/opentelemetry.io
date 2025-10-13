@@ -80,7 +80,7 @@ OpenTelemetry's `TraceIdRatioBased` probability sampler was intended
 to be consistent from the start, however the working group had a hard
 time agreeing over specific details.  The TODO about sampling
 consistency was mitigated by the fact that root-only sampling was the
-norm for contemporary open-source tracing systems, the model embraced
+norm for contemporary open source tracing systems and the model embraced
 by Jaeger.
 
 The "ratio-based" part of the name hints at the form of solution to
