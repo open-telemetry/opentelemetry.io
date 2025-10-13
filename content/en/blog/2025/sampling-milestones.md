@@ -247,7 +247,7 @@ enhancement proposals that plotted our course:
 
 - [0168 Sampling Propagation](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0168-sampling-propagation.md)
 - [0170 Sampling Probability](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0170-sampling-probability.md)
-- [0235 Sampling Threshold in TraceSate](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0235-sampling-threshold-in-trace-state.md)
+- [0235 Sampling Threshold in TraceState](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0235-sampling-threshold-in-trace-state.md)
 - [0250 Composite Samplers](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0250-Composite_Samplers.md)
 
 and our primary specification documents:
