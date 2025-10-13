@@ -169,7 +169,7 @@ we make a negative sampling decision when `T > R`.
 
 By design, the threshold value `0` corresponds with 100% sampling, so
 users can easily recognize this configuration. Abstractly, both `R`
-and `T` have a range of 56 bits, can be represented as unsigned
+and `T` have a range of 56 bits, which can be represented as unsigned
 integers, 7-byte slices, or 14-hex-digit strings.
 
 ## OpenTelemetry TraceState
