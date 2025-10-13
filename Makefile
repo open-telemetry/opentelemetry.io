@@ -42,6 +42,7 @@ check-links: $(GET_LINK_CHECKER_IF_NEEDED) \
 	refcache-restore check-links-only refcache-save
 
 check-links-only:
+	$(HTMLTEST) -v
 	$(HTMLTEST) $(HTMLTEST_ARGS)
 
 clean:
