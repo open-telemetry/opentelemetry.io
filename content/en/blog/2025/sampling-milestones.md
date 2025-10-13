@@ -189,7 +189,7 @@ In a 100% sampling configuration, OpenTelemetry Tracing SDKs will
 insert `ot=th:0` in the TraceState. TraceState values, once entered in
 the context, are both propagated and recorded in OpenTelemetry span
 data. By design, the new OpenTelemetry TraceState value is only
-encoded and transmitted for positive sampling decisions, no
+encoded and transmitted for positive sampling decisions; no
 `tracestate` header will appear as a result of negative sampling
 decisions.
 
