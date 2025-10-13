@@ -151,8 +151,8 @@ advanced sampling architectures:
 - Adaptive sampling
 - Consistent multi-stage sampling.
 
-The key points of our design are summarized next, [curious readers
-will want to see the full
+The key points of our design are summarized next, but curious readers
+may want to see the [full
 specification](https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/).
 
 Given the number of bits, there is not much left to specify, however we
