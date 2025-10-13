@@ -193,11 +193,11 @@ $ java -javaagent:path/to/opentelemetry-javaagent.jar \
 
 The following are known application server values for `otel.jmx.target.system`:
 
-- [jetty](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/jetty.md)
-- [tomcat](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/tomcat.md)
-- [wildfly](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/wildfly.md)
+- [`jetty`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/jetty.md)
+- [`tomcat`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/tomcat.md)
+- [`wildfly`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/wildfly.md)
 
-_Note: This list is not comprehensive, and other jmx target systems are
+_Note: This list is not comprehensive, and other JMX target systems are
 supported._
 
 For a list of metrics extracted from each application server, click the name
