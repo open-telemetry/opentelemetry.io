@@ -210,7 +210,7 @@ We gave a lot of consideration to backwards compatibility, but we also
 wanted to be sure we could always use the stated sampling threshold
 for extrapolation, in a reliable, statistical sense. With this in
 mind, there is one more OpenTelemetry TraceState value in our
-specification, a way to provide explicit randomness in the
+specification: a way to provide explicit randomness in the
 `tracestate` header.
 
 To enable consistent sampling and continue using non-random TraceIDs,
