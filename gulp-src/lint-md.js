@@ -6,6 +6,8 @@ const markdownlint = require('markdownlint/async').lint;
 const markdownIt = require('markdown-it');
 const { taskArgs, trimBlankLinesFromArray } = require('./_util');
 const fs = require('fs');
+const yaml = require('js-yaml');
+const path = require('path');
 
 const defaultGlobs = ['**/*.md'];
 const markdownFiles = [
@@ -24,7 +26,8 @@ let numFilesProcessed = 0,
 let fix = false;
 
 function markdownLintFile(file, encoding, callback) {
-  const config = require('../.markdownlint.json');
+  const configPath = path.join(__dirname, '..', '.markdownlint.yaml');
+  const config = yaml.load(fs.readFileSync(configPath, 'utf8'));
   const placeholder = 'lint-md';
   const options = {
     // We would normally just pass in the file like this:
