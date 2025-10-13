@@ -2,7 +2,7 @@
 title: 采样
 description: 了解采样以及 OpenTelemetry 中可用的各种采样选项。
 weight: 80
-default_lang_commit: deb98d0648c4833d9e9d77d42e91e2872658b50c
+default_lang_commit: deb98d0648c4833d9e9d77d42e91e2872658b50c # patched
 ---
 
 通过[链路](/docs/concepts/signals/traces)，你可以观测请求在分布式系统中从一个服务传递到另一个服务的过程。
@@ -70,7 +70,7 @@ default_lang_commit: deb98d0648c4833d9e9d77d42e91e2872658b50c
 
 头部采样是一种尽早做出采样决策的采样技术。是否采样一个 Span 或链路的决策不是通过检查整个链路来做出的。
 
-例如，最常见的一种头部采样形式是[一致概率采样](/docs/specs/otel/trace/tracestate-probability-sampling-experimental/#consistent-probability-sampling)。
+例如，最常见的一种头部采样形式是[一致概率采样](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/4673-experimental-probability-sampling.md)。
 这也被称为确定性采样。在这种情况下，采样决策基于链路 ID 和希望采样的链路百分比。
 这确保了整个链路被采样（不会漏掉任何 Span）并以一致的速率进行采样，例如采样所有链路的 5%。
 
