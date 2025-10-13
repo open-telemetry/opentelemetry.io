@@ -15,7 +15,7 @@ cSpell:ignore: Ertl Findeisen probabilisticsampler Yuanyuan Zhao
 
 ## Introduction
 
-OpenTelemetry published version 1.0 of its Tracing specification in
+OpenTelemetry published version 1.0 of its Tracing specification
 over four years ago, and the same year [W3C TraceContext Level
 1][TRACECONTEXT1] was published with W3C Recommendation status. We as
 a community, we the observability industry had two new standards for
