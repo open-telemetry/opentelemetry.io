@@ -49,7 +49,7 @@ want to keep an eye on are:
 - #otel-community-demo
 - #otel-vendor
 
-Not sure where to ask? Post in #otel-end-user, and we will help you find the
+Not sure where to ask? Post in [_#otel-sig-end-user_](https://cloud-native.slack.com/archives/C01RT3MSWGZ), and we will help you find the
 right channel.
 
 [Join CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf)
@@ -60,7 +60,8 @@ right channel.
 
 Sometimes it's us who want to ask the questions! Special Interest Groups (SIGs)
 in OpenTelemetry run surveys to better understand our users’ needs and make
-better-informed decisions when building OTel. Here are a few examples:
+better-informed decisions when building OTel. Here are a few examples of surveys 
+we've run previously:
 
 - [Contributor Experience Survey](/blog/2025/contribex-survey-results/)
 - [Developer Experience Survey](/blog/2025/devex-survey/)
@@ -75,10 +76,11 @@ The ultimate way to share your experience in our toolbox is joining our
 podcasts. We regularly do two types of them:
 
 - [OTel Me](https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43):
-  A discussion between our host and end users about their experience with
-  OpenTelemetry.
+  A discussion between our host and end users about their OpenTelemetry adoption 
+  and implementation.
 - [OTel in Practice](https://www.youtube.com/playlist?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x):
-  A presentation of interesting OTel concepts by contributors.
+  An interactive enablement session on different aspects of OpenTelemetry 
+  by contributors and end users.
   <!--➡️ TODO: Turn links into embeds-->
 
 We do the podcasts live and recordings are posted on the OpenTelemetry YouTube
