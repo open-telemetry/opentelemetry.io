@@ -9,7 +9,6 @@ author: >-
   Findeisen](https://github.com/PeterF778) (Cisco), [Yuanyuan
   Zhao](https://github.com/yuanyuanzhao3) (DataDog)
 sig: SIG Sampling
-# prettier-ignore
 cSpell:ignore: Ertl Findeisen probabilisticsampler Yuanyuan Zhao
 ---
 
