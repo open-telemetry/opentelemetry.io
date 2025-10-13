@@ -169,7 +169,7 @@ TraceID, SpanID, and flags, and `tracestate` which supports "vendor-specific"
 additions to the context. OpenTelemetry Tracing SDKs will soon begin adding an
 entry under the key "ot" in the `tracestate` header. Here's an example:
 
-```
+```http
 tracestate: ot=th:0
 ```
 
@@ -188,7 +188,7 @@ zeros (except for `0` itself). This lets us limit threshold precision to fewer
 than 56 bits, which lowers the number of bytes per context. Here is an example
 tracestate indicating 1% sampling, limited to 12-bits of precision:
 
-```
+```http
 tracestate: ot=th:fd7
 ```
 
@@ -201,7 +201,7 @@ randomness in the `tracestate` header.
 To enable consistent sampling and continue using non-random TraceIDs, for
 example, users can opt for explicit randomness:
 
-```
+```http
 tracestate: ot=rv:abcdef01234567
 ```
 
