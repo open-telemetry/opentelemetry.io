@@ -178,7 +178,7 @@ The W3C TraceContext specification defines two HTTP headers for use in
 distributed tracing systems, the `tracecontext` header, which contains
 version, TraceID, SpanID, and flags, and `tracestate` which supports
 "vendor-specific" additions to the context. OpenTelemetry Tracing SDKs
-will soon begin using adding an entry under the key "ot" in the
+will soon begin adding an entry under the key "ot" in the
 `tracestate` header. Here's an example:
 
 ```
