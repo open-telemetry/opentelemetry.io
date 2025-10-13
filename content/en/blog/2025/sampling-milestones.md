@@ -250,8 +250,8 @@ enhancement proposals that plotted our course:
 - [0235 Sampling Threshold in TraceState](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0235-sampling-threshold-in-trace-state.md)
 - [0250 Composite Samplers](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0250-Composite_Samplers.md)
 
-and our primary specification documents:
+The following are our primary specification documents:
 
-- [Trace Probability Sampling](https://opentelemetry.io/docs/specs/otel/trace/tracestate-probability-sampling/)
-- [Trace SDK Samplers](https://opentelemetry.io/docs/specs/otel/trace/sdk/#sampler)
-- [TraceID Randomness](https://opentelemetry.io/docs/specs/otel/trace/sdk/#traceid-randomness).
+- [Trace Probability Sampling](/docs/specs/otel/trace/tracestate-probability-sampling/)
+- [Trace SDK Samplers](/docs/specs/otel/trace/sdk/#sampler)
+- [TraceID Randomness](/docs/specs/otel/trace/sdk/#traceid-randomness).
