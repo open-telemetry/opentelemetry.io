@@ -138,7 +138,7 @@ obtain 56 bits of randomness from a TraceID, and the decision process
 described in outline above calls for a threshold to compare with.
 
 There was one more thing we as a group wanted for the probability
-sampling specification, a way for SDKs to communicate their sampling
+sampling specification: a way for SDKs to communicate their sampling
 decisions, both to one another in the TraceContext, as well as on the
 collection path after spans are finished.
 
