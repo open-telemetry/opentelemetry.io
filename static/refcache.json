@@ -6551,6 +6551,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-02-24T18:45:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/filelogreceiver/README.md#operators": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-11T10:35:55.03399078Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/k8sclusterreceiver/documentation.md": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T09:39:27.497876296Z"
@@ -11351,6 +11355,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-01T13:51:12.345Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-01T12:40:48.755464-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/3967": {
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:58:28.518782-05:00"
@@ -11694,10 +11702,6 @@
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/tracestate-handling.md": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T10:49:14.244986904Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/tracestate-probability-sampling-experimental.md": {
-    "StatusCode": 206,
-    "LastSeen": "2025-10-10T10:49:02.490351235Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/tracestate-probability-sampling.md": {
     "StatusCode": 206,
