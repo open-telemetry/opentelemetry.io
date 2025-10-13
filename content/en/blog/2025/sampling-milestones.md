@@ -224,7 +224,7 @@ Explicit randomness values have several other uses, for example:
 
 - Achieve consistent sampling across multiple traces, by applying the
   same explicit randomness value to independent trace roots
-- Translate external consistent sampling decisions (e.g., hash
+- Translate external consistent sampling decisions (for example, hash
   function-based) into OpenTelemetry consistent sampling decisions.
 
 As a demonstration, we upgraded the OpenTelemetry Collector-Contrib
