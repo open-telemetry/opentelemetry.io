@@ -180,9 +180,9 @@ Open the WebSphere Admin Console and follow these steps:
 ## Enable Predefined JMX Metrics
 
 The Java agent includes predefined JMX metrics configurations for several
-popular application servers, but these are not enabled by default.
-To enable collection of the predefined metrics, specify a list of targets as the value for the
-`otel.jmx.target.system property`. For example:
+popular application servers, but these are not enabled by default. To enable
+collection of the predefined metrics, specify a list of targets as the value for
+the `otel.jmx.target.system property`. For example:
 
 ```bash
 $ java -javaagent:path/to/opentelemetry-javaagent.jar \
@@ -193,12 +193,13 @@ $ java -javaagent:path/to/opentelemetry-javaagent.jar \
 
 The following are known application server values for `otel.jmx.target.system`:
 
-* [jetty](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/jetty.md)
-* [tomcat](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/tomcat.md)
-* [wildfly](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/wildfly.md)
+- [jetty](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/jetty.md)
+- [tomcat](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/tomcat.md)
+- [wildfly](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/wildfly.md)
 
-_Note: This list is not comprehensive, and other jmx target systems are supported._
+_Note: This list is not comprehensive, and other jmx target systems are
+supported._
 
-For a list of metrics extracted from each application server, click the name above, or
+For a list of metrics extracted from each application server, click the name
+above, or
 [click here for additional details and customization capabilities](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics#predefined-metrics).
-
