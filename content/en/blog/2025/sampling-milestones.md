@@ -96,7 +96,7 @@ question. *Which bits of the TraceID can we trust to be random?*
 Without foundational requirements about randomness, OpenTelemetry
 could not specify a consistent sampling decision.
 
-Lacking firm randomness requirements, a common approach is to use a
+When lacking firm randomness requirements, a common approach is to use a
 hash function instead. Using `Hash(TraceID)` to produce N-bits
 randomness works reasonably well if the hash function is good, but
 this approach is not suitable in a cross-language SDK specification.
