@@ -269,7 +269,7 @@ que é crucial para garantir que os desenvolvedores, independentemente de suas
 ferramentas preferidas, possam aproveitar os benefícios de uma abordagem
 declarativa.
 
-Estamos muito interessados ​​no feedback dos usuários à medida que continuamos a
+Estamos muito interessados ​​no _feedback_ dos usuários à medida que continuamos a
 desenvolver e refinar esses recursos. Incentivamos você a começar a experimentar
 as implementações atuais e a comunicar quaisquer funcionalidades ausentes,
 pontos problemáticos ou áreas que precisam de melhoria. Essa abordagem
