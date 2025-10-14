@@ -105,7 +105,7 @@ ambiente, há alguns recursos que você pode aproveitar:
   mais personalizações.
 - O [arquivo de configuração de migração][migration-file] mapeia as variáveis
   ​​de ambiente antigas para o esquema YAML, permitindo uma substituição
-  imediata para usuários que usam workloads já configurados com variáveis ​​de
+  imediata para usuários que usam _workloads_ já configurados com variáveis ​​de
   ambiente.
 - O [arquivo de configuração completo][full-file] ("kitchen sink") mostra o
   esquema completo, anotado com documentação como comentários. Isso é útil para
