@@ -2019,6 +2019,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-08T01:26:43.054523394Z"
   },
+  "https://docs.observeinc.com/en/latest/content/send-data/apm-instrumentation/operator-auto-instrumentation.html": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T12:35:39.345825-04:00"
+  },
   "https://docs.observeinc.com/en/latest/content/send-data/app-instrumentation/index.html#instrument-with-opentelemetry": {
     "StatusCode": 404,
     "LastSeen": "2025-10-14T12:56:22.829388186Z"

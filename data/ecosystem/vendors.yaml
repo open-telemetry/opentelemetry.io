@@ -290,7 +290,7 @@
   commercial: true
 - name: Observe, Inc.
   nativeOTLP: true
-  url: https://docs.observeinc.com/en/latest/content/send-data/app-instrumentation/index.html#instrument-with-opentelemetry
+  url: https://docs.observeinc.com/en/latest/content/send-data/apm-instrumentation/operator-auto-instrumentation.html
   contact:
   oss: false
   commercial: true
