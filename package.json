@@ -56,7 +56,6 @@
     "check:i18n": "scripts/check-i18n.sh",
     "check:links:internal": "npm run _check:links:internal",
     "check:links": "npm run _check:links",
-    "check:markdown-old": "echo 'DEPRECATED: use CLI2-based`npm run check:markdown` instead'; scripts/check-markdown-wrapper.sh",
     "check:markdown": "npx markdownlint-cli2 '**/*.md'",
     "check:registry": "npm run _check:registry -- ",
     "check:spelling": "npx cspell --no-progress -c .cspell.yml content data 'layouts/**/*.md'",
