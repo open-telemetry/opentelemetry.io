@@ -275,7 +275,7 @@ as implementações atuais e a comunicar quaisquer funcionalidades ausentes,
 pontos problemáticos ou áreas que precisam de melhoria. Essa abordagem
 colaborativa nos ajudará a priorizar os esforços de desenvolvimento e a garantir
 que as soluções que criamos realmente atendam às necessidades da comunidade.
-Compartilhe seu feedback ou perguntas usando o canal
+Compartilhe seu _feedback_ ou perguntas usando o canal
 [`#otel-config-file`][slack-config] do Slack do CNCF.
 
 Além de fornecer feedback, existem outras maneiras de se envolver e contribuir
