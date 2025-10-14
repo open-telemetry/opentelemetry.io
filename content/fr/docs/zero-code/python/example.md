@@ -3,7 +3,7 @@ title: Exemple d'auto-instrumentation
 linkTitle: Exemple
 weight: 20
 aliases: [/docs/languages/python/automatic/example]
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
 drifted_from_default: true
 cSpell:ignore: distro instrumentor mkdir MSIE Referer Starlette venv
 ---
@@ -38,7 +38,7 @@ nécessaire pour intégrer OpenTelemetry dans le code de votre application.
 Ci-dessous, vous verrez la différence entre une route Flask instrumentée
 manuellement, automatiquement et programmatiquement.
 
-### Serveur instrumenté manuellement {#manually-instrumented-server}
+## Serveur instrumenté manuellement {#manually-instrumented-server}
 
 `server_manual.py`
 
@@ -55,7 +55,7 @@ def server_request():
         return "served"
 ```
 
-### Serveur instrumenté automatiquement {#automatically-instrumented-server}
+## Serveur instrumenté automatiquement {#automatically-instrumented-server}
 
 `server_automatic.py`
 
@@ -66,7 +66,7 @@ def server_request():
     return "served"
 ```
 
-### Serveur instrumenté programmatiquement {#programmatically-instrumented-server}
+## Serveur instrumenté programmatiquement {#programmatically-instrumented-server}
 
 `server_programmatic.py`
 
@@ -135,7 +135,7 @@ Cette section vous guide à travers le processus manuel d'instrumentation d'un
 serveur ainsi que le processus d'exécution d'un serveur instrumenté
 automatiquement.
 
-### Exécuter le serveur instrumenté manuellement {#execute-the-manually-instrumented-server}
+## Exécuter le serveur instrumenté manuellement {#execute-the-manually-instrumented-server}
 
 Exécutez le serveur dans deux consoles séparées, une pour chacun des scripts à
 exécuter qui composent cet exemple :
@@ -190,7 +190,7 @@ suivant :
 }
 ```
 
-### Exécuter le serveur instrumenté automatiquement {#execute-the-automatically-instrumented-server}
+## Exécuter le serveur instrumenté automatiquement {#execute-the-automatically-instrumented-server}
 
 Arrêtez l'exécution de `server_manual.py` en appuyant sur <kbd>Control+C</kbd>
 et exécutez la commande suivante à la place :
@@ -253,7 +253,7 @@ suivant :
 Vous pouvez voir que les deux sorties sont les mêmes car l'instrumentation
 automatique fait exactement ce que fait l'instrumentation manuelle.
 
-### Exécuter le serveur instrumenté programmatiquement {#execute-the-programmatically-instrumented-server}
+## Exécuter le serveur instrumenté programmatiquement {#execute-the-programmatically-instrumented-server}
 
 Il est également possible d'utiliser les bibliothèques d'instrumentation (telles
 que `opentelemetry-instrumentation-flask`) par elles-mêmes, ce qui peut avoir
@@ -278,7 +278,7 @@ python client.py testing
 Les résultats devraient être les mêmes que lors de l'exécution avec
 l'instrumentation manuelle.
 
-#### Utilisation des fonctionnalités d'instrumentation programmatique {#using-programmatic-instrumentation-features}
+### Utilisation des fonctionnalités d'instrumentation programmatique {#using-programmatic-instrumentation-features}
 
 Certaines bibliothèques d'instrumentation incluent des fonctionnalités qui
 permettent un contrôle plus précis lors de l'instrumentation programmatique, la
@@ -296,7 +296,7 @@ côté serveur. Ceci est dû à l'option `excluded_urls` passée à `instrument_
 qui empêche effectivement la fonction `server_request` d'être instrumentée car
 son URL correspond à l'expression régulière passée à `excluded_urls`.
 
-### Instrumentation pendant le débogage {#instrumentation-while-debugging}
+## Instrumentation pendant le débogage {#instrumentation-while-debugging}
 
 Le mode de débogage peut être activé dans l'application Flask comme ceci :
 
@@ -319,7 +319,7 @@ if __name__ == "__main__":
 L'auto-instrumentation peut consommer la configuration à partir des variables
 d'environnement.
 
-### Capturer les en-têtes de requête et de réponse HTTP {#capture-http-request-and-response-headers}
+## Capturer les en-têtes de requête et de réponse HTTP {#capture-http-request-and-response-headers}
 
 Vous pouvez capturer les en-têtes HTTP prédéfinis en tant qu'attributs de span,
 conformément à la [convention sémantique][].

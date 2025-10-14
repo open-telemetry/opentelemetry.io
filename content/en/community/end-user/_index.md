@@ -29,7 +29,7 @@ ubiquitous observability. We encourage you to share your successes and failures,
 discover best practices, and meet others who are also on a journey to implement
 observability powered by OpenTelemetry.
 
-### Topics
+## Topics
 
 This group is what its members make it -- whatever is of interest to the group
 is fair game!
@@ -42,7 +42,7 @@ But here are some of the kinds of things we expect will be on the table:
 - Maintaining and scaling OpenTelemetry deployments
 - Writing custom instrumentation
 
-### Questions
+## Questions
 
 **Is this group only for OpenTelemetry end users?**
 
