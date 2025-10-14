@@ -360,7 +360,7 @@ Propriedades para exportador de métricas `prometheus`:
 #### Personalização programática {#programmatic-customization}
 
 A personalização programática fornece _hooks_ para complementar as
-[propriedades suportadas](#variáveis-de-ambiente-e-propriedades-do-sistema) com
+[propriedades suportadas](#environment-variables-and-system-properties) com
 [configuração programática](#programmatic-configuration).
 
 Se estiver usando o
