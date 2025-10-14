@@ -2,12 +2,12 @@
 title: エクスポーター
 weight: 50
 description: テレメトリデータの処理とエクスポート
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91 # patched
 ---
 
 {{% docs/languages/exporters/intro %}}
 
-### 依存関係 {#otlp-dependencies}
+## 依存関係 {#otlp-dependencies}
 
 テレメトリーデータをOTLPエンドポイント（[OpenTelemetry Collector](#collector-setup)、[Jaeger](#jaeger)、[Prometheus](#prometheus)など）に送信したい場合、データを転送するために3つの異なるプロトコルから選択できます。
 
@@ -40,7 +40,7 @@ npm install --save @opentelemetry/exporter-trace-otlp-grpc \
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Node.jsでの使用法 {#usage-with-nodejs}
+## Node.jsでの使用法 {#usage-with-nodejs}
 
 次に、OTLPエンドポイントを指すようにエクスポーターを設定します。
 たとえば、[Getting Started](/docs/languages/js/getting-started/nodejs/)の`instrumentation.ts`（またはJavaScriptを使用する場合は`instrumentation.js`）ファイルを以下のように更新して、OTLP（`http/protobuf`）経由でトレースとメトリクスをエクスポートできます。
@@ -110,7 +110,7 @@ sdk.start();
 
 {{% /tab %}} {{< /tabpane >}}
 
-### ブラウザでの使用法 {#usage-in-the-browser}
+## ブラウザでの使用法 {#usage-in-the-browser}
 
 ブラウザベースのアプリケーションでOTLPエクスポーターを使用する場合、以下の点に注意する必要があります。
 
@@ -121,13 +121,13 @@ sdk.start();
 
 以下では、適切なエクスポーターの使用、CSPとCORSヘッダーの設定、およびコレクターを公開する際に取るべき予防措置について説明します。
 
-#### HTTP/JSONまたはHTTP/protobufでOTLPエクスポーターを使用 {#use-otlp-exporter-with-httpjson-or-httpprotobuf}
+### HTTP/JSONまたはHTTP/protobufでOTLPエクスポーターを使用 {#use-otlp-exporter-with-httpjson-or-httpprotobuf}
 
 [OpenTelemetry Collector Exporter with gRPC][]はNode.jsでのみ動作するため、[OpenTelemetry Collector Exporter with HTTP/JSON][]または[OpenTelemetry Collector Exporter with HTTP/protobuf][]の使用に制限されます。
 
 [OpenTelemetry Collector Exporter with HTTP/JSON][]を使用している場合は、エクスポーターの受信側（コレクターまたはオブザーバビリティバックエンド）が`http/json`を受け入れることを確認し、ポートを4318に設定して適切なエンドポイントにデータをエクスポートしていることを確認してください。
 
-#### CSPの設定 {#configure-csps}
+### CSPの設定 {#configure-csps}
 
 WebサイトでContent Security Policies（CSP）を使用している場合は、OTLPエンドポイントのドメインが含まれていることを確認してください。
 コレクターエンドポイントが`https://collector.example.com:4318/v1/traces`の場合、以下のディレクティブを追加します。
@@ -138,7 +138,7 @@ connect-src collector.example.com:4318/v1/traces
 
 CSPがOTLPエンドポイントを含んでいない場合、エンドポイントへのリクエストがCSPディレクティブに違反していることを示すエラーメッセージが表示されます。
 
-#### CORSヘッダーの設定 {#configure-cors-headers}
+### CORSヘッダーの設定 {#configure-cors-headers}
 
 Webサイトとコレクターが異なるオリジンでホストされている場合、ブラウザがコレクターへのリクエストをブロックする可能性があります。
 Cross-Origin Resource Sharing（CORS）のための特別なヘッダーを設定する必要があります。
@@ -160,7 +160,7 @@ receivers:
           max_age: 7200
 ```
 
-#### コレクターの安全な公開 {#securely-expose-your-collector}
+### コレクターの安全な公開 {#securely-expose-your-collector}
 
 Webアプリケーションからテレメトリーを受信するには、エンドユーザーのブラウザがコレクターにデータを送信できるようにする必要があります。
 Webアプリケーションがパブリックインターネットからアクセス可能な場合、コレクターもすべての人がアクセス可能にする必要があります。
@@ -210,7 +210,7 @@ server {
 
 {{% include "exporters/prometheus-setup.md" %}}
 
-### 依存関係 {#prometheus-dependencies}
+## 依存関係 {#prometheus-dependencies}
 
 アプリケーションの依存関係として[エクスポーターパッケージ](https://www.npmjs.com/package/@opentelemetry/exporter-prometheus)をインストールします。
 
@@ -261,7 +261,7 @@ PrometheusまたはPrometheusレシーバーを持つOpenTelemetry Collectorが�
 
 {{% include "exporters/zipkin-setup.md" %}}
 
-### 依存関係 {#zipkin-dependencies}
+## 依存関係 {#zipkin-dependencies}
 
 トレースデータを[Zipkin](https://zipkin.io/)に送信するには、`ZipkinExporter`を使用できます。
 
