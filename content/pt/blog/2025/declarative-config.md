@@ -107,7 +107,7 @@ ambiente, há alguns recursos que você pode aproveitar:
   ​​de ambiente antigas para o esquema YAML, permitindo uma substituição
   imediata para usuários que usam _workloads_ já configurados com variáveis ​​de
   ambiente.
-- O [arquivo de configuração completo][full-file] ("kitchen sink") mostra o
+- O [arquivo de configuração completo][full-file] _("kitchen sink")_ mostra o
   esquema completo, anotado com documentação como comentários. Isso é útil para
   usuários que desejam ver todas as opções disponíveis e seus padrões.
 
