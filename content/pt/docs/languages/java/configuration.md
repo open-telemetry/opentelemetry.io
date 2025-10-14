@@ -203,10 +203,10 @@ usado em conjunto com os exportadores definidos por meio de
 
 | Propriedade do sistema           | Descrição                                                                           | Padrão  |
 | -------------------------------- | ----------------------------------------------------------------------------------- | ------- |
-| `otel.bsp.schedule.delay`        | Intervalo, em milissegundos, entre duas exportações consecutivas.                  | `5000`  |
+| `otel.bsp.schedule.delay`        | Intervalo, em milissegundos, entre duas exportações consecutivas.                   | `5000`  |
 | `otel.bsp.max.queue.size`        | Número máximo de rastros que podem ser enfileirados antes do processamento em lote. | `2048`  |
 | `otel.bsp.max.export.batch.size` | Número máximo de trechos exportados em um único lote.                               | `512`   |
-| `otel.bsp.export.timeout`        | Tempo máximo permitido, em milissegundos, para exportar os dados.                  | `30000` |
+| `otel.bsp.export.timeout`        | Tempo máximo permitido, em milissegundos, para exportar os dados.                   | `30000` |
 
 Propriedades para o [amostrador _(sampler)_](../sdk/#sampler):
 
@@ -243,8 +243,8 @@ Propriedades para [limites de trechos](../sdk/#spanlimits):
 
 Propriedades para [leitor de métricas periódico](../sdk/#metricreader):
 
-| Propriedade do sistema        | Descrição                                                                      | Padrão  |
-| ----------------------------- | ------------------------------------------------------------------------------ | ------- |
+| Propriedade do sistema        | Descrição                                                                     | Padrão  |
+| ----------------------------- | ----------------------------------------------------------------------------- | ------- |
 | `otel.metric.export.interval` | Intervalo, em milissegundos, entre o início de duas tentativas de exportação. | `60000` |
 
 Propriedades para exemplares:
@@ -267,10 +267,10 @@ exportadores definidos via `otel.logs.exporter`:
 
 | Propriedade do sistema            | Descrição                                                                                    | Padrão  |
 | --------------------------------- | -------------------------------------------------------------------------------------------- | ------- |
-| `otel.blrp.schedule.delay`        | Intervalo, em milissegundos, entre duas exportações consecutivas.                           | `1000`  |
+| `otel.blrp.schedule.delay`        | Intervalo, em milissegundos, entre duas exportações consecutivas.                            | `1000`  |
 | `otel.blrp.max.queue.size`        | Número máximo de registros de log que podem ser enfileirados antes do processamento em lote. | `2048`  |
 | `otel.blrp.max.export.batch.size` | Número máximo de registros de log exportados em um único lote.                               | `512`   |
-| `otel.blrp.export.timeout`        | Tempo máximo permitido, em milissegundos, para exportar os dados.                           | `30000` |
+| `otel.blrp.export.timeout`        | Tempo máximo permitido, em milissegundos, para exportar os dados.                            | `30000` |
 
 #### Propriedades: exportadores {#properties-exporters}
 
