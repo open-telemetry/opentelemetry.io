@@ -3,6 +3,7 @@ title: 采样
 description: 了解采样以及 OpenTelemetry 中可用的各种采样选项。
 weight: 80
 default_lang_commit: deb98d0648c4833d9e9d77d42e91e2872658b50c # patched
+drifted_from_default: true
 ---
 
 通过[链路](/docs/concepts/signals/traces)，你可以观测请求在分布式系统中从一个服务传递到另一个服务的过程。
