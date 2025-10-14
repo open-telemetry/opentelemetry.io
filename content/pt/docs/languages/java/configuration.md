@@ -191,7 +191,7 @@ defina
 e `otel.resource.attributes` são interpretadas pelo provedor de recurso
 `io.opentelemetry.sdk.autoconfigure.EnvironmentResourceProvider`. Se você optar
 por definir provedores de recurso via `otel.java.enabled.resource-providers`, é
-recomendável incluir este provedor para evitgar comportamentos inesperados.
+recomendável incluir este provedor para evitar comportamentos inesperados.
 Consulte [ResourceProvider](#resourceprovider) para as coordenadas dos artefatos
 de provedores de recurso.
 
@@ -203,10 +203,10 @@ usado em conjunto com os exportadores definidos por meio de
 
 | Propriedade do sistema           | Descrição                                                                           | Padrão  |
 | -------------------------------- | ----------------------------------------------------------------------------------- | ------- |
-| `otel.bsp.schedule.delay`        | Intervalo, em millissegundos, entre duas exportações consecutivas.                  | `5000`  |
+| `otel.bsp.schedule.delay`        | Intervalo, em milissegundos, entre duas exportações consecutivas.                  | `5000`  |
 | `otel.bsp.max.queue.size`        | Número máximo de rastros que podem ser enfileirados antes do processamento em lote. | `2048`  |
 | `otel.bsp.max.export.batch.size` | Número máximo de trechos exportados em um único lote.                               | `512`   |
-| `otel.bsp.export.timeout`        | Tempo máximo permitido, em millissegundos, para exportar os dados.                  | `30000` |
+| `otel.bsp.export.timeout`        | Tempo máximo permitido, em milissegundos, para exportar os dados.                  | `30000` |
 
 Propriedades para o [amostrador _(sampler)_](../sdk/#sampler):
 
@@ -245,7 +245,7 @@ Propriedades para [leitor de métricas periódico](../sdk/#metricreader):
 
 | Propriedade do sistema        | Descrição                                                                      | Padrão  |
 | ----------------------------- | ------------------------------------------------------------------------------ | ------- |
-| `otel.metric.export.interval` | Intervalo, em millissegundos, entre o início de duas tentativas de exportação. | `60000` |
+| `otel.metric.export.interval` | Intervalo, em milissegundos, entre o início de duas tentativas de exportação. | `60000` |
 
 Propriedades para exemplares:
 
@@ -267,10 +267,10 @@ exportadores definidos via `otel.logs.exporter`:
 
 | Propriedade do sistema            | Descrição                                                                                    | Padrão  |
 | --------------------------------- | -------------------------------------------------------------------------------------------- | ------- |
-| `otel.blrp.schedule.delay`        | Intervalo, em millissegundos, entre duas exportações consecutivas.                           | `1000`  |
+| `otel.blrp.schedule.delay`        | Intervalo, em milissegundos, entre duas exportações consecutivas.                           | `1000`  |
 | `otel.blrp.max.queue.size`        | Número máximo de registros de log que podem ser enfileirados antes do processamento em lote. | `2048`  |
 | `otel.blrp.max.export.batch.size` | Número máximo de registros de log exportados em um único lote.                               | `512`   |
-| `otel.blrp.export.timeout`        | Tempo máximo permitido, em millissegundos, para exportar os dados.                           | `30000` |
+| `otel.blrp.export.timeout`        | Tempo máximo permitido, em milissegundos, para exportar os dados.                           | `30000` |
 
 #### Propriedades: exportadores {#properties-exporters}
 
@@ -332,7 +332,7 @@ sobre as genéricas. Por exemplo, se você definir tanto
 `otel.exporter.otlp.endpoint` quanto `otel.exporter.otlp.traces.endpoint`, a
 segunda definição terá precedência.
 
-**[1]**: O agete OpenTelemetry Java 2.x e o inicializador _Spring Boot (Spring
+**[1]**: O agente OpenTelemetry Java 2.x e o inicializador _Spring Boot (Spring
 Boot starter)_ usam `http/protobuf` por padrão.
 
 **[2]**: O [OTLP](/docs/specs/otlp/#otlpgrpc-response) exige que erros
