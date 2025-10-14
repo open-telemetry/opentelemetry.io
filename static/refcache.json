@@ -9155,6 +9155,18 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-10T10:25:51.847086972Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/jetty.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T21:51:29.856730986Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/tomcat.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T21:51:35.515174377Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/wildfly.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T21:51:36.931412653Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T10:25:52.724425513Z"
@@ -9438,6 +9450,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T10:51:44.314536161Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics#predefined-metrics": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T21:51:41.207202433Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics/javaagent": {
     "StatusCode": 206,
