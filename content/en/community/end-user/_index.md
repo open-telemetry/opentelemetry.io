@@ -32,7 +32,7 @@ File an issue in one of our repositories.
 
 <!--➡️ TODO: Add a CTA "Review issues" linking to a list of projects in OTel org ) -->
 
-[Learn more about how we track reactions to issues](issue-participation/)
+[Learn more about how we track reactions to issues.](issue-participation/)
 
 ## Chat on Slack {#slack}
 
@@ -52,7 +52,7 @@ want to keep an eye on are:
 Not sure where to ask? Post in [_#otel-sig-end-user_](https://cloud-native.slack.com/archives/C01RT3MSWGZ), and we will help you find the
 right channel.
 
-[Join CNCF Slack](https://communityinviter.com/apps/cloud-native/cncf)
+[Join CNCF Slack.](https://communityinviter.com/apps/cloud-native/cncf)
 
 <!--➡️ TODO: Turn link to a button -->
 
@@ -68,7 +68,7 @@ we've run previously:
 - [Docs Usability Survey](/blog/2024/otel-docs-survey/)
 <!--➡️ TODO: Turn links into embeds-->
 
-[Learn more about how we run surveys](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys)
+[Learn more about how we run surveys.](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys)
 
 ## Join a podcast {#podcast}
 
@@ -90,7 +90,7 @@ know](#contact).
 channel in the CNCF Slack workspace or open an issue in [sig-end-user]
 repository.
 
-[Learn more about how we do podcasts](interviews-feedback/)
+[Learn more about how we do podcasts.](interviews-feedback/)
 
 ## Connect with us {#contact}
 
