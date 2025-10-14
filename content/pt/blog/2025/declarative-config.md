@@ -278,7 +278,7 @@ que as soluções que criamos realmente atendam às necessidades da comunidade.
 Compartilhe seu _feedback_ ou perguntas usando o canal
 [`#otel-config-file`][slack-config] do Slack do CNCF.
 
-Além de fornecer feedback, existem outras maneiras de se envolver e contribuir
+Além de fornecer _feedback_, existem outras maneiras de se envolver e contribuir
 para o crescimento da configuração declarativa. Cada SDK do OpenTelemetry possui
 [Grupos de Interesse Especial (SIGs)][sigs] dedicados à sua implementação.
 Participar desses SIGs oferece um canal direto para entender o estado atual do
