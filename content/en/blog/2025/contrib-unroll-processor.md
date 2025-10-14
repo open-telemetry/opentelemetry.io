@@ -7,7 +7,7 @@ author: >-
 draft: true # TODO remove when ready to publish
 issue: 8039
 sig: Collector
-cSpell:ignore: schmikei OTTL VPC Bindplane CloudWatch
+cSpell:ignore: Bindplane CloudWatch OTTL schmikei VPC
 ---
 
 The idea for unrolling bundled logs inside the OpenTelemetry Collector didn't
@@ -18,21 +18,29 @@ logs that contain multiple logical events in a single body, like a JSON array,
 the initial instinct was to solve it with an
 [OTTL function inside the transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41791).
 
-And that made sense to me at first glance. OTTL is powerful, flexible, and can handle transformations on the record level. But we found deeper challenges. **The transform processor had a hard time adding new log records mid-iteration**. It mutates and filters existing data, but expanding one record into many isn't something it can feasibly do within its role as a single processor.
+And that made sense to me at first glance. OTTL is powerful, flexible, and can
+handle transformations on the record level. But we found deeper challenges.
+**The transform processor had a hard time adding new log records
+mid-iteration**. It mutates and filters existing data, but expanding one record
+into many isn't something it can feasibly do within its role as a single
+processor.
 
 That's where we wanted to jump in and help. Back in January of this year I
-helped develop a dedicated unroll processor in our distro of the
-OpenTelemetry Collector, primarily because our customer base was running into these issues.
+helped develop a dedicated unroll processor in our distro of the OpenTelemetry
+Collector, primarily because our customer base was running into these issues.
 
 The unroll processor expands bundled records in a clean, deterministic way.
 After running it for months in production,
 [I wanted to help by upstreaming the unroll processor so the OpenTelemetry community could benefit from a shared solution](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/42491).
 
-Let me explain what the unroll processor is, how it works, how it can help you, and how [we helped contribute upstream to the Contrib distribution](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/42500).
+Let me explain what the unroll processor is, how it works, how it can help you,
+and how
+[we helped contribute upstream to the Contrib distribution](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/42500).
 
 ## Why Unroll?
 
-The core problem is simple. **Some sources deliver multiple events within one log record**. You want to work with clean, individual log entries.
+The core problem is simple. **Some sources deliver multiple events within one
+log record**. You want to work with clean, individual log entries.
 
 - You can't control how the source emits data.
 
@@ -58,16 +66,21 @@ It's simple, predictable, and production-safe.
 We explored this deeply.
 
 On paper, solving this via a transform + OTTL combo seemed simpler. Once we got
-into it, we ran into a core limitation: **OTTL can't safely add new records during iteration**. Trying to generate new entries mid-loop leads to skipped records, unreliable statement execution, and brittle behavior.
+into it, we ran into a core limitation: **OTTL can't safely add new records
+during iteration**. Trying to generate new entries mid-loop leads to skipped
+records, unreliable statement execution, and brittle behavior.
 
-Transform and filter processors are excellent for mutation and suppression. But **expansion** is a different responsibility. It requires its own semantics, lifecycle, and guarantees.
+Transform and filter processors are excellent for mutation and suppression. But
+**expansion** is a different responsibility. It requires its own semantics,
+lifecycle, and guarantees.
 
 The unroll processor cleanly separates the concern of adding records from
 transformation logic and operates in a way that's both composable and
 predictable.
 
 I helped develop the first version of the unroll processor in the Bindplane
-Distro of OpenTelemetry Collector. It was first shipped and in use by customers in **January 2025 and has been running in production ever since**.
+Distro of OpenTelemetry Collector. It was first shipped and in use by customers
+in **January 2025 and has been running in production ever since**.
 
 I've seen customers use it across:
 
@@ -76,11 +89,14 @@ I've seen customers use it across:
 - Windows + endpoint logs
 - Bundled collector telemetry
 
-We observed **very low issue volume** even under real production load, which gave us the confidence to **propose it upstream**. Specifically when the initial receiver or source of the log signals is fairly format agnostic.
+We observed **very low issue volume** even under real production load, which
+gave us the confidence to **propose it upstream**. Specifically when the initial
+receiver or source of the log signals is fairly format agnostic.
 
 ## How to Configure the Unroll Processor
 
-Drop the unroll processor into your pipeline wherever you need to expand bundled log payloads. Here's a minimal configuration example to get you started:
+Drop the unroll processor into your pipeline wherever you need to expand bundled
+log payloads. Here's a minimal configuration example to get you started:
 
 ```yaml
 processors:
@@ -95,7 +111,10 @@ service:
 
 ## Common Unroll Patterns
 
-The unroll processor only performs work if `log.body` is an iterable list—for example, a proper JSON array. But in real-world pipelines, log records aren't always so neatly structured. Sometimes, additional preprocessing is needed to convert raw log payloads into a format that the unroll processor can operate on.
+The unroll processor only performs work if `log.body` is an iterable list—for
+example, a proper JSON array. But in real-world pipelines, log records aren't
+always so neatly structured. Sometimes, additional preprocessing is needed to
+convert raw log payloads into a format that the unroll processor can operate on.
 
 ### Example: Multiple JSON Objects in a Single Log Record
 
@@ -145,10 +164,14 @@ services:
 
 ## What's Next?
 
-This feature started from a simple need: **make the Collector more versatile and capable of expanding log records.**
+This feature started from a simple need: **make the Collector more versatile and
+capable of expanding log records.**
 
 We tried the OTTL route, realized it wouldn't easily work, and upstreamed a
-purpose-built, production-tested, and easy-to-use unroll processor. The result is a small config change that can unblock a huge number of real-world telemetry ingestion problems.
+purpose-built, production-tested, and easy-to-use unroll processor. The result
+is a small config change that can unblock a huge number of real-world telemetry
+ingestion problems.
 
 The unroll processor is now available in
-[the official OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/unrollprocessor). Please feel free to create issues/test it out for your logs pipelines.
+[the official OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/unrollprocessor).
+Please feel free to create issues/test it out for your logs pipelines.
