@@ -79,8 +79,8 @@ processor, which is used by both traces and metrics pipelines.
 ## Dashboard
 
 You can access the dashboard by navigating to the Grafana UI, selecting the
-**OpenTelemetry Collector** dashboard under browse icon on the
-left-hand side of the screen.
+**OpenTelemetry Collector** dashboard under browse icon on the left-hand side of
+the screen.
 
 ![OpenTelemetry Collector dashboard](otelcol-data-flow-dashboard.png)
 
