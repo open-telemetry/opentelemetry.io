@@ -20,7 +20,7 @@ the OTLP endpoint authentication credentials with these environment variables:
 To run in Direct mode using the Prometheus scrape endpoint, see the
 [configuration documentation](../options/).
 
-### Configure and run OBI
+## Configure and run OBI
 
 This tutorial assumes OBI and OTel Collector are running natively on the same
 host, so there is no need to secure the traffic nor provide authentication in

@@ -2,7 +2,8 @@
 title: サンプリング
 description: サンプリングとOpenTelemetryで利用可能なさまざまなサンプリングオプションについて学びましょう。
 weight: 80
-default_lang_commit: 8d115a9df96c52dbbb3f96c05a843390d90a9800
+default_lang_commit: 8d115a9df96c52dbbb3f96c05a843390d90a9800 # patched
+drifted_from_default: true
 ---
 
 分散システムでは、[トレース](/docs/concepts/signals/traces)で、リクエストが分散システム内のあるサービスから別のサービスに移動するのを観察できます。
@@ -74,7 +75,7 @@ default_lang_commit: 8d115a9df96c52dbbb3f96c05a843390d90a9800
 ヘッドサンプリングは、サンプリングの決定をできるだけ早期に行うために用いられるサンプリング技術です。
 スパンやトレースのサンプリングまたはドロップの決定は、トレース全体を検査することによって行われるわけではありません。
 
-たとえば、ヘッドサンプリングのもっとも一般的な形式は、[一貫した確率サンプリング](/docs/specs/otel/trace/tracestate-probability-sampling-experimental/#consistent-probability-sampling)です。
+たとえば、ヘッドサンプリングのもっとも一般的な形式は、[一貫した確率サンプリング](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/4673-experimental-probability-sampling.md)です。
 決定論的サンプリングと呼ばれることもあります。
 この場合、サンプリングの決定は、トレースIDと、サンプリングするトレースの望ましい割合に基づいて行われます。
 これにより、全トレースの5%など、一貫した割合で、スパンの欠損無く、全トレースがサンプリングされます。
