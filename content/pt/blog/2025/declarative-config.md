@@ -135,7 +135,7 @@ instrumentation/development:
 ```
 
 Com essa configuração implementada, os desenvolvedores podem continuar a usar
-sua instrumentação Java normalmente, enviando dados de telemetria para o backend
+sua instrumentação Java normalmente, enviando dados de telemetria para o _backend_
 de observabilidade escolhido. Além disso, o arquivo de configuração declarativo
 oferece flexibilidade para expandir e adicionar mais parâmetros conforme
 necessário, permitindo um controle altamente personalizado e detalhado sobre a
