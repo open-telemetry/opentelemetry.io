@@ -3,6 +3,7 @@ title: サンプリング
 description: サンプリングとOpenTelemetryで利用可能なさまざまなサンプリングオプションについて学びましょう。
 weight: 80
 default_lang_commit: 8d115a9df96c52dbbb3f96c05a843390d90a9800 # patched
+drifted_from_default: true
 ---
 
 分散システムでは、[トレース](/docs/concepts/signals/traces)で、リクエストが分散システム内のあるサービスから別のサービスに移動するのを観察できます。
