@@ -2323,6 +2323,18 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-11T09:39:25.888262525Z"
   },
+  "https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:37:08.270978819Z"
+  },
+  "https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#clusterresourcequota-quota-openshift-io-v1": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:36:52.013831784Z"
+  },
+  "https://docs.redhat.com/en/documentation/openshift_container_platform/4.19/html/schedule_and_quota_apis/clusterresourcequota-quota-openshift-io-v1#status-total": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:37:13.613635813Z"
+  },
   "https://docs.roadrunner.dev/docs/logging-and-observability/otel": {
     "StatusCode": 200,
     "LastSeen": "2025-10-14T09:57:33.250714672Z"
@@ -12530,6 +12542,10 @@
   "https://github.com/open-telemetry/semantic-conventions/pull/2392": {
     "StatusCode": 206,
     "LastSeen": "2025-08-28T17:29:52.089206-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2779": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-14T10:37:01.199831165Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/981": {
     "StatusCode": 206,
