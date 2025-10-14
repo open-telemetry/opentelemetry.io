@@ -23,9 +23,6 @@ Spring Boot 启动器是一个特殊的案例，其中 `OpenTelemetry` 可作为
 
 {{% alert title="Note" %}}
 
-<!-- For the most common use cases, use the `@WithSpan` annotation instead of manual
-instrumentation. See [Annotations](../annotations) for more information. -->
-
 对于最常见的使用场景，使用 `@WithSpan` 注解而不是手动插桩。
 请参阅[注解](../annotations)以获取更多信息。
 

@@ -7,19 +7,11 @@ weight: 11
 cSpell:ignore: activej akka armeria avaje clickhouse couchbase dbcp dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jedis jodd ktor logback logmanager mojarra mybatis myfaces okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson resteasy restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
-<!-- The Java agent automatically instruments many libraries, frameworks, and
-application servers right out of the box. If you do not see the framework or
-technology you are looking for, consider
-[filing an issue](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues). -->
-
 Java 代理开箱即用地对许多库、框架和应用服务器进行自动插桩。
 如果您没有看到您正在寻找的框架或技术，
 请考虑[提交一个问题](https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues)。
 
 ## 库与框架 {#supported-libraries}
-
-<!-- These are the supported libraries and frameworks. Versions listed are the
-minimum versions supported unless otherwise noted. -->
 
 以下是受支持的库和框架。除非另有说明，列出的版本均为支持的最低版本。
 
@@ -168,24 +160,6 @@ minimum versions supported unless otherwise noted. -->
 | [XXL-JOB](https://www.xuxueli.com/xxl-job/en/)                                                                                              | 1.9.2+                             | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | none                                                                                                                                         |
 | [ZIO](https://zio.dev/)                                                                                                                     | 2.0+                               | N/A                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 上下文传播                                                                                                                                   |
 
-<!-- **[1]** Standalone library instrumentation refers to instrumentation that can be
-used without the Java agent.
-
-**[2]** Provides `http.route`: Provides a route-based span name for existing
-`SERVER` spans. If applicable、provides a `http.route` span and metric attribute
-on existing `SERVER` spans and metrics.
-
-**[3]** Controller Spans are `INTERNAL` spans capturing the controller and/or
-view execution. See
-[Suppressing controller and/or view spans](/docs/zero-code/java/agent/disable/#suppressing-controller-andor-view-spans).
-
-**[4]** Newer versions of the library have telemetry built-in.
-
-**[5]** Doesn't currently support capturing HTTP/2 traffic.
-
-**[6]** Database client metrics are available for those who opt-in to
-[semantic convention stability](/docs/specs/semconv/non-normative/db-migration/). -->
-
 **[1]** 独立库插桩指的是无需依赖 Java 代理即可使用的插桩方式。
 
 **[2]** 提供 `http.route`：为现有的 `SERVER` Span 提供基于路由的 Span 名称。如果适用，为现有的 `SERVER` Span 和指标提供 `http.route` Span 和指标属性。
@@ -219,8 +193,6 @@ view execution. See
 [GenAI Client Metrics]: /docs/specs/semconv/gen-ai/gen-ai-metrics/#generative-ai-client-metrics
 
 ## 应用服务器 {#application-servers}
-
-<!-- These are the application servers that are regularly tested with the agent: -->
 
 以下是经过该代理定期测试的应用服务器：
 

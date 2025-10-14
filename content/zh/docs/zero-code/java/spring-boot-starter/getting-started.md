@@ -30,8 +30,6 @@ OpenTelemetry Spring Boot 启动器适用于 Spring Boot 2.6+ 和 3.1+ 版本，
 
 {{% /alert %}}
 
-<!-- The following example shows how to import the OpenTelemetry BOMs using Maven: -->
-
 下面的示例展示了如何使用 Maven 导入 OpenTelemetry BOM:
 
 ```xml
