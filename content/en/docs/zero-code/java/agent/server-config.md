@@ -177,7 +177,7 @@ Open the WebSphere Admin Console and follow these steps:
     `-javaagent:/path/to/opentelemetry-javaagent.jar`.
 6.  Save the configuration and restart the server.
 
-## Enable Predefined JMX Metrics
+## Enable predefined JMX Metrics
 
 The Java agent includes predefined JMX metrics configurations for several
 popular application servers, but these are not enabled by default. To enable
@@ -197,9 +197,13 @@ The following are known application server values for `otel.jmx.target.system`:
 - [`tomcat`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/tomcat.md)
 - [`wildfly`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/wildfly.md)
 
-_Note: This list is not comprehensive, and other JMX target systems are
-supported._
+{{% alert title="Note" %}}
 
-For a list of metrics extracted from each application server, click the name
-above, or
-[click here for additional details and customization capabilities](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics#predefined-metrics).
+This list is not comprehensive, and other JMX target systems are
+supported.
+
+{{% /alert %}}
+
+For a list of metrics extracted from each application server, select the previous
+name, or refer to
+[Additional details and customization capabilities](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics#predefined-metrics).
