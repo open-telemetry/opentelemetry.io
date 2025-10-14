@@ -1,6 +1,6 @@
 ---
 title: 快速开始
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
+default_lang_commit: f49ec57e5a0ec766b07c7c8e8974c83531620af3
 weight: 20
 cSpell:ignore: springboot
 ---
@@ -12,12 +12,12 @@ cSpell:ignore: springboot
 
 {{% /alert %}}
 
-### 兼容性 {#compatibility}
+## 兼容性 {#compatibility}
 
 OpenTelemetry Spring Boot 启动器适用于 Spring Boot 2.6+ 和 3.1+ 版本，以及 Spring Boot Native image 应用程序。
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)仓库包含了一个使用 OpenTelemetry Spring Boot 启动器配置插桩的 Spring Boot Native image 应用程序的示例。
 
-### 依赖管理 {#dependency-management}
+## 依赖管理 {#dependency-management}
 
 物料清单（[BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms)） 确保依赖（含传递性依赖）版本一致性
 
@@ -87,7 +87,7 @@ dependencyManagement {
 
 {{% /alert %}}
 
-#### OpenTelemetry 启动器依赖 {#opentelemetry-starter-dependency}
+### OpenTelemetry 启动器依赖 {#opentelemetry-starter-dependency}
 
 添加以下依赖以启用 OpenTelemetry 启动器。
 

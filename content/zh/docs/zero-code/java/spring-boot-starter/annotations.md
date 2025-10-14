@@ -1,6 +1,6 @@
 ---
 title: 注解
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
+default_lang_commit: 1edcb4998a74ca24a76668310b762a765c6f5966
 weight: 50
 ---
 
@@ -41,6 +41,7 @@ public class TracedClass {
   @WithSpan(kind = SpanKind.CLIENT)
   public void tracedClientSpan() {}
 
+  @WithSpan
   public void tracedMethodWithAttribute(@SpanAttribute("attributeName") String parameter) {}
 }
 ```
