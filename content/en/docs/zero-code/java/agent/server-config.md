@@ -182,7 +182,7 @@ Open the WebSphere Admin Console and follow these steps:
 The Java agent includes predefined JMX metrics configurations for several
 popular application servers, but these are not enabled by default. To enable
 collection of the predefined metrics, specify a list of targets as the value for
-the `otel.jmx.target.system property`. For example:
+the `otel.jmx.target.system` system property. For example:
 
 ```bash
 $ java -javaagent:path/to/opentelemetry-javaagent.jar \
