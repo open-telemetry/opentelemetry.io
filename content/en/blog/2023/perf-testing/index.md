@@ -12,7 +12,7 @@ OpenTelemetry will have on their application performance. In this blog post I
 will discuss a few recent improvements in tooling around performance
 benchmarking.
 
-### Measuring performance overhead
+## Measuring performance overhead
 
 Instrumentation is not free. It intercepts an application's operations and
 collects (often) a large amount of data, which takes additional CPU and memory.
@@ -31,7 +31,7 @@ With that said a number of OpenTelemetry components include performance tests
 that help catch regressions and can be used to provide some idea of their
 performance characteristics.
 
-### OpenTelemetry Collector
+## OpenTelemetry Collector
 
 The [OpenTelemetry Collector](/docs/collector/) runs
 [end-to-end load tests](https://github.com/open-telemetry/opentelemetry-collector-contrib/actions/workflows/load-tests.yml)
@@ -45,7 +45,7 @@ workflow:
    [complete test results](https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/)
    are available as well.
 
-### Language SDKs
+## Language SDKs
 
 A number of OpenTelemetry SDKs already include existing micro-benchmark tests,
 for example:
@@ -73,7 +73,7 @@ results are as consistent as possible.
 
 There is work in progress to make the same updates for Python and Go.
 
-### Conclusion
+## Conclusion
 
 Performance optimization is often considered only as an afterthought, but it
 does not have to be. We are making improvements to automated tooling and
