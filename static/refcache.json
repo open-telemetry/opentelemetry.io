@@ -2023,10 +2023,6 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-14T12:35:39.345825-04:00"
   },
-  "https://docs.observeinc.com/en/latest/content/send-data/app-instrumentation/index.html#instrument-with-opentelemetry": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-14T12:56:22.829388186Z"
-  },
   "https://docs.odigos.io": {
     "StatusCode": 200,
     "LastSeen": "2025-10-08T01:26:06.903769273Z"
@@ -6771,6 +6767,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-05-26T16:48:20.737483+03:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/6a2bd15cc941859767c7043a0597b8b0f6dd9f64/receiver/sapmreceiver#sapm-receiver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-14T13:14:28.647462-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/e228ef6c18aa2f05b2173f20be0578f714d0128b/receiver/opencensusreceiver#opencensus-receiver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-14T13:14:28.007472-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor": {
     "StatusCode": 206,
     "LastSeen": "2025-04-22T16:02:37.121872+02:00"
@@ -7463,10 +7467,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-10T10:31:11.493994908Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/opencensusreceiver#opencensus-receiver": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-14T12:59:20.132807081Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/oracledbreceiver": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T10:31:11.881381406Z"
@@ -7530,10 +7530,6 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/saphanareceiver": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T10:31:16.200941801Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sapmreceiver#sapm-receiver": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-14T12:59:24.753349946Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/signalfxreceiver": {
     "StatusCode": 206,
@@ -9799,10 +9795,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-09T19:47:05.022665568Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-14T12:53:52.661413127Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/packages/auto-instrumentations-node/README.md#supported-instrumentations": {
     "StatusCode": 200,
     "LastSeen": "2025-10-01T13:50:12.345Z"
@@ -9819,13 +9811,13 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-09T18:59:26.280654-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/e8e3cbdadf439c5bd16dfe5d6fc0714fe0e8235a/metapackages/auto-instrumentations-node/#supported-instrumentations": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-14T13:14:54.153116-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/archive/opentelemetry-browser-extension-autoinjection": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T08:31:59.305266418Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/metapackages/auto-instrumentations-node#supported-instrumentations": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-14T12:53:53.207396588Z"
   },
   "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages": {
     "StatusCode": 206,
