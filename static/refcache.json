@@ -1252,8 +1252,8 @@
     "LastSeen": "2025-02-04T09:14:48.868352-05:00"
   },
   "https://developer.hashicorp.com/nomad/docs/operations/monitoring-nomad": {
-    "StatusCode": 429,
-    "LastSeen": "2025-10-14T09:57:09.91253877Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:06:06.256Z"
   },
   "https://developer.mozilla.org/docs/Web/HTTP/Headers/Forwarded#for": {
     "StatusCode": 200,
@@ -14455,9 +14455,9 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-10T13:26:59.079157391Z"
   },
-  "https://keda.sh/docs/latest/operate/opentelemetry/": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-14T09:57:31.508152704Z"
+  "https://keda.sh/docs/latest/integrations/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-14T06:07:23.64687-04:00"
   },
   "https://kind.sigs.k8s.io/": {
     "StatusCode": 206,
@@ -15588,12 +15588,12 @@
     "LastSeen": "2025-04-29T20:43:13.253709+02:00"
   },
   "https://npmjs.com/package/@arizeai/openinference-instrumentation-langchain": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-14T09:57:50.687942099Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:06:09.172Z"
   },
   "https://npmjs.com/package/@arizeai/openinference-instrumentation-openai": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-14T09:57:51.206217984Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:06:12.187Z"
   },
   "https://npmjs.com/package/@autotelic/fastify-opentelemetry": {
     "StatusCode": 200,
@@ -15604,8 +15604,8 @@
     "LastSeen": "2025-10-01T13:45:10.977Z"
   },
   "https://npmjs.com/package/@azure/opentelemetry-instrumentation-azure-sdk": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-14T09:57:50.595429094Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:06:15.186Z"
   },
   "https://npmjs.com/package/@cerbos/opentelemetry": {
     "StatusCode": 200,
@@ -15812,8 +15812,8 @@
     "LastSeen": "2025-10-03T23:48:06.937Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-undici": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-14T09:57:51.496564611Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:06:18.019Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-user-interaction": {
     "StatusCode": 200,
@@ -18280,32 +18280,32 @@
     "LastSeen": "2025-10-14T08:59:04.754Z"
   },
   "https://sched.co/1eYYg": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-14T09:57:17.259702064Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:06:21.236Z"
   },
   "https://sched.co/1eYZA": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-14T09:57:19.93923455Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:06:23.696Z"
   },
   "https://sched.co/1eYZq": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-14T09:57:26.061743759Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:06:26.275Z"
   },
   "https://sched.co/1eYZt": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-14T09:57:22.679648948Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:06:29.063Z"
   },
   "https://sched.co/1eYcJ": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-14T09:57:07.616344367Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:06:31.576Z"
   },
   "https://sched.co/1f4zX": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-14T09:57:11.096240553Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:06:34.016Z"
   },
   "https://sched.co/1f4zz": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-14T09:57:14.253170269Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-14T10:06:36.465Z"
   },
   "https://sched.co/1hovy": {
     "StatusCode": 200,
