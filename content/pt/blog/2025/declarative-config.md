@@ -12,8 +12,8 @@ author: >-
 cSpell:ignore: Dotel marylia otelconf zeitlinger
 ---
 
-Uma das solicitações de recursos mais persistentes e populares para o Java
-OpenTelemetry nos últimos anos tem sido a capacidade de [eliminar com eficiência
+Uma das solicitações de recursos mais persistentes e populares para o OpenTelemetry
+Java nos últimos anos tem sido a capacidade de [eliminar com eficiência
 trechos para endpoints de verificação de integridade][drop-spans-issue] – ou
 quaisquer outros endpoints que sejam de baixo valor ou custosos. Essa questão
 foi levantada pela primeira vez em agosto de 2020, mas uma solução abrangente
