@@ -193,7 +193,7 @@ async function retry400sAndUpdateCache() {
     }`,
   );
   console.log(`Updated ${updatedCount} entries.\n`);
-  console.log(`Final status counts:`);
+  console.log(`Final HTTP status counts of entries:`);
   for (const [status, count] of Object.entries(statusCounts)) {
     console.log(`  ${status}: ${count}`);
   }
