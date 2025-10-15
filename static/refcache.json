@@ -236,8 +236,8 @@
     "LastSeen": "2025-10-14T17:45:38.203Z"
   },
   "https://blog.olly.garden/how-to-name-your-metrics": {
-    "StatusCode": 429,
-    "LastSeen": "2025-10-15T10:10:42.307825705Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-15T10:27:42.556Z"
   },
   "https://blog.olly.garden/how-to-name-your-span-attributes": {
     "StatusCode": 200,
@@ -15620,12 +15620,12 @@
     "LastSeen": "2025-10-14T10:06:12.187Z"
   },
   "https://npmjs.com/package/@autotelic/fastify-opentelemetry": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-15T10:12:36.466136129Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-15T10:27:45.509Z"
   },
   "https://npmjs.com/package/@azure/monitor-opentelemetry-exporter": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-15T10:12:28.904013387Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-15T10:27:48.807Z"
   },
   "https://npmjs.com/package/@azure/opentelemetry-instrumentation-azure-sdk": {
     "StatusCode": 200,
@@ -15656,8 +15656,8 @@
     "LastSeen": "2025-10-15T10:13:21.151Z"
   },
   "https://npmjs.com/package/@jufab/opentelemetry-angular-interceptor": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-15T10:12:36.356783412Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-15T10:27:51.719Z"
   },
   "https://npmjs.com/package/@opentelemetry/exporter-jaeger": {
     "StatusCode": 200,
@@ -15676,8 +15676,8 @@
     "LastSeen": "2025-10-15T10:13:29.023Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-aws-lambda": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-15T10:12:36.572015159Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-15T10:27:54.988Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-aws-sdk": {
     "StatusCode": 200,
@@ -15732,8 +15732,8 @@
     "LastSeen": "2025-10-15T10:14:00.189Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-graphql": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-15T10:12:37.977337567Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-15T10:27:57.94Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-grpc": {
     "StatusCode": 200,
