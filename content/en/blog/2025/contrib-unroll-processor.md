@@ -41,8 +41,6 @@ and how
 The core problem is simple. **Some sources deliver multiple events within one
 log record**. You want to work with clean, individual log entries.
 
-- You can't control how the source emits data.
-
 Before unroll, you had two awkward options:
 
 1. Pre-process logs outside the Collector—if you even could insert the logic.
