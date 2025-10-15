@@ -95,7 +95,7 @@ repository.
 
 ## Connect with us {#contact}
 
-If you're interested in being a part of any of these programs, do you have any
+If you're interested in being a part of any of these programs, have any
 questions or tips on how to improve end user feedback collection, or just want
 to say hi, let us know in
 [_#otel-sig-end-user_](https://cloud-native.slack.com/archives/C01RT3MSWGZ) in
