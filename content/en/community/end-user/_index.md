@@ -49,8 +49,9 @@ want to keep an eye on are:
 - #otel-community-demo
 - #otel-vendor
 
-Not sure where to ask? Post to [#otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ), and we will help you find the
-right channel.
+Not sure where to ask? Post to
+[#otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ), and
+we will help you find the right channel.
 
 [Join CNCF Slack.](https://communityinviter.com/apps/cloud-native/cncf)
 
@@ -79,13 +80,13 @@ podcasts. We regularly do two types of them:
   A discussion between our host and end users about their OpenTelemetry adoption
   and implementation.
 - [OTel in Practice](https://www.youtube.com/playlist?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x):
-  An interactive enablement session on different aspects of OpenTelemetry
-  by contributors and end users.
+  An interactive enablement session on different aspects of OpenTelemetry by
+  contributors and end users.
   <!--➡️ TODO: Turn links into embeds-->
 
 We do the podcasts live and recordings are posted on the OpenTelemetry YouTube
-channel. If you want to talk about your experience with OpenTelemetry, [let us
-know](#contact).
+channel. If you want to talk about your experience with OpenTelemetry,
+[let us know](#contact).
 
 channel in the CNCF Slack workspace or open an issue in [sig-end-user]
 repository.
@@ -94,7 +95,11 @@ repository.
 
 ## Connect with us {#contact}
 
-If you're interested in being a part of any of these programs, do you have any questions or tips on how to improve end user feedback collection, or just want to say hi, let us know in [_#otel-sig-end-user_](https://cloud-native.slack.com/archives/C01RT3MSWGZ) in CNCF Slack! Not there yet?
+If you're interested in being a part of any of these programs, do you have any
+questions or tips on how to improve end user feedback collection, or just want
+to say hi, let us know in
+[_#otel-sig-end-user_](https://cloud-native.slack.com/archives/C01RT3MSWGZ) in
+CNCF Slack! Not there yet?
 [Join us](https://communityinviter.com/apps/cloud-native/cncf)!
 
 {{% alert title="For OpenTelemetry contributors" %}}
