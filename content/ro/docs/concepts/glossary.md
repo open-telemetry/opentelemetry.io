@@ -306,7 +306,7 @@ Prescurtare pentru [Protocolul OpenTelemetry](/docs/specs/otlp/).
 
 Folosit pentru serializarea și deserializarea părților specifice ale datelor de
 telemetrie, cum ar fi contextul intervalului și [Bagajul](#baggage) din
-[Intervaluri](#span). Vezi [Propagatori].
+[Intervaluri](#span). Vezi [Propagatori](#propagators).
 
 ### Proto
 
@@ -342,7 +342,7 @@ Prescurtare pentru [Apel de procedură la distanță][rpc].
 
 Un mecanism pentru controlul cantității de date exportate. Cel mai frecvent
 utilizat cu [Trasarea](#trace) [Sursei de date](#data-source). Vezi
-[Eșantionare].
+[Eșantionare](#sampling).
 
 ### SDK
 
