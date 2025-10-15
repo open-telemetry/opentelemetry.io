@@ -49,7 +49,7 @@ want to keep an eye on are:
 - #otel-community-demo
 - #otel-vendor
 
-Not sure where to ask? Post in [_#otel-sig-end-user_](https://cloud-native.slack.com/archives/C01RT3MSWGZ), and we will help you find the
+Not sure where to ask? Post to [#otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ), and we will help you find the
 right channel.
 
 [Join CNCF Slack.](https://communityinviter.com/apps/cloud-native/cncf)
