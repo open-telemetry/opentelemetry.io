@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Sampling update
 linkTitle: OpenTelemetry Sampling update
-date: 2025-10-14
+date: 2025-10-15
 author: >-
   [Joshua MacDonald](https://github.com/jmacd) (Microsoft), [Kent
   Quirk](https://github.com/kentquirk) (Honeycomb), [Otmer
