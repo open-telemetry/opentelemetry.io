@@ -29,6 +29,7 @@ guidance offered in this section.
   - [Front matter][] field values for `title`, `linkTitle`, and `description`
   - **All** page content and front matter unless indicated otherwise
 - **Preserve** the _content_, _meaning_, and _style_ of the original text
+- **Submit work _incrementally_** via [small pull requests](#small-prs)
 - **Ask** [maintainers] if you have any doubts or questions through:
   - [Slack] `#otel-docs-localization` or `#otel-comms` channels
   - [Discussion], issue, or PR comment
@@ -401,13 +402,18 @@ content][ali-dowair-2024].
   https://www.writethedocs.org/conf/atlantic/2024/speakers/#speaker-ali-dowair-what-s-in-a-word-lessons-from-localizing-kubernetes-documentation-to-arabic-ali-dowair
 [ali-d-youtube]: https://youtu.be/HY3LZOQqdig
 
-### 5. Localize the remaining site pages {#rest}
+### 5. Localize remaining site pages in small increments {#rest}
 
-With terminology established, you can now localize the remaining site pages.
+With terminology established, you can now localize the remaining site pages. <a
+name="small-prs"></a>
 
-When submitting PRs, keep them small: preferably limited to one file or a few
-small files. Smaller PRs are easier to review and so typically get merged more
-quickly.
+{{% alert title="Submit small PRs" color="primary" %}}
+
+Localization teams should submit their work in **small increments**. That is,
+keep [PRs] small, preferably limited to one or a few small files. Smaller PRs
+are easier to review and so typically get merged more quickly.
+
+{{% /alert %}}
 
 ### OTel maintainer checklist
 
@@ -450,9 +456,9 @@ If no dictionary is available, then skip the rest of this subsection. Otherwise:
 
 ### PRs with semantic changes should not span locales {#prs-should-not-span-locales}
 
-Approvers should ensure that PRs making **semantic** changes to doc pages do not
-span multiple locales. A semantic change is one that impacts the _meaning_ of
-the page content. Our docs [localization process](.) ensures that locale
+Approvers should ensure that [PRs] making **semantic** changes to doc pages do
+not span multiple locales. A semantic change is one that impacts the _meaning_
+of the page content. Our docs [localization process](.) ensures that locale
 approvers will, in time, review the English-language edits to determine if the
 changes are appropriate for their locale, and how best to incorporate them into
 their locale. If changes are necessary, the locale approvers will make them via
@@ -522,4 +528,5 @@ synchronization with the English version.
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
+[PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/

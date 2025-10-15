@@ -470,6 +470,7 @@ maintainers:
       - browser-maintainers
       - javascript-approvers
       - javascript-contrib-triagers
+      - javascript-maintainers
       - javascript-triagers
     html_url: https://github.com/david-luna
     avatar_url: https://avatars.githubusercontent.com/u/999029?v=4
@@ -954,6 +955,15 @@ maintainers:
       - ebpf-instrumentation-maintainers
     html_url: https://github.com/mariomac
     avatar_url: https://avatars.githubusercontent.com/u/939550?v=4
+  - name: martincostello
+    teams:
+      - dotnet-approvers
+      - dotnet-contrib-approvers
+      - dotnet-contrib-maintainers
+      - dotnet-contrib-triagers
+      - dotnet-triagers
+    html_url: https://github.com/martincostello
+    avatar_url: https://avatars.githubusercontent.com/u/1439341?v=4
   - name: martinkuba
     teams:
       - browser-approvers
@@ -1538,6 +1548,13 @@ maintainers:
       - go-triagers
     html_url: https://github.com/XSAM
     avatar_url: https://avatars.githubusercontent.com/u/11306772?v=4
+  - name: y1yang0
+    teams:
+      - go-compile-instrumentation-approvers
+      - go-compile-instrumentation-maintainers
+      - go-compile-instrumentation-triagers
+    html_url: https://github.com/y1yang0
+    avatar_url: https://avatars.githubusercontent.com/u/5010047?v=4
   - name: ymotongpoo
     teams:
       - docs-ja-approvers
@@ -1973,14 +1990,6 @@ approvers:
       - ebpf-instrumentation-approvers
     html_url: https://github.com/marctc
     avatar_url: https://avatars.githubusercontent.com/u/280193?v=4
-  - name: martincostello
-    teams:
-      - dotnet-approvers
-      - dotnet-contrib-approvers
-      - dotnet-contrib-triagers
-      - dotnet-triagers
-    html_url: https://github.com/martincostello
-    avatar_url: https://avatars.githubusercontent.com/u/1439341?v=4
   - name: maxgolov
     teams:
       - cpp-contrib-approvers
@@ -2282,12 +2291,6 @@ approvers:
       - ruby-contrib-approvers
     html_url: https://github.com/xuan-cao-swi
     avatar_url: https://avatars.githubusercontent.com/u/112967240?v=4
-  - name: y1yang0
-    teams:
-      - go-compile-instrumentation-approvers
-      - go-compile-instrumentation-triagers
-    html_url: https://github.com/y1yang0
-    avatar_url: https://avatars.githubusercontent.com/u/5010047?v=4
   - name: yuriolisa
     teams:
       - operator-approvers
@@ -2796,6 +2799,9 @@ members:
   - name: markwolff
     html_url: https://github.com/markwolff
     avatar_url: https://avatars.githubusercontent.com/u/5515583?v=4
+  - name: martin308
+    html_url: https://github.com/martin308
+    avatar_url: https://avatars.githubusercontent.com/u/475364?v=4
   - name: mateuszrzeszutek
     html_url: https://github.com/mateuszrzeszutek
     avatar_url: https://avatars.githubusercontent.com/u/69198463?v=4
