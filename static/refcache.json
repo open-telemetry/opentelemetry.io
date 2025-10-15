@@ -100,8 +100,8 @@
     "LastSeen": "2025-10-15T10:08:15.254495817Z"
   },
   "https://aws-otel.github.io/docs/components/confmap-providers#confmap-providers-supported-by-the-adot-collector": {
-    "StatusCode": 206,
-    "LastSeen": "2025-10-14T12:53:38.879380832Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-15T17:31:12.345Z"
   },
   "https://aws-otel.github.io/docs/getting-started/collector": {
     "StatusCode": 206,
@@ -225,7 +225,7 @@
   },
   "https://betterstack.com/docs/logs/open-telemetry/#2-setup": {
     "StatusCode": 200,
-    "LastSeen": "2025-10-14T12:56:12.75448764Z"
+    "LastSeen": "2025-10-15T17:31:12.345Z"
   },
   "https://bitbucket.org": {
     "StatusCode": 200,
@@ -256,8 +256,8 @@
     "LastSeen": "2025-10-14T09:58:27.339Z"
   },
   "https://bosh.io/docs/jobs/#properties-spec": {
-    "StatusCode": 206,
-    "LastSeen": "2025-10-14T12:56:54.699647745Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-15T17:31:12.345Z"
   },
   "https://brew.sh/": {
     "StatusCode": 206,
@@ -281,7 +281,7 @@
   },
   "https://bytebuddy.net/#/": {
     "StatusCode": 206,
-    "LastSeen": "2025-10-15T17:05:55.287507052Z"
+    "LastSeen": "2025-10-15T17:31:59.999Z"
   },
   "https://calendar.google.com/calendar/embed": {
     "StatusCode": 200,
@@ -737,11 +737,11 @@
   },
   "https://cloud.google.com/app-hub/docs/reference/rest/v1/Attributes#type": {
     "StatusCode": 200,
-    "LastSeen": "2025-10-14T17:41:46.408689503Z"
+    "LastSeen": "2025-10-15T17:31:12.345Z"
   },
   "https://cloud.google.com/app-hub/docs/reference/rest/v1/Attributes#type_1": {
     "StatusCode": 200,
-    "LastSeen": "2025-10-14T17:41:48.869051468Z"
+    "LastSeen": "2025-10-15T17:31:12.345Z"
   },
   "https://cloud.google.com/app-hub/docs/supported-resources": {
     "StatusCode": 200,
@@ -765,11 +765,11 @@
   },
   "https://cloud.google.com/compute/docs/internal-dns#instance-fully-qualified-domain-names": {
     "StatusCode": 200,
-    "LastSeen": "2025-10-14T12:57:02.585975331Z"
+    "LastSeen": "2025-10-15T17:31:12.345Z"
   },
   "https://cloud.google.com/compute/docs/metadata/querying-metadata#waitforchange": {
     "StatusCode": 200,
-    "LastSeen": "2025-10-14T12:57:15.506819187Z"
+    "LastSeen": "2025-10-15T17:31:12.345Z"
   },
   "https://cloud.google.com/discover/what-are-ai-agents": {
     "StatusCode": 200,
@@ -781,11 +781,11 @@
   },
   "https://cloud.google.com/functions/docs/concepts/execution-environment#scope": {
     "StatusCode": 200,
-    "LastSeen": "2025-10-14T17:42:11.629213744Z"
+    "LastSeen": "2025-10-15T17:31:59.999Z"
   },
   "https://cloud.google.com/functions/docs/env-var#runtime_environment_variables_set_automatically": {
     "StatusCode": 200,
-    "LastSeen": "2025-10-14T12:56:52.256619629Z"
+    "LastSeen": "2025-10-15T17:31:59.999Z"
   },
   "https://cloud.google.com/functions/docs/writing/write-http-functions": {
     "StatusCode": 200,
@@ -801,11 +801,11 @@
   },
   "https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa": {
     "StatusCode": 200,
-    "LastSeen": "2025-10-15T10:11:34.93142494Z"
+    "LastSeen": "2025-10-15T17:32:12.345Z"
   },
   "https://cloud.google.com/monitoring/api/metrics_gcp#gcp-cloudfunctions": {
     "StatusCode": 200,
-    "LastSeen": "2025-10-14T12:57:28.223268119Z"
+    "LastSeen": "2025-10-15T17:32:59.999Z"
   },
   "https://cloud.google.com/products/gemini": {
     "StatusCode": 200,
@@ -821,7 +821,7 @@
   },
   "https://cloud.google.com/run/docs/container-contract#jobs-env-vars": {
     "StatusCode": 200,
-    "LastSeen": "2025-10-14T12:56:54.692464688Z"
+    "LastSeen": "2025-10-15T17:32:12.345Z"
   },
   "https://cloud.google.com/run/docs/managing/job-executions": {
     "StatusCode": 200,
@@ -864,8 +864,8 @@
     "LastSeen": "2025-10-10T13:21:55.540475721Z"
   },
   "https://code.visualstudio.com/docs/devcontainers/containers#_installation": {
-    "StatusCode": 206,
-    "LastSeen": "2025-10-14T17:39:03.768084908Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-15T17:32:12.345Z"
   },
   "https://cohere.com/": {
     "StatusCode": 200,
@@ -916,8 +916,8 @@
     "LastSeen": "2025-10-14T17:41:59.7453295Z"
   },
   "https://connectrpc.com//docs/protocol/#error-codes": {
-    "StatusCode": 206,
-    "LastSeen": "2025-10-14T17:41:45.206432776Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-15T17:32:12.345Z"
   },
   "https://containerd.io/": {
     "StatusCode": 206,
@@ -1891,6 +1891,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-15T10:08:22.348354806Z"
   },
+  "https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-15T13:29:23.984417-04:00"
+  },
   "https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:38:27.255487145Z"
@@ -2038,6 +2042,10 @@
   "https://docs.openssl.org/1.1.1/man3/SSL_get_version/#return-values": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:41:40.461849533Z"
+  },
+  "https://docs.oracle.com/cd/B28359_01/server.111/b28278/toc.htm": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-15T13:29:22.300418-04:00"
   },
   "https://docs.oracle.com/cd/E12058_01/doc/doc.1014/e12030/cron_expressions.htm": {
     "StatusCode": 200,
