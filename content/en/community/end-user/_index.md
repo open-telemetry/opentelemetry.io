@@ -108,5 +108,3 @@ thing you've spent hours working on? Reach out to the End User SIG on Slack
 (#otel-sig-end-user) and we will be happy to help you.
 
 {{% /alert %}}
-
-[sig-end-user]: https://github.com/open-telemetry/sig-end-user
