@@ -92,7 +92,6 @@ gateway.
 > întotdeauna cu majusculă Colector. Folosește doar „Colector” dacă folosești
 > Colector ca adjectiv &mdash; de exemplu, „Configurația colectorului”.
 
-
 ### Contrib
 
 Mai multe [Biblioteci de instrumentație](#instrumentation-library) și
@@ -166,8 +165,8 @@ Prescurtare de la [Protocol de transfer hipertext][http].
 ### Bibliotecă instrumentată
 
 Indică [Biblioteca](#library) pentru care sunt colectate semnalele de telemetrie
-([Urme](#trace), [Metrici](#metric), [Jurnale](#log)). Vezi [Biblioteca
-instrumentată][].
+([Urme](#trace), [Metrici](#metric), [Jurnale](#log)). Vezi
+[Biblioteca instrumentată](#instrumented-library).
 
 ### Biblioteca de instrumente
 
@@ -208,7 +207,7 @@ utilizează calificatori suplimentari, de exemplu, `Înregistrare jurnal`. Vezi
 
 O înregistrare a datelor cu o marcă temporală și o severitate. Poate avea și un
 [ID de urmărire](#trace) și un [ID de interval](#span) atunci când este corelată
-cu o urmă. Consultă [Înregistrare în jurnal][].
+cu o urmă. Vezi [Înregistrare în jurnal](#log-record).
 
 ### Metadate
 
