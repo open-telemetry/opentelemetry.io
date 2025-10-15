@@ -40,10 +40,14 @@ function is4XXForFragments(StatusCode, lastSeenDate) {
   );
 }
 
-// Ensure LastSeen format matches what htmltest uses.
-function normalizeLastSeenDate(lastSeenDate) {
-  // Drop trailing zero in milliseconds, if present: e.g., `.340Z` -> `.34Z`
-  return lastSeenDate.replace(/(\.\d\d)0Z$/, '$1Z');
+// Ensure date has a format compatible with htmltest's JSON date format, which
+// in Go, is RFC3339Nano, which "removes trailing zeros from the seconds field".
+// Quoted from https://pkg.go.dev/time#pkg-constants
+function normalizeDate(date) {
+  // Drop trailing zeros in milliseconds: `.200Z` -> `.2Z`, `.340Z` -> `.34Z`
+  return date
+    .replace(/\.0*Z$/, 'Z')              // Remove fraction if all 0s: `.00Z` -> `Z`
+    .replace(/(\.\d*[1-9])0+Z$/, '$1Z'); // Remove trailing zeros but keep non-zeros
 }
 
 async function readRefcache() {
@@ -57,9 +61,6 @@ async function readRefcache() {
 }
 
 async function writeRefcache(cache) {
-  Object.values(cache).forEach((entry) => {
-    entry.LastSeen = normalizeLastSeenDate(entry.LastSeen);
-  });
   await fs.writeFile(CACHE_FILE, JSON.stringify(cache, null, 2) + '\n', 'utf8');
   console.log(`Wrote updated ${CACHE_FILE}.`);
 }
@@ -75,11 +76,20 @@ async function retry400sAndUpdateCache() {
   let statusCounts = {};
   let exitingBeforeEnd = false;
 
-  for (const [url, details] of Object.entries(cache)) {
+  for (const [url, _details] of Object.entries(cache)) {
     entriesCount++;
     const parsedUrl = new URL(url);
     if (parsedUrl.hash) urlWithFragmentCount++;
-    const { StatusCode, LastSeen } = details;
+    let { StatusCode, LastSeen } = _details;
+
+    // Ensure that LastSeen date is normalized. This script emits normalized
+    // dates, but the refcache input might have been edited manually.
+    LastSeen = normalizeDate(LastSeen);
+    if (LastSeen !== _details.LastSeen) {
+      console.log(`Normalizing LastSeen date for ${url} to RFC3339Nano: ${LastSeen}`);
+      cache[url].LastSeen = LastSeen;
+      updatedCount++;
+    }
     const lastSeenDate = new Date(LastSeen);
 
     if (
@@ -154,7 +164,7 @@ async function retry400sAndUpdateCache() {
 
     cache[url] = {
       StatusCode: status,
-      LastSeen: now.toISOString(),
+      LastSeen: normalizeDate(now.toISOString()),
     };
     updatedCount++;
   }
