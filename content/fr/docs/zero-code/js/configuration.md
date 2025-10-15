@@ -53,7 +53,7 @@ OTEL_NODE_RESOURCE_DETECTORS=env,host
 ## Exclure des bibliothèques d'instrumentation {#excluding-instrumentation-libraries}
 
 Par défaut, toutes les
-[bibliothèques d'instrumentation supportées](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations)
+[bibliothèques d'instrumentation supportées](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/e8e3cbdadf439c5bd16dfe5d6fc0714fe0e8235a/metapackages/auto-instrumentations-node/#supported-instrumentations)
 sont activées, mais vous pouvez utiliser des variables d'environnement pour
 activer ou désactiver des instrumentations spécifiques.
 

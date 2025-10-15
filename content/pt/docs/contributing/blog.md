@@ -2,8 +2,7 @@
 title: Blog
 description: Saiba como enviar uma publicação para o blog.
 weight: 30
-default_lang_commit: 6c676267409eefc15a28c0e2fdd60b26a4687f74
-drifted_from_default: true
+default_lang_commit: 9244bd617271f07700983355cc89ded61997cad3
 ---
 
 O [_blog_ do OpenTelemetry](/blog/) comunica novas funcionalidades, relatórios
@@ -23,6 +22,12 @@ Observe que o foco dos mantenedores e aprovadores do site do OpenTelemetry é
 melhorar a documentação do projeto, então sua publicação terá menor prioridade
 de revisão.
 
+## Solicitação de conteúdo para redes sociais {#social-media-content-request}
+
+Se você deseja solicitar a publicação de conteúdo nos canais de redes sociais do
+projeto OpenTelemetry, e que não seja uma publicação do blog,
+[utilize este formulário](https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml).
+
 ## Antes de enviar um post no blog {#before-submitting-a-blog-post}
 
 As publicações no _blog_ não devem ter caráter comercial e devem conter conteúdo
@@ -38,6 +43,7 @@ OpenTelemetry. Exemplos de conteúdos adequados incluem:
 - Atualizações de Grupos de Interesse Especial (SIGs)
 - Tutoriais e guias passo a passo
 - Integrações com OpenTelemetry
+- [Chamadas para contribuidores](#call-for-contributors)
 
 Conteúdos inadequados incluem:
 
@@ -68,6 +74,19 @@ revisada e aprovada mais rapidamente.
 
 Caso sua _issue_ tenha todas as informações necessárias, um mantenedor irá
 autorizar a submissão do conteúdo.
+
+### Chamadas para contribuidores {#call-for-contributors}
+
+Caso você esteja propondo a criação de um novo projeto ou SIG, ou se está
+oferecendo uma doação ao projeto OpenTelemetry, você precisará de contribuidores
+adicionais para que sua proposta tenha sucesso. Para isso, você pode propor uma
+publicação no blog do tipo "Chamada para Contribuidores" (CfC, _Call for
+Contributors_).
+
+Isso requer que você siga os processos para
+[novos projetos](https://github.com/open-telemetry/community/blob/main/project-management.md)
+e
+[doações](https://github.com/open-telemetry/community/blob/main/guides/contributor/donations.md).
 
 ## Enviar um post no blog {#submit-a-blog-post}
 
@@ -135,3 +154,20 @@ significa que:
   garantir que a publicação ocorra antes ou em uma determinada data.
 - Alguns _posts_ no _blog_ (anúncios importantes) podem ter prioridade e serem
   publicados antes do seu.
+
+## Republicação em outras plataformas {#cross-posting-blog-content}
+
+Se você deseja compartilhar sua publicação no _blog_ do OpenTelemetry em outras
+plataformas, é permitido fazê-lo. Apenas tenha em mente o seguinte:
+
+- Decida qual versão será a publicação canônica (normalmente, a publicação
+  original no _blog_ do OpenTelemetry).
+- Outras versões da publicação devem:
+  - Mencionar claramente que o _post_ original foi no publicado no _blog_ do
+    OpenTelemetry.
+  - Incluir um _link_ para a publicação original no topo ou no rodapé da página.
+  - Adicionar a _tag_ de URL canônica apontando para a publicação do _blog_ do
+    OpenTelemetry, se a plataforma suportar.
+
+Isso auxilia a garantir a atribuição adequada, suporta as melhores práticas de
+SEO e evita a duplicação de conteúdo.

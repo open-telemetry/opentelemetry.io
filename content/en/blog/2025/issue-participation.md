@@ -39,7 +39,7 @@ SIG, we’ve been working on a small but important change to how we use GitHub:
 [issue reactions](https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/)
 as the primary way to express interest.**
 
-### A Better Signal to Help Prioritize
+## A Better Signal to Help Prioritize
 
 The goal here is simple: provide a clear, low-effort, data-driven way for the
 community to signal what matters most. For maintainers, this system cuts through
@@ -63,7 +63,7 @@ You'll also see a friendly reminder in a new footnote on
 across all OTel repositories. If you're opening a new issue, please leave that
 footer in place so that others have first-hand access to this advice.
 
-### Your Quick Guide to Making an Impact
+## Your Quick Guide to Making an Impact
 
 So what does this mean for you in practice? It's easy.
 

@@ -282,8 +282,8 @@ OpenTelemetry semantic conventions. Discussion takes place in the
 [CNCF Slack](https://slack.cncf.io/) workspace under the `#otel-cicd` channel,
 and you can chime in on any of the GitHub issues mentioned throughout this
 article and join the CICD SIG
-[weekly calls](https://calendar.google.com/calendar?cid=Z29vZ2xlLmNvbV9iNzllM2U5MGo3YmJzYTJuMnA1YW41bGY2MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t)
-every Thursday at 0600 PT.
+[weekly calls](https://github.com/open-telemetry/community/#sig-cicd) every
+Thursday at 0600 PT.
 
 _A version of this article also [appears on the CNCF blog][]._
 
