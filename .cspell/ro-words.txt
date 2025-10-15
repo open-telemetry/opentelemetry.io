@@ -1,3 +1,5 @@
+calificatori
+agnostice
 interlingvistice
 Intervalurilor
 Tranzacţie
