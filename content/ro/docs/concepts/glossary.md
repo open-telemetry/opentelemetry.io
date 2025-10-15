@@ -20,8 +20,8 @@ este util. De exemplu, vezi [OpenTelemetry](#opentelemetry) și [OTel](#otel).
 
 Procesul de combinare a mai multor măsurători în statistici exacte sau estimate
 despre măsurătorile care au avut loc într-un interval de timp, în timpul
-execuției programului. Utilizat de
-[Metrică](#metric)[Sursa de date](#data-source).
+execuției programului. Utilizat de [Metrică](#metric)
+[Sursa de date](#data-source).
 
 ### API
 
@@ -131,7 +131,7 @@ Vezi [Urmărire distribuită][distributed tracing].
 ### Distribuție
 
 O distribuție este un wrapper în jurul unui depozit OpenTelemetry din amonte cu
-anumite personalizări. Consultă [Distribuții].
+anumite personalizări. Consultă [Distribuții](#distributions).
 
 ### Eveniment
 
@@ -201,7 +201,7 @@ Uneori folosit pentru a se referi la o colecție de
 folosește [Jurnal](#log) și pentru a se referi la o singură
 [Înregistrare jurnal](#log-record). Unde ambiguitatea este posibilă, se
 utilizează calificatori suplimentari, de exemplu, `Înregistrare jurnal`. Vezi
-[Jurnal].
+[Jurnal](#log).
 
 ### Înregistrare în jurnal
 
@@ -219,7 +219,8 @@ produce telemetrie. OpenTelemetry numește aceste perechi [Atribute](#attribute)
 ### Metrică
 
 Înregistrează un punct de date, fie măsurători brute, fie o agregare
-predefinită, ca serie temporală cu [Metadate](#metadata). Vezi [Metrică].
+predefinită, ca serie temporală cu [Metadate](#metadata). Vezi
+[Metrică](#metric).
 
 ### OC
 
@@ -315,7 +316,7 @@ Tipuri de interfețe independente de limbă. Vezi [opentelemetry-proto].
 
 Termenul folosit de [Colector](/docs/collector/configuration/#receivers) pentru
 a defini modul în care sunt recepționate datele de telemetrie. Receptoarele pot
-fi bazate pe push sau pull. Vezi [Receptor].
+fi bazate pe push sau pull. Vezi [Receptor](#receptors).
 
 ### Cerere
 
@@ -364,11 +365,12 @@ multe locații.
 ### Semnal
 
 Unul dintre [Urme](#trace), [Metrici](#metric) sau [Jurnale](#log). Vezi
-[Semnale].
+[Semnale](#signals).
 
 ### Interval
 
-Reprezintă o singură operațiune din cadrul unei [Urme](#trace). Vezi [Interval].
+Reprezintă o singură operațiune din cadrul unei [Urme](#trace). Vezi
+[Interval](#span).
 
 ### Legătură între intervale
 
@@ -380,12 +382,12 @@ legate cauzal. Pentru detalii, vezi
 ### Specificație
 
 Descrie cerințele și așteptările interlingvistice pentru toate implementările.
-Vezi [Specificație].
+Vezi [Specificație](#specification).
 
 ### Stare
 
 Rezultatul operației. De obicei, se folosește pentru a indica dacă a apărut o
-eroare. Vezi [Stare].
+eroare. Vezi [Stare](#status).
 
 ### Tag
 
@@ -394,7 +396,8 @@ Vezi [Metadate](#metadata).
 ### Urmă
 
 Un [DAG](#dag) din [Intervaluri](#span), unde punctele extreme dintre
-[Intervaluri](#span) sunt definite ca relație părinte-copil. Vezi [Urme].
+[Intervaluri](#span) sunt definite ca relație părinte-copil. Vezi
+[Urme](#trace).
 
 ### Tracer
 
