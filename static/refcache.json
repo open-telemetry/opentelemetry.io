@@ -12617,6 +12617,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-10T13:26:36.906281982Z"
   },
+  "https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-02T04:03:44.555992-04:00"
+  },
   "https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/contributor-experience": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:44:05.93397961Z"
