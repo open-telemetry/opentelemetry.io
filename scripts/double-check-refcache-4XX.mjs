@@ -46,7 +46,7 @@ function is4XXForFragments(StatusCode, lastSeenDate) {
 function normalizeDate(date) {
   // Drop trailing zeros in milliseconds: `.200Z` -> `.2Z`, `.340Z` -> `.34Z`
   return date
-    .replace(/\.0*Z$/, 'Z')              // Remove fraction if all 0s: `.00Z` -> `Z`
+    .replace(/\.0*Z$/, 'Z') // Remove fraction if all 0s: `.00Z` -> `Z`
     .replace(/(\.\d*[1-9])0+Z$/, '$1Z'); // Remove trailing zeros but keep non-zeros
 }
 
@@ -86,7 +86,9 @@ async function retry400sAndUpdateCache() {
     // dates, but the refcache input might have been edited manually.
     LastSeen = normalizeDate(LastSeen);
     if (LastSeen !== _details.LastSeen) {
-      console.log(`Normalizing LastSeen date for ${url} to RFC3339Nano: ${LastSeen}`);
+      console.log(
+        `Normalizing LastSeen date for ${url} to RFC3339Nano: ${LastSeen}`,
+      );
       cache[url].LastSeen = LastSeen;
       updatedCount++;
     }
