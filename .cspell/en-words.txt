@@ -92,6 +92,7 @@ otel-endusers
 otelcol
 otep
 otlp
+Otmar
 packagist
 pageinfo
 Paixão
