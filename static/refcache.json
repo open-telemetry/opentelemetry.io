@@ -16681,7 +16681,7 @@
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding": {
     "StatusCode": 200,
-    "LastSeen": "2025-10-15T10:14:24.70Z"
+    "LastSeen": "2025-10-15T10:14:24.7Z"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/extension/googleclientauthextension": {
     "StatusCode": 200,
@@ -16969,7 +16969,7 @@
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/googlecloudspannerreceiver": {
     "StatusCode": 200,
-    "LastSeen": "2025-10-15T10:17:05.20Z"
+    "LastSeen": "2025-10-15T10:17:05.2Z"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/haproxyreceiver": {
     "StatusCode": 200,
