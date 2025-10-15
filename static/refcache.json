@@ -3479,6 +3479,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-14T09:57:49.55431152Z"
   },
+  "https://github.com/PeterF778": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T18:22:45.369329654Z"
+  },
   "https://github.com/Prometheus/Prometheus/blob/main/prompb/remote.proto": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T08:29:04.742443453Z"
@@ -6123,6 +6127,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:40:35.85610266Z"
   },
+  "https://github.com/oertl": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T18:22:42.44278913Z"
+  },
   "https://github.com/onurtemizkan": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:40:39.44310973Z"
@@ -6546,6 +6554,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/stanza/docs/operators/container.md": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T09:44:00.194976086Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/probabilisticsamplerprocessor/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T18:23:04.197200927Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md": {
     "StatusCode": 206,
@@ -11369,6 +11381,22 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-10T10:51:12.275035485Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0168-sampling-propagation.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T18:23:04.538241549Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0170-sampling-probability.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T18:23:04.903169641Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0235-sampling-threshold-in-trace-state.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T18:23:05.229125509Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0250-Composite_Samplers.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T18:23:05.618332891Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/4673-experimental-probability-sampling.md": {
     "StatusCode": 206,
     "LastSeen": "2025-10-11T10:15:59.874903-04:00"
@@ -11456,6 +11484,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.45.0/specification/entities/data-model.md#minimally-sufficient-identity": {
     "StatusCode": 200,
     "LastSeen": "2025-10-01T13:51:12.345Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T18:23:00.97125476Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/3967": {
     "StatusCode": 206,
@@ -13960,6 +13992,10 @@
   "https://github.com/youngaaronm": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T12:54:27.761501152Z"
+  },
+  "https://github.com/yuanyuanzhao3": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T18:22:48.77011684Z"
   },
   "https://github.com/yuin/goldmark/blob/master/README.md#headings": {
     "StatusCode": 206,
@@ -20013,6 +20049,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:38:30.309412441Z"
   },
+  "https://www.jaegertracing.io/docs/1.22/architecture/sampling/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T18:22:56.323984082Z"
+  },
   "https://www.jaegertracing.io/docs/1.41/architecture/apis/#remote-sampling-configuration-stable": {
     "StatusCode": 200,
     "LastSeen": "2025-10-14T17:51:12.345Z"
@@ -21109,6 +21149,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:41:30.221547941Z"
   },
+  "https://www.w3.org/TR/trace-context-1": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T18:22:53.728516439Z"
+  },
+  "https://www.w3.org/TR/trace-context-2": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T18:23:03.618450317Z"
+  },
   "https://www.w3.org/TR/trace-context-2/": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:41:27.908790381Z"
@@ -21170,6 +21218,14 @@
     "LastSeen": "2025-10-14T17:41:36.601286085Z"
   },
   "https://www.w3.org/TR/trace-context/#value": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-06T02:32:12.345Z"
+  },
+  "https://www.w3.org/standards/types/#x4-2-1-candidate-recommendation-draft": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-13T18:23:03.812153101Z"
+  },
+  "https://www.whatsmyua.info": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:41:29.987885833Z"
   },
