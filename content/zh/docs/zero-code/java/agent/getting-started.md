@@ -1,8 +1,7 @@
 ---
 title: 快速开始
 weight: 1
-default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829
-drifted_from_default: true
+default_lang_commit: 2cb66a7e093114cfe06eb70dbca46abbbee45ef2
 cSpell:ignore: Dotel myapp
 ---
 
@@ -26,6 +25,13 @@ cSpell:ignore: Dotel myapp
       export OTEL_SERVICE_NAME="your-service-name"
       java -jar myapp.jar
       ```
+
+## 声明式配置 {#declarative-configuration}
+
+声明式配置使用 YAML 文件，而非环境变量或系统属性。
+当你需要设置许多配置选项，或者想要使用那些无法通过环境变量或系统属性来配置的选项时，这种方式会非常有用。
+
+有关更多详细信息，请参阅[声明式配置](../declarative-configuration)页面。
 
 ## 配置代理 {#configuring-the-agent}
 

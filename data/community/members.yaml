@@ -955,6 +955,15 @@ maintainers:
       - ebpf-instrumentation-maintainers
     html_url: https://github.com/mariomac
     avatar_url: https://avatars.githubusercontent.com/u/939550?v=4
+  - name: martincostello
+    teams:
+      - dotnet-approvers
+      - dotnet-contrib-approvers
+      - dotnet-contrib-maintainers
+      - dotnet-contrib-triagers
+      - dotnet-triagers
+    html_url: https://github.com/martincostello
+    avatar_url: https://avatars.githubusercontent.com/u/1439341?v=4
   - name: martinkuba
     teams:
       - browser-approvers
@@ -1981,14 +1990,6 @@ approvers:
       - ebpf-instrumentation-approvers
     html_url: https://github.com/marctc
     avatar_url: https://avatars.githubusercontent.com/u/280193?v=4
-  - name: martincostello
-    teams:
-      - dotnet-approvers
-      - dotnet-contrib-approvers
-      - dotnet-contrib-triagers
-      - dotnet-triagers
-    html_url: https://github.com/martincostello
-    avatar_url: https://avatars.githubusercontent.com/u/1439341?v=4
   - name: maxgolov
     teams:
       - cpp-contrib-approvers

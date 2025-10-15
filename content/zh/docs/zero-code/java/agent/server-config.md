@@ -2,8 +2,7 @@
 title: 应用服务器配置
 linkTitle: 应用服务器配置
 description: 如何为 Java 应用服务器定义代理路径
-default_lang_commit: 748555c22f43476291ae0c7974ca4a2577da0472
-drifted_from_default: true
+default_lang_commit: 086442fd859d3a316aac2b33aa7c97a4ac92079c
 weight: 215
 cSpell:ignore: asadmin Glassfish Payara setenv
 ---
@@ -86,9 +85,17 @@ JAVA_OPTIONS="${JAVA_OPTIONS} -javaagent:/path/to/opentelemetry-javaagent.jar"
 
 确保你的域目录下的 domain.xml 文件中包含针对代理的 `<jmv-options>` 条目。
 
-## Tomcat / TomEE {#tomcat-tomee}
+## Tomcat、TomEE {#tomcat-tomee}
 
-将 Java 代理的路径添加到启动脚本中：
+将 Java 代理的路径添加到启动脚本中。配置方法取决于你的安装方式：
+
+**对于包管理安装**（apt-get/yum），添加到 `/etc/tomcat*/tomcat*.conf`：
+
+```sh
+JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
+```
+
+**对于下载安装**，创建或修改 `<tomcat>/bin/setenv.sh`（Linux）或 `<tomcat>/bin/setenv.bat`（Windows）：
 
 {{< tabpane text=true persist=lang >}}
 
@@ -107,6 +114,8 @@ set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:"<Drive>:\path\to\opentelemetry-jav
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+**对于 Windows 服务安装**，使用 `<tomcat>/bin/tomcat*w.exe` 将 `-javaagent:<Drive>:\path\to\opentelemetry-javaagent.jar` 添加到 Java 选项的 Java 选项卡下。
 
 ## WebLogic {#weblogic}
 
@@ -157,3 +166,31 @@ set JAVA_OPTIONS=%JAVA_OPTIONS% -javaagent:"<Drive>:\path\to\opentelemetry-javaa
 5.  在 **Generic JVM arguments** 中，输入代理的路径：
     `-javaagent:/path/to/opentelemetry-javaagent.jar`。
 6.  保存配置并重启服务器。
+
+## 启用预定义的 JMX 指标 {#enable-predefined-jmx-metrics}
+
+Java 代理包含针对多个主流应用服务器的预定义 JMX 指标配置，但这些配置默认未启用。
+若要启用预定义指标的采集，需将目标列表指定为 `otel.jmx.target.system` 系统属性的值。
+例如：
+
+```bash
+$ java -javaagent:path/to/opentelemetry-javaagent.jar \
+     -Dotel.jmx.target.system=jetty,tomcat \
+     ... \
+     -jar myapp.jar
+```
+
+以下是 `otel.jmx.target.system` 的已知应用服务器值：
+
+- [`jetty`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/jetty.md)
+- [`tomcat`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/tomcat.md)
+- [`wildfly`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/wildfly.md)
+
+{{% alert title="注意" %}}
+
+此列表并不全面，其他 JMX 目标系统也受支持。
+
+{{% /alert %}}
+
+有关从每个应用服务器提取的指标列表，请选择前面的名称，
+或参考[其他详细信息和自定义功能](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics#predefined-metrics)。
