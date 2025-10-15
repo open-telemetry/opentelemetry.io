@@ -4,7 +4,6 @@ linkTitle: Adding the Unroll Processor
 date: 2025-10-14
 author: >-
   [Keith Schmitt](https://github.com/schmikei) (Bindplane)
-draft: true # TODO remove when ready to publish
 issue: 8039
 sig: Collector
 cSpell:ignore: Bindplane CloudWatch OTTL schmikei VPC
@@ -16,7 +15,7 @@ start with a processor.
 When the OpenTelemetry community first discussed the problem of how to handle
 logs that contain multiple logical events in a single body, like a JSON array,
 the initial instinct was to solve it with an
-[OTTL function inside the transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41791).
+[OTTL (OpenTelemetry Transform Language) function inside the transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41791).
 
 And that made sense to me at first glance. OTTL is powerful, flexible, and can
 handle transformations on the record level. But we found deeper challenges.
@@ -37,7 +36,7 @@ Let me explain what the unroll processor is, how it works, how it can help you,
 and how
 [we helped contribute upstream to the Contrib distribution](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/42500).
 
-## Why Unroll?
+## Why unroll?
 
 The core problem is simple. **Some sources deliver multiple events within one
 log record**. You want to work with clean, individual log entries.
@@ -49,7 +48,7 @@ Before unroll, you had two awkward options:
 1. Pre-process logs outside the Collector—if you even could insert the logic.
 2. Try to bend OTTL/transform into doing something it was never designed for.
 
-## What the Unroll Processor Does
+## What the unroll processor does
 
 The unroll processor takes a **list-like log body**, like a JSON array, and
 expands it into **one log record per element**, while preserving timestamps, and
@@ -61,7 +60,7 @@ transformations, filters, reductions, anything you'd want really.
 
 It's simple, predictable, and production-safe.
 
-## Why Decide Against OTTL?
+## Why decide against OTTL?
 
 We explored this deeply.
 
@@ -93,7 +92,7 @@ We observed **very low issue volume** even under real production load, which
 gave us the confidence to **propose it upstream**. Specifically when the initial
 receiver or source of the log signals is fairly format agnostic.
 
-## How to Configure the Unroll Processor
+## How to configure the unroll processor
 
 Drop the unroll processor into your pipeline wherever you need to expand bundled
 log payloads. Here's a minimal configuration example to get you started:
@@ -116,7 +115,7 @@ example, a proper JSON array. But in real-world pipelines, log records aren't
 always so neatly structured. Sometimes, additional preprocessing is needed to
 convert raw log payloads into a format that the unroll processor can operate on.
 
-### Example: Multiple JSON Objects in a Single Log Record
+### Example: multiple JSON objects in a single log record
 
 Consider a case where multiple JSON objects are concatenated into a single log
 record, like this:
