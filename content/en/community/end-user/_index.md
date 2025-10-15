@@ -88,9 +88,6 @@ We do the podcasts live and recordings are posted on the OpenTelemetry YouTube
 channel. If you want to talk about your experience with OpenTelemetry,
 [let us know](#contact).
 
-channel in the CNCF Slack workspace or open an issue in [sig-end-user]
-repository.
-
 [Learn more about how we do podcasts.](interviews-feedback/)
 
 ## Connect with us {#contact}
