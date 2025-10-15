@@ -4,8 +4,8 @@ linkTitle: OpenTelemetry Sampling update
 date: 2025-10-15
 author: >-
   [Joshua MacDonald](https://github.com/jmacd) (Microsoft), [Kent
-  Quirk](https://github.com/kentquirk) (Honeycomb), [Otmer
-  Ertl](https://github.com/oertl) (DynaTrace), [Peter
+  Quirk](https://github.com/kentquirk) (Honeycomb), [Otmar
+  Ertl](https://github.com/oertl) (Dynatrace), [Peter
   Findeisen](https://github.com/PeterF778) (Cisco), [Yuanyuan
   Zhao](https://github.com/yuanyuanzhao3) (DataDog)
 sig: SIG Sampling
