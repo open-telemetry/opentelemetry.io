@@ -29,8 +29,7 @@ de uso da API.
 A API consiste nos seguintes componentes de alto nível:
 
 - [Context](#context-api): Uma API autônoma para propagação de contexto em toda
-  uma aplicação além de seus limites, incluindo contexto de rastros
-  e bagagem.
+  uma aplicação além de seus limites, incluindo contexto de rastros e bagagem.
 - [TracerProvider](#tracerprovider): O ponto de entrada da API para rastros.
 - [MeterProvider](#meterprovider): O ponto de entrada da API para métricas.
 - [LoggerProvider](#loggerprovider): O ponto de entrada da API para logs.
@@ -52,7 +51,9 @@ _frameworks_ e aplicações. Oferecendo
 [fortes garantias de compatibilidade retroativa](https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#compatibility-requirements),
 não possui dependências transitivas e
 [suporta Java 8+](https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility).
-Bibliotecas e frameworks devem depender apenas da API, invocar somente seus métodos e instruir aplicações e usuários finais a adicionar uma dependência no SDK e configurar uma instância adequada.
+Bibliotecas e _frameworks_ devem depender apenas da API, invocar somente seus
+métodos e instruir aplicações e usuários finais a adicionar uma dependência no
+SDK e configurar uma instância adequada.
 
 {{% alert title=Javadoc %}} Para a referência Javadoc de todos os componentes
 Java do OpenTelemetry, consulte
