@@ -1827,6 +1827,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-15T10:08:37.223522563Z"
   },
+  "https://docs.itrsgroup.com/docs/geneos/data-collection/opentelemetry/current/opentelemetry.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-16T06:17:38.384286-04:00"
+  },
   "https://docs.kernel.org/trace/user_events.html": {
     "StatusCode": 206,
     "LastSeen": "2025-10-11T09:42:35.568558289Z"
@@ -12139,9 +12143,9 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-16T09:40:53.316730519Z"
   },
-  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-16T09:40:48.607070767Z"
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-16T06:17:37.001328-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml": {
     "StatusCode": 206,
@@ -15804,8 +15808,8 @@
     "LastSeen": "2025-10-16T09:47:42.998Z"
   },
   "https://npmjs.com/package/@google-cloud/opentelemetry-cloud-trace-exporter": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-16T09:46:31.707771005Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-16T10:18:54.544Z"
   },
   "https://npmjs.com/package/@instana/opentelemetry-exporter": {
     "StatusCode": 200,
@@ -15896,8 +15900,8 @@
     "LastSeen": "2025-10-15T10:27:57.94Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-grpc": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-16T09:46:39.968781497Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-16T10:18:57.974Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-hapi": {
     "StatusCode": 200,
@@ -16056,8 +16060,8 @@
     "LastSeen": "2025-10-14T07:17:29.432129221Z"
   },
   "https://npmjs.com/package/opentelemetry-instrumentation-remix": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-16T09:46:42.326186799Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-16T10:19:00.829Z"
   },
   "https://nvd.nist.gov/vuln/detail/CVE-2024-36129": {
     "StatusCode": 200,
@@ -19636,8 +19640,8 @@
     "LastSeen": "2025-10-11T09:44:40.832Z"
   },
   "https://www.bmc.com/blogs/opentracing-opencensus-openmetrics/": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-16T09:41:03.450394533Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-16T10:19:04.289Z"
   },
   "https://www.britannica.com/dictionary/pipeline": {
     "StatusCode": 200,
@@ -19850,6 +19854,10 @@
   "https://www.elastic.co/elasticsearch": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T13:25:09.520823831Z"
+  },
+  "https://www.elastic.co/guide/en/apm/get-started/current/open-telemetry-elastic.html": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-16T06:17:35.810755-04:00"
   },
   "https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html": {
     "StatusCode": 206,
