@@ -441,7 +441,6 @@ dados são exibidos em páginas da web quando solicitados. Consulte [zPages].
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
 [specification]: ../components/#specification
 [status]: /docs/specs/otel/trace/api#set-status
-[trace]: /docs/specs/otel/overview#traces
 [tracer]: /docs/specs/otel/trace/api#tracer
 [traces]: /docs/specs/otel/overview#traces
 [zpages]:
