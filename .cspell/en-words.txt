@@ -92,6 +92,7 @@ otel-endusers
 otelcol
 otep
 otlp
+Otmar
 packagist
 pageinfo
 Paixão
@@ -138,6 +139,7 @@ traceparent
 traefik
 Trask
 uids
+unconference
 unsampled
 unshallow
 upstreamed

@@ -4,6 +4,7 @@ description: 5分未満でアプリのテレメトリーを取得しましょう
 aliases: [/docs/js/getting_started/nodejs]
 weight: 10
 default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+drifted_from_default: true
 cSpell:ignore: autoinstrumentations KHTML rolldice
 ---
 

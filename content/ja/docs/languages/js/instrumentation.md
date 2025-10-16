@@ -5,7 +5,8 @@ aliases:
   - manual
 weight: 30
 description: OpenTelemetry JavaScript の計装
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91 # patched
+drifted_from_default: true
 cSpell:ignore: dicelib Millis rolldice
 ---
 
@@ -576,8 +577,8 @@ module.exports = { rollTheDice };
 
 OpenTelemetry JavaScript APIは、スパンを作成できる2つのメソッドを公開しています。
 
-- [`tracer.startSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startSpan)：コンテキストに設定せずに新しいスパンを開始します。
-- [`tracer.startActiveSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startActiveSpan)：新しいスパンを開始し、作成されたスパンを最初の引数として渡す特定のコールバック関数を呼び出します。新しいスパンはコンテキストに設定され、このコンテキストは関数呼び出しの期間中アクティブになります。
+- [`tracer.startSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.Tracer.html#startspan)：コンテキストに設定せずに新しいスパンを開始します。
+- [`tracer.startActiveSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.Tracer.html#startactivespan)：新しいスパンを開始し、作成されたスパンを最初の引数として渡す特定のコールバック関数を呼び出します。新しいスパンはコンテキストに設定され、このコンテキストは関数呼び出しの期間中アクティブになります。
 
 ほとんどの場合、スパンとそのコンテキストをアクティブに設定するため、後者（`tracer.startActiveSpan`）を使用することをお勧めします。
 

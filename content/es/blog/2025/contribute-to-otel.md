@@ -4,7 +4,8 @@ linkTitle: Cómo contribuir a OpenTelemetry
 date: 2025-09-15
 author: >-
   [Marylia Gutierrez](https://github.com/maryliag) (Grafana Labs)
-default_lang_commit: 9383da27dd1d08b0c47e2792376dbd6ebbac1192
+default_lang_commit: 9383da27dd1d08b0c47e2792376dbd6ebbac1192 # patched
+drifted_from_default: true
 cSpell:ignore: marylia
 ---
 
@@ -127,4 +128,4 @@ a crear un entorno más acogedor y eficiente para todos los involucrados.
 [contrib]: /docs/contributing
 [localization]: /docs/contributing/localization/
 [repos]: https://github.com/orgs/open-telemetry/repositories
-[slack]: /community/end-user/slack-channel/
+[slack]: /community/end-user/#slack

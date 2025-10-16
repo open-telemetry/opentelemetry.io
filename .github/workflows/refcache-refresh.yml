@@ -1,5 +1,5 @@
 name: Refcache refresh
-# cSpell:ignore otelbot
+# cSpell:ignore chalin otelbot pushd
 
 # Creates (or updates) the PR that refreshes a number of the oldest refcache
 # entries. We say "the PR", because there can be at most one such PR at a time.
@@ -17,7 +17,7 @@ on:
     inputs:
       number_of_entries_to_refresh:
         description: Number of (oldest) refcache entries to refresh.
-        default: &default_refresh_count 128
+        default: &default_refresh_count 512
         type: number
       prune_more_in_same_PR:
         description: Prune more entries from existing PR branch (if any).
@@ -97,7 +97,10 @@ jobs:
           git fetch origin
           git $merge_or_rebase origin/main
           if [ "$(git rev-parse HEAD)" != "$previous" ]; then
-            git push $push_args origin $BRANCH
+            DELAYED_PUSH_CMD="git push $push_args origin $BRANCH"
+            echo "We'll push later, after committing the refcache updates."
+            echo "DELAYED_PUSH_CMD=$DELAYED_PUSH_CMD"
+            echo "DELAYED_PUSH_CMD=$DELAYED_PUSH_CMD" >> $GITHUB_ENV
           fi
 
       - uses: actions/setup-node@v5
@@ -105,6 +108,19 @@ jobs:
           node-version-file: .nvmrc
 
       - run: npm install --omit=optional
+
+      - uses: actions/setup-go@v5
+
+      - name: Install htmltest
+        run: |
+          HTMLTEST_REPO=github.com/chalin/htmltest
+          BRANCH=dev/main
+          REPO_DIR=tmp/htmltest
+          git clone --branch $BRANCH https://$HTMLTEST_REPO.git $REPO_DIR
+          pushd $REPO_DIR
+          make build
+          HTMLTEST=$REPO_DIR/bin/htmltest
+          echo "HTMLTEST=$HTMLTEST" >> $GITHUB_ENV
 
       - name: Prune refcache
         if: ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' }}
@@ -115,28 +131,59 @@ jobs:
           npm run _refcache:prune -- -n $REFRESH_COUNT
 
       - name: List oldest entry after pruning
-        run: npm run _refcache:prune -- --list -n 1
+        run: |
+          OLDEST_ENTRY=$(npm run _refcache:prune -- --list -n 1 | grep '^\s')
+          echo "Oldest entry after pruning: $OLDEST_ENTRY"
+          echo "OLDEST_ENTRY=$OLDEST_ENTRY" >> $GITHUB_ENV
 
       - name: Build site and update refcache
         run: |
+          $HTMLTEST -v
           # Ignore link-check failures so we can still commit refcache updates
           npm run fix:refcache || true
-
-          # Don't prune 4xx entries so we can further process them via the PR
-          # npm run _refcache:prune
-
           ./scripts/clean-refcache.sh
 
-          git add -A
+          REFCACHE_NUM_STATUS_4XX=$(grep '"StatusCode": 4' static/refcache.json | wc -l | xargs)
+          echo "REFCACHE_NUM_STATUS_4XX=$REFCACHE_NUM_STATUS_4XX" >> $GITHUB_ENV
 
+      - uses: browser-actions/setup-chrome@v2
+        id: setup-chrome
+        if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
+        with:
+          chrome-version: stable
+          install-dependencies: true # pulls required Linux libs
+
+      - name: Try to resolve status 4XX URLs if any
+        if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+        run: |
+          echo "Chrome path: $CHROME_PATH"
+          $CHROME_PATH --version
+          ./scripts/double-check-refcache-4XX.mjs --verbose
+
+      - name: Commit refcache updates and push changes if any
+        run: |
+          git add -A
           if ! git diff-index --quiet --cached HEAD; then
             git commit -am "Update refcache"
+          fi
+
+          # Push if we have any commits to push (refcache updates or sync from main)
+          if [[ -n "$DELAYED_PUSH_CMD" ]]; then
+            echo "Executing: $DELAYED_PUSH_CMD"
+            $DELAYED_PUSH_CMD
+          elif ! git diff --quiet origin/$BRANCH; then
             git push
           fi
 
       - name: Create PR if needed
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+          PR_BODY: |-
+            - Refreshes the oldest ${{ env.REFRESH_COUNT }} refcache entries.
+            - Oldest entry after pruning:
+            ${{ env.OLDEST_ENTRY }}
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           echo "Existing PR(s):"
@@ -147,8 +194,7 @@ jobs:
           fi
 
           if gh pr create --title "Refresh refcache" \
-              --body "Refreshes the oldest ${{ env.REFRESH_COUNT }} refcache entries." \
-              --draft;
+              --body "$PR_BODY" --draft;
           then
             PR_URL=$(gh pr view --json url --jq '.url')
             printf "PR created: %s\n" "$PR_URL"
