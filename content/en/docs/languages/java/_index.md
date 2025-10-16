@@ -3,7 +3,10 @@ title: Java
 description: >-
   <img width="35" class="img-initial" src="/img/logos/32x32/Java_SDK.svg"
   alt="Java"> Language-specific implementation of OpenTelemetry in Java.
-aliases: [/java, /java/metrics, /java/tracing]
+aliases: [/java/metrics, /java/tracing]
+redirects:
+  - { from: /java/*, to: ':splat' }
+  - { from: /docs/java/*, to: ':splat' }
 cascade:
   vers:
     instrumentation: 2.20.1

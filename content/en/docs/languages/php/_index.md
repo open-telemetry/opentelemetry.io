@@ -3,6 +3,9 @@ title: PHP
 description: >-
   <img width="35" class="img-initial" src="/img/logos/32x32/PHP.svg" alt="PHP">
   A language-specific implementation of OpenTelemetry in PHP.
+redirects:
+  - { from: /php/*, to: ':splat' }
+  - { from: /docs/php/*, to: ':splat' }
 weight: 21
 cSpell:ignore: mbstring opcache
 ---
