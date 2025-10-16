@@ -132,6 +132,13 @@ maintainers:
       - semconv-db-approvers
     html_url: https://github.com/alanwest
     avatar_url: https://avatars.githubusercontent.com/u/3676547?v=4
+  - name: albertlockett
+    teams:
+      - arrow-approvers
+      - arrow-maintainers
+      - arrow-triagers
+    html_url: https://github.com/albertlockett
+    avatar_url: https://avatars.githubusercontent.com/u/5846846?v=4
   - name: AlexanderWert
     teams:
       - semconv-sdk-health-approvers
@@ -1605,12 +1612,6 @@ approvers:
       - php-triagers
     html_url: https://github.com/agoallikmaa
     avatar_url: https://avatars.githubusercontent.com/u/3532037?v=4
-  - name: albertlockett
-    teams:
-      - arrow-approvers
-      - arrow-triagers
-    html_url: https://github.com/albertlockett
-    avatar_url: https://avatars.githubusercontent.com/u/5846846?v=4
   - name: alexmojaki
     teams:
       - semconv-genai-approvers
@@ -1828,6 +1829,12 @@ approvers:
       - proto-triagers
     html_url: https://github.com/florianl
     avatar_url: https://avatars.githubusercontent.com/u/1132494?v=4
+  - name: fractalwrench
+    teams:
+      - android-approvers
+      - android-triagers
+    html_url: https://github.com/fractalwrench
+    avatar_url: https://avatars.githubusercontent.com/u/11800640?v=4
   - name: GregMefford
     teams:
       - erlang-approvers
@@ -2366,11 +2373,6 @@ triagers:
       - php-triagers
     html_url: https://github.com/Fahmy-Mohammed
     avatar_url: https://avatars.githubusercontent.com/u/28364881?v=4
-  - name: fractalwrench
-    teams:
-      - android-triagers
-    html_url: https://github.com/fractalwrench
-    avatar_url: https://avatars.githubusercontent.com/u/11800640?v=4
   - name: Frapschen
     teams:
       - collector-contrib-triagers
@@ -2500,6 +2502,11 @@ triagers:
       - collector-triagers
     html_url: https://github.com/VihasMakwana
     avatar_url: https://avatars.githubusercontent.com/u/121151420?v=4
+  - name: williazz
+    teams:
+      - swift-triagers
+    html_url: https://github.com/williazz
+    avatar_url: https://avatars.githubusercontent.com/u/43121212?v=4
   - name: yiyuan-he
     teams:
       - javascript-contrib-triagers

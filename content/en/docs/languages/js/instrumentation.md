@@ -495,7 +495,7 @@ First, in the _application file_ `app.ts` (or `app.js`):
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
-```ts
+```ts {hl_lines=[6]}
 /*app.ts*/
 import { trace } from '@opentelemetry/api';
 import express, { type Express } from 'express';
@@ -524,7 +524,7 @@ app.listen(PORT, () => {
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-```js
+```js {hl_lines=[6]}
 /*app.js*/
 const { trace } = require('@opentelemetry/api');
 const express = require('express');
@@ -557,7 +557,7 @@ And second, in the _library file_ `dice.ts` (or `dice.js`):
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
-```ts
+```ts {hl_lines=[4]}
 /*dice.ts*/
 import { trace } from '@opentelemetry/api';
 
@@ -578,7 +578,7 @@ export function rollTheDice(rolls: number, min: number, max: number) {
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-```js
+```js {hl_lines=[4]}
 /*dice.js*/
 const { trace } = require('@opentelemetry/api');
 

@@ -51,7 +51,7 @@ file.
 
 To enforce standards and consistency for Markdown files, all files should follow
 certain rules, enforced by [markdownlint]. For a full list, check the
-[.markdownlint.json] file.
+[.markdownlint.yaml] file.
 
 We also enforce Markdown [file format](#file-format) and strip files of trailing
 whitespace. This precludes the [line break syntax] of 2+ spaces; use `<br>`
@@ -100,8 +100,8 @@ All file names should be in
 
 To learn how to fix validation issues, see [Pull request checks](../pr-checks).
 
-[.markdownlint.json]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json
+[.markdownlint.yaml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
 [line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [Prettier]: https://prettier.io

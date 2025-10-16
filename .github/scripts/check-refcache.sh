@@ -43,8 +43,10 @@ fi
 DIFFS_FOUND=0
 for file in $REFCACHE_FILES; do
   if ! diff -q "$REFERENCE_FILE" "$file" >/dev/null 2>&1; then
-    echo " - $file differs"
     DIFFS_FOUND=1
+    echo " - $file differs"
+    diff "$REFERENCE_FILE" "$file" | tail -n 100
+    echo ""
   else
     echo " - $file is identical"
   fi
