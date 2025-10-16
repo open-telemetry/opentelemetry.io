@@ -103,7 +103,7 @@ as possible. A decision to sample or drop a span or trace is not made by
 inspecting the trace as a whole.
 
 For example, the most common form of head sampling is
-[Consistent Probability Sampling](/docs/specs/otel/trace/tracestate-probability-sampling-experimental/#consistent-probability-sampling).
+[Consistent Probability Sampling](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-sampling-decision).
 This is also referred to as Deterministic Sampling. In this case, a sampling
 decision is made based on the trace ID and the desired percentage of traces to
 sample. This ensures that whole traces are sampled - no missing spans - at a
