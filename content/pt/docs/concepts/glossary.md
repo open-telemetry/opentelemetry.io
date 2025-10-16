@@ -96,7 +96,7 @@ incorporada. Consulte [a especificação da biblioteca][spec-instrumentation-lib
 
 Indica a [Biblioteca](#library) para a qual os sinais telemétricos
 ([Rastros](#trace), [Métricas](#metric), [Logs](#log)) são coletados. Consulte
-[Biblioteca instrumentada][instrumented-library].
+[Biblioteca instrumentada][instrumented library].
 
 ### Campo {#field}
 
@@ -316,7 +316,7 @@ Tipos de interface independentes de linguagem. Consulte [opentelemetry-proto].
 ### Rastro {#trace}
 
 Um [DAG](#dag) de [Trechos](#span), onde os limites entre os [Trechos](#span)
-são definidos como uma relação de pai-filho. Consulte [Rastro][trace].
+são definidos como uma relação de pai-filho. Consulte [Rastro][traces].
 
 ### Rastro distribuído {#distributed-tracing}
 
