@@ -11559,10 +11559,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-15T17:03:24.125856083Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
-    "StatusCode": 206,
-    "LastSeen": "2025-10-13T18:23:00.97125476Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/oteps/0232-maturity-of-otel.md": {
     "StatusCode": 206,
     "LastSeen": "2025-10-02T10:36:59.345979963Z"
@@ -11570,6 +11566,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/spec-compliance-matrix.md#logs": {
     "StatusCode": 206,
     "LastSeen": "2025-10-02T10:36:16.588881715Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-13T18:23:00.97125476Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/3967": {
     "StatusCode": 206,
@@ -15494,6 +15494,10 @@
   "https://learn.microsoft.com/previous-versions/powershell/scripting/overview": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:38:55.589731753Z"
+  },
+  "https://learn.microsoft.com/rest/api/aifoundry/modelinference/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-16T10:37:09.428495718Z"
   },
   "https://learn.microsoft.com/rest/api/resources/resources/get-by-id": {
     "StatusCode": 206,
