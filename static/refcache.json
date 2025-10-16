@@ -623,6 +623,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-11T09:42:30.054222795Z"
   },
+  "https://cloud-native.slack.com/archives/C014L2KCTE3": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-10T02:38:02.796342331Z"
+  },
   "https://cloud-native.slack.com/archives/C01LSCJBXDZ": {
     "StatusCode": 200,
     "LastSeen": "2025-10-14T09:57:05.865208774Z"
@@ -634,6 +638,10 @@
   "https://cloud-native.slack.com/archives/C01N7PP1THC": {
     "StatusCode": 200,
     "LastSeen": "2025-10-14T12:56:30.697892523Z"
+  },
+  "https://cloud-native.slack.com/archives/C01NFPCV44V": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-10T02:38:04.362391387Z"
   },
   "https://cloud-native.slack.com/archives/C01NL1GRPQR": {
     "StatusCode": 200,
@@ -690,6 +698,10 @@
   "https://cloud-native.slack.com/archives/C041APFBYQP": {
     "StatusCode": 200,
     "LastSeen": "2025-10-14T17:44:19.62407331Z"
+  },
+  "https://cloud-native.slack.com/archives/C0476L7UJT1": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-10T02:38:05.341071752Z"
   },
   "https://cloud-native.slack.com/archives/C05PXDFTCPJ": {
     "StatusCode": 200,
@@ -2954,6 +2966,10 @@
   "https://gist.github.com/fardjad/ea3c38d566c845e0b353237d3959e365": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:42:19.759954286Z"
+  },
+  "https://gist.github.com/zeitlinger/09585b1ab57c454f87e6dcb9a6f50a5c": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T02:38:01.012653609Z"
   },
   "https://git-scm.com/": {
     "StatusCode": 206,
@@ -8251,6 +8267,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:38:27.970713991Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/issues/100": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T18:59:39.511045863Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/issues/189": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:41:28.001636926Z"
@@ -9003,6 +9023,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-09T23:42:10.603333473Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/otelconf": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T02:38:04.704689318Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-go-instrumentation": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T12:53:49.563711451Z"
@@ -9211,6 +9235,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-10T08:31:58.452011547Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/samplers": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T02:37:58.373816778Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-docs/tree/main/log-appender": {
     "StatusCode": 206,
     "LastSeen": "2025-10-09T19:47:15.059421437Z"
@@ -9323,6 +9351,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-15T09:40:30.260949873Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/1060": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T02:37:47.556276093Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/7413": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T13:22:05.42927022Z"
@@ -9334,6 +9366,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar": {
     "StatusCode": 206,
     "LastSeen": "2025-10-16T09:40:29.117887628Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/declarative-config-bridge": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T02:38:03.173832186Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension": {
     "StatusCode": 206,
@@ -10247,6 +10283,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-09T19:47:03.984033268Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T02:38:03.571651418Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-exporter-prometheus": {
     "StatusCode": 206,
     "LastSeen": "2025-10-09T19:52:23.921286433Z"
@@ -10542,6 +10582,10 @@
   "https://github.com/open-telemetry/opentelemetry-php/tree/main/src/API": {
     "StatusCode": 206,
     "LastSeen": "2025-10-10T08:31:56.000593169Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Config/SDK#initialization-from-configuration-file": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T02:38:03.926822693Z"
   },
   "https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Context": {
     "StatusCode": 206,
@@ -12822,6 +12866,10 @@
   "https://github.com/oracle/oracle-db-appdev-monitoring": {
     "StatusCode": 206,
     "LastSeen": "2025-10-15T10:12:40.514536011Z"
+  },
+  "https://github.com/orgs/open-telemetry/projects/151": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T02:37:52.212711083Z"
   },
   "https://github.com/orgs/open-telemetry/projects/38": {
     "StatusCode": 206,
@@ -16271,6 +16319,18 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-10T13:26:40.578136138Z"
   },
+  "https://opentelemetry.io/docs/languages/sdk-configuration/declarative-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T02:38:02.095298974Z"
+  },
+  "https://opentelemetry.io/docs/zero-code/java/agent/declarative-configuration/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T02:38:02.276796461Z"
+  },
+  "https://opentelemetry.io/docs/zero-code/java/agent/declarative-configuration/#not-yet-supported-features": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-10T02:37:55.178293826Z"
+  },
   "https://opentracing.io": {
     "StatusCode": 206,
     "LastSeen": "2025-10-15T17:00:25.600512213Z"
@@ -17634,6 +17694,10 @@
   "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/runtime#pkg-overview": {
     "StatusCode": 200,
     "LastSeen": "2025-10-14T17:43:59.365895745Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/otelconf": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-10T02:38:04.884771156Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/contrib/processors/minsev": {
     "StatusCode": 200,
