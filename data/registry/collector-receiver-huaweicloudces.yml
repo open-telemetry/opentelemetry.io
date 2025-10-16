@@ -1,5 +1,5 @@
-# cSpell:ignore huaweicloudcesreceiver huaweicloudces
-itle: Huawei Cloud CES Receiver
+# cSpell:ignore huaweicloudcesreceiver huaweicloudces ces
+title: Huawei Cloud CES Receiver
 registryType: receiver
 language: collector
 tags:

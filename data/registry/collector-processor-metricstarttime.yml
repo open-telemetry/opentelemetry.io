@@ -1,5 +1,5 @@
 # cSpell:ignore metricstarttimeprocessor metricstarttime
-title: # Description
+title: Metric Start Time Processor
 registryType: processor
 language: collector
 tags:
