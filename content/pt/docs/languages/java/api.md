@@ -29,7 +29,7 @@ de uso da API.
 A API consiste nos seguintes componentes de alto nível:
 
 - [Context](#context-api): Uma API autônoma para propagação de contexto em toda
-  uma aplicação e através de limites de aplicação, incluindo contexto de rastros
+  uma aplicação além de seus limites, incluindo contexto de rastros
   e bagagem.
 - [TracerProvider](#tracerprovider): O ponto de entrada da API para rastros.
 - [MeterProvider](#meterprovider): O ponto de entrada da API para métricas.
@@ -48,13 +48,11 @@ são fornecidas pelo OpenTelemetry:
   instala uma instância configurada.
 
 A API é projetada para ser tomada como uma dependência direta por bibliotecas,
-_frameworks_ e aplicações. Ela oferece
+_frameworks_ e aplicações. Oferecendo
 [fortes garantias de compatibilidade retroativa](https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#compatibility-requirements),
 não possui dependências transitivas e
 [suporta Java 8+](https://github.com/open-telemetry/opentelemetry-java/blob/main/VERSIONING.md#language-version-compatibility).
-Bibliotecas e frameworks devem depender apenas da API, invocar apenas métodos da
-API e instruir aplicações e usuários finais a adicionar uma dependência no SDK e
-instalar uma instância configurada.
+Bibliotecas e frameworks devem depender apenas da API, invocar somente seus métodos e instruir aplicações e usuários finais a adicionar uma dependência no SDK e configurar uma instância adequada.
 
 {{% alert title=Javadoc %}} Para a referência Javadoc de todos os componentes
 Java do OpenTelemetry, consulte
@@ -65,8 +63,8 @@ Java do OpenTelemetry, consulte
 
 As seções a seguir descrevem a API OpenTelemetry. Cada seção inclui:
 
-- Uma breve descrição, incluindo um link para a referência no Javadoc.
-- Links para recursos relevantes que ajudam a entender os métodos e argumentos
+- Uma breve descrição, incluindo um _link_ para a referência no Javadoc.
+- _Links_ para recursos relevantes que ajudam a entender os métodos e argumentos
   da API.
 - Exemplos simples de uso da API.
 
@@ -75,7 +73,7 @@ As seções a seguir descrevem a API OpenTelemetry. Cada seção inclui:
 O artefato `io.opentelemetry:opentelemetry-api-context:{{% param vers.otel %}}`
 contém APIs independentes (ou seja, empacotadas separadamente da
 [OpenTelemetry API](#opentelemetry-api)) para propagação de contexto em toda a
-aplicação e entre limites de aplicação.
+aplicação e entre seus limites.
 
 Consiste em:
 
