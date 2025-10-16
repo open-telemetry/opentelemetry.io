@@ -1,4 +1,4 @@
-# cSpell:ignore netflowreceiver netflow
+# cSpell:ignore goflow ipfix netflowreceiver netflow
 title: Netflow receiver
 registryType: receiver
 language: collector
