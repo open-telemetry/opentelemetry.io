@@ -21,20 +21,20 @@ default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 
 特定の言語の計装がどのように機能するかを理解したい場合は、ここから始めてください。
 
-| 言語       | 自動計装                                               | 計装ライブラリ                                                                        | 手動計装                                                                              |
-| ---------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| .NET       | [会計サービス](services/accounting/)                   | [カートサービス](services/cart/)                                                      | [カートサービス](services/cart/)                                                      |
-| C++        |                                                        |                                                                                       | [通貨サービス](services/currency/)                                                    |
-| Elixir     |                                                        | [Flagd-UIサービス](services/flagd-ui/)                                                |                                                                                       |
-| Go         |                                                        | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/) | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/) |
-| Java       | [広告サービス](services/ad/)                           |                                                                                       | [広告サービス](services/ad/)                                                          |
-| JavaScript |                                                        |                                                                                       | [支払いサービス](services/payment/)                                                   |
-| TypeScript |                                                        | [フロントエンド](services/frontend/), [React Nativeアプリ](services/react-native-app/) | [フロントエンド](services/frontend/)                                                   |
-| Kotlin     |                                                        | [不正検知サービス](services/fraud-detection/)                                         |                                                                                       |
-| PHP        |                                                        | [見積サービス](services/quote/)                                                       | [見積サービス](services/quote/)                                                       |
-| Python     | [レコメンデーションサービス](services/recommendation/) |                                                                                       | [レコメンデーションサービス](services/recommendation/)                                |
-| Ruby       |                                                        | [メールサービス](services/email/)                                                     | [メールサービス](services/email/)                                                     |
-| Rust       |                                                        | [配送サービス](services/shipping/)                                                    | [配送サービス](services/shipping/)                                                    |
+| 言語       | 自動計装                                               | 計装ライブラリ                                                                         | 手動計装                                                                              |
+| ---------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| .NET       | [会計サービス](services/accounting/)                   | [カートサービス](services/cart/)                                                       | [カートサービス](services/cart/)                                                      |
+| C++        |                                                        |                                                                                        | [通貨サービス](services/currency/)                                                    |
+| Elixir     |                                                        | [Flagd-UIサービス](services/flagd-ui/)                                                 |                                                                                       |
+| Go         |                                                        | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/)  | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/) |
+| Java       | [広告サービス](services/ad/)                           |                                                                                        | [広告サービス](services/ad/)                                                          |
+| JavaScript |                                                        |                                                                                        | [支払いサービス](services/payment/)                                                   |
+| TypeScript |                                                        | [フロントエンド](services/frontend/), [React Nativeアプリ](services/react-native-app/) | [フロントエンド](services/frontend/)                                                  |
+| Kotlin     |                                                        | [不正検知サービス](services/fraud-detection/)                                          |                                                                                       |
+| PHP        |                                                        | [見積サービス](services/quote/)                                                        | [見積サービス](services/quote/)                                                       |
+| Python     | [レコメンデーションサービス](services/recommendation/) |                                                                                        | [レコメンデーションサービス](services/recommendation/)                                |
+| Ruby       |                                                        | [メールサービス](services/email/)                                                      | [メールサービス](services/email/)                                                     |
+| Rust       |                                                        | [配送サービス](services/shipping/)                                                     | [配送サービス](services/shipping/)                                                    |
 
 ## サービスドキュメント {#service-documentation}
 
