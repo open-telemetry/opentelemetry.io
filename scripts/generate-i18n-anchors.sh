@@ -1,26 +1,12 @@
 #!/bin/bash
 
-# Script to add anchors to titles in a translated file based on the English version
-# Usage: ./generate_i18n-anchors.sh <translated_file>
+# Script to add anchors to titles in a translated file or directory based on the English version
+# Usage: ./generate_i18n-anchors.sh <translated_file_or_directory>
 
 if [ $# -ne 1 ]; then
-  echo "Usage: $0 <translated_file>"
+  echo "Usage: $0 <translated_file_or_directory>"
   echo "Example: $0 content/fr/docs/platforms/kubernetes/operator/_index.md"
-  exit 1
-fi
-
-file="$1"
-
-# Determine the English file path by replacing /fr/ with /en/
-en_file="${file/fr/en}"
-
-if [ ! -f "$en_file" ]; then
-  echo "Error: English file $en_file not found"
-  exit 1
-fi
-
-if [ ! -f "$file" ]; then
-  echo "Error: Translated file $file not found"
+  echo "Example: $0 content/fr/docs/platforms/kubernetes/operator/"
   exit 1
 fi
 
@@ -34,58 +20,103 @@ generate_anchor() {
   echo "$anchor"
 }
 
-# Arrays to store English titles and their generated anchors
-declare -a en_titles
-declare -a en_anchors
+# Function to process a single file
+process_file() {
+  local file="$1"
 
-# Read English file and extract titles, generate anchors
-while IFS= read -r line; do
-  if [[ $line =~ ^(#+)\ (.+)$ ]]; then
-    level="${#BASH_REMATCH[1]}"
-    title="${BASH_REMATCH[2]}"
-    # Remove existing anchor if present
-    title=$(echo "$title" | sed 's/ {#.*}//')
-    anchor=$(generate_anchor "$title")
-    en_titles+=("$level|$title")
-    en_anchors+=("$anchor")
+  # Determine the English file path by replacing /fr/ with /en/
+  local en_file="${file/fr/en}"
+
+  if [ ! -f "$en_file" ]; then
+    echo "Warning: English file $en_file not found, skipping $file"
+    return
   fi
-done < "$en_file"
 
-# Process the translated file
-temp_file=$(mktemp)
-index=0
+  if [ ! -f "$file" ]; then
+    echo "Warning: Translated file $file not found, skipping"
+    return
+  fi
 
-while IFS= read -r line; do
-  if [[ $line =~ ^(#+)\ (.+)\ \{#(.+)\}$ ]]; then
-    # Title already has an anchor, keep as is
-    echo "$line" >> "$temp_file"
-    ((index++))
-  elif [[ $line =~ ^(#+)\ (.+)$ ]]; then
-    # Title without anchor
-    level="${#BASH_REMATCH[1]}"
-    title="${BASH_REMATCH[2]}"
+  # Arrays to store English titles and their generated anchors
+  declare -a en_titles
+  declare -a en_anchors
 
-    if [ $index -lt ${#en_titles[@]} ]; then
-      en_anchor="${en_anchors[$index]}"
-      if [ -n "$en_anchor" ]; then
-        # Add the anchor from the English version
-        echo "$line {#${en_anchor}}" >> "$temp_file"
+  # Read English file and extract titles, generate anchors
+  local in_codeblock=false
+  while IFS= read -r line; do
+    if [[ $line =~ ^``` ]]; then
+      in_codeblock=!$in_codeblock
+    elif ! $in_codeblock && [[ $line =~ ^(#+)\ (.+)$ ]]; then
+      local level="${#BASH_REMATCH[1]}"
+      local title="${BASH_REMATCH[2]}"
+      # Remove existing anchor if present
+      title=$(echo "$title" | sed 's/ {#.*}//')
+      local anchor=$(generate_anchor "$title")
+      en_titles+=("$level|$title")
+      en_anchors+=("$anchor")
+    fi
+  done < "$en_file"
+
+  # Process the translated file
+  local temp_file=$(mktemp)
+  local index=0
+  in_codeblock=false
+
+  while IFS= read -r line; do
+    if [[ $line =~ ^``` ]]; then
+      in_codeblock=!$in_codeblock
+      echo "$line" >> "$temp_file"
+    elif $in_codeblock; then
+      # Inside codeblock, keep as is
+      echo "$line" >> "$temp_file"
+    elif [[ $line =~ ^(#+)\ (.+)\ \{#(.+)\}$ ]]; then
+      # Title already has an anchor, keep as is
+      echo "$line" >> "$temp_file"
+      ((index++))
+    elif [[ $line =~ ^(#+)\ (.+)$ ]]; then
+      # Title without anchor
+      local level="${#BASH_REMATCH[1]}"
+      local title="${BASH_REMATCH[2]}"
+
+      if [ $index -lt ${#en_titles[@]} ]; then
+        local en_anchor="${en_anchors[$index]}"
+        if [ -n "$en_anchor" ]; then
+          # Add the anchor from the English version
+          echo "$line {#${en_anchor}}" >> "$temp_file"
+        else
+          # No anchor generated
+          echo "$line" >> "$temp_file"
+        fi
+        ((index++))
       else
-        # No anchor in English version
+        # No corresponding English title
         echo "$line" >> "$temp_file"
       fi
-      ((index++))
     else
-      # No corresponding English title
+      # Not a title line
       echo "$line" >> "$temp_file"
     fi
-  else
-    # Not a title line
-    echo "$line" >> "$temp_file"
-  fi
-done < "$file"
+  done < "$file"
 
-# Replace the original file with the modified version
-mv "$temp_file" "$file"
+  # Replace the original file with the modified version
+  mv "$temp_file" "$file"
 
-echo "Anchors added to $file based on $en_file"
+  echo "Anchors added to $file based on $en_file"
+}
+
+# Main logic
+input="$1"
+
+if [ -d "$input" ]; then
+  # Process directory recursively
+  find "$input" -name "*.md" -type f | while read -r file; do
+    echo "Processing $file"
+    process_file "$file"
+  done
+elif [ -f "$input" ]; then
+  # Process single file
+  process_file "$input"
+else
+  echo "Error: $input is not a valid file or directory"
+  exit 1
+fi

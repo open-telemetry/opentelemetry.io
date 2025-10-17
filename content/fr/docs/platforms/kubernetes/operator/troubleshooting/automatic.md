@@ -10,9 +10,9 @@ l'[opérateur OpenTelemetry](/docs/platforms/kubernetes/operator) à injecter
 vous ne voyez aucune trace ou métrique, suivez ces étapes de dépannage pour
 comprendre ce qui se passe.
 
-## Étapes de dépannage
+## Étapes de dépannage {#troubleshooting-steps}
 
-### Vérifier l'état d'installation
+### Vérifier l'état d'installation {#check-installation-status}
 
 Après avoir installé la ressource `Instrumentation`, assurez-vous qu'elle est
 installée correctement en exécutant cette commande :
@@ -71,7 +71,7 @@ Spec:
 Events:  <none>
 ```
 
-### Vérifier les logs de l'opérateur OpenTelemetry
+### Vérifier les logs de l'opérateur OpenTelemetry {#check-the-opentelemetry-operator-logs}
 
 Vérifiez les erreurs dans les logs de l'opérateur OpenTelemetry en exécutant
 cette commande :
@@ -83,7 +83,7 @@ kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manage
 Les logs ne devraient montrer aucune erreur liée aux erreurs
 d'auto-instrumentation.
 
-### Vérifier l'ordre de déploiement
+### Vérifier l'ordre de déploiement {#check-deployment-order}
 
 Assurez-vous que l'ordre de déploiement est correct. La ressource
 `Instrumentation` doit être déployée avant de déployer les ressources
@@ -257,7 +257,7 @@ configuration d'auto-instrumentation. Cela peut être le résultat de l'un des
 Vous pourriez également vouloir vérifier la sortie de la commande events pour
 toute erreur, car ces pourraient aider à pointer vers votre problème.
 
-### Vérifier l'annotation d'auto-instrumentation
+### Vérifier l'annotation d'auto-instrumentation {#check-the-auto-instrumentation-annotation}
 
 Considérez l'extrait d'annotation d'auto-instrumentation suivant :
 
@@ -291,7 +291,7 @@ Où `opentelemetry` est le namespace de la ressource `Instrumentation`, et
   d'`OpenTelemetryCollector` dans un autre namespace.
 - "false" - ne pas injecter
 
-### Vérifier la configuration de l'auto-instrumentation
+### Vérifier la configuration de l'auto-instrumentation {#check-the-auto-instrumentation-configuration}
 
 L'annotation d'auto-instrumentation pourrait ne pas avoir été ajoutée
 correctement. Vérifiez ce qui suit :
@@ -306,7 +306,7 @@ correctement. Vérifiez ce qui suit :
   être ajoutée à `spec.template.metadata.annotations`, sinon elle ne fonctionne
   pas.
 
-### Vérifier la configuration du point de terminaison de l'auto-instrumentation
+### Vérifier la configuration du point de terminaison de l'auto-instrumentation {#check-auto-instrumentation-endpoint-configuration}
 
 La configuration `spec.exporter.endpoint` dans la ressource `Instrumentation`
 vous permet de définir la destination pour vos données de télémétrie. Si vous
@@ -331,7 +331,7 @@ Enfin, assurez-vous que vous utilisez le bon port du collecteur. Normalement,
 vous pouvez choisir soit `4317` (gRPC) soit `4318` (HTTP) ; cependant, pour
 [l'auto-instrumentation Python, vous ne pouvez utiliser que `4318`](/docs/platforms/kubernetes/operator/automatic/#python).
 
-### Vérifier les sources de configuration
+### Vérifier les sources de configuration {#check-configuration-sources}
 
 L'auto-instrumentation remplace actuellement `JAVA_TOOL_OPTIONS` de Java,
 `PYTHONPATH` de Python, et `NODE_OPTIONS` de Node.js lorsqu'ils sont définis

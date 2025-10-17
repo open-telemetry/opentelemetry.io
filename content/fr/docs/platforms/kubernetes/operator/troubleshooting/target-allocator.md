@@ -11,14 +11,14 @@ l'allocateur de cibles échoue à découvrir les cibles pour la collecte, il y a
 des étapes de dépannage que vous pouvez entreprendre pour vous aider à
 comprendre ce qui se passe et restaurer le fonctionnement normal.
 
-## Étapes de dépannage
+## Étapes de dépannage {#troubleshooting-steps}
 
-### Avez-vous déployé toutes vos ressources sur Kubernetes ?
+### Avez-vous déployé toutes vos ressources sur Kubernetes ? {#did-you-deploy-all-of-your-resources-to-kubernetes}
 
 Comme première étape, assurez-vous que vous avez déployé toutes les ressources
 pertinentes sur votre cluster Kubernetes.
 
-### Savez-vous si les métriques sont réellement collectées ?
+### Savez-vous si les métriques sont réellement collectées ? {#do-you-know-if-metrics-are-actually-being-scraped}
 
 Après avoir déployé toutes vos ressources sur Kubernetes, assurez-vous que
 l'allocateur de cibles découvre les cibles de vos
@@ -293,7 +293,7 @@ pour plus d'informations sur le point de terminaison `/jobs`.
 
 {{% /alert %}}
 
-### L'allocateur de cibles est-il activé ? La découverte de service Prometheus est-elle activée ?
+### L'allocateur de cibles est-il activé ? La découverte de service Prometheus est-elle activée ? {#is-the-target-allocator-enabled-is-prometheus-service-discovery-enabled}
 
 Si les commandes `curl` ci-dessus n'affichent pas une liste des `ServiceMonitor`
 et `PodMonitor` attendus, vous devez vérifier si les fonctionnalités qui
@@ -329,7 +329,7 @@ spec:
 Voir la définition complète de la ressource `OpenTelemetryCollector`
 [dans "Savez-vous si les métriques sont réellement collectées ?"](#savez-vous-si-les-métriques-sont-réellement-collectées).
 
-### Avez-vous configuré un sélecteur ServiceMonitor (ou PodMonitor) ?
+### Avez-vous configuré un sélecteur ServiceMonitor (ou PodMonitor) ? {#did-you-configure-a-servicemonitor-or-podmonitor-selector}
 
 Si vous avez configuré un
 [sélecteur `ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/),
@@ -395,7 +395,7 @@ au lieu d'un `serviceMonitorSelector`.
 
 {{% /alert %}}
 
-### Avez-vous omis la configuration serviceMonitorSelector et/ou podMonitorSelector complètement ?
+### Avez-vous omis la configuration serviceMonitorSelector et/ou podMonitorSelector complètement ? {#did-you-leave-out-the-servicemonitorselector-and-or-podmonitorselector-configuration-altogether}
 
 Comme mentionné dans
 ["Avez-vous configuré un sélecteur ServiceMonitor ou PodMonitor"](#avez-vous-configuré-un-sélecteur-servicemonitor-ou-podmonitor),
@@ -425,7 +425,7 @@ Cette configuration signifie qu'elle correspondra à toutes les ressources
 `PodMonitor` et `ServiceMonitor`. Voir la
 [définition complète d'OpenTelemetryCollector dans "Savez-vous si les métriques sont réellement collectées ?"](#savez-vous-si-les-métriques-sont-réellement-collectées).
 
-### Vos labels, namespaces et ports correspondent-ils pour votre ServiceMonitor et votre Service (ou PodMonitor et votre Pod) ?
+### Vos labels, namespaces et ports correspondent-ils pour votre ServiceMonitor et votre Service (ou PodMonitor et votre Pod) ? {#do-your-labels-namespaces-and-ports-match-for-your-servicemonitor-and-your-service-or-podmonitor-and-your-pod}
 
 Le `ServiceMonitor` est configuré pour récupérer les
 [Services](https://kubernetes.io/docs/concepts/services-networking/service/)

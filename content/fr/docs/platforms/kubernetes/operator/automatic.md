@@ -12,7 +12,7 @@ default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
 L'opérateur OpenTelemetry prend en charge l'injection et la configuration
 d'auto-instrumentation pour les services .NET, Java, Node.js, Python et Go.
 
-## Installation
+## Installation {#installation}
 
 Tout d'abord, installez
 l'[opérateur OpenTelemetry](https://github.com/open-telemetry/opentelemetry-operator)
@@ -33,7 +33,7 @@ chart Helm, il y a une option pour générer un certificat auto-signé à la pla
 > [Contrôle des capacités d'instrumentation](https://github.com/open-telemetry/opentelemetry-operator#controlling-instrumentation-capabilities)
 > pour plus de détails.
 
-## Créer un collecteur OpenTelemetry (Optionnel)
+## Créer un collecteur OpenTelemetry (Optionnel) {#create-an-opentelemetry-collector-optional}
 
 Il est recommandé d'envoyer la télémétrie des conteneurs vers un
 [collecteur OpenTelemetry](/docs/platforms/kubernetes/collector/) au lieu de
@@ -106,7 +106,7 @@ EOF
 La commande ci-dessus entraîne le déploiement du collecteur que vous pouvez
 utiliser comme point de terminaison pour l'auto-instrumentation dans vos pods.
 
-## Configurer l'auto-instrumentation automatique
+## Configurer l'auto-instrumentation automatique {#configure-automatic-instrumentation}
 
 Pour pouvoir gérer l'auto-instrumentation, l'opérateur doit être configuré pour
 savoir quels pods instrumenter et quelle auto-instrumentation utiliser pour ces
@@ -118,7 +118,7 @@ l'auto-instrumentation fonctionne. S'assurer que tous les points de terminaison
 et les variables d'environnement sont corrects est requis pour que
 l'auto-instrumentation fonctionne correctement.
 
-### .NET
+### .NET {#net}
 
 La commande suivante créera une ressource `Instrumentation` de base qui est
 configurée spécifiquement pour instrumenter les services .NET.
@@ -186,7 +186,7 @@ spec:
 Pour plus de détails, voir la documentation
 [Instrumentation Zero-code .NET](/docs/zero-code/dotnet/).
 
-### Deno
+### Deno {#deno}
 
 La commande suivante crée une ressource `Instrumentation` de base qui est
 configurée pour instrumenter les services [Deno](https://deno.com).
@@ -256,7 +256,7 @@ Deno][deno-otel-docs].
 
 [deno-otel-docs]: https://docs.deno.com/runtime/fundamentals/open_telemetry/
 
-### Go
+### Go {#go}
 
 La commande suivante crée une ressource `Instrumentation` de base qui est
 configurée spécifiquement pour instrumenter les services Go.
@@ -290,7 +290,7 @@ L'auto-instrumentation Go ne prend pas en charge la désactivation d'une
 instrumentation.
 [Voir le dépôt Go Auto-Instrumentation pour plus de détails.](https://github.com/open-telemetry/opentelemetry-go-instrumentation)
 
-### Java
+### Java {#java}
 
 La commande suivante crée une ressource `Instrumentation` de base qui est
 configurée pour instrumenter les services Java.
@@ -361,7 +361,7 @@ spec:
 Pour plus de détails, voir
 [Configuration de l'agent Java](/docs/zero-code/java/agent/configuration/).
 
-### Node.js
+### Node.js {#node-js}
 
 La commande suivante crée une ressource `Instrumentation` de base qui est
 configurée pour instrumenter les services Node.js.
@@ -445,7 +445,7 @@ instrumentation sera désactivée.
 Pour plus de détails, voir
 [la documentation sur les librairies d'instrumentation JavaScript](/docs/languages/js/libraries/#registration).
 
-### Python
+### Python {#python}
 
 La commande suivante créera une ressource `Instrumentation` de base qui est
 configurée spécifiquement pour instrumenter les services Python.
@@ -481,7 +481,7 @@ utilise `http://demo-collector:4318`, qui se connectera au port `http` du
 > l'opérateur, vous **DEVEZ** définir cette variable d'environnement à
 > `http/protobuf`, sinon l'auto-instrumentation Python ne fonctionnera pas.
 
-#### Auto-instrumenter les logs Python
+#### Auto-instrumenter les logs Python {#auto-instrumenting-python-logs}
 
 Par défaut, l'auto-instrumentation des logs Python est désactivée. Si vous
 souhaitez activer cette fonctionnalité, vous devez définir la variable
@@ -559,7 +559,7 @@ de terminaison. Cependant, l'auto-instrumentation avec l'opérateur OpenTelemetr
 suit un modèle d'option d'adhésion. Pour activer l'instrumentation automatique,
 vous devrez ajouter une annotation à votre déploiement.
 
-## Ajouter des annotations aux déploiements existants
+## Ajouter des annotations aux déploiements existants {#add-annotations-to-existing-deployments}
 
 La dernière étape est d'activer l'instrumentation automatique pour vos services.
 Cela se fait en mettant à jour les `spec.template.metadata.annotations` de votre
@@ -589,7 +589,7 @@ automatique. Voir la
 [documentation d'auto-instrumentation avec l'opérateur](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md#opentelemetry-auto-instrumentation-injection)
 pour plus de détails.
 
-### Opter pour un service Go
+### Opter pour un service Go {#opt-in-a-go-service}
 
 Contrairement à l'auto-instrumentation d'autres langages, Go fonctionne via un
 agent eBPF s'exécutant via un sidecar. Lorsqu'il est opté, l'opérateur injectera
@@ -635,12 +635,12 @@ instrumentation.opentelemetry.io/otel-python-platform: "glibc"
 instrumentation.opentelemetry.io/otel-python-platform: "musl"
 ```
 
-## Dépannage
+## Dépannage {#troubleshooting}
 
 Si vous rencontrez des problèmes en essayant d'auto-instrumenter votre code,
 voici des actions que vous pouvez essayer.
 
-### La ressource `Instrumentation` s'est-elle installée ?
+### La ressource `Instrumentation` s'est-elle installée ? {#did-the-instrumentation-resource-install}
 
 Après avoir installé la ressource `Instrumentation`, vérifiez qu'elle s'est
 installée correctement en exécutant cette commande, où `<namespace>` est le
@@ -697,7 +697,7 @@ Spec:
 Events:  <none>
 ```
 
-### Les logs de l'opérateur OTel montrent-ils des erreurs d'auto-instrumentation ?
+### Les logs de l'opérateur OTel montrent-ils des erreurs d'auto-instrumentation ? {#do-the-otel-operator-logs-show-any-auto-instrumentation-errors}
 
 Vérifiez les logs de l'opérateur OTel pour toute erreur relative à
 l'auto-instrumentation en exécutant cette commande :
@@ -706,7 +706,7 @@ l'auto-instrumentation en exécutant cette commande :
 kubectl logs -l app.kubernetes.io/name=opentelemetry-operator --container manager -n opentelemetry-operator-system --follow
 ```
 
-### Les ressources ont-elles été déployées dans le bon ordre ?
+### Les ressources ont-elles été déployées dans le bon ordre ? {#were-the-resources-deployed-in-the-right-order}
 
 L'ordre compte ! La ressource `Instrumentation` doit être déployée avant de
 déployer l'application, sinon l'auto-instrumentation ne fonctionnera pas.
@@ -764,7 +764,7 @@ suivants :
 Assurez-vous de vérifier la sortie de `kubectl get events` pour toute erreur,
 car ces pourraient aider à pointer vers le problème.
 
-### L'annotation d'auto-instrumentation est-elle correcte ?
+### L'annotation d'auto-instrumentation est-elle correcte ? {#is-the-auto-instrumentation-annotation-correct}
 
 Parfois, l'auto-instrumentation peut échouer en raison d'erreurs dans l'
 annotation d'auto-instrumentation.
@@ -785,7 +785,7 @@ Voici quelques choses à vérifier :
   doit être ajoutée à `spec.template.metadata.annotations`, sinon elle ne
   fonctionnera pas.
 
-### Le point de terminaison d'auto-instrumentation a-t-il été configuré correctement ?
+### Le point de terminaison d'auto-instrumentation a-t-il été configuré correctement ? {#was-the-auto-instrumentation-endpoint-configured-correctly}
 
 L'attribut `spec.exporter.endpoint` de la ressource `Instrumentation` définit où
 envoyer les données. Cela peut être un [collecteur OTel](/docs/collector/), ou

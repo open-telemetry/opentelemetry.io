@@ -3,9 +3,9 @@ title: Runbooks des alertes Prometheus
 default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
 ---
 
-## Règles du gestionnaire
+## Règles du gestionnaire {#manager-rules}
 
-### ReconcileErrors
+### ReconcileErrors {#reconcileerrors}
 
 |               |                                                                                                                                          |
 | ------------: | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -14,7 +14,7 @@ default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
 |    Diagnostic | Vérifiez les logs du gestionnaire pour les raisons pour lesquelles cela pourrait arriver.                                                |
 |    Mitigation | Découvrez quel OpenTelemetryCollector cause les erreurs et corrigez la configuration.                                                    |
 
-### WorkqueueDepth
+### WorkqueueDepth {#workqueuedepth}
 
 |               |                                                                                                                                                    |
 | ------------: | -------------------------------------------------------------------------------------------------------------------------------------------------- |
