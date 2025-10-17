@@ -5,8 +5,7 @@ aliases:
   - manual
 weight: 30
 description: OpenTelemetry JavaScript の計装
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91 # patched
-drifted_from_default: true
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 cSpell:ignore: dicelib Millis rolldice
 ---
 
@@ -469,7 +468,7 @@ const tracer = opentelemetry.trace.getTracer(
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
-```ts
+```ts {hl_lines=[6]}
 /*app.ts*/
 import { trace } from '@opentelemetry/api';
 import express, { type Express } from 'express';
@@ -498,7 +497,7 @@ app.listen(PORT, () => {
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-```js
+```js {hl_lines=[6]}
 /*app.js*/
 const { trace } = require('@opentelemetry/api');
 const express = require('express');
@@ -531,7 +530,7 @@ app.listen(PORT, () => {
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
-```ts
+```ts {hl_lines=[4]}
 /*dice.ts*/
 import { trace } from '@opentelemetry/api';
 
@@ -552,7 +551,7 @@ export function rollTheDice(rolls: number, min: number, max: number) {
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-```js
+```js {hl_lines=[4]}
 /*dice.js*/
 const { trace } = require('@opentelemetry/api');
 
