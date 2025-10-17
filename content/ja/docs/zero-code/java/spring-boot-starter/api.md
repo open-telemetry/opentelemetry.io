@@ -15,8 +15,8 @@ default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 
 ## OpenTelemetry {#opentelemetry}
 
-Spring Bootスターターは、`OpenTelemetry`がSpring Beanとして利用できる特殊なケースです。
-単にSpringコンポーネントに`OpenTelemetry`を注入してください。
+Spring Bootスターターは、Spring Beanとして`OpenTelemetry`を利用できる特殊なケースです。
+ただSpringコンポーネントに`OpenTelemetry`を注入するだけです。
 
 ## スパン {#span}
 
