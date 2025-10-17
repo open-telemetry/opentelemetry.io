@@ -191,7 +191,7 @@ The timeout value for all outgoing logs in milliseconds.
 
 ### `OTEL_EXPORTER_OTLP_PROFILES_TIMEOUT`
 
-The timeout value for all outgoing profiles in milliseconds.
+The timeout value for all outgoing profiles, in milliseconds.
 
 **Default value:** 10000 (10s)
 
