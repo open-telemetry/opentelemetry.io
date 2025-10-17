@@ -32,7 +32,7 @@ Gradleは依存関係の[最新バージョン](https://docs.gradle.org/current/
 
 {{% /alert %}}
 
-以下の例は、Mavenを使用してOpenTelemetry BOMをインポートする方法を示しています：
+以下の例は、Mavenを使用してOpenTelemetry BOMをインポートする方法を示しています。
 
 ```xml
 <dependencyManagement>
