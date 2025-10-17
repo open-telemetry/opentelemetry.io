@@ -16008,12 +16008,12 @@
     "LastSeen": "2025-10-16T09:48:06.125Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-alibaba-cloud": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-17T09:47:10.12219535Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-17T12:30:44.351Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-aws": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-17T09:47:10.182885005Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-17T12:30:48.317Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-azure": {
     "StatusCode": 200,
@@ -16032,8 +16032,8 @@
     "LastSeen": "2025-10-17T09:47:58.529Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-instana": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-17T09:47:10.435247033Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-17T12:30:52.754Z"
   },
   "https://npmjs.com/package/@prisma/instrumentation": {
     "StatusCode": 200,
