@@ -86,7 +86,7 @@ Typically ends with `v1/logs` when using OTLP/HTTP.
 
 ### `OTEL_EXPORTER_OTLP_PROFILES_ENDPOINT`
 
-Endpoint URL for profiles data only, with an optionally-specified port number.
+Endpoint URL for profiles data only, with an optional port number.
 Typically ends with `v1/profiles` when using OTLP/HTTP.
 
 **Default value:**
