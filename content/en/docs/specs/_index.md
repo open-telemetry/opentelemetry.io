@@ -22,4 +22,9 @@ redirects:
   # Semconv
   - from: semconv/resource/deployment_environment
     to: semconv/resource/deployment-environment
+# Temporary until we move in into spec pages
+cascade:
+  - sidebar_root_for: self
+    target:
+      path: /docs/specs/{otel,semconv}
 ---
