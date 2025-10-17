@@ -1,10 +1,11 @@
 ---
 title: Spring Boot スターター
 aliases:
+  - /docs/languages/java/spring-boot
   - /docs/languages/java/automatic/spring-boot
   - /docs/zero-code/java/agent/spring-boot
   - /docs/zero-code/java/spring-boot
-default_lang_commit: 9958669fbbc5664acded963fedb51c7cbf63c6a3
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 ---
 
 [Spring Boot](https://spring.io/projects/spring-boot) アプリケーションを OpenTelemetry で計装するには、2つのオプションを使用できます。
