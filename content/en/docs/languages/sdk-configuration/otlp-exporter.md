@@ -146,7 +146,7 @@ A list of headers to apply to all outgoing logs.
 
 A list of headers to apply to all outgoing profiles.
 
-**Default value:** N/A
+**Default value:** None
 
 **Example:**
 `export OTEL_EXPORTER_OTLP_PROFILES_HEADERS="api-key=key,other-config-value=value"`
