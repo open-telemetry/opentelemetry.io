@@ -8,7 +8,16 @@ const DOCS_ORACLE_URL = 'https://docs.oracle.com/';
 const STATUS_OK_BUT_FRAG_NOT_FOUND = 422;
 const STATUS_OK_BY_ANALYSIS = 206; // Partial Content
 
-const NPMJS_URL = 'https://www.npmjs.com/package/';
+const NPMJS_URL_REGEX = regexX(String.raw`
+  ^https://            # Protocol
+  (?:www\.)?             # Optional www subdomain
+  npmjs\.com/package/  # Domain and path
+  (                    # Start package name capture group
+    @?[^#?\/]+         #   Optional @ + scope/package name (no /, #, ?)
+    (?:\/[^#?\/]+)?    #   Optional /sub-package-name for scoped packages
+  )                    # End package name capture group
+  (?:\/|#|\?|$)        # End with /, #, ?, or end of string
+`);
 
 // NOTE about crates.io
 // --------------------
@@ -136,7 +145,7 @@ async function getUrlHeadless(url) {
 
     // npmjs.com can redirect to a signin page for non-existent packages.
     // Confirm that the package name is in the title.
-    if (isHttp2XX(status) && url.startsWith(NPMJS_URL)) {
+    if (isHttp2XX(status) && NPMJS_URL_REGEX.test(url)) {
       const packageName = npmPackageNameFromUrl(url);
       if (
         !packageName ||
@@ -207,8 +216,8 @@ export async function getUrlStatus(url, _verbose = false) {
     return status;
   }
 
-  // Special handling for npmjs.com package URLs
-  if (status === 403 && url.startsWith(NPMJS_URL)) {
+  // Try to validate npmjs.com package URLs via CLI
+  if (status === 403 && NPMJS_URL_REGEX.test(url)) {
     let _status = checkNpmPackageUrlViaCLI(url);
     if (isHttp2XX(_status)) return _status;
   }
@@ -246,14 +255,11 @@ if (import.meta.url === `file://${process.argv[1]}`) await mainCLI();
 // Extract package name from URL
 // Handle scoped packages: @scope/package or regular packages: package
 function npmPackageNameFromUrl(url) {
-  if (!url.startsWith(NPMJS_URL)) return null;
+  const match = url.match(NPMJS_URL_REGEX);
+  if (!match) return null;
 
-  const urlPath = url.substring(NPMJS_URL.length);
-  // Handle scoped packages: @scope/package or regular packages: package
-  const packageName = urlPath.startsWith('@')
-    ? urlPath.split('/').slice(0, 2).join('/') // @scope/package
-    : urlPath.split('/')[0]; // package
-  return packageName;
+  // Group 1 is the full package name (@scope/package or package)
+  return match[1];
 }
 
 // Check if an npm package exists using npm CLI
@@ -323,4 +329,53 @@ export function log(...args) {
   } else {
     console.log(...args);
   }
+}
+
+// Helper to create verbose regex (like Perl's /x flag)
+function regexX(pattern, flags = '') {
+  // Remove whitespace and comments from the pattern
+  const cleaned = pattern
+    .replace(/\s+#.*$/gm, '') // Remove comments (space + # to end of line)
+    .replace(/\s+/g, ''); // Remove all whitespace
+  return new RegExp(cleaned, flags);
+}
+
+// ================================
+// Test functions
+// ================================
+
+// Run: node -e "import('./scripts/get-url-status.mjs').then(m => m.testNpmPackageNameExtraction())"
+
+export function testNpmPackageNameExtraction() {
+  const testCases = [
+    ['https://www.npmjs.com/package/@otel/rd-aws', '@otel/rd-aws'],
+    ['https://npmjs.com/package/@otel/rd-azure', '@otel/rd-azure'],
+    ['https://www.npmjs.com/package/express', 'express'],
+    ['https://npmjs.com/package/lodash/', 'lodash'],
+    ['https://www.npmjs.com/package/@scope/pkg/v/1.0.0', '@scope/pkg'],
+    ['https://npmjs.com/package/@otel/api?activeTab=versions', '@otel/api'],
+    ['https://www.npmjs.com/package/@scope/pkg#readme', '@scope/pkg'],
+    ['https://www.npmjs.com/package/@scope/pkg/', '@scope/pkg'],
+    ['https://example.com/package/foo', null],
+  ];
+
+  console.log('Testing npmPackageNameFromUrl():');
+  let passed = 0;
+  let failed = 0;
+
+  testCases.forEach(([url, expected]) => {
+    const result = npmPackageNameFromUrl(url);
+    const status = result === expected ? '✓' : '✗';
+    if (result === expected) {
+      passed++;
+    } else {
+      failed++;
+      console.log(`${status} FAIL: ${url}`);
+      console.log(`  Expected: ${expected}`);
+      console.log(`  Got:      ${result}`);
+    }
+  });
+
+  console.log(`\nResults: ${passed} passed, ${failed} failed`);
+  return failed === 0;
 }
