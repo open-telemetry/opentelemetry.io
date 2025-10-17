@@ -105,7 +105,7 @@ dependencies {
 | 名前    | 型         | 説明                 | デフォルト値        |
 | ------- | ---------- | -------------------- | ------------------- |
 | `value` | `String`   | スパン名             | ClassName.Method    |
-| `kind`  | `SpanKind` | スパンのスパンの種類 | `SpanKind.INTERNAL` |
+| `kind`  | `SpanKind` | スパンの種類 | `SpanKind.INTERNAL` |
 
 `SpanAttribute`アノテーションの`value`要素から属性名を設定できます。
 
