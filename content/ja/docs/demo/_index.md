@@ -4,8 +4,7 @@ linkTitle: デモ
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
-drifted_from_default: true
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 ---
 
 [OpenTelemetryデモ](/ecosystem/demo/)のドキュメンテーションへようこそ。
@@ -26,9 +25,11 @@ drifted_from_default: true
 | ---------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | .NET       | [会計サービス](services/accounting/)                   | [カートサービス](services/cart/)                                                      | [カートサービス](services/cart/)                                                      |
 | C++        |                                                        |                                                                                       | [通貨サービス](services/currency/)                                                    |
+| Elixir     |                                                        | [Flagd-UIサービス](services/flagd-ui/)                                                |                                                                                       |
 | Go         |                                                        | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/) | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/) |
 | Java       | [広告サービス](services/ad/)                           |                                                                                       | [広告サービス](services/ad/)                                                          |
 | JavaScript |                                                        |                                                                                       | [支払いサービス](services/payment/)                                                   |
+| TypeScript |                                                        | [フロントエンド](services/frontend/), [React Nativeアプリ](services/react-native-app/) | [フロントエンド](services/frontend/)                                                   |
 | Kotlin     |                                                        | [不正検知サービス](services/fraud-detection/)                                         |                                                                                       |
 | PHP        |                                                        | [見積サービス](services/quote/)                                                       | [見積サービス](services/quote/)                                                       |
 | Python     | [レコメンデーションサービス](services/recommendation/) |                                                                                       | [レコメンデーションサービス](services/recommendation/)                                |
