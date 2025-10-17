@@ -16335,6 +16335,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-02-01T06:39:09.46067-05:00"
   },
+  "https://google.github.io/sqlcommenter/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-17T22:19:44.57316566Z"
+  },
   "https://google.github.io/sqlcommenter/spec/": {
     "StatusCode": 206,
     "LastSeen": "2025-08-28T17:29:48.467016-04:00"
@@ -18378,6 +18382,10 @@
   "https://opentelemetry-python.readthedocs.io/en/stable/examples/metrics/instruments/README.html": {
     "StatusCode": 200,
     "LastSeen": "2025-01-13T11:43:26.015473-05:00"
+  },
+  "https://opentelemetry-python.readthedocs.io/en/stable/examples/sqlcommenter/README.html": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-17T22:25:29.685299371Z"
   },
   "https://opentelemetry-python.readthedocs.io/en/stable/shim/opentracing_shim/opentracing_shim.html": {
     "StatusCode": 200,
