@@ -184,6 +184,9 @@ jobs:
     if: needs.generate-patch.outputs.patch_skipped == 'true'
     needs: generate-patch
     steps:
+      - uses: actions/checkout@v5
+        with: { fetch-depth: 1 }
+
       - uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2.1.4
         id: otelbot-token
         with:
@@ -192,6 +195,6 @@ jobs:
 
       - name: Comment no-op
         run: |
-          gh pr comment $PR_NUM --body "ℹ️ \`fix:${{ needs.generate-patch.outputs.action_name }}\` made no changes – nothing to commit."
+          gh pr comment $PR_NUM --body "ℹ️ \`fix:${{ needs.generate-patch.outputs.action_name }}\` made no changes. Nothing to commit."
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
