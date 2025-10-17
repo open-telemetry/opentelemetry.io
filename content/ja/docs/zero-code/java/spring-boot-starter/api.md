@@ -43,7 +43,7 @@ public class MyController {
 
 [スパン](/docs/languages/java/api/#span)セクションで説明されているように、`Tracer`を使用してスパンを作成します。
 
-完全な例は[サンプルリポジトリ]にあります。
+完全な例は[サンプルリポジトリ][example repository]にあります。
 
 ## メーター {#meter}
 
