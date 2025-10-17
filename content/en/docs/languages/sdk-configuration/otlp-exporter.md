@@ -8,7 +8,7 @@ aliases: [otlp-exporter-configuration]
 ## Endpoint Configuration
 
 The following environment variables let you configure an OTLP/gRPC or OTLP/HTTP
-endpoint for your traces, metrics, profiles and logs.
+endpoint for your traces, metrics, profiles, and logs.
 
 ### `OTEL_EXPORTER_OTLP_ENDPOINT`
 
