@@ -5,8 +5,7 @@ description: >-
   alt="JavaScript"> JavaScript（Node.jsとブラウザ向け）でのOpenTelemetryの言語固有実装。
 aliases: [/js, /js/metrics, /js/tracing]
 weight: 20
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
-drifted_from_default: true
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 ---
 
 {{% docs/languages/index-intro js /%}}

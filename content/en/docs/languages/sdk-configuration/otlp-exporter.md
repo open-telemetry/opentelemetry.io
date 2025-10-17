@@ -128,7 +128,7 @@ A list of headers to apply to all outgoing logs.
 ## Timeout Configuration
 
 The following environment variables configure the maximum time (in milliseconds)
-an OTLP Exporter will wait before transmitting the net batch of data.
+an OTLP Exporter will wait before transmitting the next batch of data.
 
 ### `OTEL_EXPORTER_OTLP_TIMEOUT`
 

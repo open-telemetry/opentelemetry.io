@@ -1,6 +1,7 @@
 ---
 title: Contributing
 aliases: [/docs/contribution-guidelines]
+sidebar_root_for: self
 weight: 980
 ---
 

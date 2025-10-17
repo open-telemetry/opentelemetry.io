@@ -330,12 +330,12 @@ collecter des données de télémétrie personnalisées.
 
 ## Désinstallation {#uninstall}
 
-### Linux et macOS { #uninstall-unix } {#linux-and-macos--uninstall-unix-}
+### Linux et macOS {#uninstall-unix}
 
 Sur Linux et macOS, les étapes d'installation n'affectent que la session shell
 actuelle donc aucune désinstallation explicite n'est requise.
 
-### Windows (PowerShell) { #uninstall-windows } {#windows-powershell--uninstall-windows-}
+### Windows (PowerShell) {#uninstall-windows}
 
 Sur Windows, utilisez le module PowerShell en tant qu'Administrateur.
 
