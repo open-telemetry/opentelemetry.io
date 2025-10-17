@@ -783,9 +783,17 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-14T12:56:38.169251315Z"
   },
+  "https://cloud.google.com/functions/docs/concepts/execution-environment": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-17T10:35:51.037833324Z"
+  },
   "https://cloud.google.com/functions/docs/concepts/execution-environment#scope": {
     "StatusCode": 200,
     "LastSeen": "2025-10-15T17:31:59.999Z"
+  },
+  "https://cloud.google.com/functions/docs/env-var": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-17T10:35:39.572199601Z"
   },
   "https://cloud.google.com/functions/docs/env-var#runtime_environment_variables_set_automatically": {
     "StatusCode": 200,
@@ -806,6 +814,10 @@
   "https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa": {
     "StatusCode": 200,
     "LastSeen": "2025-10-15T17:32:12.345Z"
+  },
+  "https://cloud.google.com/monitoring/api/metrics_gcp": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-17T10:35:50.88968613Z"
   },
   "https://cloud.google.com/monitoring/api/metrics_gcp#gcp-cloudfunctions": {
     "StatusCode": 200,
@@ -1686,6 +1698,14 @@
   "https://docs.docker.com/engine/containers/run/#container-identification": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T12:56:48.913623945Z"
+  },
+  "https://docs.docker.com/reference/api/engine/version/v1.43/#tag/Container/operation/ContainerInspect": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-17T10:35:42.7363683Z"
+  },
+  "https://docs.docker.com/reference/api/engine/version/v1.43/#tag/Image/operation/ImageInspect": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-17T10:35:40.39011914Z"
   },
   "https://docs.docker.com/reference/api/engine/version/v1.51/#tag/Container/operation/ContainerStats": {
     "StatusCode": 206,
@@ -11579,6 +11599,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-15T17:03:24.125856083Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.45.0/specification/resource/README.md#overview": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-17T10:35:37.942974952Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/oteps/0232-maturity-of-otel.md": {
     "StatusCode": 206,
     "LastSeen": "2025-10-02T10:36:59.345979963Z"
@@ -11586,6 +11610,14 @@
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/spec-compliance-matrix.md#logs": {
     "StatusCode": 206,
     "LastSeen": "2025-10-02T10:36:16.588881715Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-17T10:35:37.439814128Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/specification/logs/data-model.md#type-any": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-17T10:35:56.154962419Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
@@ -14683,6 +14715,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-14T17:42:17.223045507Z"
   },
+  "https://javadoc.io/doc/com.azure/azure-cosmos/latest/com/azure/cosmos/CosmosAsyncContainer.html#executeBulkOperations%28reactor.core.publisher.Flux%29": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-17T10:35:59.661175995Z"
+  },
   "https://javadoc.io/doc/io.opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2025-10-15T17:00:17.485485909Z"
@@ -14834,6 +14870,10 @@
   "https://kubernetes.io/docs/concepts/policy/resource-quotas/#object-count-quota": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:42:18.595045048Z"
+  },
+  "https://kubernetes.io/docs/concepts/policy/resource-quotas/#quota-on-object-count": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-17T10:35:41.865517064Z"
   },
   "https://kubernetes.io/docs/concepts/security/rbac-good-practices/": {
     "StatusCode": 206,
