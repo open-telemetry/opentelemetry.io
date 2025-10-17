@@ -59,12 +59,12 @@ of real-world scenarios.
 
 Examples include:
 
-- **[LLM operations](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/gen-ai/non-normative/examples-llm-calls.md)**
+- **[LLM operations](/docs/specs/semconv/gen-ai/non-normative/examples-llm-calls)**
   — input parameters like tool definitions and input/output messages are
   inherently structured
 - **GraphQL** — responses may include
   [lists of structured errors](https://graphql.org/learn/response/#errors)
-- **[Database operations](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/database/database-spans.md)**
+- **[Database operations](/docs/specs/semconv/database/database-spans)**
   — batch operations have properties that flat attributes cannot adequately
   capture
 
