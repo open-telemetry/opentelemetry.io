@@ -2,6 +2,7 @@
 title: 服务列表
 aliases: [service_table, service-table]
 default_lang_commit: 6588437286e916c2eb44a721161ce46c21f1706b
+drifted_from_default: true
 ---
 
 要查看请求流程，参阅[服务架构图](../architecture/)。

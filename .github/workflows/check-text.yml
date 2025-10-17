@@ -1,4 +1,4 @@
-name: Linter
+name: Linter # cSpell:ignore yargs
 
 on:
   merge_group:
@@ -26,7 +26,7 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
       - run: npm install --ignore-scripts --omit=optional
-      - run: .github/workflows/scripts/textlint.sh
+      - run: .github/scripts/textlint.sh
 
   markdown-linter:
     name: MARKDOWN linter
@@ -49,4 +49,3 @@ jobs:
           cache-dependency-path: tmp/package-ci.json
       - run: npm install --ignore-scripts --omit=optional
       - run: npm run check:markdown
-      - run: npm run check:markdown2

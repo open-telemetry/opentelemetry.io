@@ -5,7 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: OpenTelemetry Goのマニュアルインストルメンテーション
-default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 ---
 
@@ -40,7 +40,7 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -179,7 +179,7 @@ span.SetAttributes(myKey.String("a value"))
 #### セマンティック属性 {#semantic-attributes}
 
 セマンティック属性は、HTTPメソッド、ステータスコード、ユーザーエージェントなどの一般的な概念について、複数の言語、フレームワーク、ランタイム間で共有される属性キーのセットを提供するために[OpenTelemetry仕様][OpenTelemetry Specification]によって定義された属性です。
-これらの属性は`go.opentelemetry.io/otel/semconv/v1.34.0`パッケージで利用できます。
+これらの属性は`go.opentelemetry.io/otel/semconv/v1.37.0`パッケージで利用できます。
 
 詳細については、[トレースセマンティック規約][Trace semantic conventions]を参照してください。
 
@@ -333,7 +333,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 func main() {
@@ -368,11 +368,14 @@ func main() {
 }
 
 func newResource() (*resource.Resource, error) {
-	return resource.Merge(resource.Default(),
-		resource.NewWithAttributes(semconv.SchemaURL,
+	return resource.Merge(
+    resource.Default(),
+		resource.NewWithAttributes(
+      semconv.SchemaURL,
 			semconv.ServiceName("my-service"),
 			semconv.ServiceVersion("0.1.0"),
-		))
+		),
+  )
 }
 
 func newMeterProvider(res *resource.Resource) (*metric.MeterProvider, error) {
@@ -711,7 +714,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 func init() {
@@ -817,7 +820,7 @@ meterProvider := metric.NewMeterProvider(
 
 条件の`Name`フィールドはワイルドカードパターンマッチングをサポートしています。`*`ワイルドカードは0個以上の文字に一致するものとして認識され、`?`はちょうど1文字に一致するものとして認識されます。たとえば、`*`のパターンはすべての計装名に一致します。
 
-名前のサフィックスが`.ms`である任意の計装に対して単位をミリ秒に設定するビューを作成する方法の例を次に示します。
+名前の接尾辞が`.ms`である任意の計装に対して単位をミリ秒に設定するビューを作成する方法の例を次に示します。
 
 ```go
 view := metric.NewView(
@@ -832,7 +835,7 @@ meterProvider := metric.NewMeterProvider(
 
 `NewView`関数は、ビューを作成する便利な方法を提供します。`NewView`が必要な機能を提供できない場合は、カスタム[`View`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/metric#View)を直接作成できます。
 
-たとえば、正規表現マッチングを使用して、すべてのデータストリーム名が使用する単位のサフィックスを持つことを保証するビューを作成する方法は次のとおりです。
+たとえば、正規表現マッチングを使用して、すべてのデータストリーム名が使用する単位の接尾辞を持つことを保証するビューを作成する方法は次のとおりです。
 
 ```go
 re := regexp.MustCompile(`[._](ms|byte)$`)
@@ -920,7 +923,7 @@ import (
 	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.34.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 func main() {
@@ -954,11 +957,14 @@ func main() {
 }
 
 func newResource() (*resource.Resource, error) {
-	return resource.Merge(resource.Default(),
-		resource.NewWithAttributes(semconv.SchemaURL,
+	return resource.Merge(
+    	resource.Default(),
+		resource.NewWithAttributes(
+			semconv.SchemaURL,
 			semconv.ServiceName("my-service"),
 			semconv.ServiceVersion("0.1.0"),
-		))
+		),
+  )
 }
 
 func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.LoggerProvider, error) {

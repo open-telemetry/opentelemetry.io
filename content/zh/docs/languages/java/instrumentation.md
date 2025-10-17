@@ -1,7 +1,6 @@
 ---
 title: 插桩生态系统
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
-drifted_from_default: true
+default_lang_commit: 6eddc725571667e112a41aa7422bcd4c69764503
 aliases:
   - /docs/java/getting_started
   - /docs/java/manual_instrumentation
@@ -76,7 +75,7 @@ OpenTelemetry 鼓励库的作者使用 API(../api/) 添加原生插桩。
 同时将 OpenTelemetry 在 [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 中维护的插桩方案视为填补当前空白的临时手段。
 
-{{% docs/languages/native-libraries "java" %}}
+{{% docs/languages/native-libraries %}}
 
 ### 手动插桩 {#manual-instrumentation}
 
