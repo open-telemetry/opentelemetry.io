@@ -315,7 +315,7 @@ To try this out yourself, take a look at the
 [Go eBPF example](https://github.com/causely-oss/automatic-instrumentation-lab#ebpf-based-instrumentation-go)
 from the lab.
 
-If you’d like to see actively used implementations of compile-time
+If you’d like to see actively used implementations of eBPF
 instrumentation, you can take a look into the
 [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation)
 project (“OBI”), which is the outcome of
