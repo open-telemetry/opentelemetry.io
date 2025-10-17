@@ -93,14 +93,14 @@ example, structured data like:
 
 is reported as either:
 
-```
+```text
 data.0.foo = "bar"
 data.0.baz = 42
 ```
 
 or:
 
-```
+```text
 data.foo = ["bar"]
 data.baz = [ 42 ]
 ```
