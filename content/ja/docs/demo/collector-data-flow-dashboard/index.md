@@ -1,6 +1,6 @@
 ---
 title: コレクターデータフローダッシュボード
-default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 ---
 
 OpenTelemetryコレクターを通じてデータフローを監視することは、いくつかの重要な理由があります。サンプル数やカーディナリティなど、入力されるデータのマクロレベルの視点を得ることは、コレクターの内部動作を理解する上で不可欠です。しかし、詳細に踏み込むと、相互接続が複雑になる可能性があります。コレクターデータフローダッシュボードは、OpenTelemetryデモアプリケーションの機能を示すことを目的としており、ユーザーが構築するための基盤を提供します。
@@ -11,7 +11,7 @@ OpenTelemetryコレクターを通じてデータフローを監視すること�
 
 以下の図は、システムコンポーネントの概要を示しており、OpenTelemetryデモアプリケーションで使用されているOpenTelemetryコレクター（otelcol）設定ファイルから導き出された構成を示しています。さらに、システム内のオブザーバビリティデータ（トレースとメトリクス）の流れを強調しています。
 
-![OpenTelemetry Collector Data Flow Overview](otelcol-data-flow-overview.png)
+![OpenTelemetry Collector Overview](otelcol-data-flow-overview.png)
 
 ## イングレスとエグレスのメトリクス {#ingressegress-metrics}
 
@@ -58,9 +58,9 @@ OpenTelemetryコレクターを通じてデータフローを監視すること�
 
 ## ダッシュボード {#dashboard}
 
-Grafana UIにアクセスし、画面左側のブラウズアイコンから**OpenTelemetry Collector Data Flow** ダッシュボードを選択することで、ダッシュボードにアクセスできます。
+Grafana UIにアクセスし、画面左側のブラウズアイコンから**OpenTelemetry Collector** ダッシュボードを選択することで、ダッシュボードにアクセスできます。
 
-![OpenTelemetry Collector Data Flow dashboard](otelcol-data-flow-dashboard.png)
+![OpenTelemetry Collector dashboard](otelcol-data-flow-dashboard.png)
 
 ダッシュボードは4つのセクションから構成されています。
 
