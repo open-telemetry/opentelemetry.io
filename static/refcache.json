@@ -419,6 +419,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-15T10:07:17.88116163Z"
   },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-helidon-4.3": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-18T08:14:43.217549-04:00"
+  },
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-hikaricp-3.0": {
     "StatusCode": 200,
     "LastSeen": "2025-10-15T10:07:32.790509104Z"
@@ -486,6 +490,10 @@
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-mongo-3.1": {
     "StatusCode": 200,
     "LastSeen": "2025-10-15T10:09:41.361762226Z"
+  },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-nats-2.17": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-18T08:14:45.929722-04:00"
   },
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-netty-4.1": {
     "StatusCode": 200,
@@ -6062,6 +6070,10 @@
   "https://github.com/naseemkullah": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T12:55:28.72642402Z"
+  },
+  "https://github.com/nats-io/nats.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-18T08:14:44.831794-04:00"
   },
   "https://github.com/nekufa": {
     "StatusCode": 206,
@@ -14439,6 +14451,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-15T09:41:20.223026344Z"
   },
+  "https://helidon.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-18T08:14:41.700529-04:00"
+  },
   "https://helm.sh": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T12:53:47.428450271Z"
@@ -14730,6 +14746,10 @@
   "https://kafka.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T12:57:09.069505872Z"
+  },
+  "https://kafka.apache.org/documentation/#connect": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-18T08:14:39.664991-04:00"
   },
   "https://kafka.apache.org/documentation/#producerapi": {
     "StatusCode": 206,
