@@ -79,7 +79,7 @@ crear spans manuales en una aplicación instrumentada por un agente sin código 
 Go. Mientras no registre manualmente un TracerProvider global, el Auto SDK se
 habilitará automáticamente.
 
-{{% alert title="Important" color="warning" %}}
+{{% alert title="Importante" color="warning" %}}
 
 Configurar manualmente un TracerProvider global entrará en conflicto con el Auto
 SDK e impedirá que los spans manuales se correlacionan correctamente con los
