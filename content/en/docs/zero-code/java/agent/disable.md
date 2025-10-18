@@ -100,6 +100,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | Elasticsearch API client                         | `elasticsearch-api-client`                  |
 | Elasticsearch client                             | `elasticsearch-transport`                   |
 | Elasticsearch REST client                        | `elasticsearch-rest`                        |
+| Failsafe                                         | `failsafe`                                  |
 | Finagle                                          | `finagle-http`                              |
 | Google Guava                                     | `guava`                                     |
 | Google HTTP client                               | `google-http-client`                        |
@@ -107,6 +108,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | Grails                                           | `grails`                                    |
 | GraphQL Java                                     | `graphql-java`                              |
 | GRPC                                             | `grpc`                                      |
+| Helidon                                          | `helidon`                                   |
 | Hibernate                                        | `hibernate`                                 |
 | Hibernate Reactive                               | `hibernate-reactive`                        |
 | HikariCP                                         | `hikaricp`                                  |
@@ -141,11 +143,13 @@ corresponding instrumentation name: {{% /config_option %}}
 | Micrometer                                       | `micrometer`                                |
 | MongoDB                                          | `mongo`                                     |
 | MyBatis                                          | `mybatis`                                   |
+| NATS Client                                      | `nats`                                      |
 | Netflix Hystrix                                  | `hystrix`                                   |
 | Netty                                            | `netty`                                     |
 | OkHttp                                           | `okhttp`                                    |
 | OpenLiberty                                      | `liberty`                                   |
 | OpenAI                                           | `openai`                                    |
+| OpenSearch Java                                  | `opensearch-java`                           |
 | OpenSearch REST                                  | `opensearch-rest`                           |
 | OpenTelemetry Extension Annotations              | `opentelemetry-extension-annotations`       |
 | OpenTelemetry Instrumentation Annotations        | `opentelemetry-instrumentation-annotations` |
