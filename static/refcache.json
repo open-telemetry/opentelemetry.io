@@ -2475,6 +2475,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-10T13:22:00.647641663Z"
   },
+  "https://dotnet.microsoft.com/es-es/platform/support/policy/dotnet-core": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-18T05:34:17.172165155Z"
+  },
   "https://drive.google.com/file/d/1C4e7OevZ5vXyZLjxZif9Mi06A6uPNH7K/view": {
     "StatusCode": 200,
     "LastSeen": "2025-10-16T09:46:16.255176883Z"
