@@ -331,7 +331,7 @@ OpenTelemetryウェブサイトの新しいローカリゼーションを始め�
 ### 4. 用語集をローカライズする {#glossary}
 
 ローカライズする2番目のページは[用語集](/docs/concepts/glossary/)です。
-これは、オブザーバビリティとOpenTelemetryで使用される主要な用語を定義するため、ローカライズされた読者にとって**重要な**ページです。
+これは、特にオブザーバビリティとOpenTelemetryで使用される主要な用語を定義するため、ローカライズされた読者にとって**重要な**ページです。
 これは、あなたの言語にそのような用語が存在しない場合は特に重要です。
 
 ガイダンスについては、Write the Docs 2024でのAli Dowairのトーク[The art of translation: How to localize technical content][ali-dowair-2024]の[動画][ali-d-youtube]を参照してください。
