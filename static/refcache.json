@@ -1292,8 +1292,8 @@
     "LastSeen": "2025-10-14T12:59:34.17921924Z"
   },
   "https://developer.hashicorp.com/nomad/docs/operations/monitoring-nomad": {
-    "StatusCode": 429,
-    "LastSeen": "2025-10-19T09:40:16.939809562Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-19T13:41:23.897Z"
   },
   "https://developer.mozilla.org/docs/Web/HTTP/Headers/Forwarded#for": {
     "StatusCode": 206,
@@ -18844,32 +18844,32 @@
     "LastSeen": "2025-10-18T19:08:18.305Z"
   },
   "https://sched.co/1eYYg": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-19T09:40:25.221431644Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-19T13:41:27.215Z"
   },
   "https://sched.co/1eYZA": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-19T09:40:29.05023995Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-19T13:41:29.886Z"
   },
   "https://sched.co/1eYZq": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-19T09:40:34.170460175Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-19T13:41:32.667Z"
   },
   "https://sched.co/1eYZt": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-19T09:40:32.222599027Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-19T13:41:35.335Z"
   },
   "https://sched.co/1eYcJ": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-19T09:40:17.574780171Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-19T13:41:38.074Z"
   },
   "https://sched.co/1f4zX": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-19T09:40:19.520910629Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-19T13:41:40.765Z"
   },
   "https://sched.co/1f4zz": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-19T09:40:21.798051909Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-19T13:41:43.735Z"
   },
   "https://sched.co/1hovy": {
     "StatusCode": 200,
