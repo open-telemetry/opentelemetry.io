@@ -6,7 +6,7 @@ default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 
 OpenTelemetry Spring Bootスターターは、追加の計装で拡張できる[すぐに使える計装](../out-of-the-box-instrumentation)を提供します。
 
-## Log4j2 計装 {#log4j2-instrumentation}
+## Log4j2計装 {#log4j2-instrumentation}
 
 `log4j2.xml` ファイルに OpenTelemetry アペンダーを追加する必要があります。
 
