@@ -91,7 +91,8 @@ cSpell:ignore: logback webflux webmvc
 
 [opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1/library)で定義された`RestTemplate`トレースインターセプターの自動設定を提供します。
 この自動設定は、`RestTemplate`ビーンポストプロセッサーを適用することで、Spring `RestTemplate`ビーンを使用して送信されるすべてのリクエストを計装します。
-この機能はSpring Webバージョン3.1以降でサポートされています。OpenTelemetry`RestTemplate`インターセプターの詳細については、[opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1/library)を参照してください。
+この機能はSpring Webバージョン3.1以降でサポートされています。
+OpenTelemetry`RestTemplate`インターセプターの詳細については、[opentelemetry-spring-web-3.1](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-web/spring-web-3.1/library)を参照してください。
 
 以下の`RestTemplate`の作成方法がサポートされています。
 
