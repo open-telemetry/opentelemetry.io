@@ -5,7 +5,7 @@ IgnoreAltMissing: true
 IgnoreCanonicalBrokenLinks: false
 IgnoreInternalEmptyHash: true # TODO: remove after resolution of https://github.com/google/docsy/issues/1995
 CheckMailto: false
-# StripQueryString: false # TODO: enable once htmltest is fixed
+StripQueryString: false
 TestFilesConcurrently: true
 # RetryCachedErrors: for docs, see https://github.com/chalin/htmltest/blob/dev/main/README.md
 RetryCachedErrors: false
@@ -61,6 +61,10 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://x.ai
   - ^https://www.deepseek.com
   - ^https://www.perplexity.ai
+
+  # Ignore issues and discussions with query parameters, e.g.:
+  - ^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=
+  - ^https://github\.com/open-telemetry/opentelemetry\.io/discussions\?discussions_q=
 
   # Ignore Docsy-generated GitHub links for now, until
   # https://github.com/google/docsy/issues/1432 is fixed
