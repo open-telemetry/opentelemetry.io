@@ -32,4 +32,4 @@ OpenTelemetryアペンダーのその他の設定オプションは、[Log4j](ht
 
 ## 計装ライブラリ {#instrumentation-libraries}
 
-[OpenTelemetry 計装ライブラリ](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks)を使用して、その他の計装を設定できます。
+[OpenTelemetry計装ライブラリ](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks)を使用して、その他の計装を設定できます。
