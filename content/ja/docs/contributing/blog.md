@@ -20,7 +20,7 @@ OpenTelemetry ウェブサイトのメンテナーと承認者はプロジェク
 
 ## ソーシャルメディアコンテンツのリクエスト {#social-media-content-request}
 
-ブログ記事ではないOpenTelemetryプロジェクトのソーシャルメディアチャンネルでのコンテンツの公開をリクエストしたい場合は、[このフォームを使用してください](https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml)。
+ブログ記事以外のコンテンツをOpenTelemetryプロジェクトのソーシャルメディアチャンネルで公開するようにリクエストしたい場合、[このフォームを使用してください](https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml)。
 
 ## ブログ記事を提出する前に {#before-submitting-a-blog-post}
 
