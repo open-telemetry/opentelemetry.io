@@ -28,7 +28,7 @@ OpenTelemetryアペンダーのその他の設定オプションは、[Log4j](ht
 
 | システムプロパティ                            | 型      | デフォルト | 説明                                                                                |
 | --------------------------------------------- | ------- | ---------- | ----------------------------------------------------------------------------------- |
-| `otel.instrumentation.log4j-appender.enabled` | Boolean | true       | `OpenTelemetry` インスタンスで Log4j OpenTelemetry アペンダーの設定を有効にします。 |
+| `otel.instrumentation.log4j-appender.enabled` | Boolean | true       | `OpenTelemetry` インスタンスでLog4j OpenTelemetryアペンダーの設定を有効にします。 |
 
 ## 計装ライブラリ {#instrumentation-libraries}
 
