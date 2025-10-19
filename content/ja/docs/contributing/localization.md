@@ -320,9 +320,8 @@ OpenTelemetryウェブサイトの新しいローカリゼーションを始め�
 
 ### 3. ホームページをローカライズする {#homepage}
 
-ウェブサイトの[ホームページ][homepage]の翻訳を含む[プルリクエストを送信](../pull-requests/)してください。翻訳するのは`content/LANG_ID/_index.md`ファイル _だけ_ にしてください。
-メンテナーがPRを編集するために必要な権限があることを確認してください。
-彼らはローカリゼーションプロジェクトを開始するために必要な追加変更をPRに加えます。
+ファイル `content/LANG_ID/_index.md` に、ウェブサイトの[ホームページ][homepage]の翻訳 _のみ_ を含む[プルリクエストを送信](../pull-requests/)してください。
+メンテナーはローカリゼーションプロジェクトを開始するために必要な追加の変更をPRに加えるため、メンテナーがPRを編集するために必要な権限があることを確認してください。
 
 [homepage]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
