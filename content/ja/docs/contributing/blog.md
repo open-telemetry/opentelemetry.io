@@ -57,7 +57,7 @@ SIG Communication のメンテナーがブログ記事が受け入れられる�
 
 ### コントリビューター募集 {#call-for-contributors}
 
-新しいプロジェクトやSIGの作成を提案している場合、またはOpenTelemetryプロジェクトへの寄付を提供している場合、提案を成功させるために追加のコントリビューターが必要になります。
+新しいプロジェクトやSIGの作成を提案する場合、またはOpenTelemetryプロジェクトへの寄付を申し出る場合には、その提案を成功させるために追加のコントリビューターが必要になります。
 それを支援するために、「コントリビューター募集」（CfC）のブログ記事を提案できます。
 
 これには、[新しいプロジェクト](https://github.com/open-telemetry/community/blob/main/project-management.md)と[寄付](https://github.com/open-telemetry/community/blob/main/guides/contributor/donations.md)のプロセスに従う必要があります。
