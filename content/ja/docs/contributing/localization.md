@@ -260,7 +260,7 @@ OTelウェブサイトの新しいローカリゼーションを始めること�
 
 {{% alert title="Note" %}}
 
-新しいローカリゼーションを始めるのに、OpenTelemetry プロジェクトの既存のコントリビューターである必要はありません。
+新しいローカリゼーションを開始するために、OpenTelemetryプロジェクトの既存のコントリビューターである必要はありません。
 しかし、[OpenTelemetry GitHub organization](https://github.com/open-telemetry/)のメンバーまたはローカリゼーションの承認者グループのメンバーとして追加されるには、[メンバーシップガイドライン][membership guidelines]に概説されている確立されたメンバーおよび承認者になるための要件を満たす必要があります。
 
 承認者ステータスを獲得する前は、ローカリゼーションPRへの承認を「LGTM」（Looks Good To Me）コメントを追加することで示すことができます。
