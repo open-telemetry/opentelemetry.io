@@ -8,7 +8,7 @@ OpenTelemetry Spring Bootスターターは、追加の計装で拡張できる[
 
 ## Log4j2計装 {#log4j2-instrumentation}
 
-`log4j2.xml` ファイルに OpenTelemetry アペンダーを追加する必要があります。
+`log4j2.xml` ファイルにOpenTelemetryアペンダーを追加する必要があります。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
