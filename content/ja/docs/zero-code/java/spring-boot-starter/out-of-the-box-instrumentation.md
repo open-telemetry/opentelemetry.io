@@ -184,7 +184,7 @@ Javaエージェントと同様に、以下のエンティティのキャプチ�
 ## Spring Web MVC自動設定 {#spring-web-mvc-autoconfiguration}
 
 この機能は、アプリケーションコンテキストに[テレメトリ生成サーブレット`Filter`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library/src/main/java/io/opentelemetry/instrumentation/spring/webmvc/v5_3/WebMvcTelemetryProducingFilter.java)ビーンを追加することで、Spring WebMVCコントローラーの計装を自動設定します。
-フィルターは、リクエストの実行をサーバースパンで装飾し、HTTPリクエストで受信した場合は受信トレーシングコンテキストを伝搬します。
+フィルターは、リクエストの実行をサーバースパンでデコレートし、HTTPリクエストで受信した場合は受信トレーシングコンテキストを伝搬します。
 OpenTelemetry Spring WebMVC計装の詳細については、[opentelemetry-spring-webmvc-5.3計装ライブラリ](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library)を参照してください。
 
 Javaエージェントと同様に、以下のエンティティのキャプチャを設定できます。
