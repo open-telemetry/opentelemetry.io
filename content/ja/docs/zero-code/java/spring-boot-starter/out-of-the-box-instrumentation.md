@@ -197,7 +197,7 @@ Javaエージェントと同様に、以下のエンティティのキャプチ�
 
 [opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3/library)で定義されたOpenTelemetry WebClient ExchangeFilterの自動設定を提供します。
 この自動設定は、ビーンポストプロセッサーを適用することで、SpringのWebClientとWebClient Builderビーンを使用して送信されるすべての送信HTTPリクエストを計装します。
-この機能は、Spring WebFlux バージョン5.0以降でサポートされています。詳細については、[opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3/library)を参照してください。
+この機能は、Spring WebFluxバージョン5.0以降でサポートされています。詳細については、[opentelemetry-spring-webflux-5.3](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring/spring-webflux/spring-webflux-5.3/library)を参照してください。
 
 以下の`WebClient`の作成方法がサポートされています。
 
