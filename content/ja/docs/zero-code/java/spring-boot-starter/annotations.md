@@ -73,7 +73,7 @@ public class MyControllerManagedBySpring {
 
 {{% alert title="注意" %}}
 
-OpenTelemetryアノテーションを使用できるようにするには、Spring Boot Starter AOP依存関係をプロジェクトに追加する必要があります。
+OpenTelemetryアノテーションを使用できるようにするには、Spring BootスターターのAOP依存関係をプロジェクトに追加する必要があります。
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
