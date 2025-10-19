@@ -4,15 +4,8 @@
 {{ if not (hasPrefix $pageRef "/") -}}
   {{ $pageRef = printf "/docs/specs/%s" $pageRef -}}
 {{ end -}}
-
-{{/* Always use English version as the primary source for specs status. */ -}}
-{{ $page := "" }}
-{{- with where .Site.Sites "Language.Lang" "eq" "en" -}}
-  {{- with index . 0 -}}
-    {{ $page = .GetPage $pageRef -}}
-  {{ end -}}
-{{ end -}}
-
+{{ $enSite := index site.Sites 0 -}}
+{{ $page := $enSite.GetPage $pageRef -}}
 {{ if not $page -}}
   {{ warnf "spec_status: Can't find page at '%s'." $pageRef -}}
 {{ end -}}
