@@ -49,7 +49,7 @@ cart -->|gRPC| flagd
 checkout -->|gRPC| payment
 checkout --->|HTTP| email
 checkout -->|gRPC| product-catalog
-checkout -->|HTTP| shipping
+checkout -->|gRPC| shipping
 
 fraud-detection -->|gRPC| flagd
 
@@ -57,7 +57,7 @@ frontend -->|gRPC| ad
 frontend -->|gRPC| currency
 frontend -->|gRPC| cart
 frontend -->|gRPC| checkout
-frontend -->|HTTP| shipping
+frontend -->|gRPC| shipping
 frontend ---->|gRPC| recommendation
 frontend -->|gRPC| product-catalog
 
