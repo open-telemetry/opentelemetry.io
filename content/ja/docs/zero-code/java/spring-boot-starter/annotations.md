@@ -7,7 +7,7 @@ default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 <!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/spring-starter"?>
 
-ほとんどのユーザーにとって、すぐに使える計装は完全に十分であり、何もする必要はありません。
+ほとんどのユーザーにとっては、すぐに使える計装は完全に十分であり、それ以上何もする必要はありません。
 しかし時には、ユーザーが多くのコード変更を必要とせずに、独自のカスタムコードに対して[スパン](/docs/concepts/signals/traces/#spans)を作成したい場合があります。
 
 メソッドに`WithSpan`アノテーションを追加すると、そのメソッドはスパンでラップされます。
