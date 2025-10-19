@@ -24,7 +24,7 @@ OpenTelemetry Spring Bootスターターは、追加の計装で拡張できる[
 </Configuration>
 ```
 
-OpenTelemetry アペンダーのその他の設定オプションは、[Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)計装ライブラリで確認できます。
+OpenTelemetryアペンダーのその他の設定オプションは、[Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)計装ライブラリで確認できます。
 
 | システムプロパティ                            | 型      | デフォルト | 説明                                                                                |
 | --------------------------------------------- | ------- | ---------- | ----------------------------------------------------------------------------------- |
