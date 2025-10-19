@@ -299,7 +299,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-14T17:45:42.529Z"
   },
-  "https://calendar.google.com/calendar/embed?src=c_6b6b343737cc9bbf0393ba40c101d6b017514751e66951c9890d089eedd78a37@group.calendar.google.com\u0026mode=WEEK\u0026dates=20250331/20250406": {
+  "https://calendar.google.com/calendar/embed?src=c_6b6b343737cc9bbf0393ba40c101d6b017514751e66951c9890d089eedd78a37@group.calendar.google.com&mode=WEEK&dates=20250331/20250406": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:33.948578-04:00"
   },
@@ -699,7 +699,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-18T18:58:51.280692034Z"
   },
-  "https://cloud-native.slack.com/archives/C033BJ8BASU/p1709128862949249?thread_ts=1709081221.484429\u0026cid=C033BJ8BASU": {
+  "https://cloud-native.slack.com/archives/C033BJ8BASU/p1709128862949249?thread_ts=1709081221.484429&cid=C033BJ8BASU": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:31.287155-04:00"
   },
@@ -2855,7 +2855,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-14T17:43:59.637960136Z"
   },
-  "https://events.linuxfoundation.org/kubecon-cloudnativecon-china/?utm_source=opentelemetry\u0026utm_medium=all\u0026utm_campaign=KubeCon-EU-2025\u0026utm_content=blog": {
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-china/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:31.032879-04:00"
   },
@@ -2863,7 +2863,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-14T17:44:05.024830557Z"
   },
-  "https://events.linuxfoundation.org/kubecon-cloudnativecon-china/reg/register/?utm_source=opentelemetry\u0026utm_medium=all\u0026utm_campaign=KubeCon-China-2025": {
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-china/reg/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-China-2025": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:31.751668-04:00"
   },
@@ -2871,7 +2871,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-16T09:45:51.082554382Z"
   },
-  "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/?utm_source=opentelemetry\u0026utm_medium=all\u0026utm_campaign=KubeCon-EU-2025\u0026utm_content=blog": {
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:32.795963-04:00"
   },
@@ -2883,7 +2883,7 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-16T09:45:56.860869466Z"
   },
-  "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/?utm_source=opentelemetry\u0026utm_medium=all\u0026utm_campaign=KubeCon-EU-2025\u0026utm_content=blog": {
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:33.597445-04:00"
   },
@@ -2891,7 +2891,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-14T17:40:08.695675438Z"
   },
-  "https://events.linuxfoundation.org/kubecon-cloudnativecon-japan//?utm_source=opentelemetry\u0026utm_medium=all\u0026utm_campaign=KubeCon-Japan-2025\u0026utm_content=blog": {
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-japan//?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-Japan-2025&utm_content=blog": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:31.154075-04:00"
   },
@@ -2899,7 +2899,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-14T17:40:11.499190578Z"
   },
-  "https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry\u0026utm_medium=all\u0026utm_campaign=KubeCon-Japan-2025": {
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-Japan-2025": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:31.851778-04:00"
   },
@@ -12963,7 +12963,7 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:41:36.975814533Z"
   },
-  "https://github.com/opentracing?q=basic\u0026type=\u0026language=": {
+  "https://github.com/opentracing?q=basic&type=&language=": {
     "StatusCode": 206,
     "LastSeen": "2025-10-17T21:16:20.932519-04:00"
   },
@@ -14607,7 +14607,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-16T09:40:46.124199613Z"
   },
-  "https://hex.pm/packages?search=opentelemetry\u0026sort=recent_downloads": {
+  "https://hex.pm/packages?search=opentelemetry&sort=recent_downloads": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:26.043635-04:00"
   },
@@ -16519,7 +16519,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-16T09:40:34.35884132Z"
   },
-  "https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1\u0026refresh=15m": {
+  "https://opentelemetry.devstats.cncf.io/d/8/dashboards?orgId=1&refresh=15m": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:14.024818-04:00"
   },
@@ -16831,7 +16831,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-16T09:40:26.644622744Z"
   },
-  "https://packagist.org/search/?query=open-telemetry\u0026tags=instrumentation": {
+  "https://packagist.org/search/?query=open-telemetry&tags=instrumentation": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:26.261705-04:00"
   },
@@ -21639,7 +21639,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-16T09:46:02.501405033Z"
   },
-  "https://www.youtube.com/embed/TIMgKXCeiyQ?autoplay=0\u0026controls=1\u0026end=0\u0026loop=0\u0026mute=0\u0026start=0": {
+  "https://www.youtube.com/embed/TIMgKXCeiyQ?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:29.985793-04:00"
   },
@@ -21647,7 +21647,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-18T18:58:39.560718533Z"
   },
-  "https://www.youtube.com/embed/bsfMECwmsm0?autoplay=0\u0026controls=1\u0026end=0\u0026loop=0\u0026mute=0\u0026start=0": {
+  "https://www.youtube.com/embed/bsfMECwmsm0?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:29.730339-04:00"
   },
@@ -21655,7 +21655,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-14T17:43:55.909604434Z"
   },
-  "https://www.youtube.com/embed/eZ3OrhxUAmU?autoplay=0\u0026controls=1\u0026end=0\u0026loop=0\u0026mute=0\u0026start=0": {
+  "https://www.youtube.com/embed/eZ3OrhxUAmU?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:29.260303-04:00"
   },
@@ -21663,7 +21663,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-14T17:43:55.980116296Z"
   },
-  "https://www.youtube.com/embed/fgbB0HhVBq8?autoplay=0\u0026controls=1\u0026end=0\u0026loop=0\u0026mute=0\u0026start=0": {
+  "https://www.youtube.com/embed/fgbB0HhVBq8?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:29.985674-04:00"
   },
@@ -21671,7 +21671,7 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-14T17:39:09.293224194Z"
   },
-  "https://www.youtube.com/embed/iEEIabOha8U?autoplay=0\u0026controls=1\u0026end=0\u0026loop=0\u0026mute=0\u0026start=0": {
+  "https://www.youtube.com/embed/iEEIabOha8U?autoplay=0&controls=1&end=0&loop=0&mute=0&start=0": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:29.902767-04:00"
   },
