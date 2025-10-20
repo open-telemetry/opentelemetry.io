@@ -6603,6 +6603,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-17T21:16:29.683624-04:00"
   },
+  "https://github.com/open-telemetry/community?tab=readme-ov-file#implementation-sigs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-20T01:48:13.659292024Z"
+  },
   "https://github.com/open-telemetry/community?tab=readme-ov-file#special-interest-groups": {
     "StatusCode": 206,
     "LastSeen": "2025-10-17T21:16:29.114081-04:00"
@@ -21794,6 +21798,10 @@
   "https://www.youtube.com/watch?v=tZJd6W-CIcU": {
     "StatusCode": 200,
     "LastSeen": "2025-10-17T21:16:30.299949-04:00"
+  },
+  "https://www.youtube.com/watch?v=u6svjtGpXO4": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-20T01:48:17.915219727Z"
   },
   "https://www.youtube.com/watch?v=uPpZ23iu6kI": {
     "StatusCode": 200,
