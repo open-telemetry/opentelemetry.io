@@ -140,7 +140,7 @@ To get the ID of your container detected automatically for you, install the
 following additional dependency:
 
 ```sh
-npm install @opentelemetry/resource-detector-docker
+npm install @opentelemetry/resource-detector-container
 ```
 
 Next, update your `tracing.js` like the following:
@@ -152,8 +152,8 @@ const {
 } = require('@opentelemetry/auto-instrumentations-node');
 const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 const {
-  dockerCGroupV1Detector,
-} = require('@opentelemetry/resource-detector-docker');
+  containerDetector,
+} = require('@opentelemetry/resource-detector-container');
 
 // For troubleshooting, set the log level to DiagLogLevel.DEBUG
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
@@ -161,7 +161,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
   instrumentations: [getNodeAutoInstrumentations()],
-  resourceDetectors: [dockerCGroupV1Detector],
+  resourceDetectors: [containerDetector],
 });
 
 sdk.start();
@@ -200,8 +200,8 @@ const {
 } = require('@opentelemetry/auto-instrumentations-node');
 const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 const {
-  dockerCGroupV1Detector,
-} = require('@opentelemetry/resource-detector-docker');
+  containerDetector,
+} = require('@opentelemetry/resource-detector-container');
 const { envDetector, processDetector } = require('@opentelemetry/resources');
 
 // For troubleshooting, set the log level to DiagLogLevel.DEBUG
@@ -211,7 +211,7 @@ const sdk = new opentelemetry.NodeSDK({
   traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
   instrumentations: [getNodeAutoInstrumentations()],
   // Make sure to add all detectors you need here!
-  resourceDetectors: [envDetector, processDetector, dockerCGroupV1Detector],
+  resourceDetectors: [envDetector, processDetector, containerDetector],
 });
 
 sdk.start();

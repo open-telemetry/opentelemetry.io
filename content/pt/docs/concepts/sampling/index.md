@@ -112,7 +112,7 @@ ou descartar um trecho ou um rastro não é feita inspecionando o rastro como um
 todo.
 
 Por exemplo, a forma mais comum de amostragem pela cabeça é a
-[Amostragem de Probabilidade Consistente](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/4673-experimental-probability-sampling.md).
+[Amostragem de Probabilidade Consistente](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-sampling-decision).
 Isso também é conhecido como Amostragem Determinística. Neste caso, uma decisão
 de amostragem é tomada com base no ID do rastro e na porcentagem desejada de
 rastros a serem amostrados. Isso garante que rastros inteiros sejam amostrados -

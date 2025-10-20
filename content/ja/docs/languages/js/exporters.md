@@ -2,7 +2,7 @@
 title: エクスポーター
 weight: 50
 description: テレメトリデータの処理とエクスポート
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91 # patched
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 ---
 
 {{% docs/languages/exporters/intro %}}
