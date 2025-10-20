@@ -1,7 +1,7 @@
 ---
 title: Auto-instrumentation
-cSpell:ignore: PYTHONPATH
 default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
+cSpell:ignore: PYTHONPATH
 ---
 
 Si vous utilisez la capacité de

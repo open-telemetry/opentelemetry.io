@@ -3,8 +3,8 @@ title: Mise à l'échelle automatique horizontale des pods
 description:
   Configurez la mise à l'échelle automatique horizontale des pods avec votre
   collecteur OpenTelemetry
-cSpell:ignore: autoscaler mébibyte mébibytes statefulset
 default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
+cSpell:ignore: autoscaler mébibyte mébibytes statefulset
 ---
 
 Les collecteurs gérés par l'opérateur OpenTelemetry ont un support intégré pour

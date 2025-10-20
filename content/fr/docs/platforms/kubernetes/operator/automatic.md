@@ -4,9 +4,9 @@ linkTitle: Auto-instrumentation
 weight: 11
 description:
   Une implémentation d'auto-instrumentation utilisant l'opérateur OpenTelemetry.
+default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
 # prettier-ignore
 cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA
-default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
 ---
 
 L'opérateur OpenTelemetry prend en charge l'injection et la configuration

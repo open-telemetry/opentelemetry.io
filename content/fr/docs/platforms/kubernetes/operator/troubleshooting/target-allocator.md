@@ -1,7 +1,7 @@
 ---
 title: Allocateur de cibles
-cSpell:ignore: bleh targetallocator podmonitor podmonitorselector
 default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
+cSpell:ignore: bleh podmonitor podmonitorselector targetallocator
 ---
 
 Si vous avez activé
