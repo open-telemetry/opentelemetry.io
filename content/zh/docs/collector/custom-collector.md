@@ -2,6 +2,7 @@
 title: 定制 Collector
 weight: 29
 default_lang_commit: 9a1f7271288a46049ae28785f04a67fb77f677f7
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: batchprocessor darwin debugexporter gomod loggingexporter otlpexporter otlpreceiver
 ---

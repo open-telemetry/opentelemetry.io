@@ -3,6 +3,7 @@ title: ブログ
 description: ブログ投稿する方法を学びます。
 weight: 30
 default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+drifted_from_default: true
 ---
 
 [OpenTelemetry ブログ](/blog/)は OpenTelemetry に関連する可能性のある、新機能、コミュニティレポートそしてニュースを発信します。

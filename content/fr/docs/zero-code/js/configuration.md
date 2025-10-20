@@ -7,7 +7,8 @@ aliases:
   - /docs/languages/js/automatic/configuration
   - /docs/languages/js/automatic/module-config
 weight: 10
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
+drifted_from_default: true
 cSpell:ignore: serviceinstance
 ---
 
@@ -52,7 +53,7 @@ OTEL_NODE_RESOURCE_DETECTORS=env,host
 ## Exclure des bibliothèques d'instrumentation {#excluding-instrumentation-libraries}
 
 Par défaut, toutes les
-[bibliothèques d'instrumentation supportées](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/metapackages/auto-instrumentations-node/README.md#supported-instrumentations)
+[bibliothèques d'instrumentation supportées](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/e8e3cbdadf439c5bd16dfe5d6fc0714fe0e8235a/metapackages/auto-instrumentations-node/#supported-instrumentations)
 sont activées, mais vous pouvez utiliser des variables d'environnement pour
 activer ou désactiver des instrumentations spécifiques.
 
@@ -66,7 +67,7 @@ par des virgules des noms de bibliothèques d'instrumentation sans le préfixe
 Par exemple, pour activer seulement les instrumentations
 [@opentelemetry/instrumentation-http](https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-instrumentation-http)
 et
-[@opentelemetry/instrumentation-express](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express)
+[@opentelemetry/instrumentation-express](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/52dd28deae0ebfbec43bdaed82f4749fc9803797/plugins/node/opentelemetry-instrumentation-express)
 :
 
 ```shell

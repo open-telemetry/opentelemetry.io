@@ -6,7 +6,7 @@
   commercial: true
 - name: AppDynamics (Cisco)
   nativeOTLP: true
-  url: https://docs.appdynamics.com/latest/en/application-monitoring/cisco-appdynamics-for-opentelemetry
+  url: https://docs.appdynamics.com/latest/en/application-monitoring/splunk-appdynamics-for-opentelemetry
   contact:
   oss: false
   commercial: true
@@ -122,7 +122,7 @@
   commercial: true
 - name: DaoCloud
   nativeOTLP: true
-  url: https://docs.daocloud.io/en/insight/06UserGuide/01quickstart/otel/otel/
+  url: https://docs.daocloud.io/en/insight/quickstart/otel/otel/
   contact:
   oss: false
   commercial: true
@@ -194,7 +194,7 @@
   commercial: true
 - name: Instana
   nativeOTLP: true
-  url: https://www.ibm.com/docs/en/obi/current?topic=apis-opentelemetry
+  url: https://www.ibm.com/docs/en/instana-observability/1.0.304?topic=apis-opentelemetry
   contact:
   oss: false
   commercial: true
@@ -290,7 +290,7 @@
   commercial: true
 - name: Observe, Inc.
   nativeOTLP: true
-  url: https://docs.observeinc.com/en/latest/content/send-data/app-instrumentation/index.html#instrument-with-opentelemetry
+  url: https://docs.observeinc.com/en/latest/content/send-data/apm-instrumentation/operator-auto-instrumentation.html
   contact:
   oss: false
   commercial: true
