@@ -7,8 +7,9 @@ IgnoreInternalEmptyHash: true # TODO: remove after resolution of https://github.
 CheckMailto: false
 StripQueryString: false
 TestFilesConcurrently: true
-# RetryCachedErrors: for docs, see https://github.com/chalin/htmltest/blob/dev/main/README.md
+# RetryCachedErrors, CacheAllExternal: for docs, see https://github.com/chalin/htmltest/blob/dev/main/README.md
 RetryCachedErrors: false
+CacheAllExternal: true
 RedirectLimit: 3
 IgnoreDirs:
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
