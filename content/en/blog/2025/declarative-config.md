@@ -3,7 +3,7 @@ title:
   'The Declarative configuration journey: Why it took 5 years to ignore health
   check endpoints in tracing'
 linkTitle: Declarative configuration journey
-date: 2025-10-17
+date: 2025-10-20
 author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger)(Grafana Labs), [Jay
   DeLuca](https://github.com/jaydeluca) (Grafana Labs), [Marylia
