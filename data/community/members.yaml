@@ -985,6 +985,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/4933147?v=4
   - name: maryliag
     teams:
+      - docs-approvers
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-triagers
@@ -1510,6 +1511,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/12352919?v=4
   - name: utpilla
     teams:
+      - arrow-approvers
+      - arrow-triagers
       - rust-approvers
       - rust-maintainers
     html_url: https://github.com/utpilla
@@ -1522,6 +1525,7 @@ maintainers:
   - name: vitorvasc
     teams:
       - docs-approvers
+      - docs-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-triagers
@@ -2270,6 +2274,13 @@ approvers:
       - arrow-triagers
     html_url: https://github.com/v0y4g3r
     avatar_url: https://avatars.githubusercontent.com/u/6406592?v=4
+  - name: VihasMakwana
+    teams:
+      - collector-contrib-approvers
+      - collector-contrib-triagers
+      - collector-triagers
+    html_url: https://github.com/VihasMakwana
+    avatar_url: https://avatars.githubusercontent.com/u/121151420?v=4
   - name: vvydier
     teams:
       - swift-approvers
@@ -2496,14 +2507,9 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/Ugzuzg
     avatar_url: https://avatars.githubusercontent.com/u/1078004?v=4
-  - name: VihasMakwana
-    teams:
-      - collector-contrib-triagers
-      - collector-triagers
-    html_url: https://github.com/VihasMakwana
-    avatar_url: https://avatars.githubusercontent.com/u/121151420?v=4
   - name: williazz
     teams:
+      - swift-core-triagers
       - swift-triagers
     html_url: https://github.com/williazz
     avatar_url: https://avatars.githubusercontent.com/u/43121212?v=4

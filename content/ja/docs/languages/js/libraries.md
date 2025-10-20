@@ -3,8 +3,7 @@ title: 計装ライブラリの使用
 linkTitle: ライブラリ
 weight: 40
 description: アプリが依存するライブラリをインストルメントする方法
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91 # patched
-drifted_from_default: true
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 ---
 
 {{% docs/languages/libraries-intro "js" %}}
@@ -189,7 +188,7 @@ const sdk = new NodeSDK({
 
 一部の計装ライブラリは追加の設定オプションを提供しています。
 
-たとえば、[Express計装](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/52dd28deae0ebfbec43bdaed82f4749fc9803797/plugins/node/opentelemetry-instrumentation-express#express-instrumentation-options)は、指定されたミドルウェアを無視したり、リクエストフックで自動的に作成されるスパンを強化したりする方法を提供しています。
+たとえば、[Express計装](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-express#express-instrumentation-options)は、指定されたミドルウェアを無視したり、リクエストフックで自動的に作成されるスパンを強化したりする方法を提供しています。
 
 {{< tabpane text=true >}}
 
