@@ -2,12 +2,11 @@
 title: 伝搬
 description: JS SDKのコンテキスト伝搬
 weight: 65
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
-drifted_from_default: true
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 cSpell:ignore: rolldice
 ---
 
-{{% docs/languages/propagation js %}}
+{{% docs/languages/propagation %}}
 
 ## 自動コンテキスト伝搬 {#automatic-context-propagation}
 
@@ -27,15 +26,10 @@ cSpell:ignore: rolldice
 
 ```sh
 npm init -y
-npm install typescript \
-  ts-node \
-  @types/node \
-  undici \
+npm install undici \
   @opentelemetry/instrumentation-undici \
   @opentelemetry/sdk-node
-
-# TypeScriptを初期化
-npx tsc --init
+npm install -D tsx  # TypeScript (.ts)ファイルをnodeで直接実行するためのツール
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -49,11 +43,12 @@ npm install undici \
 
 {{% /tab %}} {{< /tabpane >}}
 
-次に、`client.ts`（またはclient.js）という新しいファイルを以下の内容で作成します。
+次に、`client.ts`（または`client.js`）という新しいファイルを以下の内容で作成します。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
+/* client.ts */
 import { NodeSDK } from '@opentelemetry/sdk-node';
 import {
   SimpleSpanProcessor,
@@ -77,14 +72,13 @@ request('http://localhost:8080/rolldice').then((response) => {
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const {
+/* instrumentation.mjs */
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import {
   SimpleSpanProcessor,
   ConsoleSpanExporter,
-} = require('@opentelemetry/sdk-trace-node');
-const {
-  UndiciInstrumentation,
-} = require('@opentelemetry/instrumentation-undici');
+} from '@opentelemetry/sdk-trace-node';
+import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici';
 
 const sdk = new NodeSDK({
   spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
@@ -106,14 +100,14 @@ request('http://localhost:8080/rolldice').then((response) => {
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
-$ npx ts-node --require ./instrumentation.ts app.ts
+$ npx tsx --import ./instrumentation.ts app.ts
 Listening for requests on http://localhost:8080
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```console
-$ node --require ./instrumentation.js app.js
+$ node --import ./instrumentation.mjs app.js
 Listening for requests on http://localhost:8080
 ```
 
@@ -124,7 +118,7 @@ Listening for requests on http://localhost:8080
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```shell
-npx ts-node client.ts
+npx tsx client.ts
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -146,7 +140,7 @@ node client.js
     }
   },
   traceId: 'cccd19c3a2d10e589f01bfe2dc896dc2',
-  parentId: undefined,
+  parentSpanContext: undefined,
   traceState: undefined,
   name: 'GET',
   id: '6f64ce484217a7bf',
@@ -166,14 +160,19 @@ node client.js
 traceId（`cccd19c3a2d10e589f01bfe2dc896dc2`）とID（`6f64ce484217a7bf`）をメモしてください。
 両方はクライアントの出力でも見つけることができます。
 
-```javascript {hl_lines=["6-7"]}
+```javascript {hl_lines=[6,9]}
 {
   resource: {
     attributes: {
       // ...
   },
   traceId: 'cccd19c3a2d10e589f01bfe2dc896dc2',
-  parentId: '6f64ce484217a7bf',
+  parentSpanContext: {
+    traceId: 'cccd19c3a2d10e589f01bfe2dc896dc2',
+    spanId: '6f64ce484217a7bf',
+    traceFlags: 1,
+    isRemote: true
+  },
   traceState: undefined,
   name: 'GET /rolldice',
   id: '027c5c8b916d29da',
@@ -446,12 +445,12 @@ Parsed JSON: { key: 'value' }
 OpenTelemetryを有効にし、実際のコンテキスト伝搬を確認するために、以下の内容で`instrumentation.js`という追加ファイルを作成します。
 
 ```javascript
-// instrumentation.js
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const {
+// instrumentation.mjs
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import {
   ConsoleSpanExporter,
   SimpleSpanProcessor,
-} = require('@opentelemetry/sdk-trace-node');
+} from '@opentelemetry/sdk-trace-node';
 
 const sdk = new NodeSDK({
   spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
@@ -463,14 +462,14 @@ sdk.start();
 このファイルを使用して、計装を有効にしてサーバーとクライアントの両方を実行します。
 
 ```console
-$ node -r ./instrumentation.js server.js
+$ node --import ./instrumentation.mjs server.js
 Server listening on port 8124
 ```
 
 および
 
 ```shell
-node -r ./instrumentation client.js
+node --import ./instrumentation.mjs client.js
 ```
 
 クライアントがサーバーにデータを送信して終了した後、両方のシェルのコンソール出力にスパンが表示されるはずです。
