@@ -6415,6 +6415,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-15T10:11:40.865174641Z"
   },
+  "https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-election.md#voter-eligibility": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-20T19:13:37.399156138Z"
+  },
   "https://github.com/open-telemetry/community/blob/main/elections/2025/voters-roll.csv": {
     "StatusCode": 206,
     "LastSeen": "2025-10-15T10:11:28.48695611Z"
@@ -6566,6 +6570,10 @@
   "https://github.com/open-telemetry/community/issues/2975": {
     "StatusCode": 206,
     "LastSeen": "2025-10-15T10:11:32.830650234Z"
+  },
+  "https://github.com/open-telemetry/community/issues/3001": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-20T19:13:41.955203564Z"
   },
   "https://github.com/open-telemetry/community/issues/3022": {
     "StatusCode": 206,
