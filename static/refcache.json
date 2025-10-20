@@ -431,6 +431,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-15T09:42:39.966982522Z"
   },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-failsafe-3.0": {
+    "StatusCode": 200,
+    "LastSeen": "2025-09-29T14:30:39.62287-04:00"
+  },
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-graphql-java-12.0": {
     "StatusCode": 200,
     "LastSeen": "2025-10-15T10:07:07.232102706Z"
@@ -446,6 +450,10 @@
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-guava-10.0": {
     "StatusCode": 200,
     "LastSeen": "2025-10-15T10:07:17.88116163Z"
+  },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-helidon-4.3": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-18T08:14:43.217549-04:00"
   },
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-hikaricp-3.0": {
     "StatusCode": 200,
@@ -514,6 +522,10 @@
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-mongo-3.1": {
     "StatusCode": 200,
     "LastSeen": "2025-10-15T10:09:41.361762226Z"
+  },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-nats-2.17": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-18T08:14:45.929722-04:00"
   },
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-netty-4.1": {
     "StatusCode": 200,
@@ -2942,6 +2954,10 @@
   "https://expressjs.com/": {
     "StatusCode": 206,
     "LastSeen": "2025-10-16T09:40:43.057603447Z"
+  },
+  "https://failsafe.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-29T14:30:39.215802-04:00"
   },
   "https://farfetch.github.io/kafkaflow/docs/guides/open-telemetry": {
     "StatusCode": 206,
@@ -6167,6 +6183,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-19T09:40:16.358709228Z"
   },
+  "https://github.com/nats-io/nats.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-18T08:14:44.831794-04:00"
+  },
   "https://github.com/nekufa": {
     "StatusCode": 206,
     "LastSeen": "2025-10-19T09:42:57.394956225Z"
@@ -6395,6 +6415,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-15T10:11:40.865174641Z"
   },
+  "https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-election.md#voter-eligibility": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-20T19:13:37.399156138Z"
+  },
   "https://github.com/open-telemetry/community/blob/main/elections/2025/voters-roll.csv": {
     "StatusCode": 206,
     "LastSeen": "2025-10-15T10:11:28.48695611Z"
@@ -6546,6 +6570,10 @@
   "https://github.com/open-telemetry/community/issues/2975": {
     "StatusCode": 206,
     "LastSeen": "2025-10-15T10:11:32.830650234Z"
+  },
+  "https://github.com/open-telemetry/community/issues/3001": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-20T19:13:41.955203564Z"
   },
   "https://github.com/open-telemetry/community/issues/3022": {
     "StatusCode": 206,
@@ -14571,6 +14599,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-15T09:41:20.223026344Z"
   },
+  "https://helidon.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-18T08:14:41.700529-04:00"
+  },
   "https://helm.sh": {
     "StatusCode": 206,
     "LastSeen": "2025-10-19T09:38:32.56885391Z"
@@ -14874,6 +14906,10 @@
   "https://kafka.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-10-19T09:41:31.212836847Z"
+  },
+  "https://kafka.apache.org/documentation/#connect": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-18T08:14:39.664991-04:00"
   },
   "https://kafka.apache.org/documentation/#producerapi": {
     "StatusCode": 206,
