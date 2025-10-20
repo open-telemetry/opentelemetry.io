@@ -4,7 +4,7 @@ title:
 linkTitle: 2025 GC Candidates
 date: 2025-10-20
 author: OpenTelemetry Governance Committee
-cSpell:ignore: Dinesh Gurumurthy Kröhling Marylia Paixão Todea Toulme
+cSpell:ignore: Dinesh Gurumurthy Marylia Todea Toulme
 ---
 
 The OpenTelemetry Election Committee is excited to announce the final list of
