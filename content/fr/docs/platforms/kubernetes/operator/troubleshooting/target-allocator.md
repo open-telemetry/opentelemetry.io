@@ -327,7 +327,7 @@ spec:
 ```
 
 Voir la définition complète de la ressource `OpenTelemetryCollector`
-[dans "Savez-vous si les métriques sont réellement collectées ?"](#savez-vous-si-les-métriques-sont-réellement-collectées).
+[dans "Savez-vous si les métriques sont réellement collectées ?"](#do-you-know-if-metrics-are-actually-being-scraped).
 
 ### Avez-vous configuré un sélecteur ServiceMonitor (ou PodMonitor) ? {#did-you-configure-a-servicemonitor-or-podmonitor-selector}
 
@@ -376,7 +376,7 @@ spec:
 ```
 
 Voir la définition complète de la ressource `ServiceMonitor`
-[dans "Savez-vous si les métriques sont réellement collectées ?"](#savez-vous-si-les-métriques-sont-réellement-collectées).
+[dans "Savez-vous si les métriques sont réellement collectées ?"](#do-you-know-if-metrics-are-actually-being-scraped).
 
 Dans ce cas, la ressource `OpenTelemetryCollector`'s
 `prometheusCR.serviceMonitorSelector.matchLabels` ne cherche que les
@@ -398,7 +398,7 @@ au lieu d'un `serviceMonitorSelector`.
 ### Avez-vous omis la configuration serviceMonitorSelector et/ou podMonitorSelector complètement ? {#did-you-leave-out-the-servicemonitorselector-and-or-podmonitorselector-configuration-altogether}
 
 Comme mentionné dans
-["Avez-vous configuré un sélecteur ServiceMonitor ou PodMonitor"](#avez-vous-configuré-un-sélecteur-servicemonitor-ou-podmonitor),
+["Avez-vous configuré un sélecteur ServiceMonitor ou PodMonitor"](#did-you-configure-a-servicemonitor-or-podmonitor-selector),
 définir des valeurs incompatibles pour `serviceMonitorSelector` et
 `podMonitorSelector` entraîne l'échec de l'allocateur de cibles à découvrir les
 cibles de collecte de métriques de vos `ServiceMonitors` et `PodMonitors`,
@@ -423,7 +423,7 @@ prometheusCR:
 
 Cette configuration signifie qu'elle correspondra à toutes les ressources
 `PodMonitor` et `ServiceMonitor`. Voir la
-[définition complète d'OpenTelemetryCollector dans "Savez-vous si les métriques sont réellement collectées ?"](#savez-vous-si-les-métriques-sont-réellement-collectées).
+[définition complète d'OpenTelemetryCollector dans "Savez-vous si les métriques sont réellement collectées ?"](#do-you-know-if-metrics-are-actually-being-scraped).
 
 ### Vos labels, namespaces et ports correspondent-ils pour votre ServiceMonitor et votre Service (ou PodMonitor et votre Pod) ? {#do-your-labels-namespaces-and-ports-match-for-your-servicemonitor-and-your-service-or-podmonitor-and-your-pod}
 
