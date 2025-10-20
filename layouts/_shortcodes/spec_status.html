@@ -4,7 +4,8 @@
 {{ if not (hasPrefix $pageRef "/") -}}
   {{ $pageRef = printf "/docs/specs/%s" $pageRef -}}
 {{ end -}}
-{{ $page := .Site.GetPage $pageRef -}}
+{{ $enSite := index site.Sites 0 -}}
+{{ $page := $enSite.GetPage $pageRef -}}
 {{ if not $page -}}
   {{ warnf "spec_status: Can't find page at '%s'." $pageRef -}}
 {{ end -}}
