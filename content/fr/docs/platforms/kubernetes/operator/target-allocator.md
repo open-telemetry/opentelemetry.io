@@ -3,7 +3,7 @@ title: Allocateur de cibles
 description:
   Un outil pour distribuer les cibles du PrometheusReceiver sur toutes les
   instances de collecteur déployées
-cSpell:ignore: labeldrop labelmap statefulset podmonitor podmonitorselector
+cSpell:ignore: labeldrop labelmap statefulset
 default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
 ---
 
