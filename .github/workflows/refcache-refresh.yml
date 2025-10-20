@@ -103,12 +103,12 @@ jobs:
             echo "DELAYED_PUSH_CMD=$DELAYED_PUSH_CMD" >> $GITHUB_ENV
           fi
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with: { node-version-file: .nvmrc }
 
       - run: npm install --omit=optional
 
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
 
       - name: Install htmltest
         run: |
