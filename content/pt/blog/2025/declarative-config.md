@@ -221,7 +221,7 @@ dúvidas, entre em contato pelo [`#otel-js`][slack-js] no Slack do CNCF.
 
 A implementação do PHP é parcialmente compatível e você pode começar a usá-la
 [inicializando a partir do seu arquivo de configuração][php-docs]. Para obter
-ajuda ou feedback, entre em contato pelo [`#otel-php`][slack-php] no Slack do
+ajuda ou _feedback_, entre em contato pelo [`#otel-php`][slack-php] no Slack do
 CNCF.
 
 ### Go {#go}
