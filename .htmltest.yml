@@ -5,8 +5,11 @@ IgnoreAltMissing: true
 IgnoreCanonicalBrokenLinks: false
 IgnoreInternalEmptyHash: true # TODO: remove after resolution of https://github.com/google/docsy/issues/1995
 CheckMailto: false
-# StripQueryString: false # TODO: enable once htmltest is fixed
+StripQueryString: false
 TestFilesConcurrently: true
+# RetryCachedErrors: for docs, see https://github.com/chalin/htmltest/blob/dev/main/README.md
+RetryCachedErrors: false
+RedirectLimit: 3
 IgnoreDirs:
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
   # Ignore blog index pages for all locales and in all blog sections (top-level and years)
@@ -31,6 +34,8 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^(/..)?/docs/collector/registry/$
   - ^(/..)?/docs/languages/dotnet/(metrics-api|traces-api)/
   - ^((/..)?/docs/migration/)?opencensus/$
+  # TODO drop next line after https://github.com/open-telemetry/opentelemetry.io/pull/7559 is merged
+  # and `pt` has been synced with the `en` changes in that PR.
   - ^((/..)?/community/end-user/)?feedback-survey/$
   - ^/../docs/specs/?$ # non-default locale spec redirect
 
@@ -57,6 +62,10 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://www.deepseek.com
   - ^https://www.perplexity.ai
 
+  # Ignore issues and discussions with query parameters, e.g.:
+  - ^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=
+  - ^https://github\.com/open-telemetry/opentelemetry\.io/discussions\?discussions_q=
+
   # Ignore Docsy-generated GitHub links for now, until
   # https://github.com/google/docsy/issues/1432 is fixed
   - ^https?://github\.com/.*?/.*?/(new/|edit/|issues/new\?) # view-page, edit-source etc
@@ -71,15 +80,10 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # FIXME: same issue as for the OTel spec mentioned above:
   - ^https://github.com/open-telemetry/semantic-conventions/tree/main
 
-  # Too many redirects as the server tries to figure out the country and language,
-  # e.g.: https://www.microsoft.com/en-ca/sql-server.
-  - ^https://www.microsoft.com/sql-server$
-
-  # TODO move into content/en/blog/2023/humans-of-otel.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
-  - ^https://shorturl.at/osHRX$
-  # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
-  - ^https://shorturl.at/vLYZ0$
-
-  # Temporary until
+  # TODO delete once semconv release includes
   # https://github.com/open-telemetry/semantic-conventions/issues/2844
   - ^https://learn.microsoft.com/rest/api/subscription/subscriptions/list-locations
+
+  # TODO delete once the following is fixed and lands in this repo:
+  # https://github.com/open-telemetry/semantic-conventions/issues/2909
+  - ^https://www.whatsmyua.info
