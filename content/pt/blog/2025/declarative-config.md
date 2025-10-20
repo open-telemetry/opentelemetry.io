@@ -197,7 +197,7 @@ linguagens][tracking-issue].
 Conforme descrito anteriormente, a configuração declarativa em
 [Java][java-declarative-config] é experimental, mas está pronta para uso. Use o
 exemplo discutido anteriormente para definir sua nova configuração. Se tiver
-dúvidas ou feedback, entre em contato pelo [`#otel-java`][slack-java] no Slack
+dúvidas ou _feedback_, entre em contato pelo [`#otel-java`][slack-java] no Slack
 do CNCF.
 
 _Observação para mantenedores de outras linguagens: É útil criar um módulo de
