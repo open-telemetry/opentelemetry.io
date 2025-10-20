@@ -28,7 +28,7 @@ Dans la plupart des cas, vous devrez installer
 [cert-manager](https://cert-manager.io/docs/installation/). Si vous utilisez le
 chart Helm, il y a une option pour générer un certificat auto-signé à la place.
 
-> Si vous souhaitez utiliser l'auto-instrumentation Go, vous devez expréssement
+> Si vous souhaitez utiliser l'auto-instrumentation Go, vous devez expressément
 > activer la fonctionnalité. Voir
 > [Contrôle des capacités d'instrumentation](https://github.com/open-telemetry/opentelemetry-operator#controlling-instrumentation-capabilities)
 > pour plus de détails.

@@ -9,7 +9,7 @@ default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
 
 Les collecteurs gérés par l'opérateur OpenTelemetry ont un support intégré pour
 [la mise à l'échelle automatique horizontale des pods (HPA)](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/).
-La HPA augmente ou diminue le nombre de répliquats (copies) de vos pods
+La HPA augmente ou diminue le nombre de répliquas (copies) de vos pods
 Kubernetes, basé sur un ensemble de métriques. Ces métriques sont généralement
 la consommation CPU et/ou mémoire.
 
