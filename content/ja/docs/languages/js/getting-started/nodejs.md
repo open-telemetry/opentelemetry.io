@@ -3,9 +3,8 @@ title: Node.js
 description: 5分未満でアプリのテレメトリーを取得しましょう！
 aliases: [/docs/js/getting_started/nodejs]
 weight: 10
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
-drifted_from_default: true
-cSpell:ignore: autoinstrumentations KHTML rolldice
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+cSpell:ignore: autoinstrumentations rolldice
 ---
 
 このページでは、Node.jsでOpenTelemetryを開始する方法を説明します。
@@ -48,14 +47,8 @@ npm init -y
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
-npm install typescript \
-  ts-node \
-  @types/node \
-  express \
-  @types/express
-
-# TypeScriptを初期化
-npx tsc --init
+npm install express @types/express
+npm install -D tsx  # TypeScript (.ts)ファイルをnodeで直接実行するためのツール
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -121,7 +114,7 @@ app.listen(PORT, () => {
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
-$ npx ts-node app.ts
+$ npx tsx app.ts
 Listening for requests on http://localhost:8080
 ```
 
@@ -160,9 +153,14 @@ npm install @opentelemetry/sdk-node \
 ### セットアップ {#setup}
 
 計装のセットアップと構成は、アプリケーションコードの _前に_ 実行する必要があります。
-このタスクによく使用されるツールの1つは、[--require](https://nodejs.org/api/cli.html#-r---require-module)フラグです。
+このタスクによく使用されるツールの1つは、[--import](https://nodejs.org/api/cli.html#--importmodule)フラグです。
 
-計装セットアップコードを含む`instrumentation.ts`（TypeScriptを使用しない場合は`instrumentation.js`）という名前のファイルを作成します。
+計装セットアップコードを含む`instrumentation.ts`（TypeScriptを使用しない場合は`instrumentation.mjs`）という名前のファイルを作成します。
+
+{{% alert title="注意" %}}
+以下の`--import instrumentation.ts`（TypeScript）を使用した例は、Node.js v.20以降が必要です。
+Node.js v.18を使用している場合は、JavaScriptの例を使用してください。
+{{% /alert %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -190,17 +188,14 @@ sdk.start();
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-/*instrumentation.js*/
-// 依存関係をrequire
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
-const {
-  getNodeAutoInstrumentations,
-} = require('@opentelemetry/auto-instrumentations-node');
-const {
+/*instrumentation.mjs*/
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
+import {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
-} = require('@opentelemetry/sdk-metrics');
+} from '@opentelemetry/sdk-metrics';
 
 const sdk = new NodeSDK({
   traceExporter: new ConsoleSpanExporter(),
@@ -217,20 +212,20 @@ sdk.start();
 
 ## 計装されたアプリを実行 {#run-the-instrumented-app}
 
-これで、通常どおりアプリケーションを実行できますが、`--require`フラグを使用してアプリケーションコードの前に計装をロードできます。
-`NODE_OPTIONS`環境変数に`--require @opentelemetry/auto-instrumentations-node/register`などの競合する`--require`フラグがないことを確認してください。
+これで、通常どおりアプリケーションを実行できますが、`--import`フラグを使用してアプリケーションコードの前に計装をロードできます。
+`NODE_OPTIONS`環境変数に`--require @opentelemetry/auto-instrumentations-node/register`などの競合する`--import`または`--require`フラグがないことを確認してください。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
-$ npx ts-node --require ./instrumentation.ts app.ts
+$ npx tsx --import ./instrumentation.ts app.ts
 Listening for requests on http://localhost:8080
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```console
-$ node --require ./instrumentation.js app.js
+$ node --import ./instrumentation.mjs app.js
 Listening for requests on http://localhost:8080
 ```
 
@@ -242,82 +237,98 @@ Webブラウザで<http://localhost:8080/rolldice>を開き、ページを数回
 <details>
 <summary>出力例を表示</summary>
 
-```json
+```js
 {
-  "traceId": "3f1fe6256ea46d19ec3ca97b3409ad6d",
-  "parentId": "f0b7b340dd6e08a7",
-  "name": "middleware - query",
-  "id": "41a27f331c7bfed3",
-  "kind": 0,
-  "timestamp": 1624982589722992,
-  "duration": 417,
-  "attributes": {
-    "http.route": "/",
-    "express.name": "query",
-    "express.type": "middleware"
+  resource: {
+    attributes: {
+      'host.arch': 'arm64',
+      'host.id': '8FEBBC33-D6DA-57FC-8EF0-1A9C14B919F8',
+      'process.pid': 12460,
+      // ... 一部のリソース属性は省略 ...
+      'process.runtime.version': '22.17.1',
+      'process.runtime.name': 'nodejs',
+      'process.runtime.description': 'Node.js',
+      'telemetry.sdk.language': 'nodejs',
+      'telemetry.sdk.name': 'opentelemetry',
+      'telemetry.sdk.version': '2.0.1'
+    }
   },
-  "status": { "code": 0 },
-  "events": []
+  instrumentationScope: {
+    name: '@opentelemetry/instrumentation-express',
+    version: '0.52.0',
+    schemaUrl: undefined
+  },
+  traceId: '61e8960c349ca2a3a51289e050fd3b82',
+  parentSpanContext: {
+    traceId: '61e8960c349ca2a3a51289e050fd3b82',
+    spanId: '631b666604f933bc',
+    traceFlags: 1,
+    traceState: undefined
+  },
+  traceState: undefined,
+  name: 'request handler - /rolldice',
+  id: 'd8fcc05ac4f60c99',
+  kind: 0,
+  timestamp: 1755719307779000,
+  duration: 2801.5,
+  attributes: {
+    'http.route': '/rolldice',
+    'express.name': '/rolldice',
+    'express.type': 'request_handler'
+  },
+  status: { code: 0 },
+  events: [],
+  links: []
 }
 {
-  "traceId": "3f1fe6256ea46d19ec3ca97b3409ad6d",
-  "parentId": "f0b7b340dd6e08a7",
-  "name": "middleware - expressInit",
-  "id": "e0ed537a699f652a",
-  "kind": 0,
-  "timestamp": 1624982589725778,
-  "duration": 673,
-  "attributes": {
-    "http.route": "/",
-    "express.name": "expressInit",
-    "express.type": "middleware"
+  resource: {
+    attributes: {
+      'host.arch': 'arm64',
+      'host.id': '8FEBBC33-D6DA-57FC-8EF0-1A9C14B919F8',
+      'process.pid': 12460,
+      // ... 一部のリソース属性は省略 ...
+      'process.runtime.version': '22.17.1',
+      'process.runtime.name': 'nodejs',
+      'process.runtime.description': 'Node.js',
+      'telemetry.sdk.language': 'nodejs',
+      'telemetry.sdk.name': 'opentelemetry',
+      'telemetry.sdk.version': '2.0.1'
+    }
   },
-  "status": { code: 0 },
-  "events": []
-}
-{
-  "traceId": "3f1fe6256ea46d19ec3ca97b3409ad6d",
-  "parentId": "f0b7b340dd6e08a7",
-  "name": "request handler - /",
-  "id": "8614a81e1847b7ef",
-  "kind": 0,
-  "timestamp": 1624982589726941,
-  "duration": 21,
-  "attributes": {
-    "http.route": "/",
-    "express.name": "/",
-    "express.type": "request_handler"
+  instrumentationScope: {
+    name: '@opentelemetry/instrumentation-http',
+    version: '0.203.0',
+    schemaUrl: undefined
   },
-  "status": { code: 0 },
-  "events": []
-}
-{
-  "traceId": "3f1fe6256ea46d19ec3ca97b3409ad6d",
-  "parentId": undefined,
-  "name": "GET /",
-  "id": "f0b7b340dd6e08a7",
-  "kind": 1,
-  "timestamp": 1624982589720260,
-  "duration": 11380,
-  "attributes": {
-    "http.url": "http://localhost:8080/",
-    "http.host": "localhost:8080",
-    "net.host.name": "localhost",
-    "http.method": "GET",
-    "http.route": "",
-    "http.target": "/",
-    "http.user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36",
-    "http.flavor": "1.1",
-    "net.transport": "ip_tcp",
-    "net.host.ip": "::1",
-    "net.host.port": 8080,
-    "net.peer.ip": "::1",
-    "net.peer.port": 61520,
-    "http.status_code": 304,
-    "http.status_text": "NOT MODIFIED"
+  traceId: '61e8960c349ca2a3a51289e050fd3b82',
+  parentSpanContext: undefined,
+  traceState: undefined,
+  name: 'GET /rolldice',
+  id: '631b666604f933bc',
+  kind: 1,
+  timestamp: 1755719307777000,
+  duration: 4705.75,
+  attributes: {
+    'http.url': 'http://localhost:8080/rolldice',
+    'http.host': 'localhost:8080',
+    'net.host.name': 'localhost',
+    'http.method': 'GET',
+    'http.scheme': 'http',
+    'http.target': '/rolldice',
+    'http.user_agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:141.0) Gecko/20100101 Firefox/141.0',
+    'http.flavor': '1.1',
+    'net.transport': 'ip_tcp',
+    'net.host.ip': '::ffff:127.0.0.1',
+    'net.host.port': 8080,
+    'net.peer.ip': '::ffff:127.0.0.1',
+    'net.peer.port': 63067,
+    'http.status_code': 200,
+    'http.status_text': 'OK',
+    'http.route': '/rolldice'
   },
-  "status": { "code": 1 },
-  "events": []
+  status: { code: 0 },
+  events: [],
+  links: []
 }
 ```
 
@@ -331,126 +342,151 @@ Webブラウザで<http://localhost:8080/rolldice>を開き、ページを数回
 <details>
 <summary>出力例を表示</summary>
 
-```yaml
+```js
 {
   descriptor: {
     name: 'http.server.duration',
     type: 'HISTOGRAM',
-    description: 'measures the duration of the inbound HTTP requests',
+    description: 'Measures the duration of inbound HTTP requests.',
     unit: 'ms',
-    valueType: 1
+    valueType: 1,
+    advice: {}
   },
   dataPointType: 0,
   dataPoints: [
     {
-      attributes: [Object],
-      startTime: [Array],
-      endTime: [Array],
-      value: [Object]
+      attributes: {
+        'http.scheme': 'http',
+        'http.method': 'GET',
+        'net.host.name': 'localhost',
+        'http.flavor': '1.1',
+        'http.status_code': 200,
+        'net.host.port': 8080,
+        'http.route': '/rolldice'
+      },
+      startTime: [ 1755719307, 782000000 ],
+      endTime: [ 1755719482, 940000000 ],
+      value: {
+        min: 1.439792,
+        max: 5.775,
+        sum: 15.370167,
+        buckets: {
+          boundaries: [
+               0,    5,    10,   25,
+              50,   75,   100,  250,
+             500,  750,  1000, 2500,
+            5000, 7500, 10000
+          ],
+          counts: [
+            0, 5, 1, 0, 0, 0,
+            0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0
+          ]
+        },
+        count: 6
+      }
+    },
+    {
+      attributes: {
+        'http.scheme': 'http',
+        'http.method': 'GET',
+        'net.host.name': 'localhost',
+        'http.flavor': '1.1',
+        'http.status_code': 304,
+        'net.host.port': 8080,
+        'http.route': '/rolldice'
+      },
+      startTime: [ 1755719433, 609000000 ],
+      endTime: [ 1755719482, 940000000 ],
+      value: {
+        min: 1.39575,
+        max: 1.39575,
+        sum: 1.39575,
+        buckets: {
+          boundaries: [
+               0,    5,    10,   25,
+              50,   75,   100,  250,
+             500,  750,  1000, 2500,
+            5000, 7500, 10000
+          ],
+          counts: [
+            0, 1, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0
+          ]
+        },
+        count: 1
+      }
     }
   ]
 }
 {
   descriptor: {
-    name: 'http.client.duration',
-    type: 'HISTOGRAM',
-    description: 'measures the duration of the outbound HTTP requests',
-    unit: 'ms',
-    valueType: 1
+    name: 'nodejs.eventloop.utilization',
+    type: 'OBSERVABLE_GAUGE',
+    description: 'Event loop utilization',
+    unit: '1',
+    valueType: 1,
+    advice: {}
   },
-  dataPointType: 0,
-  dataPoints: []
-}
-{
-  descriptor: {
-    name: 'db.client.connections.usage',
-    type: 'UP_DOWN_COUNTER',
-    description: 'The number of connections that are currently in the state referenced by the attribute "state".',
-    unit: '{connections}',
-    valueType: 1
-  },
-  dataPointType: 3,
-  dataPoints: []
-}
-{
-  descriptor: {
-    name: 'http.server.duration',
-    type: 'HISTOGRAM',
-    description: 'measures the duration of the inbound HTTP requests',
-    unit: 'ms',
-    valueType: 1
-  },
-  dataPointType: 0,
+  dataPointType: 2,
   dataPoints: [
     {
-      attributes: [Object],
-      startTime: [Array],
-      endTime: [Array],
-      value: [Object]
+      attributes: {},
+      startTime: [ 1755719362, 939000000 ],
+      endTime: [ 1755719482, 940000000 ],
+      value: 0.00843049454565211
     }
   ]
 }
 {
   descriptor: {
-    name: 'http.client.duration',
+    name: 'v8js.gc.duration',
     type: 'HISTOGRAM',
-    description: 'measures the duration of the outbound HTTP requests',
-    unit: 'ms',
-    valueType: 1
-  },
-  dataPointType: 0,
-  dataPoints: []
-}
-{
-  descriptor: {
-    name: 'db.client.connections.usage',
-    type: 'UP_DOWN_COUNTER',
-    description: 'The number of connections that are currently in the state referenced by the attribute "state".',
-    unit: '{connections}',
-    valueType: 1
-  },
-  dataPointType: 3,
-  dataPoints: []
-}
-{
-  descriptor: {
-    name: 'http.server.duration',
-    type: 'HISTOGRAM',
-    description: 'measures the duration of the inbound HTTP requests',
-    unit: 'ms',
-    valueType: 1
+    description: 'Garbage collection duration by kind, one of major, minor, incremental or weakcb.',
+    unit: 's',
+    valueType: 1,
+    advice: { explicitBucketBoundaries: [ 0.01, 0.1, 1, 10 ] }
   },
   dataPointType: 0,
   dataPoints: [
     {
-      attributes: [Object],
-      startTime: [Array],
-      endTime: [Array],
-      value: [Object]
+      attributes: { 'v8js.gc.type': 'minor' },
+      startTime: [ 1755719303, 5000000 ],
+      endTime: [ 1755719482, 940000000 ],
+      value: {
+        min: 0.0005120840072631835,
+        max: 0.0022552499771118163,
+        sum: 0.006526499509811401,
+        buckets: { boundaries: [ 0.01, 0.1, 1, 10 ], counts: [ 6, 0, 0, 0, 0 ] },
+        count: 6
+      }
+    },
+    {
+      attributes: { 'v8js.gc.type': 'incremental' },
+      startTime: [ 1755719310, 812000000 ],
+      endTime: [ 1755719482, 940000000 ],
+      value: {
+        min: 0.0003403329849243164,
+        max: 0.0012867081165313721,
+        sum: 0.0016270411014556885,
+        buckets: { boundaries: [ 0.01, 0.1, 1, 10 ], counts: [ 2, 0, 0, 0, 0 ] },
+        count: 2
+      }
+    },
+    {
+      attributes: { 'v8js.gc.type': 'major' },
+      startTime: [ 1755719310, 830000000 ],
+      endTime: [ 1755719482, 940000000 ],
+      value: {
+        min: 0.0025888750553131105,
+        max: 0.005744750022888183,
+        sum: 0.008333625078201293,
+        buckets: { boundaries: [ 0.01, 0.1, 1, 10 ], counts: [ 2, 0, 0, 0, 0 ] },
+        count: 2
+      }
     }
   ]
-}
-{
-  descriptor: {
-    name: 'http.client.duration',
-    type: 'HISTOGRAM',
-    description: 'measures the duration of the outbound HTTP requests',
-    unit: 'ms',
-    valueType: 1
-  },
-  dataPointType: 0,
-  dataPoints: []
-}
-{
-  descriptor: {
-    name: 'db.client.connections.usage',
-    type: 'UP_DOWN_COUNTER',
-    description: 'The number of connections that are currently in the state referenced by the attribute "state".',
-    unit: '{connections}',
-    valueType: 1
-  },
-  dataPointType: 3,
-  dataPoints: []
 }
 ```
 
@@ -485,9 +521,8 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-/*instrumentation.js*/
-// 依存関係をrequire
-const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
+/*instrumentation.mjs*/
+import { diag, DiagConsoleLogger, DiagLogLevel } from '@opentelemetry/api';
 
 // トラブルシューティングのために、ログレベルをDiagLogLevel.DEBUGに設定
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);

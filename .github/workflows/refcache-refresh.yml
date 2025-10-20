@@ -17,7 +17,7 @@ on:
     inputs:
       number_of_entries_to_refresh:
         description: Number of (oldest) refcache entries to refresh.
-        default: &default_refresh_count 128
+        default: &default_refresh_count 512
         type: number
       prune_more_in_same_PR:
         description: Prune more entries from existing PR branch (if any).
@@ -103,21 +103,22 @@ jobs:
             echo "DELAYED_PUSH_CMD=$DELAYED_PUSH_CMD" >> $GITHUB_ENV
           fi
 
-      - uses: actions/setup-node@v5
-        with:
-          node-version-file: .nvmrc
+      - uses: actions/setup-node@v6
+        with: { node-version-file: .nvmrc }
 
       - run: npm install --omit=optional
 
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
 
       - name: Install htmltest
         run: |
           HTMLTEST_REPO=github.com/chalin/htmltest
           BRANCH=dev/main
+          COMMIT_OR_TAG=0e53941b991235e0ef2686a5bb8dfa70895a652e # v0.17.0-43-g0e53941-chalin-dev
           REPO_DIR=tmp/htmltest
           git clone --branch $BRANCH https://$HTMLTEST_REPO.git $REPO_DIR
           pushd $REPO_DIR
+          git checkout $COMMIT_OR_TAG
           make build
           HTMLTEST=$REPO_DIR/bin/htmltest
           echo "HTMLTEST=$HTMLTEST" >> $GITHUB_ENV

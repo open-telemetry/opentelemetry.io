@@ -8,7 +8,7 @@ author: >-
 canonical_url: https://www.cncf.io/blog/2024/11/04/opentelemetry-is-expanding-into-ci-cd-observability/
 issue: 5546
 sig: CI/CD Observability
-default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4
+default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4 # patched
 # prettier-ignore
 cSpell:ignore: cicd frittoli horovits jemmic keptn liatrio opentelemetrys skyscanner slsa tekton Бекмарк Верт Воссу Кальво Камфаус Кідд Молькова Сараан Сталнекер Стенцелю Суерет Траск Фріттолі Часін
 ---
@@ -138,7 +138,7 @@ cSpell:ignore: cicd frittoli horovits jemmic keptn liatrio opentelemetrys skysca
 
 Хочете дізнатися більше? Хочете долучитися до формування спостережуваності CI/CD?
 
-Запрошуємо розробників та практиків взяти участь в обговоренні, поділитися ідеями та допомогти сформувати майбутнє спостережуваності CI/CD та семантичних домовленостей OpenTelemetry. Обговорення відбувається в робочому просторі [CNCF Slack](https://slack.cncf.io/) на каналі `#otel-cicd`, і ви можете долучитися до обговорення будь-якої з проблем GitHub, згаданих у цій статті, а також приєднатися до щотижневих зустрічей [CICD SIG](https://calendar.google.com/calendar?cid=Z29vZ2xlLmNvbV9iNzllM2U5MGo3YmJzYTJuMnA1YW41bGY2MEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t) щочетверга о 06:00 PT.
+Запрошуємо розробників та практиків взяти участь в обговоренні, поділитися ідеями та допомогти сформувати майбутнє спостережуваності CI/CD та семантичних домовленостей OpenTelemetry. Обговорення відбувається в робочому просторі [CNCF Slack](https://slack.cncf.io/) на каналі `#otel-cicd`, і ви можете долучитися до обговорення будь-якої з проблем GitHub, згаданих у цій статті, а також приєднатися до щотижневих зустрічей [CICD SIG](https://github.com/open-telemetry/community/#sig-cicd) щочетверга о 06:00 PT.
 
 _Версія цієї статті також [є в блозі CNCF][appears on the CNCF blog]._
 
