@@ -156,7 +156,7 @@ file_format: '1.0-rc.1'
 # ... o resto da configuração ....
 
 tracer_provider:
-  # Configurar amostragem para excluir endpoints de verificação de integridade.
+  # Configurar amostragem para excluir _endpoints_ de verificação de integridade.
   sampler:
     rule_based_routing:
       fallback_sampler:
