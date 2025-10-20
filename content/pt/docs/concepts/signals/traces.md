@@ -277,7 +277,7 @@ Por exemplo, considere dois cenários em um navegador web:
 1. Rastrear o carregamento de uma página
 2. Apontar quando uma página se torna interativa
 
-Um trecho é mais adequado para acompanhar o primeiro cenário, pois é uma
+Um trecho é mais adequado para rastrear o primeiro cenário, pois é uma
 operação que tem início e fim.
 
 Um evento de trecho é mais adequado para rastrear o segundo cenário porque
