@@ -12,16 +12,16 @@ author: >-
 cSpell:ignore: Dotel marylia otelconf zeitlinger
 ---
 
-Uma das solicitações de recursos mais persistentes e populares para o OpenTelemetry
-Java nos últimos anos tem sido a capacidade de [eliminar com eficiência
-trechos para endpoints de verificação de integridade][drop-spans-issue] – ou
-quaisquer outros endpoints que sejam de baixo valor ou custosos. Essa questão
-foi levantada pela primeira vez em agosto de 2020, mas uma solução abrangente
-permaneceu indefinida por um tempo surpreendentemente longo. Por que demoramos
-cinco anos para resolver esse problema aparentemente simples? A resposta está
-nos princípios fundamentais do sistema de configuração do OpenTelemetry e na
-jornada em direção a uma abordagem mais robusta e flexível: a configuração
-declarativa.
+Uma das solicitações de recursos mais persistentes e populares para o
+OpenTelemetry Java nos últimos anos tem sido a capacidade de [eliminar com
+eficiência trechos para endpoints de verificação de
+integridade][drop-spans-issue] – ou quaisquer outros endpoints que sejam de
+baixo valor ou custosos. Essa questão foi levantada pela primeira vez em agosto
+de 2020, mas uma solução abrangente permaneceu indefinida por um tempo
+surpreendentemente longo. Por que demoramos cinco anos para resolver esse
+problema aparentemente simples? A resposta está nos princípios fundamentais do
+sistema de configuração do OpenTelemetry e na jornada em direção a uma abordagem
+mais robusta e flexível: a configuração declarativa.
 
 Desde o início, o OpenTelemetry se baseia em variáveis ​​de ambiente para
 configuração, uma escolha motivada por sua disponibilidade universal em todas as
@@ -135,11 +135,11 @@ instrumentation/development:
 ```
 
 Com essa configuração implementada, os desenvolvedores podem continuar a usar
-sua instrumentação Java normalmente, enviando dados de telemetria para o _backend_
-de observabilidade escolhido. Além disso, o arquivo de configuração declarativo
-oferece flexibilidade para expandir e adicionar mais parâmetros conforme
-necessário, permitindo um controle altamente personalizado e detalhado sobre a
-configuração de observabilidade.
+sua instrumentação Java normalmente, enviando dados de telemetria para o
+_backend_ de observabilidade escolhido. Além disso, o arquivo de configuração
+declarativo oferece flexibilidade para expandir e adicionar mais parâmetros
+conforme necessário, permitindo um controle altamente personalizado e detalhado
+sobre a configuração de observabilidade.
 
 ## Exclusão de verificação de integridade {#health-check-exclusion}
 
@@ -269,10 +269,10 @@ que é crucial para garantir que os desenvolvedores, independentemente de suas
 ferramentas preferidas, possam aproveitar os benefícios de uma abordagem
 declarativa.
 
-Estamos muito interessados ​​no _feedback_ dos usuários à medida que continuamos a
-desenvolver e refinar esses recursos. Incentivamos você a começar a experimentar
-as implementações atuais e a comunicar quaisquer funcionalidades ausentes,
-pontos problemáticos ou áreas que precisam de melhoria. Essa abordagem
+Estamos muito interessados ​​no _feedback_ dos usuários à medida que continuamos
+a desenvolver e refinar esses recursos. Incentivamos você a começar a
+experimentar as implementações atuais e a comunicar quaisquer funcionalidades
+ausentes, pontos problemáticos ou áreas que precisam de melhoria. Essa abordagem
 colaborativa nos ajudará a priorizar os esforços de desenvolvimento e a garantir
 que as soluções que criamos realmente atendam às necessidades da comunidade.
 Compartilhe seu _feedback_ ou perguntas usando o canal
