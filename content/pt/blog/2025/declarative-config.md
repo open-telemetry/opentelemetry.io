@@ -8,7 +8,7 @@ author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger)(Grafana Labs), [Jay
   DeLuca](https://github.com/jaydeluca) (Grafana Labs), [Marylia
   Gutierrez](https://github.com/maryliag) (Grafana Labs)
-default_lang_commit: 3b72afe078601bacda882e2a9fd728964fea5f14
+default_lang_commit: b4f82102ae2a6850e29c1facc26d34f77093e976
 cSpell:ignore: Dotel marylia otelconf zeitlinger
 ---
 
