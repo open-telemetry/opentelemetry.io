@@ -81,7 +81,7 @@ jobs:
             git push
           fi
 
-      - name: Update submodule
+      - name: Update submodule and Hugo mounts
         run: |
           git submodule update --init content-modules/semantic-conventions
           cd content-modules/semantic-conventions
@@ -102,6 +102,8 @@ jobs:
             sed -i "s/^\(\s *\)semconv: .*/\1semconv: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
           fi
 
+          ./scripts/update-semconv-mounts.pl
+
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
@@ -109,7 +111,7 @@ jobs:
             git push
           fi
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
 

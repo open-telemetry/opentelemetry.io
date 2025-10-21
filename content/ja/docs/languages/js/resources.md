@@ -2,8 +2,7 @@
 title: リソース
 weight: 70
 description: アプリケーションの環境に関する詳細情報をテレメトリに追加する
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91 # patched
-drifted_from_default: true
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 ---
 
@@ -131,7 +130,7 @@ process.on('SIGINT', function () {
 コンテナのIDを自動検出するため、以下の追加依存関係をインストールします。
 
 ```sh
-npm install @opentelemetry/resource-detector-docker
+npm install @opentelemetry/resource-detector-container
 ```
 
 次に、`tracing.js`を以下のように更新します。
@@ -143,8 +142,8 @@ const {
 } = require('@opentelemetry/auto-instrumentations-node');
 const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 const {
-  dockerCGroupV1Detector,
-} = require('@opentelemetry/resource-detector-docker');
+  containerDetector,
+} = require('@opentelemetry/resource-detector-container');
 
 // トラブルシューティングのため、ログレベルをDiagLogLevel.DEBUGに設定
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
@@ -152,7 +151,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
   instrumentations: [getNodeAutoInstrumentations()],
-  resourceDetectors: [dockerCGroupV1Detector],
+  resourceDetectors: [containerDetector],
 });
 
 sdk.start();
@@ -189,8 +188,8 @@ const {
 } = require('@opentelemetry/auto-instrumentations-node');
 const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 const {
-  dockerCGroupV1Detector,
-} = require('@opentelemetry/resource-detector-docker');
+  containerDetector,
+} = require('@opentelemetry/resource-detector-container');
 const { envDetector, processDetector } = require('@opentelemetry/resources');
 
 // トラブルシューティングのため、ログレベルをDiagLogLevel.DEBUGに設定
@@ -200,7 +199,7 @@ const sdk = new opentelemetry.NodeSDK({
   traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
   instrumentations: [getNodeAutoInstrumentations()],
   // 必要なすべての検出器をここに追加してください！
-  resourceDetectors: [envDetector, processDetector, dockerCGroupV1Detector],
+  resourceDetectors: [envDetector, processDetector, containerDetector],
 });
 
 sdk.start();
@@ -237,7 +236,7 @@ DockerCGroupV1Detector found resource. Resource {
 
 設定に追加できるリソース検出器は他にもあります。
 たとえば、[Cloud]環境や[Deployment]の詳細を取得するものがあります。
-詳細については、[検出器の完全なリスト](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/52dd28deae0ebfbec43bdaed82f4749fc9803797/detectors/node)を参照してください。
+詳細については、[opentelemetry-js-contribリポジトリの`resource-detector-*`という名前のパッケージ](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages)を参照してください。
 
 [getting started - node.js]: /docs/languages/js/getting-started/nodejs/
 [process and process runtime resources]: /docs/specs/semconv/resource/process/

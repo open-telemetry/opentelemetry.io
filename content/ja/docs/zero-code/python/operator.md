@@ -2,8 +2,8 @@
 title: OpenTelemetryオペレーターを使用して自動計装を注入する
 linkTitle: Operator
 weight: 30
-default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0 # patched
-drifted_from_default: true
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+cSpell:ignore: gevent grpcio myapp psutil PYTHONPATH
 ---
 
 KubernetesでPythonサービスを実行する場合、[OpenTelemetryオペレーター](https://github.com/open-telemetry/opentelemetry-operator)を活用することで、各サービスを直接修正することなく自動計装を注入できます。
@@ -28,3 +28,7 @@ Django のように独自の実行ファイルから実行されるアプリケ�
 
 - `PYTHONPATH` には Django アプリケーションのルートディレクトリへのパスを指定します（例: "/app"）。
 - `DJANGO_SETTINGS_MODULE` に Django 設定モジュールの名前を指定します（例: "myapp.settings"）。
+
+### gevent アプリケーション {#gevent-applications}
+
+OpenTelemetry Python 1.37.0/0.58b0 リリース以降、デプロイファイルで `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH` 環境変数を `patch_all` に設定すると、自動計装コードはそれ自体を初期化する前に、同じ名前のgeventのモンキーパッチメソッドを呼び出します。
