@@ -1680,6 +1680,7 @@ approvers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-triagers
     html_url: https://github.com/axw
     avatar_url: https://avatars.githubusercontent.com/u/843579?v=4
   - name: badhon495
