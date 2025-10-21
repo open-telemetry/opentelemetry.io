@@ -6979,10 +6979,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-14T17:44:17.684857422Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+label%3Adata%3Aprofiles": {
-    "StatusCode": 206,
-    "LastSeen": "2025-10-17T21:16:30.350604-04:00"
-  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41791": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T16:02:31.752477-04:00"
@@ -6990,6 +6986,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/42491": {
     "StatusCode": 206,
     "LastSeen": "2025-10-14T16:02:33.807944-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+label%3Adata%3Aprofiles": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-17T21:16:30.350604-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/35139": {
     "StatusCode": 206,
