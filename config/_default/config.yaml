@@ -94,6 +94,7 @@ params:
     sidebar_menu_foldable: true
     sidebar_search_disable: true
     sidebar_cache_limit: 1
+    sidebar_root_enabled: true
     feedback:
       enable: true
       'yes': >-
