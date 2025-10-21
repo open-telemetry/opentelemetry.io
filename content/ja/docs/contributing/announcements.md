@@ -2,7 +2,7 @@
 title: アナウンス
 description: 特別なイベントのためのアナウンスやバナーを作成します。
 weight: 50
-default_lang_commit: d7a61cc489f25935348229d0743fba9b8828dbc1 # patched
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 ---
 
 アナウンスは、ロケールの `announcements` セクション内に含まれる _通常の Hugo ページ_ です。
