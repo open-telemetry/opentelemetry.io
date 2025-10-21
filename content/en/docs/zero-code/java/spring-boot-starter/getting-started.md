@@ -11,7 +11,7 @@ application. For the pros and cons, see [Java zero-code instrumentation](..).
 
 {{% /alert %}}
 
-### Compatibility
+## Compatibility
 
 The OpenTelemetry Spring Boot starter works with Spring Boot 2.6+ and 3.1+, and
 Spring Boot native image applications. The
@@ -19,7 +19,7 @@ Spring Boot native image applications. The
 repository contains an example of a Spring Boot Native image application
 instrumented using the OpenTelemetry Spring Boot starter.
 
-### Dependency management
+## Dependency management
 
 A Bill of Material
 ([BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms))
@@ -101,7 +101,7 @@ with the `io.spring.dependency-management` plugin.
 
 {{% /alert %}}
 
-#### OpenTelemetry Starter dependency
+### OpenTelemetry Starter dependency
 
 Add the dependency given below to enable the OpenTelemetry starter.
 

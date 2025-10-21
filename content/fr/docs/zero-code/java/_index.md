@@ -9,6 +9,7 @@ cascade:
     instrumentation: 2.17.0
     otel: 1.51.0
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+drifted_from_default: true
 ---
 
 Les options les plus fréquentes pour l'instrumentation Zero-code avec Java sont

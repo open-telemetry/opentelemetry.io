@@ -197,8 +197,8 @@ for determining which spans are recorded and sampled.
 
 {{% alert %}} By default `SdkTracerProvider` is configured with the
 `ParentBased(root=AlwaysOn)` sampler. This results in 100% of spans being
-sampled if unless a calling application performs sampling. If this is too noisy
-/ expensive, change the sampler. {{% /alert %}}
+sampled unless a calling application performs sampling. If this is too noisy /
+expensive, change the sampler. {{% /alert %}}
 
 Samplers built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:

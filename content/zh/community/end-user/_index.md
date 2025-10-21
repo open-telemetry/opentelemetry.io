@@ -3,7 +3,7 @@ title: 最终用户资源
 linkTitle: 最终用户
 description: 面向 OpenTelemetry 用户的厂商无关资源
 weight: 40
-default_lang_commit: b13d5dd3a9f288ab64d2af98c0b4ec1694499ef3
+default_lang_commit: b13d5dd3a9f288ab64d2af98c0b4ec1694499ef3 # patched
 ---
 
 希望在一个厂商无关的环境中与其他 OpenTelemetry 最终用户建立联系，或是了解更多关于 OpenTelemetry 的内容？
@@ -24,7 +24,7 @@ default_lang_commit: b13d5dd3a9f288ab64d2af98c0b4ec1694499ef3
 这些交流平台旨在将来自不同组织的运维与开发工程师聚集在一起，共同探讨实现全方位可观测性过程中的挑战与解决方案。
 我们鼓励你分享成功经验与失败教训，探索最佳实践，并结识也在使用 OpenTelemetry 实现可观测性的同行。
 
-### 讨论主题 {#topics}
+## 讨论主题 {#topics}
 
 这个群组的内容由成员共同塑造 —— 任何大家感兴趣的主题都欢迎提出！
 
@@ -36,7 +36,7 @@ default_lang_commit: b13d5dd3a9f288ab64d2af98c0b4ec1694499ef3
 - OpenTelemetry 的部署维护与扩展
 - 编写自定义插桩
 
-### 常见问题 {#questions}
+## 常见问题 {#questions}
 
 **这个群组仅限 OpenTelemetry 的最终用户参加吗？**
 

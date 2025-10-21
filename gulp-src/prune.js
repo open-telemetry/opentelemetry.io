@@ -53,8 +53,8 @@ async function pruneTask() {
   const beforeDate = argv.before
     ? new Date(argv.before)
     : new Date('9999-12-31');
-  const prune4xx = !argv['keep-4xx'];
   const list = argv['list'];
+  const prune4xx = list ? false : !argv['keep-4xx'];
 
   if (argv.info) {
     // Info about options was already displayed by yargs.help().

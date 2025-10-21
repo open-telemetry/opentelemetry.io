@@ -4,6 +4,7 @@ description: Opentelemetry কী এবং কী নয়, তার সং�
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
 weight: 150
 default_lang_commit: fb38bda3b4b9ae69c99b8d70543d0df37872aeac
+drifted_from_default: true
 cSpell:ignore: youtube
 ---
 

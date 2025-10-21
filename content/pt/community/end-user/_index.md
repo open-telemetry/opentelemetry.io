@@ -3,7 +3,7 @@ title: Recursos de usuário final
 linkTitle: Usuário Final
 description: Recursos agnósticos a fornecedor para usuários do OpenTelemetry
 weight: 40
-default_lang_commit: ee09a3383facebe1937529e9a0129ccf53f94937
+default_lang_commit: ee09a3383facebe1937529e9a0129ccf53f94937 # patched
 ---
 
 Procurando se conectar com outros usuários finais do OpenTelemetry em um espaço
@@ -31,7 +31,7 @@ observabilidade onipresente. Nós encorajamos você a compartilhar seus sucessos
 falhas, descobrir melhores práticas, e conhecer outras pessoas que também estão
 na jornada de implementar observabilidade impulsionada pelo OpenTelemetry.
 
-### Tópicos {#topics}
+## Tópicos {#topics}
 
 Esse grupo é o que os seus membros fazem dele -- qualquer coisa que seja de
 interesse para o grupo é válida!
@@ -44,7 +44,7 @@ Mas aqui tem alguns dos tipos de coisas que esperamos que estejam na mesa:
 - Mantendo e escalando implantações do OpenTelemetry
 - Escrita de instrumentação customizada
 
-### Perguntas {#questions}
+## Perguntas {#questions}
 
 **Esse grupo é apenas para usuários finais do OpenTelemetry?**
 

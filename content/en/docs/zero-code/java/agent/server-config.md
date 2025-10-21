@@ -176,3 +176,33 @@ Open the WebSphere Admin Console and follow these steps:
 5.  In **Generic JVM arguments**, enter the path to the agent:
     `-javaagent:/path/to/opentelemetry-javaagent.jar`.
 6.  Save the configuration and restart the server.
+
+## Enable predefined JMX Metrics
+
+The Java agent includes predefined JMX metrics configurations for several
+popular application servers, but these are not enabled by default. To enable
+collection of the predefined metrics, specify a list of targets as the value for
+the `otel.jmx.target.system` system property. For example:
+
+```bash
+$ java -javaagent:path/to/opentelemetry-javaagent.jar \
+     -Dotel.jmx.target.system=jetty,tomcat \
+     ... \
+     -jar myapp.jar
+```
+
+The following are known application server values for `otel.jmx.target.system`:
+
+- [`jetty`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/jetty.md)
+- [`tomcat`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/tomcat.md)
+- [`wildfly`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/wildfly.md)
+
+{{% alert title="Note" %}}
+
+This list is not comprehensive, and other JMX target systems are supported.
+
+{{% /alert %}}
+
+For a list of metrics extracted from each application server, select the
+previous name, or refer to
+[Additional details and customization capabilities](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics#predefined-metrics).

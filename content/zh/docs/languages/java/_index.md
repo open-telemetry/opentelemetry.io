@@ -5,6 +5,7 @@ description: >-
   alt="Java"> 以 Java 语言实现特定的 OpenTelemetry。
 aliases: [/java, /java/metrics, /java/tracing]
 default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
+drifted_from_default: true
 cascade:
   vers:
     instrumentation: 2.19.0

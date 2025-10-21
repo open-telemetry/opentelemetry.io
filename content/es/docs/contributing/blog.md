@@ -3,6 +3,7 @@ title: Blog
 description: Aprende a enviar una publicación de blog.
 weight: 30
 default_lang_commit: 493a530efd3c2a058cc4aa055d7c8aadb5348beb
+drifted_from_default: true
 ---
 
 El [blog de OpenTelemetry](/blog/) comunica nuevas funciones, informes de la

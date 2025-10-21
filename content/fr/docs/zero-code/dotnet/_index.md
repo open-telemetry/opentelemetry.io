@@ -6,7 +6,8 @@ linkTitle: .NET
 aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
+drifted_from_default: true
 cSpell:ignore: coreutils HKLM iisreset myapp
 ---
 
@@ -47,7 +48,7 @@ suivants :
 - [CentOS Stream 9 x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/centos-stream9.dockerfile)
 - [macOS Ventura 13 x64](https://github.com/actions/runner-images/blob/main/images/macos/macos-13-Readme.md)
 - [Microsoft Windows Server 2022 x64](https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md)
-- [Ubuntu 20.04 LTS x64](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2004-Readme.md)
+- [Ubuntu 20.04 LTS x64](https://github.com/actions/runner-images/blob/e82adb8a25d915d5a4598ced53814bdacac218cc/images/ubuntu/Ubuntu2004-Readme.md)
 - Ubuntu 22.04 LTS ARM64
 
 ## Configuration {#setup}
@@ -329,12 +330,12 @@ collecter des données de télémétrie personnalisées.
 
 ## Désinstallation {#uninstall}
 
-### Linux et macOS { #uninstall-unix } {#linux-and-macos--uninstall-unix-}
+### Linux et macOS {#uninstall-unix}
 
 Sur Linux et macOS, les étapes d'installation n'affectent que la session shell
 actuelle donc aucune désinstallation explicite n'est requise.
 
-### Windows (PowerShell) { #uninstall-windows } {#windows-powershell--uninstall-windows-}
+### Windows (PowerShell) {#uninstall-windows}
 
 Sur Windows, utilisez le module PowerShell en tant qu'Administrateur.
 

@@ -20,7 +20,7 @@ checkout(Checkout):::golang
 currency(Currency):::cpp
 email(Email):::ruby
 flagd(Flagd):::golang
-flagd-ui(Flagd-ui):::typescript
+flagd-ui(Flagd-ui):::elixir
 fraud-detection(Fraud Detection):::kotlin
 frontend(Frontend):::typescript
 frontend-proxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
@@ -33,6 +33,9 @@ recommendation(Recommendation):::python
 shipping(Shipping):::rust
 queue[(queue<br/>&#40Kafka&#41)]:::java
 react-native-app(React Native App):::typescript
+postgresql[(Database<br/>&#40PostgreSQL&#41)]
+
+accounting ---> postgresql
 
 ad ---->|gRPC| flagd
 
@@ -80,6 +83,7 @@ end
 
 classDef dotnet fill:#178600,color:white;
 classDef cpp fill:#f34b7d,color:white;
+classDef elixir fill:#b294bb,color:black;
 classDef golang fill:#00add8,color:black;
 classDef java fill:#b07219,color:white;
 classDef javascript fill:#f1e05a,color:black;
@@ -92,10 +96,11 @@ classDef typescript fill:#e98516,color:black;
 ```
 
 ```mermaid
-graph TD
+graph LR
 subgraph Service Legend
   dotnetsvc(.NET):::dotnet
   cppsvc(C++):::cpp
+  elixirsvc(Elixir):::elixir
   golangsvc(Go):::golang
   javasvc(Java):::java
   javascriptsvc(JavaScript):::javascript
@@ -109,6 +114,7 @@ end
 
 classDef dotnet fill:#178600,color:white;
 classDef cpp fill:#f34b7d,color:white;
+classDef elixir fill:#b294bb,color:black;
 classDef golang fill:#00add8,color:black;
 classDef java fill:#b07219,color:white;
 classDef javascript fill:#f1e05a,color:black;

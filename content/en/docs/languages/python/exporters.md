@@ -5,11 +5,9 @@ description: Process and export your telemetry data
 cSpell:ignore: LOWMEMORY
 ---
 
-<!-- markdownlint-disable no-duplicate-heading -->
-
 {{% docs/languages/exporters/intro %}}
 
-### Dependencies {#otlp-dependencies}
+## Dependencies {#otlp-dependencies}
 
 If you want to send telemetry data to an OTLP endpoint (like the
 [OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) or
@@ -36,7 +34,7 @@ pip install opentelemetry-exporter-otlp-proto-grpc
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Usage
+## Usage
 
 Next, configure the exporter to point at an OTLP endpoint in your code.
 
@@ -192,7 +190,7 @@ variable to `CUMULATIVE`.
 
 {{% include "exporters/prometheus-setup.md" %}}
 
-### Dependencies {#prometheus-dependencies}
+## Dependencies {#prometheus-dependencies}
 
 Install the
 [exporter package](https://pypi.org/project/opentelemetry-exporter-prometheus/)
@@ -233,7 +231,7 @@ the metrics from this endpoint.
 
 {{% include "exporters/zipkin-setup.md" %}}
 
-### Dependencies {#zipkin-dependencies}
+## Dependencies {#zipkin-dependencies}
 
 To send your trace data to [Zipkin](https://zipkin.io/), you can choose between
 two different protocols to transport your data:

@@ -3,6 +3,7 @@ title: Documentação
 linkTitle: Docs
 menu: { main: { weight: 10 } }
 default_lang_commit: 2d88c10e1a14220a88a6e4859acb4047f49b6519
+drifted_from_default: true
 ---
 
 O OpenTelemetry, também conhecido como OTel, é uma estrutura de

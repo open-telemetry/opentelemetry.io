@@ -2,6 +2,7 @@
 title: Collector 扩容
 weight: 26
 default_lang_commit: 5077159e85e205f0f7ba9a95f8a507b94c01a398
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: fluentd hostmetrics Linkerd loadbalancer loadbalancing statefulset
 ---

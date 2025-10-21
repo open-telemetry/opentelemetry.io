@@ -3,7 +3,7 @@ title: SDKの設定
 linkTitle: SDKの設定
 weight: 13
 aliases: [config]
-default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 # prettier-ignore
 cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKCS
 ---
@@ -100,7 +100,7 @@ OpenTelemetry Javaは[内部ログに`java.util.logging`を使用](../sdk/#inter
 - 名前を大文字に変換します
 - すべての`.`と`-`文字を`_`に置き換えます
 
-たとえば、`otel.sdk.enabled`システムプロパティは`OTEL_SDK_ENABLED`環境変数と同等です。
+たとえば、`otel.sdk.disabled`システムプロパティは`OTEL_SDK_DISABLED`環境変数と同等です。
 
 プロパティがシステムプロパティと環境変数の両方として定義されている場合、システムプロパティが優先されます。
 

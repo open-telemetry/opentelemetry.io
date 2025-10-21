@@ -2,7 +2,7 @@
 title: 公告
 description: 为特别活动创建公告或横幅。
 weight: 50
-default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22
+default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22 # patched
 ---
 
 公告是本地化目录中 `announcements` 部分下的一个**常规 Hugo 页面**。
@@ -11,7 +11,7 @@ default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22
 
 > 目前，公告仅作为横幅使用。将来我们**可能**会支持更通用的公告形式。
 
-### 创建公告 {#creating-an-announcement}
+## 创建公告 {#creating-an-announcement}
 
 要添加一个新的公告，请在你的本地化目录下的 `announcements` 文件夹中使用以下命令创建一个 Markdown 文件：
 
@@ -29,7 +29,7 @@ hugo new --kind announcement content/YOUR-LOCALE/announcements/announcement-file
 
 {{% /alert %}}
 
-### 公告列表 {#announcement-list}
+## 公告列表 {#announcement-list}
 
 当构建日期位于公告的 `date` 和 `expiryDate` 字段之间时，所有提供的公告会出现在站点构建中。
 如果这些字段缺失，则分别默认为 “now” 和 “forever”。

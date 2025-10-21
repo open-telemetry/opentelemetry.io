@@ -3,6 +3,7 @@ title: হিসাবরক্ষণ সার্ভিস
 linkTitle: হিসাবরক্ষণ
 aliases: [accountingservice]
 default_lang_commit: 98a528997da383a8e152021f920ce510572b1b87
+drifted_from_default: true
 ---
 
 এই সার্ভিসটি বিক্রি হওয়া পণ্যের মোট পরিমাণ হিসাব করে। এটি কেবলমাত্র মকড (নকল) এবং প্রাপ্ত অর্ডারগুলো কনসোলে প্রিন্ট করে থাকে।

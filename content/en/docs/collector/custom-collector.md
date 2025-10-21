@@ -280,7 +280,7 @@ architecture (for example, `linux/arm64`, `linux/amd64`):
 FROM alpine:3.19 AS certs
 RUN apk --update add ca-certificates
 
-FROM golang:1.23.6 AS build-stage
+FROM golang:1.25.0 AS build-stage
 WORKDIR /build
 
 COPY ./builder-config.yaml builder-config.yaml

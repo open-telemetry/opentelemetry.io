@@ -3,6 +3,7 @@ title: 构建认证器扩展
 weight: 40
 aliases: [/docs/collector/custom-auth/]
 default_lang_commit: c6df1ca98613ce886d3ea5ecb7ea50d02a31f18a
+drifted_from_default: true
 cSpell:ignore: configauth oidc
 ---
 

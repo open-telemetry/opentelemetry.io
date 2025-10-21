@@ -4,6 +4,7 @@ weight: 10
 description:
   Entenda os conceitos que tornam possível o Rastreamento Distribuído.
 default_lang_commit: 934b6fcfceb53ae7c1e0da921777e896461205ed
+drifted_from_default: true
 ---
 
 Com a propagação de contexto, os [sinais](../signals/) podem ser correlacionados

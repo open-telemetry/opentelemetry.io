@@ -3,6 +3,7 @@ title: Configurações do Exporter OTLP
 linkTitle: OTLP Exporter
 aliases: [otlp-exporter-configuration]
 default_lang_commit: fe0c3f68902aeb6e7584ffc32c6c8964d7a89e6e
+drifted_from_default: true
 ---
 
 ## Configurações de rota {#endpoint-configuration}

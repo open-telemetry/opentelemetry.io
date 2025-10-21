@@ -7,6 +7,7 @@ htmltest:
     - ^zh/docs/concepts/signals/baggage/
     - ^zh/docs/zero-code/php/
 default_lang_commit: 7caeb2b26915ad05f4f36099ac3e4fe8d8b3c9f0
+drifted_from_default: true
 ---
 
 OpenTelemetry 也被称为 OTel，是一个供应商中立的、开源的[可观测性](concepts/observability-primer/#what-is-observability)框架，
