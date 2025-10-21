@@ -106,7 +106,7 @@ service:
       exporters: [logging]
 ```
 
-## Common Unroll Patterns
+## Common unroll patterns
 
 The unroll processor only performs work if `log.body` is an iterable list—for
 example, a proper JSON array. But in real-world pipelines, log records aren't
