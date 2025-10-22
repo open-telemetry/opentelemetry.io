@@ -111,8 +111,8 @@ to use for those pods. This is done via the
 [Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/instrumentations.md).
 
 Creating the Instrumentation resource correctly is paramount for getting
-auto-instrumentation working. Making sure all endpoints and environment variables are correct
-is required for auto-instrumentation to work properly.
+auto-instrumentation working. Making sure all endpoints and environment
+variables are correct is required for auto-instrumentation to work properly.
 
 ### .NET
 
@@ -148,7 +148,7 @@ of the `otlpreceiver` of the Collector created in the previous step.
 By default, the .NET auto-instrumentation ships with
 [many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
 This makes instrumentation easy, but could result in too much or unwanted data.
-If there are any libraries you do not want to use you can set 
+If there are any libraries you do not want to use you can set
 `OTEL_DOTNET_AUTO_[SIGNAL]_[NAME]_INSTRUMENTATION_ENABLED=false` where
 `[SIGNAL]` is the type of the signal and `[NAME]` is the case-sensitive name of
 the library.
@@ -312,7 +312,7 @@ Therefore, the example uses `http://demo-collector:4318`, which connects to the
 By default, the Java auto-instrumentation ships with
 [many instrumentation libraries](/docs/zero-code/java/agent/getting-started/#supported-libraries-frameworks-application-services-and-jvms).
 This makes instrumentation easy, but could result in too much or unwanted data.
-If there are any libraries you do not want to use you can set 
+If there are any libraries you do not want to use you can set
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=false` where `[NAME]` is the name of the
 library. If you know exactly which libraries you want to use, you can disable
 the default libraries by setting
@@ -461,8 +461,8 @@ in the previous step.
 
 > As of operator v0.108.0, the Instrumentation resource automatically sets
 > `OTEL_EXPORTER_OTLP_PROTOCOL` to `http/protobuf` for Python services. If you
-> use an older version of the Operator you **MUST** set this environment variable to
-> `http/protobuf`, or Python auto-instrumentation will not work.
+> use an older version of the Operator you **MUST** set this environment
+> variable to `http/protobuf`, or Python auto-instrumentation will not work.
 
 #### Auto-instrumenting Python logs
 
@@ -697,9 +697,9 @@ annotations:
   instrumentation.opentelemetry.io/inject-python: 'true'
 ```
 
-When the pod starts up, the annotation above tells the OTel Operator to look for an `Instrumentation`
-object in the pod’s namespace. It also tells the Operator to inject Python
-auto-instrumentation into the pod.
+When the pod starts up, the annotation above tells the OTel Operator to look for
+an `Instrumentation` object in the pod’s namespace. It also tells the Operator
+to inject Python auto-instrumentation into the pod.
 
 It adds an
 [init-container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
