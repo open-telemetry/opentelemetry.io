@@ -1,5 +1,5 @@
 ---
-Title: Opentelemtry Helm Charts
+Title: Helm Charts de OpenTelemetry
 linkTitle: Helm Charts
 default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 ---
