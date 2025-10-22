@@ -8,7 +8,7 @@ author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger)(Grafana Labs), [Jay
   DeLuca](https://github.com/jaydeluca) (Grafana Labs), [Marylia
   Gutierrez](https://github.com/maryliag) (Grafana Labs)
-default_lang_commit: 239639dbc2086a2ea6597e04b829c3e50c845d06
+default_lang_commit: b4f82102ae2a6850e29c1facc26d34f77093e976
 cSpell:ignore: Dotel marylia otelconf zeitlinger
 ---
 
@@ -65,21 +65,21 @@ tracer_provider:
     - batch:
         exporter:
           otlp_http:
-            endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318}/v1/traces
+            endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318/v1/traces}
 
 meter_provider:
   readers:
     - periodic:
         exporter:
           otlp_http:
-            endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318}/v1/metrics
+            endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}
 
 logger_provider:
   processors:
     - batch:
         exporter:
           otlp_http:
-            endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318}/v1/logs
+            endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}
 ```
 
 Tudo o que você precisa fazer é passar
