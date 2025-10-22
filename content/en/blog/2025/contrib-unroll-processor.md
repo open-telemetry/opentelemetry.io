@@ -161,7 +161,7 @@ services:
       exporters: [...]
 ```
 
-## What's Next?
+## Summary
 
 This feature started from a simple need: make the Collector more versatile and
 capable of expanding log records.
