@@ -199,8 +199,8 @@ exported logs back into the collector, which can cause a "log explosion".
 
 To prevent the looping, the default configuration of the receiver excludes the
 collector's own logs. If you want to include the collector's logs, make sure to
-replace the `debug` exporter with an exporter that does not send logs to
-the collector's standard output.
+replace the `debug` exporter with an exporter that does not send logs to the
+collector's standard output.
 
 Here's an example `values.yaml` that replaces the default `debug` exporter on
 the `logs` pipeline with an `otlphttp` exporter that sends the container logs to
