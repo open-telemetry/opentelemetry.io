@@ -254,7 +254,7 @@ import { XMLHttpRequestInstrumentation } from '@opentelemetry/instrumentation-xm
 // Registering instrumentations
 registerInstrumentations({
   instrumentations: [
-    new DocumentLoadInstrumentation(), // from earlier
+    new DocumentLoadInstrumentation(),
     new UserInteractionInstrumentation(),
     new XMLHttpRequestInstrumentation(),
   ],
