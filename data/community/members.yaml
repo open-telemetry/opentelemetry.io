@@ -545,7 +545,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/13971805?v=4
   - name: dyladan
     teams:
-      - assign-reviewers-action-maintainers
       - javascript-approvers
       - javascript-contrib-triagers
       - javascript-maintainers
@@ -1440,7 +1439,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/12531298?v=4
   - name: trask
     teams:
-      - assign-reviewers-action-maintainers
       - java-approvers
       - java-contrib-approvers
       - java-contrib-maintainers
