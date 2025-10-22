@@ -19,8 +19,8 @@ the initial instinct was to solve it with an
 
 And that made sense to me at first glance. OTTL is powerful, flexible, and can
 handle transformations on the record level. But we found deeper challenges.
-**The transform processor had a hard time adding new log records
-mid-iteration**. It mutates and filters existing data, but expanding one record
+The transform processor had a hard time adding new log records
+mid-iteration. It mutates and filters existing data, but expanding one record
 into many isn't something it can feasibly do within its role as a single
 processor.
 
@@ -38,21 +38,23 @@ and how
 
 ## Why unroll?
 
-The core problem is simple. **Some sources deliver multiple events within one
-log record**. You want to work with clean, individual log entries.
+The core problem is simple: some sources deliver multiple events within one
+log record. You want to work with clean, individual log entries.
 
-Before unroll, you had two awkward options:
+Before unroll, you had two options:
 
 1. Pre-process logs outside the Collector—if you even could insert the logic.
 2. Try to bend OTTL/transform into doing something it was never designed for.
 
+Neither turned out to be the right approach to address the problem.
+
 ## What the unroll processor does
 
-The unroll processor takes a **list-like log body**, like a JSON array, and
-expands it into **one log record per element**, while preserving timestamps, and
+The unroll processor takes a list-like log body, like a JSON array, and
+expands it into one log record per element, while preserving timestamps, and
 both resource and log attributes.
 
-If your input had 10 objects in a JSON array, you get 10 distinct log records
+If your input had ten objects in a JSON array, you get ten distinct log records
 out. Every log record would preserve their metadata and be ready for
 transformations, filters, reductions, anything you'd want really.
 
@@ -63,8 +65,8 @@ It's simple, predictable, and production-safe.
 We explored this deeply.
 
 On paper, solving this via a transform + OTTL combo seemed simpler. Once we got
-into it, we ran into a core limitation: **OTTL can't safely add new records
-during iteration**. Trying to generate new entries mid-loop leads to skipped
+into it, we ran into a core limitation: OTTL can't safely add new records
+during iteration. Trying to generate new entries mid-loop leads to skipped
 records, unreliable statement execution, and brittle behavior.
 
 Transform and filter processors are excellent for mutation and suppression. But
@@ -77,7 +79,7 @@ predictable.
 
 I helped develop the first version of the unroll processor in the Bindplane
 Distro of OpenTelemetry Collector. It was first shipped and in use by customers
-in **January 2025 and has been running in production ever since**.
+in January 2025 and has been running in production ever since.
 
 I've seen customers use it across:
 
@@ -86,8 +88,8 @@ I've seen customers use it across:
 - Windows + endpoint logs
 - Bundled collector telemetry
 
-We observed **very low issue volume** even under real production load, which
-gave us the confidence to **propose it upstream**. Specifically when the initial
+We observed very low issue volume even under real production load, which
+gave us the confidence to propose it upstream. Specifically when the initial
 receiver or source of the log signals is fairly format agnostic.
 
 ## How to configure the unroll processor
@@ -161,8 +163,8 @@ services:
 
 ## What's Next?
 
-This feature started from a simple need: **make the Collector more versatile and
-capable of expanding log records.**
+This feature started from a simple need: make the Collector more versatile and
+capable of expanding log records.
 
 We tried the OTTL route, realized it wouldn't easily work, and upstreamed a
 purpose-built, production-tested, and easy-to-use unroll processor. The result
