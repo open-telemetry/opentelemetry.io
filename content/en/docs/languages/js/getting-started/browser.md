@@ -250,7 +250,6 @@ npm install @opentelemetry/instrumentation-user-interaction \
 import { UserInteractionInstrumentation } from '@opentelemetry/instrumentation-user-interaction';
 import { XMLHttpRequestInstrumentation } from '@opentelemetry/instrumentation-xml-http-request';
 
-
 // Registering instrumentations
 registerInstrumentations({
   instrumentations: [
