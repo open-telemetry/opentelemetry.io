@@ -18,11 +18,10 @@ the initial instinct was to solve it with an
 [OTTL (OpenTelemetry Transform Language) function inside the transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41791).
 
 And that made sense to me at first glance. OTTL is powerful, flexible, and can
-handle transformations on the record level. But we found deeper challenges.
-The transform processor had a hard time adding new log records
-mid-iteration. It mutates and filters existing data, but expanding one record
-into many isn't something it can feasibly do within its role as a single
-processor.
+handle transformations on the record level. But we found deeper challenges. The
+transform processor had a hard time adding new log records mid-iteration. It
+mutates and filters existing data, but expanding one record into many isn't
+something it can feasibly do within its role as a single processor.
 
 That's where we wanted to jump in and help. Back in January of this year I
 helped develop a dedicated unroll processor in our distro of the OpenTelemetry
@@ -38,8 +37,8 @@ and how
 
 ## Why unroll?
 
-The core problem is simple: some sources deliver multiple events within one
-log record. You want to work with clean, individual log entries.
+The core problem is simple: some sources deliver multiple events within one log
+record. You want to work with clean, individual log entries.
 
 Before unroll, you had two options:
 
@@ -50,9 +49,9 @@ Neither turned out to be the right approach to address the problem.
 
 ## What the unroll processor does
 
-The unroll processor takes a list-like log body, like a JSON array, and
-expands it into one log record per element, while preserving timestamps, and
-both resource and log attributes.
+The unroll processor takes a list-like log body, like a JSON array, and expands
+it into one log record per element, while preserving timestamps, and both
+resource and log attributes.
 
 If your input had ten objects in a JSON array, you get ten distinct log records
 out. Every log record would preserve their metadata and be ready for
@@ -65,9 +64,9 @@ It's simple, predictable, and production-safe.
 We explored this deeply.
 
 On paper, solving this via a transform + OTTL combo seemed simpler. Once we got
-into it, we ran into a core limitation: OTTL can't safely add new records
-during iteration. Trying to generate new entries mid-loop leads to skipped
-records, unreliable statement execution, and brittle behavior.
+into it, we ran into a core limitation: OTTL can't safely add new records during
+iteration. Trying to generate new entries mid-loop leads to skipped records,
+unreliable statement execution, and brittle behavior.
 
 Transform and filter processors are excellent for mutation and suppression. But
 **expansion** is a different responsibility. It requires its own semantics,
@@ -88,9 +87,9 @@ I've seen customers use it across:
 - Windows + endpoint logs
 - Bundled collector telemetry
 
-We observed very low issue volume even under real production load, which
-gave us the confidence to propose it upstream. Specifically when the initial
-receiver or source of the log signals is fairly format agnostic.
+We observed very low issue volume even under real production load, which gave us
+the confidence to propose it upstream. Specifically when the initial receiver or
+source of the log signals is fairly format agnostic.
 
 ## How to configure the unroll processor
 
