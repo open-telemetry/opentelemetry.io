@@ -108,7 +108,7 @@ and configure the instrumentation and Collector layers, and then enable tracing.
 
 Find the
 [most recent instrumentation layer release](https://github.com/open-telemetry/opentelemetry-lambda/releases)
-for your language and use it's ARN after changing the `<region>` tag to the
+for your language and use its ARN after changing the `<region>` tag to the
 region your Lambda is in.
 
 Note: Lambda layers are a regionalized resource, meaning that they can only be

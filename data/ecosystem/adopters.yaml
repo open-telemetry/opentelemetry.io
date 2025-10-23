@@ -129,6 +129,12 @@
   reference: 'https://medium.com/mercadolibre-tech/building-a-large-scale-observability-ecosystem-1edf654b249e'
   referenceTitle: blog post
   contact: 'https://github.com/mercadolibre'
+- name: Mercadona
+  url: https://www.mercadona.es/
+  components: [Java, Collector]
+  reference: ''
+  referenceTitle: ''
+  contact: ''
 - name: NAV - Norwegian Government
   url: https://nav.no
   components: [Collector, Go, Java, JavaScript, Python]

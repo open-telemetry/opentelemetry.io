@@ -25,7 +25,7 @@ or with [Operator Hub](https://operatorhub.io/operator/opentelemetry-operator).
 
 In most cases, you will need to install
 [cert-manager](https://cert-manager.io/docs/installation/). If you use the helm
-chart, there is an option to generate a self-signed cert instead.
+chart, there is an option to generate a self-signed certificate instead.
 
 > If you want to use Go auto-instrumentation, you need to enable the feature
 > gate. See
@@ -110,9 +110,9 @@ configured to know what pods to instrument and which automatic instrumentation
 to use for those pods. This is done via the
 [Instrumentation CRD](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/instrumentations.md).
 
-Creating the Instrumentation resource correctly is paramount to getting
-auto-instrumentation working. Making sure all endpoints and env vars are correct
-is required for auto-instrumentation to work properly.
+Creating the Instrumentation resource correctly is paramount for getting
+auto-instrumentation working. Making sure all endpoints and environment
+variables are correct is required for auto-instrumentation to work properly.
 
 ### .NET
 
@@ -148,7 +148,7 @@ of the `otlpreceiver` of the Collector created in the previous step.
 By default, the .NET auto-instrumentation ships with
 [many instrumentation libraries](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#instrumentations).
 This makes instrumentation easy, but could result in too much or unwanted data.
-If there are any libraries you do not want to use you can set the
+If there are any libraries you do not want to use you can set
 `OTEL_DOTNET_AUTO_[SIGNAL]_[NAME]_INSTRUMENTATION_ENABLED=false` where
 `[SIGNAL]` is the type of the signal and `[NAME]` is the case-sensitive name of
 the library.
@@ -312,7 +312,7 @@ Therefore, the example uses `http://demo-collector:4318`, which connects to the
 By default, the Java auto-instrumentation ships with
 [many instrumentation libraries](/docs/zero-code/java/agent/getting-started/#supported-libraries-frameworks-application-services-and-jvms).
 This makes instrumentation easy, but could result in too much or unwanted data.
-If there are any libraries you do not want to use you can set the
+If there are any libraries you do not want to use you can set
 `OTEL_INSTRUMENTATION_[NAME]_ENABLED=false` where `[NAME]` is the name of the
 library. If you know exactly which libraries you want to use, you can disable
 the default libraries by setting
@@ -461,8 +461,8 @@ in the previous step.
 
 > As of operator v0.108.0, the Instrumentation resource automatically sets
 > `OTEL_EXPORTER_OTLP_PROTOCOL` to `http/protobuf` for Python services. If you
-> use an older version of the Operator you **MUST** set this env variable to
-> `http/protobuf`, or Python auto-instrumentation will not work.
+> use an older version of the Operator you **MUST** set this environment
+> variable to `http/protobuf`, or Python auto-instrumentation will not work.
 
 #### Auto-instrumenting Python logs
 
@@ -697,16 +697,14 @@ annotations:
   instrumentation.opentelemetry.io/inject-python: 'true'
 ```
 
-The annotation above tells the OTel Operator to look for an `Instrumentation`
-object in the pod’s namespace. It also tells the Operator to inject Python
-auto-instrumentation into the pod.
+When the pod starts up, the annotation above tells the OTel Operator to look for
+an `Instrumentation` object in the pod’s namespace. It also tells the Operator
+to inject Python auto-instrumentation into the pod.
 
-When the pod starts up, the annotation tells the Operator to look for an
-Instrumentation object in the pod’s namespace, and to inject
-auto-instrumentation into the pod. It adds an
+It adds an
 [init-container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
 to the application's pod, called `opentelemetry-auto-instrumentation`, which is
-then used to injects the auto-instrumentation into the app container.
+then used to inject the auto-instrumentation into the app container.
 
 If the `Instrumentation` resource isn’t present by the time the application is
 deployed, however, the init-container can’t be created. Therefore, if the

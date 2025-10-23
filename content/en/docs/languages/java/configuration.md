@@ -253,7 +253,7 @@ Properties for cardinality limits:
 
 #### Properties: logs
 
-Properties for [log record processor(s)](../sdk/#logrecordprocessor) pared with
+Properties for [log record processor(s)](../sdk/#logrecordprocessor) paired with
 exporters via `otel.logs.exporter`:
 
 | System property                   | Description                                                           | Default |
