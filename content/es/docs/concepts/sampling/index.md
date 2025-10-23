@@ -18,7 +18,7 @@ un muestreo adecuado.
 
 ![Ilustración que muestra que no todos los datos necesitan trazarse; una muestra es suficiente.](traces-venn-diagram.svg)
 
-## Terminología
+## Terminología { #terminology }
 
 Es importante usar una terminología consistente al hablar de muestreo. Una traza
 o un span se puede considerar "muestreado" o "no muestreado":
@@ -34,7 +34,7 @@ confusiones; evita decir 'extraer muestras' (sampling out) cuando quieres
 indicar exclusión. Si no se procesa ni se exporta, no está muestreado. Evita
 traducciones literales confusas de 'sampling out'.
 
-## ¿Por qué muestrear?
+## ¿Por qué muestrear? { #why-sampling }
 
 El muestreo es una de las formas más efectivas de reducir los costes de
 observabilidad sin perder visibilidad. Aunque existen otras maneras de bajar
@@ -52,7 +52,7 @@ muestra representativa. En sistemas de alto volumen, es común que una tasa de
 muestreo del 1 % o incluso menor represente con precisión al 99 % de los datos
 restantes.
 
-### Cuándo muestrear
+### Cuándo muestrear { #when-to-sample }
 
 Considera el muestreo si cumples cualquiera de los siguientes criterios:
 
@@ -74,7 +74,7 @@ Finalmente, considera tu presupuesto global. Si dispones de un presupuesto
 limitado para observabilidad, pero puedes invertir tiempo en establecer un
 muestreo efectivo, entonces generalmente merece la pena muestrear.
 
-### Cuándo no muestrear
+### Cuándo no muestrear { #when-not-to-sample }
 
 El muestreo podría no ser apropiado para ti. Quizá debas evitar el muestreo si
 cumples cualquiera de los siguientes criterios:
@@ -101,7 +101,7 @@ muestrear de forma efectiva, puede ser más barato destinar más recursos a
 observabilidad —con un proveedor o con cómputo propio— en lugar de implementar
 muestreos complejos.
 
-## Muestreo en cabecera (Head Sampling)
+## Muestreo en cabecera (Head Sampling) { #head-sampling }
 
 El muestreo en cabecera o en head-based es una técnica que toma la decisión de
 muestrear lo antes posible. La decisión de muestrear o descartar un span o una
@@ -128,7 +128,7 @@ asegurar que todas las trazas que contienen un error se muestreen usando solo
 muestreo en la cabecera. Para ese caso y muchos otros, necesitas el muestreo de
 cola (tail sampling).
 
-## Muestreo de cola (Tail Sampling)
+## Muestreo de cola (Tail Sampling) { #tail-sampling }
 
 El muestreo de cola o tail-based, es cuando la decisión de muestrear una traza
 se toma considerando la mayoría o la totalidad de los spans dentro de la traza.
@@ -184,16 +184,16 @@ canalización de telemetría, aplicar muestreo de cola para tomar decisiones má
 sofisticadas antes de exportar a un backend. Esto se hace a menudo para evitar
 que la canalización de telemetría se sobrecargue.
 
-## Soporte
+## Soporte { #support }
 
-### Collector
+### Collector { #collector }
 
 El OpenTelemetry Collector incluye los siguientes procesadores de muestreo:
 
 - [Probabilistic Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)
 - [Tail Sampling Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
 
-### SDKs por lenguaje
+### SDKs por lenguaje { #language-sdks }
 
 Para las implementaciones específicas por lenguaje de la API y el SDK de
 OpenTelemetry, encontrarás soporte para el muestreo en las páginas de
@@ -201,7 +201,7 @@ documentación respectiva:
 
 {{% sampling-support-list " " %}}
 
-### Proveedores
+### Proveedores { #vendors }
 
 Muchos [proveedores](/ecosystem/vendors) ofrecen soluciones de muestreo
 completas que incorporan muestreo en cabecera, en cola y otras funciones que
