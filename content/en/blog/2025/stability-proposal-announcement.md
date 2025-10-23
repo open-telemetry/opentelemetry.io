@@ -59,8 +59,9 @@ instrumentation agents. By default, stable components should not automatically
 import, include, or enable unstable components. For example, if you install a
 stable distribution of OpenTelemetry Java Instrumentation Agent, the default
 receivers, processors, samplers, exporters, and libraries should not include
-alpha or experimental instrumentations (which is the current behavior).
-Similarly, the OpenTelemetry JavaScript Node Automatic Instrumentation
+alpha or experimental instrumentations.
+
+SSimilarly, the OpenTelemetry JavaScript Node Automatic Instrumentation
 Metapackage would only include stable instrumentations (e.g., those which are at
 v1.0 or better). For consistency, we propose a single project-wide way to enable
 unstable behavior for end-users. The goal of this proposal is to reduce the
