@@ -1,15 +1,15 @@
 ---
 title: Announcing Support for Complex Attribute Types in OTel
 linkTitle: Announcing Support for Complex Attribute Types in OTel
-date: 2025-10-20
+date: 2025-10-25
 author: >-
   [Liudmila Molkova](https://github.com/lmolkova) (Grafana Labs), [Robert
   Pajak](https://github.com/pellared) (Splunk), [Trask
   Stalnaker](https://github.com/trask) (Microsoft), [Austin
   Parker](https://github.com/austinlparker) (honeycomb.io)
-cSpell:ignore: Liudmila Molkova Pajak
-sig: SIG SemConv
+sig: Specification, Logs
 issue: https://github.com/open-telemetry/opentelemetry-specification/pull/4485
+cSpell:ignore: Liudmila Molkova Pajak
 ---
 
 It’s common to use simple key-value properties as attributes in telemetry. Most
@@ -45,9 +45,9 @@ Following
 [OTEP 4485: Extending attributes to support complex values](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/oteps/4485-extending-attributes-to-support-complex-values.md)
 this support is being extended to all OTel signals.
 
-The new attribute types, especially maps and heterogeneous arrays, should be used with
-care. Many observability backends are not optimized to query, index, or
-aggregate complex attributes. Semantic conventions will assume complex
+The new attribute types, especially maps and heterogeneous arrays, should be
+used with care. Many observability backends are not optimized to query, index,
+or aggregate complex attributes. Semantic conventions will assume complex
 attributes are not indexed and will avoid using them on metrics or in other
 scenarios where efficient querying is important.
 
@@ -66,18 +66,16 @@ Examples include:
   inherently structured
 - **GraphQL** — responses may include
   [lists of structured errors](https://graphql.org/learn/response/#errors)
-- **[Database operations](/docs/specs/semconv/database/database-spans)**
-  — batch operations have properties that flat attributes cannot adequately
-  capture
+- **[Database operations](/docs/specs/semconv/database/database-spans)** — batch
+  operations have properties that flat attributes cannot adequately capture
 
 Before extending support for complex attributes to all signals, we explored
 several alternatives:
 
 **Limiting support to logs (and spans).**
 
-Having different attribute collection
-types for different signals affects API ergonomics, making it less convenient
-and efficient to work with attributes.
+Having different attribute collection types for different signals affects API
+ergonomics, making it less convenient and efficient to work with attributes.
 
 **Flattening.**
 
