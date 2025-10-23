@@ -3,8 +3,7 @@ title: Verificações de pull request
 description:
   Saiba como fazer seu pull request passar por todas as verificações com sucesso
 weight: 40
-default_lang_commit: 6c676267409eefc15a28c0e2fdd60b26a4687f74
-drifted_from_default: true
+default_lang_commit: 4839e453a5e22a108fa0b4fce2577cc6aab6f7ec
 ---
 
 Ao abrir um
@@ -69,14 +68,18 @@ restar.
 Essa verificação garante que sejam aplicados os
 [critérios de padronização e consistência dos arquivos Markdown](../style-guide/#markdown-standards).
 
-Se forem encontrados problemas, execute `npm run fix:format` para resolver a
-maioria deles. Para problemas mais complexos, execute `npm run check:markdown` e
-aplique as alterações sugeridas.
+Se forem encontrados problemas, execute `npm run fix:markdown` para resolver a
+maioria deles manualmente. Para os problemas restantes, execute
+`npm run check:markdown` e aplique manualmente as alterações sugeridas.
 
 ### `SPELLING check` {.notranslate lang=en}
 
 Essa verificação garante que
 [todas as palavras estejam corretamente escritas](../style-guide/#spell-checking).
+
+Se essa verificação falhar, execute `npm run check:spelling` localmente para ver
+as palavras incorretamente escritas. Caso a palavra esteja escrita corretamente,
+adicione-a à seção `cSpell:ignore` no _front matter_ do arquivo.
 
 ### `CSPELL` check {.notranslate lang=en}
 
@@ -104,10 +107,12 @@ as alterações em um novo _commit_.
 
 ### `BUILD and CHECK LINKS` {.notranslate lang=en}
 
-Essa verificação constrói o site e valida todos os links.
+Estas duas verificações compilam o site e verificam que todos os _links_ são
+váldios.
 
-Para verificar os links localmente, execute `npm run check:links`. Esse comando
-também atualiza o _refcache_. Envie as alterações no cache em um novo _commit_.
+Para compilar e verificar os links localmente, execute `npm run check:links`.
+Esse comando também atualiza o cache de referências (_refcache_). Envie as
+alterações no cache em um novo _commit_.
 
 #### Corrigir erros 404 {#fix-404s}
 
@@ -130,15 +135,19 @@ ignorado pelo verificador de links.
 
 {{% alert title="Dica para mantenedores" %}}
 
-Mantenedores podem executar o seguinte script imediatamente após ter executado o
-verificador de links para fazer com que o Puppeteer tente validar links com
-status de sucesso.
+Os mantenedores podem executar o seguinte script imediatamente após ter
+executado o verificador de links para fazer com que o Puppeteer tente validar
+links com status não-ok:
 
 ```sh
-./scripts/double-check-refcache-400s.mjs -f --max-num-to-update 99
+./scripts/double-check-refcache-4XX.mjs
 ```
 
-Esse script também valida fragmentos de URL, que o verificador de links não faz.
+Utilize o parâmetro `-f` para também validar fragmentos de URL (âncoras) em
+links externos, algo que o `htmltest` não faz. Atualmente, não é necessário
+executar esse script com frequência, então você pode limitar o número de
+entradas atualizadas através do parâmetro `-m N`. Para mais informações de uso,
+utilize o parâmetro `-h`.
 
 {{% /alert %}}
 
