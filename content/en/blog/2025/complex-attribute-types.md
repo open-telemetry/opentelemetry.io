@@ -8,6 +8,8 @@ author: >-
   Stalnaker](https://github.com/trask) (Microsoft), [Austin
   Parker](https://github.com/austinlparker) (honeycomb.io)
 cSpell:ignore: Liudmila Molkova Pajak
+sig: SIG SemConv
+issue: https://github.com/open-telemetry/opentelemetry-specification/pull/4485
 ---
 
 It’s common to use simple key-value properties as attributes in telemetry. Most
@@ -43,10 +45,10 @@ Following
 [OTEP 4485: Extending attributes to support complex values](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/oteps/4485-extending-attributes-to-support-complex-values.md)
 this support is being extended to all OTel signals.
 
-Use the new attribute types, especially maps and heterogeneous arrays, with
+The new attribute types, especially maps and heterogeneous arrays, should be used with
 care. Many observability backends are not optimized to query, index, or
 aggregate complex attributes. Semantic conventions will assume complex
-attributes are not indexable and will avoid using them on metrics or in other
+attributes are not indexed and will avoid using them on metrics or in other
 scenarios where efficient querying is important.
 
 When possible, stick to primitives and arrays of primitives.
@@ -137,7 +139,7 @@ attributes — for example, when recording lists of complex objects.
 
 For semantic conventions and instrumentation libraries, we don't recommend
 changing anything existing in response to this announcement. This should only
-affect new features.
+affect new features which require the use of complex attributes.
 
 ## Comments?
 
