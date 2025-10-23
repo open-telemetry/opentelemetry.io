@@ -6559,6 +6559,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-31T20:41:55.10972212Z"
   },
+  "https://github.com/open-telemetry/community/issues/3086": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-23T12:46:15.816184-04:00"
+  },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
     "LastSeen": "2025-11-05T17:48:33.027303116Z"
@@ -20155,6 +20159,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-11-06T13:12:47.713467099Z"
   },
+  "https://www.cncf.io/wp-content/uploads/2025/04/CNCF-Annual-Report-2024_v2.pdf": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-23T12:46:22.058029-04:00"
+  },
+  "https://www.cncf.io/wp-content/uploads/2025/04/cncf_annual_survey24_031225a.pdf": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-23T12:46:24.016534-04:00"
+  },
   "https://www.cockroachlabs.com/": {
     "StatusCode": 200,
     "LastSeen": "2025-11-02T09:41:43.333917291Z"
@@ -20346,6 +20358,10 @@
   "https://www.google.com/": {
     "StatusCode": 200,
     "LastSeen": "2025-11-05T17:54:01.831754937Z"
+  },
+  "https://www.google.com/url?q=https://www.youtube.com/watch?v%3Dl8xiNOCIdLY&sa=D&source=docs&ust=1761158059548569&usg=AOvVaw3rCMkjmo1CMucSQtkHjDI3": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-23T12:46:17.523765-04:00"
   },
   "https://www.graalvm.org/latest/reference-manual/native-image/": {
     "StatusCode": 206,
