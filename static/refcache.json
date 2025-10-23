@@ -3012,8 +3012,8 @@
     "LastSeen": "2025-10-19T09:44:08.225745763Z"
   },
   "https://gateway-api.sigs.k8s.io/": {
-    "StatusCode": -10,
-    "LastSeen": "2025-10-21T09:46:22.219169468Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-23T10:24:10.905632571Z"
   },
   "https://gateway-api.sigs.k8s.io/api-types/referencegrant/": {
     "StatusCode": 206,
@@ -14928,8 +14928,8 @@
     "LastSeen": "2025-10-18T18:34:44.394054971Z"
   },
   "https://knative.dev/docs/eventing/observability/metrics/collecting-metrics/#about-opentelemetry": {
-    "StatusCode": -10,
-    "LastSeen": "2025-10-21T09:48:59.999Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-23T10:24:33.754595134Z"
   },
   "https://konghq.com/products/kong-mesh": {
     "StatusCode": 200,
@@ -16456,8 +16456,8 @@
     "LastSeen": "2025-10-18T18:34:58.077531605Z"
   },
   "https://openfeature.dev/specification/glossary/#flag-set": {
-    "StatusCode": -10,
-    "LastSeen": "2025-10-21T09:48:59.999Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-23T10:22:32.367650114Z"
   },
   "https://openfga.dev/": {
     "StatusCode": 206,
