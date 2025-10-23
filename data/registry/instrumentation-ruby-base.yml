@@ -17,5 +17,5 @@ createdAt: 2022-10-27
 package:
   registry: gems
   name: opentelemetry-instrumentation-base
-  version: 0.23.0
+  version: 0.25.0
 isFirstParty: false

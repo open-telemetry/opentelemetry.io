@@ -3,7 +3,7 @@ title: Manual de estilo da documentação
 description: Terminologia e estilo ao escrever a documentação do OpenTelemetry.
 linkTitle: Manual de estilo
 weight: 20
-default_lang_commit: 4d9d9039bc658ad691d12710016c2d491550feec
+default_lang_commit: 4d9d9039bc658ad691d12710016c2d491550feec # patched
 drifted_from_default: true
 cSpell:ignore: open-telemetry opentelemetryio postgre style-guide textlintrc
 ---
@@ -64,7 +64,7 @@ estão escritos corretamente.
 
 Para garantir padrões e consistência nos arquivos Markdown, todos os arquivos
 devem seguir certas regras, aplicadas pelo [markdownlint]. Para uma lista
-completa, verifique o arquivo [.markdownlint.json].
+completa, verifique o arquivo [.markdownlint.yaml].
 
 Execute:
 
@@ -123,8 +123,8 @@ Todos os nomes de arquivos devem estar em
 [kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case). Execute
 `npm run fix:filenames` para renomear automaticamente seus arquivos.
 
-[.markdownlint.json]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json
+[.markdownlint.yaml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
 [line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [Prettier]: https://prettier.io

@@ -316,12 +316,12 @@ custom telemetry data.
 
 ## Uninstall
 
-### Linux and macOS { #uninstall-unix }
+### Linux and macOS {#uninstall-unix}
 
 On Linux and macOS, the installation steps only affect the current shell session
 so no explicit uninstallation is required.
 
-### Windows (PowerShell) { #uninstall-windows }
+### Windows (PowerShell) {#uninstall-windows}
 
 On Windows, use the PowerShell module as an Administrator.
 

@@ -33,6 +33,7 @@ endif
 refcache-save: $(LINK_CACHE_FILE_SRC_DIR)/$(LINK_CACHE_FILE)
 ifeq (refcache, $(REFCACHE))
 	cp $(LINK_CACHE_FILE_SRC_DIR)/$(LINK_CACHE_FILE) $(LINK_CACHE_FILE_DEST_DIR)/
+	node scripts/unescape-refcache-json.mjs
 	npm run _prettier:any -- --write $(LINK_CACHE_FILE_DEST_DIR)/$(LINK_CACHE_FILE)
 else
 	@echo "SKIPPING refcache-save"
@@ -42,6 +43,7 @@ check-links: $(GET_LINK_CHECKER_IF_NEEDED) \
 	refcache-restore check-links-only refcache-save
 
 check-links-only:
+	$(HTMLTEST) -v
 	$(HTMLTEST) $(HTMLTEST_ARGS)
 
 clean:

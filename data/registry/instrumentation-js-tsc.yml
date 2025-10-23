@@ -1,0 +1,29 @@
+# cSpell:ignore weiting weitingliu liou waitingliou
+title: OpenTelemetry TypeScript Compiler Instrumentation for Business Logic
+registryType: instrumentation
+language: js
+tags:
+  - instrumentation
+  - javascript
+  - typescript
+  - typescript compiler
+  - business logic instrumentation
+urls:
+  repo: https://github.com/CeranaStudio/tsc-opentelemetry-instrumentation
+  docs: https://github.com/CeranaStudio/tsc-opentelemetry-instrumentation/blob/main/README.md
+license: Apache 2.0
+description:
+  A TypeScript transformer that automatically instruments your business logic
+  methods with OpenTelemetry spans at compile time through AST weaving,
+  achieving true "application-level transparency"
+authors:
+  - name: Weiting Liou
+    email: weitingliu0304@gmail.com
+    url: https://github.com/Lu-weiting
+createdAt: 2025-10-13
+package:
+  registry: npm
+  name: '@waitingliou/tsc-otel-instrumentation'
+  version: 1.0.5
+isNative: false
+isFirstParty: false

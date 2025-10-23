@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Set up Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: '22'
 
@@ -28,16 +28,23 @@ jobs:
         working-directory: ./scripts/generate-community-data
         run: npm install
 
+      - uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2.1.4
+        id: otelbot-token
+        with:
+          # the higher privileged docs token is needed to push commits to an existing PR
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
       - name: Run script
         working-directory: ./scripts/generate-community-data
         run: node generate.js ../../data/community/members.yaml
         env:
-          GITHUB_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Use CLA approved github bot
         run: |
-          git config user.name opentelemetrybot
-          git config user.email 107717825+opentelemetrybot@users.noreply.github.com
+          git config user.name otelbot
+          git config user.email 197425009+otelbot@users.noreply.github.com
 
       - name: Fix refcache
         run: |
@@ -50,14 +57,10 @@ jobs:
           add-paths: |
             data/community/members.yaml
             static/refcache.json
-          author:
-            opentelemetrybot
-            <107717825+opentelemetrybot@users.noreply.github.com>
-          committer:
-            opentelemetrybot
-            <107717825+opentelemetrybot@users.noreply.github.com>
-          token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
-          branch: update-community-members
+          author: otelbot <197425009+otelbot@users.noreply.github.com>
+          committer: otelbot <197425009+otelbot@users.noreply.github.com>
+          token: ${{ steps.otelbot-token.outputs.token }}
+          branch: otelbot/update-community-members
           title: Update community members
           body: |
             This pull request contains automated updates to files by the GitHub Action.
