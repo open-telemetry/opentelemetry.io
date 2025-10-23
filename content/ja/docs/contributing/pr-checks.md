@@ -2,8 +2,7 @@
 title: プルリクエストのチェック
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
-drifted_from_default: true
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -79,11 +78,11 @@ PRに `/fix:all` というコメントを追加することもできます。
 
 このチェックが失敗した場合、`npm run fix:filenames` をローカルで実行し、新しいコミットで変更をプッシュしてください。
 
-### `BUILD and CHECK LINKS` {#build-and-check-links .notranslate lang=en}
+### `BUILD` and `CHECK LINKS` {#build-and-check-links .notranslate lang=en}
 
-このチェックは、ウェブサイトをビルドしてすべてのリンクが有効であることを検証します。
+これらの2つのチェックは、ウェブサイトをビルドしてすべてのリンクが有効であることを検証します。
 
-ローカルでリンクをチェックするには、`npm run check:links` を実行してください。
+ローカルでビルドしてリンクをチェックするには、`npm run check:links` を実行してください。
 このコマンドは参照キャッシュも更新します。
 refcache に変更があれば、新しいコミットでプッシュしてください。
 
@@ -102,13 +101,16 @@ LinkedIn などの一部のサーバーは 999 を報告します。
 
 {{% alert title="メンテナーのヒント" %}}
 
-メンテナーは、リンクチェッカーを実行した直後に次のスクリプトを実行して、Puppeteer に成功ステータスでないリンクの検証を試みさせることができます。
+メンテナーは、リンクチェッカーを実行した直後に次のスクリプトを実行して、Puppeteer にOKでないステータスのリンクの検証を試みさせることができます。
 
 ```sh
-./scripts/double-check-refcache-400s.mjs -f --max-num-to-update 99
+./scripts/double-check-refcache-4XX.mjs
 ```
 
-このスクリプトは、リンクチェッカーが実行しない URL フラグメントも検証します。
+外部リンクのURLフラグメント（アンカー）も検証するには`-f`フラグを使用してください。
+これは`htmltest`が行わない検証です。
+現在これを頻繁に実行していないため、`-m N`フラグを使用して更新されるエントリ数を制限することをお勧めします。
+使用方法については、`-h`で実行してください。
 
 {{% /alert %}}
 
