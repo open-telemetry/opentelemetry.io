@@ -464,6 +464,7 @@ maintainers:
       - go-approvers
       - go-maintainers
       - go-triagers
+      - javascript-contrib-triagers
       - proto-approvers
       - proto-triagers
       - semconv-k8s-approvers
@@ -545,7 +546,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/13971805?v=4
   - name: dyladan
     teams:
-      - assign-reviewers-action-maintainers
       - javascript-approvers
       - javascript-contrib-triagers
       - javascript-maintainers
@@ -816,6 +816,8 @@ maintainers:
     teams:
       - demo-approvers
       - demo-maintainers
+      - helm-approvers
+      - helm-triagers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
     html_url: https://github.com/julianocosta89
@@ -1067,7 +1069,6 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-triagers
       - collector-releases-approvers
-      - javascript-approvers
       - javascript-contrib-triagers
       - javascript-triagers
       - ruby-approvers
@@ -1440,7 +1441,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/12531298?v=4
   - name: trask
     teams:
-      - assign-reviewers-action-maintainers
       - java-approvers
       - java-contrib-approvers
       - java-contrib-maintainers
@@ -1680,6 +1680,7 @@ approvers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-triagers
     html_url: https://github.com/axw
     avatar_url: https://avatars.githubusercontent.com/u/843579?v=4
   - name: badhon495
@@ -1801,6 +1802,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/192652?v=4
   - name: DylanRussell
     teams:
+      - javascript-contrib-triagers
       - opentelemetry-python-contrib-approvers
       - python-approvers
     html_url: https://github.com/DylanRussell
@@ -2024,7 +2026,6 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/9884419?v=4
   - name: MSNev
     teams:
-      - javascript-approvers
       - javascript-contrib-triagers
       - javascript-triagers
       - semconv-browser-approvers
@@ -2089,7 +2090,6 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/5600755?v=4
   - name: pkanal
     teams:
-      - javascript-approvers
       - javascript-contrib-triagers
       - javascript-triagers
       - semconv-browser-approvers
@@ -2121,6 +2121,7 @@ approvers:
   - name: psx95
     teams:
       - cpp-approvers
+      - javascript-contrib-triagers
     html_url: https://github.com/psx95
     avatar_url: https://avatars.githubusercontent.com/u/22191775?v=4
   - name: pyohannes
@@ -2291,6 +2292,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/466745?v=4
   - name: weyert
     teams:
+      - javascript-contrib-triagers
       - sqlcommenter-approvers
     html_url: https://github.com/weyert
     avatar_url: https://avatars.githubusercontent.com/u/7049?v=4
@@ -2477,16 +2479,16 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/raphael-theriault-swi
     avatar_url: https://avatars.githubusercontent.com/u/113933910?v=4
-  - name: scorpionknifes
-    teams:
-      - go-triagers
-    html_url: https://github.com/scorpionknifes
-    avatar_url: https://avatars.githubusercontent.com/u/23299540?v=4
   - name: sincejune
     teams:
       - collector-triagers
     html_url: https://github.com/sincejune
     avatar_url: https://avatars.githubusercontent.com/u/19381524?v=4
+  - name: sudarshan12s
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/sudarshan12s
+    avatar_url: https://avatars.githubusercontent.com/u/48428602?v=4
   - name: t2t2
     teams:
       - javascript-contrib-triagers
@@ -2929,6 +2931,9 @@ members:
   - name: samimusallam
     html_url: https://github.com/samimusallam
     avatar_url: https://avatars.githubusercontent.com/u/1358230?v=4
+  - name: scorpionknifes
+    html_url: https://github.com/scorpionknifes
+    avatar_url: https://avatars.githubusercontent.com/u/23299540?v=4
   - name: shanduur
     html_url: https://github.com/shanduur
     avatar_url: https://avatars.githubusercontent.com/u/32583062?v=4
