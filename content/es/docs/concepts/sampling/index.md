@@ -4,7 +4,7 @@ description:
   Aprende sobre el muestreo y las diferentes opciones de muestreo disponibles en
   OpenTelemetry.
 weight: 80
-default_lang_commit: 97fad70b02eb0508abba6f7e9a702f99da5b6ae7
+default_lang_commit: 6b2e90b3
 ---
 
 Con las [trazas](/docs/concepts/signals/traces) puedes seguir las solicitudes
@@ -81,7 +81,7 @@ cumples cualquiera de los siguientes criterios:
 
 - Generas muy pocos datos (decenas de trazas pequeñas por segundo o menos).
 - Solo usas los datos de observabilidad en agregados y por tanto puedes
-  preagregarlos.
+  pre-agregarlos.
 - Estás sujeto a regulaciones o circunstancias que prohíben eliminar datos (y no
   puedes enrutar datos no muestreados a almacenamiento de bajo coste).
 
@@ -149,7 +149,7 @@ Algunos ejemplos de uso de muestreo de cola incluyen:
   cuando las trazas provienen solo de servicios de bajo volumen frente a trazas
   que incluyen servicios de alto volumen.
 
-Como puedes ver, el tail sampling permite un grado mucho mayor de sophisticación
+Como puedes ver, el muestreo de cola permite un grado mucho mayor de sofisticación
 en la forma de muestrear datos. Para sistemas grandes que deben muestrear
 telemetría, casi siempre es necesario usar tail sampling para equilibrar el
 volumen de datos con la utilidad de los mismos.
