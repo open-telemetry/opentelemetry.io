@@ -12,7 +12,7 @@ entre servicios en un sistema distribuido. Las trazas (traces) son valiosas para
 obtener tanto una visión general como un análisis detallado de los sistemas.
 
 Sin embargo, si la gran mayoría de tus solicitudes tienen éxito y finalizan con
-una latencia aceptable y sin errores, no necesitas el 100 % de las trazas para
+una latencia aceptable y sin errores, no necesitas el 100% de las trazas para
 observar de forma significativa tus aplicaciones y sistemas. Lo que necesitas es
 un muestreo adecuado.
 
