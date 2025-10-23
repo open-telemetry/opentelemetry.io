@@ -2,8 +2,7 @@
 title: O que é o OpenTelemetry?
 description: Uma breve explicação sobre o que o OpenTelemetry é e não é.
 weight: 150
-default_lang_commit: fb38bda3b4b9ae69c99b8d70543d0df37872aeac
-drifted_from_default: true
+default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829
 cSpell:ignore: youtube
 ---
 
