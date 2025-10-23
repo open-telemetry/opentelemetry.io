@@ -108,7 +108,7 @@ as alterações em um novo _commit_.
 ### `BUILD and CHECK LINKS` {.notranslate lang=en}
 
 Estas duas verificações compilam o site e verificam que todos os _links_ são
-váldios.
+válidos.
 
 Para compilar e verificar os links localmente, execute `npm run check:links`.
 Esse comando também atualiza o cache de referências (_refcache_). Envie as
