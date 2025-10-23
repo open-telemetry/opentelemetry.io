@@ -29,10 +29,10 @@ o un span se puede considerar muestreado o no muestreado:
 - **No muestreado**: Si una traza o un span no se procesa ni se exporta. Al no
   ser elegido por el muestreador, se considera "no muestreado".
 
-Usar términos consistentes como muestreado y no muestreado evita
-confusiones; evita decir extraer muestras (sampling out) cuando quieres
-indicar exclusión. Si no se procesa ni se exporta, no está muestreado. Evita
-traducciones literales confusas de _sampling out_.
+Usar términos consistentes como muestreado y no muestreado evita confusiones;
+evita decir extraer muestras (sampling out) cuando quieres indicar exclusión. Si
+no se procesa ni se exporta, no está muestreado. Evita traducciones literales
+confusas de _sampling out_.
 
 ## ¿Por qué muestrear? { #why-sampling }
 
@@ -149,10 +149,10 @@ Algunos ejemplos de uso de muestreo de cola incluyen:
   cuando las trazas provienen solo de servicios de bajo volumen frente a trazas
   que incluyen servicios de alto volumen.
 
-Como puedes ver, el muestreo de cola permite un grado mucho mayor de sofisticación
-en la forma de muestrear datos. Para sistemas grandes que deben muestrear
-telemetría, casi siempre es necesario usar tail sampling para equilibrar el
-volumen de datos con la utilidad de los mismos.
+Como puedes ver, el muestreo de cola permite un grado mucho mayor de
+sofisticación en la forma de muestrear datos. Para sistemas grandes que deben
+muestrear telemetría, casi siempre es necesario usar tail sampling para
+equilibrar el volumen de datos con la utilidad de los mismos.
 
 Hay tres desventajas principales del tail sampling hoy en día:
 
