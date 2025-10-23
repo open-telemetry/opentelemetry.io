@@ -42,7 +42,7 @@ collector will be used to collect metrics for the cluster and events.
 
 To install the collector, we'll use the
 [OpenTelemetry Collector Helm chart](/docs/platforms/kubernetes/helm/collector/),
-which comes with a few configuration options that will make configure the
+which comes with a few configuration options that will make configuring the
 collector easier. If you're unfamiliar with Helm, check out
 [the Helm project site](https://helm.sh/). If you're interested in using a
 Kubernetes operator, see
@@ -63,7 +63,7 @@ kind create cluster
 ```
 
 Assuming you already have [Helm installed](https://helm.sh/docs/intro/install/),
-add the OpenTelemetry Collector Helm chart so it can be installed later.
+add the OpenTelemetry Collector Helm chart so it can be installed later:
 
 ```sh
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
@@ -73,7 +73,7 @@ helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm
 
 The first step to collecting Kubernetes telemetry is to deploy a daemonset
 instance of the OpenTelemetry Collector to gather telemetry related to nodes and
-workloads running on those node. A daemonset is used to guarantee that this
+workloads running on those nodes. A daemonset is used to guarantee that this
 instance of the collector is installed on all nodes. Each instance of the
 collector in the daemonset will collect data only from the node on which it is
 running.
@@ -155,7 +155,7 @@ One caveat - the chart doesn't send the data to any backend by default. If you
 want to actually use your data in your favorite backend you'll need to configure
 an exporter yourself.
 
-The following `values.yaml` is what we'll use
+The following `values.yaml` is what we'll use:
 
 ```yaml
 mode: daemonset
@@ -191,7 +191,7 @@ presets:
 ```
 
 To use this `values.yaml` with the chart, save it to your preferred file
-location and then run the following command to install the chart
+location and then run the following command to install the chart:
 
 ```sh
 helm install otel-collector open-telemetry/opentelemetry-collector --values <path where you saved the chart>
