@@ -21,7 +21,7 @@ un muestreo adecuado.
 ## Terminología { #terminology }
 
 Es importante usar una terminología consistente al hablar de muestreo. Una traza
-o un span se puede considerar "muestreado" o "no muestreado":
+o un span se puede considerar muestreado o no muestreado:
 
 - **Muestreado**: Si una traza o un span se procesa y se exporta. Al ser elegido
   por el muestreador como representativo de la población, se considera
@@ -29,16 +29,16 @@ o un span se puede considerar "muestreado" o "no muestreado":
 - **No muestreado**: Si una traza o un span no se procesa ni se exporta. Al no
   ser elegido por el muestreador, se considera "no muestreado".
 
-Usar términos consistentes como 'muestreado' y 'no muestreado' evita
-confusiones; evita decir 'extraer muestras' (sampling out) cuando quieres
+Usar términos consistentes como muestreado y no muestreado evita
+confusiones; evita decir extraer muestras (sampling out) cuando quieres
 indicar exclusión. Si no se procesa ni se exporta, no está muestreado. Evita
-traducciones literales confusas de 'sampling out'.
+traducciones literales confusas de _sampling out_.
 
 ## ¿Por qué muestrear? { #why-sampling }
 
 El muestreo es una de las formas más efectivas de reducir los costes de
 observabilidad sin perder visibilidad. Aunque existen otras maneras de bajar
-costes —como filtrar o agregar datos— estos métodos no siempre respetan el
+costes, como filtrar o agregar datos, estos métodos no siempre respetan el
 principio de representatividad, que es crucial para análisis detallados del
 comportamiento de aplicaciones o sistemas.
 
@@ -98,7 +98,7 @@ El muestreo, aunque eficaz para reducir costes de observabilidad, puede
 introducir otros costes inesperados si no se realiza bien. Dependiendo de tu
 backend de observabilidad, la naturaleza de tus datos y tus intentos de
 muestrear de forma efectiva, puede ser más barato destinar más recursos a
-observabilidad —con un proveedor o con cómputo propio— en lugar de implementar
+observabilidad, con un proveedor o con cómputo propio, en lugar de implementar
 muestreos complejos.
 
 ## Muestreo en cabecera (Head Sampling) { #head-sampling }
@@ -108,8 +108,8 @@ muestrear lo antes posible. La decisión de muestrear o descartar un span o una
 traza no se toma inspeccionando la traza en su totalidad.
 
 Por ejemplo, la forma más común de muestreo en la cabecera es el
-[Muestreo probabilístico consistente](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-sampling-decision).
-También se conoce como Muestreo Determinista. En este caso, la decisión de
+[muestreo probabilístico consistente](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-sampling-decision).
+También se conoce como muestreo determinista. En este caso, la decisión de
 muestrear se basa en el ID de la traza y en el porcentaje deseado de trazas a
 muestrear. Esto garantiza que se muestreen trazas enteras —sin spans faltantes—
 a una tasa consistente, por ejemplo el 5 % de todas las trazas.
