@@ -33,8 +33,8 @@ data, when to avoid it, and how backends can start supporting it.
 OpenTelemetry APIs and SDKs are adding support for the following attribute types
 on all signals:
 
-- Maps
-- Heterogeneous arrays
+- Maps (with values of any supported type)
+- Heterogeneous arrays (containing elements of any supported type)
 - Byte arrays
 - Empty values
 
@@ -73,7 +73,9 @@ Examples include:
 Before extending support for complex attributes to all signals, we explored
 several alternatives:
 
-**Limiting support to logs (and spans).** Having different attribute collection
+**Limiting support to logs (and spans).**
+
+Having different attribute collection
 types for different signals affects API ergonomics, making it less convenient
 and efficient to work with attributes.
 
