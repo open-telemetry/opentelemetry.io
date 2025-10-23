@@ -126,20 +126,6 @@ record, like this:
 Here's how you can do that using the `transform` processor followed by `unroll`:
 
 ```yaml
-transform:
-  error_mode: ignore
-  log_statements:
-    - context: log
-      statements:
-        - set(body, Split(body, "\"},"))
-unroll: {}
-```
-
-This transform statement uses `Split` to separate the body into chunks using the
-`"},"` delimiter, producing a list-like body that the unroll processor can
-expand.
-
-```yaml
 receivers: ...
 
 processors:
@@ -148,7 +134,7 @@ processors:
     log_statements:
       - context: log
         statements:
-          - set(body, Split(body, "\"},")) where true
+          - set(body, Split(body, "\"},"))
   unroll: {}
 exporters: ...
 
@@ -159,6 +145,10 @@ services:
       processors: [transform, unroll]
       exporters: [...]
 ```
+
+This transform statement uses `Split` to separate the body into chunks using the
+`"},"` delimiter, producing a list-like body that the unroll processor can
+expand.
 
 ## Summary
 
