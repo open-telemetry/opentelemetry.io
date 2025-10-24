@@ -99,7 +99,7 @@ Agora você pode acessar `tracer` para instrumentar manualmente o seu código.
 Se você estiver adicionando trechos manuais em conjunto com a
 [instrumentação sem código para Go](/docs/zero-code/go) baseada em eBPF, como o
 [OBI](/docs/zero-code/obi), não defina um Tracer Provider global. Consulte a
-odcumentação [Auto SDK](/docs/zero-code/go/autosdk) para mais informações.
+documentação [Auto SDK](/docs/zero-code/go/autosdk) para mais informações.
 
 {{% /alert %}}
 
