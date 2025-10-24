@@ -1346,8 +1346,6 @@ maintainers:
     teams:
       - browser-approvers
       - browser-maintainers
-      - docs-approvers
-      - docs-triagers
       - proto-approvers
       - proto-triagers
       - semconv-browser-approvers
@@ -2008,12 +2006,6 @@ approvers:
       - cpp-contrib-approvers
     html_url: https://github.com/maxgolov
     avatar_url: https://avatars.githubusercontent.com/u/34072974?v=4
-  - name: mhausenblas
-    teams:
-      - docs-approvers
-      - docs-triagers
-    html_url: https://github.com/mhausenblas
-    avatar_url: https://avatars.githubusercontent.com/u/52594?v=4
   - name: mjwolf
     teams:
       - semconv-security-approvers
@@ -2841,6 +2833,9 @@ members:
   - name: melbgirl
     html_url: https://github.com/melbgirl
     avatar_url: https://avatars.githubusercontent.com/u/50597305?v=4
+  - name: mhausenblas
+    html_url: https://github.com/mhausenblas
+    avatar_url: https://avatars.githubusercontent.com/u/52594?v=4
   - name: moonheart
     html_url: https://github.com/moonheart
     avatar_url: https://avatars.githubusercontent.com/u/15916990?v=4
