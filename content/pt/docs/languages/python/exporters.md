@@ -2,8 +2,7 @@
 title: Exporters
 weight: 50
 description: Processar e exportar seus dados de telemetria
-default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b # patched
-drifted_from_default: true
+default_lang_commit: f49ec57e5a0ec766b07c7c8e8974c83531620af3
 cSpell:ignore: LOWMEMORY
 ---
 
