@@ -81,7 +81,7 @@ will not be surprised by unexpected changes.
 Second, we are adjusting our overall posture when it comes to instrumentation
 and instrumentation stability. Our goal, as a project, has always been to see
 other libraries, frameworks, runtimes, and tools
-[natively adopt OpenTelemetry](https://www.google.com/url?q=https://www.youtube.com/watch?v%3Dl8xiNOCIdLY&sa=D&source=docs&ust=1761158059548569&usg=AOvVaw3rCMkjmo1CMucSQtkHjDI3).
+[natively adopt OpenTelemetry](https://www.youtube.com/watch?v=l8xiNOCIdLY).
 This is still the goal – we want other developers to embed our APIs into their
 software, rather than requiring you to download and install libraries that
 inject instrumentation code into third party dependencies. However, many users
