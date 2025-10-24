@@ -1,8 +1,7 @@
 ---
 title: Primeiros Passos
 weight: 10
-default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b # patched
-drifted_from_default: true
+default_lang_commit: ef76badf5b7cfc8bcb33cea4199bb2e8ca637eed
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
@@ -27,7 +26,7 @@ compatibilidade podem ser introduzidas em versões futuras.
 
 Certifique-se de que você tenha a seguinte instalação localmente:
 
-- [Go](https://go.dev/) versão 1.22 ou superior
+- [Go](https://go.dev/) versão 1.23 ou superior
 
 ## Aplicação de exemplo {#example-application}
 
