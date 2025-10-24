@@ -14,7 +14,7 @@ Usa la instrumentación automática de OpenTelemetry .NET para enviar trazas y
 métricas desde aplicaciones y servicios .NET a backends de observabilidad sin
 tener que modificar su código fuente.
 
-Para aprender a instrumentar el código de su servicio o aplicación, lee
+Para aprender a instrumentar el código de su servicio o aplicación, lee el
 [Manual de instrumentación](/docs/languages/dotnet/instrumentation).
 
 ## Compatibilidad
@@ -36,7 +36,7 @@ Las arquitecturas de procesador compatibles son:
 {{% alert title="Nota" %}} La compilación ARM64 no admite imágenes basadas en
 CentOS. {{% /alert %}}
 
-CI tests son ejecutadas en los siguientes sistemas operativos:
+Pruebas de integración continua (CI) en los siguientes sistemas operativos:
 
 - [Alpine x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile)
 - [Alpine ARM64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/alpine.dockerfile)
@@ -75,7 +75,7 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
 ```
 
-{{% alert title="Note" color="Advertencia" %}} En macOS
+{{% alert title="Nota" color="Advertencia" %}} En macOS
 [`coreutils`](https://formulae.brew.sh/formula/coreutils) es requerido. Si
 tienes [homebrew](https://brew.sh/) instalado, puedes obtenerlo simplemente
 ejecutando
