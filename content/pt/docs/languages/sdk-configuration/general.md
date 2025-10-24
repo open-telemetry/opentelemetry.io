@@ -1,9 +1,9 @@
 ---
 title: Configurações gerais de SDK
 linkTitle: Geral
+weight: 10
 aliases: [general-sdk-configuration]
-default_lang_commit: 1e4970e9193c8af1d1f9b86901b13492071aecc7 # patched
-drifted_from_default: true
+default_lang_commit: a5691930635b4e2033946f3a85ae7a527c3eba06
 cSpell:ignore: ottrace
 ---
 
@@ -114,7 +114,7 @@ Dependendo do valor definido em `OTEL_TRACES_SAMPLER`, a definição de
 
 Especifica os Propagators a serem utilizados em uma lista separada por vírgulas.
 
-**Valor padrão:** `"tracecontext,baggage"
+**Valor padrão:** `"tracecontext,baggage"`
 
 **Exemplo:**
 
