@@ -76,7 +76,7 @@ for users to evaluate individual component stability when installing
 dependencies. By moving to a ‘default stable’ approach, we can ensure that users
 will not be surprised by unexpected changes.
 
-## Relaxing stability requirements for instrumentation libraries
+## Adjusting stability requirements for components
 
 Second, we are adjusting our overall posture when it comes to instrumentation
 and instrumentation stability. Our goal, as a project, has always been to see
