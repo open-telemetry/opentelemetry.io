@@ -21,7 +21,7 @@ Para aprender a instrumentar el código de su servicio o aplicación, lee el
 
 La instrumentación automática de OpenTelemetry .NET debería funcionar con todos
 los sistemas operativos y versiones oficialmente compatibles de
-[.NET](https://dotnet.microsoft.com/platform/support/policy/dotnet-core).
+[.NET](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core)).
 
 La versión mínima compatible de
 [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) es
