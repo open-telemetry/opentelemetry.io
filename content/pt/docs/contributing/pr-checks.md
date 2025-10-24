@@ -144,8 +144,8 @@ links com status não-ok:
 ```
 
 Utilize o parâmetro `-f` para validar também fragmentos de URL (âncoras) em
-links externos, algo que o `htmltest` não faz. Atualmente, não executamos
-esse script com frequência, então você provavelmente desejará limitar o número de
+links externos, algo que o `htmltest` não faz. Atualmente, não executamos esse
+script com frequência, então você provavelmente desejará limitar o número de
 entradas atualizadas através do parâmetro `-m N`. Para mais informações de uso,
 utilize o parâmetro `-h`.
 

@@ -71,6 +71,7 @@ Se o `cspell` indicar um erro de `Unknown word` (palavra desconhecida),
 verifique se você escreveu essa palavra corretamente. Se sim, adicione essa
 palavra à seção `cSpell:ignore` no início do seu arquivo. Se essa seção não
 existir, você pode adicioná-la ao _front matter_ de um arquivo Markdown:
+
 ```markdown
 ---
 title: TituloDaPagina
@@ -99,9 +100,9 @@ Todos os nomes de arquivos devem estar em
 
 ## Corrigindo problemas de validação {#fixing-validation-issues}
 
-Para aprender como corrigir problemas de validação, consulte [Verificações de pull request](../pr-checks).
-[.markdownlint.yaml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
+Para aprender como corrigir problemas de validação, consulte
+[Verificações de pull request](../pr-checks). [.markdownlint.yaml]:
+https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
 [line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
-[markdownlint]: https://github.com/DavidAnson/markdownlint
-[Prettier]: https://prettier.io
+[markdownlint]: https://github.com/DavidAnson/markdownlint [Prettier]:
+https://prettier.io
