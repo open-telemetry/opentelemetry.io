@@ -125,9 +125,9 @@ some customizations. See [Distributions].
 ### Entity
 
 A collection of [attributes](#attribute) that identify and describe a physical
-or logical object. Entities are typically associated with telemetry, e.g. a CPU
-entity describes a physical CPU, a service entity describes a logical grouping
-of processes that compose an HTTP or other service.
+or logical object. Entities are typically associated with telemetry. For
+example, a CPU entity describes a physical CPU, while a service entity describes
+a logical grouping of processes that compose an HTTP or other service.
 
 ### Event
 
