@@ -101,8 +101,10 @@ Todos os nomes de arquivos devem estar em
 ## Corrigindo problemas de validação {#fixing-validation-issues}
 
 Para aprender como corrigir problemas de validação, consulte
-[Verificações de pull request](../pr-checks). [.markdownlint.yaml]:
-https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
+[Verificações de pull request](../pr-checks).
+
+[.markdownlint.yaml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
 [line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
-[markdownlint]: https://github.com/DavidAnson/markdownlint [Prettier]:
-https://prettier.io
+[markdownlint]: https://github.com/DavidAnson/markdownlint
+[Prettier]: https://prettier.io
