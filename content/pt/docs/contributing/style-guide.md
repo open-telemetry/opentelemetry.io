@@ -67,6 +67,10 @@ todo o texto esteja escrito corretamente. Para uma lista de palavras específica
 do site OpenTelemetry, consulte o arquivo
 [`.cspell.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml).
 
+Se o `cspell` indicar um erro de `Unknown word` (palavra desconhecida),
+verifique se você escreveu essa palavra corretamente. Se sim, adicione essa
+palavra à seção `cSpell:ignore` no início do seu arquivo. Se essa seção não
+existir, você pode adicioná-la ao _front matter_ de um arquivo Markdown:
 ```markdown
 ---
 title: TituloDaPagina
@@ -93,6 +97,9 @@ Aplicamos formatação de arquivos usando o [Prettier]. Execute-o com
 Todos os nomes de arquivos devem estar em
 [_kebab case_](https://en.wikipedia.org/wiki/Letter_case#Kebab_case).
 
+## Corrigindo problemas de validação {#fixing-validation-issues}
+
+Para aprender como corrigir problemas de validação, consulte [Verificações de pull request](../pr-checks).
 [.markdownlint.yaml]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
 [line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks

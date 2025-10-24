@@ -69,7 +69,7 @@ Essa verificação garante que sejam aplicados os
 [critérios de padronização e consistência dos arquivos Markdown](../style-guide/#markdown-standards).
 
 Se forem encontrados problemas, execute `npm run fix:markdown` para resolver a
-maioria deles manualmente. Para os problemas restantes, execute
+maioria deles automaticamente. Para os problemas restantes, execute
 `npm run check:markdown` e aplique manualmente as alterações sugeridas.
 
 ### `SPELLING check` {.notranslate lang=en}
@@ -135,7 +135,7 @@ ignorado pelo verificador de links.
 
 {{% alert title="Dica para mantenedores" %}}
 
-Os mantenedores podem executar o seguinte script imediatamente após ter
+Os mantenedores podem executar o seguinte script imediatamente após terem
 executado o verificador de links para fazer com que o Puppeteer tente validar
 links com status não-ok:
 
@@ -143,9 +143,9 @@ links com status não-ok:
 ./scripts/double-check-refcache-4XX.mjs
 ```
 
-Utilize o parâmetro `-f` para também validar fragmentos de URL (âncoras) em
-links externos, algo que o `htmltest` não faz. Atualmente, não é necessário
-executar esse script com frequência, então você pode limitar o número de
+Utilize o parâmetro `-f` para validar também fragmentos de URL (âncoras) em
+links externos, algo que o `htmltest` não faz. Atualmente, não executamos
+esse script com frequência, então você provavelmente desejará limitar o número de
 entradas atualizadas através do parâmetro `-m N`. Para mais informações de uso,
 utilize o parâmetro `-h`.
 
