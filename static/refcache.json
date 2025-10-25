@@ -896,8 +896,8 @@
     "LastSeen": "2025-10-24T09:43:38.138300261Z"
   },
   "https://colocatedeventseu2023.sched.com/event/1Jo8E/ingesting-65-tb-of-telemetry-data-daily-through-open-telemetry-protocol-and-collectors-gustavo-pantuza-vtex": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:32:48.78578083Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:44:32.409Z"
   },
   "https://colocatedeventsna2024.sched.com/overview/type/Observability+Day": {
     "StatusCode": 200,
@@ -16308,8 +16308,8 @@
     "LastSeen": "2025-10-25T15:30:01.450037899Z"
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:03.738363751Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:44:36.62Z"
   },
   "https://openai.com/": {
     "StatusCode": 200,
@@ -18668,92 +18668,92 @@
     "LastSeen": "2025-10-20T10:59:02.885Z"
   },
   "https://sched.co/1YFeM": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:46.635049949Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:44:41.04Z"
   },
   "https://sched.co/1YFf5": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:48.628486184Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:44:45.093Z"
   },
   "https://sched.co/1YFfb": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:47.10844577Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:44:49.294Z"
   },
   "https://sched.co/1YFfe": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:47.30353371Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:44:53.598Z"
   },
   "https://sched.co/1YFgW": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:47.51953409Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:44:57.881Z"
   },
   "https://sched.co/1YFhI": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:47.631630225Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:45:02.41Z"
   },
   "https://sched.co/1YFhh": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:47.850769629Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:45:06.601Z"
   },
   "https://sched.co/1YFii": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:48.126554173Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:45:10.804Z"
   },
   "https://sched.co/1YFik": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:48.033017428Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:45:15.141Z"
   },
   "https://sched.co/1YFin": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:48.220105751Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:45:19.277Z"
   },
   "https://sched.co/1YFjB": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:48.409867614Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:45:23.777Z"
   },
   "https://sched.co/1YFjC": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:48.486414565Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:45:28.083Z"
   },
   "https://sched.co/1YFk3": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:48.736554545Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:45:32.902Z"
   },
   "https://sched.co/1YFk6": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:48.851351795Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:45:37.734Z"
   },
   "https://sched.co/1YGT9": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:45.412846306Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:45:42.473Z"
   },
   "https://sched.co/1YeNV": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:25.855099406Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:45:47.039Z"
   },
   "https://sched.co/1YeOH": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:30.40962974Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:45:51.571Z"
   },
   "https://sched.co/1YePA": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:35.199452863Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:45:55.87Z"
   },
   "https://sched.co/1YePz": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:39.352719869Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:46:00.55Z"
   },
   "https://sched.co/1YeSC": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:42.48617164Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:46:04.597Z"
   },
   "https://sched.co/1Yhf8": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:13.476701264Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:46:09.232Z"
   },
   "https://sched.co/1YhfT": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:35:19.210785369Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:46:14.393Z"
   },
   "https://sched.co/1eYYg": {
     "StatusCode": 200,
@@ -20016,8 +20016,8 @@
     "LastSeen": "2025-10-25T15:09:19.982622107Z"
   },
   "https://www.docsend.com/": {
-    "StatusCode": 403,
-    "LastSeen": "2025-10-25T15:29:55.053748109Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-25T15:46:19.392Z"
   },
   "https://www.docsy.dev/docs/": {
     "StatusCode": 206,
