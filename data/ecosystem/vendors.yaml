@@ -356,7 +356,7 @@
   commercial: true
 - name: Sentry
   nativeOTLP: true
-  url: https://sentry.io/for/opentelemetry/
+  url: https://docs.sentry.io/concepts/otlp/
   contact:
   oss: false
   commercial: true
