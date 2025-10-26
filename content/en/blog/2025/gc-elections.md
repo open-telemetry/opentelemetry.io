@@ -28,7 +28,7 @@ before 23:59 UTC on 24 October 2025 to participate in the election. See the
 with all members of standing and approved exceptions. Approved exceptions will
 be added to the roll continuously.
 
-Voting will be open between 27 October 2025 ~~00:00~~ noon UTC and 29 October 2025 23:59
+Voting will be open between 27 October 2025 ~~00:00~~ 12:00 UTC and
 29 October 2025, end of day,
 [Anywhere on Earth](https://en.wikipedia.org/wiki/Anywhere_on_Earth) (30 October
 2025 12:00 UTC) on
