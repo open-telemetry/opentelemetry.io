@@ -54,7 +54,7 @@ contributors, maintainers, and end-users. We plan to expand these stability
 requirements to include documentation, examples, implementation scenarios,
 performance benchmarks, and other useful information.
 
-In addition, we are proposing a change to the defaults of the SDK and
+In addition, we are proposing a change to the defaults of SDKs and
 instrumentation agents. By default, stable components should not automatically
 import, include, or enable unstable components. For example, if you install a
 stable distribution of OpenTelemetry Java Instrumentation Agent, the default
