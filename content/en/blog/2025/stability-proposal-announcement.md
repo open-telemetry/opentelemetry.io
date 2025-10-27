@@ -62,8 +62,8 @@ receivers, processors, samplers, exporters, and libraries should not include
 alpha or experimental instrumentations.
 
 Similarly, the OpenTelemetry JavaScript Node Automatic Instrumentation
-Metapackage would only include stable instrumentations (e.g., those which are at
-v1.0 or better). For consistency, we propose a single project-wide way to enable
+Metapackage would only include stable instrumentations (i.e., those which are at
+v1.0 or greater). For consistency, we propose a single project-wide way to enable
 unstable behavior for end-users. The goal of this proposal is to reduce the
 likelihood of end-user adoption of unstable packages, components, config, or API
 surface area without an explicit ‘opt-in’ to this behavior.
