@@ -229,9 +229,9 @@ that is only available on the same host as the application is running:
 
 - Processors like the
   [`resourcedetectionprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
-  are used to add information about the host that the collector and the application
-  are running on. Running them within a Collector on a remote machine will
-  result in incorrect data.
+  are used to add information about the host that the collector and the
+  application are running on. Running them within a Collector on a remote
+  machine will result in incorrect data.
 
 ## Tradeoffs
 
