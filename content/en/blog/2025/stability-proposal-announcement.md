@@ -1,5 +1,5 @@
 ---
-title: Evolving OpenTelemetry’s Stability and Release Practices
+title: Evolving OpenTelemetry’s Stabilization and Release Practices
 linkTitle: Stability Proposal Announcement # Mandatory, make sure that your short title.
 date: 2025-10-23 # Put the current date, we will keep the date updated until your PR is merged
 author:
