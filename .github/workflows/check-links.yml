@@ -90,7 +90,7 @@ jobs:
             regex: '^(..[^/]|[a-m]./)'
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with: { name: build-artifacts }
 
       - uses: actions/setup-node@v6
@@ -116,7 +116,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with:
           pattern: refcache-*
           path: tmp/check-refcache
@@ -130,7 +130,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with: { name: build-artifacts }
       - run: cat tmp/build-log.txt
       - run: scripts/check-build-log.sh
