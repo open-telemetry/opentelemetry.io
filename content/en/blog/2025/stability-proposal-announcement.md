@@ -71,7 +71,7 @@ surface area without an explicit ‘opt-in’ to this behavior.
 We do not make this change lightly, and it wasn’t feasible to make it sooner –
 end-user feedback has been a crucial aspect of our development process, and
 early adoption of unstable instrumentation and features has led to better
-outcomes overall. However, given the scope of OpenTelemetry it can be difficult
+outcomes overall. However, given the scope of OpenTelemetry, it can be difficult
 for users to evaluate individual component stability when installing
 dependencies. By moving to a ‘default stable’ approach, we can ensure that users
 will not be surprised by unexpected changes.
