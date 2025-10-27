@@ -63,18 +63,18 @@ alpha or experimental instrumentations.
 
 Similarly, the OpenTelemetry JavaScript Node Automatic Instrumentation
 Metapackage would only include stable instrumentations (i.e., those which are at
-v1.0 or greater). For consistency, we propose a single project-wide way to enable
-unstable behavior for end-users. The goal of this proposal is to reduce the
-likelihood of end-user adoption of unstable packages, components, config, or API
-surface area without an explicit opt-in to this behavior.
+v1.0 or greater). For consistency, we propose a single project-wide way to
+enable unstable behavior for end-users. The goal of this proposal is to reduce
+the likelihood of end-user adoption of unstable packages, components, config, or
+API surface area without an explicit opt-in to this behavior.
 
 We do not make this change lightly, and it wasn’t feasible to make it sooner –
 end-user feedback has been a crucial aspect of our development process, and
 early adoption of unstable instrumentation and features has led to better
 outcomes overall. However, given the scope of OpenTelemetry, it can be difficult
 for users to evaluate individual component stability when installing
-dependencies. By moving to a ‘stable by default’ approach, we can ensure that users
-will not be surprised by unexpected changes.
+dependencies. By moving to a ‘stable by default’ approach, we can ensure that
+users will not be surprised by unexpected changes.
 
 ## Adjusting stability requirements for components
 
@@ -118,6 +118,10 @@ instrumentation libraries in experimental maturity phases; We believe that
 sufficient tooling exists via schema transformations or processors, as well as
 the dual-write convention for updated attributes, as to allow end users to
 depend upon beta conventions.
+
+> Note: Currently, Semantic Conventions do not offer a 'beta' stability
+> guarantee; Part of this process will be to codify the requirements needed to
+> transition from experimental, to alpha, to beta.
 
 This change is not meant to ‘yank away’ integrations that current users may
 depend on, but to more clearly communicate the expected future state of various
