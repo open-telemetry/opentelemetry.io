@@ -6935,17 +6935,57 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-26T09:44:12.675173859Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/countconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:19.268065-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/datadogconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:19.992486-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/exceptionsconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:20.674037-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/failoverconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:21.524847-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/grafanacloudconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:28.178305-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/otlpjsonconnector": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T14:35:00.88935879Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/roundrobinconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:29.671504-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/routingconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:32.059359-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/servicegraphconnector": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T16:04:13.566215305Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/signaltometricsconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:33.389349-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T14:29:55.119771491Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/sumconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:34.260098-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/xconnector": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:45.428523-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter": {
     "StatusCode": 206,
@@ -7042,6 +7082,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudpubsubexporter": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T14:35:50.951522422Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudstorageexporter": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:24.020481-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlemanagedprometheusexporter": {
     "StatusCode": 206,
@@ -7147,6 +7191,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:36:13.461923713Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/xexporter": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:53.336677-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/zipkinexporter": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:15:11.3808718Z"
@@ -7158,6 +7206,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/asapauthextension": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:15:12.211515491Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/awsproxy": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:17.449173-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/awsproxy#aws-proxy": {
     "StatusCode": 206,
@@ -7219,6 +7271,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-25T16:09:37.416109916Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/k8sleaderelector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:19.672364-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/memorylimiterextension": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:52.799313-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/oauth2clientauthextension": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:15:16.564174345Z"
@@ -7258,6 +7318,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sumologicextension": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:15:21.293958646Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/xextension": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:58.080525-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/pkg/ottl": {
     "StatusCode": 206,
@@ -7399,6 +7463,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-26T09:43:51.606235303Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/unrollprocessor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:28.519555-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/xprocessor": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:41:01.589315-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T14:29:54.573389358Z"
@@ -7474,6 +7546,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/chronyreceiver": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:15:35.258406997Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/ciscoosreceiver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:19.901254-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/cloudflarereceiver": {
     "StatusCode": 206,
@@ -7570,6 +7646,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/huaweicloudcesreceiver": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:36:25.449094172Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/icmpcheckreceiver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:22.288851-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/iisreceiver": {
     "StatusCode": 206,
@@ -7731,6 +7811,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:15:56.439065678Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/redfishreceiver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:28.648435-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/redisreceiver": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:15:56.867398672Z"
@@ -7854,6 +7938,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/windowsservicereceiver": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:36:32.730552632Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/xreceiver": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:41:00.079386-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver": {
     "StatusCode": 206,
@@ -8010,6 +8098,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:09:36.806373824Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:23.480884-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/ga-roadmap.md": {
     "StatusCode": 206,
@@ -8227,6 +8319,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:15:02.578345191Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/connector/forwardconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:37:25.590515-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/connector/xconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:46:50.588656-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter#general-information": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:30:03.988445269Z"
@@ -8243,6 +8343,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:30:07.862606623Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/fileexporter": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:44.851227-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/kafkaexporter": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:46.847343-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/nopexporter": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:15:05.299270915Z"
@@ -8255,9 +8363,37 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:14:27.548595036Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/prometheusexporter": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:50.614888-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/prometheusremotewriteexporter": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:51.902349-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/xexporter": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:46:49.420124-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/zipkinexporter": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:55.130718-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/healthcheckextension": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:50.809945-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/memorylimiterextension": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:15:16.179176699Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/pprofextension": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:55.073796-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/xextension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:46:47.382831-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/zpagesextension": {
     "StatusCode": 206,
@@ -8279,13 +8415,49 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:30:08.966352314Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/attributesprocessor": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:51.571874-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:14:40.924867488Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/filterprocessor": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:54.262244-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:14:44.546794339Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/probabilisticsamplerprocessor": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:56.347862-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/resourceprocessor": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:58.296403-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/spanprocessor": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:59.786325-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/xprocessor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:46:50.068155-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/hostmetricsreceiver": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:47.605716-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/jaegerreceiver": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:50.683517-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/kafkareceiver": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:52.137302-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/nopreceiver": {
     "StatusCode": 206,
@@ -8298,6 +8470,18 @@
   "https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver#otlp-receiver": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:35:49.784980386Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/prometheusreceiver": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:40:55.051514-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/xreceiver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T15:46:49.748448-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/zipkinreceiver": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-27T15:41:02.502177-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.103.0/featuregate#controlling-gates": {
     "StatusCode": 206,
