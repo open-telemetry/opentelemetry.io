@@ -1,6 +1,5 @@
 ---
-default_lang_commit: 7d0c3f247ee77671d1135b0af535a2aca05fe359 # patched
-drifted_from_default: true
+default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
 ---
 
 ## Prometheus

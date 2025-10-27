@@ -60,6 +60,7 @@ export HTMLTEST_ARGS='--log-level 0'
 npm run __check:links 2>&1 | \
   tee tmp/check-links-log.txt | \
   grep -Ev '(anchor without href|OK|cache|Content) --- |^[0-9]+:|ignored |testDocument on|DOCTYPE|<nil>'
+EXIT_CODE=${PIPESTATUS[0]}
 
 # Restore original htmltest config unless -k flag is used
 if [[ -z $KEEP ]]; then
@@ -68,3 +69,5 @@ if [[ -z $KEEP ]]; then
 else
   [[ -z $QUIET ]] && echo "Keeping modified .htmltest.yml (use -k flag)"
 fi
+
+exit $EXIT_CODE
