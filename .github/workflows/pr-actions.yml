@@ -125,7 +125,7 @@ jobs:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Download patch
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: ${{ needs.generate-patch.outputs.patch_name }}
 
