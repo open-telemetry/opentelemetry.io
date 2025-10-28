@@ -19623,6 +19623,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-25T15:34:00.13482036Z"
   },
+  "https://support.google.com/webmasters/answer/10347851": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-28T17:20:41.061887755Z"
+  },
   "https://support.google.com/webmasters/answer/10347851?hl=en#:~:text=A%20canonical%20URL%20is%20the,Google%20chooses%20one%20as%20canonical.": {
     "StatusCode": 200,
     "LastSeen": "2025-10-25T15:12:21.462668282Z"
