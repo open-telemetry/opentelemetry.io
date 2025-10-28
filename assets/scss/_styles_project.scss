@@ -216,8 +216,7 @@
   filter: none;
 }
 
-// Dark mode inversion for .img-initial, excluding course badges
-[data-bs-theme='dark'] .td-content .img-initial:not(.no-dark-mode-invert) {
+[data-bs-theme='dark'] .td-content .img-initial {
   filter: brightness(0) invert(1);
 }
 
