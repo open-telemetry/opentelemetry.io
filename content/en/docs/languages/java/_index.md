@@ -1,7 +1,7 @@
 ---
 title: Java
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/Java_SDK.svg"
+  <img width="35" class="img-initial otel-icon" src="/img/logos/32x32/Java_SDK.svg"
   alt="Java"> Language-specific implementation of OpenTelemetry in Java.
 aliases: [/java/metrics, /java/tracing]
 redirects:

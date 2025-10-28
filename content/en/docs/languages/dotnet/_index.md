@@ -1,7 +1,7 @@
 ---
 title: .NET
 description: >
-  <img width="35" class="img-initial" src="/img/logos/32x32/dotnet.svg"
+  <img width="35" class="img-initial otel-icon" src="/img/logos/32x32/dotnet.svg"
   alt=".NET"> A language-specific implementation of OpenTelemetry in .NET.
 aliases: [net, /csharp, /csharp/metrics, /csharp/tracing]
 weight: 12

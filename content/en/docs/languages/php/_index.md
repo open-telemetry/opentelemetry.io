@@ -1,7 +1,7 @@
 ---
 title: PHP
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/PHP.svg" alt="PHP">
+  <img width="35" class="img-initial otel-icon" src="/img/logos/32x32/PHP.svg" alt="PHP">
   A language-specific implementation of OpenTelemetry in PHP.
 redirects:
   - { from: /php/*, to: ':splat' }
