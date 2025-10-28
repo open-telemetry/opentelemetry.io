@@ -4,7 +4,7 @@ menu: { main: { weight: 45 } }
 description: Certificações e cursos do OpenTelemetry
 type: docs
 body_class: ot-training
-default_lang_commit: fa827427ce31631a0b11d5c0151cb8c8e43d8f5b # patched
+default_lang_commit: c767488390fabceb1b5b87569f3e6f68d3188519
 hide_feedback: true
 # LF course image from:
 # https://training.linuxfoundation.org/wp-content/uploads/2024/10/LFS148-Course-Badge-300x300.png

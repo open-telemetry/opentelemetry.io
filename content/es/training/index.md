@@ -9,7 +9,7 @@ hide_feedback: true
 # https://training.linuxfoundation.org/wp-content/uploads/2024/10/LFS148-Course-Badge-300x300.png
 params:
   LFS148: https://training.linuxfoundation.org/training/getting-started-with-opentelemetry-lfs148/
-default_lang_commit: 8db6d6246fb8479c02c320d9acb451d9f3c9df4b # patched
+default_lang_commit: c767488390fabceb1b5b87569f3e6f68d3188519
 cSpell:ignore: otca
 ---
 
