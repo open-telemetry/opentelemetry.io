@@ -28,8 +28,9 @@ before 23:59 UTC on 24 October 2025 to participate in the election. See the
 with all members of standing and approved exceptions. Approved exceptions will
 be added to the roll continuously.
 
-Voting will be open between 27 October 2025 00:00 UTC and 29 October 2025 23:59
-29 October 2025, end of day,
+Voting will be open between 27 October 2025
+[~~00:00~~](https://github.com/open-telemetry/community/issues/3001#issuecomment-3449011021)
+12:00 UTC and 29 October 2025, end of day,
 [Anywhere on Earth](https://en.wikipedia.org/wiki/Anywhere_on_Earth) (30 October
 2025 12:00 UTC) on
 [Helios Voting](https://vote.heliosvoting.org/helios/elections/f94a7c58-990b-11f0-a16d-5270fb641b4c/view);
