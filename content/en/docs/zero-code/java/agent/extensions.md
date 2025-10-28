@@ -2,7 +2,7 @@
 title: Extensions
 aliases: [/docs/instrumentation/java/extensions]
 weight: 300
-cSpell:ignore: Dotel uber Sonatype
+cSpell:ignore: Dotel Sonatype uber
 ---
 
 ## Introduction
