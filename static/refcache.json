@@ -2343,6 +2343,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-26T09:41:31.487128808Z"
   },
+  "https://docs.sentry.io/concepts/otlp/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-27T22:36:22.963741542Z"
+  },
   "https://docs.sentry.io/platforms/java/performance/instrumentation/opentelemetry/": {
     "StatusCode": 200,
     "LastSeen": "2025-10-25T14:37:54.183370627Z"
@@ -6490,6 +6494,10 @@
   "https://github.com/open-telemetry/community/issues/3001": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T16:09:11.849863623Z"
+  },
+  "https://github.com/open-telemetry/community/issues/3001#issuecomment-3449011021": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T17:02:37.633199+01:00"
   },
   "https://github.com/open-telemetry/community/issues/3022": {
     "StatusCode": 206,
