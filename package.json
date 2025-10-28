@@ -128,7 +128,7 @@
     "autoprefixer": "^10.4.21",
     "cspell": "^9.2.2",
     "gulp": "^5.0.1",
-    "hugo-extended": "0.151.2",
+    "hugo-extended": "0.152.2",
     "js-yaml": "^4.1.0",
     "markdown-it": "^14.1.0",
     "markdown-link-check": "^3.14.1",
@@ -163,11 +163,11 @@
   },
   "optionalDependencies": {
     "netlify-cli": "^23.9.5",
-    "npm-check-updates": "^19.1.1"
+    "npm-check-updates": "^19.1.2"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
-    "node": "22.x"
+    "node": ">=24"
   },
   "gitHubActionCacheKey": "2023-07-13 - change this key to force cache refresh",
   "private": true,
