@@ -105,7 +105,7 @@ configuration fields:
   `traceID`. Otherwise, if you use `service` as the value for `routing_key`, it
   exports spans based on their service name which is useful when using
   connectors like the [Span Metrics connector][spanmetrics-connector], so all
-  spans of a service will be send to the same downstream collector for metric
+  spans of a service will be sent to the same downstream collector for metric
   collection, guaranteeing accurate aggregations.
 
 The first-tier collector servicing the OTLP endpoint would be configured as
@@ -210,13 +210,13 @@ The following diagram shows an architecture for such a combined deployment:
 
 - We use the Collectors running in the agent deployment pattern (running on each
   host, similar to Kubernetes daemonsets) to collect telemetry from services
-  running on the host and host telemetry, such as host metrics and scrap logs.
+  running on the host and host telemetry, such as host metrics and scraped logs.
 - We use Collectors running in the gateway deployment pattern to process data,
   such as filtering, sampling, and exporting to backends etc.
 
 ![gateway](otel-gateway-arch.svg)
 
-This combined deployment pattern is necessary, when you use components in your
+This combined deployment pattern is necessary when you use components in your
 Collector that either need to be unique per host or that consume information
 that is only available on the same host as the application is running:
 
@@ -229,9 +229,9 @@ that is only available on the same host as the application is running:
 
 - Processors like the
   [`resourcedetectionprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
-  are used to add information about the host, the collector and the application
-  are running on. Running them within a Collector on a remote machine will
-  result in incorrect data.
+  are used to add information about the host that the collector and the
+  application are running on. Running them within a Collector on a remote
+  machine will result in incorrect data.
 
 ## Tradeoffs
 
