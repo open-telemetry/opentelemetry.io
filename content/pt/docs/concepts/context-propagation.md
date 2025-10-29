@@ -26,7 +26,7 @@ Quando o serviço A chama o serviço B, um ID de rastro (_trace ID_) e um ID de
 trecho (_span ID_) são incluídos como parte do contexto. O serviço B utiliza
 estes valores para criar um novo trecho que pertence ao mesmo rastro, definindo
 o trecho do serviço A como seu pai. Isso torna possível acompanhar todo o fluxo
-de uma requisição além dos limites entre serviços.
+de uma requisição através dos limites dos serviços.
 
 ## Propagação {#propagation}
 
