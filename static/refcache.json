@@ -19571,6 +19571,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-27T09:47:43.047936207Z"
   },
+  "https://vote.heliosvoting.org/helios/e/otel-gc-2025/vote": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-28T12:30:17.016517+01:00"
+  },
   "https://vote.heliosvoting.org/helios/elections/176e7ca8-647d-11ef-9b9a-2a30e2a223da/view": {
     "StatusCode": 200,
     "LastSeen": "2025-10-25T09:43:31.751381136Z"
