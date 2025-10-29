@@ -98,8 +98,8 @@ touch config.yaml
 ```
 
 For now, you just need a basic traces pipeline with the `otlp` receiver, the
-`otlp` and `debug` exporters, and optionally the `batch` processor. Here is
-what your `config.yaml` file should look like:
+`otlp` and `debug` exporters, and optionally the `batch` processor. Here is what
+your `config.yaml` file should look like:
 
 > config.yaml
 

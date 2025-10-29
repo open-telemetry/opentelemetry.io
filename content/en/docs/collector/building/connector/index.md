@@ -483,8 +483,7 @@ your own OpenTelemetry Collector binary. You can add or remove components
       output_path: ./otelcol-dev
 
     exporters:
-      - gomod:
-          go.opentelemetry.io/collector/exporter/debugexporter v0.129.0
+      - gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.129.0
 
     receivers:
       - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.129.0
