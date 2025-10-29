@@ -104,7 +104,7 @@ Kubernetesには、2つの異なる方法でOBIをデプロイできます。
           - SYS_RESOURCE # カーネル 5.11+では不要
     ```
 
-以下の例では、OBIをコンテナ(`otel/ebpf-instrument:main` で利用可能なイメージ)としてアタッチすることで `goblog` Podを計装します。
+以下の例では、OBIをコンテナ(`otel/ebpf-instrument:latest` で利用可能なイメージ)としてアタッチすることで `goblog` Podを計装します。
 自動計装ツールは、同じ名前空間の `otelcol` サービスの背後にあるアクセス可能なOpenTelemetryコレクターにメトリクスとトレースを転送するように構成されています。
 
 ```yaml
@@ -138,7 +138,7 @@ spec:
               name: https
         # OBIのサイドカーコンテナ - eBPF自動計装ツール
         - name: obi
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:latest
           securityContext: # eBPFプローブのインストールには特権が必要
             privileged: true
           env:
@@ -189,7 +189,7 @@ spec:
       serviceAccountName: obi # Kubernetesメタデータデコレーションが必要な場合
       containers:
         - name: autoinstrument
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:latest
           securityContext:
             privileged: true
           env:
@@ -250,7 +250,7 @@ spec:
       containers:
       - name: obi
         terminationMessagePolicy: FallbackToLogsOnError
-        image: otel/ebpf-instrument:main
+        image: otel/ebpf-instrument:latest
         env:
           - name: OTEL_EBPF_TRACE_PRINTER
             value: "text"
@@ -349,7 +349,7 @@ spec:
       hostPID: true # 重要！
       containers:
         - name: obi
-          image: otel/ebpf-instrument:main
+          image: otel/ebpf-instrument:latest
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true

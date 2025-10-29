@@ -112,7 +112,7 @@ spec:
         limits:
           memory: 120Mi
       terminationMessagePolicy: FallbackToLogsOnError
-      image: 'docker.io/otel/ebpf-instrument:main'
+      image: 'docker.io/otel/ebpf-instrument:latest'
       imagePullPolicy: 'Always'
       env:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
@@ -219,7 +219,7 @@ información para determinar el modo **lockdown**:
 services:
   ...
   obi:
-    image: 'docker.io/otel/ebpf-instrument:main'
+    image: 'docker.io/otel/ebpf-instrument:latest'
     environment:
       OTEL_EBPF_CONFIG_PATH: "/configs/obi-config.yml"
     volumes:
