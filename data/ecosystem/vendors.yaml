@@ -356,8 +356,8 @@
   commercial: true
 - name: Sentry
   nativeOTLP: true
-  url: https://sentry.io/for/opentelemetry/
-  contact:
+  url: https://docs.sentry.io/concepts/otlp/
+  contact: otel@sentry.io
   oss: false
   commercial: true
 - name: Red Hat
