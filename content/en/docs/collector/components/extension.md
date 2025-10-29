@@ -14,34 +14,34 @@ discovery. For more information on how to configure extensions, see the
 
 | Name                                                                                                                                                   | Distributions[^1]  | Stability[^2] |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ | ------------- |
-| [ackextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/ackextension)                                     | contrib, K8s       | alpha         |
+| [ackextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/ackextension)                                     | contrib, k8s       | alpha         |
 | [asapauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/asapauthextension)                           | contrib            | beta          |
 | [awsproxy](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/awsproxy)                                             | contrib            | beta          |
 | [azureauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/azureauthextension)                         | contrib            | alpha         |
-| [basicauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/basicauthextension)                         | contrib, K8s       | beta          |
-| [bearertokenauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/bearertokenauthextension)             | contrib, K8s       | beta          |
+| [basicauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/basicauthextension)                         | contrib, k8s       | beta          |
+| [bearertokenauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/bearertokenauthextension)             | contrib, k8s       | beta          |
 | [cgroupruntimeextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/cgroupruntimeextension)                 | contrib            | alpha         |
 | [datadogextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/datadogextension)                             | contrib            | alpha         |
 | [googleclientauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/googleclientauthextension)           | contrib            | beta          |
-| [headerssetterextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/headerssetterextension)                 | contrib, K8s       | alpha         |
-| [healthcheckextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/healthcheckextension)                     | contrib, core, K8s | alpha         |
+| [headerssetterextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/headerssetterextension)                 | contrib, k8s       | alpha         |
+| [healthcheckextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/healthcheckextension)                     | contrib, core, k8s | alpha         |
 | [healthcheckv2extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/healthcheckv2extension)                 | contrib            | development   |
-| [httpforwarderextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/httpforwarderextension)                 | contrib, K8s       | beta          |
+| [httpforwarderextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/httpforwarderextension)                 | contrib, k8s       | beta          |
 | [jaegerremotesampling](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/jaegerremotesampling)                     | contrib            | alpha         |
-| [k8sleaderelector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/k8sleaderelector)                             | contrib, K8s       | alpha         |
+| [k8sleaderelector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/k8sleaderelector)                             | contrib, k8s       | alpha         |
 | [memorylimiterextension](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/memorylimiterextension)                         | contrib            | development   |
-| [oauth2clientauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/oauth2clientauthextension)           | contrib, K8s       | beta          |
-| [oidcauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/oidcauthextension)                           | contrib, K8s       | beta          |
-| [opampextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/opampextension)                                 | contrib, K8s       | alpha         |
-| [pprofextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/pprofextension)                                 | contrib, core, K8s | beta          |
+| [oauth2clientauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/oauth2clientauthextension)           | contrib, k8s       | beta          |
+| [oidcauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/oidcauthextension)                           | contrib, k8s       | beta          |
+| [opampextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/opampextension)                                 | contrib, k8s       | alpha         |
+| [pprofextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/pprofextension)                                 | contrib, core, k8s | beta          |
 | [remotetapextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/remotetapextension)                         | contrib            | development   |
 | [sigv4authextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sigv4authextension)                         | contrib            | beta          |
 | [solarwindsapmsettingsextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/solarwindsapmsettingsextension) | contrib            | development   |
 | [sumologicextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sumologicextension)                         | contrib            | alpha         |
-| [zpagesextension](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/zpagesextension)                                       | contrib, core, K8s | beta          |
+| [zpagesextension](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/zpagesextension)                                       | contrib, core, k8s | beta          |
 
 [^1]:
-    Shows which distributions (core, contrib, K8s, etc.) include this component.
+    Shows which distributions (core, contrib, k8s, etc.) include this component.
 
 [^2]:
     For details about component stability levels, see the
