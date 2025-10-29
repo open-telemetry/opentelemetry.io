@@ -2,7 +2,7 @@
 title: Extensions
 aliases: [/docs/instrumentation/java/extensions]
 weight: 300
-cSpell:ignore: Dotel myextension Sonatype uber
+cSpell:ignore: Customizer Dotel myextension uber
 ---
 
 ## Introduction
@@ -26,6 +26,15 @@ the upstream agent without modifying the agent code. Consider an instrumented
 database client that creates a span per database call and extracts data from the
 database connection. Here are some sample use cases that can be solved using
 extensions:
+
+- _"I want to customize instrumentation without modifying the instrumentation"_:
+
+  The `InstrumenterCustomizerProvider` extension point allows you to customize
+  instrumentation behavior without modifying core instrumentation:
+  - Add custom attributes and metrics to existing instrumentations
+  - Customize context and correlation IDs
+  - Transform span names to match your naming conventions
+  - Apply customizations conditionally based on instrumentation name
 
 - _"I don't want this span at all"_:
 
@@ -277,33 +286,451 @@ task extendedAgent(type: Jar) {
 }
 ```
 
-### Troubleshooting
+## Writing an Extension
 
-#### "Task 'shadowJar' not found"
+Creating an extension involves implementing one or more Service Provider
+Interface (SPI) classes and packaging them as a JAR file.
 
-- Make sure the Shadow plugin is added to your `plugins` section
+### Quick Start
 
-#### "Could not resolve io.opentelemetry.javaagent"
+Here's a minimal extension that adds a custom span processor:
 
-- Verify the version number exists at
-  [Maven Central](https://central.sonatype.com/artifact/io.opentelemetry.javaagent/opentelemetry-javaagent)
-- If using a SNAPSHOT version, add the Sonatype snapshots repository:
+**1. Create a Gradle project:**
 
 ```groovy
+plugins {
+  id "java"
+  id "com.gradleup.shadow" version "9.2.2"
+}
+
 repositories {
   mavenCentral()
-  maven {
-    url = uri("https://oss.sonatype.org/content/repositories/snapshots")
+}
+
+dependencies {
+  // Use BOM to manage OpenTelemetry dependency versions
+  compileOnly(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))
+
+  // OpenTelemetry SDK autoconfiguration SPI (provided by agent)
+  compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi")
+
+  // OpenTelemetry SDK (needed for SpanProcessor and trace classes)
+  compileOnly("io.opentelemetry:opentelemetry-sdk")
+
+  // Annotation processor for automatic SPI registration
+  compileOnly("com.google.auto.service:auto-service:1.1.1")
+  annotationProcessor("com.google.auto.service:auto-service:1.1.1")
+
+  // Add any external dependencies with 'implementation' scope
+  // implementation("org.apache.commons:commons-lang3:3.19.0")
+}
+
+compileJava {
+  options.release.set(8)
+}
+
+tasks.assemble.dependsOn(tasks.shadowJar)
+```
+
+**2. Create the SpanProcessor:**
+
+```java
+package com.example.myextension;
+
+import io.opentelemetry.context.Context;
+import io.opentelemetry.sdk.trace.ReadWriteSpan;
+import io.opentelemetry.sdk.trace.ReadableSpan;
+import io.opentelemetry.sdk.trace.SpanProcessor;
+
+public class MySpanProcessor implements SpanProcessor {
+
+  @Override
+  public void onStart(Context parentContext, ReadWriteSpan span) {
+    // Add custom attributes when span starts
+    span.setAttribute("custom.processor", "active");
+  }
+
+  @Override
+  public boolean isStartRequired() {
+    return true;
+  }
+
+  @Override
+  public void onEnd(ReadableSpan span) {
+    // Process span when it ends (optional)
+  }
+
+  @Override
+  public boolean isEndRequired() {
+    return false;
   }
 }
 ```
 
-#### "How do I verify my extension is embedded?"
+**3. Create an extension class:**
 
-List the contents of the JAR to see the `extensions/` directory:
+```java
+package com.example.myextension;
+
+import com.google.auto.service.AutoService;
+import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizer;
+import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
+import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
+import io.opentelemetry.sdk.trace.SdkTracerProviderBuilder;
+
+@AutoService(AutoConfigurationCustomizerProvider.class)
+public class MyExtensionProvider implements AutoConfigurationCustomizerProvider {
+
+  @Override
+  public void customize(AutoConfigurationCustomizer config) {
+    config.addTracerProviderCustomizer(this::configureTracer);
+  }
+
+  private SdkTracerProviderBuilder configureTracer(
+      SdkTracerProviderBuilder tracerProvider, ConfigProperties config) {
+    return tracerProvider.addSpanProcessor(new MySpanProcessor());
+  }
+}
+```
+
+**4. Build the extension:**
 
 ```bash
-jar tf build/libs/opentelemetry-javaagent.jar | grep extensions/
+./gradlew shadowJar
+```
+
+**5. Use the extension:**
+
+```bash
+java -javaagent:opentelemetry-javaagent.jar \
+     -Dotel.javaagent.extensions=build/libs/my-extension-all.jar \
+     -jar myapp.jar
+```
+
+### Extension Points Overview
+
+OpenTelemetry Java agent provides multiple extension points through SPI
+interfaces:
+
+| Extension Point                       | Package                                                       | Purpose                                |
+| ------------------------------------- | ------------------------------------------------------------- | -------------------------------------- |
+| `AutoConfigurationCustomizerProvider` | `io.opentelemetry.sdk.autoconfigure.spi`                      | Main entry point for SDK customization |
+| `ConfigurablePropagatorProvider`      | `io.opentelemetry.sdk.autoconfigure.spi`                      | Register custom propagators            |
+| `ConfigurableSamplerProvider`         | `io.opentelemetry.sdk.autoconfigure.spi.traces`               | Register custom samplers               |
+| `ResourceProvider`                    | `io.opentelemetry.sdk.autoconfigure.spi`                      | Add custom resource attributes         |
+| `InstrumenterCustomizerProvider`      | `io.opentelemetry.instrumentation.api.incubator.instrumenter` | Customize existing instrumentations    |
+| `InstrumentationModule`               | `io.opentelemetry.javaagent.extension.instrumentation`        | Create new instrumentations            |
+
+### Dependency Management
+
+Extensions must carefully manage their dependencies to avoid conflicts with the
+agent and application.
+
+#### Dependencies Provided by Agent (use `compileOnly`)
+
+These APIs are available at runtime from the agent class loader:
+
+```groovy
+compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi")
+compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api")
+compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator")
+compileOnly("io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api")
+```
+
+#### Dependencies from Application Classpath (use `compileOnly`)
+
+When creating instrumentation, you need to reference classes from the target
+application. These should also be `compileOnly`:
+
+```groovy
+// Only accessible in Advice classes during instrumentation
+compileOnly("javax.servlet:javax.servlet-api:3.0.1")
+```
+
+#### External Runtime Dependencies (use `implementation`)
+
+Any external libraries your extension needs at runtime must use `implementation`
+scope and will be packaged into the shadow JAR:
+
+```groovy
+implementation("org.apache.commons:commons-lang3:3.19.0")
+implementation("com.google.guava:guava:33.0.0-jre")
+```
+
+**Critical:** Extensions cannot load dependencies from separate JAR files. All
+dependencies must be merged into a single shadow JAR.
+
+### Using @AutoService
+
+The `@AutoService` annotation automatically generates the required
+`META-INF/services/` files for SPI registration:
+
+```java
+import com.google.auto.service.AutoService;
+
+@AutoService(AutoConfigurationCustomizerProvider.class)
+public class MyExtension implements AutoConfigurationCustomizerProvider {
+  // Implementation
+}
+```
+
+This is equivalent to manually creating
+`META-INF/services/io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider`
+with your class name, but much more maintainable.
+
+---
+
+## Extension Point Reference
+
+### AutoConfigurationCustomizerProvider
+
+The main entry point for customizing SDK configuration. This allows you to:
+
+- Customize the tracer provider
+- Add span processors and exporters
+- Provide default configuration properties
+- Customize other SDK components
+
+**Example:**
+
+```java
+import com.google.auto.service.AutoService;
+import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizer;
+import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
+import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
+import io.opentelemetry.sdk.trace.SdkTracerProviderBuilder;
+import io.opentelemetry.sdk.trace.SpanLimits;
+import java.util.HashMap;
+import java.util.Map;
+
+@AutoService(AutoConfigurationCustomizerProvider.class)
+public class MyExtension implements AutoConfigurationCustomizerProvider {
+
+  @Override
+  public void customize(AutoConfigurationCustomizer config) {
+    config
+        .addTracerProviderCustomizer(this::configureTracer)
+        .addPropertiesSupplier(this::getDefaultProperties);
+  }
+
+  private SdkTracerProviderBuilder configureTracer(
+      SdkTracerProviderBuilder tracerProvider, ConfigProperties config) {
+    return tracerProvider
+        .setIdGenerator(new MyIdGenerator())
+        .setSpanLimits(SpanLimits.builder().setMaxNumberOfAttributes(1024).build())
+        .addSpanProcessor(new MySpanProcessor());
+  }
+
+  private Map<String, String> getDefaultProperties() {
+    Map<String, String> properties = new HashMap<>();
+    properties.put("otel.exporter.otlp.endpoint", "http://my-backend:8080");
+    properties.put("otel.service.name", "my-service");
+    return properties;
+  }
+}
+```
+
+### InstrumenterCustomizerProvider
+
+Customize existing instrumentations without modifying their code. This is the
+recommended way to add attributes, metrics, or modify behavior of built-in
+instrumentations.
+
+**Example:**
+
+```java
+import com.google.auto.service.AutoService;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.common.AttributesBuilder;
+import io.opentelemetry.context.Context;
+import io.opentelemetry.instrumentation.api.incubator.instrumenter.InstrumenterCustomizer;
+import io.opentelemetry.instrumentation.api.incubator.instrumenter.InstrumenterCustomizerProvider;
+import io.opentelemetry.instrumentation.api.instrumenter.AttributesExtractor;
+
+@AutoService(InstrumenterCustomizerProvider.class)
+public class MyInstrumenterCustomizer implements InstrumenterCustomizerProvider {
+
+  @Override
+  public void customize(InstrumenterCustomizer customizer) {
+    String instrumentationName = customizer.getInstrumentationName();
+
+    // Target specific instrumentation
+    if (instrumentationName.contains("http-server")) {
+      customizer.addAttributesExtractor(new MyAttributesExtractor());
+    }
+  }
+
+  private static class MyAttributesExtractor implements AttributesExtractor<Object, Object> {
+    private static final AttributeKey<String> CUSTOM_ATTR =
+        AttributeKey.stringKey("custom.attribute");
+
+    @Override
+    public void onStart(AttributesBuilder attributes, Context context, Object request) {
+      attributes.put(CUSTOM_ATTR, "custom-value");
+    }
+
+    @Override
+    public void onEnd(AttributesBuilder attributes, Context context,
+                     Object request, Object response, Throwable error) {
+      if (error != null) {
+        attributes.put(AttributeKey.stringKey("error.type"),
+                      error.getClass().getSimpleName());
+      }
+    }
+  }
+}
+```
+
+### ConfigurablePropagatorProvider
+
+Register custom propagators that can be referenced by name in the
+`otel.propagators` configuration.
+
+**Example:**
+
+```java
+import com.google.auto.service.AutoService;
+import io.opentelemetry.context.propagation.TextMapPropagator;
+import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
+import io.opentelemetry.sdk.autoconfigure.spi.ConfigurablePropagatorProvider;
+
+@AutoService(ConfigurablePropagatorProvider.class)
+public class MyPropagatorProvider implements ConfigurablePropagatorProvider {
+
+  @Override
+  public TextMapPropagator getPropagator(ConfigProperties config) {
+    return new MyCustomPropagator();
+  }
+
+  @Override
+  public String getName() {
+    // Use with: -Dotel.propagators=my-propagator
+    return "my-propagator";
+  }
+}
+```
+
+### ConfigurableSamplerProvider
+
+Register custom samplers that can be referenced in the `otel.traces.sampler`
+configuration.
+
+**Example:**
+
+```java
+import com.google.auto.service.AutoService;
+import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
+import io.opentelemetry.sdk.autoconfigure.spi.traces.ConfigurableSamplerProvider;
+import io.opentelemetry.sdk.trace.samplers.Sampler;
+
+@AutoService(ConfigurableSamplerProvider.class)
+public class MySamplerProvider implements ConfigurableSamplerProvider {
+
+  @Override
+  public Sampler createSampler(ConfigProperties config) {
+    // Access configuration
+    double samplingRate = config.getDouble("otel.traces.sampler.arg", 1.0);
+    return new MyCustomSampler(samplingRate);
+  }
+
+  @Override
+  public String getName() {
+    // Use with: -Dotel.traces.sampler=my-sampler
+    return "my-sampler";
+  }
+}
+```
+
+### ResourceProvider
+
+Add custom resource attributes that will be automatically merged with other
+resource providers.
+
+**Example:**
+
+```java
+import com.google.auto.service.AutoService;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
+import io.opentelemetry.sdk.autoconfigure.spi.ResourceProvider;
+import io.opentelemetry.sdk.resources.Resource;
+
+@AutoService(ResourceProvider.class)
+public class MyResourceProvider implements ResourceProvider {
+
+  @Override
+  public Resource createResource(ConfigProperties config) {
+    return Resource.create(
+        Attributes.builder()
+            .put("deployment.environment", "production")
+            .put("service.version", getVersion())
+            .put("custom.attribute", "value")
+            .build()
+    );
+  }
+
+  private String getVersion() {
+    // Retrieve version from environment, file, etc.
+    return System.getenv().getOrDefault("APP_VERSION", "unknown");
+  }
+}
+```
+
+## Application-Agent Communication
+
+### Accessing the Current Span
+
+In instrumentation advice classes, use `Java8BytecodeBridge` to access the
+current span:
+
+```java
+import io.opentelemetry.javaagent.bootstrap.Java8BytecodeBridge;
+import io.opentelemetry.api.trace.Span;
+import net.bytebuddy.asm.Advice;
+
+public static class MyAdvice {
+
+  @Advice.OnMethodEnter(suppress = Throwable.class)
+  public static void onEnter(@Advice.Argument(0) Object request) {
+    Span span = Java8BytecodeBridge.currentSpan();
+
+    // Get trace context
+    String traceId = span.getSpanContext().getTraceId();
+    String spanId = span.getSpanContext().getSpanId();
+
+    // Add attributes
+    span.setAttribute("custom.attribute", "value");
+
+    // Add events
+    span.addEvent("custom.event");
+  }
+}
+```
+
+### Sharing Data via Context
+
+Use the OpenTelemetry `Context` API to share data throughout the request
+lifecycle:
+
+```java
+import io.opentelemetry.context.Context;
+import io.opentelemetry.context.ContextKey;
+import io.opentelemetry.instrumentation.api.instrumenter.ContextCustomizer;
+
+public class MyContextCustomizer implements ContextCustomizer<Object> {
+  private static final ContextKey<String> REQUEST_ID_KEY =
+      ContextKey.named("myext.request.id");
+
+  @Override
+  public Context onStart(Context context, Object request, Attributes startAttributes) {
+    String requestId = generateRequestId(request);
+    return context.with(REQUEST_ID_KEY, requestId);
+  }
+}
+
+// Later, retrieve the value
+String requestId = Context.current().get(REQUEST_ID_KEY);
 ```
 
 ## Writing Custom Instrumentation
@@ -437,49 +864,6 @@ public class DatabaseClientInstrumentation implements TypeInstrumentation {
     }
   }
 }
-```
-
-### Using Helper Classes for Debugging
-
-As noted in the [Debugging Advice Classes](#debugging-advice-classes) section,
-breakpoints don't work in `@Advice` methods because ByteBuddy inlines them. Use
-helper classes to enable debugging:
-
-```java
-public class DatabaseClientInstrumentation implements TypeInstrumentation {
-  // ... typeMatcher and transform methods ...
-
-  public static class ExecuteQueryAdvice {
-    @Advice.OnMethodEnter(suppress = Throwable.class)
-    public static void onEnter(@Advice.Argument(0) String query) {
-      // Call helper method where breakpoints WILL work
-      AdviceHelper.processQuery(query);
-    }
-  }
-}
-
-// Separate helper class - debuggable with breakpoints
-class AdviceHelper {
-  public static void processQuery(String query) {
-    // Set breakpoints here - they will work
-    Span span = Java8BytecodeBridge.currentSpan();
-    span.setAttribute("db.query", query);
-  }
-}
-```
-
-### Accessing the Current Span
-
-Use `Java8BytecodeBridge` to access OpenTelemetry APIs from advice code:
-
-```java
-import io.opentelemetry.api.trace.Span;
-import io.opentelemetry.javaagent.bootstrap.Java8BytecodeBridge;
-
-Span span = Java8BytecodeBridge.currentSpan();
-span.setAttribute("custom.attribute", "value");
-
-Tracer tracer = Java8BytecodeBridge.getGlobalTracer();
 ```
 
 ### Important Considerations
