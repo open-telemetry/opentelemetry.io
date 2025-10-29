@@ -37,7 +37,7 @@ recompilar a aplicação e oferece interoperabilidade entre linguagens.
 [inicializador _Spring_](/docs/zero-code/java/spring-boot-starter/) configuram
 automaticamente o SDK utilizando o módulo de
 [autoconfiguração sem código](#zero-code-sdk-autoconfigure), e instalam
-instrumentação com ele. Todo o conteúdo de autoconfiguração se aplica aos
+instrumentação com esse módulo. Todo o conteúdo de autoconfiguração se aplica aos.
 usuários do agente Java e do inicializador do Spring. {{% /alert %}}
 
 ## Configuração programática {#programmatic-configuration}
