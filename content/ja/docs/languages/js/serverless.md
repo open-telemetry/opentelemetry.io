@@ -2,7 +2,7 @@
 title: サーバーレス
 weight: 100
 description: OpenTelemetry JavaScriptでサーバーレス関数をインストルメント
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91 # patched
 cSpell:ignore: otelwrapper
 ---
 
@@ -182,7 +182,7 @@ Lambda関数からOpenTelemetryによって生成されたトレースをバッ�
 
 ## GCP function {#gcp-function}
 
-以下では、Google Cloud Platform（GCP）UIを使用して[HTTPトリガー関数](https://cloud.google.com/functions/docs/writing/write-http-functions)を計装する方法を示します。
+以下では、Google Cloud Platform（GCP）UIを使用して[HTTPトリガー関数](https://docs.cloud.google.com/run/docs/write-functions)を計装する方法を示します。
 
 ### 関数の作成 {#creating-function}
 
