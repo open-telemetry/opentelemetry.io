@@ -936,10 +936,10 @@ adequado para cada caso de uso:
 
 **[1]**: Reagregação espacial é o processo de mesclar fluxos de atributos
 descartando atributos que não são necessários. Por exemplo, dadas séries com
-atributos `{"color": "red", "shape": "square"}`,
-`{"color": "blue", "shape": "square"}`, você pode realizar reagregação espacial
-descartando o atributo `color` e mesclando as séries cujos os atributos são
-iguais após descartar `color`. A maioria das agregações possui uma função útil
+atributos `{"cor": "vermelha", "forma": "quadrada"}`,
+`{"cor": "azul", "forma": "quadrada"}`, você pode realizar reagregação espacial
+descartando o atributo `cor` e mesclando as séries cujos os atributos são
+iguais após descartar `cor`. A maioria das agregações possui uma função útil
 de mescla espacial (ou seja, somas são somadas), mas medidores _(gauges)_
 agregados por `LastValue` são a exceção. Por exemplo, suponha que as séries
 mencionadas anteriormente estejam rastreando a temperatura de _widgets_. Como
