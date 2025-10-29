@@ -54,18 +54,21 @@ service:
                 endpoint: https://backend:4318
 ```
 
-If you want to add additional resource attributes to the OTLP metrics, 
-you can add them with `service.telemetry.resource`:
+If you'd like to add additional resource attributes to the Collector's internal 
+telemetry signals (traces, metrics, and logs) you can set them under
+`service::telemetry::resource`:
 
 ```yaml
 service:
   telemetry:
     resource:
-      k8s.pod.name: ${env:K8S_POD_NAME}
-    metrics:
-      readers:
-        ...
+      attribute_key: 'attribute_value'
 ```
+
+`service.name`, `service.version`, and `service.instance.id` (randomly generated)
+resource attributes will be automatically attached to the Collector's internal
+telemetry signals. These can be disabled by setting the the attribute value to `null` 
+(ex. `service.name: null`).
 
 #### Prometheus endpoint for internal metrics
 Alternatively, you can expose the Prometheus endpoint to one specific or all
