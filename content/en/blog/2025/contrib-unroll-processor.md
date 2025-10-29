@@ -12,14 +12,14 @@ cSpell:ignore: Bindplane CloudWatch OTTL schmikei VPC
 The idea for unrolling bundled logs inside the OpenTelemetry Collector didn't
 start with a processor.
 
-By "unrolling," I mean taking a single log record that contains multiple
-logical events—for instance, a JSON array with ten log entries—and expanding
-it into ten separate log records, one for each event. This lets you work with
-individual log entries rather than bundled payloads.
+By "unrolling," I mean taking a single log record that contains multiple logical
+events—for instance, a JSON array with ten log entries—and expanding it into ten
+separate log records, one for each event. This lets you work with individual log
+entries rather than bundled payloads.
 
-When the Collector Sig first discussed the problem of how to handle
-logs that contain multiple logical events in a single body, like a JSON array,
-the initial instinct was to solve it with an
+When the Collector Sig first discussed the problem of how to handle logs that
+contain multiple logical events in a single body, like a JSON array, the initial
+instinct was to solve it with an
 [OTTL (OpenTelemetry Transform Language) function inside the transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41791).
 
 And that made sense to me at first glance. OTTL is powerful, flexible, and can
