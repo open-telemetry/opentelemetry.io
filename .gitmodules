@@ -24,7 +24,7 @@
 [submodule "content-modules/opamp-spec"]
 	path = content-modules/opamp-spec
 	url = https://github.com/open-telemetry/opamp-spec
-	opamp-pin = v0.10.0
+	opamp-pin = v0.14.0
 [submodule "content-modules/opentelemetry-go"]
 	path = content-modules/opentelemetry-go
 	url = https://github.com/open-telemetry/opentelemetry-go
