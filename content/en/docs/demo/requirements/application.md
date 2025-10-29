@@ -1,6 +1,6 @@
 ---
 title: Application Requirements
-title: Application
+linkTitle: Application
 aliases: [application_requirements]
 ---
 
