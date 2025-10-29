@@ -3,7 +3,7 @@ title: Building a receiver
 weight: 20
 aliases: [/docs/collector/trace-receiver/]
 # prettier-ignore
-cSpell:ignore: backendsystem crand debugexporter loggingexporter mapstructure pcommon pdata protogen ptrace rcvr struct structs tailtracer telemetrygen uber
+cSpell:ignore: backendsystem crand debugexporter mapstructure pcommon pdata protogen ptrace rcvr struct structs tailtracer telemetrygen uber
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
@@ -98,7 +98,7 @@ touch config.yaml
 ```
 
 For now, you just need a basic traces pipeline with the `otlp` receiver, the
-`otlp` and `debug`[^1] exporters, and optionally the `batch` processor. Here is
+`otlp` and `debug` exporters, and optionally the `batch` processor. Here is
 what your `config.yaml` file should look like:
 
 > config.yaml
@@ -114,7 +114,6 @@ processors:
   batch:
 
 exporters:
-  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:
     verbosity: detailed
   otlp/jaeger:
@@ -1050,7 +1049,6 @@ processors:
   batch:
 
 exporters:
-  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:
     verbosity: detailed
   otlp/jaeger:
@@ -2687,5 +2685,3 @@ Here is the detailed view of one of those traces in Jaeger:
 
 That's it! You have now reached the end of this tutorial and successfully
 implemented a trace receiver, congratulations!
-
-[^1]: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
