@@ -107,7 +107,7 @@ _Spring_. {{% /alert %}}
 para encerrar o SDK quando apropriado. Como o OpenTelemetry Java
 [utiliza `java.util.logging` para logs internos](../sdk/#internal-logging),
 alguns logs podem ser suprimidos durante a execução dos _shutdown hooks_. Isso é
-um bug do próprio JDK, e não algo sob controle do OpenTelemetry Java. Caso você
+um _bug_ do próprio JDK, e não algo sob controle do OpenTelemetry Java. Caso você
 precise de logs durante a execução dos _shutdown hooks_, considere utilizar
 `System.out` ao invés de um _framework_ de _logging_ que pode se encerrar antes
 e, assim, suprimir suas mensagens de log. Para mais detalhes, consulte este
