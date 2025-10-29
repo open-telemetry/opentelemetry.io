@@ -26,3 +26,4 @@ semconv/docs/gen-ai/openai.md: cannot resolve spec link reference '/docs/specs/s
 semconv/docs/registry/attributes/gen-ai.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-input-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-input-messages.json)
 semconv/docs/registry/attributes/gen-ai.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-output-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-output-messages.json)
 semconv/docs/registry/attributes/gen-ai.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json' (/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json)
+semconv/docs/gen-ai/non-normative/examples-llm-calls.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-input-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-input-messages.json)
