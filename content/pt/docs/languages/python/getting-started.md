@@ -2,8 +2,7 @@
 title: Primeiros Passos
 description: Obtenha telemetria para sua aplicação em menos de 5 minutos!
 weight: 10
-default_lang_commit: 43e2cb3b4d0dd513b436add73236503a8d592b39
-drifted_from_default: true
+default_lang_commit: f49ec57e5a0ec766b07c7c8e8974c83531620af3
 # prettier-ignore
 cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
 ---
@@ -466,7 +465,7 @@ def roll_dice():
         # Isso adiciona 1 ao contador para o valor de jogada dado
         roll_counter.add(1, {"roll.value": result})
         if player:
-            logger.warn("{} esta jogando os dados: {}", player, result)
+            logger.warn("%s esta jogando os dados: %s", player, result)
         else:
             logger.warn("Jogador anonimo esta jogando os dados: %s", result)
         return result
