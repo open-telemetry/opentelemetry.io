@@ -653,7 +653,7 @@ aceitar `OpenTelemetry` como argumento de inicialização e padronizar para a
 [implementação Noop](#noop-implementation) caso não seja configurado. Há uma
 exceção a esta regra: a instância `OpenTelemetry` instalada pelo
 [Java agent](/docs/zero-code/java/agent/) está disponível via
-`GlobalOpenTelemetry`. Usuários que adicional instrumentação manual extra são
+`GlobalOpenTelemetry`. Usuários que possuem instrumentação manual adicional são
 encorajados a acessá-la via `GlobalOpenTelemetry.get()`.
 
 `GlobalOpenTelemetry.get()` é garantido para sempre retornar o mesmo resultado.
