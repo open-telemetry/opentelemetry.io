@@ -12843,6 +12843,18 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-26T09:41:42.09850775Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-29T16:56:41.513701-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/rpc-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-29T16:56:42.751182-04:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/rpc-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-29T16:56:43.388133-04:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:09:30.697566826Z"
@@ -12974,6 +12986,10 @@
   "https://github.com/open-telemetry/semantic-conventions/tree/v1.37.0//model/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-10-26T09:41:31.253374286Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.38.0//model/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-29T16:56:39.94928-04:00"
   },
   "https://github.com/open-telemetry/sig-contributor-experience": {
     "StatusCode": 206,
@@ -20482,6 +20498,10 @@
   "https://www.hyperdx.io/docs/install/opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:32:55.870208982Z"
+  },
+  "https://www.iana.org/assignments/media-types/media-types.xhtml": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-29T16:56:41.659829-04:00"
   },
   "https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids": {
     "StatusCode": 200,
