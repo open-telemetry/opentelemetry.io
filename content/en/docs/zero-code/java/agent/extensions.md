@@ -224,6 +224,9 @@ tasks {
 }
 ```
 
+For a complete example, reference the gradle file from the
+[extension example](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/build.gradle).
+
 ### Building and Using the Extended Agent
 
 Once you've added the `extendedAgent` task to your `build.gradle`:
@@ -731,6 +734,96 @@ public class MyContextCustomizer implements ContextCustomizer<Object> {
 
 // Later, retrieve the value
 String requestId = Context.current().get(REQUEST_ID_KEY);
+```
+
+## Configuration
+
+Extensions can read and provide configuration to customize their behavior.
+
+### Accessing Configuration in Extensions
+
+Many SPI methods receive a `ConfigProperties` parameter that allows you to read
+configuration:
+
+```java
+@Override
+public Sampler createSampler(ConfigProperties config) {
+  // Read configuration with defaults
+  String endpoint = config.getString("otel.exporter.otlp.endpoint", "http://localhost:4317");
+  int threshold = config.getInt("otel.instrumentation.myext.threshold", 100);
+  boolean enabled = config.getBoolean("otel.instrumentation.myext.enabled", true);
+  return new MySampler(endpoint, threshold, enabled);
+}
+```
+
+### Providing Default Configuration
+
+Extensions can provide default configuration values that will be used if not
+overridden:
+
+```java
+@Override
+public void customize(AutoConfigurationCustomizer config) {
+  config.addPropertiesSupplier(() -> {
+    Map<String, String> props = new HashMap<>();
+    props.put("otel.exporter.otlp.endpoint", "http://my-backend:8080");
+    props.put("otel.service.name", "my-service");
+    props.put("otel.instrumentation.myext.enabled", "true");
+    return props;
+  });
+}
+```
+
+### Configuration Naming Conventions
+
+Follow these conventions for configuration parameter names:
+
+Standard OpenTelemetry properties use an `otel.*` prefix
+
+- `otel.service.name`
+- `otel.traces.sampler`
+- `otel.exporter.otlp.endpoint`
+
+Instrumentation-specific properties use `otel.instrumentation.<name>.*`
+
+- `otel.instrumentation.cassandra.enabled`
+- `otel.instrumentation.jdbc.statement-sanitizer.enabled`
+
+Extension-specific properties follow the same pattern
+
+- `otel.instrumentation.myextension.enabled`
+- `otel.instrumentation.myextension.threshold`
+- `otel.instrumentation.myextension.custom-value`
+
+### Example: Configurable Sampler
+
+```java
+@AutoService(ConfigurableSamplerProvider.class)
+public class MyConfigurableSamplerProvider implements ConfigurableSamplerProvider {
+  @Override
+  public Sampler createSampler(ConfigProperties config) {
+    double ratio = config.getDouble("otel.instrumentation.mysampler.ratio", 1.0);
+    boolean debug = config.getBoolean("otel.instrumentation.mysampler.debug", false);
+    if (debug) {
+      System.out.println("MyConfigurableSampler: ratio=" + ratio + ", debug=" + debug);
+    }
+    return Sampler.traceIdRatioBased(ratio);
+  }
+  @Override
+  public String getName() {
+    return "mysampler";
+  }
+}
+```
+
+Usage:
+
+```bash
+java -javaagent:opentelemetry-javaagent.jar \
+     -Dotel.traces.sampler=mysampler \
+     -Dotel.instrumentation.mysampler.ratio=0.1 \
+     -Dotel.instrumentation.mysampler.debug=true \
+     -jar myapp.jar
 ```
 
 ## Writing Custom Instrumentation

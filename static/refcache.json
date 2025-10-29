@@ -9383,6 +9383,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:30:24.240086899Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/build.gradle": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-29T05:45:23.341948-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/src/main/java/com/example/javaagent/instrumentation/DemoServlet3InstrumentationModule.java": {
     "StatusCode": 206,
     "LastSeen": "2025-10-28T16:52:57.193388-04:00"
