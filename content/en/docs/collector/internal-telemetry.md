@@ -33,6 +33,7 @@ By default, the Collector exposes its own telemetry in two ways:
 ### Configure internal metrics
 
 #### OTLP exporter for internal metrics
+
 You can configure how internal metrics are generated and exposed by the
 Collector. By default, the Collector generates basic metrics about itself and
 exposes them using the OpenTelemetry Go
@@ -54,7 +55,7 @@ service:
                 endpoint: https://backend:4318
 ```
 
-If you'd like to add additional resource attributes to the Collector's internal 
+If you'd like to add additional resource attributes to the Collector's internal
 telemetry signals (traces, metrics, and logs) you can set them under
 `service::telemetry::resource`:
 
@@ -65,12 +66,13 @@ service:
       attribute_key: 'attribute_value'
 ```
 
-`service.name`, `service.version`, and `service.instance.id` (randomly generated)
-resource attributes will be automatically attached to the Collector's internal
-telemetry signals. These can be disabled by setting the the attribute value to `null` 
-(ex. `service.name: null`).
+`service.name`, `service.version`, and `service.instance.id` (randomly
+generated) resource attributes will be automatically attached to the Collector's
+internal telemetry signals. These can be disabled by setting the the attribute
+value to `null` (ex. `service.name: null`).
 
 #### Prometheus endpoint for internal metrics
+
 Alternatively, you can expose the Prometheus endpoint to one specific or all
 network interfaces when needed. For containerized environments, you might want
 to expose this port on a public interface.
@@ -109,6 +111,7 @@ resource:
 ```
 
 #### Service address
+
 {{% alert title="Internal telemetry configuration changes" %}}
 
 As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
@@ -127,6 +130,7 @@ service:
 {{% /alert %}}
 
 #### Metric verbosity
+
 You can adjust the verbosity of the Collector metrics output by setting the
 `level` field to one of the following values:
 
@@ -150,6 +154,7 @@ service:
 ```
 
 #### Metric views
+
 You can further configure how metrics from the Collector are emitted by using
 [`views`](/docs/specs/otel/metrics/sdk/#view). For example, the following
 configuration updates the metric named `otelcol_process_uptime` to emit a new
