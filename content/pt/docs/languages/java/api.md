@@ -938,13 +938,13 @@ adequado para cada caso de uso:
 descartando atributos que não são necessários. Por exemplo, dadas séries com
 atributos `{"cor": "vermelha", "forma": "quadrada"}`,
 `{"cor": "azul", "forma": "quadrada"}`, você pode realizar reagregação espacial
-descartando o atributo `cor` e mesclando as séries cujos os atributos são
-iguais após descartar `cor`. A maioria das agregações possui uma função útil
-de mescla espacial (ou seja, somas são somadas), mas medidores _(gauges)_
-agregados por `LastValue` são a exceção. Por exemplo, suponha que as séries
-mencionadas anteriormente estejam rastreando a temperatura de _widgets_. Como
-você mescla as séries quando descarta o atributo `color`? Não há uma boa
-resposta além de selecionar um valor aleatório.
+descartando o atributo `cor` e mesclando as séries cujos os atributos são iguais
+após descartar `cor`. A maioria das agregações possui uma função útil de mescla
+espacial (ou seja, somas são somadas), mas medidores _(gauges)_ agregados por
+`LastValue` são a exceção. Por exemplo, suponha que as séries mencionadas
+anteriormente estejam rastreando a temperatura de _widgets_. Como você mescla as
+séries quando descarta o atributo `color`? Não há uma boa resposta além de
+selecionar um valor aleatório.
 
 As APIs dos instrumentos compartilham diversas características:
 
