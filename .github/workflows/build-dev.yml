@@ -43,7 +43,7 @@ jobs:
           GET: no # For details, see: https://opentelemetry.io/docs/contributing/development/#submodule-changes
           PIN_SKIP: ${{ inputs.submodule_path_regex }}
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: build-log-etc
           path: |
@@ -57,7 +57,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with: { name: build-log-etc }
       - name: Fail when refcache contains entries with HTTP status 4XX
         run: |
@@ -74,7 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v6
         with: { name: build-log-etc }
       - run: cat tmp/build-log.txt
       - run: scripts/check-build-log.sh
