@@ -6,11 +6,7 @@ description:
 default_lang_commit: 9a1f7271288a46049ae28785f04a67fb77f677f7
 ---
 
-Com a propagação de contexto, os [sinais](../signals/) podem ser correlacionados
-entre si, independentemente de onde são gerados. Embora não se limite ao
-rastreamento, a propagação de contexto permite que os
-[rastros](../signals/traces/) criem informações causais sobre um sistema que é
-distribuído arbitrariamente entre processos e limites de rede.
+Com a propagação de contexto, os [sinais](../signals/) podem ser correlacionados entre si, independentemente de onde são gerados. Embora não se limite ao rastreamento, a propagação de contexto permite que os [rastros](../signals/traces/) criem informações causais sobre um sistema que é distribuído arbitrariamente entre processos e limites de rede.
 
 Para compreender a propagação de contexto, você precisa entender dois conceitos
 distintos: contexto e propagação.
