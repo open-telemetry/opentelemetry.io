@@ -2,12 +2,11 @@
 title: OpenTelemetry
 description: >-
   高质量、普遍适用和可移植的遥测助你实现有效的可观测
-show_banner: true
-developer_note:
+developer_note: >
   下文所用的 blocks/cover 短代码将使用文件名中包含 "background"
   的图像文件作为背景图。
 show_banner: true
-default_lang_commit: c2cd5b14
+default_lang_commit: c2cd5b14 # patched
 drifted_from_default: true
 ---
 
