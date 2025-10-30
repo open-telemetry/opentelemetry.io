@@ -8247,6 +8247,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:30:07.862606623Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#sending-queue-batch-settings": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-30T09:02:03.367864809Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/nopexporter": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:15:05.299270915Z"

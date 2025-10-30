@@ -287,7 +287,8 @@ The Collector might drop data for a variety of reasons, but the most common are:
 
 To mitigate drops, configure the
 [queued retry options](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#configuration)
-on enabled exporters, in particular the [Sending queue batch settings](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#sending-queue-batch-settings).
+on enabled exporters, in particular the
+[Sending queue batch settings](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#sending-queue-batch-settings).
 
 #### Collector is not receiving data
 
