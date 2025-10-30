@@ -175,7 +175,7 @@ presets:
     enabled: true
 ## The chart only includes the debugexporter by default
 ## If you want to send your data somewhere you need to
-## configure an exporter, such as the otlpexporter
+## configure an exporter, such as the otlp exporter
 # config:
 #   exporters:
 #     otlp:
