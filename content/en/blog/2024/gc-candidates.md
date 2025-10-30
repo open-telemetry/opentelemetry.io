@@ -4,7 +4,7 @@ title:
 linkTitle: 2024 GC Candidates
 date: 2024-10-15
 author: OpenTelemetry Governance Committee
-cSpell:ignore: Baeyens Danielson Marylia
+cSpell:ignore: Baeyens Danielson
 ---
 
 The OpenTelemetry election committee is excited to announce the final list of
