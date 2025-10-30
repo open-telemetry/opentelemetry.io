@@ -116,7 +116,7 @@
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 999} && git submodule foreach 'git fetch $(git remote | tail -1) --tags'"
   },
   "devDependencies": {
-    "@cspell/dict-bn": "^1.0.3",
+    "@cspell/dict-bn": "^1.0.4",
     "@cspell/dict-es-es": "^3.0.8",
     "@cspell/dict-fr-fr": "^2.3.2",
     "@cspell/dict-pt-br": "^2.4.2",
@@ -126,9 +126,9 @@
     "ajv-errors": "^3.0.0",
     "ajv-formats": "^3.0.1",
     "autoprefixer": "^10.4.21",
-    "cspell": "^9.2.1",
+    "cspell": "^9.2.2",
     "gulp": "^5.0.1",
-    "hugo-extended": "0.151.0",
+    "hugo-extended": "0.152.2",
     "js-yaml": "^4.1.0",
     "markdown-it": "^14.1.0",
     "markdown-link-check": "^3.14.1",
@@ -136,8 +136,8 @@
     "markdownlint-cli2": "^0.18.1",
     "postcss-cli": "^11.0.1",
     "prettier": "3.6.2",
-    "puppeteer": "^24.25.0",
-    "puppeteer-core": "^24.25.0",
+    "puppeteer": "^24.26.1",
+    "puppeteer-core": "^24.26.1",
     "require-dir": "^1.2.0",
     "textlint": "^15.2.3",
     "textlint-filter-rule-allowlist": "^4.0.0",
@@ -149,25 +149,25 @@
   },
   "dependencies": {
     "@opentelemetry/api": "^1.9.0",
-    "@opentelemetry/auto-instrumentations-web": "^0.52.0",
-    "@opentelemetry/context-zone": "^2.1.0",
-    "@opentelemetry/core": "^2.1.0",
-    "@opentelemetry/exporter-trace-otlp-http": "^0.206.0",
-    "@opentelemetry/instrumentation": "^0.206.0",
-    "@opentelemetry/resources": "^2.1.0",
-    "@opentelemetry/sdk-trace-base": "^2.1.0",
-    "@opentelemetry/sdk-trace-web": "^2.1.0",
+    "@opentelemetry/auto-instrumentations-web": "^0.53.0",
+    "@opentelemetry/context-zone": "^2.2.0",
+    "@opentelemetry/core": "^2.2.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.207.0",
+    "@opentelemetry/instrumentation": "^0.207.0",
+    "@opentelemetry/resources": "^2.2.0",
+    "@opentelemetry/sdk-trace-base": "^2.2.0",
+    "@opentelemetry/sdk-trace-web": "^2.2.0",
     "@opentelemetry/semantic-conventions": "^1.37.0",
     "minisearch": "^7.2.0",
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^23.9.1",
-    "npm-check-updates": "^19.1.1"
+    "netlify-cli": "^23.9.5",
+    "npm-check-updates": "^19.1.2"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
   "engines": {
-    "node": "22.x"
+    "node": ">=24"
   },
   "gitHubActionCacheKey": "2023-07-13 - change this key to force cache refresh",
   "private": true,

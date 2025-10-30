@@ -5,8 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: Instrumentação manual para OpenTelemetry Go
-default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b
-drifted_from_default: true
+default_lang_commit: 351727ae36f706eb80583ada2b589de263aa72c2
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup updown
 ---
 
@@ -28,7 +27,7 @@ go get go.opentelemetry.io/otel \
   go.opentelemetry.io/otel/sdk \
 ```
 
-Em seguida, inicialize um exporter, recursos, tracer provider e finalmente o
+Em seguida, inicialize um exporter, recursos, Tracer provider e finalmente o
 rastreador.
 
 ```go
@@ -42,7 +41,7 @@ import (
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/sdk/resource"
 	sdktrace "go.opentelemetry.io/otel/sdk/trace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 	"go.opentelemetry.io/otel/trace"
 )
 
@@ -94,6 +93,15 @@ func main() {
 ```
 
 Agora você pode acessar `tracer` para instrumentar manualmente o seu código.
+
+{{% alert title="Importante" color="warning" %}}
+
+Se você estiver adicionando trechos manuais em conjunto com a
+[instrumentação sem código para Go](/docs/zero-code/go) baseada em eBPF, como o
+[OBI](/docs/zero-code/obi), não defina um Tracer Provider global. Consulte a
+documentação [Auto SDK](/docs/zero-code/go/autosdk) para mais informações.
+
+{{% /alert %}}
 
 ### Criando Trechos {#creating-spans}
 
@@ -196,7 +204,7 @@ OpenTelemetry][opentelemetry specification] para fornecer um conjunto comum de
 chaves de atributos entre várias linguagens, frameworks e ambientes de execução.
 Esses atributos representam conceitos como métodos HTTP, códigos de estado, user
 agents e outros. Estes atributos estão disponíveis no pacote
-`go.opentelemetry.io/otel/semconv/v1.26.0`.
+`go.opentelemetry.io/otel/semconv/v1.37.0`.
 
 Para mais detalhes, consulte as [Convenções Semânticas de
 Rastros][trace semantic conventions].
@@ -380,7 +388,7 @@ import (
 	"go.opentelemetry.io/otel/exporters/stdout/stdoutmetric"
 	"go.opentelemetry.io/otel/sdk/metric"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 func main() {
@@ -414,11 +422,14 @@ func main() {
 }
 
 func newResource() (*resource.Resource, error) {
-	return resource.Merge(resource.Default(),
-		resource.NewWithAttributes(semconv.SchemaURL,
+	return resource.Merge(
+    resource.Default(),
+		resource.NewWithAttributes(
+      semconv.SchemaURL,
 			semconv.ServiceName("meu-servico"),
 			semconv.ServiceVersion("0.1.0"),
-		))
+		),
+  )
 }
 
 func newMeterProvider(res *resource.Resource) (*metric.MeterProvider, error) {
@@ -781,7 +792,7 @@ import (
 	"net/http"
 
 	"go.opentelemetry.io/otel/metric"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 func init() {
@@ -1032,7 +1043,7 @@ import (
 	"go.opentelemetry.io/otel/log/global"
 	"go.opentelemetry.io/otel/sdk/log"
 	"go.opentelemetry.io/otel/sdk/resource"
-	semconv "go.opentelemetry.io/otel/semconv/v1.26.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.37.0"
 )
 
 func main() {
@@ -1066,11 +1077,14 @@ func main() {
 }
 
 func newResource() (*resource.Resource, error) {
-	return resource.Merge(resource.Default(),
-		resource.NewWithAttributes(semconv.SchemaURL,
+	return resource.Merge(
+    resource.Default(),
+		resource.NewWithAttributes(
+      semconv.SchemaURL,
 			semconv.ServiceName("meu-servico"),
 			semconv.ServiceVersion("0.1.0"),
-		))
+		),
+  )
 }
 
 func newLoggerProvider(ctx context.Context, res *resource.Resource) (*log.LoggerProvider, error) {
