@@ -3,7 +3,6 @@ title: Announcing the 2025 Governance Committee Election Results
 linkTitle: 2025 GC Election Results
 date: 2025-10-30
 author: OpenTelemetry Governance Committee
-cSpell:ignore: Baeyens
 ---
 
 We are delighted to announce the results of the
