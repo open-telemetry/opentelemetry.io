@@ -19352,8 +19352,8 @@
     "LastSeen": "2025-10-25T15:33:19.158865702Z"
   },
   "https://strimzi.io/": {
-    "StatusCode": -10,
-    "LastSeen": "2025-10-30T09:46:53.444571165Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-10-30T11:05:04.670862953Z"
   },
   "https://strimzi.io/docs/operators/latest/deploying#assembly-distributed-tracing-str": {
     "StatusCode": 206,
