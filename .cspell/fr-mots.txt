@@ -4,11 +4,11 @@ autocompléter
 Exporteurs
 Exporteur
 extensibilité
+multiligne
 glassfish
 jvms
 packagées
 phpini
-multiligne
 observabilité
 opentelemetryautoinstrumentationruntimenative
 otelinstrumentationmethodsinclude

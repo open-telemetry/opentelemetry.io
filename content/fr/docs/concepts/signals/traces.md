@@ -8,7 +8,7 @@ cSpell:ignore: Guten
 Les **traces** nous donnent une vue d'ensemble de ce qui se passe quand une
 requête est faite à une application. Que l'application soit monolithique avec 
 une seule base de données ou un maillage de services plus sophistiqués, les 
-traces sont essentielles a la compréhension du "chemin" complet d'une requête dans 
+traces sont essentielles à la compréhension du "chemin" complet d'une requête dans 
 votre application.
 
 Explorons ceci avec trois unités de travail, représentées par des [Spans](#spans):
@@ -47,7 +47,7 @@ Span `hello`:
 }
 ```
 Il s'agit du span racine, décrivant le début et la fin de l'opération entière.
-On peut noter qu'il a un champ `trace_id` indiquant la trace, mais qu'il n'a 
+On peut noter qu'il possède un champ `trace_id` indiquant la trace, mais qu'il n'a 
 pas de `parent_id`. C'est ce qui permet de savoir qu'il s'agit du span racine.
 
 Span `hello-greetings` :
@@ -116,46 +116,46 @@ Span `hello-salutations`:
 }
 ```
 
-Ce span représente la troisième operation dans cette trace et, comme la 
+Ce span représente la troisième opération dans cette trace et, comme la 
 précédente, c'est un enfant du span `hello`. C'est aussi un frère du span
 `hello-greetings`.
 
 Ces trois blocs de JSON partagent la même `trace_id`, et le champ `parent_id`
-représente la hiérarchie. C'est ce qui en fait une Trace!
+représente la hiérarchie. C'est ce qui en fait une Trace !
 
 Une autre chose que vous pourrez remarquer, c'est que chaque span a une 
-structure similaire a celle d'un log. C'est parce que c'en est un peu un! Une
-manière de comprendre les traces c'est de les voir comme une collection de 
+structure similaire a celle d'un log. C'est parce que c'en est un peu un ! Une
+manière de comprendre les traces est de les voir comme une collection de 
 logs structurés avec du contexte, de la hiérarchie et encore plus d'intégrations.
-Mais ces "logs structurés  peuvent provenir de différents processus, services,
+Mais ces logs structurés  peuvent provenir de différents processus, services,
 machines virtuelles, data centers, etc. C'est ça qui permet aux traces de
 représenter une vue de bout en bout de n'importe quel système.
 
-Pour comprendre comment le tracing fonctionne dans Opentelemetry, regardons
- une liste des composants qui vont jouer un rôle dans l'instrumentation de notre
- code.
+Pour comprendre comment le tracing fonctionne dans OpenTelemetry, regardons
+la liste des composants qui vont jouer un rôle dans l'instrumentation de notre
+code.
 
 ## Fournisseur de traces
 
-un fournisseur de traces (parfois appelé `TracerProvider`) est une usine de
-`Tracer`. Dans la plupart des application, un fournisseur de traces est initialisé
+Un fournisseur de traces (parfois appelé `TracerProvider`) est une usine de
+`Tracer`. Dans la plupart des applications, un fournisseur de traces est initialisé
 une seule fois et son cycle de vie correspond au cycle de vie de l'application.
-L'initialisation du fournisseur de traces également inclut l'initialisation 
-l'initialisation de la Ressource et de l'exportateur. il est généralement la 
-premiere étape dans la mise en place du tracing avec OpenTelemetry.
+L'initialisation du fournisseur de traces inclut également l'initialisation de 
+la Ressource et de l'exportateur. il est généralement la 
+première étape dans la mise en place du tracing avec OpenTelemetry.
 Dans les SDK de certains langages, un fournisseur de traces global est déjà
 initialisé pour vous.
 
 ## Tracer
 
-Un Traceur créé des spans contenant des informations a propos des opérations en 
-cours, comme une requête vers un service. les Traceurs sont créés à partir d'un
+Un Traceur crée des spans contenant des informations à propos des opérations en 
+cours, comme une requête vers un service. Les Traceurs sont créés à partir d'un
 fournisseur de traces.
 
 ## exportateurs de Traces
 
-Les exportateurs de traces envoient les traces à un consommateur. Ce consommateur peut
-être une sortie standard pour la débogage et le développement, un Collecteur 
+Les exportateurs de traces envoient les traces à un consommateur. Ce consommateur
+peut servir de sortie standard pour le débogage et le développement, un Collecteur 
 OpenTelemetry, ou n'importe quel backend open source ou d'un éditeur de votre
 choix.
 
@@ -168,7 +168,7 @@ Pour en apprendre plus sur ce sujet, consultez la page [Propagation de contexte]
 
 ## Spans
 
-un **span** est une unité de travail ou d'opération. Les Spans sont les blocs 
+Un **span** est une unité de travail ou d'opération. Les Spans sont les blocs 
 qui construisent les Traces. Dans OpenTelemetry, ils incluent les informations 
 suivantes: 
 
@@ -221,7 +221,7 @@ Span d'exemple:
 ```
 Les spans peuvent être imbriqués, comme c'est suggéré par la présence d'un ID de
 span parent: les spans enfants représentent des sous-opérations. Cela permet 
-aux spans de capturer plus précisément les tâches effectuée dans une application.
+aux spans de capturer plus précisément les tâches effectuées dans une application.
 
 ### Contexte d'un span
 
@@ -234,7 +234,7 @@ Le contexte d'un span est un objet immuable contenant les informations suivantes
 informations de traçage propres au fournisseur
 
 Le contexte des spans fait partie de ce qui est sérialisé et propagé en même 
-temps que le [Contexte Distribué](#context-propagation) et le [bagages](../baggage).
+temps que le [Contexte Distribué](#context-propagation) et le [bagage](../baggage).
 
 C'est parce que le Contexte du Span contient l'ID de la Trace qu'il est utilisé
 pour créer les [Liens de spans](#span-links).
@@ -242,23 +242,23 @@ pour créer les [Liens de spans](#span-links).
 ### Attributs
 
 Les attributs sont des paires clé-valeur qui contiennent des métadonnées 
-que vous pouvez utiliser pour annoter les Span afin de transporter des 
-informations supplémentaires concernant les operations qu'ils suivent.
+que vous pouvez utiliser pour annoter les Spans afin de transporter des 
+informations supplémentaires concernant les opérations qu'ils suivent.
 
-Par exemple, si un span suit un opération qui ajoute un article dans 
-panier d'un utilisateur sur un site d'e-commerce, vous pouvez capturer
+Par exemple, si un span suit une opération qui ajoute un article dans 
+le panier d'un utilisateur sur un site d'e-commerce, vous pouvez capturer
 l'ID de l'utilisateur, l'ID de l'article ajouté au panier et l'ID du panier.
 
 Vous pouvez ajouter des attributs à un span pendant ou après sa création.
-privilégier l'ajout d'attributs à un span lors de sa création afin de 
+Privilégiez l'ajout d'attributs à un span lors de sa création afin de 
 rendre l'attribut disponible pour l'échantillonnage du SDK. Si vous devez
-ajouter une valeur apres la création d'un span, mettez à jour le span avec
+ajouter une valeur après la création d'un span, mettez à jour le span avec
 la valeur.
 
 Les attributs suivent les règles suivantes pour chaque implémentation SDK:
 
 - Les clés doivent être des chaînes de caractères non nulles
-- Les valeurs doivent être des chaînes de caractères, booléen, une valeur à
+- Les valeurs doivent être des chaînes de caractères, un booléen, une valeur à
 virgule flottante, un entier ou un tableau de ces valeurs qui sont non nulles
 
 De plus, il existe les [Attributs sémantiques](/docs/specs/semconv/general/trace/), 
@@ -269,7 +269,7 @@ de métadonnées soient standardisés à travers les systèmes.
 
 ### Événements de Span
 
-Un Événements de Span peut être considéré comme un message de log structuré 
+Un Événement de Span peut être considéré comme un message de log structuré 
 (ou une annotation) sur un Span, généralement utilisé pour signaler un moment 
 particulier, significatif dans la durée de vie du Span.
 
@@ -278,23 +278,23 @@ Par exemple, si on considère deux scénarios dans un navigateur web:
 1. Suivre le chargement de la page
 2. Signaler quand une page devient interactive
 
-Un Span est plus adapté pour suivre le premier scenario parce qu'il s'agit d'une
+Un Span est plus adapté pour suivre le premier scénario parce qu'il s'agit d'une
 opération avec un début et une fin.
 
-Un Événements de Span est plus adapté pour suivre le second scénario parce qu'il
+Un Événement de Span est plus adapté pour suivre le second scénario parce qu'il
 représente un moment particulier et ponctuel dans le temps.
 
 ### Quand utiliser les Événements de Spans plutôt que les Attributs de Span
 
-puisque les événements de spans contiennent aussi des attributs, la question de
+Puisque les événements de spans contiennent aussi des attributs, la question de
 savoir quand utiliser les événements de spans plutôt que les attributs n'est pas
 toujours évidente. Pour vous aider à décider, demandez-vous si un horodatage
-specific est pertinent.
+spécifique est pertinent.
 
-Par exemple:, si vous suivez une operation avec un span et que l'operation se 
+Par exemple, si vous suivez une opération avec un span et que l'opération se 
 termine, pourriez vouloir ajouter des données de l'opération à votre télémétrie.
 
-- Si l'horodatage auquel l'opération de termine est signification ou pertinent,
+- Si l'horodatage auquel l'opération se termine est significatif ou pertinent,
 ajoutez les données à un span event.
 - Si l'horodatage n'est pas significatif ou pertinent,
 ajoutez les données comme des attributs du span.
@@ -302,19 +302,19 @@ ajoutez les données comme des attributs du span.
 ### Liens de Spans
 
 Les liens existent afin de pouvoir associer un span avec un ou plusieurs autres
-, impliquant une relation de causalité. Par exemple, supposons que nous avons 
+impliquant une relation de causalité. Par exemple, supposons que nous avons 
 un système distribué où des opérations sont suivis par une trace.
 
 En réponse a certaines de ces opérations, une opération supplémentaire est 
 mise en file d'attente pour être exécutée, mais son exécution est asynchrone.
-Nous pouvons suivre cette opération subséquentes avec avec une trace également.
+Nous pouvons suivre cette opération subséquente avec avec une trace également.
 
-Nous aimerions associé la trace de l'opération subséquentes avec la première
-trace, mais nous ne pouvons pas prédire quand l'operation subsequente commencera.
+Nous aimerions associer la trace de l'opération subséquente avec la première
+trace, mais nous ne pouvons pas prédire quand l'opération subsequente commencera.
 Nous devons associer ces deux traces, nous allons donc utiliser un lien de span.
 
 Vous pouvez lier le dernier span de la première trace avec le premier span de la
-seconde trace. Maintenant, ils sont associé mutuellement, de manière causale.
+seconde trace. Maintenant, ils sont associés mutuellement, de manière causale.
 
 Les liens sont optionnels mais constituent une bonne manière d'associer des spans entre
 eux.
@@ -333,26 +333,26 @@ La valeur par défaut est `Unset`. Un statut de span qui est `Unset` signifie
 que l'opération suivie a réussi sans erreur.
 
 Lorsque le statut est `Error`, cela signifie qu'une erreur s'est produite dans
-l'opération suivie. Par exemple, cela peut être due a une erreur HTTP 500 sur
+l'opération suivie. Par exemple, cela peut être dû à une erreur HTTP 500 sur
 un serveur gérant une requête.
 
 Quand le status du span est `Ok`, cela signifie que le span avait été explicitement 
 marqué comme sans erreur par le développeur. Même si c'est contre-intuitif, Il 
 n'est pas nécessaire de définir le statut d'un span comme `Ok` lorsque le span 
-est connu pour s'être terminé sans erreur, car cela est couvert par `Unset`.
+est connu pour s'être achevé sans erreur, car cela est couvert par `Unset`.
 Ce que fait `Ok`, c'est représenter un "verdict final" sans ambiguïté sur le 
 statut d'un span qui a été explicitement défini par un utilisateur. Cela est 
 utile dans toute situation où un développeur souhaite qu'il n'y ait aucune 
 autre interprétation d'un span que "réussi".
 
-Pour reformuler: `Unset` représente un span qui s'est terminé sans erreur.
+Pour reformuler: `Unset` représente un span qui s'est achevé sans erreur.
 `Ok` représente le cas où un développeur marque explicitement un span comme réussi.
 Dans la plupart des cas, il n'est pas nécessaire de marquer explicitement un span comme `Ok`.
 
 ### Types de Span
 
-Quand un span est créé, Il est de type `Client`, `Server`, `Internal`, `Producer`,
-ou `Consumer`. Le type du span fourni une indication au backend de traçage sur la
+Quand un span est créé, il est de type `Client`, `Server`, `Internal`, `Producer`,
+ou `Consumer`. Le type du span fournit une indication au backend de traçage sur la
 manière d'assembler la trace. Selon la spécification OpenTelemetry, le parent 
 d'un span server est souvent un span client distant, et l'enfant d'un span client 
 est généralement un span server. De la même manière, le parent d'un span consumer 
@@ -363,7 +363,7 @@ Pour plus d'informations, consultez [Types de Span](/docs/specs/otel/trace/api/#
 
 #### Client
 
-Un span client représente appel distant sortant synchrone comme une requête HTTP
+Un span client représente un appel distant sortant synchrone comme une requête HTTP
 ou un appel vers une base de données. Notez que dans ce contexte, "synchrone" ne 
 fait pas référence à `async/await`, mais au fait que ce n'est pas mis en file 
 d'attente pour un traitement ultérieur.
@@ -381,15 +381,15 @@ fonction ou d'un middleware Express peuvent utiliser des spans internes.
 
 #### Producer
 
-Les spans producer représentent la création d'une tâche qui peut être traité
-de manière asynchrone plus tard. Il peut s'agir d'une tâche distante comme
-une insertion dans une file d'attente de tâches ou d'une tâche gérée localement
-par un gestionnaire d'événement.
+Les spans producer représentent la création d'une tâche qui peut être traitée 
+de manière asynchrone plus tard. Il peut s'agir d'une tâche distante comme 
+une insertion dans une file d'attente de tâches ou d'une tâche gérée 
+localement par un gestionnaire d'événement.
 
 #### Consumer
 
-Les spans consumer représentent le traitement d'un tâche créé par un producer
- et peut démarrer longtemps après que le span producer se soit terminé.
+Les spans consumer représentent le traitement d'une tâche créée par un producer 
+et peuvent démarrer longtemps après que le span producer se soit achevé.
 
 ## Specification
 
