@@ -362,7 +362,7 @@ multe instanțe ale unui [Serviciu](#service) pentru disponibilitate și
 scalabilitate ridicate. Un [Serviciu](#service) poate fi implementat în mai
 multe locații.
 
-### Semnal {#signals}
+### Semnal {#signal}
 
 Unul dintre [Urme](#trace), [Metrici](#metric) sau [Jurnale](#log). Vezi
 [Semnale](#signals).
