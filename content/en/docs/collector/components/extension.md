@@ -40,6 +40,9 @@ discovery. For more information on how to configure extensions, see the
 | [sumologicextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sumologicextension)                         | contrib            | alpha         |
 | [zpagesextension](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/zpagesextension)                                       | contrib, core, k8s | beta          |
 
+⚠️ **Note:** Components marked with ⚠️ are unmaintained and have no active
+codeowners. They may not receive regular updates or bug fixes.
+
 [^1]:
     Shows which distributions (core, contrib, k8s, etc.) include this component.
 

@@ -28,6 +28,9 @@ information on how to configure connectors, see the
 | [spanmetricsconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector)         | contrib            | -          | -           | -        |
 | [sumconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/sumconnector)                         | contrib            | -          | -           | -        |
 
+⚠️ **Note:** Components marked with ⚠️ are unmaintained and have no active
+codeowners. They may not receive regular updates or bug fixes.
+
 [^1]:
     Shows which distributions (core, contrib, k8s, etc.) include this component.
 

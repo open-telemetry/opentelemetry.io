@@ -25,7 +25,7 @@ more information on how to configure exporters, see the
 | [azuredataexplorerexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter)             | contrib                  | beta        | beta         | beta        |
 | [azuremonitorexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuremonitorexporter)                       | contrib                  | beta        | beta         | beta        |
 | [bmchelixexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/bmchelixexporter)                               | contrib                  | -           | alpha        | -           |
-| [carbonexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/carbonexporter)                                   | contrib                  | -           | unmaintained | -           |
+| [carbonexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/carbonexporter) ⚠️                                | contrib                  | -           | unmaintained | -           |
 | [cassandraexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/cassandraexporter)                             | contrib                  | alpha       | -            | alpha       |
 | [clickhouseexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter)                           | contrib                  | beta        | alpha        | beta        |
 | [coralogixexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/coralogixexporter)                             | contrib                  | beta        | beta         | beta        |
@@ -67,6 +67,9 @@ more information on how to configure exporters, see the
 | [tencentcloudlogserviceexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/tencentcloudlogserviceexporter)   | contrib                  | -           | -            | beta        |
 | [tinybirdexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/tinybirdexporter)                               | contrib                  | alpha       | alpha        | alpha       |
 | [zipkinexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/zipkinexporter)                                   | contrib, core            | beta        | -            | -           |
+
+⚠️ **Note:** Components marked with ⚠️ are unmaintained and have no active
+codeowners. They may not receive regular updates or bug fixes.
 
 [^1]:
     Shows which distributions (core, contrib, k8s, etc.) include this component.

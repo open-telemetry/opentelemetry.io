@@ -27,8 +27,8 @@ information on how to configure receivers, see the
 | [azureblobreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/azureblobreceiver)                           | contrib                  | alpha       | -            | alpha       |
 | [azureeventhubreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/azureeventhubreceiver)                   | contrib                  | alpha       | alpha        | alpha       |
 | [azuremonitorreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/azuremonitorreceiver)                     | contrib                  | -           | alpha        | -           |
-| [bigipreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/bigipreceiver)                                   | contrib                  | -           | unmaintained | -           |
-| [carbonreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/carbonreceiver)                                 | contrib                  | -           | unmaintained | -           |
+| [bigipreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/bigipreceiver) ⚠️                                | contrib                  | -           | unmaintained | -           |
+| [carbonreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/carbonreceiver) ⚠️                              | contrib                  | -           | unmaintained | -           |
 | [chronyreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/chronyreceiver)                                 | contrib                  | -           | beta         | -           |
 | [ciscoosreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/ciscoosreceiver)                               | contrib                  | -           | development  | -           |
 | [cloudflarereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/cloudflarereceiver)                         | contrib                  | -           | -            | alpha       |
@@ -125,6 +125,9 @@ information on how to configure receivers, see the
 | [windowsservicereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/windowsservicereceiver)                 | contrib                  | -           | development  | -           |
 | [zipkinreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver)                                 | contrib, core, k8s       | beta        | -            | -           |
 | [zookeeperreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zookeeperreceiver)                           | contrib                  | -           | alpha        | -           |
+
+⚠️ **Note:** Components marked with ⚠️ are unmaintained and have no active
+codeowners. They may not receive regular updates or bug fixes.
 
 [^1]:
     Shows which distributions (core, contrib, k8s, etc.) include this component.
