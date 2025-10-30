@@ -2,7 +2,7 @@
 title: Building a custom collector
 weight: 29
 # prettier-ignore
-cSpell:ignore: batchprocessor chipset darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
+cSpell:ignore: chipset darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
 If you are planning to build and debug custom collector receivers, processors,
@@ -313,8 +313,6 @@ receivers:
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
-processors:
-  batch:
 
 exporters:
   debug:
@@ -324,15 +322,12 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [debug]
     metrics:
       receivers: [otlp]
-      processors: [batch]
       exporters: [debug]
     logs:
       receivers: [otlp]
-      processors: [batch]
       exporters: [debug]
 ```
 
