@@ -97,9 +97,9 @@ Collector's components and pipelines.
 touch config.yaml
 ```
 
-For now, you just need a basic traces pipeline with the `otlp` receiver, the
-`otlp` and `debug`[^1] exporters, and optionally the `batch` processor. Here is
-what your `config.yaml` file should look like:
+For now, you just need a basic traces pipeline with the `otlp` receiver and the
+`otlp` and `debug`[^1] exporters. Here is what your `config.yaml` file should
+look like:
 
 > config.yaml
 
@@ -110,9 +110,6 @@ receivers:
       grpc:
         endpoint: 0.0.0.0:4317
 
-processors:
-  batch:
-
 exporters:
   # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:
@@ -121,12 +118,13 @@ exporters:
     endpoint: localhost:14317
     tls:
       insecure: true
+    sending_queue:
+      batch:
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp/jaeger, debug]
   telemetry:
     logs:
@@ -975,7 +973,6 @@ import (
 	"go.opentelemetry.io/collector/receiver"
 	debugexporter "go.opentelemetry.io/collector/exporter/debugexporter"
 	otlpexporter "go.opentelemetry.io/collector/exporter/otlpexporter"
-	batchprocessor "go.opentelemetry.io/collector/processor/batchprocessor"
 	otlpreceiver "go.opentelemetry.io/collector/receiver/otlpreceiver"
 	tailtracer "github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tailtracer" // newly added line
 )
@@ -1007,7 +1004,6 @@ func components() (otelcol.Factories, error) {
 	}
 
 	factories.Processors, err = otelcol.MakeFactoryMap[processor.Factory](
-		batchprocessor.NewFactory(),
 	)
 	if err != nil {
 		return otelcol.Factories{}, err
@@ -1046,9 +1042,6 @@ receivers:
     interval: 1m
     number_of_traces: 1
 
-processors:
-  batch:
-
 exporters:
   # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:
@@ -1057,12 +1050,13 @@ exporters:
     endpoint: localhost:14317
     tls:
       insecure: true
+    sending_queue:
+      batch:
 
 service:
   pipelines:
     traces:
       receivers: [otlp, tailtracer]
-      processors: [batch]
       exporters: [otlp/jaeger, debug]
   telemetry:
     logs:
@@ -1084,7 +1078,6 @@ The output should look like this:
 2023-11-08T21:38:36.621+0800	info	service@v0.88.0/telemetry.go:201	Serving Prometheus metrics	{"address": ":8888", "level": "Basic"}
 2023-11-08T21:38:36.621+0800	info	exporter@v0.88.0/exporter.go:275	Development component. May change in the future.	{"kind": "exporter", "data_type": "traces", "name": "debug"}
 2023-11-08T21:38:36.621+0800	debug	exporter@v0.88.0/exporter.go:273	Stable component.	{"kind": "exporter", "data_type": "traces", "name": "otlp/jaeger"}
-2023-11-08T21:38:36.621+0800	debug	processor@v0.88.0/processor.go:287	Stable component.	{"kind": "processor", "name": "batch", "pipeline": "traces"}
 2023-11-08T21:38:36.621+0800	debug	receiver@v0.88.0/receiver.go:294	Stable component.	{"kind": "receiver", "name": "otlp", "data_type": "traces"}
 2023-11-08T21:38:36.621+0800	debug	receiver@v0.88.0/receiver.go:294	Alpha component. May change in the future.	{"kind": "receiver", "name": "tailtracer", "data_type": "traces"}
 2023-11-08T21:38:36.622+0800	info	service@v0.88.0/service.go:143	Starting otelcol-dev...	{"Version": "1.0.0", "NumCPU": 10}
@@ -2283,7 +2276,6 @@ And you should see the output like this after a few minutes:
 2023-11-09T11:38:19.890+0800	info	service@v0.88.0/telemetry.go:201	Serving Prometheus metrics	{"address": ":8888", "level": "Basic"}
 2023-11-09T11:38:19.890+0800	debug	exporter@v0.88.0/exporter.go:273	Stable component.	{"kind": "exporter", "data_type": "traces", "name": "otlp/jaeger"}
 2023-11-09T11:38:19.890+0800	info	exporter@v0.88.0/exporter.go:275	Development component. May change in the future.	{"kind": "exporter", "data_type": "traces", "name": "debug"}
-2023-11-09T11:38:19.890+0800	debug	processor@v0.88.0/processor.go:287	Stable component.	{"kind": "processor", "name": "batch", "pipeline": "traces"}
 2023-11-09T11:38:19.891+0800	debug	receiver@v0.88.0/receiver.go:294	Stable component.	{"kind": "receiver", "name": "otlp", "data_type": "traces"}
 2023-11-09T11:38:19.891+0800	debug	receiver@v0.88.0/receiver.go:294	Alpha component. May change in the future.	{"kind": "receiver", "name": "tailtracer", "data_type": "traces"}
 2023-11-09T11:38:19.891+0800	info	service@v0.88.0/service.go:143	Starting otelcol-dev...	{"Version": "1.0.0", "NumCPU": 10}
