@@ -2,7 +2,7 @@
 title: Building a custom collector
 weight: 29
 # prettier-ignore
-cSpell:ignore: chipset darwin debugexporter gomod loggingexporter otlpexporter otlpreceiver wyrtw
+cSpell:ignore: chipset darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
 If you are planning to build and debug custom collector receivers, processors,
@@ -142,7 +142,7 @@ to understand the different modules and how to add the components.
 We will be adding the following components to our development and testing
 collector distribution:
 
-- Exporters: OTLP and Debug[^1]
+- Exporters: OTLP and Debug
 - Receivers: OTLP
 - Processors: Batch
 
@@ -158,7 +158,6 @@ dist:
 
 exporters:
   - gomod:
-      # NOTE: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
       go.opentelemetry.io/collector/exporter/debugexporter {{% version-from-registry collector-exporter-debug %}}
   - gomod:
       go.opentelemetry.io/collector/exporter/otlpexporter {{% version-from-registry collector-exporter-otlp %}}
@@ -362,5 +361,3 @@ docker run -it --rm -p 4317:4317 -p 4318:4318 \
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
 [tags]: https://github.com/open-telemetry/opentelemetry-collector-releases/tags
-
-[^1]: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
