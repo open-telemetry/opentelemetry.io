@@ -349,25 +349,24 @@ Pour reformuler: `Unset` représente un span qui s'est terminé sans erreur.
 `Ok` représente le cas où un développeur marque explicitement un span comme réussi.
 Dans la plupart des cas, il n'est pas nécessaire de marquer explicitement un span comme `Ok`.
 
-### Span Kind
+### Types de Span
 
-When a span is created, it is one of `Client`, `Server`, `Internal`, `Producer`,
-or `Consumer`. This span kind provides a hint to the tracing backend as to how
-the trace should be assembled. According to the OpenTelemetry specification, the
-parent of a server span is often a remote client span, and the child of a client
-span is usually a server span. Similarly, the parent of a consumer span is
-always a producer and the child of a producer span is always a consumer. If not
-provided, the span kind is assumed to be internal.
+Quand un span est créé, Il est de type `Client`, `Server`, `Internal`, `Producer`,
+ou `Consumer`. Le type du span fourni une indication au backend de traçage sur la
+manière d'assembler la trace. Selon la spécification OpenTelemetry, le parent 
+d'un span server est souvent un span client distant, et l'enfant d'un span client 
+est généralement un span server. De la même manière, le parent d'un span consumer 
+est toujours un producer et l'enfant d'un span producer est toujours un 
+consumer. Si non spécifié, le type du span est par défaut `Internal`.
 
-For more information regarding SpanKind, see
-[SpanKind](/docs/specs/otel/trace/api/#spankind).
+Pour plus d'informations, consultez [Types de Span](/docs/specs/otel/trace/api/#spankind).
 
 #### Client
 
-A client span represents a synchronous outgoing remote call such as an outgoing
-HTTP request or database call. Note that in this context, "synchronous" does not
-refer to `async/await`, but to the fact that it is not queued for later
-processing.
+Un span client represente appel distant sortant synchrone comme une requête HTTP
+ou un appel vers une base de données. Notez que dans ce contexte, "synchrone" ne 
+fait pas référence à `async/await`, mais au fait que ce n'est pas mis en file 
+d'attente pour un traitement ultérieur.
 
 #### Server
 
