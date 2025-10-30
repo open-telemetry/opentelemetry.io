@@ -14,8 +14,8 @@ This year, active contributors have shown their commitment again by
 participating in our election process, and they've done it in great numbers.
 
 702 contributors were eligible to vote this year, and 273 of them cast their
-ballot. With a participation rate of 39%, it is in line with last year's participation
-rate, where 299 ballots were cast with 701 eligible voters.
+ballot. With a participation rate of 39%, it is in line with last year's
+participation rate, where 299 ballots were cast with 701 eligible voters.
 
 Five positions were up for election in this year's Governance Committee
 selection process. Without further ado, please join us in congratulating
