@@ -316,7 +316,7 @@ Tipuri de interfețe independente de limbă. Vezi [opentelemetry-proto].
 
 Termenul folosit de [Colector](/docs/collector/configuration/#receivers) pentru
 a defini modul în care sunt recepționate datele de telemetrie. Receptoarele pot
-fi bazate pe push sau pull. Vezi [Receptor](#receptors).
+fi bazate pe push sau pull. Vezi [Receptor](#receiver).
 
 ### Cerere {#request}
 
@@ -418,15 +418,28 @@ date sunt furnizate pe paginile web atunci când sunt solicitate. Vezi [zPages].
 [context propagation]: /docs/specs/otel/overview#context-propagation
 [dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
 [distributed tracing]: ../signals/traces/
+[distributions]: ../distributions/
 [field]: /docs/specs/otel/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+[instrumented library]: /docs/specs/otel/glossary/#instrumented-library
 [Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
+[log record]: /docs/specs/otel/glossary#log-record
+[log]: /docs/specs/otel/glossary#log
+[metric]: ../signals/metrics/
 [opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
+[propagators]: /docs/languages/go/instrumentation/#propagators-and-context
 [Prometheus]: https://prometheus.io/
+[receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
+[sampling]: /docs/specs/otel/trace/sdk#sampling
+[signals]: ../signals/
+[span]: /docs/specs/otel/trace/api#span
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
+[specification]: ../components/#specification
+[status]: /docs/specs/otel/trace/api#set-status
 [tracer]: /docs/specs/otel/trace/api#tracer
+[traces]: /docs/specs/otel/overview#traces
 [zpages]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/development/trace/zpages.md
