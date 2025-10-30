@@ -128,7 +128,7 @@ traversează limitele de proces, rețea și securitate.
 
 Vezi [Urmărire distribuită][distributed tracing].
 
-### Distribuție {#distribution}
+### Distribuție {#distributions}
 
 O distribuție este un wrapper în jurul unui depozit OpenTelemetry din amonte cu
 anumite personalizări. Consultă [Distribuții](#distributions).
@@ -362,7 +362,7 @@ multe instanțe ale unui [Serviciu](#service) pentru disponibilitate și
 scalabilitate ridicate. Un [Serviciu](#service) poate fi implementat în mai
 multe locații.
 
-### Semnal {#signal}
+### Semnal {#signals}
 
 Unul dintre [Urme](#trace), [Metrici](#metric) sau [Jurnale](#log). Vezi
 [Semnale](#signals).
