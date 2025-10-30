@@ -414,7 +414,7 @@ public class ProvidersAndScopes {
 ### Attributes {#attributes}
 
 [Attributes](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/common/Attributes.html)
-是一组键值对，代表[标准属性定义](/docs/specs/otel/common/#standard-attribute)。
+是一组键值对，代表[标准属性定义](/docs/specs/otel/common/#attribute)。
 
 `Attributes` 是 OpenTelemetry API 中一个反复出现的概念：
 
