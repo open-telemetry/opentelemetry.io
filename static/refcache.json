@@ -8551,6 +8551,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-30T09:40:55.19451025Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/product-reviews/": {
+    "StatusCode": 404,
+    "LastSeen": "2025-10-30T16:23:23.123546-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quote/": {
     "StatusCode": 206,
     "LastSeen": "2025-10-30T09:40:56.298254774Z"
