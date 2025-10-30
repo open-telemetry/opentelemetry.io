@@ -200,6 +200,11 @@
   components: [Collector, Java]
   reference: ''
   contact: https://github.com/illenko
+- name: Truffle AI
+  url: https://trytruffle.ai
+  components: [JavaScript]
+  reference: ''
+  contact: 'rahul@trytruffle.ai'
 - name: UiPath
   url: https://www.uipath.com/
   components: [Collector, .NET]
