@@ -165,12 +165,11 @@ purpose-built, production-tested, and easy-to-use unroll processor. The result
 is a small config change that can unblock a huge number of real-world telemetry
 ingestion problems.
 
-We're not proposing to add record expansion to OTTL at this
-time. Expansion changes the cardinality of the data stream and likely requires
-different lifecycle and correctness guarantees, which is why a dedicated
-processor is a good fit for today. Keeping the responsibilities separate lets OTTL
-focus on transforming existing log records while the unroll processor handles
-expansion
+We're not proposing to add record expansion to OTTL at this time. Expansion
+changes the cardinality of the data stream and likely requires different
+lifecycle and correctness guarantees, which is why a dedicated processor is a
+good fit for today. Keeping the responsibilities separate lets OTTL focus on
+transforming existing log records while the unroll processor handles expansion
 
 The unroll processor is now available in
 [the official OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/unrollprocessor).
