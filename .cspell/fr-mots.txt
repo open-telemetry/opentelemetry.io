@@ -6,6 +6,8 @@ Exporteur
 extensibilité
 glassfish
 jvms
+packagées
+phpini
 multiligne
 observabilité
 opentelemetryautoinstrumentationruntimenative
