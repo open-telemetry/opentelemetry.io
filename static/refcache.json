@@ -5019,9 +5019,9 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-30T15:07:53.417869221Z"
   },
-  "https://github.com/gofiber/contrib/tree/main/otelfiber": {
-    "StatusCode": 404,
-    "LastSeen": "2025-10-30T16:28:24.250342705Z"
+  "https://github.com/gofiber/contrib/tree/main/v3/otel": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-30T15:09:37.274376-03:00"
   },
   "https://github.com/goharbor": {
     "StatusCode": 206,

@@ -12,6 +12,6 @@ authors:
   - name: gofiber authors & contributors
     url: https://github.com/gofiber/
 urls:
-  repo: https://github.com/gofiber/contrib/tree/main/otelfiber
+  repo: https://github.com/gofiber/contrib/tree/main/v3/otel
 createdAt: 2022-01-14
 isFirstParty: True
