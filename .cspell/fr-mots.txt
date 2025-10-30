@@ -1,12 +1,12 @@
 actuateur
 additionaldeps
 autocompléter
+Exporteurs
+Exporteur
 extensibilité
 glassfish
 jvms
 multiligne
-packagées
-phpini
 observabilité
 opentelemetryautoinstrumentationruntimenative
 otelinstrumentationmethodsinclude
