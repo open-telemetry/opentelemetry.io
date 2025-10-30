@@ -116,7 +116,7 @@ Span `hello-salutations`:
 }
 ```
 
-Ce span represente la troisième operation dans cette trace et, comme la 
+Ce span représente la troisième operation dans cette trace et, comme la 
 précédente, c'est un enfant du span `hello`. C'est aussi un frère du span
 `hello-greetings`.
 
@@ -141,7 +141,7 @@ un fournisseur de traces (parfois appelé `TracerProvider`) est une usine de
 `Tracer`. Dans la plupart des application, un fournisseur de traces est initialisé
 une seule fois et son cycle de vie correspond au cycle de vie de l'application.
 L'initialisation du fournisseur de traces également inclut l'initialisation 
-l'initialisation de la Ressource et de l'Exporteur. il est généralement la 
+l'initialisation de la Ressource et de l'exportateur. il est généralement la 
 premiere étape dans la mise en place du tracing avec OpenTelemetry.
 Dans les SDK de certains langages, un fournisseur de traces global est déjà
 initialisé pour vous.
@@ -152,9 +152,9 @@ Un Traceur créé des spans contenant des informations a propos des opérations 
 cours, comme une requête vers un service. les Traceurs sont créés à partir d'un
 fournisseur de traces.
 
-## Exporteurs de Traces
+## exportateurs de Traces
 
-Les Exporteurs de traces envoient les traces à un consommateur. Ce consommateur peut
+Les exportateurs de traces envoient les traces à un consommateur. Ce consommateur peut
 être une sortie standard pour la débogage et le développement, un Collecteur 
 OpenTelemetry, ou n'importe quel backend open source ou d'un éditeur de votre
 choix.
@@ -221,7 +221,7 @@ Span d'exemple:
 ```
 Les spans peuvent être imbriqués, comme c'est suggéré par la présence d'un ID de
 span parent: les spans enfants représentent des sous-opérations. Cela permet 
-aux spans de capturer plus précisément le travail effectué dans une application.
+aux spans de capturer plus précisément les tâches effectuée dans une application.
 
 ### Contexte d'un span
 
@@ -241,7 +241,7 @@ pour créer les [Liens de spans](#span-links).
 
 ### Attributs
 
-Les attributs sont des paires clé-valeur qui contiennent des métadonnées  
+Les attributs sont des paires clé-valeur qui contiennent des métadonnées 
 que vous pouvez utiliser pour annoter les Span afin de transporter des 
 informations supplémentaires concernant les operations qu'ils suivent.
 
@@ -275,7 +275,7 @@ particulier, significatif dans la durée de vie du Span.
 
 Par exemple, si on considère deux scénarios dans un navigateur web:
 
-1. Suivi du chargement de la page
+1. Suivre le chargement de la page
 2. Signaler quand une page devient interactive
 
 Un Span est plus adapté pour suivre le premier scenario parce qu'il s'agit d'une
@@ -295,9 +295,9 @@ Par exemple:, si vous suivez une operation avec un span et que l'operation se
 termine, pourriez vouloir ajouter des données de l'opération à votre télémétrie.
 
 - Si l'horodatage auquel l'opération de termine est signification ou pertinent,
-Ajoutez les données à un span event.
+ajoutez les données à un span event.
 - Si l'horodatage n'est pas significatif ou pertinent,
-Ajoutez les données comme des attributs du span.
+ajoutez les données comme des attributs du span.
 
 ### Liens de Spans
 
@@ -363,34 +363,35 @@ Pour plus d'informations, consultez [Types de Span](/docs/specs/otel/trace/api/#
 
 #### Client
 
-Un span client represente appel distant sortant synchrone comme une requête HTTP
+Un span client représente appel distant sortant synchrone comme une requête HTTP
 ou un appel vers une base de données. Notez que dans ce contexte, "synchrone" ne 
 fait pas référence à `async/await`, mais au fait que ce n'est pas mis en file 
 d'attente pour un traitement ultérieur.
 
 #### Server
 
-A server span represents a synchronous incoming remote call such as an incoming
-HTTP request or remote procedure call.
+Un span server représente un appel distant entrant synchrone tel qu'une requête
+HTTP entrante ou un appel de procédure distant.
 
 #### Internal
 
-Internal spans represent operations which do not cross a process boundary.
-Things like instrumenting a function call or an Express middleware may use
-internal spans.
+Les spans internal représentent des opérations qui ne franchissent pas les 
+limites d'un processus. Des éléments comme l'instrumentation d'un appel de 
+fonction ou d'un middleware Express peuvent utiliser des spans internes.
 
 #### Producer
 
-Producer spans represent the creation of a job which may be asynchronously
-processed later. It may be a remote job such as one inserted into a job queue or
-a local job handled by an event listener.
+Les spans producer représentent la création d'une tâche qui peut être traité
+de manière asynchrone plus tard. Il peut s'agir d'une tâche distante comme
+une insertion dans une file d'attente de tâches ou d'une tâche gérée localement
+par un gestionnaire d'événement.
 
 #### Consumer
 
-Consumer spans represent the processing of a job created by a producer and may
-start long after the producer span has already ended.
+Les spans consumer représentent le traitement d'un tâche créé par un producer
+ et peut démarrer longtemps après que le span producer se soit terminé.
 
 ## Specification
 
-For more information, see the
-[traces specification](/docs/specs/otel/overview/#tracing-signal).
+Pour plus d'informations, consultez la 
+[spécification des traces](/docs/specs/otel/overview/#tracing-signal).
