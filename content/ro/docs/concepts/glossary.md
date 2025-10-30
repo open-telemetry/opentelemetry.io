@@ -14,9 +14,9 @@ termenilor comuni din domeniul observabilității.
 De asemenea, comentăm despre ortografie și scrierea cu majuscule atunci când
 este util. De exemplu, vezi [OpenTelemetry](#opentelemetry) și [OTel](#otel).
 
-## Termeni
+## Termeni {#terms}
 
-### Agregare
+### Agregare {#aggregation}
 
 Procesul de combinare a mai multor măsurători în statistici exacte sau estimate
 despre măsurătorile care au avut loc într-un interval de timp, în timpul
@@ -29,7 +29,7 @@ Interfață de programare a aplicațiilor. În proiectul OpenTelemetry, utilizat
 pentru a defini modul în care datele de telemetrie sunt generate per
 [Sursă de date](#data-source).
 
-### Aplicație
+### Aplicație {#application}
 
 Unul sau mai multe [Servicii](#service) concepute pentru utilizatori finali sau
 alte aplicații.
@@ -41,27 +41,27 @@ software, a performanței acestora (viteză, fiabilitate, disponibilitate etc.)
 pentru a detecta problemele, emiterea alertelor și a instrumentelor pentru
 găsirea cauzei principale.
 
-### Atribut
+### Atribut {#attribute}
 
 Termen OpenTelemetry pentru [Metadate](#metadata). Adaugă informații
 cheie-valoare la entitatea care produce telemetria. Se utilizează în
 [Semnale](#signal) și [Resurse](#resource). Vezi [specificațiile
 atributului][attribute].
 
-### Instrumentare automatică
+### Instrumentare automatică {#automatic-instrumentation}
 
 Se referă la metodele de colectare a datelor de telemetrie care nu necesită ca
 utilizatorul final să modifice codul sursă al aplicației. Metodele variază în
 funcție de limbajul de programare, iar exemplele includ injecția de bytecode sau
 aplicarea de corecții de tip „monkey patching”.
 
-### Bagaj
+### Bagaj {#baggage}
 
 Un mecanism pentru propagarea [Metadatelor](#metadata) pentru a ajuta la
 stabilirea unei relații cauzale între evenimente și servicii. Vezi
 [specificațiile bagajului][baggage].
 
-### Cardinalitate
+### Cardinalitate {#cardinality}
 
 Numărul de valori unice pentru un anumit [Atribut](#attribute) sau set de
 atribute. Cardinalitatea ridicată înseamnă multe valori unice, care pot afecta
@@ -70,18 +70,18 @@ exemplu, un atribut `user_id` ar avea cardinalitate ridicată, în timp ce un
 atribut `status_code` cu valori precum „200”, „404”, „500” ar avea cardinalitate
 scăzută.
 
-### Biblioteca client
+### Biblioteca client {#client-library}
 
 Vezi [biblioteca instrumentată](#instrumented-library).
 
-### Aplicația client-side
+### Aplicația client-side {#client-side-app}
 
 O componentă a unei [Aplicații](#application) care nu rulează într-o
 infrastructură privată și este de obicei utilizată direct de utilizatorii
 finali. Exemple de aplicații client-side sunt aplicațiile de browser,
 aplicațiile mobile și aplicațiile care rulează pe dispozitive IoT.
 
-### Colector
+### Colector {#collector}
 
 [Colectorul OpenTelemetry] sau pe scurt Colector, este o implementare agnostică
 față de furnizor, despre cum se primește, se procesează și se exportă date de
@@ -99,7 +99,7 @@ Mai multe [Biblioteci de instrumentație](#instrumentation-library) și
 depozit dedicat contrib pentru capabilități non-esențiale, inclusiv
 „Exportatori” de la furnizori.
 
-### Propagarea contextului
+### Propagarea contextului {#context-propagation}
 
 Permite tuturor [Surselor de date](#data-source) să partajeze un mecanism
 contextual subiacent pentru stocarea stării și accesarea datelor pe durata de
@@ -110,16 +110,16 @@ contextului][context propagation].
 
 [Graf aciclic direcționat][dag].
 
-### Sursa de date
+### Sursa de date {#data-source}
 
 Vezi [Semnal](#signal)
 
-### Dimensiune
+### Dimensiune {#dimension}
 
 Un termen folosit în mod specific de [Metrici](#metric). Vezi
 [Atribut](#attribute).
 
-### Urmă distribuită
+### Urmă distribuită {#distributed-tracing}
 
 Urmărește progresia unei singure [Cereri](#request), numită [Urmă](#trace), așa
 cum este gestionată de [Servicii](#service) care alcătuiesc o
@@ -128,24 +128,24 @@ traversează limitele de proces, rețea și securitate.
 
 Vezi [Urmărire distribuită][distributed tracing].
 
-### Distribuție
+### Distribuție {#distribution}
 
 O distribuție este un wrapper în jurul unui depozit OpenTelemetry din amonte cu
 anumite personalizări. Consultă [Distribuții](#distributions).
 
-### Eveniment
+### Eveniment {#event}
 
 Un eveniment este o [înregistrare de jurnal](#log-record) cu un nume de
 eveniment și o structură binecunoscută. De exemplu, evenimentele browserului din
 OpenTelemetry respectă o anumită convenție de denumire și transportă anumite
 date într-o structură comună.
 
-### Exportator
+### Exportator {#exporter}
 
 Oferă funcționalitate pentru emiterea de telemetrie către consumatori.
 Exportatorii pot fi bazați pe push sau pull.
 
-### Câmp
+### Câmp {#field}
 
 Un termen folosit în mod specific de [Înregistrări în jurnal](#log-record).
 [Metadate](#metadata) pot fi adăugate prin câmpuri definite, inclusiv
@@ -162,13 +162,13 @@ Un framework universal [RPC](#rpc) de înaltă performanță, open source. Vezi
 
 Prescurtare de la [Protocol de transfer hipertext][http].
 
-### Bibliotecă instrumentată
+### Bibliotecă instrumentată {#instrumented-library}
 
 Indică [Biblioteca](#library) pentru care sunt colectate semnalele de telemetrie
 ([Urme](#trace), [Metrici](#metric), [Jurnale](#log)). Vezi
 [Biblioteca instrumentată](#instrumented-library).
 
-### Biblioteca de instrumente
+### Biblioteca de instrumente {#instrumentation-library}
 
 Indică [Biblioteca](#library) care furnizează instrumentația pentru o anumită
 [Biblioteca instrumentată](#instrumented-library).
@@ -181,20 +181,20 @@ Indică [Biblioteca](#library) care furnizează instrumentația pentru o anumit�
 
 Prescurtare pentru [JavaScript Object Notation][json].
 
-### Etichetă
+### Etichetă {#label}
 
 Un termen folosit în mod specific de [Metrici](#metric). Vezi
 [Metadate](#metadata).
 
-### Limbaj
+### Limbaj {#language}
 
 Limbaj de programare.
 
-### Bibliotecă
+### Bibliotecă {#library}
 
 O colecție specifică limbajului de comportamente invocate de o interfață.
 
-### Jurnal
+### Jurnal {#log}
 
 Uneori folosit pentru a se referi la o colecție de
 [Înregistrări jurnal](#log-record). Poate fi ambiguu, deoarece uneori se
@@ -203,20 +203,20 @@ folosește [Jurnal](#log) și pentru a se referi la o singură
 utilizează calificatori suplimentari, de exemplu, `Înregistrare jurnal`. Vezi
 [Jurnal](#log).
 
-### Înregistrare în jurnal
+### Înregistrare în jurnal {#log-record}
 
 O înregistrare a datelor cu o marcă temporală și o severitate. Poate avea și un
 [ID de urmărire](#trace) și un [ID de interval](#span) atunci când este corelată
 cu o urmă. Vezi [Înregistrare în jurnal](#log-record).
 
-### Metadate
+### Metadate {#metadata}
 
 O pereche cheie-valoare, de exemplu `foo="bar"`, adăugată la o entitate care
 produce telemetrie. OpenTelemetry numește aceste perechi [Atribute](#attribute).
 În plus, [Metricile](#metric) au [Dimensiuni](#dimension) și [Etichete](#label),
 în timp ce [Jurnalele](#log) au [Câmpuri](#field).
 
-### Metrică
+### Metrică {#metric}
 
 Înregistrează un punct de date, fie măsurători brute, fie o agregare
 predefinită, ca serie temporală cu [Metadate](#metadata). Vezi
@@ -226,14 +226,14 @@ predefinită, ca serie temporală cu [Metadate](#metadata). Vezi
 
 Prescurtare pentru [OpenCensus](#opencensus).
 
-### Backend de observabilitate
+### Backend de observabilitate {#observability-backend}
 
 Componenta unei platforme de observabilitate care este responsabilă pentru
 primirea, procesarea, stocarea și interogarea datelor de telemetrie. Exemplele
 includ instrumente open source cum ar fi [Jaeger] și [Prometheus], ​​precum și
 oferte comerciale. OpenTelemetry nu este un backend de observabilitate.
 
-### Frontend de observabilitate
+### Frontend de observabilitate {#observability-frontend}
 
 Componenta unei platforme de observabilitate care oferă interfețe utilizator
 pentru vizualizarea și analiza datelor de telemetrie. Poate fi adesea o parte a
@@ -302,7 +302,7 @@ Un acronim pentru [Propunere de îmbunătățire OpenTelemetry].
 
 Prescurtare pentru [Protocolul OpenTelemetry](/docs/specs/otlp/).
 
-### Propagatori
+### Propagatori {#propagators}
 
 Folosit pentru serializarea și deserializarea părților specifice ale datelor de
 telemetrie, cum ar fi contextul intervalului și [Bagajul](#baggage) din
@@ -312,17 +312,17 @@ telemetrie, cum ar fi contextul intervalului și [Bagajul](#baggage) din
 
 Tipuri de interfețe independente de limbă. Vezi [opentelemetry-proto].
 
-### Receptor
+### Receptor {#receiver}
 
 Termenul folosit de [Colector](/docs/collector/configuration/#receivers) pentru
 a defini modul în care sunt recepționate datele de telemetrie. Receptoarele pot
 fi bazate pe push sau pull. Vezi [Receptor](#receptors).
 
-### Cerere
+### Cerere {#request}
 
 Vezi [Urmărire distribuită](#distributed-tracing).
 
-### Resursă
+### Resursă {#resource}
 
 Capturează informații despre entitatea care produce telemetrie ca
 [Atribute](#attribute). De exemplu, un proces care produce telemetrie și care
@@ -338,7 +338,7 @@ Prescurtare pentru [Transfer de stat reprezentativ][rest].
 
 Prescurtare pentru [Apel de procedură la distanță][rpc].
 
-### Eșantionare
+### Eșantionare {#sampling}
 
 Un mecanism pentru controlul cantității de date exportate. Cel mai frecvent
 utilizat cu [Trasarea](#trace) [Sursei de date](#data-source). Vezi
@@ -350,41 +350,41 @@ Prescurtare pentru kit de dezvoltare software. Se referă la un SDK de telemetri
 care denotă o [Bibliotecă](#library) care implementează OpenTelemetry
 [API](#api).
 
-### Convenții semantice
+### Convenții semantice {#semantic-conventions}
 
 Definește numele și valorile standard ale [Metadatelor](#metadata) pentru a
 oferi date de telemetrie agnostice față de furnizor.
 
-### Serviciu
+### Serviciu {#service}
 
 O componentă a unei [Aplicații](#application). De obicei, se implementează mai
 multe instanțe ale unui [Serviciu](#service) pentru disponibilitate și
 scalabilitate ridicate. Un [Serviciu](#service) poate fi implementat în mai
 multe locații.
 
-### Semnal
+### Semnal {#signal}
 
 Unul dintre [Urme](#trace), [Metrici](#metric) sau [Jurnale](#log). Vezi
 [Semnale](#signals).
 
-### Interval
+### Interval {#span}
 
 Reprezintă o singură operațiune din cadrul unei [Urme](#trace). Vezi
 [Interval](#span).
 
-### Legătură între intervale
+### Legătură între intervale {#span-link}
 
 O legătură între intervale (span link) este o legătură între intervale (spans)
 legate cauzal. Pentru detalii, vezi
 [Legături între intervale](/docs/specs/otel/overview#links-between-spans) și
 [Specificarea legăturilor](/docs/specs/otel/trace/api#specifying-links).
 
-### Specificație
+### Specificație {#specification}
 
 Descrie cerințele și așteptările interlingvistice pentru toate implementările.
 Vezi [Specificație](#specification).
 
-### Stare
+### Stare {#status}
 
 Rezultatul operației. De obicei, se folosește pentru a indica dacă a apărut o
 eroare. Vezi [Stare](#status).
@@ -393,7 +393,7 @@ eroare. Vezi [Stare](#status).
 
 Vezi [Metadate](#metadata).
 
-### Urmă
+### Urmă {#trace}
 
 Un [DAG](#dag) din [Intervaluri](#span), unde punctele extreme dintre
 [Intervaluri](#span) sunt definite ca relație părinte-copil. Vezi
@@ -403,7 +403,7 @@ Un [DAG](#dag) din [Intervaluri](#span), unde punctele extreme dintre
 
 Responsabil cu crearea [Intervalurilor](#span). Vezi [Tracer].
 
-### Tranzacţie
+### Tranzacţie {#transaction}
 
 Vezi [Urmărire distribuită](#distributed-tracing).
 
