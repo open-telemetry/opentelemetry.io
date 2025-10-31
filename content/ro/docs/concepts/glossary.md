@@ -83,14 +83,16 @@ aplicațiile mobile și aplicațiile care rulează pe dispozitive IoT.
 
 ### Colector {#collector}
 
-[Colectorul OpenTelemetry] sau pe scurt Colector, este o implementare agnostică
+[Colectorul OpenTelemetry][OpenTelemetry Collector] sau pe scurt Colector, este o implementare agnostică
 față de furnizor, despre cum se primește, se procesează și se exportă date de
 telemetrie. Un singur fișier binar care poate fi implementat ca agent sau
 gateway.
 
-> **Ortografie**: Când se face referire la [Colectorul OpenTelemetry], scrie
+> **Ortografie**: Când se face referire la [Colectorul OpenTelemetry][OpenTelemetry Collector], scrie
 > întotdeauna cu majusculă Colector. Folosește doar „Colector” dacă folosești
 > Colector ca adjectiv &mdash; de exemplu, „Configurația colectorului”.
+
+[OpenTelemetry Collector]: /docs/collector/
 
 ### Contrib
 
@@ -201,13 +203,13 @@ Uneori folosit pentru a se referi la o colecție de
 folosește [Jurnal](#log) și pentru a se referi la o singură
 [Înregistrare jurnal](#log-record). Unde ambiguitatea este posibilă, se
 utilizează calificatori suplimentari, de exemplu, `Înregistrare jurnal`. Vezi
-[Jurnal](#log).
+[Jurnal][log].
 
 ### Înregistrare în jurnal {#log-record}
 
 O înregistrare a datelor cu o marcă temporală și o severitate. Poate avea și un
 [ID de urmărire](#trace) și un [ID de interval](#span) atunci când este corelată
-cu o urmă. Vezi [Înregistrare în jurnal](#log-record).
+cu o urmă. Vezi [Înregistrare în jurnal][log-record].
 
 ### Metadate {#metadata}
 
@@ -220,7 +222,7 @@ produce telemetrie. OpenTelemetry numește aceste perechi [Atribute](#attribute)
 
 Înregistrează un punct de date, fie măsurători brute, fie o agregare
 predefinită, ca serie temporală cu [Metadate](#metadata). Vezi
-[Metrică](#metric).
+[Metrică][metric].
 
 ### OC
 
@@ -306,7 +308,7 @@ Prescurtare pentru [Protocolul OpenTelemetry](/docs/specs/otlp/).
 
 Folosit pentru serializarea și deserializarea părților specifice ale datelor de
 telemetrie, cum ar fi contextul intervalului și [Bagajul](#baggage) din
-[Intervaluri](#span). Vezi [Propagatori](#propagators).
+[Intervaluri](#span). Vezi [Propagatori][propagators].
 
 ### Proto
 
@@ -316,7 +318,7 @@ Tipuri de interfețe independente de limbă. Vezi [opentelemetry-proto].
 
 Termenul folosit de [Colector](/docs/collector/configuration/#receivers) pentru
 a defini modul în care sunt recepționate datele de telemetrie. Receptoarele pot
-fi bazate pe push sau pull. Vezi [Receptor](#receiver).
+fi bazate pe push sau pull. Vezi [Receptor][receiver].
 
 ### Cerere {#request}
 
@@ -342,7 +344,7 @@ Prescurtare pentru [Apel de procedură la distanță][rpc].
 
 Un mecanism pentru controlul cantității de date exportate. Cel mai frecvent
 utilizat cu [Trasarea](#trace) [Sursei de date](#data-source). Vezi
-[Eșantionare](#sampling).
+[Eșantionare][sampling].
 
 ### SDK
 
@@ -424,10 +426,16 @@ date sunt furnizate pe paginile web atunci când sunt solicitate. Vezi [zPages].
 [instrumented library]: /docs/specs/otel/glossary/#instrumented-library
 [Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
+[log record]: /docs/specs/otel/glossary#log-record
+[log]: /docs/specs/otel/glossary#log
+[metric]: ../signals/metrics/
 [opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
+[propagators]: /docs/languages/go/instrumentation/#propagators-and-context
 [Prometheus]: https://prometheus.io/
+[receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
+[sampling]: /docs/specs/otel/trace/sdk#sampling
 [signals]: ../signals/
 [span]: /docs/specs/otel/trace/api#span
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
