@@ -21,6 +21,9 @@ use warnings;
 use diagnostics;
 use Getopt::Long;
 use POSIX qw(strftime);
+use FindBin qw($RealBin);
+use lib $RealBin;
+use StatsCommon;
 
 # Configuration
 my $DEFAULT_LANG = "en";
@@ -110,96 +113,6 @@ sub get_locales {
   return @locales;
 }
 
-sub get_author_consolidation {
-  my ($since, $until, $path_spec) = @_;
-
-  my %email_to_name;
-  my %email_to_date;
-
-  # Get all commits with email, name, and date
-  my $cmd = "git log --since='$since' --until='$until' --format='%aE|%aN|%ai'";
-  $cmd .= " -- $path_spec" if $path_spec;
-
-  my @commits = `$cmd`;
-  chomp @commits;
-
-  foreach my $line (@commits) {
-    my ($email, $name, $date) = split /\|/, $line, 3;
-    next unless $email;
-
-    # Keep the most recent name for each email
-    if (!exists $email_to_date{$email} || $date gt $email_to_date{$email}) {
-      $email_to_name{$email} = $name;
-      $email_to_date{$email} = $date;
-    }
-  }
-
-  return \%email_to_name;
-}
-
-sub get_consolidated_contributors {
-  my ($since, $until, $path_spec, $limit) = @_;
-
-  my $email_to_name = get_author_consolidation($since, $until, $path_spec);
-  my %email_to_count;
-
-  # Count commits per email
-  my $cmd = "git log --since='$since' --until='$until' --format='%aE'";
-  $cmd .= " -- $path_spec" if $path_spec;
-
-  my @emails = `$cmd`;
-  chomp @emails;
-
-  foreach my $email (@emails) {
-    next unless $email;
-    $email_to_count{$email}++;
-  }
-
-  # Sort by count descending and return
-  my @sorted = sort { $email_to_count{$b} <=> $email_to_count{$a} } keys %email_to_count;
-
-  if ($limit && $limit > 0) {
-    @sorted = splice(@sorted, 0, $limit);
-  }
-
-  my @results;
-  foreach my $email (@sorted) {
-    my $name = $email_to_name->{$email} || $email;
-    push @results, { name => $name, count => $email_to_count{$email} };
-  }
-
-  return @results;
-}
-
-sub get_line_stats {
-  my ($since, $until, $path_spec) = @_;
-
-  my $cmd = "git log --since='$since' --until='$until' --numstat --format=''";
-  $cmd .= " -- $path_spec" if $path_spec;
-
-  my @lines = `$cmd`;
-
-  my ($added, $removed) = (0, 0);
-  foreach my $line (@lines) {
-    if ($line =~ /^(\d+)\s+(\d+)/) {
-      $added += $1;
-      $removed += $2;
-    }
-  }
-
-  return ($added, $removed, $added - $removed);
-}
-
-sub count_commits {
-  my ($since, $until, $path_spec) = @_;
-
-  my $cmd = "git log --since='$since' --until='$until' --oneline";
-  $cmd .= " -- $path_spec" if $path_spec;
-
-  my @commits = `$cmd`;
-  return scalar @commits;
-}
-
 sub count_files_added {
   my ($since, $until, $path_spec, $pattern) = @_;
 
@@ -213,23 +126,6 @@ sub count_files_added {
   }
 
   return scalar @files;
-}
-
-sub count_unique_contributors {
-  my ($since, $until, $path_spec) = @_;
-
-  my $cmd = "git log --since='$since' --until='$until' --format='%aE'";
-  $cmd .= " -- $path_spec" if $path_spec;
-
-  my @emails = `$cmd`;
-  chomp @emails;
-
-  my %unique;
-  foreach my $email (@emails) {
-    $unique{$email} = 1 if $email;
-  }
-
-  return scalar keys %unique;
 }
 
 sub count_current_files {
@@ -250,18 +146,6 @@ sub check_locale_added {
   return scalar @log > 0;
 }
 
-sub get_median {
-  my @values = sort { $a <=> $b } @_;
-  return 0 unless @values;
-
-  my $mid = int(@values / 2);
-  if (@values % 2) {
-    return $values[$mid];
-  } else {
-    return ($values[$mid-1] + $values[$mid]) / 2;
-  }
-}
-
 sub main {
   process_args();
 
@@ -272,33 +156,14 @@ sub main {
   # Check if content directory exists
   die "ERROR: Content directory not found: $CONTENT_DIR\n" unless -d $CONTENT_DIR;
 
-  # Determine output destination
-  my $final_output_file;
-  my $use_stdout = 0;
-
-  if ($output_file eq '-') {
-    # Use stdout
-    $use_stdout = 1;
-    $final_output_file = undef;
-  } elsif ($output_file) {
-    # User specified a file
-    $final_output_file = $output_file;
-  } else {
-    # Default: save to tmp/ with date-based filename
-    mkdir 'tmp' unless -d 'tmp';
-    $final_output_file = "tmp/l10n-stats-$since_date-to-$until_date.md";
-  }
-
-  # Redirect output if writing to file
-  if (!$use_stdout) {
-    open(STDOUT, '>', $final_output_file) or die "ERROR: Cannot write to $final_output_file: $!\n";
-  }
+  # Setup output
+  my ($use_stdout, $final_output_file) = setup_output($output_file, $since_date, $until_date, 'l10n-stats');
 
   my @locales = get_locales();
 
   if (@locales == 0) {
     print "No localization directories found in $CONTENT_DIR/\n";
-    close(STDOUT) unless $use_stdout;
+    finish_output($use_stdout, $final_output_file);
     return;
   }
 
@@ -420,11 +285,8 @@ sub main {
   my $timestamp = strftime("%Y-%m-%d %H:%M:%S", localtime);
   print "*Report generated on $timestamp*\n";
 
-  # Close file and print success message
-  if (!$use_stdout) {
-    close(STDOUT);
-    print STDERR "Report saved to $final_output_file\n";
-  }
+  # Finish output
+  finish_output($use_stdout, $final_output_file);
 }
 
 main();

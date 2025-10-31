@@ -21,6 +21,9 @@ use warnings;
 use diagnostics;
 use Getopt::Long;
 use POSIX qw(strftime);
+use FindBin qw($RealBin);
+use lib $RealBin;
+use StatsCommon;
 
 # Command-line options
 my $since_date = "";
@@ -97,84 +100,6 @@ sub process_args {
   }
 }
 
-sub get_author_consolidation {
-  my ($since, $until) = @_;
-
-  my %email_to_name;
-  my %email_to_date;
-
-  # Get all commits with email, name, and date
-  my @commits = `git log --since='$since' --until='$until' --format='%aE|%aN|%ai'`;
-  chomp @commits;
-
-  foreach my $line (@commits) {
-    my ($email, $name, $date) = split /\|/, $line, 3;
-    next unless $email;
-
-    # Keep the most recent name for each email
-    if (!exists $email_to_date{$email} || $date gt $email_to_date{$email}) {
-      $email_to_name{$email} = $name;
-      $email_to_date{$email} = $date;
-    }
-  }
-
-  return \%email_to_name;
-}
-
-sub get_consolidated_contributors {
-  my ($since, $until, $limit) = @_;
-
-  my $email_to_name = get_author_consolidation($since, $until);
-  my %email_to_count;
-
-  # Count commits per email
-  my @emails = `git log --since='$since' --until='$until' --format='%aE'`;
-  chomp @emails;
-
-  foreach my $email (@emails) {
-    next unless $email;
-    $email_to_count{$email}++;
-  }
-
-  # Sort by count descending and return
-  my @sorted = sort { $email_to_count{$b} <=> $email_to_count{$a} } keys %email_to_count;
-
-  if ($limit && $limit > 0) {
-    @sorted = splice(@sorted, 0, $limit);
-  }
-
-  my @results;
-  foreach my $email (@sorted) {
-    my $name = $email_to_name->{$email} || $email;
-    push @results, { name => $name, count => $email_to_count{$email} };
-  }
-
-  return @results;
-}
-
-sub get_line_stats {
-  my ($since, $until) = @_;
-
-  my @lines = `git log --since='$since' --until='$until' --numstat --format=''`;
-
-  my ($added, $removed) = (0, 0);
-  foreach my $line (@lines) {
-    if ($line =~ /^(\d+)\s+(\d+)/) {
-      $added += $1;
-      $removed += $2;
-    }
-  }
-
-  return ($added, $removed, $added - $removed);
-}
-
-sub count_commits {
-  my ($since, $until) = @_;
-
-  my @commits = `git log --since='$since' --until='$until' --oneline`;
-  return scalar @commits;
-}
-
 sub count_files {
   my ($since, $until, $filter) = @_;
 
@@ -195,20 +120,6 @@ sub count_files {
     }
     return scalar keys %unique;
   }
-}
-
-sub count_unique_contributors {
-  my ($since, $until) = @_;
-
-  my @emails = `git log --since='$since' --until='$until' --format='%aE'`;
-  chomp @emails;
-
-  my %unique;
-  foreach my $email (@emails) {
-    $unique{$email} = 1 if $email;
-  }
-
-  return scalar keys %unique;
 }
 
 sub get_top_directories {
@@ -260,27 +171,6 @@ sub get_file_type_stats {
   return @results;
 }
 
-sub get_median {
-  my @values = sort { $a <=> $b } @_;
-  return 0 unless @values;
-
-  my $mid = int(@values / 2);
-  if (@values % 2) {
-    return $values[$mid];
-  } else {
-    return ($values[$mid-1] + $values[$mid]) / 2;
-  }
-}
-
-sub get_average {
-  my @values = @_;
-  return 0 unless @values;
-
-  my $sum = 0;
-  $sum += $_ for @values;
-  return $sum / scalar(@values);
-}
-
 sub days_between {
   my ($since, $until) = @_;
 
@@ -303,27 +193,8 @@ sub main {
   system("git rev-parse --git-dir >/dev/null 2>&1");
   die "ERROR: Not in a git repository\n" if $? != 0;
 
-  # Determine output destination
-  my $final_output_file;
-  my $use_stdout = 0;
-
-  if ($output_file eq '-') {
-    # Use stdout
-    $use_stdout = 1;
-    $final_output_file = undef;
-  } elsif ($output_file) {
-    # User specified a file
-    $final_output_file = $output_file;
-  } else {
-    # Default: save to tmp/ with date-based filename
-    mkdir 'tmp' unless -d 'tmp';
-    $final_output_file = "tmp/repo-stats-$since_date-to-$until_date.md";
-  }
-
-  # Redirect output if writing to file
-  if (!$use_stdout) {
-    open(STDOUT, '>', $final_output_file) or die "ERROR: Cannot write to $final_output_file: $!\n";
-  }
+  # Setup output
+  my ($use_stdout, $final_output_file) = setup_output($output_file, $since_date, $until_date, 'repo-stats');
 
   # Generate report
   print "# Repository Statistics Report\n\n";
@@ -419,11 +290,8 @@ sub main {
   my $timestamp = strftime("%Y-%m-%d %H:%M:%S", localtime);
   print "*Report generated on $timestamp*\n";
 
-  # Close file and print success message
-  if (!$use_stdout) {
-    close(STDOUT);
-    print STDERR "Report saved to $final_output_file\n";
-  }
+  # Finish output
+  finish_output($use_stdout, $final_output_file);
 }
 
 main();
