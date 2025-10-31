@@ -3,7 +3,7 @@ title: Components
 description:
   OpenTelemetry Collector components - receivers, processors, exporters,
   connectors, and extensions
-weight: 300
+weight: 22
 ---
 
 The OpenTelemetry Collector is made up of components that handle telemetry data.
