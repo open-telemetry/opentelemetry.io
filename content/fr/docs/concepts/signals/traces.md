@@ -3,6 +3,7 @@ title: Traces
 weight: 1
 description: Le chemin des requêtes dans votre application.
 cSpell:ignore: Guten
+default_lang_commit: bc9473716003fd99487e16f95dd2c3a5b072bd2a
 ---
 
 Les **traces** nous donnent une vue d'ensemble de ce qui se passe quand une
@@ -12,7 +13,7 @@ traces sont essentielles à la compréhension du "chemin" complet d'une requête
 dans votre application.
 
 Explorons ceci avec trois unités de travail, représentées par des
-[Spans](#spans):
+[spans](#spans):
 
 {{% alert title="Note" %}}
 
@@ -138,7 +139,7 @@ Pour comprendre comment le tracing fonctionne dans OpenTelemetry, regardons la
 liste des composants qui vont jouer un rôle dans l'instrumentation de notre
 code.
 
-## Fournisseur de traces
+## Fournisseur de traces {#tracer-provider}
 
 Un fournisseur de traces (parfois appelé `TracerProvider`) est une usine de
 `Tracer`. Dans la plupart des applications, un fournisseur de traces est
@@ -149,30 +150,31 @@ première étape dans la mise en place du tracing avec OpenTelemetry. Dans les S
 de certains langages, un fournisseur de traces global est déjà initialisé pour
 vous.
 
-## Tracer
+## Tracer {#tracer}
 
 Un Traceur crée des spans contenant des informations à propos des opérations en
 cours, comme une requête vers un service. Les Traceurs sont créés à partir d'un
 fournisseur de traces.
 
-## exportateurs de Traces
+## exportateurs de Traces {#trace-exporters}
 
 Les exportateurs de traces envoient les traces à un consommateur. Ce
 consommateur peut servir de sortie standard pour le débogage et le
 développement, un Collecteur OpenTelemetry, ou n'importe quel backend open
 source ou d'un éditeur de votre choix.
 
-## Propagation du contexte
+## Propagation du contexte {#context-propagation}
+
 
 Le contexte est un des concept fondamentaux qui permet le traçage distribué.
-Avec le traçage distribué, les Spans peuvent être corrélés entre eux et
-assemblés dans une Trace, quel que soit l'endroit où les Spans sont générés.
+Avec le traçage distribué, les spans peuvent être corrélés entre eux et
+assemblés dans une Trace, quel que soit l'endroit où les spans sont générés.
 Pour en apprendre plus sur ce sujet, consultez la page
 [Propagation de contexte](../../context-propagation).
 
-## Spans
+## Spans {#spans}
 
-Un **span** est une unité de travail ou d'opération. Les Spans sont les blocs
+Un **span** est une unité de travail ou d'opération. Les spans sont les blocs
 qui construisent les Traces. Dans OpenTelemetry, ils incluent les informations
 suivantes:
 
@@ -228,7 +230,7 @@ Les spans peuvent être imbriqués, comme c'est suggéré par la présence d'un 
 span parent: les spans enfants représentent des sous-opérations. Cela permet aux
 spans de capturer plus précisément les tâches effectuées dans une application.
 
-### Contexte d'un span
+### Contexte d'un span {#span-context}
 
 Le contexte d'un span est un objet immuable contenant les informations
 suivantes:
@@ -243,13 +245,13 @@ Le contexte des spans fait partie de ce qui est sérialisé et propagé en même
 temps que le [Contexte Distribué](#context-propagation) et le
 [bagage](../baggage).
 
-C'est parce que le Contexte du Span contient l'ID de la Trace qu'il est utilisé
+C'est parce que le Contexte du span contient l'ID de la Trace qu'il est utilisé
 pour créer les [Liens de spans](#span-links).
 
-### Attributs
+### Attributs {#attributes}
 
 Les attributs sont des paires clé-valeur qui contiennent des métadonnées que
-vous pouvez utiliser pour annoter les Spans afin de transporter des informations
+vous pouvez utiliser pour annoter les spans afin de transporter des informations
 supplémentaires concernant les opérations qu'ils suivent.
 
 Par exemple, si un span suit une opération qui ajoute un article dans le panier
@@ -274,24 +276,24 @@ dans les opérations courantes. Il est utile d'utiliser le nommage d'attributs
 sémantiques dans la mesure du possible afin que les types courants de
 métadonnées soient standardisés à travers les systèmes.
 
-### Événements de Span
+### Événements de span {#span-events}
 
-Un Événement de Span peut être considéré comme un message de log structuré (ou
-une annotation) sur un Span, généralement utilisé pour signaler un moment
-particulier, significatif dans la durée de vie du Span.
+Un Événement de span peut être considéré comme un message de log structuré (ou
+une annotation) sur un span, généralement utilisé pour signaler un moment
+particulier, significatif dans la durée de vie du span.
 
 Par exemple, si on considère deux scénarios dans un navigateur web:
 
 1. Suivre le chargement de la page
 2. Signaler quand une page devient interactive
 
-Un Span est plus adapté pour suivre le premier scénario parce qu'il s'agit d'une
+Un span est plus adapté pour suivre le premier scénario parce qu'il s'agit d'une
 opération avec un début et une fin.
 
-Un Événement de Span est plus adapté pour suivre le second scénario parce qu'il
+Un Événement de span est plus adapté pour suivre le second scénario parce qu'il
 représente un moment particulier et ponctuel dans le temps.
 
-### Quand utiliser les Événements de Spans plutôt que les Attributs de Span
+### Quand utiliser les Événements de spans plutôt que les Attributs de span {#span-events-attributes}
 
 Puisque les événements de spans contiennent aussi des attributs, la question de
 savoir quand utiliser les événements de spans plutôt que les attributs n'est pas
@@ -306,7 +308,7 @@ termine, pourriez vouloir ajouter des données de l'opération à votre télém�
 - Si l'horodatage n'est pas significatif ou pertinent, ajoutez les données comme
   des attributs du span.
 
-### Liens de Spans
+### Liens de spans {#span-links}
 
 Les liens existent afin de pouvoir associer un span avec un ou plusieurs autres
 impliquant une relation de causalité. Par exemple, supposons que nous avons un
@@ -330,7 +332,7 @@ spans entre eux.
 Pour plus d'informations, consultez
 [Lien de spans](/docs/specs/otel/trace/api/#link).
 
-### Statut de span
+### Statut de span {#span-status}
 
 Chaque span a un statut. Les trois valeurs possibles sont:
 
@@ -359,7 +361,7 @@ représente le cas où un développeur marque explicitement un span comme réuss
 Dans la plupart des cas, il n'est pas nécessaire de marquer explicitement un
 span comme `Ok`.
 
-### Types de Span
+### Types de span {#span-types}
 
 Quand un span est créé, il est de type `Client`, `Server`, `Internal`,
 `Producer`, ou `Consumer`. Le type du span fournit une indication au backend de
@@ -371,39 +373,39 @@ producer est toujours un consumer. Si non spécifié, le type du span est par
 défaut `Internal`.
 
 Pour plus d'informations, consultez
-[Types de Span](/docs/specs/otel/trace/api/#spankind).
+[Types de span](/docs/specs/otel/trace/api/#spankind).
 
-#### Client
+#### Client {#client-span}
 
 Un span client représente un appel distant sortant synchrone comme une requête
 HTTP ou un appel vers une base de données. Notez que dans ce contexte,
 "synchrone" ne fait pas référence à `async/await`, mais au fait que ce n'est pas
 mis en file d'attente pour un traitement ultérieur.
 
-#### Server
+#### Server {#server-span}
 
 Un span server représente un appel distant entrant synchrone tel qu'une requête
 HTTP entrante ou un appel de procédure distant.
 
-#### Internal
+#### Internal {#internal-span}
 
 Les spans internal représentent des opérations qui ne franchissent pas les
 limites d'un processus. Des éléments comme l'instrumentation d'un appel de
 fonction ou d'un middleware Express peuvent utiliser des spans internes.
 
-#### Producer
+#### Producer {#producer-span}
 
 Les spans producer représentent la création d'une tâche qui peut être traitée de
 manière asynchrone plus tard. Il peut s'agir d'une tâche distante comme une
 insertion dans une file d'attente de tâches ou d'une tâche gérée localement par
 un gestionnaire d'événement.
 
-#### Consumer
+#### Consumer {#consumer-span}
 
 Les spans consumer représentent le traitement d'une tâche créée par un producer
 et peuvent démarrer longtemps après que le span producer se soit achevé.
 
-## Specification
+## Specification {#specification}
 
 Pour plus d'informations, consultez la
 [spécification des traces](/docs/specs/otel/overview/#tracing-signal).
