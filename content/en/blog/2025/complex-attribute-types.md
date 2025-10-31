@@ -21,8 +21,8 @@ instrumentations aim to provide useful attributes that can be easily filtered
 and aggregated.
 
 But what happens when the data itself is complex? OpenTelemetry also strives to
-capture observability for real systems, libraries, and applications that
-naturally expose complex properties.
+capture observability for real-world systems, libraries, and applications whose
+observable properties are sometimes complex.
 
 In this post, we're announcing support for capturing complex data across all
 OTel signals starting with OTLP [1.9.0](https://github.com/open-telemetry/opentelemetry-proto/releases/tag/v1.9.0),
