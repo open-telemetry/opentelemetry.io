@@ -24,16 +24,18 @@ But what happens when the data itself is complex? OpenTelemetry also strives to
 capture observability for real systems, libraries, and applications that
 naturally expose complex properties.
 
-In this post, we’re announcing support for capturing complex data across all
-OTel signals via the OTel APIs and SDKs. We’ll cover when and how to use complex
-data, when to avoid it, and how backends can start supporting it.
+In this post, we're announcing support for capturing complex data across all
+OTel signals starting with OTLP [1.9.0](https://github.com/open-telemetry/opentelemetry-proto/releases/tag/v1.9.0),
+and in future OTel APIs and SDK versions across the ecosystem.
 
-## Announcing support for complex attribute types in OTel
+We'll cover when and how to use complex data, when to avoid it, and how backends can start supporting it.
+
+## Support for complex attribute types in OTel
 
 OpenTelemetry APIs and SDKs are adding support for the following attribute types
 on all signals:
 
-- Maps (with values of any supported type)
+- Maps (with string keys and values of any supported type)
 - Heterogeneous arrays (containing elements of any supported type)
 - Byte arrays
 - Empty values
@@ -43,7 +45,7 @@ signals were limited to primitives and arrays of primitives.
 
 Following
 [OTEP 4485: Extending attributes to support complex values](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/oteps/4485-extending-attributes-to-support-complex-values.md)
-this support is being extended to all OTel signals.
+and its implementation in OTLP and the specification, this support is being extended to all OTel signals.
 
 The new attribute types, especially maps and heterogeneous arrays, should be
 used with care. Many observability backends are not optimized to query, index,
@@ -118,19 +120,19 @@ should be the backend’s decision whether to preserve the structure or serializ
 the data. Handling serialization at the backend side provides greater
 consistency and convenience for end users.
 
-## As a backend, how should I support complex attributes?
+## How should backends support complex attributes?
 
 We encourage backends to build user experiences that leverage structured
 attribute values, allowing users to query data based on nested properties.
 
-In the meantime, we recommend serializing complex attributes to JSON (or another
+In the meantime, we recommend that backends serialize complex attributes to JSON (or another
 suitable format) at ingestion time.
 
 The OTel Specification, Semantic Conventions, and API documentation will clearly
 communicate to instrumentation authors that complex attribute support may be
 limited and will continue to recommend flat attributes whenever possible.
 
-## When reporting telemetry, when should I use complex attributes?
+## When should you use complex attributes?
 
 When you can reasonably express data using flat attributes, use flat attributes.
 
@@ -144,5 +146,5 @@ affect new features which require the use of complex attributes.
 ## Comments?
 
 We’ve opened a
-[GitHub issue to discuss this post](https://github.com/open-telemetry/community/issues/TODO),
+[GitHub issue to discuss this post](https://github.com/open-telemetry/community/issues/3119),
 and we’d love your feedback.
