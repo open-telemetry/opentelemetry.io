@@ -9,6 +9,7 @@ author: >-
   DeLuca](https://github.com/jaydeluca) (Grafana Labs), [Marylia
   Gutierrez](https://github.com/maryliag) (Grafana Labs)
 default_lang_commit: b4f82102ae2a6850e29c1facc26d34f77093e976
+drifted_from_default: true
 cSpell:ignore: Dotel marylia otelconf zeitlinger
 ---
 

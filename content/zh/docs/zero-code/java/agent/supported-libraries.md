@@ -2,6 +2,7 @@
 title: 支持的库
 linkTitle: 支持的库
 default_lang_commit: 1fe3f355b66260860b47b6cd79c768fd27402334
+drifted_from_default: true
 weight: 11
 # prettier-ignore
 cSpell:ignore: activej akka armeria avaje clickhouse couchbase dbcp dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jedis jodd ktor logback logmanager mojarra mybatis myfaces okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson resteasy restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
