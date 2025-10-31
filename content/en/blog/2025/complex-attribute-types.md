@@ -51,7 +51,7 @@ or aggregate complex attributes. Semantic conventions will assume complex
 attributes are not indexed and will avoid using them on metrics or in other
 scenarios where efficient querying is important.
 
-When possible, stick to primitives and arrays of primitives.
+When possible, stick to primitive values.
 
 ## Why are we doing this?
 
