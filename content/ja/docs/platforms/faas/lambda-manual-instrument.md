@@ -3,6 +3,7 @@ title: Lambdaの手動計装
 weight: 11
 description: OpenTelemetryであなたのLambdaを手動計装する
 default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309 # patched
+drifted_from_default: true
 ---
 
 Lambdaの自動計装ドキュメントでカバーされていない言語については、コミュニティはスタンドアロンの計装レイヤーを持っていません。
