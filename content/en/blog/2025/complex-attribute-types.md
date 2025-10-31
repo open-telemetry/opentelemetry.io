@@ -24,13 +24,13 @@ But what happens when the data itself is complex? OpenTelemetry also strives to
 capture observability for real-world systems, libraries, and applications whose
 observable properties are sometimes complex.
 
-In this post, we're announcing support for capturing complex data across all
+Recently OpenTelemetry has announced upcoming support for capturing complex data across all
 OTel signals starting with OTLP [1.9.0](https://github.com/open-telemetry/opentelemetry-proto/releases/tag/v1.9.0),
-and in future OTel APIs and SDK versions across the ecosystem.
+and in future OpenTelemetry API and SDK versions across the ecosystem.
 
-We'll cover when and how to use complex data, when to avoid it, and how backends can start supporting it.
+In this post, we’ll cover when and how to use complex data, when to avoid it, and how backends can start supporting it.
 
-## Support for complex attribute types in OTel
+## Upcoming support for complex attribute types in OpenTelemetry
 
 OpenTelemetry APIs and SDKs are adding support for the following attribute types
 on all signals:
