@@ -20,7 +20,7 @@ This event marks a significant milestone after the project, originally Grafana
 Beyla, was donated earlier this year by Grafana Labs. The development of eBPF
 instrumentation has significantly sped up after the project became managed under
 the OpenTelemetry umbrella. Many new protocols have been added, quality has
-improved \- especially when deploying at scale, and tests are running 10 times
+improved - especially when deploying at scale, and tests are running 10 times
 faster. It’s a true testament to the value of the OpenTelemetry community.
 
 ## So what is OpenTelemetry eBPF Instrumentation and why should you care?
