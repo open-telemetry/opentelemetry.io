@@ -1,12 +1,10 @@
 actuateur
 additionaldeps
 autocompléter
-Exporteurs
-Exporteur
 extensibilité
-multiligne
 glassfish
 jvms
+multiligne
 packagées
 phpini
 observabilité
