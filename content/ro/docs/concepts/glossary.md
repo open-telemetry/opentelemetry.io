@@ -365,7 +365,7 @@ multe locații.
 ### Semnal {#signal}
 
 Unul dintre [Urme](#trace), [Metrici](#metric) sau [Jurnale](#log). Vezi
-[Semnale](#signals).
+[Semnale][signals].
 
 ### Interval {#span}
 
@@ -426,6 +426,7 @@ date sunt furnizate pe paginile web atunci când sunt solicitate. Vezi [zPages].
 [Prometheus]: https://prometheus.io/
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
+[signals]: ../signals/
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
 [tracer]: /docs/specs/otel/trace/api#tracer
 [zpages]:
