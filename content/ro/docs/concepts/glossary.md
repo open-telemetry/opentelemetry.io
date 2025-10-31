@@ -165,8 +165,8 @@ Prescurtare de la [Protocol de transfer hipertext][http].
 ### Bibliotecă instrumentată {#instrumented-library}
 
 Indică [Biblioteca](#library) pentru care sunt colectate semnalele de telemetrie
-([Urme](#trace), [Metrici](#metric), [Jurnale](#log)). Vezi
-[Biblioteca instrumentată][instrumented library].
+([Urme](#trace), [Metrici](#metric), [Jurnale](#log)). Vezi [Biblioteca
+instrumentată][instrumented library].
 
 ### Biblioteca de instrumente {#instrumentation-library}
 
@@ -424,16 +424,10 @@ date sunt furnizate pe paginile web atunci când sunt solicitate. Vezi [zPages].
 [instrumented library]: /docs/specs/otel/glossary/#instrumented-library
 [Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
-[log record]: /docs/specs/otel/glossary#log-record
-[log]: /docs/specs/otel/glossary#log
-[metric]: ../signals/metrics/
 [opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
-[propagators]: /docs/languages/go/instrumentation/#propagators-and-context
 [Prometheus]: https://prometheus.io/
-[receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
-[sampling]: /docs/specs/otel/trace/sdk#sampling
 [signals]: ../signals/
 [span]: /docs/specs/otel/trace/api#span
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
