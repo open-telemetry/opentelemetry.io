@@ -6547,6 +6547,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-27T09:47:23.801498738Z"
   },
+  "https://github.com/open-telemetry/community/issues/3119": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-31T20:41:55.10972212Z"
+  },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
     "LastSeen": "2025-10-29T09:40:22.42119406Z"
@@ -10883,6 +10887,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-29T09:45:26.10132392Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-proto/releases/tag/v1.9.0": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-31T20:41:45.06478218Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-proto/tree/main/docs": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T16:06:46.545666433Z"
@@ -11706,6 +11714,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.45.0/specification/resource/README.md#overview": {
     "StatusCode": 206,
     "LastSeen": "2025-10-30T09:43:50.284619164Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/oteps/4485-extending-attributes-to-support-complex-values.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-31T20:41:49.24744827Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/oteps/0232-maturity-of-otel.md": {
     "StatusCode": 206,
@@ -14442,6 +14454,10 @@
   "https://grails.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-10-27T09:42:34.844129363Z"
+  },
+  "https://graphql.org/learn/response/#errors": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-31T20:41:52.137386972Z"
   },
   "https://groq.com/": {
     "StatusCode": 200,
