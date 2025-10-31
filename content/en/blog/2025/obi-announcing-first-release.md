@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry eBPF Instrumentation Marks the First Release
 linkTitle: OBI First Release # Mandatory, make sure that your short title.
-date: 2025-10-30 # Put the current date, we will keep the date updated until your PR is merged
+date: 2025-10-30
 author:
   >- # If you have only one author, then add the single name on this line in quotes.
   [Nikola Grcevski](https://github.com/grcevski) (Grafana Labs), [Tyler
