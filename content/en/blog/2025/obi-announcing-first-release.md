@@ -91,9 +91,8 @@ will not be there. Let’s look into detail what this means:
    doesn’t have good distributed tracing support for certain languages and
    technologies. For example, it currently doesn’t handle distributed tracing
    for reactive programming frameworks, Java virtual threads or complex thread
-   pools. The distributed tracing limitations are documented in the
-   [Distributed Traces with OBI](/docs/zero-code/obi/distributed-traces/)
-   section of our docs.
+   pools. The distributed tracing limitations are documented in the [Distributed
+   Traces with OBI][distributed-traces] section of our docs.
 
 ## To summarize
 
