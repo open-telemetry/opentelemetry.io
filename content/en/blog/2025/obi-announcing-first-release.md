@@ -93,7 +93,7 @@ will not be there. Let’s look into detail what this means:
    technologies. For example, it currently doesn’t handle distributed tracing
    for reactive programming frameworks, Java virtual threads or complex thread
    pools. The distributed tracing limitations are documented in the
-   [Distributed Traces with OBI](https://opentelemetry.io/docs/zero-code/obi/distributed-traces/)
+   [Distributed Traces with OBI](/docs/zero-code/obi/distributed-traces/)
    section of our docs.
 
 ## To summarize
@@ -111,7 +111,7 @@ Getting started with OpenTelemetry eBPF Instrumentation (OBI) is
 straightforward\! You can deploy it as standalone, as a Docker image or as a
 Kubernetes Daemonset (or pod sidecar). For detailed instructions on
 installation, configuration, and running your application with OBI, check out
-the [Getting Started guide](https://opentelemetry.io/docs/zero-code/obi/setup/).
+the [Getting Started guide](/docs/zero-code/obi/setup/).
 
 For complete examples on how to install OBI in docker environments you can check
 out our many
