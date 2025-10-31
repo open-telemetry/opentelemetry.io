@@ -94,7 +94,7 @@
     "pin:submodule": "npm run _pin:submodule -- $PIN_SKIP",
     "postfix:refcache:refresh": "npm run fix:refcache",
     "postfix:submodule": "git submodule",
-    "postget:submodule": "git submodule",
+    "postget:submodule": "git submodule && scripts/update-semconv-mounts.pl",
     "prebuild:preview": "npm run _prebuild",
     "prebuild:production": "npm run _prebuild",
     "prebuild": "npm run _prebuild",
