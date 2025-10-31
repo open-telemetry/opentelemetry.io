@@ -210,7 +210,7 @@ utilizează calificatori suplimentari, de exemplu, `Înregistrare jurnal`. Vezi
 
 O înregistrare a datelor cu o marcă temporală și o severitate. Poate avea și un
 [ID de urmărire](#trace) și un [ID de interval](#span) atunci când este corelată
-cu o urmă. Vezi [Înregistrare în jurnal][log-record].
+cu o urmă. Vezi [Înregistrare în jurnal][log record].
 
 ### Metadate {#metadata}
 
