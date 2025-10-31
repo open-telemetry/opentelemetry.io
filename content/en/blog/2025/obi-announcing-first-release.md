@@ -109,7 +109,7 @@ Getting started with OpenTelemetry eBPF Instrumentation (OBI) is
 straightforward\! You can deploy it as standalone, as a Docker image or as a
 Kubernetes Daemonset (or pod sidecar). For detailed instructions on
 installation, configuration, and running your application with OBI, check out
-the [Getting Started guide](/docs/zero-code/obi/setup/).
+the [Getting Started guide][getting-started].
 
 For complete examples on how to install OBI in docker environments you can check
 out our many
