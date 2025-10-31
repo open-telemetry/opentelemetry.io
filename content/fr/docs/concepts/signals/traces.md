@@ -8,7 +8,7 @@ default_lang_commit: bc9473716003fd99487e16f95dd2c3a5b072bd2a
 
 Les **traces** nous donnent une vue d'ensemble de ce qui se passe quand une
 requête est faite à une application. Que l'application soit monolithique avec
-une seule base de données ou un maillage de services plus sophistiqués, les
+une seule base de données ou un maillage de services plus sophistiqué, les
 traces sont essentielles à la compréhension du "chemin" complet d'une requête
 dans votre application.
 
@@ -89,7 +89,7 @@ Span `hello-greetings` :
 ```
 
 Ce span encapsule des tâches spécifiques, comme dire bonjour, et son parent est
-le span `hello`. On peut noter qu'il partage la même `trace_id` que le span
+le span `hello`. On peut noter qu'il partage le même `trace_id` que le span
 racine, indiquant qu'il s'agit d'une partie de la même trace. De plus, il a un
 `parent_id` qui correspond au `span_id` du span `hello`.
 
@@ -120,51 +120,50 @@ Span `hello-salutations`:
 }
 ```
 
-Ce span représente la troisième opération dans cette trace et, comme la
-précédente, c'est un enfant du span `hello`. C'est aussi un frère du span
+Ce span représente la troisième opération dans cette trace et, comme le
+précédent, c'est un enfant du span `hello`. C'est aussi un frère du span
 `hello-greetings`.
 
 Ces trois blocs de JSON partagent la même `trace_id`, et le champ `parent_id`
 représente la hiérarchie. C'est ce qui en fait une Trace !
 
 Une autre chose que vous pourrez remarquer, c'est que chaque span a une
-structure similaire a celle d'un log. C'est parce que c'en est un peu un ! Une
+structure similaire à celle d'un log. C'est parce que c'en est un peu un ! Une
 manière de comprendre les traces est de les voir comme une collection de logs
-structurés avec du contexte, de la hiérarchie et encore plus d'intégrations.
-Mais ces logs structurés peuvent provenir de différents processus, services,
-machines virtuelles, data centers, etc. C'est ça qui permet aux traces de
-représenter une vue de bout en bout de n'importe quel système.
+structurés avec un contexte, une hiérarchie, des corrélations, et bien plus
+encore. Mais ces logs structurés peuvent provenir de différents processus,
+services, machines virtuelles, data centers, etc. C'est ça qui permet aux traces
+de représenter une vue de bout en bout de n'importe quel système.
 
-Pour comprendre comment le tracing fonctionne dans OpenTelemetry, regardons la
+Pour comprendre comment le traçage fonctionne dans OpenTelemetry, regardons la
 liste des composants qui vont jouer un rôle dans l'instrumentation de notre
 code.
 
-## Fournisseur de traces {#tracer-provider}
+## Tracer Provider {#tracer-provider}
 
-Un fournisseur de traces (parfois appelé `TracerProvider`) est une usine de
-`Tracer`. Dans la plupart des applications, un fournisseur de traces est
-initialisé une seule fois et son cycle de vie correspond au cycle de vie de
-l'application. L'initialisation du fournisseur de traces inclut également
-l'initialisation de la Ressource et de l'exportateur. il est généralement la
-première étape dans la mise en place du tracing avec OpenTelemetry. Dans les SDK
-de certains langages, un fournisseur de traces global est déjà initialisé pour
-vous.
+Un Tracer Provider ("Fournisseur de traceurs", parfois appelé `TracerProvider`)
+est une usine de `Tracer`. Dans la plupart des applications, un fournisseur de
+traceurs est initialisé une seule fois et son cycle de vie correspond au cycle
+de vie de l'application. L'initialisation du fournisseur de traceurs inclut
+également l'initialisation de la Ressource et de l'exportateur. il est
+généralement la première étape dans la mise en place du traçage avec
+OpenTelemetry. Dans les SDK de certains langages, un fournisseur de traceurs
+global est déjà initialisé pour vous.
 
-## Tracer {#tracer}
+## Traceur {#tracer}
 
 Un Traceur crée des spans contenant des informations à propos des opérations en
 cours, comme une requête vers un service. Les Traceurs sont créés à partir d'un
-fournisseur de traces.
+fournisseur de traceurs.
 
-## exportateurs de Traces {#trace-exporters}
+## Exportateurs de Traces {#trace-exporters}
 
 Les exportateurs de traces envoient les traces à un consommateur. Ce
-consommateur peut servir de sortie standard pour le débogage et le
-développement, un Collecteur OpenTelemetry, ou n'importe quel backend open
-source ou d'un éditeur de votre choix.
+consommateur peut être la sortie standard pour le débogage et le développement,
+un Collecteur OpenTelemetry, ou n'importe quel backend open source ou d'un
+éditeur de votre choix.
 
 ## Propagation du contexte {#context-propagation}
-
 
 Le contexte est un des concept fondamentaux qui permet le traçage distribué.
 Avec le traçage distribué, les spans peuvent être corrélés entre eux et
@@ -174,9 +173,9 @@ Pour en apprendre plus sur ce sujet, consultez la page
 
 ## Spans {#spans}
 
-Un **span** est une unité de travail ou d'opération. Les spans sont les blocs
-qui construisent les Traces. Dans OpenTelemetry, ils incluent les informations
-suivantes:
+Un **span** est une unité de travail ou une opération. Les spans sont les blocs
+de base qui constituent les Traces. Dans OpenTelemetry, ils incluent les
+informations suivantes:
 
 - Nom
 - ID du span parent (vide pour les spans racines)
@@ -187,7 +186,7 @@ suivantes:
 - [Liens du span](#span-links)
 - [Statut du span](#span-status)
 
-Span d'exemple:
+Exemple de span :
 
 ```json
 {
@@ -226,7 +225,7 @@ Span d'exemple:
 }
 ```
 
-Les spans peuvent être imbriqués, comme c'est suggéré par la présence d'un ID de
+Les spans peuvent être imbriqués, ce qui est impliqué par la présence d'un ID de
 span parent: les spans enfants représentent des sous-opérations. Cela permet aux
 spans de capturer plus précisément les tâches effectuées dans une application.
 
@@ -237,16 +236,16 @@ suivantes:
 
 - L'ID de la trace à laquelle le span appartient
 - L'ID du span parent
-- Le Trace flags, un encodage binaire contenant des informations sur la trace
-- L'état de la trace, une liste de paires clé-valeur pouvant contenir des
+- Les Trace flags, un encodage binaire contenant des informations sur la trace
+- Le Trace State, une liste de paires clé-valeur pouvant contenir des
   informations de traçage propres au fournisseur
 
-Le contexte des spans fait partie de ce qui est sérialisé et propagé en même
+Le contexte des spans est la partie du span qui est sérialisé et propagé en même
 temps que le [Contexte Distribué](#context-propagation) et le
 [bagage](../baggage).
 
-C'est parce que le Contexte du span contient l'ID de la Trace qu'il est utilisé
-pour créer les [Liens de spans](#span-links).
+Puisque le Contexte du span contient l'ID de la Trace, il est utilisé pour créer
+les [Liens de spans](#span-links).
 
 ### Attributs {#attributes}
 
@@ -263,18 +262,19 @@ Privilégiez l'ajout d'attributs à un span lors de sa création afin de rendre
 l'attribut disponible pour l'échantillonnage du SDK. Si vous devez ajouter une
 valeur après la création d'un span, mettez à jour le span avec la valeur.
 
-Les attributs suivent les règles suivantes pour chaque implémentation SDK:
+Les attributs sont soumis aux règles suivantes, implémentées par les SDK de
+chaque langage:
 
-- Les clés doivent être des chaînes de caractères non nulles
-- Les valeurs doivent être des chaînes de caractères, un booléen, une valeur à
-  virgule flottante, un entier ou un tableau de ces valeurs qui sont non nulles
+- Les clés doivent être une chaîne de caractères non nulles
+- Les valeurs doivent une chaîne de caractères, un booléen, une valeur à virgule
+  flottante, un entier ou un tableau de ces valeurs qui sont non nulles
 
 De plus, il existe les
 [Attributs sémantiques](/docs/specs/semconv/general/trace/), qui sont des
 conventions de nommages reconnues pour les métadonnées généralement présentes
 dans les opérations courantes. Il est utile d'utiliser le nommage d'attributs
 sémantiques dans la mesure du possible afin que les types courants de
-métadonnées soient standardisés à travers les systèmes.
+métadonnées soient standardisés entre les systèmes.
 
 ### Événements de span {#span-events}
 
@@ -301,7 +301,8 @@ toujours évidente. Pour vous aider à décider, demandez-vous si un horodatage
 spécifique est pertinent.
 
 Par exemple, si vous suivez une opération avec un span et que l'opération se
-termine, pourriez vouloir ajouter des données de l'opération à votre télémétrie.
+termine, vous pourriez vouloir ajouter des données de l'opération à votre
+télémétrie.
 
 - Si l'horodatage auquel l'opération se termine est significatif ou pertinent,
   ajoutez les données à un span event.
@@ -314,12 +315,12 @@ Les liens existent afin de pouvoir associer un span avec un ou plusieurs autres
 impliquant une relation de causalité. Par exemple, supposons que nous avons un
 système distribué où des opérations sont suivis par une trace.
 
-En réponse a certaines de ces opérations, une opération supplémentaire est mise
+En réponse à certaines de ces opérations, une opération supplémentaire est mise
 en file d'attente pour être exécutée, mais son exécution est asynchrone. Nous
-pouvons suivre cette opération subséquente avec avec une trace également.
+pouvons suivre cette opération subséquente avec une trace également.
 
 Nous aimerions associer la trace de l'opération subséquente avec la première
-trace, mais nous ne pouvons pas prédire quand l'opération subsequente
+trace, mais nous ne pouvons pas prédire quand l'opération subséquente
 commencera. Nous devons associer ces deux traces, nous allons donc utiliser un
 lien de span.
 
@@ -347,14 +348,14 @@ Lorsque le statut est `Error`, cela signifie qu'une erreur s'est produite dans
 l'opération suivie. Par exemple, cela peut être dû à une erreur HTTP 500 sur un
 serveur gérant une requête.
 
-Quand le status du span est `Ok`, cela signifie que le span avait été
-explicitement marqué comme sans erreur par le développeur. Même si c'est
-contre-intuitif, Il n'est pas nécessaire de définir le statut d'un span comme
-`Ok` lorsque le span est connu pour s'être achevé sans erreur, car cela est
-couvert par `Unset`. Ce que fait `Ok`, c'est représenter un "verdict final" sans
-ambiguïté sur le statut d'un span qui a été explicitement défini par un
-utilisateur. Cela est utile dans toute situation où un développeur souhaite
-qu'il n'y ait aucune autre interprétation d'un span que "réussi".
+Quand le statut du span est `Ok`, cela signifie que le span a été explicitement
+marqué comme sans erreur par le développeur. Même si c'est contre-intuitif, il
+n'est pas nécessaire de définir le statut d'un span comme `Ok` lorsqu'il est
+connu que le span s'est achevé sans erreur, car cela est couvert par `Unset`. Ce
+que fait `Ok`, c'est représenter un "verdict final" sans ambiguïté sur le statut
+d'un span qui a été explicitement défini par un utilisateur. Cela est utile dans
+toute situation où un développeur souhaite qu'il n'y ait aucune autre
+interprétation d'un span que "réussi".
 
 Pour reformuler: `Unset` représente un span qui s'est achevé sans erreur. `Ok`
 représente le cas où un développeur marque explicitement un span comme réussi.
@@ -391,7 +392,7 @@ HTTP entrante ou un appel de procédure distant.
 
 Les spans internal représentent des opérations qui ne franchissent pas les
 limites d'un processus. Des éléments comme l'instrumentation d'un appel de
-fonction ou d'un middleware Express peuvent utiliser des spans internes.
+fonction ou d'un middleware Express peuvent utiliser des spans internal.
 
 #### Producer {#producer}
 
