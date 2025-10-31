@@ -5,7 +5,7 @@ date: 2025-10-30 # Put the current date, we will keep the date updated until you
 author: >- # If you have only one author, then add the single name on this line in quotes.
   [Nikola Grcevski](https://github.com/grcevski) (Grafana Labs),
   [Tyler Yahn](https://github.com/MrAlias) (Splunk)
-issue: #8295
+issue: 8295
 sig: eBPF Instrumentation 
 ---
 
