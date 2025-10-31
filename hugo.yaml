@@ -2,7 +2,7 @@
 baseURL: https://opentelemetry.io
 title: OpenTelemetry
 disableKinds: [taxonomy]
-theme: [docsy]
+theme: [docsy, semconv]
 disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
 ignoreLogs: [spec-resource-not-found]
@@ -262,10 +262,8 @@ security:
 
 module:
   _merge: deep
-  # replacements:
-  #   github.com/open-telemetry/opentelemetry.io/modules/semconv: modules/semconv
   imports:
-    - path: ./modules/semconv # github.com/open-telemetry/opentelemetry.io/modules/semconv
+    - path: semconv
   mounts:
     ## en
     - source: content/en

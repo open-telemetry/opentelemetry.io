@@ -1,5 +1,6 @@
 # cSpell:ignore cicd cloudevents faas
 module:
+  _merge: deep
   mounts:
     - source: tmp/semconv/docs
       target: content/docs/specs/semconv
