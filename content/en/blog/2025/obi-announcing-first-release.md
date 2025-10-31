@@ -121,14 +121,12 @@ repository][test-repository].
 
 If you want to get in touch with us, suggest a feature we should be working on,
 or follow our work and be up to date with our releases, you can always find us
-on GitHub at the
-[OpenTelemetry eBPF Instrumentation repository](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation).
-We also run a regular and very active
-[Special Interest Group (SIG) Community Call](https://github.com/open-telemetry/community?tab=readme-ov-file#sig-ebpf-instrumentation)
-weekly, where you can join in and become part of our community. If you are
-unable to attend our community call, you can also easily find us asynchronously
-on the CNCF Community Slack channel
-[\#otel-ebpf-instrumentation](https://cloud-native.slack.com/archives/C08P9L4FPKJ).
+on GitHub at the [OpenTelemetry eBPF Instrumentation repository][ebpf-repo]. We
+also run a regular and very active [Special Interest Group (SIG) Community
+Call][sigs] weekly, where you can join in and become part of our community. If
+you are unable to attend our community call, you can also easily find us
+asynchronously on the CNCF Community Slack channel
+[\#otel-ebpf-instrumentation][slack-ebpf].
 
 ## Acknowledgments
 
