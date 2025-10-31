@@ -23,7 +23,7 @@ Since OBI instruments at the protocol level, it means that you can essentially i
 2. No new application dependencies \- no new security vulnerabilities. Since OBI runs out-of-process, we are not adding anything to your application. You don’t need to upgrade or add OpenTelemetry SDK dependencies, or patch your application if the OpenTelemetry SDK dependency that you have added has a vulnerability. You can separately secure the access to OBI on your system, and that won’t impact anything else you have installed.
 3. Your applications never get slower by adding telemetry. Since your application never has to add anything or do any work to export telemetry, your application performance is not impacted by the telemetry capture. OBI does most of the work at kernel level and it’s heavily optimized for performance. It has minimal CPU and memory footprint even at very high request rates.
 4. Your telemetry is always consistent across all programming languages and libraries. OBI will keep your telemetry at the latest stable OpenTelemetry spec, across all of your services, without you having to wrangle compliance.
-5. Wide range of supported protocol instrumentations, HTTP/HTTPS, HTTP2, gRPC, SQL, Redis, MongoDB, Kafka, GraphQL, Elasticsearch/OpenSearch, AWS S3. Automatic trace context propagation for all programming languages.
+5. Wide range of supported protocol instrumentations, HTTP/HTTPS, HTTP/2, gRPC, SQL, Redis, MongoDB, Kafka, GraphQL, Elasticsearch/OpenSearch, AWS S3. Automatic trace context propagation for all programming languages.
 
 ## Should I just use OpenTelemetry eBPF Instrumentation for everything?
 
@@ -50,7 +50,7 @@ For complete examples on how to install OBI in docker environments you can check
 
 ## Next Steps
 
-If you want to get in touch with us, suggest a feature we should be working on, or follow our work and be up to date with our releases, you can always find us on Github at the [OpenTelemetry eBPF Instrumentation repository](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation). We also run a regular and very active [Special Interest Group (SIG) Community Call](https://github.com/open-telemetry/community?tab=readme-ov-file#sig-ebpf-instrumentation) weekly, where you can join in and become part of our community. If you are unable to attend our community call, you can also easily find us asynchronously on the CNCF Community Slack channel [\#otel-ebpf-instrumentation](https://cloud-native.slack.com/archives/C08P9L4FPKJ).
+If you want to get in touch with us, suggest a feature we should be working on, or follow our work and be up to date with our releases, you can always find us on GitHub at the [OpenTelemetry eBPF Instrumentation repository](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation). We also run a regular and very active [Special Interest Group (SIG) Community Call](https://github.com/open-telemetry/community?tab=readme-ov-file#sig-ebpf-instrumentation) weekly, where you can join in and become part of our community. If you are unable to attend our community call, you can also easily find us asynchronously on the CNCF Community Slack channel [\#otel-ebpf-instrumentation](https://cloud-native.slack.com/archives/C08P9L4FPKJ).
 
 ## Acknowledgments
 
