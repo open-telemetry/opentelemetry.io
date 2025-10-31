@@ -128,10 +128,10 @@ traversează limitele de proces, rețea și securitate.
 
 Vezi [Urmărire distribuită][distributed tracing].
 
-### Distribuție {#distributions}
+### Distribuție {#distribution}
 
 O distribuție este un wrapper în jurul unui depozit OpenTelemetry din amonte cu
-anumite personalizări. Consultă [Distribuții](#distributions).
+anumite personalizări. Consultă [Distribuții][distributions].
 
 ### Eveniment {#event}
 
@@ -166,7 +166,7 @@ Prescurtare de la [Protocol de transfer hipertext][http].
 
 Indică [Biblioteca](#library) pentru care sunt colectate semnalele de telemetrie
 ([Urme](#trace), [Metrici](#metric), [Jurnale](#log)). Vezi
-[Biblioteca instrumentată](#instrumented-library).
+[Biblioteca instrumentată][instrumented library].
 
 ### Biblioteca de instrumente {#instrumentation-library}
 
@@ -370,7 +370,7 @@ Unul dintre [Urme](#trace), [Metrici](#metric) sau [Jurnale](#log). Vezi
 ### Interval {#span}
 
 Reprezintă o singură operațiune din cadrul unei [Urme](#trace). Vezi
-[Interval](#span).
+[Interval][span].
 
 ### Legătură între intervale {#span-link}
 
@@ -382,12 +382,12 @@ legate cauzal. Pentru detalii, vezi
 ### Specificație {#specification}
 
 Descrie cerințele și așteptările interlingvistice pentru toate implementările.
-Vezi [Specificație](#specification).
+Vezi [Specificație][specification].
 
 ### Stare {#status}
 
 Rezultatul operației. De obicei, se folosește pentru a indica dacă a apărut o
-eroare. Vezi [Stare](#status).
+eroare. Vezi [Stare][status].
 
 ### Tag
 
@@ -397,7 +397,7 @@ Vezi [Metadate](#metadata).
 
 Un [DAG](#dag) din [Intervaluri](#span), unde punctele extreme dintre
 [Intervaluri](#span) sunt definite ca relație părinte-copil. Vezi
-[Urme](#trace).
+[Urme][traces].
 
 ### Tracer
 
