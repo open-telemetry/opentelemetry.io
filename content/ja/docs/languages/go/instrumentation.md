@@ -5,7 +5,7 @@ aliases:
   - manual_instrumentation
 weight: 30
 description: OpenTelemetry Goのマニュアルインストルメンテーション
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 ---
 
@@ -92,6 +92,13 @@ func main() {
 ```
 
 これで`tracer`にアクセスして、コードを手動計装できます。
+
+{{% alert title="重要" color="warning" %}}
+
+eBPFベースの[Go ゼロコード計装](/docs/zero-code/go)（[OBI](/docs/zero-code/obi)など）と併用して手動スパンを追加する場合は、グローバルトレーサープロバイダーを設定しないでください。
+詳細については、[Auto SDK](/docs/zero-code/go/autosdk)のドキュメントを参照してください。
+
+{{% /alert %}}
 
 ### スパンの作成 {#creating-spans}
 
