@@ -735,6 +735,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-10-25T15:14:41.505450794Z"
   },
+  "https://cloud-native.slack.com/archives/C08P9L4FPKJ": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-31T00:47:55.354605847Z"
+  },
   "https://cloud-native.slack.com/archives/C091NUGP5KN": {
     "StatusCode": 200,
     "LastSeen": "2025-10-25T16:06:18.629998094Z"
@@ -6587,6 +6591,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-25T16:08:20.631853919Z"
   },
+  "https://github.com/open-telemetry/community?tab=readme-ov-file#sig-ebpf-instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-31T00:47:51.831126749Z"
+  },
   "https://github.com/open-telemetry/community?tab=readme-ov-file#special-interest-groups": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:13:45.957467093Z"
@@ -8958,6 +8966,14 @@
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T16:04:16.13089519Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/internal/test/integration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-31T00:47:44.841549347Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/internal/test/integration/k8s/manifests": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-31T00:47:48.190780973Z"
   },
   "https://github.com/open-telemetry/opentelemetry-ebpf-profiler": {
     "StatusCode": 206,
