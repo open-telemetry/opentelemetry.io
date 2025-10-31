@@ -13,9 +13,8 @@ cSpell:ignore: Beyla Coralogix Grcevski Odigos uninstrumented Yahn
 
 Following a significant collaboration between Grafana Labs, Splunk, Coralogix,
 Odigos and many other community members, we are thrilled to announce the first
-alpha release of
-[OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation),
-or OBI for short.
+alpha release of [OpenTelemetry eBPF
+Instrumentation][otel-ebpf-instrumentation], or OBI for short.
 
 This event marks a significant milestone after the project, originally Grafana
 Beyla, was donated earlier this year by Grafana Labs. The development of eBPF
