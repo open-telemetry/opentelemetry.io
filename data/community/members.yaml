@@ -1010,6 +1010,7 @@ maintainers:
       - javascript-contrib-triagers
       - proto-go-approvers
       - proto-go-maintainers
+      - ruby-contrib-triagers
     html_url: https://github.com/MikeGoldsmith
     avatar_url: https://avatars.githubusercontent.com/u/3481731?v=4
   - name: mmanciop
@@ -2396,6 +2397,11 @@ triagers:
       - collector-contrib-triagers
     html_url: https://github.com/Frapschen
     avatar_url: https://avatars.githubusercontent.com/u/35491170?v=4
+  - name: indrekj
+    teams:
+      - ruby-contrib-triagers
+    html_url: https://github.com/indrekj
+    avatar_url: https://avatars.githubusercontent.com/u/3438?v=4
   - name: JacksonWeber
     teams:
       - javascript-contrib-triagers
@@ -2410,6 +2416,7 @@ triagers:
   - name: jj22ee
     teams:
       - javascript-contrib-triagers
+      - ruby-contrib-triagers
     html_url: https://github.com/jj22ee
     avatar_url: https://avatars.githubusercontent.com/u/107072447?v=4
   - name: jodeev
@@ -2453,12 +2460,22 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/mottibec
     avatar_url: https://avatars.githubusercontent.com/u/25174561?v=4
+  - name: muripic
+    teams:
+      - ruby-contrib-triagers
+    html_url: https://github.com/muripic
+    avatar_url: https://avatars.githubusercontent.com/u/24720032?v=4
   - name: naseemkullah
     teams:
       - javascript-contrib-triagers
       - javascript-triagers
     html_url: https://github.com/naseemkullah
     avatar_url: https://avatars.githubusercontent.com/u/24660299?v=4
+  - name: NathanielRN
+    teams:
+      - ruby-contrib-triagers
+    html_url: https://github.com/NathanielRN
+    avatar_url: https://avatars.githubusercontent.com/u/23139455?v=4
   - name: obecny
     teams:
       - javascript-contrib-triagers
@@ -2484,6 +2501,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/raphael-theriault-swi
     avatar_url: https://avatars.githubusercontent.com/u/113933910?v=4
+  - name: scbjans
+    teams:
+      - ruby-contrib-triagers
+    html_url: https://github.com/scbjans
+    avatar_url: https://avatars.githubusercontent.com/u/27202540?v=4
   - name: sincejune
     teams:
       - collector-triagers
