@@ -91,7 +91,7 @@ will not be there. Let’s look into detail what this means:
    technologies. For example, it currently doesn’t handle distributed tracing
    for reactive programming frameworks, Java virtual threads or complex thread
    pools. In general, OBI distributes traces work well for Go (HTTP and gRPC),
-   NodeJS (HTTP), Python (HTTP), Nginx (HTTP), PHP (HTTP/FPM), while for other
+   Node.js (HTTP), Python (HTTP), NGINX (HTTP), PHP (HTTP/FPM), while for other
    programming languages support will vary a lot based on how your application
    internally manages threads and connections. We are looking for help with
    contributions to extend the distributed tracing support more broadly. The
