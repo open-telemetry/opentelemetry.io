@@ -37,7 +37,7 @@ effort, with a single command and youâ€™ll always get a consistent picture. Letâ
 breakdown this previous statement a bit into what it actually means for the end
 user:
 
-1. No restarts, no code changes, no application configuration changes\! OBI
+1. No restarts, no code changes, no application configuration changes! OBI
    alone provides fully automatic capture of metrics and traces. The beauty of
    eBPF is that you can drop something into a running environment and be certain
    it will not destabilize your system/cluster/application.
