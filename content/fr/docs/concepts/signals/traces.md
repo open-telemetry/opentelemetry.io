@@ -266,8 +266,8 @@ Les attributs sont soumis aux règles suivantes, implémentées par les SDK de
 chaque langage:
 
 - Les clés doivent être une chaîne de caractères non nulles
-- Les valeurs doivent une chaîne de caractères, un booléen, une valeur à virgule
-  flottante, un entier ou un tableau de ces valeurs qui sont non nulles
+- Les valeurs doivent une chaîne de caractères non nulles, un booléen, une valeur à virgule
+  flottante, un entier ou un tableau de ces valeurs
 
 De plus, il existe les
 [Attributs sémantiques](/docs/specs/semconv/general/trace/), qui sont des
