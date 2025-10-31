@@ -112,11 +112,10 @@ installation, configuration, and running your application with OBI, check out
 the [Getting Started guide][getting-started].
 
 For complete examples on how to install OBI in docker environments you can check
-out our many
-[integration test examples](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/internal/test/integration),
-combining multiple programming languages, database backends and cloud services.
-There are also a number of Kubernetes examples in our Kubernetes
-[test repository](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/internal/test/integration/k8s/manifests).
+out our many [integration test examples][integration-examples], combining
+multiple programming languages, database backends and cloud services. There are
+also a number of Kubernetes examples in our Kubernetes [test
+repository][test-repository].
 
 ## Next Steps
 
