@@ -5,6 +5,7 @@ description:
   Discussões mensais sobre o uso do OpenTelemetry, todos são bem-vindos!
 weight: 20
 default_lang_commit: 7244f2d859de55d3857c692510634bd860d81459
+drifted_from_default: file not found
 ---
 
 **Desde de Abril de 2024, as sessões de discussão em grupo foram descontinuadas

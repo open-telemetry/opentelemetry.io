@@ -6,6 +6,7 @@ aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
 default_lang_commit: 45e813cfc5606299598eb068cf1e7adc2a957108
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: coreutils desarollada desinstalación HKLM iisreset multilínea myapp
 ---
