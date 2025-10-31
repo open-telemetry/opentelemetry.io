@@ -8,6 +8,7 @@ developer_note:
   para qualquer arquivo de imagem que contenha "background" no nome.
 show_banner: true
 default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268
+drifted_from_default: true
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
