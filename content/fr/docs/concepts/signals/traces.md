@@ -375,32 +375,32 @@ défaut `Internal`.
 Pour plus d'informations, consultez
 [Types de span](/docs/specs/otel/trace/api/#spankind).
 
-#### Client {#client-span}
+#### Client {#client}
 
 Un span client représente un appel distant sortant synchrone comme une requête
 HTTP ou un appel vers une base de données. Notez que dans ce contexte,
 "synchrone" ne fait pas référence à `async/await`, mais au fait que ce n'est pas
 mis en file d'attente pour un traitement ultérieur.
 
-#### Server {#server-span}
+#### Server {#server}
 
 Un span server représente un appel distant entrant synchrone tel qu'une requête
 HTTP entrante ou un appel de procédure distant.
 
-#### Internal {#internal-span}
+#### Internal {#internal}
 
 Les spans internal représentent des opérations qui ne franchissent pas les
 limites d'un processus. Des éléments comme l'instrumentation d'un appel de
 fonction ou d'un middleware Express peuvent utiliser des spans internes.
 
-#### Producer {#producer-span}
+#### Producer {#producer}
 
 Les spans producer représentent la création d'une tâche qui peut être traitée de
 manière asynchrone plus tard. Il peut s'agir d'une tâche distante comme une
 insertion dans une file d'attente de tâches ou d'une tâche gérée localement par
 un gestionnaire d'événement.
 
-#### Consumer {#consumer-span}
+#### Consumer {#consumer}
 
 Les spans consumer représentent le traitement d'une tâche créée par un producer
 et peuvent démarrer longtemps après que le span producer se soit achevé.
