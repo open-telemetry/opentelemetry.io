@@ -24,11 +24,13 @@ But what happens when the data itself is complex? OpenTelemetry also strives to
 capture observability for real-world systems, libraries, and applications whose
 observable properties are sometimes complex.
 
-Recently OpenTelemetry has announced upcoming support for capturing complex data across all
-OTel signals starting with OTLP [1.9.0](https://github.com/open-telemetry/opentelemetry-proto/releases/tag/v1.9.0),
+Recently OpenTelemetry has announced upcoming support for capturing complex data
+across all OTel signals starting with OTLP
+[1.9.0](https://github.com/open-telemetry/opentelemetry-proto/releases/tag/v1.9.0),
 and in future OpenTelemetry API and SDK versions across the ecosystem.
 
-In this post, we’ll cover when and how to use complex data, when to avoid it, and how backends can start supporting it.
+In this post, we’ll cover when and how to use complex data, when to avoid it,
+and how backends can start supporting it.
 
 ## Upcoming support for complex attribute types in OpenTelemetry
 
@@ -45,7 +47,8 @@ signals were limited to primitives and arrays of primitives.
 
 Following
 [OTEP 4485: Extending attributes to support complex values](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.49.0/oteps/4485-extending-attributes-to-support-complex-values.md)
-and its implementation in OTLP and the specification, this support is being extended to all OTel signals.
+and its implementation in OTLP and the specification, this support is being
+extended to all OTel signals.
 
 The new attribute types, especially maps and heterogeneous arrays, should be
 used with care. Many observability backends are not optimized to query, index,
@@ -125,8 +128,8 @@ consistency and convenience for end users.
 We encourage backends to build user experiences that leverage structured
 attribute values, allowing users to query data based on nested properties.
 
-In the meantime, we recommend that backends serialize complex attributes to JSON (or another
-suitable format) at ingestion time.
+In the meantime, we recommend that backends serialize complex attributes to JSON
+(or another suitable format) at ingestion time.
 
 The OTel Specification, Semantic Conventions, and API documentation will clearly
 communicate to instrumentation authors that complex attribute support may be
