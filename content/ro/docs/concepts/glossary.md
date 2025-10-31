@@ -83,14 +83,15 @@ aplicațiile mobile și aplicațiile care rulează pe dispozitive IoT.
 
 ### Colector {#collector}
 
-[Colectorul OpenTelemetry][OpenTelemetry Collector] sau pe scurt Colector, este o implementare agnostică
-față de furnizor, despre cum se primește, se procesează și se exportă date de
-telemetrie. Un singur fișier binar care poate fi implementat ca agent sau
-gateway.
+[Colectorul OpenTelemetry][OpenTelemetry Collector] sau pe scurt Colector, este
+o implementare agnostică față de furnizor, despre cum se primește, se procesează
+și se exportă date de telemetrie. Un singur fișier binar care poate fi
+implementat ca agent sau gateway.
 
-> **Ortografie**: Când se face referire la [Colectorul OpenTelemetry][OpenTelemetry Collector], scrie
-> întotdeauna cu majusculă Colector. Folosește doar „Colector” dacă folosești
-> Colector ca adjectiv &mdash; de exemplu, „Configurația colectorului”.
+> **Ortografie**: Când se face referire la [Colectorul
+> OpenTelemetry][OpenTelemetry Collector], scrie întotdeauna cu majusculă
+> Colector. Folosește doar „Colector” dacă folosești Colector ca adjectiv
+> &mdash; de exemplu, „Configurația colectorului”.
 
 [OpenTelemetry Collector]: /docs/collector/
 
@@ -426,7 +427,6 @@ date sunt furnizate pe paginile web atunci când sunt solicitate. Vezi [zPages].
 [instrumented library]: /docs/specs/otel/glossary/#instrumented-library
 [Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
-[log record]: /docs/specs/otel/glossary#log-record
 [log]: /docs/specs/otel/glossary#log
 [metric]: ../signals/metrics/
 [opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
