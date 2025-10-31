@@ -8,7 +8,7 @@ author:
   Yahn](https://github.com/MrAlias) (Splunk)
 issue: 8295
 sig: eBPF Instrumentation
-cSpell:ignore: Grcevski Yahn Beyla Coralogix Odigos uninstrumented
+cSpell:ignore: Beyla Coralogix Grcevski Odigos uninstrumented Yahn
 ---
 
 Following a significant collaboration between Grafana Labs, Splunk, Coralogix,
