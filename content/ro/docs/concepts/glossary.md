@@ -428,6 +428,7 @@ date sunt furnizate pe paginile web atunci când sunt solicitate. Vezi [zPages].
 [Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
 [log]: /docs/specs/otel/glossary#log
+[log record]: /docs/specs/otel/glossary#log-record
 [metric]: ../signals/metrics/
 [opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
 [propagators]: /docs/languages/go/instrumentation/#propagators-and-context
