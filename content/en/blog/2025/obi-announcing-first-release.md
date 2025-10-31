@@ -133,3 +133,19 @@ asynchronously on the CNCF Community Slack channel
 This alpha release is the result of countless hours of work by contributors from
 around the world. Thank you to everyone who has contributed code, documentation,
 feedback, and enthusiasm to make this milestone possible.
+
+
+[otel-ebpf-instrumentation]:
+  https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation
+[distributed-traces]: /docs/zero-code/obi/distributed-traces/
+[getting-started]: /docs/zero-code/obi/setup/
+[integration-examples]:
+  https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/internal/test/integration
+[test-repository]:
+  https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/internal/test/integration/k8s/manifests
+[ebpf-repo]:
+  https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation
+[sigs]:
+  https://github.com/open-telemetry/community?tab=readme-ov-file#sig-ebpf-instrumentation
+[slack-ebpf]: https://cloud-native.slack.com/archives/C08P9L4FPKJ
+
