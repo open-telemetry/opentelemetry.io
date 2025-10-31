@@ -2,8 +2,7 @@
 title: OpenTelemetry eBPF Instrumentation Marks the First Release
 linkTitle: OBI First Release # Mandatory, make sure that your short title.
 date: 2025-10-30
-author:
-  >-
+author: >-
   [Nikola Grcevski](https://github.com/grcevski) (Grafana Labs), [Tyler
   Yahn](https://github.com/MrAlias) (Splunk)
 issue: 8295
@@ -37,10 +36,10 @@ effort, with a single command and you’ll always get a consistent picture. Let�
 breakdown this previous statement a bit into what it actually means for the end
 user:
 
-1. No restarts, no code changes, no application configuration changes! OBI
-   alone provides fully automatic capture of metrics and traces. The beauty of
-   eBPF is that you can drop something into a running environment and be certain
-   it will not destabilize your system/cluster/application.
+1. No restarts, no code changes, no application configuration changes! OBI alone
+   provides fully automatic capture of metrics and traces. The beauty of eBPF is
+   that you can drop something into a running environment and be certain it will
+   not destabilize your system/cluster/application.
 2. No new application dependencies - no new security vulnerabilities. Since OBI
    runs out-of-process, we are not adding anything to your application. You
    don’t need to upgrade or add OpenTelemetry SDK dependencies, or patch your
@@ -134,7 +133,6 @@ This alpha release is the result of countless hours of work by contributors from
 around the world. Thank you to everyone who has contributed code, documentation,
 feedback, and enthusiasm to make this milestone possible.
 
-
 [otel-ebpf-instrumentation]:
   https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation
 [distributed-traces]: /docs/zero-code/obi/distributed-traces/
@@ -148,4 +146,3 @@ feedback, and enthusiasm to make this milestone possible.
 [sigs]:
   https://github.com/open-telemetry/community?tab=readme-ov-file#sig-ebpf-instrumentation
 [slack-ebpf]: https://cloud-native.slack.com/archives/C08P9L4FPKJ
-
