@@ -153,7 +153,7 @@ default_lang_commit: <commit-hash-of-english-page>
 
 1. Create issue with localization request
 2. Translate homepage only: `content/LANG_ID/_index.md`
-3. Maintainers will update `hugo.yaml`, cSpell configuration, and create
+3. Maintainers will update Hugo config, cSpell configuration, and create
    language-specific tools
 
 ### Language-Specific Tooling

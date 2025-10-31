@@ -1,3 +1,6 @@
+# This Hugo config `mounts` template is rendered as `module.yaml` and
+# automatically used by Hugo. Also see `hugo.yaml` for other Hugo configuration.
+
 mounts:
   ## en
   - source: content/en
@@ -167,3 +170,6 @@ mounts:
     target: static/img
   - source: iconography/32x32
     target: static/img/logos/32x32
+  ## site
+  - source: config/_default/module.yaml
+    target: static/site/config/module.yaml
