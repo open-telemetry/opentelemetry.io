@@ -41,7 +41,7 @@ user:
    alone provides fully automatic capture of metrics and traces. The beauty of
    eBPF is that you can drop something into a running environment and be certain
    it will not destabilize your system/cluster/application.
-2. No new application dependencies \- no new security vulnerabilities. Since OBI
+2. No new application dependencies - no new security vulnerabilities. Since OBI
    runs out-of-process, we are not adding anything to your application. You
    don’t need to upgrade or add OpenTelemetry SDK dependencies, or patch your
    application if the OpenTelemetry SDK dependency that you have added has a
