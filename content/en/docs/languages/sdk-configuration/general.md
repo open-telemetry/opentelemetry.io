@@ -34,7 +34,7 @@ export OTEL_SERVICE_NAME="your-service-name"
 
 Key-value pairs to be used as resource attributes.
 
-**Default value:** empty.
+**Default value:** empty
 
 **Example:**
 
