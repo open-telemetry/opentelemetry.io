@@ -88,8 +88,13 @@ title: registryEntryTitle
 
 ## File format
 
-We enforce file formatting using [Prettier]. Invoke it using
-`npm run fix:format`.
+We use [Prettier] to enforce file formatting. Invoke it using:
+
+- `npm run fix:format` to format all files
+- `npm run fix:format:diff` to format only the files that have changed since the
+  last commit
+- `npm run fix:format:staged` to format only the files that are staged for the
+  next commit
 
 ## File names
 
