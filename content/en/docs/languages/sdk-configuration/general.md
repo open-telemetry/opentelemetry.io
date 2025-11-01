@@ -151,7 +151,7 @@ may be a comma-separated list.
 Accepted values for are:
 
 - `otlp`: [OTLP][]
-- `jaeger`: export in Jaeger data model
+- `jaeger`: Export in Jaeger data model.
 - `zipkin`: [Zipkin](https://zipkin.io/zipkin-api/)
 - `console`: [Standard Output](/docs/specs/otel/trace/sdk_exporters/stdout/)
 - `none`: No automatically configured exporter for traces.
