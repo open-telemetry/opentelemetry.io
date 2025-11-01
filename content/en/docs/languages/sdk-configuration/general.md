@@ -42,7 +42,7 @@ Key-value pairs to be used as resource attributes.
 export OTEL_RESOURCE_ATTRIBUTES="key1=value1,key2=value2"
 ```
 
-**References**:
+**References:**
 
 - [Resource SDK](/docs/specs/otel/resource/sdk#specifying-resource-information-via-an-environment-variable)
 - [Resource semantic conventions](/docs/specs/semconv/resource/#semantic-attributes-with-sdk-provided-default-value)
