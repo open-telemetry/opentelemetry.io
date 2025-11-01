@@ -3,6 +3,7 @@ title: Anuncios
 description: Crea anuncios o banners para eventos especiales.
 weight: 50
 default_lang_commit: 645760e1961cb45d9ce6b291887c74ce4efa0398 # patched
+drifted_from_default: true
 ---
 
 Un anuncio es una _página de Hugo normal_, ubicada en la sección `anuncios` de

@@ -4,6 +4,7 @@ linkTitle: Usuário Final
 description: Recursos agnósticos a fornecedor para usuários do OpenTelemetry
 weight: 40
 default_lang_commit: ee09a3383facebe1937529e9a0129ccf53f94937 # patched
+drifted_from_default: true
 ---
 
 Procurando se conectar com outros usuários finais do OpenTelemetry em um espaço

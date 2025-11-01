@@ -6,6 +6,7 @@ description: >-
   Python.
 weight: 22
 default_lang_commit: 5c112f86bd72c1d17f031b3a95b6fe2f79d6f699
+drifted_from_default: true
 ---
 
 {{% docs/languages/index-intro python /%}}
