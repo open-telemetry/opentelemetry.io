@@ -17,17 +17,54 @@ sig: Governance Committee # TODO: add the name of the SIG that sponsors this blo
 With contributions from, and on behalf of, the OpenTelemetry Governance
 Committee.
 
+## Summary
+
+OpenTelemetry is changing how the project approaches stability and releases,
+across all sub-projects and repositories.
+
+**Why?**
+
+- User interviews, surveys, and discussions have demonstrated that the
+  complexity of OpenTelemetry creates impediments to production deployments.
+
+**What's Changing?**
+
+- We'll be moving to a simpler, but stricter, definition of what components can
+  be present in a stable release and updating stability requirements to include
+  new guidance on documentation, performance testing, etc.
+- Semantic convention guidelines will be updated to encourage faster iteration,
+  greater federation, and to unblock consumers to allow stable instrumentation
+  releases.
+- To make these releases easier to consume, we'll be introducing 'epoch
+  releases' -- similar to the Kubernetes release cycle.
+
+**What we need your input on:**
+
+- Implementation timelines and stability requirements.
+- Proposed changes to semantic convention stability.
+- How we can make releases better.
+
+[Join the discussion!](https://github.com/open-telemetry/community/discussions/3098).
+
+## Why are we doing this?
+
 OpenTelemetry is a large, complex, and highly involved project. A quick glance
 at the
 [specification compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md)
 should be enough to tell you that supporting tracing, metrics, logs, and
 profiles across a dozen languages – not to mention the complexity that comes
 from different language runtimes and execution environments – means that there’s
-a _lot_ to take in. One thing we’ve heard from you over the past months is that
-this complexity makes it difficult to get started, or get going, with
-OpenTelemetry as an end user. It also makes life difficult for our maintainers
-and contributors. How should they prioritize feature development versus spec
-changes versus instrumentation stability?
+a _lot_ to take in.
+
+For end-users, this complexity holds back adoption and introduces surprise.
+We've heard feedback about components whose config changes out from under them,
+performance regressions when taking minor updates, and difficulty managing
+rollouts at scale.
+
+For maintainers, this complexity makes their job harder than it needs to be.
+There's a lack of clear milestones and guidance about what's 'most important' at
+any given time. Stability efforts involve a lot of whiplash and there's often
+conflicting guidance about where you should focus your time.
 
 With this in mind, the OpenTelemetry project would like to announce some
 proposed changes that we’d like to institute, with the goal of normalizing our
@@ -35,151 +72,195 @@ language around component stability and component offerings.
 
 We believe that these changes need community involvement and discussion to be a
 success, so we’re taking this opportunity to announce our intention and open an
-[issue for discussion](https://github.com/open-telemetry/community/issues/3086)
+[issue for discussion](https://github.com/open-telemetry/community/discussions/3098)
 in order to get feedback from users, maintainers, and contributors. We do not
 anticipate that these changes will be completed overnight, and want to assure
 everyone that we will continue to prioritize our existing commitments to users
 and maintainers even as we consider necessary changes for the overall wellbeing
 and maturity of the project.
 
-## Improving defaults for stable components
+## 1. Stable By Default
 
-The first proposal has to do with how SIGs and the project communicate stability
-of components – such as instrumentation libraries, Collector receivers, or tools
-like weaver. We will clearly state on the project website which components are
-stable. We may list un-stable components as well, but the main goal is to
-provide end-users with a single source of truth about what they can expect to be
-stable. Stability requirements will also be streamlined and clarified for
-contributors, maintainers, and end-users. We plan to expand these stability
-requirements to include documentation, examples, implementation scenarios,
-performance benchmarks, and other useful information.
+Stability guarantees have been a long-held principle in OpenTelemetry, with
+exceedingly high bars. There is a tension between this and user needs that we'd
+like to discuss.
 
-In addition, we are proposing a change to the defaults of SDKs and
-instrumentation agents. By default, stable components should not automatically
-import, include, or enable unstable components. For example, if you install a
-stable distribution of OpenTelemetry Java Instrumentation Agent, the default
-receivers, processors, samplers, exporters, and libraries should not include
-alpha or experimental instrumentations.
+### Background
 
-Similarly, the OpenTelemetry JavaScript Node Automatic Instrumentation
-Metapackage would only include stable instrumentations (i.e., those which are at
-v1.0 or greater). For consistency, we propose a single project-wide way to
-enable unstable behavior for end-users. The goal of this proposal is to reduce
-the likelihood of end-user adoption of unstable packages, components, config, or
-API surface area without an explicit opt-in to this behavior.
+OpenTelemetry is a specification for how cloud native software -- libraries,
+frameworks, infrastructure abstractions, executable code, etc. -- produces and
+communicates telemetry data about its operation. This specification is designed
+to be exhaustive, comprehensive, and low-level. Many of the elements of the
+specification are hard-won knowledge from the combined decades of experience its
+authors have with building, operating, or designing telemetry systems at planet
+scale.
 
-We do not make this change lightly, and it wasn’t feasible to make it sooner –
-end-user feedback has been a crucial aspect of our development process, and
-early adoption of unstable instrumentation and features has led to better
-outcomes overall. However, given the scope of OpenTelemetry, it can be difficult
-for users to evaluate individual component stability when installing
-dependencies. By moving to a ‘stable by default’ approach, we can ensure that
-users will not be surprised by unexpected changes.
+A specification with no implementation is not a useful thing for end users,
+though. Developers and operators approach telemetry through a variety of lenses;
+Some organizations have high standards for observability, with entire teams
+dedicated to building internal monitoring and instrumentation frameworks. Other
+organizations view observability and monitoring as a second or third order
+priority -- something that needs to happen, but not something that's
+incentivized. OpenTelemetry, as a specification, needs to serve all of these
+users and their use cases.
 
-## Adjusting stability requirements for components
+To make OpenTelemetry useful, we need to provide an 'on-ramp' from existing
+methods and modes, existing tools and strategies, which means we need to provide
+implementations of not just the specification, but _applications_ of it as well.
+In practice, this means we need to distribute libraries to add OpenTelemetry
+instrumentation to existing HTTP servers and clients, or Collector receivers to
+scrape metrics from MySQL and translate them into OTLP.
 
-Second, we are adjusting our overall posture when it comes to instrumentation
-and instrumentation stability. Our goal, as a project, has always been to see
-other libraries, frameworks, runtimes, and tools
-[natively adopt OpenTelemetry](https://www.youtube.com/watch?v=l8xiNOCIdLY).
-This is still the goal – we want other developers to embed our APIs into their
-software, rather than requiring you to download and install libraries that
-inject instrumentation code into third party dependencies. However, many users
-have come to see our ‘contrib’ repositories and distributions as generic
-replacements for system telemetry agents.
+It should not come as a surprise that most of the value that our users, and
+sponsors, derive from OpenTelemetry is through these instrumentation libraries
+and Collector components. We attempt to communicate the relationship between the
+core SDKs and these libraries/components via the `contrib` repository pattern,
+but the practical reality is that many end users do not perceive this
+distinction.
 
-We’re thrilled that we’ve had so many users adopt the Collector as a
-vendor-agnostic solution for collecting telemetry data, and we believe that it’s
-a strong testament to the long-term viability of the project. What has become
-challenging is that our contrib repositories – especially in the Collector –
-represent a huge amount of work for maintainers and a constant drag on project
-velocity. Even in a world where we had twice as many contributors and
-maintainers, it would still be a challenge to accept all desired receivers or
-instrumentation libraries and ensure they all met a sufficiently high quality
-bar for release.
+For maintainers and project leadership, our stability goals and the nature of
+`contrib` present a significant challenge. Users want stable, well-tested, and
+performant releases -- that _also_ perform the same function as commercial
+instrumentation agents.
 
-Our next proposal is designed to address this tension by more tightly scoping
-what instrumentation libraries and receivers we’ll consider for inclusion and
-stability. In short, instrumentation should be an implementation of a semantic
-convention. This has quite a few implications, some of which include:
+### What's Changing?
 
-- Existing instrumentation libraries or Collector receivers that do not follow
-  an established semantic convention will be treated as experimental/unstable
-  until such time those conventions exist.
-- SIGs should no longer accept instrumentation libraries or receivers that do
-  not implement a semantic convention.
-- The priority for instrumentations should be driven by semantic convention
-  stability efforts.
+There's three major changes that we'll be rolling out. Keep in mind the exact
+details of some of this may change, but these goals are more or less fixed.
 
-Additionally, we will recommend that instrumentation which depends on a beta
-version of a semantic convention may be marked as stable (beta), and included in
-default distributions. The goal here is to reduce the dwell time of
-instrumentation libraries in experimental maturity phases; We believe that
-sufficient tooling exists via schema transformations or processors, as well as
-the dual-write convention for updated attributes, as to allow end users to
-depend upon beta conventions.
+1. All components across all repositories should adhere to a consistent way of
+   communicating stability, through a metadata file, that can be discovered and
+   parsed in a programmatic way. The exact format will be defined through an
+   OTEP and incorporated into the specification. As part of this, we'll be
+   normalizing stability levels across components, including semantic
+   conventions by introducing alpha/beta stability to that effort.
+2. Stability requirements will be expanded to include more requirements around
+   documentation and where it's hosted, example code, performance benchmarks
+   (where applicable), implementation cookbooks, and other artifacts as
+   necessary.
+3. Stable components must only include other stable components by default. A new
+   global configuration option shall be introduced that allows adopters to
+   choose a desired minimum stability level, with a default value of
+   `[stable, rc, beta]`.
 
-> Note: Currently, Semantic Conventions do not offer a 'beta' stability
-> guarantee; Part of this process will be to codify the requirements needed to
-> transition from experimental, to alpha, to beta.
+This is a big change for maintainers, especially those who have shipped v1+ of
+their libraries. We would deeply appreciate your feedback on this proposal in
+the [discussion](https://github.com/open-telemetry/community/discussions/3098).
 
-This change is not meant to ‘yank away’ integrations that current users may
-depend on, but to more clearly communicate the expected future state of various
-components, to provide accurate guidance to end users about the potential for
-instrumentation to change, and for contributors and maintainers to have a
-significantly more transparent and simplified roadmap of where to focus efforts
-around stability work.
+## 2. Semantic Convention Stability Normalization
 
-## Unified releases across the project
+As mentioned above, we would like to adjust the semantic convention stability
+process in order to provide greater consistency across projects, but also to
+better communicate the interplay between telemetry stability and implementation
+stability.
 
-Our final proposal is to normalize release cycles for the project as a whole,
-similar to how projects like Kubernetes function. This would **not** be a
-mandate for SIGs to change their versioning schemas or release cycles, but to
-formalize a ‘project wide’ release for end-users that included a documented,
-tested, and validated stable release of all components. Rather than having to
-cross-compare an array of version tags or package management files, our goal
-here would be to have a simple meta-target that could be rolled out across an
-organization with consistent documentation, features, etc.
+### Background
 
-The goal of this is to improve the ability of external organizations to
-interpret OpenTelemetry release cycles and support. It paves the way to official
-LTS releases in the future, and ideally serves as a more stable target for
-downstream integrations and service providers – rather than potentially having
-to keep pace with dozens of releases a month, you can focus on just the ‘major’
-releases.
+Semantic conventions are a slow, deliberative, and ultimately user-driven
+project. Maintainers must grapple with the reality of end-user telemetry systems
+and their varying architectures. While OpenTelemetry's design is situated around
+a continuous stream of highly intercorrelated signals, users may choose a
+variety of options for consuming that data. The decision of a storage and
+analysis engine for telemetry has a variety of interplay with semantic
+conventions, and maintainers must consider the tradeoffs between cardinality,
+dimensionality, and specificity of attributes when designing conventions and
+stabilizing them.
 
-## What's next after this?
+The downside of this is that progress on semantic conventions can be slow, and
+this slowness impacts all consumers of the conventions. Many instrumentation
+libraries are currently stuck on pre-release versions because they depend on
+experimental semantic conventions. Outside contributors are stuck between
+emitting unspecified telemetry or trying to engage in the process, which
+requires a long commitment. Finally, we're internally inconsistent in
+instrumentation across the project; Some libraries are mapped to conventions,
+others exist independently of it.
 
-Looking forward, our goal with these changes is to not simply change for the
-sake of change; These are a recognition of the impact and importance of
-OpenTelemetry to the cloud native software community.
+### What's Changing?
+
+Our goals here are designed to achieve two outcomes.
+
+1. Semantic conventions should have more nuanced stability levels in order to
+   unblock upstream development and gain real world feedback from users.
+2. Semantic conventions should be more federated; We don't want the project to
+   be a constraint on the development and promulgation of the conventions.
+
+To this end, we have a few recommendations we'd like to codify into the
+specification. First, our position around instrumentation libraries in
+OpenTelemetry is that they exist as concrete implementations of the semantic
+conventions. This gives us a concrete target for 'first party' instrumentation
+libraries that we wish to support in distributions. In addition, maintainers
+should prioritize instrumentations that align to existing conventions and
+deprioritize others. Second, we would like to promote more first-party semantic
+conventions to 'beta' stability in order to unblock downstream instrumentation
+libraries. Many of our conventions have months, or years, of real-world use that
+we can rely on as guidance for their fitness. Finally, we'd like to formalize
+the semantic convention format specification to the point that third-parties
+outside the OpenTelemetry project feel comfortable using it to publish their
+own, federated, semantic conventions.
+
+In order to accomplish this, we're looking for feedback on several areas from
+maintainers and end-users -- especially around the maturity/lifecycle of
+semantic conventions, as well as what's missing in terms of federating semantic
+conventions. We are more flexible on proposals here, but our outcomes aren't.
+Remember, a core goal of the project is to encourage other libraries, tools, and
+frameworks
+to [natively adopt OpenTelemetry](https://www.youtube.com/watch?v=l8xiNOCIdLY) --
+semantic conventions are a big part of that.
+
+## 3. Confident, Stable, Releases.
+
+## Background
+
+OpenTelemetry isn't just one thing, especially in complex deployments. Subtle
+differences in everything from configuration to telemetry output between
+different versions of instrumentation libraries, collector receivers, and SDKs
+can cause a real headache for adopters. In addition, the rapid release cadence
+of many components causes real difficulty for end users, especially around the
+Collector. Enterprise deployments and upgrades are slow, deliberate things --
+teams simply do not have the bandwidth to validate and roll out changes at the
+cadence we ship.
+
+## What's Changing?
+
+We are proposing the creation of a Release SIG that will be responsible for
+creating a schedule of 'epoch' releases for OpenTelemetry. These epoch versions
+would essentially be a manifest pointing to a tested, documented, and stable set
+of components that meet project stability requirements.
+
+This is not a trivial undertaking, to be clear. It is also not as well-defined
+as the earlier proposals in this blog -- those efforts will communicate many of
+the requirements these epoch releases must follow, after all. To our maintainers
+and contributors, though, a _non-goal_ of this effort is to force you to change
+your versioning or release cadence.
+
+## Looking Forward
+
+These changes are a reflection of the impact and importance of OpenTelemetry to
+the cloud native software community.
 [OpenTelemetry has been the second highest velocity project in the CNCF over the past few years](https://www.cncf.io/wp-content/uploads/2025/04/CNCF-Annual-Report-2024_v2.pdf),
 and
 [nearly 50% of surveyed cloud native end user companies have adopted the project](https://www.cncf.io/wp-content/uploads/2025/04/cncf_annual_survey24_031225a.pdf).
-The changes we are proposing here are designed to set us up for even greater
-success. A common thread that we’ve identified through discussions with end
-users, adopting organizations, and the broader observability community is that
-the ‘packaging’ around OpenTelemetry does not meet the standards that users have
-for major OSS projects. While we hear plenty of anecdotes around users having
-good luck with our current defaults, time after time we run into horror stories
-of mysterious bugs or configuration challenges due to the inherent complexity of
-the tooling and problem space.
+These changes are setting up the next chapter of our success, and becoming truly
+ubiquitous.
 
-Going forward, we are going to prioritize projects, SIG work, and proposals from
-the community to address these packaging, installation, and usage/usability
-issues. Proposals for new work that does not align with these priorities may be
-rejected, or asked to work outside of the project. We believe that this
-prioritization will lead to better outcomes for our core mission, as well as
-identifying areas we can improve – for example, it should not be onerous to
-extend OpenTelemetry in a way that is broadly compatible with upstream
-implementations, APIs, etc. By requesting that new projects work strictly
-through the existing spec and APIs, we can identify areas of improvement to the
-core. In the future, as ecosystem projects discover fitness and users, we can
-discuss adopting those projects into the core distributions.
+Our goals as a project are not changing, but our priorities are.
 
-This is a big, ambitious goal. While we’re making every effort to break it down
-into digestible chunks, it’s likely that readers may have questions. Some of
-those questions may not have answers right now\! We call upon the community to
-discuss these proposals and changes in
-[this GitHub issue](https://github.com/open-telemetry/community/issues/3086), at
-in-person events, and on Slack. All feedback is welcome – thanks in advance\!
+1. Stability and usability for all developers and users.
+2. Clear packaging, installation, and usage paths.
+3. Predictability and consistency.
+
+For contributors and maintainers, what does this mean? We'll fast-track
+proposals that align with these priorities. If there's feature work or
+instrumentation that doesn't align to this, that's fine -- we'd ask that you
+work on it outside the project and discover where our existing integration
+points and patterns don't work; That's good feedback, and will help us improve
+the specification for everyone.
+
+For maintainers, contributors, and integrators -- we would appreciate your
+feedback in
+[this GitHub Discussion](https://github.com/open-telemetry/community/discussions/3098)
+on the topics and proposals raised here. You can also send feedback on this
+proposal to [feedback@opentelemetry.io](mailto:feedback@opentelemetry.io) or on
+the CNCF Slack in the #opentelemetry channel. We also look forward to meeting
+the cloud native community in person at KubeCon this fall -- please join us
+there with comments!
