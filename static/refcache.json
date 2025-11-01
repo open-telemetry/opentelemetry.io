@@ -11219,6 +11219,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-30T09:41:05.002685032Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/sqlcommenter/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-30T16:03:06.490061444Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-opencensus": {
     "StatusCode": 206,
     "LastSeen": "2025-10-30T15:07:11.860476289Z"
@@ -14378,6 +14382,10 @@
   "https://google.github.io/sqlcommenter": {
     "StatusCode": 206,
     "LastSeen": "2025-10-25T15:35:23.911904628Z"
+  },
+  "https://google.github.io/sqlcommenter/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-17T22:19:44.57316566Z"
   },
   "https://google.github.io/sqlcommenter/spec/": {
     "StatusCode": 206,
