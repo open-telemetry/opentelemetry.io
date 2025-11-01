@@ -82,7 +82,7 @@ Specifies arguments, if applicable, to the sampler defined by
 `OTEL_TRACES_SAMPLER` is set. Each Sampler type defines its own expected input,
 if any. Invalid or unrecognized input is logged as an error.
 
-**Default value:** empty.
+**Default value:** empty
 
 **Example:**
 
