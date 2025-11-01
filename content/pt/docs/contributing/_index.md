@@ -3,6 +3,7 @@ title: Contribuindo
 aliases: [/docs/contribution-guidelines]
 weight: 980
 default_lang_commit: 1ececa0615b64c5dfd93fd6393f3e4052e0cc496
+drifted_from_default: true
 ---
 
 Obrigado pelo seu interesse em contribuir com o website e documentação do

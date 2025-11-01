@@ -4,6 +4,7 @@ linkTitle: Lambda Collector 配置
 weight: 11
 description: 向你的 Lambda 添加并配置 Collector Lambda 层
 default_lang_commit: f35b3300574b428f94dfeeca970d93c5a6ddbf35 # patched
+drifted_from_default: true
 cSpell:ignore: ADOT awsxray confmap
 ---
 

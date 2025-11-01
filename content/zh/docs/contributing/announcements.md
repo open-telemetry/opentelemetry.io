@@ -3,6 +3,7 @@ title: 公告
 description: 为特别活动创建公告或横幅。
 weight: 50
 default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22 # patched
+drifted_from_default: true
 ---
 
 公告是本地化目录中 `announcements` 部分下的一个**常规 Hugo 页面**。

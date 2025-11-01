@@ -3,6 +3,7 @@ title: コントリビューション
 aliases: [/docs/contribution-guidelines]
 weight: 980
 default_lang_commit: 24146bd1368e4c6082c7d6077efd29dba0d51055
+drifted_from_default: true
 ---
 
 OpenTelemetry のドキュメントとWebサイトのコントリビューションに興味を持っていただきありがとうございます。
