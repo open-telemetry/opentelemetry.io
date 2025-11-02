@@ -14631,6 +14631,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-27T09:43:01.406318179Z"
   },
+  "https://highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-11-02T08:15:51.987904-05:00"
+  },
   "https://hive.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-11-02T09:42:04.282309517Z"
@@ -20194,10 +20198,6 @@
   "https://www.heroku.com/": {
     "StatusCode": 200,
     "LastSeen": "2025-10-26T09:44:09.273906353Z"
-  },
-  "https://www.highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/": {
-    "StatusCode": 502,
-    "LastSeen": "2025-11-02T11:44:18.790705699Z"
   },
   "https://www.honeycomb.io/": {
     "StatusCode": 206,
