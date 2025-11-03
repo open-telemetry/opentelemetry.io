@@ -47,22 +47,23 @@ across all sub-projects and repositories.
 
 ## Why are we doing this?
 
-OpenTelemetry is a large, complex, and highly involved project. A quick glance
-at the
+OpenTelemetry has grown into a massive, complex ecosystem. We support four
+different telemetry signals (tracing, metrics, logs, and profiles) across more
+than a dozen programming languages. Each language has its own runtime
+requirements and execution environments. The
 [specification compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md)
-should be enough to tell you that supporting tracing, metrics, logs, and
-profiles across a dozen languages – not to mention the complexity that comes
-from different language runtimes and execution environments – means that there’s
-a _lot_ to take in.
+shows just how much we're trying to accomplish – and it's overwhelming.
 
-For end-users, this complexity holds back adoption and introduces surprise.
-We've heard feedback about components whose config changes out from under them,
-performance regressions when taking minor updates, and difficulty managing
-rollouts at scale.
+This complexity creates real barriers to adoption. Organizations ready to deploy
+OpenTelemetry in production encounter unexpected roadblocks: configuration that
+breaks between minor versions, performance regressions that only appear at
+scale, and the challenge of coordinating rollouts across hundreds or thousands
+of services. Many teams end up delaying or scaling back their OpenTelemetry
+deployments as a result.
 
 For maintainers, this complexity makes their job harder than it needs to be.
 There's a lack of clear milestones and guidance about what's 'most important' at
-any given time. Stability efforts involve a lot of whiplash and there's often
+any given time. Stability efforts involve a lot of churn and there's often
 conflicting guidance about where you should focus your time.
 
 With this in mind, the OpenTelemetry project would like to announce some
@@ -111,12 +112,11 @@ In practice, this means we need to distribute libraries to add OpenTelemetry
 instrumentation to existing HTTP servers and clients, or Collector receivers to
 scrape metrics from MySQL and translate them into OTLP.
 
-It should not come as a surprise that most of the value that our users, and
-sponsors, derive from OpenTelemetry is through these instrumentation libraries
-and Collector components. We attempt to communicate the relationship between the
-core SDKs and these libraries/components via the `contrib` repository pattern,
-but the practical reality is that many end users do not perceive this
-distinction.
+Most of the value our community derives from OpenTelemetry comes directly from
+instrumentation libraries and Collector components – not the core SDKs. While we
+organize these as `contrib` repositories to distinguish them from core
+components, end users don't see or care about this distinction. They just want
+instrumentation that works.
 
 For maintainers and project leadership, our stability goals and the nature of
 `contrib` present a significant challenge. Users want stable, well-tested, and
@@ -125,8 +125,9 @@ instrumentation agents.
 
 ### What's Changing?
 
-There's three major changes that we'll be rolling out. Keep in mind the exact
-details of some of this may change, but these goals are more or less fixed.
+There's three major changes that the project will be rolling out. Keep in mind
+the exact details of some of this may change, but these goals are more or less
+fixed.
 
 1. All components across all repositories should adhere to a consistent way of
    communicating stability, through a metadata file, that can be discovered and
@@ -156,15 +157,13 @@ stability.
 
 ### Background
 
-Semantic conventions are a slow, deliberative, and ultimately user-driven
-project. Maintainers must grapple with the reality of end-user telemetry systems
-and their varying architectures. While OpenTelemetry's design is situated around
-a continuous stream of highly intercorrelated signals, users may choose a
-variety of options for consuming that data. The decision of a storage and
-analysis engine for telemetry has a variety of interplay with semantic
-conventions, and maintainers must consider the tradeoffs between cardinality,
-dimensionality, and specificity of attributes when designing conventions and
-stabilizing them.
+Semantic conventions evolve slowly and deliberately because they must work
+across diverse telemetry systems. While OpenTelemetry is designed for
+interconnected signals flowing together, users deploy many different storage and
+analysis engines to consume this data. Each backend has its own constraints and
+capabilities. Maintainers must balance competing concerns – keeping cardinality
+manageable, ensuring attributes are useful but not overly specific, and making
+conventions that work well regardless of where the data ends up.
 
 The downside of this is that progress on semantic conventions can be slow, and
 this slowness impacts all consumers of the conventions. Many instrumentation
@@ -181,7 +180,7 @@ Our goals here are designed to achieve two outcomes.
 
 1. Semantic conventions should have more nuanced stability levels in order to
    unblock upstream development and gain real world feedback from users.
-2. Semantic conventions should be more federated; We don't want the project to
+2. Semantic conventions should be more federated; OpenTelemetry itself shouldn't
    be a constraint on the development and promulgation of the conventions.
 
 To this end, we have a few recommendations we'd like to codify into the
@@ -211,8 +210,8 @@ semantic conventions are a big part of that.
 
 ## Background
 
-OpenTelemetry isn't just one thing, especially in complex deployments. Subtle
-differences in everything from configuration to telemetry output between
+OpenTelemetry isn't just a single binary deployed into a Kubernetes cluster.
+Subtle differences in everything from configuration to telemetry output between
 different versions of instrumentation libraries, collector receivers, and SDKs
 can cause a real headache for adopters. In addition, the rapid release cadence
 of many components causes real difficulty for end users, especially around the
