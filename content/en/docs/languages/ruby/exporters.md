@@ -75,7 +75,8 @@ docker run -d --name jaeger \
   jaegertracing/all-in-one:latest
 ```
 
-You can visualize the traces via the Jaeger trace UI by visiting `localhost:16686` in your browser.
+You can visualize the traces via the Jaeger trace UI by visiting
+`localhost:16686` in your browser.
 
 ## Zipkin
 
