@@ -5,7 +5,6 @@ date: 2025-10-23 # Put the current date, we will keep the date updated until you
 author:
   >- # If you have only one author, then add the single name on this line in quotes.
   [Austin Parker](https://github.com/austinlparker) (honeycomb.io)
-draft: true # TODO: remove this line once your post is ready to be published
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
 body_class: otel-with-contributions-from # TODO: remove this line if there are no secondary contributing authors
 issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
