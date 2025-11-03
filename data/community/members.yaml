@@ -2267,6 +2267,11 @@ approvers:
       - cpp-contrib-approvers
     html_url: https://github.com/TomRoSystems
     avatar_url: https://avatars.githubusercontent.com/u/8647888?v=4
+  - name: trasktest
+    teams:
+      - java-contrib-approvers
+    html_url: https://github.com/trasktest
+    avatar_url: https://avatars.githubusercontent.com/u/64627853?v=4
   - name: trisch-me
     teams:
       - semconv-security-approvers
