@@ -121,7 +121,7 @@ multiple programming languages, database backends and cloud services. There are
 also a number of Kubernetes examples in our Kubernetes [test
 repository][test-repository].
 
-## Next Steps
+## Next steps
 
 If you want to get in touch with us, suggest a feature we should be working on,
 or follow our work and be up to date with our releases, you can always find us
