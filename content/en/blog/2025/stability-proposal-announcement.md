@@ -73,7 +73,7 @@ language around component stability and component offerings.
 The Governance Committee believes that these changes need community involvement
 and discussion to be a success, so we’re taking this opportunity to announce our
 intention and open an
-[issue for discussion](https://github.com/open-telemetry/community/discussions/3098)
+[Github discussion](https://github.com/open-telemetry/community/discussions/3098)
 in order to get feedback from users, maintainers, and contributors. We do not
 anticipate that these changes will be completed overnight, and want to assure
 everyone that we will continue to prioritize our existing commitments to users
