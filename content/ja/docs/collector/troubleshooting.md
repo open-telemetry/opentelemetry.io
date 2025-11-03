@@ -3,6 +3,7 @@ title: トラブルシューティング
 description: コレクターのトラブルシューティングに関する推奨事項
 weight: 25
 default_lang_commit: 974cdea55c03089f4e86d6068ec133b04e2653da
+drifted_from_default: true
 cSpell:ignore: confmap pprof tracez zpages
 ---
 

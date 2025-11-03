@@ -170,7 +170,7 @@
   commercial: true
 - name: Highlight
   nativeOTLP: true
-  url: https://www.highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/
+  url: https://highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/
   contact: support@highlight.io
   oss: true
   commercial: true
@@ -356,8 +356,8 @@
   commercial: true
 - name: Sentry
   nativeOTLP: true
-  url: https://sentry.io/for/opentelemetry/
-  contact:
+  url: https://docs.sentry.io/concepts/otlp/
+  contact: otel@sentry.io
   oss: false
   commercial: true
 - name: Red Hat
