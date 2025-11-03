@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry eBPF Instrumentation Marks the First Release
 linkTitle: OBI First Release
-date: 2025-10-30
+date: 2025-11-03
 author: >-
   [Nikola Grcevski](https://github.com/grcevski) (Grafana Labs), [Tyler
   Yahn](https://github.com/MrAlias) (Splunk)
