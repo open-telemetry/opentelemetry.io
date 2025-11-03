@@ -139,7 +139,7 @@ fixed.
    documentation and where it's hosted, example code, performance benchmarks
    (where applicable), implementation cookbooks, and other artifacts as
    necessary.
-3. Stable components must only include other stable components by default. A new
+3. Stable components must only enable other stable components by default. A new
    global configuration option shall be introduced that allows adopters to
    choose a desired minimum stability level, with a default value of
    `[stable, rc, beta]`.
