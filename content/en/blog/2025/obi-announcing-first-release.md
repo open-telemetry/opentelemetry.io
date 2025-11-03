@@ -107,7 +107,7 @@ command line. There should be no more excuses why you are not using
 OpenTelemetry. No effort, no downtime, no code or configuration changes, every
 reason to give it a shot.
 
-## Getting Started with OpenTelemetry eBPF Instrumentation
+## Getting started with OpenTelemetry eBPF Instrumentation
 
 Getting started with OpenTelemetry eBPF Instrumentation (OBI) is
 straightforward\! You can deploy it as standalone, as a Docker image or as a
