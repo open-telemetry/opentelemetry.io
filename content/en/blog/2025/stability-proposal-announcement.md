@@ -203,8 +203,8 @@ maintainers and end-users -- especially around the maturity/lifecycle of
 semantic conventions, as well as what's missing in terms of federating semantic
 conventions. We are more flexible on proposals here, but our outcomes aren't.
 Remember, a core goal of the project is to encourage other libraries, tools, and
-frameworks
-to [natively adopt OpenTelemetry](https://www.youtube.com/watch?v=l8xiNOCIdLY) --
+frameworks to
+[natively adopt OpenTelemetry](https://www.youtube.com/watch?v=l8xiNOCIdLY) --
 semantic conventions are a big part of that.
 
 ## 3. Confident, Stable, Releases.
