@@ -4,6 +4,7 @@ weight: 11
 aliases:
   - /docs/languages/java/api-components/
 default_lang_commit: 7c6d317a1ed969bd03f0aa8297f068ca29c2b459 # patched
+drifted_from_default: true
 logBridgeWarning: >
   虽然 `LoggerProvider` 、 `Logger` API 在结构上与对应的链路和指标 API 相似，
   但它们的使用场景不同。目前，`LoggerProvider` 、 `Logger` 及相关类代表的是[日志桥接 API](/docs/specs/otel/logs/api/)，

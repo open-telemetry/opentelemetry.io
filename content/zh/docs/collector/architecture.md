@@ -2,6 +2,7 @@
 title: 架构
 weight: 28
 default_lang_commit: 10b2aa9fc1a8f434b6212dc453f01dd520b2f9e3
+drifted_from_default: true
 cSpell:ignore: fanoutconsumer probabilisticsampler zpages
 ---
 

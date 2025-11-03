@@ -10,6 +10,7 @@ logBridgeWarning: >
   記録されたログをOpenTelemetryにブリッジするためのログアペンダーを作成するために存在します。
   これらはLog4j / SLF4J / Logback / などの代替として、エンドユーザーが使用することを意図していません。
 default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
+drifted_from_default: true
 cSpell:ignore: Dotel kotlint Logback updowncounter
 ---
 
