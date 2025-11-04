@@ -37,7 +37,7 @@ distributions.
 **What we need your input on:**
 
 - Implementation timelines and stability requirements.
-- Proposed changes to semantic convention stability.
+- Proposed changes to instrumentation stability.
 - How we can make releases better.
 
 [Join the discussion!](https://github.com/open-telemetry/community/discussions/3098).
