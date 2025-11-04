@@ -2,6 +2,7 @@
 title: アーキテクチャ
 weight: 28
 default_lang_commit: 748555c22f43476291ae0c7974ca4a2577da0472
+drifted_from_default: true
 cSpell:ignore: fanoutconsumer probabilisticsampler zpages
 ---
 

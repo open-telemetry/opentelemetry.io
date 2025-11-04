@@ -25,7 +25,7 @@ my $lineNum;
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
     spec: 1.50.0
-    otlp: 1.8.0
+    otlp: 1.9.0
     semconv: 1.38.0
   );
 # Versions map without the colon in the keys
@@ -95,22 +95,14 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-# sub patchSpec_because_of_SemConv_MetricReqLevelHashDNE() {
-#   return unless $ARGV =~ /^tmp\/semconv\/docs\//
-#     && applyPatchOrPrintMsgIf('2025-08-28-metric-request-level-hash-dne', 'semconv', '1.37.0-dev');
-
-#   # See https://github.com/open-telemetry/semantic-conventions/issues/2690#issuecomment-3235079573
-#   s|/docs/general/metrics.md#metric-requirement-levels|/docs/general/metric-requirement-level.md#recommended|g;
+# sub patchSpec_because_of_SemConv_GenAiSpanRelativePath() {
+#   return unless $ARGV =~ /^tmp\/semconv\/docs\/gen-ai\/gen-ai-spans/
+#     && applyPatchOrPrintMsgIf('2025-08-28-gen-ai-span-relative-path', 'semconv', '1.38.0-dev');
+#
+#   # See https://github.com/open-telemetry/semantic-conventions/issues/2690#issue-3364744586
+#   # Replace [foo](./some-path) with [foo](/docs/gen-ai/some-path)
+#   s|\]\(\./|](/docs/gen-ai/|g;
 # }
-
-sub patchSpec_because_of_SemConv_GenAiSpanRelativePath() {
-  return unless $ARGV =~ /^tmp\/semconv\/docs\/gen-ai\/gen-ai-spans/
-    && applyPatchOrPrintMsgIf('2025-08-28-gen-ai-span-relative-path', 'semconv', '1.38.0-dev');
-
-  # See https://github.com/open-telemetry/semantic-conventions/issues/2690#issue-3364744586
-  # Replace [foo](./some-path) with [foo](/docs/gen-ai/some-path)
-  s|\]\(\./|](/docs/gen-ai/|g;
-}
 
 sub getVersFromSubmodule() {
   my %repoNames = qw(
@@ -194,16 +186,9 @@ while(<>) {
   ## Semconv
 
   if ($ARGV =~ /^tmp\/semconv/) {
-    # patchSpec_because_of_SemConv_MetricReqLevelHashDNE();
-    patchSpec_because_of_SemConv_GenAiSpanRelativePath();
-
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
-
-    # Remove the .md extension from the link title
-    # TODO: remove this once the .md extension is removed from the link title
-    s|(<td><a href=")(.*)\.md(#.*">.*</a></td>)|$1$2$3|g;
   }
 
 

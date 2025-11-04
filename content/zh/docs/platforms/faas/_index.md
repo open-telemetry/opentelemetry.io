@@ -5,6 +5,7 @@ description: >-
   OpenTelemetry 支持多种方法监控不同云服务商提供的功能即服务（FaaS）
 redirects: [{ from: /docs/faas/*, to: ':splat' }] # cSpell:disable-line
 default_lang_commit: a18833df3c17db379911a796f1b0a549c4d8f10f # patched
+drifted_from_default: true
 ---
 
 功能即服务（FaaS）是[云原生应用][cloud native apps]的一种重要无服务器计算平台。

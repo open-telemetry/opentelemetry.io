@@ -7,6 +7,7 @@ what-next: >
   変更の提出方法の詳細については、[コンテンツの提出][Submitting content]を参照してください。
 weight: 60
 default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
+drifted_from_default: true
 ---
 
 {{% alert title="サポートされているビルド環境" color=warning %}}
