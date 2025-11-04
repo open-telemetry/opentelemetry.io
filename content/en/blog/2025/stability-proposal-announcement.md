@@ -193,7 +193,7 @@ Second, we'd like to make it easier for maintainers to ship stable
 instrumentations. If an instrumentation's API surface is stable, then we believe
 that semantic convention stability should not block the stabilization of that
 instrumentation library. This means that we'll need to be thoughtful in
-providing migration pathways for telemetry as operators upgrade to new versions
+providing migration pathways for telemetry as operators upgrade to new major versions
 of instrumentation libraries.
 
 Finally, we'd like to make it easier for third-parties to publish their own
