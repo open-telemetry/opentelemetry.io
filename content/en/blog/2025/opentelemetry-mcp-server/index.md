@@ -3,7 +3,7 @@ title: OpenTelemetry Model Context Protocol (MCP) Server
 author: >-
   [Pavol Loffay](https://github.com/pavolloffay) (Red Hat)
 linkTitle: OpenTelemetry MCP Server
-issue: https://github.com/open-telemetry/opentelemetry.io/issues/6389
+issue: https://github.com/open-telemetry/opentelemetry.io/issues/8330
 sig: SIG GenAI Observability
 date: 2025-03-06
 cSpell:ignore: mcp pavolloffay
