@@ -7019,6 +7019,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-10-30T08:59:05.365545-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/slowsqlconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-04T06:53:30.851863-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector": {
     "StatusCode": 206,
     "LastSeen": "2025-10-30T09:40:45.325854807Z"

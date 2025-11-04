@@ -30,7 +30,7 @@ information on how to configure receivers, see the
 | [bigipreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/bigipreceiver) ⚠️                                | contrib                  | -           | unmaintained | -           |
 | [carbonreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/carbonreceiver) ⚠️                              | contrib                  | -           | unmaintained | -           |
 | [chronyreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/chronyreceiver)                                 | contrib                  | -           | beta         | -           |
-| [ciscoosreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/ciscoosreceiver)                               | contrib                  | -           | development  | -           |
+| [ciscoosreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/ciscoosreceiver)                               | contrib                  | -           | alpha        | -           |
 | [cloudflarereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/cloudflarereceiver)                         | contrib                  | -           | -            | alpha       |
 | [cloudfoundryreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/cloudfoundryreceiver)                     | contrib                  | -           | beta         | development |
 | [collectdreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/collectdreceiver)                             | contrib                  | -           | beta         | -           |
@@ -46,7 +46,7 @@ information on how to configure receivers, see the
 | [flinkmetricsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/flinkmetricsreceiver)                     | contrib                  | -           | alpha        | -           |
 | [fluentforwardreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/fluentforwardreceiver)                   | contrib, K8s             | -           | -            | beta        |
 | [githubreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/githubreceiver)                                 | contrib                  | development | alpha        | -           |
-| [gitlabreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/gitlabreceiver)                                 | contrib                  | development | -            | -           |
+| [gitlabreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/gitlabreceiver)                                 | contrib                  | alpha       | -            | -           |
 | [googlecloudmonitoringreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/googlecloudmonitoringreceiver)   | contrib                  | -           | alpha        | -           |
 | [googlecloudpubsubreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/googlecloudpubsubreceiver)           | contrib                  | beta        | beta         | beta        |
 | [googlecloudspannerreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/googlecloudspannerreceiver)         | contrib                  | -           | beta         | -           |
@@ -130,7 +130,8 @@ information on how to configure receivers, see the
 codeowners. They may not receive regular updates or bug fixes.
 
 [^1]:
-    Shows which distributions (core, contrib, K8s, etc.) include this component.
+    Shows which [distributions](/docs/collector/distributions/) (core, contrib,
+    K8s, etc.) include this component.
 
 [^2]:
     For details about component stability levels, see the

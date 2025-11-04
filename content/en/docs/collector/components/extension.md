@@ -44,7 +44,8 @@ discovery. For more information on how to configure extensions, see the
 codeowners. They may not receive regular updates or bug fixes.
 
 [^1]:
-    Shows which distributions (core, contrib, K8s, etc.) include this component.
+    Shows which [distributions](/docs/collector/distributions/) (core, contrib,
+    K8s, etc.) include this component.
 
 [^2]:
     For details about component stability levels, see the

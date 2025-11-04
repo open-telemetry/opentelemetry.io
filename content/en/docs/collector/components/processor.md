@@ -33,7 +33,7 @@ pipeline. For more information on how to configure processors, see the
 | [logstransformprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/logstransformprocessor)               | contrib            | -           | -           | development |
 | [memorylimiterprocessor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor)                       | contrib, core, K8s | beta        | beta        | beta        |
 | [metricsgenerationprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricsgenerationprocessor)       | contrib            | -           | alpha       | -           |
-| [metricstarttimeprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstarttimeprocessor)           | contrib            | -           | alpha       | -           |
+| [metricstarttimeprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstarttimeprocessor)           | contrib            | -           | beta        | -           |
 | [metricstransformprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstransformprocessor)         | contrib, K8s       | -           | beta        | -           |
 | [probabilisticsamplerprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor) | contrib, core, K8s | beta        | -           | alpha       |
 | [redactionprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor)                       | contrib, K8s       | beta        | alpha       | alpha       |
@@ -51,7 +51,8 @@ pipeline. For more information on how to configure processors, see the
 codeowners. They may not receive regular updates or bug fixes.
 
 [^1]:
-    Shows which distributions (core, contrib, K8s, etc.) include this component.
+    Shows which [distributions](/docs/collector/distributions/) (core, contrib,
+    K8s, etc.) include this component.
 
 [^2]:
     For details about component stability levels, see the

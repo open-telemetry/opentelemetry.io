@@ -3,7 +3,7 @@ title: Connectors
 description: List of available OpenTelemetry Collector connectors
 weight: 340
 # prettier-ignore
-cSpell:ignore: countconnector datadogconnector exceptionsconnector failoverconnector forwardconnector grafanacloudconnector otlpjsonconnector roundrobinconnector routingconnector servicegraphconnector signaltometricsconnector spanmetricsconnector sumconnector
+cSpell:ignore: countconnector datadogconnector exceptionsconnector failoverconnector forwardconnector grafanacloudconnector otlpjsonconnector roundrobinconnector routingconnector servicegraphconnector signaltometricsconnector slowsqlconnector spanmetricsconnector sumconnector
 ---
 
 Connectors connect two pipelines, acting as both exporter and receiver. For more
@@ -25,10 +25,12 @@ information on how to configure connectors, see the
 | [routingconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/routingconnector)                 | contrib, K8s       |
 | [servicegraphconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/servicegraphconnector)       | contrib, K8s       |
 | [signaltometricsconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/signaltometricsconnector) | contrib            |
+| [slowsqlconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/slowsqlconnector)                 | contrib            |
 | [spanmetricsconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector)         | contrib            |
 | [sumconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/sumconnector)                         | contrib            |
 
 [^1]:
-    Shows which distributions (core, contrib, K8s, etc.) include this component.
+    Shows which [distributions](/docs/collector/distributions/) (core, contrib,
+    K8s, etc.) include this component.
 
 <!-- END GENERATED: connector-table -->
