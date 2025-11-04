@@ -28,7 +28,7 @@ distributions.
 - We'll be moving to a simpler, but stricter, definition of what components can
   be present in a stable release and updating stability requirements to include
   new guidance on documentation, performance testing, etc.
-- Semantic convention guidelines will be updated to encourage faster iteration,
+- Instrumentation stability guidelines will be updated to encourage faster iteration,
   greater federation, and to unblock consumers to allow stable instrumentation
   releases.
 - To make these releases easier to consume, we'll be introducing 'epoch
