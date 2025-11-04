@@ -4,22 +4,19 @@ linkTitle: Stability Proposal Announcement # Mandatory, make sure that your shor
 date: 2025-10-23 # Put the current date, we will keep the date updated until your PR is merged
 author:
   >- # If you have only one author, then add the single name on this line in quotes.
-  [Austin Parker](https://github.com/austinlparker) (honeycomb.io)
+  "OpenTelemetry Governance Committee"
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
-body_class: otel-with-contributions-from # TODO: remove this line if there are no secondary contributing authors
 issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
 sig: Governance Committee # TODO: add the name of the SIG that sponsors this blog post
 ---
 
-<!-- If your post doesn't have secondary authors, then delete the following paragraph: -->
-
-With contributions from, and on behalf of, the OpenTelemetry Governance
-Committee.
-
 ## Summary
 
 OpenTelemetry is changing how the project approaches stability and releases,
-across all sub-projects and repositories.
+across all sub-projects and repositories. We would like to make a clearer
+distinction between internal and external stability levels; As a project, we
+should be more concerned with the packaging and 'product' of OpenTelemetry
+distributions.
 
 **Why?**
 
@@ -73,7 +70,7 @@ language around component stability and component offerings.
 The Governance Committee believes that these changes need community involvement
 and discussion to be a success, so we’re taking this opportunity to announce our
 intention and open an
-[Github discussion](https://github.com/open-telemetry/community/discussions/3098)
+[GitHub discussion](https://github.com/open-telemetry/community/discussions/3098)
 in order to get feedback from users, maintainers, and contributors. We do not
 anticipate that these changes will be completed overnight, and want to assure
 everyone that we will continue to prioritize our existing commitments to users
@@ -129,26 +126,24 @@ There's three major changes that the project will be rolling out. Keep in mind
 the exact details of some of this may change, but these goals are more or less
 fixed.
 
-1. All components across all repositories should adhere to a consistent way of
-   communicating stability, through a metadata file, that can be discovered and
-   parsed in a programmatic way. The exact format will be defined through an
-   OTEP and incorporated into the specification. As part of this, we'll be
-   normalizing stability levels across components, including semantic
-   conventions by introducing alpha/beta stability to that effort.
+1. All components across all repositories (including semantic conventions)
+   should adhere to a consistent way of communicating stability, through a
+   metadata file/information, that can be discovered and parsed in a
+   programmatic way. The exact format will be defined through an OTEP and
+   incorporated into the specification.
 2. Stability requirements will be expanded to include more requirements around
    documentation and where it's hosted, example code, performance benchmarks
    (where applicable), implementation cookbooks, and other artifacts as
    necessary.
-3. Stable components must only enable other stable components by default. A new
-   global configuration option shall be introduced that allows adopters to
-   choose a desired minimum stability level, with a default value of
-   `[stable, rc, beta]`.
+3. Stable distributions of OpenTelemetry should only enable stable components by
+   default. Users should be able to select a desired minimum stability level
+   with a documented and consistent configuration option.
 
 This is a big change for maintainers, especially those who have shipped v1+ of
 their libraries. We would deeply appreciate your feedback on this proposal in
 the [discussion](https://github.com/open-telemetry/community/discussions/3098).
 
-## 2. Semantic Convention Stability Normalization
+## 2. Instrumentation Stability and Semantic Conventions
 
 As mentioned above, we would like to adjust the semantic convention stability
 process in order to provide greater consistency across projects, but also to
@@ -176,12 +171,15 @@ others exist independently of it.
 
 ### What's Changing?
 
-Our goals here are designed to achieve two outcomes.
+Our goals here are designed to achieve three outcomes.
 
-1. Semantic conventions should have more nuanced stability levels in order to
-   unblock upstream development and gain real world feedback from users.
-2. Semantic conventions should be more federated; OpenTelemetry itself shouldn't
-   be a constraint on the development and promulgation of the conventions.
+1. Semantic convention stability should be decoupled from instrumentation
+   stability.
+2. Semantic conventions should be more federated; OpenTelemetry should not be
+   the final word on what conventions exist, and instead should focus on
+   creating core conventions that can be extended and built upon.
+3. Semantic convention development and iteration should not be a blocker on
+   distribution maintainers.
 
 To this end, we have a few recommendations we'd like to codify into the
 specification. First, our position around instrumentation libraries in
@@ -189,13 +187,19 @@ OpenTelemetry is that they exist as concrete implementations of the semantic
 conventions. This gives us a concrete target for 'first party' instrumentation
 libraries that we wish to support in distributions. In addition, maintainers
 should prioritize instrumentations that align to existing conventions and
-deprioritize others. Second, we would like to promote more first-party semantic
-conventions to 'beta' stability in order to unblock downstream instrumentation
-libraries. Many of our conventions have months, or years, of real-world use that
-we can rely on as guidance for their fitness. Finally, we'd like to formalize
-the semantic convention format specification to the point that third-parties
-outside the OpenTelemetry project feel comfortable using it to publish their
-own, federated, semantic conventions.
+deprioritize others.
+
+Second, we'd like to make it easier for maintainers to ship stable
+instrumentations. If an instrumentation's API surface is stable, then we believe
+that semantic convention stability should not block the stabilization of that
+instrumentation library. This means that we'll need to be thoughtful in
+providing migration pathways for telemetry as operators upgrade to new versions
+of instrumentation libraries.
+
+Finally, we'd like to make it easier for third-parties to publish their own
+semantic conventions by formalizing and stabilizing necessary parts of the
+semantic conventions in order for other organizations to ship conventions for
+their libraries, frameworks, tech stacks, etc.
 
 In order to accomplish this, we're looking for feedback on several areas from
 maintainers and end-users -- especially around the maturity/lifecycle of
@@ -242,7 +246,7 @@ and
 These changes are setting up the next chapter of our success, and becoming truly
 ubiquitous.
 
-Our goals as a project are not changing, but our priorities are.
+Our mission as a project is not changing, but our priorities are.
 
 1. Stability and usability for all developers and users.
 2. Clear packaging, installation, and usage paths.
