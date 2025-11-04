@@ -173,7 +173,7 @@ others exist independently of it.
 
 Our goals here are designed to achieve three outcomes.
 
-1. Semantic convention stability should be decoupled from instrumentation
+1. Instrumentation stability should be decoupled from semantic convention
    stability.
 2. Semantic conventions should be more federated; OpenTelemetry should not be
    the final word on what conventions exist, and instead should focus on
