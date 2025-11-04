@@ -145,7 +145,7 @@ the [discussion](https://github.com/open-telemetry/community/discussions/3098).
 
 ## 2. Instrumentation Stability and Semantic Conventions
 
-As mentioned above, we would like to adjust the semantic convention stability
+As mentioned above, we would like to adjust the instrumentation stability
 process in order to provide greater consistency across projects, but also to
 better communicate the interplay between telemetry stability and implementation
 stability.
