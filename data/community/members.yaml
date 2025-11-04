@@ -2138,6 +2138,13 @@ approvers:
       - ebpf-instrumentation-approvers
     html_url: https://github.com/rafaelroquetto
     avatar_url: https://avatars.githubusercontent.com/u/1713?v=4
+  - name: raphael-theriault-swi
+    teams:
+      - javascript-approvers
+      - javascript-contrib-triagers
+      - javascript-triagers
+    html_url: https://github.com/raphael-theriault-swi
+    avatar_url: https://avatars.githubusercontent.com/u/113933910?v=4
   - name: RassK
     teams:
       - dotnet-instrumentation-approvers
@@ -2501,11 +2508,6 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/punya
     avatar_url: https://avatars.githubusercontent.com/u/277514?v=4
-  - name: raphael-theriault-swi
-    teams:
-      - javascript-contrib-triagers
-    html_url: https://github.com/raphael-theriault-swi
-    avatar_url: https://avatars.githubusercontent.com/u/113933910?v=4
   - name: scbjans
     teams:
       - ruby-contrib-triagers
