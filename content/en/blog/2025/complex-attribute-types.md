@@ -82,7 +82,7 @@ several alternatives:
 Having different attribute collection types for different signals affects API
 ergonomics, making it less convenient and efficient to work with attributes.
 
-**Flattening.**
+### Flattening
 
 Flattening works well for maps of primitives but breaks down for arrays. For
 example, structured data like:
