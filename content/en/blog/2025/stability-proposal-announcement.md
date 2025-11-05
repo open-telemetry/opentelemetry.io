@@ -174,7 +174,7 @@ others exist independently of it.
 Our goals here are designed to achieve three outcomes.
 
 1. Instrumentation stability should be decoupled from semantic convention
-   stability.
+   stability. We have a lot of stable instrumentation that is safe to run in production, but has data that may change in the future. Users have told us that conflating these two levels of stability is confusing and limits their options.
 2. Semantic conventions should be more federated; OpenTelemetry should not be
    the final word on what conventions exist, and instead should focus on
    creating core conventions that can be extended and built upon.
