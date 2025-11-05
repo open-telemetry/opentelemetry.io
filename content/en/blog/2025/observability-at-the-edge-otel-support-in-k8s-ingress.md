@@ -85,8 +85,8 @@ because it leveraged the popularity and performance of the NGINX proxy. Its long
 history means that many teams trust it for production workloads.
 
 In terms of observability, tracing is the strongest signal. Ingress-NGINX
-includes an OpenTelemetry module that can emit spans directly using the OTLP
-protocol. These spans represent each incoming request. If a trace context
+includes an OpenTelemetry module that can emit spans directly using the OpenTelemetry
+Protocol (OTLP). These spans represent each incoming request. If a trace context
 arrives with the request, ingress continues it. If no headers are present,
 ingress starts a new root span. This flexibility means that ingress can be
 either the first hop of a trace or a continuation of one started upstream at a
@@ -94,7 +94,7 @@ load balancer or API gateway. Tracing can be enabled cluster-wide through Helm
 values or selectively through annotations on specific Ingress resources.
 
 Metrics and logs are less advanced. Metrics are still exposed in Prometheus
-format, available on port 10254, and need to be scraped by the Collector. Logs
+format, available on port `10254`, and need to be scraped by the Collector. Logs
 are classic NGINX access logs, one line per request. To make them useful in
 OpenTelemetry pipelines, the log format must be extended to include trace and
 span IDs. Once that is done, the Collector can parse the logs and enrich them
@@ -106,10 +106,14 @@ _Read the full deep dive on
 The examples use Dash0, but the same configuration works with any backend that
 supports OTLP._
 
-**Note on the future of Ingress-NGINX: While not officially deprecated, the
+{% alert title="Note on the future of Ingress-NGINX" %}
+
+While not officially deprecated, the
 Ingress-NGINX project is effectively in maintenance mode. Maintainers have
 indicated that only critical bug fixes and security updates will be accepted
-going forward, with no new features planned.**
+going forward, with no new features planned.
+
+{% /alert %}
 
 ### Contour
 
@@ -153,7 +157,7 @@ Envoy to deliver it.
 Tracing is configured through a TracingService resource. Once set, Envoy uses
 its OpenTelemetry driver to generate spans. Like Contour, these spans join
 existing traces or start new ones. Metrics come from both Envoy and
-Emissary-specific ambassador\_\* series, exposed in Prometheus format on
+Emissary-specific `ambassador_*` series, exposed in Prometheus format on
 port 8877. Logs again follow the Envoy convention, with the ability to include
 traceparent fields. Once parsed by the Collector, these logs are tied to the
 corresponding traces.
@@ -176,19 +180,19 @@ Traefik has taken the most OpenTelemetry-native approach of the group.
 
 Tracing is built-in. Traefik can export spans directly as OTLP without sidecars
 or external plugins. Metrics are treated as first-class citizens and follow
-OpenTelemetry semantic conventions. You can export them directly as OTLP,
+OpenTelemetry semantic conventions. You can export them directly via OTLP,
 bypassing Prometheus entirely, or fall back to Prometheus if needed. Logs can
 also be exported over OTLP, although that feature is still experimental. When
 enabled, log records include trace and span IDs by default, making correlation
 seamless.
 
 Traefik therefore comes closest to being OpenTelemetry-native. All three signals
-can flow natively as OTLP, reducing the need for translation. The Collector
+can flow natively via OTLP, reducing the need for translation. The Collector
 still plays an important role in enriching and routing signals, but the data
 arrives in a more standard, convention-aligned form than with other controllers.
 
 From version 3.5.0, Traefik automatically injects Kubernetes resource attributes
-like k8s.pod.uid and k8s.pod.name into every span and log it emits. That small
+like `k8s.pod.uid` and `k8s.pod.name` into every span and log it emits. That small
 detail has a big payoff: it guarantees reliable correlation, even in
 service-mesh environments where the IP-based heuristics of the Collector’s
 k8sattributes processor can break down.
@@ -223,7 +227,7 @@ But observability isn’t only about what signals a controller produces - it’s
 also about how you enrich and correlate them. Raw metrics or traces by
 themselves often lack the context needed to be useful. This is where Kubernetes
 resource attributes make the difference. Traefik, for example, has since v3.5.0
-automatically injected k8s.pod.uid and k8s.pod.name into every span and log it
+automatically injected `k8s.pod.uid` and `k8s.pod.name` into every span and log it
 emits. That small detail has a big payoff: it guarantees reliable correlation,
 even in service-mesh environments where the IP-based heuristics of the
 Collector’s k8sattributes processor can break down.
