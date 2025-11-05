@@ -114,7 +114,7 @@ data.baz = [ 42 ]
 
 Both approaches are limited and lead to a poor user experience.
 
-**String serialization.**
+### String serialization
 
 Another option is requiring users or instrumentations to serialize complex data
 into strings. While workable, this risks inconsistencies and errors. It also
