@@ -3,8 +3,9 @@ title: サイトのローカリゼーション
 description: 非英語ローカリゼーションのサイトページの作成と管理
 linkTitle: ローカリゼーション
 weight: 25
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
-cSpell:ignore: shortcodes
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+drifted_from_default: true
+cSpell:ignore: Dowair shortcodes
 ---
 
 OTel のウェブサイトは、ページのローカリゼーションをサポートするために、Hugo の [multilingual framework] をサポートしています。
@@ -28,6 +29,7 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
   - [フロントマター][front matter] 内の `title`、 `linkTitle`、 `description` のフィールド値
   - 特別な指示がない場合、ページ内の **すべての** コンテンツとフロントマターの内容
 - 原文の _内容_、 _意味_、 _スタイル_ を **変更しないこと**
+- [小さなプルリクエスト](#small-prs) で **段階的に作業を提出すること**
 - もしなにか疑問等があれば、以下の方法で [メンテナー][maintainers] に **質問すること**
   - [Slack] の `#otel-docs-localization` か `#otel-comms` の各チャンネル
   - [Discussion]やイシュー、あるいはPRコメント
@@ -252,26 +254,46 @@ npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 
 ## 新しいローカリゼーション {#new-localizations}
 
-### 新しいローカリゼーションチーム {#new-localization-team}
+OTelウェブサイトの新しいローカリゼーションを始めることに興味がありますか？
+メンテナーにあなたの興味を伝えましょう。
+たとえば、GitHubディスカッションやSlackの`#otel-docs-localization`チャンネルを経由することが挙げられます。
+このセクションでは、新しいローカリゼーションを開始する際の手順について説明します。
 
-OpenTelemetry ウェブサイトの新しい言語のローカリゼーションを始めるには、以下が必要です。
+{{% alert title="Note" %}}
 
-1. あなたの言語に精通した**ローカリゼーションメンター**。たとえば、[CNCF Glossary][]の[アクティブな承認者][active approver]や[Kubernetes ウェブサイト][Kubernetes website]などです。
+新しいローカリゼーションを開始するために、OpenTelemetryプロジェクトの既存のコントリビューターである必要はありません。
+しかし、[OpenTelemetry GitHub organization](https://github.com/open-telemetry/)のメンバーまたはローカリゼーションの承認者グループのメンバーとして追加されるには、[メンバーシップガイドライン][membership guidelines]に概説されている確立されたメンバーおよび承認者になるための要件を満たす必要があります。
+
+承認者ステータスを獲得する前は、ローカリゼーションPRへの承認を「LGTM」（Looks Good To Me）コメントを追加することで示すことができます。
+この立ち上げ段階では、メンテナーはあなたがすでに承認者であるかのようにあなたのレビューを扱います。
+
+[membership guidelines]: https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+
+{{% /alert %}}
+
+### 1. ローカリゼーションチームを結成する {#team}
+
+ローカリゼーションの作成は、活発で支援的なコミュニティを育てることです。
+OpenTelemetryウェブサイトの新しいローカリゼーションを始めるには、以下が必要です。
+
+1. あなたの言語に精通した**ローカリゼーションメンター**。たとえば、[CNCF Glossary][]や[Kubernetes ウェブサイト][Kubernetes website]の[アクティブな承認者][active approver]など。
 2. 少なくとも2名の潜在的なコントリビューター。
 
 [active approver]: https://github.com/cncf/glossary/blob/main/CODEOWNERS
 [CNCF Glossary]: https://glossary.cncf.io/
 [Kubernetes website]: https://github.com/kubernetes/website
 
-準備ができたら、以下を実施してください。
+### 2. ローカリゼーションのキックオフ：イシューを作成する {#kickoff}
 
-1. コントリビュートの興味を共有するために[新しいイシュー][new issue]を作成してください。
+[ローカリゼーションチーム](#team)が配置されているか結成されている場合は、以下のタスクリストを使用してイシューを作成します。
 
-2. メンターと潜在的なコントリビューターのGitHubハンドルを追加してください。
+1. 追加したい言語の公式[ISO 639-1 コード][ISO 639-1 code]を調べてください。このセクションの残りの部分では、この言語コードを`LANG_ID`と呼びます。特にサブリージョンの選択に関して、使用するタグについて疑問がある場合は、メンテナーに尋ねてください。
 
-3. 追加したい言語の公式[ISO 639-1 コード][ISO 639-1 code]を調べてください。このセクションの残りの部分では、この言語コードを`LANG_ID`と呼びます。
+   [ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
 
-4. イシューの冒頭コメントに以下のタスクリストを追加してください。
+2. [メンターと潜在的なコントリビューター](#team)のGitHubのハンドルネームを特定してください。
+
+3. 冒頭コメントに以下のタスクリストを含む[新しいイシュー][new issue]を作成してください。
 
    ```markdown
    - [ ] Language info:
@@ -283,28 +305,49 @@ OpenTelemetry ウェブサイトの新しい言語のローカリゼーション
    - [ ] Read through
          [Localization](https://opentelemetry.io/docs/contributing/localization/)
          and all other pages in the Contributing section
-   - [ ] Localize site homepage to YOUR_LANGUAGE_NAME
+   - [ ] Localize site homepage (only) to YOUR_LANGUAGE_NAME and submit a PR.
+         For details, see
+         [Localize the homepage](https://opentelemetry.io/docs/contributing/localization/#homepage).
    - [ ] OTel maintainers:
      - [ ] Update `hugo.yaml`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
      - [ ] Create org-level group for `LANG_ID` approvers
      - [ ] Update components owners for `content/LANG_ID`
+   - [ ] Create an issue to track the localization of the **glossary**. Add the
+         issue number here. For details, see
+         [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
    ```
 
-5. ウェブサイトの[ホームページ][homepage]の翻訳を含む[プルリクエストを送信](../pull-requests/)してください。翻訳するのは`content/LANG_ID/_index.md`ファイルだけにしてください。メンテナーがPRを編集するために必要な権限があることを確認してください。彼らはローカリゼーションプロジェクトを開始するために必要な追加変更をPRに加えます。
+### 3. ホームページをローカライズする {#homepage}
 
-[ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
+ファイル `content/LANG_ID/_index.md` に、ウェブサイトの[ホームページ][homepage]の翻訳 _のみ_ を含む[プルリクエストを送信](../pull-requests/)してください。
+メンテナーはローカリゼーションプロジェクトを開始するために必要な追加の変更をPRに加えるため、メンテナーがPRを編集するために必要な権限があることを確認してください。
+
 [homepage]: https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
 最初のPRがマージされた後、メンテナーはイシューラベル、組織レベルのグループ、およびコンポーネント所有者を設定します。
 
-{{% alert title="Note" %}}
+### 4. 用語集をローカライズする {#glossary}
 
-新しいローカリゼーションを始めるのに、OpenTelemetry プロジェクトの既存のコントリビューターである必要はありません。
-しかし、[OpenTelemetry GitHub 組織](https://github.com/open-telemetry/)のメンバーまたはローカリゼーションの承認者グループのメンバーとして追加されることはありません。
-確立されたメンバーおよび承認者になるための要件を満たす必要があります。これは[メンバーシップガイドライン](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md)に概説されています。
-ローカリゼーションプロジェクトを開始する際、メンテナーはあなたがすでに承認者であるかのようにあなたのレビューを扱います。
+ローカライズする2番目のページは[用語集](/docs/concepts/glossary/)です。
+これは、特にオブザーバビリティとOpenTelemetryで使用される主要な用語を定義するため、ローカライズされた読者にとって**重要な**ページです。
+これは、あなたの言語にそのような用語が存在しない場合は特に重要です。
+
+ガイダンスについては、Write the Docs 2024でのAli Dowairのトーク[The art of translation: How to localize technical content][ali-dowair-2024]の[動画][ali-d-youtube]を参照してください。
+
+[ali-dowair-2024]: https://www.writethedocs.org/conf/atlantic/2024/speakers/#speaker-ali-dowair-what-s-in-a-word-lessons-from-localizing-kubernetes-documentation-to-arabic-ali-dowair
+[ali-d-youtube]: https://youtu.be/HY3LZOQqdig
+
+### 5. 残りのサイトページを小さな増分でローカライズする {#rest}
+
+用語が確立されたら、残りのサイトページをローカライズできます。<a name="small-prs"></a>
+
+{{% alert title="小さなPRを提出する" color="primary" %}}
+
+ローカリゼーションチームは、**小さな増分**で作業を提出する必要があります。
+つまり、[PR][PRs]は小さく保ち、できれば1つまたは少数の小さなファイルに限定してください。
+小さなPRはレビューが簡単で、通常はより早くマージされます。
 
 {{% /alert %}}
 
@@ -343,7 +386,7 @@ NPMパッケージ[@cspell/dict-LANG_ID][]として利用可能な[cSpell辞書]
 
 ### 意味的な変更を含むPRは複数のロケールにまたがるべきではない {#prs-should-not-span-locales}
 
-承認者は、ドキュメントページに**意味的な**変更を加えるPRが複数のロケールにまたがらないようにする必要があります。
+承認者は、ドキュメントページに**意味的な**変更を加える[PR][PRs]が複数のロケールにまたがらないようにする必要があります。
 意味的な変更とは、ページコンテンツの _意味_ に影響を与える変更です。
 私たちのドキュメントの[ローカリゼーションプロセス](.)により、ロケールの承認者は、時期を見て、英語の編集内容を確認し、その変更がそのロケールに適切かどうか、およびそのロケールにどのように組み込むのが最善かを判断します。
 変更が必要な場合、ロケールの承認者は独自のロケール固有のPRを通じて変更を行います。
@@ -396,4 +439,5 @@ NPMパッケージ[@cspell/dict-LANG_ID][]として利用可能な[cSpell辞書]
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
+[PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/

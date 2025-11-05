@@ -35,7 +35,7 @@ integrate OpenTelemetry into your application code. Below, you will see the
 difference between a Flask route instrumented manually, automatically and
 programmatically.
 
-### Manually instrumented server
+## Manually instrumented server
 
 `server_manual.py`
 
@@ -52,7 +52,7 @@ def server_request():
         return "served"
 ```
 
-### Automatically-instrumented server
+## Automatically-instrumented server
 
 `server_automatic.py`
 
@@ -63,7 +63,7 @@ def server_request():
     return "served"
 ```
 
-### Programmatically-instrumented server
+## Programmatically-instrumented server
 
 `server_programmatic.py`
 
@@ -129,7 +129,7 @@ destinations, like an OpenTelemetry Collector.
 This section guides you through the manual process of instrumenting a server as
 well as the process of executing an automatically instrumented server.
 
-### Execute the manually instrumented server
+## Execute the manually instrumented server
 
 Execute the server in two separate consoles, one to run each of the scripts that
 make up this example:
@@ -184,7 +184,7 @@ example:
 }
 ```
 
-### Execute the automatically-instrumented server
+## Execute the automatically-instrumented server
 
 Stop the execution of `server_manual.py` by pressing <kbd>Control+C</kbd> and
 run the following command instead:
@@ -247,7 +247,7 @@ example:
 You can see that both outputs are the same because automatic instrumentation
 does exactly what manual instrumentation does.
 
-### Execute the programmatically-instrumented server
+## Execute the programmatically-instrumented server
 
 It is also possible to use the instrumentation libraries (such as
 `opentelemetry-instrumentation-flask`) by themselves which may have an advantage
@@ -270,7 +270,7 @@ python client.py
 
 The results should be the same as running with manual instrumentation.
 
-#### Using programmatic-instrumentation features
+### Using programmatic-instrumentation features
 
 Some instrumentation libraries include features that allow for more precise
 control while instrumenting programmatically, the instrumentation library for
@@ -288,7 +288,7 @@ side. This is because of the `excluded_urls` option passed to `instrument_app`
 that effectively stops the `server_request` function from being instrumented as
 its URL matches the regular expression passed to `excluded_urls`.
 
-### Instrumentation while debugging
+## Instrumentation while debugging
 
 The debug mode can be enabled in the Flask app like this:
 
@@ -310,7 +310,7 @@ if __name__ == "__main__":
 
 The auto instrumentation can consume configuration from environment variables.
 
-### Capture HTTP request and response headers
+## Capture HTTP request and response headers
 
 You can capture predefined HTTP headers as span attributes, according to the
 [semantic convention][].

@@ -3,6 +3,10 @@
 {{ $siteLang := .Site.Language.Lang -}}
 
 {{ if ne $siteLang $pageProseLang -}}
+{{ $locales := partialCached "func/locales-for-google-translate.html" . -}}
+
+{{/* NOTE: Google Translate Website Translator widget has been deprecated since
+2019, however it continues to work. */ -}}
 
 <script type="text/javascript">
   const infoToConsole = false;
@@ -74,10 +78,16 @@
   function googleTranslateElementInit() {
     const pageLanguage = '{{ $pageProseLang }}';
     // Languages codes supported by Google for the locales in OTel.io site
-    let allLangArr = ['en', 'es', 'fr', 'ja', 'pt', 'zh-cn'];
+    let allLang = {{ delimit $locales " " }};
+    let allLangArr = allLang.split(' ');
     const allLangButPageLang = allLangArr
       .filter((lang) => !lang.startsWith(pageLanguage))
       .join(',');
+      consoleInfo({
+        pageLanguage,
+        allLangArr,
+        allLangButPageLang,
+      });
     new google.translate.TranslateElement(
       {
         pageLanguage: pageLanguage,

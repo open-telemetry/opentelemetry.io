@@ -16,7 +16,7 @@
 
   */ -}}
 
-
+{{/* Note: $u.IsAbs is true if $url has a scheme (e.g., "http:") */ -}}
 {{ if and
     (hasPrefix $.PageInner.RelPermalink "/docs/specs")
     (not $u.IsAbs)
@@ -33,7 +33,35 @@
     {{ with $u.RawQuery -}}{{ $href = printf "%s?%s" $href . -}}{{ end -}}
     {{ with $u.Fragment -}}{{ $href = printf "%s#%s" $href . -}}{{ end -}}
   {{ else -}}
-    {{ warnf "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $url $path -}}
+
+    {{/* We can't find a page for $url.
+
+    - If $url refers to a Markdown file, issue a warning, since we should be
+      able to find it.
+
+    - Otherwise, it's a path to a resource file. Most often, $path is absolute,
+      and the resource is inside a page bundle. Hugo's global or page Resource.Get
+      can't handle that, so just ignore the issue. If there is a real problem, and
+      the path is invalid, it will be caught by the link checker.
+
+    - If the resource path starts with `./`, adjust it to be `../` to match
+      GitHub's relative paths, provide the page this link is in is not an index
+      page.
+
+    */ -}}
+
+    {{ if hasSuffix $path ".md" -}}
+      {{ warnf "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $url $path -}}
+    {{ else -}}
+      {{ if and
+            (hasPrefix $href "./")
+            (not (hasSuffix .Page.File.Filename "_index.md"))
+            (not (hasSuffix .Page.File.Filename "README.md"))
+      -}}
+        {{ $href = add "." $href -}}
+      {{ end -}}
+      {{ warnidf "spec-resource-not-found" "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $url $href -}}
+    {{ end -}}
   {{ end -}}
   {{ $url = $href -}}
 {{ else if hasPrefix $url "/" -}}

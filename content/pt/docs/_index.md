@@ -2,7 +2,7 @@
 title: Documentação
 linkTitle: Docs
 menu: { main: { weight: 10 } }
-default_lang_commit: 2d88c10e1a14220a88a6e4859acb4047f49b6519
+default_lang_commit: 4fbdd4e54ac36d570cf3ac73b5dd3446f03d33ec
 ---
 
 O OpenTelemetry, também conhecido como OTel, é uma estrutura de
@@ -12,7 +12,7 @@ telemetria como [rastros](concepts/signals/traces/),
 [métricas](concepts/signals/metrics/) e [logs](concepts/signals/logs/).
 
 Como padrão do setor, OpenTelemetry é
-[suportado por mais de 40 fornecedores de observabilidade](/ecosystem/vendors/),
+[suportado por mais de 90 fornecedores de observabilidade](/ecosystem/vendors/),
 integrado em diversas
 [bibliotecas, serviços e aplicativos](/ecosystem/integrations/) e é utilizado
 por [diversas organizações](/ecosystem/adopters/).
