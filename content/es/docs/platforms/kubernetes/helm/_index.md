@@ -12,7 +12,7 @@ aplicaciones de Kubernetes.
 Si eliges usar Helm, puedes usar [las charts de Helm para OpenTelemetry]
 (<https://github.com/open-telemetry/opentelemetry-helm-charts>) para gestionar las
 instalaciones del [OpenTelemetry Collector](/docs/collector),
-[OpenTelemetry Operator](/docs/kubernetes/operator), y
+[OpenTelemetry Operator](/docs/platforms/kubernetes/operator), y
 [OpenTelemetry Demo](/docs/demo).
 
 Agrega el repositorio Helm de OpenTelemetry con:
