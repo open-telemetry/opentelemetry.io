@@ -77,7 +77,7 @@ Examples include:
 Before extending support for complex attributes to all signals, we explored
 several alternatives:
 
-**Limiting support to logs (and spans).**
+### Limiting support to logs (and spans)
 
 Having different attribute collection types for different signals affects API
 ergonomics, making it less convenient and efficient to work with attributes.
