@@ -1,7 +1,7 @@
 ---
 title: Announcing Support for Complex Attribute Types in OTel
 linkTitle: Announcing Support for Complex Attribute Types in OTel
-date: 2025-10-25
+date: 2025-11-05
 author: >-
   [Liudmila Molkova](https://github.com/lmolkova) (Grafana Labs), [Robert
   Pajak](https://github.com/pellared) (Splunk), [Trask
