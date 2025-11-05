@@ -2731,6 +2731,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-11-14T09:46:15.188299731Z"
   },
+  "https://en.wikipedia.org/wiki/JDK_Flight_Recorder": {
+    "StatusCode": 200,
+    "LastSeen": "2025-11-05T10:39:21.541670492Z"
+  },
   "https://en.wikipedia.org/wiki/JSON": {
     "StatusCode": 200,
     "LastSeen": "2025-11-12T09:42:16.897569226Z"
@@ -5106,6 +5110,10 @@
   "https://github.com/google/pprof": {
     "StatusCode": 206,
     "LastSeen": "2025-11-12T09:45:36.673003728Z"
+  },
+  "https://github.com/google/pprof/tree/main/proto": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-05T10:39:17.965950135Z"
   },
   "https://github.com/google/sqlcommenter/issues/284": {
     "StatusCode": 206,
@@ -12167,6 +12175,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-14T09:43:50.624158636Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/profiles/pprof.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-05T10:39:19.306216143Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/protocol/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-11-14T09:43:49.744306534Z"
@@ -16998,6 +17010,10 @@
   "https://pekko.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-11-16T09:40:33.354772767Z"
+  },
+  "https://perfwiki.github.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-05T10:39:26.383747709Z"
   },
   "https://pip.pypa.io/en/stable/reference/pip_install/#editable-installs": {
     "StatusCode": 200,
