@@ -154,7 +154,7 @@ At a high level, these are the three points in this area:
    metadata file/information, that can be discovered and parsed in a
    programmatic way. The exact format should be defined through an OTEP and
    incorporated into the specification.
-2. Stability requirements must be expanded to include more requirements around
+2. Stability requirements should be expanded to include more requirements around
    documentation and where it's hosted, example code, performance benchmarks
    (where applicable), implementation cookbooks, and other artifacts as
    necessary.
