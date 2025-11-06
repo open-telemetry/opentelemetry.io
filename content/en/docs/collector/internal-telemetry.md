@@ -293,7 +293,7 @@ A more detailed list is available in the following sections.
 This section explains special naming conventions applied to some internal
 metrics.
 
-#### `otelcol_` prefix
+#### `otelcol_` prefix {#otelcol-prefix}
 
 As of Collector v0.106.1, internal metric names are handled differently based on
 their source:
@@ -307,7 +307,7 @@ Prometheus exporter, regardless of their origin, are prefixed with `otelcol_`.
 This includes metrics from both Collector components and instrumentation
 libraries.
 
-#### `_total` suffix
+#### `_total` suffix {#total-suffix}
 
 By default and unique to Prometheus, the Prometheus exporter adds a `_total`
 suffix to summation metrics to follow Prometheus naming conventions, such as
@@ -325,7 +325,7 @@ Internal metrics exported through OTLP do not have this behavior. The
 [internal metrics](#lists-of-internal-metrics) on this page are listed in OTLP
 format, such as `otelcol_exporter_send_failed_spans`.
 
-#### Dots (`.`) v. underscores (`_`)
+#### Dots (`.`) v. underscores (`_`) {#dots-v-underscores}
 
 `http*` and `rpc*` metrics come from instrumentation libraries. Their original
 names used dots (`.`). Prior to Collector v0.120.0, internal metrics exposed
