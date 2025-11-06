@@ -1383,7 +1383,7 @@ creating a trace.
 You will start with a type called `ptrace.ResourceSpans` which represents the
 resource and all the operations that it either originated or received while
 participating in a trace. You can find its definition within the
-[/pdata/ptrace/generated_resourcespans.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.139.0/pdata/ptrace/generated_resourcespans.go)
+[/pdata/ptrace/generated_resourcespans.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/pdata/ptrace/generated_resourcespans.go>)
 file.
 
 `ptrace.Traces` has a method named `ResourceSpans()` which returns an instance
