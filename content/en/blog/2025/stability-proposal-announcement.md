@@ -300,5 +300,5 @@ feedback in
 on the topics and proposals raised here. You can also send feedback on this
 proposal to [feedback@opentelemetry.io](mailto:feedback@opentelemetry.io) or on
 the CNCF Slack in the #opentelemetry channel. We also look forward to meeting
-the cloud native community in person at KubeCon this fall -- please join us
+the cloud native community in person at KubeCon next week -- please join us
 there with comments!
