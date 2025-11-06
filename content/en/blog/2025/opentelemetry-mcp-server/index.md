@@ -1,18 +1,18 @@
 ---
-title: OpenTelemetry Model Context Protocol (MCP) Server
+title: OpenTelemetry Collector Model Context Protocol (MCP) Server
 author: >-
   [Pavol Loffay](https://github.com/pavolloffay) (Red Hat)
-linkTitle: OpenTelemetry MCP Server
+linkTitle: OpenTelemetry Collector MCP Server
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/8330
-sig: SIG GenAI Observability
+sig: SIG Collector
 date: 2025-03-06
 cSpell:ignore: mcp pavolloffay
 ---
 
-## Managing OpenTelemetry just got easier
+## Managing OpenTelemetry Collector just got easier
 
 OpenTelemetry is a large ecosystem of many components which solve different use-cases.
-Therefore managing a production ready OpenTelemetry pipeline can be a hard problem. Users
+Therefore managing a production ready OpenTelemetry collector pipeline can be a hard problem. Users
 have to deal with multiple components, understand breaking changes and improve stack based on the
 new enhancements made in the community.
 
@@ -21,7 +21,7 @@ OpenTelemetry MCP server can significantly help to simplify deployment and day t
 ## Current functionality
 
 At the moment the MCP server provides tools to simplify collector management. The implementation uses
-JSON schema for each collector component. This is quite powerful, the MCP can return the schema of a given component and version
+JSON schema for each collector component. This is quite powerful, the MCP can return the schema of a given component version
 and also validate component's config. The MCP can be also used to compare two collector versions and check which configuration fields were added, removed or deprecated.
 
 1. opentelemetry-collector-changelog [version]
