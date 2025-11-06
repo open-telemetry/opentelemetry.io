@@ -210,7 +210,7 @@ frameworks to
 [natively adopt OpenTelemetry](https://www.youtube.com/watch?v=l8xiNOCIdLY) --
 semantic conventions are a big part of that.
 
-## 3. Confident, Stable, Releases.
+## 3. Confident, Stable Releases.
 
 ## Background
 
