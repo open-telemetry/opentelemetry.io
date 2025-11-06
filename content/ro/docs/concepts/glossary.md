@@ -7,12 +7,13 @@ weight: 200
 default_lang_commit: af966c967003c6dcee2ea5dfe23ce5831fcb5019
 ---
 
-Acest glosar definește termenii și [conceptele](/docs/concepts/) noi în
-proiectul OpenTelemetry și clarifică utilizările specifice OpenTelemetry ale
+Acest glosar definește termenii și [conceptele](/docs/concepts/) noi din cadrul
+proiectului OpenTelemetry și clarifică utilizările specifice OpenTelemetry ale
 termenilor comuni din domeniul observabilității.
 
-De asemenea, comentăm despre ortografie și scrierea cu majuscule atunci când
-este util. De exemplu, vezi [OpenTelemetry](#opentelemetry) și [OTel](#otel).
+De asemenea, oferim comentarii privind ortografia și scrierea cu majuscule
+atunci când este util. De exemplu, vezi [OpenTelemetry](#opentelemetry) și
+[OTel](#otel).
 
 ## Termeni {#terms}
 
@@ -232,9 +233,10 @@ Prescurtare pentru [OpenCensus](#opencensus).
 ### Backend de observabilitate {#observability-backend}
 
 Componenta unei platforme de observabilitate care este responsabilă pentru
-primirea, procesarea, stocarea și interogarea datelor de telemetrie. Exemplele
-includ instrumente open source cum ar fi [Jaeger] și [Prometheus], ​​precum și
-oferte comerciale. OpenTelemetry nu este un backend de observabilitate.
+primirea, procesarea, stocarea și interogarea datelor de telemetrie. Se pot
+enumera, de exemplu, instrumente open source cum ar fi [Jaeger] și [Prometheus],
+​​precum și oferte comerciale. OpenTelemetry nu este un backend de
+observabilitate.
 
 ### Frontend de observabilitate {#observability-frontend}
 
@@ -327,7 +329,7 @@ Vezi [Urmărire distribuită](#distributed-tracing).
 
 ### Resursă {#resource}
 
-Capturează informații despre entitatea care produce telemetrie ca
+Capturează informații despre entitatea care produce telemetrie sub forma unor
 [Atribute](#attribute). De exemplu, un proces care produce telemetrie și care
 rulează într-un container pe Kubernetes are un nume de proces, un nume de pod,
 un namespace și, eventual, un nume de implementare. Toate aceste atribute pot fi
