@@ -33,12 +33,15 @@ helped develop a dedicated unroll processor in our distro of the OpenTelemetry
 Collector, primarily because our customer base was running into these issues.
 
 The unroll processor expands bundled records in a clean, deterministic way.
-After running it for months in production,
-I wanted to help by [upstreaming](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/42491) the unroll processor so the OpenTelemetry community could benefit from a shared solution.
+After running it for months in production, I wanted to help by
+[upstreaming](https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/42491)
+the unroll processor so the OpenTelemetry community could benefit from a shared
+solution.
 
 Let me explain what the unroll processor is, how it works, how it can help you,
-and how
-we helped contribute [upstream](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/42500) to the Contrib distribution.
+and how we helped contribute
+[upstream](https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/42500)
+to the Contrib distribution.
 
 ## Why unroll?
 
@@ -68,10 +71,10 @@ It's simple, predictable, and production-safe.
 
 We explored this deeply.
 
-On paper, solving this using a transform + OTTL combo seemed simpler. Once we got
-into it, we ran into a core limitation: OTTL can't safely add new records during
-iteration. Trying to generate new entries mid-loop leads to skipped records,
-unreliable statement execution, and brittle behavior.
+On paper, solving this using a transform + OTTL combo seemed simpler. Once we
+got into it, we ran into a core limitation: OTTL can't safely add new records
+during iteration. Trying to generate new entries mid-loop leads to skipped
+records, unreliable statement execution, and brittle behavior.
 
 Transform and filter processors are excellent for mutation and suppression. But
 expansion is a different responsibility. It requires its own semantics,
@@ -92,9 +95,9 @@ I've seen customers use it across:
 - Windows + endpoint logs
 - Bundled collector telemetry
 
-We observed very low issue volume even under real production load and specifically when the initial receiver or
-source of the log signals was fairly format agnostic. This gave us
-the confidence to propose the component upstream. 
+We observed very low issue volume even under real production load and
+specifically when the initial receiver or source of the log signals was fairly
+format agnostic. This gave us the confidence to propose the component upstream.
 
 ## How to configure the unroll processor
 
@@ -128,7 +131,8 @@ record, like this:
 {"@timestamp":"2025-09-19T02:20:17.920Z", "log.level": "INFO", "message":"initialized", "ecs.version": "1.2.0","service.name":"ES_ECS","event.dataset":"elasticsearch.server","process.thread.name":"main","log.logger":"org.elasticsearch.node.Node","elasticsearch.node.name":"es-test-3","elasticsearch.cluster.name":"elasticsearch"},{"type": "server", "timestamp": "2025-09-18T20:44:01,838-04:00", "level": "INFO", "component": "o.e.n.Node", "cluster.name": "elasticsearch", "node.name": "es-test", "message": "initialized" }
 ```
 
-Here's how you can preprocess using the `transform` processor followed by `unroll`:
+Here's how you can preprocess using the `transform` processor followed by
+`unroll`:
 
 ```yaml
 receivers: ...
@@ -171,6 +175,6 @@ lifecycle and correctness guarantees, which is why a dedicated processor is a
 good fit for today. Keeping the responsibilities separate lets OTTL focus on
 transforming existing log records while the unroll processor handles expansion
 
-The unroll processor is now available in
-the official [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/unrollprocessor).
+The unroll processor is now available in the official
+[OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/unrollprocessor).
 Please feel free to create issues and test it out for your logs pipelines.
