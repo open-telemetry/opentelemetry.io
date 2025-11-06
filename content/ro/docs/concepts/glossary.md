@@ -20,7 +20,7 @@ atunci când este util. De exemplu, vezi [OpenTelemetry](#opentelemetry) și
 ### Agregare {#aggregation}
 
 Procesul de combinare a mai multor măsurători în statistici exacte sau estimate
-despre măsurătorile care au avut loc într-un interval de timp, în timpul
+referitoare la măsurătorile care au avut loc într-un interval de timp, în timpul
 execuției programului. Utilizat de [Metrică](#metric)
 [Sursa de date](#data-source).
 
@@ -91,7 +91,7 @@ implementat ca agent sau gateway.
 
 > **Ortografie**: Când se face referire la [Colectorul
 > OpenTelemetry][OpenTelemetry Collector], scrie întotdeauna cu majusculă
-> Colector. Folosește doar „Colector” dacă folosești Colector ca adjectiv
+> Colector. Folosește doar „Colector” dacă folosești Colector ca substantiv
 > &mdash; de exemplu, „Configurația colectorului”.
 
 [OpenTelemetry Collector]: /docs/collector/
