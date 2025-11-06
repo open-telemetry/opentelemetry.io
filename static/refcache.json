@@ -21340,8 +21340,8 @@
     "LastSeen": "2025-10-29T09:50:42.483Z"
   },
   "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased": {
-    "StatusCode": 521,
-    "LastSeen": "2025-11-05T14:31:44.618477-05:00"
+    "StatusCode": 200,
+    "LastSeen": "2025-10-29T09:40:50.839416326Z"
   },
   "https://www.rust-lang.org/": {
     "StatusCode": 206,
