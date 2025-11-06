@@ -8279,6 +8279,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-03T14:14:31.968132319Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.139.0/pdata/ptrace/generated_resourcespans.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-06T11:41:43.624131-08:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/10469": {
     "StatusCode": 206,
     "LastSeen": "2025-11-02T09:43:53.637017758Z"
