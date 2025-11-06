@@ -5,6 +5,7 @@ aliases: [./about]
 cascade:
   vers: 0.138.0
 weight: 270
+sidebar_root_for: self
 ---
 
 ![OpenTelemetry Collector diagram with Jaeger, OTLP and Prometheus integration](img/otel-collector.svg)
