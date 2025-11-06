@@ -240,8 +240,8 @@
     "LastSeen": "2025-11-05T17:55:32.95Z"
   },
   "https://blog.olly.garden/how-to-name-your-metrics": {
-    "StatusCode": 429,
-    "LastSeen": "2025-11-06T12:58:34.529380306Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-11-06T13:00:20.032Z"
   },
   "https://blog.olly.garden/how-to-name-your-span-attributes": {
     "StatusCode": 200,
