@@ -3,7 +3,7 @@ title: Building a receiver
 weight: 20
 aliases: [/docs/collector/trace-receiver/]
 # prettier-ignore
-cSpell:ignore: backendsystem crand debugexporter mapstructure pcommon pdata protogen ptrace rcvr struct structs tailtracer telemetrygen uber
+cSpell:ignore: backendsystem crand debugexporter mapstructure pcommon pdata ptrace rcvr struct structs tailtracer telemetrygen uber
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
