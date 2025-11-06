@@ -147,8 +147,7 @@ instrumentation agents.
 
 ### Goals and Objectives
 
-At a high level, these are the three points we believe must be addressed in this
-area:
+At a high level, these are the three points in this area:
 
 1. All components across all repositories (including semantic conventions)
    should adhere to a consistent way of communicating stability, through a
