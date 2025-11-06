@@ -6335,6 +6335,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-03T14:17:40.405661854Z"
   },
+  "https://github.com/open-telemetry/community/blob/f7b99ef75580e4d88159e66730e1b8bc6719ce30%5E/elections/2025/voters-roll.csv": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-05T14:27:21.849187-05:00"
+  },
   "https://github.com/open-telemetry/community/blob/main/README.md#special-interest-groups": {
     "StatusCode": 206,
     "LastSeen": "2025-11-03T14:19:39.086745209Z"
@@ -6386,10 +6390,6 @@
   "https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-election.md#voter-eligibility": {
     "StatusCode": 206,
     "LastSeen": "2025-11-03T14:19:41.06665972Z"
-  },
-  "https://github.com/open-telemetry/community/blob/f7b99ef75580e4d88159e66730e1b8bc6719ce30^/elections/2025/voters-roll.csv": {
-    "StatusCode": 200,
-    "LastSeen": "2025-11-05T19:23:37.189Z"
   },
   "https://github.com/open-telemetry/community/blob/main/gc-check-ins.md": {
     "StatusCode": 206,
@@ -21341,7 +21341,7 @@
   },
   "https://www.rubydoc.info/gems/opentelemetry-sdk/OpenTelemetry/SDK/Trace/Samplers/TraceIdRatioBased": {
     "StatusCode": 521,
-    "LastSeen": "2025-11-05T14:19:37.139038-05:00"
+    "LastSeen": "2025-11-05T14:31:44.618477-05:00"
   },
   "https://www.rust-lang.org/": {
     "StatusCode": 206,
