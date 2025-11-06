@@ -23,7 +23,8 @@ mechanisms we'll use to get there.
 **Why?**
 
 - User interviews, surveys, and discussions have demonstrated that the
-  complexity of OpenTelemetry creates impediments to production deployments.
+  complexity of OpenTelemetry and lack of stability creates impediments to
+  production deployments.
 
 **Our Goals**
 
@@ -56,7 +57,7 @@ and constructive proposals on instrumentation and semantic convention metadata
 and discovery. For integrators that are building on top of, or alongside,
 OpenTelemetry we would love to know how we can make it easier for you and your
 users to consume OpenTelemetry, as well as how we can make it easier for you to
-own your own instrumentation.
+publish and maintain your own instrumentation.
 
 Further sections of this blog have other specific asks that we'd appreciate your
 feedback on. Please remember that the specific ways we accomplish these goals
@@ -260,11 +261,12 @@ for creating a schedule of 'epoch' releases for OpenTelemetry. These epoch
 versions would essentially be a manifest pointing to a tested, documented, and
 stable set of components that meet project stability requirements.
 
-This is not a trivial undertaking, to be clear. It is also not as well-defined
-as the earlier proposals in this blog -- those efforts will communicate many of
-the requirements these epoch releases must follow, after all. To our maintainers
-and contributors, though, a _non-goal_ of this effort is to force you to change
-your versioning or release cadence.
+This is not a trivial undertaking, to be clear. Those efforts will communicate
+many of the requirements these epoch releases must follow, after all. To our
+maintainers and contributors, this effort is not intended to change how
+individual components, SDKs, or APIs are versioned or released. Rather, we want
+to provide tested, stable release combinations that work well together for end
+users who need that stability.
 
 For end-users, we would appreciate feedback on how you are currently managing
 upgrades, what you'd like to see in this area, and your current challenges in
