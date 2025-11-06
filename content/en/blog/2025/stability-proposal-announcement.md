@@ -34,11 +34,15 @@ distributions.
 - To make these releases easier to consume, we'll be introducing 'epoch
   releases' -- similar to the Kubernetes release cycle.
 
-**What we need your input on:**
+**We'd appreciate your feedback!**
 
-- Implementation timelines and stability requirements.
-- Proposed changes to instrumentation stability.
-- How we can make releases better.
+From maintainers and contributors, we'd appreciate your feedback on this proposal in general and on specifics, such as implementation timelines, the requirements for moving stability levels, and how to handle telemetry output migrations.
+
+From end-users, we'd appreciate your feedback on how you'd prefer to adopt releases of OpenTelemetry, and how you currently do so. As we evaluate different versioning and release strategies, it would be helpful to understand how you're currently rolling out changes -- especially in polyglot environments. We also would appreciate your feedback on documentation and performance benchmarking for components such as instrumentation libraries, the Collector, etc.
+
+From integrators, vendors, and the wider ecosystem, we would appreciate feedback and constructive proposals on instrumentation and semantic convention metadata and discovery. For integrators that are building on top of, or alongside, OpenTelemetry we would love to know how we can make it easier for you and your users to consume OpenTelemetry, as well as how we can make it easier for you to own your own instrumentation.
+
+Further sections of this blog have other specific asks that we'd appreciate your feedback on. Please remember that the specific ways we accomplish these goals are not set in stone -- that's why we want your feedback on the proposals! If you think there's a better way to accomplish these goals, please use the discussion to let us know.
 
 [Join the discussion!](https://github.com/open-telemetry/community/discussions/3098).
 
@@ -210,7 +214,7 @@ frameworks to
 [natively adopt OpenTelemetry](https://www.youtube.com/watch?v=l8xiNOCIdLY) --
 semantic conventions are a big part of that.
 
-## 3. Confident, Stable Releases.
+## 3. Confident and Stable Releases.
 
 ## Background
 
