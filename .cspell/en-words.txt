@@ -33,6 +33,7 @@ comms
 currencyservice
 daemonset
 datadog
+deprioritize
 discoverability
 dotnet
 Dyla
@@ -51,6 +52,7 @@ gitpod
 grafana
 Hausenblas
 hugo
+incentivized
 initializers
 instana
 istio
@@ -114,6 +116,7 @@ quarkus
 quoteservice
 react-native-app
 recommendationservice
+rollouts
 redis
 Rexed
 runbook
