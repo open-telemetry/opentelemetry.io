@@ -27,15 +27,6 @@ LLM_MODEL=gpt-4o-mini
 OPENAI_API_KEY=<replace with API key>
 ```
 
-## Feature Flags
-
-The mock LLM service supports two new feature flags:
-
-- `llmInaccurateResponse`: when this feature flag is enabled the LLM service
-  returns an inaccurate product summary for product ID `L9ECAV7KIM`
-- `llmRateLimitError`: when this feature flag is enabled, the LLM service
-  intermittently returns a RateLimitError with HTTP status code 429
-
 ## Auto-instrumentation
 
 This Python based service, makes use of the OpenTelemetry auto-instrumentor for
