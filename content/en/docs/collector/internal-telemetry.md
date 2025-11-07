@@ -32,6 +32,8 @@ By default, the Collector exposes its own telemetry in two ways:
 
 ### Configure internal metrics
 
+#### OTLP exporter for internal metrics
+
 You can configure how internal metrics are generated and exposed by the
 Collector. By default, the Collector generates basic metrics about itself and
 exposes them using the OpenTelemetry Go
@@ -52,6 +54,24 @@ service:
                 protocol: http/protobuf
                 endpoint: https://backend:4318
 ```
+
+If you'd like to add additional resource attributes to the Collector's internal
+telemetry signals (traces, metrics, and logs) you can set them under
+`service::telemetry::resource`:
+
+```yaml
+service:
+  telemetry:
+    resource:
+      attribute_key: 'attribute_value'
+```
+
+`service.name`, `service.version`, and `service.instance.id` (randomly
+generated) resource attributes will be automatically attached to the Collector's
+internal telemetry signals. These can be disabled by setting the the attribute
+value to `null` (ex. `service.name: null`).
+
+#### Prometheus endpoint for internal metrics
 
 Alternatively, you can expose the Prometheus endpoint to one specific or all
 network interfaces when needed. For containerized environments, you might want
@@ -90,6 +110,8 @@ resource:
   label_key: label_value
 ```
 
+#### Service address
+
 {{% alert title="Internal telemetry configuration changes" %}}
 
 As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
@@ -106,6 +128,8 @@ service:
   https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0
 
 {{% /alert %}}
+
+#### Metric verbosity
 
 You can adjust the verbosity of the Collector metrics output by setting the
 `level` field to one of the following values:
@@ -128,6 +152,8 @@ service:
     metrics:
       level: detailed
 ```
+
+#### Metric views
 
 You can further configure how metrics from the Collector are emitted by using
 [`views`](/docs/specs/otel/metrics/sdk/#view). For example, the following
@@ -267,7 +293,7 @@ A more detailed list is available in the following sections.
 This section explains special naming conventions applied to some internal
 metrics.
 
-#### `otelcol_` prefix
+#### `otelcol_` prefix {#otelcol-prefix}
 
 As of Collector v0.106.1, internal metric names are handled differently based on
 their source:
@@ -281,7 +307,7 @@ Prometheus exporter, regardless of their origin, are prefixed with `otelcol_`.
 This includes metrics from both Collector components and instrumentation
 libraries.
 
-#### `_total` suffix
+#### `_total` suffix {#total-suffix}
 
 By default and unique to Prometheus, the Prometheus exporter adds a `_total`
 suffix to summation metrics to follow Prometheus naming conventions, such as
@@ -299,7 +325,7 @@ Internal metrics exported through OTLP do not have this behavior. The
 [internal metrics](#lists-of-internal-metrics) on this page are listed in OTLP
 format, such as `otelcol_exporter_send_failed_spans`.
 
-#### Dots (`.`) v. underscores (`_`)
+#### Dots (`.`) v. underscores (`_`) {#dots-v-underscores}
 
 `http*` and `rpc*` metrics come from instrumentation libraries. Their original
 names used dots (`.`). Prior to Collector v0.120.0, internal metrics exposed

@@ -92,7 +92,7 @@ spec:
           configMap:
             name: obi-config
         - name: obi
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           securityContext:
             privileged: true
           volumeMounts:
@@ -106,7 +106,7 @@ spec:
 Some observations about this configuration:
 
 - The container image uses the latest under-development
-  `otel/ebpf-instrument:latest` image.
+  `otel/ebpf-instrument:main` image.
 - OBI needs to run as a DaemonSet, as it is requires only one OBI instance per
   node
 - To listen to network packets on the host, OBI requires the `hostNetwork: true`

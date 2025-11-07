@@ -1,8 +1,7 @@
 ---
 title: Recursos
 weight: 70
-default_lang_commit: 86d2fbde246b9e56665146db78d4fc1d34d00ddf
-drifted_from_default: true
+default_lang_commit: b04507d7be1e916f6705126c56d66dbe9536503e
 ---
 
 ## Introdução {#introduction}
@@ -54,8 +53,8 @@ fornecê-los em código ou definindo um valor para a variável de ambiente
 [convenções semânticas para seus atributos do recurso](/docs/specs/semconv/resource).
 Por exemplo, você pode fornecer o nome do seu
 [ambiente de execução](/docs/specs/semconv/resource/deployment-environment/)
-usando `deployment.environment`:
+usando `deployment.environment.name`:
 
 ```shell
-env OTEL_RESOURCE_ATTRIBUTES=deployment.environment=production yourApp
+env OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=production yourApp
 ```

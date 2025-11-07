@@ -105,9 +105,9 @@ info here.
 
 ```
 .
-├── README.md              # Project overview and contribution guidelines
-├── package.json           # Node.js dependencies and npm scripts
-├── hugo.yaml             # Hugo configuration with mounts and language settings
+├── README.md             # Project overview and contribution guidelines
+├── package.json          # Node.js dependencies and npm scripts
+├── config/**/*.yaml      # Hugo configuration with mounts and language settings
 ├── content/              # Main content (English and translations)
 ├── content-modules/      # Git submodules for specifications and community docs
 ├── layouts/              # Hugo templates and partial templates
@@ -168,13 +168,14 @@ npm run fix:markdown     # Auto-fix markdown issues
 - Uses Hugo v0.148.2 with extended features
 - Theme: Docsy (Google's documentation theme)
 - Multilingual support enabled for 8+ languages
-- Content mounting from submodules defined in `hugo.yaml`
+- Content mounting from submodules defined in
+  `config/_default/module-template.yaml`
 - Generated files placed in `public/` directory
 
 ### Frequently Accessed Files
 
 - `package.json` - Dependencies and scripts
-- `hugo.yaml` - Site configuration and content mounts
+- `config/_default/*.yaml` - Site configuration and content mounts
 - `content/en/docs/contributing/development.md` - Development setup guide
 - `.warnings-skip-list.txt` - Known acceptable build warnings
 - `.cspell.yml` - Spell checking configuration

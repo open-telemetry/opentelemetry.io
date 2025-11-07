@@ -17,7 +17,7 @@ on:
     inputs:
       number_of_entries_to_refresh:
         description: Number of (oldest) refcache entries to refresh.
-        default: &default_refresh_count 512
+        default: &default_refresh_count 800
         type: number
       prune_more_in_same_PR:
         description: Prune more entries from existing PR branch (if any).

@@ -3,6 +3,7 @@ title: 网关
 description: 为什么以及如何将信号发送到单个 OTLP 端点，并从 OTLP 端点发送到后端
 weight: 3
 default_lang_commit: 219d54eb41a768f8fa6058616177e58032d089b5
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---

@@ -32,21 +32,18 @@ receivers:
         endpoint: '0.0.0.0:4317'
       http:
         endpoint: '0.0.0.0:4318'
-processors:
-  batch:
-    send_batch_size: 1024
-    timeout: 5s
 exporters:
   debug:
   otlp/jaeger:
     endpoint: jaeger-all-in-one:4317
     tls:
       insecure: true
+    sending_queue:
+      batch:
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [debug, otlp/jaeger]
 ```
 
