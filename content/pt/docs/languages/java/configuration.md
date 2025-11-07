@@ -37,8 +37,8 @@ recompilar a aplicação e oferece interoperabilidade entre linguagens.
 [inicializador _Spring_](/docs/zero-code/java/spring-boot-starter/) configuram
 automaticamente o SDK utilizando o módulo de
 [autoconfiguração sem código](#zero-code-sdk-autoconfigure), e instalam
-instrumentação com esse módulo. Todo o conteúdo de autoconfiguração se aplica aos.
-usuários do agente Java e do inicializador do Spring. {{% /alert %}}
+instrumentação com esse módulo. Todo o conteúdo de autoconfiguração se aplica
+aos. usuários do agente Java e do inicializador do Spring. {{% /alert %}}
 
 ## Configuração programática {#programmatic-configuration}
 
@@ -107,8 +107,8 @@ _Spring_. {{% /alert %}}
 para encerrar o SDK quando apropriado. Como o OpenTelemetry Java
 [utiliza `java.util.logging` para logs internos](../sdk/#internal-logging),
 alguns logs podem ser suprimidos durante a execução dos _shutdown hooks_. Isso é
-um _bug_ do próprio JDK, e não algo sob controle do OpenTelemetry Java. Caso você
-precise de logs durante a execução dos _shutdown hooks_, considere utilizar
+um _bug_ do próprio JDK, e não algo sob controle do OpenTelemetry Java. Caso
+você precise de logs durante a execução dos _shutdown hooks_, considere utilizar
 `System.out` ao invés de um _framework_ de _logging_ que pode se encerrar antes
 e, assim, suprimir suas mensagens de log. Para mais detalhes, consulte este
 [bug do JDK](https://bugs.openjdk.java.net/browse/JDK-8161253). {{% /alert %}}
