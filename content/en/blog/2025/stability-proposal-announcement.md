@@ -13,19 +13,25 @@ cSpell:ignore: deprioritize incentivized rollouts
 
 ## Summary
 
-The Governance Committee, in response to feedback we've received from adopters
-and end-users, is seeking feedback around a shift in project priorities. Our
-goals should focus on stability of releases and distributions, with an eye
-towards the packaging and 'product' of OpenTelemetry. To accomplish this, we are
-writing this blog in order to describe the situation and lay out objectives and
-goals that the project will pursue, and to begin a public discussion about the
-mechanisms we'll use to get there.
+OpenTelemetry is, by any metric, one of the largest and most exciting projects
+in the cloud native space. Over the past five years, this community has come
+together to build one of the most essential observability projects in history.
+We're not resting on our laurels, though. The project consistently seeks out,
+and listens, to feedback from a wide array of stakeholders. What we're hearing
+from you is that in order to move to the next level, we need to adjust our
+priorities and focus on stability, reliability, and interpretability of project
+releases and artifacts.
 
-**Why?**
+This blog post lays out the objectives and goals that the Governance Committee
+believes are most important as we take this step into the future with the goal
+of having these discussions in public.
 
-- User interviews, surveys, and discussions have demonstrated that the
-  complexity of OpenTelemetry and lack of stability creates impediments to
-  production deployments.
+### Why are we doing this?
+
+Over the past year, we've run a variety of user interviews, surveys, and had
+open discussions across a range of venues. These discussions have demonstrated
+that the complexity and lack of stability in OpenTelemetry creates impediments
+to production deployments.
 
 ### Our Goals
 
@@ -89,9 +95,10 @@ There's a lack of clear milestones and guidance about what's 'most important' at
 any given time. Stability efforts involve a lot of churn and there's often
 conflicting guidance about where you should focus your time.
 
-With this in mind, the OpenTelemetry project would like to announce some
-proposed changes that we’d like to institute, with the goal of normalizing our
-language around component stability and component offerings.
+Addressing these concerns should be a high priority for the project, both for
+the health of our maintainers and contributors, but also allowing us to continue
+to grow and scale as we mature, especially as we become more deeply integrated
+into the cloud native ecosystem.
 
 The Governance Committee believes that these changes need community involvement
 and discussion to be a success, so we’re taking this opportunity to announce our
