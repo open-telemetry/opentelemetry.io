@@ -32,9 +32,7 @@ theoretical knowledge and practical application, ensuring a well-rounded
 assessment of candidates' abilities. As OpenTelemetry becomes an increasingly
 important part of cloud native and distributed systems, the OTCA certification
 helps professionals demonstrate their readiness to implement observability
-solutions in a variety of organizational contexts. By emphasizing foundational
-skills, the certification prepares candidates to effectively implement and
-leverage OpenTelemetry in diverse technology environments.
+solutions in a variety of organizational contexts.
 
 As of October 2025, the current scope of the OTCA exam covers the following
 areas:
