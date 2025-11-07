@@ -26,7 +26,7 @@ mechanisms we'll use to get there.
   complexity of OpenTelemetry and lack of stability creates impediments to
   production deployments.
 
-**Our Goals**
+### Our Goals
 
 - Ensure that all OpenTelemetry distributions are 'stable by default' and
   provide standardized mechanisms for users to opt-in to experimental or
@@ -172,7 +172,7 @@ feedback on these objectives in the
 In order to achieve our stability goals, we'll need to address semantic
 convention stability and processes as well.
 
-### Background
+### Semantic Convention Challenges
 
 Semantic conventions evolve slowly and deliberately because they must work
 across diverse telemetry systems. While OpenTelemetry is designed for
@@ -191,7 +191,7 @@ requires a long commitment. Finally, we're internally inconsistent in
 instrumentation across the project; Some libraries are mapped to conventions,
 others exist independently of it.
 
-### Goals and Objectives
+### Instrumentation and Convention Goals
 
 Our goals here are designed to achieve three outcomes.
 
@@ -237,7 +237,7 @@ semantic conventions are a big part of that.
 
 ## 3. Confident and Stable Releases.
 
-## Background
+### The Challenge
 
 OpenTelemetry isn't just a single binary deployed into a Kubernetes cluster.
 Subtle differences in everything from configuration to telemetry output between
@@ -248,7 +248,7 @@ Collector. Enterprise deployments and upgrades are slow, deliberate things --
 teams simply do not have the bandwidth to validate and roll out changes at the
 cadence we ship.
 
-## Goals and Objectives
+### Release Goals and Strategy
 
 Ultimately, our goal here is to make it easier for large organizations to deploy
 OpenTelemetry. Please keep in mind that in many organizations, 'deployment' and
