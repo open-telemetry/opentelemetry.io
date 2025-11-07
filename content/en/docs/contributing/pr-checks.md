@@ -82,15 +82,15 @@ This check will verify that all words in your cSpell ignore list are normalized.
 If this check fails, run `npm run fix:dict` locally and push the changes in a
 new commit.
 
-### `FILENAME check` {.notranslate lang=en}
+### `FILE FORMAT` {.notranslate lang=en}
 
-This check verifies that all
-[files are formatted by prettier](../style-guide/#file-format).
+This check verifies that all files conform to
+[Prettier format rules](../style-guide/#file-format).
 
 If this check fails, run `npm run fix:format` locally and push the changes in a
 new commit.
 
-### `FILE FORMAT` {.notranslate lang=en}
+### `FILENAME check` {.notranslate lang=en}
 
 This check verifies that all
 [file names are in kebab-case](../style-guide/#file-names).

@@ -9,6 +9,7 @@ redirects:
   - { from: /docs/go/*, to: ':splat' }
 weight: 16
 default_lang_commit: 33a23bc0805eb0940d214e20e7f2d7da056cbebb
+drifted_from_default: true
 ---
 
 {{% docs/languages/index-intro go /%}}

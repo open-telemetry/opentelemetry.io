@@ -5,6 +5,7 @@ description: >-
   OpenTelemetryは、さまざまなクラウドベンダーが提供するFaaSを監視するさまざまな方法をサポートしています。
 redirects: [{ from: /docs/faas/*, to: ':splat' }] # cSpell:disable-line
 default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309 # patched
+drifted_from_default: true
 ---
 
 Functions as a Service（FaaS）は、[クラウドネイティブアプリ][cloud native apps]にとって重要なサーバーレスコンピュートプラットフォームです。

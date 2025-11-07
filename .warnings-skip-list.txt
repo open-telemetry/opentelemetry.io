@@ -1,29 +1,2 @@
 _filename-error
 The following package was not found and will be installed
-# Temporary until the spec is updated to v1.147+:
-specification/profiles/mappings.md: cannot resolve spec link reference '/docs/specs/semconv/attributes-registry/process/#process-attributes'
-# Temporary until the following is resolved:
-# https://github.com/open-telemetry/semantic-conventions/issues/2690
-semconv/docs/gen-ai/aws-bedrock.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-input-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-input-messages.json)
-semconv/docs/gen-ai/aws-bedrock.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-output-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-output-messages.json)
-semconv/docs/gen-ai/aws-bedrock.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json' (/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json)
-semconv/docs/gen-ai/gen-ai-events.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-input-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-input-messages.json)
-semconv/docs/gen-ai/azure-ai-inference.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-input-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-input-messages.json)
-semconv/docs/gen-ai/gen-ai-events.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-output-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-output-messages.json)
-semconv/docs/gen-ai/azure-ai-inference.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-output-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-output-messages.json)
-semconv/docs/gen-ai/gen-ai-agent-spans.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-input-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-input-messages.json)
-semconv/docs/gen-ai/azure-ai-inference.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json' (/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json)
-semconv/docs/gen-ai/gen-ai-agent-spans.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-output-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-output-messages.json)
-semconv/docs/gen-ai/gen-ai-events.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json' (/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json)
-semconv/docs/gen-ai/gen-ai-agent-spans.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json' (/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json)
-semconv/docs/gen-ai/gen-ai-spans.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-input-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-input-messages.json)
-semconv/docs/gen-ai/gen-ai-spans.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-output-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-output-messages.json)
-semconv/docs/gen-ai/gen-ai-spans.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json' (/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json)
-semconv/docs/gen-ai/gen-ai-spans.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/non-normative/models.ipynb' (/docs/specs/semconv/gen-ai/non-normative/models.ipynb)
-semconv/docs/gen-ai/openai.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-input-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-input-messages.json)
-semconv/docs/gen-ai/openai.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-output-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-output-messages.json)
-semconv/docs/gen-ai/openai.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json' (/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json)
-semconv/docs/registry/attributes/gen-ai.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-input-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-input-messages.json)
-semconv/docs/registry/attributes/gen-ai.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-output-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-output-messages.json)
-semconv/docs/registry/attributes/gen-ai.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json' (/docs/specs/semconv/gen-ai/gen-ai-system-instructions.json)
-semconv/docs/gen-ai/non-normative/examples-llm-calls.md: cannot resolve spec link reference '/docs/specs/semconv/gen-ai/gen-ai-input-messages.json' (/docs/specs/semconv/gen-ai/gen-ai-input-messages.json)
