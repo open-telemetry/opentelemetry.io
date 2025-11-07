@@ -1,5 +1,5 @@
 ---
-title: Evolving OpenTelemetry’s Stabilization and Release Practices
+title: Evolving OpenTelemetry's Stabilization and Release Practices
 linkTitle: Stability Proposal Announcement # Mandatory, make sure that your short title.
 date: 2025-10-23 # Put the current date, we will keep the date updated until your PR is merged
 author:
@@ -8,6 +8,7 @@ author:
 # canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
 issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
 sig: Governance Committee # TODO: add the name of the SIG that sponsors this blog post
+cSpell:ignore: deprioritize incentivized rollouts
 ---
 
 ## Summary
