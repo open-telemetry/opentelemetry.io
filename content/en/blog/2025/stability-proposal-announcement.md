@@ -19,19 +19,17 @@ together to build one of the most essential observability projects in history.
 We're not resting on our laurels, though. The project consistently seeks out,
 and listens, to feedback from a wide array of stakeholders. What we're hearing
 from you is that in order to move to the next level, we need to adjust our
-priorities and focus on stability, reliability, and interpretability of project
-releases and artifacts.
-
-This blog post lays out the objectives and goals that the Governance Committee
-believes are most important as we take this step into the future with the goal
-of having these discussions in public.
-
-### Why are we doing this?
+priorities and focus on stability, reliability, and organization of project
+releases and artifacts like documentation and examples.
 
 Over the past year, we've run a variety of user interviews, surveys, and had
 open discussions across a range of venues. These discussions have demonstrated
 that the complexity and lack of stability in OpenTelemetry creates impediments
 to production deployments.
+
+This blog post lays out the objectives and goals that the Governance Committee
+believes are crucial to addressing this feedback. We're starting with this post
+in order to have these discussions in public.
 
 ### Our Goals
 
