@@ -6559,13 +6559,13 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-05T17:54:23.020851678Z"
   },
-  "https://github.com/open-telemetry/community/issues/3119": {
-    "StatusCode": 206,
-    "LastSeen": "2025-10-31T20:41:55.10972212Z"
-  },
   "https://github.com/open-telemetry/community/issues/3086": {
     "StatusCode": 206,
     "LastSeen": "2025-10-23T12:46:15.816184-04:00"
+  },
+  "https://github.com/open-telemetry/community/issues/3119": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-31T20:41:55.10972212Z"
   },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
