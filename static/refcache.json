@@ -6959,6 +6959,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-04T09:48:07.257798697Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/41791": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-14T16:02:31.752477-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/42491": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-14T16:02:33.807944-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+label%3Adata%3Aprofiles": {
     "StatusCode": 206,
     "LastSeen": "2025-10-31T09:45:25.131120838Z"
@@ -6970,6 +6978,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/39488": {
     "StatusCode": 206,
     "LastSeen": "2025-11-04T09:48:05.509357172Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/pull/42500": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-14T16:02:37.218366-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/releases/tag/v0.111.0": {
     "StatusCode": 206,
@@ -7517,7 +7529,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/unrollprocessor": {
     "StatusCode": 206,
-    "LastSeen": "2025-11-06T13:12:35.976863411Z"
+    "LastSeen": "2025-10-14T16:02:39.522676-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver": {
     "StatusCode": 206,
@@ -13638,6 +13650,10 @@
   "https://github.com/scheler": {
     "StatusCode": 206,
     "LastSeen": "2025-11-03T09:43:38.610579984Z"
+  },
+  "https://github.com/schmikei": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-14T16:02:28.806113-04:00"
   },
   "https://github.com/scorpionknifes": {
     "StatusCode": 206,
