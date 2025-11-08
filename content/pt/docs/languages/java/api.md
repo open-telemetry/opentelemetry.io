@@ -477,7 +477,7 @@ public class ProvidersAndScopes {
 
 [Attributes](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/common/Attributes.html)
 é um conjunto de pares chave-valor representando a
-[definição padrão de atributos](/docs/specs/otel/common/#standard-attribute).
+[definição padrão de atributos](/docs/specs/otel/common/#attribute).
 
 `Attributes` é um conceito recorrente na API do OpenTelemetry:
 
