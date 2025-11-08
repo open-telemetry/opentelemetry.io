@@ -6487,6 +6487,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-06T13:18:04.403726264Z"
   },
+  "https://github.com/open-telemetry/community/discussions/3098": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-27T12:41:04.136861-04:00"
+  },
   "https://github.com/open-telemetry/community/issues": {
     "StatusCode": 206,
     "LastSeen": "2025-11-06T13:18:07.573050123Z"
@@ -6554,6 +6558,10 @@
   "https://github.com/open-telemetry/community/issues/3022": {
     "StatusCode": 206,
     "LastSeen": "2025-11-05T17:54:23.020851678Z"
+  },
+  "https://github.com/open-telemetry/community/issues/3086": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-23T12:46:15.816184-04:00"
   },
   "https://github.com/open-telemetry/community/issues/3119": {
     "StatusCode": 206,
@@ -20143,6 +20151,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-11-06T13:12:47.713467099Z"
   },
+  "https://www.cncf.io/wp-content/uploads/2025/04/CNCF-Annual-Report-2024_v2.pdf": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-23T12:46:22.058029-04:00"
+  },
+  "https://www.cncf.io/wp-content/uploads/2025/04/cncf_annual_survey24_031225a.pdf": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-23T12:46:24.016534-04:00"
+  },
   "https://www.cockroachlabs.com/": {
     "StatusCode": 200,
     "LastSeen": "2025-11-02T09:41:43.333917291Z"
@@ -20334,6 +20350,10 @@
   "https://www.google.com/": {
     "StatusCode": 200,
     "LastSeen": "2025-11-05T17:54:01.831754937Z"
+  },
+  "https://www.google.com/url?q=https://www.youtube.com/watch?v%3Dl8xiNOCIdLY&sa=D&source=docs&ust=1761158059548569&usg=AOvVaw3rCMkjmo1CMucSQtkHjDI3": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-23T12:46:17.523765-04:00"
   },
   "https://www.graalvm.org/latest/reference-manual/native-image/": {
     "StatusCode": 206,
@@ -21746,6 +21766,10 @@
   "https://www.youtube.com/watch?v=l4PeclHKl7I": {
     "StatusCode": 200,
     "LastSeen": "2025-11-07T09:46:03.359087525Z"
+  },
+  "https://www.youtube.com/watch?v=l8xiNOCIdLY": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-27T12:13:47.481412-04:00"
   },
   "https://www.youtube.com/watch?v=t550FzDi054": {
     "StatusCode": 200,
