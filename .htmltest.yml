@@ -57,7 +57,6 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://www.youtube.com/playlist\?list= # htmltest doesn't process query parameters
   - ^https://x.com
   - ^https://x.ai
-  - ^https://www.anthropic.com
   - ^https://www.deepseek.com
   - ^https://www.perplexity.ai
 
