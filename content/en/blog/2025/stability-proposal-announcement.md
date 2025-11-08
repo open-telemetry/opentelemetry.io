@@ -1,13 +1,9 @@
 ---
 title: Evolving OpenTelemetry's Stabilization and Release Practices
-linkTitle: Stability Proposal Announcement # Mandatory, make sure that your short title.
-date: 2025-10-23 # Put the current date, we will keep the date updated until your PR is merged
-author:
-  >- # If you have only one author, then add the single name on this line in quotes.
-  "OpenTelemetry Governance Committee"
-# canonical_url: http://somewhere.else/ # TODO: if this blog post has been posted somewhere else already, uncomment & provide the canonical URL here.
-issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
-sig: Governance Committee # TODO: add the name of the SIG that sponsors this blog post
+linkTitle: Stability Proposal Announcement
+date: 2025-11-07
+author: OpenTelemetry Governance Committee
+sig: Governance Committee
 cSpell:ignore: deprioritize incentivized rollouts
 ---
 
@@ -100,7 +96,7 @@ into the cloud native ecosystem.
 
 The Governance Committee believes that these changes need community involvement
 and discussion to be a success, so we’re taking this opportunity to announce our
-intention and open an
+intention and open a
 [GitHub discussion](https://github.com/open-telemetry/community/discussions/3098)
 in order to get feedback from users, maintainers, and contributors. We do not
 anticipate that these changes will be completed overnight, and want to assure
@@ -194,7 +190,7 @@ libraries are currently stuck on pre-release versions because they depend on
 experimental semantic conventions. Outside contributors are stuck between
 emitting unspecified telemetry or trying to engage in the process, which
 requires a long commitment. Finally, we're internally inconsistent in
-instrumentation across the project; Some libraries are mapped to conventions,
+instrumentation across the project; some libraries are mapped to conventions,
 others exist independently of it.
 
 ### Instrumentation and Convention Goals
@@ -241,13 +237,13 @@ frameworks to
 [natively adopt OpenTelemetry](https://www.youtube.com/watch?v=l8xiNOCIdLY) --
 semantic conventions are a big part of that.
 
-## 3. Confident and Stable Releases.
+## 3. Confident and Stable Releases
 
 ### The Challenge
 
 OpenTelemetry isn't just a single binary deployed into a Kubernetes cluster.
 Subtle differences in everything from configuration to telemetry output between
-different versions of instrumentation libraries, collector receivers, and SDKs
+different versions of instrumentation libraries, Collector receivers, and SDKs
 can cause a real headache for adopters. In addition, the rapid release cadence
 of many components causes real difficulty for end users, especially around the
 Collector. Enterprise deployments and upgrades are slow, deliberate things --
@@ -297,7 +293,7 @@ For contributors and maintainers, what does this mean? We'll fast-track
 proposals that align with these priorities. If there's feature work or
 instrumentation that doesn't align to this, that's fine -- we'd ask that you
 work on it outside the project and discover where our existing integration
-points and patterns don't work; That's good feedback, and will help us improve
+points and patterns don't work. That's good feedback, and will help us improve
 the specification for everyone.
 
 For maintainers, contributors, and integrators -- we would appreciate your
