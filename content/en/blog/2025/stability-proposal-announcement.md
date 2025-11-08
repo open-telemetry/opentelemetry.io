@@ -17,7 +17,7 @@ OpenTelemetry is, by any metric, one of the largest and most exciting projects
 in the cloud native space. Over the past five years, this community has come
 together to build one of the most essential observability projects in history.
 We're not resting on our laurels, though. The project consistently seeks out,
-and listens, to feedback from a wide array of stakeholders. What we're hearing
+and listens to, feedback from a wide array of stakeholders. What we're hearing
 from you is that in order to move to the next level, we need to adjust our
 priorities and focus on stability, reliability, and organization of project
 releases and artifacts like documentation and examples.
