@@ -1,4 +1,6 @@
 ---
+aliases: [/docs/collector/deployment/agent/]
+---
 title: Agent
 description:
   Why and how to send signals to collectors and from there to backends
