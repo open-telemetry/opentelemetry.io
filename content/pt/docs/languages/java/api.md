@@ -1,7 +1,7 @@
 ---
 title: Registrar Telemetria com a API
 weight: 11
-default_lang_commit: 7c6d317a1ed969bd03f0aa8297f068ca29c2b459
+default_lang_commit: 7c6d317a1ed969bd03f0aa8297f068ca29c2b459 # patched
 aliases:
   - /docs/languages/java/api-components/
 logBridgeWarning: >
@@ -477,7 +477,7 @@ public class ProvidersAndScopes {
 
 [Attributes](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/common/Attributes.html)
 é um conjunto de pares chave-valor representando a
-[definição padrão de atributos](/docs/specs/otel/common/#standard-attribute).
+[definição padrão de atributos](/docs/specs/otel/common/#attribute).
 
 `Attributes` é um conceito recorrente na API do OpenTelemetry:
 
