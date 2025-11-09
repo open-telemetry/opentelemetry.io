@@ -294,6 +294,12 @@
   contact:
   oss: false
   commercial: true
+- name: OllyGarden
+  nativeOTLP: true
+  url: https://ollygarden.com
+  contact:
+  oss: false
+  commercial: true
 - name: Otelic
   nativeOTLP: true
   url: https://otelic.com/en/open-telemetry-sample-instrumentation/nodejs-simple
