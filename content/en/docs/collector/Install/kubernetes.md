@@ -1,6 +1,6 @@
 ---
 title: Install the Collector with Kubernetes
-aliases: [/docs/collector/install/#kubernetes]
+aliases: [../installation/#kubernetes]
 ---
 
 ## Kubernetes

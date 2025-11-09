@@ -1,6 +1,6 @@
 ---
 title: Install the Collector
-aliases: [../install/]
+aliases: [../installation/]
 weight: 2
 ---
 

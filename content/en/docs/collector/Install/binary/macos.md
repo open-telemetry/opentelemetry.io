@@ -1,6 +1,6 @@
 ---
 title: Install the Collector on macOS
-aliases: [/docs/collector/installation/#macos]
+aliases: [../installation/#macos]
 ---
 
 ## macOS

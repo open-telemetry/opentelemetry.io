@@ -1,6 +1,6 @@
 ---
 title: Install the Collector on Windows
-aliases: [/docs/collector/installation/#windows]
+aliases: [../installation/#windows]
 ---
 
 ## Windows

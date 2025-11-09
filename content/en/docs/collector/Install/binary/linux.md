@@ -1,6 +1,6 @@
 ---
 title: Install the Collector on Linux
-aliases: [/docs/collector/install/#linux]
+aliases: [../installation/#linux]
 ---
 
 ## Linux
