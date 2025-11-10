@@ -183,5 +183,4 @@ But we need your help to build this future.
 
 ## References
 
-- **OpenTelemetry MCP server:**
-  https://github.com/pavolloffay/opentelemetry-mcp-server
+- **OpenTelemetry MCP server:** [GitHub repository](https://github.com/pavolloffay/opentelemetry-mcp-server)
