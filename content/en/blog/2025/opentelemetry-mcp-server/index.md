@@ -1,12 +1,12 @@
 ---
 title: Managing the OpenTelemetry Collector Just Got Easier
 author: >-
-[Pavol Loffay](https://github.com/pavolloffay) (Red Hat)
+  [Pavol Loffay](https://github.com/pavolloffay) (Red Hat)
 linkTitle: Collector MCP Server
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/8330
 sig: SIG Collector
 date: 2025-11-10
-cSpell:ignore: mcp pavolloffay otelcol
+cSpell: mdatagen mcp OTTL pavolloffay
 ---
 
 The OpenTelemetry Collector is powerful, but let's be honest: managing it in
