@@ -297,7 +297,7 @@
 - name: OllyGarden
   nativeOTLP: true
   url: https://ollygarden.com
-  contact:
+  contact: support@ollygarden.com
   oss: false
   commercial: true
 - name: Otelic
