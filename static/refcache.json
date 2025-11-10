@@ -8643,6 +8643,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-05T17:48:55.383720864Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/llm/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-10T09:19:25.162332097Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/load-generator/": {
     "StatusCode": 206,
     "LastSeen": "2025-11-06T13:12:51.373358117Z"
@@ -8662,6 +8666,10 @@
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/product-catalog/": {
     "StatusCode": 206,
     "LastSeen": "2025-11-06T09:41:37.699288458Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/product-reviews/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-10T09:19:33.269584317Z"
   },
   "https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quote/": {
     "StatusCode": 206,

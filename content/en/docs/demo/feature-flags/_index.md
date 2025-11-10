@@ -40,7 +40,7 @@ user interface:
 | `cartServiceFailure`                | Cart            | Generate an error whenever `EmptyCart` is called                                                          |
 | `emailMemoryLeak`                   | Email           | Simulate a memory leak in the `email` service.                                                            |
 | `llmInaccurateResponse`             | LLM             | The mock LLM service returns an inaccurate product review summary for product ID `L9ECAV7KIM`.            |
-| `llmRateLimitError`                 | LLM             | The mock LLM service intermittently returns a RateLimitError with HTTP status code 429.
+| `llmRateLimitError`                 | LLM             | The mock LLM service intermittently returns a RateLimitError with HTTP status code 429.                   |
 | `productCatalogFailure`             | Product Catalog | Generate an error for `GetProduct` requests with product ID: `OLJCESPC7Z`                                 |
 | `recommendationServiceCacheFailure` | Recommendation  | Create a memory leak due to an exponentially growing cache. 1.4x growth, 50% of requests trigger growth.  |
 | `paymentServiceFailure`             | Payment         | Generate an error when calling the `charge` method.                                                       |

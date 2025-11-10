@@ -98,7 +98,7 @@ This page lists the manual Span Attributes used throughout the demo:
 ## Product Reviews
 
 | Name                                | Type   | Description                    |
-|-------------------------------------|--------|--------------------------------|
+| ----------------------------------- | ------ | ------------------------------ |
 | `app.product.id`                    | string | Product ID                     |
 | `app.product_reviews.count`         | number | Number of product reviews      |
 | `app.product_reviews.average_score` | number | Average product review score   |
