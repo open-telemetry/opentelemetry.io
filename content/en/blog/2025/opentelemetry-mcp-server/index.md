@@ -6,7 +6,7 @@ linkTitle: Collector MCP Server
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/8330
 sig: SIG Collector
 date: 2025-11-10
-cSpell:ignore: mdatagen mcp OTTL pavolloffay
+cSpell:ignore: mcp mdatagen OTTL pavolloffay
 ---
 
 The OpenTelemetry Collector is powerful, but let's be honest: managing it in
@@ -183,4 +183,5 @@ But we need your help to build this future.
 
 ## References
 
-- **OpenTelemetry MCP server:** [GitHub repository](https://github.com/pavolloffay/opentelemetry-mcp-server)
+- **OpenTelemetry MCP server:**
+  [GitHub repository](https://github.com/pavolloffay/opentelemetry-mcp-server)
