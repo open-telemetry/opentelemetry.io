@@ -5,7 +5,7 @@ aliases:
   - scenarios
   - services/feature-flag
   - services/featureflagservice
-cSpell:ignore: OLJCESPC7Z
+cSpell:ignore: OLJCESPC7Z L9ECAV7KIM
 ---
 
 The demo provides several feature flags that you can use to simulate different

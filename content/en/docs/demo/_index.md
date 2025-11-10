@@ -50,6 +50,7 @@ found here:
 - [Load Generator](services/load-generator/)
 - [Payment Service](services/payment/)
 - [Product Catalog Service](services/product-catalog/)
+- [Product Reviews Service](services/product-reviews/)
 - [Quote Service](services/quote/)
 - [Recommendation Service](services/recommendation/)
 - [Shipping Service](services/shipping/)
