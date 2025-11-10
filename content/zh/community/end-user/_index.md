@@ -4,6 +4,7 @@ linkTitle: 最终用户
 description: 面向 OpenTelemetry 用户的厂商无关资源
 weight: 40
 default_lang_commit: b13d5dd3a9f288ab64d2af98c0b4ec1694499ef3 # patched
+drifted_from_default: true
 ---
 
 希望在一个厂商无关的环境中与其他 OpenTelemetry 最终用户建立联系，或是了解更多关于 OpenTelemetry 的内容？
