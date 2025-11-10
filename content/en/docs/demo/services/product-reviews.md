@@ -21,7 +21,7 @@ By default, this service uses a mock LLM that adheres to the OpenAI API format.
 This can be substituted for an actual OpenAI LLM by populating the following
 environment variables in the `.env.override` file:
 
-```
+```text
 LLM_BASE_URL=https://api.openai.com/v1
 LLM_MODEL=gpt-4o-mini
 OPENAI_API_KEY=<replace with API key>
