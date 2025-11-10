@@ -21,6 +21,7 @@ aliases: [log_service_features, logging-features, ../logging-features]
 | Load Generator  | Python     | ✅        |
 | Payment         | JavaScript | 🚧        |
 | Product Catalog | Go         | 🚧        |
+| Product Reviews | Python     | ✅        |
 | Quote           | PHP        | ✅        |
 | Recommendation  | Python     | ✅        |
 | Shipping        | Rust       | ✅        |
