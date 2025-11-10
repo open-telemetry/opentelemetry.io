@@ -5,7 +5,7 @@ author: >-
 linkTitle: Collector MCP Server
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/8330
 sig: SIG Collector
-date: 2025-03-06
+date: 2025-11-10
 cSpell:ignore: mcp pavolloffay otelcol
 ---
 
