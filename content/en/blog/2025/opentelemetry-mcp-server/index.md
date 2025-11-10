@@ -60,7 +60,7 @@ custom internal bot) to the MCP server. Here are a few things you could ask it.
 You need to upgrade from `0.138.0` to `0.139.0` and want to know what to watch
 out for.
 
-> **Your Prompt:** "Compare OpenTelemetry collector version 0.138.0 and 0.139.0.
+> **Your Prompt:** "Compare OpenTelemetry Collector version 0.138.0 and 0.139.0.
 > Show which fields were added, removed or deprecated."
 
 The agent, powered by MCP, fetches the changelogs and component lists for both
@@ -84,7 +84,7 @@ versions and gives you a clean summary:
 
 You want to know if any of your collectors are using outdated configurations.
 
-> **Your Prompt:** "Check if OpenTelemetry collector (otelcol) custom resources
+> **Your Prompt:** "Check if OpenTelemetry Collector (otelcol) custom resources
 > in my cluster are using any deprecated collector configuration. If yes,
 > suggest a migration."
 
@@ -95,10 +95,10 @@ deprecated field database.
 > **AI Assistant's Response:** "✅ **OpenTelemetry Collector Configuration
 > Analysis Complete**
 >
-> Good news! 🎉 Your OpenTelemetry collector configurations are **not** using
+> Good news! 🎉 Your OpenTelemetry Collector configurations are **not** using
 > any deprecated fields.
 >
-> I checked all your components (jaeger, otlp, batch, k8sattributes, etc.) for
+> I checked all your components (Jaeger, otlp, batch, k8sattributes, etc.) for
 > version 0.135.0. While the `prometheus` exporter _does_ have a deprecated
 > `add_metric_suffixes` field, your configuration isn't using it.
 >
@@ -108,7 +108,7 @@ deprecated field database.
 
 You need to set up log collection for your K8s cluster.
 
-> **Your Prompt:** "Show me an OpenTelemetry collector configuration to collect
+> **Your Prompt:** "Show me an OpenTelemetry Collector configuration to collect
 > logs from the Kubernetes cluster and then validate the config."
 
 The agent identifies the right components (like `filelog` and `k8s_events`
