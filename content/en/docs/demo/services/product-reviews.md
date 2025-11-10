@@ -2,7 +2,7 @@
 title: Product Reviews Service
 linkTitle: Product Reviews
 aliases: [productreviewsservice]
-cSpell:ignore: cpython instrumentor NOTSET
+cSpell:ignore: cpython instrumentor NOTSET productreviewsservice
 ---
 
 This service is responsible for returning product reviews and answering
