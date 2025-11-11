@@ -2,7 +2,7 @@
 title: Java Agent Declarative configuration
 linkTitle: Declarative configuration
 weight: 11
-cSpell:ignore: Customizer genai Dotel
+cSpell:ignore: Customizer Dotel genai
 ---
 
 Declarative configuration uses a YAML file instead of environment variables or
