@@ -29,11 +29,44 @@ Declarative configuration is supported in the **OpenTelemetry Java agent version
 ## Getting started
 
 1. Save the configuration file below as `otel-config.yaml`.
-2. Add the following to your JVM startup arguments:
+2. Add the following to your JVM startup arguments:<br>
+   `-Dotel.experimental.config.file=/path/to/otel-config.yaml`
 
-   ```shell
-   -Dotel.experimental.config.file=/path/to/otel-config.yaml
-   ```
+```yaml
+file_format: '1.0-rc.1'
+
+resource:
+  attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
+  detection/development:
+    detectors:
+      - service: # will add "service.instance.id" and "service.name" from OTEL_SERVICE_NAME
+
+propagator:
+  composite:
+    - tracecontext:
+    - baggage:
+
+tracer_provider:
+  processors:
+    - batch:
+        exporter:
+          otlp_http:
+            endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318/v1/traces}
+
+meter_provider:
+  readers:
+    - periodic:
+        exporter:
+          otlp_http:
+            endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}
+
+logger_provider:
+  processors:
+    - batch:
+        exporter:
+          otlp_http:
+            endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}
+```
 
 Reference the [SDK Declarative configuration][] documentation for a more general
 getting started guide for declarative configuration.
