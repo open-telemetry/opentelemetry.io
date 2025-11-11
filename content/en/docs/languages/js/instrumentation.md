@@ -1561,7 +1561,7 @@ module.exports = { rollTheDice };
 
 {{% /tab %}} {{< /tabpane >}}
 
-Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
+Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized,
 you can create
 [metric instruments](/docs/concepts/signals/metrics/#metric-instruments).
 
