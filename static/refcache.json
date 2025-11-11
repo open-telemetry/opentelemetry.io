@@ -6455,9 +6455,9 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-06T09:41:32.418938549Z"
   },
-  "https://github.com/open-telemetry/community/blob/main/projects/ci-cd.md": {
-    "StatusCode": 404,
-    "LastSeen": "2025-11-10T09:47:56.502209431Z"
+  "https://github.com/open-telemetry/community/blob/main/projects/completed-projects/ci-cd.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-10T20:31:32.569768-05:00"
   },
   "https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md": {
     "StatusCode": 206,
