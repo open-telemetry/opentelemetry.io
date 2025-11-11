@@ -6,7 +6,7 @@ aliases:
 weight: 30
 default_lang_commit: ac59a41d0f28cb9a672fb12c67eee9ff8f9d8175
 description: Instrumentação para OpenTelemetry JavaScript
-cSpell:ignore: dicelib Millis rolldice
+cSpell:ignore: dicelib instrumentacao Millis rolldice versao
 ---
 
 {{% include instrumentation-intro.md %}}
@@ -1034,7 +1034,7 @@ span.addEvent('some log', {
 
 ### Links de trecho {#span-links}
 
-[Trechos](/docs/concepts/signals/traces/#spans) podem ser criados com zedro ou
+[Trechos](/docs/concepts/signals/traces/#spans) podem ser criados com zero ou
 mais [Links](/docs/concepts/signals/traces/#span-links) para outros Trechos que
 estão casualmente relacionados. Um cenário comum é correlacionar um ou mais
 rastros com o trecho atual.
@@ -1304,7 +1304,7 @@ Em alguns casos, pode não ser possível — ou desejável — utilizar o
 O mesmo vale se você quiser utilizar o usar OpenTelemetry JavaScript no
 navegador.
 
-Nesses casosm, é possível inicializar as métricas com o pacote
+Nesses casos, é possível inicializar as métricas com o pacote
 `@opentelemetry/sdk-metrics`:
 
 ```shell
@@ -1803,7 +1803,7 @@ A seleção por `instrumentName` (do tipo _string_) oferece suporte a curingas
 (_wildcards_), permitindo, por exemplo, selecionar todos os instrumentos com `*`
 ou todos aqueles cujo nome começa com `http`, utilizando `http*`.
 
-#### Examplos {#examples}
+#### Exemplos {#examples}
 
 Filtrar atributos em todos os tipos de métrica:
 
