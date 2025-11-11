@@ -2,7 +2,7 @@
 title: Java Agent Declarative configuration
 linkTitle: Declarative configuration
 weight: 11
-cSpell:ignore: genai
+cSpell:ignore: Customizer genai Dotel
 ---
 
 Declarative configuration uses a YAML file instead of environment variables or
@@ -214,7 +214,8 @@ Java agent features that are not yet supported by declarative configuration:
   - can be worked around by adding a console span exporter in the configuration
     file
 - using `GlobalConfigProvider` to access declarative configuration values in
-  custom code (by casting `GlobalOpenTelemetry.get()` to `ExtendedOpenTelemetry`)
+  custom code (by casting `GlobalOpenTelemetry.get()` to
+  `ExtendedOpenTelemetry`)
 
 Contrib features that are not yet supported by declarative configuration:
 
@@ -234,15 +235,16 @@ not yet support declarative configuration:
 
 Extensions use a new declarative configuration API.
 
-- Extensions that use `AutoConfigurationCustomizerProvider` will need to migrate to
-the new `DeclarativeConfigurationCustomizerProvider` API.
-Check out how the old
-[AgentTracerProviderConfigurer](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/javaagent-tooling/src/main/java/io/opentelemetry/javaagent/tooling/AgentTracerProviderConfigurer.java)
-maps to the new
-[SpanLoggingCustomizerProvider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/javaagent-tooling/src/main/java/io/opentelemetry/javaagent/tooling/SpanLoggingCustomizerProvider.java).
-- Components, such as span exporters, need to use the `ComponentProvider` API now.
-Check out the [Baggage Processor](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/baggage-processor),
-which supports both the old and new APIs, as an example.
+- Extensions that use `AutoConfigurationCustomizerProvider` will need to migrate
+  to the new `DeclarativeConfigurationCustomizerProvider` API. Check out how the
+  old
+  [AgentTracerProviderConfigurer](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/javaagent-tooling/src/main/java/io/opentelemetry/javaagent/tooling/AgentTracerProviderConfigurer.java)
+  maps to the new
+  [SpanLoggingCustomizerProvider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/javaagent-tooling/src/main/java/io/opentelemetry/javaagent/tooling/SpanLoggingCustomizerProvider.java).
+- Components, such as span exporters, need to use the `ComponentProvider` API
+  now. Check out the
+  [Baggage Processor](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/baggage-processor),
+  which supports both the old and new APIs, as an example.
 
 [SDK Declarative configuration]:
   /docs/languages/sdk-configuration/declarative-configuration
