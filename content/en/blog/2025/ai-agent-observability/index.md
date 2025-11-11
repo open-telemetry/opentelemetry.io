@@ -250,7 +250,7 @@ collaboration, and we invite contributions from the broader AI community.
 
 We look forward to partnering with different AI agent framework communities to
 establish best practices and refine these standards together. Your insights and
-contributions will help shape the future of AI observability, fostering a more
+contributions will help shape the [future of AI observability](https://middleware.io/blog/how-ai-based-insights-can-change-the-observability/), fostering a more
 transparent and effective AI ecosystem.
 
 Don’t miss this opportunity to help shape the future of industry standards for
