@@ -466,7 +466,7 @@ const tracer = opentelemetry.trace.getTracer(
   'versao-do-escopo-de-instrumentacao',
 );
 
-// You can now use a 'tracer' to do tracing!
+// Agora é possível usar 'tracer' para fazer rastreamento!
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -480,7 +480,7 @@ const tracer = opentelemetry.trace.getTracer(
   'versao-do-escopo-de-instrumentacao',
 );
 
-// You can now use a 'tracer' to do tracing!
+// Agora é possível usar 'tracer' para fazer rastreamento!
 ```
 
 {{% /tab %}} {{< /tabpane >}}
