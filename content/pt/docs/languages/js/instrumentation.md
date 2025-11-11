@@ -186,7 +186,7 @@ Escutando requisições em http://localhost:8080
 
 ## Configuração de instrumentação manual {#manual-instrumentation-setup}
 
-### Dependencies {#dependencies}
+### Dependências {#dependencies}
 
 Instale os pacotes da API do OpenTelemetry:
 
@@ -289,7 +289,7 @@ Existem métodos alternativos para definir atributos de recurso. Para mais
 informações, consulte [Recursos](/docs/languages/js/resources/).
 
 {{% alert title="Note" %}} Os exemplos a seguir que utilizam
-`--import instrumentation.ts` (TypeScript) requerem Node.js v20 or later. Caso
+`--import instrumentation.ts` (TypeScript) requerem Node.js v20 ou posterior. Caso
 esteja utilizando Node.js v18, utilize o exemplo em JavaScript. {{% /alert %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
@@ -322,7 +322,7 @@ dependências. Para mais informações, veja
 {{% alert title="Nota" %}} Caso esteja instrumentando uma biblioteca, **ignore
 esta etapa**. {{% /alert %}}
 
-Para habilitar [rastros](/do cs/concepts/signals/traces/) em uma aplicação, será
+Para habilitar [rastros](/docs/concepts/signals/traces/) em uma aplicação, será
 necessário ter um
 [`TracerProvider`](/docs/concepts/signals/traces/#tracer-provider) inicializado,
 que permitirá criar um [`Tracer`](/docs/concepts/signals/traces/#tracer).
@@ -691,7 +691,7 @@ node --import ./instrumentation.mjs app.js
 
 {{% /tab %}} {{< /tabpane >}}
 
-Após algum tempo, os spans trechos poderão ser vistos impressos no console pelo
+Após algum tempo, os trechos poderão ser vistos impressos no console pelo
 `ConsoleSpanExporter`, similar a isto:
 
 ```js
@@ -1012,7 +1012,7 @@ Um [Evento de Trecho (_Span Event_)](/docs/concepts/signals/traces/#span-events)
 é uma mensagem legível por humanos em um
 [`Trecho`](/docs/concepts/signals/traces/#spans) que representa um evento
 discreto, sem duração, que pode ser rastreado por um único carimbo de data e
-hora (_timestamp_) timestamp. Você pode pensar nisso como uma forma primitiva de
+hora (_timestamp_). Você pode pensar nisso como uma forma primitiva de
 log.
 
 ```js
@@ -1021,7 +1021,7 @@ span.addEvent('Executando algo');
 const result = doWork();
 ```
 
-Também é possível criar Eventos de Span com
+Também é possível criar Eventos de Trecho com
 [Atributos](/docs/concepts/signals/traces/#attributes):
 
 ```js
@@ -1293,9 +1293,7 @@ incluir todo o código de inicialização do SDK no Node e no navegador.
 
 #### Node.js {#initialize-metrics-nodejs}
 
-If you followed the instructions to [initialize the SDK](#initialize-the-sdk)
-above, you have a `MeterProvider` setup for you already. You can continue with
-[Obtendo um Meter](#acquiring-a-meter).
+Caso tenha seguido as instruções para [inicializar o SDK](#initialize-the-sdk) acima, você já possui um `MeterProvider` configurado. É possível continuar com [Obtendo um Meter](#acquiring-a-meter).
 
 ##### Inicializando métricas com `sdk-metrics` {#initializing-metrics-with-sdk-metrics}
 
@@ -1727,7 +1725,7 @@ counter.addCallback((result) => {
   result.observe(events.length);
 });
 
-//... chamadas para e removeEvent
+//... chamadas para addEvent e removeEvent
 ```
 
 ### Utilizando Medidores Observáveis (Assíncronos) {#using-observable-async-gauges}
@@ -1775,7 +1773,7 @@ De modo geral, recomenda-se descrever cada instrumento criado.
 
 ### Adicionando Atributos {#adding-attributes}
 
-YoÉ possível adicionar atributos às métricas no momento em que são geradas:
+É possível adicionar atributos às métricas no momento em que são geradas:
 
 ```js
 const counter = myMeter.createCounter('my.counter');
