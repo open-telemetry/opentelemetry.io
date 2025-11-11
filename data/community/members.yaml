@@ -1687,6 +1687,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/1031555?v=4
   - name: axw
     teams:
+      - collector-approvers
       - collector-contrib-approvers
       - collector-contrib-triagers
       - collector-triagers
