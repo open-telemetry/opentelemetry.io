@@ -4,8 +4,9 @@
 <!doctype html>
 <html itemscope itemtype="http://schema.org/WebPage"
     {{- with .Site.Language.LanguageDirection }} dir="{{ . }}" {{- end -}}
-    {{ with .Site.Language.Lang }} lang="{{ $lang.Lang }}" {{- end }} {{/**/ -}}
-    class="no-js">
+    {{ with $lang }} lang="{{ . }}" {{- end }} {{/**/ -}}
+    class="no-js"
+    {{- if .Site.Params.ui.showLightDarkModeMenu }} data-theme-init{{ end }}>
   <head>
     {{ partial "head.html" . }}
   </head>
