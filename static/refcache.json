@@ -1835,6 +1835,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-11-11T09:46:14.588786468Z"
   },
+  "https://docs.google.com/presentation/d/1iyR2HhYaAl1DMFl0992atj76mu0wqY6M/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-11-12T09:14:01.997356-05:00"
+  },
   "https://docs.google.com/spreadsheets/d/1E23Dkz1B2us71BtlQq8oG4o_QFsTeLPeh-X2uVnlubg/edit?usp=sharing": {
     "StatusCode": 200,
     "LastSeen": "2025-11-07T09:45:41.858409941Z"
@@ -3294,6 +3298,10 @@
   "https://github.com/DebajitDas": {
     "StatusCode": 206,
     "LastSeen": "2025-11-12T09:43:18.592742641Z"
+  },
+  "https://github.com/DidiViking": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-12T16:45:03.029257257Z"
   },
   "https://github.com/DotSpy": {
     "StatusCode": 206,
