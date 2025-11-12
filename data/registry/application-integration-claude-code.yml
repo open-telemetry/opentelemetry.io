@@ -1,6 +1,6 @@
 title: Claude Code
 registryType: application integration
-language: javascript
+language: js
 tags:
   - ai
 license: proprietary
