@@ -8,4 +8,8 @@ description: Claude Code supports OpenTelemetry (OTel) metrics and events for mo
 authors:
   - name: Anthropic PBC
     url: https://github.com/anthropics
+urls:
+  website: https://code.claude.com/docs
+  docs: https://code.claude.com/docs/en/monitoring-usage
+createdAt: '2024-08-06'
 isNative: true
