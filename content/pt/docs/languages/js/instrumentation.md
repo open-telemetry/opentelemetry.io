@@ -4,7 +4,7 @@ aliases:
   - /docs/languages/js/api/tracing
   - manual
 weight: 30
-default_lang_commit: ac59a41d0f28cb9a672fb12c67eee9ff8f9d8175
+default_lang_commit: 9cdf79c9345a05fb82d0e67132c9f68dabddadba
 description: Instrumentação para OpenTelemetry JavaScript
 cSpell:ignore: dicelib instrumentacao Millis rolldice versao
 ---
