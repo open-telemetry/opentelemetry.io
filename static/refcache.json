@@ -20051,6 +20051,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-29T09:44:56.852053085Z"
   },
+  "https://uaparser.dev/#demo": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-12T10:37:25.583538393Z"
+  },
   "https://ucum.org/ucum": {
     "StatusCode": 200,
     "LastSeen": "2025-12-01T09:48:58.321041623Z"
