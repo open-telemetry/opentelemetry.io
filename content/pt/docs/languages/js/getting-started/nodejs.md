@@ -13,8 +13,8 @@ Você aprenderá como instrumentar [rastros][] e [métricas][] e exibi-los no
 console.
 
 {{% alert title="Nota" %}} A biblioteca para logs do OpenTelemetry para Node.js
-ainda está em desenvolvimento, portanto, um exemplo não será fornecido a
-seguir. Para informações sobre o status, consulte
+ainda está em desenvolvimento, portanto, um exemplo não será fornecido a seguir.
+Para informações sobre o status, consulte
 [Estado e Lançamentos](/docs/languages/js/#status-and-releases). {{% /alert %}}
 
 ## Pré-requisitos {#prerequisites}
