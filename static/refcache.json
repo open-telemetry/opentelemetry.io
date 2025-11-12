@@ -883,6 +883,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-11-10T09:42:14.446458517Z"
   },
+  "https://code.claude.com/docs": {
+    "StatusCode": 200,
+    "LastSeen": "2025-11-12T14:14:54.468160278Z"
+  },
+  "https://code.claude.com/docs/en/monitoring-usage": {
+    "StatusCode": 200,
+    "LastSeen": "2025-11-12T14:14:54.736755434Z"
+  },
   "https://code.jquery.com/jquery-3.7.1.min.js": {
     "StatusCode": 206,
     "LastSeen": "2025-11-06T13:12:22.709381644Z"
@@ -3891,6 +3899,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-11T09:40:41.843879613Z"
   },
+  "https://github.com/anthropics": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-12T14:14:54.919696811Z"
+  },
   "https://github.com/anunarapureddy": {
     "StatusCode": 206,
     "LastSeen": "2025-11-08T09:43:53.602466746Z"
@@ -4198,6 +4210,10 @@
   "https://github.com/carlosalberto": {
     "StatusCode": 206,
     "LastSeen": "2025-11-07T09:40:25.317646399Z"
+  },
+  "https://github.com/carsontham": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-12T03:54:18.553582978Z"
   },
   "https://github.com/cartermp": {
     "StatusCode": 206,
