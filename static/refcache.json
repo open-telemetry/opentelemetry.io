@@ -19879,6 +19879,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-11-16T09:45:25.747304377Z"
   },
+  "https://uaparser.dev/#demo": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-12T10:37:25.583538393Z"
+  },
   "https://ucum.org/ucum": {
     "StatusCode": 200,
     "LastSeen": "2025-11-20T09:44:03.961482276Z"
