@@ -1,7 +1,7 @@
 ---
 title: Announcing 2025 OpenTelemetry Community Awards Winners
 linkTitle: OpenTelemetry Community Awards Winners
-date: 2025-11-11
+date: 2025-11-12
 author: OpenTelemetry Governance Committee
 # prettier-ignore
 cSpell:ignore: brettmc ChrsMark jsuereth Markou Pająk pellared Suereth Todea Vasconcellos vitorvasc
@@ -9,7 +9,7 @@ cSpell:ignore: brettmc ChrsMark jsuereth Markou Pająk pellared Suereth Todea Va
 
 We are excited to announce the winners of the second **OpenTelemetry Community
 Awards**! These awards recognize individuals who have made a notable impact to
-OpenTelemetry project over the past year, whether it's through code,
+the OpenTelemetry project over the past year, whether it's through code,
 documentation, project management, outreach, adoption, or simply helping others
 answer technical questions on our [CNCF Slack](https://slack.cncf.io/). We
 received many nominations from the community, and we are delighted to share the
