@@ -18,11 +18,11 @@ winners with you.
 Let's congratulate our 2025 OpenTelemetry Community Awards winners:
 
 - [@vitorvasc](https://github.com/vitorvasc) (Vitor Vasconcellos)
-- [@DidiViking](https://github.com/vitorvasc) (Diana Todea)
-- [@ChrsMark](https://github.com/vitorvasc) (Christos Markou)
-- [@brettmc](https://github.com/vitorvasc) (Brett McBride)
+- [@DidiViking](https://github.com/DidiViking) (Diana Todea)
+- [@ChrsMark](https://github.com/ChrsMark) (Christos Markou)
+- [@brettmc](https://github.com/brettmc) (Brett McBride)
 - [@jsuereth](https://github.com/jsuereth) (Josh Suereth)
-- [@pellared](https://github.com/vitorvasc) (Robert Pająk)
+- [@pellared](https://github.com/pellared) (Robert Pająk)
 
 We have collected any attached comments (some of them summarized) from all
 received nominations. These demonstrate the great appreciation from the
