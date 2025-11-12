@@ -13,7 +13,7 @@ Você aprenderá como instrumentar [rastros][] e [métricas][] e exibi-los no
 console.
 
 {{% alert title="Nota" %}} A biblioteca para logs do OpenTelemetry para Node.js
-ainda está em desenvolvimento, portanto, este exemplo não será fornecido a
+ainda está em desenvolvimento, portanto, um exemplo não será fornecido a
 seguir. Para informações sobre o status, consulte
 [Estado e Lançamentos](/docs/languages/js/#status-and-releases). {{% /alert %}}
 
@@ -264,7 +264,7 @@ console pelo `ConsoleSpanExporter`.
       'host.arch': 'arm64',
       'host.id': '8FEBBC33-D6DA-57FC-8EF0-1A9C14B919F8',
       'process.pid': 12460,
-      // ... some resource attributes elided ...
+      // ... alguns atributos de recursos foram omitidos ...
       'process.runtime.version': '22.17.1',
       'process.runtime.name': 'nodejs',
       'process.runtime.description': 'Node.js',
@@ -306,7 +306,7 @@ console pelo `ConsoleSpanExporter`.
       'host.arch': 'arm64',
       'host.id': '8FEBBC33-D6DA-57FC-8EF0-1A9C14B919F8',
       'process.pid': 12460,
-      // ... some resource attributes elided ...
+      // ... alguns atributos de recursos foram omitidos ...
       'process.runtime.version': '22.17.1',
       'process.runtime.name': 'nodejs',
       'process.runtime.description': 'Node.js',
