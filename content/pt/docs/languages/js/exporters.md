@@ -3,6 +3,7 @@ title: Exporters
 weight: 50
 default_lang_commit: f49ec57e5a0ec766b07c7c8e8974c83531620af3
 description: Processe e exporte seus dados de telemetria
+cSpell:ignore: csps
 ---
 
 {{% docs/languages/exporters/intro %}}
@@ -161,7 +162,7 @@ incluído. Caso a rota do Collector seja
 connect-src collector.example.com:4318/v1/traces
 ```
 
-Caso sua CSP não incluia a rota OTLP, você verá uma mensagem de erro informando
+Caso sua CSP não inclua a rota OTLP, você verá uma mensagem de erro informando
 que a requisição para sua rota está violando a diretiva CSP.
 
 ### Configurar cabeçalhos CORS {#configure-cors-headers}
