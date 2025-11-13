@@ -2,8 +2,8 @@
 title: Traces
 weight: 1
 description: Le chemin des requêtes dans votre application.
-cSpell:ignore: Guten
 default_lang_commit: bc9473716003fd99487e16f95dd2c3a5b072bd2a
+cSpell:ignore: Guten
 ---
 
 Les **traces** nous donnent une vue d'ensemble de ce qui se passe quand une
@@ -266,8 +266,8 @@ Les attributs sont soumis aux règles suivantes, implémentées par les SDK de
 chaque langage:
 
 - Les clés doivent être une chaîne de caractères non nulles
-- Les valeurs doivent une chaîne de caractères non nulles, un booléen, une valeur à virgule
-  flottante, un entier ou un tableau de ces valeurs
+- Les valeurs doivent une chaîne de caractères non nulles, un booléen, une
+  valeur à virgule flottante, un entier ou un tableau de ces valeurs
 
 De plus, il existe les
 [Attributs sémantiques](/docs/specs/semconv/general/trace/), qui sont des
