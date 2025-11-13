@@ -351,6 +351,7 @@ const sdk = new opentelemetry.NodeSDK({
   traceExporter: new ZipkinExporter({}),
   instrumentations: [getNodeAutoInstrumentations()],
 });
+sdk.start();
 ```
 
 {{% /tab %}} {{< /tabpane >}}
