@@ -4,7 +4,7 @@ linkTitle: Bibliotecas
 weight: 40
 default_lang_commit: 115933c1b9c643c8b6cf0d413a32061cd3a1b65f
 description: Como instrumentar bibliotecas das quais uma aplicação depende
-cSpell:ignore: metapackages
+cSpell:ignore: metapackages metapacotes
 ---
 
 {{% docs/languages/libraries-intro "js" %}}
@@ -66,7 +66,7 @@ quais precisa.
 ### Registro {#registration}
 
 Após instalar as bibliotecas de instrumentação necessárias, registre-as no SDK
-do OpenTelemetry SDK para Node.js. Se você seguiu os
+do OpenTelemetry para Node.js. Se você seguiu os
 [Primeiros Passos](/docs/languages/js/getting-started/nodejs/), você já utiliza
 os metapacotes. Se você seguiu as instruções
 [para inicializar o SDK com instrumentação manual](/docs/languages/js/instrumentation/#initialize-tracing),
