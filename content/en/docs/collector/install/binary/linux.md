@@ -4,7 +4,6 @@ aliases: [../installation/binary/#linux]
 weight: 200
 ---
 
-
 ## Linux
 
 Every Collector release includes APK, DEB and RPM packaging for Linux
