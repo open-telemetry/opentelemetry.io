@@ -289,8 +289,9 @@ Existem métodos alternativos para definir atributos de recurso. Para mais
 informações, consulte [Recursos](/docs/languages/js/resources/).
 
 {{% alert title="Note" %}} Os exemplos a seguir que utilizam
-`--import instrumentation.ts` (TypeScript) requerem Node.js v20 ou posterior. Caso
-esteja utilizando Node.js v18, utilize o exemplo em JavaScript. {{% /alert %}}
+`--import instrumentation.ts` (TypeScript) requerem Node.js v20 ou posterior.
+Caso esteja utilizando Node.js v18, utilize o exemplo em JavaScript.
+{{% /alert %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -1012,8 +1013,7 @@ Um [Evento de Trecho (_Span Event_)](/docs/concepts/signals/traces/#span-events)
 é uma mensagem legível por humanos em um
 [`Trecho`](/docs/concepts/signals/traces/#spans) que representa um evento
 discreto, sem duração, que pode ser rastreado por um único carimbo de data e
-hora (_timestamp_). Você pode pensar nisso como uma forma primitiva de
-log.
+hora (_timestamp_). Você pode pensar nisso como uma forma primitiva de log.
 
 ```js
 span.addEvent('Executando algo');
@@ -1293,7 +1293,9 @@ incluir todo o código de inicialização do SDK no Node e no navegador.
 
 #### Node.js {#initialize-metrics-nodejs}
 
-Caso tenha seguido as instruções para [inicializar o SDK](#initialize-the-sdk) acima, você já possui um `MeterProvider` configurado. É possível continuar com [Obtendo um Meter](#acquiring-a-meter).
+Caso tenha seguido as instruções para [inicializar o SDK](#initialize-the-sdk)
+acima, você já possui um `MeterProvider` configurado. É possível continuar com
+[Obtendo um Meter](#acquiring-a-meter).
 
 ##### Inicializando métricas com `sdk-metrics` {#initializing-metrics-with-sdk-metrics}
 
