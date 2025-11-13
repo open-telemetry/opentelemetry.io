@@ -5,7 +5,8 @@ tags:
   - ai
 license: proprietary
 description:
-  Gemini CLI brings the capabilities of Gemini models to your terminal in an interactive Read-Eval-Print Loop (REPL) environment.
+  Gemini CLI brings the capabilities of Gemini models to your terminal in an
+  interactive Read-Eval-Print Loop (REPL) environment.
 authors:
   - name: Google Gemini
     url: https://github.com/google-gemini/gemini-cli
