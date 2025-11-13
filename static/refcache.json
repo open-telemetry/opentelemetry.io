@@ -3011,6 +3011,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-06T13:16:06.223791502Z"
   },
+  "https://geminicli.com/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-13T08:47:04.217869805Z"
+  },
+  "https://geminicli.com/docs/cli/telemetry/#observability-with-opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-13T08:47:04.540158119Z"
+  },
   "https://geode.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-11-07T09:40:50.445284184Z"
@@ -5066,6 +5074,10 @@
   "https://github.com/golang/go/issues/68652#issuecomment-2274452424": {
     "StatusCode": 206,
     "LastSeen": "2025-11-09T09:41:20.939914474Z"
+  },
+  "https://github.com/google-gemini/gemini-cli": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-13T08:47:04.610791469Z"
   },
   "https://github.com/google/cadvisor/blob/v0.53.0/docs/storage/prometheus.md#prometheus-container-metrics": {
     "StatusCode": 206,
