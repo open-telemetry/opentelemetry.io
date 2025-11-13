@@ -2,7 +2,7 @@
 title: Agradecimentos
 description: Agradecimentos às fontes de conteúdo deste site
 aliases: [/acknowledgements, /docs/acknowledgements]
-default_lang_commit: 3337aa6fbaccf5e8734a1ef2c6ca8b61496c3d93
+default_lang_commit: 3337aa6fbaccf5e8734a1ef2c6ca8b61496c3d93 # patched
 cSpell:ignore: Pigram
 ---
 
