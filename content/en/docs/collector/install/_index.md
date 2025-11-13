@@ -1,7 +1,6 @@
 ---
 title: Install the Collector
-aliases: [../installation/]
-weight: 2
+aliases: [/docs/collector/installation/.]
 ---
 
 You can deploy the OpenTelemetry Collector on a wide variety of operating

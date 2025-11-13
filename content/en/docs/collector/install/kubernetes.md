@@ -1,6 +1,7 @@
 ---
 title: Install the Collector with Kubernetes
 aliases: [../installation/#kubernetes]
+weight: 200
 ---
 
 ## Kubernetes
