@@ -24,13 +24,13 @@ Extensions allow you to:
 Extensions are designed to override or customize the instrumentation provided by
 the upstream agent without modifying the agent code. Consider an instrumented
 database client that creates a span per database call and extracts data from the
-database connection. Here are some sample use cases that can be solved using
-extensions:
+database connection and adds it to a span. Here are some sample use cases that
+can be solved using extensions:
 
 - _"I want to customize instrumentation without modifying the instrumentation"_:
 
-  The `InstrumenterCustomizerProvider` extension point allows you to customize
-  instrumentation behavior without modifying core instrumentation:
+  The (experimental) `InstrumenterCustomizerProvider` extension point allows you
+  to customize instrumentation behavior without modifying core instrumentation:
   - Add custom attributes and metrics to existing instrumentations
   - Customize context and correlation IDs
   - Transform span names to match your naming conventions
@@ -47,7 +47,7 @@ extensions:
   Create an extension that provides a custom `SpanProcessor` to modify span
   attributes before export.
 
-- _"I want to edit some attributes and their values depend on a specific db
+- _"I want to edit some attributes, and their values depend on a specific db
   connection instance"_:
 
   Create an extension with new instrumentation which injects its own advice into
@@ -72,7 +72,7 @@ extensions:
 
 There are two ways to use extensions with the Java agent:
 
-1. **Load at runtime** using the `-Dotel.javaagent.extensions` option (described
+1. **Load as a separate jar file** using the `-Dotel.javaagent.extensions` option (described
    in this section)
 2. **Embed in the agent** to create a single JAR file (described in the
    [next section](#embedding-extensions-in-the-agent))
@@ -80,8 +80,8 @@ There are two ways to use extensions with the Java agent:
 ### Basic Usage
 
 Extensions can be loaded at runtime using the `otel.javaagent.extensions` system
-property. This property accepts comma-separated paths to extension JAR files or
-directories containing extension JARs.
+property or `OTEL_JAVAAGENT_EXTENSIONS` environment variable. This configuration option
+accepts comma-separated paths to extension JAR files or directories containing extension JARs.
 
 #### Single Extension
 
@@ -124,16 +124,10 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
 
 When you load extensions at runtime, the agent:
 
-1. Creates an
-   [isolated class loader](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/contributing/javaagent-structure.md#extension-class-loader)
-   for each extension JAR to prevent conflicts between extensions
-2. Makes OpenTelemetry APIs available to your extension (without needing to
+1. Makes OpenTelemetry APIs available to your extension (without needing to
    package them in your extension JAR)
-3. Automatically applies shading to extension classes at runtime (extensions use
-   normal OpenTelemetry imports, and the agent handles compatibility
-   automatically)
-4. Discovers your extension's components using Java's ServiceLoader mechanism
-   (via `@AutoService` annotations in your code)
+2. Discovers your extension's components using Java's ServiceLoader mechanism
+   (via `@AutoService` annotations in your code, for example)
 
 ### Important Notes
 
@@ -163,64 +157,80 @@ directory inside the agent JAR file, so we can use a Gradle build task to:
 
 ### The `extendedAgent` Gradle Task
 
-Add the following to your extension project's `build.gradle` file:
+Add the following to your extension project's `build.gradle.kts` file:
 
-```groovy
+```kotlin
 plugins {
-  id "java"
+    id("java")
 
-  // Shadow plugin: Combines all your extension's code and dependencies into one JAR
-  // This is required because extensions must be packaged as a single JAR file
-  id "com.gradleup.shadow" version "9.2.2"
+    // Shadow plugin: Combines all your extension's code and dependencies into one JAR
+    // This is required because extensions must be packaged as a single JAR file
+    id("com.gradleup.shadow") version "9.2.2"
 }
 
-ext {
-  versions = [
-    opentelemetryJavaagent: "{{% param vers.instrumentation %}}"
-  ]
-}
+group = "com.example"
+version = "1.0"
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
 configurations {
-  // Create a temporary configuration to download the agent JAR
-  // Think of this as a "download slot" that's separate from your extension's dependencies
-  otel
+    // Create a temporary configuration to download the agent JAR
+    // Think of this as a "download slot" that's separate from your extension's dependencies
+    create("otel")
 }
 
 dependencies {
-  // Download the official OpenTelemetry Java agent into the 'otel' configuration
-  otel("io.opentelemetry.javaagent:opentelemetry-javaagent:${versions.opentelemetryJavaagent}")
+    // Download the official OpenTelemetry Java agent into the 'otel' configuration
+    "otel"("io.opentelemetry.javaagent:opentelemetry-javaagent:2.21.0")
+
+    /*
+      Interfaces and SPIs that we implement. We use `compileOnly` dependency because during
+      runtime all necessary classes are provided by javaagent itself.
+     */
+    compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:1.44.1")
+    compileOnly("io.opentelemetry:opentelemetry-sdk:1.44.1")
+    compileOnly("io.opentelemetry:opentelemetry-api:1.44.1")
+
+    // Required for custom instrumentation
+    compileOnly("io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api:2.21.0-alpha")
+    compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator:2.21.0-alpha")
+    compileOnly("net.bytebuddy:byte-buddy:1.15.10")
+
+    // Provides @AutoService annotation that makes registration of our SPI implementations much easier
+    compileOnly("com.google.auto.service:auto-service:1.1.1")
+    annotationProcessor("com.google.auto.service:auto-service:1.1.1")
 }
 
 // Task: Create an extended agent JAR (agent + your extension)
-task extendedAgent(type: Jar) {
-  dependsOn(configurations.otel)
-  archiveFileName = "opentelemetry-javaagent.jar"
+val extendedAgent by tasks.registering(Jar::class) {
+    dependsOn(configurations["otel"])
+    archiveFileName.set("opentelemetry-javaagent.jar")
 
-  // Step 1: Unpack the official agent JAR
-  from zipTree(configurations.otel.singleFile)
+    // Step 1: Unpack the official agent JAR
+    from(zipTree(configurations["otel"].singleFile))
 
-  // Step 2: Add your extension JAR to the "extensions/" directory
-  from(tasks.shadowJar.archiveFile) {
-    into "extensions"
-  }
+    // Step 2: Add your extension JAR to the "extensions/" directory
+    from(tasks.shadowJar.get().archiveFile) {
+        into("extensions")
+    }
 
-  // Step 3: Preserve the agent's startup configuration (MANIFEST.MF)
-  doFirst {
-    manifest.from(
-      zipTree(configurations.otel.singleFile).matching {
-        include 'META-INF/MANIFEST.MF'
-      }.singleFile
-    )
-  }
+    // Step 3: Preserve the agent's startup configuration (MANIFEST.MF)
+    doFirst {
+        manifest.from(
+            zipTree(configurations["otel"].singleFile).matching {
+                include("META-INF/MANIFEST.MF")
+            }.singleFile
+        )
+    }
 }
 
 tasks {
-  // Make sure the shadow JAR is built during the normal build process
-  assemble.dependsOn(shadowJar)
+    // Make sure the shadow JAR is built during the normal build process
+    assemble {
+        dependsOn(shadowJar)
+    }
 }
 ```
 
@@ -229,7 +239,7 @@ For a complete example, reference the gradle file from the
 
 ### Building and Using the Extended Agent
 
-Once you've added the `extendedAgent` task to your `build.gradle`:
+Once you've added the `extendedAgent` task to your `build.gradle.kts`:
 
 ```bash
 # 1. Build your extension and create the extended agent
@@ -264,7 +274,7 @@ When the agent starts, it automatically finds and loads all JAR files from the
 To embed multiple extensions, modify the `extendedAgent` task to include
 multiple extension JARs:
 
-```groovy
+```kotlin
 task extendedAgent(type: Jar) {
   dependsOn(configurations.otel)
   archiveFileName = "opentelemetry-javaagent.jar"
@@ -300,80 +310,84 @@ Here's a minimal extension that adds a custom span processor:
 
 **1. Create a Gradle project:**
 
-```groovy
+```kotlin
 plugins {
-  id "java"
-  id "com.gradleup.shadow" version "9.2.2"
+    id("java")
+    id("com.gradleup.shadow")
 }
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-  // Use BOM to manage OpenTelemetry dependency versions
-  compileOnly(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))
+    // Use BOM to manage OpenTelemetry dependency versions
+    compileOnly(platform("io.opentelemetry:opentelemetry-bom:1.44.1"))
 
-  // OpenTelemetry SDK autoconfiguration SPI (provided by agent)
-  compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi")
+    // OpenTelemetry SDK autoconfiguration SPI (provided by agent)
+    compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi")
 
-  // OpenTelemetry SDK (needed for SpanProcessor and trace classes)
-  compileOnly("io.opentelemetry:opentelemetry-sdk")
+    // OpenTelemetry SDK (needed for SpanProcessor and trace classes)
+    compileOnly("io.opentelemetry:opentelemetry-sdk")
 
-  // Annotation processor for automatic SPI registration
-  compileOnly("com.google.auto.service:auto-service:1.1.1")
-  annotationProcessor("com.google.auto.service:auto-service:1.1.1")
+    // Annotation processor for automatic SPI registration
+    compileOnly("com.google.auto.service:auto-service:1.1.1")
+    annotationProcessor("com.google.auto.service:auto-service:1.1.1")
 
-  // Add any external dependencies with 'implementation' scope
-  // implementation("org.apache.commons:commons-lang3:3.19.0")
+    // Add any external dependencies with 'implementation' scope
+    // implementation("org.apache.commons:commons-lang3:3.19.0")
 }
 
-compileJava {
-  options.release.set(8)
+tasks.assemble {
+    dependsOn(tasks.shadowJar)
 }
-
-tasks.assemble.dependsOn(tasks.shadowJar)
 ```
 
 **2. Create the SpanProcessor:**
 
 ```java
-package com.example.myextension;
+package otel;
 
 import io.opentelemetry.context.Context;
+import io.opentelemetry.sdk.common.CompletableResultCode;
 import io.opentelemetry.sdk.trace.ReadWriteSpan;
 import io.opentelemetry.sdk.trace.ReadableSpan;
 import io.opentelemetry.sdk.trace.SpanProcessor;
 
 public class MySpanProcessor implements SpanProcessor {
 
-  @Override
-  public void onStart(Context parentContext, ReadWriteSpan span) {
-    // Add custom attributes when span starts
-    span.setAttribute("custom.processor", "active");
-  }
+    @Override
+    public void onStart(Context parentContext, ReadWriteSpan span) {
+        // Add custom attributes when span starts
+        span.setAttribute("custom.processor", "active");
+    }
 
-  @Override
-  public boolean isStartRequired() {
-    return true;
-  }
+    @Override
+    public boolean isStartRequired() {
+        return true;
+    }
 
-  @Override
-  public void onEnd(ReadableSpan span) {
-    // Process span when it ends (optional)
-  }
+    @Override
+    public void onEnd(ReadableSpan span) {
+        // Process span when it ends (optional)
+    }
 
-  @Override
-  public boolean isEndRequired() {
-    return false;
-  }
+    @Override
+    public boolean isEndRequired() {
+        return false;
+    }
+
+    @Override
+    public CompletableResultCode shutdown() {
+        return CompletableResultCode.ofSuccess();
+    }
 }
 ```
 
-**3. Create an extension class:**
+**3. Create an extension class that uses the `AutoConfigurationCustomizerProvider` SPI:**
 
 ```java
-package com.example.myextension;
+package otel;
 
 import com.google.auto.service.AutoService;
 import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizer;
@@ -384,15 +398,15 @@ import io.opentelemetry.sdk.trace.SdkTracerProviderBuilder;
 @AutoService(AutoConfigurationCustomizerProvider.class)
 public class MyExtensionProvider implements AutoConfigurationCustomizerProvider {
 
-  @Override
-  public void customize(AutoConfigurationCustomizer config) {
-    config.addTracerProviderCustomizer(this::configureTracer);
-  }
+    @Override
+    public void customize(AutoConfigurationCustomizer config) {
+        config.addTracerProviderCustomizer(this::configureTracer);
+    }
 
-  private SdkTracerProviderBuilder configureTracer(
-      SdkTracerProviderBuilder tracerProvider, ConfigProperties config) {
-    return tracerProvider.addSpanProcessor(new MySpanProcessor());
-  }
+    private SdkTracerProviderBuilder configureTracer(
+            SdkTracerProviderBuilder tracerProvider, ConfigProperties config) {
+        return tracerProvider.addSpanProcessor(new MySpanProcessor());
+    }
 }
 ```
 
@@ -413,7 +427,7 @@ java -javaagent:opentelemetry-javaagent.jar \
 ### Extension Points Overview
 
 OpenTelemetry Java agent provides multiple extension points through SPI
-interfaces:
+interfaces, here are the most commonly used ones:
 
 | Extension Point                       | Package                                                       | Purpose                                |
 | ------------------------------------- | ------------------------------------------------------------- | -------------------------------------- |
@@ -431,9 +445,9 @@ agent and application.
 
 #### Dependencies Provided by Agent (use `compileOnly`)
 
-These APIs are available at runtime from the agent class loader:
+These APIs are available at runtime from the agent:
 
-```groovy
+```kotlin
 compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi")
 compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api")
 compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator")
@@ -445,7 +459,7 @@ compileOnly("io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api")
 When creating instrumentation, you need to reference classes from the target
 application. These should also be `compileOnly`:
 
-```groovy
+```kotlin
 // Only accessible in Advice classes during instrumentation
 compileOnly("javax.servlet:javax.servlet-api:3.0.1")
 ```
@@ -455,7 +469,7 @@ compileOnly("javax.servlet:javax.servlet-api:3.0.1")
 Any external libraries your extension needs at runtime must use `implementation`
 scope and will be packaged into the shadow JAR:
 
-```groovy
+```kotlin
 implementation("org.apache.commons:commons-lang3:3.19.0")
 implementation("com.google.guava:guava:33.0.0-jre")
 ```
@@ -465,8 +479,17 @@ dependencies must be merged into a single shadow JAR.
 
 ### Using @AutoService
 
-The `@AutoService` annotation automatically generates the required
-`META-INF/services/` files for SPI registration:
+The `@AutoService` annotation automatically generates the required `META-INF/services/` files for SPI registration.
+To use it:
+
+Add the dependency:
+
+```kotlin
+compileOnly("com.google.auto.service:auto-service:1.1.1")
+annotationProcessor("com.google.auto.service:auto-service:1.1.1")
+```
+
+And then annotate your SPI implementations like this:
 
 ```java
 import com.google.auto.service.AutoService;
@@ -479,13 +502,17 @@ public class MyExtension implements AutoConfigurationCustomizerProvider {
 
 This is equivalent to manually creating
 `META-INF/services/io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider`
-with your class name, but much more maintainable.
+with your class name.
 
 ---
 
 ## Extension Point Reference
 
 ### AutoConfigurationCustomizerProvider
+
+{{% alert title="Note" %}}
+This will not work for situations where [declarative configuration](declarative-configuration.md) is in use.
+{{% /alert %}}
 
 The main entry point for customizing SDK configuration. This allows you to:
 
