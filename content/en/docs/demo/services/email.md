@@ -87,8 +87,8 @@ require "opentelemetry-exporter-otlp-metrics"
 
 The Ruby SDK uses OpenTelemetry standard environment variables to configure OTLP
 export, resource attributes, and service name automatically. When initializing
-the OpenTelemetry Metrics SDK, you also need to configure a meter provider and
-a metric reader.
+the OpenTelemetry Metrics SDK, you also need to configure a meter provider and a
+metric reader.
 
 ```ruby
 otlp_metric_exporter = OpenTelemetry::Exporter::OTLP::Metrics::MetricsExporter.new
@@ -107,16 +107,16 @@ $confirmation_counter = meter.create_counter("app.confirmation.counter", unit: "
 
 The following custom metric is currently available:
 
-- `app.confirmation.counter`: Cumulative count of number of order
-  confirmation emails sent
+- `app.confirmation.counter`: Cumulative count of number of order confirmation
+  emails sent
 
 ## Logs
 
 ### Initializing logs
 
 The OpenTelemetry Logs SDK and OTLP logs exporter are initialized at root level
-in the `email_server.rb` file. You first need the `require` statements to
-access them.
+in the `email_server.rb` file. You first need the `require` statements to access
+them.
 
 ```ruby
 require "opentelemetry-logs-sdk"
@@ -125,7 +125,8 @@ require "opentelemetry-exporter-otlp-logs"
 
 The Ruby SDK uses OpenTelemetry standard environment variables to configure OTLP
 export, resource attributes, and service name automatically. When initializing
-the OpenTelemetry Logs SDK, you need a logger provider to create a global legger.
+the OpenTelemetry Logs SDK, you need a logger provider to create a global
+logger.
 
 ```ruby
 $logger = OpenTelemetry.logger_provider.logger(name: "email")
