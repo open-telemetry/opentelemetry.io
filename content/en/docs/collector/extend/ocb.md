@@ -18,9 +18,9 @@ great teachers!) to understand how the Collector itself interacts with your
 component code.
 
 The OpenTelemetry Community developed a tool called [OpenTelemetry Collector
-builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder) (or `ocb` for short) to help assemble
-distributions, making it easy to build one that includes custom
-components along with publicly available components.
+builder][ocb] (or `ocb` for short) to assist people in assembling their own
+distribution, making it easy to build a distribution that includes their custom
+components along with components that are publicly available.
 
 As part of the process, the `ocb` generates the Collector's source code,
 which you can use to build and debug your own custom components.
