@@ -3319,6 +3319,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-13T09:49:18.337288026Z"
   },
+  "https://github.com/Drazke": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-26T18:40:17.558352998+01:00"
+  },
+  "https://github.com/Drazke/instrumentation-confluent-kafka-javascript": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-26T18:40:16.932419705+01:00"
+  },
   "https://github.com/DrewCorlin": {
     "StatusCode": 206,
     "LastSeen": "2025-11-12T09:48:42.525016849Z"
@@ -4458,6 +4466,10 @@
   "https://github.com/confluentinc/confluent-kafka-go": {
     "StatusCode": 206,
     "LastSeen": "2025-11-13T09:48:44.406578466Z"
+  },
+  "https://github.com/confluentinc/confluent-kafka-javascript": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-26T18:40:18.210288937+01:00"
   },
   "https://github.com/congim": {
     "StatusCode": 206,
