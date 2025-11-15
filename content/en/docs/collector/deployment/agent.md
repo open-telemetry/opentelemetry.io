@@ -6,34 +6,35 @@ weight: 2
 cSpell:ignore: prometheusremotewrite
 ---
 
-The agent collector deployment pattern consists of applications —
-[instrumented][instrumentation] with an OpenTelemetry SDK using [OpenTelemetry
-protocol (OTLP)][otlp] — or other collectors (using the OTLP exporter) that send
-telemetry signals to a [collector][] instance running with the application or on
-the same host as the application (such as a sidecar or a daemonset).
+The agent collector deployment pattern uses applications
+[instrumented][instrumentation] with an OpenTelemetry SDK using the
+[OpenTelemetry Protocol (OTLP)][otlp], or downstream collectors using the OTLP
+exporter. These components send telemetry signals to a [Collector][collector]
+instance running alongside the application or on the same host (for example, as
+a sidecar or a DaemonSet).
 
-Each client-side SDK or downstream collector is configured with a collector
-location:
+Each client-side SDK or downstream collector is configured with the address of a
+Collector instance:
 
 ![Decentralized collector deployment concept](../../img/otel-agent-sdk.svg)
 
-1. In the app, the SDK is configured to send OTLP data to a collector.
-1. The collector is configured to send telemetry data to one or more backends.
+1. In the application, the SDK is configured to send OTLP data to a Collector.
+2. The Collector is configured to send telemetry data to one or more backends.
 
 ## Example
 
-A concrete example of the agent collector deployment pattern could look as
-follows: you manually instrument, say, a [Java application to export
-metrics][instrument-java-metrics] using the OpenTelemetry Java SDK. In the
-context of the app, you would set the `OTEL_METRICS_EXPORTER` to `otlp` (which
-is the default value) and configure the [OTLP exporter][otlp-exporter] with the
-address of your collector, for example (in Bash or `zsh` shell):
+A concrete example of the agent deployment pattern could look like this: you
+manually instrument a [Java application to export metrics][instrument-java-metrics]
+using the OpenTelemetry Java SDK. In the application context, you set
+`OTEL_METRICS_EXPORTER` to `otlp` (the default value) and configure the
+[OTLP exporter][otlp-exporter] with the address of your Collector. For example
+(in Bash or `zsh`):
 
 ```shell
-export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318
+export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318`
 ```
 
-The collector serving at `collector.example.com:4318` would then be configured
+The Collector running at `collector.example.com:4318` would then be configured
 like so:
 
 {{< tabpane text=true >}} {{% tab Traces %}}
@@ -103,20 +104,20 @@ service:
 
 {{% /tab %}} {{< /tabpane >}}
 
-If you want to try it out for yourself, you can have a look at the end-to-end
+To explore this pattern end to end, refer to the
 [Java][java-otlp-example] or [Python][py-otlp-example] examples.
 
-## Tradeoffs
+## Trade-offs
 
 Pros:
 
 - Simple to get started
-- Clear 1:1 mapping between application and collector
+- Clear one-to-one mapping between application and Collector
 
 Cons:
 
-- Scalability (human and load-wise)
-- Inflexible
+- Limited scalability (both operational and load-related)
+- Inflexible for complex or evolving deployments
 
 [instrumentation]: /docs/languages/
 [otlp]: /docs/specs/otel/protocol/
