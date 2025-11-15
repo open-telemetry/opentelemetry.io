@@ -163,17 +163,17 @@ dist:
 
 exporters:
   - gomod:
-      go.opentelemetry.io/collector/exporter/debugexporter v0.139.0
+      go.opentelemetry.io/collector/exporter/debugexporter {{% version-from-registry collector-exporter-debug %}}
   - gomod:
-      go.opentelemetry.io/collector/exporter/otlpexporter v0.139.0
+      go.opentelemetry.io/collector/exporter/otlpexporter {{% version-from-registry collector-exporter-otlp %}}
 
 processors:
   - gomod:
-      go.opentelemetry.io/collector/processor/batchprocessor v0.139.0
+      go.opentelemetry.io/collector/processor/batchprocessor {{% version-from-registry collector-processor-batch %}}
 
 receivers:
   - gomod:
-      go.opentelemetry.io/collector/receiver/otlpreceiver v0.139.0
+      go.opentelemetry.io/collector/receiver/otlpreceiver {{% version-from-registry collector-receiver-otlp %}}
 
 providers:
   - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.18.0
