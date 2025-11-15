@@ -340,7 +340,7 @@ learn more, see this
 [blog post](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/)
 about multi-architecture builds.
 
-```sh
+```bash
 # Enable Docker multi-arch builds
 docker run --rm --privileged tonistiigi/binfmt --install all
 docker buildx create --name mybuilder --use
