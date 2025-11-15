@@ -12927,6 +12927,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-13T09:45:10.571177114Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2984#discussion_r2466369361": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-06T10:37:26.044164511Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/981": {
     "StatusCode": 206,
     "LastSeen": "2025-11-15T09:44:24.463691055Z"
@@ -19694,6 +19698,10 @@
   "https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/": {
     "StatusCode": 200,
     "LastSeen": "2025-11-09T09:44:26.622565413Z"
+  },
+  "https://uaparser.dev/#demo": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-12T10:37:25.583538393Z"
   },
   "https://ucum.org/ucum": {
     "StatusCode": 200,
