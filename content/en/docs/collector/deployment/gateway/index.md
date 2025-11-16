@@ -18,10 +18,10 @@ the load among the Collectors:
 ![Gateway deployment concept](../../img/otel-gateway-sdk.svg)
 
 For use cases where telemetry data must be processed in a specific Collector, use a
-two-tiered setup with a Collector that has a pipeline configured with the
-[Trace ID/service name-aware load-balancing exporter][lb-exporter] in the first tier and the Collectors
-handling the scale-out in the second tier. For example, use the
-load-balancing exporter with the [tail sampling
+two-tiered setup. The gateway tier Collector has a pipeline configured with the
+[Trace ID/service-name-aware load-balancing exporter][lb-exporter]. In the processing tier, each Collector
+receives and processes telemetry that can be directed specifically to it. For example, you can use the
+load-balancing exporter in your gateway tier to send data to a second-tier Collector configured with the [tail sampling
 processor][tailsample-processor] so all spans for a given trace reach the
 same Collector instance where the tail sampling policy is applied.
 
