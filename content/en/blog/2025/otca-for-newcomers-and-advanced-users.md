@@ -77,7 +77,7 @@ field.
 The OTCA exam offers valuable opportunities for growth, learning, and
 professional validation, regardless of prior experience with OpenTelemetry. For
 newcomers, it establishes a strong, industry-recognized foundation, while for
-advances users, it reinforces core concepts and supports ongoing professional
+advanced users, it reinforces core concepts and supports ongoing professional
 development. Certification can also signal to employers a candidate’s dedication
 to best practices and commitment to continual learning. While specific
 preparation resources cannot be recommended here, beginning with the official
