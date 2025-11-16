@@ -91,18 +91,17 @@ For a concrete example of the centralized Collector deployment pattern, first
 look at the load-balancing exporter. It has two main
 configuration fields:
 
-- The `resolver`, which determines where to find the downstream Collectors (or
-  backends). If you use the `static` subkey here, you must manually
+- The `resolver` determines where to find the downstream Collectors or
+  backends. If you use the `static` subkey here, you must manually
   enumerate the Collector URLs. The other supported resolver is the DNS resolver,
   which periodically checks for updates and resolves IP addresses. For this
   resolver type, the `hostname` subkey specifies the hostname to query to
   obtain the list of IP addresses.
-- Use the `routing_key` field to route
-  spans to specific downstream Collectors. If you set this field to `traceID`
-  (default), the load-balancing exporter exports spans based on their
+- The `routing_key` field routes
+  spans to specific downstream Collectors. If you set this field to `traceID`, the load-balancing exporter exports spans based on their
   `traceID`. Otherwise, if you use `service` for `routing_key`, it
-  exports spans based on their service name, which is useful when using
-  connectors like the [span metrics connector][spanmetrics-connector], so all
+  exports spans based on their service name. This routing is useful when using
+  connectors like the [span metrics connector][spanmetrics-connector] because all
   spans of a service are sent to the same downstream Collector for metric
   collection, guaranteeing accurate aggregations.
 
@@ -193,7 +192,7 @@ service:
 
 {{% /tab %}} {{< /tabpane >}}
 
-The load-balancing exporter emits metrics including
+The load-balancing exporter emits [metrics](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter#metrics) including
 `otelcol_loadbalancer_num_backends` and `otelcol_loadbalancer_backend_latency`
 that you can use to monitor the health and performance of the Collector serving
 the OTLP endpoint.
@@ -207,7 +206,7 @@ The following diagram shows an architecture for such a combined deployment:
 
 - Use Collectors running in the agent deployment pattern (running on each
   host, similar to Kubernetes DaemonSets) to collect telemetry from services
-  running on the host and host telemetry, such as host metrics and scraped logs.
+  running on the host as well as the host's own telemetry, such as host metrics and scraped logs.
 - Use Collectors running in the gateway deployment pattern to process data,
   such as filtering, sampling, and exporting to backends.
 
@@ -222,13 +221,13 @@ that is available only on the same host where the application runs:
   or
   [`filelogreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)
   must be unique per host instance. Running multiple instances of these
-  receivers results in duplicate data.
+  receivers on the same host results in duplicate data.
 
 - Processors like the
   [`resourcedetectionprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
-  add information about the host where the Collector and the
-  application are running. Running them in a Collector on a remote
-  machine results in incorrect data.
+  add information about the host where both the Collector and the
+  application are running. Running the processor in a Collector on a separate
+  machine from the application results in incorrect data.
 
 ## Trade-offs
 
