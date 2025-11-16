@@ -25,7 +25,7 @@ load-balancing exporter in your gateway tier to send data to a second-tier Colle
 processor][tailsample-processor] so all spans for a given trace reach the
 same Collector instance where the tail sampling policy is applied.
 
-The following shows this setup using the load-balancing exporter:
+The following diagram shows this setup using the load-balancing exporter:
 
 ![Gateway deployment with load-balancing exporter](../../img/otel-gateway-lb-sdk.svg)
 
