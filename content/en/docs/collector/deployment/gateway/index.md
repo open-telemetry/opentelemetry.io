@@ -1,7 +1,7 @@
 ---
 title: Gateway
 description:
-  Why and how to send signals to a single OTLP endpoint and from there to
+  Learn why and how to send signals first to a single OTLP endpoint and then to
   backends
 weight: 3
 # prettier-ignore
