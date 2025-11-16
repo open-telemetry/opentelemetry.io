@@ -8,10 +8,9 @@ weight: 3
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---
 
-The gateway Collector deployment pattern consists of applications (or other
-Collectors) sending telemetry signals to a single OTLP endpoint provided by one
-or more Collector instances running as a standalone service (for example, a
-deployment in Kubernetes), typically per cluster, per data center, or per region.
+The gateway Collector deployment pattern consists of applications or other
+Collectors sending telemetry signals to a single [OTLP](/docs/specs/otlp/) endpoint. This endpoint is provided by one
+or more Collector instances running as a standalone service, for example, in a Kubernetes deployment. Typically, an endpoint is provided per cluster, per data center, or per region.
 
 In general, you can use an out-of-the-box load balancer to distribute
 the load among the Collectors:
