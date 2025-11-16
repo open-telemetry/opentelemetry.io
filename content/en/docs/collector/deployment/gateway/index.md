@@ -36,6 +36,8 @@ The following diagram shows this setup using the load-balancing exporter:
 
 ## Examples
 
+The following examples show how to configure a gateway Collector with common components.
+
 ### NGINX as an "out-of-the-box" load balancer
 
 Assuming you have three collectors (`collector1`, `collector2`, and
