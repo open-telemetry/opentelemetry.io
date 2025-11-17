@@ -79,11 +79,11 @@ professional validation, regardless of prior experience with OpenTelemetry. For
 newcomers, it establishes a strong, industry-recognized foundation, while for
 advanced users, it reinforces core concepts and supports ongoing professional
 development. Certification can also signal to employers a candidate’s dedication
-to best practices and commitment to continual learning. While specific
-preparation resources cannot be recommended here, beginning with the official
-[OpenTelemetry Documentation](/docs/) and engaging in hands-on practice,
-particularly with manual and auto-instrumentation, is highly effective. In
-addition, several books and interactive courses are available to support exam
-readiness. Pursuing the OTCA certification is a worthwhile step for anyone
-seeking to deepen their observability skills and demonstrate a commitment to
-industry best practices in an ever-changing technology landscape.
+to best practices and commitment to continual learning. For the exam preparation 
+itself, the [OpenTelemetry Documentation](/docs/) is an excellent starting point, 
+and reinforcing this knowledge through practical work with manual and 
+auto-instrumentation is particularly effective. In addition, several books and 
+interactive courses are available to support exam readiness. Pursuing the OTCA 
+certification is a worthwhile step for anyone seeking to deepen their 
+observability skills and demonstrate a commitment to industry best practices 
+in an ever-changing technology landscape.
