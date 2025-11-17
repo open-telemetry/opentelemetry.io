@@ -12379,6 +12379,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-06T09:41:32.36844361Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-17T14:57:38.2759906Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-17T14:57:41.126995104Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml": {
     "StatusCode": 206,
     "LastSeen": "2025-11-11T09:40:52.478491862Z"

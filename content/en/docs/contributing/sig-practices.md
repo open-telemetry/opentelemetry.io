@@ -4,7 +4,8 @@ linkTitle: SIG practices
 description:
   Learn how approvers and maintainers manage issues and contributions.
 weight: 999
-cSpell:ignore: chalin Comms contribfest docsy inactivitiy onboarded triager triagers 
+# prettier-ignore
+cSpell:ignore: chalin Comms contribfest docsy inactivitiy onboarded triager triagers
 ---
 
 This pages includes guidelines and some common practices used by approvers and
@@ -69,11 +70,17 @@ Additional valuable resources to review are
 ### Issues
 
 - Incoming issues are triaged by `@open-telemetry/docs-triagers` team.
-- As a first step, a triager will read through an issue title and description and apply the following labelling:
-  - Mandatory: A `sig:*`, `lang:*` or `docs:*` to determine (co)ownership of the issue:
-    - A `sig:*` label if the issue is related to content or a question that is co-owned by a SIG (e.g. a question around the Collector will be labelled `sig:collector`).
-    - A `lang:*` label if the issue is related to content or a question that is related to a specific localization.
-    - A `docs:*` label if the issue is related to content or a question that is solely owned by the docs team (SIG Comms):
+- As a first step, a triager will read through an issue title and description
+  and apply the following labelling:
+  - Mandatory: A `sig:*`, `lang:*` or `docs:*` to determine (co)ownership of the
+    issue:
+    - A `sig:*` label if the issue is related to content or a question that is
+      co-owned by a SIG (e.g. a question around the Collector will be labelled
+      `sig:collector`).
+    - A `lang:*` label if the issue is related to content or a question that is
+      related to a specific localization.
+    - A `docs:*` label if the issue is related to content or a question that is
+      solely owned by the docs team (SIG Comms):
       - `docs`
       - `docs:admin`
       - `docs:accessibility`
@@ -89,8 +96,10 @@ Additional valuable resources to review are
   - Mandatory: A `triage:*` label:
     - `triage:accepted`, `triage:accepted:needs-pr`
     - `triage:deciding`, `triage:deciding:blocked`, `triage:deciding:needs-info`
-    - `triage:rejected`, `triage:rejected:duplicate`, `triage:rejected:invalid`, `triage:rejected:wontfix`
-  - Mandatory: A `type:*` label if applicable (or not added by the issue template already):
+    - `triage:rejected`, `triage:rejected:duplicate`, `triage:rejected:invalid`,
+      `triage:rejected:wontfix`
+  - Mandatory: A `type:*` label if applicable (or not added by the issue
+    template already):
     - `type:bug`
     - `type:copyedit`
     - `type:enhancement`
@@ -112,24 +121,38 @@ Additional valuable resources to review are
     - `maintainers only`
     - `forever`
     - `stale`
-- Automation will mark an issue in `triage:deciding` with `triage:followup` for re-triage after 14 days of inactivitiy on an issue. A `triage:followup` label should be removed within 7 days. Pinging the participants and removing the label is sufficient activity.
+- Automation will mark an issue in `triage:deciding` with `triage:followup` for
+  re-triage after 14 days of inactivitiy on an issue. A `triage:followup` label
+  should be removed within 7 days. Pinging the participants and removing the
+  label is sufficient activity.
 
 ### PRs
 
-- PRs must have a linked issue labelled `triage:accepted` with the following exceptions
+- PRs must have a linked issue labelled `triage:accepted` with the following
+  exceptions
   - Automatic PRs
   - **tbc**
-- Automation will ensure that PRs are [labelled](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml) and [assigned](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml) to the appropriate co-owning SIG or localization team
+- Automation will ensure that PRs are
+  [labelled](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml)
+  and
+  [assigned](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml)
+  to the appropriate co-owning SIG or localization team
 - PRs should have the same co-ownership labels as issues
-- If the PR is co-owned by a SIG, this group is responsible for doing a first review to ensure that the content is technically correct.
-- If the PR is co-owned by a language team, this group is responsible for ensuring that the translation of the content is correct
-- The main responsibility of docs team is to ensure, that the PR is in line with the overall goals of the project, is put in the right place within the structure and follows the style and content guides of the project.
+- If the PR is co-owned by a SIG, this group is responsible for doing a first
+  review to ensure that the content is technically correct.
+- If the PR is co-owned by a language team, this group is responsible for
+  ensuring that the translation of the content is correct
+- The main responsibility of docs team is to ensure, that the PR is in line with
+  the overall goals of the project, is put in the right place within the
+  structure and follows the style and content guides of the project.
 - PRs which are missing something to be merged, should be labeled accordingly:
   - `missing:cla`
   - `missing:docs-approval`
   - `missing:sig-approval`
   - `blocked`
-- Automation will mark a PR as `stale` to request a re-review after 21 days of inactivity. A `stale` label should be removed within 14 days. Pinging the participants and removing the label is sufficient activity.
+- Automation will mark a PR as `stale` to request a re-review after 21 days of
+  inactivity. A `stale` label should be removed within 14 days. Pinging the
+  participants and removing the label is sufficient activity.
 - PRs are never auto-closed
 
 ## Code reviews
