@@ -6,7 +6,7 @@ default_lang_commit: d1ef521ee4a777881fb99c3ec2b506e068cdec4c
 cSpell:ignore: buildtasks
 ---
 
-Utilice los paquetes NuGet en los siguientes casos:
+Usa los paquetes NuGet en los siguientes casos:
 
 1. Simplifica la implementación. Por ejemplo, un contenedor que ejecuta una sola
    aplicación.
@@ -34,7 +34,7 @@ para no utilizar paquetes NuGet son las siguientes:
 
 ## Uso de los paquetes NuGet
 
-Para instrumentar automáticamente tu aplicación con OpenTelemetry .NET, añada el
+Para instrumentar automáticamente tu aplicación con OpenTelemetry .NET, añade el
 paquete `OpenTelemetry.AutoInstrumentation` a su proyecto:
 
 ```terminal
@@ -43,14 +43,14 @@ dotnet add [<PROYECTO>] package OpenTelemetry.AutoInstrumentation
 
 Si la aplicación hace referencia a paquetes que pueden instrumentarse, pero que
 requieren otros paquetes para que la instrumentación funcione, la compilación
-fallará y le pedirá que añada la biblioteca de instrumentación que falta o que
+fallará y te pedirá que añade la biblioteca de instrumentación que falta o que
 omita la instrumentación del paquete correspondiente:
 
 ```terminal
 ~packages/opentelemetry.autoinstrumentation.buildtasks/1.6.0/build/OpenTelemetry.AutoInstrumentation.BuildTasks.targets(29,5): error : OpenTelemetry.AutoInstrumentation: add a reference to the instrumentation package 'MongoDB.Driver.Core.Extensions.DiagnosticSources' version 1.4.0 or add 'MongoDB.Driver.Core' to the property 'SkippedInstrumentations' to suppress this error.
 ```
 
-Para resolver el error, añada la biblioteca de instrumentación recomendada u
+Para resolver el error, añade la biblioteca de instrumentación recomendada u
 omita la instrumentación del paquete indicado añadiéndolo a la propiedad
 `SkippedInstrumentation`, por ejemplo:
 
