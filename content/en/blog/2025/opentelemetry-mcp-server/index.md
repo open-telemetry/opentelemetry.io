@@ -5,7 +5,7 @@ author: >-
 linkTitle: Collector MCP Server
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/8330
 sig: SIG Collector
-date: 2025-11-10
+date: 2025-11-17
 cSpell:ignore: mcp mdatagen OTTL pavolloffay
 ---
 
@@ -27,7 +27,7 @@ deployment and day-two operations.
 
 ---
 
-## What the MCP Server Knows (And What You Can Do)
+## What the MCP server knows and what you can do with it
 
 The server's power comes from its deep understanding of the **JSON schema** for
 every single Collector component. This allows it (and any AI agent using it) to
@@ -50,12 +50,12 @@ Instead of just a list of commands, here’s what this _actually_ lets you do:
 
 ---
 
-## Putting It Into Practice: Example Conversations
+## Putting it into practice: Example conversations
 
 The real magic happens when you connect an assistant (like Claude, ChatGPT, or a
 custom internal bot) to the MCP server. Here are a few things you could ask it.
 
-### Example 1: Compare Collector Versions
+### Example 1: Compare collector versions
 
 You need to upgrade from `0.138.0` to `0.139.0` and want to know what to watch
 out for.
@@ -80,7 +80,7 @@ versions and gives you a clean summary:
 >     suffix for seconds.
 >   - `cmd/mdatagen`: `stability.level` is now a required field for metrics."
 
-### Example 2: Audit a Live Kubernetes Cluster
+### Example 2: Audit a live Kubernetes cluster
 
 You want to know if any of your collectors are using outdated configurations.
 
@@ -104,9 +104,9 @@ deprecated field database.
 >
 > **Recommendation:** No immediate action is required."
 
-### Example 3: Generate and Validate a New Config
+### Example 3: Generate and validate a new config
 
-You need to set up log collection for your K8s cluster.
+You need to set up log collection for your Kubernetes cluster.
 
 > **Your Prompt:** "Show me an OpenTelemetry Collector configuration to collect
 > logs from the Kubernetes cluster and then validate the config."
@@ -133,9 +133,9 @@ prove it's correct _before_ you apply it.
 
 ---
 
-## What's Next? From Static Config to Live Data Profiling
+## What's next? From static config to live data profiling
 
-The **vast** OpenTelemetry ecosystem offers so many opportunities to improve the
+The vast OpenTelemetry ecosystem offers so many opportunities to improve the
 user experience with an MCP server. The work today is just the beginning. We see
 the future breaking down into two categories:
 
@@ -148,7 +148,7 @@ This category covers more use cases for static configuration analysis:
 - **Instrumentation Config**: Validation and assistance for auto-instrumentation
   configurations.
 
-### Data Profiling
+### Data profiling
 
 This is where it gets really exciting. The MCP server could be extended to
 understand the _data_ flowing through the collector, curating it for an AI agent
@@ -162,7 +162,7 @@ to provide recommendations. Imagine asking:
 
 ---
 
-## Join the Conversation
+## Join the conversation
 
 The OpenTelemetry MCP server is more than just a validation tool; it's the first
 step toward a simpler, more intelligent way of managing our observability
