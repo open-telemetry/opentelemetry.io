@@ -61,6 +61,11 @@ resource:
     detectors:
       - service: # vai adicionar "service.instance.id" e "service.name" do OTEL_SERVICE_NAME
 
+propagator:
+  composite:
+    - tracecontext:
+    - baggage:
+
 tracer_provider:
   processors:
     - batch:

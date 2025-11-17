@@ -9523,6 +9523,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-13T09:41:31.268670793Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/blob/main/inferred-spans": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-11T14:16:29.167021447+01:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources": {
     "StatusCode": 206,
     "LastSeen": "2025-11-12T09:42:10.664815159Z"
@@ -9534,6 +9538,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/azure-resources": {
     "StatusCode": 206,
     "LastSeen": "2025-11-15T09:38:58.998496586Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/baggage-processor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-11T14:16:32.261430319+01:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-auth-extension": {
     "StatusCode": 206,
@@ -9650,6 +9658,14 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-webmvc/spring-webmvc-5.3/library/src/main/java/io/opentelemetry/instrumentation/spring/webmvc/v5_3/WebMvcTelemetryProducingFilter.java": {
     "StatusCode": 206,
     "LastSeen": "2025-11-14T09:41:05.127943424Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/javaagent-tooling/src/main/java/io/opentelemetry/javaagent/tooling/AgentTracerProviderConfigurer.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-11T14:16:30.456287292+01:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/javaagent-tooling/src/main/java/io/opentelemetry/javaagent/tooling/SpanLoggingCustomizerProvider.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-11T14:16:31.48693374+01:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/release/v2.6.x/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/internal/MapConverter.java": {
     "StatusCode": 206,
