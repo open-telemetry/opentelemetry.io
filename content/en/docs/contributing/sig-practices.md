@@ -4,7 +4,7 @@ linkTitle: SIG practices
 description:
   Learn how approvers and maintainers manage issues and contributions.
 weight: 999
-cSpell:ignore: chalin Comms docsy onboarded
+cSpell:ignore: chalin Comms contribfest docsy inactivitiy onboarded triager triagers 
 ---
 
 This pages includes guidelines and some common practices used by approvers and
@@ -109,16 +109,16 @@ Additional valuable resources to review are
     - `good first issue`
     - `help wanted`
     - `contribfest`
-    - `outreachy`
     - `maintainers only`
     - `forever`
     - `stale`
 - Automation will mark an issue in `triage:deciding` with `triage:followup` for re-triage after 14 days of inactivitiy on an issue. A `triage:followup` label should be removed within 7 days. Pinging the participants and removing the label is sufficient activity.
 
 ### PRs
+
 - PRs must have a linked issue labelled `triage:accepted` with the following exceptions
   - Automatic PRs
-  - 
+  - **tbc**
 - Automation will ensure that PRs are [labelled](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml) and [assigned](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml) to the appropriate co-owning SIG or localization team
 - PRs should have the same co-ownership labels as issues
 - If the PR is co-owned by a SIG, this group is responsible for doing a first review to ensure that the content is technically correct.
