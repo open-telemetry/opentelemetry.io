@@ -43,7 +43,7 @@ dotnet add [<PROYECTO>] package OpenTelemetry.AutoInstrumentation
 
 Si la aplicación hace referencia a paquetes que pueden instrumentarse, pero que
 requieren otros paquetes para que la instrumentación funcione, la compilación
-fallará y te pedirá que añade la biblioteca de instrumentación que falta o que
+fallará y te pedirá que añada la biblioteca de instrumentación que falta o que
 omita la instrumentación del paquete correspondiente:
 
 ```terminal
