@@ -64,6 +64,74 @@ Additional valuable resources to review are
   approver/maintainer feel uncomfortable they can step back from a conversation,
   issue or PR and ask another approver/maintainer to step in.
 
+## Triage
+
+### Issues
+
+- Incoming issues are triaged by `@open-telemetry/docs-triagers` team.
+- As a first step, a triager will read through an issue title and description and apply the following labelling:
+  - Mandatory: A `sig:*`, `lang:*` or `docs:*` to determine (co)ownership of the issue:
+    - A `sig:*` label if the issue is related to content or a question that is co-owned by a SIG (e.g. a question around the Collector will be labelled `sig:collector`).
+    - A `lang:*` label if the issue is related to content or a question that is related to a specific localization.
+    - A `docs:*` label if the issue is related to content or a question that is solely owned by the docs team (SIG Comms):
+      - `docs`
+      - `docs:admin`
+      - `docs:accessibility`
+      - `docs:analytics-and-seo`
+      - `docs:IA`
+      - `docs:blog`
+      - `docs:cleanup/refactoring`
+      - `docs:upstream`, `docs:upstream/docsy`
+      - `docs:javascript`
+      - `docs:mobile`
+      - `docs:registry`
+      - `docs:ux`
+  - Mandatory: A `triage:*` label:
+    - `triage:accepted`, `triage:accepted:needs-pr`
+    - `triage:deciding`, `triage:deciding:blocked`, `triage:deciding:needs-info`
+    - `triage:rejected`, `triage:rejected:duplicate`, `triage:rejected:invalid`, `triage:rejected:wontfix`
+  - Mandatory: A `type:*` label if applicable (or not added by the issue template already):
+    - `type:bug`
+    - `type:copyedit`
+    - `type:enhancement`
+    - `type:discussion`
+    - `type:question`
+  - Optional: An estimate label if applicable:
+    - `e0-minutes`
+    - ...
+    - `e4-months`
+  - Optional (and only set by maintainers): A priority label:
+    - `p0-critical`
+    - `p1-high`
+    - `p2-medium`
+    - `p3-low`
+  - (Optional) One of the following special tags:
+    - `good first issue`
+    - `help wanted`
+    - `contribfest`
+    - `outreachy`
+    - `maintainers only`
+    - `forever`
+    - `stale`
+- Automation will mark an issue in `triage:deciding` with `triage:followup` for re-triage after 14 days of inactivitiy on an issue. A `triage:followup` label should be removed within 7 days. Pinging the participants and removing the label is sufficient activity.
+
+### PRs
+- PRs must have a linked issue labelled `triage:accepted` with the following exceptions
+  - Automatic PRs
+  - 
+- Automation will ensure that PRs are [labelled](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml) and [assigned](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml) to the appropriate co-owning SIG or localization team
+- PRs should have the same co-ownership labels as issues
+- If the PR is co-owned by a SIG, this group is responsible for doing a first review to ensure that the content is technically correct.
+- If the PR is co-owned by a language team, this group is responsible for ensuring that the translation of the content is correct
+- The main responsibility of docs team is to ensure, that the PR is in line with the overall goals of the project, is put in the right place within the structure and follows the style and content guides of the project.
+- PRs which are missing something to be merged, should be labeled accordingly:
+  - `missing:cla`
+  - `missing:docs-approval`
+  - `missing:sig-approval`
+  - `blocked`
+- Automation will mark a PR as `stale` to request a re-review after 21 days of inactivity. A `stale` label should be removed within 14 days. Pinging the participants and removing the label is sufficient activity.
+- PRs are never auto-closed
+
 ## Code reviews
 
 ### General
