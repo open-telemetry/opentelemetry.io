@@ -267,6 +267,8 @@ maintainers:
   - name: bobstrecansky
     teams:
       - php-approvers
+      - php-distro-approvers
+      - php-distro-maintainers
       - php-maintainers
       - php-triagers
     html_url: https://github.com/bobstrecansky
@@ -310,6 +312,8 @@ maintainers:
     teams:
       - configuration-approvers
       - php-approvers
+      - php-distro-approvers
+      - php-distro-maintainers
       - php-maintainers
       - php-triagers
     html_url: https://github.com/brettmc
@@ -680,6 +684,12 @@ maintainers:
       - rust-maintainers
     html_url: https://github.com/hdost
     avatar_url: https://avatars.githubusercontent.com/u/643846?v=4
+  - name: intuibase
+    teams:
+      - php-distro-approvers
+      - php-distro-maintainers
+    html_url: https://github.com/intuibase
+    avatar_url: https://avatars.githubusercontent.com/u/9551626?v=4
   - name: jack-berg
     teams:
       - configuration-approvers
@@ -917,6 +927,7 @@ maintainers:
       - semconv-genai-approvers
       - semconv-http-approvers
       - semconv-messaging-approvers
+      - semconv-rpc-approvers
       - sig-developer-experience-approvers
       - sig-developer-experience-maintainers
       - specs-approvers
@@ -1292,6 +1303,12 @@ maintainers:
       - operator-ta-maintainers
     html_url: https://github.com/secustor
     avatar_url: https://avatars.githubusercontent.com/u/17493763?v=4
+  - name: SergeyKleyman
+    teams:
+      - php-distro-approvers
+      - php-distro-maintainers
+    html_url: https://github.com/SergeyKleyman
+    avatar_url: https://avatars.githubusercontent.com/u/7782093?v=4
   - name: serkan-ozal
     teams:
       - lambda-extension-approvers
@@ -1461,6 +1478,7 @@ maintainers:
       - semconv-http-approvers
       - semconv-jvm-approvers
       - semconv-log-approvers
+      - semconv-rpc-approvers
       - sig-project-infra-approvers
       - sig-project-infra-maintainers
       - sig-security-approvers
