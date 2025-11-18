@@ -131,7 +131,7 @@ Additional valuable resources to review are
 - PRs must have a linked issue labelled `triage:accepted` with the following
   exceptions:
   - Automatic PRs
-  - **tbc**
+  - hotfixes by maintainers/approvers
 - Automation will ensure that PRs are
   [labelled](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml)
   and
