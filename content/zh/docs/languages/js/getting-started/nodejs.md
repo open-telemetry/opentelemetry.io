@@ -9,10 +9,10 @@ cSpell:ignore: autoinstrumentations rolldice
 
 这个页面将向你展示如何在 Node.js 中开始使用 OpenTelemetry。
 
-你将学习如何为应用程序植入[跟踪][traces]和[指标][metrics]，并将其记录到控制台。
+你将学习如何为应用程序植入[链路][traces]和[指标][metrics]，并将其记录到控制台。
 
 {{% alert title="Note" %}} OpenTelemetry for Node.js 的日志记录库仍在开发中，因此下面没有提供示例。
-有关状态详情，请参阅[状态和发布](/docs/languages/js/#status-and-releases)。 {{% /alert %}} -->
+有关状态详情，请参阅[状态和发布](/docs/languages/js/#status-and-releases)。 {{% /alert %}}
 
 ## 前提条件 {#prerequisites}
 
@@ -226,10 +226,10 @@ Listening for requests on http://localhost:8080
 {{% /tab %}} {{< /tabpane >}}
 
 在浏览器中打开 <http://localhost:8080/rolldice> 并重新加载页面几次。
-等待一段时间后，你应该会在控制台中看到 `ConsoleSpanExporter` 打印的跨度。
+等待一段时间后，你应该会在控制台中看到 `ConsoleSpanExporter` 打印的 Span。
 
 <details>
-<summary>View example output</summary>
+<summary>查看示例输出</summary>
 
 ```js
 {
@@ -333,7 +333,7 @@ Listening for requests on http://localhost:8080
 再向该端点发送几次请求。片刻之后，你将在控制台输出中看到指标数据，例如：
 
 <details>
-<summary>View example output</summary>
+<summary>查看示例输出</summary>
 
 ```yaml
 {
@@ -492,7 +492,7 @@ Listening for requests on http://localhost:8080
 
 你还需要配置一个合适的导出器，将[导出你的遥测数据](/docs/languages/js/exporters)到一个或多个遥测后端。
 
-如果你想探索一个更复杂的示例，请查看[OpenTelemetry Demo](/docs/demo/)，
+如果你想探索一个更复杂的示例，请查看 [OpenTelemetry Demo](/docs/demo/)，
 其中包括基于 JavaScript 的[支付服务](/docs/demo/services/payment/)和基于 TypeScript 的[前端服务](/docs/demo/services/frontend/)。
 
 
