@@ -98,13 +98,12 @@ Additional valuable resources to review are
     - `triage:deciding`, `triage:deciding:blocked`, `triage:deciding:needs-info`
     - `triage:rejected`, `triage:rejected:duplicate`, `triage:rejected:invalid`,
       `triage:rejected:wontfix`
-  - Mandatory: A `type:*` label if applicable (or not added by the issue
-    template already):
-    - `type:bug`
-    - `type:copyedit`
-    - `type:enhancement`
-    - `type:discussion`
-    - `type:question`
+  - Mandatory: Set the "type" of the issue as follows:
+    - issue type `bug` for bugs
+    - issue type `enhancement` for feature requests 
+    - label `type:question` for questions
+    - label `type:copyedit` for copy edits
+    - move an the issue to "discussions" if it seems to be a non workable open-ended conversation
   - Optional: An estimate label if applicable:
     - `e0-minutes`
     - ...
