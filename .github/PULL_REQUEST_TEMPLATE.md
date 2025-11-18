@@ -1,4 +1,4 @@
-- [ ] I have read and follow the
+- [ ] I have read and followed the
       [contribution guidelines](https://opentelemetry.io/docs/contributing/),
       including the **First-time contributing?** note.
 - [ ] This PR includes **AI generated content**, and I have read and conform to
