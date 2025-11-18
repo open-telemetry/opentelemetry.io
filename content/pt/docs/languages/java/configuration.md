@@ -304,7 +304,9 @@ Propriedades para exportadores `otlp` de rastros, métricas e logs:
 
 | Propriedade do sistema | Descrição | Padrão | | Propriedade do sistema |
 Descrição | Padrão | | -------------------------------- |
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---
+
 | --------------- | | `otel.{sinal}.exporter=otlp` | Seleciona o exportador
 OpenTelemetry para {sinal}. | | | `otel.exporter.otlp.protocol` | Protocolo de
 transporte usado nas requisições OTLP de rastros, métricas e logs. Opções:
