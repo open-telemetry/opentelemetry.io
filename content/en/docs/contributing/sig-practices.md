@@ -114,7 +114,7 @@ Additional valuable resources to review are
     - `p1-high`
     - `p2-medium`
     - `p3-low`
-  - (Optional) One of the following special tags:
+  - Optional: One of the following special tags:
     - `good first issue`
     - `help wanted`
     - `contribfest`
@@ -129,19 +129,19 @@ Additional valuable resources to review are
 ### PRs
 
 - PRs must have a linked issue labelled `triage:accepted` with the following
-  exceptions
+  exceptions:
   - Automatic PRs
   - **tbc**
 - Automation will ensure that PRs are
   [labelled](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml)
   and
   [assigned](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml)
-  to the appropriate co-owning SIG or localization team
+  to the appropriate co-owning SIG or localization team.
 - PRs should have the same co-ownership labels as issues
 - If the PR is co-owned by a SIG, this group is responsible for doing a first
   review to ensure that the content is technically correct.
 - If the PR is co-owned by a language team, this group is responsible for
-  ensuring that the translation of the content is correct
+  ensuring that the translation of the content is correct.
 - The main responsibility of docs team is to ensure, that the PR is in line with
   the overall goals of the project, is put in the right place within the
   structure and follows the style and content guides of the project.
@@ -153,7 +153,7 @@ Additional valuable resources to review are
 - Automation will mark a PR as `stale` to request a re-review after 21 days of
   inactivity. A `stale` label should be removed within 14 days. Pinging the
   participants and removing the label is sufficient activity.
-- PRs are never auto-closed
+- PRs are never auto-closed.
 
 ## Code reviews
 
