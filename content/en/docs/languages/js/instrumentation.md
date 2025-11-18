@@ -1445,7 +1445,7 @@ avoid trickier application load issues when other required dependencies are
 involved.
 
 In the case of the [example app](#example-app), there are two places where a
-tracer may be acquired with an appropriate Instrumentation Scope:
+meter may be acquired with an appropriate Instrumentation Scope:
 
 First, in the _application file_ `app.ts` (or `app.js`):
 
@@ -1561,7 +1561,7 @@ module.exports = { rollTheDice };
 
 {{% /tab %}} {{< /tabpane >}}
 
-Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
+Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized,
 you can create
 [metric instruments](/docs/concepts/signals/metrics/#metric-instruments).
 
@@ -1801,7 +1801,7 @@ Drop all instruments with the meter name `pubsub`:
 
 ```js
 const dropView = {
-  aggregation: { type: AggrgationType.DROP },
+  aggregation: { type: AggregationType.DROP },
   meterName: 'pubsub',
 };
 ```

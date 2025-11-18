@@ -1,7 +1,7 @@
 ---
 title: はじめに
 weight: 20
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
 drifted_from_default: true
 cSpell:ignore: springboot
 ---
@@ -13,12 +13,12 @@ Spring Bootアプリケーションを計装するために、[Javaエージェ�
 
 {{% /alert %}}
 
-### 互換性 {#compatibility}
+## 互換性 {#compatibility}
 
 OpenTelemetry Spring Bootスターターは、Spring Boot 2.6+および3.1+、そしてSpring Bootネイティブイメージアプリケーションで動作します。
 [opentelemetry-java-examples/spring-native](https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/spring-native)リポジトリには、OpenTelemetry Spring Bootスターターを使用して計装されたSpring Bootネイティブイメージアプリケーションの例が含まれています。
 
-### 依存関係の管理 {#dependency-management}
+## 依存関係の管理 {#dependency-management}
 
 Bill of Material（[BOM](https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#bill-of-materials-bom-poms)）は、依存関係（推移的なものを含む）のバージョンが整合していることを保証します。
 
@@ -90,7 +90,7 @@ Gradleで異なる設定方法を混在させないよう注意してくださ�
 
 {{% /alert %}}
 
-#### OpenTelemetryスターターの依存関係 {#opentelemetry-starter-dependency}
+### OpenTelemetryスターターの依存関係 {#opentelemetry-starter-dependency}
 
 OpenTelemetryスターターを有効にするには、以下の依存関係を追加します。
 
