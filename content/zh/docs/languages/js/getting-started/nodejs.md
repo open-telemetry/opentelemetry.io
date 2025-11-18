@@ -106,7 +106,6 @@ app.listen(PORT, () => {
 
 执行以下命令启动应用，然后在浏览器中打开 <http://localhost:8080/rolldice>，验证应用是否正常运行。
 
-
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
@@ -134,7 +133,7 @@ Listening for requests on http://localhost:8080
 Node SDK 让你可以使用多个配置默认值来初始化 OpenTelemetry，这些默认值适用于大多数用例。
 
 `auto-instrumentations-node` 包安装了插桩库，这些库将自动为库中调用的代码创建相应的 Span。
-在这种情况下，它为 Express 提供了插桩，使示例应用程序能够自动为每个传入请求创建 Span。  
+在这种情况下，它为 Express 提供了插桩，使示例应用程序能够自动为每个传入请求创建 Span。
 
 ```shell
 npm install @opentelemetry/sdk-node \
@@ -494,7 +493,6 @@ Listening for requests on http://localhost:8080
 
 如果你想探索一个更复杂的示例，请查看 [OpenTelemetry Demo](/docs/demo/)，
 其中包括基于 JavaScript 的[支付服务](/docs/demo/services/payment/)和基于 TypeScript 的[前端服务](/docs/demo/services/frontend/)。
-
 
 ## 调试 {#troubleshooting}
 
