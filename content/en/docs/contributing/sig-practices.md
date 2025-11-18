@@ -5,7 +5,7 @@ description:
   Learn how approvers and maintainers manage issues and contributions.
 weight: 999
 # prettier-ignore
-cSpell:ignore: chalin Comms contribfest docsy inactivitiy onboarded triager triagers
+cSpell:ignore: chalin Comms contribfest docsy hotfixes inactivitiy onboarded triager triagers
 ---
 
 This pages includes guidelines and some common practices used by approvers and
