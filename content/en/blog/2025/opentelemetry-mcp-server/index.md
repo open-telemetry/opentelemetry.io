@@ -19,7 +19,7 @@ even its data?
 
 This is the vision behind the new [OpenTelemetry Collector Model Context
 Protocol (MCP) Server](https://github.com/pavolloffay/opentelemetry-mcp-server).
-It is a 3rd party community MCP Server.
+It is a third-party community MCP Server.
 
 In short, the MCP server acts as an intelligent backend, or a "brain," that
 exposes deep information about the Collector. When paired with an AI agent or
