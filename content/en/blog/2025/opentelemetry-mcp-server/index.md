@@ -1,5 +1,5 @@
 ---
-title: Managing the OpenTelemetry Collector Just Got Easier
+title: Building an MCP server for OpenTelemetry
 author: >-
   [Pavol Loffay](https://github.com/pavolloffay) (Red Hat)
 linkTitle: Collector MCP Server
@@ -19,7 +19,7 @@ even its data?
 
 This is the vision behind the new [OpenTelemetry Collector Model Context
 Protocol (MCP) Server](https://github.com/pavolloffay/opentelemetry-mcp-server).
-It is a 3rd party community created MCP Server.
+It is a 3rd party community MCP Server.
 
 In short, the MCP server acts as an intelligent backend, or a "brain," that
 exposes deep information about the Collector. When paired with an AI agent or
@@ -173,14 +173,8 @@ Today, it helps you validate configs, compare versions, and audit your
 deployments. Tomorrow, it could be the engine that proactively optimizes your
 entire telemetry stream.
 
-But we need your help to build this future.
-
-- **Share your feedback:** What use cases do you have? What would you like to
-  ask your Collector?
-- **Get involved:** We are proposing an
-  [**OpenTelemetry MCP server working group**](https://github.com/open-telemetry/community/issues/3129).
-  Join the discussion and help us build these capabilities directly into the
-  upstream community!
+But we need your help to build this future. Share your feedback: What use cases do you have?
+What would you like to ask your Collector?
 
 ## References
 
