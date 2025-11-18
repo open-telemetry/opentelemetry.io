@@ -17,8 +17,8 @@ What if you could manage this complexity using natural language? What if you had
 an assistant that truly understood your collector's configuration, versions, and
 even its data?
 
-This is the vision behind the new [OpenTelemetry Collector Model Context
-Protocol (MCP) Server](https://github.com/pavolloffay/opentelemetry-mcp-server).
+This is the vision behind the new
+[OpenTelemetry Collector Model Context Protocol (MCP) Server](https://github.com/pavolloffay/opentelemetry-mcp-server).
 It is a third-party community MCP Server.
 
 In short, the MCP server acts as an intelligent backend, or a "brain," that
@@ -173,8 +173,8 @@ Today, it helps you validate configs, compare versions, and audit your
 deployments. Tomorrow, it could be the engine that proactively optimizes your
 entire telemetry stream.
 
-But we need your help to build this future. Share your feedback: What use cases do you have?
-What would you like to ask your Collector?
+But we need your help to build this future. Share your feedback: What use cases
+do you have? What would you like to ask your Collector?
 
 ## References
 
