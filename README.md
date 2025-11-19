@@ -90,7 +90,7 @@ These are the members of [@open-telemetry/docs-triagers]:
 - [Michael Yao](https://github.com/windsonsea), DaoCloud
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), AWS
 
-For more information about the approver role, see the
+For more information about the triager role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#triager).
 
 ### Emeritus maintainers
