@@ -93,7 +93,6 @@ These are the members of [@open-telemetry/docs-triagers]:
 For more information about the approver role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#triager).
 
-
 ### Emeritus maintainers
 
 - [jparsana](https://github.com/jparsana)
