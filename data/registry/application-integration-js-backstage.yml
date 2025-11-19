@@ -4,6 +4,7 @@ language: js
 tags:
   - backstage
   - javascript
+  - typescript
   - incubating
 license: Apache-2.0
 description:
