@@ -44,7 +44,7 @@ before opening an issue.
 
 ## Meetings
 
-We, the OTel Communications SIG, meet every two weeks on Monday at 10:00 PT.
+We, the OTel Communications SIG, meet every two weeks on Tuesday at 9:00 AM PT.
 Check out the [OpenTelemetry community calendar][] for the Zoom link and any
 updates to this schedule.
 
