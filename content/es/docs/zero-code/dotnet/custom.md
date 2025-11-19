@@ -50,7 +50,7 @@ Para crear tus trazas personalizadas manualmente, sigue estos pasos:
 `NonRegistered.ManualInstrumentations` `ActivitySource` no es gestionada por la
 instrumentación automática de OpenTelemetry. {{% /alert %}}
 
-## Metricas
+## Métricas
 
 Para crear tus métricas personalizadas manualmente, sigue estos pasos:
 
