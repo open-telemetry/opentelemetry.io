@@ -10615,9 +10615,9 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-18T09:41:28.783523996Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-configuration": {
-    "StatusCode": 404,
-    "LastSeen": "2025-11-18T09:46:40.131008816Z"
+  "https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-19T06:12:46.254349-03:00"
   },
   "https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-exporter-prometheus": {
     "StatusCode": 206,
