@@ -223,6 +223,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-11-15T09:42:29.03059063Z"
   },
+  "https://backstage.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-19T16:55:40.962363759Z"
+  },
+  "https://backstage.io/docs/tutorials/setup-opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-19T16:55:41.333692568Z"
+  },
   "https://bento.me/adrianamvillela": {
     "StatusCode": 200,
     "LastSeen": "2025-11-16T09:45:00.547533977Z"
@@ -4106,6 +4114,10 @@
   "https://github.com/bacherfl": {
     "StatusCode": 206,
     "LastSeen": "2025-11-11T09:42:07.674347522Z"
+  },
+  "https://github.com/backstage/backstage": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-19T16:55:42.022104778Z"
   },
   "https://github.com/badhon495": {
     "StatusCode": 206,
