@@ -1,5 +1,12 @@
+- [ ] I have read and followed the
+      [contribution guidelines](https://opentelemetry.io/docs/contributing/),
+      including the **First-time contributing?** note.
+- [ ] This PR includes **AI generated content**, and I have read and conform to
+      the
+      [Generative AI Contribution Policy](https://github.com/open-telemetry/community/blob/main/policies/genai.md).
+
 <!--
-Please provide a meaningful description of what your changes will do. Bonus points for including links to related issues, other PRs, or technical references.
+Provide a meaningful description of what your changes will do. Bonus points for including links to related issues, other PRs, or technical references.
 
 A detailed description helps reviewers understand the context of your change and reduces
 the time needed to review.
