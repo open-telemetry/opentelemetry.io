@@ -25,7 +25,7 @@ body:
         the faster we can resolve the issue.
     validations:
       required: true
-  - type: dropdown
+  - type: markdown
     attributes:
       label: Tip
       description:
