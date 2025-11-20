@@ -54,7 +54,15 @@ systematic approach to learning and helps new practitioners avoid common
 pitfalls. Achieving the OTCA certification can boost confidence and demonstrate
 a commitment to learning industry-standard tools and practices early in a
 career, which can be advantageous when seeking new roles or advancing within an
-organization.
+organization. For example:
+- If you're a developer who has only worked with vendor-specific Application 
+Performance Monitoring (APM) tooling, exam preparation helps you understand 
+vendor-neutral concepts such as semantic conventions, context propagation, and 
+the structure of telemetry signals.
+- If you're an SRE or DevOps newcomer, studying for the OTCA gives you a guided 
+path to understanding how traces, metrics, and logs flow through the SDK, the 
+Collector, and into an observability backend. This is knowledge you’ll use 
+daily in real systems.
 
 ## Benefits of the OTCA exam for advanced users
 
