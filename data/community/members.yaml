@@ -848,6 +848,7 @@ maintainers:
     teams:
       - docs-ja-approvers
       - docs-ja-maintainers
+      - docs-triagers
     html_url: https://github.com/katzchang
     avatar_url: https://avatars.githubusercontent.com/u/70050?v=4
   - name: kaylareopelle
@@ -935,6 +936,7 @@ maintainers:
       - specs-semconv-approvers
       - specs-semconv-maintainers
       - specs-triagers
+      - weaver-approvers
     html_url: https://github.com/lmolkova
     avatar_url: https://avatars.githubusercontent.com/u/2347409?v=4
   - name: lquerel
@@ -1074,6 +1076,7 @@ maintainers:
     teams:
       - docs-ja-approvers
       - docs-ja-maintainers
+      - docs-triagers
     html_url: https://github.com/Msksgm
     avatar_url: https://avatars.githubusercontent.com/u/49427230?v=4
   - name: mviitane

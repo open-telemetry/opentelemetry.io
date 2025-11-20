@@ -93,7 +93,7 @@ envolve ou usa os pontos de extensão para instrumentar a biblioteca, obrigando
 os usuários a instalar e/ou adaptar o uso da biblioteca.
 
 Para uma lista de bibliotecas de instrumentação, veja a coluna _"Standalone
-Library Instrumentation [1]"_ (Biblioteca autônoma de instrumentação) em
+Library Instrumentation"_ (Biblioteca autônoma de instrumentação) em
 [bibliotecas suportadas](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
 
 ### Instrumentação nativa {#native-instrumentation}
