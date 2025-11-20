@@ -1,0 +1,8 @@
+# Docsy overrides
+
+# Alert type
+caution = "Cuidado"
+important = "Importante"
+note = "Nota"
+tip = "Dica"
+warning = "Aviso"
