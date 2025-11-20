@@ -11471,6 +11471,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-12T09:42:20.655334403Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/sqlcommenter/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-30T16:03:06.490061444Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-python/tree/main/exporter/opentelemetry-exporter-opencensus": {
     "StatusCode": 206,
     "LastSeen": "2025-11-13T09:48:05.966394376Z"
@@ -14734,6 +14738,10 @@
   "https://google.github.io/sqlcommenter": {
     "StatusCode": 206,
     "LastSeen": "2025-11-15T09:44:22.763718206Z"
+  },
+  "https://google.github.io/sqlcommenter/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-17T22:19:44.57316566Z"
   },
   "https://google.github.io/sqlcommenter/spec/": {
     "StatusCode": 206,
@@ -18771,6 +18779,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-14T09:41:00.123439421Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.22.0-alpha/opentelemetry-instrumentation-bom-alpha-2.22.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-20T08:20:40.338581872Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.19.0/opentelemetry-instrumentation-bom-2.19.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2025-11-16T09:41:18.927876923Z"
@@ -18782,6 +18794,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.21.0/opentelemetry-instrumentation-bom-2.21.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2025-11-14T09:40:57.895752936Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.22.0/opentelemetry-instrumentation-bom-2.22.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-20T08:20:36.822101431Z"
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.53.0-alpha/opentelemetry-bom-alpha-1.53.0-alpha.pom": {
     "StatusCode": 206,
