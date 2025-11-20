@@ -25,9 +25,11 @@ fraud-detection(Fraud Detection):::kotlin
 frontend(Frontend):::typescript
 frontend-proxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
 image-provider(Image Provider <br/>&#40nginx&#41):::cpp
+llm(LLM):::python
 load-generator([Load Generator]):::python
 payment(Payment):::javascript
 product-catalog(Product Catalog):::golang
+product-reviews(Product Reviews):::python
 quote(Quote):::php
 recommendation(Recommendation):::python
 shipping(Shipping):::rust
@@ -60,13 +62,22 @@ frontend -->|gRPC| checkout
 frontend -->|HTTP| shipping
 frontend ---->|gRPC| recommendation
 frontend -->|gRPC| product-catalog
+frontend -->|gRPC| product-reviews
 
 frontend-proxy -->|gRPC| flagd
 frontend-proxy -->|HTTP| frontend
 frontend-proxy -->|HTTP| flagd-ui
 frontend-proxy -->|HTTP| image-provider
 
+llm -->|gRPC| flagd
+llm ---> product-reviews
+
 payment -->|gRPC| flagd
+
+product-reviews -->|gRPC| flagd
+product-reviews -->|gRPC| product-catalog
+product-reviews -->|gRPC| llm
+product-reviews ---> postgresql
 
 queue -->|TCP| accounting
 queue -->|TCP| fraud-detection

@@ -3,7 +3,7 @@ title: Building a Connector
 aliases: [/docs/collector/build-connector/]
 weight: 30
 # prettier-ignore
-cSpell:ignore: debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
+cSpell:ignore: debugexporter Errorf exampleconnector gomod gord Jaglowski mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
 ---
 
 ## Connectors in OpenTelemetry
@@ -93,7 +93,6 @@ receivers:
         endpoint: 0.0.0.0:4318
 
 exporters:
-  # NOTE: Prior to v0.86.0 use the `logging` instead of `debug`.
   debug:
 
 connectors:
@@ -484,9 +483,7 @@ your own OpenTelemetry Collector binary. You can add or remove components
       output_path: ./otelcol-dev
 
     exporters:
-      - gomod:
-          # Note: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
-          go.opentelemetry.io/collector/exporter/debugexporter v0.129.0
+      - gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.129.0
 
     receivers:
       - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.129.0

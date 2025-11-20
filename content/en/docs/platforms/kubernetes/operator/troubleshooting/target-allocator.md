@@ -101,10 +101,6 @@ spec:
               scrape_interval: 10s
               static_configs:
                 - targets: ['0.0.0.0:8888']
-
-    processors:
-      batch: {}
-
     exporters:
       debug:
         verbosity: detailed
@@ -113,15 +109,12 @@ spec:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: [batch]
           exporters: [debug]
         metrics:
           receivers: [otlp, prometheus]
-          processors: []
           exporters: [debug]
         logs:
           receivers: [otlp]
-          processors: [batch]
           exporters: [debug]
 ```
 
