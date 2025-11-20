@@ -2,7 +2,7 @@
 title:
   Is the OTCA Exam Right for You? Insights for Both Newcomers and Advanced Users
 author: '[Lukasz Ciukaj](https://github.com/luke6Lh43) (Splunk)'
-date: 2025-11-17
+date: 2025-11-20
 issue: 8233
 sig: End-User
 cSpell:ignore: ciukaj lukasz otca
