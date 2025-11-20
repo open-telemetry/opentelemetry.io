@@ -15055,6 +15055,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-15T09:44:38.267393495Z"
   },
+  "https://jaegertracing.io": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-20T15:01:12.712726+01:00"
+  },
   "https://jaegertracing.io/": {
     "StatusCode": 206,
     "LastSeen": "2025-11-12T09:41:48.451416355Z"
