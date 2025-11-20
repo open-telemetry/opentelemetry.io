@@ -13,14 +13,14 @@ well-known, widely used logging libraries.
 ## OpenTelemetry logs
 
 OpenTelemetry provides a Logs API and SDK for producing log records, and
-language SDKs and autoinstrumentation integrate with existing logging
-frameworks. Log records in OpenTelemetry are modeled as events: a timestamped
-occurrence with a body and a set of attributes. The Logs API is public and can
-be used directly by application code or indirectly via existing logging
-libraries and bridges.
+language SDKs and logging bridges to integrate with existing logging frameworks.
+Logs are anything you send through a Logging Provider, and events are a special
+type of logs. Not all logs are events, but all events are logs. The Logs API is
+public and can be used directly by application code or indirectly via existing
+logging libraries and bridges.
 
 OpenTelemetry is designed to work with the logs you already produce, offering
-tools to correlate logs with [traces](../traces), add contextual attributes, and
+tools to correlate logs with other signals, add contextual attributes, and
 normalize different sources into a common representation for processing and
 export.
 
@@ -158,7 +158,7 @@ possible to parse unstructured logs for analysis purposes, doing this may be
 more work than switching to structured logging, such as via a standard logging
 framework in your applications.
 
-Semistructured logs
+### Semistructured logs
 
 Semistructured logs include machine-readable key/value pairs or delimited fields
 but do not guarantee a stable schema across emitters. Examples include key=value
@@ -169,7 +169,7 @@ but may still require processing and normalization before analysis.
 Example of a semistructured log:
 
 ```text
-2024-08-04T12:45:23Z level=ERROR service=user-authentication userId=12345 action=login message="Failed login attempt" error="Invalid password" ipAddress=192.168.1.1 userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+2024-08-04T12:45:23Z level=ERROR service=user-authentication userId=12345 action=login message="Failed login attempt" error="Invalid password" ipAddress=192.168.1.1 userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 ```
 
 Semistructured logs may require mapping and type coercion during ingestion to be
