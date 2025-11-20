@@ -4,11 +4,12 @@ weight: 10
 description: Learn about the concept that enables Distributed Tracing.
 ---
 
-With context propagation, [signals](../signals/) ([traces](../signals/traces/), [metrics](../signals/metrics/), [logs](../signals/logs/))
-can be correlated with each other, regardless of where they are generated.
-Although not limited to tracing, context propagation allows
-[traces](../signals/traces/) to build causal information about a system across
-services that are arbitrarily distributed across process and network boundaries.
+With context propagation, [signals](../signals/) ([traces](../signals/traces/),
+[metrics](../signals/metrics/), [logs](../signals/logs/)) can be correlated with
+each other, regardless of where they are generated. Although not limited to
+tracing, context propagation allows [traces](../signals/traces/) to build causal
+information about a system across services that are arbitrarily distributed
+across process and network boundaries.
 
 To understand context propagation, you need to understand two separate concepts:
 context and propagation.
