@@ -55,14 +55,15 @@ pitfalls. Achieving the OTCA certification can boost confidence and demonstrate
 a commitment to learning industry-standard tools and practices early in a
 career, which can be advantageous when seeking new roles or advancing within an
 organization. For example:
-- If you're a developer who has only worked with vendor-specific Application 
-Performance Monitoring (APM) tooling, exam preparation helps you understand 
-vendor-neutral concepts such as semantic conventions, context propagation, and 
-the structure of telemetry signals.
-- If you're an SRE or DevOps newcomer, studying for the OTCA gives you a guided 
-path to understanding how traces, metrics, and logs flow through the SDK, the 
-Collector, and into an observability backend. This is knowledge you’ll use 
-daily in real systems.
+
+- If you're a developer who has only worked with vendor-specific Application
+  Performance Monitoring (APM) tooling, exam preparation helps you understand
+  vendor-neutral concepts such as semantic conventions, context propagation, and
+  the structure of telemetry signals.
+- If you're an SRE or DevOps newcomer, studying for the OTCA gives you a guided
+  path to understanding how traces, metrics, and logs flow through the SDK, the
+  Collector, and into an observability backend. This is knowledge you’ll use
+  daily in real systems.
 
 ## Benefits of the OTCA exam for advanced users
 
@@ -87,11 +88,11 @@ professional validation, regardless of prior experience with OpenTelemetry. For
 newcomers, it establishes a strong, industry-recognized foundation, while for
 advanced users, it reinforces core concepts and supports ongoing professional
 development. Certification can also signal to employers a candidate’s dedication
-to best practices and commitment to continual learning. For the exam preparation 
-itself, the [OpenTelemetry Documentation](/docs/) is an excellent starting point, 
-and reinforcing this knowledge through practical work with manual and 
-auto-instrumentation is particularly effective. In addition, several books and 
-interactive courses are available to support exam readiness. Pursuing the OTCA 
-certification is a worthwhile step for anyone seeking to deepen their 
-observability skills and demonstrate a commitment to industry best practices 
-in an ever-changing technology landscape.
+to best practices and commitment to continual learning. For the exam preparation
+itself, the [OpenTelemetry Documentation](/docs/) is an excellent starting
+point, and reinforcing this knowledge through practical work with manual and
+auto-instrumentation is particularly effective. In addition, several books and
+interactive courses are available to support exam readiness. Pursuing the OTCA
+certification is a worthwhile step for anyone seeking to deepen their
+observability skills and demonstrate a commitment to industry best practices in
+an ever-changing technology landscape.
