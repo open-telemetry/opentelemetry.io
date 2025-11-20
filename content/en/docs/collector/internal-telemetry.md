@@ -34,8 +34,8 @@ By default, the Collector exposes its own telemetry in two ways:
 
 The Collector's automatically attaches the `service.name`, `service.version`,
 and `service.instance.id` (randomly generated) resource attributes to its
-internal telemetry signals. These can be disabled by setting the attribute
-value to `null` (ex. `service.name: null`).
+internal telemetry signals. These can be disabled by setting the attribute value
+to `null` (ex. `service.name: null`).
 
 If you'd like to add additional resource attributes to the Collector's internal
 telemetry signals (traces, metrics, and logs) you can set them under
