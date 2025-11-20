@@ -79,6 +79,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-18T09:47:32.980856547Z"
   },
+  "https://arize.com/docs/phoenix/tracing/how-to-tracing/setup-tracing": {
+    "StatusCode": 200,
+    "LastSeen": "2025-11-20T13:01:17.652301-03:00"
+  },
   "https://armeria.dev": {
     "StatusCode": 206,
     "LastSeen": "2025-11-16T09:40:52.854716444Z"
