@@ -1,0 +1,20 @@
+# cSpell:ignore gitlabreceiver gitlab
+title: GitLab Receiver
+registryType: receiver
+language: collector
+tags:
+  - gitlab
+  - receiver
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/gitlabreceiver
+license: Apache 2.0
+description:
+  Workflow tracing support is actively being added to the GitLab receiver.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/gitlabreceiver
+  version: v0.140.1

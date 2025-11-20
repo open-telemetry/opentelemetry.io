@@ -1,0 +1,18 @@
+{{ $colors := dict
+"caution" "warning"
+"important" "danger"
+"note" "info"
+"tip" "success"
+"warning" "warning"
+-}}
+
+<div class="alert alert-{{ index $colors .AlertType -}}">
+  <div class="h4 alert-heading" role="heading">
+    {{ with .AlertTitle -}}
+    {{ . -}}
+    {{ else -}}
+    {{ or (i18n .AlertType) (title .AlertType) -}}
+    {{ end }}
+  </div>
+  {{ .Text }}
+</div>

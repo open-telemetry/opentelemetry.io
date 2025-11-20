@@ -17,4 +17,4 @@ isFirstParty: false
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.Cassandra
-  version: 1.0.0-beta.2
+  version: 1.0.0-beta.4

@@ -51,7 +51,7 @@ file.
 
 To enforce standards and consistency for Markdown files, all files should follow
 certain rules, enforced by [markdownlint]. For a full list, check the
-[.markdownlint.json] file.
+[.markdownlint.yaml] file.
 
 We also enforce Markdown [file format](#file-format) and strip files of trailing
 whitespace. This precludes the [line break syntax] of 2+ spaces; use `<br>`
@@ -88,8 +88,13 @@ title: registryEntryTitle
 
 ## File format
 
-We enforce file formatting using [Prettier]. Invoke it using
-`npm run fix:format`.
+We use [Prettier] to enforce file formatting. Invoke it using:
+
+- `npm run fix:format` to format all files
+- `npm run fix:format:diff` to format only the files that have changed since the
+  last commit
+- `npm run fix:format:staged` to format only the files that are staged for the
+  next commit
 
 ## File names
 
@@ -100,8 +105,8 @@ All file names should be in
 
 To learn how to fix validation issues, see [Pull request checks](../pr-checks).
 
-[.markdownlint.json]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json
+[.markdownlint.yaml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
 [line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [Prettier]: https://prettier.io

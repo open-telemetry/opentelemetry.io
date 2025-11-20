@@ -18,6 +18,7 @@ aliases: [trace_service_features, trace-features, ../trace-features]
 | Load Generator  | Python     | ✅                        | 🚧                   | 🚧                   | 🚧                      | 🚧         | 🚧      | 🚧                 |
 | Payment         | JavaScript | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | ✅      | ✅                 |
 | Product Catalog | Go         | ✅                        | 🔕                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
+| Product Reviews | Python     | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 | Quote Service   | PHP        | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 | Recommendation  | Python     | ✅                        | ✅                   | ✅                   | 🔕                      | 🔕         | 🔕      | 🚧                 |
 | Shipping        | Rust       | ✅                        | ✅                   | ✅                   | ✅                      | 🔕         | 🔕      | ✅                 |

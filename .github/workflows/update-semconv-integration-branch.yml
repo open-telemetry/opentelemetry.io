@@ -1,4 +1,5 @@
 name: Update semconv integration branch
+# cSpell:ignore otelbot
 
 on:
   schedule:
@@ -14,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
-      - uses: actions/create-github-app-token@df432ceedc7162793a195dd1713ff69aefc7379e # v2.0.6
+      - uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2.1.4
         id: otelbot-token
         with:
           # the higher privileged docs token is needed to push commits to an existing PR
@@ -80,7 +81,7 @@ jobs:
             git push
           fi
 
-      - name: Update submodule
+      - name: Update submodule and Hugo mounts
         run: |
           git submodule update --init content-modules/semantic-conventions
           cd content-modules/semantic-conventions
@@ -101,6 +102,8 @@ jobs:
             sed -i "s/^\(\s *\)semconv: .*/\1semconv: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
           fi
 
+          ./scripts/update-semconv-mounts.pl
+
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
@@ -108,7 +111,7 @@ jobs:
             git push
           fi
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
 

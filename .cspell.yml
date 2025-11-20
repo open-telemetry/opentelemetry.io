@@ -77,3 +77,4 @@ words: # Valid words across all locales
   - nvmrc
   - opentelemetrybot
   - warnf
+  - warnidf
