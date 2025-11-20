@@ -4,7 +4,7 @@ weight: 10
 description: Learn about the concept that enables Distributed Tracing.
 ---
 
-With context propagation, [signals](../signals/) ([Traces](../signals/traces/), [Metrics](../signals/metrics/), [Logs](../signals/logs/), [Baggage](../signals/baggage/))
+With context propagation, [signals](../signals/) ([traces](../signals/traces/), [metrics](../signals/metrics/), [logs](../signals/logs/))
 can be correlated with each other, regardless of where they are generated.
 Although not limited to tracing, context propagation allows
 [traces](../signals/traces/) to build causal information about a system across
