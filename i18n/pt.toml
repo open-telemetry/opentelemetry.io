@@ -1,0 +1,11 @@
+# TODO: if/once Hugo is fixed, rename this file to pt-br.toml
+
+# Blockquote alert types, see:
+# https://gohugo.io/render-hooks/blockquotes/#alerts
+# TODO: Upstream to Docsy
+
+caution = "Cuidado"
+important = "Importante"
+note = "Nota"
+tip = "Dica"
+warning = "Aviso"
