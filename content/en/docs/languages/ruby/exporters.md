@@ -7,7 +7,7 @@ weight: 50
 
 ## OTLP endpoint
 
-To send trace data to a OTLP endpoint (like the [collector](/docs/collector) or
+To send trace data to an OTLP endpoint (like the [collector](/docs/collector) or
 Jaeger) you'll want to use an exporter package, such as
 `opentelemetry-exporter-otlp`:
 
@@ -25,7 +25,7 @@ gem install opentelemetry-exporter-otlp
 
 {{% /tab %}} {{< /tabpane >}}
 
-Next, configure the exporter to point at an OTLP endpoint. For example you can
+Next, configure the exporter to point at an OTLP endpoint. For example, you can
 update `config/initializers/opentelemetry.rb` from the
 [Getting Started](../getting-started/) by adding
 `require 'opentelemetry-exporter-otlp'` to the code:
@@ -41,13 +41,13 @@ OpenTelemetry::SDK.configure do |c|
 end
 ```
 
-If you now run your application it will use OTLP to export traces:
+If you now run your application, it will use OTLP to export traces:
 
 ```sh
 rails server -p 8080
 ```
 
-By default traces are sent to an OTLP endpoint listening on localhost:4318. You
+By default, traces are sent to an OTLP endpoint listening on localhost:4318. You
 can change the endpoint by setting the `OTEL_EXPORTER_OTLP_ENDPOINT`
 accordingly:
 
@@ -56,7 +56,7 @@ env OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318" rails server -p 8080
 ```
 
 To try out the OTLP exporter quickly and see your traces visualized at the
-receiving end, you can run Jaeger in a docker container:
+receiving end, you can run Jaeger in a Docker container:
 
 ```shell
 docker run -d --name jaeger \
@@ -75,9 +75,12 @@ docker run -d --name jaeger \
   jaegertracing/all-in-one:latest
 ```
 
+You can visualize the traces via the Jaeger trace UI by visiting
+`localhost:16686` in your browser.
+
 ## Zipkin
 
-To set up Zipkin as quickly as possible, run it in a docker container:
+To set up Zipkin as quickly as possible, run it in a Docker container:
 
 ```shell
 docker run --rm -d -p 9411:9411 --name zipkin openzipkin/zipkin
@@ -121,7 +124,7 @@ If you now run your application, set the environment variable
 env OTEL_TRACES_EXPORTER=zipkin rails server
 ```
 
-By default traces are sent to a Zipkin endpoint listening on port
+By default, traces are sent to a Zipkin endpoint listening on port
 localhost:9411. You can change the endpoint by setting the
 `OTEL_EXPORTER_ZIPKIN_ENDPOINT` accordingly:
 
