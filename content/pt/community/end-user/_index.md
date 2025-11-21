@@ -6,6 +6,7 @@ redirects:
   - { from: slack-channel, to: '#slack' }
   - { from: discussion-group, to: '#podcast' }
   - { from: feedback-survey, to: '#survey' }
+weight: 40
 default_lang_commit: 520b0c4f1109a2b790b2a9ec347c84cc128a2cec
 ---
 
