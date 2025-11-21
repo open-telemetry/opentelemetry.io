@@ -30,6 +30,24 @@ By default, the Collector exposes its own telemetry in two ways:
   interface which defaults to port `8888`.
 - [Logs](#configure-internal-logs) are emitted to `stderr` by default.
 
+### Configure resource attributes
+
+The Collector's automatically attaches the `service.name`, `service.version`,
+and `service.instance.id` (randomly generated) resource attributes to its
+internal telemetry signals. These can be disabled by setting the attribute value
+to `null` (ex. `service.name: null`).
+
+If you'd like to add additional resource attributes to the Collector's internal
+telemetry signals (traces, metrics, and logs) you can set them under
+`service::telemetry::resource`:
+
+```yaml
+service:
+  telemetry:
+    resource:
+      attribute_key: 'attribute_value'
+```
+
 ### Configure internal metrics
 
 #### OTLP exporter for internal metrics
@@ -54,22 +72,6 @@ service:
                 protocol: http/protobuf
                 endpoint: https://backend:4318
 ```
-
-If you'd like to add additional resource attributes to the Collector's internal
-telemetry signals (traces, metrics, and logs) you can set them under
-`service::telemetry::resource`:
-
-```yaml
-service:
-  telemetry:
-    resource:
-      attribute_key: 'attribute_value'
-```
-
-`service.name`, `service.version`, and `service.instance.id` (randomly
-generated) resource attributes will be automatically attached to the Collector's
-internal telemetry signals. These can be disabled by setting the the attribute
-value to `null` (ex. `service.name: null`).
 
 #### Prometheus endpoint for internal metrics
 
