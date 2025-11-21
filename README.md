@@ -44,7 +44,7 @@ before opening an issue.
 
 ## Meetings
 
-We, the OTel Communications SIG, meet every two weeks on Monday at 10:00 PT.
+We, the OTel Communications SIG, meet every two weeks on Tuesday at 9:00 AM PT.
 Check out the [OpenTelemetry community calendar][] for the Zoom link and any
 updates to this schedule.
 
@@ -78,6 +78,20 @@ These are the members of [@open-telemetry/docs-approvers]:
 
 For more information about the approver role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
+
+### Triagers
+
+These are the members of [@open-telemetry/docs-triagers]:
+
+- [Emídio Neto](https://github.com/emdneto)
+- [Ezzio Moreira](https://github.com/EzzioMoreira), PicPay
+- [Kazunori Otani](https://github.com/katzchang), Splunk
+- [Masaki Sugimoto](https://github.com/Msksgm), Henry, Inc.
+- [Michael Yao](https://github.com/windsonsea), DaoCloud
+- [Yoshi Yamaguchi](https://github.com/ymotongpoo), AWS
+
+For more information about the triager role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#triager).
 
 ### Emeritus maintainers
 
