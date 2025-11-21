@@ -70,7 +70,7 @@ estão alguns exemplos de pesquisas já realizadas:
 
 [Saiba mais sobre como conduzimos pesquisas.](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys)
 
-## Participar de um podcast {#podcast}
+## Participe de um podcast {#podcast}
 
 A forma mais profunda de compartilhar sua experiência é participando dos nossos
 podcasts. Há dois tipos principais:
