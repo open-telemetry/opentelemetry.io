@@ -12,16 +12,17 @@ well-known, widely used logging libraries.
 
 ## OpenTelemetry logs
 
-OpenTelemetry does not define a bespoke API or SDK to create logs. Instead,
-OpenTelemetry logs are the existing logs you already have from a logging
-framework or infrastructure component. OpenTelemetry SDKs and
-autoinstrumentation utilize several components to automatically correlate logs
-with [traces](../traces).
+OpenTelemetry provides a Logs API and SDK for producing log records, and
+language SDKs and logging bridges to integrate with existing logging frameworks.
+Logs are anything you send through a Logging Provider, and events are a special
+type of logs. Not all logs are events, but all events are logs. The Logs API is
+public and can be used directly by application code or indirectly via existing
+logging libraries and bridges.
 
-OpenTelemetry's support for logs is designed to be fully compatible with what
-you already have, providing capabilities to wrap those logs with additional
-context and a common toolkit to parse and manipulate logs into a common format
-across many different sources.
+OpenTelemetry is designed to work with the logs you already produce, offering
+tools to correlate logs with other signals, add contextual attributes, and
+normalize different sources into a common representation for processing and
+export.
 
 ### OpenTelemetry logs in the OpenTelemetry Collector
 
@@ -56,18 +57,20 @@ implementations of the Logs API & SDK, the status is as follows:
 
 ## Structured, unstructured, and semistructured logs
 
-OpenTelemetry does not technically distinguish between structured and
-unstructured logs. You can use any log you have with OpenTelemetry. However, not
-all log formats are equally useful! Structured logs, in particular, are
-recommended for production observability because they are easy to parse and
-analyze at scale. The following section explains the differences between
-structured, unstructured, and semistructured logs.
+OpenTelemetry accepts any log format, but not all formats are equally useful for
+analysis. The following section explains the differences between structured,
+semistructured, and unstructured logs. Important: a log encoded as JSON is not
+automatically "structured" in the sense of having a stable schema —it may be
+semistructured. Structured logs imply a consistent schema or well-defined typed
+fields that downstream processing can reliably depend on.
 
 ### Structured logs
 
-A structured log is a log whose textual format follows a consistent,
-machine-readable format. For applications, one of the most common formats is
-JSON:
+A structured log is a log with a defined, consistent schema or typed fields that
+downstream systems can reliably parse and interpret. The textual encoding can be
+JSON, protobuf, or another format, but what makes a log structured is the
+presence of a stable schema (field names, types, and semantics), not merely that
+it is valid JSON. For example, a structured JSON log might look like:
 
 ```json
 {
@@ -112,23 +115,21 @@ and for infrastructure components, Common Log Format (CLF) is commonly used:
 127.0.0.1 - johndoe [04/Aug/2024:12:34:56 -0400] "POST /api/v1/login HTTP/1.1" 200 1234
 ```
 
-It is also common to have different structured log formats mixed together. For
-example, an Extended Log Format (ELF) log can mix JSON with the
-whitespace-separated data in a CLF log.
+It is also common to encounter hybrid or extended formats (for example, CLF
+fields combined with a trailing JSON blob).
 
 ```text
 192.168.1.1 - johndoe [04/Aug/2024:12:34:56 -0400] "POST /api/v1/login HTTP/1.1" 200 1234 "http://example.com" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36" {"transactionId": "abcd-efgh-ijkl-mnop", "responseTime": 150, "requestBody": {"username": "johndoe"}, "responseHeaders": {"Content-Type": "application/json"}}
 ```
 
-To make the most use of this log, parse both the JSON and the ELF-related pieces
-into a shared format to make analysis on an observability backend easier. The
-`filelogreceiver` in the [OpenTelemetry Collector](/docs/collector) contains
-standardized ways to parse logs like this.
+In those cases, parse or extract the parts you need into a normalized record so
+downstream tooling can analyze them consistently. The `filelogreceiver` in the
+[OpenTelemetry Collector] (/docs/collector) provides helpers to parse mixed
+formats.
 
-Structured logs are the preferred way to use logs. Because structured logs are
-emitted in a consistent format, they are straightforward to parse, which makes
-them easier to preprocess in an OpenTelemetry Collector, correlate with other
-data, and ultimate analyze in an Observability backend.
+Structured logs are preferred in production because their stable schema makes
+them straightforward to validate, parse, correlate with traces and metrics, and
+analyze at scale.
 
 ### Unstructured logs
 
@@ -159,9 +160,11 @@ framework in your applications.
 
 ### Semistructured logs
 
-A semistructured log is a log that does use some self-consistent patterns to
-distinguish data so that it's machine-readable, but may not use the same
-formatting and delimiters between data across different systems.
+Semistructured logs include machine-readable key/value pairs or delimited fields
+but do not guarantee a stable schema across emitters. Examples include key=value
+logging (shown below) or JSON blobs where field names and types vary between
+messages. Semistructured logs are often easier to parse than unstructured logs
+but may still require processing and normalization before analysis.
 
 Example of a semistructured log:
 
@@ -169,8 +172,8 @@ Example of a semistructured log:
 2024-08-04T12:45:23Z level=ERROR service=user-authentication userId=12345 action=login message="Failed login attempt" error="Invalid password" ipAddress=192.168.1.1 userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 ```
 
-Although machine-readable, semistructured logs may require several different
-parsers to allow for analysis at scale.
+Semistructured logs may require mapping and type coercion during ingestion to be
+fully useful for downstream analysis.
 
 ## OpenTelemetry logging components
 
