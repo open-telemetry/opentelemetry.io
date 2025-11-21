@@ -1729,6 +1729,11 @@ approvers:
       - semconv-feature-flag-approvers
     html_url: https://github.com/beeme1mr
     avatar_url: https://avatars.githubusercontent.com/u/682996?v=4
+  - name: BenoitZugmeyer
+    teams:
+      - browser-approvers
+    html_url: https://github.com/BenoitZugmeyer
+    avatar_url: https://avatars.githubusercontent.com/u/61787?v=4
   - name: bertysentry
     teams:
       - docs-fr-approvers
@@ -2535,6 +2540,11 @@ triagers:
       - ruby-contrib-triagers
     html_url: https://github.com/scbjans
     avatar_url: https://avatars.githubusercontent.com/u/27202540?v=4
+  - name: sharadraju
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/sharadraju
+    avatar_url: https://avatars.githubusercontent.com/u/86588332?v=4
   - name: sincejune
     teams:
       - collector-triagers
@@ -3065,6 +3075,9 @@ members:
   - name: YanivD
     html_url: https://github.com/YanivD
     avatar_url: https://avatars.githubusercontent.com/u/5182244?v=4
+  - name: yordis
+    html_url: https://github.com/yordis
+    avatar_url: https://avatars.githubusercontent.com/u/4237280?v=4
   - name: yumosx
     html_url: https://github.com/yumosx
     avatar_url: https://avatars.githubusercontent.com/u/141902143?v=4
