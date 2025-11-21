@@ -1,5 +1,13 @@
 _filename-error
 The following package was not found and will be installed
+
+# Ignore warnings that first appeared in:
+#
+# - https://github.com/open-telemetry/opentelemetry.io/pull/8469
+#
+# Drop once Hugo is fixed, via https://github.com/gohugoio/hugo/issues/7982
+# or @chalin's PR (TBC).
+
 WARN  Failed to get translated string for language "pt" and ID "community_introduce": %!s(<nil>)
 WARN  Failed to get translated string for language "pt" and ID "community_learn": %!s(<nil>)
 WARN  Failed to get translated string for language "pt" and ID "community_using": %!s(<nil>)
