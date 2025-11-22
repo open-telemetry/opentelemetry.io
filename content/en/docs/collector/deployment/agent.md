@@ -6,14 +6,16 @@ weight: 2
 cSpell:ignore: prometheusremotewrite
 ---
 
-The agent collector deployment pattern uses applications
-[instrumented][instrumentation] with an OpenTelemetry SDK using the
-[OpenTelemetry Protocol (OTLP)][otlp], or downstream collectors using the OTLP
-exporter. These components send telemetry signals to a [Collector][collector]
-instance running alongside the application or on the same host (for example, as
-a sidecar or a DaemonSet).
+In the agent deployment pattern, telemetry signals can come from
+- Applications [instrumented][instrumentation] with an OpenTelemetry SDK using the
+[OpenTelemetry Protocol (OTLP)][otlp]
+- Collectors using the OTLP exporter
 
-Each client-side SDK or downstream collector is configured with the address of a
+The signals are sent to a [Collector][collector]
+instance that runs alongside the application or on the same host, such as
+a sidecar or a DaemonSet.
+
+Each client-side SDK or downstream Collector is configured with the address of a
 Collector instance:
 
 ![Decentralized collector deployment concept](../../img/otel-agent-sdk.svg)
@@ -23,19 +25,15 @@ Collector instance:
 
 ## Example
 
-A concrete example of the agent deployment pattern could look like this: you
-manually instrument a [Java application to export metrics][instrument-java-metrics]
-using the OpenTelemetry Java SDK. In the application context, you set
-`OTEL_METRICS_EXPORTER` to `otlp` (the default value) and configure the
-[OTLP exporter][otlp-exporter] with the address of your Collector. For example
-(in Bash or `zsh`):
+In this example of the agent deployment pattern, begin by
+manually instrumenting a [Java application to export metrics][instrument-java-metrics]
+using the OpenTelemetry Java SDK, including the default `OTEL_METRICS_EXPORTER` value, `otlp`. Next, configure the [OTLP exporter][otlp-exporter] with the address of your Collector. For example:
 
 ```shell
-export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318`
+export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318
 ```
 
-The Collector running at `collector.example.com:4318` would then be configured
-like so:
+Next, configure the Collector running at `collector.example.com:4318` as follows:
 
 {{< tabpane text=true >}} {{% tab Traces %}}
 
@@ -104,19 +102,19 @@ service:
 
 {{% /tab %}} {{< /tabpane >}}
 
-To explore this pattern end to end, refer to the
+To explore this pattern end to end, see the
 [Java][java-otlp-example] or [Python][py-otlp-example] examples.
 
 ## Trade-offs
 
 Pros:
 
-- Simple to get started
+- Straightforward to get started
 - Clear one-to-one mapping between application and Collector
 
 Cons:
 
-- Limited scalability (both operational and load-related)
+- Limited scalability for teams and infrastructure resources
 - Inflexible for complex or evolving deployments
 
 [instrumentation]: /docs/languages/

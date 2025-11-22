@@ -4,15 +4,15 @@ description: Why and how to send signals directly from an application to backend
 weight: 1
 ---
 
-The simplest deployment pattern is not to use a Collector at all. In this
+The most direct deployment pattern doesn't use a Collector at all. In this
 approach, applications [instrumented][instrumentation] with an OpenTelemetry SDK
-export telemetry signals (traces, metrics, and logs) directly to a backend:
+export telemetry signals (traces, metrics, and logs) straight to a backend:
 
 ![No collector deployment concept](../../img/otel-sdk.svg)
 
 ## Example
 
-See the [code instrumentation for programming languages][instrumentation] for
+See the [instrumentation documentation][instrumentation] for
 end-to-end examples that show how to export signals directly from your
 application to a backend.
 
@@ -20,13 +20,13 @@ application to a backend.
 
 Pros:
 
-- Simple to use (especially in development and test environments)
+- Straightforward to use, especially in development and test environments
 - No additional moving parts to deploy or operate
 
 Cons:
 
 - Requires code changes if collection, processing, or ingestion needs change
-- Strong coupling between application code and backend behavior
+- Strong coupling between application code and backend storage or visualization
 - Each language implementation supports only a limited number of exporters
 
 [instrumentation]: /docs/languages/
