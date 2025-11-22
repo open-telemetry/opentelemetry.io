@@ -411,6 +411,17 @@ maintainers:
       - proto-triagers
     html_url: https://github.com/christos68k
     avatar_url: https://avatars.githubusercontent.com/u/77498532?v=4
+  - name: ChrsMark
+    teams:
+      - collector-contrib-approvers
+      - collector-contrib-maintainers
+      - collector-contrib-triagers
+      - collector-releases-approvers
+      - semconv-container-approvers
+      - semconv-k8s-approvers
+      - semconv-system-approvers
+    html_url: https://github.com/ChrsMark
+    avatar_url: https://avatars.githubusercontent.com/u/11754898?v=4
   - name: cijothomas
     teams:
       - dotnet-approvers
@@ -816,6 +827,7 @@ maintainers:
       - proto-triagers
       - semconv-cicd-approvers
       - semconv-security-approvers
+      - semconv-service-and-deployment-approvers
       - specs-approvers
       - specs-entities-approvers
       - specs-maintainers
@@ -1774,16 +1786,6 @@ approvers:
       - php-triagers
     html_url: https://github.com/ChrisLightfootWild
     avatar_url: https://avatars.githubusercontent.com/u/106102472?v=4
-  - name: ChrsMark
-    teams:
-      - collector-contrib-approvers
-      - collector-contrib-triagers
-      - collector-releases-approvers
-      - semconv-container-approvers
-      - semconv-k8s-approvers
-      - semconv-system-approvers
-    html_url: https://github.com/ChrsMark
-    avatar_url: https://avatars.githubusercontent.com/u/11754898?v=4
   - name: CodeBlanch
     teams:
       - dotnet-approvers
@@ -1826,6 +1828,12 @@ approvers:
       - docs-ro-approvers
     html_url: https://github.com/didiViking
     avatar_url: https://avatars.githubusercontent.com/u/33810708?v=4
+  - name: douglascamata
+    teams:
+      - collector-contrib-triagers
+      - collector-releases-approvers
+    html_url: https://github.com/douglascamata
+    avatar_url: https://avatars.githubusercontent.com/u/159076?v=4
   - name: dpauls
     teams:
       - semconv-messaging-approvers
@@ -2416,11 +2424,6 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/d4nyll
     avatar_url: https://avatars.githubusercontent.com/u/9997953?v=4
-  - name: douglascamata
-    teams:
-      - collector-contrib-triagers
-    html_url: https://github.com/douglascamata
-    avatar_url: https://avatars.githubusercontent.com/u/159076?v=4
   - name: facostaembrace
     teams:
       - javascript-contrib-triagers
