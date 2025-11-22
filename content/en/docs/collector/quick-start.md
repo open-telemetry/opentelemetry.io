@@ -128,7 +128,7 @@ preferred shell.
 In this tutorial you've started the OpenTelemetry Collector and sent telemetry
 to it. As next steps, consider doing the following:
 
-- Explore different ways to [install the Collector](../installation/).
+- Explore different ways to [install the Collector](../install/).
 - Learn about the different modes of the Collector in
   [Deployment Methods](../deployment/).
 - Familiarize yourself with the Collector
