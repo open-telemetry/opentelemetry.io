@@ -18,6 +18,8 @@ application to a backend.
 
 ## Trade-offs
 
+Key pros and cons of skipping the Collector:
+
 Pros:
 
 - Straightforward to use, especially in development and test environments
