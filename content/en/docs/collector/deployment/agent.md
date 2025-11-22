@@ -107,6 +107,8 @@ To explore this pattern end to end, see the
 
 ## Trade-offs
 
+Key pros and cons of using an agent collector:
+
 Pros:
 
 - Straightforward to get started
