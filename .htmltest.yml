@@ -32,9 +32,6 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^(/..)?/docs/collector/registry/$
   - ^(/..)?/docs/languages/dotnet/(metrics-api|traces-api)/
   - ^((/..)?/docs/migration/)?opencensus/$
-  # TODO drop next line after https://github.com/open-telemetry/opentelemetry.io/pull/7559 is merged
-  # and `pt` has been synced with the `en` changes in that PR.
-  - ^((/..)?/community/end-user/)?feedback-survey/$
   - ^/../docs/specs/?$ # non-default locale spec redirect
 
   - ^https://deploy-preview-\d+--opentelemetry.netlify.app/
