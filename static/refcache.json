@@ -6647,6 +6647,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-14T09:46:24.618196645Z"
   },
+  "https://github.com/open-telemetry/community/issues/3129": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-10T13:40:02.472368198Z"
+  },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
     "LastSeen": "2025-11-18T09:41:33.710008685Z"
@@ -13410,6 +13414,10 @@
   "https://github.com/pavolloffay": {
     "StatusCode": 206,
     "LastSeen": "2025-11-12T09:42:59.513214545Z"
+  },
+  "https://github.com/pavolloffay/opentelemetry-mcp-server": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-10T13:40:05.871824666Z"
   },
   "https://github.com/pdelewski": {
     "StatusCode": 206,
