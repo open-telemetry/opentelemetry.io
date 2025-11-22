@@ -1,0 +1,19 @@
+# cSpell:ignore sveltekit vercel
+title: Instrumentation for SvelteKit
+registryType: instrumentation
+language: js
+tags:
+  - Node.js
+  - instrumentation
+  - sveltekit
+license: MIT
+description: SvelteKit supports OpenTelemetry instrumentation out of the box.
+authors:
+  - name: Svelte contributors
+    url: https://github.com/sveltejs/
+urls:
+  website: https://svelte.dev/
+  repo: https://github.com/sveltejs/kit
+  docs: https://svelte.dev/docs/kit/observability
+createdAt: 2025-08-26
+isNative: true

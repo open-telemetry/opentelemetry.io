@@ -45,18 +45,16 @@ receivers:
       http:
         endpoint: 0.0.0.0:4318
 
-processors:
-  batch:
-
 exporters:
   otlp/jaeger: # Jaeger supports OTLP directly
     endpoint: https://jaeger.example.com:4317
+    sending_queue:
+      batch:
 
 service:
   pipelines:
     traces/dev:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp/jaeger]
 ```
 
@@ -69,18 +67,16 @@ receivers:
       http:
         endpoint: 0.0.0.0:4318
 
-processors:
-  batch:
-
 exporters:
   prometheusremotewrite: # the PRW exporter, to ingest metrics to backend
     endpoint: https://prw.example.com/v1/api/remote_write
+    sending_queue:
+      batch:
 
 service:
   pipelines:
     metrics/prod:
       receivers: [otlp]
-      processors: [batch]
       exporters: [prometheusremotewrite]
 ```
 
@@ -93,9 +89,6 @@ receivers:
       http:
         endpoint: 0.0.0.0:4318
 
-processors:
-  batch:
-
 exporters:
   file: # the File Exporter, to ingest logs to local file
     path: ./app42_example.log
@@ -105,7 +98,6 @@ service:
   pipelines:
     logs/dev:
       receivers: [otlp]
-      processors: [batch]
       exporters: [file]
 ```
 

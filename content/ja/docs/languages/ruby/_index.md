@@ -6,6 +6,7 @@ description: >
 aliases: [/ruby, /ruby/metrics, /ruby/tracing]
 weight: 24
 default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57
+drifted_from_default: true
 ---
 
 {{% docs/languages/index-intro ruby /%}}

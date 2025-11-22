@@ -1,6 +1,7 @@
 ---
 title: Spring Boot starter
 aliases:
+  - /docs/languages/java/spring-boot
   - /docs/languages/java/automatic/spring-boot
   - /docs/zero-code/java/agent/spring-boot
   - /docs/zero-code/java/spring-boot

@@ -91,7 +91,18 @@ Make sure that the domain.xml file in your domain directory contains a
 
 ## Tomcat / TomEE
 
-Add the path to the Java agent to your startup script:
+Add the path to the Java agent to your startup script. The configuration method
+depends on your installation:
+
+**For package-managed installations** (apt-get/yum), add to
+`/etc/tomcat*/tomcat*.conf`:
+
+```sh
+JAVA_OPTS="$JAVA_OPTS -javaagent:/path/to/opentelemetry-javaagent.jar"
+```
+
+**For download installations**, create or modify `<tomcat>/bin/setenv.sh`
+(Linux) or `<tomcat>/bin/setenv.bat` (Windows):
 
 {{< tabpane text=true persist=lang >}}
 
@@ -110,6 +121,10 @@ set CATALINA_OPTS=%CATALINA_OPTS% -javaagent:"<Drive>:\path\to\opentelemetry-jav
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+**For Windows service installations**, use `<tomcat>/bin/tomcat*w.exe` to add
+`-javaagent:<Drive>:\path\to\opentelemetry-javaagent.jar` to the Java Options
+under the Java tab.
 
 ## WebLogic
 
@@ -161,3 +176,33 @@ Open the WebSphere Admin Console and follow these steps:
 5.  In **Generic JVM arguments**, enter the path to the agent:
     `-javaagent:/path/to/opentelemetry-javaagent.jar`.
 6.  Save the configuration and restart the server.
+
+## Enable predefined JMX Metrics
+
+The Java agent includes predefined JMX metrics configurations for several
+popular application servers, but these are not enabled by default. To enable
+collection of the predefined metrics, specify a list of targets as the value for
+the `otel.jmx.target.system` system property. For example:
+
+```bash
+$ java -javaagent:path/to/opentelemetry-javaagent.jar \
+     -Dotel.jmx.target.system=jetty,tomcat \
+     ... \
+     -jar myapp.jar
+```
+
+The following are known application server values for `otel.jmx.target.system`:
+
+- [`jetty`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/jetty.md)
+- [`tomcat`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/tomcat.md)
+- [`wildfly`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/wildfly.md)
+
+{{% alert title="Note" %}}
+
+This list is not comprehensive, and other JMX target systems are supported.
+
+{{% /alert %}}
+
+For a list of metrics extracted from each application server, select the
+previous name, or refer to
+[Additional details and customization capabilities](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics#predefined-metrics).

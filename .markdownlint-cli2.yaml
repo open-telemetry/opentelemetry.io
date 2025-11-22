@@ -1,0 +1,18 @@
+customRules:
+  - ./scripts/_md-rules/unindent-code-blocks.js
+  - ./scripts/_md-rules/trim-code-blank-lines.js
+  - ./scripts/_md-rules/validate-links.js
+
+ignores:
+  - '.github/**'
+  - 'content-modules/**'
+  - 'examples/**'
+  - 'layouts/**'
+  - '**/node_modules/**'
+  - 'resources/**'
+  - 'tools/**'
+  - 'themes/**'
+  - 'tmp/**'
+
+config:
+  extends: .markdownlint.yaml

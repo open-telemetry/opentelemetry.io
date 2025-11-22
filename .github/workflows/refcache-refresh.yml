@@ -1,0 +1,205 @@
+name: Refcache refresh
+# cSpell:ignore chalin otelbot pushd
+
+# Creates (or updates) the PR that refreshes a number of the oldest refcache
+# entries. We say "the PR", because there can be at most one such PR at a time.
+# We refresh by first pruning the oldest N entries, then running the link
+# checker to update the refcache. N is set via the workflow_dispatch input.
+#
+# If the PR branch already exists, then by default we only rebase from `main`.
+# To force further pruning of the existing PR branch, invoke with
+# `prune_more_in_same_PR` is true.
+#
+on:
+  schedule:
+    - cron: '33 9 * * *' # daily at 9:33 UTC
+  workflow_dispatch:
+    inputs:
+      number_of_entries_to_refresh:
+        description: Number of (oldest) refcache entries to refresh.
+        default: &default_refresh_count 800
+        type: number
+      prune_more_in_same_PR:
+        description: Prune more entries from existing PR branch (if any).
+        default: false
+        type: boolean
+      rebase_from_main:
+        description: Rebase from main instead of merging.
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  refcache-refresh:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: otelbot/refcache-refresh
+      DEFAULT_REFRESH_COUNT: *default_refresh_count
+      IS_NEW_BRANCH: 'false'
+      REFRESH_COUNT: ${{ github.event.inputs.number_of_entries_to_refresh }}
+      PRUNE_MORE: ${{ github.event.inputs.prune_more_in_same_PR }}
+      REBASE_FROM_MAIN: ${{ github.event.inputs.rebase_from_main }}
+    steps:
+      - uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2.1.4
+        id: otelbot-token
+        with:
+          # the higher privileged docs token is needed to push commits to an existing PR
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          # Needed to trigger workflows when pushing new commits to an existing PR
+          token: ${{ steps.otelbot-token.outputs.token }}
+
+      - name: Validate inputs
+        run: |
+          if [[ -z "$REFRESH_COUNT" ]]; then
+            echo "REFRESH_COUNT=$DEFAULT_REFRESH_COUNT" >> $GITHUB_ENV
+          elif [[ ! "$REFRESH_COUNT" =~ ^[0-9]+$ ]]; then
+            echo "Error: REFRESH_COUNT must be a non-negative number, got: $REFRESH_COUNT"
+            exit 1
+          fi
+
+      - name: Checkout or create branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if ! git ls-remote --exit-code --heads origin $BRANCH; then
+            echo "IS_NEW_BRANCH=true" >> $GITHUB_ENV
+            git checkout -b $BRANCH origin/main
+            git push -u origin $BRANCH
+          else
+            echo "Branch $BRANCH already exists, doing checkout."
+            git checkout $BRANCH
+
+            PR_URL=$(gh pr view --json url --jq '.url')
+            echo "Branch PR: $PR_URL"
+          fi
+
+      - name: Use CLA approved github bot
+        run: |
+          git config user.name otelbot
+          git config user.email 197425009+otelbot@users.noreply.github.com
+
+      - name: Merge (or rebase) from main
+        run: |
+          merge_or_rebase="merge"
+          push_args=""
+          if [ "$REBASE_FROM_MAIN" == "true" ]; then
+            merge_or_rebase="rebase"
+            push_args="--force-with-lease"
+          fi
+          previous=$(git rev-parse HEAD)
+          git fetch origin
+          git $merge_or_rebase origin/main
+          if [ "$(git rev-parse HEAD)" != "$previous" ]; then
+            DELAYED_PUSH_CMD="git push $push_args origin $BRANCH"
+            echo "We'll push later, after committing the refcache updates."
+            echo "DELAYED_PUSH_CMD=$DELAYED_PUSH_CMD"
+            echo "DELAYED_PUSH_CMD=$DELAYED_PUSH_CMD" >> $GITHUB_ENV
+          fi
+
+      - uses: actions/setup-node@v6
+        with: { node-version-file: .nvmrc }
+
+      - run: npm install --omit=optional
+
+      - uses: actions/setup-go@v6
+
+      - name: Install htmltest
+        run: |
+          HTMLTEST_REPO=github.com/chalin/htmltest
+          BRANCH=dev/main
+          COMMIT_OR_TAG=0e53941b991235e0ef2686a5bb8dfa70895a652e # v0.17.0-43-g0e53941-chalin-dev
+          REPO_DIR=tmp/htmltest
+          git clone --branch $BRANCH https://$HTMLTEST_REPO.git $REPO_DIR
+          pushd $REPO_DIR
+          git checkout $COMMIT_OR_TAG
+          make build
+          HTMLTEST=$REPO_DIR/bin/htmltest
+          echo "HTMLTEST=$HTMLTEST" >> $GITHUB_ENV
+
+      - name: Prune refcache
+        if: ${{ env.PRUNE_MORE == 'true' || env.IS_NEW_BRANCH == 'true' }}
+        run: |
+          echo "List the oldest entry before pruning:"
+          npm run _refcache:prune -- --list -n 1
+          echo "Pruning $REFRESH_COUNT oldest refcache entries:"
+          npm run _refcache:prune -- -n $REFRESH_COUNT
+
+      - name: List oldest entry after pruning
+        run: |
+          OLDEST_ENTRY=$(npm run _refcache:prune -- --list -n 1 | grep '^\s')
+          echo "Oldest entry after pruning: $OLDEST_ENTRY"
+          echo "OLDEST_ENTRY=$OLDEST_ENTRY" >> $GITHUB_ENV
+
+      - name: Build site and update refcache
+        run: |
+          $HTMLTEST -v
+          # Ignore link-check failures so we can still commit refcache updates
+          npm run fix:refcache || true
+          ./scripts/clean-refcache.sh
+
+          REFCACHE_NUM_STATUS_4XX=$(grep '"StatusCode": 4' static/refcache.json | wc -l | xargs)
+          echo "REFCACHE_NUM_STATUS_4XX=$REFCACHE_NUM_STATUS_4XX" >> $GITHUB_ENV
+
+      - uses: browser-actions/setup-chrome@v2
+        id: setup-chrome
+        if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
+        with:
+          chrome-version: stable
+          install-dependencies: true # pulls required Linux libs
+
+      - name: Try to resolve status 4XX URLs if any
+        if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
+        env:
+          CHROME_PATH: ${{ steps.setup-chrome.outputs.chrome-path }}
+        run: |
+          echo "Chrome path: $CHROME_PATH"
+          $CHROME_PATH --version
+          ./scripts/double-check-refcache-4XX.mjs --verbose
+
+      - name: Commit refcache updates and push changes if any
+        run: |
+          git add -A
+          if ! git diff-index --quiet --cached HEAD; then
+            git commit -am "Update refcache"
+          fi
+
+          # Push if we have any commits to push (refcache updates or sync from main)
+          if [[ -n "$DELAYED_PUSH_CMD" ]]; then
+            echo "Executing: $DELAYED_PUSH_CMD"
+            $DELAYED_PUSH_CMD
+          elif ! git diff --quiet origin/$BRANCH; then
+            git push
+          fi
+
+      - name: Create PR if needed
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+          PR_BODY: |-
+            - Refreshes the oldest ${{ env.REFRESH_COUNT }} refcache entries.
+            - Oldest entry after pruning:
+            ${{ env.OLDEST_ENTRY }}
+        run: |
+          prs=$(gh pr list --state open --head $BRANCH)
+          echo "Existing PR(s):"
+          echo "${prs:-none}"
+          if [[ -n "$prs" ]]; then
+            echo "PR already exists, so we're done."
+            exit 0
+          fi
+
+          if gh pr create --title "Refresh refcache" \
+              --body "$PR_BODY" --draft;
+          then
+            PR_URL=$(gh pr view --json url --jq '.url')
+            printf "PR created: %s\n" "$PR_URL"
+          else
+            echo "Failed to create PR - likely no commits to create PR from"
+            exit 0  # Don't fail the workflow, just skip PR creation
+          fi

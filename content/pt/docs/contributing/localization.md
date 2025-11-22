@@ -3,9 +3,9 @@ title: Localização do site
 description: Criando e mantendo páginas do site em localizações não inglesas.
 linkTitle: Localização
 weight: 25
-default_lang_commit: b089f21094014118017cf32ffeea6b50afc3579f
+default_lang_commit: 915801c19b651b250f72f72390372fee84cd0b14
 drifted_from_default: true
-cSpell:ignore: merge ptbr shortcodes
+cSpell:ignore: Dowair merge ptbr shortcodes
 ---
 
 O site do OTel usa o [framework multilíngue][multilingual framework] do Hugo
@@ -310,9 +310,31 @@ Para mais detalhes sobre o _script_, execute `npm run check:i18n -- -h`.
 
 ## Novas localizações {#new-localizations}
 
-### Nova equipe de localização {#new-localization-team}
+Possui interesse em iniciar uma nova localização para o site do OTel? Entre em
+contato com os mantenedores para demonstrar seu interesse, por exemplo através
+de uma discussão no GitHub ou via canal do Slack `#otel-docs-localization`. Esta
+seção explica as etapas envolvidas na criação de uma nova localização.
 
-Para iniciar uma nova localização para o site do OpenTelemetry, você precisa de:
+{{% alert title="Note" %}}
+
+Você não precisa ser um contribuidor atual do projeto OpenTelemetry para iniciar
+uma nova localização. No entanto, você não será adicionado como membro da
+[organização OpenTelemetry no GitHub](https://github.com/open-telemetry/) ou
+como membro do grupo de aprovadores para sua localização até cumprir os
+requisitos para se tornar um membro oficial e aprovador conforme descrito nas
+[diretrizes de associação](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
+
+Antes de obter o _status_ de aprovador, você pode indicar sua aprovação de um PR
+de localização adicionando um comentário "LGTM" (_Looks Good To Me_). Durante
+esta fase inicial, os mantenedores tratarão suas revisões como se você já fosse
+um aprovador.
+
+{{% /alert %}}
+
+### 1. Monte uma equipe de localização {#team}
+
+Criar uma localização é sobre formar uma comunidade ativa e colaborativa. Para
+iniciar uma nova localização do site do OpenTelemetry, você precisará de:
 
 1. Um **mentor de localização** que seja familiar com seu idioma, como um
    [aprovador ativo][active approver] do [Glossário CNCF][CNCF Glossary], ou do
@@ -323,20 +345,23 @@ Para iniciar uma nova localização para o site do OpenTelemetry, você precisa 
 [CNCF Glossary]: https://glossary.cncf.io/
 [Kubernetes website]: https://github.com/kubernetes/website
 
-Uma vez que você estiver pronto:
+### 2. Início da localização: crie uma _issue_ {#kickoff}
 
-1. Crie uma [nova _issue_][new issue] para compartilhar seu interesse em
-   contribuir.
+Com uma [equipe de localização](#team) formada (ou em processo de formação),
+crie uma _issue_ com a seguinte lista de tarefas:
 
-2. Adicione os nomes de usuário do GitHub do mentor e dos possíveis
-   contribuidores.
-
-3. Procure o [código ISO 639-1][ISO 639-1 code] oficial para o idioma que você
+1. Procure o [código ISO 639-1][ISO 639-1 code] oficial para o idioma que você
    quer adicionar. Vamos nos referir a este código de idioma como `LANG_ID` no
-   restante desta seção.
+   restante desta seção. Caso tenha dúvidas sobre qual código utilizar,
+   especialmente ao escolher uma sub-região, consulte os mantenedores.
 
-4. Adicione a seguinte lista de tarefas ao comentário de abertura da sua
-   _issue_:
+   [ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
+
+2. Identifique os usuários do GitHub do
+   [mentor e dos possíveis contribuidores](#team).
+
+3. Crie uma [nova issue][new issue] contendo a seguinte lista de tarefas no
+   comentário inicial:
 
    ```markdown
    - [ ] Informações do idioma:
@@ -348,43 +373,60 @@ Uma vez que você estiver pronto:
    - [ ] Ler a página de
          [Localização](https://opentelemetry.io/docs/contributing/localization/)
          e todas as outras páginas na seção Contribuindo
-   - [ ] Localizar homepage do site para SEU_NOME_DO_IDIOMA
-   - [ ] Maintainers OTel:
+   - [ ] Localizar a página inincial do site (somente) para SEU_NOME_DO_IDIOMA e
+         enviar um PR. Para mais detalhes, consulte
+         [Localização da página inicial](https://opentelemetry.io/docs/contributing/localization/#homepage).
+   - [ ] Mantenedores OTel:
      - [ ] Atualizar `hugo.yaml`
      - [ ] Configurar cSpell e suporte de outras ferramentas
      - [ ] Criar um label de issue para `lang:LANG_ID`
      - [ ] Criar grupo de nível de organização para aprovadores `LANG_ID`
      - [ ] Atualizar proprietários de componentes para `content/LANG_ID`
+   - [ ] Criar uma issue para acompanhar a tradução do **glossário**. Adicione o
+         número da issue aqui. Para mais detalhes, consulte
+         [Localização do glossário](https://opentelemetry.io/docs/contributing/localization/#glossary)
    ```
 
-5. [Submeta um _pull request_](../pull-requests/) com uma tradução da [página
-   inicial][homepage] do site, e _nada mais_, no arquivo
-   `content/LANG_ID/_index.md`. Certifique-se de que os mantenedores tenham as
-   permissões necessárias para editar seu PR, já que eles adicionarão mudanças
-   adicionais ao seu PR que são necessárias para iniciar seu projeto de
-   localização.
+### 3. Localização da página inicial {#homepage}
 
-[ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
+[Submeta um _pull request_](../pull-requests/) com uma tradução da [página
+inicial][homepage] do site, e _nada mais_, no arquivo
+`content/LANG_ID/_index.md`. Certifique-se de que os mantenedores tenham as
+permissões necessárias para editar seu PR, já que eles adicionarão mudanças
+adicionais ao seu PR que são necessárias para iniciar seu projeto de
+localização.
+
 [homepage]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
-Após o _merge_ do seu primeiro PR, os mantenedores configurarão o rótulo
+Após o _merge_ do seu primeiro PR, os mantenedores irão configurar o rótulo
 _(label)_ da _issue_, o grupo de nível organizacional e os responsáveis pelo
 componente.
 
-{{% alert title="Nota" %}}
+### 4. Localização do glossário {#glossary}
 
-Você não precisa ser um contribuidor atual do projeto OpenTelemetry para iniciar
-uma nova localização. No entanto, você não será adicionado como membro da
-[organização GitHub OpenTelemetry](https://github.com/open-telemetry/) ou como
-membro do grupo de aprovadores para sua localização. Você precisará satisfazer
-os requisitos para se tornar um membro oficial e aprovador conforme descrito nas
-[diretrizes de associação](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
+A segunda página a ser localizada é o [Glossário](/docs/concepts/glossary). Essa
+é uma página **crítica** para os leitores de conteúdo localizado, já que define
+termos essenciais utilizados em observabilidade e no OpenTelemetry em
+particular. Isso é especialmente crítico se tais termos não existem em seu
+idioma.
 
-Ao iniciar o projeto de localização, os mantenedores tratarão suas revisões como
-se você já fosse um aprovador.
+Para orientação, assista ao [vídeo][ali-d-youtube] de apresentação de Ali Dowair
+no Write the Docs 2024: [The art of translation: How to localize technical
+content][ali-dowair-2024].
 
-{{% /alert %}}
+[ali-dowair-2024]:
+  https://www.writethedocs.org/conf/atlantic/2024/speakers/#speaker-ali-dowair-what-s-in-a-word-lessons-from-localizing-kubernetes-documentation-to-arabic-ali-dowair
+[ali-d-youtube]: https://youtu.be/HY3LZOQqdig
+
+### 5. Localização das páginas restantes {#remaining-pages}
+
+Com a terminologia estabelecida, você pode seguir com a localização das páginas
+restantes do site.
+
+Ao submeter PRs, mantenha-os pequenos: preferencialmente limitados a um arquivo
+ou alguns arquivos pequenos. PRs menores são mais fáceis de revisar e
+normalmente são aprovados mais rapidamente.
 
 ### Lista de verificação do maintainer OTel {#otel-maintainer-checklist}
 
@@ -439,9 +481,17 @@ de localização as farão via seus próprios PRs específicos da localização.
 
 ### Mudanças puramente editoriais entre localizações são OK {#patch-locale-links}
 
-Atualizações de páginas **puramente editoriais** como corrigir caminhos de links
-quebrados podem abranger localizações. Uma mudança puramente editorial é aquela
-que **não** impacta o significado do conteúdo da página.
+Atualizações de páginas **puramente editoriais** são mudanças que **não** afetam
+o conteúdo existente e podem abranger múltiplas localizações. Isso inclui:
+
+- **Manutenção de links**: Corrigir caminhos de _links_ quebrados quando páginas
+  são movidas ou deletadas.
+- **Atualização de recursos**: Atualizar _links_ para recursos externos movidos.
+- **Adições direcionadas de conteúdo**: Adicionar novas definições ou seções
+  específicas em arquivos desatualizados quando não for viável atualizar o
+  arquivo completo.
+
+#### Correções de links e atualizações de recursos {#link-fixes-and-resource-updates}
 
 Por exemplo, às vezes mudanças na documentação em inglês podem resultar em
 falhas de verificação de links para localizações não inglesas. Isso acontece
@@ -451,8 +501,8 @@ Em tais situações, faça as seguintes atualizações para cada página não in
 que tem um caminho que falha na verificação de links:
 
 - Atualize a referência do link para o novo caminho da página.
-- Adicione o comentário YAML `# patched` no final da linha para a linha de
-  _front matter_ `default_lang_commit`.
+- Adicione o comentário YAML `# patched` ao final da linha `default_lang_commit`
+  no _front matter_.
 - Não faça outras mudanças no arquivo.
 - Execute novamente `npm run check:links` e certifique-se de que não restam
   falhas de links.
@@ -464,6 +514,31 @@ de link, considere:
 - Remover o link quebrado do refcache
 - Atualizar o link em todas as localizações usando o método descrito
   anteriormente nesta seção.
+
+#### Adições pontuais em arquivos desatualizados {#targeted-content-additions}
+
+Quando for necessário adicionar conteúdo novo a um arquivo traduzido que está
+desatualizado em relação à versão em inglês, é possível fazer uma atualização
+pontual. Por exemplo: se o termo "cardinalidade" for adicionado ao glossário em
+inglês, você pode incluir apenas essa definição na versão localizada sem
+atualizar todo o arquivo.
+
+Aqui está um exemplo do fluxo de trabalho para esta atualização direcionada:
+
+- Adicione apenas o bloco de definição de "cardinalidade" no glossário
+  localizado.
+- Atualize o _front matter_ adicionando `# patched` como um comentário YAML no
+  final da linha.
+- Não faça outras mudanças no arquivo.
+- Na descrição do PR, documente as alterações:
+  - O conteúdo específico adicionado (definição de "cardinalidade")
+  - Que o arquivo ainda está desatualizado em outros pontos
+  - O motivo da atualização pontual (por exemplo, "Adicionar nova terminologia
+    essencial para a documentação, sem exigir sincronização total do conteúdo do
+    arquivo")
+
+  Esta abordagem permite melhorias incrementais ao conteúdo localizado, mantendo
+  a rastreabilidade das partes que ainda precisam de atualização completa.
 
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/

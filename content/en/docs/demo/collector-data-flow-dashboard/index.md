@@ -22,7 +22,7 @@ configuration derived from the OpenTelemetry Collector (otelcol) configuration
 file utilized by the OpenTelemetry demo application. Additionally, it highlights
 the observability data (traces and metrics) flow within the system.
 
-![OpenTelemetry Collector Data Flow Overview](otelcol-data-flow-overview.png)
+![OpenTelemetry Collector Overview](otelcol-data-flow-overview.png)
 
 ## Ingress/Egress Metrics
 
@@ -79,10 +79,10 @@ processor, which is used by both traces and metrics pipelines.
 ## Dashboard
 
 You can access the dashboard by navigating to the Grafana UI, selecting the
-**OpenTelemetry Collector Data Flow** dashboard under browse icon on the
-left-hand side of the screen.
+**OpenTelemetry Collector** dashboard under browse icon on the left-hand side of
+the screen.
 
-![OpenTelemetry Collector Data Flow dashboard](otelcol-data-flow-dashboard.png)
+![OpenTelemetry Collector dashboard](otelcol-data-flow-dashboard.png)
 
 The dashboard has four main sections:
 

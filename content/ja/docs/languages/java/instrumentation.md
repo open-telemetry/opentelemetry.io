@@ -93,7 +93,7 @@ OpenTelemetry Javaエコシステムで維持されているシム。
 | OpenTelemetryコンテキストを[Log4j](https://logging.apache.org/log4j/2.x/index.html)にブリッジ                | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/log4j/log4j-context-data/log4j-context-data-2.17/library-autoconfigure) | コンテキスト         | `io.opentelemetry.instrumentation:opentelemetry-log4j-context-data-2.17-autoconfigure:{{% param vers.instrumentation %}}-alpha` |
 | OpenTelemetryコンテキストを[Logback](https://logback.qos.ch/)にブリッジ                                      | [README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/logback/logback-mdc-1.0/library)                                        | コンテキスト         | `io.opentelemetry.instrumentation:opentelemetry-logback-mdc-1.0:{{% param vers.instrumentation %}}-alpha`                       |
 
-## コンテキスト伝播 {#context-propagation}
+## コンテキスト伝搬 {#context-propagation}
 
 OpenTelemetry APIは補完的に設計されており、全体が部分の合計よりも大きくなります。
 各シグナルには独自の強みがあり、集合的に説得力のあるオブザーバビリティストーリーをつなぎ合わせます。
@@ -104,7 +104,7 @@ OpenTelemetry APIは補完的に設計されており、全体が部分の合計
 - メトリクスは、特定の測定のトレースコンテキストを記録する[エグザンプラー](/docs/specs/otel/metrics/data-model/#exemplars)を介してスパンに関連付けられています。
 - ログは、ログレコードにトレースコンテキストを記録することによってスパンに関連付けられています。
 
-この相関が機能するためには、トレースコンテキストがアプリケーション全体（関数呼び出しやスレッド間）およびアプリケーション境界を越えて伝播される必要があります。
+この相関が機能するためには、トレースコンテキストがアプリケーション全体（関数呼び出しやスレッド間）およびアプリケーション境界を越えて伝搬される必要があります。
 [コンテキストAPI](../api/#context-api)はこれを促進します。計装は、コンテキストを認識する方法で記述される必要があります。
 
 - アプリケーションへのエントリポイントを表すライブラリ（HTTPサーバー、メッセージコンシューマーなど）は、受信メッセージから[コンテキストを抽出](../api/#contextpropagators)する必要があります。

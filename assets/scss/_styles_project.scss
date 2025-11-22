@@ -4,6 +4,7 @@
 @import 'registry';
 @import 'tabs';
 @import 'external_link';
+@import 'td/color-adjustments-dark';
 @import 'td/code-dark';
 @import '_page_no_left_sidebar';
 
@@ -103,12 +104,6 @@
       display: none;
     }
   }
-}
-
-// Adjust the spacing of page-meta and page-TOC (https://github.com/open-telemetry/opentelemetry.io/pull/354)
-// TODO: upstream
-.td-toc #TableOfContents {
-  padding-top: 1rem;
 }
 
 .td-home {
@@ -216,6 +211,11 @@
   border: $border-width solid $border-color;
   margin-bottom: $paragraph-margin-bottom;
   @extend .td-max-width-on-larger-screens;
+}
+
+// Ensure OTel icons display correctly in dark mode
+[data-bs-theme='dark'] .otel-icon {
+  filter: brightness(0) invert(1);
 }
 
 .td-blog.otel-with-contributions-from {

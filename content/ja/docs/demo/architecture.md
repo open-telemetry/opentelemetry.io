@@ -3,7 +3,7 @@ title: デモのアーキテクチャ
 linkTitle: アーキテクチャ
 aliases: [current_architecture]
 body_class: otel-mermaid-max-width
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 ---
 
 **OpenTelemetryデモ** は、異なるプログラミング言語で書かれた複数のマイクロサービスから構成されており、gRPCとHTTPを使って相互に通信を行います。
@@ -20,7 +20,7 @@ checkout(決済):::golang
 currency(通貨):::cpp
 email(メール):::ruby
 flagd(Flagd):::golang
-flagd-ui(Flagd-ui):::typescript
+flagd-ui(Flagd-ui):::elixir
 fraud-detection(不正検知):::kotlin
 frontend(フロントエンド):::typescript
 frontend-proxy(フロントエンドプロキシ <br/>&#40Envoy&#41):::cpp
@@ -33,6 +33,9 @@ recommendation(レコメンデーション):::python
 shipping(配送):::rust
 queue[(キュー<br/>&#40Kafka&#41)]:::java
 react-native-app(React Native<br>アプリケーション):::typescript
+postgresql[(データベース<br/>&#40PostgreSQL&#41)]
+
+accounting ---> postgresql
 
 ad ---->|gRPC| flagd
 
@@ -80,6 +83,7 @@ end
 
 classDef dotnet fill:#178600,color:white;
 classDef cpp fill:#f34b7d,color:white;
+classDef elixir fill:#b294bb,color:black;
 classDef golang fill:#00add8,color:black;
 classDef java fill:#b07219,color:white;
 classDef javascript fill:#f1e05a,color:black;
@@ -92,10 +96,11 @@ classDef typescript fill:#e98516,color:black;
 ```
 
 ```mermaid
-graph TD
+graph LR
 subgraph サービスの凡例
   dotnetsvc(.NET):::dotnet
   cppsvc(C++):::cpp
+  elixirsvc(Elixir):::elixir
   golangsvc(Go):::golang
   javasvc(Java):::java
   javascriptsvc(JavaScript):::javascript
@@ -109,6 +114,7 @@ end
 
 classDef dotnet fill:#178600,color:white;
 classDef cpp fill:#f34b7d,color:white;
+classDef elixir fill:#b294bb,color:black;
 classDef golang fill:#00add8,color:black;
 classDef java fill:#b07219,color:white;
 classDef javascript fill:#f1e05a,color:black;

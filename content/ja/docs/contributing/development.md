@@ -6,7 +6,8 @@ what-next: >
   これで、[ビルド](#build)、[サーブ](#serve)、Web サイトファイルの更新を行う準備が整いました。
   変更の提出方法の詳細については、[コンテンツの提出][Submitting content]を参照してください。
 weight: 60
-default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
+default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9 # patched
+drifted_from_default: true
 ---
 
 {{% alert title="サポートされているビルド環境" color=warning %}}
@@ -116,7 +117,7 @@ Web サイトは以下のコンテンツを基に構築されます。
 - `content/`、`static/` などの [Hugo] のデフォルトディレクトリ
 - [hugo.yaml] の `mounts` で定義されたマウントポイント。マウントは [content-modules] の Git サブモジュールから直接取得される場合や、`content-modules` から前処理されたコンテンツ（`tmp/` に配置）の場合があり、それ以外の場所からは取得されません。
 
-[hugo.yaml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/hugo.yaml
+[hugo.yaml]: https://github.com/open-telemetry/opentelemetry.io/blob/bc94737/hugo.yaml
 [content-modules]: https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
 ### サブモジュールの変更 {#submodule-changes}

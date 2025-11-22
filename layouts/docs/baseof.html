@@ -4,8 +4,9 @@
 <!doctype html>
 <html itemscope itemtype="http://schema.org/WebPage"
     {{- with .Site.Language.LanguageDirection }} dir="{{ . }}" {{- end -}}
-    {{ with .Site.Language.Lang }} lang="{{ $lang.Lang }}" {{- end }} {{/**/ -}}
-    class="no-js">
+    {{ with $lang }} lang="{{ . }}" {{- end }} {{/**/ -}}
+    class="no-js"
+    {{- if .Site.Params.ui.showLightDarkModeMenu }} data-theme-init{{ end }}>
   <head>
     {{ partial "head.html" . }}
   </head>
@@ -14,7 +15,7 @@
       {{ partial "navbar.html" . }}
     </header>
     <div class="container-fluid td-outer">
-      <div class="td-main">
+      <div class="td-main" {{- partialCached "td/scrollspy-attr.txt" . .Section | safeHTMLAttr }}>
         <div class="row flex-xl-nowrap">
           <aside class="col-12 col-md-3 col-xl-2 td-sidebar d-print-none">
             <div id="google_translate_element"></div>

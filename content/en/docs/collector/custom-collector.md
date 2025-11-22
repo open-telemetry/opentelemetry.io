@@ -2,7 +2,7 @@
 title: Building a custom collector
 weight: 29
 # prettier-ignore
-cSpell:ignore: batchprocessor chipset darwin debugexporter gomod loggingexporter otlpexporter otlpreceiver wyrtw
+cSpell:ignore: chipset darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
 If you are planning to build and debug custom collector receivers, processors,
@@ -142,7 +142,7 @@ to understand the different modules and how to add the components.
 We will be adding the following components to our development and testing
 collector distribution:
 
-- Exporters: OTLP and Debug[^1]
+- Exporters: OTLP and Debug
 - Receivers: OTLP
 - Processors: Batch
 
@@ -158,7 +158,6 @@ dist:
 
 exporters:
   - gomod:
-      # NOTE: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
       go.opentelemetry.io/collector/exporter/debugexporter {{% version-from-registry collector-exporter-debug %}}
   - gomod:
       go.opentelemetry.io/collector/exporter/otlpexporter {{% version-from-registry collector-exporter-otlp %}}
@@ -280,7 +279,7 @@ architecture (for example, `linux/arm64`, `linux/amd64`):
 FROM alpine:3.19 AS certs
 RUN apk --update add ca-certificates
 
-FROM golang:1.23.6 AS build-stage
+FROM golang:1.25.0 AS build-stage
 WORKDIR /build
 
 COPY ./builder-config.yaml builder-config.yaml
@@ -314,8 +313,6 @@ receivers:
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
-processors:
-  batch:
 
 exporters:
   debug:
@@ -325,15 +322,12 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [debug]
     metrics:
       receivers: [otlp]
-      processors: [batch]
       exporters: [debug]
     logs:
       receivers: [otlp]
-      processors: [batch]
       exporters: [debug]
 ```
 
@@ -367,5 +361,3 @@ docker run -it --rm -p 4317:4317 -p 4318:4318 \
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
 [tags]: https://github.com/open-telemetry/opentelemetry-collector-releases/tags
-
-[^1]: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.

@@ -1,0 +1,25 @@
+# cSpell:ignore goflow ipfix netflowreceiver netflow
+title: Netflow receiver
+registryType: receiver
+language: collector
+tags:
+  - netflow
+  - receiver
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/netflowreceiver
+license: Apache 2.0
+description:
+  The netflow receiver can listen for
+  [netflow](https://en.wikipedia.org/wiki/NetFlow),
+  [sflow](https://en.wikipedia.org/wiki/SFlow), and
+  [ipfix](https://en.wikipedia.org/wiki/IP_Flow_Information_Export) data and
+  convert it to OpenTelemetry logs. The receiver is based on the
+  [goflow2](https://github.com/netsampler/goflow2) project.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/netflowreceiver
+  version: v0.140.1

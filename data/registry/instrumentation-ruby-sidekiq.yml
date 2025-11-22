@@ -15,5 +15,5 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-sidekiq
-  version: 0.26.1
+  version: 0.28.0
 isFirstParty: false

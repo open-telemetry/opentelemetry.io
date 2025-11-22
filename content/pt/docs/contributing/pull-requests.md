@@ -5,8 +5,7 @@ description:
   interface do GitHub ou a partir de um _fork_ local.
 aliases: [new-content]
 weight: 15
-default_lang_commit: bc14fe46c2f358c8c0b6dc7f394535787bd4fff3
-drifted_from_default: true
+default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829
 ---
 
 Para contribuir com novos conteúdos ou melhorar a documentação existente,

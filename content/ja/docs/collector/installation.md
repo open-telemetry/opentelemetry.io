@@ -1,7 +1,7 @@
 ---
 title: コレクターのインストール
 weight: 2
-default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
 ---
 
@@ -10,7 +10,7 @@ OpenTelemetryコレクターはさまざまなオペレーティングシステ�
 
 OpenTelemetryコレクターに適用可能なデプロイメントモデル、コンポーネント、リポジトリについてよく知らない場合は、まず[データ収集][Data Collection]と[デプロイ方法][Deployment Methods]のページを確認してください。
 
-## Docker
+## Docker {#docker}
 
 以下のコマンドはDockerイメージをプルし、コレクターをコンテナ内で実行します。
 `{{% param vers %}}` を実行したいコレクターのバージョンに置き換えてください。
@@ -47,7 +47,7 @@ docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-t
 
 {{% /tab %}} {{< /tabpane >}}
 
-## Docker Compose
+## Docker Compose {#docker-compose}
 
 以下の例のように、既存の `docker-compose.yaml` ファイルにOpenTelemetryコレクターを追加できます。
 
@@ -66,7 +66,7 @@ otel-collector:
     - 55679:55679 # zpages extension
 ```
 
-## Kubernetes
+## Kubernetes {#kubernetes}
 
 次のコマンドは、エージェントをデーモンセットと単一のゲートウェイインスタンスとしてデプロイします。
 
@@ -82,18 +82,18 @@ kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-
 
 Kubernetesでコレクターを使用する方法については、[Kubernetesで始める](/docs/platforms/kubernetes/getting-started/)を参照してください。
 
-## Nomad
+## Nomad {#nomad}
 
 [HashiCorp NomadでOpenTelemetryを始める][Getting Started with OpenTelemetry on HashiCorp Nomad]に、エージェント、ゲートウェイとして、あるいは完全なデモの形でコレクターをデプロイするための参照ジョブファイルがあります。
 
-## Linux
+## Linux {#linux}
 
 すべてのコレクターのリリースには、Linux amd64/arm64/i386システム用のAPK、DEB、RPMパッケージが含まれています。
 インストール後のデフォルト設定は `/etc/otelcol/config.yaml` にあります。
 
 > Note: サービスの自動設定には `systemd` が必要です。
 
-### DEBのインストール
+### DEBのインストール {#deb-installation}
 
 Debian系のシステムで使い始めるには、以下のコマンドを実行します。
 
@@ -126,7 +126,7 @@ sudo dpkg -i otelcol_{{% param vers %}}_linux_386.deb
 
 {{% /tab %}} {{< /tabpane >}}
 
-### RPMのインストール
+### RPMのインストール {#rpm-installation}
 
 Red Hat系のシステムで使い始めるには、以下のコマンドを実行します。
 
@@ -159,7 +159,7 @@ sudo rpm -ivh otelcol_{{% param vers %}}_linux_386.rpm
 
 {{% /tab %}} {{< /tabpane >}}
 
-### 手動でのLinuxへのインストール
+### 手動でのLinuxへのインストール {#manual-linux-installation}
 
 Linux向けの[リリース][releases]は、さまざまなアーキテクチャに対応しています。
 バイナリを含むファイルをダウンロードし、あなたのマシンに手動でインストールしてください。
@@ -194,7 +194,7 @@ tar -xvf otelcol_{{% param vers %}}_linux_ppc64le.tar.gz
 
 {{% /tab %}} {{< /tabpane >}}
 
-### 自動サービスコンフィギュレーション
+### 自動サービスコンフィギュレーション {#automatic-service-configuration}
 
 デフォルトでは、`otelcol` systemd サービスはインストール後に `--config=/etc/otelcol/config.yaml` オプションをつけて起動します。
 
@@ -214,7 +214,7 @@ sudo systemctl restart otelcol
 sudo journalctl -u otelcol
 ```
 
-## macOS
+## macOS {#macos}
 
 macOS向けの [リリース][releases] は Intel および ARM システムで利用可能です。
 リリースはgzip圧縮されたtarball (`.tar.gz`) としてパッケージ化されています。
@@ -238,12 +238,27 @@ tar -xvf otelcol_{{% param vers %}}_darwin_arm64.tar.gz
 
 すべてのコレクターのリリースには、解凍後に実行できる `otelcol` 実行ファイルが含まれています。
 
-## Windows
+## Windows {#windows}
 
-Windows向けの [リリース][releases] は gzip された tarball (`.tar.gz`) としてパッケージ化されています。
-すべてのコレクターのリリースには、解凍後に実行できる `otelcol.exe` 実行ファイルが含まれています。
+Windows向けの [リリース][releases] はMSIインストーラーと gzip された tarball (`.tar.gz`) として利用できます。
+MSIはディストリビューション名をつけたWindowsサービスとしてコレクターをインストールし、表示名を「OpenTelemetry Collector」として、ディストリビューション名でアプリケーションイベントログのソースを登録します。
 
-## ソースからビルドする
+### MSIインストール {#msi-installation}
+
+```powershell
+msiexec /i "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_windows_x64.msi"
+```
+
+### 手動インストール {#manual-installation}
+
+```powershell
+Invoke-WebRequest -Uri "https://github.com/open-telemetry/opentelemetry-collector-releases/releases/download/v{{% param vers %}}/otelcol_{{% param vers %}}_windows_amd64.tar.gz" -OutFile "otelcol_{{% param vers %}}_windows_amd64.tar.gz"
+tar -xvzf otelcol_{{% param vers %}}_windows_amd64.tar.gz
+```
+
+すべてのリリースには、インストール後に実行できるコレクターの実行ファイルが含まれています。
+
+## ソースからビルドする {#build-from-source}
 
 以下のコマンドを使用して、ローカルのオペレーティングシステムに基づいてコレクターの最新バージョンをビルドできます。
 

@@ -3,6 +3,7 @@ title: Adicionar ao registro
 linkTitle: Adicionar
 description: Como adicionar entradas ao registro.
 default_lang_commit: 1505d056560f20e20d9b956128827bf5642eacd3
+drifted_from_default: true
 ---
 
 Você mantém ou contribui para uma integração do OpenTelemetry? Adoraríamos

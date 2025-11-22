@@ -6,7 +6,7 @@ linkTitle: Configuración del entorno y más
 description:
   Aprende cómo configurar el entorno de desarrollo para este sitio web.
 weight: 60
-default_lang_commit: 14fdef3f10e0a3214e6413c83426257f6ca1801f
+default_lang_commit: 14fdef3f10e0a3214e6413c83426257f6ca1801f # patched
 drifted_from_default: true
 cSpell:ignore: adáptalas preprocesado prerequisitos redirección
 ---
@@ -112,7 +112,7 @@ Este sitio web se genera a partir del siguiente contenido:
   bajo `tmp/`).
 
 [hugo.yaml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/hugo.yaml
+  https://github.com/open-telemetry/opentelemetry.io/blob/bc94737/hugo.yaml
 [content-modules]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 

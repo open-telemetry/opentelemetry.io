@@ -15,5 +15,5 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-bunny
-  version: 0.22.0
+  version: 0.24.0
 isFirstParty: false

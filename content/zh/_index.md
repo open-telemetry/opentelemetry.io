@@ -2,12 +2,13 @@
 title: OpenTelemetry
 description: >-
   高质量、普遍适用和可移植的遥测助你实现有效的可观测
-show_banner: true
-developer_note:
+outputs:
+  - HTML
+developer_note: >
   下文所用的 blocks/cover 短代码将使用文件名中包含 "background"
   的图像文件作为背景图。
 show_banner: true
-default_lang_commit: c2cd5b14
+default_lang_commit: c2cd5b14 # patched
 drifted_from_default: true
 ---
 
@@ -27,7 +28,6 @@ drifted_from_default: true
 
 - [了解更多](docs/what-is-opentelemetry/)
 - [尝试 Demo](docs/demo/)
-- [探索集成组件](/ecosystem/integrations/)
 
 </div>
 
@@ -46,7 +46,8 @@ drifted_from_default: true
 
 OpenTelemetry 是各类 API、SDK 和工具形成的集合。可用于插桩、生成、采集和导出遥测数据（链路、指标和日志），帮助你分析软件的性能和行为。
 
-> OpenTelemetry 在[多种编程语言](docs/languages/)均达到 **GA** 级别，普适性很高。
+> OpenTelemetry 在[多种编程语言](docs/languages/)均达到
+> [GA](/status/) 级别，普适性很高。
 
 {{% /blocks/lead %}}
 
@@ -58,19 +59,17 @@ OpenTelemetry 是各类 API、SDK 和工具形成的集合。可用于插桩、�
 
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fas fa-magic" title="现成的插桩支持" %}}
+{{% blocks/feature icon="fas fa-magic" title="现成的插桩和集成组件" %}}
 
-OpenTelemetry 与流行的库和框架集成，例如 [Spring](https://spring.io)、
-[ASP.NET Core](https://docs.microsoft.com/aspnet/core)、
-[Express](https://expressjs.com)、 [Quarkus](https://quarkus.io) 等等！
-安装和集成可能只需要几行代码。
+OpenTelemetry [集成](/ecosystem/integrations/)了许多流行的库和框架，
+并且支持代码式和零代码[插桩](/docs/concepts/instrumentation/)。
 
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fab fa-github" title="开源、厂商中立" %}}
 
 OpenTelemetry 是 100% 免费和开源的，
-得到了可观测性领域[众多行业领导者](/ecosystem/vendors/)的采用和支持。
+得到了可观测性领域[众多行业领导者](/ecosystem/vendors/)的[采用](/ecosystem/adopters/)和支持。
 
 {{% /blocks/feature %}}
 
@@ -78,13 +77,12 @@ OpenTelemetry 是 100% 免费和开源的，
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry 是一个 [CNCF][] [孵化级][]项目**。<br> 这个项目是由
+**OpenTelemetry 是一个 [CNCF][] [孵化级](https://www.cncf.io/projects/)项目**。<br> 这个项目是由
 OpenTracing 和 OpenCensus 项目合并而诞生的。
 
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[孵化级]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}

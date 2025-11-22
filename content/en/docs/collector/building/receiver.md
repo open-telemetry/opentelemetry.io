@@ -3,7 +3,7 @@ title: Building a receiver
 weight: 20
 aliases: [/docs/collector/trace-receiver/]
 # prettier-ignore
-cSpell:ignore: backendsystem crand debugexporter loggingexporter mapstructure pcommon pdata protogen ptrace rcvr struct structs tailtracer telemetrygen uber
+cSpell:ignore: backendsystem crand debugexporter mapstructure pcommon pdata ptrace rcvr resourcespans struct structs tailtracer telemetrygen uber
 ---
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
@@ -97,9 +97,9 @@ Collector's components and pipelines.
 touch config.yaml
 ```
 
-For now, you just need a basic traces pipeline with the `otlp` receiver, the
-`otlp` and `debug`[^1] exporters, and optionally the `batch` processor. Here is
-what your `config.yaml` file should look like:
+For now, you just need a basic traces pipeline with the `otlp` receiver and the
+`otlp` and `debug` exporters. Here is what your `config.yaml` file should look
+like:
 
 > config.yaml
 
@@ -110,23 +110,20 @@ receivers:
       grpc:
         endpoint: 0.0.0.0:4317
 
-processors:
-  batch:
-
 exporters:
-  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:
     verbosity: detailed
   otlp/jaeger:
     endpoint: localhost:14317
     tls:
       insecure: true
+    sending_queue:
+      batch:
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp/jaeger, debug]
   telemetry:
     logs:
@@ -975,7 +972,6 @@ import (
 	"go.opentelemetry.io/collector/receiver"
 	debugexporter "go.opentelemetry.io/collector/exporter/debugexporter"
 	otlpexporter "go.opentelemetry.io/collector/exporter/otlpexporter"
-	batchprocessor "go.opentelemetry.io/collector/processor/batchprocessor"
 	otlpreceiver "go.opentelemetry.io/collector/receiver/otlpreceiver"
 	tailtracer "github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tailtracer" // newly added line
 )
@@ -1007,7 +1003,6 @@ func components() (otelcol.Factories, error) {
 	}
 
 	factories.Processors, err = otelcol.MakeFactoryMap[processor.Factory](
-		batchprocessor.NewFactory(),
 	)
 	if err != nil {
 		return otelcol.Factories{}, err
@@ -1046,23 +1041,20 @@ receivers:
     interval: 1m
     number_of_traces: 1
 
-processors:
-  batch:
-
 exporters:
-  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:
     verbosity: detailed
   otlp/jaeger:
     endpoint: localhost:14317
     tls:
       insecure: true
+    sending_queue:
+      batch:
 
 service:
   pipelines:
     traces:
       receivers: [otlp, tailtracer]
-      processors: [batch]
       exporters: [otlp/jaeger, debug]
   telemetry:
     logs:
@@ -1084,7 +1076,6 @@ The output should look like this:
 2023-11-08T21:38:36.621+0800	info	service@v0.88.0/telemetry.go:201	Serving Prometheus metrics	{"address": ":8888", "level": "Basic"}
 2023-11-08T21:38:36.621+0800	info	exporter@v0.88.0/exporter.go:275	Development component. May change in the future.	{"kind": "exporter", "data_type": "traces", "name": "debug"}
 2023-11-08T21:38:36.621+0800	debug	exporter@v0.88.0/exporter.go:273	Stable component.	{"kind": "exporter", "data_type": "traces", "name": "otlp/jaeger"}
-2023-11-08T21:38:36.621+0800	debug	processor@v0.88.0/processor.go:287	Stable component.	{"kind": "processor", "name": "batch", "pipeline": "traces"}
 2023-11-08T21:38:36.621+0800	debug	receiver@v0.88.0/receiver.go:294	Stable component.	{"kind": "receiver", "name": "otlp", "data_type": "traces"}
 2023-11-08T21:38:36.621+0800	debug	receiver@v0.88.0/receiver.go:294	Alpha component. May change in the future.	{"kind": "receiver", "name": "tailtracer", "data_type": "traces"}
 2023-11-08T21:38:36.622+0800	info	service@v0.88.0/service.go:143	Starting otelcol-dev...	{"Version": "1.0.0", "NumCPU": 10}
@@ -1218,7 +1209,7 @@ Now, within the `model.go` file, add the definition for the `Atm` and the
 package tailtracer
 
 type Atm struct{
-    ID           int64
+	ID           int64
 	Version      string
 	Name         string
 	StateID      string
@@ -1230,10 +1221,9 @@ type BackendSystem struct{
 	Version       string
 	ProcessName   string
 	OSType        string
-    OSVersion     string
+	OSVersion     string
 	CloudProvider string
 	CloudRegion   string
-	ServiceName   string
 	Endpoint      string
 }
 ```
@@ -1256,7 +1246,7 @@ import (
 )
 
 type Atm struct{
-    ID           int64
+	ID           int64
 	Version      string
 	Name         string
 	StateID      string
@@ -1268,7 +1258,7 @@ type BackendSystem struct{
 	Version       string
 	ProcessName   string
 	OSType        string
-    OSVersion     string
+	OSVersion     string
 	CloudProvider string
 	CloudRegion   string
 	Endpoint      string
@@ -1276,7 +1266,7 @@ type BackendSystem struct{
 
 func generateAtm() Atm{
 	i := getRandomNumber(1, 2)
-    var newAtm Atm
+	var newAtm Atm
 
 	switch i {
 		case 1:
@@ -1305,10 +1295,10 @@ func generateAtm() Atm{
 }
 
 func generateBackendSystem() BackendSystem{
-    i := getRandomNumber(1, 3)
+	i := getRandomNumber(1, 3)
 
 	newBackend := BackendSystem{
-    	ProcessName: "accounts",
+		ProcessName: "accounts",
 		Version: "v2.5",
 		OSType: "lnx",
 		OSVersion: "4.16.10-300.fc28.x86_64",
@@ -1332,7 +1322,7 @@ func generateBackendSystem() BackendSystem{
 func getRandomNumber(min int, max int) int {
 	rand.Seed(time.Now().UnixNano())
 	i := (rand.Intn(max - min + 1) + min)
-    return i
+	return i
 }
 ```
 
@@ -1393,7 +1383,8 @@ creating a trace.
 You will start with a type called `ptrace.ResourceSpans` which represents the
 resource and all the operations that it either originated or received while
 participating in a trace. You can find its definition within the
-[/pdata/internal/data/protogen/trace/v1/trace.pb.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/pdata/internal/data/protogen/trace/v1/trace.pb.go>).
+[/pdata/ptrace/generated_resourcespans.go](<https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/pdata/ptrace/generated_resourcespans.go>)
+file.
 
 `ptrace.Traces` has a method named `ResourceSpans()` which returns an instance
 of a helper type called `ptrace.ResourceSpansSlice`. The
@@ -1772,10 +1763,10 @@ the ATM system's instrumentation scope and its spans. Open the
 `tailtracer/model.go` file and add the following function:
 
 ```go
-func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) (ptrace.ScopeSpans){
+func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {
 	scopeSpans := resourceSpans.ScopeSpans().AppendEmpty()
 
-    return scopeSpans
+	return scopeSpans
 }
 ```
 
@@ -1800,7 +1791,7 @@ name and version of the instrumentation scope for the new `ptrace.ScopeSpans`.
 Here is what `appendAtmSystemInstrScopeSpans` looks like after the update:
 
 ```go
- func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) (ptrace.ScopeSpans){
+func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {
 	scopeSpans := resourceSpans.ScopeSpans().AppendEmpty()
 	scopeSpans.Scope().SetName("atm-system")
 	scopeSpans.Scope().SetVersion("v1.0")
@@ -2189,7 +2180,8 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {
 	scopeSpans := resourceSpans.ScopeSpans().AppendEmpty()
-
+	scopeSpans.Scope().SetName("atm-system")
+	scopeSpans.Scope().SetVersion("v1.0")
 	return scopeSpans
 }
 
@@ -2237,8 +2229,8 @@ follow:
 
 ```go
 func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host component.Host) error {
-    tailtracerRcvr.host = host
-    ctx = context.Background()
+	tailtracerRcvr.host = host
+	ctx = context.Background()
 	ctx, tailtracerRcvr.cancel = context.WithCancel(ctx)
 
 	interval, _ := time.ParseDuration(tailtracerRcvr.config.Interval)
@@ -2283,7 +2275,6 @@ And you should see the output like this after a few minutes:
 2023-11-09T11:38:19.890+0800	info	service@v0.88.0/telemetry.go:201	Serving Prometheus metrics	{"address": ":8888", "level": "Basic"}
 2023-11-09T11:38:19.890+0800	debug	exporter@v0.88.0/exporter.go:273	Stable component.	{"kind": "exporter", "data_type": "traces", "name": "otlp/jaeger"}
 2023-11-09T11:38:19.890+0800	info	exporter@v0.88.0/exporter.go:275	Development component. May change in the future.	{"kind": "exporter", "data_type": "traces", "name": "debug"}
-2023-11-09T11:38:19.890+0800	debug	processor@v0.88.0/processor.go:287	Stable component.	{"kind": "processor", "name": "batch", "pipeline": "traces"}
 2023-11-09T11:38:19.891+0800	debug	receiver@v0.88.0/receiver.go:294	Stable component.	{"kind": "receiver", "name": "otlp", "data_type": "traces"}
 2023-11-09T11:38:19.891+0800	debug	receiver@v0.88.0/receiver.go:294	Alpha component. May change in the future.	{"kind": "receiver", "name": "tailtracer", "data_type": "traces"}
 2023-11-09T11:38:19.891+0800	info	service@v0.88.0/service.go:143	Starting otelcol-dev...	{"Version": "1.0.0", "NumCPU": 10}
@@ -2403,9 +2394,9 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 		}
 
 	atmSpanId := NewSpanID()
-    atmSpanStartTime := time.Now()
-    atmDuration, _ := time.ParseDuration("4s")
-    atmSpanFinishTime := atmSpanStartTime.Add(atmDuration)
+	atmSpanStartTime := time.Now()
+	atmDuration, _ := time.ParseDuration("4s")
+	atmSpanFinishTime := atmSpanStartTime.Add(atmDuration)
 
 	atmSpan := atmScopeSpans.Spans().AppendEmpty()
 	atmSpan.SetTraceID(traceId)
@@ -2419,7 +2410,7 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 	backendSpanId := NewSpanID()
 
 	backendDuration, _ := time.ParseDuration("2s")
-    backendSpanStartTime := atmSpanStartTime.Add(backendDuration)
+	backendSpanStartTime := atmSpanStartTime.Add(backendDuration)
 
 	backendSpan := backendScopeSpans.Spans().AppendEmpty()
 	backendSpan.SetTraceID(atmSpan.TraceID())
@@ -2601,7 +2592,8 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {
 	scopeSpans := resourceSpans.ScopeSpans().AppendEmpty()
-
+	scopeSpans.Scope().SetName("atm-system")
+	scopeSpans.Scope().SetVersion("v1.0")
 	return scopeSpans
 }
 
@@ -2686,5 +2678,3 @@ Here is the detailed view of one of those traces in Jaeger:
 
 That's it! You have now reached the end of this tutorial and successfully
 implemented a trace receiver, congratulations!
-
-[^1]: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.

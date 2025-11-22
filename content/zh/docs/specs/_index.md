@@ -23,4 +23,5 @@ redirects:
   - from: semconv/resource/deployment_environment
     to: semconv/resource/deployment-environment
 default_lang_commit: 880560388fab20d661f7c093df08ae36ea453203
+drifted_from_default: true
 ---

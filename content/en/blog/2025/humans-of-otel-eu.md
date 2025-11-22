@@ -227,7 +227,7 @@ works, in terms of storage, performance, analysis, as well as visualization.
 **MARYLIA GUTIERREZ:** To me, OpenTelemetry means that is you don't have to have
 the dependency on anyone and is also about the community. So it's a way for
 everybody to work together that you normally find your competitor, but actually
-you work together. You go to a meeting or do pair programing, and you just want
+you work together. You go to a meeting or do pair programming, and you just want
 to see the... that community to grow. You want to see people be able to solve
 their problems just by working all together.
 

@@ -3,6 +3,7 @@ title: 故障排查
 description: Collector 故障排查建议
 weight: 25
 default_lang_commit: 00927d66af2f5f9e6d2b6fc90ce77341c3cf9033
+drifted_from_default: true
 cSpell:ignore: confmap pprof tracez zpages
 ---
 

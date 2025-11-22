@@ -4,11 +4,9 @@ weight: 50
 cSpell:ignore: DWITH
 ---
 
-<!-- markdownlint-disable no-duplicate-heading -->
-
 {{% docs/languages/exporters/intro %}}
 
-### Dependencies {#otlp-dependencies}
+## Dependencies {#otlp-dependencies}
 
 If you want to send telemetry data to an OTLP endpoint (like the
 [OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) or
@@ -24,7 +22,7 @@ Make sure that you have set the right cmake build variables while
 - `-DWITH_OTLP_GRPC=ON`: To enable building OTLP gRPC exporter.
 - `-DWITH_OTLP_HTTP=ON`: To enable building OTLP HTTP exporter.
 
-### Usage
+## Usage
 
 Next, configure the exporter to point at an OTLP endpoint in your code.
 
@@ -197,7 +195,7 @@ void InitLogger()
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Console
+## Console
 
 To debug your instrumentation or see the values locally in development, you can
 use exporters writing telemetry data to the console (stdout).
@@ -269,7 +267,7 @@ void InitLogger()
 
 {{% include "exporters/prometheus-setup.md" %}}
 
-### Dependencies {#prometheus-dependencies}
+## Dependencies {#prometheus-dependencies}
 
 To send your trace data to [Prometheus](https://prometheus.io/), make sure that
 you have set the right cmake build variables while
@@ -312,7 +310,7 @@ the metrics from this endpoint.
 
 {{% include "exporters/zipkin-setup.md" %}}
 
-### Dependencies {#zipkin-dependencies}
+## Dependencies {#zipkin-dependencies}
 
 To send your trace data to [Zipkin](https://zipkin.io/), make sure that you have
 set the right cmake build variables while

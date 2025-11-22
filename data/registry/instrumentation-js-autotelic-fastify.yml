@@ -18,5 +18,5 @@ createdAt: 2020-08-28
 package:
   name: '@autotelic/fastify-opentelemetry'
   registry: npm
-  version: 0.22.1
+  version: 0.23.0
 isFirstParty: false

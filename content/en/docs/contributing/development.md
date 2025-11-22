@@ -122,12 +122,12 @@ might need to increase the file descriptor limit. See
 The website is built from the following content:
 
 - Files under `content/`, `static/`, etc. per [Hugo] defaults.
-- Mount points, defined in [hugo.yaml] under `mounts`. Mounts are either
-  directly from git submodules under [content-modules], or preprocessed content
-  from `content-modules` (placed under `tmp/`), and no where else.
+- Mount points, defined by Hugo [config] in
+  `config/_default/module-template.yaml`. Mounts are either directly from git
+  submodules under [content-modules], or preprocessed content from
+  `content-modules` (placed under `tmp/`), and no where else.
 
-[hugo.yaml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/hugo.yaml
+[config]: https://github.com/open-telemetry/opentelemetry.io/tree/main/config
 [content-modules]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 

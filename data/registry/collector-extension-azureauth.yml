@@ -1,0 +1,21 @@
+# cSpell:ignore azureauthextension azureauth
+title: Azure authenticator extension
+registryType: extension
+language: collector
+tags:
+  - azureauth
+  - extension
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/azureauthextension
+license: Apache 2.0
+description:
+  This extension implements both `extensionauth.HTTPClient` and
+  `extensionauth.Server`, so it can be used in both exporters and receivers.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/azureauthextension
+  version: v0.140.1

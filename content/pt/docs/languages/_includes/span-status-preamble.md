@@ -1,6 +1,5 @@
 ---
-default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57
-drifted_from_default: true
+default_lang_commit: c651bbf2a61f1ea643ae1d2ae89d496c58dbb56d
 ---
 
 Um [estado](/docs/concepts/signals/traces/#span-status) pode ser definido em um

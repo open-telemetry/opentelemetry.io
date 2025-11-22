@@ -20,19 +20,24 @@ checkout(Checkout):::golang
 currency(Currency):::cpp
 email(Email):::ruby
 flagd(Flagd):::golang
-flagd-ui(Flagd-ui):::typescript
+flagd-ui(Flagd-ui):::elixir
 fraud-detection(Fraud Detection):::kotlin
 frontend(Frontend):::typescript
 frontend-proxy(Frontend Proxy <br/>&#40Envoy&#41):::cpp
 image-provider(Image Provider <br/>&#40nginx&#41):::cpp
+llm(LLM):::python
 load-generator([Load Generator]):::python
 payment(Payment):::javascript
 product-catalog(Product Catalog):::golang
+product-reviews(Product Reviews):::python
 quote(Quote):::php
 recommendation(Recommendation):::python
 shipping(Shipping):::rust
 queue[(queue<br/>&#40Kafka&#41)]:::java
 react-native-app(React Native App):::typescript
+postgresql[(Database<br/>&#40PostgreSQL&#41)]
+
+accounting ---> postgresql
 
 ad ---->|gRPC| flagd
 
@@ -57,13 +62,22 @@ frontend -->|gRPC| checkout
 frontend -->|HTTP| shipping
 frontend ---->|gRPC| recommendation
 frontend -->|gRPC| product-catalog
+frontend -->|gRPC| product-reviews
 
 frontend-proxy -->|gRPC| flagd
 frontend-proxy -->|HTTP| frontend
 frontend-proxy -->|HTTP| flagd-ui
 frontend-proxy -->|HTTP| image-provider
 
+llm -->|gRPC| flagd
+llm ---> product-reviews
+
 payment -->|gRPC| flagd
+
+product-reviews -->|gRPC| flagd
+product-reviews -->|gRPC| product-catalog
+product-reviews -->|gRPC| llm
+product-reviews ---> postgresql
 
 queue -->|TCP| accounting
 queue -->|TCP| fraud-detection
@@ -80,6 +94,7 @@ end
 
 classDef dotnet fill:#178600,color:white;
 classDef cpp fill:#f34b7d,color:white;
+classDef elixir fill:#b294bb,color:black;
 classDef golang fill:#00add8,color:black;
 classDef java fill:#b07219,color:white;
 classDef javascript fill:#f1e05a,color:black;
@@ -92,10 +107,11 @@ classDef typescript fill:#e98516,color:black;
 ```
 
 ```mermaid
-graph TD
+graph LR
 subgraph Service Legend
   dotnetsvc(.NET):::dotnet
   cppsvc(C++):::cpp
+  elixirsvc(Elixir):::elixir
   golangsvc(Go):::golang
   javasvc(Java):::java
   javascriptsvc(JavaScript):::javascript
@@ -109,6 +125,7 @@ end
 
 classDef dotnet fill:#178600,color:white;
 classDef cpp fill:#f34b7d,color:white;
+classDef elixir fill:#b294bb,color:black;
 classDef golang fill:#00add8,color:black;
 classDef java fill:#b07219,color:white;
 classDef javascript fill:#f1e05a,color:black;

@@ -6,6 +6,7 @@ description: >-
 aliases: [/golang, /golang/metrics, /golang/tracing]
 weight: 16
 default_lang_commit: dc174c212e81fadbf8382bb54c54cff294954b1b
+drifted_from_default: true
 ---
 
 {{% docs/languages/index-intro go /%}}

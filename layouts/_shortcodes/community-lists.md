@@ -2,7 +2,7 @@
 
 <p>{{ T "community_introduce" . }}</p>
 
-## {{ T "community_learn" }}
+## {{ T "community_learn" }} {#learn-and-connect}
 
 {{ T "community_using" . }}
 
@@ -10,7 +10,7 @@
   {{ template "community-links-list" . }}
 {{ end }}
 
-## {{ T "community_develop" }}
+## {{ T "community_develop" }} {#develop-and-contribute}
 
 {{ T "community_contribute" . }}
 

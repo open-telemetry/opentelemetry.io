@@ -458,8 +458,8 @@ public class ProvidersAndScopes {
 
 [Attributes](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/common/Attributes.html)
 is a bundle of key value pairs representing the
-[standard attribute definition](/docs/specs/otel/common/#standard-attribute).
-`Attributes` are a recurring concept in the OpenTelemetry API:
+[attribute definition](/docs/specs/otel/common/#attribute). `Attributes` are a
+recurring concept in the OpenTelemetry API:
 
 - [Spans](#span), span events, and span links have attributes.
 - The measurements recorded to [metric instruments](#meter) have attributes.

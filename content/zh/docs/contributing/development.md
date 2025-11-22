@@ -5,7 +5,7 @@ description: 了解如何为本网站设置开发环境。
 what-next: >
   你现在已经可以开始[构建](#build)、[提供](#serve)并更新网站文件。
 weight: 60
-default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22
+default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22 # patched
 drifted_from_default: true
 ---
 
@@ -116,7 +116,7 @@ npm run serve:netlify
 - 在 [hugo.yaml] 中通过 `mounts` 字段定义的挂载点。这些挂载点来源于
   [content-modules] 目录下的 Git 子模块，或是经过预处理后存放在 `tmp/` 目录中的内容，且仅限这两处来源。
 
-[hugo.yaml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/hugo.yaml
+[hugo.yaml]: https://github.com/open-telemetry/opentelemetry.io/blob/bc94737/hugo.yaml
 [content-modules]: https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
 ### 子模块更改 {#submodule-changes}

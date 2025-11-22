@@ -12,7 +12,7 @@ description: How to instrument libraries an app depends on
 Each instrumentation library is a [crate](https://crates.io/).
 
 For example, the
-[instrumentation library for Actix Web](https://crates.io/crates/actix-web-opentelemetry)
+[instrumentation library for Actix Web](https://crates.io/crates/opentelemetry-instrumentation-actix-web)
 will automatically create [spans](/docs/concepts/signals/traces/#spans) and
 [metrics](/docs/concepts/signals/metrics/) based on the inbound HTTP requests.
 

@@ -13,7 +13,7 @@ fall back to English banners, etc.
 > Announcements are currently used as banners only. We _might_ eventually
 > support slightly more general announcements as well.
 
-### Creating an announcement
+## Creating an announcement
 
 To add a new announcement, create an announcement Markdown file under the
 `announcements` folder of your localization using the following command:
@@ -34,7 +34,7 @@ you use the **same filename** as the English language announcement.
 
 {{% /alert %}}
 
-### Announcement list
+## Announcement list
 
 Any given announcement will appear in a site build when the build date falls
 between the `date` and `expiryDate` fields of the announcement. When those

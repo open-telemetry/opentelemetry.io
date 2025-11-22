@@ -46,7 +46,7 @@ verified, meaning that you can have high confidence that a smaller sample of
 data accurately represents the larger group.
 
 Additionally, the more data you generate, the less data you actually need to
-have a representative sample. For high-volume systems, is quite common for a
+have a representative sample. For high-volume systems, it is quite common for a
 sampling rate of 1% or lower to very accurately represent the other 99% of data.
 
 ### When to sample
@@ -86,7 +86,7 @@ Finally, consider the following three costs associated with sampling:
 1. The direct cost of compute to effectively sample data, such as a tail
    sampling proxy.
 2. The indirect engineering cost of maintaining effective sampling methodologies
-   as more application, systems, and data are involved.
+   as more applications, systems, and data are involved.
 3. The indirect opportunity cost of missing critical information with
    ineffective sampling techniques.
 
@@ -103,8 +103,8 @@ as possible. A decision to sample or drop a span or trace is not made by
 inspecting the trace as a whole.
 
 For example, the most common form of head sampling is
-[Consistent Probability Sampling](/docs/specs/otel/trace/tracestate-probability-sampling-experimental/#consistent-probability-sampling).
-This is also be referred to as Deterministic Sampling. In this case, a sampling
+[Consistent Probability Sampling](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-sampling-decision).
+This is also referred to as Deterministic Sampling. In this case, a sampling
 decision is made based on the trace ID and the desired percentage of traces to
 sample. This ensures that whole traces are sampled - no missing spans - at a
 consistent rate, such as 5% of all traces.

@@ -1,0 +1,60 @@
+name: Website Issue/Bug
+description: For reporting a problem with the opentelemetry.io site.
+title: '[Bug]: '
+type: bug
+body:
+  - type: textarea
+    id: what_happened
+    attributes:
+      label: What happened?
+      description: Describe the problem that occurred.
+      placeholder: Describe the problem that occurred.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_result
+    attributes:
+      label: What did you expect would happen?
+      description: Describe the expected result/output.
+      placeholder: Describe the expected result/output.
+    validations:
+      required: true
+
+  - type: input
+    id: page_path
+    attributes:
+      label: Name + path of the page
+      description: The relative path and page title where you found a problem.
+      placeholder:
+        'e.g., content/en/docs/concepts/what-is-otel.md — "What is
+        OpenTelemetry?"'
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Browser, OS, and platform
+      description: Include the browser version if you know it as well.
+      placeholder: 'e.g., Chrome 120 on macOS 14 (Apple Silicon)'
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional context
+      description: Anything else that would be helpful.
+      placeholder: Links, screenshots, related issues/PRs, etc.
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        <sub>[React](https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/)
+        with 👍 to help prioritize this issue. Please use comments to provide
+        useful context, avoiding `+1` or `me too`, to help us triage it. Learn
+        more
+        [here](https://opentelemetry.io/community/end-user/issue-participation/).</sub>

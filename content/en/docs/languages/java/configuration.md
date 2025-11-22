@@ -120,8 +120,8 @@ property to an environment variable:
 - Convert the name to uppercase.
 - Replace all `.` and `-` characters with `_`.
 
-For example, the `otel.sdk.enabled` system property is equivalent to the
-`OTEL_SDK_ENABLED` environment variable.
+For example, the `otel.sdk.disabled` system property is equivalent to the
+`OTEL_SDK_DISABLED` environment variable.
 
 If a property is defined as both a system property and environment variable, the
 system property takes priority.
@@ -253,7 +253,7 @@ Properties for cardinality limits:
 
 #### Properties: logs
 
-Properties for [log record processor(s)](../sdk/#logrecordprocessor) pared with
+Properties for [log record processor(s)](../sdk/#logrecordprocessor) paired with
 exporters via `otel.logs.exporter`:
 
 | System property                   | Description                                                           | Default |

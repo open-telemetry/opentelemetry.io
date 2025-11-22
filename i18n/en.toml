@@ -1,3 +1,13 @@
+# Blockquote alert types
+# https://gohugo.io/render-hooks/blockquotes/#alerts
+# TODO: Upstream to Docsy
+
+caution= "Caution"
+important = "Important"
+note = "Note"
+tip = "Tip"
+warning = "Warning"
+
 # Docsy overrides
 
 [ui_search]

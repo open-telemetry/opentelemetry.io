@@ -122,6 +122,13 @@ See [Distributed tracing][distributed tracing].
 A distribution is a wrapper around an upstream OpenTelemetry repository with
 some customizations. See [Distributions].
 
+### Entity
+
+A collection of [attributes](#attribute) that identify and describe a physical
+or logical object. Entities are typically associated with telemetry. For
+example, a CPU entity describes a physical CPU, while a service entity describes
+a logical grouping of processes that compose an HTTP or other service.
+
 ### Event
 
 An Event is a [Log Record](#log-record) with an event name and a well-known
@@ -305,11 +312,8 @@ See [Distributed Tracing](#distributed-tracing).
 
 ### Resource
 
-Captures information about the entity producing telemetry as
-[Attributes](#attribute). For example, a process producing telemetry that is
-running in a container on Kubernetes has a process name, a pod name, a
-namespace, and possibly a deployment name. All these attributes can be included
-in the `Resource`.
+A collection of [entities](#entity) or [attributes](#attribute) that identify or
+describe a physical or logical object that produces telemetry.
 
 ### REST
 

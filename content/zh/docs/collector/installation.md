@@ -2,6 +2,7 @@
 title: 安装 Collector
 weight: 2
 default_lang_commit: 5fdcac03a4be4f063089a72a82348ec90cce9874
+drifted_from_default: true
 cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
 ---
 

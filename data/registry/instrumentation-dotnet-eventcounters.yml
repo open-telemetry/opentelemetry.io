@@ -19,4 +19,4 @@ isFirstParty: false
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.EventCounters
-  version: 1.5.1-alpha.1
+  version: 1.14.0-alpha.1

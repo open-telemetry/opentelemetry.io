@@ -2,7 +2,7 @@
 title: ブログ
 description: ブログ投稿する方法を学びます。
 weight: 30
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 ---
 
 [OpenTelemetry ブログ](/blog/)は OpenTelemetry に関連する可能性のある、新機能、コミュニティレポートそしてニュースを発信します。
@@ -17,6 +17,10 @@ default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
 
 OpenTelemetry ウェブサイトのメンテナーと承認者はプロジェクトのドキュメントの改善に焦点を当てているため、ブログ記事はレビューの優先度が低くなることに注意してください。
 
+## ソーシャルメディアコンテンツのリクエスト {#social-media-content-request}
+
+ブログ記事以外のコンテンツをOpenTelemetryプロジェクトのソーシャルメディアチャンネルで公開するようにリクエストしたい場合、[このフォームを使用してください](https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml)。
+
 ## ブログ記事を提出する前に {#before-submitting-a-blog-post}
 
 ブログ記事は商業的な内容であってはならず、OpenTelemetry コミュニティに全体に適用される独自の内容で作成する必要があります。
@@ -30,6 +34,7 @@ OpenTelemetry ウェブサイトのメンテナーと承認者はプロジェク
 - Special Interest Group（SIG）の最新情報
 - チュートリアルやウォークスルー
 - OpenTelemetry の統合
+- [コントリビューター募集](#call-for-contributors)
 
 不適切な内容には、以下が含まれます。
 
@@ -48,6 +53,13 @@ SIG Communication のメンテナーがブログ記事が受け入れられる�
 スポンサーを持つことは任意ですが、スポンサーを持つことでブログポストをより早くレビューや承認を得る可能性が高まります。
 
 もしイシューが必要としているものをすべて揃っている場合は、メンテナーが確認し次の手順に進めてブログ記事を投稿できることを通知します。
+
+### コントリビューター募集 {#call-for-contributors}
+
+新しいプロジェクトやSIGの作成を提案する場合、またはOpenTelemetryプロジェクトへの寄付を申し出る場合には、その提案を成功させるために追加のコントリビューターが必要になります。
+それを支援するために、「コントリビューター募集」（CfC）のブログ記事を提案できます。
+
+これには、[新しいプロジェクト](https://github.com/open-telemetry/community/blob/main/project-management.md)と[寄付](https://github.com/open-telemetry/community/blob/main/guides/contributor/donations.md)のプロセスに従う必要があります。
 
 ## ブログ記事を提出する {#submit-a-blog-post}
 

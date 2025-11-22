@@ -1,0 +1,21 @@
+# cSpell:ignore libhoneyreceiver libhoney
+title: Libhoney Receiver
+registryType: receiver
+language: collector
+tags:
+  - libhoney
+  - receiver
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/libhoneyreceiver
+license: Apache 2.0
+description:
+  The Libhoney receiver will accept data for either Trace or Logs signals that
+  are emitted from applications that were
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/libhoneyreceiver
+  version: v0.140.1

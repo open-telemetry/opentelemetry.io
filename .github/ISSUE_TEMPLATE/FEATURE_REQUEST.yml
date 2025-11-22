@@ -1,0 +1,31 @@
+name: Website Feature Request
+description: For things we should add or change on the site.
+title: '[Feature]: '
+type: feature
+body:
+  - type: textarea
+    id: desired_feature
+    attributes:
+      label: Desired feature or idea
+      description: What would you like to see happen?
+      placeholder: Briefly describe the feature or change.
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional context
+      description: Anything else that would be helpful.
+      placeholder: Links, screenshots, related issues/PRs, etc.
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        <sub>[React](https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/)
+        with 👍 to help prioritize this issue. Please use comments to provide
+        useful context, avoiding `+1` or `me too`, to help us triage it. Learn
+        more
+        [here](https://opentelemetry.io/community/end-user/issue-participation/).</sub>

@@ -75,7 +75,7 @@ service:
   pipelines: # section that can contain multiple subsections, one per pipeline
     traces: # type of the pipeline
       receivers: [otlp, zipkin]
-      processors: [memory_limiter, batch]
+      processors: [memory_limiter]
       exporters: [otlp, zipkin]
 ```
 
@@ -102,7 +102,7 @@ service:
   pipelines:
     traces: # a pipeline of “traces” type
       receivers: [otlp]
-      processors: [memory_limiter, batch]
+      processors: [memory_limiter]
       exporters: [otlp]
     traces/2: # another pipeline of “traces” type
       receivers: [otlp]
@@ -210,26 +210,29 @@ The same name of the processor can be referenced in the `processors` key of
 multiple pipelines. In this case, the same configuration is used for each of
 these processors, but each pipeline always gets its own instance of the
 processor. Each of these processors has its own state, and the processors are
-never shared between pipelines. For example, if `batch` processor is used in
-several pipelines, each pipeline has its own batch processor, but each batch
-processor is configured exactly the same way if they reference the same key in
-the configuration. See the following configuration:
+never shared between pipelines. For example, if the `transform` processor is
+used in several pipelines, each pipeline has its own transform processor, but
+each transform processor is configured exactly the same way if they reference
+the same key in the configuration. See the following configuration:
 
 ```yaml
 processors:
-  batch:
-    send_batch_size: 10000
-    timeout: 10s
+  transform:
+    error_mode: ignore
+    trace_statements:
+      - set(resource.attributes["namespace"],
+        resource.attributes["k8s.namespace.name"])
+      - delete_key(resource.attributes, "k8s.namespace.name")
 
 service:
   pipelines:
     traces: # a pipeline of “traces” type
       receivers: [zipkin]
-      processors: [batch]
+      processors: [transform]
       exporters: [otlp]
     traces/2: # another pipeline of “traces” type
       receivers: [otlp]
-      processors: [batch]
+      processors: [transform]
       exporters: [otlp]
 ```
 
@@ -240,7 +243,7 @@ When the Collector loads this config, the result looks like this diagram:
 title: Pipeline "traces"
 ---
 flowchart LR
-  R1("`zipkin Receiver`") --> P1["`#quot;batch#quot; Processor`"]
+  R1("`zipkin Receiver`") --> P1["`#quot;transform#quot; Processor`"]
   P1 --> E1[["`#quot;otlp#quot; Exporter`"]]
 ```
 
@@ -249,12 +252,12 @@ flowchart LR
 title: Pipeline "traces/2"
 ---
 flowchart LR
-  R1("`otlp Receiver`") --> P1["`#quot;batch#quot; Processor`"]
+  R1("`otlp Receiver`") --> P1["`#quot;transform#quot; Processor`"]
   P1 --> E1[["`#quot;otlp#quot; Exporter`"]]
 ```
 
-Note that each `batch` processor is an independent instance, although they are
-configured the same way with a `send_batch_size` of `10000`.
+Note that each `transform` processor is an independent instance, although they
+are configured the same way with a `send_batch_size` of `10000`.
 
 > The same name of the processor must not be referenced multiple times in the
 > `processors` key of a single pipeline.

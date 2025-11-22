@@ -1,8 +1,10 @@
 ---
 title: OTLPエクスポーター設定
 linkTitle: OTLPエクスポーター
+weight: 20
 aliases: [otlp-exporter-configuration]
-default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
+default_lang_commit: 8587d0c0ff3bc57f99b0ecd461f03dd1f73c07ec
+drifted_from_default: true
 ---
 
 ## エンドポイントの設定 {#endpoint-configuration}
@@ -125,7 +127,7 @@ OTLP/HTTP を使う場合は、通常 `v1/logs` で終わります。
 
 ## タイムアウトの設定 {#timeout-configuration}
 
-以下の環境変数は、OTLPエクスポーターがデータのネットバッチを送信する前に待つ最大時間（ミリ秒単位）を設定します。
+以下の環境変数は、OTLPエクスポーターがデータの次のバッチを送信する前に待つ最大時間（ミリ秒単位）を設定します。
 
 ### `OTEL_EXPORTER_OTLP_TIMEOUT`
 

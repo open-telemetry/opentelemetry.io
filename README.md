@@ -44,7 +44,7 @@ before opening an issue.
 
 ## Meetings
 
-We, the OTel Communications SIG, meet every two weeks on Monday at 10:00 PT.
+We, the OTel Communications SIG, meet every two weeks on Tuesday at 9:00 AM PT.
 Check out the [OpenTelemetry community calendar][] for the Zoom link and any
 updates to this schedule.
 
@@ -63,8 +63,9 @@ These are the members of [@open-telemetry/docs-maintainers]:
 - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
 - [Patrice Chalin](https://github.com/chalin), CNCF
 - [Phillip Carter](https://github.com/cartermp), Salesforce
-- [Severin Neumann](https://github.com/svrnm)
+- [Severin Neumann](https://github.com/svrnm), Causely
 - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
+- [Vitor Vasconcellos](https://github.com/vitorvasc), Mercado Libre
 
 For more information about the maintainer role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
@@ -73,12 +74,24 @@ For more information about the maintainer role, see the
 
 These are the members of [@open-telemetry/docs-approvers]:
 
-- [Michael Hausenblas](https://github.com/mhausenblas), Amazon
-- [Ted Young](https://github.com/tedsuo), Grafana Labs
-- [Vitor Vasconcellos](https://github.com/vitorvasc), MercadoLibre, Inc.
+- [Marylia Gutierrez](https://github.com/maryliag), Grafana Labs
 
 For more information about the approver role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
+
+### Triagers
+
+These are the members of [@open-telemetry/docs-triagers]:
+
+- [Emídio Neto](https://github.com/emdneto)
+- [Ezzio Moreira](https://github.com/EzzioMoreira), PicPay
+- [Kazunori Otani](https://github.com/katzchang), Splunk
+- [Masaki Sugimoto](https://github.com/Msksgm), Henry, Inc.
+- [Michael Yao](https://github.com/windsonsea), DaoCloud
+- [Yoshi Yamaguchi](https://github.com/ymotongpoo), AWS
+
+For more information about the triager role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#triager).
 
 ### Emeritus maintainers
 
@@ -92,6 +105,8 @@ For more information about the emeritus role, see the
 ### Emeritus approvers
 
 - [Paul Bruce](https://github.com/paulsbruce)
+- [Michael Hausenblas](https://github.com/mhausenblas)
+- [Ted Young](https://github.com/tedsuo)
 
 For more information about the emeritus role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).

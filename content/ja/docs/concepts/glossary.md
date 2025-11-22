@@ -3,6 +3,7 @@ title: 用語集
 description: OpenTelemetry で使用されるテレメトリー用語の定義と規則
 weight: 200
 default_lang_commit: 530c8fd130c93dd95e9638c8919518dbbc9c6b0a
+drifted_from_default: true
 ---
 
 この用語集は、OpenTelemetry プロジェクトに対して新しい、用語と[概念](/docs/concepts/)を定義し、オブザーバビリティの分野で一般的に使われている OpenTelemetry 特有の使用法を明確にします。
@@ -43,7 +44,7 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 ### バゲッジ {#baggage}
 
-イベントとサービスの因果関係を確立するための[メタデータ](#metadata)を伝播するメカニズム。
+イベントとサービスの因果関係を確立するための[メタデータ](#metadata)を伝搬するメカニズム。
 [バゲッジ仕様][baggage]を参照のこと。
 
 ### カーディナリティ {#cardinality}
@@ -74,10 +75,12 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 いくつかの[計装ライブラリ](#instrumentation-library)と[コレクター](#collector)はコア機能のセットと、ベンダーの `エクスポーター` を含む非コア機能専用のcontribリポジトリを提供しています。
 
+<!-- prettier-ignore-start -->
 ### コンテキスト伝搬（プロパゲーション） {#context-propagation}
+<!-- prettier-ignore-end -->
 
 すべての[データソース](#data-source)が、[トランザクション](#transaction)の寿命にわたって状態を保存したりデータにアクセスしたりするための基盤となるコンテキストメカニズムを共有できるようにします。
-[コンテキスト伝播仕様][context propagation]を参照。
+[コンテキスト伝搬仕様][context propagation]を参照。
 
 ### DAG {#dag}
 

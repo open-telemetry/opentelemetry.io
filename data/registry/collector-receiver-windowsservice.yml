@@ -1,0 +1,21 @@
+# cSpell:ignore windowsservicereceiver windowsservice
+title: Windows Service Receiver
+registryType: receiver
+language: collector
+tags:
+  - windowsservice
+  - receiver
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/windowsservicereceiver
+license: Apache 2.0
+description:
+  The Windows Service Receiver is a receiver for scraping information about the
+  state of services running on a Windows machine.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/windowsservicereceiver
+  version: v0.140.1

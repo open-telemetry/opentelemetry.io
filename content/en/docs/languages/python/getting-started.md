@@ -672,22 +672,17 @@ exporters:
   # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:
     verbosity: detailed
-processors:
-  batch:
 service:
   pipelines:
     traces:
       receivers: [otlp]
       exporters: [debug]
-      processors: [batch]
     metrics:
       receivers: [otlp]
       exporters: [debug]
-      processors: [batch]
     logs:
       receivers: [otlp]
       exporters: [debug]
-      processors: [batch]
 ```
 
 Then run the docker command to acquire and run the collector based on this

@@ -2,8 +2,7 @@
 title: Rastros
 weight: 1
 description: O caminho de uma solicitação através do seu aplicativo.
-default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
-drifted_from_default: true
+default_lang_commit: 1ce35dff869e9a5f3317b23a1f986e4749a2e529
 ---
 
 Os **rastros** nos fornecem uma visão geral do que acontece quando uma
@@ -278,8 +277,8 @@ Por exemplo, considere dois cenários em um navegador web:
 1. Rastrear o carregamento de uma página
 2. Apontar quando uma página se torna interativa
 
-Um trecho é mais adequado para o primeiro cenário, pois é uma operação que tem
-início e fim.
+Um trecho é mais adequado para rastrear o primeiro cenário, pois é uma operação
+que tem início e fim.
 
 Um evento de trecho é mais adequado para rastrear o segundo cenário porque
 representa um ponto relevante e único na solicitação.
@@ -318,7 +317,7 @@ segundo rastro. Agora, eles estão causalmente associados entre si.
 Os links são opcionais, mas servem como uma boa maneira de associar trechos de
 rastro uns aos outros.
 
-Para mais informações sobre Links de Trechos, consulte
+Para mais informações, consulte
 [Links de Trechos](/docs/specs/otel/trace/api/#link).
 
 ### O estado do Trecho {#span-status}

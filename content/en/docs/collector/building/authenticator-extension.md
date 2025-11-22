@@ -28,8 +28,8 @@ room at the [CNCF Slack workspace](https://slack.cncf.io).
 ## Architecture
 
 [Authenticators] are regular extensions that also satisfy one or more interfaces
-related to the authentication mechanism. [Server authenticators] are used with
-receivers, and are able to intercept HTTP and gRPC requests, while client
+related to the authentication mechanism. [Server authenticators][sa] are used
+with receivers, and are able to intercept HTTP and gRPC requests, while client
 authenticators are used with exporters, able to add authentication data to HTTP
 and gRPC requests. It is possible for authenticators to implement both
 interfaces at the same time, allowing a single instance of the extension to be
@@ -70,7 +70,7 @@ receivers:
   otlp/auth:
     protocols:
       grpc:
-         endpoint: 0.0.0.0:4317
+        endpoint: 0.0.0.0:4317
         auth:
           authenticator: oidc
 
@@ -100,7 +100,7 @@ receivers:
   otlp/auth:
     protocols:
       grpc:
-         endpoint: 0.0.0.0:4317
+        endpoint: 0.0.0.0:4317
         auth:
           authenticator: oidc/some-provider
 

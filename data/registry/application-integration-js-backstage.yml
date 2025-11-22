@@ -1,0 +1,21 @@
+title: Backstage
+registryType: application integration
+language: js
+tags:
+  - backstage
+  - javascript
+  - typescript
+  - incubating
+license: Apache-2.0
+description:
+  Backstage is an open source framework for building developer portals
+authors:
+  - name: Backstage Authors
+    url: https://github.com/backstage/backstage
+urls:
+  website: https://backstage.io/
+  repo: https://github.com/backstage/backstage
+  docs: https://backstage.io/docs/tutorials/setup-opentelemetry
+createdAt: '2025-11-19'
+cncfProjectLevel: incubating
+isNative: true

@@ -1,13 +1,14 @@
 ---
 title: OTLP Exporter Configuration
 linkTitle: OTLP Exporter
+weight: 20
 aliases: [otlp-exporter-configuration]
 ---
 
 ## Endpoint Configuration
 
 The following environment variables let you configure an OTLP/gRPC or OTLP/HTTP
-endpoint for your traces, metrics, and logs.
+endpoint for your traces, metrics, profiles, and logs.
 
 ### `OTEL_EXPORTER_OTLP_ENDPOINT`
 
@@ -83,6 +84,23 @@ Typically ends with `v1/logs` when using OTLP/HTTP.
 - HTTP:
   `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="http://my-api-endpoint/v1/logs"`
 
+### `OTEL_EXPORTER_OTLP_PROFILES_ENDPOINT`
+
+Endpoint URL for profiles data only, with an optional port number. Typically
+ends with `v1/profiles` when using OTLP/HTTP.
+
+**Default value:**
+
+- gRPC: `"http://localhost:4317"`
+- HTTP: `"http://localhost:4318/v1/profiles"`
+
+**Example:**
+
+- gRPC:
+  `export OTEL_EXPORTER_OTLP_PROFILES_ENDPOINT="https://my-api-endpoint:443"`
+- HTTP:
+  `export OTEL_EXPORTER_OTLP_PROFILES_ENDPOINT="http://my-api-endpoint/v1/profiles"`
+
 ## Header configuration
 
 The following environment variables let you configure additional headers as a
@@ -124,10 +142,19 @@ A list of headers to apply to all outgoing logs.
 **Example:**
 `export OTEL_EXPORTER_OTLP_LOGS_HEADERS="api-key=key,other-config-value=value"`
 
+### `OTEL_EXPORTER_OTLP_PROFILES_HEADERS`
+
+A list of headers to apply to all outgoing profiles.
+
+**Default value:** None
+
+**Example:**
+`export OTEL_EXPORTER_OTLP_PROFILES_HEADERS="api-key=key,other-config-value=value"`
+
 ## Timeout Configuration
 
 The following environment variables configure the maximum time (in milliseconds)
-an OTLP Exporter will wait before transmitting the net batch of data.
+an OTLP Exporter will wait before transmitting the next batch of data.
 
 ### `OTEL_EXPORTER_OTLP_TIMEOUT`
 
@@ -161,6 +188,14 @@ The timeout value for all outgoing logs in milliseconds.
 **Default value:** 10000 (10s)
 
 **Example:** `export OTEL_EXPORTER_OTLP_LOGS_TIMEOUT=500`
+
+### `OTEL_EXPORTER_OTLP_PROFILES_TIMEOUT`
+
+The timeout value for all outgoing profiles, in milliseconds.
+
+**Default value:** 10000 (10s)
+
+**Example:** `export OTEL_EXPORTER_OTLP_PROFILES_TIMEOUT=500`
 
 ## Protocol configuration
 
@@ -220,6 +255,21 @@ Specifies the OTLP transport protocol to be used for log data.
 or `grpc`.
 
 **Example:** `export OTEL_EXPORTER_OTLP_LOGS_PROTOCOL=grpc`
+
+Valid values are:
+
+- `grpc` to use OTLP/gRPC
+- `http/protobuf` to use OTLP/HTTP + protobuf
+- `http/json` to use OTLP/HTTP + JSON
+
+### `OTEL_EXPORTER_OTLP_PROFILES_PROTOCOL`
+
+Specifies the OTLP transport protocol to be used for profiles data.
+
+**Default value:** SDK-dependent, but will typically be either `http/protobuf`
+or `grpc`.
+
+**Example:** `export OTEL_EXPORTER_OTLP_PROFILES_PROTOCOL=grpc`
 
 Valid values are:
 

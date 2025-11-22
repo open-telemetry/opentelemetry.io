@@ -38,7 +38,7 @@ OpenTelemetry][CNTCOT] and offered by the Linux Foundation:
 
 <!-- prettier-ignore -->
 ![LFS148 course badge][]
-{.img-initial .pt-3 .w-75 .m-auto}
+{.border-0 .pt-3 .w-75 .m-auto}
 
 <div class="card-body ps-4 pe-4 bg-light-subtle">
   <div class="h4 card-title pt-2 pb-2">

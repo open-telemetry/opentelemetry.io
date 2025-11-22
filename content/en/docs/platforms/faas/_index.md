@@ -16,7 +16,7 @@ The initial vendor scope of the FaaS documentation is around Microsoft Azure,
 Google Cloud Platform (GCP), and Amazon Web Services (AWS). AWS functions are
 also known as Lambda.
 
-### Community Assets
+## Community Assets
 
 The OpenTelemetry community currently provides pre-built Lambda layers able to
 auto-instrument your application as well as the option of a standalone Collector

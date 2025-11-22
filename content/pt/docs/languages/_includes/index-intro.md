@@ -8,7 +8,7 @@ são desenvolvidas para auxiliar na geração e coleta de dados de telemetria de
 aplicações, como métricas, logs e rastros. Esta documentação foi criada para te
 auxiliar a entender como começar a utilizar o OpenTelemetry em {{ $name }}.
 
-## Estado e Lançamentos
+## Estado e Lançamentos {#status-and-releases}
 
 O estado atual dos principais componentes funcionais do OpenTelemetry para
 {{ $name }} é o seguinte:

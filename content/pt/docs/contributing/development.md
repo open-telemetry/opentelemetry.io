@@ -8,7 +8,8 @@ what-next: >
   atualizações nos arquivos do site. Para mais detalhes sobre como submeter
   alterações, veja [Enviando conteúdo][].
 weight: 60
-default_lang_commit: 3337aa6fbaccf5e8734a1ef2c6ca8b61496c3d93
+default_lang_commit: 3337aa6fbaccf5e8734a1ef2c6ca8b61496c3d93 # patched
+drifted_from_default: true
 ---
 
 {{% alert title="Ambientes de construção suportados" color=warning %}}
@@ -132,7 +133,7 @@ O site é construído a partir do seguinte conteúdo:
   lugar.
 
 [hugo.yaml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/hugo.yaml
+  https://github.com/open-telemetry/opentelemetry.io/blob/bc94737/hugo.yaml
 [content-modules]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 

@@ -5,7 +5,8 @@ weight: 10
 aliases:
   - /docs/languages/python/automatic/configuration
   - /docs/languages/python/automatic/agent-config
-cSpell:ignore: healthcheck instrumentor myapp pyproject Starlette urllib
+# prettier-ignore
+cSpell:ignore: gevent healthcheck instrumentor monkeypatch myapp pyproject Starlette urllib
 ---
 
 The agent is highly configurable, either by:
@@ -146,6 +147,9 @@ specific category.
 - `OTEL_PYTHON_ID_GENERATOR`: to specify which IDs generator to use for the
   global Tracer Provider
 - `OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS`: to enable query sanitization
+- `OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH`: set to
+  `patch_all` to call gevent monkeypatch `patch_all` method before initializing
+  the SDK
 
 Examples:
 
@@ -155,6 +159,7 @@ export OTEL_PYTHON_ELASTICSEARCH_NAME_PREFIX=my-custom-prefix
 export OTEL_PYTHON_GRPC_EXCLUDED_SERVICES="GRPCTestServer,GRPCHealthServer"
 export OTEL_PYTHON_ID_GENERATOR=xray
 export OTEL_PYTHON_INSTRUMENTATION_SANITIZE_REDIS=true
+export OTEL_PYTHON_AUTO_INSTRUMENTATION_EXPERIMENTAL_GEVENT_PATCH=patch_all
 ```
 
 ## Disabling Specific Instrumentations

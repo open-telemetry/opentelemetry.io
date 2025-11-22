@@ -178,15 +178,17 @@ use OpenTelemetry\SDK\Trace\Sampler\AlwaysOnSampler;
 use OpenTelemetry\SDK\Trace\Sampler\ParentBased;
 use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
-use OpenTelemetry\SemConv\ResourceAttributes;
+use OpenTelemetry\SemConv\Attributes\ServiceAttributes;
+use OpenTelemetry\SemConv\Incubating\Attributes\DeploymentIncubatingAttributes;
+use OpenTelemetry\SemConv\Incubating\Attributes\ServiceIncubatingAttributes;
 
 require 'vendor/autoload.php';
 
 $resource = ResourceInfoFactory::emptyResource()->merge(ResourceInfo::create(Attributes::create([
-    ResourceAttributes::SERVICE_NAMESPACE => 'demo',
-    ResourceAttributes::SERVICE_NAME => 'test-application',
-    ResourceAttributes::SERVICE_VERSION => '0.1',
-    ResourceAttributes::DEPLOYMENT_ENVIRONMENT_NAME => 'development',
+    ServiceIncubatingAttributes::SERVICE_NAMESPACE => 'demo',
+    ServiceAttributes::SERVICE_NAME => 'test-application',
+    ServiceAttributes::SERVICE_VERSION => '0.1',
+    DeploymentIncubatingAttributes::DEPLOYMENT_ENVIRONMENT_NAME => 'development',
 ])));
 $spanExporter = new SpanExporter(
     (new StreamTransportFactory())->create('php://stdout', 'application/json')
@@ -583,15 +585,14 @@ composer require open-telemetry/sem-conv
 Add the following to the top of your file:
 
 ```php
-use OpenTelemetry\SemConv\TraceAttributes;
-use OpenTelemetry\SemConv\TraceAttributeValues;
+use OpenTelemetry\SemConv\Attributes\CodeAttributes;
 ```
 
 Finally, you can update your file to include semantic attributes:
 
 ```php
-$span->setAttribute(TraceAttributes::CODE_FUNCTION, 'rollOnce');
-$span->setAttribute(TraceAttributes::CODE_FILEPATH, __FILE__);
+$span->setAttribute(CodeAttributes::CODE_FUNCTION_NAME, 'rollOnce');
+$span->setAttribute(CodeAttributes::CODE_FILE_PATH, __FILE__);
 ```
 
 ### Create Spans with events
