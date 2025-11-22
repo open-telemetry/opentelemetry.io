@@ -17,4 +17,4 @@ createdAt: 2022-11-07
 package:
   registry: gems
   name: opentelemetry-exporter-zipkin
-  version: 0.24.0
+  version: 0.24.1

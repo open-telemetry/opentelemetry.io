@@ -3,6 +3,7 @@ title: 代理
 description: 为什么以及如何将信号发送到 Collector 并从 Collector 发送到后端
 weight: 2
 default_lang_commit: 82dc25ce2cc1c6b3b2bde68b5d25bd58e5ac49b3
+drifted_from_default: true
 cSpell:ignore: prometheusremotewrite
 ---
 

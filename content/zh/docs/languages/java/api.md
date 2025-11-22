@@ -3,7 +3,8 @@ title: 通过 API 记录遥测数据
 weight: 11
 aliases:
   - /docs/languages/java/api-components/
-default_lang_commit: 5b82e8f9c057d4d4961d41091a4bc75fc9b5b37c
+default_lang_commit: 7c6d317a1ed969bd03f0aa8297f068ca29c2b459 # patched
+drifted_from_default: true
 logBridgeWarning: >
   虽然 `LoggerProvider` 、 `Logger` API 在结构上与对应的链路和指标 API 相似，
   但它们的使用场景不同。目前，`LoggerProvider` 、 `Logger` 及相关类代表的是[日志桥接 API](/docs/specs/otel/logs/api/)，
@@ -414,7 +415,7 @@ public class ProvidersAndScopes {
 ### Attributes {#attributes}
 
 [Attributes](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/common/Attributes.html)
-是一组键值对，代表[标准属性定义](/docs/specs/otel/common/#standard-attribute)。
+是一组键值对，代表[标准属性定义](/docs/specs/otel/common/#attribute)。
 
 `Attributes` 是 OpenTelemetry API 中一个反复出现的概念：
 

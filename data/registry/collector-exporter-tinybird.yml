@@ -1,0 +1,22 @@
+# cSpell:ignore tinybirdexporter tinybird
+title: Tinybird Exporter
+registryType: exporter
+language: collector
+tags:
+  - tinybird
+  - exporter
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/tinybirdexporter
+license: Apache 2.0
+description:
+  This exporter sends logs, metrics, and traces to
+  [Tinybird](https://www.tinybird.co/) via the [Events
+  API](https://www.tinybird.co/docs/api-reference/events-api).
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/tinybirdexporter
+  version: v0.140.1

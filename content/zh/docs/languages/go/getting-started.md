@@ -2,6 +2,7 @@
 title: 开始
 weight: 10
 default_lang_commit: 3512b0ae11f72d3a954d86da59ad7f98d064bdad # patched
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
@@ -414,7 +415,7 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
     }
     logger.InfoContext(ctx, msg, "result", roll)
 
-    // 为这个指标定义一个熟悉，表示是骰子点数值。
+    // 为这个指标定义一个属性，表示是骰子点数值。
     rollValueAttr := attribute.Int("roll.value", roll)
     span.SetAttributes(rollValueAttr)
     rollCnt.Add(ctx, 1, metric.WithAttributes(rollValueAttr))
