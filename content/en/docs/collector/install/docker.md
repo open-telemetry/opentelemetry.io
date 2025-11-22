@@ -1,6 +1,6 @@
 ---
 title: Install the Collector with Docker
-aliases: [/docs/collector/installation/#docker]
+linkTitle: Docker
 weight: 200
 ---
 

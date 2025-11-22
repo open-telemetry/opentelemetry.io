@@ -1,6 +1,6 @@
 ---
 title: Install the Collector on macOS
-aliases: [../installation/binary/#macos]
+linkTitle: macOS
 weight: 200
 ---
 

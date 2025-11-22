@@ -1,7 +1,7 @@
 ---
 title: Install the Collector on Windows
-aliases: [../installation/binary/#windows]
-weight: 200
+linkTitle: Windows
+weight: 300
 ---
 
 ## Windows

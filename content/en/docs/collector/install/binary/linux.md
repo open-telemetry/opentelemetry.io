@@ -1,7 +1,6 @@
 ---
 title: Install the Collector on Linux
-aliases: [../installation/binary/#linux]
-weight: 200
+weight: 100
 ---
 
 ## Linux

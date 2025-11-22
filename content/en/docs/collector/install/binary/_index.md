@@ -1,7 +1,6 @@
 ---
 title: Install from a Collector binary
-aliases: [../installation/binary]
-weight: 200
+weight: 300
 ---
 
 You can install the OpenTelemetry Collector by downloading and running a
