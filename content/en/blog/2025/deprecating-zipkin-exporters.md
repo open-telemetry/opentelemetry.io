@@ -14,15 +14,16 @@ no longer requires SDKs to implement it. After analyzing usage patterns across
 language ecosystems, we've observed that the community has strongly gravitated
 toward OTLP, with Zipkin exporters seeing limited adoption—in several languages,
 even less than the already-deprecated Jaeger exporter. Combined with minimal
-user engagement on related issues and the availability of alternatives,
-we believe this is the right time to sunset Zipkin exporters in OTel SDKs.
+user engagement on related issues and the availability of alternatives, we
+believe this is the right time to sunset Zipkin exporters in OTel SDKs.
 
 ## Timeline and migration path
 
 - **Specification deprecation**: Effective from December 2025
 - **SDK support**: Existing stable Zipkin exporters will continue to receive
   security patches and critical bug fixes until at least **December, 2026**,
-  following the [SDK stability guarantees](/docs/specs/otel/versioning-and-stability/#sdk-support).
+  following the
+  [SDK stability guarantees](/docs/specs/otel/versioning-and-stability/#sdk-support).
 - **New SDKs**: Implementing a Zipkin exporter is not required for new language
   SDKs
 
@@ -39,5 +40,8 @@ If you're currently using a Zipkin exporter, you have two migration paths:
 
 ## Questions?
 
-Reach out in the [#otel-specification](https://cloud-native.slack.com/archives/C01N7PP1THC)
-channel on the CNCF Slack or create an issue in [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification) repository.
+Reach out in the
+[#otel-specification](https://cloud-native.slack.com/archives/C01N7PP1THC)
+channel on the CNCF Slack or create an issue in
+[opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification)
+repository.
