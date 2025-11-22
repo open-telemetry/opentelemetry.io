@@ -7,8 +7,8 @@ cSpell:ignore: configauth oidc
 
 The OpenTelemetry Collector allows receivers and exporters to be connected to
 authenticators, providing a way to both authenticate incoming connections at the
-receiver's side, as well as adding authentication data to outgoing requests at
-the exporter's side.
+receiver side and add authentication data to outgoing requests at
+the exporter side.
 
 This mechanism is implemented using [extensions] and this document will guide
 you on implementing your own authenticators. If you are looking for
@@ -21,7 +21,7 @@ refer to the up-to-date
 [API Reference Guide](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth)
 for the actual semantics of each type and function.
 
-If at anytime you need assistance, join the
+If at any time you need assistance, join the
 [#opentelemetry-collector](https://cloud-native.slack.com/archives/C01N6P7KR6W)
 room at the [CNCF Slack workspace](https://slack.cncf.io).
 
@@ -29,13 +29,13 @@ room at the [CNCF Slack workspace](https://slack.cncf.io).
 
 [Authenticators] are regular extensions that also satisfy one or more interfaces
 related to the authentication mechanism. [Server authenticators][sa] are used
-with receivers, and are able to intercept HTTP and gRPC requests, while client
-authenticators are used with exporters, able to add authentication data to HTTP
-and gRPC requests. It is possible for authenticators to implement both
+with receivers and can intercept HTTP and gRPC requests, while client
+authenticators are used with exporters and can add authentication data to HTTP
+and gRPC requests. Authenticators can implement both
 interfaces at the same time, allowing a single instance of the extension to be
-used both for the incoming and outgoing requests. Note that users might still
-want to have different authenticators for the incoming and outgoing requests,
-so, don't make your authenticator required to be used at both ends.
+used for both incoming and outgoing requests. Note that users might still
+want to have different authenticators for incoming and outgoing requests,
+so don't make your authenticator required to be used at both ends.
 
 Once an authenticator extension is available in the collector distribution, it
 can be referenced in the configuration file as a regular extension:
@@ -122,18 +122,18 @@ service:
 ### Server authenticators
 
 A [server authenticator][sa] is essentially an extension with an `Authenticate`
-function, receiving the payload headers as parameter. If the authenticator is
-able to authenticate the incoming connection, it should return a `nil` error, or
-the concrete error if it can't. As an extension, the authenticator should make
-sure to initialize all the resources it needs during the
+function that receives the payload headers as a parameter. If the authenticator can
+authenticate the incoming connection, it should return a `nil` error, or
+the concrete error if it can't. As an extension, the authenticator should
+initialize all the resources it needs during the
 [`Start`](https://pkg.go.dev/go.opentelemetry.io/collector/component#Component)
 phase, and is expected to clean them up upon `Shutdown`.
 
-The `Authenticate` call is part of the hot path for incoming requests and will
-block the pipeline, so make sure to properly handle any blocking operations you
-need to make. Concretely, respect the deadline set by the context, in case one
-is provided. Also make sure to add enough observability to your extension,
-especially in the form of metrics and traces, so that users can get setup a
+The `Authenticate` call is part of the hot path for incoming requests and
+blocks the pipeline, so properly handle any blocking operations you
+need to make. Concretely, respect the deadline set by the context if one
+is provided. Also add enough observability to your extension,
+especially in the form of metrics and traces, so that users can set up a
 notification system in case error rates go up beyond a certain level and can
 debug specific failures.
 
@@ -144,7 +144,7 @@ defined in [Client authenticators].
 
 Similar to server authenticators, they are essentially extensions with extra
 functions, each receiving an object that gives the authenticator an opportunity
-to inject the authentication data into. For instance, the HTTP client
+to inject authentication data. For example, the HTTP client
 authenticator provides an
 [`http.RoundTripper`](https://pkg.go.dev/net/http#RoundTripper), while the gRPC
 client authenticator can produce a

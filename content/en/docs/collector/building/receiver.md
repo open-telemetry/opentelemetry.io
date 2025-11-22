@@ -31,7 +31,7 @@ Within the Collector, a trace receiver has the role to receive and convert your
 request telemetry from its original format into the OTel trace model, so the
 information can be properly processed through the Collector's pipelines.
 
-In order to implement a traces receiver you will need the following:
+To implement a traces receiver, you need the following:
 
 - A `Config` implementation to enable the trace receiver to gather and validate
   its configurations within the Collector's config.yaml.
@@ -43,10 +43,10 @@ In order to implement a traces receiver you will need the following:
   telemetry, convert it to the internal trace representation, and hand the
   information to the next consumer in the pipeline.
 
-In this tutorial we will create a sample trace receiver called `tailtracer` that
+In this tutorial, we create a sample trace receiver called `tailtracer` that
 simulates a pull operation and generates traces as an outcome of that operation.
-The next sections will guide you through the process of implementing the steps
-above in order to create the receiver, so let's get started.
+The next sections guide you through the process of implementing the steps
+above to create the receiver, so let's get started.
 
 ## Setting up receiver development and testing environment
 
@@ -72,9 +72,9 @@ this:
     └── otelcol-dev
 ```
 
-In order to properly test your trace receiver, you may need a distributed
-tracing backend so the Collector can send the telemetry to it. We will be using
-[Jaeger](https://www.jaegertracing.io/docs/latest/getting-started/), if you
+To properly test your trace receiver, you may need a distributed
+tracing backend so the Collector can send the telemetry to it. We use
+[Jaeger](https://www.jaegertracing.io/docs/latest/getting-started/). If you
 don't have a `Jaeger` instance running, you can easily start one using Docker
 with the following command:
 
@@ -130,13 +130,17 @@ service:
       level: debug
 ```
 
-> Note: here we use the `insecure` flag in the `otlp` exporter config for
-> simplicity; you should use TLS certificates for secure communication or mTLS
-> for mutual authentication when running the Collector in production, by
-> following this
-> [guide](/docs/collector/configuration/#setting-up-certificates).
+{{% alert title="Note" %}}
 
-In order to verify that the Collector is properly set up, run this command:
+Here we use the `insecure` flag in the `otlp` exporter config for
+simplicity. You should use TLS certificates for secure communication or mTLS
+for mutual authentication when running the Collector in production by
+following this
+[guide](/docs/collector/configuration/#setting-up-certificates).
+
+{{% /alert %}}
+
+To verify that the Collector is properly set up, run this command:
 
 ```sh
 ./otelcol-dev/otelcol-dev --config config.yaml
@@ -182,8 +186,8 @@ console.
 
 ## Setting up Go module
 
-Every Collector's component should be created as a Go module, let's create a
-`tailtracer` folder to host our receiver project and initialize it as Go module.
+Every Collector component should be created as a Go module. Let's create a
+`tailtracer` folder to host our receiver project and initialize it as a Go module.
 
 ```sh
 mkdir tailtracer
@@ -191,12 +195,14 @@ cd tailtracer
 go mod init github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tailtracer
 ```
 
-> Note:
->
-> 1. The module path above is a mock path, which can be your desired private or
->    public path.
-> 2. See the
->    [initial trace-receiver code](https://github.com/rquedas/otel4devs/tree/main/collector/receiver/trace-receiver).
+{{% alert title="Note" %}}
+
+1. The module path above is a mock path, which can be your desired private or
+   public path.
+2. See the
+   [initial trace-receiver code](https://github.com/rquedas/otel4devs/tree/main/collector/receiver/trace-receiver).
+
+{{% /alert %}}
 
 It's recommended to enable Go
 [Workspaces](https://go.dev/doc/tutorial/workspaces) since we're going to manage
@@ -215,13 +221,13 @@ go work use tailtracer
 A receiver may have some configurable settings, which can be set through the
 Collector's config file.
 
-The `tailtracer` receiver will have the following settings:
+The `tailtracer` receiver has the following settings:
 
 - `interval`: a string representing the time interval (in minutes) between
   telemetry pull operations
 - `number_of_traces`: the number of mock traces generated for each interval
 
-Here is what the `tailtracer` receiver settings will look like:
+Here is what the `tailtracer` receiver settings look like:
 
 ```yaml
 receivers:
@@ -237,7 +243,7 @@ all the code to support your receiver settings.
 touch tailtracer/config.go
 ```
 
-To implement the configuration aspects of a receiver you need create a `Config`
+To implement the configuration aspects of a receiver, you need to create a `Config`
 struct. Add the following code to your `config.go` file:
 
 ```go
@@ -248,7 +254,7 @@ type Config struct{
 }
 ```
 
-In order to be able to give your receiver access to its settings, the `Config`
+To give your receiver access to its settings, the `Config`
 struct must have a field for each of the receiver's settings.
 
 Here is what the `config.go` file should look like after you implemented the
@@ -279,9 +285,9 @@ optional
 [ConfigValidator](https://github.com/open-telemetry/opentelemetry-collector/blob/677b87e3ab5c615bc3f93b8f99bb1fa5be951751/component/config.go#L28)
 interface.
 
-In this case, the `interval` value will be optional (we will look at generating
+In this case, the `interval` value is optional (we look at generating
 default values later) but when defined should be at least 1 minute (1m) and the
-`number_of_traces` will be a mandatory value. Here is what the config.go looks
+`number_of_traces` is a mandatory value. Here is what config.go looks
 like after implementing the `Validate` method.
 
 > tailtracer/config.go
@@ -388,7 +394,7 @@ Let's now implement the code to support all the parameters required by
 ## Identifying and providing default settings
 
 Previously, we mentioned that the `interval` setting for the `tailtracer`
-receiver would be optional, in that case you will need to provide a default
+receiver is optional. In that case, you need to provide a default
 value for it so it can be used as part of the default settings.
 
 Go ahead and add the following code to your `factory.go` file:
@@ -476,10 +482,10 @@ func NewFactory() receiver.Factory {
 ## Specifying the receiver's capabilities
 
 A receiver component can process traces, metrics, and logs. The receiver's
-factory is responsible for specifying the capabilities that the receiver would
-provide.
+factory is responsible for specifying the capabilities that the receiver
+provides.
 
-Given that tracing is the subject of this tutorial, we will enable the
+Given that tracing is the subject of this tutorial, we enable the
 `tailtracer` receiver to work with traces only. The `receiver` package provides
 the following function and type to help the factory describe the trace
 processing capabilities:
@@ -600,12 +606,12 @@ Notice that `receiver.Traces` (and its siblings `receiver.Metrics` and
 `receiver.Logs`) at this point in time, doesn't describe any specific methods
 other than the ones it "inherits" from `component.Component`.
 
-It might feel weird, but remember, the Collector's API was meant to be
+It might feel weird, but remember, the Collector's API is meant to be
 extensible, and the components and their signals might evolve in different ways,
-so the role of those interfaces exist to help support that.
+so the role of those interfaces exists to help support that.
 
 So, to create a `receiver.Traces`, you just need to implement the following
-methods described by `component.Component` interface:
+methods described by the `component.Component` interface:
 
 ```go
 Start(ctx context.Context, host Host) error
@@ -632,8 +638,8 @@ processing and make all the necessary cleanup work required:
 - `context.Context`: the context passed by the Collector as part of the shutdown
   operation.
 
-You will start the implementation by creating a new file called
-`trace-receiver.go` within `tailtracer` folder:
+You start the implementation by creating a new file called
+`trace-receiver.go` within the `tailtracer` folder:
 
 ```sh
 touch tailtracer/trace-receiver.go
@@ -760,7 +766,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 
 {{% /alert %}}
 
-## Keeping information passed by the receiver's factory
+## Keeping information passed by the receiver factory
 
 Now that you have implemented the `receiver.Traces` interface methods, your
 `tailtracer` receiver component is ready to be instantiated and returned by its
@@ -945,10 +951,10 @@ func NewFactory() receiver.Factory {
 
 Till now, the skeleton of the receiver has been fully implemented.
 
-## Updating the Collector's initialization process with the receiver
+## Updating the Collector initialization process with the receiver
 
-In order to let the receiver participate in the Collector pipelines, we need
-some updates into the generated `otelcol-dev/components.go` file, where all the
+To let the receiver participate in the Collector pipelines, we need
+some updates to the generated `otelcol-dev/components.go` file, where all the
 Collector components are registered and instantiated.
 
 The `tailtracer` receiver factory instance has to be added to the `factories`
@@ -1094,10 +1100,14 @@ and every minute there will be one message, which is
 `I should start processing traces now!`, triggered by the dummy ticker in
 `tailtracer/trace-receiver.go`.
 
-> Note: you can always stop the process by pressing <kbd>Ctrl + C</kbd> in your
-> Collector's terminal.
+{{% alert title="Note" %}}
 
-Of course, you may use your IDE of choice to debug the receiver, just like how
+You can always stop the process by pressing <kbd>Ctrl + C</kbd> in your
+Collector's terminal.
+
+{{% /alert %}}
+
+Of course, you can use your IDE of choice to debug the receiver, just like how
 you normally debug a Go project. Here is a simple `launch.json` file for
 [Visual Studio Code](https://code.visualstudio.com/) for your reference:
 
@@ -1146,7 +1156,7 @@ of now:
 In the next section, you will learn more about the OpenTelemetry Trace data
 model so the `tailtracer` receiver can finally generate meaningful traces!
 
-## The Collector's Trace Data Model
+## The Collector trace data model
 
 You might be familiar with OpenTelemetry traces by using the SDKs and
 instrumenting an application so you can see and evaluate your traces within a
@@ -1168,9 +1178,9 @@ Creating a trace within the trace receiver will be slightly different than the
 way you would do it with the SDKs, so let's start reviewing the high level
 concepts.
 
-### Working with Resources
+### Working with resources
 
-In the OTel world, all telemetry is generated by a `Resource`, here is the
+In the OTel world, all telemetry is generated by a `Resource`. Here is the
 definition according to the [OTel spec](/docs/specs/otel/resource/sdk):
 
 > A `Resource` is an immutable representation of the entity producing telemetry
@@ -1188,10 +1198,10 @@ require like ATMs, IoT sensors, the sky is the limit.
 So it's safe to say that for a trace to exist, a `Resource` will have to start
 it.
 
-In this tutorial we will simulate a system that has telemetry that demonstrate
-ATMs located in 2 different states (eg: Illinois and California) accessing the
-Account's backend system to execute balance, deposit and withdraw operations,
-therefore we will have to implement code to create the `Resource` types
+In this tutorial, we simulate a system that has telemetry that demonstrates
+ATMs located in 2 different states (for example, Illinois and California) accessing the
+Account's backend system to execute balance, deposit and withdraw operations.
+Therefore, we need to implement code to create the `Resource` types
 representing the ATM and the backend system.
 
 Go ahead and create a file named `model.go` inside the `tailtracer` folder
@@ -1228,9 +1238,9 @@ type BackendSystem struct{
 }
 ```
 
-These types are meant to represent the entities as they are within the system
-being observed and they contain information that would be quite meaningful to be
-added to the traces as part of the `Resource` definition. You will add some
+These types represent the entities as they are within the system
+being observed and they contain information that is meaningful to be
+added to the traces as part of the `Resource` definition. You add some
 helper functions to generate the instances of those types.
 
 Here is what the `model.go` file will look with the helper functions:
@@ -1433,7 +1443,7 @@ func generateTraces(numberOfTraces int) ptrace.Traces{
 
 {{% /alert %}}
 
-### Describing Resources through attributes
+### Describing resources through attributes
 
 The Collector's API provides a package named `pcommon` (nested under the `pdata`
 package) with all the types and helper functions required to describe a
@@ -1449,7 +1459,7 @@ file within the Collector's GitHub project.
 
 Key/value pairs provide a lot of flexibility to help model your `Resource` data,
 so the OTel specification has some guidelines in place to help organize and
-minimize the conflicts across all the different types of telemetry generation
+minimize conflicts across all the different types of telemetry generation
 entities that it may need to represent.
 
 These guidelines are known as
@@ -1735,11 +1745,11 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 ### Representing operations with spans
 
 You now have a `ResourceSpan` instance with their respective `Resource` properly
-filled with attributes to represent the `Atm` and `BackendSystem` entities, you
-are ready to represent the operations that each `Resource` execute as part of a
+filled with attributes to represent the `Atm` and `BackendSystem` entities. You
+are ready to represent the operations that each `Resource` executes as part of a
 trace within the `ResourceSpan`.
 
-In the OTel world, in order for a system to generate telemetry, it needs to be
+In the OTel world, for a system to generate telemetry, it needs to be
 instrumented either manually or automatically through an instrumentation
 library.
 
@@ -2009,11 +2019,11 @@ func generateTraces(numberOfTraces int) ptrace.Traces {
 ```
 
 You now have the `BackendSystem` entity and its operations represented in spans
-within a proper trace context! All you need to do is to push the generated trace
+within a proper trace context! All you need to do is push the generated trace
 through the pipeline so the next consumer (either a processor or an exporter)
 can receive and process it.
 
-This is the how the `tailtracer/model.go` looks like:
+This is how the `tailtracer/model.go` looks like:
 
 > tailtracer/model.go
 
@@ -2374,9 +2384,9 @@ execute as a result of another operation originated either within or outside
   `SetParentId()` method and passing the `pcommon.SpanID` of the parent/caller
   `ptrace.Span` as a parameter.
 
-You will now create a `ptrace.Span` representing the `Atm` entity operations and
-set it as the parent for `BackendSystem` span. Open the `tailtracer/model.go`
-file and update the `appendTraceSpans()` function as follow:
+You now create a `ptrace.Span` representing the `Atm` entity operations and
+set it as the parent for the `BackendSystem` span. Open the `tailtracer/model.go`
+file and update the `appendTraceSpans()` function as follows:
 
 ```go
 func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpans, atmScopeSpans *ptrace.ScopeSpans) {
