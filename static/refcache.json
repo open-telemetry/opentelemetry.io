@@ -1739,6 +1739,18 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-13T09:45:10.225436337Z"
   },
+  "https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Container/operation/ContainerInspect": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-22T10:35:07.421431357Z"
+  },
+  "https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Container/operation/ContainerStats": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-22T10:35:08.136468454Z"
+  },
+  "https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Image/operation/ImageInspect": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-22T10:35:03.363219662Z"
+  },
   "https://docs.dynatrace.com/docs/shortlink/opentelemetry-collector": {
     "StatusCode": 206,
     "LastSeen": "2025-11-15T09:39:03.595520766Z"
@@ -12051,6 +12063,22 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-17T18:21:44.827050932Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-18T10:38:03.969991421Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-18T10:37:46.685425344Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-18T10:37:46.330840404Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/logs/data-model.md#type-any": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-18T10:38:05.674928048Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
     "LastSeen": "2025-11-15T09:41:50.553277453Z"
@@ -13078,6 +13106,10 @@
   "https://github.com/open-telemetry/semantic-conventions/pull/2779": {
     "StatusCode": 206,
     "LastSeen": "2025-11-13T09:45:10.571177114Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2984#discussion_r2466369361": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-06T10:37:26.044164511Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/981": {
     "StatusCode": 206,
@@ -19874,6 +19906,10 @@
   "https://tyk.io/docs/product-stack/tyk-gateway/advanced-configurations/distributed-tracing/open-telemetry/open-telemetry-overview/": {
     "StatusCode": 200,
     "LastSeen": "2025-11-16T09:45:25.747304377Z"
+  },
+  "https://uaparser.dev/#demo": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-12T10:37:25.583538393Z"
   },
   "https://ucum.org/ucum": {
     "StatusCode": 200,
