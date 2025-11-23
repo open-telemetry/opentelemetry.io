@@ -315,7 +315,7 @@ restarts.
 ## .NET CLR Profiler
 
 The CLR uses the following environment variables to set up the profiler. See
-[.NET Runtime Profiler Loading](https://github.com/dotnet/runtime/blob/main/docs/design/coreclr/profiling/Profiler%20Loading.md)
+[.NET Runtime Profiler Loading](https://github.com/dotnet/runtime/blob/d8302cef7946be82775ba5b94a88ad8eee800714/docs/design/coreclr/profiling/Profiler%20Loading.md)
 for more information.
 
 | .NET Framework environment variable | .NET environment variable  | Description                                                                             | Required value                                                                                                                                                                                                                                                  | Status                                                    |
