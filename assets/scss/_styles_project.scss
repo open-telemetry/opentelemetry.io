@@ -4,6 +4,7 @@
 @import 'registry';
 @import 'tabs';
 @import 'external_link';
+@import 'dark-adjustments';
 @import 'td/color-adjustments-dark';
 @import 'td/code-dark';
 @import 'td/gcs-search-dark';
@@ -212,11 +213,6 @@
   border: $border-width solid $border-color;
   margin-bottom: $paragraph-margin-bottom;
   @extend .td-max-width-on-larger-screens;
-}
-
-// Ensure OTel icons display correctly in dark mode
-[data-bs-theme='dark'] .otel-icon {
-  filter: brightness(0) invert(1);
 }
 
 .td-blog.otel-with-contributions-from {
