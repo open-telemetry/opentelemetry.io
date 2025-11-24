@@ -3,7 +3,8 @@ title: Comprobaciones para PR
 description:
   Aprenda cómo hacer que su PR pase con éxito todas las comprobaciones
 weight: 40
-default_lang_commit: 565307515b288bf5e8bee88d73ff4fac1fd93d5e
+default_lang_commit: 565307515b288bf5e8bee88d73ff4fac1fd93d5e # patched
+drifted_from_default: true
 cSpell:ignore: REFCACHE
 ---
 
@@ -18,7 +19,7 @@ se ejecutan una serie de comprobaciones. Las comprobaciones PR verifican que:
   [Netlify](#netlify-deployment) exitosamente.
 - Sus cambios cumplen con nuestra [guía de estilo](#style-checks).
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 Si alguna de las comprobaciones del pull request fallan, intenta ante todo
 [solucionar automáticamente problemas de contenido](../pull-requests/#fix-issues)
@@ -129,7 +130,7 @@ que quieres que el comprobador de enlaces ignore: `?no-link-check`. Por ejemplo,
 <https:/some-example.org?no-link-check> es ignorado por el comprobador de
 enlaces.
 
-{{% alert-md title="Maintainers tip" color=info %}}
+{{% alert title="Maintainers tip" %}}
 
 Los mantenedores pueden ejecutar el siguiente script justo después de haber
 ejecutado el comprobador de enlaces para que Puppeteer intente validar enlaces
@@ -142,7 +143,7 @@ con estados no exitosos.
 Este script también valida fragmentos de URL que el comprobador de enlaces no
 chequea.
 
-{{% /alert-md %}}
+{{% /alert %}}
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 

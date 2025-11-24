@@ -10,10 +10,10 @@ description: ioRedis instrumentation for Node.js.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-ioredis
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-ioredis
 createdAt: 2020-11-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-ioredis'
-  version: 0.48.0
+  version: 0.56.0
 isFirstParty: false

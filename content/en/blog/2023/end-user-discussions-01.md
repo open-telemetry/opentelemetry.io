@@ -88,8 +88,8 @@ different backends, what’s the best way to go about it?
 [Connectors](https://github.com/open-telemetry/opentelemetry-collector/pull/6140)
 (a new Collector component that acts as an exporter/receiver pair to join
 pipelines together) can be used to solve this. Connectors will be launching
-soon. For more info, see the Connector PR
-[here](https://github.com/open-telemetry/opentelemetry-collector/pull/6372).
+soon. For more info, see the
+[Connector PR](https://github.com/open-telemetry/opentelemetry-collector/pull/6372).
 
 Another approach would be to use a
 [routing processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/routingprocessor).

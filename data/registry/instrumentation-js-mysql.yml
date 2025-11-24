@@ -9,10 +9,10 @@ description: MySQL instrumentation for Node.js.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mysql
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-mysql
 createdAt: 2020-11-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-mysql'
-  version: 0.46.0
+  version: 0.54.0
 isFirstParty: false

@@ -2,11 +2,11 @@
 title: Métricas
 weight: 2
 description: Uma medição capturada em tempo de execução.
-default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
+default_lang_commit: 34f672f4afbc083423d5c03a03f97c308591d255
 ---
 
 Uma métrica é uma medição de um serviço capturada em tempo de execução. O
-momento de captura dessas medições é conhecido como evento de métrica, que
+momento de captura dessa medição é conhecido como evento de métrica, que
 consiste não apenas na medição em si, mas também no momento em que ela foi
 capturada e os metadados associados.
 

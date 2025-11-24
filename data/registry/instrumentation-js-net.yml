@@ -9,10 +9,10 @@ description: Instrumentation library for net module.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-net
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-net
 createdAt: 2021-07-08
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-net'
-  version: 0.44.0
+  version: 0.52.0
 isFirstParty: false

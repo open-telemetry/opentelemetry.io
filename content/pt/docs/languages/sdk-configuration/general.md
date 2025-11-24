@@ -1,12 +1,13 @@
 ---
 title: Configurações gerais de SDK
 linkTitle: Geral
+weight: 10
 aliases: [general-sdk-configuration]
-default_lang_commit: 1e4970e9193c8af1d1f9b86901b13492071aecc7
+default_lang_commit: a5691930635b4e2033946f3a85ae7a527c3eba06
 cSpell:ignore: ottrace
 ---
 
-{{% alert title="Nota" color="info" %}}
+{{% alert title="Nota" %}}
 
 O suporte a variáveis de ambiente é opcional. Para informações detalhadas sobre
 quais variáveis de ambiente cada implementação de linguagem suporta, consulte a
@@ -113,7 +114,7 @@ Dependendo do valor definido em `OTEL_TRACES_SAMPLER`, a definição de
 
 Especifica os Propagators a serem utilizados em uma lista separada por vírgulas.
 
-**Valor padrão:** `"tracecontext,baggage"
+**Valor padrão:** `"tracecontext,baggage"`
 
 **Exemplo:**
 
@@ -170,7 +171,7 @@ Os valores aceitos para `OTEL_METRICS_EXPORTER` são:
 
 - `"otlp"`: [OTLP][]
 - `"prometheus"`:
-  [Prometheus](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md)
+  [Prometheus](https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md)
 - `"console"`: [Saída Padrão](/docs/specs/otel/metrics/sdk_exporters/stdout/)
 - `"none"`: Nenhum exportador de métricas configurado automaticamente.
 

@@ -14,7 +14,7 @@ authors:
 package:
   registry: packagist
   name: open-telemetry/exporter-otlp
-  version: '1.2.1'
+  version: '1.3.2'
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Contrib/Otlp
 createdAt: 2022-12-14

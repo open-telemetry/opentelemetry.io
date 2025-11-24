@@ -1,7 +1,7 @@
 ---
 title: Primeiros passos para Desenvolvedores
 linkTitle: Dev
-default_lang_commit: 6a828d6dd3a3a8ef3cbf1b7d283f335b4626ae62
+default_lang_commit: f1ccafef4b5070f26ce63a3dc19fcafc8a00fb8f
 ---
 
 A página [primeiros-passos](..) é para você se:
@@ -23,6 +23,9 @@ dependência em outros softwares, recomendamos que você aprenda como pode
 fornecer telemetria nativamente:
 
 - [Como adicionar instrumentação nativa à minha biblioteca?](../../concepts/instrumentation/libraries/)
+
+Se você está procurando um conjunto de aplicações para realizar testes, a nossa
+[demonstração oficial do OpenTelemetry](/ecosystem/demo/) poderá ser útil.
 
 Em seguida, você pode se aprofundar na documentação da
 [linguagem](../../languages/) que você está usando:

@@ -2,7 +2,7 @@
 title: Scaling the Collector
 weight: 26
 # prettier-ignore
-cSpell:ignore: fluentd hostmetrics loadbalancer loadbalancing sharded statefulset
+cSpell:ignore: fluentd hostmetrics Linkerd loadbalancer loadbalancing sharded statefulset
 ---
 
 When planning your observability pipeline with the OpenTelemetry Collector, you
@@ -64,7 +64,10 @@ Once the queue has hit its capacity (`otelcol_exporter_queue_size` >
 `otelcol_exporter_queue_capacity`) it rejects data
 (`otelcol_exporter_enqueue_failed_spans`). Adding more workers will often make
 the Collector export more data, which might not necessarily be what you want
-(see [When NOT to scale](#when-not-to-scale)).
+(see [When NOT to scale](#when-not-to-scale)). The general guidance is to
+monitor queue size and consider scaling up when it reaches 60-70% of capacity,
+and scaling down if it's consistently low, while maintaining a minimum number of
+replicas, for example three, for resilience.
 
 It’s also worth getting familiar with the components that you intend to use, as
 different components might produce other metrics. For instance, the
@@ -91,7 +94,7 @@ Collectors might cause a harmful side effect.
 Again, one way to catch this situation is by looking at the metrics
 `otelcol_exporter_queue_size` and `otelcol_exporter_queue_capacity`. If you keep
 having the queue size close to the queue capacity, it’s a sign that exporting
-data is slower than receiving data. You can try to increase the queue size,
+data is slower than receiving data. You can try to increase the queue capacity,
 which will cause the Collector to consume more memory, but it will also give
 some room for the backend to breathe without permanently dropping telemetry
 data. But if you keep increasing the queue capacity and the queue size keeps
@@ -121,22 +124,41 @@ Components like the tail sampling processor cannot be easily scaled, as they
 keep some relevant state in memory for their business. Those components require
 some careful consideration before being scaled up.
 
-### Scaling Stateless Collectors
+### Scaling stateless collectors and using load balancers
 
 The good news is that most of the time, scaling the Collector is easy, as it’s
-just a matter of adding new replicas and using an off-the-shelf load balancer.
-When gRPC is used to receive the data, we recommend using a load-balancer that
-understands gRPC. Otherwise, clients will always hit the same backing Collector.
+just a matter of adding new replicas and distributing traffic among them using a
+load balancer.
 
-You should still consider splitting your collection pipeline with reliability in
-mind. For instance, when your workloads run on Kubernetes, you might want to use
-DaemonSets to have a Collector on the same physical node as your workloads and a
-remote central Collector responsible for pre-processing the data before sending
-the data to the storage. When the number of nodes is low and the number of pods
-is high, Sidecars might make more sense, as you’ll get a better load balancing
-for the gRPC connections among Collector layers without needing a gRPC-specific
-load balancer. Using a Sidecar also makes sense to avoid bringing down a crucial
-component for all pods in a node when one DaemonSet pod fails.
+A load balancer is essential when you need to:
+
+- Distribute incoming telemetry traffic across multiple instances of stateless
+  collectors to prevent any single instance from being overwhelmed.
+- Improve the availability and fault tolerance of your collection pipeline. If
+  one Collector instance fails, the load balancer can redirect traffic to
+  healthy instances.
+- Horizontally scale your Collector tier based on demand.
+
+When operating in Kubernetes environments, leverage robust, off-the-shelf load
+balancing and rate-limiting solutions provided by service meshes, such as Istio
+or Linkerd, or cloud provider load balancers. These systems offer mature
+features for traffic management, resilience, and observability that often go
+beyond basic load distribution.
+
+When gRPC is used to receive the data, a common scenario with OTLP, use a load
+balancer that understands gRPC (L7 load balancer). Standard L4 load balancers
+might establish a persistent connection to a single backend Collector instance,
+negating the benefits of scaling, as clients will always hit the same backing
+Collector. You should still consider splitting your collection pipeline with
+reliability in mind. For instance, when your workloads run on Kubernetes, you
+might want to use DaemonSets to have a Collector on the same physical node as
+your workloads and a remote central Collector responsible for pre-processing the
+data before sending the data to the storage. When the number of nodes is low and
+the number of pods is high, Sidecars might make more sense, as you’ll get a
+better load balancing for the gRPC connections among Collector layers without
+needing a gRPC-specific load balancer. Using a Sidecar also makes sense to avoid
+bringing down a crucial component for all pods in a node when one DaemonSet pod
+fails.
 
 The sidecar pattern consists in adding a container into the workload pod. The
 [OpenTelemetry Operator](/docs/platforms/kubernetes/operator/) can automatically
@@ -275,7 +297,7 @@ spec:
 
     service:
       pipelines:
-        traces:
+        metrics:
           receivers: [prometheus]
           processors: []
           exporters: [debug]
@@ -308,7 +330,7 @@ exporters:
            url: http://collector-with-ta-targetallocator:80/jobs/otel-collector/targets?collector_id=$POD_NAME
 service:
    pipelines:
-     traces:
+     metrics:
        exporters:
        - debug
        processors: []

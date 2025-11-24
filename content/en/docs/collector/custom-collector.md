@@ -2,7 +2,7 @@
 title: Building a custom collector
 weight: 29
 # prettier-ignore
-cSpell:ignore: batchprocessor chipset darwin debugexporter gomod loggingexporter otlpexporter otlpreceiver wyrtw
+cSpell:ignore: chipset darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
 If you are planning to build and debug custom collector receivers, processors,
@@ -25,6 +25,14 @@ which you can use to help build and debug your own custom components, so let's
 get started.
 
 ## Step 1 - Install the builder
+
+{{% alert color="primary" title="Note" %}}
+
+The `ocb` tool requires Go to build the Collector distribution.
+[Install Go](https://go.dev/doc/install) on your machine, if you haven't done so
+already.
+
+{{% /alert %}}
 
 The `ocb` binary is available as a downloadable asset from OpenTelemetry
 Collector [releases with `cmd/builder` tags][tags]. You will find a list of
@@ -134,7 +142,7 @@ to understand the different modules and how to add the components.
 We will be adding the following components to our development and testing
 collector distribution:
 
-- Exporters: OTLP and Debug[^1]
+- Exporters: OTLP and Debug
 - Receivers: OTLP
 - Processors: Batch
 
@@ -150,7 +158,6 @@ dist:
 
 exporters:
   - gomod:
-      # NOTE: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
       go.opentelemetry.io/collector/exporter/debugexporter {{% version-from-registry collector-exporter-debug %}}
   - gomod:
       go.opentelemetry.io/collector/exporter/otlpexporter {{% version-from-registry collector-exporter-otlp %}}
@@ -180,10 +187,19 @@ registry entries provide the full name and version you need to add to your
 
 {{% /alert %}}
 
-## Step 3 - Generating the Code and Building your Collector's distribution
+## Step 3a - Generate the code and build your Collector's distribution
 
-All you need now is to let the `ocb` do it's job, so go to your terminal and
-type the following command:
+{{% alert color="primary" title="Note" %}}
+
+This step is used to build your custom collector distribution using the `ocb`
+binary. If you would like to build and deploy your custom Collector distribution
+to a container orchestrator (for example, Kubernetes), skip this step and go to
+[Step 3b](#step-3b---containerize-your-collectors-distribution).
+
+{{% /alert %}}
+
+All you need now is to let the `ocb` do its job, so go to your terminal and type
+the following command:
 
 ```cmd
 ./ocb --config builder-config.yaml
@@ -227,7 +243,117 @@ You can now use the generated code to bootstrap your component development
 projects and easily build and distribute your own collector distribution with
 your components.
 
-Further reading:
+## Step 3b - Containerize your Collector's distribution
+
+{{% alert color="primary" title="Note" %}}
+
+This step will build your collector distribution inside a `Dockerfile`. Follow
+this step if you need to deploy your Collector distribution to a container
+orchestrator (for example, Kubernetes). If you would like to _only_ build your
+collector distribution without containerization, go to
+[Step 3a](#step-3a---generate-the-code-and-build-your-collectors-distribution).
+
+{{% /alert %}}
+
+You need to add two new files to your project:
+
+- `Dockerfile` - Container image definition of your Collector distribution
+- `collector-config.yaml` - Minimalist Collector configuration YAML for testing
+  your distribution
+
+After adding these files, your file structure looks like this:
+
+```console
+.
+├── builder-config.yaml
+├── collector-config.yaml
+└── Dockerfile
+```
+
+The following `Dockerfile` builds your Collector distribution in-place, ensuring
+that the resulting Collector distribution binary matches the target container
+architecture (for example, `linux/arm64`, `linux/amd64`):
+
+<!-- prettier-ignore-start -->
+```yaml
+FROM alpine:3.19 AS certs
+RUN apk --update add ca-certificates
+
+FROM golang:1.25.0 AS build-stage
+WORKDIR /build
+
+COPY ./builder-config.yaml builder-config.yaml
+
+RUN --mount=type=cache,target=/root/.cache/go-build GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@{{% version-from-registry collector-builder %}}
+RUN --mount=type=cache,target=/root/.cache/go-build builder --config builder-config.yaml
+
+FROM gcr.io/distroless/base:latest
+
+ARG USER_UID=10001
+USER ${USER_UID}
+
+COPY ./collector-config.yaml /otelcol/collector-config.yaml
+COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY --chmod=755 --from=build-stage /build/otelcol-dev /otelcol
+
+ENTRYPOINT ["/otelcol/otelcol-dev"]
+CMD ["--config", "/otelcol/collector-config.yaml"]
+
+EXPOSE 4317 4318 12001
+```
+<!-- prettier-ignore-end -->
+
+The following is the minimalist `collector-config.yaml` definition:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [debug]
+    metrics:
+      receivers: [otlp]
+      exporters: [debug]
+    logs:
+      receivers: [otlp]
+      exporters: [debug]
+```
+
+Use the following commands to build a multi-architecture Docker image of the OCB
+using `linux/amd64` and `linux/arm64` as the target build architectures. To
+learn more, see this
+[blog post](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/)
+about multi-architecture builds.
+
+```bash
+# Enable Docker multi-arch builds
+docker run --rm --privileged tonistiigi/binfmt --install all
+docker buildx create --name mybuilder --use
+
+# Build the Docker image as Linux AMD and ARM,
+# and loads the build result to "docker images"
+docker buildx build --load \
+  -t <collector_distribution_image_name>:<version> \
+  --platform=linux/amd64,linux/arm64 .
+
+# Test the newly-built image
+docker run -it --rm -p 4317:4317 -p 4318:4318 \
+    --name otelcol <collector_distribution_image_name>:<version>
+```
+
+## Further reading:
 
 - [Building a Trace Receiver](/docs/collector/building/receiver)
 - [Building a Connector](/docs/collector/building/connector)
@@ -235,5 +361,3 @@ Further reading:
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
 [tags]: https://github.com/open-telemetry/opentelemetry-collector-releases/tags
-
-[^1]: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.

@@ -3,7 +3,7 @@ title: Site localization
 description: Creating and maintaining site pages in non-English localizations.
 linkTitle: Localization
 weight: 25
-cSpell:ignore: shortcodes
+cSpell:ignore: Dowair shortcodes
 ---
 
 The OTel website uses Hugo's [multilingual framework] to support page
@@ -29,6 +29,7 @@ guidance offered in this section.
   - [Front matter][] field values for `title`, `linkTitle`, and `description`
   - **All** page content and front matter unless indicated otherwise
 - **Preserve** the _content_, _meaning_, and _style_ of the original text
+- **Submit work _incrementally_** via [small pull requests](#small-prs)
 - **Ask** [maintainers] if you have any doubts or questions through:
   - [Slack] `#otel-docs-localization` or `#otel-comms` channels
   - [Discussion], issue, or PR comment
@@ -44,7 +45,7 @@ guidance offered in this section.
 
 - **Translate**:
   - **File or directory** names of resources in this repository
-  - [Links](#links), this includes [heading IDs](#headings).[^*]
+  - [Links](#links), this includes [heading IDs](#headings) [^*]
   - Inline code-spans like these: `inline code example`
   - Markdown elements marked as `notranslate` (usually as a CSS class), in
     particular for [headings](#headings)
@@ -93,6 +94,34 @@ path would become `/ja/docs/some-page` when rendered from a Japanese page.
 
 {{% /alert %}}
 
+### Link definition labels {#link-labels}
+
+Locale authors can choose or not to translate [labels] of Markdown [link
+definitions][]. If you choose to keep the English label, then follow the
+guidance given in this section.
+
+For example, consider the following Markdown:
+
+```markdown
+[Hello], world! Welcome to the [OTel website][].
+
+[hello]: https://code.org/helloworld
+[OTel website]: https://opentelemetry.io
+```
+
+This would be translated in French as:
+
+```markdown
+[Bonjour][hello], le monde! Bienvenue sur le [site OTel][OTel website].
+
+[hello]: https://code.org/helloworld
+[OTel website]: https://opentelemetry.io
+```
+
+[labels]: https://spec.commonmark.org/0.31.2/#link-label
+[link definitions]:
+  https://spec.commonmark.org/0.31.2/#link-reference-definitions
+
 ### Images and diagrams {#images}
 
 Do **not** make copies of image files unless you localize text in the image
@@ -122,14 +151,14 @@ As of February 2025, we are in the process of migrating from shortcodes to
 {{% /alert %}}
 
 Some of the base shortcodes contain English text that you might need to localize
--- this is particularly true of those contained in [layouts/shortcodes/docs].
+-- this is particularly true of those contained in [layouts/_shortcodes/docs].
 
 If you need to create a localized version of a shortcode, place it under
-`layouts/shortcodes/xx`, where `xx` is your localization's language code. From
+`layouts/_shortcodes/xx`, where `xx` is your localization's language code. From
 there, use the same relative path as the original base shortcode.
 
-[layouts/shortcodes/docs]:
-  https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/shortcodes/docs
+[layouts/_shortcodes/docs]:
+  https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs
 
 ## Keeping track of localized-page drift {#track-changes}
 
@@ -265,90 +294,239 @@ For more details about the script, run `npm run check:i18n -- -h`.
 
 ## New localizations
 
-To start a new localization for the OpenTelemetry website,
-[raise an issue](https://github.com/open-telemetry/opentelemetry.io/issues/) to
-share your interest to contribute. Tag all other individuals that are willing to
-write and review translations in the language you want to add. **You need at
-least two potential contributors**, ideally three. Include the following task
-list in your issue as well:
+Interested in starting a new localization for the OTel website? Reach out to
+maintainers to express your interest, for example through a GitHub discussion or
+via the Slack `#otel-docs-localization` channel. This section explains the steps
+involved in starting a new localization.
 
-```markdown
-- [ ] Contributors for the new language: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
-- [ ] Localize site homepage to YOUR_LANGUAGE_NAME
-- [ ] Create an issue label for `lang:LANG_ID`
-- [ ] Create org-level group for `LANG_ID` approvers
-- [ ] Update components owners for `content/LANG_ID`
-- [ ] Set up spell checking, if a cSpell dictionary is available
-```
+{{% alert title="Note" %}}
 
-Notes:
-
-- For `LANG_ID`, use an official
-  [ISO 639-1 code](https://en.wikipedia.org/wiki/ISO_639-1) for the language you
-  want to add.
-- Look for
-  [cSpell dictionaries](https://github.com/streetsidesoftware/cspell-dicts)
-  available as NPM packages
-  [@cspell/dict-LANG_ID](https://www.npmjs.com/search?q=%40cspell%2Fdict). If a
-  dictionary isn't available for your dialect or region, choose the closest
-  region. For an example of how to set this up, see [PR #5386].
-
-After you created that issue and have the required amount of contributors,
-maintainers will ask you to provide a pull request with a translation of the
-[index page](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md).
-Make sure that maintainers are allowed to edit your PR, since they will add
-additional changes to your PR that are required to get your localization project
-started.
-
-With your first PR merged maintainers will take care of setting up the issue
-label, the org-level group and the component owners.
-
-{{% alert title="Important" color="warning" %}}
-
-You don't have to be an existing contributor to the OpenTelemetry project, to
-start a new localization. However you will not be added as a member of the
+You don't have to be an existing contributor to the OpenTelemetry project to
+start a new localization. However, you cannot be added as a member of the
 [OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as a
-member of the approvers group for your localization. You will need to satisfy
-the requirements for becoming an established member and approver as outlined in
-the
-[membership guidelines](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
+member of the approvers group for your localization until you satisfy the
+requirements for becoming an established member and approver as outlined in the
+[membership guidelines][].
 
-When starting the localization project, maintainers will treat your reviews as
-if you are an approver already.
+Before you earn approver status, you can indicate your approval of a
+localization PR by adding an "LGTM" (Looks Good To Me) comment. During this
+startup phase, maintainers will treat your reviews as if you are an approver
+already.
+
+[membership guidelines]:
+  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
 
 {{% /alert %}}
 
-## English-language maintainer guidance
+### 1. Assemble a localization team {#team}
 
-### When link checking fails for non-English pages
+Creating a localization is about growing an active and supportive community. To
+start a new localization for the OpenTelemetry website you need:
 
-English is the default language of the OpenTelemetry website. After you add,
-edit, or reorganized English language documentation, link checking may fail for
-non-English pages. When this happens:
+1. A **localization mentor** who is familiar with your language, such as an
+   [active approver][] of the [CNCF Glossary][] or the [Kubernetes website][].
+2. At least two potential contributors.
 
-<!-- markdownlint-disable blanks-around-fences -->
+[active approver]: https://github.com/cncf/glossary/blob/main/CODEOWNERS
+[CNCF Glossary]: https://glossary.cncf.io/
+[Kubernetes website]: https://github.com/kubernetes/website
 
-- Do **not** fix the broken links. Each non-English page is associated with a
-  specific commit of the corresponding English page, as identified by the git
-  commit hash value of the `default_lang_commit` front matter key.
-- Configure the link checker to ignore the non-English pages by adding the
-  following to the page's front matter, or to the closest common ancestor file,
-  when more than one page has link errors:
-  ```yaml
-  htmltest:
-    # TODO: remove the IgnoreDirs once broken links are fixed
-    IgnoreDirs:
-      - path-regex/to/non-en/directory/contain/files/to/ignore
-      - path-2-etc
-  ```
-- Run `npm run check:links` and include any updates to the `.htmltest.yml`
-  config file with your PR.
+### 2. Localization kickoff: create an issue {#kickoff}
 
-<!-- markdownlint-enable blanks-around-fences -->
+With a [localization team](#team) in place or coming together, create an issue
+with the task list given below:
+
+1. Look up the official [ISO 639-1 code][] for the language you want to add.
+   We'll refer to this language code as `LANG_ID` in the remainder of this
+   section. If you have doubts about which tag to use, especially when it comes
+   to choosing a subregion, ask maintainers.
+
+   [ISO 639-1 code]: https://en.wikipedia.org/wiki/ISO_639-1
+
+2. Identify the GitHub handles of the
+   [mentor and potential contributors](#team).
+
+3. Create a [new issue][] containing the following task list in the opening
+   comment:
+
+   ```markdown
+   - [ ] Language info:
+     - ISO 639-1 language code: `LANG_ID`
+     - Language name: ADD_NAME_HERE
+   - [ ] Locale team info:
+     - [ ] Locale mentor: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+     - [ ] Contributors: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+   - [ ] Read through
+         [Localization](https://opentelemetry.io/docs/contributing/localization/)
+         and all other pages in the Contributing section
+   - [ ] Localize site homepage (only) to YOUR_LANGUAGE_NAME and submit a PR.
+         For details, see
+         [Localize the homepage](https://opentelemetry.io/docs/contributing/localization/#homepage).
+   - [ ] OTel maintainers:
+     - [ ] Update Hugo config for `LANG_ID`
+     - [ ] Configure cSpell and other tooling support
+     - [ ] Create an issue label for `lang:LANG_ID`
+     - [ ] Create org-level group for `LANG_ID` approvers
+     - [ ] Update components owners for `content/LANG_ID`
+   - [ ] Create an issue to track the localization of the **glossary**. Add the
+         issue number here. For details, see
+         [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
+   ```
+
+### 3. Localize the homepage {#homepage}
+
+[Submit a pull request](../pull-requests/) with a translation of the website
+[homepage], and _nothing else_, in the file `content/LANG_ID/_index.md`. Ensure
+that maintainers have the necessary permissions to edit your PR, since they will
+add additional changes to your PR that are required to get your localization
+project started.
+
+[homepage]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
+
+After your first PR is merged, maintainers will set up the issue label, the
+org-level group and the component owners.
+
+### 4. Localize the glossary {#glossary}
+
+The second page to localize is the [Glossary](/docs/concepts/glossary/). This is
+a **critical** page for localized readers, since it defines the key terms used
+in observability and OpenTelemetry in particular. This is especially critical if
+no such terms exist in your language.
+
+For guidance, see the [video][ali-d-youtube] of Ali Dowair's talk at Write the
+Docs 2024: [The art of translation: How to localize technical
+content][ali-dowair-2024].
+
+[ali-dowair-2024]:
+  https://www.writethedocs.org/conf/atlantic/2024/speakers/#speaker-ali-dowair-what-s-in-a-word-lessons-from-localizing-kubernetes-documentation-to-arabic-ali-dowair
+[ali-d-youtube]: https://youtu.be/HY3LZOQqdig
+
+### 5. Localize remaining site pages in small increments {#rest}
+
+With terminology established, you can now localize the remaining site pages. <a
+name="small-prs"></a>
+
+{{% alert title="Submit small PRs" color="primary" %}}
+
+Localization teams should submit their work in **small increments**. That is,
+keep [PRs] small, preferably limited to one or a few small files. Smaller PRs
+are easier to review and so typically get merged more quickly.
+
+{{% /alert %}}
+
+### OTel maintainer checklist
+
+#### Hugo
+
+Update Hugo config for `LANG_ID`. Add appropriate entries for `LANG_ID` under:
+
+- `languages` in `config/_default/hugo.yaml`
+- `module.mounts` via `config/_default/module-template.yaml`. At a minimum, add
+  a single `source`-`target` entry for `content`. Consider adding entries for
+  `en` fallback pages only once the locale has enough content.
+
+#### Spelling
+
+Look for [cSpell dictionaries][] available as NPM packages
+[@cspell/dict-LANG_ID][]. If a dictionary isn't available for your dialect or
+region, choose the closest region.
+
+If no dictionary is available, then skip the rest of this subsection. Otherwise:
+
+- Add the NPM package as a dev dependency, for example:
+  `npm install --save-dev @cspell/dict-bn`.
+- Create `.cspell/LANG_ID-words.txt` as the site-local dictionary words for
+  `LANG_ID`.
+- In `.cspell.yml`, add entries for:
+  - `import`
+  - `dictionaryDefinitions`
+  - `dictionaries`: add two entries here, one for `LANG_ID` and one for
+    `LANG_ID-words.txt`
+
+[cSpell dictionaries]: https://github.com/streetsidesoftware/cspell-dicts
+[@cspell/dict-LANG_ID]: https://www.npmjs.com/search?q=%40cspell%2Fdict
+
+#### Other tooling support
+
+- Prettier support: if `LANG_ID` isn't well supported by Prettier, add ignore
+  rules to `.prettierignore`
+
+## Approver and maintainer guidance
+
+### PRs with semantic changes should not span locales {#prs-should-not-span-locales}
+
+Approvers should ensure that [PRs] making **semantic** changes to doc pages do
+not span multiple locales. A semantic change is one that impacts the _meaning_
+of the page content. Our docs [localization process](.) ensures that locale
+approvers will, in time, review the English-language edits to determine if the
+changes are appropriate for their locale, and how best to incorporate them into
+their locale. If changes are necessary, the locale approvers will make them via
+their own locale-specific PRs.
+
+### Purely editorial changes across locales are OK {#patch-locale-links}
+
+**Purely editorial** page updates are changes that **do not** affect the
+existing content and can span multiple locales. These include:
+
+- **Link maintenance**: Fixing broken link paths when pages are moved or
+  deleted.
+- **Resource updates**: Updating links to moved external resources.
+- **Targeted content additions**: Adding specific new definitions or sections to
+  files that have drifted, when updating the entire file isn't feasible.
+
+#### Link fixes and resource updates {#link-fixes-and-resource-updates}
+
+For example, sometimes changes to English language documentation can result in
+link-check failures for non-English locales. This happens when documentation
+pages are moved or deleted.
+
+In such situations, make the following updates to each non-English page that has
+a path that fails link checking:
+
+- Update the link reference to the new page path.
+- Add the `# patched` YAML comment at the end of the line for the
+  `default_lang_commit` front matter line.
+- Make no other changes to the file.
+- Rerun `npm run check:links` and ensure that no link failures remain.
+
+When an _external link_ to a **moved** (but otherwise semantically
+**unchanged**) resource (such as a GitHub file) results in a link-check failure,
+consider:
+
+- Removing the broken link from the refcache
+- Updating the link across all locales using the method described earlier in
+  this section.
+
+#### Targeted content additions to drifted files {#targeted-content-additions}
+
+When adding specific new content to a localized file that has drifted from the
+English version, you may choose to make a targeted update rather than updating
+the entire file. For example, when a new glossary term such as "cardinality" is
+added to the English glossary, you can add just that term to the localized
+glossary without addressing other drifted content.
+
+Here's an example of the workflow for this targeted update:
+
+- Add only the "cardinality" definition block to the localized glossary file
+- Update the front matter by adding `# patched` as a comment at the end of the
+  `default_lang_commit` line
+- Leave all other existing content unchanged
+- In the PR description, clearly document:
+  - The specific content added ("cardinality" definition)
+  - That the file remains drifted for other content
+  - The rationale for the targeted update (e.g., "Providing critical new
+    terminology to localized readers without requiring full file
+    synchronization")
+
+This approach enables incremental improvements to localized content while
+maintaining awareness that the file still requires future attention for complete
+synchronization with the English version.
 
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
-[PR #5386]: https://github.com/open-telemetry/opentelemetry.io/pull/5386/files
+[new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
+[PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/

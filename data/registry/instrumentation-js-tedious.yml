@@ -11,10 +11,10 @@ description:
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-tedious
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-tedious
 createdAt: 2022-10-27
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-tedious'
-  version: 0.19.0
+  version: 0.27.0
 isFirstParty: false

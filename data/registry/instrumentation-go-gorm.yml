@@ -18,4 +18,4 @@ isFirstParty: true
 package:
   registry: go
   name: gorm.io/plugin/opentelemetry
-  version: v0.1.12
+  version: v0.1.16

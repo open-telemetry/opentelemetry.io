@@ -17,5 +17,5 @@ createdAt: 2023-08-08
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-mongodb
-  version: 0.0.8
+  version: 0.2.0
 isFirstParty: false

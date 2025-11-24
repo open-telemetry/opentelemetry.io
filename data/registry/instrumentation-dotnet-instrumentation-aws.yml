@@ -16,4 +16,4 @@ isFirstParty: false
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.AWS
-  version: 1.11.2
+  version: 1.14.0

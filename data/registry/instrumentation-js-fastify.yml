@@ -10,10 +10,10 @@ description: OpenTelemetry fastify automatic instrumentation library
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-fastify
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-fastify
 createdAt: 2020-08-28
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-fastify'
-  version: 0.45.0
+  version: 0.53.0
 isFirstParty: false

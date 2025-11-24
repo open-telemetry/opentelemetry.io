@@ -5,18 +5,15 @@
 
 /layouts/*
 
+/content-modules/*
+
 /content/en/blog/2019
 /content/en/blog/202[23]
-# TEMPORARY until the PR introducing this file is merged:
-/content/en/docs/_includes/exporters/intro.md
 
+/content/bn
+
+# The following locales are processed by Prettier but without prose wrap.
+# For the relevant scripts, see package.json.
 /content/ja
+/content/uk
 /content/zh
-
-# Ignore content-modules except for published Community pages
-
-/content-modules/*
-!/content-modules/community
-/content-modules/community/*
-!/content-modules/community/mission-vision-values.md
-!/content-modules/community/roadmap.md

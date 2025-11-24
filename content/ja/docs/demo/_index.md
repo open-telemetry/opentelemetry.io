@@ -4,8 +4,7 @@ linkTitle: デモ
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-default_lang_commit: cd90ab77550fb2e92ca37cb3c753ec2d8bb7d8dc
-cSpell:ignore: OLJCESPC
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 ---
 
 [OpenTelemetryデモ](/ecosystem/demo/)のドキュメンテーションへようこそ。
@@ -22,18 +21,20 @@ cSpell:ignore: OLJCESPC
 
 特定の言語の計装がどのように機能するかを理解したい場合は、ここから始めてください。
 
-| 言語       | 自動計装                                               | 計装ライブラリ                                                                        | 手動計装                                                                              |
-| ---------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| .NET       | [会計サービス](services/accounting/)                   | [カートサービス](services/cart/)                                                      | [カートサービス](services/cart/)                                                      |
-| C++        |                                                        |                                                                                       | [通貨サービス](services/currency/)                                                    |
-| Go         |                                                        | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/) | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/) |
-| Java       | [広告サービス](services/ad/)                           |                                                                                       | [広告サービス](services/ad/)                                                          |
-| JavaScript |                                                        |                                                                                       | [支払いサービス](services/payment/)                                                   |
-| Kotlin     |                                                        | [不正検知サービス](services/fraud-detection/)                                         |                                                                                       |
-| PHP        |                                                        | [見積サービス](services/quote/)                                                       | [見積サービス](services/quote/)                                                       |
-| Python     | [レコメンデーションサービス](services/recommendation/) |                                                                                       | [レコメンデーションサービス](services/recommendation/)                                |
-| Ruby       |                                                        | [メールサービス](services/email/)                                                     | [メールサービス](services/email/)                                                     |
-| Rust       |                                                        | [配送サービス](services/shipping/)                                                    | [配送サービス](services/shipping/)                                                    |
+| 言語       | 自動計装                                               | 計装ライブラリ                                                                         | 手動計装                                                                              |
+| ---------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| .NET       | [会計サービス](services/accounting/)                   | [カートサービス](services/cart/)                                                       | [カートサービス](services/cart/)                                                      |
+| C++        |                                                        |                                                                                        | [通貨サービス](services/currency/)                                                    |
+| Elixir     |                                                        | [Flagd-UIサービス](services/flagd-ui/)                                                 |                                                                                       |
+| Go         |                                                        | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/)  | [決済サービス](services/checkout/), [商品カタログサービス](services/product-catalog/) |
+| Java       | [広告サービス](services/ad/)                           |                                                                                        | [広告サービス](services/ad/)                                                          |
+| JavaScript |                                                        |                                                                                        | [支払いサービス](services/payment/)                                                   |
+| TypeScript |                                                        | [フロントエンド](services/frontend/), [React Nativeアプリ](services/react-native-app/) | [フロントエンド](services/frontend/)                                                  |
+| Kotlin     |                                                        | [不正検知サービス](services/fraud-detection/)                                          |                                                                                       |
+| PHP        |                                                        | [見積サービス](services/quote/)                                                        | [見積サービス](services/quote/)                                                       |
+| Python     | [レコメンデーションサービス](services/recommendation/) |                                                                                        | [レコメンデーションサービス](services/recommendation/)                                |
+| Ruby       |                                                        | [メールサービス](services/email/)                                                      | [メールサービス](services/email/)                                                     |
+| Rust       |                                                        | [配送サービス](services/shipping/)                                                     | [配送サービス](services/shipping/)                                                    |
 
 ## サービスドキュメント {#service-documentation}
 
@@ -54,16 +55,10 @@ cSpell:ignore: OLJCESPC
 - [画像プロバイダーサービス](services/image-provider/?i18n-patch)
 - [React Native アプリケーション](services/react-native-app/)
 
-## シナリオ {#scenarios}
+## フィーチャーフラグシナリオ {#feature-flag-scenarios}
 
 OpenTelemetryを使用してどのように問題を解決できるでしょうか？
-これらのシナリオでは、事前に設定された問題を紹介し、それらを解決するためにOpenTelemetryのデータをどのように解釈するかを説明します。
-
-今後、さらに多くのシナリオを追加していく予定です。
-
-- フィーチャーフラグサービスを使用して、商品ID：`OLJCESPC7Z`の`GetProduct`リクエストに対する[商品カタログエラー](feature-flags)を生成
-- メモリリークを発見し、メトリクスとトレースを使用して診断。
-  [詳細](scenarios/recommendation-cache/)
+これらの[フィーチャーフラグ有効化シナリオ](feature-flags/)では、事前に設定された問題を紹介し、それらを解決するためにOpenTelemetryのデータをどのように解釈するかを説明します。
 
 ## リファレンス {#reference}
 

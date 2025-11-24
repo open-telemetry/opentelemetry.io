@@ -14,7 +14,7 @@ authors:
 package:
   name: Azure.Monitor.OpenTelemetry.Exporter
   registry: nuget
-  version: 1.4.0-beta.3
+  version: 1.5.0
 urls:
   repo: https://github.com/Azure/azure-sdk-for-net/tree/main/sdk/monitor/Azure.Monitor.OpenTelemetry.Exporter
 createdAt: 2021-11-01

@@ -17,5 +17,5 @@ createdAt: 2023-07-10
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-psr3
-  version: 0.0.9
+  version: 0.1.1
 isFirstParty: false

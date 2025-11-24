@@ -4,7 +4,6 @@ linkTitle: Demo
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-cSpell:ignore: OLJCESPC
 ---
 
 Welcome to the [OpenTelemetry Demo](/ecosystem/demo/) documentation, which
@@ -23,19 +22,19 @@ Want to deploy the demo and see it in action? Start here.
 Want to understand how a particular language's instrumentation works? Start
 here.
 
-| Language   | Automatic Instrumentation                          | Instrumentation Libraries                                                                    | Manual Instrumentation                                                                       |
-| ---------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| .NET       | [Accounting Service](services/accounting/)         | [Cart Service](services/cart/)                                                               | [Cart Service](services/cart/)                                                               |
-| C++        |                                                    |                                                                                              | [Currency Service](services/currency/)                                                       |
-| Go         |                                                    | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) |
-| Java       | [Ad Service](services/ad/)                         |                                                                                              | [Ad Service](services/ad/)                                                                   |
-| JavaScript |                                                    |                                                                                              | [Payment Service](services/payment/)                                                         |
-| TypeScript |                                                    | [Frontend](services/frontend/), [React Native App](services/react-native-app/)               | [Frontend](services/frontend/)                                                               |
-| Kotlin     |                                                    | [Fraud Detection Service](services/fraud-detection/)                                         |                                                                                              |
-| PHP        |                                                    | [Quote Service](services/quote/)                                                             | [Quote Service](services/quote/)                                                             |
-| Python     | [Recommendation Service](services/recommendation/) |                                                                                              | [Recommendation Service](services/recommendation/)                                           |
-| Ruby       |                                                    | [Email Service](services/email/)                                                             | [Email Service](services/email/)                                                             |
-| Rust       |                                                    | [Shipping Service](services/shipping/)                                                       | [Shipping Service](services/shipping/)                                                       |
+| Language   | Automatic Instrumentation                                                                                | Instrumentation Libraries                                                                    | Manual Instrumentation                                                                                   |
+| ---------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | --- | ---- | --- | -------------------------------- | -------------------------------- |
+| .NET       | [Accounting Service](services/accounting/)                                                               | [Cart Service](services/cart/)                                                               | [Cart Service](services/cart/)                                                                           |
+| C++        |                                                                                                          |                                                                                              | [Currency Service](services/currency/)                                                                   |
+| Elixir     |                                                                                                          | [Flagd-UI Service](services/flagd-ui/)                                                       |                                                                                                          |
+| Go         |                                                                                                          | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/) | [Checkout Service](services/checkout/), [Product Catalog Service](services/product-catalog/)             |
+| Java       | [Ad Service](services/ad/)                                                                               |                                                                                              | [Ad Service](services/ad/)                                                                               |
+| JavaScript |                                                                                                          |                                                                                              | [Payment Service](services/payment/)                                                                     |
+| TypeScript |                                                                                                          | [Frontend](services/frontend/), [React Native App](services/react-native-app/)               | [Frontend](services/frontend/)                                                                           |
+| Kotlin     |                                                                                                          | [Fraud Detection Service](services/fraud-detection/)                                         |                                                                                                          |
+| PHP        |                                                                                                          | [Quote Service](services/quote/)                                                             | [Quote Service](services/quote/)                                                                         |
+| Python     | [Recommendation Service](services/recommendation/), [Product Reviews Service](services/product-reviews/) |                                                                                              | [Recommendation Service](services/recommendation/), [Product Reviews Service](services/product-reviews/) |     | Ruby |     | [Email Service](services/email/) | [Email Service](services/email/) |
+| Rust       |                                                                                                          | [Shipping Service](services/shipping/)                                                       | [Shipping Service](services/shipping/)                                                                   |
 
 ## Service Documentation
 
@@ -51,24 +50,19 @@ found here:
 - [Load Generator](services/load-generator/)
 - [Payment Service](services/payment/)
 - [Product Catalog Service](services/product-catalog/)
+- [Product Reviews Service](services/product-reviews/)
 - [Quote Service](services/quote/)
 - [Recommendation Service](services/recommendation/)
 - [Shipping Service](services/shipping/)
 - [Image Provider Service](services/image-provider/)
 - [React Native App](services/react-native-app/)
 
-## Scenarios
+## Feature Flag Scenarios
 
-How can you solve problems with OpenTelemetry? These scenarios walk you through
-some pre-configured problems and show you how to interpret OpenTelemetry data to
+How can you solve problems with OpenTelemetry? These
+[feature flag enabled scenarios](feature-flags/) walk you through some
+pre-configured problems and show you how to interpret OpenTelemetry data to
 solve them.
-
-We'll be adding more scenarios over time.
-
-- Generate a [Product Catalog error](feature-flags) for `GetProduct` requests
-  with product ID: `OLJCESPC7Z` using the Feature Flag service
-- Discover a memory leak and diagnose it using metrics and traces.
-  [Read more](scenarios/recommendation-cache/)
 
 ## Reference
 

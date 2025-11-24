@@ -9,10 +9,10 @@ description: Router instrumentation for Node.js.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-router
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-router
 createdAt: 2020-11-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-router'
-  version: 0.45.0
+  version: 0.53.0
 isFirstParty: false

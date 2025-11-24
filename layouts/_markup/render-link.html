@@ -1,0 +1,139 @@
+{{ $url := .Destination -}} {{/* TODO: rename to $dest */ -}}
+{{ $u := urls.Parse $url -}}
+
+{{/*
+
+  Localization link processing
+
+  The following code will prefix $url with the language code of this page when:
+
+  - This page's localization isn't the default localization (English)
+  - $url is an absolute path -- that is, it starts with /
+  - The $url target page exists in this locale
+
+  Reference to Hugo's default:
+  https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_default/_markup/render-link.html
+
+  */ -}}
+
+{{/* Note: $u.IsAbs is true if $url has a scheme (e.g., "http:") */ -}}
+{{ if and
+    (hasPrefix $.PageInner.RelPermalink "/docs/specs")
+    (not $u.IsAbs)
+    (not (hasPrefix $url "#"))
+-}}
+  {{ $path := replaceRE `\bREADME\.md\b` "_index.md" $u.Path -}}
+  {{ $href := $url -}}
+  {{ with or
+    ($.PageInner.GetPage $path)
+    ($.PageInner.Resources.Get $path)
+    (resources.Get $path)
+  -}}
+    {{ $href = .RelPermalink -}}
+    {{ with $u.RawQuery -}}{{ $href = printf "%s?%s" $href . -}}{{ end -}}
+    {{ with $u.Fragment -}}{{ $href = printf "%s#%s" $href . -}}{{ end -}}
+  {{ else -}}
+
+    {{/* We can't find a page for $url.
+
+    - If $url refers to a Markdown file, issue a warning, since we should be
+      able to find it.
+
+    - Otherwise, it's a path to a resource file. Most often, $path is absolute,
+      and the resource is inside a page bundle. Hugo's global or page Resource.Get
+      can't handle that, so just ignore the issue. If there is a real problem, and
+      the path is invalid, it will be caught by the link checker.
+
+    - If the resource path starts with `./`, adjust it to be `../` to match
+      GitHub's relative paths, provide the page this link is in is not an index
+      page.
+
+    */ -}}
+
+    {{ if hasSuffix $path ".md" -}}
+      {{ warnf "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $url $path -}}
+    {{ else -}}
+      {{ if and
+            (hasPrefix $href "./")
+            (not (hasSuffix .Page.File.Filename "_index.md"))
+            (not (hasSuffix .Page.File.Filename "README.md"))
+      -}}
+        {{ $href = add "." $href -}}
+      {{ end -}}
+      {{ warnidf "spec-resource-not-found" "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $url $href -}}
+    {{ end -}}
+  {{ end -}}
+  {{ $url = $href -}}
+{{ else if hasPrefix $url "/" -}}
+  {{/* Hard-coded default lang since it's what's most efficient and won't change :) */ -}}
+  {{ $defaultLang := "en" -}}
+  {{ $lang := .Page.Language.Lang -}}
+  {{ if ne $lang $defaultLang -}}
+    {{ $langPathPrefix := add "/" $lang "/" -}}
+    {{ if and (hasPrefix $url $langPathPrefix) .Page.File -}}
+      {{ warnf "File %s: drop unnecessary '%s' prefix from %s"
+              .Page.File.Filename $langPathPrefix $url -}}
+    {{ else -}}
+      {{ $localizedPagePath := add $langPathPrefix (strings.TrimPrefix "/" $url) -}}
+      {{/*
+        Look for the page (referenced by $url) in this page's locale's site.
+        Note that .Page.GetPage exclusively looks for the given path in the same locale as .Page.
+      */ -}}
+      {{ with .Page.GetPage $u.Path -}}
+        {{/* warnf "Found url %s -> page %s. -- relRef %s" $localizedPagePath . (.RelRef (dict "path" $url))*/ -}}
+        {{/* Assert (eq $localizedPagePath (.RelRef (dict "path" $url))) */ -}}
+        {{ $url = $localizedPagePath -}}
+      {{ else -}}
+        {{/* Use $url as is, letting the link checker report any issues. */ -}}
+        {{/* warnf "Render-link: locale %s doesn't have the page %s (%s)" $lang $url $localizedPagePath */ -}}
+      {{ end -}}
+    {{ end -}}
+  {{ end -}}
+{{ else if and $u.IsAbs (eq $u.Scheme "http")
+    (not ($u.Query.Has "disable_http_check"))
+    (not (findRE `\blocalhost\b|^127\.0` $u.Host))
+-}}
+  {{/*
+    TODO: drop the temporary allowance of various hosts such as publicsuffix.org once
+    https://github.com/open-telemetry/opentelemetry.io/issues/6409
+    is fully resolved.
+  */ -}}
+  {{ if findRE `^(publicsuffix.org|docs.oasis|unitsofmeasure|connect.build)` $u.Host -}}
+    {{/* Do nothing until semconv fixes land. */ -}}
+  {{ else -}}
+    {{ warnf "%s: use 'https' for external URL '%s', or add query parameter '?disable_http_check'" .Page.File.Path $url -}}
+  {{ end -}}
+{{ end -}}
+
+{{/* General link-render processing */ -}}
+
+{{ $isExternal := hasPrefix $url "http" -}}
+{{ if $isExternal -}}
+  {{ $matches := findRESubmatch `^https?://(?:www\.)?opentelemetry.io(/?.*)$` $url -}}
+  {{ $otelIoPath := index (index $matches 0) 1 | default "/" -}}
+  {{ if $matches -}}
+    {{ warnf "%s: use a local path '%s' instead of external URL '%s' for reference to site-local page"
+        .Page.File.Path $otelIoPath $url -}}
+  {{ else if or
+    (findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" $url)
+    (findRE "^https://github.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification" $url)
+    (findRE "^https://github.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs" $url)
+    -}}
+    {{ warnf "%s: use a local path, not an external URL, for the following reference to a local specification page: %s"
+    .Page.File.Path $url -}}
+  {{ end -}}
+{{ end -}}
+
+{{/* Until Hugo supports hook params (https://github.com/gohugoio/hugo/issues/6670), we'll inspect .Text. */ -}}
+
+<a href="{{ $url | safeURL }}"
+  {{- with .Title}} title="{{ . }}"{{ end -}}
+  {{- if $isExternal }} target="_blank" rel="noopener"
+    {{- $noExternalIcon := in .Text "hk-no-external-icon" -}}
+    {{ if not $noExternalIcon }} class="external-link"{{ end -}}
+  {{ end -}}
+>
+  {{- .Text | safeHTML -}}
+</a>
+
+{{- /* Trim trailing whitespace */ -}}

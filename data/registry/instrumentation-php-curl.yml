@@ -19,5 +19,5 @@ createdAt: 2024-11-18
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-curl
-  version: 0.0.4
+  version: 0.1.0
 isFirstParty: false

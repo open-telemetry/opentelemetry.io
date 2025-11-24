@@ -13,10 +13,10 @@ description: MySQL2 instrumentation for Node.js.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mysql2
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-mysql2
 createdAt: 2021-07-08
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-mysql2'
-  version: 0.46.0
+  version: 0.55.0
 isFirstParty: false

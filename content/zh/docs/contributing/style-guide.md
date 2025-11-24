@@ -3,7 +3,7 @@ title: 文档风格指南
 description: 编写 OpenTelemetry 文档时的术语和风格指南。
 linkTitle: 风格指南
 weight: 20
-default_lang_commit: 2394fa1f1c693e547093e46e83a6819d3c26e9d5
+default_lang_commit: 2394fa1f1c693e547093e46e83a6819d3c26e9d5 # patched
 drifted_from_default: true
 cSpell:ignore: open-telemetry postgre style-guide textlintrc
 ---
@@ -15,7 +15,7 @@ OpenTelemetry 还没有官方的风格指南，当前版本的 OpenTelemetry 文
 
 以下部分包含针对 OpenTelemetry 项目的特定指导。
 
-{{% alert title="说明" color="primary" %}}
+{{% alert title="说明" %}}
 
 我们的风格指南中许多要求都可以通过命令来自动化执行：
 在发起[拉取请求](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)(PR) 之前，你可以在本地机器上运行 `npm run fix:all` 命令并提交更改。
@@ -54,7 +54,7 @@ OpenTelemetry 还没有官方的风格指南，当前版本的 OpenTelemetry 文
 为了增强 Markdown 文件的标准性和一致性，所有文件都应遵循
 [markdownlint](https://github.com/DavidAnson/markdownlint)
 确定的相关规则。有关完整列表，请查看
-[`.markdownlint.json`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json)
+[`.markdownlint.yaml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml)
 文件。
 
 运行 `npm run check:markdown` 命令以验证所有文件是否遵循标准。

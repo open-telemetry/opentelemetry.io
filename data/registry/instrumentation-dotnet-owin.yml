@@ -19,4 +19,4 @@ isFirstParty: false
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.Owin
-  version: 1.11.0-beta.1
+  version: 1.14.0-beta.1

@@ -1,9 +1,9 @@
 ---
 title: Suppressing specific instrumentation
 linkTitle: Suppressing instrumentation
-weight: 11
+weight: 12
 # prettier-ignore
-cSpell:ignore: akka armeria clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp oshi pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra helidon hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces nats okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## Disabling the agent entirely
@@ -50,8 +50,11 @@ corresponding instrumentation name: {{% /config_option %}}
 | ------------------------------------------------ | ------------------------------------------- |
 | Additional methods tracing                       | `methods`                                   |
 | Additional tracing annotations                   | `external-annotations`                      |
+| Activej HTTP                                     | `activej-http`                              |
+| Avaje Jex                                        | `avaje-jex`                                 |
 | Akka Actor                                       | `akka-actor`                                |
 | Akka HTTP                                        | `akka-http`                                 |
+| Alibaba Druid                                    | `alibaba-druid`                             |
 | Apache Axis2                                     | `axis2`                                     |
 | Apache Camel                                     | `camel`                                     |
 | Apache Cassandra                                 | `cassandra`                                 |
@@ -94,8 +97,10 @@ corresponding instrumentation name: {{% /config_option %}}
 | Eclipse Vert.x RxJava                            | `vertx-rx-java`                             |
 | Eclipse Vert.x SQL Client                        | `vertx-sql-client`                          |
 | Eclipse Vert.x Web                               | `vertx-web`                                 |
+| Elasticsearch API client                         | `elasticsearch-api-client`                  |
 | Elasticsearch client                             | `elasticsearch-transport`                   |
 | Elasticsearch REST client                        | `elasticsearch-rest`                        |
+| Failsafe                                         | `failsafe`                                  |
 | Finagle                                          | `finagle-http`                              |
 | Google Guava                                     | `guava`                                     |
 | Google HTTP client                               | `google-http-client`                        |
@@ -103,11 +108,13 @@ corresponding instrumentation name: {{% /config_option %}}
 | Grails                                           | `grails`                                    |
 | GraphQL Java                                     | `graphql-java`                              |
 | GRPC                                             | `grpc`                                      |
+| Helidon                                          | `helidon`                                   |
 | Hibernate                                        | `hibernate`                                 |
 | Hibernate Reactive                               | `hibernate-reactive`                        |
 | HikariCP                                         | `hikaricp`                                  |
 | InfluxDB                                         | `influxdb`                                  |
 | Java HTTP Client                                 | `java-http-client`                          |
+| Java HTTP Server                                 | `java-http-server`                          |
 | Java `HttpURLConnection`                         | `http-url-connection`                       |
 | Java JDBC                                        | `jdbc`                                      |
 | Java JDBC `DataSource`                           | `jdbc-datasource`                           |
@@ -136,17 +143,23 @@ corresponding instrumentation name: {{% /config_option %}}
 | Micrometer                                       | `micrometer`                                |
 | MongoDB                                          | `mongo`                                     |
 | MyBatis                                          | `mybatis`                                   |
+| NATS Client                                      | `nats`                                      |
 | Netflix Hystrix                                  | `hystrix`                                   |
 | Netty                                            | `netty`                                     |
 | OkHttp                                           | `okhttp`                                    |
 | OpenLiberty                                      | `liberty`                                   |
+| OpenAI                                           | `openai`                                    |
+| OpenSearch Java                                  | `opensearch-java`                           |
+| OpenSearch REST                                  | `opensearch-rest`                           |
 | OpenTelemetry Extension Annotations              | `opentelemetry-extension-annotations`       |
 | OpenTelemetry Instrumentation Annotations        | `opentelemetry-instrumentation-annotations` |
 | OpenTelemetry API                                | `opentelemetry-api`                         |
 | Oracle UCP                                       | `oracle-ucp`                                |
 | OSHI (Operating System and Hardware Information) | `oshi`                                      |
+| Payara                                           | `payara`                                    |
 | Play Framework                                   | `play`                                      |
 | Play WS HTTP Client                              | `play-ws`                                   |
+| Powerjob                                         | `powerjob`                                  |
 | Quarkus                                          | `quarkus`                                   |
 | Quartz                                           | `quartz`                                    |
 | R2DBC                                            | `r2dbc`                                     |
@@ -164,14 +177,19 @@ corresponding instrumentation name: {{% /config_option %}}
 | Scala ForkJoinPool                               | `scala-fork-join`                           |
 | Spark Web Framework                              | `spark`                                     |
 | Spring Batch                                     | `spring-batch`                              |
+| Spring Boot Actuator Autoconfigure               | `spring-boot-actuator-autoconfigure`        |
+| Spring Cloud AWS                                 | `spring-cloud-aws`                          |
+| Spring Cloud Gateway                             | `spring-cloud-gateway`                      |
 | Spring Core                                      | `spring-core`                               |
 | Spring Data                                      | `spring-data`                               |
 | Spring JMS                                       | `spring-jms`                                |
 | Spring Integration                               | `spring-integration`                        |
 | Spring Kafka                                     | `spring-kafka`                              |
+| Spring Pulsar                                    | `spring-pulsar`                             |
 | Spring RabbitMQ                                  | `spring-rabbit`                             |
 | Spring RMI                                       | `spring-rmi`                                |
 | Spring Scheduling                                | `spring-scheduling`                         |
+| Spring Security Config                           | `spring-security-config`                    |
 | Spring Web                                       | `spring-web`                                |
 | Spring WebFlux                                   | `spring-webflux`                            |
 | Spring Web MVC                                   | `spring-webmvc`                             |

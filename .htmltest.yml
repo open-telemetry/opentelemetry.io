@@ -5,17 +5,18 @@ IgnoreAltMissing: true
 IgnoreCanonicalBrokenLinks: false
 IgnoreInternalEmptyHash: true # TODO: remove after resolution of https://github.com/google/docsy/issues/1995
 CheckMailto: false
-# StripQueryString: false # TODO: enable once htmltest is fixed
+StripQueryString: false
 TestFilesConcurrently: true
+# RetryCachedErrors, CacheAllExternal: for docs, see https://github.com/chalin/htmltest/blob/dev/main/README.md
+RetryCachedErrors: false
+CacheAllExternal: true
+RedirectLimit: 3
 IgnoreDirs:
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
   # Ignore blog index pages for all locales and in all blog sections (top-level and years)
   - ^(../)?blog/(\d+/)?page/\d+
   # Ignore old blog posts
   - ^(../)?blog/20(19|21|22|23)/
-  # TODO drop next lines after https://github.com/open-telemetry/opentelemetry.io/issues/5555 is fixed for these pages:
-  - ^zh/docs/concepts/signals/baggage/
-  - ^zh/docs/zero-code/php/
   # TODO drop the following config once this page is updated to reflect the corresponding `en`
   # page and the link 404 (detailed below) are resolved:
   #   zh/docs/contributing/index.html
@@ -31,7 +32,9 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^(/..)?/docs/collector/registry/$
   - ^(/..)?/docs/languages/dotnet/(metrics-api|traces-api)/
   - ^((/..)?/docs/migration/)?opencensus/$
-  - ^(/community/end-user/)?feedback-survey/$
+  # TODO drop next line after https://github.com/open-telemetry/opentelemetry.io/pull/7559 is merged
+  # and `pt` has been synced with the `en` changes in that PR.
+  - ^((/..)?/community/end-user/)?feedback-survey/$
   - ^/../docs/specs/?$ # non-default locale spec redirect
 
   - ^https://deploy-preview-\d+--opentelemetry.netlify.app/
@@ -53,6 +56,13 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://twitter.com
   - ^https://www.youtube.com/playlist\?list= # htmltest doesn't process query parameters
   - ^https://x.com
+  - ^https://x.ai
+  - ^https://www.deepseek.com
+  - ^https://www.perplexity.ai
+
+  # Ignore issues and discussions with query parameters, e.g.:
+  - ^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=
+  - ^https://github\.com/open-telemetry/opentelemetry\.io/discussions\?discussions_q=
 
   # Ignore Docsy-generated GitHub links for now, until
   # https://github.com/google/docsy/issues/1432 is fixed
@@ -68,32 +78,10 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   # FIXME: same issue as for the OTel spec mentioned above:
   - ^https://github.com/open-telemetry/semantic-conventions/tree/main
 
-  # Too many redirects as the server tries to figure out the country and language,
-  # e.g.: https://www.microsoft.com/en-ca/sql-server.
-  - ^https://www.microsoft.com/sql-server$
+  # TODO delete once semconv release includes
+  # https://github.com/open-telemetry/semantic-conventions/issues/2844
+  - ^https://learn.microsoft.com/rest/api/subscription/subscriptions/list-locations
 
-  # TODO move into content/en/blog/2023/humans-of-otel.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
-  - ^https://shorturl.at/osHRX$
-  # TODO move into content/en/blog/2023/contributing-to-otel/index.md once https://github.com/open-telemetry/opentelemetry.io/issues/3889 is implemented
-  - ^https://shorturl.at/vLYZ0$
-
-  # Temporary until semconv is updated to 1.30.0+
-  - ^https://cloud.google.com/apis/design/resource_names#full_resource_name
-  - ^https://cloud.google.com/functions/docs/concepts/exec#function_scope_versus_global_scope
-  - ^https://developer.apple.com/documentation/uikit/uiapplicationdelegate#1656902
-  - ^https://docs.docker.com/registry/spec/manifest-v2-2/#example-image-manifest
-  - ^https://www.openssl.org/docs/man1.1.1/man3/SSL_get_version.html#RETURN-VALUES
-  - ^https://www.erlang.org/doc/man/erl_error.html#format_exception-3
-  # Fixed via https://github.com/open-telemetry/semantic-conventions/pull/1814
-  - ^https://github.com/open-telemetry/opentelemetry-specification/tree/v1.41.0/specification/logs/api.md#emit-an-event
-
-  # Temporary until
-  # https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth@v0.120.0+
-  # is published to include
-  # https://github.com/open-telemetry/opentelemetry-collector/pull/12309
-  - ^https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
-  - ^https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators
-
-  # Temporary until
-  # https://github.com/open-telemetry/opentelemetry.io/issues/6237 is resolved
-  - ^https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#
+  # TODO delete once the following is fixed and lands in this repo:
+  # https://github.com/open-telemetry/semantic-conventions/issues/2909
+  - ^https://www.whatsmyua.info

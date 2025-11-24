@@ -2,7 +2,8 @@
 title: 用語集
 description: OpenTelemetry で使用されるテレメトリー用語の定義と規則
 weight: 200
-default_lang_commit: acdc9eeb0e1c756af25aaf6614027972b0909c78
+default_lang_commit: 530c8fd130c93dd95e9638c8919518dbbc9c6b0a
+drifted_from_default: true
 ---
 
 この用語集は、OpenTelemetry プロジェクトに対して新しい、用語と[概念](/docs/concepts/)を定義し、オブザーバビリティの分野で一般的に使われている OpenTelemetry 特有の使用法を明確にします。
@@ -43,8 +44,14 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 ### バゲッジ {#baggage}
 
-イベントとサービスの因果関係を確立するための[メタデータ](#metadata)を伝播するメカニズム。
+イベントとサービスの因果関係を確立するための[メタデータ](#metadata)を伝搬するメカニズム。
 [バゲッジ仕様][baggage]を参照のこと。
+
+### カーディナリティ {#cardinality}
+
+特定の[属性](#attribute)または属性のセットに対する一意の値の数。
+カーディナリティが高いということは、一意の値が多いことを意味しており、テレメトリーバックエンドのパフォーマンスやストレージ要件に影響を与える可能性があります。
+たとえば、`user_id` 属性は高いカーディナリティを持ちますが、"200"、"404"、"500" などの値を持つ `status_code` 属性は低いカーディナリティを持ちます。
 
 ### クライアントライブラリ {#client-library}
 
@@ -68,10 +75,12 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 
 いくつかの[計装ライブラリ](#instrumentation-library)と[コレクター](#collector)はコア機能のセットと、ベンダーの `エクスポーター` を含む非コア機能専用のcontribリポジトリを提供しています。
 
+<!-- prettier-ignore-start -->
 ### コンテキスト伝搬（プロパゲーション） {#context-propagation}
+<!-- prettier-ignore-end -->
 
 すべての[データソース](#data-source)が、[トランザクション](#transaction)の寿命にわたって状態を保存したりデータにアクセスしたりするための基盤となるコンテキストメカニズムを共有できるようにします。
-[コンテキスト伝播仕様][context propagation]を参照。
+[コンテキスト伝搬仕様][context propagation]を参照。
 
 ### DAG {#dag}
 
@@ -95,7 +104,7 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 ### ディストリビューション {#distribution}
 
 ディストリビューションとは、アップストリームのOpenTelemetryリポジトリのラッパーで、いくつかのカスタマイズが施されています。
-[ディストリビューション][distribution]を参照してください。
+詳細は[ディストリビューション][Distributions]を参照してください。
 
 ### イベント {#event}
 
@@ -117,7 +126,7 @@ OpenTelemetryプロジェクトでは、[データソース](#data-source)ごと
 ### gRPC {#grpc}
 
 高性能でオープンソースのユニバーサル [RPC](#rpc) フレームワーク。
-gRPCの詳細は[こちら](https://grpc.io)。
+詳細は[gRPC](https://grpc.io)を参照してください。
 
 ### HTTP {#http}
 
@@ -126,13 +135,13 @@ gRPCの詳細は[こちら](https://grpc.io)。
 ### 計装済みライブラリ {#instrumented-library}
 
 テレメトリーシグナル([トレース](#trace)、[メトリクス](#metric)、[ログ](#log))を収集する[ライブラリ](#library)を表します。
-詳細は[こちら][spec-instrumented-lib]参照してください。
+詳細は[計装済みライブラリ][Instrumented library]を参照してください。
 
 ### 計装ライブラリ {#instrumentation-library}
 
 特定の[計装済みライブラリ](#instrumented-library)に計装を提供する[ライブラリ](#library)を表します。
 [計装済みライブラリ](#instrumented-library)と[計装ライブラリ](#instrumentation-library)は、ビルトインのOpenTelemetry計装をしている場合、同一の[ライブラリ](#library)になります。
-[ライブラリ仕様][spec-instrumentation-lib]を参照のこと。
+詳細は[ライブラリ仕様][spec-instrumentation-lib]を参照してください。
 
 ### JSON {#json}
 
@@ -162,7 +171,7 @@ gRPCの詳細は[こちら](https://grpc.io)。
 
 タイムスタンプと重要度のデータの記録です。
 トレースと関連があるとき、[トレース ID](#trace)と[スパン ID](#span)を持つ可能性があります。
-詳細は、[ログレコード][log record]を参照してください。
+詳細は[ログレコード][Log record]を参照してください。
 
 ### メタデータ {#metadata}
 
@@ -173,11 +182,22 @@ OpenTelemetryはこれらのペアを[属性](#attribute)と呼びます。
 ### メトリクス {#metric}
 
 生の測定値または事前定義された集計値のいずれかのデータポイントを、[メタデータ](#metadata)付きの時系列として記録します。
-詳細は[メトリクス][metric]を参照のこと。
+詳細は[メトリクス][metric]を参照してください。
 
 ### OC {#oc}
 
 [OpenCensus](#opencensus)の略称。
+
+### オブザーバビリティバックエンド {#observability-backend}
+
+テレメトリーデータの受信、処理、保存、クエリを担うオブザーバビリティプラットフォームのコンポーネントです。
+商用製品だけではなく、たとえば [Jaeger] や [Prometheus] のようなオープンソースツールも含みます。
+OpenTelemetry はオブザーバビリティバックエンドではありません。
+
+### オブザーバビリティフロントエンド {#observability-frontend}
+
+テレメトリーデータの可視化と分析のためのユーザーインターフェースを提供するオブザーバビリティプラットフォームのコンポーネントです。
+特に商用製品を検討すると、オブザーバビリティバックエンドの一部である場合がしばしばあります。
 
 ### OpAMP {#opamp}
 
@@ -233,17 +253,17 @@ OpenTelemetry の前身です。
 ### プロパゲーター {#propagators}
 
 [スパン](#span)内のスパンコンテキストや[バゲッジ](#baggage)など、テレメトリーデータの特定の部分をシリアライズおよびデシリアライズするために使用します。
-詳細は[プロパゲーター][propagators]を参照してください。
+詳細は[プロパゲーター][Propagators]を参照してください。
 
 ### Proto {#proto}
 
-言語に依存しないインターフェイス型。詳細は[Proto][proto]を参照のこと。
+言語に依存しないインターフェイス型。[opentelemetry-proto]を参照してください。
 
 ### レシーバー {#receiver}
 
 [コレクター](/docs/collector/configuration/#receivers)が使用する用語で、テレメトリーデータの受信方法を定義します。
 レシーバーはプッシュベースとプルベースがあります。
-詳細は[レシーバー][receiver]のページを参照のこと。
+詳細は[レシーバー][Receiver]を参照してください。
 
 ### リクエスト {#request}
 
@@ -267,12 +287,12 @@ OpenTelemetry の前身です。
 
 エクスポートされるデータ量を制御するメカニズム。
 [トレース](#trace) [データソース](#data-source) と共に使われるのが一般的です。
-詳細は[サンプリング][sampling]を参照してください。
+詳細は[サンプリング][Sampling]を参照してください。
 
 ### SDK {#sdk}
 
 ソフトウェア開発キット（Software Development Kit）の略称。
-OpenTelemetryの[API](#api)を実装する[ライブラリ](#library)を示すテレメトリSDKを指します。
+OpenTelemetryの[API](#api)を実装する[ライブラリ](#library)を示すテレメトリーSDKを指します。
 
 ### セマンティック規約 {#semantic-conventions}
 
@@ -287,11 +307,12 @@ OpenTelemetryの[API](#api)を実装する[ライブラリ](#library)を示す�
 ### シグナル {#signal}
 
 OpenTelemetryにおいては[トレース](#trace)、[メトリクス](#metric)、[ログ](#log)のいずれか。
-シグナルの詳細は[こちら][signals]。
+詳細は[シグナル][Signals]を参照してください。
 
 ### スパン {#span}
 
-[トレース](#trace)内の単一の操作を表します。[スパン][span]を参照のこと。
+[トレース](#trace)内の単一の操作を表します。
+詳細は[スパン][Span]参照してください。
 
 ### スパンリンク {#span-link}
 
@@ -301,13 +322,13 @@ OpenTelemetryにおいては[トレース](#trace)、[メトリクス](#metric)�
 ### 仕様 {#specification}
 
 すべての実装に対する言語横断的な要求と期待を記述しています。
-詳細は[仕様][specification]を参照。
+詳細は[仕様][Specification]を参照してください。
 
 ### ステータス {#status}
 
 操作の結果。
 通常、エラーが発生したかどうかを示すために使用されます。
-詳細は[ステータス][status]のページを参照。
+詳細は[ステータス][Status]を参照してください。
 
 ### タグ {#tag}
 
@@ -316,11 +337,12 @@ OpenTelemetryにおいては[トレース](#trace)、[メトリクス](#metric)�
 ### トレース {#trace}
 
 [スパン](#span)の[DAG](#dag)で、[スパン](#span)間のエッジ（辺）は親子関係として定義されます。
-[トレース][trace]を参照のこと。
+詳細は[トレース][Traces]を参照してください。
 
 ### トレーサー {#tracer}
 
-[スパン](#span)の作成を担当します。詳細は[トレーサー][tracer]を参照。
+[スパン](#span)の作成を担当します。
+詳細は[トレーサー][Tracer]を参照してください。
 
 ### トランザクション {#transaction}
 
@@ -330,32 +352,34 @@ OpenTelemetryにおいては[トレース](#trace)、[メトリクス](#metric)�
 
 外部エクスポーターにかわるプロセス内エクスポーター。
 これを使うと、トレースとメトリクスの情報をバックグラウンドで収集し、集約できます。
-詳細は[zPages][zpages]のドキュメントを参照してください。
+詳細は[zPages]を参照してください。
 
-[baggage]: /docs/specs/otel/baggage/api/
 [attribute]: /docs/specs/otel/common/#attributes
+[baggage]: /docs/specs/otel/baggage/api/
 [context propagation]: /docs/specs/otel/overview#context-propagation
 [dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
-[distributed tracing]: /docs/concepts/signals/traces/
-[distribution]: /docs/concepts/distributions/
+[distributed tracing]: ../signals/traces/
+[distributions]: ../distributions/
 [field]: /docs/specs/otel/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+[instrumented library]: /docs/specs/otel/glossary/#instrumented-library
+[Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
-[log]: /docs/specs/otel/glossary#log
 [log record]: /docs/specs/otel/glossary#log-record
-[metric]: /docs/concepts/signals/metrics/
+[log]: /docs/specs/otel/glossary#log
+[metric]: ../signals/metrics/
+[opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
 [propagators]: /docs/languages/go/instrumentation/#propagators-and-context
-[proto]: https://github.com/open-telemetry/opentelemetry-proto
+[Prometheus]: https://prometheus.io/
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
 [sampling]: /docs/specs/otel/trace/sdk#sampling
-[signals]: /docs/concepts/signals/
+[signals]: ../signals/
 [span]: /docs/specs/otel/trace/api#span
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
-[spec-instrumented-lib]: /docs/specs/otel/glossary/#instrumented-library
-[specification]: /docs/concepts/components/#specification
+[specification]: ../components/#specification
 [status]: /docs/specs/otel/trace/api#set-status
-[trace]: /docs/specs/otel/overview#traces
 [tracer]: /docs/specs/otel/trace/api#tracer
+[traces]: /docs/specs/otel/overview#traces
 [zpages]: https://github.com/open-telemetry/opentelemetry-specification/blob/main/development/trace/zpages.md

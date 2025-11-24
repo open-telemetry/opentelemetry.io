@@ -10,9 +10,9 @@ description: Resource detector for Amazon Web Services.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-aws
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-aws
 createdAt: 2022-12-07
 package:
   registry: npm
   name: '@opentelemetry/resource-detector-aws'
-  version: 2.0.0
+  version: 2.8.0

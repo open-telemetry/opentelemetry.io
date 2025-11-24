@@ -18,4 +18,4 @@ createdAt: 2022-11-07
 package:
   registry: nuget
   name: OpenTelemetry.Exporter.Prometheus.HttpListener
-  version: 1.11.2-beta.1
+  version: 1.14.0-beta.1

@@ -14,5 +14,5 @@ createdAt: 2022-12-14
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-yii
-  version: 0.0.6
+  version: 0.2.0
 isFirstParty: false

@@ -4,7 +4,8 @@ description:
   Terminología y estilo al escribir la documentación de OpenTelemetry.
 linkTitle: Guía de estilo de documentación
 weight: 20
-default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167
+default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167 # patched
+drifted_from_default: true
 cSpell:ignore: open-telemetry opentelemetryio postgre style-guide textlintrc
 ---
 
@@ -17,7 +18,7 @@ documentación de OpenTelemetry está inspirado en las siguientes guías de esti
 Las siguientes secciones contienen indicaciones específicas para el proyecto
 OpenTelemetry.
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 Muchos de los requisitos de nuestra guía de estilo se pueden aplicar
 automaticamente: antes de enviar un
@@ -66,7 +67,7 @@ Para hacer cumplir los estándares y la coherencia de los archivos Markdown,
 todos los archivos deben seguir ciertas reglas, impuestas por
 [markdownlint](https://github.com/DavidAnson/markdownlint). Para obtener una
 lista completa, consulte el archivo
-[`.markdownlint.json`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json).
+[`.markdownlint.yaml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml).
 
 Ejecute `npm run check:markdown` para verificar que todos los archivos siguen el
 estándar.

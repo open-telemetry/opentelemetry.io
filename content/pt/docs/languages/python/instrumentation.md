@@ -3,7 +3,7 @@ title: Instrumentação
 aliases: [manual]
 weight: 20
 description: Instrumentação manual para OpenTelemetry Python
-default_lang_commit: c3365f297f394baf10f5dba3473e13621ade4461
+default_lang_commit: e04e8da1f4527d65c162af9a670eb3be8e7e7fb9
 cSpell:ignore: millis ottrace textmap
 ---
 
@@ -205,7 +205,7 @@ with tracer.start_as_current_span("trecho-2", links=[link_from_span_1]):
 
 ### Definir Status do Trecho {#set-span-status}
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 ```python
 from opentelemetry import trace
@@ -401,7 +401,38 @@ meter.create_observable_gauge(
 
 ## Logs {#logs}
 
-A API e o SDK de logs estão atualmente em desenvolvimento.
+A API e o SDK de logs ainda estão em desenvolvimento. Para começar a coletar
+logs, é necessário inicializar um
+[`LoggerProvider`](/docs/specs/otel/logs/api/#loggerprovider) e, opcionalmente,
+defini-lo como o padrão global. Em seguida, use o módulo de _logging_ embutido
+do Python para criar registros de log que o OpenTelemetry possa processar.
+
+```python
+import logging
+from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
+from opentelemetry.sdk._logs.export import BatchLogRecordProcessor, ConsoleLogExporter
+from opentelemetry._logs import set_logger_provider, get_logger
+
+provider = LoggerProvider()
+processor = BatchLogRecordProcessor(ConsoleLogExporter())
+provider.add_log_record_processor(processor)
+# Define o logger provider global padrão
+set_logger_provider(provider)
+
+logger = get_logger(__name__)
+
+handler = LoggingHandler(level=logging.INFO, logger_provider=provider)
+logging.basicConfig(handlers=[handler], level=logging.INFO)
+
+logging.info("Este é um registro de log do OpenTelemetry!")
+```
+
+### Leituras Adicionais {#further-reading}
+
+- [Conceitos de Logs](/docs/concepts/signals/logs/)
+- [Especificação de Logs](/docs/specs/otel/logs/)
+- [Documentação da API de Logs do Python](https://opentelemetry-python.readthedocs.io/en/latest/api/_logs.html)
+- [Documentação do SDK de Logs do Python](https://opentelemetry-python.readthedocs.io/en/latest/sdk/_logs.html)
 
 ## Próximos Passos {#next-steps}
 

@@ -10,10 +10,10 @@ description: This module provides an instrumentation library for fs.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-fs
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-fs
 createdAt: 2021-07-08
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-fs'
-  version: 0.20.0
+  version: 0.28.0
 isFirstParty: false

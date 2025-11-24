@@ -4,9 +4,9 @@ linkTitle: Demo
 cascade:
   repo: https://github.com/open-telemetry/opentelemetry-demo
 weight: 180
-default_lang_commit: 9b5e318036fb92e4a1896259cc3bbdad2843e1de
+default_lang_commit: 2571ec5a1e17744982e8dc6efe1fdf3115d0ebbc
 drifted_from_default: true
-cSpell:ignore: diagnostícala OLJCESPC preconfigurados
+cSpell:ignore: preconfigurados
 ---
 
 Aquí tienes la documentación de la [Demo de OpenTelemetry](/ecosystem/demo/),
@@ -31,7 +31,8 @@ Comienza aquí.
 | C++        |                                                         |                                                                                                        | [Servicio de Moneda](services/currency/)                                                               |
 | Go         |                                                         | [Servicio de Pago](services/checkout/), [Servicio de Catálogo de Productos](services/product-catalog/) | [Servicio de Pago](services/checkout/), [Servicio de Catálogo de Productos](services/product-catalog/) |
 | Java       | [Servicio de Publicidad](services/ad/)                  |                                                                                                        | [Servicio de Publicidad](services/ad/)                                                                 |
-| JavaScript |                                                         | [Frontend](services/frontend/)                                                                         | [Frontend](services/frontend/), [Servicio de Pagos](services/payment/)                                 |
+| JavaScript |                                                         |                                                                                                        | [Servicio de Pagos](services/payment/)                                                                 |
+| TypeScript |                                                         | [Frontend](services/frontend/), [Aplicación React Native](services/react-native-app/)                  | [Frontend](services/frontend/)                                                                         |
 | Kotlin     |                                                         | [Servicio de Detección de Fraude](services/fraud-detection/)                                           |                                                                                                        |
 | PHP        |                                                         | [Servicio de Cotizaciones](services/quote/)                                                            | [Servicio de Cotizaciones](services/quote/)                                                            |
 | Python     | [Servicio de Recomendaciones](services/recommendation/) |                                                                                                        | [Servicio de Recomendaciones](services/recommendation/)                                                |
@@ -56,20 +57,14 @@ en cada servicio aquí:
 - [Servicio de Recomendaciones](services/recommendation/)
 - [Servicio de Envío](services/shipping/)
 - [Servicio Proveedor de Imágenes](services/image-provider/?i18n-patch)
+- [Aplicación React Native](services/react-native-app/)
 
-## Escenarios
+## Escenarios de Feature Flags
 
-¿Cómo se pueden resolver los problemas con OpenTelemetry? Estos escenarios te
-muestran algunos problemas preconfigurados y cómo interpretar los datos de
-OpenTelemetry para resolverlos.
-
-Agregaremos más escenarios con el tiempo.
-
-- Generar un [Error de Catálogo de Producto](feature-flags) para solicitudes
-  `GetProduct` con ID de producto: `OLJCESPC7Z` utilizando el servicio Feature
-  Flag.
-- Descubre una fuga de memoria y diagnostícala mediante métricas y seguimientos.
-  [Leer más](scenarios/recommendation-cache/)
+¿Cómo puedes resolver problemas con OpenTelemetry? Estos
+[escenarios habilitados por `feature flags`](feature-flags/) te guiarán a través
+de algunos problemas preconfigurados y te mostrarán cómo interpretar los datos
+de OpenTelemetry para resolverlos.
 
 ## Referencia
 

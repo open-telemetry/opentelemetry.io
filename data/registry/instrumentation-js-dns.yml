@@ -9,10 +9,10 @@ description: DNS instrumentation for Node.js.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-dns
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-dns
 createdAt: 2020-11-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-dns'
-  version: 0.44.0
+  version: 0.52.0
 isFirstParty: false

@@ -16,5 +16,5 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-pg
-  version: 0.30.0
+  version: 0.33.0
 isFirstParty: false

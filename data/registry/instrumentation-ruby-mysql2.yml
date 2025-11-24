@@ -14,5 +14,5 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-mysql2
-  version: 0.29.0
+  version: 0.31.0
 isFirstParty: false

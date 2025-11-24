@@ -18,5 +18,5 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-aws_sdk
-  version: 0.8.0
+  version: 0.11.0
 isFirstParty: false

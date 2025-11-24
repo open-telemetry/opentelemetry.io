@@ -271,8 +271,8 @@ For example, consider two scenarios in a web browser:
 1. Tracking a page load
 2. Denoting when a page becomes interactive
 
-A Span is best used to the first scenario because it's an operation with a start
-and an end.
+A Span is best used to track the first scenario because it's an operation with a
+start and an end.
 
 A Span Event is best used to track the second scenario because it represents a
 meaningful, singular point in time.
@@ -310,8 +310,7 @@ trace. Now, they are causally associated with one another.
 Links are optional but serve as a good way to associate trace spans with one
 another.
 
-For more information regarding Span Links, see
-[Link](/docs/specs/otel/trace/api/#link).
+For more information see [Span Links](/docs/specs/otel/trace/api/#link).
 
 ### Span Status
 

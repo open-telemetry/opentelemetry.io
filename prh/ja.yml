@@ -1,0 +1,55 @@
+rules:
+  - expected: テレメトリー
+    patterns:
+      - /テレメトリ(?!ー)/
+  - expected: コレクター
+    patterns:
+      - /コレクタ(?!ー)/
+  - expected: レシーバー
+    patterns:
+      - /レシーバ(?!ー)/
+  - expected: エクスポーター
+    patterns:
+      - /エクスポータ(?!ー)/
+  - expected: プロセッサー
+    patterns:
+      - /プロセッサ(?!ー)/
+  - expected: メトリクス
+    patterns:
+      - メトリック
+  - expected: たとえば
+    patterns:
+      - 例えば
+  - expected: すべて
+    patterns:
+      - 全て
+  - expected: かわり
+    patterns:
+      - 代わり
+  - expected: かわって
+    patterns:
+      - 代わって
+  - expected: 計装
+    patterns:
+      - インストゥルメンテーション
+      - インストルメンテーション
+      - インストルメント
+  - expected: エグザンプラー
+    patterns:
+      - 例示値
+  - expected: プログラム
+    patterns:
+      - プログラマティック
+  - expected: 伝搬
+    patterns:
+      - 伝播
+      - プロパゲーション # 「伝搬（プロパゲーション）」といった説明書きの場合は、prettier-ignoreでLintを無視する
+  - expected: フィーチャーフラグ
+    patterns:
+      - フューチャーフラグ
+  - expected: 接頭辞
+    patterns:
+      - プレフィックス
+  - expected: 接尾辞
+    patterns:
+      - サフィックス

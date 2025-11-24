@@ -3,7 +3,7 @@ title: Building a Connector
 aliases: [/docs/collector/build-connector/]
 weight: 30
 # prettier-ignore
-cSpell:ignore: batchprocessor debugexporter Errorf exampleconnector gomod gord Jaglowski loggingexporter mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
+cSpell:ignore: debugexporter Errorf exampleconnector gomod gord Jaglowski mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
 ---
 
 ## Connectors in OpenTelemetry
@@ -93,7 +93,6 @@ receivers:
         endpoint: 0.0.0.0:4318
 
 exporters:
-  # NOTE: Prior to v0.86.0 use the `logging` instead of `debug`.
   debug:
 
 connectors:
@@ -103,7 +102,6 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [example]
     metrics:
       receivers: [example]
@@ -146,11 +144,16 @@ tag. Create struct and add parameters. You can optionally add a validator
 function to check if the given default values are valid for an instance of your
 connector.
 
+Here is what the `config.go` file should look like:
+
+> exampleconnector/config.go
+
 ```go
 package exampleconnector
 
 import "fmt"
 
+// Config represents the connector config settings within the collector's config.yaml
 type Config struct {
     AttributeName string `mapstructure:"attribute_name"`
 }
@@ -185,11 +188,10 @@ function. The `connector.NewFactory` function instantiates and returns a
     connector as a global constant.
 
     ```go
-    const (
-        defaultVal = "request.n"
-        // this is the name used to refer to the connector in the config.yaml
-        typeStr = "example"
-    )
+    const defaultVal string = "request.n"
+
+    // Type is the component type name for this connector
+    var Type = component.MustNewType("example")
     ```
 
 2.  Create the default configuration function. This is how you choose to
@@ -215,13 +217,8 @@ function. The `connector.NewFactory` function instantiates and returns a
     ```go
     // createTracesToMetricsConnector defines the consumer type of the connector
     // We want to consume traces and export metrics, therefore, define nextConsumer as metrics, since consumer is the next component in the pipeline
-    func createTracesToMetricsConnector(ctx context.Context, params connector.CreateSettings, cfg component.Config, nextConsumer consumer.Metrics) (connector.Traces, error) {
-        c, err := newConnector(params.Logger, cfg)
-        if err != nil {
-            return nil, err
-        }
-        c.metricsConsumer = nextConsumer
-        return c, nil
+    func createTracesToMetricsConnector(ctx context.Context, params connector.Settings, cfg component.Config, nextConsumer consumer.Metrics) (connector.Traces, error) {
+        return newConnector(params.Logger, cfg, nextConsumer)
     }
     ```
 
@@ -233,8 +230,7 @@ function. The `connector.NewFactory` function instantiates and returns a
     defines several of these functions for traces to metrics, logs to metrics
     and metrics to metrics.
 
-    Parameters for the `createTracesToMetricsConnector`: {.h4}
-
+    Parameters for the `createTracesToMetricsConnector`:
     - `context.Context`: the reference to the collector’s `context.Context` so
       your trace receiver can properly manage its execution context.
     - `connector.CreateSettings`: the reference to some of the collector’s
@@ -254,9 +250,9 @@ function. The `connector.NewFactory` function instantiates and returns a
     func NewFactory() connector.Factory {
         // OpenTelemetry connector factory to make a factory for connectors
         return connector.NewFactory(
-        typeStr,
-        createDefaultConfig,
-        connector.WithTracesToMetrics(createTracesToMetricsConnector, component.StabilityLevelAlpha))
+            Type,
+            createDefaultConfig,
+            connector.WithTracesToMetrics(createTracesToMetricsConnector, component.StabilityLevelAlpha))
     }
     ```
 
@@ -269,47 +265,37 @@ Once finished, here is `factory.go`:
 package exampleconnector
 
 import (
-    "context"
+	"context"
 
-    "go.opentelemetry.io/collector/component"
-    "go.opentelemetry.io/collector/connector"
-    "go.opentelemetry.io/collector/consumer"
+	"go.opentelemetry.io/collector/component"
+	"go.opentelemetry.io/collector/connector"
+	"go.opentelemetry.io/collector/consumer"
 )
 
-const (
-    defaultVal = "request.n"
-    // this is the name used to refer to the connector in the config.yaml
-    typeStr = "example"
-)
+const defaultVal string = "request.n"
 
+// Type is the component type name for this connector
+var Type = component.MustNewType("example")
 
 // NewFactory creates a factory for example connector.
 func NewFactory() connector.Factory {
-    // OpenTelemetry connector factory to make a factory for connectors
-
-    return connector.NewFactory(
-    typeStr,
-    createDefaultConfig,
-    connector.WithTracesToMetrics(createTracesToMetricsConnector, component.StabilityLevelAlpha))
+	// OpenTelemetry connector factory to make a factory for connectors
+	return connector.NewFactory(
+		Type,
+		createDefaultConfig,
+		connector.WithTracesToMetrics(createTracesToMetricsConnector, component.StabilityLevelAlpha))
 }
-
 
 func createDefaultConfig() component.Config {
-    return &Config{
-        AttributeName: defaultVal,
-    }
+	return &Config{
+		AttributeName: defaultVal,
+	}
 }
-
 
 // createTracesToMetricsConnector defines the consumer type of the connector
 // We want to consume traces and export metrics, therefore, define nextConsumer as metrics, since consumer is the next component in the pipeline
-func createTracesToMetricsConnector(ctx context.Context, params connector.CreateSettings, cfg component.Config, nextConsumer consumer.Metrics) (connector.Traces, error) {
-    c, err := newConnector(params.Logger, cfg)
-    if err != nil {
-        return nil, err
-    }
-    c.metricsConsumer = nextConsumer
-    return c, nil
+func createTracesToMetricsConnector(ctx context.Context, params connector.Settings, cfg component.Config, nextConsumer consumer.Metrics) (connector.Traces, error) {
+	return newConnector(params.Logger, cfg, nextConsumer)
 }
 ```
 
@@ -325,9 +311,12 @@ Traces connector and therefore must implement the interfaces: `baseConsumer`,
     ```go
     // schema for connector
     type connectorImp struct {
-        config Config
+        config          Config
         metricsConsumer consumer.Metrics
-        logger *zap.Logger
+        logger          *zap.Logger
+        // Include these parameters if a specific implementation for the Start and Shutdown function are not needed
+        component.StartFunc
+        component.ShutdownFunc
     }
     ```
 
@@ -335,13 +324,14 @@ Traces connector and therefore must implement the interfaces: `baseConsumer`,
 
     ```go
     // newConnector is a function to create a new connector
-    func newConnector(logger *zap.Logger, config component.Config) (*connectorImp, error) {
+    func newConnector(logger *zap.Logger, config component.Config, nextConsumer consumer.Metrics) (*connectorImp, error) {
         logger.Info("Building exampleconnector connector")
         cfg := config.(*Config)
 
         return &connectorImp{
-            config: *cfg,
-            logger: logger,
+            config:          *cfg,
+            logger:          logger,
+            metricsConsumer: nextConsumer,
         }, nil
     }
     ```
@@ -367,8 +357,8 @@ Traces connector and therefore must implement the interfaces: `baseConsumer`,
 
     ```go
     // ConsumeTraces method is called for each instance of a trace sent to the connector
-    func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) error{
-    // loop through the levels of spans of the one trace consumed
+    func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) error {
+        // loop through the levels of spans of the one trace consumed
         for i := 0; i < td.ResourceSpans().Len(); i++ {
             resourceSpan := td.ResourceSpans().At(i)
 
@@ -378,13 +368,10 @@ Traces connector and therefore must implement the interfaces: `baseConsumer`,
                 for k := 0; k < scopeSpan.Spans().Len(); k++ {
                     span := scopeSpan.Spans().At(k)
                     attrs := span.Attributes()
-                    mapping := attrs.AsRaw()
-                    for key, _ := range mapping {
-                        if key == c.config.AttributeName {
-                            // create metric only if span of trace had the specific attribute
-                            metrics := pmetric.NewMetrics()
-                            return c.metricsConsumer.ConsumeMetrics(ctx, metrics)
-                        }
+                    if _, ok := attrs.Get(c.config.AttributeName); ok {
+                        // create metric only if span of trace had the specific attribute
+                        metrics := pmetric.NewMetrics()
+                        return c.metricsConsumer.ConsumeMetrics(ctx, metrics)
                     }
                 }
             }
@@ -398,75 +385,72 @@ Traces connector and therefore must implement the interfaces: `baseConsumer`,
     enough to include `component.StartFunc` and `component.ShutdownFunc` as part
     of the defined connector struct.
 
-The complete connector file:
+The complete connector file should look like this:
+
+> exampleconnector/connector.go
 
 ```go
 package exampleconnector
 
 import (
-    "context"
-    "fmt"
+	"context"
 
-    "go.uber.org/zap"
+	"go.uber.org/zap"
 
-    "go.opentelemetry.io/collector/component"
-    "go.opentelemetry.io/collector/consumer"
-    "go.opentelemetry.io/collector/pdata/pmetric"
-    "go.opentelemetry.io/collector/pdata/ptrace"
+	"go.opentelemetry.io/collector/component"
+	"go.opentelemetry.io/collector/consumer"
+	"go.opentelemetry.io/collector/pdata/pmetric"
+	"go.opentelemetry.io/collector/pdata/ptrace"
 )
-
 
 // schema for connector
 type connectorImp struct {
-    config Config
-    metricsConsumer consumer.Metrics
-    logger *zap.Logger
-    // Include these parameters if a specific implementation for the Start and Shutdown function are not needed
-    component.StartFunc
+	config          Config
+	metricsConsumer consumer.Metrics
+	logger          *zap.Logger
+	// Include these parameters if a specific implementation for the Start and Shutdown function are not needed
+	component.StartFunc
 	component.ShutdownFunc
 }
 
 // newConnector is a function to create a new connector
-func newConnector(logger *zap.Logger, config component.Config) (*connectorImp, error) {
-    logger.Info("Building exampleconnector connector")
-    cfg := config.(*Config)
+func newConnector(logger *zap.Logger, config component.Config, nextConsumer consumer.Metrics) (*connectorImp, error) {
+	logger.Info("Building exampleconnector connector")
+	cfg := config.(*Config)
 
-    return &connectorImp{
-    config: *cfg,
-    logger: logger,
-    }, nil
+	return &connectorImp{
+		config:          *cfg,
+		logger:          logger,
+		metricsConsumer: nextConsumer,
+	}, nil
 }
-
 
 // Capabilities implements the consumer interface.
 func (c *connectorImp) Capabilities() consumer.Capabilities {
-    return consumer.Capabilities{MutatesData: false}
+	return consumer.Capabilities{MutatesData: false}
 }
 
 // ConsumeTraces method is called for each instance of a trace sent to the connector
 func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) error {
-    // loop through the levels of spans of the one trace consumed
-    for i := 0; i < td.ResourceSpans().Len(); i++ {
-        resourceSpan := td.ResourceSpans().At(i)
+	// loop through the levels of spans of the one trace consumed
+	for i := 0; i < td.ResourceSpans().Len(); i++ {
+		resourceSpan := td.ResourceSpans().At(i)
 
-        for j := 0; j < resourceSpan.ScopeSpans().Len(); j++ {
-            scopeSpan := resourceSpan.ScopeSpans().At(j)
+		for j := 0; j < resourceSpan.ScopeSpans().Len(); j++ {
+			scopeSpan := resourceSpan.ScopeSpans().At(j)
 
-            for k := 0; k < scopeSpan.Spans().Len(); k++ {
-                span := scopeSpan.Spans().At(k)
-                attrs := span.Attributes()
-                mapping := attrs.AsRaw()
-                for key, _ := range mapping {
-                    if key == c.config.AttributeName {
-                        // create metric only if span of trace had the specific attribute
-                        metrics := pmetric.NewMetrics()
-                        return c.metricsConsumer.ConsumeMetrics(ctx, metrics)
-                    }
-                }
-            }
-        }
-    }
-    return nil
+			for k := 0; k < scopeSpan.Spans().Len(); k++ {
+				span := scopeSpan.Spans().At(k)
+				attrs := span.Attributes()
+				if _, ok := attrs.Get(c.config.AttributeName); ok {
+					// create metric only if span of trace had the specific attribute
+					metrics := pmetric.NewMetrics()
+					return c.metricsConsumer.ConsumeMetrics(ctx, metrics)
+				}
+			}
+		}
+	}
+	return nil
 }
 ```
 
@@ -494,36 +478,28 @@ your own OpenTelemetry Collector binary. You can add or remove components
 
     ```yaml
     dist:
-        name: otelcol-dev-bin
-        description: Basic OpenTelemetry collector distribution for Developers
-        output_path: ./otelcol-dev
-
+      name: otelcol-dev-bin
+      description: Basic OpenTelemetry collector distribution for Developers
+      output_path: ./otelcol-dev
 
     exporters:
-        - gomod:
-        # Note: Prior to v0.86.0 use the `loggingexporter` instead of `debugexporter`.
-        go.opentelemetry.io/collector/exporter/debugexporter v0.86.0
-
-
-    processors:
-        - gomod:
-        go.opentelemetry.io/collector/processor/batchprocessor v0.86.0
-
+      - gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.129.0
 
     receivers:
-        - gomod:
-    go.opentelemetry.io/collector/receiver/otlpreceiver v0.86.0
+      - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.129.0
 
+    # Not used in this tutorial, but can be added if needed for your use case
+    # processors:
 
     connectors:
-        - gomod: github.com/gord02/exampleconnector v0.86.0
-
+      - gomod: github.com/gord02/exampleconnector v0.129.0
 
     replaces:
-    # a list of "replaces" directives that will be part of the resulting go.mod
+      # a list of "replaces" directives that will be part of the resulting go.mod
 
-    # This replace statement is necessary since the newly added component is not found/published to GitHub yet. Replace references to GitHub path with the local path
-    - github.com/gord02/exampleconnector => [PATH-TO-COMPONENT-CODE]/exampleconnector
+      # This replace statement is necessary since the newly added component is not found/published to GitHub yet. Replace references to GitHub path with the local path
+      - github.com/gord02/exampleconnector =>
+        [PATH-TO-COMPONENT-CODE]/exampleconnector
     ```
 
     It is necessary to include a replace statement. The replace section since
@@ -541,22 +517,228 @@ your own OpenTelemetry Collector binary. You can add or remove components
     binary:
 
     ```sh
-    builder --config [PATH-TO-CONFIG]/builder-config.yaml
+    ./ocb --config [PATH-TO-CONFIG]/builder-config.yaml
     ```
 
     This will generate the collector binary in the specified output path
     directory that was in your config file.
 
-4.  Run Your collector binary:
-
-    Now you can run your custom collector binary:
+    When the build is successful, you should see output similar to:
 
     ```sh
-    ./[OUTPUT_PATH]/[NAME-OF-DIST] --config [PATH-TO-CONFIG]/config.yaml
+    ./ocb --config builder-config.yaml
+    2025-07-15T22:10:10.351+0900    INFO    internal/command.go:99  OpenTelemetry Collector Builder {"version": "0.129.0"}
+    2025-07-15T22:10:10.352+0900    INFO    internal/command.go:104 Using config file       {"path": "builder-config.yaml"}
+    2025-07-15T22:10:10.353+0900    INFO    builder/config.go:160   Using go        {"go-executable": "/opt/homebrew/Cellar/go@1.23/1.23.6/bin/go"}
+    2025-07-15T22:10:10.354+0900    INFO    builder/main.go:99      Sources created {"path": "./otelcol-dev"}
+    2025-07-15T22:10:10.516+0900    INFO    builder/main.go:201     Getting go modules
+    2025-07-15T22:10:10.554+0900    INFO    builder/main.go:110     Compiling
+    2025-07-15T22:10:13.369+0900    INFO    builder/main.go:140     Compiled        {"binary": "./otelcol-dev/otelcol-dev-bin"}
+    ```
+
+4.  Run Your collector binary:
+
+    Now you can run your custom collector binary using the binary path from step
+    3 output (e.g., `{"binary": "./otelcol-dev/otelcol-dev-bin"}`):
+
+    ```sh
+    ./otelcol-dev/otelcol-dev-bin --config [PATH-TO-CONFIG]/config.yaml
     ```
 
     The output path name and name of dist is detailed in the
     `build-config.yaml`.
+
+## Testing Your Connector
+
+Now that you have built your example connector, let's validate its functionality
+with unit tests. Go unit tests provide better coverage and are easier to
+maintain.
+
+### Writing Unit Tests
+
+Create a test file `connector_test.go` in your connector directory:
+
+> exampleconnector/connector_test.go
+
+```go
+package exampleconnector
+
+import (
+	"context"
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
+	"github.com/vibeus/opentelemetry-collector/confmap/xconfmap"
+	"go.opentelemetry.io/collector/consumer/consumertest"
+	"go.opentelemetry.io/collector/pdata/ptrace"
+	"go.uber.org/zap"
+)
+
+func TestConsumeTraces(t *testing.T) {
+	// Create a test consumer that captures metrics
+	metricsConsumer := &consumertest.MetricsSink{}
+
+	// Create connector with test configuration
+	cfg := &Config{
+		AttributeName: "request.n",
+	}
+
+	connector, err := newConnector(zap.NewNop(), cfg, metricsConsumer)
+	require.NoError(t, err)
+
+	ctx := context.Background()
+
+	t.Run("span with target attribute generates metric", func(t *testing.T) {
+		// Reset the consumer
+		metricsConsumer.Reset()
+
+		// Create trace data with target attribute
+		traces := ptrace.NewTraces()
+		resourceSpan := traces.ResourceSpans().AppendEmpty()
+		scopeSpan := resourceSpan.ScopeSpans().AppendEmpty()
+		span := scopeSpan.Spans().AppendEmpty()
+
+		// Add the target attribute
+		span.Attributes().PutStr("request.n", "test-value")
+		span.Attributes().PutStr("http.method", "GET")
+
+		// Consume the traces
+		err := connector.ConsumeTraces(ctx, traces)
+		require.NoError(t, err)
+
+		// Verify metric was generated
+		assert.Equal(t, 1, len(metricsConsumer.AllMetrics()))
+	})
+
+	t.Run("span without target attribute does not generate metric", func(t *testing.T) {
+		// Reset the consumer
+		metricsConsumer.Reset()
+
+		// Create trace data without target attribute
+		traces := ptrace.NewTraces()
+		resourceSpan := traces.ResourceSpans().AppendEmpty()
+		scopeSpan := resourceSpan.ScopeSpans().AppendEmpty()
+		span := scopeSpan.Spans().AppendEmpty()
+
+		// Add other attributes but not the target one
+		span.Attributes().PutStr("http.method", "POST")
+		span.Attributes().PutStr("user.id", "12345")
+
+		// Consume the traces
+		err := connector.ConsumeTraces(ctx, traces)
+		require.NoError(t, err)
+
+		// Verify no metric was generated
+		assert.Equal(t, 0, len(metricsConsumer.AllMetrics()))
+	})
+
+	t.Run("multiple spans with mixed attributes", func(t *testing.T) {
+		// Reset the consumer
+		metricsConsumer.Reset()
+
+		// Create trace data with multiple spans
+		traces := ptrace.NewTraces()
+		resourceSpan := traces.ResourceSpans().AppendEmpty()
+		scopeSpan := resourceSpan.ScopeSpans().AppendEmpty()
+
+		// First span with target attribute
+		span1 := scopeSpan.Spans().AppendEmpty()
+		span1.Attributes().PutStr("request.n", "value1")
+
+		// Second span without target attribute
+		span2 := scopeSpan.Spans().AppendEmpty()
+		span2.Attributes().PutStr("other.attr", "value2")
+
+		// Consume the traces
+		err := connector.ConsumeTraces(ctx, traces)
+		require.NoError(t, err)
+
+		// Should generate exactly one metric (from first span only)
+		assert.Equal(t, 1, len(metricsConsumer.AllMetrics()))
+	})
+}
+
+func TestConnectorCapabilities(t *testing.T) {
+	connector := &connectorImp{}
+	capabilities := connector.Capabilities()
+	assert.False(t, capabilities.MutatesData)
+}
+
+func TestCreateDefaultConfig(t *testing.T) {
+	cfg := createDefaultConfig()
+	assert.NotNil(t, cfg)
+
+	exampleConfig := cfg.(*Config)
+	assert.Equal(t, "request.n", exampleConfig.AttributeName)
+}
+
+func TestConfigValidation(t *testing.T) {
+	t.Run("valid config", func(t *testing.T) {
+		cfg := &Config{
+			AttributeName: "test.attribute",
+		}
+		err := xconfmap.Validate(cfg)
+		assert.NoError(t, err)
+	})
+
+	t.Run("invalid config - empty attribute name", func(t *testing.T) {
+		cfg := &Config{
+			AttributeName: "",
+		}
+		err := xconfmap.Validate(cfg)
+		assert.Error(t, err)
+		assert.Contains(t, err.Error(), "attribute_name must not be empty")
+	})
+}
+```
+
+### Running the Tests
+
+1. **Add test dependencies to your `go.mod`:**
+
+   ```sh
+   go mod tidy
+   ```
+
+2. **Run the tests:**
+
+   ```sh
+   go test -cover -v ./...
+   ```
+
+### Expected Test Output
+
+When tests run successfully, you should see output similar to:
+
+```sh
+go test -cover -v ./...
+=== RUN   TestConsumeTraces
+=== RUN   TestConsumeTraces/span_with_target_attribute_generates_metric
+=== RUN   TestConsumeTraces/span_without_target_attribute_does_not_generate_metric
+=== RUN   TestConsumeTraces/multiple_spans_with_mixed_attributes
+--- PASS: TestConsumeTraces (0.00s)
+    --- PASS: TestConsumeTraces/span_with_target_attribute_generates_metric (0.00s)
+    --- PASS: TestConsumeTraces/span_without_target_attribute_does_not_generate_metric (0.00s)
+    --- PASS: TestConsumeTraces/multiple_spans_with_mixed_attributes (0.00s)
+=== RUN   TestConnectorCapabilities
+--- PASS: TestConnectorCapabilities (0.00s)
+=== RUN   TestCreateDefaultConfig
+--- PASS: TestCreateDefaultConfig (0.00s)
+=== RUN   TestConfigValidation
+=== RUN   TestConfigValidation/valid_config
+=== RUN   TestConfigValidation/invalid_config_-_empty_attribute_name
+--- PASS: TestConfigValidation (0.00s)
+    --- PASS: TestConfigValidation/valid_config (0.00s)
+    --- PASS: TestConfigValidation/invalid_config_-_empty_attribute_name (0.00s)
+PASS
+coverage: 90.5% of statements
+ok      github.com/gord02/exampleconnector      0.501s  coverage: 90.5% of statements
+```
+
+These unit tests provide comprehensive coverage of your connector's
+functionality and are the recommended approach for validating component behavior
+in the OpenTelemetry Collector ecosystem.
 
 Additional resources on the OpenTelemetry Collector Builder:
 

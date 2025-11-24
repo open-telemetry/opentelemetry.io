@@ -15,5 +15,5 @@ createdAt: 2023-05-22
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-wordpress
-  version: 0.0.17
+  version: 0.1.1
 isFirstParty: false

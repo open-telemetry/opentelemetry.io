@@ -11,10 +11,10 @@ description: Instrumentation library for pino.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-pino
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-pino
 createdAt: 2021-07-08
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-pino'
-  version: 0.47.0
+  version: 0.55.0
 isFirstParty: false

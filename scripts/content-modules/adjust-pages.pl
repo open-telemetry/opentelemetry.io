@@ -24,9 +24,9 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.43.0
-    otlp: 1.5.0
-    semconv: 1.32.0
+    spec: 1.51.0
+    otlp: 1.9.0
+    semconv: 1.38.0
   );
 # Versions map without the colon in the keys
 my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
@@ -60,15 +60,6 @@ sub printFrontMatter() {
   #   $frontMatterFromFile .= "linkTitle: API\naliases: [bridge-api]\n" if
   #     applyPatchOrPrintMsgIf('2024-12-01-bridge-api', 'spec', '1.39.0');
   # }
-
-  if ($ARGV =~ m{^tmp/semconv/docs.*/(README|_index)\.md$}
-    && applyPatchOrPrintMsgIf('2025-01-29-path-base', 'semconv', '1.30.0-19-g')
-    && $frontMatterFromFile =~ /^path_base_for_github_subdir:/m
-  ) {
-    $frontMatterFromFile =~ s/\npath_base_for_github_subdir:.*?\n/\n/;
-    $frontMatterFromFile =~ s|\n  from: tmp/semconv/docs/.*?\n|\n|;
-    $frontMatterFromFile =~ s/\n  to: .*README.md($|\n)/$1/;
-  }
 
   my $titleMaybeQuoted = ($title =~ ':') ? "\"$title\"" : $title;
   print "title: $titleMaybeQuoted\n" if $frontMatterFromFile !~ /title: /;
@@ -104,22 +95,30 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-sub patchMissionHeadingIDs() {
-  return unless $ARGV =~ /^tmp\/otel\/specification\/specification-principles.md/
-    && applyPatchOrPrintMsgIf('2025-02-25-mission-heading-IDs', 'spec', '1.42.0');
+sub patchSpec_because_of_SemConv_DockerAPIVersions() {
+  return unless
+    # Restrict the patch to the proper spec, and section or file:
+    $ARGV =~ m|^tmp/semconv/docs/|
+    &&
+    # Call helper function that will cause the function to return early if the
+    # current version of the named spec (arg 2) is greater than the target
+    # version (arg 3). The first argument is a unique id that will be printed if
+    # the patch is outdated. Otherwise, if the patch is still relevant we fall
+    # through to the body of this patch function.
+    applyPatchOrPrintMsgIf('2025-11-21-docker-api-versions', 'semconv', '1.39.0-dev');
 
-  s|(#we-value-)_(.*?)_|$1$2|;
-}
+  # Give infor about the patch:
+  #
+  # For the problematic links, see:
+  # https://github.com/open-telemetry/semantic-conventions/issues/3103
+  #
+  # Replace older Docker API versions with the latest one like in:
+  # https://github.com/open-telemetry/semantic-conventions/pull/3093
 
-sub patchSemConv1_30_0() {
-  return unless $ARGV =~ /^tmp\/semconv\/docs\//
-    && applyPatchOrPrintMsgIf('2025-01-24-emit-an-event-etc', 'semconv', '1.30.0-18-g');
-
-  s|Emit Event API|Log API|;
-  s|(docs/specs/otel/logs/api.md#emit-a)n-event|$1-logrecord|;
-  s|\[semantic-convention-groups\]|[group-stability]|;
-  s|\Q../../docs/|../|g; # https://github.com/open-telemetry/semantic-conventions/pull/1843
-  s|\Qhttps://wikipedia.org/wiki/Where_(SQL)#IN|https://wikipedia.org/wiki/SQL_syntax#Operators|g;
+  # This is the actual regex-based patch code:
+  s{
+    (https://docs.docker.com/reference/api/engine/version)/v1.(43|51)/(\#tag/)
+  }{$1/v1.52/$3}gx;
 }
 
 sub getVersFromSubmodule() {
@@ -162,11 +161,16 @@ while(<>) {
     $frontMatterFromFile = '';
     $title = '';
     $lineNum = 1;
+    # Skip single-line markdownlint directives at top of file. Added to handle
+    # https://github.com/open-telemetry/opentelemetry.io/issues/7750
+    if (/^<!--\s*markdownlint.*-->\s*$/) {
+      $_ = <>;
+    }
+    # Extract Hugo front matter encoded as a comment:
     if (/^(<!)?--- (# )?Hugo/) {
         while(<>) {
           $lineNum++;
           last if /^--->?/;
-          patchSemConv1_30_0();
           $frontMatterFromFile .= $_;
         }
         next;
@@ -201,13 +205,13 @@ while(<>) {
   if ($ARGV =~ /^tmp\/semconv/) {
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
-
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
+
+    patchSpec_because_of_SemConv_DockerAPIVersions();
   }
 
-  # SPECIFICATION custom processing
 
-  patchMissionHeadingIDs();
+  # SPECIFICATION custom processing
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
   s|(\]\()/specification/|$1$specBasePath/otel/)|;
@@ -251,8 +255,6 @@ while(<>) {
   ## OpAMP
 
   s|\]\((proto/opamp.proto)\)|]($opAmpSpecRepoUrl/blob/main/$1)|;
-
-  patchSemConv1_30_0();
 
   print;
 }

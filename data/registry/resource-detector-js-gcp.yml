@@ -10,9 +10,9 @@ description: Resource detector for Google Cloud Platform.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-gcp
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-gcp
 createdAt: 2022-12-07
 package:
   registry: npm
   name: '@opentelemetry/resource-detector-gcp'
-  version: 0.34.0
+  version: 0.43.0

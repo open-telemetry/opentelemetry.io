@@ -13,6 +13,7 @@ cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 - [Docker Compose](https://docs.docker.com/compose/install/) v2.0.0+
 - Make (optional)
 - 6 GB of RAM for the application
+- 14 GB of disk space
 
 ## Get and run the demo
 
@@ -130,10 +131,10 @@ with an editor.
         exporters: [spanmetrics, otlphttp/example]
   ```
 
-{{% alert title="Note" color="info" %}} When merging YAML values with the
-Collector, objects are merged and arrays are replaced. The `spanmetrics`
-exporter must be included in the array of exporters for the `traces` pipeline if
-overridden. Not including this exporter will result in an error. {{% /alert %}}
+{{% alert title="Note" %}} When merging YAML values with the Collector, objects
+are merged and arrays are replaced. The `spanmetrics` exporter must be included
+in the array of exporters for the `traces` pipeline if overridden. Not including
+this exporter will result in an error. {{% /alert %}}
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require

@@ -5,7 +5,7 @@ weight: 50
 
 {{% docs/languages/exporters/intro %}}
 
-### Dependencies {#otlp-dependencies}
+## Dependencies {#otlp-dependencies}
 
 If you want to send telemetry data to an OTLP endpoint (like the
 [OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) or
@@ -31,9 +31,9 @@ package as well:
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-### Usage
+## Usage
 
-#### ASP.NET Core
+### ASP.NET Core
 
 Configure the exporters in your ASP.NET Core services:
 
@@ -87,7 +87,7 @@ builder.Logging.AddOpenTelemetry(logging => {
 });
 ```
 
-#### Non-ASP.NET Core
+### Non-ASP.NET Core
 
 Configure the exporter when creating a `TracerProvider`, `MeterProvider` or
 `LoggerFactory`:
@@ -129,7 +129,7 @@ production.
 
 ## Console
 
-### Dependencies
+## Dependencies
 
 The console exporter is useful for development and debugging tasks, and is the
 simplest to set up. Start by installing the
@@ -148,9 +148,9 @@ package as well:
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-### Usage {#console-usage}
+## Usage {#console-usage}
 
-#### ASP.NET Core {#console-usage-asp-net-core}
+### ASP.NET Core {#console-usage-asp-net-core}
 
 Configure the exporter in your ASP.NET Core services:
 
@@ -173,7 +173,7 @@ builder.Logging.AddOpenTelemetry(logging => {
 });
 ```
 
-#### Non-ASP.NET Core {#console-usage-non-asp-net-core}
+### Non-ASP.NET Core {#console-usage-non-asp-net-core}
 
 Configure the exporter when creating a `TracerProvider`, `MeterProvider` or
 `LoggerFactory`:
@@ -202,7 +202,7 @@ var loggerFactory = LoggerFactory.Create(builder =>
 
 {{% include "exporters/prometheus-setup.md" %}}
 
-### Dependencies {#prometheus-dependencies}
+## Dependencies {#prometheus-dependencies}
 
 Install the
 [exporter package](https://www.nuget.org/packages/OpenTelemetry.Exporter.Prometheus.AspNetCore)
@@ -220,9 +220,9 @@ package as well:
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-### Usage {#prometheus-usage}
+## Usage {#prometheus-usage}
 
-#### ASP.NET Core {#prometheus-asp-net-core-usage}
+### ASP.NET Core {#prometheus-asp-net-core-usage}
 
 Configure the exporter in your ASP.NET Core services:
 
@@ -248,7 +248,7 @@ app.UseOpenTelemetryPrometheusScrapingEndpoint();
 await app.RunAsync();
 ```
 
-#### Non-ASP.NET Core {#prometheus-non-asp-net-core-usage}
+### Non-ASP.NET Core {#prometheus-non-asp-net-core-usage}
 
 {{% alert color="warning" title="Warning" %}}
 
@@ -289,12 +289,12 @@ var app = builder.Build();
 app.UseOpenTelemetryPrometheusScrapingEndpoint();
 ```
 
-Further details on configuring the Prometheus exporter can be found
-[here](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Prometheus.AspNetCore/README.md).
+For more details on configuring the Prometheus exporter, see
+[OpenTelemetry.Exporter.Prometheus.AspNetCore](https://github.com/open-telemetry/opentelemetry-dotnet/blob/main/src/OpenTelemetry.Exporter.Prometheus.AspNetCore/README.md).
 
 {{% include "exporters/zipkin-setup.md" %}}
 
-### Dependencies {#zipkin-dependencies}
+## Dependencies {#zipkin-dependencies}
 
 To send your trace data to [Zipkin](https://zipkin.io/), install the
 [exporter package](https://www.nuget.org/packages/OpenTelemetry.Exporter.Zipkin)
@@ -312,9 +312,9 @@ package as well:
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-### Usage {#zipkin-usage}
+## Usage {#zipkin-usage}
 
-#### ASP.NET Core {#zipkin-asp-net-core-usage}
+### ASP.NET Core {#zipkin-asp-net-core-usage}
 
 Configure the exporter in your ASP.NET Core services:
 
@@ -330,7 +330,7 @@ builder.Services.AddOpenTelemetry()
         }));
 ```
 
-#### Non-ASP.NET Core {#zipkin-non-asp-net-core-usage}
+### Non-ASP.NET Core {#zipkin-non-asp-net-core-usage}
 
 Configure the exporter when creating a tracer provider:
 

@@ -5,14 +5,14 @@ weight: 65
 cSpell:ignore: rolldice
 ---
 
-{{% docs/languages/propagation js %}}
+{{% docs/languages/propagation %}}
 
 ## Automatic context propagation
 
 [Instrumentation libraries](../libraries/) like
 [`@opentelemetry/instrumentation-http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
 or
-[`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
+[`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
 propagate context across services for you.
 
 If you followed the [Getting Started Guide](../getting-started/nodejs) you can
@@ -33,15 +33,10 @@ dependencies:
 
 ```sh
 npm init -y
-npm install typescript \
-  ts-node \
-  @types/node \
-  undici \
+npm install undici \
   @opentelemetry/instrumentation-undici \
   @opentelemetry/sdk-node
-
-# initialize typescript
-npx tsc --init
+npm install -D tsx  # a tool to run TypeScript (.ts) files directly with node
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -55,12 +50,13 @@ npm install undici \
 
 {{% /tab %}} {{< /tabpane >}}
 
-Next, create a new file called `client.ts` (or client.js) with the following
+Next, create a new file called `client.ts` (or `client.js`) with the following
 content:
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
+/* client.ts */
 import { NodeSDK } from '@opentelemetry/sdk-node';
 import {
   SimpleSpanProcessor,
@@ -84,14 +80,13 @@ request('http://localhost:8080/rolldice').then((response) => {
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const {
+/* instrumentation.mjs */
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import {
   SimpleSpanProcessor,
   ConsoleSpanExporter,
-} = require('@opentelemetry/sdk-trace-node');
-const {
-  UndiciInstrumentation,
-} = require('@opentelemetry/instrumentation-undici');
+} from '@opentelemetry/sdk-trace-node';
+import { UndiciInstrumentation } from '@opentelemetry/instrumentation-undici';
 
 const sdk = new NodeSDK({
   spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
@@ -114,14 +109,14 @@ the [Getting Started](../getting-started/nodejs) running in one shell:
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
-$ npx ts-node --require ./instrumentation.ts app.ts
+$ npx tsx --import ./instrumentation.ts app.ts
 Listening for requests on http://localhost:8080
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```console
-$ node --require ./instrumentation.js app.js
+$ node --import ./instrumentation.mjs app.js
 Listening for requests on http://localhost:8080
 ```
 
@@ -132,7 +127,7 @@ Start a second shell and run the `client.ts` (or `client.js`):
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```shell
-npx ts-node client.ts
+npx tsx client.ts
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -154,7 +149,7 @@ similar to the following:
     }
   },
   traceId: 'cccd19c3a2d10e589f01bfe2dc896dc2',
-  parentId: undefined,
+  parentSpanContext: undefined,
   traceState: undefined,
   name: 'GET',
   id: '6f64ce484217a7bf',
@@ -174,14 +169,19 @@ similar to the following:
 Take note of the traceId (`cccd19c3a2d10e589f01bfe2dc896dc2`) and ID
 (`6f64ce484217a7bf`). Both can be found in the output of client as well:
 
-```javascript {hl_lines=["6-7"]}
+```javascript {hl_lines=[6,9]}
 {
   resource: {
     attributes: {
       // ...
   },
   traceId: 'cccd19c3a2d10e589f01bfe2dc896dc2',
-  parentId: '6f64ce484217a7bf',
+  parentSpanContext: {
+    traceId: 'cccd19c3a2d10e589f01bfe2dc896dc2',
+    spanId: '6f64ce484217a7bf',
+    traceFlags: 1,
+    isRemote: true
+  },
   traceState: undefined,
   name: 'GET /rolldice',
   id: '027c5c8b916d29da',
@@ -469,12 +469,12 @@ To enable OpenTelemetry and see the context propagation in action, create an
 additional file called `instrumentation.js` with the following content:
 
 ```javascript
-// instrumentation.js
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const {
+// instrumentation.mjs
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import {
   ConsoleSpanExporter,
   SimpleSpanProcessor,
-} = require('@opentelemetry/sdk-trace-node');
+} from '@opentelemetry/sdk-trace-node';
 
 const sdk = new NodeSDK({
   spanProcessors: [new SimpleSpanProcessor(new ConsoleSpanExporter())],
@@ -487,14 +487,14 @@ Use this file to run both, the server and the client, with instrumentation
 enabled:
 
 ```console
-$ node -r ./instrumentation.js server.js
+$ node --import ./instrumentation.mjs server.js
 Server listening on port 8124
 ```
 
 and
 
 ```shell
-node -r ./instrumentation client.js
+node --import ./instrumentation.mjs client.js
 ```
 
 After the client has sent data to the server and terminated you should see spans

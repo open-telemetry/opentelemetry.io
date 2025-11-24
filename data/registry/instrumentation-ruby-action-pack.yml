@@ -15,5 +15,5 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-action_pack
-  version: 0.12.0
+  version: 0.15.1
 isFirstParty: false

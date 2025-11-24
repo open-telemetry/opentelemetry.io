@@ -20,4 +20,4 @@ isFirstParty: false
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.StackExchangeRedis
-  version: 1.11.0-beta.2
+  version: 1.14.0-beta.1

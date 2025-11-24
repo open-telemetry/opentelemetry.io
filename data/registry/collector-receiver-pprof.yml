@@ -1,0 +1,19 @@
+# cSpell:ignore pprofreceiver pprof
+title: Pprof Receiver
+registryType: receiver
+language: collector
+tags:
+  - pprof
+  - receiver
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/pprofreceiver
+license: Apache 2.0
+description: TODO
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/pprofreceiver
+  version: v0.140.1

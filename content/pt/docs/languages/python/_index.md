@@ -5,14 +5,15 @@ description: >-
   alt="Python"> Uma implementação específica de linguagem do OpenTelemetry em
   Python.
 weight: 22
-default_lang_commit: 3fd0bb513e5d3fa6f178a73584322bcc469f15e0
+default_lang_commit: 5c112f86bd72c1d17f031b3a95b6fe2f79d6f699
+drifted_from_default: true
 ---
 
-{{% pt/docs/languages/index-intro python /%}}
+{{% docs/languages/index-intro python /%}}
 
 ## Suporte de Versão {#status-and-releases}
 
-O OpenTelemetry suporta a versão Python 3.8 e superiores.
+O OpenTelemetry suporta a versão Python 3.9 e superiores.
 
 ## Instalação {#installation}
 

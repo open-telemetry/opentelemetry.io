@@ -5,7 +5,7 @@ description:
   e ferramentas.
 aliases: [requirements]
 weight: 1
-default_lang_commit: 1ececa0615b64c5dfd93fd6393f3e4052e0cc496
+default_lang_commit: 89eb811e143ddb73599fc5493c8322a7396d6fbe
 ---
 
 Para contribuir com este repositório, você precisa estar familiarizado com as
@@ -39,7 +39,7 @@ Comunidade CNCF][CoC].
 Para diretrizes gerais da comunidade OpenTelemetry, incluindo funções e
 expectativas, consulte o [Guia para Novos Contribuidores do OpenTelemetry][NCG].
 
-[CLA]: https://docs.linuxfoundation.org/lfx/easycla/contributors
+[CLA]: https://docs.linuxfoundation.org/lfx/easycla/v2-current/contributors
 [CoC]: https://github.com/cncf/foundation/blob/main/code-of-conduct.md
 [NCG]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor/README.md

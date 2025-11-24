@@ -11,10 +11,10 @@ description:
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-socket.io
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-socket.io
 createdAt: 2022-10-27
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-socket.io'
-  version: 0.47.0
+  version: 0.55.0
 isFirstParty: false

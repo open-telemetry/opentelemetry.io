@@ -9,10 +9,10 @@ description: React loading automatic instrumentation
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/web/opentelemetry-plugin-react-load
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/plugin-react-load
 createdAt: 2020-11-09
 package:
   registry: npm
   name: '@opentelemetry/plugin-react-load'
-  version: 0.32.0
+  version: 0.40.0
 isFirstParty: false

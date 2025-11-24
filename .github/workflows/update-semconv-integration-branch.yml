@@ -1,4 +1,5 @@
 name: Update semconv integration branch
+# cSpell:ignore otelbot
 
 on:
   schedule:
@@ -6,30 +7,40 @@ on:
     - cron: '24 10 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   update-semconv-integration-branch:
     runs-on: ubuntu-latest
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/create-github-app-token@7e473efe3cb98aa54f8d4bac15400b15fad77d94 # v2.2.0
+        id: otelbot-token
         with:
-          # this is needed in order to do the rebase below
+          # the higher privileged docs token is needed to push commits to an existing PR
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v6
+        with:
+          # this is needed to do the rebase below
           fetch-depth: 0
-          # this is needed in order to trigger workflows when pushing new commits to the PR
-          token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          # this is needed to trigger workflows when pushing new commits to an existing PR
+          token: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Set environment variables
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          branch_prefix="opentelemetrybot/semconv-integration"
+          branch_prefix="otelbot/semconv-integration"
 
           version=$(git branch -r \
-                        | grep "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
+                        | grep -E "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
                         | sed "s|^ *origin/$branch_prefix-||" \
                         | sed "s|-dev$||")
 
-          if [[ -z "$versions" ]]; then
+          if [[ -z "$version" ]]; then
             latest_version=$(gh release view \
                           --repo open-telemetry/semantic-conventions \
                           --json tagName \
@@ -58,8 +69,8 @@ jobs:
 
       - name: Use CLA approved github bot
         run: |
-          git config user.name opentelemetrybot
-          git config user.email 107717825+opentelemetrybot@users.noreply.github.com
+          git config user.name otelbot
+          git config user.email 197425009+otelbot@users.noreply.github.com
 
       - name: Merge from main
         run: |
@@ -70,13 +81,14 @@ jobs:
             git push
           fi
 
-      - name: Update submodule
+      - name: Update submodule and Hugo mounts
         run: |
           git submodule update --init content-modules/semantic-conventions
           cd content-modules/semantic-conventions
 
           if git ls-remote --exit-code --tags origin $VERSION; then
             git reset --hard $VERSION
+            tag_exists=true
           else
             git reset --hard origin/main
           fi
@@ -86,6 +98,12 @@ jobs:
 
           sed -i "s/^\tsemconv-pin = .*/\tsemconv-pin = $commit_desc/" .gitmodules
 
+          if [ "$tag_exists" == "true" ]; then
+            sed -i "s/^\(\s *\)semconv: .*/\1semconv: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
+          fi
+
+          ./scripts/update-semconv-mounts.pl
+
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
@@ -93,14 +111,33 @@ jobs:
             git push
           fi
 
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+
+      - name: Update refcache
+        run: |
+          npm install --omit=optional
+          # Ignore link-check failures so we can still commit refcache updates
+          npm run fix:refcache || true
+          # Prune 404 entries, if any
+          npm run _refcache:prune
+
+          git add -A
+
+          if ! git diff-index --quiet --cached HEAD; then
+            git commit -am "Update refcache"
+            git push
+          fi
+
       - name: Create pull request if needed
         env:
           # not using secrets.GITHUB_TOKEN since pull requests from that token do not run workflows
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
-            gh pr create --title "Update semantic conventions to $VERSION-dev" \
-                         --body "This PR updates the semantic conventions to $VERSION-dev." \
+            gh pr create --title "DRAFT Update semantic conventions to unreleased $VERSION-dev" \
+                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) semantic conventions." \
                          --draft
           fi

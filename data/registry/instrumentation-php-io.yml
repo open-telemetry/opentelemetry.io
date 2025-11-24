@@ -15,5 +15,5 @@ createdAt: 2023-05-22
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-io
-  version: 0.0.13
+  version: 0.1.0
 isFirstParty: false

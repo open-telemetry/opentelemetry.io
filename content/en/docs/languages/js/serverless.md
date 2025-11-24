@@ -10,7 +10,7 @@ OpenTelemetry instrumentation libraries.
 
 ## AWS Lambda
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 You can also automatically instrument your AWS Lambda functions by using the
 [community provided Lambda layers](/docs/platforms/faas/lambda-auto-instrument/).
@@ -192,7 +192,7 @@ function in the backend!
 ## GCP function
 
 The following shows how to instrument
-[HTTP triggered function](https://cloud.google.com/functions/docs/writing/write-http-functions)
+[HTTP triggered function](https://docs.cloud.google.com/run/docs/write-functions)
 using the Google Cloud Platform (GCP) UI.
 
 ### Creating function

@@ -24,7 +24,7 @@ easier. It does the following:
   [custom resource (CR)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/).
 - Manages the configuration of a fleet of OpenTelemetry Collectors via
   [OpAMP](/docs/specs/opamp/) integration, supported by the
-  [`OpAMPBridge`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opampbridge)
+  [`OpAMPBridge`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opampbridges.md)
   custom resource.
 - Provides
   [integration with the Prometheus Operator's `PodMonitor` and `ServiceMonitor` CRs](https://github.com/open-telemetry/opentelemetry-operator/tree/main/cmd/otel-allocator).
@@ -141,7 +141,7 @@ Yes! In fact,
 [you probably should](https://cloud-native.slack.com/archives/C033BJ8BASU/p1713894678225579)!
 
 As we saw earlier, the
-[core distribution](https://github.cm/open-telemetry/open-telemetry-collector)
+[core distribution](https://github.com/open-telemetry/opentelemetry-collector)
 is the default Collector distribution used by the `OpenTelemetryCollector` CR.
 The Core distribution is a bare-bones distribution of the Collector for OTel
 developers to develop and test. It contains a base set of components–i.e.
@@ -202,7 +202,7 @@ to authenticate against that private registry. For more info on how to use
 [the instructions](https://github.com/open-telemetry/opentelemetry-operator?tab=readme-ov-file#using-imagepullsecrets).
 
 For more info, check out the
-[OpenTelemetryCollector CR API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector).
+[OpenTelemetryCollector CR API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md).
 
 ### Q5: Does the Target Allocator work for all deployment types?
 
@@ -322,7 +322,7 @@ yourself (see
 [Q7](#q7-do-i-need-to-create-a-service-account-to-use-the-target-allocator)).
 
 For more info, check out the
-[Target Allocator API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocator).
+[Target Allocator API docs](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md).
 
 ### Q10: Is there a version lag between the OTel Operator auto-instrumentation and auto-instrumentation of supported languages?
 

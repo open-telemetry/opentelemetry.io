@@ -10,9 +10,9 @@ description: Resource detector for Azure
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-azure
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-azure
 createdAt: 2022-12-07
 package:
   registry: npm
   name: '@opentelemetry/resource-detector-azure'
-  version: 0.7.0
+  version: 0.16.0

@@ -1,12 +1,13 @@
 ---
 title: 一般的なSDK設定
 linkTitle: 一般
+weight: 10
 aliases: [general-sdk-configuration]
-default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
 cSpell:ignore: ottrace
 ---
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 環境変数のサポートはオプションです。
 各言語の実装がどの環境変数をサポートしているかの詳細については、[実装準拠マトリックス](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables)を参照してください。
@@ -148,7 +149,7 @@ export OTEL_TRACES_SAMPLER_ARG="0.5"
 
 - `"otlp"`: [OTLP][]
 - `"prometheus"`:
-  [Prometheus](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md)
+  [Prometheus](https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md)
 - `"console"`: [標準出力](/docs/specs/otel/metrics/sdk_exporters/stdout/)
 - `"none"`: メトリクスのエクスポーターが自動的に設定されない。
 

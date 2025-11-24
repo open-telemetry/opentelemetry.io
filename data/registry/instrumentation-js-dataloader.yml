@@ -12,10 +12,10 @@ description:
   This module provides an instrumentation library for the injection of trace
   context to dataloader
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-dataloader
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-dataloader
 createdAt: 2022-10-27
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-dataloader'
-  version: 0.17.0
+  version: 0.26.0
 isFirstParty: false

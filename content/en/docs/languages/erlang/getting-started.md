@@ -32,7 +32,8 @@ it with OpenTelemetry. For reference, a complete example of the code you will
 build can be found here:
 [opentelemetry-erlang-contrib/examples/roll_dice](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/roll_dice).
 
-Additional examples can be found [here](/docs/languages/erlang/examples/).
+Additional examples can be found in
+[opentelemetry-erlang-contrib examples](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples).
 
 ### Initial Setup
 
@@ -60,9 +61,9 @@ We'll need a few other dependencies that Phoenix doesn't come with.
 def deps do
   [
     # other default deps...
+    {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"},
     {:opentelemetry, "~> {{% param versions.otelSdk %}}"},
     {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
-    {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"},
     {:opentelemetry_phoenix, "~> {{% param versions.otelPhoenix %}}"},
     {:opentelemetry_cowboy, "~> {{% param versions.otelCowboy %}}"},
     {:opentelemetry_ecto, "~> {{% param versions.otelEcto %}}"} # if using ecto
@@ -134,11 +135,11 @@ If everything went well, you should be able to visit
 lines that look like this in your terminal.
 
 (Don't worry if the format looks a little unfamiliar. Spans are recorded in the
-Erlang `record` data structure. You can find more information about records
-[here](https://www.erlang.org/doc/reference_manual/records.html), and
-[this](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/apps/opentelemetry/include/otel_span.hrl#L19)
-file describes the `span` record structure, and explains what the different
-fields are.)
+[Erlang `record` data structure](https://www.erlang.org/doc/reference_manual/records.html),
+and
+[`otel_span.hrl`](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/apps/opentelemetry/include/otel_span.hrl#L19)
+describes the `span` record structure, and explains what the different fields
+are.)
 
 ```shell
 *SPANS FOR DEBUG*

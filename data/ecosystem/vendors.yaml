@@ -1,7 +1,19 @@
+- name: Digitate (ignio)
+  nativeOTLP: true
+  url: https://docs.digitate.com/docs/ignio-integrations/open-telemetry-and-ignio/
+  contact:
+  oss: false
+  commercial: true
 - name: AppDynamics (Cisco)
   nativeOTLP: true
-  url: https://docs.appdynamics.com/latest/en/application-monitoring/cisco-appdynamics-for-opentelemetry
+  url: https://docs.appdynamics.com/latest/en/application-monitoring/splunk-appdynamics-for-opentelemetry
   contact:
+  oss: false
+  commercial: true
+- name: Apica
+  nativeOTLP: true
+  url: https://docs.apica.io/integrations/list-of-integrations/opentelemetry
+  contact: support@apica.io
   oss: false
   commercial: true
 - name: Aria by VMware (Wavefront)
@@ -12,7 +24,7 @@
   commercial: true
 - name: Arize Phoenix
   nativeOTLP: true
-  url: https://docs.arize.com/phoenix/tracing/how-to-tracing/setup-tracing/setup-tracing-python
+  url: https://arize.com/docs/phoenix/tracing/how-to-tracing/setup-tracing
   contact:
   oss: false
   commercial: true
@@ -110,7 +122,7 @@
   commercial: true
 - name: DaoCloud
   nativeOTLP: true
-  url: https://docs.daocloud.io/en/insight/06UserGuide/01quickstart/otel/otel/
+  url: https://docs.daocloud.io/en/insight/quickstart/otel/otel/
   contact:
   oss: false
   commercial: true
@@ -150,9 +162,15 @@
   contact:
   oss: false
   commercial: true
+- name: Heroku
+  nativeOTLP: true
+  url: https://devcenter.heroku.com/articles/heroku-telemetry
+  contact: 'https://www.heroku.com/contact/'
+  oss: false
+  commercial: true
 - name: Highlight
   nativeOTLP: true
-  url: https://www.highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/
+  url: https://highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/
   contact: support@highlight.io
   oss: true
   commercial: true
@@ -176,7 +194,7 @@
   commercial: true
 - name: Instana
   nativeOTLP: true
-  url: https://www.ibm.com/docs/en/obi/current?topic=apis-opentelemetry
+  url: https://www.ibm.com/docs/en/instana-observability/1.0.304?topic=apis-opentelemetry
   contact:
   oss: false
   commercial: true
@@ -203,6 +221,12 @@
   url: https://docs.lightstep.com/docs/about-sending-data
   contact: https://github.com/cartersocha
   oss: false
+  commercial: true
+- name: Langfuse
+  nativeOTLP: true
+  url: https://langfuse.com/docs/opentelemetry/get-started
+  contact: support@langfuse.com
+  oss: true
   commercial: true
 - name: Last9
   nativeOTLP: true
@@ -234,6 +258,12 @@
   contact:
   oss: false
   commercial: true
+- name: Mackerel
+  nativeOTLP: true
+  url: https://mackerel.io/docs/entry/tracing/guide/what-is-opentelemetry
+  contact: mackerel-developers@hatena.ne.jp
+  oss: false
+  commercial: true
 - name: MetricsHub
   nativeOTLP: true
   url: https://www.metricshub.com/docs/latest/
@@ -260,8 +290,14 @@
   commercial: true
 - name: Observe, Inc.
   nativeOTLP: true
-  url: https://docs.observeinc.com/en/latest/content/send-data/app-instrumentation/index.html#instrument-with-opentelemetry
+  url: https://docs.observeinc.com/en/latest/content/send-data/apm-instrumentation/operator-auto-instrumentation.html
   contact:
+  oss: false
+  commercial: true
+- name: OllyGarden
+  nativeOTLP: true
+  url: https://ollygarden.com
+  contact: support@ollygarden.com
   oss: false
   commercial: true
 - name: Otelic
@@ -325,9 +361,9 @@
   oss: true
   commercial: true
 - name: Sentry
-  nativeOTLP: false
-  url: https://sentry.io/for/opentelemetry/
-  contact:
+  nativeOTLP: true
+  url: https://docs.sentry.io/concepts/otlp/
+  contact: otel@sentry.io
   oss: false
   commercial: true
 - name: Red Hat
@@ -335,6 +371,18 @@
   url: https://docs.redhat.com/en/documentation/openshift_container_platform/4.17/html/red_hat_build_of_opentelemetry/
   contact: ploffay@redhat.com
   oss: true
+  commercial: true
+- name: Randoli
+  nativeOTLP: true
+  url: https://docs.randoli.io/troubleshooting-observability/config/open-telemetry/
+  contact: rajith@randoli.ca
+  oss: false
+  commercial: true
+- name: s2.dev
+  nativeOTLP: true
+  url: https://s2.dev/docs/integrations/otlp
+  contact: hi@s2.dev
+  oss: false
   commercial: true
 - name: Sentry Software
   nativeOTLP: true
@@ -348,11 +396,17 @@
   contact:
   oss: false
   commercial: true
+- name: Scout
+  nativeOTLP: true
+  url: https://docs.base14.io/category/opentelemetry-collector-setup
+  contact: support@base14.io
+  oss: false
+  commercial: true
 - name: SigNoz
   nativeOTLP: true
   url: https://signoz.io
-  contact:
-  oss: false
+  contact: support@signoz.io
+  oss: true
   commercial: true
 - name: SolarWinds
   nativeOTLP: true
@@ -497,5 +551,42 @@
   nativeOTLP: true
   url: https://logease.cn/en-logease-observability-platform/
   contact: contact@yottabyte.cn
+  oss: false
+  commercial: true
+- name: DX O2 by Broadcom
+  nativeOTLP: true
+  url: 'https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/dx-operational-observability/saas/monitoring/opentelemetry.html'
+  contact: https://support.broadcom.com/web/ecx/software-contact-support
+  oss: false
+  commercial: true
+- name: vFunction
+  nativeOTLP: true
+  url: https://kb.vfunction.com/installations/install/dist-agent/
+  contact: support@vfunction.com
+  oss: false
+  commercial: true
+- name: Coroot
+  nativeOTLP: true
+  oss: true
+  commercial: true
+  url: https://github.com/coroot/coroot
+  documentation: https://docs.coroot.com/tracing/opentelemetry-go
+  contact: alamberton@coroot.com
+- name: Apache Doris
+  nativeOTLP: true
+  oss: true
+  commercial: false
+  url: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/dorisexporter
+  contact: kxiao@apache.org
+- name: VeloDB
+  nativeOTLP: true
+  oss: false
+  commercial: true
+  url: https://www.velodb.io/solutions/use-cases/observability
+  contact: owen@velodb.io
+- name: Oodle AI
+  nativeOTLP: true
+  url: https://docs.oodle.ai/integrations/metrics/otel/
+  contact: support@oodle.ai
   oss: false
   commercial: true

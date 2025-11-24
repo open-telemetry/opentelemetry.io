@@ -2,16 +2,14 @@
 title: Exporters
 weight: 50
 description: Processar e exportar seus dados de telemetria
-default_lang_commit: 546f3e88ca3673de8aad69358d416256d1fe6411 # patched
+default_lang_commit: f49ec57e5a0ec766b07c7c8e8974c83531620af3
 drifted_from_default: true
 cSpell:ignore: LOWMEMORY
 ---
 
-<!-- markdownlint-disable no-duplicate-heading -->
-
 {{% docs/languages/exporters/intro %}}
 
-### Dependências {#otlp-dependencies}
+## Dependências {#otlp-dependencies}
 
 Se você deseja enviar dados de telemetria para um endpoint OTLP (como o
 [OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) ou
@@ -38,7 +36,7 @@ pip install opentelemetry-exporter-otlp-proto-grpc
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Uso {#usage}
+## Uso {#usage}
 
 Em seguida, configure o exporter para apontar para um endpoint OTLP no seu
 código.
@@ -59,7 +57,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Nome do serviço é necessário para a maioria dos backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -91,7 +89,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Nome do serviço é necessário para a maioria dos backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -131,7 +129,7 @@ from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader, Cons
 # Nome do serviço é necessário para a maioria dos backends,
 # e embora não seja necessário para exportação no console,
 # é bom definir o nome do serviço de qualquer maneira.
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -145,7 +143,7 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% alert title="Nota" color="info" %}}
+{{% alert title="Nota" %}}
 
 Existem predefinições de temporalidade para cada tipo de instrumentação. Essas
 predefinições podem ser definidas com a variável de ambiente
@@ -162,7 +160,6 @@ Os valores disponíveis e suas configurações correspondentes para esta variáv
 de ambiente são:
 
 - `CUMULATIVE`
-
   - `Counter`: `CUMULATIVE`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `CUMULATIVE`
@@ -171,7 +168,6 @@ de ambiente são:
   - `ObservableGauge`: `CUMULATIVE`
 
 - `DELTA`
-
   - `Counter`: `DELTA`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `DELTA`
@@ -197,7 +193,7 @@ esta variável de ambiente como `CUMULATIVE`.
 
 {{% include "exporters/prometheus-setup.md" %}}
 
-### Dependências {#prometheus-dependencies}
+## Dependências {#prometheus-dependencies}
 
 Instale o
 [pacote de exporter](https://pypi.org/project/opentelemetry-exporter-prometheus/)
@@ -219,7 +215,7 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
 # Nome do serviço é necessário para a maioria dos backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -238,7 +234,7 @@ o receptor Prometheus pode extrair as métricas deste endpoint.
 
 {{% include "exporters/zipkin-setup.md" %}}
 
-### Dependências {#zipkin-dependencies}
+## Dependências {#zipkin-dependencies}
 
 Para enviar seus dados de rastro para o [Zipkin](https://zipkin.io/), você pode
 escolher entre dois protocolos diferentes para transportar seus dados:
@@ -274,7 +270,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 
@@ -295,7 +291,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "nome-do-seu-serviço"
 })
 

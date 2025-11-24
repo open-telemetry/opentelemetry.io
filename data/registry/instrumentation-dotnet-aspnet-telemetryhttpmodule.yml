@@ -21,4 +21,4 @@ isFirstParty: false
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.AspNet.TelemetryHttpModule
-  version: 1.11.0-beta.2
+  version: 1.14.0-rc.1

@@ -6,18 +6,12 @@ registry:
   - changed-files:
       - any-glob-to-any-file:
           - data/registry/**
-lang:zh:
+
+# Localization labels
+lang:bn:
   - changed-files:
       - any-glob-to-any-file:
-          - content/zh/**
-lang:ja:
-  - changed-files:
-      - any-glob-to-any-file:
-          - content/ja/**
-lang:pt:
-  - changed-files:
-      - any-glob-to-any-file:
-          - content/pt/**
+          - content/bn/**
 lang:es:
   - changed-files:
       - any-glob-to-any-file:
@@ -26,6 +20,28 @@ lang:fr:
   - changed-files:
       - any-glob-to-any-file:
           - content/fr/**
+lang:ja:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/ja/**
+lang:pt:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/pt/**
+lang:ro:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/ro/**
+lang:uk:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/uk/**
+lang:zh:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/zh/**
+
+# Special Interest Groups labels
 sig:cpp:
   - changed-files:
       - any-glob-to-any-file:
@@ -104,3 +120,7 @@ sig:spec:
   - changed-files:
       - any-glob-to-any-file:
           - content/en/docs/specs/**
+sig:obi:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/en/docs/zero-code/obi/**

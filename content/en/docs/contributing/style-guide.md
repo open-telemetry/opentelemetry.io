@@ -15,7 +15,7 @@ documentation style is inspired by the following style guides:
 The following sections contain guidance that is specific to the OpenTelemetry
 project.
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 Many requirements of our style guide can be enforced by running automation:
 before submitting a
@@ -47,28 +47,13 @@ are properly written and use the original capitalization. For example, write
 [`.textlintrc.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml)
 file.
 
-{{% alert title="Tip" %}}
-
-Run `npm run check:text` to verify that all terms and words are written
-properly.
-
-Run `npm run check:text -- --fix` to fix terms and words that are not written
-properly.
-
-{{% /alert %}}
-
 ## Markdown standards
 
 To enforce standards and consistency for Markdown files, all files should follow
 certain rules, enforced by [markdownlint]. For a full list, check the
-[.markdownlint.json] file.
+[.markdownlint.yaml] file.
 
-Run:
-
-- `npm run check:markdown` to ensure that all files follow our standards
-- `npm run fix:markdown` to fix Markdown-related formatting issues
-
-We also enforce markdown [file format](#file-format) and strip files of trailing
+We also enforce Markdown [file format](#file-format) and strip files of trailing
 whitespace. This precludes the [line break syntax] of 2+ spaces; use `<br>`
 instead or reformat your text.
 
@@ -80,11 +65,10 @@ OpenTelemetry website, see the
 [`.cspell.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml)
 file.
 
-Run `npm run check:spelling` to verify that all your words are spelled
-correctly. If `cspell` indicates an `Unknown word` error, verify if you wrote
-that word correctly. If so, add this word to the `cSpell:ignore` section at the
-top of your file. If no such section exists, you can add it to the front matter
-of a Markdown file:
+If `cspell` indicates an "Unknown word" error, check whether you wrote the word
+correctly. If so, add the word to the `cSpell:ignore` section at the top of your
+file. If no such section exists, you can add it to the front matter of a
+Markdown file:
 
 ```markdown
 ---
@@ -102,24 +86,27 @@ might look like this:
 title: registryEntryTitle
 ```
 
-Website tooling normalizes page-specific dictionaries (that is, the
-`cSpell:ignore` word lists), by removing duplicate words, deleting words in the
-global word list, and sorting words. To normalize page-specific dictionaries,
-run `npm run fix:dict`.
-
 ## File format
 
-We enforce file formatting using [Prettier]. Invoke it using
-`npm run fix:format`.
+We use [Prettier] to enforce file formatting. Invoke it using:
+
+- `npm run fix:format` to format all files
+- `npm run fix:format:diff` to format only the files that have changed since the
+  last commit
+- `npm run fix:format:staged` to format only the files that are staged for the
+  next commit
 
 ## File names
 
 All file names should be in
-[kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case). Run
-`npm run fix:filenames` to automatically rename your files.
+[kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case).
 
-[.markdownlint.json]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json
+## Fixing validation issues
+
+To learn how to fix validation issues, see [Pull request checks](../pr-checks).
+
+[.markdownlint.yaml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
 [line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [Prettier]: https://prettier.io

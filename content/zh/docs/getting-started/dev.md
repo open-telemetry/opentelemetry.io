@@ -2,6 +2,7 @@
 title: 开发人员入门
 linkTitle: Dev
 default_lang_commit: e771c886739c4847b332b74f24b09d2769aab875
+drifted_from_default: true
 ---
 
 如果你符合以下条件，那么这个[入门指南](..)就是为你准备的：

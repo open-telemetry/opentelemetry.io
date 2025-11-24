@@ -38,8 +38,8 @@ servers or frameworks, such as:
 - [WildFly](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/wildfly.md)
 
 You can also provide your own metric definitions, through one or more YAML
-files. The YAML file syntax documentation is available
-[here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics/javaagent#configuration-files).
+files. For more information, see the
+[YAML file syntax documentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics/javaagent#configuration-files).
 
 ## Observe Kafka Broker metrics
 
@@ -62,8 +62,8 @@ zookeeper-server-start /usr/local/etc/kafka/zookeeper.properties
 
 Before starting the Kafka broker, attach the OpenTelemetry Java instrumentation
 agent to Kafka Broker by providing options in the KAFKA_OPTS environment
-variable. You can download the latest release of the agent from
-[here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
+variable. You can
+[download the latest release of the agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases).
 
 ```shell
 export KAFKA_OPTS="-Dapplication.name=my-kafka-app
@@ -114,6 +114,7 @@ The metrics can be exported by any of the supported metric exporters, to a
 backend of your choice. For the full list of exporters and their configuration
 options, see
 [Properties: exporters](/docs/languages/java/configuration/#properties-exporters).
+
 For instance, you can export the metrics to an OTel collector using the OTLP
 exporter, perform some processing and then consume the metrics on a backend of
 your choice. In this example for the sake of simplicity, we are directly
@@ -150,8 +151,8 @@ viewing the metric `kafka_request_count_total` on Prometheus.
 
 ![A sample Kafka Broker metric shown on Prometheus](prometheus.png)
 
-More installation options for Prometheus can be found
-[here](https://prometheus.io/docs/prometheus/latest/installation/).
+See
+[installation options for Prometheus](https://prometheus.io/docs/prometheus/latest/installation/).
 
 ### View the metrics on a Grafana Dashboard
 

@@ -18,5 +18,5 @@ createdAt: 2022-10-27
 package:
   registry: gems
   name: opentelemetry-instrumentation-httpx
-  version: 0.2.0
+  version: 0.5.0
 isFirstParty: false

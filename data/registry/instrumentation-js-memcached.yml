@@ -10,10 +10,10 @@ description: Instrumentation library for memcached.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-memcached
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-memcached
 createdAt: 2021-07-08
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-memcached'
-  version: 0.44.0
+  version: 0.52.0
 isFirstParty: false

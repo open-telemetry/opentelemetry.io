@@ -9,9 +9,9 @@ description: Instrumentation for OpenTelemetry Swift
 
 ## Setup
 
-[OpenTelemetry](https://github.com/open-telemetry/opentelemetry-swift/blob/main/Sources/OpenTelemetryApi/OpenTelemetry.swift#L11)
-Swift provides limited functionality in its default configuration. For more
-useful functionality, some configuration is required.
+[OpenTelemetry Swift](https://github.com/open-telemetry/opentelemetry-swift/blob/cc8fff2d3e72171d559f1d9a4a13d87b0f55427f/Sources/OpenTelemetryApi/OpenTelemetry.swift)
+provides limited functionality in its default configuration. For more useful
+functionality, some configuration is required.
 
 The default registered `TracerProvider` and `MetricProvider` are not configured
 with an exporter. There are several
@@ -168,7 +168,7 @@ span.addEvent(name: "computation complete", attributes: attributes)
 
 ### Setting Span Status
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 ```swift
 func myFunction() {

@@ -7,7 +7,7 @@ tags:
   - instrumentation
   - js
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-runtime-node
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-runtime-node
 license: Apache 2.0
 description:
   This module provides automatic metric instrumentation that exposes
@@ -19,5 +19,5 @@ createdAt: 2024-04-18
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-runtime-node'
-  version: 0.13.0
+  version: 0.22.0
 isFirstParty: false

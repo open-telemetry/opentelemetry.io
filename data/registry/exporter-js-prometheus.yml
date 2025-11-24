@@ -14,4 +14,4 @@ createdAt: 2020-02-06
 package:
   registry: npm
   name: '@opentelemetry/exporter-prometheus'
-  version: 0.200.0
+  version: 0.208.0

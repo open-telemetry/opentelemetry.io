@@ -31,8 +31,8 @@ Supported processor architectures are:
 - AMD64 (x86-64)
 - ARM64 ([Experimental](/docs/specs/otel/versioning-and-stability))
 
-{{% alert title="Note" color="info" %}} ARM64 build does not support CentOS
-based images. {{% /alert %}}
+{{% alert title="Note" %}} ARM64 build does not support CentOS based images.
+{{% /alert %}}
 
 CI tests run against the following operating systems:
 
@@ -43,8 +43,9 @@ CI tests run against the following operating systems:
 - [CentOS Stream 9 x64](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docker/centos-stream9.dockerfile)
 - [macOS Ventura 13 x64](https://github.com/actions/runner-images/blob/main/images/macos/macos-13-Readme.md)
 - [Microsoft Windows Server 2022 x64](https://github.com/actions/runner-images/blob/main/images/windows/Windows2022-Readme.md)
-- [Ubuntu 20.04 LTS x64](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2004-Readme.md)
-- Ubuntu 22.04 LTS ARM64
+- [Microsoft Windows Server 2025 x64](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md)
+- [Ubuntu 22.04 LTS x64](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2204-Readme.md)
+- [Ubuntu 22.04 LTS ARM64](https://github.com/actions/partner-runner-images/blob/main/images/arm-ubuntu-22-image.md)
 
 ## Setup
 
@@ -84,10 +85,22 @@ brew install coreutils
 
 ### Windows (PowerShell)
 
-On Windows, use the PowerShell module as an Administrator:
+On Windows, use the PowerShell module as an Administrator.
+
+{{% alert title="Version note" color="warning" %}}
+
+Windows
+[PowerShell Desktop](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions)
+(v5.1) is required. Other
+[versions](https://learn.microsoft.com/previous-versions/powershell/scripting/overview),
+including PowerShell Core (v6.0+) are not supported at this time.
+
+{{% /alert %}}
 
 ```powershell
-# PowerShell 5.1 or higher is required
+# PowerShell 5.1 is required
+#Requires -PSEdition Desktop
+
 # Download the module
 $module_url = "https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases/latest/download/OpenTelemetry.DotNet.Auto.psm1"
 $download_path = Join-Path $env:temp "OpenTelemetry.DotNet.Auto.psm1"
@@ -141,8 +154,9 @@ Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName"
 Service after making configuration changes. You can do it by running
 `Restart-Service -Name $WindowsServiceName -Force` in PowerShell. {{% /alert %}}
 
-For .NET Framework applications you can configure the most common `OTEL_`
-settings (like `OTEL_RESOURCE_ATTRIBUTES`) via `appSettings` in `App.config`.
+For .NET Framework applications you can configure
+[the most common `OTEL_` settings](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)
+(like `OTEL_RESOURCE_ATTRIBUTES`) via `appSettings` in `App.config`.
 
 The alternative is to set environment variables for the Windows Service in the
 Windows Registry.
@@ -188,8 +202,9 @@ performs an IIS restart. {{% /alert %}}
 {{% alert title="Note" color="warning" %}} The following instructions apply to
 .NET Framework applications. {{% /alert %}}
 
-For ASP.NET application you can configure the most common `OTEL_` settings (like
-`OTEL_SERVICE_NAME`) via `appSettings` in `Web.config`.
+For ASP.NET applications you can configure
+[the most common `OTEL_` settings](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)
+(like `OTEL_SERVICE_NAME`) via `appSettings` in `Web.config`.
 
 If a service name is not explicitly configured, one will be generated for you.
 If the application is hosted on IIS in .NET Framework this will use
@@ -298,3 +313,41 @@ After you have automatic instrumentation configured for your app or service, you
 might want to [send custom traces and metrics](./custom) or add
 [manual instrumentation](/docs/languages/dotnet/instrumentation) to collect
 custom telemetry data.
+
+## Uninstall
+
+### Linux and macOS {#uninstall-unix}
+
+On Linux and macOS, the installation steps only affect the current shell session
+so no explicit uninstallation is required.
+
+### Windows (PowerShell) {#uninstall-windows}
+
+On Windows, use the PowerShell module as an Administrator.
+
+{{% alert title="Version note" color="warning" %}}
+
+Windows
+[PowerShell Desktop](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions)
+(v5.1) is required. Other
+[versions](https://learn.microsoft.com/previous-versions/powershell/scripting/overview),
+including PowerShell Core (v6.0+) are not supported at this time.
+
+{{% /alert %}}
+
+```powershell
+# PowerShell 5.1 is required
+#Requires -PSEdition Desktop
+
+# Import the previously installed module
+Import-Module "OpenTelemetry.DotNet.Auto.psm1"
+
+# If IIS was previously registered, unregister it
+Unregister-OpenTelemetryForIIS
+
+# If Windows services were previously registered, unregister them
+Unregister-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName"
+
+# Finally, uninstall OpenTelemetry instrumentation
+Uninstall-OpenTelemetryCore
+```

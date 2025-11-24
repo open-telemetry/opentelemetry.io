@@ -15,10 +15,10 @@ description:
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-restify
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-restify
 createdAt: 2021-07-08
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-restify'
-  version: 0.46.0
+  version: 0.54.0
 isFirstParty: false

@@ -12,10 +12,10 @@ description:
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-lru-memoizer
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-lru-memoizer
 createdAt: 2022-10-27
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-lru-memoizer'
-  version: 0.45.0
+  version: 0.53.0
 isFirstParty: false

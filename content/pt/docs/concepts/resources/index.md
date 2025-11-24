@@ -1,20 +1,19 @@
 ---
 title: Recursos
 weight: 70
-default_lang_commit: 17c3b8eb53b8abc56213abb736c0f850eab752df
-drifted_from_default: true
+default_lang_commit: b04507d7be1e916f6705126c56d66dbe9536503e
 ---
 
 ## Introdução {#introduction}
 
-{{% pt/docs/languages/resources-intro %}}
+{{% docs/languages/resources-intro %}}
 
 Se você usar [Jaeger](https://www.jaegertracing.io/) como seu _backend_ de
 observabilidade, os atributos do recurso são agrupados na guia **Process**:
 
 ![Uma captura de tela do Jaeger mostrando um exemplo de saída de atributos do recurso associados a um rastro.](screenshot-jaeger-resources.png)
 
-Um recurso é adicionado ao `TraceProvider` ou `MetricProvider` quando eles são
+Um recurso é adicionado ao `TracerProvider` ou `MetricProvider` quando eles são
 criados durante a inicialização. Esta associação não pode ser alterada
 posteriormente. Após um recurso ser adicionado, todos os trechos e métricas
 produzidos a partir de um `Tracer` ou `Meter` do _provider_ terão o recurso
@@ -54,8 +53,8 @@ fornecê-los em código ou definindo um valor para a variável de ambiente
 [convenções semânticas para seus atributos do recurso](/docs/specs/semconv/resource).
 Por exemplo, você pode fornecer o nome do seu
 [ambiente de execução](/docs/specs/semconv/resource/deployment-environment/)
-usando `deployment.environment`:
+usando `deployment.environment.name`:
 
 ```shell
-env OTEL_RESOURCE_ATTRIBUTES=deployment.environment=production yourApp
+env OTEL_RESOURCE_ATTRIBUTES=deployment.environment.name=production yourApp
 ```

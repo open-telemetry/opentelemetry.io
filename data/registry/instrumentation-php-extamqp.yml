@@ -16,5 +16,5 @@ createdAt: 2024-01-19
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-ext-amqp
-  version: 0.0.5
+  version: 0.0.6
 isFirstParty: false

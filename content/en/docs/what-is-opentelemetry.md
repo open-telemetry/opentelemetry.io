@@ -9,7 +9,6 @@ cSpell:ignore: youtube
 OpenTelemetry is:
 
 - An **[observability] framework and toolkit** designed to facilitate the
-
   - [Generation][instr]
   - Export
   - [Collection](../concepts/components/#collector)
@@ -68,10 +67,11 @@ If you want to learn more, take a look at OpenTelemetry's
 
 OpenTelemetry consists of the following major components:
 
-- A [specification](../specs/otel) for all components
-- A standard [protocol](../specs/otlp/) that defines the shape of telemetry data
-- [Semantic conventions](../specs/semconv/) that define a standard naming scheme
-  for common telemetry data types
+- A [specification](/docs/specs/otel) for all components
+- A standard [protocol](/docs/specs/otlp/) that defines the shape of telemetry
+  data
+- [Semantic conventions](/docs/specs/semconv/) that define a standard naming
+  scheme for common telemetry data types
 - APIs that define how to generate telemetry data
 - [Language SDKs](../languages) that implement the specification, APIs, and
   export of telemetry data

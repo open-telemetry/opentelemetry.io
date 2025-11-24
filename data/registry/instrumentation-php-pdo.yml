@@ -15,5 +15,5 @@ createdAt: 2023-05-22
 package:
   registry: packagist
   name: open-telemetry/opentelemetry-auto-pdo
-  version: 0.0.19
+  version: 0.2.0
 isFirstParty: false

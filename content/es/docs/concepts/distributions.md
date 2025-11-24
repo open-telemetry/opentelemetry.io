@@ -4,20 +4,20 @@ description: >-
   Una distribución, que no debe confundirse con un fork, es una versión
   personalizada de un componente de OpenTelemetry.
 weight: 190
-default_lang_commit: 4966f752eb35f97c095ed1c813972c2ab38f0b1a
+default_lang_commit: 55f9c9d07ba35c241048ffc0d756d67843d68805
 ---
 
 Los proyectos de OpenTelemetry consisten en múltiples
 [componentes](../components) que soportan múltiples [señales](../signals). La
 implementación de referencia de OpenTelemetry está disponible como:
 
-- [Bibliotecas de instrumentación específicas por lenguaje](../instrumentation)
-- Un archivo [binario de Collector](/docs/concepts/components/#collector)
+- [Librerías de instrumentación específicas por lenguaje](../instrumentation)
+- Un archivo [binario de colector](/docs/concepts/components/#collector)
 
 Cualquier implementación de referencia puede ser personalizada como una
 distribución.
 
-## ¿Qué es una distribución?
+## ¿Qué es una distribución? {#what-is-a-distribution}
 
 Una distribución es una versión personalizada de un componente de OpenTelemetry.
 Una distribución es un envoltorio alrededor de un repositorio upstream de
@@ -45,16 +45,16 @@ Las distribuciones en general caen en las siguientes categorías:
   específicas de un backend, proveedor o usuario final.
 - **"Plus":** Estas distribuciones proporcionan funcionalidades adicionales
   sobre el upstream a través de componentes adicionales. Ejemplos incluyen
-  bibliotecas de instrumentación o exportadores de proveedores que no han sido
+  librerías de instrumentación o exportadores de proveedores que no han sido
   integrados al proyecto de OpenTelemetry.
 - **"Minus":** Estas distribuciones proporcionan un subconjunto de funcionalidad
-  del upstream. Ejemplos de esto incluyen la eliminación de bibliotecas de
+  del upstream. Ejemplos de esto incluyen la eliminación de librerías de
   instrumentación o receptores, procesadores, exportadores o extensiones que se
   encuentran en el proyecto de OpenTelemetry Collector. Estas distribuciones
   pueden ser proporcionadas para aumentar las consideraciones de soporte y
   seguridad.
 
-## ¿Quién puede crear una distribución?
+## ¿Quién puede crear una distribución? {#who-can-create-a-distribution}
 
 Cualquiera puede crear una distribución. Hoy en día, varios
 [proveedores](/ecosystem/vendors/) ofrecen
@@ -63,7 +63,7 @@ considerar crear una distribución si desean utilizar componentes en el
 [Registro](/ecosystem/registry/) que no han sido integrados al proyecto de
 OpenTelemetry.
 
-## ¿Contribución o distribución?
+## ¿Contribución o distribución? {#contribution-or-distribution}
 
 Antes de seguir leyendo y aprender cómo crear tu propia distribución, pregúntate
 si tus aportes sobre un componente de OpenTelemetry serían beneficiosas para
@@ -78,26 +78,26 @@ todos y, por lo tanto, deberían incluirse en las implementaciones de referencia
 - ¿Has consultado con la comunidad si tus capacidades adicionales podrían formar
   parte del estándar?
 
-## Creando tu propia distribución
+## Creando tu propia distribución {#creating-your-own-distribution}
 
-### Collector
+### Colector {#collector}
 
 Una guía sobre cómo crear tu propia distribución está disponible en este
 artículo:
 ["Building your own OpenTelemetry Collector distribution"](https://medium.com/p/42337e994b63)
 
-Si estás creando tu propia distribución, el
+Si estás creando tu propia distribución,
 [OpenTelemetry Collector Builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)
 podría ser un buen punto de partida.
 
-### Bibliotecas de instrumentación específicas por lenguaje
+### Librerías de instrumentación específicas por lenguaje {#language-specific-instrumentation-libraries}
 
 Existen mecanismos de extensibilidad específicos por lenguaje para personalizar
-las bibliotecas de instrumentación:
+las librerías de instrumentación:
 
 - [Agente de Java](/docs/zero-code/java/agent/extensions)
 
-## Sigue las pautas
+## Sigue las pautas {#follow-the-guidelines}
 
 Al usar material del proyecto OpenTelemetry, como el logotipo y el nombre para
 tu distribución, asegúrate de estar alineado con las [Pautas de Marketing de

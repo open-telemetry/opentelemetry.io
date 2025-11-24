@@ -2,7 +2,8 @@
 title: Lambda 自動計装
 weight: 11
 description: あなたのLambdaをOpenTelemetryで自動的に計装する
-default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad # patched
+drifted_from_default: true
 cSpell:ignore: Corretto
 ---
 
@@ -16,12 +17,12 @@ OpenTelemetryコミュニティは、以下の言語用のスタンドアロン�
 これらのレイヤーは、AWSポータルを使用してLambdaに追加し、アプリケーションを自動的に計装できます。
 これらのレイヤーにはコレクターは含まれておらず、外部コレクターインスタンスを構成してデータを送信しない限り、追加する必要があります。
 
-### OTel Collector LambdaレイヤーのARNを追加する {#add-the-arn-of-the-otel-collector-lambda-layer}
+## OTel Collector LambdaレイヤーのARNを追加する {#add-the-arn-of-the-otel-collector-lambda-layer}
 
 [Collector Lambdaレイヤーのガイダンス](../lambda-collector/)を参照して、アプリケーションにレイヤーを追加し、Collectorを設定してください。
 これを最初に追加することをおすすめします。
 
-### 言語要件 {#language-requirements}
+## 言語要件 {#language-requirements}
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
@@ -52,12 +53,12 @@ OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-Lambdaレイヤーは、Node.js v14+のLambdaランタイムをサポートしています。
+Lambdaレイヤーは、Node.js v18+のLambdaランタイムをサポートしています。
 サポートされるJavaScriptとNode.jsのバージョンの詳細については、[OpenTelemetry JavaScriptドキュメント](https://github.com/open-telemetry/opentelemetry-js)を参照してください。
 
 {{% /tab %}} {{% tab Python %}}
 
-LambdaレイヤーはPython 3.8とPython 3.9のLambdaランタイムをサポートしています。
+LambdaレイヤーはPython 3.9+のLambdaランタイムをサポートしています。
 サポートされているPythonのバージョンについては、[OpenTelemetry Pythonドキュメント](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#supported-runtimes) と [PyPi](https://pypi.org/project/opentelemetry-api/) のパッケージを参照してください。
 
 {{% /tab %}} {{% tab Ruby %}}
@@ -67,12 +68,12 @@ Lambda レイヤーは、Ruby 3.2 と 3.3 の Lambda ランタイムをサポー
 
 {{% /tab %}} {{< /tabpane >}}
 
-### `AWS_LAMBDA_EXEC_WRAPPER` を設定する {#configure-aws_lambda_exec_wrapper}
+## `AWS_LAMBDA_EXEC_WRAPPER` を設定する {#configure-aws_lambda_exec_wrapper}
 
-Node.js、Java、Rubyの場合は `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` 、Pythonの場合は`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-instrument` を設定して、アプリケーションのエントリーポイントを変更します。
-これらのラッパースクリプトは、自動計装を適用したLambdaアプリケーションを起動します。
+Node.js、Java、Ruby、Pythonの場合は `AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` を設定して、アプリケーションのエントリーポイントを変更します。
+このラッパースクリプトは、自動計装を適用したLambdaアプリケーションを起動します。
 
-### 計装LambdaレイヤーのARNを追加する {#add-the-arn-of-instrumentation-lambda-layer}
+## 計装LambdaレイヤーのARNを追加する {#add-the-arn-of-instrumentation-lambda-layer}
 
 Lambda関数でOTelの自動計装を有効にするには、計装レイヤーとコレクターレイヤーを追加して設定し、トレースを有効にする必要があります。
 
@@ -85,7 +86,7 @@ Lambda関数でOTelの自動計装を有効にするには、計装レイヤー�
 
 注意: ラムダレイヤーはリージョンで分かれたリソースで、公開されているリージョンでのみ使用できます。Lambda関数と同じリージョンでレイヤーを使用するようにしてください。コミュニティは、利用可能なすべてのリージョンでレイヤーを公開しています。
 
-### SDKのエクスポーターの設定 {#configure-your-sdk-exporters}
+## SDKのエクスポーターの設定 {#configure-your-sdk-exporters}
 
 gRPC/HTTPレシーバーを持つコレクターが組み込まれている場合、Lambdaレイヤーで使用されるデフォルトのエクスポーターは変更なしで動作します。
 環境変数を更新する必要はありません。
@@ -109,6 +110,6 @@ gRPC/HTTPレシーバーを持つコレクターが組み込まれている場�
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Lambdaを公開する {#publish-your-lambda}
+## Lambdaを公開する {#publish-your-lambda}
 
 Lambdaの新しいバージョンを公開して、新しい変更と計装をデプロイします。

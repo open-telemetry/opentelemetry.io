@@ -11,10 +11,10 @@ description: Mongoose instrumentation for Node.js.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-mongoose
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-mongoose
 createdAt: 2021-02-17
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-mongoose'
-  version: 0.47.0
+  version: 0.55.0
 isFirstParty: false

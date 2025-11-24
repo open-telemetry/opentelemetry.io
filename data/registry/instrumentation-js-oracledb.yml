@@ -1,0 +1,22 @@
+# cSpell:ignore sudarshan oracledb oracledatabase
+title: OpenTelemetry Instrumentation for Oracle Database
+registryType: instrumentation
+language: js
+tags:
+  - Node.js
+  - instrumentation
+  - oracledatabase
+  - database
+license: Apache 2.0
+description: Instrumentation library for Oracle Database.
+authors:
+  - name: Sudarshan Soma (Oracle)
+    email: sudarshan.ss.s@oracle.com
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-oracledb
+createdAt: 2025-05-22
+package:
+  registry: npm
+  name: '@opentelemetry/instrumentation-oracledb'
+  version: 0.34.0
+isFirstParty: false

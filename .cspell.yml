@@ -4,9 +4,12 @@
 version: '0.2'
 language: en-US
 import:
+  - '@cspell/dict-bn/cspell-ext.json'
   - '@cspell/dict-es-es/cspell-ext.json'
   - '@cspell/dict-fr-fr/cspell-ext.json'
   - '@cspell/dict-pt-br/cspell-ext.json'
+  - '@cspell/dict-ro-ro/cspell-ext.json'
+  - '@cspell/dict-uk-ua/cspell-ext.json'
 caseSensitive: true
 ignorePaths:
   - '*.svg'
@@ -31,22 +34,34 @@ languageSettings:
 dictionaryDefinitions:
   - name: en-words
     path: .cspell/en-words.txt
+  - name: bn-words
+    path: .cspell/bn-words.txt
   - name: es-palabras
     path: .cspell/es-palabras.txt
   - name: fr-mots
     path: .cspell/fr-mots.txt
   - name: pt-palavras
     path: .cspell/pt-palavras.txt
+  - name: ro-words
+    path: .cspell/ro-words.txt
+  - name: uk-words
+    path: .cspell/uk-words.txt
 dictionaries:
   # Natural languages
+  - bn
   - es-es
-  - pt-br
   - fr-fr
+  - pt-br
+  - ro-ro
+  - uk-ua
   # Local word lists
+  - bn-words
   - en-words
   - es-palabras
   - fr-mots
   - pt-palavras
+  - ro-words
+  - uk-words
   # Programming languages and software terms
   - cpp
   - dotnet
@@ -59,5 +74,7 @@ words: # Valid words across all locales
   - Docsy
   - htmltest
   - jsonify
+  - nvmrc
   - opentelemetrybot
   - warnf
+  - warnidf

@@ -1,35 +1,32 @@
 ---
-title: Distribuições
+title: Distribuições de terceiros
 description:
   Lista de distribuições de código aberto do OpenTelemetry mantidas por
   terceiros.
-default_lang_commit: 8a15d0d668c516ccb255cd0a92e0bcd442e83b4d
-drifted_from_default: true
+default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
 ---
 
-As [distribuições](/docs/concepts/distributions/) do OpenTelemetry são uma forma
-de personalizar os componentes do OpenTelemetry para torná-los mais fáceis de
+As [distribuições][distributions] do OpenTelemetry são uma forma de personalizar
+os [componentes][components] do OpenTelemetry para torná-los mais fáceis de
 implantar e utilizar com _backends_ de observabilidade específicos.
 
 Qualquer terceiro pode personalizar os componentes do OpenTelemetry com
-alterações específicas para _backends_, fornecedores ou usuários finais. Não é
-obrigatório utilizar distribuições para utilizar os componentes do
-OpenTelemetry, embora elas possam facilitar o uso em determinadas
-circunstâncias, como requisitos específicos de fornecedores.
+alterações específicas para _backends_, [fornecedores][vendor] ou usuários
+finais. É possível utilizar componentes do OpenTelemetry sem uma distribuição,
+mas uma distribuição pode facilitar as coisas em alguns casos, por exemplo
+quando um fornecedor possui requisitos específicos.
 
-A lista a seguir contém uma amostra de distribuições do OpenTelemetry e seus
-componentes personalizados.
+A lista a seguir contém uma amostra de distribuições do OpenTelemetry que não
+são do Collector e o componente que elas customizam. Para distribuições do
+[OpenTelemetry Collector](/docs/collector), consulte
+[Distribuições do Collector](/docs/collector/distributions/).
 
-{{% alert title="Nota" color="warning" %}} O OpenTelemetry **não valida nem
-endossa** as distribuições de terceiros listadas na tabela a seguir. A lista é
-fornecida como uma conveniência para a comunidade. {{% /alert %}}
-
-{{% ecosystem/distributions-table %}}
+{{% ecosystem/distributions-table filter="non-collector" %}}
 
 ## Adicionando sua distribuição {#how-to-add}
 
 Para que sua distribuição seja listada, [envie um PR] com uma entrada adicionada
-à [lista de distribuições]. A entrada deve incluir:
+à [lista de distribuições][distributions list]. A entrada deve incluir:
 
 - Link para a página principal da sua distribuição
 - Link para a documentação que explica como utilizar a distribuição
@@ -37,7 +34,7 @@ Para que sua distribuição seja listada, [envie um PR] com uma entrada adiciona
 - Usuário do GitHub ou e-mail como ponto de contato, para que possamos entrar em
   contato caso tenhamos dúvidas
 
-{{% alert title="Notas" color="info" %}}
+{{% alert title="Notas" %}}
 
 - Se você fornece integração externa do OpenTelemetry para qualquer tipo de
   biblioteca, serviço ou aplicativo, considere
@@ -53,7 +50,10 @@ Para que sua distribuição seja listada, [envie um PR] com uma entrada adiciona
 
 [envie um PR]: /docs/contributing/pull-requests/
 
-{{% include keep-up-to-date.md distribuições %}}
+{{% include keep-up-to-date.md distributions %}}
 
-[lista de distribuições]:
+[components]: /docs/concepts/components/
+[distributions]: /docs/concepts/distributions/
+[distributions list]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml
+[vendor]: ../vendors/

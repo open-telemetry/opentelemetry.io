@@ -15,5 +15,5 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-restclient
-  version: 0.23.0
+  version: 0.26.0
 isFirstParty: false

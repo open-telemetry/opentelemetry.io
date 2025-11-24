@@ -126,8 +126,8 @@ composer require open-telemetry/api open-telemetry/sem-conv
 
 ### Initialize the SDK
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
+step**. {{% /alert %}}
 
 To use the OpenTelemetry SDK for PHP you need packages that satisfy the
 dependencies for `psr/http-client-implementation` and
@@ -178,15 +178,17 @@ use OpenTelemetry\SDK\Trace\Sampler\AlwaysOnSampler;
 use OpenTelemetry\SDK\Trace\Sampler\ParentBased;
 use OpenTelemetry\SDK\Trace\SpanProcessor\SimpleSpanProcessor;
 use OpenTelemetry\SDK\Trace\TracerProvider;
-use OpenTelemetry\SemConv\ResourceAttributes;
+use OpenTelemetry\SemConv\Attributes\ServiceAttributes;
+use OpenTelemetry\SemConv\Incubating\Attributes\DeploymentIncubatingAttributes;
+use OpenTelemetry\SemConv\Incubating\Attributes\ServiceIncubatingAttributes;
 
 require 'vendor/autoload.php';
 
 $resource = ResourceInfoFactory::emptyResource()->merge(ResourceInfo::create(Attributes::create([
-    ResourceAttributes::SERVICE_NAMESPACE => 'demo',
-    ResourceAttributes::SERVICE_NAME => 'test-application',
-    ResourceAttributes::SERVICE_VERSION => '0.1',
-    ResourceAttributes::DEPLOYMENT_ENVIRONMENT_NAME => 'development',
+    ServiceIncubatingAttributes::SERVICE_NAMESPACE => 'demo',
+    ServiceAttributes::SERVICE_NAME => 'test-application',
+    ServiceAttributes::SERVICE_VERSION => '0.1',
+    DeploymentIncubatingAttributes::DEPLOYMENT_ENVIRONMENT_NAME => 'development',
 ])));
 $spanExporter = new SpanExporter(
     (new StreamTransportFactory())->create('php://stdout', 'application/json')
@@ -294,8 +296,8 @@ function as part of PHP's shutdown process:
 
 ### Initialize Tracing
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
+step**. {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized
@@ -583,15 +585,14 @@ composer require open-telemetry/sem-conv
 Add the following to the top of your file:
 
 ```php
-use OpenTelemetry\SemConv\TraceAttributes;
-use OpenTelemetry\SemConv\TraceAttributeValues;
+use OpenTelemetry\SemConv\Attributes\CodeAttributes;
 ```
 
 Finally, you can update your file to include semantic attributes:
 
 ```php
-$span->setAttribute(TraceAttributes::CODE_FUNCTION, 'rollOnce');
-$span->setAttribute(TraceAttributes::CODE_FILEPATH, __FILE__);
+$span->setAttribute(CodeAttributes::CODE_FUNCTION_NAME, 'rollOnce');
+$span->setAttribute(CodeAttributes::CODE_FILE_PATH, __FILE__);
 ```
 
 ### Create Spans with events
@@ -637,7 +638,7 @@ For more details how to read context from remote processes, see
 
 ### Set span status and record exceptions
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 It can be a good idea to record exceptions when they happen. It's recommended to
 do this in conjunction with

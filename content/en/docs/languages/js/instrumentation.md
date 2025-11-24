@@ -10,7 +10,7 @@ cSpell:ignore: dicelib Millis rolldice
 
 {{% include instrumentation-intro.md %}}
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 On this page you will learn how you can add traces, metrics and logs to your
 code _manually_. But, you are not limited to only use one kind of
@@ -46,11 +46,8 @@ Next, install Express dependencies.
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
-npm install typescript \
-  ts-node \
-  @types/node \
-  express \
-  @types/express
+npm install express @types/express
+npm install -D tsx  # a tool to run TypeScript (.ts) files directly with node
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -115,7 +112,7 @@ add the following code to it:
 
 ```ts
 /*app.ts*/
-import express, { Express } from 'express';
+import express, { type Express } from 'express';
 import { rollTheDice } from './dice';
 
 const PORT: number = parseInt(process.env.PORT || '8080');
@@ -171,7 +168,7 @@ open <http://localhost:8080/rolldice?rolls=12> in your web browser.
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```console
-$ npx ts-node app.ts
+$ npx tsx app.ts
 Listening for requests on http://localhost:8080
 ```
 
@@ -196,8 +193,8 @@ npm install @opentelemetry/api @opentelemetry/resources @opentelemetry/semantic-
 
 ### Initialize the SDK
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
+step**. {{% /alert %}}
 
 If you instrument a Node.js application install the
 [OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node):
@@ -244,18 +241,18 @@ sdk.start();
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-/*instrumentation.js*/
-const { NodeSDK } = require('@opentelemetry/sdk-node');
-const { ConsoleSpanExporter } = require('@opentelemetry/sdk-trace-node');
-const {
+/*instrumentation.mjs*/
+import { NodeSDK } from '@opentelemetry/sdk-node';
+import { ConsoleSpanExporter } from '@opentelemetry/sdk-trace-node';
+import {
   PeriodicExportingMetricReader,
   ConsoleMetricExporter,
-} = require('@opentelemetry/sdk-metrics');
-const { resourceFromAttributes } = require('@opentelemetry/resources');
-const {
+} from '@opentelemetry/sdk-metrics';
+import { resourceFromAttributes } from '@opentelemetry/resources';
+import {
   ATTR_SERVICE_NAME,
   ATTR_SERVICE_VERSION,
-} = require('@opentelemetry/semantic-conventions');
+} from '@opentelemetry/semantic-conventions';
 
 const sdk = new NodeSDK({
   resource: resourceFromAttributes({
@@ -287,18 +284,20 @@ API or implementation.
 Alternative methods exist for setting up resource attributes. For more
 information, see [Resources](/docs/languages/js/resources/).
 
-To verify your code, run the app by requiring the library:
+{{% alert title="Note" %}} The following examples using
+`--import instrumentation.ts` (TypeScript) require Node.js v20 or later. If you
+are using Node.js v18, please use the JavaScript example. {{% /alert %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
-npx ts-node --require ./instrumentation.ts app.ts
+npx tsx --import ./instrumentation.ts app.ts
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
-node --require ./instrumentation.js app.js
+node --import ./instrumentation.mjs app.js
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -314,8 +313,8 @@ information, see [Libraries](/docs/languages/js/libraries/).
 
 ### Initialize Tracing
 
-{{% alert title="Note" color="info" %}} If you’re instrumenting a library,
-**skip this step**. {{% /alert %}}
+{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
+step**. {{% /alert %}}
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized
@@ -496,10 +495,10 @@ First, in the _application file_ `app.ts` (or `app.js`):
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
-```ts
+```ts {hl_lines=[6]}
 /*app.ts*/
 import { trace } from '@opentelemetry/api';
-import express, { Express } from 'express';
+import express, { type Express } from 'express';
 import { rollTheDice } from './dice';
 
 const tracer = trace.getTracer('dice-server', '0.1.0');
@@ -525,7 +524,7 @@ app.listen(PORT, () => {
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-```js
+```js {hl_lines=[6]}
 /*app.js*/
 const { trace } = require('@opentelemetry/api');
 const express = require('express');
@@ -558,7 +557,7 @@ And second, in the _library file_ `dice.ts` (or `dice.js`):
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
-```ts
+```ts {hl_lines=[4]}
 /*dice.ts*/
 import { trace } from '@opentelemetry/api';
 
@@ -579,7 +578,7 @@ export function rollTheDice(rolls: number, min: number, max: number) {
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-```js
+```js {hl_lines=[4]}
 /*dice.js*/
 const { trace } = require('@opentelemetry/api');
 
@@ -610,9 +609,9 @@ you can create [spans](/docs/concepts/signals/traces/#spans).
 The API of OpenTelemetry JavaScript exposes two methods that allow you to create
 spans:
 
-- [`tracer.startSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startSpan):
+- [`tracer.startSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.Tracer.html#startspan):
   Starts a new span without setting it on context.
-- [`tracer.startActiveSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api.Tracer.html#startActiveSpan):
+- [`tracer.startActiveSpan`](https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_api._opentelemetry_api.Tracer.html#startactivespan):
   Starts a new span and calls the given callback function passing it the created
   span as first argument. The new span gets set in context and this context is
   activated for the duration of the function call.
@@ -625,7 +624,7 @@ The code below illustrates how to create an active span.
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
-import { trace, Span } from '@opentelemetry/api';
+import { trace, type Span } from '@opentelemetry/api';
 
 /* ... */
 
@@ -672,13 +671,13 @@ Start your app as follows, and then send it requests by visiting
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
-ts-node --require ./instrumentation.ts app.ts
+npx tsx --import ./instrumentation.ts app.ts
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
-node --require ./instrumentation.js app.js
+node --import ./instrumentation.mjs app.js
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -686,19 +685,28 @@ node --require ./instrumentation.js app.js
 After a while, you should see the spans printed in the console by the
 `ConsoleSpanExporter`, something like this:
 
-```json
+```js
 {
-  "traceId": "6cc927a05e7f573e63f806a2e9bb7da8",
-  "parentId": undefined,
-  "name": "rollTheDice",
-  "id": "117d98e8add5dc80",
-  "kind": 0,
-  "timestamp": 1688386291908349,
-  "duration": 501,
-  "attributes": {},
-  "status": { "code": 0 },
-  "events": [],
-  "links": []
+  resource: {
+    attributes: {
+      'service.name': 'dice-server',
+      'service.version': '0.1.0',
+      // ...
+    }
+  },
+  instrumentationScope: { name: 'dice-lib', version: undefined, schemaUrl: undefined },
+  traceId: '30d32251088ba9d9bca67b09c43dace0',
+  parentSpanContext: undefined,
+  traceState: undefined,
+  name: 'rollTheDice',
+  id: 'cc8a67c2d4840402',
+  kind: 0,
+  timestamp: 1756165206470000,
+  duration: 35.584,
+  attributes: {},
+  status: { code: 0 },
+  events: [],
+  links: []
 }
 ```
 
@@ -764,32 +772,41 @@ function rollTheDice(rolls, min, max) {
 This code creates a child span for each _roll_ that has `parentSpan`'s ID as
 their parent ID:
 
-```json
+```js
 {
-  "traceId": "ff1d39e648a3dc53ba710e1bf1b86e06",
-  "parentId": "9214ff209e6a8267",
-  "name": "rollOnce:4",
-  "id": "7eccf70703e2bccd",
-  "kind": 0,
-  "timestamp": 1688387049511591,
-  "duration": 22,
-  "attributes": {},
-  "status": { "code": 0 },
-  "events": [],
-  "links": []
+  traceId: '6469e115dc1562dd768c999da0509615',
+  parentSpanContext: {
+    traceId: '6469e115dc1562dd768c999da0509615',
+    spanId: '38691692d6bc3395',
+    // ...
+  },
+  name: 'rollOnce:0',
+  id: '36423bc1ce7532b0',
+  timestamp: 1756165362215000,
+  duration: 85.667,
+  // ...
 }
 {
-  "traceId": "ff1d39e648a3dc53ba710e1bf1b86e06",
-  "parentId": undefined,
-  "name": "rollTheDice",
-  "id": "9214ff209e6a8267",
-  "kind": 0,
-  "timestamp": 1688387049510303,
-  "duration": 1314,
-  "attributes": {},
-  "status": { "code": 0 },
-  "events": [],
-  "links": []
+  traceId: '6469e115dc1562dd768c999da0509615',
+  parentSpanContext: {
+    traceId: '6469e115dc1562dd768c999da0509615',
+    spanId: '38691692d6bc3395',
+    // ...
+  },
+  name: 'rollOnce:1',
+  id: 'ed9bbba2264d6872',
+  timestamp: 1756165362215000,
+  duration: 16.834,
+  // ...
+}
+{
+  traceId: '6469e115dc1562dd768c999da0509615',
+  parentSpanContext: undefined,
+  name: 'rollTheDice',
+  id: '38691692d6bc3395',
+  timestamp: 1756165362214000,
+  duration: 1022.209,
+  // ...
 }
 ```
 
@@ -799,7 +816,7 @@ The previous examples showed how to create an active span. In some cases, you'll
 want to create inactive spans that are siblings of one another rather than being
 nested.
 
-```javascript
+```js
 const doWork = () => {
   const span1 = tracer.startSpan('work-1');
   // do some work
@@ -949,8 +966,8 @@ Add the following to the top of your application file:
 
 ```ts
 import {
-  SEMATTRS_CODE_FUNCTION,
-  SEMATTRS_CODE_FILEPATH,
+  ATTR_CODE_FUNCTION_NAME,
+  ATTR_CODE_FILE_PATH,
 } from '@opentelemetry/semantic-conventions';
 ```
 
@@ -958,8 +975,8 @@ import {
 
 ```js
 const {
-  SEMATTRS_CODE_FUNCTION,
-  SEMATTRS_CODE_FILEPATH,
+  ATTR_CODE_FUNCTION_NAME,
+  ATTR_CODE_FILE_PATH,
 } = require('@opentelemetry/semantic-conventions');
 ```
 
@@ -970,8 +987,8 @@ Finally, you can update your file to include semantic attributes:
 ```javascript
 const doWork = () => {
   tracer.startActiveSpan('app.doWork', (span) => {
-    span.setAttribute(SEMATTRS_CODE_FUNCTION, 'doWork');
-    span.setAttribute(SEMATTRS_CODE_FILEPATH, __filename);
+    span.setAttribute(ATTR_CODE_FUNCTION_NAME, 'doWork');
+    span.setAttribute(ATTR_CODE_FILE_PATH, __filename);
 
     // Do some work...
 
@@ -1031,7 +1048,7 @@ const someFunction = (spanToLinkFrom) => {
 
 ### Span Status
 
-{{% docs/languages/span-status-preamble %}}
+{{% include "span-status-preamble.md" %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -1248,8 +1265,7 @@ spans by helping to identify trends and providing application runtime telemetry.
 
 ### Initialize Metrics
 
-{{% alert color="info" %}} If you’re instrumenting a library, skip this step.
-{{% /alert %}}
+{{% alert %}} If you’re instrumenting a library, skip this step. {{% /alert %}}
 
 To enable [metrics](/docs/concepts/signals/metrics/) in your app, you'll need to
 have an initialized
@@ -1366,18 +1382,18 @@ opentelemetry.metrics.setGlobalMeterProvider(myServiceMeterProvider);
 
 {{% /tab %}} {{< /tabpane >}}
 
-You'll need to `--require` this file when you run your app, such as:
+You'll need to `--import` this file when you run your app, such as:
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```sh
-ts-node --require ./instrumentation.ts app.ts
+npx tsx --import ./instrumentation.ts app.ts
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```sh
-node --require ./instrumentation.js app.js
+node --import ./instrumentation.mjs app.js
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -1429,7 +1445,7 @@ avoid trickier application load issues when other required dependencies are
 involved.
 
 In the case of the [example app](#example-app), there are two places where a
-tracer may be acquired with an appropriate Instrumentation Scope:
+meter may be acquired with an appropriate Instrumentation Scope:
 
 First, in the _application file_ `app.ts` (or `app.js`):
 
@@ -1438,7 +1454,7 @@ First, in the _application file_ `app.ts` (or `app.js`):
 ```ts
 /*app.ts*/
 import { metrics, trace } from '@opentelemetry/api';
-import express, { Express } from 'express';
+import express, { type Express } from 'express';
 import { rollTheDice } from './dice';
 
 const tracer = trace.getTracer('dice-server', '0.1.0');
@@ -1545,7 +1561,7 @@ module.exports = { rollTheDice };
 
 {{% /tab %}} {{< /tabpane >}}
 
-Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized.
+Now that you have [meters](/docs/concepts/signals/metrics/#meter) initialized,
 you can create
 [metric instruments](/docs/concepts/signals/metrics/#metric-instruments).
 
@@ -1785,7 +1801,7 @@ Drop all instruments with the meter name `pubsub`:
 
 ```js
 const dropView = {
-  aggregation: { type: AggrgationType.DROP },
+  aggregation: { type: AggregationType.DROP },
   meterName: 'pubsub',
 };
 ```

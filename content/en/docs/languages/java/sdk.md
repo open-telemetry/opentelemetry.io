@@ -121,9 +121,8 @@ is a set of attributes defining the telemetry source. An application should
 associate the same resource with [SdkTracerProvider](#sdktracerprovider),
 [SdkMeterProvider](#sdkmeterprovider), [SdkLoggerProvider](#sdkloggerprovider).
 
-{{% alert color="info" %}}
-[ResourceProviders](../configuration/#resourceprovider) contribute contextual
-information to the
+{{% alert %}} [ResourceProviders](../configuration/#resourceprovider) contribute
+contextual information to the
 [autoconfigured](../configuration/#zero-code-sdk-autoconfigure) resource based
 on the environment. See documentation for list of available `ResourceProvider`s.
 {{% /alert %}}
@@ -196,10 +195,10 @@ A
 is a [plugin extension interface](#sdk-plugin-extension-interfaces) responsible
 for determining which spans are recorded and sampled.
 
-{{% alert color="info" %}} By default `SdkTracerProvider` is configured with the
+{{% alert %}} By default `SdkTracerProvider` is configured with the
 `ParentBased(root=AlwaysOn)` sampler. This results in 100% of spans being
-sampled if unless a calling application performs sampling. If this is too noisy
-/ expensive, change the sampler. {{% /alert %}}
+sampled unless a calling application performs sampling. If this is too noisy /
+expensive, change the sampler. {{% /alert %}}
 
 Samplers built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
@@ -1082,7 +1081,7 @@ for exporting log records out of process. Rather than directly registering with
 [LogRecordProcessors](#logrecordprocessor) (typically
 `BatchLogRecordProcessor`).
 
-Span exporters built-in to the SDK and maintained by the community in
+Log record exporters built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
 
 | Class                                      | Artifact                                                                             | Description                                                                         |
@@ -1100,7 +1099,7 @@ Span exporters built-in to the SDK and maintained by the community in
 loops (i.e. JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry
 Log SDK -> JUL) if not carefully configured.
 
-The following code snippet demonstrates `LogRecordProcessor` programmatic
+The following code snippet demonstrates `LogRecordExporter` programmatic
 configuration:
 
 <!-- prettier-ignore-start -->
@@ -1194,8 +1193,7 @@ public class CustomLogRecordExporter implements LogRecordExporter {
 defines constraints for the data captured by log records, including max
 attribute length, and max number of attributes.
 
-The following code snippet demonstrates `LogRecordProcessor` programmatic
-configuration:
+The following code snippet demonstrates `LogLimits` programmatic configuration:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogLimitsConfig.java"?>

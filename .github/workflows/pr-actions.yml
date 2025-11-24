@@ -1,0 +1,201 @@
+name: PR actions
+# cSpell:ignore otelbot
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+
+env:
+  COMMENT: ${{ github.event.comment.body }}
+  PR_NUM: ${{ github.event.issue.number }}
+  USER_EMAIL: 197425009+otelbot@users.noreply.github.com
+  USER_NAME: otelbot
+  MAX_PATCH_SIZE_KB: 1024
+
+jobs:
+  generate-patch:
+    name: Run PR action and generate patch (untrusted)
+    runs-on: ubuntu-latest
+    if: |
+      github.event.issue.pull_request &&
+      startsWith(github.event.comment.body, '/fix:')
+
+    outputs:
+      action_name: ${{ steps.extract.outputs.action_name }}
+      action_exit_status: ${{ steps.run_action.outputs.action_exit_status }}
+      patch_name: pr-fix-${{ github.run_id }}
+      patch_skipped: ${{ steps.check_patch.outputs.skipped }}
+
+    steps:
+      - uses: step-security/harden-runner@95d9a5deda9de15063e7595e9719c11c38c90ae2 # v2.13.2
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@v6
+        with: { fetch-depth: 0 }
+
+      - name: Extract action name
+        id: extract
+        run: |
+          PR_ACTION=$(echo "$COMMENT" | grep -oP '/fix:\K[:-_0-9a-z]+')
+          echo "action_name=$PR_ACTION" >> "$GITHUB_OUTPUT"
+
+      - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+
+      - run: npm install --omit=optional
+
+      - name: Run PR action
+        id: run_action
+        # Allow the PR action to fail without failing the step, so that we can
+        # commit any file changes. For example, we want to commit updates to the
+        # refcache even if there might still be some broken links.
+        continue-on-error: true
+        run: |
+          npm run fix:${{ steps.extract.outputs.action_name }}
+          action_exit_status=$?
+          echo "action_exit_status=$action_exit_status" >> "$GITHUB_OUTPUT"
+          echo "PR action exit status: $action_exit_status"
+
+          # For refcache updates, prune 404 entries, if any
+          npm run _refcache:prune
+
+      - name: Generate and validate patch
+        id: check_patch
+        run: |
+          git diff > pr-fix.patch
+
+          if [ ! -s pr-fix.patch ]; then
+            echo "No changes detected. Skipping patch."
+            echo "skipped=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          actual_size_kb=$(du -k pr-fix.patch | cut -f1)
+          if (( actual_size_kb > MAX_PATCH_SIZE_KB )); then
+            echo "Patch too large: ${actual_size_kb} KB (limit: ${MAX_PATCH_SIZE_KB} KB)"
+            exit 1
+          fi
+
+          echo "skipped=false" >> "$GITHUB_OUTPUT"
+
+      - name: Upload patch artifact
+        if: steps.check_patch.outputs.skipped != 'true'
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        with:
+          name: pr-fix-${{ github.run_id }}
+          path: pr-fix.patch
+          retention-days: 1
+
+  apply-patch:
+    name: Apply and push patch (trusted)
+    runs-on: ubuntu-latest
+    needs: generate-patch
+    if: needs.generate-patch.outputs.patch_skipped != 'true'
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: step-security/harden-runner@95d9a5deda9de15063e7595e9719c11c38c90ae2 # v2.13.2
+        with:
+          egress-policy: audit
+
+      - uses: actions/create-github-app-token@7e473efe3cb98aa54f8d4bac15400b15fad77d94 # v2.2.0
+        id: otelbot-token
+        with:
+          # the higher privileged docs token is needed to push commits to an existing PR
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+        with:
+          fetch-depth: 999
+          token: ${{ steps.otelbot-token.outputs.token }}
+
+      - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+
+      - name: Download patch
+        uses: actions/download-artifact@v6
+        with:
+          name: ${{ needs.generate-patch.outputs.patch_name }}
+
+      - name: Apply patch
+        run: |
+          if ! git apply --verbose pr-fix.patch; then
+            echo "Patch failed to apply. For details, see output above. To debug this locally,"
+            echo "get the patch file from the workflow summary artifact section."
+            exit 1
+          fi
+          rm pr-fix.patch
+
+      - name: Commit and push changes, if any
+        run: |
+          git config --local user.email "$USER_EMAIL"
+          git config --local user.name "$USER_NAME"
+          if [[ $(git status --porcelain) ]]; then
+            git add -A
+            current_branch=$(git rev-parse --abbrev-ref HEAD)
+            echo current_branch=$current_branch
+            # gh pr checkout sets some git configs that we can use to make sure
+            # we push to the right repo & to the right branch
+            remote_repo=$(git config --get branch.${current_branch}.remote)
+            echo remote_repo=$remote_repo
+            remote_branch=$(git config --get branch.${current_branch}.merge)
+            echo remote_branch=$remote_branch
+            git commit -m "Results from /fix directive"
+            git push ${remote_repo} HEAD:${remote_branch}
+          else
+            echo "No changes to commit"
+          fi
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+
+      - name: Comment success
+        if:
+          ${{ !failure() && !cancelled() &&
+          needs.generate-patch.outputs.action_exit_status == '0' }}
+        run: |
+          gh pr comment $PR_NUM --body "✅ \`fix:${{ needs.generate-patch.outputs.action_name }}\` applied successfully in [run $GITHUB_RUN_ID]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)."
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+
+      - name: Comment failure
+        if:
+          ${{ failure() || cancelled() ||
+          needs.generate-patch.outputs.action_exit_status != '0' }}
+        run: |
+          gh pr comment $PR_NUM --body "❌ \`fix:${{ needs.generate-patch.outputs.action_name }}\` failed or exited with a non-zero error code (${{ needs.generate-patch.outputs.action_exit_status }}). See logs: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+
+  notify-noop:
+    name: Comment no-op patch
+    runs-on: ubuntu-latest
+    if: needs.generate-patch.outputs.patch_skipped == 'true'
+    needs: generate-patch
+    steps:
+      - uses: actions/checkout@v6
+        with: { fetch-depth: 1 }
+
+      - uses: actions/create-github-app-token@7e473efe3cb98aa54f8d4bac15400b15fad77d94 # v2.2.0
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+
+      - name: Comment no-op
+        run: |
+          gh pr comment $PR_NUM --body "ℹ️ \`fix:${{ needs.generate-patch.outputs.action_name }}\` made no changes. Nothing to commit."
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}

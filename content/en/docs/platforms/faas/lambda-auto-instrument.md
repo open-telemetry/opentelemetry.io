@@ -18,13 +18,13 @@ instrument your application. These layers do not include the Collector which is
 a required addition unless you configure an external Collector instance to send
 your data.
 
-### Add the ARN of the OTel Collector Lambda layer
+## Add the ARN of the OTel Collector Lambda layer
 
 See the [Collector Lambda layer guidance](../lambda-collector/) to add the layer
 to your application and configure the Collector. We recommend you add this
 first.
 
-### Language Requirements
+## Language Requirements
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
@@ -70,14 +70,14 @@ OTEL_INSTRUMENTATION_AWS_SDK_ENABLED=true
 
 {{% /tab %}} {{% tab JavaScript %}}
 
-The Lambda layer supports Node.js v14+ Lambda runtimes. For more information
+The Lambda layer supports Node.js v18+ Lambda runtimes. For more information
 about supported JavaScript and Node.js versions, see the
 [OpenTelemetry JavaScript documentation](https://github.com/open-telemetry/opentelemetry-js).
 
 {{% /tab %}} {{% tab Python %}}
 
-The Lambda layer supports Python 3.8 and Python 3.9 Lambda runtimes. For more
-information about supported Python versions, see the
+The Lambda layer supports Python 3.9+ Lambda runtimes. For more information
+about supported Python versions, see the
 [OpenTelemetry Python documentation](https://github.com/open-telemetry/opentelemetry-python/blob/main/README.md#supported-runtimes)
 and the package on [PyPi](https://pypi.org/project/opentelemetry-api/).
 
@@ -90,14 +90,14 @@ and the package on [RubyGem](https://rubygems.org/search?query=opentelemetry).
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Configure `AWS_LAMBDA_EXEC_WRAPPER`
+## Configure `AWS_LAMBDA_EXEC_WRAPPER`
 
 Change the entry point of your application by setting
-`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for Node.js, Java, or Ruby, and
-`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-instrument` for Python. These wrapper scripts
-will invoke your Lambda application with the automatic instrumentation applied.
+`AWS_LAMBDA_EXEC_WRAPPER=/opt/otel-handler` for Node.js, Java, Ruby, or Python.
+This wrapper script invokes your Lambda application with the automatic
+instrumentation applied.
 
-### Add the ARN of Instrumentation Lambda Layer
+## Add the ARN of Instrumentation Lambda Layer
 
 To enable the OTel auto-instrumentation in your Lambda function, you need to add
 and configure the instrumentation and Collector layers, and then enable tracing.
@@ -108,7 +108,7 @@ and configure the instrumentation and Collector layers, and then enable tracing.
 
 Find the
 [most recent instrumentation layer release](https://github.com/open-telemetry/opentelemetry-lambda/releases)
-for your language and use it's ARN after changing the `<region>` tag to the
+for your language and use its ARN after changing the `<region>` tag to the
 region your Lambda is in.
 
 Note: Lambda layers are a regionalized resource, meaning that they can only be
@@ -116,7 +116,7 @@ used in the Region in which they are published. Make sure to use the layer in
 the same region as your Lambda functions. The community publishes layers in all
 available regions.
 
-### Configure your SDK exporters
+## Configure your SDK exporters
 
 The default exporters used by the Lambda layers will work without any changes if
 there is an embedded Collector with gRPC / HTTP receivers. The environment
@@ -146,7 +146,7 @@ uses the protocol `http/protobuf`
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Publish your Lambda
+## Publish your Lambda
 
 Publish a new version of your Lambda to deploy the new changes and
 instrumentation.

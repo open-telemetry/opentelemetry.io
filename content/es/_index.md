@@ -6,7 +6,7 @@ developer_note:
   La macro para los bloques/portada usa como imagen de fondo cualquier archivo
   de imagen que contenga la palabra "background" en su nombre.
 show_banner: true
-default_lang_commit: 7ac35d6b429165bbe6c28bdd91feeae83fd35142
+default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268
 drifted_from_default: true
 ---
 
@@ -26,7 +26,6 @@ drifted_from_default: true
 
 - [Aprende más](docs/what-is-opentelemetry/)
 - [Prueba la demo](docs/demo/)
-- [Explora las integraciones](/ecosystem/integrations/)
 
 </div>
 
@@ -48,7 +47,7 @@ instrumentar, generar, recopilar y exportar datos de telemetría (métricas, log
 y trazas) para que te ayuden a analizar el rendimiento y comportamiento de tu
 aplicación.
 
-> OpenTelemetry está actualmente disponible para
+> OpenTelemetry está actualmente [disponible](/status/) para
 > [varios lenguajes de programación](docs/languages) y puede usarse en entornos
 > de producción.
 
@@ -56,27 +55,30 @@ aplicación.
 
 {{% blocks/section color="dark" type="row" %}}
 
-{{% blocks/feature icon="fas fa-chart-line" title="Trazas, métricas y logs"%}}
+{{% blocks/feature icon="fas fa-chart-line" title="Trazas, métricas y logs" url="docs/concepts/observability-primer/" %}}
 
 Genera y recopila datos de telemetría desde tus servicios y aplicaciones y
 reenvía los datos a una amplia variedad de herramientas de análisis.
+
 {{% /blocks/feature %}}
 
-{{% blocks/feature icon="fas fa-magic" title="Instrumentación fácil de desplegar"%}}
+{{% blocks/feature icon="fas fa-magic" title="Instrumentación & Integraciones listas para usar"%}}
 
-OpenTelemetry se integra con librerías y frameworks populares, tales como
-[Spring](https://spring.io),
-[ASP.NET Core](https://docs.microsoft.com/aspnet/core),
-[Express](https://expressjs.com), [Quarkus](https://quarkus.io) y muchos más.
-Instalar e integrar OpenTelemetry puede ser tan sencillo como añadir unas pocas
-líneas de código.
+OpenTelemetry [se integra] con muchas librerías y frameworks populares, y admite
+la [instrumentación] _manual y sin código_.
+
+[instrumentación]: /docs/concepts/instrumentation/
+[se integra]: /ecosystem/integrations/
 
 {{% /blocks/feature %}}
 
 {{% blocks/feature icon="fab fa-github" title="Código abierto, Independiente de proveedores" %}}
 
-100% gratuito y de código abierto, OpenTelemetry es usado y respaldado por
-[empresas líderes](/ecosystem/vendors/) en el sector de la observabilidad.
+100% gratuito y de código abierto, OpenTelemetry es [adoptado] y respaldado por
+[empresas líderes] en el sector de la observabilidad.
+
+[adoptado]: /ecosystem/adopters/
+[empresas líderes]: /ecosystem/vendors/
 
 {{% /blocks/feature %}}
 

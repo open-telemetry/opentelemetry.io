@@ -14,7 +14,7 @@
     },
     "registryType": {
       "type": "string",
-      "description": "The type of the entry",
+      "description": "The type of the entry. See https://opentelemetry.io/ecosystem/registry/adding/#registry-types for detailed definitions and usage guidelines for each type.",
       "enum": [
         "application integration",
         "core",
@@ -43,7 +43,6 @@
         "go",
         "haskell",
         "java",
-        "javascript",
         "js",
         "julia",
         "kotlin",

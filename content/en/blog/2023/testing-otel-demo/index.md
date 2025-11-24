@@ -82,9 +82,8 @@ We structured two types of tests based on
 - Integration tests
 - End-to-end tests
 
-The tests are organized into 26 trace-based tests for 10 services, which can be
-found
-[here](https://github.com/open-telemetry/opentelemetry-demo/tree/main/test/tracetesting).
+The tests are organized into
+[26 trace-based tests for 10 services](https://github.com/open-telemetry/opentelemetry-demo/tree/main/test/tracetesting).
 These trace-based tests in the `tracetesting` directory are ported from AVA and
 Cypress and test both the operation outcome and the traces.
 

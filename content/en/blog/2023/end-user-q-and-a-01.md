@@ -215,7 +215,7 @@ organization.
 ### Are you seeing the benefits of using OpenTelemetry with GraphQL in your production environments?
 
 Using the
-[GraphQL OpenTelemetry plugin-for Node.js](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-graphql)
+[GraphQL OpenTelemetry plugin-for Node.js](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-graphql)
 made it super easy to identify an issue with a GraphQL resolver that was acting
 up in production.
 
@@ -223,10 +223,10 @@ up in production.
 
 On the Node.js side, the team used auto-instrumentation for
 [HTTP](https://www.npmjs.com/package/@opentelemetry/instrumentation-http),
-[Express](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-express),
-[GraphQL](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-graphql),
+[Express](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-express),
+[GraphQL](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-graphql),
 and also the
-[AWS SDK](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-aws-sdk)
+[AWS SDK](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-aws-sdk)
 on some systems.
 
 The most useful instrumentation was GraphQL and AWS SDK. Although GraphQL

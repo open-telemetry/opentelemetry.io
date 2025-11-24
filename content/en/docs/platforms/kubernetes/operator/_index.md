@@ -29,8 +29,8 @@ The operator manages:
 
 ## Getting started
 
-To install the operator in an existing cluster, make sure you have cert-manager
-installed and run:
+To install the operator in an existing cluster, make sure you have
+[`cert-manager`](https://cert-manager.io/docs/installation/) installed and run:
 
 ```bash
 kubectl apply -f https://github.com/open-telemetry/opentelemetry-operator/releases/latest/download/opentelemetry-operator.yaml
@@ -41,12 +41,12 @@ Collector (otelcol) instance, like:
 
 ```console
 $ kubectl apply -f - <<EOF
-apiVersion: opentelemetry.io/v1alpha1
+apiVersion: opentelemetry.io/v1beta1
 kind: OpenTelemetryCollector
 metadata:
   name: simplest
 spec:
-  config: |
+  config:
     receivers:
       otlp:
         protocols:
@@ -55,21 +55,37 @@ spec:
           http:
             endpoint: 0.0.0.0:4318
     processors:
+      memory_limiter:
+        check_interval: 1s
+        limit_percentage: 75
+        spike_limit_percentage: 15
 
     exporters:
       # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
-      debug:
+      debug: {}
 
     service:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: []
+          processors: [memory_limiter]
           exporters: [debug]
 EOF
 ```
 
+{{% alert title="Note" %}}
+
+By default, `opentelemetry-operator` uses the
+[`opentelemetry-collector` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector).
+When the operator is installed using
+[Helm charts](/docs/platforms/kubernetes/helm/), the
+[`opentelemetry-collector-k8s` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s)
+is used. If you need a component not found in these releases, you may need to
+[build your own collector](/docs/collector/custom-collector/).
+
+{{% /alert %}}
+
 For more configuration options and for setting up the injection of
 auto-instrumentation of the workloads using OpenTelemetry instrumentation
-libraries, continue reading
-[here](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md).
+libraries, see
+[OpenTelemetry Operator for Kubernetes](https://github.com/open-telemetry/opentelemetry-operator/blob/main/README.md).

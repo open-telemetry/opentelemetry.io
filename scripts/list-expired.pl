@@ -16,9 +16,16 @@ BEGIN {
 }
 
 while (<>) {
-    if (/^expiryDate:\s*([^#\n]+)/ && $1 le $cut_off_date) {
+    if (/^expiryDate:\s*([^#\s]+)((?i)\s*#\s*keep)?/ && $1 le $cut_off_date) {
+        my $expiryDate = $1;
+        my $keep = ($2 || '') =~ /keep/i;
+        next if $keep && $quiet;
+
         print "$ARGV";
-        printf "\t expired on %s", $1 unless $quiet;
+        if (!$quiet) {
+          printf "\tEXPIRED ON %s", $expiryDate;
+          printf " (KEEP)" if $keep;
+        }
         print "\n";
     }
 }

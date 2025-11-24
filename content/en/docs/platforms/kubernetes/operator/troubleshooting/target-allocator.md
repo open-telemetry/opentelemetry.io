@@ -101,10 +101,6 @@ spec:
               scrape_interval: 10s
               static_configs:
                 - targets: ['0.0.0.0:8888']
-
-    processors:
-      batch: {}
-
     exporters:
       debug:
         verbosity: detailed
@@ -113,15 +109,12 @@ spec:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: [batch]
           exporters: [debug]
         metrics:
           receivers: [otlp, prometheus]
-          processors: []
           exporters: [debug]
         logs:
           receivers: [otlp]
-          processors: [batch]
           exporters: [debug]
 ```
 
@@ -333,10 +326,10 @@ If you configured a
 [`ServiceMonitor`](https://observability.thomasriley.co.uk/prometheus/configuring-prometheus/using-service-monitors/)
 selector, it means that the Target Allocator only looks for `ServiceMonitors`
 having a `metadata.label` that matches the value in
-[`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr-1).
+[`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscrservicemonitorselector).
 
 Suppose that you configured a
-[`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr-1)
+[`serviceMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscrservicemonitorselector)
 for your Target Allocator, like in the following example:
 
 ```yaml
@@ -387,7 +380,7 @@ Allocator will fail to discover scrape targets from that `ServiceMonitor`.
 {{% alert title="Tip" %}}
 
 The same applies if you're using a [PodMonitor]. In that case, you would use a
-[`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollectorspectargetallocatorprometheuscr)
+[`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr)
 instead of a `serviceMonitorSelector`.
 
 {{% /alert %}}
@@ -401,7 +394,7 @@ results in the Target Allocator failing to discover scrape targets from your
 `ServiceMonitors` and `PodMonitors`, respectively.
 
 Similarly, in
-[`v1beta1`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api.md#opentelemetrycollector-1)
+[`v1beta1`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/opentelemetrycollectors.md#opentelemetryiov1beta1)
 of the `OpenTelemetryCollector` CR, leaving out this configuration altogether
 also results in the Target Allocator failing to discover scrape targets from
 your `ServiceMonitors` and `PodMonitors`.

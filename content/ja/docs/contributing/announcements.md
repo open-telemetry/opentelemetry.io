@@ -2,7 +2,7 @@
 title: アナウンス
 description: 特別なイベントのためのアナウンスやバナーを作成します。
 weight: 50
-default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 ---
 
 アナウンスは、ロケールの `announcements` セクション内に含まれる _通常の Hugo ページ_ です。
@@ -11,7 +11,7 @@ default_lang_commit: 9ba98f4fded66ec78bfafa189ab2d15d66df2309
 > 現在、アナウンスはバナーとしてのみ使用されています。
 > 将来的には、もう少し一般的なアナウンス機能をサポートする _可能性が_ あります。
 
-### アナウンスを作成する {#creating-an-announcement}
+## アナウンスを作成する {#creating-an-announcement}
 
 新しいアナウンスを追加するには、以下のコマンドを使用して、ローカリゼーションフォルダー内の `announcements` フォルダーに Markdown ファイルを作成します。
 
@@ -30,7 +30,7 @@ hugo new --kind announcement content/YOUR-LOCALE/announcements/announcement-file
 
 {{% /alert %}}
 
-### アナウンス一覧 {#announcement-list}
+## アナウンス一覧 {#announcement-list}
 
 各アナウンスは、ビルドの日付が `date` フィールドと `expiryDate` フィールドの間にある場合にサイトのビルドに含まれます。
 これらのフィールドが省略された場合、それぞれ「現在」と「無期限」と見なされます。

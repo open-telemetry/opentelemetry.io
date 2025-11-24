@@ -12,10 +12,10 @@ description: Instrumentation library for Knex.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-knex
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-knex
 createdAt: 2021-07-08
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-knex'
-  version: 0.45.0
+  version: 0.53.0
 isFirstParty: false

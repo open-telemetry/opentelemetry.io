@@ -1,0 +1,22 @@
+# cSpell:ignore bmchelix bmchelixexporter
+title: BMC Helix Exporter
+registryType: exporter
+language: collector
+tags:
+  - bmchelix
+  - exporter
+  - collector
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/bmchelixexporter
+license: Apache 2.0
+description:
+  This exporter supports sending metrics to BMC Helix Operations Management
+  through its [metric ingestion REST
+  API](https://docs.bmc.com/docs/helixoperationsmanagement/244/en/metric-operation-management-endpoints-in-the-rest-api-1392780044.html).
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2025-09-19
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/exporter/bmchelixexporter
+  version: v0.140.1

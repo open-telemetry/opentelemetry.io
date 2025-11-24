@@ -43,13 +43,14 @@ public class TracedClass {
   @WithSpan(kind = SpanKind.CLIENT)
   public void tracedClientSpan() {}
 
+  @WithSpan
   public void tracedMethodWithAttribute(@SpanAttribute("attributeName") String parameter) {}
 }
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert title="Note" color="info" %}} The OpenTelemetry annotations use Spring
-AOP based on proxies.
+{{% alert title="Note" %}} The OpenTelemetry annotations use Spring AOP based on
+proxies.
 
 These annotations work only for the methods of the proxy. You can learn more in
 the
@@ -75,7 +76,7 @@ public class MyControllerManagedBySpring {
 
 {{% /alert %}}
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 To be able to use the OpenTelemetry annotations, you have to add the Spring Boot
 Starter AOP dependency to your project:

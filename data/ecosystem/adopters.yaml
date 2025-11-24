@@ -1,8 +1,19 @@
-# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner VTEX
+# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip Kelkoo loveholidays HDFC
+- name: Alibaba
+  url: https://www.alibaba.com/
+  reference: /blog/2025/otip-alibaba/
+  components: [Collector, Go, Java, JavaScript, PHP, Python]
+  referenceTitle: blog post
 - name: AppDirect
   url: https://www.appdirect.com/
   components: [Collector]
   reference: ''
+  contact: ''
+- name: BRZ
+  url: https://www.brz.gv.at/
+  components: [Collector]
+  reference: 'https://www.cncf.io/case-studies/brz-migrated-the-austrian-business-service-portal-with-2m-users-to-keycloak/'
+  referenceTitle: CNCF case study
   contact: ''
 - name: Bureau.id
   url: https://bureau.id/
@@ -19,6 +30,12 @@
   url: https://www.cloudscaleinc.com
   components: [Collector, Python]
   reference: ''
+  contact: ''
+- name: DeFacto
+  url: https://www.defacto.com.tr/
+  components: [Collector]
+  reference: 'https://www.cncf.io/case-studies/defacto/'
+  referenceTitle: CNCF case study
   contact: ''
 - name: Delivery Hero
   url: https://www.deliveryhero.com/
@@ -65,17 +82,59 @@
   reference: 'https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/'
   referenceTitle: blog post
   contact: ''
+- name: Global Processing
+  url: https://www.globalprocessing.com.ar/
+  components: [Collector, .NET, Python, Java, Go]
+  reference: 'https://www.linkedin.com/posts/santiago-lator_opentelemetry-opentelemetry-observabilidad-activity-7258132675268354050-oP1q'
+  referenceTitle: post
+  contact: 'santiago.lator@globalprocessing.com.ar'
+- name: HDFC Bank
+  url: https://www.hdfcbank.com/
+  components: [Collector]
+  reference: 'https://www.cncf.io/case-studies/hdfc-bank/'
+  referenceTitle: CNCF case study
+  contact: ''
 - name: Heroku
   url: https://heroku.com
-  components: [Ruby]
+  components: [Collector, Go, Ruby, JavaScript, Operator]
+  reference: 'https://youtu.be/5iM8n3uCo_U?si=PJ6tFYcYED3lhAcK'
+  referenceTitle: CNCF talk
+  contact: 'https://www.heroku.com/contact/'
+- name: KelkooGroup
+  url: https://www.kelkoogroup.com/
+  components: [Java, Python]
   reference: ''
+  contact: gael.jourdan-weil@kelkoogroup.com
+- name: Lockheed Martin
+  url: https://www.lockheedmartin.com/
+  components: [Collector]
+  reference: 'https://www.cncf.io/case-studies/lockheedmartin/'
+  referenceTitle: CNCF case study
   contact: ''
-- name: MercadoLibre
+- name: loveholidays
+  url: https://www.loveholidays.com/
+  components: [Collector]
+  reference: 'https://www.cncf.io/case-studies/loveholidays/'
+  referenceTitle: CNCF case study
+  contact: ''
+- name: Meltwater
+  url: https://www.meltwater.com/
+  components: [Collector]
+  reference: 'https://www.cncf.io/case-studies/meltwater/'
+  referenceTitle: CNCF case study
+  contact: ''
+- name: Mercado Libre
   url: https://www.mercadolibre.com/
   components: [Collector, Go, Java, JavaScript, Python]
   reference: 'https://medium.com/mercadolibre-tech/building-a-large-scale-observability-ecosystem-1edf654b249e'
   referenceTitle: blog post
   contact: 'https://github.com/mercadolibre'
+- name: Mercadona
+  url: https://www.mercadona.es/
+  components: [Java, Collector]
+  reference: ''
+  referenceTitle: ''
+  contact: ''
 - name: NAV - Norwegian Government
   url: https://nav.no
   components: [Collector, Go, Java, JavaScript, Python]
@@ -87,6 +146,18 @@
   components: []
   reference: ''
   contact: ''
+- name: PagBank
+  url: https://pagbank.com.br/
+  components: [Collector, Operator, Java, JavaScript, PHP, Python, .NET, Go]
+  reference: ''
+  referenceTitle: ''
+  contact: 'https://github.com/ezeqme'
+- name: PicPay
+  url: https://picpay.com/
+  components: [Collector, Go, Java, PHP, Python]
+  reference: 'https://medium.com/inside-picpay/observabilidade-com-hyperf-e-opentelemetry-dd698844eda'
+  referenceTitle: blog post
+  contact: 'observability@picpay.com'
 - name: PITS Globale Datenrettungsdienste
   url: https://www.pitsdatenrettung.de/
   components: [Python]
@@ -124,6 +195,17 @@
   components: []
   reference: ''
   contact: ''
+- name: Tranzzo
+  url: https://tranzzo.com/
+  components: [Collector, Java]
+  reference: ''
+  contact: https://github.com/illenko
+- name: UiPath
+  url: https://www.uipath.com/
+  components: [Collector, .NET]
+  reference: 'https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a'
+  referenceTitle: blog post
+  contact: 'junda.yin@uipath.com'
 - name: Uplight
   url: https://uplight.com/
   components: [Collector, Ruby, Java, Python, .NET]
@@ -141,14 +223,14 @@
   components: [Collector]
   reference: ''
   contact: ''
+- name: Zalando
+  url: https://www.zalando.com/
+  components: [Collector]
+  reference: https://www.youtube.com/watch?v=VAgT7CY572U
+  referenceTitle: conference talk
+  contact: ''
 - name: Zocdoc
   url: https://www.zocdoc.com/
   components: []
   reference: ''
   contact: ''
-- name: Global Processing
-  url: https://www.globalprocessing.com.ar/
-  components: [Collector, .NET, Python, Java, Go]
-  reference: 'https://www.linkedin.com/posts/santiago-lator_opentelemetry-opentelemetry-observabilidad-activity-7258132675268354050-oP1q'
-  referenceTitle: post
-  contact: 'santiago.lator@globalprocessing.com.ar'

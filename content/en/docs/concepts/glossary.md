@@ -53,6 +53,14 @@ examples include bytecode injection or monkey patching.
 A mechanism for propagating [Metadata](#metadata) to help establish a causal
 relationship between events and services. See [baggage spec][baggage].
 
+### Cardinality
+
+The number of unique values for a given [Attribute](#attribute) or set of
+attributes. High cardinality means many unique values, which can impact the
+performance and storage requirements of telemetry backends. For example, a
+`user_id` attribute would have high cardinality, while a `status_code` attribute
+with values like "200", "404", "500" would have low cardinality.
+
 ### Client library
 
 See [Instrumented library](#instrumented-library).
@@ -112,7 +120,14 @@ See [Distributed tracing][distributed tracing].
 ### Distribution
 
 A distribution is a wrapper around an upstream OpenTelemetry repository with
-some customizations. See [more][distribution].
+some customizations. See [Distributions].
+
+### Entity
+
+A collection of [attributes](#attribute) that identify and describe a physical
+or logical object. Entities are typically associated with telemetry. For
+example, a CPU entity describes a physical CPU, while a service entity describes
+a logical grouping of processes that compose an HTTP or other service.
 
 ### Event
 
@@ -134,8 +149,8 @@ severity and trace information. See the [field spec][field].
 
 ### gRPC
 
-A high-performance, open source universal [RPC](#rpc) framework. More on gRPC
-[here](https://grpc.io).
+A high-performance, open source universal [RPC](#rpc) framework. See
+[gRPC](https://grpc.io).
 
 ### HTTP
 
@@ -145,7 +160,7 @@ Short for [Hypertext Transfer Protocol][http].
 
 Denotes the [Library](#library) for which the telemetry signals
 ([Traces](#trace), [Metrics](#metric), [Logs](#log)) are gathered. See
-[more][spec-instrumented-lib].
+[Instrumented library][].
 
 ### Instrumentation library
 
@@ -177,13 +192,13 @@ A language-specific collection of behavior invoked by an interface.
 Sometimes used to refer to a collection of [Log records](#log-record). Can be
 ambiguous since people also sometimes use [Log](#log) to refer to a single
 [Log record](#log-record). Where ambiguity is possible, use additional
-qualifiers, for example, `Log record`. See [more][log]
+qualifiers, for example, `Log record`. See [Log].
 
 ### Log record
 
 A recording of data with a timestamp and a severity. May also have a
-[Trace ID](#trace) and [Span ID](#span) when correlated with a trace. See
-[more][log record].
+[Trace ID](#trace) and [Span ID](#span) when correlated with a trace. See [Log
+record][].
 
 ### Metadata
 
@@ -195,11 +210,24 @@ while [Logs](#log) have [Fields](#field).
 ### Metric
 
 Records a data point, either raw measurements or predefined aggregation, as time
-series with [Metadata](#metadata). See [more][metric].
+series with [Metadata](#metadata). See [Metric].
 
 ### OC
 
 Short form for [OpenCensus](#opencensus).
+
+### Observability backend
+
+The component of an observability platform that is responsible for receiving,
+processing, storing, and querying telemetry data. Examples include open source
+tools like [Jaeger] and [Prometheus], as well as commercial offerings.
+OpenTelemetry is not an observability backend.
+
+### Observability frontend
+
+The component of an observability platform that provides user interfaces for
+visualizing and analyzing telemetry data. It can be often a part of an
+observability backend, particularly when considering commercial offerings.
 
 ### OpAMP
 
@@ -266,17 +294,17 @@ Short for [OpenTelemetry Protocol](/docs/specs/otlp/).
 ### Propagators
 
 Used to serialize and deserialize specific parts of telemetry data such as span
-context and [Baggage](#baggage) in [Spans](#span). See [more][propagators].
+context and [Baggage](#baggage) in [Spans](#span). See [Propagators].
 
 ### Proto
 
-Language independent interface types. See [more][proto].
+Language independent interface types. See [opentelemetry-proto].
 
 ### Receiver
 
 The term used by the [Collector](/docs/collector/configuration/#receivers) to
 define how telemetry data is received. Receivers can be push- or pull-based. See
-[more][receiver].
+[Receiver].
 
 ### Request
 
@@ -284,11 +312,8 @@ See [Distributed Tracing](#distributed-tracing).
 
 ### Resource
 
-Captures information about the entity producing telemetry as
-[Attributes](#attribute). For example, a process producing telemetry that is
-running in a container on Kubernetes has a process name, a pod name, a
-namespace, and possibly a deployment name. All these attributes can be included
-in the `Resource`.
+A collection of [entities](#entity) or [attributes](#attribute) that identify or
+describe a physical or logical object that produces telemetry.
 
 ### REST
 
@@ -301,7 +326,7 @@ Short for [Remote Procedure Call][rpc].
 ### Sampling
 
 A mechanism to control the amount of data exported. Most commonly used with the
-[Tracing](#trace) [Data Source](#data-source). See [more][sampling].
+[Tracing](#trace) [Data Source](#data-source). See [Sampling].
 
 ### SDK
 
@@ -321,12 +346,11 @@ scalability. A [Service](#service) can be deployed in multiple locations.
 
 ### Signal
 
-One of [Traces](#trace), [Metrics](#metric) or [Logs](#log). More on Signals
-[here][signals].
+One of [Traces](#trace), [Metrics](#metric) or [Logs](#log). See [Signals].
 
 ### Span
 
-Represents a single operation within a [Trace](#trace). See [more][span].
+Represents a single operation within a [Trace](#trace). See [Span].
 
 ### Span link
 
@@ -337,12 +361,12 @@ A span link is a link between causally-related spans. For details see
 ### Specification
 
 Describes the cross-language requirements and expectations for all
-implementations. See [more][specification].
+implementations. See [Specification].
 
 ### Status
 
 The result of the operation. Typically used to indicate whether an error
-occurred. See [more][status].
+occurred. See [Status].
 
 ### Tag
 
@@ -351,11 +375,11 @@ See [Metadata](#metadata).
 ### Trace
 
 A [DAG](#dag) of [Spans](#span), where the edges between [Spans](#span) are
-defined as parent-child relationship. See [more][trace].
+defined as parent-child relationship. See [Traces].
 
 ### Tracer
 
-Responsible for creating [Spans](#span). See [more][tracer].
+Responsible for creating [Spans](#span). See [Tracer].
 
 ### Transaction
 
@@ -365,33 +389,35 @@ See [Distributed Tracing](#distributed-tracing).
 
 An in-process alternative to external exporters. When included, they collect and
 aggregate tracing and metrics information in the background; this data is served
-on web pages when requested. See [more][zpages].
+on web pages when requested. See [zPages].
 
-[baggage]: /docs/specs/otel/baggage/api/
 [attribute]: /docs/specs/otel/common/#attributes
+[baggage]: /docs/specs/otel/baggage/api/
 [context propagation]: /docs/specs/otel/overview#context-propagation
 [dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
-[distributed tracing]: /docs/concepts/signals/traces/
-[distribution]: /docs/concepts/distributions/
+[distributed tracing]: ../signals/traces/
+[distributions]: ../distributions/
 [field]: /docs/specs/otel/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+[instrumented library]: /docs/specs/otel/glossary/#instrumented-library
+[Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
-[log]: /docs/specs/otel/glossary#log
 [log record]: /docs/specs/otel/glossary#log-record
-[metric]: /docs/concepts/signals/metrics/
+[log]: /docs/specs/otel/glossary#log
+[metric]: ../signals/metrics/
+[opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
 [propagators]: /docs/languages/go/instrumentation/#propagators-and-context
-[proto]: https://github.com/open-telemetry/opentelemetry-proto
+[Prometheus]: https://prometheus.io/
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
 [sampling]: /docs/specs/otel/trace/sdk#sampling
-[signals]: /docs/concepts/signals/
+[signals]: ../signals/
 [span]: /docs/specs/otel/trace/api#span
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
-[spec-instrumented-lib]: /docs/specs/otel/glossary/#instrumented-library
-[specification]: /docs/concepts/components/#specification
+[specification]: ../components/#specification
 [status]: /docs/specs/otel/trace/api#set-status
-[trace]: /docs/specs/otel/overview#traces
 [tracer]: /docs/specs/otel/trace/api#tracer
+[traces]: /docs/specs/otel/overview#traces
 [zpages]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/development/trace/zpages.md

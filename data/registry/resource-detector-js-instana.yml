@@ -12,9 +12,9 @@ description:
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node/opentelemetry-resource-detector-instana
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/resource-detector-instana
 createdAt: 2022-12-07
 package:
   registry: npm
   name: '@opentelemetry/resource-detector-instana'
-  version: 0.19.0
+  version: 0.27.0

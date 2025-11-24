@@ -1,7 +1,7 @@
 ---
 title: Introducción para desarrolladores
 linkTitle: Dev
-default_lang_commit: ede5b715791550eccf1c0dc3d57e2713ca6350ab
+default_lang_commit: f1ccafef4b5070f26ce63a3dc19fcafc8a00fb8f
 ---
 
 Esta es tu página de [introducción](..) si:
@@ -18,14 +18,14 @@ conceptos:
 - [¿Qué es OpenTelemetry?](../../what-is-opentelemetry/)
 - [¿Cómo puedo agregar instrumentación a mi base de código?](../../concepts/instrumentation/code-based/)
 
-Si desarrollas bibliotecas, frameworks o middleware que se utilizan como
+Si desarrollas librerías, frameworks o middleware que se utilizan como
 dependencias dentro de otro software, te recomendamos aprender cómo puedes
 proporcionar telemetría de forma nativa:
 
-- [¿Cómo puedo agregar instrumentación nativa a mi biblioteca?](../../concepts/instrumentation/libraries/)
+- [¿Cómo puedo agregar instrumentación nativa a mi librería?](../../concepts/instrumentation/libraries/)
 
-Luego, puedes profundizar en la documentación por
-[lenguaje de programación](../../languages/) que estás utilizando:
+A continuación, puedes profundizar en la documentación del
+[lenguaje de programación](../../languages/) que estés utilizando:
 
 - [C++](../../languages/cpp/)
 - [.NET](../../languages/dotnet/)

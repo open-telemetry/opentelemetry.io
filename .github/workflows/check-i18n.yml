@@ -4,18 +4,21 @@ on:
   merge_group:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   check-i18n:
     name: I18N check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0 # all
       - name: Any files missing hash key?
         run: |
           scripts/check-i18n.sh -n -x -v
-          .github/workflows/scripts/check-i18n-helper.sh
+          .github/scripts/check-i18n-helper.sh
       - name: Any files with invalid hash keys?
         run: scripts/check-i18n.sh -v
       - name: Drifted status needs updating?

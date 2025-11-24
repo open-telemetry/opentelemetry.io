@@ -1,7 +1,7 @@
 # cSpell:ignore openai OpenAI Arize openinference arizeai
 title: OpenAI JavaScript Instrumentation
 registryType: instrumentation
-language: javascript
+language: js
 tags:
   - javascript
   - instrumentation
@@ -18,5 +18,5 @@ createdAt: 2024-06-05
 package:
   registry: npm
   name: '@arizeai/openinference-instrumentation-openai'
-  version: 2.2.0
+  version: 4.0.0
 isFirstParty: false

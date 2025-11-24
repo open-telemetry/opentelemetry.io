@@ -11,10 +11,10 @@ description: Instrumentation library for Winston.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-winston
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-winston
 createdAt: 2021-07-08
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-winston'
-  version: 0.45.0
+  version: 0.53.0
 isFirstParty: false

@@ -12,10 +12,10 @@ description:
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/instrumentation-cucumber
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-cucumber
 createdAt: 2022-10-27
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-cucumber'
-  version: 0.15.0
+  version: 0.24.0
 isFirstParty: false

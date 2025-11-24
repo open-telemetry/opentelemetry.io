@@ -4,7 +4,7 @@ description: >-
   Definições e convenções para termos de telemetria conforme usados no
   OpenTelemetry.
 weight: 200
-default_lang_commit: f37118d8489a60d73dd881645f317d866b53b418
+default_lang_commit: 530c8fd130c93dd95e9638c8919518dbbc9c6b0a
 drifted_from_default: true
 ---
 
@@ -28,7 +28,7 @@ execução do programa. Utilizado pela [Fonte de Dados](#data-source) de uma
 
 Um mecanismo para controlar a quantidade de dados exportados. Usado mais
 comumente com a [Fonte de Dados](#data-source) de [Rastros](#trace). Consulte
-[mais informações][sampling].
+[Amostragem][sampling].
 
 ### API
 
@@ -62,6 +62,13 @@ chave-valor à entidade que está produzindo telemetria. Usado em
 [Sinais](#signal) e [Recursos](#resource). Consulte a [especificação de
 atributos][attribute].
 
+### Backend de observabilidade {#observability-backend}
+
+O componente de uma plataforma de observabilidade que é responsável por receber,
+processar, armazenar e disponibilizar dados de telemetria. Exemplos incluem
+ferramentas de código aberto como [Jaeger] e [Prometheus], bem como ofertas
+comerciais. O OpenTelemetry não é um backend de observabilidade.
+
 ### Bagagem {#baggage}
 
 Um mecanismo para propagar [Metadados](#metadata) para ajudar a estabelecer uma
@@ -90,7 +97,7 @@ incorporada. Consulte [a especificação da biblioteca][spec-instrumentation-lib
 
 Indica a [Biblioteca](#library) para a qual os sinais telemétricos
 ([Rastros](#trace), [Métricas](#metric), [Logs](#log)) são coletados. Consulte
-[mais informações][spec-instrumented-lib].
+[Biblioteca instrumentada][instrumented library].
 
 ### Campo {#field}
 
@@ -99,6 +106,15 @@ Um termo utilizado especificamente por [Registros de Log](#log-record).
 incluindo [Atributos](#attribute) e [Recursos](#resource). Outros campos também
 podem ser considerados `Metadados`, incluindo severidade e informações de
 rastreamento. Consulte a [especificação de campos][field].
+
+### Cardinalidade {#cardinality}
+
+O número de valores únicos para um determinado [Atributo](#attribute) ou
+conjunto de atributos. Alta cardinalidade significa muitos valores únicos, o que
+pode impactar o desempenho e os requisitos de armazenamento dos _backends_ de
+telemetria. Por exemplo, um atributo `user_id` teria alta cardinalidade,
+enquanto um atributo `status_code` com valores como "200", "404", "500" teria
+baixa cardinalidade.
 
 ### Collector
 
@@ -138,18 +154,20 @@ Termo utilizado especialmente por [Métricas](#metric). Consulte
 ### Distribuição {#distribution}
 
 Uma distribuição é um encapsulamento em torno de um repositório upstream do
-OpenTelemetry com algumas personalizações. Consulte [mais
-detalhes][distribution].
+OpenTelemetry com algumas personalizações. Consulte
+[Distribuições][distributions].
 
 ### Especificação {#specification}
 
 Descreve os requisitos e expectativas para implementações em todas as
-linguagens. Consulte [mais informações][specification].
+linguagens. Consulte [Especificação][specification].
 
 ### Evento {#event}
 
-Algo que aconteceu cuja representação depende da [Fonte de dados](#data-source).
-Por exemplo, [Trecho](#span).
+Um Evento é um [Registro de Log](#log-record) com um nome de evento e uma
+estrutura bem conhecida. Por exemplo, eventos de navegador no OpenTelemetry
+seguem uma convenção de nomenclatura particular e carregam dados específicos em
+uma estrutura comum.
 
 ### Exporter
 
@@ -160,10 +178,17 @@ Exporters podem ser push-based ou pull-based.
 
 Veja [Sinal](#signal)
 
+### Frontend de observabilidade {#observability-frontend}
+
+O componente de uma plataforma de observabilidade que fornece interfaces de
+usuário para visualizar e analisar dados de telemetria. Pode ser frequentemente
+uma parte do _backend_ de observabilidade, especialmente ao considerar ofertas
+comerciais.
+
 ### gRPC
 
-Um framework [RPC](#rpc) de alta performance e open source. Mais sobre gRPC
-[aqui](https://grpc.io).
+Um framework [RPC](#rpc) de alta performance e open source. Consulte
+[gRPC](https://grpc.io).
 
 ### HTTP
 
@@ -189,7 +214,7 @@ Linguagem de programação.
 Pode ser ambíguo, uma vez que as pessoas também costumam usar [Log](#log) para
 se referir a um único [Registro de Log](#log-record). Quando a ambiguidade é
 possível, utilize qualificadores adicionais, por exemplo, `Registro de Log`.
-Consulte [mais informações][log].
+Consulte [Log][].
 
 ### Metadados {#metadata}
 
@@ -282,23 +307,17 @@ propagação de contexto][context propagation].
 ### Propagators
 
 Usado para serializar e desserializar partes específicas de dados telemétricos,
-como contexto de span e [bagagem](#baggage) em [Spans](#span). Consulte [mais
-informações][propagators].
+como contexto de span e [bagagem](#baggage) em [Spans](#span). Consulte
+[Propagators].
 
 ### Proto
 
-Tipos de interface independentes de linguagem. Consulte [mais
-informações][proto].
-
-### Rastreador {#tracer}
-
-Responsável pela criação de [Trecho](#span). Consulte [mais
-informações][tracer].
+Tipos de interface independentes de linguagem. Consulte [opentelemetry-proto].
 
 ### Rastro {#trace}
 
 Um [DAG](#dag) de [Trechos](#span), onde os limites entre os [Trechos](#span)
-são definidos como uma relação de pai-filho. Consulte [mais informações][trace].
+são definidos como uma relação de pai-filho. Consulte [Rastro][traces].
 
 ### Rastro distribuído {#distributed-tracing}
 
@@ -313,7 +332,7 @@ Consulte [Rastreamento distribuído][distributed tracing].
 
 Termo utilizado pelo [Collector](/docs/collector/configuration/#receivers) para
 definir como os dados telemétricos são recebidos. Receivers podem ser push-based
-ou pull-based. Consulte [mais informações][receiver].
+ou pull-based. Consulte [Receiver].
 
 ### Recurso {#resource}
 
@@ -325,10 +344,9 @@ atributos podem ser incluídos no `Recurso`.
 
 ### Registro de log {#log-record}
 
-Uma gravação de um [Evento](#event). Normalmente, o registro inclui um carimbo
-de data/hora indicando quando o [Evento](#event) ocorreu, além de outros dados
-que descrevem o que aconteceu, onde aconteceu, e assim por diante. Consulte
-[mais informações][log record].
+Uma gravação de dados com o carimbo de data/hora e uma severidade. Também pode
+possuir um [ID de Rastro](#trace) e um [ID de Trecho](#span), quando
+correlacionado com um rastro. Consulte [Registro de log][log record].
 
 ### REST
 
@@ -361,8 +379,8 @@ múltiplas localizações.
 
 ### Sinal {#signal}
 
-Um dos [Rastros](#trace), [Métricas](#metric) ou [Logs](#log). Mais sobre Sinais
-[aqui][signals].
+Um dos [Rastros](#trace), [Métricas](#metric) ou [Logs](#log). Consulte
+[Sinais][signals].
 
 ### Span link
 
@@ -373,11 +391,15 @@ consulte [Links entre spans](/docs/specs/otel/overview#links-between-spans) e
 ### Status
 
 O resultado de uma operação. Normalmente usado para indicar se ocorreu um erro.
-Consulte [mais informações][status].
+Consulte [Status].
 
 ### Tag
 
 Consulte [Metadados](#metadata).
+
+### Tracer {#tracer}
+
+Responsável pela criação de [Trecho](#span). Consulte [Tracer].
 
 ### Transação {#transaction}
 
@@ -385,41 +407,42 @@ Consulte [Rastro distribuído](#distributed-tracing).
 
 ### Trecho {#span}
 
-Representa uma única operação dentro de um [Rastro](#trace). Consulte mais
-detalhes [aqui][span].
+Representa uma única operação dentro de um [Rastro](#trace). Consulte
+[Trecho][span].
 
 ### zPages
 
 Uma alternativa interna aos exportadores externos. Quando incluídos, eles
 coletam e agregam informações de rastros e métricas em segundo plano; estes
-dados são exibidos em páginas da web quando solicitados. Consulte [mais
-informações][zpages].
+dados são exibidos em páginas da web quando solicitados. Consulte [zPages].
 
-[baggage]: /docs/specs/otel/baggage/api/
 [attribute]: /docs/specs/otel/common/#attributes
+[baggage]: /docs/specs/otel/baggage/api/
 [context propagation]: /docs/specs/otel/overview#context-propagation
 [dag]: https://en.wikipedia.org/wiki/Directed_acyclic_graph
-[distributed tracing]: /docs/concepts/signals/traces/
-[distribution]: /docs/concepts/distributions/
+[distributed tracing]: ../signals/traces/
+[distributions]: ../distributions/
 [field]: /docs/specs/otel/logs/data-model#field-kinds
 [http]: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
+[instrumented library]: /docs/specs/otel/glossary/#instrumented-library
+[Jaeger]: https://www.jaegertracing.io/
 [json]: https://en.wikipedia.org/wiki/JSON
 [log]: /docs/specs/otel/glossary#log
 [log record]: /docs/specs/otel/glossary#log-record
-[metric]: /docs/concepts/signals/metrics/
+[metric]: ../signals/metrics/
+[opentelemetry-proto]: https://github.com/open-telemetry/opentelemetry-proto
 [propagators]: /docs/languages/go/instrumentation/#propagators-and-context
-[proto]: https://github.com/open-telemetry/opentelemetry-proto
+[Prometheus]: https://prometheus.io/
 [receiver]: /docs/collector/configuration/#receivers
 [rest]: https://en.wikipedia.org/wiki/Representational_state_transfer
 [rpc]: https://en.wikipedia.org/wiki/Remote_procedure_call
 [sampling]: /docs/specs/otel/trace/sdk#sampling
-[signals]: /docs/concepts/signals/
+[signals]: ../signals/
 [span]: /docs/specs/otel/trace/api#span
 [spec-instrumentation-lib]: /docs/specs/otel/glossary/#instrumentation-library
-[spec-instrumented-lib]: /docs/specs/otel/glossary/#instrumented-library
-[specification]: /docs/concepts/components/#specification
+[specification]: ../components/#specification
 [status]: /docs/specs/otel/trace/api#set-status
-[trace]: /docs/specs/otel/overview#traces
 [tracer]: /docs/specs/otel/trace/api#tracer
+[traces]: /docs/specs/otel/overview#traces
 [zpages]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/main/development/trace/zpages.md

@@ -14,7 +14,7 @@ a set of checks are executed. The PR checks verify that:
 - Your PR successfully [deploys through Netlify](#netlify-deployment)
 - Your changes are compliant with our [style guide](#checks)
 
-{{% alert title="Note" color="primary" %}}
+{{% alert title="Note" %}}
 
 If any of the PR checks fails, try to
 [fix content issues](../pull-requests/#fix-issues) first by running
@@ -62,13 +62,18 @@ issues. Run `npm run check:text` again and manually fix the remaining issues.
 This check verifies that
 [standards and consistency for Markdown files are enforced](../style-guide/#markdown-standards).
 
-If any issues are found, run `npm run fix:format` to fix most issues. For more
-complex issues, run `npm run check:markdown` and apply the suggested changes.
+If any issues are found, run `npm run fix:markdown` to fix most issues
+automatically. For any remaining issues, run `npm run check:markdown` and apply
+the suggested changes manually.
 
 ### `SPELLING check` {.notranslate lang=en}
 
 This check verifies that
 [all words are spelled correctly](../style-guide/#spell-checking).
+
+If this check fails, run `npm run check:spelling` locally to see the misspelled
+words. If a word is spelled correctly, you may need to add it to the
+`cSpell:ignore` section in the front matter of the file.
 
 ### `CSPELL` check {.notranslate lang=en}
 
@@ -77,15 +82,15 @@ This check will verify that all words in your cSpell ignore list are normalized.
 If this check fails, run `npm run fix:dict` locally and push the changes in a
 new commit.
 
-### `FILENAME check` {.notranslate lang=en}
+### `FILE FORMAT` {.notranslate lang=en}
 
-This check verifies that all
-[files are formatted by prettier](../style-guide/#file-format).
+This check verifies that all files conform to
+[Prettier format rules](../style-guide/#file-format).
 
 If this check fails, run `npm run fix:format` locally and push the changes in a
 new commit.
 
-### `FILE FORMAT` {.notranslate lang=en}
+### `FILENAME check` {.notranslate lang=en}
 
 This check verifies that all
 [file names are in kebab-case](../style-guide/#file-names).
@@ -93,12 +98,12 @@ This check verifies that all
 If this check fails, run `npm run fix:filenames` locally and push the changes in
 a new commit.
 
-### `BUILD and CHECK LINKS` {.notranslate lang=en}
+### `BUILD` and `CHECK LINKS` {.notranslate lang=en}
 
-This check builds the website and verifies that all links are valid.
+These two checks build the website and verify that all links are valid.
 
-To check links locally, run `npm run check:links`. This command also updates the
-reference cache. Push any changes to the refcache in a new commit.
+To build and check links locally, run `npm run check:links`. This command also
+updates the reference cache. Push any changes to the refcache in a new commit.
 
 #### Fix 404s
 
@@ -117,18 +122,21 @@ success status for, you can add the following query parameter to your URL to
 have the link checker ignore it: `?no-link-check`. For example,
 <https:/some-example.org?no-link-check> will be ignored by the link checker.
 
-{{% alert-md title="Maintainers tip" color=info %}}
+{{% alert title="Maintainers tip" %}}
 
 Maintainers can run the following script immediately after having run the link
-checker to have Puppeteer attempt to validate links with non-success statuses
+checker to have Puppeteer attempt to validate links with non-ok statuses:
 
 ```sh
-./scripts/double-check-refcache-400s.mjs -f --max-num-to-update 99
+./scripts/double-check-refcache-4XX.mjs
 ```
 
-This script also validates URL fragments, which the link checker doesn't do.
+Use the `-f` flag to also validate URL fragments (anchors) in external links,
+which `htmltest` doesn't do. We don't currently run this often, so you will
+probably want to limit the number of updated entries using the `-m N` flag. For
+usage info, run with `-h`.
 
-{{% /alert-md %}}
+{{% /alert %}}
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 

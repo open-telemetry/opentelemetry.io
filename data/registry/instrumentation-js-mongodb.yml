@@ -9,10 +9,10 @@ description: MongoDB instrumentation for Node.js.
 authors:
   - name: OpenTelemetry Authors
 urls:
-  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node/opentelemetry-instrumentation-mongodb
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-mongodb
 createdAt: 2020-11-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-mongodb'
-  version: 0.53.0
+  version: 0.61.0
 isFirstParty: false

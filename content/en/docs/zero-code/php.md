@@ -24,7 +24,8 @@ Automatic instrumentation with PHP requires:
 extension by itself does not generate traces. {{% /alert %}}
 
 The extension can be installed via pecl,
-[pickle](https://github.com/FriendsOfPHP/pickle) or
+[pickle](https://github.com/FriendsOfPHP/pickle),
+[PIE](https://github.com/php/pie) or
 [php-extension-installer](https://github.com/mlocati/docker-php-extension-installer)
 (docker specific). There are also packaged versions of the extension available
 for some Linux package managers.
@@ -126,8 +127,8 @@ php --ri opentelemetry
 Now that the extension is installed, install the OpenTelemetry SDK and one or
 more instrumentation libraries.
 
-Automatic instrumentation is available for a number commonly used PHP libraries.
-For the full list, see
+Automatic instrumentation is available for a number of commonly used PHP
+libraries. For the full list, see
 [instrumentation libraries on packagist](https://packagist.org/search/?query=open-telemetry&tags=instrumentation).
 
 Let's assume that your application uses Slim Framework and a PSR-18 HTTP client,
@@ -195,9 +196,9 @@ to outgoing HTTP requests.
 
 ## How it works
 
-{{% alert title="Optional" color="info" %}} You can skip over this section if
-you just want to get up and running quickly, and there are suitable
-instrumentation libraries for your application. {{% /alert %}}
+{{% alert title="Optional" %}} You can skip over this section if you just want
+to get up and running quickly, and there are suitable instrumentation libraries
+for your application. {{% /alert %}}
 
 The extension enables registering observer functions as PHP code against classes
 and methods, and executing those functions before and after the observed method

@@ -6,7 +6,7 @@ description: Process and export your telemetry data
 
 {{% docs/languages/exporters/intro %}}
 
-### Dependencies {#otlp-dependencies}
+## Dependencies {#otlp-dependencies}
 
 If you want to send telemetry data to an OTLP endpoint (like the
 [OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) or
@@ -43,7 +43,7 @@ npm install --save @opentelemetry/exporter-trace-otlp-grpc \
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Usage with Node.js
+## Usage with Node.js
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
 update the file `instrumentation.ts` (or `instrumentation.js` if you use
@@ -116,7 +116,7 @@ sdk.start();
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Usage in the Browser
+## Usage in the Browser
 
 When you use the OTLP exporter in a browser-based application, you need to note
 that:
@@ -131,7 +131,7 @@ Below you will find instructions to use the right exporter, to configure your
 CSPs and CORS headers and what precautions you have to take when exposing your
 collector.
 
-#### Use OTLP exporter with HTTP/JSON or HTTP/protobuf
+### Use OTLP exporter with HTTP/JSON or HTTP/protobuf
 
 [OpenTelemetry Collector Exporter with gRPC][] works only with Node.js,
 therefore you are limited to use the [OpenTelemetry Collector Exporter with
@@ -142,7 +142,7 @@ backend) accepts `http/json` if you are using [OpenTelemetry Collector Exporter
 with HTTP/JSON][], and that you are exporting your data to the right endpoint
 with your port set to 4318.
 
-#### Configure CSPs
+### Configure CSPs
 
 If your website is making use of Content Security Policies (CSPs), make sure
 that the domain of your OTLP endpoint is included. If your collector endpoint is
@@ -155,7 +155,7 @@ connect-src collector.example.com:4318/v1/traces
 If your CSP is not including the OTLP endpoint, you will see an error message,
 stating that the request to your endpoint is violating the CSP directive.
 
-#### Configure CORS headers
+### Configure CORS headers
 
 If your website and collector are hosted at a different origin, your browser
 might block the requests going out to your collector. You need to configure
@@ -180,7 +180,7 @@ receivers:
           max_age: 7200
 ```
 
-#### Securely expose your collector
+### Securely expose your collector
 
 To receive telemetry from a web application you need to allow the browsers of
 your end-users to send data to your collector. If your web application is
@@ -243,7 +243,7 @@ package:
 
 {{% include "exporters/prometheus-setup.md" %}}
 
-### Dependencies {#prometheus-dependencies}
+## Dependencies {#prometheus-dependencies}
 
 Install the
 [exporter package](https://www.npmjs.com/package/@opentelemetry/exporter-prometheus)
@@ -298,7 +298,7 @@ the metrics from this endpoint.
 
 {{% include "exporters/zipkin-setup.md" %}}
 
-### Dependencies {#zipkin-dependencies}
+## Dependencies {#zipkin-dependencies}
 
 To send your trace data to [Zipkin](https://zipkin.io/), you can use the
 `ZipkinExporter`.
@@ -345,7 +345,7 @@ const sdk = new opentelemetry.NodeSDK({
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% include "exporters/outro.md" `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html` %}}
+{{% include "exporters/outro.md" `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-trace-base.SpanExporter.html` %}}
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
