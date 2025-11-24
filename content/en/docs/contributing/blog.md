@@ -95,16 +95,19 @@ instructions provided by the
 After you've set up the local fork you can create a blog post using a template.
 Follow these steps to create a post from the template:
 
-1. Run the following command from the repository root:
+1. Run the following command from the repository root (please ensure the year in
+   the path is correct, as your blog will be created in that directory):
 
    ```sh
-   npx hugo new content/en/blog/2024/short-name-for-post.md
+   npx hugo new content/en/blog/2025/short-name-for-post.md
    ```
 
-   If your post has images or other assets, run the following command:
+   If your post has images or other assets, run the following command (please
+   ensure the year in the path is correct, as your blog will be created in that
+   directory):
 
    ```sh
-   npx hugo new content/en/blog/2024/short-name-for-post/index.md
+   npx hugo new content/en/blog/2025/short-name-for-post/index.md
    ```
 
 1. Edit the Markdown file at the path you provided in the previous command. The
@@ -129,8 +132,10 @@ new post. Follow these steps to add a post using the UI:
 
 1.  Paste the content from the template you copied in the first step.
 
-1.  Name your file, for example
-    `content/en/blog/2022/short-name-for-your-blog-post/index.md`.
+1.  Name your file (please ensure the year in the path is correct, as your blog
+    will be created in that directory), for example:
+
+    `content/en/blog/2025/short-name-for-your-blog-post/index.md`.
 
 1.  Edit the Markdown file in GitHub.
 
