@@ -5,7 +5,7 @@ description: Learn about the concept that enables Distributed Tracing.
 ---
 
 With context propagation, [signals](../signals/) ([traces](../signals/traces/),
-[metrics](../signals/metrics/), [logs](../signals/logs/)) can be correlated with
+[metrics](../signals/metrics/), and [logs](../signals/logs/)) can be correlated with
 each other, regardless of where they are generated. Although not limited to
 tracing, context propagation allows [traces](../signals/traces/) to build causal
 information about a system across services that are arbitrarily distributed
@@ -61,7 +61,7 @@ For example:
 00-a0892f3577b34da6a3ce929d0e0e4736-f03067aa0ba902b7-01
 ```
 
-### Tracing
+### Traces
 
 As mentioned, context propagation allows traces to build causal information
 across services. In this example, the two calls to the HTTP endpoint
@@ -98,14 +98,14 @@ combinations of `POST /cart/add > GET /product` and
 ## Custom Context Propagation
 
 For most use cases, you will find
-[Instrumentation Libraries or native library instrumentation](/docs/concepts/instrumentation/libraries/)
+[instrumentation libraries or native library instrumentation](/docs/concepts/instrumentation/libraries/)
 that handle the context propagation for you. In some cases no such support is
 available and you want to create that support for yourself. To do so you need to
 leverage the previously mentioned Propagators API:
 
 - On the side of the sender, the context is
-  [injected](/docs/specs/otel/context/api-propagators/#inject) into the carrier.
-  For example, into the headers of an HTTP request. In other cases, you need to
+  [injected](/docs/specs/otel/context/api-propagators/#inject) into the carrier,
+  for example, into the headers of an HTTP request. In other cases, you need to
   find a place that can store metadata for your request.
 - On the receiving side, the context is
   [extracted](/docs/specs/otel/context/api-propagators/#extract) from the
@@ -146,7 +146,7 @@ respective documentation pages:
 
 {{% alert title="Help wanted" color="secondary" %}}
 
-For languages .NET, Rust and Swift the language-specific documentation for
+For languages .NET, Rust, and Swift, the language-specific documentation for
 context propagation is missing. If you know any of those languages and are
 interested to help, [learn how you can contribute](/docs/contributing/)!
 
@@ -154,5 +154,5 @@ interested to help, [learn how you can contribute](/docs/contributing/)!
 
 ## Specification
 
-To learn more about Context Propagation, see the
+To learn more about context propagation, see the
 [Context specification](/docs/specs/otel/context/).
