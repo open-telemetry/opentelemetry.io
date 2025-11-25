@@ -933,9 +933,11 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/56847527?v=4
   - name: lmolkova
     teams:
+      - opentelemetry-python-contrib-approvers
       - proto-approvers
       - proto-maintainers
       - proto-triagers
+      - python-approvers
       - semconv-db-approvers
       - semconv-genai-approvers
       - semconv-http-approvers
@@ -3081,6 +3083,9 @@ members:
   - name: yordis
     html_url: https://github.com/yordis
     avatar_url: https://avatars.githubusercontent.com/u/4237280?v=4
+  - name: yuluo-yx
+    html_url: https://github.com/yuluo-yx
+    avatar_url: https://avatars.githubusercontent.com/u/77964041?v=4
   - name: yumosx
     html_url: https://github.com/yumosx
     avatar_url: https://avatars.githubusercontent.com/u/141902143?v=4
