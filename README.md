@@ -135,7 +135,7 @@ already contributed][contributors]!
 [OpenTelemetry.io Analytics]: https://lookerstudio.google.com/s/jsDZ05i_YIo
 [registry]: https://opentelemetry.io/ecosystem/registry/
 [opentelemetry community calendar]:
-  https://calendar.google.com/calendar/embed?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com
+  https://calendar.google.com/calendar/u/0/embed?src=c_2bf73e3b6b530da4babd444e72b76a6ad893a5c3f43cf40467abc7a9a897f977@group.calendar.google.com
 [google doc]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY/edit?usp=sharing
 [slack]: https://slack.cncf.io/
