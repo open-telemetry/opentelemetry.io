@@ -66,13 +66,13 @@ import { PeriodicExportingMetricReader } from '@opentelemetry/sdk-metrics';
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
     // opcional - a URL padrão é http://localhost:4318/v1/traces
-    url: '<your-otlp-endpoint>/v1/traces',
+    url: '<sua-rota-otlp>/v1/traces',
     // opcional - coleção de cabeçalhos (headers) personalizados a serem enviados com cada requisição, vazio por padrão
     headers: {},
   }),
   metricReader: new PeriodicExportingMetricReader({
     exporter: new OTLPMetricExporter({
-      url: '<your-otlp-endpoint>/v1/metrics', // a URL é opcional e pode ser omitida - o padrão é http://localhost:4318/v1/metrics
+      url: '<sua-rota-otlp>/v1/metrics', // a URL é opcional e pode ser omitida - o padrão é http://localhost:4318/v1/metrics
       headers: {}, // um objeto opcional contendo cabeçalhos personalizados a serem enviados com cada requisição
     }),
   }),
@@ -100,13 +100,13 @@ const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
     // opcional - a URL padrão é http://localhost:4318/v1/traces
-    url: '<your-otlp-endpoint>/v1/traces',
+    url: '<sua-rota-otlp>/v1/traces',
     // opcional - coleção de cabeçalhos (headers) personalizados a serem enviados com cada requisição, vazio por padrão
     headers: {},
   }),
   metricReader: new PeriodicExportingMetricReader({
     exporter: new OTLPMetricExporter({
-      url: '<your-otlp-endpoint>/v1/metrics', // a URL é opcional e pode ser omitida - o padrão é http://localhost:4318/v1/metrics
+      url: '<sua-rota-otlp>/v1/metrics', // a URL é opcional e pode ser omitida - o padrão é http://localhost:4318/v1/metrics
       headers: {}, // um objeto opcional contendo cabeçalhos personalizados a serem enviados com cada requisição
       concurrencyLimit: 1, // um limite opcional para requisições pendentes
     }),
