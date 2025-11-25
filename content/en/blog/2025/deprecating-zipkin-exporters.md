@@ -12,7 +12,7 @@ cSpell:ignore: Liudmila Molkova
 The OpenTelemetry project is deprecating the Zipkin exporter specification and
 no longer requires SDKs to implement it. After analyzing usage patterns across
 language ecosystems, we've observed that the community has strongly gravitated
-toward OTLP, with Zipkin exporters seeing limited adoption—in several languages,
+toward OTLP, with Zipkin exporters seeing limited adoption — in several languages,
 even less than the already-deprecated Jaeger exporter. Combined with minimal
 user engagement on related issues and the availability of alternatives, we
 believe this is the right time to sunset Zipkin exporters in OTel SDKs.
