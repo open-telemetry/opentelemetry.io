@@ -21,7 +21,7 @@ Collector instance:
 ![Decentralized collector deployment concept](../../img/otel-agent-sdk.svg)
 
 1. In the application, the SDK is configured to send OTLP data to a Collector.
-2. The Collector is configured to send telemetry data to one or more backends.
+1. The Collector is configured to send telemetry data to one or more backends.
 
 ## Example
 
@@ -110,7 +110,7 @@ To explore this pattern end to end, see the [Java][java-otlp-example] or
 
 ## Trade-offs
 
-Key pros and cons of using an agent collector:
+Here are the key pros and cons of using an agent collector:
 
 Pros:
 

@@ -18,7 +18,7 @@ that show how to export signals directly from your application to a backend.
 
 ## Trade-offs
 
-Key pros and cons of skipping the Collector:
+Here are the key pros and cons of skipping the Collector:
 
 Pros:
 
