@@ -1,7 +1,7 @@
 ---
 title: Install the Collector
 linkTitle: Install
-aliases: [./installation]
+aliases: [installation]
 weight: 2
 ---
 
