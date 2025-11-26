@@ -12995,6 +12995,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-21T09:44:12.160727406Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.38.0/docs/database/database-metrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-26T17:11:11.439344-03:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.38.0/docs/database/database-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-26T17:11:13.714024-03:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues": {
     "StatusCode": 206,
     "LastSeen": "2025-11-21T09:40:49.920728711Z"
