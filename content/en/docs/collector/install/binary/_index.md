@@ -1,5 +1,6 @@
 ---
 title: Install from a Collector binary
+linkTitle: Binary
 weight: 300
 ---
 

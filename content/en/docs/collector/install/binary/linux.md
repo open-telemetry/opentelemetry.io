@@ -1,5 +1,6 @@
 ---
 title: Install the Collector on Linux
+linkTitle: Linux
 weight: 100
 ---
 
