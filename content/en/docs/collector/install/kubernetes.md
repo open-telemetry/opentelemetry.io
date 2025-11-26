@@ -1,7 +1,7 @@
 ---
 title: Install the Collector with Kubernetes
 linkTitle: Kubernetes
-weight: 300
+weight: 200
 ---
 
 ## Kubernetes

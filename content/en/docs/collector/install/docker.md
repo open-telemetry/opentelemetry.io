@@ -1,7 +1,7 @@
 ---
 title: Install the Collector with Docker
 linkTitle: Docker
-weight: 200
+weight: 100
 ---
 
 ## Docker
