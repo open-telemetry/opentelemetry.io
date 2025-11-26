@@ -8,13 +8,12 @@ cSpell:ignore: prometheusremotewrite
 
 In the agent deployment pattern, telemetry signals can come from
 
-- Applications [instrumented][instrumentation] with an OpenTelemetry SDK using the
-[OpenTelemetry Protocol (OTLP)][otlp]
+- Applications [instrumented][instrumentation] with an OpenTelemetry SDK using
+  the [OpenTelemetry Protocol (OTLP)][otlp]
 - Collectors using the OTLP exporter
 
-The signals are sent to a [Collector][collector]
-instance that runs alongside the application or on the same host, such as
-a sidecar or a DaemonSet.
+The signals are sent to a [Collector][collector] instance that runs alongside
+the application or on the same host, such as a sidecar or a DaemonSet.
 
 Each client-side SDK or downstream Collector is configured with the address of a
 Collector instance:
@@ -26,15 +25,18 @@ Collector instance:
 
 ## Example
 
-In this example of the agent deployment pattern, begin by
-manually instrumenting a [Java application to export metrics][instrument-java-metrics]
-using the OpenTelemetry Java SDK, including the default `OTEL_METRICS_EXPORTER` value, `otlp`. Next, configure the [OTLP exporter][otlp-exporter] with the address of your Collector. For example:
+In this example of the agent deployment pattern, begin by manually instrumenting
+a [Java application to export metrics][instrument-java-metrics] using the
+OpenTelemetry Java SDK, including the default `OTEL_METRICS_EXPORTER` value,
+`otlp`. Next, configure the [OTLP exporter][otlp-exporter] with the address of
+your Collector. For example:
 
 ```shell
 export OTEL_EXPORTER_OTLP_ENDPOINT=http://collector.example.com:4318
 ```
 
-Next, configure the Collector running at `collector.example.com:4318` as follows:
+Next, configure the Collector running at `collector.example.com:4318` as
+follows:
 
 {{< tabpane text=true >}} {{% tab Traces %}}
 
@@ -103,8 +105,8 @@ service:
 
 {{% /tab %}} {{< /tabpane >}}
 
-To explore this pattern end to end, see the
-[Java][java-otlp-example] or [Python][py-otlp-example] examples.
+To explore this pattern end to end, see the [Java][java-otlp-example] or
+[Python][py-otlp-example] examples.
 
 ## Trade-offs
 

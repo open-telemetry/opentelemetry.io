@@ -1,6 +1,7 @@
 ---
 title: No Collector
-description: Why and how to send signals directly from an application to backends
+description:
+  Why and how to send signals directly from an application to backends
 weight: 1
 ---
 
@@ -12,9 +13,8 @@ export telemetry signals (traces, metrics, and logs) straight to a backend:
 
 ## Example
 
-See the [instrumentation documentation][instrumentation] for
-end-to-end examples that show how to export signals directly from your
-application to a backend.
+See the [instrumentation documentation][instrumentation] for end-to-end examples
+that show how to export signals directly from your application to a backend.
 
 ## Trade-offs
 
