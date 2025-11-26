@@ -13,7 +13,7 @@ In the agent deployment pattern, telemetry signals can come from
 - Collectors using the OTLP exporter
 
 The signals are sent to a [Collector][collector] instance that runs alongside
-the application or on the same host, such as a sidecar or a DaemonSet.
+the application or on the same host, such as a sidecar or DaemonSet.
 
 Each client-side SDK or downstream Collector is configured with the address of a
 Collector instance:
