@@ -1759,6 +1759,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-15T09:38:59.707307006Z"
   },
+  "https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide#alerts": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-26T17:51:15.834945-05:00"
+  },
   "https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request": {
     "StatusCode": 206,
     "LastSeen": "2025-11-21T09:40:42.11255134Z"
@@ -12619,6 +12623,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-17T14:57:41.126995104Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint-cli2.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-26T17:51:17.325572-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml": {
     "StatusCode": 206,
     "LastSeen": "2025-11-20T09:40:48.538191812Z"
@@ -14651,6 +14659,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-18T09:47:56.758345602Z"
   },
+  "https://github.github.com/gfm/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-26T17:51:14.400324-05:00"
+  },
   "https://gitlab.com": {
     "StatusCode": 206,
     "LastSeen": "2025-11-18T09:44:51.977083492Z"
@@ -14755,6 +14767,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-14T09:41:08.91819301Z"
   },
+  "https://gohugo.io/configuration/markup/#goldmark": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-26T17:51:14.205176-05:00"
+  },
   "https://gohugo.io/content-management/front-matter/": {
     "StatusCode": 206,
     "LastSeen": "2025-11-14T09:40:48.698793955Z"
@@ -14770,6 +14786,10 @@
   "https://gohugo.io/methods/site/regularpages/": {
     "StatusCode": 206,
     "LastSeen": "2025-11-21T09:40:39.773052521Z"
+  },
+  "https://gohugo.io/quick-reference/emojis/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-26T17:51:16.784399-05:00"
   },
   "https://google.aip.dev/122#full-resource-names": {
     "StatusCode": 206,
