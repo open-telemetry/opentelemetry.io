@@ -71,7 +71,7 @@ Examples include:
   inherently structured
 - **GraphQL** — responses may include
   [lists of structured errors](https://graphql.org/learn/response/#errors)
-- **[Database operations](https://github.com/open-telemetry/semantic-conventions/blob/v1.38.0/docs/database/database-metrics.md)** — batch
+- **[Database operations](https://github.com/open-telemetry/semantic-conventions/blob/v1.38.0/docs/database/database-spans.md)** — batch
   operations have properties that flat attributes cannot adequately capture
 
 Before extending support for complex attributes to all signals, we explored
