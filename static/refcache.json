@@ -21760,7 +21760,7 @@
     "LastSeen": "2025-11-24T00:09:18.909359118Z"
   },
   "https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html": {
-    "StatusCode": 404,
+    "StatusCode": 206,
     "LastSeen": "2025-11-26T09:44:44.883797941Z"
   },
   "https://www.serverless.com/framework/docs/getting-started": {
