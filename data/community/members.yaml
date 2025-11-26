@@ -2380,6 +2380,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/5722339?v=4
   - name: zeitlinger
     teams:
+      - java-contrib-approvers
       - java-instrumentation-approvers
       - java-instrumentation-triagers
       - java-triagers
@@ -2441,6 +2442,11 @@ triagers:
       - collector-contrib-triagers
     html_url: https://github.com/Frapschen
     avatar_url: https://avatars.githubusercontent.com/u/35491170?v=4
+  - name: henrinormak
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/henrinormak
+    avatar_url: https://avatars.githubusercontent.com/u/1248491?v=4
   - name: indrekj
     teams:
       - ruby-contrib-triagers
