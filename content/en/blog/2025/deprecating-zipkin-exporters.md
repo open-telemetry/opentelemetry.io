@@ -38,11 +38,11 @@ exporters in OTel SDKs.
 If you're currently using a Zipkin exporter, you have two migration paths:
 
 - **Switch to OTLP** (recommended): Configure your application to send traces
-   using OTLP and enable
-   [Zipkin's OTLP ingestion support](https://github.com/openzipkin-contrib/zipkin-otel).
+  using OTLP and enable
+  [Zipkin's OTLP ingestion support](https://github.com/openzipkin-contrib/zipkin-otel).
 - **Use the Collector**: Route your OTLP data through the OpenTelemetry
-   Collector with its
-   [Zipkin exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/zipkinexporter).
+  Collector with its
+  [Zipkin exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/zipkinexporter).
 
 ## Questions?
 
