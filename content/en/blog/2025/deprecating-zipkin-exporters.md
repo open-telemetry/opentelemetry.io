@@ -25,29 +25,29 @@ exporters in OTel SDKs.
 
 ## Timeline and migration path
 
-- **Specification deprecation**: Effective from December 2025
+- **Specification deprecation**: Effective from December 2025.
 - **SDK support**: Existing stable Zipkin exporters will continue to receive
-  security patches and critical bug fixes until at least **December, 2026**,
+  security patches and critical bug fixes until at least **December 2026**,
   following the
   [SDK stability guarantees](/docs/specs/otel/versioning-and-stability/#sdk-support).
 - **New SDKs**: Implementing a Zipkin exporter is not required for new language
-  SDKs
+  SDKs.
 
 ## What should users do?
 
 If you're currently using a Zipkin exporter, you have two migration paths:
 
-1. **Switch to OTLP** (recommended): Configure your application to send traces
+- **Switch to OTLP** (recommended): Configure your application to send traces
    using OTLP and enable
-   [Zipkin's OTLP ingestion support](https://github.com/openzipkin-contrib/zipkin-otel)
-2. **Use the Collector**: Route your OTLP data through the OpenTelemetry
+   [Zipkin's OTLP ingestion support](https://github.com/openzipkin-contrib/zipkin-otel).
+- **Use the Collector**: Route your OTLP data through the OpenTelemetry
    Collector with its
-   [Zipkin exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/zipkinexporter)
+   [Zipkin exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/zipkinexporter).
 
 ## Questions?
 
 Reach out in the
 [#otel-specification](https://cloud-native.slack.com/archives/C01N7PP1THC)
-channel on the CNCF Slack or create an issue in
+channel on CNCF Slack or create an issue in the
 [opentelemetry-specification](https://github.com/open-telemetry/opentelemetry-specification)
 repository.
