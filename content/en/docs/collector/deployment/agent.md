@@ -7,6 +7,7 @@ cSpell:ignore: prometheusremotewrite
 ---
 
 In the agent deployment pattern, telemetry signals can come from
+
 - Applications [instrumented][instrumentation] with an OpenTelemetry SDK using the
 [OpenTelemetry Protocol (OTLP)][otlp]
 - Collectors using the OTLP exporter
