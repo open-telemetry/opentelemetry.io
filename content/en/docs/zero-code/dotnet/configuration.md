@@ -4,7 +4,7 @@ linkTitle: Configuration
 aliases: [/docs/languages/net/automatic/config]
 weight: 20
 # prettier-ignore
-cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib NETFX OPERATINGSYSTEM PROCESSRUNTIME UNHANDLEDEXCEPTION
+cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib ILREWRITE NETFX OPERATINGSYSTEM PROCESSRUNTIME UNHANDLEDEXCEPTION
 ---
 
 ## Configuration methods
@@ -27,11 +27,12 @@ environment variables taking precedence over `App.config` or `Web.config` file:
    - `OTEL_DOTNET_AUTO_HOME`
    - `OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES`
    - `OTEL_DOTNET_AUTO_FAIL_FAST_ENABLED`
-   - `OTEL_DOTNET_AUTO_[TRACES|METRICS|LOGS]_INSTRUMENTATIONS_ENABLED`
+   - `OTEL_DOTNET_AUTO_[TRACES|METRICS|LOGS]_INSTRUMENTATION_ENABLED`
    - `OTEL_DOTNET_AUTO_[TRACES|METRICS|LOGS]_{INSTRUMENTATION_ID}_INSTRUMENTATION_ENABLED`
    - `OTEL_DOTNET_AUTO_LOG_DIRECTORY`
    - `OTEL_LOG_LEVEL`
    - `OTEL_DOTNET_AUTO_NETFX_REDIRECT_ENABLED`
+   - `OTEL_DOTNET_AUTO_SQLCLIENT_NETFX_ILREWRITE_ENABLED`
 
    Example with `OTEL_SERVICE_NAME` setting:
 
@@ -65,8 +66,6 @@ if given setting supports it, then:
 | `OTEL_DOTNET_AUTO_HOME`              | Installation location.                                                                                                                                                                                                                  |               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES` | Names of the executable files that the profiler cannot instrument. Supports multiple comma-separated values, for example: `ReservedProcess.exe,powershell.exe`. If unset, the profiler attaches to all processes by default. \[1\]\[2\] |               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_FAIL_FAST_ENABLED` | Enables possibility to fail process when automatic instrumentation cannot be executed. It is designed for debugging purposes. It should not be used in production environment. \[1\]                                                    | `false`       | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_DOTNET_AUTO_LOGGER`            | AutoInstrumentation diagnostic logs sink. (supported values: `none`,`file`,`console`)                                                                                                                                                   | `file`        | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_LOG_LEVEL`                     | SDK log level. (supported values: `none`,`error`,`warn`,`info`,`debug`)                                                                                                                                                                 | `info`        | [Stable](/docs/specs/otel/versioning-and-stability)       |
 
 \[1\] If `OTEL_DOTNET_AUTO_FAIL_FAST_ENABLED` is set to `true` then processes
 excluded from instrumentation by `OTEL_DOTNET_AUTO_EXCLUDE_PROCESSES` will fail
@@ -211,13 +210,15 @@ Important environment variables include:
 | `OTEL_SPAN_LINK_COUNT_LIMIT`                        | Maximum allowed span link count.                                                                                                                                                               | 128                                                                                  | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_EVENT_ATTRIBUTE_COUNT_LIMIT`                  | Maximum allowed attribute per span event count.                                                                                                                                                | 128                                                                                  | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_LINK_ATTRIBUTE_COUNT_LIMIT`                   | Maximum allowed attribute per span link count.                                                                                                                                                 | 128                                                                                  | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_LOGRECORD_ATTRIBUTE_VALUE_LENGTH_LIMIT`       | Maximum allowed log record attribute value size.                                                                                                                                               | none                                                                                 | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_LOGRECORD_ATTRIBUTE_COUNT_LIMIT`              | Maximum allowed log record attribute count.                                                                                                                                                    | 128                                                                                  | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` | The aggregation temporality to use on the basis of instrument kind. [2]                                                                                                                        | `cumulative`                                                                         | [Stable](/docs/specs/otel/versioning-and-stability) |
 
 **[1]**: Considerations on the `OTEL_EXPORTER_OTLP_PROTOCOL`:
 
 - The OpenTelemetry .NET Automatic Instrumentation defaults to `http/protobuf`,
   which differs from the OpenTelemetry .NET SDK default value of `grpc`.
-- On .NET 6 and higher, the application must reference
+- On .NET 8 and higher, the application must reference
   [`Grpc.Net.Client`](https://www.nuget.org/packages/Grpc.Net.Client/) to use
   the `grpc` OTLP exporter protocol. For example, by adding
   `<PackageReference Include="Grpc.Net.Client" Version="2.65.0" />` to the
@@ -293,7 +294,7 @@ Important environment variables include:
 | `OTEL_DOTNET_AUTO_TRACES_ADDITIONAL_SOURCES`        | Comma-separated list of additional `System.Diagnostics.ActivitySource` names to be added to the tracer at the startup. Use it to capture manually instrumented spans.                                                                                                                                                                                                                                                                                                                    |               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_TRACES_ADDITIONAL_LEGACY_SOURCES` | Comma-separated list of additional legacy source names to be added to the tracer at the startup. Use it to capture `System.Diagnostics.Activity` objects created without using the `System.Diagnostics.ActivitySource` API.                                                                                                                                                                                                                                                              |               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_FLUSH_ON_UNHANDLEDEXCEPTION`      | Controls whether the telemetry data is flushed when an [AppDomain.UnhandledException](https://docs.microsoft.com/en-us/dotnet/api/system.appdomain.unhandledexception) event is raised. Set to `true` when you suspect that you are experiencing a problem with missing telemetry data and also experiencing unhandled exceptions.                                                                                                                                                       | `false`       | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES`       | Comma-separated list of additional `System.Diagnostics.Metrics.Meter` names to be added to the meter at the startup. Use it to capture manually instrumented spans.                                                                                                                                                                                                                                                                                                                      |               | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_DOTNET_AUTO_METRICS_ADDITIONAL_SOURCES`       | Comma-separated list of additional `System.Diagnostics.Metrics.Meter` names to be added to the meter at the startup. Use it to capture manually created metrics.                                                                                                                                                                                                                                                                                                                         |               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_PLUGINS`                          | Colon-separated list of OTel SDK instrumentation plugin types, specified with the [assembly-qualified name](https://docs.microsoft.com/en-us/dotnet/api/system.type.assemblyqualifiedname?view=net-6.0#system-type-assemblyqualifiedname). _Note: This list must be colon-separated because the type names may include commas._ See more info on how to write plugins at [plugins.md](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/plugins.md). |               | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
 ## RuleEngine
@@ -301,7 +302,7 @@ Important environment variables include:
 RuleEngine is a feature that validates OpenTelemetry API, SDK, Instrumentation,
 and Exporter assemblies for unsupported scenarios, ensuring that OpenTelemetry
 automatic instrumentation is more stable by backing of instead of crashing. It
-works on .NET 6 and higher.
+works on .NET 8 and higher.
 
 Enable RuleEngine only during the first run of the application, or when the
 deployment changes or the Automatic Instrumentation library is upgraded. Once
@@ -318,13 +319,13 @@ The CLR uses the following environment variables to set up the profiler. See
 [.NET Runtime Profiler Loading](https://github.com/dotnet/runtime/blob/d8302cef7946be82775ba5b94a88ad8eee800714/docs/design/coreclr/profiling/Profiler%20Loading.md)
 for more information.
 
-| .NET Framework environment variable | .NET environment variable  | Description                                                                             | Required value                                                                                                                                                                                                                                                  | Status                                                    |
-| ----------------------------------- | -------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
-| `COR_ENABLE_PROFILING`              | `CORECLR_ENABLE_PROFILING` | Enables the profiler.                                                                   | `1`                                                                                                                                                                                                                                                             | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `COR_PROFILER`                      | `CORECLR_PROFILER`         | CLSID of the profiler.                                                                  | `{918728DD-259F-4A6A-AC2B-B85E1B658318}`                                                                                                                                                                                                                        | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `COR_PROFILER_PATH`                 | `CORECLR_PROFILER_PATH`    | Path to the profiler.                                                                   | `$INSTALL_DIR/linux-x64/OpenTelemetry.AutoInstrumentation.Native.so` for Linux glibc, `$INSTALL_DIR/linux-musl-x64/OpenTelemetry.AutoInstrumentation.Native.so` for Linux musl, `$INSTALL_DIR/osx-x64/OpenTelemetry.AutoInstrumentation.Native.dylib` for macOS | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `COR_PROFILER_PATH_32`              | `CORECLR_PROFILER_PATH_32` | Path to the 32-bit profiler. Bitness-specific paths take precedence over generic paths. | `$INSTALL_DIR/win-x86/OpenTelemetry.AutoInstrumentation.Native.dll` for Windows                                                                                                                                                                                 | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `COR_PROFILER_PATH_64`              | `CORECLR_PROFILER_PATH_64` | Path to the 64-bit profiler. Bitness-specific paths take precedence over generic paths. | `$INSTALL_DIR/win-x64/OpenTelemetry.AutoInstrumentation.Native.dll` for Windows                                                                                                                                                                                 | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| .NET Framework environment variable | .NET environment variable  | Description                                                                             | Required value                                                                                                                                                                                                                                                    | Status                                                    |
+| ----------------------------------- | -------------------------- | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- |
+| `COR_ENABLE_PROFILING`              | `CORECLR_ENABLE_PROFILING` | Enables the profiler.                                                                   | `1`                                                                                                                                                                                                                                                               | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `COR_PROFILER`                      | `CORECLR_PROFILER`         | CLSID of the profiler.                                                                  | `{918728DD-259F-4A6A-AC2B-B85E1B658318}`                                                                                                                                                                                                                          | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `COR_PROFILER_PATH`                 | `CORECLR_PROFILER_PATH`    | Path to the profiler.                                                                   | `$INSTALL_DIR/linux-x64/OpenTelemetry.AutoInstrumentation.Native.so` for Linux glibc, `$INSTALL_DIR/linux-musl-x64/OpenTelemetry.AutoInstrumentation.Native.so` for Linux musl, `$INSTALL_DIR/osx-arm64/OpenTelemetry.AutoInstrumentation.Native.dylib` for macOS | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `COR_PROFILER_PATH_32`              | `CORECLR_PROFILER_PATH_32` | Path to the 32-bit profiler. Bitness-specific paths take precedence over generic paths. | `$INSTALL_DIR/win-x86/OpenTelemetry.AutoInstrumentation.Native.dll` for Windows                                                                                                                                                                                   | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `COR_PROFILER_PATH_64`              | `CORECLR_PROFILER_PATH_64` | Path to the 64-bit profiler. Bitness-specific paths take precedence over generic paths. | `$INSTALL_DIR/win-x64/OpenTelemetry.AutoInstrumentation.Native.dll` for Windows                                                                                                                                                                                   | [Experimental](/docs/specs/otel/versioning-and-stability) |
 
 Setting OpenTelemetry .NET Automatic Instrumentation as a .NET CLR Profiler is
 required for .NET Framework.
@@ -349,7 +350,7 @@ CORECLR_PROFILER_PATH_64
 
 On .NET it is required to set the
 [`DOTNET_STARTUP_HOOKS`](https://github.com/dotnet/runtime/blob/main/docs/design/features/host-startup-hook.md)
-environment variable.
+environment variable if the .NET CLR Profiler is not used.
 
 The
 [`DOTNET_ADDITIONAL_DEPS`](https://github.com/dotnet/runtime/blob/main/docs/design/features/additional-deps.md)
@@ -362,6 +363,15 @@ environment variable are used to mitigate assembly version conflicts in .NET.
 | `DOTNET_STARTUP_HOOKS`   | `$INSTALL_DIR/net/OpenTelemetry.AutoInstrumentation.StartupHook.dll` | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `DOTNET_ADDITIONAL_DEPS` | `$INSTALL_DIR/AdditionalDeps`                                        | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `DOTNET_SHARED_STORE`    | `$INSTALL_DIR/store`                                                 | [Experimental](/docs/specs/otel/versioning-and-stability) |
+
+If the .NET CLR Profiler is used and the
+[`DOTNET_STARTUP_HOOKS`](https://github.com/dotnet/runtime/blob/main/docs/design/features/host-startup-hook.md)
+environment variable is not set, the profiler looks for
+`OpenTelemetry.AutoInstrumentation.StartupHook.dll` in an appropriate directory
+relative to the `OpenTelemetry.AutoInstrumentation.Native.dll` file location.
+The folder structure can match the ZIP archive structure or the NuGet package
+structure (either platform dependent or independent). If the startup hook
+assembly is not found, the profiler loading will be aborted.
 
 ## Internal logs
 
@@ -376,7 +386,9 @@ path of the current user's
 [temporary folder](https://docs.microsoft.com/en-us/dotnet/api/System.IO.Path.GetTempPath?view=net-6.0)
 instead.
 
-| Environment variable             | Description                                                             | Default value                            | Status                                                    |
-| -------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------- |
-| `OTEL_DOTNET_AUTO_LOG_DIRECTORY` | Directory of the .NET Tracer logs.                                      | _See the previous note on default paths_ | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_LOG_LEVEL`                 | SDK log level. (supported values: `none`,`error`,`warn`,`info`,`debug`) | `info`                                   | [Stable](/docs/specs/otel/versioning-and-stability)       |
+| Environment variable             | Description                                                                           | Default value                            | Status                                                    |
+| -------------------------------- | ------------------------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------- |
+| `OTEL_DOTNET_AUTO_LOG_DIRECTORY` | Directory of the .NET Tracer logs.                                                    | _See the previous note on default paths_ | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_LOG_LEVEL`                 | SDK log level. (supported values: `none`,`error`,`warn`,`info`,`debug`)               | `info`                                   | [Stable](/docs/specs/otel/versioning-and-stability)       |
+| `OTEL_DOTNET_AUTO_LOGGER`        | AutoInstrumentation diagnostic logs sink. (supported values: `none`,`file`,`console`) | `file`                                   | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_DOTNET_AUTO_LOG_FILE_SIZE` | Maximum size (in bytes) of a single log file created by the Auto Instrumentation      | 10 485 760 (10 MB)                       | [Experimental](/docs/specs/otel/versioning-and-stability) |
