@@ -6535,6 +6535,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-24T00:09:28.951001993Z"
   },
+  "https://github.com/open-telemetry/community/blob/main/policies/genai.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-26T13:27:01.195911-05:00"
+  },
   "https://github.com/open-telemetry/community/blob/main/project-management.md": {
     "StatusCode": 206,
     "LastSeen": "2025-11-20T09:40:33.72041867Z"
