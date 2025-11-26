@@ -24,4 +24,12 @@ react-native-app
 cardinalidad
 agregable
 milisegundos
+subproyecto
 autoinstrumentación
+muestreado
+muestreador
+muestreo
+muestreen
+muestrear
+muestrearse
+muestreados

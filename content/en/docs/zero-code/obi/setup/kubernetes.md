@@ -122,7 +122,7 @@ requirements:
     ```
 
 The following example instruments the `goblog` pod by attaching OBI as a
-container (image available at `otel/ebpf-instrument:latest`). The
+container (image available at `otel/ebpf-instrument:main`). The
 auto-instrumentation tool is configured to forward metrics and traces to
 OpenTelemetry Collector, which is accessible behind the `otelcol` service in the
 same namespace:
@@ -158,7 +158,7 @@ spec:
               name: https
         # Sidecar container with OBI - the eBPF auto-instrumentation tool
         - name: obi
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           securityContext: # Privileges are required to install the eBPF probes
             privileged: true
           env:
@@ -214,7 +214,7 @@ spec:
       serviceAccountName: obi # required if you want kubernetes metadata decoration
       containers:
         - name: autoinstrument
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           securityContext:
             privileged: true
           env:
@@ -294,7 +294,7 @@ spec:
       containers:
       - name: obi
         terminationMessagePolicy: FallbackToLogsOnError
-        image: otel/ebpf-instrument:latest
+        image: otel/ebpf-instrument:main
         env:
           - name: OTEL_EBPF_TRACE_PRINTER
             value: "text"
@@ -397,7 +397,7 @@ spec:
       hostPID: true #important!
       containers:
         - name: obi
-          image: otel/ebpf-instrument:latest
+          image: otel/ebpf-instrument:main
           imagePullPolicy: IfNotPresent
           securityContext:
             privileged: true

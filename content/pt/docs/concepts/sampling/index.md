@@ -4,7 +4,8 @@ description:
   Aprenda sobre amostragem e explore as diferentes opções disponíveis no
   OpenTelemetry.
 weight: 80
-default_lang_commit: 49879d0c00a4a28c963a76998f7213af7b539c77
+default_lang_commit: 49879d0c00a4a28c963a76998f7213af7b539c77 # patched
+drifted_from_default: true
 ---
 
 Com [rastros](/docs/concepts/signals/traces), você pode observar as requisições
@@ -111,7 +112,7 @@ ou descartar um trecho ou um rastro não é feita inspecionando o rastro como um
 todo.
 
 Por exemplo, a forma mais comum de amostragem pela cabeça é a
-[Amostragem de Probabilidade Consistente](/docs/specs/otel/trace/tracestate-probability-sampling-experimental/#consistent-probability-sampling).
+[Amostragem de Probabilidade Consistente](/docs/specs/otel/trace/tracestate-probability-sampling/#consistent-sampling-decision).
 Isso também é conhecido como Amostragem Determinística. Neste caso, uma decisão
 de amostragem é tomada com base no ID do rastro e na porcentagem desejada de
 rastros a serem amostrados. Isso garante que rastros inteiros sejam amostrados -

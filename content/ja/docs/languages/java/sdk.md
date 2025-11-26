@@ -2,7 +2,8 @@
 title: SDKによるテレメトリーの管理
 weight: 12
 aliases: [exporters]
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+drifted_from_default: true
 cSpell:ignore: Interceptable Logback okhttp
 ---
 
@@ -988,7 +989,7 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 [LogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/export/LogRecordExporter.html)は、ログレコードをプロセス外にエクスポートする責任を持つ[プラグイン拡張インターフェース](#sdk-plugin-extension-interfaces)です。
 `SdkLoggerProvider`に直接登録するのではなく、[LogRecordProcessors](#logrecordprocessor)（通常は`BatchLogRecordProcessor`）と組み合わせます。
 
-下表は、SDKに組み込まれ、`opentelemetry-java-contrib`でコミュニティによって維持されているスパンエクスポーターです。
+下表は、SDKに組み込まれ、`opentelemetry-java-contrib`でコミュニティによって維持されているログレコードエクスポーターです。
 
 | クラス                                     | アーティファクト                                                                     | 説明                                                                                          |
 | ------------------------------------------ | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
@@ -1003,7 +1004,7 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 
 **[2]**: `OtlpJsonLoggingLogRecordExporter`はJULにログ出力し、適切に設定されていない場合、無限ループ（JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry Log SDK -> JUL）を引き起こす可能性があります。
 
-以下のコードスニペットは`LogRecordProcessor`のプログラム設定を示します。
+以下のコードスニペットは`LogRecordExporter`のプログラム設定を示します。
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogRecordExporterConfig.java"?>
@@ -1094,7 +1095,7 @@ public class CustomLogRecordExporter implements LogRecordExporter {
 
 [LogLimits](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/LogLimits.html)は、最大属性長や最大属性数を含む、ログレコードによってキャプチャされるデータの制約を定義します。
 
-以下のコードスニペットは`LogRecordProcessor`のプログラム設定を示します。
+以下のコードスニペットは`LogLimits`のプログラム設定を示します。
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogLimitsConfig.java"?>

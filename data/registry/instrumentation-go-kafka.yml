@@ -21,4 +21,4 @@ createdAt: 2024-08-24
 package:
   name: github.com/jurabek/otelkafka
   registry: go
-  version: v1.0.0
+  version: v1.0.1

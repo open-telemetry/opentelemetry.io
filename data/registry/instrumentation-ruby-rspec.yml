@@ -15,5 +15,5 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-rspec
-  version: 0.4.0
+  version: 0.7.0
 isFirstParty: false

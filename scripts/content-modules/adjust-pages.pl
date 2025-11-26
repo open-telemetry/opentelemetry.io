@@ -24,9 +24,9 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.49.0
-    otlp: 1.8.0
-    semconv: 1.37.0
+    spec: 1.51.0
+    otlp: 1.9.0
+    semconv: 1.38.0
   );
 # Versions map without the colon in the keys
 my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
@@ -95,21 +95,30 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-sub patchSpec_because_of_SemConv_MetricReqLevelHashDNE() {
-  return unless $ARGV =~ /^tmp\/semconv\/docs\//
-    && applyPatchOrPrintMsgIf('2025-08-28-metric-request-level-hash-dne', 'semconv', '1.37.0-dev');
+sub patchSpec_because_of_SemConv_DockerAPIVersions() {
+  return unless
+    # Restrict the patch to the proper spec, and section or file:
+    $ARGV =~ m|^tmp/semconv/docs/|
+    &&
+    # Call helper function that will cause the function to return early if the
+    # current version of the named spec (arg 2) is greater than the target
+    # version (arg 3). The first argument is a unique id that will be printed if
+    # the patch is outdated. Otherwise, if the patch is still relevant we fall
+    # through to the body of this patch function.
+    applyPatchOrPrintMsgIf('2025-11-21-docker-api-versions', 'semconv', '1.39.0-dev');
 
-  # See https://github.com/open-telemetry/semantic-conventions/issues/2690#issuecomment-3235079573
-  s|/docs/general/metrics.md#metric-requirement-levels|/docs/general/metric-requirement-level.md#recommended|g;
-}
+  # Give infor about the patch:
+  #
+  # For the problematic links, see:
+  # https://github.com/open-telemetry/semantic-conventions/issues/3103
+  #
+  # Replace older Docker API versions with the latest one like in:
+  # https://github.com/open-telemetry/semantic-conventions/pull/3093
 
-sub patchSpec_because_of_SemConv_GenAiSpanRelativePath() {
-  return unless $ARGV =~ /^tmp\/semconv\/docs\/gen-ai\/gen-ai-spans/
-    && applyPatchOrPrintMsgIf('2025-08-28-gen-ai-span-relative-path', 'semconv', '1.37.0-dev');
-
-  # See https://github.com/open-telemetry/semantic-conventions/issues/2690#issue-3364744586
-  # Replace [foo](./some-path) with [foo](/docs/gen-ai/some-path)
-  s|\]\(\./|](/docs/gen-ai/|g;
+  # This is the actual regex-based patch code:
+  s{
+    (https://docs.docker.com/reference/api/engine/version)/v1.(43|51)/(\#tag/)
+  }{$1/v1.52/$3}gx;
 }
 
 sub getVersFromSubmodule() {
@@ -194,16 +203,11 @@ while(<>) {
   ## Semconv
 
   if ($ARGV =~ /^tmp\/semconv/) {
-    patchSpec_because_of_SemConv_MetricReqLevelHashDNE();
-    patchSpec_because_of_SemConv_GenAiSpanRelativePath();
-
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
 
-    # Remove the .md extension from the link title
-    # TODO: remove this once the .md extension is removed from the link title
-    s|(<td><a href=")(.*)\.md(#.*">.*</a></td>)|$1$2$3|g;
+    patchSpec_because_of_SemConv_DockerAPIVersions();
   }
 
 

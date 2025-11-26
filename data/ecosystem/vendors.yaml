@@ -6,7 +6,7 @@
   commercial: true
 - name: AppDynamics (Cisco)
   nativeOTLP: true
-  url: https://docs.appdynamics.com/latest/en/application-monitoring/cisco-appdynamics-for-opentelemetry
+  url: https://docs.appdynamics.com/latest/en/application-monitoring/splunk-appdynamics-for-opentelemetry
   contact:
   oss: false
   commercial: true
@@ -24,7 +24,7 @@
   commercial: true
 - name: Arize Phoenix
   nativeOTLP: true
-  url: https://docs.arize.com/phoenix/tracing/how-to-tracing/setup-tracing/setup-tracing-python
+  url: https://arize.com/docs/phoenix/tracing/how-to-tracing/setup-tracing
   contact:
   oss: false
   commercial: true
@@ -122,7 +122,7 @@
   commercial: true
 - name: DaoCloud
   nativeOTLP: true
-  url: https://docs.daocloud.io/en/insight/06UserGuide/01quickstart/otel/otel/
+  url: https://docs.daocloud.io/en/insight/quickstart/otel/otel/
   contact:
   oss: false
   commercial: true
@@ -170,7 +170,7 @@
   commercial: true
 - name: Highlight
   nativeOTLP: true
-  url: https://www.highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/
+  url: https://highlight.io/docs/general/company/open-source/contributing/adding-an-sdk/
   contact: support@highlight.io
   oss: true
   commercial: true
@@ -194,7 +194,7 @@
   commercial: true
 - name: Instana
   nativeOTLP: true
-  url: https://www.ibm.com/docs/en/obi/current?topic=apis-opentelemetry
+  url: https://www.ibm.com/docs/en/instana-observability/1.0.304?topic=apis-opentelemetry
   contact:
   oss: false
   commercial: true
@@ -290,8 +290,14 @@
   commercial: true
 - name: Observe, Inc.
   nativeOTLP: true
-  url: https://docs.observeinc.com/en/latest/content/send-data/app-instrumentation/index.html#instrument-with-opentelemetry
+  url: https://docs.observeinc.com/en/latest/content/send-data/apm-instrumentation/operator-auto-instrumentation.html
   contact:
+  oss: false
+  commercial: true
+- name: OllyGarden
+  nativeOTLP: true
+  url: https://ollygarden.com
+  contact: support@ollygarden.com
   oss: false
   commercial: true
 - name: Otelic
@@ -355,9 +361,9 @@
   oss: true
   commercial: true
 - name: Sentry
-  nativeOTLP: false
-  url: https://sentry.io/for/opentelemetry/
-  contact:
+  nativeOTLP: true
+  url: https://docs.sentry.io/concepts/otlp/
+  contact: otel@sentry.io
   oss: false
   commercial: true
 - name: Red Hat
