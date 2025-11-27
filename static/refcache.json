@@ -1651,6 +1651,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-11-16T09:42:27.835997747Z"
   },
+  "https://docs.controltheory.com/controltheory-documentation/gonzo-docs/advanced-features/working-with-otel": {
+    "StatusCode": 200,
+    "LastSeen": "2025-11-27T09:19:28.681167437Z"
+  },
   "https://docs.couchdb.org/en/stable/api/document/common.html#get--db-docid": {
     "StatusCode": 200,
     "LastSeen": "2025-11-18T09:45:04.152929563Z"
