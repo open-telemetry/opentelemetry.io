@@ -80,7 +80,7 @@
     "fix:i18n:status": "scripts/check-i18n.sh -D",
     "fix:i18n:new": "scripts/check-i18n.sh -n -c HEAD",
     "fix:i18n": "npm run seq -- fix:i18n:new fix:i18n:status",
-    "fix:markdown": "npm run check:markdown -- --fix; echo '\nTrimming trailing whitespace'; npm run _fix:trailing-spaces",
+    "fix:markdown": "npm run check:markdown -- --fix && echo '\nTrimming trailing whitespace' && npm run _fix:trailing-spaces",
     "fix:refcache:refresh": "npm run _refcache:prune -- -n ${PRUNE_N:-128}",
     "fix:refcache": "npm run _refcache:prune; npm run check:links",
     "fix:submodule": "npm run pin:submodule",
