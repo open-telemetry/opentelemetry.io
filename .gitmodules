@@ -19,8 +19,8 @@
 	otlp-pin = v1.9.0
 [submodule "content-modules/semantic-conventions"]
 	path = content-modules/semantic-conventions
-	url = https://github.com/open-telemetry/semantic-conventions
-	semconv-pin = v1.38.0-58-g64c5c9a9
+	url = https://github.com/vitorvasc/semantic-conventions
+	semconv-pin = v1.38.0-59-b15478b8ffe54e283ed42dc3691a5b6f97c1402a
 [submodule "content-modules/opamp-spec"]
 	path = content-modules/opamp-spec
 	url = https://github.com/open-telemetry/opamp-spec
