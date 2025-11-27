@@ -9423,6 +9423,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-15T09:44:46.753537038Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/main/COMPATIBILITY.md#githubcomsegmentiokafka-go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-27T19:51:17.242607539Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/main/docs/getting-started.md": {
     "StatusCode": 206,
     "LastSeen": "2025-11-15T09:44:31.490109097Z"
