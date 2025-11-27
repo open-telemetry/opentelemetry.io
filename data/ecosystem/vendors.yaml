@@ -98,9 +98,9 @@
   commercial: true
 - name: ControlTheory
   nativeOTLP: true
-  url: https://www.controltheory.com/use-case/otel-collector-management/
+  url: https://docs.controltheory.com/controltheory-documentation/gonzo-docs/advanced-features/working-with-otel
   contact: support@controltheory.com
-  oss: false
+  oss: true
   commercial: true
 - name: Coralogix
   nativeOTLP: true
