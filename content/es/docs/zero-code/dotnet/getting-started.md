@@ -195,7 +195,7 @@ se indican a continuación utilizan scripts de Unix-shell o PowerShell.
    curl localhost:8080/rolldice
    ```
 
-6. Después de unos 30 segundos, deten el proceso del servidor.
+6. Después de unos 30 segundos, detén el proceso del servidor.
 
 En este punto, deberías ver el trazo y el log de salida del servidor y del
 cliente que se parece a esto (la salida se ha ajustado a la línea para facilitar
@@ -256,7 +256,7 @@ Además, al detener el servidor, deberías ver una salida de todas las métricas
 recogidas (se muestra un extracto de muestra):
 
 <details>
-<summary>Metrics</summary>
+<summary>Métricas</summary>
 
 ```log
 Export process.runtime.dotnet.gc.collections.count, Number of garbage collections that have occurred since process start., Meter: OpenTelemetry.Instrumentation.Runtime/1.1.0.2
@@ -304,11 +304,11 @@ Para más información:
 - Si tienes algún problema, consulta la
   [Guía de resolución de problemas](../troubleshooting).
 
-[trazas]: /docs/concepts/signals/traces/
-[metricas]: /docs/concepts/signals/metrics/
+[traces]: /docs/concepts/signals/traces/
+[metrics]: /docs/concepts/signals/metrics/
 [logs]: /docs/concepts/signals/logs/
-[Configurar la instrumentación automática de .NET]: ../configuration
-[exportador de consola]:
+[configure .NET Automatic Instrumentation]: ../configuration
+[console exporter]:
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#internal-logs
 [releases]:
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases
