@@ -17,10 +17,10 @@ Collector. The components included in the distributions can be found by in the
 Existing distributions provided by the OpenTelemetry project may not meet your
 needs. For example, you may want a smaller binary or need to implement custom
 functionality like
-[authenticator extensions](../building/authenticator-extension),
-[receivers](../building/receiver), processors, exporters or
-[connectors](../building/connector). The tool used to build distributions
-[ocb](../custom-collector) (OpenTelemetry Collector Builder) is available to
+[authenticator extensions](../extend/custom-component/extension/authenticator),
+[receivers](../extend/custom-component/receiver), processors, exporters or
+[connectors](../extend/custom-component/connector). The tool used to build distributions
+[ocb](../extend/ocb) (OpenTelemetry Collector Builder) is available to
 build your own distributions.
 
 ## Third-party Distributions

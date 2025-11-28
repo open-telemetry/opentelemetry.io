@@ -1,7 +1,7 @@
 ---
 title: Building a receiver
 weight: 20
-aliases: [/docs/collector/trace-receiver/]
+aliases: [/docs/collector/trace-receiver/, /docs/collector/building/receiver/]
 # prettier-ignore
 cSpell:ignore: backendsystem crand debugexporter mapstructure pcommon pdata ptrace rcvr resourcespans struct structs tailtracer telemetrygen uber
 ---
@@ -50,10 +50,10 @@ above in order to create the receiver, so let's get started.
 
 ## Setting up receiver development and testing environment
 
-First use the [Building a Custom Collector](/docs/collector/custom-collector)
+First use the [Building a Custom Collector](/docs/collector/extend/ocb)
 tutorial to create a Collector instance named `otelcol-dev`; all you need is to
 copy the `builder-config.yaml` described on
-[Step 2](/docs/collector/custom-collector#step-2---create-a-builder-manifest-file)
+[Step 2](/docs/collector/extend/ocb#step-2---create-a-builder-manifest-file)
 and run the builder. As an outcome you should now have a folder structure like
 this:
 
