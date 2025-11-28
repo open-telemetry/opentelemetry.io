@@ -12,8 +12,8 @@ Instrumentation.
 Si estás buscando una forma de instrumentar manualmente tu aplicación, consulta
 [esta guía](/docs/languages/dotnet/getting-started).
 
-Aprenderás cómo puedes instrumentar automáticamente una aplicación .NET sencilla,
-de tal manera que se emitan [trazas][], [métricas][] y [logs][] a la
+Aprenderás cómo puedes instrumentar automáticamente una aplicación .NET
+sencilla, de tal manera que se emitan [trazas][], [métricas][] y [logs][] a la
 consola.
 
 ## Requisitos previos
@@ -29,12 +29,13 @@ El siguiente ejemplo utiliza una aplicación básica
 Si no utilizas ASP.NET Core, no te preocupes, puedes seguir utilizando
 OpenTelemetry .NET Automatic Instrumentation.
 
-Para ver ejemplos más detallados, consulta [ejemplos](/docs/languages/dotnet/examples/).
+Para ver ejemplos más detallados, consulta
+[ejemplos](/docs/languages/dotnet/examples/).
 
 ### Crea e inicia un servidor HTTP
 
-Para empezar, configura un entorno en un nuevo directorio llamado «dotnet-simple».
-Dentro de ese directorio, ejecuta el siguiente comando:
+Para empezar, configura un entorno en un nuevo directorio llamado
+«dotnet-simple». Dentro de ese directorio, ejecuta el siguiente comando:
 
 ```sh
 dotnet new web
@@ -77,8 +78,8 @@ app.MapGet("/rolldice/{player?}", HandleRollDice);
 app.Run();
 ```
 
-En el subdirectorio «Properties», sustituye el contenido de «launchSettings.json»
-por lo siguiente:
+En el subdirectorio «Properties», sustituye el contenido de
+«launchSettings.json» por lo siguiente:
 
 ```json
 {
@@ -98,7 +99,8 @@ por lo siguiente:
 ```
 
 Compila y ejecuta la aplicación con el siguiente comando, luego abre
-<http://localhost:8080/rolldice> en tu navegador web para asegurarte de que funciona.
+<http://localhost:8080/rolldice> en tu navegador web para asegurarte de que
+funciona.
 
 ```sh
 dotnet build
@@ -107,14 +109,16 @@ dotnet run
 
 ## Instrumentación
 
-A continuación, utilizarás [OpenTelemetry .NET Automatic Instrumentation](../) para
-instrumentar la aplicación en el momento del lanzamiento. Aunque puedes [Configurar la instrumentación automática de .NET][] de varias maneras, los pasos que se indican a continuación utilizan scripts de Unix-shell
-o PowerShell.
+A continuación, utilizarás [OpenTelemetry .NET Automatic Instrumentation](../)
+para instrumentar la aplicación en el momento del lanzamiento. Aunque puedes
+[Configurar la instrumentación automática de .NET][] de varias maneras, los
+pasos que se indican a continuación utilizan scripts de Unix-shell o PowerShell.
 
-> **Nota**: Los comandos de PowerShell requieren privilegios elevados (de administrador).
+> **Nota**: Los comandos de PowerShell requieren privilegios elevados (de
+> administrador).
 
-1. Descarga los scripts de instalación desde [Releases][] del
-   repositorio `opentelemetry-dotnet-instrumentation`:
+1. Descarga los scripts de instalación desde [Releases][] del repositorio
+   `opentelemetry-dotnet-instrumentation`:
 
    {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
@@ -132,8 +136,8 @@ o PowerShell.
 
    {{% /tab %}} {{< /tabpane >}}
 
-2. Ejecuta el siguiente script para descargar la instrumentación automática para tu
-   entorno de desarrollo:
+2. Ejecuta el siguiente script para descargar la instrumentación automática para
+   tu entorno de desarrollo:
 
    {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
@@ -150,10 +154,11 @@ o PowerShell.
 
    {{% /tab %}} {{< /tabpane >}}
 
-3. Establece y exporta las variables que especifican un [exportador de consola][], luego ejecuta
-   el script que configura otras variables de entorno necesarias utilizando una notación
-   adecuada para tu entorno de shell/terminal. A continuación, ilustramos una notación
-   para shells tipo bash y PowerShell:
+3. Establece y exporta las variables que especifican un [exportador de
+   consola][], luego ejecuta el script que configura otras variables de entorno
+   necesarias utilizando una notación adecuada para tu entorno de
+   shell/terminal. A continuación, ilustramos una notación para shells tipo bash
+   y PowerShell:
 
    {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
@@ -192,8 +197,9 @@ o PowerShell.
 
 6. Después de unos 30 segundos, detén el proceso del servidor.
 
-En este punto, deberías ver el trazo y el log de salida del servidor y del cliente
-que se parece a esto (la salida se ha ajustado a la línea para facilitar la lectura):
+En este punto, deberías ver el trazo y el log de salida del servidor y del
+cliente que se parece a esto (la salida se ha ajustado a la línea para facilitar
+la lectura):
 
 <details>
 <summary>Trazas y Logs</summary>
@@ -291,11 +297,12 @@ Value: Sum: 1330.4766000000002 Count: 5 Min: 50.0333 Max: 465.7936
 Para más información:
 
 - Para configurar exportadores, muestreos, recursos y más, consulta
-[Configuración y ajustes](../configuration)
+  [Configuración y ajustes](../configuration)
 - Consulta la lista de [instrumentaciones disponibles](../instrumentations)
 - Si deseas combinar la instrumentación automática y manual, aprende cómo
   [crear trazas y métricas personalizadas](../custom).
-- Si tienes algún problema, consulta la [Guía de resolución de problemas](../troubleshooting).
+- Si tienes algún problema, consulta la
+  [Guía de resolución de problemas](../troubleshooting).
 
 [trazas]: /docs/concepts/signals/traces/
 [métricas]: /docs/concepts/signals/metrics/
