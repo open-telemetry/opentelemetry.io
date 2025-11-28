@@ -4,7 +4,7 @@ weight: 2
 cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
 ---
 
-You can deploy the OpenTelemetry Collector on a wide variety of operating
+Deploy the OpenTelemetry Collector on a wide variety of operating
 systems and architectures. The following instructions show how to download and
 install the latest stable version of the Collector.
 
@@ -15,7 +15,7 @@ and [Deployment Methods][] page.
 ## Docker
 
 The following commands pull a Docker image and run the Collector in a container.
-Replace `{{% param vers %}}` with the version of the Collector you want to run.
+Replace `{{% param vers %}}` with your desired Collector version.
 
 {{< tabpane text=true >}} {{% tab DockerHub %}}
 
@@ -33,7 +33,7 @@ docker run ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry
 
 {{% /tab %}} {{< /tabpane >}}
 
-To load a custom configuration file from your working directory, mount that file
+To load a custom configuration file from your working directory, mount the file
 as a volume:
 
 {{< tabpane text=true >}} {{% tab DockerHub %}}
@@ -52,8 +52,8 @@ docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-t
 
 ## Docker Compose
 
-You can add OpenTelemetry Collector to your existing `docker-compose.yaml` file
-as in the following example:
+Add OpenTelemetry Collector to your existing `docker-compose.yaml` file
+using the following example:
 
 ```yaml
 otel-collector:
@@ -72,41 +72,43 @@ otel-collector:
 
 ## Kubernetes
 
-The following command deploys an agent as a daemonset and a single gateway
-instance:
+Deploy an agent as a DaemonSet and a single gateway
+instance using the following command:
 
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector/v{{% param vers %}}/examples/k8s/otel-config.yaml
 ```
 
-The previous example is meant to serve as a starting point, to be extended and
-customized before actual production usage. For production-ready customization
-and installation, see [OpenTelemetry Helm Charts][].
+This example serves as a starting point. Extend and customize it before
+production use. For production-ready customization and installation, see
+[OpenTelemetry Helm Charts][].
 
 You can also use the [OpenTelemetry Operator][] to provision and maintain an
-OpenTelemetry Collector instance, with features such as automatic upgrade
+OpenTelemetry Collector instance with features including automatic upgrade
 handling, `Service` configuration based on the OpenTelemetry configuration,
-automatic sidecar injection into deployments, and more.
+and automatic sidecar injection into deployments.
 
-For guidance on how to use the Collector with Kubernetes, see
+For guidance on using the Collector with Kubernetes, see
 [Kubernetes Getting Started](/docs/platforms/kubernetes/getting-started/).
 
 ## Nomad
 
-You can find reference job files to deploy the Collector as an agent, gateway,
-and as full demo in [Getting Started with OpenTelemetry on HashiCorp Nomad][].
+Find reference job files to deploy the Collector as an agent, gateway,
+or full demo in [Getting Started with OpenTelemetry on HashiCorp Nomad][].
 
 ## Linux
 
-Every Collector release includes APK, DEB and RPM packaging for Linux
-amd64/arm64/i386 systems. You can find the default configuration in
+Every Collector release includes APK, DEB, and RPM packaging for Linux
+amd64/arm64/i386 systems. Find the default configuration in
 `/etc/otelcol/config.yaml` after installation.
 
-> Note: `systemd` is required for automatic service configuration.
+{{% alert title="Note" %}}
+`systemd` is required for automatic service configuration.
+{{% /alert %}}
 
-### DEB Installation
+### DEB installation
 
-To get started on Debian systems run the following commands:
+To get started on Debian systems, run the following commands:
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
@@ -137,9 +139,9 @@ sudo dpkg -i otelcol_{{% param vers %}}_linux_386.deb
 
 {{% /tab %}} {{< /tabpane >}}
 
-### RPM Installation
+### RPM installation
 
-To get started on Red Hat systems run the following commands:
+To get started on Red Hat systems, run the following commands:
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
@@ -172,8 +174,8 @@ sudo rpm -ivh otelcol_{{% param vers %}}_linux_386.rpm
 
 ### Manual Linux installation
 
-Linux [releases][] are available for various architectures. You can download the
-file containing the binary and install it on your machine manually:
+Linux [releases][] are available for various architectures. Download the
+binary file and install it manually:
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
@@ -210,20 +212,20 @@ tar -xvf otelcol_{{% param vers %}}_linux_ppc64le.tar.gz
 By default, the `otelcol` systemd service starts with the
 `--config=/etc/otelcol/config.yaml` option after installation.
 
-To use a different settings, set the `OTELCOL_OPTIONS` variable in the
+To use different settings, set the `OTELCOL_OPTIONS` variable in the
 `/etc/otelcol/otelcol.conf` systemd environment file to the appropriate
-command-line options. You can run `/usr/bin/otelcol --help` to see all available
-options. You can pass additional environment variables to the `otelcol` service
+command-line options. Run `/usr/bin/otelcol --help` to see all available
+options. Pass additional environment variables to the `otelcol` service
 by adding them to this file.
 
 If you modify the Collector configuration file or `/etc/otelcol/otelcol.conf`,
-restart the `otelcol` service to apply the changes by running:
+restart the `otelcol` service to apply the changes:
 
 ```sh
 sudo systemctl restart otelcol
 ```
 
-To check the output from the `otelcol` service, run:
+To check the output from the `otelcol` service:
 
 ```sh
 sudo journalctl -u otelcol
@@ -231,7 +233,7 @@ sudo journalctl -u otelcol
 
 ## macOS
 
-macOS [releases][] are available for Intel and ARM systems. The releases are
+macOS [releases][] are available for Intel and ARM systems. Releases are
 packaged as gzipped tarballs (`.tar.gz`). To unpack them, run the following
 commands:
 
@@ -251,7 +253,7 @@ tar -xvf otelcol_{{% param vers %}}_darwin_arm64.tar.gz
 
 {{% /tab %}} {{< /tabpane >}}
 
-Every Collector release includes an `otelcol` executable that you can run after
+Every Collector release includes an `otelcol` executable available after
 unpacking.
 
 ## Windows
@@ -274,12 +276,12 @@ Invoke-WebRequest -Uri "https://github.com/open-telemetry/opentelemetry-collecto
 tar -xvzf otelcol_{{% param vers %}}_windows_amd64.tar.gz
 ```
 
-Every release includes the Collector executable that you can run after
+Every release includes the Collector executable available after
 installation.
 
 ## Build from source
 
-You can build the latest version of the Collector based on the local operating
+Build the latest version of the Collector for your local operating
 system using the following commands:
 
 ```sh
