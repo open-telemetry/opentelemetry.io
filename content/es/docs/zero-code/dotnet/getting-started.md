@@ -13,8 +13,10 @@ Si estás buscando una forma de instrumentar manualmente tu aplicación, consult
 [esta guía](/docs/languages/dotnet/getting-started).
 
 Aprenderás cómo puedes instrumentar automáticamente una aplicación .NET
-sencilla, de tal manera que se emitan [trazas][], [métricas][] y [logs][] a la
-consola.
+sencilla, de tal manera que se emitan
+[trazas](https://opentelemetry.io/docs/concepts/signals/traces/),
+[métricas](https://opentelemetry.io/docs/concepts/signals/metrics/) y
+[logs](https://opentelemetry.io/docs/concepts/signals/logs/) a la consola.
 
 ## Requisitos previos
 
@@ -111,14 +113,16 @@ dotnet run
 
 A continuación, utilizarás [OpenTelemetry .NET Automatic Instrumentation](../)
 para instrumentar la aplicación en el momento del lanzamiento. Aunque puedes
-[configurar .NET Automatic Instrumentation][] de varias maneras, los pasos que
-se indican a continuación utilizan scripts de Unix-shell o PowerShell.
+[configurar .NET Automatic Instrumentation](https://opentelemetry.io/docs/zero-code/dotnet/configuration)
+de varias maneras, los pasos que se indican a continuación utilizan scripts de
+Unix-shell o PowerShell.
 
 > **Nota**: Los comandos de PowerShell requieren privilegios elevados (de
 > administrador).
 
-1. Descarga los scripts de instalación desde [Releases][] del repositorio
-   `opentelemetry-dotnet-instrumentation`:
+1. Descarga los scripts de instalación desde
+   [Releases](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases)
+   del repositorio `opentelemetry-dotnet-instrumentation`:
 
    {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
@@ -154,11 +158,11 @@ se indican a continuación utilizan scripts de Unix-shell o PowerShell.
 
    {{% /tab %}} {{< /tabpane >}}
 
-3. Establece y exporta las variables que especifican un [exportador de
-   consola][], luego ejecuta el script que configura otras variables de entorno
-   necesarias utilizando una notación adecuada para tu entorno de
-   shell/terminal. A continuación, ilustramos una notación para shells tipo bash
-   y PowerShell:
+3. Establece y exporta las variables que especifican un
+   [exportador de consola](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#internal-logs),
+   luego ejecuta el script que configura otras variables de entorno necesarias
+   utilizando una notación adecuada para tu entorno de shell/terminal. A
+   continuación, ilustramos una notación para shells tipo bash y PowerShell:
 
    {{< tabpane text=true >}} {{% tab Unix-shell %}}
 
@@ -304,11 +308,11 @@ Para más información:
 - Si tienes algún problema, consulta la
   [Guía de resolución de problemas](../troubleshooting).
 
-[traces]: /docs/concepts/signals/traces/
-[metrics]: /docs/concepts/signals/metrics/
+[trazas]: /docs/concepts/signals/traces/
+[métricas]: /docs/concepts/signals/metrics/
 [logs]: /docs/concepts/signals/logs/
-[configure .NET Automatic Instrumentation]: ../configuration
-[console exporter]:
+[Configura la instrumentación automática de .NET]: ../configuration
+[exportador de consola]:
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/blob/main/docs/config.md#internal-logs
 [releases]:
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/releases
