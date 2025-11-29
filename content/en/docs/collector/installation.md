@@ -4,9 +4,9 @@ weight: 2
 cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
 ---
 
-Deploy the OpenTelemetry Collector on a wide variety of operating
-systems and architectures. The following instructions show how to download and
-install the latest stable version of the Collector.
+Deploy the OpenTelemetry Collector on a wide variety of operating systems and
+architectures. The following instructions show how to download and install the
+latest stable version of the Collector.
 
 If you aren't familiar with the deployment models, components, and repositories
 applicable to the OpenTelemetry Collector, first review the [Data Collection][]
@@ -52,8 +52,8 @@ docker run -v $(pwd)/config.yaml:/etc/otelcol-contrib/config.yaml ghcr.io/open-t
 
 ## Docker Compose
 
-Add OpenTelemetry Collector to your existing `docker-compose.yaml` file
-using the following example:
+Add OpenTelemetry Collector to your existing `docker-compose.yaml` file using
+the following example:
 
 ```yaml
 otel-collector:
@@ -72,8 +72,8 @@ otel-collector:
 
 ## Kubernetes
 
-Deploy an agent as a DaemonSet and a single gateway
-instance using the following command:
+Deploy an agent as a DaemonSet and a single gateway instance using the following
+command:
 
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-collector/v{{% param vers %}}/examples/k8s/otel-config.yaml
@@ -85,16 +85,16 @@ production use. For production-ready customization and installation, see
 
 You can also use the [OpenTelemetry Operator][] to provision and maintain an
 OpenTelemetry Collector instance with features including automatic upgrade
-handling, `Service` configuration based on the OpenTelemetry configuration,
-and automatic sidecar injection into deployments.
+handling, `Service` configuration based on the OpenTelemetry configuration, and
+automatic sidecar injection into deployments.
 
 For guidance on using the Collector with Kubernetes, see
 [Kubernetes Getting Started](/docs/platforms/kubernetes/getting-started/).
 
 ## Nomad
 
-Find reference job files to deploy the Collector as an agent, gateway,
-or full demo in [Getting Started with OpenTelemetry on HashiCorp Nomad][].
+Find reference job files to deploy the Collector as an agent, gateway, or full
+demo in [Getting Started with OpenTelemetry on HashiCorp Nomad][].
 
 ## Linux
 
@@ -102,9 +102,8 @@ Every Collector release includes APK, DEB, and RPM packaging for Linux
 amd64/arm64/i386 systems. Find the default configuration in
 `/etc/otelcol/config.yaml` after installation.
 
-{{% alert title="Note" %}}
-`systemd` is required for automatic service configuration.
-{{% /alert %}}
+{{% alert title="Note" %}} `systemd` is required for automatic service
+configuration. {{% /alert %}}
 
 ### DEB installation
 
@@ -174,8 +173,8 @@ sudo rpm -ivh otelcol_{{% param vers %}}_linux_386.rpm
 
 ### Manual Linux installation
 
-Linux [releases][] are available for various architectures. Download the
-binary file and install it manually:
+Linux [releases][] are available for various architectures. Download the binary
+file and install it manually:
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
@@ -215,8 +214,8 @@ By default, the `otelcol` systemd service starts with the
 To use different settings, set the `OTELCOL_OPTIONS` variable in the
 `/etc/otelcol/otelcol.conf` systemd environment file to the appropriate
 command-line options. Run `/usr/bin/otelcol --help` to see all available
-options. Pass additional environment variables to the `otelcol` service
-by adding them to this file.
+options. Pass additional environment variables to the `otelcol` service by
+adding them to this file.
 
 If you modify the Collector configuration file or `/etc/otelcol/otelcol.conf`,
 restart the `otelcol` service to apply the changes:
@@ -276,13 +275,12 @@ Invoke-WebRequest -Uri "https://github.com/open-telemetry/opentelemetry-collecto
 tar -xvzf otelcol_{{% param vers %}}_windows_amd64.tar.gz
 ```
 
-Every release includes the Collector executable available after
-installation.
+Every release includes the Collector executable available after installation.
 
 ## Build from source
 
-Build the latest version of the Collector for your local operating
-system using the following commands:
+Build the latest version of the Collector for your local operating system using
+the following commands:
 
 ```sh
 git clone https://github.com/open-telemetry/opentelemetry-collector.git
