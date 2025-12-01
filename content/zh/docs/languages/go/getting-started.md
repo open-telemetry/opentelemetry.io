@@ -1,7 +1,8 @@
 ---
 title: 开始
 weight: 10
-default_lang_commit: 3512b0ae11f72d3a954d86da59ad7f98d064bdad
+default_lang_commit: 3512b0ae11f72d3a954d86da59ad7f98d064bdad # patched
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
@@ -149,13 +150,14 @@ import (
 
 // setupOTelSDK 初始化 OpenTelemetry 的管道。
 // 如果没有返回错误, 用户需要确保在之后调用返回的 shutdown 方法进行清理。
-func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, err error) {
+func setupOTelSDK(ctx context.Context) (func(context.Context) error, error) {
     var shutdownFuncs []func(context.Context) error
+    var err error
 
     // shutdown 会调用所有注册的清理函数。
     // 所有返回的错误都会被合并到一起。
     // 每个注册的清理函数仅会被调用一次。
-    shutdown = func(ctx context.Context) error {
+    shutdown := func(ctx context.Context) error {
         var err error
         for _, fn := range shutdownFuncs {
             err = errors.Join(err, fn(ctx))
@@ -177,7 +179,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
     tracerProvider, err := newTracerProvider()
     if err != nil {
         handleErr(err)
-        return
+        return shutdown, err
     }
     shutdownFuncs = append(shutdownFuncs, tracerProvider.Shutdown)
     otel.SetTracerProvider(tracerProvider)
@@ -186,7 +188,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
     meterProvider, err := newMeterProvider()
     if err != nil {
         handleErr(err)
-        return
+        return shutdown, err
     }
     shutdownFuncs = append(shutdownFuncs, meterProvider.Shutdown)
     otel.SetMeterProvider(meterProvider)
@@ -200,7 +202,7 @@ func setupOTelSDK(ctx context.Context) (shutdown func(context.Context) error, er
     shutdownFuncs = append(shutdownFuncs, loggerProvider.Shutdown)
     global.SetLoggerProvider(loggerProvider)
 
-    return
+    return shutdown, err
 }
 
 func newPropagator() propagation.TextMapPropagator {
@@ -285,7 +287,7 @@ func main() {
     }
 }
 
-func run() (err error) {
+func run() error {
     // 优雅地处理中断信号（Ctrl+C）。
     ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
     defer stop()
@@ -293,7 +295,7 @@ func run() (err error) {
     // 设置并初始化 OpenTelemetry SDK。
     otelShutdown, err := setupOTelSDK(ctx)
     if err != nil {
-        return
+        return err
     }
     // 确保在程序结束之前调用 shutdown 方法清理资源。
     defer func() {
@@ -317,7 +319,7 @@ func run() (err error) {
     select {
     case err = <-srvErr:
         // 启动 HTTP 服务器时出错。
-        return
+        return err
     case <-ctx.Done():
         // 等待第一个 CTRL+C 信号。
         // 尽快停止接受信号通知。
@@ -326,7 +328,7 @@ func run() (err error) {
 
     // 当调用 Shutdown 时，ListenAndServe 会立即返回 ErrServerClosed 错误。
     err = srv.Shutdown(context.Background())
-    return
+    return err
 }
 
 func newHTTPHandler() http.Handler {
@@ -413,7 +415,7 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
     }
     logger.InfoContext(ctx, msg, "result", roll)
 
-    // 为这个指标定义一个熟悉，表示是骰子点数值。
+    // 为这个指标定义一个属性，表示是骰子点数值。
     rollValueAttr := attribute.Int("roll.value", roll)
     span.SetAttributes(rollValueAttr)
     rollCnt.Add(ctx, 1, metric.WithAttributes(rollValueAttr))

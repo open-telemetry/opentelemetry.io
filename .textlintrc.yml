@@ -132,6 +132,7 @@ rules:
         - '(?<=(^|\s))(?:\bdot|\.)net\b'
         - .NET
       - [ebpf, eBPF]
+      - [epbf, eBPF]
       - ['http[ /]?2(?:\.0)?', HTTP/2]
       - [he(/| or )she, they]
       - [\(s\)he, they]

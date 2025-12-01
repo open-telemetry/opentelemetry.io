@@ -41,7 +41,7 @@ OTLPについて詳細に学習したい場合は、[OTLP仕様][OTLP]を参照�
 
 {{% alert title=Note %}}
 
-[ゼロコード計装](/docs/zero-code/{{ $l }})を使用している場合は、[設定ガイド](/docs/zero-code/{{ $l }}/configuration/)に従ってエクスポーターの設定方法を学ぶことができます。
+[ゼロコード計装](</docs/zero-code/{{ $langIdAsPath }}>)を使用している場合は、[設定ガイド](</docs/zero-code/{{ $langIdAsPath }}/configuration/>)に従ってエクスポーターの設定方法を学ぶことができます。
 
 {{% /alert %}}
 

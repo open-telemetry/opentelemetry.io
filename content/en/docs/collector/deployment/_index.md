@@ -1,21 +1,22 @@
 ---
-title: Deployment
-description: Patterns you can apply to deploy the OpenTelemetry collector
+title: Deploy the Collector
+linkTitle: Deploy
+description: Patterns you can apply to deploy the OpenTelemetry Collector
 weight: 3
 ---
 
-The OpenTelemetry Collector consists of a single binary which you can use in
-different ways, for different use cases. This section describes deployment
-patterns, their use cases along with pros and cons and best practices for
-collector configurations for cross-environment and multi-backend deployments.
-For deployment security considerations, see [Collector hosting best
+The OpenTelemetry Collector consists of a single binary that you can deploy in
+different ways for different use cases. This section describes common deployment
+patterns, their use cases, and pros and cons. It also provides best practices
+for configuring the Collector in cross-environment and multi-backend scenarios.
+For deployment-related security considerations, see the [Collector hosting best
 practices][security].
 
-## Resources
+## Additional resources
 
-- KubeCon NA 2021 Talk on [OpenTelemetry Collector Deployment
+- KubeCon NA 2021 talk on [OpenTelemetry Collector Deployment
   Patterns][y-patterns]
-- [Deployment Patterns][gh-patterns] accompanying the talk
+  - [Deployment patterns][gh-patterns] accompanying the talk
 
 [security]: /docs/security/hosting-best-practices/
 [gh-patterns]:

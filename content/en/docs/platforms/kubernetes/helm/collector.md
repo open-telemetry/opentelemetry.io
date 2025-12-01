@@ -8,7 +8,7 @@ cSpell:ignore: debugexporter filelog filelogreceiver hostmetricsreceiver kubelet
 ## Introduction
 
 The [OpenTelemetry Collector](/docs/collector) is an important tool for
-monitoring a Kubernetes cluster and all the services that in within. To
+monitoring a Kubernetes cluster and all the services that operate within. To
 facilitate installation and management of a collector deployment in a Kubernetes
 the OpenTelemetry community created the
 [OpenTelemetry Collector Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector).
@@ -24,7 +24,7 @@ following commands:
 helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 helm install my-opentelemetry-collector open-telemetry/opentelemetry-collector \
    --set image.repository="otel/opentelemetry-collector-k8s" \
-   --set mode=<daemonset|deployment|statefulset> \
+   --set mode=<daemonset|deployment|statefulset>
 ```
 
 ### Configuration
@@ -199,7 +199,7 @@ exported logs back into the collector, which can cause a "log explosion".
 
 To prevent the looping, the default configuration of the receiver excludes the
 collector's own logs. If you want to include the collector's logs, make sure to
-replace the `debug` exporter with an exporter that does not send logs to
+replace the `debug` exporter with an exporter that does not send logs to the
 collector's standard output.
 
 Here's an example `values.yaml` that replaces the default `debug` exporter on
@@ -362,7 +362,7 @@ This feature is disabled by default. It has the following requirements:
 To enable this feature, set the `presets.hostMetrics.enabled` property to
 `true`. When enabled, the chart will add the necessary volumes and volumeMounts
 and will add a `hostmetricsreceiver` to the metrics pipeline. By default metrics
-will be scrapped every 10 seconds and the following scrappers are enabled:
+will be scraped every 10 seconds and the following scrapers are enabled:
 
 - cpu
 - load

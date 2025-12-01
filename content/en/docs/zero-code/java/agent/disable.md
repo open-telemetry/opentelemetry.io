@@ -1,9 +1,9 @@
 ---
 title: Suppressing specific instrumentation
 linkTitle: Suppressing instrumentation
-weight: 11
+weight: 12
 # prettier-ignore
-cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra helidon hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces nats okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## Disabling the agent entirely
@@ -100,6 +100,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | Elasticsearch API client                         | `elasticsearch-api-client`                  |
 | Elasticsearch client                             | `elasticsearch-transport`                   |
 | Elasticsearch REST client                        | `elasticsearch-rest`                        |
+| Failsafe                                         | `failsafe`                                  |
 | Finagle                                          | `finagle-http`                              |
 | Google Guava                                     | `guava`                                     |
 | Google HTTP client                               | `google-http-client`                        |
@@ -107,6 +108,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | Grails                                           | `grails`                                    |
 | GraphQL Java                                     | `graphql-java`                              |
 | GRPC                                             | `grpc`                                      |
+| Helidon                                          | `helidon`                                   |
 | Hibernate                                        | `hibernate`                                 |
 | Hibernate Reactive                               | `hibernate-reactive`                        |
 | HikariCP                                         | `hikaricp`                                  |
@@ -141,11 +143,13 @@ corresponding instrumentation name: {{% /config_option %}}
 | Micrometer                                       | `micrometer`                                |
 | MongoDB                                          | `mongo`                                     |
 | MyBatis                                          | `mybatis`                                   |
+| NATS Client                                      | `nats`                                      |
 | Netflix Hystrix                                  | `hystrix`                                   |
 | Netty                                            | `netty`                                     |
 | OkHttp                                           | `okhttp`                                    |
 | OpenLiberty                                      | `liberty`                                   |
 | OpenAI                                           | `openai`                                    |
+| OpenSearch Java                                  | `opensearch-java`                           |
 | OpenSearch REST                                  | `opensearch-rest`                           |
 | OpenTelemetry Extension Annotations              | `opentelemetry-extension-annotations`       |
 | OpenTelemetry Instrumentation Annotations        | `opentelemetry-instrumentation-annotations` |

@@ -104,7 +104,7 @@ spec:
         limits:
           memory: 120Mi
       terminationMessagePolicy: FallbackToLogsOnError
-      image: 'docker.io/otel/ebpf-instrument:latest'
+      image: 'docker.io/otel/ebpf-instrument:main'
       imagePullPolicy: 'Always'
       env:
         - name: OTEL_EXPORTER_OTLP_ENDPOINT
@@ -165,6 +165,12 @@ approach is that it works for HTTP/HTTP2/HTTPS and gRPC with some limitations,
 however the use of `bpf_probe_write_user` requires the OBI is granted
 `CAP_SYS_ADMIN` or it's configured to run as `privileged` container.
 
+#### Integration with Go manual instrumentation
+
+OBI integrates automatically with manual spans using the
+[Auto SDK](/docs/zero-code/go/autosdk). See the docs on the Auto SDK to learn
+more.
+
 #### Kernel integrity mode limitations
 
 In order to write the `traceparent` value in outgoing HTTP/gRPC request headers,
@@ -201,7 +207,7 @@ configuration, which ensures OBI has sufficient information to determine the
 services:
   ...
   obi:
-    image: 'docker.io/otel/ebpf-instrument:latest'
+    image: 'docker.io/otel/ebpf-instrument:main'
     environment:
       OTEL_EBPF_CONFIG_PATH: "/configs/obi-config.yml"
     volumes:
