@@ -543,7 +543,7 @@
   commercial: true
 - name: groundcover
   nativeOTLP: true
-  url: 'https://docs.groundcover.com/integrations/data-sources/opentelemetry/traces-and-logs'
+  url: 'https://docs.groundcover.com/integrations/data-sources/opentelemetry/sending-from-an-opentelemetry-collector'
   contact: 'hello@groundcover.com'
   oss: false
   commercial: true
