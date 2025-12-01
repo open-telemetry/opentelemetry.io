@@ -13315,6 +13315,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-30T09:38:52.51146424Z"
   },
+  "https://github.com/openzipkin-contrib/zipkin-otel": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-26T01:31:06.752926473Z"
+  },
   "https://github.com/openzipkin/b3-propagation": {
     "StatusCode": 206,
     "LastSeen": "2025-11-20T09:40:28.395886598Z"
