@@ -2049,6 +2049,11 @@ approvers:
       - ebpf-instrumentation-approvers
     html_url: https://github.com/marctc
     avatar_url: https://avatars.githubusercontent.com/u/280193?v=4
+  - name: maxday
+    teams:
+      - lambda-extension-approvers
+    html_url: https://github.com/maxday
+    avatar_url: https://avatars.githubusercontent.com/u/864493?v=4
   - name: maxgolov
     teams:
       - cpp-contrib-approvers
@@ -2380,6 +2385,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/5722339?v=4
   - name: zeitlinger
     teams:
+      - java-contrib-approvers
       - java-instrumentation-approvers
       - java-instrumentation-triagers
       - java-triagers
@@ -2441,6 +2447,11 @@ triagers:
       - collector-contrib-triagers
     html_url: https://github.com/Frapschen
     avatar_url: https://avatars.githubusercontent.com/u/35491170?v=4
+  - name: henrinormak
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/henrinormak
+    avatar_url: https://avatars.githubusercontent.com/u/1248491?v=4
   - name: indrekj
     teams:
       - ruby-contrib-triagers
@@ -2900,9 +2911,6 @@ members:
   - name: mauriciovasquezbernal
     html_url: https://github.com/mauriciovasquezbernal
     avatar_url: https://avatars.githubusercontent.com/u/13031921?v=4
-  - name: maxday
-    html_url: https://github.com/maxday
-    avatar_url: https://avatars.githubusercontent.com/u/864493?v=4
   - name: maynk
     html_url: https://github.com/maynk
     avatar_url: https://avatars.githubusercontent.com/u/9286568?v=4

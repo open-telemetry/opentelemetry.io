@@ -57,6 +57,8 @@ languages:
     params:
       description: OpenTelemetry 项目网站
 
+enableEmoji: true
+
 imaging:
   resampleFilter: CatmullRom # cspell:disable-line
   quality: 75
