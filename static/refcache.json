@@ -1879,6 +1879,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-11-29T09:41:37.954348464Z"
   },
+  "https://docs.groundcover.com/integrations/data-sources/opentelemetry/sending-from-an-opentelemetry-collector": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-01T11:11:26.5857165Z"
+  },
   "https://docs.honeycomb.io/getting-data-in/": {
     "StatusCode": 206,
     "LastSeen": "2025-11-30T09:42:01.841056172Z"
