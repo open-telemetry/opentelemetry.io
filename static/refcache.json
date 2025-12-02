@@ -8403,6 +8403,26 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-30T09:39:13.968434434Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.141.0/component/config.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T10:40:10.415924838Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.141.0/pdata/pcommon/map.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T10:40:25.114022891Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.141.0/pdata/ptrace/generated_resourcespans.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T10:40:20.273155536Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.141.0/receiver/receiver.go": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T10:40:17.439854646Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.141.0/receiver/receiver.go#L58": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T10:40:13.320325457Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/10469": {
     "StatusCode": 206,
     "LastSeen": "2025-11-28T09:45:36.164443606Z"
