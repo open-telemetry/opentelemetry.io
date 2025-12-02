@@ -647,6 +647,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-29T09:44:44.891688021Z"
   },
+  "https://clickhouse.com/docs/operations/server-configuration-parameters/settings#skip_binary_checksum_checks": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T15:20:14.11156+02:00"
+  },
   "https://cloud-native.slack.com/archives/C014L2KCTE3": {
     "StatusCode": 200,
     "LastSeen": "2025-11-30T09:43:50.535033356Z"
@@ -3282,6 +3286,14 @@
   "https://github.com/Cirilla-zmh": {
     "StatusCode": 206,
     "LastSeen": "2025-11-29T09:42:53.786501675Z"
+  },
+  "https://github.com/ClickHouse/ClickHouse": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T15:20:07.242009+02:00"
+  },
+  "https://github.com/ClickHouse/ClickHouse/issues/83637": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T15:20:10.164251+02:00"
   },
   "https://github.com/ClickHouse/clickhouse-java": {
     "StatusCode": 206,
