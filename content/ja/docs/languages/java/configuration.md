@@ -38,9 +38,9 @@ cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKC
 
 ## プログラム設定 {#programmatic-configuration}
 
-プログラム設定インターフェースは、[SDK](../sdk/)コンポーネントを構築するためのAPIのセットです。
+プログラム設定インターフェイスは、[SDK](../sdk/)コンポーネントを構築するためのAPIのセットです。
 すべてのSDKコンポーネントにはプログラム設定APIがあり、他のすべての設定メカニズムはこのAPIの上に構築されています。
-たとえば、[自動設定環境変数とシステムプロパティ](#environment-variables-and-system-properties)設定インターフェースは、よく知られた環境変数とシステムプロパティをプログラム設定APIへの一連の呼び出しに解釈します。
+たとえば、[自動設定環境変数とシステムプロパティ](#environment-variables-and-system-properties)設定インターフェイスは、よく知られた環境変数とシステムプロパティをプログラム設定APIへの一連の呼び出しに解釈します。
 
 他の設定メカニズムはより便利ですが、必要な正確な設定を表現するコードを書くことの柔軟性を提供するものはありません。
 特定の機能が上位の設定メカニズムでサポートされていない場合、プログラム設定を使用するしかない場合があります。
@@ -50,7 +50,7 @@ cSpell:ignore: autoconfigured blrp Customizer Dotel ignore LOWMEMORY ottrace PKC
 
 ## ゼロコードSDK自動設定 {#zero-code-sdk-autoconfigure}
 
-自動設定モジュール（アーティファクト`io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`）は、[プログラム設定インターフェース](#programmatic-configuration)の上に構築された設定インターフェースで、[SDKコンポーネント](../sdk/#sdk-components)をゼロコードで設定します。
+自動設定モジュール（アーティファクト`io.opentelemetry:opentelemetry-sdk-extension-autoconfigure:{{% param vers.otel %}}`）は、[プログラム設定インターフェース](#programmatic-configuration)の上に構築された設定インターフェイスで、[SDKコンポーネント](../sdk/#sdk-components)をゼロコードで設定します。
 2つの異なる自動設定ワークフローがあります。
 
 - [環境変数とシステムプロパティ](#environment-variables-and-system-properties)は、環境変数とシステムプロパティを解釈してSDKコンポーネントを作成し、プログラム設定をオーバーレイするためのさまざまなカスタマイゼーションポイントを含みます
@@ -377,7 +377,7 @@ SDKに組み込まれ、`opentelemetry-java-contrib`でコミュニティによ�
 | `io.opentelemetry.contrib.aws.resource.EksResourceProvider`                 | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | Amazon EKSランタイム環境リソース属性を提供します。                                              |
 | `io.opentelemetry.contrib.aws.resource.LambdaResourceProvider`              | `io.opentelemetry.contrib:opentelemetry-aws-resources:{{% param vers.contrib %}}-alpha`             | AWS Lambdaランタイム環境リソース属性を提供します。                                              |
 
-リソース自動設定に参加するには、`ResourceProvider`インターフェースを実装してください。
+リソース自動設定に参加するには、`ResourceProvider`インターフェイスを実装してください。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -408,7 +408,7 @@ public class CustomResourceProvider implements ResourceProvider {
 
 ##### AutoConfigurationCustomizerProvider {#autoconfigurationcustomizerprovider}
 
-[AutoConfigurationCustomizerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.html)インターフェースを実装して、さまざまな自動設定されたSDKコンポーネントをカスタマイズします。
+[AutoConfigurationCustomizerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/AutoConfigurationCustomizerProvider.html)インターフェイスを実装して、さまざまな自動設定されたSDKコンポーネントをカスタマイズします。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -465,7 +465,7 @@ public class CustomizerProvider implements AutoConfigurationCustomizerProvider {
 
 ##### ConfigurableSpanExporterProvider {#configurablespanexporterprovider}
 
-[ConfigurableSpanExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSpanExporterProvider.html)インターフェースを実装して、カスタムスパンエクスポーターが自動設定に参加できるようにします。
+[ConfigurableSpanExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSpanExporterProvider.html)インターフェイスを実装して、カスタムスパンエクスポーターが自動設定に参加できるようにします。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -495,7 +495,7 @@ public class CustomSpanExporterProvider implements ConfigurableSpanExporterProvi
 
 ##### ConfigurableMetricExporterProvider {#configurablemetricexporterprovider}
 
-[ConfigurableMetricExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/metrics/ConfigurableMetricExporterProvider.html)インターフェースを実装して、カスタムメトリクスエクスポーターが自動設定に参加できるようにします。
+[ConfigurableMetricExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/metrics/ConfigurableMetricExporterProvider.html)インターフェイスを実装して、カスタムメトリクスエクスポーターが自動設定に参加できるようにします。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -525,7 +525,7 @@ public class CustomMetricExporterProvider implements ConfigurableMetricExporterP
 
 ##### ConfigurableLogRecordExporterProvider {#configurablelogrecordexporterprovider}
 
-[ConfigurableLogRecordExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/logs/ConfigurableLogRecordExporterProvider.html)インターフェースを実装して、カスタムログレコードエクスポーターが自動設定に参加できるようにします。
+[ConfigurableLogRecordExporterProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/logs/ConfigurableLogRecordExporterProvider.html)インターフェイスを実装して、カスタムログレコードエクスポーターが自動設定に参加できるようにします。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -555,7 +555,7 @@ public class CustomLogRecordExporterProvider implements ConfigurableLogRecordExp
 
 ##### ConfigurableSamplerProvider {#configurablesamplerprovider}
 
-[ConfigurableSamplerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSamplerProvider.html)インターフェースを実装して、カスタムサンプラーが自動設定に参加できるようにします。
+[ConfigurableSamplerProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/traces/ConfigurableSamplerProvider.html)インターフェイスを実装して、カスタムサンプラーが自動設定に参加できるようにします。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -585,7 +585,7 @@ public class CustomSamplerProvider implements ConfigurableSamplerProvider {
 
 ##### ConfigurablePropagatorProvider {#configurablepropagatorprovider}
 
-[ConfigurablePropagatorProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/ConfigurablePropagatorProvider.html)インターフェースを実装して、カスタムプロパゲーターが自動設定に参加できるようにします。
+[ConfigurablePropagatorProvider](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/latest/io/opentelemetry/sdk/autoconfigure/spi/ConfigurablePropagatorProvider.html)インターフェイスを実装して、カスタムプロパゲーターが自動設定に参加できるようにします。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
