@@ -1,5 +1,9 @@
 # Landing Page Redesign
 
+## Ownership
+
+- Lead: Fabrizio Ferri Benedetti (@theletterf)
+
 ## Background and description
 
 The OpenTelemetry website landing page serves as the first impression for

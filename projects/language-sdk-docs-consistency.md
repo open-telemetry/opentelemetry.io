@@ -1,5 +1,9 @@
 # Language SDK Documentation Consistency
 
+## Ownership
+
+- Lead: Fabrizio Ferri Benedetti (@theletterf)
+
 ## Background and description
 
 OpenTelemetry provides SDKs for 13+ programming languages, each with its own
