@@ -8287,6 +8287,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-21T09:41:02.918033984Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/coding-guidelines.md#semantic-conventions-compatibility": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T14:54:13.032769+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/ga-roadmap.md": {
     "StatusCode": 206,
     "LastSeen": "2025-11-27T09:47:11.659699012Z"
@@ -12123,6 +12127,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-29T09:42:36.696493022Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T13:19:47.089706+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
     "LastSeen": "2025-11-28T09:42:59.128934949Z"
@@ -13046,6 +13054,10 @@
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.38.0/docs/database/database-spans.md": {
     "StatusCode": 206,
     "LastSeen": "2025-11-26T17:11:13.714024-03:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.38.0/docs/general/semantic-convention-groups.md#group-stability": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T13:19:44.684834+02:00"
   },
   "https://github.com/open-telemetry/semantic-conventions/issues": {
     "StatusCode": 206,
@@ -16951,9 +16963,23 @@
     "StatusCode": 200,
     "LastSeen": "2025-11-30T09:38:55.174775371Z"
   },
+<<<<<<< HEAD
   "https://opentelemetry.devstats.cncf.io/d/9/developer-activity-counts-by-repository-group-table?orgId=1": {
     "StatusCode": 200,
     "LastSeen": "2025-11-27T09:47:00.76587167Z"
+=======
+  "https://opentelemetry.io/docs/concepts/instrumentation/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-20T09:23:52.447657347-08:00"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/how-to-write-conventions/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T16:50:07.584509+02:00"
+  },
+  "https://opentelemetry.io/ecosystem/registry/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-02-22T07:14:47.144521257-08:00"
+>>>>>>> cbe1ce6bc (add note about semantic conventions compatability)
   },
   "https://opentracing.io": {
     "StatusCode": 206,
