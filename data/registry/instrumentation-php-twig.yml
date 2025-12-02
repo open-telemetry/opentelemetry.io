@@ -1,0 +1,18 @@
+title: OpenTelemetry Twig auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - twig
+  - instrumentation
+  - php
+description: Instrumentation Library for Twig
+authors:
+  - name: cmelius
+urls:
+  repo: https://github.com/cmelius/opentelemetry-auto-twig/tree/main
+createdAt: 2025-12-02
+package:
+  registry: packagist
+  name: cmelius/opentelemetry-auto-twig
+  version: 1.0.0
+isFirstParty: false
