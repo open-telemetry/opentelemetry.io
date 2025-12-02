@@ -1,3 +1,7 @@
+interoperabilidad
+modularización
+asincrónica
+empoderar
 observabilidad
 telemetría
 inicialización

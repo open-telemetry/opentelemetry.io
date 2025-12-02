@@ -42,13 +42,13 @@ Hay tres áreas de enfoque de alto nivel para estos objetivos y directrices.
   - Citar los nombres de otros colaboradores y proveedores involucrados en las
     iniciativas de OTel
   - Enfatizar nuestros objetivos comunes como comunidad para mejorar las
-    experiencias de los usuarios finales/desarrolladores y empoderarlos
+    experiencias de los usuarios finales/desarrolladores y empoderarle
 - Qué no hacer:
   - Dar a entender que un único proveedor es responsable de OTel o de alguno de
     sus componentes.
   - Menospreciar las contribuciones de otra organización o persona.
 
-### II: No es una competeticion
+### II: No es una competición
 
 - Consejos:
   - Enfatizar que todas las contribuciones son valiosas y que son de diversas
