@@ -2,7 +2,8 @@
 title: Anuncios
 description: Crea anuncios o banners para eventos especiales.
 weight: 50
-default_lang_commit: 645760e1961cb45d9ce6b291887c74ce4efa0398
+default_lang_commit: 645760e1961cb45d9ce6b291887c74ce4efa0398 # patched
+drifted_from_default: true
 ---
 
 Un anuncio es una _página de Hugo normal_, ubicada en la sección `anuncios` de
@@ -14,7 +15,7 @@ determinar el orden de los banners, gestionar el uso de banners en inglés, etc.
 > Actualmente, los anuncios se usan solo como banners. Es _posible_ que, con el
 > tiempo, también admitamos anuncios más generales.
 
-### Creando un anuncio
+## Creando un anuncio
 
 Para agregar un nuevo anuncio, crea un archivo Markdown de anuncios en la
 carpeta `anuncios` de su localización usando el siguiente comando:
@@ -36,7 +37,7 @@ en idioma inglés.
 
 {{% /alert %}}
 
-### Lista de anuncios
+## Lista de anuncios
 
 Cualquier anuncio aparecerá en la compilación de un sitio web cuando la fecha de
 compilación se encuentre entre los campos `fecha` y `fecha de vencimiento`.

@@ -19,4 +19,4 @@ isFirstParty: false
 package:
   registry: nuget
   name: OpenTelemetry.Instrumentation.GrpcCore
-  version: 1.0.0-beta.6
+  version: 1.0.0-beta.8

@@ -1,4 +1,5 @@
 name: Update specification integration branch
+# cSpell:ignore otelbot
 
 on:
   schedule:
@@ -9,23 +10,34 @@ on:
 permissions:
   contents: read
 
+env:
+  REPO: opentelemetry-specification
+  # Abbreviation of REPO used in branch and submodule names
+  ABBR: spec
+
 jobs:
-  update-spec-integration-branch:
+  update-integration-branch:
     runs-on: ubuntu-latest
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/create-github-app-token@7e473efe3cb98aa54f8d4bac15400b15fad77d94 # v2.2.0
+        id: otelbot-token
+        with:
+          # the higher privileged docs token is needed to push commits to an existing PR
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
+      - uses: actions/checkout@v6.0.0
         with:
           # this is needed to do the rebase below
           fetch-depth: 0
-          # this is needed to trigger workflows when pushing new commits to the PR
-          token: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          token: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Set environment variables
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          branch_prefix="opentelemetrybot/spec-integration"
+          branch_prefix="otelbot/${{ env.ABBR }}-integration"
 
           version=$(git branch -r \
                         | grep -E "^ *origin/$branch_prefix-v[0-9]+\.[0-9]+\..*-dev" \
@@ -34,7 +46,7 @@ jobs:
 
           if [[ -z "$version" ]]; then
             latest_version=$(gh release view \
-                          --repo open-telemetry/opentelemetry-specification \
+                          --repo open-telemetry/${{ env.REPO }} \
                           --json tagName \
                           --jq .tagName)
             if [[ $latest_version =~ ^v([0-9]+)\.([0-9]+)\. ]]; then
@@ -61,8 +73,8 @@ jobs:
 
       - name: Use CLA approved github bot
         run: |
-          git config user.name opentelemetrybot
-          git config user.email 107717825+opentelemetrybot@users.noreply.github.com
+          git config user.name otelbot
+          git config user.email 197425009+otelbot@users.noreply.github.com
 
       - name: Merge from main
         run: |
@@ -75,8 +87,8 @@ jobs:
 
       - name: Update submodule
         run: |
-          git submodule update --init content-modules/opentelemetry-specification
-          cd content-modules/opentelemetry-specification
+          git submodule update --init content-modules/${{ env.REPO }}
+          cd content-modules/${{ env.REPO }}
 
           if git ls-remote --exit-code --tags origin $VERSION; then
             git reset --hard $VERSION
@@ -88,43 +100,46 @@ jobs:
           commit_desc=$(git describe --tags)
           cd ../..
 
-          sed -i "s/^\tspec-pin = .*/\tspec-pin = $commit_desc/" .gitmodules
+          sed -i "s/^\t${{ env.ABBR }}-pin = .*/\t${{ env.ABBR }}-pin = $commit_desc/" .gitmodules
 
           if [ "$tag_exists" == "true" ]; then
-            sed -i "s/^\(\s *\)spec: .*/\1spec: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
+            sed -i "s/^\(\s *\)${{ env.ABBR }}: .*/\1${{ env.ABBR }}: ${commit_desc#v}/" scripts/content-modules/adjust-pages.pl
           fi
 
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Update spec submodule to $commit_desc"
+            git commit -am "Update ${{ env.ABBR }} submodule to $commit_desc"
             git push
           fi
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
 
-      - name: Fix refcache
+      - name: Update refcache
         run: |
           npm install --omit=optional
-          npm run fix:refcache
+          # Ignore link-check failures so we can still commit refcache updates
+          npm run fix:refcache || true
+          # Prune 404 entries, if any
+          npm run _refcache:prune
 
           git add -A
 
           if ! git diff-index --quiet --cached HEAD; then
-            git commit -am "Fix refcache"
+            git commit -am "Update refcache"
             git push
           fi
 
       - name: Create pull request if needed
         env:
           # not using secrets.GITHUB_TOKEN since pull requests from that token do not run workflows
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
           if [ -z "$prs" ]; then
-            gh pr create --title "DRAFT Update specification to unreleased $VERSION-dev" \
-                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) specification." \
+            gh pr create --title "DRAFT Update ${{ env.REPO }} to unreleased $VERSION-dev" \
+                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) [${{ env.REPO }}](https://github.com/open-telemetry/${{ env.REPO }})." \
                          --draft
           fi

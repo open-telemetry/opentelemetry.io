@@ -2,6 +2,7 @@
 title: 采用者
 description: 采用了 OpenTelemetry 的组织
 default_lang_commit: b13d5dd3a9f288ab64d2af98c0b4ec1694499ef3
+drifted_from_default: true
 ---
 
 OpenTelemetry 的使命是为所有最终用户实现高效的可观测性。如果你正在考虑为你的组织采用

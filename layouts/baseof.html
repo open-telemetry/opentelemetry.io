@@ -1,7 +1,10 @@
 {{/* Docsy-delta */ -}}
-
 <!doctype html>
-<html lang="{{ .Site.Language.Lang }}" class="no-js">
+<html itemscope itemtype="http://schema.org/WebPage"
+    {{- with .Site.Language.LanguageDirection }} dir="{{ . }}" {{- end -}}
+    {{ with .Site.Language.Lang }} lang="{{ . }}" {{- end }} {{/**/ -}}
+    class="no-js"
+    {{- if .Site.Params.ui.showLightDarkModeMenu }} data-theme-init{{ end }}>
   <head>
     {{ partial "head.html" . }}
   </head>

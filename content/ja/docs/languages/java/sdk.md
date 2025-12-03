@@ -2,7 +2,8 @@
 title: SDKによるテレメトリーの管理
 weight: 12
 aliases: [exporters]
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+drifted_from_default: true
 cSpell:ignore: Interceptable Logback okhttp
 ---
 
@@ -24,9 +25,9 @@ SDKは以下のトップレベルコンポーネントで構成されていま�
 
 SDKには多くの使用例に十分な様々な組み込みコンポーネントがパッケージ化されており、拡張性のための[プラグインインターフェース](#sdk-plugin-extension-interfaces)をサポートしています。
 
-## SDKプラグイン拡張インターフェース {#sdk-plugin-extension-interfaces}
+## SDKプラグイン拡張インターフェイス {#sdk-plugin-extension-interfaces}
 
-組み込みコンポーネントが不十分な場合、さまざまなプラグイン拡張インターフェースを実装することでSDKを拡張できます。
+組み込みコンポーネントが不十分な場合、さまざまなプラグイン拡張インターフェイスを実装することでSDKを拡張できます。
 
 - [Sampler](#sampler)：記録およびサンプリングされるスパンを設定します
 - [SpanProcessor](#spanprocessor)：スパンの開始時と終了時に処理します
@@ -222,7 +223,7 @@ public class SamplerConfig {
 ```
 <!-- prettier-ignore-end -->
 
-独自のカスタムサンプリングロジックを提供するには、`Sampler`インターフェースを実装してください。
+独自のカスタムサンプリングロジックを提供するには、`Sampler`インターフェイスを実装してください。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -314,7 +315,7 @@ public class SpanProcessorConfig {
 ```
 <!-- prettier-ignore-end -->
 
-独自のカスタムスパン処理ロジックを提供するには、`SpanProcessor`インターフェースを実装してください。
+独自のカスタムスパン処理ロジックを提供するには、`SpanProcessor`インターフェイスを実装してください。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -431,7 +432,7 @@ public class SpanExporterConfig {
 ```
 <!-- prettier-ignore-end -->
 
-独自のカスタムスパンエクスポートロジックを提供するには、`SpanExporter`インターフェースを実装してください。
+独自のカスタムスパンエクスポートロジックを提供するには、`SpanExporter`インターフェイスを実装してください。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -593,7 +594,7 @@ public class MetricReaderConfig {
 ```
 <!-- prettier-ignore-end -->
 
-独自のカスタムメトリクスリーダーロジックを提供するには、`MetricReader`インターフェースを実装してください。
+独自のカスタムメトリクスリーダーロジックを提供するには、`MetricReader`インターフェイスを実装してください。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -737,7 +738,7 @@ public class MetricExporterConfig {
 ```
 <!-- prettier-ignore-end -->
 
-独自のカスタムメトリクスエクスポートロジックを提供するには、`MetricExporter`インターフェースを実装してください。
+独自のカスタムメトリクスエクスポートロジックを提供するには、`MetricExporter`インターフェイスを実装してください。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -945,7 +946,7 @@ public class LogRecordProcessorConfig {
 ```
 <!-- prettier-ignore-end -->
 
-独自のカスタムログ処理ロジックを提供するには、`LogRecordProcessor`インターフェースを実装してください。
+独自のカスタムログ処理ロジックを提供するには、`LogRecordProcessor`インターフェイスを実装してください。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -988,7 +989,7 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 [LogRecordExporter](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/export/LogRecordExporter.html)は、ログレコードをプロセス外にエクスポートする責任を持つ[プラグイン拡張インターフェース](#sdk-plugin-extension-interfaces)です。
 `SdkLoggerProvider`に直接登録するのではなく、[LogRecordProcessors](#logrecordprocessor)（通常は`BatchLogRecordProcessor`）と組み合わせます。
 
-下表は、SDKに組み込まれ、`opentelemetry-java-contrib`でコミュニティによって維持されているスパンエクスポーターです。
+下表は、SDKに組み込まれ、`opentelemetry-java-contrib`でコミュニティによって維持されているログレコードエクスポーターです。
 
 | クラス                                     | アーティファクト                                                                     | 説明                                                                                          |
 | ------------------------------------------ | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- |
@@ -1003,7 +1004,7 @@ public class CustomLogRecordProcessor implements LogRecordProcessor {
 
 **[2]**: `OtlpJsonLoggingLogRecordExporter`はJULにログ出力し、適切に設定されていない場合、無限ループ（JUL -> SLF4J -> Logback -> OpenTelemetry Appender -> OpenTelemetry Log SDK -> JUL）を引き起こす可能性があります。
 
-以下のコードスニペットは`LogRecordProcessor`のプログラム設定を示します。
+以下のコードスニペットは`LogRecordExporter`のプログラム設定を示します。
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogRecordExporterConfig.java"?>
@@ -1045,7 +1046,7 @@ public class LogRecordExporterConfig {
 ```
 <!-- prettier-ignore-end -->
 
-独自のカスタムログレコードエクスポートロジックを提供するには、`LogRecordExporter`インターフェースを実装してください。
+独自のカスタムログレコードエクスポートロジックを提供するには、`LogRecordExporter`インターフェイスを実装してください。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->
@@ -1094,7 +1095,7 @@ public class CustomLogRecordExporter implements LogRecordExporter {
 
 [LogLimits](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/LogLimits.html)は、最大属性長や最大属性数を含む、ログレコードによってキャプチャされるデータの制約を定義します。
 
-以下のコードスニペットは`LogRecordProcessor`のプログラム設定を示します。
+以下のコードスニペットは`LogLimits`のプログラム設定を示します。
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/LogLimitsConfig.java"?>
@@ -1154,7 +1155,7 @@ public class ContextPropagatorsConfig {
 ```
 <!-- prettier-ignore-end -->
 
-独自のカスタムプロパゲーターロジックを提供するには、`TextMapPropagator`インターフェースを実装してください。
+独自のカスタムプロパゲーターロジックを提供するには、`TextMapPropagator`インターフェイスを実装してください。
 例を挙げましょう。
 
 <!-- prettier-ignore-start -->

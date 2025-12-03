@@ -1,4 +1,5 @@
 name: PR actions
+# cSpell:ignore otelbot
 
 on:
   issue_comment:
@@ -10,13 +11,13 @@ permissions:
 env:
   COMMENT: ${{ github.event.comment.body }}
   PR_NUM: ${{ github.event.issue.number }}
-  USER_EMAIL: 107717825+opentelemetrybot@users.noreply.github.com
-  USER_NAME: opentelemetrybot
+  USER_EMAIL: 197425009+otelbot@users.noreply.github.com
+  USER_NAME: otelbot
   MAX_PATCH_SIZE_KB: 1024
 
 jobs:
   generate-patch:
-    name: Run fixer and generate patch (untrusted)
+    name: Run PR action and generate patch (untrusted)
     runs-on: ubuntu-latest
     if: |
       github.event.issue.pull_request &&
@@ -24,17 +25,17 @@ jobs:
 
     outputs:
       action_name: ${{ steps.extract.outputs.action_name }}
+      action_exit_status: ${{ steps.run_action.outputs.action_exit_status }}
       patch_name: pr-fix-${{ github.run_id }}
       patch_skipped: ${{ steps.check_patch.outputs.skipped }}
 
     steps:
-      - uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+      - uses: step-security/harden-runner@95d9a5deda9de15063e7595e9719c11c38c90ae2 # v2.13.2
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
-        with:
-          fetch-depth: 999
+      - uses: actions/checkout@v6.0.0
+        with: { fetch-depth: 0 }
 
       - name: Extract action name
         id: extract
@@ -46,15 +47,26 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
-      - name: Setup Node
-        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+      - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
 
-      - name: Install deps & run fixer
+      - run: npm install --omit=optional
+
+      - name: Run PR action
+        id: run_action
+        # Allow the PR action to fail without failing the step, so that we can
+        # commit any file changes. For example, we want to commit updates to the
+        # refcache even if there might still be some broken links.
+        continue-on-error: true
         run: |
-          npm install --omit=optional
           npm run fix:${{ steps.extract.outputs.action_name }}
+          action_exit_status=$?
+          echo "action_exit_status=$action_exit_status" >> "$GITHUB_OUTPUT"
+          echo "PR action exit status: $action_exit_status"
+
+          # For refcache updates, prune 404 entries, if any
+          npm run _refcache:prune
 
       - name: Generate and validate patch
         id: check_patch
@@ -77,7 +89,7 @@ jobs:
 
       - name: Upload patch artifact
         if: steps.check_patch.outputs.skipped != 'true'
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
           name: pr-fix-${{ github.run_id }}
           path: pr-fix.patch
@@ -93,20 +105,28 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+      - uses: step-security/harden-runner@95d9a5deda9de15063e7595e9719c11c38c90ae2 # v2.13.2
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/create-github-app-token@7e473efe3cb98aa54f8d4bac15400b15fad77d94 # v2.2.0
+        id: otelbot-token
+        with:
+          # the higher privileged docs token is needed to push commits to an existing PR
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
+      - uses: actions/checkout@c2d88d3ecc89a9ef08eebf45d9637801dcee7eb5 # v5.0.1
         with:
           fetch-depth: 999
+          token: ${{ steps.otelbot-token.outputs.token }}
 
       - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
         env:
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Download patch
-        uses: actions/download-artifact@v5
+        uses: actions/download-artifact@v6
         with:
           name: ${{ needs.generate-patch.outputs.patch_name }}
 
@@ -139,21 +159,25 @@ jobs:
             echo "No changes to commit"
           fi
         env:
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Comment success
-        if: ${{ !failure() && !cancelled() }}
+        if:
+          ${{ !failure() && !cancelled() &&
+          needs.generate-patch.outputs.action_exit_status == '0' }}
         run: |
-          gh pr comment $PR_NUM --body "✅ \`fix:${{ needs.generate-patch.outputs.action_name }}\` applied successfully in [this run]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)."
+          gh pr comment $PR_NUM --body "✅ \`fix:${{ needs.generate-patch.outputs.action_name }}\` applied successfully in [run $GITHUB_RUN_ID]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)."
         env:
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Comment failure
-        if: ${{ failure() || cancelled() }}
+        if:
+          ${{ failure() || cancelled() ||
+          needs.generate-patch.outputs.action_exit_status != '0' }}
         run: |
-          gh pr comment $PR_NUM --body "❌ \`fix:${{ needs.generate-patch.outputs.action_name }}\` failed. See logs: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          gh pr comment $PR_NUM --body "❌ \`fix:${{ needs.generate-patch.outputs.action_name }}\` failed or exited with a non-zero error code (${{ needs.generate-patch.outputs.action_exit_status }}). See logs: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
         env:
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
   notify-noop:
     name: Comment no-op patch
@@ -161,8 +185,17 @@ jobs:
     if: needs.generate-patch.outputs.patch_skipped == 'true'
     needs: generate-patch
     steps:
+      - uses: actions/checkout@v6.0.0
+        with: { fetch-depth: 1 }
+
+      - uses: actions/create-github-app-token@7e473efe3cb98aa54f8d4bac15400b15fad77d94 # v2.2.0
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+
       - name: Comment no-op
         run: |
-          gh pr comment $PR_NUM --body "ℹ️ \`fix:${{ needs.generate-patch.outputs.action_name }}\` made no changes – nothing to commit."
+          gh pr comment $PR_NUM --body "ℹ️ \`fix:${{ needs.generate-patch.outputs.action_name }}\` made no changes. Nothing to commit."
         env:
-          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
