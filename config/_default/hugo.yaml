@@ -9,12 +9,6 @@ ignoreLogs: [spec-resource-not-found]
 
 # Language settings
 defaultContentLanguage: en
-#
-# TODO: Disabling the following for the duration of the Ask AI trial. If we
-# decide to keep Ask AI, then locales should provide Ask-AI i18n key entries
-# and the following should be re-enabled / uncommented.
-#
-# enableMissingTranslationPlaceholders: true
 
 languages:
   en:
@@ -42,7 +36,7 @@ languages:
         docker-compose-v2: |
           `docker-compose` は非推奨です. 詳細は、
           [Migrate to Compose V2](https://docs.docker.com/compose/migrate/) を確認してください。
-  pt: # cSpell:ignore Português Projeto
+  pt:
     languageName: Português
     languageCode: pt-BR
     params:
@@ -62,6 +56,8 @@ languages:
     languageCode: zh-CN
     params:
       description: OpenTelemetry 项目网站
+
+enableEmoji: true
 
 imaging:
   resampleFilter: CatmullRom # cspell:disable-line

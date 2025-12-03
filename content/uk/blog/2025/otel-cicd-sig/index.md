@@ -16,7 +16,7 @@ cSpell:ignore: cicd frittoli horovits jemmic keptn liatrio opentelemetrys skysca
 
 Ми роками говорили про необхідність спільної «мови» для отримання звітів та спостереження за системами CI/CD, і нарешті ми бачимо перші «слова» цієї мови, що входять до «словника» спостережуваності — [відкрита специфікація OpenTelemetry](/docs/specs/otel/). З нещодавнім випуском [Семантичних домовленостей OpenTelemetry](/docs/specs/semconv/), v1.27.0, ви можете знайти призначені для цього [атрибути для звітування про стан CI/CD](/docs/specs/semconv/registry/attributes/cicd/).
 
-Це результат наполегливої роботи [Спеціальної групи з питань спостережуваності CI/CD в рамках OpenTelemetry](https://github.com/open-telemetry/community/blob/main/projects/ci-cd.md). Досягнувши цієї ключової віхи першого етапу, ми вирішили, що настав час поділитися нею зі світом.
+Це результат наполегливої роботи [Спеціальної групи з питань спостережуваності CI/CD в рамках OpenTelemetry](https://github.com/open-telemetry/community/blob/main/projects/completed-projects/ci-cd.md). Досягнувши цієї ключової віхи першого етапу, ми вирішили, що настав час поділитися нею зі світом.
 
 ## Інженерам потрібна прозорість конвеєрів CI/CD {#engineers-need-observability-into-their-cicd-pipelines}
 
@@ -38,7 +38,7 @@ cSpell:ignore: cicd frittoli horovits jemmic keptn liatrio opentelemetrys skysca
 
 Ми почали з [OpenTelemetry extension proposal (OTEP #223)](https://github.com/open-telemetry/oteps/pull/223) кілька років тому, запропонувавши нашу ідею розширити OpenTelemetry, щоб охопити область використання CI/CD. Паралельно ми створили канал у CNCF Slack, щоб зібрати колег-ентузіастів, які підтримують цю ідею, і почати мозковий штурм щодо того, як це має виглядати. Канал Slack розростався, і ми швидко виявили, що проблема є спільною для багатьох організацій.
 
-Отримавши зворотний звʼязок від Комітету з технічного нагляду та інших членів CNCF, ми звернулися до них з проханням створити спеціальну робочу групу для цієї теми в рамках OpenTelemetry's Semantic Conventions SIG (SIG SemConv, скорочено — SIG SemConv). З їхнього благословення ми [створили офіційну Робочу групу зі спостережуваності CI/CD](https://github.com/open-telemetry/community/blob/main/projects/ci-cd.md), щоб формалізувати наші попередні обговорення та цілі в групі Slack.
+Отримавши зворотний звʼязок від Комітету з технічного нагляду та інших членів CNCF, ми звернулися до них з проханням створити спеціальну робочу групу для цієї теми в рамках OpenTelemetry's Semantic Conventions SIG (SIG SemConv, скорочено — SIG SemConv). З їхнього благословення ми [створили офіційну Робочу групу зі спостережуваності CI/CD](https://github.com/open-telemetry/community/blob/main/projects/completed-projects/ci-cd.md), щоб формалізувати наші попередні обговорення та цілі в групі Slack.
 
 ## Спеціальна робоча група OpenTelemetry зі спостережуваності в CI/CD {#opentelemetrys-cicd-observability-sig}
 
@@ -75,7 +75,7 @@ cSpell:ignore: cicd frittoli horovits jemmic keptn liatrio opentelemetrys skysca
 
 Другою важливою віхою є [OTEP #258](https://github.com/open-telemetry/oteps/pull/258) для розповсюдження контексту змінних середовища, який щойно було затверджено та інтегровано. Цей OTEP створює основу для написання специфікації.
 
-Оскільки ми досягли прогресу у виконанні наших початкових етапів, ми оновили [CI/CD Observability SIG milestones for the rest of 2024](https://github.com/open-telemetry/community/blob/main/projects/ci-cd.md). Наша мета — завершити якомога більше визначених проміжних результатів до кінця року. Зокрема, ми зосереджені на:
+Оскільки ми досягли прогресу у виконанні наших початкових етапів, ми оновили [CI/CD Observability SIG milestones for the rest of 2024](https://github.com/open-telemetry/community/blob/main/projects/completed-projects/ci-cd.md). Наша мета — завершити якомога більше визначених проміжних результатів до кінця року. Зокрема, ми зосереджені на:
 
 - Додаванні [домовленостей для метрик для систем контролю версій](https://github.com/open-telemetry/semantic-conventions/pull/1383).
 - Створення прототипів трасування в системах CICD (наприклад, ArgoCD, GitHub, GitLab, Jenkins).

@@ -98,22 +98,22 @@ Follow these steps to create a post from the template:
 1. Run the following command from the repository root:
 
    ```sh
-   npx hugo new content/en/blog/2024/short-name-for-post.md
+   npx hugo new content/en/blog/$(date +%Y)/short-name-for-post.md
    ```
 
    If your post has images or other assets, run the following command:
 
    ```sh
-   npx hugo new content/en/blog/2024/short-name-for-post/index.md
+   npx hugo new content/en/blog/$(date +%Y)/short-name-for-post/index.md
    ```
 
-1. Edit the Markdown file at the path you provided in the previous command. The
+2. Edit the Markdown file at the path you provided in the previous command. The
    file is initialized from the blog-post starter under
    [archetypes](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/).
 
-1. Put assets, like images or other files, into the folder you've created.
+3. Put assets, like images or other files, into the folder you've created.
 
-1. When your post is ready, submit it through a pull request.
+4. When your post is ready, submit it through a pull request.
 
 ### Use the GitHub UI
 
@@ -129,8 +129,9 @@ new post. Follow these steps to add a post using the UI:
 
 1.  Paste the content from the template you copied in the first step.
 
-1.  Name your file, for example
-    `content/en/blog/2022/short-name-for-your-blog-post/index.md`.
+1.  Name your file, for example (`YYYY` is the current year):
+
+    `content/en/blog/YYYY/short-name-for-your-blog-post/index.md`.
 
 1.  Edit the Markdown file in GitHub.
 

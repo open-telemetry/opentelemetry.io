@@ -24,7 +24,7 @@
   commercial: true
 - name: Arize Phoenix
   nativeOTLP: true
-  url: https://docs.arize.com/phoenix/tracing/how-to-tracing/setup-tracing/setup-tracing-python
+  url: https://arize.com/docs/phoenix/tracing/how-to-tracing/setup-tracing
   contact:
   oss: false
   commercial: true
@@ -98,9 +98,9 @@
   commercial: true
 - name: ControlTheory
   nativeOTLP: true
-  url: https://www.controltheory.com/use-case/otel-collector-management/
+  url: https://docs.controltheory.com/controltheory-documentation/gonzo-docs/advanced-features/working-with-otel
   contact: support@controltheory.com
-  oss: false
+  oss: true
   commercial: true
 - name: Coralogix
   nativeOTLP: true
@@ -292,6 +292,12 @@
   nativeOTLP: true
   url: https://docs.observeinc.com/en/latest/content/send-data/apm-instrumentation/operator-auto-instrumentation.html
   contact:
+  oss: false
+  commercial: true
+- name: OllyGarden
+  nativeOTLP: true
+  url: https://ollygarden.com
+  contact: support@ollygarden.com
   oss: false
   commercial: true
 - name: Otelic
@@ -537,7 +543,7 @@
   commercial: true
 - name: groundcover
   nativeOTLP: true
-  url: 'https://docs.groundcover.com/integrations/data-sources/opentelemetry/traces-and-logs'
+  url: 'https://docs.groundcover.com/integrations/data-sources/opentelemetry/sending-from-an-opentelemetry-collector'
   contact: 'hello@groundcover.com'
   oss: false
   commercial: true
