@@ -7,7 +7,7 @@ tags:
   - php
 description: Instrumentation Library for Twig
 authors:
-  - name: christian melius
+  - name: Christian Melius
     url: https://github.com/cmelius
 urls:
   repo: https://github.com/cmelius/opentelemetry-auto-twig/tree/main
