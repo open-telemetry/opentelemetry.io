@@ -6,8 +6,8 @@ default_lang_commit: d1ef521ee4a777881fb99c3ec2b506e068cdec4c
 cSpell:ignore: ASPNETCORE rolldice
 ---
 
-Esta página te mostrará cómo empezar a utilizar OpenTelemetry .NET Automatic
-Instrumentation.
+Esta página te mostrará cómo empezar a utilizar la instrumentación automática de
+OpenTelemetry .NET.
 
 Si estás buscando una forma de instrumentar manualmente tu aplicación, consulta
 [esta guía](/docs/languages/dotnet/getting-started).
@@ -26,8 +26,8 @@ Asegúrate de tener lo siguiente instalado localmente:
 
 El siguiente ejemplo utiliza una aplicación básica
 [API mínima con ASP.NET Core](https://learn.microsoft.com/aspnet/core/tutorials/min-web-api).
-Si no utilizas ASP.NET Core, no te preocupes, puedes seguir utilizando
-OpenTelemetry .NET Automatic Instrumentation.
+Si no utilizas ASP.NET Core, no te preocupes, puedes seguir utilizando la
+instrumentación automática de OpenTelemetry .NET.
 
 Para ver ejemplos más detallados, consulta
 [ejemplos](/docs/languages/dotnet/examples/).
@@ -109,10 +109,11 @@ dotnet run
 
 ## Instrumentación
 
-A continuación, utilizarás [OpenTelemetry .NET Automatic Instrumentation](../)
-para instrumentar la aplicación en el momento del lanzamiento. Aunque puedes
-[Configurar la instrumentación automática de .NET][] de varias maneras, los
-pasos que se indican a continuación utilizan scripts de Unix-shell o PowerShell.
+A continuación, utilizarás
+[la instrumentación automática de OpenTelemetry .NET](../) para instrumentar la
+aplicación en el momento del lanzamiento. Aunque puedes [Configurar la
+instrumentación automática de .NET][] de varias maneras, los pasos que se
+indican a continuación utilizan scripts de Unix-shell o PowerShell.
 
 > **Nota**: Los comandos de PowerShell requieren privilegios elevados (de
 > administrador).
