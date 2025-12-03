@@ -410,19 +410,21 @@ do Python para criar registros de log que o OpenTelemetry possa processar.
 ```python
 import logging
 from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
-from opentelemetry.sdk._logs.export import BatchLogRecordProcessor, ConsoleLogRecordExporter # ConsoleLogExporter para versões anteriores à 1.39.0
+from opentelemetry.sdk._logs.export import BatchLogRecordProcessor, ConsoleLogExporter
 from opentelemetry._logs import set_logger_provider, get_logger
 
 provider = LoggerProvider()
-processor = BatchLogRecordProcessor(ConsoleLogRecordExporter())
+processor = BatchLogRecordProcessor(ConsoleLogExporter())
 provider.add_log_record_processor(processor)
 # Define o logger provider global padrão
 set_logger_provider(provider)
 
+logger = get_logger(__name__)
+
 handler = LoggingHandler(level=logging.INFO, logger_provider=provider)
 logging.basicConfig(handlers=[handler], level=logging.INFO)
 
-logging.getLogger(__name__).info("Este é um registro de log do OpenTelemetry!")
+logging.info("Este é um registro de log do OpenTelemetry!")
 ```
 
 ### Leituras Adicionais {#further-reading}
