@@ -5,6 +5,7 @@ tags:
   - twig
   - instrumentation
   - php
+license: Apache 2.0
 description: Instrumentation Library for Twig
 authors:
   - name: Christian Melius
