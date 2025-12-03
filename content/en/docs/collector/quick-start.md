@@ -19,6 +19,20 @@ You are going to learn to do the following in less than five minutes:
 - Set up and run the OpenTelemetry Collector.
 - Send telemetry and see it processed by the Collector.
 
+> Note: Collector distributions
+>
+> OpenTelemetry provides two official Collector distributions:
+>
+> - Core ("otelcol"): Minimal set of core components maintained in the core
+>   repository.
+> - Contrib ("otelcol-contrib"): Superset with many additional receivers,
+>   processors, exporters, and extensions.
+>
+> This quick start uses the Contrib distribution
+> (`opentelemetry-collector-contrib`). If you prefer the Core distribution,
+> replace the image/binary and config paths accordingly (for example,
+> `/etc/otelcol-contrib/` → `/etc/otelcol/`).
+
 ## Prerequisites
 
 Make sure that your developer environment has the following. This page assumes
