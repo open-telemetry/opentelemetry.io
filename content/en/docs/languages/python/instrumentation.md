@@ -405,7 +405,7 @@ log records that OpenTelemetry can process.
 ```python
 import logging
 from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
-from opentelemetry.sdk._logs.export import BatchLogRecordProcessor, ConsoleLogRecordExporter # this was named ConsoleLogExporter on versions earlier than 1.39.0
+from opentelemetry.sdk._logs.export import BatchLogRecordProcessor, ConsoleLogRecordExporter # ConsoleLogExporter on versions earlier than 1.39.0
 from opentelemetry._logs import set_logger_provider
 
 provider = LoggerProvider()
