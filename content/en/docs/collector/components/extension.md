@@ -10,7 +10,7 @@ Extensions provide additional capabilities like health checks and service
 discovery. For more information on how to configure extensions, see the
 [Collector configuration documentation](/docs/collector/configuration/#extensions).
 
-<!-- BEGIN GENERATED: extension-table -->
+<!-- BEGIN GENERATED: extension-table SOURCE: collector-watcher -->
 
 | Name                                                                                                                                                   | Distributions[^1]  | Stability[^2] |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ | ------------- |
@@ -51,4 +51,4 @@ codeowners. They may not receive regular updates or bug fixes.
     For details about component stability levels, see the
     [OpenTelemetry Collector component stability definitions](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
 
-<!-- END GENERATED: extension-table -->
+<!-- END GENERATED: extension-table SOURCE: collector-watcher -->

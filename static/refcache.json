@@ -7139,6 +7139,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-24T00:03:56.013094478Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/metricsaslogsconnector": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T10:00:25.251567195Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/otlpjsonconnector": {
     "StatusCode": 206,
     "LastSeen": "2025-11-24T00:04:00.056979883Z"
@@ -7894,6 +7898,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/lokireceiver#loki-receiver": {
     "StatusCode": 206,
     "LastSeen": "2025-11-30T09:44:31.138375462Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/macosunifiedloggingreceiver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T10:00:21.414961266Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/memcachedreceiver": {
     "StatusCode": 206,
