@@ -67,9 +67,6 @@ more information on how to configure exporters, see the
 | [tinybirdexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/tinybirdexporter)                               | contrib                  | alpha       | alpha       | alpha       |
 | [zipkinexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/zipkinexporter)                                   | contrib, core            | beta        | -           | -           |
 
-⚠️ **Note:** Components marked with ⚠️ are unmaintained and have no active
-codeowners. They may not receive regular updates or bug fixes.
-
 [^1]:
     Shows which [distributions](/docs/collector/distributions/) (core, contrib,
     K8s, etc.) include this component.

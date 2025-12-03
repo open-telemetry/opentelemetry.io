@@ -7423,6 +7423,50 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-27T09:47:27.298818795Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/avrologencodingextension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:36:52.528215-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/awscloudwatchmetricstreamsencodingextension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:36:55.441941-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/awslogsencodingextension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:36:57.584308-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/azureencodingextension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:36:58.302325-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/googlecloudlogentryencodingextension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:36:59.368729-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/jaegerencodingextension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:01.18692-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/jsonlogencodingextension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:02.316803-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/otlpencodingextension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:03.205243-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/skywalkingencodingextension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:04.3252-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/textencodingextension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:05.566563-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/zipkinencodingextension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:05.987972-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/googleclientauthextension": {
     "StatusCode": 206,
     "LastSeen": "2025-11-24T00:03:59.784708285Z"
@@ -7467,9 +7511,37 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-27T09:47:27.703165407Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/cfgardenobserver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:07.878672-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/dockerobserver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:08.496317-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/ecsobserver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:09.938741-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/endpointswatcher": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:10.998753-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/hostobserver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:13.070011-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/k8sobserver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:14.312228-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/k8sobserver#setting-up-rbac-permissions": {
     "StatusCode": 206,
     "LastSeen": "2025-11-27T09:41:49.415492952Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/kafkatopicsobserver": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:15.383189-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/oidcauthextension": {
     "StatusCode": 206,
@@ -7494,6 +7566,18 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/solarwindsapmsettingsextension": {
     "StatusCode": 206,
     "LastSeen": "2025-11-27T09:42:44.750478683Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/storage/dbstorage": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:16.983676-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/storage/filestorage": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:20.524602-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/storage/redisstorageextension": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T11:37:24.897668-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sumologicextension": {
     "StatusCode": 206,
