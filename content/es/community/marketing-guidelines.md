@@ -27,11 +27,11 @@ Este documento se divide en dos secciones:
 - **Inquietudes y consecuencias:** ¿Cómo determinamos si se ha infringido una
   directriz? ¿Y qué hacemos al respecto?
 
-## Objetivos y directrices
+## Objetivos y directrices {#goals-and-guidelines}
 
 Hay tres áreas de enfoque de alto nivel para estos objetivos y directrices.
 
-### I: OpenTelemetry es un esfuerzo conjunto
+### I: OpenTelemetry es un esfuerzo conjunto {#i-open-telemetry-is-a-joint-effort}
 
 - Consejos:
   - Usar materiales del proyecto, como el logotipo y el nombre, en consonancia
@@ -48,7 +48,7 @@ Hay tres áreas de enfoque de alto nivel para estos objetivos y directrices.
     sus componentes.
   - Menospreciar las contribuciones de otra organización o persona.
 
-### II: No es una competición
+### II: No es una competición {#ii-its-not-a-competition}
 
 - Consejos:
   - Enfatizar que todas las contribuciones son valiosas y que son de diversas
@@ -70,7 +70,7 @@ Hay tres áreas de enfoque de alto nivel para estos objetivos y directrices.
     con OTel debería cuestionarse como resultado (de hecho, no hay razón para
     que un proveedor deba contribuir a OTel para apoyarlo)
 
-### III: Promover la concienciación sobre la interoperabilidad y modularización de OTel
+### III: Promover la concienciación sobre la interoperabilidad y modularización de OTel {#iii-promote-awareness-of-otel-interoperability-and-modularization}
 
 - Consejos:
   - Dar a conocer la compatibilidad con OTel: cuanto mejor comprendan los
@@ -84,7 +84,7 @@ Hay tres áreas de enfoque de alto nivel para estos objetivos y directrices.
   - Denigrar públicamente el soporte de OTel de otro proveedor, especialmente
     sin pruebas objetivas.
 
-## Preocupaciones y consecuencias
+## Preocupaciones y consecuencias {#concerns-and-consequences}
 
 Inevitablemente, habrá casos en los que los proveedores (o al menos sus
 departamentos de Marketing) incumplan estas directrices. Hasta la fecha, esto no
