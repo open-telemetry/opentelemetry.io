@@ -27,6 +27,7 @@ cassandra
 checkoutservice
 Chronosphere
 classpath
+cmelius
 cncf
 configurator
 comms
