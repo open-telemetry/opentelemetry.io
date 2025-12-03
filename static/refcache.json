@@ -4447,6 +4447,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-30T09:45:13.268132037Z"
   },
+  "https://github.com/cmelius/opentelemetry-auto-twig/tree/main": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-03T09:22:17.48383708Z"
+  },
   "https://github.com/cncf/artwork/tree/master/projects/opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2025-11-29T09:39:02.971148787Z"
@@ -17090,6 +17094,10 @@
   "https://packagist.org/": {
     "StatusCode": 200,
     "LastSeen": "2025-12-01T09:45:48.603972671Z"
+  },
+  "https://packagist.org/packages/cmelius/opentelemetry-auto-twig": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-03T09:22:17.730219449Z"
   },
   "https://packagist.org/packages/google/protobuf": {
     "StatusCode": 200,
