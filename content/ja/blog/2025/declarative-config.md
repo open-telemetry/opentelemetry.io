@@ -232,7 +232,7 @@ CNCF Slackの[`#otel-config-file`][slack-config]チャンネルを使用して�
 [slack-go]: https://cloud-native.slack.com/archives/C01NPAXACKT
 [slack-config]: https://cloud-native.slack.com/archives/C0476L7UJT1
 [java-bridge]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/declarative-config-bridge
-[js-package]: https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-configuration
+[js-package]: https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/configuration
 [php-docs]: https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Config/SDK#initialization-from-configuration-file
 [go-package]: https://github.com/open-telemetry/opentelemetry-go-contrib/tree/main/otelconf
 [go-package-index]: https://pkg.go.dev/go.opentelemetry.io/contrib/otelconf
