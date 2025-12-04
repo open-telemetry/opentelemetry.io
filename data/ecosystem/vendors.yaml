@@ -384,12 +384,6 @@
   contact: hi@s2.dev
   oss: false
   commercial: true
-- name: Sentry Software
-  nativeOTLP: true
-  url: https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html
-  contact:
-  oss: false
-  commercial: true
 - name: ServicePilot
   nativeOTLP: true
   url: https://www.servicepilot.com/en/doc/apm#opentelemetry
