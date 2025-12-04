@@ -8,7 +8,7 @@ author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger) (Grafana Labs), [Jay
   DeLuca](https://github.com/jaydeluca) (Grafana Labs), [Marylia
   Gutierrez](https://github.com/maryliag) (Grafana Labs)
-default_lang_commit: 2e0c4fbe87eeefebb416874d28b8d332ab91b4a6
+default_lang_commit: 2e0c4fbe87eeefebb416874d28b8d332ab91b4a6 # patched
 cSpell:ignore: Dotel marylia otelconf Pruébalo zeitlinger
 ---
 
@@ -57,6 +57,11 @@ resource:
   detection/development:
     detectors:
       - service: # agregará "service.instance.id" y "service.name" desde OTEL_SERVICE_NAME
+
+propagator:
+  composite:
+    - tracecontext:
+    - baggage:
 
 tracer_provider:
   processors:
@@ -314,7 +319,7 @@ configuración declarativa, consulta los siguientes recursos:
 [java-bridge]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/declarative-config-bridge
 [js-package]:
-  https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-configuration
+  https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/configuration
 [php-docs]:
   https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Config/SDK#initialization-from-configuration-file
 [go-package]:

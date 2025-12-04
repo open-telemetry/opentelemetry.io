@@ -4,7 +4,10 @@
 @import 'registry';
 @import 'tabs';
 @import 'external_link';
+@import 'dark-adjustments';
+@import 'td/color-adjustments-dark';
 @import 'td/code-dark';
+@import 'td/gcs-search-dark';
 @import '_page_no_left_sidebar';
 
 .td-home {
@@ -210,14 +213,6 @@
   border: $border-width solid $border-color;
   margin-bottom: $paragraph-margin-bottom;
   @extend .td-max-width-on-larger-screens;
-}
-
-.td-content .img-initial {
-  filter: none;
-}
-
-[data-bs-theme='dark'] .td-content .img-initial {
-  filter: brightness(0) invert(1);
 }
 
 .td-blog.otel-with-contributions-from {

@@ -5,6 +5,7 @@ weight: 11
 description:
   Une implémentation d'auto-instrumentation utilisant l'opérateur OpenTelemetry.
 default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: GRPCNETCLIENT k8sattributesprocessor otelinst otlpreceiver REDISCALA
 ---

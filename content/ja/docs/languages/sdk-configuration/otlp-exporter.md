@@ -4,6 +4,7 @@ linkTitle: OTLPエクスポーター
 weight: 20
 aliases: [otlp-exporter-configuration]
 default_lang_commit: 8587d0c0ff3bc57f99b0ecd461f03dd1f73c07ec
+drifted_from_default: true
 ---
 
 ## エンドポイントの設定 {#endpoint-configuration}

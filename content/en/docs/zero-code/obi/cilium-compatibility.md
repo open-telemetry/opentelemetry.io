@@ -7,7 +7,7 @@ weight: 23
 
 Cilium is an open source security, networking, and observability platform that
 uses eBPF to provide networking and security for Kubernetes clusters. In some
-cases, the eBPF programs both Cilium and OBI use can conflict with the ePBF
+cases, the eBPF programs both Cilium and OBI use can conflict with the eBPF
 programs OBI uses and lead to issues.
 
 OBI and Cilium use eBPF traffic control classifier programs,
