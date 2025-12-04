@@ -87,18 +87,11 @@ In a mainframe context, the Collector often runs **off-platform** (for example, 
 - Mainframe-specific telemetry sources, and  
 - Your enterprise observability backends (metrics/logs platforms, tracing backends, APM tools, SIEMs, and data lakes).
 
-Future pages in this section will describe patterns and examples for:
-
-- Mapping existing mainframe telemetry (such as SMF records, logs, and subsystem metrics) into OpenTelemetry signals.
-- Correlating mainframe operations with upstream and downstream services using traces.
-- Designing pipelines that respect mainframe performance and security constraints.
-
 ## Working group and community
 
-The **OpenTelemetry on Mainframes Special Interest Group (SIG)** focuses on:
+The **OpenTelemetry on Mainframes Special Interest Group (SIG)** is currently focused on:
 
 - Defining common terminology and use cases.
-- Describing integration patterns for bringing mainframe telemetry into OpenTelemetry.
-- Identifying gaps in specs, SDKs, and Collector components related to mainframe use cases.
+- Identifying gaps in specifications (OpenTelemetry Semantic Conventions), SDKs, and Collector components related to mainframe use cases.
 
 If you are interested in contributing, see the community and SIG information in the OpenTelemetry repositories and website for meeting times and communication channels.
