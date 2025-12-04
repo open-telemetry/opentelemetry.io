@@ -35,7 +35,7 @@ Estos objetivos y directrices se centran en tres áreas de alto nivel.
 
 - Consejos:
   - Usar materiales del proyecto, como el logotipo y el nombre, en consonancia
-    con la imagen de marca de la Linux Fundation y
+    con la imagen de marca de la Linux Foundation y
     [las directrices de uso de la marca registrada](https://www.linuxfoundation.org/legal/trademark-usage)
   - Enfatizar que OTel no sería posible sin las contribuciones de muchos
     colaboradores que trabajan para proveedores de la competencia
@@ -58,7 +58,8 @@ Estos objetivos y directrices se centran en tres áreas de alto nivel.
   - Crear y compartir recursos educativos (videos, talleres, artículos) o
     recursos compartidos que puedan usarse con fines educativos (por ejemplo,
     una aplicación de ejemplo que use un lenguaje o framework específico)
-  - Actividades para fomentar la comunidad, como organizar un evento o un grupo de comunidad
+  - Actividades para fomentar la comunidad, como organizar un evento o un grupo
+    de comunidad
   - Reconocer y agradecer públicamente a otras organizaciones por sus
     contribuciones a OTel
 - Qué no hacer:
