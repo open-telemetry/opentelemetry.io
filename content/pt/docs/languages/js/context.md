@@ -23,7 +23,7 @@ Mais informações:
 A API de contexto depende de um gerenciador de contexto (_context manager_) para
 funcionar. Os exemplos neste documento pressupõem que um gerenciador de contexto
 já foi configurado. Geralmente, o gerenciador de contexto é fornecido pelo SDK,
-porém também é possível registrar um diretamente da seguinte maneira:
+porém também é possível registrar um diretamente da seguinte forma:
 
 ```typescript
 import * as api from '@opentelemetry/api';
