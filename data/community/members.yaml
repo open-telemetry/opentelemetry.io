@@ -742,15 +742,6 @@ maintainers:
       - sig-project-infra-approvers
     html_url: https://github.com/jaronoff97
     avatar_url: https://avatars.githubusercontent.com/u/10070047?v=4
-  - name: jaydeluca
-    teams:
-      - ecosystem-explorer-approvers
-      - ecosystem-explorer-maintainers
-      - java-contrib-approvers
-      - java-instrumentation-approvers
-      - java-instrumentation-triagers
-    html_url: https://github.com/jaydeluca
-    avatar_url: https://avatars.githubusercontent.com/u/7630696?v=4
   - name: jerbly
     teams:
       - weaver-approvers
@@ -1030,7 +1021,6 @@ maintainers:
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-triagers
-      - ecosystem-explorer-approvers
       - javascript-approvers
       - javascript-contrib-triagers
       - javascript-triagers
@@ -1131,8 +1121,6 @@ maintainers:
       - collector-releases-maintainers
       - collector-triagers
       - docs-es-approvers
-      - ecosystem-explorer-approvers
-      - ecosystem-explorer-maintainers
       - semconv-k8s-approvers
       - semconv-system-approvers
       - sig-contributor-experience-approvers
@@ -1379,8 +1367,6 @@ maintainers:
       - docs-uk-maintainers
       - docs-zh-approvers
       - docs-zh-maintainers
-      - ecosystem-explorer-approvers
-      - ecosystem-explorer-maintainers
       - proto-approvers
       - proto-triagers
       - sig-contributor-experience-approvers
@@ -1582,7 +1568,6 @@ maintainers:
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-triagers
-      - ecosystem-explorer-approvers
     html_url: https://github.com/vitorvasc
     avatar_url: https://avatars.githubusercontent.com/u/12118857?v=4
   - name: wolfgangcodes
@@ -1950,6 +1935,13 @@ approvers:
       - helm-triagers
     html_url: https://github.com/JaredTan95
     avatar_url: https://avatars.githubusercontent.com/u/12468337?v=4
+  - name: jaydeluca
+    teams:
+      - java-contrib-approvers
+      - java-instrumentation-approvers
+      - java-instrumentation-triagers
+    html_url: https://github.com/jaydeluca
+    avatar_url: https://avatars.githubusercontent.com/u/7630696?v=4
   - name: jcocchi
     teams:
       - semconv-db-approvers
@@ -2548,6 +2540,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/onurtemizkan
     avatar_url: https://avatars.githubusercontent.com/u/4020638?v=4
+  - name: paulojmdias
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/paulojmdias
+    avatar_url: https://avatars.githubusercontent.com/u/44772900?v=4
   - name: punya
     teams:
       - javascript-contrib-triagers
@@ -2886,6 +2883,9 @@ members:
   - name: lopes-felipe
     html_url: https://github.com/lopes-felipe
     avatar_url: https://avatars.githubusercontent.com/u/15851809?v=4
+  - name: luke6Lh43
+    html_url: https://github.com/luke6Lh43
+    avatar_url: https://avatars.githubusercontent.com/u/52648621?v=4
   - name: luvtechno
     html_url: https://github.com/luvtechno
     avatar_url: https://avatars.githubusercontent.com/u/43811?v=4
@@ -2976,9 +2976,6 @@ members:
   - name: paologallinaharbur
     html_url: https://github.com/paologallinaharbur
     avatar_url: https://avatars.githubusercontent.com/u/43335750?v=4
-  - name: paulojmdias
-    html_url: https://github.com/paulojmdias
-    avatar_url: https://avatars.githubusercontent.com/u/44772900?v=4
   - name: paulosman
     html_url: https://github.com/paulosman
     avatar_url: https://avatars.githubusercontent.com/u/75895?v=4
