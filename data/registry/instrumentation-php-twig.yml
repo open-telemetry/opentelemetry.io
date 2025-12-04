@@ -16,5 +16,5 @@ createdAt: 2025-12-02
 package:
   registry: packagist
   name: cmelius/opentelemetry-auto-twig
-  version: 1.0.0
+  version: v1.0.0
 isFirstParty: false
