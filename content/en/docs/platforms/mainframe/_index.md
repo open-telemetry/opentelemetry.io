@@ -87,11 +87,27 @@ In a mainframe context, the Collector often runs **off-platform** (for example, 
 - Mainframe-specific telemetry sources, and  
 - Your enterprise observability backends (metrics/logs platforms, tracing backends, APM tools, SIEMs, and data lakes).
 
+## Current Status
+
+OpenTelemetry instrumentation already exists for mainframes.  
+
+Historically, much of this mainframe-specific instrumentation has been vendor supplied.  Many observability backend vendors provide vendor-specific extensions or agents to package and ship mainframe telemetry to their observability back end.  
+
+However, as more and more mainframe customers are requesting OpenTelemetry support, this landscape is quickly changing -- with customers preferring more vendor-neutral approaches.  Vendors are responding in kind.
+
+IBM, who supplies the operating system and bases subsystem software for the most pervasively used mainframe systems, is currently in the process of baking native OpenTelemetry support into its operating systems and subsystems.
+
+Many Independent [Mainframe] Software Vendors (ISVs) are also transitioning their observability support to favor the OpenTelemetry vendor-neutral approach as well.   
+
+Of course, this successful transition depends upon common terminology and semantics.
+
 ## Working group and community
 
 The **OpenTelemetry on Mainframes Special Interest Group (SIG)** is currently focused on:
 
 - Defining common terminology and use cases.
 - Identifying gaps in specifications (OpenTelemetry Semantic Conventions), SDKs, and Collector components related to mainframe use cases.
+
+The SIG currently has representation from IBM, multiple ISVs, observability backend vendors, and some customers.  But we are always in need of more help!
 
 If you are interested in contributing, see the community and SIG information in the OpenTelemetry repositories and website for meeting times and communication channels.
