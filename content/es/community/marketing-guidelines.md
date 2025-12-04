@@ -12,8 +12,8 @@ finales, proyectos OSS adyacentes y proveedores que, en última instancia, vende
 productos y servicios basados ​​en datos o componentes de OTel. Al igual que
 muchos proyectos orientados a estándares, los proveedores que colaboran en OTel
 también compiten en el mercado, por lo que es importante establecer algunas
-reglas básicas y expectativas sobre cómo las organizaciones participantes se
-comunican y comunican sobre OTel.
+reglas básicas y expectativas sobre cómo las organizaciones participantes interactúan y
+cómo comunican sobre OTel.
 
 De hecho, el éxito de OTel depende tanto de la realidad como de la percepción de
 una colaboración sincera entre las diversas partes (y proveedores) involucradas.
@@ -42,7 +42,7 @@ Hay tres áreas de enfoque de alto nivel para estos objetivos y directrices.
   - Citar los nombres de otros colaboradores y proveedores involucrados en las
     iniciativas de OTel
   - Enfatizar nuestros objetivos comunes como comunidad para mejorar las
-    experiencias de los usuarios finales/desarrolladores y empoderarle
+    experiencias de los usuarios finales/desarrolladores y empoderarlos
 - Qué no hacer:
   - Dar a entender que un único proveedor es responsable de OTel o de alguno de
     sus componentes.
@@ -53,8 +53,7 @@ Hay tres áreas de enfoque de alto nivel para estos objetivos y directrices.
 - Consejos:
   - Enfatizar que todas las contribuciones son valiosas y que son de diversas
     formas y tamaños, incluyendo:
-  - Contribuciones al código principal del proyecto o a SDK específicos del
-    lenguaje o framework
+  - Contribuciones al código principal del proyecto o a los SDK para lenguajes o frameworks específicos
   - Crear y compartir recursos educativos (videos, talleres, artículos) o
     recursos compartidos que puedan usarse con fines educativos (por ejemplo,
     una aplicación de muestra que use un lenguaje o framework específico)
@@ -66,7 +65,7 @@ Hay tres áreas de enfoque de alto nivel para estos objetivos y directrices.
   - Comparar directamente el volumen o el valor de los diferentes contribuyentes
     a OTel (por ejemplo, a través de [CNCF devstats](https://devstats.cncf.io/))
   - Insinuar que quienes contribuyen poco o con poca frecuencia a OTel son
-    necesariamente ciudadanos de segunda clase, y/o que su propia compatibilidad
+    necesariamente ciudadanos de segunda clase, y/o que, por ello, su propia compatibilidad
     con OTel debería cuestionarse como resultado (de hecho, no hay razón para
     que un proveedor deba contribuir a OTel para apoyarlo)
 
@@ -84,7 +83,7 @@ Hay tres áreas de enfoque de alto nivel para estos objetivos y directrices.
   - Denigrar públicamente el soporte de OTel de otro proveedor, especialmente
     sin pruebas objetivas.
 
-## Preocupaciones y consecuencias {#concerns-and-consequences}
+## Inquietudes y consecuencias {#concerns-and-consequences}
 
 Inevitablemente, habrá casos en los que los proveedores (o al menos sus
 departamentos de Marketing) incumplan estas directrices. Hasta la fecha, esto no
@@ -94,12 +93,12 @@ proceso para gestionar estas inquietudes.
 Así es como gestionamos estas circunstancias:
 
 1. Quien detecte contenido público (de marketing) relevante debe escribir un
-   correo electrónico a <cncf-opentelemetry-governance@lists.cncf.io> y incluir
+   correo electrónico a <cncf-opentelemetry-governance@lists.cncf.io> e incluir
    una explicación de por qué el contenido es problemático, idealmente haciendo
    referencia a las
    [directrices relevantes mencionadas anteriormente](#goals-and-guidelines).
 2. El Comité de Gobernanza de OTel (CG) analizará el caso durante su próxima
-   reunión (semanal) o, de ser posible, de forma asincrónica por correo
+   reunión (semanal) o, de ser posible, de forma asincróna por correo
    electrónico. El CG de OTel garantiza una respuesta por correo electrónico
    **en un plazo de dos semanas** tras el informe inicial.
 3. Si el GC considera que existe un problema, recomendará una medida correctiva
@@ -107,8 +106,8 @@ Así es como gestionamos estas circunstancias:
    publicó el contenido capacite a los empleados pertinentes sobre el contenido
    de este documento como medida preventiva adicional.
 
-Si se desarrolla un patrón con un proveedor en particular, el GC se reunirá para
-discutir consecuencias más significativas, por ejemplo, eliminar el nombre de
+Si se observa un patrón de comportamiento recurrente con un proveedor en particular,
+el GC se reunirá para discutir consecuencias más significativas, por ejemplo, eliminar el nombre de
 ese proveedor de las listas de proveedores compatibles que mantiene OTel o
-simplemente documentar públicamente el patrón de comportamiento inapropiado de
+simplemente documentar públicamente el patrón de comportamiento inapropiado en
 la comunidad.

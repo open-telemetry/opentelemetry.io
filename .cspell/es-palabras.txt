@@ -1,6 +1,6 @@
 interoperabilidad
 modularización
-asincrónica
+asíncrona
 empoderarle
 observabilidad
 telemetría
