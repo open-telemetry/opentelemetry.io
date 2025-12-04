@@ -1,6 +1,7 @@
 ---
 title: Spring Boot 启动器
 default_lang_commit: 8c61967612481a3b8d48926cfaa3c92ce7c46906
+drifted_from_default: true
 aliases:
   - /docs/languages/java/automatic/spring-boot
   - /docs/zero-code/java/agent/spring-boot

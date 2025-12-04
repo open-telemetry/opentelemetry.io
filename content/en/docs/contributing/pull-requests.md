@@ -15,23 +15,24 @@ To contribute new or improve existing documentation, submit a [pull request][PR]
 - Otherwise, see [Work from a local fork](#fork-the-repo) to learn how to make
   changes in your own local development environment.
 
-{{% alert title="Contributor License Agreement (CLA)" color=warning %}}
+## Generative AI contribution policy {#using-ai}
 
-All contributors are required to [sign a Contributor License Agreement
-(CLA)][CLA] before changes can be reviewed and merged.
+{{% alert color="warning" %}}
 
-[CLA]: ../prerequisites/#cla
+Generative AI is allowed, but **you are responsible** for **reviewing and
+_validating_** all AI-generated content &mdash; if you don't understand it,
+don't submit it!
 
-{{% /alert %}}
-
-{{% alert title="Tip: Draft status" %}}
-
-Set the status of your pull request to **Draft** to let maintainers know that
-the content isn't ready for review yet. Maintainers may still comment or do
-high-level reviews, though they won't review the content in full until you
-remove the draft status.
+This is especially important for [first-time contributors]. For details, see our
+[Generative AI Contribution Policy][].
 
 {{% /alert %}}
+
+[first-time contributors]: ../#first-time-contributing
+[Generative AI Contribution Policy]:
+  https://github.com/open-telemetry/community/blob/main/policies/genai.md
+
+## How to contribute
 
 The following figure illustrates how to contribute new documentation.
 
@@ -43,7 +44,7 @@ flowchart LR
        B[Fork the repo in GitHub] --- C[Write docs in markdown<br>and build site with Hugo]
        C --- D[Push source to the fork]
        D --- E[Open a pull request]
-       E --- F[Sign the CNCF CLA]
+       E --- F[Sign the <a href="../prerequisites/#cla">CNCF CLA</a>]
     end
 
 classDef grey fill:#dddddd,stroke:#ffffff,stroke-width:px,color:#000000, font-size:15px;
@@ -55,6 +56,15 @@ class first,second white
 ```
 
 _Figure 1. Contributing new content._
+
+{{% alert title="Tip: Draft status" %}}
+
+Set the status of your pull request to **Draft** to let maintainers know that
+the content isn't ready for review yet. Maintainers may still comment or do
+high-level reviews, though they won't review the content in full until you
+remove the draft status.
+
+{{% /alert %}}
 
 ## Using GitHub {#changes-using-github}
 

@@ -1,6 +1,7 @@
 ---
 title: ターゲットアロケーター
 default_lang_commit: f02328f074d7cbd837dda6653754daee0c452a2a
+drifted_from_default: true
 cSpell:ignore: bleh targetallocator
 ---
 

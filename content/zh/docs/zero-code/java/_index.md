@@ -2,6 +2,7 @@
 title: Java 零代码插桩
 linkTitle: Java
 default_lang_commit: 1932c5d9a52ee2484f7a1c170acc8391d98192da
+drifted_from_default: true
 aliases:
   - /docs/java/automatic_instrumentation
   - /docs/languages/java/automatic_instrumentation

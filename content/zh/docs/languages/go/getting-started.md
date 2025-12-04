@@ -415,7 +415,7 @@ func rolldice(w http.ResponseWriter, r *http.Request) {
     }
     logger.InfoContext(ctx, msg, "result", roll)
 
-    // 为这个指标定义一个熟悉，表示是骰子点数值。
+    // 为这个指标定义一个属性，表示是骰子点数值。
     rollValueAttr := attribute.Int("roll.value", roll)
     span.SetAttributes(rollValueAttr)
     rollCnt.Add(ctx, 1, metric.WithAttributes(rollValueAttr))

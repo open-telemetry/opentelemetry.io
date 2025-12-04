@@ -21,7 +21,7 @@ trim-code-blank-lines: true
 unindent-code-blocks: true
 validate-links:
   patterns:
-    - regex: "https://github\\.(?!com|blog|io)"
+    - regex: "https://github\\.(?!com|blog|io|github.com)"
       message: >-
         GitHub URLs should use `github.(com|blog|io)` domains to avoid
         typosquatting. For details, see
