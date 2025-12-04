@@ -47,9 +47,6 @@ pipeline. For more information on how to configure processors, see the
 | [transformprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)                       | contrib, K8s       | beta        | beta        | beta        |
 | [unrollprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/unrollprocessor)                             | contrib            | -           | -           | alpha       |
 
-⚠️ **Note:** Components marked with ⚠️ are unmaintained and have no active
-codeowners. They may not receive regular updates or bug fixes.
-
 [^1]:
     Shows which [distributions](/docs/collector/distributions/) (core, contrib,
     K8s, etc.) include this component.
