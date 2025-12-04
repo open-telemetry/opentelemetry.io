@@ -87,7 +87,7 @@ In a mainframe context, the Collector often runs **off-platform** (for example, 
 - Mainframe-specific telemetry sources, and  
 - Your enterprise observability backends (metrics/logs platforms, tracing backends, APM tools, SIEMs, and data lakes).
 
-## Current Status
+## Current status
 
 OpenTelemetry instrumentation already exists for mainframes.  
 
