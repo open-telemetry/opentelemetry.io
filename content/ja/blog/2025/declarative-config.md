@@ -1,6 +1,6 @@
 ---
 title: '宣言的設定のジャーニー: トレースにおけるヘルスチェックエンドポイントを無視するのに5年かかった理由'
-linkTitle: Declarative configuration journey
+linkTitle: 宣言的設定のジャーニー
 date: 2025-10-20
 author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger)(Grafana Labs), [Jay
