@@ -299,7 +299,7 @@ data:
         - k8s_deployment_name: "ruby-service"
     trace_printer: text
     ebpf:
-      enable_context_propagation: true
+      context_propagation: all
       traffic_control_backend: tcx
       disable_blackbox_cp: true
       track_request_headers: true
