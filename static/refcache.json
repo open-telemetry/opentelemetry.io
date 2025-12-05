@@ -963,6 +963,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-02T09:47:06.990721329Z"
   },
+  "https://connectrpc.com/docs/protocol/#error-codes": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-05T09:27:14.994982772Z"
+  },
   "https://containerd.io/": {
     "StatusCode": 206,
     "LastSeen": "2025-12-04T09:49:22.285088227Z"
@@ -5242,6 +5246,10 @@
   "https://github.com/grpc/grpc/blob/v1.33.2/doc/statuscodes.md": {
     "StatusCode": 206,
     "LastSeen": "2025-12-02T09:47:11.882346677Z"
+  },
+  "https://github.com/grpc/grpc/blob/v1.75.0/doc/statuscodes.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-05T09:27:10.292969994Z"
   },
   "https://github.com/grpc/grpc/tree/master/src/php": {
     "StatusCode": 206,
@@ -21210,6 +21218,10 @@
   "https://www.jsonrpc.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-12-04T09:47:01.627770909Z"
+  },
+  "https://www.jsonrpc.org/specification#error_object": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-05T09:27:15.449912348Z"
   },
   "https://www.kaggle.com/whitepaper-agents": {
     "StatusCode": 200,
