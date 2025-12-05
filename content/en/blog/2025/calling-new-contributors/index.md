@@ -12,7 +12,7 @@ sig: Contributor Experience
 
 If you've ever thought about contributing to OpenTelemetry but weren't sure
 where to start, you're not alone. In a
-[recent community](https://opentelemetry.io/blog/2025/contribex-survey-results/)
+[recent community](/blog/2025/contribex-survey-results/)
 survey, we heard that people were excited to contribute but got stuck taking
 those first steps. Contributing to open source can feel daunting, and we want to
 change that.
@@ -22,7 +22,7 @@ experience_. We want to understand what's working well, where people are having
 issues, and how we can better support community members who want to get
 involved.
 
-## Why We're Doing This
+## Why we're doing this
 
 As an open source project, OpenTelemetry thrives on community contributions. If
 new contributors struggle to get started, it's frustrating for them and slows
@@ -33,7 +33,7 @@ documentation, to setting up their environment, to figuring out where to ask for
 help. We're grateful that the data helped us understand _what_ is challenging,
 but now we'd like to learn more about _why_ those things are challenging.
 
-## What the Research Study Involves
+## What the research study involves
 
 We're looking to talk with people who:
 
@@ -46,16 +46,16 @@ could make it easier for you (and others) to get started.
 Every experience matters, whether you've already submitted multiple pull
 requests or never got past the "I want to help" stage.
 
-## How to Participate
+## How to participate
 
 If you're interested in joining the study, we'd love to hear from you!
-[Sign up here](https://calendar.app.google/YRgmzf8zJDSKYaj49)
+[Sign up here](https://calendar.app.google/YRgmzf8zJDSKYaj49).
 
 Participation involves a short interview with our research team, and your
 feedback will be used to improve the OpenTelemetry contributor experience for
 everyone.
 
-## Help Build the Future of OpenTelemetry
+## Help build the future of OpenTelemetry
 
 Open source is strongest when it's inclusive and accessible. By sharing your
 perspective, you'll play a direct role in shaping a smoother path for future
