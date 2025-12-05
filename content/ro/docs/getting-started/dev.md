@@ -7,7 +7,7 @@ default_lang_commit: 205bb879ae80ebcd0e719947e55b32e104f7090e
 Aceasta este pagina [noțiuni de bază](..) potrivită ție dacă:
 
 - Dezvolți software.
-- Scopul tău este să obții observabilitate prin scrierea 
+- Scopul tău este să obții observabilitate prin scrierea de cod.
 - Vrei ca dependențele tale să emită automat telemetrie pentru tine.
 
 OpenTelemetry te poate ajuta! Pentru a-ți îndeplini scopul de a avea
@@ -26,8 +26,8 @@ nativ:
 Dacă ești în căutarea unui set de aplicații pentru a experimenta, îți va fi de
 folos [demo-ul oficial OpenTelemetry](/ecosystem/demo/).
 
-În continuare, poți aprofunda documentația pentru 
-[limbajul](../../languages/) pe care îl folosești:
+În continuare, poți aprofunda documentația pentru [limbajul](../../languages/)
+pe care îl folosești:
 
 - [C++](../../languages/cpp/)
 - [.NET](../../languages/dotnet/)
