@@ -299,6 +299,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-04T09:48:59.041547919Z"
   },
+  "https://calendar.app.google/YRgmzf8zJDSKYaj49": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-05T02:20:20.206597038Z"
+  },
+  "https://calendar.google.com/calendar": {
+    "StatusCode": 200,
+    "LastSeen": "2025-02-24T16:02:34.66521577Z"
+  },
   "https://calendar.google.com/calendar/embed?src=c_6b6b343737cc9bbf0393ba40c101d6b017514751e66951c9890d089eedd78a37@group.calendar.google.com&mode=WEEK&dates=20250331/20250406": {
     "StatusCode": 200,
     "LastSeen": "2025-12-05T09:47:07.619505708Z"
@@ -17014,6 +17022,10 @@
   "https://opentelemetry.devstats.cncf.io/d/9/developer-activity-counts-by-repository-group-table?orgId=1": {
     "StatusCode": 200,
     "LastSeen": "2025-12-05T09:47:06.305892751Z"
+  },
+  "https://opentelemetry.io/blog/2025/contribex-survey-results/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-05T02:20:14.648493305Z"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
