@@ -186,7 +186,7 @@ sub patchSpec_because_of_SemConv_DatabaseRenamedToDb() {
     # Restrict the patch to the proper spec, and section or file:
     # Note that here we replace links into semconv from the spec
     $ARGV =~ m|^tmp/otel/specification/|
-      && applyPatchOrPrintMsgIf('2025-11-26-database-section-renamed-to-db', 'semconv', '1.39.0-dev');
+      && applyPatchOrPrintMsgIf('2025-11-26-database-section-renamed-to-db', 'semconv', '1.38.0-');
 
   # Give infor about the patch, see:
   # https://github.com/open-telemetry/opentelemetry.io/pull/8311#issue-3577941378
