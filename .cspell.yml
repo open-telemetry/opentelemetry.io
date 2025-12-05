@@ -72,8 +72,11 @@ dictionaries:
   - companies
 words: # Valid words across all locales
   - Docsy
+  - errorf
+  - Goldmark
   - htmltest
   - jsonify
   - nvmrc
   - opentelemetrybot
   - warnf
+  - warnidf

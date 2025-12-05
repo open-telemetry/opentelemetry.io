@@ -1,3 +1,7 @@
+interoperabilidad
+modularización
+asíncrona
+empoderarlos
 observabilidad
 telemetría
 inicialización
@@ -26,3 +30,10 @@ agregable
 milisegundos
 subproyecto
 autoinstrumentación
+muestreado
+muestreador
+muestreo
+muestreen
+muestrear
+muestrearse
+muestreados

@@ -1,14 +1,15 @@
 ---
 title: Java 零代码插桩
 linkTitle: Java
-default_lang_commit: 7715987e5ce1d4ac441afce2db7d337e11192666
+default_lang_commit: 1932c5d9a52ee2484f7a1c170acc8391d98192da
+drifted_from_default: true
 aliases:
   - /docs/java/automatic_instrumentation
   - /docs/languages/java/automatic_instrumentation
 cascade:
   vers:
-    instrumentation: 2.19.0
-    otel: 1.53.0
+    instrumentation: 2.20.1
+    otel: 1.55.0
 ---
 
 Java 中零代码插桩的常见选项包括 Java 代理 JAR、Spring Boot 启动器和 Quarkus OpenTelemetry 扩展。

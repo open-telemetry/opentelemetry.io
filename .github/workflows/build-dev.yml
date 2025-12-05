@@ -17,7 +17,7 @@ jobs:
     name: BUILD and CHECK LINKS
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6.0.0
 
       - name: Create NPM cache-hash input file
         run: |
@@ -29,7 +29,7 @@ jobs:
           jq '.dependencies |= {minisearch: .minisearch} | del(.optionalDependencies)' package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
-      - uses: actions/setup-node@v5
+      - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -43,7 +43,7 @@ jobs:
           GET: no # For details, see: https://opentelemetry.io/docs/contributing/development/#submodule-changes
           PIN_SKIP: ${{ inputs.submodule_path_regex }}
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: build-log-etc
           path: |
@@ -56,8 +56,8 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/download-artifact@v5
+      - uses: actions/checkout@v6.0.0
+      - uses: actions/download-artifact@v6
         with: { name: build-log-etc }
       - name: Fail when refcache contains entries with HTTP status 4XX
         run: |
@@ -73,8 +73,8 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/download-artifact@v5
+      - uses: actions/checkout@v6.0.0
+      - uses: actions/download-artifact@v6
         with: { name: build-log-etc }
       - run: cat tmp/build-log.txt
       - run: scripts/check-build-log.sh

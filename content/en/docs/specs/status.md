@@ -57,8 +57,8 @@ same as the **Protocol** status.
 ### Tracing
 
 - [Specification][tracing]
-- {{% spec_status "API" "otel/trace/api" "Status" %}}
-- {{% spec_status "SDK" "otel/trace/sdk" "Status" %}}
+- {{% spec_status "API" "otel/trace/api" %}}
+- {{% spec_status "SDK" "otel/trace/sdk" %}}
 - {{% spec_status "Protocol" "otlp" "/document-status.*for.*trace" %}}
 - Notes:
   - The tracing specification is now completely stable, and covered by long term
@@ -71,8 +71,8 @@ same as the **Protocol** status.
 ### Metrics
 
 - [Specification][metrics]
-- {{% spec_status "API" "otel/metrics/api" "Status" %}}
-- {{% spec_status "SDK" "otel/metrics/sdk" "Status" %}}
+- {{% spec_status "API" "otel/metrics/api" %}}
+- {{% spec_status "SDK" "otel/metrics/sdk" %}}
 - {{% spec_status "Protocol" "otlp" "/document-status.*for.*metric" %}}
 - Notes:
   - OpenTelemetry Metrics is currently under active development.
@@ -84,7 +84,7 @@ same as the **Protocol** status.
 ### Baggage
 
 - [Specification][baggage]
-- {{% spec_status "API" "otel/baggage/api" "Status" %}}
+- {{% spec_status "API" "otel/baggage/api" %}}
 - **SDK:** stable
 - **Protocol:** N/A
 - Notes:
@@ -96,8 +96,8 @@ same as the **Protocol** status.
 ### Logging
 
 - [Specification][logging]
-- {{% spec_status "Bridge API" "otel/logs/api" "Status" %}}
-- {{% spec_status "SDK" "otel/logs/sdk" "Status" %}}
+- {{% spec_status "Bridge API" "otel/logs/api" %}}
+- {{% spec_status "SDK" "otel/logs/sdk" %}}
 - {{% spec_status "Protocol" "otlp" "/document-status.*for.*log" %}}
 - Notes:
   - The [logs data model][] is released as part of the OpenTelemetry Protocol.

@@ -24,12 +24,13 @@ If you have made contributions to our ecosystem not measured by the automatic
 process, you can
 [request an exception](https://docs.google.com/forms/d/e/1FAIpQLSeSA09xDIv0uyb6vrP8xBbLjm8NsgihrG8GHxacbigF17sNDw/viewform?usp=dialog)
 before 23:59 UTC on 24 October 2025 to participate in the election. See the
-[voter roll](https://github.com/open-telemetry/community/blob/main/elections/2025/voters-roll.csv)
+[voter roll](https://github.com/open-telemetry/community/blob/f7b99ef75580e4d88159e66730e1b8bc6719ce30%5E/elections/2025/voters-roll.csv)
 with all members of standing and approved exceptions. Approved exceptions will
 be added to the roll continuously.
 
-Voting will be open between 27 October 2025 00:00 UTC and 29 October 2025 23:59
-29 October 2025, end of day,
+Voting will be open between 27 October 2025
+[~~00:00~~](https://github.com/open-telemetry/community/issues/3001#issuecomment-3449011021)
+12:00 UTC and 29 October 2025, end of day,
 [Anywhere on Earth](https://en.wikipedia.org/wiki/Anywhere_on_Earth) (30 October
 2025 12:00 UTC) on
 [Helios Voting](https://vote.heliosvoting.org/helios/elections/f94a7c58-990b-11f0-a16d-5270fb641b4c/view);
