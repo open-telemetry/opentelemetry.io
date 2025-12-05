@@ -1,5 +1,5 @@
 ---
-title: Calling New Contributors: Help Us Improve the OpenTelemetry Onboarding Experience
+title: Calling New Contributors - Help Us Improve the OpenTelemetry Onboarding Experience
 linkTitle: New Contributor Research Study
 date: 2025-12-05
 author: >-
