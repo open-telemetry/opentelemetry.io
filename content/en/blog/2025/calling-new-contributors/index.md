@@ -1,12 +1,9 @@
 ---
 title: Calling New Contributors: Help Us Improve the OpenTelemetry Onboarding Experience
 linkTitle: New Contributor Research Study
-date: 2025-10-02
+date: 2025-12-05
 author: >-
-  [Amy Super](https://github.com/amy-super)
-draft: true
-# canonical_url: http://somewhere.else/
-# body_class: otel-with-contributions-from
+  [Amy Super](https://github.com/amy-super)(Grafana Labs)
 issue: 7966
 sig: Contributor Experience
 ---
