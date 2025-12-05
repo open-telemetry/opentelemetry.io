@@ -306,7 +306,7 @@
   "https://calendar.google.com/calendar": {
     "StatusCode": 200,
     "LastSeen": "2025-02-24T16:02:34.66521577Z"
-  }, 
+  },
   "https://calendar.google.com/calendar/embed?src=c_6b6b343737cc9bbf0393ba40c101d6b017514751e66951c9890d089eedd78a37@group.calendar.google.com&mode=WEEK&dates=20250331/20250406": {
     "StatusCode": 200,
     "LastSeen": "2025-11-27T09:47:02.039400214Z"
