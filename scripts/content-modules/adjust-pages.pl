@@ -191,7 +191,9 @@ sub patchSpec_because_of_SemConv_DatabaseRenamedToDb() {
   # Give infor about the patch, see:
   # https://github.com/open-telemetry/opentelemetry.io/pull/8311#issue-3577941378
 
+  # Match both localized paths and GitHub URLs:
   s|(/semconv)/database(/database-)|$1/db$2|g;
+  s|(https://github.com/open-telemetry/semantic-conventions/blob/\w+/docs)/database(/database-)|$1/db$2|g;
 }
 
 sub getVersFromSubmodule() {
