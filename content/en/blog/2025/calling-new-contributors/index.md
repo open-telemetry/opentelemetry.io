@@ -12,10 +12,9 @@ sig: Contributor Experience
 
 If you've ever thought about contributing to OpenTelemetry but weren't sure
 where to start, you're not alone. In a
-[recent community](/blog/2025/contribex-survey-results/)
-survey, we heard that people were excited to contribute but got stuck taking
-those first steps. Contributing to open source can feel daunting, and we want to
-change that.
+[recent community](/blog/2025/contribex-survey-results/) survey, we heard that
+people were excited to contribute but got stuck taking those first steps.
+Contributing to open source can feel daunting, and we want to change that.
 
 That's why we're launching a new research study focused on the _new contributor
 experience_. We want to understand what's working well, where people are having
