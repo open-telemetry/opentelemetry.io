@@ -15467,6 +15467,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-01T09:45:47.67633737Z"
   },
+  "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-hostname-and-subdomain-field": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-06T10:36:22.092436978Z"
+  },
   "https://kubernetes.io/docs/concepts/services-networking/service/": {
     "StatusCode": 206,
     "LastSeen": "2025-12-02T09:43:59.256628042Z"
@@ -15618,6 +15622,14 @@
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#podstatus-v1-core": {
     "StatusCode": 206,
     "LastSeen": "2025-12-02T09:47:07.476457006Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#podspec-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-06T10:36:24.389258379Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#podstatus-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-06T10:36:26.470368726Z"
   },
   "https://kubernetes.io/docs/reference/kubectl/": {
     "StatusCode": 206,
