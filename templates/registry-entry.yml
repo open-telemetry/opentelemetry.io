@@ -11,8 +11,10 @@ license: Apache 2.0 # or whatever your OSS license is (see https://opensource.or
 description: A friendly description of your integration/plugin
 authors:
   - name: First author name
-    email: first author email (optional)
-    url: first author URL (github handle, optional)
+  # NOTE: At least one of the following is REQUIRED by the registry validator:
+  # Provide either `email` OR `url`. Do NOT leave both empty.
+    email: first author email
+    url: first author URL (github handle or personal websites)
 createdAt: <date> # Set todays date
 isNative: false # set this to true only if OpenTelemetry is directly integrated into your software (no plugin, no instrumentation library)
 isFirstParty: false # set this to true if "isNative" is set to false, but the plugin / instrumentation library is from the same vendor/project as the instrumented software
