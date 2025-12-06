@@ -53,14 +53,14 @@ Using a separate metric for inter-zone traffic reduces the metric cardinality
 impact of collecting this data, because the `src.zone` and `dst.zone` attributes
 are not added to the regular network metrics.
 
-To enable the `obi.network.inter.zone` metric, add the `network_inter_zone`
-option to the
-[OTEL_EBPF_METRICS_FEATURES or OTEL_EBPF_PROMETHEUS_FEATURES](../../configure/export-data/)
-configuration option, or its equivalent YAML options. For example, if OBI is
+To enable the `obi.network.inter.zone` metric, add the
+`network_inter_zone` option to the
+[OTEL_EBPF_METRICS_FEATURES](../../configure/export-data/)
+configuration option, or its equivalent YAML option. For example, if OBI is
 configured to export metrics via OpenTelemetry:
 
 ```yaml
-otel_metrics_export:
+metrics:
   features:
     - network
     - network_inter_zone
