@@ -105,5 +105,5 @@ For a comprehensive list of capabilities required by OBI, refer to
 
 ## Troubleshooting
 
-- Refer to the [troubleshooting](./troubleshooting) guide for help with common
+- See the [troubleshooting](./troubleshooting) guide for help with common
   issues.
