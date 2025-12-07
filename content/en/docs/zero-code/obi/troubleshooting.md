@@ -46,7 +46,7 @@ variable), you can instruct OBI to log the final configuration at startup.
 
 ### Internal metrics
 
-You can configure and use [OBI Internal Metrics](../metrics/#internal-metrics)
+You can configure and use [OBI internal metrics](../metrics/#internal-metrics)
 to monitor performance and internal state.
 
 To turn on internal metrics, configure `internal_metrics.exporter` with one of
