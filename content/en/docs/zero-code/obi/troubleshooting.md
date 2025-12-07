@@ -152,7 +152,6 @@ node --heapsnapshot-signal=SIGUSR1
   `nodejs.enabled:false` in configuration file or environment variable
   `OTEL_EBPF_NODEJS_ENABLED=false`
 
----
 
 ### ClickHouse instances crash when OBI is running
 
