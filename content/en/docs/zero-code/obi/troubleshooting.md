@@ -155,8 +155,8 @@ node --heapsnapshot-signal=SIGUSR1
 
 ### ClickHouse instances crash when OBI is running
 
-In case of running [Clickhouse](https://github.com/ClickHouse/ClickHouse) on the
-same node with OBI, If you see ClickHouse crashing along with logs such as:
+If you're running [Clickhouse](https://github.com/ClickHouse/ClickHouse) on the
+same node with OBI, you might see ClickHouse crashing with logs such as:
 
 ```text
 Application: Code: 246. DB::Exception: Calculated checksum of the executable (...) does not correspond to the reference checksum ...
