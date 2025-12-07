@@ -25,7 +25,7 @@ debugging**, as it can generate a significant number of logs.
 
 ### Configuration logging
 
-By default, OBI merges its configuration from three different sources, from less
+By default, OBI merges its configuration from three different sources, from least
 to most priority:
 
 - Built-in default configuration
