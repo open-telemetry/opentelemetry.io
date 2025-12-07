@@ -128,8 +128,8 @@ code to track the current execution context. It does so using the Node.js
 inspector protocol and sends the `SIGUSR1` signal to the Node process to open
 the inspector.
 
-However, if the application defines its own `SIGUSR1` signal handler, It will
-handle OBI's signal in a custom way, which may cause crashes or unresponsiveness
+However, if the application defines its own `SIGUSR1` signal handler, it
+handles OBI's signal in a custom way, which may cause crashes or unresponsiveness
 of the targeted application. For example:
 
 ```javascript
