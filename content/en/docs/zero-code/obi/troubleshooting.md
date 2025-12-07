@@ -108,7 +108,7 @@ Attributes:
      -> server.port: Int(4317)
 ```
 
-### Performance Profiler (pprof)
+### Performance profiler (pprof)
 
 OBI can expose a `pprof` port to allow performance profiling. To enable it, set
 the `profile_port` configuration value or the `OTEL_EBPF_PROFILE_PORT`
