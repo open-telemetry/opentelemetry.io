@@ -17,7 +17,7 @@ troubleshoot issues.
 
 You can increase the logging verbosity of OBI by setting the `log_level`
 configuration or the `OTEL_EBPF_LOG_LEVEL` environment variable to `debug`. This
-will provide more detailed logs that may help in diagnosing issues.
+provides more detailed logs that may help in diagnosing issues.
 
 To enable logging from the BPF programs, set the `ebpf.bpf_debug` configuration
 or the `OTEL_EBPF_BPF_DEBUG` environment variable to `true`. **Use this only for
