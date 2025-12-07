@@ -44,7 +44,7 @@ variable), you can instruct OBI to log the final configuration at startup.
 - `json` — logs the final configuration in JSON format; best for log shippers
   since it is a single structured line
 
-### Internal Metrics
+### Internal metrics
 
 You can configure and use [OBI Internal Metrics](../metrics/#internal-metrics)
 to monitor performance and internal state.
