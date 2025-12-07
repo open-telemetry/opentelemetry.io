@@ -29,9 +29,9 @@ By default, OBI merges its configuration from three different sources, from leas
 to most priority:
 
 - Built-in default configuration
-- Configuration file (provided via the `--config` flag or
-  `OTEL_EBPF_CONFIG_PATH`)
-- Environment variables (usually starting with `OTEL_EBPF_`)
+- Configuration file, provided using the `--config` flag or
+  `OTEL_EBPF_CONFIG_PATH`
+- Environment variables, usually starting with `OTEL_EBPF_`
 
 It is often helpful to view the final merged configuration. Using the
 `log_config` configuration value (or `OTEL_EBPF_LOG_CONFIG` environment
