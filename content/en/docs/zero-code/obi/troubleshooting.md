@@ -120,7 +120,6 @@ This is an advanced use case and typically not required.
 
 This section covers how to resolve common OBI issues.
 
----
 
 ### Node.js services crash or become unresponsive when OBI is running
 
