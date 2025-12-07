@@ -13,7 +13,7 @@ issues.
 OBI provides a variety of tools and configuration options to help diagnose and
 troubleshoot issues.
 
-### Detailed Logging
+### Detailed logging
 
 You can increase the logging verbosity of OBI by setting the `log_level`
 configuration or the `OTEL_EBPF_LOG_LEVEL` environment variable to `debug`. This
