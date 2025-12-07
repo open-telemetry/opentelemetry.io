@@ -148,7 +148,7 @@ node --heapsnapshot-signal=SIGUSR1
 
 - Use the `discovery` configuration to exclude specific Node.js applications
   from OBI tracking, preventing OBI from sending `SIGUSR1`.
-- Or disable Node.js context propagation entirely by setting
+- Disable Node.js context propagation entirely by setting
   `nodejs.enabled:false` in configuration file or environment variable
   `OTEL_EBPF_NODEJS_ENABLED=false`
 
