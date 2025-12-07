@@ -23,7 +23,7 @@ To enable logging from the BPF programs, set the `ebpf.bpf_debug` configuration
 or the `OTEL_EBPF_BPF_DEBUG` environment variable to `true`. **Use this only for
 debugging**, as it can generate a significant number of logs.
 
-### Configuration Logging
+### Configuration logging
 
 By default, OBI merges its configuration from three different sources, from less
 to most priority:
