@@ -193,6 +193,18 @@ sub patchSpec_because_of_SemConv_DatabaseRenamedToDb() {
   s|(/semconv)/database(/database-)|$1/db$2|g;
 }
 
+sub patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration() {
+  return unless
+    $ARGV =~ m|^tmp/otel/specification/|
+      && applyPatchOrPrintMsgIf('2025-12-05-metric-rpc-server-duration-renamed-to-rpc-server-call-duration', 'spec', '1.51.0-');
+
+  # Give infor about the patch, see:
+  # https://github.com/open-telemetry/opentelemetry-specification/pull/4778
+
+  # Replace the old metric anchor with the new one
+  s|#metric-rpcservercallduration|#metric-rpcserverduration|g;
+}
+
 sub getVersFromSubmodule() {
   my %repoNames = qw(
     otlp    opentelemetry-proto
@@ -317,6 +329,7 @@ while(<>) {
   }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
 
   patchSpec_because_of_SemConv_DatabaseRenamedToDb();
+  patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 
