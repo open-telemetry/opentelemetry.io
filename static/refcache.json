@@ -20424,8 +20424,8 @@
     "LastSeen": "2025-11-29T09:48:28.105Z"
   },
   "https://www.britannica.com/dictionary/pipeline": {
-    "StatusCode": 403,
-    "LastSeen": "2025-12-07T09:42:27.842107694Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-08T08:31:10.188Z"
   },
   "https://www.buoyant.io/mtls-guide": {
     "StatusCode": 200,
