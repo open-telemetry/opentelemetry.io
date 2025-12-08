@@ -39,7 +39,7 @@ preferred shell.
 
 ## Set up the environment
 
-1. Pull in the OpenTelemetry Collector Core Docker image:
+1. Pull in the OpenTelemetry Collector core Docker image:
 
    ```sh
    docker pull otel/opentelemetry-collector:{{% param vers %}}
