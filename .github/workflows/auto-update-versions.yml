@@ -19,14 +19,14 @@ jobs:
       DEPTH: --depth 999 # submodule clone depth
 
     steps:
-      - uses: actions/checkout@v6.0.0
+      - uses: actions/checkout@v6.0.1
 
       - name: Use CLA approved github bot
         run: |
           git config user.name otelbot
           git config user.email 197425009+otelbot@users.noreply.github.com
 
-      - uses: actions/create-github-app-token@7e473efe3cb98aa54f8d4bac15400b15fad77d94 # v2.2.0
+      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         id: otelbot-token
         with:
           app-id: ${{ vars.OTELBOT_APP_ID }}

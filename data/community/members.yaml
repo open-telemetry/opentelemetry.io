@@ -742,6 +742,15 @@ maintainers:
       - sig-project-infra-approvers
     html_url: https://github.com/jaronoff97
     avatar_url: https://avatars.githubusercontent.com/u/10070047?v=4
+  - name: jaydeluca
+    teams:
+      - ecosystem-explorer-approvers
+      - ecosystem-explorer-maintainers
+      - java-contrib-approvers
+      - java-instrumentation-approvers
+      - java-instrumentation-triagers
+    html_url: https://github.com/jaydeluca
+    avatar_url: https://avatars.githubusercontent.com/u/7630696?v=4
   - name: jerbly
     teams:
       - weaver-approvers
@@ -1021,6 +1030,7 @@ maintainers:
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-triagers
+      - ecosystem-explorer-approvers
       - javascript-approvers
       - javascript-contrib-triagers
       - javascript-triagers
@@ -1121,6 +1131,8 @@ maintainers:
       - collector-releases-maintainers
       - collector-triagers
       - docs-es-approvers
+      - ecosystem-explorer-approvers
+      - ecosystem-explorer-maintainers
       - semconv-k8s-approvers
       - semconv-system-approvers
       - sig-contributor-experience-approvers
@@ -1367,6 +1379,8 @@ maintainers:
       - docs-uk-maintainers
       - docs-zh-approvers
       - docs-zh-maintainers
+      - ecosystem-explorer-approvers
+      - ecosystem-explorer-maintainers
       - proto-approvers
       - proto-triagers
       - sig-contributor-experience-approvers
@@ -1568,6 +1582,7 @@ maintainers:
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-triagers
+      - ecosystem-explorer-approvers
     html_url: https://github.com/vitorvasc
     avatar_url: https://avatars.githubusercontent.com/u/12118857?v=4
   - name: wolfgangcodes
@@ -1935,13 +1950,6 @@ approvers:
       - helm-triagers
     html_url: https://github.com/JaredTan95
     avatar_url: https://avatars.githubusercontent.com/u/12468337?v=4
-  - name: jaydeluca
-    teams:
-      - java-contrib-approvers
-      - java-instrumentation-approvers
-      - java-instrumentation-triagers
-    html_url: https://github.com/jaydeluca
-    avatar_url: https://avatars.githubusercontent.com/u/7630696?v=4
   - name: jcocchi
     teams:
       - semconv-db-approvers
@@ -2379,6 +2387,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/5722339?v=4
   - name: zeitlinger
     teams:
+      - java-approvers
       - java-contrib-approvers
       - java-instrumentation-approvers
       - java-instrumentation-triagers
