@@ -8,22 +8,29 @@ cSpell:ignore: backendsystem crand debugexporter mapstructure pcommon pdata ptra
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
 
+OpenTelemetry defines
+[distributed tracing](/docs/concepts/glossary/#distributed-tracing) as:
 
-OpenTelemetry defines [distributed tracing](/docs/concetps/glossary/#distribution) as:
+> Traces that track the progression of a single request, known as a trace, as it
+> is handled by services that make up an application. The request may be
+> initiated by a user or an application. Distributed tracing is a form of
+> tracing that traverses process, network, and security boundaries.
 
-> Traces that track the progression of a single request, known as a trace, as it is
-> handled by services that make up an application. The request may be initiated
-> by a user or an application. Distributed tracing is a form of tracing
-> that traverses process, network, and security boundaries.
+Although distributed traces are defined in an application-centric way, you can
+think of them as a timeline for _any_ request that moves through your system.
+Each distributed trace shows how long a request took from start to finish and
+breaks down the steps taken to complete it.
 
-Although distributed traces are defined in an application-centric way, you can think of them as a timeline for _any_ request that moves through your system. Each distributed trace shows how long a request took from start to finish and breaks down the steps taken to complete it.
-
-If your system generates tracing telemetry, you can configure your [OpenTelemetry Collector](/docs/collector/) with a trace receiver designed to receive and convert that telemetry. The receiver converts your data from its original format into the OpenTelemetry trace model so the Collector can process it.
+If your system generates tracing telemetry, you can configure your
+[OpenTelemetry Collector](/docs/collector/) with a trace receiver designed to
+receive and convert that telemetry. The receiver converts your data from its
+original format into the OpenTelemetry trace model so the Collector can process
+it.
 
 To implement a trace receiver, you need the following:
 
-- A `Config` implementation so the trace receiver can gather and validate
-  its configurations in the Collector config.yaml.
+- A `Config` implementation so the trace receiver can gather and validate its
+  configurations in the Collector config.yaml.
 
 - A `receiver.Factory` implementation so the Collector can properly instantiate
   the trace receiver component.
@@ -733,8 +740,9 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 
 {{% alert title="Check your work" %}}
 
-Updated the `Start()` method by adding the initialization to the `host` field with the
-  `component.Host` reference passed by the Collector.
+Updated the `Start()` method by adding the initialization to the `host` field
+with the `component.Host` reference passed by the Collector.
+
 - Set the `cancel` function field with the cancellation based on a new context
   created with `context.Background()` (according to the Collector API
   documentation suggestions).
@@ -830,9 +838,9 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
   Collector pipeline.
 - Added a `Config` field named `config` so we can have access to receiver's
   configuration settings defined in the Collector config.
-- Added a variable named `interval` that is initialized as a `time.Duration` based on
-  the value of the `interval` settings of the `tailtracer` receiver, defined in
-  the Collector config.
+- Added a variable named `interval` that is initialized as a `time.Duration`
+  based on the value of the `interval` settings of the `tailtracer` receiver,
+  defined in the Collector config.
 - Added a `go func()` to implement the `ticker` mechanism so the receiver can
   generate traces every time the `ticker` reaches the amount of time specified
   by the `interval` variable.
@@ -1210,9 +1218,9 @@ type BackendSystem struct{
 }
 ```
 
-These types are meant to represent the entities as they appear in the
-system being observed. They contain information that would be quite meaningful to add to
-the traces as part of the `Resource` definition. You will add some helper
+These types are meant to represent the entities as they appear in the system
+being observed. They contain information that would be quite meaningful to add
+to the traces as part of the `Resource` definition. You will add some helper
 functions to generate the instances of these types.
 
 Here is what the `model.go` file will look like with the added helper functions:
@@ -1469,8 +1477,8 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
   `pcommon.Map` reference returned by the `resource.Attributes()` call.
 - Used the `PutInt()` and `PutStr()` methods from `pcommon.Map` to add int and
   string attributes based on the equivalent `Atm` field types. Notice that
-  because these attributes are specific to and only represent the `Atm`
-  entity, they are all grouped within the `atm.` prefix.
+  because these attributes are specific to and only represent the `Atm` entity,
+  they are all grouped within the `atm.` prefix.
 
 {{% /alert %}}
 
@@ -1725,7 +1733,8 @@ instrumented either manually or automatically via an instrumentation library.
 
 The instrumentation libraries are responsible for setting the scope (also known
 as the instrumentation scope), within which the operations participating in a
-trace occur, and describing these operations as spans in the context of the trace.
+trace occur, and describing these operations as spans in the context of the
+trace.
 
 `pdata.ResourceSpans` has a method named `ScopeSpans()` which returns an
 instance of a helper type called `ptrace.ScopeSpansSlice`. The
@@ -1828,8 +1837,8 @@ and describe as part of the trace.
 - `SetTraceID(v pcommon.TraceID)` sets the `pcommon.TraceID` uniquely
   identifying the trace that this span is associated with.
 
-- `SetSpanID(v pcommon.SpanID)` sets the `pcommon.SpanID` uniquely
-  identifying this span in the context of the trace it is associated with.
+- `SetSpanID(v pcommon.SpanID)` sets the `pcommon.SpanID` uniquely identifying
+  this span in the context of the trace it is associated with.
 
 - `SetParentSpanID(v pcommon.SpanID)` sets `pcommon.SpanID` for the parent
   span/operation in case the operation represented by this span is executed as
@@ -1990,8 +1999,8 @@ func generateTraces(numberOfTraces int) ptrace.Traces {
 ```
 
 You now have the `BackendSystem` entity and its operations represented in spans
-in a proper trace context! Next, you need to push the generated trace through the
-pipeline so that the next consumer, either a processor or an exporter, can
+in a proper trace context! Next, you need to push the generated trace through
+the pipeline so that the next consumer, either a processor or an exporter, can
 receive and process it.
 
 Here is how the `tailtracer/model.go` file looks:
