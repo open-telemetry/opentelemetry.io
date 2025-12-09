@@ -176,14 +176,14 @@ flag
 
 ### Missing telemetry data for Go applications or TLS requests
 
-In case you are missing telemetry coming from Go applications, or TLS requests
+If you are missing telemetry coming from Go applications or TLS requests
 (like HTTPS communication), it might be due to insufficient privileges for
-attaching uprobes. due to some recent kernel security changes, which were
+attaching uprobes. Due to some recent kernel security changes which were
 backported to many older kernel versions, uprobes now require `CAP_SYS_ADMIN`
 capability. OBI uses uprobes to instrument Golang applications and TLS requests,
-among some other runtime/language specific instrumentations. If your OBI
-deployment security configuration isn't using privileged operation (e.g.
-privileged:true or Docker and Kubernetes) or it doesn't provide CAP_SYS_ADMIN as
+along with other runtime/language specific instrumentations. If your OBI
+deployment security configuration isn't using privileged operation (for example,
+`privileged:true` or Docker and Kubernetes) or it doesn't provide `CAP_SYS_ADMIN` as
 a security capability, you might not see some or all of your telemetry.
 
 To troubleshoot this issue, please enable detailed OBI logging with
