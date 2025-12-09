@@ -15379,6 +15379,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-08T09:50:56.314804917Z"
   },
+  "https://knative.dev/docs/eventing/observability/metrics/collecting-metrics/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-09T12:34:49.452997-03:00"
+  },
   "https://knative.dev/docs/eventing/observability/metrics/collecting-metrics/#about-opentelemetry": {
     "StatusCode": 206,
     "LastSeen": "2025-11-30T09:44:53.111982828Z"
