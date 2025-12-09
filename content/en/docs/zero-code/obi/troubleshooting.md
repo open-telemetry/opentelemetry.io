@@ -148,7 +148,8 @@ node --heapsnapshot-signal=SIGUSR1
 - Use the `discovery` configuration to exclude specific Node.js applications
   from OBI tracking, preventing OBI from sending `SIGUSR1`.
 - Disable Node.js context propagation entirely by setting `nodejs.enabled:false`
-  in configuration file or environment variable `OTEL_EBPF_NODEJS_ENABLED=false`.
+  in configuration file or environment variable
+  `OTEL_EBPF_NODEJS_ENABLED=false`.
 
 ### ClickHouse instances crash when OBI is running
 
@@ -176,25 +177,26 @@ flag
 
 ### Missing telemetry data for Go applications or TLS requests
 
-If you are missing telemetry coming from Go applications or TLS requests
-(like HTTPS communication), it might be due to insufficient privileges for
-attaching uprobes. Due to some recent kernel security changes which were
-backported to many older kernel versions, uprobes now require `CAP_SYS_ADMIN`
-capability. OBI uses uprobes to instrument Golang applications and TLS requests,
-along with other runtime/language specific instrumentations. If your OBI
-deployment security configuration isn't using privileged operation (for example,
-`privileged:true` or Docker and Kubernetes) or it doesn't provide `CAP_SYS_ADMIN` as
-a security capability, you might not see some or all of your telemetry.
+If you are missing telemetry coming from Go applications or TLS requests (like
+HTTPS communication), it might be due to insufficient privileges for attaching
+uprobes. Due to some recent kernel security changes which were backported to
+many older kernel versions, uprobes now require `CAP_SYS_ADMIN` capability. OBI
+uses uprobes to instrument Golang applications and TLS requests, along with
+other runtime/language specific instrumentations. If your OBI deployment
+security configuration isn't using privileged operation (for example,
+`privileged:true` or Docker and Kubernetes) or it doesn't provide
+`CAP_SYS_ADMIN` as a security capability, you might not see some or all of your
+telemetry.
 
 To troubleshoot this issue, enable detailed OBI logging with
-`OTEL_EBPF_LOG_LEVEL=debug`. If you see all the uprobe injections failing
-with the error "setting uprobe (offset)..." then you are likely experiencing
-this issue.
+`OTEL_EBPF_LOG_LEVEL=debug`. If you see all the uprobe injections failing with
+the error "setting uprobe (offset)..." then you are likely experiencing this
+issue.
 
-**Solution:** you can either:
+**Solutions:**
 
-- Run OBI as privileged
-- add CAP_SYS_ADMIN to the list of capabilities in your deployment security
-  configuration
+You can either:
 
----
+- Run OBI as privileged.
+- Add `CAP_SYS_ADMIN` to the list of capabilities in your deployment security
+  configuration.
