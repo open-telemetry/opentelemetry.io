@@ -79,7 +79,7 @@ Note that the Spring Starter uses some semantic conventions that are not stable,
 which are still evolving and may change in the future.
 [HTTP semantic conventions](/docs/specs/semconv/http/http-metrics/) are stable
 and will not change.
-[Database semantic conventions](/docs/specs/semconv/database/database-metrics/)
+[Database semantic conventions](https://github.com/open-telemetry/semantic-conventions/blob/v1.38.0/docs/database/database-metrics.md)
 are still experimental and may change. However, they are expected to become
 stable at the end of 2024.
 
