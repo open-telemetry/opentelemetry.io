@@ -186,8 +186,8 @@ deployment security configuration isn't using privileged operation (for example,
 `privileged:true` or Docker and Kubernetes) or it doesn't provide `CAP_SYS_ADMIN` as
 a security capability, you might not see some or all of your telemetry.
 
-To troubleshoot this issue, please enable detailed OBI logging with
-`OTEL_EBPF_LOG_LEVEL=debug`. if you see all of the uprobe injections failing
+To troubleshoot this issue, enable detailed OBI logging with
+`OTEL_EBPF_LOG_LEVEL=debug`. If you see all the uprobe injections failing
 with the error "setting uprobe (offset)..." then you are likely experiencing
 this issue.
 
