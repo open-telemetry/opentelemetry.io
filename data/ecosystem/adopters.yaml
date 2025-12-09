@@ -1,4 +1,4 @@
-# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip Kelkoo loveholidays HDFC
+# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip Kelkoo loveholidays HDFC Akbank
 - name: Akbank
   url: https://www.akbank.com/
   components: [Collector, Operator, Java, .NET]
