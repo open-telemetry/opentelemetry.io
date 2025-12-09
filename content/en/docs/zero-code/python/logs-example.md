@@ -102,7 +102,7 @@ Open up a new terminal window and start the OTel Collector:
 docker run -it --rm -p 4317:4317 -p 4318:4318 \
   -v $(pwd)/otel-collector-config.yaml:/etc/otelcol-config.yml \
   --name otelcol \
-  otel/opentelemetry-collector-contrib:0.76.1 \
+  otel/opentelemetry-collector:{{% param collector_vers %}} \
   "--config=/etc/otelcol-config.yml"
 ```
 
