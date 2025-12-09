@@ -11,8 +11,8 @@ license: Apache 2.0 # or whatever your OSS license is (see https://opensource.or
 description: A friendly description of your integration/plugin
 authors:
   - name: First author name
-  # NOTE: At least one of the following is REQUIRED by the registry validator:
-  # Provide either `email` OR `url`. Do NOT leave both empty.
+    # NOTE: At least one of the following is REQUIRED by the registry validator:
+    # Provide either `email` OR `url`. Do NOT leave both empty.
     email: first author email
     url: first author URL (github handle or personal websites)
 createdAt: <date> # Set todays date
