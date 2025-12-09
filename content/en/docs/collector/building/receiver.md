@@ -694,7 +694,7 @@ type tailtracerReceiver struct {
 ```
 
 Now you need to update the `Start()` method so the receiver can properly
-initialize its own processing context, store the cancellation function in the
+initialize its own processing context, keep the cancellation function in the
 `cancel` field, and initialize its `host` field value. You will also update the
 `Stop()` method to finalize the context by calling the `cancel` function.
 
@@ -733,7 +733,7 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 
 {{% alert title="Check your work" %}}
 
-- Updated the `Start()` method by initializing the `host` field with the
+Updated the `Start()` method by adding the initialization to the `host` field with the
   `component.Host` reference passed by the Collector.
 - Set the `cancel` function field with the cancellation based on a new context
   created with `context.Background()` (according to the Collector API
@@ -830,14 +830,14 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
   Collector pipeline.
 - Added a `Config` field named `config` so we can have access to receiver's
   configuration settings defined in the Collector config.
-- Added a variable named `interval`, initialized as a `time.Duration` based on
+- Added a variable named `interval` that is initialized as a `time.Duration` based on
   the value of the `interval` settings of the `tailtracer` receiver, defined in
   the Collector config.
 - Added a `go func()` to implement the `ticker` mechanism so the receiver can
   generate traces every time the `ticker` reaches the amount of time specified
   by the `interval` variable.
 - Used the `tailtracerRcvr.logger` field to generate an info message every time
-  the receiver generates traces.
+  the receiver is supposed to generate traces.
 
 {{% /alert %}}
 
@@ -998,8 +998,8 @@ func components() (otelcol.Factories, error) {
 {{% alert title="Check your work" %}}
 
 - Imported the receiver module
-  `github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tailtracer`
-  , which is where the receiver types and functions are.
+  `github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tailtracer`,
+  which is where the receiver types and functions are.
 - Added a call to `tailtracer.NewFactory()` as a parameter of the
   `otelcol.MakeFactoryMap()` call so your `tailtracer` receiver factory is
   properly added to the `factories` map.
@@ -1210,7 +1210,7 @@ type BackendSystem struct{
 }
 ```
 
-These types are meant to represent the entities exactly as they appear in the
+These types are meant to represent the entities as they appear in the
 system being observed. They contain information that would be quite meaningful to add to
 the traces as part of the `Resource` definition. You will add some helper
 functions to generate the instances of these types.
