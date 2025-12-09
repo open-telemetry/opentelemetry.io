@@ -148,7 +148,7 @@ node --heapsnapshot-signal=SIGUSR1
 - Use the `discovery` configuration to exclude specific Node.js applications
   from OBI tracking, preventing OBI from sending `SIGUSR1`.
 - Disable Node.js context propagation entirely by setting `nodejs.enabled:false`
-  in configuration file or environment variable `OTEL_EBPF_NODEJS_ENABLED=false`
+  in configuration file or environment variable `OTEL_EBPF_NODEJS_ENABLED=false`.
 
 ### ClickHouse instances crash when OBI is running
 
