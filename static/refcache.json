@@ -8695,6 +8695,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-08T09:48:09.403697744Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-09T08:15:39.927696388Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml": {
     "StatusCode": 206,
     "LastSeen": "2025-12-08T09:45:18.042655411Z"
