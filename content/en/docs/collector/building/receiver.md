@@ -8,32 +8,21 @@ cSpell:ignore: backendsystem crand debugexporter mapstructure pcommon pdata ptra
 
 <!-- markdownlint-disable heading-increment no-duplicate-heading -->
 
-If you are reading this tutorial, you likely have an understanding of the
-OpenTelemetry concepts behind
-[distributed tracing](/docs/concepts/signals/traces/).
 
-According to OpenTelemetry, these concepts are defined as follows:
+OpenTelemetry defines [distributed tracing](/docs/concetps/glossary/#distribution) as:
 
-> Traces track the progression of a single request, known as a trace, as it is
+> Traces that track the progression of a single request, known as a trace, as it is
 > handled by services that make up an application. The request may be initiated
-> by either a user or an application. Distributed tracing is a form of tracing
-> that traverses process, network and security boundaries.
+> by a user or an application. Distributed tracing is a form of tracing
+> that traverses process, network, and security boundaries.
 
-While the definition seems to be very application-centric, you can leverage the
-OpenTelemetry trace model to represent a request. This allows you to quickly
-understand its duration and the details of every step involved in completing it.
+Although distributed traces are defined in an application-centric way, you can think of them as a timeline for _any_ request that moves through your system. Each distributed trace shows how long a request took from start to finish and breaks down the steps taken to complete it.
 
-Assuming you already have a system generating some kind of tracing telemetry,
-the [OpenTelemetry Collector](/docs/collector/) is the gateway to make it
-available in the OTel world.
+If your system generates tracing telemetry, you can configure your [OpenTelemetry Collector](/docs/collector/) with a trace receiver designed to receive and convert that telemetry. The receiver converts your data from its original format into the OpenTelemetry trace model so the Collector can process it.
 
-Within the Collector, a trace receiver has the role to receive and convert your
-request telemetry from its original format into the OTel trace model, so the
-information can be properly processed via the Collector pipelines.
+To implement a trace receiver, you need the following:
 
-To implement a trace receiver, you will need the following:
-
-- A `Config` implementation to enable the trace receiver to gather and validate
+- A `Config` implementation so the trace receiver can gather and validate
   its configurations in the Collector config.yaml.
 
 - A `receiver.Factory` implementation so the Collector can properly instantiate
@@ -43,10 +32,8 @@ To implement a trace receiver, you will need the following:
   telemetry, convert it to the internal trace representation, and hand the
   information to the next consumer in the pipeline.
 
-In this tutorial we will create a sample trace receiver called `tailtracer` that
+This tutorial shows you how to create a trace receiver called `tailtracer` that
 simulates a pull operation and generates traces as an outcome of that operation.
-The next sections will guide you through the process of implementing the steps
-above to create the receiver, so let's get started.
 
 ## Setting up receiver development and testing environment
 
@@ -319,7 +306,7 @@ func (cfg *Config) Validate() error {
 - Imported the `fmt` package to properly format print error messages.
 - Added the `Validate` method to the Config struct to check if the `interval`
   setting value is at least 1 minute (1m), and if the `number_of_traces` setting
-  value is greater or equal to 1. If that is not tru,e the Collector will
+  value is greater or equal to 1. If that is not true, the Collector will
   generate an error during its startup process and display the message
   accordingly.
 
@@ -1186,7 +1173,7 @@ it.
 In this tutorial, we will simulate a system with telemetry that demonstrates
 ATMs located in 2 different states (for example, Illinois and California)
 accessing the Account's backend system to execute balance, deposit and
-withdrawal operations. To achieve this, we will write code to create the
+withdrawal operations. To achieve this, we will implement code to create the
 `Resource` types representing the ATM and the backend system.
 
 Go ahead and create a file named `model.go` inside the `tailtracer` folder.
@@ -1224,7 +1211,7 @@ type BackendSystem struct{
 ```
 
 These types are meant to represent the entities exactly as they appear in the
-system being observed. They contain information that would be valuable to add to
+system being observed. They contain information that would be quite meaningful to add to
 the traces as part of the `Resource` definition. You will add some helper
 functions to generate the instances of these types.
 
@@ -1340,7 +1327,7 @@ Now that you have the functions to generate object instances representing the
 entities generating telemetry, you are ready to represent those entities in the
 OTel Collector world.
 
-The Collector API provides a package named `ptrace`, which is found in the
+The Collector API provides a package named `ptrace`, which is nested under the
 `pdata` package. It includes all the types, interfaces and helper functions
 required to work with traces in the Collector pipeline components.
 
@@ -1430,7 +1417,7 @@ func generateTraces(numberOfTraces int) ptrace.Traces{
 
 ### Describing Resources through attributes
 
-The Collector API provides a package named `pcommon`, which is found in the
+The Collector API provides a package named `pcommon`, which is nested under the
 `pdata` package. It contains all the types and helper functions required to
 describe a `Resource`.
 
@@ -1482,8 +1469,8 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
   `pcommon.Map` reference returned by the `resource.Attributes()` call.
 - Used the `PutInt()` and `PutStr()` methods from `pcommon.Map` to add int and
   string attributes based on the equivalent `Atm` field types. Notice that
-  because these attributes are specific to the `Atm` entity, they are all
-  grouped under the "atm." prefix.
+  because these attributes are specific to and only represent the `Atm`
+  entity, they are all grouped within the `atm.` prefix.
 
 {{% /alert %}}
 
@@ -1497,7 +1484,7 @@ For the `BackendSystem` entity, it has fields representing information relating
 to [Operating System](/docs/specs/semconv/resource/os/) and
 [Cloud](/docs/specs/semconv/resource/cloud/). We will use the attribute names
 and values specified by the resource semantic convention to represent this
-information in its `Resource`.
+information on its `Resource`.
 
 All the resource semantic convention attribute names and well known-values are
 kept in the
@@ -1541,7 +1528,7 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 Notice that we didn't add an attribute named "atm.name" or "backendsystem.name"
 to the `pcommon.Resource` representing the `Atm` and `BackendSystem` entity
-names. This is because most, if not all, distributed tracing backend systems
+names. This is because most (not to say all) distributed tracing backend systems
 compatible with the OTel trace specification interpret the `pcommon.Resource`
 described in a trace as a `Service`. Therefore, they expect the
 `pcommon.Resource` to have a required attribute named `service.name` as
@@ -1738,7 +1725,7 @@ instrumented either manually or automatically via an instrumentation library.
 
 The instrumentation libraries are responsible for setting the scope (also known
 as the instrumentation scope), within which the operations participating in a
-trace occur, and describe these operations as spans in the context of the trace.
+trace occur, and describing these operations as spans in the context of the trace.
 
 `pdata.ResourceSpans` has a method named `ScopeSpans()` which returns an
 instance of a helper type called `ptrace.ScopeSpansSlice`. The
@@ -1822,7 +1809,7 @@ func generateTraces(numberOfTraces int) ptrace.Traces{
 ```
 
 At this point, you have everything needed to represent the telemetry generation
-entities in your system, as well as the instrumentation responsible for
+entities in your system, as well as the instrumentation scope responsible for
 identifying operations and generating the traces for the system. The next step
 is to create the spans representing the operations that the given
 instrumentation scope generated as part of a trace.
@@ -1838,19 +1825,19 @@ and describe as part of the trace.
 
 `ptrace.Span` has the following methods to describe an operation:
 
-- `SetTraceID(v pcommon.TraceID)` sets the `pcommon.TraceID` by uniquely
+- `SetTraceID(v pcommon.TraceID)` sets the `pcommon.TraceID` uniquely
   identifying the trace that this span is associated with.
 
-- `SetSpanID(v pcommon.SpanID)` sets the `pcommon.SpanID` by uniquely
+- `SetSpanID(v pcommon.SpanID)` sets the `pcommon.SpanID` uniquely
   identifying this span in the context of the trace it is associated with.
 
 - `SetParentSpanID(v pcommon.SpanID)` sets `pcommon.SpanID` for the parent
   span/operation in case the operation represented by this span is executed as
-  part of the parent(nested).
+  part of the parent (nested).
 
 - `SetName(v string)` sets the name of the operation for the span
 
-- `SetKind(v ptrace.SpanKind)` sets `ptrace.SpanKind` by defining the kind of
+- `SetKind(v ptrace.SpanKind)` sets `ptrace.SpanKind` defining the kind of
   operation the span represents.
 
 - `SetStartTimestamp(v pcommon.Timestamp)` sets the `pcommon.Timestamp`
@@ -2003,7 +1990,7 @@ func generateTraces(numberOfTraces int) ptrace.Traces {
 ```
 
 You now have the `BackendSystem` entity and its operations represented in spans
-in a proper trace context! Next, you need to push the generated trace via the
+in a proper trace context! Next, you need to push the generated trace through the
 pipeline so that the next consumer, either a processor or an exporter, can
 receive and process it.
 
