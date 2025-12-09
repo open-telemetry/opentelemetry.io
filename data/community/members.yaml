@@ -2387,6 +2387,7 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/5722339?v=4
   - name: zeitlinger
     teams:
+      - java-approvers
       - java-contrib-approvers
       - java-instrumentation-approvers
       - java-instrumentation-triagers
@@ -2548,6 +2549,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/onurtemizkan
     avatar_url: https://avatars.githubusercontent.com/u/4020638?v=4
+  - name: paulojmdias
+    teams:
+      - collector-contrib-triagers
+    html_url: https://github.com/paulojmdias
+    avatar_url: https://avatars.githubusercontent.com/u/44772900?v=4
   - name: punya
     teams:
       - javascript-contrib-triagers
@@ -2775,6 +2781,9 @@ members:
   - name: hanjm
     html_url: https://github.com/hanjm
     avatar_url: https://avatars.githubusercontent.com/u/7621241?v=4
+  - name: hannahramadan
+    html_url: https://github.com/hannahramadan
+    avatar_url: https://avatars.githubusercontent.com/u/76922290?v=4
   - name: hanyuancheung
     html_url: https://github.com/hanyuancheung
     avatar_url: https://avatars.githubusercontent.com/u/48237831?v=4
@@ -2886,6 +2895,9 @@ members:
   - name: lopes-felipe
     html_url: https://github.com/lopes-felipe
     avatar_url: https://avatars.githubusercontent.com/u/15851809?v=4
+  - name: luke6Lh43
+    html_url: https://github.com/luke6Lh43
+    avatar_url: https://avatars.githubusercontent.com/u/52648621?v=4
   - name: luvtechno
     html_url: https://github.com/luvtechno
     avatar_url: https://avatars.githubusercontent.com/u/43811?v=4
@@ -2976,9 +2988,6 @@ members:
   - name: paologallinaharbur
     html_url: https://github.com/paologallinaharbur
     avatar_url: https://avatars.githubusercontent.com/u/43335750?v=4
-  - name: paulojmdias
-    html_url: https://github.com/paulojmdias
-    avatar_url: https://avatars.githubusercontent.com/u/44772900?v=4
   - name: paulosman
     html_url: https://github.com/paulosman
     avatar_url: https://avatars.githubusercontent.com/u/75895?v=4

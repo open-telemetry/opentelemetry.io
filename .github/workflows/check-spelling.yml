@@ -12,7 +12,7 @@ jobs:
     name: SPELLING check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.0
+      - uses: actions/checkout@v6.0.1
       - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
@@ -34,7 +34,7 @@ jobs:
     env:
       FIX_CMD: fix:dict
     steps:
-      - uses: actions/checkout@v6.0.0
+      - uses: actions/checkout@v6.0.1
       - run: npm run ${{ env.FIX_CMD }}
       - name: Any changed files?
         run: |
