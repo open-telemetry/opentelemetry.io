@@ -13,7 +13,7 @@ Authenticators are implemented through [extensions]. This document guides you on
 implementing your own authenticators. If you want to learn how to use an
 existing authenticator, see the documentation for that specific authenticator.
 You can find a list of existing authenticators in the
-[registry](https://opentelemetry.io/ecosystem/registry/) on this website.
+[registry](/ecosystem/registry/) on this website.
 
 Use this guide for general directions on how to build a custom authenticator and
 see the
