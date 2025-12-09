@@ -18,11 +18,11 @@ You can find a list of existing authenticators in the
 Use this guide for general directions on how to build a custom authenticator and
 see the
 [API Reference Guide](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth)
-for the actual semantics of each type and function.
+for the semantics of each type and function.
 
-If at anytime you need assistance, join the
+If you need help, join the
 [#opentelemetry-collector](https://cloud-native.slack.com/archives/C01N6P7KR6W)
-room at the [CNCF Slack workspace](https://slack.cncf.io).
+channel at the [CNCF Slack workspace](https://slack.cncf.io).
 
 ## Architecture
 
@@ -43,28 +43,6 @@ can reference it in the configuration file the same as other extensions.
 However, an authenticator is effective only when it's referenced by a consuming
 component. The following configuration shows a receiver named `otlp/auth` using
 the `oidc` authenticator extension:
-
-```yaml
-extensions:
-  oidc:
-
-receivers:
-processors:
-exporters:
-
-service:
-  extensions:
-    - oidc
-  pipelines:
-    traces:
-      receivers: []
-      processors: []
-      exporters: []
-```
-
-However, an authenticator will need to be referenced by a consuming component to
-be effective. The following example shows the same extension above, now being
-used by a receiver named `otlp/auth`:
 
 ```yaml
 extensions:
@@ -92,8 +70,7 @@ service:
       exporters: []
 ```
 
-When multiple instances of a given authenticator are needed, they can have
-different names:
+If you need multiple instances of an authenticator, give them different names:
 
 ```yaml
 extensions:

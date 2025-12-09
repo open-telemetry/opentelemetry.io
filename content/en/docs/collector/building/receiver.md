@@ -1,5 +1,5 @@
 ---
-title: Building a receiver
+title: Build a receiver
 weight: 20
 aliases: [/docs/collector/trace-receiver/]
 # prettier-ignore
@@ -35,9 +35,9 @@ To implement a trace receiver, you need the following:
 - A `receiver.Factory` implementation so the Collector can properly instantiate
   the trace receiver component.
 
-- A `TracesReceiver` implementation that is responsible to collect the
-  telemetry, convert it to the internal trace representation, and hand the
-  information to the next consumer in the pipeline.
+- A `TracesReceiver` implementation that collects the telemetry, converts it to
+  the internal trace representation, and passes the telemetry to the next
+  consumer in the pipeline.
 
 This tutorial shows you how to create a trace receiver called `tailtracer` that
 simulates a pull operation and generates traces as an outcome of that operation.
