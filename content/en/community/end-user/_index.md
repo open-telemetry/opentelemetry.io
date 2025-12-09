@@ -101,7 +101,7 @@ CNCF Slack! Not there yet?
 
 {{% alert title="For OpenTelemetry contributors" %}}
 
-Is your SIG in need of insights from end users?:female-detective: Are you
+Is your SIG in need of insights from end users? :female_detective: Are you
 wanting to find out whether end users are using or even aware of a feature your
 SIG has developed? Or perhaps you're looking for some general feedback about the
 thing you've spent hours working on? Reach out to the End User SIG on Slack

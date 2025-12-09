@@ -90,7 +90,7 @@ din industrie] din domeniul observabilității.
 {{% blocks/section color="secondary" type="cncf" %}}
 
 **OpenTelemetry este un proiect [CNCF][] de [incubare][]**.<br> Format printr-o
-fuziune alte proiectelor OpenTracing și OpenCensus.
+fuziune ale proiectelor OpenTracing și OpenCensus.
 
 [![CNCF logo][]][cncf]
 
