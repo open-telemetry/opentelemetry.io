@@ -1,12 +1,45 @@
 name: 'AI Content Detection'
 on:
   workflow_dispatch:
+    inputs:
+      confidence_threshold:
+        description: 'Confidence threshold percentage (0-100)'
+        default: '80'
+        type: string
+      pr_label:
+        description: 'Label to add to PR if AI detected (leave empty to skip)'
+        default: 'ai-generated'
+        type: string
+      skip_users:
+        description: 'Comma-separated list of users to skip (e.g., dependabot,renovate)'
+        default: ''
+        type: string
+      fail_on_detection:
+        description: 'Fail workflow if AI content detected'
+        default: true
+        type: boolean
+      dry_run:
+        description: 'Test mode: analyze but do not post/label/fail'
+        default: true
+        type: boolean
+      custom_prompt:
+        description: 'Custom analysis prompt (leave empty for default)'
+        default: ''
+        type: string
+      diff_max_chars:
+        description: 'Maximum diff size in characters'
+        default: '20000'
+        type: string
   pull_request_target:
 
 jobs:
   analyze:
     name: 'Analyze PR'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
     steps:
       - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         id: otelbot-token
@@ -25,13 +58,23 @@ jobs:
           node-version: '22'
 
       - name: Install GitHub Copilot CLI
-        run: |
-          npm install -g @github/copilot
+        run: npm install -g @github/copilot
 
-      - name: Analyze with Copilot
+      - name: Install script dependencies
+        working-directory: ./scripts/ai-content-detection
+        run: npm install
+
+      - name: Run AI detection analysis
+        working-directory: ./scripts/ai-content-detection
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           REPO: ${{ github.repository }}
-        run: |
-          ./scripts/ai-content-detection/analyze.sh
+          CONFIDENCE_THRESHOLD: ${{ github.event.inputs.confidence_threshold || '80' }}
+          PR_LABEL: ${{ github.event.inputs.pr_label || 'ai-generated' }}
+          SKIP_USERS: ${{ github.event.inputs.skip_users || '' }}
+          FAIL_ON_DETECTION: ${{ github.event.inputs.fail_on_detection != false }}
+          DRY_RUN: ${{ github.event.inputs.dry_run == true }}
+          CUSTOM_PROMPT: ${{ github.event.inputs.custom_prompt || '' }}
+          DIFF_MAX_CHARS: ${{ github.event.inputs.diff_max_chars || '20000' }}
+        run: node analyze.js
