@@ -126,7 +126,7 @@ follows: On startup, the Java agent initializes an
 [OpenTelemetry](../api/#opentelemetry) instance and makes it accessible to
 application manual instrumentation via `GlobalOpenTelemetry`. However, the
 application owner may not be able to rely on the Java agent being installed all
-the time. For example, the java agent may not be installed in local development,
+the time. For example, the Java agent may not be installed in local development,
 or test environments, or in special cases where the Java agent is removed for
 debugging reasons. Manual instrumentation should use the
 [OpenTelemetry](../api/#opentelemetry) instance initialized by the Java agent
