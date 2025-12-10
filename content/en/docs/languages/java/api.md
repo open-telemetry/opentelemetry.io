@@ -619,7 +619,7 @@ Specifically, `GlobalOpenTelemetry.get()` always returns the same result,
 regardless of whether `GlobalOpenTelemetry.set(..)` has been called. Internally,
 if `get()` is called prior to `set()`, the implementation internally calls
 `set(..)` with a [no-op implementation](#no-op-implementation) and returns it.
-Since `set(..)` triggers an exception if called more than once, calling
+Because `set(..)` triggers an exception if called more than once, calling
 `set(..)` after `get()` causes an exception rather than silently failing.
 
 The Java agent represents a special case: `GlobalOpenTelemetry` is the only
@@ -698,7 +698,7 @@ As a result:
 - The user can explicitly override the default by calling `setOpenTelemetry(..)`
   with a separate instance.
 
-**For manual instrumentation, default to `GlobalOpenTelemetry.isSet()`:**
+**For manual instrumentation, default using:**
 
 <!-- prettier-ignore-start -->
 <!-- temporarily change except path to resolve relative to configuration directory, and revert after -->
