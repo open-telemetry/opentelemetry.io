@@ -5,7 +5,8 @@ weight: 420
 description: Use OpenTelemetry to gain observability into mainframe workloads alongside your cloud and distributed systems.
 ---
 
-Mainframes continue to run a large share of the world’s most critical workloads—especially in banking, insurance, government, retail, and airlines.  
+Mainframes continue to run a large share of the world’s most critical workloads—especially in banking, insurance, government, retail, and airlines. 
+
 They often sit at the **core of a hybrid architecture**, with web and mobile frontends, microservices, and cloud platforms all depending on mainframe systems of record.
 
 This section explains how mainframes fit into an OpenTelemetry-based observability strategy and points to guidance on integrating them with your existing telemetry pipelines.
@@ -95,7 +96,7 @@ Historically, much of this mainframe-specific instrumentation has been vendor su
 
 However, as more and more mainframe customers are requesting OpenTelemetry support, this landscape is quickly changing -- with customers preferring more vendor-neutral approaches.  Vendors are responding in kind.
 
-IBM, who supplies the operating system and bases subsystem software for the most pervasively used mainframe systems, is currently in the process of baking native OpenTelemetry support into its operating systems and subsystems.
+IBM, who supplies the operating system and subsystem software for the most pervasively used mainframe systems, is currently in the process of including native OpenTelemetry support into its operating systems and subsystems.
 
 Many Independent [Mainframe] Software Vendors (ISVs) are also transitioning their observability support to favor the OpenTelemetry vendor-neutral approach as well.   
 
