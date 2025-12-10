@@ -13,18 +13,22 @@ description: OpenTelemetry blog
 ---
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        if (window.location.pathname.includes('/page/')) return;
+  document.addEventListener("DOMContentLoaded", function () {
+    if (window.location.pathname.includes("/page/")) return;
 
-        var checkbox = document.getElementById("m-blog2025-check");
-        if (checkbox) checkbox.checked = true;
-        checkbox = document.getElementById("m-blog2024-check");
-        if (checkbox) checkbox.checked = true;
-    });
+    var checkbox = document.getElementById("m-blog2025-check");
+    if (checkbox) checkbox.checked = true;
+    checkbox = document.getElementById("m-blog2024-check");
+    if (checkbox) checkbox.checked = true;
+  });
 </script>
 
 ### Linking to GitHub repositories
 
-When linking to source code in GitHub repositories, do not link to the `main` (or other default) branch. Instead, link to a **specific commit** or a **tagged release** that reflects the state of the code at the time the blog post was written.
+When linking to source code in GitHub repositories, do not link to the `main`
+(or other default) branch. Instead, link to a specific commit or a tagged
+release that reflects the state of the code at the time the blog post was
+written.
 
-This ensures that blog posts remain stable and do not break in the future when repositories evolve.
+This ensures that blog posts remain stable and do not break in the future as
+repositories evolve.
