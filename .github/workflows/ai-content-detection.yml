@@ -8,6 +8,12 @@ jobs:
     name: 'Analyze PR'
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+
       - name: Checkout
         uses: actions/checkout@v6.0.1
         with:
@@ -24,7 +30,7 @@ jobs:
 
       - name: Analyze with Copilot
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           REPO: ${{ github.repository }}
         run: |

@@ -2,8 +2,8 @@
 set -e # Exit immediately if a command exits with a non-zero status
 
 # --- Validation ---
-if [ -z "$GITHUB_TOKEN" ]; then
-  echo "Error: GITHUB_TOKEN (Copilot PAT) is not set."
+if [ -z "$GH_TOKEN" ]; then
+  echo "Error: GH_TOKEN is not set."
   exit 1
 fi
 
