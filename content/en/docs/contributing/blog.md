@@ -35,8 +35,9 @@ follow the policies outlined in the
 ### Linking to GitHub repositories
 
 When linking to source code in GitHub repositories, do not link to the `main`
-(or other default) branch. Instead, link to a **specific commit** or a **tagged release**
-that reflects the state of the code at the time the blog post was written.
+(or other default) branch. Instead, link to a **specific commit** or a **tagged
+release** that reflects the state of the code at the time the blog post was
+written.
 
 This ensures that blog posts remain stable and do not break in the future as
 repositories evolve.
