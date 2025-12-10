@@ -41,7 +41,7 @@ provided by OpenTelemetry:
 
 - [SDK](../sdk/) reference implementation. This is the right choice for most
   users.
-- [Noop](#noop-implementation) implementation. A minimalist, zero-dependency
+- [No-op](#no-op-implementation) implementation. A minimalist, zero-dependency
   implementation for instrumentations to use by default when the user doesn't
   install an instance.
 
@@ -368,7 +368,7 @@ public class ExtractContextUsage {
 ## OpenTelemetry API
 
 The `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}` artifact
-contains the OpenTelemetry API, including traces, metrics, logs, noop
+contains the OpenTelemetry API, including traces, metrics, logs, no-op
 implementation, baggage, key `TextMapPropagator` implementations, and a
 dependency on the [context API](#context-api).
 
@@ -618,7 +618,7 @@ initialization ordering issues, and as a result should be used judiciously.
 Specifically, `GlobalOpenTelemetry.get()` always returns the same result,
 regardless of whether `GlobalOpenTelemetry.set(..)` has been called. Internally,
 if `get()` is called prior to `set()`, the implementation internally calls
-`set(..)` with a [noop implementation](#noop-implementation) and returns it.
+`set(..)` with a [no-op implementation](#no-op-implementation) and returns it.
 Since `set(..)` triggers an exception if called more than once, calling
 `set(..)` after `get()` causes an exception rather than silently failing.
 
@@ -643,7 +643,7 @@ import io.opentelemetry.api.OpenTelemetry;
 public class GlobalOpenTelemetryNativeInstrumentationUsage {
 
   public static void globalOpenTelemetryUsage(OpenTelemetry openTelemetry) {
-    // Initialized with OpenTelemetry from java agent if present, otherwise noop implementation.
+    // Initialized with OpenTelemetry from java agent if present, otherwise no-op implementation.
     MyClient client1 = new MyClientBuilder().build();
 
     // Initialized with an explicit OpenTelemetry instance, overriding the java agent instance.
@@ -667,7 +667,7 @@ public class GlobalOpenTelemetryNativeInstrumentationUsage {
   /** Builder for {@link MyClient}. */
   public static class MyClientBuilder {
     // OpenTelemetry defaults to the GlobalOpenTelemetry instance if set, e.g. by the java agent or
-    // by the application, else to a noop.
+    // by the application, else to a no-op implementation.
     private OpenTelemetry openTelemetry = GlobalOpenTelemetry.getOrNoop();
 
     /** Explicitly set the OpenTelemetry instance to use. */
@@ -694,7 +694,7 @@ As a result:
 - If the Java agent is present, the instrumentation is initialized with the
   `OpenTelemetry` instance installed by the agent by default.
 - If the Java agent is not present, the instrumentation is initialized with a
-  noop implementation by default.
+  no-op implementation by default.
 - The user can explicitly override the default by calling `setOpenTelemetry(..)`
   with a separate instance.
 
@@ -1507,16 +1507,16 @@ public class LogRecordUsage {
 ```
 <!-- prettier-ignore-end -->
 
-### Noop implementation
+### No-op implementation
 
-The `OpenTelemetry#noop()` method provides access to a noop implementation of
+The `OpenTelemetry#noop()` method provides access to a no-op implementation of
 [OpenTelemetry](#opentelemetry) and all API components it provides access to. As
-the name suggests, the noop implementation does nothing and is designed to have
+the name suggests, the no-op implementation does nothing and is designed to have
 no impact on performance. Instrumentation may see impact on performance even
-when the noop is used if it is computing / allocating attribute values and other
-data required to record the telemetry. The noop is a useful default instance of
-`OpenTelemetry` when a user has not configured and installed a concrete
-implementation such as the [SDK](../sdk/).
+when the no-op is used if it is computing / allocating attribute values and
+other data required to record the telemetry. The no-op is a useful default
+instance of `OpenTelemetry` when a user has not configured and installed a
+concrete implementation such as the [SDK](../sdk/).
 
 The following code snippet explores `OpenTelemetry#noop()` API usage:
 
@@ -1545,10 +1545,10 @@ public class NoopUsage {
   private static final String SCOPE_NAME = "fully.qualified.name";
 
   public static void noopUsage() {
-    // Access the noop OpenTelemetry instance
+    // Access the no-op OpenTelemetry instance
     OpenTelemetry noopOpenTelemetry = OpenTelemetry.noop();
 
-    // Noop tracing
+    // No-op tracing
     Tracer noopTracer = OpenTelemetry.noop().getTracer(SCOPE_NAME);
     noopTracer
         .spanBuilder("span name")
@@ -1558,7 +1558,7 @@ public class NoopUsage {
         .addEvent("event-name", Attributes.builder().put(WIDGET_COLOR, "red").build())
         .end();
 
-    // Noop metrics
+    // No-op metrics
     Attributes attributes = WIDGET_RED_CIRCLE;
     Meter noopMeter = OpenTelemetry.noop().getMeter(SCOPE_NAME);
     DoubleHistogram histogram = noopMeter.histogramBuilder("fully.qualified.histogram").build();
@@ -1586,7 +1586,7 @@ public class NoopUsage {
         .gaugeBuilder("fully.qualified.gauge")
         .buildWithCallback(observable -> observable.record(10, attributes));
 
-    // Noop logs
+    // No-op logs
     Logger noopLogger = OpenTelemetry.noop().getLogsBridge().get(SCOPE_NAME);
     noopLogger
         .logRecordBuilder()
