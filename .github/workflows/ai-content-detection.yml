@@ -1,10 +1,11 @@
-name: 'GenAI Content Detection'
+name: 'AI Content Detection'
 on:
   workflow_dispatch:
   pull_request_target:
 
 jobs:
   analyze:
+    name: 'Analyze content'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
