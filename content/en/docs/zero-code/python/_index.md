@@ -3,6 +3,8 @@ title: Python zero-code instrumentation
 linkTitle: Python
 weight: 30
 aliases: [/docs/languages/python/automatic]
+cascade:
+  collector_vers: 0.141.0
 cSpell:ignore: distro myapp
 ---
 
