@@ -39,10 +39,10 @@ preferred shell.
 
 ## Set up the environment
 
-1. Pull in the OpenTelemetry Collector Contrib Docker image:
+1. Pull in the OpenTelemetry Collector core Docker image:
 
    ```sh
-   docker pull otel/opentelemetry-collector-contrib:{{% param vers %}}
+   docker pull otel/opentelemetry-collector:{{% param vers %}}
    ```
 
 2. Install the [telemetrygen] utility:
@@ -64,7 +64,7 @@ preferred shell.
      -p 127.0.0.1:4317:4317 \
      -p 127.0.0.1:4318:4318 \
      -p 127.0.0.1:55679:55679 \
-     otel/opentelemetry-collector-contrib:{{% param vers %}} \
+     otel/opentelemetry-collector:{{% param vers %}} \
      2>&1 | tee collector-output.txt # Optionally tee output for easier search later
    ```
 
