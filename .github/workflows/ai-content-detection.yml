@@ -1,0 +1,27 @@
+name: 'GenAI Content Detection'
+on:
+  pull_request_target:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+
+      - name: Install GitHub Copilot CLI
+        run: |
+          npm install -g @github/copilot
+
+      - name: Analyze with Copilot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          ./scripts/ai-content-detection/analyze.sh
