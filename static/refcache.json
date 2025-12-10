@@ -651,6 +651,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-08T09:50:53.577916862Z"
   },
+  "https://clickhouse.com/docs/operations/server-configuration-parameters/settings#skip_binary_checksum_checks": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T15:20:14.11156+02:00"
+  },
   "https://cloud-native.slack.com/archives/C014L2KCTE3": {
     "StatusCode": 200,
     "LastSeen": "2025-12-09T09:47:13.402705871Z"
@@ -1890,6 +1894,22 @@
   "https://docs.honeycomb.io/getting-data-in/": {
     "StatusCode": 206,
     "LastSeen": "2025-12-09T09:45:15.731457069Z"
+  },
+  "https://docs.honeycomb.io/send-data/android/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-09T22:28:13.138235725Z"
+  },
+  "https://docs.honeycomb.io/send-data/ios/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-09T22:28:14.628189898Z"
+  },
+  "https://docs.honeycomb.io/send-data/javascript-browser/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-09T22:28:15.263560124Z"
+  },
+  "https://docs.honeycomb.io/send-data/react-native/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-09T22:28:14.075895459Z"
   },
   "https://docs.immersivefusion.com/instrument": {
     "StatusCode": 206,
@@ -3286,6 +3306,14 @@
   "https://github.com/Cirilla-zmh": {
     "StatusCode": 206,
     "LastSeen": "2025-12-08T09:48:50.441449276Z"
+  },
+  "https://github.com/ClickHouse/ClickHouse": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T15:20:07.242009+02:00"
+  },
+  "https://github.com/ClickHouse/ClickHouse/issues/83637": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T15:20:10.164251+02:00"
   },
   "https://github.com/ClickHouse/clickhouse-java": {
     "StatusCode": 206,
@@ -5067,6 +5095,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-08T09:49:29.364956902Z"
   },
+  "https://github.com/geekdave": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-10T04:00:56.469912163Z"
+  },
   "https://github.com/getsentry/sentry-dotnet/tree/main/src/Sentry.OpenTelemetry": {
     "StatusCode": 206,
     "LastSeen": "2025-12-06T09:46:19.003293932Z"
@@ -5334,6 +5366,30 @@
   "https://github.com/hibernate/hibernate-orm": {
     "StatusCode": 206,
     "LastSeen": "2025-12-01T09:46:16.11361077Z"
+  },
+  "https://github.com/honeycombio/honeycomb-collector-distro": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-09T22:23:41.117715967Z"
+  },
+  "https://github.com/honeycombio/honeycomb-collector-distro/blob/main/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-09T22:23:43.123539242Z"
+  },
+  "https://github.com/honeycombio/honeycomb-opentelemetry-android": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-09T22:28:12.490232386Z"
+  },
+  "https://github.com/honeycombio/honeycomb-opentelemetry-react-native": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-09T22:28:13.939863563Z"
+  },
+  "https://github.com/honeycombio/honeycomb-opentelemetry-swift": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-09T22:28:14.553351014Z"
+  },
+  "https://github.com/honeycombio/honeycomb-opentelemetry-web": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-09T22:28:15.170304515Z"
   },
   "https://github.com/horovits/": {
     "StatusCode": 206,
