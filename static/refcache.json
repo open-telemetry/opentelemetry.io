@@ -651,6 +651,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-08T09:50:53.577916862Z"
   },
+  "https://clickhouse.com/docs/operations/server-configuration-parameters/settings#skip_binary_checksum_checks": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T15:20:14.11156+02:00"
+  },
   "https://cloud-native.slack.com/archives/C014L2KCTE3": {
     "StatusCode": 200,
     "LastSeen": "2025-12-09T09:47:13.402705871Z"
@@ -3291,6 +3295,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-08T09:48:50.441449276Z"
   },
+  "https://github.com/ClickHouse/ClickHouse": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T15:20:07.242009+02:00"
+  },
+  "https://github.com/ClickHouse/ClickHouse/issues/83637": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-02T15:20:10.164251+02:00"
+  },
   "https://github.com/ClickHouse/clickhouse-java": {
     "StatusCode": 206,
     "LastSeen": "2025-12-09T09:42:39.412969479Z"
@@ -5070,6 +5082,10 @@
   "https://github.com/gbbr": {
     "StatusCode": 206,
     "LastSeen": "2025-12-08T09:49:29.364956902Z"
+  },
+  "https://github.com/geekdave": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-10T04:00:56.469912163Z"
   },
   "https://github.com/getsentry/sentry-dotnet/tree/main/src/Sentry.OpenTelemetry": {
     "StatusCode": 206,
