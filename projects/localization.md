@@ -5,9 +5,9 @@
 The website localization project makes the OpenTelemetry documentation and
 resources accessible to a global audience by providing translations in multiple
 languages. [Launched in August 2024][multilingual docs announcement], this
-initiative enables contributors, organizations, and end-users worldwide
-to engage with OpenTelemetry in their native language, regardless of their
-English proficiency.
+initiative enables contributors, organizations, and end-users worldwide to
+engage with OpenTelemetry in their native language, regardless of their English
+proficiency.
 
 The project currently supports the following languages in addition to English:
 
@@ -145,8 +145,7 @@ All language teams also work with @open-telemetry/docs-approvers and
 **Japanese**:
 
 - Website: <https://opentelemetry.io/ja/>
-- Slack channel:
-  [`#otel-localization-ja`](https://cloud-native.slack.com/archives/C08SGPBN44E)
+- Slack channel: [`#otel-localization-ja`][otel-localization-ja]
 - Approvers: @open-telemetry/docs-ja-approvers
 - Maintainers: @open-telemetry/docs-ja-maintainers
 
@@ -281,6 +280,7 @@ localization efforts.
 [otel-localization-bn]: https://cloud-native.slack.com/archives/C08TBCSAY1F
 [otel-localization-zhcn]: https://cloud-native.slack.com/archives/C08SSK25Y7L
 [otel-localization-fr]: https://cloud-native.slack.com/archives/C08TBCU7I3L
+[otel-localization-ja]: https://cloud-native.slack.com/archives/C08SGPBN44E
 [otel-localization-ptbr]: https://cloud-native.slack.com/archives/C076LET8YSK
 [otel-localization-ro]: https://cloud-native.slack.com/archives/C09E9KNNLP4
 [otel-localization-es]: https://cloud-native.slack.com/archives/C07PVQVCHA6
