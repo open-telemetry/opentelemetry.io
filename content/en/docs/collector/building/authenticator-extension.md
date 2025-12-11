@@ -5,62 +5,41 @@ aliases: [/docs/collector/custom-auth/]
 cSpell:ignore: configauth oidc
 ---
 
-The OpenTelemetry Collector allows receivers and exporters to be connected to
-authenticators, providing a way to both authenticate incoming connections at the
-receiver's side, as well as adding authentication data to outgoing requests at
-the exporter's side.
+The OpenTelemetry Collector allows you to connect receivers and exporters to
+authenticators so you can authenticate incoming connections at the receiver side
+and add authentication data to outgoing requests at the exporter side.
 
-This mechanism is implemented using [extensions] and this document will guide
-you on implementing your own authenticators. If you are looking for
-documentation on how to use an existing authenticator, refer to the Getting
-Started page and to your authenticator's documentation. You can find a list of
-existing authenticators in this website's registry.
+Authenticators are implemented through [extensions]. This document guides you on
+implementing your own authenticators. If you want to learn how to use an
+existing authenticator, see the documentation for that specific authenticator.
+You can find a list of existing authenticators in the
+[registry](/ecosystem/registry/) on this website.
 
 Use this guide for general directions on how to build a custom authenticator and
-refer to the up-to-date
+see the
 [API Reference Guide](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth)
-for the actual semantics of each type and function.
+for the semantics of each type and function.
 
-If at anytime you need assistance, join the
-[#opentelemetry-collector](https://cloud-native.slack.com/archives/C01N6P7KR6W)
-room at the [CNCF Slack workspace](https://slack.cncf.io).
+If you need help, join the
+[#opentelemetry-collector-dev](https://cloud-native.slack.com/archives/C07CCCMRXBK)
+channel at the [CNCF Slack workspace](https://slack.cncf.io).
 
 ## Architecture
 
-[Authenticators] are regular extensions that also satisfy one or more interfaces
-related to the authentication mechanism. [Server authenticators][sa] are used
-with receivers, and are able to intercept HTTP and gRPC requests, while client
-authenticators are used with exporters, able to add authentication data to HTTP
-and gRPC requests. It is possible for authenticators to implement both
-interfaces at the same time, allowing a single instance of the extension to be
-used both for the incoming and outgoing requests. Note that users might still
-want to have different authenticators for the incoming and outgoing requests,
-so, don't make your authenticator required to be used at both ends.
+[Authenticators] in OpenTelemetry are just like any other extension, but they
+also have to implement one or more specific interfaces that define how
+authentication is performed (for example, authenticating HTTP or gRPC requests).
+Use [server authenticators][sa] with receivers to intercept HTTP and gRPC
+requests. Use client authenticators with exporters to add authentication data to
+HTTP and gRPC requests. Authenticators can also implement both interfaces at the
+same time, allowing a single instance of the extension to handle both incoming
+and outgoing requests.
 
-Once an authenticator extension is available in the collector distribution, it
-can be referenced in the configuration file as a regular extension:
-
-```yaml
-extensions:
-  oidc:
-
-receivers:
-processors:
-exporters:
-
-service:
-  extensions:
-    - oidc
-  pipelines:
-    traces:
-      receivers: []
-      processors: []
-      exporters: []
-```
-
-However, an authenticator will need to be referenced by a consuming component to
-be effective. The following example shows the same extension as above, now being
-used by a receiver named `otlp/auth`:
+Once an authenticator extension is available in a Collector distribution, you
+can reference it in the configuration file the same as other extensions.
+However, an authenticator is effective only when it's referenced by a consuming
+component. The following configuration shows a receiver named `otlp/auth` using
+the `oidc` authenticator extension:
 
 ```yaml
 extensions:
@@ -88,8 +67,7 @@ service:
       exporters: []
 ```
 
-When multiple instances of a given authenticator are needed, they can have
-different names:
+If you need multiple instances of an authenticator, give them different names:
 
 ```yaml
 extensions:
@@ -121,42 +99,46 @@ service:
 
 ### Server authenticators
 
-A [server authenticator][sa] is essentially an extension with an `Authenticate`
-function, receiving the payload headers as parameter. If the authenticator is
-able to authenticate the incoming connection, it should return a `nil` error, or
-the concrete error if it can't. As an extension, the authenticator should make
-sure to initialize all the resources it needs during the
-[`Start`](https://pkg.go.dev/go.opentelemetry.io/collector/component#Component)
-phase, and is expected to clean them up upon `Shutdown`.
+A [server authenticator][sa] is an extension with an `Authenticate` method. This
+function is called whenever a request comes in, and it checks the request’s
+headers to authenticate the request. If the authenticator decides the request is
+valid, it returns a `nil` error. If the request isn’t valid, it returns an error
+explaining why.
 
-The `Authenticate` call is part of the hot path for incoming requests and will
-block the pipeline, so make sure to properly handle any blocking operations you
-need to make. Concretely, respect the deadline set by the context, in case one
-is provided. Also make sure to add enough observability to your extension,
-especially in the form of metrics and traces, so that users can get setup a
-notification system in case error rates go up beyond a certain level and can
-debug specific failures.
+Because it’s an extension, the authenticator should set up the resources it
+needs (like keys, clients, or caches) at
+[`Start`](https://pkg.go.dev/go.opentelemetry.io/collector/component#Component)
+and should clean everything up at `Shutdown`.
+
+The `Authenticate` function runs for every incoming request, and the pipeline
+can’t move forward until this function finishes. Because of that, your
+authenticator must avoid slow or unnecessary blocking work. If the `context`
+sets a deadline, make sure your code follows it so the pipeline isn't delayed or
+left hanging.
+
+You should also add good observability to your authenticator, especially metrics
+and traces. This helps users set up alerts if errors start increasing and makes
+it easier for them to troubleshoot authentication problems.
 
 ### Client authenticators
 
-A _client authenticator_ is one that implements one or more of the interfaces
-defined in [Client authenticators].
-
-Similar to server authenticators, they are essentially extensions with extra
-functions, each receiving an object that gives the authenticator an opportunity
-to inject the authentication data into. For instance, the HTTP client
+[Client authenticators] are extensions with extra functions that implement one
+or more of the defined interfaces. Each authenticator receives an object that
+allows it to inject authentication data. For instance, the HTTP client
 authenticator provides an
 [`http.RoundTripper`](https://pkg.go.dev/net/http#RoundTripper), while the gRPC
 client authenticator can produce a
 [`credentials.PerRPCCredentials`](https://pkg.go.dev/google.golang.org/grpc/credentials#PerRPCCredentials).
 
-## Adding your custom authenticator to a distribution
+## Add your custom authenticator to a distribution
 
-Custom authenticators have to be part of the same binary as the main collector.
-When building your own authenticator, you'll likely have to build a custom
-distribution as well, or provide means for your users to consume your extension
-as part of their own distributions. Fortunately, building a custom distribution
-can be done using the [OpenTelemetry Collector Builder][builder] utility.
+Custom authenticators must be part of the same binary as the Collector itself.
+When building your own authenticator, you have two options:
+
+- You can build a custom Collector distribution using the [OpenTelemetry
+  Collector Builder][builder]
+- You can provide a way, such as publishing a Go module, for users to add your
+  extension to their own distributions.
 
 [authenticators]:
   https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth
