@@ -8427,6 +8427,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-11T09:43:36.719169469Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/coding-guidelines.md#semantic-conventions-compatibility": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-08T11:31:07.746961+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md": {
     "StatusCode": 206,
     "LastSeen": "2025-12-11T09:43:48.307354842Z"
@@ -17074,6 +17078,10 @@
   "https://opentelemetry.devstats.cncf.io/d/9/developer-activity-counts-by-repository-group-table?orgId=1": {
     "StatusCode": 200,
     "LastSeen": "2025-12-05T09:47:06.305892751Z"
+  },
+  "https://opentelemetry.io/docs/specs/semconv/how-to-write-conventions/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-08T11:31:09.81338+02:00"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
