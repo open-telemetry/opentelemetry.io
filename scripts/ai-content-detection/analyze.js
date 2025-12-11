@@ -27,8 +27,7 @@ class AIDetectionConfig {
     this.failOnDetection =
       process.env.FAIL_ON_DETECTION !== 'false' &&
       process.env.FAIL_ON_DETECTION !== '0';
-    this.dryRun =
-      process.env.DRY_RUN === 'true' || process.env.DRY_RUN === '1';
+    this.dryRun = process.env.DRY_RUN === 'true' || process.env.DRY_RUN === '1';
     this.customPrompt = process.env.CUSTOM_PROMPT || null;
     this.diffMaxChars = parseInt(process.env.DIFF_MAX_CHARS || '20000', 10);
   }
@@ -83,9 +82,7 @@ async function fetchPRAuthor(octokit, config) {
   console.log(`PR author: ${author}`);
 
   if (config.skipUsers.includes(author)) {
-    console.log(
-      `Author '${author}' is in skip list. Skipping analysis.`,
-    );
+    console.log(`Author '${author}' is in skip list. Skipping analysis.`);
     return null;
   }
 
@@ -274,9 +271,7 @@ async function addPRLabel(octokit, config) {
     console.log(`Added label: ${config.labelName}`);
   } catch (error) {
     // Label might not exist, warn but don't fail
-    console.warn(
-      `Failed to add label (label may not exist): ${error.message}`,
-    );
+    console.warn(`Failed to add label (label may not exist): ${error.message}`);
   }
 }
 
@@ -293,7 +288,9 @@ async function main() {
 
     if (cfg.dryRun) {
       console.log('*** DRY RUN MODE ENABLED ***');
-      console.log('Analysis will run but no comments/labels/failures will occur');
+      console.log(
+        'Analysis will run but no comments/labels/failures will occur',
+      );
     }
 
     // 2. Initialize Octokit
