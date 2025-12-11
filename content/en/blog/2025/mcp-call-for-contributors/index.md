@@ -15,21 +15,24 @@ breaking changes across versions, and trying to optimize pipelines.
 
 What if you could manage this complexity using natural language? What if you had
 an assistant that truly understood your collector's and instrumentation
-configuration, versions, and even its data?
+configuration, versions, and can even reason about your telemetry data.
 
 This is the vision behind the new [OpenTelemetry MCP server project](https://github.com/open-telemetry/community/pull/3128).
-
+By leveraging the Model Context Protocol (MCP), we aim to bridge the gap between Large Language Models (LLMs) and the OpenTelemetry ecosystem.
 ---
 
 ## We need your help!
 
-Enabling the OpenTelemetry to be used in the agentic way is a huge challenge. We need your help to shape the use-case, roadmap, design, and
-implementation. The success of this project depends on your contributions!
+Enabling OpenTelemetry to function seamlessly within agentic workflows is an exciting challenge. We are looking for contributors to help shape the use cases, roadmap, design, and implementation.
 
-This project is a great opportunity to learn about the OpenTelemetry ecosystem, MCP servers and simplify the OpenTelemetry experience for thousands of users.
+Why contribute?
+
+* Innovate: Work at the intersection of Generative AI and Observability.
+* Impact: Help simplify the OpenTelemetry experience for thousands of users.
+* Learn: Deepen your knowledge of the OpenTelemetry ecosystem and the emerging standard of MCP servers.
 
 ## How to participate
 
-* Join the [OpenTelemetry Developer Experience SIG](https://github.com/open-telemetry/community#sig-devex) to learn more about the project.
-* Initially, the work on this project will be done in the [sig-developer-experience](https://github.com/open-telemetry/sig-developer-experience) repository.
-* Feel free to reach out to us on the [#otel-devex](https://cloud-native.slack.com/archives/C01S42U83B2) Slack channgel if you have any questions.
+* Join the SIG: Attend the [OpenTelemetry Developer Experience SIG](https://github.com/open-telemetry/community#sig-devex) meetings to learn more about the project.
+* Code with us: Initially, work on this project will be initially conducted in the [sig-developer-experience](https://github.com/open-telemetry/sig-developer-experience) repository.
+* Chat with us: Feel free to reach out on the [#otel-devex](https://cloud-native.slack.com/archives/C01S42U83B2) Slack channel if you have any questions.
