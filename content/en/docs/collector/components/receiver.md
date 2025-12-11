@@ -10,6 +10,8 @@ Receivers collect telemetry data from various sources and formats. For more
 information on how to configure receivers, see the
 [Collector configuration documentation](/docs/collector/configuration/#receivers).
 
+{{% include unmaintained-components-msg.md %}}
+
 <!-- BEGIN GENERATED: receiver-table SOURCE: collector-watcher -->
 
 | Name                                                                                                                                                  | Distributions[^1]        | Traces[^2]  | Metrics[^2]  | Logs[^2]     |
@@ -129,9 +131,6 @@ information on how to configure receivers, see the
 | [yanggrpcreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/yanggrpcreceiver)                             | contrib                  | -           | development  | -            |
 | [zipkinreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver)                                 | contrib, core, K8s       | beta        | -            | -            |
 | [zookeeperreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zookeeperreceiver)                           | contrib                  | -           | alpha        | -            |
-
-⚠️ **Note:** Components marked with ⚠️ are unmaintained and have no active
-codeowners. They may not receive regular updates or bug fixes.
 
 [^1]:
     Shows which [distributions](/docs/collector/distributions/) (core, contrib,
