@@ -1,5 +1,9 @@
 # Website Localization
 
+## Ownership
+
+- Lead: Vitor Vasconcellos (@vitorvasc)
+
 ## Description
 
 The website localization project makes the OpenTelemetry documentation and
@@ -116,8 +120,8 @@ Each language has a dedicated approver team responsible for reviewing and
 maintaining translations. Teams are defined in
 [`.github/component-owners.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml).
 
-All language teams also work with @open-telemetry/docs-approvers and
-@open-telemetry/docs-maintainers for overall guidance and support.
+All language teams also work with `@open-telemetry/docs-approvers` and
+`@open-telemetry/docs-maintainers` for overall guidance and support.
 
 ### Current language teams
 
@@ -125,57 +129,57 @@ All language teams also work with @open-telemetry/docs-approvers and
 
 - Website: <https://opentelemetry.io/bn/>
 - Slack channel: [`#otel-localization-bn`][otel-localization-bn]
-- Approvers: @open-telemetry/docs-bn-approvers
-- Maintainers: @open-telemetry/docs-bn-maintainers
+- Maintainers: `@open-telemetry/docs-bn-maintainers`
+- Approvers: `@open-telemetry/docs-bn-approvers`
 
 **Chinese**:
 
 - Website: <https://opentelemetry.io/zh/>
 - Slack channel: [`#otel-localization-zhcn`][otel-localization-zhcn]
-- Approvers: @open-telemetry/docs-zh-approvers
-- Maintainers: @open-telemetry/docs-zh-maintainers
+- Maintainers: `@open-telemetry/docs-zh-maintainers`
+- Approvers: `@open-telemetry/docs-zh-approvers`
 
 **French**:
 
 - Website: <https://opentelemetry.io/fr/>
 - Slack channel: [`#otel-localization-fr`][otel-localization-fr]
-- Approvers: @open-telemetry/docs-fr-approvers
-- Maintainers: @open-telemetry/docs-fr-maintainers
+- Maintainers: `@open-telemetry/docs-fr-maintainers`
+- Approvers: `@open-telemetry/docs-fr-approvers`
 
 **Japanese**:
 
 - Website: <https://opentelemetry.io/ja/>
 - Slack channel: [`#otel-localization-ja`][otel-localization-ja]
-- Approvers: @open-telemetry/docs-ja-approvers
-- Maintainers: @open-telemetry/docs-ja-maintainers
+- Maintainers: `@open-telemetry/docs-ja-maintainers`
+- Approvers: `@open-telemetry/docs-ja-approvers`
 
 **Portuguese**:
 
 - Website: <https://opentelemetry.io/pt/>
 - Slack channel: [`#otel-localization-ptbr`][otel-localization-ptbr]
-- Approvers: @open-telemetry/docs-pt-approvers
-- Maintainers: @open-telemetry/docs-pt-maintainers
+- Maintainers: `@open-telemetry/docs-pt-maintainers`
+- Approvers: `@open-telemetry/docs-pt-approvers`
 
 **Romanian**:
 
 - Website: <https://opentelemetry.io/ro/>
 - Slack channel: [`#otel-localization-ro`][otel-localization-ro]
-- Approvers: @open-telemetry/docs-ro-approvers
-- Maintainers: @open-telemetry/docs-ro-maintainers
+- Maintainers: `@open-telemetry/docs-ro-maintainers`
+- Approvers: `@open-telemetry/docs-ro-approvers`
 
 **Spanish**:
 
 - Website: <https://opentelemetry.io/es/>
 - Slack channel: [`#otel-localization-es`][otel-localization-es]
-- Approvers: @open-telemetry/docs-es-approvers
-- Maintainers: @open-telemetry/docs-es-maintainers
+- Maintainers: `@open-telemetry/docs-es-maintainers`
+- Approvers: `@open-telemetry/docs-es-approvers`
 
 **Ukrainian**:
 
 - Website: <https://opentelemetry.io/uk/>
 - Slack channel: [`#otel-localization-uk`][otel-localization-uk]
-- Approvers: @open-telemetry/docs-uk-approvers
-- Maintainers: @open-telemetry/docs-uk-maintainers
+- Maintainers: `@open-telemetry/docs-uk-maintainers`
+- Approvers: `@open-telemetry/docs-uk-approvers`
 
 ### Contributing to existing localizations
 
