@@ -74,7 +74,7 @@ Requirements:
 - Portuguese-specific spell check dictionary:
   - Brazilian Portuguese dictionary for cspell
     ([`@cspell/dict-pt-br`](https://github.com/streetsidesoftware/cspell-dicts/tree/main/dictionaries/pt_BR#readme))
-  - Custom wordlist ([`.cspell/pt-palavras.txt`](`.cspell/pt-palavras.txt`))
+  - Custom wordlist ([`.cspell/pt-palavras.txt`](.cspell/pt-palavras.txt))
 - Component ownership definition for `@open-telemetry/docs-pt-approvers`
 
 ## Staffing / Help Wanted
@@ -89,7 +89,7 @@ The Portuguese localization team is composed of:
 ### Looking for Contributors
 
 The Portuguese localization team welcomes new contributors! Whether you're
-Portuguese-speaker, have OpenTelemetry experience, or are eager to learn, we'd
+a Portuguese-speaker, have OpenTelemetry experience, or are eager to learn, we'd
 love to have you on the team.
 
 We are particularly seeking:
@@ -108,7 +108,7 @@ If you're interested in contributing:
    [`#otel-docs-localization`][otel-docs-localization] channels, and introduce
    yourself
 2. Review the [localization documentation][localization guidelines]
-3. Browse [issues labeled `lang:pt`][issues-lang-pt] to find pages that needs
+3. Browse [issues labeled `lang:pt`][issues-lang-pt] to find pages that need
    translation or updating
 4. Comment on an issue you'd like to work on to let the team know you're
    starting
@@ -257,7 +257,7 @@ decisions.
    - Acronyms and proper nouns (e.g., "SDK", "API", "OpenTelemetry")
 
 3. **Hybrid approach**:
-   - On first use, you may provide both: "rastros (_traces_)" or "trechos
+   - On first use, you may provide both: "rastros (_traces_)" or "trechos (_spans_)"
    - Use Portuguese term primarily, with English in parentheses if needed for
      clarity
 
