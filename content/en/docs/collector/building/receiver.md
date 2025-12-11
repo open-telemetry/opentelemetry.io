@@ -35,7 +35,7 @@ To implement a trace receiver, you need the following:
 - A `receiver.Factory` implementation so the Collector can properly instantiate
   the trace receiver component.
 
-- A `TracesReceiver` implementation that collects the telemetry, converts it to
+- A `receiver.Traces` implementation that collects the telemetry, converts it to
   the internal trace representation, and passes the telemetry to the next
   consumer in the pipeline.
 

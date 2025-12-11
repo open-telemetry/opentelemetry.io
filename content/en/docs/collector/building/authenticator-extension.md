@@ -21,7 +21,7 @@ see the
 for the semantics of each type and function.
 
 If you need help, join the
-[#opentelemetry-collector](https://cloud-native.slack.com/archives/C01N6P7KR6W)
+[#opentelemetry-collector-dev](https://cloud-native.slack.com/archives/C07CCCMRXBK)
 channel at the [CNCF Slack workspace](https://slack.cncf.io).
 
 ## Architecture
@@ -33,10 +33,7 @@ Use [server authenticators][sa] with receivers to intercept HTTP and gRPC
 requests. Use client authenticators with exporters to add authentication data to
 HTTP and gRPC requests. Authenticators can also implement both interfaces at the
 same time, allowing a single instance of the extension to handle both incoming
-and outgoing requests. Users of your authenticator might prefer having different
-authenticators for incoming and outgoing requests. Keep the design flexible so
-users can enable the component only on the server side, or only on the client
-side, or both if they choose.
+and outgoing requests.
 
 Once an authenticator extension is available in a Collector distribution, you
 can reference it in the configuration file the same as other extensions.
@@ -102,8 +99,8 @@ service:
 
 ### Server authenticators
 
-A [server authenticator][sa] is an extension with an `Authenticate` function.
-This function is called whenever a request comes in, and it checks the request’s
+A [server authenticator][sa] is an extension with an `Authenticate` method. This
+function is called whenever a request comes in, and it checks the request’s
 headers to authenticate the request. If the authenticator decides the request is
 valid, it returns a `nil` error. If the request isn’t valid, it returns an error
 explaining why.
