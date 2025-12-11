@@ -22,7 +22,7 @@ into OpenTelemetry, enabling you to:
 - Monitor JVM metrics (memory, garbage collection, threads, etc.)
 - Collect metrics from application-specific MBeans
 - Export JMX data alongside other OpenTelemetry telemetry signals
-- Use predefined metric mappings for popular frameworks
+- Use predefined metric mappings for popular target systems (Tomcat, Jetty, Wildfly, ...)
 
 ## Installation
 
@@ -45,82 +45,47 @@ with the JMX metrics extension:
      -jar myapp.jar
    ```
 
-### As a Standalone Library
-
-You can also use the JMX metrics library as a standalone dependency:
-
-Add the following dependency to your project:
-
-**Maven (`pom.xml`):**
-
-```xml
-<dependency>
-  <groupId>io.opentelemetry.instrumentation</groupId>
-  <artifactId>opentelemetry-jmx-metrics</artifactId>
-  <version>{{% param vers.instrumentation %}}-alpha</version>
-</dependency>
-```
-
-**Gradle (`build.gradle.kts`):**
-
-```kotlin
-dependencies {
-  implementation("io.opentelemetry.instrumentation:opentelemetry-jmx-metrics:{{% param vers.instrumentation %}}-alpha")
-}
-```
-
 ## Configuration
 
-JMX metrics can be collected in two modes:
+JMX metrics can be collected in two ways:
 
-- **Java Agent mode** - Collects metrics from the same JVM running the agent
-- **Scraper mode** - Collects metrics from a remote JVM via JMX remote connections
+- **From within the JVM** using the internal JMX interface with the Java Agent
+- **From outside the JVM** using the remote JMX interface with the JMX Scraper
 
-### Java Agent Mode Configuration
+### Java Agent Configuration
 
 When using the OpenTelemetry Java Agent, configure JMX metrics using these
 properties:
 
-| System Property                  | Environment Variable             | Description                                     | Default |
-| -------------------------------- | -------------------------------- | ----------------------------------------------- | ------- |
-| `otel.jmx.enabled`               | `OTEL_JMX_ENABLED`               | Enable JMX metric collection                    | `false` |
-| `otel.jmx.target.system`         | `OTEL_JMX_TARGET_SYSTEM`         | Predefined metric set to use                    | none    |
-| `otel.jmx.interval.milliseconds` | `OTEL_JMX_INTERVAL_MILLISECONDS` | Collection interval in milliseconds             | `10000` |
-| `otel.jmx.groovy.script`         | `OTEL_JMX_GROOVY_SCRIPT`         | Path to custom Groovy script for metric mapping | none    |
+| System Property                  | Environment Variable             | Description                                                   | Default |
+| -------------------------------- | -------------------------------- | ------------------------------------------------------------- | ------- |
+| `otel.jmx.enabled`               | `OTEL_JMX_ENABLED`               | Enable JMX metric collection                                  | `true`  |
+| `otel.jmx.target.system`         | `OTEL_JMX_TARGET_SYSTEM`         | Comma-separated list of predefined metric sets to use         | none    |
+| `otel.jmx.interval.milliseconds` | `OTEL_JMX_INTERVAL_MILLISECONDS` | Collection interval in milliseconds                           | `10000` |
+| `otel.jmx.groovy.script`         | `OTEL_JMX_GROOVY_SCRIPT`         | Path to custom Groovy script for metric mapping               | none    |
 
-### Scraper Mode Configuration
+### JMX Scraper Configuration
 
-When using the standalone JMX Metric Gatherer (scraper), configure using these
-properties (note: `otel.jmx.enabled` is not needed):
+When using the standalone JMX Scraper to collect metrics from a remote JVM,
+configure using these properties (note: `otel.jmx.enabled` is not needed).
 
-| System Property                  | Environment Variable             | Description                                     | Default    |
-| -------------------------------- | -------------------------------- | ----------------------------------------------- | ---------- |
-| `otel.jmx.service.url`           | `OTEL_JMX_SERVICE_URL`           | JMX service URL for remote JVM connection       | (required) |
-| `otel.jmx.target.system`         | `OTEL_JMX_TARGET_SYSTEM`         | Predefined metric set to use                    | none       |
-| `otel.jmx.interval.milliseconds` | `OTEL_JMX_INTERVAL_MILLISECONDS` | Collection interval in milliseconds             | `10000`    |
-| `otel.jmx.groovy.script`         | `OTEL_JMX_GROOVY_SCRIPT`         | Path to custom Groovy script for metric mapping | none       |
+For complete configuration reference, see the
+[JMX Scraper documentation](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference).
+
+| System Property          | Environment Variable     | Description                                           | Default    |
+| ------------------------ | ------------------------ | ----------------------------------------------------- | ---------- |
+| `otel.jmx.service.url`   | `OTEL_JMX_SERVICE_URL`   | JMX service URL for remote JVM connection             | (required) |
+| `otel.jmx.target.system` | `OTEL_JMX_TARGET_SYSTEM` | Comma-separated list of predefined metric sets to use | none       |
 
 ### Predefined Target Systems
 
 OpenTelemetry provides predefined metric mappings for popular Java frameworks
 and application servers. Use the `otel.jmx.target.system` property to enable
-them (available in both Java Agent and scraper modes):
+them (available with both Java Agent and JMX Scraper):
 
-**Available target systems:**
 
-- `activemq` - Apache ActiveMQ
-- `cassandra` - Apache Cassandra
-- `hbase` - Apache HBase
-- `hadoop` - Apache Hadoop
-- `jetty` - Eclipse Jetty
-- `kafka` - Apache Kafka
-- `kafka-consumer` - Apache Kafka Consumer
-- `kafka-producer` - Apache Kafka Producer
-- `solr` - Apache Solr
-- `tomcat` - Apache Tomcat
-- `wildfly` - WildFly Application Server
 
-**Example - Monitoring Tomcat (Java Agent mode):**
+**Example - Monitoring Tomcat (Java Agent):**
 
 ```sh
 java -javaagent:opentelemetry-javaagent.jar \
@@ -129,7 +94,7 @@ java -javaagent:opentelemetry-javaagent.jar \
   -jar myapp.jar
 ```
 
-**Example - Monitoring Kafka (Java Agent mode):**
+**Example - Monitoring Kafka (Java Agent):**
 
 ```sh
 java -javaagent:opentelemetry-javaagent.jar \
@@ -146,8 +111,8 @@ You can specify multiple target systems by separating them with commas.
 
 ### Remote JMX Connections
 
-To collect metrics from a remote JVM, you need to use the JMX Metric Gatherer
-(scraper). This involves two separate JVMs:
+To collect metrics from a remote JVM, you need to use the JMX Scraper. This
+involves two separate JVMs:
 
 1. **Target JVM** - The application being monitored
 2. **Scraper JVM** - The JMX metric collector
@@ -171,18 +136,18 @@ environments, always enable authentication and SSL for JMX connections.
 
 {{% /alert %}}
 
-#### Step 2: Run the JMX Metric Gatherer
+#### Step 2: Run the JMX Scraper
 
-Download the JMX Metric Gatherer from the
+Download the JMX Scraper from the
 [OpenTelemetry Java Contrib releases](https://github.com/open-telemetry/opentelemetry-java-contrib/releases)
-page (look for `opentelemetry-jmx-metrics-<version>.jar`).
+page (look for `opentelemetry-jmx-scraper-<version>-all.jar`).
 
 Then run the scraper, pointing it to your target JVM:
 
 ```sh
 java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://tomcat.example.com:9999/jmxrmi \
   -Dotel.jmx.target.system=tomcat \
-  -jar opentelemetry-jmx-metrics.jar
+  -jar opentelemetry-jmx-scraper.jar
 ```
 
 You can configure the scraper using the same properties as the Java Agent
@@ -194,14 +159,20 @@ You can configure the scraper using the same properties as the Java Agent
 ```sh
 java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://kafka.example.com:9999/jmxrmi \
   -Dotel.jmx.target.system=kafka,kafka-producer,kafka-consumer \
-  -Dotel.jmx.interval.milliseconds=5000 \
   -Dotel.metrics.exporter=otlp \
   -Dotel.exporter.otlp.endpoint=http://collector:4318 \
-  -jar opentelemetry-jmx-metrics.jar
+  -jar opentelemetry-jmx-scraper.jar
 ```
 
 For more details, see the
-[JMX Metric Gatherer documentation](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-metrics).
+[JMX Scraper documentation](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper).
+
+{{% alert title="Note" color="info" %}}
+
+If you're migrating from the deprecated JMX Metric Gatherer, see the
+[migration guide](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migrating-from-jmx-metric-gatherer).
+
+{{% /alert %}}
 
 ## Custom Metric Mappings
 
@@ -238,7 +209,7 @@ java -javaagent:opentelemetry-javaagent.jar \
 
 ## Common Use Cases
 
-### Monitoring JVM Metrics (Java Agent Mode)
+### Monitoring JVM Metrics (Java Agent)
 
 Enable JMX metrics to collect standard JVM metrics from the same JVM:
 
@@ -255,7 +226,7 @@ This collects metrics such as:
 - Thread counts and states
 - Class loading metrics
 
-### Monitoring Remote Application Servers (Scraper Mode)
+### Monitoring Remote Application Servers (JMX Scraper)
 
 For monitoring Tomcat, Jetty, or WildFly running on remote hosts:
 
@@ -264,10 +235,10 @@ java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://tomcat.example.com:999
   -Dotel.jmx.target.system=tomcat \
   -Dotel.metrics.exporter=otlp \
   -Dotel.exporter.otlp.endpoint=http://collector:4318 \
-  -jar opentelemetry-jmx-metrics.jar
+  -jar opentelemetry-jmx-scraper.jar
 ```
 
-### Monitoring Remote Message Brokers (Scraper Mode)
+### Monitoring Remote Message Brokers (JMX Scraper)
 
 For monitoring Kafka or ActiveMQ on remote hosts:
 
@@ -276,10 +247,10 @@ java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://kafka.example.com:9999
   -Dotel.jmx.target.system=kafka,kafka-producer,kafka-consumer \
   -Dotel.metrics.exporter=otlp \
   -Dotel.exporter.otlp.endpoint=http://collector:4318 \
-  -jar opentelemetry-jmx-metrics.jar
+  -jar opentelemetry-jmx-scraper.jar
 ```
 
-### Monitoring Remote Databases (Scraper Mode)
+### Monitoring Remote Databases (JMX Scraper)
 
 For monitoring Cassandra or HBase on remote hosts:
 
@@ -288,7 +259,7 @@ java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://cassandra.example.com:
   -Dotel.jmx.target.system=cassandra \
   -Dotel.metrics.exporter=otlp \
   -Dotel.exporter.otlp.endpoint=http://collector:4318 \
-  -jar opentelemetry-jmx-metrics.jar
+  -jar opentelemetry-jmx-scraper.jar
 ```
 
 ## Verification
@@ -302,7 +273,7 @@ To verify that JMX metrics are being collected:
 3. **Use JConsole** - Connect to your application with JConsole to verify MBeans
    are accessible
 
-**Example with OTLP exporter (Java Agent mode):**
+**Example with OTLP exporter (Java Agent):**
 
 ```sh
 java -javaagent:opentelemetry-javaagent.jar \
@@ -312,22 +283,26 @@ java -javaagent:opentelemetry-javaagent.jar \
   -jar myapp.jar
 ```
 
-**Example with OTLP exporter (Scraper mode):**
+**Example with OTLP exporter (JMX Scraper):**
 
 ```sh
 java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://myapp.example.com:9999/jmxrmi \
   -Dotel.jmx.target.system=tomcat \
   -Dotel.metrics.exporter=otlp \
   -Dotel.exporter.otlp.endpoint=http://localhost:4318 \
-  -jar opentelemetry-jmx-metrics.jar
+  -jar opentelemetry-jmx-scraper.jar
 ```
 
 ## Additional Resources
 
-- [JMX Metrics README](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md) -
-  Detailed documentation and examples
-- [Predefined Metric Mappings](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules) -
-  Built-in rules for popular frameworks
+- [JMX Scraper Documentation](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper) -
+  Complete configuration reference and examples
+- [JMX Scraper Migration Guide](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migrating-from-jmx-metric-gatherer) -
+  Migrating from the deprecated JMX Metric Gatherer
+- [JMX Metrics (Java Agent)](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md) -
+  Java Agent JMX metrics documentation
+- [Predefined Target Systems](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#predefined-metric-sets) -
+  Built-in metric sets for popular frameworks
 - [Java Agent Documentation](/docs/zero-code/java/agent/) - General Java Agent
   configuration
 - [Configuration Guide](../configuration/) - OpenTelemetry SDK configuration
