@@ -5,7 +5,7 @@
 The website localization project makes the OpenTelemetry documentation and
 resources accessible to a global audience by providing translations in multiple
 languages. [Launched in August 2024][multilingual docs announcement], this
-initiative enables allows contributors, organizations, and end-users worldwide
+initiative enables contributors, organizations, and end-users worldwide
 to engage with OpenTelemetry in their native language, regardless of their
 English proficiency.
 
@@ -114,7 +114,7 @@ Requirements for each localization:
 
 Each language has a dedicated approver team responsible for reviewing and
 maintaining translations. Teams are defined in
-[`.github/component-owners.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component_owners.yml).
+[`.github/component-owners.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml).
 
 All language teams also work with @open-telemetry/docs-approvers and
 @open-telemetry/docs-maintainers for overall guidance and support.
@@ -137,7 +137,7 @@ All language teams also work with @open-telemetry/docs-approvers and
 
 **French**:
 
-- Website: <https://opentelemetry.io/fr>
+- Website: <https://opentelemetry.io/fr/>
 - Slack channel: [`#otel-localization-fr`][otel-localization-fr]
 - Approvers: @open-telemetry/docs-fr-approvers
 - Maintainers: @open-telemetry/docs-fr-maintainers
