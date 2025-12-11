@@ -34,6 +34,7 @@ Analyzes PR diffs using GitHub Copilot CLI to detect AI-generated content.
    ```
 
 3. **Run the script**
+
    ```bash
    node analyze.js
    ```
