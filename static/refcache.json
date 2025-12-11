@@ -5619,6 +5619,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-06T09:43:29.071008272Z"
   },
+  "https://github.com/jfinal/jfinal": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-11T14:20:03.525881-05:00"
+  },
   "https://github.com/jhalliday": {
     "StatusCode": 206,
     "LastSeen": "2025-12-05T09:43:09.149523895Z"

@@ -129,6 +129,7 @@ corresponding instrumentation name: {{% /config_option %}}
 | JAX-WS                                           | `jaxws`                                     |
 | JBoss Logging Appender                           | `jboss-logmanager-appender`                 |
 | JBoss Logging MDC                                | `jboss-logmanager-mdc`                      |
+| JFinal                                           | `jfinal`                                    |
 | JMS                                              | `jms`                                       |
 | Jodd HTTP                                        | `jodd-http`                                 |
 | JSP                                              | `jsp`                                       |
