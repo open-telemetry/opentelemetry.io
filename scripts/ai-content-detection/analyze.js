@@ -15,6 +15,7 @@ class AIDetectionConfig {
     // Required configuration
     this.ghToken = process.env.GH_TOKEN;
     this.prNumber = parseInt(process.env.PR_NUMBER, 10);
+    this.repo = process.env.GITHUB_REPOSITORY;
 
     // Optional configuration with defaults
     this.threshold = parseInt(process.env.CONFIDENCE_THRESHOLD || '80', 10);
@@ -24,8 +25,8 @@ class AIDetectionConfig {
       .map((u) => u.trim())
       .filter(Boolean);
     this.failOnDetection =
-      process.env.FAIL_ON_DETECTION !== 'false' &&
-      process.env.FAIL_ON_DETECTION !== '0';
+      process.env.FAIL_ON_DETECTION === 'true' ||
+      process.env.FAIL_ON_DETECTION === '1';
     this.dryRun = process.env.DRY_RUN === 'true' || process.env.DRY_RUN === '1';
     this.customPrompt = process.env.CUSTOM_PROMPT || null;
     this.diffMaxChars = parseInt(process.env.DIFF_MAX_CHARS || '20000', 10);
@@ -44,6 +45,10 @@ class AIDetectionConfig {
       throw new Error(
         'PR_NUMBER environment variable is required and must be a number',
       );
+    }
+
+    if (!this.repo) {
+      throw new Error('GITHUB_REPOSITORY environment variable is required');
     }
 
     if (this.threshold < 0 || this.threshold > 100) {
@@ -111,7 +116,8 @@ function fetchPRDiff(config) {
     console.log(`Diff fetched successfully (${diff.length} characters)`);
     return diff;
   } catch (error) {
-    throw new Error(`Failed to fetch PR diff`);
+    console.error('Error fetching PR diff:', error.message);
+    throw new Error(`Failed to fetch PR diff: ${error.message}`);
   }
 }
 
@@ -172,7 +178,8 @@ function runCopilotAnalysis(diff, config) {
 
     return output;
   } catch (error) {
-    throw new Error(`Copilot analysis failed.`);
+    console.error('Error running Copilot analysis:', error.message);
+    throw new Error(`Copilot analysis failed: ${error.message}`);
   }
 }
 

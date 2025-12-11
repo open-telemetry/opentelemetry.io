@@ -68,16 +68,18 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
           CONFIDENCE_THRESHOLD:
             ${{ github.event.inputs.confidence_threshold || '80' }}
           PR_LABEL: ${{ github.event.inputs.pr_label || 'ai-generated' }}
           SKIP_USERS: ${{ github.event.inputs.skip_users || '' }}
           FAIL_ON_DETECTION:
-            ${{ github.event_name == 'workflow_dispatch' &&
-            github.event.inputs.fail_on_detection == true || 'false' }}
+            ${{ (github.event_name == 'workflow_dispatch' &&
+            github.event.inputs.fail_on_detection == true) && 'true' || 'false'
+            }}
           DRY_RUN:
-            ${{ github.event_name == 'workflow_dispatch' &&
-            github.event.inputs.dry_run == true || 'true' }}
+            ${{ (github.event_name == 'workflow_dispatch' &&
+            github.event.inputs.dry_run == true) && 'true' || 'true' }}
           CUSTOM_PROMPT: ${{ github.event.inputs.custom_prompt || '' }}
           DIFF_MAX_CHARS: ${{ github.event.inputs.diff_max_chars || '20000' }}
         run: node analyze.js
