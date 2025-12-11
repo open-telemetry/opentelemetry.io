@@ -15,7 +15,6 @@ class AIDetectionConfig {
     // Required configuration
     this.ghToken = process.env.GH_TOKEN;
     this.prNumber = parseInt(process.env.PR_NUMBER, 10);
-    this.repo = process.env.REPO;
 
     // Optional configuration with defaults
     this.threshold = parseInt(process.env.CONFIDENCE_THRESHOLD || '80', 10);
@@ -45,10 +44,6 @@ class AIDetectionConfig {
       throw new Error(
         'PR_NUMBER environment variable is required and must be a number',
       );
-    }
-
-    if (!this.repo) {
-      throw new Error('REPO environment variable is required');
     }
 
     if (this.threshold < 0 || this.threshold > 100) {
@@ -116,7 +111,7 @@ function fetchPRDiff(config) {
     console.log(`Diff fetched successfully (${diff.length} characters)`);
     return diff;
   } catch (error) {
-    throw new Error(`Failed to fetch PR diff: ${error.message}`);
+    throw new Error(`Failed to fetch PR diff`);
   }
 }
 
@@ -177,7 +172,7 @@ function runCopilotAnalysis(diff, config) {
 
     return output;
   } catch (error) {
-    throw new Error(`Copilot analysis failed: ${error.message}`);
+    throw new Error(`Copilot analysis failed.`);
   }
 }
 
@@ -270,8 +265,15 @@ async function addPRLabel(octokit, config) {
     });
     console.log(`Added label: ${config.labelName}`);
   } catch (error) {
-    // Label might not exist, warn but don't fail
-    console.warn(`Failed to add label (label may not exist): ${error.message}`);
+    // Only ignore 404 (label doesn't exist), log other errors
+    if (error.status === 404) {
+      console.warn(
+        `Label '${config.labelName}' does not exist in repository. Skipping label.`,
+      );
+    } else {
+      console.error(`Failed to add label: ${error.message}`);
+      // Don't throw - label is optional, but log the real error for debugging
+    }
   }
 }
 

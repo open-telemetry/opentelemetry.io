@@ -50,8 +50,6 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v6.0.1
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -70,14 +68,16 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
-          REPO: ${{ github.repository }}
           CONFIDENCE_THRESHOLD:
             ${{ github.event.inputs.confidence_threshold || '80' }}
           PR_LABEL: ${{ github.event.inputs.pr_label || 'ai-generated' }}
           SKIP_USERS: ${{ github.event.inputs.skip_users || '' }}
           FAIL_ON_DETECTION:
-            ${{ github.event.inputs.fail_on_detection != false }}
-          DRY_RUN: ${{ github.event.inputs.dry_run == true }}
+            ${{ github.event_name == 'workflow_dispatch' &&
+            github.event.inputs.fail_on_detection == true || 'false' }}
+          DRY_RUN:
+            ${{ github.event_name == 'workflow_dispatch' &&
+            github.event.inputs.dry_run == true || 'true' }}
           CUSTOM_PROMPT: ${{ github.event.inputs.custom_prompt || '' }}
           DIFF_MAX_CHARS: ${{ github.event.inputs.diff_max_chars || '20000' }}
         run: node analyze.js
