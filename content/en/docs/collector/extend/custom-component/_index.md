@@ -1,7 +1,8 @@
 ---
 title: Build custom components
 description: Instructions on how to build your own Collector components
-weight: 90
+aliases: [/docs/collector/building/]
+weight: 300
 ---
 
 You can configure the OpenTelemetry Collector with components from the
