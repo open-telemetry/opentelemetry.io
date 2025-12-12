@@ -11,6 +11,8 @@ urls:
   repo: https://github.com/open-telemetry/opentelemetry-go-instrumentation/
   docs: https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/main/COMPATIBILITY.md#githubcomsegmentiokafka-go
 license: Apache 2.0
+authors:
+  - name: OpenTelemetry Authors
 description:
   OpenTelemetry Go Automatic Instrumentation includes auto-instrumentation for
   the [segmentio/kafka-go](https://pkg.go.dev/github.com/segmentio/kafka-go)
