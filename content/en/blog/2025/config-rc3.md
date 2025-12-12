@@ -74,7 +74,7 @@ Earlier releases of the JSON schema were split into multiple files under the [sc
 directory. This has changed in this release candidate. That directory now contains the
 YAML source files used to generate the single file stored in the root of the repository.
 The new format for source files is combined with tooling in the repository to generate the
-documentation, examples, and the resulting JSON schema more consistently. For anyone looking
+documentation, examples, and the [resulting JSON schema][schema] more consistently. For anyone looking
 to contribute, read more details about the tooling and the process in the [contributing][contrib-doc]
 documentation.
 
@@ -104,6 +104,9 @@ on this latest version of the schema!
 
 [otel-config-schema]:
   https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema
+
+[schema]:
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0-rc.3/opentelemetry_configuration.json
 
 [contrib-doc]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/main/CONTRIBUTING.md#project-tooling
