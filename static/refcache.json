@@ -2031,6 +2031,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-05T09:42:47.321366733Z"
   },
+  "https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-11T20:47:27.435168-06:00"
+  },
   "https://docs.microsoft.com/dotnet/core/extensions/logger-message-generator": {
     "StatusCode": 206,
     "LastSeen": "2025-12-10T09:43:11.610803126Z"
