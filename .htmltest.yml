@@ -56,6 +56,8 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://x.ai
   - ^https://www.deepseek.com
   - ^https://www.perplexity.ai
+  - ^https://sched.co # Often yields 403 Forbidden and needs manual verification
+  - ^https://.*\.sched\.com
 
   # Ignore issues and discussions with query parameters, e.g.:
   - ^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=
