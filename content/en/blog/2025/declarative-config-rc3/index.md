@@ -4,7 +4,6 @@ linkTitle: New Configurate Schema release candidate
 date: 2025-12-12
 author: >-
   [Alex Boten](https://github.com/codeboten)(Honeycomb)
-cSpell:ignore:
 ---
 
 The [latest release][rc3-release] of the OpenTelemetry Configuration Schema is
