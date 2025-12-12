@@ -1,11 +1,10 @@
 ---
-title: Building an authenticator extension
-weight: 40
+title: Build an authenticator extension
+linkTitle: Authenticator
+weight: 100
 aliases:
-  [
-    /docs/collector/custom-auth/,
-    /docs/collector/building/authenticator-extension/,
-  ]
+  - /docs/collector/custom-auth
+  - /docs/collector/building/authenticator-extension/
 cSpell:ignore: configauth oidc
 ---
 
@@ -150,6 +149,6 @@ When building your own authenticator, you have two options:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
 [client authenticators]:
   https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#client-authenticators
-[extensions]: ../../configuration/#extensions
+[extensions]: /docs/collector/configuration/#extensions
 [sa]:
   https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth#server-authenticators

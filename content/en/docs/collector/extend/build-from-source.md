@@ -1,9 +1,15 @@
 ---
 title: Build from source
-build:
-  list: never
-draft: true
-toc_hide: true
+description: Learn how to build the OpenTelemetry Collector from source
+weight: 100
 ---
 
-This page explains how to build the OpenTelemetry Collector from source.
+You can build the latest version of the Collector based on the local operating
+system using the following commands:
+
+```sh
+git clone https://github.com/open-telemetry/opentelemetry-collector.git
+cd opentelemetry-collector
+make install-tools
+make otelcorecol
+```

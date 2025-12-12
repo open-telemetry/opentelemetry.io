@@ -1,7 +1,8 @@
 ---
 title: Extend the Collector
+linkTitle: Extend
 description:
-  Learn how to extend the OpenTelemetry Collector with custom components.
+  Learn how to extend the OpenTelemetry Collector with custom components
 weight: 90
 ---
 
@@ -12,10 +13,3 @@ way, or send data to a proprietary backend.
 
 This section guides you through extending the Collector using the
 [OpenTelemetry Collector Builder (OCB)](./ocb/) and creating custom components.
-
-## Topics
-
-- [OCB](./ocb/): Learn how to use the OpenTelemetry Collector Builder to create
-  custom Collector distributions.
-- [Custom Components](./custom-component/): Learn how to build custom receivers,
-  processors, extensions, and connectors.

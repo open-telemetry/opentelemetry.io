@@ -1,6 +1,7 @@
 ---
-title: Building a custom collector
-weight: 29
+title: Build a custom collector
+description: Assemble your own distribution of the OpenTelemetry Collector
+weight: 200
 aliases: [/docs/collector/custom-collector/]
 # prettier-ignore
 cSpell:ignore: chipset darwin debugexporter gomod otlpexporter otlpreceiver wyrtw

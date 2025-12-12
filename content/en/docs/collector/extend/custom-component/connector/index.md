@@ -1,7 +1,10 @@
 ---
-title: Building a Connector
-aliases: [/docs/collector/build-connector/]
-weight: 30
+title: Build a connector
+linkTitle: Connectors
+aliases:
+  - /docs/collector/build-connector/
+  - /docs/collector/building/connector/
+weight: 200
 # prettier-ignore
 cSpell:ignore: debugexporter Errorf exampleconnector gomod gord Jaglowski mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
 ---
@@ -741,7 +744,7 @@ in the OpenTelemetry Collector ecosystem.
 
 Additional resources on the OpenTelemetry Collector Builder:
 
-- [Building a custom collector](/docs/collector/custom-collector)
+- [Build a custom Collector](/docs/collector/extend/ocb/)
 - [OpenTelemetry Collector Builder README](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)
 - [Connected Observability Pipelines in the OpenTelemetry Collector by Dan Jaglowski](https://www.youtube.com/watch?v=uPpZ23iu6kI)
 - [Connector README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md)

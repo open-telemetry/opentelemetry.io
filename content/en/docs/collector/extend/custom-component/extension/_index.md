@@ -1,7 +1,8 @@
 ---
-title: Building Extensions
+title: Build an extension
+linkTitle: Extensions
 description: Instructions on how to build custom extensions for the Collector.
-weight: 10
+weight: 300
 ---
 
 Extensions in the OpenTelemetry Collector are components that can be added to
