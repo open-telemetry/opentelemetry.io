@@ -88,8 +88,6 @@ OpenTelemetry provides predefined metric mappings for popular Java frameworks
 and application servers. Use the `otel.jmx.target.system` property to enable
 them (available with both Java Agent and JMX Scraper):
 
-
-
 **Example - Monitoring Tomcat (Java Agent):**
 
 ```sh
