@@ -4,6 +4,7 @@ linkTitle: New Configurate Schema release candidate
 date: 2025-12-12
 author: >-
   [Alex Boten](https://github.com/codeboten)(Honeycomb)
+cSpell:ignore: configtls
 ---
 
 The [latest release][rc3-release] of the OpenTelemetry Configuration Schema is
@@ -53,7 +54,7 @@ for `OTEL_LOG_LEVEL`. In this release, it has been changed to support the same
 severity levels already [defined][severity-levels] in the logging specification.
 Earlier this month, an announcement about the deprecation of the Zipkin exporter
 was made. As a result, this new release of the schema has also removed the
-exporter. The validation around various proprties has also been improved.
+exporter. The validation around various properties has also been improved.
 
 Lastly the schema now populates the `description` field for all properties,
 giving users some much needed context when editing configuration files.
