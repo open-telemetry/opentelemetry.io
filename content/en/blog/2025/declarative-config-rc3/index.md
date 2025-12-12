@@ -8,7 +8,7 @@ cSpell:ignore: configtls severitynumber
 ---
 
 The [latest release][rc3-release] of the OpenTelemetry Configuration Schema is
-out this week. It brings the Configuration Working group one step closer to
+out this week. It brings the Configuration working group one step closer to
 completion after 3 years of effort, and the schema one step closer to being
 marked stable. We might be optimists here, but we think this may be the last
 release candidate before a stable release is done.
@@ -66,7 +66,7 @@ giving users some much needed context when editing configuration files.
 
 The description field makes it easier for end users to understand the details of
 the configuration they're editing, and can also help language implementations.
-Many implementation use code generation tools to automatically produce the
+Many implementations use code generation tools to automatically produce the
 in-code representation of the configuration schema. In the tools that support
 it, the description field automatically produces documentation for the
 properties of the model.
