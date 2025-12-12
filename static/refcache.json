@@ -8799,9 +8799,17 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-09T09:42:32.527773923Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/CONTRIBUTING.md#project-tooling": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T16:22:50.376287269Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/CONTRIBUTING.md#property-name-case": {
     "StatusCode": 206,
     "LastSeen": "2025-12-08T09:48:09.403697744Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/VERSIONING.md#experimental-features": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T16:22:51.440742519Z"
   },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml": {
     "StatusCode": 206,
@@ -8815,6 +8823,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-10T09:43:15.732471042Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#opentelemetryconfiguration": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T16:22:52.899453113Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/issues/100": {
     "StatusCode": 206,
     "LastSeen": "2025-12-09T09:47:08.432192213Z"
@@ -8826,6 +8838,14 @@
   "https://github.com/open-telemetry/opentelemetry-configuration/issues/70": {
     "StatusCode": 206,
     "LastSeen": "2025-12-08T09:48:10.131720762Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/releases/tag/v1.0.0-rc.3": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T16:22:33.06774984Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/tree/main/schema": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T16:22:46.022855849Z"
   },
   "https://github.com/open-telemetry/opentelemetry-configuration?tab=readme-ov-file#stability-definition": {
     "StatusCode": 206,
@@ -12114,6 +12134,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables": {
     "StatusCode": 206,
     "LastSeen": "2025-12-09T09:42:17.144137972Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/logs/data-model.md#field-severitynumber": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T16:22:41.783620336Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.14.0/specification/sdk-environment-variables.md#general-sdk-configuration": {
     "StatusCode": 206,
@@ -18374,6 +18398,10 @@
   "https://pkg.go.dev/go.opentelemetry.io/collector/config/confighttp": {
     "StatusCode": 200,
     "LastSeen": "2025-12-09T09:47:28.459139076Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/collector/config/configtls": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-12T16:22:36.949471033Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/collector/confmap/provider/envprovider": {
     "StatusCode": 200,
