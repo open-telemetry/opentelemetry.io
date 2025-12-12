@@ -59,7 +59,10 @@ exporter. The validation around various properties has also been improved.
 Lastly the schema now populates the `description` field for all properties,
 giving users some much needed context when editing configuration files.
 
-<img src="static/schema.gif" alt="Screen capture of using the schema from an editor demonstrating the usage of description fields" height="300" width="300">
+{{% figure
+  src="schema.gif"
+  caption="Screen capture of using the schema from an editor demonstrating the usage of description fields"
+%}}
 
 The description field makes it easier for end users to understand the details of
 the configuration they're editing, and can also help language implementations.
