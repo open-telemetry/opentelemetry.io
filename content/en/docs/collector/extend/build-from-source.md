@@ -7,6 +7,3 @@ toc_hide: true
 ---
 
 This page explains how to build the OpenTelemetry Collector from source.
-
-
-

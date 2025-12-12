@@ -458,14 +458,13 @@ func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) erro
 
 ### Summary of Using OpenTelemetry Collector Builder:
 
-You can use the
-[OpenTelemetry Collector Builder](/docs/collector/custom-collector/) to build
-your code and run it. The collector builder is a tool that enables you to build
-your own OpenTelemetry Collector binary. You can add or remove components
-(receivers, processors, connectors and exporters) to suit your needs.
+You can use the [OpenTelemetry Collector Builder](/docs/collector/extend/ocb/)
+to build your code and run it. The collector builder is a tool that enables you
+to build your own OpenTelemetry Collector binary. You can add or remove
+components (receivers, processors, connectors and exporters) to suit your needs.
 
 1.  Follow the OpenTelemetry Collector Builder
-    [installation instructions](/docs/collector/custom-collector/).
+    [installation instructions](/docs/collector/extend/ocb/).
 
 2.  Write a Configuration File:
 

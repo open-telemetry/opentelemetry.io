@@ -1,7 +1,11 @@
 ---
 title: Building an authenticator extension
 weight: 40
-aliases: [/docs/collector/custom-auth/, /docs/collector/building/authenticator-extension/]
+aliases:
+  [
+    /docs/collector/custom-auth/,
+    /docs/collector/building/authenticator-extension/,
+  ]
 cSpell:ignore: configauth oidc
 ---
 
