@@ -38,17 +38,15 @@ class AIDetectionConfig {
    */
   validate() {
     if (!this.ghToken) {
-      throw new Error('GH_TOKEN environment variable is required');
+      throw new Error('GH_TOKEN is required');
     }
 
     if (!this.prNumber || isNaN(this.prNumber)) {
-      throw new Error(
-        'PR_NUMBER environment variable is required and must be a number',
-      );
+      throw new Error('PR_NUMBER is required and must be a number');
     }
 
     if (!this.repo) {
-      throw new Error('GITHUB_REPOSITORY environment variable is required');
+      throw new Error('GITHUB_REPOSITORY is required');
     }
 
     if (this.threshold < 0 || this.threshold > 100) {
@@ -116,8 +114,8 @@ function fetchPRDiff(config) {
     console.log(`Diff fetched successfully (${diff.length} characters)`);
     return diff;
   } catch (error) {
-    console.error('Error fetching PR diff:', error.message);
-    throw new Error(`Failed to fetch PR diff: ${error.message}`);
+    console.error('Error fetching PR diff.');
+    throw new Error('Failed to fetch PR diff.');
   }
 }
 
@@ -178,8 +176,8 @@ function runCopilotAnalysis(diff, config) {
 
     return output;
   } catch (error) {
-    console.error('Error running Copilot analysis:', error.message);
-    throw new Error(`Copilot analysis failed: ${error.message}`);
+    console.error('Error running Copilot analysis.');
+    throw new Error(`Copilot analysis failed.`);
   }
 }
 
@@ -241,7 +239,8 @@ ${analysis}
     });
     console.log('Posted warning comment to PR');
   } catch (error) {
-    throw new Error(`Failed to post PR comment: ${error.message}`);
+    console.error('Error posting PR comment.');
+    throw new Error('Failed to post PR comment.');
   }
 }
 
@@ -278,8 +277,8 @@ async function addPRLabel(octokit, config) {
         `Label '${config.labelName}' does not exist in repository. Skipping label.`,
       );
     } else {
-      console.error(`Failed to add label: ${error.message}`);
-      // Don't throw - label is optional, but log the real error for debugging
+      console.error('Failed to add label.');
+      // Don't throw - label is optional, only log the error for debugging purposes
     }
   }
 }

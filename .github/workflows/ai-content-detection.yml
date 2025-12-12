@@ -2,6 +2,10 @@ name: 'AI Content Detection'
 on:
   workflow_dispatch:
     inputs:
+      pr_number:
+        description: 'Pull Request number to analyze'
+        required: true
+        type: number
       confidence_threshold:
         description: 'Confidence threshold percentage (0-100)'
         default: '80'
@@ -67,7 +71,9 @@ jobs:
         working-directory: ./scripts/ai-content-detection
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_NUMBER:
+            ${{ github.event.inputs.pr_number ||
+            github.event.pull_request.number }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           CONFIDENCE_THRESHOLD:
             ${{ github.event.inputs.confidence_threshold || '80' }}
