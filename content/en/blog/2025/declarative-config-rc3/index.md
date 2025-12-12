@@ -1,7 +1,7 @@
 ---
 title:
-  'New Configurate Schema release candidate'
-linkTitle: New Configurate Schema release candidate
+  'New Configuration Schema release candidate'
+linkTitle: New Configuration Schema release candidate
 date: 2025-12-12
 author: >-
   [Alex Boten](https://github.com/codeboten)(Honeycomb)
