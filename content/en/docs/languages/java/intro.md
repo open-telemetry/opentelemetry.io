@@ -16,11 +16,11 @@ guide to [navigating the docs](#navigating-the-docs), a list of
 
 The API is a set of classes and interfaces for recording telemetry across key
 observability signals. It supports multiple implementations, with a low-overhead
-minimalist Noop (i.e. pronounced "no-op") and SDK reference implementation
-provided out of the box. It is designed to be taken as a direct dependency by
-libraries, frameworks, and application owners looking to add instrumentation. It
-comes with strong backwards compatibility guarantees, zero transitive
-dependencies, and supports Java 8+.
+minimalist no-op and SDK reference implementation provided out of the box. It is
+designed to be taken as a direct dependency by libraries, frameworks, and
+application owners looking to add instrumentation. It comes with strong
+backwards compatibility guarantees, zero transitive dependencies, and supports
+Java 8+.
 
 The SDK is the built-in reference implementation of the API, processing and
 exporting telemetry produced by instrumentation API calls. Configuring the SDK

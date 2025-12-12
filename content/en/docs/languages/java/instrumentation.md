@@ -104,6 +104,15 @@ instrumentation maintained by OpenTelemetry in
 [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 as a temporary means of filling the gap.
 
+Native instrumentation should interact with the OpenTelemetry Java agent as
+follows: On startup, the Java agent initializes an
+[OpenTelemetry](../api/#opentelemetry)) instance and installs
+[zero-code](#zero-code-java-agent) instrumentation. Libraries adding native
+instrumentation should allow users to customize the `OpenTelemetry` instance
+used, but should automatically use the instance initialized by the Java agent
+(if present). See [GlobalOpenTelemetry](../api/#globalopentelemetry) for
+guidance on how to achieve this.
+
 {{% docs/languages/native-libraries %}}
 
 ### Manual instrumentation
@@ -111,6 +120,20 @@ as a temporary means of filling the gap.
 [Manual instrumentation](/docs/specs/otel/glossary/#manual-instrumentation) is
 written by application authors, and typically specific to the application
 domain.
+
+Manual instrumentation should interact with the OpenTelemetry Java agent as
+follows: On startup, the Java agent initializes an
+[OpenTelemetry](../api/#opentelemetry) instance and makes it accessible to
+application manual instrumentation via `GlobalOpenTelemetry`. However, the
+application owner may not be able to rely on the Java agent being installed all
+the time. For example, the Java agent may not be installed in local development,
+or test environments, or in special cases where the Java agent is removed for
+debugging reasons. Manual instrumentation should use the
+[OpenTelemetry](../api/#opentelemetry) instance initialized by the Java agent
+(if present), but should be able to detect and potentially set up a fallback
+`OpenTelemetry` instance if the Java agent is not present. See
+[GlobalOpenTelemetry](../api/#globalopentelemetry) for guidance on how to
+achieve this.
 
 ### Shims
 
