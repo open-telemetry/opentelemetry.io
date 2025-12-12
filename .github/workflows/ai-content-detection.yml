@@ -36,11 +36,102 @@ on:
         default: '20000'
         type: string
   pull_request_target:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ai-detection-${{ github.event.pull_request.number || github.event.inputs.pr_number || github.run_id }}
+  cancel-in-progress: true
+
+env:
+  COPILOT_TOKEN: ${{ secrets.COPILOT_TOKEN }}
+  GITHUB_REPOSITORY: ${{ github.repository }}
 
 jobs:
+  validate-inputs:
+    name: 'Validate Inputs'
+    runs-on: ubuntu-latest
+    outputs:
+      pr-number: ${{ steps.extract.outputs.pr-number }}
+      confidence-threshold: ${{ steps.extract.outputs.confidence-threshold }}
+      should-analyze: ${{ steps.validate.outputs.should-analyze }}
+      dry-run: ${{ steps.extract.outputs.dry-run }}
+      fail-on-detection: ${{ steps.extract.outputs.fail-on-detection }}
+    steps:
+      - name: Extract and set defaults
+        id: extract
+        run: |
+          # Extract PR number
+          PR_NUMBER="${{ github.event.inputs.pr_number || github.event.pull_request.number }}"
+          echo "pr-number=${PR_NUMBER}" >> $GITHUB_OUTPUT
+
+          # Extract confidence threshold
+          CONFIDENCE="${{ github.event.inputs.confidence_threshold || '80' }}"
+          echo "confidence-threshold=${CONFIDENCE}" >> $GITHUB_OUTPUT
+
+          # Set DRY_RUN: always true for pull_request_target, respect input for workflow_dispatch
+          if [[ "${{ github.event_name }}" == "pull_request_target" ]]; then
+            echo "dry-run=true" >> $GITHUB_OUTPUT
+          else
+            echo "dry-run=${{ github.event.inputs.dry_run }}" >> $GITHUB_OUTPUT
+          fi
+
+          # Set FAIL_ON_DETECTION: only true for workflow_dispatch with explicit input
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ github.event.inputs.fail_on_detection }}" == "true" ]]; then
+            echo "fail-on-detection=true" >> $GITHUB_OUTPUT
+          else
+            echo "fail-on-detection=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Validate inputs
+        id: validate
+        run: |
+          PR_NUMBER="${{ steps.extract.outputs.pr-number }}"
+          CONFIDENCE="${{ steps.extract.outputs.confidence-threshold }}"
+
+          # Validate PR number
+          if [[ -z "$PR_NUMBER" ]]; then
+            echo "::error::PR number is required"
+            echo "should-analyze=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          if ! [[ "$PR_NUMBER" =~ ^[0-9]+$ ]]; then
+            echo "::error::Invalid PR number: $PR_NUMBER (must be numeric)"
+            echo "should-analyze=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          # Validate confidence threshold
+          if ! [[ "$CONFIDENCE" =~ ^[0-9]+$ ]]; then
+            echo "::error::Invalid confidence threshold: $CONFIDENCE (must be numeric)"
+            echo "should-analyze=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          if [[ "$CONFIDENCE" -lt 0 || "$CONFIDENCE" -gt 100 ]]; then
+            echo "::error::Confidence threshold must be between 0 and 100, got: $CONFIDENCE"
+            echo "should-analyze=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          # Validate diff_max_chars
+          DIFF_MAX="${{ github.event.inputs.diff_max_chars || '20000' }}"
+          if [[ "$DIFF_MAX" -lt 1000 ]]; then
+            echo "::error::diff_max_chars must be >= 1000, got: $DIFF_MAX"
+            echo "should-analyze=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+          echo "should-analyze=true" >> $GITHUB_OUTPUT
+          echo "✓ All inputs validated successfully"
+
   analyze:
     name: 'Analyze PR'
+    needs: validate-inputs
+    if: needs.validate-inputs.outputs.should-analyze == 'true'
     runs-on: ubuntu-latest
+    environment:
+      name: ${{ github.event_name == 'pull_request_target' && 'ai-analysis-approval' || '' }}
     permissions:
       contents: read
       pull-requests: write
@@ -59,33 +150,53 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: 'scripts/ai-content-detection/package-lock.json'
 
       - name: Install GitHub Copilot CLI
         run: npm install -g @github/copilot
 
       - name: Install script dependencies
         working-directory: ./scripts/ai-content-detection
-        run: npm install
+        run: npm ci
 
       - name: Run AI detection analysis
         working-directory: ./scripts/ai-content-detection
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
-          PR_NUMBER:
-            ${{ github.event.inputs.pr_number ||
-            github.event.pull_request.number }}
-          GITHUB_REPOSITORY: ${{ github.repository }}
-          CONFIDENCE_THRESHOLD:
-            ${{ github.event.inputs.confidence_threshold || '80' }}
+          COPILOT_TOKEN: ${{ env.COPILOT_TOKEN }}
+          PR_NUMBER: ${{ needs.validate-inputs.outputs.pr-number }}
+          CONFIDENCE_THRESHOLD: ${{ needs.validate-inputs.outputs.confidence-threshold }}
           PR_LABEL: ${{ github.event.inputs.pr_label || 'ai-generated' }}
           SKIP_USERS: ${{ github.event.inputs.skip_users || '' }}
-          FAIL_ON_DETECTION:
-            ${{ (github.event_name == 'workflow_dispatch' &&
-            github.event.inputs.fail_on_detection == true) && 'true' || 'false'
-            }}
-          DRY_RUN:
-            ${{ (github.event_name == 'workflow_dispatch' &&
-            github.event.inputs.dry_run == true) && 'true' || 'true' }}
+          FAIL_ON_DETECTION: ${{ needs.validate-inputs.outputs.fail-on-detection }}
+          DRY_RUN: ${{ needs.validate-inputs.outputs.dry-run }}
           CUSTOM_PROMPT: ${{ github.event.inputs.custom_prompt || '' }}
           DIFF_MAX_CHARS: ${{ github.event.inputs.diff_max_chars || '20000' }}
         run: node analyze.js
+
+  report-results:
+    name: 'Report Results'
+    needs: [validate-inputs, analyze]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add job summary
+        run: |
+          cat >> $GITHUB_STEP_SUMMARY <<'EOF'
+          ## AI Content Detection Results
+
+          | Item | Value |
+          |------|-------|
+          | PR Number | #${{ needs.validate-inputs.outputs.pr-number }} |
+          | Analysis Status | ${{ needs.analyze.result }} |
+          | Dry Run Mode | ${{ needs.validate-inputs.outputs.dry-run }} |
+          | Confidence Threshold | ${{ needs.validate-inputs.outputs.confidence-threshold }}% |
+          | Fail on Detection | ${{ needs.validate-inputs.outputs.fail-on-detection }} |
+          EOF
+
+      - name: Check analysis result
+        if: needs.analyze.result == 'failure'
+        run: |
+          echo "::error::AI content analysis failed or detected AI-generated content"
+          exit 1
