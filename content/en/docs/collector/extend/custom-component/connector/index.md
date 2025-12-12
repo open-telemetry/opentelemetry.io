@@ -1,7 +1,10 @@
 ---
-title: Building a Connector
-aliases: [/docs/collector/build-connector/]
-weight: 30
+title: Build a connector
+linkTitle: Connectors
+aliases:
+  - /docs/collector/build-connector/
+  - /docs/collector/building/connector/
+weight: 200
 # prettier-ignore
 cSpell:ignore: debugexporter Errorf exampleconnector gomod gord Jaglowski mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber
 ---
@@ -458,14 +461,13 @@ func (c *connectorImp) ConsumeTraces(ctx context.Context, td ptrace.Traces) erro
 
 ### Summary of Using OpenTelemetry Collector Builder:
 
-You can use the
-[OpenTelemetry Collector Builder](/docs/collector/custom-collector/) to build
-your code and run it. The collector builder is a tool that enables you to build
-your own OpenTelemetry Collector binary. You can add or remove components
-(receivers, processors, connectors and exporters) to suit your needs.
+You can use the [OpenTelemetry Collector Builder](/docs/collector/extend/ocb/)
+to build your code and run it. The collector builder is a tool that enables you
+to build your own OpenTelemetry Collector binary. You can add or remove
+components (receivers, processors, connectors and exporters) to suit your needs.
 
 1.  Follow the OpenTelemetry Collector Builder
-    [installation instructions](/docs/collector/custom-collector/).
+    [installation instructions](/docs/collector/extend/ocb/).
 
 2.  Write a Configuration File:
 
@@ -742,7 +744,7 @@ in the OpenTelemetry Collector ecosystem.
 
 Additional resources on the OpenTelemetry Collector Builder:
 
-- [Building a custom collector](/docs/collector/custom-collector)
+- [Build a custom Collector](/docs/collector/extend/ocb/)
 - [OpenTelemetry Collector Builder README](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)
 - [Connected Observability Pipelines in the OpenTelemetry Collector by Dan Jaglowski](https://www.youtube.com/watch?v=uPpZ23iu6kI)
 - [Connector README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md)

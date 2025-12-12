@@ -1,6 +1,8 @@
 ---
-title: Building a custom collector
-weight: 29
+title: Build a custom collector
+description: Assemble your own distribution of the OpenTelemetry Collector
+weight: 200
+aliases: [/docs/collector/custom-collector/]
 # prettier-ignore
 cSpell:ignore: chipset darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
@@ -355,8 +357,8 @@ docker run -it --rm -p 4317:4317 -p 4318:4318 \
 
 ## Further reading:
 
-- [Building a Trace Receiver](/docs/collector/building/receiver)
-- [Building a Connector](/docs/collector/building/connector)
+- [Building a Trace Receiver](/docs/collector/extend/custom-component/receiver)
+- [Building a Connector](/docs/collector/extend/custom-component/connector)
 
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
