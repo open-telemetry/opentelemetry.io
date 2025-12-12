@@ -5,7 +5,7 @@ linkTitle: New Configurate Schema release candidate
 date: 2025-12-12
 author: >-
   [Alex Boten](https://github.com/codeboten)(Honeycomb)
-cSpell:ignore: configtls
+cSpell:ignore: configtls severitynumber
 ---
 
 The [latest release][rc3-release] of the OpenTelemetry Configuration Schema
