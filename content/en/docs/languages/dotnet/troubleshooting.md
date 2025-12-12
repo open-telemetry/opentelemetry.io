@@ -6,10 +6,7 @@ cSpell:ignore: eventsource OTEL
 ---
 
 All the components shipped from the OpenTelemetry .NET repositories
-([opentelemetry-dotnet](https://github.com/open-telemetry/opentelemetry-dotnet)
-and
-[opentelemetry-dotnet-contrib](https://github.com/open-telemetry/opentelemetry-dotnet-contrib))
-use
+([opentelemetry-dotnet][] and [opentelemetry-dotnet-contrib][]) use
 [EventSource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource)
 for internal logging. The name of the `EventSource` used by the OpenTelemetry
 SDK is "OpenTelemetry-Sdk". To know the `EventSource` names used by other
@@ -134,3 +131,7 @@ The log file might not be a proper text file format to achieve the goal of
 having minimal overhead and bounded resource usage: it might have trailing `NUL`
 characters if log text is less than configured size; once write operation
 reaches the end, it starts from the beginning and overwrites existing text.
+
+[opentelemetry-dotnet]: https://github.com/open-telemetry/opentelemetry-dotnet
+[opentelemetry-dotnet-contrib]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-contrib
