@@ -41,9 +41,14 @@ with the JMX metrics extension:
 
    ```sh
    java -javaagent:opentelemetry-javaagent.jar \
-     -Dotel.jmx.enabled=true \
+     -Dotel.jmx.target.system=tomcat \
      -jar myapp.jar
    ```
+
+JMX metrics collection is enabled by setting either (or both) of the following configuration options:
+- `otel.jmx.target.system` to select predefined metric sets to enable
+- `otel.jmx.config` to provide path to custom jmx rules
+When using the Java Agent, the JVM runtime metrics (cpu, memory, ...) are captured through the `runtime-telemetry` module and are enabled by default without further configuration needed.
 
 ## Configuration
 
