@@ -14,11 +14,8 @@ components, refer to the individual component documentation.
 
 While it is possible to view these logs using tools such as
 [PerfView](https://github.com/microsoft/perfview) or
-
-<!-- textlint-disable terminology -->[dotnet-trace](https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace)<!-- textlint-enable terminology -->,
-
-the SDK also ships with a self-diagnostics feature, which helps with
-troubleshooting.
+[`dotnet-trace`][dotnet-trace], the SDK also ships with a self-diagnostics
+feature, which helps with troubleshooting.
 
 ## Self-diagnostics
 
@@ -132,6 +129,7 @@ having minimal overhead and bounded resource usage: it might have trailing `NUL`
 characters if log text is less than configured size; once write operation
 reaches the end, it starts from the beginning and overwrites existing text.
 
+[dotnet-trace]: https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace
 [opentelemetry-dotnet]: https://github.com/open-telemetry/opentelemetry-dotnet
 [opentelemetry-dotnet-contrib]:
   https://github.com/open-telemetry/opentelemetry-dotnet-contrib
