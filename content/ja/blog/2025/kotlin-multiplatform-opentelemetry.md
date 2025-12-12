@@ -15,7 +15,7 @@ default_lang_commit: f51b643f44ad3768f3762ed1a9d07a03a0e4639f
 従来、KotlinはAndroidとJVMで最も人気がありましたが、KMPの登場により、異なるプラットフォーム間でコードを共有するために使用するユーザーが着実に増加しています。
 
 [Embrace](https://embrace.io/)は、KMPプロジェクトで使用できるOpenTelemetry仕様のKotlin実装を寄贈する[提案を公開](https://github.com/open-telemetry/community/issues/2975)しました。
-これにより、KMPおよびKotlinプロジェクトは、1つのAPIで多くの異なるプラットフォーム向けのテレメトリーをキャプチャできるようになります。
+これにより、KMPおよびKotlinプロジェクトは、1つのAPIで多くの異なるプラットフォーム向けのテレメトリーを取得できるようになります。
 このAPIは、可能な限りプラットフォームに依存しないOpenTelemetryの実装として設計されており、AndroidとiOSの重要なユースケースに対応するため、モバイルフレンドリーであることを目指しています。
 
 [opentelemetry-java](https://github.com/open-telemetry/opentelemetry-java)はJVM上で動作するKotlinアプリをサポートしていますが、これはJava相互運用に依存しており、Kotlinらしい慣用的なAPIだと「感じられません」。
