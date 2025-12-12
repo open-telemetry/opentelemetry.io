@@ -10203,6 +10203,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-06T09:40:03.285638037Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-01T09:26:25.392491996Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics/javaagent": {
     "StatusCode": 206,
     "LastSeen": "2025-12-10T09:43:36.354865585Z"
