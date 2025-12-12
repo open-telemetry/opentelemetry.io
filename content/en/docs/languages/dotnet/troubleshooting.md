@@ -5,7 +5,11 @@ weight: 100
 cSpell:ignore: eventsource OTEL
 ---
 
-All the components shipped from the OpenTelemetry .NET repositories use
+All the components shipped from the OpenTelemetry .NET repositories
+([opentelemetry-dotnet](https://github.com/open-telemetry/opentelemetry-dotnet)
+and
+[opentelemetry-dotnet-contrib](https://github.com/open-telemetry/opentelemetry-dotnet-contrib))
+use
 [EventSource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource)
 for internal logging. The name of the `EventSource` used by the OpenTelemetry
 SDK is "OpenTelemetry-Sdk". To know the `EventSource` names used by other
