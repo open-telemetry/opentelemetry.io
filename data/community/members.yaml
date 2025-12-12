@@ -147,6 +147,12 @@ maintainers:
       - specs-semconv-maintainers
     html_url: https://github.com/AlexanderWert
     avatar_url: https://avatars.githubusercontent.com/u/866830?v=4
+  - name: amy-super
+    teams:
+      - sig-contributor-experience-approvers
+      - sig-contributor-experience-maintainers
+    html_url: https://github.com/amy-super
+    avatar_url: https://avatars.githubusercontent.com/u/87499219?v=4
   - name: andrzej-stencel
     teams:
       - collector-contrib-approvers
@@ -1695,11 +1701,6 @@ approvers:
       - swift-triagers
     html_url: https://github.com/alolita
     avatar_url: https://avatars.githubusercontent.com/u/1942529?v=4
-  - name: amy-super
-    teams:
-      - sig-contributor-experience-approvers
-    html_url: https://github.com/amy-super
-    avatar_url: https://avatars.githubusercontent.com/u/87499219?v=4
   - name: ArthurSens
     teams:
       - collector-contrib-approvers
