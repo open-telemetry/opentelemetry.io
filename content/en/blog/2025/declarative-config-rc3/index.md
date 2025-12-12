@@ -55,7 +55,7 @@ for `OTEL_LOG_LEVEL`. In this release, it has been changed to support the same
 severity levels already [defined][severity-levels] in the logging specification. Earlier
 this month, an announcement about the deprecation of the Zipkin exporter was made.
 As a result, this new release of the schema has also removed the exporter. The
-validation around various proprties has also been improved.
+validation around various properties has also been improved.
 
 Lastly the schema now populates the `description` field for all properties, giving
 users some much needed context when editing configuration files.
