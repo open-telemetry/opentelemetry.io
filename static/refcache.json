@@ -1999,13 +1999,33 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-11T09:43:40.445930455Z"
   },
+  "https://docs.microsoft.com/dotnet/api/system.appcontext.basedirectory": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-11T16:09:41.51392-06:00"
+  },
   "https://docs.microsoft.com/dotnet/api/system.diagnostics": {
     "StatusCode": 206,
     "LastSeen": "2025-12-10T09:43:11.530905631Z"
   },
+  "https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventlevel": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-11T16:09:47.142003-06:00"
+  },
+  "https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventlevel#fields": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-11T16:09:45.409695-06:00"
+  },
+  "https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-11T16:09:33.790698-06:00"
+  },
   "https://docs.microsoft.com/dotnet/api/system.exception.tostring": {
     "StatusCode": 206,
     "LastSeen": "2025-12-06T09:42:21.079924453Z"
+  },
+  "https://docs.microsoft.com/dotnet/api/system.io.directory.getcurrentdirectory": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-11T16:09:40.144074-06:00"
   },
   "https://docs.microsoft.com/dotnet/api/system.net.http.httpclient": {
     "StatusCode": 206,
@@ -2014,6 +2034,10 @@
   "https://docs.microsoft.com/dotnet/api/system.net.httpwebrequest": {
     "StatusCode": 206,
     "LastSeen": "2025-12-05T09:42:47.321366733Z"
+  },
+  "https://docs.microsoft.com/dotnet/core/diagnostics/dotnet-trace": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-11T20:47:27.435168-06:00"
   },
   "https://docs.microsoft.com/dotnet/core/extensions/logger-message-generator": {
     "StatusCode": 206,
@@ -2070,6 +2094,10 @@
   "https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors": {
     "StatusCode": 206,
     "LastSeen": "2025-12-10T09:46:55.919619169Z"
+  },
+  "https://docs.microsoft.com/sysinternals/downloads/process-explorer": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-11T16:09:38.08879-06:00"
   },
   "https://docs.microsoft.com/windows/win32/api/netioapi/nf-netioapi-getifentry2": {
     "StatusCode": 206,
@@ -2779,6 +2807,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-12-11T09:43:50.519595199Z"
   },
+  "https://en.wikipedia.org/wiki/Kibibyte": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-11T16:09:43.482562-06:00"
+  },
   "https://en.wikipedia.org/wiki/Letter_case#Kebab_case": {
     "StatusCode": 200,
     "LastSeen": "2025-12-11T09:44:03.79009456Z"
@@ -2862,6 +2894,10 @@
   "https://en.wikipedia.org/wiki/Unconference": {
     "StatusCode": 200,
     "LastSeen": "2025-12-04T09:49:00.056063616Z"
+  },
+  "https://en.wikipedia.org/wiki/Working_directory": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-11T16:09:36.412458-06:00"
   },
   "https://en.wikipedia.org/wiki/Zip_bomb": {
     "StatusCode": 200,
@@ -6190,6 +6226,10 @@
   "https://github.com/microsoft/ApplicationInsights-Java": {
     "StatusCode": 206,
     "LastSeen": "2025-12-06T09:44:52.642011192Z"
+  },
+  "https://github.com/microsoft/perfview": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-11T16:09:35.162596-06:00"
   },
   "https://github.com/microsoft/semantic-kernel": {
     "StatusCode": 206,
