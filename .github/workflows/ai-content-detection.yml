@@ -39,12 +39,10 @@ on:
     types: [opened, synchronize, reopened]
 
 concurrency:
-  group: ai-detection-${{ github.event.pull_request.number || github.event.inputs.pr_number || github.run_id }}
+  group:
+    ai-detection-${{ github.event.pull_request.number ||
+    github.event.inputs.pr_number || github.run_id }}
   cancel-in-progress: true
-
-env:
-  COPILOT_TOKEN: ${{ secrets.COPILOT_TOKEN }}
-  GITHUB_REPOSITORY: ${{ github.repository }}
 
 jobs:
   validate-inputs:
@@ -130,8 +128,6 @@ jobs:
     needs: validate-inputs
     if: needs.validate-inputs.outputs.should-analyze == 'true'
     runs-on: ubuntu-latest
-    environment:
-      name: ${{ github.event_name == 'pull_request_target' && 'ai-analysis-approval' || '' }}
     permissions:
       contents: read
       pull-requests: write
@@ -164,12 +160,15 @@ jobs:
         working-directory: ./scripts/ai-content-detection
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
-          COPILOT_TOKEN: ${{ env.COPILOT_TOKEN }}
+          COPILOT_TOKEN: ${{ secrets.COPILOT_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
           PR_NUMBER: ${{ needs.validate-inputs.outputs.pr-number }}
-          CONFIDENCE_THRESHOLD: ${{ needs.validate-inputs.outputs.confidence-threshold }}
+          CONFIDENCE_THRESHOLD:
+            ${{ needs.validate-inputs.outputs.confidence-threshold }}
           PR_LABEL: ${{ github.event.inputs.pr_label || 'ai-generated' }}
           SKIP_USERS: ${{ github.event.inputs.skip_users || '' }}
-          FAIL_ON_DETECTION: ${{ needs.validate-inputs.outputs.fail-on-detection }}
+          FAIL_ON_DETECTION:
+            ${{ needs.validate-inputs.outputs.fail-on-detection }}
           DRY_RUN: ${{ needs.validate-inputs.outputs.dry-run }}
           CUSTOM_PROMPT: ${{ github.event.inputs.custom_prompt || '' }}
           DIFF_MAX_CHARS: ${{ github.event.inputs.diff_max_chars || '20000' }}
