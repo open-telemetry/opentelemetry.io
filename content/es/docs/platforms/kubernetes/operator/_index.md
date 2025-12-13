@@ -13,7 +13,7 @@ redirects:
   - { from: /docs/operator/*, to: ':splat' }
   - { from: /docs/k8s-operator/*, to: ':splat' }
   - { from: /docs/platforms/kubernetes-operator/*, to: ':splat' }
-default_lang_commit: 5273b533bd6dcf1aa1a4b8f57295320dc001a4a4
+default_lang_commit: 5273b533bd6dcf1aa1a4b8f57295320dc001a4a4 # patched
 drifted_from_default: true
 ---
 
@@ -89,7 +89,7 @@ Cuando el operator se instala usando
 [Helm charts](/docs/platforms/kubernetes/helm/), se usa la imagen
 [`opentelemetry-collector-k8s`](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s).
 Si necesitas un componente que no se encuentra en estas versiones, es posible
-que debas [construir tu propio collector](/docs/collector/custom-collector/).
+que debas [construir tu propio collector](/docs/collector/extend/ocb/).
 
 {{% /alert %}}
 
