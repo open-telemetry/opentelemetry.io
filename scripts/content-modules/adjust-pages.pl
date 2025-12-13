@@ -124,10 +124,34 @@ sub applyPatchOrPrintMsgIf($$$) {
   return 0;
 }
 
-# =================================================================================
-# KEEP THE FOLLOWING AS A TEMPLATE; copy it and modify it as needed.
-# =================================================================================
-sub patchSpec_because_of_SemConv_DockerAPIVersions_AsTemplate() {
+# Keep the following as a template:
+# sub patchSpec_because_of_SemConv_DockerAPIVersions() {
+#   return unless
+#     # Restrict the patch to the proper spec, and section or file:
+#     $ARGV =~ m|^tmp/semconv/docs/|
+#     &&
+#     # Call helper function that will cause the function to return early if the
+#     # current version of the named spec (arg 2) is greater than the target
+#     # version (arg 3). The first argument is a unique id that will be printed if
+#     # the patch is outdated. Otherwise, if the patch is still relevant we fall
+#     # through to the body of this patch function.
+#     applyPatchOrPrintMsgIf('2025-11-21-docker-api-versions', 'semconv', '1.39.0-dev');
+
+#   # Give infor about the patch:
+#   #
+#   # For the problematic links, see:
+#   # https://github.com/open-telemetry/semantic-conventions/issues/3103
+#   #
+#   # Replace older Docker API versions with the latest one like in:
+#   # https://github.com/open-telemetry/semantic-conventions/pull/3093
+
+#   # This is the actual regex-based patch code:
+#   s{
+#     (https://docs.docker.com/reference/api/engine/version)/v1.(43|51)/(\#tag/)
+#   }{$1/v1.52/$3}gx;
+# }
+
+sub patchSpec_because_of_SemConv_DockerAPIVersions() {
   return unless
     # Restrict the patch to the proper spec, and section or file:
     $ARGV =~ m|^tmp/semconv/docs/|
@@ -157,29 +181,6 @@ sub patchSpec_because_of_SemConv_DockerAPIVersions_AsTemplate() {
   }{$1/v1.52/$3}gx;
 }
 
-sub patchSpec_because_of_SemConv_DockerAPIVersions() {
-  return unless
-    # Restrict the patch to the proper spec, and section or file:
-    $ARGV =~ m|^tmp/semconv/docs/|
-    &&
-    # Call helper function that will cause the function to return early if the
-    # patch should not be applied. See patch template above for details.
-    applyPatchOrPrintMsgIf('2025-11-21-docker-api-versions', 'semconv', '1.38.0');
-
-  # Give infor about the patch:
-  #
-  # For the problematic links, see:
-  # https://github.com/open-telemetry/semantic-conventions/issues/3103
-  #
-  # Replace older Docker API versions with the latest one like in:
-  # https://github.com/open-telemetry/semantic-conventions/pull/3093
-
-  # This is the actual regex-based patch code:
-  s{
-    (https://docs.docker.com/reference/api/engine/version)/v1.(43|51)/(\#tag/)
-  }{$1/v1.52/$3}gx;
-}
-
 sub patchSpec_because_of_SemConv_DatabaseRenamedToDb() {
   return unless
     # Restrict the patch to the proper spec, and section or file:
@@ -190,7 +191,20 @@ sub patchSpec_because_of_SemConv_DatabaseRenamedToDb() {
   # Give infor about the patch, see:
   # https://github.com/open-telemetry/opentelemetry.io/pull/8311#issue-3577941378
 
+  # Match both localized paths and GitHub URLs:
   s|(/semconv)/database(/database-)|$1/db$2|g;
+}
+
+sub patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration() {
+  return unless
+    $ARGV =~ m|^tmp/otel/specification/|
+      && applyPatchOrPrintMsgIf('2025-12-05-metric-rpc-server-duration-renamed-to-rpc-server-call-duration', 'semconv', '1.38.0-');
+
+  # Give infor about the patch, see:
+  # https://github.com/open-telemetry/opentelemetry-specification/pull/4778
+
+  # Replace the old metric anchor with the new one
+  s|#metric-rpcserverduration|#metric-rpcservercallduration|g;
 }
 
 sub getVersFromSubmodule() {
@@ -317,6 +331,7 @@ while(<>) {
   }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
 
   patchSpec_because_of_SemConv_DatabaseRenamedToDb();
+  patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 

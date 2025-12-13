@@ -1,7 +1,7 @@
 ---
 title: 支持的库
 linkTitle: 支持的库
-default_lang_commit: 1fe3f355b66260860b47b6cd79c768fd27402334
+default_lang_commit: 1fe3f355b66260860b47b6cd79c768fd27402334 # patched
 drifted_from_default: true
 weight: 11
 # prettier-ignore
@@ -173,7 +173,7 @@ Java 代理开箱即用地对许多库、框架和应用服务器进行自动插
 
 **[6]** 数据库客户端指标适用于选择加入[语义约定稳定性](/docs/specs/semconv/non-normative/db-migration/)的用户。
 
-[Elasticsearch Client Spans]: /docs/specs/semconv/database/elasticsearch/
+[Elasticsearch Client Spans]: /docs/specs/semconv/db/elasticsearch/
 [HTTP Server Spans]: /docs/specs/semconv/http/http-spans/#http-server
 [HTTP Client Spans]: /docs/specs/semconv/http/http-spans/#http-client-span
 [HTTP Server Metrics]: /docs/specs/semconv/http/http-metrics/#http-server
@@ -183,9 +183,9 @@ Java 代理开箱即用地对许多库、框架和应用服务器进行自动插
 [RPC Server Metrics]: /docs/specs/semconv/rpc/rpc-metrics/#rpc-server
 [RPC Client Metrics]: /docs/specs/semconv/rpc/rpc-metrics/#rpc-client
 [Messaging Spans]: /docs/specs/semconv/messaging/messaging-spans/
-[Database Client Spans]: /docs/specs/semconv/database/database-spans/
-[Database Client Metrics]: /docs/specs/semconv/database/database-metrics/
-[Database Pool Metrics]: /docs/specs/semconv/database/database-metrics/
+[Database Client Spans]: /docs/specs/semconv/db/database-spans/
+[Database Client Metrics]: /docs/specs/semconv/db/database-metrics/
+[Database Pool Metrics]: /docs/specs/semconv/db/database-metrics/
 [JVM Runtime Metrics]: /docs/specs/semconv/runtime/jvm-metrics/
 [System Metrics]: /docs/specs/semconv/system/system-metrics/
 [GraphQL Server Spans]: /docs/specs/semconv/graphql/graphql-spans/
