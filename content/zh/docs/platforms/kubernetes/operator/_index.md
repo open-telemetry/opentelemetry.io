@@ -10,7 +10,7 @@ redirects:
   - { from: /docs/operator/*, to: ':splat' }
   - { from: /docs/k8s-operator/*, to: ':splat' }
   - { from: /docs/platforms/kubernetes-operator/*, to: ':splat' }
-default_lang_commit: a18833df3c17db379911a796f1b0a549c4d8f10f
+default_lang_commit: a18833df3c17db379911a796f1b0a549c4d8f10f # patched
 drifted_from_default: true
 ---
 
@@ -80,7 +80,7 @@ EOF
 当通过 [Helm Chart](../helm/) 安装 Operator 时，使用的是
 [`opentelemetry-collector-k8s` 镜像](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s)。
 
-如果你需要使用这些版本中未包含的组件，可能需要[构建你自己的 Collector](/docs/collector/custom-collector/)。
+如果你需要使用这些版本中未包含的组件，可能需要[构建你自己的 Collector](/docs/collector/extend/ocb/)。
 
 {{% /alert %}}
 

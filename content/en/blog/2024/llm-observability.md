@@ -116,7 +116,7 @@ Before we begin, make sure you have the following running in your environment:
 
 ### Setting Up the OpenTelemetry Collector
 
-First, [install the OpenTelemetry Collector](/docs/collector/installation/).
+First, [install the OpenTelemetry Collector](/docs/collector/install/).
 
 ### Configuring the Collector
 
