@@ -1,0 +1,75 @@
+name: i18n drift detection cronjob
+
+on:
+  schedule:
+    - cron: '0 0,12 * * *'
+  workflow_dispatch:
+    inputs:
+      drift_threshold:
+        type: number
+        description: 'Threshold for drift count to open/update an issue'
+        required: false
+        default: 20
+
+jobs:
+  check:
+    name: i18n Drift Detection ${{ matrix.localization }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        localization: [pt, es, fr, ja, zh]
+      max-parallel: 3
+      fail-fast: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # all
+      - name: Run check-i18n
+        id: getdrifted
+        run: |
+          OUTPUT=$(scripts/check-i18n.sh -- content/${{ matrix.localization }})
+          echo $OUTPUT
+          DRIFTED_COUNT=$(echo "$OUTPUT" | grep "DRIFTED files:" | sed -E 's/.*DRIFTED files: ([0-9]+) out.*/\1/')
+          echo "drifted_count=$DRIFTED_COUNT" >> $GITHUB_OUTPUT
+      - name: Open Issue if drift detected
+        if:
+          ${{ fromJson(steps.getdrifted.outputs.drifted_count) >=
+          inputs.drift_threshold }}
+        env:
+          GH_TOKEN: ${{ secrets.OPENTELEMETRYBOT_GITHUB_TOKEN }}
+        run: |
+          drift_count=${{ steps.getdrifted.outputs.drifted_count }}
+          localization=${{ matrix.localization }}
+          drift_label="lang:${localization}"
+          ci_label="check:i18n"
+
+          issues=$(gh issue list --label "$drift_label,$ci_label" --state open --json number,author)
+          drift_issue_number=$(echo "$issues" | jq -r '.[] | select(.author.login=="opentelemetrybot") | .number' | head -n1)
+          echo $issues
+          OUTPUT=$(scripts/check-i18n.sh -- content/$localization)
+          message=$(cat <<EOF
+            Drift detected for **${localization}** localization.
+            Drifted pages count: ${drift_count}.
+
+            <details>
+            <summary>Please review the i18n drift</summary>
+
+            \`\`\`
+            $OUTPUT
+            \`\`\`
+
+            </details>
+
+            cc: @opentelemetry/docs-${localization}-approvers
+            _This issue was automatically created by the **i18n drift detection cronjob**
+          EOF
+          )
+
+          if [ -z "$drift_issue_number" ]
+          then
+            echo "Creating new issue"
+            gh issue create --title "[$localization/i18n] Drifted pages report" --body "$message" --label "$drift_label,$ci_label"
+          else
+            echo "Updating existing issue"
+            gh issue comment "$drift_issue_number" --body "$message"
+          fi
