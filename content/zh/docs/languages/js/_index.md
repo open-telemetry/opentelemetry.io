@@ -1,10 +1,13 @@
 ---
 title: JavaScript
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/JS_SDK.svg"
+  <img width="35" class="img-initial otel-icon" src="/img/logos/32x32/JS_SDK.svg"
   alt="JavaScript"> OpenTelemetry 在 JavaScript 中的特定语言实现（适用于 Node.js 和浏览器）。
 aliases: [/js, /js/metrics, /js/tracing]
-default_lang_commit: 28e17fd89ff3783043fe0537c1adc53266476344
+default_lang_commit: 3d401ad8e2e5d528c107d83d202b4c6f62c020ef
+redirects:
+  - { from: /js/*, to: ':splat' }
+  - { from: /docs/js/*, to: ':splat' }
 weight: 20
 ---
 
