@@ -1853,7 +1853,7 @@
   },
   "https://docs.google.com/forms/d/e/1FAIpQLSeSA09xDIv0uyb6vrP8xBbLjm8NsgihrG8GHxacbigF17sNDw/viewform?usp=dialog": {
     "StatusCode": 410,
-    "LastSeen": "2025-12-13T09:44:30.797917907Z"
+    "LastSeen": "2025-12-14T09:45:02.158006284Z"
   },
   "https://docs.google.com/presentation/d/1YaJvAWnNcUJd1RNsqvEYCcqvJUoj0TDd": {
     "StatusCode": 200,
@@ -19087,10 +19087,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-12T09:48:44.342519133Z"
   },
-  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.22.0-alpha/opentelemetry-instrumentation-bom-alpha-2.22.0-alpha.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2025-12-09T09:42:31.942857646Z"
-  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.23.0-alpha/opentelemetry-instrumentation-bom-alpha-2.23.0-alpha.pom": {
     "StatusCode": 206,
     "LastSeen": "2025-12-13T01:55:43.299604152Z"
@@ -19106,10 +19102,6 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.21.0/opentelemetry-instrumentation-bom-2.21.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2025-12-12T09:48:43.117878402Z"
-  },
-  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.22.0/opentelemetry-instrumentation-bom-2.22.0.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2025-12-09T09:42:21.48563133Z"
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.23.0/opentelemetry-instrumentation-bom-2.23.0.pom": {
     "StatusCode": 206,
@@ -22268,8 +22260,8 @@
     "LastSeen": "2025-12-13T09:39:50.786005272Z"
   },
   "https://www.youtube.com/watch?v=D71fK2MFreI": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-13T09:44:48.507019793Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-14T09:45:09.517813126Z"
   },
   "https://www.youtube.com/watch?v=LUsfZFRM4yo": {
     "StatusCode": 200,
@@ -22280,36 +22272,36 @@
     "LastSeen": "2025-12-10T09:43:23.48409495Z"
   },
   "https://www.youtube.com/watch?v=TUiVX-44S9s": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-13T09:39:31.436098704Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-14T09:39:53.559859886Z"
   },
   "https://www.youtube.com/watch?v=Uwq4EPaMJFM": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-13T09:44:34.573374146Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-14T09:44:57.483308994Z"
   },
   "https://www.youtube.com/watch?v=VAgT7CY572U": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-13T09:41:51.648343243Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-14T09:42:18.751148509Z"
   },
   "https://www.youtube.com/watch?v=WhRrwSHDBFs": {
     "StatusCode": 200,
     "LastSeen": "2025-12-09T09:42:20.751172672Z"
   },
   "https://www.youtube.com/watch?v=aDysORX1zIs": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-13T09:44:40.413849301Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-14T09:45:06.191246343Z"
   },
   "https://www.youtube.com/watch?v=g8rtqqNTL9Q": {
     "StatusCode": 200,
     "LastSeen": "2025-12-10T09:43:11.66111172Z"
   },
   "https://www.youtube.com/watch?v=iPGd9_aYu-A": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-13T09:44:44.617484905Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-14T09:45:08.979457262Z"
   },
   "https://www.youtube.com/watch?v=l4PeclHKl7I": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-13T09:44:51.584205652Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-14T09:45:12.151042942Z"
   },
   "https://www.youtube.com/watch?v=l8xiNOCIdLY": {
     "StatusCode": 200,
@@ -22320,8 +22312,8 @@
     "LastSeen": "2025-12-10T09:43:17.639421102Z"
   },
   "https://www.youtube.com/watch?v=tZJd6W-CIcU": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-13T09:44:36.14244659Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-14T09:45:03.439342951Z"
   },
   "https://www.youtube.com/watch?v=u6svjtGpXO4": {
     "StatusCode": 200,
@@ -22332,12 +22324,12 @@
     "LastSeen": "2025-12-10T09:43:07.772939209Z"
   },
   "https://www.youtube.com/watch?v=uVs0oUV72CE": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-13T09:44:32.589981934Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-14T09:44:59.994589843Z"
   },
   "https://www.youtube.com/watch?v=ykq1F_3PmJw": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-13T09:44:29.087416877Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-14T09:44:57.127742478Z"
   },
   "https://yaml.org/spec/1.2.2/": {
     "StatusCode": 206,
@@ -22348,8 +22340,8 @@
     "LastSeen": "2025-12-08T09:48:06.435497774Z"
   },
   "https://youtu.be/5iM8n3uCo_U?si=PJ6tFYcYED3lhAcK": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-13T09:41:48.872630308Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-14T09:42:14.319602712Z"
   },
   "https://youtu.be/HY3LZOQqdig": {
     "StatusCode": 200,
