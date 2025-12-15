@@ -1,0 +1,615 @@
+// Landing page components for OpenTelemetry homepage redesign
+// Inspired by Kubernetes and Prometheus landing page patterns
+
+// =============================================================================
+// HERO TAGLINE - Tagline for compact hero
+// =============================================================================
+
+.hero-tagline {
+  font-size: 2rem !important;
+  line-height: 1.3;
+  max-width: 800px;
+  margin: 2rem auto 0;
+
+  @include media-breakpoint-up(md) {
+    font-size: 2.5rem !important;
+    margin-top: 3rem;
+  }
+}
+
+// =============================================================================
+// HERO SEARCH - Search bar section below compact hero
+// =============================================================================
+
+.hero-search-section {
+  padding: 2rem 0 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.hero-search {
+  max-width: 70%;
+  margin: 0 auto;
+  text-align: center;
+
+  @include media-breakpoint-down(md) {
+    max-width: 90%;
+  }
+
+  &__input-wrapper {
+    margin-bottom: 0.125rem;
+  }
+
+  &__search {
+    width: 100%;
+
+    .td-search__input {
+      width: 100%;
+      padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+      font-size: $font-size-base;
+      border-radius: 2rem;
+      border: 2px solid $border-color;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+      &:focus {
+        border-color: $primary;
+        box-shadow: 0 0 0 3px rgba($primary, 0.15);
+      }
+    }
+
+    .td-search__icon {
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__extra {
+    font-size: $font-size-sm;
+    color: $text-muted;
+
+    a {
+      color: $primary;
+    }
+  }
+}
+
+// =============================================================================
+// INTRO SECTION - What is OpenTelemetry description
+// =============================================================================
+
+.intro-section {
+  padding: 2rem 0 1.5rem;
+}
+
+.intro-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .intro-text {
+    p {
+      font-size: 1.25rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+
+      @include media-breakpoint-up(md) {
+        font-size: 1.375rem;
+      }
+
+      &:first-child {
+        font-size: 1.375rem;
+
+        @include media-breakpoint-up(md) {
+          font-size: 1.5rem;
+        }
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .intro-image {
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .placeholder {
+      background: $light;
+      border: 2px dashed $border-color;
+      border-radius: 8px;
+      padding: 3rem;
+      color: $text-muted;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      p {
+        margin: 0;
+        font-size: $font-size-sm;
+      }
+    }
+  }
+}
+
+// =============================================================================
+// MAIN FEATURES - Three key features with images (like K8s)
+// =============================================================================
+
+.main-features-section {
+  padding: 4rem 0;
+}
+
+.main-features {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.main-feature {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &--image-right {
+    @include media-breakpoint-up(lg) {
+      .main-feature__image {
+        order: 2;
+      }
+      .main-feature__content {
+        order: 1;
+      }
+    }
+  }
+
+  &__image {
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      max-height: 300px;
+      object-fit: contain;
+    }
+  }
+
+  &__placeholder {
+    background: $light;
+    border: 2px dashed $border-color;
+    border-radius: 8px;
+    padding: 4rem 2rem;
+    color: $text-muted;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+  }
+
+  &__title {
+    font-size: $h3-font-size;
+    margin-bottom: 1rem;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__description {
+    font-size: $font-size-lg;
+    line-height: 1.6;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// =============================================================================
+// HERO HIGHLIGHTS - Brief feature cards below search (like K8s)
+// =============================================================================
+
+.hero-highlights-section {
+  padding: 3rem 0;
+}
+
+.hero-highlights {
+  display: grid;
+  gap: 2rem;
+
+  @include media-breakpoint-up(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &__item {
+    text-align: center;
+    padding: 1rem;
+
+    @include media-breakpoint-up(md) {
+      text-align: left;
+    }
+  }
+
+  &__title {
+    font-size: $h4-font-size;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.5rem;
+  }
+
+  &__description {
+    font-size: $font-size-base;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+}
+
+// =============================================================================
+// SIGNALS SHOWCASE - Five observability signals
+// =============================================================================
+
+.signals-showcase-section {
+  background: $primary;
+  color: $white;
+  padding: 3rem 0;
+}
+
+.signals-showcase {
+  &__title {
+    text-align: center;
+    font-size: $h2-font-size;
+    margin-bottom: 2rem;
+    color: $white;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+
+    @include media-breakpoint-down(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.signal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  background: rgba($white, 0.1);
+  border-radius: 8px;
+  text-decoration: none;
+  color: $white;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba($white, 0.2);
+    transform: translateY(-2px);
+    color: $white;
+    text-decoration: none;
+  }
+
+  &__icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.9;
+  }
+
+  &__name {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+  }
+
+  &__description {
+    font-size: $font-size-sm;
+    opacity: 0.8;
+    margin-top: 0.5rem;
+  }
+}
+
+// =============================================================================
+// OTEL FEATURES GRID - "Why OpenTelemetry?" section
+// =============================================================================
+
+.otel-features-section {
+  padding: 4rem 0;
+}
+
+.otel-features {
+  display: grid;
+  gap: 2rem;
+  margin-top: 2rem;
+
+  // Default: 3 columns on desktop
+  &--cols-3 {
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include media-breakpoint-only(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  // Alternative: 2 columns
+  &--cols-2 {
+    @include media-breakpoint-up(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__title {
+    font-size: $h2-font-size;
+    margin-bottom: 0.5rem;
+  }
+
+  &__subtitle {
+    font-size: $lead-font-size;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+  }
+}
+
+.otel-feature {
+  text-align: center;
+  padding: 1.5rem;
+
+  &__icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: $primary;
+
+    svg {
+      width: 64px;
+      height: 64px;
+      fill: currentColor;
+    }
+
+    i {
+      font-size: 3rem;
+    }
+  }
+
+  &__title {
+    font-size: $h4-font-size;
+    margin-bottom: 0.75rem;
+    text-align: center;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__description {
+    font-size: $font-size-base;
+    line-height: 1.6;
+    opacity: 0.9;
+    text-align: left;
+  }
+}
+
+// =============================================================================
+// ECOSYSTEM STATS - Key numbers display
+// =============================================================================
+
+.ecosystem-stats-section {
+  padding: 3rem 0;
+}
+
+.ecosystem-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+
+  @include media-breakpoint-down(md) {
+    gap: 2rem;
+  }
+}
+
+.ecosystem-stat {
+  text-align: center;
+  min-width: 150px;
+
+  &__number {
+    font-size: 3.5rem;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    color: $primary;
+
+    @include media-breakpoint-down(md) {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__label {
+    font-size: $font-size-lg;
+    margin-top: 0.5rem;
+    opacity: 0.8;
+  }
+}
+
+// =============================================================================
+// ARCHITECTURE DIAGRAM - Visual data flow
+// =============================================================================
+
+.architecture-diagram {
+  padding: 2rem 0;
+  text-align: center;
+
+  &__container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  &__title {
+    font-size: $h3-font-size;
+    margin-bottom: 1.5rem;
+  }
+
+  // For inline SVG diagrams
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  // For Mermaid diagrams
+  .mermaid {
+    background: transparent;
+  }
+}
+
+// =============================================================================
+// ADOPTERS SHOWCASE - Company logo grid
+// =============================================================================
+
+.adopters-showcase-section {
+  padding: 4rem 0;
+}
+
+.adopters-showcase {
+  &__title {
+    text-align: center;
+    font-size: $h2-font-size;
+    margin-bottom: 2rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
+    align-items: center;
+    justify-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    img {
+      max-width: 120px;
+      max-height: 50px;
+      object-fit: contain;
+      opacity: 0.9;
+      transition: all 0.2s ease;
+    }
+
+    &:hover img {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+  }
+
+  // Text-only adopter display (when logos aren't available)
+  &__item--text {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $text-muted;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__cta {
+    text-align: center;
+    margin-top: 2rem;
+  }
+}
+
+// =============================================================================
+// DARK MODE ADJUSTMENTS
+// =============================================================================
+
+@include color-mode(dark) {
+  .hero-search-section {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .hero-search__search .td-search__input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: $white;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    &:focus {
+      border-color: lighten($primary, 15%);
+      box-shadow: 0 0 0 3px rgba($primary, 0.25);
+    }
+  }
+
+  .otel-feature__icon {
+    color: lighten($primary, 15%);
+  }
+
+  .ecosystem-stat__number {
+    color: lighten($primary, 15%);
+  }
+
+  .adopters-showcase__item img {
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .adopters-showcase__item--text {
+    color: rgba($white, 0.7);
+
+    &:hover {
+      color: lighten($primary, 15%);
+    }
+  }
+}
+

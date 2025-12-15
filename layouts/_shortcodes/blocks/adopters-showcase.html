@@ -1,0 +1,40 @@
+{{- $color := .Get "color" | default "light" -}}
+{{- $title := .Get "title" | default "Trusted by" -}}
+{{- $limit := .Get "limit" | default 12 -}}
+{{- $showCta := .Get "showCta" | default true -}}
+{{- $ctaText := .Get "ctaText" | default "View all adopters" -}}
+{{- $ctaUrl := .Get "ctaUrl" | default "/ecosystem/adopters/" -}}
+
+{{- $featuredAdopters := site.Data.ecosystem.featured_adopters -}}
+{{- $regularAdopters := site.Data.ecosystem.adopters -}}
+{{- $adopters := $featuredAdopters | default $regularAdopters -}}
+{{- $sortedAdopters := sort $adopters "name" -}}
+
+<div><a id="td-block-adopters-{{ .Ordinal }}" class="td-offset-anchor"></a></div>
+<section class="row td-box td-box--{{ $color }} adopters-showcase-section">
+  <div class="col-12">
+    <div class="container">
+      {{ with $title }}
+      <h2 class="adopters-showcase__title">{{ . }}</h2>
+      {{ end }}
+      <div class="adopters-showcase__grid">
+        {{- range first (int $limit) $sortedAdopters -}}
+        {{- $linkUrl := .reference | default .url -}}
+        <a href="{{ $linkUrl }}" class="adopters-showcase__item{{ if not .logo }} adopters-showcase__item--text{{ end }}" target="_blank" rel="noopener" title="{{ .name }}{{ if .reference }} - {{ .referenceTitle }}{{ end }}">
+          {{- if .logo -}}
+          <img src="{{ .logo }}" alt="{{ .name }} logo" loading="lazy">
+          {{- else -}}
+          {{ .name }}
+          {{- end -}}
+        </a>
+        {{- end -}}
+      </div>
+      {{- if $showCta }}
+      <div class="adopters-showcase__cta">
+        <a href="{{ $ctaUrl }}" class="btn btn-primary">{{ $ctaText }} →</a>
+      </div>
+      {{- end }}
+    </div>
+  </div>
+</section>
+

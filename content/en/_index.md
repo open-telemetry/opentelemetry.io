@@ -16,75 +16,134 @@ show_banner: true
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{< blocks/cover image_anchor="top" height="max" color="primary" >}}
+{{< blocks/cover image_anchor="top" height="min" color="primary" >}}
 
 <!-- prettier-ignore -->
-![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
-{.otel-logo}
+High-quality, ubiquitous, and portable telemetry<br>to enable effective observability
+{.hero-tagline}
 
-<!-- prettier-ignore -->
-{{% param description %}}
-{.display-6}
-
-<div class="l-primary-buttons mt-5">
+<div class="l-primary-buttons mt-4">
 
 - [Learn more](docs/what-is-opentelemetry/)
 - [Try the demo](docs/demo/)
 
 </div>
 
-<div class="h3 mt-4">
-<a class="text-secondary" href="docs/getting-started/">Get started</a> based on your role
-</div>
-<div class="l-get-started-buttons">
-
-- [Dev](docs/getting-started/dev/)
-- [Ops](docs/getting-started/ops/)
-
-</div>
 {{< /blocks/cover >}}
 
-{{% blocks/lead color="white" %}}
+{{< blocks/hero-search color="white" placeholder="Search docs or ask AI..." >}}
+Try: "How do I instrument a Python app?" or "What is the Collector?"
+{{< /blocks/hero-search >}}
 
-OpenTelemetry is a collection of APIs, SDKs, and tools. Use it to instrument,
-generate, collect, and export telemetry data (metrics, logs, and traces) to help
-you analyze your software's performance and behavior.
+{{< blocks/intro-section color="white" >}}
 
-> OpenTelemetry is [generally available](/status/) across
-> [several languages](docs/languages/) and is suitable for production use.
+<div class="intro-text">
 
-{{% /blocks/lead %}}
+**[OpenTelemetry](/docs/what-is-opentelemetry/)**, also known as OTel, is an open source observability framework for cloud-native software. It provides a single set of APIs, libraries, agents, and collector services to capture distributed traces and metrics from your application.
 
-{{% blocks/section color="dark" type="row" %}}
+OpenTelemetry builds upon years of experience from the OpenTracing and OpenCensus projects, combined with best-of-breed ideas and practices from the community.
 
-{{% blocks/feature icon="fas fa-chart-line" title="Traces, Metrics, Logs" url="docs/concepts/observability-primer/" %}}
+</div>
 
-Create and collect telemetry from your services and software, then forward it to
-a variety of analysis tools.
+<div class="intro-image">
+  <div class="placeholder">
+    <i class="fas fa-chart-network fa-4x"></i>
+    <p>Architecture diagram placeholder</p>
+  </div>
+</div>
 
-{{% /blocks/feature %}}
+{{< /blocks/intro-section >}}
 
-{{% blocks/feature icon="fas fa-magic" title="Drop-in Instrumentation & Integrations" %}}
+{{< blocks/main-features color="light" >}}
 
-OpenTelemetry [integrates] with many popular libraries and frameworks, and
-supports _code-based and zero-code_ [instrumentation].
+  {{< blocks/main-feature 
+      title="Vendor-neutral instrumentation" 
+      imagePosition="left" >}}
+  Instrument your code once using OpenTelemetry APIs and SDKs. Export telemetry data to any observability backend—Jaeger, Prometheus, commercial vendors, or your own solution. Switch backends without touching your application code.
+  {{< /blocks/main-feature >}}
 
-[instrumentation]: /docs/concepts/instrumentation/
-[integrates]: /ecosystem/integrations/
+  {{< blocks/main-feature 
+      title="Unified observability signals" 
+      imagePosition="right" >}}
+  Correlate traces, metrics, and logs with shared context that flows through your entire request path. Get a complete picture of your application's behavior across all components and services.
+  {{< /blocks/main-feature >}}
 
-{{% /blocks/feature %}}
+  {{< blocks/main-feature 
+      title="Run OTel anywhere" 
+      imagePosition="left" >}}
+  OpenTelemetry is 100% open source and vendor-neutral. Deploy on-premises, in hybrid environments, or across multiple clouds with full flexibility and zero lock-in. Move workloads wherever they matter to you.
+  {{< /blocks/main-feature >}}
 
-{{% blocks/feature icon="fab fa-github" title="Open Source, Vendor Neutral" %}}
+{{< /blocks/main-features >}}
 
-100% free and open source, OpenTelemetry is [adopted] and supported by [industry
-leaders] in the observability space.
+{{< blocks/signals-showcase title="Observability Signals" >}}
+  {{< blocks/signal name="Traces" icon="project-diagram" url="/docs/concepts/signals/traces/" >}}
+  Distributed traces
+  {{< /blocks/signal >}}
+  {{< blocks/signal name="Metrics" icon="chart-bar" url="/docs/concepts/signals/metrics/" >}}
+  Measurements over time
+  {{< /blocks/signal >}}
+  {{< blocks/signal name="Logs" icon="file-alt" url="/docs/concepts/signals/logs/" >}}
+  Timestamped records
+  {{< /blocks/signal >}}
+  {{< blocks/signal name="Baggage" icon="suitcase" url="/docs/concepts/signals/baggage/" >}}
+  Contextual metadata
+  {{< /blocks/signal >}}
+{{< /blocks/signals-showcase >}}
 
-[adopted]: /ecosystem/adopters/
-[industry leaders]: /ecosystem/vendors/
+{{< blocks/otel-features color="white" title="OpenTelemetry Features" columns="2" >}}
 
-{{% /blocks/feature %}}
+  {{< blocks/otel-feature icon="magic" title="Auto-instrumentation" url="/docs/concepts/instrumentation/zero-code/" >}}
+  Get started in minutes with zero-code instrumentation for popular frameworks
+  and libraries. Automatic instrumentation agents capture traces, metrics, and
+  logs without modifying your source code.
+  {{< /blocks/otel-feature >}}
 
-{{% /blocks/section %}}
+  {{< blocks/otel-feature icon="timeline" title="Collector pipeline" url="/docs/collector/" >}}
+  Process, filter, and route telemetry data with the OpenTelemetry Collector.
+  Deploy as an agent or gateway to receive, process, and export telemetry at
+  scale with 200+ components.
+  {{< /blocks/otel-feature >}}
+
+  {{< blocks/otel-feature icon="link" title="Context propagation" url="/docs/concepts/context-propagation/" >}}
+  Automatically correlate traces across service boundaries. Distributed context
+  flows through your entire request path, connecting logs, metrics, and traces
+  into a unified view.
+  {{< /blocks/otel-feature >}}
+
+  {{< blocks/otel-feature icon="code" title="Multi-language support" url="/docs/languages/" >}}
+  Native SDKs for 11+ languages including Java, Python, Go, JavaScript, .NET,
+  Ruby, PHP, Rust, C++, Swift, and Erlang. Use your preferred language with
+  first-class OpenTelemetry support.
+  {{< /blocks/otel-feature >}}
+
+  {{< blocks/otel-feature icon="shield-alt" title="Stable and production-ready" url="/status/" >}}
+  Tracing and metrics APIs are stable across all major languages. Thousands of
+  organizations run OpenTelemetry in production. Backed by the CNCF and major
+  cloud providers.
+  {{< /blocks/otel-feature >}}
+
+  {{< blocks/otel-feature icon="book" title="Open specifications" url="/docs/specs/status/" >}}
+  Built on open, vendor-neutral specifications for APIs, SDKs, and the wire
+  protocol (OTLP). Transparent governance under the CNCF ensures long-term
+  stability and community-driven evolution.
+  {{< /blocks/otel-feature >}}
+
+{{< /blocks/otel-features >}}
+
+{{< blocks/ecosystem-stats color="dark" title="The OpenTelemetry Ecosystem" >}}
+  {{< blocks/stat type="languages" label="Languages" url="/docs/languages/" >}}
+  {{< blocks/stat type="collector" label="Collector Components" url="/docs/collector/" >}}
+  {{< blocks/stat type="registry" label="Integrations" url="/ecosystem/registry/" >}}
+  {{< blocks/stat type="vendors" label="Vendors" url="/ecosystem/vendors/" >}}
+{{< /blocks/ecosystem-stats >}}
+
+{{< blocks/adopters-showcase
+    color="light"
+    title="Trusted by Industry Leaders"
+    limit="12"
+    ctaText="View all adopters"
+    ctaUrl="/ecosystem/adopters/" >}}
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
