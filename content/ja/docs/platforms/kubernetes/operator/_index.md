@@ -10,7 +10,7 @@ redirects:
   - { from: /docs/operator/*, to: ':splat' }
   - { from: /docs/k8s-operator/*, to: ':splat' }
   - { from: /docs/platforms/kubernetes-operator/*, to: ':splat' }
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad # patched
 drifted_from_default: true
 ---
 
@@ -74,7 +74,7 @@ EOF
 
 デフォルトでは、`opentelemetry-operator` は [`opentelemetry-collector` イメージ](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector)を使用します。
 [Helmチャート](/docs/platforms/kubernetes/helm/)を使用してオペレーターをインストールした場合は、[`opentelemetry-collector-k8s` イメージ](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s)が使用されます。
-これらのリリースにないコンポーネントが必要な場合は、[独自のコレクター](/docs/collector/custom-collector/)を構築する必要があるかもしれません。
+これらのリリースにないコンポーネントが必要な場合は、[独自のコレクター](/docs/collector/extend/ocb/)を構築する必要があるかもしれません。
 
 {{% /alert %}}
 
