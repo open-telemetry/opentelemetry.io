@@ -20703,6 +20703,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-11-21T09:40:53.583603868Z"
   },
+  "https://www.ibm.com/docs/en/zos/3.2.0?topic=smf-introduction": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-15T23:35:26.295471011Z"
+  },
   "https://www.ibm.com/products/informix": {
     "StatusCode": 206,
     "LastSeen": "2025-11-15T09:42:51.975670339Z"
