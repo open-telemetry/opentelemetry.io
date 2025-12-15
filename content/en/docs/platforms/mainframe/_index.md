@@ -58,7 +58,7 @@ The goal of this section is to help you **connect those dots** so you can see a 
 When you bring OpenTelemetry into a mainframe context, you will often encounter:
 
 - **Different mental models**  
-  - LPARs, Address spaces and jobs instead of hosts, pods and services 
+  - LPARs, address spaces and jobs instead of hosts, pods and services 
   - Datasets and VSAM files instead of object storage buckets
 - **Pre-existing telemetry and formats**  
   - System Management Facilities (SMF) records
