@@ -110,8 +110,8 @@ Of course, this successful transition depends upon common terminology and semant
 
 The **OpenTelemetry on Mainframes Special Interest Group (SIG)** is currently focused on:
 
-- Defining common terminology and use cases.
-- Identifying gaps in specifications (OpenTelemetry Semantic Conventions), SDKs, and Collector components related to mainframe use cases.
+- Defining common terminology and use cases
+- Identifying gaps in specifications (OpenTelemetry Semantic Conventions), SDKs, and Collector components related to mainframe use cases
 
 The SIG currently has representation from IBM, Broadcom and other ISVs, observability backend vendors, and some customers. But we are always in need of more help!
 
