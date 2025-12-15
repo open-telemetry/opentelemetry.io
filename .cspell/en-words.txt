@@ -27,6 +27,7 @@ cassandra
 checkoutservice
 Chronosphere
 classpath
+cmelius
 cncf
 configurator
 comms
@@ -74,6 +75,7 @@ lightstep
 Loffay
 Mancuso
 Marylia
+melius
 microservices
 mongodb
 ndjson
