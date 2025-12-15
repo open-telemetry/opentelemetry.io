@@ -347,6 +347,46 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-10T09:48:17.653556919Z"
   },
+  "https://cdn.brandfetch.io/alibaba.com/w/120/h/50": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-15T16:30:00.964838+01:00"
+  },
+  "https://cdn.brandfetch.io/ebay.com/w/120/h/50": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-15T16:30:03.15929+01:00"
+  },
+  "https://cdn.brandfetch.io/github.com/w/120/h/50": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-15T16:30:05.099874+01:00"
+  },
+  "https://cdn.brandfetch.io/heroku.com/w/120/h/50": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-15T16:30:08.322477+01:00"
+  },
+  "https://cdn.brandfetch.io/mercadolibre.com/w/120/h/50": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-15T16:30:08.908686+01:00"
+  },
+  "https://cdn.brandfetch.io/shopify.com/w/120/h/50": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-15T16:30:09.776275+01:00"
+  },
+  "https://cdn.brandfetch.io/skyscanner.com/w/120/h/50": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-15T16:30:13.224935+01:00"
+  },
+  "https://cdn.brandfetch.io/uipath.com/w/120/h/50": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-15T16:30:14.044129+01:00"
+  },
+  "https://cdn.brandfetch.io/vtex.com/w/120/h/50": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-15T16:30:15.919311+01:00"
+  },
+  "https://cdn.brandfetch.io/zalando.com/w/120/h/50": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-15T16:30:17.522078+01:00"
+  },
   "https://cdn.jsdelivr.net/npm/chart.js@2.9.2/dist/Chart.min.js": {
     "StatusCode": 206,
     "LastSeen": "2025-12-08T09:45:05.470657983Z"

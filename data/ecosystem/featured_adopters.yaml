@@ -3,70 +3,70 @@
 
 - name: Alibaba
   url: https://www.alibaba.com/
-  logo: "https://cdn.brandfetch.io/alibaba.com/w/120/h/50"
+  logo: 'https://cdn.brandfetch.io/alibaba.com/w/120/h/50'
   reference: /blog/2025/otip-alibaba/
   referenceTitle: blog post
   description: Global e-commerce and cloud computing giant
 
 - name: eBay
   url: https://www.ebay.com/
-  logo: "https://cdn.brandfetch.io/ebay.com/w/120/h/50"
+  logo: 'https://cdn.brandfetch.io/ebay.com/w/120/h/50'
   reference: /blog/2022/why-and-how-ebay-pivoted-to-opentelemetry/
   referenceTitle: blog post
   description: Global marketplace platform
 
 - name: GitHub
   url: https://github.com/
-  logo: "https://cdn.brandfetch.io/github.com/w/120/h/50"
+  logo: 'https://cdn.brandfetch.io/github.com/w/120/h/50'
   reference: https://github.blog/2021-05-26-why-and-how-github-is-adopting-opentelemetry/
   referenceTitle: blog post
   description: World's largest software development platform
 
 - name: Shopify
   url: https://www.shopify.com/
-  logo: "https://cdn.brandfetch.io/shopify.com/w/120/h/50"
-  reference: ""
-  referenceTitle: ""
+  logo: 'https://cdn.brandfetch.io/shopify.com/w/120/h/50'
+  reference: ''
+  referenceTitle: ''
   description: Leading e-commerce platform
 
 - name: Mercado Libre
   url: https://www.mercadolibre.com/
-  logo: "https://cdn.brandfetch.io/mercadolibre.com/w/120/h/50"
+  logo: 'https://cdn.brandfetch.io/mercadolibre.com/w/120/h/50'
   reference: https://medium.com/mercadolibre-tech/building-a-large-scale-observability-ecosystem-1edf654b249e
   referenceTitle: blog post
   description: Latin America's largest e-commerce platform
 
 - name: Skyscanner
   url: https://www.skyscanner.com/
-  logo: "https://cdn.brandfetch.io/skyscanner.com/w/120/h/50"
+  logo: 'https://cdn.brandfetch.io/skyscanner.com/w/120/h/50'
   reference: https://www.infoq.com/presentations/opentelemetry-observability/
   referenceTitle: presentation
   description: Global travel search platform
 
 - name: Zalando
   url: https://www.zalando.com/
-  logo: "https://cdn.brandfetch.io/zalando.com/w/120/h/50"
+  logo: 'https://cdn.brandfetch.io/zalando.com/w/120/h/50'
   reference: https://www.youtube.com/watch?v=VAgT7CY572U
   referenceTitle: conference talk
   description: Europe's leading online fashion platform
 
 - name: UiPath
   url: https://www.uipath.com/
-  logo: "https://cdn.brandfetch.io/uipath.com/w/120/h/50"
+  logo: 'https://cdn.brandfetch.io/uipath.com/w/120/h/50'
   reference: https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a
   referenceTitle: blog post
   description: Leading robotic process automation platform
 
 - name: VTEX
   url: https://vtex.com/
-  logo: "https://cdn.brandfetch.io/vtex.com/w/120/h/50"
+  logo: 'https://cdn.brandfetch.io/vtex.com/w/120/h/50'
   reference: https://colocatedeventseu2023.sched.com/event/1Jo8E/ingesting-65-tb-of-telemetry-data-daily-through-open-telemetry-protocol-and-collectors-gustavo-pantuza-vtex
   referenceTitle: presentation
   description: Global commerce platform
 
 - name: Heroku
   url: https://www.heroku.com/
-  logo: "https://cdn.brandfetch.io/heroku.com/w/120/h/50"
+  logo: 'https://cdn.brandfetch.io/heroku.com/w/120/h/50'
   reference: https://youtu.be/5iM8n3uCo_U?si=PJ6tFYcYED3lhAcK
   referenceTitle: CNCF talk
   description: Cloud application platform
