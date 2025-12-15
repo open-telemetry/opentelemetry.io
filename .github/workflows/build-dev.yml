@@ -43,7 +43,7 @@ jobs:
           GET: no # For details, see: https://opentelemetry.io/docs/contributing/development/#submodule-changes
           PIN_SKIP: ${{ inputs.submodule_path_regex }}
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6.0.0
         with:
           name: build-log-etc
           path: |
