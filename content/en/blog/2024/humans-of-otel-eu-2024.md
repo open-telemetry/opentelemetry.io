@@ -7,7 +7,7 @@ author: >-
 issue: 4660
 sig: End User SIG
 # prettier-ignore
-cSpell:ignore: adnan blanco bsfMECwmsm0 centralizations dyrmishi fintech jiekun mclean observability odegaard rahić reopelle sheeran skyscanner stackdriver tracetest vijay youtube
+cSpell:ignore: adnan blanco bsfMECwmsm0 centralizations dyrmishi fintech jiekun mclean observability odegaard rahić reopelle sheeran stackdriver tracetest vijay youtube
 ---
 
 We're back with our second edition of
