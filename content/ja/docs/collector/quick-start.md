@@ -1,7 +1,7 @@
 ---
 title: クイックスタート
 description: コレクターをセットアップとテレメトリーの収集をすぐに始めてみましょう！
-default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
+default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28 # patched
 ---
 
 <!-- markdownlint-disable ol-prefix blanks-around-fences -->
@@ -118,7 +118,7 @@ OpenTelemetryコレクターは、[トレース](/docs/concepts/signals/traces/)
 - コレクターの[デプロイ方法](../deployment/)についてさまざまな方法を学ぶ
 - コレクターの[設定](/docs/collector/configuration)ファイルとその構造を理解する
 - [レジストリ](/ecosystem/registry/?language=collector)で取得できるコンポーネントを探る
-- [OpenTelemetry Collector Builder (OCB)を使ってカスタムコレクターをビルド](/docs/collector/custom-collector/)する方法を学ぶ
+- [OpenTelemetry Collector Builder (OCB)を使ってカスタムコレクターをビルド](/docs/collector/extend/ocb/)する方法を学ぶ
 
 [gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
 [logs]: /docs/concepts/signals/logs/

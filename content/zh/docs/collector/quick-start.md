@@ -3,7 +3,7 @@ title: 快速入门
 description: 几分钟内完成设置并收集遥测数据！
 aliases: [getting-started]
 weight: 1
-default_lang_commit: ae313ca8475cc4694e900b61976e1a5228690912
+default_lang_commit: ae313ca8475cc4694e900b61976e1a5228690912 # patched
 cSpell:ignore: docker dokey gobin okey telemetrygen
 ---
 
@@ -123,7 +123,7 @@ OpenTelemetry Collector 是一个可执行文件，它能够接收[链路](/docs
 - 熟悉 Collector 的[配置文件](/docs/collector/configuration)和结构。
 - 浏览[组件注册表](/ecosystem/registry/?language=collector)，了解可用组件。
 - 学习如何使用 OpenTelemetry Collector Builder (OCB)
-  [构建自定义 Collector](/docs/collector/custom-collector/)。
+  [构建自定义 Collector](/docs/collector/extend/ocb/)。
 
 [gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
 [logs]: /docs/concepts/signals/logs/

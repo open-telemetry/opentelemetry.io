@@ -66,7 +66,7 @@ minimal, which we worried would limit us in the future.
 We then looked more seriously at Telegraf and OpenTelemetry. Both are written in
 Go, so we were good there. Our main reason to go with OpenTelemetry, was the
 availability of a customizable build process: OpenTelemetry allows us to
-[build a Collector](/docs/collector/custom-collector/) with a curated selection
+[build a Collector](/docs/collector/extend/ocb/) with a curated selection
 of our own components and community components.
 
 Additionally, when looking at OpenTelemetry we found that many

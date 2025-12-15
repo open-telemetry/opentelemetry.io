@@ -723,7 +723,7 @@ Each authentication extension has two possible usages:
 For a list of known authenticators, see the
 [Registry](/ecosystem/registry/?s=authenticator&component=extension). If you're
 interested in developing a custom authenticator, see
-[Building an authenticator extension](../building/authenticator-extension).
+[Building an authenticator extension](/docs/collector/extend/custom-component/extension/authenticator).
 
 To add a server authenticator to a receiver in the Collector, follow these
 steps:
