@@ -22,7 +22,7 @@ OpenTelemetryは、シグナルごとに開発されています。
 
 シグナルとコンポーネントの詳細については、OTel仕様の[概要](/docs/specs/otel/overview/)を参照してください。
 
-## コンポーネントのライフスタイル {#component-lifecycle}
+## コンポーネントのライフサイクル {#component-lifecycle}
 
 コンポーネントは、Draft、Experimental、Stable、Deprecated、Removedの開発サイクルに従います。
 
@@ -88,7 +88,7 @@ OpenTelemetryクライアントは共通の仕様に準拠していますが、�
   - StanzaのOpenTelemetryプロジェクトへの寄贈により、多くのデータ形式のログ処理がコレクターに追加されました。
   - OpenTelemetry Log Bridge APIを使用して、既存のログフレームワークからOpenTelemetryにログをブリッジするアペンダーの作成できます。
     Log Bridge APIは、エンドユーザーが直接呼び出すことを想定していません。
-    ログあペンダーは現在多くの言語で開発中です。
+    ログアペンダーは現在多くの言語で開発中です。
   - OpenTelemetry Log SDKは、Log Bridge APIの標準的な実装です。
     アプリケーションはSDKを構成して、ログの処理とエクスポート方法（例、OTLPの使用）を指定します。
   - OpenTelemetry Log Bridge APIは、[イベントセマンティック規約][event semantic conventions]に準拠したログレコードを発行するための実験的なサポートを含んでいます。
