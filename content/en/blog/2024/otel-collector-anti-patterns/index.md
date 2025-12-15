@@ -108,7 +108,7 @@ surface.
 
 But how do you pick and choose the components that you need? The answer is to
 build your own distribution, and you can do that using a tool called the
-[OpenTelemetry Collector Builder](/docs/collector/custom-collector/) (OCB). In
+[OpenTelemetry Collector Builder](/docs/collector/extend/ocb/) (OCB). In
 addition, at some point, you may need to create your own custom Collector
 component, such as a processor or exporter. The OCB allows you to integrate your
 custom components AND pick and choose the Contrib components that you need.

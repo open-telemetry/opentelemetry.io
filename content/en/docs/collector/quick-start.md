@@ -136,7 +136,7 @@ to it. As next steps, consider doing the following:
 - Explore available components in the
   [registry](/ecosystem/registry/?language=collector).
 - Learn how to
-  [build a custom Collector with the OpenTelemetry Collector Builder (OCB)](/docs/collector/custom-collector/).
+  [build a custom Collector with the OpenTelemetry Collector Builder (OCB)](/docs/collector/extend/ocb/).
 
 [gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
 [logs]: /docs/concepts/signals/logs/
