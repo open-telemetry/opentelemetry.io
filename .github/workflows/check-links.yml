@@ -58,7 +58,7 @@ jobs:
         run: npm run log:build
         continue-on-error: true
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6.0.0
         with:
           name: build-artifacts
           path: |
@@ -103,7 +103,7 @@ jobs:
         run: |
           .github/scripts/check-links-shard.sh '${{ matrix.shard.id }}' '${{ matrix.shard.regex }}'
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6.0.0
         with:
           name: refcache-${{ matrix.shard.id }}
           path: |
