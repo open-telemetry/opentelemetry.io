@@ -49,7 +49,7 @@ In a typical architecture, telemetry flows might look like:
 
 - Distributed services emit **traces, metrics, and logs** via OpenTelemetry SDKs and the Collector.
 - Integration tiers (API gateways, ESBs, MQ bridges, data streaming platforms) act as **interception points** where you can correlate cloud requests with mainframe activity.
-- Mainframe-resident components emit **events, [SMF records](https://www.google.com/url?q=https://www.ibm.com/docs/en/zos/3.2.0?topic%3Dsmf-introduction&sa=D&source=docs&ust=1765816775533318&usg=AOvVaw2bo6U65EG0vjbLgI0XIpR5), logs, or metrics** that must be transformed or exported into OpenTelemetry formats (often via a Collector or gateway running off-platform).
+- Mainframe-resident components emit **events, [SMF records](https://www.ibm.com/docs/en/zos/3.2.0?topic=smf-introduction), logs, or metrics** that must be transformed or exported into OpenTelemetry formats (often via a Collector or gateway running off-platform).
 
 The goal of this section is to help you **connect those dots** so you can see a single, coherent picture across mainframe and non-mainframe systems.
 
@@ -100,9 +100,9 @@ Historically, much of this mainframe-specific instrumentation has been vendor su
 
 However, as more and more mainframe customers are requesting OpenTelemetry support, this landscape is quickly changing -- with customers preferring more vendor-neutral approaches. Vendors are responding in kind.
 
-IBM, who supplies the operating system and subsystem software for the most pervasively used mainframe systems, is currently in the process of including native OpenTelemetry support into its operating systems and subsystems.
+IBM, which supplies the operating system and subsystem software for the most pervasively used mainframe systems, is currently in the process of including native OpenTelemetry support into its operating systems and subsystems.
 
-Many Independent [Mainframe] Software Vendors (ISVs) are also transitioning their observability support to favor the OpenTelemetry vendor-neutral approach as well.   
+Many Independent [Mainframe] Software Vendors (ISVs) are also transitioning their observability support to favor the OpenTelemetry vendor-neutral approach.   
 
 Of course, this successful transition depends upon common terminology and semantics.
 
