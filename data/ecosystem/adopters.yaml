@@ -1,4 +1,9 @@
-# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip Kelkoo loveholidays HDFC
+# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip Kelkoo loveholidays HDFC Akbank
+- name: Akbank
+  url: https://www.akbank.com/
+  components: [Collector, Operator, Java, .NET]
+  reference: ''
+  contact: 'emrullah.cirit@akbank.com'
 - name: Alibaba
   url: https://www.alibaba.com/
   reference: /blog/2025/otip-alibaba/
@@ -200,6 +205,11 @@
   components: [Collector, Java]
   reference: ''
   contact: https://github.com/illenko
+- name: Truffle AI
+  url: https://trytruffle.ai
+  components: [JavaScript]
+  reference: ''
+  contact: rahul@trytruffle.ai
 - name: UiPath
   url: https://www.uipath.com/
   components: [Collector, .NET]
