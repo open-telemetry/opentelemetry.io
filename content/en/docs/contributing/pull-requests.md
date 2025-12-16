@@ -17,18 +17,35 @@ To contribute new or improve existing documentation, submit a [pull request][PR]
 
 ## Generative AI contribution policy {#using-ai}
 
-{{% alert color="warning" %}}
+{{% alert color="warning" title="Important note for first time contributors" %}}
+
+If you are a [first-time contributor], please note the following:
+
+Your first 3 contributions to our repository need to be human created with minor
+AI assistance ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)),
+that means your code was written by hand. AI helped with code completion,
+formatting, linting and following best practices. Your PR description needs to
+be human created, no AI involved (AIL0).
+
+Of course you can use AI in "Ask mode" to learn about our repository, our
+project, how to contribute, and more.
+
+We put this requirement in place to help you learn while contributing and to
+help maintainers and approvers to protect their time and bandwidth, which is a
+scarce resource.
+
+Maintainers may make an exception, if it is clear that your contribution is
+"drive by" and can be merged without a lot of additional effort from their side.
+
+{{% /alert %}}
 
 Generative AI is allowed, but **you are responsible** for **reviewing and
 _validating_** all AI-generated content &mdash; if you don't understand it,
 don't submit it!
 
-This is especially important for [first-time contributors]. For details, see our
-[Generative AI Contribution Policy][].
+For details, see our [Generative AI Contribution Policy][].
 
-{{% /alert %}}
-
-[first-time contributors]: ../#first-time-contributing
+[first-time contributor]: ../#first-time-contributing
 [Generative AI Contribution Policy]:
   https://github.com/open-telemetry/community/blob/main/policies/genai.md
 
