@@ -13,12 +13,12 @@ description: OpenTelemetry blog
 ---
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    if (window.location.pathname.includes("/page/")) return;
+    document.addEventListener("DOMContentLoaded", function () {
+        if (window.location.pathname.includes('/page/')) return;
 
-    var checkbox = document.getElementById("m-blog2025-check");
-    if (checkbox) checkbox.checked = true;
-    checkbox = document.getElementById("m-blog2024-check");
-    if (checkbox) checkbox.checked = true;
-  });
+        var checkbox = document.getElementById("m-blog2025-check");
+        if (checkbox) checkbox.checked = true;
+        checkbox = document.getElementById("m-blog2024-check");
+        if (checkbox) checkbox.checked = true;
+    });
 </script>
