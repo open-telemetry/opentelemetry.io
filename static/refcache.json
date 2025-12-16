@@ -443,6 +443,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-12-10T09:44:19.963197Z"
   },
+  "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-iceberg-1.8": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-16T13:37:22.087893-05:00"
+  },
   "https://central.sonatype.com/artifact/io.opentelemetry.instrumentation/opentelemetry-java-http-client": {
     "StatusCode": 200,
     "LastSeen": "2025-12-10T09:44:34.956794442Z"
@@ -15351,6 +15355,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-12-09T09:42:11.874949104Z"
   },
+  "https://iceberg.apache.org/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-16T13:37:19.380236-05:00"
+  },
   "https://img.shields.io/badge/-deprecated-red": {
     "StatusCode": 200,
     "LastSeen": "2025-12-16T09:47:27.580056716Z"
@@ -19958,6 +19966,10 @@
   "https://semver.org/spec/v2.0.0.html": {
     "StatusCode": 206,
     "LastSeen": "2025-12-11T09:46:40.196379049Z"
+  },
+  "https://shardingsphere.apache.org/elasticjob/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-16T13:37:18.846811-05:00"
   },
   "https://shenyu.apache.org/": {
     "StatusCode": 206,
