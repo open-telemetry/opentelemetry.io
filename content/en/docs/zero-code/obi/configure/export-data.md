@@ -5,6 +5,7 @@ description:
   Configure the OBI components to export Prometheus and OpenTelemetry metrics
   and OpenTelemetry traces
 weight: 10
+cSpell:ignore: spanmetrics
 ---
 
 OBI can export OpenTelemetry metrics and traces to a OTLP endpoint.
