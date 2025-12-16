@@ -411,7 +411,7 @@ do Python para criar registros de log que o OpenTelemetry possa processar.
 import logging
 from opentelemetry.sdk._logs import LoggerProvider, LoggingHandler
 from opentelemetry.sdk._logs.export import BatchLogRecordProcessor, ConsoleLogRecordExporter # ConsoleLogExporter para versões anteriores à 1.39.0
-from opentelemetry._logs import set_logger_provider, get_logger
+from opentelemetry._logs import set_logger_provider
 
 provider = LoggerProvider()
 processor = BatchLogRecordProcessor(ConsoleLogRecordExporter())
