@@ -57,8 +57,8 @@ time=2025-01-27T17:21:20.197-06:00 level=WARN msg="Required system capabilities 
 OBI then attempts to continue running, but missing capabilities may lead to
 errors later on.
 
-You can set `OTEL_EBPF_ENFORCE_SYS_CAPS=1`, which causes OBI to fail immediately if
-the required capabilities are not available.
+You can set `OTEL_EBPF_ENFORCE_SYS_CAPS=1`, which causes OBI to fail immediately
+if the required capabilities are not available.
 
 ## List of capabilities required by OBI
 
