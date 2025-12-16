@@ -33,7 +33,7 @@ The Portuguese localization aims to achieve:
   Portuguese-speaking community
 - **Quality assurance**: Maintain rigorous review processes to ensure technical
   accuracy and linguistic quality
-- **Currency**: Keep documentation synchronized with English source material,
+- **Current**: Keep documentation synchronized with English source material,
   minimizing drift across critical pages
 - **Terminology consistency**: Maintain a comprehensive glossary of
   OpenTelemetry terminology in Portuguese to ensure consistent translations
@@ -88,8 +88,8 @@ The Portuguese localization team is composed of:
 
 ### Looking for Contributors
 
-The Portuguese localization team welcomes new contributors! Whether you're
-a Portuguese-speaker, have OpenTelemetry experience, or are eager to learn, we'd
+The Portuguese localization team welcomes new contributors! If you're a
+Portuguese-speaker, and either have OpenTelemetry experience, or are eager to learn, we'd
 love to have you on the team.
 
 We are particularly seeking:
@@ -112,7 +112,7 @@ If you're interested in contributing:
    translation or updating
 4. Comment on an issue you'd like to work on to let the team know you're
    starting
-5. Submit your first translation PR — the team is here to help!
+5. Submit your first localization PR — the team is here to help!
 
 > [!TIP] New to CNCF Slack?
 > [Request an invite here](https://communityinviter.com/apps/cloud-native/cncf)
@@ -228,7 +228,7 @@ documentation.
 | Zero-code           | Sem código                         | Standard translation; sometimes kept as "zero-code"                        |
 
 > [!NOTE] Many component names (Collector, Exporter, Processor, etc.) are kept
-> in English as they follow the OpenTelemetry project's official terminology.
+> in English as they follow the OpenTelemetry project's official terminology, and their definition can be translated.
 
 ## Style Guide Specifics
 
@@ -300,29 +300,13 @@ decisions.
 
 ### Formatting Conventions
 
-- **Quotation marks**: Use "aspas duplas" for quotations
+- **Quotation marks**: Use "double quotes" for quotations
 - **Emphasis**: Follow the same bold/italic patterns as English
   - **Exception**: English terms, when included in Portuguese text, should be
     italicized (e.g., _trace_, _span_)
 - **Lists**: Maintain the same structure and punctuation as English lists
 
-## Current Progress & Roadmap
-
-### Completed Documentation Sections
-
-The Portuguese localization has successfully translated content in these major
-areas:
-
-- **Getting Started** (`/docs/getting-started/`): Initial tutorials and
-  onboarding content
-- **Concepts** (`/docs/concepts/`): Core observability and OpenTelemetry
-  concepts
-- **Languages** (`/docs/languages/`): Language-specific instrumentation guides
-- **Zero-code** (`/docs/zero-code/`): Automatic instrumentation documentation
-- **Contributing** (`/docs/contributing/`): Guidelines for contributing to
-  OpenTelemetry
-- **Ecosystem** (`/ecosystem/`): Registry, integrations, distributions, and
-  adopters
+## Roadmap
 
 ### Areas of Focus
 
@@ -333,7 +317,7 @@ The team prioritizes translations based on:
 - **Community requests**: Content requested by Portuguese-speaking community
   members
 - **Completeness**: Filling gaps in partially translated sections
-- **Currency**: Updating drifted content in high-traffic pages
+- **Timely**: Updating drifted content in high-traffic pages
 
 ### Flexible Prioritization
 
