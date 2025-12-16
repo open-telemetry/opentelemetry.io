@@ -34,12 +34,12 @@ metrics:
 The OBI metrics exporter can export the following metrics data groups for
 processes matching entries in the [metrics discovery](./) configuration.
 
-- `application`: Application-level metrics
+- `application`: Application-level metrics.
 - `application_host`: Application-level host metrics for host-based pricing.
 - `application_span`: Application-level trace span metrics in legacy format
-  (like `traces_spanmetrics_latency`, `spanmetrics` is not separate).
+  (like `traces_spanmetrics_latency`); `spanmetrics` is not separate.
 - `application_span_otel`: Application-level trace span metrics in OpenTelemetry
-  format (like `traces_span_metrics_calls_total`), `span_metrics` is separate.
+  format (like `traces_span_metrics_calls_total`); `span_metrics` is separate.
 - `application_span_sizes`: Application-level trace span metrics reporting information
   about request and response sizes.
 - `application_service_graph`: Application-level service graph metrics. It's
@@ -48,9 +48,9 @@ processes matching entries in the [metrics discovery](./) configuration.
   the OpenTelemetry service name set by the service name discovery is the best
   choice for service graph metrics.
 - `network`: Network-level metrics, refer to the
-  [network metrics](../../network) configuration documentation to learn more
+  [network metrics](../../network) configuration documentation to learn more.
 - `network_inter_zone`: Network inter-zone metrics, refer to the
-  [network metrics](../../network/) configuration documentation to learn more
+  [network metrics](../../network/) configuration documentation to learn more.
 
 ## OpenTelemetry metrics exporter component
 
