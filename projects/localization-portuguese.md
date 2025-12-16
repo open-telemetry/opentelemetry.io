@@ -71,11 +71,14 @@ Requirements:
 
 ### Infrastructure
 
-- Portuguese-specific spell check dictionary:
+- **Portuguese-specific spell check**:
   - Brazilian Portuguese dictionary for cspell
     ([`@cspell/dict-pt-br`](https://github.com/streetsidesoftware/cspell-dicts/tree/main/dictionaries/pt_BR#readme))
   - Custom wordlist ([`.cspell/pt-palavras.txt`](.cspell/pt-palavras.txt))
-- Component ownership definition for `@open-telemetry/docs-pt-approvers`
+- **Component ownership**: Defined ownership for
+  `@open-telemetry/docs-pt-approvers` in the
+  [`component-owners.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml#L100)
+  file
 
 ## Staffing / Help Wanted
 
@@ -89,8 +92,8 @@ The Portuguese localization team is composed of:
 ### Looking for Contributors
 
 The Portuguese localization team welcomes new contributors! If you're a
-Portuguese-speaker, and either have OpenTelemetry experience, or are eager to learn, we'd
-love to have you on the team.
+Portuguese-speaker, and either have OpenTelemetry experience, or are eager to
+learn, we'd love to have you on the team.
 
 We are particularly seeking:
 
@@ -228,7 +231,8 @@ documentation.
 | Zero-code           | Sem código                         | Standard translation; sometimes kept as "zero-code"                        |
 
 > [!NOTE] Many component names (Collector, Exporter, Processor, etc.) are kept
-> in English as they follow the OpenTelemetry project's official terminology, and their definition can be translated.
+> in English as they follow the OpenTelemetry project's official terminology,
+> and their definition can be translated.
 
 ## Style Guide Specifics
 
@@ -257,7 +261,8 @@ decisions.
    - Acronyms and proper nouns (e.g., "SDK", "API", "OpenTelemetry")
 
 3. **Hybrid approach**:
-   - On first use, you may provide both: "rastros (_traces_)" or "trechos (_spans_)"
+   - On first use, you may provide both: "rastros (_traces_)" or "trechos
+     (_spans_)"
    - Use Portuguese term primarily, with English in parentheses if needed for
      clarity
 
