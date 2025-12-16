@@ -22,7 +22,7 @@ existing telemetry pipelines.
 
 This content is aimed at people who:
 
-- Are already familiar with **OpenTelemetry concepts** (traces, metrics, logs,
+- Are already familiar with [OpenTelemetry concepts](/docs/concepts/) (traces, metrics, logs,
   OTLP, the Collector).
 - Work primarily in **distributed / cloud native** environments (Kubernetes,
   VMs, serverless, etc.).
