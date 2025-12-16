@@ -1,25 +1,25 @@
 ---
 title: 浏览器
 aliases: [/docs/js/getting_started/browser]
-description: 了解如何为您的浏览器应用添加 OpenTelemetry
+description: 了解如何为你的浏览器应用添加 OpenTelemetry
 default_lang_commit: 4c9af5912f276b79a489a10b44c53f720c7927d7
 weight: 20
 ---
 
 {{% include browser-instrumentation-warning.md %}}
 
-尽管本指南使用下述示例应用，您也可以将这些步骤应用于您自己的应用。
+尽管本指南使用下述示例应用，你也可以将这些步骤应用于你自己的应用。
 
 ## 前置条件 {#prerequisites}
 
-请确保您已在本地安装以下内容：
+请确保你已在本地安装以下内容：
 
 - [Node.js](https://nodejs.org/en/download/)
-- [TypeScript](https://www.typescriptlang.org/download)，如果您将使用 TypeScript。
+- [TypeScript](https://www.typescriptlang.org/download)，如果你将使用 TypeScript。
 
 ## 示例应用 {#example-application}
 
-这是一个非常简单的指南，如果您想查看更复杂的示例，请访问
+这是一个非常简单的指南，如果你想查看更复杂的示例，请访问
 [examples/opentelemetry-web](https://github.com/open-telemetry/opentelemetry-js/tree/main/examples/opentelemetry-web)。
 
 将以下文件复制到空目录中，并将其命名为 `index.html`。
@@ -52,7 +52,7 @@ weight: 20
 
 ### 安装 {#installation}
 
-要在浏览器中创建链路，您需要 `@opentelemetry/sdk-trace-web` 和 `@opentelemetry/instrumentation-document-load` 插桩库：
+要在浏览器中创建链路，你需要 `@opentelemetry/sdk-trace-web` 和 `@opentelemetry/instrumentation-document-load` 插桩库：
 
 ```shell
 npm init -y
@@ -64,7 +64,7 @@ npm install @opentelemetry/api \
 
 ### 初始化与配置 {#initialization-and-configuration}
 
-如果您使用 TypeScript 编写应用，您需要运行以下命令：
+如果你使用 TypeScript 编写应用，你需要运行以下命令：
 
 ```shell
 tsc --init
@@ -133,9 +133,9 @@ npx parcel index.html
 
 在以下示例中，我们将使用 `ConsoleSpanExporter`，它会将所有 Span 打印到控制台。
 
-为了可视化和分析您的链路，您需要将它们导出到链路后端。请按照[这些说明](../../exporters)设置后端和导出器。
+为了可视化和分析你的链路，你需要将它们导出到链路后端。请按照[这些说明](../../exporters)设置后端和导出器。
 
-您可能还想使用 `BatchSpanProcessor` 批量导出 Span，以更有效地利用资源。
+你可能还想使用 `BatchSpanProcessor` 批量导出 Span，以更有效地利用资源。
 
 要将链路导出到控制台，请修改 `document-load.ts|js` 使其与以下代码片段匹配：
 
@@ -165,7 +165,7 @@ registerInstrumentations({
 });
 ```
 
-现在，重新构建您的应用程序并再次打开浏览器。在开发者工具的控制台中，您应该会看到一些被导出的链路：
+现在，重新构建你的应用程序并再次打开浏览器。在开发者工具的控制台中，你应该会看到一些被导出的链路：
 
 ```json
 {
@@ -222,7 +222,7 @@ registerInstrumentations({
 
 ### 添加插桩 {#add-instrumentations}
 
-如果您想要对 Ajax 请求、用户交互等进行插桩，您可以添加额外的插桩库并注册它们：
+如果你想要对 Ajax 请求、用户交互等进行插桩，你可以添加额外的插桩库并注册它们：
 
 ```sh
 npm install @opentelemetry/instrumentation-user-interaction \
@@ -244,4 +244,4 @@ registerInstrumentations({
 
 ## Web 基础包 {#meta-packages-for-web}
 
-若要一次性利用最常见的插桩功能，您只需使用 [OpenTelemetry Web 基础包](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)。
+若要一次性利用最常见的插桩功能，你只需使用 [OpenTelemetry Web 基础包](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)。
