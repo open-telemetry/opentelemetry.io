@@ -751,6 +751,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/10070047?v=4
   - name: jaydeluca
     teams:
+      - docs-approvers
+      - docs-triagers
       - ecosystem-explorer-approvers
       - ecosystem-explorer-maintainers
       - java-contrib-approvers
@@ -839,6 +841,7 @@ maintainers:
       - proto-maintainers
       - proto-triagers
       - semconv-cicd-approvers
+      - semconv-gcp-approvers
       - semconv-security-approvers
       - semconv-service-and-deployment-approvers
       - specs-approvers
@@ -1923,6 +1926,8 @@ approvers:
       - javascript-approvers
       - javascript-contrib-triagers
       - javascript-triagers
+      - opentelemetry-python-contrib-approvers
+      - python-approvers
     html_url: https://github.com/hectorhdzg
     avatar_url: https://avatars.githubusercontent.com/u/39923391?v=4
   - name: iblancasa
