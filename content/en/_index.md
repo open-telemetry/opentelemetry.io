@@ -42,7 +42,7 @@ Try: "How do I instrument a Python app?" or "What is the Collector?"
 **[OpenTelemetry](/docs/what-is-opentelemetry/)**, also known as OTel, is an
 open source observability framework for cloud native software. It provides a
 single set of APIs, libraries, agents, and collector services to capture
-distributed traces and metrics from your application.
+distributed traces, logs, metrics from your application.
 
 OpenTelemetry builds upon years of experience from the OpenTracing and
 OpenCensus projects, combined with best-of-breed ideas and practices from the
