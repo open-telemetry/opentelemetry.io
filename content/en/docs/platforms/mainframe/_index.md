@@ -36,14 +36,13 @@ or z/OS expert to benefit from this section.
 
 In this documentation, “mainframe” generally refers to:
 
-- Large, highly reliable enterprise systems used for **high-volume transaction
-  processing** and **batch workloads**.
 - Platforms such as **IBM z/OS® mainframes** and compatible environments that
   host:
   - Transaction processing (e.g., CICS®, IMS™ and similar subsystems)
   - Batch processing (JCL-driven jobs, schedulers)
   - High-value systems of record (databases and files that are the “source of
     truth”)
+  - Large **high-volume transaction processing** and **batch workloads**.
 
 While the details vary by vendor and product, most mainframe environments share
 characteristics that affect observability:
