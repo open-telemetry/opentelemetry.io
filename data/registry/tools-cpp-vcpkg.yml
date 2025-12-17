@@ -10,6 +10,7 @@ license: MIT
 description: A vcpkg package for opentelemetry-cpp.
 authors:
   - name: The vcpkg Authors
+    url: https://vcpkg.io
 urls:
   repo: https://github.com/microsoft/vcpkg/tree/master/ports/opentelemetry-cpp
 createdAt: 2023-02-13

@@ -1,0 +1,108 @@
+{{/* cSpell:ignore goog */ -}}
+{{ $pageProseLang := (partial "i18n/lang.html" .).Lang -}}
+{{ $siteLang := .Site.Language.Lang -}}
+
+{{ if ne $siteLang $pageProseLang -}}
+{{ $locales := partialCached "func/locales-for-google-translate.html" . -}}
+
+{{/* NOTE: Google Translate Website Translator widget has been deprecated since
+2019, however it continues to work. */ -}}
+
+<script type="text/javascript">
+  const infoToConsole = false;
+  const consoleInfo = (msg) => {
+    if (infoToConsole) console.log(msg);
+  };
+
+  const gtContainerID = 'google_translate_element';
+  const siteLang = '{{ $siteLang }}';
+  let translationBarSeen = false;
+
+  const getGtSelectElt = () => document.querySelector('select.goog-te-combo');
+
+  function waitForGtSelectElt(siteLang) {
+    const observer = new MutationObserver((mutations, obs) => {
+      if (!getGtSelectElt()) return;
+      obs.disconnect(); // Stop observing
+      observeGoogleTranslateBar();
+    });
+    const elt = document.querySelector(`#${gtContainerID}`) || document.body;
+    observer.observe(elt, { childList: true, subtree: true });
+  }
+
+  function hasVisibleTranslationBar() {
+    let iframe = document.querySelector('.skiptranslate > iframe');
+    let translateBar = iframe && iframe.parentElement;
+    if (!translateBar) return false;
+
+    let computedStyle = window.getComputedStyle(translateBar);
+    let style = computedStyle.display;
+    consoleInfo(`hVTB: style is '${style}'`);
+    if (!style || style === 'none') return false;
+    return true;
+  }
+
+  function adjustNavbarPosition() {
+    if (hasVisibleTranslationBar()) {
+      const extraMargin = '40px'; // TODO: declare modifier style in SCSS file instead
+      const navBarElt = document.querySelector('.td-navbar');
+      if (navBarElt.style.marginTop === extraMargin) return;
+      navBarElt.style.marginTop = extraMargin; // Position navbar bellow GT banner
+      consoleInfo(
+        `adjustNavbarPos: GT banner present, navbar lowered by ${extraMargin}`,
+      );
+      translationBarSeen = true;
+    } else if (translationBarSeen) {
+      translationBarSeen = false;
+      let navBarElt = document.querySelector('.td-navbar');
+      navBarElt.style.marginTop = ''; // Reset position if GT banner is gone
+      consoleInfo(`adjustNavbarPos: GT bar is gone; navbar style reset`);
+    } else {
+      consoleInfo(`adjustNavbarPos: no action`);
+    }
+  }
+
+  function observeGoogleTranslateBar() {
+    const observer = new MutationObserver((mutations, obs) =>
+      adjustNavbarPosition(),
+    );
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  window.onload = function () {
+    consoleInfo(`Doc loaded`);
+    translationBarSeen = false;
+    waitForGtSelectElt(siteLang);
+  };
+
+  function googleTranslateElementInit() {
+    const pageLanguage = '{{ $pageProseLang }}';
+    // Languages codes supported by Google for the locales in OTel.io site
+    let allLang = {{ delimit $locales " " }};
+    let allLangArr = allLang.split(' ');
+    const allLangButPageLang = allLangArr
+      .filter((lang) => !lang.startsWith(pageLanguage))
+      .join(',');
+      consoleInfo({
+        pageLanguage,
+        allLangArr,
+        allLangButPageLang,
+      });
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: pageLanguage,
+        includedLanguages: allLangButPageLang,
+        // autoDisplay: true,
+        multilanguagePage: true,
+      },
+      gtContainerID,
+    );
+  }
+</script>
+
+<script
+  type="text/javascript"
+  src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+></script>
+
+{{- end -}}

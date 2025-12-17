@@ -1,8 +1,8 @@
 ---
 title: Traces
 weight: 1
-cSpell:ignore: Guten
 description: The path of a request through your application.
+cSpell:ignore: Guten
 ---
 
 **Traces** give us the big picture of what happens when a request is made to an
@@ -26,8 +26,8 @@ verbose.
 {
   "name": "hello",
   "context": {
-    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-    "span_id": "0x051581bf3cb55c13"
+    "trace_id": "5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "051581bf3cb55c13"
   },
   "parent_id": null,
   "start_time": "2022-04-29T18:52:58.114201Z",
@@ -57,10 +57,10 @@ Note that it has a `trace_id` field indicating the trace, but has no
 {
   "name": "hello-greetings",
   "context": {
-    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-    "span_id": "0x5fb397be34d26b51"
+    "trace_id": "5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "5fb397be34d26b51"
   },
-  "parent_id": "0x051581bf3cb55c13",
+  "parent_id": "051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114304Z",
   "end_time": "2022-04-29T22:52:58.114561Z",
   "attributes": {
@@ -96,10 +96,10 @@ that matches the `span_id` of the `hello` span.
 {
   "name": "hello-salutations",
   "context": {
-    "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-    "span_id": "0x93564f51e1abe1c2"
+    "trace_id": "5b8aa5a2d2c872e8321cf37308d69df2",
+    "span_id": "93564f51e1abe1c2"
   },
-  "parent_id": "0x051581bf3cb55c13",
+  "parent_id": "051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114492Z",
   "end_time": "2022-04-29T18:52:58.114631Z",
   "attributes": {
@@ -160,8 +160,7 @@ source or vendor backend of your choice.
 Context Propagation is the core concept that enables Distributed Tracing. With
 Context Propagation, Spans can be correlated with each other and assembled into
 a trace, regardless of where Spans are generated. To learn more about this
-topic, see the concept page on
-[Context Propagation](/docs/concepts/context-propagation).
+topic, see the concept page on [Context Propagation](../../context-propagation).
 
 ## Spans
 
@@ -231,8 +230,7 @@ Span context is an immutable object on every span that contains the following:
   information
 
 Span context is the part of a span that is serialized and propagated alongside
-[Distributed Context](#context-propagation) and
-[Baggage](/docs/concepts/signals/baggage).
+[Distributed Context](#context-propagation) and [Baggage](../baggage).
 
 Because Span Context contains the Trace ID, it is used when creating
 [Span Links](#span-links).
@@ -273,8 +271,8 @@ For example, consider two scenarios in a web browser:
 1. Tracking a page load
 2. Denoting when a page becomes interactive
 
-A Span is best used to the first scenario because it's an operation with a start
-and an end.
+A Span is best used to track the first scenario because it's an operation with a
+start and an end.
 
 A Span Event is best used to track the second scenario because it represents a
 meaningful, singular point in time.
@@ -311,6 +309,8 @@ trace. Now, they are causally associated with one another.
 
 Links are optional but serve as a good way to associate trace spans with one
 another.
+
+For more information see [Span Links](/docs/specs/otel/trace/api/#link).
 
 ### Span Status
 

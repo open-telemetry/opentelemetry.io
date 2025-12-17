@@ -32,7 +32,8 @@ it with OpenTelemetry. For reference, a complete example of the code you will
 build can be found here:
 [opentelemetry-erlang-contrib/examples/roll_dice](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/roll_dice).
 
-Additional examples can be found [here](/docs/languages/erlang/examples/).
+Additional examples can be found in
+[opentelemetry-erlang-contrib examples](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples).
 
 ### Initial Setup
 
@@ -51,45 +52,33 @@ We'll need a few other dependencies that Phoenix doesn't come with.
   OpenTelemetry Collector and/or to self-hosted or commercial services.
 - `opentelemetry_phoenix`: creates OpenTelemetry spans from the Elixir
   `:telemetry` events created by Phoenix.
-- web server dependencies: There are currently two options for web servers and
-  each has their telemetry counterpart. Phoenix applications post 1.7.11 default
-  to Bandit while pre 1.7.11 default to Cowboy. Both choices are valid. Use one
-  of the below options based on the web server your Phoenix application uses:
-  - `opentelemetry_cowboy`: creates OpenTelemetry spans from the Elixir
-    `:telemetry` events created by the Cowboy web server
-  - `opentelemetry_bandit`: creates OpenTelemetry spans from the Elixir
-    `:telemetry` events created by the Bandit web server
+- `opentelemetry_cowboy`: creates OpenTelemetry spans from the Elixir
+  `:telemetry` events created by the Cowboy web server, which is used by
+  Phoenix.
 
 ```elixir
 # mix.exs
 def deps do
   [
     # other default deps...
+    {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"},
     {:opentelemetry, "~> {{% param versions.otelSdk %}}"},
     {:opentelemetry_api, "~> {{% param versions.otelApi %}}"},
-    {:opentelemetry_exporter, "~> {{% param versions.otelExporter %}}"},
     {:opentelemetry_phoenix, "~> {{% param versions.otelPhoenix %}}"},
-    # for Cowboy
-    {:opentelemetry_cowboy, "~> {{% param versions.otelCowboy %}}"}
-    # for Bandit
-    {:opentelemetry_bandit, "~> {{% version-from-registry instrumentation-erlang-bandit %}}"},
+    {:opentelemetry_cowboy, "~> {{% param versions.otelCowboy %}}"},
     {:opentelemetry_ecto, "~> {{% param versions.otelEcto %}}"} # if using ecto
   ]
 end
 ```
 
-The last three also need to be setup when your application starts:
+The last two also need to be setup when your application starts:
 
 ```elixir
 # application.ex
 @impl true
 def start(_type, _args) do
-  # Depending on what webserver you are using, you will either use:
   :opentelemetry_cowboy.setup()
   OpentelemetryPhoenix.setup(adapter: :cowboy2)
-  # or
-  OpentelemetryBandit.setup()
-  OpentelemetryPhoenix.setup(adapter: :bandit)
   OpentelemetryEcto.setup([:dice_game, :repo]) # if using ecto
 end
 ```
@@ -146,11 +135,11 @@ If everything went well, you should be able to visit
 lines that look like this in your terminal.
 
 (Don't worry if the format looks a little unfamiliar. Spans are recorded in the
-Erlang `record` data structure. You can find more information about records
-[here](https://www.erlang.org/doc/reference_manual/records.html), and
-[this](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/apps/opentelemetry/include/otel_span.hrl#L19)
-file describes the `span` record structure, and explains what the different
-fields are.)
+[Erlang `record` data structure](https://www.erlang.org/doc/reference_manual/records.html),
+and
+[`otel_span.hrl`](https://github.com/open-telemetry/opentelemetry-erlang/blob/main/apps/opentelemetry/include/otel_span.hrl#L19)
+describes the `span` record structure, and explains what the different fields
+are.)
 
 ```shell
 *SPANS FOR DEBUG*

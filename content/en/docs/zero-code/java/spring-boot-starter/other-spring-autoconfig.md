@@ -1,7 +1,7 @@
 ---
 title: Other Spring autoconfiguration
-cSpell:ignore: autoconfigurations
 weight: 70
+cSpell:ignore: autoconfigurations
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -18,15 +18,13 @@ OpenTelemetry Zipkin Exporter Starter is a starter package that includes the
 and spring framework starters required to setup distributed tracing. It also
 provides the
 [opentelemetry-exporters-zipkin](https://github.com/open-telemetry/opentelemetry-java/tree/main/exporters/zipkin)
-artifact and corresponding exporter autoconfiguration. Check out
-[opentelemetry-spring-boot-autoconfigure](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/README.md#features)
-for the list of supported libraries and features.
+artifact and corresponding exporter autoconfiguration.
 
 If an exporter is present in the classpath during runtime and a spring bean of
 the exporter is missing from the spring application context, an exporter bean is
 initialized and added to a simple span processor in the active tracer provider.
-Check out the implementation
-[here](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java).
+For more details, see the
+[implementation (OpenTelemetryAutoConfiguration.java)](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java).
 
 {{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
 
@@ -40,7 +38,7 @@ Check out the implementation
 </dependencies>
 ```
 
-{{% /tab %}} {{% tab header="Gradle (`gradle.build`)" lang=Gradle %}}
+{{% /tab %}} {{% tab header="Gradle (`build.gradle`)" lang=Gradle %}}
 
 ```kotlin
 dependencies {

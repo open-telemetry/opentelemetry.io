@@ -7,9 +7,10 @@ cSpell:ignore: Flowable javac reactivestreams reactivex
 ---
 
 For most users, the out-of-the-box instrumentation is completely sufficient and
-nothing more has to be done. Sometimes, however, users wish to create
+nothing more needs to be done. Sometimes, however, users wish to create
 [spans](/docs/concepts/signals/traces/#spans) for their own custom code without
-doing too much code change.
+having to change much code. The `WithSpan` and `SpanAttribute` annotations
+support those use cases.
 
 ## Dependencies
 
@@ -17,7 +18,7 @@ You'll need to add a dependency on the
 `opentelemetry-instrumentation-annotations` library to use the `@WithSpan`
 annotation.
 
-### Maven
+{{< tabpane text=true >}} {{% tab "Maven" %}}
 
 ```xml
 <dependencies>
@@ -29,6 +30,8 @@ annotation.
 </dependencies>
 ```
 
+{{% /tab %}} {{% tab "Gradle" %}}
+
 ### Gradle
 
 ```groovy
@@ -37,10 +40,12 @@ dependencies {
 }
 ```
 
+{{% /tab %}} {{< /tabpane >}}
+
 ## Creating spans around methods with `@WithSpan`
 
-To create a [span](/docs/concepts/signals/traces/#spans) corresponding to one of
-your method, annotate the method with `@WithSpan`.
+To create a [span](/docs/concepts/signals/traces/#spans) that instruments a
+particular method, annotate the method with `@WithSpan`.
 
 ```java
 import io.opentelemetry.instrumentation.annotations.WithSpan;
@@ -55,8 +60,8 @@ public class MyClass {
 
 Each time the application invokes the annotated method, it creates a span that
 denotes its duration and provides any thrown exceptions. By default, the span
-name will be `<className>.<methodName>`, unless a name is provided as an
-argument to the annotation.
+name will be `<className>.<methodName>`, unless a name is provided through the
+`value` annotation parameter.
 
 If the return type of the method annotated by `@WithSpan` is one of the
 [future- or promise-like](https://en.wikipedia.org/wiki/Futures_and_promises)
@@ -75,12 +80,38 @@ types listed below, then the span will not be ended until the future completes.
 - [io.reactivex.Flowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/Flowable.html)
 - [io.reactivex.parallel.ParallelFlowable](https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/parallel/ParallelFlowable.html)
 
+### Parameters
+
+The `@WithSpan` attribute supports the following optional parameters to allow
+customization of spans:
+
+| name             | type              | default    | description                                                                                                                                  |
+| ---------------- | ----------------- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `value`          | `String`          | `""`       | The span name. If not specified, the default `<className>.<methodName>` is used.                                                             |
+| `kind`           | `SpanKind` (enum) | `INTERNAL` | The [kind of span](/docs/specs/otel/trace/api/#spankind).                                                                                    |
+| `inheritContext` | `boolean`         | `true`     | Since 2.14.0. Controls whether or not the new span will be parented in the existing (current) context. If `false`, a new context is created. |
+
+Example parameter usage:
+
+```java
+@WithSpan(kind = SpanKind.CLIENT, inheritContext = false, value = "my span name")
+public void myMethod() {
+    <...>
+}
+
+@WithSpan("my span name")
+public void myOtherMethod() {
+    <...>
+}
+```
+
 ## Adding attributes to the span with `@SpanAttribute`
 
 When a [span](/docs/concepts/signals/traces/#spans) is created for an annotated
-method the values of the arguments to the method invocation can be automatically
-added as [attributes](/docs/concepts/signals/traces/#attributes) to the created
-span by annotating the method parameters with the `@SpanAttribute` annotation.
+method, the values of the arguments to the method invocation can be
+automatically added as [attributes](/docs/concepts/signals/traces/#attributes)
+to the created span. Simply annotate the method parameters with the
+`@SpanAttribute` annotation:
 
 ```java
 import io.opentelemetry.instrumentation.annotations.SpanAttribute;
@@ -129,6 +160,4 @@ instrumented.
 ## Next steps
 
 Beyond the use of annotations, the OpenTelemetry API allows you to obtain a
-tracer that can be used for
-[Manual Instrumentation](/docs/languages/java/instrumentation/) and execute code
-within the scope of that span.
+tracer that can be used for [custom instrumentation](../api).

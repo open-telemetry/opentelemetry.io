@@ -14,3 +14,4 @@ authors:
 urls:
   repo: https://github.com/pragmaticivan/nestjs-otel
 createdAt: 2021-07-09
+isFirstParty: false

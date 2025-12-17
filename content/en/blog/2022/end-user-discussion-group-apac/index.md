@@ -53,16 +53,16 @@ Slack `#opentelemetry` channel.
 
 Upcoming sessions:
 
-- **EMEA**: every third Tuesday of the month at 11AM CET (GMT +1), join
-  [here](https://us06web.zoom.us/j/85691064809?pwd=c0VCejh)
+- **[EMEA](https://us06web.zoom.us/j/85691064809?pwd=c0VCejh)**: every third
+  Tuesday of the month at 11AM CET (GMT +1)
   - December 20, 2022
   - January 17, 2023
-- **APAC**: every third Wednesday of the month at 11AM IST (GMT +5.5), join
-  [here](https://us06web.zoom.us/j/82702918447?pwd=WllKc0hmdTNuelhFdlhMM1Q3TktSQT09)
+- **[APAC](https://us06web.zoom.us/j/82702918447?pwd=WllKc0hmdTNuelhFdlhMM1Q3TktSQT09)**:
+  every third Wednesday of the month at 11AM IST (GMT +5.5)
   - March 15, 2023 ([register here](https://lu.ma/1w129wgu))
   - April 19, 2023
-- **AMER**: every third Thursday of the month at 9AM PST (GMT -8), join
-  [here](https://us06web.zoom.us/j/87037874951?pwd=WGo3eUZpeWFZTlhJQXhJeXZhQmwvUT09)
+- **[AMER](https://us06web.zoom.us/j/87037874951?pwd=WGo3eUZpeWFZTlhJQXhJeXZhQmwvUT09)**:
+  every third Thursday of the month at 9AM PST (GMT -8)
   - December 15, 2022
   - January 19, 2023
 

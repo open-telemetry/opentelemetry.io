@@ -19,8 +19,8 @@ all available resource detectors:
 ## Disabling resource detection
 
 By default, all SDK resource detectors are used, but you can use the environment
-variable `OTEL_PHP_RESOURCE_DETECTORS` to enable only certain detectors, or
-completely disable them:
+variable `OTEL_PHP_DETECTORS` to enable only certain detectors, or completely
+disable them:
 
 - `env`
 - `host`
@@ -35,7 +35,7 @@ completely disable them:
 For example, to enable only the `env`, `host` and `sdk` detectors:
 
 ```shell
-env OTEL_PHP_RESOURCE_DETECTORS=env,host,sdk \
+env OTEL_PHP_DETECTORS=env,host,sdk \
 php example.php
 ```
 
@@ -80,7 +80,7 @@ $resource = ResourceInfoFactory::defaultResource()->merge(ResourceInfo::create(A
     ResourceAttributes::SERVICE_NAME => 'bar',
     ResourceAttributes::SERVICE_INSTANCE_ID => 1,
     ResourceAttributes::SERVICE_VERSION => '0.1',
-    ResourceAttributes::DEPLOYMENT_ENVIRONMENT => 'development',
+    ResourceAttributes::DEPLOYMENT_ENVIRONMENT_NAME => 'development',
 ])));
 
 $tracerProvider =  new TracerProvider(

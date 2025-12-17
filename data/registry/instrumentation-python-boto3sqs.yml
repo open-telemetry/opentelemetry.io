@@ -15,3 +15,4 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-boto3sqs
 createdAt: 2020-05-11
+isFirstParty: false

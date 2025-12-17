@@ -1,9 +1,36 @@
 ---
-title: Reporting an issue
-description: How to report a bug, a security issue, or a potential improvement.
-weight: 50
+title: Issues
+description:
+  How to fix an existing issue, or report a bug, security risk, or potential
+  improvement.
+weight: 10
+_issues: https://github.com/open-telemetry/opentelemetry.io/issues
 cSpell:ignore: prepopulated
 ---
+
+## Fixing an existing issue
+
+One of the best ways to help improve the documentation is to fix an existing
+issue.
+
+1. Browse through the list of [issues]({{% param _issues %}}).
+2. Select an issue that you would like to work on.
+
+   {{% alert color="warning" %}}
+
+   {{% param chooseAnIssueAtYourLevel %}}
+
+   {{% /alert %}}
+
+3. Read through the issue comments, if any.
+4. Ask maintainers if this issue is still relevant, and ask any questions you
+   need for clarification by posting comments over the issue.
+5. Share your intention to work on the issue by adding add a comment to this
+   effect.
+6. Work on fixing the issue. Let maintainers know if you run into any problems.
+7. When ready, [submit your work through a pull request](../pull-requests) (PR).
+
+## Reporting an issue
 
 If you notice an error or want to suggest improvements to existing content, open
 an issue.
@@ -12,7 +39,7 @@ an issue.
    you to a GitHub issue page prepopulated with some headers.
 2. Describe the issue or suggestion for improvement. Provide as many details as
    you can.
-3. Click **Submit new issue**.
+3. Click **Create**.
 
 After submitting, check in on your issue occasionally or turn on GitHub
 notifications. It might take a few days until maintainers and approvers respond.

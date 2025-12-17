@@ -4,9 +4,9 @@ linkTitle: Instrument Nginx
 date: 2022-08-22
 author: >-
   [Debajit Das](https://github.com/debajitdas), [Kumar
-  Pratyus](https://github.com/kpratyus), [Severin
+  Pratyush](https://github.com/kpratyus), [Severin
   Neumann](https://github.com/svrnm) (Cisco)
-cSpell:ignore: Debajit Kumar Pratyus webserver
+cSpell:ignore: Debajit Kumar Pratyush webserver
 ---
 
 Apache HTTP Server and NGINX are the most popular web servers. It's most likely
@@ -369,7 +369,7 @@ You should now be able to apply what you have learned from this blog post to
 your own installation of NGINX. We would love to hear about your experience! If
 you run into any problems, [create an issue][].
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}
 
 [create an issue]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues

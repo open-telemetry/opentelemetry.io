@@ -14,7 +14,7 @@ managing the Dependency Injection.
 
 The PHP instrumentation may vary when using a different framework.
 
-[Quote service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quoteservice/)
+[Quote service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/quote/)
 
 ## Traces
 

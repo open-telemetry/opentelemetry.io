@@ -1,0 +1,23 @@
+{{/*
+
+  Return a slice of language codes for all locales as expected by Google
+  Translate.
+
+  Google Translate (GT) seems particular about language tags. For zh it needs to
+  be the full tag, including the region code: zh-cn. But for other languages, GT
+  seems to want only the primary subtag.
+
+  References:
+  - https://gohugo.io/methods/site/language/
+  - https://datatracker.ietf.org/doc/html/rfc5646
+
+  */ -}}
+
+{{ $locales := slice -}}
+{{ range site.Languages -}}
+  {{ $langCode := .LanguageCode -}}
+  {{ $primaryTag := index (split $langCode "-") 0 -}}
+  {{ $localeTagForGT := cond (eq .Lang "zh") .LanguageCode $primaryTag -}}
+  {{ $locales = $locales | append $localeTagForGT -}}
+{{ end -}}
+{{ return $locales -}}

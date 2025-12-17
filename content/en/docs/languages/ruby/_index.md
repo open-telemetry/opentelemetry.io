@@ -1,8 +1,9 @@
 ---
 title: Ruby
 description: >
-  <img width="35" class="img-initial" src="/img/logos/32x32/Ruby_SDK.svg"
-  alt="Ruby"> A language-specific implementation of OpenTelemetry in Ruby.
+  <img width="35" class="img-initial otel-icon"
+  src="/img/logos/32x32/Ruby_SDK.svg" alt="Ruby"> A language-specific
+  implementation of OpenTelemetry in Ruby.
 aliases: [/ruby, /ruby/metrics, /ruby/tracing]
 weight: 24
 ---

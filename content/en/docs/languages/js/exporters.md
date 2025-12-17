@@ -4,9 +4,9 @@ weight: 50
 description: Process and export your telemetry data
 ---
 
-{{% docs/languages/exporters/intro js %}}
+{{% docs/languages/exporters/intro %}}
 
-### Dependencies {#otlp-dependencies}
+## Dependencies {#otlp-dependencies}
 
 If you want to send telemetry data to an OTLP endpoint (like the
 [OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) or
@@ -43,7 +43,7 @@ npm install --save @opentelemetry/exporter-trace-otlp-grpc \
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Usage with Node.js
+## Usage with Node.js
 
 Next, configure the exporter to point at an OTLP endpoint. For example you can
 update the file `instrumentation.ts` (or `instrumentation.js` if you use
@@ -51,7 +51,7 @@ JavaScript) from the
 [Getting Started](/docs/languages/js/getting-started/nodejs/) like the following
 to export traces and metrics via OTLP (`http/protobuf`) :
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -116,7 +116,7 @@ sdk.start();
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Usage in the Browser
+## Usage in the Browser
 
 When you use the OTLP exporter in a browser-based application, you need to note
 that:
@@ -131,18 +131,18 @@ Below you will find instructions to use the right exporter, to configure your
 CSPs and CORS headers and what precautions you have to take when exposing your
 collector.
 
-#### Use OTLP exporter with HTTP/JSON or HTTP/protobuf
+### Use OTLP exporter with HTTP/JSON or HTTP/protobuf
 
 [OpenTelemetry Collector Exporter with gRPC][] works only with Node.js,
-therefore you are limited to use the [OpenTelemetry Collector Exporter
-with HTTP/JSON][] or [OpenTelemetry Collector Exporter with HTTP/protobuf][].
+therefore you are limited to use the [OpenTelemetry Collector Exporter with
+HTTP/JSON][] or [OpenTelemetry Collector Exporter with HTTP/protobuf][].
 
 Make sure that the receiving end of your exporter (collector or observability
 backend) accepts `http/json` if you are using [OpenTelemetry Collector Exporter
 with HTTP/JSON][], and that you are exporting your data to the right endpoint
 with your port set to 4318.
 
-#### Configure CSPs
+### Configure CSPs
 
 If your website is making use of Content Security Policies (CSPs), make sure
 that the domain of your OTLP endpoint is included. If your collector endpoint is
@@ -155,14 +155,15 @@ connect-src collector.example.com:4318/v1/traces
 If your CSP is not including the OTLP endpoint, you will see an error message,
 stating that the request to your endpoint is violating the CSP directive.
 
-#### Configure CORS headers
+### Configure CORS headers
 
 If your website and collector are hosted at a different origin, your browser
 might block the requests going out to your collector. You need to configure
 special headers for Cross-Origin Resource Sharing (CORS).
 
-The OpenTelemetry Collector provides [a feature][] for http-based receivers to add
-the required headers to allow the receiver to accept traces from a web browser:
+The OpenTelemetry Collector provides [a feature][] for http-based receivers to
+add the required headers to allow the receiver to accept traces from a web
+browser:
 
 ```yaml
 receivers:
@@ -179,7 +180,7 @@ receivers:
           max_age: 7200
 ```
 
-#### Securely expose your collector
+### Securely expose your collector
 
 To receive telemetry from a web application you need to allow the browsers of
 your end-users to send data to your collector. If your web application is
@@ -238,11 +239,11 @@ package and the `ConsoleMetricExporter` is included in the
 [`@opentelemetry/sdk-metrics`](https://www.npmjs.com/package/@opentelemetry/sdk-metrics)
 package:
 
-{{% docs/languages/exporters/jaeger %}}
+{{% include "exporters/jaeger.md" %}}
 
-{{% docs/languages/exporters/prometheus-setup %}}
+{{% include "exporters/prometheus-setup.md" %}}
 
-### Dependencies {#prometheus-dependencies}
+## Dependencies {#prometheus-dependencies}
 
 Install the
 [exporter package](https://www.npmjs.com/package/@opentelemetry/exporter-prometheus)
@@ -255,7 +256,7 @@ npm install --save @opentelemetry/exporter-prometheus
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Prometheus backend:
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import * as opentelemetry from '@opentelemetry/sdk-node';
@@ -295,9 +296,9 @@ With the above you can access your metrics at <http://localhost:9464/metrics>.
 Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
 the metrics from this endpoint.
 
-{{% docs/languages/exporters/zipkin-setup %}}
+{{% include "exporters/zipkin-setup.md" %}}
 
-### Dependencies {#zipkin-dependencies}
+## Dependencies {#zipkin-dependencies}
 
 To send your trace data to [Zipkin](https://zipkin.io/), you can use the
 `ZipkinExporter`.
@@ -313,7 +314,7 @@ npm install --save @opentelemetry/exporter-zipkin
 Update your OpenTelemetry configuration to use the exporter and to send data to
 your Zipkin backend:
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 import * as opentelemetry from '@opentelemetry/sdk-node';
@@ -344,9 +345,9 @@ const sdk = new opentelemetry.NodeSDK({
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% docs/languages/exporters/outro js "https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk_trace_base.SpanExporter.html" %}}
+{{% include "exporters/outro.md" `https://open-telemetry.github.io/opentelemetry-js/interfaces/_opentelemetry_sdk-trace-base.SpanExporter.html` %}}
 
-{{< tabpane text=true >}} {{% tab Typescript %}}
+{{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```ts
 /*instrumentation.ts*/
@@ -354,7 +355,7 @@ import * as opentelemetry from '@opentelemetry/sdk-node';
 import { getNodeAutoInstrumentations } from '@opentelemetry/auto-instrumentations-node';
 
 const sdk = new NodeSDK({
-  spanProcessor: new SimpleSpanProcessor(exporter),
+  spanProcessors: [new SimpleSpanProcessor(exporter)],
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();
@@ -370,15 +371,13 @@ const {
 } = require('@opentelemetry/auto-instrumentations-node');
 
 const sdk = new opentelemetry.NodeSDK({
-  spanProcessor: new SimpleSpanProcessor(exporter)
+  spanProcessors: [new SimpleSpanProcessor(exporter)],
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();
 ```
 
 {{% /tab %}} {{< /tabpane >}}
-
-{{% /docs/languages/exporters/outro %}}
 
 [content security policies]:
   https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/

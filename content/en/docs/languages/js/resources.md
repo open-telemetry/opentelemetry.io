@@ -1,8 +1,8 @@
 ---
 title: Resources
 weight: 70
-cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 description: Add details about your applications' environment to your telemetry
+cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 ---
 
 {{% docs/languages/resources-intro %}}
@@ -12,8 +12,8 @@ Node.js SDK.
 
 ## Setup
 
-Follow the instructions in the [Getting Started - Node.js][], so that you have the
-files `package.json`, `app.js` and `tracing.js`.
+Follow the instructions in the [Getting Started - Node.js][], so that you have
+the files `package.json`, `app.js` and `tracing.js`.
 
 {{% alert title="Note" color="info" %}}
 Much of OpenTelemetry JS documentation is written assuming the compiled application is run as CommonJS.
@@ -21,8 +21,8 @@ Much of OpenTelemetry JS documentation is written assuming the compiled applicat
 
 ## Process & Environment Resource Detection
 
-Out of the box, the Node.js SDK detects [process and process
-runtime resources][] and takes attributes from the environment variable
+Out of the box, the Node.js SDK detects [process and process runtime
+resources][] and takes attributes from the environment variable
 `OTEL_RESOURCE_ATTRIBUTES`. You can verify what it detects by turning on
 diagnostic logging in `tracing.js`:
 
@@ -95,16 +95,14 @@ configuration option, where you can set them. For example you can update the
 
 ```javascript
 ...
-const { Resource } = require('@opentelemetry/resources');
-const { SEMRESATTRS_SERVICE_NAME, SEMRESATTRS_SERVICE_NAMESPACE, SEMRESATTRS_SERVICE_VERSION, SEMRESATTRS_SERVICE_INSTANCE_ID } = require('@opentelemetry/semantic-conventions');
+const { resourceFromAttributes } = require('@opentelemetry/resources');
+const { ATTR_SERVICE_NAME, ATTR_SERVICE_VERSION } = require('@opentelemetry/semantic-conventions');
 ...
 const sdk = new opentelemetry.NodeSDK({
   ...
-  resource: new Resource({
-    [ SEMRESATTRS_SERVICE_NAME ]: "yourServiceName",
-    [ SEMRESATTRS_SERVICE_NAMESPACE ]: "yourNameSpace",
-    [ SEMRESATTRS_SERVICE_VERSION ]: "1.0",
-    [ SEMRESATTRS_SERVICE_INSTANCE_ID ]: "my-instance-id-1",
+  resource: resourceFromAttributes({
+    [ ATTR_SERVICE_NAME ]: "yourServiceName",
+    [ ATTR_SERVICE_VERSION ]: "1.0",
   })
   ...
 });
@@ -146,7 +144,7 @@ To get the ID of your container detected automatically for you, install the
 following additional dependency:
 
 ```sh
-npm install @opentelemetry/resource-detector-docker
+npm install @opentelemetry/resource-detector-container
 ```
 
 Next, update your `tracing.js` like the following:
@@ -158,8 +156,8 @@ const {
 } = require('@opentelemetry/auto-instrumentations-node');
 const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 const {
-  dockerCGroupV1Detector,
-} = require('@opentelemetry/resource-detector-docker');
+  containerDetector,
+} = require('@opentelemetry/resource-detector-container');
 
 // For troubleshooting, set the log level to DiagLogLevel.DEBUG
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
@@ -167,7 +165,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
   instrumentations: [getNodeAutoInstrumentations()],
-  resourceDetectors: [dockerCGroupV1Detector],
+  resourceDetectors: [containerDetector],
 });
 
 sdk.start();
@@ -188,7 +186,7 @@ $ docker run --rm -p 8080:8080 nodejs-otel-getting-started
 Listening for requests on http://localhost:8080
 DockerCGroupV1Detector found resource. Resource {
   attributes: {
-    'container.id': 'fffbeaf682f32ef86916f306ff9a7f88cc58048ab78f7de464da3c320ldb5c54'
+    'container.id': 'fffbeaf682f32ef86916f306ff9a7f88cc58048ab78f7de464da3c3201db5c54'
   }
 }
 ```
@@ -206,8 +204,8 @@ const {
 } = require('@opentelemetry/auto-instrumentations-node');
 const { diag, DiagConsoleLogger, DiagLogLevel } = require('@opentelemetry/api');
 const {
-  dockerCGroupV1Detector,
-} = require('@opentelemetry/resource-detector-docker');
+  containerDetector,
+} = require('@opentelemetry/resource-detector-container');
 const { envDetector, processDetector } = require('@opentelemetry/resources');
 
 // For troubleshooting, set the log level to DiagLogLevel.DEBUG
@@ -217,7 +215,7 @@ const sdk = new opentelemetry.NodeSDK({
   traceExporter: new opentelemetry.tracing.ConsoleSpanExporter(),
   instrumentations: [getNodeAutoInstrumentations()],
   // Make sure to add all detectors you need here!
-  resourceDetectors: [envDetector, processDetector, dockerCGroupV1Detector],
+  resourceDetectors: [envDetector, processDetector, containerDetector],
 });
 
 sdk.start();
@@ -253,9 +251,8 @@ DockerCGroupV1Detector found resource. Resource {
 ## Next steps
 
 There are more resource detectors you can add to your configuration, for example
-to get details about your [Cloud] environment or [Deployment][]. You will find a
-list
-[here](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/detectors/node).
+to get details about your [Cloud] environment or [Deployment]. For more, see the
+[packages named `resource-detector-*` in the opentelemetry-js-contrib repository](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages).
 
 [getting started - node.js]: /docs/languages/js/getting-started/nodejs/
 [process and process runtime resources]: /docs/specs/semconv/resource/process/

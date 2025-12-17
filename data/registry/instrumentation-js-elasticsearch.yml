@@ -14,3 +14,4 @@ authors:
 urls:
   repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-elasticsearch
 createdAt: 2021-03-05
+isFirstParty: false

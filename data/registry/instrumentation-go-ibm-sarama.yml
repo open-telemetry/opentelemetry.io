@@ -17,6 +17,7 @@ authors:
 urls:
   repo: https://github.com/dnwe/otelsarama
 createdAt: 2024-11-25
+isFirstParty: false
 package:
   name: github.com/dnwe/otelsarama
   registry: go

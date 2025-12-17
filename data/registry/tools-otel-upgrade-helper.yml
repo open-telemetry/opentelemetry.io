@@ -1,0 +1,19 @@
+# cSpell:ignore wbollock
+title: OpenTelemetry Collector Release Notes Comparator
+registryType: utilities
+language: go
+tags:
+  - collector
+  - upgrade
+  - visualization
+urls:
+  website: https://wbollock.github.io/otel_upgrade_helper/
+  repo: https://github.com/wbollock/otel_upgrade_helper
+license: Apache 2.0
+description:
+  Website to help operators read release notes and compare across OpenTelemetry
+  Collector versions.
+authors:
+  - name: wbollock
+    url: https://github.com/wbollock
+createdAt: 2025-09-30

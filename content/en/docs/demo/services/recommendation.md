@@ -8,7 +8,7 @@ cSpell:ignore: cpython instrumentor NOTSET
 This service is responsible to get a list of recommended products for the user
 based on existing product IDs the user is browsing.
 
-[Recommendation service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendationservice/)
+[Recommendation service source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/recommendation/)
 
 ## Auto-instrumentation
 
@@ -31,7 +31,7 @@ endpoints, resource attributes, and service name are automatically set by the
 OpenTelemetry auto instrumentor based on environment variables.
 
 ```python
-tracer = trace.get_tracer_provider().get_tracer("recommendationservice")
+tracer = trace.get_tracer_provider().get_tracer("recommendation")
 ```
 
 ### Add attributes to auto-instrumented spans
@@ -71,7 +71,7 @@ name are automatically set by the OpenTelemetry auto instrumentor based on
 environment variables.
 
 ```python
-meter = metrics.get_meter_provider().get_meter("recommendationservice")
+meter = metrics.get_meter_provider().get_meter("recommendation")
 ```
 
 ### Custom metrics
@@ -85,7 +85,8 @@ The following custom metrics are currently available:
 
 The following metrics are available through auto-instrumentation, courtesy of
 the `opentelemetry-instrumentation-system-metrics`, which is installed as part
-of `opentelemetry-bootstrap` on building the recommendationservice Docker image:
+of `opentelemetry-bootstrap` on building the recommendation service Docker
+image:
 
 - `runtime.cpython.cpu_time`
 - `runtime.cpython.memory`

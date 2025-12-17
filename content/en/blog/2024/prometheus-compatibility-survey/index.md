@@ -21,11 +21,11 @@ At this point, there is a
 describing how to convert between the
 [OpenTelemetry metrics data model](/docs/specs/otel/metrics/data-model/#opentelemetry-protocol-data-model)
 and
-[Prometheus metric formats](https://github.com/prometheus/docs/blob/main/content/docs/instrumenting/exposition_formats.md).
+[Prometheus metric formats](https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md).
 It has been used to implement Prometheus
 [(pull) exporters for OpenTelemetry SDKs](https://pkg.go.dev/go.opentelemetry.io/otel/exporters/prometheus),
 [OTLP export from Prometheus libraries](https://prometheus.github.io/client_java/otel/otlp/),
-[OTLP ingestion for the Prometheus server](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver),
+[OTLP ingestion for the Prometheus server](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver),
 and the OpenTelemetry Collector's
 [Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver),
 [Prometheus Remote Write exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusremotewriteexporter),
@@ -52,10 +52,10 @@ with the help of the [OpenTelemetry End User SIG](/community/end-user/).
 Deciding on the default translation approach is one of the last remaining
 blockers for stabilizing the compatibility specification.
 
-The survey received 86 responses (and 5 spam), and contained many helpful pieces
-of feedback. Thank you to everyone that participated! The questions and raw
-results can be found
-[here](https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-prom-interoperability/otel-prom-interoperability-survey.csv).
+The
+[survey received 86 responses (and 5 spam)](https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-prom-interoperability/otel-prom-interoperability-survey.csv),
+and contained many helpful pieces of feedback. Thank you to everyone that
+participated!
 
 ## Overall takeaways
 
@@ -88,9 +88,9 @@ of their opinions on units or delimiters.
 
 ## Dots and Underscores
 
-OpenTelemetry [specifies](/docs/specs/semconv/general/attribute-naming/) that
-conventions should use dots as the namespace delimiter, and underscores as the
-delimiter between "multi-word-dot-delimited components" (for example,
+OpenTelemetry [specifies](/docs/specs/semconv/general/naming/) that conventions
+should use dots as the namespace delimiter, and underscores as the delimiter
+between "multi-word-dot-delimited components" (for example,
 `http.response.status_code`). On the other hand, Prometheus
 [uses underscores](https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels)
 as its delimiter.
@@ -121,7 +121,7 @@ should not generally be included in the metric name. Prometheus conventions
 [recommend](https://prometheus.io/docs/practices/naming/#metric-names) that the
 unit be included as a suffix of the metric name. OpenMetrics goes a step further
 and
-[requires this unit suffix](https://github.com/OpenObservability/OpenMetrics/blob/main/specification/OpenMetrics.md#unit).
+[requires this unit suffix](https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#unit).
 Currently, when exporting in Prometheus format from an OpenTelemetry SDK, the
 unit is added as a suffix to the metric name.
 
@@ -175,10 +175,10 @@ existing conventions.
 
 For the most part, this feedback aligns with the future plans in the
 OpenTelemetry and Prometheus communities. The OpenTelemetry semantic conventions
-SIG is working on stabilizing conventions for a a wide variety of
-instrumentation. The OpenTelemetry Prometheus interoperability SIG is working on
-incorporating the results of this survey into the compatibility specification.
-The Prometheus community has
+SIG is working on stabilizing conventions for a wide variety of instrumentation.
+The OpenTelemetry Prometheus interoperability SIG is working on incorporating
+the results of this survey into the compatibility specification. The Prometheus
+community has
 [ambitious plans](https://prometheus.io/blog/2024/03/14/commitment-to-opentelemetry/)
 to add support for OpenTelemetry concepts.
 

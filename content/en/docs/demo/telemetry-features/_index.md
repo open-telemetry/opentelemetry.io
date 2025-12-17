@@ -2,7 +2,6 @@
 title: Telemetry Features
 linkTitle: Telemetry Features
 aliases: [demo_features, features]
-cSpell:ignore: flagd
 ---
 
 ## OpenTelemetry
@@ -56,3 +55,7 @@ cSpell:ignore: flagd
   that allows for the enabling and disabling of features in the application.
 - **[flagd](https://flagd.dev)**: a feature flagging daemon that is used to
   manage feature flags in the demo application.
+- **[llm](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/llm/)**:
+  a mock Large Language Model (LLM) that adheres to
+  [OpenAI's Chat Completions API](https://platform.openai.com/docs/api-reference/chat/create)
+  format and answers questions about a product.

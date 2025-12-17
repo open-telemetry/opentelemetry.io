@@ -126,14 +126,14 @@ The OpenTelemetry Operator is an implementation of a Kubernetes Operator. The
 operator manages the OpenTelemetry Collector and auto-instrumentation of the
 workloads using OpenTelemetry.
 
-For more information, see [K8s Operator](/docs/kubernetes/operator/).
+For more information, see [K8s Operator](/docs/platforms/kubernetes/operator/).
 
 ## Function as a Service assets
 
 OpenTelemetry supports various methods of monitoring Function-as-a-Service
 provided by different cloud vendors. The OpenTelemetry community currently
 provides pre-built Lambda layers able to auto-instrument your application as
-well as a the option of standalone Collector Lambda layer that can be used when
+well as the option of a standalone Collector Lambda layer that can be used when
 instrumenting applications manually or automatically.
 
-For more information, see [Functions as a Service](/docs/faas/).
+For more information, see [Functions as a Service](/docs/platforms/faas/).

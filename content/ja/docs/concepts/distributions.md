@@ -2,7 +2,7 @@
 title: ディストリビューション
 description: フォークと混同されがちですが、ディストリビューションは、OpenTelemetryコンポーネントのカスタマイズバージョンです。
 weight: 190
-default_lang_commit: 21d6bf0
+default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
 ---
 
 OpenTelemetryプロジェクトは、複数の[シグナル](../signals)をサポートする複数の[コンポーネント](../components)から構成されています。
@@ -13,7 +13,7 @@ OpenTelemetryの参照実装は以下の通りです。
 
 どの参照実装も、ディストリビューションとしてカスタマイズできます。
 
-## ディストリビューションとは何か
+## ディストリビューションとは何か {#what-is-a-distribution}
 
 ディストリビューションとは、OpenTelemetryコンポーネントのカスタマイズバージョンです。
 ディストリビューションは、アップストリームのOpenTelemetryリポジトリに、いくつかのカスタマイズを施したラッパーです。
@@ -39,13 +39,13 @@ OpenTelemetryの参照実装は以下の通りです。
   この例としては、OpenTelemetryコレクタープロジェクトにある計装ライブラリやレシーバー、プロセッサー、エクスポーター、拡張機能の削除などがあります。
   このようなディストリビューションは、サポートとセキュリティへの配慮を高めるために提供されることがあります。
 
-## 誰がディストリビューションを作成できますか
+## 誰がディストリビューションを作成できますか {#who-can-create-a-distribution}
 
 誰でもディストリビューションを作成できます。
 今日、いくつかの[ベンダー](/ecosystem/vendors/)が[ディストリビューション](/ecosystem/distributions/)を提供しています。
 くわえて、エンドユーザーは[レジストリ](/ecosystem/registry/)にあるコンポーネントのうち、OpenTelemetryプロジェクトにアップストリームされていないものを使いたい場合、ディストリビューションの作成を検討できます。
 
-## コントリビューターかディストリビューションか
+## コントリビューターかディストリビューションか {#contribution-or-distribution}
 
 この先を読み、あなた自身のディストリビューションを作成する方法を学ぶ前に、OpenTelemetryコンポーネントにあなたが追加しようと思うものが、誰にとっても有益で、それゆえ、参照実装に含まれるべきかどうか、検討してみてください。
 
@@ -55,21 +55,21 @@ OpenTelemetryの参照実装は以下の通りです。
 - テスト、パフォーマンス、セキュリティのカバレッジは、参照実装でもうまくいくか
 - あなたの追加機能が標準の一部となり得るかどうか、コミュニティに確認したか
 
-## 独自のディストリビューションを作成する
+## 独自のディストリビューションを作成する {#creating-your-own-distribution}
 
-### コレクター
+### コレクター {#collector}
 
 独自のディストリビューションを作成する方法については、[『独自のOpenTelemetryコレクターディストリビューションの構築』](https://medium.com/p/42337e994b63)のブログ記事を参照してください。
 
 独自のディストリビューションを構築する場合、[OpenTelemetry Collector Builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)が良い出発点になるかもしれません。
 
-### 言語固有の計装ライブラリ
+### 言語固有の計装ライブラリ {#language-specific-instrumentation-libraries}
 
 計装ライブラリをカスタマイズするための言語固有の拡張メカニズムがあります。
 
 - [Javaエージェント](/docs/zero-code/java/agent/extensions)
 
-## ガイドラインを守ろう
+## ガイドラインを守ろう {#follow-the-guidelines}
 
 ロゴや名称といったOpenTelemetryプロジェクトの付随物を配布物に使用する際は、[OpenTelemetry Marketing Guidelines for Contributing Organizations][guidelines]に沿っていることを確認してください。
 

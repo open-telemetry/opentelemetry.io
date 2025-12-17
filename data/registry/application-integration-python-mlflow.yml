@@ -1,0 +1,20 @@
+title: MLflow
+registryType: application integration
+language: python
+tags:
+  - python
+  - MLflow
+  - LLMs
+license: Apache-2.0
+description:
+  The MLflow tracing feature is built using OpenTelemetry, and allows users to
+  trace the execution of their generative AI applications.
+authors:
+  - name: MLflow Authors
+    url: https://github.com/mlflow
+urls:
+  website: https://mlflow.org/
+  repo: https://github.com/mlflow/mlflow/
+  docs: https://mlflow.org/docs/latest/llms/tracing/index.html
+createdAt: '2024-10-24'
+isNative: true

@@ -4,7 +4,7 @@ description: Context propagation for the PHP API
 weight: 60
 ---
 
-{{% docs/languages/propagation php %}}
+{{% docs/languages/propagation %}}
 
 Propagation is the mechanism that moves data between services and processes.
 Although not limited to tracing, propagation allows traces to build causal
@@ -17,9 +17,11 @@ HTTP headers.
 
 ## Automatic context propagation
 
-Auto-instrumentation exists for some popular PHP frameworks, such as Symfony,
-Laravel, or Slim. HTTP libraries propagate context for incoming and outgoing
-HTTP requests.
+Auto-instrumentation exists for some of the most popular frameworks, libraries,
+and PHP extensions. Many of them perform incoming and/or outgoing context
+propagation, and can be discovered through the
+[Registry](/ecosystem/registry/?language=php&component=instrumentation) or
+[Packagist](https://packagist.org/packages/open-telemetry/).
 
 {{% alert title="Note" %}}
 
@@ -31,24 +33,19 @@ instrumentation libraries are well-tested and easier to use.
 
 ### Incoming requests
 
-Auto-instrumentation for frameworks which implement the
-[PSR-15](https://www.php-fig.org/psr/psr-15/) `RequestHandlerInterface`
-automatically extract W3C tracecontext headers, create a root span, and set a
-remote parent for the root span.
+Context propagation can be automatically handled in a number of ways:
 
-```shell
-composer require open-telemetry/opentelemetry-auto-psr15
-```
+- by using a supported PHP Framework (for example: Laravel, Symfony, Slim) along
+  with its corresponding auto-instrumentation package
+- by implementing the [PSR-15](https://www.php-fig.org/psr/psr-15/)
+  `RequestHandlerInterface` in your code, along with its corresponding
+  auto-instrumentation package
+- by using the experimental [auto root span](../sdk/#configuration) feature
 
 ### Outgoing requests
 
-[PSR-18](https://www.php-fig.org/psr/psr-18/) auto-instrumentation automatically
-apply W3C tracecontext headers to outgoing HTTP requests for any library which
-implements the PSR-18 interface.
-
-```shell
-open-telemetry/opentelemetry-auto-psr18
-```
+Auto-instrumentation packages for HTTP clients and interfaces automatically
+inject W3C tracecontext headers to outgoing HTTP requests include.
 
 ## Manual context propagation
 

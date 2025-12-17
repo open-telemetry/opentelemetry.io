@@ -10,6 +10,7 @@ license: CC0 1.0
 description: Middlewares to integrate axum + tracing + opentelemetry.
 authors:
   - name: David Bernard
+    url: https://github.com/davidB/
 urls:
   repo: https://github.com/davidB/tracing-opentelemetry-instrumentation-sdk/tree/main/axum-tracing-opentelemetry
 createdAt: 2020-08-28
@@ -17,3 +18,4 @@ package:
   registry: crates
   name: axum-tracing-opentelemetry
   version: 0.16.0
+isFirstParty: false

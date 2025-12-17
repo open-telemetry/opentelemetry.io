@@ -13,3 +13,4 @@ authors:
 urls:
   repo: https://github.com/ravilushqa/otelgqlgen
 createdAt: 2021-11-03
+isFirstParty: false

@@ -1,8 +1,11 @@
 ---
 title: PHP
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/PHP.svg" alt="PHP">
-  A language-specific implementation of OpenTelemetry in PHP.
+  <img width="35" class="img-initial otel-icon" src="/img/logos/32x32/PHP.svg"
+  alt="PHP"> A language-specific implementation of OpenTelemetry in PHP.
+redirects:
+  - { from: /php/*, to: ':splat' }
+  - { from: /docs/php/*, to: ':splat' }
 weight: 21
 cSpell:ignore: mbstring opcache
 ---
@@ -12,13 +15,17 @@ cSpell:ignore: mbstring opcache
 ## Further Reading
 
 - [OpenTelemetry for PHP on GitHub](https://github.com/open-telemetry/opentelemetry-php)
-- [Installation](https://github.com/open-telemetry/opentelemetry-php#installation)
 - [Examples](https://github.com/open-telemetry/opentelemetry-php/tree/main/examples)
 
 ## Requirements
 
-OpenTelemetry for PHP requires a minimum PHP version of 7.4, and
-auto-instrumentation requires version 8.0+.
+OpenTelemetry SDK for PHP aims to support all officially supported PHP versions
+according to
+[www.php.net/supported-versions](https://www.php.net/supported-versions.php),
+and support will be dropped for PHP versions within 12 months of that version
+going End of Life.
+
+Auto-instrumentation requires PHP version 8.0+.
 
 ### Dependencies
 

@@ -6,7 +6,7 @@ linkTitle: Skyscanner using OTel Demo
 date: 2024-02-26
 author: >-
   [Jordi Bisbal Ansaldo](https://github.com/jordibisbal8) (Skyscanner)
-cSpell:ignore: Ansaldo Bisbal Jordi runbooks Skyscanner upskilled Yankova
+cSpell:ignore: Ansaldo Bisbal Jordi Skyscanner upskilled Yankova
 ---
 
 At [Skyscanner](https://www.skyscanner.net), as in many organizations, teams

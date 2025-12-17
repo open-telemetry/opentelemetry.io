@@ -1,9 +1,10 @@
 ---
 title: Collector
 description: Vendor-agnostic way to receive, process and export telemetry data.
-aliases: [collector/about]
+aliases: [./about]
+sidebar_root_for: children
 cascade:
-  vers: 0.107.0
+  vers: 0.142.0
 weight: 270
 ---
 
@@ -15,9 +16,7 @@ The OpenTelemetry Collector offers a vendor-agnostic implementation of how to
 receive, process and export telemetry data. It removes the need to run, operate,
 and maintain multiple agents/collectors. This works with improved scalability
 and supports open source observability data formats (e.g. Jaeger, Prometheus,
-Fluent Bit, etc.) sending to one or more open source or commercial backends. The
-local Collector agent is the default location to which instrumentation libraries
-export their telemetry data.
+Fluent Bit, etc.) sending to one or more open source or commercial backends.
 
 ## Objectives
 
@@ -52,18 +51,36 @@ It is also easier to [setup a collector](quick-start) than you might think: the
 default OTLP exporters in each language assume a local collector endpoint, so if
 you launch a collector it will automatically start receiving telemetry.
 
-## Status and releases
+## Collector security
 
-The **collector** status is: [mixed][], since core collector components
+Follow best practices to make sure your collectors are [hosted] and [configured]
+securely.
+
+## Status
+
+The **Collector** status is: [mixed][], since core Collector components
 currently have mixed [stability levels][].
 
 **Collector components** differ in their maturity levels. Each component has its
 stability documented in its `README.md`. You can find a list of all available
-collector components in the [registry][].
+Collector components in the [registry][].
 
-{{% docs/latest-release collector-releases /%}}
+Support is guaranteed for Collector software artifacts for a certain time period
+based on the artifact's intended audience. This support includes, at minimum,
+fixes for critical bugs and security issues. See the
+[support policies](https://github.com/open-telemetry/opentelemetry-collector/blob/main/VERSIONING.md)
+for more details.
 
-[registry]: /ecosystem/registry/?language=collector
+## Distributions and releases {#releases}
+
+For information about Collector distributions and releases, including the
+[latest release][], see [Distributions](distributions/).
+
+[configured]: /docs/security/config-best-practices/
+[hosted]: /docs/security/hosting-best-practices/
+[latest release]:
+  https://github.com/open-telemetry/opentelemetry-collector-releases/releases/latest
 [mixed]: /docs/specs/otel/document-status/#mixed
+[registry]: /ecosystem/registry/?language=collector
 [stability levels]:
   https://github.com/open-telemetry/opentelemetry-collector#stability-levels

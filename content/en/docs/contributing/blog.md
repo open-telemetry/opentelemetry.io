@@ -19,12 +19,28 @@ Note, that the focus of maintainers and approvers of the OpenTelemetry Website
 is to improve the documentation of the project, so your blog post will have a
 lower priority for review.
 
+## Social Media Content Request
+
+If you want to request the publication of content on the social media channels
+of the OpenTelemetry project, which aren't a blog post,
+[use this form](https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml).
+
 ## Before submitting a blog post
 
 Blog posts should not be commercial in nature and should consist of original
 content that applies broadly to the OpenTelemetry community. Blog posts should
 follow the policies outlined in the
 [Social Media Guide](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
+
+### Linking to GitHub repositories
+
+When linking to source code in GitHub repositories, do not link to the `main`
+(or other default) branch. Instead, link to a **specific commit** or a **tagged
+release** that reflects the state of the code at the time the blog post was
+written.
+
+This ensures that blog posts remain stable and do not break in the future as
+repositories evolve.
 
 Verify that your intended content broadly applies to the OpenTelemetry Community
 . Appropriate content includes:
@@ -34,6 +50,7 @@ Verify that your intended content broadly applies to the OpenTelemetry Community
 - Updates from Special Interest Groups
 - Tutorials and walkthroughs
 - OpenTelemetry Integrations
+- [Call for Contributors](#call-for-contributors)
 
 Unsuitable content includes:
 
@@ -55,7 +72,7 @@ with the following details:
   review that PR. That sponsor should ideally be from a different company.
 
 Maintainers of SIG Communication will verify, that your blog post satisfies all
-the requirements for being accepted. If you can not name a SIG/sponsor in your
+the requirements for being accepted. If you cannot name a SIG/sponsor in your
 initial issue details, they will also point you to an appropriate SIG, you can
 reach out to for sponsorship. Having a sponsor is optional, but having one
 increases the chance of having your blog post reviewed and approved more
@@ -63,6 +80,18 @@ quickly.
 
 If your issue has everything needed, a maintainer will verify that you can go
 ahead and submit your blog post.
+
+### Call for Contributors
+
+If you are proposing the creation of a new project or SIG, or if you are
+offering a donation to the OpenTelemetry project, you will need additional
+contributors to be successful with your proposal. To help you with that, you can
+propose a blog post that is a "Call for Contributors" (CfC).
+
+This requires, that you follow the processes for
+[new projects](https://github.com/open-telemetry/community/blob/main/project-management.md)
+and
+[donations](https://github.com/open-telemetry/community/blob/main/guides/contributor/donations.md).
 
 ## Submit a blog post
 
@@ -79,22 +108,22 @@ Follow these steps to create a post from the template:
 1. Run the following command from the repository root:
 
    ```sh
-   npx hugo new content/en/blog/2024/short-name-for-post.md
+   npx hugo new content/en/blog/$(date +%Y)/short-name-for-post.md
    ```
 
    If your post has images or other assets, run the following command:
 
    ```sh
-   npx hugo new content/en/blog/2024/short-name-for-post/index.md
+   npx hugo new content/en/blog/$(date +%Y)/short-name-for-post/index.md
    ```
 
-1. Edit the Markdown file at the path you provided in the previous command. The
+2. Edit the Markdown file at the path you provided in the previous command. The
    file is initialized from the blog-post starter under
    [archetypes](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/).
 
-1. Put assets, like images or other files, into the folder you've created.
+3. Put assets, like images or other files, into the folder you've created.
 
-1. When your post is ready, submit it through a pull request.
+4. When your post is ready, submit it through a pull request.
 
 ### Use the GitHub UI
 
@@ -110,8 +139,9 @@ new post. Follow these steps to add a post using the UI:
 
 1.  Paste the content from the template you copied in the first step.
 
-1.  Name your file, for example
-    `content/en/blog/2022/short-name-for-your-blog-post/index.md`.
+1.  Name your file, for example (`YYYY` is the current year):
+
+    `content/en/blog/YYYY/short-name-for-your-blog-post/index.md`.
 
 1.  Edit the Markdown file in GitHub.
 
@@ -127,3 +157,19 @@ The OpenTelemetry blog doesn't follow a strict publication timeline, this means:
   publication at or before a certain date.
 - Certain blog posts (major announcements) take precedence and may be published
   before your blog post.
+
+## Cross-posting blog content
+
+If you'd like to share your OpenTelemetry blog post on another platform, you're
+welcome to do so. Just keep the following in mind:
+
+- Decide which version will be the canonical post (typically the original
+  OpenTelemetry blog post).
+- Other versions of the post should:
+  - Clearly mention that the original post appeared on the OpenTelemetry blog.
+  - Include a link back to the original at the top or bottom of the page.
+  - Set a canonical URL tag pointing to the OpenTelemetry blog post, if the
+    platform supports it.
+
+This helps ensure proper attribution, supports SEO best practices, and avoids
+content duplication.

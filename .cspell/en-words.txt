@@ -1,6 +1,8 @@
 # Words listed here are only for their spelling. If there is a certain way to
 # capitalize the word, add capitalization rules to text-lint rules in
 # .textlintrc.yml
+#
+# cSpell:ignore textlintrc
 
 accountingservice
 actix
@@ -8,6 +10,7 @@ adservice
 alibaba
 Alolita
 APAC
+apidocs
 appdynamics
 appender
 appenders
@@ -24,7 +27,9 @@ cassandra
 checkoutservice
 Chronosphere
 classpath
+cmelius
 cncf
+configurator
 comms
 currencyservice
 daemonset
@@ -33,11 +38,13 @@ discoverability
 dotnet
 Dyla
 dynatrace
+ebpf
 emailservice
 EMEA
 erlang
 errorf
 featureflagservice
+flagd
 frauddetectionservice
 frontendproxy
 github
@@ -52,6 +59,7 @@ jaeger
 jaegertracing
 javaagent
 javadoc
+javadocs
 jboss
 jdbc
 julia
@@ -66,6 +74,8 @@ lifecycles
 lightstep
 Loffay
 Mancuso
+Marylia
+melius
 microservices
 mongodb
 ndjson
@@ -85,6 +95,7 @@ otel-endusers
 otelcol
 otep
 otlp
+Otmar
 packagist
 pageinfo
 Paixão
@@ -103,10 +114,12 @@ quantile
 quantiles
 quarkus
 quoteservice
+react-native-app
 recommendationservice
 redis
-relref
 Rexed
+runbook
+runbooks
 Rynn
 semconv
 servlet
@@ -129,6 +142,7 @@ traceparent
 traefik
 Trask
 uids
+unconference
 unsampled
 unshallow
 upstreamed

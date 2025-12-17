@@ -13,3 +13,4 @@ description: javalin instrumentation
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-07-08
+isFirstParty: false

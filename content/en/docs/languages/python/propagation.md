@@ -2,6 +2,7 @@
 title: Propagation
 description: Context propagation for the Python SDK
 weight: 65
+cSpell:ignore: sqlcommenter
 ---
 
 Propagation is the mechanism that moves data between services and processes.
@@ -36,7 +37,7 @@ First, on the sending service, inject the current `context`:
 ```python
 from flask import Flask
 import requests
-from opentelemetry import trace, propagators, baggage
+from opentelemetry import trace, baggage
 from opentelemetry.trace.propagation.tracecontext import TraceContextTextMapPropagator
 from opentelemetry.baggage.propagation import W3CBaggagePropagator
 from opentelemetry.sdk.trace import TracerProvider
@@ -109,6 +110,23 @@ if __name__ == '__main__':
 
 From there, when you have a deserialized active context, you can create spans
 that are part of the same trace from the other service.
+
+### sqlcommenter
+
+Some Python instrumentations support sqlcommenter, which enriches database query
+statements with contextual information. Queries made with sqlcommenter enabled
+will have configurable key-value pairs appended to them. For example:
+
+```sql
+"select * from auth_users; /*traceparent=00-01234567-abcd-01*/"
+```
+
+This supports context propagation between database client and server when
+database log records are enabled. For more information, see:
+
+- [OpenTelemetry Python sqlcommenter example](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/sqlcommenter/)
+- [Semantic Conventions - Database Spans](/docs/specs/semconv/database/database-spans/#sql-commenter)
+- [sqlcommenter](https://google.github.io/sqlcommenter/)
 
 ## Next steps
 

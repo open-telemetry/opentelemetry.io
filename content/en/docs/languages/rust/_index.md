@@ -1,7 +1,7 @@
 ---
 title: Rust
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/Rust.svg"
+  <img width="35" class="img-initial otel-icon" src="/img/logos/32x32/Rust.svg"
   alt="Rust"> A language-specific implementation of OpenTelemetry in Rust.
 weight: 26
 cSpell:ignore: stackdriver
@@ -30,4 +30,4 @@ OpenTelemetry for Rust publishes the following crates:
 
 ## Further Reading
 
-- [Ecosystem](https://github.com/open-telemetry/opentelemetry-rust#ecosystem)
+- [Overview of crates](https://github.com/open-telemetry/opentelemetry-rust#overview-of-crates)

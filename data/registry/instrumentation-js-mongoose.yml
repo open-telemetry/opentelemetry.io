@@ -14,3 +14,4 @@ authors:
 urls:
   repo: https://github.com/wdalmut/opentelemetry-plugin-mongoose
 createdAt: 2020-04-09
+isFirstParty: false

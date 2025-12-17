@@ -1,0 +1,26 @@
+# cSpell:ignore throttlingtroll
+title: ThrottlingTroll
+registryType: instrumentation
+language: dotnet
+license: MIT
+tags:
+  - throttlingtroll
+  - .net
+  - instrumentation
+description:
+  ThrottlingTroll is a rate limiting/throttling/circuit-breaking middleware for
+  ASP.NET Core and Azure Functions. ThrottlingTroll is instrumented with OTel,
+  so you can clearly see and measure how it works.
+authors:
+  - name: ThrottlingTroll Project
+    url: https://github.com/ThrottlingTroll
+urls:
+  website: https://github.com/ThrottlingTroll
+  repo: https://github.com/ThrottlingTroll/ThrottlingTroll
+  docs: https://github.com/ThrottlingTroll/ThrottlingTroll/wiki#telemetry
+createdAt: 2024-10-28
+isNative: true
+package:
+  name: ThrottlingTroll
+  registry: nuget
+  version: 8.0.0

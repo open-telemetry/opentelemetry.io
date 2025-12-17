@@ -1,0 +1,28 @@
+{{/* Generate rules for `aliases` page param. */ -}}
+{{/* cSpell:ignore cond */ -}}
+
+{{ $p := . -}}
+{{ range $alias := $p.Aliases -}}
+  {{ if not (strings.HasPrefix $alias "/") -}}
+    {{ $alias = partial "relative-redirects-alias"
+        (dict
+          "alias" $alias
+          "p" (cond (strings.HasPrefix $alias "./") $p $p.Parent)
+        ) -}}
+  {{ end -}}
+  {{ $alias | printf "%-35s" }} {{ $p.RelPermalink }}
+{{ end -}}
+
+{{- define "partials/relative-redirects-alias" -}}
+  {{ $result := "" }}
+  {{ if strings.HasPrefix .alias "../" }}
+    {{ $result = (partial "relative-redirects-alias"
+          (dict
+            "alias" (strings.TrimPrefix "../" .alias)
+            "p" .p.Parent ))
+    }}
+  {{ else }}
+    {{ $result = path.Join .p.RelPermalink .alias }}
+  {{ end }}
+  {{ return $result }}
+{{ end -}}

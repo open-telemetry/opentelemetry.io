@@ -10,6 +10,7 @@ license: Apache 2.0
 description: Alpine Linux packages in support of opentelemetry-cpp.
 authors:
   - name: Severin Neumann
+    url: https://github.com/svrnm
 urls:
   repo: https://pkgs.alpinelinux.org/packages?name=opentelemetry-cpp-*
 createdAt: 2023-02-13

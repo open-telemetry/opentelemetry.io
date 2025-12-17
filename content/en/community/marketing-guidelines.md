@@ -1,6 +1,7 @@
 ---
 title: OpenTelemetry Marketing Guidelines for Contributing Organizations
 linkTitle: Marketing Guidelines
+weight: 999
 cSpell:ignore: devstats
 ---
 

@@ -4,14 +4,20 @@
 version: '0.2'
 language: en-US
 import:
+  - '@cspell/dict-bn/cspell-ext.json'
   - '@cspell/dict-es-es/cspell-ext.json'
+  - '@cspell/dict-fr-fr/cspell-ext.json'
   - '@cspell/dict-pt-br/cspell-ext.json'
+  - '@cspell/dict-ro-ro/cspell-ext.json'
+  - '@cspell/dict-uk-ua/cspell-ext.json'
 caseSensitive: true
 ignorePaths:
   - '*.svg'
-  - vendors.yaml
-  - content/ja
-  - content/zh
+  - content/{ja,zh}
+  - data/community/members.yaml
+  - data/ecosystem/vendors.yaml
+  - public/_redirects
+  - static/refcache.json
 patterns:
   - name: CodeBlock
     pattern: |
@@ -19,7 +25,7 @@ patterns:
           ^(\s*[~`]{3,})   # code-block start
           .*               # all languages and options, e.g. shell {hl_lines=[12]}
           [\s\S]*?         # content
-          \1               # code-block end
+          \1               # code-block end - cSpell:disable-next-line
       /igmx
 languageSettings:
   - languageId: markdown
@@ -28,18 +34,34 @@ languageSettings:
 dictionaryDefinitions:
   - name: en-words
     path: .cspell/en-words.txt
+  - name: bn-words
+    path: .cspell/bn-words.txt
   - name: es-palabras
     path: .cspell/es-palabras.txt
+  - name: fr-mots
+    path: .cspell/fr-mots.txt
   - name: pt-palavras
     path: .cspell/pt-palavras.txt
+  - name: ro-words
+    path: .cspell/ro-words.txt
+  - name: uk-words
+    path: .cspell/uk-words.txt
 dictionaries:
   # Natural languages
+  - bn
   - es-es
+  - fr-fr
   - pt-br
+  - ro-ro
+  - uk-ua
   # Local word lists
+  - bn-words
   - en-words
   - es-palabras
+  - fr-mots
   - pt-palavras
+  - ro-words
+  - uk-words
   # Programming languages and software terms
   - cpp
   - dotnet
@@ -48,3 +70,13 @@ dictionaries:
   - softwareTerms
   # Other
   - companies
+words: # Valid words across all locales
+  - Docsy
+  - errorf
+  - Goldmark
+  - htmltest
+  - jsonify
+  - nvmrc
+  - opentelemetrybot
+  - warnf
+  - warnidf

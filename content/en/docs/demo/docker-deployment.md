@@ -2,7 +2,7 @@
 title: Docker deployment
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otelcollector otlphttp spanmetrics tracetest
+cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->
@@ -10,10 +10,10 @@ cSpell:ignore: otelcollector otlphttp spanmetrics tracetest
 ## Prerequisites
 
 - Docker
-- [Docker Compose](https://docs.docker.com/compose/install/#install-compose)
-  v2.0.0+
+- [Docker Compose](https://docs.docker.com/compose/install/) v2.0.0+
 - Make (optional)
 - 6 GB of RAM for the application
+- 14 GB of disk space
 
 ## Get and run the demo
 
@@ -50,13 +50,13 @@ docker compose up --force-recreate --remove-orphans --detach
     {{< tabpane text=true >}} {{% tab Make %}}
 
 ```shell
-make start-odd
+make run-tracetesting
 ```
 
     {{% /tab %}} {{% tab Docker %}}
 
 ```shell
-docker compose --profile odd up --force-recreate --remove-orphans --detach
+docker compose -f docker-compose-tests.yml run traceBasedTests
 ```
 
     {{% /tab %}} {{< /tabpane >}}
@@ -69,7 +69,9 @@ Once the images are built and containers are started you can access:
 - Grafana: <http://localhost:8080/grafana/>
 - Load Generator UI: <http://localhost:8080/loadgen/>
 - Jaeger UI: <http://localhost:8080/jaeger/ui/>
-- Tracetest UI: <http://localhost:11633/>, only when using `make start-odd`
+- Tracetest UI: <http://localhost:11633/>, only when using
+  `make run-tracetesting`
+- Flagd configurator UI: <http://localhost:8080/feature>
 
 ## Changing the demo's primary port number
 
@@ -107,7 +109,7 @@ configuration from two files:
 - `otelcol-config-extras.yml`
 
 To add your backend, open the file
-[src/otelcollector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otelcollector/otelcol-config-extras.yml)
+[src/otel-collector/otelcol-config-extras.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config-extras.yml)
 with an editor.
 
 - Start by adding a new exporter. For example, if your backend supports OTLP
@@ -129,10 +131,10 @@ with an editor.
         exporters: [spanmetrics, otlphttp/example]
   ```
 
-{{% alert title="Note" color="info" %}} When merging YAML values with the
-Collector, objects are merged and arrays are replaced. The `spanmetrics`
-exporter must be included in the array of exporters for the `traces` pipeline if
-overridden. Not including this exporter will result in an error. {{% /alert %}}
+{{% alert title="Note" %}} When merging YAML values with the Collector, objects
+are merged and arrays are replaced. The `spanmetrics` exporter must be included
+in the array of exporters for the `traces` pipeline if overridden. Not including
+this exporter will result in an error. {{% /alert %}}
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require
@@ -143,4 +145,4 @@ After updating the `otelcol-config-extras.yml`, start the demo by running
 `make start`. After a while, you should see the traces flowing into your backend
 as well.
 
-[^1]: {{% _param notes.docker-compose-v2 %}}
+[^1]: {{% param notes.docker-compose-v2 %}}

@@ -1,0 +1,48 @@
+{{ with .Params.canonical_url -}}
+
+<link rel="canonical" href="{{ . }}">
+
+{{- else -}}
+
+  {{ $canonicalURL := .Permalink -}}
+
+  {{ $defaultLang := "en" -}}
+  {{ if and (ne .Language.Lang $defaultLang) .File -}}
+    {{/* This page is in a non-default-language section */ -}}
+    {{ $pagePath := strings.TrimPrefix (add hugo.WorkingDir "/content/") .File.Filename -}}
+    {{ if hasPrefix $pagePath $defaultLang -}}
+
+      {{/* This page is actually a default-language fallback page. Use the link
+      to the origin of the fallback page as canonical reference. */ -}}
+
+      {{ $translationPages := where .Translations "Lang" $defaultLang -}}
+      {{ $translation := index $translationPages 0 -}}
+      {{ with $translation -}}
+        {{ $canonicalURL = .Permalink -}}
+      {{ end -}}
+    {{ end -}}
+  {{ end -}}
+  <link rel="canonical" href="{{ $canonicalURL }}" data-proofer-ignore>
+
+{{- end -}}
+
+<script
+  async
+  src="https://widget.kapa.ai/kapa-widget.bundle.js"
+  data-website-id="2b645d39-e001-4c2b-bfbd-aa4f25453385"
+  data-project-name="OpenTelemetry"
+  data-project-color="#f5a800"
+  data-project-logo="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png"
+  data-button-hide="true"
+  data-modal-open-on-command-k="true"
+  data-modal-override-open-id="ask-ai-trigger"
+  data-modal-border-radius="8px"
+  data-modal-header-bg-color="#4f62ad"
+  data-modal-title='{{ T "ui_search_ai_modal_title" }}'
+  data-modal-title-color="#ffffff"
+  data-modal-body-bg-color="#ffffff"
+  data-query-input-border-color="#f5a800"
+  data-modal-disclaimer="{{ T "ui_search_ai_modal_disclaimer" }}"
+  data-font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+</script>
+{{/* */ -}}

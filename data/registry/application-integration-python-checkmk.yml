@@ -1,0 +1,22 @@
+# cspell:ignore checkmk
+title: Distributed tracing of Checkmk with OpenTelemetry
+registryType: application integration
+language: python
+tags:
+  - Python
+  - Checkmk
+urls:
+  repo: https://github.com/Checkmk/checkmk
+  docs: https://checkmk.com/werk/16565
+  website: https://checkmk.com
+license: GPL-2.0
+description:
+  With this integration we introduced a new way for the developers to look
+  deeper into what happens inside Checkmk through the use of OpenTelemetry
+  traces, so that everyone using Checkmk could enjoy monitoring their
+  infrastructure with a tool with the best performance and fewer bottlenecks.
+authors:
+  - name: Checkmk GmbH
+    email: community@checkmk.com
+createdAt: 2024-08-22
+isNative: True

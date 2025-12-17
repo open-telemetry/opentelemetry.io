@@ -1,0 +1,151 @@
+_filename-error
+The following package was not found and will be installed
+
+# Missing translation IDs as reported by Hugo's --printI18nWarnings
+#
+# Note that the pt and zh warnings are related to
+# https://github.com/open-telemetry/opentelemetry.io/issues/8481
+#
+# Not used unless `hugo --printI18nWarnings` is used.
+
+WARN  i18n|MISSING_TRANSLATION|bn|ui_search_ai_modal_title
+WARN  i18n|MISSING_TRANSLATION|bn|ui_search_ai_modal_disclaimer
+WARN  i18n|MISSING_TRANSLATION|bn|ui_search_ai_popover_content
+WARN  i18n|MISSING_TRANSLATION|bn|feedback_title
+WARN  i18n|MISSING_TRANSLATION|bn|feedback_question
+WARN  i18n|MISSING_TRANSLATION|bn|feedback_positive
+WARN  i18n|MISSING_TRANSLATION|bn|feedback_negative
+WARN  i18n|MISSING_TRANSLATION|es|ui_search_ai_modal_title
+WARN  i18n|MISSING_TRANSLATION|es|ui_search_ai_modal_disclaimer
+WARN  i18n|MISSING_TRANSLATION|es|ui_search_ai_popover_content
+WARN  i18n|MISSING_TRANSLATION|fr|ui_search_ai_modal_title
+WARN  i18n|MISSING_TRANSLATION|fr|ui_search_ai_modal_disclaimer
+WARN  i18n|MISSING_TRANSLATION|fr|ui_search_ai_popover_content
+WARN  i18n|MISSING_TRANSLATION|ja|ui_search_ai_modal_title
+WARN  i18n|MISSING_TRANSLATION|ja|ui_search_ai_modal_disclaimer
+WARN  i18n|MISSING_TRANSLATION|ja|ui_search_ai_popover_content
+WARN  i18n|MISSING_TRANSLATION|pt|community_introduce
+WARN  i18n|MISSING_TRANSLATION|pt|community_learn
+WARN  i18n|MISSING_TRANSLATION|pt|ui_read_more
+WARN  i18n|MISSING_TRANSLATION|pt|ui_search_ai_modal_title
+WARN  i18n|MISSING_TRANSLATION|pt|ui_search_ai_modal_disclaimer
+WARN  i18n|MISSING_TRANSLATION|pt|community_using
+WARN  i18n|MISSING_TRANSLATION|pt|community_develop
+WARN  i18n|MISSING_TRANSLATION|pt|community_contribute
+WARN  i18n|MISSING_TRANSLATION|pt|community_how_to
+WARN  i18n|MISSING_TRANSLATION|pt|community_guideline
+WARN  i18n|MISSING_TRANSLATION|pt|ui_search_ai_popover_content
+WARN  i18n|MISSING_TRANSLATION|pt|ui_search
+WARN  i18n|MISSING_TRANSLATION|pt|footer_all_rights_reserved
+WARN  i18n|MISSING_TRANSLATION|pt|post_view_this
+WARN  i18n|MISSING_TRANSLATION|pt|post_edit_this
+WARN  i18n|MISSING_TRANSLATION|pt|post_create_child_page
+WARN  i18n|MISSING_TRANSLATION|pt|post_create_issue
+WARN  i18n|MISSING_TRANSLATION|pt|post_byline_by
+WARN  i18n|MISSING_TRANSLATION|pt|post_last_mod
+WARN  i18n|MISSING_TRANSLATION|pt|post_posts_in
+WARN  i18n|MISSING_TRANSLATION|pt|ui_in
+WARN  i18n|MISSING_TRANSLATION|pt|feedback_title
+WARN  i18n|MISSING_TRANSLATION|pt|feedback_question
+WARN  i18n|MISSING_TRANSLATION|pt|feedback_positive
+WARN  i18n|MISSING_TRANSLATION|pt|feedback_negative
+WARN  i18n|MISSING_TRANSLATION|pt|ui_pager_prev
+WARN  i18n|MISSING_TRANSLATION|pt|ui_pager_next
+WARN  i18n|MISSING_TRANSLATION|uk|ui_search_ai_modal_title
+WARN  i18n|MISSING_TRANSLATION|uk|ui_search_ai_modal_disclaimer
+WARN  i18n|MISSING_TRANSLATION|uk|ui_search_ai_popover_content
+WARN  i18n|MISSING_TRANSLATION|zh|community_introduce
+WARN  i18n|MISSING_TRANSLATION|zh|community_learn
+WARN  i18n|MISSING_TRANSLATION|zh|community_using
+WARN  i18n|MISSING_TRANSLATION|zh|community_develop
+WARN  i18n|MISSING_TRANSLATION|zh|community_contribute
+WARN  i18n|MISSING_TRANSLATION|zh|community_how_to
+WARN  i18n|MISSING_TRANSLATION|zh|community_guideline
+WARN  i18n|MISSING_TRANSLATION|zh|ui_search_ai_modal_title
+WARN  i18n|MISSING_TRANSLATION|zh|ui_search_ai_modal_disclaimer
+WARN  i18n|MISSING_TRANSLATION|zh|ui_search_ai_popover_content
+WARN  i18n|MISSING_TRANSLATION|zh|ui_search
+WARN  i18n|MISSING_TRANSLATION|zh|footer_all_rights_reserved
+WARN  i18n|MISSING_TRANSLATION|zh|post_view_this
+WARN  i18n|MISSING_TRANSLATION|zh|post_edit_this
+WARN  i18n|MISSING_TRANSLATION|zh|post_create_child_page
+WARN  i18n|MISSING_TRANSLATION|zh|post_create_issue
+WARN  i18n|MISSING_TRANSLATION|zh|post_posts_in
+WARN  i18n|MISSING_TRANSLATION|zh|ui_in
+WARN  i18n|MISSING_TRANSLATION|zh|post_last_mod
+WARN  i18n|MISSING_TRANSLATION|zh|ui_read_more
+WARN  i18n|MISSING_TRANSLATION|zh|post_byline_by
+WARN  i18n|MISSING_TRANSLATION|zh|feedback_title
+WARN  i18n|MISSING_TRANSLATION|zh|feedback_question
+WARN  i18n|MISSING_TRANSLATION|zh|feedback_positive
+WARN  i18n|MISSING_TRANSLATION|zh|feedback_negative
+WARN  i18n|MISSING_TRANSLATION|zh|ui_pager_prev
+WARN  i18n|MISSING_TRANSLATION|zh|ui_pager_next
+
+# Ignore warnings that first appeared in:
+#
+# - https://github.com/open-telemetry/opentelemetry.io/pull/8469
+#
+# For more context and tracking see:
+#
+# - https://github.com/open-telemetry/opentelemetry.io/issues/8481
+#
+# Drop once Hugo is fixed, via https://github.com/gohugoio/hugo/issues/7982
+# or @chalin's PR (TBC). cSpell:disable-line
+
+# pt
+
+WARN  Failed to get translated string for language "pt" and ID "community_contribute": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "community_develop": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "community_guideline": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "community_how_to": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "community_introduce": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "community_learn": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "community_using": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "feedback_negative": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "feedback_positive": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "feedback_question": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "feedback_title": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "footer_all_rights_reserved": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "post_byline_by": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "post_create_child_page": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "post_create_issue": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "post_edit_this": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "post_last_mod": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "post_posts_in": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "post_view_this": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "toc_on_this_page": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "toc_top_of_page": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "ui_in": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "ui_pager_next": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "ui_pager_prev": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "ui_read_more": %!s(<nil>)
+WARN  Failed to get translated string for language "pt" and ID "ui_search": %!s(<nil>)
+
+
+# zh
+
+WARN  Failed to get translated string for language "zh" and ID "community_contribute": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "community_develop": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "community_guideline": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "community_how_to": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "community_introduce": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "community_learn": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "community_using": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "feedback_negative": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "feedback_positive": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "feedback_question": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "feedback_title": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "footer_all_rights_reserved": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "post_byline_by": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "post_create_child_page": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "post_create_issue": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "post_edit_this": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "post_last_mod": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "post_posts_in": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "post_view_this": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "ui_in": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "ui_pager_next": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "ui_pager_prev": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "ui_read_more": %!s(<nil>)
+WARN  Failed to get translated string for language "zh" and ID "ui_search": %!s(<nil>)

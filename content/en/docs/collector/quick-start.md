@@ -1,10 +1,9 @@
 ---
 title: Quick start
-cSpell:ignore: docker dokey dpkg okey telemetrygen
 description: Setup and collect telemetry in minutes!
 aliases: [getting-started]
 weight: 1
-cSpell:ignore: gobin
+cSpell:ignore: docker dokey gobin okey telemetrygen
 ---
 
 <!-- markdownlint-disable ol-prefix blanks-around-fences -->
@@ -40,7 +39,7 @@ preferred shell.
 
 ## Set up the environment
 
-1. Pull in the OpenTelemetry Collector Docker image:
+1. Pull in the OpenTelemetry Collector core Docker image:
 
    ```sh
    docker pull otel/opentelemetry-collector:{{% param vers %}}
@@ -57,11 +56,13 @@ preferred shell.
 
 ## Generate and collect telemetry
 
-3. Launch the Collector:
+3. Launch the Collector, listening on ports 4317 (for OTLP gRPC), 4318 (for OTLP
+   HTTP) and 55679 (for ZPages):
 
    ```sh
    docker run \
      -p 127.0.0.1:4317:4317 \
+     -p 127.0.0.1:4318:4318 \
      -p 127.0.0.1:55679:55679 \
      otel/opentelemetry-collector:{{% param vers %}} \
      2>&1 | tee collector-output.txt # Optionally tee output for easier search later
@@ -127,7 +128,7 @@ preferred shell.
 In this tutorial you've started the OpenTelemetry Collector and sent telemetry
 to it. As next steps, consider doing the following:
 
-- Explore different ways to [install the Collector](../installation/).
+- Explore different ways to [install the Collector](../install/).
 - Learn about the different modes of the Collector in
   [Deployment Methods](../deployment/).
 - Familiarize yourself with the Collector
@@ -135,7 +136,7 @@ to it. As next steps, consider doing the following:
 - Explore available components in the
   [registry](/ecosystem/registry/?language=collector).
 - Learn how to
-  [build a custom Collector with the OpenTelemetry Collector Builder (OCB)](/docs/collector/custom-collector/).
+  [build a custom Collector with the OpenTelemetry Collector Builder (OCB)](/docs/collector/extend/ocb/).
 
 [gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
 [logs]: /docs/concepts/signals/logs/

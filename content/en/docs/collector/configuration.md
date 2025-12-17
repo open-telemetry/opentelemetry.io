@@ -3,7 +3,7 @@ title: Configuration
 weight: 20
 description: Learn how to configure the Collector to suit your needs
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca loglevel OIDC oidc otlphttp pprof prodevent prometheusremotewrite servicegraph spanevents spanmetrics struct upsert zpages
+cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -14,7 +14,8 @@ the following content:
 
 - [Data collection concepts][dcc], to understand the repositories applicable to
   the OpenTelemetry Collector.
-- [Security guidance](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
+- [Security guidance for end users](/docs/security/config-best-practices/)
+- [Security guidance for component developers](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md)
 
 ## Location {#location}
 
@@ -30,6 +31,17 @@ example:
 otelcol --config=customconfig.yaml
 ```
 
+You can also provide multiple configurations using multiple files at different
+paths. Each file can be a full or partial configuration, and the files can
+reference components from each other. If the merger of files does not constitute
+a complete configuration, the user receives an error since required components
+are not added by default. Pass in multiple file paths at the command line as
+follows:
+
+```shell
+otelcol --config=file:/path/to/first/file --config=file:/path/to/second/file
+```
+
 You can also provide configurations using environment variables, HTTP URIs, or
 YAML paths. For example:
 
@@ -38,7 +50,7 @@ otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR --config=https://server/config.yaml
 otelcol --config="yaml:exporters::debug::verbosity: normal"
 ```
 
-{{% alert title="Tip" color="primary" %}}
+{{% alert title="Tip" %}}
 
 When referring to nested keys in YAML paths, make sure to use double colons (::)
 to avoid confusion with namespaces that contain dots. For example:
@@ -58,13 +70,13 @@ The structure of any Collector configuration file consists of four classes of
 pipeline components that access telemetry data:
 
 - [Receivers](#receivers)
-  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Receivers.svg">
+  <img width="32" alt="" class="img-initial otel-icon" src="/img/logos/32x32/Receivers.svg">
 - [Processors](#processors)
-  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Processors.svg">
+  <img width="32" alt="" class="img-initial otel-icon" src="/img/logos/32x32/Processors.svg">
 - [Exporters](#exporters)
-  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Exporters.svg">
+  <img width="32" alt="" class="img-initial otel-icon" src="/img/logos/32x32/Exporters.svg">
 - [Connectors](#connectors)
-  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg">
+  <img width="32" alt="" class="img-initial otel-icon" src="/img/logos/32x32/Load_Balancer.svg">
 
 After each pipeline component is configured you must enable it using the
 pipelines within the [service](#service) section of the configuration file.
@@ -99,32 +111,32 @@ receivers:
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
-processors:
-  batch:
 
 exporters:
   otlp:
     endpoint: otelcol:4317
+    sending_queue:
+      batch:
 
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 
 service:
   extensions: [health_check, pprof, zpages]
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
     metrics:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
     logs:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
 ```
 
@@ -146,39 +158,38 @@ receivers:
       grpc:
         endpoint: 0.0.0.0:55690
 
-processors:
-  batch:
-  batch/test:
-
 exporters:
   otlp:
     endpoint: otelcol:4317
+    sending_queue:
+      batch:
   otlp/2:
     endpoint: otelcol2:4317
+    sending_queue:
+      batch:
 
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 
 service:
   extensions: [health_check, pprof, zpages]
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
     traces/2:
       receivers: [otlp/2]
-      processors: [batch/test]
       exporters: [otlp/2]
     metrics:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
     logs:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
 ```
 
@@ -232,7 +243,7 @@ service:
       exporters: [otlp]
 ```
 
-## Receivers <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Receivers.svg"> {#receivers}
+## Receivers <img width="35" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Receivers.svg"> {#receivers}
 
 Receivers collect telemetry from one or more sources. They can be pull or push
 based, and may support one or more [data sources](/docs/concepts/signals/).
@@ -289,6 +300,9 @@ receivers:
     protocols:
       grpc:
         endpoint: 0.0.0.0:4317
+        tls:
+          cert_file: cert.pem
+          key_file: cert-key.pem
       http:
         endpoint: 0.0.0.0:4318
 
@@ -308,7 +322,7 @@ receivers:
 > For detailed receiver configuration, see the
 > [receiver README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
 
-## Processors <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Processors.svg"> {#processors}
+## Processors <img width="35" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Processors.svg"> {#processors}
 
 Processors take the data collected by receivers and modify or transform it
 before sending it to the exporters. Data processing happens according to rules
@@ -346,17 +360,28 @@ processors:
       - key: email
         action: hash
 
-  # Data sources: traces, metrics, logs
-  batch:
-
-  # Data sources: metrics
+  # Data sources: metrics, metrics, logs
   filter:
+    error_mode: ignore
+    traces:
+      span:
+        - 'attributes["container.name"] == "app_container_1"'
+        - 'resource.attributes["host.name"] == "localhost"'
+        - 'name == "app_3"'
+      spanevent:
+        - 'attributes["grpc"] == true'
+        - 'IsMatch(name, ".*grpc.*")'
     metrics:
-      include:
-        match_type: regexp
-        metric_names:
-          - prefix/.*
-          - prefix_.*
+      metric:
+        - 'name == "my.metric" and resource.attributes["my_label"] == "abc123"'
+        - 'type == METRIC_DATA_TYPE_HISTOGRAM'
+      datapoint:
+        - 'metric.type == METRIC_DATA_TYPE_SUMMARY'
+        - 'resource.attributes["service.name"] == "my_service_name"'
+    logs:
+      log_record:
+        - 'IsMatch(body, ".*password.*")'
+        - 'severity_number < SEVERITY_NUMBER_WARN'
 
   # Data sources: traces, metrics, logs
   memory_limiter:
@@ -394,16 +419,20 @@ processors:
 > For detailed processor configuration, see the
 > [processor README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
 
-## Exporters <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Exporters.svg"> {#exporters}
+## Exporters <img width="35" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Exporters.svg"> {#exporters}
 
 Exporters send data to one or more backends or destinations. Exporters can be
 pull or push based, and may support one or more
 [data sources](/docs/concepts/signals/).
 
-The `exporters` section contains exporters configuration. Most exporters require
-configuration to specify at least the destination, as well as security settings,
-like authentication tokens or TLS certificates. Any setting you specify
-overrides the default values, if present.
+Each key within the `exporters` section defines an exporter instance, The key
+follows the `type/name` format, where `type` specifies the exporter type (e.g.,
+`otlp`, `kafka`, `prometheus`), and `name` (optional) can be appended to provide
+a unique name for multiple instance of the same type.
+
+Most exporters require configuration to specify at least the destination, as
+well as security settings, like authentication tokens or TLS certificates. Any
+setting you specify overrides the default values, if present.
 
 > Configuring an exporter does not enable it. Exporters are enabled by adding
 > them to the appropriate pipelines within the [service](#service) section.
@@ -473,7 +502,7 @@ secure connections, as described in
 > For more information on exporter configuration, see the
 > [exporter README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
 
-## Connectors <img width="32" class="img-initial" alt="" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
+## Connectors <img width="32" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
 
 Connectors join two pipelines, acting as both exporter and receiver. A connector
 consumes data as an exporter at the end of one pipeline and emits data as a
@@ -522,7 +551,7 @@ service:
 > For detailed connector configuration, see the
 > [connector README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
 
-## Extensions
+## Extensions <img width="32" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Extensions.svg"> {#extensions}
 
 Extensions are optional components that expand the capabilities of the Collector
 to accomplish tasks not directly involved with processing telemetry data. For
@@ -543,8 +572,11 @@ extensions configured in the same file:
 ```yaml
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 ```
 
 > For detailed extension configuration, see the
@@ -598,12 +630,25 @@ service:
   pipelines:
     metrics:
       receivers: [opencensus, prometheus]
-      processors: [batch]
       exporters: [opencensus, prometheus]
     traces:
       receivers: [opencensus, jaeger]
-      processors: [batch, memory_limiter]
+      processors: [memory_limiter]
       exporters: [opencensus, zipkin]
+```
+
+As with components, use the `type[/name]` syntax to create additional pipelines
+for a given type. Here is an example extending the previous configuration:
+
+```yaml
+service:
+  pipelines:
+    # ...
+    traces:
+      # ...
+    traces/2:
+      receivers: [opencensus]
+      exporters: [zipkin]
 ```
 
 ### Telemetry
@@ -627,6 +672,17 @@ processors:
     actions:
       - key: ${env:DB_KEY}
         action: ${env:OPERATION}
+```
+
+You can pass defaults to an environment variable using the bash syntax:
+`${env:DB_KEY:-some-default-var}`
+
+```yaml
+processors:
+  attributes/example:
+    actions:
+      - key: ${env:DB_KEY:-mydefault}
+        action: ${env:OPERATION:-}
 ```
 
 Use `$$` to indicate a literal `$`. For example, representing
@@ -667,7 +723,7 @@ Each authentication extension has two possible usages:
 For a list of known authenticators, see the
 [Registry](/ecosystem/registry/?s=authenticator&component=extension). If you're
 interested in developing a custom authenticator, see
-[Building an authenticator extension](../building/authenticator-extension).
+[Building an authenticator extension](/docs/collector/extend/custom-component/extension/authenticator).
 
 To add a server authenticator to a receiver in the Collector, follow these
 steps:

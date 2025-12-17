@@ -57,7 +57,7 @@ The panelists talked about the [OpenTelemetry Collector](/docs/collector/), and
 how they were able to use it to replace vendor-specific agents. Some
 organizations built their own Collector distributions to meet their own
 requirements using the
-[Collector Builder tool](/docs/collector/custom-collector/) tool. In doing so,
+[Collector Builder tool](/docs/collector/extend/ocb/) tool. In doing so,
 they were able to include only the components that were applicable to their use
 case, including using custom processors.
 

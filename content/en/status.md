@@ -3,11 +3,9 @@ title: Status
 menu: { main: { weight: 30 } }
 aliases: [/project-status, /releases]
 description: Maturity-level of the main OpenTelemetry components
+type: docs
+body_class: td-no-left-sidebar
 ---
-
-{{% blocks/section color="white" %}}
-
-## {{% param title %}}
 
 OpenTelemetry is made up of [several components](/docs/concepts/components/),
 some language-specific and others language-agnostic. When looking for a
@@ -16,10 +14,10 @@ status from the right component page. For example, the status of a signal in the
 specification may not be the same as the signal status in a particular language
 SDK.
 
-## Language SDKs
+## Language APIs & SDKs
 
 For the development status, or maturity level, of a
-[language SDK](/docs/languages/), see the following table:
+[language API or SDK](/docs/languages/), see the following table:
 
 {{% telemetry-support-table " " %}}
 
@@ -50,5 +48,3 @@ state with components in `v1alpha1` and `v1beta1` states.
 For the development status, or maturity level, of the
 [specification](/docs/specs/otel/), see the following:
 [Specification Status Summary](/docs/specs/status/).
-
-{{% /blocks/section %}}

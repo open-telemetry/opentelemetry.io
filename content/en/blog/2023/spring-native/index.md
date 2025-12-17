@@ -37,11 +37,11 @@ Boot 3) out of the box:
 ```
 
 To get even more visibility, the Starter can be combined with
-[instrumentation libraries](/docs/languages/java/libraries/). For this purpose,
-the OpenTelemetry Java contributors have improved the JDBC (database) libraries
-and logging instrumentation libraries. For example, for the Logback logging
-library, they have added GraalVM configuration to make the library work in
-native mode[^1].
+[instrumentation libraries](/docs/languages/java/instrumentation/). For this
+purpose, the OpenTelemetry Java contributors have improved the JDBC (database)
+libraries and logging instrumentation libraries. For example, for the Logback
+logging library, they have added GraalVM configuration to make the library work
+in native mode[^1].
 
 Furthermore, they have worked to reduce the configuration to set up the logging
 and database instrumentation with the Starter. For example, if your application

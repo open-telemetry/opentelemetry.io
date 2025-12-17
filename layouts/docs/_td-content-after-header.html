@@ -1,0 +1,80 @@
+{{ $pageProseLang := partial "i18n/lang.html" . -}}
+{{ $siteLang := .Site.Language -}}
+
+{{ if ne .Language.Lang "en" -}}
+  {{ if .Params.drifted_from_default -}}
+    {{ with partial "_inline/ot-page-drifted-banner.html" . -}}
+      {{ . -}}
+    {{ end -}}
+  {{ else if ne $siteLang $pageProseLang -}}
+    {{ with partial "_inline/ot-page-not-found-banner.html" . -}}
+    <div class="pageinfo pageinfo-secondary">
+      <div class="ps-4">
+        {{ . }}
+      </div>
+    </div>
+    {{ end -}}
+  {{ else if false -}}
+    {{ with partial "_inline/ot-page-drifted-banner.html" . -}}
+      {{ . -}}
+    {{ end -}}
+  {{ end -}}
+{{ end -}}
+
+
+{{ define "partials/_inline/ot-page-drifted-banner.html" }}
+  {{/* Assumption: .Params.drifted_from_default */ -}}
+
+  {{ $resultsArray := where .Translations "Lang" "en" -}}
+  {{ $defaultLangPage := index $resultsArray 0 -}}
+  {{/* Prepare variables for the include */ -}}
+  {{ $has_default := false -}}
+  {{ with $defaultLangPage -}}{{ $has_default = true }}{{ end -}}
+  {{ $show_details := and $has_default .Params.default_lang_commit -}}
+  {{ $no_default_lang_page := not $has_default -}}
+  {{ $compareUrl := "" -}}
+  {{ $default_lang_commit_short := "" -}}
+  {{ $default_lang_hash_short := "" -}}
+  {{ $def_lang_path := "" -}}
+  {{ $default_lang_page_url := "" -}}
+  {{ if $show_details -}}
+    {{ $compareUrl = printf "%s/compare/%s..%s" .Site.Params.github_repo .Params.default_lang_commit $defaultLangPage.GitInfo.Hash -}}
+    {{ $default_lang_commit_short = substr .Params.default_lang_commit 0 8 -}}
+    {{ $default_lang_hash_short = $defaultLangPage.GitInfo.AbbreviatedHash -}}
+    {{ $def_lang_path = strings.TrimPrefix (add hugo.WorkingDir "/") $defaultLangPage.File.Filename -}}
+    {{ $default_lang_page_url = $defaultLangPage.RelPermalink -}}
+  {{ end -}}
+
+  <div class="pageinfo pageinfo-secondary">
+    <div class="ps-4">
+      <p>
+        {{ partial "include.html" (dict
+            "_dot" .
+            "_path" "page-drifted-msg.md"
+            "show_details" $show_details
+            "default_lang_page_url" $default_lang_page_url
+            "compare_url" $compareUrl
+            "default_lang_commit_short" $default_lang_commit_short
+            "default_lang_hash_short" $default_lang_hash_short
+            "def_lang_path" $def_lang_path
+            "no_default_lang_page" $no_default_lang_page
+        ) -}}
+      </p>
+    </div>
+  </div>
+{{ end -}}
+
+
+{{ define "partials/_inline/ot-page-not-found-banner.html" }}
+  {{ $path := "page-not-translated-msg.md" -}}
+  {{ $args := (dict
+      "path" $path
+      "page" .Page) -}}
+  {{ $page := partial "func/find-include.html" $args -}}
+  {{ with $page -}}
+    {{ .Content }}
+  {{ else -}}
+    {{ $lang := .Page.Language.Lang -}}
+    {{ warnf "_inline/ot-page-not-found-banner: '%s' not found from page %s (%s)" $path .Page.Path $lang -}}
+  {{ end -}}
+{{ end -}}

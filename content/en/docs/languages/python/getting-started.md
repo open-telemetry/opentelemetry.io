@@ -1,9 +1,9 @@
 ---
 title: Getting Started
 description: Get telemetry for your app in less than 5 minutes!
-# prettier-ignore
-cSpell:ignore: debugexporter diceroller distro loglevel maxlen randint rolldice rollspan venv werkzeug
 weight: 10
+# prettier-ignore
+cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
 ---
 
 This page will show you how to get started with OpenTelemetry in Python.
@@ -461,7 +461,7 @@ def roll_dice():
         # This adds 1 to the counter for the given roll value
         roll_counter.add(1, {"roll.value": result})
         if player:
-            logger.warn("{} is rolling the dice: {}", player, result)
+            logger.warn("%s is rolling the dice: %s", player, result)
         else:
             logger.warn("Anonymous player is rolling the dice: %s", result)
         return result
@@ -672,22 +672,17 @@ exporters:
   # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:
     verbosity: detailed
-processors:
-  batch:
 service:
   pipelines:
     traces:
       receivers: [otlp]
       exporters: [debug]
-      processors: [batch]
     metrics:
       receivers: [otlp]
       exporters: [debug]
-      processors: [batch]
     logs:
       receivers: [otlp]
       exporters: [debug]
-      processors: [batch]
 ```
 
 Then run the docker command to acquire and run the collector based on this

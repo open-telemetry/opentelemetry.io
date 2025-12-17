@@ -1,0 +1,83 @@
+{{ $data := $.Site.Data.community.members -}}
+{{ $key := .Get 0 -}}
+{{ $group := index $data $key -}}
+{{ $lastIndex := 0 }}
+
+{{ $colors := dict
+  "dotnet" "secondary"
+  "dotnet-contrib" "success"
+  "python" "danger"
+  "python-contrib" "light"
+  "sqlcommenter" "info"
+  "erlang" "dark"
+  "erlang-contrib" "secondary"
+  "configuration" "success"
+  "sig-developer-experience" "danger"
+  "rust" "info"
+  "dotnet-instrumentation" "dark"
+  "specs-semconv" "secondary"
+  "sig-security" "success"
+  "collector-contrib" "danger"
+  "collector" "light"
+  "sig-contributor-experience" "info"
+  "docs-pt" "dark"
+  "helm" "secondary"
+  "javascript" "success"
+  "sandbox-web-js" "danger"
+  "ruby" "light"
+  "ruby-contrib" "info"
+  "weaver" "dark"
+  "java-instrumentation" "secondary"
+  "java-contrib" "success"
+  "java" "danger"
+  "android" "light"
+  "go" "info"
+  "proto-go" "dark"
+  "go-instrumentation" "secondary"
+  "cpp" "success"
+  "cpp-contrib" "danger"
+  "docs-cn" "light"
+  "php" "info"
+  "swift" "dark"
+  "docs" "secondary"
+  "docs-zh" "success"
+  "docs-ja" "danger"
+  "docs-es" "light"
+  "arrow" "info"
+  "sig-end-user" "dark"
+  "opamp-go" "secondary"
+  "opamp-spec" "success"
+  "opamp-java" "danger"
+  "demo" "light"
+  "operator" "info"
+  "operator-ta" "dark"
+  "lambda-extension" "secondary"
+  "network" "success"
+  "profiling" "danger"
+  "ebpf-profiler" "light"
+  "sig-mainframe" "info"
+  "semconv-security" "dark"
+  "semconv-jvm" "secondary"
+  "semconv-system" "success"
+  "semconv-mobile" "danger"
+  "semconv-container" "light"
+  "semconv-k8s" "info"
+  "semconv-messaging" "dark"
+  "semconv-db" "secondary"
+  "semconv-llm" "success"
+  "semconv-event" "danger"
+  "semconv-cicd" "light"
+-}}
+
+{{ $defaultColor := "primary" }}
+
+{{ range sort $group "name" }}
+- [{{ .name }}]({{ .html_url }}) 
+  {{- range .teams -}}
+    {{- if hasSuffix . $key -}}
+    {{- $sig := replace (replace . (printf "-%s" $key) "") "opentelemetry-" "" -}}
+    {{- $color := default $defaultColor (index $colors $sig) -}}
+    &nbsp;<span class="badge rounded-pill text-bg-{{ $color }}">{{ $sig -}}</span>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

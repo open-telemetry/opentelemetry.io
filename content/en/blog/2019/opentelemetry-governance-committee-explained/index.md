@@ -7,9 +7,8 @@ author: '[Sergey Kanzhelev](https://github.com/SergeyKanzhelev)'
 cSpell:ignore: Kanzhelev Novotny Sergey
 ---
 
-This article describes the functions and responsibilities of the OpenTelemetry
-Governance Committee, based on the charter document found
-[here](https://github.com/open-telemetry/community/blob/main/governance-charter.md).
+This article describes the functions and responsibilities of the
+[OpenTelemetry Governance Committee's charter document](https://github.com/open-telemetry/community/blob/main/governance-charter.md).
 It is an opinion, not the formal definition. The primary role of the Governance
 Committee is not to centralize power, but to enable and empower the broader
 community by establishing processes. Let me explain.
@@ -17,7 +16,7 @@ community by establishing processes. Let me explain.
 ![Watering can](watering-can.jpeg)
 
 The main objective of the OpenTelemetry project is to make robust, portable
-telemetry a built-in feature of cloud-native software. The most effective way to
+telemetry a built-in feature of cloud native software. The most effective way to
 do it is to build a community of passionate people, from existing ecosystem with
 the diverse expertise and experience. This community will build a project that
 is attractive to users, who will use it to instrument their software, as well as
@@ -74,6 +73,7 @@ your questions!
 Thanks [Sarah Novotny](https://twitter.com/sarahnovotny) for review and
 feedback!
 
-_A version of this article was [originally posted][] on [medium.com/opentelemetry](https://medium.com/opentelemetry)._
+_A version of this article was [originally posted][] on
+[medium.com/opentelemetry](https://medium.com/opentelemetry)._
 
-[originally posted]: {{% param canonical_url %}}
+[originally posted]: <{{% param canonical_url %}}>

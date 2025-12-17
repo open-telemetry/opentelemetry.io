@@ -1,7 +1,7 @@
 ---
 title: 開発者のための入門
 linkTitle: Dev
-default_lang_commit: e7a6289
+default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
 ---
 
 あなたが以下のいずれかに当てはまれば、このページはあなたのための[入門](..)ページです。
@@ -20,10 +20,12 @@ OpenTelemetryが役に立ちます！
 
 - [自分のライブラリにネイティブ計装を追加するには](../../concepts/instrumentation/libraries/)
 
+試してみるためのアプリケーションセットを探している場合は、公式の[OpenTelemetryデモ](/ecosystem/demo/)が役に立ちます。
+
 次に、あなたが使っている[言語](../../languages/)のドキュメントを読んでください。
 
 - [C++](../../languages/cpp/)
-- [.NET](../../languages/net/)
+- [.NET](../../languages/dotnet/)
 - [Erlang / Elixir](../../languages/erlang/)
 - [Go](../../languages/go/)
 - [Java](../../languages/java/)

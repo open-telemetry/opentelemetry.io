@@ -2,7 +2,7 @@
 title: OpenTelemetry Distro
 linkTitle: Distro
 weight: 110
-cSpell:ignore: configurator distro distros loglevel
+cSpell:ignore: distro distros
 ---
 
 In order to make using OpenTelemetry and auto-instrumentation as quick as
@@ -45,14 +45,11 @@ exporters:
   # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
   debug:
     verbosity: detailed
-processors:
-  batch:
 service:
   pipelines:
     traces:
       receivers: [otlp]
       exporters: [debug]
-      processors: [batch]
 ```
 
 Then start the Docker container:

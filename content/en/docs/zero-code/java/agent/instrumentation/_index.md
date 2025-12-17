@@ -43,8 +43,8 @@ For example, if set to the following:
 ```
 
 Then, requests to `1.2.3.4` will have no override for `peer.service` attribute,
-while `1.2.3.4:443` will have have `peer.service` of `cats-service` and requests
-to `dogs-abcdef123.serverlessapis.com:80/api/v1` will have an attribute of
+while `1.2.3.4:443` will have `peer.service` of `cats-service` and requests to
+`dogs-abcdef123.serverlessapis.com:80/api/v1` will have an attribute of
 `dogs-api`.
 
 {{% /config_option %}}
@@ -93,7 +93,7 @@ span link connecting it to the producer trace.
 ## Capturing enduser attributes
 
 You can configure the agent to capture
-[general identity attributes](/docs/specs/semconv/general/attributes/#general-identity-attributes)
+[general identity attributes](/docs/specs/semconv/registry/attributes/enduser/)
 (`enduser.id`, `enduser.role`, `enduser.scope`) from instrumentation libraries
 like
 [JavaEE/JakartaEE Servlet](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/servlet)

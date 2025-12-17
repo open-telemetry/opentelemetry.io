@@ -14,7 +14,8 @@ description:
 authors:
   - name: OpenTelemetry Authors
 createdAt: 2024-04-18
+isFirstParty: false
 package:
   registry: hex
   name: opentelemetry_bandit
-  version: 0.1.4
+  version: 0.3.0

@@ -8,4 +8,4 @@ canonical_url: https://medium.com/opentelemetry/welcome-to-the-incoming-2021-ope
 The OpenTelemetry project just completed its 2021 election for the Governance
 Committee (GC). For all the details, see the [original post][].
 
-[original post]: {{% param canonical_url %}}
+[original post]: <{{% param canonical_url %}}>

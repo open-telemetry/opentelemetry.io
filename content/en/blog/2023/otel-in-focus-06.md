@@ -11,7 +11,7 @@ summer, but it's not just hot outside -- we've had some major announcements and
 releases this month.
 
 Are you a maintainer with something you’d like featured here? Get in touch with
-me [via email](mailto:austin+otel@ap2.io), or on the
+[Austin Parker via email](mailto:austin+otel@ap2.io), or on the
 [CNCF Slack #otel-comms](https://cloud-native.slack.com/archives/C02UN96HZH6)
 channel.
 
@@ -113,7 +113,7 @@ has been released, requiring some migrations to be performed.
 [Version 1.14](https://github.com/open-telemetry/opentelemetry-js/releases/tag/v1.14.0)
 includes an optional `forceFlush` method to the `SpanExporter` interface.
 
-#### [.NET](/docs/languages/net/)
+#### [.NET](/docs/languages/dotnet/)
 
 [Version 1.5.1](https://github.com/open-telemetry/opentelemetry-dotnet/releases/tag/core-1.5.1)
 has been released, as well as 1.5.0. 1.5.1 is a fix for issues introduced in

@@ -420,8 +420,8 @@ extend Yoda's code to do the following:
    [transform or attributes processors](/docs/collector/transforming-telemetry/).
 1. Add [tracing](/docs/concepts/signals/traces/) support by emitting spans,
    where it makes sense.
-1. Add an Observability backend such as OpenSearch (along with [Data Prepper]) to
-   the setup, allowing to ingest spans and logs in OTLP format.
+1. Add an Observability backend such as OpenSearch (along with [Data Prepper])
+   to the setup, allowing to ingest spans and logs in OTLP format.
 1. Once you have traces and logs ingested in a backend, try to correlate these
    two telemetry signal types in the backend along with a frontend such as
    Grafana.

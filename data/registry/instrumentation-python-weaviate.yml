@@ -14,3 +14,4 @@ authors:
 urls:
   repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-weaviate
 createdAt: 2024-05-27
+isFirstParty: false

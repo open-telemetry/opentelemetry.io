@@ -1,0 +1,20 @@
+# cSpell:ignore: broadway
+title: opentelemetry_broadway
+registryType: instrumentation
+language: erlang
+tags:
+  - broadway
+  - instrumentation
+  - erlang
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_broadway
+license: Apache 2.0
+description:
+  OpenTelemetry tracing for [Broadway](https://elixir-broadway.org/) pipelines.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
+package:
+  registry: hex
+  name: opentelemetry_broadway
+  version: 0.2.0

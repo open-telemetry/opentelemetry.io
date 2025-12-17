@@ -14,7 +14,7 @@ announce
 With this demo, you’ll be able to quickly run a complete end-to-end distributed
 system instrumented with 100% OpenTelemetry Traces and Metrics.
 
-![The system architecture of the demo application represented as directed acyclic graph in Jaeger UI](sytem-architecture.png)
+![The system architecture of the demo application represented as directed acyclic graph in Jaeger UI](system-architecture.png)
 
 One of our primary goals of this project has been to create a robust sample
 application for developers to use in learning OpenTelemetry, and we’re proud to
@@ -37,7 +37,7 @@ Now, it’d be enough to just provide a great demonstration of OpenTelemetry, bu
 one thing we wanted to focus on for our 1.0 release was showing not just the
 ‘how’, but the ‘why’, of OpenTelemetry. To that end, we’ve built a framework for
 implementing [failure scenarios](/docs/demo/#scenarios) gated by feature flags.
-In addition, we include pre-configured dashboards and walk-throughs in our docs
+In addition, we include pre-configured dashboards and walkthroughs in our docs
 on how to read and interpret the telemetry data each service emits to discover
 the underlying cause of performance regressions in the application.
 
@@ -45,8 +45,8 @@ Another goal of this demo is to streamline the ability of vendors and commercial
 implementers of OpenTelemetry to have a standardized target for building demos
 around. We’ve already seen quite a bit of adoption, with five companies
 including Datadog, Dynatrace, Honeycomb, Lightstep, and New Relic integrating
-the community demo application into their product demos (you can find a list
-[here](https://github.com/open-telemetry/opentelemetry-demo#demos-featuring-the-astronomy-shop)).
+the community demo application into their
+[product demos](https://github.com/open-telemetry/opentelemetry-demo#demos-featuring-the-astronomy-shop).
 We hope to encourage further contributions and collaboration along these lines.
 
 However, just because we reached 1.0, that doesn’t mean we’re stopping -- this

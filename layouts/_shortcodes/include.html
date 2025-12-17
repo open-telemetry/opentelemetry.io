@@ -1,0 +1,34 @@
+{{/*
+
+Use to include markdown snippets. Note that the included content can have calls
+to shortcodes. Arguments to this shortcode can be named or positional.
+
+The first argument (optionally named "file") is mandatory, it is the path to the
+file to include. The path is relative to the content directory. Search will be
+done in '_includes' folders unless the argument starts with a dot or slash.
+
+The value of other positional or named arguments will be used to replace
+occurrences of '{{ $key }}' in the included content, where 'key' is the name of
+the argument or its position in the list of positional arguments.
+
+The following syntax of if-blocks is supported, so you can include content
+conditionally:
+
+```
+{{ if [not] $key }}
+...
+{{ end }}
+```
+
+Note that the `{{ if ... }}` and `{{ end }}` directives must appear at the
+beginning of a line.
+
+*/ -}}
+
+{{ $path := .Get (cond .IsNamedParams "file" 0) -}}
+{{ $args := dict "_dot" . "_path" $path -}}
+{{/* Add the positional and named params to our $args map. */ -}}
+{{ range $i, $v := .Params -}}
+  {{ $args = merge $args (dict (string $i) $v) -}}
+{{ end -}}
+{{ partial "include" $args -}}

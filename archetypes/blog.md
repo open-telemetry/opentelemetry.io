@@ -30,7 +30,7 @@ markdown formatter (see below).
 
 ## Images
 
-If you use images, make sure that your blog post is located in it's own
+If you use images, make sure that your blog post is located in its own
 directory. Put the images into the same directory.
 
 If you have an image stored at `content/en/{{ .File.Dir }}imagename.png`, you

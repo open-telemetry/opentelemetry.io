@@ -1,0 +1,20 @@
+# cSpell:ignore heroku
+title: Heroku
+registryType: application integration
+language: collector
+tags:
+  - collector
+  - heroku
+license: Commercial
+description:
+  Heroku Fir adds platform-native support for the collection and distribution of
+  OpenTelemetry signals.
+authors:
+  - name: Heroku Telemetry
+    url: https://github.com/heroku
+urls:
+  website: https://www.heroku.com/
+  blog: https://www.heroku.com/blog/opentelemetry-basics-on-heroku-fir/
+  docs: https://devcenter.heroku.com/articles/opentelemetry-concepts-and-heroku
+createdAt: '2025-07-18'
+isNative: true

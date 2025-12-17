@@ -5,7 +5,7 @@ REPO_DIR=$(dirname $0)/..
 REGISTRY_FILES=$REPO_DIR/data/registry/*
 
 for FILE in ${REGISTRY_FILES} ; do
-    REPO_URL=$(grep "repo: " ${FILE})
+    REPO_URL=$(grep "repo: " "${FILE}")
     REPO_URL=${REPO_URL#  repo: }
     if [ -n "${REPO_URL}" ] ; then
         RESULT=$(curl -I -s "{$REPO_URL}" -o /dev/null -w "%{http_code}")

@@ -286,10 +286,9 @@ The Collector might drop data for a variety of reasons, but the most common are:
 - The exporter destination is unavailable or accepting the data too slowly.
 
 To mitigate drops, configure the
-[`batch` processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md).
-In addition, it might be necessary to configure the
 [queued retry options](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#configuration)
-on enabled exporters.
+on enabled exporters, in particular the
+[Sending queue batch settings](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/exporterhelper#sending-queue-batch-settings).
 
 #### Collector is not receiving data
 
@@ -344,8 +343,8 @@ The Collector might exit or restart due to:
 - Memory pressure from a missing or misconfigured
   [`memory_limiter` processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md).
 - Improper sizing for load.
-- Improper configuration. For example, a queue size configured higher than
-  available memory.
+- Improper configuration. For example, a queue sized to be larger than available
+  memory.
 - Infrastructure resource limits. For example, Kubernetes.
 
 #### Collector fails to start in Windows Docker containers

@@ -1,0 +1,22 @@
+# cSpell:ignore Drazke
+title: OpenTelemetry confluent-kafka-javascript Instrumentation
+registryType: instrumentation
+language: js
+tags:
+  - confluent-kafka-javascript
+  - instrumentation
+  - kafka
+  - javascript
+urls:
+  repo: https://github.com/Drazke/instrumentation-confluent-kafka-javascript
+license: Apache 2.0
+description:
+  This library allows tracing requests made by the
+  [confluent-kafka-javascript](https://github.com/confluentinc/confluent-kafka-javascript)
+  library.
+authors:
+  - name: Drazke
+    url: https://github.com/Drazke
+createdAt: 2025-10-26
+isNative: false
+isFirstParty: false

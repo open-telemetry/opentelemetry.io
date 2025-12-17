@@ -2,10 +2,10 @@
 title: OpenTelemetry Talks at KubeCon China 2024
 linkTitle: KubeCon China 2024
 date: 2024-07-10
-# prettier-ignore
-cSpell:ignore: Alhamdani Censhare EBPF Hrabusa Husni Huxing Jiahang Krom Sianturi Wanqi Zhang Zihao Ziyi
 author: '[Tiffany Hrabusa](https://github.com/tiffany76)'
 sig: Communications SIG
+# prettier-ignore
+cSpell:ignore: Alhamdani Censhare EBPF Hrabusa Husni Huxing Jiahang Krom Sianturi Wanqi Zhang Zihao Ziyi
 ---
 
 Join members of the OpenTelemetry community at
@@ -26,7 +26,7 @@ conference begins.
 
 - **[Adaptive Tracing Propagation with OpenTelemetry: Navigating Protocol Diversity in the Cloud | Project Lightning Talk](https://sched.co/1f4zX)**<br>
   Wednesday, August 21 • 12:03 - 12:08
-- **[Telemetry API and OpenTelemetry: the answer of istio monitoring? | Project Lightning Talk](https://sched.co/1f4zz)**<br>
+- **[Telemetry API and OpenTelemetry: the answer of Istio monitoring? | Project Lightning Talk](https://sched.co/1f4zz)**<br>
   Wednesday, August 21 • 12:24 - 12:29
 
 ## KubeCon talks

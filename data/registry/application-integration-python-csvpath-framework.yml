@@ -1,0 +1,22 @@
+# cspell:ignore: preboarding
+title: CsvPath Framework
+registryType: application integration
+language: python
+tags:
+  - Data Preboarding
+  - Delimited data validation
+  - Data loading
+  - Trusted publishing
+urls:
+  website: https://www.csvpath.org
+  repo: https://github.com/csvpath/csvpath
+  docs: https://www.csvpath.org/getting-started/dataops-integrations/getting-started-with-csvpath-+-opentelemetry
+license: GNU Lesser General Public License v2.1
+description:
+  CsvPath Framework uses OTLP to monitor delimited data preboarding jobs
+  wherever they run, regardless of platform, namespace, project, or user.
+authors:
+  - name: CsvPath Authors
+    email: info@csvpath.org
+createdAt: 2025-02-23
+isNative: true

@@ -1,0 +1,24 @@
+# cSpell:ignore: otelkafka jurabek
+title: OpenTelemetry Go Instrumentation for confluent-kafka-go
+registryType: instrumentation
+language: go
+tags:
+  - go
+  - instrumentation
+  - confluent-kafka-go
+  - kafka
+license: Apache 2.0
+description:
+  Package otelkafka provides functionality to trace the
+  [confluent-kafka-go](https://github.com/confluentinc/confluent-kafka-go)
+  package.
+authors:
+  - name: Jurabek
+    url: https://github.com/jurabek
+urls:
+  repo: https://github.com/jurabek/otelkafka
+createdAt: 2024-08-24
+package:
+  name: github.com/jurabek/otelkafka
+  registry: go
+  version: v1.0.1

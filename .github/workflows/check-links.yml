@@ -1,15 +1,25 @@
 name: Links
 
+# cSpell:ignore minisearch otelbot
 on:
   merge_group:
   pull_request:
 
+permissions:
+  contents: read
+
+env:
+  PR_NUM: ${{ github.event.pull_request.number }}
+  USER_EMAIL: 197425009+otelbot@users.noreply.github.com
+  USER_NAME: otelbot
+
 jobs:
-  build-and-check-links:
-    name: BUILD and CHECK LINKS
+  # Build site first because htmltest checks the generated HTML files
+  build:
+    name: BUILD
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.1
 
       - name: Create NPM cache-hash input file
         run: |
@@ -21,51 +31,106 @@ jobs:
           jq '.devDependencies |= with_entries(
                   select(.key | test("prefix|hugo|css"))
                 )
-                | del(.dependencies, .optionalDependencies)' \
+                | .dependencies |= with_entries(
+                  select(.key | test("minisearch")))
+                | del(.optionalDependencies)' \
             package.json > tmp/package-min.json
           cp tmp/package-min.json package.json
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           cache: npm
           cache-dependency-path: tmp/package-ci.json
 
-      - run: npm install --omit=optional
-      - run: npm run log:check:links
+      - run: |
+          npm install --omit=optional
+          git restore package.json
+
+      - name: Git submodules properly pinned?
+        run: |
+          npm run seq pin:submodule
+          echo "If the diff check below fails, then update .gitmodules by pinning the named git"
+          echo "submodule(s); or undo the submodule update(s) if it happened by mistake."
+          npm run _diff:fail
+
+      - name: Build the site
+        run: npm run log:build
         continue-on-error: true
-      - uses: actions/upload-artifact@v4
+
+      - uses: actions/upload-artifact@v6.0.0
         with:
-          name: build-log-etc
+          name: build-artifacts
           path: |
+            public/
             tmp/build-log.txt
             tmp/package*.json
+
+  check-links:
+    name: CHECK LINKS (${{ matrix.shard.id }})
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        shard:
+          # Each entry in this list is a shard, with:
+          #  id: identifier for the shard (used in job name and artifact name)
+          #  regex: regex to add to IgnoreDirs in .htmltest.yml for this shard
+          #
+          # Each shard ignores a subset of locale directories, so that all shards
+          # together cover all locale directories but each shard checks fewer links.
+          - id: en
+            regex: '^../' # Ignore all locale directories. This works because
+            # English docs folders have more than two characters in their names
+          - id: locales-A-to-M
+            # Regex to ignore English doc folders and locales n to z.
+            regex: '^(..[^/]|[n-z]./)'
+          - id: locales-N-to-Z
+            # Regex to ignore English doc folders and locales a to m.
+            regex: '^(..[^/]|[a-m]./)'
+    steps:
+      - uses: actions/checkout@v6.0.1
+      - uses: actions/download-artifact@v7
+        with: { name: build-artifacts }
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
+
+      - name: Check links for shard
+        run: |
+          .github/scripts/check-links-shard.sh '${{ matrix.shard.id }}' '${{ matrix.shard.regex }}'
+
+      - uses: actions/upload-artifact@v6.0.0
+        with:
+          name: refcache-${{ matrix.shard.id }}
+          path: |
             static/refcache.json
+            tmp/*log.txt
 
   check-refcache:
     name: REFCACHE updates?
-    needs: build-and-check-links
+    needs: check-links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with: { name: build-log-etc }
-      - name: Fail when refcache contains entries with HTTP status 4XX
-        run: |
-          if grep -B 1 -e '"StatusCode": 4' static/refcache.json; then
-            echo "Run 'npx gulp prune' to remove 4xx entries from the refcache"
-            exit 1
-          fi
+      - uses: actions/checkout@v6.0.1
+      - uses: actions/download-artifact@v7
+        with:
+          pattern: refcache-*
+          path: tmp/check-refcache
+      - run: ls -lR tmp
       - name: Does the refcache need updating?
-        run: npm run diff:fail
+        run: .github/scripts/check-refcache.sh
 
   check-build-log-for-issues:
     name: WARNINGS in build log?
-    needs: build-and-check-links
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
-        with: { name: build-log-etc }
+      - uses: actions/checkout@v6.0.1
+      - uses: actions/download-artifact@v7
+        with: { name: build-artifacts }
       - run: cat tmp/build-log.txt
       - run: scripts/check-build-log.sh

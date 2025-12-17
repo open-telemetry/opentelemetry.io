@@ -1,0 +1,152 @@
+{{ $registry := .Site.Data.registry -}}
+{{ $registryUrl := .Page.RelPermalink -}}
+
+{{ $languageNames := newScratch -}}
+{{ $languageNames.Set "cpp" "C++" -}}
+{{ $languageNames.Set "dotnet" ".NET" -}}
+{{ $languageNames.Set "js" "JavaScript" -}}
+{{ $languageNames.Set "php" "PHP" -}}
+
+{{ $officialLanguages := slice "collector" "cpp" "erlang" "elixir" "dotnet" "go" "java" "js" "php" "python" "ruby" "rust" "swift" -}}
+
+{{ $langs := slice -}}
+{{ range $registry -}}
+  {{ $language := .language -}}
+  {{- $val := (dict
+    "name" .language
+    "isOfficial" (in $officialLanguages .language)
+    )
+  -}}
+  {{ $langs = $langs | append $val -}}
+  {{ if ne $language (lower $language) -}}
+    {{ errorf "Language keys must be in lowercase. Registry entry '%s' has the following invalid key: %s" .title $language -}}
+  {{ end -}}
+{{ end -}}
+{{ $langs = sort ($langs | uniq) "name" -}}
+
+{{ $types := slice -}}
+{{ range $registry -}}
+  {{ $type := .registryType -}}
+  {{ $types = $types | append $type -}}
+  {{ if ne $type (lower $type) -}}
+    {{ errorf "Component-type keys must be in lowercase. Registry entry '%s' has the following invalid key: %s" .title $type -}}
+  {{ end -}}
+{{ end -}}
+{{ $types = $types | uniq | sort -}}
+
+{{ $counter := 0 -}}
+{{ $entries := slice -}}
+{{ range $key, $entry := .Site.Data.registry -}}
+  {{ $flags := slice -}}
+  {{ if .isNative -}}
+    {{ $flags = $flags | append "native" -}}
+  {{ end -}}
+  {{ if .isFirstParty -}}
+    {{ $flags = $flags | append "first_party" -}}
+  {{ end -}}
+  {{ if .isNew -}}
+    {{ $flags = $flags | append "new" -}}
+  {{ end -}}
+  {{ if .usedInDemo -}}
+    {{ $flags = $flags | append "used_in_demo" -}}
+  {{ end -}}
+  {{ if .deprecated -}}
+    {{ $flags = $flags | append "deprecated" -}}
+  {{ end -}}
+  {{ $entry = merge $entry (dict "_key" $key "id" $counter "flags" $flags) -}}
+  {{ $entries = $entries | append $entry -}}
+  {{ $counter = add $counter 1 }}
+{{ end -}}
+
+{{ $allFlags := slice -}}
+{{ range $entry := $entries -}}
+  {{ range $flag := $entry.flags -}}
+    {{ $allFlags = $allFlags | append $flag }}
+  {{ end -}}
+{{ end -}}
+{{ $uniqueFlags := $allFlags | uniq | sort }}
+
+<div class="pb-4">
+  <form action="{{ $registryUrl }}" id="searchForm">
+    <div class="input-group">
+      <span class="input-group-text" id="basic-addon1" title="{{ len $registry }} entries">Search {{ len $registry }} entries</span>
+      <input class="form-control w-auto" list="search-suggestions" id="input-s" type="text" name="s" placeholder="Type to search…"
+        aria-label="Registry search input field">
+        <datalist id="search-suggestions"></datalist>
+
+
+      <input type="hidden" name="component" id="input-component" value="" />
+      <input type="hidden" name="language" id="input-language" value="" />
+      <input type="hidden" name="flag" id="input-flag" value="all" />
+
+
+      <button type="button" class="btn btn-outline-success"
+        onclick="document.getElementById('searchForm').submit();">Submit</button>
+      <button type="button" class="btn btn-outline-danger"
+        onclick="document.getElementById('input-s').value = ''; document.getElementById('input-language').value = 'all';document.getElementById('input-component').value = 'all';document.getElementById('searchForm').submit();">Reset</button>
+
+      <button class="btn btn-outline-secondary dropdown-toggle" id="languageDropdown" type="button"
+        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Language</button>
+      <div class="dropdown-menu" id="languageFilter">
+        <li><a value="all" class="dropdown-item">Any Language</a></li>
+        <li><hr class="dropdown-divider"></li>
+        {{ range (where $langs "isOfficial" true) -}}
+        <li>
+          <a value="{{ .name }}" id="language-item-{{ .name }}" class="dropdown-item">
+            {{ $languageNames.Get .name | default (humanize .name) }}
+          </a>
+        </li>
+        {{ end -}}
+        <li><hr class="dropdown-divider"></li>
+        {{ range (where $langs "isOfficial" false) -}}
+        <li>
+          <a value="{{ .name }}" id="language-item-{{ .name }}" class="dropdown-item">
+            {{ $languageNames.Get .name | default (humanize .name) }}
+          </a>
+        </li>
+        {{ end -}}
+      </div>
+
+      <button class="btn btn-outline-secondary dropdown-toggle" id="componentDropdown" type="button"
+        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Type</button>
+      <div class="dropdown-menu" id="componentFilter">
+        <a value="all" class="dropdown-item">Any Component</a>
+        {{ range $types -}}
+        <a value="{{ . }}" id="component-item-{{ . }}" class="dropdown-item">{{ humanize . }}</a>
+        {{ end -}}
+      </div>
+
+      <!-- Flags Filter Dropdown -->
+    <button class="btn btn-outline-secondary dropdown-toggle" id="flagsDropdown" type="button"
+    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Flags</button>
+    <div class="dropdown-menu" id="flagsFilter">
+    <a value="all" class="dropdown-item">Any Flag</a>
+    {{ range $flag := $uniqueFlags -}}
+    <a value="{{ $flag }}" id="flag-item-{{ $flag }}" class="dropdown-item">{{ humanize $flag }}</a>
+    {{ end -}}
+    </div>
+
+    </div>
+  </form>
+</div>
+
+<div class="mx-auto">
+  <div class="text-center text-primary" style="display: none" id="search-loading">
+    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+    <span role="status">Loading results…</span>
+  </div>
+  <ul class="list-unstyled" id="search-results"></ul>
+  <ul class="list-unstyled" id="default-body">
+    {{ range $key, $value := $registry -}}
+      {{ $value = merge $value (dict "_key" $key) -}}
+      {{ partial "ecosystem/registry/entry"
+          (dict
+            "registryUrl" $registryUrl
+            "value" $value
+            "languageNames" $languageNames
+          ) -}}
+    {{ end -}}
+  </ul>
+</div>
+
+{{ partial "script.html" (dict "src" "js/registrySearch.js") -}}

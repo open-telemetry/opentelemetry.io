@@ -14,3 +14,4 @@ authors:
 urls:
   repo: https://github.com/aspecto-io/opentelemetry-ext-js/tree/master/packages/instrumentation-neo4j
 createdAt: 2020-06-15
+isFirstParty: false

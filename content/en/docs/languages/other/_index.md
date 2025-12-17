@@ -12,7 +12,7 @@ possible to implement it in every language you like.
 
 For some languages, unofficial implementations exist -- you can find them in the
 [registry](/ecosystem/registry/). If you know about an implementation not listed
-there, please [add it to the registry][].
+there, please [add it to the registry](/ecosystem/registry/adding/).
 
 The OpenTelemetry community is open to maintain implementations for additional
 languages and with that make them "official" parts of the OpenTelemetry
@@ -24,6 +24,3 @@ For the following languages a request to create a SIG exists:
 - [Lua](https://github.com/open-telemetry/community/issues/1276)
 - [Perl](https://github.com/open-telemetry/community/issues/828)
 - [Julia](https://github.com/open-telemetry/community/issues/898)
-
-[add it to the registry]:
-  https://github.com/open-telemetry/opentelemetry.io#adding-a-project-to-the-opentelemetry-registry

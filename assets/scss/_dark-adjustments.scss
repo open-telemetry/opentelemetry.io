@@ -1,0 +1,31 @@
+// Dark-mode color contrast adjustments
+
+@include color-mode(dark) {
+  .otel-icon {
+    filter: brightness(0) invert(1);
+  }
+}
+
+// Make box-shadow color contrast more obvious in dark mode.
+// https://github.com/twbs/bootstrap/issues/39053 reports this issue.
+// TODO: upstream this to Docsy.
+
+$box-shadow-alpha-dark: 0.8 !default;
+// Note: for some reason the following SCSS var must be a CSS var.
+$box-shadow-color-rgb-dark: var(--bs-black-rgb) !default;
+
+@include color-mode(dark) {
+  $box-shadow-color-rgba-dark: rgba(
+    #{$box-shadow-color-rgb-dark},
+    #{$box-shadow-alpha-dark}
+  ) !default;
+
+  // The following is supposed to only tweak the rgba value, but Bootstrap isn't
+  // setup to allow this. So we'll need to ensure that non-rgba values stay in
+  // sync with Bootstraps.
+
+  --bs-box-shadow: 0 0.5rem 1rem #{$box-shadow-color-rgba-dark};
+  --bs-box-shadow-sm: 0 0.125rem 0.25rem #{$box-shadow-color-rgba-dark};
+  --bs-box-shadow-lg: 0 1rem 3rem #{$box-shadow-color-rgba-dark};
+  --bs-box-shadow-inset: inset 0 1px 2px #{$box-shadow-color-rgba-dark};
+}

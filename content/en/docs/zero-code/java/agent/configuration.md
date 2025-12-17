@@ -5,6 +5,11 @@ aliases: [agent-config]
 cSpell:ignore: classloaders customizer logback
 ---
 
+{{% alert title="For more information" %}} This page describes the various ways
+in which configuration can be supplied to the Java agent. For information on the
+configuration options themselves, see
+[Configure the SDK](/docs/languages/java/configuration). {{% /alert %}}
+
 ## Agent Configuration
 
 The agent can consume configuration from one or more of the following sources
@@ -21,13 +26,13 @@ The agent can consume configuration from one or more of the following sources
 
 ## Configuring with Environment Variables
 
-In some environments, configuring via Environment Variables is more preferred.
-Any setting configurable with a System Property can also be configured with an
-Environment Variable. Many settings below include both options, but where they
-don't apply the following steps to determine the correct name mapping of the
-desired System Property:
+In certain environments, configuring settings through environment variables is
+often preferred. Any setting that can be configured using a system property can
+also be set using an environment variable. While many of the settings below
+provide examples for both formats, for those that do not, use the following
+steps to determine the correct name mapping for the desired system property:
 
-- Convert the System Property to uppercase.
+- Convert the system property name to uppercase.
 - Replace all `.` and `-` characters with `_`.
 
 For example `otel.instrumentation.common.default-enabled` would convert to
@@ -35,10 +40,10 @@ For example `otel.instrumentation.common.default-enabled` would convert to
 
 ## Configuration file
 
-You can provide a path to agent configuration file by setting the following
+You can provide a path to an agent configuration file by setting the following
 property:
 
-{{% config_option name="otel.javaagent.configuration-file" %}} Path to valid
+{{% config_option name="otel.javaagent.configuration-file" %}} Path to a valid
 Java properties file which contains the agent configuration.
 {{% /config_option %}}
 
@@ -107,6 +112,13 @@ name="otel.resource.providers.gcp.enabled"
 default=false
 %}} Enables the
 [GCP Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources).
+{{% /config_option %}}
+
+{{% config_option
+name="otel.resource.providers.azure.enabled"
+default=false
+%}} Enables the
+[Azure Resource Provider](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/azure-resources).
 {{% /config_option %}}
 
 [extensions]:

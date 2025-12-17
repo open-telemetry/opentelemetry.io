@@ -1,0 +1,21 @@
+title: Google Cloud Auth Extension
+registryType: extension
+language: java
+tags:
+  - gcp
+  - extension
+  - java
+  - auth
+  - google
+license: Apache 2.0
+description:
+  This extension provides automatic Google Cloud authentication for
+  OpenTelemetry Java's OTLP exporters, enabling telemetry export to Google Cloud
+  for both zero-code and manual instrumentation setups.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-auth-extension
+createdAt: 2025-03-18
+isNative: false
+isFirstParty: false

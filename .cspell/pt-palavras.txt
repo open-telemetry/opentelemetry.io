@@ -1,1 +1,9 @@
 desserializa
+desserializar
+autoinstrumentação
+autoinstrumentações
+autoconsistentes
+serialização
+verbosidade
+reagregação
+corrotinas

@@ -5,8 +5,8 @@ date: 2024-04-19
 author: >-
   [Reese Lee](https://github.com/reese-lee) (New Relic),  [Adriana
   Villela](https://github.com/avillela) (ServiceNow)
-cSpell:ignore: Dalle
 canonical_url: https://newrelic.com/blog/how-to-relic/dude-wheres-my-error
+cSpell:ignore: Dalle
 ---
 
 ![A confused penguin trying to learn about errors and exceptions. Image generated with AI using Dalle3 via Bing Copilot](penguin-chalkboard.jpg)

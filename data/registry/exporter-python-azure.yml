@@ -10,6 +10,7 @@ license: MIT
 description: The OpenTelemetry Azure Monitor Exporter for Python
 authors:
   - name: Microsoft Authors
+    url: https://www.microsoft.com
 package:
   name: azure-monitor-opentelemetry-exporter
   registry: pip

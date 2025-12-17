@@ -1,14 +1,14 @@
 ---
 title: Load Generator
 aliases: [loadgenerator]
-cSpell:ignore: instrumentor instrumentors loadgenerator locustfile urllib
+cSpell:ignore: instrumentor instrumentors locustfile urllib
 ---
 
 The load generator is based on the Python load testing framework
 [Locust](https://locust.io). By default it will simulate users requesting
 several different routes from the frontend.
 
-[Load generator source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/loadgenerator/)
+[Load generator source](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/load-generator/)
 
 ## Traces
 

@@ -14,3 +14,4 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/apache-dbcp-2.0
 createdAt: 2022-10-27
+isFirstParty: false

@@ -1,6 +1,6 @@
 ---
 title: Common Vulnerabilities and Exposures
-weight: 102
+weight: 100
 ---
 
 This is a list of reported Common Vulnerabilities and Exposures (CVEs) across
@@ -42,7 +42,7 @@ it is refreshed daily.
     function renderTable(data) {
       var table = document.getElementById('cve-table').querySelector('tbody');
 
-      data.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      data.sort((a, b) => b.cve_id.localeCompare(a.cve_id));
 
       data.forEach(item => {
         var row = table.insertRow();

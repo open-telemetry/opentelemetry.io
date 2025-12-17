@@ -16,3 +16,4 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-swift/tree/main/Sources/Instrumentation/URLSession
 createdAt: 2021-06-22
+isFirstParty: false

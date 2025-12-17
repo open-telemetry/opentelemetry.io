@@ -69,7 +69,7 @@ at the chance to work with it.
 ### What is the architecture at Farfetch like? How has OpenTelemetry helped?
 
 Farfetch currently has 2000 engineers, with a complex and varied architecture
-which includes cloud-native, Kubernetes, and virtual machines running on three
+which includes cloud native, Kubernetes, and virtual machines running on three
 different cloud providers. There is a lot of information coming from everywhere,
 with a lack of standardization on how to collect this information. For example,
 Prometheus is used mostly as a standard for collecting metrics; however, in some
@@ -156,9 +156,9 @@ others are still instrumented using the [legacy OpenTracing
 [using shims](/docs/migration/opentracing/).
 
 The OpenTelemetry Operator is being implemented to auto-instrument Java and .NET
-code. Among other things, the [OTel Operator](/docs/kubernetes/operator/)
-supports injecting and
-[configuring auto-instrumentation](/docs/kubernetes/operator/automatic/#configure-automatic-instrumentation)
+code. Among other things, the
+[OTel Operator](/docs/platforms/kubernetes/operator/) supports injecting and
+[configuring auto-instrumentation](/docs/platforms/kubernetes/operator/automatic/#configure-automatic-instrumentation)
 in .NET, Java, Python, and Node.js. Iris hopes that Go auto-instrumentation will
 be available in the near-future. To track progress of auto-instrumentation in
 Go, see
@@ -255,8 +255,9 @@ would be a bottleneck in terms of load and single point of failure. The team
 currently has one
 [OpenTelemetry Collector agent](/docs/collector/deployment/agent/) per
 Kubernetes cluster. The end goal is to replace those agents with the
-[OTel Operator](/docs/kubernetes/operator/) instead, which allows you to deploy
-and configure the OTel Collector and inject and configure auto-instrumentation.
+[OTel Operator](/docs/platforms/kubernetes/operator/) instead, which allows you
+to deploy and configure the OTel Collector and inject and configure
+auto-instrumentation.
 
 Everything is then sent to a central OTel Collector (i.e. an
 [OTel Collector gateway](/docs/collector/deployment/gateway/)) per data center,

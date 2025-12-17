@@ -1,0 +1,18 @@
+# cSpell:ignore openinference arize
+title: Haystack Python Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - haystack
+urls:
+  repo: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-haystack
+  docs: https://github.com/Arize-ai/openinference/tree/main/python/instrumentation/openinference-instrumentation-haystack
+license: Apache 2.0
+description: Instrumentation for tracing the Haystack framework
+authors:
+  - name: Arize AI
+    email: oss-devs@arize.com
+createdAt: 2024-08-19
+isFirstParty: false

@@ -1,0 +1,27 @@
+{{ $colors := dict
+    "caution" "warning"
+    "important" "danger"
+    "note" "info"
+    "tip" "success"
+    "warning" "warning"
+-}}
+
+<div class="alert
+    {{- with index $colors .AlertType -}} alert-{{ . }}
+  {{- end }}">
+  {{ $title := or
+    .AlertTitle
+    (and .AlertType
+      (or
+        (and (ne site.Language.Lang "en") (i18n .AlertType))
+        (title .AlertType)
+      )
+    )
+  -}}
+  {{ with $title -}}
+    <div class="h4 alert-heading" role="heading">
+        {{- . | safeHTML -}}
+    </div>
+  {{- end }}
+  {{ .Text }}
+</div>

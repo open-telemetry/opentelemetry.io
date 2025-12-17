@@ -45,16 +45,6 @@ export NODE_OPTIONS="--require @opentelemetry/auto-instrumentations-node/registe
 node app.js
 ```
 
-{{% alert title="Note" color="info" %}}
-
-Currently, only Traces are supported for environment variable configuration. See
-the open issues for
-[Metrics](https://github.com/open-telemetry/opentelemetry-js/issues/4551) and
-[Logs](https://github.com/open-telemetry/opentelemetry-js/issues/4552) to learn
-more.
-
-{{% /alert %}}
-
 By default, all SDK [resource detectors](/docs/languages/js/resources/) are
 used. You can use the environment variable `OTEL_NODE_RESOURCE_DETECTORS` to
 enable only certain detectors, or to completely disable them.
@@ -66,7 +56,7 @@ To see the full range of configuration options, see
 
 A number of popular Node.js libraries are auto-instrumented. For the full list,
 see
-[supported instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/metapackages/auto-instrumentations-node#supported-instrumentations).
+[supported instrumentation](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/auto-instrumentations-node#supported-instrumentations).
 
 ## Troubleshooting
 
@@ -83,7 +73,7 @@ to one of the following:
 
 The default level is `info`.
 
-{{% alert title="Notes" color="info" %}}
+{{% alert title="Notes" %}}
 
 - In a production environment, it is recommended to set `OTEL_LOG_LEVEL` to
   `info`.

@@ -1,0 +1,38 @@
+{{ $err := "spec_status shortcode error" -}}
+{{ $label := .Get 0 -}}
+{{ $pageRef := .Get 1 -}}
+{{ if not (hasPrefix $pageRef "/") -}}
+  {{ $pageRef = printf "/docs/specs/%s" $pageRef -}}
+{{ end -}}
+{{ $enSite := index site.Sites 0 -}}
+{{ $page := $enSite.GetPage $pageRef -}}
+{{ if not $page -}}
+  {{ warnf "spec_status: Can't find page at '%s'." $pageRef -}}
+{{ end -}}
+
+{{ $_match := .Get 2 | default "Status" -}}
+{{ $matchThis := printf ".*%s.*" $_match -}}
+
+{{ $statusLine := "" -}}
+{{ with findRE $matchThis $page.Content -}}
+  {{/* Note that content is in HTML. */ -}}
+  {{ $statusLine = index . 0 -}}
+{{ else -}}
+  {{ warnf "%s: page '%s' does not contain a line matching '%s'." $err $pageRef $_match -}}
+{{ end -}}
+
+{{ $status := "" -}}
+{{/* Valid statuses, as taken from:
+  - https://opentelemetry.io/docs/specs/otel/document-status/
+  - https://github.com/open-telemetry/opentelemetry-proto#maturity-level
+*/ -}}
+{{ $statusValueRE := "(?i:development|experimental|stable|deprecated|removed|mixed|feature.freeze|alpha|beta)" -}}
+{{ $statusRE := printf "%s(,\\s*%s)*" $statusValueRE $statusValueRE -}}
+{{ with findRE $statusRE $statusLine -}}
+  {{ $status = index . 0 -}}
+{{ else -}}
+  {{ warnf "%s: '%s' value did not match one of '%s' in file '%s': matched line is '%s'" $err $_match $statusValueRE $pageRef $statusLine -}}
+  {{ $status = "[STATUS ACCESS FAILURE DURING SITE BUILD]" -}}
+{{ end -}}
+
+**[{{ $label }}]({{ $page.RelPermalink }}):** {{ lower $status -}}

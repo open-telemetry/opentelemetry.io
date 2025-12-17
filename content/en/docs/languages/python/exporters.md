@@ -5,11 +5,9 @@ description: Process and export your telemetry data
 cSpell:ignore: LOWMEMORY
 ---
 
-<!-- markdownlint-disable no-duplicate-heading -->
+{{% docs/languages/exporters/intro %}}
 
-{{% docs/languages/exporters/intro python %}}
-
-### Dependencies {#otlp-dependencies}
+## Dependencies {#otlp-dependencies}
 
 If you want to send telemetry data to an OTLP endpoint (like the
 [OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) or
@@ -36,7 +34,7 @@ pip install opentelemetry-exporter-otlp-proto-grpc
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Usage
+## Usage
 
 Next, configure the exporter to point at an OTLP endpoint in your code.
 
@@ -56,14 +54,14 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Service name is required for most backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
-traceProvider = TracerProvider(resource=resource)
+tracerProvider = TracerProvider(resource=resource)
 processor = BatchSpanProcessor(OTLPSpanExporter(endpoint="<traces-endpoint>/v1/traces"))
-traceProvider.add_span_processor(processor)
-trace.set_tracer_provider(traceProvider)
+tracerProvider.add_span_processor(processor)
+trace.set_tracer_provider(tracerProvider)
 
 reader = PeriodicExportingMetricReader(
     OTLPMetricExporter(endpoint="<traces-endpoint>/v1/metrics")
@@ -88,14 +86,14 @@ from opentelemetry.sdk.metrics import MeterProvider
 from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 
 # Service name is required for most backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
-traceProvider = TracerProvider(resource=resource)
+tracerProvider = TracerProvider(resource=resource)
 processor = BatchSpanProcessor(OTLPSpanExporter(endpoint="your-endpoint-here"))
-traceProvider.add_span_processor(processor)
-trace.set_tracer_provider(traceProvider)
+tracerProvider.add_span_processor(processor)
+trace.set_tracer_provider(tracerProvider)
 
 reader = PeriodicExportingMetricReader(
     OTLPMetricExporter(endpoint="localhost:5555")
@@ -128,38 +126,37 @@ from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader, Cons
 # Service name is required for most backends,
 # and although it's not necessary for console export,
 # it's good to set service name anyways.
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
-traceProvider = TracerProvider(resource=resource)
+tracerProvider = TracerProvider(resource=resource)
 processor = BatchSpanProcessor(ConsoleSpanExporter())
-traceProvider.add_span_processor(processor)
-trace.set_tracer_provider(traceProvider)
+tracerProvider.add_span_processor(processor)
+trace.set_tracer_provider(tracerProvider)
 
 reader = PeriodicExportingMetricReader(ConsoleMetricExporter())
 meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% alert title="Note" color="info" %}}
+{{% alert title="Note" %}}
 
 There are temporality presets for each instrumentation kind. These presets can
 be set with the environment variable
-`OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE`, for example:
+`OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`, for example:
 
 ```sh
-export OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE="DELTA"
+export OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE="DELTA"
 ```
 
-The default value for `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` is
+The default value for `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` is
 `"CUMULATIVE"`.
 
 The available values and their corresponding settings for this environment
 variable are:
 
 - `CUMULATIVE`
-
   - `Counter`: `CUMULATIVE`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `CUMULATIVE`
@@ -168,7 +165,6 @@ variable are:
   - `ObservableGauge`: `CUMULATIVE`
 
 - `DELTA`
-
   - `Counter`: `DELTA`
   - `UpDownCounter`: `CUMULATIVE`
   - `Histogram`: `DELTA`
@@ -184,17 +180,17 @@ variable are:
   - `ObservableUpDownCounter`: `CUMULATIVE`
   - `ObservableGauge`: `CUMULATIVE`
 
-Setting `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` to any other value than
-`CUMULATIVE`, `DELTA` or `LOWMEMORY` will log a warning and set this environment
-variable to `CUMULATIVE`.
+Setting `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` to any other value
+than `CUMULATIVE`, `DELTA` or `LOWMEMORY` will log a warning and set this
+environment variable to `CUMULATIVE`.
 
 {{% /alert %}}
 
-{{% docs/languages/exporters/jaeger %}}
+{{% include "exporters/jaeger.md" %}}
 
-{{% docs/languages/exporters/prometheus-setup %}}
+{{% include "exporters/prometheus-setup.md" %}}
 
-### Dependencies {#prometheus-dependencies}
+## Dependencies {#prometheus-dependencies}
 
 Install the
 [exporter package](https://pypi.org/project/opentelemetry-exporter-prometheus/)
@@ -213,11 +209,10 @@ from prometheus_client import start_http_server
 from opentelemetry import metrics
 from opentelemetry.exporter.prometheus import PrometheusMetricReader
 from opentelemetry.sdk.metrics import MeterProvider
-from opentelemetry.sdk.metrics.export import PeriodicExportingMetricReader
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
 # Service name is required for most backends
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -234,12 +229,12 @@ With the above you can access your metrics at <http://localhost:9464/metrics>.
 Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
 the metrics from this endpoint.
 
-{{% docs/languages/exporters/zipkin-setup %}}
+{{% include "exporters/zipkin-setup.md" %}}
 
-### Dependencies {#zipkin-dependencies}
+## Dependencies {#zipkin-dependencies}
 
-To send your trace data to [Zipkin](https://zipkin.io/), , you can choose
-between two different protocols to transport your data:
+To send your trace data to [Zipkin](https://zipkin.io/), you can choose between
+two different protocols to transport your data:
 
 - [HTTP/protobuf](https://pypi.org/project/opentelemetry-exporter-zipkin-proto-http/)
 - [Thrift](https://pypi.org/project/opentelemetry-exporter-zipkin-json/)
@@ -272,7 +267,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -293,7 +288,7 @@ from opentelemetry.sdk.trace import TracerProvider
 from opentelemetry.sdk.trace.export import BatchSpanProcessor
 from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
-resource = Resource(attributes={
+resource = Resource.create(attributes={
     SERVICE_NAME: "your-service-name"
 })
 
@@ -307,7 +302,7 @@ trace.set_tracer_provider(provider)
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% docs/languages/exporters/outro python "https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter" %}}
+{{% include "exporters/outro.md" `https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.export.html#opentelemetry.sdk.trace.export.SpanExporter` %}}
 
 ```python
 from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
@@ -315,5 +310,3 @@ from opentelemetry.sdk.trace.export import SimpleSpanProcessor
 
 processor = SimpleSpanProcessor(OTLPSpanExporter(endpoint="your-endpoint-here"))
 ```
-
-{{% /docs/languages/exporters/outro %}}

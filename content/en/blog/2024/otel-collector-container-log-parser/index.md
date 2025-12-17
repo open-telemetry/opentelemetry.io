@@ -3,7 +3,7 @@ title: Introducing the new container log parser for OpenTelemetry Collector
 linkTitle: Collector container log parser
 date: 2024-05-22
 author: '[Christos Markou](https://github.com/ChrsMark) (Elastic)'
-cSpell:ignore: Christos containerd Filelog filelog Jaglowski kube Markou
+cSpell:ignore: Christos containerd filelog Jaglowski kube Markou
 ---
 
 [Filelog receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)
@@ -81,7 +81,7 @@ combine them into one at first place:
 
 ```text
 2024-04-06T00:17:10.113242941Z stdout P This is a very very long line th
-2024-04-06T00:17:10.113242941Z stdout P at is really really long and spa
+2024-04-06T00:17:10.113242941Z stdout P at is really, really, long and spa
 2024-04-06T00:17:10.113242941Z stdout F ns across multiple log entries
 ```
 

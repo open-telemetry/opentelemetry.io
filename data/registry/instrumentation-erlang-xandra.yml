@@ -1,0 +1,22 @@
+# cSpell:ignore: xandra
+title: OpentelemetryXandra
+registryType: instrumentation
+language: erlang
+tags:
+  - xandra
+  - instrumentation
+  - erlang
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_xandra
+license: Apache 2.0
+description:
+  This library uses [Telemetry](https://github.com/beam-telemetry/telemetry/)
+  events to create OpenTelemetry Spans for
+  [Xandra](https://github.com/whatyouhide/xandra) queries.
+authors:
+  - name: OpenTelemetry Authors
+createdAt: 2024-11-18
+package:
+  registry: hex
+  name: opentelemetry_xandra
+  version: 0.2.0

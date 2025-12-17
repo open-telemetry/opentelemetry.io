@@ -14,3 +14,4 @@ authors:
 urls:
   repo: https://github.com/mnadeem/opentelemetry-instrumentation-mssql
 createdAt: 2021-04-07
+isFirstParty: false

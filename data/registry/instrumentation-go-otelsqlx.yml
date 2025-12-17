@@ -14,6 +14,8 @@ description:
   metrics.
 authors:
   - name: Vladimir Mihailenco
+    url: https://github.com/vmihailenco
 urls:
   repo: https://github.com/uptrace/opentelemetry-go-extra/tree/main/otelsqlx
 createdAt: 2021-10-25
+isFirstParty: false

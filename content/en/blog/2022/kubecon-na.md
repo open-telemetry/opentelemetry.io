@@ -3,13 +3,13 @@ title: Join us for OpenTelemetry Talks and Activities at Kubecon NA 2022
 linkTitle: Kubecon NA '22
 author: '[Alolita Sharma](https://github.com/alolita)'
 date: 2022-10-10
-cSpell:ignore: Kowall Logz Pothulapati unconference Vineeth
+cSpell:ignore: Kowall Logz Pothulapati Vineeth
 ---
 
 The OpenTelemetry project maintainers, and members of the governance committee
 and technical committee are excited to be at [KubeCon NA][] in a few weeks! Join
-in to meet up in person or virtually for [OpenTelemetry](/) activities in Detroit
-from October 24 - 28, 2022.
+in to meet up in person or virtually for [OpenTelemetry](/) activities in
+Detroit from October 24 - 28, 2022.
 
 There are talks, workshops, an unconference as well as a project booth where you
 are welcome to stop by, say Hi! and tell us about how you are using

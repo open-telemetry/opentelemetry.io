@@ -14,4 +14,5 @@ createdAt: 2020-11-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-http'
-  version: 0.52.1
+  version: 0.208.0
+isFirstParty: false

@@ -13,3 +13,4 @@ authors:
 urls:
   repo: https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-cohere
 createdAt: 2023-10-13
+isFirstParty: false
