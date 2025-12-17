@@ -8,8 +8,9 @@ cSpell:ignore: otelwrapper
 This guide shows how to get started with tracing serverless functions using
 OpenTelemetry instrumentation libraries.
 
-{{% alert title="Note" color="info" %}}
-The OpenTelemetry documentation assumes that the compiled application is run as [CommonJS](https://nodejs.org/api/modules.html#modules-commonjs-modules).
+{{% alert title="Note" color="info" %}} The OpenTelemetry documentation assumes
+that the compiled application is run as
+[CommonJS](https://nodejs.org/api/modules.html#modules-commonjs-modules).
 {{% /alert %}}
 
 ## AWS Lambda
