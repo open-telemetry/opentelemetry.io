@@ -162,6 +162,11 @@ The SIG currently has representation from IBM, Broadcom and other ISVs,
 observability backend vendors, and some customers. But we are always in need of
 more help!
 
-If you are interested in contributing, see the community and SIG information in
-the OpenTelemetry repositories and website for meeting times and communication
-channels.
+If you are interested in contributing, see the 
+[Community](https://opentelemetry.io/community/) and 
+[SIG information](https://github.com/open-telemetry/community#special-interest-groups) 
+in the OpenTelemetry repositories and website for 
+[meeting times](https://groups.google.com/a/opentelemetry.io/g/calendar-mainframe), 
+[meeting minutes](https://docs.google.com/document/d/14p-bpofozTL4n3jy6HZH_TKjoOXvog18G1HBRqq6liE), 
+and communication channels 
+([#otel-mainframes](https://cloud-native.slack.com/archives/C05PXDFTCPJ)).
