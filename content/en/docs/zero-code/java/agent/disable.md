@@ -3,7 +3,7 @@ title: Suppressing specific instrumentation
 linkTitle: Suppressing instrumentation
 weight: 12
 # prettier-ignore
-cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra helidon hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jfinal jodd kotlinx ktor logback logmanager mojarra mybatis myfaces nats okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp Dotel dropwizard dubbo elasticjob finatra helidon hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jfinal jodd kotlinx ktor logback logmanager mojarra mybatis myfaces nats okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## Disabling the agent entirely
@@ -61,9 +61,11 @@ corresponding instrumentation name: {{% /config_option %}}
 | Apache CXF                                       | `cxf`                                       |
 | Apache DBCP                                      | `apache-dbcp`                               |
 | Apache Dubbo                                     | `apache-dubbo`                              |
+| Apache ElasticJob                                | `apache-elasticjob`                         |
 | Apache Geode                                     | `geode`                                     |
 | Apache HttpAsyncClient                           | `apache-httpasyncclient`                    |
 | Apache HttpClient                                | `apache-httpclient`                         |
+| Apache Iceberg                                   | `iceberg`                                   |
 | Apache Kafka                                     | `kafka`                                     |
 | Apache MyFaces                                   | `jsf-myfaces`                               |
 | Apache Pekko Actor                               | `pekko-actor`                               |
