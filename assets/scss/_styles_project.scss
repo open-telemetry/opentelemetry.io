@@ -382,3 +382,37 @@ details {
     display: none !important;
   }
 }
+
+/* Spec alert blocks (Important / Warning / etc.) */
+.alertalert-danger {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 4px solid #ef4444;
+  background-color: var(--bs-secondary-bg);
+  border-radius: 4px;
+}
+
+.alertalert-danger .alert-heading::before {
+  content: "⚠";
+  margin-right: 0.5rem;
+  font-size: 0.95em;
+}
+
+.alertalert-danger .alert-heading {
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Optional: future-proof other alert types */
+.alertalert-warning {
+  border-left-color: #f97316;
+}
+
+.alertalert-info {
+  border-left-color: #3b82f6;
+}
+
+.alertalert-success {
+  border-left-color: #10b981;
+}
