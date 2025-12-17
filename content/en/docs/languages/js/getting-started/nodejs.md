@@ -24,8 +24,11 @@ Ensure that you have the following installed locally:
 - [TypeScript](https://www.typescriptlang.org/download), if you will be using
   TypeScript.
 
-{{% alert title="Note" color="info" %}}
-The OpenTelemetry documentation assumes that the compiled application is run as [CommonJS](https://nodejs.org/api/modules.html#modules-commonjs-modules).
+{{% alert title="Note" color="info" %}} The OpenTelemetry documentation assumes
+that the compiled application is run as
+[CommonJS](https://nodejs.org/api/modules.html#modules-commonjs-modules). If the
+application runs as ESM, add the loader hook as specified in the
+[ESM Support Doc](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/esm-support.md).
 {{% /alert %}}
 
 ## Example Application
@@ -246,16 +249,13 @@ Listening for requests on http://localhost:8080
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Instrumentation for ECMAScript Modules
-
-If your application is written in JavaScript as ESM, or compiled to ESM from TypeScript, then a loader hook is required to properly patch instrumentation.
-The custom hook for ESM instrumentation is `--experimental-loader=@opentelemetry/instrumentation/hook.mjs`.
-This flag must be passed to the `node` binary, which is often done as a startup command and/or in the `NODE_OPTIONS` environment variable.
-
-```console
-$ node --experimental-loader=@opentelemetry/instrumentation/hook.mjs --require ./instrumentation.js app.js
-Listening for requests on http://localhost:8080
-```
+(Note: If your application is written in JavaScript as ECMAScript Modules (ESM),
+or compiled to ESM from TypeScript, then a loader hook is required to properly
+support instrumentation. Use
+`node --experimental-loader=@opentelemetry/instrumentation/hook.mjs --require ./instrumentation.js app.js`.
+See
+[ESM support docs](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/esm-support.md)
+for details on ESM support in OpenTelemetry.)
 
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a
 few times. After a while you should see the spans printed in the console by the
