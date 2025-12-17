@@ -8,7 +8,7 @@ cSpell:ignore: rolldice
 {{% docs/languages/propagation %}}
 
 {{% alert title="Note" color="info" %}}
-Much of OpenTelemetry JS documentation is written assuming the compiled application is run as CommonJS.
+The OpenTelemetry documentation assumes that the compiled application is run as [CommonJS](https://nodejs.org/api/modules.html#modules-commonjs-modules).
 {{% /alert %}}
 
 ## Automatic context propagation
