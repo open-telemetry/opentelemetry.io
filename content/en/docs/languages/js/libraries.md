@@ -20,7 +20,7 @@ will automatically create [spans](/docs/concepts/signals/traces/#spans) based on
 the inbound HTTP requests.
 
 {{% alert title="Note" color="info" %}}
-Much of OpenTelemetry JS documentation is written assuming the compiled application is run as CommonJS.
+The OpenTelemetry documentation assumes that the compiled application is run as [CommonJS](https://nodejs.org/api/modules.html#modules-commonjs-modules).
 If the application runs as ESM, add the loader hook as specified in [Getting Started](/docs/languages/js/getting-started/nodejs/#instrumentation-for-ecmascript-modules).
 {{% /alert %}}
 
