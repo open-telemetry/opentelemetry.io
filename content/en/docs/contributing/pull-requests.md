@@ -22,8 +22,10 @@ To contribute new or improve existing documentation, submit a [pull request][PR]
 If you are a [first-time contributor], please note the following:
 
 Your first 3 contributions to our repository need to be human created with minor
-AI assistance ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)),
-that means your code was written by hand. AI helped with code completion,
+Generative AI assistance ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)).
+That means you must write documentation and code samples by hand. We do not
+restrict any use of non-Generative AI, such as ML systems that assist with grammar,
+in the course of hand-creating your contribution.
 formatting, linting and following best practices. Your PR description needs to
 be human created, no AI involved (AIL0).
 
