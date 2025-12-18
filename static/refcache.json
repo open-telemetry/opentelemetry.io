@@ -4695,6 +4695,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-17T09:50:25.160735191Z"
   },
+  "https://github.com/darccio": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-18T04:00:44.40609476Z"
+  },
   "https://github.com/dash0hq/otelbin": {
     "StatusCode": 206,
     "LastSeen": "2025-12-17T09:51:08.745156181Z"
@@ -4946,6 +4950,10 @@
   "https://github.com/elastic/ottl-playground": {
     "StatusCode": 206,
     "LastSeen": "2025-12-11T09:50:26.957049248Z"
+  },
+  "https://github.com/eliottness": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-18T04:00:48.921722232Z"
   },
   "https://github.com/elskwid": {
     "StatusCode": 206,
