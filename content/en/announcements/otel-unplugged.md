@@ -1,7 +1,7 @@
 ---
 title: OTel Unplugged EU at FOSDEM 2026
 linkTitle: OTel Unplugged EU '26
-date: 2025-10-09
+date: 2025-12-18
 expiryDate: 2026-02-03 # keep
 weight: 20260202
 ---
