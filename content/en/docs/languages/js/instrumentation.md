@@ -949,8 +949,8 @@ Add the following to the top of your application file:
 
 ```ts
 import {
-  SEMATTRS_CODE_FUNCTION,
-  SEMATTRS_CODE_FILEPATH,
+  ATTR_CODE_FUNCTION_NAME,
+  ATTR_CODE_FILE_PATH,
 } from '@opentelemetry/semantic-conventions';
 ```
 
@@ -958,8 +958,8 @@ import {
 
 ```js
 const {
-  SEMATTRS_CODE_FUNCTION,
-  SEMATTRS_CODE_FILEPATH,
+  ATTR_CODE_FUNCTION_NAME,
+  ATTR_CODE_FILE_PATH,
 } = require('@opentelemetry/semantic-conventions');
 ```
 
@@ -970,8 +970,8 @@ Finally, you can update your file to include semantic attributes:
 ```javascript
 const doWork = () => {
   tracer.startActiveSpan('app.doWork', (span) => {
-    span.setAttribute(SEMATTRS_CODE_FUNCTION, 'doWork');
-    span.setAttribute(SEMATTRS_CODE_FILEPATH, __filename);
+    span.setAttribute(ATTR_CODE_FUNCTION_NAME, 'doWork');
+    span.setAttribute(ATTR_CODE_FILE_PATH, __filename);
 
     // Do some work...
 
