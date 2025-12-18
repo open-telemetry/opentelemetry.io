@@ -32,6 +32,16 @@ content that applies broadly to the OpenTelemetry community. Blog posts should
 follow the policies outlined in the
 [Social Media Guide](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
 
+### Linking to GitHub repositories
+
+When linking to source code in GitHub repositories, do not link to the `main`
+(or other default) branch. Instead, link to a **specific commit** or a **tagged
+release** that reflects the state of the code at the time the blog post was
+written.
+
+This ensures that blog posts remain stable and do not break in the future as
+repositories evolve.
+
 Verify that your intended content broadly applies to the OpenTelemetry Community
 . Appropriate content includes:
 
