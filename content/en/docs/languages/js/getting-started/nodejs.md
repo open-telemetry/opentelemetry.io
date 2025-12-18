@@ -24,13 +24,6 @@ Ensure that you have the following installed locally:
 - [TypeScript](https://www.typescriptlang.org/download), if you will be using
   TypeScript.
 
-{{% alert title="Note" color="info" %}} The OpenTelemetry documentation assumes
-that the compiled application is run as
-[CommonJS](https://nodejs.org/api/modules.html#modules-commonjs-modules). If the
-application runs as ESM, add the loader hook as specified in the
-[ESM Support Doc](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/esm-support.md).
-{{% /alert %}}
-
 ## Example Application
 
 The following example uses a basic [Express](https://expressjs.com/)
@@ -564,6 +557,8 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+{{% include esm-support-node.md %}}
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/
