@@ -36,7 +36,7 @@ memory_limiterプロセッサーがパイプラインの一部である場合、
 パイプラインへのデータ入力が頻繁に拒否されている場合は、コレクタークラスターのスケールアップを検討してください。
 ノード全体のメモリ消費量がこのプロセッサーで設定された制限を大幅に下回った場合、スケールダウンできます。
 
-注目すべきもうひとつのメトリクスは、エクスポーターのキューサイズに関連するメトリクスである `otelcol_exporter_queue_capacity` と `otelcol_exporter_queue_size` です。
+注目すべきもう一方のメトリクスのセットは、エクスポーターのキューサイズに関連するメトリクスである `otelcol_exporter_queue_capacity` と `otelcol_exporter_queue_size` です。
 コレクターは、データを送信するためにワーカーが利用可能になるのを待つ間、メモリ内にデータをキューイングします。
 十分なワーカーが存在しないか、バックエンドが遅すぎる場合、データはキューに蓄積され始めます。
 キューがキャパシティ（`otelcol_exporter_queue_size` > `otelcol_exporter_queue_capacity`）に達すると、データは拒否されます（`otelcol_exporter_enqueue_failed_spans`）。
