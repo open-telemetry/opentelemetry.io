@@ -51,17 +51,7 @@ Requirements:
   tracking
 - Submit translations in small, focused PRs for efficient review
 
-## Deliverables
-
-### Translation Content
-
-- Core documentation sections: Getting Started, Concepts, Languages, Zero-code
-- Ecosystem pages: Registry, Integrations, Distributions, Adopters
-- Contributing guides for new Portuguese-speaking contributors
-- Blog posts highlighting important announcements and updates
-- Portuguese-specific include files and messages
-
-### Reference Materials
+## Reference Materials
 
 - **Comprehensive glossary** of OpenTelemetry terms — See
   [Glossary & Terminology](#glossary--terminology)
@@ -69,7 +59,7 @@ Requirements:
   [Style Guide](#style-guide-specifics)
 - **Translation progress tracking** to identify priority areas
 
-### Infrastructure
+## Infrastructure
 
 - **Portuguese-specific spell check**:
   - Brazilian Portuguese dictionary for cspell
