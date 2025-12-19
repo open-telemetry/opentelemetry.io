@@ -1139,6 +1139,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-16T09:45:02.899454174Z"
   },
+  "https://danielmiessler.com/blog/ai-influence-level-ail": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-16T09:46:19.330099+01:00"
+  },
   "https://dapr.io/": {
     "StatusCode": 206,
     "LastSeen": "2025-12-17T09:50:14.931504442Z"
