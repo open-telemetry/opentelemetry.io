@@ -71,9 +71,13 @@ in OpenTelemetry run surveys to better understand our users’ needs and make
 better-informed decisions when building OTel. Here are a few examples of surveys
 we've run previously:
 
-- [Contributor Experience Survey](/blog/2025/contribex-survey-results/)
-- [Developer Experience Survey](/blog/2025/devex-survey/)
-- [Docs Usability Survey](/blog/2024/otel-docs-survey/)
+[![OtelSurveys](https://img.shields.io/badge/CONTRIBUTOR%20EXPERIENCE%20SURVEY-4285F4?logo=OpenTelemetry&logoColor=white)](https://opentelemetry.io/blog/2025/contribex-survey-results/)
+
+[![OtelSurveys](https://img.shields.io/badge/DEVELOPER%20EXPERIENCE%20SURVEY-4285F4?logo=OpenTelemetry&logoColor=white)](https://opentelemetry.io/blog/2025/devex-survey/)
+
+[![OtelSurveys](https://img.shields.io/badge/DOCS%20USABILITY%20SURVEY-4285F4?logo=OpenTelemetry&logoColor=white)](https://opentelemetry.io/blog/2024/otel-docs-survey/)
+
+<!-- Updated the links as CTA, cos instead of embeds, these looks apt here and bends well-->
 <!--➡️ TODO: Turn links into embeds-->
 
 [Learn more about how we run surveys.](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys)
@@ -83,12 +87,15 @@ we've run previously:
 The ultimate way to share your experience in our toolbox is joining our
 podcasts. We regularly do two types of them:
 
-- [OTel Me](https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43):
-  A discussion between our host and end users about their OpenTelemetry adoption
-  and implementation.
-- [OTel in Practice](https://www.youtube.com/playlist?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x):
-  An interactive enablement session on different aspects of OpenTelemetry by
-  contributors and end users.
+[![OTel Me...with Oluwatomisin Taiwo and Andrei Morozov](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DtTCuTAPE5aQ%26list%3DPLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43%26index%3D1)](https://www.youtube.com/watch?v=tTCuTAPE5aQ&list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43&index=1)
+
+A discussion between our host and end users about their OpenTelemetry adoption and implementation. Also, check out the entire [Otel Me playlist](https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43) of discussions.
+
+[![OTel in Practice: How We Scaled KafkaLog Ingestion for OTel by 150%](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FGrQyUPeCljo%3Flist%3DPLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x%26t%3D3)](https://youtu.be/GrQyUPeCljo?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x&t=3)
+
+An interactive enablement session on different aspects of OpenTelemetry by contributors and end users. Also, check out the entire [Otel in Practice playlist](https://www.youtube.com/playlist?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x) of discussions.
+
+  <!-- Updated the page with relevant embedds-->
   <!--➡️ TODO: Turn links into embeds-->
 
 We do the podcasts live and recordings are posted on the OpenTelemetry YouTube
@@ -115,3 +122,5 @@ thing you've spent hours working on? Reach out to the End User SIG on Slack
 (#otel-sig-end-user) and we will be happy to help you.
 
 {{% /alert %}}
+
+![alt text](OtelEndUserfinal.jpg)
