@@ -57,7 +57,6 @@ Requirements:
   [Glossary & Terminology](#glossary--terminology)
 - **Portuguese style guide** with language-specific conventions — See
   [Style Guide](#style-guide-specifics)
-- **Translation progress tracking** to identify priority areas
 
 ## Infrastructure
 
