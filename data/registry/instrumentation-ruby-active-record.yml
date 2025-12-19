@@ -15,5 +15,5 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-active_record
-  version: 0.9.0
+  version: 0.11.1
 isFirstParty: false

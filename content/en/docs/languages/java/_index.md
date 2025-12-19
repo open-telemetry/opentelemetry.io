@@ -1,14 +1,18 @@
 ---
 title: Java
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/Java_SDK.svg"
-  alt="Java"> Language-specific implementation of OpenTelemetry in Java.
-aliases: [/java, /java/metrics, /java/tracing]
+  <img width="35" class="img-initial otel-icon"
+  src="/img/logos/32x32/Java_SDK.svg" alt="Java"> Language-specific
+  implementation of OpenTelemetry in Java.
+aliases: [/java/metrics, /java/tracing]
+redirects:
+  - { from: /java/*, to: ':splat' }
+  - { from: /docs/java/*, to: ':splat' }
 cascade:
   vers:
-    instrumentation: 2.20.1
-    otel: 1.54.1
-    contrib: 1.50.0
+    instrumentation: 2.23.0
+    otel: 1.57.0
+    contrib: 1.52.0
     semconv: 1.37.0
 weight: 18
 ---

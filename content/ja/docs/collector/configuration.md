@@ -2,7 +2,8 @@
 title: 設定
 weight: 20
 description: ニーズに合わせてコレクターを設定する方法を確認してください
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
 ---
@@ -103,8 +104,11 @@ exporters:
 
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 
 service:
   extensions: [health_check, pprof, zpages]
@@ -153,8 +157,11 @@ exporters:
 
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 
 service:
   extensions: [health_check, pprof, zpages]
@@ -533,8 +540,11 @@ service:
 ```yaml
 extensions:
   health_check:
+    endpoint: 0.0.0.0:13133
   pprof:
+    endpoint: 0.0.0.0:1777
   zpages:
+    endpoint: 0.0.0.0:55679
 ```
 
 > 詳細な拡張機能の設定については、[拡張機能のREADME](https://github.com/open-telemetry/opentelemetry-collector/blob/main/extension/README.md)を参照してください。
@@ -627,6 +637,16 @@ processors:
         action: ${env:OPERATION}
 ```
 
+bash構文（`${env:DB_KEY:-some-default-var}`）を使用して環境変数にデフォルト値を渡すことができます。
+
+```yaml
+processors:
+  attributes/example:
+    actions:
+      - key: ${env:DB_KEY:-mydefault}
+        action: ${env:OPERATION:-}
+```
+
 リテラル `$` を示すには `$$` を使用します。
 たとえば、`$DataVisualization` 使うときは、次のようになります。
 
@@ -659,7 +679,7 @@ HTTPまたはgRPCポートを公開しているほとんどのレシーバーは
 - レシーバーのサーバー認証機能として、着信接続を認証します。
 
 既知の認証機能のリストについては、[レジストリ](/ecosystem/registry/?s=authenticator&component=extension)を参照してください。
-カスタムの認証機能を開発したい場合は、[認証機能の拡張を開発する](../building/authenticator-extension) を参照してください。
+カスタムの認証機能を開発したい場合は、[認証機能の拡張を開発する](/docs/collector/extend/custom-component/extension/authenticator/) を参照してください。
 
 コレクターのレシーバーにサーバー認証機能を追加するには、以下の手順にしたがいます。
 

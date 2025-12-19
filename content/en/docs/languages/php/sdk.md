@@ -19,8 +19,9 @@ $meterProvider = new NoopMeterProvider();
 $tracerProvider =  new TracerProvider(
     new BatchSpanProcessor(
         $exporter,
-        ClockFactory::getDefault(),
+        Clock::getDefault(),
         2048, //max queue size
+        5000, //scheduled delay millis
         5000, //export timeout
         1024, //max batch size
         true, //auto flush

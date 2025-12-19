@@ -70,13 +70,13 @@ The structure of any Collector configuration file consists of four classes of
 pipeline components that access telemetry data:
 
 - [Receivers](#receivers)
-  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Receivers.svg">
+  <img width="32" alt="" class="img-initial otel-icon" src="/img/logos/32x32/Receivers.svg">
 - [Processors](#processors)
-  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Processors.svg">
+  <img width="32" alt="" class="img-initial otel-icon" src="/img/logos/32x32/Processors.svg">
 - [Exporters](#exporters)
-  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Exporters.svg">
+  <img width="32" alt="" class="img-initial otel-icon" src="/img/logos/32x32/Exporters.svg">
 - [Connectors](#connectors)
-  <img width="32" alt="" class="img-initial" src="/img/logos/32x32/Load_Balancer.svg">
+  <img width="32" alt="" class="img-initial otel-icon" src="/img/logos/32x32/Load_Balancer.svg">
 
 After each pipeline component is configured you must enable it using the
 pipelines within the [service](#service) section of the configuration file.
@@ -111,12 +111,12 @@ receivers:
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
-processors:
-  batch:
 
 exporters:
   otlp:
     endpoint: otelcol:4317
+    sending_queue:
+      batch:
 
 extensions:
   health_check:
@@ -131,15 +131,12 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
     metrics:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
     logs:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
 ```
 
@@ -161,15 +158,15 @@ receivers:
       grpc:
         endpoint: 0.0.0.0:55690
 
-processors:
-  batch:
-  batch/test:
-
 exporters:
   otlp:
     endpoint: otelcol:4317
+    sending_queue:
+      batch:
   otlp/2:
     endpoint: otelcol2:4317
+    sending_queue:
+      batch:
 
 extensions:
   health_check:
@@ -184,19 +181,15 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
     traces/2:
       receivers: [otlp/2]
-      processors: [batch/test]
       exporters: [otlp/2]
     metrics:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
     logs:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
 ```
 
@@ -250,7 +243,7 @@ service:
       exporters: [otlp]
 ```
 
-## Receivers <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Receivers.svg"> {#receivers}
+## Receivers <img width="35" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Receivers.svg"> {#receivers}
 
 Receivers collect telemetry from one or more sources. They can be pull or push
 based, and may support one or more [data sources](/docs/concepts/signals/).
@@ -329,7 +322,7 @@ receivers:
 > For detailed receiver configuration, see the
 > [receiver README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/README.md).
 
-## Processors <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Processors.svg"> {#processors}
+## Processors <img width="35" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Processors.svg"> {#processors}
 
 Processors take the data collected by receivers and modify or transform it
 before sending it to the exporters. Data processing happens according to rules
@@ -366,9 +359,6 @@ processors:
         action: delete
       - key: email
         action: hash
-
-  # Data sources: traces, metrics, logs
-  batch:
 
   # Data sources: metrics, metrics, logs
   filter:
@@ -429,7 +419,7 @@ processors:
 > For detailed processor configuration, see the
 > [processor README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/README.md).
 
-## Exporters <img width="35" class="img-initial" alt="" src="/img/logos/32x32/Exporters.svg"> {#exporters}
+## Exporters <img width="35" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Exporters.svg"> {#exporters}
 
 Exporters send data to one or more backends or destinations. Exporters can be
 pull or push based, and may support one or more
@@ -512,7 +502,7 @@ secure connections, as described in
 > For more information on exporter configuration, see the
 > [exporter README.md](https://github.com/open-telemetry/opentelemetry-collector/blob/main/exporter/README.md).
 
-## Connectors <img width="32" class="img-initial" alt="" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
+## Connectors <img width="32" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Load_Balancer.svg"> {#connectors}
 
 Connectors join two pipelines, acting as both exporter and receiver. A connector
 consumes data as an exporter at the end of one pipeline and emits data as a
@@ -561,7 +551,7 @@ service:
 > For detailed connector configuration, see the
 > [connector README](https://github.com/open-telemetry/opentelemetry-collector/blob/main/connector/README.md).
 
-## Extensions <img width="32" class="img-initial" alt="" src="/img/logos/32x32/Extensions.svg"> {#extensions}
+## Extensions <img width="32" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Extensions.svg"> {#extensions}
 
 Extensions are optional components that expand the capabilities of the Collector
 to accomplish tasks not directly involved with processing telemetry data. For
@@ -640,11 +630,10 @@ service:
   pipelines:
     metrics:
       receivers: [opencensus, prometheus]
-      processors: [batch]
       exporters: [opencensus, prometheus]
     traces:
       receivers: [opencensus, jaeger]
-      processors: [batch, memory_limiter]
+      processors: [memory_limiter]
       exporters: [opencensus, zipkin]
 ```
 
@@ -659,7 +648,6 @@ service:
       # ...
     traces/2:
       receivers: [opencensus]
-      processors: [batch]
       exporters: [zipkin]
 ```
 
@@ -735,7 +723,7 @@ Each authentication extension has two possible usages:
 For a list of known authenticators, see the
 [Registry](/ecosystem/registry/?s=authenticator&component=extension). If you're
 interested in developing a custom authenticator, see
-[Building an authenticator extension](../building/authenticator-extension).
+[Building an authenticator extension](/docs/collector/extend/custom-component/extension/authenticator).
 
 To add a server authenticator to a receiver in the Collector, follow these
 steps:

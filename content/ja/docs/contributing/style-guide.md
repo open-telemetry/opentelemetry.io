@@ -3,7 +3,7 @@ title: ドキュメントスタイルガイド
 description: OpenTelemetry のドキュメントを書く際の用語とスタイル。
 linkTitle: スタイルガイド
 weight: 20
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 cSpell:ignore: open-telemetry postgre style-guide textlintrc
 ---
 
@@ -41,7 +41,7 @@ OpenTelemetry の用語と定義の完璧なリストには、[用語集](/docs/
 ## マークダウン規約 {#markdown-standards}
 
 マークダウンファイルに規約と一貫性を確保するために、[markdownlint] によって定められたルールに従う必要があります。
-すべてのルールの一覧は、[.markdownlint.json] ファイルを確認してください。
+すべてのルールの一覧は、[.markdownlint.yaml] ファイルを確認してください。
 
 同様に、Markdown [file format](#file-format) を適用し、ファイルの末尾スペースを削除します。
 これは 2 つ以上のスペースを仕様する [line break syntax] を排除します。
@@ -84,7 +84,7 @@ title: registryEntryTitle
 
 検証問題の修正方法については、[プルリクエストのチェック](../pr-checks) を参照してください。
 
-[.markdownlint.json]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json
+[.markdownlint.yaml]: https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
 [line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [Prettier]: https://prettier.io

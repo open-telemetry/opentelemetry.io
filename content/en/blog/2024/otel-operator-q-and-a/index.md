@@ -141,7 +141,7 @@ Yes! In fact,
 [you probably should](https://cloud-native.slack.com/archives/C033BJ8BASU/p1713894678225579)!
 
 As we saw earlier, the
-[core distribution](https://github.cm/open-telemetry/open-telemetry-collector)
+[core distribution](https://github.com/open-telemetry/opentelemetry-collector)
 is the default Collector distribution used by the `OpenTelemetryCollector` CR.
 The Core distribution is a bare-bones distribution of the Collector for OTel
 developers to develop and test. It contains a base set of components–i.e.
@@ -163,7 +163,7 @@ and
 
 If you want to use your own specific Collector components, you can build your
 own distribution using the
-[OpenTelemetry Collector Builder](/docs/collector/custom-collector/) (OCB), and
+[OpenTelemetry Collector Builder](/docs/collector/extend/ocb/) (OCB), and
 include only the components that you need.
 
 Either way, the OpenTelemetryCollector CR allows you to override the default

@@ -45,11 +45,11 @@
   components: [Collector]
 - name: Grafana Distribution of OpenTelemetry for .NET
   url: https://github.com/grafana/grafana-opentelemetry-dotnet
-  docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/dotnet/
+  docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/
   components: [.NET]
 - name: Grafana Distribution of OpenTelemetry for Java
   url: https://github.com/grafana/grafana-opentelemetry-java
-  docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/instrument/java/
+  docsUrl: https://grafana.com/docs/grafana-cloud/monitor-applications/application-observability/setup/
   components: [Java]
 - name: observIQ BindPlane Agent
   url: https://github.com/observIQ/observiq-otel-collector
@@ -178,6 +178,26 @@
 - name: New Relic Distribution of the OpenTelemetry Collector (NRDOT)
   url: https://github.com/newrelic/nrdot-collector-releases
   docsUrl: https://docs.newrelic.com/docs/opentelemetry/nrdot/nrdot-collector/
+  components: [Collector]
+- name: Honeycomb’s OpenTelemetry Web SDK distribution
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-web
+  docsUrl: https://docs.honeycomb.io/send-data/javascript-browser/
+  components: [Javascript, Browser]
+- name: Honeycomb's OpenTelemetry Android SDK distribution
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-android
+  docsUrl: https://docs.honeycomb.io/send-data/android/
+  components: [Android]
+- name: Honeycomb's OpenTelemetry Swift SDK distribution
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-swift
+  docsUrl: https://docs.honeycomb.io/send-data/ios/
+  components: [Swift]
+- name: Honeycomb's OpenTelemetry React Native SDK distribution
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-react-native
+  docsUrl: https://docs.honeycomb.io/send-data/react-native/
+  components: [React Native, Javascript]
+- name: Honeycomb's OpenTelemetry Collector Distribution
+  url: https://github.com/honeycombio/honeycomb-collector-distro
+  docsUrl: https://github.com/honeycombio/honeycomb-collector-distro/blob/main/README.md
   components: [Collector]
 
 # OSS Collector Distros

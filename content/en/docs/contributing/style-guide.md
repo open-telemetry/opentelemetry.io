@@ -47,11 +47,29 @@ are properly written and use the original capitalization. For example, write
 [`.textlintrc.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml)
 file.
 
-## Markdown standards
+## Markdown
+
+Site pages are written in the Markdown syntax supported by the [Goldmark]
+Markdown renderer. For the full list of supported Markdown extensions, see
+[Goldmark].
+
+You can also use the following extensions:
+
+- [GitHub-flavored Markdown][GFM] (GFM) [alerts][gfm-alerts]
+- [Emojis]. For the complete list of available emojis, see [Emojis] from the
+  Hugo docs.
+
+[Emojis]: https://gohugo.io/quick-reference/emojis/
+[gfm-alerts]:
+  https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide#alerts
+[GFM]: https://github.github.com/gfm/
+[Goldmark]: https://gohugo.io/configuration/markup/#goldmark
+
+### Markdown checks {#markdown-standards}
 
 To enforce standards and consistency for Markdown files, all files should follow
 certain rules, enforced by [markdownlint]. For a full list, check the
-[.markdownlint.json] file.
+[.markdownlint.yaml] and [.markdownlint-cli2.yaml] files.
 
 We also enforce Markdown [file format](#file-format) and strip files of trailing
 whitespace. This precludes the [line break syntax] of 2+ spaces; use `<br>`
@@ -88,8 +106,13 @@ title: registryEntryTitle
 
 ## File format
 
-We enforce file formatting using [Prettier]. Invoke it using
-`npm run fix:format`.
+We use [Prettier] to enforce file formatting. Invoke it using:
+
+- `npm run fix:format` to format all files
+- `npm run fix:format:diff` to format only the files that have changed since the
+  last commit
+- `npm run fix:format:staged` to format only the files that are staged for the
+  next commit
 
 ## File names
 
@@ -100,8 +123,10 @@ All file names should be in
 
 To learn how to fix validation issues, see [Pull request checks](../pr-checks).
 
-[.markdownlint.json]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.json
+[.markdownlint.yaml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
+[.markdownlint-cli2.yaml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint-cli2.yaml
 [line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [Prettier]: https://prettier.io

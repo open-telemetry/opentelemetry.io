@@ -16,4 +16,4 @@ createdAt: 2022-11-07
 package:
   registry: nuget
   name: OpenTelemetry.Exporter.InfluxDB
-  version: 1.0.0-alpha.4
+  version: 1.0.0-alpha.6

@@ -27,6 +27,7 @@ cassandra
 checkoutservice
 Chronosphere
 classpath
+cmelius
 cncf
 configurator
 comms
@@ -73,6 +74,8 @@ lifecycles
 lightstep
 Loffay
 Mancuso
+Marylia
+melius
 microservices
 mongodb
 ndjson
@@ -92,6 +95,7 @@ otel-endusers
 otelcol
 otep
 otlp
+Otmar
 packagist
 pageinfo
 Paixão
@@ -138,6 +142,7 @@ traceparent
 traefik
 Trask
 uids
+unconference
 unsampled
 unshallow
 upstreamed
