@@ -15320,8 +15320,8 @@
     "LastSeen": "2025-12-18T09:51:03.8Z"
   },
   "https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97": {
-    "StatusCode": 403,
-    "LastSeen": "2025-12-18T09:49:31.410371494Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-19T08:40:19.133Z"
   },
   "https://hsqldb.org/": {
     "StatusCode": 206,
@@ -15500,8 +15500,8 @@
     "LastSeen": "2025-12-16T09:45:28.550728119Z"
   },
   "https://kb.vfunction.com/installations/install/dist-agent/": {
-    "StatusCode": -20,
-    "LastSeen": "2025-12-18T09:48:30.313466082Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-19T08:40:23.284Z"
   },
   "https://keda.sh/": {
     "StatusCode": 206,
