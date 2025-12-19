@@ -13,7 +13,7 @@ redirects:
   - { from: /docs/operator/*, to: ':splat' }
   - { from: /docs/k8s-operator/*, to: ':splat' }
   - { from: /docs/platforms/kubernetes-operator/*, to: ':splat' }
-default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
+default_lang_commit: 1253527a5bea528ae37339692e711925785343b1 # patched
 drifted_from_default: true
 ---
 
@@ -87,7 +87,7 @@ Lorsque l'opérateur est installé en utilisant
 [`opentelemetry-collector-k8s`](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s)
 est utilisée. Si vous avez besoin d'un composant non disponible dans ces
 versions, vous devrez peut-être
-[construire votre propre collecteur](/docs/collector/custom-collector/).
+[construire votre propre collecteur](/docs/collector/extend/ocb/).
 
 {{% /alert %}}
 
