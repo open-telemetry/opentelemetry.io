@@ -9,7 +9,8 @@ function auto_update_versions() {
 
       "opentelemetry-collector-releases
         vers content/en/docs/collector/_index.md
-        collector_vers content/en/docs/security/_index.md"
+        collector_vers content/en/docs/security/_index.md
+        collector_vers content/en/docs/zero-code/python/_index.md"
       "opentelemetry-java
         otel content/en/docs/languages/java/_index.md
         otel content/en/docs/zero-code/java/_index.md"

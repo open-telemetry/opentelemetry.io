@@ -30,11 +30,11 @@ jobs:
       patch_skipped: ${{ steps.check_patch.outputs.skipped }}
 
     steps:
-      - uses: step-security/harden-runner@95d9a5deda9de15063e7595e9719c11c38c90ae2 # v2.13.2
+      - uses: step-security/harden-runner@20cf305ff2072d973412fa9b1e3a4f227bda3c76 # v2.14.0
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.1
         with: { fetch-depth: 0 }
 
       - name: Extract action name
@@ -89,7 +89,7 @@ jobs:
 
       - name: Upload patch artifact
         if: steps.check_patch.outputs.skipped != 'true'
-        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: pr-fix-${{ github.run_id }}
           path: pr-fix.patch
@@ -105,18 +105,18 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: step-security/harden-runner@95d9a5deda9de15063e7595e9719c11c38c90ae2 # v2.13.2
+      - uses: step-security/harden-runner@20cf305ff2072d973412fa9b1e3a4f227bda3c76 # v2.14.0
         with:
           egress-policy: audit
 
-      - uses: actions/create-github-app-token@7e473efe3cb98aa54f8d4bac15400b15fad77d94 # v2.2.0
+      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         id: otelbot-token
         with:
           # the higher privileged docs token is needed to push commits to an existing PR
           app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v5.0.1
         with:
           fetch-depth: 999
           token: ${{ steps.otelbot-token.outputs.token }}
@@ -126,7 +126,7 @@ jobs:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Download patch
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: ${{ needs.generate-patch.outputs.patch_name }}
 
@@ -185,10 +185,10 @@ jobs:
     if: needs.generate-patch.outputs.patch_skipped == 'true'
     needs: generate-patch
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.1
         with: { fetch-depth: 1 }
 
-      - uses: actions/create-github-app-token@7e473efe3cb98aa54f8d4bac15400b15fad77d94 # v2.2.0
+      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         id: otelbot-token
         with:
           app-id: ${{ vars.OTELBOT_APP_ID }}

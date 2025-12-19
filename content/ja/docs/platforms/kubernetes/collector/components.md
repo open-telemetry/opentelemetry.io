@@ -597,7 +597,7 @@ Kubernetes では、レシーバーが正しく動作するためには `hostfs`
 | load         | All                   | CPU負荷のメトリクス                                              |
 | filesystem   | All                   | ファイルシステム使用量のメトリクス                               |
 | memory       | All                   | メモリ使用量のメトリクス                                         |
-| network      | All                   | ネットワークインターフェースI/OのメトリクスとTCP接続のメトリクス |
+| network      | All                   | ネットワークインターフェイスI/OのメトリクスとTCP接続のメトリクス |
 | paging       | All                   | ページ空間／スワップ空間の使用量とI/Oのメトリクス                |
 | processes    | Linux, macOS          | プロセス数のメトリクス                                           |
 | process      | Linux, macOS, Windows | プロセス毎のCPU、Memory、ディスクI/Oのメトリクス                 |
