@@ -64,10 +64,6 @@ Requirements:
   - Brazilian Portuguese dictionary for cspell
     ([`@cspell/dict-pt-br`](https://github.com/streetsidesoftware/cspell-dicts/tree/main/dictionaries/pt_BR#readme))
   - Custom wordlist ([`.cspell/pt-palavras.txt`](.cspell/pt-palavras.txt))
-- **Component ownership**: Defined ownership for
-  `@open-telemetry/docs-pt-approvers` in the
-  [`component-owners.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml#L100)
-  file
 
 ## Staffing / Help Wanted
 
