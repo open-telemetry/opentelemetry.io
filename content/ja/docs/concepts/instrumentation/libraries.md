@@ -26,7 +26,7 @@ OpenTelemetry を使ったネイティブのライブラリ計装は、ユーザ
 もしあなたのライブラリにないものがあれば、[追加する](https://github.com/open-telemetry/semantic-conventions/issues)ことを検討してください。
 スパン名には特に注意してください。
 意味のある名前を使うように努め、定義する際にはカーディナリティを考慮してください。
-[`schema_url`]（/docs/specs/otel/schemas/#schema-url）属性があり、どのバージョンのセマンティック規約が使用されているかを記録できます。
+[`schema_url`](/docs/specs/otel/schemas/#schema-url) 属性があり、どのバージョンのセマンティック規約が使用されているかを記録できます。
 
 何かフィードバックがあったり、新しい規約を追加したい場合は[計装チャンネル（ `#otel-instrumentation` ）](https://cloud-native.slack.com/archives/C01QZFGMLQ7)に参加してコントリビュートするか、[仕様のレポジトリ](https://github.com/open-telemetry/opentelemetry-specification)でイシューまたはプルリクエストを公開してください。
 
