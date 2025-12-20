@@ -211,10 +211,10 @@ instrumenting Prometheus.
 ```yaml
 discovery:
   instrument:
-    - k8s_namespace: '*'  # Instrument all namespaces
+    - k8s_namespace: '*' # Instrument all namespaces
   exclude_instrument:
-    - k8s_namespace: development  # Except development namespace
-    - k8s_namespace: staging      # And staging namespace
+    - k8s_namespace: development # Except development namespace
+    - k8s_namespace: staging # And staging namespace
 ```
 
 ### Example: Exclude services by labels
@@ -307,7 +307,7 @@ service (including itself and other observability components), set the
 ```yaml
 discovery:
   instrument:
-    - k8s_namespace: '*'  # or specific namespaces/selectors
+    - k8s_namespace: '*' # or specific namespaces/selectors
 
   # Empty list disables all default exclusions
   default_exclude_instrument: []
