@@ -1966,6 +1966,13 @@ approvers:
       - collector-releases-approvers
     html_url: https://github.com/jackgopack4
     avatar_url: https://avatars.githubusercontent.com/u/6229304?v=4
+  - name: JacksonWeber
+    teams:
+      - javascript-approvers
+      - javascript-contrib-triagers
+      - javascript-triagers
+    html_url: https://github.com/JacksonWeber
+    avatar_url: https://avatars.githubusercontent.com/u/47067795?v=4
   - name: jade-guiton-dd
     teams:
       - collector-approvers
@@ -2489,12 +2496,6 @@ triagers:
       - ruby-contrib-triagers
     html_url: https://github.com/indrekj
     avatar_url: https://avatars.githubusercontent.com/u/3438?v=4
-  - name: JacksonWeber
-    teams:
-      - javascript-contrib-triagers
-      - javascript-triagers
-    html_url: https://github.com/JacksonWeber
-    avatar_url: https://avatars.githubusercontent.com/u/47067795?v=4
   - name: jamesmoessis
     teams:
       - collector-contrib-triagers
