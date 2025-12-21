@@ -165,12 +165,12 @@ providers:
 
 {{% /alert %}}
 
-## 第 3a 步 - 生成代码并构建 Collector 发行版 {#step-3a---generate-the-code-and-build-your-collectors-distribution}
+## 第 3a 步 - 生成代码并构建 Collector 发行版 {#generate-the-code-and-build-your-collector-distribution}
 
 {{% alert color="primary" title="注意" %}}
 
 这一步使用 `ocb` 可执行文件构建你的定制 Collector 发行版。如果你希望将其部署到容器编排系统（例如 Kubernetes），
-请跳过这一步，转到[第 3b 步](#step-3b---containerize-your-collectors-distribution)。
+请跳过这一步，转到[第 3b 步](#containerize-your-collector-distribution)。
 
 {{% /alert %}}
 
@@ -214,13 +214,13 @@ Collector 发行版的所有源代码和可执行文件。
 
 你现在可以使用生成的代码来启动你的组件开发项目，并轻松构建和分发包含定制组件的 Collector 发行版。
 
-## 第 3b 步 - 将 Collector 发行版容器化 {#step-3b---containerize-your-collectors-distribution}
+## 第 3b 步 - 将 Collector 发行版容器化 {#containerize-your-collector-distribution}
 
 {{% alert color="primary" title="注意" %}}
 
 这一步将使用 `Dockerfile` 在容器中构建你的 Collector 发行版。如果你需要将 Collector
 发行版部署到容器编排系统（如 Kubernetes），请按照本步骤操作。如果你只需要构建而不需要容器化，
-请回到[第 3a 步](#step-3a---generate-the-code-and-build-your-collectors-distribution)。
+请回到[第 3a 步](#generate-the-code-and-build-your-collector-distribution)。
 
 {{% /alert %}}
 
