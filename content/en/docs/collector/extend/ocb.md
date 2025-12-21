@@ -25,7 +25,7 @@ components along with components that are publicly available.
 As part of the process, the `ocb` generates the Collector's source code,
 which you can use to build and debug your own custom components.
 
-## Step 1 - Install the builder
+## Install the Builder
 
 {{% alert title="Note" %}}
 
@@ -36,9 +36,7 @@ already.
 {{% /alert %}}
 
 The `ocb` binary is available as a downloadable asset from OpenTelemetry
-Collector [releases with `cmd/builder` tags](https://github.com/open-telemetry/opentelemetry-collector-releases/tags). You can find a list of
-assets named based on OS and chipset, so download the one that fits your
-configuration:
+Collector [releases with `cmd/builder` tags][tags]. Find and download the asset that fits your operating system and chipset:
 
 - Linux (AMD 64)
 - Linux (ARM 64)
@@ -100,17 +98,15 @@ To make sure the `ocb` is ready to use, go to your terminal and type
 `./ocb help`. When you press enter, you should see the output of the `help`
 command in your console.
 
-## Step 2 - Create a builder manifest file
+## Configure the Builder
 
-The builder's `manifest` file is a YAML file where you provide information about the
-code generation and compile process combined with the components you would
-like to add to your Collector's distribution.
+You configure the Builder using a YAML manifest file. The manifest has two main sections. The first section, `dist`, contains options for configuring the code generation and compile process. The second section contains top-level module types, such as `extensions`, `exporters`, `receivers` or `processors`. Each module type accepts a list of components.
 
 The `manifest` starts with a map named `dist` which contains tags to help you
 configure the code generation and compile process. In fact, all the tags for
 `dist` are equivalent to the `ocb` command line `flags`.
 
-Here are the tags for the `dist` map:
+The following table lists the options for configuring the `dist` section of the manifest. 
 
 | Tag              | Description                                                                | Optional | Default Value                                                                            |
 | ---------------- | -------------------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------- |
@@ -123,14 +119,14 @@ Here are the tags for the `dist` map:
 
 As you can see in the table above, all the `dist` tags are optional. You add
 custom values for them depending on whether you intend to make your
-custom Collector distribution available for consumption by other users or if you
-are simply using the `ocb` to bootstrap your component development and
+custom Collector distribution available to other users or you
+are using the `ocb` to bootstrap your component development and
 testing environment.
 
-For this tutorial, you create a Collector's distribution to support
+In the following example, you create a Collector's distribution to support
 the development and testing of components.
 
-Go ahead and create a manifest file named `builder-config.yaml` with the
+1. Create a manifest file named `builder-config.yaml` with the
 following content:
 
 ```yaml
@@ -186,20 +182,20 @@ providers:
 {{% alert title="Tip" %}}
 
 For a list of components that you can add to your custom Collector, see the
-[OpenTelemetry Registry](/ecosystem/registry/?language=collector). Note that
-registry entries provide the full name and version you need to add to your
+[OpenTelemetry Registry](/ecosystem/registry/?language=collector). Each
+registry entry contains the full name and version you need to add to your
 `builder-config.yaml`.
 
 {{% /alert %}}
 
-## Step 3a - Generate the code and build your Collector's distribution
+## Generate the code and build your Collector distribution
 
 {{% alert title="Note" %}}
 
-This step builds your custom Collector distribution using the `ocb`
+This section instructs you to build your custom Collector distribution using the `ocb`
 binary. If you would like to build and deploy your custom Collector distribution
-to a container orchestrator (for example, Kubernetes), skip this step and go to
-[Step 3b](#step-3b---containerize-your-collectors-distribution).
+to a container orchestrator, such as Kubernetes, skip this section and see 
+[Containerize your Collector Distribution](#step-3b---containerize-your-collector-distribution).
 
 {{% /alert %}}
 
@@ -210,7 +206,7 @@ the following command:
 ./ocb --config builder-config.yaml
 ```
 
-If everything went well, here is what the output of the command looks
+The output of the command looks
 like:
 
 ```text
@@ -244,19 +240,19 @@ The folder structure looks like this:
     └── otelcol-dev
 ```
 
-You can now use the generated code to bootstrap your component development
-projects and easily build and distribute your own Collector distribution with
-your components.
+You can use the generated code to bootstrap your component development
+projects and then build and distribute your own Collector distribution with
+those components.
 
-## Step 3b - Containerize your Collector's distribution
+## Containerize your Collector distribution
 
 {{% alert title="Note" %}}
 
-This step builds your Collector distribution inside a `Dockerfile`. Follow
-this step if you need to deploy your Collector distribution to a container
-orchestrator (for example, Kubernetes). If you would like to *only* build your
-Collector distribution without containerization, go to
-[Step 3a](#step-3a---generate-the-code-and-build-your-collectors-distribution).
+This section teaches you to build your Collector distribution inside a `Dockerfile`. Follow
+these instructions if you need to deploy your Collector distribution to a container
+orchestrator such as Kubernetes. If you want to build your
+Collector distribution without containerization, see
+[Generate the code and build your Collector distribution](#step-3a---generate-the-code-and-build-your-collector-distribution).
 
 {{% /alert %}}
 
@@ -306,7 +302,7 @@ CMD ["--config", "/otelcol/collector-config.yaml"]
 EXPOSE 4317 4318 12001
 ```
 
-The following is the minimalist `collector-config.yaml` definition:
+The following is a minimal `collector-config.yaml` definition:
 
 ```yaml
 receivers:
