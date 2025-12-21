@@ -8467,6 +8467,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-10T09:43:31.010377552Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/main/README.md#compatibility": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-21T14:35:00.650527-08:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/VERSIONING.md": {
     "StatusCode": 206,
     "LastSeen": "2025-12-18T09:44:22.324833184Z"
