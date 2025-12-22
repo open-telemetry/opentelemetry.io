@@ -414,8 +414,8 @@ To enable metrics in your application, you’ll need to have an initialized
 This configuration tells the application to create a `MetricProvider` with a
 single `Reader`. The `Reader` exports every second to an OTLP receiver, like the
 collector, at `localhost:4318` by default. To change the endpoint add to the map
-`endpoints => ["<host>:<port>"]` and configure the protocol to use `protocol =>
-http_protobuf | grpc`.
+`endpoints => ["<host>:<port>"]` and configure the protocol to use
+`protocol => http_protobuf | grpc`.
 
 Use `exporter => {otel_exporter_metrics_console, #{}}` for outputting the
 metrics to the console.
