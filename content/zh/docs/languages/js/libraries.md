@@ -4,7 +4,6 @@ linkTitle: 库
 default_lang_commit: 8dad29e2443b7c8739f3be322e5d5eec3baf999f
 weight: 40
 description: 如何为应用所依赖的库进行插桩
-cSpell:ignore: metapackage metapackages
 ---
 
 {{% docs/languages/libraries-intro "js" %}}
@@ -28,7 +27,7 @@ cSpell:ignore: metapackage metapackages
 npm install --save @opentelemetry/instrumentation-http @opentelemetry/instrumentation-express
 ```
 
-Opentelemetry JavaScript 还定义了
+OpenTelemetry JavaScript 还定义了
 [auto-instrumentation-node](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node)
 和
 [auto-instrumentation-web](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-web)
@@ -60,7 +59,7 @@ npm install --save @opentelemetry/auto-instrumentations-web
 安装所需的插桩库后，将它们注册到 Node.js 的 OpenTelemetry SDK 中。
 如果你遵循了[入门指南](/docs/languages/js/getting-started/nodejs/)，你已经使用了元包。
 如果你遵循了[手动插桩 SDK 初始化说明](/docs/languages/js/instrumentation/#initialize-tracing)，
-更新你的 `instrumentation.ts` (或 `instrumentation.js`) 如下: 
+更新你的 `instrumentation.ts` (或 `instrumentation.js`) 如下:
 
 {{< tabpane text=true >}}
 
@@ -278,4 +277,3 @@ const expressInstrumentation = new ExpressInstrumentation({
 在这些场景下，你可以创建一个插桩库，该库会通过各种机制注入插桩调用，例如包装接口、订阅库专属回调函数，或是将现有遥测数据转换为 OpenTelemetry 数据模型。
 
 创建这样的库请参考 Node.js 和浏览器的[插桩实现指南](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/GUIDELINES.md)。
-
