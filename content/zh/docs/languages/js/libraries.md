@@ -11,13 +11,10 @@ cSpell:ignore: metapackage metapackages
 
 ## 使用插桩库 {#use-instrumentation-libraries}
 
-如果一个库没有提供 OpenTelemetry 开箱即用的支持，你可以使用
-[插桩库](/docs/specs/otel/glossary/#instrumentation-library)
-来为该库或框架生成遥测数据。
+如果一个库没有提供 OpenTelemetry 开箱即用的支持，你可以使用[插桩库](/docs/specs/otel/glossary/#instrumentation-library)来为该库或框架生成遥测数据。
 
 例如，
-[Express 插桩库](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
-会根据入站 HTTP 请求自动创建 [Span](/docs/concepts/signals/traces/#spans)。
+[Express 插桩库](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)会根据入站 HTTP 请求自动创建 [Span](/docs/concepts/signals/traces/#spans)。
 
 ### 安装 {#setup}
 
