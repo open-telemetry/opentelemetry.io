@@ -1,5 +1,6 @@
 ---
-title: Gateway
+title: Gateway deployment pattern
+linkTitle: Gateway pattern
 description:
   Learn why and how to send signals first to a single OTLP endpoint and then to
   backends
