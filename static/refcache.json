@@ -252,16 +252,16 @@
     "LastSeen": "2025-12-22T09:52:17.201Z"
   },
   "https://blog.olly.garden/how-to-name-your-metrics": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-22T09:49:43.758532067Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-22T10:11:32.656Z"
   },
   "https://blog.olly.garden/how-to-name-your-span-attributes": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-22T09:49:43.75898218Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-22T10:11:40.011Z"
   },
   "https://blog.olly.garden/how-to-name-your-spans": {
-    "StatusCode": 429,
-    "LastSeen": "2025-12-22T09:49:43.751226273Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-22T10:11:50.681Z"
   },
   "https://blog.remirepo.net/pages/PECL-extensions-RPM-status": {
     "StatusCode": 200,
