@@ -355,10 +355,11 @@ If those headers are available, they will be included in your span:
 
 ### Sanitization of captured headers
 
-In order to prevent storing sensitive data such as personally identifiable information (PII), session keys, passwords,
-etc, set the environment variable `OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS`
-to a comma delimited list of HTTP header names to be sanitized.  Regexes may be used, and all header names will be
-matched in a case-insensitive manner.
+In order to prevent storing sensitive data such as personally identifiable
+information (PII), session keys, passwords, etc, set the environment variable
+`OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS` to a comma delimited
+list of HTTP header names to be sanitized. Regexes may be used, and all header
+names will be matched in a case-insensitive manner.
 
 For example,
 
@@ -366,7 +367,8 @@ For example,
 export OTEL_INSTRUMENTATION_HTTP_CAPTURE_HEADERS_SANITIZE_FIELDS=".*session.*,set-cookie"
 ```
 
-will replace the value of headers such as `session-id` and `set-cookie` with `[REDACTED]` in the span.
+will replace the value of headers such as `session-id` and `set-cookie` with
+`[REDACTED]` in the span.
 
 [semantic convention]: /docs/specs/semconv/http/http-spans/
 [api reference]:
