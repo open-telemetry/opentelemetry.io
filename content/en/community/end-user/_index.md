@@ -30,14 +30,11 @@ before you. Giving a thumbs up or sharing more context in a comment is exactly
 what we’re looking for. Are you the first person who bumped into this problem?
 File an issue in one of our repositories.
 
-
 <a href="https://opentelemetry.io/community/end-user/issue-participation/">
    <img src="https://img.shields.io/badge/review-issues-ff6a07.svg?style=for-the-badge&logo=OpenTelemetry&logoColor=black&labelColor=ivory">
 
 <!--Updated the CTA for "Review Issues")-->
 <!--➡️ TODO: Add a CTA "Review issues" linking to a list of projects in OTel org ) -->
-
-
 
 ## Chat on Slack {#slack}
 
@@ -89,11 +86,17 @@ podcasts. We regularly do two types of them:
 
 [![OTel Me...with Oluwatomisin Taiwo and Andrei Morozov](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DtTCuTAPE5aQ%26list%3DPLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43%26index%3D1)](https://www.youtube.com/watch?v=tTCuTAPE5aQ&list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43&index=1)
 
-A discussion between our host and end users about their OpenTelemetry adoption and implementation. Also, check out the entire [Otel Me playlist](https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43) of discussions.
+A discussion between our host and end users about their OpenTelemetry adoption
+and implementation. Also, check out the entire
+[OTel Me playlist](https://www.youtube.com/playlist?list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43)
+of discussions.
 
 [![OTel in Practice: How We Scaled KafkaLog Ingestion for OTel by 150%](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FGrQyUPeCljo%3Flist%3DPLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x%26t%3D3)](https://youtu.be/GrQyUPeCljo?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x&t=3)
 
-An interactive enablement session on different aspects of OpenTelemetry by contributors and end users. Also, check out the entire [Otel in Practice playlist](https://www.youtube.com/playlist?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x) of discussions.
+An interactive enablement session on different aspects of OpenTelemetry by
+contributors and end users. Also, check out the entire
+[OTel in Practice playlist](https://www.youtube.com/playlist?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x)
+of discussions.
 
   <!-- Updated the page with relevant embedds-->
   <!--➡️ TODO: Turn links into embeds-->
