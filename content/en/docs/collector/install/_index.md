@@ -26,4 +26,4 @@ make otelcorecol
 ```
 
 [data collection]: /docs/concepts/components/#collector
-[deployment methods]: ../deployment/
+[deployment methods]: /docs/collector/deploy/

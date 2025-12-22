@@ -1,9 +1,8 @@
 ---
-title: Other Deployment Patterns
-build:
-  list: never
-draft: true
-toc_hide: true
+title: Other deployment patterns
+linkTitle: Other patterns
+weight: 400
 ---
 
-Additional deployment patterns for the Collector.
+The following pages describe additional deployment patterns for the
+OpenTelemetry Collector.
