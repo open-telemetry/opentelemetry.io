@@ -9,7 +9,7 @@ description: 处理并导出你的遥测数据
 
 ## 依赖项 {#otlp-dependencies}
 
-如果你的项目需要发送遥测数据到 OTLP 端点（比如 [OpenTelemetry Collector](#collector-setup)、[Jaeger](#jaeger) 或 [Prometheus](#prometheus)），你可以选择三种不同的协议来传输数据：
+若你希望将遥测数据发送至 OTLP 端点（比如 [OpenTelemetry 采集器](#collector-setup)、[Jaeger](#jaeger) 或 [Prometheus](#prometheus)），你可以从三种不同的传输协议中选择一种来传输数据：
 
 - [HTTP/protobuf](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto)
 - [HTTP/JSON](https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http)
@@ -43,8 +43,8 @@ npm install --save @opentelemetry/exporter-trace-otlp-grpc \
 ## Node.js 环境使用指南 {#otlp-usage-nodejs}
 
 接下来，配置导出器以指向 OTLP 端点。
-例如，你可以更新[入门指南](/docs/languages/js/getting-started/nodejs/) 中的 `instrumentation.ts`（如果使用 JavaScript 则为 `instrumentation.js`）文件，
-如下所示，通过 OTLP（`http/protobuf`）导出追踪和指标数据：
+例如，你可以更新[入门指南](/docs/languages/js/getting-started/nodejs/)中的 `instrumentation.ts`（如果使用 JavaScript 则为 `instrumentation.js`）文件，
+如下所示，通过 OTLP（`http/protobuf`）导出链路和指标数据：
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -148,7 +148,7 @@ connect-src collector.example.com:4318/v1/traces
 你需要为[跨域资源共享][Cross-Origin Resource Sharing]（CORS）配置特殊的响应头。
 
 OpenTelemetry 采集器为基于 HTTP 协议的接收器提供了[一项功能][a feature]，
-可自动添加所需的请求头，使接收器能够接收来自网页浏览器的追踪数据：
+可自动添加所需的请求头，使接收器能够接收来自网页浏览器链路数据：
 
 ```yaml
 receivers:
@@ -265,13 +265,13 @@ sdk.start();
 {{% /tab %}} {{< /tabpane >}}
 
 通过上述配置，你可以在 <http://localhost:9464/metrics> 访问你的指标数据。
-Prometheus 或 OpenTelemetry Collector 中的 Prometheus 接收器可以从该端点采集指标数据。
+Prometheus 或 OpenTelemetry 采集器中的 Prometheus 接收器可以从该端点采集指标数据。
 
 {{% include "exporters/zipkin-setup.md" %}}
 
 ## Zipkin 依赖项 {#zipkin-dependencies}
 
-若要将追踪数据发送至 [Zipkin](https://zipkin.io/)，你可以使用 `ZipkinExporter` 导出器。
+若要将链路数据发送至 [Zipkin](https://zipkin.io/)，你可以使用 `ZipkinExporter` 导出器。
 
 安装[导出器包](https://www.npmjs.com/package/@opentelemetry/exporter-zipkin)作为项目依赖安装到你的应用中：
 
