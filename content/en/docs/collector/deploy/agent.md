@@ -1,16 +1,18 @@
 ---
-title: Agent
-description:
-  Why and how to send signals to collectors and from there to backends
-weight: 2
+title: Agent deployment pattern
+linkTitle: Agent pattern
+description: Send signals to Collectors and then export to backends
+aliases:
+  - /docs/collector/deployment/agent/
+weight: 200
 cSpell:ignore: prometheusremotewrite
 ---
 
 In the agent deployment pattern, telemetry signals can come from
 
 - Applications [instrumented][instrumentation] with an OpenTelemetry SDK using
-  the [OpenTelemetry Protocol (OTLP)][otlp]
-- Collectors using the OTLP exporter
+  the [OpenTelemetry Protocol (OTLP)][otlp].
+- Collectors using the OTLP exporter.
 
 The signals are sent to a [Collector][collector] instance that runs alongside
 the application or on the same host, such as a sidecar or DaemonSet.
