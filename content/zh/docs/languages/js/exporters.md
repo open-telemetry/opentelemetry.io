@@ -122,7 +122,6 @@ sdk.start();
 
 你可以在下方找到选用合适导出器的操作指南，去配置内容安全策略（CSP）与跨域资源共享（CORS）响应头，以及暴露采集器时需采取的防范措施。
 
-
 ### 使用 OTLP 导出器结合 HTTP/JSON 或 HTTP/protobuf 协议 {#use-otlp-exporter-with-http-json-or-http-protobuf}
 
 [基于 gRPC 协议的 OpenTelemetry 采集器导出器][OpenTelemetry Collector Exporter with gRPC]仅适用于 Node.js，
@@ -346,15 +345,9 @@ sdk.start();
 
 {{% /tab %}} {{< /tabpane >}}
 
-[content security policies]:
-  https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/
-[cross-origin resource sharing]:
-  https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-[opentelemetry collector exporter with grpc]:
-  https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc
-[opentelemetry collector exporter with http/protobuf]:
-  https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto
-[opentelemetry collector exporter with http/json]:
-  https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http
-[a feature]:
-  https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md
+[content security policies]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/
+[cross-origin resource sharing]: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+[opentelemetry collector exporter with grpc]: https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-grpc
+[opentelemetry collector exporter with http/protobuf]: https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-proto
+[opentelemetry collector exporter with http/json]: https://www.npmjs.com/package/@opentelemetry/exporter-trace-otlp-http
+[a feature]: https://github.com/open-telemetry/opentelemetry-collector/blob/main/config/confighttp/README.md
