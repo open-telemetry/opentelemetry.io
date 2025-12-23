@@ -8,7 +8,7 @@ author: >-
 cSpell:ignore: Salatino Salaboy durabletask Diagrid
 ---
 
-This post tells the story of how contributors from [Diagrid](https://www.diagrid.io/) and [Dash0](https://www.dash0.com/) worked
+This post tells the story of how contributors from across the cloud native community worked
 together to enhance [Dapr](https://dapr.io/)'s OpenTelemetry integration, particularly around
 asynchronous workflows. It also highlights the ongoing effort to align Dapr with
 the OpenTelemetry semantic conventions using [OpenTelemetry Weaver](https://github.com/open-telemetry/weaver), and explores how
