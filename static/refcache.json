@@ -16904,8 +16904,8 @@
     "LastSeen": "2025-12-23T09:53:05.743Z"
   },
   "https://npmjs.com/package/@opentelemetry/plugin-react-load": {
-    "StatusCode": 403,
-    "LastSeen": "2025-12-23T09:50:32.709382297Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-23T15:05:39.927Z"
   },
   "https://npmjs.com/package/@opentelemetry/resource-detector-alibaba-cloud": {
     "StatusCode": 200,
