@@ -69,7 +69,7 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-設定オプションのすべての一覧については、[エージェント設定](../configuration)を参照してください。
+すべての設定オプションについては、[エージェント設定](../configuration)を参照してください。
 
 ## サポートされているライブラリ、フレームワーク、アプリケーションサービス、JVM {#supported-libraries-frameworks-application-services-and-jvms}
 
