@@ -19,6 +19,8 @@ For example,
 will automatically create [spans](/docs/concepts/signals/traces/#spans) based on
 the inbound HTTP requests.
 
+{{% include esm-support-node.md %}}
+
 ### Setup
 
 Each instrumentation library is an NPM package. For example, here’s how you can

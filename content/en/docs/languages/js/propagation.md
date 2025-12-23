@@ -7,6 +7,8 @@ cSpell:ignore: rolldice
 
 {{% docs/languages/propagation %}}
 
+{{% include esm-support-node.md %}}
+
 ## Automatic context propagation
 
 [Instrumentation libraries](../libraries/) like

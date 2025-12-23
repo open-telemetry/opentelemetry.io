@@ -15,6 +15,8 @@ Node.js SDK.
 Follow the instructions in the [Getting Started - Node.js][], so that you have
 the files `package.json`, `app.js` and `tracing.js`.
 
+{{% include esm-support-node.md %}}
+
 ## Process & Environment Resource Detection
 
 Out of the box, the Node.js SDK detects [process and process runtime
