@@ -121,8 +121,8 @@ long-running operations appear exactly where they belong.
 
 ## From trace continuity to semantic alignment
 
-Once Dapr workflows produced complete traces, a new question emerged: what
-should these spans represent, and how should they be named. Dapr interacts with
+Once Dapr workflows produced complete traces, new questions emerged: What
+should these spans represent? And how should they be named? Dapr interacts with
 many components such as timers, state stores, pub or sub brokers, bindings,
 secrets, and configuration APIs. Without stable semantics, different SDKs or
 runtime components may represent similar operations differently.
