@@ -128,9 +128,8 @@ secrets, and configuration APIs. Without stable semantics, different SDKs or
 runtime components may represent similar operations differently.
 
 To address this, Dapr is in the process of adopting OpenTelemetry Weaver, which
-lets projects store semantic conventions in a machine-readable format. The
-initial PR introducing Weaver to Dapr is available here:
-<https://github.com/dapr/dapr/pull/9213>
+lets projects store semantic conventions in a machine-readable format. [This
+initial PR](https://github.com/dapr/dapr/pull/9213) introduces Weaver to Dapr.
 
 Weaver provides a single place for Dapr to define telemetry attributes for
 workflows, state interactions, component calls, pub or sub deliveries, and more.
