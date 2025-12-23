@@ -3547,6 +3547,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-17T09:49:49.581508992Z"
   },
+  "https://github.com/JCTools/JCTools/blob/master/jctools-core/src/main/java/org/jctools/queues/ConcurrentCircularArrayQueue.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-01T09:25:33.52855953Z"
+  },
   "https://github.com/JacksonWeber": {
     "StatusCode": 206,
     "LastSeen": "2025-12-13T09:41:34.116067915Z"
