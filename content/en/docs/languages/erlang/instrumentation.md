@@ -394,7 +394,7 @@ instruments:
 
 For more on synchronous and asynchronous instruments, and which kind is best
 suited for your use case, see
-[Supplementary Guidelines](https://opentelemetry.io/docs/specs/otel/metrics/supplementary-guidelines/).
+[Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
 
 ### Initialize Metrics
 
