@@ -92,9 +92,9 @@ Client App → API Gateway → Backend Services → Database
                  Correlated Traces
 ```
 
-Configure your client SDK to inject trace headers (`traceparent`,
-`tracestate`) and ensure your backend services propagate this context through
-their operations.
+Configure your client SDK to inject trace headers (`traceparent`, `tracestate`)
+and ensure your backend services propagate this context through their
+operations.
 
 ## Exporting telemetry
 

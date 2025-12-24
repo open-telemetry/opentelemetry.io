@@ -119,7 +119,8 @@ public class MyApplication extends Application {
 
 {{% /tab %}} {{< /tabpane >}}
 
-Don't forget to register your custom `Application` class in `AndroidManifest.xml`:
+Don't forget to register your custom `Application` class in
+`AndroidManifest.xml`:
 
 ```xml
 <application
@@ -144,12 +145,12 @@ OpenTelemetryRum.builder(context)
 
 ### Configuration options
 
-| Option                | Description                                             |
-| --------------------- | ------------------------------------------------------- |
-| `setEndpointUrl`      | OTLP endpoint URL for exporting telemetry               |
-| `addHeaders`          | Custom headers to include with export requests          |
-| `addGlobalAttributes` | Attributes added to all telemetry                       |
-| `setSessionTimeout`   | Inactivity timeout before starting a new session        |
+| Option                | Description                                      |
+| --------------------- | ------------------------------------------------ |
+| `setEndpointUrl`      | OTLP endpoint URL for exporting telemetry        |
+| `addHeaders`          | Custom headers to include with export requests   |
+| `addGlobalAttributes` | Attributes added to all telemetry                |
+| `setSessionTimeout`   | Inactivity timeout before starting a new session |
 
 ## Automatic instrumentation
 
