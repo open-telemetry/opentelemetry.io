@@ -2,7 +2,7 @@
 title: Getting Started
 weight: 10
 # prettier-ignore
-cSpell:ignore: defmodule defp ecto elixirc KHTML postgres rebar relx rolldice stdlib elli
+cSpell:ignore: defmodule defp ecto elixirc elli KHTML postgres rebar relx rolldice stdlib
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
