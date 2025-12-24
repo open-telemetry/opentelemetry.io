@@ -150,3 +150,5 @@ wordpress
 WSGI
 zend
 zipkin
+jank
+contentful
