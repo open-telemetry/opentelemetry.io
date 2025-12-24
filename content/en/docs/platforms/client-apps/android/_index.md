@@ -3,7 +3,7 @@ title: Android
 description: >-
   Use OpenTelemetry in apps running on Android platforms
 weight: 10
-cSpell:ignore: baseurl instrumentations inactivity
+cSpell:ignore: inactivity
 ---
 
 OpenTelemetry Android provides observability for native Android applications.
