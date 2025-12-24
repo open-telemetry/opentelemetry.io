@@ -160,10 +160,10 @@ shaping a model that more accurately reflects asynchronous behavior and aligns
 with OpenTelemetry's semantic guidance. We expect this work to evolve
 collaboratively as more contributors participate.
 
-## Why this work matters across the CNCF ecosystem
+## Why this work matters across the cloud native ecosystem
 
 Although this collaboration focused on Dapr, the underlying challenges are
-present across many CNCF projects. Proxies, service meshes, event routers,
+present across many cloud native projects. Proxies, service meshes, event routers,
 workflow engines, and controllers often wrestle with similar questions: how to
 propagate W3C context through sidecars or non-HTTP paths, how to define semantic
 conventions, how to model asynchronous behavior, and how to ensure SDKs remain
