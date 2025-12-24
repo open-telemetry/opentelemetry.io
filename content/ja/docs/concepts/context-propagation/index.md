@@ -64,11 +64,11 @@ OpenTelemetry SDKは、ログをトレースと自動的に関連づけること
 メトリクスの場合、コンテキスト伝搬により、そのコンテキスト内の測定値を集約できます。
 たとえば、すべての`GET /product`リクエストのレスポンスタイムを確認するだけでなく、`POST /cart/add > GET /product`および`GET /checkout < GET /product`といった組み合わせのメトリクスも取得できます。
 
-| 名前| 毎秒の呼び出し回数 | 平均レスポンスタイム |
-| ------------------------------- | ---------------- | --------------------- |
-| `* > GET /product`              | 370              | 300ms                 |
-| `POST /card/add > GET /product` | 330              | 130ms                 |
-| `GET /checkout > GET /product`  | 40               | 1703ms                |
+| 名前                            | 毎秒の呼び出し回数 | 平均レスポンスタイム |
+| ------------------------------- | ------------------ | -------------------- |
+| `* > GET /product`              | 370                | 300ms                |
+| `POST /card/add > GET /product` | 330                | 130ms                |
+| `GET /checkout > GET /product`  | 40                 | 1703ms               |
 
 ## カスタムコンテキスト伝搬 {#custom-context-propagation}
 
