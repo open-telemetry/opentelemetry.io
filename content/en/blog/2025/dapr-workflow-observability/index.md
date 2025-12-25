@@ -5,7 +5,7 @@ date: 2025-12-26
 author: >-
   [Mauricio "Salaboy" Salatino](https://github.com/salaboy) (Diagrid), [Kasper
   Borg Nissen](https://github.com/kaspernissen) (Dash0)
-cSpell:ignore: Salatino Salaboy durabletask Diagrid
+cSpell:ignore: dapr dapr's diagrid durabletask kasper nissen salatino salaboy
 ---
 
 This post tells the story of how contributors from across the cloud native
