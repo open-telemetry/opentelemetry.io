@@ -398,7 +398,7 @@ We'll need a few other dependencies that Elli doesn't come with.
 These are all added, along with `elli` to the rebar3 dependencies and the
 Applications to include in the Release:
 
-```
+```erlang
 {deps, [elli,
         recon,
         opentelemetry_api,
@@ -426,7 +426,7 @@ Applications to include in the Release:
 And the dependencies must be included in the Application's `.app.src`,
 `src/roll_dice.app.src`:
 
-```
+```erlang
 {application, roll_dice,
  [{description, "OpenTelemetry example application"},
   {vsn, "0.1.0"},
@@ -452,7 +452,7 @@ And the dependencies must be included in the Application's `.app.src`,
 
 The SDK and Experimental SDK are configured in `config/sys.config`:
 
-```
+```erlang
 {opentelemetry,
  [{span_processor, batch},
   {traces_exporter, {otel_exporter_stdout, []}}]},
@@ -471,7 +471,7 @@ to the console every second.
 The HTTP server is started in the top level Supervisor of the Application,
 `src/roll_dice_sup.erl`:
 
-```
+```erlang
 init([]) ->
     Port = list_to_integer(os:getenv("PORT", "3000")),
 
@@ -492,7 +492,7 @@ init([]) ->
 The handler, `roll_dice_handler` needs a `handle` function that accepts a `GET`
 request and returns a random dice roll:
 
-```
+```erlang
 handle(Req, _Args) ->
     handle(Req#req.method, elli_request:path(Req), Req).
 
@@ -503,7 +503,7 @@ handle('GET', [~"rolldice"], _Req) ->
 
 `do_roll/0` returns a random number between 1 and 6:
 
-```
+```erlang
 -spec do_roll() -> integer().
 do_roll() ->
     rand:uniform(6).
@@ -514,7 +514,7 @@ do_roll() ->
 The first step in instrumentation is to add the Elli Instrumentation Library,
 [otel_elli_middleware]():
 
-```
+```erlang
 {callback_args, [{mods, [{otel_elli_middleware, []},
                          {roll_dice_handler, []}]}]},
 ```
@@ -522,7 +522,7 @@ The first step in instrumentation is to add the Elli Instrumentation Library,
 Then in the handler the name of the span created by the handler should be
 updated to match the semantic conventions for HTTP:
 
-```
+```erlang
 handle('GET', [~"rolldice"], _Req) ->
     ?update_name(~"GET /rolldice"),
     Roll = do_roll(),
@@ -547,7 +547,7 @@ do_roll() ->
 Last code we need is to create the instruments, `ROLL_COUNTER` in
 `roll_dice_app.erl`:
 
-```
+```erlang
 -include_lib("opentelemetry_api_experimental/include/otel_meter.hrl").
 
 start(_StartType, _StartArgs) ->
@@ -571,7 +571,7 @@ random number in response, and 3 spans and 1 metric in your console.
 
 <details>
 <summary>View the full spans</summary>
-```
+```text
 roll_counter{roll.value=1} 1
 
 {span,319413853664572622578356032097465423781,9329051549219651155,

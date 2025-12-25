@@ -404,7 +404,7 @@ To enable metrics in your application, you’ll need to have an initialized
 `MeterProvider` with a `Reader`. This is done through configuration of the
 `opentelemetry_experimental` application:
 
-```
+```erlang
 {opentelemetry_experimental,
   [{readers, [#{module => otel_metric_reader,
                 config => #{export_interval_ms => 1000,
@@ -434,7 +434,7 @@ Counters can be used to measure a non-negative, increasing value.
 
 Creating a counter can be done with the `?create_counter` macro:
 
-```
+```erlang
 ?create_counter(my_fun_counter, #{description => ~"Number of times this function
 is called."})
 ```
@@ -442,7 +442,7 @@ is called."})
 To increment the counter use the `?counter_add` macro passing the name of the
 instrument, the increment value and a map of attributes:
 
-```
+```erlang
 ?counter_add(my_fun_counter, 1, #{}),
 ```
 
@@ -453,7 +453,7 @@ cumulative value that goes up or down.
 
 For example, here’s how you report the number of items of some collection:
 
-```
+```erlang
 create_items_counter() ->
   ?create_counter('items.counter', #{description => ~"Number of items",
                                      unit => '{items}'})
@@ -471,14 +471,14 @@ remove_item(Item) ->
 
 Histograms are used to measure a distribution of values over time.
 
-```
+```erlang
 ?create_histogram('task.duration', #{description => ~"Duration of a task",
                                      unit => 's'}),
 ```
 
 The `?histogram_record` macro is then used to record a measurement:
 
-```
+```erlang
 {Microseconds, Result} = timer:tc(TaskFun),
 ?histogram_record('task.duration', Microseconds),
 ```
@@ -490,7 +490,7 @@ monotonically increasing value.
 
 For example, here’s how you report time since the Erlang node started:
 
-```
+```erlang
 ?create_observable_counter('uptime', fun(_Args) ->
                                          Uptime = erlang:convert_time_unit(erlang:monotonic_time() - erlang:system_info(start_time), native, seconds),
                                          [{Uptime, #{}}]
@@ -507,7 +507,7 @@ an additive, non-negative, non-monotonically increasing cumulative value.
 
 For example, the number of active HTTP connections for a web server:
 
-```
+```erlang
 ?create_observable_updown_counter('http.server.active_requests', fun(_Args) ->
                                          ActiveRequests = ....
                                          [{ActiveRequests, #{}}]
@@ -523,7 +523,7 @@ Observable Gauges should be used to measure non-additive values.
 
 For example, here’s how you report memory usage of ETS tables on a node:
 
-```
+```erlang
 ?create_observable_gauge('memory.ets', fun(_Args) ->
                                          EtsMemory = erlang:memory(ets),
                                          [{EtsMemory, #{}}]
@@ -538,7 +538,7 @@ For example, here’s how you report memory usage of ETS tables on a node:
 Attributes can be added to any measurement as a map in the last place in the
 recording macro:
 
-```
+```erlang
 ?updown_counter_add('items.counter', 1, #{~"key-1" => ~"value-1"}),
 ```
 
@@ -559,7 +559,7 @@ instrument.
 Here’s how you create a view that renames the `latency` instrument to
 `request.latency`:
 
-```
+```erlang
 {opentelemetry_experimental,
   [...
     {views, [#{name => request.latency',
@@ -569,7 +569,7 @@ Here’s how you create a view that renames the `latency` instrument to
 
 Or if instead you want a histogram for latency:
 
-```
+```erlang
 {opentelemetry_experimental,
   [...
     {views, [#{selector => #{instrument_name => 'latency'},
@@ -583,7 +583,7 @@ attributes that might contain sensitive data.
 
 Here’s how you create a view that drops the latency:
 
-```
+```erlang
 {opentelemetry_experimental,
   [...
     {views, [#{selector => #{instrument_name => 'latency'},
@@ -593,7 +593,7 @@ Here’s how you create a view that drops the latency:
 
 A wildcard can be used to match all instruments:
 
-```
+```erlang
 {opentelemetry_experimental,
   [...
     {views, [#{selector => #{instrument_name => '*'},
