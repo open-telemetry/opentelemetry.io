@@ -575,85 +575,53 @@ random number in response, and 3 spans and 1 metric in your console.
 roll_counter{roll.value=1} 1
 
 {span,319413853664572622578356032097465423781,9329051549219651155,
-      {tracestate,[]},
-      4483837830122616505,true,dice_roll,internal,-576460743866039000,
-      -576460743861510287,
-      {attributes,128,infinity,0,#{'roll.value' => 1}},
-      {events,128,128,infinity,0,[]},
-      {links,128,128,infinity,0,[]},
-      undefined,1,false,
-      {instrumentation_scope,<<"roll_dice">>,<<"0.1.0">>,undefined}}
+{tracestate,[]},
+4483837830122616505,true,dice_roll,internal,-576460743866039000,
+-576460743861510287, {attributes,128,infinity,0,#{'roll.value' => 1}},
+{events,128,128,infinity,0,[]}, {links,128,128,infinity,0,[]},
+undefined,1,false,
+{instrumentation_scope,<<"roll_dice">>,<<"0.1.0">>,undefined}}
 {span,120980994633230227841304483210494731701,17581728945491241369,
-      {tracestate,[]},
-      undefined,undefined,<<"GET /">>,server,-576460745567307647,
-      -576460745552778124,
-      {attributes,128,infinity,0,
-                  #{<<"http.flavor">> => <<"1.1">>,
-                    <<"http.host">> => <<"localhost:3000">>,
-                    <<"http.method">> => <<"GET">>,
-                    <<"http.response_content_length">> => 428,
-                    <<"http.status">> => 200,<<"http.target">> => <<"/">>,
-                    <<"http.user_agent">> =>
-                        <<"Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0">>,
-                    <<"net.host.ip">> => <<"127.0.0.1">>,
-                    <<"net.host.name">> => "rosa",<<"net.host.port">> => 3000,
-                    <<"net.peer.ip">> => <<"127.0.0.1">>,
-                    <<"net.peer.name">> => <<"localhost:3000">>,
-                    <<"net.peer.port">> => 34112,
-                    <<"net.transport">> => <<"IP.TCP">>}},
-      {events,128,128,infinity,0,[]},
-      {links,128,128,infinity,0,[]},
-      {status,unset,<<>>},
-      1,false,
-      {instrumentation_scope,<<"opentelemetry_elli">>,<<"0.2.0">>,undefined}}
+{tracestate,[]}, undefined,undefined,<<"GET /">>,server,-576460745567307647,
+-576460745552778124, {attributes,128,infinity,0, #{<<"http.flavor">> =>
+<<"1.1">>, <<"http.host">> => <<"localhost:3000">>, <<"http.method">> =>
+<<"GET">>, <<"http.response_content_length">> => 428, <<"http.status">> =>
+200,<<"http.target">> => <<"/">>, <<"http.user_agent">> => <<"Mozilla/5.0 (X11;
+Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0">>, <<"net.host.ip">> =>
+<<"127.0.0.1">>, <<"net.host.name">> => "rosa",<<"net.host.port">> => 3000,
+<<"net.peer.ip">> => <<"127.0.0.1">>, <<"net.peer.name">> =>
+<<"localhost:3000">>, <<"net.peer.port">> => 34112, <<"net.transport">> =>
+<<"IP.TCP">>}}, {events,128,128,infinity,0,[]}, {links,128,128,infinity,0,[]},
+{status,unset,<<>>}, 1,false,
+{instrumentation_scope,<<"opentelemetry_elli">>,<<"0.2.0">>,undefined}}
 {span,99954316162469909244758406078309269908,7583363800346194390,
-      {tracestate,[]},
-      undefined,undefined,<<"HTTP GET">>,server,-576460745388883955,
-      -576460745387339610,
-      {attributes,128,infinity,0,
-                  #{<<"http.flavor">> => <<"1.1">>,
-                    <<"http.host">> => <<"localhost:3000">>,
-                    <<"http.method">> => <<"GET">>,
-                    <<"http.response_content_length">> => 457642,
-                    <<"http.status">> => 200,
-                    <<"http.target">> => <<"/static/index.js">>,
-                    <<"http.user_agent">> =>
-                        <<"Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0">>,
-                    <<"net.host.ip">> => <<"127.0.0.1">>,
-                    <<"net.host.name">> => "rosa",<<"net.host.port">> => 3000,
-                    <<"net.peer.ip">> => <<"127.0.0.1">>,
-                    <<"net.peer.name">> => <<"localhost:3000">>,
-                    <<"net.peer.port">> => 34112,
-                    <<"net.transport">> => <<"IP.TCP">>}},
-      {events,128,128,infinity,0,[]},
-      {links,128,128,infinity,0,[]},
-      {status,unset,<<>>},
-      1,false,
-      {instrumentation_scope,<<"opentelemetry_elli">>,<<"0.2.0">>,undefined}}
+{tracestate,[]}, undefined,undefined,<<"HTTP GET">>,server,-576460745388883955,
+-576460745387339610, {attributes,128,infinity,0, #{<<"http.flavor">> =>
+<<"1.1">>, <<"http.host">> => <<"localhost:3000">>, <<"http.method">> =>
+<<"GET">>, <<"http.response_content_length">> => 457642, <<"http.status">> =>
+200, <<"http.target">> => <<"/static/index.js">>, <<"http.user_agent">> =>
+<<"Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0">>,
+<<"net.host.ip">> => <<"127.0.0.1">>, <<"net.host.name">> =>
+"rosa",<<"net.host.port">> => 3000, <<"net.peer.ip">> => <<"127.0.0.1">>,
+<<"net.peer.name">> => <<"localhost:3000">>, <<"net.peer.port">> => 34112,
+<<"net.transport">> => <<"IP.TCP">>}}, {events,128,128,infinity,0,[]},
+{links,128,128,infinity,0,[]}, {status,unset,<<>>}, 1,false,
+{instrumentation_scope,<<"opentelemetry_elli">>,<<"0.2.0">>,undefined}}
 {span,319413853664572622578356032097465423781,4483837830122616505,
-      {tracestate,[]},
-      4897145615278856533,true,<<"GET /rolldice">>,server,-576460743866475748,
-      -576460743861225124,
-      {attributes,128,infinity,0,
-                  #{<<"http.flavor">> => <<"1.1">>,
-                    <<"http.host">> => <<"localhost:3000">>,
-                    <<"http.method">> => <<"GET">>,
-                    <<"http.response_content_length">> => 1,
-                    <<"http.status">> => 200,
-                    <<"http.target">> => <<"/rolldice">>,
-                    <<"http.user_agent">> =>
-                        <<"Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0">>,
-                    <<"net.host.ip">> => <<"127.0.0.1">>,
-                    <<"net.host.name">> => "rosa",<<"net.host.port">> => 3000,
-                    <<"net.peer.ip">> => <<"127.0.0.1">>,
-                    <<"net.peer.name">> => <<"localhost:3000">>,
-                    <<"net.peer.port">> => 34112,
-                    <<"net.transport">> => <<"IP.TCP">>}},
-      {events,128,128,infinity,0,[]},
-      {links,128,128,infinity,0,[]},
-      {status,unset,<<>>},
-      1,false,
-      {instrumentation_scope,<<"opentelemetry_elli">>,<<"0.2.0">>,undefined}}
+{tracestate,[]}, 4897145615278856533,true,<<"GET
+/rolldice">>,server,-576460743866475748, -576460743861225124,
+{attributes,128,infinity,0, #{<<"http.flavor">> => <<"1.1">>, <<"http.host">> =>
+<<"localhost:3000">>, <<"http.method">> => <<"GET">>,
+<<"http.response_content_length">> => 1, <<"http.status">> => 200,
+<<"http.target">> => <<"/rolldice">>, <<"http.user_agent">> => <<"Mozilla/5.0
+(X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0">>, <<"net.host.ip">>
+=> <<"127.0.0.1">>, <<"net.host.name">> => "rosa",<<"net.host.port">> => 3000,
+<<"net.peer.ip">> => <<"127.0.0.1">>, <<"net.peer.name">> =>
+<<"localhost:3000">>, <<"net.peer.port">> => 34112, <<"net.transport">> =>
+<<"IP.TCP">>}}, {events,128,128,infinity,0,[]}, {links,128,128,infinity,0,[]},
+{status,unset,<<>>}, 1,false,
+{instrumentation_scope,<<"opentelemetry_elli">>,<<"0.2.0">>,undefined}}
+
 ```
 </details>
 
