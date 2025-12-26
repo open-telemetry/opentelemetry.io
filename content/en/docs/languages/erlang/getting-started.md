@@ -635,4 +635,3 @@ Enrich your instrumentation with more
 You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/languages/erlang/exporters) to one or more
 telemetry backends.
-
