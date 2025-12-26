@@ -372,7 +372,8 @@ can be found here:
 [opentelemetry-erlang-contrib/examples/roll_dice_elli](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/roll_dice_elli).
 Note the full example has extra code for an HTML interface we won't cover here.
 
-Additional examples can be found [here](/docs/languages/erlang/examples/).
+Additional examples can be found [in the Erlang example
+docs](/docs/languages/erlang/examples/).
 
 ### Initial Setup
 
@@ -512,7 +513,7 @@ do_roll() ->
 ### Instrumentation
 
 The first step in instrumentation is to add the Elli Instrumentation Library,
-[otel_elli_middleware]():
+[otel_elli_middleware](https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_elli):
 
 ```erlang
 {callback_args, [{mods, [{otel_elli_middleware, []},
@@ -561,7 +562,7 @@ create_instruments() ->
 
 ### Try It Out
 
-```
+```text
 rebar3 shell
 ```
 
