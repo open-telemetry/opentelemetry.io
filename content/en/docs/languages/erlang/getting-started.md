@@ -572,6 +572,7 @@ random number in response, and 3 spans and 1 metric in your console.
 
 <details>
 <summary>View the full spans</summary>
+
 ```text
 roll_counter{roll.value=1} 1
 
@@ -623,6 +624,7 @@ Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0">>, <<"net.host.ip">> =>
 {status,unset,<<>>}, 1,false,
 {instrumentation_scope,<<"opentelemetry_elli">>,<<"0.2.0">>,undefined}}
 ```
+
 </details>
 
 ## Next Steps
