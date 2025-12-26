@@ -622,7 +622,6 @@ Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0">>, <<"net.host.ip">> =>
 <<"IP.TCP">>}}, {events,128,128,infinity,0,[]}, {links,128,128,infinity,0,[]},
 {status,unset,<<>>}, 1,false,
 {instrumentation_scope,<<"opentelemetry_elli">>,<<"0.2.0">>,undefined}}
-
 ```
 </details>
 
@@ -634,4 +633,4 @@ Enrich your instrumentation with more
 You'll also want to configure an appropriate exporter to
 [export your telemetry data](/docs/languages/erlang/exporters) to one or more
 telemetry backends.
-```
+
