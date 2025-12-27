@@ -1,7 +1,7 @@
 ---
 title: Improving Async Workflow Observability in Dapr
 linkTitle: Dapr Workflow Observability
-date: 2025-12-26
+date: 2025-12-28
 author: >-
   [Mauricio "Salaboy" Salatino](https://github.com/salaboy) (Diagrid), [Kasper
   Borg Nissen](https://github.com/kaspernissen) (Dash0)
