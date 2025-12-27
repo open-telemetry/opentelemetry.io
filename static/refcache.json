@@ -11404,8 +11404,8 @@
     "LastSeen": "2025-12-17T09:47:22.771181861Z"
   },
   "https://github.com/open-telemetry/opentelemetry-proto/tree/main/docs/specification.md": {
-    "StatusCode": -10,
-    "LastSeen": "2025-12-24T09:45:57.295523143Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-12-27T15:32:21.862794881Z"
   },
   "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.9.0/README.md#maturity-level": {
     "StatusCode": 206,
@@ -12668,8 +12668,8 @@
     "LastSeen": "2025-12-24T09:45:27.896141123Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/sdk_exporters/README.md": {
-    "StatusCode": -10,
-    "LastSeen": "2025-12-24T09:45:25.563234745Z"
+    "StatusCode": 206,
+    "LastSeen": "2025-12-27T15:32:06.174311276Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/trace/sdk_exporters/stdout.md": {
     "StatusCode": 206,
