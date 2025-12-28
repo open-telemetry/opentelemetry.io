@@ -34,9 +34,9 @@ tools at its disposal which allow it to efficiently collect all this data and
 enhance it in meaningful ways.
 
 To collect all the data, we'll need two installations of the collector, one as a
-[Daemonset](/docs/collector/deployment/agent/) and one as a
-[Deployment](/docs/collector/deployment/gateway/). The Daemonset installation of
-the collector will be used to collect telemetry emitted by services, logs, and
+[Daemonset](/docs/collector/deploy/agent/) and one as a
+[Deployment](/docs/collector/deploy/gateway/). The Daemonset installation of the
+collector will be used to collect telemetry emitted by services, logs, and
 metrics for nodes, pods, and containers. The deployment installation of the
 collector will be used to collect metrics for the cluster and events.
 

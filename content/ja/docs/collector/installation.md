@@ -270,7 +270,7 @@ make otelcorecol
 ```
 
 [data collection]: /docs/concepts/components/#collector
-[deployment methods]: ../deployment/
+[deployment methods]: /docs/collector/deploy/
 [opentelemetry helm charts]: /docs/platforms/kubernetes/helm/
 [opentelemetry operator]: /docs/platforms/kubernetes/operator/
 [getting started with opentelemetry on hashicorp nomad]: https://github.com/hashicorp/nomad-open-telemetry-getting-started
