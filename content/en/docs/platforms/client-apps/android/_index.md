@@ -258,6 +258,6 @@ local machine's collector:
 ## Help and feedback
 
 If you have questions, reach out via
-[GitHub Discussions](https://github.com/open-telemetry/opentelemetry-android/discussions)
+[GitHub Issues](https://github.com/open-telemetry/opentelemetry-android/issues)
 or the [#otel-android](https://cloud-native.slack.com/archives/C05J0T9K27Q)
 channel on [CNCF Slack](https://slack.cncf.io/).
