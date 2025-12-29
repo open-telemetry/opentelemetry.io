@@ -739,6 +739,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-14T09:47:42.111692281Z"
   },
+  "https://cloud-native.slack.com/archives/C05J0T9K27Q": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-29T12:03:27.488037782Z"
+  },
   "https://cloud-native.slack.com/archives/C05PXDFTCPJ": {
     "StatusCode": 200,
     "LastSeen": "2026-01-10T09:45:51.1621696Z"
@@ -6903,6 +6907,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-07T09:50:06.710594112Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-android/issues": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-29T12:03:23.686699435Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-android/issues/1257": {
     "StatusCode": 206,
     "LastSeen": "2026-01-07T09:49:58.241108905Z"
@@ -6910,6 +6918,10 @@
   "https://github.com/open-telemetry/opentelemetry-android/issues/742": {
     "StatusCode": 206,
     "LastSeen": "2026-01-07T09:50:25.772472721Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-android/releases": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-29T12:03:18.753929426Z"
   },
   "https://github.com/open-telemetry/opentelemetry-android/tree/main/demo-app": {
     "StatusCode": 206,
