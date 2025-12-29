@@ -1949,6 +1949,11 @@ approvers:
       - python-approvers
     html_url: https://github.com/hectorhdzg
     avatar_url: https://avatars.githubusercontent.com/u/39923391?v=4
+  - name: herin049
+    teams:
+      - lambda-extension-approvers
+    html_url: https://github.com/herin049
+    avatar_url: https://avatars.githubusercontent.com/u/40302054?v=4
   - name: iblancasa
     teams:
       - collector-contrib-triagers
