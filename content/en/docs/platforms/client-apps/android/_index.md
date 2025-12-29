@@ -259,6 +259,4 @@ local machine's collector:
 
 If you have questions, reach out via
 [GitHub Discussions](https://github.com/open-telemetry/opentelemetry-android/discussions)
-or the [#otel-android] channel on [CNCF Slack](https://slack.cncf.io/).
-
-[#otel-android]: https://cloud-native.slack.com/archives/C05J0T9K27Q
+or the [#otel-android](https://cloud-native.slack.com/archives/C05J0T9K27Q) channel on [CNCF Slack](https://slack.cncf.io/).
