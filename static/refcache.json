@@ -4951,6 +4951,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-18T04:00:48.921722232Z"
   },
+  "https://github.com/elli-lib/elli": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-19T16:10:06.086419942-05:00"
+  },
   "https://github.com/elskwid": {
     "StatusCode": 206,
     "LastSeen": "2025-12-17T09:48:36.145227357Z"
@@ -9482,6 +9486,10 @@
   "https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/roll_dice": {
     "StatusCode": 206,
     "LastSeen": "2025-12-17T09:44:16.688629826Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/examples/roll_dice_elli": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-19T16:10:07.069565477-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_bandit": {
     "StatusCode": 206,
@@ -17167,6 +17175,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-12-24T09:47:26.754957371Z"
   },
+  "https://opentelemetry.io/docs/specs/otel/metrics/supplementary-guidelines/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-19T16:10:07.375775818-05:00"
+  },
   "https://opentracing.io": {
     "StatusCode": 206,
     "LastSeen": "2025-12-19T09:42:55.479905255Z"
@@ -18914,6 +18926,10 @@
   "https://reactivex.io/RxJava/2.x/javadoc/index.html?io/reactivex/parallel/ParallelFlowable.html": {
     "StatusCode": 206,
     "LastSeen": "2025-12-24T09:42:38.532210662Z"
+  },
+  "https://rebar3.org": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-19T16:10:05.22482294-05:00"
   },
   "https://redis.com/": {
     "StatusCode": 200,
