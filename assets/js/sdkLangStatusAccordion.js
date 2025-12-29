@@ -34,11 +34,8 @@ function parseExistingContent() {
     let table = null;
 
     while (currentElement) {
-      console.log(currentElement);
       const versionMatch = currentElement.textContent?.match(/Latest supported file format:\s*([^`]+)/);
       if (versionMatch) {
-        console.log(currentElement.textContent)
-        console.log(`Found version for ${langId}: ${versionMatch} ${versionMatch[1]}`);
         statusData.languages[langId].version = versionMatch[1];
       }
 
