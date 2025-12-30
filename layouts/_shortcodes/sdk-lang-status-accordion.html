@@ -1,0 +1,41 @@
+{{- /* SDK Language Implementation Status Accordion Viewer */ -}}
+<div id="sdk-lang-status-accordion-container" class="sdk-lang-status-accordion">
+  <div class="accordion-controls mb-4">
+    <div class="row g-3">
+      <div class="col-md-8">
+        <label for="accordion-search" class="form-label">Search types</label>
+        <input
+          type="text"
+          id="accordion-search"
+          class="form-control"
+          placeholder="Filter by type name..."
+        />
+      </div>
+      <div class="col-md-4">
+        <label for="accordion-type-filter" class="form-label">Type category</label>
+        <select id="accordion-type-filter" class="form-select">
+          <option value="all">All types</option>
+          <option value="stable">Stable only</option>
+          <option value="experimental">Experimental only</option>
+        </select>
+      </div>
+    </div>
+    <div class="mt-3">
+      <button class="btn btn-sm btn-outline-primary" id="expand-all">Expand all</button>
+      <button class="btn btn-sm btn-outline-secondary" id="collapse-all">Collapse all</button>
+    </div>
+  </div>
+
+  <div class="accordion-stats mb-3">
+    <small class="text-muted">
+      Showing <span id="accordion-visible-count">0</span> of <span id="accordion-total-count">0</span> types
+    </small>
+  </div>
+
+  <div class="accordion" id="statusAccordion">
+    <!-- Accordion items will be populated by JavaScript -->
+  </div>
+</div>
+
+{{- $js := resources.Get "js/sdkLangStatusAccordion.js" | js.Build | minify | fingerprint -}}
+<script type="module" src="{{ $js.RelPermalink }}" defer></script>
