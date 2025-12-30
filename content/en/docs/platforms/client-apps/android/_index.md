@@ -46,9 +46,9 @@ dependencies {
 }
 ```
 
-{{% alert title="Note" %}} Check the
-[OpenTelemetry Android releases](https://github.com/open-telemetry/opentelemetry-android/releases)
-for the latest version. {{% /alert %}}
+> [!NOTE] Check the
+> [OpenTelemetry Android releases](https://github.com/open-telemetry/opentelemetry-android/releases)
+> for the latest version.
 
 ### Initialize the agent
 
@@ -58,13 +58,9 @@ Initialize OpenTelemetry in your `Application` class's `onCreate()` method:
 
 ```kotlin
 import android.app.Application
-import android.util.Log
 import io.opentelemetry.android.OpenTelemetryRum
-import io.opentelemetry.android.config.OtelRumConfig
 import io.opentelemetry.api.common.Attributes
-import io.opentelemetry.api.common.AttributeKey.stringKey
-import kotlin.time.Duration.Companion.days
-import kotlin.time.Duration.Companion.minutes
+import io.opentelemetry.semconv.ServiceAttributes
 
 class MyApplication : Application() {
     lateinit var openTelemetryRum: OpenTelemetryRum
@@ -79,7 +75,7 @@ class MyApplication : Application() {
             .setEndpointUrl("https://your-collector-endpoint:4318")
             .addGlobalAttributes(
                 Attributes.of(
-                    stringKey("app.version"), BuildConfig.VERSION_NAME
+                    ServiceAttributes.SERVICE_VERSION, BuildConfig.VERSION_NAME
                 )
             )
             .build()
@@ -93,7 +89,7 @@ class MyApplication : Application() {
 import android.app.Application;
 import io.opentelemetry.android.OpenTelemetryRum;
 import io.opentelemetry.api.common.Attributes;
-import static io.opentelemetry.api.common.AttributeKey.stringKey;
+import io.opentelemetry.semconv.ServiceAttributes;
 
 public class MyApplication extends Application {
     private OpenTelemetryRum openTelemetryRum;
@@ -109,7 +105,7 @@ public class MyApplication extends Application {
             .setEndpointUrl("https://your-collector-endpoint:4318")
             .addGlobalAttributes(
                 Attributes.of(
-                    stringKey("app.version"), BuildConfig.VERSION_NAME
+                    ServiceAttributes.SERVICE_VERSION, BuildConfig.VERSION_NAME
                 )
             )
             .build();
@@ -138,7 +134,7 @@ pattern:
 OpenTelemetryRum.builder(context)
     .setEndpointUrl("https://your-collector-endpoint:4318")
     .addHeaders(mapOf("Authorization" to "Bearer <token>"))
-    .addGlobalAttributes(Attributes.of(stringKey("environment"), "production"))
+    .addGlobalAttributes(Attributes.of(stringKey("deployment.environment.name"), "production"))
     .setSessionTimeout(15.minutes)
     .build()
 ```
