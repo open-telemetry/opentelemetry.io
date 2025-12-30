@@ -955,6 +955,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-12-23T09:43:12.518041287Z"
   },
+  "https://communityinviter.com/apps/cloud-native/cncf/": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-22T09:39:33.237279555Z"
+  },
   "https://conan.io/center/recipes/opentelemetry-cpp": {
     "StatusCode": 206,
     "LastSeen": "2025-12-30T09:50:05.010809354Z"
@@ -15355,9 +15359,29 @@
     "StatusCode": 200,
     "LastSeen": "2025-12-28T09:43:38.995191476Z"
   },
+  "https://img.shields.io/badge/CONTRIBUTOR%20EXPERIENCE%20SURVEY-4285F4?logo=OpenTelemetry&logoColor=white": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-22T09:39:41.938998542Z"
+  },
+  "https://img.shields.io/badge/DEVELOPER%20EXPERIENCE%20SURVEY-4285F4?logo=OpenTelemetry&logoColor=white": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-22T09:39:49.227101203Z"
+  },
+  "https://img.shields.io/badge/DOCS%20USABILITY%20SURVEY-4285F4?logo=OpenTelemetry&logoColor=white": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-22T09:39:53.143324037Z"
+  },
   "https://img.shields.io/badge/changed-orange?style=flat": {
     "StatusCode": 200,
     "LastSeen": "2025-12-24T09:45:52.546321107Z"
+  },
+  "https://img.shields.io/badge/join-CNCF%20slack-ff6a07.svg?style=for-the-badge&logo=CNCF&logoColor=black&labelColor=ivory": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-22T09:39:36.221033707Z"
+  },
+  "https://img.shields.io/badge/review-issues-ff6a07.svg?style=for-the-badge&logo=OpenTelemetry&logoColor=black&labelColor=ivory": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-22T09:39:31.105077642Z"
   },
   "https://img.shields.io/badge/warning-yellow?style=flat": {
     "StatusCode": 200,
@@ -16419,6 +16443,14 @@
     "StatusCode": 200,
     "LastSeen": "2025-12-28T09:44:39.631799147Z"
   },
+  "https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DtTCuTAPE5aQ%26list%3DPLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43%26index%3D1": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-22T09:39:57.194616374Z"
+  },
+  "https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fyoutu.be%2FGrQyUPeCljo%3Flist%3DPLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x%26t%3D3": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-22T09:40:01.672588969Z"
+  },
   "https://masstransit.io/documentation/configuration/observability": {
     "StatusCode": 200,
     "LastSeen": "2025-12-18T09:44:19.197985607Z"
@@ -17150,6 +17182,22 @@
   "https://opentelemetry.devstats.cncf.io/d/9/developer-activity-counts-by-repository-group-table?orgId=1": {
     "StatusCode": 200,
     "LastSeen": "2025-12-24T09:47:26.754957371Z"
+  },
+  "https://opentelemetry.io/blog/2024/otel-docs-survey/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-22T09:39:50.866753118Z"
+  },
+  "https://opentelemetry.io/blog/2025/contribex-survey-results/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-22T09:39:39.851782651Z"
+  },
+  "https://opentelemetry.io/blog/2025/devex-survey/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-22T09:39:44.076593534Z"
+  },
+  "https://opentelemetry.io/community/end-user/issue-participation/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-22T09:39:30.738461862Z"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
@@ -21643,6 +21691,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-12-19T09:42:50.94742364Z"
   },
+  "https://www.youtube.com/watch?v=tTCuTAPE5aQ&list=PLVYDBkQ1TdywIl9xKEo5_u7zlwY38dW43&index=1": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-22T09:39:54.926958777Z"
+  },
   "https://www.youtube.com/watch?v=tZJd6W-CIcU": {
     "StatusCode": 200,
     "LastSeen": "2025-12-24T09:47:17.499188511Z"
@@ -21674,6 +21726,10 @@
   "https://youtu.be/5iM8n3uCo_U?si=PJ6tFYcYED3lhAcK": {
     "StatusCode": 200,
     "LastSeen": "2025-12-24T09:44:37.667469589Z"
+  },
+  "https://youtu.be/GrQyUPeCljo?list=PLVYDBkQ1TdyxKgdGE4ThYLkNRCuLLYy9x&t=3": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-22T09:40:00.428496774Z"
   },
   "https://youtu.be/HY3LZOQqdig": {
     "StatusCode": 200,
