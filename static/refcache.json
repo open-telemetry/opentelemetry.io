@@ -16536,7 +16536,7 @@
     "LastSeen": "2025-12-19T09:45:26.591887258Z"
   },
   "https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java/4.26.1": {
-    "StatusCode": 403,
+    "StatusCode": 200,
     "LastSeen": "2025-12-30T09:48:34.768035103Z"
   },
   "https://mybatis.org/mybatis-3/": {
