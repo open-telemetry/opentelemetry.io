@@ -46,7 +46,8 @@ dependencies {
 }
 ```
 
-> [!NOTE] Check the
+> [!NOTE]
+> Check the
 > [OpenTelemetry Android releases](https://github.com/open-telemetry/opentelemetry-android/releases)
 > for the latest version.
 
