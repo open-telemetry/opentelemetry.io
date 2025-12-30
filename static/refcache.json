@@ -2596,8 +2596,8 @@
     "LastSeen": "2025-12-19T09:42:40.725099872Z"
   },
   "https://dotnet.microsoft.com/en-us/learn/dotnet/what-is-dotnet-framework": {
-    "StatusCode": 403,
-    "LastSeen": "2025-12-30T09:43:02.516161078Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-30T11:12:09.019Z"
   },
   "https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core": {
     "StatusCode": 200,
@@ -17008,8 +17008,8 @@
     "LastSeen": "2025-12-19T09:42:29.357810981Z"
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
-    "StatusCode": 403,
-    "LastSeen": "2025-12-30T09:48:25.46965134Z"
+    "StatusCode": 200,
+    "LastSeen": "2025-12-30T11:12:44.132Z"
   },
   "https://openai.com/": {
     "StatusCode": 200,
