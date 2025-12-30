@@ -1,0 +1,24 @@
+# cSpell:ignore fusioncache
+title: FusionCache .NET caching library
+registryType: instrumentation
+language: dotnet
+tags:
+  - fusioncache
+  - caching
+  - .net
+license: MIT
+description:
+  By using OpenTelemetry with FusionCache, you can gain insights into the performance of your systems and how caching is performing
+authors:
+  - name: Jody Donetti
+    url: https://github.com/jodydonetti
+urls:
+  website: https://github.com/ZiggyCreatures/FusionCache
+  repo: https://github.com/ZiggyCreatures/FusionCache
+  docs: https://github.com/ZiggyCreatures/FusionCache/blob/main/docs/OpenTelemetry.md
+createdAt: '2025-12-29'
+isNative: true
+package:
+  name: ZiggyCreatures.FusionCache
+  registry: nuget
+  version: 2.5.0
