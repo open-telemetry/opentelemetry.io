@@ -1,0 +1,12 @@
+{{- $color := .Get "color" | default "light" -}}
+
+<div><a id="td-block-main-features-{{ .Ordinal }}" class="td-offset-anchor"></a></div>
+<section class="row td-box td-box--{{ $color }} main-features-section">
+  <div class="col-12">
+    <div class="container">
+      <div class="main-features">
+        {{ .Inner }}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+{{- $name := .Get "name" -}}
+{{- $icon := .Get "icon" -}}
+{{- $url := .Get "url" -}}
+
+<a href="{{ $url }}" class="signal-card">
+  <div class="signal-card__icon">
+    <i class="fas fa-{{ $icon }}"></i>
+  </div>
+  <div class="signal-card__name">{{ $name }}</div>
+  {{ with .Inner }}
+  <div class="signal-card__description">{{ . | markdownify }}</div>
+  {{ end }}
+</a>
