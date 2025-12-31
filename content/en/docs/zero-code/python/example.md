@@ -3,6 +3,7 @@ title: Auto-Instrumentation Example
 linkTitle: Example
 weight: 20
 aliases: [/docs/languages/python/automatic/example]
+# prettier-ignore
 cSpell:ignore: Aiohttp ASGI distro instrumentor mkdir MSIE Referer Starlette venv
 ---
 
