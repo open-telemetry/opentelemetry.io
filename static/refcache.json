@@ -967,6 +967,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-22T09:48:22.9778746Z"
   },
+  "https://connectrpc.com/docs/protocol/#error-codes": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-05T09:27:14.994982772Z"
+  },
   "https://containerd.io/": {
     "StatusCode": 200,
     "LastSeen": "2025-12-23T09:51:46.035Z"
@@ -5318,6 +5322,10 @@
   "https://github.com/grpc/grpc/blob/v1.33.2/doc/statuscodes.md": {
     "StatusCode": 206,
     "LastSeen": "2025-12-22T09:48:26.518995204Z"
+  },
+  "https://github.com/grpc/grpc/blob/v1.75.0/doc/statuscodes.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-05T09:27:10.292969994Z"
   },
   "https://github.com/grpc/grpc/tree/master/src/php": {
     "StatusCode": 206,
@@ -12331,6 +12339,110 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-30T09:46:56.68024617Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-18T10:38:03.969991421Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-18T10:37:46.685425344Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/common/README.md#attribute": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:21:45.91439213Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/compatibility/prometheus_and_openmetrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:22:05.359622496Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/configuration/sdk-environment-variables.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:21:56.626898608Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/context/api-propagators.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:21:59.274769855Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/document-status.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:21:48.720209685Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/logs/api.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:22:00.99084357Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/logs/api.md#emit-a-logrecord": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:21:45.274976803Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-18T10:37:46.330840404Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/logs/data-model.md#events": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:21:46.957900544Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/logs/data-model.md#field-attributes": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:22:07.391785016Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/logs/data-model.md#field-body": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:22:11.431744992Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/logs/data-model.md#field-eventname": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:22:03.995214243Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/logs/data-model.md#field-severitynumber": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:22:15.724153632Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/logs/data-model.md#log-and-event-record-definition": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:21:47.57567677Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/logs/data-model.md#type-any": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-18T10:38:05.674928048Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/metrics/api.md#instrument-advisory-parameters": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:21:46.683595149Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/resource/sdk.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:21:52.776312138Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/resource/sdk.md#sdk-provided-resource-attributes": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:21:59.244737105Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/trace/api.md#set-status": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:22:02.144536891Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/trace/api.md#span": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:21:46.82483832Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.51.0/specification/trace/sdk.md#span-processor": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-12T21:22:06.51174641Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-16T10:38:40.49950916Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-16T10:38:32.962411271Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-16T10:38:29.053125098Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
     "LastSeen": "2025-12-28T09:43:29.019530513Z"
@@ -13374,6 +13486,10 @@
   "https://github.com/open-telemetry/semantic-conventions/pull/2779": {
     "StatusCode": 206,
     "LastSeen": "2025-12-23T09:46:48.181680479Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2984#discussion_r2466369361": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-06T10:37:26.044164511Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/981": {
     "StatusCode": 206,
@@ -15355,6 +15471,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-12-28T09:43:38.995191476Z"
   },
+  "https://img.shields.io/badge/alpha-mediumpurple": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-18T10:38:01.12419459Z"
+  },
   "https://img.shields.io/badge/changed-orange?style=flat": {
     "StatusCode": 200,
     "LastSeen": "2025-12-24T09:45:52.546321107Z"
@@ -15575,6 +15695,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-19T09:42:56.481401587Z"
   },
+  "https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-hostname-and-subdomain-field": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-06T10:36:22.092436978Z"
+  },
   "https://kubernetes.io/docs/concepts/services-networking/service/": {
     "StatusCode": 200,
     "LastSeen": "2025-12-19T09:50:38.196Z"
@@ -15726,6 +15850,14 @@
   "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.33/#podstatus-v1-core": {
     "StatusCode": 206,
     "LastSeen": "2025-12-22T09:48:22.097856264Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#podspec-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-06T10:36:24.389258379Z"
+  },
+  "https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.34/#podstatus-v1-core": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-06T10:36:26.470368726Z"
   },
   "https://kubernetes.io/docs/reference/kubectl/": {
     "StatusCode": 206,
@@ -19519,6 +19651,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-30T09:49:20.103439952Z"
   },
+  "https://uaparser.dev/#demo": {
+    "StatusCode": 206,
+    "LastSeen": "2025-11-12T10:37:25.583538393Z"
+  },
   "https://ucum.org/ucum": {
     "StatusCode": 200,
     "LastSeen": "2025-12-19T09:46:02.448266624Z"
@@ -20658,6 +20794,14 @@
   "https://www.jsonrpc.org/": {
     "StatusCode": 206,
     "LastSeen": "2025-12-23T09:46:42.418416105Z"
+  },
+  "https://www.jsonrpc.org/specification": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-10T10:38:28.544900232Z"
+  },
+  "https://www.jsonrpc.org/specification#error_object": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-05T09:27:15.449912348Z"
   },
   "https://www.kaggle.com/whitepaper-agents": {
     "StatusCode": 200,
