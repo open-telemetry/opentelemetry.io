@@ -330,9 +330,11 @@ These configuration options are supported by the following HTTP
 instrumentations:
 
 - Aiohttp-server
+- ASGI
 - Django
 - Falcon
 - FastAPI
+- Flask
 - Pyramid
 - Starlette
 - Tornado
