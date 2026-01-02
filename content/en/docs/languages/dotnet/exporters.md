@@ -290,8 +290,8 @@ docker run -p 9090:9090 prom/prometheus --web.enable-otlp-receiver
 
 ### Using Prometheus Exporter (Pull/Scrape) {#prometheus-exporter}
 
-This approach exposes a metrics endpoint in your application (e.g.,
-`/metrics`) that Prometheus scrapes at regular intervals.
+This approach exposes a metrics endpoint in your application (e.g., `/metrics`)
+that Prometheus scrapes at regular intervals.
 
 {{% alert color="warning" title="Warning" %}}
 
@@ -398,7 +398,7 @@ scrape_configs:
   - job_name: 'your-app-name'
     scrape_interval: 5s
     static_configs:
-      - targets: ['localhost:5000']  # Your application's host:port
+      - targets: ['localhost:5000'] # Your application's host:port
 ```
 
 For more details on configuring the Prometheus exporter, see
