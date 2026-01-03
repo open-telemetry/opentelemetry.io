@@ -208,7 +208,7 @@ There are two approaches for exporting metrics to Prometheus:
    protocol. This requires
    [Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver)
    to be enabled. This is the recommended approach for production environments
-   as it supports exemplars and is more mature.
+   as it supports exemplars and is stable.
 
 2. **Using Prometheus Exporter (Pull/Scrape)**: Expose a scraping endpoint in
    your application that Prometheus can scrape. This is the traditional
@@ -301,7 +301,7 @@ production environments, consider using the
 
 {{% /alert %}}
 
-#### Dependencies  {#prometheus-exporter-dependencies}
+#### Dependencies {#prometheus-dependencies} {#prometheus-exporter-dependencies}
 
 Install the
 [exporter package](https://www.nuget.org/packages/OpenTelemetry.Exporter.Prometheus.AspNetCore)
