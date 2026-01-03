@@ -4,12 +4,10 @@ description: >-
   Високоякісна, повсюдна та переносна телеметрія для забезпечення ефективної спостережуваності
 outputs:
   - HTML
-developer_note:
-  The blocks/cover shortcode (used below) will use as a background image any
-  image file containing "background" in its name.
+developer_note: >
+  The blocks/cover shortcode (used below) will use as a background image any image file containing "background" in its name.
 show_banner: true
-default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268
-drifted_from_default: true
+default_lang_commit: 5b55172d51fb21f69c2f4fc9eb014f72a2b1c50a
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
