@@ -1,4 +1,4 @@
-# cSpell:ignore ducklakeexporter
+# cSpell:ignore datalake duckdb ducklakeexporter
 title: DuckLake Exporter
 registryType: exporter
 language: collector
