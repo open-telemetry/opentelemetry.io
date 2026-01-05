@@ -18751,6 +18751,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-12-24T09:42:33.756427712Z"
   },
+  "https://prometheus.io/docs/prometheus/latest/feature_flags/#otlp-receiver": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-05T10:08:45.098568447Z"
+  },
   "https://prometheus.io/docs/prometheus/latest/federation/": {
     "StatusCode": 200,
     "LastSeen": "2026-01-07T09:47:47.331652832Z"
