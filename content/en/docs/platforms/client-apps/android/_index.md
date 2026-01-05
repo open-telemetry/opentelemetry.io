@@ -41,7 +41,7 @@ Add the OpenTelemetry Android Agent dependency to your app-level
 
 ```kotlin
 dependencies {
-    implementation(platform("io.opentelemetry.android:opentelemetry-android-bom:0.9.0"))
+    implementation(platform("io.opentelemetry.android:opentelemetry-android-bom:<latest-version>"))
     implementation("io.opentelemetry.android:android-agent")
 }
 ```
@@ -56,66 +56,54 @@ dependencies {
 
 Initialize OpenTelemetry in your `Application` class's `onCreate()` method:
 
-{{< tabpane text=true >}} {{% tab Kotlin %}}
-
 ```kotlin
 import android.app.Application
+import android.content.Context
+import android.util.Log
 import io.opentelemetry.android.OpenTelemetryRum
+import io.opentelemetry.android.agent.OpenTelemetryRumInitializer
 import io.opentelemetry.api.common.Attributes
-import io.opentelemetry.semconv.ServiceAttributes
+import io.opentelemetry.api.common.AttributeKey.stringKey
+import kotlin.time.Duration.Companion.minutes
+import kotlin.time.Duration.Companion.days
 
 class MyApplication : Application() {
-    lateinit var openTelemetryRum: OpenTelemetryRum
+    var openTelemetryRum: OpenTelemetryRum? = null
 
     override fun onCreate() {
         super.onCreate()
-        openTelemetryRum = initializeOpenTelemetry()
-    }
-
-    private fun initializeOpenTelemetry(): OpenTelemetryRum {
-        return OpenTelemetryRum.builder(this)
-            .setEndpointUrl("https://your-collector-endpoint:4318")
-            .addGlobalAttributes(
-                Attributes.of(
-                    ServiceAttributes.SERVICE_VERSION, BuildConfig.VERSION_NAME
-                )
-            )
-            .build()
+        openTelemetryRum = initializeOpenTelemetry(this)
     }
 }
+
+private fun initializeOpenTelemetry(context: Context): OpenTelemetryRum? =
+    runCatching {
+        OpenTelemetryRumInitializer.initialize(
+            context = context,
+            configuration = {
+                httpExport {
+                    baseUrl = "https://your-collector-endpoint:4318"
+                    baseHeaders = mapOf("Authorization" to "Bearer <token>")
+                }
+                instrumentations {
+                    activity { enabled(true) }
+                    fragment { enabled(true) }
+                }
+                session {
+                    backgroundInactivityTimeout = 15.minutes
+                    maxLifetime = 4.days
+                }
+                globalAttributes {
+                    Attributes.of(
+                        stringKey("service.version"), BuildConfig.VERSION_NAME
+                    )
+                }
+            }
+        )
+    }.onFailure {
+        Log.e("OpenTelemetryRumInitializer", "Initialization failed", it)
+    }.getOrNull()
 ```
-
-{{% /tab %}} {{% tab Java %}}
-
-```java
-import android.app.Application;
-import io.opentelemetry.android.OpenTelemetryRum;
-import io.opentelemetry.api.common.Attributes;
-import io.opentelemetry.semconv.ServiceAttributes;
-
-public class MyApplication extends Application {
-    private OpenTelemetryRum openTelemetryRum;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        openTelemetryRum = initializeOpenTelemetry();
-    }
-
-    private OpenTelemetryRum initializeOpenTelemetry() {
-        return OpenTelemetryRum.builder(this)
-            .setEndpointUrl("https://your-collector-endpoint:4318")
-            .addGlobalAttributes(
-                Attributes.of(
-                    ServiceAttributes.SERVICE_VERSION, BuildConfig.VERSION_NAME
-                )
-            )
-            .build();
-    }
-}
-```
-
-{{% /tab %}} {{< /tabpane >}}
 
 Don't forget to register your custom `Application` class in
 `AndroidManifest.xml`:
@@ -129,26 +117,46 @@ Don't forget to register your custom `Application` class in
 
 ## Configuration
 
-OpenTelemetry Android supports configuration through a Kotlin DSL or builder
-pattern:
+OpenTelemetry Android uses a Kotlin DSL for configuration within the
+`OpenTelemetryRumInitializer.initialize()` call:
 
 ```kotlin
-OpenTelemetryRum.builder(context)
-    .setEndpointUrl("https://your-collector-endpoint:4318")
-    .addHeaders(mapOf("Authorization" to "Bearer <token>"))
-    .addGlobalAttributes(Attributes.of(stringKey("deployment.environment.name"), "production"))
-    .setSessionTimeout(15.minutes)
-    .build()
+OpenTelemetryRumInitializer.initialize(
+    context = context,
+    configuration = {
+        httpExport {
+            baseUrl = "https://your-collector-endpoint:4318"
+            baseHeaders = mapOf("Authorization" to "Bearer <token>")
+        }
+        instrumentations {
+            activity { enabled(true) }
+            fragment { enabled(true) }
+            anr { enabled(true) }
+            crash { enabled(true) }
+            networkChange { enabled(true) }
+            slowRendering { enabled(true) }
+        }
+        session {
+            backgroundInactivityTimeout = 15.minutes
+            maxLifetime = 4.days
+        }
+        globalAttributes {
+            Attributes.of(stringKey("deployment.environment.name"), "production")
+        }
+    }
+)
 ```
 
 ### Configuration options
 
-| Option                | Description                                      |
-| --------------------- | ------------------------------------------------ |
-| `setEndpointUrl`      | OTLP endpoint URL for exporting telemetry        |
-| `addHeaders`          | Custom headers to include with export requests   |
-| `addGlobalAttributes` | Attributes added to all telemetry                |
-| `setSessionTimeout`   | Inactivity timeout before starting a new session |
+| Block                            | Description                                                          |
+| -------------------------------- | -------------------------------------------------------------------- |
+| `httpExport { baseUrl }`         | OTLP endpoint URL for exporting telemetry                            |
+| `httpExport { baseHeaders }`     | Custom headers to include with export requests                       |
+| `globalAttributes`               | Attributes added to all telemetry                                    |
+| `session { backgroundInactivityTimeout }` | Inactivity timeout before starting a new session            |
+| `session { maxLifetime }`        | Maximum session lifetime                                             |
+| `instrumentations`               | Enable/disable specific auto-instrumentation modules                 |
 
 ## Automatic instrumentation
 
@@ -210,8 +218,6 @@ try {
 Instrument OkHttp clients to trace network requests:
 
 ```kotlin
-import io.opentelemetry.instrumentation.okhttp.v3_0.OkHttpTelemetry
-
 val okHttpClient = OkHttpTelemetry.builder(openTelemetryRum.openTelemetry)
     .build()
     .newCallFactory(OkHttpClient.Builder().build())
@@ -243,7 +249,9 @@ When testing with an emulator, use `10.0.2.2` as the host address to reach your
 local machine's collector:
 
 ```kotlin
-.setEndpointUrl("http://10.0.2.2:4318")
+httpExport {
+    baseUrl = "http://10.0.2.2:4318"
+}
 ```
 
 ## Resources
