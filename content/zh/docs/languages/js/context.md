@@ -31,6 +31,7 @@ api.context.setGlobalContextManager(contextManager);
 <!-- The `ROOT_CONTEXT` is the empty context. If no context is active, the
 `ROOT_CONTEXT` is active. Active context is explained below
 [Active Context](#active-context). -->
+
 `ROOT_CONTEXT` 是一个空上下文。
 如果当前没有活跃上下文，`ROOT_CONTEXT` 就会成为活跃上下文。
 关于活跃上下文的详细信息，请参考[活跃上下文](#active-context)。
@@ -135,10 +136,11 @@ import * as api from '@opentelemetry/api';
 // 如果没有活跃上下文，返回 ROOT_CONTEXT
 const ctx = api.context.active();
 ```
+
 ### 设置活跃上下文 {#set-active-context}
 
 可以使用 `api.context.with(ctx, callback)` 来激活一个上下文。在执行
- `callback` 回调期间，传递给 `with` 的上下文将成为 `context.active` 的返回值。
+`callback` 回调期间，传递给 `with` 的上下文将成为 `context.active` 的返回值。
 
 ```typescript
 import * as api from '@opentelemetry/api';
