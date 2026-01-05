@@ -301,7 +301,7 @@ production environments, consider using the
 
 {{% /alert %}}
 
-#### Dependencies {#prometheus-dependencies} {#prometheus-exporter-dependencies}
+#### Dependencies {#prometheus-dependencies}
 
 Install the
 [exporter package](https://www.nuget.org/packages/OpenTelemetry.Exporter.Prometheus.AspNetCore)
