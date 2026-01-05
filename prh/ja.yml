@@ -57,3 +57,6 @@ rules:
     patterns:
       - インターフェース
       - インタフェース
+  - expected: アノテーション
+    patterns:
+      - 注釈
