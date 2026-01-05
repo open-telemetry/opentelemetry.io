@@ -221,22 +221,24 @@ discovery:
 
 ```yaml
 discovery:
-  instrument:
-    - k8s_namespace: production
-  exclude_instrument:
-    - k8s_pod_labels:
-        skip-instrumentation: 'true'
+  rules:
+    - match:
+        k8s_namespace: production
+      exclude:
+        k8s_pod_labels:
+          skip-instrumentation: 'true'
 ```
 
 ### Example: Exclude specific executables
 
 ```yaml
 discovery:
-  instrument:
-    - open_ports: 80,443,8080
-  exclude_instrument:
-    - exe_path: '*prometheus*'
-    - exe_path: '*grafana*'
+  rules:
+    - match:
+        open_ports: 80,443,8080
+      exclude:
+        exe_path: '*prometheus*'
+        exe_path: '*grafana*'
 ```
 
 ## Default exclude services from instrumentation
@@ -320,38 +322,6 @@ potential feedback loops if OBI instruments itself or other telemetry
 collectors. Use this configuration carefully in production environments.
 
 {{% /alert %}}
-
-### Example: Enable instrumentation for specific services in excluded namespace
-
-To instrument only specific services within a default-excluded namespace,
-combine namespace and other selectors:
-
-```yaml
-discovery:
-  instrument:
-    # Instrument only services with specific labels in the monitoring namespace
-    - k8s_namespace: monitoring
-      k8s_pod_labels:
-        instrument: 'true'
-
-  # Override default exclusions (removing monitoring namespace)
-  default_exclude_instrument:
-    - exe_path: '{*beyla,*alloy,*ebpf-instrument,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}'
-    - k8s_namespace: kube-system
-    - k8s_namespace: kube-node-lease
-    - k8s_namespace: local-path-storage
-    - k8s_namespace: grafana-alloy
-    - k8s_namespace: cert-manager
-    - k8s_namespace: gke-connect
-    - k8s_namespace: gke-gmp-system
-    - k8s_namespace: gke-managed-cim
-    - k8s_namespace: gke-managed-filestorecsi
-    - k8s_namespace: gke-managed-metrics-server
-    - k8s_namespace: gke-managed-system
-    - k8s_namespace: gke-system
-    - k8s_namespace: gke-managed-volumepopulator
-    - k8s_namespace: gatekeeper-system
-```
 
 ## Skip go specific tracers
 
