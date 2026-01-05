@@ -7,6 +7,8 @@ canonical_url: https://blog.olly.garden/what-10000-slack-messages-reveal-about-o
 cSpell:ignore: k8sattributes kubeletstats OllyGarden OTTL
 ---
 
+![Cover image showing Slack message volume over time](cover.png)
+
 The OpenTelemetry community has grown tremendously over the past few years, and
 with that growth comes valuable insights hidden in our community conversations.
 We analyzed nearly 10,000 messages from the `#otel-collector` and
