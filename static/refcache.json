@@ -2363,6 +2363,10 @@
     "StatusCode": 200,
     "LastSeen": "2025-12-31T09:46:54.563660892Z"
   },
+  "https://docs.oracle.com/javase/8/docs/technotes/guides/management/agent.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-05T15:50:14.87247516Z"
+  },
   "https://docs.oracle.com/javase/specs/jls/se7/html/jls-10.html": {
     "StatusCode": 200,
     "LastSeen": "2025-12-31T09:46:28.634311534Z"
@@ -9839,6 +9843,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-19T09:43:00.392448068Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/releases": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:20.980800941Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources": {
     "StatusCode": 206,
     "LastSeen": "2025-12-22T09:45:29.50034046Z"
@@ -9862,6 +9870,22 @@
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources": {
     "StatusCode": 206,
     "LastSeen": "2025-12-22T09:45:32.548264969Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:23.580862059Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:17.024513191Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migrating-from-jmx-metric-gatherer": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:28.371643052Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#predefined-metric-sets": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:30.588620347Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/micrometer-meter-provider": {
     "StatusCode": 206,
