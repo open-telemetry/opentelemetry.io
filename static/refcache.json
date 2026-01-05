@@ -5439,6 +5439,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-18T09:49:16.090685823Z"
   },
+  "https://github.com/hrl20": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T09:00:32.70408173Z"
+  },
+  "https://github.com/hrl20/ducklakeexporter": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T09:00:32.26489777Z"
+  },
   "https://github.com/huikang": {
     "StatusCode": 206,
     "LastSeen": "2025-12-30T09:48:08.528017644Z"
