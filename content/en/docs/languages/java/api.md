@@ -610,6 +610,14 @@ public class OpenTelemetryUsage {
 
 ### GlobalOpenTelemetry
 
+{{% alert title="Java agent" %}} The Java agent is a special case where
+`GlobalOpenTelemetry` is set by the agent. Simply call
+`GlobalOpenTelemetry.getOrNoop()` to access the `OpenTelemetry` instance.
+
+Read more about
+[extending the Java agent with custom manual instrumentation](/docs/zero-code/java/agent/api/).
+{{% /alert %}}
+
 [GlobalOpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html)
 holds a global singleton [OpenTelemetry](#opentelemetry) instance.
 

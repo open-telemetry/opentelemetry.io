@@ -114,7 +114,7 @@ OpenTelemetryコレクターは、[トレース](/docs/concepts/signals/traces/)
 このチュートリアルでは、OpenTelemetryコレクターを起動し、そこにテレメトリーを送信しました。
 次のステップとして、以下のことを検討してください。
 
-- [コレクターのインストール](../installation/)について別の方法を試す
+- [コレクターのインストール](../install/)について別の方法を試す
 - コレクターの[デプロイ方法](../deployment/)についてさまざまな方法を学ぶ
 - コレクターの[設定](/docs/collector/configuration)ファイルとその構造を理解する
 - [レジストリ](/ecosystem/registry/?language=collector)で取得できるコンポーネントを探る
