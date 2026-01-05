@@ -1,0 +1,77 @@
+name: Auto-respond to first-time contributors
+# Automatically respond to issue comments asking for assignment
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+
+env:
+  ISSUE_NUM: ${{ github.event.issue.number }}
+  COMMENT_BODY: ${{ github.event.comment.body }}
+  COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
+  CONTRIBUTING_URL: https://opentelemetry.io/docs/contributing/issues/#fixing-an-existing-issue
+
+jobs:
+  respond-to-assignment-request:
+    name: Respond to assignment requests
+    runs-on: ubuntu-latest
+    # Only trigger on issue comments (not PR comments) and when comment matches assignment patterns
+    if: |
+      !github.event.issue.pull_request &&
+      (
+        contains(github.event.comment.body, 'assign this to me') ||
+        contains(github.event.comment.body, 'assign me') ||
+        contains(github.event.comment.body, 'can I work on this') ||
+        contains(github.event.comment.body, 'Can I work on this') ||
+        contains(github.event.comment.body, 'I would like to work on this') ||
+        contains(github.event.comment.body, 'I want to work on this') ||
+        contains(github.event.comment.body, 'please assign') ||
+        contains(github.event.comment.body, 'can you assign') ||
+        contains(github.event.comment.body, 'I will work on this') ||
+        contains(github.event.comment.body, 'I am working on this') ||
+        contains(github.event.comment.body, "I'm working on this") ||
+        contains(github.event.comment.body, 'can I take this')
+      )
+    steps:
+      - uses: step-security/harden-runner@20cf305ff2072d973412fa9b1e3a4f227bda3c76 # v2.14.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+
+      - name: Check if commenter is an org member
+        id: check-membership
+        run: |
+          ORG="${{ github.repository_owner }}"
+          USERNAME="${COMMENT_AUTHOR}"
+
+          # Check if user is an org member
+          if gh api "orgs/$ORG/members/$USERNAME" --silent 2>/dev/null; then
+            echo "is_member=true" >> "$GITHUB_OUTPUT"
+            echo "User $USERNAME is an org member, skipping auto-response."
+          else
+            echo "is_member=false" >> "$GITHUB_OUTPUT"
+            echo "User $USERNAME is not an org member, will send auto-response."
+          fi
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+
+      - name: Post response to first-time contributor
+        if: steps.check-membership.outputs.is_member != 'true'
+        run: |
+          RESPONSE_BODY="Thank you for your interest in contributing to this project, @${COMMENT_AUTHOR}! 🙏
+
+          If this is your first time contributing, then please carefully read through [Fixing an existing issue](${CONTRIBUTING_URL}).
+
+          As noted there, **we don't assign issues** unless you're a regular contributor. Feel free to submit a draft PR early to signal that you're working on it."
+
+          gh issue comment ${ISSUE_NUM} --repo ${{ github.repository }} --body "${RESPONSE_BODY}"
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
