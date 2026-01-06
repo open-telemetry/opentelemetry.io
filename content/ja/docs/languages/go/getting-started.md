@@ -335,17 +335,9 @@ func run() error {
 func newHTTPHandler() http.Handler {
 	mux := http.NewServeMux()
 
-	// handleFuncはmux.HandleFuncの代替であり、
-	// ハンドラーのHTTP計装において、パターンをhttp.routeとして付加します。
-	handleFunc := func(pattern string, handlerFunc func(http.ResponseWriter, *http.Request)) {
-		// Configure the "http.route" for the HTTP instrumentation.
-		handler := otelhttp.WithRouteTag(pattern, http.HandlerFunc(handlerFunc))
-		mux.Handle(pattern, handler)
-	}
-
 	// ハンドラーの登録。
-	handleFunc("/rolldice/", rolldice)
-	handleFunc("/rolldice/{player}", rolldice)
+	mux.Handle("/rolldice/", rolldice)
+	mux.Handle("/rolldice/{player}", rolldice)
 
 	// サーバー全体に対してHTTP計装を追加します。
 	handler := otelhttp.NewHandler(mux, "/")
