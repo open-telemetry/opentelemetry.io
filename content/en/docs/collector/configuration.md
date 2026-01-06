@@ -2,6 +2,8 @@
 title: Configuration
 weight: 20
 description: Learn how to configure the Collector to suit your needs
+cascade:
+  collector_vers: 0.142.0
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
 ---
@@ -942,7 +944,7 @@ The following settings are available for TLS configuration:
 | `reload_interval`      | Duration after which the certificate is reloaded          |
 
 > For more details on TLS configuration options, see the
-> [configtls documentation](https://pkg.go.dev/go.opentelemetry.io/collector/config/configtls).
+> [configtls documentation](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collector_vers %}}/config/configtls/README.md).
 
 [dcc]: /docs/concepts/components/#collector
 
