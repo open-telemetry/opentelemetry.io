@@ -8615,6 +8615,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-08T09:44:51.870070048Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.142.0/config/configtls/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-06T13:48:06.314424072Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.142.0/pdata/pcommon/map.go": {
     "StatusCode": 206,
     "LastSeen": "2026-01-08T09:45:08.456293248Z"
