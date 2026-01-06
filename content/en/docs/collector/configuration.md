@@ -943,8 +943,9 @@ The following settings are available for TLS configuration:
 | `max_version`          | Maximum TLS version                                       |
 | `reload_interval`      | Duration after which the certificate is reloaded          |
 
-> For more details on TLS configuration options, see the
-> [configtls documentation](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collector_vers %}}/config/configtls/README.md).
+> For more details on TLS configuration options, see the [configtls
+> documentation](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{%
+> param collector_vers %}}/config/configtls/README.md).
 
 [dcc]: /docs/concepts/components/#collector
 
