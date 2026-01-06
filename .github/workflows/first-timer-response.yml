@@ -70,7 +70,7 @@ jobs:
 
           If this is your first time contributing, then please carefully read through [Fixing an existing issue](${CONTRIBUTING_URL}).
 
-          As noted there, **we don't assign issues** unless you're a regular contributor. Feel free to submit a draft PR early to signal that you're working on it."
+          As noted there, **we don't assign issues** unless you're a regular contributor. If you don't see any linked PRs and no one else has said they are working on the issue, feel free to submit a draft PR early to signal that you're working on it."
 
           gh issue comment ${ISSUE_NUM} --repo ${{ github.repository }} --body "${RESPONSE_BODY}"
         env:
