@@ -46,7 +46,7 @@ components:
     - open-telemetry/java-instrumentation-approvers
   content/en/docs/languages/js:
     - open-telemetry/javascript-approvers
-  content/en/docs/languages/net:
+  content/en/docs/languages/dotnet:
     - open-telemetry/dotnet-approvers
     - open-telemetry/dotnet-instrumentation-approvers
   content/en/docs/languages/php:
