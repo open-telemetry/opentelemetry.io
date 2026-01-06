@@ -35,7 +35,7 @@ components:
   content/en/docs/platforms/client-apps/ios:
     - open-telemetry/swift-approvers
   content/en/docs/platforms/client-apps/web:
-    - open-telemetry/web-approvers
+    - open-telemetry/browser-approvers
   content/en/docs/platforms/faas:
     - open-telemetry/lambda-extension-approvers
   content/en/docs/languages/cpp:
