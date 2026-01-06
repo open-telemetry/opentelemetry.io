@@ -1,7 +1,7 @@
 ---
 title: Getting Started（入門）
 weight: 10
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
