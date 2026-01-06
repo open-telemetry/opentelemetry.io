@@ -19256,8 +19256,8 @@
     "LastSeen": "2025-12-31T09:47:12.004594425Z"
   },
   "https://sakshipatle.substack.com/p/outreachy-how-when-and-why": {
-    "StatusCode": 403,
-    "LastSeen": "2026-01-06T09:49:09.840439597Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-06T11:16:44.224Z"
   },
   "https://schemas.dmtf.org/wbem/cim-html/2.31.0/CIM_Battery.html": {
     "StatusCode": 206,
