@@ -188,7 +188,7 @@ docker run --rm -it -d -p 18888:18888 -p 4317:18889 -p 4318:18890 --name aspire-
 ![Chat trace in Aspire Dashboard](aspire-dashboard-trace.png)
 
 Here is a similar trace captured in
-[Jaeger](https://www.jaegertracing.io/docs/1.63/getting-started/#all-in-one).
+[Jaeger](https://www.jaegertracing.io/docs/getting-started/#all-in-one).
 
 To start Jaeger, run the following `docker` command and open your web browser
 the `localhost:16686`.

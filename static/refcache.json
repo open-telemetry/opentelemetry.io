@@ -20407,13 +20407,9 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-30T09:48:51.295491565Z"
   },
-  "https://www.jaegertracing.io/docs/1.60/monitoring/#traces": {
-    "StatusCode": 404,
-    "LastSeen": "2026-01-06T09:49:50.550497775Z"
-  },
-  "https://www.jaegertracing.io/docs/1.63/getting-started/#all-in-one": {
-    "StatusCode": 404,
-    "LastSeen": "2026-01-06T09:49:15.112071987Z"
+  "https://www.jaegertracing.io/docs/getting-started/#all-in-one": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-06T08:32:01.066804-03:00"
   },
   "https://www.jaegertracing.io/docs/latest/getting-started/": {
     "StatusCode": 206,
@@ -20422,6 +20418,10 @@
   "https://www.jaegertracing.io/docs/latest/migration/": {
     "StatusCode": 206,
     "LastSeen": "2025-12-23T09:43:37.201495346Z"
+  },
+  "https://www.jaegertracing.io/docs/monitoring/#traces": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-06T08:30:40.248259-03:00"
   },
   "https://www.jaegertracing.io/download/": {
     "StatusCode": 206,
