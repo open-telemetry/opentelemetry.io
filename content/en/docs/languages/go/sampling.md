@@ -33,10 +33,9 @@ Other samplers include:
   If you set .5, half of all the spans are sampled.
 - [`ParentBased`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#ParentBased),
   is a sampler decorator which behaves differently, based on the parent of the
-  span. If the span has no parent, the decorated sampler is used to make
-  sampling decision based on the parent of the span. By default, `ParentBased`
-  samples spans that have parents that were sampled, and doesn't sample spans
-  whose parents were not sampled.
+  span. If the span has no parent, the decorated sampler is used to make the
+  sampling decision. By default, `ParentBased` samples spans that have parents
+  that were sampled, and doesn't sample spans whose parents were not sampled.
 
 By default, the tracer provider uses a `ParentBased` sampler with the
 `AlwaysSample` sampler.
