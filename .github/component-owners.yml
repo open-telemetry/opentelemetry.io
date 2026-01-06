@@ -32,6 +32,8 @@ components:
     - open-telemetry/operator-approvers
   content/en/docs/platforms/client-apps/android:
     - open-telemetry/android-approvers
+  content/en/docs/platforms/client-apps/ios:
+    - open-telemetry/swift-approvers
   content/en/docs/platforms/client-apps/web:
     - open-telemetry/web-approvers
   content/en/docs/platforms/faas:
