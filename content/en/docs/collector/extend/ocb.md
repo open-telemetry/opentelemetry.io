@@ -206,7 +206,7 @@ In your terminal, type the following command to start `ocb`:
 ./ocb --config builder-config.yaml
 ```
 
-The output of the command looks like thi:
+The output of the command looks like this:
 
 ```sh
 2025-06-13T14:25:03.037-0500	INFO	internal/command.go:85	OpenTelemetry Collector distribution builder	{"version": "{{% version-from-registry collector-builder noPrefix %}}", "date": "2025-06-03T15:05:37Z"}
