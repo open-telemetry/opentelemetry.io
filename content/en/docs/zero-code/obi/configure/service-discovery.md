@@ -229,9 +229,9 @@ discovery:
           skip-instrumentation: 'true'
 ```
 
-In this example, `skip-instrumentation` is a user-defined Kubernetes pod label,
-not a built-in OBI field. You can use any custom label key and value for
-matching or exclusion based on your organization's labeling conventions.
+In this example, `skip-instrumentation` is a user-defined Kubernetes pod label.
+You can use any custom label key and value for matching or exclusion based on
+your organization's labeling conventions.
 
 ### Example: Exclude specific executables
 
