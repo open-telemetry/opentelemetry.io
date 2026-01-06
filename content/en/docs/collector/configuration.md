@@ -5,7 +5,7 @@ description: Learn how to configure the Collector to suit your needs
 cascade:
   collector_vers: 0.142.0
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
+cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -943,9 +943,12 @@ The following settings are available for TLS configuration:
 | `max_version`          | Maximum TLS version                                       |
 | `reload_interval`      | Duration after which the certificate is reloaded          |
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable MD034 -->
 > For more details on TLS configuration options, see the
 > [configtls documentation](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collector_vers %}}/config/configtls/README.md).
+<!-- markdownlint-enable MD034 -->
+<!-- prettier-ignore-end -->
 
 [dcc]: /docs/concepts/components/#collector
 
