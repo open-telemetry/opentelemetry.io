@@ -206,6 +206,45 @@ This option helps you avoid instrumenting services typically found in
 observability environments. For example, use this option to exclude
 instrumenting Prometheus.
 
+### Example: Exclude specific namespaces
+
+```yaml
+discovery:
+  instrument:
+    - k8s_namespace: '*' # Instrument all namespaces
+  exclude_instrument:
+    - k8s_namespace: development # Except development namespace
+    - k8s_namespace: staging # And staging namespace
+```
+
+### Example: Exclude services by labels
+
+```yaml
+discovery:
+  rules:
+    - match:
+        k8s_namespace: production
+      exclude:
+        k8s_pod_labels:
+          skip-instrumentation: 'true'
+```
+
+In this example, `skip-instrumentation` is a user-defined Kubernetes pod label,
+not a built-in OBI field. You can use any custom label key and value for
+matching or exclusion based on your organization's labeling conventions.
+
+### Example: Exclude specific executables
+
+```yaml
+discovery:
+  rules:
+    - match:
+        open_ports: 80,443,8080
+      exclude:
+        exe_path: '*prometheus*'
+        exe_path: '*grafana*'
+```
+
 ## Default exclude services from instrumentation
 
 The `default_exclude_instrument` section disables instrumentation of OBI itself
