@@ -81,8 +81,6 @@ components:
     - open-telemetry/php-approvers
   content/en/docs/zero-code/python:
     - open-telemetry/python-approvers
-  content/en/ecosystem/demo:
-    - open-telemetry/demo-approvers
 
   ## Localization Teams
   content/bn:
