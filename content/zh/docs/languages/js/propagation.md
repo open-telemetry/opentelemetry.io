@@ -293,7 +293,6 @@ let span: Span = tracer.startSpan(
   activeContext,
 );
 
-// Set the created Span as active in the deserialized context.
 // 将创建的 Span 设为反序列化上下文的活跃 Span。
 trace.setSpan(activeContext, span);
 ```
@@ -404,7 +403,7 @@ const server = net.createServer((socket) => {
   });
 });
 
-// 监听 8124 端口 
+// 监听 8124 端口
 server.listen(8124, () => {
   console.log('Server listening on port 8124');
 });
