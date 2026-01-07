@@ -1719,10 +1719,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-23T09:43:40.891842303Z"
   },
-  "https://docs.docker.com/compose/migrate/": {
-    "StatusCode": 404,
-    "LastSeen": "2026-01-07T09:45:00.662960436Z"
-  },
   "https://docs.docker.com/desktop": {
     "StatusCode": 206,
     "LastSeen": "2025-12-23T09:43:44.757211489Z"
@@ -20377,11 +20373,11 @@
   },
   "https://www.jaegertracing.io/docs/1.20/client-libraries/#propagation-format": {
     "StatusCode": 404,
-    "LastSeen": "2026-01-07T09:51:16.120626876Z"
+    "LastSeen": "2026-01-07T10:16:22.615787-03:00"
   },
   "https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format": {
     "StatusCode": 404,
-    "LastSeen": "2026-01-07T09:44:30.270345088Z"
+    "LastSeen": "2026-01-07T10:15:54.965153-03:00"
   },
   "https://www.jaegertracing.io/docs/1.22/architecture/sampling/": {
     "StatusCode": 206,
