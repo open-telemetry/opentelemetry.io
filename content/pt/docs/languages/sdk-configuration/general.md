@@ -3,7 +3,7 @@ title: Configurações gerais de SDK
 linkTitle: Geral
 weight: 10
 aliases: [general-sdk-configuration]
-default_lang_commit: a5691930635b4e2033946f3a85ae7a527c3eba06
+default_lang_commit: a5691930635b4e2033946f3a85ae7a527c3eba06 # patched
 cSpell:ignore: ottrace
 ---
 
@@ -128,7 +128,7 @@ Os valores aceitos para `OTEL_PROPAGATORS` são:
 - `"b3multi"`:
   [B3 Multi](/docs/specs/otel/context/api-propagators#configuration)
 - `"jaeger"`:
-  [Jaeger](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format)
+  [Jaeger](https://www.jaegertracing.io/sdk-migration/)
 - `"xray"`:
   [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader)
   (_terceiro_)

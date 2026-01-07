@@ -20371,14 +20371,6 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-30T09:46:09.345170124Z"
   },
-  "https://www.jaegertracing.io/docs/1.20/client-libraries/#propagation-format": {
-    "StatusCode": 404,
-    "LastSeen": "2026-01-07T10:16:22.615787-03:00"
-  },
-  "https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format": {
-    "StatusCode": 404,
-    "LastSeen": "2026-01-07T10:15:54.965153-03:00"
-  },
   "https://www.jaegertracing.io/docs/1.22/architecture/sampling/": {
     "StatusCode": 206,
     "LastSeen": "2025-12-28T09:46:15.309924884Z"
