@@ -20415,6 +20415,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-05T09:47:48.950589352Z"
   },
+  "https://www.jaegertracing.io/sdk-migration/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-07T15:19:37.124745701Z"
+  },
   "https://www.jaegertracing.io/sdk-migration/#propagation-format": {
     "StatusCode": 206,
     "LastSeen": "2025-12-30T09:46:13.957806054Z"
