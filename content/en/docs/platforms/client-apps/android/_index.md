@@ -59,7 +59,6 @@ Initialize OpenTelemetry in your `Application` class's `onCreate()` method:
 ```kotlin
 import android.app.Application
 import android.content.Context
-import android.util.Log
 import io.opentelemetry.android.OpenTelemetryRum
 import io.opentelemetry.android.agent.OpenTelemetryRumInitializer
 import io.opentelemetry.api.common.Attributes
@@ -68,7 +67,7 @@ import kotlin.time.Duration.Companion.minutes
 import kotlin.time.Duration.Companion.days
 
 class MyApplication : Application() {
-    var openTelemetryRum: OpenTelemetryRum? = null
+    lateinit var openTelemetryRum: OpenTelemetryRum
 
     override fun onCreate() {
         super.onCreate()
@@ -76,33 +75,29 @@ class MyApplication : Application() {
     }
 }
 
-private fun initializeOpenTelemetry(context: Context): OpenTelemetryRum? =
-    runCatching {
-        OpenTelemetryRumInitializer.initialize(
-            context = context,
-            configuration = {
-                httpExport {
-                    baseUrl = "https://your-collector-endpoint:4318"
-                    baseHeaders = mapOf("Authorization" to "Bearer <token>")
-                }
-                instrumentations {
-                    activity { enabled(true) }
-                    fragment { enabled(true) }
-                }
-                session {
-                    backgroundInactivityTimeout = 15.minutes
-                    maxLifetime = 4.days
-                }
-                globalAttributes {
-                    Attributes.of(
-                        stringKey("service.version"), BuildConfig.VERSION_NAME
-                    )
-                }
+private fun initializeOpenTelemetry(context: Context): OpenTelemetryRum =
+    OpenTelemetryRumInitializer.initialize(
+        context = context,
+        configuration = {
+            httpExport {
+                baseUrl = "https://your-collector-endpoint:4318"
+                baseHeaders = mapOf("Authorization" to "Bearer <token>")
             }
-        )
-    }.onFailure {
-        Log.e("OpenTelemetryRumInitializer", "Initialization failed", it)
-    }.getOrNull()
+            instrumentations {
+                activity { enabled(true) }
+                fragment { enabled(true) }
+            }
+            session {
+                backgroundInactivityTimeout = 15.minutes
+                maxLifetime = 4.days
+            }
+            globalAttributes {
+                Attributes.of(
+                    stringKey("service.version"), BuildConfig.VERSION_NAME
+                )
+            }
+        }
+    )
 ```
 
 Don't forget to register your custom `Application` class in
@@ -149,14 +144,14 @@ OpenTelemetryRumInitializer.initialize(
 
 ### Configuration options
 
-| Block                            | Description                                                          |
-| -------------------------------- | -------------------------------------------------------------------- |
-| `httpExport { baseUrl }`         | OTLP endpoint URL for exporting telemetry                            |
-| `httpExport { baseHeaders }`     | Custom headers to include with export requests                       |
-| `globalAttributes`               | Attributes added to all telemetry                                    |
-| `session { backgroundInactivityTimeout }` | Inactivity timeout before starting a new session            |
-| `session { maxLifetime }`        | Maximum session lifetime                                             |
-| `instrumentations`               | Enable/disable specific auto-instrumentation modules                 |
+| Block                                     | Description                                          |
+| ----------------------------------------- | ---------------------------------------------------- |
+| `httpExport { baseUrl }`                  | OTLP endpoint URL for exporting telemetry            |
+| `httpExport { baseHeaders }`              | Custom headers to include with export requests       |
+| `globalAttributes`                        | Attributes added to all telemetry                    |
+| `session { backgroundInactivityTimeout }` | Inactivity timeout before starting a new session     |
+| `session { maxLifetime }`                 | Maximum session lifetime                             |
+| `instrumentations`                        | Enable/disable specific auto-instrumentation modules |
 
 ## Automatic instrumentation
 
