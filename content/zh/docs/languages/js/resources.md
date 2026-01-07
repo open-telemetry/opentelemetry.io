@@ -12,7 +12,7 @@ cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 
 ## 设置 {#setup}
 
-请按照[Node.js 快速入门][Getting Started - Node.js]中的说明进行操作，这样你就会拥有`package.json`、`app.js`（或`app.ts`）和`instrumentation.mjs`（或`instrumentation.ts`）这些文件。
+请按照 [Node.js 快速入门][Getting Started - Node.js]中的说明进行操作，这样你就会拥有`package.json`、`app.js`（或`app.ts`）和`instrumentation.mjs`（或`instrumentation.ts`）这些文件。
 
 ## 进程和环境资源探测 {#process-environment-resource-detection}
 
@@ -21,7 +21,7 @@ cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 你可以通过在插桩文件中启用诊断日志，来验证它探测到的内容：
 
 ```javascript
-// 要进行故障排查，将日志级别设置为 DiagLogLevel.DEBUG
+// 要进行故障排查，请将日志级别设置为 DiagLogLevel.DEBUG
 diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.DEBUG);
 ```
 
@@ -118,7 +118,7 @@ EXPOSE 8080
 CMD [ "node", "--import", "./instrumentation.mjs", "app.js" ]
 ```
 
-为了确保你可以通过<kbd>Ctrl + C</kbd>（`SIGINT`）停止你的 docker 容器，请将以下内容添加到`app.js`的末尾：
+为了确保你可以通过 <kbd>Ctrl + C</kbd>（`SIGINT`）停止你的 Docker 容器，请将以下内容添加到`app.js`的末尾：
 
 ```javascript
 process.on('SIGINT', function () {
@@ -156,13 +156,13 @@ const sdk = new opentelemetry.NodeSDK({
 sdk.start();
 ```
 
-构建你的 docker 镜像：
+构建你的 Docker 镜像：
 
 ```sh
 docker build . -t nodejs-otel-getting-started
 ```
 
-运行你的 docker 容器：
+运行你的 Docker 容器：
 
 ```sh
 $ docker run --rm -p 8080:8080 nodejs-otel-getting-started
