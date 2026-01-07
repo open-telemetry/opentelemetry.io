@@ -159,12 +159,12 @@ providers:
 
 {{% /alert %}}
 
-## ステップ 3a - コードを生成し、コレクターのディストリビューションをビルドする {#generate-the-code-and-build-your-collector-distribution}
+## ステップ 3a - コードを生成し、コレクターのディストリビューションをビルドする {#step-3a---generate-the-code-and-build-your-collectors-distribution}
 
 {{% alert color="primary" title="Note" %}}
 
 このステップは、`ocb`バイナリを使用してカスタムコレクターのディストリビューションをビルドするために使用されます。
-（たとえば、Kubernetesのような）コンテナオーケストレーターにカスタムコレクターのディストリビューションをビルドしてデプロイしたい場合は、このステップをスキップして[ステップ 3b](#containerize-your-collector-distribution)に進んでください。
+（たとえば、Kubernetesのような）コンテナオーケストレーターにカスタムコレクターのディストリビューションをビルドしてデプロイしたい場合は、このステップをスキップして[ステップ 3b](#step-3b---containerize-your-collectors-distribution)に進んでください。
 
 {{% /alert %}}
 
@@ -207,13 +207,13 @@ providers:
 
 生成されたコードを使用して、コンポーネント開発プロジェクトをブートストラップし、コンポーネントを使用してコレクターのディストリビューションを簡単にビルドおよび配布できるようになりました。
 
-## ステップ 3b - コレクターのディストリビューションをコンテナ化する {#containerize-your-collector-distribution}
+## ステップ 3b - コレクターのディストリビューションをコンテナ化する {#step-3b---containerize-your-collectors-distribution}
 
 {{% alert color="primary" title="注意" %}}
 
 このステップでは、`Dockerfile`内でコレクターのディストリビューションをビルドします。
 （たとえば、Kubernetesのような）コンテナオーケストレーターにコレクターのディストリビューションをデプロイする必要がある場合は、このステップに従ってください。
-コンテナ化せずにコレクターのディストリビューションのみをビルドしたい場合は、[ステップ 3a](#generate-the-code-and-build-your-collector-distribution)に進んでください。
+コンテナ化せずにコレクターのディストリビューションのみをビルドしたい場合は、[ステップ 3a](#step-3a---generate-the-code-and-build-your-collectors-distribution)に進んでください。
 
 {{% /alert %}}
 
