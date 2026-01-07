@@ -1,33 +1,30 @@
 ---
-title: Propagation
-description: Context propagation for the JS SDK
+title: 传播
+description: 上下文传播 JS SDK
+default_lang_commit: 1aa53278c92dd763c43c42c3b0383d572db54337
 weight: 65
 cSpell:ignore: rolldice
 ---
 
 {{% docs/languages/propagation %}}
 
-## Automatic context propagation
+## 自动上下文传播 {#automatic-context-propagation}
 
-[Instrumentation libraries](../libraries/) like
+像[插桩库](../libraries/)这样的工具，如
 [`@opentelemetry/instrumentation-http`](https://www.npmjs.com/package/@opentelemetry/instrumentation-http)
-or
+或
 [`@opentelemetry/instrumentation-express`](https://www.npmjs.com/package/@opentelemetry/instrumentation-express)
-propagate context across services for you.
+会为你在服务之间传播上下文。
 
-If you followed the [Getting Started Guide](../getting-started/nodejs) you can
-create a client application that queries the `/rolldice` endpoint.
+如果你遵循了[入门指南](../getting-started/nodejs)，你可以创建一个客户端应用程序来查询 `/rolldice` 端点。
 
-{{% alert title="Note" %}}
+{{% alert title="备注" color="warning" %}}
 
-You can combine this example with the sample application from the Getting
-Started guide of any other language as well. Correlation works across
-applications written in different languages without any differences.
+你也可将本示例与其他任意语言快速入门指南中的示例应用整合使用。关联功能在不同编程语言编写的应用间均可生效，且无任何差异。
 
 {{% /alert %}}
 
-Start by creating a new folder called `dice-client` and install the required
-dependencies:
+首先创建一个名为 `dice-client` 的新文件夹，然后安装所需的依赖项：
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -36,7 +33,7 @@ npm init -y
 npm install undici \
   @opentelemetry/instrumentation-undici \
   @opentelemetry/sdk-node
-npm install -D tsx  # a tool to run TypeScript (.ts) files directly with node
+npm install -D tsx  # 一个直接在 Node.js 中运行 TypeScript 文件的工具
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
@@ -50,8 +47,7 @@ npm install undici \
 
 {{% /tab %}} {{< /tabpane >}}
 
-Next, create a new file called `client.ts` (or `client.js`) with the following
-content:
+接下来，创建一个名为 `client.ts`（或 `client.js`）的新文件，内容如下：
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -103,8 +99,7 @@ request('http://localhost:8080/rolldice').then((response) => {
 
 {{% /tab %}} {{% /tabpane %}}
 
-Make sure that you have the instrumented version of `app.ts` (or `app.js`) from
-the [Getting Started](../getting-started/nodejs) running in one shell:
+确保你在一个终端中运行了来自[入门指南](../getting-started/nodejs)的插桩版本 `app.ts`（或 `app.js`）：
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -122,7 +117,7 @@ Listening for requests on http://localhost:8080
 
 {{% /tab %}} {{< /tabpane >}}
 
-Start a second shell and run the `client.ts` (or `client.js`):
+启动第二个终端并运行 `client.ts`（或 `client.js`）：
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -138,8 +133,8 @@ node client.js
 
 {{% /tab %}} {{< /tabpane >}}
 
-Both shells should emit span details to the console. The client output looks
-similar to the following:
+两个终端都应该向控制台输出 Span 详细信息。
+客户端输出类似于以下内容：
 
 ```javascript {hl_lines=[7,11]}
 {
@@ -166,8 +161,8 @@ similar to the following:
 }
 ```
 
-Take note of the traceId (`cccd19c3a2d10e589f01bfe2dc896dc2`) and ID
-(`6f64ce484217a7bf`). Both can be found in the output of client as well:
+请注意 traceId（`cccd19c3a2d10e589f01bfe2dc896dc2`）和 ID（`6f64ce484217a7bf`）。
+这两个值也可以在客户端的输出中找到：
 
 ```javascript {hl_lines=[6,9]}
 {
@@ -199,86 +194,73 @@ Take note of the traceId (`cccd19c3a2d10e589f01bfe2dc896dc2`) and ID
 }
 ```
 
-Your client and server application successfully report connected spans. If you
-send both to a backend now the visualization will show this dependency for you.
+你的客户端和服务器应用程序成功报告了存在关联关系的 Span。
+如果你现在将两者都发送到后端，可视化将显示这种依赖关系。
 
-## Manual context propagation
+## 手动上下文传播 {#manual-context-propagation}
 
-In some cases, it is not possible to propagate context automatically as outlined
-in the previous section. There might not be an instrumentation library that
-matches a library you're using to have services communicate with one another. Or
-you might have requirements that these libraries can't fulfill even if they
-existed.
+在某些情况下，如上一节所述，不可能自动传播上下文。
+可能没有与你用于服务间通信的库相匹配的插桩库。
+或者即使存在，这些库也可能无法满足你的要求。
 
-When you must propagate context manually, you can use the
-[context API](/docs/languages/js/context).
+当你必须手动传播上下文时，你可以使用[上下文 API](/docs/languages/js/context)。
 
-### Generic example
+### 通用示例 {#generic-example}
 
-The following generic example demonstrates how you can propagate trace context
-manually.
+以下通用示例演示了如何手动传播链路上下文。
 
-First, on the sending service, you'll need to inject the current `context`:
+首先，在发送服务上，你需要注入当前的 `context`：
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```typescript
-// Sending service
+// 发送端服务
 import { context, propagation, trace } from '@opentelemetry/api';
 
-// Define an interface for the output object that will hold the trace information.
+// 为承载链路信息的输出对象定义一个接口。
 interface Carrier {
   traceparent?: string;
   tracestate?: string;
 }
 
-// Create an output object that conforms to that interface.
+// 创建一个符合该接口规范的输出对象。
 const output: Carrier = {};
 
-// Serialize the traceparent and tracestate from context into
-// an output object.
+// 将上下文中的 traceparent 和 tracestate 序列化至一个输出对象中。
 //
-// This example uses the active trace context, but you can
-// use whatever context is appropriate to your scenario.
+// 本示例使用的是当前活跃的链路上下文，但你也可以根据自身业务场景，选用任何合适的上下文。
 propagation.inject(context.active(), output);
 
-// Extract the traceparent and tracestate values from the output object.
+// 从输出对象中提取 traceparent 和 tracestate 的值
 const { traceparent, tracestate } = output;
 
-// You can then pass the traceparent and tracestate
-// data to whatever mechanism you use to propagate
-// across services.
+// 随后你可将 traceparent 和 tracestate 数据传递至任何你所使用的、用于跨服务传播上下文的机制中。
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-// Sending service
+// 发送端服务
 const { context, propagation } = require('@opentelemetry/api');
 const output = {};
 
-// Serialize the traceparent and tracestate from context into
-// an output object.
+// 将上下文中的 traceparent 和 tracestate 序列化到输出对象。
 //
-// This example uses the active trace context, but you can
-// use whatever context is appropriate to your scenario.
+// 本示例使用活跃链路上下文，也可根据业务场景选用合适的上下文。
 propagation.inject(context.active(), output);
 
 const { traceparent, tracestate } = output;
-// You can then pass the traceparent and tracestate
-// data to whatever mechanism you use to propagate
-// across services.
+// 随后你可将 traceparent 和 tracestate 数据传递至任何你所使用的、用于跨服务传播上下文的机制中。
 ```
 
 {{% /tab %}} {{< /tabpane >}}
 
-On the receiving service, you'll need to extract `context` (for example, from
-parsed HTTP headers) and then set them as the current trace context.
+在接收服务上，你需要提取 `context`（例如，从解析的 HTTP 头中），然后将它们设置为当前链路上下文。
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
 ```typescript
-// Receiving service
+// 接收端服务
 import {
   type Context,
   propagation,
@@ -287,19 +269,18 @@ import {
   context,
 } from '@opentelemetry/api';
 
-// Define an interface for the input object that includes 'traceparent' & 'tracestate'.
+// 定义一个接口，用于表示包含 'traceparent' 和 'tracestate' 键的输入对象。
 interface Carrier {
   traceparent?: string;
   tracestate?: string;
 }
 
-// Assume "input" is an object with 'traceparent' & 'tracestate' keys.
+// 假设 "input" 是一个包含 'traceparent' 和 'tracestate' 键的对象。
 const input: Carrier = {};
 
-// Extracts the 'traceparent' and 'tracestate' data into a context object.
+// 将 'traceparent' 和 'tracestate' 数据提取至一个上下文对象中。
 //
-// You can then treat this context as the active context for your
-// traces.
+// 随后你可将此上下文作为你的链路的活跃上下文使用。
 let activeContext: Context = propagation.extract(context.active(), input);
 
 let tracer = trace.getTracer('app-name');
@@ -312,23 +293,22 @@ let span: Span = tracer.startSpan(
   activeContext,
 );
 
-// Set the created span as active in the deserialized context.
+// 将创建的 Span 设为反序列化上下文的活跃 Span。
 trace.setSpan(activeContext, span);
 ```
 
 {{% /tab %}} {{% tab JavaScript %}}
 
 ```js
-// Receiving service
+// 接收端服务
 import { context, propagation, trace } from '@opentelemetry/api';
 
-// Assume "input" is an object with 'traceparent' & 'tracestate' keys
+// 假设 "input" 是一个包含 'traceparent' 和 'tracestate' 键的对象。
 const input = {};
 
-// Extracts the 'traceparent' and 'tracestate' data into a context object.
+// 将 'traceparent' 和 'tracestate' 数据提取至一个上下文对象中。
 //
-// You can then treat this context as the active context for your
-// traces.
+// 随后你可将此上下文作为你的链路的活跃上下文使用。
 let activeContext = propagation.extract(context.active(), input);
 
 let tracer = trace.getTracer('app-name');
@@ -341,34 +321,29 @@ let span = tracer.startSpan(
   activeContext,
 );
 
-// Set the created span as active in the deserialized context.
+// 将创建的 Span 设为反序列化上下文的活跃 Span。
 trace.setSpan(activeContext, span);
 ```
 
 {{% /tab %}} {{< /tabpane >}}
 
-From there, when you have a deserialized active context, you can create spans
-that will be a part of the same trace from the other service.
+从那里开始，当你有一个反序列化的活动上下文时，你可以创建属于来自另一个服务的同一个链路的 Span。
 
-You can also use the [Context](/docs/languages/js/context) API to modify or set
-the deserialized context in other ways.
+你也可以使用[上下文](/docs/languages/js/context) API 以其他方式修改或设置反序列化的上下文。
 
-### Custom protocol example
+### 自定义协议示例 {#custom-protocol-example}
 
-A common use case for when you need to propagate context manually is when you
-use a custom protocol between services for communication. The following example
-uses a basic text-based TCP protocol to send a serialized object from one
-service to another.
+当你需要手动传播上下文时，一个常见的用例是使用服务间通信的自定义协议。
+以下示例使用基本的基于文本的 TCP 协议将一个序列化对象从一个服务发送到另一个服务。
 
-Start with creating a new folder called `propagation-example` and initialize it
-with dependencies as follows:
+首先创建一个名为 `propagation-example` 的文件夹，并按如下方式初始化依赖项：
 
 ```shell
 npm init -y
 npm install @opentelemetry/api @opentelemetry/sdk-node
 ```
 
-Next create files `client.js` and `server.js` with the following content:
+接下来创建文件 `client.js` 和 `server.js`，内容如下：
 
 ```javascript
 // client.js
@@ -377,9 +352,9 @@ const { context, propagation, trace } = require('@opentelemetry/api');
 
 let tracer = trace.getTracer('client');
 
-// Connect to the server
+// 连接到服务器
 const client = net.createConnection({ port: 8124 }, () => {
-  // Send the serialized object to the server
+  // 将序列化对象发送至服务器
   let span = tracer.startActiveSpan('send', { kind: 1 }, (span) => {
     const output = {};
     propagation.inject(context.active(), output);
@@ -409,7 +384,7 @@ let tracer = trace.getTracer('server');
 const server = net.createServer((socket) => {
   socket.on('data', (data) => {
     const message = data.toString();
-    // Parse the JSON object received from the client
+    // 解析从客户端接收的 JSON 对象
     try {
       const json = JSON.parse(message);
       let activeContext = context.active();
@@ -428,46 +403,41 @@ const server = net.createServer((socket) => {
   });
 });
 
-// Listen on port 8124
+// 监听 8124 端口
 server.listen(8124, () => {
   console.log('Server listening on port 8124');
 });
 ```
 
-Start a first shell to run the server:
+启动第一个终端来运行服务器：
 
 ```console
 $ node server.js
 Server listening on port 8124
 ```
 
-Then in a second shell run the client:
+然后在第二个终端中运行客户端：
 
 ```shell
 node client.js
 ```
 
-The client should terminate immediately and the server should output the
-following:
+客户端应立即终止，服务器应输出以下内容：
 
 ```text
 Parsed JSON: { key: 'value' }
 ```
 
-Since the example so far only took dependency on the OpenTelemetry API all calls
-to it are [no-op instructions](<https://en.wikipedia.org/wiki/NOP_(code)>) and
-the client and server behave as if OpenTelemetry is not used.
+由于到目前为止，该示例仅依赖 OpenTelemetry API，因此所有对该 API 的调用均为[空操作指令](<https://en.wikipedia.org/wiki/NOP_(code)>)，客户端与服务端的运行行为也等同于未启用 OpenTelemetry 的状态。
 
 {{% alert title="Note" color="warning" %}}
 
-This is especially important if your server and client code are libraries, since
-they should only use the OpenTelemetry API. To understand why, read the
-[concept page on how to add instrumentation to your library](/docs/concepts/instrumentation/libraries/).
+这在你的服务器和客户端代码是库的情况下尤为重要，因为它们应该只使用 OpenTelemetry API。
+要了解原因，请阅读[关于如何为你的库添加插桩的概念页面](/docs/concepts/instrumentation/libraries/)。
 
 {{% /alert %}}
 
-To enable OpenTelemetry and see the context propagation in action, create an
-additional file called `instrumentation.js` with the following content:
+要启用 OpenTelemetry 并查看上下文传播的实际效果，请创建一个名为 `instrumentation.js` 的附加文件，内容如下：
 
 ```javascript
 // instrumentation.mjs
@@ -484,24 +454,22 @@ const sdk = new NodeSDK({
 sdk.start();
 ```
 
-Use this file to run both, the server and the client, with instrumentation
-enabled:
+使用此文件来运行服务器和客户端，并启用插桩：
 
 ```console
 $ node --import ./instrumentation.mjs server.js
 Server listening on port 8124
 ```
 
-and
+以及
 
 ```shell
 node --import ./instrumentation.mjs client.js
 ```
 
-After the client has sent data to the server and terminated you should see spans
-in the console output of both shells.
+在客户端向服务器发送数据并终止后，你应该在两个终端的控制台输出中看到 Span。
 
-The output for the client looks like the following:
+客户端的输出类似于以下内容：
 
 ```javascript {hl_lines=[7,11]}
 {
@@ -522,7 +490,7 @@ The output for the client looks like the following:
 }
 ```
 
-The output for the server looks like the following:
+服务器的输出类似于以下内容：
 
 ```javascript {hl_lines=[7,8]}
 {
@@ -543,10 +511,8 @@ The output for the server looks like the following:
 }
 ```
 
-Similar to the [manual example](#manual-context-propagation) the spans are
-connected using the `traceId` and the `id`/`parentId`.
+与[手动示例](#manual-context-propagation)类似，这些 Span 使用 `traceId` 和 `id`、`parentId` 连接。
 
-## Next steps
+## 下一步 {#next-steps}
 
-To learn more about propagation, read the
-[Propagators API specification](/docs/specs/otel/context/api-propagators/).
+要了解有关传播的更多信息，请阅读[传播器 API 规范](/docs/specs/otel/context/api-propagators/)。
