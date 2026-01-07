@@ -35,7 +35,7 @@ languages:
       notes:
         docker-compose-v2: |
           `docker-compose` は非推奨です. 詳細は、
-          [Migrate to Compose V2](https://docs.docker.com/compose/migrate/) を確認してください。
+          [Migrate to Compose V2](https://docs.docker.com/compose/) を確認してください。
   pt:
     languageName: Português
     languageCode: pt-BR
@@ -248,7 +248,7 @@ params:
     # top-level `languages.XX.params` entry for your locale XX.
     docker-compose-v2: |
       `docker-compose` is deprecated. For details, see
-      [Migrate to Compose V2](https://docs.docker.com/compose/migrate/).
+      [Migrate to Compose V2](https://docs.docker.com/compose/).
 
 security:
   funcs: # cspell:disable-line
