@@ -14,10 +14,10 @@ with that growth comes valuable insights hidden in our community conversations.
 We analyzed nearly 10,000 messages from the
 [`#otel-collector`](https://cloud-native.slack.com/archives/C01N6P7KR6W) and
 [`#opentelemetry`](https://cloud-native.slack.com/archives/CJFCJHG4Q) channels
-on [CNCF Slack](https://slack.cncf.io/) spanning from May 2019 to
-December 2025 to understand what challenges users face most often, which
-components generate the most discussion, and where the community might need
-additional documentation or tooling improvements.
+on [CNCF Slack](https://slack.cncf.io/) spanning from May 2019 to December 2025
+to understand what challenges users face most often, which components generate
+the most discussion, and where the community might need additional documentation
+or tooling improvements.
 
 ## The Dataset
 
