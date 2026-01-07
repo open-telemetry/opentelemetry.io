@@ -60,7 +60,7 @@
 .l-primary-buttons {
   @extend .l-buttons;
 
-  >ul>li>a {
+  > ul > li > a {
     @extend .btn-lg;
     @extend .btn-primary;
   }
