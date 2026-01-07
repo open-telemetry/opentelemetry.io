@@ -4,6 +4,8 @@ linkTitle: Build a custom Collector
 description: Assemble your own distribution of the OpenTelemetry Collector
 weight: 200
 aliases: [/docs/collector/custom-collector/]
+params:
+  providers-vers: v1.48.0
 # prettier-ignore
 cSpell:ignore: chipset darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
@@ -166,15 +168,21 @@ To configure `ocb`, follow these steps:
          version-from-registry collector-receiver-otlp %}}
 
    providers:
-     - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.48.0
      - gomod:
-         go.opentelemetry.io/collector/confmap/provider/fileprovider v1.48.0
+         go.opentelemetry.io/collector/confmap/provider/envprovider {{% param
+         providers-vers %}}
      - gomod:
-         go.opentelemetry.io/collector/confmap/provider/httpprovider v1.48.0
+         go.opentelemetry.io/collector/confmap/provider/fileprovider {{% param
+         providers-vers %}}
      - gomod:
-         go.opentelemetry.io/collector/confmap/provider/httpsprovider v1.48.0
+         go.opentelemetry.io/collector/confmap/provider/httpprovider {{% param
+         providers-vers %}}
      - gomod:
-         go.opentelemetry.io/collector/confmap/provider/yamlprovider v1.48.0
+         go.opentelemetry.io/collector/confmap/provider/httpsprovider {{% param
+         providers-vers %}}
+     - gomod:
+         go.opentelemetry.io/collector/confmap/provider/yamlprovider {{% param
+         providers-vers %}}
    ```
 
 {{% alert title="Tip" %}}
