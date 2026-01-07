@@ -252,16 +252,16 @@
     "LastSeen": "2026-01-07T09:51:48.456Z"
   },
   "https://blog.olly.garden/how-to-name-your-metrics": {
-    "StatusCode": 429,
-    "LastSeen": "2026-01-07T09:49:10.826199082Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-07T12:51:47.213Z"
   },
   "https://blog.olly.garden/how-to-name-your-span-attributes": {
-    "StatusCode": 429,
-    "LastSeen": "2026-01-07T09:49:06.811107613Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-07T12:51:54.76Z"
   },
   "https://blog.olly.garden/how-to-name-your-spans": {
-    "StatusCode": 429,
-    "LastSeen": "2026-01-07T09:49:11.524589192Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-07T12:52:02.406Z"
   },
   "https://blog.remirepo.net/pages/PECL-extensions-RPM-status": {
     "StatusCode": 200,
@@ -20608,8 +20608,8 @@
     "LastSeen": "2026-01-07T09:45:12.477332634Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-logs/latest/io/opentelemetry/sdk/logs/export/LogRecordExporter.html": {
-    "StatusCode": -10,
-    "LastSeen": "2026-01-07T09:45:31.283602487Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-07T12:52:08.699Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-metrics/latest/io/opentelemetry/sdk/metrics/SdkMeterProvider.html": {
     "StatusCode": 200,
