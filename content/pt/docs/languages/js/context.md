@@ -1,6 +1,7 @@
 ---
 title: Contexto
 default_lang_commit: 2c3d80cad4fa99a5fb46ef550170ea4579fa50ec
+drifted_from_default: true
 description: Documentação da API de Contexto do OpenTelemetry JavaScript
 aliases: [api/context]
 weight: 60

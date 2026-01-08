@@ -4,6 +4,7 @@ linkTitle: SIG 实践
 description: 了解审批者和维护者如何管理 Issue 和贡献内容。
 weight: 999
 default_lang_commit: 2f850a610b5f7da5730265b32c25c9226dc09e5f
+drifted_from_default: true
 cSpell:ignore: chalin Comms docsy
 ---
 

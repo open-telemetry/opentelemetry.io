@@ -4,6 +4,7 @@ description: 几分钟内完成设置并收集遥测数据！
 aliases: [getting-started]
 weight: 1
 default_lang_commit: ae313ca8475cc4694e900b61976e1a5228690912 # patched
+drifted_from_default: true
 cSpell:ignore: docker dokey gobin okey telemetrygen
 ---
 
