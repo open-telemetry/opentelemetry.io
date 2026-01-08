@@ -40,7 +40,9 @@ the following providers `scheme`:
   `env:MY_CONFIG_IN_AN_ENVVAR`.
 - **yaml** - Reads configuration from yaml bytes. E.g.
   `yaml:exporters::debug::verbosity: detailed`.
+<!-- prettier-ignore-start -->
 - **http** - Reads configuration from a HTTP URI. E.g. `http://www.example.com`
+<!-- prettier-ignore-end -->
 
 You can also provide multiple configurations using multiple files at different
 paths. Each file can be a full or partial configuration, and the files can
