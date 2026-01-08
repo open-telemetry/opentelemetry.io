@@ -2,6 +2,7 @@
 title: カスタムコレクターのビルド
 weight: 29
 default_lang_commit: 52ef6272047483d1d4913a7e5ce8532196c58b30 # patched
+drifted_from_default: file not found
 cSpell:ignore: darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
