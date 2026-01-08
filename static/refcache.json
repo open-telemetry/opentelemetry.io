@@ -18527,6 +18527,14 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-05T09:47:54.336610742Z"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SamplingParameters": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-08T10:40:49.518442633Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SamplingResult": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-08T10:40:51.764119987Z"
+  },
   "https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#TraceIDRatioBased": {
     "StatusCode": 200,
     "LastSeen": "2026-01-07T09:44:53.288498087Z"
