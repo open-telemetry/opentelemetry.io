@@ -2351,6 +2351,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-05T09:49:15.523607885Z"
   },
+  "https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ExecutorService.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-08T00:27:21.048637544Z"
+  },
   "https://docs.oracle.com/javase/8/docs/api/java/util/logging/package-summary.html": {
     "StatusCode": 200,
     "LastSeen": "2026-01-05T09:49:29.446527397Z"
@@ -8815,6 +8819,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-31T09:43:15.818990138Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/CONTRIBUTING.md#json-schema-source-and-output": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:27:03.332521095Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/CONTRIBUTING.md#project-tooling": {
     "StatusCode": 206,
     "LastSeen": "2025-12-23T09:48:47.757222339Z"
@@ -8835,6 +8843,14 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-30T09:43:00.708189189Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-config.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:48.632395765Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-migration-config.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:42.956564904Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-config.yaml": {
     "StatusCode": 206,
     "LastSeen": "2025-12-30T09:46:19.276667162Z"
@@ -8843,9 +8859,61 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-05T09:47:52.106418693Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#batchspanprocessor-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:27:04.323604773Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#experimentalresourcedetection-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:41.913689919Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#httptls-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:27:16.799185648Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#logrecordexporter-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:27:00.547452518Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#logrecordprocessor-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:27:01.154232606Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#metricproducer-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:57.847005344Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#opentelemetryconfiguration": {
     "StatusCode": 206,
     "LastSeen": "2025-12-23T09:48:51.928399671Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#pullmetricexporter-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:55.588576647Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#pushmetricexporter-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:56.166676112Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#sampler-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:53.252356436Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#spanexporter": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:27:07.746886794Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#spanexporter-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:48.168537238Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#spanprocessor-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:50.826830882Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#textmappropagator-": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:45.585123612Z"
   },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0-rc.3/opentelemetry_configuration.json": {
     "StatusCode": 206,
@@ -12455,6 +12523,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-24T09:45:18.164196269Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/configuration/supplementary-guidelines.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:46.874266546Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/context/README.md": {
     "StatusCode": 206,
     "LastSeen": "2025-12-24T09:45:17.862061974Z"
@@ -15474,6 +15546,10 @@
   "https://json-schema.org/": {
     "StatusCode": 200,
     "LastSeen": "2026-01-07T09:47:35.027729088Z"
+  },
+  "https://json-schema.org/understanding-json-schema/reference/annotations": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-08T00:27:13.032835186Z"
   },
   "https://jsonlines.org": {
     "StatusCode": 200,
@@ -20402,6 +20478,22 @@
   "https://www.jaegertracing.io/docs/1.57/operator/": {
     "StatusCode": 206,
     "LastSeen": "2025-12-30T09:48:51.295491565Z"
+  },
+  "https://www.jaegertracing.io/docs/1.76/architecture/#baggage": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:40.956069557Z"
+  },
+  "https://www.jaegertracing.io/docs/2.14/architecture/apis/#remote-sampling-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:44.855527744Z"
+  },
+  "https://www.jaegertracing.io/docs/2.14/architecture/sampling/#adaptive-sampling": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:46.975015222Z"
+  },
+  "https://www.jaegertracing.io/docs/2.14/architecture/sampling/#remote-sampling": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T00:26:40.954911997Z"
   },
   "https://www.jaegertracing.io/docs/getting-started/#all-in-one": {
     "StatusCode": 206,
