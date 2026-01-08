@@ -909,15 +909,8 @@ key:
   - c
 ```
 
-### Map values
-
-Maps can be expressed by enclosing values in `{}`. For example,
-`"--set "key={a: c}"` translates to:
-
-```yaml
-key:
-  a: c
-```
+If you need to represent more complex data structures, the use of YAML is
+highly recommended.
 
 {{% alert title="Important" color="warning" %}}
 
