@@ -120,7 +120,7 @@ OpenTelemetry Collector 是一个可执行文件，它能够接收[链路](/docs
 在本教程中，你已经启动了 OpenTelemetry Collector 并向其发送了遥测数据。下一步建议你执行以下操作：
 
 - 探索其他[安装 Collector 的方式](../installation/)。
-- 了解 Collector 的不同运行模式，参见[部署方式](../deployment/)。
+- 了解 Collector 的不同运行模式，参见[部署方式](/docs/collector/deploy/)。
 - 熟悉 Collector 的[配置文件](/docs/collector/configuration)和结构。
 - 浏览[组件注册表](/ecosystem/registry/?language=collector)，了解可用组件。
 - 学习如何使用 OpenTelemetry Collector Builder (OCB)
