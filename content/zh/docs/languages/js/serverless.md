@@ -10,7 +10,7 @@ cSpell:ignore: otelwrapper
 
 ## AWS Lambda {#aws-lambda}
 
-{{% alert title="Note" %}}
+{{% alert title="注意" %}}
 
 你也可以使用[社区提供的 Lambda 层](/docs/platforms/faas/lambda-auto-instrument/)自动为 AWS Lambda 函数添加插桩。
 
