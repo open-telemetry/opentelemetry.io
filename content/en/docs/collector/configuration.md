@@ -39,7 +39,7 @@ the following providers `scheme`:
 - **env** - Reads configuration from an environment variable. E.g.
   `env:MY_CONFIG_IN_AN_ENVVAR`.
 - **yaml** - Reads configuration from yaml bytes. E.g.
-  `yaml:exporters::debug::verbosity: detailed`.
+`yaml:exporters::debug::verbosity: detailed`.
 <!-- prettier-ignore-start -->
 - **http** - Reads configuration from a HTTP URI. E.g. `http://www.example.com`
 <!-- prettier-ignore-end -->
@@ -909,8 +909,8 @@ key:
   - c
 ```
 
-If you need to represent more complex data structures, the use of YAML is
-highly recommended.
+If you need to represent more complex data structures, the use of YAML is highly
+recommended.
 
 {{% alert title="Important" color="warning" %}}
 
@@ -977,7 +977,8 @@ extensions:
 
 {{% alert title="Important" color="warning" %}}
 
-This command is an experimental functionality. Its behavior may change with no warning.
+This command is an experimental functionality. Its behavior may change with no
+warning.
 
 {{% /alert %}}
 
@@ -1005,7 +1006,8 @@ otelcol print-config --mode=unredacted --config=file:examples/local/otel-config.
 
 {{% alert title="Important" color="warning" %}}
 
-This command is an experimental functionality. Its behavior may change with no warning.
+This command is an experimental functionality. Its behavior may change with no
+warning.
 
 {{% /alert %}}
 
