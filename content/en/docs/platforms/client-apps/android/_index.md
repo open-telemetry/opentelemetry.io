@@ -32,7 +32,7 @@ OpenTelemetry Android includes these key capabilities:
 ### Prerequisites
 
 - Android SDK 21 (Lollipop) or higher
-- Kotlin or Java project using Gradle
+- Gradle project using Kotlin (Java may be possible)
 
 ### Gradle setup
 
@@ -100,14 +100,14 @@ configuration options:
 
 ### Configuration options
 
-| Block                                     | Description                                          |
-| ----------------------------------------- | ---------------------------------------------------- |
-| `httpExport { baseUrl }`                  | OTLP endpoint URL for exporting telemetry            |
-| `httpExport { baseHeaders }`              | Custom headers to include with export requests       |
-| `globalAttributes`                        | Attributes added to all telemetry                    |
-| `session { backgroundInactivityTimeout }` | Inactivity timeout before starting a new session     |
-| `session { maxLifetime }`                 | Maximum session lifetime                             |
-| `instrumentations`                        | Configure individual auto-instrumentation modules    |
+| Block                                     | Description                                       |
+| ----------------------------------------- | ------------------------------------------------- |
+| `httpExport { baseUrl }`                  | OTLP endpoint URL for exporting telemetry         |
+| `httpExport { baseHeaders }`              | Custom headers to include with export requests    |
+| `globalAttributes`                        | Attributes added to all telemetry                 |
+| `session { backgroundInactivityTimeout }` | Inactivity timeout before starting a new session  |
+| `session { maxLifetime }`                 | Maximum session lifetime                          |
+| `instrumentations`                        | Configure individual auto-instrumentation modules |
 
 ## Automatic instrumentation
 
