@@ -31,6 +31,15 @@ example:
 otelcol --config=customconfig.yaml
 ```
 
+The `--config` flag accepts either a file path or values in the form of a
+config URI `"<scheme>:<opaque_data>"`.
+Currently, the OpenTelemetry Collector supports the following providers
+`scheme`:
+- **file** - Reads configuration from a file. E.g. `file:path/to/config.yaml`.
+- **env** - Reads configuration from an environment variable. E.g. `env:MY_CONFIG_IN_AN_ENVVAR`.
+- **yaml** - Reads configuration from yaml bytes. E.g. `yaml:exporters::debug::verbosity: detailed`.
+- **http** - Reads configuration from a HTTP URI. E.g. `http://www.example.com`
+
 You can also provide multiple configurations using multiple files at different
 paths. Each file can be a full or partial configuration, and the files can
 reference components from each other. If the merger of files does not constitute
@@ -855,14 +864,144 @@ define with this method are merged into the final configuration after all
 
 The following examples show how to override settings inside nested sections:
 
-```sh
-otelcol --set "exporters::debug::verbosity=detailed"
-otelcol --set "receivers::otlp::protocols::grpc={endpoint:localhost:4317, compression: gzip}"
+### Simple property
+
+The `--set` option takes always one key/value pair, and it is used like this:
+`--set key=value`. The YAML equivalent of that is:
+
+```yaml
+key: value
+```
+
+### Complex nested keys
+
+Use dot (`.`) in the pair's name as key separator to reference nested map
+values. For example, `--set outer.inner=value` is translated into this:
+
+```yaml
+outer:
+  inner: value
+```
+
+### Multiple values
+
+To set multiple values specify multiple --set flags, so `--set a=b --set c=d`
+becomes:
+
+```yaml
+a: b
+c: d
+```
+
+
+### Array values
+
+Arrays can be expressed by enclosing values in `[]`. For example, `--set
+"key=[a, b, c]"` translates to:
+
+```yaml
+key:
+  - a
+  - b
+  - c
+```
+
+### Map values
+
+Maps can be expressed by enclosing values in `{}`. For example, `"--set
+"key={a: c}"` translates to:
+
+```yaml
+key:
+  a: c
 ```
 
 {{% alert title="Important" color="warning" %}}
 
-The `--set` option doesn't support setting a key that contains a dot or an equal
-sign.
+The `--set` option has the following limitations:
+
+1. Does not support setting a key that contains a dot `.`.
+2. Does not support setting a key that contains a equal sign `=`.
+3. The configuration key separator inside the value part of the property is "::". For example `--set "name={a::b: c}"` is equivalent with `--set name.a.b=c`.
 
 {{% /alert %}}
+
+## Embedding other configuration providers
+
+One configuration provider can make references to other config providers, like
+the following:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+
+exporters: ${file:otlp-exporter.yaml}
+
+service:
+  extensions: [ ]
+  pipelines:
+    traces:
+      receivers:  [ otlp ]
+      processors: [  ]
+      exporters:  [ otlp ]
+```
+
+## How to check components available in a distribution
+
+Use the sub command build-info. Below is an example:
+
+```bash
+   otelcol components
+```
+Sample output:
+
+```yaml
+buildinfo:
+   command: otelcol
+   description: OpenTelemetry Collector
+   version: 0.143.0
+receivers:
+   - otlp
+processors:
+   - memory_limiter
+exporters:
+   - otlp
+   - otlphttp
+   - debug
+extensions:
+   - zpages
+```
+
+## How to examine the final configuration
+
+Use `print-config` in the default mode (`--mode=redacted`) and
+`--feature-gates=otelcol.printInitialConfig`:
+
+```bash
+  otelcol print-config --config=file:examples/local/otel-config.yaml
+```
+
+Note that by default the configuration will only print when it is
+valid, and that sensitive information will be redacted.  To print a
+potentially invalid configuration, use `--validate=false`.
+
+### How to view sensitive fields?
+
+Use `print-config` with `--mode=unredacted` and
+`--feature-gates=otelcol.printInitialConfig`:
+
+```bash
+  otelcol print-config --mode=unredacted --config=file:examples/local/otel-config.yaml
+```
+
+### How to print the final configuration in JSON format?
+
+Use `print-config` with `--format=json` and
+`--feature-gates=otelcol.printInitialConfig`. Note that JSON format is
+considered unstable.
+
+```bash
+  otelcol print-config --format=json --config=file:examples/local/otel-config.yaml
+```
