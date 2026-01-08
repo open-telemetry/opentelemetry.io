@@ -3,7 +3,7 @@ title: Configuration
 weight: 20
 description: Learn how to configure the Collector to suit your needs
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
+cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages unredacted
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -31,13 +31,15 @@ example:
 otelcol --config=customconfig.yaml
 ```
 
-The `--config` flag accepts either a file path or values in the form of a
-config URI `"<scheme>:<opaque_data>"`.
-Currently, the OpenTelemetry Collector supports the following providers
-`scheme`:
+The `--config` flag accepts either a file path or values in the form of a config
+URI `"<scheme>:<opaque_data>"`. Currently, the OpenTelemetry Collector supports
+the following providers `scheme`:
+
 - **file** - Reads configuration from a file. E.g. `file:path/to/config.yaml`.
-- **env** - Reads configuration from an environment variable. E.g. `env:MY_CONFIG_IN_AN_ENVVAR`.
-- **yaml** - Reads configuration from yaml bytes. E.g. `yaml:exporters::debug::verbosity: detailed`.
+- **env** - Reads configuration from an environment variable. E.g.
+  `env:MY_CONFIG_IN_AN_ENVVAR`.
+- **yaml** - Reads configuration from yaml bytes. E.g.
+  `yaml:exporters::debug::verbosity: detailed`.
 - **http** - Reads configuration from a HTTP URI. E.g. `http://www.example.com`
 
 You can also provide multiple configurations using multiple files at different
@@ -893,11 +895,10 @@ a: b
 c: d
 ```
 
-
 ### Array values
 
-Arrays can be expressed by enclosing values in `[]`. For example, `--set
-"key=[a, b, c]"` translates to:
+Arrays can be expressed by enclosing values in `[]`. For example,
+`--set "key=[a, b, c]"` translates to:
 
 ```yaml
 key:
@@ -908,8 +909,8 @@ key:
 
 ### Map values
 
-Maps can be expressed by enclosing values in `{}`. For example, `"--set
-"key={a: c}"` translates to:
+Maps can be expressed by enclosing values in `{}`. For example,
+`"--set "key={a: c}"` translates to:
 
 ```yaml
 key:
@@ -922,7 +923,9 @@ The `--set` option has the following limitations:
 
 1. Does not support setting a key that contains a dot `.`.
 2. Does not support setting a key that contains a equal sign `=`.
-3. The configuration key separator inside the value part of the property is "::". For example `--set "name={a::b: c}"` is equivalent with `--set name.a.b=c`.
+3. The configuration key separator inside the value part of the property is
+   "::". For example `--set "name={a::b: c}"` is equivalent with
+   `--set name.a.b=c`.
 
 {{% /alert %}}
 
@@ -940,12 +943,12 @@ receivers:
 exporters: ${file:otlp-exporter.yaml}
 
 service:
-  extensions: [ ]
+  extensions: []
   pipelines:
     traces:
-      receivers:  [ otlp ]
-      processors: [  ]
-      exporters:  [ otlp ]
+      receivers: [otlp]
+      processors: []
+      exporters: [otlp]
 ```
 
 ## How to check components available in a distribution
@@ -955,23 +958,24 @@ Use the sub command build-info. Below is an example:
 ```bash
    otelcol components
 ```
+
 Sample output:
 
 ```yaml
 buildinfo:
-   command: otelcol
-   description: OpenTelemetry Collector
-   version: 0.143.0
+  command: otelcol
+  description: OpenTelemetry Collector
+  version: 0.143.0
 receivers:
-   - otlp
+  - otlp
 processors:
-   - memory_limiter
+  - memory_limiter
 exporters:
-   - otlp
-   - otlphttp
-   - debug
+  - otlp
+  - otlphttp
+  - debug
 extensions:
-   - zpages
+  - zpages
 ```
 
 ## How to examine the final configuration
@@ -983,9 +987,9 @@ Use `print-config` in the default mode (`--mode=redacted`) and
   otelcol print-config --config=file:examples/local/otel-config.yaml
 ```
 
-Note that by default the configuration will only print when it is
-valid, and that sensitive information will be redacted.  To print a
-potentially invalid configuration, use `--validate=false`.
+Note that by default the configuration will only print when it is valid, and
+that sensitive information will be redacted. To print a potentially invalid
+configuration, use `--validate=false`.
 
 ### How to view sensitive fields?
 
