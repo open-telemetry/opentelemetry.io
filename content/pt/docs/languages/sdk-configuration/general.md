@@ -4,6 +4,7 @@ linkTitle: Geral
 weight: 10
 aliases: [general-sdk-configuration]
 default_lang_commit: a5691930635b4e2033946f3a85ae7a527c3eba06 # patched
+drifted_from_default: true
 cSpell:ignore: ottrace
 ---
 
