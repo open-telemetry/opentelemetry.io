@@ -975,6 +975,12 @@ extensions:
 
 ## How to examine the final configuration
 
+{{% alert title="Important" color="warning" %}}
+
+This command is an experimental functionality. Its behavior may change with no warning.
+
+{{% /alert %}}
+
 Use `print-config` in the default mode (`--mode=redacted`) and
 `--feature-gates=otelcol.printInitialConfig`:
 
@@ -996,6 +1002,12 @@ otelcol print-config --mode=unredacted --config=file:examples/local/otel-config.
 ```
 
 ### How to print the final configuration in JSON format?
+
+{{% alert title="Important" color="warning" %}}
+
+This command is an experimental functionality. Its behavior may change with no warning.
+
+{{% /alert %}}
 
 Use `print-config` with `--format=json` and
 `--feature-gates=otelcol.printInitialConfig`. Note that JSON format is
