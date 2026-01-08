@@ -3,6 +3,7 @@ title: コレクターの設定のベストプラクティス
 linkTitle: コレクターの設定
 weight: 112
 default_lang_commit: 179f03bf118e1e8a3cc195ab56fc09d85c476394 # patched
+drifted_from_default: true
 cSpell:ignore: exporterhelper
 ---
 
