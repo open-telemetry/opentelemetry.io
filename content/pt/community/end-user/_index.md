@@ -8,6 +8,7 @@ redirects:
   - { from: feedback-survey, to: '#survey' }
 weight: 40
 default_lang_commit: 520b0c4f1109a2b790b2a9ec347c84cc128a2cec
+drifted_from_default: true
 cSpell:ignore: joinha
 ---
 

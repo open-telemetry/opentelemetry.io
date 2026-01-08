@@ -3,6 +3,7 @@ title: Usando bibliotecas de instrumentação
 linkTitle: Bibliotecas
 weight: 40
 default_lang_commit: 115933c1b9c643c8b6cf0d413a32061cd3a1b65f
+drifted_from_default: true
 description: Como instrumentar bibliotecas das quais uma aplicação depende
 cSpell:ignore: metapackages metapacotes
 ---
