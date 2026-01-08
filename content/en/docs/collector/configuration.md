@@ -880,7 +880,7 @@ key: value
 ### Complex nested keys
 
 Use dot (`.`) in the pair's name as key separator to reference nested map
-values. For example, `--set outer.inner=value` is translated into this:
+values. For example, `--set outer::inner=value` is translated into this:
 
 ```yaml
 outer:
@@ -920,7 +920,7 @@ The `--set` option has the following limitations:
 2. Does not support setting a key that contains a equal sign `=`.
 3. The configuration key separator inside the value part of the property is
    "::". For example `--set "name={a::b: c}"` is equivalent with
-   `--set name.a.b=c`.
+   `--set name::a::b=c`.
 
 {{% /alert %}}
 
