@@ -68,17 +68,8 @@ content every day. At year-end, the Japanese localization was in the lead with
 - Spanish — 13% (79 files)
 - French — 9% (57 files)
 - Bengali — 3% (17 files)
-- Ukrainian — 1% (7 files)[^1]
+- Ukrainian — 1% (7 files)
 - Romanian — 1% (4 files)
-
-[^1]:
-    An unofficial Ukrainian translation (not verified or approved by
-    OpenTelemetry) is available on a
-    [community member's website](https://andygol-otel.netlify.app/uk/), created
-    based on
-    [PR 5891](https://github.com/open-telemetry/opentelemetry.io/pull/5891). We
-    are providing this link as a temporary measure to support Ukrainian readers
-    and potential contributors until an official translation is ready.
 
 ### Most active localization contributors
 
