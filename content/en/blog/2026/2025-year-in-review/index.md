@@ -71,6 +71,15 @@ content every day. At year-end, the Japanese localization was in the lead with
 - Ukrainian — 1% (7 files)[^1]
 - Romanian — 1% (4 files)
 
+[^1]:
+    An unofficial Ukrainian translation (not verified or approved by
+    OpenTelemetry) is available on a
+    [community member's website](https://andygol-otel.netlify.app/uk/), created
+    based on
+    [PR 5891](https://github.com/open-telemetry/opentelemetry.io/pull/5891). We
+    are providing this link as a temporary measure to support Ukrainian readers
+    and potential contributors until an official translation is ready.
+
 ### Most active localization contributors
 
 A few contributors played a major role in sustaining and expanding localized
@@ -178,15 +187,6 @@ Looking at the most visited documentation pages, a few sections stand out:
 [Languages]: /docs/languages/
 [Getting Started]: /docs/getting-started/
 [Demo]: /docs/demo/
-
-[^1]:
-    An unofficial Ukrainian translation (not verified or approved by
-    OpenTelemetry) is available on a
-    [community member's website](https://andygol-otel.netlify.app/uk/), created
-    based on
-    [PR 5891](https://github.com/open-telemetry/opentelemetry.io/pull/5891). We
-    are providing this link as a temporary measure to support Ukrainian readers
-    and potential contributors until an official translation is ready.
 
 [^2]: Percentage of the site-total 13M views.
 
