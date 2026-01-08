@@ -193,10 +193,10 @@ Looking at the most visited documentation pages, a few sections stand out:
 ## Looking ahead
 
 This year is shaping up to be another exciting year for the OpenTelemetry
-project! As part of our preparation for graduation from Cloud Native Computing
-Foundation (CNCF) incubation, the Communications SIG will be making some
-important documentation improvements, including a [redesign] of the homepage and
-a complete [refactoring] of the Collector docs.
+project! As part of our preparation for the project's graduation from Cloud
+Native Computing Foundation (CNCF) incubation, the Communications SIG will be
+making some important website improvements, including a [redesign] of the
+homepage and a complete [refactoring] of the Collector docs.
 
 Whether you're an end user, a contributor, or simply enthusiastic about
 OpenTelemetry, we invite you to get involved. You can [contribute] by raising
