@@ -85,11 +85,11 @@ content every day. At year-end, the Japanese localization was in the lead with
 A few contributors played a major role in sustaining and expanding localized
 documentation:
 
-- Masaki Sugimoto (@Msksgm) — 127 commits (Japanese)
-- Vitor Vasconcellos (@vitorvasc) — 74 commits (Portuguese + cross-locale
+- Masaki Sugimoto ([@Msksgm](https://github.com/Msksgm)) — 127 commits (Japanese)
+- Vitor Vasconcellos ([@vitorvasc](https://github.com/vitorvasc)) — 74 commits (Portuguese + cross-locale
   workflow improvements)
-- Michael Yao (@windsonsea) — 49 commits (Chinese)
-- Patrice Chalin (@chalin) — cross-locale maintenance, validation, and
+- Michael Yao ([@windsonsea](https://github.com/windsonsea)) — 49 commits (Chinese)
+- Patrice Chalin ([@chalin](https://github.com/chalin)) — cross-locale maintenance, validation, and
   infrastructure
 
 ## Ecosystem Explorer: Unlocking the power of our metadata
@@ -113,7 +113,7 @@ A proof-of-concept, the [Instrumentation Explorer], already shows what this can
 look like for the Java agent: you can inspect instrumentations, see emitted
 telemetry, and compare behavior across versions and configurations.
 
-Special kudos to [Jay DeLuca] for driving this effort and for the original Java
+Special kudos to [Jay DeLuca (@jaydeluca)][Jay DeLuca] for driving this effort and for the original Java
 Instrumentation Explorer prototype that inspired the broader project.
 
 [Ecosystem Explorer]: https://github.com/open-telemetry/community/pull/3000
