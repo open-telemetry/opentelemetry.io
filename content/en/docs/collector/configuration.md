@@ -3,7 +3,7 @@ title: Configuration
 weight: 20
 description: Learn how to configure the Collector to suit your needs
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages unredacted
+cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -956,7 +956,7 @@ service:
 Use the sub command build-info. Below is an example:
 
 ```bash
-   otelcol components
+otelcol components
 ```
 
 Sample output:
@@ -984,7 +984,7 @@ Use `print-config` in the default mode (`--mode=redacted`) and
 `--feature-gates=otelcol.printInitialConfig`:
 
 ```bash
-  otelcol print-config --config=file:examples/local/otel-config.yaml
+otelcol print-config --config=file:examples/local/otel-config.yaml
 ```
 
 Note that by default the configuration will only print when it is valid, and
@@ -997,7 +997,7 @@ Use `print-config` with `--mode=unredacted` and
 `--feature-gates=otelcol.printInitialConfig`:
 
 ```bash
-  otelcol print-config --mode=unredacted --config=file:examples/local/otel-config.yaml
+otelcol print-config --mode=unredacted --config=file:examples/local/otel-config.yaml
 ```
 
 ### How to print the final configuration in JSON format?
@@ -1007,5 +1007,5 @@ Use `print-config` with `--format=json` and
 considered unstable.
 
 ```bash
-  otelcol print-config --format=json --config=file:examples/local/otel-config.yaml
+otelcol print-config --format=json --config=file:examples/local/otel-config.yaml
 ```
