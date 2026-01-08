@@ -57,15 +57,6 @@ dependencies {
 Initialize OpenTelemetry in your `Application` class's `onCreate()` method:
 
 ```kotlin
-import android.app.Application
-import android.content.Context
-import io.opentelemetry.android.OpenTelemetryRum
-import io.opentelemetry.android.agent.OpenTelemetryRumInitializer
-import io.opentelemetry.api.common.Attributes
-import io.opentelemetry.api.common.AttributeKey.stringKey
-import kotlin.time.Duration.Companion.minutes
-import kotlin.time.Duration.Companion.days
-
 class MyApplication : Application() {
     lateinit var openTelemetryRum: OpenTelemetryRum
 
@@ -84,8 +75,9 @@ private fun initializeOpenTelemetry(context: Context): OpenTelemetryRum =
                 baseHeaders = mapOf("Authorization" to "Bearer <token>")
             }
             instrumentations {
-                activity { enabled(true) }
-                fragment { enabled(true) }
+                // All instrumentations are enabled by default.
+                // Disable specific ones as needed:
+                slowRendering { enabled(false) }
             }
             session {
                 backgroundInactivityTimeout = 15.minutes
@@ -93,54 +85,18 @@ private fun initializeOpenTelemetry(context: Context): OpenTelemetryRum =
             }
             globalAttributes {
                 Attributes.of(
-                    stringKey("service.version"), BuildConfig.VERSION_NAME
+                    stringKey("app.build_type"), BuildConfig.BUILD_TYPE
                 )
             }
         }
     )
 ```
 
-Don't forget to register your custom `Application` class in
-`AndroidManifest.xml`:
-
-```xml
-<application
-    android:name=".MyApplication"
-    ... >
-</application>
-```
-
 ## Configuration
 
-OpenTelemetry Android uses a Kotlin DSL for configuration within the
-`OpenTelemetryRumInitializer.initialize()` call:
-
-```kotlin
-OpenTelemetryRumInitializer.initialize(
-    context = context,
-    configuration = {
-        httpExport {
-            baseUrl = "https://your-collector-endpoint:4318"
-            baseHeaders = mapOf("Authorization" to "Bearer <token>")
-        }
-        instrumentations {
-            activity { enabled(true) }
-            fragment { enabled(true) }
-            anr { enabled(true) }
-            crash { enabled(true) }
-            networkChange { enabled(true) }
-            slowRendering { enabled(true) }
-        }
-        session {
-            backgroundInactivityTimeout = 15.minutes
-            maxLifetime = 4.days
-        }
-        globalAttributes {
-            Attributes.of(stringKey("deployment.environment.name"), "production")
-        }
-    }
-)
-```
+OpenTelemetry Android uses a Kotlin DSL for configuration, as shown in the
+initialization example above. The following table describes the available
+configuration options:
 
 ### Configuration options
 
@@ -151,42 +107,50 @@ OpenTelemetryRumInitializer.initialize(
 | `globalAttributes`                        | Attributes added to all telemetry                    |
 | `session { backgroundInactivityTimeout }` | Inactivity timeout before starting a new session     |
 | `session { maxLifetime }`                 | Maximum session lifetime                             |
-| `instrumentations`                        | Enable/disable specific auto-instrumentation modules |
+| `instrumentations`                        | Configure individual auto-instrumentation modules    |
 
 ## Automatic instrumentation
 
 OpenTelemetry Android provides automatic instrumentation modules that you can
-enable or disable:
+enable or disable. For detailed information about each instrumentation,
+including emitted telemetry and configuration options, see the linked
+documentation.
 
 ### Activity lifecycle
 
 Automatically captures spans for Activity lifecycle events (`onCreate`,
-`onStart`, `onResume`, `onPause`, `onStop`, `onDestroy`).
+`onStart`, `onResume`, `onPause`, `onStop`, `onDestroy`). See
+[Activity instrumentation](https://github.com/open-telemetry/opentelemetry-android/blob/main/instrumentation/activity/README.md).
 
 ### Fragment lifecycle
 
 Captures spans for Fragment lifecycle events, useful for tracking navigation
-within single-activity architectures.
+within single-activity architectures. See
+[Fragment instrumentation](https://github.com/open-telemetry/opentelemetry-android/blob/main/instrumentation/fragment/README.md).
 
 ### ANR detection
 
 Detects Application Not Responding (ANR) conditions and reports them as spans,
-helping identify UI thread blocking issues.
+helping identify UI thread blocking issues. See
+[ANR instrumentation](https://github.com/open-telemetry/opentelemetry-android/blob/main/instrumentation/anr/README.md).
 
 ### Crash reporting
 
 Captures unhandled exceptions and reports them with stack traces, allowing you
-to correlate crashes with user sessions and traces.
+to correlate crashes with user sessions and traces. See
+[Crash instrumentation](https://github.com/open-telemetry/opentelemetry-android/blob/main/instrumentation/crash/README.md).
 
 ### Network monitoring
 
 Detects network state changes and adds connectivity information to telemetry,
-helping you understand the network conditions during errors.
+helping you understand the network conditions during errors. See
+[Network instrumentation](https://github.com/open-telemetry/opentelemetry-android/blob/main/instrumentation/network/README.md).
 
 ### Slow and frozen frames
 
 Monitors frame rendering performance and reports slow renders (>16ms) and frozen
-frames (>700ms) to help identify UI jank.
+frames (>700ms) to help identify UI jank. See
+[Slow rendering instrumentation](https://github.com/open-telemetry/opentelemetry-android/blob/main/instrumentation/slowrendering/README.md).
 
 ## Manual instrumentation
 
@@ -224,12 +188,12 @@ val okHttpClient = OkHttpTelemetry.builder(openTelemetryRum.openTelemetry)
 
 Mobile devices have limited resources. Consider these best practices:
 
-- **Batch exports**: Use batch processing to reduce network calls and battery
-  consumption.
+- **Batch exports**: Batch processing is enabled by default to reduce network
+  calls and battery consumption.
 - **Sampling**: Implement sampling strategies to reduce data volume while
   maintaining representative telemetry.
-- **Offline buffering**: Enable disk persistence to handle intermittent
-  connectivity.
+- **Offline buffering**: Disk persistence is enabled by default to handle
+  intermittent connectivity.
 
 ### Privacy considerations
 
