@@ -2,7 +2,7 @@
 title: ゲートウェイ
 description: シグナルを単一のOTLPエンドポイントに送信し、そこからバックエンドに送信する理由と方法
 weight: 3
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f
+default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f # patched
 drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
@@ -186,7 +186,7 @@ service:
 - エージェントデプロイメントパターンで実行されるコレクター（各ホストで実行され、Kubernetesデーモンセットのように）を使用して、ホスト上で実行されるサービスからのテレメトリーとホストのテレメトリー（ホストメトリクスやスクラップログなど）を収集します。
 - ゲートウェイデプロイメントパターンで実行されるコレクターを使用して、データの処理（たとえばフィルタリング、サンプリング、バックエンドへのエクスポートなど）を行います。
 
-![ゲートウェイ](otel-gateway-arch.svg)
+![ゲートウェイ](/docs/collector/deploy/gateway/otel-gateway-arch.svg)
 
 この組み合わせたデプロイメントパターンは、コレクター内でホストごとにユニークである必要があるコンポーネントや、アプリケーションが実行されている同じホストにしか利用できない情報を消費するコンポーネントを使用する場合に必要です。
 

@@ -1,9 +1,12 @@
 ---
-title: Gateway
+title: Gateway deployment pattern
+linkTitle: Gateway pattern
 description:
   Learn why and how to send signals first to a single OTLP endpoint and then to
   backends
-weight: 3
+aliases:
+  - /docs/collector/deployment/gateway/
+weight: 300
 # prettier-ignore
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---
@@ -207,7 +210,7 @@ and performance of the Collector serving the OTLP endpoint.
 ## Combined deployment of Collectors as agents and gateways
 
 Often, a deployment of multiple OpenTelemetry Collectors runs both Collectors as
-gateways and as [agents](/docs/collector/deployment/agent/).
+gateways and as [agents](/docs/collector/deploy/agent/).
 
 The following diagram shows an architecture for such a combined deployment:
 
