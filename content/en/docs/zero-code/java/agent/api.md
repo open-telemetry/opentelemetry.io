@@ -42,8 +42,8 @@ dependencies {
 ## OpenTelemetry
 
 The Java agent is a special case where `GlobalOpenTelemetry` is set by the
-agent. Simply call `GlobalOpenTelemetry.get()` to access the `OpenTelemetry`
-instance.
+agent. Simply call `GlobalOpenTelemetry.getOrNoop()` to access the
+`OpenTelemetry` instance.
 
 ## Span
 

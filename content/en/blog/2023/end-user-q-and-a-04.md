@@ -427,7 +427,7 @@ That's why OTel now has a really good Prometheus exporter, so it can do both."
 
 ### The centralized OTel Collector gateway
 
-There is a [centralized gateway](/docs/collector/deployment/gateway/) in-flight,
+There is a [centralized gateway](/docs/collector/deploy/gateway/) in-flight,
 which is part of the Collector chain Jacob mentioned earlier. The effort is
 centered around [Arrow](https://arrow.apache.org/). Lightstep has done some work
 around improving "the processing speed and ingress costs of OTel data by using

@@ -2,6 +2,7 @@
 title: 常见漏洞与暴露（CVE）
 weight: 100
 default_lang_commit: f35b3300574b428f94dfeeca970d93c5a6ddbf35
+drifted_from_default: true
 ---
 
 以下是 [OpenTelemetry GitHub 组织](https://github.com/open-telemetry/)中所有代码仓库已报告的

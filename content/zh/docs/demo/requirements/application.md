@@ -3,6 +3,7 @@ title: 应用要求
 linkTitle: 应用
 aliases: [application_requirements]
 default_lang_commit: beee9035dba8128dc3b970aa73e8b2a8d17d16dc
+drifted_from_default: true
 ---
 
 在定义应用将产生哪些 OpenTelemetry (OTel) 信号，以及何时应添加对未来 SDK 的支持时，会产生以下要求：

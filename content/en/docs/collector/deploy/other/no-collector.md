@@ -1,15 +1,16 @@
 ---
 title: No Collector
-description:
-  Why and how to send signals directly from an application to backends
-weight: 1
+description: Send signals directly from an application to backends
+aliases:
+  - /docs/collector/deployment/no-collector/
+weight: 200
 ---
 
 The most direct deployment pattern doesn't use a Collector at all. In this
 approach, applications [instrumented][instrumentation] with an OpenTelemetry SDK
 export telemetry signals (traces, metrics, and logs) straight to a backend:
 
-![No collector deployment concept](../../img/otel-sdk.svg)
+![No collector deployment concept](../../../img/otel-sdk.svg)
 
 ## Example
 

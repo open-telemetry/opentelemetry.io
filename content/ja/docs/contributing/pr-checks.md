@@ -3,6 +3,7 @@ title: プルリクエストのチェック
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
 default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+drifted_from_default: true
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。

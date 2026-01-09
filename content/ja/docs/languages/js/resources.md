@@ -3,6 +3,7 @@ title: リソース
 weight: 70
 description: アプリケーションの環境に関する詳細情報をテレメトリに追加する
 default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+drifted_from_default: true
 cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 ---
 

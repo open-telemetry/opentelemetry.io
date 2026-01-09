@@ -5,7 +5,7 @@ title:
 linkTitle: New Contributor Research Study
 date: 2025-12-05
 author: >-
-  [Amy Super](https://github.com/amy-super)(Grafana Labs)
+  [Amy Super](https://github.com/amy-super) (Grafana Labs)
 issue: 7966
 sig: Contributor Experience
 ---

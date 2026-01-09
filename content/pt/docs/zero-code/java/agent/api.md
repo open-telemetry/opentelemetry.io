@@ -6,6 +6,7 @@ description:
   telemetria gerada automaticamente com spans e métricas personalizadas.
 weight: 21
 default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
+drifted_from_default: true
 ---
 
 ## Introdução {#introduction}

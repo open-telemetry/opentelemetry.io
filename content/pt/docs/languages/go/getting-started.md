@@ -1,7 +1,8 @@
 ---
 title: Primeiros Passos
 weight: 10
-default_lang_commit: ef76badf5b7cfc8bcb33cea4199bb2e8ca637eed
+default_lang_commit: ef76badf5b7cfc8bcb33cea4199bb2e8ca637eed # patched
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
@@ -351,17 +352,9 @@ func run() error {
 func newHTTPHandler() http.Handler {
 	mux := http.NewServeMux()
 
-	// handleFunc é uma substituição para mux.HandleFunc
-	// enriquecendo ainda mais a instrumentação HTTP utilizando padrões como http.route.
-	handleFunc := func(pattern string, handlerFunc func(http.ResponseWriter, *http.Request)) {
-		// Configura o "http.route" para a instrumentação HTTP.
-		handler := otelhttp.WithRouteTag(pattern, http.HandlerFunc(handlerFunc))
-		mux.Handle(pattern, handler)
-	}
-
 	// Registra os handlers.
-	handleFunc("/rolldice/", rolldice)
-	handleFunc("/rolldice/{player}", rolldice)
+	mux.Handle("/rolldice/", rolldice)
+	mux.Handle("/rolldice/{player}", rolldice)
 
 	// Adiciona a instrumentação HTTP para todo o servidor.
 	handler := otelhttp.NewHandler(mux, "/")

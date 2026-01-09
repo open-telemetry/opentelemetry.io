@@ -3,6 +3,7 @@ title: Logs
 description: La grabación de un evento.
 weight: 3
 default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: efgh filelogreceiver ijkl KHTML mnop parsea parsean parsear parsearlos preprocesar preprocesarlos semiestructurado semiestructurados semistructured transformprocessor
 ---

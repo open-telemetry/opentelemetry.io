@@ -3,6 +3,7 @@ title: コネクター
 description: OpenTelemetry Collectorで利用可能なコネクターの一覧
 weight: 340
 default_lang_commit: 1c2b0563e8e66ef0952c442e3662e4bec18a8762
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: countconnector datadogconnector exceptionsconnector failoverconnector forwardconnector grafanacloudconnector otlpjsonconnector roundrobinconnector routingconnector servicegraphconnector signaltometricsconnector slowsqlconnector spanmetricsconnector sumconnector
 ---

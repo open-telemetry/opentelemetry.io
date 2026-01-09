@@ -14,5 +14,5 @@ createdAt: 2020-11-09
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-pg'
-  version: 0.61.1
+  version: 0.61.2
 isFirstParty: false

@@ -3,6 +3,7 @@ title: ログ
 description: イベントの記録
 weight: 3
 default_lang_commit: e851eb6903ed768e9cf3f427df74a5ccd7739114
+drifted_from_default: true
 cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
 

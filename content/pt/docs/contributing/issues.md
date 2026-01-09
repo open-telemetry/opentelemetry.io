@@ -7,6 +7,7 @@ weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
 _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
 default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829
+drifted_from_default: true
 ---
 
 <style>

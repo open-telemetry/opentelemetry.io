@@ -227,9 +227,7 @@ service. Please make sure that you provide a `SERVICE_NAME` and that you set the
 /* otelwrapper.js */
 
 const { resourceFromAttributes } = require('@opentelemetry/resources');
-const {
-  SEMRESATTRS_SERVICE_NAME,
-} = require('@opentelemetry/semantic-conventions');
+const { ATTR_SERVICE_NAME } = require('@opentelemetry/semantic-conventions');
 const api = require('@opentelemetry/api');
 const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
 const {
@@ -249,7 +247,7 @@ const collectorOptions = {
 
 const provider = new NodeTracerProvider({
   resource: resourceFromAttributes({
-    [SEMRESATTRS_SERVICE_NAME]: '<your function name>',
+    [ATTR_SERVICE_NAME]: '<your function name>',
   }),
   spanProcessors: [
     new BatchSpanProcessor(new OTLPTraceExporter(collectorOptions)),

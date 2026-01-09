@@ -2,6 +2,7 @@
 title: 采样
 weight: 80
 default_lang_commit: 859e80c74d61d694104f565aecde325ab4aa713f
+drifted_from_default: true
 ---
 
 [采样（Sampling）](/docs/concepts/sampling/) 是一种限制系统生成的 span 数量的机制，你应根据自身的需求选择合适的采样器（Sampler），但是一般建议在一个链路（trace）开始时就做出采样决策，并将该决策传递到其他服务中。
