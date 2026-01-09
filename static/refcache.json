@@ -12584,8 +12584,8 @@
     "LastSeen": "2026-01-09T09:47:51.843331174Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/metrics/supplementary-guidelines.md": {
-    "StatusCode": 503,
-    "LastSeen": "2026-01-09T09:47:49.649826986Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-09T10:07:35.343Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/overview.md": {
     "StatusCode": 206,
@@ -12716,8 +12716,8 @@
     "LastSeen": "2026-01-09T09:47:53.541679587Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/specification/versioning-and-stability.md": {
-    "StatusCode": 503,
-    "LastSeen": "2026-01-09T09:47:49.689839461Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-09T10:07:40.351Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.52.0/oteps/0035-opentelemetry-protocol.md": {
     "StatusCode": 206,
