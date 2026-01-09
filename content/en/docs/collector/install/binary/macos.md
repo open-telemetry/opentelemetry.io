@@ -24,7 +24,7 @@ tar -xvf otelcol_{{% param vers %}}_darwin_arm64.tar.gz
 
 {{% /tab %}} {{< /tabpane >}}
 
-Every Collector release includes an `otelcol` executable that you can unpack and
+Every Collector release includes an executable that you can unpack and
 run.
 
 [releases]:
