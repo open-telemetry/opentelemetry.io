@@ -7,12 +7,12 @@ cSpell:ignore: ansible associated Ishan ishanjainn Jain
 ---
 
 You can scale the deployment of
-[OpenTelemetry Collector](/docs/collector/deployment/) across multiple Linux
-hosts through [Ansible](https://www.ansible.com/), to function both as
-[gateways](/docs/collector/deployment/gateway/) and
-[agents](/docs/collector/deployment/agent/) within your observability
-architecture. Using the OpenTelemetry Collector in this dual capacity enables a
-robust collection and forwarding of metrics, traces, and logs to analysis and
+[OpenTelemetry Collector](/docs/collector/deploy/) across multiple Linux hosts
+through [Ansible](https://www.ansible.com/), to function both as
+[gateways](/docs/collector/deploy/gateway/) and
+[agents](/docs/collector/deploy/agent/) within your observability architecture.
+Using the OpenTelemetry Collector in this dual capacity enables a robust
+collection and forwarding of metrics, traces, and logs to analysis and
 visualization platforms.
 
 We outline a strategy for deploying and managing the OpenTelemetry Collector's
@@ -89,7 +89,7 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your
   tasks:
     - name: Install OpenTelemetry Collector
       ansible.builtin.include_role:
-        name: opentelemetry_collector
+        name: grafana.grafana.opentelemetry_collector
       vars:
         otel_collector_receivers:
           hostmetrics:

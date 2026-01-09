@@ -4,6 +4,7 @@ linkTitle: ライブラリ
 weight: 40
 description: アプリが依存するライブラリをインストルメントする方法
 default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+drifted_from_default: true
 ---
 
 {{% docs/languages/libraries-intro "js" %}}
@@ -262,6 +263,6 @@ const expressInstrumentation = new ExpressInstrumentation({
 ## 計装ライブラリの作成 {#create-an-instrumentation-library}
 
 アプリケーションのための最初から最後までのオブザーバビリティを持つことが望ましい方法ですが、これが常に可能または望ましいとは限りません。
-そのような場合は、インターフェースのラッピング、ライブラリ固有のコールバックの購読、既存のテレメトリーのOpenTelemetryモデルへの変換などのメカニズムを使用して計装呼び出しを注入する計装ライブラリを作成できます。
+そのような場合は、インターフェイスのラッピング、ライブラリ固有のコールバックの購読、既存のテレメトリーのOpenTelemetryモデルへの変換などのメカニズムを使用して計装呼び出しを注入する計装ライブラリを作成できます。
 
 そのようなライブラリを作成するには、Node.jsとブラウザ向けの[Instrumentation Implementation Guide](https://github.com/open-telemetry/opentelemetry-js-contrib/blob/main/GUIDELINES.md)に従ってください。

@@ -8,7 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: Ecossistema de Instrumentação no OpenTelemetry Java
-default_lang_commit: dc20c29a4c79ad0424c0fcc3271216af7e035d9b # patched
+default_lang_commit: 6eddc725571667e112a41aa7422bcd4c69764503
 drifted_from_default: true
 cSpell:ignore: logback
 ---
@@ -94,7 +94,7 @@ envolve ou usa os pontos de extensão para instrumentar a biblioteca, obrigando
 os usuários a instalar e/ou adaptar o uso da biblioteca.
 
 Para uma lista de bibliotecas de instrumentação, veja a coluna _"Standalone
-Library Instrumentation [1]"_ (Biblioteca autônoma de instrumentação) em
+Library Instrumentation"_ (Biblioteca autônoma de instrumentação) em
 [bibliotecas suportadas](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md).
 
 ### Instrumentação nativa {#native-instrumentation}

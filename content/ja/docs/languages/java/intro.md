@@ -3,6 +3,7 @@ title: OpenTelemetry Java入門
 description: OpenTelemetry Javaエコシステム入門
 weight: 9
 default_lang_commit: beb85b4f56de76aa8a8d6e96cd7528396476f95a
+drifted_from_default: true
 ---
 
 OpenTelemetry JavaはJavaエコシステム向けのOpenTelemetryオブザーバビリティツールのセットです。
@@ -12,7 +13,7 @@ OpenTelemetry JavaはJavaエコシステム向けのOpenTelemetryオブザーバ
 
 ## 概要 {#overview}
 
-APIは、主要なオブザーバビリティシグナル全体でテレメトリーを記録するためのクラスとインターフェースのセットです。
+APIは、主要なオブザーバビリティシグナル全体でテレメトリーを記録するためのクラスとインターフェイスのセットです。
 複数の実装をサポートし、低オーバーヘッドのミニマリストNoop（「ノーオプ」と発音）とSDKリファレンス実装がすぐに使用できるように提供されています。
 ライブラリ、フレームワーク、および計装を追加しようとしているアプリケーション所有者が直接依存関係として取得するように設計されています。
 強力な後方互換性を保証し、推移的依存関係がなく、Java 8以降をサポートしています。

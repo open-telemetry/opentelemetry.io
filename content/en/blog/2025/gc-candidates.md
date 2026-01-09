@@ -4,7 +4,7 @@ title:
 linkTitle: 2025 GC Candidates
 date: 2025-10-20
 author: OpenTelemetry Governance Committee
-cSpell:ignore: Dinesh Gurumurthy Marylia Todea Toulme
+cSpell:ignore: Dinesh Gurumurthy Todea Toulme
 ---
 
 The OpenTelemetry Election Committee is excited to announce the final list of
@@ -37,5 +37,5 @@ You can check your eligibility by reviewing
 [this GitHub issue](https://github.com/open-telemetry/community/issues/3001). If
 you have made contributions to our ecosystem not measured by the automatic
 process, you can
-[request an exception](https://docs.google.com/forms/d/e/1FAIpQLSeSA09xDIv0uyb6vrP8xBbLjm8NsgihrG8GHxacbigF17sNDw/viewform?usp=dialog)
+[request an exception](https://github.com/open-telemetry/community/blob/main/governance-charter.md#elections)
 before 23:59 UTC on 24 October 2025 to participate in the election.

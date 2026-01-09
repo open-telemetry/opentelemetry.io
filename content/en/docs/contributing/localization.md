@@ -363,7 +363,7 @@ with the task list given below:
          For details, see
          [Localize the homepage](https://opentelemetry.io/docs/contributing/localization/#homepage).
    - [ ] OTel maintainers:
-     - [ ] Update `hugo.yaml`
+     - [ ] Update Hugo config for `LANG_ID`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
      - [ ] Create org-level group for `LANG_ID` approvers
@@ -419,12 +419,12 @@ are easier to review and so typically get merged more quickly.
 
 #### Hugo
 
-Update `hugo.yaml`. Add appropriate entries for `LANG_ID` under:
+Update Hugo config for `LANG_ID`. Add appropriate entries for `LANG_ID` under:
 
-- `languages`
-- `module.mounts`. At a minimum, add a single `source`-`target` entry for
-  `content`. Consider adding entries for `en` fallback pages only once the
-  locale has enough content.
+- `languages` in `config/_default/hugo.yaml`
+- `module.mounts` via `config/_default/module-template.yaml`. At a minimum, add
+  a single `source`-`target` entry for `content`. Consider adding entries for
+  `en` fallback pages only once the locale has enough content.
 
 #### Spelling
 

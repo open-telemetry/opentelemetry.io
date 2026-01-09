@@ -6,14 +6,15 @@ aliases:
   - services/feature-flag
   - services/featureflagservice
 default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+drifted_from_default: true
 cSpell:ignore: OLJCESPC7Z
 ---
 
 デモは、異なるシナリオのシミュレートするために利用可能ないくつかのフィーチャーフラグを提供しています。
 これらのフラグは、[OpenFeature](https://openfeature.dev) をサポートするシンプルなフィーチャーフラグサービスの [`flagd`](https://flagd.dev) によって管理されます。
 
-フラグの値は、デモを起動している際に、<http://localhost:8080/feature> で提供されるユーザーインターフェースを通じて変更できます。
-このユーザーインターフェースを通じて値を変更すると、flagd サービスに反映されます。
+フラグの値は、デモを起動している際に、<http://localhost:8080/feature> で提供されるユーザーインターフェイスを通じて変更できます。
+このユーザーインターフェイスを通じて値を変更すると、flagd サービスに反映されます。
 
 ユーザーフラグを通じたフィーチャーフラグの変更する場合、2 つのオプションがあります。
 

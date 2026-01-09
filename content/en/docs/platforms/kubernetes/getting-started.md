@@ -2,7 +2,7 @@
 title: Getting Started
 weight: 1
 # prettier-ignore
-cSpell:ignore: filelog filelogreceiver kubelet kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
+cSpell:ignore: filelog filelogreceiver kubelet kubeletstats kubeletstatsreceiver sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
 ---
 
 This page will walk you through the fastest way to get started monitoring your
@@ -34,9 +34,9 @@ tools at its disposal which allow it to efficiently collect all this data and
 enhance it in meaningful ways.
 
 To collect all the data, we'll need two installations of the collector, one as a
-[Daemonset](/docs/collector/deployment/agent/) and one as a
-[Deployment](/docs/collector/deployment/gateway/). The Daemonset installation of
-the collector will be used to collect telemetry emitted by services, logs, and
+[Daemonset](/docs/collector/deploy/agent/) and one as a
+[Deployment](/docs/collector/deploy/gateway/). The Daemonset installation of the
+collector will be used to collect telemetry emitted by services, logs, and
 metrics for nodes, pods, and containers. The deployment installation of the
 collector will be used to collect metrics for the cluster and events.
 
@@ -173,9 +173,9 @@ presets:
   # Enables the filelogreceiver and adds it to the logs pipelines
   logsCollection:
     enabled: true
-## The chart only includes the loggingexporter by default
+## The chart only includes the debugexporter by default
 ## If you want to send your data somewhere you need to
-## configure an exporter, such as the otlpexporter
+## configure an exporter, such as the otlp exporter
 # config:
 #   exporters:
 #     otlp:
@@ -260,9 +260,9 @@ presets:
   # enables the k8sobjectsreceiver to collect events only and adds it to the logs pipelines
   kubernetesEvents:
     enabled: true
-## The chart only includes the loggingexporter by default
+## The chart only includes the debugexporter by default
 ## If you want to send your data somewhere you need to
-## configure an exporter, such as the otlpexporter
+## configure an exporter, such as the otlp exporter
 # config:
 # exporters:
 #   otlp:

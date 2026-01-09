@@ -54,6 +54,11 @@ resource:
     detectors:
       - service: # will add "service.instance.id" and "service.name" from OTEL_SERVICE_NAME
 
+propagator:
+  composite:
+    - tracecontext:
+    - baggage:
+
 tracer_provider:
   processors:
     - batch:
@@ -309,7 +314,7 @@ some additional resources to explore:
 [java-bridge]:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/declarative-config-bridge
 [js-package]:
-  https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/opentelemetry-configuration
+  https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/configuration
 [php-docs]:
   https://github.com/open-telemetry/opentelemetry-php/tree/main/src/Config/SDK#initialization-from-configuration-file
 [go-package]:

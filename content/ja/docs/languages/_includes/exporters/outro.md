@@ -5,7 +5,7 @@ default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
 ## カスタムエクスポーター {#custom-exporters}
 
 最後に、独自のエクスポーターを作成することもできます。
-詳細については、[APIドキュメントのSpanExporterインターフェース]({{ $1 }})を参照してください。
+詳細については、[APIドキュメントのSpanExporterインターフェイス]({{ $1 }})を参照してください。
 
 ## スパンとログレコードのバッチ処理 {#batching-span-and-log-records}
 

@@ -2,7 +2,7 @@
 title: Java Agent Declarative configuration
 linkTitle: Declarative configuration
 weight: 11
-cSpell:ignore: genai
+cSpell:ignore: Customizer Dotel genai
 ---
 
 Declarative configuration uses a YAML file instead of environment variables or
@@ -29,11 +29,44 @@ Declarative configuration is supported in the **OpenTelemetry Java agent version
 ## Getting started
 
 1. Save the configuration file below as `otel-config.yaml`.
-2. Add the following to your JVM startup arguments:
+2. Add the following to your JVM startup arguments:<br>
+   `-Dotel.experimental.config.file=/path/to/otel-config.yaml`
 
-   ```shell
-   -Dotel.experimental.config.file=/path/to/otel-config.yaml
-   ```
+```yaml
+file_format: '1.0-rc.1'
+
+resource:
+  attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
+  detection/development:
+    detectors:
+      - service: # will add "service.instance.id" and "service.name" from OTEL_SERVICE_NAME
+
+propagator:
+  composite:
+    - tracecontext:
+    - baggage:
+
+tracer_provider:
+  processors:
+    - batch:
+        exporter:
+          otlp_http:
+            endpoint: ${OTEL_EXPORTER_OTLP_TRACES_ENDPOINT:-http://localhost:4318/v1/traces}
+
+meter_provider:
+  readers:
+    - periodic:
+        exporter:
+          otlp_http:
+            endpoint: ${OTEL_EXPORTER_OTLP_METRICS_ENDPOINT:-http://localhost:4318/v1/metrics}
+
+logger_provider:
+  processors:
+    - batch:
+        exporter:
+          otlp_http:
+            endpoint: ${OTEL_EXPORTER_OTLP_LOGS_ENDPOINT:-http://localhost:4318/v1/logs}
+```
 
 Reference the [SDK Declarative configuration][] documentation for a more general
 getting started guide for declarative configuration.
@@ -145,6 +178,8 @@ tracer_provider:
 
 ## Not yet supported features
 
+### Features that still need environment variables or system properties
+
 Some features that are supported by environment variables and system properties
 are not yet supported by declarative configuration:
 
@@ -169,30 +204,41 @@ properties:
 - `otel.javaagent.experimental.thread-propagation-debugger.enabled`
 - `otel.semconv-stability.opt-in`
 
+### Features not yet supported at all
+
 Java agent features that are not yet supported by declarative configuration:
 
 - `otel.instrumentation.common.mdc.resource-attributes`
 - `otel.javaagent.add-thread-details`
-- adding console logger for spans when `otel.javaagent.debug=true`
-  - can be worked around by adding a console span exporter in the configuration
-    file
-- using `GlobalConfigProvider` to access declarative configuration values in
-  custom code
-
-Java SDK features that are not yet supported by declarative configuration:
-
-- calling `AutoConfigureListener` in `AutoConfiguredOpenTelemetrySdk`
 
 Contrib features that are not yet supported by declarative configuration:
 
 - [AWS X-Ray](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-xray)
 - [GCP authentication](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-auth-extension)
+- [Inferred Spans](https://github.com/open-telemetry/opentelemetry-java-contrib/blob/main/inferred-spans)
+
+### Spring Boot starter limitations
 
 Lastly, the [Spring Boot starter](/docs/zero-code/java/spring-boot-starter) does
 not yet support declarative configuration:
 
 - however, you can already use `application.yaml` to configure the OpenTelemetry
   Spring Boot starter
+
+## Extension API
+
+Extensions use a new declarative configuration API.
+
+- Extensions that use `AutoConfigurationCustomizerProvider` will need to migrate
+  to the new `DeclarativeConfigurationCustomizerProvider` API. Check out how the
+  old
+  [AgentTracerProviderConfigurer](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/javaagent-tooling/src/main/java/io/opentelemetry/javaagent/tooling/AgentTracerProviderConfigurer.java)
+  maps to the new
+  [SpanLoggingCustomizerProvider](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/javaagent-tooling/src/main/java/io/opentelemetry/javaagent/tooling/SpanLoggingCustomizerProvider.java).
+- Components, such as span exporters, need to use the `ComponentProvider` API
+  now. Check out the
+  [Baggage Processor](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/baggage-processor),
+  which supports both the old and new APIs, as an example.
 
 [SDK Declarative configuration]:
   /docs/languages/sdk-configuration/declarative-configuration

@@ -2,7 +2,8 @@
 title: コレクターの設定のベストプラクティス
 linkTitle: コレクターの設定
 weight: 112
-default_lang_commit: 179f03bf118e1e8a3cc195ab56fc09d85c476394
+default_lang_commit: 179f03bf118e1e8a3cc195ab56fc09d85c476394 # patched
+drifted_from_default: true
 cSpell:ignore: exporterhelper
 ---
 
@@ -33,7 +34,7 @@ OTelコレクターの設定には暗号化と認証を利用するべきです�
 コレクターの設定で、必要なコンポーネントのみに制限することを推奨します。
 コンポーネントを最小化することは攻撃対象を最小限に抑えることにもなります。
 
-- 必要最小限のコンポーネントを利用したコレクターの作成には [OpenTelemetry Collector Builder (`ocb`)](/docs/collector/custom-collector)を利用してください
+- 必要最小限のコンポーネントを利用したコレクターの作成には [OpenTelemetry Collector Builder (`ocb`)](/docs/collector/extend/ocb/)を利用してください
 - 使用しないコンポーネントの設定は削除してください。
 
 ### 慎重に設定する {#configure-with-care}

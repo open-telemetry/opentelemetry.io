@@ -100,6 +100,12 @@ OpenTelemetry 中对[元数据](#metadata)的术语。为产生遥测数据的�
 
 是对上游 OpenTelemetry 仓库的封装，包含一些自定义内容。参见 [Distributions]。
 
+### 实体 {#entity}
+
+实体由一组用于标识和描述物理对象或逻辑对象的[属性](#attribute)组成。
+实体通常与遥测数据相关联。例如，CPU 实体描述一个物理 CPU，
+而服务实体描述构成 HTTP 或其他服务的一组逻辑进程。
+
 ### 事件 {#event}
 
 事件是一个带有事件名称和已知结构的[日志记录](#log-record)。
@@ -258,8 +264,7 @@ OpenTelemetry 协议的缩写。参见 [/docs/specs/otlp/](/docs/specs/otlp/)。
 
 ### 资源 {#resource}
 
-以 [属性](#attribute) 的形式，捕获产生遥测数据的实体信息。例如，在
-Kubernetes 中运行的一个进程会有进程名、Pod 名、命名空间和可能的部署名，这些都可作为资源中的属性。
+由一组[实体](#entity)或[属性](#attribute)组成，用于标识或描述产生遥测数据的物理对象或逻辑对象。
 
 ### REST
 

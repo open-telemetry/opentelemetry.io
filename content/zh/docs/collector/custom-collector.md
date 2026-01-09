@@ -1,8 +1,8 @@
 ---
 title: 定制 Collector
 weight: 29
-default_lang_commit: 9a1f7271288a46049ae28785f04a67fb77f677f7
-drifted_from_default: true
+default_lang_commit: 9a1f7271288a46049ae28785f04a67fb77f677f7 # patched
+drifted_from_default: file not found
 # prettier-ignore
 cSpell:ignore: batchprocessor darwin debugexporter gomod loggingexporter otlpexporter otlpreceiver
 ---
@@ -326,8 +326,8 @@ docker run -it --rm -p 4317:4317 -p 4318:4318 \
 
 ## 延伸阅读 {#further-reading}
 
-- [构建链路接收器](/docs/collector/building/receiver)
-- [构建 Connector](/docs/collector/building/connector)
+- [构建链路接收器](/docs/collector/extend/custom-component/receiver/)
+- [构建 Connector](/docs/collector/extend/custom-component/connector/)
 
 [ocb]: https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
 [tags]: https://github.com/open-telemetry/opentelemetry-collector-releases/tags

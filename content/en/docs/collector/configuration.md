@@ -111,12 +111,12 @@ receivers:
         endpoint: 0.0.0.0:4317
       http:
         endpoint: 0.0.0.0:4318
-processors:
-  batch:
 
 exporters:
   otlp:
     endpoint: otelcol:4317
+    sending_queue:
+      batch:
 
 extensions:
   health_check:
@@ -131,15 +131,12 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
     metrics:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
     logs:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
 ```
 
@@ -161,15 +158,15 @@ receivers:
       grpc:
         endpoint: 0.0.0.0:55690
 
-processors:
-  batch:
-  batch/test:
-
 exporters:
   otlp:
     endpoint: otelcol:4317
+    sending_queue:
+      batch:
   otlp/2:
     endpoint: otelcol2:4317
+    sending_queue:
+      batch:
 
 extensions:
   health_check:
@@ -184,19 +181,15 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
     traces/2:
       receivers: [otlp/2]
-      processors: [batch/test]
       exporters: [otlp/2]
     metrics:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
     logs:
       receivers: [otlp]
-      processors: [batch]
       exporters: [otlp]
 ```
 
@@ -366,9 +359,6 @@ processors:
         action: delete
       - key: email
         action: hash
-
-  # Data sources: traces, metrics, logs
-  batch:
 
   # Data sources: metrics, metrics, logs
   filter:
@@ -640,11 +630,10 @@ service:
   pipelines:
     metrics:
       receivers: [opencensus, prometheus]
-      processors: [batch]
       exporters: [opencensus, prometheus]
     traces:
       receivers: [opencensus, jaeger]
-      processors: [batch, memory_limiter]
+      processors: [memory_limiter]
       exporters: [opencensus, zipkin]
 ```
 
@@ -659,7 +648,6 @@ service:
       # ...
     traces/2:
       receivers: [opencensus]
-      processors: [batch]
       exporters: [zipkin]
 ```
 
@@ -735,7 +723,7 @@ Each authentication extension has two possible usages:
 For a list of known authenticators, see the
 [Registry](/ecosystem/registry/?s=authenticator&component=extension). If you're
 interested in developing a custom authenticator, see
-[Building an authenticator extension](../building/authenticator-extension).
+[Building an authenticator extension](/docs/collector/extend/custom-component/extension/authenticator).
 
 To add a server authenticator to a receiver in the Collector, follow these
 steps:

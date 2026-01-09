@@ -44,7 +44,7 @@ before opening an issue.
 
 ## Meetings
 
-We, the OTel Communications SIG, meet every two weeks on Monday at 10:00 PT.
+We, the OTel Communications SIG, meet every two weeks on Tuesday at 9:00 AM PT.
 Check out the [OpenTelemetry community calendar][] for the Zoom link and any
 updates to this schedule.
 
@@ -74,10 +74,25 @@ For more information about the maintainer role, see the
 
 These are the members of [@open-telemetry/docs-approvers]:
 
+- [Jay DeLuca](https://github.com/jaydeluca), Grafana Labs
 - [Marylia Gutierrez](https://github.com/maryliag), Grafana Labs
 
 For more information about the approver role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#approver).
+
+### Triagers
+
+These are the members of [@open-telemetry/docs-triagers]:
+
+- [Emídio Neto](https://github.com/emdneto)
+- [Ezzio Moreira](https://github.com/EzzioMoreira)
+- [Kazunori Otani](https://github.com/katzchang), Splunk
+- [Masaki Sugimoto](https://github.com/Msksgm), Henry, Inc.
+- [Michael Yao](https://github.com/windsonsea), DaoCloud
+- [Yoshi Yamaguchi](https://github.com/ymotongpoo), AWS
+
+For more information about the triager role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#triager).
 
 ### Emeritus maintainers
 
@@ -121,7 +136,7 @@ already contributed][contributors]!
 [OpenTelemetry.io Analytics]: https://lookerstudio.google.com/s/jsDZ05i_YIo
 [registry]: https://opentelemetry.io/ecosystem/registry/
 [opentelemetry community calendar]:
-  https://calendar.google.com/calendar/embed?src=google.com_b79e3e90j7bbsa2n2p5an5lf60%40group.calendar.google.com
+  https://calendar.google.com/calendar/u/0/embed?src=c_2bf73e3b6b530da4babd444e72b76a6ad893a5c3f43cf40467abc7a9a897f977@group.calendar.google.com
 [google doc]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY/edit?usp=sharing
 [slack]: https://slack.cncf.io/
