@@ -26,7 +26,7 @@ Invoke-WebRequest -Uri "https://github.com/open-telemetry/opentelemetry-collecto
 tar -xvzf otelcol_{{% param vers %}}_windows_amd64.tar.gz
 ```
 
-Every Collector release includes an `otelcol` executable that you can install
+Every Collector release includes an executable that you can install
 and run.
 
 [releases]:
