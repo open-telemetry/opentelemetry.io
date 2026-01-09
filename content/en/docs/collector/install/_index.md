@@ -24,6 +24,6 @@ make install-tools
 make otelcorecol
 ```
 
-[deployment patterns]: /docs/collector/deployment/
+[deployment patterns]: /docs/collector/deploy/
 [components]: /docs/collector/components/
 [configuration]: /docs/collector/configuration/

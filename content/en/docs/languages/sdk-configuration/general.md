@@ -128,8 +128,7 @@ Accepted values for `OTEL_PROPAGATORS` are:
 - `baggage`: [W3C Baggage](https://www.w3.org/TR/baggage/)
 - `b3`: [B3 Single](/docs/specs/otel/context/api-propagators#configuration)
 - `b3multi`: [B3 Multi](/docs/specs/otel/context/api-propagators#configuration)
-- `jaeger`:
-  [Jaeger](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format)
+- `jaeger`: [Jaeger](https://www.jaegertracing.io/sdk-migration/)
 - `xray`:
   [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader)
   (_third party_)
