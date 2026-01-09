@@ -5,6 +5,8 @@ weight: 300
 cSpell:ignore: Customizer Dotel myextension uber
 ---
 
+<?code-excerpt path-base="examples/java/extensions-minimal"?>
+
 ## Introduction
 
 Extensions add new features and capabilities to the OpenTelemetry Java agent
@@ -27,10 +29,10 @@ database client that creates a span per database call and extracts data from the
 database connection and adds it to a span. Here are some sample use cases that
 can be solved using extensions:
 
-- _"I want to customize instrumentation without modifying the instrumentation"_:
+- _"I want to customize existing instrumentation without actually modifying the instrumentation"_:
 
   The (experimental) `InstrumenterCustomizerProvider` extension point allows you
-  to customize instrumentation behavior without modifying core instrumentation:
+  to customize instrumentation behavior without modifying core instrumentation, you can:
   - Add custom attributes and metrics to existing instrumentations
   - Customize context and correlation IDs
   - Transform span names to match your naming conventions
@@ -126,7 +128,7 @@ When you load extensions at runtime, the agent:
 
 1. Makes OpenTelemetry APIs available to your extension (without needing to
    package them in your extension JAR)
-2. Discovers your extension's components using Java's ServiceLoader mechanism
+2. Discovers your extension's components using Java's [ServiceLoader](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ServiceLoader.html) mechanism
    (via `@AutoService` annotations in your code, for example)
 
 ### Important Notes
@@ -150,7 +152,7 @@ accidentally forget to load your extension.
 The agent automatically looks for extensions in a special `extensions/`
 directory inside the agent JAR file, so we can use a Gradle build task to:
 
-1. Download the official OpenTelemetry Java agent
+1. Download the OpenTelemetry Java agent JAR
 2. Extract its contents
 3. Add your extension JAR(s) into the `extensions/` directory
 4. Repackage everything into a single JAR
@@ -183,19 +185,19 @@ configurations {
 
 dependencies {
     // Download the official OpenTelemetry Java agent into the 'otel' configuration
-    "otel"("io.opentelemetry.javaagent:opentelemetry-javaagent:2.21.0")
+    "otel"("io.opentelemetry.javaagent:opentelemetry-javaagent:{{% param vers.instrumentation %}}")
 
     /*
       Interfaces and SPIs that we implement. We use `compileOnly` dependency because during
       runtime all necessary classes are provided by javaagent itself.
      */
-    compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:1.44.1")
-    compileOnly("io.opentelemetry:opentelemetry-sdk:1.44.1")
-    compileOnly("io.opentelemetry:opentelemetry-api:1.44.1")
+    compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi:{{% param vers.otel %}}")
+    compileOnly("io.opentelemetry:opentelemetry-sdk:{{% param vers.otel %}}")
+    compileOnly("io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}")
 
     // Required for custom instrumentation
-    compileOnly("io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api:2.21.0-alpha")
-    compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator:2.21.0-alpha")
+    compileOnly("io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api:{{% param vers.instrumentation %}}-alpha")
+    compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator:{{% param vers.instrumentation %}}-alpha")
     compileOnly("net.bytebuddy:byte-buddy:1.15.10")
 
     // Provides @AutoService annotation that makes registration of our SPI implementations much easier
@@ -308,21 +310,25 @@ Interface (SPI) classes and packaging them as a JAR file.
 
 Here's a minimal extension that adds a custom span processor:
 
-**1. Create a Gradle project:**
+**1. Create a Gradle project (build.gradle.kts):**
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "build.gradle.kts"?>
 ```kotlin
 plugins {
     id("java")
     id("com.gradleup.shadow")
 }
 
-repositories {
-    mavenCentral()
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(8))
+    }
 }
 
 dependencies {
     // Use BOM to manage OpenTelemetry dependency versions
-    compileOnly(platform("io.opentelemetry:opentelemetry-bom:1.44.1"))
+    compileOnly(platform("io.opentelemetry:opentelemetry-bom:1.57.0"))
 
     // OpenTelemetry SDK autoconfiguration SPI (provided by agent)
     compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi")
@@ -342,9 +348,12 @@ tasks.assemble {
     dependsOn(tasks.shadowJar)
 }
 ```
+<!-- prettier-ignore-end -->
 
 **2. Create the SpanProcessor:**
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/MySpanProcessor.java"?>
 ```java
 package otel;
 
@@ -356,36 +365,39 @@ import io.opentelemetry.sdk.trace.SpanProcessor;
 
 public class MySpanProcessor implements SpanProcessor {
 
-    @Override
-    public void onStart(Context parentContext, ReadWriteSpan span) {
-        // Add custom attributes when span starts
-        span.setAttribute("custom.processor", "active");
-    }
+  @Override
+  public void onStart(Context parentContext, ReadWriteSpan span) {
+    // Add custom attributes when span starts
+    span.setAttribute("custom.processor", "active");
+  }
 
-    @Override
-    public boolean isStartRequired() {
-        return true;
-    }
+  @Override
+  public boolean isStartRequired() {
+    return true;
+  }
 
-    @Override
-    public void onEnd(ReadableSpan span) {
-        // Process span when it ends (optional)
-    }
+  @Override
+  public void onEnd(ReadableSpan span) {
+    // Process span when it ends (optional)
+  }
 
-    @Override
-    public boolean isEndRequired() {
-        return false;
-    }
+  @Override
+  public boolean isEndRequired() {
+    return false;
+  }
 
-    @Override
-    public CompletableResultCode shutdown() {
-        return CompletableResultCode.ofSuccess();
-    }
+  @Override
+  public CompletableResultCode shutdown() {
+    return CompletableResultCode.ofSuccess();
+  }
 }
 ```
+<!-- prettier-ignore-end -->
 
 **3. Create an extension class that uses the `AutoConfigurationCustomizerProvider` SPI:**
 
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/MyExtensionProvider.java"?>
 ```java
 package otel;
 
@@ -394,21 +406,25 @@ import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizer;
 import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
 import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
 import io.opentelemetry.sdk.trace.SdkTracerProviderBuilder;
+import io.opentelemetry.sdk.trace.SpanLimits;
 
 @AutoService(AutoConfigurationCustomizerProvider.class)
 public class MyExtensionProvider implements AutoConfigurationCustomizerProvider {
 
-    @Override
-    public void customize(AutoConfigurationCustomizer config) {
-        config.addTracerProviderCustomizer(this::configureTracer);
-    }
+  @Override
+  public void customize(AutoConfigurationCustomizer config) {
+    config.addTracerProviderCustomizer(this::configureTracer);
+  }
 
-    private SdkTracerProviderBuilder configureTracer(
-            SdkTracerProviderBuilder tracerProvider, ConfigProperties config) {
-        return tracerProvider.addSpanProcessor(new MySpanProcessor());
-    }
+  private SdkTracerProviderBuilder configureTracer(
+      SdkTracerProviderBuilder tracerProvider, ConfigProperties config) {
+    return tracerProvider
+        .setSpanLimits(SpanLimits.builder().setMaxNumberOfAttributes(1024).build())
+        .addSpanProcessor(new MySpanProcessor());
+  }
 }
 ```
+<!-- prettier-ignore-end -->
 
 **4. Build the extension:**
 
@@ -523,42 +539,42 @@ The main entry point for customizing SDK configuration. This allows you to:
 
 **Example:**
 
+<!-- prettier-ignore-start -->
+<?code-excerpt path-base="examples/java/extension"?>
+<?code-excerpt "src/main/java/com/example/javaagent/DemoAutoConfigurationCustomizerProvider.java" from="@AutoService"?>
 ```java
-import com.google.auto.service.AutoService;
-import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizer;
-import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
-import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
-import io.opentelemetry.sdk.trace.SdkTracerProviderBuilder;
-import io.opentelemetry.sdk.trace.SpanLimits;
-import java.util.HashMap;
-import java.util.Map;
-
 @AutoService(AutoConfigurationCustomizerProvider.class)
-public class MyExtension implements AutoConfigurationCustomizerProvider {
+public class DemoAutoConfigurationCustomizerProvider
+    implements AutoConfigurationCustomizerProvider {
 
   @Override
-  public void customize(AutoConfigurationCustomizer config) {
-    config
-        .addTracerProviderCustomizer(this::configureTracer)
+  public void customize(AutoConfigurationCustomizer autoConfiguration) {
+    autoConfiguration
+        .addTracerProviderCustomizer(this::configureSdkTracerProvider)
         .addPropertiesSupplier(this::getDefaultProperties);
   }
 
-  private SdkTracerProviderBuilder configureTracer(
+  private SdkTracerProviderBuilder configureSdkTracerProvider(
       SdkTracerProviderBuilder tracerProvider, ConfigProperties config) {
+
     return tracerProvider
-        .setIdGenerator(new MyIdGenerator())
+        .setIdGenerator(new DemoIdGenerator())
         .setSpanLimits(SpanLimits.builder().setMaxNumberOfAttributes(1024).build())
-        .addSpanProcessor(new MySpanProcessor());
+        .addSpanProcessor(new DemoSpanProcessor())
+        .addSpanProcessor(SimpleSpanProcessor.create(new DemoSpanExporter()));
   }
 
   private Map<String, String> getDefaultProperties() {
     Map<String, String> properties = new HashMap<>();
-    properties.put("otel.exporter.otlp.endpoint", "http://my-backend:8080");
-    properties.put("otel.service.name", "my-service");
+    properties.put("otel.exporter.otlp.endpoint", "http://backend:8080");
+    properties.put("otel.exporter.otlp.insecure", "true");
+    properties.put("otel.config.max.attrs", "16");
+    properties.put("otel.traces.sampler", "demo");
     return properties;
   }
 }
 ```
+<!-- prettier-ignore-end -->
 
 ### InstrumenterCustomizerProvider
 
@@ -568,49 +584,153 @@ instrumentations.
 
 **Example:**
 
+<!-- prettier-ignore-start -->
+<?code-excerpt path-base="examples/java/extension"?>
+<?code-excerpt "src/main/java/com/example/javaagent/DemoInstrumenterCustomizerProvider.java" from="/**"?>
 ```java
-import com.google.auto.service.AutoService;
-import io.opentelemetry.api.common.AttributeKey;
-import io.opentelemetry.api.common.Attributes;
-import io.opentelemetry.api.common.AttributesBuilder;
-import io.opentelemetry.context.Context;
-import io.opentelemetry.instrumentation.api.incubator.instrumenter.InstrumenterCustomizer;
-import io.opentelemetry.instrumentation.api.incubator.instrumenter.InstrumenterCustomizerProvider;
-import io.opentelemetry.instrumentation.api.instrumenter.AttributesExtractor;
-
+/**
+ * This example demonstrates how to use the InstrumenterCustomizerProvider SPI to customize
+ * instrumentation behavior without modifying the core instrumentation code.
+ *
+ * <p>This customizer adds:
+ *
+ * <ul>
+ *   <li>Custom attributes to HTTP server spans (based on instrumentation name)
+ *   <li>Custom attributes to HTTP client spans (based on instrumentation type)
+ *   <li>Custom metrics for HTTP operations
+ *   <li>Request correlation IDs via context customization
+ *   <li>Custom span name transformation
+ * </ul>
+ *
+ * <p>The customizer will be automatically applied to instrumenters that match the specified
+ * instrumentation name or type.
+ *
+ * @see InstrumenterCustomizerProvider
+ * @see InstrumenterCustomizer
+ */
 @AutoService(InstrumenterCustomizerProvider.class)
-public class MyInstrumenterCustomizer implements InstrumenterCustomizerProvider {
+public class DemoInstrumenterCustomizerProvider implements InstrumenterCustomizerProvider {
 
   @Override
   public void customize(InstrumenterCustomizer customizer) {
     String instrumentationName = customizer.getInstrumentationName();
+    if (isHttpServerInstrumentation(instrumentationName)) {
+      customizeHttpServer(customizer);
+    }
 
-    // Target specific instrumentation
-    if (instrumentationName.contains("http-server")) {
-      customizer.addAttributesExtractor(new MyAttributesExtractor());
+    if (customizer.hasType(InstrumenterCustomizer.InstrumentationType.HTTP_CLIENT)) {
+      customizeHttpClient(customizer);
     }
   }
 
-  private static class MyAttributesExtractor implements AttributesExtractor<Object, Object> {
-    private static final AttributeKey<String> CUSTOM_ATTR =
-        AttributeKey.stringKey("custom.attribute");
+  private boolean isHttpServerInstrumentation(String instrumentationName) {
+    return instrumentationName.contains("servlet")
+        || instrumentationName.contains("jetty")
+        || instrumentationName.contains("tomcat")
+        || instrumentationName.contains("undertow")
+        || instrumentationName.contains("spring-webmvc");
+  }
+
+  private void customizeHttpServer(InstrumenterCustomizer customizer) {
+    customizer.addAttributesExtractor(new DemoAttributesExtractor());
+    customizer.addOperationMetrics(new DemoMetrics());
+    customizer.addContextCustomizer(new DemoContextCustomizer());
+    customizer.setSpanNameExtractorCustomizer(
+        unused -> (SpanNameExtractor<Object>) object -> "CustomHTTP/" + object.toString());
+  }
+
+  private void customizeHttpClient(InstrumenterCustomizer customizer) {
+    // Simple customization for HTTP client instrumentations
+    customizer.addAttributesExtractor(new DemoHttpClientAttributesExtractor());
+  }
+
+  /** Custom attributes extractor for HTTP client instrumentations. */
+  private static class DemoHttpClientAttributesExtractor
+      implements AttributesExtractor<Object, Object> {
+    private static final AttributeKey<String> CLIENT_ATTR =
+        AttributeKey.stringKey("demo.client.type");
 
     @Override
     public void onStart(AttributesBuilder attributes, Context context, Object request) {
-      attributes.put(CUSTOM_ATTR, "custom-value");
+      attributes.put(CLIENT_ATTR, "demo-http-client");
     }
 
     @Override
-    public void onEnd(AttributesBuilder attributes, Context context,
-                     Object request, Object response, Throwable error) {
+    public void onEnd(
+        AttributesBuilder attributes,
+        Context context,
+        Object request,
+        Object response,
+        Throwable error) {}
+  }
+
+  /** Custom attributes extractor that adds demo-specific attributes. */
+  private static class DemoAttributesExtractor implements AttributesExtractor<Object, Object> {
+    private static final AttributeKey<String> CUSTOM_ATTR = AttributeKey.stringKey("demo.custom");
+    private static final AttributeKey<String> ERROR_ATTR = AttributeKey.stringKey("demo.error");
+
+    @Override
+    public void onStart(AttributesBuilder attributes, Context context, Object request) {
+      attributes.put(CUSTOM_ATTR, "demo-extension");
+    }
+
+    @Override
+    public void onEnd(
+        AttributesBuilder attributes,
+        Context context,
+        Object request,
+        Object response,
+        Throwable error) {
       if (error != null) {
-        attributes.put(AttributeKey.stringKey("error.type"),
-                      error.getClass().getSimpleName());
+        attributes.put(ERROR_ATTR, error.getClass().getSimpleName());
       }
+    }
+  }
+
+  /** Custom metrics that track request counts. */
+  private static class DemoMetrics implements OperationMetrics {
+    @Override
+    public OperationListener create(Meter meter) {
+      LongCounter requestCounter =
+          meter
+              .counterBuilder("demo.requests")
+              .setDescription("Number of requests")
+              .setUnit("requests")
+              .build();
+
+      return new OperationListener() {
+        @Override
+        public Context onStart(Context context, Attributes attributes, long startNanos) {
+          requestCounter.add(1, attributes);
+          return context;
+        }
+
+        @Override
+        public void onEnd(Context context, Attributes attributes, long endNanos) {
+          // Could add duration metrics here if needed
+        }
+      };
+    }
+  }
+
+  /** Context customizer that adds request correlation IDs and custom context data. */
+  private static class DemoContextCustomizer implements ContextCustomizer<Object> {
+    private static final AtomicLong requestIdCounter = new AtomicLong(1);
+    private static final ContextKey<String> REQUEST_ID_KEY = ContextKey.named("demo.request.id");
+
+    @Override
+    public Context onStart(Context context, Object request, Attributes startAttributes) {
+      // Generate a unique request ID for correlation
+      String requestId = "req-" + requestIdCounter.getAndIncrement();
+
+      // Add custom context data that can be accessed throughout the request lifecycle
+      context = context.with(REQUEST_ID_KEY, requestId);
+      return context;
     }
   }
 }
 ```
+<!-- prettier-ignore-end -->
 
 ### ConfigurablePropagatorProvider
 
@@ -619,58 +739,51 @@ Register custom propagators that can be referenced by name in the
 
 **Example:**
 
+<!-- prettier-ignore-start -->
+<?code-excerpt path-base="examples/java/extension"?>
+<?code-excerpt "src/main/java/com/example/javaagent/DemoPropagatorProvider.java" from="@AutoService"?>
 ```java
-import com.google.auto.service.AutoService;
-import io.opentelemetry.context.propagation.TextMapPropagator;
-import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
-import io.opentelemetry.sdk.autoconfigure.spi.ConfigurablePropagatorProvider;
-
 @AutoService(ConfigurablePropagatorProvider.class)
-public class MyPropagatorProvider implements ConfigurablePropagatorProvider {
-
+public class DemoPropagatorProvider implements ConfigurablePropagatorProvider {
   @Override
   public TextMapPropagator getPropagator(ConfigProperties config) {
-    return new MyCustomPropagator();
+    return new DemoPropagator();
   }
 
   @Override
   public String getName() {
-    // Use with: -Dotel.propagators=my-propagator
-    return "my-propagator";
+    return "demo";
   }
 }
 ```
+<!-- prettier-ignore-end -->
 
 ### ConfigurableSamplerProvider
 
 Register custom samplers that can be referenced in the `otel.traces.sampler`
 configuration.
 
-**Example:**
+**Example (`otel.traces.sampler=demo`):**
 
+<!-- prettier-ignore-start -->
+<?code-excerpt path-base="examples/java/extension"?>
+<?code-excerpt "src/main/java/com/example/javaagent/DemoConfigurableSamplerProvider.java" from="@AutoService"?>
 ```java
-import com.google.auto.service.AutoService;
-import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
-import io.opentelemetry.sdk.autoconfigure.spi.traces.ConfigurableSamplerProvider;
-import io.opentelemetry.sdk.trace.samplers.Sampler;
-
 @AutoService(ConfigurableSamplerProvider.class)
-public class MySamplerProvider implements ConfigurableSamplerProvider {
+public class DemoConfigurableSamplerProvider implements ConfigurableSamplerProvider {
 
   @Override
   public Sampler createSampler(ConfigProperties config) {
-    // Access configuration
-    double samplingRate = config.getDouble("otel.traces.sampler.arg", 1.0);
-    return new MyCustomSampler(samplingRate);
+    return new DemoSampler();
   }
 
   @Override
   public String getName() {
-    // Use with: -Dotel.traces.sampler=my-sampler
-    return "my-sampler";
+    return "demo";
   }
 }
 ```
+<!-- prettier-ignore-end -->
 
 ### ResourceProvider
 
@@ -679,45 +792,36 @@ resource providers.
 
 **Example:**
 
+<!-- prettier-ignore-start -->
+<?code-excerpt path-base="examples/java/extension"?>
+<?code-excerpt "src/main/java/com/example/javaagent/DemoResourceProvider.java" from="@AutoService"?>
 ```java
-import com.google.auto.service.AutoService;
-import io.opentelemetry.api.common.Attributes;
-import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
-import io.opentelemetry.sdk.autoconfigure.spi.ResourceProvider;
-import io.opentelemetry.sdk.resources.Resource;
-
 @AutoService(ResourceProvider.class)
-public class MyResourceProvider implements ResourceProvider {
-
+public class DemoResourceProvider implements ResourceProvider {
   @Override
   public Resource createResource(ConfigProperties config) {
-    return Resource.create(
-        Attributes.builder()
-            .put("deployment.environment", "production")
-            .put("service.version", getVersion())
-            .put("custom.attribute", "value")
-            .build()
-    );
-  }
-
-  private String getVersion() {
-    // Retrieve version from environment, file, etc.
-    return System.getenv().getOrDefault("APP_VERSION", "unknown");
+    Attributes attributes = Attributes.builder().put("custom.resource", "demo").build();
+    return Resource.create(attributes);
   }
 }
 ```
+<!-- prettier-ignore-end -->
 
 ## Application-Agent Communication
 
 ### Accessing the Current Span
 
-In instrumentation advice classes, use `Java8BytecodeBridge` to access the
-current span:
+The recommended way to access the current context is via `Context.current()`.
+The only exception is instrumentation advice code that must remain compatible with pre–Java 8 class files.
+
+Advice code is inlined directly into the instrumented method, and calling `Context.current()`, a static interface method,
+can cause bytecode verification errors when instrumenting classes compiled for Java versions earlier than 8.
+
+In those cases, use `Java8BytecodeBridge`, which provides equivalent static class methods that are safe to use across all class file versions.
 
 ```java
+...
 import io.opentelemetry.javaagent.bootstrap.Java8BytecodeBridge;
-import io.opentelemetry.api.trace.Span;
-import net.bytebuddy.asm.Advice;
 
 public static class MyAdvice {
 
@@ -736,31 +840,6 @@ public static class MyAdvice {
     span.addEvent("custom.event");
   }
 }
-```
-
-### Sharing Data via Context
-
-Use the OpenTelemetry `Context` API to share data throughout the request
-lifecycle:
-
-```java
-import io.opentelemetry.context.Context;
-import io.opentelemetry.context.ContextKey;
-import io.opentelemetry.instrumentation.api.instrumenter.ContextCustomizer;
-
-public class MyContextCustomizer implements ContextCustomizer<Object> {
-  private static final ContextKey<String> REQUEST_ID_KEY =
-      ContextKey.named("myext.request.id");
-
-  @Override
-  public Context onStart(Context context, Object request, Attributes startAttributes) {
-    String requestId = generateRequestId(request);
-    return context.with(REQUEST_ID_KEY, requestId);
-  }
-}
-
-// Later, retrieve the value
-String requestId = Context.current().get(REQUEST_ID_KEY);
 ```
 
 ## Configuration
