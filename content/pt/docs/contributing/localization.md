@@ -33,7 +33,8 @@ nesta seção.
   - **Todo** conteúdo da página e _front matter_, a menos que indicado o
     contrário
 - **Preservar** o _conteúdo_, _significado_, e _estilo_ do texto original
-- **Envie o trabalho _incrementalmente_** através de [pequenos _pull requests_](#small-prs)
+- **Envie o trabalho _incrementalmente_** através de
+  [pequenos _pull requests_](#small-prs)
 - **Perguntar** aos [mantenedores][maintainers] em caso de dúvidas, através de:
   - Canais do [Slack], como `#otel-docs-localization`, `#otel-localization-ptbr`
     ou `#otel-comms`
@@ -427,9 +428,9 @@ restantes do site. <a name="small-prs"></a>
 {{% alert title="Enviar PRs pequenos" color="primary" %}}
 
 Equipes de localização devem enviar seu trabalho em **pequenos incrementos**. Ou
-seja, mantenha os [PRs] pequenos, preferencialmente limitados a um arquivo
-ou alguns arquivos pequenos. PRs menores são mais fáceis de revisar e
-normalmente são aprovados mais rapidamente.
+seja, mantenha os [PRs] pequenos, preferencialmente limitados a um arquivo ou
+alguns arquivos pequenos. PRs menores são mais fáceis de revisar e normalmente
+são aprovados mais rapidamente.
 
 {{% /alert %}}
 
@@ -437,12 +438,14 @@ normalmente são aprovados mais rapidamente.
 
 #### Hugo
 
-Atualize a configuração do Hugo para `LANG_ID`. Adicione entradas apropriadas para `LANG_ID` em:
+Atualize a configuração do Hugo para `LANG_ID`. Adicione entradas apropriadas
+para `LANG_ID` em:
 
 - `languages` em `config/_default/hugo.yaml`
-- `module.mounts` através de `config/_default/module-template.yaml`. Adicione pelo menos uma entrada `source`-`target` para
-  `content`. Considere adicionar entradas para páginas de _fallback_ `en` apenas
-  quando a localização tiver conteúdo suficiente.
+- `module.mounts` através de `config/_default/module-template.yaml`. Adicione
+  pelo menos uma entrada `source`-`target` para `content`. Considere adicionar
+  entradas para páginas de _fallback_ `en` apenas quando a localização tiver
+  conteúdo suficiente.
 
 #### Ortografia {#spelling}
 
@@ -475,9 +478,9 @@ contrário:
 
 ### PRs com mudanças semânticas não devem abranger localizações {#prs-should-not-span-locales}
 
-Aprovadores devem garantir que [PRs] fazendo mudanças **semânticas** em páginas de
-documentação não abranjam múltiplas localizações. Uma mudança semântica é aquela
-que impacta o _significado_ do conteúdo da página. Nosso
+Aprovadores devem garantir que [PRs] fazendo mudanças **semânticas** em páginas
+de documentação não abranjam múltiplas localizações. Uma mudança semântica é
+aquela que impacta o _significado_ do conteúdo da página. Nosso
 [processo de localização](.) de documentação garante que aprovadores de
 localização irão, com o tempo, revisar as edições em inglês para determinar se
 as mudanças são apropriadas para sua localização, e a melhor forma de
