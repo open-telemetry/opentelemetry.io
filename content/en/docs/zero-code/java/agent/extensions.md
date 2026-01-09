@@ -1411,7 +1411,7 @@ To see a complete, working example of an extension:
 
 The example includes:
 
-- Complete `build.gradle` with all necessary configuration
+- Complete gradle build file with all necessary configuration
 - Sample implementations of various extension points
 - Integration tests showing how to test your extension
 - Documentation explaining each component
