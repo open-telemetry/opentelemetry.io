@@ -1737,18 +1737,6 @@
   },
   "https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Container/operation/ContainerInspect": {
     "StatusCode": 206,
-    "LastSeen": "2026-01-07T09:47:56.253115476Z"
-  },
-  "https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Container/operation/ContainerStats": {
-    "StatusCode": 206,
-    "LastSeen": "2026-01-07T09:48:02.874582004Z"
-  },
-  "https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Image/operation/ImageInspect": {
-    "StatusCode": 206,
-    "LastSeen": "2026-01-07T09:47:53.290004878Z"
-  },
-  "https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Container/operation/ContainerInspect": {
-    "StatusCode": 206,
     "LastSeen": "2025-11-22T10:35:07.421431357Z"
   },
   "https://docs.docker.com/reference/api/engine/version/v1.52/#tag/Container/operation/ContainerStats": {
@@ -12539,9 +12527,85 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-16T10:38:32.962411271Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/common/README.md#attribute": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:19.03257-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/compatibility/prometheus_and_openmetrics.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:18.074771-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/configuration/sdk-environment-variables.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:20.420761-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/context/api-propagators.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:19.12436-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/document-status.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:16.861792-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/logs/api.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:15.756185-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/logs/api.md#emit-a-logrecord": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:17.149028-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/logs/api.md#logger": {
     "StatusCode": 206,
     "LastSeen": "2025-12-16T10:38:29.053125098Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/logs/data-model.md#events": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:15.756209-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/logs/data-model.md#field-attributes": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:18.144237-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/logs/data-model.md#field-body": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:18.743994-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/logs/data-model.md#field-eventname": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:17.31547-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/logs/data-model.md#field-severitynumber": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:19.035772-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/logs/data-model.md#log-and-event-record-definition": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:15.914539-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/metrics/api.md#instrument-advisory-parameters": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:17.497477-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/resource/sdk.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:15.800021-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/resource/sdk.md#sdk-provided-resource-attributes": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:22.350826-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/trace/api.md#set-status": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:17.555495-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/trace/api.md#span": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:19.466484-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.52.0/specification/trace/sdk.md#span-processor": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-09T12:49:20.844871-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
