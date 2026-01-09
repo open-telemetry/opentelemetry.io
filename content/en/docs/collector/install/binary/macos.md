@@ -24,8 +24,7 @@ tar -xvf otelcol_{{% param vers %}}_darwin_arm64.tar.gz
 
 {{% /tab %}} {{< /tabpane >}}
 
-Every Collector release includes an executable that you can unpack and
-run.
+Every Collector release includes an executable that you can unpack and run.
 
 [releases]:
   https://github.com/open-telemetry/opentelemetry-collector-releases/releases
