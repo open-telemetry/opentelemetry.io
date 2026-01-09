@@ -530,7 +530,7 @@ with your class name.
 ### AutoConfigurationCustomizerProvider
 
 {{% alert title="Note" %}} This will not work for situations where
-[declarative configuration](declarative-configuration.md) is in use.
+[declarative configuration](../declarative-configuration) is in use.
 {{% /alert %}}
 
 The main entry point for customizing SDK configuration. This allows you to:
@@ -974,7 +974,7 @@ INSTRUMENTER = Instrumenter.<MyRequest, MyResponse>builder(
   .buildClientInstrumenter(MyRequestSetter.INSTANCE);
 ```
 
-##### Use in client Advice
+##### Use in Client Advice
 
 In your advice class, the instrumenter automatically injects context when you
 call `start()`:
@@ -1060,7 +1060,7 @@ INSTRUMENTER = Instrumenter.<MyRequest, MyResponse>builder(
   .buildServerInstrumenter(MyRequestGetter.INSTANCE);
 ```
 
-##### Use in server Advice
+##### Use in Server Advice
 
 The instrumenter automatically extracts context when you call `start()`:
 
@@ -1143,15 +1143,16 @@ Then add it to your instrumenter builder:
 .setSpanStatusExtractor(new MySpanStatusExtractor())
 ```
 
-#### Accessing Context in Advice Code
+#### Accessing Spans and Context in Advice Code
 
-The recommended way to access the current context is via `Context.current()`.
-The only exception is instrumentation advice code that must remain compatible
-with pre–Java 8 class files.
+The recommended way to access the current span or context is via
+`Context.current()` and `Span.current()`. The only exception is instrumentation
+advice code that must remain compatible with pre–Java 8 class files.
 
 Advice code is inlined directly into the instrumented method, and calling
-`Context.current()`, a static interface method, can cause bytecode verification
-errors when instrumenting classes compiled for Java versions earlier than 8.
+`Context.current()`, which is a static interface method, can cause bytecode
+verification errors when instrumenting classes compiled for Java versions
+earlier than 8.
 
 In those cases, use `Java8BytecodeBridge`, which provides equivalent static
 class methods that are safe to use across all class file versions.
