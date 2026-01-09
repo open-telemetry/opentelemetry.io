@@ -25,10 +25,11 @@ Extensions allow you to:
 
 Here's a minimal extension that adds a custom span processor to get you started:
 
-**1. Create a Gradle project (build.gradle.kts):**
+Create a Gradle project (build.gradle.kts):
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "build.gradle.kts"?>
+
 ```kotlin
 plugins {
     id("java")
@@ -65,19 +66,12 @@ tasks.assemble {
 ```
 <!-- prettier-ignore-end -->
 
-**2. Create the SpanProcessor:**
+Create a `SpanProcessor` implementation:
 
 <!-- prettier-ignore-start -->
-<?code-excerpt "src/main/java/otel/MySpanProcessor.java"?>
+<?code-excerpt "src/main/java/otel/MySpanProcessor.java" from="public"?>
+
 ```java
-package otel;
-
-import io.opentelemetry.context.Context;
-import io.opentelemetry.sdk.common.CompletableResultCode;
-import io.opentelemetry.sdk.trace.ReadWriteSpan;
-import io.opentelemetry.sdk.trace.ReadableSpan;
-import io.opentelemetry.sdk.trace.SpanProcessor;
-
 public class MySpanProcessor implements SpanProcessor {
 
   @Override
@@ -109,21 +103,13 @@ public class MySpanProcessor implements SpanProcessor {
 ```
 <!-- prettier-ignore-end -->
 
-**3. Create an extension class that uses the
-`AutoConfigurationCustomizerProvider` SPI:**
+Create an extension class that uses the `AutoConfigurationCustomizerProvider`
+SPI:
 
 <!-- prettier-ignore-start -->
-<?code-excerpt "src/main/java/otel/MyExtensionProvider.java"?>
+<?code-excerpt "src/main/java/otel/MyExtensionProvider.java" from="@AutoService"?>
+
 ```java
-package otel;
-
-import com.google.auto.service.AutoService;
-import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizer;
-import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
-import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
-import io.opentelemetry.sdk.trace.SdkTracerProviderBuilder;
-import io.opentelemetry.sdk.trace.SpanLimits;
-
 @AutoService(AutoConfigurationCustomizerProvider.class)
 public class MyExtensionProvider implements AutoConfigurationCustomizerProvider {
 
@@ -142,13 +128,13 @@ public class MyExtensionProvider implements AutoConfigurationCustomizerProvider 
 ```
 <!-- prettier-ignore-end -->
 
-**4. Build the extension:**
+Build the extension:
 
 ```bash
 ./gradlew shadowJar
 ```
 
-**5. Use the extension:**
+Use the extension:
 
 ```bash
 java -javaagent:opentelemetry-javaagent.jar \
@@ -433,9 +419,8 @@ implementation("org.apache.commons:commons-lang3:3.19.0")
 implementation("com.google.guava:guava:33.0.0-jre")
 ```
 
-{{% alert title="Important" %}}
-Extensions cannot load dependencies from separate JAR files. All
-dependencies must be merged into a single shadow JAR.
+{{% alert title="Important" %}} Extensions cannot load dependencies from
+separate JAR files. All dependencies must be merged into a single shadow JAR.
 {{% /alert %}}
 
 ### Extension Points Overview
@@ -511,37 +496,6 @@ Extension-specific properties follow the same pattern
 - `otel.instrumentation.myextension.threshold`
 - `otel.instrumentation.myextension.custom-value`
 
-#### Example: Configurable Sampler
-
-```java
-@AutoService(ConfigurableSamplerProvider.class)
-public class MyConfigurableSamplerProvider implements ConfigurableSamplerProvider {
-  @Override
-  public Sampler createSampler(ConfigProperties config) {
-    double ratio = config.getDouble("otel.instrumentation.mysampler.ratio", 1.0);
-    boolean debug = config.getBoolean("otel.instrumentation.mysampler.debug", false);
-    if (debug) {
-      System.out.println("MyConfigurableSampler: ratio=" + ratio + ", debug=" + debug);
-    }
-    return Sampler.traceIdRatioBased(ratio);
-  }
-  @Override
-  public String getName() {
-    return "mysampler";
-  }
-}
-```
-
-Usage:
-
-```bash
-java -javaagent:opentelemetry-javaagent.jar \
-     -Dotel.traces.sampler=mysampler \
-     -Dotel.instrumentation.mysampler.ratio=0.1 \
-     -Dotel.instrumentation.mysampler.debug=true \
-     -jar myapp.jar
-```
-
 ### Using @AutoService
 
 The `@AutoService` annotation automatically generates the required
@@ -591,6 +545,7 @@ The main entry point for customizing SDK configuration. This allows you to:
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoAutoConfigurationCustomizerProvider.java" from="@AutoService"?>
+
 ```java
 @AutoService(AutoConfigurationCustomizerProvider.class)
 public class DemoAutoConfigurationCustomizerProvider
@@ -636,6 +591,7 @@ instrumentations.
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoInstrumenterCustomizerProvider.java" from="/**"?>
+
 ```java
 /**
  * This example demonstrates how to use the InstrumenterCustomizerProvider SPI to customize
@@ -791,6 +747,7 @@ Register custom propagators that can be referenced by name in the
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoPropagatorProvider.java" from="@AutoService"?>
+
 ```java
 @AutoService(ConfigurablePropagatorProvider.class)
 public class DemoPropagatorProvider implements ConfigurablePropagatorProvider {
@@ -817,6 +774,7 @@ configuration.
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoConfigurableSamplerProvider.java" from="@AutoService"?>
+
 ```java
 @AutoService(ConfigurableSamplerProvider.class)
 public class DemoConfigurableSamplerProvider implements ConfigurableSamplerProvider {
@@ -844,6 +802,7 @@ resource providers.
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoResourceProvider.java" from="@AutoService"?>
+
 ```java
 @AutoService(ResourceProvider.class)
 public class DemoResourceProvider implements ResourceProvider {
@@ -868,9 +827,7 @@ augment existing instrumentation.
 
 Use custom instrumentation when you need to:
 
-- Add tracing to a library or framework not supported by the agent
-- Access instance-specific data from the target class (like connection
-  properties)
+- Add tracing or metrics to a library or framework not supported by the agent
 - Run your code before or after specific methods execute
 - Modify the behavior of existing instrumentation using the `order()` method
 
@@ -879,15 +836,16 @@ SDK customizations (SpanProcessor, Sampler) as shown earlier in this guide.
 
 #### Components of Custom Instrumentation
 
-Custom instrumentation requires three components:
+Custom instrumentation is usually comprised of the following components:
 
 1. **InstrumentationModule** - Defines what to instrument and when
 2. **TypeInstrumentation** - Specifies which classes and methods to target
 3. **Advice** - Contains the code to inject (runs before/after target methods)
+4. **Instrumenter** - Manages span creation, context propagation, and attributes
 
 #### Required Dependencies
 
-Add these dependencies to your extension's `build.gradle`:
+Add these dependencies to your extension's `build.gradle.kts` file:
 
 ```groovy
 dependencies {
@@ -896,118 +854,296 @@ dependencies {
 }
 ```
 
-#### Step-by-Step Example
+#### The Instrumenter API
 
-Let's instrument a hypothetical database client to add custom span attributes.
+The OpenTelemetry Java Instrumentation project provides an `Instrumenter` API
+that simplifies creating custom instrumentation. The `Instrumenter` encapsulates
+the logic for:
 
-**Create the InstrumentationModule:**
+- Creating spans
+- Extracting attributes
+- Propagating context
+- Recording metrics
+
+#### Custom Instrumentation Basic Structure
+
+##### Create an InstrumentationModule
+
+An `InstrumentationModule` groups related `TypeInstrumentation` implementations
+together. It must be registered using `@AutoService`:
 
 ```java
-package com.example.extension.instrumentation;
-
-import com.google.auto.service.AutoService;
-import io.opentelemetry.javaagent.extension.instrumentation.InstrumentationModule;
-import io.opentelemetry.javaagent.extension.instrumentation.TypeInstrumentation;
-import java.util.Collections;
-import java.util.List;
-
 @AutoService(InstrumentationModule.class)
-public class DatabaseClientInstrumentationModule extends InstrumentationModule {
+public class MyCustomInstrumentationModule extends InstrumentationModule {
 
-  public DatabaseClientInstrumentationModule() {
-    // First arg: instrumentation name (for enabling/disabling)
-    // Additional args: aliases for this instrumentation
-    super("database-client-custom");
+  public MyCustomInstrumentationModule() {
+    super("my-custom-library");
   }
 
   @Override
   public List<TypeInstrumentation> typeInstrumentations() {
-    return Collections.singletonList(new DatabaseClientInstrumentation());
-  }
-
-  // Optional: Control execution order relative to other instrumentations
-  // Higher numbers run later. Use this to run after upstream instrumentation.
-  @Override
-  public int order() {
-    return 1; // Run after default instrumentation (which uses order 0)
+    return Collections.singletonList(new MyTypeInstrumentation());
   }
 }
 ```
 
-**Create the TypeInstrumentation:**
+##### Create a TypeInstrumentation
+
+A `TypeInstrumentation` defines which classes to instrument and what
+transformations to apply:
 
 ```java
-package com.example.extension.instrumentation;
-
-import io.opentelemetry.javaagent.extension.instrumentation.TypeInstrumentation;
-import io.opentelemetry.javaagent.extension.instrumentation.TypeTransformer;
-import net.bytebuddy.description.type.TypeDescription;
-import net.bytebuddy.matcher.ElementMatcher;
-import static net.bytebuddy.matcher.ElementMatchers.*;
-
-public class DatabaseClientInstrumentation implements TypeInstrumentation {
+public class MyTypeInstrumentation implements TypeInstrumentation {
 
   @Override
   public ElementMatcher<TypeDescription> typeMatcher() {
-    // Match the target class(es) to instrument
-    return named("com.example.db.DatabaseClient");
+    return named("com.example.MyClass");
   }
 
   @Override
   public void transform(TypeTransformer transformer) {
-    // Apply advice to specific method(s)
     transformer.applyAdviceToMethod(
-      named("executeQuery")                    // Method name
-        .and(takesArgument(0, String.class))   // First parameter is String
-        .and(isPublic()),                      // Only public methods
-      this.getClass().getName() + "$ExecuteQueryAdvice"
-    );
+      named("myMethod")
+        .and(isPublic())
+        .and(takesArguments(1)),
+      this.getClass().getName() + "$MyMethodAdvice");
+  }
+}
+```
+
+##### Create an Instrumenter
+
+Create a singleton `Instrumenter` instance. The `Instrumenter` is parameterized
+with `REQUEST` and `RESPONSE` types:
+
+```java
+public final class MySingletons {
+
+  private static final Instrumenter<MyRequest, MyResponse> INSTRUMENTER;
+
+  static {
+    INSTRUMENTER = Instrumenter.<MyRequest, MyResponse>builder(
+        GlobalOpenTelemetry.get(),
+        "io.opentelemetry.my-custom-library",
+        request -> request.getOperationName())
+      .addAttributesExtractor(new MyAttributesExtractor())
+      .buildInstrumenter(); // Creates INTERNAL spans
   }
 
-  // Advice class defined as inner static class
-  public static class ExecuteQueryAdvice {
+  public static Instrumenter<MyRequest, MyResponse> instrumenter() {
+    return INSTRUMENTER;
+  }
 
-    @Advice.OnMethodEnter(suppress = Throwable.class)
-    public static void onEnter(
-        @Advice.Argument(0) String query,
-        @Advice.This Object dbClient) {
+  private MySingletons() {}
+}
+```
 
-      // Access the current span and add attributes
-      Span span = Java8BytecodeBridge.currentSpan();
-      span.setAttribute("db.query.custom", query);
-      span.setAttribute("db.client.class", dbClient.getClass().getName());
+#### Creating Client Spans
 
-      System.out.println("Instrumented query: " + query);
-    }
+Client spans represent outbound requests to external services. They inject
+context into outgoing requests for distributed tracing.
 
-    @Advice.OnMethodExit(suppress = Throwable.class, onThrowable = Throwable.class)
-    public static void onExit(@Advice.Thrown Throwable throwable) {
-      if (throwable != null) {
-        Span span = Java8BytecodeBridge.currentSpan();
-        span.setAttribute("db.query.failed", true);
-      }
+##### Create a TextMapSetter
+
+A `TextMapSetter` defines how to inject context into your request object:
+
+```java
+enum MyRequestSetter implements TextMapSetter<MyRequest> {
+  INSTANCE;
+
+  @Override
+  public void set(@Nullable MyRequest carrier, String key, String value) {
+    if (carrier != null) {
+      carrier.setHeader(key, value);
     }
   }
 }
 ```
 
-#### Important Considerations
+##### Build a Client Instrumenter
 
-- Always use `suppress = Throwable.class` to prevent your advice from
-  breaking the instrumented application
-- Advice methods must be static since they're inlined into the target class
-- Keep advice methods small and move complex logic to helper classes
-- Use `order()` to control execution order relative to the existing instrumentation
+Use `buildClientInstrumenter()` to create an instrumenter that creates CLIENT
+spans and injects context:
 
-#### Testing Your Instrumentation
+```java
+INSTRUMENTER = Instrumenter.<MyRequest, MyResponse>builder(
+    GlobalOpenTelemetry.get(),
+    "io.opentelemetry.my-custom-library",
+    request -> request.getOperationName())
+  .addAttributesExtractor(new MyAttributesExtractor())
+  .buildClientInstrumenter(MyRequestSetter.INSTANCE);
+```
 
-For a complete working example with tests, see the
-[DemoServlet3InstrumentationModule](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/src/main/java/com/example/javaagent/instrumentation/DemoServlet3InstrumentationModule.java)
-in the example extension.
+##### Use in client Advice
 
-### Application-Agent Communication
+In your advice class, the instrumenter automatically injects context when you
+call `start()`:
 
-#### Accessing the Current Span
+```java
+@Advice.OnMethodEnter(suppress = Throwable.class)
+public static void onEnter(
+    @Advice.Argument(0) MyRequest request,
+    @Advice.Local("otelContext") Context context,
+    @Advice.Local("otelScope") Scope scope) {
+
+  Context parentContext = Java8BytecodeBridge.currentContext();
+
+  if (!instrumenter().shouldStart(parentContext, request)) {
+    return;
+  }
+
+  context = instrumenter().start(parentContext, request);
+  scope = context.makeCurrent();
+  // Context is now injected into the request automatically
+}
+
+@Advice.OnMethodExit(suppress = Throwable.class, onThrowable = Throwable.class)
+public static void onExit(
+    @Advice.Argument(0) MyRequest request,
+    @Advice.Return MyResponse response,
+    @Advice.Thrown Throwable exception,
+    @Advice.Local("otelContext") Context context,
+    @Advice.Local("otelScope") Scope scope) {
+
+  if (scope == null) {
+    return;
+  }
+
+  scope.close();
+  instrumenter().end(context, request, response, exception);
+}
+```
+
+#### Creating Server Spans
+
+Server spans represent inbound requests. They extract context from incoming
+requests to continue distributed traces.
+
+##### Create a TextMapGetter
+
+A `TextMapGetter` defines how to extract context from your request object:
+
+```java
+enum MyRequestGetter implements TextMapGetter<MyRequest> {
+  INSTANCE;
+
+  @Override
+  public Iterable<String> keys(@Nullable MyRequest carrier) {
+    if (carrier == null) {
+      return Collections.emptyList();
+    }
+    return carrier.getHeaderNames();
+  }
+
+  @Override
+  @Nullable
+  public String get(@Nullable MyRequest carrier, String key) {
+    if (carrier == null) {
+      return null;
+    }
+    return carrier.getHeader(key);
+  }
+}
+```
+
+##### Build a Server Instrumenter
+
+Use `buildServerInstrumenter()` to create an instrumenter that creates SERVER
+spans and extracts context:
+
+```java
+INSTRUMENTER = Instrumenter.<MyRequest, MyResponse>builder(
+    GlobalOpenTelemetry.get(),
+    "io.opentelemetry.my-custom-library",
+    request -> request.getPath())
+  .addAttributesExtractor(new MyAttributesExtractor())
+  .buildServerInstrumenter(MyRequestGetter.INSTANCE);
+```
+
+##### Use in server Advice
+
+The instrumenter automatically extracts context when you call `start()`:
+
+```java
+@Advice.OnMethodEnter(suppress = Throwable.class)
+public static void onEnter(
+    @Advice.Argument(0) MyRequest request,
+    @Advice.Local("otelContext") Context context,
+    @Advice.Local("otelScope") Scope scope) {
+
+  Context parentContext = Java8BytecodeBridge.currentContext();
+
+  if (!instrumenter().shouldStart(parentContext, request)) {
+    return;
+  }
+
+  // Context is extracted from request automatically
+  context = instrumenter().start(parentContext, request);
+  scope = context.makeCurrent();
+}
+```
+
+#### Customizing Instrumentation
+
+##### Adding Attributes
+
+Create an `AttributesExtractor` to add custom attributes to spans:
+
+```java
+class MyAttributesExtractor implements AttributesExtractor<MyRequest, MyResponse> {
+
+  private static final AttributeKey<String> CUSTOM_ATTR =
+    stringKey("my.custom.attribute");
+
+  @Override
+  public void onStart(AttributesBuilder attributes, MyRequest request) {
+    set(attributes, CUSTOM_ATTR, request.getCustomValue());
+  }
+
+  @Override
+  public void onEnd(
+      AttributesBuilder attributes,
+      MyRequest request,
+      @Nullable MyResponse response,
+      @Nullable Throwable error) {
+    if (response != null) {
+      set(attributes, stringKey("my.response.code"),
+        String.valueOf(response.getStatusCode()));
+    }
+  }
+}
+```
+
+##### Customizing Span Status
+
+Create a `SpanStatusExtractor` to customize span status:
+
+```java
+class MySpanStatusExtractor implements SpanStatusExtractor<MyRequest, MyResponse> {
+
+  @Override
+  public StatusCode extract(
+      MyRequest request,
+      @Nullable MyResponse response,
+      @Nullable Throwable error) {
+    if (error != null) {
+      return StatusCode.ERROR;
+    }
+    if (response != null && response.isSuccess()) {
+      return StatusCode.OK;
+    }
+    return StatusCode.UNSET;
+  }
+}
+```
+
+Then add it to your instrumenter builder:
+
+```java
+.setSpanStatusExtractor(new MySpanStatusExtractor())
+```
+
+#### Accessing Context in Advice Code
 
 The recommended way to access the current context is via `Context.current()`.
 The only exception is instrumentation advice code that must remain compatible
@@ -1042,6 +1178,21 @@ public static class MyAdvice {
   }
 }
 ```
+
+#### Important Considerations
+
+- Always use `suppress = Throwable.class` to prevent your advice from breaking
+  the instrumented application
+- Advice methods must be static since they're inlined into the target class
+- Keep advice methods small and move complex logic to helper classes
+- Use `order()` to control execution order relative to the existing
+  instrumentation
+
+#### Testing Your Instrumentation
+
+For a complete working example with tests, see the
+[DemoServlet3InstrumentationModule](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/src/main/java/com/example/javaagent/instrumentation/DemoServlet3InstrumentationModule.java)
+in the example extension.
 
 ## Use Cases & Patterns
 
