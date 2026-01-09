@@ -6819,6 +6819,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-08T09:50:26.039991039Z"
   },
+  "https://github.com/open-telemetry/community/pull/3000": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-07T15:52:12.770643-08:00"
+  },
   "https://github.com/open-telemetry/community/pull/3021": {
     "StatusCode": 206,
     "LastSeen": "2026-01-05T09:53:16.15373514Z"
@@ -12867,6 +12871,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-31T09:43:28.938794106Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io#roles": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-07T15:52:18.713026-08:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-01-05T09:48:04.789861789Z"
@@ -12903,6 +12911,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-07T09:45:10.798264565Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/landing-page-redesign.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-07T15:52:20.908627-08:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/commits/main/": {
     "StatusCode": 206,
     "LastSeen": "2026-01-07T09:45:05.093546579Z"
@@ -12914,6 +12926,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/compare/2023.12...2024.11": {
     "StatusCode": 206,
     "LastSeen": "2026-01-08T09:50:37.990213161Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/compare/2024.12...2025.11": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-07T15:52:15.944197-08:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/discussions": {
     "StatusCode": 206,
@@ -13630,6 +13646,10 @@
   "https://github.com/orgs/open-telemetry/projects/151": {
     "StatusCode": 206,
     "LastSeen": "2025-12-31T09:45:19.807628161Z"
+  },
+  "https://github.com/orgs/open-telemetry/projects/174/views/3": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-07T15:52:23.113564-08:00"
   },
   "https://github.com/orgs/open-telemetry/projects/38": {
     "StatusCode": 206,
@@ -15462,6 +15482,10 @@
   "https://javalin.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-01-05T09:49:41.777465228Z"
+  },
+  "https://jaydeluca.github.io/instrumentation-explorer/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-07T15:52:13.854111-08:00"
   },
   "https://jdbi.org/": {
     "StatusCode": 206,
