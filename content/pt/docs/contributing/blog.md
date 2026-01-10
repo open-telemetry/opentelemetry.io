@@ -37,9 +37,13 @@ publicações devem seguir as políticas descritas no
 
 ### Criando links para repositórios do GitHub
 
-Ao criar links para o código-fonte em repositórios do GitHub, não utilize a branch `main` (ou outra branch padrão). Em vez disso, utilize um **commit específico** ou uma **versão marcada** que reflita o estado do código no momento em que a postagem do blog foi escrita.
+Ao criar links para o código-fonte em repositórios do GitHub, não utilize a
+branch `main` (ou outra branch padrão). Em vez disso, utilize um **commit
+específico** ou uma **versão marcada** que reflita o estado do código no momento
+em que a postagem do blog foi escrita.
 
-Isso garante que as postagens do blog permaneçam estáveis ​​e não apresentem problemas no futuro, conforme os repositórios evoluem.
+Isso garante que as postagens do blog permaneçam estáveis ​​e não apresentem
+problemas no futuro, conforme os repositórios evoluem.
 
 Verifique se o conteúdo pretendido se aplica amplamente à comunidade
 OpenTelemetry. Exemplos de conteúdos adequados incluem:
