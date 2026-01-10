@@ -32,8 +32,8 @@ can come in the form of [traces](/docs/concepts/signals/traces/),
 [logs](/docs/concepts/signals/logs/).
 
 **Reliability** answers the question: "Is the service doing what users expect it
-to be doing?” A system could be up 100% of the time, but if, when a user clicks
-"Add to Cart” to add a black pair of shoes to their shopping cart, the system
+to be doing?" A system could be up 100% of the time, but if, when a user clicks
+"Add to Cart" to add a black pair of shoes to their shopping cart, the system
 doesn't always add black shoes, then the system could be **un**reliable.
 
 **Metrics** are aggregations over a period of time of numeric data about your
@@ -134,7 +134,6 @@ For example, when a user loads a webpage, the initial HTTP request may pass
 through an API gateway, a backend service, and a database. Each of these steps
 is represented by a span, and together they form a single trace that shows the
 end-to-end journey of the request.
-
 
 Without tracing, finding the root cause of performance problems in a distributed
 system can be challenging. Tracing makes debugging and understanding distributed
