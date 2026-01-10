@@ -20,12 +20,12 @@ lançamentos e artefatos.
 
 A API é um conjunto de classes e interfaces para registrar telemetria em
 sinais-chave de observabilidade. Ela suporta múltiplas implementações, incluindo
-uma implementação minimalista _Noop_ de baixo _overhead_ (pronunciada "no-op",
-de "no operation", significando "sem operação") e uma implementação de
-referência de SDK fornecida de forma nativa. Ela foi projetada para ser
-utilizada como dependência direta por bibliotecas, _frameworks_ e responsáveis
-por aplicações que desejam adicionar instrumentação. Possui fortes garantias de
-compatibilidade retroativa, nenhuma dependência transitiva e suporte ao Java 8+.
+uma implementação minimalista _no-op_ (significando "sem operação") de baixo
+_overhead_ e uma implementação de referência de SDK fornecida de forma nativa.
+Ela foi projetada para ser utilizada como dependência direta por bibliotecas,
+_frameworks_ e responsáveis por aplicações que desejam adicionar instrumentação.
+Possui fortes garantias de compatibilidade retroativa, nenhuma dependência
+transitiva e suporte ao Java 8+.
 
 O SDK é a implementação de referência integrada da API, responsável por
 processar e exportar a telemetria produzida pelas chamadas da API de
