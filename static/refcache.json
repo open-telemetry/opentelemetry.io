@@ -13863,6 +13863,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-13T09:47:53.647799642Z"
   },
+  "https://github.com/openzipkin/b3-propagation/blob/master/README.md#multiple-headers": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-10T10:38:48.683163365Z"
+  },
   "https://github.com/openzipkin/zipkin-api/blob/master/thrift/zipkinCore.thrift": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:51:03.708874329Z"
