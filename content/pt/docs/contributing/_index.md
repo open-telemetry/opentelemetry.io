@@ -9,8 +9,7 @@ cascade:
     **entendimento** de OpenTelemetry. Evite exceder suas capacidades.
   _issues: https://github.com/open-telemetry/opentelemetry.io/issues
   _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
-default_lang_commit: 1ececa0615b64c5dfd93fd6393f3e4052e0cc496
-drifted_from_default: true
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 ---
 
 {{% alert title="Obrigado pelo seu interesse!" color=success %}}
@@ -28,7 +27,9 @@ OpenTelemetry.
 
   {{% alert title="Nós não atribuímos (dar _assign_) a issues" color="warning" %}}
 
-  Nós **_não_ atribuímos (dar _assign_) issues** para quem ainda não contribuiu para a [organização OpenTelemetry organization][org], a menos que faça parte de um processo confirmado de mentoria ou _onboarding_.
+  Nós **_não_ atribuímos (dar _assign_) issues** para quem ainda não contribuiu
+  para a [organização OpenTelemetry organization][org], a menos que faça parte
+  de um processo confirmado de mentoria ou _onboarding_.
 
   [org]: https://github.com/open-telemetry
 
@@ -38,7 +39,8 @@ OpenTelemetry.
 
 - Leia nossa [política de contribuição com IA](pull-requests#using-ai)
 
-- Deseja trabalhar em outras _issues_ ou mudanças maiores? [Converse com os mantenedores primeiro][discuss it with maintainers first].
+- Deseja trabalhar em outras _issues_ ou mudanças maiores? [Converse com os
+  mantenedores primeiro][discuss it with maintainers first].
 
 [discuss it with maintainers first]: issues/#fixing-an-existing-issue
 
