@@ -38,7 +38,7 @@ publicações devem seguir as políticas descritas no
 ### Criando links para repositórios do GitHub
 
 Ao criar links para o código-fonte em repositórios do GitHub, não utilize a
-branch `main` (ou outra branch padrão). Em vez disso, utilize um **commit
+_branch_ `main` (ou outra _branch_ padrão). Em vez disso, utilize um **commit
 específico** ou uma **versão marcada** que reflita o estado do código no momento
 em que a postagem do blog foi escrita.
 
