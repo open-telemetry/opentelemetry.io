@@ -147,13 +147,13 @@ metrics.set_meter_provider(meterProvider)
 
 Existem predefinições de temporalidade para cada tipo de instrumentação. Essas
 predefinições podem ser definidas com a variável de ambiente
-`OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE`, por exemplo:
+`OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`, por exemplo:
 
 ```sh
-export OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE="DELTA"
+export OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE="DELTA"
 ```
 
-O valor padrão para `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` é
+O valor padrão para `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` é
 `"CUMULATIVE"`.
 
 Os valores disponíveis e suas configurações correspondentes para esta variável
@@ -183,7 +183,7 @@ de ambiente são:
   - `ObservableUpDownCounter`: `CUMULATIVE`
   - `ObservableGauge`: `CUMULATIVE`
 
-Definir `OTEL_EXPORTER_METRICS_TEMPORALITY_PREFERENCE` para qualquer valor
+Definir `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` para qualquer valor
 diferente de `CUMULATIVE`, `DELTA` ou `LOWMEMORY` registrará um aviso e definirá
 esta variável de ambiente como `CUMULATIVE`.
 
