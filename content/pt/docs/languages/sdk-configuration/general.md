@@ -3,8 +3,7 @@ title: Configurações gerais de SDK
 linkTitle: Geral
 weight: 10
 aliases: [general-sdk-configuration]
-default_lang_commit: a5691930635b4e2033946f3a85ae7a527c3eba06 # patched
-drifted_from_default: true
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 cSpell:ignore: ottrace
 ---
 
@@ -135,9 +134,9 @@ Os valores aceitos para `OTEL_PROPAGATORS` são:
 - `jaeger`: [Jaeger](https://www.jaegertracing.io/sdk-migration/)
 - `xray`:
   [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader)
-  (__terceiro_)
+  (_terceiro_)
 - `ottrace`: [OT Trace](https://github.com/opentracing?q=basic&type=&language=)
-  (__terceiro_)
+  (_terceiro_)
 - `none`: Nenhum propagador configurado automaticamente.
 
 ## `OTEL_TRACES_EXPORTER`
