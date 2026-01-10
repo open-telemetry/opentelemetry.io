@@ -5,7 +5,7 @@ sidebar_root_for: self
 weight: 980
 cascade:
   chooseAnIssueAtYourLevel: |
-    Certifique-se de [escolher uma issue][choose an issue] que corresponda ao seu nível de **experiência** e
+    [Escolha uma issue] que corresponda ao seu nível de **experiência** e
     **entendimento** de OpenTelemetry. Evite exceder suas capacidades.
   _issues: https://github.com/open-telemetry/opentelemetry.io/issues
   _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
@@ -76,7 +76,7 @@ consulte o [Guia para novos contribuidores do OpenTelemetry] da comunidade. Cada
 [repositório OTel][org] para implementações de linguagem, o Collector e
 convenções possui seu próprio guia de contribuição específico.
 
-[choose an issue]: issues/#fixing-an-existing-issue
+[escolha uma issue]: issues/#fixing-an-existing-issue
 [issues]: issues/
 [Guia para novos contribuidores do OpenTelemetry]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor
