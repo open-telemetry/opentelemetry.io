@@ -16,11 +16,11 @@ corrigir um problema já existente.
 1. Navegue pela lista de [_issues_]({{% param _issues %}}).
 2. Selecione uma issue com a qual você gostaria de contribuir.
 
-  {{% alert color="warning" %}}
+{{% alert color="warning" %}}
 
-  {{% param chooseAnIssueAtYourLevel %}}
+{{% param chooseAnIssueAtYourLevel %}}
 
-   {{% /alert %}}
+{{% /alert %}}
 
 3. Leia os comentários existentes na _issue_, se houver.
 4. Pergunte aos mantenedores se a _issue_ ainda é relevante e esclareça
