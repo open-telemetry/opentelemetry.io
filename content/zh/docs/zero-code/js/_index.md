@@ -2,8 +2,7 @@
 title: JavaScript 零代码插桩
 linkTitle: JavaScript
 default_lang_commit: 55f8de69ad3cf54f24243c200f70cd0b3a608ad4
-description:
-  无需修改源代码即可从应用程序捕获遥测数据
+description: 无需修改源代码即可从应用程序捕获遥测数据
 aliases: [/docs/languages/js/automatic]
 ---
 

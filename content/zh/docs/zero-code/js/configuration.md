@@ -1,5 +1,5 @@
 ---
-title: 零代码插桩配置 {#zero-code-instrumentation-configuration}
+title: 零代码插桩配置
 linkTitle: 配置
 description: 了解如何为 Node.js 配置零代码插桩
 default_lang_commit: 115933c1b9c643c8b6cf0d413a32061cd3a1b65f
