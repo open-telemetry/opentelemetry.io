@@ -22,20 +22,22 @@ submeta um [pull request][PR] (PR):
 
 {{% alert color="warning" title="Nota importante para contribuidor iniciantes" %}}
 
-Se você é um [contribuidor iniciante][first-time contributor], observe o seguinte:
+Se você é um [contribuidor iniciante][first-time contributor], observe o
+seguinte:
 
-Suas 3 primeiras
-contribuições para o nosso repositório devem ser escritas majoritariamente por humanos, com assistência mínima de IA permitida.
-([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)). Isso significa que
-seu código deve ser escrito manualmente, mas a IA pode auxiliar com o preenchimento automático de código,
-formatação, _linting_ e seguindo as melhores práticas. A descrição do seu PR deve ser
-inteiramente escrita por humanos, sem qualquer envolvimento de IA (AIL0).
+Suas 3 primeiras contribuições para o nosso repositório devem ser escritas
+majoritariamente por humanos, com assistência mínima de IA permitida.
+([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)). Isso significa
+que seu código deve ser escrito manualmente, mas a IA pode auxiliar com o
+preenchimento automático de código, formatação, _linting_ e seguindo as melhores
+práticas. A descrição do seu PR deve ser inteiramente escrita por humanos, sem
+qualquer envolvimento de IA (AIL0).
 
-Claro, você pode usar ferramentas de IA para fazer perguntas e aprender sobre nosso repositório,
-nosso projeto, como contribuir e muito mais.
+Claro, você pode usar ferramentas de IA para fazer perguntas e aprender sobre
+nosso repositório, nosso projeto, como contribuir e muito mais.
 
-Implementamos esse requisito para ajudar você a aprender enquanto contribui, e para
-ajudar a proteger o tempo dos mantenedores e aprovadores, que é um recurso
+Implementamos esse requisito para ajudar você a aprender enquanto contribui, e
+para ajudar a proteger o tempo dos mantenedores e aprovadores, que é um recurso
 escasso.
 
 Os mantenedores podem abrir uma exceção se ficar claro que sua contribuição é
@@ -43,12 +45,12 @@ Os mantenedores podem abrir uma exceção se ficar claro que sua contribuição 
 
 {{% /alert %}}
 
-
 A IA generativa é permitida, mas **você é responsável** por **revisar e
-_validar_** todo o conteúdo gerado pela IA &mdash; se você não o entender,
-não o envie!
+_validar_** todo o conteúdo gerado pela IA &mdash; se você não o entender, não o
+envie!
 
-Para mais detalhes, consulte nossa [Política de Contribuição de IA Generativa][Generative AI Contribution Policy].
+Para mais detalhes, consulte nossa [Política de Contribuição de IA
+Generativa][Generative AI Contribution Policy].
 
 [first-time contributor]: ../#first-time-contributing
 [Generative AI Contribution Policy]:
