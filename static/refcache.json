@@ -1211,6 +1211,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-30T09:54:22.360532132Z"
   },
+  "https://datatracker.ietf.org/doc/html/rfc3986#section-2.1": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-05T10:44:10.918897682Z"
+  },
   "https://datatracker.ietf.org/doc/html/rfc3986#section-3": {
     "StatusCode": 206,
     "LastSeen": "2026-01-30T09:54:28.760476334Z"
@@ -1218,6 +1222,10 @@
   "https://datatracker.ietf.org/doc/html/rfc3986#section-3.2.1": {
     "StatusCode": 206,
     "LastSeen": "2026-02-03T09:55:21.644624477Z"
+  },
+  "https://datatracker.ietf.org/doc/html/rfc4648#section-4": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-03T10:44:23.250608674Z"
   },
   "https://datatracker.ietf.org/doc/html/rfc4648#section-8": {
     "StatusCode": 206,
@@ -1290,6 +1298,14 @@
   "https://datatracker.ietf.org/doc/html/rfc8174": {
     "StatusCode": 206,
     "LastSeen": "2026-01-30T09:54:25.565351356Z"
+  },
+  "https://datatracker.ietf.org/doc/html/rfc8259#section-3": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-03T10:44:18.791856122Z"
+  },
+  "https://datatracker.ietf.org/doc/html/rfc8259#section-6": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-03T10:44:21.379688709Z"
   },
   "https://datatracker.ietf.org/doc/html/rfc8555": {
     "StatusCode": 206,
@@ -13987,6 +14003,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-30T09:54:29.081807544Z"
   },
+  "https://github.com/openzipkin/b3-propagation/blob/master/README.md#multiple-headers": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-10T10:38:48.683163365Z"
+  },
   "https://github.com/openzipkin/zipkin-api/blob/master/thrift/zipkinCore.thrift": {
     "StatusCode": 206,
     "LastSeen": "2026-02-10T09:57:42.207350738Z"
@@ -22058,6 +22078,10 @@
   "https://www.w3.org/TR/baggage/#key": {
     "StatusCode": 206,
     "LastSeen": "2026-01-30T09:54:29.126176074Z"
+  },
+  "https://www.w3.org/TR/baggage/#property": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-05T10:44:14.219667923Z"
   },
   "https://www.w3.org/TR/trace-context-1": {
     "StatusCode": 206,
