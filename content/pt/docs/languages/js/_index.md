@@ -9,8 +9,7 @@ redirects:
   - { from: /js/*, to: ':splat' }
   - { from: /docs/js/*, to: ':splat' }
 weight: 20
-default_lang_commit: 33a23bc0805eb0940d214e20e7f2d7da056cbebb
-drifted_from_default: true
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 ---
 
 {{% docs/languages/index-intro js /%}}
