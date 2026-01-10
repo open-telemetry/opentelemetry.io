@@ -126,10 +126,10 @@ precisar aumentar o limite de descritores de arquivo. Veja
 O site é construído a partir do seguinte conteúdo:
 
 - Arquivos sob `content/`, `static/`, etc. conforme os padrões do [Hugo].
-- Pontos de montagem, definidos pela [configuração][config] do Hugo em `config/_default/module-template.yaml`. As montagens são
-  diretamente de submódulos git sob [content-modules], ou conteúdo
-  pré-processado de `content-modules` (colocado sob `tmp/`), e em nenhum outro
-  lugar.
+- Pontos de montagem, definidos pela [configuração][config] do Hugo em
+  `config/_default/module-template.yaml`. As montagens são diretamente de
+  submódulos git sob [content-modules], ou conteúdo pré-processado de
+  `content-modules` (colocado sob `tmp/`), e em nenhum outro lugar.
 
 [config]: https://github.com/open-telemetry/opentelemetry.io/tree/main/config
 [content-modules]:
