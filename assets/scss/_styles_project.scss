@@ -132,6 +132,10 @@
   }
 }
 
+.td-sidebar__inner {
+  height: calc(100vh - 3.5rem);
+}
+
 .o-banner {
   @include media-breakpoint-up(md) {
     width: 100%;
