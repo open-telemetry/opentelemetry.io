@@ -3,6 +3,7 @@ title: 日志
 description: 对事件的记录。
 weight: 3
 default_lang_commit: e1bf6c870fbf82791a3826baaf276bc0ca79c88b
+drifted_from_default: true
 cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
 

@@ -34,15 +34,15 @@ Because one is often not enough.
 There are two deployment modes for Collectors: agent mode and gateway mode, and
 both are needed.
 
-In [agent mode](/docs/collector/deployment/agent/), the Collector sits next to
-the application or on the same host as the application.
+In [agent mode](/docs/collector/deploy/agent/), the Collector sits next to the
+application or on the same host as the application.
 
 ![OTel Collector Agent Mode](otel-collector-agent.png)
 
-In [gateway mode](/docs/collector/deployment/gateway/), telemetry data is sent
-to a load balancer, which then determines how to distribute the load amongst a
-pool of Collectors. Because you have a pool of Collectors, should one Collector
-in that pool fail, one of the other Collectors in the pool can take over. This
+In [gateway mode](/docs/collector/deploy/gateway/), telemetry data is sent to a
+load balancer, which then determines how to distribute the load amongst a pool
+of Collectors. Because you have a pool of Collectors, should one Collector in
+that pool fail, one of the other Collectors in the pool can take over. This
 keeps data flowing to your destination sans disruptions. Gateway mode is
 commonly deployed per cluster, data center, or region.
 
@@ -136,7 +136,7 @@ features, bug fixes, performance improvements, and security fixes.
 OpenTelemetry allows you to send telemetry signals from your application to an
 observability backend in one of two ways:
 
-- [Directly from the application](/docs/collector/deployment/no-collector/)
+- [Directly from the application](/docs/collector/deploy/other/no-collector/)
 - [Via the OpenTelemetry Collector](/docs/collector/)
 
 Sending telemetry data “direct from application” for non-production systems is
