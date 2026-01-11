@@ -32,8 +32,8 @@
     "LastSeen": "2026-01-10T09:48:07.315Z"
   },
   "https://adri-v.medium.com/prometheus-opentelemetry-better-together-41dc637f2292": {
-    "StatusCode": 403,
-    "LastSeen": "2026-01-10T09:45:52.505801122Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-11T09:47:14.83Z"
   },
   "https://ai.google.dev/api/generate-content": {
     "StatusCode": 200,
@@ -8877,7 +8877,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml": {
     "StatusCode": 404,
-    "LastSeen": "2026-01-10T09:40:08.912136983Z"
+    "LastSeen": "2026-01-11T09:40:44.345577539Z"
   },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-config.yaml": {
     "StatusCode": 206,
@@ -16841,7 +16841,7 @@
   },
   "https://medium.com/wish-engineering/horizontally-scaling-prometheus-at-wish-ea4b694318dd": {
     "StatusCode": 403,
-    "LastSeen": "2026-01-10T09:45:57.998934169Z"
+    "LastSeen": "2026-01-11T09:45:59.406591849Z"
   },
   "https://memcached.org/": {
     "StatusCode": 206,
@@ -17357,7 +17357,7 @@
   },
   "https://oneuptime.com/product/apm": {
     "StatusCode": 404,
-    "LastSeen": "2026-01-10T09:43:13.169711194Z"
+    "LastSeen": "2026-01-11T09:43:23.307399571Z"
   },
   "https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/": {
     "StatusCode": 206,
@@ -19335,10 +19335,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-10T09:41:56.061000526Z"
   },
-  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.21.0-alpha/opentelemetry-instrumentation-bom-alpha-2.21.0-alpha.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2026-01-08T09:50:23.946620758Z"
-  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.23.0-alpha/opentelemetry-instrumentation-bom-alpha-2.23.0-alpha.pom": {
     "StatusCode": 206,
     "LastSeen": "2026-01-07T09:44:44.726014645Z"
@@ -19350,10 +19346,6 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.20.1/opentelemetry-instrumentation-bom-2.20.1.pom": {
     "StatusCode": 206,
     "LastSeen": "2026-01-10T09:41:52.838934645Z"
-  },
-  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.21.0/opentelemetry-instrumentation-bom-2.21.0.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2026-01-08T09:50:21.147307553Z"
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.23.0/opentelemetry-instrumentation-bom-2.23.0.pom": {
     "StatusCode": 206,
@@ -20289,7 +20281,7 @@
   },
   "https://www.britannica.com/dictionary/pipeline": {
     "StatusCode": 403,
-    "LastSeen": "2026-01-10T09:43:34.219824663Z"
+    "LastSeen": "2026-01-11T09:43:53.560159794Z"
   },
   "https://www.buoyant.io/mtls-guide": {
     "StatusCode": 200,
@@ -20765,7 +20757,7 @@
   },
   "https://www.jaegertracing.io/docs/1.47/getting-started/": {
     "StatusCode": 404,
-    "LastSeen": "2026-01-10T09:42:51.398668865Z"
+    "LastSeen": "2026-01-11T09:43:18.215249733Z"
   },
   "https://www.jaegertracing.io/docs/1.57/operator/": {
     "StatusCode": 206,
