@@ -8,8 +8,7 @@ what-next: >
   atualizações nos arquivos do site. Para mais detalhes sobre como submeter
   alterações, veja [Enviando conteúdo][].
 weight: 60
-default_lang_commit: 3337aa6fbaccf5e8734a1ef2c6ca8b61496c3d93 # patched
-drifted_from_default: true
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 ---
 
 {{% alert title="Ambientes de construção suportados" color=warning %}}
@@ -127,13 +126,12 @@ precisar aumentar o limite de descritores de arquivo. Veja
 O site é construído a partir do seguinte conteúdo:
 
 - Arquivos sob `content/`, `static/`, etc. conforme os padrões do [Hugo].
-- Pontos de montagem, definidos em [hugo.yaml] sob `mounts`. As montagens são
-  diretamente de submódulos git sob [content-modules], ou conteúdo
-  pré-processado de `content-modules` (colocado sob `tmp/`), e em nenhum outro
-  lugar.
+- Pontos de montagem, definidos pela [configuração][config] do Hugo em
+  `config/_default/module-template.yaml`. As montagens são diretamente de
+  submódulos git sob [content-modules], ou conteúdo pré-processado de
+  `content-modules` (colocado sob `tmp/`), e em nenhum outro lugar.
 
-[hugo.yaml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/bc94737/hugo.yaml
+[config]: https://github.com/open-telemetry/opentelemetry.io/tree/main/config
 [content-modules]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 

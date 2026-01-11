@@ -1,8 +1,7 @@
 ---
 title: Amostragem
 weight: 80
-default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57
-drifted_from_default: true
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 ---
 
 A [Amostragem](/docs/concepts/sampling/) é um processo que restringe a
@@ -37,10 +36,10 @@ Outros amostradores disponíveis são:
   amostrados.
 - [`ParentBased`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#ParentBased),
   é um decorador de amostrador que se comporta de maneira diferente, com base no
-  parente do trecho. Caso o trecho não possua um parente, o amostrador decorado
-  é usado para tomar a decisão de amostragem com base no parente do trecho. Por
-  padrão, `ParentBased` amostra trechos que possuem parentes que foram
-  amostrados e não amostra trechos cujos parentes não foram amostrados.
+  pai do trecho. Caso o trecho não possua um pai, o amostrador decorado é usado
+  para tomar a decisão de amostragem. Por padrão, `ParentBased` amostra trechos
+  que possuem pais que foram amostrados, e não amostra trechos cujos pais não
+  foram amostrados.
 
 Por padrão, o Tracer Provider utiliza o amostrador `ParentBased` com o
 amostrador `AlwaysSample`
