@@ -1,21 +1,22 @@
 ---
 title: コレクターなし
-description: アプリケーションからバックエンドへ直接シグナルを送信する理由と方法
-weight: 1
-default_lang_commit: b34ebe22b71962da96b898eb39a666ed57d447fe
-drifted_from_default: true
+description: アプリケーションからバックエンドへ直接シグナルを送信する
+aliases:
+  - /docs/collector/deployment/no-collector/
+weight: 200
+default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197
 ---
 
 最もシンプルなパターンは、コレクターをまったく使用しないことです。
 このパターンは、OpenTelemetry SDKで[計装された][instrumentation]アプリケーションが、テレメトリーシグナル（トレース、メトリクス、ログ）をバックエンドに直接エクスポートする構成です。
 
-![コレクターなしのデプロイメント概念](../../img/otel-sdk.svg)
+![コレクターなしのデプロイメント概念](../../../img/otel-sdk.svg)
 
 ## 例 {#example}
 
 アプリケーションからバックエンドにシグナルを直接エクスポートする方法について、具体的なエンドツーエンドの例は[プログラミング言語のコード計装][instrumentation]をご覧ください。
 
-## トレードオフ {#tradeoffs}
+## トレードオフ {#trade-offs}
 
 長所：
 
