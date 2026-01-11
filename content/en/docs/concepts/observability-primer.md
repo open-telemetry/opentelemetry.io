@@ -122,8 +122,8 @@ For more on spans and how they relate to OpenTelemetry, see
 
 A **distributed trace**, more commonly known as a **trace**, records the path
 taken by a single request (made by an application or end user) as it propagates
-through multiple services in an architecture, such as microservice or
-serverless applications.
+through multiple services in an architecture, such as microservice or serverless
+applications.
 
 A trace is made of one or more spans. The first span represents the root span.
 Each root span represents a request from start to finish. The spans underneath
