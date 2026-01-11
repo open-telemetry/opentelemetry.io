@@ -619,6 +619,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-05T09:53:41.133284767Z"
   },
+  "https://central.sonatype.com/artifact/io.opentelemetry.javaagent/opentelemetry-javaagent": {
+    "StatusCode": 200,
+    "LastSeen": "2025-10-28T16:52:54.405453-04:00"
+  },
   "https://cerbos.dev/": {
     "StatusCode": 200,
     "LastSeen": "2025-12-30T09:49:50.318574639Z"
@@ -2186,6 +2190,10 @@
   "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/net/HttpURLConnection.html": {
     "StatusCode": 200,
     "LastSeen": "2026-01-05T09:49:09.32079451Z"
+  },
+  "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ServiceLoader.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-09T14:43:35.335884-05:00"
   },
   "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html": {
     "StatusCode": 200,
@@ -10011,6 +10019,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-05T09:48:08.033068146Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/contributing/javaagent-structure.md#extension-class-loader": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-28T16:52:53.134327-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md": {
     "StatusCode": 206,
     "LastSeen": "2025-12-30T09:43:02.834270945Z"
@@ -10018,6 +10030,14 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks": {
     "StatusCode": 206,
     "LastSeen": "2026-01-08T09:45:14.046002708Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/build.gradle": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-29T05:45:23.341948-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/src/main/java/com/example/javaagent/instrumentation/DemoServlet3InstrumentationModule.java": {
+    "StatusCode": 206,
+    "LastSeen": "2025-10-28T16:52:57.193388-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md": {
     "StatusCode": 206,
