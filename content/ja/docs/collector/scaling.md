@@ -39,12 +39,12 @@ memory_limiterプロセッサーがパイプラインの一部である場合、
 注目すべきもう一方のメトリクスのセットは、エクスポーターのキューサイズに関連するメトリクスである `otelcol_exporter_queue_capacity` と `otelcol_exporter_queue_size` です。
 コレクターは、データを送信するためにワーカーが利用可能になるのを待つ間、メモリ内にデータをキューイングします。
 十分なワーカーが存在しないか、バックエンドが遅すぎる場合、データはキューに蓄積され始めます。
-キューがキャパシティ（`otelcol_exporter_queue_size` > `otelcol_exporter_queue_capacity`）に達すると、データは拒否されます（`otelcol_exporter_enqueue_failed_spans`）。
+キューがキャパシティ上限（`otelcol_exporter_queue_size` > `otelcol_exporter_queue_capacity`）に達すると、データは拒否されます（`otelcol_exporter_enqueue_failed_spans`）。
 ワーカーを追加すると、コレクターがより多くのデータをエクスポートすることがよくありますが、それが必ずしも望ましいとは限りません（[スケールしない場合](#when-not-to-scale)を参照）。
 一般的なガイダンスとしては、キューサイズをモニタリングし、キャパシティの60〜70％に達したときにスケールアップを検討し、一貫して低い場合はスケールダウンを検討しますが、回復力のために最低限のレプリカ数（たとえば3つ）を維持します。
 
 異なるコンポーネントが他のメトリクスを生成する可能性があるため、使用する予定のコンポーネントについてよく理解しておくことも価値があります。
-たとえば、[load-balancingエクスポーターはエクスポート操作に関するタイミング情報を記録](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter#metrics)し、これを `otelcol_loadbalancer_backend_latency` ヒストグラムの一部として公開します。
+たとえば、[ロードバランシングエクスポーターはエクスポート操作に関するタイミング情報を記録](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter#metrics)し、これを `otelcol_loadbalancer_backend_latency` ヒストグラムの一部として公開します。
 この情報を抽出して、すべてのバックエンドがリクエストの処理に同様の時間を要しているかを判断できます。
 単一のバックエンドが遅い場合は、コレクター外部の問題を示している可能性があります。
 
