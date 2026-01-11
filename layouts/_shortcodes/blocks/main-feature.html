@@ -1,0 +1,27 @@
+{{- $image := .Get "image" -}}
+{{- $title := .Get "title" -}}
+{{- $url := .Get "url" -}}
+{{- $imagePosition := .Get "imagePosition" | default "left" -}}
+
+<div class="main-feature main-feature--image-{{ $imagePosition }}">
+  <div class="main-feature__image">
+    {{ with $image }}
+    <img src="{{ . }}" alt="{{ $title }}" loading="lazy">
+    {{ else }}
+    <!-- Placeholder for image -->
+    <div class="main-feature__placeholder">
+      <i class="fas fa-image fa-3x"></i>
+    </div>
+    {{ end }}
+  </div>
+  <div class="main-feature__content">
+    <h3 class="main-feature__title">
+      {{- with $url }}<a href="{{ . }}">{{ end -}}
+      {{ $title }}
+      {{- with $url }}</a>{{ end -}}
+    </h3>
+    <div class="main-feature__description">
+      {{ .Inner | markdownify }}
+    </div>
+  </div>
+</div>

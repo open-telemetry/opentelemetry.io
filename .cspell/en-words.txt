@@ -38,6 +38,7 @@ discoverability
 dotnet
 Dyla
 dynatrace
+ebay
 ebpf
 emailservice
 EMEA
@@ -93,6 +94,7 @@ otel
 otel-comms
 otel-endusers
 otelcol
+otip
 otep
 otlp
 Otmar
@@ -126,6 +128,7 @@ servlet
 Severin
 Sharma
 shippingservice
+skyscanner
 Socha
 Stalnaker
 stdoutmetric
@@ -147,6 +150,7 @@ unsampled
 unshallow
 upstreamed
 Villela
+vtex
 wordpress
 WSGI
 zend
