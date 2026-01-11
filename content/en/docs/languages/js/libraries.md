@@ -221,8 +221,8 @@ with a request hook:
 ```typescript
 import { Span } from '@opentelemetry/api';
 import {
-  SEMATTRS_HTTP_METHOD,
-  SEMATTRS_HTTP_URL,
+  ATTR_HTTP_REQUEST_METHOD,
+  ATTR_URL_FULL,
 } from '@opentelemetry/semantic-conventions';
 import {
   ExpressInstrumentation,
@@ -233,8 +233,8 @@ import {
 const expressInstrumentation = new ExpressInstrumentation({
   requestHook: function (span: Span, info: ExpressRequestInfo) {
     if (info.layerType === ExpressLayerType.REQUEST_HANDLER) {
-      span.setAttribute(SEMATTRS_HTTP_METHOD, info.request.method);
-      span.setAttribute(SEMATTRS_HTTP_URL, info.request.baseUrl);
+      span.setAttribute(ATTR_HTTP_REQUEST_METHOD, info.request.method);
+      span.setAttribute(ATTR_URL_FULL, info.request.baseUrl);
     }
   },
 });
@@ -247,8 +247,8 @@ const expressInstrumentation = new ExpressInstrumentation({
 ```javascript
 /*instrumentation.js*/
 const {
-  SEMATTRS_HTTP_METHOD,
-  SEMATTRS_HTTP_URL,
+  ATTR_HTTP_REQUEST_METHOD,
+  ATTR_URL_FULL,
 } = require('@opentelemetry/semantic-conventions');
 const {
   ExpressInstrumentation,
@@ -258,8 +258,8 @@ const {
 const expressInstrumentation = new ExpressInstrumentation({
   requestHook: function (span, info) {
     if (info.layerType === ExpressLayerType.REQUEST_HANDLER) {
-      span.setAttribute(SEMATTRS_HTTP_METHOD, info.request.method);
-      span.setAttribute(SEMATTRS_HTTP_URL, info.request.baseUrl);
+      span.setAttribute(ATTR_HTTP_REQUEST_METHOD, info.request.method);
+      span.setAttribute(ATTR_URL_FULL, info.request.baseUrl);
     }
   },
 });

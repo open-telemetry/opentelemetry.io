@@ -3,7 +3,7 @@ title: Verificações de pull request
 description:
   Saiba como fazer seu pull request passar por todas as verificações com sucesso
 weight: 40
-default_lang_commit: 4839e453a5e22a108fa0b4fce2577cc6aab6f7ec
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 ---
 
 Ao abrir um
@@ -89,15 +89,15 @@ estejam normalizadas.
 Se essa verificação falhar, execute `npm run fix:dict` localmente e envie as
 alterações em um novo _commit_.
 
-### `FILENAME check` {.notranslate lang=en}
+### `FILE FORMAT` {.notranslate lang=en}
 
-Essa verificação garante que todos os
-[arquivos estejam formatados com o Prettier](../style-guide/#file-format).
+Essa verificação garante que todos os arquivos estejam em conformidade com as
+[regras de formatação do Prettier](../style-guide/#file-format).
 
 Se essa verificação falhar, execute `npm run fix:format` localmente e envie as
 alterações em um novo _commit_.
 
-### `FILE FORMAT` {.notranslate lang=en}
+### `FILENAME check` {.notranslate lang=en}
 
 Essa verificação garante que todos os
 [nomes de arquivos estejam em kebab-case](../style-guide/#file-names).

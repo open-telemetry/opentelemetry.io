@@ -16,9 +16,13 @@ description: OpenTelemetry blog
     document.addEventListener("DOMContentLoaded", function () {
         if (window.location.pathname.includes('/page/')) return;
 
-        var checkbox = document.getElementById("m-blog2025-check");
-        if (checkbox) checkbox.checked = true;
-        checkbox = document.getElementById("m-blog2024-check");
-        if (checkbox) checkbox.checked = true;
+        // Open the sidebar year-groups for the current and previous years
+        var currentYear = new Date().getFullYear();
+        var yearsToCheck = [currentYear, currentYear - 1];
+
+        yearsToCheck.forEach(function(year) {
+            var checkbox = document.getElementById("m-blog" + year + "-check");
+            if (checkbox) checkbox.checked = true;
+        });
     });
 </script>

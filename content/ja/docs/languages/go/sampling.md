@@ -2,6 +2,7 @@
 title: サンプリング
 weight: 80
 default_lang_commit: adc4264c2926e3d767b6a56affb19fb4ae3f2a22
+drifted_from_default: true
 ---
 
 [サンプリング](/docs/concepts/sampling/)は、システムが生成するスパンの量を制限するプロセスです。

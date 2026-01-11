@@ -5,6 +5,7 @@ description:
   OpenTelemetry.
 weight: 200
 default_lang_commit: af966c967003c6dcee2ea5dfe23ce5831fcb5019
+drifted_from_default: true
 ---
 
 Acest glosar definește termenii și [conceptele](/docs/concepts/) noi din cadrul
