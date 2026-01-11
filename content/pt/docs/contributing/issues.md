@@ -5,32 +5,8 @@ description:
   possível melhoria.
 weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
-_issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
-default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829
-drifted_from_default: true
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 ---
-
-<style>
-  /* Force all list to be compact. */
-  li > p {
-    margin-bottom: 0;
-  }
-
-  /* Style "first time" alert */
-  .alert--first-timer {
-    margin: 0.5rem 0 !important;
-
-    > blockquote {
-      margin-top: 1rem;
-      margin-bottom: 0;
-      border-left-color: var(--bs-warning);
-      background-color: var(--bs-danger-bg-subtle);
-      > *:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-</style>
 
 ## Corrigindo uma _issue_ existente {#fixing-an-existing-issue}
 
@@ -38,19 +14,11 @@ Uma das melhores formas de contribuir para a melhoria da documentação do OTel 
 corrigir um problema já existente.
 
 1. Navegue pela lista de [_issues_]({{% param _issues %}}).
-2. Selecione uma issue com a qual você gostaria de contribuir, de preferência
-   uma que possa ser resolvida em pouco tempo. <a name="first-issue"></a>
-   {{% alert title="É sua primeira contribuição?" color="primary alert--first-timer" %}}
+2. Selecione uma issue com a qual você gostaria de contribuir.
 
-   Procure por _issues_ com os seguintes _labels_ (rótulos):
-   - [Good first issue](<{{% param _issue %}}%22good+first-issue%22>)
-   - [Help wanted](<{{% param _issue %}}%3A%22help+wanted%22>)
+   {{% alert color="warning" %}}
 
-   > **NOTA**: nós **_não atribuímos issues_** a quem ainda não contribuiu com a
-   > organização [OpenTelemetry][org], exceto quando fizer parte de um processo
-   > de tutoria ou de _onboarding_.
-   >
-   > [org]: https://github.com/open-telemetry
+   {{% param chooseAnIssueAtYourLevel %}}
 
    {{% /alert %}}
 
