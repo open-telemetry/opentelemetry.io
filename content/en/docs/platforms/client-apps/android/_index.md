@@ -15,11 +15,16 @@ instrumentation capabilities tailored for mobile environments.
 
 OpenTelemetry Android includes these key capabilities:
 
-- **Automatic Instrumentation**: Built-in modules for common Android patterns
-  including Activity lifecycle, Fragment lifecycle, ANR (Application Not
-  Responding) detection, crash reporting, network change detection, slow/frozen
-  frame rendering detection, startup timing, screen orientation, and view click
-  events.
+- **Automatic Instrumentation**: Built-in modules for common Android patterns:
+  - Activity lifecycle
+  - Fragment lifecycle
+  - ANR (Application Not Responding) detection
+  - Crash reporting
+  - Network change detection
+  - Slow/frozen frame rendering detection
+  - Startup timing
+  - Screen orientation
+  - View click events
 - **Session Management**: Track user sessions with configurable inactivity
   timeouts and maximum session lifetimes.
 - **Offline Buffering**: Disk persistence to buffer telemetry data when the
@@ -82,11 +87,6 @@ private fun initializeOpenTelemetry(context: Context): OpenTelemetryRum =
             session {
                 backgroundInactivityTimeout = 15.minutes
                 maxLifetime = 4.days
-            }
-            globalAttributes {
-                Attributes.of(
-                    stringKey("app.build_type"), BuildConfig.BUILD_TYPE
-                )
             }
         }
     )
