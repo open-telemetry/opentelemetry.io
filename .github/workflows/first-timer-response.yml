@@ -24,16 +24,15 @@ jobs:
       (
         contains(github.event.comment.body, 'assign this to me') ||
         contains(github.event.comment.body, 'assign me') ||
-        contains(github.event.comment.body, 'can I work on this') ||
-        contains(github.event.comment.body, 'Can I work on this') ||
-        contains(github.event.comment.body, 'I would like to work on this') ||
-        contains(github.event.comment.body, 'I want to work on this') ||
+        contains(github.event.comment.body, 'can i work on this') ||
+        contains(github.event.comment.body, 'i would like to work on this') ||
+        contains(github.event.comment.body, 'i want to work on this') ||
         contains(github.event.comment.body, 'please assign') ||
         contains(github.event.comment.body, 'can you assign') ||
-        contains(github.event.comment.body, 'I will work on this') ||
-        contains(github.event.comment.body, 'I am working on this') ||
-        contains(github.event.comment.body, "I'm working on this") ||
-        contains(github.event.comment.body, 'can I take this')
+        contains(github.event.comment.body, 'i will work on this') ||
+        contains(github.event.comment.body, 'i am working on this') ||
+        contains(github.event.comment.body, 'i''m working on this') ||
+        contains(github.event.comment.body, 'can i take this')
       )
     steps:
       - uses: step-security/harden-runner@20cf305ff2072d973412fa9b1e3a4f227bda3c76 # v2.14.0
