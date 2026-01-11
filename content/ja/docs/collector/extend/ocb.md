@@ -1,9 +1,9 @@
 ---
 title: カスタムコレクターのビルド
-weight: 29
-default_lang_commit: 52ef6272047483d1d4913a7e5ce8532196c58b30 # patched
-drifted_from_default: file not found
-cSpell:ignore: darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
+description: OpenTelemetry Collectorの独自のディストリビューションを組み立てる
+weight: 200
+aliases: [/docs/collector/custom-collector/]
+default_lang_commit: 6a7f17450ce3edc2e4363013551ee93ba7934a5d
 ---
 
 カスタムコレクターのレシーバー、プロセッサー、エクステンション、またはエクスポーターをビルドおよびデバッグする計画がある場合は、独自のコレクターインスタンスが必要になります。
