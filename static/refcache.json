@@ -699,6 +699,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-09T09:44:40.100428742Z"
   },
+  "https://cloud-native.slack.com/archives/C01S42U83B2": {
+    "StatusCode": 200,
+    "LastSeen": "2025-12-15T13:27:03.281069039Z"
+  },
   "https://cloud-native.slack.com/archives/C02UN96HZH6": {
     "StatusCode": 200,
     "LastSeen": "2026-01-07T09:44:59.623457816Z"
@@ -6531,6 +6535,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-09T09:44:40.162065891Z"
   },
+  "https://github.com/open-telemetry/community#sig-devex": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-15T13:27:00.609994329Z"
+  },
   "https://github.com/open-telemetry/community#special-interest-groups": {
     "StatusCode": 206,
     "LastSeen": "2026-01-09T09:44:49.502383478Z"
@@ -6830,6 +6838,10 @@
   "https://github.com/open-telemetry/community/pull/3021": {
     "StatusCode": 206,
     "LastSeen": "2026-01-05T09:53:16.15373514Z"
+  },
+  "https://github.com/open-telemetry/community/pull/3128": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-15T13:26:55.064249496Z"
   },
   "https://github.com/open-telemetry/community/tree/main/mission-vision-values.md": {
     "StatusCode": 206,
