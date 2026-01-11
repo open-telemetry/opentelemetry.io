@@ -65,6 +65,36 @@ You can also use the following extensions:
 [GFM]: https://github.github.com/gfm/
 [Goldmark]: https://gohugo.io/configuration/markup/#goldmark
 
+### Alert syntax
+
+For callouts and alerts, we support two complementary approaches:
+
+- **GFM alert blockquote syntax** (recommended): Use the standard Markdown
+  [alert blockquote syntax][gfm-alerts] for most cases. This syntax is portable,
+  widely supported, and easier to read in plain text.
+
+  Example:
+
+  ```markdown
+  > [!NOTE]
+  > Useful information that users should know, even when skimming content.
+  ```
+
+- **Hugo alert shortcode**: Use the `{{% alert %}}` shortcode when you need
+  advanced features like custom titles or complex formatting that the Markdown
+  syntax doesn't support.
+
+  Example:
+
+  ```markdown
+  {{% alert title="Custom Title" color="warning" %}}
+  Content with advanced formatting options.
+  {{% /alert %}}
+  ```
+
+We encourage contributors to use the GFM alert blockquote syntax as the default
+choice for new content, as it provides better portability and readability.
+
 ### Markdown checks {#markdown-standards}
 
 To enforce standards and consistency for Markdown files, all files should follow
