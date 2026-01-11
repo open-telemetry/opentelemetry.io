@@ -71,7 +71,7 @@
   {{ if ne $lang $defaultLang -}}
     {{ $langPathPrefix := add "/" $lang "/" -}}
     {{ if and (hasPrefix $url $langPathPrefix) .Page.File -}}
-      {{ warnf "File %s: drop unnecessary '%s' prefix from %s"
+      {{ warnidf "prefix-locale" "File %s: drop unnecessary '%s' prefix from %s"
               .Page.File.Filename $langPathPrefix $url -}}
     {{ else -}}
       {{ $localizedPagePath := add $langPathPrefix (strings.TrimPrefix "/" $url) -}}
