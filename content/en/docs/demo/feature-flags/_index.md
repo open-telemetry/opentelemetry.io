@@ -48,7 +48,7 @@ user interface:
 | `loadgeneratorFloodHomepage`        | Load Generator  | Start flooding the homepage with a huge amount of requests, configurable by changing flagd JSON on state. |
 | `kafkaQueueProblems`                | Kafka           | Overloads Kafka queue while simultaneously introducing a consumer side delay leading to a lag spike.      |
 | `imageSlowLoad`                     | Frontend        | Utilizes envoy fault injection, produces a delay in loading of product images in the frontend.            |
-
+| `failedReadinessProbe`              | Cart            | Make readiness probe fails with unhealthy status resulting pod gettting into not ready status             |
 ## Guided Debugging Scenario
 
 The `recommendationServiceCacheFailure` scenario has a
