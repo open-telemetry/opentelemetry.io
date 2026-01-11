@@ -5,8 +5,7 @@ description:
   interface do GitHub ou a partir de um _fork_ local.
 aliases: [new-content]
 weight: 15
-default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829
-drifted_from_default: true
+default_lang_commit: 8252c194ab8d214f2bad084ab283986b3f3d7a6c
 ---
 
 Para contribuir com novos conteúdos ou melhorar a documentação existente,
@@ -19,24 +18,45 @@ submeta um [pull request][PR] (PR):
   aprender como fazer alterações no seu próprio ambiente de desenvolvimento
   local.
 
-{{% alert title="Contrato de Licença de Contribuidor (CLA)" color=warning %}}
+## Política de contribuição de IA generativa {#using-ai}
 
-Todos os contribuidores são obrigados a [assinar um Contrato de Licença de
-Contribuidor (CLA)][CLA] antes que as alterações possam ser revisadas e
-mescladas.
+{{% alert color="warning" title="Nota importante para contribuidor iniciantes" %}}
 
-[CLA]: ../prerequisites/#cla
+Se você é um [contribuidor iniciante][first-time contributor], observe o
+seguinte:
+
+Suas 3 primeiras contribuições para o nosso repositório devem ser escritas
+majoritariamente por humanos, com assistência mínima de IA permitida.
+([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)). Isso significa
+que seu código deve ser escrito manualmente, mas a IA pode auxiliar com o
+preenchimento automático de código, formatação, _linting_ e seguindo as melhores
+práticas. A descrição do seu PR deve ser inteiramente escrita por humanos, sem
+qualquer envolvimento de IA (AIL0).
+
+Claro, você pode usar ferramentas de IA para fazer perguntas e aprender sobre
+nosso repositório, nosso projeto, como contribuir e muito mais.
+
+Implementamos esse requisito para ajudar você a aprender enquanto contribui, e
+para ajudar a proteger o tempo dos mantenedores e aprovadores, que é um recurso
+escasso.
+
+Os mantenedores podem abrir uma exceção se ficar claro que sua contribuição é
+“passageira” e pode ser incorporada sem muito esforço adicional da parte deles.
 
 {{% /alert %}}
 
-{{% alert title="Dica: Status de rascunho" %}}
+A IA generativa é permitida, mas **você é responsável** por **revisar e
+_validar_** todo o conteúdo gerado pela IA &mdash; se você não o entender, não o
+envie!
 
-Defina o status do seu _pull request_ como **Rascunho** (_Draft_) para informar
-aos mantenedores que o conteúdo ainda não está pronto para revisão. Os
-mantenedores ainda podem comentar ou fazer revisões de alto nível, mas não
-revisarão o conteúdo completamente até que você remova o status de rascunho.
+Para mais detalhes, consulte nossa [Política de Contribuição de IA
+Generativa][Generative AI Contribution Policy].
 
-{{% /alert %}}
+[first-time contributor]: ../#first-time-contributing
+[Generative AI Contribution Policy]:
+  https://github.com/open-telemetry/community/blob/main/policies/genai.md
+
+## Como contribuir {#how-to-contribute}
 
 A figura a seguir ilustra como contribuir com nova documentação.
 
@@ -48,7 +68,7 @@ flowchart LR
        B[Fazer cópia _fork_ do repositório no GitHub] --- C[Escrever documentação em markdown<br>e construir o site com Hugo]
        C --- D[Enviar o código-fonte para o _fork_]
        D --- E[Abrir um _pull request_]
-       E --- F[Assinar o CNCF CLA]
+       E --- F[Assinar o <a href="../prerequisites/#cla">CNCF CLA</a>]
     end
 
 classDef grey fill:#dddddd,stroke:#ffffff,stroke-width:px,color:#000000, font-size:15px;
@@ -60,6 +80,15 @@ class first,second white
 ```
 
 _Figura 1. Contribuindo com novo conteúdo._
+
+{{% alert title="Dica: Status de rascunho" %}}
+
+Defina o status do seu _pull request_ como **Rascunho** (_Draft_) para informar
+aos mantenedores que o conteúdo ainda não está pronto para revisão. Os
+mantenedores ainda podem comentar ou fazer revisões de alto nível, mas não
+revisarão o conteúdo completamente até que você remova o status de rascunho.
+
+{{% /alert %}}
 
 ## Usando o GitHub {#changes-using-github}
 
