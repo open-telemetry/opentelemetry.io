@@ -371,9 +371,238 @@ Tracer.set_status(:error, "this is not ok")
 
 ## Metrics
 
-The metrics API, found in `apps/opentelemetry_experimental_api` of the
-[opentelemetry-erlang](https://github.com/open-telemetry/opentelemetry-erlang)
-repository, is currently unstable, documentation TBA.
+To produce metrics the dependencies `opentelemetry_experimental_api` and
+`opentelemetry_experimental` must be added to the project. Application
+environment configuration for `opentelemetry_experimental` is used to configure
+a `MeterProvider` which is initialized when the application starts. Meters are
+created with the `MeterProvider` automatically on boot and the appropriate
+`Meter` is used to create instruments depending on where in your code your
+create the instrument. OpenTelemetry Erlang currently supports the following
+instruments:
+
+- Counter, a synchronous instrument that supports non-negative increments
+- Asynchronous Counter, an asynchronous instrument which supports non-negative
+  increments
+- Histogram, a synchronous instrument that supports arbitrary values that are
+  statistically meaningful, such as histograms, summaries, or percentile
+- Asynchronous Gauge, an asynchronous instrument that supports non-additive
+  values, such as room temperature
+- UpDownCounter, a synchronous instrument that supports increments and
+  decrements, such as the number of active requests
+- Asynchronous UpDownCounter, an asynchronous instrument that supports
+  increments and decrements
+
+For more on synchronous and asynchronous instruments, and which kind is best
+suited for your use case, see
+[Supplementary Guidelines](/docs/specs/otel/metrics/supplementary-guidelines/).
+
+### Initialize Metrics
+
+{{% alert %}} If you’re instrumenting a library, skip this step. {{% /alert %}}
+
+To enable metrics in your application, you’ll need to have an initialized
+`MeterProvider` with a `Reader`. This is done through configuration of the
+`opentelemetry_experimental` application:
+
+```erlang
+{opentelemetry_experimental,
+  [{readers, [#{module => otel_metric_reader,
+                config => #{export_interval_ms => 1000,
+                            exporter => {otel_exporter_metrics_otlp, #{}}}}]}]},
+```
+
+This configuration tells the application to create a `MetricProvider` with a
+single `Reader`. The `Reader` exports every second to an OTLP receiver, like the
+collector, at `localhost:4318` by default. To change the endpoint add to the map
+`endpoints => ["<host>:<port>"]` and configure the protocol to use
+`protocol => http_protobuf | grpc`.
+
+Use `exporter => {otel_exporter_metrics_console, #{}}` for outputting the
+metrics to the console.
+
+### Acquiring a Meter
+
+Instruments are created with a `Meter`. Acquiring a `Meter` manually is not
+required but done automatically when the macros for instrument creation are
+used.
+
+### Synchronous and asynchronous instruments
+
+### Using Counters
+
+Counters can be used to measure a non-negative, increasing value.
+
+Creating a counter can be done with the `?create_counter` macro:
+
+```erlang
+?create_counter(my_fun_counter, #{description => ~"Number of times this function
+is called."})
+```
+
+To increment the counter use the `?counter_add` macro passing the name of the
+instrument, the increment value and a map of attributes:
+
+```erlang
+?counter_add(my_fun_counter, 1, #{}),
+```
+
+### Using UpDown Counters
+
+UpDown counters can increment and decrement, allowing you to observe a
+cumulative value that goes up or down.
+
+For example, here’s how you report the number of items of some collection:
+
+```erlang
+create_items_counter() ->
+  ?create_counter('items.counter', #{description => ~"Number of items",
+                                     unit => '{items}'})
+
+add_item(Item) ->
+  ...
+  ?updown_counter_add('items.counter', 1),
+
+remove_item(Item) ->
+  ...
+  ?updown_counter_add('items.counter', -1),
+```
+
+### Using Histograms
+
+Histograms are used to measure a distribution of values over time.
+
+```erlang
+?create_histogram('task.duration', #{description => ~"Duration of a task",
+                                     unit => 's'}),
+```
+
+The `?histogram_record` macro is then used to record a measurement:
+
+```erlang
+{Microseconds, Result} = timer:tc(TaskFun),
+?histogram_record('task.duration', Microseconds),
+```
+
+### Using Observable Counters
+
+Observable counters can be used to measure an additive, non-negative,
+monotonically increasing value.
+
+For example, here’s how you report time since the Erlang node started:
+
+```erlang
+?create_observable_counter('uptime', fun(_Args) ->
+                                         Uptime = erlang:convert_time_unit(erlang:monotonic_time() - erlang:system_info(start_time), native, seconds),
+                                         [{Uptime, #{}}]
+                                     end,
+                                     [],
+                                     #{description => ~"The duration since the node started.",
+                                       unit => 's'}),
+```
+
+### Using Observable UpDown Counters
+
+Observable UpDown counters can increment and decrement, allowing you to measure
+an additive, non-negative, non-monotonically increasing cumulative value.
+
+For example, the number of active HTTP connections for a web server:
+
+```erlang
+?create_observable_updown_counter('http.server.active_requests', fun(_Args) ->
+                                         ActiveRequests = ....
+                                         [{ActiveRequests, #{}}]
+                                     end,
+                                     [],
+                                     #{description => ~"Number of active HTTP server requests.",
+                                       unit => {request}'}),
+```
+
+### Using Observable Gauges
+
+Observable Gauges should be used to measure non-additive values.
+
+For example, here’s how you report memory usage of ETS tables on a node:
+
+```erlang
+?create_observable_gauge('memory.ets', fun(_Args) ->
+                                         EtsMemory = erlang:memory(ets),
+                                         [{EtsMemory, #{}}]
+                                     end,
+                                     [],
+                                     #{description => ~"Memory used by ETS tables.",
+                                       unit => 'By'}),
+```
+
+### Adding Attributes
+
+Attributes can be added to any measurement as a map in the last place in the
+recording macro:
+
+```erlang
+?updown_counter_add('items.counter', 1, #{~"key-1" => ~"value-1"}),
+```
+
+### Registering Views
+
+A view provides SDK users with the flexibility to customize the metrics output
+by the SDK. You can customize which metric instruments are to be processed or
+ignored. You can also customize aggregation and what attributes you want to
+report on metrics.
+
+Every instrument has a default view, which retains the original name,
+description, and attributes, and has a default aggregation that is based on the
+type of instrument. When a registered view matches an instrument, the default
+view is replaced by the registered view. Additional registered views that match
+the instrument are additive, and result in multiple exported metrics for the
+instrument.
+
+Here’s how you create a view that renames the `latency` instrument to
+`request.latency`:
+
+```erlang
+{opentelemetry_experimental,
+  [...
+    {views, [#{name => request.latency',
+               selector => #{instrument_name => 'latency'}}]}
+  ]},
+```
+
+Or if instead you want a histogram for latency:
+
+```erlang
+{opentelemetry_experimental,
+  [...
+    {views, [#{selector => #{instrument_name => 'latency'},
+               aggregation_module => otel_aggregation_histogram_explicit}]}
+  ]},
+```
+
+The SDK filters metrics and attributes before exporting metrics. For example,
+you can use views to reduce memory usage of high cardinality metrics or drop
+attributes that might contain sensitive data.
+
+Here’s how you create a view that drops the latency:
+
+```erlang
+{opentelemetry_experimental,
+  [...
+    {views, [#{selector => #{instrument_name => 'latency'},
+               aggregation_module => otel_aggregation_drop}]}
+  ]},
+```
+
+A wildcard can be used to match all instruments:
+
+```erlang
+{opentelemetry_experimental,
+  [...
+    {views, [#{selector => #{instrument_name => '*'},
+               aggregation_module => otel_aggregation_drop}]}
+  ]},
+```
+
+Since Views are additive any additional views mean specific metrics can be
+exported while all others, that have no match besides the wildcard, are dropped.
 
 ## Logs
 
