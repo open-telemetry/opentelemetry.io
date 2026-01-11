@@ -100,12 +100,10 @@ operations.
 
 Client apps typically export telemetry through:
 
-1. **Direct OTLP export**: Send telemetry directly to an OpenTelemetry Collector
-   or observability backend.
-2. **Proxy endpoints**: Route through your API to avoid CORS issues and add
-   server-side processing.
-3. **Batched exports**: Accumulate telemetry and send periodically to reduce
-   network overhead.
+1. **Direct OTLP export**: Send batched telemetry directly to an OpenTelemetry
+   Collector or observability backend.
+2. **Proxy endpoints**: Route through your API to add server-side processing.
+   For web applications, this avoids CORS issues.
 
 Consider running an [OpenTelemetry Collector](/docs/collector/) to receive,
 process, and route your client telemetry to multiple destinations.
