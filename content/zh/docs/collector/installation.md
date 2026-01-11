@@ -1,8 +1,8 @@
 ---
 title: 安装 Collector
 weight: 2
-default_lang_commit: 5fdcac03a4be4f063089a72a82348ec90cce9874
-drifted_from_default: true
+default_lang_commit: 5fdcac03a4be4f063089a72a82348ec90cce9874 # patched
+drifted_from_default: file not found
 cSpell:ignore: darwin dpkg journalctl kubectl otelcorecol pprof tlsv zpages
 ---
 
@@ -257,7 +257,7 @@ make otelcorecol
 ```
 
 [data collection]: /docs/concepts/components/#collector
-[deployment methods]: ../deployment/
+[deployment methods]: /docs/collector/deploy/
 [opentelemetry helm charts]: /docs/platforms/kubernetes/helm/
 [opentelemetry operator]: /docs/platforms/kubernetes/operator/
 [getting started with opentelemetry on hashicorp nomad]: https://github.com/hashicorp/nomad-open-telemetry-getting-started

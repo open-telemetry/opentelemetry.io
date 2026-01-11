@@ -3,8 +3,7 @@ title: Localização do site
 description: Criando e mantendo páginas do site em localizações não inglesas.
 linkTitle: Localização
 weight: 25
-default_lang_commit: 915801c19b651b250f72f72390372fee84cd0b14
-drifted_from_default: true
+default_lang_commit: aab27c8f1bb4c72c4ba94920396ef1fd6de1434e
 cSpell:ignore: Dowair merge ptbr shortcodes
 ---
 
@@ -34,6 +33,8 @@ nesta seção.
   - **Todo** conteúdo da página e _front matter_, a menos que indicado o
     contrário
 - **Preservar** o _conteúdo_, _significado_, e _estilo_ do texto original
+- **Envie o trabalho _incrementalmente_** através de
+  [pequenos _pull requests_](#small-prs)
 - **Perguntar** aos [mantenedores][maintainers] em caso de dúvidas, através de:
   - Canais do [Slack], como `#otel-docs-localization`, `#otel-localization-ptbr`
     ou `#otel-comms`
@@ -377,7 +378,7 @@ crie uma _issue_ com a seguinte lista de tarefas:
          enviar um PR. Para mais detalhes, consulte
          [Localização da página inicial](https://opentelemetry.io/docs/contributing/localization/#homepage).
    - [ ] Mantenedores OTel:
-     - [ ] Atualizar `hugo.yaml`
+     - [ ] Atualizar a config do Hugo para `LANG_ID`
      - [ ] Configurar cSpell e suporte de outras ferramentas
      - [ ] Criar um label de issue para `lang:LANG_ID`
      - [ ] Criar grupo de nível de organização para aprovadores `LANG_ID`
@@ -419,25 +420,32 @@ content][ali-dowair-2024].
   https://www.writethedocs.org/conf/atlantic/2024/speakers/#speaker-ali-dowair-what-s-in-a-word-lessons-from-localizing-kubernetes-documentation-to-arabic-ali-dowair
 [ali-d-youtube]: https://youtu.be/HY3LZOQqdig
 
-### 5. Localização das páginas restantes {#remaining-pages}
+### 5. Localização das páginas restantes em pequenos incrementos {#rest}
 
 Com a terminologia estabelecida, você pode seguir com a localização das páginas
-restantes do site.
+restantes do site. <a name="small-prs"></a>
 
-Ao submeter PRs, mantenha-os pequenos: preferencialmente limitados a um arquivo
-ou alguns arquivos pequenos. PRs menores são mais fáceis de revisar e
-normalmente são aprovados mais rapidamente.
+{{% alert title="Enviar PRs pequenos" color="primary" %}}
+
+Equipes de localização devem enviar seu trabalho em **pequenos incrementos**. Ou
+seja, mantenha os [PRs] pequenos, preferencialmente limitados a um arquivo ou
+alguns arquivos pequenos. PRs menores são mais fáceis de revisar e normalmente
+são aprovados mais rapidamente.
+
+{{% /alert %}}
 
 ### Lista de verificação do maintainer OTel {#otel-maintainer-checklist}
 
 #### Hugo
 
-Atualize o arquivo `hugo.yaml`. Adicione entradas apropriadas para `LANG_ID` em:
+Atualize a configuração do Hugo para `LANG_ID`. Adicione entradas apropriadas
+para `LANG_ID` em:
 
-- `languages`
-- `module.mounts`. Adicione pelo menos uma entrada `source`-`target` para
-  `content`. Considere adicionar entradas para páginas de _fallback_ `en` apenas
-  quando a localização tiver conteúdo suficiente.
+- `languages` em `config/_default/hugo.yaml`
+- `module.mounts` através de `config/_default/module-template.yaml`. Adicione
+  pelo menos uma entrada `source`-`target` para `content`. Considere adicionar
+  entradas para páginas de _fallback_ `en` apenas quando a localização tiver
+  conteúdo suficiente.
 
 #### Ortografia {#spelling}
 
@@ -470,9 +478,9 @@ contrário:
 
 ### PRs com mudanças semânticas não devem abranger localizações {#prs-should-not-span-locales}
 
-Aprovadores devem garantir que PRs fazendo mudanças **semânticas** em páginas de
-documentação não abranjam múltiplas localizações. Uma mudança semântica é aquela
-que impacta o _significado_ do conteúdo da página. Nosso
+Aprovadores devem garantir que [PRs] fazendo mudanças **semânticas** em páginas
+de documentação não abranjam múltiplas localizações. Uma mudança semântica é
+aquela que impacta o _significado_ do conteúdo da página. Nosso
 [processo de localização](.) de documentação garante que aprovadores de
 localização irão, com o tempo, revisar as edições em inglês para determinar se
 as mudanças são apropriadas para sua localização, e a melhor forma de
@@ -545,4 +553,5 @@ Aqui está um exemplo do fluxo de trabalho para esta atualização direcionada:
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
 [new issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
+[PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/

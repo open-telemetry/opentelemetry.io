@@ -3,6 +3,7 @@ title: エクステンション
 description: OpenTelemetry Collectorで利用可能なエクステンションの一覧
 weight: 350
 default_lang_commit: 1c2b0563e8e66ef0952c442e3662e4bec18a8762
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: ackextension asapauthextension authextension awsproxy azureauthextension basicauthextension bearertokenauthextension cgroupruntimeextension clientauthextension datadogextension googleclientauthextension headerssetterextension healthcheckextension healthcheckv httpforwarderextension jaegerremotesampling memorylimiterextension oidcauthextension opampextension pprofextension remotetapextension sigv sleaderelector solarwindsapmsettingsextension sumologicextension zpagesextension
 ---

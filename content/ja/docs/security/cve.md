@@ -2,6 +2,7 @@
 title: 共通脆弱性識別子 - CVEs
 weight: 100
 default_lang_commit: 179f03bf118e1e8a3cc195ab56fc09d85c476394
+drifted_from_default: true
 ---
 
 このページは[GitHubのOpenTelemetry Organization](https://github.com/open-telemetry/)上の全リポジトリで報告されたCVEsの一覧です。

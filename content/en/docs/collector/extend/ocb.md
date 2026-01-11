@@ -1,45 +1,42 @@
 ---
-title: Build a custom collector
+title: Build a custom Collector with OpenTelemetry Collector Builder
+linkTitle: Build a custom Collector
 description: Assemble your own distribution of the OpenTelemetry Collector
 weight: 200
 aliases: [/docs/collector/custom-collector/]
+params:
+  providers-vers: v1.48.0
 # prettier-ignore
 cSpell:ignore: chipset darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
-If you are planning to build and debug custom collector receivers, processors,
-extensions, or exporters, you are going to need your own Collector instance.
-That will allow you to launch and debug your OpenTelemetry Collector components
-directly within your favorite Golang IDE.
+The OpenTelemetry Collector has five official
+[distributions](/docs/collector/distributions/) that come pre-configured with
+certain components. If you require more flexibility, you can use the
+[OpenTelemetry Collector Builder][ocb] (or `ocb`) to generate a custom binary of
+your own distribution that includes custom components, upstream components, and
+other publicly available components.
 
-The other interesting aspect of approaching the component development this way
-is that you can use all the debugging features from your IDE (stack traces are
-great teachers!) to understand how the Collector itself interacts with your
-component code.
+The following guide shows you how to get started with `ocb` to build your own
+Collector. In this example, you create a Collector distribution to support the
+development and testing of custom components. You can launch and debug your
+Collector components directly in your preferred Golang integrated development
+environment (IDE). Use all the debugging features of your IDE (stack traces are
+great teachers!) to understand how the Collector interacts with your component
+code.
 
-The OpenTelemetry Community developed a tool called [OpenTelemetry Collector
-builder][ocb] (or `ocb` for short) to assist people in assembling their own
-distribution, making it easy to build a distribution that includes their custom
-components along with components that are publicly available.
+## Prerequisites
 
-As part of the process the `ocb` will generate the Collector's source code,
-which you can use to help build and debug your own custom components, so let's
-get started.
+The `ocb` tool requires Go to build the Collector distribution. Make sure to
+[install](https://go.dev/doc/install) a
+[compatible version](https://github.com/open-telemetry/opentelemetry-collector/blob/main/README.md#compatibility)
+of Go on your machine before you begin.
 
-## Step 1 - Install the builder
-
-{{% alert color="primary" title="Note" %}}
-
-The `ocb` tool requires Go to build the Collector distribution.
-[Install Go](https://go.dev/doc/install) on your machine, if you haven't done so
-already.
-
-{{% /alert %}}
+## Install the OpenTelemetry Collector Builder
 
 The `ocb` binary is available as a downloadable asset from OpenTelemetry
-Collector [releases with `cmd/builder` tags][tags]. You will find a list of
-assets named based on OS and chipset, so download the one that fits your
-configuration:
+Collector releases with [`cmd/builder` tags][tags]. Find and download the asset
+that fits your operating system and chipset:
 
 {{< tabpane text=true >}}
 
@@ -92,141 +89,150 @@ Unblock-File -Path "ocb.exe"
 
 {{% /tab %}} {{< /tabpane >}}
 
-To make sure the `ocb` is ready to be used, go to your terminal and type
-`./ocb help`, and once you hit enter you should have the output of the `help`
-command showing up in your console.
+To make sure `ocb` is installed correctly, enter `./ocb help` in your terminal.
+You should see the output of the `help` command in your console.
 
-## Step 2 - Create a builder manifest file
+## Configure the OpenTelemetry Collector Builder
 
-The builder's `manifest` file is a `yaml` where you pass information about the
-code generation and compile process combined with the components that you would
-like to add to your Collector's distribution.
+Configure `ocb` with a YAML manifest file. The manifest has two main sections.
+The first section, `dist`, contains options for configuring code generation and
+the compile process. The second section contains top-level module types, such as
+`extensions`, `exporters`, `receivers` or `processors`. Each module type accepts
+a list of components.
 
-The `manifest` starts with a map named `dist` which contains tags to help you
-configure the code generation and compile process. In fact, all the tags for
-`dist` are the equivalent of the `ocb` command line `flags`.
+The `dist` section of the manifest contains tags that are equivalent to `ocb`
+command line `flags`. The following table lists the options for configuring the
+`dist` section.
 
-Here are the tags for the `dist` map:
+| Tag                | Description                                                            | Optional             | Default Value                                                                     |
+| ------------------ | ---------------------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------- |
+| module:            | The module name for the new distribution, following Go mod conventions | Yes, but recommended | `go.opentelemetry.io/collector/cmd/builder`                                       |
+| name:              | The binary name for your distribution                                  | Yes                  | `otelcol-custom`                                                                  |
+| description:       | A long name for the application                                        | Yes                  | `Custom OpenTelemetry Collector distribution`                                     |
+| output_path:       | The path to write the output (sources and binary)                      | Yes                  | `/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831` |
+| version:           | The version for your custom OpenTelemetry Collector                    | Yes                  | `1.0.0`                                                                           |
+| go:                | The Go binary to use to compile the generated sources                  | Yes                  | go from the PATH                                                                  |
+| debug_compilation: | Keep the debug symbols in the resulting binary                         | Yes                  | False                                                                             |
 
-| Tag          | Description                                                                                        | Optional | Default Value                                                                     |
-| ------------ | -------------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------------------- |
-| module:      | The module name for the new distribution, following Go mod conventions. Optional, but recommended. | Yes      | `go.opentelemetry.io/collector/cmd/builder`                                       |
-| name:        | The binary name for your distribution                                                              | Yes      | `otelcol-custom`                                                                  |
-| description: | A long name for the application.                                                                   | Yes      | `Custom OpenTelemetry Collector distribution`                                     |
-| output_path: | The path to write the output (sources and binary).                                                 | Yes      | `/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831` |
-| version:     | The version for your custom OpenTelemetry Collector.                                               | Yes      | `1.0.0`                                                                           |
-| go:          | Which Go binary to use to compile the generated sources.                                           | Yes      | go from the PATH                                                                  |
+All `dist` tags are optional. You can add custom values for them depending on
+whether you intend to make your custom Collector distribution available to other
+users or you are using `ocb` to bootstrap your component development and testing
+environment.
 
-As you can see on the table above, all the `dist` tags are optional, so you will
-be adding custom values for them depending if your intentions to make your
-custom Collector distribution available for consumption by other users or if you
-are simply leveraging the `ocb` to bootstrap your component development and
-testing environment.
+To configure `ocb`, follow these steps:
 
-For this tutorial, you will be creating a Collector's distribution to support
-the development and testing of components.
+1. Create a manifest file named `builder-config.yaml` with the following
+   content:
 
-Go ahead and create a manifest file named `builder-config.yaml` with the
-following content:
+   ```yaml
+   dist:
+     name: otelcol-dev
+     description: Basic OTel Collector distribution for Developers
+     output_path: ./otelcol-dev
+   ```
 
-```yaml
-dist:
-  name: otelcol-dev
-  description: Basic OTel Collector distribution for Developers
-  output_path: ./otelcol-dev
-```
+1. Add modules for the components you want to include in this custom Collector
+   distribution. See the
+   [`ocb` configuration documentation](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder#configuration)
+   to understand the different modules and how to add components.
 
-Now you need to add the modules representing the components you want to be
-incorporated in this custom Collector distribution. Take a look at the
-[ocb configuration documentation](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder#configuration)
-to understand the different modules and how to add the components.
+   For this example distribution, add the following components:
+   - Exporters: OTLP and Debug
+   - Receivers: OTLP
+   - Processors: Batch
 
-We will be adding the following components to our development and testing
-collector distribution:
+   The `builder-config.yaml` manifest file should look like this:
 
-- Exporters: OTLP and Debug
-- Receivers: OTLP
-- Processors: Batch
+   ```yaml
+   dist:
+     name: otelcol-dev
+     description: Basic OTel Collector distribution for Developers
+     output_path: ./otelcol-dev
 
-The `builder-config.yaml` manifest file will look like this after adding the
-components:
+   exporters:
+     - gomod:
+         go.opentelemetry.io/collector/exporter/debugexporter {{%
+         version-from-registry collector-exporter-debug %}}
+     - gomod:
+         go.opentelemetry.io/collector/exporter/otlpexporter {{%
+         version-from-registry collector-exporter-otlp %}}
 
-<!-- prettier-ignore -->
-```yaml
-dist:
-  name: otelcol-dev
-  description: Basic OTel Collector distribution for Developers
-  output_path: ./otelcol-dev
+   processors:
+     - gomod:
+         go.opentelemetry.io/collector/processor/batchprocessor {{%
+         version-from-registry collector-processor-batch %}}
 
-exporters:
-  - gomod:
-      go.opentelemetry.io/collector/exporter/debugexporter {{% version-from-registry collector-exporter-debug %}}
-  - gomod:
-      go.opentelemetry.io/collector/exporter/otlpexporter {{% version-from-registry collector-exporter-otlp %}}
+   receivers:
+     - gomod:
+         go.opentelemetry.io/collector/receiver/otlpreceiver {{%
+         version-from-registry collector-receiver-otlp %}}
 
-processors:
-  - gomod:
-      go.opentelemetry.io/collector/processor/batchprocessor {{% version-from-registry collector-processor-batch %}}
+   providers:
+     - gomod:
+         go.opentelemetry.io/collector/confmap/provider/envprovider {{% param
+         providers-vers %}}
+     - gomod:
+         go.opentelemetry.io/collector/confmap/provider/fileprovider {{% param
+         providers-vers %}}
+     - gomod:
+         go.opentelemetry.io/collector/confmap/provider/httpprovider {{% param
+         providers-vers %}}
+     - gomod:
+         go.opentelemetry.io/collector/confmap/provider/httpsprovider {{% param
+         providers-vers %}}
+     - gomod:
+         go.opentelemetry.io/collector/confmap/provider/yamlprovider {{% param
+         providers-vers %}}
+   ```
 
-receivers:
-  - gomod:
-      go.opentelemetry.io/collector/receiver/otlpreceiver {{% version-from-registry collector-receiver-otlp %}}
+{{% alert title="Tip" %}}
 
-providers:
-  - gomod: go.opentelemetry.io/collector/confmap/provider/envprovider v1.18.0
-  - gomod: go.opentelemetry.io/collector/confmap/provider/fileprovider v1.18.0
-  - gomod: go.opentelemetry.io/collector/confmap/provider/httpprovider v1.18.0
-  - gomod: go.opentelemetry.io/collector/confmap/provider/httpsprovider v1.18.0
-  - gomod: go.opentelemetry.io/collector/confmap/provider/yamlprovider v1.18.0
-```
-
-{{% alert color="primary" title="Tip" %}}
-
-For a list of components that you can add to your custom collector, see the
-[OpenTelemetry Registry](/ecosystem/registry/?language=collector). Note that
-registry entries provide the full name and version you need to add to your
+For a list of components that you can add to your custom Collector, see the
+[OpenTelemetry Registry](/ecosystem/registry/?language=collector). Each registry
+entry contains the full name and version you need to add to your
 `builder-config.yaml`.
 
 {{% /alert %}}
 
-## Step 3a - Generate the code and build your Collector's distribution
+## Generate the code and build your Collector distribution
 
-{{% alert color="primary" title="Note" %}}
+{{% alert title="Note" %}}
 
-This step is used to build your custom collector distribution using the `ocb`
-binary. If you would like to build and deploy your custom Collector distribution
-to a container orchestrator (for example, Kubernetes), skip this step and go to
-[Step 3b](#step-3b---containerize-your-collectors-distribution).
+This section instructs you to build your custom Collector distribution using the
+`ocb` binary. If you would like to build and deploy your custom Collector
+distribution to a container orchestrator such as Kubernetes, skip this section
+and see
+[Containerize your Collector Distribution](#containerize-your-collector-distribution).
 
 {{% /alert %}}
 
-All you need now is to let the `ocb` do its job, so go to your terminal and type
-the following command:
+With `ocb` installed and configured, you are ready to build your distribution.
 
-```cmd
+In your terminal, type the following command to start `ocb`:
+
+```sh
 ./ocb --config builder-config.yaml
 ```
 
-If everything went well, here is what the output of the command should look
-like:
+The output of the command looks like this:
 
-```nocode
-2022-06-13T14:25:03.037-0500	INFO	internal/command.go:85	OpenTelemetry Collector distribution builder	{"version": "{{% version-from-registry collector-builder noPrefix %}}", "date": "2023-01-03T15:05:37Z"}
-2022-06-13T14:25:03.039-0500	INFO	internal/command.go:108	Using config file	{"path": "builder-config.yaml"}
-2022-06-13T14:25:03.040-0500	INFO	builder/config.go:99	Using go	{"go-executable": "/usr/local/go/bin/go"}
-2022-06-13T14:25:03.041-0500	INFO	builder/main.go:76	Sources created	{"path": "./otelcol-dev"}
-2022-06-13T14:25:03.445-0500	INFO	builder/main.go:108	Getting go modules
-2022-06-13T14:25:04.675-0500	INFO	builder/main.go:87	Compiling
-2022-06-13T14:25:17.259-0500	INFO	builder/main.go:94	Compiled	{"binary": "./otelcol-dev/otelcol-dev"}
+```text
+2025-06-13T14:25:03.037-0500	INFO	internal/command.go:85	OpenTelemetry Collector distribution builder	{"version": "{{% version-from-registry collector-builder noPrefix %}}", "date": "2025-06-03T15:05:37Z"}
+2025-06-13T14:25:03.039-0500	INFO	internal/command.go:108	Using config file	{"path": "builder-config.yaml"}
+2025-06-13T14:25:03.040-0500	INFO	builder/config.go:99	Using go	{"go-executable": "/usr/local/go/bin/go"}
+2025-06-13T14:25:03.041-0500	INFO	builder/main.go:76	Sources created	{"path": "./otelcol-dev"}
+2025-06-13T14:25:03.445-0500	INFO	builder/main.go:108	Getting go modules
+2025-06-13T14:25:04.675-0500	INFO	builder/main.go:87	Compiling
+2025-06-13T14:25:17.259-0500	INFO	builder/main.go:94	Compiled	{"binary": "./otelcol-dev/otelcol-dev"}
 ```
 
-As defined in the `dist` section of your config file, you now have a folder
-named `otelcol-dev` containing all the source code and the binary for your
-Collector's distribution.
+As defined in the `dist` section of your manifest, you now have a folder named
+`otelcol-dev` containing all the source code and the binary for your Collector
+distribution.
 
-The folder structure should look like this:
+The folder structure looks like this:
 
-```console
+```text
 .
 ├── builder-config.yaml
 ├── ocb
@@ -241,124 +247,124 @@ The folder structure should look like this:
     └── otelcol-dev
 ```
 
-You can now use the generated code to bootstrap your component development
-projects and easily build and distribute your own collector distribution with
-your components.
+You can use the generated code to bootstrap your component development projects
+and then build and distribute your own Collector distribution with those
+components.
 
-## Step 3b - Containerize your Collector's distribution
+## Containerize your Collector distribution
 
-{{% alert color="primary" title="Note" %}}
+{{% alert title="Note" %}}
 
-This step will build your collector distribution inside a `Dockerfile`. Follow
-this step if you need to deploy your Collector distribution to a container
-orchestrator (for example, Kubernetes). If you would like to _only_ build your
-collector distribution without containerization, go to
-[Step 3a](#step-3a---generate-the-code-and-build-your-collectors-distribution).
+This section teaches you to build your Collector distribution inside a
+`Dockerfile`. Follow these instructions if you need to deploy your Collector
+distribution to a container orchestrator such as Kubernetes. If you want to
+build your Collector distribution without containerization, see
+[Generate the code and build your Collector distribution](#generate-the-code-and-build-your-collector-distribution).
 
 {{% /alert %}}
 
-You need to add two new files to your project:
+Follow these steps to containerize your custom Collector.
 
-- `Dockerfile` - Container image definition of your Collector distribution
-- `collector-config.yaml` - Minimalist Collector configuration YAML for testing
-  your distribution
+1. Add two new files to your project:
+   - `Dockerfile` - Container image definition of your Collector distribution
+   - `collector-config.yaml` - Minimal Collector configuration YAML for testing
+     your distribution
 
-After adding these files, your file structure looks like this:
+   After adding these files, your file structure looks like this:
 
-```console
-.
-├── builder-config.yaml
-├── collector-config.yaml
-└── Dockerfile
-```
+   ```text
+   .
+   ├── builder-config.yaml
+   ├── collector-config.yaml
+   └── Dockerfile
+   ```
 
-The following `Dockerfile` builds your Collector distribution in-place, ensuring
-that the resulting Collector distribution binary matches the target container
-architecture (for example, `linux/arm64`, `linux/amd64`):
+1. Add the following content to the `Dockerfile`. This definition builds your
+   Collector distribution in-place and ensures the resulting Collector
+   distribution binary matches the target container architecture (for example,
+   `linux/arm64`, `linux/amd64`):
 
-<!-- prettier-ignore-start -->
-```yaml
-FROM alpine:3.19 AS certs
-RUN apk --update add ca-certificates
+   ```dockerfile
+   FROM alpine:3.19 AS certs
+   RUN apk --update add ca-certificates
 
-FROM golang:1.25.0 AS build-stage
-WORKDIR /build
+   FROM golang:1.25.0 AS build-stage
+   WORKDIR /build
 
-COPY ./builder-config.yaml builder-config.yaml
+   COPY ./builder-config.yaml builder-config.yaml
 
-RUN --mount=type=cache,target=/root/.cache/go-build GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@{{% version-from-registry collector-builder %}}
-RUN --mount=type=cache,target=/root/.cache/go-build builder --config builder-config.yaml
+   RUN --mount=type=cache,target=/root/.cache/go-build GO111MODULE=on go install go.opentelemetry.io/collector/cmd/builder@{{% version-from-registry collector-builder %}}
+   RUN --mount=type=cache,target=/root/.cache/go-build builder --config builder-config.yaml
 
-FROM gcr.io/distroless/base:latest
+   FROM gcr.io/distroless/base:latest
 
-ARG USER_UID=10001
-USER ${USER_UID}
+   ARG USER_UID=10001
+   USER ${USER_UID}
 
-COPY ./collector-config.yaml /otelcol/collector-config.yaml
-COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
-COPY --chmod=755 --from=build-stage /build/otelcol-dev /otelcol
+   COPY ./collector-config.yaml /otelcol/collector-config.yaml
+   COPY --from=certs /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+   COPY --chmod=755 --from=build-stage /build/otelcol-dev /otelcol
 
-ENTRYPOINT ["/otelcol/otelcol-dev"]
-CMD ["--config", "/otelcol/collector-config.yaml"]
+   ENTRYPOINT ["/otelcol/otelcol-dev"]
+   CMD ["--config", "/otelcol/collector-config.yaml"]
 
-EXPOSE 4317 4318 12001
-```
-<!-- prettier-ignore-end -->
+   EXPOSE 4317 4318 12001
+   ```
 
-The following is the minimalist `collector-config.yaml` definition:
+1. Add the following definition to your `collector-config.yaml` file:
 
-```yaml
-receivers:
-  otlp:
-    protocols:
-      grpc:
-        endpoint: 0.0.0.0:4317
-      http:
-        endpoint: 0.0.0.0:4318
+   ```yaml
+   receivers:
+     otlp:
+       protocols:
+         grpc:
+           endpoint: 0.0.0.0:4317
+         http:
+           endpoint: 0.0.0.0:4318
 
-exporters:
-  debug:
-    verbosity: detailed
+   exporters:
+     debug:
+       verbosity: detailed
 
-service:
-  pipelines:
-    traces:
-      receivers: [otlp]
-      exporters: [debug]
-    metrics:
-      receivers: [otlp]
-      exporters: [debug]
-    logs:
-      receivers: [otlp]
-      exporters: [debug]
-```
+   service:
+     pipelines:
+       traces:
+         receivers: [otlp]
+         exporters: [debug]
+       metrics:
+         receivers: [otlp]
+         exporters: [debug]
+       logs:
+         receivers: [otlp]
+         exporters: [debug]
+   ```
 
-Use the following commands to build a multi-architecture Docker image of the OCB
-using `linux/amd64` and `linux/arm64` as the target build architectures. To
-learn more, see this
-[blog post](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/)
-about multi-architecture builds.
+1. Use the following commands to build a multi-architecture Docker image of
+   `ocb` using `linux/amd64` and `linux/arm64` as the target build
+   architectures. To learn more, see this
+   [blog post](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/)
+   about multi-architecture builds.
 
-```bash
-# Enable Docker multi-arch builds
-docker run --rm --privileged tonistiigi/binfmt --install all
-docker buildx create --name mybuilder --use
+   ```sh
+   # Enable Docker multi-arch builds
+   docker run --rm --privileged tonistiigi/binfmt --install all
+   docker buildx create --name mybuilder --use
 
-# Build the Docker image as Linux AMD and ARM,
-# and loads the build result to "docker images"
-docker buildx build --load \
-  -t <collector_distribution_image_name>:<version> \
-  --platform=linux/amd64,linux/arm64 .
+   # Build the Docker image as Linux AMD and ARM
+   # and load the result to "docker images"
+   docker buildx build --load \
+     -t <collector_distribution_image_name>:<version> \
+     --platform=linux/amd64,linux/arm64 .
 
-# Test the newly-built image
-docker run -it --rm -p 4317:4317 -p 4318:4318 \
-    --name otelcol <collector_distribution_image_name>:<version>
-```
+   # Test the newly built image
+   docker run -it --rm -p 4317:4317 -p 4318:4318 \
+       --name otelcol <collector_distribution_image_name>:<version>
+   ```
 
-## Further reading:
+## Further reading
 
-- [Building a Trace Receiver](/docs/collector/extend/custom-component/receiver)
-- [Building a Connector](/docs/collector/extend/custom-component/connector)
+- [Build a receiver](/docs/collector/extend/custom-component/receiver)
+- [Build a connector](/docs/collector/extend/custom-component/connector)
 
 [ocb]:
   https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder

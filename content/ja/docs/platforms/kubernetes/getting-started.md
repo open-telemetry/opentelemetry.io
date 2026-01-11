@@ -1,7 +1,7 @@
 ---
 title: はじめに
 weight: 1
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad # patched
 drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: filelog kubelet kubeletstats kubeletstatsreceiver loggingexporter otlpexporter sattributes sattributesprocessor sclusterreceiver sobjectsreceiver
@@ -25,7 +25,7 @@ Kubernetesは多くの重要なテレメトリーをさまざまな方法で公�
 コレクターは、このデータを効率的に収集し、意味のある方法で強化できる、自由に使えるさまざまなツールを備えています。
 
 すべてのデータを収集するには、コレクターを2つの方法でインストールする必要があります。
-1つは[デーモンセット](/docs/collector/deployment/agent/)として、もう1つは[デプロイメント](/docs/collector/deployment/gateway/)としてです。
+1つは[デーモンセット](/docs/collector/deploy/agent/)として、もう1つは[デプロイメント](/docs/collector/deploy/gateway/)としてです。
 コレクターのデーモンセットインストールは、ノード、ポッド、コンテナのサービス、ログ、メトリクスが発するテレメトリーを収集するために使用されます。
 コレクターのデプロイメントインストールは、クラスタのメトリクスとイベントの収集に使用されます。
 
