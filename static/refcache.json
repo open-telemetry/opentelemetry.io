@@ -13663,6 +13663,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-07T09:47:59.834498314Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/rpc-spans.md#events": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-11T10:37:03.856877044Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.38.0/docs/database/database-metrics.md": {
     "StatusCode": 206,
     "LastSeen": "2026-01-08T09:50:05.152579591Z"
