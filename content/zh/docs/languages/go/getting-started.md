@@ -334,20 +334,9 @@ func run() error {
 func newHTTPHandler() http.Handler {
     mux := http.NewServeMux()
 
-
-    // handleFunc 是对 mux.HandleFunc 的封装，
-    // 它将 handler 注册到指定路径 pattern（如 "/rolldice/"）上，
-    // 并在 OpenTelemetry 中记录该路径作为 http.route 插桩标签，用于丰富 HTTP 插桩信息。
-    handleFunc := func(pattern string, handlerFunc func(http.ResponseWriter, *http.Request)) {
-        // 为 HTTP 插桩配置 "http.route" 标签。
-        handler := otelhttp.WithRouteTag(pattern, http.HandlerFunc(handlerFunc))
-        // 这里是真正的处理函数。
-        mux.Handle(pattern, handler)
-    }
-
     // 注册 Handler。
-    handleFunc("/rolldice/", rolldice)
-    handleFunc("/rolldice/{player}", rolldice)
+    mux.Handle("/rolldice/", rolldice)
+    mux.Handle("/rolldice/{player}", rolldice)
 
     // 为整个服务器添加 HTTP 插桩处理器。
     handler := otelhttp.NewHandler(mux, "/")

@@ -1,6 +1,6 @@
 ---
 title: Contexto
-default_lang_commit: 2c3d80cad4fa99a5fb46ef550170ea4579fa50ec
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 description: Documentação da API de Contexto do OpenTelemetry JavaScript
 aliases: [api/context]
 weight: 60
@@ -106,7 +106,7 @@ const ctx = api.ROOT_CONTEXT;
 const ctx2 = ctx.setValue(key, 'contexto 2');
 
 // remover a entrada
-const ctx3 = ctx.deleteValue(key);
+const ctx3 = ctx2.deleteValue(key);
 
 // ctx3 não contém a entrada
 console.log(ctx3.getValue(key)); // undefined
