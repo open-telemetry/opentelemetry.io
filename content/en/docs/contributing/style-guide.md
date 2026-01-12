@@ -15,17 +15,17 @@ documentation style is inspired by the following style guides:
 The following sections contain guidance that is specific to the OpenTelemetry
 project.
 
-{{% alert title="Note" %}}
+> [!NOTE]
+>
+> Many requirements of our style guide can be enforced by running automation:
+> before submitting a [pull request][] (PR), run `npm run fix:all` on your local
+> machine and commit the changes.
+>
+> If you run into errors or [failed PR checks](../pr-checks), read about our
+> style guide and learn what you can do to fix certain common issues.
 
-Many requirements of our style guide can be enforced by running automation:
-before submitting a
-[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
-(PR), run `npm run fix:all` on your local machine and commit the changes.
-
-If you run into errors or [failed PR checks](../pr-checks), read about our style
-guide and learn what you can do to fix certain common issues.
-
-{{% /alert %}}
+[pull request]:
+  https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request
 
 ## OpenTelemetry.io word list
 
