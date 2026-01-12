@@ -3,7 +3,7 @@ title: Manual de estilo da documentação
 description: Terminologia e estilo ao escrever a documentação do OpenTelemetry.
 linkTitle: Manual de estilo
 weight: 20
-default_lang_commit: 1ba10a8af181e45f2326a9824b510a057830b053
+default_lang_commit: 5ab640677e1ac0a57553fb1c72199812f628f461
 cSpell:ignore: open-telemetry opentelemetryio postgre style-guide textlintrc
 ---
 
@@ -15,19 +15,18 @@ documentação do OpenTelemetry é influenciada pelos seguintes manuais de estil
 
 As seções a seguir contêm orientações específicas para o projeto OpenTelemetry.
 
-{{% alert title="Nota" %}}
+> [!NOTE]
+>
+> Muitos requisitos do nosso manual de estilo podem ser aplicados
+> automaticamente: antes de enviar uma [pull request][] (PR), execute
+> `npm run fix:all` na sua máquina local e faça o _commit_ das alterações.
+>
+> Se você encontrar erros ou [falhas nas verificações de PR](../pr-checks), leia
+> sobre nosso manual de estilo e aprenda o que pode ser feito para corrigir
+> certos problemas comuns.
 
-Muitos requisitos do nosso manual de estilo podem ser aplicados automaticamente:
-antes de enviar uma
-[_pull request_](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
-(PR), execute `npm run fix:all` na sua máquina local e faça o _commit_ das
-alterações.
-
-Se você encontrar erros ou [falhas nas verificações de PR](../pr-checks), leia
-sobre nosso manual de estilo e aprenda o que pode ser feito para corrigir certos
-problemas comuns.
-
-{{% /alert %}}
+[pull request]:
+  https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request
 
 ## Lista de palavras do OpenTelemetry.io {#opentelemetryio-word-list}
 
