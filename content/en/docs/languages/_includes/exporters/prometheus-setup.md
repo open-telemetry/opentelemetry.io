@@ -1,7 +1,7 @@
 ## Prometheus
 
 To send your metric data to [Prometheus](https://prometheus.io/), you can either
-[enable Prometheus' OTLP Receiver](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver)
+[enable Prometheus' OTLP Receiver](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver)
 and use the [OTLP exporter](#otlp) or you can use the Prometheus exporter, a
 `MetricReader` that starts an HTTP server that collects metrics and serialize to
 Prometheus text format on request.
@@ -32,7 +32,7 @@ scrape_configs:
 Run Prometheus in a docker container with the UI accessible on port `9090`:
 
 ```shell
-docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
+docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --web.enable-otlp-receiver
 ```
 
 {{% alert title=Note %}}
