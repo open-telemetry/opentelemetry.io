@@ -727,7 +727,7 @@ aplicação chamar `set(..)` posteriormente sem disparar uma exceção.
 Como resultado:
 
 - Se o Java agent estiver presente, a instrumentação é inicializada, por padrão,
-  com a instância de `OpenTelemetry` isntalada pelo agent.
+  com a instância de `OpenTelemetry` instalada pelo agent.
 - Se o Java agent não estiver presente, a instrumentação é inicializada, por
   padrão, com uma implementação no-op.
 - O usuário pode sobrescrever explicitamente o padrão chamando
