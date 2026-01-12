@@ -181,11 +181,13 @@ components:
 
 Likely you want to use the web store as a demo application for an observability
 backend you already have (e.g. an existing instance of Jaeger, Zipkin, or one of
-the [vendor of your choice](/ecosystem/vendors/).
+the [vendor of your choice](/ecosystem/vendors/)).
 
 The OpenTelemetry Collector's configuration is exposed in the Helm chart. Any
-additions you do will be merged into the default configuration. You can use this
-to add your own exporters, and add them to the desired pipeline(s)
+additions you do will be merged into the default configuration.
+
+You can create a custom file eg.: `my-values-file.yaml` and use this
+to add your own exporters to the desired pipeline(s):
 
 ```yaml
 opentelemetry-collector:
