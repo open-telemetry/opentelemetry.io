@@ -1,7 +1,8 @@
 ---
 title: カスタムコレクターのビルド
 weight: 29
-default_lang_commit: 52ef6272047483d1d4913a7e5ce8532196c58b30
+default_lang_commit: 52ef6272047483d1d4913a7e5ce8532196c58b30 # patched
+drifted_from_default: file not found
 cSpell:ignore: darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
@@ -310,8 +311,8 @@ docker run -it --rm -p 4317:4317 -p 4318:4318 \
 
 ## さらなる学びのために {#further-reading}
 
-- [トレースレシーバーをビルドする](/docs/collector/building/receiver)
-- [コネクターをビルドする](/docs/collector/building/connector)
+- [トレースレシーバーをビルドする](/docs/collector/extend/custom-component/receiver/)
+- [コネクターをビルドする](/docs/collector/extend/custom-component/connector/)
 
 [ocb]: https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
 [tags]: https://github.com/open-telemetry/opentelemetry-collector-releases/tags

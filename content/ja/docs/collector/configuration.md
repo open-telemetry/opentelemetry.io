@@ -2,7 +2,7 @@
 title: 設定
 weight: 20
 description: ニーズに合わせてコレクターを設定する方法を確認してください
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
 drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents upsert zpages
@@ -679,7 +679,7 @@ HTTPまたはgRPCポートを公開しているほとんどのレシーバーは
 - レシーバーのサーバー認証機能として、着信接続を認証します。
 
 既知の認証機能のリストについては、[レジストリ](/ecosystem/registry/?s=authenticator&component=extension)を参照してください。
-カスタムの認証機能を開発したい場合は、[認証機能の拡張を開発する](../building/authenticator-extension) を参照してください。
+カスタムの認証機能を開発したい場合は、[認証機能の拡張を開発する](/docs/collector/extend/custom-component/extension/authenticator/) を参照してください。
 
 コレクターのレシーバーにサーバー認証機能を追加するには、以下の手順にしたがいます。
 

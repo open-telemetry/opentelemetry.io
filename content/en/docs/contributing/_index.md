@@ -36,6 +36,8 @@ website.
 
 - {{% param chooseAnIssueAtYourLevel %}}
 
+- Read our [Generative AI contribution policy](pull-requests#using-ai)
+
 - Want to work other issues or larger changes? [Discuss it with maintainers
   first][].
 

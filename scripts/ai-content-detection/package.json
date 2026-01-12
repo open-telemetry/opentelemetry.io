@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@octokit/rest": "^21.0.0",
+    "dotenv": "^16.0.0"
+  }
+}

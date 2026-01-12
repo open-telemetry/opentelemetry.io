@@ -210,12 +210,6 @@ Java agent features that are not yet supported by declarative configuration:
 
 - `otel.instrumentation.common.mdc.resource-attributes`
 - `otel.javaagent.add-thread-details`
-- adding console logger for spans when `otel.javaagent.debug=true`
-  - can be worked around by adding a console span exporter in the configuration
-    file
-- using `GlobalConfigProvider` to access declarative configuration values in
-  custom code (by casting `GlobalOpenTelemetry.get()` to
-  `ExtendedOpenTelemetry`)
 
 Contrib features that are not yet supported by declarative configuration:
 

@@ -11,7 +11,7 @@ logBridgeWarning: >
   bridge logs recorded through other log APIs / frameworks into OpenTelemetry.
   They are not intended for end user use as a replacement for Log4j / SLF4J /
   Logback / etc.
-cSpell:ignore: Dotel kotlint Logback updowncounter
+cSpell:ignore: kotlint Logback updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -41,7 +41,7 @@ provided by OpenTelemetry:
 
 - [SDK](../sdk/) reference implementation. This is the right choice for most
   users.
-- [Noop](#noop-implementation) implementation. A minimalist, zero-dependency
+- [No-op](#no-op-implementation) implementation. A minimalist, zero-dependency
   implementation for instrumentations to use by default when the user doesn't
   install an instance.
 
@@ -368,7 +368,7 @@ public class ExtractContextUsage {
 ## OpenTelemetry API
 
 The `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}` artifact
-contains the OpenTelemetry API, including traces, metrics, logs, noop
+contains the OpenTelemetry API, including traces, metrics, logs, no-op
 implementation, baggage, key `TextMapPropagator` implementations, and a
 dependency on the [context API](#context-api).
 
@@ -612,7 +612,7 @@ public class OpenTelemetryUsage {
 
 {{% alert title="Java agent" %}} The Java agent is a special case where
 `GlobalOpenTelemetry` is set by the agent. Simply call
-`GlobalOpenTelemetry.get()` to access the `OpenTelemetry` instance.
+`GlobalOpenTelemetry.getOrNoop()` to access the `OpenTelemetry` instance.
 
 Read more about
 [extending the Java agent with custom manual instrumentation](/docs/zero-code/java/agent/api/).
@@ -621,55 +621,132 @@ Read more about
 [GlobalOpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html)
 holds a global singleton [OpenTelemetry](#opentelemetry) instance.
 
-Instrumentation should avoid using `GlobalOpenTelemetry`. Instead, accept
-`OpenTelemetry` as an initialization argument and default to the
-[Noop implementation](#noop-implementation) if not set. There is an exception to
-this rule: the `OpenTelemetry` instance installed by the
-[Java agent](/docs/zero-code/java/agent/) is available via
-`GlobalOpenTelemetry`. Users with additional manual instrumentation are
-encouraged to access it via `GlobalOpenTelemetry.get()`.
+`GlobalOpenTelemetry` is designed in a very particular way to avoid
+initialization ordering issues, and as a result should be used judiciously.
+Specifically, `GlobalOpenTelemetry.get()` always returns the same result,
+regardless of whether `GlobalOpenTelemetry.set(..)` has been called. Internally,
+if `get()` is called prior to `set()`, the implementation internally calls
+`set(..)` with a [no-op implementation](#no-op-implementation) and returns it.
+Because `set(..)` triggers an exception if called more than once, calling
+`set(..)` after `get()` causes an exception rather than silently failing.
 
-`GlobalOpenTelemetry.get()` is guaranteed to always return the same result. If
-`GlobalOpenTelemetry.get()` is called before `GlobalOpenTelemetry.set(..)`,
-`GlobalOpenTelemetry` is set to the noop implementation and future calls to
-`GlobalOpenTelemetry.set(..)` throw an exception. Therefore, it's critical to
-call `GlobalOpenTelemetry.set(..)` as early in the application lifecycle as
-possible, and before `GlobalOpenTelemetry.get()` is called by any
-instrumentation. This guarantee surfaces initialization ordering issues: calling
-`GlobalOpenTelemetry.set()` too late (i.e. after instrumentation has called
-`GlobalOpenTelemetry.get()`) triggers an exception rather than silently failing.
+The Java agent represents a special case: `GlobalOpenTelemetry` is the only
+mechanism for
+[native instrumentation](../instrumentation/#native-instrumentation) and
+[manual instrumentation](../instrumentation/#manual-instrumentation) to record
+telemetry to the `OpenTelemetry` instance installed by the agent. Using this
+instance is important and useful, and we recommend accessing
+`GlobalOpenTelemetry` as follows:
 
-If [autoconfigure](../configuration/#zero-code-sdk-autoconfigure) is present,
-`GlobalOpenTelemetry` can be automatically initialized by setting
-`-Dotel.java.global-autoconfigure.enabled=true` (or via env var
-`export OTEL_JAVA_GLOBAL_AUTOCONFIGURE_ENABLED=true`). When enabled, the first
-call to `GlobalOpenTelemetry.get()` triggers autoconfiguration and calls
-`GlobalOpenTelemetry.set(..)` with the resulting `OpenTelemetry` instance.
-
-The following code snippet explores `GlobalOpenTelemetry` API context
-propagation:
+**For native instrumentation, default to `GlobalOpenTelemetry.getOrNoop()`:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt "src/main/java/otel/GlobalOpenTelemetryUsage.java"?>
+<?code-excerpt "src/main/java/otel/GlobalOpenTelemetryNativeInstrumentationUsage.java"?>
 ```java
 package otel;
 
 import io.opentelemetry.api.GlobalOpenTelemetry;
 import io.opentelemetry.api.OpenTelemetry;
 
-public class GlobalOpenTelemetryUsage {
+public class GlobalOpenTelemetryNativeInstrumentationUsage {
 
-  public static void openTelemetryUsage(OpenTelemetry openTelemetry) {
-    // Set the GlobalOpenTelemetry instance as early in the application lifecycle as possible
-    // Set must only be called once. Calling multiple times raises an exception.
-    GlobalOpenTelemetry.set(openTelemetry);
+  public static void globalOpenTelemetryUsage(OpenTelemetry openTelemetry) {
+    // Initialized with OpenTelemetry from java agent if present, otherwise no-op implementation.
+    MyClient client1 = new MyClientBuilder().build();
 
-    // Get the GlobalOpenTelemetry instance.
-    openTelemetry = GlobalOpenTelemetry.get();
+    // Initialized with an explicit OpenTelemetry instance, overriding the java agent instance.
+    MyClient client2 = new MyClientBuilder().setOpenTelemetry(openTelemetry).build();
+  }
+
+  /**
+   * An example library with native OpenTelemetry instrumentation, initialized via {@link
+   * MyClientBuilder}.
+   */
+  public static class MyClient {
+    private final OpenTelemetry openTelemetry;
+
+    private MyClient(OpenTelemetry openTelemetry) {
+      this.openTelemetry = openTelemetry;
+    }
+
+    // ... library methods omitted
+  }
+
+  /** Builder for {@link MyClient}. */
+  public static class MyClientBuilder {
+    // OpenTelemetry defaults to the GlobalOpenTelemetry instance if set, e.g. by the java agent or
+    // by the application, else to a no-op implementation.
+    private OpenTelemetry openTelemetry = GlobalOpenTelemetry.getOrNoop();
+
+    /** Explicitly set the OpenTelemetry instance to use. */
+    public MyClientBuilder setOpenTelemetry(OpenTelemetry openTelemetry) {
+      this.openTelemetry = openTelemetry;
+      return this;
+    }
+
+    /** Build the client. */
+    public MyClient build() {
+      return new MyClient(openTelemetry);
+    }
   }
 }
 ```
 <!-- prettier-ignore-end -->
+
+Note that `GlobalOpenTelemetry.getOrNoop()` was designed without the side
+effects of `get()` calling `set(..)`, preserving the ability for application
+code to later call `set(..)` without triggering an exception.
+
+As a result:
+
+- If the Java agent is present, the instrumentation is initialized with the
+  `OpenTelemetry` instance installed by the agent by default.
+- If the Java agent is not present, the instrumentation is initialized with a
+  no-op implementation by default.
+- The user can explicitly override the default by calling `setOpenTelemetry(..)`
+  with a separate instance.
+
+**For manual instrumentation, default using:**
+
+<!-- prettier-ignore-start -->
+<!-- temporarily change except path to resolve relative to configuration directory, and revert after -->
+<?code-excerpt path-base="examples/java/configuration"?>
+<?code-excerpt "src/main/java/otel/GlobalOpenTelemetryManualInstrumentationUsage.java"?>
+```java
+package otel;
+
+import io.opentelemetry.api.GlobalOpenTelemetry;
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
+
+public class GlobalOpenTelemetryManualInstrumentationUsage {
+
+  public static void globalOpenTelemetryUsage() {
+    // If GlobalOpenTelemetry is already set, e.g. by the java agent, use it.
+    // Else, initialize an OpenTelemetry SDK instance and use it.
+    OpenTelemetry openTelemetry =
+        GlobalOpenTelemetry.isSet() ? GlobalOpenTelemetry.get() : initializeOpenTelemetry();
+
+    // Install into manual instrumentation. This may involve setting as a singleton in the
+    // application's dependency injection framework.
+  }
+
+  /** Initialize OpenTelemetry SDK using autoconfiguration. */
+  public static OpenTelemetry initializeOpenTelemetry() {
+    return AutoConfiguredOpenTelemetrySdk.initialize().getOpenTelemetrySdk();
+  }
+}
+```
+<?code-excerpt path-base="examples/java/api"?>
+<!-- prettier-ignore-end -->
+
+As a result:
+
+- If the Java agent is present, the application initializes manual
+  instrumentation with the `OpenTelemetry` instance installed by the agent.
+- If the Java agent is not present, the application initializes an
+  [OpenTelemetrySdk](../sdk/#opentelemetrysdk) instance and uses it to
+  initialize manual instrumentation.
 
 ### TracerProvider
 
@@ -1438,16 +1515,16 @@ public class LogRecordUsage {
 ```
 <!-- prettier-ignore-end -->
 
-### Noop implementation
+### No-op implementation
 
-The `OpenTelemetry#noop()` method provides access to a noop implementation of
+The `OpenTelemetry#noop()` method provides access to a no-op implementation of
 [OpenTelemetry](#opentelemetry) and all API components it provides access to. As
-the name suggests, the noop implementation does nothing and is designed to have
+the name suggests, the no-op implementation does nothing and is designed to have
 no impact on performance. Instrumentation may see impact on performance even
-when the noop is used if it is computing / allocating attribute values and other
-data required to record the telemetry. The noop is a useful default instance of
-`OpenTelemetry` when a user has not configured and installed a concrete
-implementation such as the [SDK](../sdk/).
+when the no-op is used if it is computing / allocating attribute values and
+other data required to record the telemetry. The no-op is a useful default
+instance of `OpenTelemetry` when a user has not configured and installed a
+concrete implementation such as the [SDK](../sdk/).
 
 The following code snippet explores `OpenTelemetry#noop()` API usage:
 
@@ -1476,10 +1553,10 @@ public class NoopUsage {
   private static final String SCOPE_NAME = "fully.qualified.name";
 
   public static void noopUsage() {
-    // Access the noop OpenTelemetry instance
+    // Access the no-op OpenTelemetry instance
     OpenTelemetry noopOpenTelemetry = OpenTelemetry.noop();
 
-    // Noop tracing
+    // No-op tracing
     Tracer noopTracer = OpenTelemetry.noop().getTracer(SCOPE_NAME);
     noopTracer
         .spanBuilder("span name")
@@ -1489,7 +1566,7 @@ public class NoopUsage {
         .addEvent("event-name", Attributes.builder().put(WIDGET_COLOR, "red").build())
         .end();
 
-    // Noop metrics
+    // No-op metrics
     Attributes attributes = WIDGET_RED_CIRCLE;
     Meter noopMeter = OpenTelemetry.noop().getMeter(SCOPE_NAME);
     DoubleHistogram histogram = noopMeter.histogramBuilder("fully.qualified.histogram").build();
@@ -1517,7 +1594,7 @@ public class NoopUsage {
         .gaugeBuilder("fully.qualified.gauge")
         .buildWithCallback(observable -> observable.record(10, attributes));
 
-    // Noop logs
+    // No-op logs
     Logger noopLogger = OpenTelemetry.noop().getLogsBridge().get(SCOPE_NAME);
     noopLogger
         .logRecordBuilder()

@@ -18,5 +18,5 @@ createdAt: 2025-05-22
 package:
   registry: npm
   name: '@opentelemetry/instrumentation-oracledb'
-  version: 0.34.0
+  version: 0.34.1
 isFirstParty: false
