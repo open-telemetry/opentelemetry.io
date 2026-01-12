@@ -116,7 +116,7 @@ OpenTelemetryコレクターは、[トレース](/docs/concepts/signals/traces/)
 次のステップとして、以下のことを検討してください。
 
 - [コレクターのインストール](../install/)について別の方法を試す
-- コレクターの[デプロイ方法](../deployment/)についてさまざまな方法を学ぶ
+- コレクターの[デプロイ方法](/docs/collector/deploy/)についてさまざまな方法を学ぶ
 - コレクターの[設定](/docs/collector/configuration)ファイルとその構造を理解する
 - [レジストリ](/ecosystem/registry/?language=collector)で取得できるコンポーネントを探る
 - [OpenTelemetry Collector Builder (OCB)を使ってカスタムコレクターをビルド](/docs/collector/extend/ocb/)する方法を学ぶ
