@@ -82,7 +82,9 @@ jobs:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Post response to first-time contributor
-        if: steps.check-membership.outputs.is_member != 'true' && steps.check-trigger.outputs.match == 'true'
+        if:
+          steps.check-membership.outputs.is_member != 'true' &&
+          steps.check-trigger.outputs.match == 'true'
         run: |
           RESPONSE_BODY="Thank you for your interest in contributing to this project, @${{ env.COMMENT_AUTHOR }}! 🙏
 
