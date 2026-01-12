@@ -1,14 +1,14 @@
 {{ $colors := dict
     "caution" "warning"
-    "important" "danger"
-    "note" "info"
+    "important" "info"
+    "note" "primary"
     "tip" "success"
     "warning" "warning"
 -}}
 
 <div class="alert
     {{- with index $colors .AlertType }} alert-{{ . }}
-  {{- end }}">
+  {{- end }}" role="alert">
   {{ $title := or
     .AlertTitle
     (and .AlertType
