@@ -1,8 +1,7 @@
 ---
 title: Registrar Telemetria com a API
 weight: 11
-default_lang_commit: 7c6d317a1ed969bd03f0aa8297f068ca29c2b459 # patched
-drifted_from_default: true
+default_lang_commit: dabd30226437f71ca1eca69f9e8f04926a042bae
 aliases:
   - /docs/languages/java/api-components/
 logBridgeWarning: >
@@ -43,9 +42,9 @@ são fornecidas pelo OpenTelemetry:
 
 - Implementação de referência [SDK](../sdk/). É a escolha certa para a maioria
   dos usuários.
-- Implementação [Noop](#noop-implementation). Uma implementação minimalista, sem
-  dependências, usada por padrão pelas instrumentações quando o usuário não
-  instala uma instância configurada.
+- Implementação [No-op](#noop-implementation) (significando "sem operação"). Uma
+  implementação minimalista, sem dependências, usada por padrão pelas
+  instrumentações quando o usuário não instala uma instância configurada.
 
 A API é projetada para ser tomada como uma dependência direta por bibliotecas,
 _frameworks_ e aplicações. Oferecendo
@@ -383,9 +382,9 @@ public class ExtractContextUsage {
 ## OpenTelemetry API
 
 O artefato `io.opentelemetry:opentelemetry-api:{{% param vers.otel %}}` contém a
-API do OpenTelemetry, incluindo rastros, métricas, logs, implementação _noop_,
-bagagem, implementações-chave de `TextMapPropagator`, e uma dependência da
-[Context API](#context-api).
+API do OpenTelemetry, incluindo rastros, métricas, logs, implementação _no-op_
+(significando "sem operação"), bagagem, implementações-chave de
+`TextMapPropagator`, e uma dependência da [Context API](#context-api).
 
 ### Provedores e Escopos {#providers-and-scopes}
 
@@ -478,9 +477,8 @@ public class ProvidersAndScopes {
 
 [Attributes](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/common/Attributes.html)
 é um conjunto de pares chave-valor representando a
-[definição padrão de atributos](/docs/specs/otel/common/#attribute).
-
-`Attributes` é um conceito recorrente na API do OpenTelemetry:
+[definição de atributos](/docs/specs/otel/common/#attribute). `Attributes` é um
+conceito recorrente na API do OpenTelemetry:
 
 - [Trechos](#span), eventos de trechos e links de trechos possuem atributos.
 - As medições registradas em [instrumentos de métrica](#meter) possuem
@@ -639,7 +637,7 @@ public class OpenTelemetryUsage {
 
 {{% alert title="Java agent" %}} O Java agent é um caso especial em que
 `GlobalOpenTelemetry` é configurado pelo agente. Basta chamar
-`GlobalOpenTelemetry.get()` para acessar a instância de `OpenTelemetry`.
+`GlobalOpenTelemetry.getOrNoop()` para acessar a instância de `OpenTelemetry`.
 
 Saiba mais sobre
 [como estender o Java agent com instrumentação manual personalizada](/docs/zero-code/java/agent/api/).
@@ -649,61 +647,132 @@ Saiba mais sobre
 mantém uma instância global única _(singleton)_ de
 [OpenTelemetry](#opentelemetry).
 
-Instrumentações devem evitar utilizar `GlobalOpenTelemetry`. Em vez disso, devem
-aceitar `OpenTelemetry` como argumento de inicialização e padronizar para a
-[implementação Noop](#noop-implementation) caso não seja configurado. Há uma
-exceção a esta regra: a instância `OpenTelemetry` instalada pelo
-[Java agent](/docs/zero-code/java/agent/) está disponível via
-`GlobalOpenTelemetry`. Usuários que possuem instrumentação manual adicional são
-encorajados a acessá-la via `GlobalOpenTelemetry.get()`.
+O `GlobalOpenTelemetry` foi projetado de uma forma bastante específica para
+evitar problemas de ordem de inicialização e, por isso, deve ser usado com
+cautela. Especificamente, `GlobalOpenTelemetry.get()` sempre retorna o mesmo
+resultado, independentemente de `GlobalOpenTelemetry.set(..)` ter sido chamado.
+Internamente, se `get()` for chamado antes de `set()`, a implementação chama
+internamente `set(..)` com uma [implementação no-op](#no-op-implementation) e a
+retorna. Como `set(..)` lança uma exceção se for chamado mais de uma vez, chamar
+`set(..)` após `get()` resulta em uma exceção, em vez de falhar silenciosamente.
 
-`GlobalOpenTelemetry.get()` é garantido para sempre retornar o mesmo resultado.
-Se `GlobalOpenTelemetry.get()` for chamado antes de
-`GlobalOpenTelemetry.set(..)`, `GlobalOpenTelemetry` será configurado para a
-implementação _noop_, e chamadas posteriores a `GlobalOpenTelemetry.set(..)`
-lançarão uma exceção. Portanto, é crítico chamar `GlobalOpenTelemetry.set(..)` o
-mais cedo possível no ciclo de vida da aplicação, e antes que
-`GlobalOpenTelemetry.get()` seja chamado por qualquer instrumentação. Essa
-garantia ajuda a identificar problemas de ordem de inicialização: chamar
-`GlobalOpenTelemetry.set()` tarde demais (ou seja, depois que a instrumentação
-chamou `GlobalOpenTelemetry.get()`) dispara uma exceção em vez de falhar
-silenciosamente.
+O Java agent representa um caso especial: `GlobalOpenTelemetry` é o único
+mecanismo para
+[instrumentação nativa](../instrumentation/#native-instrumentation) e
+[instrumentação manual](../instrumentation/#manual-instrumentation) registrarem
+telemetria na instância de `OpenTelemetry` instalada pelo agent. Usar essa
+instância é importante e útil, e recomendamos acessar o `GlobalOpenTelemetry` da
+seguinte forma:
 
-Se a [autoconfiguração](../configuration/#zero-code-sdk-autoconfigure) estiver
-presente, `GlobalOpenTelemetry` pode ser inicializado automaticamente definindo
-`-Dotel.java.global-autoconfigure.enabled=true` (ou via variável de ambiente
-`export OTEL_JAVA_GLOBAL_AUTOCONFIGURE_ENABLED=true`). Quando habilitado, a
-primeira chamada para `GlobalOpenTelemetry.get()` dispara a configuração
-automática e chama `GlobalOpenTelemetry.set(..)` com a instância resultante de
-`OpenTelemetry`.
-
-O trecho de código a seguir explora o uso de `GlobalOpenTelemetry` para
-propagação de contexto:
+**Para instrumentação nativa, use por padrão
+`GlobalOpenTelemetry.getOrNoop()`:**
 
 <!-- prettier-ignore-start -->
-
-<?code-excerpt "src/main/java/otel/GlobalOpenTelemetryUsage.java"?>
-
+<?code-excerpt "src/main/java/otel/GlobalOpenTelemetryNativeInstrumentationUsage.java"?>
 ```java
 package otel;
 
 import io.opentelemetry.api.GlobalOpenTelemetry;
 import io.opentelemetry.api.OpenTelemetry;
 
-public class GlobalOpenTelemetryUsage {
+public class GlobalOpenTelemetryNativeInstrumentationUsage {
 
-  public static void openTelemetryUsage(OpenTelemetry openTelemetry) {
-    // Configure a instância GlobalOpenTelemetry o mais cedo possível no ciclo de vida da aplicação
-    // O método set deve ser chamado apenas uma vez. Chamadas múltiplas disparam uma exceção.
-    GlobalOpenTelemetry.set(openTelemetry);
+  public static void globalOpenTelemetryUsage(OpenTelemetry openTelemetry) {
+    // Inicializado com OpenTelemetry do java agent, se presente, caso contrário, com uma implementação no-op.
+    MyClient client1 = new MyClientBuilder().build();
 
-    // Obtenha a instância GlobalOpenTelemetry.
-    openTelemetry = GlobalOpenTelemetry.get();
+    // Inicializado com uma instância explícita de OpenTelemetry, substituindo a instância do java agent.
+    MyClient client2 = new MyClientBuilder().setOpenTelemetry(openTelemetry).build();
+  }
+
+  /**
+   * Um exemplo de biblioteca com instrumentação nativa do OpenTelemetry, inicializada via {@link
+   * MyClientBuilder}.
+   */
+  public static class MyClient {
+    private final OpenTelemetry openTelemetry;
+
+    private MyClient(OpenTelemetry openTelemetry) {
+      this.openTelemetry = openTelemetry;
+    }
+
+    // ... métodos da biblioteca omitidos
+  }
+
+  /** Construtor de {@link MyClient}. */
+  public static class MyClientBuilder {
+    // OpenTelemetry padrão para a instância GlobalOpenTelemetry se definida, por exemplo, pelo java agent ou
+    // pela aplicação, caso contrário, para uma implementação no-op.
+    private OpenTelemetry openTelemetry = GlobalOpenTelemetry.getOrNoop();
+
+    /** Define explicitamente a instância de OpenTelemetry a ser usada. */
+    public MyClientBuilder setOpenTelemetry(OpenTelemetry openTelemetry) {
+      this.openTelemetry = openTelemetry;
+      return this;
+    }
+
+    /** Constroi o cliente. */
+    public MyClient build() {
+      return new MyClient(openTelemetry);
+    }
   }
 }
 ```
-
 <!-- prettier-ignore-end -->
+
+Observe que `GlobalOpenTelemetry.getOrNoop()` foi projetado sem os efeitos
+colaterais de `get()` chamar `set(..)`, preservando a capacidade de o código da
+aplicação chamar `set(..)` posteriormente sem disparar uma exceção.
+
+Como resultado:
+
+- Se o Java agent estiver presente, a instrumentação é inicializada, por padrão,
+  com a instância de `OpenTelemetry` isntalada pelo agent.
+- Se o Java agent não estiver presente, a instrumentação é inicializada, por
+  padrão, com uma implementação no-op.
+- O usuário pode sobrescrever explicitamente o padrão chamando
+  `setOpenTelemetry(..)` com uma instância separada.
+
+**Para instrumentação manual, use por padrão:**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt path-base="examples/java/configuration"?>
+<?code-excerpt "src/main/java/otel/GlobalOpenTelemetryManualInstrumentationUsage.java"?>
+```java
+package otel;
+
+import io.opentelemetry.api.GlobalOpenTelemetry;
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
+
+public class GlobalOpenTelemetryManualInstrumentationUsage {
+
+  public static void globalOpenTelemetryUsage() {
+    // Se GlobalOpenTelemetry já estiver definido, por exemplo, pelo java agent, use-o.
+    // Caso contrário, inicialize uma instância do OpenTelemetry SDK e use-a.
+    OpenTelemetry openTelemetry =
+        GlobalOpenTelemetry.isSet() ? GlobalOpenTelemetry.get() : initializeOpenTelemetry();
+
+    // Instale na instrumentação manual. Isso pode envolver a configuração como um singleton no
+    // framework de injeção de dependência da aplicação.
+  }
+
+  /** Inicializa o OpenTelemetry SDK usando autoconfiguração. */
+  public static OpenTelemetry initializeOpenTelemetry() {
+    return AutoConfiguredOpenTelemetrySdk.initialize().getOpenTelemetrySdk();
+  }
+}
+```
+<?code-excerpt path-base="examples/java/api"?>
+<!-- prettier-ignore-end -->
+
+Como resultado:
+
+- Se o Java agent estiver presente, a aplicação inicializa a instrumentação
+  manual com a instância de `OpenTelemetry` instalada pelo agent.
+- Se o Java agent não estiver presente, a aplicação inicializa uma instância de
+  [OpenTelemetrySdk](../sdk/#opentelemetrysdk) e a utiliza para inicializar a
+  instrumentação manual.
 
 ### TracerProvider
 
@@ -1499,15 +1568,15 @@ public class LogRecordUsage {
 ```
 <!-- prettier-ignore-end -->
 
-### Implementação Noop {#noop-implementation}
+### Implementação No-op {#no-op-implementation}
 
-O método `OpenTelemetry#noop()` fornece acesso a uma implementação _noop_ de
+O método `OpenTelemetry#noop()` fornece acesso a uma implementação _no-op_ (significando "sem operação") de
 [OpenTelemetry](#opentelemetry) e todos os componentes da API que ela
-disponibiliza. Como o nome sugere, a implementação _noop_ não executa nenhuma
+disponibiliza. Como o nome sugere, a implementação _no-op_ não executa nenhuma
 ação e é projetada para não ter impacto no desempenho. Ainda assim, a
-instrumentação pode impactar a performance mesmo quando o _noop_ é usado, se ela
+instrumentação pode impactar a performance mesmo quando o _no-op_ é usado, se ela
 realizar computações ou alocações de valores de atributos e outros dados
-necessários para registrar a telemetria. A implementação _noop_ é uma instância
+necessários para registrar a telemetria. A implementação _no-op_ é uma instância
 padrão útil de `OpenTelemetry` quando o usuário ainda não configurou e instalou
 uma implementação concreta, como o [SDK](../sdk/).
 
@@ -1538,10 +1607,10 @@ public class NoopUsage {
   private static final String SCOPE_NAME = "nome.qualificado";
 
   public static void noopUsage() {
-    // Acessa a instância noop de OpenTelemetry
+    // Acessa a instância no-op de OpenTelemetry
     OpenTelemetry noopOpenTelemetry = OpenTelemetry.noop();
 
-    // Rastros noop
+    // Rastros no-op
     Tracer noopTracer = OpenTelemetry.noop().getTracer(SCOPE_NAME);
     noopTracer
         .spanBuilder("nome do span")
@@ -1551,7 +1620,7 @@ public class NoopUsage {
         .addEvent("nome-do-evento", Attributes.builder().put(WIDGET_COLOR, "vermelho").build())
         .end();
 
-    // Métricas noop
+    // Métricas no-op
     Attributes attributes = WIDGET_RED_CIRCLE;
     Meter noopMeter = OpenTelemetry.noop().getMeter(SCOPE_NAME);
     DoubleHistogram histogram = noopMeter.histogramBuilder("nome.do.histograma").build();
@@ -1579,7 +1648,7 @@ public class NoopUsage {
         .gaugeBuilder("nome.do.medidor")
         .buildWithCallback(observable -> observable.record(10, attributes));
 
-    // Logs noop
+    // Logs no-op
     Logger noopLogger = OpenTelemetry.noop().getLogsBridge().get(SCOPE_NAME);
     noopLogger
         .logRecordBuilder()
