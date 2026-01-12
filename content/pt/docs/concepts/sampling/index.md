@@ -4,8 +4,7 @@ description:
   Aprenda sobre amostragem e explore as diferentes opções disponíveis no
   OpenTelemetry.
 weight: 80
-default_lang_commit: 49879d0c00a4a28c963a76998f7213af7b539c77 # patched
-drifted_from_default: true
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 ---
 
 Com [rastros](/docs/concepts/signals/traces), você pode observar as requisições

@@ -3,7 +3,8 @@ title: Auto-Instrumentation Example
 linkTitle: Example
 weight: 20
 aliases: [/docs/languages/python/automatic/example]
-cSpell:ignore: Aiohttp distro instrumentor mkdir MSIE Referer Starlette venv
+# prettier-ignore
+cSpell:ignore: Aiohttp ASGI distro instrumentor mkdir MSIE Referer Starlette venv
 ---
 
 This page demonstrates how to use Python auto-instrumentation in OpenTelemetry.
@@ -330,9 +331,11 @@ These configuration options are supported by the following HTTP
 instrumentations:
 
 - Aiohttp-server
+- ASGI
 - Django
 - Falcon
 - FastAPI
+- Flask
 - Pyramid
 - Starlette
 - Tornado

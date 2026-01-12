@@ -2,6 +2,7 @@
 title: 发行版
 weight: 25
 default_lang_commit: b13d5dd3a9f288ab64d2af98c0b4ec1694499ef3 # patched
+drifted_from_default: true
 ---
 
 OpenTelemetry 项目目前提供了 Collector 的预构建[发行版][distributions]。

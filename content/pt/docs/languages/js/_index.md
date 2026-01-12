@@ -1,15 +1,15 @@
 ---
 title: JavaScript
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/JS_SDK.svg"
-  alt="JavaScript"> Implementação do OpenTelemetry específica em JavaScript
-  (para Node.js & o navegador).
+  <img width="35" class="img-initial otel-icon"
+  src="/img/logos/32x32/JS_SDK.svg" alt="JavaScript"> Implementação do
+  OpenTelemetry específica em JavaScript (para Node.js & o navegador).
 aliases: [/js/metrics, /js/tracing, nodejs]
 redirects:
   - { from: /js/*, to: ':splat' }
   - { from: /docs/js/*, to: ':splat' }
 weight: 20
-default_lang_commit: 33a23bc0805eb0940d214e20e7f2d7da056cbebb
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 ---
 
 {{% docs/languages/index-intro js /%}}
