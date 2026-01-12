@@ -42,7 +42,7 @@ são fornecidas pelo OpenTelemetry:
 
 - Implementação de referência [SDK](../sdk/). É a escolha certa para a maioria
   dos usuários.
-- Implementação [No-op](#noop-implementation) (significando "sem operação"). Uma
+- Implementação [No-op](#no-op-implementation) (significando "sem operação"). Uma
   implementação minimalista, sem dependências, usada por padrão pelas
   instrumentações quando o usuário não instala uma instância configurada.
 
