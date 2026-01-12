@@ -6,22 +6,20 @@
     "warning" "warning"
 -}}
 
-<div class="alert
-    {{- with index $colors .AlertType }} alert-{{ . }}
-  {{- end }}" role="alert">
-  {{ $title := or
-    .AlertTitle
-    (and .AlertType
-      (or
-        (and (ne site.Language.Lang "en") (i18n .AlertType))
-        (title .AlertType)
-      )
-    )
-  -}}
-  {{ with $title -}}
-    <div class="h4 alert-heading" role="heading">
-        {{- . | safeHTML -}}
-    </div>
-  {{- end }}
-  {{ .Text }}
+{{ $alertClass := index $colors .AlertType | default "primary" -}}
+{{ $title := or
+  .AlertTitle
+  (and
+    .AlertType
+    (or (i18n .AlertType) (title .AlertType))
+  )
+-}}
+
+<div class="alert alert-{{ $alertClass }}" role="alert">
+{{ with $title -}}
+  <div class="h4 alert-heading" role="heading">
+    {{- . -}}
+  </div>
+{{- end }}
+{{ .Text }}
 </div>
