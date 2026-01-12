@@ -49,7 +49,7 @@ Por exemplo, escreva "PostgreSQL" em vez de "postgre". Para uma lista completa,
 verifique o arquivo
 [`.textlintrc.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml).
 
-## Markdown
+## Markdown {#markdown}
 
 As páginas do site são escritas na sintaxe Markdown suportada pelo renderizador
 Markdown [Goldmark]. Para a lista completa de extensões Markdown suportadas,
