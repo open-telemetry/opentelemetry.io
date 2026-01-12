@@ -57,7 +57,7 @@ processes matching entries in the [metrics discovery](./) configuration.
 
 Additionally, OBI allows you to override global metrics export features on a
 per-application basis by adding `metrics > features` as a property to each
-`instrument > discovery` entry.
+`discovery > instrument` entry.
 
 For example, in the following configuration:
 
