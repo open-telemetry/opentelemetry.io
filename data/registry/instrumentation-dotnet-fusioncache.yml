@@ -1,4 +1,4 @@
-# cSpell:ignore fusioncache
+# cSpell:ignore fusioncache donetti
 title: FusionCache .NET caching library
 registryType: instrumentation
 language: dotnet
@@ -21,4 +21,5 @@ isNative: true
 package:
   name: ZiggyCreatures.FusionCache
   registry: nuget
+
   version: 2.5.0
