@@ -1570,15 +1570,16 @@ public class LogRecordUsage {
 
 ### Implementação No-op {#no-op-implementation}
 
-O método `OpenTelemetry#noop()` fornece acesso a uma implementação _no-op_ (significando "sem operação") de
-[OpenTelemetry](#opentelemetry) e todos os componentes da API que ela
-disponibiliza. Como o nome sugere, a implementação _no-op_ não executa nenhuma
-ação e é projetada para não ter impacto no desempenho. Ainda assim, a
-instrumentação pode impactar a performance mesmo quando o _no-op_ é usado, se ela
-realizar computações ou alocações de valores de atributos e outros dados
-necessários para registrar a telemetria. A implementação _no-op_ é uma instância
-padrão útil de `OpenTelemetry` quando o usuário ainda não configurou e instalou
-uma implementação concreta, como o [SDK](../sdk/).
+O método `OpenTelemetry#noop()` fornece acesso a uma implementação _no-op_
+(significando "sem operação") de [OpenTelemetry](#opentelemetry) e todos os
+componentes da API que ela disponibiliza. Como o nome sugere, a implementação
+_no-op_ não executa nenhuma ação e é projetada para não ter impacto no
+desempenho. Ainda assim, a instrumentação pode impactar a performance mesmo
+quando o _no-op_ é usado, se ela realizar computações ou alocações de valores de
+atributos e outros dados necessários para registrar a telemetria. A
+implementação _no-op_ é uma instância padrão útil de `OpenTelemetry` quando o
+usuário ainda não configurou e instalou uma implementação concreta, como o
+[SDK](../sdk/).
 
 O trecho de código a seguir explora o uso da API `OpenTelemetry#noop()`:
 
