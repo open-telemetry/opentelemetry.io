@@ -104,7 +104,7 @@ const ctx = api.ROOT_CONTEXT;
 const ctx2 = ctx.setValue(key, 'context 2');
 
 // remove the entry
-const ctx3 = ctx.deleteValue(key);
+const ctx3 = ctx2.deleteValue(key);
 
 // ctx3 does not contain the entry
 console.log(ctx3.getValue(key)); // undefined

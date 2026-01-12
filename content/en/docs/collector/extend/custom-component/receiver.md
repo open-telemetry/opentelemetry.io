@@ -50,7 +50,7 @@ simulates a pull operation and generates traces as an outcome of that operation.
 First, use the [Building a Custom Collector](/docs/collector/extend/ocb/)
 tutorial to create a Collector instance named `otelcol-dev`; all you need is to
 copy the `builder-config.yaml` described in
-[Step 2](/docs/collector/extend/ocb/#step-2---create-a-builder-manifest-file)
+[Configure the OpenTelemetry Collector Builder](/docs/collector/extend/ocb/#configure-the-opentelemetry-collector-builder)
 and run the builder. As an outcome, you should now have a folder structure like
 this:
 

@@ -195,5 +195,5 @@ will not hold up request processing.
 To minimize the impact of slow transport of telemetry data, particularly for
 external or cloud-based backends, you should consider using the
 [OpenTelemetry Collector](/docs/collector/) as an
-[agent](/docs/collector/deployment/agent/). The agent can quickly accept, then
-batch send telemetry data to the backend.
+[agent](/docs/collector/deploy/agent/). The agent can quickly accept, then batch
+send telemetry data to the backend.
