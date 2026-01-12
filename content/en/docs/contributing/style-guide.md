@@ -67,7 +67,7 @@ Markdown renderer. For the full list of supported Markdown extensions, see
 
 You can also use the following Markdown extensions:
 
-- [Alerts]
+- [Alerts](#alerts)
 - [Emojis]: for the complete list of available emojis, see [Emojis] from the
   Hugo docs.
 
