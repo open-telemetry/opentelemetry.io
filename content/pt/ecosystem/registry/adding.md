@@ -19,13 +19,13 @@ Certifique-se de que os nomes e descrições do seu projeto sigam as nossas
 ## Tipos de registro {#registry-types}
 
 Ao adicionar seu projeto ao registro, você precisa especificar um
-`registryType`. Este campo categoriza seu projeto com base em sua relação com o
+`registryType` (tipo de registro). Este campo categoriza seu projeto com base em sua relação com o
 OpenTelemetry. Abaixo estão os possíveis valores e suas definições:
 
 ### `application integration`
 
 **Use para**: Aplicações ou serviços que possuem OpenTelemetry integrado
-nativamente (suporte nativo) sem necessidade de plugins externos ou bibliotecas
+nativamente (suporte embutido) sem necessidade de plugins externos ou bibliotecas
 de instrumentação.
 
 **Exemplos**: Veja a lista de integrações nativas de aplicações na página
