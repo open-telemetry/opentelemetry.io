@@ -2,7 +2,8 @@
 title: Propagación de Contexto
 weight: 10
 description: Aprende sobre el concepto que habilita el trazado distribuido.
-default_lang_commit: 9a1f7271288a46049ae28785f04a67fb77f677f7
+default_lang_commit: 9a1f7271288a46049ae28785f04a67fb77f677f7 # patched
+drifted_from_default: true
 ---
 
 Con la propagación de contexto, las [señales](../signals/) pueden

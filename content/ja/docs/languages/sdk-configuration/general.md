@@ -4,6 +4,7 @@ linkTitle: 一般
 weight: 10
 aliases: [general-sdk-configuration]
 default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
+drifted_from_default: true
 cSpell:ignore: ottrace
 ---
 

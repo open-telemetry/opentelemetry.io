@@ -2,6 +2,7 @@
 title: 传播
 description: 上下文传播 JS SDK
 default_lang_commit: 1aa53278c92dd763c43c42c3b0383d572db54337
+drifted_from_default: true
 weight: 65
 cSpell:ignore: rolldice
 ---
