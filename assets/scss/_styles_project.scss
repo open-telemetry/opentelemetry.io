@@ -134,21 +134,22 @@
 }
 
 .o-banner {
-  @include media-breakpoint-up(md) {
-    width: 100%;
-    position: fixed;
-    margin-left: -15px;
-    z-index: 31;
-    top: 4rem;
-  }
-
   background: var(--td-pre-bg);
   color: var(--bs-body-color);
   text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 30;
+  padding: 0.5rem 1rem;
+
+  // Push below the fixed navbar
+  @include media-breakpoint-up(md) {
+    padding-top: 4.5rem;
+    padding-bottom: 0.5rem;
+  }
 
   & p {
-    padding: 0.5rem;
-    margin-bottom: initial;
+    margin-bottom: 0;
   }
 }
 

@@ -1,12 +1,17 @@
 // Landing page components for OpenTelemetry homepage redesign
 // Inspired by Kubernetes and Prometheus landing page patterns
 
+// Override Docsy's default section padding for landing page
+.td-default main > section:first-of-type {
+  padding-top: 4rem;
+}
+
 // =============================================================================
 // HERO SPLIT - Two-column hero with image on right
 // =============================================================================
 
 .hero-split {
-  padding: 3rem 0;
+  padding: 2.5rem 0 3rem;
   min-height: 400px;
   display: flex;
   align-items: center;
@@ -17,6 +22,7 @@
   margin-right: -50vw;
   width: 100vw;
   box-sizing: border-box;
+
 
   // Primary (dark blue) variant
   &--primary {
