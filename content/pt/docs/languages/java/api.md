@@ -13,7 +13,7 @@ logBridgeWarning: >
   registrados por meio de outras APIs / _frameworks_ de log no OpenTelemetry.
   Elas não são destinadas ao uso do usuário final como alternativas para Log4j /
   SLF4J / Logback / etc.
-cSpell:ignore: Dotel kotlint Logback updowncounter
+cSpell:ignore: kotlint Logback updowncounter
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
