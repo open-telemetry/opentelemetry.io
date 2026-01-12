@@ -1,8 +1,7 @@
 ---
 title: Adotantes
 description: Organizações que usam OpenTelemetry
-default_lang_commit: b6ddba1118d07bc3c8d1d07b293f227686d0290e
-drifted_from_default: true
+default_lang_commit: 379d6a08472e421fda5d1aeb9246796371e7bb84
 ---
 
 A missão do OpenTelemetry é possibilitar uma observabilidade eficaz para todos
@@ -11,6 +10,15 @@ sua organização, pode ter curiosidade sobre outras jornadas de adoção. A tab
 abaixo é uma lista não exaustiva de
 [organizações usuárias finais](https://www.cncf.io/enduser/) que adotaram o
 OpenTelemetry para [Observabilidade](/docs/concepts/observability-primer/).
+
+{{% alert color="success" title="Ajude-nos a divulgar a crescente comunidade OpenTelemetry!" %}}
+
+Se a sua empresa está usando OpenTelemetry em produção ou em fase de
+experimentação, nós adoraríamos adicioná-la à lista oficial de adotantes. Você
+pode tanto [enviar um PR](#how-to-add) ou
+[preencher este formulário](https://forms.gle/K3pKmQdTc2eevLJv9).
+
+{{% /alert %}}
 
 {{% ecosystem/adopters-table %}}
 

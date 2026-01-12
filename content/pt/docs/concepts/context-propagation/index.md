@@ -3,7 +3,8 @@ title: Propagação de contexto
 weight: 10
 description:
   Entenda os conceitos que tornam possível o Rastreamento Distribuído.
-default_lang_commit: 9a1f7271288a46049ae28785f04a67fb77f677f7
+default_lang_commit: 9a1f7271288a46049ae28785f04a67fb77f677f7 # patched
+drifted_from_default: true
 ---
 
 Com a propagação de contexto, os [sinais](../signals/) podem ser correlacionados
