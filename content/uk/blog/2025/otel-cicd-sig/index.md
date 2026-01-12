@@ -11,7 +11,7 @@ sig: CI/CD Observability
 default_lang_commit: e05fefe6c9f7d8b159d9a9a95128098c646c78c4 # patched
 drifted_from_default: true
 # prettier-ignore
-cSpell:ignore: cicd frittoli horovits jemmic keptn liatrio opentelemetrys slsa tekton Бекмарк Верт Воссу Кальво Камфаус Кідд Молькова Сараан Сталнекер Стенцелю Суерет Траск Фріттолі Часін
+cSpell:ignore: andrzej bäck bäckmark chacin cicd frittoli grassi helmuth horovits jemmic joao kamphaus keptn kowalski liatrio liudmila molkova robb ruech safyan sarahan shkuro skyscanner slsa stencel suereth tekton voss
 ---
 
 Ми роками говорили про необхідність спільної «мови» для отримання звітів та спостереження за системами CI/CD, і нарешті ми бачимо перші «слова» цієї мови, що входять до «словника» спостережуваності — [відкрита специфікація OpenTelemetry](/docs/specs/otel/). З нещодавнім випуском [Семантичних домовленостей OpenTelemetry](/docs/specs/semconv/), v1.27.0, ви можете знайти призначені для цього [атрибути для звітування про стан CI/CD](/docs/specs/semconv/registry/attributes/cicd/).
