@@ -4,7 +4,7 @@ description: >-
   Definições e convenções para termos de telemetria conforme usados no
   OpenTelemetry.
 weight: 200
-default_lang_commit: 276a42b19e0394586e8c02892fe0a4ed3d96e491
+default_lang_commit: 64e150b6ffbe071402b5aa87afa0b5e56bd6aa75
 ---
 
 Esse glossário define termos e [conceitos](/docs/concepts/) que são novos no
@@ -162,7 +162,7 @@ Uma coleção de [atributos](#attribute) que identificam e descrevem um objeto
 físico ou lógico. As Entidades estão, normalmente, associadas a telemetria. Por
 exemplo, uma entidade de uma CPU descreve uma CPU física, enquanto uma entidade
 de serviço descreve um agrupamento lógico de processos que compõem um serviço
-HTTP ou outro serviço semelhante.
+HTTP ou outro serviço.
 
 ### Especificação {#specification}
 
@@ -344,7 +344,7 @@ ou pull-based. Consulte [Receiver].
 ### Recurso {#resource}
 
 Uma coleção de [entidades](#entity) ou [atributos](#attribute) que identificam
-ou descrevem um objeto físico ou lógico, produtor de telemetria.
+ou descrevem um objeto físico ou lógico que produz telemetria.
 
 ### Registro de log {#log-record}
 
