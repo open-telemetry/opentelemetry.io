@@ -33,15 +33,16 @@ otelcol --config=customconfig.yaml
 
 The `--config` flag accepts either a file path or values in the form of a config
 URI `"<scheme>:<opaque_data>"`. Currently, the OpenTelemetry Collector supports
-the following providers `scheme`:
+the following providers for `scheme`:
 
 - **file** - Reads configuration from a file. E.g. `file:path/to/config.yaml`.
 - **env** - Reads configuration from an environment variable. E.g.
   `env:MY_CONFIG_IN_AN_ENVVAR`.
-- **yaml** - Reads configuration from yaml bytes. E.g.
+- **yaml** - Reads configuration from a YAML string, with `::` delimiting subpaths. E.g.
 `yaml:exporters::debug::verbosity: detailed`.
 <!-- prettier-ignore-start -->
-- **http** - Reads configuration from a HTTP URI. E.g. `http://www.example.com`
+- **http** - Reads configuration from an HTTP URI. E.g. `http://www.example.com`
+- **https** - Reads configuration from an HTTPS URI. E.g. `https://www.example.com`
 <!-- prettier-ignore-end -->
 
 You can also provide multiple configurations using multiple files at different
@@ -879,7 +880,7 @@ key: value
 
 ### Complex nested keys
 
-Use dot (`.`) in the pair's name as key separator to reference nested map
+Use two colons (`::`) in the pair's name as key separator to reference nested map
 values. For example, `--set outer::inner=value` is translated into this:
 
 ```yaml
