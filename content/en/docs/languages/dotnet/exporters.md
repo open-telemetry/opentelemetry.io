@@ -200,7 +200,7 @@ var loggerFactory = LoggerFactory.Create(builder =>
 
 {{% include "exporters/jaeger.md" %}}
 
-{{% include "exporters/prometheus-setup.md" %}}
+## Prometheus
 
 There are two approaches for exporting metrics to Prometheus:
 
