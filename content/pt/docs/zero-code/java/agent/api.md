@@ -5,8 +5,7 @@ description:
   Use a API do OpenTelemetry em combinação com o Java agent para estender a
   telemetria gerada automaticamente com spans e métricas personalizadas.
 weight: 21
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
-drifted_from_default: true
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 ---
 
 ## Introdução {#introduction}
@@ -44,8 +43,8 @@ dependencies {
 ## OpenTelemetry {#opentelemetry}
 
 O Java agent é um caso especial onde `GlobalOpenTelemetry` é definido pelo
-agente. Simplesmente chame a função `GlobalOpenTelemetry.get()` para acessar a
-instância `OpenTelemetry`.
+agente. Simplesmente chame a função `GlobalOpenTelemetry.getOrNoop()` para
+acessar a instância `OpenTelemetry`.
 
 ## Trecho {#span}
 
