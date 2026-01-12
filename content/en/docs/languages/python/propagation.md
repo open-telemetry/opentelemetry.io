@@ -125,7 +125,7 @@ This supports context propagation between database client and server when
 database log records are enabled. For more information, see:
 
 - [OpenTelemetry Python sqlcommenter example](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/sqlcommenter/)
-- [Semantic Conventions - Database Spans](/docs/specs/semconv/database/database-spans/#sql-commenter)
+- [Semantic Conventions - Database Spans](/docs/specs/semconv/db/database-spans/#sql-commenter)
 - [sqlcommenter](https://google.github.io/sqlcommenter/)
 
 ## Next steps
