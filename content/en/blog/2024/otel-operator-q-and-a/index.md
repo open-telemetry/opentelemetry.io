@@ -163,7 +163,7 @@ and
 
 If you want to use your own specific Collector components, you can build your
 own distribution using the
-[OpenTelemetry Collector Builder](/docs/collector/custom-collector/) (OCB), and
+[OpenTelemetry Collector Builder](/docs/collector/extend/ocb/) (OCB), and
 include only the components that you need.
 
 Either way, the OpenTelemetryCollector CR allows you to override the default

@@ -128,15 +128,15 @@ preferred shell.
 In this tutorial you've started the OpenTelemetry Collector and sent telemetry
 to it. As next steps, consider doing the following:
 
-- Explore different ways to [install the Collector](../install/).
+- Explore different ways to [install the Collector](/docs/collector/install/).
 - Learn about the different modes of the Collector in
-  [Deployment Methods](../deployment/).
+  [Deployment Methods](/docs/collector/deploy/).
 - Familiarize yourself with the Collector
   [configuration](/docs/collector/configuration) files and structure.
 - Explore available components in the
   [registry](/ecosystem/registry/?language=collector).
 - Learn how to
-  [build a custom Collector with the OpenTelemetry Collector Builder (OCB)](/docs/collector/custom-collector/).
+  [build a custom Collector with the OpenTelemetry Collector Builder (OCB)](/docs/collector/extend/ocb/).
 
 [gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
 [logs]: /docs/concepts/signals/logs/

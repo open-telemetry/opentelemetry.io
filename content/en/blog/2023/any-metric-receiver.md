@@ -147,7 +147,7 @@ For testing, you can use the
 [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib)
 distribution, which includes all available receivers. However, in a production
 setting, you can
-[construct your own Collector](/docs/collector/custom-collector/) using the
+[construct your own Collector](/docs/collector/extend/ocb/) using the
 OpenTelemetry Collector Builder
 ([`ocb`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)).
 Here's a suggested configuration:

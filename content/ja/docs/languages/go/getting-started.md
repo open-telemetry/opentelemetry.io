@@ -1,7 +1,8 @@
 ---
 title: Getting Started（入門）
 weight: 10
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
+drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: chan fatalln funcs intn itoa khtml otelhttp rolldice stdouttrace strconv
 ---
@@ -335,17 +336,9 @@ func run() error {
 func newHTTPHandler() http.Handler {
 	mux := http.NewServeMux()
 
-	// handleFuncはmux.HandleFuncの代替であり、
-	// ハンドラーのHTTP計装において、パターンをhttp.routeとして付加します。
-	handleFunc := func(pattern string, handlerFunc func(http.ResponseWriter, *http.Request)) {
-		// Configure the "http.route" for the HTTP instrumentation.
-		handler := otelhttp.WithRouteTag(pattern, http.HandlerFunc(handlerFunc))
-		mux.Handle(pattern, handler)
-	}
-
 	// ハンドラーの登録。
-	handleFunc("/rolldice/", rolldice)
-	handleFunc("/rolldice/{player}", rolldice)
+	mux.Handle("/rolldice/", rolldice)
+	mux.Handle("/rolldice/{player}", rolldice)
 
 	// サーバー全体に対してHTTP計装を追加します。
 	handler := otelhttp.NewHandler(mux, "/")

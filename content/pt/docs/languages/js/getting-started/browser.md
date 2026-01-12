@@ -3,8 +3,7 @@ title: Navegador
 aliases: [/docs/js/getting_started/browser]
 description: Aprenda como adicionar o OpenTelemetry à sua aplicação de navegador
 weight: 20
-default_lang_commit: 1ececa0615b64c5dfd93fd6393f3e4052e0cc496
-drifted_from_default: true
+default_lang_commit: 4c9af5912f276b79a489a10b44c53f720c7927d7
 ---
 
 {{% include browser-instrumentation-warning.md %}}
@@ -247,11 +246,20 @@ exportados:
 ### Adicionar instrumentações {#add-instrumentations}
 
 Caso deseje instrumentar requisições Ajax, interações do usuário e outros, é
-possível registrar instrumentações adicionais para esses elementos:
+possível adicionar as bibliotecas de instrumentação adicionais e registrá-las:
+
+```sh
+npm install @opentelemetry/instrumentation-user-interaction \
+  @opentelemetry/instrumentation-xml-http-request \
+```
 
 ```javascript
+import { UserInteractionInstrumentation } from '@opentelemetry/instrumentation-user-interaction';
+import { XMLHttpRequestInstrumentation } from '@opentelemetry/instrumentation-xml-http-request';
+
 registerInstrumentations({
   instrumentations: [
+    new DocumentLoadInstrumentation(),
     new UserInteractionInstrumentation(),
     new XMLHttpRequestInstrumentation(),
   ],

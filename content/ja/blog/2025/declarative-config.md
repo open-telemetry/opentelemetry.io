@@ -7,6 +7,7 @@ author: >-
   DeLuca](https://github.com/jaydeluca) (Grafana Labs), [Marylia
   Gutierrez](https://github.com/maryliag) (Grafana Labs)
 default_lang_commit: 2e0c4fbe87eeefebb416874d28b8d332ab91b4a6
+drifted_from_default: true
 cSpell:ignore: Dotel marylia otelconf zeitlinger
 ---
 
@@ -76,7 +77,7 @@ logger_provider:
 
 - 前のセクションの基本的な（言語に依存しない）設定ファイルの例は、それ以上のカスタマイズが不要な場合に最も迅速に開始する方法です。
 - [移行設定ファイル][migration-file]は、古い環境変数をYAMLスキーマにマッピングし、環境変数がすでに設定されているワークロードのドロップイン置換を可能にします。
-- [完全な設定ファイル][full-file]（「キッチンシンク」）は、ドキュメントがコメントとして注釈された完全なスキーマを示しています。
+- [完全な設定ファイル][full-file]（「キッチンシンク」）は、ドキュメントがコメントとしてアノテーションされた完全なスキーマを示しています。
   これは、利用可能なすべてのオプションとそのデフォルトを確認したいユーザーに役立ちます。
 
 上記のファイルはすべて、宣言的設定をサポートする任意の言語で機能します。

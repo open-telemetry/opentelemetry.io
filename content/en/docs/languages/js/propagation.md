@@ -174,6 +174,7 @@ Take note of the traceId (`cccd19c3a2d10e589f01bfe2dc896dc2`) and ID
   resource: {
     attributes: {
       // ...
+    }
   },
   traceId: 'cccd19c3a2d10e589f01bfe2dc896dc2',
   parentSpanContext: {
