@@ -8646,6 +8646,7 @@
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.143.0/config/configtls/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-01-08T10:55:00.800735411Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.143.0/component/config.go": {
     "StatusCode": 206,
     "LastSeen": "2026-01-08T07:26:15.253377-03:00"
