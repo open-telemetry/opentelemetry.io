@@ -1,0 +1,18 @@
+{{- $color := .Get "color" | default "primary" -}}
+{{- $image := .Get "image" -}}
+{{- $imageAlt := .Get "imageAlt" | default "OpenTelemetry" -}}
+
+<section class="hero-split hero-split--{{ $color }}">
+  <div class="container">
+    <div class="hero-split__grid">
+      <div class="hero-split__content">
+        {{ .Inner | markdownify }}
+      </div>
+      {{- with $image -}}
+      <div class="hero-split__image">
+        <img src="{{ . }}" alt="{{ $imageAlt }}" loading="eager">
+      </div>
+      {{- end -}}
+    </div>
+  </div>
+</section>

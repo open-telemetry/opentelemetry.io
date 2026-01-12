@@ -2,7 +2,161 @@
 // Inspired by Kubernetes and Prometheus landing page patterns
 
 // =============================================================================
-// HERO TAGLINE - Tagline for compact hero
+// HERO SPLIT - Two-column hero with image on right
+// =============================================================================
+
+.hero-split {
+  padding: 3rem 0;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  box-sizing: border-box;
+
+  // Primary (dark blue) variant
+  &--primary {
+    background: $primary;
+    color: $white;
+
+    .hero-split__tagline {
+      color: rgba($white, 0.85);
+    }
+
+    .hero-split__title {
+      color: $warning; // Yellow/gold accent
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .l-primary-buttons a {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+
+      &:first-child {
+        background: lighten($primary, 15%);
+        color: $white;
+        margin-right: 1rem;
+
+        &:hover {
+          background: lighten($primary, 20%);
+        }
+      }
+
+      &:last-child {
+        background: transparent;
+        color: $white;
+        border: 2px solid rgba($white, 0.5);
+
+        &:hover {
+          border-color: $white;
+          background: rgba($white, 0.1);
+        }
+      }
+    }
+  }
+
+  // Light variant
+  &--light {
+    background: $light;
+    color: $body-color;
+
+    .hero-split__title {
+      color: $primary;
+    }
+  }
+
+  // White variant
+  &--white {
+    background: $white;
+    color: $body-color;
+
+    .hero-split__title {
+      color: $primary;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+  }
+
+  &__content {
+    @include media-breakpoint-down(lg) {
+      text-align: center;
+    }
+  }
+
+  &__tagline {
+    font-size: 2rem;
+    font-style: italic;
+    line-height: 1.3;
+    margin-bottom: 1.5rem;
+
+    @include media-breakpoint-up(md) {
+      font-size: 2.5rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+      font-size: 2.75rem;
+    }
+  }
+
+  &__image {
+    text-align: center;
+
+    @include media-breakpoint-down(lg) {
+      display: none; // Hide on mobile to keep hero compact
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      max-height: 350px;
+    }
+  }
+
+  // Button list styling
+  .l-primary-buttons {
+    margin-top: 1.5rem;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+
+      @include media-breakpoint-down(lg) {
+        justify-content: center;
+      }
+    }
+
+    li {
+      margin: 0;
+    }
+  }
+}
+
+// =============================================================================
+// HERO TAGLINE - Tagline for compact hero (legacy, kept for compatibility)
 // =============================================================================
 
 .hero-tagline {
@@ -571,6 +725,17 @@
 // =============================================================================
 
 @include color-mode(dark) {
+  // Hero split looks the same in dark mode (already dark blue)
+  .hero-split--light,
+  .hero-split--white {
+    background: darken($primary, 10%);
+    color: $white;
+
+    .hero-split__title {
+      color: $warning;
+    }
+  }
+
   .hero-search-section {
     border-bottom-color: rgba(255, 255, 255, 0.1);
   }

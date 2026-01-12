@@ -16,20 +16,22 @@ show_banner: true
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{< blocks/cover image_anchor="top" height="min" color="primary" >}}
+{{< blocks/hero-split color="primary" image="/img/homepage/Highlight.svg" imageAlt="OpenTelemetry illustration" >}}
 
-<!-- prettier-ignore -->
-High-quality, ubiquitous, and portable telemetry<br>to enable effective observability
-{.hero-tagline}
+*OpenTelemetry*
+{.hero-split__title}
 
-<div class="l-primary-buttons mt-4">
+High-quality, ubiquitous, and portable telemetry to enable effective observability
+{.hero-split__tagline}
+
+<div class="l-primary-buttons">
 
 - [Learn more](docs/what-is-opentelemetry/)
 - [Try the demo](docs/demo/)
 
 </div>
 
-{{< /blocks/cover >}}
+{{< /blocks/hero-split >}}
 
 {{< blocks/hero-search color="white" placeholder="Search docs or ask AI..." >}}
 Try: "How do I instrument a Python app?" or "What is the Collector?"
@@ -51,10 +53,7 @@ community.
 </div>
 
 <div class="intro-image">
-  <div class="placeholder">
-    <i class="fas fa-chart-network fa-4x"></i>
-    <p>Architecture diagram placeholder</p>
-  </div>
+  <img src="/img/homepage/Img-01.svg" alt="OpenTelemetry overview" class="img-fluid">
 </div>
 
 {{< /blocks/intro-section >}}
@@ -63,6 +62,7 @@ community.
 
 {{< blocks/main-feature
       title="Vendor-neutral instrumentation"
+      image="/img/homepage/Img-02.svg"
       imagePosition="left" >}} Instrument your code once using OpenTelemetry
 APIs and SDKs. Export telemetry data to any observability backend—Jaeger,
 Prometheus, commercial vendors, or your own solution. Switch backends without
@@ -70,6 +70,7 @@ touching your application code. {{< /blocks/main-feature >}}
 
 {{< blocks/main-feature
       title="Unified observability signals"
+      image="/img/homepage/Img-03.svg"
       imagePosition="right" >}} Correlate traces, metrics, and logs with shared
 context that flows through your entire request path. Get a complete picture of
 your application's behavior across all components and services.
@@ -77,6 +78,7 @@ your application's behavior across all components and services.
 
 {{< blocks/main-feature
       title="Run OTel anywhere"
+      image="/img/homepage/Img-04.svg"
       imagePosition="left" >}} OpenTelemetry is 100% open source and
 vendor-neutral. Deploy on-premises, in hybrid environments, or across multiple
 clouds with full flexibility and zero lock-in. Move workloads wherever they
