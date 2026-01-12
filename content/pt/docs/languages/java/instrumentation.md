@@ -112,7 +112,7 @@ seguinte forma: na inicialização, o Java agent inicializa uma instância do
 [sem código](#zero-code-java-agent). Bibliotecas que adicionam instrumentação
 nativa devem permitir que os usuários personalizem a instância de
 `OpenTelemetry` utilizada, mas devem usar automaticamente a instância
-inicializada pelo Java agent (se presente). Consutle
+inicializada pelo Java agent (se presente). Consulte
 [GlobalOpenTelemetry](../api/#globalopentelemetry) para orientações sobre como
 alcançar isso.
 
@@ -128,7 +128,7 @@ A instrumentação manual deve interagir com o Java agent do OpenTelemetry da
 seguinte forma: na inicialização, o Java agent inicializa uma instância do
 [OpenTelemetry](../api/#opentelemetry) e a torna acessível à instrumentação
 manual da aplicação via `GlobalOpenTelemetry`. No entanto, o responsável pela
-aplição pode não conseguir confiar que oca Java agent estará sempre instalado.
+aplicação pode não conseguir confiar que o Java agent estará sempre instalado.
 Por exemplo, o Java agent pode não estar instalado em ambientes de
 desenvolvimento local, de teste ou em casos especiais em que o Java agent é
 removido por motivos de depuração. A instrumentação manual deve usar a instância
