@@ -2,6 +2,7 @@
 title: 使用 API 扩展插桩功能
 linkTitle: 使用 API 进行扩展
 default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
+drifted_from_default: true
 description: 结合使用 OpenTelemetry API 与 Java 代理，通过自定义 Span 和指标来扩展自动生成的遥测数据。
 weight: 21
 ---

@@ -3,6 +3,7 @@ title: ডকার ডেপ্লয়মেন্ট
 linkTitle: ডকার
 aliases: [docker_deployment]
 default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
+drifted_from_default: true
 cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 ---
 
