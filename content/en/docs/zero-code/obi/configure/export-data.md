@@ -111,7 +111,7 @@ The list of instrumentation areas OBI can collection data from:
 - `sql`: SQL database client call metrics
 - `redis`: Redis client/server database metrics
 - `kafka`: Kafka client/server message queue metrics
-- `gpu`: GPU usage metrics
+- `gpu`: GPU performance metrics
 - `mongo`: MongoDB client call metrics
 - `dns`: DNS query metrics
 
