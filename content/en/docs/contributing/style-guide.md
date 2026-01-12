@@ -77,6 +77,7 @@ For callouts and alerts, we support two complementary approaches:
 
   ```markdown
   > [!NOTE]
+  >
   > Useful information that users should know, even when skimming content.
   ```
 
