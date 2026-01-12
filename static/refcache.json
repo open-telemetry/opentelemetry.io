@@ -8875,6 +8875,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-08T09:50:24.10947211Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml": {
+    "StatusCode": 404,
+    "LastSeen": "2026-01-12T09:47:41.549835206Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-config.yaml": {
     "StatusCode": 206,
     "LastSeen": "2026-01-08T00:26:48.632395765Z"
@@ -16835,6 +16839,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-10T09:48:23.804Z"
   },
+  "https://medium.com/wish-engineering/horizontally-scaling-prometheus-at-wish-ea4b694318dd": {
+    "StatusCode": 403,
+    "LastSeen": "2026-01-12T09:53:08.414303634Z"
+  },
   "https://memcached.org/": {
     "StatusCode": 206,
     "LastSeen": "2026-01-10T09:44:36.30701913Z"
@@ -17346,6 +17354,10 @@
   "https://one.bonree.com/open/document/187": {
     "StatusCode": 200,
     "LastSeen": "2026-01-10T09:43:22.094425228Z"
+  },
+  "https://oneuptime.com/docs/telemetry/open-telemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-12T09:50:21.322643951Z"
   },
   "https://open-telemetry.github.io/opentelemetry-collector-contrib/benchmarks/loadtests/": {
     "StatusCode": 206,
@@ -20266,6 +20278,10 @@
   "https://www.base64encode.org/": {
     "StatusCode": 200,
     "LastSeen": "2025-12-30T09:52:16.126Z"
+  },
+  "https://www.britannica.com/dictionary/pipeline": {
+    "StatusCode": 403,
+    "LastSeen": "2026-01-12T09:51:04.122569146Z"
   },
   "https://www.buoyant.io/mtls-guide": {
     "StatusCode": 200,
