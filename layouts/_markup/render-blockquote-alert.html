@@ -7,7 +7,7 @@
 -}}
 
 <div class="alert
-    {{- with index $colors .AlertType -}} alert-{{ . }}
+    {{- with index $colors .AlertType }} alert-{{ . }}
   {{- end }}">
   {{ $title := or
     .AlertTitle
