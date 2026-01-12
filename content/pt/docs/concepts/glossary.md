@@ -158,10 +158,11 @@ OpenTelemetry com algumas personalizações. Consulte
 
 ### Entidade {#entity}
 
-Uma coleção de [atributos](#attribute) que identificam e descrevem um objeto físico ou lógico. As Entidades
-estão, normalmente, associadas a telemetria. Por exemplo, uma entidade de uma CPU descreve uma CPU física,
-enquanto uma entidade de serviço descreve um agrupamento lógico de processos que compõem um serviço HTTP ou outro
-serviço semelhante.
+Uma coleção de [atributos](#attribute) que identificam e descrevem um objeto
+físico ou lógico. As Entidades estão, normalmente, associadas a telemetria. Por
+exemplo, uma entidade de uma CPU descreve uma CPU física, enquanto uma entidade
+de serviço descreve um agrupamento lógico de processos que compõem um serviço
+HTTP ou outro serviço semelhante.
 
 ### Especificação {#specification}
 
@@ -342,8 +343,8 @@ ou pull-based. Consulte [Receiver].
 
 ### Recurso {#resource}
 
-Uma coleção de [entidades](#entity) ou [atributos](#attribute) que identificam ou descrevem um
-objeto físico ou lógico, produtor de telemetria.
+Uma coleção de [entidades](#entity) ou [atributos](#attribute) que identificam
+ou descrevem um objeto físico ou lógico, produtor de telemetria.
 
 ### Registro de log {#log-record}
 
