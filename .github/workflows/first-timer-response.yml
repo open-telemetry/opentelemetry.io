@@ -10,7 +10,6 @@ permissions:
 
 env:
   ISSUE_NUM: ${{ github.event.issue.number }}
-  COMMENT_BODY: ${{ github.event.comment.body }}
   COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
   CONTRIBUTING_URL: https://opentelemetry.io/docs/contributing/issues/#fixing-an-existing-issue
 
@@ -18,59 +17,79 @@ jobs:
   respond-to-assignment-request:
     name: Respond to assignment requests
     runs-on: ubuntu-latest
-    # Only trigger on issue comments (not PR comments) and when comment matches assignment patterns
+    # Only run on issue comments (not PRs) for issues with specific labels
     if: |
       !github.event.issue.pull_request &&
       (
-        contains(lower(github.event.comment.body), 'assign this to me') ||
-        contains(lower(github.event.comment.body), 'assign me') ||
-        contains(lower(github.event.comment.body), 'can i work on this') ||
-        contains(lower(github.event.comment.body), 'i would like to work on this') ||
-        contains(lower(github.event.comment.body), 'i want to work on this') ||
-        contains(lower(github.event.comment.body), 'please assign') ||
-        contains(lower(github.event.comment.body), 'can you assign') ||
-        contains(lower(github.event.comment.body), 'i will work on this') ||
-        contains(lower(github.event.comment.body), 'i am working on this') ||
-        contains(lower(github.event.comment.body), 'i''m working on this') ||
-        contains(lower(github.event.comment.body), 'can i take this')
+        contains(github.event.issue.labels.*.name, 'good first issue') ||
+        contains(github.event.issue.labels.*.name, 'triage:accepted:needs-pr')
       )
+
     steps:
       - uses: step-security/harden-runner@20cf305ff2072d973412fa9b1e3a4f227bda3c76 # v2.14.0
         with:
           egress-policy: audit
 
+      # 🔹 Normalize the comment to lowercase
+      - name: Normalize comment body
+        id: normalize
+        run: |
+          body="${{ github.event.comment.body }}"
+          echo "body_lower=$(echo "$body" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+
+      # 🔹 Only continue if this is an issue (not a PR) and it looks like an assignment request
+      - name: Check if comment is assignment request
+        id: check-trigger
+        run: |
+          body="${{ steps.normalize.outputs.body_lower }}"
+
+          # This step is now redundant due to the job-level if condition,
+          # but keeping it for now as the original instruction only asked to add to job-level.
+          # The job-level 'if' already filters for pull_request and comment body.
+          # This step will effectively always match 'true' if the job runs.
+          if [[ "${{ github.event.issue.pull_request }}" != "" ]]; then
+            echo "match=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if echo "$body" | grep -Eiq \
+            "assign this to me|assign me|can i work on this|i would like to work on this|i want to work on this|please assign|can you assign|i will work on this|i am working on this|i'm working on this|can i take this"; then
+            echo "match=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "match=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         id: otelbot-token
+        if: steps.check-trigger.outputs.match == 'true'
         with:
           app-id: ${{ vars.OTELBOT_APP_ID }}
           private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
 
       - name: Check if commenter is an org member
         id: check-membership
+        if: steps.check-trigger.outputs.match == 'true'
         run: |
           ORG="${{ github.repository_owner }}"
-          USERNAME="${COMMENT_AUTHOR}"
+          USERNAME="${{ env.COMMENT_AUTHOR }}"
 
-          # Check if user is an org member
           if gh api "orgs/$ORG/members/$USERNAME" --silent 2>/dev/null; then
             echo "is_member=true" >> "$GITHUB_OUTPUT"
-            echo "User $USERNAME is an org member, skipping auto-response."
           else
             echo "is_member=false" >> "$GITHUB_OUTPUT"
-            echo "User $USERNAME is not an org member, will send auto-response."
           fi
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Post response to first-time contributor
-        if: steps.check-membership.outputs.is_member != 'true'
+        if: steps.check-membership.outputs.is_member != 'true' && steps.check-trigger.outputs.match == 'true'
         run: |
-          RESPONSE_BODY="Thank you for your interest in contributing to this project, @${COMMENT_AUTHOR}! 🙏
+          RESPONSE_BODY="Thank you for your interest in contributing to this project, @${{ env.COMMENT_AUTHOR }}! 🙏
 
-          If this is your first time contributing, then please carefully read through [Fixing an existing issue](${CONTRIBUTING_URL}).
+          If this is your first time contributing, then please carefully read through [Fixing an existing issue](${{ env.CONTRIBUTING_URL }}).
 
           As noted there, **we don't assign issues** unless you're a regular contributor. If you don't see any linked PRs and no one else has said they are working on the issue, feel free to submit a draft PR early to signal that you're working on it."
 
-          gh issue comment ${ISSUE_NUM} --repo ${{ github.repository }} --body "${RESPONSE_BODY}"
+          gh issue comment ${{ env.ISSUE_NUM }} --repo ${{ github.repository }} --body "$RESPONSE_BODY"
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
