@@ -111,6 +111,9 @@ The list of instrumentation areas OBI can collection data from:
 - `sql`: SQL database client call metrics
 - `redis`: Redis client/server database metrics
 - `kafka`: Kafka client/server message queue metrics
+- `gpu`: GPU performance metrics
+- `mongo`: MongoDB client call metrics
+- `dns`: DNS query metrics
 
 For example, setting the `instrumentations` option to: `http,grpc` enables the
 collection of `HTTP/HTTPS/HTTP2` and `gRPC` application metrics, and disables
@@ -159,6 +162,9 @@ The list of instrumentation areas OBI can collection data from:
 - `sql`: SQL database client call traces
 - `redis`: Redis client/server database traces
 - `kafka`: Kafka client/server message queue traces
+- `gpu`: GPU performance traces
+- `mongo`: MongoDB client call traces
+- `dns`: DNS query traces
 
 For example, setting the `instrumentations` option to: `http,grpc` enables the
 collection of `HTTP/HTTPS/HTTP2` and `gRPC` application traces, and disables
