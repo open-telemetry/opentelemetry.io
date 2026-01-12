@@ -26,7 +26,7 @@ endpoints, from the application point of view.
 - `obi.network.flow.bytes`, if it is exported via OpenTelemetry.
 - `obi_network_flow_bytes_total`, if it is exported by a Prometheus endpoint.
 - To enable it, add the `network` option to the
-  [OBI_OTEL_METRICS_FEATURES or OBI_PROMETHEUS_FEATURES](../configure/export-data/)
+  [OBI_OTEL_METRICS_FEATURES](../configure/export-data/)
   configuration option.
 
 **Inter-zone metrics**: capture the bytes sent and received between different
@@ -36,7 +36,7 @@ availability zones, from the application point of view.
 - `obi_network_inter_zone_bytes_total`, if it is exported by a Prometheus
   endpoint.
 - To enable it, add the `network` option to the
-  [OBI_OTEL_METRICS_FEATURES or OBI_PROMETHEUS_FEATURES](../configure/export-data/)
+  [OBI_OTEL_METRICS_FEATURES](../configure/export-data/)
   configuration option.
 
 {{< alert type="note" >}} The metrics are captured from the host perspective, so
