@@ -64,7 +64,7 @@ de Logs em cada linguagem, temos o seguinte estado:
 O OpenTelemetry aceita qualquer formato de log, mas nem todos os formatos são
 igualmente úteis para análise. A seção a seguir explica as diferenças entre logs
 estruturados, semiestruturados e não estruturados. Importante: um log codificado
-como JSON não é automaticamente "estruturado" no sentido de possuir ume squema
+como JSON não é automaticamente "estruturado" no sentido de possuir um esquema
 estável — podendo ser semiestruturado. Logs estruturados implicam um esquema
 consistente ou campos com tipos bem definidos nos quais o processamento
 _downstream_ pode confiavelmente depender.
