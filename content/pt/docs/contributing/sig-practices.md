@@ -67,13 +67,13 @@ Outros recursos valiosos para revisão:
 
 ## Triagem {#triage}
 
-### Issues
+### Issues {#issues}
 
-- Issues recebidas são triadas pela equipe `@open-telemetry/docs-triagers`.
+- _Issues_ recebidas são triadas pela equipe `@open-telemetry/docs-triagers`.
 - Como primeiro passo, um triador irá ler o título e a descrição da _issue_ e
   aplicará os seguintes rótulos (_labels_):
   - Obrigatório: Um rótulo `sig:*`, `lang:*` ou `docs:*` para determinar a
-    (co)propriedade da issue:
+    (co)propriedade da _issue_:
     - Um rótulo `sig:*` caso a _issue_ esteja relacionada a um conteúdo ou uma
       pergunta que é co-propriedade de um SIG (_Special Interest Group_, ou
       Grupo de Interesse Especial). Por exemplo, uma pergunta sobre o Collector
@@ -101,8 +101,8 @@ Outros recursos valiosos para revisão:
     - `triage:rejected`, `triage:rejected:duplicate`, `triage:rejected:invalid`,
       `triage:rejected:wontfix`
   - Obrigatório: Definir o "tipo" da _issue_ da seguinte forma:
-    - tipo de issue `bug` para _bugs_
-    - tipo de issue `enhancement` para solicitações de recursos
+    - tipo de _issue_ `bug` para _bugs_
+    - tipo de _issue_ `enhancement` para solicitações de recursos
     - rótulo `type:question` para perguntas
     - rótulo `type:copyedit` para edições de texto
     - mover a _issue_ para "_discussions_", caso pareça ser uma conversa aberta
@@ -128,7 +128,7 @@ Outros recursos valiosos para revisão:
   `triage:followup` deve ser removido dentro de 7 dias. Mencionar os
   participantes e remover o rótulo é atividade suficiente.
 
-### PRs
+### PRs {#prs}
 
 - PRs devem ter uma _issue_ vinculada rotulada como `triage:accepted`, com as
   seguintes exceções:
