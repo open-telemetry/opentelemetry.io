@@ -18,10 +18,11 @@ show_banner: true
 
 {{< blocks/hero-split color="primary" image="/img/homepage/Highlight.svg" imageAlt="OpenTelemetry illustration" >}}
 
-_OpenTelemetry_ {.hero-split\_\_title}
+*OpenTelemetry*
+{.hero-split__title}
 
-High-quality, ubiquitous, and portable telemetry to enable effective
-observability {.hero-split\_\_tagline}
+High-quality, ubiquitous, and portable telemetry to enable effective observability
+{.hero-split__tagline}
 
 <div class="l-primary-buttons">
 
