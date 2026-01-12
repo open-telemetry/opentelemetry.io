@@ -3,8 +3,7 @@ title: Manual de estilo da documentação
 description: Terminologia e estilo ao escrever a documentação do OpenTelemetry.
 linkTitle: Manual de estilo
 weight: 20
-default_lang_commit: 5155703825c086d69c47f3372adf11e97badd89d
-drifted_from_default: true
+default_lang_commit: 5ab640677e1ac0a57553fb1c72199812f628f461
 cSpell:ignore: open-telemetry opentelemetryio postgre style-guide textlintrc
 ---
 
@@ -16,19 +15,18 @@ documentação do OpenTelemetry é influenciada pelos seguintes manuais de estil
 
 As seções a seguir contêm orientações específicas para o projeto OpenTelemetry.
 
-{{% alert title="Nota" %}}
+> [!NOTE]
+>
+> Muitos requisitos do nosso manual de estilo podem ser aplicados
+> automaticamente: antes de enviar uma [pull request][] (PR), execute
+> `npm run fix:all` na sua máquina local e faça o _commit_ das alterações.
+>
+> Se você encontrar erros ou [falhas nas verificações de PR](../pr-checks), leia
+> sobre nosso manual de estilo e aprenda o que pode ser feito para corrigir
+> certos problemas comuns.
 
-Muitos requisitos do nosso manual de estilo podem ser aplicados automaticamente:
-antes de enviar uma
-[_pull request_](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
-(PR), execute `npm run fix:all` na sua máquina local e faça o _commit_ das
-alterações.
-
-Se você encontrar erros ou [falhas nas verificações de PR](../pr-checks), leia
-sobre nosso manual de estilo e aprenda o que pode ser feito para corrigir certos
-problemas comuns.
-
-{{% /alert %}}
+[pull request]:
+  https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request
 
 ## Lista de palavras do OpenTelemetry.io {#opentelemetryio-word-list}
 
@@ -50,11 +48,30 @@ Por exemplo, escreva "PostgreSQL" em vez de "postgre". Para uma lista completa,
 verifique o arquivo
 [`.textlintrc.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml).
 
-## Padrões de Markdown {#markdown-standards}
+## Markdown {#markdown}
+
+As páginas do site são escritas na sintaxe Markdown suportada pelo renderizador
+Markdown [Goldmark]. Para a lista completa de extensões Markdown suportadas,
+consulte [Goldmark].
+
+Você também pode utilizar as seguintes extensões:
+
+- [Alertas][gfm-alerts] do [GitHub-flavored Markdown][GFM] (GFM)
+- [Emojis]. Para a lista completa de emojis disponíveis, consulte os [Emojis] da
+  documentação do Hugo.
+
+[Emojis]: https://gohugo.io/quick-reference/emojis/
+[gfm-alerts]:
+  https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide#alerts
+[GFM]: https://github.github.com/gfm/
+[Goldmark]: https://gohugo.io/configuration/markup/#goldmark
+
+### Verificações de Markdown {#markdown-standards}
 
 Para garantir padrões e consistência nos arquivos Markdown, todos os arquivos
 devem seguir certas regras, aplicadas pelo [markdownlint]. Para uma lista
-completa, verifique o arquivo [.markdownlint.yaml].
+completa, verifique os arquivos [.markdownlint.yaml] e
+[.markdownlint-cli2.yaml].
 
 Também aplicamos o padrão [file format](#file-format) ao Markdown, que remove
 espaços em branco no final das linhas. Isso exclui a [line break syntax] com
@@ -91,8 +108,14 @@ title: TituloDoRegistro
 
 ## Formato de arquivo {#file-format}
 
-Aplicamos formatação de arquivos usando o [Prettier]. Execute-o com
-`npm run fix:format`.
+Nós utilizamos o [Prettier] para aplicar a formatação de arquivos. Execute-o
+usando:
+
+- `npm run fix:format` para formatar todos os arquivos
+- `npm run fix:format:diff` para formatar apenas os arquivos que foram alterados
+  desde o último commit
+- `npm run fix:format:staged` para formatar apenas os arquivos que estão
+  preparados para o próximo commit
 
 ## Nomes de arquivos {#file-names}
 
@@ -106,6 +129,8 @@ Para aprender como corrigir problemas de validação, consulte
 
 [.markdownlint.yaml]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
+[.markdownlint-cli2.yaml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint-cli2.yaml
 [line break syntax]: https://www.markdownguide.org/basic-syntax/#line-breaks
 [markdownlint]: https://github.com/DavidAnson/markdownlint
 [Prettier]: https://prettier.io
