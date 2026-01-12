@@ -5,9 +5,87 @@ description:
   Configure the OBI components to export Prometheus and OpenTelemetry metrics
   and OpenTelemetry traces
 weight: 10
+cSpell:ignore: spanmetrics
 ---
 
 OBI can export OpenTelemetry metrics and traces to a OTLP endpoint.
+
+## Common metrics configuration
+
+YAML section: `metrics`.
+
+The `metrics` section contains the common configuration for the OpenTelemetry
+metrics and traces exporters.
+
+It currently supports selecting the different sets of metrics to export.
+
+Example:
+
+```yaml
+metrics:
+  features: ['network', 'network_inter_zone']
+```
+
+| YAML<br>environment variable               | Description                                                                                                                                                                                                                                           | Type            | Default           |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------- |
+| `features`<br>`OTEL_EBPF_METRICS_FEATURES` | The list of metric groups OBI exports data for, refer to [metrics export features](#metrics-export-features). Accepted values `application`, `application_span`, `application_host`, `application_service_graph`, `network` and `network_inter_zone`. | list of strings | `["application"]` |
+
+### Metrics export features
+
+The OBI metrics exporter can export the following metrics data groups for
+processes matching entries in the [metrics discovery](./) configuration.
+
+- `application`: Application-level metrics.
+- `application_host`: Application-level host metrics for host-based pricing.
+- `application_span`: Application-level trace span metrics in legacy format
+  (like `traces_spanmetrics_latency`); `spanmetrics` is not separate.
+- `application_span_otel`: Application-level trace span metrics in OpenTelemetry
+  format (like `traces_span_metrics_calls_total`); `span_metrics` is separate.
+- `application_span_sizes`: Application-level trace span metrics reporting
+  information about request and response sizes.
+- `application_service_graph`: Application-level service graph metrics. It's
+  recommended to use a DNS for service discovery and to ensure the DNS names
+  match the OpenTelemetry service names OBI uses. In Kubernetes environments,
+  the OpenTelemetry service name set by the service name discovery is the best
+  choice for service graph metrics.
+- `network`: Network-level metrics, refer to the
+  [network metrics](../../network) configuration documentation to learn more.
+- `network_inter_zone`: Network inter-zone metrics, refer to the
+  [network metrics](../../network/) configuration documentation to learn more.
+
+### Per-application metrics export features
+
+Additionally, OBI allows you to override global metrics export features on a per-application
+basis by adding `metrics > features` as a property to each `instrument > discovery` entry.
+
+For example, in the following configuration:
+- The `apache`, `nginx`, and `tomcat` service instances will only export `application_service_graph` metrics (as defined in the top-level `metrics > features` configuration).
+- The `pyserver` service will only export the `application` group of metrics.
+- Services listening on ports 3030 or 3040 will export the `application`, `application_span`, and `application_service_graph` metric groups.
+
+```yaml
+metrics:
+  features: ["application_service_graph"]
+discovery:
+  instrument:
+    - open_ports: 3030,3040
+      metrics:
+        features:
+          - "application"
+          - "application_span"
+          - "application_service_graph"
+    - name: pyserver
+      open_ports: 7773
+      metrics:
+        features:
+          - "application"
+    - name: apache
+      open_ports: 8080
+    - name: nginx
+      open_ports: 8085
+    - name: tomcat
+      open_ports: 8090
+```
 
 ## OpenTelemetry metrics exporter component
 
@@ -141,15 +219,15 @@ prometheus_export:
   instrumentations: ["http, "sql"]
 ```
 
-| YAML<br>environment variable                                                                        | Description                                                                                                                                                                                                                       | Type            | Default           |
-| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------- |
-| `port`<br>`OTEL_EBPF_PROMETHEUS_PORT`                                                               | The HTTP port for the Prometheus scrape endpoint. If unset or 0, no Prometheus endpoint is open.                                                                                                                                  | int             |                   |
-| `path`<br>`OTEL_EBPF_PROMETHEUS_PATH`                                                               | The HTTP query path to fetch the list of Prometheus metrics.                                                                                                                                                                      | string          | `/metrics`        |
-| `extra_resource_attributes`<br>`OTEL_EBPF_PROMETHEUS_EXTRA_RESOURCE_ATTRIBUTES`                     | A list of additional resource attributes to be added to the reported `target_info` metric. Refer to [extra resource attributes](#prometheus-extra-resource-attributes) for important details about runtime discovered attributes. | list of strings |                   |
-| `ttl`<br>`OTEL_EBPF_PROMETHEUS_TTL`                                                                 | The duration after which metric instances are not reported if they haven't been updated. Used to avoid reporting indefinitely finished application instances.                                                                     | Duration        | `5m`              |
-| `buckets`                                                                                           | Sets how you can override bucket boundaries of diverse histograms, refer to [override histogram buckets](../metrics-histograms/).                                                                                                 | Object          |                   |
-| `allow_service_graph_self_references`<br>`OTEL_EBPF_PROMETHEUS_ALLOW_SERVICE_GRAPH_SELF_REFERENCES` | Does OBI include self-referencing service in service graph generation. Self referencing isn't useful for service graphs and increases data cardinality.                                                                           | boolean         | `false`           |
-| `instrumentations`<br>`OTEL_EBPF_PROMETHEUS_INSTRUMENTATIONS`                                       | The list of instrumentation OBI collects data for, refer to [Prometheus instrumentation](#prometheus-instrumentation) section.                                                                                                    | list of strings | `["*"]`           |
+| YAML<br>environment variable                                                                        | Description                                                                                                                                                                                                                       | Type            | Default    |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ---------- |
+| `port`<br>`OTEL_EBPF_PROMETHEUS_PORT`                                                               | The HTTP port for the Prometheus scrape endpoint. If unset or 0, no Prometheus endpoint is open.                                                                                                                                  | int             |            |
+| `path`<br>`OTEL_EBPF_PROMETHEUS_PATH`                                                               | The HTTP query path to fetch the list of Prometheus metrics.                                                                                                                                                                      | string          | `/metrics` |
+| `extra_resource_attributes`<br>`OTEL_EBPF_PROMETHEUS_EXTRA_RESOURCE_ATTRIBUTES`                     | A list of additional resource attributes to be added to the reported `target_info` metric. Refer to [extra resource attributes](#prometheus-extra-resource-attributes) for important details about runtime discovered attributes. | list of strings |            |
+| `ttl`<br>`OTEL_EBPF_PROMETHEUS_TTL`                                                                 | The duration after which metric instances are not reported if they haven't been updated. Used to avoid reporting indefinitely finished application instances.                                                                     | Duration        | `5m`       |
+| `buckets`                                                                                           | Sets how you can override bucket boundaries of diverse histograms, refer to [override histogram buckets](../metrics-histograms/).                                                                                                 | Object          |            |
+| `allow_service_graph_self_references`<br>`OTEL_EBPF_PROMETHEUS_ALLOW_SERVICE_GRAPH_SELF_REFERENCES` | Does OBI include self-referencing service in service graph generation. Self referencing isn't useful for service graphs and increases data cardinality.                                                                           | boolean         | `false`    |
+| `instrumentations`<br>`OTEL_EBPF_PROMETHEUS_INSTRUMENTATIONS`                                       | The list of instrumentation OBI collects data for, refer to [Prometheus instrumentation](#prometheus-instrumentation) section.                                                                                                    | list of strings | `["*"]`    |
 
 ### Prometheus extra resource attributes
 
@@ -183,72 +261,3 @@ The list of instrumentation areas OBI can collection data from:
 For example, setting the `instrumentations` option to: `http,grpc` enables the
 collection of `HTTP/HTTPS/HTTP2` and `gRPC` application metrics, and disables
 other instrumentation.
-
-## Metrics export features
-
-OBI allows you to select which metric groups are exported, either globally or
-on a per-application basis (for each group in the [metrics discovery](./)
-configuration section).
-
-The top-level `metrics > features` YAML option (or the `OTEL_EBPF_METRICS_FEATURES`
-environment variable) controls the metric groups that OBI exports.
-
-For example:
-```yaml
-otel_metrics_export:
-  endpoint: http://otelcol:4318
-metrics:
-  features:
-    - application_service_graph
-    - network
-    - network_inter_zone
-```
-
-The following values are accepted:
-
-- `application`: Application-level metrics.
-- `application_span`: Application-level trace span metrics.
-- `application_host`: Application-level host metrics for host-based pricing.
-- `application_service_graph`: Application-level service graph metrics. We
-  recommend using DNS for service discovery and ensuring that DNS names
-  match the OpenTelemetry service names used by OBI. In Kubernetes environments,
-  the OpenTelemetry service name set by service discovery is the best
-  choice for service graph metrics.
-- `application_process`: Metrics for the processes running the instrumented
-  application.
-- `network`: Network-level metrics; refer to the
-  [network metrics](../../network) configuration documentation for details.
-- `network_inter_zone`: Network inter-zone metrics; refer to the
-  [network metrics](../../network/) configuration documentation for details.
-
-Additionally, OBI allows you to override global metrics export features on a per-application
-basis by adding `metrics > features` as a property to each `instrument > discovery` entry.
-
-For example, in the following configuration:
-- The `apache`, `nginx`, and `tomcat` service instances will only export `application_service_graph` metrics (as defined in the top-level `metrics > features` configuration).
-- The `pyserver` service will only export the `application` group of metrics.
-- Services listening on ports 3030 or 3040 will export the `application`, `application_span`, and `application_service_graph` metric groups.
-
-```yaml
-metrics:
-  features: ["application_service_graph"]
-discovery:
-  instrument:
-    - open_ports: 3030,3040
-      metrics:
-        features:
-          - "application"
-          - "application_span"
-          - "application_service_graph"
-    - name: pyserver
-      open_ports: 7773
-      metrics:
-        features:
-          - "application"
-    - name: apache
-      open_ports: 8080
-    - name: nginx
-      open_ports: 8085
-    - name: tomcat
-      open_ports: 8090
-```

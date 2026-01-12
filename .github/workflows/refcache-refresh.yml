@@ -33,6 +33,8 @@ permissions:
 
 jobs:
   refcache-refresh:
+    # Only run in upstream repository, not in forks
+    if: github.repository == 'open-telemetry/opentelemetry.io'
     runs-on: ubuntu-latest
     env:
       BRANCH: otelbot/refcache-refresh
@@ -42,14 +44,14 @@ jobs:
       PRUNE_MORE: ${{ github.event.inputs.prune_more_in_same_PR }}
       REBASE_FROM_MAIN: ${{ github.event.inputs.rebase_from_main }}
     steps:
-      - uses: actions/create-github-app-token@7e473efe3cb98aa54f8d4bac15400b15fad77d94 # v2.2.0
+      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         id: otelbot-token
         with:
           # the higher privileged docs token is needed to push commits to an existing PR
           app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v6.0.0
+      - uses: actions/checkout@v6.0.1
         with:
           fetch-depth: 0
           # Needed to trigger workflows when pushing new commits to an existing PR

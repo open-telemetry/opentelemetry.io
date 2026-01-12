@@ -22,7 +22,7 @@ terms.
 
 If you have made contributions to our ecosystem not measured by the automatic
 process, you can
-[request an exception](https://docs.google.com/forms/d/e/1FAIpQLSeSA09xDIv0uyb6vrP8xBbLjm8NsgihrG8GHxacbigF17sNDw/viewform?usp=dialog)
+[request an exception](https://github.com/open-telemetry/community/blob/main/governance-charter.md#elections)
 before 23:59 UTC on 24 October 2025 to participate in the election. See the
 [voter roll](https://github.com/open-telemetry/community/blob/f7b99ef75580e4d88159e66730e1b8bc6719ce30%5E/elections/2025/voters-roll.csv)
 with all members of standing and approved exceptions. Approved exceptions will

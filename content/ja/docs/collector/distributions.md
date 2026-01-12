@@ -1,7 +1,8 @@
 ---
 title: ディストリビューション
 weight: 25
-default_lang_commit: dcd079d98e749febcefd4d7bb1da361770ec8ed3
+default_lang_commit: dcd079d98e749febcefd4d7bb1da361770ec8ed3 # patched
+drifted_from_default: true
 ---
 
 OpenTelemetryプロジェクトは現在、コレクターの事前ビルド済み[ディストリビューション][distributions]を提供しています。
@@ -14,8 +15,8 @@ OpenTelemetryプロジェクトは現在、コレクターの事前ビルド済�
 ## カスタムディストリビューション {#custom-distributions}
 
 OpenTelemetryプロジェクトが提供する既存のディストリビューションは、あなたのニーズに合わない場合があります。
-たとえば、より軽量なバイナリを必要とする場合や、[認証拡張機能](../building/authenticator-extension)、[レシーバー](../building/receiver)、プロセッサー、エクスポーターまたは[コネクター](../building/connector)などのカスタム機能を実装する必要がある場合があります。
-ディストリビューションを構築するためのツールである[ocb](../custom-collector)（OpenTelemetry Collector Builder）を使用して、独自のディストリビューションを作成できます。
+たとえば、より軽量なバイナリを必要とする場合や、[認証拡張機能](/docs/collector/extend/custom-component/extension/authenticator/)、[レシーバー](/docs/collector/extend/custom-component/receiver/)、プロセッサー、エクスポーターまたは[コネクター](/docs/collector/extend/custom-component/connector/)などのカスタム機能を実装する必要がある場合があります。
+ディストリビューションを構築するためのツールである[ocb](/docs/collector/extend/ocb/)（OpenTelemetry Collector Builder）を使用して、独自のディストリビューションを作成できます。
 
 ## サードパーティディストリビューション {#third-party-distributions}
 

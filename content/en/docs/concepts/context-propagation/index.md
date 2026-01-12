@@ -126,6 +126,33 @@ propagation:
 - [PHP](/docs/languages/php/propagation/#manual-context-propagation)
 - [Python](/docs/languages/python/propagation/#manual-context-propagation)
 
+## Security best practices
+
+Propagation involves sending and receiving data across service boundaries, which
+can have security implications.
+
+### External services
+
+When your service interacts with external services (services you do not own or
+trust), consider the following:
+
+- **Incoming context**: Be cautious when accepting context from external
+  sources. Malicious actors could send forged trace headers to manipulate your
+  tracing data or potentially exploit vulnerabilities in context parsing. You
+  might want to ignore or sanitize incoming context from untrusted sources.
+- **Outgoing context**: Be mindful of what you propagate to external services.
+  Internal trace IDs, span IDs, or baggage items might reveal sensitive
+  information about your internal architecture or business logic. You may want
+  to configure your propagators to not send context to external or public-facing
+  endpoints.
+
+### Baggage
+
+[Baggage](../signals/baggage/) allows you to propagate arbitrary key-value
+pairs. Since this data is propagated across service boundaries, avoid putting
+sensitive information (like user credentials, API keys, or PII) in baggage, as
+it might be logged or sent to untrusted downstream services.
+
 ## Support in Language SDKs
 
 For the individual language-specific implementations of the OpenTelemetry API &

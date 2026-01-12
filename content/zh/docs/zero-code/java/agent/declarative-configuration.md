@@ -2,6 +2,7 @@
 title: Java 代理声明式配置
 linkTitle: 声明式配置
 default_lang_commit: 9958669fbbc5664acded963fedb51c7cbf63c6a3
+drifted_from_default: true
 weight: 11
 cSpell:ignore: genai
 ---

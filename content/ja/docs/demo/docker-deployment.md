@@ -3,6 +3,7 @@ title: Docker デプロイ
 linkTitle: Docker
 aliases: [docker_deployment]
 default_lang_commit: d0a90db560d4f15934bdb43d994eabcfd91c515a
+drifted_from_default: true
 cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 ---
 

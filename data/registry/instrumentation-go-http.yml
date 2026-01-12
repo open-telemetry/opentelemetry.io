@@ -8,8 +8,7 @@ tags:
 license: Apache 2.0
 description:
   Package `http` provides a `http.Handler` and functions that are intended to be
-  used to add tracing by wrapping existing handlers (with Handler) and routes
-  WithRouteTag.
+  used to add tracing by wrapping existing handlers (with Handler).
 authors:
   - name: OpenTelemetry Authors
 urls:

@@ -81,7 +81,7 @@ When the operator is installed using
 [Helm charts](/docs/platforms/kubernetes/helm/), the
 [`opentelemetry-collector-k8s` image](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-k8s)
 is used. If you need a component not found in these releases, you may need to
-[build your own collector](/docs/collector/custom-collector/).
+[build your own collector](/docs/collector/extend/ocb/).
 
 {{% /alert %}}
 

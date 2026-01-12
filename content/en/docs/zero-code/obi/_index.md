@@ -102,3 +102,8 @@ For a comprehensive list of capabilities required by OBI, refer to
 
 - Follow the [setup](setup/) documentation to get started with OBI either with
   Docker or Kubernetes.
+
+## Troubleshooting
+
+- See the [troubleshooting](./troubleshooting) guide for help with common
+  issues.

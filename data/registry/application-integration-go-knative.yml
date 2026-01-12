@@ -13,7 +13,7 @@ authors:
     url: https://github.com/knative
 urls:
   website: https://knative.dev/
-  docs: https://knative.dev/docs/eventing/observability/metrics/collecting-metrics/#about-opentelemetry
+  docs: https://knative.dev/docs/eventing/observability/metrics/collecting-metrics/
 createdAt: '2024-08-06'
 cncfProjectLevel: incubating
 isNative: true
