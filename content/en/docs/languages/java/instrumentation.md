@@ -106,7 +106,7 @@ as a temporary means of filling the gap.
 
 Native instrumentation should interact with the OpenTelemetry Java agent as
 follows: On startup, the Java agent initializes an
-[OpenTelemetry](../api/#opentelemetry)) instance and installs
+[OpenTelemetry](../api/#opentelemetry) instance and installs
 [zero-code](#zero-code-java-agent) instrumentation. Libraries adding native
 instrumentation should allow users to customize the `OpenTelemetry` instance
 used, but should automatically use the instance initialized by the Java agent
