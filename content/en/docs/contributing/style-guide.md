@@ -88,8 +88,11 @@ For callouts and alerts, we support two complementary approaches:
   Example:
 
   ```markdown
-  {{% alert title="Custom Title" color="warning" %}} Content with advanced
-  formatting options. {{% /alert %}}
+  {{%/* alert title="Custom Title" color="warning" */%}}
+
+  Content with advanced formatting options.
+
+  {{%/* /alert */%}}
   ```
 
 We encourage contributors to use the GFM alert blockquote syntax as the default
