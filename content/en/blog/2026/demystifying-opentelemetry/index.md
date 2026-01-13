@@ -4,7 +4,7 @@ title:
   Traditional Environments'
 author: '[Lukasz Ciukaj](https://github.com/luke6Lh43) (Splunk)'
 linkTitle: OTel in Traditional Environments
-date: 2026-01-12
+date: 2026-01-13
 issue: 8548
 sig: End-User
 cSpell:ignore: ciukaj lukasz
