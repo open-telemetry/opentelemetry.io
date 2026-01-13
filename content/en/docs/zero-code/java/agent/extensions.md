@@ -1189,6 +1189,300 @@ public static class MyAdvice {
 - Use `order()` to control execution order relative to the existing
   instrumentation
 
+#### Understanding Muzzle
+
+Muzzle is a safety feature that prevents applying instrumentation when there's a
+mismatch between the instrumentation code and the instrumented application code.
+It ensures API compatibility by verifying that the classes, methods, and fields
+referenced by your instrumentation advice actually exist on the application's
+classpath.
+
+**Why Muzzle is Important**
+
+When writing custom instrumentation, your advice code references classes and
+methods from the target library (e.g., `javax.servlet.ServletResponse`). If the
+application uses a different version of that library where those symbols don't
+exist or have changed, applying the instrumentation could cause runtime errors.
+Muzzle prevents this by checking compatibility before applying instrumentation.
+
+**How Muzzle Works**
+
+Muzzle operates in two phases:
+
+1. Compile-time: Collects all references to third-party library symbols
+   (classes, methods, fields) used by your instrumentation advice and helper
+   classes.
+
+2. Runtime: Before applying instrumentation, compares the collected
+   references against the actual symbols available on the application's
+   classpath. If any mismatch is detected, the instrumentation is skipped
+   entirely.
+
+**When Muzzle is Required**
+
+Muzzle is automatically enabled for all `InstrumentationModule` implementations.
+It's especially important when:
+
+- Your instrumentation uses `VirtualField` (muzzle is required for this)
+- Your advice references classes or methods from third-party libraries
+- You want to ensure your instrumentation only applies to compatible library
+  versions
+
+**Configuring Muzzle in Your Extension**
+
+To configure muzzle checks for your instrumentation, add the `muzzle-check`
+Gradle plugin and configure it in your `build.gradle.kts`:
+
+```kotlin
+plugins {
+  id("io.opentelemetry.instrumentation.muzzle-generation")
+  id("io.opentelemetry.instrumentation.muzzle-check")
+}
+
+muzzle {
+  pass {
+    group.set("javax.servlet")
+    module.set("javax.servlet-api")
+    versions.set("[3.0,)")
+    assertInverse.set(true)
+  }
+}
+```
+
+The `pass` directive specifies library versions where muzzle should pass (i.e.,
+the instrumentation is compatible). The `assertInverse.set(true)` option ensures
+that all other versions will fail the muzzle check, preventing accidental
+instrumentation of incompatible versions.
+
+**Minimal Example**
+
+Here's a minimal example showing muzzle configuration for a servlet instrumentation:
+
+```kotlin
+// build.gradle.kts
+plugins {
+  id("io.opentelemetry.instrumentation.muzzle-generation")
+  id("io.opentelemetry.instrumentation.muzzle-check")
+}
+
+muzzle {
+  // These versions are compatible with our instrumentation
+  pass {
+    group.set("javax.servlet")
+    module.set("javax.servlet-api")
+    versions.set("[3.0,)")
+    assertInverse.set(true) // All other versions should fail
+  }
+
+  // Support for older servlet API versions
+  pass {
+    group.set("javax.servlet")
+    module.set("servlet-api")
+    versions.set("[2.2, 3.0)")
+    assertInverse.set(true)
+  }
+}
+```
+
+**What Happens When Muzzle Fails**
+
+If muzzle detects a mismatch at runtime:
+
+- The instrumentation is **not applied** (it's skipped entirely)
+- A log message is emitted indicating why the instrumentation was skipped
+- Your application continues running normally without the instrumentation
+
+**Disabling Muzzle**
+
+In rare cases, you may need to disable muzzle checks for specific methods. You
+can use the `@NoMuzzle` annotation, but this should be avoided unless absolutely
+necessary:
+
+```java
+import io.opentelemetry.javaagent.tooling.muzzle.NoMuzzle;
+
+public static class MyAdvice {
+  @NoMuzzle
+  @Advice.OnMethodEnter(suppress = Throwable.class)
+  public static void onEnter() {
+    // Muzzle checks are skipped for this method
+  }
+}
+```
+
+**Best Practices**
+
+- Always configure muzzle checks for your instrumentation modules
+- Use `assertInverse.set(true)` to ensure incompatible versions are explicitly
+  rejected
+- Test your instrumentation against multiple library versions to verify muzzle
+  configuration
+- Avoid using `@NoMuzzle` unless you have a specific, well-justified reason
+
+#### Specifying Helper Classes
+
+Helper classes are utility classes used by your instrumentation advice that need
+to be available in the application's classloader. They're typically used for:
+
+- Storing state using `VirtualField`
+- Providing utility methods called from advice code
+- Implementing singletons or shared resources
+- Bridging between the agent classloader and application classloader
+
+**Automatic Detection**
+
+When using the `muzzle-generation` Gradle plugin, helper classes are
+automatically detected by scanning the class graph starting from your advice
+classes. Classes in instrumentation packages (typically packages containing
+`instrumentation` in their name) are automatically treated as helper classes
+and injected into the application classloader.
+
+**When Manual Specification is Required**
+
+You need to manually specify helper classes in these scenarios:
+
+1. **Not using the muzzle-generation plugin**: If you're not using the
+   `muzzle-generation` plugin, helper classes won't be automatically detected.
+
+2. **Using ASM instead of ByteBuddy**: If your instrumentation uses ASM for
+   bytecode manipulation (rather than ByteBuddy), muzzle can't automatically
+   detect helper classes.
+
+3. **Helper classes in non-standard packages**: If your helper classes are in
+   packages that don't match the default helper class detection patterns.
+
+4. **Classes referenced via reflection or SPI**: If helper classes are loaded
+   dynamically or through service providers that muzzle can't statically
+   analyze.
+
+**Using `isHelperClass()` Method**
+
+Override `isHelperClass()` to mark entire packages or specific classes as helper
+classes. This tells muzzle to scan these classes for references and
+automatically inject them:
+
+```java
+@Override
+public boolean isHelperClass(String className) {
+  // Mark all classes in a specific package as helper classes
+  return className.startsWith("com.example.instrumentation.helpers.");
+
+  // Or mark specific classes
+  // return "com.example.MyHelperClass".equals(className);
+}
+```
+
+**Example**: Marking Kotlin extension classes as helpers:
+
+```java
+@Override
+public boolean isHelperClass(String className) {
+  return className.startsWith("io.opentelemetry.extension.kotlin.");
+}
+```
+
+**Using `getAdditionalHelperClassNames()` Method**
+
+Override `getAdditionalHelperClassNames()` to explicitly list helper classes
+that weren't automatically detected. This is useful when:
+
+- Muzzle can't automatically detect the classes
+- You need to ensure specific classes are injected
+- You're not using the muzzle-generation plugin
+
+```java
+@Override
+public List<String> getAdditionalHelperClassNames() {
+  return Arrays.asList(
+      "com.example.instrumentation.MyHelperClass",
+      "com.example.instrumentation.AnotherHelper");
+}
+```
+
+**Important**: The order of class names matters! If helper classes extend one
+another, list the base class first. For example, if `B extends A`, return `A`
+first, then `B`:
+
+```java
+@Override
+public List<String> getAdditionalHelperClassNames() {
+  return Arrays.asList(
+      "com.example.BaseHelper",      // Base class first
+      "com.example.DerivedHelper"); // Derived class second
+}
+```
+
+**Minimal Example**
+
+Here's a complete example showing when and how to specify helper classes:
+
+```java
+@AutoService(InstrumentationModule.class)
+public class MyInstrumentationModule extends InstrumentationModule {
+
+  public MyInstrumentationModule() {
+    super("my-library");
+  }
+
+  @Override
+  public boolean isHelperClass(String className) {
+    // Mark all classes in the helpers package as helper classes
+    // This allows muzzle to automatically detect and inject them
+    return className.startsWith("com.example.instrumentation.helpers.");
+  }
+
+  @Override
+  public List<String> getAdditionalHelperClassNames() {
+    // Explicitly list helper classes that weren't automatically detected
+    // This is needed when using ASM or when classes aren't in standard packages
+    return Arrays.asList(
+        "com.example.instrumentation.SpecialHelper",
+        "com.example.instrumentation.LambdaHelper");
+  }
+
+  @Override
+  public List<TypeInstrumentation> typeInstrumentations() {
+    return singletonList(new MyTypeInstrumentation());
+  }
+}
+```
+
+**Helper Class Best Practices**
+
+- **Prefer automatic detection**: Use the `muzzle-generation` plugin and place
+  helper classes in standard instrumentation packages when possible.
+
+- **Use `isHelperClass()` for packages**: When you have multiple helper classes
+  in a package, use `isHelperClass()` to mark the entire package rather than
+  listing each class individually.
+
+- **Use `getAdditionalHelperClassNames()` for exceptions**: Only use this
+  method for classes that truly can't be automatically detected.
+
+- **Maintain dependency order**: When listing helper classes manually, ensure
+  base classes come before derived classes.
+
+- **Test helper injection**: Verify that your helper classes are properly
+  injected by checking logs or testing your instrumentation.
+
+**Troubleshooting Helper Classes**
+
+If your instrumentation isn't working and you suspect helper class issues:
+
+1. **Check logs**: Look for warnings about missing classes or failed class
+   injection.
+
+2. **Verify muzzle detection**: Run `printMuzzleReferences` to see which
+   helper classes muzzle detected automatically.
+
+3. **Add explicit specification**: If a helper class isn't being detected, add
+   it to `getAdditionalHelperClassNames()` or mark its package in
+   `isHelperClass()`.
+
+4. **Check classloader isolation**: Remember that helper classes are injected
+   into the application classloader, so they can't directly reference agent
+   classes. Use the bootstrap API for cross-classloader communication.
+
 #### Testing Your Instrumentation
 
 For a complete working example with tests, see the
