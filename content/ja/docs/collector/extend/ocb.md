@@ -93,15 +93,15 @@ YAMLマニフェストファイルで、`ocb`を構成します。
 マニフェストの`dist`セクションには、`ocb`コマンドラインの`flags`に相当するタグが含まれています。
 次の表は、`dist`セクションの構成オプションを示しています。
 
-| Tag                | Description                                                            | Optional             | Default Value                                                                     |
-| ------------------ | ---------------------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------- |
+| Tag                | Description                                                    | Optional         | Default Value                                                                     |
+| ------------------ | -------------------------------------------------------------- | ---------------- | --------------------------------------------------------------------------------- |
 | module:            | Go modの規約に従った新しいディストリビューションのモジュール名 | はい、ただし推奨 | `go.opentelemetry.io/collector/cmd/builder`                                       |
-| name:              | ディストリビューションのバイナリ名                                  | はい                  | `otelcol-custom`                                                                  |
-| description:       | 長いアプリケーション名                                  | はい                  | `Custom OpenTelemetry Collector distribution`                                     |
-| output_path:       | 出力（ソースとバイナリ）を書き込むパス                     | はい                  | `/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831` |
-| version:           | カスタムOpenTelemetry Collectorのバージョン                    | はい                  | `1.0.0`                                                                           |
-| go:                | 生成されたソースのコンパイルに使用するGoバイナリ                  | はい                  | PATHから取得されるgo                                                               |
-| debug_compilation: | 成果物のバイナリにデバッグを保存する                         | はい                  | False                                                                             |
+| name:              | ディストリビューションのバイナリ名                             | はい             | `otelcol-custom`                                                                  |
+| description:       | 長いアプリケーション名                                         | はい             | `Custom OpenTelemetry Collector distribution`                                     |
+| output_path:       | 出力（ソースとバイナリ）を書き込むパス                         | はい             | `/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831` |
+| version:           | カスタムOpenTelemetry Collectorのバージョン                    | はい             | `1.0.0`                                                                           |
+| go:                | 生成されたソースのコンパイルに使用するGoバイナリ               | はい             | PATHから取得されるgo                                                              |
+| debug_compilation: | 成果物のバイナリにデバッグを保存する                           | はい             | False                                                                             |
 
 すべての`dist`タグはオプションです。
 カスタムコレクターディストリビューションを他のユーザーが利用できるようにするか、または`ocb`を使用してコンポーネント開発およびテスト環境をブートストラップするかに応じて、それらのカスタム値を追加できます。
@@ -134,21 +134,17 @@ YAMLマニフェストファイルで、`ocb`を構成します。
      output_path: ./otelcol-dev
 
    exporters:
-     - gomod:
-         go.opentelemetry.io/collector/exporter/debugexporter {{%
+     - gomod: go.opentelemetry.io/collector/exporter/debugexporter {{%
          version-from-registry collector-exporter-debug %}}
-     - gomod:
-         go.opentelemetry.io/collector/exporter/otlpexporter {{%
+     - gomod: go.opentelemetry.io/collector/exporter/otlpexporter {{%
          version-from-registry collector-exporter-otlp %}}
 
    processors:
-     - gomod:
-         go.opentelemetry.io/collector/processor/batchprocessor {{%
+     - gomod: go.opentelemetry.io/collector/processor/batchprocessor {{%
          version-from-registry collector-processor-batch %}}
 
    receivers:
-     - gomod:
-         go.opentelemetry.io/collector/receiver/otlpreceiver {{%
+     - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver {{%
          version-from-registry collector-receiver-otlp %}}
 
    providers:
