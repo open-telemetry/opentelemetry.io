@@ -23,8 +23,10 @@ to modernizing IT practices, especially observability.
   visibility.
 - Limited instrumentation in legacy apps and systems hinders collection of
   modern metrics and traces.
-- Teams are often concerned about the potential performance impact from adding new observability tooling.
-- Bridging legacy protocols or hardware with modern platforms can be difficult to integrate.
+- Teams are often concerned about the potential performance impact from adding
+  new observability tooling.
+- Bridging legacy protocols or hardware with modern platforms can be difficult
+  to integrate.
 
 To make this practical, let’s follow a fictional manufacturing company with a
 busy production line. Here, a fleet of robotic arms equipped with sensors
@@ -51,7 +53,7 @@ that simply spit out line after line of plain text logs to a file. No JSON, no
 structure, no API - just endless lines of text. It’s easy to assume there’s no
 way to extract meaningful insight from that mess.
 
-### Why this myth persists
+### Why this myth persists (legacy logs)
 
 In many traditional environments, whether it’s a production line, a legacy
 application, or an industrial control system, the only digital “signal” you
@@ -138,8 +140,8 @@ service:
 #### How it works
 
 - **Chained Parsing:** The filelog receiver first identifies the high-level
-  event (for example, FAULT_DETECTED). It then runs a second, specific check just to
-  extract the Fault type (like "Jam" or "Overheat"). This makes the
+  event (for example, FAULT_DETECTED). It then runs a second, specific check
+  just to extract the Fault type (like "Jam" or "Overheat"). This makes the
   configuration robust and easy to read.
 - **Metric Generation:** The count connector converts these parsed logs into a
   metric called `machine_events_total`.
@@ -158,10 +160,11 @@ Sample dashboard in Prometheus:
 ## Myth 2: Our IoT devices publish telemetry to MQTT broker, so integrating with OpenTelemetry isn’t possible.
 
 Our production line relies on robotic arms and sensors that send readings to a
-message queuing telemetry transport (MQTT) broker, an industry standard for internet of things (IoT), but not something OpenTelemetry
-natively understands. Does that mean we’re stuck without modern monitoring?
+message queuing telemetry transport (MQTT) broker, an industry standard for
+internet of things (IoT), but not something OpenTelemetry natively understands.
+Does that mean we’re stuck without modern monitoring?
 
-### Why this myth persists
+### Why this myth persists (IoT and MQTT integration)
 
 MQTT is the messaging backbone for countless industrial and IoT environments,
 reliably ferrying sensor data from devices to brokers. However, since MQTT uses
@@ -170,11 +173,11 @@ can’t be easily brought into modern observability pipelines. Some MQTT brokers
 now natively integrate with OpenTelemetry, allowing direct export of metrics and
 traces using the OTLP protocol. If you’re using a modern broker with this
 feature, you can simply point your broker at your collector’s OTLP endpoint - no
-additional code required. 
+additional code required.
 
-If your broker does not support OTLP export, you’re
-still not blocked. You can use a lightweight bridge service to subscribe to MQTT
-topics and forward messages to the OpenTelemetry Collector.
+If your broker does not support OTLP export, you’re still not blocked. You can
+use a lightweight bridge service to subscribe to MQTT topics and forward
+messages to the OpenTelemetry Collector.
 
 ### Example data sent from an IoT sensor
 
@@ -196,10 +199,11 @@ relevant sensor readings.
 
 ### Creating traces and spans in the MQTT bridge app
 
-To get real end-to-end visibility (not just metrics), create an
-OpenTelemetry span for the duration of each job. This allows you to correlate a
-specific device job with downstream processing, latency, or errors. The following snippet shows a sample MQTT bridge Python app that listens for sensor messages,
-extracts job timing, and creates a span reflecting the job’s duration:
+To get real end-to-end visibility (not just metrics), create an OpenTelemetry
+span for the duration of each job. This allows you to correlate a specific
+device job with downstream processing, latency, or errors. The following snippet
+shows a sample MQTT bridge Python app that listens for sensor messages, extracts
+job timing, and creates a span reflecting the job’s duration:
 
 ```python
 import json
@@ -249,10 +253,10 @@ Sample span in Jaeger:
 #### What’s the trick here?
 
 By explicitly specifying `start_time=job_start.timestamp()` (and optionally
-`end_time`), the span precisely tracks the job’s real-world execution, even if the
-message is processed later. This gives you accurate, queryable traces that show
-exactly when each job occurred and how long it took across devices, processing
-steps, and backends.
+`end_time`), the span precisely tracks the job’s real-world execution, even if
+the message is processed later. This gives you accurate, queryable traces that
+show exactly when each job occurred and how long it took across devices,
+processing steps, and backends.
 
 You have several options for translating IoT sensor data into metrics for
 dashboards and alerts:
@@ -270,7 +274,15 @@ dashboards and alerts:
 
 ### Bottom line
 
-If your MQTT broker supports OpenTelemetry, use native OTLP export for seamless integration. If not, a simple bridge app can transform your sensor and event streams into full observability data. Modern observability backends make it even easier by allowing metrics to be derived from span attributes, so you can go from IoT signal to meaningful insight with very little friction. And if you need even deeper integration or custom processing, you can build a custom MQTT receiver directly into your Collector - see the [OpenTelemetry guide to custom receivers](https://opentelemetry.io/docs/collector/extend/custom-component/receiver/). Myth busted!
+If your MQTT broker supports OpenTelemetry, use native OTLP export for seamless
+integration. If not, a simple bridge app can transform your sensor and event
+streams into full observability data. Modern observability backends make it even
+easier by allowing metrics to be derived from span attributes, so you can go
+from IoT signal to meaningful insight with very little friction. And if you need
+even deeper integration or custom processing, you can build a custom MQTT
+receiver directly into your Collector - see the
+[OpenTelemetry guide to custom receivers](/docs/collector/extend/custom-component/receiver/).
+Myth busted!
 
 ## Myth 3: Windows and SQL Server environments are incompatible with observability.
 
@@ -278,20 +290,22 @@ Windows machines and SQL Servers are the backbone of our operations, running
 everything from analytics to inventory. Yet many believe these platforms are
 simply out of reach for modern, open observability tooling.
 
-### Why this myth persists
+### Why this myth persists (Windows and SQL Server)
 
-It’s a common belief that monitoring and
-observability are only possible in cloud native or Linux-based systems, leaving
-classic Windows servers and SQL Server workloads out of reach. In reality,
-OpenTelemetry Collector supports both environments with dedicated receivers that
-require minimal configuration. Let’s break it down.
+It’s a common belief that monitoring and observability are only possible in
+cloud native or Linux-based systems, leaving classic Windows servers and SQL
+Server workloads out of reach. In reality, OpenTelemetry Collector supports both
+environments with dedicated receivers that require minimal configuration. Let’s
+break it down.
 
 ### Observing SQL Server with the OpenTelemetry Collector
 
 Many organizations rely on SQL Server databases for production, analytics, or
-inventory. With the OpenTelemetry Collector’s [sqlserver receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sqlserverreceiver), you can scrape
-health and performance metrics directly, without needing agents on your database
-hosts. The following is a sample configuration showing how to set this up:
+inventory. With the OpenTelemetry Collector’s
+[sqlserver receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sqlserverreceiver),
+you can scrape health and performance metrics directly, without needing agents
+on your database hosts. The following is a sample configuration showing how to
+set this up:
 
 ```yaml
 receivers:
@@ -316,7 +330,7 @@ service:
       exporters: [prometheus]
 ```
 
-#### What this achieves
+#### What this achieves for SQL Server monitoring
 
 The Collector regularly scrapes key SQL Server metrics (connections, buffer
 pool, locks, batch rates, and more), exposing them to observability backends.
@@ -326,11 +340,12 @@ pool, locks, batch rates, and more), exposing them to observability backends.
 ### Observing Windows machines with the Windows performance counters receiver
 
 Classic Windows hosts still drive many production and control environments. The
-[Windows performance counters receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/windowsperfcountersreceiver) (part of the OpenTelemetry Collector
-Contrib distribution) lets you collect a wide array of system, application, or
-custom metrics right from the Windows registry using the native PDH interface.
-The following is a sample configuration for a lightweight agent running on a Windows
-machine, forwarding its data to a central collector:
+[Windows performance counters receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/windowsperfcountersreceiver)
+(part of the OpenTelemetry Collector Contrib distribution) lets you collect a
+wide array of system, application, or custom metrics right from the Windows
+registry using the native PDH interface. The following is a sample configuration
+for a lightweight agent running on a Windows machine, forwarding its data to a
+central collector:
 
 ```yaml
 receivers:
@@ -367,7 +382,7 @@ service:
       exporters: [otlp]
 ```
 
-**What this achieves:**
+#### What this achieves for Windows machines
 
 You can ingest CPU, memory, disk, and any custom Windows counters, turning even
 decades-old systems into first-class observability citizens. The receiver is
