@@ -81,34 +81,21 @@
       }
     }
 
-    .l-primary-buttons a {
-      display: inline-block;
-      padding: 0.6rem 1.5rem;
-      font-weight: 600;
-      font-size: 1.2rem;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: all 0.2s ease;
-      border: 2px solid rgba($white, 0.6);
-      background: transparent;
-      color: $white;
+    .hero-split__mobile-logo {
+      display: none;
+      text-align: center;
+      margin-bottom: 1.5rem;
 
-      &:hover {
-        border-color: $white;
-        background: rgba($white, 0.1);
+      @include media-breakpoint-down(lg) {
+        display: block;
       }
 
-      &:first-child {
-        background: lighten($primary, 12%);
-        border-color: lighten($primary, 12%);
-        margin-right: 0.75rem;
-
-        &:hover {
-          background: lighten($primary, 18%);
-          border-color: lighten($primary, 18%);
-        }
+      svg {
+        height: 128px;
+        width: auto;
       }
     }
+
   }
 
   // Light variant
