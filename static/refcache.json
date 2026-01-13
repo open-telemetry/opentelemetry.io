@@ -2488,8 +2488,8 @@
     "LastSeen": "2026-01-13T09:52:35.359Z"
   },
   "https://docs.splunk.com/observability/en/gdi/get-data-in/application/otel-dotnet/get-started.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-01-13T09:50:34.559834711Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-13T16:10:08.844Z"
   },
   "https://docs.splunk.com/observability/en/gdi/get-data-in/application/python/get-started.html": {
     "StatusCode": 200,
@@ -2904,8 +2904,8 @@
     "LastSeen": "2026-01-10T09:45:53.768290674Z"
   },
   "https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a": {
-    "StatusCode": 403,
-    "LastSeen": "2026-01-13T09:47:14.443566565Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-13T16:10:43.1Z"
   },
   "https://erinmeyer.com/books/the-culture-map/": {
     "StatusCode": 200,
@@ -17112,8 +17112,8 @@
     "LastSeen": "2026-01-13T09:44:44.677927079Z"
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
-    "StatusCode": 403,
-    "LastSeen": "2026-01-13T09:49:52.385540932Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-13T16:12:10.293Z"
   },
   "https://openai.com/": {
     "StatusCode": 200,
@@ -20172,8 +20172,8 @@
     "LastSeen": "2026-01-10T09:40:26.123581558Z"
   },
   "https://www.docsend.com/": {
-    "StatusCode": 403,
-    "LastSeen": "2026-01-13T09:44:46.990381742Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-13T16:12:26.41Z"
   },
   "https://www.docsy.dev/docs/": {
     "StatusCode": 206,
