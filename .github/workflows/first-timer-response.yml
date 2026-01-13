@@ -6,13 +6,13 @@ on:
     types: [created]
 
 permissions:
-  contents: read
   issues: write
 
 env:
   ISSUE_NUM: ${{ github.event.issue.number }}
   COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
-  CONTRIBUTING_URL: https://opentelemetry.io/docs/contributing/issues/#fixing-an-existing-issue
+  URL_FIRST_TIME_CONTRIBUTING: https://opentelemetry.io/docs/contributing/#first-time-contributing
+  URL_FIXING_EXISTING_ISSUE: https://opentelemetry.io/docs/contributing/issues/#fixing-an-existing-issue
 
 jobs:
   respond-to-assignment-request:
@@ -80,13 +80,14 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
-          CONTRIBUTING_URL: ${{ env.CONTRIBUTING_URL }}
+          URL_FIRST_TIME_CONTRIBUTING: ${{ env.URL_FIRST_TIME_CONTRIBUTING }}
+          URL_FIXING_EXISTING_ISSUE: ${{ env.URL_FIXING_EXISTING_ISSUE }}
           ISSUE_NUM: ${{ env.ISSUE_NUM }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           RESPONSE_BODY="Thank you for your interest in contributing to this project, @$COMMENT_AUTHOR! 🙏
 
-          If this is your first time contributing, then please carefully read through [Fixing an existing issue]($CONTRIBUTING_URL).
+          If this is your first time contributing, please read [First time contributing]($URL_FIRST_TIME_CONTRIBUTING) and [Fixing an existing issue]($URL_FIXING_EXISTING_ISSUE).
 
           As noted there, **we don't assign issues** unless you're a regular contributor. If you don't see any linked PRs and no one else has said they are working on the issue, feel free to submit a draft PR early to signal that you're working on it."
 
