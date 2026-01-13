@@ -91,7 +91,7 @@
   url: https://www.globalprocessing.com.ar/
   components: [Collector, .NET, Python, Java, Go]
   reference: 'https://www.linkedin.com/posts/santiago-lator_opentelemetry-opentelemetry-observabilidad-activity-7258132675268354050-oP1q'
-  referenceTitle: post
+  referenceTitle: blog post
   contact: 'santiago.lator@globalprocessing.com.ar'
 - name: HDFC Bank
   url: https://www.hdfcbank.com/
@@ -205,7 +205,7 @@
   components: [Collector, Java, JavaScript]
   reference: 'https://www.linkedin.com/posts/killenko_opentelemetry-observability-fintech-activity-7416735796872785920-XHER'
   contact: 'k.illenko@tranzzo.com'
-  referenceTitle: post
+  referenceTitle: blog post
 - name: Truffle AI
   url: https://trytruffle.ai
   components: [JavaScript]
