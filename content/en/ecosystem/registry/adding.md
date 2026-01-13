@@ -2,6 +2,7 @@
 title: Adding to the registry
 linkTitle: Adding
 description: How to add entries to the registry.
+cSpell:ignore: zpages
 ---
 
 Do you maintain or contribute to an integration for OpenTelemetry? We'd love to
