@@ -27,8 +27,6 @@ to modernizing IT practices, especially observability.
 - Integration difficulties when bridging legacy protocols or hardware with
   modern platforms.
 
-<br>
-
 To make this practical, let’s follow a fictional manufacturing company with a
 busy production line. Here, a fleet of robotic arms equipped with sensors
 reports operational data via MQTT to a central broker. A legacy application logs
