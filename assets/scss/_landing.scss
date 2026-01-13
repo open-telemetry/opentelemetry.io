@@ -488,6 +488,12 @@
     opacity: 0.9;
   }
 
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
   &__name {
     font-size: $font-size-lg;
     font-weight: $font-weight-semibold;
@@ -560,6 +566,12 @@
     i {
       font-size: 3rem;
     }
+  }
+
+  &__img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
   }
 
   &__title {
