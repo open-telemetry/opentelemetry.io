@@ -67,7 +67,7 @@ over time. This leads to the myth that these systems are "black boxes". But with
 modern observability tools like OpenTelemetry, these “useless” logs can become a
 goldmine of operational insight.
 
-**Example legacy log lines:**
+### Example legacy log lines
 
 ```console
 2026-01-04 00:39:58 | PRODUCT_COMPLETED: Line1, Count=1
@@ -84,13 +84,13 @@ goldmine of operational insight.
 2026-01-04 00:40:34 | PRODUCT_COMPLETED: Line1, Count=1
 ```
 
-**How to make this system observable?**
+### How to make this system observable
 
 OpenTelemetry Collector can watch these files in real time, parse the events,
 and, without requiring any code changes to the legacy application, transform
 them into structured metrics.
 
-**Sample OpenTelemetry Collector config:**
+#### Sample OpenTelemetry Collector config
 
 ```yaml
 receivers:
@@ -136,18 +136,18 @@ service:
       exporters: [prometheus]
 ```
 
-**How it works:**
+#### How it works
 
 - **Chained Parsing:** The filelog receiver first identifies the high-level
-  event (e.g., FAULT_DETECTED). It then runs a second, specific check just to
+  event (for example, FAULT_DETECTED). It then runs a second, specific check just to
   extract the Fault type (like "Jam" or "Overheat"). This makes the
   configuration robust and easy to read.
 - **Metric Generation:** The count connector converts these parsed logs into a
-  metric called machine_events_total.
+  metric called `machine_events_total`.
 
 <br>
 
-**Result:**
+#### Result
 
 With this configuration, your old text logs become a structured, queryable data
 source. Your Operations Manager can now open a dashboard and see exactly how
@@ -160,11 +160,11 @@ Sample dashboard in Prometheus:
 
 ## Myth 2: Our IoT devices publish telemetry to MQTT broker, so integrating with OpenTelemetry isn’t possible.
 
-Our production line relies on robotic arms and sensors that send readings to an
-MQTT broker, an industry standard for IoT, but not something OpenTelemetry
+Our production line relies on robotic arms and sensors that send readings to a
+message queuing telemetry transport (MQTT) broker, an industry standard for internet of things (IoT), but not something OpenTelemetry
 natively understands. Does that mean we’re stuck without modern monitoring?
 
-**Why this myth persists:**
+### Why this myth persists
 
 MQTT is the messaging backbone for countless industrial and IoT environments,
 reliably ferrying sensor data from devices to brokers. However, since MQTT uses
@@ -173,11 +173,13 @@ can’t be easily brought into modern observability pipelines. Some MQTT brokers
 now natively integrate with OpenTelemetry, allowing direct export of metrics and
 traces using the OTLP protocol. If you’re using a modern broker with this
 feature, you can simply point your broker at your collector’s OTLP endpoint - no
-additional code required. If your broker does not support OTLP export, you’re
-still not blocked: you can use a lightweight bridge service to subscribe to MQTT
+additional code required. 
+
+If your broker does not support OTLP export, you’re
+still not blocked. You can use a lightweight bridge service to subscribe to MQTT
 topics and forward messages to the OpenTelemetry Collector.
 
-**Example: Data Sent from an IoT Sensor:**
+### Example data sent from an IoT sensor
 
 In our case a payload published by a robotic arm sensor to MQTT might look like:
 
@@ -195,12 +197,11 @@ In our case a payload published by a robotic arm sensor to MQTT might look like:
 This message tells us which device sent it, details about the job, and the
 relevant sensor readings.
 
-**Creating Traces and Spans in the MQTT Bridge App:**
+### Creating traces and spans in the MQTT bridge app
 
-To get real end-to-end visibility (not just metrics) it's powerful to create an
+To get real end-to-end visibility (not just metrics), create an
 OpenTelemetry span for the duration of each job. This allows you to correlate a
-specific device job with downstream processing, latency, or errors. Below is a
-short snipped of sample MQTT bridge Python app that listens for sensor messages,
+specific device job with downstream processing, latency, or errors. The following snippet shows a sample MQTT bridge Python app that listens for sensor messages,
 extracts job timing, and creates a span reflecting the job’s duration:
 
 ```python
@@ -248,10 +249,10 @@ Sample span in Jaeger:
 
 ![Alt text for the image](sample-span-jaeger.png)
 
-**What’s the trick here?**
+#### What’s the trick here?
 
-By explicitly specifying start_time=job_start.timestamp() (and optionally
-end_time), the span precisely tracks the job’s real-world execution, even if the
+By explicitly specifying `start_time=job_start.timestamp()` (and optionally
+`end_time`), the span precisely tracks the job’s real-world execution, even if the
 message is processed later. This gives you accurate, queryable traces that show
 exactly when each job occurred and how long it took across devices, processing
 steps, and backends.
@@ -272,31 +273,35 @@ dashboards and alerts:
 
 <br>
 
-**Bottom line:** If your MQTT broker supports OpenTelemetry, use native OTLP
+### Bottom line
+
+If your MQTT broker supports OpenTelemetry, use native OTLP
 export for seamless integration. If not, a simple bridge app can transform your
 sensor and event streams into full observability data. Modern observability
 backends make it even easier by allowing metrics to be derived from span
 attributes, so you can go from IoT signal to meaningful insight with very little
 friction. Myth busted!
 
-## Myth 3: Windows and SQL Server Environments Are Incompatible with Observability.
+## Myth 3: Windows and SQL Server environments are incompatible with observability.
 
 Windows machines and SQL Servers are the backbone of our operations, running
 everything from analytics to inventory. Yet many believe these platforms are
 simply out of reach for modern, open observability tooling.
 
-**Why this myth persists:** It’s a common belief that monitoring and
+### Why this myth persists
+
+It’s a common belief that monitoring and
 observability are only possible in cloud native or Linux-based systems, leaving
 classic Windows servers and SQL Server workloads out of reach. In reality,
 OpenTelemetry Collector supports both environments with dedicated receivers that
 require minimal configuration. Let’s break it down.
 
-**Observing SQL Server with the OpenTelemetry Collector:**
+### Observing SQL Server with the OpenTelemetry Collector
 
 Many organizations rely on SQL Server databases for production, analytics, or
-inventory. With the OpenTelemetry Collector’s sqlserver receiver, you can scrape
+inventory. With the OpenTelemetry Collector’s [sqlserver receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sqlserverreceiver), you can scrape
 health and performance metrics directly, without needing agents on your database
-hosts. Below is a sample configuration showing how to set this up:
+hosts. The following is a sample configuration showing how to set this up:
 
 ```yaml
 receivers:
@@ -321,20 +326,20 @@ service:
       exporters: [prometheus]
 ```
 
-**What this achieves:**
+#### What this achieves
 
 The Collector regularly scrapes key SQL Server metrics (connections, buffer
 pool, locks, batch rates, and more), exposing them to observability backends.
 
 ![Alt text for the image](prometheus-sqlserver.png)
 
-**Observing Windows Machines with the Windows Performance Counters Receiver:**
+### Observing Windows machines with the Windows performance counters receiver
 
 Classic Windows hosts still drive many production and control environments. The
-Windows Performance Counters Receiver (part of the OpenTelemetry Collector
+[Windows performance counters receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/windowsperfcountersreceiver) (part of the OpenTelemetry Collector
 Contrib distribution) lets you collect a wide array of system, application, or
 custom metrics right from the Windows registry using the native PDH interface.
-Below is a sample configuration for a lightweight agent running on a Windows
+The following is a sample configuration for a lightweight agent running on a Windows
 machine, forwarding its data to a central collector:
 
 ```yaml
