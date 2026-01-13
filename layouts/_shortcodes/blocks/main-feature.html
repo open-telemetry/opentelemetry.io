@@ -1,7 +1,7 @@
-{{- $image := .Get "image" -}}
-{{- $title := .Get "title" -}}
-{{- $url := .Get "url" -}}
-{{- $imagePosition := .Get "imagePosition" | default "left" -}}
+{{ $image := .Get "image" -}}
+{{ $title := .Get "title" -}}
+{{ $url := .Get "url" -}}
+{{ $imagePosition := .Get "imagePosition" | default "left" -}}
 
 <div class="main-feature-wrapper">
   <div class="main-feature main-feature--image-{{ $imagePosition }}">

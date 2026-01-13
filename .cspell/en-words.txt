@@ -38,7 +38,7 @@ discoverability
 dotnet
 Dyla
 dynatrace
-ebay
+eBay
 ebpf
 emailservice
 EMEA
@@ -94,7 +94,6 @@ otel
 otel-comms
 otel-endusers
 otelcol
-otip
 otep
 otlp
 Otmar

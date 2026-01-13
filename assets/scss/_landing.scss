@@ -40,6 +40,15 @@
       margin-bottom: 0.5rem;
     }
 
+    .hero-split__logo {
+      margin-bottom: 0.75rem;
+
+      svg {
+        height: 36px;
+        width: auto;
+      }
+    }
+
     .l-primary-buttons a {
       display: inline-block;
       padding: 0.6rem 1.5rem;
@@ -259,12 +268,12 @@
 
   .intro-text {
     p {
-      font-size: 1rem;
+      font-size: 1.2rem;
       line-height: 1.7;
       margin-bottom: 1rem;
 
       @include media-breakpoint-up(md) {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
 
       &:last-child {
@@ -400,7 +409,7 @@
   }
 
   &__description {
-    font-size: $font-size-base;
+    font-size: 1.2rem;
     line-height: 1.7;
 
     p:last-child {
