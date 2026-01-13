@@ -1,6 +1,6 @@
 # Featured adopters with logos and learn more links
 # These are high-profile organizations with documented OpenTelemetry adoption stories
-
+# cSpell:ignore Skyscanner, otip, ebay
 - name: Alibaba
   url: https://www.alibaba.com/
   logo: 'https://cdn.brandfetch.io/alibaba.com/w/120/h/50'
