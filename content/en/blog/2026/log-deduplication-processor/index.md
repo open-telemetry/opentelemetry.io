@@ -1,7 +1,7 @@
 ---
 title: Reducing Log Volume with the OpenTelemetry Log Deduplication Processor
 linkTitle: Log Deduplication Processor
-date: 2026-01-19
+date: 2026-01-20
 author: '[Juraci Paixao Krohling](https://github.com/jpkrohling) (OllyGarden)'
 canonical_url: https://blog.olly.garden/reducing-log-volume-with-the-opentelemetry-log-deduplication-processor
 # prettier-ignore
@@ -36,9 +36,11 @@ message appeared.
 ## How log deduplication works
 
 The core concept is straightforward. Logs are considered identical when they
-share the same resource attributes, scope, body, attributes, and severity. The
-processor computes a hash of these fields and tracks occurrences within a
-configurable interval.
+share the same resource attributes, scope, body, attributes, severity, and event
+name. Notably, the timestamp is excluded from this identity check, as it
+naturally varies for every log entry. The order of attributes does not affect
+identity. The processor computes a hash of these fields and tracks occurrences
+within a configurable interval.
 
 When the interval expires, the processor emits a single log entry with three
 additional attributes: `log_count` (the number of duplicates),
@@ -78,7 +80,7 @@ these volatile fields are treated as duplicates.
 
 ## A complete pipeline example
 
-To use the log deduplication processor, include it in your collector pipeline:
+To use the log deduplication processor, include it in your Collector pipeline:
 
 ```yaml
 receivers:
