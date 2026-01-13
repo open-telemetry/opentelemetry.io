@@ -16640,7 +16640,7 @@
     "LastSeen": "2026-01-05T09:50:56.895682084Z"
   },
   "https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java/4.26.1": {
-    "StatusCode": 403,
+    "StatusCode": 200,
     "LastSeen": "2026-01-13T09:49:55.961270168Z"
   },
   "https://mybatis.org/mybatis-3/": {
