@@ -202,9 +202,10 @@
   contact: ''
 - name: Tranzzo
   url: https://tranzzo.com/
-  components: [Collector, Java]
-  reference: ''
-  contact: https://github.com/illenko
+  components: [Collector, Java, JavaScript]
+  reference: 'https://www.linkedin.com/posts/killenko_opentelemetry-observability-fintech-activity-7416735796872785920-XHER'
+  contact: 'k.illenko@tranzzo.com'
+  referenceTitle: post
 - name: Truffle AI
   url: https://trytruffle.ai
   components: [JavaScript]
