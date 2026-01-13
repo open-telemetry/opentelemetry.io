@@ -186,8 +186,8 @@ the [vendor of your choice](/ecosystem/vendors/)).
 The OpenTelemetry Collector's configuration is exposed in the Helm chart. Any
 additions you do will be merged into the default configuration.
 
-You can create a custom file (e.g., `my-values-file.yaml`) and use it to add your
-own exporters to the desired pipeline(s):
+You can create a custom file (e.g., `my-values-file.yaml`) and use it to add
+your own exporters to the desired pipeline(s):
 
 ```yaml
 opentelemetry-collector:
