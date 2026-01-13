@@ -64,9 +64,9 @@ dictates immediate response and maintenance strategy. But when that critical
 data is buried in unstructured text like **FAULT_DETECTED: Line1, Fault=Jam**,
 it is invisible to standard monitoring dashboards. You can't graph text, you
 can't alert on a string inside a file easily, and you certainly can't see trends
-over time. This leads to the myth that these systems are "black boxes". But with
-modern observability tools like OpenTelemetry, these “useless” logs can become a
-goldmine of operational insight.
+over time. This leads to the myth that these systems are closed to observers.
+But with modern observability tools like OpenTelemetry, these “useless” logs can
+become a goldmine of operational insight.
 
 ### Example legacy log lines
 
@@ -412,7 +412,7 @@ The examples in this post show that it’s not just possible, but practical to
 bring decades-old logs, industrial telemetry, and classic Microsoft
 infrastructure into a modern observability stack. You don’t need to rip and
 replace; you can build on what you already have, instrument incrementally, and
-unlock new value from systems that used to be black boxes.
+unlock new value from systems that used to be opaque.
 
 By breaking down these myths, we see that every environment, no matter how
 traditional or complex—has the potential to become observable, resilient, and
