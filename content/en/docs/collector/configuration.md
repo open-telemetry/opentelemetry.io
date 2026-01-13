@@ -919,7 +919,7 @@ recommended.
 The `--set` option has the following limitations:
 
 1. Does not support setting a key that contains a dot `.`.
-2. Does not support setting a key that contains a equal sign `=`.
+2. Does not support setting a key that contains an equal sign `=`.
 3. The configuration key separator inside the value part of the property is
    "::". For example `--set "name={a::b: c}"` is equivalent with
    `--set name::a::b=c`.
@@ -995,7 +995,7 @@ Note that by default the configuration will only print when it is valid, and
 that sensitive information will be redacted. To print a potentially invalid
 configuration, use `--validate=false`.
 
-### How to view sensitive fields?
+### How to view sensitive fields
 
 Use `print-config` with `--mode=unredacted` and
 `--feature-gates=otelcol.printInitialConfig`:
@@ -1004,7 +1004,7 @@ Use `print-config` with `--mode=unredacted` and
 otelcol print-config --mode=unredacted --config=file:examples/local/otel-config.yaml
 ```
 
-### How to print the final configuration in JSON format?
+### How to print the final configuration in JSON format
 
 {{% alert title="Important" color="warning" %}}
 
