@@ -27,6 +27,9 @@ show_banner: true
 
 {{< /homepage/hero-split >}}
 
+{{< homepage/hero-search color="light" placeholder="Search OpenTelemetry docs..." >}}
+{{< /homepage/hero-search >}}
+
 {{< homepage/intro-section color="white" >}}
 
 <div class="intro-text">
