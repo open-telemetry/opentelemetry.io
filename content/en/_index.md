@@ -16,7 +16,7 @@ show_banner: true
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{< blocks/hero-split color="primary" image="/img/homepage/hero-graphic.svg" imageAlt="OpenTelemetry illustration" tagline="High-quality, ubiquitous, and portable telemetry to enable effective observability" >}}
+{{< homepage/hero-split color="primary" image="/img/homepage/hero-graphic.svg" imageAlt="OpenTelemetry illustration" tagline="High-quality, ubiquitous, and portable telemetry to enable effective observability" >}}
 
 <div class="l-primary-buttons">
 
@@ -25,9 +25,9 @@ show_banner: true
 
 </div>
 
-{{< /blocks/hero-split >}}
+{{< /homepage/hero-split >}}
 
-{{< blocks/intro-section color="white" >}}
+{{< homepage/intro-section color="white" >}}
 
 <div class="intro-text">
 
@@ -45,88 +45,88 @@ community.
   <img src="/img/homepage/collector-pipeline.svg" alt="OpenTelemetry overview" class="img-fluid">
 </div>
 
-{{< /blocks/intro-section >}}
+{{< /homepage/intro-section >}}
 
-{{< blocks/main-features color="light" >}}
+{{< homepage/main-features color="light" >}}
 
-{{< blocks/main-feature
+{{< homepage/main-feature
       title="Vendor-neutral instrumentation"
       image="/img/homepage/data-sources.svg"
       imagePosition="left" >}} Instrument your code once using OpenTelemetry
 APIs and SDKs. Export telemetry data to any observability backend—Jaeger,
 Prometheus, commercial vendors, or your own solution. Switch backends without
-touching your application code. {{< /blocks/main-feature >}}
+touching your application code. {{< /homepage/main-feature >}}
 
-{{< blocks/main-feature
+{{< homepage/main-feature
       title="Unified observability signals"
       image="/img/homepage/unified-signals.svg"
       imagePosition="right" >}} Correlate traces, metrics, and logs with shared
 context that flows through your entire request path. Get a complete picture of
 your application's behavior across all components and services.
-{{< /blocks/main-feature >}}
+{{< /homepage/main-feature >}}
 
-{{< blocks/main-feature
+{{< homepage/main-feature
       title="Run anywhere"
       image="/img/homepage/global-deployment.svg"
       imagePosition="left" >}} OpenTelemetry is 100% open source and
 vendor-neutral. Deploy on-premises, in hybrid environments, or across multiple
 clouds with full flexibility and zero lock-in. Move workloads wherever they
-matter to you. {{< /blocks/main-feature >}}
+matter to you. {{< /homepage/main-feature >}}
 
-{{< /blocks/main-features >}}
+{{< /homepage/main-features >}}
 
-{{< blocks/signals-showcase title="Observability Signals" >}}
-{{< blocks/signal name="Traces" image="/img/homepage/signal-traces.svg" url="/docs/concepts/signals/traces/" >}}
-Distributed traces {{< /blocks/signal >}}
-{{< blocks/signal name="Metrics" image="/img/homepage/signal-metrics.svg" url="/docs/concepts/signals/metrics/" >}}
-Measurements over time {{< /blocks/signal >}}
-{{< blocks/signal name="Logs" image="/img/homepage/signal-logs.svg" url="/docs/concepts/signals/logs/" >}}
-Timestamped records {{< /blocks/signal >}}
-{{< blocks/signal name="Baggage" image="/img/homepage/signal-baggage.svg" url="/docs/concepts/signals/baggage/" >}}
-Contextual metadata {{< /blocks/signal >}} {{< /blocks/signals-showcase >}}
+{{< homepage/signals-showcase title="Observability Signals" >}}
+{{< homepage/signal name="Traces" image="/img/homepage/signal-traces.svg" url="/docs/concepts/signals/traces/" >}}
+Distributed traces {{< /homepage/signal >}}
+{{< homepage/signal name="Metrics" image="/img/homepage/signal-metrics.svg" url="/docs/concepts/signals/metrics/" >}}
+Measurements over time {{< /homepage/signal >}}
+{{< homepage/signal name="Logs" image="/img/homepage/signal-logs.svg" url="/docs/concepts/signals/logs/" >}}
+Timestamped records {{< /homepage/signal >}}
+{{< homepage/signal name="Baggage" image="/img/homepage/signal-baggage.svg" url="/docs/concepts/signals/baggage/" >}}
+Contextual metadata {{< /homepage/signal >}} {{< /homepage/signals-showcase >}}
 
-{{< blocks/otel-features color="white" title="OpenTelemetry Features" columns="2" >}}
+{{< homepage/otel-features color="white" title="OpenTelemetry Features" columns="2" >}}
 
-{{< blocks/otel-feature image="/img/homepage/feature-auto-instrumentation.svg" title="Auto-instrumentation" url="/docs/concepts/instrumentation/zero-code/" >}}
+{{< homepage/otel-feature image="/img/homepage/feature-auto-instrumentation.svg" title="Auto-instrumentation" url="/docs/concepts/instrumentation/zero-code/" >}}
 Get started in minutes with zero-code instrumentation for popular frameworks and
 libraries. Automatic instrumentation agents capture traces, metrics, and logs
-without modifying your source code. {{< /blocks/otel-feature >}}
+without modifying your source code. {{< /homepage/otel-feature >}}
 
-{{< blocks/otel-feature image="/img/homepage/feature-pipeline.svg" title="Collector pipeline" url="/docs/collector/" >}}
+{{< homepage/otel-feature image="/img/homepage/feature-pipeline.svg" title="Collector pipeline" url="/docs/collector/" >}}
 Process, filter, and route telemetry data with the OpenTelemetry Collector.
 Deploy as an agent or gateway to receive, process, and export telemetry at scale
-with 200+ components. {{< /blocks/otel-feature >}}
+with 200+ components. {{< /homepage/otel-feature >}}
 
-{{< blocks/otel-feature image="/img/homepage/feature-observability.svg" title="Context propagation" url="/docs/concepts/context-propagation/" >}}
+{{< homepage/otel-feature image="/img/homepage/feature-observability.svg" title="Context propagation" url="/docs/concepts/context-propagation/" >}}
 Automatically correlate traces across service boundaries. Distributed context
 flows through your entire request path, connecting logs, metrics, and traces
-into a unified view. {{< /blocks/otel-feature >}}
+into a unified view. {{< /homepage/otel-feature >}}
 
-{{< blocks/otel-feature image="/img/homepage/feature-multi-language.svg" title="Multi-language support" url="/docs/languages/" >}}
+{{< homepage/otel-feature image="/img/homepage/feature-multi-language.svg" title="Multi-language support" url="/docs/languages/" >}}
 Native SDKs for 11+ languages including Java, Python, Go, JavaScript, .NET,
 Ruby, PHP, Rust, C++, Swift, and Erlang. Use your preferred language with
-first-class OpenTelemetry support. {{< /blocks/otel-feature >}}
+first-class OpenTelemetry support. {{< /homepage/otel-feature >}}
 
-{{< blocks/otel-feature image="/img/homepage/feature-production-ready.svg" title="Stable and production-ready" url="/status/" >}}
+{{< homepage/otel-feature image="/img/homepage/feature-production-ready.svg" title="Stable and production-ready" url="/status/" >}}
 Tracing and metrics APIs are stable across all major languages. Thousands of
 organizations run OpenTelemetry in production. Backed by the CNCF and major
-cloud providers. {{< /blocks/otel-feature >}}
+cloud providers. {{< /homepage/otel-feature >}}
 
-{{< blocks/otel-feature image="/img/homepage/feature-openness.svg" title="Open specifications" url="/docs/specs/status/" >}}
+{{< homepage/otel-feature image="/img/homepage/feature-openness.svg" title="Open specifications" url="/docs/specs/status/" >}}
 Built on open, vendor-neutral specifications for APIs, SDKs, and the wire
 protocol (OTLP). Transparent governance under the CNCF ensures long-term
-stability and community-driven evolution. {{< /blocks/otel-feature >}}
+stability and community-driven evolution. {{< /homepage/otel-feature >}}
 
-{{< /blocks/otel-features >}}
+{{< /homepage/otel-features >}}
 
-{{< blocks/ecosystem-stats color="light" title="The OpenTelemetry Ecosystem" >}}
-{{< blocks/stat type="languages" label="Languages" url="/docs/languages/" >}}
-{{< blocks/stat type="collector" label="Collector Components" url="/docs/collector/" >}}
-{{< blocks/stat type="registry" label="Integrations" url="/ecosystem/registry/" >}}
-{{< blocks/stat type="vendors" label="Vendors" url="/ecosystem/vendors/" >}}
-{{< /blocks/ecosystem-stats >}}
+{{< homepage/ecosystem-stats color="light" title="The OpenTelemetry Ecosystem" >}}
+{{< homepage/stat type="languages" label="Languages" url="/docs/languages/" >}}
+{{< homepage/stat type="collector" label="Collector Components" url="/docs/collector/" >}}
+{{< homepage/stat type="registry" label="Integrations" url="/ecosystem/registry/" >}}
+{{< homepage/stat type="vendors" label="Vendors" url="/ecosystem/vendors/" >}}
+{{< /homepage/ecosystem-stats >}}
 
-{{< blocks/adopters-showcase
+{{< homepage/adopters-showcase
     color="white"
     title="Trusted by Industry Leaders"
     limit="10"
