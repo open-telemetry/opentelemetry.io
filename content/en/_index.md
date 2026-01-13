@@ -31,7 +31,7 @@ show_banner: true
 
 <div class="intro-text">
 
-**[OpenTelemetry](/docs/what-is-opentelemetry/)**, also known as OTel, is an
+**OpenTelemetry** is an
 open source observability framework for cloud native software. It provides a
 single set of APIs, libraries, agents, and collector services to capture
 distributed traces and metrics from your application.
@@ -67,7 +67,7 @@ your application's behavior across all components and services.
 {{< /blocks/main-feature >}}
 
 {{< blocks/main-feature
-      title="Run OTel anywhere"
+      title="Run anywhere"
       image="/img/homepage/global-deployment.svg"
       imagePosition="left" >}} OpenTelemetry is 100% open source and
 vendor-neutral. Deploy on-premises, in hybrid environments, or across multiple
