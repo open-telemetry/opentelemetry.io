@@ -103,6 +103,9 @@
     svg {
       height: 48px;
     }
+    .navbar-brand__logo {
+      display: inline-block !important;
+    }
     .navbar-brand__name {
       display: none;
     }
@@ -137,19 +140,18 @@
   background: var(--td-pre-bg);
   color: var(--bs-body-color);
   text-align: center;
-  width: 100%;
-  position: relative;
-  z-index: 30;
-  padding: 0.5rem 1rem;
 
-  // Push below the fixed navbar
   @include media-breakpoint-up(md) {
-    padding-top: 4.5rem;
-    padding-bottom: 0.5rem;
+    width: 100%;
+    position: fixed;
+    margin-left: -15px;
+    z-index: 31;
+    top: 4rem;
   }
 
   & p {
-    margin-bottom: 0;
+    padding: 0.5rem;
+    margin-bottom: initial;
   }
 }
 

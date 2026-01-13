@@ -5,7 +5,7 @@
 {{ $tagline := .Get "tagline" -}}
 {{ $useLogo := .Get "useLogo" | default false -}}
 
-<section class="hero-split hero-split--{{ $color }}">
+<section class="hero-split hero-split--{{ $color }}"{{ with $image }} style="--hero-bg-image: url('{{ . }}')"{{ end }}>
   <div class="container">
     <div class="hero-split__grid">
       <div class="hero-split__content">
@@ -23,11 +23,6 @@
         {{- end -}}
         {{ .Inner | markdownify }}
       </div>
-      {{- with $image -}}
-      <div class="hero-split__image">
-        <img src="{{ . }}" alt="{{ $imageAlt }}" loading="eager">
-      </div>
-      {{- end -}}
     </div>
   </div>
 </section>
