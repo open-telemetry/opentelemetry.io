@@ -27,7 +27,6 @@ Chronosphere
 classpath
 cmelius
 cncf
-comms
 configurator
 currencyservice
 daemonset
