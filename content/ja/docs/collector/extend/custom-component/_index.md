@@ -1,9 +1,9 @@
 ---
 title: カスタムコンポーネントのビルド
 description: 独自のコレクターコンポーネントをビルドする方法の説明
-weight: 90
-default_lang_commit: edc67aafea1ead97b94ed4054d2c3248a34b0389
-drifted_from_default: file not found
+aliases: [/docs/collector/building/]
+weight: 300
+default_lang_commit: 6a7f17450ce3edc2e4363013551ee93ba7934a5d
 ---
 
 OpenTelemetry Collectorは、既存のコンポーネントだけでなく、独自に開発・ビルドしたカスタムコンポーネントでも拡張できます。
