@@ -94,6 +94,9 @@
     display: grid;
     gap: 2rem;
     align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
 
     @include media-breakpoint-up(lg) {
       grid-template-columns: 1fr 1fr;
@@ -245,6 +248,7 @@
 .intro-content {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 1rem;
   display: grid;
   gap: 2rem;
   align-items: center;
@@ -467,8 +471,9 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
+    padding: 0 1rem;
 
     @include media-breakpoint-down(md) {
       grid-template-columns: repeat(2, 1fr);
@@ -536,9 +541,10 @@
   display: grid;
   gap: 1.5rem 2rem;
   margin-top: 1.5rem;
-  max-width: 900px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 1rem;
 
   // Default: 3 columns on desktop
   &--cols-3 {
@@ -636,6 +642,9 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
 
   @include media-breakpoint-down(md) {
     gap: 2rem;
@@ -682,9 +691,9 @@
   text-align: center;
 
   &__container {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 2rem;
+    padding: 2rem 1rem;
   }
 
   &__title {
@@ -726,8 +735,9 @@
     gap: 1.5rem;
     align-items: center;
     justify-items: center;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
+    padding: 0 1rem;
 
     @include media-breakpoint-down(lg) {
       grid-template-columns: repeat(4, 1fr);
