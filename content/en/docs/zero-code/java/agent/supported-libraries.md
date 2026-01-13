@@ -188,7 +188,7 @@ view execution. See
 **[6]** Database client metrics are available for those who opt-in to
 [semantic convention stability](/docs/specs/semconv/non-normative/db-migration/).
 
-[Elasticsearch Client Spans]: /docs/specs/semconv/database/elasticsearch/
+[Elasticsearch Client Spans]: /docs/specs/semconv/db/elasticsearch/
 [HTTP Server Spans]: /docs/specs/semconv/http/http-spans/#http-server
 [HTTP Client Spans]: /docs/specs/semconv/http/http-spans/#http-client-span
 [HTTP Server Metrics]: /docs/specs/semconv/http/http-metrics/#http-server
@@ -198,9 +198,9 @@ view execution. See
 [RPC Server Metrics]: /docs/specs/semconv/rpc/rpc-metrics/#rpc-server
 [RPC Client Metrics]: /docs/specs/semconv/rpc/rpc-metrics/#rpc-client
 [Messaging Spans]: /docs/specs/semconv/messaging/messaging-spans/
-[Database Client Spans]: /docs/specs/semconv/database/database-spans/
-[Database Client Metrics]: /docs/specs/semconv/database/database-metrics/
-[Database Pool Metrics]: /docs/specs/semconv/database/database-metrics/
+[Database Client Spans]: /docs/specs/semconv/db/database-spans/
+[Database Client Metrics]: /docs/specs/semconv/db/database-metrics/
+[Database Pool Metrics]: /docs/specs/semconv/db/database-metrics/
 [JVM Runtime Metrics]: /docs/specs/semconv/runtime/jvm-metrics/
 [System Metrics]: /docs/specs/semconv/system/system-metrics/
 [GraphQL Server Spans]: /docs/specs/semconv/graphql/graphql-spans/

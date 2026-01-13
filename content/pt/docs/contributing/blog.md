@@ -2,7 +2,7 @@
 title: Blog
 description: Saiba como enviar uma publicação para o blog.
 weight: 30
-default_lang_commit: 9244bd617271f07700983355cc89ded61997cad3
+default_lang_commit: 379d6a08472e421fda5d1aeb9246796371e7bb84
 ---
 
 O [_blog_ do OpenTelemetry](/blog/) comunica novas funcionalidades, relatórios
@@ -34,6 +34,16 @@ As publicações no _blog_ não devem ter caráter comercial e devem conter cont
 original que seja amplamente relevante para a comunidade OpenTelemetry. As
 publicações devem seguir as políticas descritas no
 [Guia de Mídias Sociais](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
+
+### Criando links para repositórios do GitHub
+
+Ao criar links para o código-fonte em repositórios do GitHub, não utilize a
+_branch_ `main` (ou outra _branch_ padrão). Em vez disso, utilize um **commit
+específico** ou uma **versão marcada** que reflita o estado do código no momento
+em que a postagem do blog foi escrita.
+
+Isso garante que as postagens do blog permaneçam estáveis ​​e não apresentem
+problemas no futuro, conforme os repositórios evoluem.
 
 Verifique se o conteúdo pretendido se aplica amplamente à comunidade
 OpenTelemetry. Exemplos de conteúdos adequados incluem:
@@ -103,22 +113,22 @@ um modelo. Siga estes passos para criar um _post_ a partir do modelo:
 1. Execute o seguinte comando a partir da raiz do repositório:
 
    ```sh
-   npx hugo new content/pt/blog/2025/nome-curto-da-publicação.md
+   npx hugo new content/pt/blog/$(date +%Y)/nome-curto-da-publicação.md
    ```
 
    Caso seu _post_ tenha imagens ou outros arquivos, execute o seguinte comando:
 
    ```sh
-   npx hugo new content/pt/blog/2025/nome-curto-da-publicação/index.md
+   npx hugo new content/pt/blog/$(date +%Y)/nome-curto-da-publicação/index.md
    ```
 
-1. Edite o arquivo Markdown no caminho informado no comando anterior. O arquivo
+2. Edite o arquivo Markdown no caminho informado no comando anterior. O arquivo
    é inicializado a partir do modelo de _post_ no _blog_ localizado em
    [archetypes](https://github.com/open-telemetry/opentelemetry.io/tree/main/archetypes/).
 
-1. Adicione imagens ou outros arquivos na pasta criada.
+3. Adicione imagens ou outros arquivos na pasta criada.
 
-1. Quando a publicação estiver pronta, envie-a através de um _pull request_.
+4. Quando a publicação estiver pronta, envie-a através de um _pull request_.
 
 ### Usando a interface do GitHub {#use-the-github-ui}
 
@@ -136,8 +146,8 @@ utilizando a interface do GitHub:
 
 1.  Cole o conteúdo do modelo copiado no primeiro passo.
 
-1.  Nomeie seu arquivo, por exemplo
-    `content/pt/blog/2025/nome-curto-da-publicação/index.md`.
+1.  Nomeie seu arquivo, por exemplo (`YYYY` sendo o ano atual)
+    `content/pt/blog/YYYY/nome-curto-da-publicação/index.md`.
 
 1.  Edite o arquivo Markdown diretamente no GitHub.
 

@@ -2,7 +2,8 @@
 title: コンテキスト伝搬
 weight: 10
 description: 分散トレーシングを可能にする概念について学ぶ
-default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad
+default_lang_commit: 9b427bf25703c33a2c6e05c2a7b58e0f768f7bad # patched
+drifted_from_default: true
 ---
 
 コンテキスト伝搬により、[シグナル](../signals/)は、それらが生成された場所に関係なく、互いを相関させられます。

@@ -3,6 +3,7 @@ title: ইমেইল সার্ভিস
 linkTitle: ইমেইল
 aliases: [emailservice]
 default_lang_commit: ae417344d183999236c22834435e0dfeb109da29
+drifted_from_default: true
 cSpell:ignore: sinatra
 ---
 

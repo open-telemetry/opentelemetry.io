@@ -3,6 +3,7 @@ title: コレクターなし
 description: アプリケーションからバックエンドへ直接シグナルを送信する理由と方法
 weight: 1
 default_lang_commit: b34ebe22b71962da96b898eb39a666ed57d447fe
+drifted_from_default: true
 ---
 
 最もシンプルなパターンは、コレクターをまったく使用しないことです。

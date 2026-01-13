@@ -2,7 +2,7 @@
 title: 上下文传播
 weight: 10
 description: 了解实现分布式追踪的概念。
-default_lang_commit: 7bb7dbb6
+default_lang_commit: 7bb7dbb6 # patched
 drifted_from_default: true
 ---
 

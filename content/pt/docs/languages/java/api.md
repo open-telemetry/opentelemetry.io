@@ -2,6 +2,7 @@
 title: Registrar Telemetria com a API
 weight: 11
 default_lang_commit: 7c6d317a1ed969bd03f0aa8297f068ca29c2b459 # patched
+drifted_from_default: true
 aliases:
   - /docs/languages/java/api-components/
 logBridgeWarning: >
