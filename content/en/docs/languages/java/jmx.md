@@ -69,25 +69,25 @@ JMX metrics can be collected in two ways:
 When using the OpenTelemetry Java agent, configure JMX metrics using these
 properties:
 
-| System Property                  | Environment Variable             | Description                                           | Default |
-| -------------------------------- | -------------------------------- | ----------------------------------------------------- | ------- |
-| `otel.jmx.enabled`               | `OTEL_JMX_ENABLED`               | Enable JMX metric collection                          | `true`  |
-| `otel.jmx.target.system`         | `OTEL_JMX_TARGET_SYSTEM`         | Comma-separated list of predefined metric sets to use | none    |
-| `otel.jmx.interval.milliseconds` | `OTEL_JMX_INTERVAL_MILLISECONDS` | Collection interval in milliseconds                   | `10000` |
-| `otel.jmx.groovy.script`         | `OTEL_JMX_GROOVY_SCRIPT`         | Path to custom Groovy script for metric mapping       | none    |
+| System Property          | Environment Variable     | Description                                           | Default |
+| ------------------------ | ------------------------ | ----------------------------------------------------- | ------- |
+| `otel.jmx.enabled`       | `OTEL_JMX_ENABLED`       | Enable JMX metric collection                          | `true`  |
+| `otel.jmx.target.system` | `OTEL_JMX_TARGET_SYSTEM` | Comma-separated list of predefined metric sets to use | none    |
+| `otel.jmx.config`        | `OTEL_JMX_CONFIG`        | Path to custom YAML for metric mapping                | none    |
 
 ### JMX Scraper Configuration
 
 When using the standalone JMX Scraper to collect metrics from a remote JVM,
 configure using these properties (note: `otel.jmx.enabled` is not needed).
 
-For complete configuration reference, see the
-[JMX Scraper documentation](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference).
-
 | System Property          | Environment Variable     | Description                                           | Default    |
 | ------------------------ | ------------------------ | ----------------------------------------------------- | ---------- |
 | `otel.jmx.service.url`   | `OTEL_JMX_SERVICE_URL`   | JMX service URL for remote JVM connection             | (required) |
 | `otel.jmx.target.system` | `OTEL_JMX_TARGET_SYSTEM` | Comma-separated list of predefined metric sets to use | none       |
+| `otel.jmx.config`        | `OTEL_JMX_CONFIG`        | Path to custom YAML for metric mapping                | none       |
+
+For complete configuration reference, see the
+[JMX Scraper documentation](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference).
 
 ### Predefined Target Systems
 
@@ -187,33 +187,42 @@ If you're migrating from the deprecated JMX Metric Gatherer, see the
 ## Custom Metric Mappings
 
 For application-specific MBeans or custom monitoring requirements, you can
-create custom metric mappings using Groovy scripts.
+create custom metric mappings using a YAML configuration file.
 
-### Creating a Custom Groovy Script
+### Creating a Custom YAML Configuration
 
-Create a Groovy script that defines how to map JMX attributes to OpenTelemetry
+Create a YAML file that defines how to map JMX attributes to OpenTelemetry
 metrics:
 
-**Example - `custom-jmx-metrics.groovy`:**
+**Example - `custom-jmx-metrics.yaml`:**
 
-```groovy
-def beanName = "com.myapp:type=CustomMetrics"
-
-otel.mbean(beanName) {
-  attributes {
-    "RequestCount" { instrument("myapp.requests.count", "Total request count", "1") }
-    "ResponseTime" { instrument("myapp.response.time", "Average response time", "ms") }
-    "ActiveSessions" { instrument("myapp.sessions.active", "Active sessions", "1") }
-  }
-}
+```yaml
+rules:
+  - bean: com.myapp:type=CustomMetrics
+    mapping:
+      RequestCount:
+        metric: myapp.requests.count
+        type: monotonic_count
+        desc: Total request count
+        unit: "1"
+      ResponseTime:
+        metric: myapp.response.time
+        type: gauge
+        desc: Average response time
+        unit: ms
+      ActiveSessions:
+        metric: myapp.sessions.active
+        type: updowncounter
+        desc: Active sessions
+        unit: "1"
 ```
 
-Use the script with your application:
+Use the file with your application:
 
 ```sh
 java -javaagent:opentelemetry-javaagent.jar \
   -Dotel.jmx.enabled=true \
-  -Dotel.jmx.groovy.script=/path/to/custom-jmx-metrics.groovy \
+  -Dotel.jmx.config=/path/to/custom-jmx-metrics.yaml \
   -jar myapp.jar
 ```
 
