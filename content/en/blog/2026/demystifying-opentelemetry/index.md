@@ -3,8 +3,8 @@ title:
   'Demystifying OpenTelemetry: Why You Shouldn’t Fear Observability in
   Traditional Environments'
 author: '[Lukasz Ciukaj](https://github.com/luke6Lh43) (Splunk)'
-linkTitle: Demystifying OpenTelemetry
-date: 2026-01-03
+linkTitle: OTel in Traditional Environments
+date: 2026-01-12
 issue: 8548
 sig: End-User
 cSpell:ignore: ciukaj lukasz
@@ -23,9 +23,8 @@ to modernizing IT practices, especially observability.
   visibility.
 - Limited instrumentation in legacy apps and systems hinders collection of
   modern metrics and traces.
-- Concerns about performance impact from adding new observability tooling.
-- Integration difficulties when bridging legacy protocols or hardware with
-  modern platforms.
+- Teams are often concerned about the potential performance impact from adding new observability tooling.
+- Bridging legacy protocols or hardware with modern platforms can be difficult to integrate.
 
 To make this practical, let’s follow a fictional manufacturing company with a
 busy production line. Here, a fleet of robotic arms equipped with sensors
@@ -35,7 +34,7 @@ Windows machines support production, analytics, and inventory. Sound familiar?
 This is the reality for many organizations trying to bridge the old and new
 worlds.
 
-![Alt text for the image](fictional-organization-architecture.png)
+![Fictional organization observability architecture diagram](fictional-organization-architecture.png)
 
 Unlike cloud native environments where instrumentation is built-in, legacy and
 industrial systems rely on inconsistent logs, limited metrics, and fragmented
@@ -145,8 +144,6 @@ service:
 - **Metric Generation:** The count connector converts these parsed logs into a
   metric called `machine_events_total`.
 
-<br>
-
 #### Result
 
 With this configuration, your old text logs become a structured, queryable data
@@ -156,7 +153,7 @@ decisions without changing a single line of code in the legacy app. Myth busted!
 
 Sample dashboard in Prometheus:
 
-![Alt text for the image](prometheus-faults-dashboard.png)
+![Prometheus dashboard showing system faults](prometheus-faults-dashboard.png)
 
 ## Myth 2: Our IoT devices publish telemetry to MQTT broker, so integrating with OpenTelemetry isn’t possible.
 
@@ -223,19 +220,19 @@ def on_message(client, userdata, msg):
     payload = json.loads(msg.payload.decode())
     job_start = datetime.datetime.fromisoformat(payload["job_start"].replace("Z", "+00:00"))
     job_end = datetime.datetime.fromisoformat(payload["job_end"].replace("Z", "+00:00"))
-    duration = (job_end - job_start).total_seconds()
 
-    with tracer.start_as_current_span(
+    span = tracer.start_span(
         "robotic_job",
         start_time=job_start.timestamp(),
-        end_on_exit=True,
-    ) as span:
+    )
+    try:
         span.set_attribute("device_id", payload["device_id"])
         span.set_attribute("job_id", payload["job_id"])
         span.set_attribute("temperature", payload["temp"])
         span.set_attribute("humidity", payload["humidity"])
-        span.set_attribute("job_duration_s", duration)
         # ...additional processing...
+    finally:
+        span.end(end_time=job_end.timestamp())
 
 # Set up MQTT client
 client = mqtt.Client()
@@ -247,7 +244,7 @@ client.loop_forever()
 
 Sample span in Jaeger:
 
-![Alt text for the image](sample-span-jaeger.png)
+![Jaeger trace showing a sample span](sample-span-jaeger.png)
 
 #### What’s the trick here?
 
@@ -271,16 +268,9 @@ dashboards and alerts:
   metrics from span attributes, making it easy to turn your job telemetry into
   actionable, queryable metrics with minimal extra plumbing.
 
-<br>
-
 ### Bottom line
 
-If your MQTT broker supports OpenTelemetry, use native OTLP
-export for seamless integration. If not, a simple bridge app can transform your
-sensor and event streams into full observability data. Modern observability
-backends make it even easier by allowing metrics to be derived from span
-attributes, so you can go from IoT signal to meaningful insight with very little
-friction. Myth busted!
+If your MQTT broker supports OpenTelemetry, use native OTLP export for seamless integration. If not, a simple bridge app can transform your sensor and event streams into full observability data. Modern observability backends make it even easier by allowing metrics to be derived from span attributes, so you can go from IoT signal to meaningful insight with very little friction. And if you need even deeper integration or custom processing, you can build a custom MQTT receiver directly into your Collector - see the [OpenTelemetry guide to custom receivers](https://opentelemetry.io/docs/collector/extend/custom-component/receiver/). Myth busted!
 
 ## Myth 3: Windows and SQL Server environments are incompatible with observability.
 
@@ -331,7 +321,7 @@ service:
 The Collector regularly scrapes key SQL Server metrics (connections, buffer
 pool, locks, batch rates, and more), exposing them to observability backends.
 
-![Alt text for the image](prometheus-sqlserver.png)
+![Prometheus dashboard showing SQL Server metrics](prometheus-sqlserver.png)
 
 ### Observing Windows machines with the Windows performance counters receiver
 
@@ -377,8 +367,6 @@ service:
       exporters: [otlp]
 ```
 
-<br>
-
 **What this achieves:**
 
 You can ingest CPU, memory, disk, and any custom Windows counters, turning even
@@ -386,7 +374,7 @@ decades-old systems into first-class observability citizens. The receiver is
 robust: if a counter isn’t present, it logs a warning but continues scraping all
 available metrics.
 
-![Alt text for the image](prometheus-windows.png)
+![Prometheus dashboard showing Windows metrics](prometheus-windows.png)
 
 ## Conclusion
 
