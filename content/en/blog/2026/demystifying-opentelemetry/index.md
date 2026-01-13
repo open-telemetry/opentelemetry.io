@@ -52,7 +52,7 @@ that simply spit out line after line of plain text logs to a file. No JSON, no
 structure, no API - just endless lines of text. It’s easy to assume there’s no
 way to extract meaningful insight from that mess.
 
-**Why this myth persists?**
+### Why this myth persists
 
 In many traditional environments, whether it’s a production line, a legacy
 application, or an industrial control system, the only digital “signal” you
