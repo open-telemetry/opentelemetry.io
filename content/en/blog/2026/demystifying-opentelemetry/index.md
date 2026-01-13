@@ -199,11 +199,19 @@ relevant sensor readings.
 
 ### Creating traces and spans in the MQTT bridge app
 
-To get real end-to-end visibility (not just metrics), create an OpenTelemetry
-span for the duration of each job. This allows you to correlate a specific
-device job with downstream processing, latency, or errors. The following snippet
-shows a sample MQTT bridge Python app that listens for sensor messages, extracts
-job timing, and creates a span reflecting the job’s duration:
+To gain real end-to-end visibility (not just metrics), you can create an
+OpenTelemetry span representing the duration and context of each device job.
+This allows you to correlate a specific device job with downstream processing,
+latency, or errors, making it easier to analyze device behavior and performance
+over time. In advanced scenarios, such as when processes do not communicate over
+HTTP, OpenTelemetry lets you propagate trace context using environment
+variables, so downstream processes can link their telemetry to the original job.
+Learn more in the
+[OpenTelemetry documentation on environment variable context propagation](/docs/specs/otel/context/env-carriers/).
+
+The following snippet shows a sample MQTT bridge Python app that listens for
+sensor messages, extracts job timing, and creates a span reflecting the job’s
+duration:
 
 ```python
 import json
