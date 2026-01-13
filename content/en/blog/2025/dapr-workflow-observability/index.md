@@ -55,7 +55,7 @@ external signals, or pausing until a timer fires. These differences matter
 because they change how requests flow through the system, and they shape what
 the trace should look like.
 
-Every workflow also carries its own identity. The workflow instance id ties all
+Every workflow also carries its own identity. The workflow instance ID ties all
 of its steps together conceptually, even when they are separated in time. A
 workflow might run for seconds or hours. It may be rehydrated after a failure or
 resumed after a server restart. Durable execution means the workflow engine
