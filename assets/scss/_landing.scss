@@ -166,7 +166,6 @@
     }
   }
 
-
   // Button list styling
   .l-primary-buttons {
     margin-top: 1.5rem;
@@ -852,12 +851,99 @@
     }
   }
 
+  // Main features section dark mode
+  .main-feature-wrapper {
+    &:nth-child(odd) {
+      background: var(--bs-body-bg);
+    }
+
+    &:nth-child(even) {
+      background: rgba(255, 255, 255, 0.03);
+    }
+  }
+
+  .main-feature__title {
+    color: $white;
+  }
+
+  .main-feature__description {
+    color: rgba($white, 0.85);
+    opacity: 1;
+  }
+
+  // Intro section dark mode
+  .intro-section {
+    background: var(--bs-body-bg) !important;
+  }
+
+  .intro-content .intro-text p {
+    color: rgba($white, 0.9);
+  }
+
+  // Signals section dark mode
+  .signals-showcase-section {
+    background: var(--bs-body-bg) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+  }
+
+  .signal-card {
+    color: $white;
+
+    &:hover {
+      color: lighten($primary, 20%);
+    }
+  }
+
+  .signal-card__description {
+    color: rgba($white, 0.7);
+  }
+
+  // Features grid dark mode
+  .otel-features-section {
+    background: var(--bs-body-bg) !important;
+  }
+
   .otel-feature__icon {
     color: lighten($primary, 15%);
   }
 
+  .otel-feature__title {
+    color: $white;
+  }
+
+  .otel-feature__description {
+    color: rgba($white, 0.8);
+    opacity: 1;
+  }
+
+  // Ecosystem stats dark mode
+  .ecosystem-stats-section {
+    background: rgba(255, 255, 255, 0.03) !important;
+
+    h2 {
+      color: rgba($white, 0.9);
+    }
+  }
+
   .ecosystem-stat__number {
-    color: lighten($primary, 15%);
+    color: $white;
+
+    a {
+      color: $white;
+
+      &:hover {
+        color: lighten($primary, 20%);
+      }
+    }
+  }
+
+  .ecosystem-stat__label {
+    color: rgba($white, 0.7);
+  }
+
+  // Adopters dark mode
+  .adopters-showcase-section {
+    background: var(--bs-body-bg) !important;
   }
 
   .adopters-showcase__item img {

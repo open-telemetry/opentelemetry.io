@@ -38,7 +38,6 @@ discoverability
 dotnet
 Dyla
 dynatrace
-eBay
 ebpf
 emailservice
 EMEA
@@ -127,7 +126,6 @@ servlet
 Severin
 Sharma
 shippingservice
-skyscanner
 Socha
 Stalnaker
 stdoutmetric
@@ -149,7 +147,6 @@ unsampled
 unshallow
 upstreamed
 Villela
-vtex
 wordpress
 WSGI
 zend
