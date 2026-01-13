@@ -27,10 +27,6 @@ show_banner: true
 
 {{< /blocks/hero-split >}}
 
-{{< blocks/hero-search color="white" placeholder="Search docs or ask AI..." >}}
-Try: "How do I instrument a Python app?" or "What is the Collector?"
-{{< /blocks/hero-search >}}
-
 {{< blocks/intro-section color="white" >}}
 
 <div class="intro-text">
@@ -124,7 +120,7 @@ stability and community-driven evolution. {{< /blocks/otel-feature >}}
 
 {{< /blocks/otel-features >}}
 
-{{< blocks/ecosystem-stats color="dark" title="The OpenTelemetry Ecosystem" >}}
+{{< blocks/ecosystem-stats color="light" title="The OpenTelemetry Ecosystem" >}}
 {{< blocks/stat type="languages" label="Languages" url="/docs/languages/" >}}
 {{< blocks/stat type="collector" label="Collector Components" url="/docs/collector/" >}}
 {{< blocks/stat type="registry" label="Integrations" url="/ecosystem/registry/" >}}
@@ -132,9 +128,9 @@ stability and community-driven evolution. {{< /blocks/otel-feature >}}
 {{< /blocks/ecosystem-stats >}}
 
 {{< blocks/adopters-showcase
-    color="light"
+    color="white"
     title="Trusted by Industry Leaders"
-    limit="12"
+    limit="10"
     ctaText="View all adopters"
     ctaUrl="/ecosystem/adopters/" >}}
 
