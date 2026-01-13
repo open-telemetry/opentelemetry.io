@@ -331,23 +331,6 @@ ls build/libs/opentelemetry-javaagent.jar
 java -javaagent:build/libs/opentelemetry-javaagent.jar -jar myapp.jar
 ```
 
-#### Understanding the Output
-
-The `extendedAgent` task creates a JAR file structured like this:
-
-```bash
-opentelemetry-javaagent.jar
-├── inst/                          (agent's internal classes)
-├── extensions/                    (your extensions go here)
-│   └── my-extension-1.0-all.jar   (your extension)
-├── META-INF/
-│   └── MANIFEST.MF                (agent startup configuration)
-└── ... (other agent files)
-```
-
-When the agent starts, it automatically finds and loads all JAR files from the
-`extensions/` directory.
-
 #### Embedding Multiple Extensions
 
 To embed multiple extensions, modify the `extendedAgent` task to include
@@ -815,15 +798,13 @@ public class DemoResourceProvider implements ResourceProvider {
 ```
 <!-- prettier-ignore-end -->
 
-## Advanced Topics
-
-### Writing Custom Instrumentation
+## Writing Custom Instrumentation
 
 Custom instrumentation allows you to inject bytecode into specific methods to
 add observability to libraries not currently supported by the agent, or to
 augment existing instrumentation.
 
-#### When to Use Custom Instrumentation
+### When to Use Custom Instrumentation
 
 Use custom instrumentation when you need to:
 
@@ -834,7 +815,7 @@ Use custom instrumentation when you need to:
 For simpler use cases (modifying span attributes, custom samplers, etc.), use
 SDK customizations (SpanProcessor, Sampler) as shown earlier in this guide.
 
-#### Components of Custom Instrumentation
+### Components of Custom Instrumentation
 
 Custom instrumentation is usually comprised of the following components:
 
@@ -843,18 +824,62 @@ Custom instrumentation is usually comprised of the following components:
 3. **Advice** - Contains the code to inject (runs before/after target methods)
 4. **Instrumenter** - Manages span creation, context propagation, and attributes
 
-#### Required Dependencies
+### Required Dependencies
 
-Add these dependencies to your extension's `build.gradle.kts` file:
+Custom instrumentation requires **all** the dependencies for writing extensions,
+plus additional dependencies for bytecode manipulation.
 
-```groovy
+If you haven't already reviewed the
+[Project Setup and Dependencies](#project-setup-and-dependencies) section,
+start there to understand dependency scopes (`compileOnly` vs `implementation`).
+
+For custom instrumentation specifically, ensure your `build.gradle.kts` includes:
+
+```kotlin
+plugins {
+  id("java")
+  id("com.gradleup.shadow") version "9.2.2"
+
+  // Muzzle plugins - required for all custom instrumentation
+  id("io.opentelemetry.instrumentation.muzzle-generation")
+  id("io.opentelemetry.instrumentation.muzzle-check")
+}
+
 dependencies {
+  // Use BOM to manage versions (recommended)
+  compileOnly(platform("io.opentelemetry:opentelemetry-bom:{{% param vers.otel %}}"))
+
+  // Core extension dependencies (provided by agent at runtime)
+  compileOnly("io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi")
+  compileOnly("io.opentelemetry:opentelemetry-sdk")
+  compileOnly("io.opentelemetry:opentelemetry-api")
+
+  // Additional dependencies for custom instrumentation
   compileOnly("io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api:{{% param vers.instrumentation %}}-alpha")
+  compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-incubator:{{% param vers.instrumentation %}}-alpha")
   compileOnly("net.bytebuddy:byte-buddy:1.15.10")
+
+  // Auto-service for @AutoService annotation
+  compileOnly("com.google.auto.service:auto-service:1.1.1")
+  annotationProcessor("com.google.auto.service:auto-service:1.1.1")
+
+  // Target library you're instrumenting (example)
+  compileOnly("javax.servlet:javax.servlet-api:3.0.1")
+}
+
+// Muzzle configuration - specify compatible library versions
+// See "Understanding Muzzle" section below for detailed explanation
+muzzle {
+  pass {
+    group.set("javax.servlet")
+    module.set("javax.servlet-api")
+    versions.set("[3.0,)")
+    assertInverse.set(true)
+  }
 }
 ```
 
-#### The Instrumenter API
+### The Instrumenter API
 
 The OpenTelemetry Java Instrumentation project provides an `Instrumenter` API
 that simplifies creating custom instrumentation. The `Instrumenter` encapsulates
@@ -865,9 +890,9 @@ the logic for:
 - Propagating context
 - Recording metrics
 
-#### Custom Instrumentation Basic Structure
+### Custom Instrumentation Basic Structure
 
-##### Create an InstrumentationModule
+#### Create an InstrumentationModule
 
 An `InstrumentationModule` groups related `TypeInstrumentation` implementations
 together. It must be registered using `@AutoService`:
@@ -887,7 +912,7 @@ public class MyCustomInstrumentationModule extends InstrumentationModule {
 }
 ```
 
-##### Create a TypeInstrumentation
+#### Create a TypeInstrumentation
 
 A `TypeInstrumentation` defines which classes to instrument and what
 transformations to apply:
@@ -911,7 +936,7 @@ public class MyTypeInstrumentation implements TypeInstrumentation {
 }
 ```
 
-##### Create an Instrumenter
+#### Create an Instrumenter
 
 Create a singleton `Instrumenter` instance. The `Instrumenter` is parameterized
 with `REQUEST` and `RESPONSE` types:
@@ -938,12 +963,12 @@ public final class MySingletons {
 }
 ```
 
-#### Creating Client Spans
+### Creating Client Spans
 
 Client spans represent outbound requests to external services. They inject
 context into outgoing requests for distributed tracing.
 
-##### Create a TextMapSetter
+#### Create a TextMapSetter
 
 A `TextMapSetter` defines how to inject context into your request object:
 
@@ -960,7 +985,7 @@ enum MyRequestSetter implements TextMapSetter<MyRequest> {
 }
 ```
 
-##### Build a Client Instrumenter
+#### Build a Client Instrumenter
 
 Use `buildClientInstrumenter()` to create an instrumenter that creates CLIENT
 spans and injects context:
@@ -974,7 +999,7 @@ INSTRUMENTER = Instrumenter.<MyRequest, MyResponse>builder(
   .buildClientInstrumenter(MyRequestSetter.INSTANCE);
 ```
 
-##### Use in Client Advice
+#### Use in Client Advice
 
 In your advice class, the instrumenter automatically injects context when you
 call `start()`:
@@ -1014,12 +1039,12 @@ public static void onExit(
 }
 ```
 
-#### Creating Server Spans
+### Creating Server Spans
 
 Server spans represent inbound requests. They extract context from incoming
 requests to continue distributed traces.
 
-##### Create a TextMapGetter
+#### Create a TextMapGetter
 
 A `TextMapGetter` defines how to extract context from your request object:
 
@@ -1046,7 +1071,7 @@ enum MyRequestGetter implements TextMapGetter<MyRequest> {
 }
 ```
 
-##### Build a Server Instrumenter
+#### Build a Server Instrumenter
 
 Use `buildServerInstrumenter()` to create an instrumenter that creates SERVER
 spans and extracts context:
@@ -1060,7 +1085,7 @@ INSTRUMENTER = Instrumenter.<MyRequest, MyResponse>builder(
   .buildServerInstrumenter(MyRequestGetter.INSTANCE);
 ```
 
-##### Use in Server Advice
+#### Use in Server Advice
 
 The instrumenter automatically extracts context when you call `start()`:
 
@@ -1083,9 +1108,9 @@ public static void onEnter(
 }
 ```
 
-#### Customizing Instrumentation
+### Customizing Instrumentation
 
-##### Adding Attributes
+#### Adding Attributes
 
 Create an `AttributesExtractor` to add custom attributes to spans:
 
@@ -1114,7 +1139,7 @@ class MyAttributesExtractor implements AttributesExtractor<MyRequest, MyResponse
 }
 ```
 
-##### Customizing Span Status
+#### Customizing Span Status
 
 Create a `SpanStatusExtractor` to customize span status:
 
@@ -1143,7 +1168,7 @@ Then add it to your instrumenter builder:
 .setSpanStatusExtractor(new MySpanStatusExtractor())
 ```
 
-#### Accessing Spans and Context in Advice Code
+### Accessing Spans and Context in Advice Code
 
 The recommended way to access the current span or context is via
 `Context.current()` and `Span.current()`. The only exception is instrumentation
@@ -1180,16 +1205,7 @@ public static class MyAdvice {
 }
 ```
 
-#### Important Considerations
-
-- Always use `suppress = Throwable.class` to prevent your advice from breaking
-  the instrumented application
-- Advice methods must be static since they're inlined into the target class
-- Keep advice methods small and move complex logic to helper classes
-- Use `order()` to control execution order relative to the existing
-  instrumentation
-
-#### Understanding Muzzle
+### Understanding Muzzle
 
 Muzzle is a safety feature that prevents applying instrumentation when there's a
 mismatch between the instrumentation code and the instrumented application code.
@@ -1209,62 +1225,32 @@ Muzzle prevents this by checking compatibility before applying instrumentation.
 
 Muzzle operates in two phases:
 
-1. Compile-time: Collects all references to third-party library symbols
+1. At compile-time, it collects all references to third-party library symbols
    (classes, methods, fields) used by your instrumentation advice and helper
    classes.
 
-2. Runtime: Before applying instrumentation, compares the collected
-   references against the actual symbols available on the application's
-   classpath. If any mismatch is detected, the instrumentation is skipped
+2. At runtime, it compares the collected references against the actual symbols available on the application's
+   classpath before applying instrumentation. If any mismatch is detected, the instrumentation is skipped
    entirely.
-
-**When Muzzle is Required**
-
-Muzzle is automatically enabled for all `InstrumentationModule` implementations.
-It's especially important when:
-
-- Your instrumentation uses `VirtualField` (muzzle is required for this)
-- Your advice references classes or methods from third-party libraries
-- You want to ensure your instrumentation only applies to compatible library
-  versions
 
 **Configuring Muzzle in Your Extension**
 
-To configure muzzle checks for your instrumentation, add the `muzzle-check`
-Gradle plugin and configure it in your `build.gradle.kts`:
-
-```kotlin
-plugins {
-  id("io.opentelemetry.instrumentation.muzzle-generation")
-  id("io.opentelemetry.instrumentation.muzzle-check")
-}
-
-muzzle {
-  pass {
-    group.set("javax.servlet")
-    module.set("javax.servlet-api")
-    versions.set("[3.0,)")
-    assertInverse.set(true)
-  }
-}
-```
+Muzzle is required for all custom instrumentation modules. The muzzle plugins
+(included in the Required Dependencies section above) automatically collect
+references at compile-time. To specify which library versions your
+instrumentation supports, configure the `muzzle` block in your
+`build.gradle.kts`:
 
 The `pass` directive specifies library versions where muzzle should pass (i.e.,
 the instrumentation is compatible). The `assertInverse.set(true)` option ensures
 that all other versions will fail the muzzle check, preventing accidental
 instrumentation of incompatible versions.
 
-**Minimal Example**
+**Example Configuration**
 
-Here's a minimal example showing muzzle configuration for a servlet instrumentation:
+Here's an example showing muzzle version configuration for servlet instrumentation:
 
 ```kotlin
-// build.gradle.kts
-plugins {
-  id("io.opentelemetry.instrumentation.muzzle-generation")
-  id("io.opentelemetry.instrumentation.muzzle-check")
-}
-
 muzzle {
   // These versions are compatible with our instrumentation
   pass {
@@ -1315,21 +1301,12 @@ public static class MyAdvice {
 - Always configure muzzle checks for your instrumentation modules
 - Use `assertInverse.set(true)` to ensure incompatible versions are explicitly
   rejected
-- Test your instrumentation against multiple library versions to verify muzzle
-  configuration
 - Avoid using `@NoMuzzle` unless you have a specific, well-justified reason
 
-#### Specifying Helper Classes
+### Specifying Helper Classes
 
 Helper classes are utility classes used by your instrumentation advice that need
-to be available in the application's classloader. They're typically used for:
-
-- Storing state using `VirtualField`
-- Providing utility methods called from advice code
-- Implementing singletons or shared resources
-- Bridging between the agent classloader and application classloader
-
-**Automatic Detection**
+to be available in the application's classloader.
 
 When using the `muzzle-generation` Gradle plugin, helper classes are
 automatically detected by scanning the class graph starting from your advice
@@ -1372,15 +1349,6 @@ public boolean isHelperClass(String className) {
 }
 ```
 
-**Example**: Marking Kotlin extension classes as helpers:
-
-```java
-@Override
-public boolean isHelperClass(String className) {
-  return className.startsWith("io.opentelemetry.extension.kotlin.");
-}
-```
-
 **Using `getAdditionalHelperClassNames()` Method**
 
 Override `getAdditionalHelperClassNames()` to explicitly list helper classes
@@ -1399,7 +1367,7 @@ public List<String> getAdditionalHelperClassNames() {
 }
 ```
 
-**Important**: The order of class names matters! If helper classes extend one
+**Important**: The order of class names matters. If helper classes extend one
 another, list the base class first. For example, if `B extends A`, return `A`
 first, then `B`:
 
@@ -1411,59 +1379,6 @@ public List<String> getAdditionalHelperClassNames() {
       "com.example.DerivedHelper"); // Derived class second
 }
 ```
-
-**Minimal Example**
-
-Here's a complete example showing when and how to specify helper classes:
-
-```java
-@AutoService(InstrumentationModule.class)
-public class MyInstrumentationModule extends InstrumentationModule {
-
-  public MyInstrumentationModule() {
-    super("my-library");
-  }
-
-  @Override
-  public boolean isHelperClass(String className) {
-    // Mark all classes in the helpers package as helper classes
-    // This allows muzzle to automatically detect and inject them
-    return className.startsWith("com.example.instrumentation.helpers.");
-  }
-
-  @Override
-  public List<String> getAdditionalHelperClassNames() {
-    // Explicitly list helper classes that weren't automatically detected
-    // This is needed when using ASM or when classes aren't in standard packages
-    return Arrays.asList(
-        "com.example.instrumentation.SpecialHelper",
-        "com.example.instrumentation.LambdaHelper");
-  }
-
-  @Override
-  public List<TypeInstrumentation> typeInstrumentations() {
-    return singletonList(new MyTypeInstrumentation());
-  }
-}
-```
-
-**Helper Class Best Practices**
-
-- **Prefer automatic detection**: Use the `muzzle-generation` plugin and place
-  helper classes in standard instrumentation packages when possible.
-
-- **Use `isHelperClass()` for packages**: When you have multiple helper classes
-  in a package, use `isHelperClass()` to mark the entire package rather than
-  listing each class individually.
-
-- **Use `getAdditionalHelperClassNames()` for exceptions**: Only use this
-  method for classes that truly can't be automatically detected.
-
-- **Maintain dependency order**: When listing helper classes manually, ensure
-  base classes come before derived classes.
-
-- **Test helper injection**: Verify that your helper classes are properly
-  injected by checking logs or testing your instrumentation.
 
 **Troubleshooting Helper Classes**
 
@@ -1483,7 +1398,7 @@ If your instrumentation isn't working and you suspect helper class issues:
    into the application classloader, so they can't directly reference agent
    classes. Use the bootstrap API for cross-classloader communication.
 
-#### Testing Your Instrumentation
+### Testing Your Instrumentation
 
 For a complete working example with tests, see the
 [DemoServlet3InstrumentationModule](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/src/main/java/com/example/javaagent/instrumentation/DemoServlet3InstrumentationModule.java)
@@ -1671,7 +1586,7 @@ find /tmp/bytecode-dump -name "DatabaseClient*.class"
 
 3. **Verify the annotation processor is configured:**
 
-   ```groovy
+   ```kotlin
    dependencies {
      compileOnly("com.google.auto.service:auto-service:1.1.1")
      annotationProcessor("com.google.auto.service:auto-service:1.1.1")  // Required
