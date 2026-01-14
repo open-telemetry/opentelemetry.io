@@ -341,7 +341,7 @@ more.
 ## Log filtering
 
 For more advanced filtering and sampling, the .NET team has a plan to cover it
-in .NET 9 timeframe, please use this
+in the .NET 9 timeframe. Use this
 [runtime issue](https://github.com/dotnet/runtime/issues/82465) to track the
 progress or provide feedback and suggestions.
 

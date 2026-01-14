@@ -5,7 +5,8 @@ title:
 linkTitle: KubeCon China '25
 date: 2025-05-22
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
-cSpell:ignore: Delewski Hrabusa Przemek Purnesh Quesma Zihao Ziming
+# prettier-ignore
+cSpell:ignore: antipatterns Delewski Hrabusa Przemek Purnesh Quesma Zihao Ziming
 ---
 
 The OpenTelemetry project invites you to join members of the OpenTelemetry
