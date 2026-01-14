@@ -10,17 +10,17 @@ configure it to help you
 [monitor](#use-internal-telemetry-to-monitor-the-collector) and
 [troubleshoot](/docs/collector/troubleshooting/) the Collector.
 
-{{% alert title="Important" color="warning" %}} The Collector uses the
-OpenTelemetry SDK
-[declarative configuration schema](https://github.com/open-telemetry/opentelemetry-configuration)
-for configuring how to export its internal telemetry. This schema is still under
-[development](/docs/specs/otel/document-status/) and may undergo **breaking
-changes** in future releases. We intend to keep supporting older schemas until a
-1.0 schema release is available, and offer a transition period for users to
-update their configurations before dropping pre-1.0 schemas. For details and to
-track progress see
-[issue #10808](https://github.com/open-telemetry/opentelemetry-collector/issues/10808).
-{{% /alert %}}
+> [!WARNING]
+>
+> The Collector uses the OpenTelemetry SDK
+> [declarative configuration schema](https://github.com/open-telemetry/opentelemetry-configuration)
+> for configuring how to export its internal telemetry. This schema is still
+> under [development](/docs/specs/otel/document-status/) and may undergo
+> **breaking changes** in future releases. We intend to keep supporting older
+> schemas until a 1.0 schema release is available, and offer a transition period
+> for users to update their configurations before dropping pre-1.0 schemas. For
+> details and to track progress see
+> [issue #10808](https://github.com/open-telemetry/opentelemetry-collector/issues/10808).
 
 ## Activate internal telemetry in the Collector
 
@@ -238,12 +238,10 @@ service:
 
 The Collector does not expose traces by default, but it can be configured to.
 
-{{% alert title="Caution" color="warning" %}}
-
-Internal tracing is an experimental feature, and no guarantees are made as to
-the stability of the emitted span names and attributes.
-
-{{% /alert %}}
+> [!CAUTION]
+>
+> Internal tracing is an experimental feature, and no guarantees are made as to
+> the stability of the emitted span names and attributes.
 
 The following configuration can be used to emit internal traces from the
 Collector to an OTLP backend:

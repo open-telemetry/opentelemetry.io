@@ -183,9 +183,10 @@ public class Program
 }
 ```
 
-{{% alert title="Caution" %}} Use `AppDomain.UnhandledException` with care.
-Throwing an exception in this handler puts the process into an unrecoverable
-state. {{% /alert %}}
+> [!CAUTION]
+>
+> Use `AppDomain.UnhandledException` with care. Throwing an exception in this
+> handler puts the process into an unrecoverable state.
 
 ## Best practices
 

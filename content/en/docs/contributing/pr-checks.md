@@ -120,21 +120,19 @@ success status for, you can add the following query parameter to your URL to
 have the link checker ignore it: `?no-link-check`. For example,
 <https:/some-example.org?no-link-check> will be ignored by the link checker.
 
-{{% alert title="Maintainers tip" %}}
-
-Maintainers can run the following script immediately after having run the link
-checker to have Puppeteer attempt to validate links with non-ok statuses:
-
-```sh
-./scripts/double-check-refcache-4XX.mjs
-```
-
-Use the `-f` flag to also validate URL fragments (anchors) in external links,
-which `htmltest` doesn't do. We don't currently run this often, so you will
-probably want to limit the number of updated entries using the `-m N` flag. For
-usage info, run with `-h`.
-
-{{% /alert %}}
+> [!TIP] Maintainers tip
+>
+> Maintainers can run the following script immediately after having run the link
+> checker to have Puppeteer attempt to validate links with non-ok statuses:
+>
+> ```sh
+> ./scripts/double-check-refcache-4XX.mjs
+> ```
+>
+> Use the `-f` flag to also validate URL fragments (anchors) in external links,
+> which `htmltest` doesn't do. We don't currently run this often, so you will
+> probably want to limit the number of updated entries using the `-m N` flag.
+> For usage info, run with `-h`.
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 

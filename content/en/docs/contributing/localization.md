@@ -252,14 +252,12 @@ As you update your localized pages to match changes made to the corresponding
 English language page, ensure that you also update the `default_lang_commit`
 commit hash.
 
-{{% alert title="Tip" %}}
-
-If your localized page now corresponds to the English language version in `main`
-at `HEAD`, then erase the commit hash value in the front matter, and run the
-**add** command given in the previous section to automatically refresh the
-`default_lang_commit` field value.
-
-{{% /alert %}}
+> [!TIP]
+>
+> If your localized page now corresponds to the English language version in
+> `main` at `HEAD`, then erase the commit hash value in the front matter, and
+> run the **add** command given in the previous section to automatically refresh
+> the `default_lang_commit` field value.
 
 If you have batch updated all of your localization pages that had drifted, you
 can update the commit hash of these files using the `-c` flag followed by a
@@ -270,13 +268,11 @@ npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
 npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 ```
 
-{{% alert title="Important" %}}
-
-When you use `HEAD` as a hash specifier, the script will use the hash of `main`
-at HEAD in your **local environment**. Make sure that you fetch and pull `main`,
-if you want HEAD to correspond to `main` in GitHub.
-
-{{% /alert %}}
+> [!IMPORTANT]
+>
+> When you use `HEAD` as a hash specifier, the script will use the hash of
+> `main` at HEAD in your **local environment**. Make sure that you fetch and
+> pull `main`, if you want HEAD to correspond to `main` in GitHub.
 
 ### Drift status
 

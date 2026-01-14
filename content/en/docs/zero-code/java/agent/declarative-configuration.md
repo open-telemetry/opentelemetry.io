@@ -18,8 +18,9 @@ Just like environment variables, the configuration syntax is language-agnostic
 and works for all OpenTelemetry Java SDKs that support declarative
 configuration, including the OpenTelemetry Java agent.
 
-{{% alert title="Warning" %}} Declarative configuration is experimental.
-{{% /alert %}}
+> [!WARNING]
+>
+> Declarative configuration is experimental.
 
 ## Supported versions
 

@@ -204,4 +204,105 @@ last line with closing tag. {{% /alert %}}
   console.log('✓ Inline content with closing tag on same line as last content');
 }
 
+// Test 11: Alert with title="Warning"
+{
+  const input = `{{% alert color="warning" title="Warning" %}}
+
+This component is intended for dev inner-loop, there is no plan to make it
+production ready. Production environments should use something else.
+
+{{% /alert %}}
+`;
+  const expected = `> [!WARNING]
+>
+> This component is intended for dev inner-loop, there is no plan to make it
+> production ready. Production environments should use something else.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(result, expected, 'Alert with title="Warning" failed');
+  console.log('✓ Alert with title="Warning"');
+}
+
+// Test 12: Alert with color="warning" only
+{
+  const input = `{{% alert color="warning" %}} Warning content here. {{% /alert %}}
+`;
+  const expected = `> [!WARNING]
+>
+> Warning content here.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(result, expected, 'Alert with color="warning" failed');
+  console.log('✓ Alert with color="warning"');
+}
+
+// Test 13: Alert with no arguments defaults to NOTE
+{
+  const input = `{{% alert %}} This alert has no arguments. {{% /alert %}}
+
+And some more text.`;
+  const expected = `> [!NOTE]
+>
+> This alert has no arguments.
+
+And some more text.`;
+  const result = runConvert(input);
+  assert.strictEqual(
+    result,
+    expected,
+    'Alert without arguments should default to NOTE',
+  );
+  console.log('✓ Alert with no arguments defaults to NOTE');
+}
+
+// Test 14: Alert with color="success" and title
+{
+  const input = `{{% alert color="success" title="Pro tip" %}}
+
+You can also run the \`fix\` commands locally.
+
+{{% /alert %}}
+`;
+  const expected = `> [!TIP] Pro tip
+>
+> You can also run the \`fix\` commands locally.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(
+    result,
+    expected,
+    'Alert with color="success" and title failed',
+  );
+  console.log('✓ Alert with color="success" and title');
+}
+
+// Test 15: Alert with title="Caution"
+{
+  const input = `{{% alert title="Caution" %}}
+
+This feature has limitations.
+
+{{% /alert %}}
+`;
+  const expected = `> [!CAUTION]
+>
+> This feature has limitations.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(result, expected, 'Alert with title="Caution" failed');
+  console.log('✓ Alert with title="Caution"');
+}
+
+// Test 16: Alert with unsupported color (passthrough)
+{
+  const input = `{{% alert color="blue" %}} This alert has an unsupported color attribute. {{% /alert %}}`;
+  const result = runConvert(input);
+  assert.strictEqual(
+    result,
+    input,
+    'Alert with unsupported color should be unchanged',
+  );
+  console.log('✓ Alert with unsupported color (passthrough)');
+}
+
 console.log('\nAll tests passed!');

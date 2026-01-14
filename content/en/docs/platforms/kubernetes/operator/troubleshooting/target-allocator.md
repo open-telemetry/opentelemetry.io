@@ -130,15 +130,13 @@ Where `otelcol-targetallocator` is the value of `metadata.name` in your
 `opentelemetry` is the namespace to which the `OpenTelemetryCollector` CR is
 deployed.
 
-{{% alert title="Tip" %}}
-
-You can also get the service name by running
-
-```shell
-kubectl get svc -l app.kubernetes.io/component=opentelemetry-targetallocator -n <namespace>
-```
-
-{{% /alert %}}
+> [!TIP]
+>
+> You can also get the service name by running
+>
+> ```shell
+> kubectl get svc -l app.kubernetes.io/component=opentelemetry-targetallocator -n <namespace>
+> ```
 
 Next, get a list of jobs registered with the Target Allocator:
 
@@ -375,13 +373,10 @@ example.
 If your `ServiceMonitor` resource is missing that label, then the Target
 Allocator will fail to discover scrape targets from that `ServiceMonitor`.
 
-{{% alert title="Tip" %}}
-
-The same applies if you're using a [PodMonitor]. In that case, you would use a
-[`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr)
-instead of a `serviceMonitorSelector`.
-
-{{% /alert %}}
+> [!TIP]
+>
+> The same applies if you're using a [PodMonitor]. In that case, you would use a
+> [`podMonitorSelector`] instead of a `serviceMonitorSelector`.
 
 ### Did you leave out the serviceMonitorSelector and/or podMonitorSelector configuration altogether?
 
@@ -496,12 +491,12 @@ spec:
       port: 8080
 ```
 
-{{% alert title="Tip" %}}
+> [!TIP]
+>
+> If you're using `PodMonitor`, the same applies, except that it picks up
+> Kubernetes pods that match on labels, namespaces, and named ports.
 
-If you're using `PodMonitor`, the same applies, except that it picks up
-Kubernetes pods that match on labels, namespaces, and named ports.
-
-{{% /alert %}}
-
+[`podMonitorSelector`]:
+  https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr
 [PodMonitor]:
   https://prometheus-operator.dev/docs/developer/getting-started/#using-podmonitors

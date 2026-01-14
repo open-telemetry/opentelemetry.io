@@ -65,13 +65,11 @@ otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR --config=https://server/config.yaml
 otelcol --config="yaml:exporters::debug::verbosity: normal"
 ```
 
-{{% alert title="Tip" %}}
-
-When referring to nested keys in YAML paths, make sure to use double colons (::)
-to avoid confusion with namespaces that contain dots. For example:
-`receivers::docker_stats::metrics::container.cpu.utilization::enabled: false`.
-
-{{% /alert %}}
+> [!TIP]
+>
+> When referring to nested keys in YAML paths, make sure to use double colons
+> (`::`) to avoid confusion with namespaces that contain dots. For example:
+> `receivers::docker_stats::metrics::container.cpu.utilization::enabled: false`.
 
 To validate a configuration file, use the `validate` command. For example:
 
@@ -104,19 +102,17 @@ are enabled through the [service](#service) section.
 <a id="endpoint-0.0.0.0-warning"></a> The following is an example of Collector
 configuration with a receiver, a processor, an exporter, and three extensions.
 
-{{% alert title="Important" color="warning" %}}
-
-While it is generally preferable to bind endpoints to `localhost` when all
-clients are local, our example configurations use the "unspecified" address
-`0.0.0.0` as a convenience. The Collector currently defaults to `0.0.0.0`, but
-the default will be changed to `localhost` in the near future. For details
-concerning either of these choices as endpoint configuration value, see
-[Safeguards against denial of service attacks].
+> [!WARNING]
+>
+> While it is generally preferable to bind endpoints to `localhost` when all
+> clients are local, our example configurations use the "unspecified" address
+> `0.0.0.0` as a convenience. The Collector currently defaults to `0.0.0.0`, but
+> the default will be changed to `localhost` in the near future. For details
+> concerning either of these choices as endpoint configuration value, see
+> [Safeguards against denial of service attacks][].
 
 [Safeguards against denial of service attacks]:
   https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md#safeguards-against-denial-of-service-attacks
-
-{{% /alert %}}
 
 ```yaml
 receivers:
@@ -914,17 +910,15 @@ key:
 If you need to represent more complex data structures, the use of YAML is highly
 recommended.
 
-{{% alert title="Important" color="warning" %}}
-
-The `--set` option has the following limitations:
-
-1. Does not support setting a key that contains a dot `.`.
-2. Does not support setting a key that contains an equal sign `=`.
-3. The configuration key separator inside the value part of the property is
-   "::". For example `--set "name={a::b: c}"` is equivalent with
-   `--set name::a::b=c`.
-
-{{% /alert %}}
+> [!CAUTION]
+>
+> The `--set` option has the following limitations:
+>
+> 1. Does not support setting a key that contains a dot `.`.
+> 2. Does not support setting a key that contains an equal sign `=`.
+> 3. The configuration key separator inside the value part of the property is
+>    "::". For example `--set "name={a::b: c}"` is equivalent with
+>    `--set name::a::b=c`.
 
 ## Embedding other configuration providers
 
@@ -977,12 +971,10 @@ extensions:
 
 ## How to examine the final configuration
 
-{{% alert title="Important" color="warning" %}}
-
-This command is an experimental functionality. Its behavior may change with no
-warning.
-
-{{% /alert %}}
+> [!CAUTION]
+>
+> This command is an experimental functionality. Its behavior may change with no
+> warning.
 
 Use `print-config` in the default mode (`--mode=redacted`) and
 `--feature-gates=otelcol.printInitialConfig`:
@@ -1006,12 +998,10 @@ otelcol print-config --mode=unredacted --config=file:examples/local/otel-config.
 
 ### How to print the final configuration in JSON format
 
-{{% alert title="Important" color="warning" %}}
-
-This command is an experimental functionality. Its behavior may change with no
-warning.
-
-{{% /alert %}}
+> [!CAUTION]
+>
+> This command is an experimental functionality. Its behavior may change with no
+> warning.
 
 Use `print-config` with `--format=json` and
 `--feature-gates=otelcol.printInitialConfig`. Note that JSON format is

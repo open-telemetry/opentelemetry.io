@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 #
 # Convert Docsy alert shortcodes to GFM/Obsidian blockquote alert syntax.
-# Currently handles: {{% alert title="Note" %}} or "Notes" (no color specifier)
+# Currently handles: {{% alert title="Note" %}} or "Notes" or "Warning"
 #
 # Skips alerts containing `{{<...>}}`.
 #
@@ -11,7 +11,7 @@ use strict;
 use warnings;
 use FileHandle;
 
-my $ALERT_OPEN = qr/\{\{%\s*alert\s+title="?Notes?"?\s*%\}\}/;
+my $ALERT_OPEN = qr/\{\{%\s*alert\s+.*?%\}\}/;
 my $ALERT_CLOSE = qr/\{\{%\s*\/alert\s*%\}\}/;
 
 sub has_html_shortcode {
@@ -30,6 +30,56 @@ sub find_closing_tag {
   return -1;
 }
 
+sub extract_alert_info {
+  my ($line) = @_;
+
+  my $type = '';
+  my $title = '';
+  my $attrs = '';
+
+  if ($line =~ /\{\{%\s*alert\b(.*?)%\}\}/) {
+    $attrs = $1 // '';
+    $attrs =~ s/^\s+//;
+    $attrs =~ s/\s+$//;
+  }
+
+  # Extract title if present
+  if ($line =~ /title=["']([^"']+)["']/ || $line =~ /title=([^\s%]+)/) {
+    $title = $1;
+  }
+
+  # Determine type based on title or color
+  if ($title =~ /^Caution$/i) {
+    $type = 'CAUTION';
+    $title = '';  # Don't preserve generic title
+  } elsif ($title =~ /^Notes?$/i) {
+    $type = 'NOTE';
+    $title = '';  # Don't preserve generic title
+  } elsif ($title =~ /^Tip$/i) {
+    $type = 'TIP';
+    $title = '';  # Don't preserve generic title
+  } elsif ($title =~ /^Warning$/i) {
+    $type = 'WARNING';
+    $title = '';  # Don't preserve generic title
+  } elsif ($title =~ /(^tip|tip$)/i) {
+    $type = 'TIP';
+  } elsif ($line =~ /color=["']?warning["']?/i) {
+    $type = 'WARNING';
+    $title = '' if $title =~ /^Important$/i;  # Don't preserve generic "Important" title
+  } elsif ($line =~ /color=["']?success["']?/i) {
+    $type = 'TIP';
+  } elsif ($title =~ /^Important$/i) {
+    $type = 'IMPORTANT';
+    $title = '';  # Don't preserve generic "Important" title
+  }
+
+  if (!$type && $attrs eq '') {
+    $type = 'NOTE';
+  }
+
+  return ($type, $title);
+}
+
 for my $filename (@ARGV) {
   my $fh = FileHandle->new("< $filename") or die "Can't open $filename: $!";
   my @lines = <$fh>;
@@ -41,8 +91,18 @@ for my $filename (@ARGV) {
     my $line = $lines[$i];
 
     # Check for alert opening tag
-    if ($line =~ /^\s*$ALERT_OPEN\s*(.*)$/) {
-      my $first_content = $1;
+    if ($line =~ /^\s*($ALERT_OPEN)\s*(.*)$/) {
+      my $alert_tag = $1;
+      my $first_content = $2;
+      my ($alert_type, $alert_title) = extract_alert_info($alert_tag);
+
+      # Skip if we can't determine the alert type
+      unless ($alert_type) {
+        push @output, $line;
+        next;
+      }
+
+      my $alert_header = $alert_title ? "> [!$alert_type] $alert_title" : "> [!$alert_type]";
 
       # Check for single-line alert (closing tag on same line)
       if ($first_content =~ /^(.*?)\s*$ALERT_CLOSE\s*$/) {
@@ -50,9 +110,9 @@ for my $filename (@ARGV) {
         if ($content =~ /\{\{</) {
           push @output, $line;
         } elsif ($content eq '') {
-          push @output, "> [!NOTE]\n";
+          push @output, "$alert_header\n";
         } else {
-          push @output, "> [!NOTE]\n>\n> $content\n";
+          push @output, "$alert_header\n>\n> $content\n";
         }
         next;
       }
@@ -88,7 +148,7 @@ for my $filename (@ARGV) {
       pop @content while @content && $content[-1] =~ /^\s*$/;
 
       # Output as blockquote
-      push @output, "> [!NOTE]\n";
+      push @output, "$alert_header\n";
       # Add blank line after header if first content isn't blank
       push @output, ">\n" if @content && $content[0] !~ /^\s*$/;
       for my $c (@content) {
