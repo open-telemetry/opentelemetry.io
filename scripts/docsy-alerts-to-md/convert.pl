@@ -11,7 +11,7 @@ use strict;
 use warnings;
 use FileHandle;
 
-my $ALERT_OPEN = qr/\{\{%\s*alert\s+title="Notes?"\s*%\}\}/;
+my $ALERT_OPEN = qr/\{\{%\s*alert\s+title="?Notes?"?\s*%\}\}/;
 my $ALERT_CLOSE = qr/\{\{%\s*\/alert\s*%\}\}/;
 
 sub has_html_shortcode {
