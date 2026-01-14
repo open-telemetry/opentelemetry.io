@@ -5,6 +5,7 @@ weight: 300
 cSpell:ignore: classloader Customizer Dotel instrumenters javax myextension
 ---
 
+<!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/java/extensions-minimal"?>
 
 ## Introduction
@@ -29,7 +30,6 @@ Create a Gradle project (build.gradle.kts):
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "build.gradle.kts"?>
-
 ```kotlin
 plugins {
     id("java")
@@ -70,7 +70,6 @@ Create a `SpanProcessor` implementation:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/MySpanProcessor.java" from="public"?>
-
 ```java
 public class MySpanProcessor implements SpanProcessor {
 
@@ -108,7 +107,6 @@ SPI:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/MyExtensionProvider.java" from="@AutoService"?>
-
 ```java
 @AutoService(AutoConfigurationCustomizerProvider.class)
 public class MyExtensionProvider implements AutoConfigurationCustomizerProvider {
@@ -516,7 +514,6 @@ The main entry point for customizing SDK configuration. This allows you to:
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoAutoConfigurationCustomizerProvider.java" from="@AutoService"?>
-
 ```java
 @AutoService(AutoConfigurationCustomizerProvider.class)
 public class DemoAutoConfigurationCustomizerProvider
@@ -562,7 +559,6 @@ instrumentations.
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoInstrumenterCustomizerProvider.java" from="/**"?>
-
 ```java
 /**
  * This example demonstrates how to use the InstrumenterCustomizerProvider SPI to customize
@@ -718,7 +714,6 @@ Register custom propagators that can be referenced by name in the
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoPropagatorProvider.java" from="@AutoService"?>
-
 ```java
 @AutoService(ConfigurablePropagatorProvider.class)
 public class DemoPropagatorProvider implements ConfigurablePropagatorProvider {
@@ -745,7 +740,6 @@ configuration.
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoConfigurableSamplerProvider.java" from="@AutoService"?>
-
 ```java
 @AutoService(ConfigurableSamplerProvider.class)
 public class DemoConfigurableSamplerProvider implements ConfigurableSamplerProvider {
@@ -773,7 +767,6 @@ resource providers.
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoResourceProvider.java" from="@AutoService"?>
-
 ```java
 @AutoService(ResourceProvider.class)
 public class DemoResourceProvider implements ResourceProvider {
