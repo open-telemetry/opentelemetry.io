@@ -437,16 +437,16 @@ its introduction. Note however that these metrics were inadvertently reverted to
 | `rpc.server.response.size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
 | `rpc.server.responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
 
-{{% alert title="Note" color="info" %}} The `http*` and `rpc*` metrics are not
-covered by the maturity levels below since they are not under the Collector SIG
-control.
-
-The `otelcol_processor_batch_` metrics are unique to the `batchprocessor`.
-
-The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
-`otelcol_exporter_` metrics come from their respective `helper` packages. As
-such, some components not using those packages might not emit them.
-{{% /alert %}}
+> [!NOTE]
+>
+> The `http*` and `rpc*` metrics are not covered by the maturity levels below
+> since they are not under the Collector SIG control.
+>
+> The `otelcol_processor_batch_` metrics are unique to the `batchprocessor`.
+>
+> The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
+> `otelcol_exporter_` metrics come from their respective `helper` packages. As
+> such, some components not using those packages might not emit them.
 
 ### Events observable with internal logs
 

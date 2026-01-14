@@ -23,13 +23,11 @@ propagation, and can be discovered through the
 [Registry](/ecosystem/registry/?language=php&component=instrumentation) or
 [Packagist](https://packagist.org/packages/open-telemetry/).
 
-{{% alert title="Note" %}}
-
-Use auto-instrumentation or instrumentation libraries to propagate context.
-Although you can propagate context manually, the PHP auto-instrumentation and
-instrumentation libraries are well-tested and easier to use.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Use auto-instrumentation or instrumentation libraries to propagate context.
+> Although you can propagate context manually, the PHP auto-instrumentation and
+> instrumentation libraries are well-tested and easier to use.
 
 ### Incoming requests
 

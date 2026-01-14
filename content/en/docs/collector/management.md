@@ -50,9 +50,10 @@ The [OpAMP specification] defines how to manage a fleet of telemetry data
 agents. These agents can be [OpenTelemetry Collectors](/docs/collector/), Fluent
 Bit or other agents in any arbitrary combination.
 
-> **Note** The term "agent" is used here as a catch-all term for OpenTelemetry
-> components that respond to OpAMP, this could be the collector but also SDK
-> components.
+> [!NOTE]
+>
+> The term "agent" is used here as a catch-all term for OpenTelemetry components
+> that respond to OpAMP, this could be the collector but also SDK components.
 
 OpAMP is a client/server protocol that supports communication over HTTP and over
 WebSockets:
@@ -198,13 +199,12 @@ storage:
   directory: ./storage
 ```
 
-{{% alert color="primary" title="NOTE" %}}
-
-Make sure to replace `$OTEL_COLLECTOR_BINARY` with the actual file path. For
-example, in Linux or macOS, if you installed the Collector in `/usr/local/bin/`,
-then you would replace `$OTEL_COLLECTOR_BINARY` with `/usr/local/bin/otelcol`.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Make sure to replace `$OTEL_COLLECTOR_BINARY` with the actual file path. For
+> example, in Linux or macOS, if you installed the Collector in
+> `/usr/local/bin/`, then you would replace `$OTEL_COLLECTOR_BINARY` with
+> `/usr/local/bin/otelcol`.
 
 #### Step 5 - Run the OpAMP Supervisor
 
