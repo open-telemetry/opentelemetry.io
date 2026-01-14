@@ -13,25 +13,6 @@
   }
 }
 
-// Override Docsy's default section padding for landing page
-.td-default main > section:first-of-type {
-  padding-top: 4rem;
-  padding-bottom: 2rem !important; // Reduced bottom padding for hero section
-}
-
-// When banner is present, push hero down to avoid overlap
-.o-banner ~ main > section:first-of-type {
-  @include media-breakpoint-up(md) {
-    padding-top: 7rem; // Navbar (4rem) + banner (~3rem with padding)
-    padding-bottom: 2rem !important; // Reduced bottom padding for hero section
-  }
-}
-
-// Reduce bottom padding for intro section
-.intro-section {
-  padding-bottom: 1rem !important;
-}
-
 // =============================================================================
 // HERO SIMPLE - Simplified hero section using Docsy's blocks/section
 // =============================================================================
@@ -729,80 +710,6 @@
 // =============================================================================
 
 @include color-mode(dark) {
-  // Hero split primary variant - ensure all text is white
-  .hero-split--primary {
-    .hero-split__content {
-      color: $white !important;
-
-      p {
-        color: $white !important;
-      }
-
-      a {
-        color: $white !important;
-      }
-
-      li {
-        color: $white !important;
-
-        a {
-          color: $white !important;
-        }
-      }
-    }
-
-    .hero-split__tagline {
-      color: $white !important;
-    }
-
-    .l-primary-buttons {
-      ul li a {
-        color: $white !important;
-      }
-    }
-  }
-
-  // Hero split looks the same in dark mode - match other sections
-  .hero-split--light,
-  .hero-split--white {
-    background: var(--bs-body-bg);
-    color: $white !important;
-
-    .hero-split__content {
-      color: $white !important;
-
-      p {
-        color: $white !important;
-      }
-
-      a {
-        color: $white !important;
-      }
-
-      li {
-        color: $white !important;
-
-        a {
-          color: $white !important;
-        }
-      }
-    }
-
-    .hero-split__tagline {
-      color: $white !important;
-    }
-
-    .hero-split__title {
-      color: $warning;
-    }
-
-    .l-primary-buttons {
-      ul li a {
-        color: $white !important;
-      }
-    }
-  }
-
   .hero-search-section {
     background: var(--bs-body-bg) !important;
     border-bottom-color: rgba(255, 255, 255, 0.1);
