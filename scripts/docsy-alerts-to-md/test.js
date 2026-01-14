@@ -293,7 +293,23 @@ This feature has limitations.
   console.log('✓ Alert with title="Caution"');
 }
 
-// Test 16: Alert with unsupported color (passthrough)
+// Test 16: Alert with title only defaults to NOTE while keeping title
+{
+  const input = `{{% alert title="Reminder" %}} Don't forget to configure the exporter. {{% /alert %}}`;
+  const expected = `> [!NOTE] Reminder
+>
+> Don't forget to configure the exporter.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(
+    result,
+    expected,
+    'Alert with title only should default to NOTE and keep the title',
+  );
+  console.log('✓ Alert with title only defaults to NOTE');
+}
+
+// Test 17: Alert with unsupported color (passthrough)
 {
   const input = `{{% alert color="blue" %}} This alert has an unsupported color attribute. {{% /alert %}}`;
   const result = runConvert(input);

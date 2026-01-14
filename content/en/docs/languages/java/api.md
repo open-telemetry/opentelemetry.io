@@ -54,10 +54,10 @@ Libraries and frameworks should depend only on the API and only call methods
 from the API, and instruct applications / end users to add a dependency on the
 SDK and install a configured instance.
 
-{{% alert title=Javadoc %}} For the Javadoc reference of all OpenTelemetry Java
-components, see
-[javadoc.io/doc/io.opentelemetry](https://javadoc.io/doc/io.opentelemetry).
-{{% /alert %}}
+> [!NOTE] Javadoc
+>
+> For the Javadoc reference of all OpenTelemetry Java components, see
+> [javadoc.io/doc/io.opentelemetry](https://javadoc.io/doc/io.opentelemetry).
 
 ## API Components
 
@@ -562,13 +562,13 @@ public class AttributesUsage {
 
 ### OpenTelemetry
 
-{{% alert title="Spring Boot Starter" %}} The Spring Boot starter is a special
-case where `OpenTelemetry` is available as a Spring bean. Simply inject
-`OpenTelemetry` into your Spring components.
-
-Read more about
-[extending the Spring Boot starter with custom manual instrumentation](/docs/zero-code/java/spring-boot-starter/api/).
-{{% /alert %}}
+> [!NOTE] Spring Boot Starter
+>
+> The Spring Boot starter is a special case where `OpenTelemetry` is available
+> as a Spring bean. Simply inject `OpenTelemetry` into your Spring components.
+>
+> Read more about
+> [extending the Spring Boot starter with custom manual instrumentation](/docs/zero-code/java/spring-boot-starter/api/).
 
 [OpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html)
 is a holder for top-level API components which is convenient to pass to
@@ -612,13 +612,14 @@ public class OpenTelemetryUsage {
 
 ### GlobalOpenTelemetry
 
-{{% alert title="Java agent" %}} The Java agent is a special case where
-`GlobalOpenTelemetry` is set by the agent. Simply call
-`GlobalOpenTelemetry.getOrNoop()` to access the `OpenTelemetry` instance.
-
-Read more about
-[extending the Java agent with custom manual instrumentation](/docs/zero-code/java/agent/api/).
-{{% /alert %}}
+> [!NOTE] Java agent
+>
+> The Java agent is a special case where `GlobalOpenTelemetry` is set by the
+> agent. Simply call `GlobalOpenTelemetry.getOrNoop()` to access the
+> `OpenTelemetry` instance.
+>
+> Read more about
+> [extending the Java agent with custom manual instrumentation](/docs/zero-code/java/agent/api/).
 
 [GlobalOpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html)
 holds a global singleton [OpenTelemetry](#opentelemetry) instance.
