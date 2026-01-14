@@ -74,29 +74,27 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
 ```
 
-{{% alert title="Note" color="warning" %}} On macOS
-[`coreutils`](https://formulae.brew.sh/formula/coreutils) is required. If you
-have [homebrew](https://brew.sh/) installed, you can simply get it by running
-
-```shell
-brew install coreutils
-```
-
-{{% /alert %}}
+> [!IMPORTANT]
+>
+> On macOS [`coreutils`](https://formulae.brew.sh/formula/coreutils) is
+> required. If you have [homebrew](https://brew.sh/) installed, you can get it
+> by running:
+>
+> ```shell
+> brew install coreutils
+> ```
 
 ### Windows (PowerShell)
 
 On Windows, use the PowerShell module as an Administrator.
 
-{{% alert title="Version note" color="warning" %}}
-
-Windows
-[PowerShell Desktop](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions)
-(v5.1) is required. Other
-[versions](https://learn.microsoft.com/previous-versions/powershell/scripting/overview),
-including PowerShell Core (v6.0+) are not supported at this time.
-
-{{% /alert %}}
+> [!NOTE] Version note
+>
+> Windows
+> [PowerShell Desktop](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions)
+> (v5.1) is required. Other
+> [versions](https://learn.microsoft.com/previous-versions/powershell/scripting/overview),
+> including PowerShell Core (v6.0+) are not supported at this time.
 
 ```powershell
 # PowerShell 5.1 is required

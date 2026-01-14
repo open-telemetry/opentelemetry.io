@@ -1,7 +1,7 @@
 #!/usr/bin/perl -w
 #
 # Convert Docsy alert shortcodes to GFM/Obsidian blockquote alert syntax.
-# Currently handles: {{% alert title="Note" %}} (no color specifier)
+# Currently handles: {{% alert title="Note" %}} or "Notes" (no color specifier)
 #
 # Skips alerts containing `{{<...>}}`.
 #
@@ -48,7 +48,7 @@ for my $filename (@ARGV) {
     my $line = $lines[$i];
 
     # Single-line alert: {{% alert title="Note" %}} content {{% /alert %}}
-    if ($line =~ /^\s*\{\{%\s*alert\s+title="Note"\s*%\}\}\s*(.*?)\s*\{\{%\s*\/alert\s*%\}\}\s*$/) {
+    if ($line =~ /^\s*\{\{%\s*alert\s+title="Notes?"\s*%\}\}\s*(.*?)\s*\{\{%\s*\/alert\s*%\}\}\s*$/) {
       my $content = $1;
       # Skip if content contains HTML shortcode call
       if ($content =~ /\{\{<\s*[^>]*>\}/) {
@@ -65,7 +65,7 @@ for my $filename (@ARGV) {
 
     # Opening tag with inline content, closing on different line:
     # {{% alert title="Note" %}} Content here
-    if ($line =~ /^\s*\{\{%\s*alert\s+title="Note"\s*%\}\}\s*(.+)$/) {
+    if ($line =~ /^\s*\{\{%\s*alert\s+title="Notes?"\s*%\}\}\s*(.+)$/) {
       my $first_content = $1;
       my $close_idx = find_closing_tag(\@lines, $i + 1);
 
@@ -110,7 +110,7 @@ for my $filename (@ARGV) {
     }
 
     # Opening tag alone: {{% alert title="Note" %}}
-    if ($line =~ /^\s*\{\{%\s*alert\s+title="Note"\s*%\}\}\s*$/) {
+    if ($line =~ /^\s*\{\{%\s*alert\s+title="Notes?"\s*%\}\}\s*$/) {
       my $close_idx = find_closing_tag(\@lines, $i + 1);
 
       # No closing tag found - pass through unchanged
