@@ -31,8 +31,9 @@ instrumentation libraries.
 **Examples**: See the list of native application integrations on the
 [Integrations](/ecosystem/integrations/) page.
 
-{{% alert title="Note" %}} This is the only registry type that allows
-commercial/proprietary licenses. {{% /alert %}}
+> [!NOTE]
+>
+> This is the only registry type that allows commercial/proprietary licenses.
 
 ### `core`
 
@@ -98,8 +99,10 @@ that provides resources or configuration to the collector.
 **Examples**: OTLP receivers, Prometheus receivers, or any component that
 receives telemetry data from external sources.
 
-{{% alert title="Note" %}} Not applicable for third-party components that are
-receiving OpenTelemetry telemetry. {{% /alert %}}
+> [!NOTE]
+>
+> Not applicable for third-party components that are receiving OpenTelemetry
+> telemetry.
 
 ### `resource-detector`
 
