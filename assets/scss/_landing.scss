@@ -4,217 +4,51 @@
 // Override Docsy's default section padding for landing page
 .td-default main > section:first-of-type {
   padding-top: 4rem;
+  padding-bottom: 2rem !important; // Reduced bottom padding for hero section
 }
 
 // When banner is present, push hero down to avoid overlap
-.o-banner ~ main .hero-split {
+.o-banner ~ main > section:first-of-type {
   @include media-breakpoint-up(md) {
-    margin-top: 8rem;
+    padding-top: 7rem; // Navbar (4rem) + banner (~3rem with padding)
+    padding-bottom: 2rem !important; // Reduced bottom padding for hero section
   }
 }
 
+// Reduce bottom padding for intro section
+.intro-section {
+  padding-bottom: 1rem !important;
+}
+
+
 // =============================================================================
-// HERO SPLIT - Two-column hero with image on right
+// HERO SIMPLE - Simplified hero section using Docsy's blocks/section
 // =============================================================================
 
-.hero-split {
-  padding: 2rem 0;
-  min-height: 320px;
-  display: flex;
-  align-items: center;
-  // Full-width viewport code: needed to make background colors extend edge-to-edge
-  // while keeping content centered in container
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  width: 100vw;
-  box-sizing: border-box;
-  overflow: hidden;
+.hero-simple {
+  max-width: 800px;
+  margin: 0 auto;
 
-  // Background image removed for single-column layout
+  &__logo {
+    .hero-simple__logo-img {
+      height: 120px;
+      width: auto;
+      max-width: 100%;
 
-  .container {
-    position: relative;
-    z-index: 1;
-  }
-
-  // Primary (dark blue) variant - matches navbar for visual consistency
-  &--primary {
-    background: #41549f; // Same as .td-navbar for AAA contrast
-    color: $white;
-
-    .hero-split__content {
-      color: $white;
-
-      p {
-        color: $white;
-      }
-
-      a {
-        color: $white;
-      }
-
-      li {
-        color: $white;
-
-        a {
-          color: $white;
-        }
-      }
-    }
-
-    .hero-split__tagline {
-      color: $white;
-    }
-
-    .l-primary-buttons {
-      ul li a {
-        color: $white;
-      }
-    }
-
-    .hero-split__title {
-      color: $warning; // Yellow/gold accent
-      font-style: italic;
-      font-weight: 500;
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-split__logo {
-      display: none;
-      margin-bottom: 1rem;
-      text-align: center;
-
-      @include media-breakpoint-up(lg) {
-        display: block;
-      }
-
-      .hero-split__logo-img {
+      @include media-breakpoint-up(md) {
         height: 144px;
-        width: auto;
-
-        @include media-breakpoint-up(md) {
-          height: 168px;
-        }
-
-        @include media-breakpoint-up(lg) {
-          height: 192px;
-        }
       }
-    }
-
-    .hero-split__mobile-logo {
-      display: block;
-      text-align: center;
-      margin-bottom: 1.5rem;
 
       @include media-breakpoint-up(lg) {
-        display: none;
-      }
-
-      .hero-split__logo-img {
-        height: 120px;
-        width: auto;
-        max-width: 100%;
-
-        @include media-breakpoint-up(md) {
-          height: 144px;
-        }
+        height: 168px;
       }
     }
-  }
-
-  // Light variant
-  &--light {
-    background: $light;
-    color: $body-color;
-
-    .hero-split__title {
-      color: $primary;
-    }
-  }
-
-  // White variant
-  &--white {
-    background: $white;
-    color: $body-color;
-
-    .hero-split__title {
-      color: $primary;
-    }
-
-    .hero-split__tagline {
-      color: $body-color;
-    }
-
-    .hero-split__logo {
-      display: none;
-      margin-bottom: 1rem;
-      text-align: center;
-
-      @include media-breakpoint-up(lg) {
-        display: block;
-      }
-
-      .hero-split__logo-img {
-        height: 144px;
-        width: auto;
-
-        @include media-breakpoint-up(md) {
-          height: 168px;
-        }
-
-        @include media-breakpoint-up(lg) {
-          height: 192px;
-        }
-      }
-    }
-
-    .hero-split__mobile-logo {
-      display: block;
-      text-align: center;
-      margin-bottom: 1.5rem;
-
-      @include media-breakpoint-up(lg) {
-        display: none;
-      }
-
-      .hero-split__logo-img {
-        height: 120px;
-        width: auto;
-        max-width: 100%;
-
-        @include media-breakpoint-up(md) {
-          height: 144px;
-        }
-      }
-    }
-  }
-
-  &__grid {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    text-align: center;
-  }
-
-  &__content {
-    width: 100%;
-    text-align: center;
   }
 
   &__tagline {
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.4;
-    margin-bottom: 1.25rem;
 
     @include media-breakpoint-up(md) {
       font-size: 1.75rem;
@@ -245,6 +79,38 @@
 
     li {
       margin: 0;
+    }
+  }
+}
+
+// Dark mode adjustments for hero section
+@include color-mode(dark) {
+  .td-box--primary .hero-simple {
+    color: $white !important;
+
+    .hero-simple__tagline {
+      color: $white !important;
+    }
+
+    .hero-simple__content {
+      color: $white !important;
+
+      p, a, li {
+        color: $white !important;
+      }
+    }
+
+    .l-primary-buttons {
+      ul li a {
+        color: $white !important;
+      }
+    }
+  }
+
+  .td-box--white .hero-simple,
+  .td-box--light .hero-simple {
+    .hero-simple__tagline {
+      color: $body-color;
     }
   }
 }
@@ -486,7 +352,7 @@
 .signals-showcase-section {
   background: $white;
   color: $body-color;
-  padding: 3rem 0;
+  padding: 1rem 0; // Reduced vertical padding
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }

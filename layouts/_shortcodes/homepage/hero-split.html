@@ -1,29 +1,24 @@
 {{ $color := .Get "color" | default "primary" -}}
-{{ $image := .Get "image" -}}
-{{ $imageAlt := .Get "imageAlt" | default "OpenTelemetry" -}}
-{{ $title := .Get "title" -}}
 {{ $tagline := .Get "tagline" -}}
 {{ $useLogo := .Get "useLogo" | default false -}}
 
-<section class="hero-split hero-split--{{ $color }}">
-  <div class="container">
-    <div class="hero-split__grid">
-      <div class="hero-split__mobile-logo">
-        <img src="/img/logos/opentelemetry-horizontal-color.svg" alt="OpenTelemetry" class="hero-split__logo-img">
-      </div>
-      <div class="hero-split__content">
-        {{- if $useLogo -}}
-        <div class="hero-split__logo">
-          <img src="/img/logos/opentelemetry-horizontal-color.svg" alt="OpenTelemetry" class="hero-split__logo-img">
-        </div>
-        {{- else if $title -}}
-        <p class="hero-split__title">{{ $title }}</p>
-        {{- end -}}
-        {{- with $tagline -}}
-        <p class="hero-split__tagline">{{ . }}</p>
-        {{- end -}}
-        {{ .Inner | markdownify }}
-      </div>
-    </div>
+<div><a id="td-block-hero-{{ .Ordinal }}" class="td-offset-anchor"></a></div>
+<section class="row td-box td-box--{{ $color }}">
+<div class="col">
+<div class="container">
+<div class="hero-simple text-center pt-5 pb-0">
+  {{- if $useLogo -}}
+  <div class="hero-simple__logo mb-4">
+    <img src="/img/logos/opentelemetry-horizontal-color.svg" alt="OpenTelemetry" class="hero-simple__logo-img">
   </div>
+  {{- end -}}
+  {{- with $tagline -}}
+  <p class="hero-simple__tagline mb-4">{{ . }}</p>
+  {{- end -}}
+  <div class="hero-simple__content">
+    {{ .Inner | markdownify }}
+  </div>
+</div>
+</div>
+</div>
 </section>
