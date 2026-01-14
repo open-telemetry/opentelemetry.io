@@ -10,19 +10,17 @@ cSpell:ignore: dicelib Millis rolldice
 
 {{% include instrumentation-intro.md %}}
 
-{{% alert title="Note" %}}
-
-On this page you will learn how you can add traces, metrics and logs to your
-code _manually_. But, you are not limited to only use one kind of
-instrumentation: use [automatic instrumentation](/docs/zero-code/js/) to get
-started and then enrich your code with manual instrumentation as needed.
-
-Also, for libraries your code depends on, you don't have to write
-instrumentation code yourself, since they might come with OpenTelemetry built-in
-_natively_ or you can make use of
-[instrumentation libraries](/docs/languages/js/libraries/).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> On this page you will learn how you can add traces, metrics and logs to your
+> code _manually_. But, you are not limited to only use one kind of
+> instrumentation: use [automatic instrumentation](/docs/zero-code/js/) to get
+> started and then enrich your code with manual instrumentation as needed.
+>
+> Also, for libraries your code depends on, you don't have to write
+> instrumentation code yourself, since they might come with OpenTelemetry
+> built-in _natively_ or you can make use of
+> [instrumentation libraries](/docs/languages/js/libraries/).
 
 ## Example app preparation {#example-app}
 
@@ -193,8 +191,9 @@ npm install @opentelemetry/api @opentelemetry/resources @opentelemetry/semantic-
 
 ### Initialize the SDK
 
-{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
-step**. {{% /alert %}}
+> [!NOTE]
+>
+> If you’re instrumenting a library, **skip this step**.
 
 If you instrument a Node.js application install the
 [OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node):
@@ -284,9 +283,11 @@ API or implementation.
 Alternative methods exist for setting up resource attributes. For more
 information, see [Resources](/docs/languages/js/resources/).
 
-{{% alert title="Note" %}} The following examples using
-`--import instrumentation.ts` (TypeScript) require Node.js v20 or later. If you
-are using Node.js v18, please use the JavaScript example. {{% /alert %}}
+> [!NOTE]
+>
+> The following examples using `--import instrumentation.ts` (TypeScript)
+> require Node.js v20 or later. If you are using Node.js v18, please use the
+> JavaScript example.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -313,8 +314,9 @@ information, see [Libraries](/docs/languages/js/libraries/).
 
 ### Initialize Tracing
 
-{{% alert title="Note" %}} If you’re instrumenting a library, **skip this
-step**. {{% /alert %}}
+> [!NOTE]
+>
+> If you’re instrumenting a library, **skip this step**.
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized
