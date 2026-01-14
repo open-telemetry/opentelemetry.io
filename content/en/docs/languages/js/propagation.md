@@ -18,13 +18,11 @@ propagate context across services for you.
 If you followed the [Getting Started Guide](../getting-started/nodejs) you can
 create a client application that queries the `/rolldice` endpoint.
 
-{{% alert title="Note" %}}
-
-You can combine this example with the sample application from the Getting
-Started guide of any other language as well. Correlation works across
-applications written in different languages without any differences.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> You can combine this example with the sample application from the Getting
+> Started guide of any other language as well. Correlation works across
+> applications written in different languages without any differences.
 
 Start by creating a new folder called `dice-client` and install the required
 dependencies:

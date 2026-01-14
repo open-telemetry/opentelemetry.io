@@ -14,20 +14,18 @@ a set of checks are executed. The PR checks verify that:
 - Your PR successfully [deploys through Netlify](#netlify-deployment)
 - Your changes are compliant with our [style guide](#checks)
 
-{{% alert title="Note" %}}
-
-If any of the PR checks fails, try to
-[fix content issues](../pull-requests/#fix-issues) first by running
-`npm run fix:all` locally.
-
-You can also add the comment `/fix:all` to your PR. This will trigger the
-OpenTelemetry Bot to run that command on your behalf and update the PR. Make
-sure that you pull those changes locally.
-
-Only if your issues persist, read below what the different checks do and how you
-can recover from a failed state.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> If any of the PR checks fails, try to
+> [fix content issues](../pull-requests/#fix-issues) first by running
+> `npm run fix:all` locally.
+>
+> You can also add the comment `/fix:all` to your PR. This will trigger the
+> OpenTelemetry Bot to run that command on your behalf and update the PR. Make
+> sure that you pull those changes locally.
+>
+> Only if your issues persist, read below what the different checks do and how you
+> can recover from a failed state.
 
 ## `Easy CLA` {.notranslate lang=en}
 

@@ -72,8 +72,10 @@ statement, which is recommended. You can also explicitly call
 or
 [Activity.Stop](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity.stop).
 
-{{% alert title="Note" %}} Activities which are not yet finished/stopped will
-not be exported. {{% /alert %}}
+> [!NOTE]
+>
+> Activities which are not yet finished/stopped will
+> not be exported.
 
 Avoid calling
 [Activity.AddEvent](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity.addevent)

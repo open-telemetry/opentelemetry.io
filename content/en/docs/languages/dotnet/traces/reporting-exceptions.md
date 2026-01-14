@@ -82,8 +82,10 @@ Sdk.CreateTracerProviderBuilder()
 With this configuration, any exception that occurs while an activity is active
 will automatically set that activity's status to Error.
 
-{{% alert title="Note" %}} This feature is platform-dependent as it relies on
-`System.Runtime.InteropServices.Marshal.GetExceptionPointers`. {{% /alert %}}
+> [!NOTE]
+>
+> This feature is platform-dependent as it relies on
+> `System.Runtime.InteropServices.Marshal.GetExceptionPointers`.
 
 ### Option 3: Include error description
 

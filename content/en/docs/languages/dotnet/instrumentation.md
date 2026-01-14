@@ -8,18 +8,16 @@ cSpell:ignore: dicelib rolldice
 
 {{% include instrumentation-intro.md %}}
 
-{{% alert title="Note" %}}
-
-On this page you will learn how you can add traces, metrics and logs to your
-code manually. You are not limited to using one kind of instrumentation: you can
-also use [automatic instrumentation](/docs/zero-code/dotnet/) to get started and
-then enrich your code with manual instrumentation as needed.
-
-Also, for libraries your code depends on, you don't have to write
-instrumentation code yourself, since they might be already instrumented or there
-are [instrumentation libraries](/docs/languages/dotnet/libraries/) for them.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> On this page you will learn how you can add traces, metrics and logs to your
+> code manually. You are not limited to using one kind of instrumentation: you can
+> also use [automatic instrumentation](/docs/zero-code/dotnet/) to get started and
+> then enrich your code with manual instrumentation as needed.
+>
+> Also, for libraries your code depends on, you don't have to write
+> instrumentation code yourself, since they might be already instrumented or there
+> are [instrumentation libraries](/docs/languages/dotnet/libraries/) for them.
 
 ## A note on terminology
 
@@ -213,8 +211,10 @@ dotnet add package OpenTelemetry.Instrumentation.AspNetCore
 
 ### Initialize the SDK
 
-{{% alert title="Note" %}} If you’re instrumenting a library, you don't need to
-initialize the SDK. {{% /alert %}}
+> [!NOTE]
+>
+> If you’re instrumenting a library, you don't need to
+> initialize the SDK.
 
 It is important to configure an instance of the OpenTelemetry SDK as early as
 possible in your application.
@@ -328,8 +328,10 @@ dotnet run
 
 ### Initialize Tracing
 
-{{% alert title="Note" %}} If you’re instrumenting a library, you don't need to
-initialize a TracerProvider. {{% /alert %}}
+> [!NOTE]
+>
+> If you’re instrumenting a library, you don't need to
+> initialize a TracerProvider.
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized

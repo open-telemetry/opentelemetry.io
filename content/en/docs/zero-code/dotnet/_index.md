@@ -31,8 +31,9 @@ Supported processor architectures are:
 - AMD64 (x86-64)
 - ARM64 ([Experimental](/docs/specs/otel/versioning-and-stability))
 
-{{% alert title="Note" %}} ARM64 build does not support CentOS based images.
-{{% /alert %}}
+> [!NOTE]
+>
+> ARM64 build does not support CentOS based images.
 
 CI tests run against the following operating systems:
 

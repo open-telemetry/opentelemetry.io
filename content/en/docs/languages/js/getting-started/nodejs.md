@@ -11,10 +11,12 @@ This page will show you how to get started with OpenTelemetry in Node.js.
 You will learn how to instrument both [traces][] and [metrics][] and log them to
 the console.
 
-{{% alert title="Note" %}} The logging library for OpenTelemetry for Node.js is
-still under development hence an example for it is not provided below. For
-status details, see
-[Status and Releases](/docs/languages/js/#status-and-releases). {{% /alert %}}
+> [!NOTE]
+>
+> The logging library for OpenTelemetry for Node.js is
+> still under development hence an example for it is not provided below. For
+> status details, see
+> [Status and Releases](/docs/languages/js/#status-and-releases).
 
 ## Prerequisites
 
@@ -166,9 +168,11 @@ application code. One tool commonly used for this task is the
 Create a file named `instrumentation.ts` (or `instrumentation.mjs` if not using
 TypeScript), which will contain your instrumentation setup code.
 
-{{% alert title="Note" %}} The following examples using
-`--import instrumentation.ts` (TypeScript) require Node.js v.20 or later. If you
-are using Node.js v.18, please use the JavaScript example. {{% /alert %}}
+> [!NOTE]
+>
+> The following examples using
+> `--import instrumentation.ts` (TypeScript) require Node.js v.20 or later. If you
+> are using Node.js v.18, please use the JavaScript example.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 

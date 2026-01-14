@@ -49,32 +49,32 @@ public class TracedClass {
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert title="Note" %}} The OpenTelemetry annotations use Spring AOP based on
-proxies.
-
-These annotations work only for the methods of the proxy. You can learn more in
-the
-[Spring documentation](https://docs.spring.io/spring-framework/reference/core/aop/proxying.html).
-
-In the following example, the `WithSpan` annotation won't do anything when the
-GET endpoint is called:
-
-```java
-@RestController
-public class MyControllerManagedBySpring {
-
-    @GetMapping("/ping")
-    public void aMethod() {
-        anotherMethod();
-    }
-
-    @WithSpan
-    public void anotherMethod() {
-    }
-}
-```
-
-{{% /alert %}}
+> [!NOTE]
+>
+> The OpenTelemetry annotations use Spring AOP based on
+> proxies.
+>
+> These annotations work only for the methods of the proxy. You can learn more in
+> the
+> [Spring documentation](https://docs.spring.io/spring-framework/reference/core/aop/proxying.html).
+>
+> In the following example, the `WithSpan` annotation won't do anything when the
+> GET endpoint is called:
+>
+> ```java
+> @RestController
+> public class MyControllerManagedBySpring {
+>
+>     @GetMapping("/ping")
+>     public void aMethod() {
+>         anotherMethod();
+>     }
+>
+>     @WithSpan
+>     public void anotherMethod() {
+>     }
+> }
+> ```
 
 {{% alert title="Note" %}}
 

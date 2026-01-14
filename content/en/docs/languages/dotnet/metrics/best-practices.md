@@ -50,15 +50,16 @@ static readonly Meter MyMeter = new("MyCompany.MyProduct.MyLibrary", "1.0");
 
 Understand and pick the right instrument type.
 
-{{% alert title="Note" %}} .NET runtime has provided several instrument types
-based on the
-[OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument). Picking
-the right instrument type for your use case is crucial to ensure the correct
-semantics and performance. Check the
-[Instrument Selection](/docs/specs/otel/metrics/supplementary-guidelines#instrument-selection)
-section from the supplementary guidelines for more information.
+> [!NOTE]
+>
+> .NET runtime has provided several instrument types
+> based on the
+> [OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument). Picking
+> the right instrument type for your use case is crucial to ensure the correct
+> semantics and performance. Check the
+> [Instrument Selection](/docs/specs/otel/metrics/supplementary-guidelines#instrument-selection)
+> section from the supplementary guidelines for more information.
 
-> {{% /alert %}}
 
 | OpenTelemetry Specification                                                            | .NET Instrument Type                                                                                                        |
 | -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -77,10 +78,12 @@ readonly fields or singleton through dependency injection.
 
 Avoid invalid instrument names.
 
-{{% alert title="Note" %}} OpenTelemetry will not collect metrics from
-instruments that are using invalid names. Refer to the
-[OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument-name-syntax)
-for the valid syntax. {{% /alert %}}
+> [!NOTE]
+>
+> OpenTelemetry will not collect metrics from
+> instruments that are using invalid names. Refer to the
+> [OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument-name-syntax)
+> for the valid syntax.
 
 Avoid changing the order of tags while reporting measurements. For example:
 
@@ -133,11 +136,12 @@ As a general rule:
   very similar CPU performance and heap allocation. `TagList` is recommended due
   to its better readability and maintainability.
 
-{{% alert title="Note" %}} When reporting measurements with more than 8 tags,
-the API allocates memory on the hot code path. You SHOULD try to keep the number
-of tags less than or equal to 8. If you are exceeding this, check if you can
-model some of the tags as Resource, as [shown here](#metrics-enrichment).
-{{% /alert %}}
+> [!NOTE]
+>
+> When reporting measurements with more than 8 tags,
+> the API allocates memory on the hot code path. You SHOULD try to keep the number
+> of tags less than or equal to 8. If you are exceeding this, check if you can
+> model some of the tags as Resource, as [shown here](#metrics-enrichment).
 
 ## MeterProvider management
 
@@ -357,21 +361,24 @@ measurement that could not be independently aggregated will be automatically
 aggregated using the
 [overflow attribute](/docs/specs/otel/metrics/sdk/#overflow-attribute).
 
-{{% alert title="Note" %}} In SDK versions `1.6.0` - `1.9.0` the overflow
-attribute was an experimental feature that could be enabled by setting the
-environment variable
-`OTEL_DOTNET_EXPERIMENTAL_METRICS_EMIT_OVERFLOW_ATTRIBUTE=true`. {{% /alert %}}
+> [!NOTE]
+>
+> In SDK versions `1.6.0` - `1.9.0` the overflow
+> attribute was an experimental feature that could be enabled by setting the
+> environment variable
+> `OTEL_DOTNET_EXPERIMENTAL_METRICS_EMIT_OVERFLOW_ATTRIBUTE=true`.
 
 As of `1.10.0` when
 [Delta Aggregation Temporality](/docs/specs/otel/metrics/data-model/#temporality)
 is used, it is possible to choose a smaller cardinality limit because the SDK
 will reclaim unused metric points.
 
-{{% alert title="Note" %}} In SDK versions `1.7.0` - `1.9.0`, metric point
-reclaim was an experimental feature that could be enabled by setting the
-environment variable
-`OTEL_DOTNET_EXPERIMENTAL_METRICS_RECLAIM_UNUSED_METRIC_POINTS=true`.
-{{% /alert %}}
+> [!NOTE]
+>
+> In SDK versions `1.7.0` - `1.9.0`, metric point
+> reclaim was an experimental feature that could be enabled by setting the
+> environment variable
+> `OTEL_DOTNET_EXPERIMENTAL_METRICS_RECLAIM_UNUSED_METRIC_POINTS=true`.
 
 ### Memory preallocation
 
@@ -417,10 +424,12 @@ dimensions can come from different sources:
   [jobs and instances](https://prometheus.io/docs/concepts/jobs_instances/) in
   Prometheus.
 
-{{% alert title="Note" %}} Instrument level tags support is not yet implemented
-in OpenTelemetry .NET since the
-[OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument) does not
-support it. {{% /alert %}}
+> [!NOTE]
+>
+> Instrument level tags support is not yet implemented
+> in OpenTelemetry .NET since the
+> [OpenTelemetry Specification](/docs/specs/otel/metrics/api/#instrument) does not
+> support it.
 
 As a general rule:
 
@@ -436,12 +445,14 @@ As a general rule:
 - If the dimension value is dynamic, report it via the
   [Metrics API](#metrics-api).
 
-{{% alert title="Note" %}} There were discussions around adding a new concept
-called `MeasurementProcessor`, which allows dimensions to be added to / removed
-from measurements dynamically. This idea did not get traction due to the
-complexity and performance implications, refer to this
-[pull request](https://github.com/open-telemetry/opentelemetry-specification/pull/1938)
-for more context. {{% /alert %}}
+> [!NOTE]
+>
+> There were discussions around adding a new concept
+> called `MeasurementProcessor`, which allows dimensions to be added to / removed
+> from measurements dynamically. This idea did not get traction due to the
+> complexity and performance implications, refer to this
+> [pull request](https://github.com/open-telemetry/opentelemetry-specification/pull/1938)
+> for more context.
 
 ## Common issues that lead to missing metrics
 

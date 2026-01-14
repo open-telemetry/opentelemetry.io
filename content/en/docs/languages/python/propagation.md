@@ -19,13 +19,11 @@ HTTP headers.
 Instrumentation libraries for popular Python frameworks and libraries, such as
 Jinja2, Flask, Django, and Celery.propagate context across services for you.
 
-{{% alert title="Note" %}}
-
-Use instrumentation libraries to propagate context. Although it is possible to
-propagate context manually, the Python auto-instrumentation and instrumentation
-libraries are well-tested and easier to use.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Use instrumentation libraries to propagate context. Although it is possible to
+> propagate context manually, the Python auto-instrumentation and instrumentation
+> libraries are well-tested and easier to use.
 
 ## Manual context propagation
 
