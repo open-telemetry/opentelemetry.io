@@ -20,7 +20,6 @@
   padding-bottom: 1rem !important;
 }
 
-
 // =============================================================================
 // HERO SIMPLE - Simplified hero section using Docsy's blocks/section
 // =============================================================================
@@ -95,7 +94,9 @@
     .hero-simple__content {
       color: $white !important;
 
-      p, a, li {
+      p,
+      a,
+      li {
         color: $white !important;
       }
     }
