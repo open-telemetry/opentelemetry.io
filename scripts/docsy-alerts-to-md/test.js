@@ -186,9 +186,10 @@ Some content here.
   console.log('✓ Unclosed alert (passthrough)');
 }
 
-// Test 10: Inline content with closing tag on same line as last content
+// Test 10: Inline content with closing tag on same line as last content and
+// "Notes" title
 {
-  const input = `{{% alert title="Note" %}} First line
+  const input = `{{% alert title="Notes" %}} First line
 second line
 last line with closing tag. {{% /alert %}}
 `;
