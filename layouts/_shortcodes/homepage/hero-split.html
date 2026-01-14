@@ -9,16 +9,12 @@
   <div class="container">
     <div class="hero-split__grid">
       <div class="hero-split__mobile-logo">
-        {{- with resources.Get "icons/logo.svg" -}}
-          {{ ( . | minify).Content | safeHTML }}
-        {{- end -}}
+        <img src="/img/logos/opentelemetry-horizontal-color.svg" alt="OpenTelemetry" class="hero-split__logo-img">
       </div>
       <div class="hero-split__content">
         {{- if $useLogo -}}
         <div class="hero-split__logo">
-          {{- with resources.Get "icons/logo.svg" -}}
-            {{ ( . | minify).Content | safeHTML }}
-          {{- end -}}
+          <img src="/img/logos/opentelemetry-horizontal-color.svg" alt="OpenTelemetry" class="hero-split__logo-img">
         </div>
         {{- else if $title -}}
         <p class="hero-split__title">{{ $title }}</p>
