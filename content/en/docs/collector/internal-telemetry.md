@@ -114,22 +114,20 @@ resource:
 
 #### Service address
 
-{{% alert title="Internal telemetry configuration changes" %}}
-
-As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
-is ignored. In earlier versions, it could be configured with:
-
-```yaml
-service:
-  telemetry:
-    metrics:
-      address: 0.0.0.0:8888
-```
+> [!NOTE] Internal telemetry configuration changes
+>
+> As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
+> is ignored. In earlier versions, it could be configured with:
+>
+> ```yaml
+> service:
+>   telemetry:
+>     metrics:
+>       address: 0.0.0.0:8888
+> ```
 
 [v0.123.0]:
   https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0
-
-{{% /alert %}}
 
 #### Metric verbosity
 
@@ -401,18 +399,16 @@ files in the repository.
 | `otelcol_processor_batch_metadata_`<br>`cardinality`    | Number of distinct metadata value combinations being processed. | Counter   |
 | `otelcol_processor_batch_timeout_`<br>`trigger_send`    | Number of times the batch was sent due to a timeout trigger.    | Counter   |
 
-{{% alert title="Batch processor metrics level changes" %}}
-
-In Collector [v0.99.0], all batch processor metrics were upgraded from `basic`
-to `normal` (current level), except for
-`otelcol_processor_batch_batch_send_size_bytes`, which has been `detailed` since
-its introduction. Note however that these metrics were inadvertently reverted to
-`basic` from v0.109.0 to v0.121.0.
+> [!NOTE] Batch processor metrics level changes
+>
+> In Collector [v0.99.0], all batch processor metrics were upgraded from `basic`
+> to `normal` (current level), except for
+> `otelcol_processor_batch_batch_send_size_bytes`, which has been `detailed`
+> since its introduction. Note however that these metrics were inadvertently
+> reverted to `basic` from v0.109.0 to v0.121.0.
 
 [v0.99.0]:
   https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0
-
-{{% /alert %}}
 
 #### Additional `detailed`-level metrics
 

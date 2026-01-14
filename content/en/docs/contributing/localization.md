@@ -398,13 +398,11 @@ content][ali-dowair-2024].
 With terminology established, you can now localize the remaining site pages. <a
 name="small-prs"></a>
 
-{{% alert title="Submit small PRs" color="primary" %}}
-
-Localization teams should submit their work in **small increments**. That is,
-keep [PRs] small, preferably limited to one or a few small files. Smaller PRs
-are easier to review and so typically get merged more quickly.
-
-{{% /alert %}}
+> [!IMPORTANT] Submit small PRs
+>
+> Localization teams should submit their work in **small increments**. That is,
+> keep [PRs] small, preferably limited to one or a few small files. Smaller PRs
+> are easier to review and so typically get merged more quickly.
 
 ### OTel maintainer checklist
 

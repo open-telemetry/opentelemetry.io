@@ -33,19 +33,30 @@ sub find_closing_tag {
 sub extract_alert_info {
   my ($line) = @_;
 
+  my $color = '';
   my $type = '';
   my $title = '';
   my $attrs = '';
+  my $attrs_without_title = '';
 
   if ($line =~ /\{\{%\s*alert\b(.*?)%\}\}/) {
     $attrs = $1 // '';
     $attrs =~ s/^\s+//;
     $attrs =~ s/\s+$//;
+    $attrs_without_title = $attrs;
+    $attrs_without_title =~ s/\btitle=("[^"]*"|'[^']*'|[^\s%]+)//ig;
+    $attrs_without_title =~ s/^\s+//;
+    $attrs_without_title =~ s/\s+$//;
   }
 
   # Extract title if present
   if ($line =~ /title=["']([^"']+)["']/ || $line =~ /title=([^\s%]+)/) {
     $title = $1;
+  }
+
+  # Extract color if present
+  if ($line =~ /color=["']?([^"'\s%]+)["']?/) {
+    $color = $1;
   }
 
   # Determine type based on title or color
@@ -73,8 +84,10 @@ sub extract_alert_info {
     $title = '';  # Don't preserve generic "Important" title
   }
 
-  if (!$type && $attrs eq '') {
-    $type = 'NOTE';
+  if (!$type) {
+    if ($attrs eq '' || $attrs_without_title eq '' || $color eq 'primary') {
+      $type = 'NOTE';
+    }
   }
 
   return ($type, $title);
