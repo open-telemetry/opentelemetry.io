@@ -705,11 +705,13 @@ and specify the path to the config file as described in the table below.
 | ------------------------------- | --------------------------------------- | ------- |
 | `otel.experimental.config.file` | The path to the SDK configuration file. | Unset   |
 
-{{% alert title="Note" color="warning" %}} When a config file is specified,
-[environment variables and system properties](#environment-variables-and-system-properties)
-are ignored, [programmatic customization](#programmatic-customization) and
-[SPIs](#spi-service-provider-interface) are skipped. The contents of the file
-alone dictate SDK configuration. {{% /alert %}}
+> [!WARNING]
+>
+> When a config file is specified,
+> [environment variables and system properties](#environment-variables-and-system-properties)
+> are ignored, [programmatic customization](#programmatic-customization) and
+> [SPIs](#spi-service-provider-interface) are skipped. The contents of the file
+> alone dictate SDK configuration.
 
 For additional details, consult the following resources:
 
