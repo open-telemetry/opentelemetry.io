@@ -53,6 +53,47 @@ processes matching entries in the [metrics discovery](./) configuration.
 - `network_inter_zone`: Network inter-zone metrics, refer to the
   [network metrics](../../network/) configuration documentation to learn more.
 
+### Per-application metrics export features
+
+Additionally, OBI allows you to override global metrics export features on a
+per-application basis by adding `metrics > features` as a property to each
+`discovery > instrument` entry.
+
+For example, in the following configuration:
+
+- The `apache`, `nginx`, and `tomcat` service instances will only export
+  `application_service_graph` metrics (as defined in the top-level
+  `metrics > features` configuration).
+
+- The `pyserver` service will only export the `application` group of metrics.
+
+- Services listening on ports 3030 or 3040 will export the `application`,
+  `application_span`, and `application_service_graph` metric groups.
+
+```yaml
+metrics:
+  features: ['application_service_graph']
+discovery:
+  instrument:
+    - open_ports: 3030,3040
+      metrics:
+        features:
+          - 'application'
+          - 'application_span'
+          - 'application_service_graph'
+    - name: pyserver
+      open_ports: 7773
+      metrics:
+        features:
+          - 'application'
+    - name: apache
+      open_ports: 8080
+    - name: nginx
+      open_ports: 8085
+    - name: tomcat
+      open_ports: 8090
+```
+
 ## OpenTelemetry metrics exporter component
 
 YAML section: `otel_metrics_export`
