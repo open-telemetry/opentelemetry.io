@@ -29,7 +29,6 @@ Create a Gradle project (build.gradle.kts):
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "build.gradle.kts"?>
-
 ```kotlin
 plugins {
     id("java")
@@ -70,7 +69,6 @@ Create a `SpanProcessor` implementation:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/MySpanProcessor.java" from="public"?>
-
 ```java
 public class MySpanProcessor implements SpanProcessor {
 
@@ -108,7 +106,6 @@ SPI:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/MyExtensionProvider.java" from="@AutoService"?>
-
 ```java
 @AutoService(AutoConfigurationCustomizerProvider.class)
 public class MyExtensionProvider implements AutoConfigurationCustomizerProvider {
@@ -208,14 +205,6 @@ When you load extensions at runtime, the agent:
    [ServiceLoader](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ServiceLoader.html)
    mechanism (via `@AutoService` annotations in your code, for example)
 
-#### Important Notes
-
-- **Single JAR requirement**: Extensions must be packaged as shadow/uber JARs
-  containing all their dependencies. You cannot specify extension dependencies
-  as separate JARs; they must be merged into a single JAR.
-- **Isolation**: Each extension gets its own class loader, isolating extensions
-  from each other and preventing conflicts.
-
 ### Embedding Extensions in the Agent
 
 Another deployment option is to create a single JAR file that contains both the
@@ -249,10 +238,6 @@ plugins {
 
 group = "com.example"
 version = "1.0"
-
-repositories {
-    mavenCentral()
-}
 
 configurations {
     // Create a temporary configuration to download the agent JAR
@@ -337,24 +322,24 @@ To embed multiple extensions, modify the `extendedAgent` task to include
 multiple extension JARs:
 
 ```kotlin
-task extendedAgent(type: Jar) {
-  dependsOn(configurations.otel)
-  archiveFileName = "opentelemetry-javaagent.jar"
+val extendedAgent by tasks.registering(Jar::class) {
+  dependsOn(configurations["otel"])
+  archiveFileName.set("opentelemetry-javaagent.jar")
 
-  from zipTree(configurations.otel.singleFile)
+  from(zipTree(configurations["otel"].singleFile))
 
   // Add multiple extensions
-  from(tasks.shadowJar.archiveFile) {
-    into "extensions"
+  from(tasks.shadowJar.get().archiveFile) {
+    into("extensions")
   }
   from(file("../other-extension/build/libs/other-extension-all.jar")) {
-    into "extensions"
+    into("extensions")
   }
 
   doFirst {
     manifest.from(
-      zipTree(configurations.otel.singleFile).matching {
-        include 'META-INF/MANIFEST.MF'
+      zipTree(configurations["otel"].singleFile).matching {
+        include("META-INF/MANIFEST.MF")
       }.singleFile
     )
   }
@@ -526,9 +511,8 @@ The main entry point for customizing SDK configuration. This allows you to:
 **Example:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java/extension"?>
+<?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoAutoConfigurationCustomizerProvider.java" from="@AutoService"?>
-
 ```java
 @AutoService(AutoConfigurationCustomizerProvider.class)
 public class DemoAutoConfigurationCustomizerProvider
@@ -572,9 +556,8 @@ instrumentations.
 **Example:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java/extension"?>
+<?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoInstrumenterCustomizerProvider.java" from="/**"?>
-
 ```java
 /**
  * This example demonstrates how to use the InstrumenterCustomizerProvider SPI to customize
@@ -728,9 +711,8 @@ Register custom propagators that can be referenced by name in the
 **Example:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java/extension"?>
+<?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoPropagatorProvider.java" from="@AutoService"?>
-
 ```java
 @AutoService(ConfigurablePropagatorProvider.class)
 public class DemoPropagatorProvider implements ConfigurablePropagatorProvider {
@@ -755,9 +737,8 @@ configuration.
 **Example (`otel.traces.sampler=demo`):**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java/extension"?>
+<?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoConfigurableSamplerProvider.java" from="@AutoService"?>
-
 ```java
 @AutoService(ConfigurableSamplerProvider.class)
 public class DemoConfigurableSamplerProvider implements ConfigurableSamplerProvider {
@@ -783,9 +764,8 @@ resource providers.
 **Example:**
 
 <!-- prettier-ignore-start -->
-<?code-excerpt path-base="examples/java/extension"?>
+<?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoResourceProvider.java" from="@AutoService"?>
-
 ```java
 @AutoService(ResourceProvider.class)
 public class DemoResourceProvider implements ResourceProvider {
@@ -813,7 +793,7 @@ Use custom instrumentation when you need to:
 - Modify the behavior of existing instrumentation using the `order()` method
 
 For simpler use cases (modifying span attributes, custom samplers, etc.), use
-SDK customizations (SpanProcessor, Sampler) as shown earlier in this guide.
+SDK customizations (`SpanProcessor`, `Sampler`) as shown earlier in this guide.
 
 ### Components of Custom Instrumentation
 
@@ -885,10 +865,26 @@ The OpenTelemetry Java Instrumentation project provides an `Instrumenter` API
 that simplifies creating custom instrumentation. The `Instrumenter` encapsulates
 the logic for:
 
-- Creating spans
-- Extracting attributes
-- Propagating context
-- Recording metrics
+- Creating and managing spans
+- Extracting and applying span attributes
+- Propagating context (for distributed tracing)
+- Recording operation metrics
+- Handling span status and error conditions
+
+#### Creating Multiple Instrumenters
+
+A single instrumentation module may create multiple `Instrumenter` instances
+when different operations require different telemetry handling. Common patterns
+include:
+
+- **Different operations**: For example, JDBC creates separate instrumenters for statement
+  execution and transaction management
+- **Different messaging patterns**: For example, many messaging instrumentations use separate instrumenters for
+  producing messages, receiving messages, and processing messages
+- **Different span kinds**: Use `buildClientInstrumenter()`,
+  `buildServerInstrumenter()`, `buildProducerInstrumenter()`, or
+  `buildConsumerInstrumenter()` to create instrumenters that generate CLIENT,
+  SERVER, PRODUCER, or CONSUMER spans respectively
 
 ### Custom Instrumentation Basic Structure
 
@@ -939,7 +935,12 @@ public class MyTypeInstrumentation implements TypeInstrumentation {
 #### Create an Instrumenter
 
 Create a singleton `Instrumenter` instance. The `Instrumenter` is parameterized
-with `REQUEST` and `RESPONSE` types:
+with `REQUEST` and `RESPONSE` types.
+
+- `REQUEST` - Represents the operation input (e.g., HTTP request, database
+  query)
+- `RESPONSE` - Represents the operation output (e.g., HTTP response, query
+  result). Use `Void` when there is no meaningful response object to capture
 
 ```java
 public final class MySingletons {
@@ -963,12 +964,14 @@ public final class MySingletons {
 }
 ```
 
-### Creating Client Spans
+### Examples
+
+#### Creating Client Spans
 
 Client spans represent outbound requests to external services. They inject
 context into outgoing requests for distributed tracing.
 
-#### Create a TextMapSetter
+##### Create a TextMapSetter
 
 A `TextMapSetter` defines how to inject context into your request object:
 
@@ -985,7 +988,7 @@ enum MyRequestSetter implements TextMapSetter<MyRequest> {
 }
 ```
 
-#### Build a Client Instrumenter
+##### Build a Client Instrumenter
 
 Use `buildClientInstrumenter()` to create an instrumenter that creates CLIENT
 spans and injects context:
@@ -999,7 +1002,7 @@ INSTRUMENTER = Instrumenter.<MyRequest, MyResponse>builder(
   .buildClientInstrumenter(MyRequestSetter.INSTANCE);
 ```
 
-#### Use in Client Advice
+##### Use in Client Advice
 
 In your advice class, the instrumenter automatically injects context when you
 call `start()`:
@@ -1039,12 +1042,12 @@ public static void onExit(
 }
 ```
 
-### Creating Server Spans
+#### Creating Server Spans
 
 Server spans represent inbound requests. They extract context from incoming
 requests to continue distributed traces.
 
-#### Create a TextMapGetter
+##### Create a TextMapGetter
 
 A `TextMapGetter` defines how to extract context from your request object:
 
@@ -1071,7 +1074,7 @@ enum MyRequestGetter implements TextMapGetter<MyRequest> {
 }
 ```
 
-#### Build a Server Instrumenter
+##### Build a Server Instrumenter
 
 Use `buildServerInstrumenter()` to create an instrumenter that creates SERVER
 spans and extracts context:
@@ -1085,7 +1088,7 @@ INSTRUMENTER = Instrumenter.<MyRequest, MyResponse>builder(
   .buildServerInstrumenter(MyRequestGetter.INSTANCE);
 ```
 
-#### Use in Server Advice
+##### Use in Server Advice
 
 The instrumenter automatically extracts context when you call `start()`:
 
