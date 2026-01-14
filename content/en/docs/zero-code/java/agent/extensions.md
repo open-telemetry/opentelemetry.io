@@ -388,9 +388,10 @@ implementation("org.apache.commons:commons-lang3:3.19.0")
 implementation("com.google.guava:guava:33.0.0-jre")
 ```
 
-{{% alert title="Important" %}} Extensions cannot load dependencies from
-separate JAR files. All dependencies must be merged into a single shadow JAR.
-{{% /alert %}}
+> [!IMPORTANT]
+>
+> Extensions cannot load dependencies from separate JAR files. All dependencies
+> must be merged into a single shadow JAR.
 
 ### Extension Points Overview
 
@@ -498,9 +499,8 @@ with your class name.
 
 ### AutoConfigurationCustomizerProvider
 
-{{% alert title="Note" %}} This will not work for situations where
-[declarative configuration](../declarative-configuration) is in use.
-{{% /alert %}}
+> [!NOTE] This will not work for situations where
+> [declarative configuration](../declarative-configuration) is in use.
 
 The main entry point for customizing SDK configuration. This allows you to:
 
