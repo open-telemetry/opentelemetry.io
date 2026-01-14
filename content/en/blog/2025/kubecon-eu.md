@@ -113,12 +113,10 @@ cloud native observability projects. This event will be held on Tuesday, April
 1, 2025, from 9:00 - 17:25. There will be several sessions on OpenTelemetry as
 well.
 
-{{% alert title="Important access note" color="danger" %}}
-
-You need an _all-access_ pass to attend **Observability Day**. For details, see
-[KubeCon registration][registration].
-
-{{% /alert %}}
+> [!IMPORTANT] Important access note
+>
+> You need an _all-access_ pass to attend **Observability Day**. For details,
+> see [KubeCon registration][registration].
 
 - **[Sponsored Keynote: The Future of Observability: Trends, AI, and New Relic’s Vision for a Smarter Stack](https://sched.co/1u5jm)**<br>
   by Harry Kimpel, New Relic<br> Tuesday, April 1 • 10:00 - 10:05

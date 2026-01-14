@@ -118,13 +118,11 @@ enrich their projects. Prepared talks, project meetings, and unconference
 sessions run from 9:00 to 17:00. See the [full schedule][summit schedule] for
 all the details. [Sign up][maintainer summit] today!
 
-{{% alert title="Important access note" %}}
-
-You must be registered for KubeCon + CloudNativeCon to access the **Maintainer
-Summit**. You also must be a member of a CNCF incubating project, such as
-OpenTelemetry. For eligibility requirements, see [Maintainer Summit].
-
-{{% /alert %}}
+> [!IMPORTANT] Important access note
+>
+> You must be registered for KubeCon + CloudNativeCon to access the **Maintainer
+> Summit**. You also must be a member of a CNCF incubating project, such as
+> OpenTelemetry. For eligibility requirements, see [Maintainer Summit][].
 
 ## Observability Day
 
@@ -133,12 +131,10 @@ with a focus on cloud native observability projects. This event will be held on
 November 10, 2025 from 9:00 to 18:00. Look for your favorite talks about
 Observability and OpenTelemetry in the [schedule][obs-day-sched].
 
-{{% alert title="Important access note" %}}
-
-You need an _all-access_ pass to attend **Observability Day**. For details, see
-[KubeCon registration].
-
-{{% /alert %}}
+> [!IMPORTANT] Important access note
+>
+> You need an _all-access_ pass to attend **Observability Day**. For details,
+> see [KubeCon registration][].
 
 ## OpenTelemetry Observatory
 
