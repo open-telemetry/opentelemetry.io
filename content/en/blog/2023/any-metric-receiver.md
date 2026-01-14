@@ -141,41 +141,39 @@ $ ./otelcol --config collector-config.yml
 2023-11-24T12:52:51.342+0100	info	service@v0.89.0/service.go:169	Everything is ready. Begin running and processing data.
 ```
 
-{{% alert title="Note" color="secondary" %}}
-
-For testing, you can use the
-[OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib)
-distribution, which includes all available receivers. However, in a production
-setting, you can
-[construct your own Collector](/docs/collector/extend/ocb/) using the
-OpenTelemetry Collector Builder
-([`ocb`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)).
-Here's a suggested configuration:
-
-```yaml
-dist:
-  name: otelcol-any-metric
-  description: Custom OpenTelemetry Collector for receiving any kind of metric
-  output_path: ./
-
-exporters:
-  - gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.89.0
-  - gomod: go.opentelemetry.io/collector/exporter/otlpexporter v0.89.0
-  - gomod: go.opentelemetry.io/collector/exporter/otlphttpexporter v0.89.0
-
-processors:
-  - gomod:
-      github.com/open-telemetry/opentelemetry-collector-contrib/processor/transformprocessor
-      v0.89.0
-
-receivers:
-  - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.89.0
-  - gomod:
-      github.com/open-telemetry/opentelemetry-collector-contrib/receiver/carbonreceiver
-      v0.89.0
-```
-
-{{% /alert %}}
+> [!NOTE]
+>
+> For testing, you can use the
+> [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib)
+> distribution, which includes all available receivers. However, in a production
+> setting, you can
+> [construct your own Collector](/docs/collector/extend/ocb/) using the
+> OpenTelemetry Collector Builder
+> ([`ocb`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)).
+> Here's a suggested configuration:
+>
+> ```yaml
+> dist:
+>   name: otelcol-any-metric
+>   description: Custom OpenTelemetry Collector for receiving any kind of metric
+>   output_path: ./
+>
+> exporters:
+>   - gomod: go.opentelemetry.io/collector/exporter/debugexporter v0.89.0
+>   - gomod: go.opentelemetry.io/collector/exporter/otlpexporter v0.89.0
+>   - gomod: go.opentelemetry.io/collector/exporter/otlphttpexporter v0.89.0
+>
+> processors:
+>   - gomod:
+>       github.com/open-telemetry/opentelemetry-collector-contrib/processor/transformprocessor
+>       v0.89.0
+>
+> receivers:
+>   - gomod: go.opentelemetry.io/collector/receiver/otlpreceiver v0.89.0
+>   - gomod:
+>       github.com/open-telemetry/opentelemetry-collector-contrib/receiver/carbonreceiver
+>       v0.89.0
+> ```
 
 With the OpenTelemetry Collector operational, open a secondary shell and
 transmit your metric to it:
