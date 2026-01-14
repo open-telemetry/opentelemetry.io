@@ -85,8 +85,10 @@ Avoid invalid instrument names.
 
 Avoid changing the order of tags while reporting measurements. For example:
 
-{{% alert title="Warning" color="warning" %}} The last line of code has bad
-performance since the tags are not following the same order: {{% /alert %}}
+> [!WARNING]
+>
+> The last line of code below has bad performance since the tags are not
+> following the same order.
 
 ```csharp
 counter.Add(2, new("name", "apple"), new("color", "red"));

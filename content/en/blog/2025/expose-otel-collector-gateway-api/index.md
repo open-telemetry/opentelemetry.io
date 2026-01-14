@@ -197,16 +197,15 @@ openssl req -newkey rsa:4096 -nodes -keyout client.key -out client.csr -subj "${
 openssl x509 -req -in client.csr -CA rootCA.crt -CAkey rootCA.key -CAcreateserial -out client.crt -days 365 -sha256
 ```
 
-{{% alert title="Warning" color=warning %}}
-
-For production, never use self-signed certificates for external-facing endpoints
-accessible from the public internet. Use certificates issued by a trusted public
-CA (e.g., Let's Encrypt through cert-manager) or a managed internal PKI system.
-The process of obtaining certs would differ, but the concepts of using them in
-Kubernetes remain similar. Ensure the server certificate's Common Name (CN) or
-Subject Alternative Name (SAN) matches the hostname clients use to connect.
-
-{{% /alert %}}
+> [!WARNING]
+>
+> For production, never use self-signed certificates for external-facing
+> endpoints accessible from the public internet. Use certificates issued by a
+> trusted public CA (e.g., Let's Encrypt through cert-manager) or a managed
+> internal PKI system. The process of obtaining certs would differ, but the
+> concepts of using them in Kubernetes remain similar. Ensure the server
+> certificate's Common Name (CN) or Subject Alternative Name (SAN) matches the
+> hostname clients use to connect.
 
 ### Step 3: Create `otel-collector` namespace
 

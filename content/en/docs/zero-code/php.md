@@ -20,8 +20,9 @@ Automatic instrumentation with PHP requires:
 
 ## Install the OpenTelemetry extension
 
-{{% alert title="Important" color="warning" %}}Installing the OpenTelemetry
-extension by itself does not generate traces. {{% /alert %}}
+> [!IMPORTANT]
+>
+> Installing the OpenTelemetry extension by itself does not generate traces.
 
 The extension can be installed via pecl,
 [pickle](https://github.com/FriendsOfPHP/pickle),

@@ -29,11 +29,13 @@ instrumentation topics:
 - [Log instrumentation](#log-instrumentation), which is used to get logs from an
   existing Java logging framework into OpenTelemetry.
 
-{{% alert %}} While [instrumentation categories](#instrumentation-categories)
-enumerates several options for instrumenting an application, we recommend users
-start with the [Java agent](#zero-code-java-agent). The Java agent has a simple
-installation process, and automatically detects and installs instrumentation
-from a large library. {{% /alert %}}
+> [!NOTE]
+>
+> While [instrumentation categories](#instrumentation-categories) enumerates
+> several options for instrumenting an application, we recommend users start
+> with the [Java agent](#zero-code-java-agent). The Java agent has a simple
+> installation process, and automatically detects and installs instrumentation
+> from a large library.
 
 ## Instrumentation categories
 

@@ -386,7 +386,9 @@ scope:
 - [LoggerProvider](#loggerprovider) provides scoped [Loggers](#logger) for
   recording logs.
 
-{{% alert %}} {{% param logBridgeWarning %}} {{% /alert %}}
+> [!WARNING]
+>
+> {{% param logBridgeWarning %}}
 
 A scope is identified by the triplet (name, version, schemaUrl). Care must be
 taken to ensure the scope identity is unique. A typical approach is to set the
@@ -1429,7 +1431,9 @@ is the API entry point for logs and provides [Loggers](#logger). See
 [providers and scopes](#providers-and-scopes) for information on providers and
 scopes.
 
-{{% alert %}} {{% param logBridgeWarning %}} {{% /alert %}}
+> [!WARNING]
+>
+> {{% param logBridgeWarning %}}
 
 #### Logger
 
@@ -1623,14 +1627,16 @@ help instrumentation conform:
 | Generated code for stable semantic conventions     | `io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha`            |
 | Generated code for incubating semantic conventions | `io.opentelemetry.semconv:opentelemetry-semconv-incubating:{{% param vers.semconv %}}-alpha` |
 
-{{% alert %}} While both `opentelemetry-semconv` and
-`opentelemetry-semconv-incubating` include the `-alpha` suffix and are subject
-to breaking changes, the intent is to stabilize `opentelemetry-semconv` and
-leave the `-alpha` suffix on `opentelemetry-semconv-incubating` permanently.
-Libraries can use `opentelemetry-semconv-incubating` for testing, but should not
-include it as a dependency: since attributes may come and go from version to
-version, including it as a dependency may expose end users to runtime errors
-when transitive version conflicts occur. {{% /alert %}}
+> [!NOTE]
+>
+> While both `opentelemetry-semconv` and `opentelemetry-semconv-incubating`
+> include the `-alpha` suffix and are subject to breaking changes, the intent is
+> to stabilize `opentelemetry-semconv` and leave the `-alpha` suffix on
+> `opentelemetry-semconv-incubating` permanently. Libraries can use
+> `opentelemetry-semconv-incubating` for testing, but should not include it as a
+> dependency: since attributes may come and go from version to version,
+> including it as a dependency may expose end users to runtime errors when
+> transitive version conflicts occur.
 
 The attribute constants generated from semantic conventions are instances of
 `AttributeKey<T>`, and can be used anywhere the OpenTelemetry API accepts

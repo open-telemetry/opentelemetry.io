@@ -185,14 +185,12 @@ To configure `ocb`, follow these steps:
          providers-vers %}}
    ```
 
-{{% alert title="Tip" %}}
-
-For a list of components that you can add to your custom Collector, see the
-[OpenTelemetry Registry](/ecosystem/registry/?language=collector). Each registry
-entry contains the full name and version you need to add to your
-`builder-config.yaml`.
-
-{{% /alert %}}
+> [!TIP]
+>
+> For a list of components that you can add to your custom Collector, see the
+> [OpenTelemetry Registry](/ecosystem/registry/?language=collector). Each
+> registry entry contains the full name and version you need to add to your
+> `builder-config.yaml`.
 
 ## Generate the code and build your Collector distribution
 

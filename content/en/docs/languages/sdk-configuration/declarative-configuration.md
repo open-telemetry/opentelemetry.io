@@ -12,8 +12,9 @@ This approach is useful when:
 - You want to use configuration options that are not available as environment
   variables.
 
-{{% alert title="Warning" %}} Declarative configuration is experimental.
-{{% /alert %}}
+> [!WARNING]
+>
+> Declarative configuration is experimental.
 
 ## Supported languages
 
@@ -88,8 +89,10 @@ resource:
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
 ```
 
-{{% alert title="Warning" %}} All environment variables are ignored unless you
-explicitly add them to the config file. {{% /alert %}}
+> [!WARNING]
+>
+> All environment variables are ignored unless you explicitly add them to the
+> config file.
 
 ## Migration configuration
 
