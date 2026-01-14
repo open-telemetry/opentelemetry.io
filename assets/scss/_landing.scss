@@ -22,6 +22,8 @@
   min-height: 320px;
   display: flex;
   align-items: center;
+  // Full-width viewport code: needed to make background colors extend edge-to-edge
+  // while keeping content centered in container
   position: relative;
   left: 50%;
   right: 50%;
@@ -90,7 +92,7 @@
         display: block;
       }
 
-      .hero-split__logo-img {
+      svg {
         height: 144px;
         width: auto;
 
@@ -113,7 +115,7 @@
         display: none;
       }
 
-      .hero-split__logo-img {
+      svg {
         height: 120px;
         width: auto;
         max-width: 100%;
@@ -157,7 +159,7 @@
         display: block;
       }
 
-      .hero-split__logo-img {
+      svg {
         height: 144px;
         width: auto;
 
@@ -180,7 +182,7 @@
         display: none;
       }
 
-      .hero-split__logo-img {
+      svg {
         height: 120px;
         width: auto;
         max-width: 100%;
@@ -365,25 +367,7 @@
       max-width: 100%;
       height: auto;
       max-height: 200px;
-    }
-
-    .placeholder {
-      background: $light;
-      border: 2px dashed $border-color;
-      border-radius: 8px;
-      padding: 3rem;
-      color: $text-muted;
-      min-height: 200px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-
-      p {
-        margin: 0;
-        font-size: $font-size-sm;
-      }
+      border-radius: var(--bs-border-radius-lg);
     }
   }
 }
@@ -454,6 +438,7 @@
       height: auto;
       max-height: 250px;
       object-fit: contain;
+      border-radius: var(--bs-border-radius-lg);
     }
   }
 
@@ -491,44 +476,6 @@
     p:last-child {
       margin-bottom: 0;
     }
-  }
-}
-
-// =============================================================================
-// HERO HIGHLIGHTS - Brief feature cards below search (like K8s)
-// =============================================================================
-
-.hero-highlights-section {
-  padding: 3rem 0;
-}
-
-.hero-highlights {
-  display: grid;
-  gap: 2rem;
-
-  @include media-breakpoint-up(md) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  &__item {
-    text-align: center;
-    padding: 1rem;
-
-    @include media-breakpoint-up(md) {
-      text-align: left;
-    }
-  }
-
-  &__title {
-    font-size: $h4-font-size;
-    font-weight: $font-weight-bold;
-    margin-bottom: 0.5rem;
-  }
-
-  &__description {
-    font-size: $font-size-base;
-    line-height: 1.6;
-    margin-bottom: 0;
   }
 }
 
@@ -599,6 +546,7 @@
     height: 140px;
     object-fit: contain;
     margin-bottom: 0.5rem;
+    border-radius: var(--bs-border-radius-lg);
   }
 
   &__name {
@@ -667,7 +615,7 @@
 
   &__icon {
     font-size: 128px;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1.5rem;
     color: $primary;
     display: flex;
     justify-content: center;
@@ -687,6 +635,8 @@
     width: 128px;
     height: 128px;
     object-fit: contain;
+    border-radius: var(--bs-border-radius-lg);
+    margin-bottom: 1.5rem;
   }
 
   &__title {

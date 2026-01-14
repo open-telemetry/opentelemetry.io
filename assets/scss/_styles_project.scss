@@ -67,34 +67,6 @@
   }
 }
 
-//override the button classes for the Status page only
-.l-status-primary {
-  @extend .l-buttons;
-  justify-content: left;
-
-  > ul > li > a /*, > p > a*/ {
-    @extend .btn-lg;
-    @extend .btn-primary;
-    padding: 20px;
-    border-radius: 0;
-    min-width: 220px;
-  }
-}
-
-.l-status-secondary {
-  @extend .l-buttons;
-  justify-content: left;
-
-  > ul > li > a /*, > p > a*/ {
-    @extend .btn-lg;
-    @extend .btn-secondary;
-    padding: 20px;
-    border-radius: 0;
-    min-width: 150px;
-    color: #2f4f4f;
-  }
-}
-
 .td-navbar {
   // AAA contrast fix: darken navbar background for better contrast with white text/logo
   // Original $primary (#4f62ad) gave 5.7:1, #41549f gives 7:1+
