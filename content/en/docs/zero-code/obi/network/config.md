@@ -4,7 +4,7 @@ linkTitle: Configuration
 description:
   Learn about the configuration options available for OBI network metrics
 weight: 3
-cSpell:ignore: BEETPH
+cSpell:ignore: BEETPH UDPLITE
 ---
 
 Network metrics are configured under the `network` property of the
