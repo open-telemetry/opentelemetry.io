@@ -96,6 +96,10 @@
 }
 
 .td-navbar {
+  // AAA contrast fix: darken navbar background for better contrast with white text/logo
+  // Original $primary (#4f62ad) gave 5.7:1, #41549f gives 7:1+
+  background: #41549f;
+
   .navbar-brand {
     @include media-breakpoint-up(md) {
       padding: 0;
@@ -108,6 +112,23 @@
     }
     .navbar-brand__name {
       display: none;
+    }
+  }
+
+  // AAA contrast fix: explicitly set nav-link colors to white for 7:1+ contrast
+  .nav-link {
+    color: $white !important;
+
+    &:hover,
+    &:focus {
+      color: rgba($white, 0.9) !important;
+    }
+  }
+
+  // Ensure dropdown items also have proper contrast
+  .dropdown-menu {
+    .dropdown-item {
+      color: var(--bs-body-color);
     }
   }
 }
@@ -128,9 +149,14 @@
     }
 
     a {
-      color: white;
+      // AAA contrast: #00092a on $secondary (#f5a800) = 10.6:1
+      color: #00092a;
+      text-decoration: underline;
       &.external-link:after {
         display: none;
+      }
+      &:hover {
+        color: #000;
       }
     }
   }
@@ -152,6 +178,29 @@
   & p {
     padding: 0.5rem;
     margin-bottom: initial;
+  }
+
+  // AAA contrast fix for links (light mode)
+  a {
+    // #00092a provides 10.6:1 contrast on light backgrounds
+    color: #00092a;
+    text-decoration: underline;
+    font-weight: $font-weight-semibold;
+
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+// Dark mode: banner link colors for contrast on dark background
+@include color-mode(dark) {
+  .o-banner a {
+    color: #f5a800; // OTel orange for visibility
+
+    &:hover {
+      color: lighten(#f5a800, 15%);
+    }
   }
 }
 

@@ -55,9 +55,9 @@
     z-index: 1;
   }
 
-  // Primary (dark blue) variant
+  // Primary (dark blue) variant - matches navbar for visual consistency
   &--primary {
-    background: $primary;
+    background: #41549f; // Same as .td-navbar for AAA contrast
     color: $white;
 
     .hero-split__tagline {
@@ -594,26 +594,26 @@
   padding: 1rem;
 
   &__icon {
-    font-size: 3rem;
+    font-size: 128px;
     margin-bottom: 0.75rem;
     color: $primary;
     display: flex;
     justify-content: center;
 
     svg {
-      width: 64px;
-      height: 64px;
+      width: 128px;
+      height: 128px;
       fill: currentColor;
     }
 
     i {
-      font-size: 3rem;
+      font-size: 128px;
     }
   }
 
   &__img {
-    width: 80px;
-    height: 80px;
+    width: 128px;
+    height: 128px;
     object-fit: contain;
   }
 
