@@ -74,8 +74,7 @@ or
 
 > [!NOTE]
 >
-> Activities which are not yet finished/stopped will
-> not be exported.
+> Activities which are not yet finished/stopped will not be exported.
 
 Avoid calling
 [Activity.AddEvent](https://learn.microsoft.com/dotnet/api/system.diagnostics.activity.addevent)

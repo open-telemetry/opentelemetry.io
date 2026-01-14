@@ -22,8 +22,8 @@ Jinja2, Flask, Django, and Celery.propagate context across services for you.
 > [!NOTE]
 >
 > Use instrumentation libraries to propagate context. Although it is possible to
-> propagate context manually, the Python auto-instrumentation and instrumentation
-> libraries are well-tested and easier to use.
+> propagate context manually, the Python auto-instrumentation and
+> instrumentation libraries are well-tested and easier to use.
 
 ## Manual context propagation
 

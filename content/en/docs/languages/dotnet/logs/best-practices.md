@@ -238,9 +238,9 @@ internal static partial class LoggerExtensions
 
 > [!NOTE]
 >
-> When using the compile-time source generator the
-> first `Exception` parameter detected is automatically given special handling. It
-> **SHOULD NOT** be part of the message template. For details see:
+> When using the compile-time source generator the first `Exception` parameter
+> detected is automatically given special handling. It **SHOULD NOT** be part of
+> the message template. For details see:
 > [Log method anatomy](https://learn.microsoft.com/dotnet/core/extensions/logger-message-generator#log-method-anatomy).
 
 You should use the dedicated overloads to log exceptions when using the logging

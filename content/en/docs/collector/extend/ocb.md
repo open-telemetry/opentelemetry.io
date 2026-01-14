@@ -198,8 +198,8 @@ entry contains the full name and version you need to add to your
 
 > [!NOTE]
 >
-> This section instructs you to build your custom Collector distribution using the
-> `ocb` binary. If you would like to build and deploy your custom Collector
+> This section instructs you to build your custom Collector distribution using
+> the `ocb` binary. If you would like to build and deploy your custom Collector
 > distribution to a container orchestrator such as Kubernetes, skip this section
 > and see
 > [Containerize your Collector Distribution](#containerize-your-collector-distribution).

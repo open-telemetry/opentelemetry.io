@@ -36,8 +36,8 @@ helm install my-otel-demo open-telemetry/opentelemetry-demo
 > [!NOTE]
 >
 > The OpenTelemetry Demo Helm chart does not support being upgraded from one
-> version to another. If you need to upgrade the chart, you must first delete the
-> existing release and then install the new version.
+> version to another. If you need to upgrade the chart, you must first delete
+> the existing release and then install the new version.
 
 > [!NOTE]
 >
@@ -82,10 +82,10 @@ kubectl --namespace default port-forward svc/frontend-proxy 8080:8080
 
 > [!NOTE]
 >
-> `kubectl port-forward` proxies the port until the process terminates. You might
-> need to create separate terminal sessions for each use of
-> `kubectl port-forward`, and use <kbd>Ctrl-C</kbd> to terminate the process when
-> done.
+> `kubectl port-forward` proxies the port until the process terminates. You
+> might need to create separate terminal sessions for each use of
+> `kubectl port-forward`, and use <kbd>Ctrl-C</kbd> to terminate the process
+> when done.
 
 With the frontend-proxy port-forward set up, you can access:
 
@@ -99,16 +99,16 @@ With the frontend-proxy port-forward set up, you can access:
 
 > [!NOTE]
 >
-> We recommend that you use a values file when
-> installing the Helm chart in order to specify additional configuration options.
+> We recommend that you use a values file when installing the Helm chart in
+> order to specify additional configuration options.
 
 #### Configure ingress resources
 
 > [!NOTE]
 >
 > Kubernetes clusters might not have the proper infrastructure components to
-> enable LoadBalancer service types or ingress resources. Verify your cluster has
-> the proper support before using these configuration options.
+> enable LoadBalancer service types or ingress resources. Verify your cluster
+> has the proper support before using these configuration options.
 
 Each demo component (ie: frontend-proxy) offers a way to have its Kubernetes
 service type configured. By default, these will not be created, but you can
@@ -193,10 +193,10 @@ opentelemetry-collector:
 
 > [!NOTE]
 >
-> When merging YAML values with Helm, objects are
-> merged and arrays are replaced. The `spanmetrics` exporter must be included in
-> the array of exporters for the `traces` pipeline if overridden. Not including
-> this exporter will result in an error.
+> When merging YAML values with Helm, objects are merged and arrays are
+> replaced. The `spanmetrics` exporter must be included in the array of
+> exporters for the `traces` pipeline if overridden. Not including this exporter
+> will result in an error.
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require

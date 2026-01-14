@@ -133,7 +133,9 @@ and continues on the next line.
 `;
   const result = runConvert(input);
   assert.strictEqual(result, expected, 'Inline content with multi-line failed');
-  console.log('✓ Opening tag with inline content, closing tag on different line');
+  console.log(
+    '✓ Opening tag with inline content, closing tag on different line',
+  );
 }
 
 // Test 8: Alert with inline content and code block

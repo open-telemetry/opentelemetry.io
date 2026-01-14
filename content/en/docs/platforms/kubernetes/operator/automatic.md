@@ -216,9 +216,9 @@ the `otlpreceiver` of the Collector created in the previous step.
 
 > [!NOTE]
 >
-> [Deno's OpenTelemetry integration][deno-docs] is not yet stable. As a result all
-> workloads that want to be instrumented with Deno must have the `--unstable-otel`
-> flag set when starting the Deno process.
+> [Deno's OpenTelemetry integration][deno-docs] is not yet stable. As a result
+> all workloads that want to be instrumented with Deno must have the
+> `--unstable-otel` flag set when starting the Deno process.
 >
 > [deno-docs]: https://docs.deno.com/runtime/fundamentals/open_telemetry/
 
@@ -413,9 +413,9 @@ spec:
 > [!NOTE]
 >
 > If both environment variables are set, `OTEL_NODE_ENABLED_INSTRUMENTATIONS` is
-> applied first, and then `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is applied to that
-> list. Therefore, if the same instrumentation is included in both lists, that
-> instrumentation will be disabled.
+> applied first, and then `OTEL_NODE_DISABLED_INSTRUMENTATIONS` is applied to
+> that list. Therefore, if the same instrumentation is included in both lists,
+> that instrumentation will be disabled.
 
 #### Learn more {#js-learn-more}
 

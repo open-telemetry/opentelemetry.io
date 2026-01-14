@@ -26,8 +26,9 @@ a Spring bean. Simply inject `OpenTelemetry` into your Spring components.
 
 > [!NOTE]
 >
-> For the most common use cases, use the `@WithSpan` annotation instead of manual
-> instrumentation. See [Annotations](../annotations) for more information.
+> For the most common use cases, use the `@WithSpan` annotation instead of
+> manual instrumentation. See [Annotations](../annotations) for more
+> information.
 
 ```java
 import io.opentelemetry.api.OpenTelemetry;

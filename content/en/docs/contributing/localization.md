@@ -88,9 +88,10 @@ this means replacing the `en` in the URL by your locale's language code.
 >
 > The OTel website repository has a custom render-link hook that Hugo uses to
 > convert absolute link paths referring to documentation pages. **Links of the
-> form `/docs/some-page` are made locale specific** by prefixing the path with the
-> page language code when rendering the link. For example, the previous sample
-> path would become `/ja/docs/some-page` when rendered from a Japanese page.
+> form `/docs/some-page` are made locale specific** by prefixing the path with
+> the page language code when rendering the link. For example, the previous
+> sample path would become `/ja/docs/some-page` when rendered from a Japanese
+> page.
 
 ### Link definition labels {#link-labels}
 
@@ -299,10 +300,10 @@ involved in starting a new localization.
 >
 > You don't have to be an existing contributor to the OpenTelemetry project to
 > start a new localization. However, you cannot be added as a member of the
-> [OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as a
-> member of the approvers group for your localization until you satisfy the
-> requirements for becoming an established member and approver as outlined in the
-> [membership guidelines][].
+> [OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as
+> a member of the approvers group for your localization until you satisfy the
+> requirements for becoming an established member and approver as outlined in
+> the [membership guidelines][].
 >
 > Before you earn approver status, you can indicate your approval of a
 > localization PR by adding an "LGTM" (Looks Good To Me) comment. During this

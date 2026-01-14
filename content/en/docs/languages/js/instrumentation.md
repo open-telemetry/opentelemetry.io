@@ -18,8 +18,8 @@ cSpell:ignore: dicelib Millis rolldice
 > started and then enrich your code with manual instrumentation as needed.
 >
 > Also, for libraries your code depends on, you don't have to write
-> instrumentation code yourself, since they might come with OpenTelemetry built-in
-> _natively_ or you can make use of
+> instrumentation code yourself, since they might come with OpenTelemetry
+> built-in _natively_ or you can make use of
 > [instrumentation libraries](/docs/languages/js/libraries/).
 
 ## Example app preparation {#example-app}
@@ -193,8 +193,7 @@ npm install @opentelemetry/api @opentelemetry/resources @opentelemetry/semantic-
 
 > [!NOTE]
 >
-> If you’re instrumenting a library, **skip this
-> step**.
+> If you’re instrumenting a library, **skip this step**.
 
 If you instrument a Node.js application install the
 [OpenTelemetry SDK for Node.js](https://www.npmjs.com/package/@opentelemetry/sdk-node):
@@ -286,9 +285,9 @@ information, see [Resources](/docs/languages/js/resources/).
 
 > [!NOTE]
 >
-> The following examples using
-> `--import instrumentation.ts` (TypeScript) require Node.js v20 or later. If you
-> are using Node.js v18, please use the JavaScript example.
+> The following examples using `--import instrumentation.ts` (TypeScript)
+> require Node.js v20 or later. If you are using Node.js v18, please use the
+> JavaScript example.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
@@ -317,8 +316,7 @@ information, see [Libraries](/docs/languages/js/libraries/).
 
 > [!NOTE]
 >
-> If you’re instrumenting a library, **skip this
-> step**.
+> If you’re instrumenting a library, **skip this step**.
 
 To enable [tracing](/docs/concepts/signals/traces/) in your app, you'll need to
 have an initialized

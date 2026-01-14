@@ -163,7 +163,6 @@ metrics.set_meter_provider(meterProvider)
 >   - `ObservableCounter`: `CUMULATIVE`
 >   - `ObservableUpDownCounter`: `CUMULATIVE`
 >   - `ObservableGauge`: `CUMULATIVE`
->
 > - `DELTA`
 >   - `Counter`: `DELTA`
 >   - `UpDownCounter`: `CUMULATIVE`
@@ -171,7 +170,6 @@ metrics.set_meter_provider(meterProvider)
 >   - `ObservableCounter`: `DELTA`
 >   - `ObservableUpDownCounter`: `CUMULATIVE`
 >   - `ObservableGauge`: `CUMULATIVE`
->
 > - `LOWMEMORY`
 >   - `Counter`: `DELTA`
 >   - `UpDownCounter`: `CUMULATIVE`

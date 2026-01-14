@@ -24,8 +24,8 @@ a set of checks are executed. The PR checks verify that:
 > OpenTelemetry Bot to run that command on your behalf and update the PR. Make
 > sure that you pull those changes locally.
 >
-> Only if your issues persist, read below what the different checks do and how you
-> can recover from a failed state.
+> Only if your issues persist, read below what the different checks do and how
+> you can recover from a failed state.
 
 ## `Easy CLA` {.notranslate lang=en}
 

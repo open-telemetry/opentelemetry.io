@@ -20,6 +20,6 @@ For information on configuration options and data export modes, see the
 > If you will be using OBI to generate traces, please make sure you've read our
 > documentation section on configuring the
 > [Routes Decorator](../configure/routes-decorator/). Since OBI is
-> auto-instrumenting your application without any modifications to your code, the
-> service names and URLs that are automatically assigned might not be what you
-> expect.
+> auto-instrumenting your application without any modifications to your code,
+> the service names and URLs that are automatically assigned might not be what
+> you expect.

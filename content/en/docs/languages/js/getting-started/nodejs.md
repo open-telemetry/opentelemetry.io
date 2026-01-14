@@ -13,9 +13,8 @@ the console.
 
 > [!NOTE]
 >
-> The logging library for OpenTelemetry for Node.js is
-> still under development hence an example for it is not provided below. For
-> status details, see
+> The logging library for OpenTelemetry for Node.js is still under development
+> hence an example for it is not provided below. For status details, see
 > [Status and Releases](/docs/languages/js/#status-and-releases).
 
 ## Prerequisites
@@ -170,9 +169,9 @@ TypeScript), which will contain your instrumentation setup code.
 
 > [!NOTE]
 >
-> The following examples using
-> `--import instrumentation.ts` (TypeScript) require Node.js v.20 or later. If you
-> are using Node.js v.18, please use the JavaScript example.
+> The following examples using `--import instrumentation.ts` (TypeScript)
+> require Node.js v.20 or later. If you are using Node.js v.18, please use the
+> JavaScript example.
 
 {{< tabpane text=true >}} {{% tab TypeScript %}}
 
