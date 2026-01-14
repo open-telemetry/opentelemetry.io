@@ -69,15 +69,13 @@ Before we start, ensure you have the following:
     [CLI](https://github.com/openssl/openssl/wiki/Binaries) for generating
     certificates.
 
-{{% alert title="API stability note" color=warning %}}
-
-Since certain parts of the Gateway API are still in alpha/beta phase, the
-support for specific aspects may vary or may not be enabled by default. Please
-refer to the documentation of the Gateway implementation that you are using. For
-example, at the time of writing, if you are using Istio, ensure that
-`PILOT_ENABLE_ALPHA_GATEWAY_API` is enabled during the install.
-
-{{% /alert %}}
+> [!WARNING] API stability note
+>
+> Since certain parts of the Gateway API are still in alpha/beta phase, the
+> support for specific aspects may vary or may not be enabled by default. Refer
+> to the documentation of the Gateway implementation that you are using. For
+> example, at the time of writing, if you are using Istio, ensure that
+> `PILOT_ENABLE_ALPHA_GATEWAY_API` is enabled during the install.
 
 ## What is the Kubernetes Gateway API?
 
