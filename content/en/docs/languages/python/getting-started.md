@@ -18,9 +18,11 @@ Ensure that you have the following installed locally:
 
 - [Python 3](https://www.python.org/)
 
-> **Note:** On Windows, Python is typically invoked using `python` rather than
-> `python3`. The examples below include platform-specific tabs to show the
-> correct commands for your operating system.
+> [!NOTE]
+>
+> On Windows, Python is typically invoked using `python` rather than
+> `python3`. The following examples show the correct commands for your
+> operating system.
 
 ## Example Application
 
