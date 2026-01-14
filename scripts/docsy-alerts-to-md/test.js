@@ -34,7 +34,7 @@ function runConvert(input) {
 
 // Test 2: Multi-line alert with blank lines
 {
-  const input = `{{% alert title="Note" %}}
+  const input = `{{% alert title=Note %}}
 
 Some content here
 spanning multiple lines.
