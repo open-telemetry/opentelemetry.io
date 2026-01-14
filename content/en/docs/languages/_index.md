@@ -50,11 +50,9 @@ references are available:
 
 {{% apidocs %}}
 
-{{% alert title="Note" %}}
-
-The list above is aliased to [`/api`](/api).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> The list above is aliased to [`/api`](/api).
 
 [zero-code]: /docs/platforms/kubernetes/operator/automatic/
 [instrumentation]: /docs/concepts/instrumentation/

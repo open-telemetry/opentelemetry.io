@@ -411,11 +411,13 @@ spec:
   configure the backend to which the route forwards the requests. In this case,
   to the `otel-collector-server-svc`.
 
-{{% alert title="Note" %}} We make use of `options` in the gateway for
-implementation-specific configuration of mTLS. Currently, the gateway API does
-not explicitly have `Mutual TLS`
-[mode](https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype). Refer to
-the latest documentation of Gateway API for updates. {{% /alert %}}
+> [!NOTE]
+>
+> We make use of `options` in the gateway for implementation-specific
+> configuration of mTLS. Currently, the gateway API does not explicitly have
+> `Mutual TLS`
+> [mode](https://gateway-api.sigs.k8s.io/reference/spec/#tlsmodetype). Refer to
+> the latest documentation of Gateway API for updates.
 
 Apply the Gateway configuration:
 

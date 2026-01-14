@@ -4,7 +4,7 @@ linkTitle: Configuration
 aliases: [/docs/languages/net/automatic/config]
 weight: 20
 # prettier-ignore
-cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib ILREWRITE NETFX OPERATINGSYSTEM PROCESSRUNTIME UNHANDLEDEXCEPTION
+cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib ILREWRITE LOGRECORD NETFX OPERATINGSYSTEM PROCESSRUNTIME SQLCLIENT UNHANDLEDEXCEPTION
 ---
 
 ## Configuration methods
