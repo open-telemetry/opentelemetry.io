@@ -131,12 +131,14 @@ internal static partial class LoggerExtensions
 }
 ```
 
-{{% alert title="Note" %}} There is no need to pass in an explicit
-[EventId](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.eventid)
-while using
-[LoggerMessageAttribute](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loggermessageattribute).
-A durable `EventId` will be automatically assigned based on the hash of the
-method name during code generation. {{% /alert %}}
+> [!NOTE]
+>
+> There is no need to pass in an explicit
+> [EventId](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.eventid)
+> while using
+> [LoggerMessageAttribute](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loggermessageattribute).
+> A durable `EventId` will be automatically assigned based on the hash of the
+> method name during code generation.
 
 Use
 [LogPropertiesAttribute](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.logpropertiesattribute)
@@ -234,11 +236,12 @@ internal static partial class LoggerExtensions
 }
 ```
 
-{{% alert title="Note" %}} When using the compile-time source generator the
-first `Exception` parameter detected is automatically given special handling. It
-**SHOULD NOT** be part of the message template. For details see:
-[Log method anatomy](https://learn.microsoft.com/dotnet/core/extensions/logger-message-generator#log-method-anatomy).
-{{% /alert %}}
+> [!NOTE]
+>
+> When using the compile-time source generator the first `Exception` parameter
+> detected is automatically given special handling. It **SHOULD NOT** be part of
+> the message template. For details see:
+> [Log method anatomy](https://learn.microsoft.com/dotnet/core/extensions/logger-message-generator#log-method-anatomy).
 
 You should use the dedicated overloads to log exceptions when using the logging
 extensions methods.
@@ -341,7 +344,7 @@ more.
 ## Log filtering
 
 For more advanced filtering and sampling, the .NET team has a plan to cover it
-in .NET 9 timeframe, please use this
+in the .NET 9 timeframe. Use this
 [runtime issue](https://github.com/dotnet/runtime/issues/82465) to track the
 progress or provide feedback and suggestions.
 

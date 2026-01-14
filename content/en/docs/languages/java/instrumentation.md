@@ -106,7 +106,7 @@ as a temporary means of filling the gap.
 
 Native instrumentation should interact with the OpenTelemetry Java agent as
 follows: On startup, the Java agent initializes an
-[OpenTelemetry](../api/#opentelemetry)) instance and installs
+[OpenTelemetry](../api/#opentelemetry) instance and installs
 [zero-code](#zero-code-java-agent) instrumentation. Libraries adding native
 instrumentation should allow users to customize the `OpenTelemetry` instance
 used, but should automatically use the instance initialized by the Java agent
@@ -255,9 +255,7 @@ Log correlation with traces is available by installing a [shim](#shims) to
 bridge OpenTelemetry context into the log framework. See "Bridge OpenTelemetry
 context into Log4j", "Bridge OpenTelemetry context into Logback" entries.
 
-{{% alert title="Note" %}}
-
-An end-to-end example of log instrumentation using stdout is available in the
-[Java examples repository](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> An end-to-end example of log instrumentation using stdout is available in the
+> [Java examples repository](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).

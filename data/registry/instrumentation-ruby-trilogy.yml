@@ -15,5 +15,5 @@ createdAt: 2020-11-09
 package:
   registry: gems
   name: opentelemetry-instrumentation-trilogy
-  version: 0.65.1
+  version: 0.66.0
 isFirstParty: false
