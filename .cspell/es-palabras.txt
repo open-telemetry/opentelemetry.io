@@ -24,7 +24,6 @@ autogenerado
 desincronizado
 desincronizadas
 subsección
-react-native-app
 cardinalidad
 agregable
 milisegundos

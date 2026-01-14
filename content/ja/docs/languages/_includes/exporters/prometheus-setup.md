@@ -1,10 +1,10 @@
 ---
-default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91
+default_lang_commit: 6f3712c5cda4ea79f75fb410521880396ca30c91 # patched
 ---
 
 ## Prometheus {#prometheus}
 
-メトリクスデータを[Prometheus](https://prometheus.io/)に送信するには、[PrometheusのOTLPレシーバーを有効にして](https://prometheus.io/docs/prometheus/2.55/feature_flags/#otlp-receiver)[OTLPエクスポーター](#otlp)を使用するか、Prometheusエクスポーターを使用できます。
+メトリクスデータを[Prometheus](https://prometheus.io/)に送信するには、[PrometheusのOTLPレシーバーを有効にして](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver)[OTLPエクスポーター](#otlp)を使用するか、Prometheusエクスポーターを使用できます。
 Prometheusエクスポーターは、メトリクスを収集しリクエストに応じてPrometheusテキスト形式にシリアライズするHTTPサーバーを起動する`MetricReader`です。
 
 ### バックエンドのセットアップ {#prometheus-setup}
@@ -30,7 +30,7 @@ scrape_configs:
 UIがポート`9090`でアクセス可能なDockerコンテナでPrometheusを実行します。
 
 ```shell
-docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --enable-feature=otlp-write-receive
+docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --web.enable-otlp-receiver
 ```
 
 {{% alert title=注意 %}}
