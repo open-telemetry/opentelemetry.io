@@ -2,7 +2,7 @@
 title: Extensions
 aliases: [/docs/instrumentation/java/extensions]
 weight: 300
-cSpell:ignore: Customizer Dotel instrumenters myextension javax
+cSpell:ignore: classloader Customizer Dotel instrumenters javax myextension
 ---
 
 <?code-excerpt path-base="examples/java/extensions-minimal"?>
