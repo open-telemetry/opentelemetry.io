@@ -1,6 +1,18 @@
 // Landing page components for OpenTelemetry homepage redesign
 // Inspired by Kubernetes and Prometheus landing page patterns
 
+// Ensure homepage SVGs have transparent backgrounds
+.td-home,
+.intro-section,
+.main-feature,
+.otel-feature,
+.signal-card {
+  img[src$='.svg'],
+  svg {
+    background: transparent !important;
+  }
+}
+
 // Override Docsy's default section padding for landing page
 .td-default main > section:first-of-type {
   padding-top: 4rem;
@@ -110,8 +122,26 @@
 
   .td-box--white .hero-simple,
   .td-box--light .hero-simple {
+    color: $white !important;
+
     .hero-simple__tagline {
-      color: $body-color;
+      color: $white !important;
+    }
+
+    .hero-simple__content {
+      color: $white !important;
+
+      p,
+      a,
+      li {
+        color: $white !important;
+      }
+    }
+
+    .l-primary-buttons {
+      ul li a {
+        color: $white !important;
+      }
     }
   }
 }
