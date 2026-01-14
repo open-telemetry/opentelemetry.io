@@ -2,7 +2,7 @@
 title: Extensions
 aliases: [/docs/instrumentation/java/extensions]
 weight: 300
-cSpell:ignore: Customizer Dotel myextension uber
+cSpell:ignore: Customizer Dotel instrumenters myextension javax
 ---
 
 <?code-excerpt path-base="examples/java/extensions-minimal"?>
@@ -29,6 +29,7 @@ Create a Gradle project (build.gradle.kts):
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "build.gradle.kts"?>
+
 ```kotlin
 plugins {
     id("java")
@@ -69,6 +70,7 @@ Create a `SpanProcessor` implementation:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/MySpanProcessor.java" from="public"?>
+
 ```java
 public class MySpanProcessor implements SpanProcessor {
 
@@ -106,6 +108,7 @@ SPI:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/MyExtensionProvider.java" from="@AutoService"?>
+
 ```java
 @AutoService(AutoConfigurationCustomizerProvider.class)
 public class MyExtensionProvider implements AutoConfigurationCustomizerProvider {
@@ -513,6 +516,7 @@ The main entry point for customizing SDK configuration. This allows you to:
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoAutoConfigurationCustomizerProvider.java" from="@AutoService"?>
+
 ```java
 @AutoService(AutoConfigurationCustomizerProvider.class)
 public class DemoAutoConfigurationCustomizerProvider
@@ -558,6 +562,7 @@ instrumentations.
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoInstrumenterCustomizerProvider.java" from="/**"?>
+
 ```java
 /**
  * This example demonstrates how to use the InstrumenterCustomizerProvider SPI to customize
@@ -713,6 +718,7 @@ Register custom propagators that can be referenced by name in the
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoPropagatorProvider.java" from="@AutoService"?>
+
 ```java
 @AutoService(ConfigurablePropagatorProvider.class)
 public class DemoPropagatorProvider implements ConfigurablePropagatorProvider {
@@ -739,6 +745,7 @@ configuration.
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoConfigurableSamplerProvider.java" from="@AutoService"?>
+
 ```java
 @AutoService(ConfigurableSamplerProvider.class)
 public class DemoConfigurableSamplerProvider implements ConfigurableSamplerProvider {
@@ -766,6 +773,7 @@ resource providers.
 <!-- prettier-ignore-start -->
 <?code-excerpt path-base="examples/java-instrumentation/extension"?>
 <?code-excerpt "src/main/java/com/example/javaagent/DemoResourceProvider.java" from="@AutoService"?>
+
 ```java
 @AutoService(ResourceProvider.class)
 public class DemoResourceProvider implements ResourceProvider {
@@ -810,10 +818,11 @@ Custom instrumentation requires **all** the dependencies for writing extensions,
 plus additional dependencies for bytecode manipulation.
 
 If you haven't already reviewed the
-[Project Setup and Dependencies](#project-setup-and-dependencies) section,
-start there to understand dependency scopes (`compileOnly` vs `implementation`).
+[Project Setup and Dependencies](#project-setup-and-dependencies) section, start
+there to understand dependency scopes (`compileOnly` vs `implementation`).
 
-For custom instrumentation specifically, ensure your `build.gradle.kts` includes:
+For custom instrumentation specifically, ensure your `build.gradle.kts`
+includes:
 
 ```kotlin
 plugins {
@@ -877,10 +886,11 @@ A single instrumentation module may create multiple `Instrumenter` instances
 when different operations require different telemetry handling. Common patterns
 include:
 
-- **Different operations**: For example, JDBC creates separate instrumenters for statement
-  execution and transaction management
-- **Different messaging patterns**: For example, many messaging instrumentations use separate instrumenters for
-  producing messages, receiving messages, and processing messages
+- **Different operations**: For example, JDBC creates separate instrumenters for
+  statement execution and transaction management
+- **Different messaging patterns**: For example, many messaging instrumentations
+  use separate instrumenters for producing messages, receiving messages, and
+  processing messages
 - **Different span kinds**: Use `buildClientInstrumenter()`,
   `buildServerInstrumenter()`, `buildProducerInstrumenter()`, or
   `buildConsumerInstrumenter()` to create instrumenters that generate CLIENT,
@@ -1216,7 +1226,7 @@ It ensures API compatibility by verifying that the classes, methods, and fields
 referenced by your instrumentation advice actually exist on the application's
 classpath.
 
-**Why Muzzle is Important**
+#### Why Muzzle is Important
 
 When writing custom instrumentation, your advice code references classes and
 methods from the target library (e.g., `javax.servlet.ServletResponse`). If the
@@ -1224,7 +1234,7 @@ application uses a different version of that library where those symbols don't
 exist or have changed, applying the instrumentation could cause runtime errors.
 Muzzle prevents this by checking compatibility before applying instrumentation.
 
-**How Muzzle Works**
+#### How Muzzle Works
 
 Muzzle operates in two phases:
 
@@ -1232,11 +1242,11 @@ Muzzle operates in two phases:
    (classes, methods, fields) used by your instrumentation advice and helper
    classes.
 
-2. At runtime, it compares the collected references against the actual symbols available on the application's
-   classpath before applying instrumentation. If any mismatch is detected, the instrumentation is skipped
-   entirely.
+2. At runtime, it compares the collected references against the actual symbols
+   available on the application's classpath before applying instrumentation. If
+   any mismatch is detected, the instrumentation is skipped entirely.
 
-**Configuring Muzzle in Your Extension**
+#### Configuring Muzzle in Your Extension
 
 Muzzle is required for all custom instrumentation modules. The muzzle plugins
 (included in the Required Dependencies section above) automatically collect
@@ -1249,9 +1259,10 @@ the instrumentation is compatible). The `assertInverse.set(true)` option ensures
 that all other versions will fail the muzzle check, preventing accidental
 instrumentation of incompatible versions.
 
-**Example Configuration**
+#### Example Configuration
 
-Here's an example showing muzzle version configuration for servlet instrumentation:
+Here's an example showing muzzle version configuration for servlet
+instrumentation:
 
 ```kotlin
 muzzle {
@@ -1273,7 +1284,7 @@ muzzle {
 }
 ```
 
-**What Happens When Muzzle Fails**
+#### What Happens When Muzzle Fails
 
 If muzzle detects a mismatch at runtime:
 
@@ -1281,7 +1292,7 @@ If muzzle detects a mismatch at runtime:
 - A log message is emitted indicating why the instrumentation was skipped
 - Your application continues running normally without the instrumentation
 
-**Disabling Muzzle**
+#### Disabling Muzzle
 
 In rare cases, you may need to disable muzzle checks for specific methods. You
 can use the `@NoMuzzle` annotation, but this should be avoided unless absolutely
@@ -1299,7 +1310,7 @@ public static class MyAdvice {
 }
 ```
 
-**Best Practices**
+#### Best Practices
 
 - Always configure muzzle checks for your instrumentation modules
 - Use `assertInverse.set(true)` to ensure incompatible versions are explicitly
@@ -1314,10 +1325,10 @@ to be available in the application's classloader.
 When using the `muzzle-generation` Gradle plugin, helper classes are
 automatically detected by scanning the class graph starting from your advice
 classes. Classes in instrumentation packages (typically packages containing
-`instrumentation` in their name) are automatically treated as helper classes
-and injected into the application classloader.
+`instrumentation` in their name) are automatically treated as helper classes and
+injected into the application classloader.
 
-**When Manual Specification is Required**
+#### When Manual Specification is Required
 
 You need to manually specify helper classes in these scenarios:
 
@@ -1383,15 +1394,15 @@ public List<String> getAdditionalHelperClassNames() {
 }
 ```
 
-**Troubleshooting Helper Classes**
+Troubleshooting Helper Classes:
 
-If your instrumentation isn't working and you suspect helper class issues:
+If your instrumentation isn't working, and you suspect helper class issues:
 
 1. **Check logs**: Look for warnings about missing classes or failed class
    injection.
 
-2. **Verify muzzle detection**: Run `printMuzzleReferences` to see which
-   helper classes muzzle detected automatically.
+2. **Verify muzzle detection**: Run `printMuzzleReferences` to see which helper
+   classes muzzle detected automatically.
 
 3. **Add explicit specification**: If a helper class isn't being detected, add
    it to `getAdditionalHelperClassNames()` or mark its package in
