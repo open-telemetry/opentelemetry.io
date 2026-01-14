@@ -309,9 +309,9 @@ involved in starting a new localization.
 > localization PR by adding an "LGTM" (Looks Good To Me) comment. During this
 > startup phase, maintainers will treat your reviews as if you are an approver
 > already.
->
-> [membership guidelines]:
->   https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+
+[membership guidelines]:
+  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
 
 ### 1. Assemble a localization team {#team}
 
