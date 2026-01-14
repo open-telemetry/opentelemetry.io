@@ -16,7 +16,7 @@ show_banner: true
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{< homepage/hero-split color="primary" image="/img/homepage/hero-graphic.svg" imageAlt="OpenTelemetry illustration" tagline="High-quality, ubiquitous, and portable telemetry to enable effective observability" >}}
+{{< homepage/hero-split color="white" useLogo="true" tagline="High-quality, ubiquitous, and portable telemetry to enable effective observability" >}}
 
 <div class="l-primary-buttons">
 

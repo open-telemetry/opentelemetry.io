@@ -31,24 +31,7 @@
   box-sizing: border-box;
   overflow: hidden;
 
-  // Background image on right half
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    width: 50%;
-    background-image: var(--hero-bg-image);
-    background-size: auto 100%;
-    background-position: left center;
-    background-repeat: no-repeat;
-    z-index: 0;
-
-    @include media-breakpoint-down(lg) {
-      display: none;
-    }
-  }
+  // Background image removed for single-column layout
 
   .container {
     position: relative;
@@ -60,8 +43,34 @@
     background: #41549f; // Same as .td-navbar for AAA contrast
     color: $white;
 
+    .hero-split__content {
+      color: $white;
+
+      p {
+        color: $white;
+      }
+
+      a {
+        color: $white;
+      }
+
+      li {
+        color: $white;
+
+        a {
+          color: $white;
+        }
+      }
+    }
+
     .hero-split__tagline {
       color: $white;
+    }
+
+    .l-primary-buttons {
+      ul li a {
+        color: $white;
+      }
     }
 
     .hero-split__title {
@@ -73,26 +82,45 @@
     }
 
     .hero-split__logo {
-      margin-bottom: 0.75rem;
+      display: none;
+      margin-bottom: 1rem;
+      text-align: center;
 
-      svg {
-        height: 36px;
+      @include media-breakpoint-up(lg) {
+        display: block;
+      }
+
+      .hero-split__logo-img {
+        height: 144px;
         width: auto;
+
+        @include media-breakpoint-up(md) {
+          height: 168px;
+        }
+
+        @include media-breakpoint-up(lg) {
+          height: 192px;
+        }
       }
     }
 
     .hero-split__mobile-logo {
-      display: none;
+      display: block;
       text-align: center;
       margin-bottom: 1.5rem;
 
-      @include media-breakpoint-down(lg) {
-        display: block;
+      @include media-breakpoint-up(lg) {
+        display: none;
       }
 
-      svg {
-        height: 128px;
+      .hero-split__logo-img {
+        height: 120px;
         width: auto;
+        max-width: 100%;
+
+        @include media-breakpoint-up(md) {
+          height: 144px;
+        }
       }
     }
   }
@@ -115,26 +143,69 @@
     .hero-split__title {
       color: $primary;
     }
+
+    .hero-split__tagline {
+      color: $body-color;
+    }
+
+    .hero-split__logo {
+      display: none;
+      margin-bottom: 1rem;
+      text-align: center;
+
+      @include media-breakpoint-up(lg) {
+        display: block;
+      }
+
+      .hero-split__logo-img {
+        height: 144px;
+        width: auto;
+
+        @include media-breakpoint-up(md) {
+          height: 168px;
+        }
+
+        @include media-breakpoint-up(lg) {
+          height: 192px;
+        }
+      }
+    }
+
+    .hero-split__mobile-logo {
+      display: block;
+      text-align: center;
+      margin-bottom: 1.5rem;
+
+      @include media-breakpoint-up(lg) {
+        display: none;
+      }
+
+      .hero-split__logo-img {
+        height: 120px;
+        width: auto;
+        max-width: 100%;
+
+        @include media-breakpoint-up(md) {
+          height: 144px;
+        }
+      }
+    }
   }
 
   &__grid {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
     align-items: center;
-    max-width: 1000px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 0 1rem;
-
-    @include media-breakpoint-up(lg) {
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
+    text-align: center;
   }
 
   &__content {
-    @include media-breakpoint-down(lg) {
-      text-align: center;
-    }
+    width: 100%;
+    text-align: center;
   }
 
   &__tagline {
@@ -161,11 +232,12 @@
       padding: 0;
       margin: 0;
       display: flex;
-      gap: 1rem;
+      gap: 0.75rem;
       flex-wrap: wrap;
+      justify-content: center;
 
-      @include media-breakpoint-down(lg) {
-        justify-content: center;
+      @include media-breakpoint-up(lg) {
+        gap: 1rem;
       }
     }
 
@@ -810,14 +882,77 @@
 // =============================================================================
 
 @include color-mode(dark) {
-  // Hero split looks the same in dark mode (already dark blue)
+  // Hero split primary variant - ensure all text is white
+  .hero-split--primary {
+    .hero-split__content {
+      color: $white !important;
+
+      p {
+        color: $white !important;
+      }
+
+      a {
+        color: $white !important;
+      }
+
+      li {
+        color: $white !important;
+
+        a {
+          color: $white !important;
+        }
+      }
+    }
+
+    .hero-split__tagline {
+      color: $white !important;
+    }
+
+    .l-primary-buttons {
+      ul li a {
+        color: $white !important;
+      }
+    }
+  }
+
+  // Hero split looks the same in dark mode - match other sections
   .hero-split--light,
   .hero-split--white {
-    background: darken($primary, 10%);
-    color: $white;
+    background: var(--bs-body-bg);
+    color: $white !important;
+
+    .hero-split__content {
+      color: $white !important;
+
+      p {
+        color: $white !important;
+      }
+
+      a {
+        color: $white !important;
+      }
+
+      li {
+        color: $white !important;
+
+        a {
+          color: $white !important;
+        }
+      }
+    }
+
+    .hero-split__tagline {
+      color: $white !important;
+    }
 
     .hero-split__title {
       color: $warning;
+    }
+
+    .l-primary-buttons {
+      ul li a {
+        color: $white !important;
+      }
     }
   }
 
