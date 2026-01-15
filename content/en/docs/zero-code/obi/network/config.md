@@ -43,10 +43,8 @@ endpoint to export the network metrics (in the previous example,
 
 ## Network metrics configuration properties
 
-To enable network metrics add one of the following `features` to either the
-[otel_metrics_export](../../configure/export-data/)) or
-[prometheus_export](../../configure/export-data/#prometheus-exporter-component))
-configuration properties:
+To enable network metrics add one of the following `features` to the
+first-level [metrics section](../../configure/export-data/#metrics-export-features):
 
 - `network` enables the `obi_network_flow_bytes` metric: the number of bytes
   between two endpoints of your cluster
