@@ -6,7 +6,8 @@ author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger)(Grafana Labs), [Jay
   DeLuca](https://github.com/jaydeluca) (Grafana Labs), [Marylia
   Gutierrez](https://github.com/maryliag) (Grafana Labs)
-default_lang_commit: 2e0c4fbe87eeefebb416874d28b8d332ab91b4a6
+default_lang_commit: 2e0c4fbe87eeefebb416874d28b8d332ab91b4a6 # patched
+drifted_from_default: true
 cSpell:ignore: Dotel marylia otelconf zeitlinger
 ---
 
@@ -219,7 +220,7 @@ CNCF Slackの[`#otel-config-file`][slack-config]チャンネルを使用して�
 
 [drop-spans-issue]: https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/1060
 [java-project]: https://github.com/orgs/open-telemetry/projects/151
-[migration-file]: https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml
+[migration-file]: https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-migration-config.yaml
 [full-file]: https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
 [java-sampler]: https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/samplers
 [complete-config]: https://gist.github.com/zeitlinger/09585b1ab57c454f87e6dcb9a6f50a5c

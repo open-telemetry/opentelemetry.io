@@ -1,9 +1,7 @@
-# Words listed here are only for their spelling. If there is a certain way to
-# capitalize the word, add capitalization rules to text-lint rules in
-# .textlintrc.yml
+# Words listed here are only for their spelling. Generally, if there is a certain
+# way to capitalize the word, add capitalization rules in .textlintrc.yml
 #
 # cSpell:ignore textlintrc
-
 accountingservice
 actix
 adservice
@@ -30,7 +28,6 @@ classpath
 cmelius
 cncf
 configurator
-comms
 currencyservice
 daemonset
 datadog
@@ -72,12 +69,11 @@ kubernetes
 laravel
 lifecycles
 lightstep
-Loffay
-Mancuso
-Marylia
+lockdown
 melius
 microservices
 mongodb
+multiplatform
 ndjson
 Neumann
 nginx
@@ -134,6 +130,7 @@ symfony
 tabpane
 textlint
 thanos
+timeframe
 tocstop
 tracecontext
 traceidratio
@@ -143,9 +140,11 @@ traefik
 Trask
 uids
 unconference
+unitless
 unsampled
 unshallow
 upstreamed
+upstreaming
 Villela
 wordpress
 WSGI

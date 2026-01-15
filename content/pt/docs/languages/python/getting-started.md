@@ -2,8 +2,7 @@
 title: Primeiros Passos
 description: Obtenha telemetria para sua aplicação em menos de 5 minutos!
 weight: 10
-default_lang_commit: f49ec57e5a0ec766b07c7c8e8974c83531620af3
-drifted_from_default: true
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 # prettier-ignore
 cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
 ---
@@ -678,22 +677,17 @@ exporters:
   # NOTA: Antes da v0.86.0 use `logging` em vez de `debug`.
   debug:
     verbosity: detailed
-processors:
-  batch:
 service:
   pipelines:
     traces:
       receivers: [otlp]
       exporters: [debug]
-      processors: [batch]
     metrics:
       receivers: [otlp]
       exporters: [debug]
-      processors: [batch]
     logs:
       receivers: [otlp]
       exporters: [debug]
-      processors: [batch]
 ```
 
 Em seguida, execute o comando docker para adquirir e executar o Collector com

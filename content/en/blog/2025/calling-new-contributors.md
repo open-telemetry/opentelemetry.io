@@ -5,15 +5,16 @@ title:
 linkTitle: New Contributor Research Study
 date: 2025-12-05
 author: >-
-  [Amy Super](https://github.com/amy-super)(Grafana Labs)
+  [Amy Super](https://github.com/amy-super) (Grafana Labs)
 issue: 7966
 sig: Contributor Experience
 ---
 
-{{% alert title="Update" %}} Update as of 2025-12-08: A giant thank you to those
-of you who have volunteered to participate! We have received more interest than
-expected, so sign-ups are closed for now. Stay tuned to the OpenTelemetry blog
-for more feedback opportunities in the future. {{% /alert %}}
+> [!NOTE] Update as of 2025-12-08
+>
+> A giant thank you to those of you who have volunteered to participate! We have
+> received more interest than expected, so sign-ups are closed for now. Stay
+> tuned to the OpenTelemetry blog for more feedback opportunities in the future.
 
 If you've ever thought about contributing to OpenTelemetry but weren't sure
 where to start, you're not alone. In a

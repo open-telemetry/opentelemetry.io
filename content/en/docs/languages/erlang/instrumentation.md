@@ -398,7 +398,7 @@ suited for your use case, see
 
 ### Initialize Metrics
 
-{{% alert %}} If you’re instrumenting a library, skip this step. {{% /alert %}}
+> [!NOTE] If you’re instrumenting a library, skip this step.
 
 To enable metrics in your application, you’ll need to have an initialized
 `MeterProvider` with a `Reader`. This is done through configuration of the

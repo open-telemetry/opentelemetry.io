@@ -1,8 +1,9 @@
 ---
 title: Allocateur de cibles
-default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
+default_lang_commit: 1253527a5bea528ae37339692e711925785343b1 # patched
 drifted_from_default: true
-cSpell:ignore: bleh podmonitor podmonitorselector targetallocator
+# prettier-ignore
+cSpell:ignore: bleh podmonitor podmonitorselector servicemonitor targetallocator
 ---
 
 Si vous avez activé
