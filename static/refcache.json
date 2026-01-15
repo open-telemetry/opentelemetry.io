@@ -8883,10 +8883,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-08T00:26:42.956564904Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml": {
-    "StatusCode": 404,
-    "LastSeen": "2026-01-15T09:44:58.428831878Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#batchspanprocessor-": {
     "StatusCode": 206,
     "LastSeen": "2026-01-08T00:27:04.323604773Z"
