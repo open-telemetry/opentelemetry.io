@@ -106,12 +106,10 @@ const sdk = new opentelemetry.NodeSDK({
 ...
 ```
 
-{{% alert title="Note" class="info" %}}
-
-If you set your resource attributes via environment variable and code, the
-values set via the environment variable take precedence.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> If you set your resource attributes via environment variable and code, the
+> values set via the environment variable take precedence.
 
 ## Container Resource Detection
 

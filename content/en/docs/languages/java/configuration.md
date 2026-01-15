@@ -26,16 +26,17 @@ configures SDK components through system properties or environment variables,
 with various extension points for instances where the properties are
 insufficient.
 
-{{% alert %}} We recommend using the
-[zero-code SDK autoconfigure](#zero-code-sdk-autoconfigure) module since it
-reduces boilerplate code, allows reconfiguration without rewriting code or
-recompiling the application, and has language interoperability. {{% /alert %}}
-
-{{% alert %}} The [Java agent](/docs/zero-code/java/agent/) and
-[Spring starter](/docs/zero-code/java/spring-boot-starter/) automatically
-configure the SDK using the zero-code SDK autoconfigure module, and install
-instrumentation with it. All autoconfigure content is applicable to Java agent
-and Spring starter users. {{% /alert %}}
+> [!NOTE] **Notes**
+>
+> - We recommend using the
+>   [zero-code SDK autoconfigure](#zero-code-sdk-autoconfigure) module since it
+>   reduces boilerplate code, allows reconfiguration without rewriting code or
+>   recompiling the application, and has language interoperability.
+> - The [Java agent](/docs/zero-code/java/agent/) and
+>   [Spring starter](/docs/zero-code/java/spring-boot-starter/) automatically
+>   configure the SDK using the zero-code SDK autoconfigure module, and install
+>   instrumentation with it. All autoconfigure content is applicable to Java
+>   agent and Spring starter users.
 
 ## Programmatic configuration
 
@@ -91,21 +92,22 @@ public class AutoConfiguredSdk {
 ```
 <!-- prettier-ignore-end -->
 
-{{% alert %}} The [Java agent](/docs/zero-code/java/agent/) and
-[Spring starter](/docs/zero-code/java/spring-boot-starter/) automatically
-configure the SDK using the zero-code SDK autoconfigure module, and install
-instrumentation with it. All autoconfigure content is applicable to Java agent
-and Spring starter users. {{% /alert %}}
-
-{{% alert %}} The autoconfigure module registers Java shutdown hooks to shut
-down the SDK when appropriate. Because OpenTelemetry Java
-[uses `java.util.logging` for internal logging](../sdk/#internal-logging), some
-logging might be suppressed during shutdown hooks. This is a bug in the JDK
-itself, and not something under the control of OpenTelemetry Java. If you
-require logging during shutdown hooks, consider using `System.out` rather than a
-logging framework which might shut itself down in a shutdown hook, thus
-suppressing your log messages. For more details, see this
-[JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253). {{% /alert %}}
+> [!NOTE] **Notes**
+>
+> - The [Java agent](/docs/zero-code/java/agent/) and
+>   [Spring starter](/docs/zero-code/java/spring-boot-starter/) automatically
+>   configure the SDK using the zero-code SDK autoconfigure module, and install
+>   instrumentation with it. All autoconfigure content is applicable to Java
+>   agent and Spring starter users.
+> - The autoconfigure module registers Java shutdown hooks to shut down the SDK
+>   when appropriate. Because OpenTelemetry Java
+>   [uses `java.util.logging` for internal logging](../sdk/#internal-logging),
+>   some logging might be suppressed during shutdown hooks. This is a bug in the
+>   JDK itself, and not something under the control of OpenTelemetry Java. If
+>   you require logging during shutdown hooks, consider using `System.out`
+>   rather than a logging framework which might shut itself down in a shutdown
+>   hook, thus suppressing your log messages. For more details, see this
+>   [JDK bug](https://bugs.openjdk.java.net/browse/JDK-8161253).
 
 ### Environment variables and system properties
 
@@ -705,11 +707,13 @@ and specify the path to the config file as described in the table below.
 | ------------------------------- | --------------------------------------- | ------- |
 | `otel.experimental.config.file` | The path to the SDK configuration file. | Unset   |
 
-{{% alert title="Note" color="warning" %}} When a config file is specified,
-[environment variables and system properties](#environment-variables-and-system-properties)
-are ignored, [programmatic customization](#programmatic-customization) and
-[SPIs](#spi-service-provider-interface) are skipped. The contents of the file
-alone dictate SDK configuration. {{% /alert %}}
+> [!WARNING]
+>
+> When a config file is specified,
+> [environment variables and system properties](#environment-variables-and-system-properties)
+> are ignored, [programmatic customization](#programmatic-customization) and
+> [SPIs](#spi-service-provider-interface) are skipped. The contents of the file
+> alone dictate SDK configuration.
 
 For additional details, consult the following resources:
 

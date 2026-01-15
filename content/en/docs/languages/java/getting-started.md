@@ -142,11 +142,8 @@ agent][] in a number of ways, the steps below use environment variables.
    curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
    ```
 
-   {{% alert %}}
-
-   <i class="fas fa-edit"></i> Take note of the path to the JAR file.
-
-   {{% /alert %}}
+   > [!IMPORTANT] <i class="fas fa-edit"></i> Take note of the path to the JAR
+   > file.
 
 2. Set and export variables that specify the Java agent JAR and a [console
    exporter][], using a notation suitable for your shell/terminal environment
@@ -160,13 +157,17 @@ agent][] in a number of ways, the steps below use environment variables.
      OTEL_METRIC_EXPORT_INTERVAL=15000
    ```
 
-   {{% alert title="Important" color="warning" %}}
-   - Replace `PATH/TO` above, with your path to the JAR.
-   - Set `OTEL_METRIC_EXPORT_INTERVAL` to a value well below the default, as we
-     illustrate above, **only during testing** to help you more quickly ensure
-     that metrics are properly generated.
+   <!-- markdownlint-disable no-blanks-blockquote -->
 
-   {{% /alert %}}
+   > [!NOTE]
+   >
+   > Replace `PATH/TO` above, with your path to the JAR.
+
+   > [!WARNING]
+   >
+   > Set `OTEL_METRIC_EXPORT_INTERVAL` to a value well below the default, as we
+   > illustrate above, **only during testing** to help you more quickly ensure
+   > that metrics are properly generated.
 
 3. Run your **application** once again:
 

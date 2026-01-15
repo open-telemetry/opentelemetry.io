@@ -100,13 +100,11 @@ transform:
         - delete_key(attributes, "user.id")
 ```
 
-{{% alert title="Risk and limitations of hashing for anonymization" color="warning" %}}
-
-Hashing the ID or name of a user may not provide the level of anonymization you
-need, since hashes are reversible in practice if the input space is small and
-predictable (e.g. numeric user IDs).
-
-{{% /alert %}}
+> [!WARNING] Risk and limitations of hashing for anonymization
+>
+> Hashing the ID or name of a user may not provide the level of anonymization
+> you need, since hashes are reversible in practice if the input space is small
+> and predictable (e.g. numeric user IDs).
 
 ### Truncating IP addresses
 

@@ -1464,6 +1464,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/1773616?v=4
   - name: ThomsonTan
     teams:
+      - arrow-triagers
       - cpp-approvers
       - cpp-contrib-approvers
       - cpp-contrib-maintainers
@@ -2218,6 +2219,11 @@ approvers:
       - lambda-extension-approvers
     html_url: https://github.com/pragmaticivan
     avatar_url: https://avatars.githubusercontent.com/u/301291?v=4
+  - name: priettt
+    teams:
+      - kotlin-approvers
+    html_url: https://github.com/priettt
+    avatar_url: https://avatars.githubusercontent.com/u/26326883?v=4
   - name: ps48
     teams:
       - demo-approvers
@@ -2891,6 +2897,9 @@ members:
   - name: johnbley
     html_url: https://github.com/johnbley
     avatar_url: https://avatars.githubusercontent.com/u/5139839?v=4
+  - name: jongwooo
+    html_url: https://github.com/jongwooo
+    avatar_url: https://avatars.githubusercontent.com/u/44025432?v=4
   - name: jparsana
     html_url: https://github.com/jparsana
     avatar_url: https://avatars.githubusercontent.com/u/37941349?v=4
@@ -3083,6 +3092,9 @@ members:
   - name: samimusallam
     html_url: https://github.com/samimusallam
     avatar_url: https://avatars.githubusercontent.com/u/1358230?v=4
+  - name: sandy2008
+    html_url: https://github.com/sandy2008
+    avatar_url: https://avatars.githubusercontent.com/u/18073670?v=4
   - name: scorpionknifes
     html_url: https://github.com/scorpionknifes
     avatar_url: https://avatars.githubusercontent.com/u/23299540?v=4

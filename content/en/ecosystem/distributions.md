@@ -32,18 +32,16 @@ To have your distribution listed, [submit a PR] with an entry added to the
 - GitHub handle or email address as a point of contact so that we can reach out
   in case we have questions
 
-{{% alert title="Notes" %}}
-
-- If you provide external integration of OpenTelemetry for any kind of library,
-  service, or app, then consider
-  [adding it to the registry](/ecosystem/registry/adding).
-- If you adopt OpenTelemetry for observability as an end user and do not provide
-  any kind of services around OpenTelemetry, see
-  [Adopters](/ecosystem/adopters).
-- If you provide a solution that consumes OpenTelemetry to offer observability
-  to end users, see [Vendors](/ecosystem/vendors).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> - If you provide external integration of OpenTelemetry for any kind of
+>   library, service, or app, then consider
+>   [adding it to the registry](/ecosystem/registry/adding).
+> - If you adopt OpenTelemetry for observability as an end user and do not
+>   provide any kind of services around OpenTelemetry, see
+>   [Adopters](/ecosystem/adopters).
+> - If you provide a solution that consumes OpenTelemetry to offer observability
+>   to end users, see [Vendors](/ecosystem/vendors).
 
 [submit a PR]: /docs/contributing/pull-requests/
 
