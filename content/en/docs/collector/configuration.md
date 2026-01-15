@@ -957,7 +957,7 @@ The following settings are available for TLS configuration:
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable MD034 -->
 > For more details on TLS configuration options, see the
-> [configtls documentation](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param collector_vers %}}/config/configtls/README.md).
+> [configtls documentation](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/config/configtls/README.md).
 <!-- markdownlint-enable MD034 -->
 <!-- prettier-ignore-end -->
 
