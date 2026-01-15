@@ -42,13 +42,11 @@ them up.
 
 {{ if $zeroConfigPageExists }}
 
-{{% alert title=Note %}}
-
-If you use [zero-code instrumentation](</docs/zero-code/{{ $langIdAsPath }}>),
-you can learn how to set up exporters by following the
-[Configuration Guide](</docs/zero-code/{{ $langIdAsPath }}/configuration/>).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> If you use [zero-code instrumentation](</docs/zero-code/{{ $langIdAsPath }}>),
+> you can learn how to set up exporters by following the
+> [Configuration Guide](</docs/zero-code/{{ $langIdAsPath }}/configuration/>).
 
 {{ end }}
 
@@ -58,13 +56,11 @@ you can learn how to set up exporters by following the
 
 ### Collector Setup
 
-{{% alert title=Note %}}
-
-If you have a OTLP collector or backend already set up, you can skip this
-section and [setup the OTLP exporter dependencies](#otlp-dependencies) for your
-application.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> If you have a OTLP collector or backend already set up, you can skip this
+> section and [setup the OTLP exporter dependencies](#otlp-dependencies) for
+> your application.
 
 To try out and verify your OTLP exporters, you can run the collector in a docker
 container that writes telemetry directly to the console.
