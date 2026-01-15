@@ -210,11 +210,12 @@ Allows selecting which flows to trace according to its direction in the
 interface where they are captured from. Accepted values are `ingress`, `egress`,
 or `both` (default).
 
-{{% alert type="note" %}} In this context, _ingress_ or _egress_ are not related
-to incoming/outgoing traffic from outside the node or the cluster, but the
-network interface. This means that the same network packet could be seen as
-"ingress" in a virtual network device and as "egress" in the backing physical
-network interface. {{% /alert %}}
+> [!NOTE]
+>
+> In this context, _ingress_ or _egress_ are not related to incoming/outgoing
+> traffic from outside the node or the cluster, but the network interface. This
+> means that the same network packet could be seen as "ingress" in a virtual
+> network device and as "egress" in the backing physical network interface.
 
 | YAML       | Environment variable         | Type    | Default        |
 | ---------- | ---------------------------- | ------- | -------------- |

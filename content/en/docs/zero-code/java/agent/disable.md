@@ -26,11 +26,13 @@ to have more control of which instrumentation is applied.
 {{% config_option name="otel.instrumentation.[name].enabled" %}} Set to `true`
 to enable each desired instrumentation individually. {{% /config_option %}}
 
-{{% alert title="Note" color="warning" %}} Some instrumentation relies on other
-instrumentation to function properly. When selectively enabling instrumentation,
-be sure to enable the transitive dependencies too. Determining this dependency
-relationship is left as an exercise to the user. This is considered advanced
-usage and is not recommended for most users. {{% /alert %}}
+> [!WARNING]
+>
+> Some instrumentation relies on other instrumentation to function properly.
+> When selectively enabling instrumentation, be sure to enable the transitive
+> dependencies too. Determining this dependency relationship is left as an
+> exercise to the user. This is considered advanced usage and is not recommended
+> for most users.
 
 ## Enable manual instrumentation only
 

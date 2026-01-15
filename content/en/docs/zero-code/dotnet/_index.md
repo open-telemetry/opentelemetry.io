@@ -31,8 +31,9 @@ Supported processor architectures are:
 - AMD64 (x86-64)
 - ARM64 ([Experimental](/docs/specs/otel/versioning-and-stability))
 
-{{% alert title="Note" %}} ARM64 build does not support CentOS based images.
-{{% /alert %}}
+> [!NOTE]
+>
+> ARM64 build does not support CentOS based images.
 
 CI tests run against the following operating systems:
 
@@ -73,29 +74,27 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
 ```
 
-{{% alert title="Note" color="warning" %}} On macOS
-[`coreutils`](https://formulae.brew.sh/formula/coreutils) is required. If you
-have [homebrew](https://brew.sh/) installed, you can simply get it by running
-
-```shell
-brew install coreutils
-```
-
-{{% /alert %}}
+> [!IMPORTANT]
+>
+> On macOS [`coreutils`](https://formulae.brew.sh/formula/coreutils) is
+> required. If you have [homebrew](https://brew.sh/) installed, you can get it
+> by running:
+>
+> ```shell
+> brew install coreutils
+> ```
 
 ### Windows (PowerShell)
 
 On Windows, use the PowerShell module as an Administrator.
 
-{{% alert title="Version note" color="warning" %}}
-
-Windows
-[PowerShell Desktop](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions)
-(v5.1) is required. Other
-[versions](https://learn.microsoft.com/previous-versions/powershell/scripting/overview),
-including PowerShell Core (v6.0+) are not supported at this time.
-
-{{% /alert %}}
+> [!NOTE] Version note
+>
+> Windows
+> [PowerShell Desktop](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions)
+> (v5.1) is required. Other
+> [versions](https://learn.microsoft.com/previous-versions/powershell/scripting/overview),
+> including PowerShell Core (v6.0+) are not supported at this time.
 
 ```powershell
 # PowerShell 5.1 is required
@@ -144,15 +143,17 @@ Install-OpenTelemetryCore
 Register-OpenTelemetryForWindowsService -WindowsServiceName "WindowsServiceName" -OTelServiceName "MyServiceDisplayName"
 ```
 
-{{% alert title="Note" color="warning" %}}
-`Register-OpenTelemetryForWindowsService` performs a service restart.
-{{% /alert %}}
+> [!CAUTION]
+>
+> `Register-OpenTelemetryForWindowsService` performs a service restart.
 
 ### Configuration for Windows Service
 
-{{% alert title="Note" color="warning" %}} Remember to restart the Windows
-Service after making configuration changes. You can do it by running
-`Restart-Service -Name $WindowsServiceName -Force` in PowerShell. {{% /alert %}}
+> [!IMPORTANT]
+>
+> Remember to restart the Windows Service after making configuration changes.
+> You can do it by running `Restart-Service -Name $WindowsServiceName -Force` in
+> PowerShell.
 
 For .NET Framework applications you can configure
 [the most common `OTEL_` settings](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)
@@ -177,8 +178,9 @@ Var2=Value2
 
 ## Instrument an ASP.NET application deployed on IIS
 
-{{% alert title="Note" color="warning" %}} The following instructions apply to
-.NET Framework applications. {{% /alert %}}
+> [!NOTE]
+>
+> The following instructions apply to .NET Framework applications.
 
 Use the `OpenTelemetry.DotNet.Auto.psm1` PowerShell module to set up automatic
 instrumentation for IIS:
@@ -194,13 +196,15 @@ Install-OpenTelemetryCore
 Register-OpenTelemetryForIIS
 ```
 
-{{% alert title="Note" color="warning" %}} `Register-OpenTelemetryForIIS`
-performs an IIS restart. {{% /alert %}}
+> [!CAUTION]
+>
+> `Register-OpenTelemetryForIIS` performs an IIS restart.
 
 ### Configuration for ASP.NET applications
 
-{{% alert title="Note" color="warning" %}} The following instructions apply to
-.NET Framework applications. {{% /alert %}}
+> [!NOTE]
+>
+> The following instructions apply to .NET Framework applications.
 
 For ASP.NET applications you can configure
 [the most common `OTEL_` settings](/docs/specs/otel/configuration/sdk-environment-variables/#general-sdk-configuration)
@@ -215,8 +219,10 @@ For ASP.NET Core application you can use the
 elements inside the `<aspNetCore>` block of your `Web.config` file to set
 configuration via environment variables.
 
-{{% alert title="Note" color="warning" %}} Remember to restart IIS after making
-configuration changes. You can do it by executing `iisreset.exe`. {{% /alert %}}
+> [!IMPORTANT]
+>
+> Remember to restart IIS after making configuration changes. You can do it by
+> executing `iisreset.exe`.
 
 ### Advanced configuration
 
@@ -228,9 +234,10 @@ pools.
 Consider setting common environment variables, for all applications deployed to
 IIS by setting the environment variables for `W3SVC` and `WAS` Windows Services.
 
-{{% alert title="Note" color="warning" %}} For IIS versions older than 10.0, you
-can consider creating a distinct user, set its environment variables and use it
-as the application pool user. {{% /alert %}}
+> [!TIP]
+>
+> For IIS versions older than 10.0, you can consider creating a distinct user,
+> set its environment variables and use it as the application pool user.
 
 ## NuGet package
 
@@ -255,11 +262,14 @@ To see the full range of configuration options, see
 
 ## Log to trace correlation
 
-{{% alert title="Note" color="warning" %}} Automatic log to trace correlation
-provided by OpenTelemetry .NET Automatic Instrumentation currently works only
-for .NET applications using `Microsoft.Extensions.Logging`. See
-[#2310](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2310)
-for more details. {{% /alert %}}
+> [!NOTE]
+>
+> Automatic log to trace correlation provided by OpenTelemetry .NET Automatic
+> Instrumentation currently works only for .NET applications using
+> `Microsoft.Extensions.Logging`. For more details, see [#2310].
+
+[#2310]:
+  https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2310
 
 OpenTelemetry .NET SDK automatically correlates logs to trace data. When logs
 are emitted in the context of an active trace, trace context
@@ -325,15 +335,15 @@ so no explicit uninstallation is required.
 
 On Windows, use the PowerShell module as an Administrator.
 
-{{% alert title="Version note" color="warning" %}}
+> [!IMPORTANT] Version note
+>
+> Windows [PowerShell Desktop][] (v5.1) is required. Other [versions], including
+> PowerShell Core (v6.0+) are not supported at this time.
 
-Windows
-[PowerShell Desktop](https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions)
-(v5.1) is required. Other
-[versions](https://learn.microsoft.com/previous-versions/powershell/scripting/overview),
-including PowerShell Core (v6.0+) are not supported at this time.
-
-{{% /alert %}}
+[PowerShell Desktop]:
+  https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions
+[versions]:
+  https://learn.microsoft.com/previous-versions/powershell/scripting/overview
 
 ```powershell
 # PowerShell 5.1 is required
