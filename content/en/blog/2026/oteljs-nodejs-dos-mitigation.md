@@ -26,7 +26,7 @@ haven’t already. Review
 [this table](https://nodejs.org/en/blog/vulnerability/january-2026-dos-mitigation-async-hooks#affected-versions)
 for specific affected versions and patches.
 
-There’s nothing OpenTelemetry-specific you need to change—following the Node.js
+There’s nothing OpenTelemetry-specific you need to change — following the Node.js
 upgrade guidance is sufficient. As always, we recommend running on supported and
 patched Node.js versions.
 
