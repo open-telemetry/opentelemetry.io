@@ -24,8 +24,8 @@ emissor e receptor, ou
 [unidade de execução](/docs/specs/otel/glossary/#execution-unit), correlacionem
 um sinal com outro.
 
-Quando o serviço A chama o serviço B, um ID de rastro (_trace ID_) e um ID de
-trecho (_span ID_) são incluídos como parte do contexto. O serviço B utiliza
+Quando o serviço A chama o serviço B, o serviço A inclui um ID de rastro (_trace
+ID_) e um ID de trecho (_span ID_) como parte do contexto. O serviço B utiliza
 estes valores para criar um novo trecho que pertence ao mesmo rastro, definindo
 o trecho do serviço A como seu pai. Isso torna possível acompanhar todo o fluxo
 de uma requisição através dos limites dos serviços.
@@ -47,14 +47,15 @@ os cabeçalhos definidos na especificação
 ## Exemplo {#example}
 
 Um serviço chamado `Frontend`, que fornece diferentes rotas HTTP, como
-`POST /cart/add` e `GET /checkout/`, acessa um serviço chamado `Product Catalog` (Catálogo de Produto)
-através de uma rota HTTP `GET /product` para receber detalhes sobre os produtos
-que um usuário deseja adicionar ao carrinho ou que fazem parte do _checkout_.
-Para entender as atividades no serviço `Product Catalog` dentro do contexto das
-requisições vindas do `Frontend`, o contexto (neste caso: _Trace ID_ e _Span ID_
-como _"Parent ID"_) é propagado utilizando o cabeçalho `traceparent`, conforme
-definido na especificação W3C TraceContext. Isso significa que os IDs são
-incorporados nos campos do cabeçalho:
+`POST /cart/add` e `GET /checkout/`, acessa um serviço chamado `Product Catalog`
+(Catálogo de Produto) através de uma rota HTTP `GET /product` para receber
+detalhes sobre os produtos que um usuário deseja adicionar ao carrinho ou que
+fazem parte do _checkout_. Para entender as atividades no serviço
+`Product Catalog` dentro do contexto das requisições vindas do `Frontend`, o
+contexto (neste caso: _Trace ID_ e _Span ID_ como _"Parent ID"_) é propagado
+utilizando o cabeçalho `traceparent`, conforme definido na especificação W3C
+TraceContext. Isso significa que os IDs são incorporados nos campos do
+cabeçalho:
 
 ```text
 <version>-<trace-id>-<parent-id>-<trace-flags>
@@ -71,9 +72,9 @@ Por exemplo:
 Como mencionado, a propagação de contexto permite que os rastros construam
 informações causais entre serviços. Neste exemplo, as duas chamadas para a rota
 HTTP `GET /product` do serviço `Product Catalog` podem ser correlacionadas com
-suas chamadas no serviço `Frontend` através da extração do contexto remoto do cabeçalho
-`traceparent` e sua injeção no contexto local para definir o ID de rastro
-(_trace ID_) e o ID de pai (_parent ID_). Com isso, é possível em um
+suas chamadas no serviço `Frontend` através da extração do contexto remoto do
+cabeçalho `traceparent` e sua injeção no contexto local para definir o ID de
+rastro (_trace ID_) e o ID de pai (_parent ID_). Com isso, é possível em um
 [_backend_](/ecosystem/vendors) como [Jaeger](https://www.jaegertracing.io/) ver
 duas requisições como trechos de um mesmo rastro.
 
