@@ -47,7 +47,7 @@ os cabeçalhos definidos na especificação
 ## Exemplo {#example}
 
 Um serviço chamado `Frontend`, que fornece diferentes rotas HTTP, como
-`POST /cart/add` e `GET /checkout/`, acessa um serviço chamado `Product Catalog`
+`POST /cart/add` e `GET /checkout/`, acessa um serviço chamado `Product Catalog` (Catálogo de Produto)
 através de uma rota HTTP `GET /product` para receber detalhes sobre os produtos
 que um usuário deseja adicionar ao carrinho ou que fazem parte do _checkout_.
 Para entender as atividades no serviço `Product Catalog` dentro do contexto das
@@ -60,7 +60,7 @@ incorporados nos campos do cabeçalho:
 <version>-<trace-id>-<parent-id>-<trace-flags>
 ```
 
-For example:
+Por exemplo:
 
 ```text
 00-a0892f3577b34da6a3ce929d0e0e4736-f03067aa0ba902b7-01
@@ -71,10 +71,10 @@ For example:
 Como mencionado, a propagação de contexto permite que os rastros construam
 informações causais entre serviços. Neste exemplo, as duas chamadas para a rota
 HTTP `GET /product` do serviço `Product Catalog` podem ser correlacionadas com
-suas chamadas no serviço `Frontend` extraindo o contexto remoto do cabeçalho
-`traceparent` e injetando-o no contexto local para definir o ID de rastro
+suas chamadas no serviço `Frontend` através da extração do contexto remoto do cabeçalho
+`traceparent` e sua injeção no contexto local para definir o ID de rastro
 (_trace ID_) e o ID de pai (_parent ID_). Com isso, é possível em um
-[_backend_](/ecosystem/vendors) como [Jaeger](https://www.jaegertracing.io/) er
+[_backend_](/ecosystem/vendors) como [Jaeger](https://www.jaegertracing.io/) ver
 duas requisições como trechos de um mesmo rastro.
 
 ![Exemplo de propagação mostrando correlação de rastros entre serviços](context-propagation-example.svg)
