@@ -660,7 +660,7 @@ O Java agent representa um caso especial: `GlobalOpenTelemetry` é o único
 mecanismo para
 [instrumentação nativa](../instrumentation/#native-instrumentation) e
 [instrumentação manual](../instrumentation/#manual-instrumentation) registrarem
-telemetria na instância de `OpenTelemetry` instalada pelo agent. Usar essa
+telemetria na instância de `OpenTelemetry` instalada pelo agente. Usar essa
 instância é importante e útil, e recomendamos acessar o `GlobalOpenTelemetry` da
 seguinte forma:
 
@@ -721,13 +721,13 @@ public class GlobalOpenTelemetryNativeInstrumentationUsage {
 <!-- prettier-ignore-end -->
 
 Observe que `GlobalOpenTelemetry.getOrNoop()` foi projetado sem os efeitos
-colaterais de `get()` chamar `set(..)`, preservando a capacidade de o código da
+colaterais de `get()` chamar `set(..)`, preservando a capacidade do código da
 aplicação chamar `set(..)` posteriormente sem disparar uma exceção.
 
 Como resultado:
 
 - Se o Java agent estiver presente, a instrumentação é inicializada, por padrão,
-  com a instância de `OpenTelemetry` instalada pelo agent.
+  com a instância de `OpenTelemetry` instalada pelo agente.
 - Se o Java agent não estiver presente, a instrumentação é inicializada, por
   padrão, com uma implementação no-op.
 - O usuário pode sobrescrever explicitamente o padrão chamando
@@ -769,7 +769,7 @@ public class GlobalOpenTelemetryManualInstrumentationUsage {
 Como resultado:
 
 - Se o Java agent estiver presente, a aplicação inicializa a instrumentação
-  manual com a instância de `OpenTelemetry` instalada pelo agent.
+  manual com a instância de `OpenTelemetry` instalada pelo agente.
 - Se o Java agent não estiver presente, a aplicação inicializa uma instância de
   [OpenTelemetrySdk](../sdk/#opentelemetrysdk) e a utiliza para inicializar a
   instrumentação manual.
