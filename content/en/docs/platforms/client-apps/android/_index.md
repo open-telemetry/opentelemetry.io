@@ -4,6 +4,8 @@ description: >-
   Use OpenTelemetry in apps running on Android platforms
 weight: 10
 cSpell:ignore: inactivity
+cascade:
+  instrumentation: 1.0.1
 ---
 
 OpenTelemetry Android provides observability for native Android applications.
@@ -46,7 +48,7 @@ Add the OpenTelemetry Android Agent dependency to your app-level
 
 ```kotlin
 dependencies {
-    implementation(platform("io.opentelemetry.android:opentelemetry-android-bom:<latest-version>"))
+    implementation(platform("io.opentelemetry.android:opentelemetry-android-bom:{{% param instrumentation %}}"))
     implementation("io.opentelemetry.android:android-agent")
 }
 ```
