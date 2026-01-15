@@ -97,7 +97,7 @@ resource:
 ## Migration configuration
 
 If your existing configuration relies on environment variables, you can use the
-[migration configuration](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml)
+[migration configuration](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-migration-config.yaml)
 as a starting point to migrate to declarative configuration.
 
 ## Available config options
