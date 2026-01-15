@@ -8,8 +8,7 @@ aliases:
   - libraries
 weight: 10
 description: Ecossistema de Instrumentação no OpenTelemetry Java
-default_lang_commit: 6eddc725571667e112a41aa7422bcd4c69764503
-drifted_from_default: true
+default_lang_commit: 4690071352ffd91e2ec874546aeca3ac68775bad
 cSpell:ignore: logback
 ---
 
@@ -107,6 +106,16 @@ padrão, e que a instrumentação mantida pelo OpenTelemetry em
 [opentelemetry-java-instrumentação](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 seja um meio temporário de preencher a lacuna.
 
+A instrumentação nativa deve interagir com o Java agent do OpenTelemetry da
+seguinte forma: na inicialização, o Java agent inicializa uma instância do
+[OpenTelemetry](../api/#opentelemetry) e instala a instrumentação
+[sem código](#zero-code-java-agent). Bibliotecas que adicionam instrumentação
+nativa devem permitir que os usuários personalizem a instância de
+`OpenTelemetry` utilizada, mas devem usar automaticamente a instância
+inicializada pelo Java agent (se presente). Consulte
+[GlobalOpenTelemetry](../api/#globalopentelemetry) para orientações sobre como
+alcançar isso.
+
 {{% docs/languages/native-libraries %}}
 
 ### Instrumentação manual {#manual-instrumentation}
@@ -114,6 +123,20 @@ seja um meio temporário de preencher a lacuna.
 [Instrumentação manual](/docs/specs/otel/glossary/#manual-instrumentation) é
 escrita pelos autores das aplicações, e normalmente específica para o domínio da
 aplicação.
+
+A instrumentação manual deve interagir com o Java agent do OpenTelemetry da
+seguinte forma: na inicialização, o Java agent inicializa uma instância do
+[OpenTelemetry](../api/#opentelemetry) e a torna acessível à instrumentação
+manual da aplicação via `GlobalOpenTelemetry`. No entanto, o responsável pela
+aplicação pode não conseguir confiar que o Java agent estará sempre instalado.
+Por exemplo, o Java agent pode não estar instalado em ambientes de
+desenvolvimento local ou de teste, ou em casos especiais em que o Java agent é
+removido por motivos de depuração. A instrumentação manual deve usar a instância
+de [OpenTelemetry](../api/#opentelemetry) inicializada pelo Java agent (se
+presente), mas deve ser capaz de detectar e, potencialmente, configurar uma
+instância de `OpenTelemetry` de _fallback_ caso o Java agent não esteja
+presente. Consulte [GlobalOpenTelemetry](../api/#globalopentelemetry) para
+orientações sobre como alcançar isso.
 
 ### Shims
 
