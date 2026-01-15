@@ -130,7 +130,7 @@ seguinte forma: na inicialização, o Java agent inicializa uma instância do
 manual da aplicação via `GlobalOpenTelemetry`. No entanto, o responsável pela
 aplicação pode não conseguir confiar que o Java agent estará sempre instalado.
 Por exemplo, o Java agent pode não estar instalado em ambientes de
-desenvolvimento local, de teste ou em casos especiais em que o Java agent é
+desenvolvimento local ou de teste, ou em casos especiais em que o Java agent é
 removido por motivos de depuração. A instrumentação manual deve usar a instância
 de [OpenTelemetry](../api/#opentelemetry) inicializada pelo Java agent (se
 presente), mas deve ser capaz de detectar e, potencialmente, configurar uma
