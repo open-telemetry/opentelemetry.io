@@ -16751,6 +16751,14 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-07T09:45:09.135872063Z"
   },
+  "https://nodejs.org/en/blog/vulnerability/january-2026-dos-mitigation-async-hooks": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-15T21:06:29.759587839Z"
+  },
+  "https://nodejs.org/en/blog/vulnerability/january-2026-dos-mitigation-async-hooks#affected-versions": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-15T21:06:26.147187144Z"
+  },
   "https://nodejs.org/en/download/": {
     "StatusCode": 200,
     "LastSeen": "2026-01-08T09:44:46.566444491Z"
