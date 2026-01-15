@@ -1,8 +1,7 @@
 ---
 title: エクスポーター
 weight: 50
-default_lang_commit: 5db74ea69e5f5f8918cf2ef2030560bd083a7cda
-drifted_from_default: true
+default_lang_commit: 5a3937c47b391b207465e0e464006f3b03bf242f
 ---
 
 {{% docs/languages/exporters/intro %}}
@@ -70,6 +69,8 @@ docker run -d --name jaeger \
   -p 9411:9411 \
   jaegertracing/all-in-one:latest
 ```
+
+ブラウザで`localhost:16686`にアクセスして、JaegerのトレースUIを介してトレースを視覚化できます。
 
 ## Zipkin {#zipkin}
 
