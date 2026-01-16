@@ -6,7 +6,7 @@ weight: 10
 cascade:
   vers:
     instrumentation: 1.0.1
-cSpell:ignore: inactivity jank
+cSpell:ignore: inactivity
 ---
 
 OpenTelemetry Android provides observability for native Android applications.
@@ -152,7 +152,7 @@ helping you understand the network conditions during errors. See
 ### Slow and frozen frames
 
 Monitors frame rendering performance and reports slow renders (>16ms) and frozen
-frames (>700ms) to help identify UI jank. See
+frames (>700ms) to help identify UI performance bottlenecks. See
 [Slow rendering instrumentation](https://github.com/open-telemetry/opentelemetry-android/blob/main/instrumentation/slowrendering/README.md).
 
 ## Manual instrumentation
