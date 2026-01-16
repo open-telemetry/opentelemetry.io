@@ -295,7 +295,7 @@ some additional resources to explore:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/1060
 [java-project]: https://github.com/orgs/open-telemetry/projects/151
 [migration-file]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-migration-config.yaml
 [full-file]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
 [java-sampler]:

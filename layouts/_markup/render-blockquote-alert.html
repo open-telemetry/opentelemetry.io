@@ -15,11 +15,18 @@
   )
 -}}
 
+{{/* For single-line alerts without a body, use the title as the body */ -}}
+{{ $body := .Text -}}
+{{ if and (not $body) .AlertTitle -}}
+  {{ $body = .AlertTitle -}}
+  {{ $title = "" -}}
+{{ end -}}
+
 <div class="alert alert-{{ $alertClass }}" role="alert">
-{{ with $title -}}
+{{- with $title -}}
   <div class="h4 alert-heading" role="heading">
     {{- . -}}
   </div>
 {{- end }}
-{{ .Text }}
+{{ $body }}
 </div>

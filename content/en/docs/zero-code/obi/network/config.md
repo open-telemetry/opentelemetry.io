@@ -4,7 +4,7 @@ linkTitle: Configuration
 description:
   Learn about the configuration options available for OBI network metrics
 weight: 3
-cSpell:ignore: BEETPH
+cSpell:ignore: BEETPH UDPLITE
 ---
 
 Network metrics are configured under the `network` property of the
@@ -43,10 +43,9 @@ endpoint to export the network metrics (in the previous example,
 
 ## Network metrics configuration properties
 
-To enable network metrics add one of the following `features` to either the
-[otel_metrics_export](../../configure/export-data/)) or
-[prometheus_export](../../configure/export-data/#prometheus-exporter-component))
-configuration properties:
+To enable network metrics, add one of the following `features` to the
+first-level
+[metrics section](../../configure/export-data/#metrics-export-features):
 
 - `network` enables the `obi_network_flow_bytes` metric: the number of bytes
   between two endpoints of your cluster
@@ -210,11 +209,12 @@ Allows selecting which flows to trace according to its direction in the
 interface where they are captured from. Accepted values are `ingress`, `egress`,
 or `both` (default).
 
-{{% alert type="note" %}} In this context, _ingress_ or _egress_ are not related
-to incoming/outgoing traffic from outside the node or the cluster, but the
-network interface. This means that the same network packet could be seen as
-"ingress" in a virtual network device and as "egress" in the backing physical
-network interface. {{% /alert %}}
+> [!NOTE]
+>
+> In this context, _ingress_ or _egress_ are not related to incoming/outgoing
+> traffic from outside the node or the cluster, but the network interface. This
+> means that the same network packet could be seen as "ingress" in a virtual
+> network device and as "egress" in the backing physical network interface.
 
 | YAML       | Environment variable         | Type    | Default        |
 | ---------- | ---------------------------- | ------- | -------------- |

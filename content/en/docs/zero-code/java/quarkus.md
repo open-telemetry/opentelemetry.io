@@ -19,12 +19,10 @@ provides:
 - The same instrumentations can be used with native image applications, which
   are not supported by the OpenTelemetry Java agent.
 
-{{% alert title="Note" color="secondary" %}}
-
-Quarkus OpenTelemetry instrumentation is maintained and supported by Quarkus.
-For details, see [Quarkus community support](https://quarkus.io/support/).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Quarkus OpenTelemetry instrumentation is maintained and supported by Quarkus.
+> For details, see [Quarkus community support](https://quarkus.io/support/).
 
 Quarkus can also be instrumented with the [OpenTelemetry Java agent](../agent/)
 if you are not running a native image application.

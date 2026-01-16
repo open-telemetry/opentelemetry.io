@@ -18,23 +18,24 @@ means that you don’t have to create a separate Kubernetes
 Since HPA only applies to `StatefulSets` and `Deployments` in Kubernetes, make
 sure that your Collector’s `spec.mode` is either `deployment` or `statefulset`.
 
-{{% alert title="Note" %}} HPA requires a
-[Metrics Server](https://github.com/kubernetes-sigs/metrics-server) running on
-your Kubernetes cluster.
-
-- Managed Kubernetes clusters like
-  [GKE (Google)](https://cloud.google.com/kubernetes-engine?hl=en) and
-  [AKS (Microsoft Azure)](https://azure.microsoft.com/en-us/products/kubernetes-service)
-  install a Metrics Server automagically as part of cluster provisioning.
-- [EKS (AWS) doesn’t come installed with a Metrics Server by default](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html).
-- Non-managed Kubernetes clusters and local desktop Kubernetes clusters (for
-  example, [MiniKube](https://minikube.sigs.k8s.io/docs/),
-  [KinD](https://kind.sigs.k8s.io/), [k0s](https://k0sproject.io)) require
-  manual Metrics Server installation.
-
-Consult your cloud provider documentation to determine whether or not your
-managed Kubernetes cluster comes pre-installed with a Metrics Server.
-{{% /alert %}}
+> [!NOTE]
+>
+> HPA requires a
+> [Metrics Server](https://github.com/kubernetes-sigs/metrics-server) running on
+> your Kubernetes cluster.
+>
+> - Managed Kubernetes clusters like
+>   [GKE (Google)](https://cloud.google.com/kubernetes-engine?hl=en) and
+>   [AKS (Microsoft Azure)](https://azure.microsoft.com/en-us/products/kubernetes-service)
+>   install a Metrics Server automagically as part of cluster provisioning.
+> - [EKS (AWS) doesn’t come installed with a Metrics Server by default](https://docs.aws.amazon.com/eks/latest/userguide/metrics-server.html).
+> - Non-managed Kubernetes clusters and local desktop Kubernetes clusters (for
+>   example, [MiniKube](https://minikube.sigs.k8s.io/docs/),
+>   [KinD](https://kind.sigs.k8s.io/), [k0s](https://k0sproject.io)) require
+>   manual Metrics Server installation.
+>
+> Consult your cloud provider documentation to determine whether or not your
+> managed Kubernetes cluster comes pre-installed with a Metrics Server.
 
 To configure HPA, you must first define your resource requests and limits by
 adding a `spec.resources` configuration to your `OpenTelemetryCollector` YAML:
@@ -49,7 +50,9 @@ resources:
     memory: 64Mi
 ```
 
-{{% alert title="Note" %}} Your own values might vary. {{% /alert %}}
+> [!NOTE]
+>
+> Your own values might vary.
 
 The `limits` configuration specifies the maximum memory and CPU values. In this
 case, those limits are 100 millicores (0.1 core) of CPU, and 128Mi (mebibytes,
@@ -70,7 +73,9 @@ autoscaler:
   targetMemoryUtilization: 60
 ```
 
-{{% alert title="Note" %}} Your own values might vary. {{% /alert %}}
+> [!NOTE]
+>
+> Your own values might vary.
 
 Putting it all together, the start of the `OpenTelemetryCollector` YAML should
 look something like this:
