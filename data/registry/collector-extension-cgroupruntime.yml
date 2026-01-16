@@ -1,4 +1,4 @@
-# cSpell:ignore gomaxecs cgroupruntimeextension
+# cSpell:ignore automemlimit automaxprocs gomaxecs cgroupruntimeextension cgroupruntime
 title: Cgroup Go runtime extension
 registryType: extension
 language: collector

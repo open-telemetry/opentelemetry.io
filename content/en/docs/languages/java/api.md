@@ -54,10 +54,10 @@ Libraries and frameworks should depend only on the API and only call methods
 from the API, and instruct applications / end users to add a dependency on the
 SDK and install a configured instance.
 
-{{% alert title=Javadoc %}} For the Javadoc reference of all OpenTelemetry Java
-components, see
-[javadoc.io/doc/io.opentelemetry](https://javadoc.io/doc/io.opentelemetry).
-{{% /alert %}}
+> [!NOTE] Javadoc
+>
+> For the Javadoc reference of all OpenTelemetry Java components, see
+> [javadoc.io/doc/io.opentelemetry](https://javadoc.io/doc/io.opentelemetry).
 
 ## API Components
 
@@ -386,7 +386,9 @@ scope:
 - [LoggerProvider](#loggerprovider) provides scoped [Loggers](#logger) for
   recording logs.
 
-{{% alert %}} {{% param logBridgeWarning %}} {{% /alert %}}
+> [!WARNING]
+>
+> {{% param logBridgeWarning %}}
 
 A scope is identified by the triplet (name, version, schemaUrl). Care must be
 taken to ensure the scope identity is unique. A typical approach is to set the
@@ -560,13 +562,13 @@ public class AttributesUsage {
 
 ### OpenTelemetry
 
-{{% alert title="Spring Boot Starter" %}} The Spring Boot starter is a special
-case where `OpenTelemetry` is available as a Spring bean. Simply inject
-`OpenTelemetry` into your Spring components.
-
-Read more about
-[extending the Spring Boot starter with custom manual instrumentation](/docs/zero-code/java/spring-boot-starter/api/).
-{{% /alert %}}
+> [!NOTE] Spring Boot Starter
+>
+> The Spring Boot starter is a special case where `OpenTelemetry` is available
+> as a Spring bean. Simply inject `OpenTelemetry` into your Spring components.
+>
+> Read more about
+> [extending the Spring Boot starter with custom manual instrumentation](/docs/zero-code/java/spring-boot-starter/api/).
 
 [OpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/OpenTelemetry.html)
 is a holder for top-level API components which is convenient to pass to
@@ -610,13 +612,14 @@ public class OpenTelemetryUsage {
 
 ### GlobalOpenTelemetry
 
-{{% alert title="Java agent" %}} The Java agent is a special case where
-`GlobalOpenTelemetry` is set by the agent. Simply call
-`GlobalOpenTelemetry.getOrNoop()` to access the `OpenTelemetry` instance.
-
-Read more about
-[extending the Java agent with custom manual instrumentation](/docs/zero-code/java/agent/api/).
-{{% /alert %}}
+> [!NOTE] Java agent
+>
+> The Java agent is a special case where `GlobalOpenTelemetry` is set by the
+> agent. Simply call `GlobalOpenTelemetry.getOrNoop()` to access the
+> `OpenTelemetry` instance.
+>
+> Read more about
+> [extending the Java agent with custom manual instrumentation](/docs/zero-code/java/agent/api/).
 
 [GlobalOpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html)
 holds a global singleton [OpenTelemetry](#opentelemetry) instance.
@@ -1429,7 +1432,9 @@ is the API entry point for logs and provides [Loggers](#logger). See
 [providers and scopes](#providers-and-scopes) for information on providers and
 scopes.
 
-{{% alert %}} {{% param logBridgeWarning %}} {{% /alert %}}
+> [!WARNING]
+>
+> {{% param logBridgeWarning %}}
 
 #### Logger
 
@@ -1623,14 +1628,16 @@ help instrumentation conform:
 | Generated code for stable semantic conventions     | `io.opentelemetry.semconv:opentelemetry-semconv:{{% param vers.semconv %}}-alpha`            |
 | Generated code for incubating semantic conventions | `io.opentelemetry.semconv:opentelemetry-semconv-incubating:{{% param vers.semconv %}}-alpha` |
 
-{{% alert %}} While both `opentelemetry-semconv` and
-`opentelemetry-semconv-incubating` include the `-alpha` suffix and are subject
-to breaking changes, the intent is to stabilize `opentelemetry-semconv` and
-leave the `-alpha` suffix on `opentelemetry-semconv-incubating` permanently.
-Libraries can use `opentelemetry-semconv-incubating` for testing, but should not
-include it as a dependency: since attributes may come and go from version to
-version, including it as a dependency may expose end users to runtime errors
-when transitive version conflicts occur. {{% /alert %}}
+> [!NOTE]
+>
+> While both `opentelemetry-semconv` and `opentelemetry-semconv-incubating`
+> include the `-alpha` suffix and are subject to breaking changes, the intent is
+> to stabilize `opentelemetry-semconv` and leave the `-alpha` suffix on
+> `opentelemetry-semconv-incubating` permanently. Libraries can use
+> `opentelemetry-semconv-incubating` for testing, but should not include it as a
+> dependency: since attributes may come and go from version to version,
+> including it as a dependency may expose end users to runtime errors when
+> transitive version conflicts occur.
 
 The attribute constants generated from semantic conventions are instances of
 `AttributeKey<T>`, and can be used anywhere the OpenTelemetry API accepts
