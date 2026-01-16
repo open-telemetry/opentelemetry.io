@@ -9,14 +9,12 @@ what-next: >
 weight: 60
 ---
 
-{{% alert title="Supported build environments" color=warning %}}
-
-Builds are officially supported on Linux-based environments and macOS. Other
-environments, such as [DevContainers](#devcontainers), are supported on a
-best-effort basis. For builds on Windows, you can follow steps similar to those
-for Linux using Windows Subsystem for Linux command line [WSL][windows-wsl].
-
-{{% /alert %}}
+> [!WARNING] Supported build environments
+>
+> Builds are officially supported on Linux-based environments and macOS. Other
+> environments, such as [DevContainers](#devcontainers), are supported on a
+> best-effort basis. For builds on Windows, you can follow steps similar to
+> those for Linux using Windows Subsystem for Linux command line [WSL][].
 
 The following instructions explain how to set up a development environment for
 this website.
@@ -179,8 +177,4 @@ such as (in alphabetical order):
 [nvm]:
   https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
-[windows-wsl]: https://learn.microsoft.com/en-us/windows/wsl/install
-
-<!-- markdownlint-disable link-image-reference-definitions -->
-
-[Submitting content]: ../pull-requests/
+[WSL]: https://learn.microsoft.com/en-us/windows/wsl/install

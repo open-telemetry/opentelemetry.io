@@ -87,16 +87,14 @@ from 9:00 - 17:35. There will be several sessions on OpenTelemetry as well:
 - **[OpAMP in Action: User Configurable Observability Pipelines](https://sched.co/1YFk6)**<br>
   by Srikanth Chekuri, SigNoz<br> Tuesday, March 19th • 17:00 - 17:25
 
-{{% alert title="Important access note" color="danger" %}}
-
-You need an _in-person all-access_ pass for on-site access to **Observability
-Day**. For details, see [KubeCon registration]. If you have a virtual ticket,
-you will be able to follow **Observability Day** through a live stream.
+> [!IMPORTANT] Important access note
+>
+> You need an _in-person all-access_ pass for on-site access to **Observability
+> Day**. For details, see [KubeCon registration]. If you have a virtual ticket,
+> you will be able to follow **Observability Day** through a live stream.
 
 [kubecon registration]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/
-
-{{% /alert %}}
 
 ## OpenTelemetry Observatory
 
