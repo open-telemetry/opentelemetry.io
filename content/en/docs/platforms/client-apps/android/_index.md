@@ -5,7 +5,8 @@ description: >-
 weight: 10
 cSpell:ignore: inactivity
 cascade:
-  instrumentation: 1.0.1
+  verse:
+    instrumentation: 1.0.1
 ---
 
 OpenTelemetry Android provides observability for native Android applications.
