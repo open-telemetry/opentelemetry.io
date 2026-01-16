@@ -8,6 +8,8 @@ canonical_url: https://blog.olly.garden/reducing-log-volume-with-the-opentelemet
 cSpell:ignore: jpkrohling Krohling logdedup logdedupprocessor OllyGarden OTTL Paixao telemetrygen
 ---
 
+![Cover image showing log deduplication concept](cover.png)
+
 Your logs are probably at least 80% repetitive noise. Connection retries, health
 checks, heartbeat messages: the same log line repeated thousands of times per
 minute. You pay storage costs for each one while the signal drowns in noise. The
