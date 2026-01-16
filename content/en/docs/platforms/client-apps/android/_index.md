@@ -6,7 +6,7 @@ weight: 10
 cascade:
   vers:
     instrumentation: 1.0.1
-cSpell:ignore: inactivity
+cSpell:ignore: contentful inactivity jank
 ---
 
 OpenTelemetry Android provides observability for native Android applications.

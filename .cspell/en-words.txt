@@ -150,6 +150,4 @@ wordpress
 WSGI
 zend
 zipkin
-jank
-contentful
 geoip
