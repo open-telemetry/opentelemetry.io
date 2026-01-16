@@ -8,7 +8,7 @@ canonical_url: https://www.causely.ai/blog/demystifying-automatic-instrumentatio
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/7810
 sig: Comms
 cspell:ignore: Beyla bpftrace Causely libbpf premain uprobes
-default_lang_commit: 5f551752635886a0d2d6b2a83e5a36866ca1b5f1
+default_lang_commit: 311e7819e9eacf9d8b6d250bbdee98c018ea232e
 ---
 
 Незважаючи на зростання популярності OpenTelemetry та [eBPF](https://ebpf.io/), більшість розробників не знають, як насправді працює автоматична інструменталізація. Ця стаття розбирає це питання — не для того, щоб запропонувати вам створити власну інструменталізацію, а щоб допомогти вам зрозуміти, що відбувається, коли ваші інструменти «просто працюють».
@@ -21,7 +21,7 @@ default_lang_commit: 5f551752635886a0d2d6b2a83e5a36866ca1b5f1
 
 Варто зазначити, що «автоматична інструменталізація» часто використовується для опису двох повʼязаних але різних понять. У наведеному вище визначенні та в цьому дописі це поняття стосується конкретних технік (таких як введення байт-коду або monkey patching), які можна використовувати для забезпечення спостережуваності без змін у коді. Однак, коли люди використовують термін «автоматична інструменталізація» у розмовах, вони часто мають на увазі повністю готові рішення, такі як [OpenTelemetry Java agent](/docs/zero-code/java/agent/).
 
-Ця відмінність є важливою: насправді тут існує трирівнева ієрархія. На нижньому рівні знаходяться **техніки автоматичної інструменталізації** (інʼєкції байт-коду, monkey patching тощо), які ми розглянемо тут. Ці методи використовуються [бібліотеками інструменталізації](/docs/concepts/glossary/#instrumentation-library), які орієнтовані на конкретні фреймворки, наприклад, бібліотеки, що інструменталізують [Spring і Spring Boot](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/f7cba3b86167946b3783fb8e575f1c169aec6972/instrumentation/spring?from_branch=main), [Express.js](https://www.npmjs.com/package/@opentelemetry/instrumentation-express), [Laravel](https://packagist.org/packages/open-telemetry/opentelemetry-auto-laravel) або інших популярних фреймворків. Нарешті, комплексні рішення, такі як OpenTelemetry Java agent, обʼєднують ці бібліотеки інструментування та додають всі стандартні конфігурації для експортерів, семплерів та інших будівельних блоків.
+Ця відмінність є важливою: насправді тут існує трирівнева ієрархія. На нижньому рівні знаходяться **техніки автоматичної інструменталізації** (інʼєкції байт-коду, monkey patching тощо), які ми розглянемо тут. Ці методи використовуються [бібліотеками інструменталізації](/docs/concepts/glossary/#instrumentation-library), які орієнтовані на конкретні фреймворки, наприклад, бібліотеки, що інструменталізують [Spring і Spring Boot](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/f7cba3b86167946b3783fb8e575f1c169aec6972/instrumentation/spring?from_branch=main), [Express.js](https://www.npmjs.com/package/@opentelemetry/instrumentation-express), [Laravel](https://packagist.org/packages/open-telemetry/opentelemetry-auto-laravel) або інших популярних фреймворків. Нарешті, комплексні рішення, такі як OpenTelemetry Java agent, обʼєднують ці бібліотеки інструментування та додають всі стандартні конфігурації для експортерів, механізмів вибірки та інших будівельних блоків.
 
 У спільноті моніторингу тривають дискусії щодо правильної термінології, і ця стаття не має на меті вирішити ці суперечки.
 
