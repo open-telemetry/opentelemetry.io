@@ -152,3 +152,4 @@ zend
 zipkin
 jank
 contentful
+geoip
