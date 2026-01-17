@@ -332,7 +332,7 @@ Here you can find more detailed package documentation for:
 
 ### Initialize Metrics
 
-> [!NOTE] If you’re instrumenting a library, skip this step.
+> [!NB] If you’re instrumenting a library, **skip this step**.
 
 To enable [metrics](/docs/concepts/signals/metrics/) in your app, you'll need to
 have an initialized
