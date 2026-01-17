@@ -1539,7 +1539,7 @@ import (
 
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.9.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.38.0"
 )
 
 type Atm struct {
@@ -1685,8 +1685,6 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 > [!NOTE] Check your work
 >
-> - Imported the `go.opentelemetry.io/otel/semconv/v1.9.0` package as `semconv`,
->   to access the OpenTelemetry resource semantic convention keys.
 > - Updated the `fillResourceWithAtm()` function by adding lines to properly
 >   assign the "service.name" and "service.version" attributes to the
 >   `pcommon.Resource` that represents the `Atm` entity.
@@ -1992,7 +1990,7 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.9.0"
+	 semconv "go.opentelemetry.io/otel/semconv/v1.38.0"
 )
 
 type Atm struct {
@@ -2404,7 +2402,7 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	semconv "go.opentelemetry.io/otel/semconv/v1.9.0"
+	semconv "go.opentelemetry.io/otel/semconv/v1.38.0"
 )
 
 type Atm struct {
