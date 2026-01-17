@@ -26,22 +26,22 @@ cSpell:ignore: L9ECAV7KIM loadgenerator OLJCESPC7Z
 
 ## 已实现的功能标志 {#implemented-feature-flags}
 
-| 功能标志                          | 服务            | 描述                                                                 |
-| --------------------------------- | --------------- | -------------------------------------------------------------------- |
-| `adServiceFailure`                | Ad              | 每 10 次调用 `GetAds` 生成一次错误                                   |
-| `adServiceManualGc`               | Ad              | 在广告服务中触发完整的手动垃圾回收                                   |
-| `adServiceHighCpu`                | Ad              | 在广告服务中触发高 CPU 负载。如果要演示 CPU 节流，请设置 CPU 资源限制 |
-| `cartServiceFailure`              | Cart            | 调用 `EmptyCart` 时始终生成错误                                      |
-| `emailMemoryLeak`                 | Email           | 在 `email` 服务中模拟内存泄漏。                                      |
-| `llmInaccurateResponse`           | LLM             | 模拟 LLM 服务为产品 ID `L9ECAV7KIM` 返回不准确的产品评论摘要。       |
-| `llmRateLimitError`               | LLM             | 模拟 LLM 服务间歇性返回带 HTTP 状态码 429 的 RateLimitError。         |
-| `productCatalogFailure`           | Product Catalog | 对产品 ID 为 `OLJCESPC7Z` 的 `GetProduct` 请求生成错误               |
-| `recommendationServiceCacheFailure` | Recommendation  | 由于指数级增长的缓存而创建内存泄漏。1.4 倍增长，50% 的请求触发增长。 |
-| `paymentServiceFailure`           | Payment         | 调用 `charge` 方法时生成错误。                                       |
-| `paymentServiceUnreachable`       | Checkout        | 调用 PaymentService 时使用错误地址，使其看起来不可用。               |
-| `loadgeneratorFloodHomepage`      | Load Generator  | 开始用大量请求淹没主页，可通过在状态上更改 flagd JSON 进行配置。     |
-| `kafkaQueueProblems`              | Kafka           | 使 Kafka 队列过载，同时引入消费者端延迟导致滞后峰值。                 |
-| `imageSlowLoad`                   | Frontend        | 利用 Envoy 故障注入，在前端加载产品图片时产生延迟。                  |
+| 功能标志                            | 服务            | 描述                                                                  |
+| ----------------------------------- | --------------- | --------------------------------------------------------------------- |
+| `adServiceFailure`                  | Ad              | 每 10 次调用 `GetAds` 生成一次错误                                    |
+| `adServiceManualGc`                 | Ad              | 在广告服务中触发完整的手动垃圾回收                                    |
+| `adServiceHighCpu`                  | Ad              | 在广告服务中触发高 CPU 负载。如果要演示 CPU 节流，请设置 CPU 资源限制 |
+| `cartServiceFailure`                | Cart            | 调用 `EmptyCart` 时始终生成错误                                       |
+| `emailMemoryLeak`                   | Email           | 在 `email` 服务中模拟内存泄漏。                                       |
+| `llmInaccurateResponse`             | LLM             | 模拟 LLM 服务为产品 ID `L9ECAV7KIM` 返回不准确的产品评论摘要。        |
+| `llmRateLimitError`                 | LLM             | 模拟 LLM 服务间歇性返回带 HTTP 状态码 429 的 RateLimitError。         |
+| `productCatalogFailure`             | Product Catalog | 对产品 ID 为 `OLJCESPC7Z` 的 `GetProduct` 请求生成错误                |
+| `recommendationServiceCacheFailure` | Recommendation  | 由于指数级增长的缓存而创建内存泄漏。1.4 倍增长，50% 的请求触发增长。  |
+| `paymentServiceFailure`             | Payment         | 调用 `charge` 方法时生成错误。                                        |
+| `paymentServiceUnreachable`         | Checkout        | 调用 PaymentService 时使用错误地址，使其看起来不可用。                |
+| `loadgeneratorFloodHomepage`        | Load Generator  | 开始用大量请求淹没主页，可通过在状态上更改 flagd JSON 进行配置。      |
+| `kafkaQueueProblems`                | Kafka           | 使 Kafka 队列过载，同时引入消费者端延迟导致滞后峰值。                 |
+| `imageSlowLoad`                     | Frontend        | 利用 Envoy 故障注入，在前端加载产品图片时产生延迟。                   |
 
 ## 指导性调试场景 {#guided-debugging-scenario}
 
