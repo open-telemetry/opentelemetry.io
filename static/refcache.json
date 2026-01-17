@@ -8639,6 +8639,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-13T09:47:07.008697506Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/config/configtls/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-16T10:06:30.702015776Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/pdata/pcommon/map.go": {
     "StatusCode": 206,
     "LastSeen": "2026-01-13T09:47:15.906972385Z"
@@ -8679,9 +8683,37 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-07T09:46:20.153798275Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.142.0/component/config.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T09:44:51.870070048Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.142.0/config/configtls/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-06T13:48:06.314424072Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.142.0/pdata/pcommon/map.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T09:45:08.456293248Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.142.0/pdata/ptrace/generated_resourcespans.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T09:45:01.858461231Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.142.0/receiver/receiver.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T09:44:58.755731498Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.142.0/receiver/receiver.go#L58": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T09:44:54.787656621Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.143.0/component/config.go": {
     "StatusCode": 206,
     "LastSeen": "2026-01-08T07:26:15.253377-03:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.143.0/config/configtls/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-08T10:55:00.800735411Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.143.0/pdata/pcommon/map.go": {
     "StatusCode": 206,
