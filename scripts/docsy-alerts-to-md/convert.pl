@@ -74,8 +74,8 @@ sub extract_alert_info {
     $title = '';  # Don't preserve generic title
   } elsif ($title =~ /(^tip|tip$)/i) {
     $type = 'TIP';
-  } elsif ($line =~ /color=["']?warning["']?/i) {
-    $type = 'WARNING';
+  } elsif ($line =~ /color=["']?(danger|dark|info|light|secondary|warning)["']?/i) {
+    $type = uc $1;
     $title = '' if $title =~ /^Important$/i;  # Don't preserve generic "Important" title
   } elsif ($line =~ /color=["']?success["']?/i) {
     $type = 'TIP';
