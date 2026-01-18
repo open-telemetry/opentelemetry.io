@@ -106,11 +106,19 @@ check the `attributes`->`select` section in the
 | `obi.network.flow.bytes`       | `src.port`                   | hidden                                            |
 | `obi.network.flow.bytes`       | `src.zone` (only Kubernetes) | hidden                                            |
 | `obi.network.flow.bytes`       | `transport`                  | hidden                                            |
+| `obi.network.flow.bytes`       | `network.type`               | hidden                                            |
+| `obi.network.flow.bytes`       | `network.protocol.name`      | hidden                                            |
+| `obi.network.flow.bytes`       | `src.country`                | shown if the `geoip` configuration section exists |
+| `obi.network.flow.bytes`       | `src.asn`                    | shown if the `geoip` configuration section exists |
+| `obi.network.flow.bytes`       | `dst.country`                | shown if the `geoip` configuration section exists |
+| `obi.network.flow.bytes`       | `dst.asn`                    | shown if the `geoip` configuration section exists |
 | Traces (SQL, Redis)            | `db.query.text`              | hidden                                            |
 
-{{< alert type="note" >}} The `obi.network.inter.zone.bytes` metric supports the
-same set of attributes as `obi.network.flow.bytes`, but all of them are hidden
-by default, except `k8s.cluster.name`, `src.zone` and `dst.zone`. {{< /alert >}}
+> [!NOTE]
+>
+> The `obi.network.inter.zone.bytes` metric supports the same set of attributes
+> as `obi.network.flow.bytes`, but all of them are hidden by default, except
+> `k8s.cluster.name`, `src.zone` and `dst.zone`.
 
 ## Internal metrics
 

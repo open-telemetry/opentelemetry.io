@@ -3,7 +3,7 @@ title: Configuration
 weight: 20
 description: Learn how to configure the Collector to suit your needs
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
+cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -65,13 +65,11 @@ otelcol --config=env:MY_CONFIG_IN_AN_ENVVAR --config=https://server/config.yaml
 otelcol --config="yaml:exporters::debug::verbosity: normal"
 ```
 
-{{% alert title="Tip" %}}
-
-When referring to nested keys in YAML paths, make sure to use double colons (::)
-to avoid confusion with namespaces that contain dots. For example:
-`receivers::docker_stats::metrics::container.cpu.utilization::enabled: false`.
-
-{{% /alert %}}
+> [!TIP]
+>
+> When referring to nested keys in YAML paths, make sure to use double colons
+> (`::`) to avoid confusion with namespaces that contain dots. For example:
+> `receivers::docker_stats::metrics::container.cpu.utilization::enabled: false`.
 
 To validate a configuration file, use the `validate` command. For example:
 
@@ -104,19 +102,17 @@ are enabled through the [service](#service) section.
 <a id="endpoint-0.0.0.0-warning"></a> The following is an example of Collector
 configuration with a receiver, a processor, an exporter, and three extensions.
 
-{{% alert title="Important" color="warning" %}}
-
-While it is generally preferable to bind endpoints to `localhost` when all
-clients are local, our example configurations use the "unspecified" address
-`0.0.0.0` as a convenience. The Collector currently defaults to `0.0.0.0`, but
-the default will be changed to `localhost` in the near future. For details
-concerning either of these choices as endpoint configuration value, see
-[Safeguards against denial of service attacks].
+> [!WARNING]
+>
+> While it is generally preferable to bind endpoints to `localhost` when all
+> clients are local, our example configurations use the "unspecified" address
+> `0.0.0.0` as a convenience. The Collector currently defaults to `0.0.0.0`, but
+> the default will be changed to `localhost` in the near future. For details
+> concerning either of these choices as endpoint configuration value, see
+> [Safeguards against denial of service attacks][].
 
 [Safeguards against denial of service attacks]:
   https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md#safeguards-against-denial-of-service-attacks
-
-{{% /alert %}}
 
 ```yaml
 receivers:
@@ -860,6 +856,109 @@ This creates two certificates:
 - A client certificate in `cert.pem`, signed by the OpenTelemetry Example CA,
   with the associated key in `cert-key.pem`.
 
+#### Using certificates in the Collector
+
+Once you have the certificates, configure the Collector to use them.
+
+##### TLS configuration for receivers (server-side)
+
+Configure TLS on a receiver to encrypt incoming connections. Use `cert_file` and
+`key_file` to specify the server certificate:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+        tls:
+          cert_file: /path/to/cert.pem
+          key_file: /path/to/cert-key.pem
+      http:
+        endpoint: 0.0.0.0:4318
+        tls:
+          cert_file: /path/to/cert.pem
+          key_file: /path/to/cert-key.pem
+```
+
+##### TLS configuration for exporters (client-side)
+
+Configure TLS on an exporter to encrypt outgoing connections. Use `ca_file` to
+verify the server's certificate:
+
+```yaml
+exporters:
+  otlp:
+    endpoint: otelcol2:4317
+    tls:
+      ca_file: /path/to/ca.pem
+```
+
+If you also need to present a client certificate to the server:
+
+```yaml
+exporters:
+  otlp:
+    endpoint: otelcol2:4317
+    tls:
+      ca_file: /path/to/ca.pem
+      cert_file: /path/to/cert.pem
+      key_file: /path/to/cert-key.pem
+```
+
+##### mTLS configuration (mutual TLS)
+
+For mTLS, both the receiver and the exporter verify each other's certificates.
+On the receiver, add `client_ca_file` to verify client certificates:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+        tls:
+          cert_file: /path/to/server-cert.pem
+          key_file: /path/to/server-key.pem
+          client_ca_file: /path/to/ca.pem
+```
+
+On the exporter, provide both the CA to verify the server and the client
+certificate:
+
+```yaml
+exporters:
+  otlp:
+    endpoint: remote-collector:4317
+    tls:
+      ca_file: /path/to/ca.pem
+      cert_file: /path/to/client-cert.pem
+      key_file: /path/to/client-key.pem
+```
+
+##### Common TLS settings
+
+The following settings are available for TLS configuration:
+
+| Setting                | Description                                               |
+| ---------------------- | --------------------------------------------------------- |
+| `ca_file`              | Path to the CA certificate to verify the peer certificate |
+| `cert_file`            | Path to the TLS certificate                               |
+| `key_file`             | Path to the TLS private key                               |
+| `client_ca_file`       | Path to the CA certificate to verify client certificates  |
+| `insecure`             | Disable TLS verification (not recommended for production) |
+| `insecure_skip_verify` | Skip server certificate verification (not recommended)    |
+| `min_version`          | Minimum TLS version (for example, `1.2` or `1.3`)         |
+| `max_version`          | Maximum TLS version                                       |
+| `reload_interval`      | Duration after which the certificate is reloaded          |
+
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable MD034 -->
+> For more details on TLS configuration options, see the
+> [configtls documentation](https://github.com/open-telemetry/opentelemetry-collector/blob/v{{% param vers %}}/config/configtls/README.md).
+<!-- markdownlint-enable MD034 -->
+<!-- prettier-ignore-end -->
+
 [dcc]: /docs/concepts/components/#collector
 
 ## Override settings
@@ -914,17 +1013,15 @@ key:
 If you need to represent more complex data structures, the use of YAML is highly
 recommended.
 
-{{% alert title="Important" color="warning" %}}
-
-The `--set` option has the following limitations:
-
-1. Does not support setting a key that contains a dot `.`.
-2. Does not support setting a key that contains an equal sign `=`.
-3. The configuration key separator inside the value part of the property is
-   "::". For example `--set "name={a::b: c}"` is equivalent with
-   `--set name::a::b=c`.
-
-{{% /alert %}}
+> [!CAUTION]
+>
+> The `--set` option has the following limitations:
+>
+> 1. Does not support setting a key that contains a dot `.`.
+> 2. Does not support setting a key that contains an equal sign `=`.
+> 3. The configuration key separator inside the value part of the property is
+>    "::". For example `--set "name={a::b: c}"` is equivalent with
+>    `--set name::a::b=c`.
 
 ## Embedding other configuration providers
 
@@ -977,12 +1074,10 @@ extensions:
 
 ## How to examine the final configuration
 
-{{% alert title="Important" color="warning" %}}
-
-This command is an experimental functionality. Its behavior may change with no
-warning.
-
-{{% /alert %}}
+> [!CAUTION]
+>
+> This command is an experimental functionality. Its behavior may change with no
+> warning.
 
 Use `print-config` in the default mode (`--mode=redacted`) and
 `--feature-gates=otelcol.printInitialConfig`:
@@ -1006,12 +1101,10 @@ otelcol print-config --mode=unredacted --config=file:examples/local/otel-config.
 
 ### How to print the final configuration in JSON format
 
-{{% alert title="Important" color="warning" %}}
-
-This command is an experimental functionality. Its behavior may change with no
-warning.
-
-{{% /alert %}}
+> [!CAUTION]
+>
+> This command is an experimental functionality. Its behavior may change with no
+> warning.
 
 Use `print-config` with `--format=json` and
 `--feature-gates=otelcol.printInitialConfig`. Note that JSON format is

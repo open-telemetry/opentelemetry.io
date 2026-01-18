@@ -34,7 +34,7 @@ function runConvert(input) {
 
 // Test 2: Multi-line alert with blank lines
 {
-  const input = `{{% alert title="Note" %}}
+  const input = `{{% alert title=Note %}}
 
 Some content here
 spanning multiple lines.
@@ -202,6 +202,160 @@ last line with closing tag. {{% /alert %}}
   const result = runConvert(input);
   assert.strictEqual(result, expected, 'Inline closing tag failed');
   console.log('✓ Inline content with closing tag on same line as last content');
+}
+
+// Test 11: Alert with title="Warning"
+{
+  const input = `{{% alert color="warning" title="Warning" %}}
+
+This component is intended for dev inner-loop, there is no plan to make it
+production ready. Production environments should use something else.
+
+{{% /alert %}}
+`;
+  const expected = `> [!WARNING]
+>
+> This component is intended for dev inner-loop, there is no plan to make it
+> production ready. Production environments should use something else.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(result, expected, 'Alert with title="Warning" failed');
+  console.log('✓ Alert with title="Warning"');
+}
+
+// Test 12: Alert with color="warning" only
+{
+  const input = `{{% alert color="warning" %}} Warning content here. {{% /alert %}}
+`;
+  const expected = `> [!WARNING]
+>
+> Warning content here.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(result, expected, 'Alert with color="warning" failed');
+  console.log('✓ Alert with color="warning"');
+}
+
+// Test 13: Alert with no arguments defaults to NOTE
+{
+  const input = `{{% alert %}} This alert has no arguments. {{% /alert %}}
+
+And some more text.`;
+  const expected = `> [!NOTE]
+>
+> This alert has no arguments.
+
+And some more text.`;
+  const result = runConvert(input);
+  assert.strictEqual(
+    result,
+    expected,
+    'Alert without arguments should default to NOTE',
+  );
+  console.log('✓ Alert with no arguments defaults to NOTE');
+}
+
+// Test 14: Alert with color="success" and title
+{
+  const input = `{{% alert color="success" title="Pro tip" %}}
+
+You can also run the \`fix\` commands locally.
+
+{{% /alert %}}
+`;
+  const expected = `> [!TIP] Pro tip
+>
+> You can also run the \`fix\` commands locally.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(
+    result,
+    expected,
+    'Alert with color="success" and title failed',
+  );
+  console.log('✓ Alert with color="success" and title');
+}
+
+// Test 15: Alert with title="Caution"
+{
+  const input = `{{% alert title="Caution" %}}
+
+This feature has limitations.
+
+{{% /alert %}}
+`;
+  const expected = `> [!CAUTION]
+>
+> This feature has limitations.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(result, expected, 'Alert with title="Caution" failed');
+  console.log('✓ Alert with title="Caution"');
+}
+
+// Test 16: Alert with title only defaults to NOTE while keeping title
+{
+  const input = `{{% alert title="Reminder" %}} Don't forget to configure the exporter. {{% /alert %}}`;
+  const expected = `> [!NOTE] Reminder
+>
+> Don't forget to configure the exporter.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(
+    result,
+    expected,
+    'Alert with title only should default to NOTE and keep the title',
+  );
+  console.log('✓ Alert with title only defaults to NOTE');
+}
+
+// Test 17: Alert with unsupported color (passthrough)
+{
+  const input = `{{% alert color="blue" %}} This alert has an unsupported color attribute. {{% /alert %}}`;
+  const result = runConvert(input);
+  assert.strictEqual(
+    result,
+    input,
+    'Alert with unsupported color should be unchanged',
+  );
+  console.log('✓ Alert with unsupported color (passthrough)');
+}
+
+// Test 18: HTML shortcode syntax {{< alert type="note" >}}
+{
+  const input = `{{< alert type="note" >}} Some content here. {{< /alert >}}`;
+  const expected = `> [!NOTE]
+>
+> Some content here.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(
+    result,
+    expected,
+    'HTML shortcode syntax {{< alert type="note" >}} failed',
+  );
+  console.log('✓ HTML shortcode syntax {{< alert type="note" >}}');
+}
+
+// Test 19: Alert with HTML in title attribute
+{
+  const input = `{{% alert title="<i class='fa-solid fa-exclamation-triangle pe-1'></i> Bring your own light/dark mode menu <span class='badge text-bg-warning fs-6 float-end'>EXPERIMENTAL</span>" color=warning %}}
+
+Some alert content here.
+
+{{% /alert %}}
+`;
+  const expected = `> [!WARNING] <i class='fa-solid fa-exclamation-triangle pe-1'></i> Bring your own light/dark mode menu <span class='badge text-bg-warning fs-6 float-end'>EXPERIMENTAL</span>
+>
+> Some alert content here.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(
+    result,
+    expected,
+    'Alert with HTML in title attribute failed',
+  );
+  console.log('✓ Alert with HTML in title attribute');
 }
 
 console.log('\nAll tests passed!');

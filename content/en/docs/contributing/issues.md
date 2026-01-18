@@ -16,11 +16,9 @@ issue.
 1. Browse through the list of [issues]({{% param _issues %}}).
 2. Select an issue that you would like to work on.
 
-   {{% alert color="warning" %}}
-
-   {{% param chooseAnIssueAtYourLevel %}}
-
-   {{% /alert %}}
+   > [!WARNING] Important!
+   >
+   > {{% param chooseAnIssueAtYourLevel %}}
 
 3. Read through the issue comments, if any.
 4. Ask maintainers if this issue is still relevant, and ask any questions you
@@ -82,3 +80,7 @@ Keep the following in mind when filing an issue:
   [Code of Conduct](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
   Respect your fellow contributors. For example, "The docs are terrible" is not
   helpful or polite feedback.
+
+<!-- markdownlint-disable link-image-reference-definitions -->
+
+[choose an issue]: <{{% param _issues %}}>

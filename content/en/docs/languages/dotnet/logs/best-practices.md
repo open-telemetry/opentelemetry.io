@@ -102,10 +102,10 @@ logger.LogInformation("Hello from {food} {price}.", food, price);
 
 Avoid string interpolation. For example:
 
-{{% alert title="Warning" color="warning" %}} The following code has bad
-performance due to
-[string interpolation](https://learn.microsoft.com/dotnet/csharp/tutorials/string-interpolation):
-{{% /alert %}}
+> [!WARNING]
+>
+> The following code has bad performance due to
+> [string interpolation](https://learn.microsoft.com/dotnet/csharp/tutorials/string-interpolation).
 
 ```csharp
 var food = "tomato";
@@ -152,10 +152,10 @@ Avoid the extension methods from
 [LoggerExtensions](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions),
 these methods are not optimized for performance. For example:
 
-{{% alert title="Warning" color="warning" %}} The following code has bad
-performance due to
-[boxing](https://learn.microsoft.com/dotnet/csharp/programming-guide/types/boxing-and-unboxing):
-{{% /alert %}}
+> [!WARNING]
+>
+> The following code has bad performance due to
+> [boxing](https://learn.microsoft.com/dotnet/csharp/programming-guide/types/boxing-and-unboxing).
 
 ```csharp
 var food = "tomato";
@@ -171,9 +171,10 @@ The logging API is highly optimized for the scenario where most loggers are
 **disabled** for certain log levels. Making an extra call to `IsEnabled` before
 logging will not give you any performance gain. For example:
 
-{{% alert title="Warning" color="warning" %}} The
-`logger.IsEnabled(LogLevel.Information)` call in the following code is not going
-to give any performance gain. {{% /alert %}}
+> [!WARNING]
+>
+> The `logger.IsEnabled(LogLevel.Information)` call in the following code is not
+> going to give any performance gain.
 
 ```csharp
 var food = "tomato";

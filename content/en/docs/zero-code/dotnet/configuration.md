@@ -245,16 +245,15 @@ Important environment variables include:
 
 **Status**: [Experimental](/docs/specs/otel/versioning-and-stability)
 
-{{% alert title="Warning" color="warning" %}} **Do NOT use in production.**
-
-Prometheus exporter is intended for the inner dev loop. Production environments
-can use a combination of OTLP exporter with
-[OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector-releases)
-having
-[`otlp` receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/v0.61.0/receiver/otlpreceiver)
-and
-[`prometheus` exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.61.0/exporter/prometheusexporter).
-{{% /alert %}}
+> [!WARNING] Warning: **do NOT use in production**
+>
+> Prometheus exporter is intended for the inner dev loop. Production
+> environments can use a combination of OTLP exporter with
+> [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector-releases)
+> having
+> [`otlp` receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/v0.61.0/receiver/otlpreceiver)
+> and
+> [`prometheus` exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.61.0/exporter/prometheusexporter).
 
 To enable the Prometheus exporter, set the `OTEL_METRICS_EXPORTER` environment
 variable to `prometheus`.
