@@ -321,4 +321,41 @@ This feature has limitations.
   console.log('✓ Alert with unsupported color (passthrough)');
 }
 
+// Test 18: HTML shortcode syntax {{< alert type="note" >}}
+{
+  const input = `{{< alert type="note" >}} Some content here. {{< /alert >}}`;
+  const expected = `> [!NOTE]
+>
+> Some content here.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(
+    result,
+    expected,
+    'HTML shortcode syntax {{< alert type="note" >}} failed',
+  );
+  console.log('✓ HTML shortcode syntax {{< alert type="note" >}}');
+}
+
+// Test 19: Alert with HTML in title attribute
+{
+  const input = `{{% alert title="<i class='fa-solid fa-exclamation-triangle pe-1'></i> Bring your own light/dark mode menu <span class='badge text-bg-warning fs-6 float-end'>EXPERIMENTAL</span>" color=warning %}}
+
+Some alert content here.
+
+{{% /alert %}}
+`;
+  const expected = `> [!WARNING] <i class='fa-solid fa-exclamation-triangle pe-1'></i> Bring your own light/dark mode menu <span class='badge text-bg-warning fs-6 float-end'>EXPERIMENTAL</span>
+>
+> Some alert content here.
+`;
+  const result = runConvert(input);
+  assert.strictEqual(
+    result,
+    expected,
+    'Alert with HTML in title attribute failed',
+  );
+  console.log('✓ Alert with HTML in title attribute');
+}
+
 console.log('\nAll tests passed!');
