@@ -19079,6 +19079,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-16T09:44:38.377414909Z"
   },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.24.0-alpha/opentelemetry-instrumentation-bom-alpha-2.24.0-alpha.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-17T14:55:35.166483363Z"
+  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.19.0/opentelemetry-instrumentation-bom-2.19.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2026-01-13T09:47:01.909887993Z"
@@ -19090,6 +19094,10 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.23.0/opentelemetry-instrumentation-bom-2.23.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2026-01-16T09:44:36.27845116Z"
+  },
+  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.24.0/opentelemetry-instrumentation-bom-2.24.0.pom": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-17T14:55:34.472611339Z"
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/opentelemetry-bom-alpha/1.53.0-alpha/opentelemetry-bom-alpha-1.53.0-alpha.pom": {
     "StatusCode": 206,
