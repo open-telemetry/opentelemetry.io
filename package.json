@@ -6,7 +6,7 @@
   "scripts": {
     "__check:links": "make --keep-going check-links",
     "__check:format:nowrap": "npm run _check:format:any -- --prose-wrap preserve",
-    "_build": "npm run _hugo -- -e dev --buildDrafts --buildFuture --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
+    "_build": "npm run _hugo -- --logLevel info -e dev --buildDrafts --buildFuture --baseURL \"${DEPLOY_PRIME_URL:-http://localhost}\"",
     "__check:format": "./scripts/npx-helper.sh prettier --ignore-unknown",
     "_check:format:any": "npm run __check:format -- --check --ignore-path ''",
     "_check:format:nowrap": "npm run __check:format:nowrap -- content/ja content/uk content/zh",
