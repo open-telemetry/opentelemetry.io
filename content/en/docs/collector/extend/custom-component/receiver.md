@@ -50,7 +50,7 @@ simulates a pull operation and generates traces as an outcome of that operation.
 First, use the [Building a Custom Collector](/docs/collector/extend/ocb/)
 tutorial to create a Collector instance named `otelcol-dev`; all you need is to
 copy the `builder-config.yaml` described in
-[Step 2](/docs/collector/extend/ocb/#step-2---create-a-builder-manifest-file)
+[Configure the OpenTelemetry Collector Builder](/docs/collector/extend/ocb/#configure-the-opentelemetry-collector-builder)
 and run the builder. As an outcome, you should now have a folder structure like
 this:
 
@@ -127,10 +127,11 @@ service:
       level: debug
 ```
 
-> Note: Here, we use the `insecure` flag in the `otlp` exporter config for
-> simplicity; you should use TLS certificates for secure communication or mTLS
-> for mutual authentication when running the Collector in production, by
-> following this
+> [!NOTE]
+>
+> Here, we use the `insecure` flag in the `otlp` exporter config for simplicity;
+> you should use TLS certificates for secure communication or mTLS for mutual
+> authentication when running the Collector in production, by following this
 > [guide](/docs/collector/configuration/#setting-up-certificates).
 
 To verify that the Collector is properly set up, run this command:
@@ -188,12 +189,11 @@ cd tailtracer
 go mod init github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tailtracer
 ```
 
-> Note:
+> [!NOTE]
 >
-> 1. The module path above is a mock path, which can be your desired private or
->    public path.
-> 2. See the
->    [initial trace-receiver code](https://github.com/rquedas/otel4devs/tree/main/collector/receiver/trace-receiver).
+> The module path above is a mock path, which can be your desired private or
+> public path. See the
+> [initial trace-receiver code](https://github.com/rquedas/otel4devs/tree/main/collector/receiver/trace-receiver).
 
 It is recommended to enable Go
 [Workspaces](https://go.dev/doc/tutorial/workspaces) since we're going to manage
@@ -263,12 +263,10 @@ type Config struct {
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Added the `Interval` and the `NumberOfTraces` fields to properly have access
-  to their values from the config.yaml.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Added the `Interval` and the `NumberOfTraces` fields to properly have access
+>   to their values from the config.yaml.
 
 Now that you have access to the settings, you can provide any kind of validation
 needed for those values by implementing the `Validate` method according to the
@@ -311,16 +309,14 @@ func (cfg *Config) Validate() error {
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Imported the `fmt` package to properly format print error messages.
-- Added the `Validate` method to the Config struct to check if the `interval`
-  setting value is at least 1 minute (1m), and if the `number_of_traces` setting
-  value is greater or equal to 1. If that is not true, the Collector will
-  generate an error during its startup process and display the message
-  accordingly.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Imported the `fmt` package to properly format print error messages.
+> - Added the `Validate` method to the Config struct to check if the `interval`
+>   setting value is at least 1 minute (1m), and if the `number_of_traces`
+>   setting value is greater or equal to 1. If that is not true, the Collector
+>   will generate an error during its startup process and display the message
+>   accordingly.
 
 If you want to take a closer look at the structs and interfaces involved in the
 configuration aspects of a component, refer to the
@@ -448,25 +444,23 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Imported the `time` package to support the time.Duration type for the
-  defaultInterval.
-- Imported the `go.opentelemetry.io/collector/component` package, which is where
-  `component.Config` is declared.
-- Imported the `go.opentelemetry.io/collector/receiver` package, which is where
-  `receiver.Factory` is declared.
-- Added a `time.Duration` constant called `defaultInterval` to represent the
-  default value for our receiver's `Interval` setting. We will be setting the
-  default value for 1 minute, hence the assignment of `1 * time.Minute` as its
-  value.
-- Added a function named `createDefaultConfig`, which is responsible for
-  returning a `component.Config` implementation, which in this case is going to
-  be an instance of our `tailtracer.Config` struct.
-- The `tailtracer.Config.Interval` field was initialized with the
-  `defaultInterval` constant.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Imported the `time` package to support the time.Duration type for the
+>   defaultInterval.
+> - Imported the `go.opentelemetry.io/collector/component` package, which is
+>   where `component.Config` is declared.
+> - Imported the `go.opentelemetry.io/collector/receiver` package, which is
+>   where `receiver.Factory` is declared.
+> - Added a `time.Duration` constant called `defaultInterval` to represent the
+>   default value for our receiver's `Interval` setting. We will be setting the
+>   default value for 1 minute, hence the assignment of `1 * time.Minute` as its
+>   value.
+> - Added a function named `createDefaultConfig`, which is responsible for
+>   returning a `component.Config` implementation, which in this case is going
+>   to be an instance of our `tailtracer.Config` struct.
+> - The `tailtracer.Config.Interval` field was initialized with the
+>   `defaultInterval` constant.
 
 ## Specifying the receiver's capabilities
 
@@ -569,19 +563,17 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Imported the `context` package to support the `context.Context` type
-  referenced in the `createTracesReceiver` function.
-- Imported the `go.opentelemetry.io/collector/consumer` package to support the
-  `consumer.Traces` type referenced in the `createTracesReceiver` function.
-- Updated the `NewFactory()` function so it returns the `receiver.Factory`
-  generated by the `receiver.NewFactory()` call with the required parameters.
-  The generated receiver factory will be capable of processing traces via the
-  call to
-  `receiver.WithTraces(createTracesReceiver, component.StabilityLevelAlpha)`
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Imported the `context` package to support the `context.Context` type
+>   referenced in the `createTracesReceiver` function.
+> - Imported the `go.opentelemetry.io/collector/consumer` package to support the
+>   `consumer.Traces` type referenced in the `createTracesReceiver` function.
+> - Updated the `NewFactory()` function so it returns the `receiver.Factory`
+>   generated by the `receiver.NewFactory()` call with the required parameters.
+>   The generated receiver factory will be capable of processing traces via the
+>   call to
+>   `receiver.WithTraces(createTracesReceiver, component.StabilityLevelAlpha)`
 
 ## Implementing the receiver component
 
@@ -667,19 +659,17 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Imported the `context` package which is where the `Context` type and functions
-  are declared.
-- Imported the `go.opentelemetry.io/collector/component` package which is where
-  the `Host` type is declared.
-- Added a bootstrap implementation of the
-  `Start(ctx context.Context, host component.Host)` method to comply with the
-  `receiver.Traces` interface.
-- Added a bootstrap implementation of the `Shutdown(ctx context.Context)` method
-  to comply with the `receiver.Traces` interface.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Imported the `context` package which is where the `Context` type and
+>   functions are declared.
+> - Imported the `go.opentelemetry.io/collector/component` package which is
+>   where the `Host` type is declared.
+> - Added a bootstrap implementation of the
+>   `Start(ctx context.Context, host component.Host)` method to comply with the
+>   `receiver.Traces` interface.
+> - Added a bootstrap implementation of the `Shutdown(ctx context.Context)`
+>   method to comply with the `receiver.Traces` interface.
 
 The `Start()` method is passing 2 references (`context.Context` and
 `component.Host`) that your receiver may need to keep so they can be used as
@@ -741,18 +731,16 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-Updated the `Start()` method by adding the initialization to the `host` field
-with the `component.Host` reference passed by the Collector.
-
-- Set the `cancel` function field with the cancellation based on a new context
-  created with `context.Background()` (according to the Collector API
-  documentation suggestions).
-- Updated the `Shutdown()` method by adding a call to the `cancel()` context
-  cancellation function.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> Updated the `Start()` method by adding the initialization to the `host` field
+> with the `component.Host` reference passed by the Collector.
+>
+> - Set the `cancel` function field with the cancellation based on a new context
+>   created with `context.Background()` (according to the Collector API
+>   documentation suggestions).
+> - Updated the `Shutdown()` method by adding a call to the `cancel()` context
+>   cancellation function.
 
 ## Keeping information passed by the receiver's factory
 
@@ -828,29 +816,27 @@ func (tailtracerRcvr *tailtracerReceiver) Shutdown(ctx context.Context) error {
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Imported the `go.opentelemetry.io/collector/consumer` which is where the
-  pipeline's consumer types and interfaces are declared.
-- Imported the `go.uber.org/zap` package, which is what the Collector uses for
-  its debugging capabilities.
-- Added a `zap.Logger` field named `logger` so we can have access to the
-  Collector logger reference from within the receiver.
-- Added a `consumer.Traces` field named `nextConsumer` so we can push the traces
-  generated by the `tailtracer` receiver to the next consumer, declared in the
-  Collector pipeline.
-- Added a `Config` field named `config` so we can have access to receiver's
-  configuration settings defined in the Collector config.
-- Added a variable named `interval` that is initialized as a `time.Duration`
-  based on the value of the `interval` settings of the `tailtracer` receiver,
-  defined in the Collector config.
-- Added a `go func()` to implement the `ticker` mechanism so the receiver can
-  generate traces every time the `ticker` reaches the amount of time specified
-  by the `interval` variable.
-- Used the `tailtracerRcvr.logger` field to generate an info message every time
-  the receiver is supposed to generate traces.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Imported the `go.opentelemetry.io/collector/consumer` which is where the
+>   pipeline's consumer types and interfaces are declared.
+> - Imported the `go.uber.org/zap` package, which is what the Collector uses for
+>   its debugging capabilities.
+> - Added a `zap.Logger` field named `logger` so we can have access to the
+>   Collector logger reference from within the receiver.
+> - Added a `consumer.Traces` field named `nextConsumer` so we can push the
+>   traces generated by the `tailtracer` receiver to the next consumer, declared
+>   in the Collector pipeline.
+> - Added a `Config` field named `config` so we can have access to receiver's
+>   configuration settings defined in the Collector config.
+> - Added a variable named `interval` that is initialized as a `time.Duration`
+>   based on the value of the `interval` settings of the `tailtracer` receiver,
+>   defined in the Collector config.
+> - Added a `go func()` to implement the `ticker` mechanism so the receiver can
+>   generate traces every time the `ticker` reaches the amount of time specified
+>   by the `interval` variable.
+> - Used the `tailtracerRcvr.logger` field to generate an info message every
+>   time the receiver is supposed to generate traces.
 
 The `tailtracerReceiver` type is ready to be instantiated and will keep all
 meaningful information passed by its factory.
@@ -923,19 +909,17 @@ func NewFactory() receiver.Factory {
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Added a variable called `logger` and initialized it with the Collector logger
-  that is available as a field named `Logger`, in the `receiver.Settings`
-  reference.
-- Added a variable called `tailtracerCfg` and initialized it by casting the
-  `component.Config` reference to the `tailtracer` receiver `Config`.
-- Added a variable called `traceRcvr` and initialized it with the
-  `tailtracerReceiver` instance using the factory information stored in the
-  variables.
-- Updated the return statement to include the `traceRcvr` instance.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Added a variable called `logger` and initialized it with the Collector
+>   logger that is available as a field named `Logger`, in the
+>   `receiver.Settings` reference.
+> - Added a variable called `tailtracerCfg` and initialized it by casting the
+>   `component.Config` reference to the `tailtracer` receiver `Config`.
+> - Added a variable called `traceRcvr` and initialized it with the
+>   `tailtracerReceiver` instance using the factory information stored in the
+>   variables.
+> - Updated the return statement to include the `traceRcvr` instance.
 
 So far, the skeleton of the receiver has been fully implemented.
 
@@ -1006,16 +990,14 @@ func components() (otelcol.Factories, error) {
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Imported the receiver module
-  `github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tailtracer`,
-  which is where the receiver types and functions are.
-- Added a call to `tailtracer.NewFactory()` as a parameter of the
-  `otelcol.MakeFactoryMap()` call so your `tailtracer` receiver factory is
-  properly added to the `factories` map.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Imported the receiver module
+>   `github.com/open-telemetry/opentelemetry-tutorials/trace-receiver/tailtracer`,
+>   which is where the receiver types and functions are.
+> - Added a call to `tailtracer.NewFactory()` as a parameter of the
+>   `otelcol.MakeFactoryMap()` call so your `tailtracer` receiver factory is
+>   properly added to the `factories` map.
 
 ## Running and debugging the receiver
 
@@ -1088,8 +1070,9 @@ successfully. Every minute, there will be a message that reads,
 `I should start processing traces now!`, triggered by the dummy ticker in
 `tailtracer/trace-receiver.go`.
 
-> Note: You can always stop the process by pressing <kbd>Ctrl + C</kbd> in your
-> Collector terminal.
+> [!TIP]
+>
+> To stop the process press <kbd>Ctrl + C</kbd> in your Collector terminal.
 
 Additionally, you may use your IDE of choice to debug the receiver, just as you
 would normally debug a Go project. Here is a simple `launch.json` file for
@@ -1319,20 +1302,18 @@ func getRandomNumber(min int, max int) int {
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Imported the `math/rand` and `time` packages to support the implementation of
-  the `generateRandomNumber` function.
-- Added the `generateAtm` function, that instantiates an `Atm` type and randomly
-  assigns either Illinois or California as the value for `StateID`, along with
-  the corresponding value for `ISPNetwork`.
-- Added the `generateBackendSystem` function, which creates an instance of the
-  `BackendSystem`type and randomly assigns service endpoint values to the
-  `Endpoint` field.
-- Added the `generateRandomNumber` function to generate random numbers within a
-  specified range.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Imported the `math/rand` and `time` packages to support the implementation
+>   of the `generateRandomNumber` function.
+> - Added the `generateAtm` function, that instantiates an `Atm` type and
+>   randomly assigns either Illinois or California as the value for `StateID`,
+>   along with the corresponding value for `ISPNetwork`.
+> - Added the `generateBackendSystem` function, which creates an instance of the
+>   `BackendSystem`type and randomly assigns service endpoint values to the
+>   `Endpoint` field.
+> - Added the `generateRandomNumber` function to generate random numbers within
+>   a specified range.
 
 Now that you have the functions to generate object instances representing the
 entities generating telemetry, you are ready to represent those entities in the
@@ -1417,14 +1398,12 @@ func generateTraces(numberOfTraces int) ptrace.Traces{
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Added the `resourceSpan` variable and initialized it with the `ResourceSpan`
-  reference returned by the `traces.ResourceSpans().AppendEmpty()` call.
-- Added the `atmResource` variable and initialized it with the
-  `pcommon.Resource` reference returned by the `resourceSpan.Resource()` call.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Added the `resourceSpan` variable and initialized it with the `ResourceSpan`
+>   reference returned by the `traces.ResourceSpans().AppendEmpty()` call.
+> - Added the `atmResource` variable and initialized it with the
+>   `pcommon.Resource` reference returned by the `resourceSpan.Resource()` call.
 
 ### Describing Resources through attributes
 
@@ -1474,16 +1453,14 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm){
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Declared a variable called `atmAttrs` and initialized it with the
-  `pcommon.Map` reference returned by the `resource.Attributes()` call.
-- Used the `PutInt()` and `PutStr()` methods from `pcommon.Map` to add int and
-  string attributes based on the equivalent `Atm` field types. Notice that
-  because these attributes are specific to and only represent the `Atm` entity,
-  they are all grouped within the `atm.` prefix.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Declared a variable called `atmAttrs` and initialized it with the
+>   `pcommon.Map` reference returned by the `resource.Attributes()` call.
+> - Used the `PutInt()` and `PutStr()` methods from `pcommon.Map` to add int and
+>   string attributes based on the equivalent `Atm` field types. Notice that
+>   because these attributes are specific to and only represent the `Atm`
+>   entity, they are all grouped within the `atm.` prefix.
 
 The resource semantic conventions also have prescriptive attribute names and
 well-known values to represent telemetry generation entities that are common and
@@ -1706,23 +1683,21 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Imported the `go.opentelemetry.io/collector/semconv/v1.9.0` package as
-  `conventions`, to access all the resource semantic conventions attribute names
-  and values.
-- Updated the `fillResourceWithAtm()` function by adding lines to properly
-  assign the "service.name" and "service.version" attributes to the
-  `pcommon.Resource` that represents the `Atm` entity.
-- Updated the `fillResourceWithBackendSystem()` function by adding lines to
-  properly assign the "service.name" and "service.version" attributes to the
-  `pcommon.Resource` that represents the `BackendSystem` entity.
-- Updated the `generateTraces` function by adding lines to properly instantiate
-  a `pcommon.Resource` and fill in the attribute information for both `Atm` and
-  `BackendSystem` entities using the `fillResourceWithAtm()` and
-  `fillResourceWithBackendSystem()` functions.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Imported the `go.opentelemetry.io/collector/semconv/v1.9.0` package as
+>   `conventions`, to access all the resource semantic conventions attribute
+>   names and values.
+> - Updated the `fillResourceWithAtm()` function by adding lines to properly
+>   assign the "service.name" and "service.version" attributes to the
+>   `pcommon.Resource` that represents the `Atm` entity.
+> - Updated the `fillResourceWithBackendSystem()` function by adding lines to
+>   properly assign the "service.name" and "service.version" attributes to the
+>   `pcommon.Resource` that represents the `BackendSystem` entity.
+> - Updated the `generateTraces` function by adding lines to properly
+>   instantiate a `pcommon.Resource` and fill in the attribute information for
+>   both `Atm` and `BackendSystem` entities using the `fillResourceWithAtm()`
+>   and `fillResourceWithBackendSystem()` functions.
 
 ### Representing operations with spans
 
@@ -1907,13 +1882,11 @@ func NewSpanID() pcommon.SpanID {
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Imported `crypto/rand` as `crand`, to avoid conflicts with `math/rand`.
-- Added new functions `NewTraceID()` and `NewSpanID()`, to generate trace ID and
-  span ID, respectively.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Imported `crypto/rand` as `crand`, to avoid conflicts with `math/rand`.
+> - Added new functions `NewTraceID()` and `NewSpanID()`, to generate trace ID
+>   and span ID, respectively.
 
 Now that you have a way to identify the spans properly, you can start creating
 them to represent the operations both within and across the entities in your
@@ -1946,25 +1919,23 @@ func appendTraceSpans(backend *BackendSystem, backendScopeSpans *ptrace.ScopeSpa
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Added `traceId` and `backendSpanId` variables to represent the trace and the
-  span ID, respectively, and initialized them with the helper functions created
-  previously.
-- Added `backendSpanStartTime` and `backendSpanFinishTime` to represent the
-  start and the end time of the operation. For the tutorial, any `BackendSystem`
-  operation will take 1 second.
-- Added a variable named `backendSpan` which will hold the instance of the
-  `ptrace.Span` representing this operation.
-- Set the `Name` of the span with the `Endpoint` field value from the
-  `BackendSystem` instance.
-- Set the `Kind` of the span to `ptrace.SpanKindServer`. Refer to the
-  [SpanKind section](/docs/specs/otel/trace/api/#spankind) in the trace
-  specification to understand how to define SpanKind properly.
-- Used all the methods mentioned above to fill the `ptrace.Span` with the proper
-  values to represent the `BackendSystem` operation.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Added `traceId` and `backendSpanId` variables to represent the trace and the
+>   span ID, respectively, and initialized them with the helper functions
+>   created previously.
+> - Added `backendSpanStartTime` and `backendSpanFinishTime` to represent the
+>   start and the end time of the operation. For the tutorial, any
+>   `BackendSystem` operation will take 1 second.
+> - Added a variable named `backendSpan` which will hold the instance of the
+>   `ptrace.Span` representing this operation.
+> - Set the `Name` of the span with the `Endpoint` field value from the
+>   `BackendSystem` instance.
+> - Set the `Kind` of the span to `ptrace.SpanKindServer`. Refer to the
+>   [SpanKind section](/docs/specs/otel/trace/api/#spankind) in the trace
+>   specification to understand how to define SpanKind properly.
+> - Used all the methods mentioned above to fill the `ptrace.Span` with the
+>   proper values to represent the `BackendSystem` operation.
 
 You may have noticed that there are 2 references to `ptrace.ScopeSpans` as
 parameters in the `appendTraceSpans()` function, but we only used one of them.
@@ -2245,15 +2216,13 @@ func (tailtracerRcvr *tailtracerReceiver) Start(ctx context.Context, host compon
 }
 ```
 
-{{% alert title="Check your work" %}}
-
-- Added a line under the `case <=ticker.C` condition calling the
-  `tailtracerRcvr.nextConsumer.ConsumeTraces()` method, passing the new context
-  created in the `Start()` method (`ctx`), and a call to the `generateTraces()`
-  function so the generated traces can be pushed to the next consumer in the
-  pipeline.
-
-{{% /alert %}}
+> [!NOTE] Check your work
+>
+> - Added a line under the `case <=ticker.C` condition calling the
+>   `tailtracerRcvr.nextConsumer.ConsumeTraces()` method, passing the new
+>   context created in the `Start()` method (`ctx`), and a call to the
+>   `generateTraces()` function so the generated traces can be pushed to the
+>   next consumer in the pipeline.
 
 Now let's run the `otelcol-dev` again:
 

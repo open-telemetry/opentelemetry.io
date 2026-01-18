@@ -5,13 +5,12 @@ aliases: [installation]
 weight: 2
 ---
 
-You can deploy the OpenTelemetry Collector on a wide variety of operating
-systems and architectures. The following instructions show how to download and
-install the latest stable version of the Collector.
+You can deploy the OpenTelemetry Collector on a variety of operating systems and
+architectures. The following instructions show you how to download and install
+the latest stable version of the Collector for your environment.
 
-If you aren't familiar with the deployment models, components, and repositories
-applicable to the OpenTelemetry Collector, first review the [Data Collection][]
-and [Deployment Methods][] page.
+Before you begin, make sure you understand Collector fundamentals, including
+[deployment patterns][], [components][], and [configuration][].
 
 ## Build from source
 
@@ -25,5 +24,6 @@ make install-tools
 make otelcorecol
 ```
 
-[data collection]: /docs/concepts/components/#collector
-[deployment methods]: ../deployment/
+[deployment patterns]: /docs/collector/deploy/
+[components]: /docs/collector/components/
+[configuration]: /docs/collector/configuration/
