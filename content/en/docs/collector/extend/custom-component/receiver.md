@@ -1685,8 +1685,8 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 > [!NOTE] Check your work
 >
-> - Imported the `go.opentelemetry.io/otel/semconv/v1.9.0` package as
->     `semconv`, to access the OpenTelemetry resource semantic convention keys.
+> - Imported the `go.opentelemetry.io/otel/semconv/v1.9.0` package as `semconv`,
+>   to access the OpenTelemetry resource semantic convention keys.
 > - Updated the `fillResourceWithAtm()` function by adding lines to properly
 >   assign the "service.name" and "service.version" attributes to the
 >   `pcommon.Resource` that represents the `Atm` entity.
