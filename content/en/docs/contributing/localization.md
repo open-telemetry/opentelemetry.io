@@ -84,15 +84,14 @@ The only exception is for links to external pages (such as
 <https://en.wikipedia.org>) that have a version specific to your local. Often
 this means replacing the `en` in the URL by your locale's language code.
 
-{{% alert title="Note" %}}
-
-The OTel website repository has a custom render-link hook that Hugo uses to
-convert absolute link paths referring to documentation pages. **Links of the
-form `/docs/some-page` are made locale specific** by prefixing the path with the
-page language code when rendering the link. For example, the previous sample
-path would become `/ja/docs/some-page` when rendered from a Japanese page.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> The OTel website repository has a custom render-link hook that Hugo uses to
+> convert absolute link paths referring to documentation pages. **Links of the
+> form `/docs/some-page` are made locale specific** by prefixing the path with
+> the page language code when rendering the link. For example, the previous
+> sample path would become `/ja/docs/some-page` when rendered from a Japanese
+> page.
 
 ### Link definition labels {#link-labels}
 
@@ -143,12 +142,10 @@ would translate any other page content.
 
 ### Shortcodes
 
-{{% alert title="Note" %}}
-
-As of February 2025, we are in the process of migrating from shortcodes to
-[include files](#includes) as a means of supporting shared-page content.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> As of February 2025, we are in the process of migrating from shortcodes to
+> [include files](#includes) as a means of supporting shared-page content.
 
 Some of the base shortcodes contain English text that you might need to localize
 -- this is particularly true of those contained in [layouts/_shortcodes/docs].
@@ -255,14 +252,12 @@ As you update your localized pages to match changes made to the corresponding
 English language page, ensure that you also update the `default_lang_commit`
 commit hash.
 
-{{% alert title="Tip" %}}
-
-If your localized page now corresponds to the English language version in `main`
-at `HEAD`, then erase the commit hash value in the front matter, and run the
-**add** command given in the previous section to automatically refresh the
-`default_lang_commit` field value.
-
-{{% /alert %}}
+> [!TIP]
+>
+> If your localized page now corresponds to the English language version in
+> `main` at `HEAD`, then erase the commit hash value in the front matter, and
+> run the **add** command given in the previous section to automatically refresh
+> the `default_lang_commit` field value.
 
 If you have batch updated all of your localization pages that had drifted, you
 can update the commit hash of these files using the `-c` flag followed by a
@@ -273,13 +268,11 @@ npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
 npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 ```
 
-{{% alert title="Important" %}}
-
-When you use `HEAD` as a hash specifier, the script will use the hash of `main`
-at HEAD in your **local environment**. Make sure that you fetch and pull `main`,
-if you want HEAD to correspond to `main` in GitHub.
-
-{{% /alert %}}
+> [!IMPORTANT]
+>
+> When you use `HEAD` as a hash specifier, the script will use the hash of
+> `main` at HEAD in your **local environment**. Make sure that you fetch and
+> pull `main`, if you want HEAD to correspond to `main` in GitHub.
 
 ### Drift status
 
@@ -299,24 +292,22 @@ maintainers to express your interest, for example through a GitHub discussion or
 via the Slack `#otel-docs-localization` channel. This section explains the steps
 involved in starting a new localization.
 
-{{% alert title="Note" %}}
-
-You don't have to be an existing contributor to the OpenTelemetry project to
-start a new localization. However, you cannot be added as a member of the
-[OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as a
-member of the approvers group for your localization until you satisfy the
-requirements for becoming an established member and approver as outlined in the
-[membership guidelines][].
-
-Before you earn approver status, you can indicate your approval of a
-localization PR by adding an "LGTM" (Looks Good To Me) comment. During this
-startup phase, maintainers will treat your reviews as if you are an approver
-already.
+> [!NOTE]
+>
+> You don't have to be an existing contributor to the OpenTelemetry project to
+> start a new localization. However, you cannot be added as a member of the
+> [OpenTelemetry GitHub organization](https://github.com/open-telemetry/) or as
+> a member of the approvers group for your localization until you satisfy the
+> requirements for becoming an established member and approver as outlined in
+> the [membership guidelines][].
+>
+> Before you earn approver status, you can indicate your approval of a
+> localization PR by adding an "LGTM" (Looks Good To Me) comment. During this
+> startup phase, maintainers will treat your reviews as if you are an approver
+> already.
 
 [membership guidelines]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
-
-{{% /alert %}}
 
 ### 1. Assemble a localization team {#team}
 
@@ -407,13 +398,11 @@ content][ali-dowair-2024].
 With terminology established, you can now localize the remaining site pages. <a
 name="small-prs"></a>
 
-{{% alert title="Submit small PRs" color="primary" %}}
-
-Localization teams should submit their work in **small increments**. That is,
-keep [PRs] small, preferably limited to one or a few small files. Smaller PRs
-are easier to review and so typically get merged more quickly.
-
-{{% /alert %}}
+> [!IMPORTANT] Submit small PRs
+>
+> Localization teams should submit their work in **small increments**. That is,
+> keep [PRs] small, preferably limited to one or a few small files. Smaller PRs
+> are easier to review and so typically get merged more quickly.
 
 ### OTel maintainer checklist
 

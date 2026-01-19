@@ -5,10 +5,11 @@ aliases: [agent-config]
 cSpell:ignore: classloaders customizer logback
 ---
 
-{{% alert title="For more information" %}} This page describes the various ways
-in which configuration can be supplied to the Java agent. For information on the
-configuration options themselves, see
-[Configure the SDK](/docs/languages/java/configuration). {{% /alert %}}
+> [!NOTE] For more information
+>
+> This page describes the various ways in which configuration can be supplied to
+> the Java agent. For information on the configuration options themselves, see
+> [Configure the SDK](/docs/languages/java/configuration).
 
 ## Agent Configuration
 
@@ -87,13 +88,11 @@ The SDK's autoconfiguration module is used for basic configuration of the agent.
 Read the [docs](/docs/languages/java/configuration) to find settings such as
 configuring export or sampling.
 
-{{% alert title="Important" color="warning" %}}
-
-Unlike the SDK autoconfiguration, versions 2.0+ of the Java agent and
-OpenTelemetry Spring Boot starter use `http/protobuf` as the default protocol,
-not `grpc`.
-
-{{% /alert %}}
+> [!IMPORTANT]
+>
+> Unlike the SDK autoconfiguration, versions 2.0+ of the Java agent and
+> OpenTelemetry Spring Boot starter use `http/protobuf` as the default protocol,
+> not `grpc`.
 
 ## Enable Resource Providers that are disabled by default
 

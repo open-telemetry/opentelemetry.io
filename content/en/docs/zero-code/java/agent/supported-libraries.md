@@ -229,7 +229,7 @@ These are the application servers that are regularly tested with the agent:
 | [TomEE](https://tomee.apache.org/)                                                    | 7.0.9, 7.1.4                             | OpenJDK 8<br/>OpenJ9 8                                 |
 | [TomEE](https://tomee.apache.org/)                                                    | 8.0.16                                   | OpenJDK 8, 11, 17, 21, 23<br/>OpenJ9 8, 11, 17, 21, 23 |
 | [TomEE](https://tomee.apache.org/)                                                    | 9.1.2                                    | OpenJDK 11, 17, 21, 23<br/>OpenJ9 11, 17, 21, 23       |
-| [Websphere Traditional](https://www.ibm.com/uk-en/cloud/websphere-application-server) | 8.5.5.22, 9.0.5.14                       | IBM JDK 8                                              |
+| [WebSphere Traditional](https://www.ibm.com/uk-en/cloud/websphere-application-server) | 8.5.5.22, 9.0.5.14                       | IBM JDK 8                                              |
 | [WildFly](https://www.wildfly.org/)                                                   | 13.0.0.Final                             | OpenJDK 8<br/>OpenJ9 8                                 |
 | [WildFly](https://www.wildfly.org/)                                                   | 17.0.1.Final, 21.0.0.Final               | OpenJDK 8, 11, 17, 21<br/>OpenJ9 8, 11, 17, 21         |
 | [WildFly](https://www.wildfly.org/)                                                   | 28.0.1.Final, 29.0.1.Final, 30.0.1.Final | OpenJDK 11, 17, 21, 23<br/>OpenJ9 11, 17, 21, 23       |

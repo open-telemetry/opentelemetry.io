@@ -17,28 +17,27 @@ To contribute new or improve existing documentation, submit a [pull request][PR]
 
 ## Generative AI contribution policy {#using-ai}
 
-{{% alert color="warning" title="Important note for first time contributors" %}}
-
-If you are a [first-time contributor], please note the following:
-
-Your first 3 contributions to our repository must be primarily human-written,
-with only minor AI assistance allowed
-([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)). This means
-your code should be written by hand, but AI may assist with code completion,
-formatting, linting, and following best practices. Your PR description must be
-entirely human-written, with no AI involvement (AIL0).
-
-Of course, you can use AI tools to ask questions and learn about our repository,
-our project, how to contribute, and more.
-
-We put this requirement in place to help you learn while contributing and to
-help maintainers and approvers to protect their time and bandwidth, which is a
-scarce resource.
-
-Maintainers may make an exception, if it is clear that your contribution is
-"drive-by" and can be merged without a lot of additional effort from their side.
-
-{{% /alert %}}
+> [!WARNING] **First time contributors** take note!
+>
+> If you are a [first-time contributor], please note the following:
+>
+> Your first 3 contributions to our repository must be primarily human-written,
+> with only minor AI assistance allowed
+> ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail)). This means
+> your code should be written by hand, but AI may assist with code completion,
+> formatting, linting, and following best practices. Your PR description must be
+> entirely human-written, with no AI involvement (AIL0).
+>
+> Of course, you can use AI tools to ask questions and learn about our
+> repository, our project, how to contribute, and more.
+>
+> We put this requirement in place to help you learn while contributing and to
+> help maintainers and approvers to protect their time and bandwidth, which is a
+> scarce resource.
+>
+> Maintainers may make an exception, if it is clear that your contribution is
+> "drive-by" and can be merged without a lot of additional effort from their
+> side.
 
 Generative AI is allowed, but **you are responsible** for **reviewing and
 _validating_** all AI-generated content &mdash; if you don't understand it,
@@ -75,14 +74,12 @@ class first,second white
 
 _Figure 1. Contributing new content._
 
-{{% alert title="Tip: Draft status" %}}
-
-Set the status of your pull request to **Draft** to let maintainers know that
-the content isn't ready for review yet. Maintainers may still comment or do
-high-level reviews, though they won't review the content in full until you
-remove the draft status.
-
-{{% /alert %}}
+> [!TIP]
+>
+> Set the status of your pull request to **Draft** to let maintainers know that
+> the content isn't ready for review yet. Maintainers may still comment or do
+> high-level reviews, though they won't review the content in full until you
+> remove the draft status.
 
 ## Using GitHub {#changes-using-github}
 
@@ -181,12 +178,10 @@ fix:submodule
 fix:text
 ```
 
-{{% alert title="Pro tip" %}}
-
-You can also run the `fix` commands locally. For the complete list of fix
-commands, run `npm run -s '_list:fix:*'`.
-
-{{% /alert %}}
+> [!TIP] Pro tip
+>
+> You can also run the `fix` commands locally. For the complete list of fix
+> commands, run `npm run -s '_list:fix:*'`.
 
 ## Working locally {#fork-the-repo}
 
