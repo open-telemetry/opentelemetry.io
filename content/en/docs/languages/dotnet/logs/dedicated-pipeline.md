@@ -3,7 +3,7 @@ title: Setting up a dedicated logging pipeline
 linkTitle: Dedicated pipeline
 description: Learn how to set up a dedicated logging pipeline for specific logs
 weight: 50
-cSpell:ignore: dedicatedLogger IConfiguration
+cSpell:ignore: appsettings dedicatedLogger IConfiguration
 ---
 
 This guide demonstrates how to create a dedicated logging pipeline for specific

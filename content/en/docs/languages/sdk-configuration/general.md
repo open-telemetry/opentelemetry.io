@@ -6,13 +6,14 @@ aliases: [general-sdk-configuration]
 cSpell:ignore: ottrace
 ---
 
-{{% alert title="Note" %}}
+> [!NOTE]
+>
+> Support for environment variables is optional. For detailed information on
+> which environment variables each language implementation supports, see the
+> [Implementation Compliance Matrix][].
 
-Support for environment variables is optional. For detailed information on which
-environment variables each language implementation supports, see the
-[Implementation Compliance Matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables).
-
-{{% /alert %}}
+[Implementation Compliance Matrix]:
+  https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables
 
 ## `OTEL_SERVICE_NAME`
 

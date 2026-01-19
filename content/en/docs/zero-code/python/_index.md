@@ -26,14 +26,12 @@ opentelemetry-bootstrap -a install
 The `opentelemetry-distro` package installs the API, SDK, and the
 `opentelemetry-bootstrap` and `opentelemetry-instrument` tools.
 
-{{% alert title="Note" %}}
-
-You must install a distro package to get auto instrumentation working. The
-`opentelemetry-distro` package contains the default distro to automatically
-configure some of the common options for users. For more information, see
-[OpenTelemetry distro](/docs/languages/python/distro/).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> You must install a distro package to get auto instrumentation working. The
+> `opentelemetry-distro` package contains the default distro to automatically
+> configure some of the common options for users. For more information, see
+> [OpenTelemetry distro](/docs/languages/python/distro/).
 
 The `opentelemetry-bootstrap -a install` command reads through the list of
 packages installed in your active `site-packages` folder, and installs the
@@ -47,10 +45,11 @@ Running `opentelemetry-bootstrap` without arguments lists the recommended
 instrumentation libraries to be installed. For more information, see
 [`opentelemetry-bootstrap`](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/opentelemetry-instrumentation#opentelemetry-bootstrap).
 
-{{% alert title="Using <code>uv</code>?" color="warning" %}} If you are using
-the [uv](https://docs.astral.sh/uv/) package manager, you might face some
-difficulty when running `opentelemetry-bootstrap -a install`. For details, see
-[Bootstrap using uv](troubleshooting/#bootstrap-using-uv). {{% /alert %}}
+> [!WARNING] Using `uv`?
+>
+> If you are using the [uv](https://docs.astral.sh/uv/) package manager, you
+> might face some difficulty when running `opentelemetry-bootstrap -a install`.
+> For details, see [Bootstrap using uv](troubleshooting/#bootstrap-using-uv).
 
 {#configuring-the-agent}
 

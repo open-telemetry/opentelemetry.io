@@ -8,7 +8,7 @@ author: >-
   [Gregor Zeitlinger](https://github.com/zeitlinger)(Grafana Labs), [Jay
   DeLuca](https://github.com/jaydeluca) (Grafana Labs), [Marylia
   Gutierrez](https://github.com/maryliag) (Grafana Labs)
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
 cSpell:ignore: Dotel marylia otelconf zeitlinger
 ---
 
@@ -310,7 +310,7 @@ estão alguns recursos adicionais para explorar:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/1060
 [java-project]: https://github.com/orgs/open-telemetry/projects/151
 [migration-file]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-migration-config.yaml
 [full-file]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
 [java-sampler]:
