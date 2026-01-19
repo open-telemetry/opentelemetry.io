@@ -44,3 +44,14 @@ WARN  i18n|MISSING_TRANSLATION|zh-CN|ui_search_ai_modal_disclaimer
 WARN  i18n|MISSING_TRANSLATION|zh-CN|ui_search_ai_popover_content
 WARN  i18n|MISSING_TRANSLATION|zh-CN|toc_on_this_page
 WARN  i18n|MISSING_TRANSLATION|zh-CN|toc_top_of_page
+
+# Blog post warnings about locale prefixes in cross-language links
+# These appear when blog posts with language links are mounted to locales
+File .*/content/en/blog/.*: drop unnecessary '/bn/' prefix from /bn/
+File .*/content/en/blog/.*: drop unnecessary '/es/' prefix from /es/
+File .*/content/en/blog/.*: drop unnecessary '/fr/' prefix from /fr/
+File .*/content/en/blog/.*: drop unnecessary '/ja/' prefix from /ja/
+File .*/content/en/blog/.*: drop unnecessary '/pt/' prefix from /pt/
+File .*/content/en/blog/.*: drop unnecessary '/ro/' prefix from /ro/
+File .*/content/en/blog/.*: drop unnecessary '/uk/' prefix from /uk/
+File .*/content/en/blog/.*: drop unnecessary '/zh/' prefix from /zh/
