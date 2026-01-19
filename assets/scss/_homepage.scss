@@ -640,7 +640,7 @@
     justify-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 0;
 
     @include media-breakpoint-down(lg) {
       grid-template-columns: repeat(4, 1fr);
