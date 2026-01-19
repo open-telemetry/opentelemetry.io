@@ -11,8 +11,8 @@ use strict;
 use warnings;
 use FileHandle;
 
-my $ALERT_OPEN = qr/\{\{%\s*alert\s+.*?%\}\}/;
-my $ALERT_CLOSE = qr/\{\{%\s*\/alert\s*%\}\}/;
+my $ALERT_OPEN = qr/\{\{[<%]\s*alert\b(.*?)[%>]\}\}/;
+my $ALERT_CLOSE = qr/\{\{[<%]\s*\/alert\s*[%>]\}\}/;
 
 sub has_html_shortcode {
   my ($lines_ref, $start, $end) = @_;
@@ -31,7 +31,7 @@ sub find_closing_tag {
 }
 
 sub extract_alert_info {
-  my ($line) = @_;
+  my ($alert_tag) = @_;
 
   my $color = '';
   my $type = '';
@@ -39,31 +39,41 @@ sub extract_alert_info {
   my $attrs = '';
   my $attrs_without_title = '';
 
-  if ($line =~ /\{\{%\s*alert\b(.*?)%\}\}/) {
+  # Extract attributes from the alert tag
+  if ($alert_tag =~ /$ALERT_OPEN/) {
     $attrs = $1 // '';
     $attrs =~ s/^\s+//;
     $attrs =~ s/\s+$//;
     $attrs_without_title = $attrs;
-    $attrs_without_title =~ s/\btitle=("[^"]*"|'[^']*'|[^\s%]+)//ig;
+    $attrs_without_title =~ s/\btitle=("[^"]*"|'[^']*'|[^\s%>]+)//ig;
     $attrs_without_title =~ s/^\s+//;
     $attrs_without_title =~ s/\s+$//;
   }
 
-  # Extract title if present
-  if ($line =~ /title=["']([^"']+)["']/ || $line =~ /title=([^\s%]+)/) {
+  # Extract title if present (handle both double and single quotes)
+  if ($alert_tag =~ /title="([^"]*)"/) {
+    $title = $1;
+  } elsif ($alert_tag =~ /title='([^']*)'/) {
+    $title = $1;
+  } elsif ($alert_tag =~ /title=([^\s%>]+)/) {
     $title = $1;
   }
 
   # Extract color if present
-  if ($line =~ /color=["']?([^"'\s%]+)["']?/) {
+  if ($alert_tag =~ /color=["']?([^"'\s%>]+)["']?/) {
     $color = $1;
   }
 
+  # Extract type if present
+  if ($alert_tag =~ /type=["']?([^"'\s%>]+)["']?/) {
+    $type = $1;
+  }
+
   # Determine type based on title or color
-  if ($title =~ /^Caution$/i) {
+  if ($title =~ /^Caution$/i || $type =~ /^Caution$/i) {
     $type = 'CAUTION';
     $title = '';  # Don't preserve generic title
-  } elsif ($title =~ /^Notes?$/i) {
+  } elsif ($title =~ /^Notes?$/i || $type =~ /^Notes?$/i) {
     $type = 'NOTE';
     $title = '';  # Don't preserve generic title
   } elsif ($title =~ /^Tip$/i) {
@@ -73,11 +83,12 @@ sub extract_alert_info {
     $type = 'WARNING';
     $title = '';  # Don't preserve generic title
   } elsif ($title =~ /(^tip|tip$)/i) {
+    # Title starts or ends with the word "tip"
     $type = 'TIP';
-  } elsif ($line =~ /color=["']?warning["']?/i) {
-    $type = 'WARNING';
+  } elsif ($alert_tag =~ /color=["']?(danger|dark|info|light|secondary|warning)["']?/i) {
+    $type = uc $1;
     $title = '' if $title =~ /^Important$/i;  # Don't preserve generic "Important" title
-  } elsif ($line =~ /color=["']?success["']?/i) {
+  } elsif ($alert_tag =~ /color=["']?success["']?/i) {
     $type = 'TIP';
   } elsif ($title =~ /^Important$/i) {
     $type = 'IMPORTANT';
@@ -88,6 +99,11 @@ sub extract_alert_info {
     if ($attrs eq '' || $attrs_without_title eq '' || $color eq 'primary') {
       $type = 'NOTE';
     }
+  }
+
+  # Handle type="note" from HTML shortcode syntax
+  if ($type eq 'note' || $type eq 'Note') {
+    $type = 'NOTE';
   }
 
   return ($type, $title);
@@ -106,7 +122,7 @@ for my $filename (@ARGV) {
     # Check for alert opening tag
     if ($line =~ /^\s*($ALERT_OPEN)\s*(.*)$/) {
       my $alert_tag = $1;
-      my $first_content = $2;
+      my $first_content = $3;
       my ($alert_type, $alert_title) = extract_alert_info($alert_tag);
 
       # Skip if we can't determine the alert type
@@ -137,8 +153,9 @@ for my $filename (@ARGV) {
         next;
       }
 
-      # Skip if contains HTML shortcode
-      if (has_html_shortcode(\@lines, $i, $close_idx)) {
+      # Skip if contains HTML shortcode in body (excluding the alert tags themselves)
+      # Only check body lines, not the opening/closing tag lines
+      if ($close_idx > $i + 1 && has_html_shortcode(\@lines, $i + 1, $close_idx - 1)) {
         for (my $j = $i; $j <= $close_idx; $j++) {
           push @output, $lines[$j];
         }
