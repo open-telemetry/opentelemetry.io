@@ -181,7 +181,7 @@ service:
 
 ## エージェントとゲートウェイのコレクターの組み合わせたデプロイメント {#combined-deployment-of-collectors-as-agents-and-gateways}
 
-複数のOpenTelemetryコレクターをデプロイする場合、ゲートウェイとしても[エージェント]((/docs/collector/deploy/agent/)としてもコレクターを実行することがよくあります。
+複数のOpenTelemetryコレクターをデプロイする場合、ゲートウェイとしても[エージェント](/docs/collector/deploy/agent/)としてもコレクターを実行することがよくあります。
 
 以下の図は、このような組み合わせたデプロイメントのアーキテクチャを示しています。
 
