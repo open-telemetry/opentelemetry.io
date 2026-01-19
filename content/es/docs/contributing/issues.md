@@ -1,107 +1,92 @@
 ---
-title: Propuestas
+title: Issues
 description:
-  Cómo solucionar un problema existente o informar un error, un riesgo de
-  seguridad o una posible mejora.
+  Cómo solucionar un issue existente o reportar un error, riesgo de seguridad o
+  posible mejora.
 weight: 10
+default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
-_issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
-default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167 # patched
-drifted_from_default: true
+cSpell:ignore: prepopulated
 ---
 
-## Solucionando una propuesta existente
+## Solucionar un issue existente
 
-Una de las mejores maneras de contribuir a mejorar la documentación de
-OpenTelemetry (OTel) es solucionando un problema ya identificado.
+Una de las mejores formas de ayudar a mejorar la documentación es solucionar un
+issue existente.
 
-1. Navegar por la lista de [propuestas]({{% param _issues %}}).
-2. Seleccione una propuesta en el que le gustaría trabajar, idealmente una que
-   se pueda solucionar en poco tiempo.
+1. Navega por la lista de [issues]({{% param _issues %}}).
+2. Selecciona un issue en el que te gustaría trabajar.
 
-   <!-- prettier-ignore -->
-   <a name="first-issue"></a>
-   {{% alert title="Contribuyendo por la primera vez?" color="primary alert--first-timer" %}}
+   > [!WARNING] ¡Importante!
+   >
+   > {{% param chooseAnIssueAtYourLevel %}}
 
-   Seleccione una propuesta con las siguientes etiquetas:
-   - [Good first issue]
-   - [Help wanted]
-
-   <!-- prettier-ignore -->
-   > **NOTA**: **_No_ asignamos propuestas** a aquellos que aún no hayan
-   > contribuido a la organización [OpenTelemetry organization][org], a menos
-   > que sean parte de un proceso de tutoria o onboarding.
-   {.mt-3}
-
-   <!-- prettier-ignore -->
-   [good first issue]: <{{% param _issue %}}%22good+first+issue%22>
-   [help wanted]: <{{% param _issue %}}%3A%22help+wanted%22>
-   [org]: https://github.com/open-telemetry
-
-   {{% /alert %}}
-
-3. Lea los comentarios del problema, si los hay.
-4. Pregunta a los mantenedores si la propuesta sigue siendo relevante y aclara
-   cualquier duda publicando un comentario.
-5. Comparte tu intención de trabajar en el tema agregando un comentario a este
+3. Lee los comentarios del issue, si los hay.
+4. Pregunta a los mantenedores si este issue sigue siendo relevante, y haz
+   cualquier pregunta que necesites para aclarar dudas publicando comentarios en
+   el issue.
+5. Comparte tu intención de trabajar en el issue agregando un comentario a este
    efecto.
-6. Trabaja para solucionar el problema y notifica a los mantenedores si surge
-   algún inconveniente.
-7. Cuando este listo, [envia tu trabajo con un pull request](../pull-requests)
+6. Trabaja en solucionar el issue. Avisa a los mantenedores si encuentras algún
+   problema.
+7. Cuando esté listo, [envía tu trabajo mediante un pull request](../pull-requests)
    (PR).
 
-## Reportar un problema
+## Reportar un issue
 
-Si encuentras un error o quieres hacer unas sugerencias para mejorar el
-contenido existente, abre una propuesta.
+Si notas un error o quieres sugerir mejoras al contenido existente, abre un
+issue.
 
-1. Haz click en el enlace **Crea una propuesta para la documentación** de
-   cualquier documento. Eso te va a redireccionar a una pagina de la propuesta
-   GitHub prerrellenada con algunos encabezados.
-2. Describa el problema o la sugerencia de mejora. Proporcione tantos detalles
-   como pueda.
-3. Haz click en **Submit new issue**.
+1. Haz clic en el enlace **Create documentation issue** en cualquier documento.
+   Esto te redirige a una página de issue de GitHub precargada con algunos
+   encabezados.
+2. Describe el issue o la sugerencia de mejora. Proporciona tantos detalles como
+   sea posible.
+3. Haz clic en **Create**.
 
-Después de enviar el problema, verifique su problema de vez en cuando o active
-las notificaciones de GitHub. Puede que pasen algunos días hasta que los
-mantenedores respondan. Los revisores y otros miembros de la comunidad pueden
-hacer preguntas antes de poder tomar medidas sobre su problema.
+Después de enviar, revisa tu issue ocasionalmente o activa las notificaciones de
+GitHub. Puede tomar algunos días hasta que los mantenedores y aprobadores
+respondan. Los revisores y otros miembros de la comunidad pueden hacer preguntas
+antes de poder tomar acción sobre tu issue.
 
-## Sugerir nuevos contenidos o funciones
+## Sugerir nuevo contenido o funcionalidades
 
-Si tienes una idea para un nuevo contenido o funcionalidad, pero no estás seguro
-de dónde debería ir, aún puedes presentar una propuesta. También puedes informar
+Si tienes una idea para nuevo contenido o una funcionalidad, pero no estás
+seguro de dónde debería ir, aún puedes crear un issue. También puedes reportar
 errores y vulnerabilidades de seguridad.
 
-1. Ve a [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/)
-   y selecciona **Nueva propuesta** dentro de la pestaña **Propuestas**.
+1. Ve a
+   [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/) y
+   selecciona **New issue** dentro de la pestaña **Issues**.
 
-1. Seleccione el tipo de problema que mejor se aplica a su solicitud o duda.
+1. Selecciona el tipo de issue que mejor aplique a tu solicitud o duda.
 
-1. Rellene la plantilla.
+1. Completa la plantilla.
 
-1. Envia la propuesta.
+1. Envía el issue.
 
-### Como crear buenas propuestas
+### Cómo crear buenos issues
 
-Tenga en cuenta lo siguiente al crear una propuesta:
+Ten en cuenta lo siguiente al crear un issue:
 
-- Proporcione una descripción clara del problema. Describa específicamente qué
+- Proporciona una descripción clara del issue. Describe específicamente qué
   falta, qué está desactualizado, qué está mal o qué necesita mejorarse.
-- Explique el impacto específico que tiene el problema en los usuarios.
-- Limite el alcance de un problema determinado a una unidad de trabajo
-  razonable. En el caso de problemas de gran alcance, divídelos en tareas más
-  pequeñas. Por ejemplo, "Corregir la documentación de seguridad" es demasiado
-  amplio, pero "Agregar detalles en la sección 'Restringir el acceso a la red'"
-  es lo suficientemente específico como para que se pueda llevar a cabo una
-  acción.
-- Busque los problemas existentes para ver si hay algo relacionado o similar al
-  nuevo problema.
-- Si el nuevo problema se relaciona con otro problema o solicitud de
-  incorporación de cambios, haga referencia a él por su URL completa o por el
-  número del problema o solicitud de incorporación de cambios precedido por el
-  carácter `#`, por ejemplo `Introducido por #987654`.
+- Explica el impacto específico que tiene el issue en los usuarios.
+- Limita el alcance de un issue dado a una unidad de trabajo razonable. Para
+  problemas con un alcance grande, divídelos en issues más pequeños. Por
+  ejemplo, "Arreglar los docs de seguridad" es demasiado amplio, pero "Agregar
+  detalles al tema 'Restringir el acceso a la red'" es lo suficientemente
+  específico como para ser accionable.
+- Busca en los issues existentes para ver si hay algo relacionado o similar al
+  nuevo issue.
+- Si el nuevo issue se relaciona con otro issue o pull request, refiérelo ya sea
+  por su URL completa o por el número del issue o pull request precedido por un
+  carácter `#`. Por ejemplo, `Introducido por #987654`.
 - Sigue el
-  [Código de conducta](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
-  Respete a sus compañeros colaboradores. Por ejemplo, decir "Los documentos son
-  terribles" no es un comentario útil ni cortés.
+  [Código de Conducta](https://github.com/open-telemetry/community/blob/main/code-of-conduct.md).
+  Respeta a tus compañeros contribuyentes. Por ejemplo, "Los docs son terribles"
+  no es un comentario útil ni cortés.
+
+<!-- markdownlint-disable link-image-reference-definitions -->
+
+[elegir un issue]: <{{% param _issues %}}>

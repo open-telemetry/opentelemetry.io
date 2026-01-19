@@ -2,36 +2,47 @@
 title: Guía de estilo de documentación
 description:
   Terminología y estilo al escribir la documentación de OpenTelemetry.
-linkTitle: Guía de estilo de documentación
+linkTitle: Guía de estilo
 weight: 20
-default_lang_commit: 99f0ae5760038d51f9e9eb376bb428a2caca8167 # patched
-drifted_from_default: true
-cSpell:ignore: open-telemetry opentelemetryio postgre style-guide textlintrc
+default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
+params:
+  alertExamples: |
+    > [!TIP]
+    >
+    > Si estás escribiendo contenido nuevo, generalmente prefiere usar esta sintaxis
+    > de alerta de cita en bloque en lugar del
+    > [shortcode alert](https://www.docsy.dev/docs/content/shortcodes/#alert) de Docsy.
+
+    > [!WARNING] :warning: ¡Se requiere línea en blanco!
+    >
+    > Este sitio usa el formateador [Prettier], y requiere una línea vacía
+    > separando la etiqueta/título de la alerta del cuerpo de la alerta.
+cSpell:ignore: postgre textlintrc
 ---
 
 Aún no tenemos una guía de estilo oficial, pero el estilo actual de la
 documentación de OpenTelemetry está inspirado en las siguientes guías de estilo:
 
-- [Guía de estilo de documentación de para desarrolladores Google](https://developers.google.com/style)
-- [Guía de estilo de documentación de Kubernetes](https://kubernetes.io/docs/contribute/style/style-guide/)
+- [Guía de estilo de documentación para desarrolladores de Google](https://developers.google.com/style)
+- [Guía de estilo de Kubernetes](https://kubernetes.io/docs/contribute/style/style-guide/)
 
-Las siguientes secciones contienen indicaciones específicas para el proyecto
+Las siguientes secciones contienen orientación específica para el proyecto
 OpenTelemetry.
 
-{{% alert title="Note" %}}
+> [!NOTE]
+>
+> Muchos requisitos de nuestra guía de estilo se pueden aplicar ejecutando
+> automatización: antes de enviar un [pull request][] (PR), ejecuta
+> `npm run fix:all` en tu máquina local y haz commit de los cambios.
+>
+> Si encuentras errores o [verificaciones de PR fallidas](../pr-checks), lee
+> sobre nuestra guía de estilo y aprende qué puedes hacer para corregir ciertos
+> problemas comunes.
 
-Muchos de los requisitos de nuestra guía de estilo se pueden aplicar
-automaticamente: antes de enviar un
-[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
-(PR), ejecute `npm run fix:all` en su máquina local y confirme los cambios.
+[pull request]:
+  https://docs.github.com/es/get-started/learning-about-github/github-glossary#pull-request
 
-Si se producen errores o [fallan las comprobaciones de su PR](../pr-checks), lea
-nuestra guía de estilo y aprenda qué puede hacer para solucionar ciertos asuntos
-comunes.
-
-{{% /alert %}}
-
-## Lista de palabras de OpenTelemetry.io {#opentelemetryio-word-list}
+## Lista de palabras de OpenTelemetry.io
 
 Una lista de términos y palabras específicos de OpenTelemetry que se deben usar
 de manera uniforme en todo el sitio:
@@ -43,50 +54,78 @@ de manera uniforme en todo el sitio:
 - [OpAMP](/docs/concepts/glossary/#opamp)
 
 Para obtener una lista completa de los términos de OpenTelemetry y su
-definición, consulte [Glosario](/docs/concepts/glossary/).
+definición, consulta el [Glosario](/docs/concepts/glossary/).
 
-Asegúrese de que los nombres propios, como otros proyectos de CNCF o
+Asegúrate de que los nombres propios, como otros proyectos de CNCF o
 herramientas de terceros, estén escritos correctamente y utilicen la mayúscula
-original. Por ejemplo, escriba "PostgreSQL" en lugar de "postgre". Para obtener
-una lista completa, consulte el archivo
+original. Por ejemplo, escribe "PostgreSQL" en lugar de "postgre". Para obtener
+una lista completa, consulta el archivo
 [`.textlintrc.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml).
 
-{{% alert title="Tip" %}}
+## Markdown
 
-Ejecute `npm run check:text` para verificar que todos los términos y palabras
-estén escritos correctamente.
+Las páginas del sitio están escritas en la sintaxis Markdown soportada por el
+renderizador Markdown [Goldmark]. Para ver la lista completa de extensiones
+Markdown soportadas, consulta [Goldmark].
 
-Ejecute `npm run check:text -- --fix` para corregir términos y palabras que no
-están escritos correctamente.
+También puedes usar las siguientes extensiones de Markdown:
 
-{{% /alert %}}
+- [Alertas](#alerts)
+- [Emojis]: para ver la lista completa de emojis disponibles, consulta [Emojis]
+  en la documentación de Hugo.
 
-## Estándares de Markdown {#markdown-standards}
+[Emojis]: https://gohugo.io/quick-reference/emojis/
 
-Para hacer cumplir los estándares y la coherencia de los archivos Markdown,
-todos los archivos deben seguir ciertas reglas, impuestas por
-[markdownlint](https://github.com/DavidAnson/markdownlint). Para obtener una
-lista completa, consulte el archivo
-[`.markdownlint.yaml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml).
+### Alertas {#alerts}
 
-Ejecute `npm run check:markdown` para verificar que todos los archivos siguen el
-estándar.
+Puedes escribir alertas usando la siguiente sintaxis extendida:
 
-Ejecute `npm run fix:markdown` para corregir problemas de formato relacionados
-con Markdown.
+- [Alertas][gfm-alerts] de [GitHub-flavored Markdown][GFM] (GFM)
+- Sintaxis de [Obsidian callout][] para títulos de alerta personalizados
+
+Aquí hay un ejemplo de cada una:
+
+```markdown
+{{% _param alertExamples %}}
+```
+
+Estas se renderizan como:
+
+{{% _param alertExamples %}}
+
+Para más detalles sobre la sintaxis de alertas de cita en bloque de Hugo,
+consulta [Alertas][hugo-alerts] en la documentación de Hugo.
+
+[gfm-alerts]:
+  https://docs.github.com/es/contributing/style-guide-and-content-model/style-guide#alerts
+[GFM]: https://github.github.com/gfm/
+[Goldmark]: https://gohugo.io/configuration/markup/#goldmark
+[hugo-alerts]: https://gohugo.io/render-hooks/blockquotes/#alerts
+[Obsidian callout]: https://help.obsidian.md/callouts
+
+### Verificaciones de Markdown {#markdown-standards}
+
+Para hacer cumplir estándares y consistencia en los archivos Markdown, todos los
+archivos deben seguir ciertas reglas, aplicadas por [markdownlint]. Para ver una
+lista completa, consulta los archivos [.markdownlint.yaml] y
+[.markdownlint-cli2.yaml].
+
+También aplicamos el [formato de archivo](#file-format) de Markdown y eliminamos
+los espacios en blanco finales de los archivos. Esto impide la
+[sintaxis de salto de línea] de 2+ espacios; usa `<br>` en su lugar o reformatea
+tu texto.
 
 ## Revisión ortográfica {#spell-checking}
 
-Utilice [CSpell](https://github.com/streetsidesoftware/cspell) para asegurarse
-de que todo su texto esté escrito correctamente. Para obtener una lista de
-palabras específicas del sitio web OpenTelemetry, consulte el archivo
+Usa [CSpell](https://github.com/streetsidesoftware/cspell) para asegurarte de
+que todo tu texto esté escrito correctamente. Para ver una lista de palabras
+específicas del sitio web de OpenTelemetry, consulta el archivo
 [`.cspell.yml`](https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml).
 
-Ejecute `npm run check:spelling` para verificar que todas las palabras estén
-escritas correctamente. Si `cspell` indica un error de `Palabra desconocida`,
-verifique si escribió esa palabra correctamente. Si es así, agregue esta palabra
-a la sección `cSpell:ignore` en la parte superior de su archivo. Si no existe
-dicha sección, puede agregarla al principio de un archivo Markdown:
+Si `cspell` indica un error de "Unknown word", verifica si escribiste la palabra
+correctamente. Si es así, agrega la palabra a la sección `cSpell:ignore` en la
+parte superior de tu archivo. Si no existe dicha sección, puedes agregarla al
+front matter de un archivo Markdown:
 
 ```markdown
 ---
@@ -95,30 +134,40 @@ cSpell:ignore: <word>
 ---
 ```
 
-Para cualquier otro archivo, agregue `cSpell:ignore <word>` en una línea de
+Para cualquier otro archivo, agrega `cSpell:ignore <word>` en una línea de
 comentario apropiada para el contexto del archivo. Para un archivo YAML de
-entrada [registry](/ecosystem/registry/), podría verse así:
+entrada del [registry](/ecosystem/registry/), podría verse así:
 
 ```yaml
 # cSpell:ignore <word>
-title: TítuloDeEntradaDelRegistro
+title: títuloDeEntradaDelRegistro
 ```
-
-Las herramientas del sitio web normalizan los diccionarios específicos de la
-página (es decir, las listas de palabras `cSpell:ignore`), eliminando palabras
-duplicadas, borrando palabras en la lista de palabras global y ordenando las
-palabras. Para normalizar los diccionarios específicos de la página, ejecute
-`npm run fix:dict`.
 
 ## Formato de archivo {#file-format}
 
-Para hacer cumplir un estándar determinado sobre cómo se estructuran los
-archivos, todos los archivos deben estar formateados por
-[prettier](https://prettier.io). Ejecute `npm run fix:format` antes de enviar un
-PR, o ejecutarlo después y enviar una confirmación adicional.
+Usamos [Prettier] para aplicar el formato de archivos. Invócalo usando:
+
+- `npm run fix:format` para formatear todos los archivos
+- `npm run fix:format:diff` para formatear solo los archivos que han cambiado
+  desde el último commit
+- `npm run fix:format:staged` para formatear solo los archivos que están en
+  staging para el próximo commit
 
 ## Nombres de archivos {#file-names}
 
 Todos los nombres de archivo deben estar en
-[kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case). Ejecute
-`npm run fix:filenames` para cambiar automáticamente el nombre de sus archivos.
+[kebab case](https://en.wikipedia.org/wiki/Letter_case#Kebab_case).
+
+## Corregir problemas de validación
+
+Para aprender cómo corregir problemas de validación, consulta
+[Verificaciones de pull request](../pr-checks).
+
+[.markdownlint.yaml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint.yaml
+[.markdownlint-cli2.yaml]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.markdownlint-cli2.yaml
+[sintaxis de salto de línea]:
+  https://www.markdownguide.org/basic-syntax/#line-breaks
+[markdownlint]: https://github.com/DavidAnson/markdownlint
+[Prettier]: https://prettier.io
