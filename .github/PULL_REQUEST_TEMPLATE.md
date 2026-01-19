@@ -1,11 +1,14 @@
 - [ ] I have read and followed the
-      [contribution guidelines](https://opentelemetry.io/docs/contributing/),
-      including the **First-time contributing?** note.
-- [ ] This PR includes **AI generated content**, and I have read and conform to
-      the
-      [Generative AI Contribution Policy](https://github.com/open-telemetry/community/blob/main/policies/genai.md).
+  [Contributing](https://opentelemetry.io/docs/contributing/) docs, especially
+  the **First-time contributing?** section.
+- [ ] This PR has content that I did not fully write myself.
+  - [ ] I used AI and I have read and followed the [Generative AI Contribution
+    Policy](https://github.com/open-telemetry/community/blob/main/policies/genai.md).
+  - [ ] I have the experience and domain knowledge necessary to understand,
+    review, and validate all content in this PR.
 
-<!--
+<!-- DELETE THIS COMMENT BEFORE SUBMITTING YOUR PR
+
 Provide a meaningful description of what your changes will do. Bonus points for including links to related issues, other PRs, or technical references.
 
 A detailed description helps reviewers understand the context of your change and reduces
