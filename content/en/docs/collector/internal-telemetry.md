@@ -260,7 +260,7 @@ See the [example configuration][kitchen-sink-config] for additional options.
 Note that the `tracer_provider` section there corresponds to `traces` here.
 
 [kitchen-sink-config]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/OtlpHttpExporter_traces_kitchen_sink.yaml
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml
 
 ## Types of internal telemetry
 

@@ -106,7 +106,7 @@ A complete list of config options can be found in the [configuration
 example][otel-sdk-config.yaml].
 
 [otel-sdk-config.yaml]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-config.yaml
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0-rc.1/examples/kitchen-sink.yaml
 
 ## Endpoint per signal
 
