@@ -7,6 +7,7 @@
 @import 'td/color-adjustments-dark';
 @import 'td/code-dark';
 @import 'dark-adjustments';
+@import 'homepage';
 @import 'td/gcs-search-dark';
 @import '_page_no_left_sidebar';
 
@@ -63,34 +64,6 @@
   > ul > li > a {
     @extend .btn-lg;
     @extend .btn-primary;
-  }
-}
-
-// Override button classes for the Status page only
-.l-status-primary {
-  @extend .l-buttons;
-  justify-content: left;
-
-  > ul > li > a /*, > p > a*/ {
-    @extend .btn-lg;
-    @extend .btn-primary;
-    padding: 20px;
-    border-radius: 0;
-    min-width: 220px;
-  }
-}
-
-.l-status-secondary {
-  @extend .l-buttons;
-  justify-content: left;
-
-  > ul > li > a /*, > p > a*/ {
-    @extend .btn-lg;
-    @extend .btn-secondary;
-    padding: 20px;
-    border-radius: 0;
-    min-width: 150px;
-    color: #2f4f4f;
   }
 }
 
@@ -170,17 +143,6 @@
       padding-top: 1rem;
       max-width: 80%;
     }
-
-    a {
-      color: $white;
-      text-decoration: underline;
-      &.external-link:after {
-        display: none;
-      }
-      &:hover {
-        color: rgba($white, 0.9);
-      }
-    }
   }
 }
 
@@ -206,10 +168,6 @@
   & p {
     padding: 0.5rem;
     margin-bottom: initial;
-  }
-
-  a {
-    text-decoration: underline;
   }
 }
 
