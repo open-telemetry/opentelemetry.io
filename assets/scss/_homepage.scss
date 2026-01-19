@@ -14,6 +14,11 @@
 // HERO WITH BACKGROUND - Hero section with background image support
 // =============================================================================
 
+// Configurable overlay darkness for hero background
+:root {
+  --hero-overlay-opacity: 0.3;
+}
+
 .hero-with-bg {
   background-image: var(--hero-bg-image);
   background-size: cover;
@@ -29,7 +34,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, var(--hero-overlay-opacity));
     pointer-events: none;
   }
 
@@ -110,58 +115,6 @@
 
     li {
       margin: 0;
-    }
-  }
-}
-
-// Dark mode adjustments for hero section
-@include color-mode(dark) {
-  .td-box--primary .hero-simple {
-    color: $white !important;
-
-    .hero-simple__tagline {
-      color: $white !important;
-    }
-
-    .hero-simple__content {
-      color: $white !important;
-
-      p,
-      a,
-      li {
-        color: $white !important;
-      }
-    }
-
-    .l-primary-buttons {
-      ul li a {
-        color: $white !important;
-      }
-    }
-  }
-
-  .td-box--white .hero-simple,
-  .td-box--light .hero-simple {
-    color: $white !important;
-
-    .hero-simple__tagline {
-      color: $white !important;
-    }
-
-    .hero-simple__content {
-      color: $white !important;
-
-      p,
-      a,
-      li {
-        color: $white !important;
-      }
-    }
-
-    .l-primary-buttons {
-      ul li a {
-        color: $white !important;
-      }
     }
   }
 }
