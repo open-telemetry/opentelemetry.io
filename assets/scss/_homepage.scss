@@ -124,13 +124,13 @@
 // =============================================================================
 
 .hero-tagline {
-  font-size: 2rem !important;
+  font-size: 2rem;
   line-height: 1.3;
   max-width: 800px;
   margin: 2rem auto 0;
 
   @include media-breakpoint-up(md) {
-    font-size: 2.5rem !important;
+    font-size: 2.5rem;
     margin-top: 3rem;
   }
 }
@@ -139,8 +139,10 @@
 // HERO SEARCH - Search bar section below compact hero
 // =============================================================================
 
-.hero-search-section {
-  padding: 2rem 0 !important;
+// Override td-box default padding for compact search section
+.td-home section.td-box.hero-search-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -199,7 +201,6 @@
 
 .intro-section {
   padding: 2.5rem 0;
-  background: $white;
 }
 
 .intro-content {
@@ -211,7 +212,7 @@
   align-items: center;
 
   @include media-breakpoint-up(lg) {
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .intro-text {
@@ -236,7 +237,7 @@
     img {
       max-width: 100%;
       height: auto;
-      max-height: 200px;
+      max-height: 350px;
       border-radius: var(--bs-border-radius-lg);
     }
   }
@@ -246,7 +247,7 @@
 // MAIN FEATURES - Three key features with images (like K8s)
 // =============================================================================
 
-.main-features-section {
+.td-default main section.main-features-section {
   padding: 0;
   // Full bleed
   position: relative;
@@ -436,7 +437,6 @@
 
 .otel-features-section {
   padding: 3rem 0;
-  background: $white;
 }
 
 .otel-features {
@@ -539,7 +539,6 @@
 
 .ecosystem-stats-section {
   padding: 3rem 0;
-  background: $light !important;
 }
 
 .ecosystem-stats {
@@ -624,7 +623,6 @@
 
 .adopters-showcase-section {
   padding: 3rem 0;
-  background: $white !important;
 }
 
 .adopters-showcase {
@@ -700,8 +698,10 @@
 // =============================================================================
 
 @include color-mode(dark) {
+  // Hero search section - td-box--light needs explicit background in dark mode
+  // Use slightly lighter background like ecosystem stats section
   .hero-search-section {
-    background: var(--bs-body-bg) !important;
+    background: rgba(255, 255, 255, 0.03);
     border-bottom-color: rgba(255, 255, 255, 0.1);
   }
 
@@ -720,14 +720,14 @@
     }
   }
 
-  // Main features section dark mode
+  // Main features section dark mode (no td-box)
   .main-feature-wrapper {
     &:nth-child(odd) {
-      background: var(--bs-body-bg);
+      background: rgba(255, 255, 255, 0.03);
     }
 
     &:nth-child(even) {
-      background: rgba(255, 255, 255, 0.03);
+      background: var(--bs-body-bg);
     }
   }
 
@@ -740,23 +740,18 @@
     opacity: 1;
   }
 
-  // Intro section dark mode
-  .intro-section {
-    background: var(--bs-body-bg) !important;
-  }
-
   .intro-content .intro-text p {
     color: rgba($white, 0.9);
   }
 
-  // Signals section dark mode
+  // Signals section dark mode (no td-box, needs background override)
   .signals-showcase-section {
-    background: var(--bs-body-bg) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
+    background: var(--bs-body-bg);
+    border-color: rgba(255, 255, 255, 0.1);
   }
 
   .signals-showcase__title {
-    color: $white !important;
+    color: $white;
   }
 
   .signal-card {
@@ -771,11 +766,6 @@
     color: rgba($white, 0.7);
   }
 
-  // Features grid dark mode
-  .otel-features-section {
-    background: var(--bs-body-bg) !important;
-  }
-
   .otel-feature__icon {
     color: lighten($primary, 15%);
   }
@@ -785,12 +775,13 @@
     opacity: 1;
   }
 
-  // Ecosystem stats dark mode
+  // Ecosystem stats dark mode - td-box--light needs explicit overrides
+  // Use slightly lighter background like alternating feature blocks
   .ecosystem-stats-section {
-    background: rgba(255, 255, 255, 0.03) !important;
+    background: rgba(255, 255, 255, 0.03);
 
     h2 {
-      color: rgba($white, 0.9);
+      color: $white;
     }
   }
 
@@ -808,11 +799,6 @@
 
   .ecosystem-stat__label {
     color: rgba($white, 0.7);
-  }
-
-  // Adopters dark mode
-  .adopters-showcase-section {
-    background: var(--bs-body-bg) !important;
   }
 
   .adopters-showcase__item img {
