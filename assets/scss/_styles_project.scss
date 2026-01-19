@@ -68,10 +68,6 @@
 }
 
 .td-navbar {
-  // AAA contrast fix: darken navbar background for better contrast with white text/logo
-  // Original $primary (#4f62ad) gave 5.7:1, #41549f gives 7:1+
-  background: #41549f;
-
   .navbar-brand {
     @include media-breakpoint-up(md) {
       padding: 0;
@@ -81,23 +77,6 @@
     }
     .navbar-brand__name {
       display: none;
-    }
-  }
-
-  // AAA contrast fix: explicitly set nav-link colors to white for 7:1+ contrast
-  .nav-link {
-    color: $white !important;
-
-    &:hover,
-    &:focus {
-      color: rgba($white, 0.9) !important;
-    }
-  }
-
-  // Ensure dropdown items also have proper contrast
-  .dropdown-menu {
-    .dropdown-item {
-      color: var(--bs-body-color);
     }
   }
 }
