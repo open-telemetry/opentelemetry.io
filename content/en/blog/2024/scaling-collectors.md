@@ -144,14 +144,12 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your
               exporters: [prometheusremotewrite]
 ```
 
-{{% alert title="Note" %}}
-
-Adjust the configuration to match the specific telemetry you intend to collect
-as well as where you plan to forward it to. This configuration snippet is a
-basic example designed for collecting host metrics that get forwarded to
-Prometheus.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Adjust the configuration to match the specific telemetry you intend to collect
+> as well as where you plan to forward it to. This configuration snippet is a
+> basic example designed for collecting host metrics that get forwarded to
+> Prometheus.
 
 The previous configuration would provision the OpenTelemetry Collector to
 collect metrics from the Linux host.

@@ -52,19 +52,18 @@ following:
 - Link to the documentation that explains how enable observability using
   OpenTelemetry
 
-{{% alert title="Note" %}}
-
-If you provide external integration of OpenTelemetry for any kind of library,
-service, or app, then
-[consider adding it to the registry](/ecosystem/registry/adding).
-
-If you adopt OpenTelemetry for Observability as an end user and do not provide
-any kind of services around OpenTelemetry, see [Adopters](/ecosystem/adopters).
-
-If you provide a solution that consumes OpenTelemetry to offer observability to
-end users, see [Vendors](/ecosystem/vendors).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> If you provide external integration of OpenTelemetry for any kind of library,
+> service, or app, then
+> [consider adding it to the registry](/ecosystem/registry/adding).
+>
+> If you adopt OpenTelemetry for Observability as an end user and do not provide
+> any kind of services around OpenTelemetry, see
+> [Adopters](/ecosystem/adopters).
+>
+> If you provide a solution that consumes OpenTelemetry to offer observability
+> to end users, see [Vendors](/ecosystem/vendors).
 
 [submit a PR]: /docs/contributing/pull-requests/
 
