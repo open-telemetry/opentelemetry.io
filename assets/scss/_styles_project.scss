@@ -5,7 +5,7 @@
 @import 'tabs';
 @import 'external_link';
 @import 'dark-adjustments';
-@import 'landing';
+@import 'homepage';
 @import 'td/color-adjustments-dark';
 @import 'td/code-dark';
 @import 'td/gcs-search-dark';
@@ -97,22 +97,21 @@
     }
 
     a {
-      // AAA contrast: #00092a on $secondary (#f5a800) = 10.6:1
-      color: #00092a;
+      color: $white;
       text-decoration: underline;
       &.external-link:after {
         display: none;
       }
       &:hover {
-        color: #000;
+        color: rgba($white, 0.9);
       }
     }
   }
 }
 
 .o-banner {
-  background: var(--bs-tertiary-bg);
-  color: var(--bs-body-color);
+  background: var(--bs-tertiary-bg) !important;
+  color: var(--bs-body-color) !important;
   text-align: center;
 
   @include media-breakpoint-up(md) {
@@ -134,27 +133,8 @@
     margin-bottom: initial;
   }
 
-  // AAA contrast fix for links (light mode)
   a {
-    // #00092a provides 10.6:1 contrast on light backgrounds
-    color: #00092a;
     text-decoration: underline;
-    font-weight: $font-weight-semibold;
-
-    &:hover {
-      color: #000;
-    }
-  }
-}
-
-// Dark mode: banner link colors for contrast on dark background
-@include color-mode(dark) {
-  .o-banner a {
-    color: #f5a800; // OTel orange for visibility
-
-    &:hover {
-      color: lighten(#f5a800, 15%);
-    }
   }
 }
 

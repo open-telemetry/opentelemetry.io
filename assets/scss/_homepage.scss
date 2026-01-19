@@ -1,6 +1,3 @@
-// Landing page components for OpenTelemetry homepage redesign
-// Inspired by Kubernetes and Prometheus landing page patterns
-
 // Ensure homepage SVGs have transparent backgrounds
 .td-home,
 .intro-section,
@@ -565,10 +562,11 @@
     text-align: center;
 
     a {
-      color: inherit;
+      color: var(--bs-link-color);
       text-decoration: none;
 
       &:hover {
+        color: var(--bs-link-hover-color);
         text-decoration: underline;
       }
     }
@@ -827,10 +825,6 @@
 
   .otel-feature__icon {
     color: lighten($primary, 15%);
-  }
-
-  .otel-feature__title {
-    color: $white;
   }
 
   .otel-feature__description {
