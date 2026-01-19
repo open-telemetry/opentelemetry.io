@@ -14,6 +14,48 @@
 }
 
 // =============================================================================
+// HERO WITH BACKGROUND - Hero section with background image support
+// =============================================================================
+
+.hero-with-bg {
+  background-image: var(--hero-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  // Darken the background slightly for better text contrast
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+  }
+
+  // Ensure content is above the overlay
+  > .col {
+    position: relative;
+    z-index: 1;
+  }
+
+  // Always use white text for contrast against background image
+  &,
+  .hero-simple,
+  .hero-simple__tagline,
+  .hero-simple__content,
+  .hero-simple__content p,
+  .hero-simple__content a,
+  .hero-simple__content li,
+  .l-primary-buttons ul li a {
+    color: $white !important;
+  }
+}
+
+// =============================================================================
 // HERO SIMPLE - Simplified hero section using Docsy's blocks/section
 // =============================================================================
 

@@ -1,9 +1,10 @@
 {{ $color := .Get "color" | default "primary" -}}
 {{ $tagline := .Get "tagline" -}}
 {{ $useLogo := .Get "useLogo" | default false -}}
+{{ $background := .Get "background" -}}
 
 <div><a id="td-block-hero-{{ .Ordinal }}" class="td-offset-anchor"></a></div>
-<section class="row td-box td-box--{{ $color }}">
+<section class="row td-box td-box--{{ $color }}{{ if $background }} hero-with-bg{{ end }}"{{ with $background }} style="--hero-bg-image: url({{ . }})"{{ end }}>
 <div class="col">
 <div class="container">
 <div class="hero-simple text-center pt-5 pb-0">

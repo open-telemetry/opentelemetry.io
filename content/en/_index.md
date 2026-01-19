@@ -2,7 +2,7 @@
 NOTE_TO_LOCALE_AUTHORS: |
   DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
   DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
-  DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT  
+  DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
 title: OpenTelemetry
 description: >-
   High-quality, ubiquitous, and portable telemetry to enable effective
@@ -20,7 +20,7 @@ show_banner: true
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{< homepage/hero color="white" useLogo="true" tagline="High-quality, ubiquitous, and portable telemetry to enable effective observability" >}}
+{{< homepage/hero color="white" useLogo="true" background="/img/homepage/highlight.png" tagline="High-quality, ubiquitous, and portable telemetry to enable effective observability" >}}
 
 <div class="l-primary-buttons">
 
