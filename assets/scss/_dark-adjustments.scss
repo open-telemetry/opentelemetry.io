@@ -6,6 +6,10 @@
   }
 }
 
+// TODO: remove once Docsy is fixed and makes these variables accessible.
+$lighten-amount-for-dark-color-variant: 22% !default;
+$secondary-lighter: lighten($secondary, 30%) !default;
+
 // Make box-shadow color contrast more obvious in dark mode.
 // https://github.com/twbs/bootstrap/issues/39053 reports this issue.
 // TODO: upstream this to Docsy.
@@ -28,4 +32,13 @@ $box-shadow-color-rgb-dark: var(--bs-black-rgb) !default;
   --bs-box-shadow-sm: 0 0.125rem 0.25rem #{$box-shadow-color-rgba-dark};
   --bs-box-shadow-lg: 0 1rem 3rem #{$box-shadow-color-rgba-dark};
   --bs-box-shadow-inset: inset 0 1px 2px #{$box-shadow-color-rgba-dark};
+
+  // --------------------------------
+
+  --bs-secondary: #{$secondary-lighter} !important;
 }
+
+$primary-darker: shade-color(
+  $primary,
+  $lighten-amount-for-dark-color-variant
+) !default;
