@@ -132,16 +132,22 @@
 }
 
 .o-banner {
-  background: var(--td-pre-bg);
+  background: var(--bs-tertiary-bg);
   color: var(--bs-body-color);
   text-align: center;
 
   @include media-breakpoint-up(md) {
-    width: 100%;
     position: fixed;
-    margin-left: -15px;
-    z-index: 31;
     top: 4rem;
+    z-index: 31;
+
+    // Handling the x positioning requires some calculations. Assumption is that
+    // the banner is inside a .container-fluid, which has this padding-x:
+    $padding-x: $container-padding-x * 0.5;
+    margin-left: -$padding-x; // Undo left padding of parent
+    left: $padding-x;
+    // Net x position of banner is margin-left + left == 0
+    width: 100%;
   }
 
   & p {
