@@ -36,6 +36,9 @@ mounts:
   - source: content/en/announcements
     target: content/announcements
     lang: bn
+  - source: content/en/blog
+    target: content/blog
+    lang: bn
   - excludeFiles: specs/*
     source: content/en/docs
     target: content/docs
@@ -52,6 +55,9 @@ mounts:
   - source: content/en/announcements
     target: content/announcements
     lang: es
+  - source: content/en/blog
+    target: content/blog
+    lang: es
   - excludeFiles: specs/*
     source: content/en/docs
     target: content/docs
@@ -67,6 +73,9 @@ mounts:
     lang: fr
   - source: content/en/announcements
     target: content/announcements
+    lang: fr
+  - source: content/en/blog
+    target: content/blog
     lang: fr
   - excludeFiles: specs/*
     source: content/en/docs
@@ -87,6 +96,9 @@ mounts:
   - source: content/en/announcements
     target: content/announcements
     lang: ja
+  - source: content/en/blog
+    target: content/blog
+    lang: ja
   - excludeFiles: specs/*
     source: content/en/docs
     target: content/docs
@@ -102,6 +114,9 @@ mounts:
     lang: ro
   - source: content/en/announcements
     target: content/announcements
+    lang: ro
+  - source: content/en/blog
+    target: content/blog
     lang: ro
   - excludeFiles: specs/*
     source: content/en/docs
@@ -119,6 +134,9 @@ mounts:
   - source: content/en/announcements
     target: content/announcements
     lang: uk
+  - source: content/en/blog
+    target: content/blog
+    lang: uk
   - excludeFiles: specs/*
     source: content/en/docs
     target: content/docs
@@ -135,6 +153,9 @@ mounts:
   - source: content/en/announcements
     target: content/announcements
     lang: zh
+  - source: content/en/blog
+    target: content/blog
+    lang: zh
   - excludeFiles: specs/*
     source: content/en/docs
     target: content/docs
@@ -150,6 +171,9 @@ mounts:
     lang: pt
   - source: content/en/announcements
     target: content/announcements
+    lang: pt
+  - source: content/en/blog
+    target: content/blog
     lang: pt
   - excludeFiles: specs/*
     source: content/en/docs
