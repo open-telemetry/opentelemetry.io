@@ -42,7 +42,7 @@ OpenTelemetry.
 [pull request]:
   https://docs.github.com/es/get-started/learning-about-github/github-glossary#pull-request
 
-## Lista de palabras de OpenTelemetry.io
+## Lista de palabras de OpenTelemetry.io {#opentelemetryio-word-list}
 
 Una lista de términos y palabras específicos de OpenTelemetry que se deben usar
 de manera uniforme en todo el sitio:
@@ -111,9 +111,8 @@ lista completa, consulta los archivos [.markdownlint.yaml] y
 [.markdownlint-cli2.yaml].
 
 También aplicamos el [formato de archivo](#file-format) de Markdown y eliminamos
-los espacios en blanco finales de los archivos. Esto impide la
-[sintaxis de salto de línea] de 2+ espacios; usa `<br>` en su lugar o reformatea
-tu texto.
+los espacios en blanco finales de los archivos. Esto impide la [sintaxis de
+salto de línea] de 2+ espacios; usa `<br>` en su lugar o reformatea tu texto.
 
 ## Revisión ortográfica {#spell-checking}
 

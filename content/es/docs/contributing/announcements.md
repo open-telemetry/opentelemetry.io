@@ -43,10 +43,11 @@ compilación esté entre los campos `date` y `expiryDate` del anuncio. Cuando es
 campos faltan, se asume que son "ahora" y "para siempre", respectivamente.
 
 Los anuncios aparecerán en el orden de página estándar según lo determinado
-usando la función de [Regular pages](https://gohugo.io/methods/site/regularpages/)
-de Hugo. Es decir, los anuncios más "ligeros" (por `weight`) aparecerán primero;
-cuando los pesos son iguales o no están especificados, los anuncios más
-recientes (por `date`) aparecerán primero, etc.
+usando la función de
+[Regular pages](https://gohugo.io/methods/site/regularpages/) de Hugo. Es decir,
+los anuncios más "ligeros" (por `weight`) aparecerán primero; cuando los pesos
+son iguales o no están especificados, los anuncios más recientes (por `date`)
+aparecerán primero, etc.
 
 Entonces, si quieres forzar un anuncio al principio, usa un `weight` negativo en
 el front matter.

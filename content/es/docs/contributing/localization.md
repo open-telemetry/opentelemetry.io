@@ -320,7 +320,8 @@ explica los pasos necesarios para iniciar una nueva localización.
 >
 > No es necesario ser un contribuyente existente del proyecto OpenTelemetry para
 > iniciar una nueva localización. Sin embargo, no se te añadirá como miembro de
-> la [organización de GitHub de OpenTelemetry](https://github.com/open-telemetry/)
+> la
+> [organización de GitHub de OpenTelemetry](https://github.com/open-telemetry/)
 > ni como miembro del grupo de aprobadores de tu localización hasta que cumplas
 > con los requisitos para convertirte en miembro establecido y aprobador, según
 > lo descrito en las [directrices de membresía][].
@@ -335,8 +336,9 @@ explica los pasos necesarios para iniciar una nueva localización.
 
 ### 1. Formar un equipo de localización {#team}
 
-Crear una localización consiste en hacer crecer una comunidad activa y solidaria.
-Para iniciar una nueva localización del sitio web de OpenTelemetry necesitas:
+Crear una localización consiste en hacer crecer una comunidad activa y
+solidaria. Para iniciar una nueva localización del sitio web de OpenTelemetry
+necesitas:
 
 1. Un **mentor de localización** que conozca bien tu idioma, como un [aprobador
    activo][] del [Glosario CNCF][] o del [sitio web de Kubernetes][].
@@ -440,8 +442,8 @@ correspondientes para `LANG_ID` bajo:
 
 - `languages` en `config/_default/hugo.yaml`
 - `module.mounts` a través de `config/_default/module-template.yaml`. Como
-  mínimo, agrega una única entrada de `source`-`target` para `content`. Considera
-  agregar entradas para las páginas de fallback en `en` solo cuando la
+  mínimo, agrega una única entrada de `source`-`target` para `content`.
+  Considera agregar entradas para las páginas de fallback en `en` solo cuando la
   localización tenga suficiente contenido.
 
 #### Ortografía
@@ -478,11 +480,11 @@ subsección. De lo contrario:
 Los aprobadores deben asegurar que los [PRs] que realicen cambios **semánticos**
 en las páginas de documentación no abarquen múltiples locales. Un cambio
 semántico es aquel que impacta el _significado_ del contenido de la página.
-Nuestro [proceso de localización](.) de documentación asegura que los aprobadores
-de cada locale, a su debido tiempo, revisen las ediciones en inglés para
-determinar si los cambios son apropiados para su locale y cómo incorporarlos de
-la mejor manera. Si se requieren cambios, los aprobadores del locale los harán
-mediante sus propios PRs específicos del locale.
+Nuestro [proceso de localización](.) de documentación asegura que los
+aprobadores de cada locale, a su debido tiempo, revisen las ediciones en inglés
+para determinar si los cambios son apropiados para su locale y cómo
+incorporarlos de la mejor manera. Si se requieren cambios, los aprobadores del
+locale los harán mediante sus propios PRs específicos del locale.
 
 ### Los cambios puramente editoriales entre locales están permitidos {#patch-locale-links}
 

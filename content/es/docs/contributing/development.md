@@ -1,6 +1,5 @@
 ---
-title:
-  Configuración de desarrollo y comandos para construir, servir y más
+title: Configuración de desarrollo y comandos para construir, servir y más
 linkTitle: Configuración de dev y más
 description:
   Aprende cómo configurar el entorno de desarrollo para este sitio web.
@@ -152,9 +151,9 @@ Los contribuyentes expertos pueden trabajar directamente en el submódulo.
 Entonces podrás construir y servir directamente tus cambios (del submódulo). Por
 defecto, los scripts de CI obtienen submódulos en cada invocación. Para prevenir
 este comportamiento mientras trabajas dentro de un submódulo, configura la
-variable de entorno `GET=no`. También necesitas ejecutar
-`git fetch --unshallow` en el submódulo antes de poder enviar un PR.
-Alternativamente, configura `DEPTH=100` y vuelve a obtener los submódulos.
+variable de entorno `GET=no`. También necesitas ejecutar `git fetch --unshallow`
+en el submódulo antes de poder enviar un PR. Alternativamente, configura
+`DEPTH=100` y vuelve a obtener los submódulos.
 
 ## Soporte de DevContainer {#devcontainers}
 

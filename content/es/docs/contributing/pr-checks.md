@@ -42,9 +42,10 @@ Si la compilación de [Netlify](https://www.netlify.com/) falla, selecciona
 
 ## Verificaciones de PR en GitHub {#checks}
 
-Para asegurar que las contribuciones sigan nuestra [guía de estilo](../style-guide/)
-hemos implementado un conjunto de verificaciones que verifican las reglas de la
-guía de estilo y fallan si encuentran algún problema.
+Para asegurar que las contribuciones sigan nuestra
+[guía de estilo](../style-guide/) hemos implementado un conjunto de
+verificaciones que verifican las reglas de la guía de estilo y fallan si
+encuentran algún problema.
 
 La siguiente lista describe las verificaciones actuales y qué puedes hacer para
 corregir errores relacionados:

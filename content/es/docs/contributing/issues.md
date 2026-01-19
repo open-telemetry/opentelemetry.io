@@ -6,10 +6,9 @@ description:
 weight: 10
 default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
-cSpell:ignore: prepopulated
 ---
 
-## Solucionar un issue existente
+## Solucionar un issue existente {#fixing-an-existing-issue}
 
 Una de las mejores formas de ayudar a mejorar la documentación es solucionar un
 issue existente.
@@ -29,8 +28,8 @@ issue existente.
    efecto.
 6. Trabaja en solucionar el issue. Avisa a los mantenedores si encuentras algún
    problema.
-7. Cuando esté listo, [envía tu trabajo mediante un pull request](../pull-requests)
-   (PR).
+7. Cuando esté listo,
+   [envía tu trabajo mediante un pull request](../pull-requests) (PR).
 
 ## Reportar un issue
 
@@ -55,9 +54,8 @@ Si tienes una idea para nuevo contenido o una funcionalidad, pero no estás
 seguro de dónde debería ir, aún puedes crear un issue. También puedes reportar
 errores y vulnerabilidades de seguridad.
 
-1. Ve a
-   [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/) y
-   selecciona **New issue** dentro de la pestaña **Issues**.
+1. Ve a [GitHub](https://github.com/open-telemetry/opentelemetry.io/issues/new/)
+   y selecciona **New issue** dentro de la pestaña **Issues**.
 
 1. Selecciona el tipo de issue que mejor aplique a tu solicitud o duda.
 

@@ -6,11 +6,11 @@ description:
 aliases: [new-content]
 weight: 15
 default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
-cSpell:ignore: aplícala solucionándolas vincúlalos
+cSpell:ignore: aplícala vincúlalos
 ---
 
-Para contribuir con nueva documentación o mejorar la existente, envía un
-[pull request][PR] (PR):
+Para contribuir con nueva documentación o mejorar la existente, envía un [pull
+request][PR] (PR):
 
 - Si tu cambio es pequeño, o no estás familiarizado con [Git], consulta
   [Usando GitHub](#changes-using-github) para aprender a editar una página.
@@ -46,7 +46,8 @@ La IA generativa está permitida, pero **tú eres responsable** de **revisar y
 _validar_** todo el contenido generado por IA &mdash; si no lo entiendes, ¡no lo
 envíes!
 
-Para más detalles, consulta nuestra [Política de contribución con IA generativa][].
+Para más detalles, consulta nuestra [Política de contribución con IA
+generativa][].
 
 [contribuyente nuevo]: ../#first-time-contributing
 [Política de contribución con IA generativa]:

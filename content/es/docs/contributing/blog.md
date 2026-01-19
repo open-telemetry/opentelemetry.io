@@ -18,20 +18,21 @@ un nuevo issue o pull request (PR) con tu contenido para agregarlo a la
 documentación.
 
 Ten en cuenta que el enfoque de los mantenedores y aprobadores del sitio web de
-OpenTelemetry es mejorar la documentación del proyecto, por lo que tu publicación
-de blog tendrá una prioridad menor para revisión.
+OpenTelemetry es mejorar la documentación del proyecto, por lo que tu
+publicación de blog tendrá una prioridad menor para revisión.
 
 ## Solicitud de contenido para redes sociales
 
-Si quieres solicitar la publicación de contenido en los canales de redes sociales
-del proyecto OpenTelemetry que no sea una publicación de blog,
+Si quieres solicitar la publicación de contenido en los canales de redes
+sociales del proyecto OpenTelemetry que no sea una publicación de blog,
 [usa este formulario](https://github.com/open-telemetry/community/issues/new?template=social-media-request.yml).
 
 ## Antes de enviar una publicación de blog
 
 Las publicaciones de blog no deben ser de naturaleza comercial y deben consistir
-en contenido original que se aplique ampliamente a la comunidad de OpenTelemetry.
-Las publicaciones de blog deben seguir las políticas descritas en la
+en contenido original que se aplique ampliamente a la comunidad de
+OpenTelemetry. Las publicaciones de blog deben seguir las políticas descritas en
+la
 [Guía de Redes Sociales](https://github.com/open-telemetry/community/blob/main/social-media-guide.md).
 
 ### Enlazar a repositorios de GitHub
@@ -44,8 +45,8 @@ momento en que se escribió la publicación del blog.
 Esto asegura que las publicaciones de blog permanezcan estables y no se rompan
 en el futuro a medida que los repositorios evolucionan.
 
-Verifica que tu contenido se aplique ampliamente a la Comunidad de OpenTelemetry.
-El contenido apropiado incluye:
+Verifica que tu contenido se aplique ampliamente a la Comunidad de
+OpenTelemetry. El contenido apropiado incluye:
 
 - Nuevas funcionalidades de OpenTelemetry
 - Actualizaciones de proyectos de OpenTelemetry
@@ -64,14 +65,15 @@ con los siguientes detalles:
 
 - Título de la publicación de blog
 - Breve descripción y esquema de tu publicación de blog
-- Si corresponde, enumera las tecnologías utilizadas en tu publicación. Asegúrate
-  de que todas sean de código abierto, y prefiere proyectos CNCF sobre proyectos
-  no-CNCF (por ejemplo, usa Jaeger para visualización de trazas, y Prometheus
-  para visualización de métricas)
+- Si corresponde, enumera las tecnologías utilizadas en tu publicación.
+  Asegúrate de que todas sean de código abierto, y prefiere proyectos CNCF sobre
+  proyectos no-CNCF (por ejemplo, usa Jaeger para visualización de trazas, y
+  Prometheus para visualización de métricas)
 - Nombre de un [SIG](https://github.com/open-telemetry/community/) relacionado
   con esta publicación de blog
 - Nombre de un patrocinador (mantenedor o aprobador) de este SIG, que ayudará a
-  revisar ese PR. Idealmente, ese patrocinador debería ser de una empresa diferente.
+  revisar ese PR. Idealmente, ese patrocinador debería ser de una empresa
+  diferente.
 
 Los mantenedores de SIG Communication verificarán que tu publicación de blog
 cumple con todos los requisitos para ser aceptada. Si no puedes nombrar un
@@ -180,5 +182,5 @@ plataforma, eres bienvenido a hacerlo. Solo ten en cuenta lo siguiente:
   - Establecer una etiqueta URL canónica apuntando a la publicación del blog de
     OpenTelemetry, si la plataforma lo soporta.
 
-Esto ayuda a asegurar la atribución correcta, apoya las mejores prácticas de
-SEO y evita la duplicación de contenido.
+Esto ayuda a asegurar la atribución correcta, apoya las mejores prácticas de SEO
+y evita la duplicación de contenido.

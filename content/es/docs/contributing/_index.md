@@ -25,15 +25,16 @@ cascade:
 
   > [!WARNING] No asignamos issues
   >
-  > **_No asignamos_ issues** a quienes no hayan realizado contribuciones previas
-  > a la [organización de OpenTelemetry][org], a menos que formen parte de un
-  > proceso de mentoría u onboarding confirmado.
+  > **_No asignamos_ issues** a quienes no hayan realizado contribuciones
+  > previas a la [organización de OpenTelemetry][org], a menos que formen parte
+  > de un proceso de mentoría u onboarding confirmado.
   >
   > [org]: https://github.com/open-telemetry
 
 - {{% param chooseAnIssueAtYourLevel %}}
 
-- Lee nuestra [política de contribución con IA generativa](pull-requests#using-ai)
+- Lee nuestra
+  [política de contribución con IA generativa](pull-requests#using-ai)
 
 - ¿Quieres trabajar en otros issues o cambios más grandes? [Discútelo primero
   con los mantenedores][].

@@ -5,12 +5,11 @@ description:
   Aprende cómo los aprobadores y mantenedores gestionan issues y contribuciones.
 weight: 999
 default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
-# prettier-ignore
-cSpell:ignore: chalin Comms contribfest docsy hotfixes inactivitiy triager triagers
+cSpell:ignore: chalin Comms contribfest docsy hotfixes triager triagers
 ---
 
-Esta página incluye pautas y algunas prácticas comunes utilizadas por aprobadores
-y mantenedores.
+Esta página incluye pautas y algunas prácticas comunes utilizadas por
+aprobadores y mantenedores.
 
 ## Integración {#onboarding}
 
@@ -71,7 +70,8 @@ Recursos adicionales valiosos para revisar son:
 
 ### Issues
 
-- Los issues entrantes son triados por el equipo `@open-telemetry/docs-triagers`.
+- Los issues entrantes son triados por el equipo
+  `@open-telemetry/docs-triagers`.
 - Como primer paso, un triager leerá el título y la descripción del issue y
   aplicará el siguiente etiquetado:
   - Obligatorio: Una etiqueta `sig:*`, `lang:*` o `docs:*` para determinar la
