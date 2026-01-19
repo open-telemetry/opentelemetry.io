@@ -383,7 +383,6 @@
     gap: 2rem;
     max-width: 1000px;
     margin: 0 auto;
-    padding: 0 1rem;
 
     @include media-breakpoint-down(md) {
       grid-template-columns: repeat(2, 1fr);
@@ -680,8 +679,6 @@
     }
 
     img {
-      max-width: 180px;
-      max-height: 80px;
       object-fit: contain;
       transition: all 0.2s ease;
     }
