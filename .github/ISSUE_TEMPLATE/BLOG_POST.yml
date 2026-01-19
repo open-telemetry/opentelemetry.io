@@ -1,6 +1,6 @@
-name: Blog Post Request
+name: Blog post request
 description: Request to submit a blog post to the OpenTelemetry blog
-title: '[Blog Post]: '
+title: 'blog: '
 labels: ['blog']
 body:
   - type: markdown
@@ -8,9 +8,9 @@ body:
       value: |
         ## Blog Post Submission Request
 
-        Thank you for your interest in contributing to the OpenTelemetry blog! 
+        Thank you for your interest in contributing to the OpenTelemetry blog!
 
-        **Before submitting this request, please read the [blog submission guidelines](https://opentelemetry.io/docs/contributing/blog/) to ensure your content meets our requirements.**
+        **Before submitting this request, read the [blog submission guidelines](https://opentelemetry.io/docs/contributing/blog/) to ensure your content meets our requirements.**
 
         Blog posts should not be commercial in nature and should consist of original content that applies broadly to the OpenTelemetry community.
 
@@ -19,7 +19,7 @@ body:
     attributes:
       label: Blog Post Title
       description: What is the title of your proposed blog post?
-      placeholder: 'e.g., Getting Started with OpenTelemetry Metrics in Go'
+      placeholder: E.g., Getting Started with OpenTelemetry Metrics in Go
     validations:
       required: true
 
@@ -27,7 +27,7 @@ body:
     id: outline
     attributes:
       label: Blog Post Outline
-      description:
+      description: >-
         Provide a short description and outline of your blog post. Include the
         main topics you plan to cover.
       placeholder: |
@@ -45,10 +45,10 @@ body:
     id: technologies
     attributes:
       label: Technologies Used
-      description:
+      description: >-
         List the technologies that will be mentioned or used in your blog post.
-        Please ensure all technologies are open source and prefer CNCF projects
-        (e.g., use Jaeger for trace visualization, Prometheus for metrics).
+        Ensure all technologies are open source and prefer CNCF projects (e.g.,
+        use Jaeger for trace visualization, Prometheus for metrics).
       placeholder: |
         - OpenTelemetry Go SDK
         - Prometheus
@@ -99,6 +99,6 @@ body:
       label: Additional Information
       description:
         Any additional information that might be helpful for reviewers
-      placeholder: 'Timeline preferences, related issues/PRs, etc.'
+      placeholder: Timeline preferences, related issues/PRs, etc.
     validations:
       required: false
