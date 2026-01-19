@@ -76,7 +76,7 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
 ```
 
-{{% alert title="Nota" color="Advertencia" %}} En macOS
+{{% alert title="Nota" color="warning" %}} En macOS
 [`coreutils`](https://formulae.brew.sh/formula/coreutils) es requerido. Si
 tienes [homebrew](https://brew.sh/) instalado, puedes obtenerlo simplemente
 ejecutando

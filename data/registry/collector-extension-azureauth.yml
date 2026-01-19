@@ -1,4 +1,4 @@
-# cSpell:ignore azureauthextension azureauth
+# cSpell:ignore azureauthextension azureauth extensionauth
 title: Azure authenticator extension
 registryType: extension
 language: collector

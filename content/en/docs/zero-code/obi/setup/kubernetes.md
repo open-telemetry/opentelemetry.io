@@ -7,15 +7,13 @@ weight: 3
 cSpell:ignore: cap_perfmon containerd goblog kubeadm microk8s replicaset statefulset
 ---
 
-{{% alert type="note" %}}
-
-This document explains how to manually deploy OBI in Kubernetes, setting up all
-the required entities by yourself.
-
-<!-- You might prefer to follow the
-[Deploy OBI in Kubernetes with Helm](../kubernetes-helm/) documentation instead. -->
-
-{{% /alert %}}
+> [!NOTE]
+>
+> This document explains how to manually deploy OBI in Kubernetes, setting up
+> all the required entities by yourself.
+>
+> <!-- You might prefer to follow the
+> [Deploy OBI in Kubernetes with Helm](../kubernetes-helm/) documentation instead. -->
 
 ## Configuring Kubernetes metadata decoration
 

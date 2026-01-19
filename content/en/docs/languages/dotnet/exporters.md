@@ -250,16 +250,14 @@ await app.RunAsync();
 
 ### Non-ASP.NET Core {#prometheus-non-asp-net-core-usage}
 
-{{% alert color="warning" title="Warning" %}}
-
-This component is intended for dev inner-loop, there is no plan to make it
-production ready. Production environments should use
-[`OpenTelemetry.Exporter.Prometheus.AspNetCore`](#prometheus-asp-net-core-usage),
-or a combination of
-[`OpenTelemetry.Exporter.OpenTelemetryProtocol`](#aspnet-core) and
-[OpenTelemetry Collector](/docs/collector).
-
-{{% /alert %}}
+> [!WARNING]
+>
+> This component is intended for dev inner-loop, there is no plan to make it
+> production ready. Production environments should use
+> [`OpenTelemetry.Exporter.Prometheus.AspNetCore`](#prometheus-asp-net-core-usage),
+> or a combination of
+> [`OpenTelemetry.Exporter.OpenTelemetryProtocol`](#aspnet-core) and
+> [OpenTelemetry Collector](/docs/collector).
 
 For applications not using ASP.NET Core, you can use the `HttpListener` version
 which is available in a

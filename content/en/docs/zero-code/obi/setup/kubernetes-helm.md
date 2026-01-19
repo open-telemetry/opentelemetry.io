@@ -9,13 +9,11 @@ draft: true
 toc_hide: true
 ---
 
-{{% alert title="Note" %}}
-
-For more details about the diverse Helm configuration options, check out the
-[OBI Helm chart options](https://github.com/open-telemetry/opentelemetry-helm-charts/)
-document.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> For more details about the diverse Helm configuration options, check out the
+> [OBI Helm chart options](https://github.com/open-telemetry/opentelemetry-helm-charts/)
+> document.
 
 Contents:
 
