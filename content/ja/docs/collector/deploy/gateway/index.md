@@ -1,9 +1,11 @@
 ---
-title: ゲートウェイ
+title: ゲートウェイデプロイメントパターン
+linkTitle: ゲートウェイパターン
 description: シグナルを単一のOTLPエンドポイントに送信し、そこからバックエンドに送信する理由と方法
-weight: 3
-default_lang_commit: 548e5e29f574fddc3ca683989a458e9a6800242f # patched
-drifted_from_default: true
+aliases:
+  - /docs/collector/deployment/gateway/
+weight: 300
+default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197
 # prettier-ignore
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---
@@ -179,7 +181,7 @@ service:
 
 ## エージェントとゲートウェイのコレクターの組み合わせたデプロイメント {#combined-deployment-of-collectors-as-agents-and-gateways}
 
-複数のOpenTelemetryコレクターをデプロイする場合、エージェントとしてもゲートウェイとしてもコレクターを実行することがよくあります。
+複数のOpenTelemetryコレクターをデプロイする場合、ゲートウェイとしても[エージェント](/docs/collector/deploy/agent/)としてもコレクターを実行することがよくあります。
 
 以下の図は、このような組み合わせたデプロイメントのアーキテクチャを示しています。
 
@@ -196,7 +198,7 @@ service:
 - [`resourcedetectionprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)のようなプロセッサーは、ホスト、コレクター、アプリケーションの情報を追加するために使用されます。
   リモートマシン上のコレクター内でこれらを実行すると、不正確なデータが生成されます。
 
-## トレードオフ {#tradeoffs}
+## トレードオフ {#trade-offs}
 
 長所：
 
