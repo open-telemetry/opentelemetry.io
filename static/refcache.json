@@ -16555,6 +16555,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-16T09:47:27.336388644Z"
   },
+  "https://mariadb.com/docs/server/reference/error-codes": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-20T09:22:43.459499-03:00"
+  },
   "https://mariadb.com/kb/en/mariadb-error-code-reference/": {
     "StatusCode": 500,
     "LastSeen": "2026-01-16T09:47:36.723002246Z"
