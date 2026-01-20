@@ -278,9 +278,9 @@ while(<>) {
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
-  }
 
-  patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL();
+    patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL();
+  }
 
   # SPECIFICATION custom processing
 
