@@ -1,6 +1,6 @@
 ---
 title: デプロイメント
-description: OpenTelemetry Collectorをデプロイするために適用できるパターン
+description: OpenTelemetryコレクターをデプロイするために適用できるパターン
 aliases:
   - /docs/collector/deployment/
 weight: 3
