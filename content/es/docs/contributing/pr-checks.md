@@ -9,9 +9,9 @@ default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
 
 Cuando creas un
 [pull request](https://docs.github.com/es/get-started/learning-about-github/github-glossary#pull-request)
-(PR) con el
+(PR) en el
 [repositorio de opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io)
-se ejecuta un conjunto de verificaciones. Las verificaciones del PR verifican
+se ejecutan un conjunto de verificaciones. Las verificaciones del PR verifican
 que:
 
 - Has firmado el [CLA](#easy-cla)

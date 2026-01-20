@@ -66,7 +66,7 @@ con los siguientes detalles:
 - Título de la publicación de blog
 - Breve descripción y esquema de tu publicación de blog
 - Si corresponde, enumera las tecnologías utilizadas en tu publicación.
-  Asegúrate de que todas sean de código abierto, y prefiere proyectos CNCF sobre
+  Asegúrate de que todas sean de código abierto, con preferencia por los proyectos sobre
   proyectos no-CNCF (por ejemplo, usa Jaeger para visualización de trazas, y
   Prometheus para visualización de métricas)
 - Nombre de un [SIG](https://github.com/open-telemetry/community/) relacionado

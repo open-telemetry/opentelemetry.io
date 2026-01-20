@@ -14,7 +14,7 @@ cascade:
 
 > [!TIP] ¡Gracias por tu interés!
 >
-> Gracias por tu interés en contribuir a la documentación y el sitio web de
+> Gracias por tu interés en contribuir a la documentación y al sitio web de
 > OpenTelemetry.
 
 ## <i class='far fa-exclamation-triangle text-warning '></i> ¿Primera vez contribuyendo? {#first-time-contributing}
