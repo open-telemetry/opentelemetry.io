@@ -185,7 +185,7 @@ sub patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServer
 sub patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL() {
   return unless
     $ARGV =~ m|^tmp/semconv/docs/|
-      && applyPatchOrPrintMsgIf('2026-01-20-mariadb-error-code-reference-docs-updated-url', 'semconv', '1.39.0');
+      && applyPatchOrPrintMsgIf('2026-01-20-mariadb-err-code-reference-docs-updated-url', 'semconv', '1.39.0');
 
   # See: https://github.com/open-telemetry/semantic-conventions/issues/3303
 
