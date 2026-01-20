@@ -3,7 +3,7 @@ title: Reducing Log Volume with the OpenTelemetry Log Deduplication Processor
 linkTitle: Log Deduplication Processor
 date: 2026-01-20
 author: '[Juraci Paixao Krohling](https://github.com/jpkrohling) (OllyGarden)'
-canonical_url: https://blog.olly.garden/reducing-log-volume-with-the-opentelemetry-log-deduplication-processor
+canonical_url: https://blog.olly.garden/reducing-log-volume-with-the-opentelemetry-log-deduplication-processor?no-link-check
 # prettier-ignore
 cSpell:ignore: jpkrohling Krohling logdedup logdedupprocessor OllyGarden OTTL Paixao telemetrygen
 ---
