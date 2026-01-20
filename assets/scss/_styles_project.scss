@@ -151,18 +151,19 @@
   color: var(--bs-body-color);
   text-align: center;
 
+  // Handling the x positioning requires some calculations. Assumption is that
+  // the banner is inside a .container-fluid, which has this padding-x:
+  $padding-x: $container-padding-x * 0.5;
+  margin-left: -$padding-x; // Undo left padding of parent
+  width: calc(100% + 2 * #{$padding-x});
+
   @include media-breakpoint-up(md) {
     position: fixed;
     top: 4rem;
-    z-index: 31;
-
-    // Handling the x positioning requires some calculations. Assumption is that
-    // the banner is inside a .container-fluid, which has this padding-x:
-    $padding-x: $container-padding-x * 0.5;
-    margin-left: -$padding-x; // Undo left padding of parent
-    left: $padding-x;
-    // Net x position of banner is margin-left + left == 0
+    left: 0;
+    margin-left: 0;
     width: 100%;
+    z-index: 31;
   }
 
   & p {
