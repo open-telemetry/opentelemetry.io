@@ -280,6 +280,7 @@ while(<>) {
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
   }
 
+  patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL();
 
   # SPECIFICATION custom processing
 
@@ -316,7 +317,6 @@ while(<>) {
 
   patchSpec_because_of_SemConv_DatabaseRenamedToDb();
   patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
-  patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL();
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 
