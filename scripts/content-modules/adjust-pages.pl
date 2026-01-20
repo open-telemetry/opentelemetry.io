@@ -182,6 +182,17 @@ sub patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServer
   s|#metric-rpcserverduration|#metric-rpcservercallduration|g;
 }
 
+sub patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL() {
+  return unless
+    $ARGV =~ m|^tmp/semconv/docs|
+      && applyPatchOrPrintMsgIf('2026-01-20-mariadb-error-code-reference-docs-updated-url', 'semconv', '1.39.0');
+
+  # See: https://github.com/open-telemetry/semantic-conventions/issues/3303
+
+  # Replace the old URL with the new one
+  s|https://mariadb.com/kb/en/mariadb-error-code-reference/|https://mariadb.com/docs/server/reference/error-codes|g;
+}
+
 sub getVersFromSubmodule() {
   my %repoNames = qw(
     otlp    opentelemetry-proto
@@ -305,6 +316,7 @@ while(<>) {
 
   patchSpec_because_of_SemConv_DatabaseRenamedToDb();
   patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
+  patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL();
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 
