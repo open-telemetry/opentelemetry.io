@@ -7,7 +7,7 @@ weight: 30
 OpenTelemetry definește [Convențiile Semantice](/docs/specs/semconv/), uneori
 numite atribute semantice, care specifică denumiri comune pentru diferite tipuri
 de operațiuni și date. Beneficiul utilizării convențiilor semantice constă în
-urmarea unei scheme comune de denumire care poate fi standardizată la nivelul
+urmǎrirea unei scheme comune de denumire care poate fi standardizată la nivelul
 unei baze de cod, al bibliotecilor și al platformelor.
 
 Convențiile semantice sunt disponibile pentru urme, metrici, loguri, profiluri
