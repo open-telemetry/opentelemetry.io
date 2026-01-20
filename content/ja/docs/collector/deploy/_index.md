@@ -1,9 +1,10 @@
 ---
 title: デプロイメント
 description: OpenTelemetryコレクターをデプロイするために適用できるパターン
+aliases:
+  - /docs/collector/deployment/
 weight: 3
-default_lang_commit: b34ebe22b71962da96b898eb39a666ed57d447fe
-drifted_from_default: true
+default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197
 ---
 
 OpenTelemetryコレクターは、さまざまな方法で、さまざまなユースケースに使用できる単一のバイナリから構成されています。
@@ -13,7 +14,7 @@ OpenTelemetryコレクターは、さまざまな方法で、さまざまなユ�
 ## リソース {#resources}
 
 - KubeCon NA 2021の[OpenTelemetryコレクターデプロイメントパターン][y-patterns]に関する講演
-- 講演に付随する[デプロイメントパターン][gh-patterns]
+  - 講演に付随する[デプロイメントパターン][gh-patterns]
 
 [security]: /docs/security/hosting-best-practices/
 [gh-patterns]: https://github.com/jpkrohling/opentelemetry-collector-deployment-patterns/
