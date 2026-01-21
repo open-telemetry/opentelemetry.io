@@ -1327,6 +1327,7 @@ maintainers:
       - collector-contrib-triagers
       - demo-approvers
       - demo-maintainers
+      - ebpf-profiler-approvers
       - semconv-system-approvers
     html_url: https://github.com/rogercoll
     avatar_url: https://avatars.githubusercontent.com/u/33873530?v=4
