@@ -1851,13 +1851,41 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:23.950411582Z"
   },
+  "https://docs.github.com/es/codespaces": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-19T14:34:45.597779+01:00"
+  },
+  "https://docs.github.com/es/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers#about-dev-containers": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-19T14:34:48.25452+01:00"
+  },
+  "https://docs.github.com/es/contributing/style-guide-and-content-model/style-guide#alerts": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-19T14:34:45.745984+01:00"
+  },
+  "https://docs.github.com/es/get-started/learning-about-github/github-glossary#pull-request": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-19T14:34:43.588869+01:00"
+  },
   "https://docs.github.com/es/get-started/quickstart/fork-a-repo": {
     "StatusCode": 206,
     "LastSeen": "2026-01-14T09:49:34.188562923Z"
   },
+  "https://docs.github.com/es/get-started/using-git/about-git": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-19T14:34:45.191156+01:00"
+  },
+  "https://docs.github.com/es/pull-requests": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-19T14:34:43.224175+01:00"
+  },
   "https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork": {
     "StatusCode": 206,
     "LastSeen": "2026-01-16T09:48:39.701566624Z"
+  },
+  "https://docs.github.com/es/repositories/creating-and-managing-repositories/cloning-a-repository": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-19T14:34:46.802528+01:00"
   },
   "https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/working-with-forks/allowing-changes-to-a-pull-request-branch-created-from-a-fork": {
     "StatusCode": 206,
@@ -16422,6 +16450,10 @@
   "https://learn.microsoft.com/en-us/windows/wsl/install": {
     "StatusCode": 206,
     "LastSeen": "2026-01-14T09:45:06.269044144Z"
+  },
+  "https://learn.microsoft.com/es-es/windows/wsl/install": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-19T14:34:42.95715+01:00"
   },
   "https://learn.microsoft.com/fr-fr/dotnet/core/deploying/": {
     "StatusCode": 206,
