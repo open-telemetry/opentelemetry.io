@@ -787,6 +787,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-14T09:50:50.697007817Z"
   },
+  "https://cloud-native.slack.com/archives/C06DQ7S2YEP": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-21T22:49:12.110336084Z"
+  },
   "https://cloud-native.slack.com/archives/C06TMJ2R0SK": {
     "StatusCode": 200,
     "LastSeen": "2026-01-14T09:50:48.855668809Z"
@@ -9663,6 +9667,58 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-08T09:50:09.432218534Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/discussions": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:12.53133476Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:13.730781522Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1092": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:05.502366439Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1133": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:48:46.435573256Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1134": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:48:52.859148981Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1135": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:06.427246972Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1136": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:48:58.691759014Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1137": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:07.953587548Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1139": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:08.873271317Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1140": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:03.397033653Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1157": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:07.190636567Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22goal%3A%202026%22%20label%3Aepic": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:11.535709648Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues?q=is%3Aissue+is%3Aopen+label%3A%22goal%3A+2026%22": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:10.006900786Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases": {
     "StatusCode": 206,
     "LastSeen": "2026-01-09T09:45:13.454047127Z"
@@ -13786,6 +13842,10 @@
   "https://github.com/orgs/open-telemetry/projects/174/views/3": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:53:41.411709194Z"
+  },
+  "https://github.com/orgs/open-telemetry/projects/187/views/1": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:10.788811111Z"
   },
   "https://github.com/orgs/open-telemetry/projects/38": {
     "StatusCode": 206,
