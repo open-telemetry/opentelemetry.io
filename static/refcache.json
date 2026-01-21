@@ -7895,6 +7895,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-08T09:44:57.171177088Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/lookupprocessor": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T08:44:23.45906485Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricsgenerationprocessor": {
     "StatusCode": 206,
     "LastSeen": "2026-01-08T09:45:03.619870055Z"
