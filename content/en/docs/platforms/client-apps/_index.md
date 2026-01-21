@@ -1,5 +1,9 @@
 ---
 title: Client-side Apps
+description: >-
+  Use OpenTelemetry on end-user controlled apps running on devices like mobile
+  phones, desktop computers, and retail kiosks.
+aliases: [android, ./overview]
 ---
 
 Instrumentation for apps running on end-user devices like phones and desktop
