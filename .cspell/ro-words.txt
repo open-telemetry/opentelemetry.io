@@ -1,5 +1,6 @@
 agnostice
 calificatori
+colectezi
 colectorului
 deții
 dezvoltatori

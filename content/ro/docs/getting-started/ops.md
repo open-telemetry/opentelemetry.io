@@ -8,8 +8,8 @@ Aceasta este pagina [noțiuni de bază](..) potrivită ție dacă:
 
 - Rulezi un set de aplicații în producție.
 - Scopul tău este să obții observabilitate fără a modifica codul aplicațiilor.
-- Vrei să colectezi urme, metrici și jurnale din mai multe servicii și să
-  le trimiți către backend-ul tău de observabilitate.
+- Vrei să colectezi urme, metrici și jurnale din mai multe servicii și să le
+  trimiți către backend-ul tău de observabilitate.
 
 OpenTelemetry te poate ajuta! Pentru a-ți îndeplini scopul de a obține
 telemetrie din aplicații fără a le modifica codul, îți recomandăm să înveți
