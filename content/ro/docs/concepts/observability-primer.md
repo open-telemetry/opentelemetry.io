@@ -3,7 +3,6 @@ title: Introducere în observabilitate
 description: Concepte de bază despre observabilitate.
 default_lang_commit: 2f34c456ab38b4d3502cd07bc36fa1455d4ef875
 weight: 9
-cSpell:ignore: depanezi dezvoltatorii gestionezi nedeterministe webshop
 ---
 
 ## Ce este observabilitatea? {#what-is-observability}
