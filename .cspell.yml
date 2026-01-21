@@ -27,10 +27,13 @@ patterns:
           [\s\S]*?         # content
           \1               # code-block end - cSpell:disable-next-line
       /igmx
+  - name: HeadingID # For example: {#some-id}
+    pattern: /\{\#.*?\}/g
 languageSettings:
   - languageId: markdown
     ignoreRegExpList:
       - CodeBlock
+      - HeadingID
 dictionaryDefinitions:
   - name: en-words
     path: .cspell/en-words.txt
@@ -70,11 +73,34 @@ dictionaries:
   - softwareTerms
   # Other
   - companies
-words: # Valid words across all locales
+words:
+  # Valid words across all locales, in particular for Hugo code keywords,
+  # and proper names
+  - attrlink
+  - Crossplane
+  - crosspost
   - Docsy
+  - errorf
+  - Goldmark
   - htmltest
   - jsonify
+  - Loffay
+  - logback
+  - Mancuso
+  - Marylia
+  - millicores
+  - myapp
+  - myprogram
+  - nanocores
+  - notranslate
   - nvmrc
   - opentelemetrybot
+  - Powerjob
+  - refcache
+  - submatch
+  - tracestate
+  - UpDown
+  - Valkey
   - warnf
   - warnidf
+  - Wayback

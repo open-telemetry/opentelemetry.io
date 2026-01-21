@@ -42,17 +42,16 @@ dependencies {
 ## OpenTelemetry
 
 The Java agent is a special case where `GlobalOpenTelemetry` is set by the
-agent. Simply call `GlobalOpenTelemetry.get()` to access the `OpenTelemetry`
-instance.
+agent. Simply call `GlobalOpenTelemetry.getOrNoop()` to access the
+`OpenTelemetry` instance.
 
 ## Span
 
-{{% alert title="Note" %}}
-
-For the most common use cases, use the `@WithSpan` annotation instead of manual
-instrumentation. See [Annotations](../annotations) for more information.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> For the most common use cases, use the `@WithSpan` annotation instead of
+> manual instrumentation. See [Annotations](../annotations) for more
+> information.
 
 ```java
 import io.opentelemetry.api.GlobalOpenTelemetry;

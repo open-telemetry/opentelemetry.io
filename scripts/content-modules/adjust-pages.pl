@@ -24,9 +24,9 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.51.0
+    spec: 1.53.0
     otlp: 1.9.0
-    semconv: 1.38.0
+    semconv: 1.39.0
   );
 # Versions map without the colon in the keys
 my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
@@ -75,27 +75,61 @@ sub printFrontMatter() {
   print "---\n";
 }
 
+sub getVersFromGitmodules($) {
+  # Returns the pinned version of the submodule $specName from .gitmodules, or undef if not found.
+  my ($specName) = @_;
+  my $pinKey = "$specName-pin";
+
+  open(my $fh, '<', '.gitmodules') or return undef;
+  my $vers;
+
+  while (my $line = <$fh>) {
+    if ($line =~ /^\s*$pinKey\s*=\s*(.+)/) {
+      $vers = $1;
+      chomp($vers);
+      $vers =~ s/^v//;  # Remove leading v
+      last;
+    }
+  }
+  close($fh);
+  return $vers;
+}
+
 sub applyPatchOrPrintMsgIf($$$) {
   # Returns truthy if patch should be applied, otherwise prints message (once) as to why not.
+  # The patch is applied if $submoduleVers starts with $targetVers.
 
   my ($patchID, $specName, $targetVers) = @_;
-  my $vers;
+  my $vers = $versions{$specName};
+  my $submoduleVers = getVersFromGitmodules($specName);
   my $key = $specName . $patchID;
 
-  return 0 if $patchMsgCount{$key};
+  return 0 if $patchMsgCount{$key} && $patchMsgCount{$key} ne 'Apply the patch';
 
-  if (($vers = $versions{$specName}) gt $targetVers) {
-    print STDOUT "INFO: remove obsolete patch '$patchID' now that spec '$specName' is at v$vers > v$targetVers - $0\n";
-  } elsif (($vers = $versFromSubmod{$specName}) gt $targetVers) {
-    print STDOUT "INFO [$patchID]: skipping patch '$patchID' since spec '$specName' submodule is at v$vers > v$targetVers - $0\n";
+  if ($submoduleVers && $submoduleVers =~ /^$targetVers/) {
+    print STDOUT "INFO: $0: applying patch '$patchID' since spec '$specName' " .
+      "submodule is at version '$submoduleVers', and it starts with the patch target '$targetVers'" .
+      "\n" unless $patchMsgCount{$key};
+    return $patchMsgCount{$key} = 'Apply the patch';
+  } elsif ($vers ge $targetVers) {
+    print STDOUT "INFO: $0: patch '$patchID' is probably obsolete now that " .
+      "spec '$specName' is at version '$vers' >= '$targetVers' (patch target version); " .
+      "if so, remove the patch\n";
   } else {
-    return 'Apply the patch';
+    print STDOUT "INFO: $0: skipping patch '$patchID' since spec '$specName' " .
+      "submodule is at version '$vers' < '$targetVers' (patch target version); " .
+      "and submodule version '$submoduleVers' doesn't start with the patch target '$targetVers'\n";
   }
   $patchMsgCount{$key}++;
   return 0;
 }
 
-sub patchSpec_because_of_SemConv_DockerAPIVersions() {
+# =================================================================================
+# KEEP THE FOLLOWING SUB AS AN EXAMPLE / TEMPLATE; copy it and modify it as needed.
+# =================================================================================
+
+sub patchSpec_because_of_SpecName_SomeDescription_AsTemplate() {
+  # The code below uses semconv as an example. Adapt as needed.
   return unless
     # Restrict the patch to the proper spec, and section or file:
     $ARGV =~ m|^tmp/semconv/docs/|
@@ -105,7 +139,7 @@ sub patchSpec_because_of_SemConv_DockerAPIVersions() {
     # version (arg 3). The first argument is a unique id that will be printed if
     # the patch is outdated. Otherwise, if the patch is still relevant we fall
     # through to the body of this patch function.
-    applyPatchOrPrintMsgIf('2025-11-21-docker-api-versions', 'semconv', '1.39.0-dev');
+    applyPatchOrPrintMsgIf('2026-01-01-some-unique-id', 'semconv', '1.39.0-dev');
 
   # Give infor about the patch:
   #
@@ -119,6 +153,44 @@ sub patchSpec_because_of_SemConv_DockerAPIVersions() {
   s{
     (https://docs.docker.com/reference/api/engine/version)/v1.(43|51)/(\#tag/)
   }{$1/v1.52/$3}gx;
+}
+
+sub patchSpec_because_of_SemConv_DatabaseRenamedToDb() {
+  return unless
+    # Restrict the patch to the proper spec, and section or file:
+    # Note that here we replace links into semconv from the spec
+    $ARGV =~ m|^tmp/otel/specification/|
+      && applyPatchOrPrintMsgIf('2025-11-26-database-section-renamed-to-db', 'spec', '1.53.0');
+
+  # Give infor about the patch, see:
+  # https://github.com/open-telemetry/opentelemetry.io/pull/8311#issue-3577941378
+
+  # Match both localized paths and GitHub URLs:
+  s|(/semconv)/database(/database-)|$1/db$2|g;
+}
+
+sub patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration() {
+  return unless
+    $ARGV =~ m|^tmp/otel/specification/|
+      && applyPatchOrPrintMsgIf('2025-12-05-metric-rpc-server-duration-renamed-to-rpc-server-call-duration', 'spec', '1.53.0');
+
+  # Give infor about the patch, see:
+  # https://github.com/open-telemetry/opentelemetry-specification/pull/4778
+
+  # Replace the old metric anchor with the new one
+  # cSpell:disable-next-line
+  s|#metric-rpcserverduration|#metric-rpcservercallduration|g;
+}
+
+sub patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL() {
+  return unless
+    $ARGV =~ m|^tmp/semconv/docs/|
+      && applyPatchOrPrintMsgIf('2026-01-20-mariadb-err-code-reference-docs-updated-url', 'semconv', '1.39.0');
+
+  # See: https://github.com/open-telemetry/semantic-conventions/issues/3303
+
+  # Replace the old URL with the new one
+  s|https://mariadb.com/kb/en/mariadb-error-code-reference/|https://mariadb.com/docs/server/reference/error-codes|g;
 }
 
 sub getVersFromSubmodule() {
@@ -207,9 +279,8 @@ while(<>) {
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
 
-    patchSpec_because_of_SemConv_DockerAPIVersions();
+    patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL();
   }
-
 
   # SPECIFICATION custom processing
 
@@ -243,6 +314,9 @@ while(<>) {
       [^)]+
     )
   }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
+
+  patchSpec_because_of_SemConv_DatabaseRenamedToDb();
+  patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 

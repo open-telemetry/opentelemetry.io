@@ -74,6 +74,7 @@ For more information about the maintainer role, see the
 
 These are the members of [@open-telemetry/docs-approvers]:
 
+- [Jay DeLuca](https://github.com/jaydeluca), Grafana Labs
 - [Marylia Gutierrez](https://github.com/maryliag), Grafana Labs
 
 For more information about the approver role, see the
@@ -84,7 +85,7 @@ For more information about the approver role, see the
 These are the members of [@open-telemetry/docs-triagers]:
 
 - [Emídio Neto](https://github.com/emdneto)
-- [Ezzio Moreira](https://github.com/EzzioMoreira), PicPay
+- [Ezzio Moreira](https://github.com/EzzioMoreira)
 - [Kazunori Otani](https://github.com/katzchang), Splunk
 - [Masaki Sugimoto](https://github.com/Msksgm), Henry, Inc.
 - [Michael Yao](https://github.com/windsonsea), DaoCloud

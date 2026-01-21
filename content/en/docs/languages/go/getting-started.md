@@ -13,12 +13,10 @@ This page will show you how to get started with OpenTelemetry in Go.
 You will learn how you can instrument a simple application manually, in such a
 way that [traces][], [metrics][], and [logs][] are emitted to the console.
 
-{{% alert title="Note" %}}
-
-The logs signal is still experimental. Breaking changes may be introduced in
-future versions.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> The logs signal is still experimental. Breaking changes may be introduced in
+> future versions.
 
 ## Prerequisites
 
@@ -344,17 +342,9 @@ func run() error {
 func newHTTPHandler() http.Handler {
 	mux := http.NewServeMux()
 
-	// handleFunc is a replacement for mux.HandleFunc
-	// which enriches the handler's HTTP instrumentation with the pattern as the http.route.
-	handleFunc := func(pattern string, handlerFunc func(http.ResponseWriter, *http.Request)) {
-		// Configure the "http.route" for the HTTP instrumentation.
-		handler := otelhttp.WithRouteTag(pattern, http.HandlerFunc(handlerFunc))
-		mux.Handle(pattern, handler)
-	}
-
 	// Register handlers.
-	handleFunc("/rolldice/", rolldice)
-	handleFunc("/rolldice/{player}", rolldice)
+	mux.Handle("/rolldice/", rolldice)
+	mux.Handle("/rolldice/{player}", rolldice)
 
 	// Add HTTP instrumentation for the whole server.
 	handler := otelhttp.NewHandler(mux, "/")

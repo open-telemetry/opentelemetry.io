@@ -1,4 +1,9 @@
-# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip Kelkoo loveholidays HDFC
+# cSpell:ignore Dyte Farfetch Globale Datenrettungsdienste Uplight Wandera Zocdoc Sicredi Skyscanner Tranzzo VTEX otip Kelkoo loveholidays HDFC Akbank
+- name: Akbank
+  url: https://www.akbank.com/
+  components: [Collector, Operator, Java, .NET]
+  reference: ''
+  contact: 'emrullah.cirit@akbank.com'
 - name: Alibaba
   url: https://www.alibaba.com/
   reference: /blog/2025/otip-alibaba/
@@ -86,7 +91,7 @@
   url: https://www.globalprocessing.com.ar/
   components: [Collector, .NET, Python, Java, Go]
   reference: 'https://www.linkedin.com/posts/santiago-lator_opentelemetry-opentelemetry-observabilidad-activity-7258132675268354050-oP1q'
-  referenceTitle: post
+  referenceTitle: blog post
   contact: 'santiago.lator@globalprocessing.com.ar'
 - name: HDFC Bank
   url: https://www.hdfcbank.com/
@@ -197,9 +202,15 @@
   contact: ''
 - name: Tranzzo
   url: https://tranzzo.com/
-  components: [Collector, Java]
+  components: [Collector, Java, JavaScript]
+  reference: 'https://www.linkedin.com/posts/killenko_opentelemetry-observability-fintech-activity-7416735796872785920-XHER'
+  contact: 'k.illenko@tranzzo.com'
+  referenceTitle: blog post
+- name: Truffle AI
+  url: https://trytruffle.ai
+  components: [JavaScript]
   reference: ''
-  contact: https://github.com/illenko
+  contact: rahul@trytruffle.ai
 - name: UiPath
   url: https://www.uipath.com/
   components: [Collector, .NET]

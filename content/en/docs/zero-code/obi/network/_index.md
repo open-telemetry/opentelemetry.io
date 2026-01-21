@@ -26,8 +26,7 @@ endpoints, from the application point of view.
 - `obi.network.flow.bytes`, if it is exported via OpenTelemetry.
 - `obi_network_flow_bytes_total`, if it is exported by a Prometheus endpoint.
 - To enable it, add the `network` option to the
-  [OBI_OTEL_METRICS_FEATURES or OBI_PROMETHEUS_FEATURES](../configure/export-data/)
-  configuration option.
+  [OTEL_EBPF_METRICS_FEATURES](../configure/export-data/) configuration option.
 
 **Inter-zone metrics**: capture the bytes sent and received between different
 availability zones, from the application point of view.
@@ -36,44 +35,44 @@ availability zones, from the application point of view.
 - `obi_network_inter_zone_bytes_total`, if it is exported by a Prometheus
   endpoint.
 - To enable it, add the `network` option to the
-  [OBI_OTEL_METRICS_FEATURES or OBI_PROMETHEUS_FEATURES](../configure/export-data/)
-  configuration option.
+  [OTEL_EBPF_METRICS_FEATURES](../configure/export-data/) configuration option.
 
-{{< alert type="note" >}} The metrics are captured from the host perspective, so
-they include the overhead of the network stack (protocol headers, etc.).
-{{< /alert >}}
+> [!NOTE]
+>
+> The metrics are captured from the host perspective, so they include the
+> overhead of the network stack (protocol headers, etc.).
 
 ## Metric attributes
 
 Network metrics are labeled with the following attributes:
 
-| Attribute                                   | Description                                                                                                                                                                     |
-| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `obi.ip` / `obi_ip`                         | Local IP address of the OBI instance that emitted the metric                                                                                                                    |
-| `direction`                                 | `ingress` for incoming traffic, `egress` for outgoing traffic                                                                                                                   |
-| `iface`                                     | Network interface name                                                                                                                                                          |
-| `src.address`                               | Source IP address (local for egress, remote for ingress)                                                                                                                        |
-| `src.port`                                  | Source port (local for egress, remote for ingress)                                                                                                                              |
-| `src.cidr`                                  | Source CIDR (if configured)                                                                                                                                                     |
-| `dst.address`                               | Destination IP address (remote for egress, local for ingress)                                                                                                                   |
-| `dst.port`                                  | Destination port (remote for egress, local for ingress)                                                                                                                         |
-| `dst.cidr`                                  | Destination CIDR (if configured)                                                                                                                                                |
-| `transport`                                 | Transport protocol: `tcp`, `udp`                                                                                                                                                |
-| `k8s.src.namespace` / `k8s_src_namespace`   | Source namespace name                                                                                                                                                           |
-| `k8s.src.name` / `k8s_src_name`             | Source pod name                                                                                                                                                                 |
-| `k8s.src.type` / `k8s_src_type`             | Source workload type: `pod`, `replicaset`, `deployment`, `statefulset`, `daemonset`, `job`, `cronjob`, `node`                                                                   |
-| `k8s.src.owner.name` / `k8s_src_owner_name` | Source workload owner name                                                                                                                                                      |
-| `k8s.src.owner.type` / `k8s_src_owner_type` | Source workload owner type: `replicaset`, `deployment`, `statefulset`, `daemonset`, `job`, `cronjob`, `node`                                                                    |
-| `k8s.src.node.ip` / `k8s_src_node_ip`       | Source node IP address                                                                                                                                                          |
-| `k8s.src.node.name` / `k8s_src_node_name`   | Source node name                                                                                                                                                                |
-| `k8s.dst.namespace` / `k8s_dst_namespace`   | Destination namespace name                                                                                                                                                      |
-| `k8s.dst.name` / `k8s_dst_name`             | Destination pod name                                                                                                                                                            |
-| `k8s.dst.type` / `k8s_dst_type`             | Destination workload type: `pod`, `replicaset`, `deployment`, `statefulset`, `daemonset`, `job`, `cronjob`, `node`                                                              |
-| `k8s.dst.owner.name` / `k8s_dst_owner_name` | Destination workload owner name                                                                                                                                                 |
-| `k8s.dst.owner.type` / `k8s_dst_owner_type` | Destination workload owner type: `replicaset`, `deployment`, `statefulset`, `daemonset`, `job`, `cronjob`, `node`                                                               |
-| `k8s.dst.node.ip` / `k8s_dst_node_ip`       | Destination node IP address                                                                                                                                                     |
-| `k8s.dst.node.name` / `k8s_dst_node_name`   | Destination node name                                                                                                                                                           |
-| `k8s.cluster.name` / `k8s_cluster_name`     | Name of the Kubernetes cluster. OBI can auto-detect it on Google Cloud, Microsoft Azure, and Amazon Web Services. For other providers, set the `OBI_KUBE_CLUSTER_NAME` property |
+| Attribute                                   | Description                                                                                                                                                                           |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `obi.ip` / `obi_ip`                         | Local IP address of the OBI instance that emitted the metric                                                                                                                          |
+| `direction`                                 | `ingress` for incoming traffic, `egress` for outgoing traffic                                                                                                                         |
+| `iface`                                     | Network interface name                                                                                                                                                                |
+| `src.address`                               | Source IP address (local for egress, remote for ingress)                                                                                                                              |
+| `src.port`                                  | Source port (local for egress, remote for ingress)                                                                                                                                    |
+| `src.cidr`                                  | Source CIDR (if configured)                                                                                                                                                           |
+| `dst.address`                               | Destination IP address (remote for egress, local for ingress)                                                                                                                         |
+| `dst.port`                                  | Destination port (remote for egress, local for ingress)                                                                                                                               |
+| `dst.cidr`                                  | Destination CIDR (if configured)                                                                                                                                                      |
+| `transport`                                 | Transport protocol: `tcp`, `udp`                                                                                                                                                      |
+| `k8s.src.namespace` / `k8s_src_namespace`   | Source namespace name                                                                                                                                                                 |
+| `k8s.src.name` / `k8s_src_name`             | Source pod name                                                                                                                                                                       |
+| `k8s.src.type` / `k8s_src_type`             | Source workload type: `pod`, `replicaset`, `deployment`, `statefulset`, `daemonset`, `job`, `cronjob`, `node`                                                                         |
+| `k8s.src.owner.name` / `k8s_src_owner_name` | Source workload owner name                                                                                                                                                            |
+| `k8s.src.owner.type` / `k8s_src_owner_type` | Source workload owner type: `replicaset`, `deployment`, `statefulset`, `daemonset`, `job`, `cronjob`, `node`                                                                          |
+| `k8s.src.node.ip` / `k8s_src_node_ip`       | Source node IP address                                                                                                                                                                |
+| `k8s.src.node.name` / `k8s_src_node_name`   | Source node name                                                                                                                                                                      |
+| `k8s.dst.namespace` / `k8s_dst_namespace`   | Destination namespace name                                                                                                                                                            |
+| `k8s.dst.name` / `k8s_dst_name`             | Destination pod name                                                                                                                                                                  |
+| `k8s.dst.type` / `k8s_dst_type`             | Destination workload type: `pod`, `replicaset`, `deployment`, `statefulset`, `daemonset`, `job`, `cronjob`, `node`                                                                    |
+| `k8s.dst.owner.name` / `k8s_dst_owner_name` | Destination workload owner name                                                                                                                                                       |
+| `k8s.dst.owner.type` / `k8s_dst_owner_type` | Destination workload owner type: `replicaset`, `deployment`, `statefulset`, `daemonset`, `job`, `cronjob`, `node`                                                                     |
+| `k8s.dst.node.ip` / `k8s_dst_node_ip`       | Destination node IP address                                                                                                                                                           |
+| `k8s.dst.node.name` / `k8s_dst_node_name`   | Destination node name                                                                                                                                                                 |
+| `k8s.cluster.name` / `k8s_cluster_name`     | Name of the Kubernetes cluster. OBI can auto-detect it on Google Cloud, Microsoft Azure, and Amazon Web Services. For other providers, set the `OTEL_EBPF_KUBE_CLUSTER_NAME` property |
 
 ## Metric reduction
 
@@ -125,9 +124,9 @@ You can configure OBI to also break down metrics by CIDR ranges. This is useful
 for tracking traffic to specific network ranges, such as cloud provider IP
 ranges, or internal/external traffic.
 
-The `cidrs` YAML subsection in `network` (or the `OBI_NETWORK_CIDRS` environment
-variable) accepts a list of CIDR ranges, and the corresponding name. For
-example:
+The `cidrs` YAML subsection in `network` (or the `OTEL_EBPF_NETWORK_CIDRS`
+environment variable) accepts a list of CIDR ranges, and the corresponding name.
+For example:
 
 ```yaml
 network:

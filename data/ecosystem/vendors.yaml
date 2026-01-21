@@ -98,9 +98,9 @@
   commercial: true
 - name: ControlTheory
   nativeOTLP: true
-  url: https://www.controltheory.com/use-case/otel-collector-management/
+  url: https://docs.controltheory.com/controltheory-documentation/gonzo-docs/advanced-features/working-with-otel
   contact: support@controltheory.com
-  oss: false
+  oss: true
   commercial: true
 - name: Coralogix
   nativeOTLP: true
@@ -320,7 +320,7 @@
   commercial: true
 - name: OneUptime
   nativeOTLP: true
-  url: https://oneuptime.com/product/apm
+  url: https://oneuptime.com/docs/telemetry/open-telemetry
   contact: hello@oneuptime.com
   oss: true
   commercial: true
@@ -382,12 +382,6 @@
   nativeOTLP: true
   url: https://s2.dev/docs/integrations/otlp
   contact: hi@s2.dev
-  oss: false
-  commercial: true
-- name: Sentry Software
-  nativeOTLP: true
-  url: https://www.sentrysoftware.com/products/hardware-sentry-opentelemetry-collector.html
-  contact:
   oss: false
   commercial: true
 - name: ServicePilot
@@ -543,7 +537,7 @@
   commercial: true
 - name: groundcover
   nativeOTLP: true
-  url: 'https://docs.groundcover.com/integrations/data-sources/opentelemetry/traces-and-logs'
+  url: 'https://docs.groundcover.com/integrations/data-sources/opentelemetry/sending-from-an-opentelemetry-collector'
   contact: 'hello@groundcover.com'
   oss: false
   commercial: true

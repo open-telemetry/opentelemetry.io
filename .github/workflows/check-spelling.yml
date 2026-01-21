@@ -12,21 +12,12 @@ jobs:
     name: SPELLING check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.1
       - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
-      - run: npm run _install:dict --ignore-scripts
-      - uses: streetsidesoftware/cspell-action@v8
-        with:
-          # Files should be consistent with check:spelling files
-          files: |
-            content
-            data
-            layouts/**/*.md
-          config: .cspell.yml
-          incremental_files_only: false
-          suggestions: true
+      - run: npm run _install:cspell --ignore-scripts
+      - run: npm run check:spelling
 
   dict-check:
     name: CSPELL page-local word list check
@@ -34,7 +25,8 @@ jobs:
     env:
       FIX_CMD: fix:dict
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.1
+      # Note: FIX_CMD runs fine without setup-node
       - run: npm run ${{ env.FIX_CMD }}
       - name: Any changed files?
         run: |

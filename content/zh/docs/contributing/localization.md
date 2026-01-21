@@ -5,16 +5,16 @@ linkTitle: 本地化
 weight: 25
 default_lang_commit: adf1731535b21711a7fba3cf46bd6bf4e7b923ee # patched
 drifted_from_default: true
-cSpell:ignore: shortcodes
+cSpell:ignore: Dowair shortcodes
 ---
 
 OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化。
 英语是默认语言，而美式英语是默认的本地化语言形式。
-随着其他语言的本地化的增加，您可以从顶部导航栏中的语言下拉菜单中看到这些语言。
+随着其他语言的本地化的增加，你可以从顶部导航栏中的语言下拉菜单中看到这些语言。
 
 ## 翻译指南 {#translation-guidance}
 
-当翻译英文网站页面时，我们建议您遵循本部分中提供的指南。
+当翻译英文网站页面时，我们建议你遵循本部分中提供的指南。
 
 ### 概要 {#summary}
 
@@ -27,9 +27,10 @@ OTel 网站使用 Hugo 的 [multilingual framework] 来支持页面的本地化�
     - Mermaid [diagram](#images) 文本字段
     - 代码片段内的注释（可选）
   - [前端元数据][front matter] 中的 `title`、`linkTitle` 和 `description` 的字段值
-  - **所有页面**内容和前置元数据，除非另有说明。
-- 保留原文的**内容**、**含义**以及**风格**。
-- 如果您有任何疑问或问题，请通过以下方式**咨询**[维护人员][Maintainers]：
+  - **所有页面**内容和前置元数据，除非另有说明
+- 保留原文的**内容**、**含义**以及**风格**
+- **渐进式**提交[小的 PR](#small-prs)
+- 如果你有任何疑问或问题，请通过以下方式**咨询**[维护人员][Maintainers]：
   - [Slack] 上的 `#otel-docs-localization` 或 `#otel-comms` 频道
   - [Discussion]、Issue 或者 PR 评论
 
@@ -250,72 +251,181 @@ npm run check:i18n -- -c HEAD <新文件的路径>
 
 若要获取该脚本的更多详细信息，请运行 `npm run check:i18n -- -h`.
 
-## 新的本地化内容 {#new-localizations}
+## 新增本地化语言 {#new-localizations}
 
-要为 OpenTelemetry 网站开启一项新的本地化工作，你可以[创建一个issue](https://github.com/open-telemetry/opentelemetry.io/issues/)
-来表明你参与贡献的意愿。同时，标记出所有愿意撰写和审核你想添加语言的翻译内容的人员。
-你至少需要两名潜在贡献者，理想情况下是三名。此外，在你的议题中还需包含以下任务列表：
+对在 OTel 网站上新增一个本地化语言感兴趣？请联系维护者表达你的兴趣，例如通过 GitHub 讨论或
+Slack 的 `#otel-docs-localization` 频道。本节将解释如果新增一个本地化语言所需的步骤。
 
-```markdown
-- [ ] Contributors for the new language: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
-- [ ] Localize site homepage to YOUR_LANGUAGE_NAME
-- [ ] Create an issue label for `lang:LANG_ID`
-- [ ] Create org-level group for `LANG_ID` approvers
-- [ ] Update components owners for `content/LANG_ID`
-- [ ] Set up spell checking, if a cSpell dictionary is available
-```
+{{% alert title="注意" %}}
 
-注意:
+你不必是 OpenTelemetry 项目的现有贡献者即可启动新的本地化语言。然而，
+在满足[成员指南](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md)
+中关于成为正式成员和 Approver 的要求之前，你还不能被添加为
+[OpenTelemetry GitHub 组织](https://github.com/open-telemetry/)的成员，或成为本地化项目的 Approver 组成员。
 
-- 对于想要添加的语言的 `LANG_ID`，请使用官方的 [ISO 639-1 编码](https://en.wikipedia.org/wiki/ISO_639-1)
-- 请查找 [cSpell 词典](https://github.com/streetsidesoftware/cspell-dicts)，并确认以
-  NPM 包形式提供的 [@cspell/dict-LANG_ID](https://www.npmjs.com/search?q=%40cspell%2Fdict)
-  是否可用。如果没有适合您所指的方言或地区的词典，请选择最接近该地区的词典。有关设置方法的示例，请参考 [PR #5386] 。
-
-当你创建了那个 Issue 并且聚集了所需数量的贡献者后，
-维护人员会要求你创建一个包含[索引页面](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md)
-翻译内容的 PR。请确保维护人员能够编辑该PR，以便为该 PR 添加启动本地化项目所需的额外修改内容。
-
-在你的第一个 PR 被合并后，维护人员会负责设置 Issue 标签、组织级别的群组以及组件负责人。
-
-{{% alert title="重要" color="warning" %}}
-
-即便你并非 OpenTelemetry 项目的现有贡献者，也能开启新的本地化工作。
-不过，你不会被添加为[OpenTelemetry GitHub组织](https://github.com/open-telemetry/)的成员，
-也无法成为你所负责本地化工作的审批组的成员。若要成为正式成员和审批人员，
-你需要满足[成员准则](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md)中所列出的要求。
-
-在启动本地化项目时，维护人员会像对待已有的审批人员那样对待你的审核意见。
+在你获得 Approver 资格之前，你可以通过添加 “LGTM”（Looks Good To Me）评论来表示你对某个本地化
+PR 的认可。在此启动阶段，维护者会将你的评论视为正式审批。
 
 {{% /alert %}}
 
-## 英语语言维护者指南 {#english-language-maintainer-guidance}
+### 1. 组建本地化团队 {#team}
 
-### 当非英语页面的链接检查失败时 {#when-link-checking-fails-for-non-english-pages}
+新增一个本地化语言的核心是建立一个积极且互助的社区。要为 OpenTelemetry 网站启动一个新的本地化语言，你需要：
 
-英语是 OpenTelemetry 网站的默认语言。在添加、编辑或重构英语文档之后，非英语页面的链接检查可能会失败。
-如果出现这种情况，请执行以下操作：
+1. 一位熟悉目标语言的 **本地化导师**，例如 [CNCF 术语表](https://glossary.cncf.io/)或
+   [Kubernetes 网站](https://github.com/kubernetes/website)的[活跃 Approver](https://github.com/cncf/glossary/blob/main/CODEOWNERS)。
+2. 至少两位潜在的贡献者。
 
-<!-- markdownlint-disable blanks-around-fences -->
+### 2. 启动本地化：创建一个 Issue {#kickoff}
 
-- 请不要修复这些链接。每个非英语页面都与对应的英语页面的特定提交相关联，
-  该提交由 `default_lang_commit` 前端元数据键的 git 提交哈希值来标识。
-- 通过将以下内容添加到页面的前端元数据中，来配置链接检查器以忽略非英语页面。
-  如果有多个页面存在链接错误，则将其添加到最近的公共父级文件中：
-  ```yaml
-  htmltest:
-    # TODO: remove the IgnoreDirs once broken links are fixed
-    IgnoreDirs:
-      - path-regex/to/non-en/directory/contain/files/to/ignore
-      - path-2-etc
-  ```
-- 运行 `npm run check:links` 命令，并在你的 PR 中包含对 `.htmltest.yml` 配置文件所做的任何更新内容。
+当你的[本地化团队](#team)已经建立或正在组建时，创建一个包含以下任务列表的 Issue：
 
-<!-- markdownlint-enable blanks-around-fences -->
+1. 查找你要添加的语言的官方 [ISO 639-1 语言代码](https://en.wikipedia.org/wiki/ISO_639-1)。
+   我们将在本节的其余部分中将此语言代码称为 `LANG_ID`。
+   如果你对使用哪个标签（尤其是子区域）有疑问，请咨询维护者。
+
+2. 确定[导师和潜在贡献者](#team) 的 GitHub 用户名。
+
+3. 创建一个 [新 Issue](https://github.com/open-telemetry/opentelemetry.io/issues/new)，
+   并在提交的 Issue 评论中包含以下任务列表：
+
+   ```markdown
+   - [ ] Language info:
+     - ISO 639-1 language code: `LANG_ID`
+     - Language name: ADD_NAME_HERE
+   - [ ] Locale team info:
+     - [ ] Locale mentor: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+     - [ ] Contributors: @GITHUB_HANDLE1, @GITHUB_HANDLE2, ...
+   - [ ] Read through
+         [Localization](https://opentelemetry.io/docs/contributing/localization/)
+         and all other pages in the Contributing section
+   - [ ] Localize site homepage (only) to YOUR_LANGUAGE_NAME and submit a PR.
+         For details, see
+         [Localize the homepage](https://opentelemetry.io/docs/contributing/localization/#homepage).
+   - [ ] OTel maintainers:
+     - [ ] Update Hugo config for `LANG_ID`
+     - [ ] Configure cSpell and other tooling support
+     - [ ] Create an issue label for `lang:LANG_ID`
+     - [ ] Create org-level group for `LANG_ID` approvers
+     - [ ] Update components owners for `content/LANG_ID`
+   - [ ] Create an issue to track the localization of the **glossary**. Add the
+         issue number here. For details, see
+         [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
+   ```
+
+### 3. 本地化首页 {#homepage}
+
+[提交一个 PR](../pull-requests/)，在文件 `content/LANG_ID/_index.md`
+中添加网站[首页](https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md)的翻译，
+且**不要包含其他内容**。请确保维护者有权编辑你的 PR，因为他们需要添加一些额外更改以新增本地化语言。
+
+在你的第一个 PR 合并后，维护者将设置 Issue 标签、组织群组和组件所有者。
+
+### 4. 本地化术语表 {#glossary}
+
+第二个需要本地化的页面是[术语表](/docs/concepts/glossary/)。
+这是面向本地化读者的一个**关键**页面，因为它定义了可观测性及 OpenTelemetry 中的核心术语。
+尤其当你的语言中不存在这些术语时，这一点尤为重要。
+
+参考 Ali Dowair 在 Write the Docs 2024 上的演讲主题[翻译艺术：如何本地化技术内容](https://www.writethedocs.org/conf/atlantic/2024/speakers/#speaker-ali-dowair-what-s-in-a-word-lessons-from-localizing-kubernetes-documentation-to-arabic-ali-dowair)及其[演讲视频](https://youtu.be/HY3LZOQqdig)。
+
+### 5. 按小步推进本地化其他页面 {#rest}
+
+在术语体系确立后，你可以开始本地化网站的其他页面。<a name="small-prs"></a>
+
+{{% alert title="请提交小型 PR" color="primary" %}}
+
+本地化团队应**以小步迭代的方式**提交工作。也就是说，保持 [PRs] 简洁，最好只包含一个或几个小文件。
+小型 PR 更易于审查，因此通常能更快合并。
+
+{{% /alert %}}
+
+### OTel 维护者清单
+
+#### Hugo
+
+为 `LANG_ID` 更新 Hugo 配置。为 `LANG_ID` 添加合适条目：
+
+- `config/_default/hugo.yaml` 中的 `languages`
+- `config/_default/module-template.yaml` 中的 `module.mounts`
+  至少应添加一个针对 `content` 的 `source`-`target` 项。
+  仅当该语言内容足够多时，再考虑为 `en` 添加回退页面条目。
+
+#### 拼写检查
+
+查找是否存在作为 NPM 包发布的 [cSpell 字典][cSpell dictionaries][@cspell/dict-LANG_ID][]。
+如果没有适合你方言或地区的字典，请选择最接近的地区版本。
+
+如果完全没有可用字典，可以跳过本节。否则：
+
+- 将该 NPM 包添加为开发依赖，例如：
+  `npm install --save-dev @cspell/dict-bn`
+- 创建 `.cspell/LANG_ID-words.txt` 文件，作为 `LANG_ID` 的站点本地词典。
+- 在 `.cspell.yml` 中添加以下条目：
+  - `import`
+  - `dictionaryDefinitions`
+  - `dictionaries`：这里应添加两个条目，一个为 `LANG_ID`，另一个为 `LANG_ID-words.txt`
+
+[cSpell dictionaries]: https://github.com/streetsidesoftware/cspell-dicts
+[@cspell/dict-LANG_ID]: https://www.npmjs.com/search?q=%40cspell%2Fdict
+
+#### 其他工具支持
+
+- **Prettier 支持**：如果 Prettier 对 `LANG_ID` 支持不佳，请在 `.prettierignore` 中添加忽略规则。
+
+## Approver 与维护者指南 {#approver-and-maintainer-guidance}
+
+### 含语义变更的 PR 不应跨语言提交 {#prs-should-not-span-locales}
+
+Approver 应确保对文档页面进行**语义变更**的 [PRs] 不跨多个语言版本。
+语义变更是指影响页面**内容含义**的修改。我们的文档[本地化流程](.)确保每种语言的
+Approver 会在适当的时候审查英文修改，以确定是否适用于其本地化版本，并决定如何整合。
+
+如有需要，Approver 将通过各自语言的 PR 进行修改。
+
+### 纯编辑性修改可跨语言提交 {#patch-locale-links}
+
+**纯编辑性修改**是指不影响内容含义的更新，可跨语言进行。这类修改包括：
+
+- **链接维护**：修复因页面移动或删除而导致的链接路径错误；
+- **资源更新**：更新已移动的外部资源链接；
+- **定向内容添加**：在不便更新整个文件时，为已偏移的文件添加特定新定义或段落。
+
+#### 链接修复与资源更新 {#link-fixes-and-resource-updates}
+
+例如，当英文文档页面移动或删除时，可能导致其他语言版本的链接检查失败。
+此时，请在每个受影响页面中进行以下更新：
+
+- 更新到新页面路径的链接引用；
+- 在 front matter 中的 `default_lang_commit` 行末添加注释 `# patched`；
+- 不做其他修改；
+- 重新运行 `npm run check:links` 并确保无链接错误。
+
+当一个**外部链接**指向的资源（例如 GitHub 文件）被**移动**但语义**未改变**时，可考虑：
+
+- 从 refcache 中移除失效链接；
+- 按前述方式更新所有语言版本的链接。
+
+#### 向已偏移文件中添加定向内容 {#targeted-content-additions}
+
+当需要向与英文版本不完全同步的本地化文件中添加新内容时，可选择**定向更新**，而无需更新整个文件。
+例如，当英文术语表新增 “cardinality” 词条时，你可以仅在本地化版本中添加该定义。
+
+操作流程示例：
+
+- 仅将 “cardinality” 定义块添加至本地化术语表文件；
+- 在 front matter 中的 `default_lang_commit` 行末添加 `# patched`；
+- 保留其他内容不变；
+- 在 PR 描述中明确说明：
+  - 添加的具体内容（例如 “cardinality” 定义）；
+  - 文件中仍存在未同步内容；
+  - 定向更新的理由（例如“为本地读者提供关键新术语，无需同步整个文件”）。
+
+这种方式可实现对本地化内容的渐进改进，同时保持对同步状态的可见性。
 
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [maintainers]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [multilingual framework]: https://gohugo.io/content-management/multilingual/
-[PR #5386]: https://github.com/open-telemetry/opentelemetry.io/pull/5386/files
+[PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/

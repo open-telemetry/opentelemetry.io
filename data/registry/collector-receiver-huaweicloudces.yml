@@ -21,4 +21,4 @@ createdAt: 2025-09-19
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/huaweicloudcesreceiver
-  version: v0.140.1
+  version: v0.144.0

@@ -3,14 +3,14 @@ title: Processors
 description: List of available OpenTelemetry Collector processors
 weight: 320
 # prettier-ignore
-cSpell:ignore: attributesprocessor batchprocessor coralogixprocessor cumulativetodeltaprocessor datadogsemanticsprocessor deltatocumulativeprocessor deltatorateprocessor dnslookupprocessor filterprocessor geoipprocessor groupbyattrsprocessor groupbytraceprocessor intervalprocessor isolationforestprocessor logdedupprocessor logstransformprocessor memorylimiterprocessor metricsgenerationprocessor metricstarttimeprocessor metricstransformprocessor probabilisticsamplerprocessor redactionprocessor remotetapprocessor resourcedetectionprocessor resourceprocessor sattributesprocessor schemaprocessor spanprocessor sumologicprocessor tailsamplingprocessor transformprocessor unrollprocessor xprocessor
+cSpell:ignore: attributesprocessor batchprocessor coralogixprocessor cumulativetodeltaprocessor datadogsemanticsprocessor deltatocumulativeprocessor deltatorateprocessor dnslookupprocessor filterprocessor geoipprocessor groupbyattrsprocessor groupbytraceprocessor intervalprocessor isolationforestprocessor logdedupprocessor logstransformprocessor lookupprocessor memorylimiterprocessor metricsgenerationprocessor metricstarttimeprocessor metricstransformprocessor probabilisticsamplerprocessor redactionprocessor remotetapprocessor resourcedetectionprocessor resourceprocessor sattributesprocessor schemaprocessor spanprocessor sumologicprocessor tailsamplingprocessor transformprocessor unrollprocessor xprocessor
 ---
 
 Processors transform, filter, and enrich telemetry data as it flows through the
 pipeline. For more information on how to configure processors, see the
 [Collector configuration documentation](/docs/collector/configuration/#processors).
 
-<!-- BEGIN GENERATED: processor-table -->
+<!-- BEGIN GENERATED: processor-table SOURCE: collector-watcher -->
 
 | Name                                                                                                                                                 | Distributions[^1]  | Traces[^2]  | Metrics[^2] | Logs[^2]    |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ----------- | ----------- | ----------- |
@@ -31,6 +31,7 @@ pipeline. For more information on how to configure processors, see the
 | [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/k8sattributesprocessor)               | contrib, K8s       | beta        | beta        | beta        |
 | [logdedupprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/logdedupprocessor)                         | contrib, K8s       | -           | -           | alpha       |
 | [logstransformprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/logstransformprocessor)               | contrib            | -           | -           | development |
+| [lookupprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/lookupprocessor)                             | contrib            | -           | -           | development |
 | [memorylimiterprocessor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor)                       | contrib, core, K8s | beta        | beta        | beta        |
 | [metricsgenerationprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricsgenerationprocessor)       | contrib            | -           | alpha       | -           |
 | [metricstarttimeprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/metricstarttimeprocessor)           | contrib            | -           | beta        | -           |
@@ -47,9 +48,6 @@ pipeline. For more information on how to configure processors, see the
 | [transformprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)                       | contrib, K8s       | beta        | beta        | beta        |
 | [unrollprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/unrollprocessor)                             | contrib            | -           | -           | alpha       |
 
-⚠️ **Note:** Components marked with ⚠️ are unmaintained and have no active
-codeowners. They may not receive regular updates or bug fixes.
-
 [^1]:
     Shows which [distributions](/docs/collector/distributions/) (core, contrib,
     K8s, etc.) include this component.
@@ -58,4 +56,4 @@ codeowners. They may not receive regular updates or bug fixes.
     For details about component stability levels, see the
     [OpenTelemetry Collector component stability definitions](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
 
-<!-- END GENERATED: processor-table -->
+<!-- END GENERATED: processor-table SOURCE: collector-watcher -->

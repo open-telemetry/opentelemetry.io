@@ -24,12 +24,11 @@ a Spring bean. Simply inject `OpenTelemetry` into your Spring components.
 
 ## Span
 
-{{% alert title="Note" %}}
-
-For the most common use cases, use the `@WithSpan` annotation instead of manual
-instrumentation. See [Annotations](../annotations) for more information.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> For the most common use cases, use the `@WithSpan` annotation instead of
+> manual instrumentation. See [Annotations](../annotations) for more
+> information.
 
 ```java
 import io.opentelemetry.api.OpenTelemetry;

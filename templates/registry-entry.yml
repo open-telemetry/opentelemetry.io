@@ -5,14 +5,15 @@ language: <js/go/dotnet/etc. or collector for collector plugins>
 tags:
   - <other useful search terms>
 urls:
-  repo: https://github.com/your-organization/your-repo # (mandatory) projects don't have to be hosted on GitHub, but this should link to the git or other source control repository for your project
-  docs: https://your-organization/your-instructions # (optional) path to a documentation for the specific project.
+  repo: https://github.com/your-organization/your-repo # At least one of repo or website is required. Projects don't have to be hosted on GitHub, but this should link to the git or other source control repository for your project
+  website: https://your-organization/your-project # At least one of repo or website is required. Required for "application integration" and native "instrumentation" entries
+  docs: https://your-organization/your-instructions # Required for "application integration" and native "instrumentation" entries
 license: Apache 2.0 # or whatever your OSS license is (see https://opensource.org/licenses/), proprietary or non-OSI approved may be rejected
 description: A friendly description of your integration/plugin
 authors:
   - name: First author name
-    email: first author email (optional)
-    url: first author URL (github handle, optional)
+    email: first author email # At least one of email or url is required
+    url: first author URL (github handle) # At least one of email or url is required
 createdAt: <date> # Set todays date
 isNative: false # set this to true only if OpenTelemetry is directly integrated into your software (no plugin, no instrumentation library)
 isFirstParty: false # set this to true if "isNative" is set to false, but the plugin / instrumentation library is from the same vendor/project as the instrumented software

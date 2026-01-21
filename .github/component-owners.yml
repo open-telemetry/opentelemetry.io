@@ -32,6 +32,10 @@ components:
     - open-telemetry/operator-approvers
   content/en/docs/platforms/client-apps/android:
     - open-telemetry/android-approvers
+  content/en/docs/platforms/client-apps/ios:
+    - open-telemetry/swift-approvers
+  content/en/docs/platforms/client-apps/web:
+    - open-telemetry/browser-approvers
   content/en/docs/platforms/faas:
     - open-telemetry/lambda-extension-approvers
   content/en/docs/languages/cpp:
@@ -46,7 +50,7 @@ components:
     - open-telemetry/java-instrumentation-approvers
   content/en/docs/languages/js:
     - open-telemetry/javascript-approvers
-  content/en/docs/languages/net:
+  content/en/docs/languages/dotnet:
     - open-telemetry/dotnet-approvers
     - open-telemetry/dotnet-instrumentation-approvers
   content/en/docs/languages/php:
@@ -81,8 +85,6 @@ components:
     - open-telemetry/php-approvers
   content/en/docs/zero-code/python:
     - open-telemetry/python-approvers
-  content/en/ecosystem/demo:
-    - open-telemetry/demo-approvers
 
   ## Localization Teams
   content/bn:

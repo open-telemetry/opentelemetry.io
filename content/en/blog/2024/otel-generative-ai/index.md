@@ -75,19 +75,17 @@ model responses, providing a granular view of model interactions. These insights
 are invaluable for debugging and optimizing AI applications where unexpected
 behaviors may arise.
 
-{{% alert title="Note" %}}
-
-Note that we decided to use [events emitted] with the
-[Logs API](/docs/specs/otel/logs/api/) specification in the Semantic Conventions
-for Generative AI. Events allows for us to define specific
-[semantic conventions](/docs/specs/semconv/general/events/) for the user prompts
-and model responses that we capture. This addition to the API is in development
-and considered unstable.
+> [!NOTE]
+>
+> Note that we decided to use [events emitted] with the
+> [Logs API](/docs/specs/otel/logs/api/) specification in the Semantic
+> Conventions for Generative AI. Events allows for us to define specific
+> [semantic conventions](/docs/specs/semconv/general/events/) for the user
+> prompts and model responses that we capture. This addition to the API is in
+> development and considered unstable.
 
 [events emitted]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/logs/api.md#emit-an-event
-
-{{% /alert %}}
 
 ### Extending Observability with Vendor-Specific Attributes
 
@@ -188,7 +186,7 @@ docker run --rm -it -d -p 18888:18888 -p 4317:18889 -p 4318:18890 --name aspire-
 ![Chat trace in Aspire Dashboard](aspire-dashboard-trace.png)
 
 Here is a similar trace captured in
-[Jaeger](https://www.jaegertracing.io/docs/1.63/getting-started/#all-in-one).
+[Jaeger](https://www.jaegertracing.io/docs/getting-started/#all-in-one).
 
 To start Jaeger, run the following `docker` command and open your web browser
 the `localhost:16686`.

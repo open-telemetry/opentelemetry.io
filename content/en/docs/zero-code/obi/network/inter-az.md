@@ -6,11 +6,9 @@ description:
 weight: 1
 ---
 
-{{% alert title="Note" %}}
-
-This feature is currently only available in Kubernetes clusters.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> This feature is currently only available in Kubernetes clusters.
 
 Traffic between Cloud Availability Zones might incur additional costs. OBI is
 able to measure it either by adding `src.zone` and `dst.zone` attributes to
@@ -54,13 +52,12 @@ impact of collecting this data, because the `src.zone` and `dst.zone` attributes
 are not added to the regular network metrics.
 
 To enable the `obi.network.inter.zone` metric, add the `network_inter_zone`
-option to the
-[OTEL_EBPF_METRICS_FEATURES or OTEL_EBPF_PROMETHEUS_FEATURES](../../configure/export-data/)
-configuration option, or its equivalent YAML options. For example, if OBI is
+option to the [OTEL_EBPF_METRICS_FEATURES](../../configure/export-data/)
+configuration option, or its equivalent YAML option. For example, if OBI is
 configured to export metrics via OpenTelemetry:
 
 ```yaml
-otel_metrics_export:
+metrics:
   features:
     - network
     - network_inter_zone

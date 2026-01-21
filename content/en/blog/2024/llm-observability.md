@@ -82,13 +82,11 @@ costs. Here are the key signals to monitor:
     perspective, providing insights into the model's output characteristics and
     potential areas of inefficiency or unexpected cost.
 
-{{% alert title="Note" %}}
-
-The LLM Working Group has recommended on capturing these details on events
-instead of span attributes because many backend systems can struggle with those
-often large payloads.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> The LLM Working Group has recommended on capturing these details on events
+> instead of span attributes because many backend systems can struggle with
+> those often large payloads.
 
 ### Metrics
 
@@ -116,7 +114,7 @@ Before we begin, make sure you have the following running in your environment:
 
 ### Setting Up the OpenTelemetry Collector
 
-First, [install the OpenTelemetry Collector](/docs/collector/installation/).
+First, [install the OpenTelemetry Collector](/docs/collector/install/).
 
 ### Configuring the Collector
 

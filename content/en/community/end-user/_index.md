@@ -99,12 +99,10 @@ to say hi, let us know in
 CNCF Slack! Not there yet?
 [Join us](https://communityinviter.com/apps/cloud-native/cncf)!
 
-{{% alert title="For OpenTelemetry contributors" %}}
-
-Is your SIG in need of insights from end users?:female-detective: Are you
-wanting to find out whether end users are using or even aware of a feature your
-SIG has developed? Or perhaps you're looking for some general feedback about the
-thing you've spent hours working on? Reach out to the End User SIG on Slack
-(#otel-sig-end-user) and we will be happy to help you.
-
-{{% /alert %}}
+> [!NOTE] For OpenTelemetry contributors
+>
+> Is your SIG in need of insights from end users? :female_detective: Are you
+> wanting to find out whether end users are using or even aware of a feature
+> your SIG has developed? Or perhaps you're looking for some general feedback
+> about the thing you've spent hours working on? Reach out to the End User SIG
+> on Slack (#otel-sig-end-user) and we will be happy to help you.

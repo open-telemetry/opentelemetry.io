@@ -10,17 +10,17 @@ configure it to help you
 [monitor](#use-internal-telemetry-to-monitor-the-collector) and
 [troubleshoot](/docs/collector/troubleshooting/) the Collector.
 
-{{% alert title="Important" color="warning" %}} The Collector uses the
-OpenTelemetry SDK
-[declarative configuration schema](https://github.com/open-telemetry/opentelemetry-configuration)
-for configuring how to export its internal telemetry. This schema is still under
-[development](/docs/specs/otel/document-status/) and may undergo **breaking
-changes** in future releases. We intend to keep supporting older schemas until a
-1.0 schema release is available, and offer a transition period for users to
-update their configurations before dropping pre-1.0 schemas. For details and to
-track progress see
-[issue #10808](https://github.com/open-telemetry/opentelemetry-collector/issues/10808).
-{{% /alert %}}
+> [!WARNING]
+>
+> The Collector uses the OpenTelemetry SDK
+> [declarative configuration schema](https://github.com/open-telemetry/opentelemetry-configuration)
+> for configuring how to export its internal telemetry. This schema is still
+> under [development](/docs/specs/otel/document-status/) and may undergo
+> **breaking changes** in future releases. We intend to keep supporting older
+> schemas until a 1.0 schema release is available, and offer a transition period
+> for users to update their configurations before dropping pre-1.0 schemas. For
+> details and to track progress see
+> [issue #10808](https://github.com/open-telemetry/opentelemetry-collector/issues/10808).
 
 ## Activate internal telemetry in the Collector
 
@@ -114,22 +114,20 @@ resource:
 
 #### Service address
 
-{{% alert title="Internal telemetry configuration changes" %}}
-
-As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
-is ignored. In earlier versions, it could be configured with:
-
-```yaml
-service:
-  telemetry:
-    metrics:
-      address: 0.0.0.0:8888
-```
+> [!NOTE] Internal telemetry configuration changes
+>
+> As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
+> is ignored. In earlier versions, it could be configured with:
+>
+> ```yaml
+> service:
+>   telemetry:
+>     metrics:
+>       address: 0.0.0.0:8888
+> ```
 
 [v0.123.0]:
   https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0
-
-{{% /alert %}}
 
 #### Metric verbosity
 
@@ -238,12 +236,10 @@ service:
 
 The Collector does not expose traces by default, but it can be configured to.
 
-{{% alert title="Caution" color="warning" %}}
-
-Internal tracing is an experimental feature, and no guarantees are made as to
-the stability of the emitted span names and attributes.
-
-{{% /alert %}}
+> [!CAUTION]
+>
+> Internal tracing is an experimental feature, and no guarantees are made as to
+> the stability of the emitted span names and attributes.
 
 The following configuration can be used to emit internal traces from the
 Collector to an OTLP backend:
@@ -403,18 +399,16 @@ files in the repository.
 | `otelcol_processor_batch_metadata_`<br>`cardinality`    | Number of distinct metadata value combinations being processed. | Counter   |
 | `otelcol_processor_batch_timeout_`<br>`trigger_send`    | Number of times the batch was sent due to a timeout trigger.    | Counter   |
 
-{{% alert title="Batch processor metrics level changes" %}}
-
-In Collector [v0.99.0], all batch processor metrics were upgraded from `basic`
-to `normal` (current level), except for
-`otelcol_processor_batch_batch_send_size_bytes`, which has been `detailed` since
-its introduction. Note however that these metrics were inadvertently reverted to
-`basic` from v0.109.0 to v0.121.0.
+> [!NOTE] Batch processor metrics level changes
+>
+> In Collector [v0.99.0], all batch processor metrics were upgraded from `basic`
+> to `normal` (current level), except for
+> `otelcol_processor_batch_batch_send_size_bytes`, which has been `detailed`
+> since its introduction. Note however that these metrics were inadvertently
+> reverted to `basic` from v0.109.0 to v0.121.0.
 
 [v0.99.0]:
   https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0
-
-{{% /alert %}}
 
 #### Additional `detailed`-level metrics
 
@@ -437,16 +431,16 @@ its introduction. Note however that these metrics were inadvertently reverted to
 | `rpc.server.response.size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
 | `rpc.server.responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
 
-{{% alert title="Note" color="info" %}} The `http*` and `rpc*` metrics are not
-covered by the maturity levels below since they are not under the Collector SIG
-control.
-
-The `otelcol_processor_batch_` metrics are unique to the `batchprocessor`.
-
-The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
-`otelcol_exporter_` metrics come from their respective `helper` packages. As
-such, some components not using those packages might not emit them.
-{{% /alert %}}
+> [!NOTE]
+>
+> The `http*` and `rpc*` metrics are not covered by the maturity levels below
+> since they are not under the Collector SIG control.
+>
+> The `otelcol_processor_batch_` metrics are unique to the `batchprocessor`.
+>
+> The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
+> `otelcol_exporter_` metrics come from their respective `helper` packages. As
+> such, some components not using those packages might not emit them.
 
 ### Events observable with internal logs
 
@@ -477,17 +471,47 @@ guarantees of backwards compatibility for tracing instrumentation.
 
 ### Metrics
 
-The Collector's first-party metrics follow a four-stage lifecycle:
+The Collector's first-party metrics follow this lifecycle:
 
-> Alpha metric → Stable metric → Deprecated metric → Deleted metric
+```mermaid
+stateDiagram-v2
+    state StabilityLevels {
+    InDevelopment --> Alpha
+    Alpha --> Beta
+    Beta --> Stable
+    }
+
+    InDevelopment: In Development
+
+    StabilityLevels --> Deprecated
+    Deprecated --> Removed
+```
+
+The stability levels follow Semantic Conventions [guidance][SemConvGuidance],
+derived from [OTEP-0232][OTEP-0232]. Collector metrics skip the
+`release_candidate` level.
+
+Note that the deprecated and deleted stages are lifecycle states, not stability
+levels.
 
 Third-party metrics, including those generated by OpenTelemetry Go
 instrumentation libraries, are not covered by these maturity levels.
+
+#### Development
+
+Development metrics are still under active development and may change in any
+release.
 
 #### Alpha
 
 Alpha metrics have no stability guarantees. These metrics can be modified or
 deleted at any time.
+
+#### Beta
+
+Beta metrics may still change between releases, but component owners should try
+to minimize breaking changes. This stage encourages broader usage and is the
+final step before `stable`.
 
 #### Stable
 
@@ -579,3 +603,8 @@ You can monitor data ingress with the `otelcol_receiver_accepted_log_records`,
 metrics and data egress with the `otelcol_exporter_sent_log_records`,
 `otelcol_exporter_sent_spans`, and `otelcol_exporter_sent_metric_points`
 metrics.
+
+[SemConvGuidance]:
+  /docs/specs/semconv/general/semantic-convention-groups#group-stability
+[OTEP-0232]:
+  https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/oteps/0232-maturity-of-otel.md

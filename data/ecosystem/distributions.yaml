@@ -1,4 +1,4 @@
-# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT
+# cSpell:ignore Splunk AWS ADOT Grafana observIQ BindPlane RHOSDT RedHat Sumo Liatrio Lumigo Distro Dynatrace Datadog Contrib DDOT eBPF NRDOT KM KloudMate
 - name: Splunk Distribution of OpenTelemetry Collector
   url: https://github.com/signalfx/splunk-otel-collector
   docsUrl: https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html
@@ -178,6 +178,30 @@
 - name: New Relic Distribution of the OpenTelemetry Collector (NRDOT)
   url: https://github.com/newrelic/nrdot-collector-releases
   docsUrl: https://docs.newrelic.com/docs/opentelemetry/nrdot/nrdot-collector/
+  components: [Collector]
+- name: Honeycomb’s OpenTelemetry Web SDK distribution
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-web
+  docsUrl: https://docs.honeycomb.io/send-data/javascript-browser/
+  components: [Javascript, Browser]
+- name: Honeycomb's OpenTelemetry Android SDK distribution
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-android
+  docsUrl: https://docs.honeycomb.io/send-data/android/
+  components: [Android]
+- name: Honeycomb's OpenTelemetry Swift SDK distribution
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-swift
+  docsUrl: https://docs.honeycomb.io/send-data/ios/
+  components: [Swift]
+- name: Honeycomb's OpenTelemetry React Native SDK distribution
+  url: https://github.com/honeycombio/honeycomb-opentelemetry-react-native
+  docsUrl: https://docs.honeycomb.io/send-data/react-native/
+  components: [React Native, Javascript]
+- name: Honeycomb's OpenTelemetry Collector Distribution
+  url: https://github.com/honeycombio/honeycomb-collector-distro
+  docsUrl: https://github.com/honeycombio/honeycomb-collector-distro/blob/main/README.md
+  components: [Collector]
+- name: KM Agent - KloudMate's Distribution of OpenTelemetry Collector
+  url: https://github.com/kloudmate/km-agent
+  docsUrl: https://github.com/kloudmate/km-agent/blob/master/README.md
   components: [Collector]
 
 # OSS Collector Distros

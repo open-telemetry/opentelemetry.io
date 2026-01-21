@@ -19,7 +19,7 @@ jobs:
     name: BUILD
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6.0.1
 
       - name: Create NPM cache-hash input file
         run: |
@@ -58,7 +58,7 @@ jobs:
         run: npm run log:build
         continue-on-error: true
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6.0.0
         with:
           name: build-artifacts
           path: |
@@ -89,8 +89,8 @@ jobs:
             # Regex to ignore English doc folders and locales a to m.
             regex: '^(..[^/]|[a-m]./)'
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/download-artifact@v6
+      - uses: actions/checkout@v6.0.1
+      - uses: actions/download-artifact@v7
         with: { name: build-artifacts }
 
       - uses: actions/setup-node@v6
@@ -103,7 +103,7 @@ jobs:
         run: |
           .github/scripts/check-links-shard.sh '${{ matrix.shard.id }}' '${{ matrix.shard.regex }}'
 
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v6.0.0
         with:
           name: refcache-${{ matrix.shard.id }}
           path: |
@@ -115,8 +115,8 @@ jobs:
     needs: check-links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/download-artifact@v6
+      - uses: actions/checkout@v6.0.1
+      - uses: actions/download-artifact@v7
         with:
           pattern: refcache-*
           path: tmp/check-refcache
@@ -129,8 +129,8 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/download-artifact@v6
+      - uses: actions/checkout@v6.0.1
+      - uses: actions/download-artifact@v7
         with: { name: build-artifacts }
       - run: cat tmp/build-log.txt
       - run: scripts/check-build-log.sh

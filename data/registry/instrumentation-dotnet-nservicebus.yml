@@ -1,4 +1,5 @@
-title: NServiceBus OpenTelemetry Integration
+# cSpell:ignore nservicebus
+title: nservicebus OpenTelemetry Integration
 registryType: instrumentation
 language: dotnet
 tags:
