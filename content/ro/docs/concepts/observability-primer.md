@@ -10,8 +10,8 @@ weight: 9
 Observabilitatea îți permite să înțelegi un sistem din exterior, oferindu-ți
 posibilitatea de a pune întrebări despre acel sistem fără a îi cunoaște
 funcționarea internă. Mai mult, aceasta îți permite să depanezi și să gestionezi
-cu ușurință probleme noi, adică „necunoscute necunoscutelor” („unknown
-unknowns”). De asemenea, te ajută să răspunzi la întrebarea „De ce se întâmplă
+cu ușurință probleme noi, adică „necunoscutele necunoscute” ("unknown
+unknowns"). De asemenea, te ajută să răspunzi la întrebarea „De ce se întâmplă
 acest lucru?”.
 
 Pentru a putea adresa aceste întrebări despre sistemul tău, aplicația trebuie să
