@@ -174,7 +174,7 @@ Additional valuable resources to review are
   places:
   - **Page front matter**: Generally preferred for one-off words that are
     unlikely to appear elsewhere. See
-    [Spell Checking](style-guide/#spell-checking).
+    [Spell Checking](/docs/contributing/style-guide/#spell-checking).
   - **Locale dictionary**: Preferred for words likely to be used across multiple
     pages in the same language, such as `.cspell/en-words.txt`.
 
