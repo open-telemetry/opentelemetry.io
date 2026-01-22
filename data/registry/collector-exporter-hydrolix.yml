@@ -1,0 +1,22 @@
+# cSpell:ignore hydrolix
+title: Hydrolix HTTP Exporter
+registryType: exporter
+language: collector
+tags:
+  - go
+  - exporter
+  - collector
+  - hydrolix
+license: Apache 2.0
+description:
+  Exports traces, metrics, and/or logs via HTTP to a Hydrolix cluster for analysis.
+authors:
+  - name: Hydrolix
+    url: https://hydrolix.io/
+urls:
+  repo: https://github.com/hydrolix/hydrolix-exporter/tree/main
+createdAt: 2026-01-22
+package:
+  name: https://github.com/hydrolix/hydrolix-exporter/tree/main/hydrolixexporter
+  registry: go-collector
+  version: v1.0.1
