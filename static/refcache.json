@@ -8515,6 +8515,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:56.641242757Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.97.0/exporter/prometheusexporter": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T12:28:15.417245958Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-releases": {
     "StatusCode": 206,
     "LastSeen": "2026-01-09T09:45:34.208346693Z"
@@ -8951,6 +8955,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-09T09:45:37.880983374Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/tree/v0.97.0/receiver/otlpreceiver": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T12:28:12.225934915Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration": {
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:48:01.349931569Z"
@@ -9279,6 +9287,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:49:11.449449267Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.AspNet-1.15.0/src/OpenTelemetry.Instrumentation.AspNet/README.md#list-of-metrics-produced": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T12:28:08.551747161Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.AspNetCore-1.11.0/src/OpenTelemetry.Instrumentation.AspNetCore/README.md#list-of-metrics-produced": {
     "StatusCode": 206,
     "LastSeen": "2026-01-09T09:46:55.75627983Z"
@@ -9290,6 +9302,10 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.AspNetCore-1.14.0/src/OpenTelemetry.Instrumentation.AspNetCore/README.md#list-of-metrics-produced": {
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:49:15.091170895Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.AspNetCore-1.15.0/src/OpenTelemetry.Instrumentation.AspNetCore/README.md#list-of-metrics-produced": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T12:28:14.562181929Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Http-1.11.0/src/OpenTelemetry.Instrumentation.Http/README.md#list-of-metrics-produced": {
     "StatusCode": 206,
@@ -9303,6 +9319,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:49:18.190083481Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Http-1.15.0/src/OpenTelemetry.Instrumentation.Http/README.md#list-of-metrics-produced": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T12:28:17.542381417Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Process-1.11.0-beta.1/src/OpenTelemetry.Instrumentation.Process/README.md#metrics": {
     "StatusCode": 206,
     "LastSeen": "2026-01-09T09:47:09.646754434Z"
@@ -9315,6 +9335,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:49:22.983808319Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Process-1.15.0-beta.1/src/OpenTelemetry.Instrumentation.Process/README.md#metrics": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T12:28:26.600070953Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Runtime-1.11.0/src/OpenTelemetry.Instrumentation.Runtime/README.md#metrics": {
     "StatusCode": 206,
     "LastSeen": "2026-01-09T09:47:02.268803315Z"
@@ -9326,6 +9350,10 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Runtime-1.14.0/src/OpenTelemetry.Instrumentation.Runtime/README.md#metrics": {
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:49:20.78071785Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Instrumentation.Runtime-1.15.0/src/OpenTelemetry.Instrumentation.Runtime/README.md#metrics": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T12:28:21.430993336Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/blob/Resources.Azure-1.0.0-beta.9/src/OpenTelemetry.Resources.Azure/README.md": {
     "StatusCode": 206,
@@ -9362,6 +9390,10 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.14.0-beta.1": {
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:49:28.212228483Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.15.0-rc.1": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T12:28:30.057053302Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src": {
     "StatusCode": 206,
@@ -9603,6 +9635,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:11.864406026Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.15.0/src/OpenTelemetry.Exporter.OpenTelemetryProtocol#environment-variables": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T12:28:06.194709649Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.15.0/src/OpenTelemetry.Exporter.Zipkin#configuration-using-environment-variables": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T12:28:25.710894551Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.5.0-rc.1/src/OpenTelemetry.Exporter.Prometheus.HttpListener": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:59.286934874Z"
@@ -9614,6 +9654,10 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.5.1/src/OpenTelemetry.Exporter.Zipkin#configuration-using-environment-variables": {
     "StatusCode": 206,
     "LastSeen": "2026-01-09T09:45:40.120347112Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet/tree/coreunstable-1.15.0-beta.1/src/OpenTelemetry.Exporter.Prometheus.HttpListener": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T12:28:20.57893524Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet/tree/main/docs/logs/correlation": {
     "StatusCode": 206,
@@ -21135,6 +21179,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-09T09:45:58.591684062Z"
   },
+  "https://www.nuget.org/packages/CoreWCF.Primitives": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-22T12:28:03.011057695Z"
+  },
   "https://www.nuget.org/packages/Elastic.Clients.Elasticsearch": {
     "StatusCode": 200,
     "LastSeen": "2026-01-09T09:45:25.721640552Z"
@@ -21198,6 +21246,10 @@
   "https://www.nuget.org/packages/MySqlConnector": {
     "StatusCode": 200,
     "LastSeen": "2026-01-09T09:46:09.551641616Z"
+  },
+  "https://www.nuget.org/packages/NLog": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-22T12:28:33.76196934Z"
   },
   "https://www.nuget.org/packages/NServiceBus": {
     "StatusCode": 200,
