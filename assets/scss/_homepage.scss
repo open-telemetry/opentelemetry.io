@@ -1,0 +1,834 @@
+// Ensure homepage SVGs have transparent backgrounds
+.td-home,
+.intro-section,
+.main-feature,
+.otel-feature,
+.signal-card {
+  img[src$='.svg'],
+  svg {
+    background: transparent !important;
+  }
+}
+
+// =============================================================================
+// HERO WITH BACKGROUND - Hero section with background image support
+// =============================================================================
+
+// Configurable overlay darkness for hero background
+:root {
+  --hero-overlay-opacity: 0.3;
+}
+
+.hero-with-bg {
+  background-image: var(--hero-bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  // Darken the background slightly for better text contrast
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, var(--hero-overlay-opacity));
+    pointer-events: none;
+  }
+
+  // Ensure content is above the overlay
+  > .col {
+    position: relative;
+    z-index: 1;
+  }
+
+  // Always use white text for contrast against background image
+  &,
+  .hero-simple,
+  .hero-simple__tagline,
+  .hero-simple__content,
+  .hero-simple__content p,
+  .hero-simple__content a,
+  .hero-simple__content li,
+  .l-primary-buttons ul li a {
+    color: $white !important;
+  }
+}
+
+// =============================================================================
+// HERO SIMPLE - Simplified hero section using Docsy's blocks/section
+// =============================================================================
+
+.hero-simple {
+  max-width: 800px;
+  margin: 0 auto;
+
+  &__logo {
+    .hero-simple__logo-img {
+      height: 120px;
+      width: auto;
+      max-width: 100%;
+
+      @include media-breakpoint-up(md) {
+        height: 144px;
+      }
+
+      @include media-breakpoint-up(lg) {
+        height: 168px;
+      }
+    }
+  }
+
+  &__tagline {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.4;
+
+    @include media-breakpoint-up(md) {
+      font-size: 1.75rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+      font-size: 2rem;
+    }
+  }
+
+  // Button list styling
+  .l-primary-buttons {
+    margin-top: 1.5rem;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      @include media-breakpoint-up(lg) {
+        gap: 1rem;
+      }
+    }
+
+    li {
+      margin: 0;
+    }
+  }
+}
+
+// =============================================================================
+// HERO TAGLINE - Tagline for compact hero (legacy, kept for compatibility)
+// =============================================================================
+
+.hero-tagline {
+  font-size: 2rem;
+  line-height: 1.3;
+  max-width: 800px;
+  margin: 2rem auto 0;
+
+  @include media-breakpoint-up(md) {
+    font-size: 2.5rem;
+    margin-top: 3rem;
+  }
+}
+
+// =============================================================================
+// HERO SEARCH - Search bar section below compact hero
+// =============================================================================
+
+// Override td-box default padding for compact search section
+.td-home section.td-box.hero-search-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.hero-search {
+  max-width: 70%;
+  margin: 0 auto;
+  text-align: center;
+
+  @include media-breakpoint-down(md) {
+    max-width: 90%;
+  }
+
+  &__input-wrapper {
+    margin-bottom: 0.125rem;
+  }
+
+  &__search {
+    width: 100%;
+
+    .td-search__input {
+      width: 100%;
+      padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+      font-size: $font-size-base;
+      border-radius: 2rem;
+      border: 2px solid $border-color;
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+      &:focus {
+        border-color: $primary;
+        box-shadow: 0 0 0 3px rgba($primary, 0.15);
+      }
+    }
+
+    .td-search__icon {
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  &__extra {
+    font-size: $font-size-sm;
+    color: $text-muted;
+
+    a {
+      color: $primary;
+    }
+  }
+}
+
+// =============================================================================
+// INTRO SECTION - What is OpenTelemetry description
+// =============================================================================
+
+.intro-section {
+  padding: 2.5rem 0;
+}
+
+.intro-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .intro-text {
+    p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+
+      @include media-breakpoint-up(md) {
+        font-size: 1.2rem;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .intro-image {
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      max-height: 350px;
+      border-radius: var(--bs-border-radius-lg);
+    }
+  }
+}
+
+// =============================================================================
+// MAIN FEATURES - Three key features with images (like K8s)
+// =============================================================================
+
+.td-default main section.main-features-section {
+  padding: 0;
+  // Full bleed
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+}
+
+.main-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.main-feature-wrapper {
+  padding: 2.5rem 1rem;
+
+  // Alternating backgrounds
+  &:nth-child(odd) {
+    background: $light;
+  }
+
+  &:nth-child(even) {
+    background: $white;
+  }
+}
+
+.main-feature {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @include media-breakpoint-up(lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+
+  &--image-right {
+    @include media-breakpoint-up(lg) {
+      .main-feature__image {
+        order: 2;
+      }
+      .main-feature__content {
+        order: 1;
+      }
+    }
+  }
+
+  &__image {
+    text-align: center;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: contain;
+      border-radius: var(--bs-border-radius-lg);
+    }
+  }
+
+  &__placeholder {
+    background: rgba(0, 0, 0, 0.05);
+    border: 2px dashed $border-color;
+    border-radius: 8px;
+    padding: 4rem 2rem;
+    color: $text-muted;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+  }
+
+  &__title {
+    font-size: $h4-font-size;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.75rem;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__description {
+    font-size: 1.2rem;
+    line-height: 1.7;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// =============================================================================
+// SIGNALS SHOWCASE - Four observability signals
+// =============================================================================
+
+.signals-showcase-section {
+  background: $white;
+  color: $body-color;
+  padding: 1rem 0; // Reduced vertical padding
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.signals-showcase {
+  &__title {
+    text-align: center;
+    font-size: $h2-font-size;
+    margin-bottom: 2rem;
+    color: $body-color;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+
+    @include media-breakpoint-down(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.signal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  background: transparent;
+  border-radius: 8px;
+  text-decoration: none;
+  color: $body-color;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    color: $primary;
+    text-decoration: none;
+  }
+
+  &__icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: $primary;
+  }
+
+  &__img {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+    border-radius: var(--bs-border-radius-lg);
+  }
+
+  &__name {
+    font-size: 1.6rem;
+    font-weight: $font-weight-bold;
+  }
+
+  &__description {
+    font-size: 1rem;
+    opacity: 0.6;
+    margin-top: 0.125rem;
+  }
+}
+
+// =============================================================================
+// OTEL FEATURES GRID - "Why OpenTelemetry?" section
+// =============================================================================
+
+.otel-features-section {
+  padding: 3rem 0;
+}
+
+.otel-features {
+  display: grid;
+  gap: 1.5rem 2rem;
+  margin-top: 1.5rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1rem;
+
+  // Default: 3 columns on desktop
+  &--cols-3 {
+    @include media-breakpoint-up(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include media-breakpoint-only(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  // Alternative: 2 columns
+  &--cols-2 {
+    @include media-breakpoint-up(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__title {
+    font-size: $h2-font-size;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  &__subtitle {
+    font-size: $lead-font-size;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+  }
+}
+
+.otel-feature {
+  text-align: center;
+  padding: 1rem;
+
+  &__icon {
+    font-size: 128px;
+    margin-bottom: 1.5rem;
+    color: $primary;
+    display: flex;
+    justify-content: center;
+
+    svg {
+      width: 128px;
+      height: 128px;
+      fill: currentColor;
+    }
+
+    i {
+      font-size: 128px;
+    }
+  }
+
+  &__img {
+    width: 128px;
+    height: 128px;
+    object-fit: contain;
+    border-radius: var(--bs-border-radius-lg);
+    margin-bottom: 1.5rem;
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.5rem;
+    text-align: center;
+
+    a {
+      color: var(--bs-link-color);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--bs-link-hover-color);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.8;
+    text-align: center;
+  }
+}
+
+// =============================================================================
+// ECOSYSTEM STATS - Key numbers display
+// =============================================================================
+
+.ecosystem-stats-section {
+  padding: 3rem 0;
+}
+
+.ecosystem-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @include media-breakpoint-down(md) {
+    gap: 2rem;
+  }
+}
+
+.ecosystem-stat {
+  text-align: center;
+  min-width: 120px;
+
+  &__number {
+    font-size: 3rem;
+    font-weight: $font-weight-bold;
+    line-height: 1;
+    color: $body-color;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+
+    @include media-breakpoint-down(md) {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__label {
+    font-size: $font-size-base;
+    margin-top: 0.5rem;
+    opacity: 0.7;
+  }
+}
+
+// =============================================================================
+// ARCHITECTURE DIAGRAM - Visual data flow
+// =============================================================================
+
+.architecture-diagram {
+  padding: 2rem 0;
+  text-align: center;
+
+  &__container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  &__title {
+    font-size: $h3-font-size;
+    margin-bottom: 1.5rem;
+  }
+
+  // For inline SVG diagrams
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  // For Mermaid diagrams
+  .mermaid {
+    background: transparent;
+  }
+}
+
+// =============================================================================
+// ADOPTERS SHOWCASE - Company logo grid
+// =============================================================================
+
+.adopters-showcase-section {
+  padding: 3rem 0;
+}
+
+.adopters-showcase {
+  &__title {
+    text-align: center;
+    font-size: $h2-font-size;
+    margin-bottom: 2rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2.5rem 3rem;
+    align-items: center;
+    justify-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+
+    @include media-breakpoint-down(lg) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem 2.5rem;
+    }
+
+    @include media-breakpoint-down(md) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem 2rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    img {
+      object-fit: contain;
+      transition: all 0.2s ease;
+    }
+  }
+
+  // Text-only adopter display (when logos aren't available)
+  &__item--text {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    color: $text-muted;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__cta {
+    text-align: center;
+    margin-top: 2rem;
+  }
+}
+
+// =============================================================================
+// CNCF SECTION - White links for contrast on secondary background
+// =============================================================================
+
+.cncf {
+  a {
+    color: $white !important;
+    text-decoration: underline;
+
+    &:hover {
+      color: rgba($white, 0.85) !important;
+    }
+  }
+}
+
+// =============================================================================
+// DARK MODE ADJUSTMENTS
+// =============================================================================
+
+@include color-mode(dark) {
+  // Hero search section - td-box--light needs explicit background in dark mode
+  // Use slightly lighter background like ecosystem stats section
+  .hero-search-section {
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .hero-search__search .td-search__input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: $white;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    &:focus {
+      border-color: lighten($primary, 15%);
+      box-shadow: 0 0 0 3px rgba($primary, 0.25);
+    }
+  }
+
+  // Main features section dark mode (no td-box)
+  .main-feature-wrapper {
+    &:nth-child(odd) {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    &:nth-child(even) {
+      background: var(--bs-body-bg);
+    }
+  }
+
+  .main-feature__title {
+    color: $white;
+  }
+
+  .main-feature__description {
+    color: rgba($white, 0.85);
+    opacity: 1;
+  }
+
+  .intro-content .intro-text p {
+    color: rgba($white, 0.9);
+  }
+
+  // Signals section dark mode (no td-box, needs background override)
+  .signals-showcase-section {
+    background: var(--bs-body-bg);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .signals-showcase__title {
+    color: $white;
+  }
+
+  .signal-card {
+    color: $white;
+
+    &:hover {
+      color: lighten($primary, 20%);
+    }
+  }
+
+  .signal-card__description {
+    color: rgba($white, 0.7);
+  }
+
+  .otel-feature__icon {
+    color: lighten($primary, 15%);
+  }
+
+  .otel-feature__description {
+    color: rgba($white, 0.8);
+    opacity: 1;
+  }
+
+  // Ecosystem stats dark mode - td-box--light needs explicit overrides
+  // Use slightly lighter background like alternating feature blocks
+  .ecosystem-stats-section {
+    background: rgba(255, 255, 255, 0.03);
+
+    h2 {
+      color: $white;
+    }
+  }
+
+  .ecosystem-stat__number {
+    color: $white;
+
+    a {
+      color: $white;
+
+      &:hover {
+        color: lighten($primary, 20%);
+      }
+    }
+  }
+
+  .ecosystem-stat__label {
+    color: rgba($white, 0.7);
+  }
+
+  .adopters-showcase__item img {
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .adopters-showcase__item--text {
+    color: rgba($white, 0.7);
+
+    &:hover {
+      color: lighten($primary, 15%);
+    }
+  }
+}
