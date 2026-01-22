@@ -22,7 +22,7 @@ learn more about zero-code observability using eBPF.
 Here's an overview of our priorities for 2026 and the key contributors
 supporting each initiative.
 
-### Stable 1.0 Release
+### Stable 1.0 release
 
 - Tracking Issue:
   [#1133](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1133)
@@ -48,7 +48,7 @@ versioning documentation, and achieving our targeted test coverage thresholds.
 These investments ensure OBI can be confidently deployed in production
 environments where reliability and stability are paramount.
 
-### Expanding Protocol Support
+### Expanding protocol support
 
 - Tracking Issue:
   [#1134](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1134)
@@ -83,8 +83,8 @@ support. Early testing shows promising results with .NET 9 and later versions,
 and we're focused on expanding and validating this support across the .NET
 ecosystem.
 
-Our work includes determining the supported version range—both modern .NET
-(versions 8+) and .NET Framework (versions 4.x and 3.5 SP1)—and ensuring context
+Our work includes determining the supported version range, both modern .NET
+(versions 8+) and .NET Framework (versions 4.x and 3.5 SP1), and ensuring context
 propagation works reliably across all supported versions. We're building
 comprehensive integration tests to validate distributed tracing and RED metrics
 (Rate, Errors, Duration) collection, ensuring .NET applications receive the same
@@ -94,7 +94,7 @@ This expansion is particularly important for enterprises with significant .NET
 investments, providing them with zero-code observability that integrates
 seamlessly with their existing OpenTelemetry infrastructure.
 
-### Hybrid Instrumentation with OTel APIs/SDKs
+### Hybrid instrumentation with OTel APIs/SDKs
 
 - Tracking Issue:
   [#1140](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1140)
@@ -117,7 +117,7 @@ observability: teams can start with zero-code eBPF instrumentation for immediate
 visibility, then add manual instrumentation for business-specific insights
 without needing to choose one approach over the other.
 
-### Additional Focus Areas
+### Additional focus areas
 
 Beyond these four major goals, we're also prioritizing several supporting
 initiatives that strengthen OBI's integration with the broader OpenTelemetry
@@ -134,7 +134,7 @@ for unified observability, and providing
 directly from OBI. For the complete list of 2026 goals, check out our
 [full roadmap](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues?q=is%3Aissue+is%3Aopen+label%3A%22goal%3A+2026%22).
 
-## Join the Conversation
+## Join the conversation
 
 These goals represent our priorities based on community feedback and project
 maturity. We'd love to hear whether these areas address your use cases or if you
