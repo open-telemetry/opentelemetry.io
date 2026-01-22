@@ -173,7 +173,7 @@ Additional valuable resources to review are
 - Words unknown to cSpell can be added to the ignore list in one of three
   places:
   - **Page front matter**: Generally preferred for one-off words that are
-    unlikely to appear elsewhere. See [Spell Checking].
+    unlikely to appear elsewhere. See [Spell Checking][].
   - **Locale dictionary**: Preferred for words likely to be used across multiple
     pages in the same language, such as `.cspell/en-words.txt`.
   - **Global dictionary**: The main cSpell dictionary, located in `.cspell.yml`.
