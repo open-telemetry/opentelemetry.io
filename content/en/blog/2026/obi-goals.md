@@ -84,8 +84,8 @@ and we're focused on expanding and validating this support across the .NET
 ecosystem.
 
 Our work includes determining the supported version range, both modern .NET
-(versions 8+) and .NET Framework (versions 4.x and 3.5 SP1), and ensuring context
-propagation works reliably across all supported versions. We're building
+(versions 8+) and .NET Framework (versions 4.x and 3.5 SP1), and ensuring
+context propagation works reliably across all supported versions. We're building
 comprehensive integration tests to validate distributed tracing and RED metrics
 (Rate, Errors, Duration) collection, ensuring .NET applications receive the same
 level of observability as other supported languages.
