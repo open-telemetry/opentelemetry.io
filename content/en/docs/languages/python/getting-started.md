@@ -18,6 +18,13 @@ Ensure that you have the following installed locally:
 
 - [Python 3](https://www.python.org/)
 
+{{% alert title="Note" color="info" %}}
+
+On Windows, Python is typically invoked using `python` rather than `python3`.
+The following examples show the correct commands for your operating system.
+
+{{% /alert %}}
+
 ## Example Application
 
 The following example uses a basic [Flask](https://flask.palletsprojects.com/)
@@ -48,15 +55,6 @@ mkdir otel-getting-started
 cd otel-getting-started
 python -m venv venv
 .\venv\Scripts\Activate.ps1
-```
-
-{{% /tab %}} {{% tab "Windows (cmd)" %}}
-
-```cmd
-mkdir otel-getting-started
-cd otel-getting-started
-python -m venv venv
-venv\Scripts\activate.bat
 ```
 
 {{% /tab %}} {{< /tabpane >}}
@@ -152,18 +150,6 @@ opentelemetry-instrument `
     --metrics_exporter console `
     --logs_exporter console `
     --service_name dice-server `
-    flask run -p 8080
-```
-
-{{% /tab %}} {{% tab "Windows (cmd)" %}}
-
-```cmd
-set OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
-opentelemetry-instrument ^
-    --traces_exporter console ^
-    --metrics_exporter console ^
-    --logs_exporter console ^
-    --service_name dice-server ^
     flask run -p 8080
 ```
 
@@ -399,18 +385,6 @@ opentelemetry-instrument `
     flask run -p 8080
 ```
 
-{{% /tab %}} {{% tab "Windows (cmd)" %}}
-
-```cmd
-set OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
-opentelemetry-instrument ^
-    --traces_exporter console ^
-    --metrics_exporter console ^
-    --logs_exporter console ^
-    --service_name dice-server ^
-    flask run -p 8080
-```
-
 {{% /tab %}} {{< /tabpane >}}
 
 When you send a request to the server, you'll see two spans in the trace emitted
@@ -571,18 +545,6 @@ opentelemetry-instrument `
     --metrics_exporter console `
     --logs_exporter console `
     --service_name dice-server `
-    flask run -p 8080
-```
-
-{{% /tab %}} {{% tab "Windows (cmd)" %}}
-
-```cmd
-set OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
-opentelemetry-instrument ^
-    --traces_exporter console ^
-    --metrics_exporter console ^
-    --logs_exporter console ^
-    --service_name dice-server ^
     flask run -p 8080
 ```
 
@@ -813,15 +775,6 @@ docker run -p 4317:4317 `
     --config=/etc/otel-collector-config.yaml
 ```
 
-{{% /tab %}} {{% tab "Windows (cmd)" %}}
-
-```cmd
-docker run -p 4317:4317 ^
-    -v %TEMP%\otel-collector-config.yaml:/etc/otel-collector-config.yaml ^
-    otel/opentelemetry-collector:latest ^
-    --config=/etc/otel-collector-config.yaml
-```
-
 {{% /tab %}} {{< /tabpane >}}
 
 You will now have an collector instance running locally, listening on port 4317.
@@ -855,13 +808,6 @@ opentelemetry-instrument --logs_exporter otlp flask run -p 8080
 
 ```powershell
 $env:OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED="true"
-opentelemetry-instrument --logs_exporter otlp flask run -p 8080
-```
-
-{{% /tab %}} {{% tab "Windows (cmd)" %}}
-
-```cmd
-set OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument --logs_exporter otlp flask run -p 8080
 ```
 
