@@ -5563,6 +5563,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-13T09:49:58.728861111Z"
   },
+  "https://github.com/hydrolix/hydrolix-exporter/tree/main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T14:34:16.436559-08:00"
+  },
   "https://github.com/i-am-bee": {
     "StatusCode": 206,
     "LastSeen": "2026-01-13T09:46:59.616831442Z"
@@ -15563,6 +15567,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-14T09:50:32.983872078Z"
   },
+  "https://hydrolix.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-22T14:34:19.454532-08:00"
+  },
   "https://hyper.rs/": {
     "StatusCode": 200,
     "LastSeen": "2026-01-10T09:40:15.547778829Z"
@@ -18814,6 +18822,10 @@
   "https://pkg.go.dev/gorm.io/plugin/opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2026-01-14T09:51:25.793530544Z"
+  },
+  "https://pkg.go.dev/https://github.com/hydrolix/hydrolix-exporter/tree/main/hydrolixexporter": {
+    "StatusCode": 400,
+    "LastSeen": "2026-01-22T14:35:10.855147-08:00"
   },
   "https://pkg.go.dev/k8s.io/api@v0.31.3/core/v1#NamespacePhase": {
     "StatusCode": 200,
