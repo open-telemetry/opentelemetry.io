@@ -66,13 +66,14 @@ of users with a relatively small deployment size (<100 collectors), and about
 half of the users with large deployment sizes (>100 collectors), use both k8s
 and VM.
 
-[image1](collectors_in_production_2024_2025.png)
+![image1](collectors_in_production_2024_2025.png)
 
-[image2](collectors_in_prod_2025.png)
-[image3](collector_deployment_location.png) _Deployment location with _ implies
-significance at 90% confidence level
+![image2](collectors_in_prod_2025.png)
+![image3](collector_deployment_location.png) 
 
-[image4](k8s_vm_deployment_2025.png)
+Deployment location with * implies significance at 90% confidence level
+
+![image4](k8s_vm_deployment_2025.png)
 
 ### Usages/Deployment Scenarios
 
@@ -80,7 +81,8 @@ The Kubernetes usage scenarios show a similar trend to last year's survey; 58%
 (-7%) gateway, 50% (-2%) daemonset, 23% (-1%) sidecar, and 14% (+1%)
 statefulset. These percentage differences are negligible.
 
-[image5](k8s_scenarios.png) [table1](k8s_scenario_table.png)
+![image5](K8s_scenarios.png) 
+![table1](k8s_scenario_table.png)
 
 ### Customization and Configuration
 
@@ -93,8 +95,8 @@ It is also important to note that only 39% of the respondents confidently agreed
 that the Collector Builder is easy to use, leaving 61% saying either neutral or
 hard to use (signaling a lot of room for improvement).
 
-[image6](build_own_collector.png) [image7](otel_use_collector_builder_n55.png)
-[image8](use_otel_collector_builder.png)
+![image6](build_own_collector.png) ![image7](otel_use_collector_builder_n55.png)
+![image8](use_otel_collector_builder.png)
 
 ### Monitoring and Observability
 
@@ -106,9 +108,9 @@ commonly collected telemetry. Furthermore, we checked if the number of
 collectors informs the type of telemetry monitored. We found that 100+
 collectors certainly collect metrics and minimal traces.
 
-[image9](monitor_collector_using_internals.png)
-[image10](collector_telemetry_types.png)
-[image11](collectors_vs_telemetry_types.png)
+![image9](monitor_collector_using_internals.png)
+![image10](collector_telemetry_types.png)
+![image11](collectors_vs_telemetry_types.png)
 
 ### OTel Component Usages
 
@@ -126,8 +128,8 @@ significantly at 90% confidence level:
 - **Connectors** : Routingconnector and datadogconnector increased.
 - **Extensions** : Storage, zpages, and filestorage increased.
 
-[image12](exporters.png) [image13](receivers.png) [image14](processors.png)
-[image15](connectors.png) [image16](extensions.png)
+![image12](exporters.png) ![image13](receivers.png) ![image14](processors.png)
+![image15](connectors.png) ![image16](extensions.png)
 
 ## Area for Improvement
 
@@ -139,7 +141,7 @@ receivers or exporters.
 **Note**: _We cannot directly compare the 2024 results with the 2025 results for
 this question because they were asked differently._
 
-[image17](collector_improvment_request.png)
+![image17](collector_improvment_request.png)
 
 In more detail, the users expressed their suggestions on what should be improved
 in words:
