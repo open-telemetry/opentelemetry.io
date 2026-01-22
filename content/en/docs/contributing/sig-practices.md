@@ -170,11 +170,11 @@ Additional valuable resources to review are
   by mistake in one of their commits, ask them to fix the issue or rebase the
   pull request. Worst case scenario, close and re-open the PR to trigger a new
   CLA check.
-- Words unknown to cspell can be added to the ignore list in two places:
+- Words unknown to cSpell can be added to the ignore list in one of three places:
   - **Page front matter**: Generally preferred for one-off words that are
     unlikely to appear elsewhere (e.g., `cSpell:ignore word1 word2`).
   - **Locale dictionary**: Preferred for words likely to be used across multiple
-    pages in the same language (e.g., `.cspell/en-words.txt`).
+    pages in the same language, such as `.cspell/en-words.txt`.
 
   Reviewers and approvers can determine if the placement is appropriate during
   the review process.
