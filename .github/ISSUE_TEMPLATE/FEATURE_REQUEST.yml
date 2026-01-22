@@ -1,6 +1,6 @@
-name: Website Feature Request
-description: For things we should add or change on the site.
-title: '[Feature]: '
+name: Website feature request
+description: Something new you'd like to see on the site.
+title: 'feat: '
 type: feature
 body:
   - type: textarea
@@ -8,7 +8,7 @@ body:
     attributes:
       label: Desired feature or idea
       description: What would you like to see happen?
-      placeholder: Briefly describe the feature or change.
+      placeholder: Briefly describe the feature.
     validations:
       required: true
 
@@ -23,9 +23,8 @@ body:
 
   - type: markdown
     attributes:
-      value: |
+      value: >-
         <sub>[React](https://github.blog/news-insights/product-news/add-reactions-to-pull-requests-issues-and-comments/)
-        with 👍 to help prioritize this issue. Please use comments to provide
-        useful context, avoiding `+1` or `me too`, to help us triage it. Learn
-        more
-        [here](https://opentelemetry.io/community/end-user/issue-participation/).</sub>
+        with 👍 to help prioritize this issue. Use comments to provide useful
+        context, avoid `+1` or `me too`, to help us triage it. [Learn
+        more](https://opentelemetry.io/community/end-user/issue-participation/).</sub>

@@ -37,9 +37,10 @@ availability zones, from the application point of view.
 - To enable it, add the `network` option to the
   [OTEL_EBPF_METRICS_FEATURES](../configure/export-data/) configuration option.
 
-{{< alert type="note" >}} The metrics are captured from the host perspective, so
-they include the overhead of the network stack (protocol headers, etc.).
-{{< /alert >}}
+> [!NOTE]
+>
+> The metrics are captured from the host perspective, so they include the
+> overhead of the network stack (protocol headers, etc.).
 
 ## Metric attributes
 
