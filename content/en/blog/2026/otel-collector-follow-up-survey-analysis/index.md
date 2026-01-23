@@ -3,16 +3,13 @@ title: OpenTelemetry Collector Follow up Survey
 linkTitle: OTel Collector Survey
 date: 2026-01-22
 author: >-
-  "[Ernest Owojori](https://github.com/E-STAT) (Organization Name 1), [Victoria
-  Nduka](https://github.com/nwanduka) (Organization Name X), [Pablo Baeyens](https://github.com/) (DataDog), [Andrej Kiripolsky](https://github.com/) (Grafana Labs)"
+  "[Ernest Owojori](https://github.com/E-STAT), [Victoria
+  Nduka](https://github.com/nwanduka), [Pablo Baeyens](https://github.com/mx-psi) (DataDog), [Andrej Kiripolsky](https://github.com/andrejkiri) (Grafana Labs)"
 
 issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
 sig: End User
 ---
 
-<!-- If your post doesn't have secondary authors, then delete the following paragraph: -->
-
-With contributions from secondary-author-name-1, ..., and secondary-author-n.
 
 In 2024, the End User SIG conducted a
 [Collector Survey](https://opentelemetry.io/blog/2024/otel-collector-survey/) to
