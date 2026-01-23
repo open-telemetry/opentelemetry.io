@@ -57,6 +57,12 @@ we will help you find the right channel.
 
 <a href="https://communityinviter.com/apps/cloud-native/cncf" target="_blank" rel="noopener noreferrer"><button style="background-color:#1e5eb8;color:#f0f6fc;border:none;padding:6px 14px;border-radius:6px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;"><img src="/img/slack-logo.svg" alt="Slack" style="width:16px;height:16px;">Join CNCF Slack</button></a>
 
+<a href="https://communityinviter.com/apps/cloud-native/cncf " target="_blank" rel="noopener noreferrer"><button style=" background-color:#1e5eb8;color:#f0f6fc;border:none;padding:6px 14px;border-radius:6px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;"><img src="/img/slack-logo.svg" alt="Slack" style="width:16px;height:16px;background:white;padding:2px;border-radius:2px;">Join CNCF Slack</button>
+</a>
+
+<a href="https://communityinviter.com/apps/cloud-native/cncf" target="_blank" rel="noopener noreferrer"><button style="background-color:#1e5eb8;color:#f0f6fc;border:none;padding:6px 14px;border-radius:6px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;">
+<img src="/img/slack-logo.svg" alt="Slack" style="width:16px;height:16px;filter:brightness(0) invert(1);">Join CNCF Slack</button></a>
+
 <!--➡️ TODO: Turn link to a button -->
 
 ## Respond to a survey {#survey}
