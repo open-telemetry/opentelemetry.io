@@ -6,7 +6,7 @@ author: >-
   "[Ernest Owojori](https://github.com/E-STAT), [Victoria
   Nduka](https://github.com/nwanduka), [Pablo Baeyens](https://github.com/mx-psi) (DataDog), [Andrej Kiripolsky](https://github.com/andrejkiri) (Grafana Labs)"
 
-issue: the issue ID for this blog post # TODO: See https://opentelemetry.io/docs/contributing/blog/ for details
+issue: 8985 
 sig: End User
 ---
 
