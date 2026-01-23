@@ -1,0 +1,33 @@
+{{- $color := .Get "color" | default "white" -}}
+{{- $placeholder := .Get "placeholder" | default (T "ui_search") -}}
+
+<div><a id="td-block-hero-search-{{ .Ordinal }}" class="td-offset-anchor"></a></div>
+<section class="row td-box td-box--{{ $color }} hero-search-section">
+  <div class="col-12">
+    <div class="container">
+      <div class="hero-search">
+        <div class="hero-search__input-wrapper">
+          <div class="td-search hero-search__search">
+            <div class="td-search__icon"></div>
+            <input
+              type="search"
+              data-bs-toggle="popover"
+              data-bs-trigger="focus"
+              data-bs-html="true"
+              data-bs-content='{{ T "ui_search_ai_popover_content" }}'
+              class="td-search__input form-control td-search-input"
+              placeholder="{{ $placeholder }}"
+              aria-label="{{ $placeholder }}"
+              autocomplete="off">
+          </div>
+        </div>
+        {{ with .Inner }}
+        <div class="hero-search__extra">
+          {{ . | markdownify }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
