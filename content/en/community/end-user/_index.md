@@ -55,7 +55,7 @@ Not sure where to ask? Post to
 [#otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ), and
 we will help you find the right channel.
 
-<a href="https://communityinviter.com/apps/cloud-native/cncf" target="_blank" rel="noopener noreferrer" style="background-color:#1e5eb8;color:#f0f6fc;border:none;padding:6px 10px;border-radius:6px;font-weight:600;cursor:pointer;display:inline-flex;align-items:center;gap:8px;text-decoration:none;width:fit-content;"><img src="/img/slack-logo.svg" alt="Slack" style="width:16px;height:16px;filter:brightness(0) invert(1);">Join CNCF Slack</a>
+<a href="https://communityinviter.com/apps/cloud-native/cncf" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background-color:#1e5eb8;color:#f0f6fc;border:none;padding:8px 16px;border-radius:6px;font-weight:600;cursor:pointer;text-decoration:none;"><img src="/img/slack-logo.svg" alt="Slack" style="width:18px;height:18px;filter:brightness(0) invert(1);flex-shrink:0;"><span>Join CNCF Slack</span></a>
 
 <!--➡️ TODO: Turn link to a button -->
 
