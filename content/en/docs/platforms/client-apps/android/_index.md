@@ -5,7 +5,7 @@ description: >-
 weight: 10
 cascade:
   vers:
-    instrumentation: 1.0.1
+    ot-android: 1.0.1
 cSpell:ignore: contentful inactivity jank
 ---
 
@@ -49,7 +49,7 @@ Add the OpenTelemetry Android Agent dependency to your app-level
 
 ```kotlin
 dependencies {
-    implementation(platform("io.opentelemetry.android:opentelemetry-android-bom:{{% param vers.instrumentation %}}"))
+    implementation(platform("io.opentelemetry.android:opentelemetry-android-bom:{{% param vers.ot-android %}}"))
     implementation("io.opentelemetry.android:android-agent")
 }
 ```
