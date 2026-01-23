@@ -30,7 +30,7 @@ before you. Giving a thumbs up or sharing more context in a comment is exactly
 what we’re looking for. Are you the first person who bumped into this problem?
 File an issue in one of our repositories.
 
-<a href="https://communityinviter.com/apps/cloud-native/cncf" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background-color:#1e5eb8;color:#f0f6fc;border:none;padding:8px 16px;border-radius:6px;font-weight:600;cursor:pointer;text-decoration:none;"><img src="/img/slack-logo.svg" alt="Slack" style="width:18px;height:18px;filter:brightness(0) invert(1);flex-shrink:0;"><span>Join CNCF Slack</span></a>
+<a href="https://github.com/orgs/open-telemetry/projects" target="_blank" rel="noopener noreferrer"><button style="background-color:#1e5eb8;color:#f0f6fc;border:none;padding:6px 14px;border-radius:6px;font-weight:600;cursor:pointer;">Review Issues</button></a>
 
 <!--➡️ TODO: Add a CTA "Review issues" linking to a list of projects in OTel org ) -->
 
@@ -55,7 +55,7 @@ Not sure where to ask? Post to
 [#otel-sig-end-user](https://cloud-native.slack.com/archives/C01RT3MSWGZ), and
 we will help you find the right channel.
 
-<a href="https://communityinviter.com/apps/cloud-native/cncf" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;background-color:#1e5eb8;color:#f0f6fc;border:none;padding:8px 16px;border-radius:6px;font-weight:600;cursor:pointer;text-decoration:none;"><img src="/img/slack-logo.svg" alt="Slack" style="width:18px;height:18px;filter:brightness(0) invert(1);flex-shrink:0;"><span>Join CNCF Slack</span></a>
+<a href="https://communityinviter.com/apps/cloud-native/cncf" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:inline-block;">  <button style="background-color:#1e5eb8;color:#f0f6fc;border:none;padding:6px 12px;border-radius:6px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;"><span style="order:1;">Join CNCF Slack</span><img src="/img/slack-logo.svg" alt="Slack" style="width:16px;height:16px;order:2;"></button></a>
 
 <!--➡️ TODO: Turn link to a button -->
 
