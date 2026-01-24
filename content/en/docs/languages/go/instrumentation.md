@@ -296,52 +296,70 @@ After configuring context propagation, you'll most likely want to use automatic
 instrumentation to handle the behind-the-scenes work of actually managing
 serializing the context.
 
-## Migrating from OpenTracing to OpenTelemetry
+### Migrating from OpenTracing
 
 If your codebase (or libraries you depend on) are still instrumented with OpenTracing, you can migrate incrementally by:
-1) installing OpenTelemetry SDK,
-2) wiring the OpenTracing bridge (shim),
-3) progressively replacing OpenTracing instrumentation with OpenTelemetry instrumentation.
 
-For a general, vendor-neutral migration approach, see the OpenTelemetry migration guide:
-- [Migrating from OpenTracing](https://opentelemetry.io/docs/migration/opentracing/) :contentReference[oaicite:4]{index=4}
+1. Setting up the OpenTelemetry SDK (TracerProvider, exporter, resources, sampling).
+2. Wiring an OpenTracing bridge (shim) so existing OpenTracing instrumentation keeps working.
+3. Gradually replacing OpenTracing instrumentation with OpenTelemetry instrumentation.
 
-### Minimal Go example (OpenTracing API -> OpenTelemetry SDK)
+For a general, vendor-neutral migration approach, see:
+- [Migrating from OpenTracing](https://opentelemetry.io/docs/migration/opentracing/)
 
-This repository provides an OpenTracing bridge that forwards OpenTracing API calls to the OpenTelemetry SDK.
-In Go, you can create a pair of tracers using `NewTracerPair()`:
-- `BridgeTracer` implements the OpenTracing API (use it as the OpenTracing global tracer)
-- `WrapperTracer` implements the OpenTelemetry API and cooperates with the bridge
+To use the OpenTracing bridge in Go, install the required modules:
+
+```sh
+go get github.com/opentracing/opentracing-go \
+  go.opentelemetry.io/otel/bridge/opentracing
+```
+
+#### Minimal Go example (OpenTracing API -> OpenTelemetry SDK)
+
+OpenTelemetry Go provides an OpenTracing bridge that forwards OpenTracing API calls to the OpenTelemetry SDK.
+
+> Exporter configuration is omitted for brevity.
 
 ```go
-// Pseudo-code (exporter setup omitted for brevity)
+package main
 
 import (
-"github.com/opentracing/opentracing-go"
-"go.opentelemetry.io/otel"
-"go.opentelemetry.io/otel/sdk/trace"
-otelBridge "go.opentelemetry.io/otel/bridge/opentracing"
+	"context"
+
+	"github.com/opentracing/opentracing-go"
+	"go.opentelemetry.io/otel"
+	otelBridge "go.opentelemetry.io/otel/bridge/opentracing"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
 )
 
 func main() {
-// 1) Configure OpenTelemetry SDK TracerProvider (exporter, resource, sampler, etc.)
-tp := trace.NewTracerProvider(/* ... */)
+	ctx := context.Background()
 
-// 2) Create an OpenTelemetry tracer you want to use under the hood
-otelTracer := tp.Tracer("example-service")
+	// Configure the OpenTelemetry SDK TracerProvider (exporter, resource, sampler, etc.).
+	tp := sdktrace.NewTracerProvider(/* ... */)
+	defer func() { _ = tp.Shutdown(ctx) }()
 
-// 3) Create a tracer pair for bridging
-bridgeTracer, wrapperTracerProvider := otelBridge.NewTracerPair(otelTracer) // (*BridgeTracer, *WrapperTracerProvider) :contentReference[oaicite:2]{index=2}
+	// Create an OpenTelemetry tracer used under the hood by the bridge.
+	otelTracer := tp.Tracer("example-service")
 
-// 4) Register globals:
-// - OpenTracing global tracer for existing OpenTracing instrumentation
-// - OpenTelemetry TracerProvider so new OTel instrumentation cooperates with OpenTracing context
-opentracing.SetGlobalTracer(bridgeTracer)
-otel.SetTracerProvider(wrapperTracerProvider)
+	// Create the bridge OpenTracing tracer and a cooperating OpenTelemetry TracerProvider.
+	bridgeTracer, wrapperTracerProvider := otelBridge.NewTracerPair(otelTracer)
 
-/* ... */
+	// Existing OpenTracing instrumentation keeps working:
+	opentracing.SetGlobalTracer(bridgeTracer)
+
+	// New OpenTelemetry instrumentation cooperates with OpenTracing context by default:
+	otel.SetTracerProvider(wrapperTracerProvider)
+
+	// ... run your application ...
 }
 ```
+
+#### Recommended migration approach
+
+- Use the bridge to keep legacy OpenTracing instrumentation working.
+- Prefer OpenTelemetry instrumentation for new code.
+- Remove OpenTracing instrumentation and the bridge once no longer needed.
 
 ## Metrics
 
