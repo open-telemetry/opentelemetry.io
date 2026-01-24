@@ -140,13 +140,12 @@ If this check fails, review the `BUILD and CHECK LINKS` log, under the
 `npm run log:check:links` step, for any other potential issues. Ask maintainers
 for help, if you are unsure how to recover.
 
-#### Avoid external URLs for site-local links {#avoid-external-site-local-links}
+#### Always use a path for site-local links {#avoid-external-site-local-links}
 
 When linking to pages within the OpenTelemetry website, use local paths instead
-of full URLs. The build will emit a warning for links like
-`https://opentelemetry.io/docs/some-page/` that refer to site-local pages.
+of external links. The build will emit a warning if you don't.
 
-To fix this warning, replace the full URL with a local path:
+To address the build warning, replace the full URL with a local path:
 
 | ❌ Don't use                                   | ✅ Use instead     |
 | ---------------------------------------------- | ------------------ |
@@ -155,8 +154,8 @@ To fix this warning, replace the full URL with a local path:
 
 Using local paths ensures that:
 
-- Site-local pages open in the same browser tab (external links open in a new
-  tab, which is not the expected behavior for site-local navigation)
-- Localization link processing works as expected (links are automatically
-  prefixed with the appropriate language code)
+- Site-local pages open in the same browser tab: external links open in a new
+  tab, which is not the desired behavior for site-local navigation
+- Localization link processing works as expected: links are automatically
+  prefixed with the appropriate language code
 - Local paths are easier to link-check and don't unnecessarily fill the refcache
