@@ -298,14 +298,19 @@ serializing the context.
 
 ### Migrating from OpenTracing
 
-If your codebase (or libraries you depend on) are still instrumented with OpenTracing, you can migrate incrementally by:
+If your codebase (or libraries you depend on) are still instrumented with
+OpenTracing, you can migrate incrementally by:
 
-1. Setting up the OpenTelemetry SDK (TracerProvider, exporter, resources, sampling).
-2. Wiring an OpenTracing bridge (shim) so existing OpenTracing instrumentation keeps working.
-3. Gradually replacing OpenTracing instrumentation with OpenTelemetry instrumentation.
+1. Setting up the OpenTelemetry SDK (TracerProvider, exporter, resources,
+   sampling).
+2. Wiring an OpenTracing bridge (shim) so existing OpenTracing instrumentation
+   keeps working.
+3. Gradually replacing OpenTracing instrumentation with OpenTelemetry
+   instrumentation.
 
 For a general, vendor-neutral migration approach, see:
-- [Migrating from OpenTracing](https://opentelemetry.io/docs/migration/opentracing/)
+
+- [Migrating from OpenTracing](/docs/migration/opentracing/)
 
 To use the OpenTracing bridge in Go, install the required modules:
 
@@ -316,7 +321,8 @@ go get github.com/opentracing/opentracing-go \
 
 #### Minimal Go example (OpenTracing API -> OpenTelemetry SDK)
 
-OpenTelemetry Go provides an OpenTracing bridge that forwards OpenTracing API calls to the OpenTelemetry SDK.
+OpenTelemetry Go provides an OpenTracing bridge that forwards OpenTracing API
+calls to the OpenTelemetry SDK.
 
 > Exporter configuration is omitted for brevity.
 
