@@ -18,6 +18,6 @@ urls:
   repo: https://github.com/hydrolix/hydrolix-exporter/tree/main
 createdAt: 2026-01-22
 package:
-  name: https://github.com/hydrolix/hydrolix-exporter/tree/main/hydrolixexporter
+  name: github.com/hydrolix/hydrolix-exporter
   registry: go-collector
   version: v1.0.1
