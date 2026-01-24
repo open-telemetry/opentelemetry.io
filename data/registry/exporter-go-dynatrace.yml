@@ -1,0 +1,20 @@
+title: Dynatrace Metric Exporter
+registryType: exporter
+language: go
+tags:
+  - go
+  - exporter
+  - dynatrace
+  - metrics
+urls:
+  repo: https://github.com/akahenry/dynatrace-otel-exporter
+  docs: https://github.com/akahenry/dynatrace-otel-exporter/blob/main/README.md
+license: Apache 2.0
+description: A Go-based OpenTelemetry metrics exporter that sends metrics to Dynatrace via the Metrics Ingestion API.
+authors:
+  - name: Henry Avila
+    email: henrybkavila@gmail.com
+    url: https://github.com/akahenry
+createdAt: 2026-01-24
+isNative: false
+isFirstParty: false
