@@ -37,7 +37,7 @@ redirects: [{ from: /ecosystem/registry*, to: '/ecosystem/registry?' }]
 
 {{% /blocks/lead %}}
 
-{{< blocks/section color="white" type="container-lg" >}}
+{{% blocks/section color="white pb-0" type="container-lg" %}}
 
 > [!NOTE]
 >
@@ -45,6 +45,10 @@ redirects: [{ from: /ecosystem/registry*, to: '/ecosystem/registry?' }]
 > collector components, utilities, and other useful projects in the
 > OpenTelemetry ecosystem. If you are a project maintainer, you can
 > [add your project to the OpenTelemetry Registry](adding/).
+
+{{% /blocks/lead %}}
+
+{{< blocks/section color="white pt-0" type="container-lg" >}}
 
 {{< ecosystem/registry/search-form >}}
 

@@ -1,8 +1,11 @@
 agnostice
 calificatori
 colectorului
+depanezi
 deții
 dezvoltatori
+dezvoltatorii
+gestionezi
 informatica
 informatică
 interlingvistice
@@ -11,6 +14,7 @@ intervalurilor
 microservicii
 migrare
 migrezi
+nedeterministe
 nestandard
 observabilitate
 observabilitatea
@@ -18,3 +22,5 @@ observabilității
 telemetrice
 telemetrie
 tranzacţie
+urmǎrirea
+webshop
