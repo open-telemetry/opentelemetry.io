@@ -103,6 +103,11 @@ These two checks build the website and verify that all links are valid.
 To build and check links locally, run `npm run check:links`. This command also
 updates the reference cache. Push any changes to the refcache in a new commit.
 
+> [!NOTE]
+>
+> For information on warnings about site-local links, see
+> [Always use a path for site-local links](#avoid-external-site-local-links).
+
 #### Fix 404s
 
 You need to fix the URLs reported as **invalid** (HTTP status **404**), by the
@@ -145,12 +150,12 @@ for help, if you are unsure how to recover.
 When linking to pages within the OpenTelemetry website, use local paths instead
 of external links. The build will emit a warning if you don't.
 
-To address the build warning, replace the full URL with a local path:
+To address the build warning, keep only the path part of the full URL:
 
-| ❌ Don't use                                   | ✅ Use instead     |
-| ---------------------------------------------- | ------------------ |
-| `https://opentelemetry.io/docs/concepts/`      | `/docs/concepts/`  |
-| `https://www.opentelemetry.io/blog/2024/news/` | `/blog/2024/news/` |
+| ❌ Don't use                              | ✅ Use instead    |
+| ----------------------------------------- | ----------------- |
+| `https://opentelemetry.io/docs/concepts/` | `/docs/concepts/` |
+| `https://www.opentelemetry.io/blog/...`   | `/blog/...`       |
 
 Using local paths ensures that:
 
@@ -159,3 +164,15 @@ Using local paths ensures that:
 - Localization link processing works as expected: links are automatically
   prefixed with the appropriate language code
 - Local paths are easier to link-check and don't unnecessarily fill the refcache
+
+<details>
+<summary>Note to maintainers</summary>
+
+The following code enforces the link requirement described in this section:
+
+- The render-link hook that emits this warning:
+  [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
+- The script that auto-converts full URLs to local paths:
+  [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
+
+</details>
