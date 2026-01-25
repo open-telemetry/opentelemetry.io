@@ -92,6 +92,10 @@ npm run build
 
 The generated site files are under `public`.
 
+If you see an error like `failed to load modules: module
+"github.com/FortAwesome/Font-Awesome" not found`, you probably forgot running
+the [setup instructions](#local-setup) (especially `npm install`) above.
+
 ### Serve
 
 To serve the site run:
