@@ -5,7 +5,7 @@ description: Learn how to set up a development environment for this website.
 what-next: >
   You're now ready to [build](#build), [serve](#serve), and make updates to
   website files. For details on how to submit changes, see [Submitting
-  content][].
+  content][pr].
 weight: 60
 ---
 
@@ -177,4 +177,5 @@ such as (in alphabetical order):
 [nvm]:
   https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
+[pr]: ../pull-requests/
 [WSL]: https://learn.microsoft.com/en-us/windows/wsl/install
