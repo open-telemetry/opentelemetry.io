@@ -1,11 +1,10 @@
 ---
-title: Build an extension
-linkTitle: Extensions
-description: Instructions on how to build custom extensions for the Collector.
+title: 拡張機能の構築
+linkTitle: 拡張機能
+description: コレクターのカスタム拡張機能を構築する方法に関する手順。
 weight: 300
+default_lang_commit: 6a7f17450ce3edc2e4363013551ee93ba7934a5d
 ---
 
-Extensions in the OpenTelemetry Collector are components that can be added to
-the Collector to provide capabilities that are not part of the core pipelines
-(receivers, processors, exporters). Extensions can provide capabilities such as
-authentication, health checks, service discovery, and more.
+OpenTelemetryコレクターの拡張機能は、コレクターに追加可能なコンポーネントであり、コアパイプライン（レシーバー、プロセッサー、エクスポーター）の一部ではない機能を提供します。
+拡張機能では、認証、ヘルスチェック、サービスディスカバリーなどの機能を提供できます。
