@@ -177,5 +177,8 @@ such as (in alphabetical order):
 [nvm]:
   https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
-[pr]: ../pull-requests/
 [WSL]: https://learn.microsoft.com/en-us/windows/wsl/install
+
+<!-- markdownlint-disable link-image-reference-definitions -->
+
+[pr]: ../pull-requests/
