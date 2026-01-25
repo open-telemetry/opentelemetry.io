@@ -96,10 +96,10 @@ bibliotecile de instrumentație:
 
 - [Agent Java](/docs/zero-code/java/agent/extensions)
 
-## Urmǎrește instrucțiunile {#follow-the-guidelines}
+## Urmărește instrucțiunile {#follow-the-guidelines}
 
 Când utilizezi materiale promoționale ale proiectului OpenTelemetry, cum ar fi
-sigla și numele pentru distribuția ta, asigurǎ-te că respecți [Orientările de
+sigla și numele pentru distribuția ta, asigură-te că respecți [Orientările de
 marketing OpenTelemetry pentru organizațiile contribuitoare][orientări].
 
 Proiectul OpenTelemetry nu certifică distribuții în acest moment. În viitor,

@@ -1,6 +1,7 @@
 agnostice
 calificatori
 colectorului
+contribuitoare
 depanezi
 deții
 dezvoltatori
