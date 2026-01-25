@@ -100,7 +100,7 @@ bibliotecile de instrumentație:
 
 Când utilizezi materiale promoționale ale proiectului OpenTelemetry, cum ar fi
 sigla și numele pentru distribuția ta, asigură-te că respecți [Orientările de
-marketing OpenTelemetry pentru organizațiile contribuitoare][orientări].
+marketing OpenTelemetry pentru organizațiile contribuitoare][îndrumări].
 
 Proiectul OpenTelemetry nu certifică distribuții în acest moment. În viitor,
 OpenTelemetry poate certifica distribuții și parteneri similar cu proiectul
@@ -110,5 +110,5 @@ distribuției nu duce la blocarea furnizorului.
 > Orice suport pentru o distribuție provine de la autorii distribuției și nu de
 > la autorii OpenTelemetry.
 
-[instrucțiuni]:
+[îndrumări]:
   https://github.com/open-telemetry/community/blob/main/marketing-guidelines.md
