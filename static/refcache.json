@@ -3511,6 +3511,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:16.588523974Z"
   },
+  "https://github.com/E-STAT": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-26T10:54:09.037122178Z"
+  },
   "https://github.com/EzzioMoreira": {
     "StatusCode": 206,
     "LastSeen": "2026-01-16T09:44:29.01883155Z"
@@ -17390,6 +17394,10 @@
   "https://opentelemetry.devstats.cncf.io/d/9/developer-activity-counts-by-repository-group-table?orgId=1": {
     "StatusCode": 200,
     "LastSeen": "2026-01-09T09:50:23.49329677Z"
+  },
+  "https://opentelemetry.io/blog/2024/otel-collector-survey/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-26T10:54:12.345143391Z"
   },
   "https://opentracing.io": {
     "StatusCode": 206,

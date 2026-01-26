@@ -4,12 +4,13 @@ linkTitle: OTel Collector Survey
 date: 2026-01-22
 author: >-
   "[Ernest Owojori](https://github.com/E-STAT), [Victoria
-  Nduka](https://github.com/nwanduka), [Pablo Baeyens](https://github.com/mx-psi) (DataDog), [Andrej Kiripolsky](https://github.com/andrejkiri) (Grafana Labs)"
+  Nduka](https://github.com/nwanduka), [Pablo
+  Baeyens](https://github.com/mx-psi) (DataDog), [Andrej
+  Kiripolsky](https://github.com/andrejkiri) (Grafana Labs)"
 
-issue: 8985 
+issue: 8985
 sig: End User
 ---
-
 
 In 2024, the End User SIG conducted a
 [Collector Survey](https://opentelemetry.io/blog/2024/otel-collector-survey/) to
@@ -28,7 +29,7 @@ changes compared to the previous year.
   with Kubernetes remaining dominant (81%) while VM usage increased
   significantly from 33% to 51%.
 - A quarter of users with a relatively small deployment size, and about half of
-  the users with large deployment sizes, use both k8s and VM.
+  the users with large deployment sizes, use both K8s and VM.
 - An additional 13% of people now build their own collector, and 61% of OTel
   users could not admit that it’s easy to use.
 - Large organizations (>100 collectors) collect more metrics and logs. On the
@@ -58,17 +59,17 @@ Machine (VM), 18% (+7%) of Bare Metal usage. In the 2025 survey, none of the
 respondents selected HashiCorp Nomad as their preferred deployment location.
 
 The +18% in the usage of VM raised questions like what percentage (%) of VM
-users also use k8s, and what are their deployment sizes? We found that a quarter
+users also use K8s, and what are their deployment sizes? We found that a quarter
 of users with a relatively small deployment size (<100 collectors), and about
-half of the users with large deployment sizes (>100 collectors), use both k8s
+half of the users with large deployment sizes (>100 collectors), use both K8s
 and VM.
 
 ![image1](collectors_in_production_2024_2025.png)
 
 ![image2](collectors_in_prod_2025.png)
-![image3](collector_deployment_location.png) 
+![image3](collector_deployment_location.png)
 
-Deployment location with * implies significance at 90% confidence level
+Deployment location with \* implies significance at 90% confidence level
 
 ![image4](k8s_vm_deployment_2025.png)
 
@@ -78,8 +79,7 @@ The Kubernetes usage scenarios show a similar trend to last year's survey; 58%
 (-7%) gateway, 50% (-2%) daemonset, 23% (-1%) sidecar, and 14% (+1%)
 statefulset. These percentage differences are negligible.
 
-![image5](K8s_scenarios.png) 
-![table1](k8s_scenario_table.png)
+![image5](K8s_scenarios.png) ![table1](k8s_scenario_table.png)
 
 ### Customization and Configuration
 
