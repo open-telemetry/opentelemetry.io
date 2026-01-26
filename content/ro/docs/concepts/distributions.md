@@ -28,11 +28,11 @@ Personalizările dintr-o distribuție pot include:
   anumit backend sau furnizor
 - Modificări ale setărilor implicite necesare pentru un backend, furnizor sau
   utilizator final
-- Opțiuni suplimentare de ambalare care pot fi specifice furnizorului sau
+- Opțiuni suplimentare de împachetare care pot fi specifice furnizorului sau
   utilizatorului final
 - Acoperire de testare, performanță și securitate dincolo de ceea ce oferă
   OpenTelemetry
-- Capacități suplimentare dincolo de ceea ce oferă OpenTelemetry
+- Capabilități suplimentare dincolo de ceea ce oferă OpenTelemetry
 - Mai puține capacități față de ceea ce oferă OpenTelemetry
 
 Distribuțiile se încadrează, în general, în următoarele categorii:
@@ -63,7 +63,7 @@ sunt conectate în amonte la proiectul OpenTelemetry.
 
 ## Contribuție sau distribuție? {#contribution-or-distribution}
 
-Înainte de a continua să citești și să afli cum poți crea propria distribuție,
+Înainte de a continua să citești și de a învăța cum poți crea propria distribuție,
 întrebă-te dacă adăugările tale peste o componentă OpenTelemetry ar fi benefice
 pentru toată lumea și, prin urmare, ar trebui incluse în implementările de
 referință:
