@@ -176,7 +176,7 @@ service:
 You can also use `views` to update the resulting aggregation, attributes, and
 cardinality limits. For the full list of options, see the examples in the
 OpenTelemetry Configuration schema
-[repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/f4e9046682d4386ea533ef7ba6ad30a5ce4451b4/examples/kitchen-sink.yaml#L440).
+[repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/View_kitchen_sink.yaml).
 
 ### Configure internal logs
 
@@ -260,7 +260,7 @@ See the [example configuration][kitchen-sink-config] for additional options.
 Note that the `tracer_provider` section there corresponds to `traces` here.
 
 [kitchen-sink-config]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml
 
 ## Types of internal telemetry
 
