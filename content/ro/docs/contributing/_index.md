@@ -20,8 +20,8 @@ default_lang_commit: d9f9ecf7f33ab10ccb86aff881a64af2e866883f
 ## <i class='far fa-exclamation-triangle text-warning '></i> Prima contribuție? {#first-time-contributing}
 
 - **[Alege o problemă][]** cu următoarele etichete:
-- [Prima problemă bună](<{{% param _issue %}}%22good+first+issue%22>)
-- [Ajutor căutat](<{{% param _issue %}}%3A%22help+wanted%22>)
+  - [Prima problemă bună](<{{% param _issue %}}%22good+first+issue%22>)
+  - [Ajutor căutat](<{{% param _issue %}}%3A%22help+wanted%22>)
 
   > [!AVERTISMENT] Nu atribuim probleme
   >
@@ -62,7 +62,7 @@ Contribuitorii la documentația OpenTelemetry:
 
 - Îmbunătățesc conținutul existent sau creeazǎ conținut nou
 - [Trimit o postare pe blog](blog/) sau un studiu de caz
-- Adăugǎ sau actualizeazǎ [registrul OpenTelemetry](/ecosystem/registry/)
+- Adaugǎ sau actualizeazǎ [registrul OpenTelemetry](/ecosystem/registry/)
 - Îmbunătățesc codul care construiește site-ul
 
 Paginile din această secțiune descriu cum să contribui la **documentația**
