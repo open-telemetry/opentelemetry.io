@@ -2,8 +2,8 @@
 title: Despliegue en Kubernetes
 linkTitle: Kubernetes
 aliases: [kubernetes_deployment]
-cSpell:ignore: loadgen otlphttp spanmetrics
 default_lang_commit: 6bf06ddb9fc057dd6e8092f26d988ffe7b1af5ed
+cSpell:ignore: configurarlos loadgen otlphttp spanmetrics
 ---
 
 Proporcionamos un
@@ -177,8 +177,7 @@ components:
 
 Probablemente quieras usar la tienda web como aplicación de demostración para un
 backend de observabilidad que ya tienes (por ejemplo, una instancia existente de
-Jaeger, Zipkin, o uno de los
-[proveedores de tu elección](/ecosystem/vendors/)).
+Jaeger, Zipkin, o uno de los [proveedores de tu elección](/ecosystem/vendors/)).
 
 La configuración del OpenTelemetry Collector está expuesta en el chart de Helm.
 Cualquier adición que hagas se fusionará con la configuración predeterminada.

@@ -1,7 +1,7 @@
 ---
 title: Desarrollo
-cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc
 default_lang_commit: 7c112ea4147756b8234012f9316132a65a77593c
+cSpell:ignore: grpcio intellij libcurl libprotobuf nlohmann openssl protoc
 ---
 
 [Repositorio GitHub de la Demo de OpenTelemetry](https://github.com/open-telemetry/opentelemetry-demo)

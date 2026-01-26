@@ -2,8 +2,8 @@
 title: Despliegue con Docker
 linkTitle: Docker
 aliases: [docker_deployment]
-cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 default_lang_commit: 6bf06ddb9fc057dd6e8092f26d988ffe7b1af5ed
+cSpell:ignore: otlphttp spanmetrics tracetest tracetesting
 ---
 
 <!-- markdownlint-disable code-block-style ol-prefix -->

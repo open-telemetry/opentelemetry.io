@@ -2,6 +2,7 @@
 title: Hacer fork del repositorio de la demo
 linkTitle: Forking
 default_lang_commit: 5472965d7714ed898b008d41fa97561591320196
+cSpell:ignore: forkeado interfacen
 ---
 
 El [repositorio de la demo][] está diseñado para ser forkeado y usado como una

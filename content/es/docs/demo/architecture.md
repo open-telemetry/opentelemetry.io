@@ -6,7 +6,10 @@ body_class: otel-mermaid-max-width
 default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
 ---
 
-**OpenTelemetry Demo** está compuesto por microservicios escritos en diferentes lenguajes de programación que se comunican entre sí mediante gRPC y HTTP; y un generador de carga que utiliza [Locust](https://locust.io/) para simular tráfico de usuarios.
+**OpenTelemetry Demo** está compuesto por microservicios escritos en diferentes
+lenguajes de programación que se comunican entre sí mediante gRPC y HTTP; y un
+generador de carga que utiliza [Locust](https://locust.io/) para simular tráfico
+de usuarios.
 
 ```mermaid
 graph TD
@@ -139,10 +142,12 @@ classDef typescript fill:#e98516,color:black;
 Sigue estos enlaces para conocer el estado actual de la instrumentación de
 [logs](/docs/demo/telemetry-features/log-coverage/),
 [métricas](/docs/demo/telemetry-features/metric-coverage/) y
-[trazas](/docs/demo/telemetry-features/trace-coverage/) de las aplicaciones
-de la demo.
+[trazas](/docs/demo/telemetry-features/trace-coverage/) de las aplicaciones de
+la demo.
 
-El collector está configurado en [otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml), donde se pueden configurar exportadores alternativos.
+El collector está configurado en
+[otelcol-config.yml](https://github.com/open-telemetry/opentelemetry-demo/blob/main/src/otel-collector/otelcol-config.yml),
+donde se pueden configurar exportadores alternativos.
 
 ```mermaid
 graph TB

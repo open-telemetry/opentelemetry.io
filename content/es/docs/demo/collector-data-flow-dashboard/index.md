@@ -1,6 +1,7 @@
 ---
 title: Dashboard de Flujo de Datos del Collector
 default_lang_commit: b98ab730de1f866d89a065fdac22b0ae123ec10c
+cSpell:ignore: reinicios
 ---
 
 Monitorear el flujo de datos a través del OpenTelemetry Collector es crucial por
@@ -31,10 +32,10 @@ métricas) dentro del sistema.
 ## Métricas de Ingreso/Egreso
 
 Las métricas representadas en el siguiente diagrama se emplean para monitorear
-los flujos de datos tanto de egreso como de ingreso. Estas métricas
-son generadas por el proceso otelcol, exportadas en el puerto 8888 y
-posteriormente recolectadas por Prometheus. El namespace asociado con estas
-métricas es "otelcol", y el nombre del job está etiquetado como `otel.`
+los flujos de datos tanto de egreso como de ingreso. Estas métricas son
+generadas por el proceso otelcol, exportadas en el puerto 8888 y posteriormente
+recolectadas por Prometheus. El namespace asociado con estas métricas es
+"otelcol", y el nombre del job está etiquetado como `otel.`
 
 ![Métricas de Ingreso y Egreso del OpenTelemetry Collector](otelcol-data-flow-metrics.png)
 
