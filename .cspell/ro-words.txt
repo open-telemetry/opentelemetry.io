@@ -1,10 +1,12 @@
 agnostice
 calificatori
 colectorului
+contribuitoare
 depanezi
 deții
 dezvoltatori
 dezvoltatorii
+exportatorilor
 gestionezi
 informatica
 informatică
@@ -19,6 +21,7 @@ nestandard
 observabilitate
 observabilitatea
 observabilității
+receptoarelor
 telemetrice
 telemetrie
 tranzacţie
