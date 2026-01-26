@@ -10,10 +10,14 @@ author: >-
 
 issue: 8985
 sig: End User
+# prettier-ignore
+cSpell:ignore: Owojori Nduka Baeyens Kiripolsky Otlphttpexporter datadogexporter filelogreceiver sclusterreceiver Attributesprocessor transformprocessor Routingconnector datadogconnector zpages filestorage Memorylimiterprocessor statefulset Otlphttpexporter Datadogexporter lokiexporter Filelogreceiver transformprocessor Routingconnector datadogconnector spanmetrics awscloudwatchmetricsreceiver
+---
+
 ---
 
 In 2024, the End User SIG conducted a
-[Collector Survey](https://opentelemetry.io/blog/2024/otel-collector-survey/) to
+[Collector Survey](/blog/2024/otel-collector-survey/) to
 gather feedback on how the OpenTelemetry Collector is used in practice and the
 user experience. Insights from that survey informed several development and
 prioritization decisions within the community.
@@ -118,7 +122,7 @@ significantly at 90% confidence level:
 
 - **Exporters** : Otlphttpexporter and Datadogexporter increase while
   lokiexporter decreased.
-- **Recerivers** : Filelogreceiver, k8sclusterreceiver, and filereceiver
+- **Receivers** : Filelogreceiver, k8sclusterreceiver, and filereceiver
   increased
 - **Processors** : Attributesprocessor and transformprocessor increased while
   Memorylimiterprocessor reduced.
