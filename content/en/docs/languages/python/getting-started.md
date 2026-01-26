@@ -18,12 +18,10 @@ Ensure that you have the following installed locally:
 
 - [Python 3](https://www.python.org/)
 
-{{% alert title="Note" color="info" %}}
-
-On Windows, Python is typically invoked using `python` rather than `python3`.
-The following examples show the correct commands for your operating system.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> On Windows, Python is typically invoked using `python` rather than `python3`.
+> The following examples show the correct commands for your operating system.
 
 ## Example Application
 
