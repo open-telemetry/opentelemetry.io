@@ -73,6 +73,7 @@ consultǎ [Ghidul pentru noii contribuitori OpenTelemetry] al comunitǎții.
 Fiecare [repertoriu OTel][org] pentru implementări de limbaj, Colector și
 convenții are propriile ghiduri de contribuție specifice proiectului.
 
-[probleme]: probleme/
+[alege o problemă]: issues/#fixing-an-existing-issue
+[probleme]: issues/
 [Ghidul pentru noii contribuitori OpenTelemetry]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor
