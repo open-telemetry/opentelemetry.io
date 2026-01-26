@@ -122,8 +122,11 @@ common. Some servers, link LinkedIn, report 999.
 
 If you have manually validated an external link that the checker isn't getting a
 success status for, you can add the following query parameter to your URL to
-have the link checker ignore it: `?no-link-check`. For example,
-<https:/some-example.org?no-link-check> will be ignored by the link checker.
+have the link checker ignore it: `?link-check=no` or `&link-check=no` if there
+are other query parameters. For example, the following URLs will be ignored:
+
+- <https:/some-example.org?link-check=no>
+- <https:/some-example.org?other-param=value&link-check=no>
 
 > [!TIP] Maintainers tip
 >
