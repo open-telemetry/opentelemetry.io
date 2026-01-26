@@ -180,7 +180,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/2660251?v=4
   - name: Aneurysm9
     teams:
-      - opamp-go-approvers
       - operator-ta-maintainers
     html_url: https://github.com/Aneurysm9
     avatar_url: https://avatars.githubusercontent.com/u/473616?v=4
@@ -439,6 +438,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/11754898?v=4
   - name: cijothomas
     teams:
+      - arrow-approvers
+      - arrow-triagers
       - dotnet-approvers
       - dotnet-triagers
       - proto-approvers
@@ -702,6 +703,7 @@ maintainers:
       - ebpf-instrumentation-maintainers
       - go-instrumentation-approvers
       - go-instrumentation-triagers
+      - injector-approvers
     html_url: https://github.com/grcevski
     avatar_url: https://avatars.githubusercontent.com/u/6207777?v=4
   - name: hauleth
@@ -727,6 +729,7 @@ maintainers:
     teams:
       - configuration-approvers
       - configuration-maintainers
+      - injector-approvers
       - java-approvers
       - java-contrib-approvers
       - java-contrib-maintainers
@@ -927,6 +930,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/17073792?v=4
   - name: lalitb
     teams:
+      - arrow-approvers
+      - arrow-triagers
       - cpp-approvers
       - cpp-contrib-approvers
       - cpp-contrib-maintainers
@@ -2122,6 +2127,11 @@ approvers:
       - cpp-contrib-approvers
     html_url: https://github.com/maxgolov
     avatar_url: https://avatars.githubusercontent.com/u/34072974?v=4
+  - name: michel-laterman
+    teams:
+      - opamp-go-approvers
+    html_url: https://github.com/michel-laterman
+    avatar_url: https://avatars.githubusercontent.com/u/82832767?v=4
   - name: mjwolf
     teams:
       - semconv-security-approvers
