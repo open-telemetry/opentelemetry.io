@@ -5,7 +5,7 @@ description: Learn how to set up a development environment for this website.
 what-next: >
   You're now ready to [build](#build), [serve](#serve), and make updates to
   website files. For details on how to submit changes, see [Submitting
-  content][].
+  content](../pull-requests).
 weight: 60
 ---
 
@@ -91,6 +91,11 @@ npm run build
 ```
 
 The generated site files are under `public`.
+
+If you see an error like
+`failed to load modules: module "github.com/FortAwesome/Font-Awesome" not found`,
+you probably forgot running the [setup instructions](#local-setup) (especially
+`npm install`) above.
 
 ### Serve
 
