@@ -2,8 +2,8 @@
 title: Requisitos de Arquitectura
 linkTitle: Arquitectura
 aliases: [architecture_requirements]
-cSpell:ignore: dockerstatsreceiver
 default_lang_commit: ae417344d183999236c22834435e0dfeb109da29
+cSpell:ignore: dockerstatsreceiver enrutarse
 ---
 
 ## Resumen
@@ -23,10 +23,11 @@ usuarios finales, proveedores y otras partes interesadas.
 
 ### Objetivos de la Aplicación
 
-- Proporcionar a los desarrolladores una aplicación de ejemplo robusta que puedan
-  usar para aprender la instrumentación de OpenTelemetry.
-- Proporcionar a los proveedores de observabilidad una plataforma de demostración
-  única y bien soportada que puedan personalizar aún más (o simplemente usar OOB).
+- Proporcionar a los desarrolladores una aplicación de ejemplo robusta que
+  puedan usar para aprender la instrumentación de OpenTelemetry.
+- Proporcionar a los proveedores de observabilidad una plataforma de
+  demostración única y bien soportada que puedan personalizar aún más (o
+  simplemente usar OOB).
 - Proporcionar a la comunidad de OpenTelemetry un artefacto vivo que demuestre
   las características y capacidades de las APIs, SDKs y herramientas de OTel.
 - Proporcionar a los maintainers y WGs de OpenTelemetry una plataforma para
@@ -37,21 +38,22 @@ aplicación de demostración.
 
 ## Aplicación Principal
 
-La mayor parte de la aplicación de demo es una aplicación autocontenida basada en
-microservicios que realiza algún trabajo útil del 'mundo real', como un sitio de
-eCommerce. Esta aplicación está compuesta por múltiples servicios que se comunican
-entre sí mediante gRPC y HTTP y se ejecuta en Kubernetes (o Docker, localmente).
+La mayor parte de la aplicación de demo es una aplicación autocontenida basada
+en microservicios que realiza algún trabajo útil del 'mundo real', como un sitio
+de eCommerce. Esta aplicación está compuesta por múltiples servicios que se
+comunican entre sí mediante gRPC y HTTP y se ejecuta en Kubernetes (o Docker,
+localmente).
 
 Cada servicio debe estar instrumentado con OpenTelemetry para trazas, métricas y
 logs (según corresponda/esté disponible).
 
-Cada servicio debe ser intercambiable con un servicio que realice la misma lógica
-de negocio, implementando los mismos endpoints gRPC, pero escrito en un
+Cada servicio debe ser intercambiable con un servicio que realice la misma
+lógica de negocio, implementando los mismos endpoints gRPC, pero escrito en un
 lenguaje/implementación diferente.
 
 Cada servicio debe poder comunicarse con un servicio de feature flags para
-habilitar/deshabilitar fallos que se pueden usar para ilustrar cómo la telemetría
-ayuda a resolver problemas en aplicaciones distribuidas.
+habilitar/deshabilitar fallos que se pueden usar para ilustrar cómo la
+telemetría ayuda a resolver problemas en aplicaciones distribuidas.
 
 ## Componente de Feature Flags
 

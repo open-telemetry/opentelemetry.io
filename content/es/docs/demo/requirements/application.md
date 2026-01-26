@@ -11,16 +11,17 @@ para futuros SDKs:
 
 1. Cada lenguaje soportado que tenga un SDK en estado GA para Trazas o Métricas
    debe tener al menos 1 ejemplo de servicio.
-   - Soporte móvil (Swift) no es una prioridad inicial y no está incluido en
-     el requisito anterior.
+   - Soporte móvil (Swift) no es una prioridad inicial y no está incluido en el
+     requisito anterior.
 
 2. Los procesos de la aplicación deben ser independientes del lenguaje.
-   - Se prefiere gRPC donde esté disponible y se debe usar HTTP donde no lo esté.
+   - Se prefiere gRPC donde esté disponible y se debe usar HTTP donde no lo
+     esté.
 
 3. Los servicios deben estar diseñados para ser componentes modulares que se
    puedan intercambiar.
-   - Los servicios individuales pueden y deben ser incentivados a tener múltiples
-     opciones de lenguaje disponibles.
+   - Los servicios individuales pueden y deben ser incentivados a tener
+     múltiples opciones de lenguaje disponibles.
 
 4. La arquitectura debe permitir la posible integración de componentes genéricos
    de plataforma como base de datos, queue o almacenamiento de blobs.

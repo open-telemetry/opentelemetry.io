@@ -18,6 +18,7 @@ para futuros SDKs:
    (auto-instrumentación) deben demostrarse en cada lenguaje.
 5. Todos los datos deben exportarse primero al Collector.
 6. El Collector debe ser configurable para permitir una variedad de experiencias
-   de consumo, pero se deben seleccionar herramientas por defecto para cada señal.
+   de consumo, pero se deben seleccionar herramientas por defecto para cada
+   señal.
 7. La arquitectura de la aplicación de demo que utiliza el Collector debe estar
    diseñada para ser una arquitectura de referencia de mejores prácticas.

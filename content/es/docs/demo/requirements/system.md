@@ -11,5 +11,5 @@ cumpla con los siguientes requisitos del sistema:
 1. Tu sistema debe cumplir con los requisitos del sistema de
    [Docker Desktop](https://docs.docker.com/desktop) o debes usar tu Servicio
    Cloud preferido.
-2. La demo debe poder funcionar en los siguientes Sistemas Operativos (SO): Linux,
-   macOS y Windows con documentación proporcionada para cada SO.
+2. La demo debe poder funcionar en los siguientes Sistemas Operativos (SO):
+   Linux, macOS y Windows con documentación proporcionada para cada SO.
