@@ -12,6 +12,7 @@ params:
   # This is the old URL. Keeping for now. TODO: remove after 2026-08-31
   oldEventUrl: >- # This now redirects to the new URL
     https://events.linuxfoundation.org/kubecon-cloudnativecon-china/reg/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-China-2025&utm_content=slim-banner
+cSpell:ignore: lfasiallc
 ---
 
 <i class="fas fa-bullhorn"></i> [**{{% param title %}}**][LF],
