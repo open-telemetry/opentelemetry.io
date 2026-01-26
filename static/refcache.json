@@ -16807,6 +16807,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:30.629848837Z"
   },
+  "https://metoro.io/docs/metrics/custom-metrics": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-23T17:36:05.275259233Z"
+  },
   "https://metrics.dropwizard.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-01-13T09:45:48.582206858Z"
