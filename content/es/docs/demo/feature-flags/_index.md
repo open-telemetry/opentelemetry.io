@@ -5,8 +5,8 @@ aliases:
   - scenarios
   - services/feature-flag
   - services/featureflagservice
-cSpell:ignore: L9ECAV7KIM loadgenerator OLJCESPC7Z
 default_lang_commit: cb6352e01bcdbf8cc400aa663fa82d2835718e6e
+cSpell:ignore: fraccional L9ECAV7KIM loadgenerator OLJCESPC7Z
 ---
 
 La demo proporciona varios feature flags que puedes usar para simular diferentes
@@ -35,22 +35,22 @@ usuario:
 
 ## Feature flags implementados
 
-| Feature Flag                        | Servicio(s)     | Descripción                                                                                                     |
-| ----------------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------- |
-| `adServiceFailure`                  | Ad              | Genera un error para `GetAds` 1/10 de las veces                                                                 |
-| `adServiceManualGc`                 | Ad              | Dispara recolecciones de basura manuales completas en el servicio ad                                            |
-| `adServiceHighCpu`                  | Ad              | Dispara alta carga de CPU en el servicio ad. Si quieres demostrar throttling de CPU, establece límites de CPU   |
-| `cartServiceFailure`                | Cart            | Genera un error cada vez que se llama a `EmptyCart`                                                             |
-| `emailMemoryLeak`                   | Email           | Simula una fuga de memoria en el servicio `email`                                                               |
-| `llmInaccurateResponse`             | LLM             | El servicio mock LLM devuelve un resumen de reseña de producto inexacto para el ID de producto `L9ECAV7KIM`     |
-| `llmRateLimitError`                 | LLM             | El servicio mock LLM devuelve intermitentemente un RateLimitError con código de estado HTTP 429                 |
-| `productCatalogFailure`             | Product Catalog | Genera un error para solicitudes `GetProduct` con ID de producto: `OLJCESPC7Z`                                  |
-| `recommendationServiceCacheFailure` | Recommendation  | Crea una fuga de memoria debido a una caché que crece exponencialmente. Crecimiento 1.4x, 50% de solicitudes    |
-| `paymentServiceFailure`             | Payment         | Genera un error al llamar al método `charge`                                                                    |
-| `paymentServiceUnreachable`         | Checkout        | Usa una dirección incorrecta al llamar al PaymentService para que parezca que el PaymentService no está disponible |
+| Feature Flag                        | Servicio(s)     | Descripción                                                                                                          |
+| ----------------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `adServiceFailure`                  | Ad              | Genera un error para `GetAds` 1/10 de las veces                                                                      |
+| `adServiceManualGc`                 | Ad              | Dispara recolecciones de basura manuales completas en el servicio ad                                                 |
+| `adServiceHighCpu`                  | Ad              | Dispara alta carga de CPU en el servicio ad. Si quieres demostrar throttling de CPU, establece límites de CPU        |
+| `cartServiceFailure`                | Cart            | Genera un error cada vez que se llama a `EmptyCart`                                                                  |
+| `emailMemoryLeak`                   | Email           | Simula una fuga de memoria en el servicio `email`                                                                    |
+| `llmInaccurateResponse`             | LLM             | El servicio mock LLM devuelve un resumen de reseña de producto inexacto para el ID de producto `L9ECAV7KIM`          |
+| `llmRateLimitError`                 | LLM             | El servicio mock LLM devuelve intermitentemente un RateLimitError con código de estado HTTP 429                      |
+| `productCatalogFailure`             | Product Catalog | Genera un error para solicitudes `GetProduct` con ID de producto: `OLJCESPC7Z`                                       |
+| `recommendationServiceCacheFailure` | Recommendation  | Crea una fuga de memoria debido a una caché que crece exponencialmente. Crecimiento 1.4x, 50% de solicitudes         |
+| `paymentServiceFailure`             | Payment         | Genera un error al llamar al método `charge`                                                                         |
+| `paymentServiceUnreachable`         | Checkout        | Usa una dirección incorrecta al llamar al PaymentService para que parezca que el PaymentService no está disponible   |
 | `loadgeneratorFloodHomepage`        | Load Generator  | Comienza a inundar la página de inicio con una gran cantidad de solicitudes, configurable cambiando el JSON de flagd |
-| `kafkaQueueProblems`                | Kafka           | Sobrecarga la cola de Kafka mientras simultáneamente introduce un retraso del lado del consumidor               |
-| `imageSlowLoad`                     | Frontend        | Utiliza inyección de fallos de envoy, produce un retraso en la carga de imágenes de productos en el frontend    |
+| `kafkaQueueProblems`                | Kafka           | Sobrecarga la cola de Kafka mientras simultáneamente introduce un retraso del lado del consumidor                    |
+| `imageSlowLoad`                     | Frontend        | Utiliza inyección de fallos de envoy, produce un retraso en la carga de imágenes de productos en el frontend         |
 
 ## Escenario de Depuración Guiado
 

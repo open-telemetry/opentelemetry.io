@@ -25,7 +25,8 @@ El primer paso para diagnosticar un problema es determinar que existe un
 problema. A menudo la primera parada será un dashboard de métricas proporcionado
 por una herramienta como Grafana.
 
-Una [carpeta de dashboards de demostración](http://localhost:8080/grafana/dashboards)
+Una
+[carpeta de dashboards de demostración](http://localhost:8080/grafana/dashboards)
 debería existir después de lanzar la demo con dos dashboards; uno es para
 monitorear tu OpenTelemetry Collector, y el otro contiene varias consultas y
 gráficos para analizar latencia y tasa de solicitudes de cada servicio.
