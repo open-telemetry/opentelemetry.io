@@ -63,10 +63,10 @@ sunt conectate în amonte la proiectul OpenTelemetry.
 
 ## Contribuție sau distribuție? {#contribution-or-distribution}
 
-Înainte de a continua să citești și de a învăța cum poți crea propria distribuție,
-întrebă-te dacă adăugările tale peste o componentă OpenTelemetry ar fi benefice
-pentru toată lumea și, prin urmare, ar trebui incluse în implementările de
-referință:
+Înainte de a continua să citești și de a învăța cum poți crea propria
+distribuție, întrebă-te dacă adăugările tale peste o componentă OpenTelemetry ar
+fi benefice pentru toată lumea și, prin urmare, ar trebui incluse în
+implementările de referință:
 
 - Pot fi generalizate scripturile tale pentru „ușurință în utilizare”?
 - Pot fi modificările aduse setărilor implicite o opțiune mai bună pentru toată
