@@ -95,6 +95,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-16T09:49:20.942894423Z"
   },
+  "https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-ebpf-instrumentation": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-22T22:25:01.383448468Z"
+  },
   "https://avaje.io/jex/": {
     "StatusCode": 206,
     "LastSeen": "2026-01-10T09:41:11.233326712Z"
@@ -10127,6 +10131,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:15.980937073Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-ebpf-instrumentation/values.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T22:25:05.344595274Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-operator/values.yaml": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:30.229410787Z"
@@ -10146,6 +10154,10 @@
   "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo#chart-parameters": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:20.872770111Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-ebpf-instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T22:25:00.423356764Z"
   },
   "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator": {
     "StatusCode": 206,
