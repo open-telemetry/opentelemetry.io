@@ -95,6 +95,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-16T09:49:20.942894423Z"
   },
+  "https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-ebpf-instrumentation": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-22T22:25:01.383448468Z"
+  },
   "https://avaje.io/jex/": {
     "StatusCode": 206,
     "LastSeen": "2026-01-10T09:41:11.233326712Z"
@@ -786,6 +790,10 @@
   "https://cloud-native.slack.com/archives/C0697EXNTL3": {
     "StatusCode": 200,
     "LastSeen": "2026-01-14T09:50:50.697007817Z"
+  },
+  "https://cloud-native.slack.com/archives/C06DQ7S2YEP": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-21T22:49:12.110336084Z"
   },
   "https://cloud-native.slack.com/archives/C06TMJ2R0SK": {
     "StatusCode": 200,
@@ -9011,6 +9019,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:03.779367831Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T11:09:51.123093429Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#batchspanprocessor-": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:51:14.882124232Z"
@@ -9066,6 +9078,22 @@
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#textmappropagator-": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:51:02.639223418Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/OtlpHttpExporter_traces_kitchen_sink.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-13T09:12:31.877674068Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/View_kitchen_sink.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-13T09:12:26.20129045Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T11:08:17.978372333Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0-rc.1/examples/kitchen-sink.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T11:08:20.594308834Z"
   },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0-rc.3/opentelemetry_configuration.json": {
     "StatusCode": 206,
@@ -9711,6 +9739,58 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:53:35.561597234Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/discussions": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:12.53133476Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:13.730781522Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1092": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:05.502366439Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1133": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:48:46.435573256Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1134": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:48:52.859148981Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1135": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:06.427246972Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1136": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:48:58.691759014Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1137": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:07.953587548Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1139": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:08.873271317Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1140": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:03.397033653Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1157": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:07.190636567Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22goal%3A%202026%22%20label%3Aepic": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:11.535709648Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues?q=is%3Aissue+is%3Aopen+label%3A%22goal%3A+2026%22": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:10.006900786Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases": {
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:48:27.614761584Z"
@@ -10055,6 +10135,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:15.980937073Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-ebpf-instrumentation/values.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T22:25:05.344595274Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-operator/values.yaml": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:30.229410787Z"
@@ -10074,6 +10158,10 @@
   "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo#chart-parameters": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:20.872770111Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-ebpf-instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T22:25:00.423356764Z"
   },
   "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator": {
     "StatusCode": 206,
@@ -13087,9 +13175,17 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:42.937951413Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-24T16:09:14.073473354Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/landing-page-redesign.md": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:53:38.600310948Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-24T16:09:16.89919486Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/commits/main/": {
     "StatusCode": 206,
@@ -13834,6 +13930,10 @@
   "https://github.com/orgs/open-telemetry/projects/174/views/3": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:53:41.411709194Z"
+  },
+  "https://github.com/orgs/open-telemetry/projects/187/views/1": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-21T22:49:10.788811111Z"
   },
   "https://github.com/orgs/open-telemetry/projects/38": {
     "StatusCode": 206,
@@ -16754,6 +16854,10 @@
   "https://mermaid.js.org": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:30.629848837Z"
+  },
+  "https://metoro.io/docs/metrics/custom-metrics": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-23T17:36:05.275259233Z"
   },
   "https://metrics.dropwizard.io/": {
     "StatusCode": 206,
