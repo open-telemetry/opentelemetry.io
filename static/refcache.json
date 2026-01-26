@@ -95,6 +95,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-16T09:49:20.942894423Z"
   },
+  "https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-ebpf-instrumentation": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-22T22:25:01.383448468Z"
+  },
   "https://avaje.io/jex/": {
     "StatusCode": 206,
     "LastSeen": "2026-01-10T09:41:11.233326712Z"
@@ -9011,6 +9015,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:03.779367831Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T11:09:51.123093429Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#batchspanprocessor-": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:51:14.882124232Z"
@@ -9066,6 +9074,22 @@
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#textmappropagator-": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:51:02.639223418Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/OtlpHttpExporter_traces_kitchen_sink.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-13T09:12:31.877674068Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/View_kitchen_sink.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-13T09:12:26.20129045Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T11:08:17.978372333Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0-rc.1/examples/kitchen-sink.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T11:08:20.594308834Z"
   },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/v1.0.0-rc.3/opentelemetry_configuration.json": {
     "StatusCode": 206,
@@ -10107,6 +10131,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:15.980937073Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-ebpf-instrumentation/values.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T22:25:05.344595274Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-operator/values.yaml": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:30.229410787Z"
@@ -10126,6 +10154,10 @@
   "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo#chart-parameters": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:20.872770111Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-ebpf-instrumentation": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T22:25:00.423356764Z"
   },
   "https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator": {
     "StatusCode": 206,
@@ -13139,9 +13171,17 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:42.937951413Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-24T16:09:14.073473354Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/landing-page-redesign.md": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:53:38.600310948Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-24T16:09:16.89919486Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/commits/main/": {
     "StatusCode": 206,
@@ -16806,6 +16846,10 @@
   "https://mermaid.js.org": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:30.629848837Z"
+  },
+  "https://metoro.io/docs/metrics/custom-metrics": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-23T17:36:05.275259233Z"
   },
   "https://metrics.dropwizard.io/": {
     "StatusCode": 206,
