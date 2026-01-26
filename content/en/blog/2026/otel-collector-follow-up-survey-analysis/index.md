@@ -11,7 +11,7 @@ author: >-
 issue: 8985
 sig: End User
 # prettier-ignore
-cSpell:ignore: Owojori Nduka Baeyens Kiripolsky Otlphttpexporter datadogexporter filelogreceiver sclusterreceiver Attributesprocessor transformprocessor Routingconnector datadogconnector zpages filestorage Memorylimiterprocessor statefulset Otlphttpexporter Datadogexporter lokiexporter Filelogreceiver transformprocessor Routingconnector datadogconnector spanmetrics awscloudwatchmetricsreceiver
+cSpell:ignore: Attributesprocessor awscloudwatchmetricsreceiver Baeyens datadogconnector datadogexporter filelogreceiver filereceiver filestorage Kiripolsky lokiexporter Memorylimiterprocessor Nduka otlphttpexporter Owojori routingconnector sclusterreceiver spanmetrics statefulset transformprocessor zpages
 ---
 
 ---
