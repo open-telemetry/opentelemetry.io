@@ -37,7 +37,7 @@ Deployment 安装的 Collector 将用于收集集群指标和事件。
 [Helm 项目网站](https://helm.sh/)。
 如果你对使用 Kubernetes Operator 感兴趣，请参阅
 [OpenTelemetry Operator](/docs/platforms/kubernetes/operator/)，
-但本指南将重点介绍 Helm chart。
+但本指南将重点介绍 Helm Chart。
 
 ## 准备工作 {#preparation}
 
@@ -80,8 +80,7 @@ Collector 的这个实例将使用以下组件：
 
 [OTLP 接收器](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
 是收集 [OTLP 格式](/docs/specs/otel/protocol/) 的链路、指标和日志的最佳解决方案。
-如果你以其他格式发送应用程序遥测数据，Collector 很可能
-[有对应的接收器](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver)，
+如果你以其他格式发送应用程序遥测数据，Collector 很可能[有对应的接收器](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver)，
 但在本教程中，我们假设遥测数据采用 OTLP 格式。
 
 虽然不是必需的，但在节点上运行的应用程序将其链路、指标和日志发送到同一节点上运行的 Collector 是一种常见做法。
@@ -153,7 +152,7 @@ presets:
 #         exporters: [ otlp ]
 ```
 
-要将此 `values.yaml` 与 chart 一起使用，将其保存到你喜欢的文件位置，然后运行以下命令安装 chart：
+要将此 `values.yaml` 与 Chart 一起使用，将其保存到你喜欢的文件位置，然后运行以下命令安装 Chart：
 
 ```sh
 helm install otel-collector open-telemetry/opentelemetry-collector --values <path where you saved the chart>
@@ -236,5 +235,4 @@ presets:
 ```sh
 helm install otel-collector-cluster open-telemetry/opentelemetry-collector --values <path where you saved the chart>
 ```
-
 至此，你已经在集群中完成 Collector 的 Deployment 安装，且该采集器会持续采集集群的指标与事件数据！
