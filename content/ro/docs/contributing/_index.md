@@ -23,7 +23,7 @@ default_lang_commit: d9f9ecf7f33ab10ccb86aff881a64af2e866883f
   - [Prima problemă bună](<{{% param _issue %}}%22good+first+issue%22>)
   - [Ajutor căutat](<{{% param _issue %}}%3A%22help+wanted%22>)
 
-  > [!AVERTISMENT] Nu atribuim probleme
+  > [!WARNING] Nu atribuim probleme
   >
   > **_Nu_ atribuim probleme** celor care nu au făcut deja contribuții la
   > [OpenTelemetry organization][org], cu excepția cazului în care fac parte
