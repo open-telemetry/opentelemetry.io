@@ -116,7 +116,7 @@ arbitrar între limitele proceselor și rețelei.
 Pentru marea majoritate a cazurilor de utilizare, propagarea contextului are loc
 prin biblioteci de instrumentație. Dacă este necesar, poți utiliza propagatori
 pentru a serializa și deserializa aspecte transversale, cum ar fi contextul unui
-interval și [bagaj](/docs/concepts/signals/bagage/).
+interval și [bagaj](/docs/concepts/signals/baggage/).
 
 ### Eșantioane {#samplers}
 
