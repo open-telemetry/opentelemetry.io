@@ -8971,10 +8971,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-13T09:47:45.883569528Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-configuration/blob/f4e9046682d4386ea533ef7ba6ad30a5ce4451b4/examples/kitchen-sink.yaml#L440": {
-    "StatusCode": 206,
-    "LastSeen": "2026-01-13T09:44:51.704318671Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/CONTRIBUTING.md#json-schema-source-and-output": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:51:11.739499355Z"
@@ -9066,10 +9062,6 @@
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md#textmappropagator-": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:51:02.639223418Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/OtlpHttpExporter_traces_kitchen_sink.yaml": {
-    "StatusCode": 206,
-    "LastSeen": "2026-01-13T09:12:31.877674068Z"
   },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/View_kitchen_sink.yaml": {
     "StatusCode": 206,
