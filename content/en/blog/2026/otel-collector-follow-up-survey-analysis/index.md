@@ -15,9 +15,9 @@ cSpell:ignore: Attributesprocessor awscloudwatchmetricsreceiver Baeyens datadogc
 
 In 2024, the End User SIG conducted a
 [Collector Survey](/blog/2024/otel-collector-survey/) to gather feedback on how
-the [OpenTelemetry Collector](/docs/collector/) is used in practice and the user experience.
-Insights from that survey informed several development and prioritization
-decisions within the community.
+the [OpenTelemetry Collector](/docs/collector/) is used in practice and the user
+experience. Insights from that survey informed several development and
+prioritization decisions within the community.
 
 As a follow-up, we conducted another survey in 2025 to understand how deployment
 practices, usage patterns, and implementation challenges have evolved since
@@ -27,12 +27,13 @@ changes compared to the previous year.
 ## Key takeaways
 
 - Collector deployments continue to scale (65% run more than 10 collectors),
-  with Kubernetes remaining dominant (81%) while virtual machine (VM) usage increased
-  significantly from 33% to 51%.
+  with Kubernetes remaining dominant (81%) while virtual machine (VM) usage
+  increased significantly from 33% to 51%.
 - A quarter of users with a relatively small deployment size, and about half of
   users with large deployment sizes, use both Kubernetes and VMs.
 - An additional 13% of people now build their own Collector, and 61% of OTel
-  users could not admit that [OpenTelemetry Collector Builder](/docs/collector/extend/ocb/) is easy to use.
+  users could not admit that
+  [OpenTelemetry Collector Builder](/docs/collector/extend/ocb/) is easy to use.
 - Large organizations (>100 Collectors) collect more metrics and logs. On the
   other hand, smaller organizations (<100 Collectors) collect more traces.
 - Otlphttpexporter, datadogexporter, filelogreceiver, k8sclusterreceiver,
@@ -55,14 +56,15 @@ than 10 Collectors, 15%(-7%) have between 2 and 5 Collectors, and we see no
 change in the number of users with 1 Collector and 6-10 Collectors.
 
 In terms of the deployment location, OTel users still have a huge preference for
-Kubernetes (81%, same as the previous year), 51% (+18%) reported using VMs, and 18% (+7%) use bare metal. In the 2025 survey, none of the
-respondents selected HashiCorp Nomad as their preferred deployment location.
+Kubernetes (81%, same as the previous year), 51% (+18%) reported using VMs, and
+18% (+7%) use bare metal. In the 2025 survey, none of the respondents selected
+HashiCorp Nomad as their preferred deployment location.
 
 The 18% increase in the usage of VMs raised questions like what percentage of VM
-users also use Kubernetes, and what are their deployment sizes? We found that a quarter
-of users with a relatively small deployment size (<100 collectors), and about
-half of the users with large deployment sizes (>100 collectors), use both Kubernetes
-and VMs.
+users also use Kubernetes, and what are their deployment sizes? We found that a
+quarter of users with a relatively small deployment size (<100 collectors), and
+about half of the users with large deployment sizes (>100 collectors), use both
+Kubernetes and VMs.
 
 ![image1](collectors-in-production-2024-2025.png)
 
@@ -99,11 +101,11 @@ hard to use (signaling a lot of room for improvement).
 
 Regarding the monitoring of Collectors, about 23% (-6% from last year) reported
 not monitoring Collectors. However, in the 2024 survey, 82% reported collecting
-internal metrics and logs, and the 2025 survey reveals that 83% collect metrics, 61%
-collect logs, and 25% collect traces. This indicates that metrics are the most
-commonly collected internal telemetry. Furthermore, we checked if the number of
-Collectors informs the type of telemetry monitored. We found that people who run
-100+ Collectors certainly collect metrics but rarely traces.
+internal metrics and logs, and the 2025 survey reveals that 83% collect metrics,
+61% collect logs, and 25% collect traces. This indicates that metrics are the
+most commonly collected internal telemetry. Furthermore, we checked if the
+number of Collectors informs the type of telemetry monitored. We found that
+people who run 100+ Collectors certainly collect metrics but rarely traces.
 
 ![image9](monitor-collector-using-internals.png)
 ![image10](collector-telemetry-types.png)
@@ -125,7 +127,7 @@ significantly at 90% confidence level:
 - **Connectors** : Routingconnector and datadogconnector increased.
 - **Extensions** : Storage, zpages, and filestorage increased.
 
-![image13](receivers.png) ![image14](processors.png) ![image12](exporters.png) 
+![image13](receivers.png) ![image14](processors.png) ![image12](exporters.png)
 ![image15](connectors.png) ![image16](extensions.png)
 
 ## Areas for improvement
@@ -137,7 +139,8 @@ receivers or exporters.
 
 > [!NOTE]
 >
-> We cannot directly compare the 2024 results with the 2025 results for this question because they were asked differently.
+> We cannot directly compare the 2024 results with the 2025 results for this
+> question because they were asked differently.
 
 ![image17](collector-improvment-request.png)
 
@@ -163,8 +166,8 @@ visible bottlenecks. Respondents pointed to startup latency and high resource
 consumption in certain components as issues that directly impact their ability
 to run the Collector efficiently in large or resource-constrained environments.
 
-> _“The spanmetrics connector requires a lot of resources, and faster startup time
-> would significantly improve operating the Collector at scale.”_
+> _“The spanmetrics connector requires a lot of resources, and faster startup
+> time would significantly improve operating the Collector at scale.”_
 
 ### Documentation quality, accessibility, and signal consistency
 
@@ -203,5 +206,5 @@ Running the Collector reliably in production remains a key concern, with users
 calling for stronger health checks, safer upgrades, and clearer backward
 compatibility guarantees to reduce operational risk.
 
-> _“A more robust health extension and stronger backward compatibility guarantees
-> are essential for operating the Collector safely in production.”_
+> _“A more robust health extension and stronger backward compatibility
+> guarantees are essential for operating the Collector safely in production.”_
