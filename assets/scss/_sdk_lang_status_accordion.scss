@@ -1,0 +1,168 @@
+// SDK Language Implementation Status Accordion Styles
+
+.sdk-lang-status-accordion {
+  margin: 2rem 0;
+
+  .accordion-controls {
+    background: var(--bs-light);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .accordion-stats {
+    font-size: 0.875rem;
+    color: var(--bs-secondary);
+  }
+
+  .accordion-item {
+    border: 1px solid var(--bs-border-color);
+    margin-bottom: 0.5rem;
+    border-radius: 0.375rem !important;
+
+    &.d-none {
+      display: none !important;
+    }
+
+    &:first-child,
+    &:last-child {
+      border-radius: 0.375rem !important;
+    }
+  }
+
+  .accordion-header {
+    .accordion-button {
+      background-color: var(--bs-body-bg);
+      color: var(--bs-body-color);
+      padding: 1rem 1.25rem;
+      font-weight: 500;
+
+      &:not(.collapsed) {
+        background-color: var(--bs-primary);
+        color: white;
+
+        .lang-status-pill {
+          border-color: rgba(255, 255, 255, 0.3);
+        }
+      }
+
+      &:focus {
+        box-shadow: none;
+        border-color: var(--bs-border-color);
+      }
+
+      .type-name {
+        flex: 1;
+
+        a {
+          color: inherit;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+
+      .lang-status-summary {
+        display: flex;
+        gap: 0.25rem;
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  .accordion-body {
+    padding: 1.5rem 1.25rem;
+    background-color: var(--bs-body-bg);
+  }
+
+  .lang-support-card {
+    padding: 1rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.375rem;
+    background-color: var(--bs-light);
+    height: 100%;
+
+    h6 {
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .property-support {
+      margin-top: 0.75rem;
+      font-size: 0.875rem;
+
+      ul {
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Language status pills (mini indicators in header)
+.lang-status-pill {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+
+  &.status-supported {
+    background-color: #28a745;
+  }
+
+  &.status-not_implemented {
+    background-color: #dc3545;
+  }
+
+  &.status-unknown {
+    background-color: #ffc107;
+  }
+
+  &.status-not_applicable {
+    background-color: #6c757d;
+  }
+
+  &.status-ignored {
+    background-color: #17a2b8;
+  }
+
+  &.status-missing {
+    background-color: #e9ecef;
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .sdk-lang-status-accordion {
+    .accordion-controls {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .lang-support-card {
+      background-color: rgba(255, 255, 255, 0.03);
+    }
+
+    .lang-status-pill {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .sdk-lang-status-accordion {
+    .accordion-button {
+      .lang-status-summary {
+        flex-direction: column;
+        gap: 0.125rem !important;
+      }
+    }
+
+    .lang-support-card {
+      margin-bottom: 1rem;
+    }
+  }
+}
