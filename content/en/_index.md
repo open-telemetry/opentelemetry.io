@@ -20,16 +20,24 @@ show_banner: true
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{% homepage/hero color="white" useLogo="true" background="/img/homepage/highlight.png" tagline="High-quality, ubiquitous, and portable telemetry to enable effective observability" %}}
+{{% blocks/cover image_anchor="top" height="max" color="primary" %}}
 
-<div class="l-primary-buttons">
+<!-- prettier-ignore -->
+![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
+{.otel-logo}
+
+<!-- prettier-ignore -->
+{{% param description %}}
+{.display-6}
+
+<div class="l-primary-buttons mt-5">
 
 - [Learn more](docs/what-is-opentelemetry/)
 - [Try the demo](docs/demo/)
 
 </div>
 
-{{% /homepage/hero %}}
+{{% /blocks/cover %}}
 
 {{< homepage/hero-search placeholder="Search OpenTelemetry docs..." >}}
 
