@@ -3,9 +3,8 @@ title: Android
 description: >-
   Use OpenTelemetry in apps running on Android platforms
 weight: 10
-cascade:
-  vers:
-    ot-android: 1.0.1
+vers:
+  ot-android: 1.0.1
 cSpell:ignore: inactivity
 ---
 
