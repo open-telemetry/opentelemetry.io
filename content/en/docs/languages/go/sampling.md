@@ -54,49 +54,7 @@ interface. A custom sampler must implement two methods:
   sampling decision based on the provided parameters.
 - `Description() string`: Returns a description of the sampler.
 
-### Implementing the Sampler interface
-
-Here's the structure you need to implement:
-
-```go
-type Sampler interface {
-    ShouldSample(parameters SamplingParameters) SamplingResult
-    Description() string
-}
-```
-
-The
-[`SamplingParameters`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SamplingParameters)
-struct provides context about the span being created:
-
-```go
-type SamplingParameters struct {
-    ParentContext context.Context
-    TraceID       trace.TraceID
-    Name          string
-    Kind          trace.SpanKind
-    Attributes    []attribute.KeyValue
-    Links         []trace.Link
-}
-```
-
-### Handling SamplingResult correctly
-
-The
-[`SamplingResult`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#SamplingResult)
-you return from `ShouldSample` has three fields:
-
-```go
-type SamplingResult struct {
-    Decision   SamplingDecision
-    Attributes []attribute.KeyValue
-    Tracestate trace.TraceState
-}
-```
-
-- **Decision**: One of `Drop`, `RecordOnly`, or `RecordAndSample`.
-- **Attributes**: Additional attributes to add to the span.
-- **Tracestate**: The tracestate to use for the span.
+### Preserving tracestate
 
 {{% alert title="Critical: Preserve tracestate" color="warning" %}}
 
@@ -206,6 +164,6 @@ When implementing custom samplers, keep these points in mind:
    sampling decisions, wrap your sampler with `ParentBased` or check
    `psc.IsSampled()` manually.
 
-2. **Heavy computations in ShouldSample**: The `ShouldSample` function is called
+2. **Heavy computations in ShouldSample**: The `ShouldSample` function is called synchronously
    for every span creation. Avoid expensive operations like network calls or
    complex computations that could impact performance.
