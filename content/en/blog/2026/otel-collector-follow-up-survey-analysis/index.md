@@ -104,8 +104,8 @@ not monitoring collectors. However, in the 2024 survey, 82% reported collecting
 metrics and logs, and the 2025 survey reveals that 83% collect metrics, 61%
 collect logs, and 25% collect traces. This indicates that metrics are the most
 commonly collected telemetry. Furthermore, we checked if the number of
-collectors informs the type of telemetry monitored. We found that 100+
-collectors certainly collect metrics and minimal traces.
+collectors informs the type of telemetry monitored. We found that people who run 100+
+collectors certainly collect metrics and rarely traces.
 
 ![image9](monitor_collector_using_internals.png)
 ![image10](collector_telemetry_types.png)
