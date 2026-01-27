@@ -8,7 +8,7 @@ aliases: [/js/metrics, /js/tracing, nodejs]
 redirects:
   - { from: /js/*, to: ':splat' }
   - { from: /docs/js/*, to: ':splat' }
-weight: 20
+weight: 160
 ---
 
 {{% docs/languages/index-intro js /%}}

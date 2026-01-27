@@ -32,6 +32,10 @@
 
   > ul {
     list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
     margin: 0;
     padding: 0;
 
@@ -39,7 +43,6 @@
       display: inline;
       > a {
         @extend .btn;
-        margin: 0.25rem;
 
         &:hover {
           text-decoration: none;
@@ -49,6 +52,7 @@
   }
 }
 
+// TODO: remove once all locale homepages have been updated
 .l-get-started-buttons {
   @extend .l-buttons;
 
@@ -78,6 +82,11 @@
   @at-root .td-home & {
     .nav-link {
       color: $navbar-nav-link-color-active;
+    }
+
+    // Hide navbar search on homepage (hero search is used instead)
+    .td-navbar__search {
+      display: none !important;
     }
   }
 
