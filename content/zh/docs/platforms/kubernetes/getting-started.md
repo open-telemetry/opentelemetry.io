@@ -235,4 +235,5 @@ presets:
 ```sh
 helm install otel-collector-cluster open-telemetry/opentelemetry-collector --values <path where you saved the chart>
 ```
+
 至此，你已经在集群中完成 Collector 的 Deployment 安装，且该采集器会持续采集集群的指标与事件数据！
