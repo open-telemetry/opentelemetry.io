@@ -312,7 +312,7 @@ estão alguns recursos adicionais para explorar:
 [migration-file]:
   https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-migration-config.yaml
 [full-file]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md
 [java-sampler]:
   https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/samplers
 [complete-config]:

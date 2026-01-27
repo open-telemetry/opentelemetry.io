@@ -5,8 +5,9 @@ description: Learn how to set up a development environment for this website.
 what-next: >
   You're now ready to [build](#build), [serve](#serve), and make updates to
   website files. For details on how to submit changes, see [Submitting
-  content][].
+  content](../pull-requests).
 weight: 60
+cSpell:ignore: TOCSS
 ---
 
 > [!WARNING] Supported build environments
@@ -91,6 +92,27 @@ npm run build
 ```
 
 The generated site files are under `public`.
+
+> [!IMPORTANT]
+>
+> If you see build or serve command **errors** similar to the following:
+>
+> ```log
+> ERROR error building site: ...[long message]... TOCSS: failed to transform "/scss/main.scss" (text/x-scss)
+> ```
+>
+> Or:
+>
+> ```log
+> ERROR failed to load modules: module "github.com/FortAwesome/Font-Awesome" not found
+> ```
+>
+> This is usually because you didn't complete all the steps in the
+> [local setup](#local-setup). In particular, (re)run this command:
+>
+> ```sh
+> npm install
+> ```
 
 ### Serve
 
