@@ -114,6 +114,11 @@ jobs:
 
           # Validate diff_max_chars
           DIFF_MAX="${{ github.event.inputs.diff_max_chars || '20000' }}"
+          if ! [[ "$DIFF_MAX" =~ ^[0-9]+$ ]]; then
+              echo "::error::Invalid diff_max_chars: $DIFF_MAX (must be numeric)"
+              echo "should-analyze=false" >> $GITHUB_OUTPUT
+              exit 1
+          fi
           if [[ "$DIFF_MAX" -lt 1000 ]]; then
             echo "::error::diff_max_chars must be >= 1000, got: $DIFF_MAX"
             echo "should-analyze=false" >> $GITHUB_OUTPUT
@@ -145,7 +150,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: '22'
+          node-version-file: .nvmrc
           cache: 'npm'
 
       - name: Install GitHub Copilot CLI
