@@ -2,10 +2,6 @@
 {{- $tagline := .Get "tagline" -}}
 {{- $useLogo := .Get "useLogo" | default false -}}
 {{- $background := .Get "background" -}}
-{{- $primaryBtn := .Get "primaryBtn" -}}
-{{- $primaryUrl := .Get "primaryUrl" -}}
-{{- $secondaryBtn := .Get "secondaryBtn" -}}
-{{- $secondaryUrl := .Get "secondaryUrl" -}}
 
 <div><a id="td-block-hero-{{ .Ordinal }}" class="td-offset-anchor"></a></div>
 <section class="row td-box td-box--{{ $color }}{{ if $background }} hero-with-bg{{ end }}"{{ with $background }} style="--hero-bg-image: url({{ . }})"{{ end }}>
@@ -20,12 +16,9 @@
   {{- with $tagline -}}
   <p class="hero-simple__tagline mb-4">{{ . }}</p>
   {{- end -}}
-  {{- with $primaryBtn -}}
-  <div class="l-primary-buttons">
-    <a href="{{ $primaryUrl }}" class="btn btn-lg btn-primary">{{ . }}</a>
-    {{- with $secondaryBtn }}<a href="{{ $secondaryUrl }}" class="btn btn-lg btn-secondary">{{ . }}</a>{{ end -}}
+  <div class="hero-simple__content">
+    {{ .Inner | .Page.RenderString }}
   </div>
-  {{- end -}}
 </div>
 </div>
 </div>
