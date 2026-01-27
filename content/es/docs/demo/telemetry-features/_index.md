@@ -1,6 +1,6 @@
 ---
-title: Características de Telemetría
-linkTitle: Características de Telemetría
+title: Características de telemetría
+linkTitle: Características de telemetría
 aliases: [demo_features, features]
 default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
 ---
@@ -22,7 +22,7 @@ default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
   Collector vía gRPC. Las trazas recibidas se exportan a los logs y a Jaeger;
   las métricas y exemplars recibidos se exportan a logs y Prometheus.
 
-## Soluciones de Observabilidad
+## Soluciones de observabilidad
 
 - **[Grafana](https://grafana.com/)**: todos los dashboards de métricas se
   almacenan en Grafana.
@@ -48,7 +48,7 @@ default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
 - **[HTTP](https://www.rfc-editor.org/rfc/rfc9110.html)**: los microservicios
   utilizan HTTP donde gRPC no está disponible o no está bien soportado.
 
-## Otros Componentes
+## Otros componentes
 
 - **[Envoy](https://www.envoyproxy.io/)**: Envoy se utiliza como proxy inverso
   para las interfaces web orientadas al usuario, como el frontend, el generador

@@ -1,6 +1,6 @@
 ---
-title: Cobertura de Logs por Servicio
-linkTitle: Cobertura de Logs
+title: Cobertura de logs por servicio
+linkTitle: Cobertura de logs
 aliases: [log_service_features, logging-features, ../logging-features]
 default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
 ---

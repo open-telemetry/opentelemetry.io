@@ -1,6 +1,6 @@
 ---
-title: Cobertura de Métricas por Servicio
-linkTitle: Cobertura de Métricas
+title: Cobertura de métricas por servicio
+linkTitle: Cobertura de métricas
 aliases: [metric_service_features, metric-features, ../metric-features]
 default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
 ---
