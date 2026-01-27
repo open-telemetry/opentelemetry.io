@@ -45,7 +45,7 @@ Analyzes PR diffs using GitHub Copilot CLI to detect AI-generated content.
 | Variable               | Required | Default        | Description                    |
 | ---------------------- | -------- | -------------- | ------------------------------ |
 | `GH_TOKEN`             | Yes      | -              | GitHub token with repo access  |
-| `COPILOT_TOKEN`        | No\*     | -              | GitHub PAT with Copilot access |
+| `COPILOT_TOKEN`        | No[^1]     | -              | GitHub PAT with Copilot access |
 | `PR_NUMBER`            | Yes      | -              | Pull request number            |
 | `GITHUB_REPOSITORY`    | Yes      | -              | Repository (owner/repo)        |
 | `CONFIDENCE_THRESHOLD` | No       | `80`           | Detection threshold (0-100)    |
@@ -56,7 +56,8 @@ Analyzes PR diffs using GitHub Copilot CLI to detect AI-generated content.
 | `CUSTOM_PROMPT`        | No       | `""`           | Custom analysis prompt         |
 | `DIFF_MAX_CHARS`       | No       | `20000`        | Max diff characters            |
 
-\*Required for AI detection to run. Without it, the script will skip Copilot
+[^1]:
+  Required for AI detection to run. Without it, the script will skip Copilot
 analysis.
 
 ## Quick Test Example
