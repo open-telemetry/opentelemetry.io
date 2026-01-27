@@ -1,5 +1,5 @@
 ---
-title: Feature Flags
+title: Feature flags
 aliases:
   - feature_flags
   - scenarios
@@ -35,7 +35,7 @@ usuario:
 
 ## Feature flags implementados
 
-| Feature Flag                        | Servicio(s)     | Descripción                                                                                                          |
+| Feature flag                        | Servicio(s)     | Descripción                                                                                                          |
 | ----------------------------------- | --------------- | -------------------------------------------------------------------------------------------------------------------- |
 | `adServiceFailure`                  | Ad              | Genera un error para `GetAds` 1/10 de las veces                                                                      |
 | `adServiceManualGc`                 | Ad              | Dispara recolecciones de basura manuales completas en el servicio ad                                                 |
@@ -52,15 +52,15 @@ usuario:
 | `kafkaQueueProblems`                | Kafka           | Sobrecarga la cola de Kafka mientras simultáneamente introduce un retraso del lado del consumidor                    |
 | `imageSlowLoad`                     | Frontend        | Utiliza inyección de fallos de envoy, produce un retraso en la carga de imágenes de productos en el frontend         |
 
-## Escenario de Depuración Guiado
+## Escenario de depuración guiado
 
 El escenario `recommendationServiceCacheFailure` tiene un
 [documento de guía dedicado](recommendation-cache/) para ayudar a entender cómo
 puedes depurar fugas de memoria con OpenTelemetry.
 
-## Arquitectura de Feature Flags
+## Arquitectura de feature flags
 
-Por favor consulta la [documentación de flagd](https://flagd.dev) para más
+Por favor, consulta la [documentación de flagd](https://flagd.dev) para más
 información sobre cómo funciona flagd, y el sitio web de
 [OpenFeature](https://openfeature.dev) para más información sobre cómo funciona
 OpenFeature, junto con documentación para la API de OpenFeature.

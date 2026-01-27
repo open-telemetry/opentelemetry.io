@@ -1,5 +1,5 @@
 ---
-title: Usando Métricas y Trazas para diagnosticar una fuga de memoria
+title: Usando métricas y trazas para diagnosticar una fuga de memoria
 linkTitle: Diagnosticando fugas de memoria
 aliases:
   - ../scenarios/recommendation-cache/
@@ -73,7 +73,7 @@ Podemos ver que el servicio de recomendaciones está tomando mucho tiempo para
 completar su trabajo, y ver los detalles nos permite tener una mejor idea de lo
 que está pasando.
 
-## Confirmando el Diagnóstico
+## Confirmando el diagnóstico
 
 Podemos ver en nuestra vista de cascada que el atributo `app.cache_hit` está
 establecido en false, y que el valor de `app.products.count` es extremadamente
