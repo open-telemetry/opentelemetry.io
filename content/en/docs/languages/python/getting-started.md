@@ -724,7 +724,7 @@ collector in production deployments.
 
 First, save the following collector configuration code to a file. On
 Linux/macOS, save it to `/tmp/otel-collector-config.yaml`. On Windows, save it
-to `%TEMP%\otel-collector-config.yaml`:
+to `$env:TEMP\otel-collector-config.yaml`:
 
 ```yaml
 # otel-collector-config.yaml
@@ -768,7 +768,7 @@ docker run -p 4317:4317 \
 
 ```powershell
 docker run -p 4317:4317 `
-    -v ${env:TEMP}\otel-collector-config.yaml:/etc/otel-collector-config.yaml `
+    -v "${env:TEMP}\otel-collector-config.yaml:/etc/otel-collector-config.yaml" `
     otel/opentelemetry-collector:latest `
     --config=/etc/otel-collector-config.yaml
 ```
