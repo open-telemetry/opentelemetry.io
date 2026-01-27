@@ -20,23 +20,12 @@ show_banner: true
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{< homepage/hero color="white" useLogo="true" background="/img/homepage/highlight.png" tagline="High-quality, ubiquitous, and portable telemetry to enable effective observability" >}}
-
-<div class="l-primary-buttons">
-
-- [Learn more](docs/what-is-opentelemetry/)
-- [Try the demo](docs/demo/)
-
-</div>
-
-{{< /homepage/hero >}}
+{{< homepage/hero color="white" useLogo="true" background="/img/homepage/highlight.png" tagline="High-quality, ubiquitous, and portable telemetry to enable effective observability" primaryBtn="Learn more" primaryUrl="/docs/what-is-opentelemetry/" secondaryBtn="Try the demo" secondaryUrl="/docs/demo/" >}}
 
 {{< homepage/hero-search color="light" placeholder="Search OpenTelemetry docs..." >}}
 {{< /homepage/hero-search >}}
 
-{{< homepage/intro-section color="white" >}}
-
-<div class="intro-text">
+{{< homepage/intro-section color="white" image="/img/homepage/collector-pipeline.svg" imageAlt="OpenTelemetry overview" >}}
 
 **OpenTelemetry** is an open source observability framework for cloud native
 software. It provides a single set of APIs, libraries, agents, and collector
@@ -45,12 +34,6 @@ services to capture distributed traces and metrics from your application.
 OpenTelemetry builds upon years of experience from the OpenTracing and
 OpenCensus projects, combined with best-of-breed ideas and practices from the
 community.
-
-</div>
-
-<div class="intro-image">
-  <img src="/img/homepage/collector-pipeline.svg" alt="OpenTelemetry overview" class="img-fluid">
-</div>
 
 {{< /homepage/intro-section >}}
 

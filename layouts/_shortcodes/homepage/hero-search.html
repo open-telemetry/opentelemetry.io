@@ -21,11 +21,11 @@
               autocomplete="off">
           </div>
         </div>
-        {{ with .Inner }}
+        {{- with .Inner }}
         <div class="hero-search__extra">
-          {{ . | markdownify }}
+          {{ . | $.Page.RenderString }}
         </div>
-        {{ end }}
+        {{- end }}
       </div>
     </div>
   </div>
