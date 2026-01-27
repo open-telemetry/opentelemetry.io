@@ -32,7 +32,6 @@ show_banner: true
 {{% /homepage/hero %}}
 
 {{< homepage/hero-search placeholder="Search OpenTelemetry docs..." >}}
-{{< /homepage/hero-search >}}
 
 {{< homepage/intro-section image="/img/homepage/collector-pipeline.svg" imageAlt="OpenTelemetry overview" >}}
 
