@@ -10,7 +10,7 @@ author: >-
 issue: 8985
 sig: End User
 # prettier-ignore
-cSpell:ignore: Kiripolsky Owojori Nduka Baeyens Otlphttpexporter datadogexporter lokiexporter filelogreceiver k8sclusterreceiver filereceiver Attributesprocessor transformprocessor Memorylimiterprocessor Routingconnector datadogconnector zpages filestorage Storage  statefulset spanmetrics awscloudwatchmetricsreceiver
+cSpell:ignore: Attributesprocessor awscloudwatchmetricsreceiver Baeyens datadogconnector datadogexporter filelogreceiver filereceiver filestorage k8sclusterreceiver Kiripolsky lokiexporter Memorylimiterprocessor Nduka Otlphttpexporter Owojori Routingconnector spanmetrics statefulset Storage transformprocessor zpages
 ---
 
 In 2024, the End User SIG conducted a
