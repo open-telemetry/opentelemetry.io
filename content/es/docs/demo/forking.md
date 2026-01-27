@@ -15,7 +15,7 @@ Las demos en vivo pueden agregarse al
 [README](https://github.com/open-telemetry/opentelemetry-demo/blob/main/README.md?plain=1)
 de la demo.
 
-## Sugerencias para Mantenedores de Forks
+## Sugerencias para mantenedores de forks
 
 - Si deseas mejorar los datos de telemetría emitidos o recolectados por la demo,
   te animamos fuertemente a que aportes tus cambios de vuelta a este

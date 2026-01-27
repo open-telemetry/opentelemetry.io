@@ -68,7 +68,7 @@ kubectl create --namespace otel-demo -f https://raw.githubusercontent.com/open-t
 > Estos manifiestos se generan a partir del chart de Helm y se proporcionan por
 > conveniencia. Se recomienda usar el chart de Helm para la instalación.
 
-## Usar la Demo
+## Usar la demo
 
 La aplicación de demostración necesitará que los servicios estén expuestos fuera
 del clúster de Kubernetes para poder usarlos. Puedes exponer los servicios a tu
@@ -99,7 +99,7 @@ Con el port-forward de frontend-proxy configurado, puedes acceder a:
 - UI de Jaeger: <http://localhost:8080/jaeger/ui/>
 - UI del configurador de Flagd: <http://localhost:8080/feature>
 
-### Exponer componentes de la Demo usando configuraciones de servicio o ingress
+### Exponer componentes de la demo usando configuraciones de servicio o ingress
 
 > [!NOTE]
 >

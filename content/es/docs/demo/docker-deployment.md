@@ -62,7 +62,7 @@ docker compose -f docker-compose-tests.yml run traceBasedTests
 
     {{% /tab %}} {{< /tabpane >}}
 
-## Verificar la tienda web y la Telemetría
+## Verificar la tienda web y la telemetría
 
 Una vez que las imágenes estén construidas y los contenedores iniciados, puedes
 acceder a:

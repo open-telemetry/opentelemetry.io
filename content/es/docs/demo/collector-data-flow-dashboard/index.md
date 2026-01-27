@@ -1,5 +1,5 @@
 ---
-title: Dashboard de Flujo de Datos del Collector
+title: Dashboard de flujo de datos del Collector
 default_lang_commit: b98ab730de1f866d89a065fdac22b0ae123ec10c
 cSpell:ignore: reinicios
 ---
@@ -19,7 +19,7 @@ flujo de datos. Este dashboard de demostración sirve como punto de partida,
 permitiendo a los usuarios explorar diversos escenarios de uso y adaptar la
 herramienta a sus necesidades únicas de monitoreo.
 
-## Descripción General del Flujo de Datos
+## Descripción general del flujo de datos
 
 El siguiente diagrama proporciona una descripción general de los componentes del
 sistema, mostrando la configuración derivada del archivo de configuración del
@@ -45,13 +45,13 @@ diferenciación entre conjuntos de métricas dentro del namespace general. Es
 importante notar que solo encontrarás métricas rechazadas si se exceden los
 límites de memoria, según lo definido en el procesador memory delimiter.
 
-### Pipeline de Ingreso de Trazas
+### Pipeline de ingreso de trazas
 
 - `otelcol_receiver_accepted_spans`
 - `otelcol_receiver_refused_spans`
 - `by (receiver,transport)`
 
-### Pipeline de Ingreso de Métricas
+### Pipeline de ingreso de métricas
 
 - `otelcol_receiver_accepted_metric_points`
 - `otelcol_receiver_refused_metric_points`
@@ -65,13 +65,13 @@ métricas.
 
 - `otelcol_processor_batch_batch_send_size_sum`
 
-### Pipeline de Egreso de Trazas
+### Pipeline de egreso de trazas
 
 - `otelcol_exporter_sent_spans`
 - `otelcol_exporter_send_failed_spans`
 - `by (exporter)`
 
-### Pipeline de Egreso de Métricas
+### Pipeline de egreso de métricas
 
 - `otelcol_exporter_sent_metric_points`
 - `otelcol_exporter_send_failed_metric_points`
@@ -101,7 +101,7 @@ Las secciones 2, 3 y 4 representan el flujo de datos general utilizando las
 métricas mencionadas anteriormente. Además, se calcula la proporción de
 exportación para cada pipeline para entender el flujo de datos.
 
-### Proporción de Exportación
+### Proporción de exportación
 
 La proporción de exportación es básicamente la relación entre las métricas del
 receiver y del exporter. Puedes notar en la captura de pantalla del dashboard
@@ -111,7 +111,7 @@ configurada para generar métricas de spans, que es un procesador que genera
 métricas a partir de spans dentro del collector como se ilustra en el diagrama
 de descripción general.
 
-### Métricas de Proceso
+### Métricas de proceso
 
 Se han agregado métricas de proceso muy limitadas pero informativas al
 dashboard. Por ejemplo, podrías observar más de una instancia de otelcol
