@@ -152,7 +152,7 @@ jobs:
 
       - name: Install script dependencies
         working-directory: ./scripts/ai-content-detection
-        run: npm ci
+        run: npm install
 
       - name: Run AI detection analysis
         working-directory: ./scripts/ai-content-detection
