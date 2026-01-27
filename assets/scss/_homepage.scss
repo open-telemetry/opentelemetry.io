@@ -14,9 +14,15 @@
 // HERO WITH BACKGROUND - Hero section with background image support
 // =============================================================================
 
-// Configurable overlay darkness for hero background
+// Semantic overlay system with dark mode support
 :root {
-  --hero-overlay-opacity: 0.3;
+  --hero-overlay-bg: rgba(0, 0, 0, 0.3);
+}
+
+@include color-mode(dark) {
+  :root {
+    --hero-overlay-bg: rgba(0, 0, 0, 0.5); // Darker overlay for dark mode
+  }
 }
 
 .hero-with-bg {
@@ -26,7 +32,7 @@
   background-repeat: no-repeat;
   position: relative;
 
-  // Darken the background slightly for better text contrast
+  // Semantic overlay for better text contrast
   &::before {
     content: '';
     position: absolute;
@@ -34,7 +40,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, var(--hero-overlay-opacity));
+    background: var(--hero-overlay-bg);
     pointer-events: none;
   }
 
@@ -44,7 +50,8 @@
     z-index: 1;
   }
 
-  // Always use white text for contrast against background image
+  // Use high contrast colors for background images
+  // Leverage Docsy's color-contrast system instead of !important
   &,
   .hero-simple,
   .hero-simple__tagline,
@@ -53,7 +60,7 @@
   .hero-simple__content a,
   .hero-simple__content li,
   .l-primary-buttons ul li a {
-    color: $white !important;
+    color: var(--bs-white);
   }
 }
 
@@ -143,7 +150,7 @@
 .td-home section.td-box.hero-search-section {
   padding-top: 3rem;
   padding-bottom: 3rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--bs-border-color);
 }
 
 .hero-search {
@@ -167,14 +174,14 @@
       padding: 0.75rem 0.75rem 0.75rem 2.5rem;
       font-size: $font-size-base;
       border-radius: 2rem;
-      border: 2px solid $border-color;
+      border: 2px solid var(--bs-border-color);
       transition:
         border-color 0.2s ease,
         box-shadow 0.2s ease;
 
       &:focus {
-        border-color: $primary;
-        box-shadow: 0 0 0 3px rgba($primary, 0.15);
+        border-color: var(--bs-primary);
+        box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb), 0.15);
       }
     }
 
@@ -187,10 +194,10 @@
 
   &__extra {
     font-size: $font-size-sm;
-    color: $text-muted;
+    color: var(--bs-secondary-color);
 
     a {
-      color: $primary;
+      color: var(--bs-primary);
     }
   }
 }
@@ -267,13 +274,13 @@
 .main-feature-wrapper {
   padding: 2.5rem 1rem;
 
-  // Alternating backgrounds
+  // Alternating backgrounds using semantic variables
   &:nth-child(odd) {
-    background: $light;
+    background: var(--bs-tertiary-bg);
   }
 
   &:nth-child(even) {
-    background: $white;
+    background: var(--bs-body-bg);
   }
 }
 
@@ -314,11 +321,11 @@
   }
 
   &__placeholder {
-    background: rgba(0, 0, 0, 0.05);
-    border: 2px dashed $border-color;
+    background: var(--bs-secondary-bg);
+    border: 2px dashed var(--bs-border-color);
     border-radius: 8px;
     padding: 4rem 2rem;
-    color: $text-muted;
+    color: var(--bs-secondary-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -355,11 +362,11 @@
 // =============================================================================
 
 .signals-showcase-section {
-  background: $white;
-  color: $body-color;
+  background: var(--bs-body-bg);
+  color: var(--bs-body-color);
   padding: 1rem 0; // Reduced vertical padding
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-top: 1px solid var(--bs-border-color-translucent);
+  border-bottom: 1px solid var(--bs-border-color-translucent);
 }
 
 .signals-showcase {
@@ -367,7 +374,7 @@
     text-align: center;
     font-size: $h2-font-size;
     margin-bottom: 2rem;
-    color: $body-color;
+    color: var(--bs-body-color);
   }
 
   &__grid {
@@ -396,19 +403,19 @@
   background: transparent;
   border-radius: 8px;
   text-decoration: none;
-  color: $body-color;
+  color: var(--bs-body-color);
   transition: all 0.2s ease;
 
   &:hover {
     transform: translateY(-2px);
-    color: $primary;
+    color: var(--bs-primary);
     text-decoration: none;
   }
 
   &__icon {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    color: $primary;
+    color: var(--bs-primary);
   }
 
   &__img {
@@ -485,7 +492,7 @@
   &__icon {
     font-size: 128px;
     margin-bottom: 1.5rem;
-    color: $primary;
+    color: var(--bs-primary);
     display: flex;
     justify-content: center;
 
@@ -563,14 +570,20 @@
     font-size: 3rem;
     font-weight: $font-weight-bold;
     line-height: 1;
-    color: $body-color;
+    // Use Bootstrap's semantic white variable (works in both modes)
+    color: var(--bs-white);
 
+    // Let Docsy's box-variant handle link colors automatically
+    // This ensures proper contrast on colored backgrounds
     a {
-      color: inherit;
+      color: inherit; // Inherit the white color
       text-decoration: none;
 
       &:hover {
-        color: $primary;
+        color: rgba(
+          var(--bs-white-rgb),
+          0.85
+        ); // Use RGB variable for transparency
       }
     }
 
@@ -582,7 +595,8 @@
   &__label {
     font-size: $font-size-base;
     margin-top: 0.5rem;
-    opacity: 0.7;
+    // Use Bootstrap's semantic white variable with transparency
+    color: rgba(var(--bs-white-rgb), 0.8);
   }
 }
 
@@ -694,141 +708,78 @@
 }
 
 // =============================================================================
-// CNCF SECTION - White links for contrast on secondary background
+// CNCF SECTION - Use Docsy's automatic contrast system
 // =============================================================================
 
-.cncf {
-  a {
-    color: $white !important;
-    text-decoration: underline;
-
-    &:hover {
-      color: rgba($white, 0.85) !important;
-    }
-  }
-}
+// Note: CNCF section should use class="td-box td-box--secondary" in HTML
+// This leverages Docsy's box-variant mixin which automatically calculates:
+// - color: color-contrast($secondary) = white
+// - Proper link colors via mix($blue, $text-color, lightness($secondary))
+// No CSS overrides needed here!
 
 // =============================================================================
-// DARK MODE ADJUSTMENTS
+// MINIMAL DARK MODE ADJUSTMENTS
 // =============================================================================
 
 @include color-mode(dark) {
-  // Hero search section - td-box--light needs explicit background in dark mode
-  // Use slightly lighter background like ecosystem stats section
-  .hero-search-section {
-    background: rgba(255, 255, 255, 0.03);
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-  }
+  // Most dark mode styling is now handled automatically by Bootstrap CSS variables!
+  // Only a few specific cases need overrides:
 
-  .hero-search__search .td-search__input {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: $white;
+  // Fix missing dark mode support for td-box--light (same as Docsy's td-box--white)
+  .td-box--light {
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
 
-    &::placeholder {
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    &:focus {
-      border-color: lighten($primary, 15%);
-      box-shadow: 0 0 0 3px rgba($primary, 0.25);
-    }
-  }
-
-  // Main features section dark mode (no td-box)
-  .main-feature-wrapper {
-    &:nth-child(odd) {
-      background: rgba(255, 255, 255, 0.03);
-    }
-
-    &:nth-child(even) {
-      background: var(--bs-body-bg);
-    }
-  }
-
-  .main-feature__title {
-    color: $white;
-  }
-
-  .main-feature__description {
-    color: rgba($white, 0.85);
-    opacity: 1;
-  }
-
-  .intro-content .intro-text p {
-    color: rgba($white, 0.9);
-  }
-
-  // Signals section dark mode (no td-box, needs background override)
-  .signals-showcase-section {
-    background: var(--bs-body-bg);
-    border-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .signals-showcase__title {
-    color: $white;
-  }
-
-  .signal-card {
-    color: $white;
-
-    &:hover {
-      color: lighten($primary, 20%);
-    }
-  }
-
-  .signal-card__description {
-    color: rgba($white, 0.7);
-  }
-
-  .otel-feature__icon {
-    color: lighten($primary, 15%);
-  }
-
-  .otel-feature__description {
-    color: rgba($white, 0.8);
-    opacity: 1;
-  }
-
-  // Ecosystem stats dark mode - td-box--light needs explicit overrides
-  // Use slightly lighter background like alternating feature blocks
-  .ecosystem-stats-section {
-    background: rgba(255, 255, 255, 0.03);
-
-    h2 {
-      color: $white;
-    }
-  }
-
-  .ecosystem-stat__number {
-    color: $white;
-
-    a {
-      color: $white;
-
+    p > a,
+    span > a {
+      color: var(--bs-link-color);
+      &:focus,
       &:hover {
-        color: lighten($primary, 20%);
+        color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+      }
+    }
+
+    .td-arrow-down::before {
+      border-color: var(--bs-body-bg) transparent transparent transparent;
+    }
+  }
+
+  // Fix CNCF section (td-box--secondary) link contrast
+  // Override Docsy's calculated link color to use semantic white in both modes
+  .td-box--secondary {
+    p > a,
+    span > a {
+      color: var(--bs-white);
+
+      &:focus,
+      &:hover {
+        color: rgba(var(--bs-white-rgb), 0.85);
       }
     }
   }
 
-  .ecosystem-stat__label {
-    color: rgba($white, 0.7);
+  // Search input styling for dark mode
+  .hero-search__search .td-search__input {
+    background-color: var(--bs-tertiary-bg);
+    border-color: var(--bs-border-color);
+    color: var(--bs-body-color);
+
+    &::placeholder {
+      color: var(--bs-secondary-color);
+    }
+
+    &:focus {
+      border-color: var(--bs-primary);
+      box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb), 0.25);
+    }
   }
 
+  // Adopter logos need slight opacity adjustment for dark backgrounds
   .adopters-showcase__item img {
     opacity: 0.8;
 
     &:hover {
       opacity: 1;
-    }
-  }
-
-  .adopters-showcase__item--text {
-    color: rgba($white, 0.7);
-
-    &:hover {
-      color: lighten($primary, 15%);
     }
   }
 }
