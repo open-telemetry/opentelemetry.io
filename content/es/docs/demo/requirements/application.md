@@ -1,5 +1,5 @@
 ---
-title: Requisitos de Aplicación
+title: Requisitos de aplicación
 linkTitle: Aplicación
 aliases: [application_requirements]
 default_lang_commit: 8cc5285f7294c2e6effe960b63da887ae278e3c6

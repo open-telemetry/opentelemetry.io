@@ -1,5 +1,5 @@
 ---
-title: Requisitos del Sistema
+title: Requisitos del sistema
 linkTitle: Sistema
 aliases: [system_requirements]
 default_lang_commit: 7f46ec2d7d04170d9aeaa8e2f5ec93408aee2ea5

@@ -12,7 +12,7 @@ fueron decididos en las reuniones continuas del SIG.
 2. [Requisitos de OpenTelemetry](opentelemetry/)
 3. [Requisitos del Sistema](system/)
 
-## Público Objetivo
+## Público objetivo
 
 Estamos construyendo la aplicación de demostración pensando en varios públicos
 objetivo diferentes:

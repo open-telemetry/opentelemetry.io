@@ -1,5 +1,5 @@
 ---
-title: Requisitos de Arquitectura
+title: Requisitos de arquitectura
 linkTitle: Arquitectura
 aliases: [architecture_requirements]
 default_lang_commit: ae417344d183999236c22834435e0dfeb109da29
@@ -21,7 +21,7 @@ usuarios finales, proveedores y otras partes interesadas.
 - [Requisitos de OpenTelemetry](../opentelemetry/)
 - [Requisitos del Sistema](../system/)
 
-### Objetivos de la Aplicación
+### Objetivos de la aplicación
 
 - Proporcionar a los desarrolladores una aplicación de ejemplo robusta que
   puedan usar para aprender la instrumentación de OpenTelemetry.
@@ -36,7 +36,7 @@ usuarios finales, proveedores y otras partes interesadas.
 Lo siguiente es una descripción general de los componentes lógicos de la
 aplicación de demostración.
 
-## Aplicación Principal
+## Aplicación principal
 
 La mayor parte de la aplicación de demo es una aplicación autocontenida basada
 en microservicios que realiza algún trabajo útil del 'mundo real', como un sitio
@@ -55,7 +55,7 @@ Cada servicio debe poder comunicarse con un servicio de feature flags para
 habilitar/deshabilitar fallos que se pueden usar para ilustrar cómo la
 telemetría ayuda a resolver problemas en aplicaciones distribuidas.
 
-## Componente de Feature Flags
+## Componente de feature flags
 
 Los feature flags son una parte crucial del desarrollo de aplicaciones cloud
 native. La demo utiliza OpenFeature, un proyecto en incubación de CNCF, para
@@ -64,7 +64,7 @@ gestionar feature flags.
 Los feature flags se pueden configurar a través de la interfaz de usuario del
 configurador de flagd.
 
-## Orquestación y Despliegue
+## Orquestación y despliegue
 
 Todos los servicios se ejecutan en Kubernetes. El OpenTelemetry Collector debe
 desplegarse a través del OpenTelemetry Operator, y ejecutarse en modo sidecar +
