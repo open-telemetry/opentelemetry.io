@@ -1,6 +1,6 @@
 ---
 title: C++
-weight: 11
+weight: 110
 description: >
   <img width="35" class="img-initial otel-icon"
   src="/img/logos/32x32/C++_SDK.svg" alt="C++"> A language-specific

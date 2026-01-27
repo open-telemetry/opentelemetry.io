@@ -1,6 +1,6 @@
 ---
 title: Erlang/Elixir
-weight: 14
+weight: 130
 description: >
   <img width="35" class="img-initial otel-icon"
   src="/img/logos/32x32/Erlang_SDK.svg" alt="Erlang/Elixir"> A language-specific

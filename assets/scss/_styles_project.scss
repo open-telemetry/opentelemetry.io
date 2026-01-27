@@ -79,6 +79,11 @@
     .nav-link {
       color: $navbar-nav-link-color-active;
     }
+
+    // Hide navbar search on homepage (hero search is used instead)
+    .td-navbar__search {
+      display: none !important;
+    }
   }
 
   //--------------------------------
