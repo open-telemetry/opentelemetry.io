@@ -1,5 +1,5 @@
-{{- $color := .Get "color" | default "white" -}}
-{{- $placeholder := .Get "placeholder" | default (T "ui_search") -}}
+{{ $color := .Get "color" | default "white" -}}
+{{ $placeholder := .Get "placeholder" | default (T "ui_search") -}}
 
 <div><a id="td-block-hero-search-{{ .Ordinal }}" class="td-offset-anchor"></a></div>
 <section class="row td-box td-box--{{ $color }} hero-search-section">
@@ -23,7 +23,7 @@
         </div>
         {{ with .Inner }}
         <div class="hero-search__extra">
-          {{ . | markdownify }}
+          {{ . | $.Page.RenderString }}
         </div>
         {{ end }}
       </div>

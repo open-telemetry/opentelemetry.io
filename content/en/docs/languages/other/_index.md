@@ -1,7 +1,7 @@
 ---
 title: Other languages
 linkTitle: Other
-weight: 99
+weight: 999
 description: >-
   Language-specific implementation of OpenTelemetry for other languages.
 ---
