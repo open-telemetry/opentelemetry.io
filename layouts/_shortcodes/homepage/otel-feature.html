@@ -1,0 +1,32 @@
+{{ $icon := .Get "icon" -}}
+{{ $image := .Get "image" -}}
+{{ $title := .Get "title" -}}
+{{ $url := .Get "url" -}}
+
+<div class="otel-feature">
+  {{- if $image -}}
+  <div class="otel-feature__icon">
+    <img src="{{ $image }}" alt="{{ $title }}" class="otel-feature__img">
+  </div>
+  {{- else if $icon -}}
+  <div class="otel-feature__icon">
+    {{- $iconPath := printf "iconography/32x32/%s.svg" $icon -}}
+    {{- $iconResource := resources.Get $iconPath -}}
+    {{- if $iconResource -}}
+      {{ $iconResource.Content | safeHTML }}
+    {{- else -}}
+      {{/* Fallback to Font Awesome if no SVG found */}}
+      <i class="fas fa-{{ $icon }}"></i>
+    {{- end -}}
+  </div>
+  {{- end -}}
+  <h3 class="otel-feature__title">
+    {{- with $url }}<a href="{{ . }}">{{ end -}}
+    {{ $title }}
+    {{- with $url }}</a>{{ end -}}
+  </h3>
+  <div class="otel-feature__description">
+    {{ .Inner | .Page.RenderString }}
+  </div>
+</div>
+
