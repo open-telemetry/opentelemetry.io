@@ -11,7 +11,7 @@ author: >-
 issue: 8985
 sig: End User
 # prettier-ignore
-cSpell:ignore: Kiripolsky Owojori Nduka Otlphttpexporter Datadogexporter lokiexporter Filelogreceiver k8sclusterreceiver filereceiver Attributesprocessor transformprocessor Memorylimiterprocessor Routingconnector datadogconnector zpages filestorage Storage
+cSpell:ignore: Kiripolsky Owojori Nduka Baeyens Otlphttpexporter datadogexporter lokiexporter filelogreceiver k8sclusterreceiver filereceiver Attributesprocessor transformprocessor Memorylimiterprocessor Routingconnector datadogconnector zpages filestorage Storage  statefulset spanmetrics 
 ---
 
 In 2024, the End User SIG conducted a
@@ -66,14 +66,14 @@ of users with a relatively small deployment size (<100 collectors), and about
 half of the users with large deployment sizes (>100 collectors), use both K8s
 and VM.
 
-![image1](collectors_in_production_2024_2025.png)
+![image1](collectors-in-production-2024-2025.png)
 
-![image2](collectors_in_prod_2025.png)
-![image3](collector_deployment_location.png)
+![image2](collectors-in-prod-2025.png)
+![image3](collector-deployment-location.png)
 
 Deployment location with \* implies significance at 90% confidence level
 
-![image4](k8s_vm_deployment_2025.png)
+![image4](k8s-vm-deployment-2025.png)
 
 ### Usages/Deployment Scenarios
 
@@ -81,7 +81,7 @@ The Kubernetes usage scenarios show a similar trend to last year's survey; 58%
 (-7%) gateway, 50% (-2%) daemonset, 23% (-1%) sidecar, and 14% (+1%)
 statefulset. These percentage differences are negligible.
 
-![image5](K8s_scenarios.png) 
+![image5](K8s-scenarios.png)
 
 ### Customization and Configuration
 
@@ -94,8 +94,8 @@ It is also important to note that only 39% of the respondents confidently agreed
 that the Collector Builder is easy to use, leaving 61% saying either neutral or
 hard to use (signaling a lot of room for improvement).
 
-![image6](build_own_collector.png) ![image7](otel_use_collector_builder_n55.png)
-![image8](use_otel_collector_builder.png)
+![image6](build-own-collector.png) ![image7](otel-use-collector-builder-n55.png)
+![image8](use-otel-collector-builder.png)
 
 ### Monitoring and Observability
 
@@ -104,12 +104,12 @@ not monitoring collectors. However, in the 2024 survey, 82% reported collecting
 metrics and logs, and the 2025 survey reveals that 83% collect metrics, 61%
 collect logs, and 25% collect traces. This indicates that metrics are the most
 commonly collected telemetry. Furthermore, we checked if the number of
-collectors informs the type of telemetry monitored. We found that people who run 100+
-collectors certainly collect metrics and rarely traces.
+collectors informs the type of telemetry monitored. We found that people who run
+100+ collectors certainly collect metrics and rarely traces.
 
-![image9](monitor_collector_using_internals.png)
-![image10](collector_telemetry_types.png)
-![image11](collectors_vs_telemetry_types.png)
+![image9](monitor-collector-using-internals.png)
+![image10](collector-telemetry-types.png)
+![image11](collectors-vs-telemetry-types.png)
 
 ### OTel Component Usages
 
@@ -120,7 +120,7 @@ significantly at 90% confidence level:
 
 - **Exporters** : Otlphttpexporter and Datadogexporter increase while
   lokiexporter decreased.
-- **Recerivers** : Filelogreceiver, k8sclusterreceiver, and filereceiver
+- **Receivers** : Filelogreceiver, k8sclusterreceiver, and filereceiver
   increased
 - **Processors** : Attributesprocessor and transformprocessor increased while
   Memorylimiterprocessor reduced.
@@ -140,7 +140,7 @@ receivers or exporters.
 **Note**: _We cannot directly compare the 2024 results with the 2025 results for
 this question because they were asked differently._
 
-![image17](collector_improvment_request.png)
+![image17](collector-improvment-request.png)
 
 In more detail, the users expressed their suggestions on what should be improved
 in words:
