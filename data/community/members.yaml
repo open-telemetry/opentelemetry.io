@@ -438,6 +438,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/11754898?v=4
   - name: cijothomas
     teams:
+      - arrow-approvers
+      - arrow-triagers
       - dotnet-approvers
       - dotnet-triagers
       - proto-approvers
@@ -928,6 +930,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/17073792?v=4
   - name: lalitb
     teams:
+      - arrow-approvers
+      - arrow-triagers
       - cpp-approvers
       - cpp-contrib-approvers
       - cpp-contrib-maintainers
