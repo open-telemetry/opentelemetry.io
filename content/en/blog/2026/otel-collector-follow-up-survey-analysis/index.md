@@ -81,7 +81,7 @@ The Kubernetes usage scenarios show a similar trend to last year's survey; 58%
 (-7%) gateway, 50% (-2%) daemonset, 23% (-1%) sidecar, and 14% (+1%)
 statefulset. These percentage differences are negligible.
 
-![image5](K8s_scenarios.png) ![table1](k8s_scenario_table.png)
+![image5](K8s_scenarios.png) 
 
 ### Customization and Configuration
 
