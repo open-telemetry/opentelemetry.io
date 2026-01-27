@@ -3,7 +3,6 @@ title: Convenții Semantice
 description: Denumiri comune pentru diferite tipuri de operațiuni și date.
 default_lang_commit: 3ae9fb0991c49b3b6fb318d126ec71589952f226
 weight: 30
-cSpell:ignore: urmǎrirea
 ---
 
 OpenTelemetry definește [Convențiile Semantice](/docs/specs/semconv/), uneori
