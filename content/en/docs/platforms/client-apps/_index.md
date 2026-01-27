@@ -56,14 +56,6 @@ users experience your application:
 - **Resource loading**: Network request timing, cache hit rates, and resource
   sizes.
 
-## Platform-specific guides
-
-Choose your platform for detailed instrumentation guidance:
-
-- [Android](android/): Native Android applications using Kotlin or Java.
-- [iOS](ios/): Native iOS and iPadOS applications using Swift or Objective-C.
-- [Web](web/): Browser-based applications using JavaScript or TypeScript.
-
 ## Connecting to your backend
 
 Client telemetry becomes most valuable when connected to your backend traces.
