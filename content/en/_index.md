@@ -24,8 +24,8 @@ show_banner: true
 
 <div class="l-primary-buttons">
 
-- [Learn more](/docs/what-is-opentelemetry/)
-- [Try the demo](/docs/demo/)
+- [Learn more](docs/what-is-opentelemetry/)
+- [Try the demo](docs/demo/)
 
 </div>
 
