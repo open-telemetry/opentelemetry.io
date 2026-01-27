@@ -2,5 +2,5 @@
 title: Blog
 menu: { main: { weight: 50 } }
 outputs: [HTML, RSS]
-default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 ---

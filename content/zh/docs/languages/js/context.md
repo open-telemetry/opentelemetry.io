@@ -2,6 +2,7 @@
 title: 上下文
 description: OpenTelemetry JavaScript 上下文 API 文档
 default_lang_commit: 2c3d80cad4fa99a5fb46ef550170ea4579fa50ec
+drifted_from_default: true
 aliases: [api/context]
 weight: 60
 ---

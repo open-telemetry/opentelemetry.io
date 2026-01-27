@@ -14,20 +14,18 @@ a set of checks are executed. The PR checks verify that:
 - Your PR successfully [deploys through Netlify](#netlify-deployment)
 - Your changes are compliant with our [style guide](#checks)
 
-{{% alert title="Note" %}}
-
-If any of the PR checks fails, try to
-[fix content issues](../pull-requests/#fix-issues) first by running
-`npm run fix:all` locally.
-
-You can also add the comment `/fix:all` to your PR. This will trigger the
-OpenTelemetry Bot to run that command on your behalf and update the PR. Make
-sure that you pull those changes locally.
-
-Only if your issues persist, read below what the different checks do and how you
-can recover from a failed state.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> If any of the PR checks fails, try to
+> [fix content issues](../pull-requests/#fix-issues) first by running
+> `npm run fix:all` locally.
+>
+> You can also add the comment `/fix:all` to your PR. This will trigger the
+> OpenTelemetry Bot to run that command on your behalf and update the PR. Make
+> sure that you pull those changes locally.
+>
+> Only if your issues persist, read below what the different checks do and how
+> you can recover from a failed state.
 
 ## `Easy CLA` {.notranslate lang=en}
 
@@ -105,6 +103,11 @@ These two checks build the website and verify that all links are valid.
 To build and check links locally, run `npm run check:links`. This command also
 updates the reference cache. Push any changes to the refcache in a new commit.
 
+> [!NOTE]
+>
+> For information on warnings about site-local links, see
+> [Always use a path for site-local links](#avoid-external-site-local-links).
+
 #### Fix 404s
 
 You need to fix the URLs reported as **invalid** (HTTP status **404**), by the
@@ -119,27 +122,60 @@ common. Some servers, link LinkedIn, report 999.
 
 If you have manually validated an external link that the checker isn't getting a
 success status for, you can add the following query parameter to your URL to
-have the link checker ignore it: `?no-link-check`. For example,
-<https:/some-example.org?no-link-check> will be ignored by the link checker.
+have the link checker ignore it: `?link-check=no` or `&link-check=no` if there
+are other query parameters. For example, the following URLs will be ignored:
 
-{{% alert title="Maintainers tip" %}}
+- <https:/some-example.org?link-check=no>
+- <https:/some-example.org?other-param=value&link-check=no>
 
-Maintainers can run the following script immediately after having run the link
-checker to have Puppeteer attempt to validate links with non-ok statuses:
-
-```sh
-./scripts/double-check-refcache-4XX.mjs
-```
-
-Use the `-f` flag to also validate URL fragments (anchors) in external links,
-which `htmltest` doesn't do. We don't currently run this often, so you will
-probably want to limit the number of updated entries using the `-m N` flag. For
-usage info, run with `-h`.
-
-{{% /alert %}}
+> [!TIP] Maintainers tip
+>
+> Maintainers can run the following script immediately after having run the link
+> checker to have Puppeteer attempt to validate links with non-ok statuses:
+>
+> ```sh
+> ./scripts/double-check-refcache-4XX.mjs
+> ```
+>
+> Use the `-f` flag to also validate URL fragments (anchors) in external links,
+> which `htmltest` doesn't do. We don't currently run this often, so you will
+> probably want to limit the number of updated entries using the `-m N` flag.
+> For usage info, run with `-h`.
 
 ### `WARNINGS in build log?` {.notranslate lang=en}
 
 If this check fails, review the `BUILD and CHECK LINKS` log, under the
 `npm run log:check:links` step, for any other potential issues. Ask maintainers
 for help, if you are unsure how to recover.
+
+#### Always use a path for site-local links {#avoid-external-site-local-links}
+
+When linking to pages within the OpenTelemetry website, use local paths instead
+of external links. The build will emit a warning if you don't.
+
+To address the build warning, keep only the path part of the full URL:
+
+| ❌ Don't use                              | ✅ Use instead    |
+| ----------------------------------------- | ----------------- |
+| `https://opentelemetry.io/docs/concepts/` | `/docs/concepts/` |
+| `https://www.opentelemetry.io/blog/...`   | `/blog/...`       |
+
+Using local paths ensures that:
+
+- Site-local pages open in the same browser tab: external links open in a new
+  tab, which is not the desired behavior for site-local navigation
+- Localization link processing works as expected: links are automatically
+  prefixed with the appropriate language code
+- Local paths are easier to link-check and don't unnecessarily fill the refcache
+
+<details>
+<summary>Note to maintainers</summary>
+
+The following code enforces the link requirement described in this section:
+
+- The render-link hook that emits this warning:
+  [`layouts/_markup/render-link.html`](https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html)
+- The script that auto-converts full URLs to local paths:
+  [`scripts/content-modules/adjust-pages.pl`](https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl)
+
+</details>

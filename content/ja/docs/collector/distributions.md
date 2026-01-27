@@ -2,6 +2,7 @@
 title: ディストリビューション
 weight: 25
 default_lang_commit: dcd079d98e749febcefd4d7bb1da361770ec8ed3 # patched
+drifted_from_default: true
 ---
 
 OpenTelemetryプロジェクトは現在、コレクターの事前ビルド済み[ディストリビューション][distributions]を提供しています。

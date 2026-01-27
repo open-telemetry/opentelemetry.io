@@ -9,6 +9,7 @@ author: >-
   DeLuca](https://github.com/jaydeluca) (Grafana Labs), [Marylia
   Gutierrez](https://github.com/maryliag) (Grafana Labs)
 default_lang_commit: 2e0c4fbe87eeefebb416874d28b8d332ab91b4a6 # patched
+drifted_from_default: true
 cSpell:ignore: Dotel marylia otelconf Pruébalo zeitlinger
 ---
 
@@ -300,9 +301,9 @@ configuración declarativa, consulta los siguientes recursos:
   https://github.com/open-telemetry/opentelemetry-java-instrumentation/issues/1060
 [java-project]: https://github.com/orgs/open-telemetry/projects/151
 [migration-file]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-migration-config.yaml
 [full-file]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/schema-docs.md
 [java-sampler]:
   https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/samplers
 [complete-config]:

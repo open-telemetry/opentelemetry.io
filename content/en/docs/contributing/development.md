@@ -5,18 +5,17 @@ description: Learn how to set up a development environment for this website.
 what-next: >
   You're now ready to [build](#build), [serve](#serve), and make updates to
   website files. For details on how to submit changes, see [Submitting
-  content][].
+  content](../pull-requests).
 weight: 60
+cSpell:ignore: TOCSS
 ---
 
-{{% alert title="Supported build environments" color=warning %}}
-
-Builds are officially supported on Linux-based environments and macOS. Other
-environments, such as [DevContainers](#devcontainers), are supported on a
-best-effort basis. For builds on Windows, you can follow steps similar to those
-for Linux using Windows Subsystem for Linux command line [WSL][windows-wsl].
-
-{{% /alert %}}
+> [!WARNING] Supported build environments
+>
+> Builds are officially supported on Linux-based environments and macOS. Other
+> environments, such as [DevContainers](#devcontainers), are supported on a
+> best-effort basis. For builds on Windows, you can follow steps similar to
+> those for Linux using Windows Subsystem for Linux command line [WSL][].
 
 The following instructions explain how to set up a development environment for
 this website.
@@ -93,6 +92,27 @@ npm run build
 ```
 
 The generated site files are under `public`.
+
+> [!IMPORTANT]
+>
+> If you see build or serve command **errors** similar to the following:
+>
+> ```log
+> ERROR error building site: ...[long message]... TOCSS: failed to transform "/scss/main.scss" (text/x-scss)
+> ```
+>
+> Or:
+>
+> ```log
+> ERROR failed to load modules: module "github.com/FortAwesome/Font-Awesome" not found
+> ```
+>
+> This is usually because you didn't complete all the steps in the
+> [local setup](#local-setup). In particular, (re)run this command:
+>
+> ```sh
+> npm install
+> ```
 
 ### Serve
 
@@ -179,8 +199,4 @@ such as (in alphabetical order):
 [nvm]:
   https://github.com/nvm-sh/nvm/blob/master/README.md#installing-and-updating
 [nvm-windows]: https://github.com/coreybutler/nvm-windows
-[windows-wsl]: https://learn.microsoft.com/en-us/windows/wsl/install
-
-<!-- markdownlint-disable link-image-reference-definitions -->
-
-[Submitting content]: ../pull-requests/
+[WSL]: https://learn.microsoft.com/en-us/windows/wsl/install
