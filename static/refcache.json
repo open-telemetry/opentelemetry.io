@@ -4019,6 +4019,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:48:43.050364972Z"
   },
+  "https://github.com/akahenry": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-27T15:31:03.76787464Z"
+  },
+  "https://github.com/akahenry/dynatrace-otel-exporter": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-27T15:31:03.509429907Z"
+  },
+  "https://github.com/akahenry/dynatrace-otel-exporter/blob/main/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-27T15:31:04.079286129Z"
+  },
   "https://github.com/akats7": {
     "StatusCode": 206,
     "LastSeen": "2026-01-13T09:45:43.235950927Z"
