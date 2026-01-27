@@ -4,6 +4,7 @@ description: >-
   Use OpenTelemetry on end-user controlled apps running on devices like mobile
   phones, desktop computers, and retail kiosks.
 aliases: [android, ./overview]
+cSpell:ignore: contentful
 ---
 
 Client-side applications present unique challenges for observability compared to
