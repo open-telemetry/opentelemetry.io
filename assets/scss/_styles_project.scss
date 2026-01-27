@@ -82,7 +82,7 @@
 
     // Hide navbar search on homepage (hero search is used instead)
     .td-navbar__search {
-      display: none;
+      display: none !important;
     }
   }
 
