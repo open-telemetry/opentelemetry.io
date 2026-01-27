@@ -11279,6 +11279,22 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:54:42.152070952Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-kotlin": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-23T12:25:34.271053Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-kotlin#getting-started": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-23T12:25:36.403793Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-kotlin/releases": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-23T12:25:31.995195Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-kotlin/releases/latest": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-23T12:25:31.801027Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-lambda": {
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:48:10.329232208Z"
