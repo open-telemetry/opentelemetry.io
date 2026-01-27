@@ -3,7 +3,7 @@ title: Verificações de pull request
 description:
   Saiba como fazer seu pull request passar por todas as verificações com sucesso
 weight: 40
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
 ---
 
 Ao abrir um
@@ -130,7 +130,7 @@ reportam 999.
 Se você validou manualmente um link externo que o verificador de links não está
 obtendo um status de sucesso, você pode adicionar o seguinte parâmetro de
 consulta à sua URL para fazer com que o verificador de links ignore ele:
-`?no-link-check`. Por exemplo, <https:/some-example.org?no-link-check> será
+`?link-check=no`. Por exemplo, <https:/some-example.org?link-check=no> será
 ignorado pelo verificador de links.
 
 {{% alert title="Dica para mantenedores" %}}
