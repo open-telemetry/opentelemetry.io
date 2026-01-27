@@ -5,7 +5,8 @@ title:
 linkTitle: KubeCon China '25
 date: 2025-05-22
 author: '[Tiffany Hrabusa](https://github.com/tiffany76) (Grafana Labs)'
-cSpell:ignore: Delewski Hrabusa Przemek Purnesh Quesma Zihao Ziming
+# prettier-ignore
+cSpell:ignore: antipatterns Delewski Hrabusa Przemek Purnesh Quesma Zihao Ziming
 ---
 
 The OpenTelemetry project invites you to join members of the OpenTelemetry
@@ -37,6 +38,6 @@ the conference!
 Come listen, learn, and get involved in OpenTelemetry. See you in Hong!
 
 [KubeCon + CloudNativeCon China]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-china/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog
+  https://www.lfasiallc.com/kubecon-cloudnativecon-openinfra-summit-pytorch-conference-china/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog
 [registration]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-china/reg/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-China-2025

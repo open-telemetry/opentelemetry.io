@@ -37,16 +37,18 @@ redirects: [{ from: /ecosystem/registry*, to: '/ecosystem/registry?' }]
 
 {{% /blocks/lead %}}
 
-{{< blocks/section color="white" type="container-lg" >}}
+{{% blocks/section color="white pb-0" type="container-lg" %}}
 
-{{% alert %}}
+> [!NOTE]
+>
+> The OpenTelemetry Registry allows you to search for instrumentation libraries,
+> collector components, utilities, and other useful projects in the
+> OpenTelemetry ecosystem. If you are a project maintainer, you can
+> [add your project to the OpenTelemetry Registry](adding/).
 
-The OpenTelemetry Registry allows you to search for instrumentation libraries,
-collector components, utilities, and other useful projects in the OpenTelemetry
-ecosystem. If you are a project maintainer, you can
-[add your project to the OpenTelemetry Registry](adding/).
+{{% /blocks/lead %}}
 
-{{% /alert %}}
+{{< blocks/section color="white pt-0" type="container-lg" >}}
 
 {{< ecosystem/registry/search-form >}}
 

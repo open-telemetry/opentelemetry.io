@@ -10,10 +10,11 @@ issue: 7966
 sig: Contributor Experience
 ---
 
-{{% alert title="Update" %}} Update as of 2025-12-08: A giant thank you to those
-of you who have volunteered to participate! We have received more interest than
-expected, so sign-ups are closed for now. Stay tuned to the OpenTelemetry blog
-for more feedback opportunities in the future. {{% /alert %}}
+> [!NOTE] Update as of 2025-12-08
+>
+> A giant thank you to those of you who have volunteered to participate! We have
+> received more interest than expected, so sign-ups are closed for now. Stay
+> tuned to the OpenTelemetry blog for more feedback opportunities in the future.
 
 If you've ever thought about contributing to OpenTelemetry but weren't sure
 where to start, you're not alone. In a

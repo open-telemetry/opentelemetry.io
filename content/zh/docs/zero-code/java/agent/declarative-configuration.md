@@ -1,7 +1,7 @@
 ---
 title: Java 代理声明式配置
 linkTitle: 声明式配置
-default_lang_commit: 9958669fbbc5664acded963fedb51c7cbf63c6a3
+default_lang_commit: 9958669fbbc5664acded963fedb51c7cbf63c6a3 # patched
 drifted_from_default: true
 weight: 11
 cSpell:ignore: genai
@@ -43,7 +43,7 @@ cSpell:ignore: genai
 1. 如果配置选项以 `otel.javaagent.` 开头（例如 `otel.javaagent.logging`），那么它很可能是只能通过环境变量或系统属性设置的属性（有关详细信息，请参阅下面的[仅限环境变量和系统属性的选项](#environment-variables-and-system-properties-only-options)部分）。
    否则，移除 `otel.javaagent.` 前缀，并将其放置在下方的 `agent` 配置段中。
 2. 如果配置选项以 `otel.instrumentation.` 开头（例如 `otel.instrumentation.spring-batch.experimental.chunk.new-trace`），那么去掉 `otel.instrumentation.` 前缀，并将其放在下面的 `instrumentation` 部分下。
-3. 否则，该选项很可能属于 SDK 配置。在[迁移配置](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml)中查找对应的环境变量或系统属性。
+3. 否则，该选项很可能属于 SDK 配置。在[迁移配置](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-migration-config.yaml)中查找对应的环境变量或系统属性。
    如果有一个系统属性像 `otel.bsp.schedule.delay`，那么在迁移配置中查找对应的环境变量 `OTEL_BSP_SCHEDULE_DELAY`。
 4. 使用 `.` 创建缩进级别。
 5. 将 `-` 转换为 `_`。

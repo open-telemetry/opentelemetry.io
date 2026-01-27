@@ -4,9 +4,10 @@
 @import 'registry';
 @import 'tabs';
 @import 'external_link';
-@import 'dark-adjustments';
 @import 'td/color-adjustments-dark';
 @import 'td/code-dark';
+@import 'dark-adjustments';
+@import 'homepage';
 @import 'td/gcs-search-dark';
 @import '_page_no_left_sidebar';
 
@@ -66,35 +67,55 @@
   }
 }
 
-//override the button classes for the Status page only
-.l-status-primary {
-  @extend .l-buttons;
-  justify-content: left;
-
-  > ul > li > a /*, > p > a*/ {
-    @extend .btn-lg;
-    @extend .btn-primary;
-    padding: 20px;
-    border-radius: 0;
-    min-width: 220px;
-  }
-}
-
-.l-status-secondary {
-  @extend .l-buttons;
-  justify-content: left;
-
-  > ul > li > a /*, > p > a*/ {
-    @extend .btn-lg;
-    @extend .btn-secondary;
-    padding: 20px;
-    border-radius: 0;
-    min-width: 150px;
-    color: #2f4f4f;
-  }
-}
-
 .td-navbar {
+  $navbar-nav-link-color-active: $gray-100;
+  // Slightly dim base / non-active nav links:
+  $navbar-nav-link-color-base: $gray-400;
+
+  background-color: $primary-darker;
+
+  // On the home page, color all nav links as if active.
+  @at-root .td-home & {
+    .nav-link {
+      color: $navbar-nav-link-color-active;
+    }
+  }
+
+  //--------------------------------
+  // TODO: upstream to Docsy
+  // Improve color contrast DRAFT
+  .nav-link {
+    color: $navbar-nav-link-color-base;
+
+    &.active {
+      // Actually, give the active nav link a hover tint instead of
+      // $navbar-nav-link-color-active.
+      color: tint-color($navbar-dark-hover-color, 50%);
+      text-decoration: $link-decoration;
+    }
+
+    &:hover {
+      color: var(--bs-navbar-hover-color); // default
+    }
+
+    &:focus,
+    // Bootstrap sets .nav-link:focus-visible, but in a way that isn't
+    // compatible with dark mode. This is a known issue, see
+    // https://github.com/twbs/bootstrap/issues/37549:
+    //
+    // > [ ] Docs navbar blue focus visible is almost invisible!
+    //
+    // Fallback to browser default:
+    &:focus-visible {
+      outline: revert;
+      box-shadow: none;
+    }
+  }
+  .td-search:not(:focus-within) {
+    color: $gray-200;
+  }
+  //--------------------------------
+
   .navbar-brand {
     @include media-breakpoint-up(md) {
       padding: 0;
@@ -122,28 +143,28 @@
       padding-top: 1rem;
       max-width: 80%;
     }
-
-    a {
-      color: white;
-      &.external-link:after {
-        display: none;
-      }
-    }
   }
 }
 
 .o-banner {
-  @include media-breakpoint-up(md) {
-    width: 100%;
-    position: fixed;
-    margin-left: -15px;
-    z-index: 31;
-    top: 4rem;
-  }
-
-  background: var(--td-pre-bg);
+  background: var(--bs-tertiary-bg);
   color: var(--bs-body-color);
   text-align: center;
+
+  // Handling the x positioning requires some calculations. Assumption is that
+  // the banner is inside a .container-fluid, which has this padding-x:
+  $padding-x: $container-padding-x * 0.5;
+  margin-left: -$padding-x; // Undo left padding of parent
+  width: calc(100% + 2 * #{$padding-x});
+
+  @include media-breakpoint-up(md) {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    margin-left: 0;
+    width: 100%;
+    z-index: 31;
+  }
 
   & p {
     padding: 0.5rem;

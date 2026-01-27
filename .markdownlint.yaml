@@ -25,4 +25,4 @@ validate-links:
       message: >-
         GitHub URLs should use `github.(com|blog|io)` domains to avoid
         typosquatting. For details, see
-        https://github.com/open-telemetry/opentelemetry.io/issues/8085
+        https://github.com/open-telemetry/opentelemetry.io/issues/8085.
