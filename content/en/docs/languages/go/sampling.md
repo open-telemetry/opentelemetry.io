@@ -164,6 +164,6 @@ When implementing custom samplers, keep these points in mind:
    sampling decisions, wrap your sampler with `ParentBased` or check
    `psc.IsSampled()` manually.
 
-2. **Heavy computations in ShouldSample**: The `ShouldSample` function is called synchronously
-   for every span creation. Avoid expensive operations like network calls or
-   complex computations that could impact performance.
+2. **Heavy computations in ShouldSample**: The `ShouldSample` function is called
+   synchronously for every span creation. Avoid expensive operations like
+   network calls or complex computations that could impact performance.
