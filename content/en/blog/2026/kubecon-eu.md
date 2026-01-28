@@ -3,7 +3,6 @@ title: Join us for OpenTelemetry Talks and Activities at KubeCon Europe 2026
 linkTitle: KubeCon EU '26
 date: 2026-01-20
 author: '[Zhu Jiekun](https://github.com/jiekun) (VictoriaMetrics)'
-# prettier-ignore
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
