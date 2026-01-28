@@ -7,12 +7,12 @@ developer_note: >
   O shortcode blocks/cover (usado abaixo) vai servir como imagem de background
   para qualquer arquivo de imagem que contenha "background" no nome.
 show_banner: true
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{< blocks/cover image_anchor="top" height="max" color="primary" >}}
+{{% blocks/cover image_anchor="top" height="max" color="primary" %}}
 
 <!-- prettier-ignore -->
 ![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
@@ -38,7 +38,7 @@ default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 - [Ops](docs/getting-started/ops/)
 
 </div>
-{{< /blocks/cover >}}
+{{% /blocks/cover %}}
 
 {{% blocks/lead color="white" %}}
 

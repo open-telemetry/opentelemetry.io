@@ -72,39 +72,24 @@
 }
 
 .td-navbar {
-  $navbar-nav-link-color-active: $gray-100;
-  // Slightly dim base / non-active nav links:
-  $navbar-nav-link-color-base: $gray-400;
+  // By design, the navbar has light text on a dark background. It's children,
+  // like dropdown menus and the search box, follow the page's light/dark color
+  // mode.
 
-  background-color: $primary-darker;
-
-  // On the home page, color all nav links as if active.
-  @at-root .td-home & {
-    .nav-link {
-      color: $navbar-nav-link-color-active;
-    }
-
-    // Hide navbar search on homepage (hero search is used instead)
-    .td-navbar__search {
-      display: none !important;
-    }
-  }
+  // Bootstrap and Docsy overrides:
+  background-image: none; // Override Bootstrap's default gradient background.
+  --bs-border-color: #{$gray-500}; // for the search box
+  --td-navbar-border-bottom: none;
 
   //--------------------------------
-  // TODO: upstream to Docsy
+  // TODO: upstream some of this to Docsy
   // Improve color contrast DRAFT
   .nav-link {
-    color: $navbar-nav-link-color-base;
+    --bs-nav-link-color: #{$gray-100};
 
     &.active {
-      // Actually, give the active nav link a hover tint instead of
-      // $navbar-nav-link-color-active.
-      color: tint-color($navbar-dark-hover-color, 50%);
+      color: tint-color($navbar-dark-hover-color, 65%);
       text-decoration: $link-decoration;
-    }
-
-    &:hover {
-      color: var(--bs-navbar-hover-color); // default
     }
 
     &:focus,
@@ -112,7 +97,7 @@
     // compatible with dark mode. This is a known issue, see
     // https://github.com/twbs/bootstrap/issues/37549:
     //
-    // > [ ] Docs navbar blue focus visible is almost invisible!
+    // > Docs navbar blue focus visible is almost invisible!
     //
     // Fallback to browser default:
     &:focus-visible {

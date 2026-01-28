@@ -5,6 +5,11 @@
     background: transparent !important;
   }
 
+  // Hide navbar search on homepage (hero search is used instead)
+  .td-navbar__search {
+    display: none !important;
+  }
+
   // =============================================================================
   // HERO SEARCH - Search bar section below compact hero
   // =============================================================================
