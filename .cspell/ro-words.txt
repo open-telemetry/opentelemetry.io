@@ -1,6 +1,7 @@
 actualizeazǎ
-Adaugǎ
+adaugǎ
 agnostice
+aspirațional
 calificatori
 colectezi
 colectorului
@@ -15,7 +16,7 @@ depanezi
 deții
 dezvoltatori
 dezvoltatorii
-Discutǎ
+discutǎ
 exportatorilor
 gestionezi
 informatica
@@ -23,6 +24,8 @@ informatică
 interlingvistice
 intervaluri
 intervalurilor
+instrumenteze
+încorporezi
 microservicii
 migrare
 migrezi
@@ -32,7 +35,7 @@ observabilitate
 observabilitatea
 observabilității
 receptoarelor
-Semneazǎ
+semneazǎ
 telemetrice
 telemetrie
 tranzacţie
