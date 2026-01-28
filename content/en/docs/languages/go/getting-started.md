@@ -745,70 +745,70 @@ Along with the trace, log messages are emitted to the console.
 
 ```json
 {
-	"Timestamp": "2026-01-28T09:58:44.29900397+01:00",
-	"ObservedTimestamp": "2026-01-28T09:58:44.299031783+01:00",
-	"Severity": 9,
-	"SeverityText": "INFO",
-	"Body": {
-		"Type": "String",
-		"Value": "Alice is rolling the dice"
-	},
-	"Attributes": [
-		{
-			"Key": "result",
-			"Value": {
-				"Type": "Int64",
-				"Value": 1
-			}
-		}
-	],
-	"TraceID": "f00f8045a6c78b3aa5ecaca9f3b971b4",
-	"SpanID": "f641bd25400a1b70",
-	"TraceFlags": "01",
-	"Resource": [
-		{
-			"Key": "service.name",
-			"Value": {
-				"Type": "STRING",
-				"Value": "dice"
-			}
-		},
-		{
-			"Key": "service.version",
-			"Value": {
-				"Type": "STRING",
-				"Value": "0.1.0"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.language",
-			"Value": {
-				"Type": "STRING",
-				"Value": "go"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.name",
-			"Value": {
-				"Type": "STRING",
-				"Value": "opentelemetry"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.version",
-			"Value": {
-				"Type": "STRING",
-				"Value": "1.39.0"
-			}
-		}
-	],
-	"Scope": {
-		"Name": "go.opentelemetry.io/contrib/examples/dice",
-		"Version": "",
-		"SchemaURL": "",
-		"Attributes": {}
-	},
-	"DroppedAttributes": 0
+  "Timestamp": "2026-01-28T09:58:44.29900397+01:00",
+  "ObservedTimestamp": "2026-01-28T09:58:44.299031783+01:00",
+  "Severity": 9,
+  "SeverityText": "INFO",
+  "Body": {
+    "Type": "String",
+    "Value": "Alice is rolling the dice"
+  },
+  "Attributes": [
+    {
+      "Key": "result",
+      "Value": {
+        "Type": "Int64",
+        "Value": 1
+      }
+    }
+  ],
+  "TraceID": "f00f8045a6c78b3aa5ecaca9f3b971b4",
+  "SpanID": "f641bd25400a1b70",
+  "TraceFlags": "01",
+  "Resource": [
+    {
+      "Key": "service.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "dice"
+      }
+    },
+    {
+      "Key": "service.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "0.1.0"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.language",
+      "Value": {
+        "Type": "STRING",
+        "Value": "go"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "opentelemetry"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "1.39.0"
+      }
+    }
+  ],
+  "Scope": {
+    "Name": "go.opentelemetry.io/contrib/examples/dice",
+    "Version": "",
+    "SchemaURL": "",
+    "Attributes": {}
+  },
+  "DroppedAttributes": 0
 }
 ```
 
@@ -825,505 +825,421 @@ the instrumentation library.
 
 ```json
 {
-	"Resource": [
-		{
-			"Key": "service.name",
-			"Value": {
-				"Type": "STRING",
-				"Value": "dice"
-			}
-		},
-		{
-			"Key": "service.version",
-			"Value": {
-				"Type": "STRING",
-				"Value": "0.1.0"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.language",
-			"Value": {
-				"Type": "STRING",
-				"Value": "go"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.name",
-			"Value": {
-				"Type": "STRING",
-				"Value": "opentelemetry"
-			}
-		},
-		{
-			"Key": "telemetry.sdk.version",
-			"Value": {
-				"Type": "STRING",
-				"Value": "1.39.0"
-			}
-		}
-	],
-	"ScopeMetrics": [
-		{
-			"Scope": {
-				"Name": "go.opentelemetry.io/contrib/examples/dice",
-				"Version": "",
-				"SchemaURL": "",
-				"Attributes": null
-			},
-			"Metrics": [
-				{
-					"Name": "dice.rolls",
-					"Description": "The number of rolls by roll value",
-					"Unit": "{roll}",
-					"Data": {
-						"DataPoints": [
-							{
-								"Attributes": [
-									{
-										"Key": "roll.value",
-										"Value": {
-											"Type": "INT64",
-											"Value": 2
-										}
-									}
-								],
-								"StartTime": "2026-01-28T09:58:36.297218201+01:00",
-								"Time": "2026-01-28T09:59:04.826103626+01:00",
-								"Value": 2,
-								"Exemplars": [
-									{
-										"FilteredAttributes": null,
-										"Time": "2026-01-28T09:58:58.310873844+01:00",
-										"Value": 1,
-										"SpanID": "MFfLVpcp2E8=",
-										"TraceID": "KGizZKX5cz9DqgG95WoBvQ=="
-									}
-								]
-							},
-							{
-								"Attributes": [
-									{
-										"Key": "roll.value",
-										"Value": {
-											"Type": "INT64",
-											"Value": 3
-										}
-									}
-								],
-								"StartTime": "2026-01-28T09:58:36.297218201+01:00",
-								"Time": "2026-01-28T09:59:04.826103626+01:00",
-								"Value": 1,
-								"Exemplars": [
-									{
-										"FilteredAttributes": null,
-										"Time": "2026-01-28T09:58:48.446722639+01:00",
-										"Value": 1,
-										"SpanID": "Xa6wKaCre6k=",
-										"TraceID": "VncSsITnUTtWpMAFGRoLng=="
-									}
-								]
-							},
-							{
-								"Attributes": [
-									{
-										"Key": "roll.value",
-										"Value": {
-											"Type": "INT64",
-											"Value": 1
-										}
-									}
-								],
-								"StartTime": "2026-01-28T09:58:36.297218201+01:00",
-								"Time": "2026-01-28T09:59:04.826103626+01:00",
-								"Value": 4,
-								"Exemplars": [
-									{
-										"FilteredAttributes": null,
-										"Time": "2026-01-28T09:58:56.340332341+01:00",
-										"Value": 1,
-										"SpanID": "RAsXIMJQIcg=",
-										"TraceID": "NbZh738k1TlZ/I32RuLS/A=="
-									}
-								]
-							},
-							{
-								"Attributes": [
-									{
-										"Key": "roll.value",
-										"Value": {
-											"Type": "INT64",
-											"Value": 5
-										}
-									}
-								],
-								"StartTime": "2026-01-28T09:58:36.297218201+01:00",
-								"Time": "2026-01-28T09:59:04.826103626+01:00",
-								"Value": 1,
-								"Exemplars": [
-									{
-										"FilteredAttributes": null,
-										"Time": "2026-01-28T09:58:55.131367409+01:00",
-										"Value": 1,
-										"SpanID": "eVC0Kj4/vzw=",
-										"TraceID": "NVuservV50eLN7sNu9Sm4A=="
-									}
-								]
-							}
-						],
-						"Temporality": "CumulativeTemporality",
-						"IsMonotonic": true
-					}
-				}
-			]
-		},
-		{
-			"Scope": {
-				"Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
-				"Version": "0.64.0",
-				"SchemaURL": "",
-				"Attributes": null
-			},
-			"Metrics": [
-				{
-					"Name": "http.server.request.body.size",
-					"Description": "Size of HTTP server request bodies.",
-					"Unit": "By",
-					"Data": {
-						"DataPoints": [
-							{
-								"Attributes": [
-									{
-										"Key": "http.request.method",
-										"Value": {
-											"Type": "STRING",
-											"Value": "GET"
-										}
-									},
-									{
-										"Key": "http.response.status_code",
-										"Value": {
-											"Type": "INT64",
-											"Value": 200
-										}
-									},
-									{
-										"Key": "network.protocol.name",
-										"Value": {
-											"Type": "STRING",
-											"Value": "http"
-										}
-									},
-									{
-										"Key": "network.protocol.version",
-										"Value": {
-											"Type": "STRING",
-											"Value": "1.1"
-										}
-									},
-									{
-										"Key": "server.address",
-										"Value": {
-											"Type": "STRING",
-											"Value": "localhost"
-										}
-									},
-									{
-										"Key": "server.port",
-										"Value": {
-											"Type": "INT64",
-											"Value": 8080
-										}
-									},
-									{
-										"Key": "url.scheme",
-										"Value": {
-											"Type": "STRING",
-											"Value": "http"
-										}
-									}
-								],
-								"StartTime": "2026-01-28T09:58:36.297829232+01:00",
-								"Time": "2026-01-28T09:59:04.82612558+01:00",
-								"Count": 8,
-								"Bounds": [
-									0,
-									5,
-									10,
-									25,
-									50,
-									75,
-									100,
-									250,
-									500,
-									750,
-									1000,
-									2500,
-									5000,
-									7500,
-									10000
-								],
-								"BucketCounts": [
-									8,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0
-								],
-								"Min": 0,
-								"Max": 0,
-								"Sum": 0,
-								"Exemplars": [
-									{
-										"FilteredAttributes": null,
-										"Time": "2026-01-28T09:58:58.310903274+01:00",
-										"Value": 0,
-										"SpanID": "YQY4fyjDhiQ=",
-										"TraceID": "KGizZKX5cz9DqgG95WoBvQ=="
-									}
-								]
-							}
-						],
-						"Temporality": "CumulativeTemporality"
-					}
-				},
-				{
-					"Name": "http.server.response.body.size",
-					"Description": "Size of HTTP server response bodies.",
-					"Unit": "By",
-					"Data": {
-						"DataPoints": [
-							{
-								"Attributes": [
-									{
-										"Key": "http.request.method",
-										"Value": {
-											"Type": "STRING",
-											"Value": "GET"
-										}
-									},
-									{
-										"Key": "http.response.status_code",
-										"Value": {
-											"Type": "INT64",
-											"Value": 200
-										}
-									},
-									{
-										"Key": "network.protocol.name",
-										"Value": {
-											"Type": "STRING",
-											"Value": "http"
-										}
-									},
-									{
-										"Key": "network.protocol.version",
-										"Value": {
-											"Type": "STRING",
-											"Value": "1.1"
-										}
-									},
-									{
-										"Key": "server.address",
-										"Value": {
-											"Type": "STRING",
-											"Value": "localhost"
-										}
-									},
-									{
-										"Key": "server.port",
-										"Value": {
-											"Type": "INT64",
-											"Value": 8080
-										}
-									},
-									{
-										"Key": "url.scheme",
-										"Value": {
-											"Type": "STRING",
-											"Value": "http"
-										}
-									}
-								],
-								"StartTime": "2026-01-28T09:58:36.297836516+01:00",
-								"Time": "2026-01-28T09:59:04.826130841+01:00",
-								"Count": 8,
-								"Bounds": [
-									0,
-									5,
-									10,
-									25,
-									50,
-									75,
-									100,
-									250,
-									500,
-									750,
-									1000,
-									2500,
-									5000,
-									7500,
-									10000
-								],
-								"BucketCounts": [
-									0,
-									8,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0
-								],
-								"Min": 2,
-								"Max": 2,
-								"Sum": 16,
-								"Exemplars": [
-									{
-										"FilteredAttributes": null,
-										"Time": "2026-01-28T09:58:58.310905174+01:00",
-										"Value": 2,
-										"SpanID": "YQY4fyjDhiQ=",
-										"TraceID": "KGizZKX5cz9DqgG95WoBvQ=="
-									}
-								]
-							}
-						],
-						"Temporality": "CumulativeTemporality"
-					}
-				},
-				{
-					"Name": "http.server.request.duration",
-					"Description": "Duration of HTTP server requests.",
-					"Unit": "s",
-					"Data": {
-						"DataPoints": [
-							{
-								"Attributes": [
-									{
-										"Key": "http.request.method",
-										"Value": {
-											"Type": "STRING",
-											"Value": "GET"
-										}
-									},
-									{
-										"Key": "http.response.status_code",
-										"Value": {
-											"Type": "INT64",
-											"Value": 200
-										}
-									},
-									{
-										"Key": "network.protocol.name",
-										"Value": {
-											"Type": "STRING",
-											"Value": "http"
-										}
-									},
-									{
-										"Key": "network.protocol.version",
-										"Value": {
-											"Type": "STRING",
-											"Value": "1.1"
-										}
-									},
-									{
-										"Key": "server.address",
-										"Value": {
-											"Type": "STRING",
-											"Value": "localhost"
-										}
-									},
-									{
-										"Key": "server.port",
-										"Value": {
-											"Type": "INT64",
-											"Value": 8080
-										}
-									},
-									{
-										"Key": "url.scheme",
-										"Value": {
-											"Type": "STRING",
-											"Value": "http"
-										}
-									}
-								],
-								"StartTime": "2026-01-28T09:58:36.297850485+01:00",
-								"Time": "2026-01-28T09:59:04.826135353+01:00",
-								"Count": 8,
-								"Bounds": [
-									0.005,
-									0.01,
-									0.025,
-									0.05,
-									0.075,
-									0.1,
-									0.25,
-									0.5,
-									0.75,
-									1,
-									2.5,
-									5,
-									7.5,
-									10
-								],
-								"BucketCounts": [
-									8,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0,
-									0
-								],
-								"Min": 0.000067593,
-								"Max": 0.000635093,
-								"Sum": 0.001617854,
-								"Exemplars": [
-									{
-										"FilteredAttributes": null,
-										"Time": "2026-01-28T09:58:58.310908469+01:00",
-										"Value": 0.000197799,
-										"SpanID": "YQY4fyjDhiQ=",
-										"TraceID": "KGizZKX5cz9DqgG95WoBvQ=="
-									}
-								]
-							}
-						],
-						"Temporality": "CumulativeTemporality"
-					}
-				}
-			]
-		}
-	]
+  "Resource": [
+    {
+      "Key": "service.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "dice"
+      }
+    },
+    {
+      "Key": "service.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "0.1.0"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.language",
+      "Value": {
+        "Type": "STRING",
+        "Value": "go"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.name",
+      "Value": {
+        "Type": "STRING",
+        "Value": "opentelemetry"
+      }
+    },
+    {
+      "Key": "telemetry.sdk.version",
+      "Value": {
+        "Type": "STRING",
+        "Value": "1.39.0"
+      }
+    }
+  ],
+  "ScopeMetrics": [
+    {
+      "Scope": {
+        "Name": "go.opentelemetry.io/contrib/examples/dice",
+        "Version": "",
+        "SchemaURL": "",
+        "Attributes": null
+      },
+      "Metrics": [
+        {
+          "Name": "dice.rolls",
+          "Description": "The number of rolls by roll value",
+          "Unit": "{roll}",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 2
+                    }
+                  }
+                ],
+                "StartTime": "2026-01-28T09:58:36.297218201+01:00",
+                "Time": "2026-01-28T09:59:04.826103626+01:00",
+                "Value": 2,
+                "Exemplars": [
+                  {
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:58.310873844+01:00",
+                    "Value": 1,
+                    "SpanID": "MFfLVpcp2E8=",
+                    "TraceID": "KGizZKX5cz9DqgG95WoBvQ=="
+                  }
+                ]
+              },
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 3
+                    }
+                  }
+                ],
+                "StartTime": "2026-01-28T09:58:36.297218201+01:00",
+                "Time": "2026-01-28T09:59:04.826103626+01:00",
+                "Value": 1,
+                "Exemplars": [
+                  {
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:48.446722639+01:00",
+                    "Value": 1,
+                    "SpanID": "Xa6wKaCre6k=",
+                    "TraceID": "VncSsITnUTtWpMAFGRoLng=="
+                  }
+                ]
+              },
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 1
+                    }
+                  }
+                ],
+                "StartTime": "2026-01-28T09:58:36.297218201+01:00",
+                "Time": "2026-01-28T09:59:04.826103626+01:00",
+                "Value": 4,
+                "Exemplars": [
+                  {
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:56.340332341+01:00",
+                    "Value": 1,
+                    "SpanID": "RAsXIMJQIcg=",
+                    "TraceID": "NbZh738k1TlZ/I32RuLS/A=="
+                  }
+                ]
+              },
+              {
+                "Attributes": [
+                  {
+                    "Key": "roll.value",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 5
+                    }
+                  }
+                ],
+                "StartTime": "2026-01-28T09:58:36.297218201+01:00",
+                "Time": "2026-01-28T09:59:04.826103626+01:00",
+                "Value": 1,
+                "Exemplars": [
+                  {
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:55.131367409+01:00",
+                    "Value": 1,
+                    "SpanID": "eVC0Kj4/vzw=",
+                    "TraceID": "NVuservV50eLN7sNu9Sm4A=="
+                  }
+                ]
+              }
+            ],
+            "Temporality": "CumulativeTemporality",
+            "IsMonotonic": true
+          }
+        }
+      ]
+    },
+    {
+      "Scope": {
+        "Name": "go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp",
+        "Version": "0.64.0",
+        "SchemaURL": "",
+        "Attributes": null
+      },
+      "Metrics": [
+        {
+          "Name": "http.server.request.body.size",
+          "Description": "Size of HTTP server request bodies.",
+          "Unit": "By",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.request.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.response.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "network.protocol.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "network.protocol.version",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "server.address",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "server.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  },
+                  {
+                    "Key": "url.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  }
+                ],
+                "StartTime": "2026-01-28T09:58:36.297829232+01:00",
+                "Time": "2026-01-28T09:59:04.82612558+01:00",
+                "Count": 8,
+                "Bounds": [
+                  0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000,
+                  7500, 10000
+                ],
+                "BucketCounts": [
+                  8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                ],
+                "Min": 0,
+                "Max": 0,
+                "Sum": 0,
+                "Exemplars": [
+                  {
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:58.310903274+01:00",
+                    "Value": 0,
+                    "SpanID": "YQY4fyjDhiQ=",
+                    "TraceID": "KGizZKX5cz9DqgG95WoBvQ=="
+                  }
+                ]
+              }
+            ],
+            "Temporality": "CumulativeTemporality"
+          }
+        },
+        {
+          "Name": "http.server.response.body.size",
+          "Description": "Size of HTTP server response bodies.",
+          "Unit": "By",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.request.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.response.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "network.protocol.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "network.protocol.version",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "server.address",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "server.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  },
+                  {
+                    "Key": "url.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  }
+                ],
+                "StartTime": "2026-01-28T09:58:36.297836516+01:00",
+                "Time": "2026-01-28T09:59:04.826130841+01:00",
+                "Count": 8,
+                "Bounds": [
+                  0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000,
+                  7500, 10000
+                ],
+                "BucketCounts": [
+                  0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+                ],
+                "Min": 2,
+                "Max": 2,
+                "Sum": 16,
+                "Exemplars": [
+                  {
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:58.310905174+01:00",
+                    "Value": 2,
+                    "SpanID": "YQY4fyjDhiQ=",
+                    "TraceID": "KGizZKX5cz9DqgG95WoBvQ=="
+                  }
+                ]
+              }
+            ],
+            "Temporality": "CumulativeTemporality"
+          }
+        },
+        {
+          "Name": "http.server.request.duration",
+          "Description": "Duration of HTTP server requests.",
+          "Unit": "s",
+          "Data": {
+            "DataPoints": [
+              {
+                "Attributes": [
+                  {
+                    "Key": "http.request.method",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "GET"
+                    }
+                  },
+                  {
+                    "Key": "http.response.status_code",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 200
+                    }
+                  },
+                  {
+                    "Key": "network.protocol.name",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  },
+                  {
+                    "Key": "network.protocol.version",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "1.1"
+                    }
+                  },
+                  {
+                    "Key": "server.address",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "localhost"
+                    }
+                  },
+                  {
+                    "Key": "server.port",
+                    "Value": {
+                      "Type": "INT64",
+                      "Value": 8080
+                    }
+                  },
+                  {
+                    "Key": "url.scheme",
+                    "Value": {
+                      "Type": "STRING",
+                      "Value": "http"
+                    }
+                  }
+                ],
+                "StartTime": "2026-01-28T09:58:36.297850485+01:00",
+                "Time": "2026-01-28T09:59:04.826135353+01:00",
+                "Count": 8,
+                "Bounds": [
+                  0.005, 0.01, 0.025, 0.05, 0.075, 0.1, 0.25, 0.5, 0.75, 1, 2.5,
+                  5, 7.5, 10
+                ],
+                "BucketCounts": [8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                "Min": 0.000067593,
+                "Max": 0.000635093,
+                "Sum": 0.001617854,
+                "Exemplars": [
+                  {
+                    "FilteredAttributes": null,
+                    "Time": "2026-01-28T09:58:58.310908469+01:00",
+                    "Value": 0.000197799,
+                    "SpanID": "YQY4fyjDhiQ=",
+                    "TraceID": "KGizZKX5cz9DqgG95WoBvQ=="
+                  }
+                ]
+              }
+            ],
+            "Temporality": "CumulativeTemporality"
+          }
+        }
+      ]
+    }
+  ]
 }
 ```
 
