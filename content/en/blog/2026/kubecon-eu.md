@@ -11,8 +11,6 @@ technical committee are thrilled to be at [KubeCon EU] in Amsterdam from March
 
 Read on to learn about all the events related to OpenTelemetry during KubeCon.
 
-{{% comment %}}
-
 ## KubeCon Talks and Maintainer Sessions
 
 - **[We Deleted Our Observability Stack and Rebuilt It With OTEL: 12 Engineers to 4 at 20K+ Clusters](https://kccnceu2026.sched.com/event/2CVxh/we-deleted-our-observability-stack-and-rebuilt-it-with-otel-12-engineers-to-4-at-20k+-clusters-yash-sharma-kunju-perath-digitalocean)**<br>by Yash Sharma, DigitalOcean; Kunju Perath, DigitalOcean<br>
