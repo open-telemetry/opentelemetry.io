@@ -1171,6 +1171,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-10T09:40:24.869698413Z"
   },
+  "https://creativecommons.org/licenses/by/4.0/deed.uk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:05:49.405271+03:00"
+  },
   "https://cri-o.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:54:05.96254172Z"
@@ -9423,6 +9427,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-23T09:48:27.017992864Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.12.0-beta.1": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:06:02.698381+03:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.12.0-beta.2": {
     "StatusCode": 206,
     "LastSeen": "2026-01-10T09:45:00.35485861Z"
@@ -9430,6 +9438,10 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.15.0-rc.1": {
     "StatusCode": 206,
     "LastSeen": "2026-01-22T12:28:30.057053302Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/releases/tag/Instrumentation.SqlClient-1.14.0-beta.2": {
+    "StatusCode": 404,
+    "LastSeen": "2026-01-03T22:34:27.150464+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src": {
     "StatusCode": 206,
@@ -15559,6 +15571,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-16T09:44:38.642940392Z"
   },
+  "https://helm.sh/uk/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:05:50.399521+03:00"
+  },
+  "https://helm.sh/uk/docs/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:05:55.654312+03:00"
+  },
+  "https://helm.sh/uk/docs/intro/install/": {
+    "StatusCode": 206,
+    "LastSeen": "2025-07-30T14:05:56.300957+03:00"
+  },
   "https://help.obsidian.md/callouts": {
     "StatusCode": 200,
     "LastSeen": "2026-01-12T17:15:04.780029-05:00"
@@ -19946,6 +19970,14 @@
   "https://ucum.org/ucum.html#para-curly": {
     "StatusCode": 200,
     "LastSeen": "2026-01-14T09:48:46.125129517Z"
+  },
+  "https://uk.wikipedia.org/wiki/%d0%9c%d0%b0%d0%b2%d0%bf%d0%be%d0%bb%d0%b0%d1%82%d1%83%d0%b2%d0%b0%d0%bd%d0%bd%d1%8f": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-30T14:06:01.191005+03:00"
+  },
+  "https://uk.wikipedia.org/wiki/%d0%a1%d0%bf%d1%80%d1%8f%d0%bc%d0%be%d0%b2%d0%b0%d0%bd%d0%b8%d0%b9_%d0%b0%d1%86%d0%b8%d0%ba%d0%bb%d1%96%d1%87%d0%bd%d0%b8%d0%b9_%d0%b3%d1%80%d0%b0%d1%84": {
+    "StatusCode": 200,
+    "LastSeen": "2025-07-30T14:06:17.81294+03:00"
   },
   "https://undertow.io/": {
     "StatusCode": 206,
