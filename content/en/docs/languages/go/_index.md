@@ -8,7 +8,7 @@ aliases: [/golang, /golang/metrics, /golang/tracing]
 redirects:
   - { from: /go/*, to: ':splat' }
   - { from: /docs/go/*, to: ':splat' }
-weight: 16
+weight: 140
 ---
 
 {{% docs/languages/index-intro go /%}}

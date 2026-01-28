@@ -14,7 +14,7 @@ drifted_from_default: true
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{< blocks/cover image_anchor="top" height="max" color="primary" >}}
+{{% blocks/cover image_anchor="top" height="max" color="primary" %}}
 
 <!-- prettier-ignore -->
 ![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
@@ -40,7 +40,7 @@ drifted_from_default: true
 - [运维人员](docs/getting-started/ops/)
 
 </div>
-{{< /blocks/cover >}}
+{{% /blocks/cover %}}
 
 {{% blocks/lead color="white" %}}
 

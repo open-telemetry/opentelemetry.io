@@ -13,6 +13,6 @@
   </div>
   <div class="signal-card__name">{{ $name }}</div>
   {{ with .Inner }}
-  <div class="signal-card__description">{{ . | markdownify }}</div>
+    <div class="signal-card__description">{{ . | $.Page.RenderString }}</div>
   {{ end }}
 </a>
