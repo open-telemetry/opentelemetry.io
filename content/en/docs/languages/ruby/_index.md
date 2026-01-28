@@ -5,7 +5,7 @@ description: >
   src="/img/logos/32x32/Ruby_SDK.svg" alt="Ruby"> A language-specific
   implementation of OpenTelemetry in Ruby.
 aliases: [/ruby, /ruby/metrics, /ruby/tracing]
-weight: 24
+weight: 200
 ---
 
 {{% docs/languages/index-intro ruby /%}}

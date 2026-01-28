@@ -22,7 +22,7 @@
         {{- with $url }}</a>{{ end -}}
       </h3>
       <div class="main-feature__description">
-        {{ .Inner | markdownify }}
+        {{ .Inner | .Page.RenderString }}
       </div>
     </div>
   </div>
