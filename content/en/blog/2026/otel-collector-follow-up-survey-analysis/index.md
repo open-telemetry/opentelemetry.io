@@ -208,3 +208,7 @@ compatibility guarantees to reduce operational risk.
 
 > _“A more robust health extension and stronger backward compatibility
 > guarantees are essential for operating the Collector safely in production.”_
+
+## Conclusion
+
+The 2025 follow-up survey reinforces what OpenTelemetry users already experience in practice: the OpenTelemetry Collector is firmly established as production infrastructure, but operating it at scale remains challenging. Deployments are larger and more hybrid, customization is increasing, and component usage continues to evolve, yet configuration management, stability, observability, and documentation still represent meaningful friction for users. These results highlight where continued community investment can have the most impact—not just in adding new capabilities, but in making the Collector easier to operate, extend, and evolve safely in real-world environments. These insights will help inform ongoing discussions and prioritization across the project as the Collector continues to grow with its users.
