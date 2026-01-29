@@ -2,10 +2,9 @@
 title: エージェントデプロイメントパターン
 linkTitle: エージェントパターン
 description: コレクターにシグナルを送信し、そこからバックエンドにエクスポートする
-aliases:
-  - /docs/collector/deployment/agent/
+aliases: [/docs/collector/deployment/agent]
 weight: 200
-default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197
+default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197 # patched
 ---
 
 エージェントデプロイメントパターンでは、テレメトリーシグナルは次の場所から送信できます。

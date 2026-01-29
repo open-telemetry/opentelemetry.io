@@ -2,11 +2,19 @@
 title: Run OBI as a standalone process
 linkTitle: Standalone
 description: Learn how to setup and run OBI as a standalone Linux process.
-weight: 4
+weight: 5
 ---
 
 OBI can run as a standalone Linux OS process with elevated privileges that can
 inspect other running processes.
+
+> [!WARNING]
+>
+> The information in this page is outdated. To track planned updates, see
+> [open-telemetry/opentelemetry-ebpf-instrumentation#1209][#1209].
+
+[#1209]:
+  https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1209
 
 ## Download and install
 

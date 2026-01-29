@@ -20,7 +20,7 @@ jobs:
         with:
           app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
-      - uses: dyladan/component-owners@v0.1.0
+      - uses: dyladan/component-owners@v0.2.0
         with:
           config-file: .github/component-owners.yml
           # secrets.GITHUB_TOKEN can't be used here because
