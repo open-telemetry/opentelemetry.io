@@ -52,10 +52,11 @@ first-level
 - `network_inter_zone` enables `obi_network_inter_zone_bytes` metric: the number
   of bytes between different availability zones in your Cloud cluster
 
-{{< alert type="caution" >}} The `obi_network_inter_zone_bytes` specification is
-currently in experimental and only available for Kubernetes cluster. The
-specification is not final and future version of OBI may introduce breaking
-changes. {{< /alert >}}
+> [!CAUTION]
+>
+> The `obi_network_inter_zone_bytes` specification is currently in experimental
+> and only available for Kubernetes cluster. The specification is not final and
+> future version of OBI may introduce breaking changes.
 
 | YAML     | Environment variable       | Type   | Default         |
 | -------- | -------------------------- | ------ | --------------- |

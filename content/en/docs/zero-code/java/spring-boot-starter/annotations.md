@@ -75,7 +75,7 @@ public class TracedClass {
 > }
 > ```
 
-{{% alert title="Note" %}}
+{{% alert data-why="Using shortcode syntax because of tab panes" title="Note" %}}
 
 To be able to use the OpenTelemetry annotations, you have to add the Spring Boot
 Starter AOP dependency to your project:

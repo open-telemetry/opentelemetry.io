@@ -270,6 +270,12 @@
   contact: https://github.com/iguitton
   oss: true
   commercial: true
+- name: Metoro
+  nativeOTLP: true
+  url: https://metoro.io/docs/metrics/custom-metrics
+  contact: otel@metoro.io
+  oss: false
+  commercial: true
 - name: Middleware
   nativeOTLP: true
   url: https://docs.middleware.io/open-telemetry

@@ -42,3 +42,13 @@ $otel-registry-license-colors: (
 
 $primary: map-get($otel-colors, 'blue');
 $secondary: map-get($otel-colors, 'orange');
+
+$td-navbar-bg-color: shade-color($primary, 22%); // Should match $primary-darker
+$navbar-light-active-color: $secondary;
+$navbar-dark-active-color: $secondary;
+
+// Link hover: use secondary as color base
+$link-hover-color: darken($secondary, 20%);
+$link-hover-color-dark: $secondary;
+$navbar-light-hover-color: $secondary;
+$navbar-dark-hover-color: $secondary;
