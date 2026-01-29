@@ -3019,6 +3019,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:53:31.338820867Z"
   },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/features-add-ons/maintainer-summit/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-29T14:10:54.721306737Z"
+  },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/": {
     "StatusCode": 200,
     "LastSeen": "2026-01-22T09:53:37.78159229Z"
