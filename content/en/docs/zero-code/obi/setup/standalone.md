@@ -8,9 +8,13 @@ weight: 5
 OBI can run as a standalone Linux OS process with elevated privileges that can
 inspect other running processes.
 
-> [!WARNING] This documentation is known to be invalid. See
-> <https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1209>
-> for more information.
+> [!WARNING]
+>
+> The information in this page is outdated. To track planned updates, see
+> [open-telemetry/opentelemetry-ebpf-instrumentation#1209][#1209].
+
+[#1209]:
+  https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1209
 
 ## Download and install
 
