@@ -138,8 +138,20 @@ jobs:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
-          if [ -z "$prs" ]; then
-            gh pr create --title "DRAFT Update ${{ env.REPO }} to unreleased $VERSION-dev" \
-                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) [${{ env.REPO }}](https://github.com/open-telemetry/${{ env.REPO }})." \
-                         --draft
+          echo "Existing PR(s):"
+          echo "${prs:-none}"
+          if [[ -n "$prs" ]]; then
+            echo "PR already exists, so we're done."
+            exit 0
+          fi
+
+          if gh pr create --title "DRAFT Update ${{ env.REPO }} to unreleased $VERSION-dev" \
+              --body "This is a draft PR used for identifying issues integrating the latest (unreleased) [${{ env.REPO }}](https://github.com/open-telemetry/${{ env.REPO }})." \
+              --draft;
+          then
+            PR_URL=$(gh pr view --json url --jq '.url')
+            printf "PR created: %s\n" "$PR_URL"
+          else
+            echo "Failed to create PR - likely no commits to create PR from"
+            exit 0  # Don't fail the workflow, just skip PR creation
           fi
