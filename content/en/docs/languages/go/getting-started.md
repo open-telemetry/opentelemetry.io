@@ -289,7 +289,6 @@ func newLoggerProvider() (*log.LoggerProvider, error) {
 	)
 	return loggerProvider, nil
 }
-
 ```
 <!-- prettier-ignore-end -->
 
