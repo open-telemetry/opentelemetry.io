@@ -16832,8 +16832,8 @@
     "LastSeen": "2026-01-28T09:52:58.425013122Z"
   },
   "https://medium.com/@asafmesika/optimizing-java-observability-opentelemetrys-new-memory-mode-reduces-memory-allocations-by-99-98-e0062eccdc3f": {
-    "StatusCode": 403,
-    "LastSeen": "2026-01-28T09:53:50.53376349Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-29T08:57:56.679Z"
   },
   "https://medium.com/@horovits/fcc6c10c4987": {
     "StatusCode": 200,
@@ -16856,8 +16856,8 @@
     "LastSeen": "2026-01-16T09:52:31.068Z"
   },
   "https://medium.com/sicreditech/sicredis-path-for-opentelemetry-adoption-3564fc8a743a": {
-    "StatusCode": 403,
-    "LastSeen": "2026-01-28T09:51:08.667000178Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-29T08:58:08.522Z"
   },
   "https://medium.com/wish-engineering/horizontally-scaling-prometheus-at-wish-ea4b694318dd": {
     "StatusCode": 200,
@@ -20320,8 +20320,8 @@
     "LastSeen": "2026-01-13T09:53:44.127Z"
   },
   "https://www.britannica.com/dictionary/pipeline": {
-    "StatusCode": 403,
-    "LastSeen": "2026-01-28T09:51:48.796195601Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-29T08:58:25.105Z"
   },
   "https://www.buoyant.io/mtls-guide": {
     "StatusCode": 200,
@@ -21304,8 +21304,8 @@
     "LastSeen": "2026-01-22T09:59:02.051Z"
   },
   "https://www.npmjs.com/search?q=%40cspell%2Fdict": {
-    "StatusCode": 403,
-    "LastSeen": "2026-01-28T09:48:33.022097534Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-29T08:58:31.154Z"
   },
   "https://www.nuget.org/packages/Azure.Monitor.OpenTelemetry.Exporter": {
     "StatusCode": 200,
