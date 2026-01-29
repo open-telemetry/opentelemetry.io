@@ -9043,10 +9043,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:53:49.580989639Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml": {
-    "StatusCode": 404,
-    "LastSeen": "2026-01-28T09:54:01.007748438Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-config.yaml": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:51:05.136636101Z"
