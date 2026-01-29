@@ -25,11 +25,11 @@ cSpell:ignore: alertmanagers filelog horizontalpodautoscalers hostfs hostmetrics
 
 ## Kubernetes 属性处理器 {#kubernetes-attributes-processor}
 
-| 部署模式 | 可用 |
-| -------- | ---- |
-| DaemonSet（代理） | 是 |
-| Deployment（网关） | 是 |
-| Sidecar | 否 |
+| 部署模式           | 可用 |
+| ------------------ | ---- |
+| DaemonSet（代理）  | 是   |
+| Deployment（网关） | 是   |
+| Sidecar            | 否   |
 
 Kubernetes 属性处理器自动发现 Kubernetes Pod，
 提取其元数据，并将提取的元数据作为资源属性添加到 Span、指标和日志中。
@@ -164,11 +164,11 @@ roleRef:
 
 ## Kubeletstats 接收器 {#kubeletstats-receiver}
 
-| 部署模式 | 可用 |
-| -------- | ---- |
-| DaemonSet（代理） | 首选 |
+| 部署模式           | 可用                               |
+| ------------------ | ---------------------------------- |
+| DaemonSet（代理）  | 首选                               |
 | Deployment（网关） | 是，但只会收集其部署所在节点的指标 |
-| Sidecar | 否 |
+| Sidecar            | 否                                 |
 
 每个 Kubernetes 节点运行一个包含 API 服务器的 kubelet。
 Kubeletstats 接收器通过 API 服务器连接到该 kubelet，以收集有关节点和节点上运行的工作负载的指标。
@@ -237,11 +237,11 @@ subjects:
 
 ## Filelog 接收器 {#filelog-receiver}
 
-| 部署模式 | 可用 |
-| -------- | ---- |
-| DaemonSet（代理） | 首选 |
+| 部署模式           | 可用                               |
+| ------------------ | ---------------------------------- |
+| DaemonSet（代理）  | 首选                               |
 | Deployment（网关） | 是，但只会收集其部署所在节点的日志 |
-| Sidecar | 是，但这被视为高级配置 |
+| Sidecar            | 是，但这被视为高级配置             |
 
 Filelog 接收器跟踪并解析文件中的日志。
 虽然它不是特定于 Kubernetes 的接收器，但它仍然是从 Kubernetes 收集任何日志的事实上的解决方案。
@@ -315,11 +315,11 @@ spec:
 
 ## Kubernetes 集群接收器 {#kubernetes-cluster-receiver}
 
-| 部署模式 | 可用 |
-| -------- | ---- |
-| DaemonSet（代理） | 是，但会导致数据重复 |
+| 部署模式           | 可用                         |
+| ------------------ | ---------------------------- |
+| DaemonSet（代理）  | 是，但会导致数据重复         |
 | Deployment（网关） | 是，但多个副本会导致数据重复 |
-| Sidecar | 否 |
+| Sidecar            | 否                           |
 
 Kubernetes 集群接收器使用 Kubernetes API 服务器收集有关整个集群的指标和实体事件。
 使用此接收器来回答有关 Pod 阶段、节点状态和其他集群层面的各类问题。
@@ -440,11 +440,11 @@ subjects:
 
 ## Kubernetes 对象接收器 {#kubernetes-objects-receiver}
 
-| 部署模式 | 可用 |
-| -------- | ---- |
-| DaemonSet（代理） | 是，但会导致数据重复 |
+| 部署模式           | 可用                         |
+| ------------------ | ---------------------------- |
+| DaemonSet（代理）  | 是，但会导致数据重复         |
 | Deployment（网关） | 是，但多个副本会导致数据重复 |
-| Sidecar | 否 |
+| Sidecar            | 否                           |
 
 Kubernetes 对象接收器通过拉取或监视从 Kubernetes API 服务器收集对象。
 此接收器最常见的用例是监视 Kubernetes 事件，
@@ -574,11 +574,11 @@ subjects:
 
 ## Prometheus 接收器 {#prometheus-receiver}
 
-| 部署模式 | 可用 |
-| -------- | ---- |
-| DaemonSet（代理） | 是 |
-| Deployment（网关） | 是 |
-| Sidecar | 否 |
+| 部署模式           | 可用 |
+| ------------------ | ---- |
+| DaemonSet（代理）  | 是   |
+| Deployment（网关） | 是   |
+| Sidecar            | 否   |
 
 Prometheus 是 Kubernetes 和在 Kubernetes 上运行的服务的常见指标格式。
 Prometheus 接收器是这些指标收集的最小替代品。
@@ -615,11 +615,11 @@ Prometheus 接收器是
 
 ## 主机指标接收器 {#host-metrics-receiver}
 
-| 部署模式 | 可用 |
-| -------- | ---- |
-| DaemonSet（代理） | 首选 |
+| 部署模式           | 可用                               |
+| ------------------ | ---------------------------------- |
+| DaemonSet（代理）  | 首选                               |
 | Deployment（网关） | 是，但只会收集其部署所在节点的指标 |
-| Sidecar | 否 |
+| Sidecar            | 否                                 |
 
 主机指标接收器使用各种抓取器从主机收集指标。
 它与
@@ -635,20 +635,19 @@ Prometheus 接收器是
 
 可用的抓取器：
 
-| 抓取器 | 支持的操作系统 | 描述 |
-| ------ | --------------- | ---- |
-| cpu | 除 macOS[^1] 外的所有系统 | CPU 利用率指标 |
-| disk | 除 macOS[^1] 外的所有系统 | 磁盘 I/O 指标 |
-| load | 所有系统 | CPU 负载指标 |
-| filesystem | 所有系统 | 文件系统利用率指标 |
-| memory | 所有系统 | 内存利用率指标 |
-| network | 所有系统 | 网络接口 I/O 指标和 TCP 连接指标 |
-| paging | 所有系统 | 分页/交换空间利用率和 I/O 指标 |
-| processes | Linux、macOS | 进程计数指标 |
-| process | Linux、macOS、Windows | 每个进程的 CPU、内存和磁盘 I/O 指标 |
+| 抓取器     | 支持的操作系统            | 描述                                |
+| ---------- | ------------------------- | ----------------------------------- |
+| cpu        | 除 macOS[^1] 外的所有系统 | CPU 利用率指标                      |
+| disk       | 除 macOS[^1] 外的所有系统 | 磁盘 I/O 指标                       |
+| load       | 所有系统                  | CPU 负载指标                        |
+| filesystem | 所有系统                  | 文件系统利用率指标                  |
+| memory     | 所有系统                  | 内存利用率指标                      |
+| network    | 所有系统                  | 网络接口 I/O 指标和 TCP 连接指标    |
+| paging     | 所有系统                  | 分页/交换空间利用率和 I/O 指标      |
+| processes  | Linux、macOS              | 进程计数指标                        |
+| process    | Linux、macOS、Windows     | 每个进程的 CPU、内存和磁盘 I/O 指标 |
 
-[^1]:
-    在 macOS 系统上，若编译时未启用 cgo 则该功能不受支持，这是采集器特别兴趣小组（Collector SIG）发布镜像的默认配置。
+[^1]: 在 macOS 系统上，若编译时未启用 cgo 则该功能不受支持，这是采集器特别兴趣小组（Collector SIG）发布镜像的默认配置。
 
 有关收集哪些指标的具体详细信息以及具体配置详细信息，请参阅
 [主机指标接收器](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)。
