@@ -4,7 +4,7 @@ linkTitle: Authenticator
 weight: 100
 aliases:
   - /docs/collector/custom-auth
-  - /docs/collector/building/authenticator-extension/
+  - /docs/collector/building/authenticator-extension
 cSpell:ignore: configauth oidc
 ---
 
