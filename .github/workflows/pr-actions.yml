@@ -40,7 +40,7 @@ jobs:
       - name: Extract action name
         id: extract
         run: |
-          PR_ACTION=$(echo "$COMMENT" | grep -oP '/fix:\K[:-_0-9a-z]+')
+          PR_ACTION=$(echo "$COMMENT" | grep -oP '/fix:\K[-_0-9a-z]+')
           echo "action_name=$PR_ACTION" >> "$GITHUB_OUTPUT"
 
       - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
@@ -52,6 +52,18 @@ jobs:
           node-version-file: .nvmrc
 
       - run: npm install --omit=optional
+
+      - name: Validate action name
+        run: |
+          ACTION_NAME="fix:${{ steps.extract.outputs.action_name }}"
+          VALID_ACTIONS=$(npm run -s _list:fix:\*)
+          if ! echo "$VALID_ACTIONS" | grep -qxF "  $ACTION_NAME"; then
+            echo "::error::Invalid fix action: $ACTION_NAME"
+            echo "Valid actions are:"
+            echo "$VALID_ACTIONS"
+            exit 1
+          fi
+          echo "Action '$ACTION_NAME' is valid."
 
       - name: Run PR action
         id: run_action
