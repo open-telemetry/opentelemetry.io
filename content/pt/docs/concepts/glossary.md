@@ -160,9 +160,9 @@ OpenTelemetry com algumas personalizações. Consulte
 
 Uma coleção de [atributos](#attribute) que identificam e descrevem um objeto
 físico ou lógico. Entidades estão, normalmente, associadas à telemetria. Por
-exemplo, uma entidade de CPU descreve uma CPU física, enquanto uma entidade
-de serviço descreve um agrupamento lógico de processos que compõem um serviço
-HTTP ou outro serviço.
+exemplo, uma entidade de CPU descreve uma CPU física, enquanto uma entidade de
+serviço descreve um agrupamento lógico de processos que compõem um serviço HTTP
+ou outro serviço.
 
 ### Especificação {#specification}
 
