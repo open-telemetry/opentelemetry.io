@@ -145,11 +145,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6.0.2
 
+      - name: Create NPM cache-hash input file
+        run: |
+          mkdir -p tmp
+          jq '{dependencies, devDependencies}' scripts/ai-content-detection/package.json > tmp/ai-detection-package-ci.json
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
           cache: 'npm'
+          cache-dependency-path: tmp/ai-detection-package-ci.json
 
       - name: Install GitHub Copilot CLI
         run: npm install -g @github/copilot
