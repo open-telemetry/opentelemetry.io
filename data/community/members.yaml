@@ -1873,6 +1873,7 @@ approvers:
   - name: didiViking
     teams:
       - docs-ro-approvers
+      - docs-triagers
     html_url: https://github.com/didiViking
     avatar_url: https://avatars.githubusercontent.com/u/33810708?v=4
   - name: douglascamata
@@ -2833,6 +2834,9 @@ members:
   - name: fstab
     html_url: https://github.com/fstab
     avatar_url: https://avatars.githubusercontent.com/u/330535?v=4
+  - name: Gandem
+    html_url: https://github.com/Gandem
+    avatar_url: https://avatars.githubusercontent.com/u/11560964?v=4
   - name: garysassano
     html_url: https://github.com/garysassano
     avatar_url: https://avatars.githubusercontent.com/u/10464497?v=4
