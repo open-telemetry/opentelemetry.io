@@ -269,6 +269,26 @@ other component in your pipeline, it’s important to verify the following:
 - How is the next hop configured?
 - Are there any network policies that prevent data from getting in or out?
 
+## Troubleshooting in Kubernetes environments
+
+When running the OpenTelemetry Collector in Kubernetes, it can be useful to
+attach a temporary debugging container to the Collector pod to investigate
+networking and runtime issues.
+
+Kubernetes provides the `kubectl debug` command, which allows you to create an
+ephemeral container that runs alongside the existing Collector container.
+
+For example:
+
+```bash
+kubectl debug -it <collector-pod-name> \
+  --image=nicolaka/netshoot \
+  -- /bin/bash
+```
+
+This approach is especially useful when diagnosing network connectivity,
+exporter failures, or DNS resolution issues in Kubernetes-based deployments.
+
 ## Common Collector issues
 
 This section covers how to resolve common Collector issues.
