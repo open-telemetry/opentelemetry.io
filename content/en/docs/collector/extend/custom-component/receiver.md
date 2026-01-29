@@ -1490,37 +1490,27 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 	switch {
 		case backend.CloudProvider == "amzn":
-			cloudProvider = semconv.
-AttributeCloudProviderAWS
+			cloudProvider = semconv.AttributeCloudProviderAWS
 		case backend.OSType == "mcrsft":
-			cloudProvider = semconv.
-AttributeCloudProviderAzure
+			cloudProvider = semconv.AttributeCloudProviderAzure
 		case backend.OSType == "gogl":
-			cloudProvider = semconv.
-AttributeCloudProviderGCP
+			cloudProvider = semconv.AttributeCloudProviderGCP
 	}
 
-	backendAttrs.PutStr(semconv.
-AttributeCloudProvider, cloudProvider)
-	backendAttrs.PutStr(semconv.
-AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(semconv.AttributeCloudProvider, cloudProvider)
+	backendAttrs.PutStr(semconv.AttributeCloudRegion, backend.CloudRegion)
 
 	switch {
 		case backend.OSType == "lnx":
-			osType = semconv.
-AttributeOSTypeLinux
+			osType = semconv.AttributeOSTypeLinux
 		case backend.OSType == "wndws":
-			osType = semconv.
-AttributeOSTypeWindows
+			osType = semconv.AttributeOSTypeWindows
 		case backend.OSType == "slrs":
-			osType = semconv.
-AttributeOSTypeSolaris
+			osType = semconv.AttributeOSTypeSolaris
 	}
 
-	backendAttrs.PutStr(semconv.
-AttributeOSType, osType)
-	backendAttrs.PutStr(semconv.
-AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(semconv.AttributeOSType, osType)
+	backendAttrs.PutStr(semconv.AttributeOSVersion, backend.OSVersion)
  }
 ```
 
@@ -1655,10 +1645,8 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm) {
 	atmAttrs.PutStr("atm.stateid", atm.StateID)
 	atmAttrs.PutStr("atm.ispnetwork", atm.ISPNetwork)
 	atmAttrs.PutStr("atm.serialnumber", atm.SerialNumber)
-	atmAttrs.PutStr(semconv.
-AttributeServiceName, atm.Name)
-	atmAttrs.PutStr(semconv.
-AttributeServiceVersion, atm.Version)
+	atmAttrs.PutStr(semconv.AttributeServiceName, atm.Name)
+	atmAttrs.PutStr(semconv.AttributeServiceVersion, atm.Version)
 
 }
 
@@ -1668,42 +1656,30 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 	switch {
 	case backend.CloudProvider == "amzn":
-		cloudProvider = semconv.
-AttributeCloudProviderAWS
+		cloudProvider = semconv.AttributeCloudProviderAWS
 	case backend.OSType == "mcrsft":
-		cloudProvider = semconv.
-AttributeCloudProviderAzure
+		cloudProvider = semconv.AttributeCloudProviderAzure
 	case backend.OSType == "gogl":
-		cloudProvider = semconv.
-AttributeCloudProviderGCP
+		cloudProvider = semconv.AttributeCloudProviderGCP
 	}
 
-	backendAttrs.PutStr(semconv.
-AttributeCloudProvider, cloudProvider)
-	backendAttrs.PutStr(semconv.
-AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(semconv.AttributeCloudProvider, cloudProvider)
+	backendAttrs.PutStr(semconv.AttributeCloudRegion, backend.CloudRegion)
 
 	switch {
 	case backend.OSType == "lnx":
-		osType = semconv.
-AttributeOSTypeLinux
+		osType = semconv.AttributeOSTypeLinux
 	case backend.OSType == "wndws":
-		osType = semconv.
-AttributeOSTypeWindows
+		osType = semconv.AttributeOSTypeWindows
 	case backend.OSType == "slrs":
-		osType = semconv.
-AttributeOSTypeSolaris
+		osType = semconv.AttributeOSTypeSolaris
 	}
 
-	backendAttrs.PutStr(semconv.
-AttributeOSType, osType)
-	backendAttrs.PutStr(semconv.
-AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(semconv.AttributeOSType, osType)
+	backendAttrs.PutStr(semconv.AttributeOSVersion, backend.OSVersion)
 
-	backendAttrs.PutStr(semconv.
-AttributeServiceName, backend.ProcessName)
-	backendAttrs.PutStr(semconv.
-AttributeServiceVersion, backend.Version)
+	backendAttrs.PutStr(semconv.AttributeServiceName, backend.ProcessName)
+	backendAttrs.PutStr(semconv.AttributeServiceVersion, backend.Version)
 }
 ```
 
@@ -2126,10 +2102,8 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm) {
 	atmAttrs.PutStr("atm.stateid", atm.StateID)
 	atmAttrs.PutStr("atm.ispnetwork", atm.ISPNetwork)
 	atmAttrs.PutStr("atm.serialnumber", atm.SerialNumber)
-	atmAttrs.PutStr(semconv.
-AttributeServiceName, atm.Name)
-	atmAttrs.PutStr(semconv.
-AttributeServiceVersion, atm.Version)
+	atmAttrs.PutStr(semconv.AttributeServiceName, atm.Name)
+	atmAttrs.PutStr(semconv.AttributeServiceVersion, atm.Version)
 
 }
 
@@ -2139,42 +2113,30 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 	switch {
 	case backend.CloudProvider == "amzn":
-		cloudProvider = semconv.
-AttributeCloudProviderAWS
+		cloudProvider = semconv.AttributeCloudProviderAWS
 	case backend.OSType == "mcrsft":
-		cloudProvider = semconv.
-AttributeCloudProviderAzure
+		cloudProvider = semconv.AttributeCloudProviderAzure
 	case backend.OSType == "gogl":
-		cloudProvider = semconv.
-AttributeCloudProviderGCP
+		cloudProvider = semconv.AttributeCloudProviderGCP
 	}
 
-	backendAttrs.PutStr(semconv.
-AttributeCloudProvider, cloudProvider)
-	backendAttrs.PutStr(semconv.
-AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(semconv.AttributeCloudProvider, cloudProvider)
+	backendAttrs.PutStr(semconv.AttributeCloudRegion, backend.CloudRegion)
 
 	switch {
 	case backend.OSType == "lnx":
-		osType = semconv.
-AttributeOSTypeLinux
+		osType = semconv.AttributeOSTypeLinux
 	case backend.OSType == "wndws":
-		osType = semconv.
-AttributeOSTypeWindows
+		osType = semconv.AttributeOSTypeWindows
 	case backend.OSType == "slrs":
-		osType = semconv.
-AttributeOSTypeSolaris
+		osType = semconv.AttributeOSTypeSolaris
 	}
 
-	backendAttrs.PutStr(semconv.
-AttributeOSType, osType)
-	backendAttrs.PutStr(semconv.
-AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(semconv.AttributeOSType, osType)
+	backendAttrs.PutStr(semconv.AttributeOSVersion, backend.OSVersion)
 
-	backendAttrs.PutStr(semconv.
-AttributeServiceName, backend.ProcessName)
-	backendAttrs.PutStr(semconv.
-AttributeServiceVersion, backend.Version)
+	backendAttrs.PutStr(semconv.AttributeServiceName, backend.ProcessName)
+	backendAttrs.PutStr(semconv.AttributeServiceVersion, backend.Version)
 }
 
 func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {
@@ -2552,10 +2514,8 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm) {
 	atmAttrs.PutStr("atm.stateid", atm.StateID)
 	atmAttrs.PutStr("atm.ispnetwork", atm.ISPNetwork)
 	atmAttrs.PutStr("atm.serialnumber", atm.SerialNumber)
-	atmAttrs.PutStr(semconv.
-AttributeServiceName, atm.Name)
-	atmAttrs.PutStr(semconv.
-AttributeServiceVersion, atm.Version)
+	atmAttrs.PutStr(semconv.AttributeServiceName, atm.Name)
+	atmAttrs.PutStr(semconv.AttributeServiceVersion, atm.Version)
 
 }
 
@@ -2565,42 +2525,30 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 	switch {
 	case backend.CloudProvider == "amzn":
-		cloudProvider = semconv.
-AttributeCloudProviderAWS
+		cloudProvider = semconv.AttributeCloudProviderAWS
 	case backend.OSType == "mcrsft":
-		cloudProvider = semconv.
-AttributeCloudProviderAzure
+		cloudProvider = semconv.AttributeCloudProviderAzure
 	case backend.OSType == "gogl":
-		cloudProvider = semconv.
-AttributeCloudProviderGCP
+		cloudProvider = semconv.AttributeCloudProviderGCP
 	}
 
-	backendAttrs.PutStr(semconv.
-AttributeCloudProvider, cloudProvider)
-	backendAttrs.PutStr(semconv.
-AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(semconv.AttributeCloudProvider, cloudProvider)
+	backendAttrs.PutStr(semconv.AttributeCloudRegion, backend.CloudRegion)
 
 	switch {
 	case backend.OSType == "lnx":
-		osType = semconv.
-AttributeOSTypeLinux
+		osType = semconv.AttributeOSTypeLinux
 	case backend.OSType == "wndws":
-		osType = semconv.
-AttributeOSTypeWindows
+		osType = semconv.AttributeOSTypeWindows
 	case backend.OSType == "slrs":
-		osType = semconv.
-AttributeOSTypeSolaris
+		osType = semconv.AttributeOSTypeSolaris
 	}
 
-	backendAttrs.PutStr(semconv.
-AttributeOSType, osType)
-	backendAttrs.PutStr(semconv.
-AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(semconv.AttributeOSType, osType)
+	backendAttrs.PutStr(semconv.AttributeOSVersion, backend.OSVersion)
 
-	backendAttrs.PutStr(semconv.
-AttributeServiceName, backend.ProcessName)
-	backendAttrs.PutStr(semconv.
-AttributeServiceVersion, backend.Version)
+	backendAttrs.PutStr(semconv.AttributeServiceName, backend.ProcessName)
+	backendAttrs.PutStr(semconv.AttributeServiceVersion, backend.Version)
 }
 
 func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {
