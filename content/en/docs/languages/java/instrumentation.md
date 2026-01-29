@@ -8,7 +8,6 @@ aliases:
   - libraries
 weight: 10
 description: Instrumentation ecosystem in OpenTelemetry Java
-cSpell:ignore: logback
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

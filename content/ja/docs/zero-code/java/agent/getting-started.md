@@ -2,7 +2,7 @@
 title: はじめに
 weight: 1
 default_lang_commit: dabd30226437f71ca1eca69f9e8f04926a042bae
-cSpell:ignore: Dotel myapp
+cSpell:ignore: Dotel
 ---
 
 ## セットアップ {#setup}

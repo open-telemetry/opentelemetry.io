@@ -3,7 +3,7 @@ title: Instrumentation
 weight: 20
 aliases: [manual]
 description: Manual instrumentation for OpenTelemetry PHP
-cSpell:ignore: guzzlehttp myapp
+cSpell:ignore: guzzlehttp
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

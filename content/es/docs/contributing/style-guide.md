@@ -17,7 +17,7 @@ params:
     >
     > Este sitio usa el formateador [Prettier], y requiere una línea vacía
     > separando la etiqueta/título de la alerta del cuerpo de la alerta.
-cSpell:ignore: postgre textlintrc
+cSpell:ignore: postgre
 ---
 
 Aún no tenemos una guía de estilo oficial, pero el estilo actual de la
