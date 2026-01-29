@@ -747,6 +747,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-21T09:48:16.921302612Z"
   },
+  "https://cloud-native.slack.com/archives/C031SAMGV2A": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-29T06:41:22.562391-05:00"
+  },
   "https://cloud-native.slack.com/archives/C033BJ8BASU": {
     "StatusCode": 200,
     "LastSeen": "2026-01-13T09:50:25.926868591Z"
@@ -13954,6 +13958,10 @@
   "https://github.com/oracle/oracle-db-appdev-monitoring": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:54:40.29402698Z"
+  },
+  "https://github.com/orgs/open-telemetry/projects": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T06:41:22.172385-05:00"
   },
   "https://github.com/orgs/open-telemetry/projects/151": {
     "StatusCode": 206,
