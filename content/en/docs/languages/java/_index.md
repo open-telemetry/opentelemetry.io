@@ -13,8 +13,8 @@ cascade:
     instrumentation: 2.24.0
     otel: 1.58.0
     contrib: 1.53.0
-    semconv: 1.37.0
-weight: 18
+    semconv: 1.39.0
+weight: 150
 ---
 
 {{% docs/languages/index-intro java /%}}

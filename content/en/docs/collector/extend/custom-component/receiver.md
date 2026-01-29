@@ -3,8 +3,8 @@ title: Build a receiver
 linkTitle: Receivers
 weight: 100
 aliases:
-  - /docs/collector/trace-receiver/
-  - /docs/collector/building/receiver/
+  - /docs/collector/trace-receiver
+  - /docs/collector/building/receiver
 # prettier-ignore
 cSpell:ignore: backendsystem crand debugexporter mapstructure pcommon pdata ptrace rcvr resourcespans struct structs tailtracer telemetrygen uber
 ---

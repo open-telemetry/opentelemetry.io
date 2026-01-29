@@ -438,6 +438,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/11754898?v=4
   - name: cijothomas
     teams:
+      - arrow-approvers
+      - arrow-triagers
       - dotnet-approvers
       - dotnet-triagers
       - proto-approvers
@@ -928,6 +930,8 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/17073792?v=4
   - name: lalitb
     teams:
+      - arrow-approvers
+      - arrow-triagers
       - cpp-approvers
       - cpp-contrib-approvers
       - cpp-contrib-maintainers
@@ -1869,6 +1873,7 @@ approvers:
   - name: didiViking
     teams:
       - docs-ro-approvers
+      - docs-triagers
     html_url: https://github.com/didiViking
     avatar_url: https://avatars.githubusercontent.com/u/33810708?v=4
   - name: douglascamata
@@ -2829,6 +2834,9 @@ members:
   - name: fstab
     html_url: https://github.com/fstab
     avatar_url: https://avatars.githubusercontent.com/u/330535?v=4
+  - name: Gandem
+    html_url: https://github.com/Gandem
+    avatar_url: https://avatars.githubusercontent.com/u/11560964?v=4
   - name: garysassano
     html_url: https://github.com/garysassano
     avatar_url: https://avatars.githubusercontent.com/u/10464497?v=4
@@ -2904,6 +2912,9 @@ members:
   - name: johnbley
     html_url: https://github.com/johnbley
     avatar_url: https://avatars.githubusercontent.com/u/5139839?v=4
+  - name: Joibel
+    html_url: https://github.com/Joibel
+    avatar_url: https://avatars.githubusercontent.com/u/1827156?v=4
   - name: jongwooo
     html_url: https://github.com/jongwooo
     avatar_url: https://avatars.githubusercontent.com/u/44025432?v=4
