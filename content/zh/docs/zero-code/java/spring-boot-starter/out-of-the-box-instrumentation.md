@@ -2,7 +2,7 @@
 title: 开箱即用的插桩
 default_lang_commit: 0b22ed7b760c66407308d5a59053b620ac06a1fa
 weight: 40
-cSpell:ignore: logback webflux webmvc
+cSpell:ignore: webflux webmvc
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

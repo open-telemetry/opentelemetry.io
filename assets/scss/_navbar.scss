@@ -19,6 +19,7 @@
       text-decoration: $link-decoration;
     }
 
+    // TODO: remove once Docsy is updated.
     &:focus,
     // Bootstrap sets .nav-link:focus-visible, but in a way that isn't
     // compatible with dark mode. This is a known issue, see
