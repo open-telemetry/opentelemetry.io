@@ -1,0 +1,50 @@
+.td-blog.otel-with-contributions-from {
+  .td-content {
+    .td-byline {
+      margin: 0 !important;
+    }
+    .article-meta {
+      margin: 0;
+    }
+    p:first-of-type {
+      @extend .small;
+      opacity: 0.65;
+      padding-top: 0.2rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+.ot-integration-badge {
+  @extend .btn;
+  @extend .shadow;
+
+  border-radius: 0 !important;
+
+  position: relative;
+  float: right;
+  transform: rotate(6deg);
+  background: hsl(60, 100%, 60%);
+  border-color: hsl(60, 100%, 60%);
+  padding: 1rem;
+  margin: 0 1rem 1rem 1rem;
+
+  &__text {
+    font-weight: $font-weight-semibold;
+  }
+
+  &__info {
+    @extend .text-warning;
+    @extend .translate-middle;
+
+    position: absolute;
+    top: 0;
+    left: 100%;
+  }
+
+  &:hover {
+    background: hsl(60, 100%, 60%);
+    transform: rotate(4deg);
+    transition: transform 0.2s linear;
+  }
+}

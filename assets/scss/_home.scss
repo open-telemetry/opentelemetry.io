@@ -1,0 +1,59 @@
+// Homepage styles before the revamp of January 2026. The new styles are in
+// _homepage.scss. Keeping these until all locales have been updated their
+// homepages.
+//
+// TODO: remove this file once all locales have been updated their homepages,
+// though keep .o-banner (move to _homepage.scss).
+
+.td-home {
+  .otel-logo {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    max-height: 12rem;
+  }
+
+  .td-box--white .container blockquote {
+    font-size: smaller;
+  }
+
+  .cncf {
+    text-align: center;
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 20rem;
+      padding-top: 1rem;
+      max-width: 80%;
+    }
+  }
+}
+
+.o-banner {
+  background: var(--bs-tertiary-bg);
+  color: var(--bs-body-color);
+  text-align: center;
+
+  // Handling the x positioning requires some calculations. Assumption is that
+  // the banner is inside a .container-fluid, which has this padding-x:
+  $padding-x: $container-padding-x * 0.5;
+  margin-left: -$padding-x; // Undo left padding of parent
+  width: calc(100% + 2 * #{$padding-x});
+
+  @include media-breakpoint-up(md) {
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    margin-left: 0;
+    width: 100%;
+    z-index: 31;
+  }
+
+  & p {
+    padding: 0.5rem;
+    margin-bottom: initial;
+  }
+}

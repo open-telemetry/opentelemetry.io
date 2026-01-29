@@ -20,21 +20,28 @@ show_banner: true
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{% homepage/hero color="white" useLogo="true" background="/img/homepage/highlight.png" tagline="High-quality, ubiquitous, and portable telemetry to enable effective observability" %}}
+{{% blocks/cover image_anchor="top" height="max" color="primary" %}}
 
-<div class="l-primary-buttons">
+<!-- prettier-ignore -->
+![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
+{.otel-logo}
+
+<!-- prettier-ignore -->
+{{% param description %}}
+{.display-6}
+
+<div class="l-primary-buttons mt-5">
 
 - [Learn more](docs/what-is-opentelemetry/)
 - [Try the demo](docs/demo/)
 
 </div>
 
-{{% /homepage/hero %}}
+{{% /blocks/cover %}}
 
-{{< homepage/hero-search color="light" placeholder="Search OpenTelemetry docs..." >}}
-{{< /homepage/hero-search >}}
+{{< homepage/hero-search placeholder="Search OpenTelemetry docs..." >}}
 
-{{< homepage/intro-section color="white" image="/img/homepage/collector-pipeline.svg" imageAlt="OpenTelemetry overview" >}}
+{{< homepage/intro-section image="/img/homepage/collector-pipeline.svg" imageAlt="OpenTelemetry overview" >}}
 
 **OpenTelemetry** is an open source observability framework for cloud native
 software. It provides a single set of APIs, libraries, agents, and collector
@@ -46,7 +53,7 @@ community.
 
 {{< /homepage/intro-section >}}
 
-{{< homepage/main-features color="light" >}}
+{{< homepage/main-features >}}
 
 {{< homepage/main-feature
       title="Vendor-neutral instrumentation"
@@ -84,7 +91,7 @@ Timestamped records {{< /homepage/signal >}}
 {{< homepage/signal name="Baggage" image="/img/homepage/signal-baggage.svg" url="/docs/concepts/signals/baggage/" >}}
 Contextual metadata {{< /homepage/signal >}} {{< /homepage/signals-showcase >}}
 
-{{< homepage/otel-features color="white" title="OpenTelemetry Features" columns="2" >}}
+{{< homepage/otel-features title="OpenTelemetry Features" columns="2" >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-auto-instrumentation.svg" title="Auto-instrumentation" url="/docs/concepts/instrumentation/zero-code/" >}}
 Get started in minutes with zero-code instrumentation for popular frameworks and
@@ -118,7 +125,7 @@ stability and community-driven evolution. {{< /homepage/otel-feature >}}
 
 {{< /homepage/otel-features >}}
 
-{{< homepage/ecosystem-stats color="light" title="The OpenTelemetry Ecosystem" >}}
+{{< homepage/ecosystem-stats title="The OpenTelemetry Ecosystem" >}}
 {{< homepage/stat type="languages" label="Languages" url="/docs/languages/" >}}
 {{< homepage/stat type="collector" label="Collector Components" url="/docs/collector/" >}}
 {{< homepage/stat type="registry" label="Integrations" url="/ecosystem/registry/" >}}
@@ -126,7 +133,6 @@ stability and community-driven evolution. {{< /homepage/otel-feature >}}
 {{< /homepage/ecosystem-stats >}}
 
 {{< homepage/adopters-showcase
-    color="white"
     title="Trusted by Industry Leaders"
     limit="10"
     ctaText="View all adopters"

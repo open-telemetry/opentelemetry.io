@@ -4,7 +4,7 @@ description: Terminologia e estilo ao escrever a documentação do OpenTelemetry
 linkTitle: Manual de estilo
 weight: 20
 default_lang_commit: 5ab640677e1ac0a57553fb1c72199812f628f461
-cSpell:ignore: open-telemetry opentelemetryio postgre style-guide textlintrc
+cSpell:ignore: open-telemetry opentelemetryio postgre style-guide
 ---
 
 Ainda não possuímos um manual de estilo oficial, porém, a atual aparência da
