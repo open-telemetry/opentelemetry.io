@@ -6,6 +6,9 @@ redirects:
   - { from: slack-channel, to: '#slack' }
   - { from: discussion-group, to: '#podcast' }
   - { from: feedback-survey, to: '#survey' }
+params:
+  btn-class: >-
+    l-primary-buttons justify-content-start hk-no-external-icon mt-4
 weight: 40
 ---
 
@@ -30,7 +33,7 @@ before you. Giving a thumbs up or sharing more context in a comment is exactly
 what we’re looking for. Are you the first person who bumped into this problem?
 File an issue in one of our repositories.
 
-<div class="l-primary-buttons hk-no-external-icon mt-4">
+<div class="{{% param btn-class %}}">
 
 - [Review issues][projects]
 
@@ -58,7 +61,7 @@ want to keep an eye on are:
 Not sure where to ask? Post to [#otel-sig-end-user], and we will help you find
 the right channel.
 
-<div class="l-primary-buttons hk-no-external-icon mt-4">
+<div class="{{% param btn-class %}}">
 
 - [Join CNCF Slack][cncf-slack]
 
