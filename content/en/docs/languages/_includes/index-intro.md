@@ -1,11 +1,12 @@
 ---
 ---
 
-This is the OpenTelemetry {{ $name }} documentation. OpenTelemetry is an
-observability framework -- an API, SDK, and tools that are designed to aid in
-the generation and collection of application telemetry data such as metrics,
-logs, and traces. This documentation is designed to help you understand how to
-get started using OpenTelemetry {{ $name }}.
+Welcome to the OpenTelemetry {{ $name }} documentation. This section introduces
+how to use OpenTelemetry with {{ $name }} to generate and collect telemetry data
+such as metrics, logs, and traces using the OpenTelemetry API and SDKs.
+
+These pages are intended to help you get started and understand the current
+capabilities and status of OpenTelemetry {{ $name }}.
 
 ## Status and Releases
 
