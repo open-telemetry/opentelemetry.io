@@ -3,7 +3,7 @@ title: PHP zero-code instrumentation
 linkTitle: PHP
 weight: 30
 aliases: [/docs/languages/php/automatic]
-cSpell:ignore: centos democlass epel myapp pecl phar remi
+cSpell:ignore: centos democlass epel pecl phar remi
 ---
 
 ## Requirements
