@@ -39,9 +39,7 @@ on:
     types: [opened, synchronize, reopened]
 
 concurrency:
-  group: |
-    ai-detection-${{ github.event.pull_request.number ||
-    github.event.inputs.pr_number || github.run_id }}
+  group: ai-detection-${{ github.event.pull_request.number || github.event.inputs.pr_number || github.run_id }}
   cancel-in-progress: true
 
 jobs:
