@@ -190,7 +190,7 @@ jobs:
   report-results:
     name: 'Report Results'
     needs: [validate-inputs, analyze]
-    if: always()
+    if: always() && needs.validate-inputs.result == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Add job summary
