@@ -52,6 +52,7 @@ jobs:
       should-analyze: ${{ steps.validate.outputs.should-analyze }}
       dry-run: ${{ steps.extract.outputs.dry-run }}
       fail-on-detection: ${{ steps.extract.outputs.fail-on-detection }}
+      diff-max-chars: ${{ steps.extract.outputs.diff-max-chars }}
     steps:
       - name: Extract and set defaults
         id: extract
@@ -77,6 +78,10 @@ jobs:
           else
             echo "fail-on-detection=false" >> $GITHUB_OUTPUT
           fi
+
+          # Extract diff_mas_chars
+          DIFF_MAX="${{ github.event.inputs.diff_max_chars || '20000' }}"
+          echo "diff-max-chars=${DIFF_MAX}" >> $GITHUB_OUTPUT
 
       - name: Validate inputs
         id: validate
@@ -111,7 +116,7 @@ jobs:
           fi
 
           # Validate diff_max_chars
-          DIFF_MAX="${{ github.event.inputs.diff_max_chars || '20000' }}"
+          DIFF_MAX="${{ steps.extract.outputs.diff-max-chars }}"
           if ! [[ "$DIFF_MAX" =~ ^[0-9]+$ ]]; then
               echo "::error::Invalid diff_max_chars: $DIFF_MAX (must be numeric)"
               echo "should-analyze=false" >> $GITHUB_OUTPUT
@@ -179,7 +184,7 @@ jobs:
             ${{ needs.validate-inputs.outputs.fail-on-detection }}
           DRY_RUN: ${{ needs.validate-inputs.outputs.dry-run }}
           CUSTOM_PROMPT: ${{ github.event.inputs.custom_prompt || '' }}
-          DIFF_MAX_CHARS: ${{ github.event.inputs.diff_max_chars || '20000' }}
+          DIFF_MAX_CHARS: ${{ needs.validate-inputs.outputs.diff-max-chars }}
         run: node analyze.js
 
   report-results:
