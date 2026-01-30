@@ -117,9 +117,9 @@ Automatically correlate traces across service boundaries. Distributed context
 flows through your entire request path, connecting logs, metrics, and traces
 into a unified view. {{< /homepage/otel-feature >}}
 
-{{< homepage/otel-feature image="/img/homepage/feature-multi-language.svg" title="Multi-language support" url="/docs/languages/" >}}
-Native SDKs for 12+ languages including Java, Kotlin, Python, Go, JavaScript,
-.NET, Ruby, PHP, Rust, C++, Swift, and Erlang. Use your preferred language with
+{{< homepage/otel-feature image="/img/homepage/feature-multiple-programming-languages.svg" title="Supports multiple programming languages" url="/docs/languages/" >}}
+Native SDKs for 12+ programming languages including Java, Kotlin, Python, Go, JavaScript,
+.NET, Ruby, PHP, Rust, C++, Swift, and Erlang. Use your preferred programming language with
 first-class OpenTelemetry support. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-production-ready.svg" title="Stable and production-ready" url="/status/" >}}
