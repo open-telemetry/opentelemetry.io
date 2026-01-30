@@ -9,7 +9,6 @@
       {{ with $image }}
       <img src="{{ . }}" alt="{{ $title }}" loading="lazy">
       {{ else }}
-      <!-- Placeholder for image -->
       <div class="main-feature__placeholder">
         <i class="fas fa-image fa-3x"></i>
       </div>
@@ -22,7 +21,7 @@
         {{- with $url }}</a>{{ end -}}
       </h3>
       <div class="main-feature__description">
-        {{ .Inner | .Page.RenderString }}
+        {{ .Inner -}}
       </div>
     </div>
   </div>
