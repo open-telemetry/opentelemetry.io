@@ -45,7 +45,7 @@ Deployment 安装的 Collector 将用于收集集群指标和事件。
 但你可以自由使用任何你认为合适的 Kubernetes 集群。
 
 假设你已经安装了
-[Kind](https://kind.sigs.k8s.io/#installation-and-usage)，创建一个新的 kind 集群：
+[Kind](https://kind.sigs.k8s.io/#installation-and-usage)，创建一个新的 Kind 集群：
 
 ```sh
 kind create cluster
