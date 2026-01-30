@@ -556,11 +556,22 @@
   // CNCF SECTION - Use Docsy's automatic contrast system
   // =============================================================================
 
-  // Note: CNCF section should use class="td-box td-box--secondary" in HTML
-  // This leverages Docsy's box-variant mixin which automatically calculates:
-  // - color: color-contrast($secondary) = white
-  // - Proper link colors via mix($blue, $text-color, lightness($secondary))
-  // No CSS overrides needed here!
+  .td-box--secondary {
+    // TODO: convert $secondary etc to hsl, then oklch.
+    // Then adapt the background here.
+    background-color: hsl(41, 80%, 47.5%);
+  }
+
+  .cncf {
+    a {
+      @extend .link-dark;
+      @extend .link-underline-opacity-0-hover;
+
+      &.external-link:after {
+        display: none;
+      }
+    }
+  }
 }
 
 // =============================================================================
