@@ -10,7 +10,7 @@ weight: 100
 ```yaml
 discovery:
   instrument:
-    - open_ports: 443
+    - open_ports: 8443
 log_level: DEBUG
 
 ebpf:
@@ -27,7 +27,7 @@ prometheus_export:
 This configuration includes the following options:
 
 - `discovery.instrument.open_ports`: instruments services listening on port
-  443
+  8443
 - `log_level`: sets logging verbosity to `DEBUG`
 - `ebpf.context_propagation`: enables context propagation using all supported
   carriers
