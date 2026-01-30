@@ -36,7 +36,7 @@ in the same directory.
 
 1. Create a configuration file following the
    [configuration options](../../configure/options/) documentation. You can
-   start with the [OBI configuration YAML example](../../configure/example/)
+   start with the [OBI configuration YAML example](../../configure/example/).
 
 2. Run OBI as a privileged process:
 
