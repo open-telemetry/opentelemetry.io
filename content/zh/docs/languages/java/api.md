@@ -1,15 +1,14 @@
 ---
 title: 通过 API 记录遥测数据
 weight: 11
-aliases:
-  - /docs/languages/java/api-components/
-default_lang_commit: 7c6d317a1ed969bd03f0aa8297f068ca29c2b459 # patched
-drifted_from_default: true
+aliases: [/docs/languages/java/api-components]
 logBridgeWarning: >
   虽然 `LoggerProvider` 、 `Logger` API 在结构上与对应的链路和指标 API 相似，
   但它们的使用场景不同。目前，`LoggerProvider` 、 `Logger` 及相关类代表的是[日志桥接 API](/docs/specs/otel/logs/api/)，
   其存在的目的是编写日志附加器（log appenders），以便将通过其他日志 API、框架记录的日志桥接到 OpenTelemetry 中。
   它们并非供终端用户用作 Log4j、SLF4J、Logback 等日志框架的替代品。
+default_lang_commit: 7c6d317a1ed969bd03f0aa8297f068ca29c2b459 # patched
+drifted_from_default: true
 cSpell:ignore: Dotel kotlint Logback updowncounter
 ---
 

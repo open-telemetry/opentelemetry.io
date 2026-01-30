@@ -1,7 +1,7 @@
 ---
 title: Getting started
 weight: 1
-cSpell:ignore: Dotel myapp
+cSpell:ignore: Dotel
 ---
 
 ## Setup

@@ -3,7 +3,7 @@ title: Supported Libraries
 linkTitle: Supported Libraries
 weight: 11
 # prettier-ignore
-cSpell:ignore: activej akka armeria avaje clickhouse couchbase dbcp dropwizard dubbo finatra helidon hikari hikaricp httpasyncclient httpclient hystrix javalin jedis jodd ktor logback logmanager mojarra mybatis myfaces nats okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson resteasy restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: activej akka armeria avaje clickhouse couchbase dbcp dropwizard dubbo finatra helidon hikari hikaricp httpasyncclient httpclient hystrix javalin jedis jodd ktor logmanager mojarra mybatis myfaces nats okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson resteasy restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 The Java agent automatically instruments many libraries, frameworks, and

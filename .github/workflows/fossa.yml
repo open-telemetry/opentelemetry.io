@@ -10,6 +10,8 @@ permissions:
 
 jobs:
   fossa:
+    # Only run in upstream repository, not in forks
+    if: github.repository == 'open-telemetry/opentelemetry.io'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@0c366fd6a839edf440554fa01a7085ccba70ac98 # v5.0.1

@@ -1,8 +1,7 @@
 ---
 title: APIによるテレメトリーの記録
 weight: 11
-aliases:
-  - /docs/languages/java/api-components/
+aliases: [/docs/languages/java/api-components]
 logBridgeWarning: >
   `LoggerProvider` / `Logger` APIは構造的に等価なトレースとメトリクスAPIと類似していますが、
   異なる用途を提供します。現在のところ、`LoggerProvider` / `Logger` および関連クラスは

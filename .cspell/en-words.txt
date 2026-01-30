@@ -1,7 +1,3 @@
-# Words listed here are only for their spelling. Generally, if there is a certain
-# way to capitalize the word, add capitalization rules in .textlintrc.yml
-#
-# cSpell:ignore textlintrc
 accountingservice
 actix
 adservice
@@ -44,6 +40,7 @@ featureflagservice
 flagd
 frauddetectionservice
 frontendproxy
+geoip
 github
 gitpod
 grafana
@@ -150,4 +147,3 @@ wordpress
 WSGI
 zend
 zipkin
-geoip

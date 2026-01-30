@@ -5,7 +5,7 @@ linkTitle: スタイルガイド
 weight: 20
 default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
 drifted_from_default: true
-cSpell:ignore: open-telemetry postgre style-guide textlintrc
+cSpell:ignore: open-telemetry postgre style-guide
 ---
 
 公式のスタイルガイドはまだありませんが、現在の OpenTelemetry ドキュメントのスタイルは以下のスタイルガイドに触発されています。

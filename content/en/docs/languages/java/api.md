@@ -1,9 +1,8 @@
 ---
 title: Record Telemetry with API
 weight: 11
-aliases:
-  - /docs/languages/java/api-components/
-logBridgeWarning: >
+aliases: [/docs/languages/java/api-components]
+logBridgeWarning: >-
   While the `LoggerProvider` / `Logger` APIs are structurally similar to the
   equivalent trace and metric APIs, they serve a different use case. As of now,
   `LoggerProvider` / `Logger` and associated classes represent the [Log Bridge

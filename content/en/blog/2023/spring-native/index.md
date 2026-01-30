@@ -4,7 +4,7 @@ linkTitle: Observe Spring Native
 date: 2023-12-08
 author: >-
   [Jean Bisutti](https://github.com/jeanbisutti) (Microsoft)
-cSpell:ignore: bisutti datasource logback
+cSpell:ignore: bisutti datasource
 ---
 
 The [OpenTelemetry Java agent](/docs/zero-code/java/agent/) is a convenient and
