@@ -12,11 +12,11 @@ inspect other running processes.
 
 > [!NOTE]
 >
-> We are working on providing a standalone binary distribution.
-> To track planned updates, see
-> [open-telemetry/opentelemetry-ebpf-instrumentation#13][#13].
+> We are working on providing a standalone binary distribution. To track planned
+> updates, see [open-telemetry/opentelemetry-ebpf-instrumentation#13][#13].
 
-[#13]: https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/13
+[#13]:
+  https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/13
 
 You can get OBI by extracting the necessary files from the container image.
 
@@ -29,14 +29,14 @@ docker cp $ID:obi-java-agent.jar .
 docker rm -v $ID
 ```
 
-It is important that both `ebpf-instrument` and `obi-java-agent.jar` are
-located in the same directory.
+It is important that both `ebpf-instrument` and `obi-java-agent.jar` are located
+in the same directory.
 
 ## Set up OBI
 
 1. Create a configuration file following the
-   [configuration options](../../configure/options/) documentation.
-   You can start with the [OBI configuration YAML example](../../configure/example/)
+   [configuration options](../../configure/options/) documentation. You can
+   start with the [OBI configuration YAML example](../../configure/example/)
 
 2. Run OBI as a privileged process:
 
