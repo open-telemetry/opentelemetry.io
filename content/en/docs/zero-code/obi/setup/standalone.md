@@ -21,7 +21,7 @@ inspect other running processes.
 You can get OBI by extracting the necessary files from the container image.
 
 ```sh
-IMAGE=ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/ebpf-instrument:latest
+IMAGE=otel/ebpf-instrument:main
 docker pull $IMAGE
 ID=$(docker create $IMAGE)
 docker cp $ID:ebpf-instrument .
