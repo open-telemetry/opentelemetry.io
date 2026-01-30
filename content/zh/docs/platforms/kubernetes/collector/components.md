@@ -173,7 +173,7 @@ roleRef:
 Kubeletstats 接收器通过 API 服务器连接到该 kubelet，以收集有关节点和节点上运行的工作负载的指标。
 
 有不同的身份验证方法，但通常使用服务账户。
-服务账户还需要适当的权限才能从 Kubelet 拉取数据（见下文）。
+服务账户还需要适当的权限才能从 kubelet 拉取数据（见下文）。
 如果你使用
 [OpenTelemetry Collector Helm Chart](/docs/platforms/kubernetes/helm/collector/)，
 你可以使用
