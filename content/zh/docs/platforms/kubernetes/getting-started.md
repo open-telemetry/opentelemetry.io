@@ -97,7 +97,10 @@ Collector 的这个实例将使用以下组件：
 ### Kubeletstats 接收器 {#kubeletstats-receiver}
 
 [Kubelet 状态接收器](/docs/platforms/kubernetes/collector/components/#kubeletstats-receiver)
-是用于采集节点层面监控指标的接收器组件，可采集容器内存使用率、Pod CPU 使用率、节点网络错误数等指标。该组件采集的所有遥测数据，都会附带 Pod 名称、节点名称这类 Kubernetes 元数据。结合我们启用的 Kubernetes 属性处理器，就能将应用的追踪、指标、日志数据，与 Kubelet 状态接收器采集的指标数据进行关联分析。
+是用于采集节点层面监控指标的接收器组件，可采集容器内存使用率、Pod CPU
+使用率、节点网络错误数等指标。该组件采集的所有遥测数据，都会附带 Pod
+名称、节点名称这类 Kubernetes 元数据。结合我们启用的 Kubernetes
+属性处理器，就能将应用的追踪、指标、日志数据，与 kubelet 状态接收器采集的指标数据进行关联分析。
 
 ### Filelog 接收器 {#filelog-receiver}
 
