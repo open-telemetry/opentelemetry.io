@@ -1,7 +1,7 @@
 ---
 title: Out of the box instrumentation
 weight: 40
-cSpell:ignore: autoconfigurations autoconfigures logback webflux webmvc
+cSpell:ignore: autoconfigurations autoconfigures webflux webmvc
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

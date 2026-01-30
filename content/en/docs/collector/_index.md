@@ -1,7 +1,7 @@
 ---
 title: Collector
 description: Vendor-agnostic way to receive, process and export telemetry data.
-aliases: [./about]
+aliases: [collector/about]
 sidebar_root_for: children
 cascade:
   vers: 0.144.0

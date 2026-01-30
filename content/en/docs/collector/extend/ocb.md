@@ -3,7 +3,7 @@ title: Build a custom Collector with OpenTelemetry Collector Builder
 linkTitle: Build a custom Collector
 description: Assemble your own distribution of the OpenTelemetry Collector
 weight: 200
-aliases: [/docs/collector/custom-collector/]
+aliases: [/docs/collector/custom-collector]
 params:
   providers-vers: v1.48.0
 # prettier-ignore

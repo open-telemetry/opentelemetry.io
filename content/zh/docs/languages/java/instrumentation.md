@@ -10,7 +10,6 @@ aliases:
   - libraries
 weight: 10
 description: OpenTelemetry Java 中的插桩生态系统
-cSpell:ignore: logback
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

@@ -3,7 +3,7 @@ title: OpenTelemetryオペレーターを使用して自動計装を注入する
 linkTitle: Operator
 weight: 30
 default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
-cSpell:ignore: gevent grpcio myapp psutil PYTHONPATH
+cSpell:ignore: gevent grpcio psutil PYTHONPATH
 ---
 
 KubernetesでPythonサービスを実行する場合、[OpenTelemetryオペレーター](https://github.com/open-telemetry/opentelemetry-operator)を活用することで、各サービスを直接修正することなく自動計装を注入できます。

@@ -8,7 +8,7 @@ author: >-
   Hrabusa](https://github.com/tiffany76) (Grafana Labs)
 sig: Comms
 crosspost_url: https://www.cncf.io/blog/2024/12/20/opentelemetry-io-2024-review/
-cSpell:ignore: Chalin Hrabusa opentelemetrybot
+cSpell:ignore: Chalin Hrabusa
 ---
 
 As 2024 draws to a close, we reflect on the year and share some insights and

@@ -41,7 +41,7 @@ show_banner: true
 
 {{< homepage/hero-search placeholder="Search OpenTelemetry docs..." >}}
 
-{{< homepage/intro-section image="/img/homepage/collector-pipeline.svg" imageAlt="OpenTelemetry overview" >}}
+{{% homepage/intro-section image="/img/homepage/collector-pipeline.svg" imageAlt="OpenTelemetry overview" %}}
 
 **OpenTelemetry** is an open source observability framework for cloud native
 software. It provides a single set of APIs, libraries, agents, and collector
@@ -51,33 +51,42 @@ OpenTelemetry builds upon years of experience from the OpenTracing and
 OpenCensus projects, combined with best-of-breed ideas and practices from the
 community.
 
-{{< /homepage/intro-section >}}
+{{% /homepage/intro-section %}}
 
 {{< homepage/main-features >}}
 
-{{< homepage/main-feature
+{{% homepage/main-feature
       title="Vendor-neutral instrumentation"
       image="/img/homepage/data-sources.svg"
-      imagePosition="left" >}} Instrument your code once using OpenTelemetry
-APIs and SDKs. Export telemetry data to any observability backend—Jaeger,
-Prometheus, commercial vendors, or your own solution. Switch backends without
-touching your application code. {{< /homepage/main-feature >}}
+      imagePosition="left" %}}
 
-{{< homepage/main-feature
+Instrument your code once using OpenTelemetry APIs and SDKs. Export telemetry
+data to any observability backend—Jaeger, Prometheus, commercial vendors, or
+your own solution. Switch backends without touching your application code.
+
+{{% /homepage/main-feature %}}
+
+{{% homepage/main-feature
       title="Unified observability signals"
       image="/img/homepage/unified-signals.svg"
-      imagePosition="right" >}} Correlate traces, metrics, and logs with shared
-context that flows through your entire request path. Get a complete picture of
-your application's behavior across all components and services.
-{{< /homepage/main-feature >}}
+      imagePosition="right" %}}
 
-{{< homepage/main-feature
+Correlate traces, metrics, and logs with shared context that flows through your
+entire request path. Get a complete picture of your application's behavior
+across all components and services.
+
+{{% /homepage/main-feature %}}
+
+{{% homepage/main-feature
       title="Run anywhere"
       image="/img/homepage/global-deployment.svg"
-      imagePosition="left" >}} OpenTelemetry is 100% open source and
-vendor-neutral. Deploy on-premises, in hybrid environments, or across multiple
-clouds with full flexibility and zero lock-in. Move workloads wherever they
-matter to you. {{< /homepage/main-feature >}}
+      imagePosition="left" %}}
+
+OpenTelemetry is 100% open source and vendor-neutral. Deploy on-premises, in
+hybrid environments, or across multiple clouds with full flexibility and zero
+lock-in. Move workloads wherever they matter to you.
+
+{{% /homepage/main-feature %}}
 
 {{< /homepage/main-features >}}
 

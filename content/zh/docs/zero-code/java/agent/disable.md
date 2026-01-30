@@ -5,7 +5,7 @@ weight: 12
 default_lang_commit: 2cb66a7e093114cfe06eb70dbca46abbbee45ef2
 drifted_from_default: true
 # prettier-ignore
-cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logback logmanager mojarra mybatis myfaces okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
+cSpell:ignore: activej akka armeria avaje clickhouse couchbase datasource dbcp Dotel dropwizard dubbo finatra hikari hikaricp httpasyncclient httpclient hystrix javalin jaxrs jaxws jedis jodd kotlinx ktor logmanager mojarra mybatis myfaces okhttp openai oshi payara pekko rabbitmq ratpack rediscala redisson restlet rocketmq shenyu spymemcached twilio vaadin vertx vibur webflux webmvc
 ---
 
 ## 完全禁用代理 {#disabling-the-agent-entirely}

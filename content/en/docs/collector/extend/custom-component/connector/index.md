@@ -2,8 +2,8 @@
 title: Build a connector
 linkTitle: Connectors
 aliases:
-  - /docs/collector/build-connector/
-  - /docs/collector/building/connector/
+  - /docs/collector/build-connector
+  - /docs/collector/building/connector
 weight: 200
 # prettier-ignore
 cSpell:ignore: debugexporter Errorf exampleconnector gomod gord Jaglowski mapstructure otlpreceiver pdata pmetric ptrace servicegraph spanmetrics struct uber

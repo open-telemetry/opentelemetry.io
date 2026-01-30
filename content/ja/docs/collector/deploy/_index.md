@@ -1,10 +1,9 @@
 ---
 title: デプロイメント
 description: OpenTelemetryコレクターをデプロイするために適用できるパターン
-aliases:
-  - /docs/collector/deployment/
+aliases: [/docs/collector/deployment]
 weight: 3
-default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197
+default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197 # patched
 ---
 
 OpenTelemetryコレクターは、さまざまな方法で、さまざまなユースケースに使用できる単一のバイナリから構成されています。

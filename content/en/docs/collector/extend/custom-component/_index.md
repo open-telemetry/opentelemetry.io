@@ -1,7 +1,7 @@
 ---
 title: Build custom components
 description: Instructions on how to build your own Collector components
-aliases: [/docs/collector/building/]
+aliases: [/docs/collector/building]
 weight: 300
 ---
 
