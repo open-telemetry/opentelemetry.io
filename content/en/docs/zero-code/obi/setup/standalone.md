@@ -16,8 +16,21 @@ inspect other running processes.
 > To track planned updates, see
 > [open-telemetry/opentelemetry-ebpf-instrumentation#13][#13].
 
-You can download the OBI executable from the
-[OBI releases page](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases).
+[#13]: https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/13
+
+You can get OBI by extracting the necessary files from the container image.
+
+```sh
+IMAGE=ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/ebpf-instrument:latest
+docker pull $IMAGE
+ID=$(docker create $IMAGE)
+docker cp $ID:ebpf-instrument .
+docker cp $ID:obi-java-agent.jar .
+docker rm -v $ID
+```
+
+It is important that both `ebpf-instrument` and `obi-java-agent.jar` are
+located in the same directory.
 
 ## Set up OBI
 
@@ -28,7 +41,7 @@ You can download the OBI executable from the
 2. Run OBI as a privileged process:
 
 ```bash
-sudo ./obi --config=<path to config file>
+sudo ./ebpf-instrument --config=<path to config file>
 ```
 
 ## Permissions
