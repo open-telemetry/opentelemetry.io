@@ -9807,6 +9807,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-29T14:23:13.58604401Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/13": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-30T15:26:31.651498187Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22goal%3A%202026%22%20label%3Aepic": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T22:49:11.535709648Z"
