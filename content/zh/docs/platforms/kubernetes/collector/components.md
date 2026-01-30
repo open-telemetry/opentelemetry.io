@@ -44,8 +44,7 @@ Kubernetes 属性处理器使用 Kubernetes API 发现集群中运行的所有 P
 如果你使用
 [OpenTelemetry Collector Helm Chart](/docs/platforms/kubernetes/helm/collector/)，
 你可以使用
-[`kubernetesAttributes` 预设](/docs/platforms/kubernetes/helm/collector/#kubernetes-attributes-preset)
-来开始使用。
+[`kubernetesAttributes` 预设](/docs/platforms/kubernetes/helm/collector/#kubernetes-attributes-preset)来开始使用。
 
 默认添加以下属性：
 
