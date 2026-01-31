@@ -118,9 +118,10 @@ flows through your entire request path, connecting logs, metrics, and traces
 into a unified view. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-multiple-programming-languages.svg" title="Supports multiple programming languages" url="/docs/languages/" >}}
-Native SDKs for 12+ programming languages including Java, Kotlin, Python, Go, JavaScript,
-.NET, Ruby, PHP, Rust, C++, Swift, and Erlang. Use your preferred programming language with
-first-class OpenTelemetry support. {{< /homepage/otel-feature >}}
+Native SDKs for 12+ programming languages including Java, Kotlin, Python, Go,
+JavaScript, .NET, Ruby, PHP, Rust, C++, Swift, and Erlang. Use your preferred
+programming language with first-class OpenTelemetry support.
+{{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-production-ready.svg" title="Stable and production-ready" url="/status/" >}}
 Tracing and metrics APIs are stable across all major languages. Thousands of
