@@ -2988,8 +2988,8 @@
     "LastSeen": "2026-01-28T09:54:10.671487195Z"
   },
   "https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a": {
-    "StatusCode": 403,
-    "LastSeen": "2026-01-30T09:51:44.830229241Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-01-31T09:51:47.925Z"
   },
   "https://erinmeyer.com/books/the-culture-map/": {
     "StatusCode": 200,
@@ -16969,7 +16969,7 @@
   },
   "https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java/4.26.1": {
     "StatusCode": 403,
-    "LastSeen": "2026-01-30T09:56:44.057122757Z"
+    "LastSeen": "2026-01-31T09:50:35.890531649Z"
   },
   "https://mybatis.org/mybatis-3/": {
     "StatusCode": 206,
@@ -17449,7 +17449,7 @@
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
     "StatusCode": 403,
-    "LastSeen": "2026-01-30T09:56:36.488372244Z"
+    "LastSeen": "2026-01-31T09:50:25.180007147Z"
   },
   "https://openai.com/": {
     "StatusCode": 200,
@@ -20517,7 +20517,7 @@
   },
   "https://www.docsend.com/": {
     "StatusCode": 403,
-    "LastSeen": "2026-01-30T09:51:17.424996287Z"
+    "LastSeen": "2026-01-31T09:45:16.695935917Z"
   },
   "https://www.docsy.dev/docs/": {
     "StatusCode": 206,
@@ -21657,7 +21657,7 @@
   },
   "https://www.parseable.com/docs/server/opentelemetry": {
     "StatusCode": 404,
-    "LastSeen": "2026-01-30T09:54:32.919945173Z"
+    "LastSeen": "2026-01-31T09:47:46.789465714Z"
   },
   "https://www.payara.fish/": {
     "StatusCode": 200,
