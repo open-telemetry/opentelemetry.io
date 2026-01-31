@@ -3,6 +3,7 @@ title: Join us for OpenTelemetry Talks and Activities at KubeCon Europe 2026
 linkTitle: KubeCon EU '26
 date: 2026-01-20
 author: '[Zhu Jiekun](https://github.com/jiekun) (VictoriaMetrics)'
+cSpell:ignore: Jiekun Yash Kunju Perath OTTL Vamerlatti Helmuth Dmitrii Anoshin Toulme Guiton Pająk Baeyens Wolters Kluwer Jiekun Jayice Zhou Spanimals Haeussler Jernigan Travaglini Ferri Benedetti Grcevski Aravena Kuntzer Dyrmishi Dapr Kasper Nissen Diagrid Schrottner Timelthaler Kovalenko Geisendörfer Lehner Dyrmishi Therrien Rabenhorst Benedikt Bongartz Skyscanner Onyedikachi Amaechi Okorie Kasper Nissen tacular Baeyens Helmuth Menderico Lahouel Llinares Cail Dyrmishi Bunino Mikhailov Hantzaras Danielson Ujuk Baeyens Milind Srivastava Observablity Yash Bhatnagar Cijo Altinity
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
