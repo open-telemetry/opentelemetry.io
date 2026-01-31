@@ -21,7 +21,7 @@ You are going to learn to do the following in less than five minutes:
 
 ## Prerequisites
 
-Make sure that your developer environment has the following. This page assumes
+Make sure that your development environment has the following. This page assumes
 that you're using `bash`. Adapt configuration and commands as necessary for your
 preferred shell.
 
