@@ -31,6 +31,8 @@ about manual instrumentation.
 You don't have to use the example app: if you want to instrument your own app or
 library, follow the instructions here to adapt the process to your own code.
 
+{{% include esm-support-node.md %}}
+
 ### Dependencies {#example-app-dependencies}
 
 Create an empty NPM `package.json` file in a new directory:
