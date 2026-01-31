@@ -5,7 +5,7 @@ weight: 30
 aliases: [/docs/languages/python/automatic]
 cascade:
   collector_vers: 0.144.0
-cSpell:ignore: distro myapp
+cSpell:ignore: distro
 ---
 
 Automatic instrumentation with Python uses a Python agent that can be attached

@@ -15,7 +15,7 @@ params:
     >
     > This site uses the [Prettier] formatter, and it requires an empty line
     > separating the alert tag/title from the alert body.
-cSpell:ignore: postgre textlintrc
+cSpell:ignore: postgre
 ---
 
 We don't have an official style guide yet, but the current OpenTelemetry
