@@ -7,16 +7,17 @@ default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
 
 ## OpenTelemetry
 
-- **[Trazas de OpenTelemetry](/docs/concepts/signals/traces/)**: todos los servicios
-  están instrumentados usando las bibliotecas de instrumentación disponibles de
-  OpenTelemetry.
+- **[Trazas de OpenTelemetry](/docs/concepts/signals/traces/)**: todos los
+  servicios están instrumentados usando las bibliotecas de instrumentación
+  disponibles de OpenTelemetry.
 - **[Métricas de OpenTelemetry](/docs/concepts/signals/metrics/)**: servicios
   seleccionados están instrumentados usando las bibliotecas de instrumentación
   disponibles de OpenTelemetry. Se añadirán más a medida que se publiquen los
   SDKs relevantes.
-- **[Logs de OpenTelemetry](/docs/concepts/signals/logs/)**: servicios seleccionados
-  están instrumentados usando las bibliotecas de instrumentación disponibles de
-  OpenTelemetry. Se añadirán más a medida que se publiquen los SDKs relevantes.
+- **[Logs de OpenTelemetry](/docs/concepts/signals/logs/)**: servicios
+  seleccionados están instrumentados usando las bibliotecas de instrumentación
+  disponibles de OpenTelemetry. Se añadirán más a medida que se publiquen los
+  SDKs relevantes.
 - **[OpenTelemetry Collector](/docs/collector/)**: todos los servicios están
   instrumentados y envían las trazas y métricas generadas al OpenTelemetry
   Collector vía gRPC. Las trazas recibidas se exportan a los logs y a Jaeger;
@@ -29,17 +30,18 @@ default_lang_commit: 5b243d6b471ea2b384fa931e7ebfece074b1f2e5
 - **[Jaeger](https://www.jaegertracing.io/)**: todas las trazas generadas se
   envían a Jaeger.
 - **[OpenSearch](https://opensearch.org/)**: todos los logs generados se envían
-  a Data Prepper. OpenSearch se utiliza para centralizar los datos de logging
-  de los servicios.
+  a Data Prepper. OpenSearch se utiliza para centralizar los datos de logging de
+  los servicios.
 - **[Prometheus](https://prometheus.io/)**: todas las métricas y exemplars
   generados son recolectados por Prometheus.
 
 ## Entornos
 
-- **[Docker](https://docs.docker.com)**: este ejemplo puede ejecutarse con Docker.
+- **[Docker](https://docs.docker.com)**: este ejemplo puede ejecutarse con
+  Docker.
 - **[Kubernetes](https://kubernetes.io/)**: la aplicación está diseñada para
-  ejecutarse en Kubernetes (tanto localmente como en la nube) usando un chart
-  de Helm.
+  ejecutarse en Kubernetes (tanto localmente como en la nube) usando un chart de
+  Helm.
 
 ## Protocolos
 
