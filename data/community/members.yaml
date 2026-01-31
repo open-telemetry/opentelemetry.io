@@ -1085,6 +1085,12 @@ maintainers:
       - injector-maintainers
     html_url: https://github.com/mmanciop
     avatar_url: https://avatars.githubusercontent.com/u/14020598?v=4
+  - name: mmat11
+    teams:
+      - ebpf-instrumentation-approvers
+      - ebpf-instrumentation-maintainers
+    html_url: https://github.com/mmat11
+    avatar_url: https://avatars.githubusercontent.com/u/9884419?v=4
   - name: MovieStoreGuy
     teams:
       - collector-contrib-approvers
@@ -1185,6 +1191,12 @@ maintainers:
       - swift-triagers
     html_url: https://github.com/nachoBonafonte
     avatar_url: https://avatars.githubusercontent.com/u/47814950?v=4
+  - name: NimrodAvni78
+    teams:
+      - ebpf-instrumentation-approvers
+      - ebpf-instrumentation-maintainers
+    html_url: https://github.com/NimrodAvni78
+    avatar_url: https://avatars.githubusercontent.com/u/73278770?v=4
   - name: nrcventura
     teams:
       - dotnet-instrumentation-approvers
@@ -2143,11 +2155,6 @@ approvers:
       - semconv-security-approvers
     html_url: https://github.com/mjwolf
     avatar_url: https://avatars.githubusercontent.com/u/2590169?v=4
-  - name: mmat11
-    teams:
-      - ebpf-instrumentation-approvers
-    html_url: https://github.com/mmat11
-    avatar_url: https://avatars.githubusercontent.com/u/9884419?v=4
   - name: MSNev
     teams:
       - javascript-contrib-triagers
@@ -2173,11 +2180,6 @@ approvers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/NameHaibinZhang
     avatar_url: https://avatars.githubusercontent.com/u/30917104?v=4
-  - name: NimrodAvni78
-    teams:
-      - ebpf-instrumentation-approvers
-    html_url: https://github.com/NimrodAvni78
-    avatar_url: https://avatars.githubusercontent.com/u/73278770?v=4
   - name: nirga
     teams:
       - opentelemetry-python-contrib-approvers
