@@ -110,10 +110,6 @@ Observability and OpenTelemetry in the [schedule][obs-day-sched].
 
 <details>
 
-- **[Observability Day | Welcome + Opening Remarks](https://colocatedeventseu2026.sched.com/event/2DYMy/observability-day-welcome-+-opening-remarks)**<br>by
-  <br>
-  Monday March 23, 2026 09:00 - 09:05CET
-
 - **[Observability Project Updates](https://colocatedeventseu2026.sched.com/event/2DYN7/observability-project-updates)**<br>by
   Juraci Paixão Kröhling, OllyGarden; Austin Parker, honeycomb.io; Iris Dyrmishi, Miro; Eduardo Silva, Chronosphere<br>
   Monday March 23, 2026 09:10 - 09:40CET
@@ -121,14 +117,6 @@ Observability and OpenTelemetry in the [schedule][obs-day-sched].
 - **[⚡Lightning Talk: The < Meta /> Trick: Connecting Page Load To Backend Traces](https://colocatedeventseu2026.sched.com/event/2DY1n/cllightning-talk-the-meta-trick-connecting-page-load-to-backend-traces-wolfgang-therrien-honeycomb)**<br>by
   Wolfgang Therrien, Honeycomb<br>
   Monday March 23, 2026 09:45 - 09:55CET
-
-- **[Sponsored Keynote: Beyond Observability: Intelligent Progressive Delivery with Feature Control](https://colocatedeventseu2026.sched.com/event/2DYN8/sponsored-keynote-beyond-observability-intelligent-progressive-delivery-with-feature-control-sean-odell-dynatrace)**<br>by
-  Sean O'Dell, Dynatrace<br>
-  Monday March 23, 2026 10:00 - 10:05CET
-
-- **[Observability Day | Sponsored Keynote](https://colocatedeventseu2026.sched.com/event/2DdrH/observability-day-sponsored-keynote-tba-chronosphere)**<br>by
-  <br>
-  Monday March 23, 2026 10:10 - 10:15CET
 
 - **[A Practical Blueprint for Evolving Observability Schemas](https://colocatedeventseu2026.sched.com/event/2DY2Q/a-practical-blueprint-for-evolving-observability-schemas-benedikt-bongartz-red-hat-sebastian-rabenhorst-shopify)**<br>by
   Sebastian Rabenhorst, Shopify; Benedikt Bongartz, Red Hat<br>
@@ -217,10 +205,6 @@ Observability and OpenTelemetry in the [schedule][obs-day-sched].
 - **[⚡Lightning Talk: “Metrics That Lie”: Understanding OpenTelemetry’s Cardinality Capping and Its Implications](https://colocatedeventseu2026.sched.com/event/2DYA4/cllightning-talk-metrics-that-lie-understanding-opentelemetrys-cardinality-capping-and-its-implications-cijo-thomas-microsoft)**<br>by
   Cijo Thomas, Microsoft<br>
   Monday March 23, 2026 17:15 - 17:25CET
-
-- **[Observability Day | Closing Remarks](https://colocatedeventseu2026.sched.com/event/2DYNf/observability-day-closing-remarks)**<br>by
-  <br>
-  Monday March 23, 2026 17:30 - 17:35CET
 
 
 </details>
