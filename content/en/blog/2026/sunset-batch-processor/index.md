@@ -3,8 +3,6 @@ title: Sunset of the OpenTelemetry Batch Processor
 linkTitle: Sunset of the Batch Processor
 date: 2026-02-01
 author: '[Julia Furst Morgado](https://github.com/juliafmorgado) (Dash0)'
-canonical_url: https://blog.olly.garden/why-the-otel-batch-processor-is-going-away?link-check=no
-# prettier-ignore
 cSpell:ignore: juliafmorgado otlp backpressure emptyDir PersistentVolume
 
 ---
