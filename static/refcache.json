@@ -9803,10 +9803,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T22:49:07.190636567Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/1209": {
-    "StatusCode": 206,
-    "LastSeen": "2026-01-29T14:23:13.58604401Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/13": {
     "StatusCode": 206,
     "LastSeen": "2026-01-30T15:26:31.651498187Z"
@@ -16968,8 +16964,8 @@
     "LastSeen": "2026-01-16T09:47:02.409406912Z"
   },
   "https://mvnrepository.com/artifact/com.google.protobuf/protobuf-java/4.26.1": {
-    "StatusCode": 403,
-    "LastSeen": "2026-01-31T09:50:35.890531649Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-01T09:53:11.199Z"
   },
   "https://mybatis.org/mybatis-3/": {
     "StatusCode": 206,
@@ -17449,7 +17445,7 @@
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
     "StatusCode": 403,
-    "LastSeen": "2026-01-31T09:50:25.180007147Z"
+    "LastSeen": "2026-02-01T09:51:49.340535242Z"
   },
   "https://openai.com/": {
     "StatusCode": 200,
@@ -20516,8 +20512,8 @@
     "LastSeen": "2026-01-28T09:48:22.901279044Z"
   },
   "https://www.docsend.com/": {
-    "StatusCode": 403,
-    "LastSeen": "2026-01-31T09:45:16.695935917Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-01T09:53:17.534Z"
   },
   "https://www.docsy.dev/docs/": {
     "StatusCode": 206,
@@ -21657,7 +21653,7 @@
   },
   "https://www.parseable.com/docs/server/opentelemetry": {
     "StatusCode": 404,
-    "LastSeen": "2026-01-31T09:47:46.789465714Z"
+    "LastSeen": "2026-02-01T09:49:10.57867886Z"
   },
   "https://www.payara.fish/": {
     "StatusCode": 200,
