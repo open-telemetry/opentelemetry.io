@@ -1,0 +1,61 @@
+name: Redirects
+
+on:
+  pull_request:
+    paths:
+      - 'content/**/*.md'
+      - 'content-modules/**/*.md'
+      - 'layouts/**'
+      - 'static/_redirects*'
+      - '.github/workflows/check-redirects.yml'
+      - 'scripts/check-redirects.sh'
+
+permissions:
+  contents: read
+
+jobs:
+  check-redirects:
+    name: Check redirect targets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+
+      - name: Create NPM cache-hash input file
+        run: |
+          mkdir -p tmp
+          jq '{devDependencies, dependencies, engines, gitHubActionCacheKey}' package.json > tmp/package-ci.json
+
+      - name: Create and use reduced-dependencies package.json
+        run: |
+          jq '.devDependencies |= with_entries(
+                  select(.key | test("prefix|hugo|css"))
+                )
+                | .dependencies |= with_entries(
+                  select(.key | test("minisearch")))
+                | del(.optionalDependencies)' \
+            package.json > tmp/package-min.json
+          cp tmp/package-min.json package.json
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: tmp/package-ci.json
+
+      - run: |
+          npm install --omit=optional
+          git restore package.json
+
+      - name: Build the site
+        run: npm run build
+
+      - name: Check redirect targets
+        run: npm run check:redirects
+
+      - name: Check redirects page was generated
+        run: |
+          if [ ! -f public/redirects/index.html ]; then
+            echo "ERROR: Redirects page was not generated at public/redirects/index.html"
+            exit 1
+          fi
+          echo "✓ Redirects page generated successfully"
