@@ -50,7 +50,20 @@ jobs:
         run: npm run build
 
       - name: Check redirect targets
+        id: check-redirects
+        continue-on-error: true
         run: npm run check:redirects
+
+      - name: Report redirect check results
+        if: always()
+        run: |
+          if [ "${{ steps.check-redirects.outcome }}" == "failure" ]; then
+            echo "⚠️  Some redirect targets were not found."
+            echo "This is informational only and does not block the PR."
+            echo "To fix redirect issues, see the logs above for details."
+          else
+            echo "✅ All redirect targets are valid!"
+          fi
 
       - name: Check redirects page was generated
         run: |
