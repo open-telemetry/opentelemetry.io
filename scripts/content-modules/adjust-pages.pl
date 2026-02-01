@@ -320,8 +320,8 @@ while(<>) {
     )
   }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
 
-  patchSpec_because_of_SemConv_DatabaseRenamedToDb();
-  patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
+  # patchSpec_because_of_SemConv_DatabaseRenamedToDb();
+  # patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 
