@@ -2339,6 +2339,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-16T09:45:28.69593345Z"
   },
+  "https://docs.oracle.com/iaas/Content/General/Concepts/regions.htm": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-21T10:38:52.393650296Z"
+  },
   "https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29": {
     "StatusCode": 200,
     "LastSeen": "2026-01-14T09:48:21.414341297Z"
@@ -13595,6 +13599,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:51:23.670488648Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/rpc-metrics.md#metric-rpcclientduration": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:41:34.692402414Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/rpc-metrics.md#metric-rpcserverduration": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:41:30.743701841Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/rpc-spans.md": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:51:29.855498617Z"
@@ -13723,13 +13735,73 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-14T09:49:19.655515865Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2503": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:41:12.29176671Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2767": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:41:05.656265076Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/2779": {
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:51:44.388688445Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2846": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:41:47.571013515Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2852": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:41:00.774949502Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2857": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:40:44.257616919Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2920": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:40:50.747823394Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2961": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:41:17.794172848Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/2984#discussion_r2466369361": {
     "StatusCode": 206,
     "LastSeen": "2026-01-13T09:48:16.622250366Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3169": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:40:55.44769272Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3176": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:40:27.74864115Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3197": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:41:25.846594607Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3203": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:40:32.73076068Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3223": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:40:39.334691536Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3267": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:41:51.052288203Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3283": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:41:42.159678486Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3284": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-29T10:41:21.507269318Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/981": {
     "StatusCode": 206,
