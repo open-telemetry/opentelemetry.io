@@ -216,7 +216,7 @@ all the details. [Sign up][maintainer summit] today!
   Adriana Villela, Dynatrace; Josh Lee, Altinity; Reese Lee, New Relic<br>
   Sunday March 22, 2026 11:35 - 12:10GMT
 
-- **[Project Meeting | Prometheus & OpenTelemetry](https://maintainersummiteu2026.sched.com/event/2EWep/project-meeting-prometheus-opentelemetry)**<br>by
+- **[Project Meeting | Prometheus & OpenTelemetry](https://maintainersummiteu2026.sched.com/event/2EWep/project-meeting-prometheus-opentelemetry)**
   <br> Sunday March 22, 2026 11:35 - 12:10GMT
 
 > [!IMPORTANT] Important access note
