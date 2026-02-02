@@ -21,7 +21,7 @@ With that said, I'm happy to announce that
 [Adriana Villela](https://github.com/avillela) and
 [Reese Lee](https://github.com/reese-lee) are stepping into the community
 manager role for OpenTelemetry. They'll be joined by
-[Julia Fonseca Morgado](https://github.com/juliafmorgado), who is coming on
+[Julia Furst Morgado](https://github.com/juliafmorgado), who is coming on
 board as an associate community manager.
 
 Adriana and Reese are already putting real effort into scoping and shaping what
