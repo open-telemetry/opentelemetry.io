@@ -3023,6 +3023,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-22T09:53:37.78159229Z"
   },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/?utm_source=opentelemetry&amp;utm_medium=all&amp;utm_campaign=KubeCon-EU-2026&amp;utm_content=slim-banner": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-02T09:23:38.706060035Z"
+  },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog": {
     "StatusCode": 200,
     "LastSeen": "2026-01-23T09:51:45.527766641Z"
