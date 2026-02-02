@@ -9,10 +9,10 @@ tags:
 urls:
   website: https://www.keycloak.org
   repo: https://github.com/keycloak/keycloak
-  docs: https://www.keycloak.org/server/tracing
+  docs: https://www.keycloak.org/observability/telemetry
 license: Apache 2.0
 description:
-  Keycloak utilizes OpenTelemetry for distributed tracing provided by the
+  Keycloak utilizes OpenTelemetry for metrics, logging and distributed tracing provided by the
   Quarkus OpenTelemetry extension.
 authors:
   - name: Keycloak Contributors
