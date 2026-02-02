@@ -3,7 +3,7 @@ title: Sunset of the OpenTelemetry Batch Processor
 linkTitle: Sunset of the Batch Processor
 date: 2026-02-01
 author: '[Julia Furst Morgado](https://github.com/juliafmorgado) (Dash0)'
-cSpell:ignore: backpressure Furst juliafmorgado
+cSpell:ignore: backpressure juliafmorgado
 ---
 
 For many of us, the batch processor became part of our Collector pipelines
