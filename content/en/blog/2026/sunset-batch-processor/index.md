@@ -57,7 +57,7 @@ the application’s point of view, delivery is complete.
 
 **Inside the Collector, that success is provisional until export completes.**
 
-```
+```text
 Telemetry Sender
       |
       |  (send telemetry)
