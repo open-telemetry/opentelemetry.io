@@ -17444,8 +17444,8 @@
     "LastSeen": "2026-01-28T09:48:36.614213216Z"
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
-    "StatusCode": 403,
-    "LastSeen": "2026-02-01T09:51:49.340535242Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-02T09:31:25.195Z"
   },
   "https://openai.com/": {
     "StatusCode": 200,
