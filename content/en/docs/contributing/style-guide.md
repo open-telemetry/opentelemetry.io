@@ -3,7 +3,19 @@ title: Documentation style guide
 description: Terminology and style when writing OpenTelemetry docs.
 linkTitle: Style guide
 weight: 20
-cSpell:ignore: open-telemetry postgre style-guide textlintrc
+params:
+  alertExamples: |
+    > [!TIP]
+    >
+    > If you are writing new content, generally prefer using this blockquote alert
+    > syntax instead of the Docsy
+    > [alert shortcode](https://www.docsy.dev/docs/content/shortcodes/#alert).
+
+    > [!WARNING] :warning: Blank line required!
+    >
+    > This site uses the [Prettier] formatter, and it requires an empty line
+    > separating the alert tag/title from the alert body.
+cSpell:ignore: postgre
 ---
 
 We don't have an official style guide yet, but the current OpenTelemetry
@@ -15,17 +27,17 @@ documentation style is inspired by the following style guides:
 The following sections contain guidance that is specific to the OpenTelemetry
 project.
 
-{{% alert title="Note" %}}
+> [!NOTE]
+>
+> Many requirements of our style guide can be enforced by running automation:
+> before submitting a [pull request][] (PR), run `npm run fix:all` on your local
+> machine and commit the changes.
+>
+> If you run into errors or [failed PR checks](../pr-checks), read about our
+> style guide and learn what you can do to fix certain common issues.
 
-Many requirements of our style guide can be enforced by running automation:
-before submitting a
-[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
-(PR), run `npm run fix:all` on your local machine and commit the changes.
-
-If you run into errors or [failed PR checks](../pr-checks), read about our style
-guide and learn what you can do to fix certain common issues.
-
-{{% /alert %}}
+[pull request]:
+  https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request
 
 ## OpenTelemetry.io word list
 
@@ -53,17 +65,40 @@ Site pages are written in the Markdown syntax supported by the [Goldmark]
 Markdown renderer. For the full list of supported Markdown extensions, see
 [Goldmark].
 
-You can also use the following extensions:
+You can also use the following Markdown extensions:
 
-- [GitHub-flavored Markdown][GFM] (GFM) [alerts][gfm-alerts]
-- [Emojis]. For the complete list of available emojis, see [Emojis] from the
+- [Alerts](#alerts)
+- [Emojis]: for the complete list of available emojis, see [Emojis] from the
   Hugo docs.
 
 [Emojis]: https://gohugo.io/quick-reference/emojis/
+
+### Alerts
+
+You can write alerts using the following extended syntax:
+
+- [GitHub-flavored Markdown][GFM] (GFM) [alerts][gfm-alerts]
+- [Obsidian callout][] syntax for custom alert titles
+
+Here is an example of each:
+
+```markdown
+{{% _param alertExamples %}}
+```
+
+These render as:
+
+{{% _param alertExamples %}}
+
+For details about Hugo's blockquote alert syntax, see [Alerts][hugo-alerts] from
+the Hugo docs.
+
 [gfm-alerts]:
   https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide#alerts
 [GFM]: https://github.github.com/gfm/
 [Goldmark]: https://gohugo.io/configuration/markup/#goldmark
+[hugo-alerts]: https://gohugo.io/render-hooks/blockquotes/#alerts
+[Obsidian callout]: https://help.obsidian.md/callouts
 
 ### Markdown checks {#markdown-standards}
 

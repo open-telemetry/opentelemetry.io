@@ -1,0 +1,42 @@
+// Docsy style customization and overrides
+
+.td-content img:not(.img-initial) {
+  display: block;
+  border: $border-width solid $border-color;
+  margin-bottom: $paragraph-margin-bottom;
+  @extend .td-max-width-on-larger-screens;
+}
+
+// Workaround for iOS and macOS Safari 17+. For details see:
+// https://github.com/open-telemetry/opentelemetry.io/issues/3538
+
+.td-content .highlight > pre {
+  > .click-to-copy,
+  > code {
+    overflow-y: auto;
+  }
+}
+
+.td-page-meta__child {
+  display: none !important;
+}
+
+// Contribution section in community page
+.community-contribution {
+  text-align: center;
+
+  & > p {
+    font-size: $h3-font-size;
+    font-weight: $headings-font-weight;
+    line-height: $headings-line-height;
+    margin-bottom: $headings-margin-bottom;
+  }
+}
+
+// TODO: upstream to Docsy
+
+.hk-no-external-icon {
+  a.external-link:after {
+    display: none !important;
+  }
+}

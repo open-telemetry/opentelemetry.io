@@ -170,9 +170,20 @@ Additional valuable resources to review are
   by mistake in one of their commits, ask them to fix the issue or rebase the
   pull request. Worst case scenario, close and re-open the PR to trigger a new
   CLA check.
-- Words unknown to cspell should be added to the cspell ignore list per page by
-  PR authors. Only approvers and maintainers will add commonly used terms to the
-  global list.
+- Words unknown to cSpell can be added to the ignore list in one of three
+  places:
+  - **Page front matter**: Generally preferred for one-off words that are
+    unlikely to appear elsewhere. See [Spell Checking][].
+  - **Locale dictionary**: Preferred for words likely to be used across multiple
+    pages in the same language, such as `.cspell/en-words.txt`.
+  - **Global dictionary**: The main cSpell dictionary, located in `.cspell.yml`.
+    This is preferred for words whose spelling is valid across all languages,
+    such as package or people's names.
+
+  Reviewers and approvers can determine if the placement is appropriate during
+  the review process.
+
+[Spell Checking]: ../style-guide/#spell-checking
 
 ### Co-owned PRs
 

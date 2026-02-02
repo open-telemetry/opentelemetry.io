@@ -270,6 +270,12 @@
   contact: https://github.com/iguitton
   oss: true
   commercial: true
+- name: Metoro
+  nativeOTLP: true
+  url: https://metoro.io/docs/metrics/custom-metrics
+  contact: otel@metoro.io
+  oss: false
+  commercial: true
 - name: Middleware
   nativeOTLP: true
   url: https://docs.middleware.io/open-telemetry
@@ -320,7 +326,7 @@
   commercial: true
 - name: OneUptime
   nativeOTLP: true
-  url: https://oneuptime.com/product/apm
+  url: https://oneuptime.com/docs/telemetry/open-telemetry
   contact: hello@oneuptime.com
   oss: true
   commercial: true
@@ -350,7 +356,7 @@
   commercial: true
 - name: Parseable
   nativeOTLP: true
-  url: https://www.parseable.com/docs/server/opentelemetry
+  url: https://www.parseable.com/docs/ingest-data/otel
   contact: hi@parseable.com
   oss: true
   commercial: true

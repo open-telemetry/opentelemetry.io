@@ -4,7 +4,7 @@ linkTitle: Configuration
 aliases: [/docs/languages/net/automatic/config]
 weight: 20
 # prettier-ignore
-cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib ILREWRITE NETFX OPERATINGSYSTEM PROCESSRUNTIME UNHANDLEDEXCEPTION
+cSpell:ignore: AZUREAPPSERVICE Bitness CLSID CORECLR dylib ILREWRITE LOGRECORD NETFX OPERATINGSYSTEM PROCESSRUNTIME SQLCLIENT UNHANDLEDEXCEPTION
 ---
 
 ## Configuration methods
@@ -146,9 +146,11 @@ Exporters output the telemetry.
 
 | Environment variable    | Description                                                                                    | Default value | Status                                              |
 | ----------------------- | ---------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------- |
-| `OTEL_TRACES_EXPORTER`  | Comma-separated list of exporters. Supported options: `otlp`, `zipkin`, `console`, `none`.     | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_TRACES_EXPORTER`  | Comma-separated list of exporters. Supported options: `otlp`, `zipkin` [1], `console`, `none`. | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_METRICS_EXPORTER` | Comma-separated list of exporters. Supported options: `otlp`, `prometheus`, `console`, `none`. | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_LOGS_EXPORTER`    | Comma-separated list of exporters. Supported options: `otlp`, `console`, `none`.               | `otlp`        | [Stable](/docs/specs/otel/versioning-and-stability) |
+
+**[1]**: `zipkin` is deprecated and will be removed in the upcoming release.
 
 ### Traces exporter
 
@@ -181,7 +183,7 @@ To enable the OTLP exporter, set the
 variable to `otlp`.
 
 To customize the OTLP exporter using environment variables, see the
-[OTLP exporter documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.5.1/src/OpenTelemetry.Exporter.OpenTelemetryProtocol#environment-variables).
+[OTLP exporter documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.15.0/src/OpenTelemetry.Exporter.OpenTelemetryProtocol#environment-variables).
 Important environment variables include:
 
 | Environment variable                                | Description                                                                                                                                                                                    | Default value                                                                        | Status                                              |
@@ -202,6 +204,9 @@ Important environment variables include:
 | `OTEL_EXPORTER_OTLP_TRACES_HEADERS`                 | Equivalent to `OTEL_EXPORTER_OTLP_HEADERS`, but applies only to traces.                                                                                                                        |                                                                                      | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_EXPORTER_OTLP_METRICS_HEADERS`                | Equivalent to `OTEL_EXPORTER_OTLP_HEADERS`, but applies only to metrics.                                                                                                                       |                                                                                      | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_EXPORTER_OTLP_LOGS_HEADERS`                   | Equivalent to `OTEL_EXPORTER_OTLP_HEADERS`, but applies only to logs.                                                                                                                          |                                                                                      | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_EXPORTER_OTLP_CERTIFICATE`                    | Path to the CA certificate file (PEM format) used to verify the server's TLS certificate. \[3\]                                                                                                |                                                                                      | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_EXPORTER_OTLP_CLIENT_CERTIFICATE`             | Path to the client certificate file (PEM format) for mTLS authentication. \[3\]                                                                                                                |                                                                                      | [Stable](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_EXPORTER_OTLP_CLIENT_KEY`                     | Path to the client private key file (PEM format) for mTLS authentication. \[3\]                                                                                                                |                                                                                      | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT`                 | Maximum allowed attribute value size.                                                                                                                                                          | none                                                                                 | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_ATTRIBUTE_COUNT_LIMIT`                        | Maximum allowed span attribute count.                                                                                                                                                          | 128                                                                                  | [Stable](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_SPAN_ATTRIBUTE_VALUE_LENGTH_LIMIT`            | Maximum allowed attribute value size. [Not applicable for metrics.](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.15.0/specification/metrics/sdk.md#attribute-limits). | none                                                                                 | [Stable](/docs/specs/otel/versioning-and-stability) |
@@ -241,20 +246,26 @@ Important environment variables include:
     [specification](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.35.0/specification/metrics/sdk_exporters/otlp.md?plain=1#L48)
     is not supported.
 
+**[3]**: Considerations on mTLS (mutual TLS) configuration:
+
+- mTLS is only supported on .NET 8.0 and higher.
+- All certificate files must be in PEM format.
+- When using mTLS, the `OTEL_EXPORTER_OTLP_ENDPOINT` must use `https://`.
+- mTLS is not supported on .NET Framework.
+
 ### Prometheus
 
 **Status**: [Experimental](/docs/specs/otel/versioning-and-stability)
 
-{{% alert title="Warning" color="warning" %}} **Do NOT use in production.**
-
-Prometheus exporter is intended for the inner dev loop. Production environments
-can use a combination of OTLP exporter with
-[OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector-releases)
-having
-[`otlp` receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/v0.61.0/receiver/otlpreceiver)
-and
-[`prometheus` exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.61.0/exporter/prometheusexporter).
-{{% /alert %}}
+> [!WARNING] Warning: **do NOT use in production**
+>
+> Prometheus exporter is intended for the inner dev loop. Production
+> environments can use a combination of OTLP exporter with
+> [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector-releases)
+> having
+> [`otlp` receiver](https://github.com/open-telemetry/opentelemetry-collector/tree/v0.97.0/receiver/otlpreceiver)
+> and
+> [`prometheus` exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/v0.97.0/exporter/prometheusexporter).
 
 To enable the Prometheus exporter, set the `OTEL_METRICS_EXPORTER` environment
 variable to `prometheus`.
@@ -264,7 +275,7 @@ The exporter exposes the metrics HTTP endpoint on
 milliseconds.
 
 See the
-[Prometheus Exporter HttpListener documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.5.0-rc.1/src/OpenTelemetry.Exporter.Prometheus.HttpListener).
+[Prometheus Exporter HttpListener documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/coreunstable-1.15.0-beta.1/src/OpenTelemetry.Exporter.Prometheus.HttpListener).
 to learn more.
 
 ### Zipkin
@@ -275,7 +286,7 @@ To enable the Zipkin exporter, set the `OTEL_TRACES_EXPORTER` environment
 variable to `zipkin`.
 
 To customize the Zipkin exporter using environment variables, see the
-[Zipkin exporter documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.5.1/src/OpenTelemetry.Exporter.Zipkin#configuration-using-environment-variables).
+[Zipkin exporter documentation](https://github.com/open-telemetry/opentelemetry-dotnet/tree/core-1.15.0/src/OpenTelemetry.Exporter.Zipkin#configuration-using-environment-variables).
 Important environment variables include:
 
 | Environment variable            | Description | Default value                        | Status                                              |
@@ -287,7 +298,7 @@ Important environment variables include:
 | Environment variable                                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                              | Default value | Status                                                    |
 | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------------------- |
 | `OTEL_DOTNET_AUTO_TRACES_ENABLED`                   | Enables traces.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `true`        | [Experimental](/docs/specs/otel/versioning-and-stability) |
-| `OTEL_DOTNET_AUTO_OPENTRACING_ENABLED`              | Enables OpenTracing tracer.                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `false`       | [Experimental](/docs/specs/otel/versioning-and-stability) |
+| `OTEL_DOTNET_AUTO_OPENTRACING_ENABLED`              | Enables OpenTracing tracer.                                                                                                                                                                                                                                                                                                                                                                                                                                                              | `false`       | [Deprecated](/docs/specs/otel/versioning-and-stability)   |
 | `OTEL_DOTNET_AUTO_LOGS_ENABLED`                     | Enables logs.                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | `true`        | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_METRICS_ENABLED`                  | Enables metrics.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         | `true`        | [Experimental](/docs/specs/otel/versioning-and-stability) |
 | `OTEL_DOTNET_AUTO_NETFX_REDIRECT_ENABLED`           | Enables automatic redirection of the assemblies used by the automatic instrumentation on the .NET Framework.                                                                                                                                                                                                                                                                                                                                                                             | `true`        | [Experimental](/docs/specs/otel/versioning-and-stability) |

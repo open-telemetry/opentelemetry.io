@@ -4,7 +4,7 @@ linkTitle: PHP
 weight: 30
 aliases: [/docs/languages/php/automatic]
 default_lang_commit: 179f03bf118e1e8a3cc195ab56fc09d85c476394
-cSpell:ignore: centos democlass epel myapp pecl phar remi
+cSpell:ignore: centos democlass epel pecl phar remi
 ---
 
 ## 前置条件 {#requirements}

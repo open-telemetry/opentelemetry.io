@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w -i
 #
-# cSpell:ignore oteps
+# cSpell:ignore oteps submod
 
 $^W = 1;
 
@@ -26,7 +26,7 @@ my %versionsRaw = # Keyname must end with colons because the auto-version update
   qw(
     spec: 1.53.0
     otlp: 1.9.0
-    semconv: 1.38.0
+    semconv: 1.39.0
   );
 # Versions map without the colon in the keys
 my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
@@ -53,6 +53,10 @@ sub printFrontMatter() {
     $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
     # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
+  }
+  elsif ($ARGV =~ m|^tmp/otel/specification/logs/|
+      && applyPatchOrPrintMsgIf('2026-01-29-hugo01550-alias-processing-diff', 'spec', '1.53.0')) {
+    $frontMatterFromFile =~ s{^(\s+-\s+)\./(event-\w+)$}{$1logs/$2}gxm;
   }
   # Sample front-matter patch:
   #
@@ -125,48 +129,23 @@ sub applyPatchOrPrintMsgIf($$$) {
 }
 
 # =================================================================================
-# KEEP THE FOLLOWING AS A TEMPLATE; copy it and modify it as needed.
+# KEEP THE FOLLOWING SUB AS AN EXAMPLE / TEMPLATE; copy it and modify it as needed.
 # =================================================================================
-sub patchSpec_because_of_SemConv_DockerAPIVersions_AsTemplate() {
+
+sub patchSpec_because_of_SpecName_SomeDescription_AsTemplate() {
+  # The code below uses semconv as an example. Adapt as needed.
   return unless
     # Restrict the patch to the proper spec, and section or file:
     $ARGV =~ m|^tmp/semconv/docs/|
     &&
     # Call helper function that will cause the function to return early if the
-    # patch should not be applied. The patch is applied if the submodule version
-    # (from .gitmodules) starts with the target version (arg 3). The first
-    # argument is a unique id that will be printed if the patch is outdated.
-    # Otherwise, if the patch is still relevant we fall through to the body of
-    # this patch function.
-    #
-    # Specify the target version as, e.g., '1.38.0', or to apply only to dev
-    # versions, use '1.38.0-' with a trailing hyphen.
-    applyPatchOrPrintMsgIf('2025-11-21-docker-api-versions', 'semconv', '1.38.0');
+    # current version of the named spec (arg 2) is greater than the target
+    # version (arg 3). The first argument is a unique id that will be printed if
+    # the patch is outdated. Otherwise, if the patch is still relevant we fall
+    # through to the body of this patch function.
+    applyPatchOrPrintMsgIf('2026-01-01-some-unique-id', 'semconv', '1.39.0-dev');
 
-  # Give infor about the patch:
-  #
-  # For the problematic links, see:
-  # https://github.com/open-telemetry/semantic-conventions/issues/3103
-  #
-  # Replace older Docker API versions with the latest one like in:
-  # https://github.com/open-telemetry/semantic-conventions/pull/3093
-
-  # This is the actual regex-based patch code:
-  s{
-    (https://docs.docker.com/reference/api/engine/version)/v1.(43|51)/(\#tag/)
-  }{$1/v1.52/$3}gx;
-}
-
-sub patchSpec_because_of_SemConv_DockerAPIVersions() {
-  return unless
-    # Restrict the patch to the proper spec, and section or file:
-    $ARGV =~ m|^tmp/semconv/docs/|
-    &&
-    # Call helper function that will cause the function to return early if the
-    # patch should not be applied. See patch template above for details.
-    applyPatchOrPrintMsgIf('2025-11-21-docker-api-versions', 'semconv', '1.38.0');
-
-  # Give infor about the patch:
+  # Give info about the patch:
   #
   # For the problematic links, see:
   # https://github.com/open-telemetry/semantic-conventions/issues/3103
@@ -185,12 +164,38 @@ sub patchSpec_because_of_SemConv_DatabaseRenamedToDb() {
     # Restrict the patch to the proper spec, and section or file:
     # Note that here we replace links into semconv from the spec
     $ARGV =~ m|^tmp/otel/specification/|
-      && applyPatchOrPrintMsgIf('2025-11-26-database-section-renamed-to-db', 'semconv', '1.38.0-');
+      && applyPatchOrPrintMsgIf('2025-11-26-database-section-renamed-to-db', 'spec', '1.53.0');
 
-  # Give infor about the patch, see:
+  # Give info about the patch, see:
   # https://github.com/open-telemetry/opentelemetry.io/pull/8311#issue-3577941378
 
+  # Match both localized paths and GitHub URLs:
   s|(/semconv)/database(/database-)|$1/db$2|g;
+}
+
+sub patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration() {
+  return unless
+    $ARGV =~ m|^tmp/otel/specification/|
+      && applyPatchOrPrintMsgIf('2025-12-05-metric-rpc-server-duration-renamed-to-rpc-server-call-duration', 'spec', '1.53.0');
+
+  # Give info about the patch, see:
+  # https://github.com/open-telemetry/opentelemetry-specification/pull/4778
+
+  # Replace the old metric anchor with the new one
+  # cSpell:disable-next-line
+  s|#metric-rpcserverduration|#metric-rpcservercallduration|g;
+}
+
+sub patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL() {
+  # cSpell:ignore mariadb
+  return unless
+    $ARGV =~ m|^tmp/semconv/docs/|
+      && applyPatchOrPrintMsgIf('2026-01-20-mariadb-err-code-reference-docs-updated-url', 'semconv', '1.39.0');
+
+  # See: https://github.com/open-telemetry/semantic-conventions/issues/3303
+
+  # Replace the old URL with the new one
+  s|https://mariadb.com/kb/en/mariadb-error-code-reference/|https://mariadb.com/docs/server/reference/error-codes|g;
 }
 
 sub getVersFromSubmodule() {
@@ -279,9 +284,8 @@ while(<>) {
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
 
-    patchSpec_because_of_SemConv_DockerAPIVersions();
+    patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL();
   }
-
 
   # SPECIFICATION custom processing
 
@@ -317,6 +321,7 @@ while(<>) {
   }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
 
   patchSpec_because_of_SemConv_DatabaseRenamedToDb();
+  patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 

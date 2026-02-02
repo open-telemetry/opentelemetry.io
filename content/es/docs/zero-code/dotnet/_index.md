@@ -7,8 +7,7 @@ redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
 default_lang_commit: 45e813cfc5606299598eb068cf1e7adc2a957108
 drifted_from_default: true
-# prettier-ignore
-cSpell:ignore: coreutils desarollada desinstalación HKLM iisreset multilínea myapp
+cSpell:ignore: coreutils desarollada desinstalación HKLM iisreset multilínea
 ---
 
 Usa la instrumentación automática de OpenTelemetry .NET para enviar trazas y
@@ -76,7 +75,7 @@ chmod +x $HOME/.otel-dotnet-auto/instrument.sh
 OTEL_SERVICE_NAME=myapp OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging,service.version=1.0.0 ./MyNetApp
 ```
 
-{{% alert title="Nota" color="Advertencia" %}} En macOS
+{{% alert title="Nota" color="warning" %}} En macOS
 [`coreutils`](https://formulae.brew.sh/formula/coreutils) es requerido. Si
 tienes [homebrew](https://brew.sh/) instalado, puedes obtenerlo simplemente
 ejecutando

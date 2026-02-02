@@ -3,25 +3,22 @@
 
 {{ if $noIntegrations }}
 
-{{% alert title="Help wanted!" color=secondary %}}
-
-As of today, we don't know about any {{ $name }} library that has OpenTelemetry
-natively integrated. If you know about such a library, [let us know][].
-
-{{% /alert %}}
+> [!IMPORTANT] Help wanted
+>
+> As of today, we don't know about any {{ $name }} library that has
+> OpenTelemetry natively integrated. If you are aware of such a library, [let us
+> know][new-issue].
 
 {{ end }}
 
 {{ if not $noIntegrations }}
 
-{{% alert color=info %}}
-
-If you know a {{ $name }} library that has OpenTelemetry natively integrated,
-[let us know][].
-
-{{% /alert %}}
+> [!IMPORTANT] Help wanted
+>
+> If you are aware of a {{ $name }} library that has OpenTelemetry natively
+> integrated, [let us know][new-issue].
 
 {{ end }}
 
-[let us know]:
+[new-issue]:
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose

@@ -1,0 +1,16 @@
+{{ $color := .Get "color" | default "primary" -}}
+
+<div><a id="td-block-ecosystem-stats-{{ .Ordinal }}" class="td-offset-anchor"></a></div>
+<section class="row td-box td-box--{{ $color }} ecosystem-stats-section">
+  <div class="col-12">
+    <div class="container">
+      {{ with .Get "title" }}
+      <h2 class="text-center mb-4">{{ . }}</h2>
+      {{ end }}
+      <div class="ecosystem-stats">
+        {{ .Inner }}
+      </div>
+    </div>
+  </div>
+</section>
+

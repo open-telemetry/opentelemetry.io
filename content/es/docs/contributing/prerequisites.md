@@ -3,10 +3,9 @@ title: Requisitos previos
 description:
   Para contribuir, necesitas estar familiarizado con las siguientes tecnologías
   y herramientas.
-aliases: [requisitos]
+aliases: [requirements]
 weight: 1
-default_lang_commit: 2127d75cef0be2f2554f5b47520a108ba381b790
-drifted_from_default: true
+default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
 ---
 
 Para contribuir a este repositorio, necesitas estar familiarizado con las
@@ -41,7 +40,7 @@ Para las directrices generales de la comunidad de OpenTelemetry, incluyendo
 roles y expectativas, consulta la [Guía para Nuevos Contribuidores de
 OpenTelemetry][NCG].
 
-[CLA]: https://docs.linuxfoundation.org/lfx/easycla/contributors
+[CLA]: https://docs.linuxfoundation.org/lfx/easycla/v2-current/contributors
 [CoC]: https://github.com/cncf/foundation/blob/main/code-of-conduct.md
 [NCG]:
   https://github.com/open-telemetry/community/blob/main/guides/contributor/README.md
