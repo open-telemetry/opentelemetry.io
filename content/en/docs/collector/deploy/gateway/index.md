@@ -4,8 +4,7 @@ linkTitle: Gateway pattern
 description:
   Learn why and how to send signals first to a single OTLP endpoint and then to
   backends
-aliases:
-  - /docs/collector/deployment/gateway/
+aliases: [/docs/collector/deployment/gateway]
 weight: 300
 # prettier-ignore
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor

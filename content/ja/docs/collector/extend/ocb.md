@@ -3,10 +3,10 @@ title: OpenTelemetry Collector Builderを使用してカスタムコレクター
 linkTitle: カスタムコレクターのビルド
 description: OpenTelemetry Collectorの独自のディストリビューションを組み立てる
 weight: 200
-aliases: [/docs/collector/custom-collector/]
+aliases: [/docs/collector/custom-collector]
 params:
   providers-vers: v1.48.0
-default_lang_commit: c2343a16d205913e724abb7a959ec87ff7e80f89
+default_lang_commit: c2343a16d205913e724abb7a959ec87ff7e80f89 # patched
 cSpell:ignore: darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 

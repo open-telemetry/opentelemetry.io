@@ -1,10 +1,10 @@
-desserializa
-desserializar
+autoconsistentes
 autoinstrumentação
 autoinstrumentações
-autoconsistentes
+corrotinas
+desserializa
+desserializar
+mentoria
+reagregação
 serialização
 verbosidade
-reagregação
-corrotinas
-mentoria

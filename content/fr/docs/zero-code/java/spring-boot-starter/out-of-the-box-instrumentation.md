@@ -2,7 +2,7 @@
 title: Instrumentation prête à l'emploi
 weight: 40
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-cSpell:ignore: autoconfigurations logback webflux webmvc
+cSpell:ignore: autoconfigurations webflux webmvc
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
