@@ -1,5 +1,5 @@
 ---
-title: Join us for OpenTelemetry Talks and Activities at KubeCon Europe 2026
+title: KubeCon + CloudNativeCon Europe 2026
 linkTitle: KubeCon EU '26
 date: 2026-02-02
 author: '[Zhu Jiekun](https://github.com/jiekun) (VictoriaMetrics)'
@@ -13,7 +13,7 @@ technical committee are thrilled to be at [KubeCon EU] in Amsterdam from March
 
 Read on to learn about all the events related to OpenTelemetry during KubeCon.
 
-## KubeCon Talks and Maintainer Sessions
+## Talks and maintainer sessions
 
 - **[We Deleted Our Observability Stack and Rebuilt It With OTel: 12 Engineers to 4 at 20K+ Clusters](https://kccnceu2026.sched.com/event/2CVxh/we-deleted-our-observability-stack-and-rebuilt-it-with-otel-12-engineers-to-4-at-20k+-clusters-yash-sharma-kunju-perath-digitalocean)**<br>by
   Yash Sharma, DigitalOcean; Kunju Perath, DigitalOcean<br> Tuesday March 24,
@@ -225,6 +225,8 @@ all the details. [Sign up][maintainer summit] today!
 > Summit**. You also must be a member of a CNCF incubating project, such as
 > OpenTelemetry. For eligibility requirements, see [Maintainer Summit][].
 
+{{< comment >}}
+
 ## OpenTelemetry Observatory
 
 TODO
@@ -233,9 +235,11 @@ TODO
 
 TODO
 
-Come join us to listen, learn, and get involved in OpenTelemetry.
+{{< /comment >}}
 
-See you in Amsterdam!
+## Join us
+
+Come listen, learn, and get involved in OpenTelemetry. See you in  Amsterdam!
 
 [kubecon eu]: https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/
 [Observability Day]:
