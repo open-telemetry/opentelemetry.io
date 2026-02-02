@@ -21651,9 +21651,9 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-14T09:50:27.111369018Z"
   },
-  "https://www.parseable.com/docs/server/opentelemetry": {
-    "StatusCode": 404,
-    "LastSeen": "2026-02-01T09:49:10.57867886Z"
+  "https://www.parseable.com/docs/ingest-data/otel": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-02T09:38:15.034734283Z"
   },
   "https://www.payara.fish/": {
     "StatusCode": 200,
