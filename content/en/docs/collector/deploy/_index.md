@@ -2,8 +2,7 @@
 title: Deploy the Collector
 linkTitle: Deploy
 description: Patterns you can apply to deploy the OpenTelemetry Collector
-aliases:
-  - /docs/collector/deployment/
+aliases: [/docs/collector/deployment]
 weight: 3
 ---
 

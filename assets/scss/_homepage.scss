@@ -5,14 +5,50 @@
     background: transparent !important;
   }
 
-  // Hide navbar search on homepage (hero search is used instead)
-  .td-navbar__search {
-    display: none !important;
+  // =============================================================================
+  // HERO section and BANNER
+  // =============================================================================
+
+  .otel-logo {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    max-height: 12rem;
+  }
+
+  .o-banner {
+    background: var(--bs-tertiary-bg);
+    color: var(--bs-body-color);
+    text-align: center;
+
+    // Handling the x positioning requires some calculations. Assumption is that
+    // the banner is inside a .container-fluid, which has this padding-x:
+    $padding-x: $container-padding-x * 0.5;
+    margin-left: -$padding-x; // Undo left padding of parent
+    width: calc(100% + 2 * #{$padding-x});
+
+    @include media-breakpoint-up(md) {
+      position: fixed;
+      top: 4rem;
+      left: 0;
+      margin-left: 0;
+      width: 100%;
+      z-index: 31;
+    }
+
+    & p {
+      padding: 0.5rem;
+      margin-bottom: initial;
+    }
   }
 
   // =============================================================================
   // HERO SEARCH - Search bar section below compact hero
   // =============================================================================
+
+  // Hide navbar search on homepage (hero search is used instead)
+  .td-navbar__search {
+    display: none !important;
+  }
 
   // Override td-box default padding for compact search section
   section.td-box.hero-search-section {
@@ -120,13 +156,9 @@
 
   .td-default main section.main-features-section {
     padding: 0;
-    // Full bleed
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
-    width: 100vw;
+    margin-left: calc(var(--bs-gutter-x) * -0.5);
+    margin-right: calc(var(--bs-gutter-x) * -0.5);
+    width: calc(100% + var(--bs-gutter-x));
   }
 
   .main-features {
@@ -557,81 +589,35 @@
   }
 
   // =============================================================================
-  // CNCF SECTION - Use Docsy's automatic contrast system
+  // CNCF SECTION
   // =============================================================================
 
-  // Note: CNCF section should use class="td-box td-box--secondary" in HTML
-  // This leverages Docsy's box-variant mixin which automatically calculates:
-  // - color: color-contrast($secondary) = white
-  // - Proper link colors via mix($blue, $text-color, lightness($secondary))
-  // No CSS overrides needed here!
-}
+  .td-box--secondary {
+    background-color: hsl(41, 80%, 48%); // $secondary -20% saturation
+    background-color: desaturate($secondary, 20%);
+  }
 
-// =============================================================================
-// MINIMAL DARK MODE ADJUSTMENTS
-// =============================================================================
+  .cncf {
+    text-align: center;
 
-@include color-mode(dark) {
-  .td-home {
-    // Most dark mode styling is now handled automatically by Bootstrap CSS variables!
-    // Only a few specific cases need overrides:
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 0;
+    }
 
-    // Fix missing dark mode support for td-box--light (same as Docsy's td-box--white)
-    .td-box--light {
-      color: var(--bs-body-color);
-      background-color: var(--bs-body-bg);
+    a {
+      @extend .link-dark;
+      @extend .link-underline-opacity-0-hover;
 
-      p > a,
-      span > a {
-        color: var(--bs-link-color);
-        &:focus,
-        &:hover {
-          color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
-        }
-      }
-
-      .td-arrow-down::before {
-        border-color: var(--bs-body-bg) transparent transparent transparent;
+      &.external-link:after {
+        display: none;
       }
     }
 
-    // Fix CNCF section (td-box--secondary) link contrast
-    // Override Docsy's calculated link color to use semantic white in both modes
-    .td-box--secondary {
-      p > a,
-      span > a {
-        color: var(--bs-white);
-
-        &:focus,
-        &:hover {
-          color: rgba(var(--bs-white-rgb), 0.85);
-        }
-      }
-    }
-
-    // Search input styling for dark mode
-    .hero-search__search .td-search__input {
-      background-color: var(--bs-tertiary-bg);
-      border-color: var(--bs-border-color);
-      color: var(--bs-body-color);
-
-      &::placeholder {
-        color: var(--bs-secondary-color);
-      }
-
-      &:focus {
-        border-color: var(--bs-primary);
-        box-shadow: 0 0 0 3px rgba(var(--bs-primary-rgb), 0.25);
-      }
-    }
-
-    // Adopter logos need slight opacity adjustment for dark backgrounds
-    .adopters-showcase__item img {
-      opacity: 0.8;
-
-      &:hover {
-        opacity: 1;
-      }
+    img {
+      width: 20rem;
+      padding-top: 1rem;
+      max-width: 80%;
     }
   }
 }
