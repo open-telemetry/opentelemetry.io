@@ -239,7 +239,7 @@ TODO
 
 ## Join us
 
-Come listen, learn, and get involved in OpenTelemetry. See you in  Amsterdam!
+Come listen, learn, and get involved in OpenTelemetry. See you in Amsterdam!
 
 [kubecon eu]: https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/
 [Observability Day]:
