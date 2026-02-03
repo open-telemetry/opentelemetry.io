@@ -21135,6 +21135,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:54:07.14971801Z"
   },
+  "https://www.keycloak.org/observability/telemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-03T12:18:35.657905382Z"
+  },
   "https://www.keycloak.org/server/tracing": {
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:54:07.280376491Z"

@@ -12,8 +12,8 @@ urls:
   docs: https://www.keycloak.org/observability/telemetry
 license: Apache 2.0
 description:
-  Keycloak utilizes OpenTelemetry for metrics, logging and distributed tracing provided by the
-  Quarkus OpenTelemetry extension.
+  Keycloak utilizes OpenTelemetry for metrics, logging and distributed tracing
+  provided by the Quarkus OpenTelemetry extension.
 authors:
   - name: Keycloak Contributors
     url: https://github.com/keycloak
