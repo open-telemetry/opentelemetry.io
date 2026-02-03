@@ -203,8 +203,8 @@ replace the `debug` exporter with an exporter that does not send logs to the
 collector's standard output.
 
 Here's an example `values.yaml` that replaces the default `debug` exporter on
-the `logs` pipeline with an `otlp_http` exporter that sends the container logs to
-`https://example.com:55681` endpoint. It also uses
+the `logs` pipeline with an `otlp_http` exporter that sends the container logs
+to `https://example.com:55681` endpoint. It also uses
 `presets.logsCollection.includeCollectorLogs` to tell the preset to enable
 collection of the collector's logs.
 
