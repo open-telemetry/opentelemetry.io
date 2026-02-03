@@ -3,7 +3,7 @@ title: Configuration
 weight: 20
 description: Learn how to configure the Collector to suit your needs
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
+cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey hostmetrics initca oidc pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
