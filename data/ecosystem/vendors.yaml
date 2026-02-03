@@ -396,7 +396,7 @@
   contact: support@base14.io
   oss: false
   commercial: true
-- name: Sematext 
+- name: Sematext
   nativeOTLP: true
   url: https://sematext.com/docs/tracing/
   contact: support@sematext.com
