@@ -23,15 +23,16 @@ carregadas pela auto-instrumentação via os _entry points_ `opentelemetry_distr
 e `opentelemetry_configurator` para configurar a aplicação antes que qualquer
 outro código seja executado.
 
-Para exportar automaticamente dados do OpenTelemetry para o coletor OpenTelemetry,
-a instalação do pacote configurará todos os _entry points_ necessários.
+Para exportar automaticamente dados do OpenTelemetry para o coletor
+OpenTelemetry, a instalação do pacote configurará todos os _entry points_
+necessários.
 
 ```sh
 pip install opentelemetry-distro[otlp] opentelemetry-instrumentation
 ```
 
-Inicie o Collector localmente para ver os dados sendo exportados. Escreva o seguinte
-arquivo:
+Inicie o Collector localmente para ver os dados sendo exportados. Escreva o
+seguinte arquivo:
 
 ```yaml
 # /tmp/otel-collector-config.yaml
