@@ -200,7 +200,10 @@ var loggerFactory = LoggerFactory.Create(builder =>
 
 {{% include "exporters/jaeger.md" %}}
 
-## Prometheus
+{{% include "exporters/prometheus-setup.md" %}}
+
+The following sections provide detailed, .NET-specific instructions for
+configuring the Prometheus exporter.
 
 There are two approaches for exporting metrics to Prometheus:
 
@@ -214,13 +217,13 @@ There are two approaches for exporting metrics to Prometheus:
    your application that Prometheus can scrape. This is the traditional
    Prometheus approach.
 
-### Using OTLP Exporter (Push) {#prometheus-otlp}
+#### Using OTLP Exporter (Push) {#prometheus-otlp}
 
 This approach uses the OTLP exporter to push metrics directly to Prometheus'
 OTLP receiver endpoint. This is recommended for production environments because
 it supports exemplars and uses the stable OTLP protocol.
 
-#### Dependencies {#prometheus-otlp-dependencies}
+##### Dependencies {#prometheus-otlp-dependencies}
 
 Install the
 [`OpenTelemetry.Exporter.OpenTelemetryProtocol`](https://www.nuget.org/packages/OpenTelemetry.Exporter.OpenTelemetryProtocol/)
@@ -238,9 +241,9 @@ package as well:
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-#### Usage {#prometheus-otlp-usage}
+##### Usage {#prometheus-otlp-usage}
 
-##### ASP.NET Core {#prometheus-otlp-asp-net-core-usage}
+###### ASP.NET Core {#prometheus-otlp-asp-net-core-usage}
 
 Configure the OTLP exporter to send metrics to Prometheus OTLP receiver:
 
@@ -257,7 +260,7 @@ builder.Services.AddOpenTelemetry()
         }));
 ```
 
-##### Non-ASP.NET Core {#prometheus-otlp-non-asp-net-core-usage}
+###### Non-ASP.NET Core {#prometheus-otlp-non-asp-net-core-usage}
 
 Configure the exporter when creating a `MeterProvider`:
 
@@ -288,7 +291,7 @@ docker run -p 9090:9090 prom/prometheus --web.enable-otlp-receiver
 
 {{% /alert %}}
 
-### Using Prometheus Exporter (Pull/Scrape) {#prometheus-exporter}
+#### Using Prometheus Exporter (Pull/Scrape) {#prometheus-exporter}
 
 This approach exposes a metrics endpoint in your application (e.g., `/metrics`)
 that Prometheus scrapes at regular intervals.
@@ -301,7 +304,7 @@ production environments, consider using the
 
 {{% /alert %}}
 
-#### Dependencies {#prometheus-dependencies}
+##### Dependencies {#prometheus-dependencies}
 
 Install the
 [exporter package](https://www.nuget.org/packages/OpenTelemetry.Exporter.Prometheus.AspNetCore)
@@ -319,9 +322,9 @@ package as well:
 dotnet add package OpenTelemetry.Extensions.Hosting
 ```
 
-#### Usage {#prometheus-exporter-usage}
+##### Usage {#prometheus-exporter-usage}
 
-##### ASP.NET Core {#prometheus-exporter-asp-net-core-usage}
+###### ASP.NET Core {#prometheus-exporter-asp-net-core-usage}
 
 Configure the exporter in your ASP.NET Core services:
 
@@ -358,7 +361,7 @@ app.UseOpenTelemetryPrometheusScrapingEndpoint(
         && context.Connection.LocalPort == 5067);
 ```
 
-##### Non-ASP.NET Core {#prometheus-exporter-non-asp-net-core-usage}
+###### Non-ASP.NET Core {#prometheus-exporter-non-asp-net-core-usage}
 
 > [!WARNING]
 >
@@ -387,7 +390,7 @@ var meterProvider = Sdk.CreateMeterProviderBuilder()
     .Build();
 ```
 
-#### Prometheus Configuration (Scrape)
+##### Prometheus Configuration (Scrape)
 
 When using the Prometheus exporter (pull/scrape approach), you need to configure
 Prometheus to scrape your application. Add the following to your
