@@ -1,8 +1,8 @@
 ---
 title: Usando o mypy
 weight: 120
-cSpell:ignore: mypy
 default_lang_commit: 1a135ec4b7a14bddd14b7d70dbf2986695b7a93d
+cSpell:ignore: mypy
 ---
 
 Se você estiver usando o [mypy](https://mypy-lang.org/), precisará ativar os
