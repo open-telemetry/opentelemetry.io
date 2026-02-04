@@ -21,7 +21,7 @@
 [submodule "content-modules/semantic-conventions"]
 	path = content-modules/semantic-conventions
 	url = https://github.com/open-telemetry/semantic-conventions
-	semconv-pin = v1.39.0-44-g0094bf1c
+	semconv-pin = v1.39.0-48-g04ee6445
 [submodule "content-modules/opamp-spec"]
 	path = content-modules/opamp-spec
 	url = https://github.com/open-telemetry/opamp-spec
