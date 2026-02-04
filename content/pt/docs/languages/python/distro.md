@@ -9,7 +9,7 @@ cSpell:ignore: distro distros
 Para tornar o uso do OpenTelemetry e auto-instrumentação o mais rápido possível
 sem sacrificar a flexibilidade, as distros do OpenTelemetry fornecem um
 mecanismo para configurar automaticamente algumas das opções mais comuns para os
-usuários. Ao aproveitar seu poder, os usuários do OpenTelemetry podem configurar
+usuários. Através disso, os usuários do OpenTelemetry podem configurar
 os componentes conforme necessário. O pacote `opentelemetry-distro` fornece
 alguns padrões para usuários que desejam começar, configurando:
 
