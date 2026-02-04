@@ -80,7 +80,7 @@ Por fim, execute o `no_configuration.py` com a auto-instrumentação:
 opentelemetry-instrument python no_configuration.py
 ```
 
-O trecho resultante aparecerá na saída do coletor e será semelhante a este:
+O trecho resultante aparecerá na saída do Collector e será semelhante a este:
 
 ```nocode
 Resource labels:
