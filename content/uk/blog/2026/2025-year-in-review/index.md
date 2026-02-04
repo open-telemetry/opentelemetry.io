@@ -55,10 +55,8 @@ cSpell:ignore: chalin Hrabusa jaydeluca Msksgm Vasconcellos vitorvasc windsonsea
 - Іспанська — 13% (79 файлів)
 - Французька — 9% (57 файлів)
 - Бенгальська — 3% (17 файлів)
-- Українська **[^uk]** — 1% (7 файлів)
+- Українська — 1% (7 файлів)
 - Румунська — 1% (4 файли)
-
-[^uk]: Наразі існує переклад українською, який чекає на своє затвердження, див. [PR #5891](https://github.com/open-telemetry/opentelemetry.io/pull/5891).
 
 ### Найактивніші учасники локалізації {#most-active-localization-contributors}
 
