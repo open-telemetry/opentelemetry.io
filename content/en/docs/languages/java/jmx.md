@@ -89,6 +89,11 @@ configure using these properties (note: `otel.jmx.enabled` is not needed).
 For complete configuration reference, see the
 [JMX Scraper documentation](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference).
 
+Please note that the remote JVM must be configured to accept remote JMX
+connections, being able to connect using `jconsole` or `visualvm` tools is a
+recommended first step to ensure configuration and optional authentication is
+working as expected.
+
 ### Predefined Target Systems
 
 OpenTelemetry provides predefined metric mappings for popular Java frameworks
@@ -104,20 +109,12 @@ java -javaagent:opentelemetry-javaagent.jar \
   -jar myapp.jar
 ```
 
-**Example - Monitoring Kafka (Java agent):**
+For a complete list of available target systems, see:
 
-```sh
-java -javaagent:opentelemetry-javaagent.jar \
-  -Dotel.jmx.enabled=true \
-  -Dotel.jmx.target.system=kafka,kafka-producer,kafka-consumer \
-  -jar myapp.jar
-```
-
-{{% alert title="Note" color="info" %}}
+- [Java agent predefined target systems](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metric-sets)
+- [JMX Scraper predefined target systems](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#predefined-metric-sets)
 
 You can specify multiple target systems by separating them with commas.
-
-{{% /alert %}}
 
 ### Remote JMX Connections
 
@@ -161,18 +158,7 @@ java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://tomcat.example.com:999
 ```
 
 You can configure the scraper using the same properties as the Java agent
-(target system, collection interval, etc.), except you don't need
-`otel.jmx.enabled` since the scraper runs standalone.
-
-**Additional configuration options:**
-
-```sh
-java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://kafka.example.com:9999/jmxrmi \
-  -Dotel.jmx.target.system=kafka,kafka-producer,kafka-consumer \
-  -Dotel.metrics.exporter=otlp \
-  -Dotel.exporter.otlp.endpoint=http://collector:4318 \
-  -jar opentelemetry-jmx-scraper.jar
-```
+(target system, collection interval, etc.).
 
 For more details, see the
 [JMX Scraper documentation](https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper).
@@ -202,19 +188,19 @@ rules:
     mapping:
       RequestCount:
         metric: myapp.requests.count
-        type: monotonic_count
-        desc: Total request count
-        unit: "1"
+        type: counter
+        description: Total request count
+        unit: '1'
       ResponseTime:
         metric: myapp.response.time
         type: gauge
-        desc: Average response time
+        description: Average response time
         unit: ms
       ActiveSessions:
         metric: myapp.sessions.active
         type: updowncounter
-        desc: Active sessions
-        unit: "1"
+        description: Active sessions
+        unit: '1'
 ```
 
 Use the file with your application:
@@ -226,71 +212,27 @@ java -javaagent:opentelemetry-javaagent.jar \
   -jar myapp.jar
 ```
 
-## Common Use Cases
-
-### Monitoring JVM Metrics (Java agent)
-
-Enable JMX metrics to collect standard JVM metrics from the same JVM:
-
-```sh
-java -javaagent:opentelemetry-javaagent.jar \
-  -Dotel.jmx.enabled=true \
-  -jar myapp.jar
-```
-
-This collects metrics such as:
-
-- Heap and non-heap memory usage
-- Garbage collection statistics
-- Thread counts and states
-- Class loading metrics
-
-### Monitoring Remote Application Servers (JMX Scraper)
-
-For monitoring Tomcat, Jetty, or WildFly running on remote hosts:
-
-```sh
-java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://tomcat.example.com:9999/jmxrmi \
-  -Dotel.jmx.target.system=tomcat \
-  -Dotel.metrics.exporter=otlp \
-  -Dotel.exporter.otlp.endpoint=http://collector:4318 \
-  -jar opentelemetry-jmx-scraper.jar
-```
-
-### Monitoring Remote Message Brokers (JMX Scraper)
-
-For monitoring Kafka or ActiveMQ on remote hosts:
-
-```sh
-java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://kafka.example.com:9999/jmxrmi \
-  -Dotel.jmx.target.system=kafka,kafka-producer,kafka-consumer \
-  -Dotel.metrics.exporter=otlp \
-  -Dotel.exporter.otlp.endpoint=http://collector:4318 \
-  -jar opentelemetry-jmx-scraper.jar
-```
-
-### Monitoring Remote Databases (JMX Scraper)
-
-For monitoring Cassandra or HBase on remote hosts:
-
-```sh
-java -Dotel.jmx.service.url=service:jmx:rmi:///jndi/rmi://cassandra.example.com:9999/jmxrmi \
-  -Dotel.jmx.target.system=cassandra \
-  -Dotel.metrics.exporter=otlp \
-  -Dotel.exporter.otlp.endpoint=http://collector:4318 \
-  -jar opentelemetry-jmx-scraper.jar
-```
-
 ## Verification
 
 To verify that JMX metrics are being collected:
 
 1. **Check the logs** - Look for messages indicating JMX metric collection has
    started
-2. **Use a metrics backend** - Configure an OTLP exporter and view the metrics
+2. **Use the logging exporter** - Configure the logging exporter to see metrics
+   in the console without needing a backend
+3. **Use a metrics backend** - Configure an OTLP exporter and view the metrics
    in your observability platform
-3. **Use JConsole** - Connect to your application with JConsole to verify MBeans
+4. **Use JConsole** - Connect to your application with JConsole to verify MBeans
    are accessible
+
+**Example with logging exporter (Java agent):**
+
+```sh
+java -javaagent:opentelemetry-javaagent.jar \
+  -Dotel.jmx.enabled=true \
+  -Dotel.metrics.exporter=logging \
+  -jar myapp.jar
+```
 
 **Example with OTLP exporter (Java agent):**
 
