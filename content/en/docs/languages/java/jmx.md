@@ -104,7 +104,6 @@ them (available with both Java agent and JMX Scraper):
 
 ```sh
 java -javaagent:opentelemetry-javaagent.jar \
-  -Dotel.jmx.enabled=true \
   -Dotel.jmx.target.system=tomcat \
   -jar myapp.jar
 ```
@@ -122,7 +121,7 @@ To collect metrics from a remote JVM, you need to use the JMX Scraper. This
 involves two separate JVMs:
 
 1. **Target JVM** - The application being monitored
-2. **Scraper JVM** - The JMX metric collector
+2. **Scraper JVM** - The JMX metric scraper
 
 #### Step 1: Configure the Target JVM
 
@@ -207,10 +206,12 @@ Use the file with your application:
 
 ```sh
 java -javaagent:opentelemetry-javaagent.jar \
-  -Dotel.jmx.enabled=true \
   -Dotel.jmx.config=/path/to/custom-jmx-metrics.yaml \
   -jar myapp.jar
 ```
+
+For a complete reference of the YAML syntax, see the
+[JMX Metrics configuration documentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics).
 
 ## Verification
 
@@ -229,7 +230,6 @@ To verify that JMX metrics are being collected:
 
 ```sh
 java -javaagent:opentelemetry-javaagent.jar \
-  -Dotel.jmx.enabled=true \
   -Dotel.metrics.exporter=logging \
   -jar myapp.jar
 ```
@@ -238,7 +238,6 @@ java -javaagent:opentelemetry-javaagent.jar \
 
 ```sh
 java -javaagent:opentelemetry-javaagent.jar \
-  -Dotel.jmx.enabled=true \
   -Dotel.metrics.exporter=otlp \
   -Dotel.exporter.otlp.endpoint=http://localhost:4318 \
   -jar myapp.jar
