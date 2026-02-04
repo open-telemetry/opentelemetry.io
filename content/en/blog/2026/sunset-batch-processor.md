@@ -18,9 +18,9 @@ brief gaps in traces, missing logs after routine restarts, and telemetry that
 looked healthy in transit but arrived incomplete.
 
 Over time, these experiences led the community to revisit a long-standing
-assumption. Batching still matters, but the
-[**classic batch processor is no longer recommended**](https://github.com/open-telemetry/opentelemetry-collector/issues/13766)
-in most production environments.
+assumption. Batching still matters, but the batch processor doesn't take the best approach.
+We have therefore made the decision to
+[**sunset the batch processor**](https://github.com/open-telemetry/opentelemetry-collector/issues/13766).
 
 This post explains how we got here and what that shift has taught us about
 building resilient telemetry pipelines.
