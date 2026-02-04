@@ -133,7 +133,7 @@ buffers.
 
 The delivery semantics shift as well. Pipelines move closer to an
 **at-least-once model**. Duplicate data becomes possible, but silent loss
-becomes far less common. In practice, most observability backends handle
+becomes far less common. In practice, observability backends handle
 duplicates more gracefully than missing signals.
 
 ## Treating failure as normal, not exceptional
