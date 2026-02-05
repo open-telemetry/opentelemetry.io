@@ -116,7 +116,7 @@
     "test-and-fix": "npm run seq -- fix:submodule $(npm -s run _list:fix:for-test-and-fix) $(npm -s run _list:check:for-test-and-fix)",
     "test:only": "npm run check",
     "test": "npm run test:only",
-    "update:package:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
+    "update:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
     "update:packages": "npx npm-check-updates --dep 'prod,dev,optional,peer' -u",
     "update:submodule": "set -x && git submodule update --remote ${DEPTH:- --depth 999} && git submodule foreach 'git fetch $(git remote | tail -1) --tags'"
   },
@@ -130,10 +130,10 @@
     "ajv": "^8.17.1",
     "ajv-errors": "^3.0.0",
     "ajv-formats": "^3.0.1",
-    "autoprefixer": "^10.4.23",
-    "cspell": "^9.6.2",
+    "autoprefixer": "^10.4.24",
+    "cspell": "^9.6.4",
     "gulp": "^5.0.1",
-    "hugo-extended": "0.155.0",
+    "hugo-extended": "0.155.2",
     "js-yaml": "^4.1.1",
     "markdown-it": "^14.1.0",
     "markdown-link-check": "^3.14.2",
@@ -142,8 +142,8 @@
     "markdownlint-rule-helpers": "^0.30.0",
     "postcss-cli": "^11.0.1",
     "prettier": "3.8.1",
-    "puppeteer": "^24.36.1",
-    "puppeteer-core": "^24.36.1",
+    "puppeteer": "^24.37.1",
+    "puppeteer-core": "^24.37.1",
     "require-dir": "^1.2.0",
     "textlint": "^15.5.1",
     "textlint-filter-rule-allowlist": "^4.0.0",
@@ -168,7 +168,7 @@
     "path": "^0.12.7"
   },
   "optionalDependencies": {
-    "netlify-cli": "^23.14.0",
+    "netlify-cli": "^23.15.1",
     "npm-check-updates": "^19.3.2"
   },
   "enginesComment": "Ensure that engines.node value stays consistent with the project's .nvmrc",
