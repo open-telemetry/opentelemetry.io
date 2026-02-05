@@ -19727,6 +19727,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-30T09:57:42.330741371Z"
   },
+  "https://sematext.com/docs/tracing/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-03T14:18:59.897042229Z"
+  },
   "https://semver.org/": {
     "StatusCode": 206,
     "LastSeen": "2026-01-28T09:51:55.547032197Z"
