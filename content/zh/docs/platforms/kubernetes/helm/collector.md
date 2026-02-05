@@ -34,7 +34,7 @@ OpenTelemetry Collector Chart 要求设置 `mode`。
 
 ```yaml
 exporters:
-  # NOTE: Prior to v0.86.0 use `logging` instead of `debug`.
+  # 注意：在 v0.86.0 版本之前，请使用 `logging` 而非 `debug`。
   debug: {}
 extensions:
   health_check: {}
@@ -319,7 +319,7 @@ OpenTelemetry Collector 可以配置为从 Kubernetes 节点收集主机指标�
 此功能默认禁用。
 它有以下要求：
 
-- 它要求 Collector 镜像中包含 [主机指标接收器](/docs/platforms/kubernetes/collector/components/#host-metrics-receiver)，
+- 它要求 Collector 镜像中包含[主机指标接收器](/docs/platforms/kubernetes/collector/components/#host-metrics-receiver)，
   例如 [Collector 的 Contrib 发行版](https://github.com/open-telemetry/opentelemetry-collector-releases/pkgs/container/opentelemetry-collector-releases%2Fopentelemetry-collector-contrib)。
 - 虽然不是严格要求，但建议将此预设与 `mode=daemonset` 一起使用。
   `hostmetricsreceiver` 只能收集 Collector 运行所在节点上的指标，
