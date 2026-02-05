@@ -1,9 +1,9 @@
 ---
 title: OpenTelemetry Collector Chart
 linkTitle: Collector Chart
+default_lang_commit: a41755046773da6186e0521e92c6cf1b439f7c7d
 # prettier-ignore
 cSpell:ignore: debugexporter filelog filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
-default_lang_commit: a41755046773da6186e0521e92c6cf1b439f7c7d
 ---
 
 ## 介绍 {#introduction}
