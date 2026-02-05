@@ -15871,6 +15871,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-01-30T09:54:38.500164181Z"
   },
+  "https://img.shields.io/badge/beta-lightpink": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-05T10:40:40.030782451Z"
+  },
   "https://img.shields.io/badge/changed-orange?style=flat": {
     "StatusCode": 200,
     "LastSeen": "2026-01-23T09:49:52.548401668Z"
