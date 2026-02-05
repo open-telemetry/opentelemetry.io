@@ -160,6 +160,10 @@ For example, setting the `instrumentations` option to: `http,grpc` enables the
 collection of `HTTP/HTTPS/HTTP2` and `gRPC` application metrics, and disables
 other instrumentation.
 
+| YAML<br>environment variable                                                        | Description                                                                                                                                                                                                                                                          | Type            | Default                  |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------ |
+| `instrumentations`<br>`OTEL_EBPF_METRICS_INSTRUMENTATIONS`                           | The list of instrumentation OBI collects data for, refer to [metrics instrumentation](#metrics-instrumentation) section.                                                                                                                                               | list of strings | `["*"]`                  |
+
 ## OpenTelemetry traces exporter component
 
 YAML section: `otel_traces_export`
