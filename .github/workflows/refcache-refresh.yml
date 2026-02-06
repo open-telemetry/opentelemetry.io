@@ -33,6 +33,8 @@ permissions:
 
 jobs:
   refcache-refresh:
+    # Only run in upstream repository, not in forks
+    if: github.repository == 'open-telemetry/opentelemetry.io'
     runs-on: ubuntu-latest
     env:
       BRANCH: otelbot/refcache-refresh
@@ -49,7 +51,7 @@ jobs:
           app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v6.0.1
+      - uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
           # Needed to trigger workflows when pushing new commits to an existing PR

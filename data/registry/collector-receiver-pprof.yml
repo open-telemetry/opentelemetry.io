@@ -16,4 +16,4 @@ createdAt: 2025-09-19
 package:
   registry: go-collector
   name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/pprofreceiver
-  version: v0.142.0
+  version: v0.145.0

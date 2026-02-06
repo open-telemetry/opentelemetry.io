@@ -1,6 +1,7 @@
 ---
 title: 插桩生态系统
 default_lang_commit: 6eddc725571667e112a41aa7422bcd4c69764503
+drifted_from_default: true
 aliases:
   - /docs/java/getting_started
   - /docs/java/manual_instrumentation
@@ -9,7 +10,6 @@ aliases:
   - libraries
 weight: 10
 description: OpenTelemetry Java 中的插桩生态系统
-cSpell:ignore: logback
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->

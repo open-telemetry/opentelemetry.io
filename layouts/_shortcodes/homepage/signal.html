@@ -1,0 +1,18 @@
+{{ $name := .Get "name" -}}
+{{ $icon := .Get "icon" -}}
+{{ $image := .Get "image" -}}
+{{ $url := .Get "url" -}}
+
+<a href="{{ $url }}" class="signal-card">
+  <div class="signal-card__icon">
+    {{- if $image -}}
+      <img src="{{ $image }}" alt="{{ $name }}" class="signal-card__img">
+    {{- else -}}
+      <i class="fas fa-{{ $icon }}"></i>
+    {{- end -}}
+  </div>
+  <div class="signal-card__name">{{ $name }}</div>
+  {{ with .Inner }}
+    <div class="signal-card__description">{{ . | $.Page.RenderString }}</div>
+  {{ end }}
+</a>

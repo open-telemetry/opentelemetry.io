@@ -3,7 +3,7 @@ title: Getting Started
 description: Get telemetry from your app in less than 5 minutes!
 aliases: [getting_started]
 weight: 10
-cSpell:ignore: darwin rolldice sinatra struct tracestate truffleruby
+cSpell:ignore: darwin rolldice sinatra struct truffleruby
 ---
 
 This page will show you how to get started with OpenTelemetry in Ruby.
@@ -18,8 +18,10 @@ Ensure that you have the following installed locally:
 - CRuby >= `3.1`, JRuby >= `9.3.2.0`, or TruffleRuby >= `22.1`
 - [Bundler](https://bundler.io/)
 
-{{% alert  title="Warning" color="warning" %}} While tested, support for `jruby`
-and `truffleruby` are on a best-effort basis at this time. {{% /alert %}}
+> [!WARNING]
+>
+> While tested, support for `jruby` and `truffleruby` are on a best-effort basis
+> at this time.
 
 ## Example Application
 

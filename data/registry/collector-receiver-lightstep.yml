@@ -20,4 +20,4 @@ createdAt: 2020-11-05
 package:
   registry: go-collector
   name: github.com/zalando/otelcol-lightstep-receiver
-  version: v0.0.15
+  version: v0.0.16

@@ -4,4 +4,4 @@ likeTitle: Site info
 cascade: { type: docs }
 ---
 
-{{% site-build-info %}}
+{{% td/site-build-info/netlify "opentelemetry" %}}

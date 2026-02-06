@@ -8,7 +8,6 @@ aliases:
   - libraries
 weight: 10
 description: Instrumentation ecosystem in OpenTelemetry Java
-cSpell:ignore: logback
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
@@ -29,11 +28,13 @@ instrumentation topics:
 - [Log instrumentation](#log-instrumentation), which is used to get logs from an
   existing Java logging framework into OpenTelemetry.
 
-{{% alert %}} While [instrumentation categories](#instrumentation-categories)
-enumerates several options for instrumenting an application, we recommend users
-start with the [Java agent](#zero-code-java-agent). The Java agent has a simple
-installation process, and automatically detects and installs instrumentation
-from a large library. {{% /alert %}}
+> [!NOTE]
+>
+> While [instrumentation categories](#instrumentation-categories) enumerates
+> several options for instrumenting an application, we recommend users start
+> with the [Java agent](#zero-code-java-agent). The Java agent has a simple
+> installation process, and automatically detects and installs instrumentation
+> from a large library.
 
 ## Instrumentation categories
 
@@ -104,6 +105,15 @@ instrumentation maintained by OpenTelemetry in
 [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 as a temporary means of filling the gap.
 
+Native instrumentation should interact with the OpenTelemetry Java agent as
+follows: On startup, the Java agent initializes an
+[OpenTelemetry](../api/#opentelemetry) instance and installs
+[zero-code](#zero-code-java-agent) instrumentation. Libraries adding native
+instrumentation should allow users to customize the `OpenTelemetry` instance
+used, but should automatically use the instance initialized by the Java agent
+(if present). See [GlobalOpenTelemetry](../api/#globalopentelemetry) for
+guidance on how to achieve this.
+
 {{% docs/languages/native-libraries %}}
 
 ### Manual instrumentation
@@ -111,6 +121,20 @@ as a temporary means of filling the gap.
 [Manual instrumentation](/docs/specs/otel/glossary/#manual-instrumentation) is
 written by application authors, and typically specific to the application
 domain.
+
+Manual instrumentation should interact with the OpenTelemetry Java agent as
+follows: On startup, the Java agent initializes an
+[OpenTelemetry](../api/#opentelemetry) instance and makes it accessible to
+application manual instrumentation via `GlobalOpenTelemetry`. However, the
+application owner may not be able to rely on the Java agent being installed all
+the time. For example, the Java agent may not be installed in local development,
+or test environments, or in special cases where the Java agent is removed for
+debugging reasons. Manual instrumentation should use the
+[OpenTelemetry](../api/#opentelemetry) instance initialized by the Java agent
+(if present), but should be able to detect and potentially set up a fallback
+`OpenTelemetry` instance if the Java agent is not present. See
+[GlobalOpenTelemetry](../api/#globalopentelemetry) for guidance on how to
+achieve this.
 
 ### Shims
 
@@ -232,9 +256,7 @@ Log correlation with traces is available by installing a [shim](#shims) to
 bridge OpenTelemetry context into the log framework. See "Bridge OpenTelemetry
 context into Log4j", "Bridge OpenTelemetry context into Logback" entries.
 
-{{% alert title="Note" %}}
-
-An end-to-end example of log instrumentation using stdout is available in the
-[Java examples repository](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> An end-to-end example of log instrumentation using stdout is available in the
+> [Java examples repository](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md).

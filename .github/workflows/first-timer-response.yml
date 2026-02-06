@@ -1,0 +1,97 @@
+name: Auto-respond to first-time contributors
+# Automatically respond to issue comments asking for assignment
+
+on:
+  issue_comment:
+    types: [created]
+
+permissions:
+  issues: write
+
+env:
+  ISSUE_NUM: ${{ github.event.issue.number }}
+  COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
+  URL_FIRST_TIME_CONTRIBUTING: https://opentelemetry.io/docs/contributing/#first-time-contributing
+  URL_FIXING_EXISTING_ISSUE: https://opentelemetry.io/docs/contributing/issues/#fixing-an-existing-issue
+
+jobs:
+  respond-to-assignment-request:
+    name: Respond to assignment requests
+    runs-on: ubuntu-latest
+    # Only run on issue comments (not PRs) for issues with specific labels
+    if: |
+      !github.event.issue.pull_request &&
+      (
+        contains(github.event.issue.labels.*.name, 'good first issue') ||
+        contains(github.event.issue.labels.*.name, 'triage:accepted:needs-pr')
+      )
+
+    steps:
+      - uses: step-security/harden-runner@e3f713f2d8f53843e71c69a996d56f51aa9adfb9 # v2.14.1
+        with:
+          egress-policy: audit
+
+      # Normalize the comment to lowercase using environment variable (security best practice)
+      - name: Normalize comment body
+        id: normalize
+        env:
+          COMMENT_BODY: ${{ github.event.comment.body }}
+        run: |
+          # Use heredoc delimiter for multiline-safe output
+          echo "body_lower<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$COMMENT_BODY" | tr '[:upper:]' '[:lower:]' >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+
+      # Check if the comment looks like an assignment request
+      - name: Check if comment is assignment request
+        id: check-trigger
+        env:
+          BODY_LOWER: ${{ steps.normalize.outputs.body_lower }}
+        run: |
+          if echo "$BODY_LOWER" | grep -Eiq \
+            "assign this to me|assign me|can i work on this|i would like to work on this|i want to work on this|please assign|can you assign|i will work on this|i am working on this|i'm working on this|can i take this"; then
+            echo "match=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "match=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        id: otelbot-token
+        if: steps.check-trigger.outputs.match == 'true'
+        with:
+          app-id: ${{ vars.OTELBOT_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+
+      - name: Check if commenter is an org member
+        id: check-membership
+        if: steps.check-trigger.outputs.match == 'true'
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+          ORG: ${{ github.repository_owner }}
+          USERNAME: ${{ github.event.comment.user.login }}
+        run: |
+          if gh api "orgs/$ORG/members/$USERNAME" --silent 2>/dev/null; then
+            echo "is_member=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "is_member=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Post response to first-time contributor
+        if: |
+          steps.check-membership.outputs.is_member != 'true' &&
+          steps.check-trigger.outputs.match == 'true'
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+          COMMENT_AUTHOR: ${{ github.event.comment.user.login }}
+          URL_FIRST_TIME_CONTRIBUTING: ${{ env.URL_FIRST_TIME_CONTRIBUTING }}
+          URL_FIXING_EXISTING_ISSUE: ${{ env.URL_FIXING_EXISTING_ISSUE }}
+          ISSUE_NUM: ${{ env.ISSUE_NUM }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          RESPONSE_BODY="Thank you for your interest in contributing to this project, @$COMMENT_AUTHOR! 🙏
+
+          If this is your first time contributing, please read [First time contributing]($URL_FIRST_TIME_CONTRIBUTING) and [Fixing an existing issue]($URL_FIXING_EXISTING_ISSUE).
+
+          As noted there, **we don't assign issues** unless you're a regular contributor. If you don't see any linked PRs and no one else has said they are working on the issue, feel free to submit a draft PR early to signal that you're working on it."
+
+          gh issue comment "$ISSUE_NUM" --repo "$GITHUB_REPOSITORY" --body "$RESPONSE_BODY"

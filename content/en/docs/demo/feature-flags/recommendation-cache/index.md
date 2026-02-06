@@ -2,7 +2,7 @@
 title: Using Metrics and Traces to diagnose a memory leak
 linkTitle: Diagnosing memory leaks
 aliases:
-  - ../scenarios/recommendation-cache/
+  - ../scenarios/recommendation-cache
   - ../scenarios/recommendation_cache
 ---
 

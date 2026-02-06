@@ -1,7 +1,7 @@
 ---
 title: Zero-code Instrumentation
 redirects: [{ from: 'net/*', to: 'dotnet/:splat' }]
-weight: 260
+weight: 265
 ---
 
 OpenTelemetry [zero-code instrumentation][] is supported for the languages

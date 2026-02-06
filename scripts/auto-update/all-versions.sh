@@ -19,6 +19,8 @@ function auto_update_versions() {
         instrumentation content/en/docs/zero-code/java/_index.md"
       "opentelemetry-java-contrib
         contrib content/en/docs/languages/java/_index.md"
+      "opentelemetry-android
+        ot-android content/en/docs/platforms/client-apps/android.md"
       "opentelemetry-specification
         spec scripts/content-modules/adjust-pages.pl
         spec .gitmodules"

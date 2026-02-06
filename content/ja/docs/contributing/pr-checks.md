@@ -2,7 +2,8 @@
 title: プルリクエストのチェック
 description: プルリクエストがすべてのチェックをパスする方法学ぶ
 weight: 40
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25 # patched
+drifted_from_default: true
 ---
 
 [opentelemetry.io リポジトリ](https://github.com/open-telemetry/opentelemetry.io)に[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)（PR）を作成した際に、一連のチェックが実行されます。
@@ -96,8 +97,8 @@ refcache に変更があれば、新しいコミットでプッシュしてく�
 このようなサーバーは、404 以外の 400 番台の HTTP ステータス（401、403、406 が最も一般的）を返すことがよくあります。
 LinkedIn などの一部のサーバーは 999 を報告します。
 
-チェッカーが成功ステータスを取得できない外部リンクを手動で検証した場合は、URL にクエリパラメーター`?no-link-check`を追加して、リンクチェッカーに無視させることができます。
-たとえば、<https:/some-example.org?no-link-check> はリンクチェッカーによって無視されます。
+チェッカーが成功ステータスを取得できない外部リンクを手動で検証した場合は、URL にクエリパラメーター`?link-check=no`を追加して、リンクチェッカーに無視させることができます。
+たとえば、<https:/some-example.org?link-check=no> はリンクチェッカーによって無視されます。
 
 {{% alert title="メンテナーのヒント" %}}
 
