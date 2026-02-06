@@ -3019,6 +3019,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:53:31.338820867Z"
   },
+  "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/features-add-ons/maintainer-summit/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-29T14:10:54.721306737Z"
+  },
   "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/register/": {
     "StatusCode": 200,
     "LastSeen": "2026-01-22T09:53:37.78159229Z"
@@ -8854,6 +8858,30 @@
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.144.0/receiver/receiver.go#L58": {
     "StatusCode": 206,
     "LastSeen": "2026-01-20T16:27:20.404084543Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.145.0/component/config.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-05T11:53:39.960689348Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.145.0/config/configtls/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-05T11:53:39.707380962Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.145.0/pdata/pcommon/map.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-05T11:54:02.549719747Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.145.0/pdata/ptrace/generated_resourcespans.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-05T11:53:57.605502257Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.145.0/receiver/receiver.go": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-05T11:53:47.945911304Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.145.0/receiver/receiver.go#L58": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-05T11:53:44.02242122Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/10469": {
     "StatusCode": 206,
@@ -19702,6 +19730,10 @@
   "https://sematext.com/": {
     "StatusCode": 200,
     "LastSeen": "2026-01-30T09:57:42.330741371Z"
+  },
+  "https://sematext.com/docs/tracing/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-03T14:18:59.897042229Z"
   },
   "https://semver.org/": {
     "StatusCode": 206,

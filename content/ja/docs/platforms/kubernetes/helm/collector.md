@@ -192,7 +192,7 @@ presets:
 
 config:
   exporters:
-    otlphttp:
+    otlp_http:
       endpoint: https://example.com:55681
   service:
     pipelines:
