@@ -4,7 +4,7 @@ linkTitle: kgateway OpenTelemetry support
 date: 2026-02-09
 author: '[Kasper Borg Nissen](https://github.com/kaspernissen) (Dash0)'
 # prettier-ignore
-cSpell:ignore: agentgateway backfill HTTPListenerPolicy kgateway LogRecord nissen OpenSearch PromQL traceparent
+cSpell:ignore: agentgateway backfill HTTPListenerPolicy kgateway LogRecord nissen PromQL
 ---
 
 [kgateway](https://kgateway.dev/) is a Kubernetes Gateway API implementation based on Envoy. Like other gateways and ingress controllers, it sits directly on the request path at the edge of the cluster, terminating connections, applying routing rules, and forwarding traffic to backend services. Because every external request flows through it, the gateway is also one of the most valuable places to observe what users actually experience.
