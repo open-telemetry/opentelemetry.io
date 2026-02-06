@@ -3,8 +3,7 @@ title: Observing Traefik with OpenTelemetry
 linkTitle: Traefik OpenTelemetry support
 date: 2026-02-13
 author: '[Kasper Borg Nissen](https://github.com/kaspernissen) (Dash0)'
-# prettier-ignore
-cSpell:ignore: Kasper k8sattributes nissen Traefik
+cSpell:ignore: k8sattributes Kasper nissen
 ---
 
 [Traefik](https://github.com/traefik/traefik/) is a widely adopted ingress
