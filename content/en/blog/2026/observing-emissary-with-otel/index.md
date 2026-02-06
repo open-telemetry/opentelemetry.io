@@ -1,7 +1,7 @@
 ---
 title: Observing Emissary Ingress with OpenTelemetry
 linkTitle: Emissary Ingress OpenTelemetry support
-date: 2026-02-06
+date: 2026-02-16
 author: '[Kasper Borg Nissen](https://github.com/kaspernissen) (Dash0)'
 # prettier-ignore
 cSpell:ignore: Emissary Kasper kgateway nissen traceparent TracingService
