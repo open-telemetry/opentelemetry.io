@@ -269,7 +269,7 @@
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
     "StatusCode": 429,
-    "LastSeen": "2026-02-05T09:57:19.181353331Z"
+    "LastSeen": "2026-02-06T09:57:37.118582148Z"
   },
   "https://blog.remirepo.net/pages/PECL-extensions-RPM-status": {
     "StatusCode": 200,
@@ -8838,30 +8838,6 @@
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.135.0/receiver/receiver.go#L58": {
     "StatusCode": 206,
     "LastSeen": "2026-01-21T09:49:53.079650379Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.144.0/component/config.go": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-04T09:52:25.129505472Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.144.0/config/configtls/README.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-04T09:52:32.369205043Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.144.0/pdata/pcommon/map.go": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-04T09:52:43.641661077Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.144.0/pdata/ptrace/generated_resourcespans.go": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-04T09:52:37.665664707Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.144.0/receiver/receiver.go": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-04T09:52:32.945075324Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.144.0/receiver/receiver.go#L58": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-04T09:52:29.336892246Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.145.0/component/config.go": {
     "StatusCode": 206,
@@ -19733,7 +19709,7 @@
   },
   "https://sakshipatle.substack.com/p/outreachy-how-when-and-why": {
     "StatusCode": 403,
-    "LastSeen": "2026-02-05T09:57:17.939417425Z"
+    "LastSeen": "2026-02-06T09:57:38.94011514Z"
   },
   "https://schemas.dmtf.org/wbem/cim-html/2.31.0/CIM_Battery.html": {
     "StatusCode": 206,
