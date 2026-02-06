@@ -3,7 +3,7 @@ title: Configuration
 weight: 10
 aliases: [agent-config]
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
-cSpell:ignore: classloader customizer logback
+cSpell:ignore: classloader customizer
 ---
 
 {{% alert title="Pour plus d'informations" %}} Cette page décrit les différentes

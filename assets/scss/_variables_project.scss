@@ -1,48 +1,54 @@
 /* Docsy-delta full file override: we're not tracking changes to the Docsy file of the same name. */
 
 $otel-colors: (
-  'orange': #f5a800,
-  'orange-light': #fff0ce,
-  'blue': #4f62ad,
-  'blue-light': #cee1ff,
-  'purple': #425cc7,
-  'light-green': #c0f587,
+  'orange': hsl(41, 100%, 48%),
+  'orange-light': hsl(42, 100%, 90%),
+  'blue': hsl(228, 37%, 49%),
+  'blue-light': hsl(217, 98%, 90%),
+  'purple': hsl(228, 54%, 52%),
+  'light-green': hsl(89, 85%, 75%),
 );
 
 $otel-component-colors: (
-  'collector': #070002,
-  'core': #2c3ed3,
-  'cpp': #f34b7d,
-  'dotnet': #178600,
-  'erlang': #b83998,
-  'exporter': #3ed32c,
-  'extension': #d3532c,
-  'go': #00add8,
-  'instrumentation': #d32c3e,
-  'java': #b07219,
-  'js': #f1e05a,
-  'lua': #03037b,
-  'php': #4f5d95,
-  'processor': #d32c42,
-  'python': #3572a5,
-  'receiver': #742cd3,
-  'resource-detector': green,
-  'ruby': #701516,
-  'rust': #dea584,
-  'swift': #de5d43,
-  'utilities': #2cd3b4,
+  'collector': hsl(340, 100%, 1%),
+  'core': hsl(233, 65%, 50%),
+  'cpp': hsl(341, 88%, 62%),
+  'dotnet': hsl(106, 100%, 26%),
+  'erlang': hsl(315, 53%, 47%),
+  'exporter': hsl(115, 65%, 50%),
+  'extension': hsl(17, 65%, 50%),
+  'go': hsl(193, 100%, 42%),
+  'instrumentation': hsl(354, 65%, 50%),
+  'java': hsl(36, 75%, 39%),
+  'js': hsl(52, 84%, 65%),
+  'lua': hsl(240, 96%, 25%),
+  'php': hsl(228, 31%, 45%),
+  'processor': hsl(353, 65%, 50%),
+  'python': hsl(212, 50%, 43%),
+  'receiver': hsl(270, 65%, 50%),
+  'resource-detector': hsl(120, 100%, 25%),
+  'ruby': hsl(358, 79%, 25%),
+  'rust': hsl(27, 57%, 70%),
+  'swift': hsl(11, 71%, 57%),
+  'utilities': hsl(169, 65%, 50%),
 );
 
 $otel-registry-license-colors: (
-  'apache-20': #e83e8c,
-  'bsd-2-clause': #8ce83e,
-  'mit': #3e8ce8,
-  'artistic-10-perl': #e8c83e,
+  'apache-20': hsl(330, 79%, 57%),
+  'bsd-2-clause': hsl(88, 79%, 57%),
+  'mit': hsl(211, 79%, 57%),
+  'artistic-10-perl': hsl(47, 79%, 57%),
 );
 
 $primary: map-get($otel-colors, 'blue');
 $secondary: map-get($otel-colors, 'orange');
 
+$td-navbar-bg-color: shade-color($primary, 22%); // Should match $primary-darker
+$navbar-light-active-color: $secondary;
+$navbar-dark-active-color: $secondary;
+
 // Link hover: use secondary as color base
-$navbar-dark-hover-color: $secondary;
 $link-hover-color: darken($secondary, 20%);
+$link-hover-color-dark: $secondary;
+$navbar-light-hover-color: $secondary;
+$navbar-dark-hover-color: $secondary;

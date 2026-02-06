@@ -356,7 +356,7 @@
   commercial: true
 - name: Parseable
   nativeOTLP: true
-  url: https://www.parseable.com/docs/server/opentelemetry
+  url: https://www.parseable.com/docs/ingest-data/otel
   contact: hi@parseable.com
   oss: true
   commercial: true
@@ -390,16 +390,22 @@
   contact: hi@s2.dev
   oss: false
   commercial: true
-- name: ServicePilot
-  nativeOTLP: true
-  url: https://www.servicepilot.com/en/doc/apm#opentelemetry
-  contact:
-  oss: false
-  commercial: true
 - name: Scout
   nativeOTLP: true
   url: https://docs.base14.io/category/opentelemetry-collector-setup
   contact: support@base14.io
+  oss: false
+  commercial: true
+- name: Sematext
+  nativeOTLP: true
+  url: https://sematext.com/docs/tracing/
+  contact: support@sematext.com
+  oss: false
+  commercial: true
+- name: ServicePilot
+  nativeOTLP: true
+  url: https://www.servicepilot.com/en/doc/apm#opentelemetry
+  contact:
   oss: false
   commercial: true
 - name: SigNoz

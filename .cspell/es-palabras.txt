@@ -1,7 +1,7 @@
 accionable
 agregable
-asincrónica
 asíncrona
+asincrónica
 aspiracional
 autogenerado
 autoinstrumentación
@@ -11,8 +11,8 @@ correlacionan
 correlacionarse
 deserializa
 deserializar
-desincronizado
 desincronizadas
+desincronizado
 discútelo
 empoderarlos
 extensibilidad
@@ -28,11 +28,11 @@ monitoreo
 muestreado
 muestreador
 muestreadores
+muestreados
 muestrear
 muestrearse
-muestreados
-muestreo
 muestreen
+muestreo
 multilenguaje
 observabilidad
 precargada
@@ -40,8 +40,8 @@ prerrellenada
 previsualiza
 previsualizar
 proprietarias
-redirecciones
 redireccionar
+redirecciones
 refiérelo
 reformatea
 renderizan
