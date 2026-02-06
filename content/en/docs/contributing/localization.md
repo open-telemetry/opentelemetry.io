@@ -396,10 +396,9 @@ content][ali-dowair-2024].
 
 ### 5. Localize remaining site pages in small increments {#rest}
 
-With terminology established, you can now localize the remaining site pages. <a
-name="small-prs"></a>
+With terminology established, you can now localize the remaining site pages.
 
-> [!IMPORTANT] Submit small PRs
+> [!IMPORTANT] Submit small PRs <a id="small-prs"></a>
 >
 > Localization teams should submit their work in **small increments**. That is,
 > keep [PRs] small, preferably limited to one or a few small files. Smaller PRs
