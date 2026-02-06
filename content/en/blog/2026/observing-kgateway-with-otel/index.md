@@ -4,7 +4,7 @@ linkTitle: kgateway OpenTelemetry support
 date: 2026-02-09
 author: '[Kasper Borg Nissen](https://github.com/kaspernissen) (Dash0)'
 # prettier-ignore
-cSpell:ignore: agentgateway backfill HTTPListenerPolicy kgateway LogRecord nissen PromQL
+cSpell:ignore: agentgateway backfill HTTPListenerPolicy Kasper kgateway LogRecord nissen PromQL
 ---
 
 [kgateway](https://kgateway.dev/) is a Kubernetes Gateway API implementation
