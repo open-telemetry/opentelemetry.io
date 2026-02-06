@@ -8,9 +8,7 @@ params:
   eventUrl: >-
     https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/
   queryParams: utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2026&utm_content=slim-banner
-  # TODO: update this to the actual blog post when it is published
-  # blogPostURL: /blog/2026/kubecon-eu/
-  blogPostURL: https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/
+  blogPostURL: /blog/2026/kubecon-eu/
 ---
 
 <i class="fas fa-bullhorn"></i> [**{{% param title %}}**][LF],
