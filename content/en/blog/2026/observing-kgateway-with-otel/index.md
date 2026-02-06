@@ -27,7 +27,7 @@ At a high level, the framework looks at OpenTelemetry support across the followi
 * **Audience & Signal Quality** – who the telemetry is designed for and how usable it is by default
 * **Stability & Change Management** – how telemetry evolves once users depend on it
 
-This framework is an early draft, and this post should be read as an application of the framework rather than a definitive judgment of the quality of the support of OpenTelemetry in kgateway. Gateways are a particularly useful place to test this framework, because they exercise all three current stable OpenTelemetry signals (logs, metrics, traces) and sit at a natural boundary in terms of cloud-native architectures: the edge of Kubernetes clusters.
+This framework is an early draft, and this post should be read as an application of the framework rather than a definitive judgment of the quality of the support of OpenTelemetry in kgateway. Gateways are a particularly useful place to test this framework, because they exercise all three current stable OpenTelemetry signals (logs, metrics, traces) and sit at a natural boundary in terms of cloud native architectures: the edge of Kubernetes clusters.
 
 ## Evaluation environment
 
