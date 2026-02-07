@@ -1,7 +1,7 @@
 ---
 title: Observing Istio Gateway with OpenTelemetry
 linkTitle: Istio Gateway OpenTelemetry support
-date: 2026-02-07
+date: 2026-02-18
 author: '[Kasper Borg Nissen](https://github.com/kaspernissen) (Dash0)'
 # prettier-ignore
 cSpell:ignore: aggregatable Envoy envoyOtelAls Kasper LogRecord nissen PromQL queryability sidecarless VirtualService
