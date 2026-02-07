@@ -3,8 +3,7 @@ title: Observing Kubernetes Ingress Controllers with OpenTelemetry
 linkTitle: Kubernetes Ingress Controllers OpenTelemetry support
 date: 2026-02-07
 author: '[Kasper Borg Nissen](https://github.com/kaspernissen) (Dash0)'
-# prettier-ignore
-cSpell:ignore: Contour Envoy envoyproxy HTTPRoute hubble Kasper kgateway nissen projectcontour
+cSpell:ignore: Contour Envoy hubble Kasper kgateway nissen
 ---
 
 Ingress controllers sit at one of the most critical points in a Kubernetes
