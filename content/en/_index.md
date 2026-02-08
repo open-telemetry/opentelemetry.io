@@ -5,8 +5,7 @@ NOTE_TO_LOCALE_AUTHORS: |
   DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
 title: OpenTelemetry
 description: >-
-  High-quality, ubiquitous, and portable telemetry to enable effective
-  observability
+  The open standard for software telemetry
 outputs:
   - HTML
   # Include the following for `content/en` ONLY
@@ -20,7 +19,7 @@ show_banner: true
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{< homepage/hero color="white" useLogo="true" background="/img/homepage/highlight.png" tagline="High-quality, ubiquitous, and portable telemetry to enable effective observability" >}}
+{{< homepage/hero color="white" useLogo="true" background="/img/homepage/highlight.png" tagline="The open standard for software telemetry" >}}
 
 <div class="l-primary-buttons">
 
@@ -38,13 +37,14 @@ show_banner: true
 
 <div class="intro-text">
 
-**OpenTelemetry** is an open source observability framework for cloud native
-software. It provides a single set of APIs, libraries, agents, and collector
-services to capture distributed traces and metrics from your application.
+Understanding how software behaves in production requires consistent, reliable
+telemetry. **OpenTelemetry** is the open standard that provides it.
 
-OpenTelemetry builds upon years of experience from the OpenTracing and
-OpenCensus projects, combined with best-of-breed ideas and practices from the
-community.
+It gives you instrumentation tools (APIs, SDKs, and auto-instrumentation
+agents) to generate traces, metrics, and logs; semantic conventions that ensure
+your telemetry has a consistent, well-defined shape; a wire protocol (OTLP) for
+interoperability across tools; and the Collector, a pipeline for processing and
+routing telemetry to any modern backend.
 
 </div>
 
@@ -57,72 +57,90 @@ community.
 {{< homepage/main-features color="light" >}}
 
 {{< homepage/main-feature
-      title="Vendor-neutral instrumentation"
+      title="Stable instrumentation, flexible destinations"
       image="/img/homepage/data-sources.svg"
-      imagePosition="left" >}} Instrument your code once using OpenTelemetry
-APIs and SDKs. Export telemetry data to any observability backend—Jaeger,
-Prometheus, commercial vendors, or your own solution. Switch backends without
-touching your application code. {{< /homepage/main-feature >}}
+      imagePosition="left" >}} OpenTelemetry gives your applications a stable
+instrumentation layer built on open standards. Where the data goes is a
+configuration choice, not a code change. Today's backend doesn't have to be
+tomorrow's. {{< /homepage/main-feature >}}
 
 {{< homepage/main-feature
-      title="Unified observability signals"
+      title="Signals that make sense together"
       image="/img/homepage/unified-signals.svg"
-      imagePosition="right" >}} Correlate traces, metrics, and logs with shared
-context that flows through your entire request path. Get a complete picture of
-your application's behavior across all components and services.
+      imagePosition="right" >}} Traces, metrics, and logs are designed to work
+together. Shared context connects them, so a latency spike in a metric leads
+you to the trace that pinpoints the slow query and the log that explains why.
 {{< /homepage/main-feature >}}
 
 {{< homepage/main-feature
-      title="Run anywhere"
+      title="Open source, community-driven"
       image="/img/homepage/global-deployment.svg"
-      imagePosition="left" >}} OpenTelemetry is 100% open source and
-vendor-neutral. Deploy on-premises, in hybrid environments, or across multiple
-clouds with full flexibility and zero lock-in. Move workloads wherever they
-matter to you. {{< /homepage/main-feature >}}
+      imagePosition="left" >}} OpenTelemetry is 100% open source, hosted by the
+CNCF, and built by contributors from across the industry. No single company
+controls the roadmap. The community does. {{< /homepage/main-feature >}}
 
 {{< /homepage/main-features >}}
 
-{{< homepage/signals-showcase title="Observability Signals" >}}
+{{< homepage/signals-showcase title="Telemetry Signals" >}}
 {{< homepage/signal name="Traces" image="/img/homepage/signal-traces.svg" url="/docs/concepts/signals/traces/" >}}
 Distributed traces {{< /homepage/signal >}}
 {{< homepage/signal name="Metrics" image="/img/homepage/signal-metrics.svg" url="/docs/concepts/signals/metrics/" >}}
 Measurements over time {{< /homepage/signal >}}
 {{< homepage/signal name="Logs" image="/img/homepage/signal-logs.svg" url="/docs/concepts/signals/logs/" >}}
 Timestamped records {{< /homepage/signal >}}
-{{< homepage/signal name="Baggage" image="/img/homepage/signal-baggage.svg" url="/docs/concepts/signals/baggage/" >}}
-Contextual metadata {{< /homepage/signal >}} {{< /homepage/signals-showcase >}}
+{{< homepage/signal name="Profiles" image="/img/homepage/signal-profiles.svg" url="/docs/concepts/signals/profiles/" >}}
+Continuous profiling (coming soon) {{< /homepage/signal >}} {{< /homepage/signals-showcase >}}
 
-{{< homepage/otel-features color="white" title="OpenTelemetry Features" columns="2" >}}
+{{% blocks/section color="yellow" %}}
+
+<div class="text-center">
+
+<h2>Ready to instrument your first application?</h2>
+
+<div class="l-primary-buttons">
+
+- [Get started](/docs/getting-started/)
+
+</div>
+
+</div>
+
+{{% /blocks/section %}}
+
+{{< homepage/otel-features color="white" title="Standards" columns="2" >}}
+
+{{< homepage/otel-feature image="/img/homepage/feature-openness.svg" title="Semantic conventions" url="/docs/specs/semconv/" >}}
+A shared vocabulary that defines how telemetry data is structured. Attribute
+names, units, and signal shapes are consistent across languages, frameworks, and
+teams. {{< /homepage/otel-feature >}}
+
+{{< homepage/otel-feature image="/img/homepage/feature-observability.svg" title="OTLP" url="/docs/specs/otlp/" >}}
+The OpenTelemetry Protocol is the standard wire format for transmitting
+telemetry. Any tool that speaks OTLP can interoperate with any other, no
+adapters needed. {{< /homepage/otel-feature >}}
+
+{{< /homepage/otel-features >}}
+
+{{< homepage/otel-features color="white" title="Instrumentation" columns="2" >}}
+
+{{< homepage/otel-feature image="/img/homepage/feature-multi-language.svg" title="APIs and SDKs" url="/docs/languages/" >}}
+Instrument your applications using stable, well-documented APIs available in 11+
+languages. Add traces, metrics, and logs with fine-grained control over what you
+capture. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-auto-instrumentation.svg" title="Auto-instrumentation" url="/docs/concepts/instrumentation/zero-code/" >}}
 Get started in minutes with zero-code instrumentation for popular frameworks and
-libraries. Automatic instrumentation agents capture traces, metrics, and logs
-without modifying your source code. {{< /homepage/otel-feature >}}
+libraries. Automatic agents capture telemetry without modifying your source
+code. {{< /homepage/otel-feature >}}
 
-{{< homepage/otel-feature image="/img/homepage/feature-pipeline.svg" title="Collector pipeline" url="/docs/collector/" >}}
-Process, filter, and route telemetry data with the OpenTelemetry Collector.
-Deploy as an agent or gateway to receive, process, and export telemetry at scale
-with 200+ components. {{< /homepage/otel-feature >}}
+{{< /homepage/otel-features >}}
 
-{{< homepage/otel-feature image="/img/homepage/feature-observability.svg" title="Context propagation" url="/docs/concepts/context-propagation/" >}}
-Automatically correlate traces across service boundaries. Distributed context
-flows through your entire request path, connecting logs, metrics, and traces
-into a unified view. {{< /homepage/otel-feature >}}
+{{< homepage/otel-features color="white" title="Collection" columns="2" >}}
 
-{{< homepage/otel-feature image="/img/homepage/feature-multi-language.svg" title="Multi-language support" url="/docs/languages/" >}}
-Native SDKs for 11+ languages including Java, Python, Go, JavaScript, .NET,
-Ruby, PHP, Rust, C++, Swift, and Erlang. Use your preferred language with
-first-class OpenTelemetry support. {{< /homepage/otel-feature >}}
-
-{{< homepage/otel-feature image="/img/homepage/feature-production-ready.svg" title="Stable and production-ready" url="/status/" >}}
-Tracing and metrics APIs are stable across all major languages. Thousands of
-organizations run OpenTelemetry in production. Backed by the CNCF and major
-cloud providers. {{< /homepage/otel-feature >}}
-
-{{< homepage/otel-feature image="/img/homepage/feature-openness.svg" title="Open specifications" url="/docs/specs/status/" >}}
-Built on open, vendor-neutral specifications for APIs, SDKs, and the wire
-protocol (OTLP). Transparent governance under the CNCF ensures long-term
-stability and community-driven evolution. {{< /homepage/otel-feature >}}
+{{< homepage/otel-feature image="/img/homepage/feature-pipeline.svg" title="Collector" url="/docs/collector/" >}}
+A standalone pipeline for receiving, processing, and exporting telemetry data.
+Deploy as an agent or gateway, with hundreds of components for routing data
+wherever it needs to go. {{< /homepage/otel-feature >}}
 
 {{< /homepage/otel-features >}}
 
@@ -142,13 +160,9 @@ stability and community-driven evolution. {{< /homepage/otel-feature >}}
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry is a [CNCF][] [incubating][] project**.<br> Formed through a
-merger of the OpenTracing and OpenCensus projects.
-
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[incubating]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}

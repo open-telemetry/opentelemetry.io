@@ -1,0 +1,13 @@
+<svg width="122" height="122" viewBox="0 0 122 122" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- Icicle graph: widest at top, narrowing downward -->
+<!-- Top row (widest) -->
+<rect x="9" y="21" width="104" height="16" fill="#425CC7"/>
+<!-- Second row -->
+<rect x="9" y="41" width="80" height="16" fill="#F5A800"/>
+<!-- Third row -->
+<rect x="9" y="61" width="55" height="16" fill="#425CC7"/>
+<rect x="68" y="61" width="21" height="16" fill="#E34800"/>
+<!-- Fourth row -->
+<rect x="9" y="81" width="30" height="16" fill="#F5A800"/>
+<rect x="43" y="81" width="21" height="16" fill="#32407D"/>
+</svg>
