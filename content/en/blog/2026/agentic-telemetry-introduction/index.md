@@ -618,7 +618,7 @@ Click on a trace to see the full request flow:
 
 *A single trace showing the coordinator delegating to researcher and analyst agents, with each span representing a distinct operation.*
 
-This trace visualization answers questions that would otherwise require hours of log spelunking:
+This trace visualization answers questions that would otherwise require hours of log debugging:
 
 - **Why did this request take 15 seconds?** The web_search tool took 8 seconds.
 - **Which agents were involved?** Coordinator → Researcher → Analyst → Coordinator.
@@ -627,7 +627,9 @@ This trace visualization answers questions that would otherwise require hours of
 
 ### Log Correlation: Understanding Agent Reasoning
 
-Traces tell you *what* happened. Logs tell you *why*. OpenTelemetry correlates them automatically through `trace_id` and `span_id` attributes.
+Traces tell you *what* happened. Logs tell you *why*.
+
+OpenTelemetry standarises how we correlate them automatically through `trace_id` and `span_id` attributes.
 
 Every log entry includes these identifiers, enabling you to:
 1. Click on a span in your trace
@@ -654,7 +656,9 @@ Expand a log entry for full context:
 
 ### Exception Tracking: Finding Production Issues
 
-In production, things fail. OpenTelemetry captures exceptions as first-class citizens, attaching them to the span where they occurred.
+In production we expect that agents will fail; it is a matter of when not whether.
+
+OpenTelemetry captures exceptions as first-class citizens, attaching them to the span where they occurred.
 
 Navigate to the Exceptions tab:
 
@@ -707,256 +711,6 @@ These metrics enable alerting on production issues:
 
 ---
 
-## Under the Hood: How It Works
-
-Now that you've seen observability in action, let's dive into how it's implemented. The challenges here aren't obvious until you start building—and the solutions are broadly applicable to any agentic system.
-
-### The Architecture
-
-KAOS separates control plane (Go) from data plane (Python):
-
-```mermaid
-flowchart TB
-    subgraph ControlPlane["Control Plane (Go Operator)"]
-        AC[Agent Controller]
-        MC[MCPServer Controller]
-        MACtrl[ModelAPI Controller]
-
-        AC --> |Builds Telemetry Env Vars| AgentPod
-        MC --> |Builds Telemetry Env Vars| MCPPod
-        MACtrl --> |Builds Telemetry Env Vars| ModelPod
-    end
-
-    subgraph DataPlane["Data Plane (Python Pods)"]
-        AgentPod[Agent Pod]
-        MCPPod[MCPServer Pod]
-        ModelPod[ModelAPI Pod]
-
-        AgentPod --> KOM[KaosOtelManager]
-        MCPPod --> KOM
-        ModelPod --> KOM
-    end
-
-    subgraph OTELStack["Telemetry Pipeline"]
-        KOM --> |OTLP gRPC| Collector[OTEL Collector]
-        Collector --> |Traces| Backend[(Backend)]
-        Collector --> |Metrics| Backend
-        Collector --> |Logs| Backend
-    end
-
-    HelmValues[Helm values.yaml] --> ControlPlane
-```
-
-The key insight: **telemetry configuration flows from Helm → Operator → Data Plane**. Users configure telemetry once in `values.yaml`, and the operator propagates it to all components.
-
-### Instrumenting the Agentic Loop
-
-The core challenge is instrumenting an iterative loop where each iteration may have different operations. Here's the pattern we use:
-
-```python
-async def process_message(self, session_id: str, messages: List[Dict]) -> str:
-    """Process message through agentic loop with full tracing."""
-
-    # Start root span for entire message processing
-    span = otel.span_begin("agent.agentic_loop", SpanKind.INTERNAL)
-    span.set_attribute("agent.name", self.name)
-    span.set_attribute("session.id", session_id)
-    span.set_attribute("agent.max_steps", self.max_steps)
-
-    try:
-        for step in range(self.max_steps):
-            # Span for each iteration
-            step_span = otel.span_begin(f"agent.step.{step + 1}")
-            step_span.set_attribute("step", step + 1)
-
-            try:
-                # Model inference with its own span
-                model_span = otel.span_begin("model.inference", SpanKind.CLIENT)
-                model_span.set_attribute("gen_ai.request.model", self.model_name)
-
-                try:
-                    response = await self.model_api.chat(messages)
-                    model_span.set_attribute("gen_ai.response.finish_reason",
-                                             response.finish_reason)
-                    otel.span_success(model_span)
-                except Exception as e:
-                    logger.error(f"Model call failed: {e}")  # Log BEFORE span close
-                    otel.span_failure(model_span, e)
-                    raise
-
-                # Tool execution
-                if response.has_tool_call:
-                    tool_span = otel.span_begin(f"tool.{response.tool_name}", SpanKind.CLIENT)
-                    tool_span.set_attribute("tool.name", response.tool_name)
-
-                    try:
-                        result = await self._execute_tool(response.tool_call)
-                        messages.append({"role": "tool", "content": result})
-                        logger.debug(f"Tool {response.tool_name} returned: {result[:100]}...")
-                        otel.span_success(tool_span)
-                    except Exception as e:
-                        logger.error(f"Tool {response.tool_name} failed: {e}")
-                        otel.span_failure(tool_span, e)
-                        raise
-
-                    otel.span_success(step_span)
-                    continue
-
-                # Delegation to sub-agent
-                if response.needs_delegation:
-                    del_span = otel.span_begin(f"delegate.{response.target_agent}",
-                                                SpanKind.CLIENT)
-                    del_span.set_attribute("agent.delegation.target", response.target_agent)
-
-                    try:
-                        result = await self._delegate(response.target_agent, response.task)
-                        messages.append({"role": "assistant", "content": result})
-                        otel.span_success(del_span)
-                    except Exception as e:
-                        logger.error(f"Delegation to {response.target_agent} failed: {e}")
-                        otel.span_failure(del_span, e)
-                        raise
-
-                    otel.span_success(step_span)
-                    continue
-
-                # Final answer
-                otel.span_success(step_span)
-                otel.span_success(span)
-                return response.content
-
-            except Exception as e:
-                otel.span_failure(step_span, e)
-                raise
-
-        # Max steps reached
-        otel.span_success(span)
-        return response.content
-
-    except Exception as e:
-        otel.span_failure(span, e)
-        raise
-```
-
-Key patterns to note:
-
-1. **Hierarchical spans**: Parent span for the loop, child spans for each step, grandchild spans for operations
-2. **Log before span close**: Emit logs while trace context is active for correlation
-3. **Explicit span management**: Use try/finally pattern to ensure spans are always closed
-
-### Context Propagation for Multi-Agent Systems
-
-When delegating to sub-agents (running in separate pods), we must propagate trace context:
-
-```python
-# Inject context into outgoing request
-from opentelemetry.propagate import inject
-
-async def delegate(self, target_agent: str, task: str) -> str:
-    headers = {"Content-Type": "application/json"}
-
-    # Inject current trace context into headers
-    inject(headers)  # Adds 'traceparent' and 'tracestate' headers
-
-    async with httpx.AsyncClient() as client:
-        response = await client.post(
-            f"http://{target_agent}/v1/chat/completions",
-            headers=headers,
-            json={"messages": [{"role": "user", "content": task}]}
-        )
-    return response.json()["choices"][0]["message"]["content"]
-```
-
-```python
-# Extract context from incoming request
-from opentelemetry.propagate import extract
-
-@app.post("/v1/chat/completions")
-async def chat(request: Request, body: ChatRequest):
-    # Extract trace context from incoming headers
-    context = extract(request.headers)
-
-    # Attach to current context so new spans are children
-    token = otel_context.attach(context)
-    try:
-        return await agent.process_message(body.messages)
-    finally:
-        otel_context.detach(token)
-```
-
-### Log Export and Correlation
-
-For log-trace correlation, we connect Python's logging to OpenTelemetry:
-
-```python
-from opentelemetry.sdk._logs import LoggerProvider
-from opentelemetry.sdk._logs.export import BatchLogRecordProcessor
-from opentelemetry.exporter.otlp.proto.grpc._log_exporter import OTLPLogExporter
-from opentelemetry.instrumentation.logging import LoggingInstrumentor
-
-# Set up OTLP log export
-logger_provider = LoggerProvider(resource=resource)
-logger_provider.add_log_record_processor(
-    BatchLogRecordProcessor(OTLPLogExporter(endpoint=endpoint))
-)
-
-# Attach handler to Python root logger
-handler = LoggingHandler(level=logging.DEBUG, logger_provider=logger_provider)
-logging.getLogger().addHandler(handler)
-```
-
-The logging instrumentation automatically injects `trace_id` and `span_id` into log records when there's an active span context.
-
-**Critical pattern**: Always emit logs *before* closing spans:
-
-```python
-# Correct: Log while context is active
-logger.error(f"Operation failed: {e}")  # Has trace_id ✓
-otel.span_failure(span, e)
-
-# Wrong: Log after context is detached
-otel.span_failure(span, e)  # Detaches context
-logger.error(f"Operation failed: {e}")  # No trace_id!
-```
-
-### Metrics for Agent Operations
-
-We track metrics with low-cardinality labels to avoid cardinality explosions:
-
-```python
-from opentelemetry import metrics
-
-meter = metrics.get_meter("kaos-agent")
-
-# Counters
-request_counter = meter.create_counter(
-    "kaos.requests",
-    description="Number of requests processed",
-    unit="1"
-)
-
-model_call_counter = meter.create_counter(
-    "kaos.model.calls",
-    description="Number of model inference calls",
-    unit="1"
-)
-
-# Histograms for latency
-request_duration = meter.create_histogram(
-    "kaos.request.duration",
-    description="Request processing duration in milliseconds",
-    unit="ms"
-)
-
-# Usage example
-request_counter.add(1, {"agent.name": self.name, "status": "success"})
-request_duration.record(duration_ms, {"agent.name": self.name})
-```
-
-**Avoid high-cardinality labels**: Never use session IDs, user IDs, prompt content, or other unbounded values as metric labels. Put those in logs or trace attributes instead.
-
----
-
 ## Summary
 
 Instrumenting agentic AI systems with OpenTelemetry requires understanding the unique challenges these systems present:
@@ -967,17 +721,9 @@ Instrumenting agentic AI systems with OpenTelemetry requires understanding the u
 4. **Log-trace correlation** requires emitting logs before span close
 5. **Metrics** need low-cardinality labels to avoid storage explosions
 
-The patterns we've covered apply to any agentic system, not just KAOS. Start instrumenting now—the agents of tomorrow will be as ubiquitous as microservices are today, and OpenTelemetry gives you the visibility to operate them with confidence.
+OpenTelemetry gives you the visibility to operate multi-agent systems with confidence.
 
 ---
 
-
-## Resources
-
-- **KAOS Framework**: [github.com/axsaucedo/kaos](https://github.com/axsaucedo/kaos) - The open-source framework used in this article
-- **KAOS Documentation**: [axsaucedo.github.io/kaos](https://axsaucedo.github.io/kaos) - Full CLI and CRD documentation
-- **OpenTelemetry Python**: [opentelemetry.io/docs/languages/python](https://opentelemetry.io/docs/languages/python/) - Official Python SDK documentation
-- **OpenTelemetry GenAI Conventions**: [github.com/open-telemetry/semantic-conventions](https://github.com/open-telemetry/semantic-conventions) - Emerging standards for AI observability
-- **SigNoz**: [signoz.io](https://signoz.io/) - Open-source APM with native OpenTelemetry support
 
 
