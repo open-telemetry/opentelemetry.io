@@ -13,9 +13,15 @@ cSpell:ignore: OTTL
 
 ---
 
-You've built an AI agent that works beautifully in development. It chains tools together, delegates tasks to specialist sub-agents, and produces impressive results. Then you deploy it to production.
+You've built an AI agent that works in your laptop. It automatically chains tools together, delegates tasks to specialist sub-agents, and produces sound results.
 
-A user reports that a request "took forever." Another says they got a strange response. Your logs show the agent ran—but what happened inside those 45 seconds between request and response?
+Then you deploy it to production.
+
+A user reports that a request "took forever".
+
+Another says they got a strange response.
+
+Your logs show the agent ran—but what happened inside those 45 seconds between request and response?
 
 Welcome to the observability challenge of agentic systems.
 
@@ -39,6 +45,8 @@ Agentic systems break all of these assumptions:
 | Deterministic code paths | Non-deterministic LLM decisions |
 | Single service per request | Model calls + tool calls + delegations |
 | Fixed cost per request | Cost varies by token usage |
+
+**AI Agents 101: The Agentic Loop**
 
 Consider the core loop of a multi-AI agent system — the deceptively simple pattern that has led to the current wave of innovation in AI systems:
 
@@ -64,7 +72,7 @@ async def process_message(self, messages):
         return response.content
 ```
 
-Each iteration of this loop may take a different path. The model might need one tool call or five. It might delegate to one sub-agent or chain through three. Traditional logging—"request started," "request completed"—tells you almost nothing about what actually happened.
+Each iteration of this loop may take a different path. The model might need one tool call or five. It might delegate to one sub-agent or chain through three. Traditional logging (e.g. "request started" ... "request completed") tells you almost nothing about what actually happened.
 
 ### The Three Pillars of Agent Observability
 
@@ -74,31 +82,18 @@ OpenTelemetry provides three types of telemetry data, each serving a distinct pu
 
 ```
 HTTP POST /v1/chat/completions (15.2s total)
-└── agent.agentic_loop
-    ├── agent.step.1 (3.1s)
-    │   └── model.inference (3.0s)
-    ├── agent.step.2 (8.5s)
-    │   ├── model.inference (2.1s)
-    │   └── tool.web_search (6.3s)   ← Here's your bottleneck
-    └── agent.step.3 (3.4s)
-        └── model.inference (3.3s)
+-> agent.agentic_loop
+    -> agent.step.1 (3.1s)
+        -> model.inference (3.0s)
+    -> agent.step.2 (8.5s)
+        ->model.inference (2.1s)
+        -> tool.web_search (6.3s)   <- Here may be your bottleneck
+    -> agent.step.3 (3.4s)
+        -> model.inference (3.3s)
 ```
 
-This trace hierarchy maps directly to what the agent did:
+This trace hierarchy maps directly to what the agent did, capturing and connecting every hop across the journey.
 
-```
-agent.agentic_loop (session_id=abc123, agent.name=coordinator)
-├── agent.step.1
-│   └── model.inference (gen_ai.request.model=gpt-4)
-├── agent.step.2
-│   ├── model.inference
-│   └── tool.web_search (tool.name=web_search)
-├── agent.step.3
-│   ├── model.inference
-│   └── delegate.researcher (agent.delegation.target=researcher)
-└── agent.step.4
-    └── model.inference
-```
 
 **Metrics** answer: "How is my system performing overall?"
 
@@ -114,7 +109,9 @@ agent.agentic_loop (session_id=abc123, agent.name=coordinator)
 2024-01-15 10:30:53 ERROR [trace_id=abc123] Tool execution failed: API rate limited
 ```
 
-The magic happens when these three are correlated. Click on that ERROR log in your observability backend, and it takes you to the exact span in the trace where the failure occurred.
+The magic happens when these three are correlated (aka connected).
+
+This allows us to do things like "click on that ERROR log in your observability backend" and diagnose the exact span in the trace where the failure occurred.
 
 ### Multi-Agent Context Propagation
 
@@ -124,25 +121,27 @@ This requires **context propagation**: passing trace context through HTTP header
 
 ```
 coordinator.agent.agentic_loop (trace_id: abc123)
-├── coordinator.model.inference
-├── coordinator.delegate.researcher
-│   └── researcher.agent.agentic_loop (same trace_id: abc123!)
-│       ├── researcher.model.inference
-│       └── researcher.tool.web_search
-├── coordinator.model.inference
-└── coordinator.delegate.analyst
-    └── analyst.agent.agentic_loop (same trace_id: abc123!)
-        ├── analyst.model.inference
-        └── analyst.tool.calculator
+-> coordinator.model.inference
+-> coordinator.delegate.researcher
+    -> researcher.agent.agentic_loop (trace_id: abc123)
+        -> researcher.model.inference
+        -> researcher.tool.web_search
+-> coordinator.model.inference
+-> coordinator.delegate.analyst
+    -> analyst.agent.agentic_loop (trace_id: abc123)
+        -> analyst.model.inference
+        -> analyst.tool.calculator
 ```
 
 ## The Practical Use-Case: A Multi-Agent Research System
 
-Let's start with something concrete. We'll use **KAOS** (Kubernetes Agent Orchestration System), an open-source framework I've been building that treats AI agents as first-class Kubernetes resources.
+Let's now start building something concrete.
+
+We'll use **KAOS** (Kubernetes Agent Orchestration System), an open-source framework I've been building that treats AI agents as first-class Kubernetes resources.
 
 ### What We're Building
 
-Our use-case consists of a coordinator agent that delegates research and analysis tasks to specialist sub-agents:
+Our use-case for observability consists of a complex multi-agent system that consist of a coordinator agent that delegates research and analysis tasks to specialist sub-agents:
 
 ```mermaid
 graph TB
