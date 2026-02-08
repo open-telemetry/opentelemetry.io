@@ -582,7 +582,7 @@ subjects:
 Prometheus 是 Kubernetes 和在 Kubernetes 上运行的服务的常见指标格式。
 Prometheus 接收器是这些指标收集的最小替代品。
 它支持完整的 Prometheus
-[`scrape_config` 选项](https://prometheus.io/docs/prometheus/1.8/configuration/configuration/#scrape_config)。
+[`scrape_config` 选项](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config)。
 
 接收器不支持一些高级 Prometheus 功能。
 如果配置 YAML、代码包含以下任何内容，接收器将返回错误：
