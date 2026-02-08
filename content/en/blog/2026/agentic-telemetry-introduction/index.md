@@ -3,7 +3,6 @@ title: OpenTelemetry for Distributed Multi-Agent System Observability
 linkTitle: OTEL Agentic Systems
 date: 2026-02-08
 author: '[Alejandro Saucedo](https://github.com/axsaucedo) (AxSaucedo)'
-canonical_url: https://github.com/axsaucedo/kaos
 cSpell:ignore: OTTL
 ---
 
