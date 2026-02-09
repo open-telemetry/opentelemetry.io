@@ -3,7 +3,7 @@ title: Propagação
 description: Propagação de contexto para o SDK Python
 weight: 65
 default_lang_commit: 424d7671919b2bcf0850a027b4b24786c45e2afd
-cSpell:ignore: sqlcommenter
+cSpell:ignore: sqlcommenter desserializado
 ---
 
 A propagação é o mecanismo que move dados entre serviços e processos. Embora não
