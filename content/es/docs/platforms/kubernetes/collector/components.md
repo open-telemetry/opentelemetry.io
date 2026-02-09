@@ -700,7 +700,7 @@ Prometheus es un formato de métricas común tanto para Kubernetes como para los
 servicios que se ejecutan en Kubernetes. El receptor Prometheus es un reemplazo
 mínimo e inmediato para la recopilación de esas métricas. Admite el conjunto
 completo de opciones
-[`scrape_config` de Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
+[`scrape_config` de Prometheus](https://prometheus.io/docs/prometheus/1.8/configuration/configuration/#scrape_config).
 
 Hay algunas funciones avanzadas de Prometheus que el receptor no admite. El
 receptor devuelve un error si el código/YAML de configuración contiene alguno de

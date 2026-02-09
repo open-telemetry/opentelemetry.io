@@ -550,7 +550,7 @@ subjects:
 
 Prometheusは、KubernetesとKubernetes上で動作するサービスの両方に共通のメトリクスフォーマットです。
 Prometheusレシーバーは、これらのメトリクスを収集するためにすぐに利用できる最小限の置き換えです。
-Prometheus [`scrape_config` オプション](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) のフルセットをサポートしています。
+Prometheus [`scrape_config` オプション](https://prometheus.io/docs/prometheus/1.8/configuration/configuration/#scrape_config) のフルセットをサポートしています。
 
 レシーバーがサポートしていない Prometheus の高度な機能がいくつかあります。
 設定 YAML/コードに以下のいずれかが含まれている場合、レシーバーはエラーを返します。
