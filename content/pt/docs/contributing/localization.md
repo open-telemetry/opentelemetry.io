@@ -3,7 +3,7 @@ title: Localização do site
 description: Criando e mantendo páginas do site em localizações não inglesas.
 linkTitle: Localização
 weight: 25
-default_lang_commit: aab27c8f1bb4c72c4ba94920396ef1fd6de1434e
+default_lang_commit: aab27c8f1bb4c72c4ba94920396ef1fd6de1434e # patched
 cSpell:ignore: Dowair merge ptbr shortcodes
 ---
 
@@ -423,7 +423,7 @@ content][ali-dowair-2024].
 ### 5. Localização das páginas restantes em pequenos incrementos {#rest}
 
 Com a terminologia estabelecida, você pode seguir com a localização das páginas
-restantes do site. <a name="small-prs"></a>
+restantes do site. <a id="small-prs"></a>
 
 {{% alert title="Enviar PRs pequenos" color="primary" %}}
 
