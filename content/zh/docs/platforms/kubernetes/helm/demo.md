@@ -45,13 +45,13 @@ kubectl port-forward svc/my-otel-demo-frontendproxy 8080:8080
 
 代理暴露后，你还可以访问以下路径
 
-| 组件         | 路径                              |
-| ------------ | --------------------------------- |
-| 网上商店     | <http://localhost:8080>           |
-| Grafana      | <http://localhost:8080/grafana>   |
-| 功能标志 UI  | <http://localhost:8080/feature>   |
+| 组件          | 路径                              |
+| ------------- | --------------------------------- |
+| 网上商店      | <http://localhost:8080>           |
+| Grafana       | <http://localhost:8080/grafana>   |
+| 功能标志 UI   | <http://localhost:8080/feature>   |
 | 负载生成器 UI | <http://localhost:8080/loadgen>   |
-| Jaeger UI    | <http://localhost:8080/jaeger/ui> |
+| Jaeger UI     | <http://localhost:8080/jaeger/ui> |
 
 要采集来自 Web Store 的 Span，必须暴露 OpenTelemetry Collector 的 OTLP/HTTP 接收器：
 
@@ -59,5 +59,5 @@ kubectl port-forward svc/my-otel-demo-frontendproxy 8080:8080
 kubectl port-forward svc/my-otel-demo-otelcol 4318:4318
 ```
 
-有关在 Kubernetes 中使用Demo的更多详细信息，请参阅
+有关在 Kubernetes 中使用 Demo 的更多详细信息，请参阅
 [Kubernetes 部署](/docs/demo/kubernetes-deployment/)。
