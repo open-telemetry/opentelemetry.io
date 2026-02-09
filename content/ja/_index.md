@@ -4,13 +4,13 @@ description: >-
   効果的な観測を可能にする、高品質でユビキタスかつポータブルなテレメトリー
 developer_note: blocks/coverコラム（以下で使用）は、ファイル名に "background" を含む画像ファイルを背景画像として使用します。
 show_banner: true
-default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28
+default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28 # patched
 drifted_from_default: true
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{< blocks/cover image_anchor="top" height="max" color="primary" >}}
+{{% blocks/cover image_anchor="top" height="max" color="primary" %}}
 
 <!-- prettier-ignore -->
 ![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
@@ -36,7 +36,7 @@ drifted_from_default: true
 - [運用担当者（Ops）](docs/getting-started/ops/)
 
 </div>
-{{< /blocks/cover >}}
+{{% /blocks/cover %}}
 
 {{% blocks/lead color="white" %}}
 

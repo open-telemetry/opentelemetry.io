@@ -44,14 +44,15 @@ guidance offered in this section.
 <div class="border-start border-warning bg-warning-subtle">
 
 - **Translate**:
+  - [Alert types](../style-guide/#alerts) such as `TIP`, `WARNING`, etc.
+  - Code, including code blocks and inline code (like this
+    `inline code example`)
   - **File or directory** names of resources in this repository
-  - [Links](#links), this includes [heading IDs](#headings) [^*]
-  - Inline code-spans like these: `inline code example`
-  - Markdown elements marked as `notranslate` (usually as a CSS class), in
-    particular for [headings](#headings)
   - [Front matter][] fields other than those listed in [Do](#do). In particular,
     do not translate `aliases`. When in doubt, ask maintainers.
-  - Code
+  - [Links](#links), this includes [heading IDs](#headings) [^*]
+  - Markdown elements marked as `notranslate` (usually as a CSS class), in
+    particular for [headings](#headings)
 - Create **copies of images**, unless you [localize text in the images](#images)
 - Add new or change:
   - **Content** that would be different from the originally intended meaning
@@ -395,10 +396,9 @@ content][ali-dowair-2024].
 
 ### 5. Localize remaining site pages in small increments {#rest}
 
-With terminology established, you can now localize the remaining site pages. <a
-name="small-prs"></a>
+With terminology established, you can now localize the remaining site pages.
 
-> [!IMPORTANT] Submit small PRs
+> [!IMPORTANT] Submit small PRs <a id="small-prs"></a>
 >
 > Localization teams should submit their work in **small increments**. That is,
 > keep [PRs] small, preferably limited to one or a few small files. Smaller PRs
