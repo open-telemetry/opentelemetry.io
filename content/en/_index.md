@@ -15,28 +15,38 @@ outputs:
 developer_note: >
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
-show_banner: true
+params:
+  btn-lg: class="btn btn-lg btn-{1}" role="button"
+  show_banner: true
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{< homepage/hero color="white" useLogo="true" background="/img/homepage/highlight.png" tagline="High-quality, ubiquitous, and portable telemetry to enable effective observability" >}}
+{{% blocks/cover image_anchor="top" height="max td-below-navbar" %}}
 
-<div class="l-primary-buttons">
+<!-- prettier-ignore -->
+![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
+{.otel-logo}
 
-- [Learn more](docs/what-is-opentelemetry/)
-- [Try the demo](docs/demo/)
+<!-- prettier-ignore -->
+{{% param description %}}
+{.display-6}
 
+<!-- prettier-ignore -->
+<div class="td-cta-buttons my-5">
+  <a {{% _param btn-lg primary %}} href="docs/what-is-opentelemetry/">
+    Learn More
+  </a>
+  <a {{% _param btn-lg secondary %}} href="docs/demo/">
+    Try the demo
+  </a>
 </div>
 
-{{< /homepage/hero >}}
+{{% /blocks/cover %}}
 
-{{< homepage/hero-search color="light" placeholder="Search OpenTelemetry docs..." >}}
-{{< /homepage/hero-search >}}
+{{< homepage/hero-search placeholder="Search OpenTelemetry docs..." >}}
 
-{{< homepage/intro-section color="white" >}}
-
-<div class="intro-text">
+{{% homepage/intro-section image="/img/homepage/collector-pipeline.svg" imageAlt="OpenTelemetry overview" %}}
 
 **OpenTelemetry** is an open source observability framework for cloud native
 software. It provides a single set of APIs, libraries, agents, and collector
@@ -46,39 +56,42 @@ OpenTelemetry builds upon years of experience from the OpenTracing and
 OpenCensus projects, combined with best-of-breed ideas and practices from the
 community.
 
-</div>
+{{% /homepage/intro-section %}}
 
-<div class="intro-image">
-  <img src="/img/homepage/collector-pipeline.svg" alt="OpenTelemetry overview" class="img-fluid">
-</div>
+{{< homepage/main-features >}}
 
-{{< /homepage/intro-section >}}
-
-{{< homepage/main-features color="light" >}}
-
-{{< homepage/main-feature
+{{% homepage/main-feature
       title="Vendor-neutral instrumentation"
       image="/img/homepage/data-sources.svg"
-      imagePosition="left" >}} Instrument your code once using OpenTelemetry
-APIs and SDKs. Export telemetry data to any observability backend—Jaeger,
-Prometheus, commercial vendors, or your own solution. Switch backends without
-touching your application code. {{< /homepage/main-feature >}}
+      imagePosition="left" %}}
 
-{{< homepage/main-feature
+Instrument your code once using OpenTelemetry APIs and SDKs. Export telemetry
+data to any observability backend—Jaeger, Prometheus, commercial vendors, or
+your own solution. Switch backends without touching your application code.
+
+{{% /homepage/main-feature %}}
+
+{{% homepage/main-feature
       title="Unified observability signals"
       image="/img/homepage/unified-signals.svg"
-      imagePosition="right" >}} Correlate traces, metrics, and logs with shared
-context that flows through your entire request path. Get a complete picture of
-your application's behavior across all components and services.
-{{< /homepage/main-feature >}}
+      imagePosition="right" %}}
 
-{{< homepage/main-feature
+Correlate traces, metrics, and logs with shared context that flows through your
+entire request path. Get a complete picture of your application's behavior
+across all components and services.
+
+{{% /homepage/main-feature %}}
+
+{{% homepage/main-feature
       title="Run anywhere"
       image="/img/homepage/global-deployment.svg"
-      imagePosition="left" >}} OpenTelemetry is 100% open source and
-vendor-neutral. Deploy on-premises, in hybrid environments, or across multiple
-clouds with full flexibility and zero lock-in. Move workloads wherever they
-matter to you. {{< /homepage/main-feature >}}
+      imagePosition="left" %}}
+
+OpenTelemetry is 100% open source and vendor-neutral. Deploy on-premises, in
+hybrid environments, or across multiple clouds with full flexibility and zero
+lock-in. Move workloads wherever they matter to you.
+
+{{% /homepage/main-feature %}}
 
 {{< /homepage/main-features >}}
 
@@ -92,7 +105,7 @@ Timestamped records {{< /homepage/signal >}}
 {{< homepage/signal name="Baggage" image="/img/homepage/signal-baggage.svg" url="/docs/concepts/signals/baggage/" >}}
 Contextual metadata {{< /homepage/signal >}} {{< /homepage/signals-showcase >}}
 
-{{< homepage/otel-features color="white" title="OpenTelemetry Features" columns="2" >}}
+{{< homepage/otel-features title="OpenTelemetry Features" columns="2" >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-auto-instrumentation.svg" title="Auto-instrumentation" url="/docs/concepts/instrumentation/zero-code/" >}}
 Get started in minutes with zero-code instrumentation for popular frameworks and
@@ -126,7 +139,7 @@ stability and community-driven evolution. {{< /homepage/otel-feature >}}
 
 {{< /homepage/otel-features >}}
 
-{{< homepage/ecosystem-stats color="light" title="The OpenTelemetry Ecosystem" >}}
+{{< homepage/ecosystem-stats title="The OpenTelemetry Ecosystem" >}}
 {{< homepage/stat type="languages" label="Languages" url="/docs/languages/" >}}
 {{< homepage/stat type="collector" label="Collector Components" url="/docs/collector/" >}}
 {{< homepage/stat type="registry" label="Integrations" url="/ecosystem/registry/" >}}
@@ -134,7 +147,6 @@ stability and community-driven evolution. {{< /homepage/otel-feature >}}
 {{< /homepage/ecosystem-stats >}}
 
 {{< homepage/adopters-showcase
-    color="white"
     title="Trusted by Industry Leaders"
     limit="10"
     ctaText="View all adopters"

@@ -131,6 +131,7 @@ params:
 
   ui:
     navbar_logo: true
+    navbar_theme: dark
     navbar_translucent_over_cover_disable: true
     showLightDarkModeMenu: true
     sidebar_menu_compact: true
@@ -250,6 +251,9 @@ params:
     docker-compose-v2: |
       `docker-compose` is deprecated. For details, see
       [Migrate to Compose V2](https://docs.docker.com/compose/).
+  # Docs helpers: use with _param
+  FA: <i class="fa-{1} fa-{2} text-{3} px-1"></i>
+  FAS: <i class="fa-solid fa-{1} text-{2} px-1"></i>
 
 security:
   funcs: # cspell:disable-line

@@ -3,8 +3,8 @@ title: Build a receiver
 linkTitle: Receivers
 weight: 100
 aliases:
-  - /docs/collector/trace-receiver/
-  - /docs/collector/building/receiver/
+  - /docs/collector/trace-receiver
+  - /docs/collector/building/receiver
 # prettier-ignore
 cSpell:ignore: backendsystem crand debugexporter mapstructure pcommon pdata ptrace rcvr resourcespans struct structs tailtracer telemetrygen uber
 ---
@@ -1490,27 +1490,27 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 	switch {
 		case backend.CloudProvider == "amzn":
-			cloudProvider = conventions.AttributeCloudProviderAWS
+			cloudProvider = semconv.AttributeCloudProviderAWS
 		case backend.OSType == "mcrsft":
-			cloudProvider = conventions.AttributeCloudProviderAzure
+			cloudProvider = semconv.AttributeCloudProviderAzure
 		case backend.OSType == "gogl":
-			cloudProvider = conventions.AttributeCloudProviderGCP
+			cloudProvider = semconv.AttributeCloudProviderGCP
 	}
 
-	backendAttrs.PutStr(conventions.AttributeCloudProvider, cloudProvider)
-	backendAttrs.PutStr(conventions.AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(semconv.AttributeCloudProvider, cloudProvider)
+	backendAttrs.PutStr(semconv.AttributeCloudRegion, backend.CloudRegion)
 
 	switch {
 		case backend.OSType == "lnx":
-			osType = conventions.AttributeOSTypeLinux
+			osType = semconv.AttributeOSTypeLinux
 		case backend.OSType == "wndws":
-			osType = conventions.AttributeOSTypeWindows
+			osType = semconv.AttributeOSTypeWindows
 		case backend.OSType == "slrs":
-			osType = conventions.AttributeOSTypeSolaris
+			osType = semconv.AttributeOSTypeSolaris
 	}
 
-	backendAttrs.PutStr(conventions.AttributeOSType, osType)
-	backendAttrs.PutStr(conventions.AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(semconv.AttributeOSType, osType)
+	backendAttrs.PutStr(semconv.AttributeOSVersion, backend.OSVersion)
  }
 ```
 
@@ -1539,7 +1539,7 @@ import (
 
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	conventions "go.opentelemetry.io/collector/semconv/v1.9.0"
+	"go.opentelemetry.io/otel/semconv/v1.38.0"
 )
 
 type Atm struct {
@@ -1645,8 +1645,8 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm) {
 	atmAttrs.PutStr("atm.stateid", atm.StateID)
 	atmAttrs.PutStr("atm.ispnetwork", atm.ISPNetwork)
 	atmAttrs.PutStr("atm.serialnumber", atm.SerialNumber)
-	atmAttrs.PutStr(conventions.AttributeServiceName, atm.Name)
-	atmAttrs.PutStr(conventions.AttributeServiceVersion, atm.Version)
+	atmAttrs.PutStr(semconv.AttributeServiceName, atm.Name)
+	atmAttrs.PutStr(semconv.AttributeServiceVersion, atm.Version)
 
 }
 
@@ -1656,38 +1656,35 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 	switch {
 	case backend.CloudProvider == "amzn":
-		cloudProvider = conventions.AttributeCloudProviderAWS
+		cloudProvider = semconv.AttributeCloudProviderAWS
 	case backend.OSType == "mcrsft":
-		cloudProvider = conventions.AttributeCloudProviderAzure
+		cloudProvider = semconv.AttributeCloudProviderAzure
 	case backend.OSType == "gogl":
-		cloudProvider = conventions.AttributeCloudProviderGCP
+		cloudProvider = semconv.AttributeCloudProviderGCP
 	}
 
-	backendAttrs.PutStr(conventions.AttributeCloudProvider, cloudProvider)
-	backendAttrs.PutStr(conventions.AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(semconv.AttributeCloudProvider, cloudProvider)
+	backendAttrs.PutStr(semconv.AttributeCloudRegion, backend.CloudRegion)
 
 	switch {
 	case backend.OSType == "lnx":
-		osType = conventions.AttributeOSTypeLinux
+		osType = semconv.AttributeOSTypeLinux
 	case backend.OSType == "wndws":
-		osType = conventions.AttributeOSTypeWindows
+		osType = semconv.AttributeOSTypeWindows
 	case backend.OSType == "slrs":
-		osType = conventions.AttributeOSTypeSolaris
+		osType = semconv.AttributeOSTypeSolaris
 	}
 
-	backendAttrs.PutStr(conventions.AttributeOSType, osType)
-	backendAttrs.PutStr(conventions.AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(semconv.AttributeOSType, osType)
+	backendAttrs.PutStr(semconv.AttributeOSVersion, backend.OSVersion)
 
-	backendAttrs.PutStr(conventions.AttributeServiceName, backend.ProcessName)
-	backendAttrs.PutStr(conventions.AttributeServiceVersion, backend.Version)
+	backendAttrs.PutStr(semconv.AttributeServiceName, backend.ProcessName)
+	backendAttrs.PutStr(semconv.AttributeServiceVersion, backend.Version)
 }
 ```
 
 > [!NOTE] Check your work
 >
-> - Imported the `go.opentelemetry.io/collector/semconv/v1.9.0` package as
->   `conventions`, to access all the resource semantic conventions attribute
->   names and values.
 > - Updated the `fillResourceWithAtm()` function by adding lines to properly
 >   assign the "service.name" and "service.version" attributes to the
 >   `pcommon.Resource` that represents the `Atm` entity.
@@ -1993,7 +1990,7 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	conventions "go.opentelemetry.io/collector/semconv/v1.9.0"
+	"go.opentelemetry.io/otel/semconv/v1.38.0"
 )
 
 type Atm struct {
@@ -2105,8 +2102,8 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm) {
 	atmAttrs.PutStr("atm.stateid", atm.StateID)
 	atmAttrs.PutStr("atm.ispnetwork", atm.ISPNetwork)
 	atmAttrs.PutStr("atm.serialnumber", atm.SerialNumber)
-	atmAttrs.PutStr(conventions.AttributeServiceName, atm.Name)
-	atmAttrs.PutStr(conventions.AttributeServiceVersion, atm.Version)
+	atmAttrs.PutStr(semconv.AttributeServiceName, atm.Name)
+	atmAttrs.PutStr(semconv.AttributeServiceVersion, atm.Version)
 
 }
 
@@ -2116,30 +2113,30 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 	switch {
 	case backend.CloudProvider == "amzn":
-		cloudProvider = conventions.AttributeCloudProviderAWS
+		cloudProvider = semconv.AttributeCloudProviderAWS
 	case backend.OSType == "mcrsft":
-		cloudProvider = conventions.AttributeCloudProviderAzure
+		cloudProvider = semconv.AttributeCloudProviderAzure
 	case backend.OSType == "gogl":
-		cloudProvider = conventions.AttributeCloudProviderGCP
+		cloudProvider = semconv.AttributeCloudProviderGCP
 	}
 
-	backendAttrs.PutStr(conventions.AttributeCloudProvider, cloudProvider)
-	backendAttrs.PutStr(conventions.AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(semconv.AttributeCloudProvider, cloudProvider)
+	backendAttrs.PutStr(semconv.AttributeCloudRegion, backend.CloudRegion)
 
 	switch {
 	case backend.OSType == "lnx":
-		osType = conventions.AttributeOSTypeLinux
+		osType = semconv.AttributeOSTypeLinux
 	case backend.OSType == "wndws":
-		osType = conventions.AttributeOSTypeWindows
+		osType = semconv.AttributeOSTypeWindows
 	case backend.OSType == "slrs":
-		osType = conventions.AttributeOSTypeSolaris
+		osType = semconv.AttributeOSTypeSolaris
 	}
 
-	backendAttrs.PutStr(conventions.AttributeOSType, osType)
-	backendAttrs.PutStr(conventions.AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(semconv.AttributeOSType, osType)
+	backendAttrs.PutStr(semconv.AttributeOSVersion, backend.OSVersion)
 
-	backendAttrs.PutStr(conventions.AttributeServiceName, backend.ProcessName)
-	backendAttrs.PutStr(conventions.AttributeServiceVersion, backend.Version)
+	backendAttrs.PutStr(semconv.AttributeServiceName, backend.ProcessName)
+	backendAttrs.PutStr(semconv.AttributeServiceVersion, backend.Version)
 }
 
 func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {
@@ -2405,7 +2402,7 @@ import (
 	"github.com/google/uuid"
 	"go.opentelemetry.io/collector/pdata/pcommon"
 	"go.opentelemetry.io/collector/pdata/ptrace"
-	conventions "go.opentelemetry.io/collector/semconv/v1.9.0"
+	 "go.opentelemetry.io/otel/semconv/v1.38.0"
 )
 
 type Atm struct {
@@ -2517,8 +2514,8 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm) {
 	atmAttrs.PutStr("atm.stateid", atm.StateID)
 	atmAttrs.PutStr("atm.ispnetwork", atm.ISPNetwork)
 	atmAttrs.PutStr("atm.serialnumber", atm.SerialNumber)
-	atmAttrs.PutStr(conventions.AttributeServiceName, atm.Name)
-	atmAttrs.PutStr(conventions.AttributeServiceVersion, atm.Version)
+	atmAttrs.PutStr(semconv.AttributeServiceName, atm.Name)
+	atmAttrs.PutStr(semconv.AttributeServiceVersion, atm.Version)
 
 }
 
@@ -2528,30 +2525,30 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 	switch {
 	case backend.CloudProvider == "amzn":
-		cloudProvider = conventions.AttributeCloudProviderAWS
+		cloudProvider = semconv.AttributeCloudProviderAWS
 	case backend.OSType == "mcrsft":
-		cloudProvider = conventions.AttributeCloudProviderAzure
+		cloudProvider = semconv.AttributeCloudProviderAzure
 	case backend.OSType == "gogl":
-		cloudProvider = conventions.AttributeCloudProviderGCP
+		cloudProvider = semconv.AttributeCloudProviderGCP
 	}
 
-	backendAttrs.PutStr(conventions.AttributeCloudProvider, cloudProvider)
-	backendAttrs.PutStr(conventions.AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(semconv.AttributeCloudProvider, cloudProvider)
+	backendAttrs.PutStr(semconv.AttributeCloudRegion, backend.CloudRegion)
 
 	switch {
 	case backend.OSType == "lnx":
-		osType = conventions.AttributeOSTypeLinux
+		osType = semconv.AttributeOSTypeLinux
 	case backend.OSType == "wndws":
-		osType = conventions.AttributeOSTypeWindows
+		osType = semconv.AttributeOSTypeWindows
 	case backend.OSType == "slrs":
-		osType = conventions.AttributeOSTypeSolaris
+		osType = semconv.AttributeOSTypeSolaris
 	}
 
-	backendAttrs.PutStr(conventions.AttributeOSType, osType)
-	backendAttrs.PutStr(conventions.AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(semconv.AttributeOSType, osType)
+	backendAttrs.PutStr(semconv.AttributeOSVersion, backend.OSVersion)
 
-	backendAttrs.PutStr(conventions.AttributeServiceName, backend.ProcessName)
-	backendAttrs.PutStr(conventions.AttributeServiceVersion, backend.Version)
+	backendAttrs.PutStr(semconv.AttributeServiceName, backend.ProcessName)
+	backendAttrs.PutStr(semconv.AttributeServiceVersion, backend.Version)
 }
 
 func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {

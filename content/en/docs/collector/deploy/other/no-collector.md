@@ -1,8 +1,7 @@
 ---
 title: No Collector
 description: Send signals directly from an application to backends
-aliases:
-  - /docs/collector/deployment/no-collector/
+aliases: [/docs/collector/deployment/no-collector]
 weight: 200
 ---
 

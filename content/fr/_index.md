@@ -7,13 +7,13 @@ developer_note:
   La macro "blocks/cover" définie ci-dessous permet d'utiliser comme image de
   fond tout visuel contenant "background" dans son nom.
 show_banner: true
-default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268
+default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268 # patched
 drifted_from_default: true
 ---
 
 <div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
-{{< blocks/cover image_anchor="top" height="max" color="primary" >}}
+{{% blocks/cover image_anchor="top" height="max" color="primary" %}}
 
 <!-- prettier-ignore -->
 ![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
@@ -39,7 +39,7 @@ drifted_from_default: true
 - [Ops](docs/getting-started/ops/)
 
 </div>
-{{< /blocks/cover >}}
+{{% /blocks/cover %}}
 
 {{% blocks/lead color="white" %}}
 

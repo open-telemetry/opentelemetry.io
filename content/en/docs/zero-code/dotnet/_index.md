@@ -5,7 +5,7 @@ linkTitle: .NET
 aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
-cSpell:ignore: coreutils HKLM iisreset myapp Sonoma
+cSpell:ignore: coreutils HKLM iisreset Sonoma
 ---
 
 Use the OpenTelemetry .NET Automatic Instrumentation to send traces and metrics
