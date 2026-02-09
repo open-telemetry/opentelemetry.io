@@ -5,17 +5,6 @@ weight: 20
 aliases: [otlp-exporter-configuration]
 ---
 
-{{% alert title="Go Users" color="info" %}}
-
-In Go, you must use the
-[`autoexport`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport)
-package from `go.opentelemetry.io/contrib/exporters/autoexport` to configure
-exporters using these environment variables. See the
-[Go Exporters documentation](/docs/languages/go/exporters/#automatic-exporter-configuration-with-environment-variables)
-for details and examples.
-
-{{% /alert %}}
-
 ## Endpoint Configuration
 
 The following environment variables let you configure an OTLP/gRPC or OTLP/HTTP

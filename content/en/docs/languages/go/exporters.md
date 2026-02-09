@@ -10,10 +10,10 @@ cSpell:ignore: autoexport otlplog otlploggrpc otlploghttp otlpmetric otlpmetricg
 
 ## Automatic Exporter Configuration with Environment Variables
 
-In Go, you can use the
+You can use the
 [`go.opentelemetry.io/contrib/exporters/autoexport`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport)
 package to automatically configure exporters using
-[standard OpenTelemetry environment variables](/docs/languages/sdk-configuration/otlp-exporter/).
+[standard OpenTelemetry environment variables](/docs/specs/otel/configuration/sdk-environment-variables/).
 
 This package provides factory functions that read environment variables like
 `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_PROTOCOL`, and
