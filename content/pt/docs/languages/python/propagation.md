@@ -6,10 +6,10 @@ default_lang_commit: 424d7671919b2bcf0850a027b4b24786c45e2afd
 cSpell:ignore: desserializado sqlcommenter
 ---
 
-A propagação é o mecanismo que move dados entre serviços e processos. Embora não
+Propagação é o mecanismo que move dados entre serviços e processos. Embora não
 seja limitada ao rastreamento, é o que permite que os rastros construam
 informações de causalidade sobre um sistema através de serviços que estão
-distribuídos arbitrariamente entre processos e limites de rede.
+distribuídos arbitrariamente entre limites de processo e de rede.
 
 O OpenTelemetry fornece uma abordagem baseada em texto para propagar contexto
 para serviços remotos usando os cabeçalhos HTTP do
@@ -17,22 +17,22 @@ para serviços remotos usando os cabeçalhos HTTP do
 
 ## Propagação automática de contexto {#automatic-context-propagation}
 
-As bibliotecas de instrumentação para _frameworks_ e bibliotecas Python
+Bibliotecas de instrumentação para _frameworks_ e bibliotecas Python
 populares, como Jinja2, Flask, Django e Celery, propagam contexto entre serviços
 para você.
 
 > [!NOTE]
 >
 > Use bibliotecas de instrumentação para propagar contexto. Embora seja possível
-> propagar contexto manualmente, a auto-instrumentação Python e as bibliotecas
+> propagar contexto manualmente, a auto-instrumentação em Python e as bibliotecas
 > de instrumentação são bem testadas e mais fáceis de usar.
 
 ## Propagação manual de contexto {#manual-context-propagation}
 
-O seguinte exemplo genérico mostra como você pode propagar o contexto de rastros
+O exemplo genérico a seguir mostra como você pode propagar o contexto de rastro
 manualmente.
 
-Primeiro, no serviço remetente, injete o `context` atual:
+Primeiro, no serviço de envio, injete o `context` atual:
 
 ```python
 from flask import Flask
@@ -68,7 +68,7 @@ if __name__ == '__main__':
 ```
 
 No serviço receptor, extraia o `context`, por exemplo, dos cabeçalhos HTTP
-analisados, e então defina-os como o contexto de trace atual.
+analisados, e então defina-os como o contexto de rastro atual.
 
 ```python
 from flask import Flask, request
@@ -108,13 +108,13 @@ if __name__ == '__main__':
     app.run(port=5001)
 ```
 
-A partir daí, quando você tiver um contexto ativo desserializado, pode criar
+A partir daí, quando você tiver um contexto ativo desserializado, poderá criar
 trechos que fazem parte do mesmo rastro de outro serviço.
 
 ### sqlcommenter
 
-Algumas instrumentações Python suportam _sqlcommenter_, que enriquece as
-declarações de consulta do banco de dados com informações contextuais. Consultas
+Algumas instrumentações Python oferecem suporte ao _sqlcommenter_, que enriquece as
+instruções de consulta do banco de dados com informações contextuais. Consultas
 feitas com _sqlcommenter_ habilitado terão pares chave-valor configuráveis
 anexados. Por exemplo:
 
@@ -122,11 +122,11 @@ anexados. Por exemplo:
 "select * from auth_users; /*traceparent=00-01234567-abcd-01*/"
 ```
 
-Isso suporta a propagação de contexto entre cliente e servidor de banco de dados
-quando os registros de log do banco de dados estão habilitados. Para mais
-informações, acesse:
+Isso oferece suporte à propagação de contexto entre cliente e servidor de banco de dados
+quando os registros de _log_ do banco de dados estão habilitados. Para mais
+informações, consulte:
 
-- [Exemplo de sqlcommenter do OpenTelemetry Python](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/sqlcommenter/)
+- [Exemplo de _sqlcommenter_ do OpenTelemetry Python](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/sqlcommenter/)
 - [Convenções Semânticas - Database Spans](/docs/specs/semconv/db/database-spans/#sql-commenter)
 - [sqlcommenter](https://google.github.io/sqlcommenter/)
 
