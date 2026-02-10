@@ -89,13 +89,14 @@ function parseSection(readme, sectionTitle) {
 }
 
 // Check if a user has been active in the repo since the cutoff date.
-// Uses GitHub Search API: PR reviews, PR authorship, issue comments.
+// Uses GitHub Search API: PR reviews and PR authorship.
 // Short-circuits on first activity found.
 async function isActive(username, cutoff) {
   const queries = [
-    `type:pr repo:${ORG}/${REPO} reviewed-by:${username} created:>=${cutoff}`,
+    // PRs where the user has reviewed and the PR has been updated since the cutoff.
+    `type:pr repo:${ORG}/${REPO} reviewed-by:${username} updated:>=${cutoff}`,
+    // PRs authored by the user that were created since the cutoff.
     `type:pr repo:${ORG}/${REPO} author:${username} created:>=${cutoff}`,
-    `repo:${ORG}/${REPO} commenter:${username} updated:>=${cutoff}`,
   ];
 
   for (const q of queries) {
