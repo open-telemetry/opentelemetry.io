@@ -13,7 +13,11 @@ const ORG = 'open-telemetry';
 const INACTIVITY_MONTHS = 4;
 
 const ROLES = [
-  { key: 'maintainers', section: 'Maintainers', emeritus: 'Emeritus maintainers' },
+  {
+    key: 'maintainers',
+    section: 'Maintainers',
+    emeritus: 'Emeritus maintainers',
+  },
   { key: 'approvers', section: 'Approvers', emeritus: 'Emeritus approvers' },
   { key: 'triagers', section: 'Triagers', emeritus: 'Emeritus triagers' },
 ];
@@ -48,11 +52,14 @@ async function fetchWithRetry(url, options = {}, retries = 3) {
       if (retryAfter) {
         waitMs = parseInt(retryAfter, 10) * 1000;
       } else if (resetTime) {
-        waitMs = Math.max(0, parseInt(resetTime, 10) * 1000 - Date.now()) + 1000;
+        waitMs =
+          Math.max(0, parseInt(resetTime, 10) * 1000 - Date.now()) + 1000;
       } else {
         waitMs = 60_000;
       }
-      console.warn(`Rate limited. Waiting ${Math.ceil(waitMs / 1000)}s before retry...`);
+      console.warn(
+        `Rate limited. Waiting ${Math.ceil(waitMs / 1000)}s before retry...`,
+      );
       await sleep(waitMs);
       continue;
     }
@@ -106,10 +113,7 @@ async function fetchActiveUsers(usernames, cutoff) {
 
 // Parse a role section from the README, returning member objects.
 function parseSection(readme, sectionTitle) {
-  const regex = new RegExp(
-    `### ${sectionTitle}\\n[\\s\\S]*?(?=\\n###|$)`,
-    'i',
-  );
+  const regex = new RegExp(`### ${sectionTitle}\\n[\\s\\S]*?(?=\\n###|$)`, 'i');
   const match = readme.match(regex);
   if (!match) return [];
 
@@ -137,7 +141,9 @@ function removeMemberFromSection(readme, sectionTitle, memberLine) {
   );
   const result = readme.replace(regex, '$1');
   if (result === readme) {
-    throw new Error(`Failed to remove "${memberLine}" from section "${sectionTitle}"`);
+    throw new Error(
+      `Failed to remove "${memberLine}" from section "${sectionTitle}"`,
+    );
   }
   return result;
 }
@@ -262,7 +268,11 @@ async function main() {
   for (const { role, inactive } of Object.values(inactiveByRole)) {
     for (const member of inactive) {
       readme = removeMemberFromSection(readme, role.section, member.line);
-      readme = addToEmeritusSection(readme, role.emeritus, toEmeritusEntry(member));
+      readme = addToEmeritusSection(
+        readme,
+        role.emeritus,
+        toEmeritusEntry(member),
+      );
     }
   }
 
