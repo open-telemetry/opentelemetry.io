@@ -17,15 +17,14 @@ para serviços remotos usando os cabeçalhos HTTP do
 
 ## Propagação automática de contexto {#automatic-context-propagation}
 
-Bibliotecas de instrumentação para _frameworks_ e bibliotecas Python
-populares, como Jinja2, Flask, Django e Celery, propagam contexto entre serviços
-para você.
+Bibliotecas de instrumentação para _frameworks_ e bibliotecas Python populares,
+como Jinja2, Flask, Django e Celery, propagam contexto entre serviços para você.
 
 > [!NOTE]
 >
 > Use bibliotecas de instrumentação para propagar contexto. Embora seja possível
-> propagar contexto manualmente, a auto-instrumentação em Python e as bibliotecas
-> de instrumentação são bem testadas e mais fáceis de usar.
+> propagar contexto manualmente, a auto-instrumentação em Python e as
+> bibliotecas de instrumentação são bem testadas e mais fáceis de usar.
 
 ## Propagação manual de contexto {#manual-context-propagation}
 
@@ -113,18 +112,18 @@ trechos que fazem parte do mesmo rastro de outro serviço.
 
 ### sqlcommenter
 
-Algumas instrumentações Python oferecem suporte ao _sqlcommenter_, que enriquece as
-instruções de consulta do banco de dados com informações contextuais. Consultas
-feitas com _sqlcommenter_ habilitado terão pares chave-valor configuráveis
-anexados. Por exemplo:
+Algumas instrumentações Python oferecem suporte ao _sqlcommenter_, que enriquece
+as instruções de consulta do banco de dados com informações contextuais.
+Consultas feitas com _sqlcommenter_ habilitado terão pares chave-valor
+configuráveis anexados. Por exemplo:
 
 ```sql
 "select * from auth_users; /*traceparent=00-01234567-abcd-01*/"
 ```
 
-Isso oferece suporte à propagação de contexto entre cliente e servidor de banco de dados
-quando os registros de _log_ do banco de dados estão habilitados. Para mais
-informações, consulte:
+Isso oferece suporte à propagação de contexto entre cliente e servidor de banco
+de dados quando os registros de _log_ do banco de dados estão habilitados. Para
+mais informações, consulte:
 
 - [Exemplo de _sqlcommenter_ do OpenTelemetry Python](https://github.com/open-telemetry/opentelemetry-python/tree/main/docs/examples/sqlcommenter/)
 - [Convenções Semânticas - Database Spans](/docs/specs/semconv/db/database-spans/#sql-commenter)
