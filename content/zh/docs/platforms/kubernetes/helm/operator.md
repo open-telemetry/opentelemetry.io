@@ -11,8 +11,8 @@ default_lang_commit: c8c0a255c51e0ba22f89601f81842944a4d673bf
 安装 OpenTelemetry Operator 的方法之一是通过
 [OpenTelemetry Operator Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-operator)。
 
-有关 OpenTelemetry Operator 的详细使用，请访问其
-[文档](/docs/platforms/kubernetes/operator)。
+有关 OpenTelemetry Operator 的详细使用，
+请访问其[文档](/docs/platforms/kubernetes/operator)。
 
 ### 安装 Chart {#installing-the-chart}
 
@@ -32,7 +32,6 @@ helm install my-opentelemetry-operator open-telemetry/opentelemetry-operator \
 
 Operator Helm Chart 的默认 `values.yaml`
 可直接用于安装，但该配置要求 Cert Manager 已预先部署在集群中。
-
 
 在 Kubernetes 中，为使 API 服务器能够与 Webhook 组件通信，
 Webhook 需配置一份 API 服务器已信任的 TLS 证书。
@@ -59,10 +58,10 @@ Webhook 需配置一份 API 服务器已信任的 TLS 证书。
   `admissionWebhooks.key_file` 和 `admissionWebhooks.ca_file` 提供必要的值。
 - 你可以通过禁用
   `.Values.admissionWebhooks.create` 和 `admissionWebhooks.certManager.enabled`，
-  同时在 `admissionWebhooks.secretName` 中设置你的自定义证书密钥名称来侧载自定义 webhook 和证书。
+  同时在 `admissionWebhooks.secretName` 中设置你的自定义证书密钥名称来侧载自定义 Webhook 和证书。
 - 你可以通过禁用
   `.Values.admissionWebhooks.create` 并将环境变量
-  `.Values.manager.env.ENABLE_WEBHOOKS` 设置为 `false` 来完全禁用 webhook。
+  `.Values.manager.env.ENABLE_WEBHOOKS` 设置为 `false` 来完全禁用 Webhook。
 
 Chart 中可用的所有配置选项（带注释）可以在其
 [values.yaml 文件](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-operator/values.yaml)中查看。
