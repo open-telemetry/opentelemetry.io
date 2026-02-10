@@ -152,6 +152,7 @@ jobs:
           then
             PR_URL=$(gh pr view --json url --jq '.url')
             printf "PR created: %s\n" "$PR_URL"
+            rm "$stderr"
           else
             error_output=$(cat "$stderr")
             rm "$stderr"
