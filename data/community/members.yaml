@@ -777,6 +777,7 @@ maintainers:
       - ecosystem-explorer-approvers
       - ecosystem-explorer-maintainers
       - java-contrib-approvers
+      - java-contrib-maintainers
       - java-instrumentation-approvers
       - java-instrumentation-triagers
     html_url: https://github.com/jaydeluca
@@ -2389,11 +2390,6 @@ approvers:
       - cpp-contrib-approvers
     html_url: https://github.com/TomRoSystems
     avatar_url: https://avatars.githubusercontent.com/u/8647888?v=4
-  - name: trasktest
-    teams:
-      - java-contrib-approvers
-    html_url: https://github.com/trasktest
-    avatar_url: https://avatars.githubusercontent.com/u/64627853?v=4
   - name: trisch-me
     teams:
       - semconv-security-approvers
