@@ -6,6 +6,7 @@
 @import 'external_link';
 @import 'td/color-adjustments-dark';
 @import 'td/code-dark';
+@import 'td/extra';
 @import 'dark-adjustments';
 @import 'td/gcs-search-dark';
 
@@ -16,12 +17,7 @@
 @import 'homepage';
 @import 'java';
 @import 'navbar';
-@import 'page_no_left_sidebar';
 @import 'training';
-
-details {
-  margin-bottom: $paragraph-margin-bottom;
-}
 
 .otel-docs-spec {
   .td-page-meta__edit {
