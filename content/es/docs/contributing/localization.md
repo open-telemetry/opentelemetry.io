@@ -5,7 +5,7 @@ description:
   en inglés.
 linkTitle: Localización
 weight: 25
-default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
+default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
 cSpell:ignore: Dowair shortcodes
 ---
 
@@ -424,9 +424,9 @@ contenido técnico][ali-dowair-2024].
 ### 5. Localizar las páginas restantes del sitio en incrementos pequeños {#rest}
 
 Con la terminología establecida, ahora puedes localizar las páginas restantes
-del sitio. <a name="small-prs"></a>
+del sitio.
 
-> [!IMPORTANT] Envía PRs pequeños
+> [!IMPORTANT] Envía PRs pequeños <a id="small-prs"></a>
 >
 > Los equipos de localización deben enviar su trabajo en **incrementos
 > pequeños**. Es decir, mantén los [PRs] pequeños, preferiblemente limitados a

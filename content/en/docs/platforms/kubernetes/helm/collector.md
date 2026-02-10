@@ -2,7 +2,7 @@
 title: OpenTelemetry Collector Chart
 linkTitle: Collector Chart
 # prettier-ignore
-cSpell:ignore: debugexporter filelog filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
+cSpell:ignore: filelog filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlp_http sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
 ---
 
 ## Introduction
@@ -193,7 +193,7 @@ presets:
     enabled: true
 ```
 
-The chart's default logs pipeline uses the `debugexporter`. Paired with the
+The chart's default logs pipeline uses the `debug` exporter. Paired with the
 `logsCollection` preset's `filelogreceiver` it is easy to accidentally feed the
 exported logs back into the collector, which can cause a "log explosion".
 
@@ -203,8 +203,8 @@ replace the `debug` exporter with an exporter that does not send logs to the
 collector's standard output.
 
 Here's an example `values.yaml` that replaces the default `debug` exporter on
-the `logs` pipeline with an `otlphttp` exporter that sends the container logs to
-`https://example.com:55681` endpoint. It also uses
+the `logs` pipeline with an `otlp_http` exporter that sends the container logs
+to `https://example.com:55681` endpoint. It also uses
 `presets.logsCollection.includeCollectorLogs` to tell the preset to enable
 collection of the collector's logs.
 
@@ -218,13 +218,13 @@ presets:
 
 config:
   exporters:
-    otlphttp:
+    otlp_http:
       endpoint: https://example.com:55681
   service:
     pipelines:
       logs:
         exporters:
-          - otlphttp
+          - otlp_http
 ```
 
 #### Kubernetes Attributes Preset

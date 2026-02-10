@@ -4,39 +4,25 @@
   // mode.
 
   // Bootstrap and Docsy overrides:
-  background-image: none; // Override Bootstrap's default gradient background.
   --bs-border-color: #{$gray-500}; // for the search box
   --td-navbar-border-bottom: none;
 
-  //--------------------------------
-  // TODO: upstream some of this to Docsy
-  // Improve color contrast DRAFT
+  // Improve color contrast
   .nav-link {
     --bs-nav-link-color: #{$gray-100};
 
     &.active {
       color: tint-color($navbar-dark-hover-color, 65%);
-      text-decoration: $link-decoration;
-    }
-
-    // TODO: remove once Docsy is updated.
-    &:focus,
-    // Bootstrap sets .nav-link:focus-visible, but in a way that isn't
-    // compatible with dark mode. This is a known issue, see
-    // https://github.com/twbs/bootstrap/issues/37549:
-    //
-    // > Docs navbar blue focus visible is almost invisible!
-    //
-    // Fallback to browser default:
-    &:focus-visible {
-      outline: revert;
-      box-shadow: none;
+      text-decoration-color: rgba(
+        var(--bs-secondary-rgb),
+        var(--bs-link-underline-opacity)
+      ) !important;
     }
   }
+
   .td-search:not(:focus-within) {
     color: $gray-200;
   }
-  //--------------------------------
 
   .navbar-brand {
     @include media-breakpoint-up(md) {

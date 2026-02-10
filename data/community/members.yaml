@@ -1763,14 +1763,6 @@ approvers:
       - ebpf-profiler-approvers
     html_url: https://github.com/athre0z
     avatar_url: https://avatars.githubusercontent.com/u/6553158?v=4
-  - name: atreat
-    teams:
-      - swift-approvers
-      - swift-core-approvers
-      - swift-core-triagers
-      - swift-triagers
-    html_url: https://github.com/atreat
-    avatar_url: https://avatars.githubusercontent.com/u/1031555?v=4
   - name: axw
     teams:
       - collector-approvers
@@ -2446,6 +2438,14 @@ approvers:
       - erlang-contrib-approvers
     html_url: https://github.com/whatyouhide
     avatar_url: https://avatars.githubusercontent.com/u/3890250?v=4
+  - name: williazz
+    teams:
+      - swift-approvers
+      - swift-core-approvers
+      - swift-core-triagers
+      - swift-triagers
+    html_url: https://github.com/williazz
+    avatar_url: https://avatars.githubusercontent.com/u/43121212?v=4
   - name: windsonsea
     teams:
       - docs-triagers
@@ -2495,6 +2495,11 @@ triagers:
       - go-triagers
     html_url: https://github.com/akats7
     avatar_url: https://avatars.githubusercontent.com/u/56042997?v=4
+  - name: atreat
+    teams:
+      - swift-triagers
+    html_url: https://github.com/atreat
+    avatar_url: https://avatars.githubusercontent.com/u/1031555?v=4
   - name: bacherfl
     teams:
       - collector-contrib-triagers
@@ -2678,12 +2683,6 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/Ugzuzg
     avatar_url: https://avatars.githubusercontent.com/u/1078004?v=4
-  - name: williazz
-    teams:
-      - swift-core-triagers
-      - swift-triagers
-    html_url: https://github.com/williazz
-    avatar_url: https://avatars.githubusercontent.com/u/43121212?v=4
   - name: yiyuan-he
     teams:
       - javascript-contrib-triagers
