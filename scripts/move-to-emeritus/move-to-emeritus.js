@@ -80,9 +80,11 @@ async function fetchActiveUsers(usernames, cutoff) {
     const safeUser = user.replace(/[^a-zA-Z0-9]/g, '_');
     const reviewQuery = `type:pr repo:${ORG}/${REPO} reviewed-by:${user} updated:>=${cutoff}`;
     const authorQuery = `type:pr repo:${ORG}/${REPO} author:${user} created:>=${cutoff}`;
+    const commentQuery = `repo:${ORG}/${REPO} commenter:${user} updated:>=${cutoff}`;
     return [
       `${safeUser}_reviews: search(query: "${reviewQuery}", type: ISSUE, first: 1) { issueCount }`,
       `${safeUser}_authored: search(query: "${authorQuery}", type: ISSUE, first: 1) { issueCount }`,
+      `${safeUser}_comments: search(query: "${commentQuery}", type: ISSUE, first: 1) { issueCount }`,
     ];
   });
 
@@ -104,7 +106,8 @@ async function fetchActiveUsers(usernames, cutoff) {
     const safeUser = user.replace(/[^a-zA-Z0-9]/g, '_');
     const reviews = json.data[`${safeUser}_reviews`]?.issueCount ?? 0;
     const authored = json.data[`${safeUser}_authored`]?.issueCount ?? 0;
-    if (reviews > 0 || authored > 0) {
+    const comments = json.data[`${safeUser}_comments`]?.issueCount ?? 0;
+    if (reviews > 0 || authored > 0 || comments > 0) {
       activeUsers.add(user);
     }
   }
