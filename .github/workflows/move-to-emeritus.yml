@@ -31,7 +31,12 @@ jobs:
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
       - name: Run script
-        run: node scripts/move-to-emeritus/move-to-emeritus.js
+        id: emeritus
+        run: |
+          output=$(node scripts/move-to-emeritus/move-to-emeritus.js)
+          echo "$output"
+          pr_body_path=$(echo "$output" | grep '^pr-body-path=' | cut -d= -f2-)
+          echo "pr-body-path=$pr_body_path" >> "$GITHUB_OUTPUT"
         env:
           GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
@@ -60,4 +65,4 @@ jobs:
           token: ${{ steps.otelbot-token.outputs.token }}
           branch: otelbot/move-inactive-to-emeritus
           title: Move inactive members to emeritus
-          body-path: .tmp/emeritus-pr-body.md
+          body-path: ${{ steps.emeritus.outputs.pr-body-path }}

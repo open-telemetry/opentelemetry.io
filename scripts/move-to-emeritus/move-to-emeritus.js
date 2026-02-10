@@ -1,4 +1,6 @@
-import { readFile, writeFile, mkdir } from 'fs/promises';
+import { readFile, writeFile } from 'fs/promises';
+import { tmpdir } from 'os';
+import { join } from 'path';
 
 const token = process.env.GITHUB_TOKEN;
 if (!token) {
@@ -24,21 +26,21 @@ function getCutoffDate() {
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function fetchWithRetry(url, retries = 3) {
+async function fetchWithRetry(url, options = {}, retries = 3) {
   const headers = {
     Authorization: `Bearer ${token}`,
     'User-Agent': 'move-to-emeritus-script',
     Accept: 'application/vnd.github+json',
+    ...options.headers,
   };
 
   for (let attempt = 1; attempt <= retries; attempt++) {
-    const res = await fetch(url, { headers });
+    const res = await fetch(url, { ...options, headers });
 
     if (res.ok) {
       return res;
     }
 
-    // Handle rate limiting (Search API returns 403, REST returns 429)
     if (res.status === 403 || res.status === 429) {
       const retryAfter = res.headers.get('retry-after');
       const resetTime = res.headers.get('x-ratelimit-reset');
@@ -64,6 +66,44 @@ async function fetchWithRetry(url, retries = 3) {
   }
 }
 
+// Batch-check activity for all users via a single GraphQL request using aliases.
+// Returns a Set of usernames that have been active since the cutoff date.
+async function fetchActiveUsers(usernames, cutoff) {
+  const aliases = usernames.flatMap((user) => {
+    const safeUser = user.replace(/[^a-zA-Z0-9]/g, '_');
+    const reviewQuery = `type:pr repo:${ORG}/${REPO} reviewed-by:${user} updated:>=${cutoff}`;
+    const authorQuery = `type:pr repo:${ORG}/${REPO} author:${user} created:>=${cutoff}`;
+    return [
+      `${safeUser}_reviews: search(query: "${reviewQuery}", type: ISSUE, first: 1) { issueCount }`,
+      `${safeUser}_authored: search(query: "${authorQuery}", type: ISSUE, first: 1) { issueCount }`,
+    ];
+  });
+
+  const query = `query { ${aliases.join('\n')} }`;
+
+  const res = await fetchWithRetry('https://api.github.com/graphql', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query }),
+  });
+  const json = await res.json();
+
+  if (json.errors) {
+    throw new Error(`GraphQL errors: ${JSON.stringify(json.errors)}`);
+  }
+
+  const activeUsers = new Set();
+  for (const user of usernames) {
+    const safeUser = user.replace(/[^a-zA-Z0-9]/g, '_');
+    const reviews = json.data[`${safeUser}_reviews`]?.issueCount ?? 0;
+    const authored = json.data[`${safeUser}_authored`]?.issueCount ?? 0;
+    if (reviews > 0 || authored > 0) {
+      activeUsers.add(user);
+    }
+  }
+  return activeUsers;
+}
+
 // Parse a role section from the README, returning member objects.
 function parseSection(readme, sectionTitle) {
   const regex = new RegExp(
@@ -86,31 +126,6 @@ function parseSection(readme, sectionTitle) {
     });
   }
   return members;
-}
-
-// Check if a user has been active in the repo since the cutoff date.
-// Uses GitHub Search API: PR reviews and PR authorship.
-// Short-circuits on first activity found.
-async function isActive(username, cutoff) {
-  const queries = [
-    // PRs where the user has reviewed and the PR has been updated since the cutoff.
-    `type:pr repo:${ORG}/${REPO} reviewed-by:${username} updated:>=${cutoff}`,
-    // PRs authored by the user that were created since the cutoff.
-    `type:pr repo:${ORG}/${REPO} author:${username} created:>=${cutoff}`,
-  ];
-
-  for (const q of queries) {
-    const url = `https://api.github.com/search/issues?q=${encodeURIComponent(q)}&per_page=1`;
-    const res = await fetchWithRetry(url);
-    const data = await res.json();
-    if (typeof data.total_count !== 'number') {
-      throw new Error(`Unexpected API response for ${username}: ${JSON.stringify(data)}`);
-    }
-    if (data.total_count > 0) {
-      return true;
-    }
-  }
-  return false;
 }
 
 // Remove a member line from a section in the README
@@ -207,27 +222,31 @@ async function main() {
 
   let readme = await readFile('README.md', 'utf8');
 
-  const inactiveByRole = {};
-  let totalInactive = 0;
-
+  // Collect all members across roles
+  const allMembers = [];
+  const membersByRole = [];
   for (const role of ROLES) {
     const members = parseSection(readme, role.section);
     console.log(
       `Found ${members.length} ${role.key}: ${members.map((m) => m.username).join(', ')}`,
     );
+    membersByRole.push({ role, members });
+    allMembers.push(...members);
+  }
 
-    const inactive = [];
-    for (const member of members) {
-      console.log(`  Checking ${member.username}...`);
-      const active = await isActive(member.username, cutoff);
-      if (!active) {
-        console.log(`  -> ${member.username} is INACTIVE`);
-        inactive.push(member);
-      } else {
-        console.log(`  -> ${member.username} is active`);
-      }
+  // Batch-check activity for all users in a single GraphQL request
+  const allUsernames = allMembers.map((m) => m.username);
+  const activeUsers = await fetchActiveUsers(allUsernames, cutoff);
+  console.log(`Active users: ${[...activeUsers].join(', ') || '(none)'}`);
+
+  const inactiveByRole = {};
+  let totalInactive = 0;
+
+  for (const { role, members } of membersByRole) {
+    const inactive = members.filter((m) => !activeUsers.has(m.username));
+    for (const m of inactive) {
+      console.log(`  ${m.username} is INACTIVE (${role.key})`);
     }
-
     if (inactive.length > 0) {
       inactiveByRole[role.key] = { role, inactive };
       totalInactive += inactive.length;
@@ -250,8 +269,9 @@ async function main() {
   await writeFile('README.md', readme, 'utf8');
   console.log('README.md updated.');
 
-  // Generate PR body
-  await mkdir('.tmp', { recursive: true });
+  // Generate PR body in a temp directory (RUNNER_TEMP in CI, os.tmpdir() locally)
+  const tmpDir = process.env.RUNNER_TEMP || tmpdir();
+  const prBodyPath = join(tmpDir, 'emeritus-pr-body.md');
 
   let prBody = `## Move inactive members to emeritus\n\n`;
   prBody += `The following members have had no activity in \`${ORG}/${REPO}\` since **${cutoff}** and are being moved to emeritus:\n\n`;
@@ -266,8 +286,9 @@ async function main() {
 
   prBody += `Activity was checked for: PR reviews, PR authorship, and issue/PR comments.\n`;
 
-  await writeFile('.tmp/emeritus-pr-body.md', prBody, 'utf8');
-  console.log('PR body written to .tmp/emeritus-pr-body.md');
+  await writeFile(prBodyPath, prBody, 'utf8');
+  console.log(`PR body written to ${prBodyPath}`);
+  console.log(`pr-body-path=${prBodyPath}`);
 }
 
 main().catch((err) => {
