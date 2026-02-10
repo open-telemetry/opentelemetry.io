@@ -1,37 +1,37 @@
 ---
-title: OpenTelemetry Distro
+title: Distribuição do OpenTelemetry
 linkTitle: Distro
 weight: 110
 default_lang_commit: 1a135ec4b7a14bddd14b7d70dbf2986695b7a93d
 cSpell:ignore: distro distros
 ---
 
-Para tornar o uso do OpenTelemetry e auto-instrumentação o mais rápido possível
-sem sacrificar a flexibilidade, as distros do OpenTelemetry fornecem um
+Para tornar o uso do OpenTelemetry e da auto-instrumentação o mais rápido possível
+sem sacrificar flexibilidade, as distribuições do OpenTelemetry fornecem um
 mecanismo para configurar automaticamente algumas das opções mais comuns para os
 usuários. Através disso, os usuários do OpenTelemetry podem configurar os
-componentes conforme necessário. O pacote `opentelemetry-distro` fornece alguns
+componentes conforme suas necessidades. O pacote `opentelemetry-distro` fornece alguns
 padrões para usuários que desejam começar, configurando:
 
 - o SDK TracerProvider
 - um BatchSpanProcessor
-- o OTLP `SpanExporter` para enviar dados para um OpenTelemetry Collector
+- o `SpanExporter` OTLP para enviar dados a um OpenTelemetry Collector
 
 O pacote também fornece um ponto de partida para qualquer pessoa interessada em
-produzir uma distro alternativa. As interfaces implementadas pelo pacote são
-carregadas pela auto-instrumentação via os _entry points_ `opentelemetry_distro`
-e `opentelemetry_configurator` para configurar a aplicação antes que qualquer
+produzir uma distribuição alternativa. As _interfaces_ implementadas pelo pacote são
+carregadas pela auto-instrumentação por meio dos pontos de entrada `opentelemetry_distro`
+e `opentelemetry_configurator`, para configurar a aplicação antes que qualquer
 outro código seja executado.
 
-Para exportar automaticamente dados do OpenTelemetry para o coletor
-OpenTelemetry, a instalação do pacote configurará todos os _entry points_
+Para exportar automaticamente dados do OpenTelemetry para o OpenTelemetry 
+Collector, a instalação do pacote irá configurar todos os pontos de entrada
 necessários.
 
 ```sh
 pip install opentelemetry-distro[otlp] opentelemetry-instrumentation
 ```
 
-Inicie o Collector localmente para ver os dados sendo exportados. Escreva o
+Inicie o Collector localmente para ver os dados sendo exportados. Crie o
 seguinte arquivo:
 
 ```yaml
