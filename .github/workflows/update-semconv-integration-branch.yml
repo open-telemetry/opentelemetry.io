@@ -156,7 +156,7 @@ jobs:
             rm "$stderr"
 
             # Only treat "no commits" error as non-fatal
-            if echo "$error_output" | grep -q "No commits between"; then
+            if echo "$error_output" | grep -Fq "No commits between"; then
               echo "No commits to create PR from - this is expected when already up to date"
               exit 0
             else
