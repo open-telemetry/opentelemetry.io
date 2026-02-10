@@ -2,6 +2,9 @@ name: Move inactive members to emeritus
 
 on:
   workflow_dispatch:
+  schedule:
+    # At 05:00, every Monday
+    - cron: 0 5 * * 1
 
 permissions:
   contents: read
