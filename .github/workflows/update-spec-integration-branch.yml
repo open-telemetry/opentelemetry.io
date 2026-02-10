@@ -145,13 +145,24 @@ jobs:
             exit 0
           fi
 
+          stderr=$(mktemp)
           if gh pr create --title "DRAFT Update ${{ env.REPO }} to unreleased $VERSION-dev" \
               --body "This is a draft PR used for identifying issues integrating the latest (unreleased) [${{ env.REPO }}](https://github.com/open-telemetry/${{ env.REPO }})." \
-              --draft;
+              --draft 2>"$stderr";
           then
             PR_URL=$(gh pr view --json url --jq '.url')
             printf "PR created: %s\n" "$PR_URL"
           else
-            echo "Failed to create PR - likely no commits to create PR from"
-            exit 0  # Don't fail the workflow, just skip PR creation
+            error_output=$(cat "$stderr")
+            rm "$stderr"
+
+            # Only treat "no commits" error as non-fatal
+            if echo "$error_output" | grep -q "No commits between"; then
+              echo "No commits to create PR from - this is expected when already up to date"
+              exit 0
+            else
+              echo "Failed to create PR with unexpected error:"
+              echo "$error_output"
+              exit 1  # Fail the workflow for real errors (auth, permissions, API issues, etc.)
+            fi
           fi
