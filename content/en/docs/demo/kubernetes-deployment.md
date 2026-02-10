@@ -33,20 +33,18 @@ command:
 helm install my-otel-demo open-telemetry/opentelemetry-demo
 ```
 
-{{% alert title="Note" %}}
+<!-- markdownlint-disable no-blanks-blockquote -->
 
-The OpenTelemetry Demo Helm chart does not support being upgraded from one
-version to another. If you need to upgrade the chart, you must first delete the
-existing release and then install the new version.
+> [!NOTE]
+>
+> The OpenTelemetry Demo Helm chart does not support being upgraded from one
+> version to another. If you need to upgrade the chart, you must first delete
+> the existing release and then install the new version.
 
-{{% /alert %}}
-
-{{% alert title="Note" %}}
-
-The OpenTelemetry Demo Helm chart version 0.11.0 or greater is required to
-perform all usage methods mentioned below.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> The OpenTelemetry Demo Helm chart version 0.11.0 or greater is required to
+> perform all usage methods mentioned below.
 
 ## Install using kubectl
 
@@ -57,20 +55,16 @@ cluster.
 kubectl create --namespace otel-demo -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-demo/main/kubernetes/opentelemetry-demo.yaml
 ```
 
-{{% alert title="Note" %}}
+> [!NOTE]
+>
+> The OpenTelemetry Demo Kubernetes manifests do not support being upgraded from
+> one version to another. If you need to upgrade the demo, you must first delete
+> the existing resources and then install the new version.
 
-The OpenTelemetry Demo Kubernetes manifests do not support being upgraded from
-one version to another. If you need to upgrade the demo, you must first delete
-the existing resources and then install the new version.
-
-{{% /alert %}}
-
-{{% alert title="Note" %}}
-
-These manifests are generated from the Helm chart and are provided for
-convenience. It is recommended to use the Helm chart for installation.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> These manifests are generated from the Helm chart and are provided for
+> convenience. It is recommended to use the Helm chart for installation.
 
 ## Use the Demo
 
@@ -88,14 +82,12 @@ To expose the frontend-proxy service use the following command (replace
 kubectl --namespace default port-forward svc/frontend-proxy 8080:8080
 ```
 
-{{% alert title="Note" %}}
-
-`kubectl port-forward` proxies the port until the process terminates. You might
-need to create separate terminal sessions for each use of
-`kubectl port-forward`, and use <kbd>Ctrl-C</kbd> to terminate the process when
-done.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> `kubectl port-forward` proxies the port until the process terminates. You
+> might need to create separate terminal sessions for each use of
+> `kubectl port-forward`, and use <kbd>Ctrl-C</kbd> to terminate the process
+> when done.
 
 With the frontend-proxy port-forward set up, you can access:
 
@@ -107,19 +99,18 @@ With the frontend-proxy port-forward set up, you can access:
 
 ### Expose Demo components using service or ingress configurations
 
-{{% alert title="Note" %}} We recommend that you use a values file when
-installing the Helm chart in order to specify additional configuration options.
-{{% /alert %}}
+> [!NOTE]
+>
+> We recommend that you use a values file when installing the Helm chart in
+> order to specify additional configuration options.
 
 #### Configure ingress resources
 
-{{% alert title="Note" %}}
-
-Kubernetes clusters might not have the proper infrastructure components to
-enable LoadBalancer service types or ingress resources. Verify your cluster has
-the proper support before using these configuration options.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Kubernetes clusters might not have the proper infrastructure components to
+> enable LoadBalancer service types or ingress resources. Verify your cluster
+> has the proper support before using these configuration options.
 
 Each demo component (ie: frontend-proxy) offers a way to have its Kubernetes
 service type configured. By default, these will not be created, but you can
@@ -181,11 +172,13 @@ components:
 
 Likely you want to use the web store as a demo application for an observability
 backend you already have (e.g. an existing instance of Jaeger, Zipkin, or one of
-the [vendor of your choice](/ecosystem/vendors/).
+the [vendor of your choice](/ecosystem/vendors/)).
 
 The OpenTelemetry Collector's configuration is exposed in the Helm chart. Any
-additions you do will be merged into the default configuration. You can use this
-to add your own exporters, and add them to the desired pipeline(s)
+additions you do will be merged into the default configuration.
+
+You can create a custom file (e.g., `my-values-file.yaml`) and use it to add
+your own exporters to the desired pipeline(s):
 
 ```yaml
 opentelemetry-collector:
@@ -200,10 +193,12 @@ opentelemetry-collector:
           exporters: [spanmetrics, otlphttp/example]
 ```
 
-{{% alert title="Note" %}} When merging YAML values with Helm, objects are
-merged and arrays are replaced. The `spanmetrics` exporter must be included in
-the array of exporters for the `traces` pipeline if overridden. Not including
-this exporter will result in an error. {{% /alert %}}
+> [!NOTE]
+>
+> When merging YAML values with Helm, objects are merged and arrays are
+> replaced. The `spanmetrics` exporter must be included in the array of
+> exporters for the `traces` pipeline if overridden. Not including this exporter
+> will result in an error.
 
 Vendor backends might require you to add additional parameters for
 authentication, please check their documentation. Some backends require

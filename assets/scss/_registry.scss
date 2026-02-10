@@ -1,3 +1,23 @@
+.td-section.registry {
+  .td-outer {
+    height: auto;
+  }
+
+  .registry-entry {
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 0.5rem;
+
+    .h5 {
+      margin-bottom: 0.2rem;
+    }
+
+    &-body {
+      flex: 1;
+    }
+  }
+}
+
 .badge {
   @each $component, $color in $otel-component-colors {
     &.badge-#{$component} {

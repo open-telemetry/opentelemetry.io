@@ -19,7 +19,7 @@ jobs:
       DEPTH: --depth 999 # submodule clone depth
 
     steps:
-      - uses: actions/checkout@v6.0.1
+      - uses: actions/checkout@v6.0.2
 
       - name: Use CLA approved github bot
         run: |

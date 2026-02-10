@@ -5,9 +5,8 @@ description:
   en inglés.
 linkTitle: Localización
 weight: 25
-default_lang_commit: e1bf6c870fbf82791a3826baaf276bc0ca79c88b # patched
-drifted_from_default: true
-cSpell:ignore: shortcodes
+default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
+cSpell:ignore: Dowair shortcodes
 ---
 
 El sitio web de OTel utiliza el [framework multilingüe] de Hugo para soportar la
@@ -29,15 +28,16 @@ instrucciones que se ofrecen en esta sección.
 
 - **Traducir**:
   - El contenido de la página, incluyendo:
-    - Campos de texto en diagramas [diagramas](#images) Mermaid
+    - Campos de texto en [diagramas](#images) Mermaid
     - Comentarios en fragmentos de código (opcional)
   - Valores de los campos [Front matter][]: `title`, `linkTitle` y `description`
   - **Todo** el contenido de la página y del front matter, a menos que se
     indique lo contrario
 - **Preservar** el _contenido_, _significado_ y _estilo_ del texto original
+- **Enviar el trabajo _de forma incremental_** mediante
+  [pull requests pequeños](#small-prs)
 - **Consultar** a los [mantenedores] si tienes dudas o preguntas a través de:
-  - Canales de [Slack] `#otel-localization-es` o `#otel-docs-localization` o
-    `#otel-comms`
+  - Canales de [Slack] `#otel-docs-localization` o `#otel-comms`
   - [Discusión], issue o comentario en un PR
 
 [Discusión]:
@@ -52,8 +52,6 @@ instrucciones que se ofrecen en esta sección.
 - **No traduzcas**:
   - **Nombres de archivos o directorios** de los recursos en este repositorio
   - [Enlaces](#links), esto incluye los [IDs de encabezados](#headings) [^*]
-  - Etiquetas de definición de enlaces en Markdown
-    ([link definition labels](#link-labels))
   - Fragmentos de código en línea como estos: `ejemplo de código en línea`
   - Elementos de Markdown marcados como `notranslate` (usualmente como una clase
     CSS), en particular los [encabezados](#headings)
@@ -97,29 +95,38 @@ La única excepción son los enlaces a páginas externas (como
 local. A menudo, esto implica reemplazar el `en` en la URL por el código de
 idioma correspondiente a tu localidad.
 
-{{% alert title="Nota" %}}
-
-El repositorio del sitio web de OTel tiene un _hook_ personalizado para el
-renderizado de enlaces que Hugo utiliza para convertir rutas absolutas a páginas
-de documentación. **Los enlaces con el formato `/docs/alguna-pagina` se vuelven
-específicos del idioma** al anteponer el código de idioma en la ruta al momento
-de renderizar el enlace. Por ejemplo, la ruta del ejemplo anterior se
-convertiría en `/ja/docs/alguna-pagina` cuando se renderiza desde una página en
-japonés.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> El repositorio del sitio web de OTel tiene un _hook_ personalizado para el
+> renderizado de enlaces que Hugo utiliza para convertir rutas absolutas a
+> páginas de documentación. **Los enlaces con el formato `/docs/alguna-pagina`
+> se vuelven específicos del idioma** al anteponer el código de idioma en la
+> ruta al momento de renderizar el enlace. Por ejemplo, la ruta del ejemplo
+> anterior se convertiría en `/ja/docs/alguna-pagina` cuando se renderiza desde
+> una página en japonés.
 
 ### Etiquetas de definición de enlaces {#link-labels}
 
-**No** traduzcas las [etiquetas] de las [definiciones de enlaces][] en Markdown.
-En su lugar, reescribe la etiqueta como texto traducido del enlace. Por ejemplo,
-considera el siguiente Markdown:
+Los autores de localizaciones pueden optar por traducir o no las [etiquetas] de
+las [definiciones de enlaces][] en Markdown. Si eliges mantener la etiqueta en
+inglés, sigue las instrucciones de esta sección.
+
+Por ejemplo, considera el siguiente Markdown:
 
 ```markdown
-[Hola], mundo! Bienvenido al [sitio de OTel][].
+[Hello], world! Welcome to the [OTel website][].
 
-[hola]: https://code.org/helloworld
-[sitio de OTel]: https://opentelemetry.io
+[hello]: https://code.org/helloworld
+[OTel website]: https://opentelemetry.io
+```
+
+Esto se traduciría al francés como:
+
+```markdown
+[Bonjour][hello], le monde! Bienvenue sur le [site OTel][OTel website].
+
+[hello]: https://code.org/helloworld
+[OTel website]: https://opentelemetry.io
 ```
 
 [etiquetas]: https://spec.commonmark.org/0.31.2/#link-label
@@ -148,13 +155,11 @@ de la propia imagen[^shared-images].
 
 ### Shortcodes
 
-{{% alert title="Nota" %}}
-
-A partir de febrero de 2025, estamos en proceso de migrar de _shortcodes_ a
-[archivos incluidos](#includes) como medio para admitir contenido compartido
-entre páginas.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> A partir de febrero de 2025, estamos en proceso de migrar de _shortcodes_ a
+> [archivos incluidos](#includes) como medio para admitir contenido compartido
+> entre páginas.
 
 Algunos de los _shortcodes_ base contienen texto en inglés que podrías necesitar
 localizar, especialmente aquellos que se encuentran en
@@ -270,14 +275,12 @@ Al actualizar tus páginas localizadas para que coincidan con los cambios
 realizados en la página correspondiente en inglés, asegúrate de actualizar
 también el hash de commit `default_lang_commit`.
 
-{{% alert title="Consejo" %}}
-
-Si tu página localizada ahora corresponde a la versión en inglés en `main` en
-`HEAD`, entonces borra el valor del hash de commit en el _front matter_ y
-ejecuta el comando de **agregar** dado en la sección anterior para actualizar
-automáticamente el campo `default_lang_commit`.
-
-{{% /alert %}}
+> [!TIP]
+>
+> Si tu página localizada ahora corresponde a la versión en inglés en `main` en
+> `HEAD`, entonces borra el valor del hash de commit en el _front matter_ y
+> ejecuta el comando de **agregar** dado en la sección anterior para actualizar
+> automáticamente el campo `default_lang_commit`.
 
 Si has actualizado en lote todas tus páginas localizadas que se habían
 desincronizado, puedes actualizar el hash de commit de estos archivos usando la
@@ -288,15 +291,13 @@ npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
 npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 ```
 
-{{% alert title="Importante" %}}
+> [!IMPORTANT]
+>
+> Cuando uses `HEAD` como especificador de hash, el script utilizará el hash de
+> `main` en `HEAD` de tu **entorno local**. Asegúrate de hacer fetch y pull de
+> `main` si quieres que `HEAD` corresponda a `main` en GitHub.
 
-Cuando uses `HEAD` como especificador de hash, el script utilizará el hash de
-`main` en `HEAD` de tu **entorno local**. Asegúrate de hacer fetch y pull de
-`main` si quieres que `HEAD` corresponda a `main` en GitHub.
-
-{{% /alert %}}
-
-### Estado de desfase "Drift status"
+### Estado de desfase
 
 Ejecuta `npm run fix:i18n:status` para agregar un campo en el _front matter_
 llamado `drifted_from_default` a las páginas de localización objetivo que se
@@ -310,29 +311,60 @@ Para más detalles sobre el script, ejecuta `npm run check:i18n -- -h`.
 
 ## Nuevas localizaciones
 
-### Nuevo equipo de localización
+¿Te interesa iniciar una nueva localización del sitio web de OTel? Contacta a
+los mantenedores para expresar tu interés, por ejemplo, a través de una
+discusión en GitHub o del canal de Slack `#otel-docs-localization`. Esta sección
+explica los pasos necesarios para iniciar una nueva localización.
 
-Para iniciar una nueva localización del sitio web de OpenTelemetry necesitas:
+> [!NOTE]
+>
+> No es necesario ser un contribuyente existente del proyecto OpenTelemetry para
+> iniciar una nueva localización. Sin embargo, no se te añadirá como miembro de
+> la
+> [organización de GitHub de OpenTelemetry](https://github.com/open-telemetry/)
+> ni como miembro del grupo de aprobadores de tu localización hasta que cumplas
+> con los requisitos para convertirte en miembro establecido y aprobador, según
+> lo descrito en las [directrices de membresía][].
+>
+> Antes de obtener el estatus de aprobador, puedes indicar tu aprobación de un
+> PR de localización agregando un comentario "LGTM" (Looks Good To Me). Durante
+> esta fase inicial, los mantenedores tratarán tus revisiones como si ya fueras
+> un aprobador.
+
+[directrices de membresía]:
+  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
+
+### 1. Formar un equipo de localización {#team}
+
+Crear una localización consiste en hacer crecer una comunidad activa y
+solidaria. Para iniciar una nueva localización del sitio web de OpenTelemetry
+necesitas:
 
 1. Un **mentor de localización** que conozca bien tu idioma, como un [aprobador
-   activo][] del [Glosario CNCF][], o del [sitio web de Kubernetes][].
+   activo][] del [Glosario CNCF][] o del [sitio web de Kubernetes][].
 2. Al menos dos colaboradores potenciales.
 
 [aprobador activo]: https://github.com/cncf/glossary/blob/main/CODEOWNERS
 [Glosario CNCF]: https://glossary.cncf.io/
 [sitio web de Kubernetes]: https://github.com/kubernetes/website
 
-Una vez que estés listo:
+### 2. Inicio de la localización: crear un issue {#kickoff}
 
-1. Crea un [nuevo issue][] para compartir tu interés en contribuir.
+Con el [equipo de localización](#team) listo o en proceso de formación, crea un
+issue con la lista de tareas indicada a continuación:
 
-2. Añade los usuarios de GitHub del mentor y de los colaboradores potenciales.
-
-3. Busca el [código oficial ISO 639-1][] del idioma que quieres agregar. Nos
+1. Busca el [código oficial ISO 639-1][] del idioma que quieres agregar. Nos
    referiremos a este código de idioma como `LANG_ID` en el resto de esta
-   sección.
+   sección. Si tienes dudas sobre qué etiqueta usar, especialmente cuando se
+   trate de elegir una subregión, consulta con los mantenedores.
 
-4. Añade la siguiente lista de tareas al comentario inicial de tu issue:
+   [código oficial ISO 639-1]: https://en.wikipedia.org/wiki/ISO_639-1
+
+2. Identifica los usuarios de GitHub del
+   [mentor y colaboradores potenciales](#team).
+
+3. Crea un [nuevo issue][] con la siguiente lista de tareas en el comentario
+   inicial:
 
    ```markdown
    - [ ] Language info:
@@ -344,54 +376,75 @@ Una vez que estés listo:
    - [ ] Read through
          [Localization](https://opentelemetry.io/docs/contributing/localization/)
          and all other pages in the Contributing section
-   - [ ] Localize site homepage to YOUR_LANGUAGE_NAME
+   - [ ] Localize site homepage (only) to YOUR_LANGUAGE_NAME and submit a PR.
+         For details, see
+         [Localize the homepage](https://opentelemetry.io/docs/contributing/localization/#homepage).
    - [ ] OTel maintainers:
-     - [ ] Update `hugo.yaml`
+     - [ ] Update Hugo config for `LANG_ID`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
      - [ ] Create org-level group for `LANG_ID` approvers
      - [ ] Update components owners for `content/LANG_ID`
+   - [ ] Create an issue to track the localization of the **glossary**. Add the
+         issue number here. For details, see
+         [Localize the glossary](https://opentelemetry.io/docs/contributing/localization/#glossary).
    ```
 
-5. [Envía un pull request](../pull-requests/) con la traducción de la página
-   principal del sitio web [homepage], y _nada más_, en el archivo
-   `content/LANG_ID/_index.md`. Asegúrate de que los mantenedores tengan los
-   permisos necesarios para editar tu PR, ya que ellos agregarán cambios
-   adicionales necesarios para iniciar tu proyecto de localización.
+### 3. Localizar la página principal {#homepage}
 
-[código oficial iso 639-1]: https://es.wikipedia.org/wiki/ISO_639-1
-[homepage]:
+[Envía un pull request](../pull-requests/) con la traducción de la [página
+principal][] del sitio web, y _nada más_, en el archivo
+`content/LANG_ID/_index.md`. Asegúrate de que los mantenedores tengan los
+permisos necesarios para editar tu PR, ya que ellos agregarán cambios
+adicionales necesarios para iniciar tu proyecto de localización.
+
+[página principal]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
 
 Después de que tu primer PR sea fusionado, los mantenedores configurarán la
 etiqueta del issue, el grupo a nivel de organización y los responsables del
 componente.
 
-{{% alert title="Nota" %}}
+### 4. Localizar el glosario {#glossary}
 
-No es necesario ser un colaborador existente del proyecto OpenTelemetry para
-iniciar una nueva localización. Sin embargo, no se te añadirá como miembro de la
-[organización de GitHub de OpenTelemetry](https://github.com/open-telemetry/) ni
-como miembro del grupo de aprobadores de tu localización. Deberás cumplir con
-los requisitos para convertirte en miembro establecido y aprobador, según lo
-descrito en las
-[directrices de membresía](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md).
+La segunda página a localizar es el [Glosario](/docs/concepts/glossary/). Esta
+es una página **crítica** para los lectores de las versiones localizadas, ya que
+define los términos clave utilizados en observabilidad y OpenTelemetry en
+particular. Esto es especialmente importante si dichos términos no existen en tu
+idioma.
 
-Al iniciar el proyecto de localización, los mantenedores tratarán tus revisiones
-como si ya fueras un aprobador.
+Para obtener orientación, consulta el [video][ali-d-youtube] de la charla de Ali
+Dowair en Write the Docs 2024: [El arte de la traducción: Cómo localizar
+contenido técnico][ali-dowair-2024].
 
-{{% /alert %}}
+[ali-dowair-2024]:
+  https://www.writethedocs.org/conf/atlantic/2024/speakers/#speaker-ali-dowair-what-s-in-a-word-lessons-from-localizing-kubernetes-documentation-to-arabic-ali-dowair
+[ali-d-youtube]: https://youtu.be/HY3LZOQqdig
+
+### 5. Localizar las páginas restantes del sitio en incrementos pequeños {#rest}
+
+Con la terminología establecida, ahora puedes localizar las páginas restantes
+del sitio.
+
+> [!IMPORTANT] Envía PRs pequeños <a id="small-prs"></a>
+>
+> Los equipos de localización deben enviar su trabajo en **incrementos
+> pequeños**. Es decir, mantén los [PRs] pequeños, preferiblemente limitados a
+> uno o unos pocos archivos pequeños. Los PRs más pequeños son más fáciles de
+> revisar y, por lo tanto, generalmente se fusionan más rápido.
 
 ### Lista de verificación para mantenedores de OTel
 
 #### Hugo
 
-Actualiza `hugo.yaml`. Agrega las entradas correspondientes para `LANG_ID` bajo:
+Actualiza la configuración de Hugo para `LANG_ID`. Agrega las entradas
+correspondientes para `LANG_ID` bajo:
 
-- `languages`
-- `module.mounts`. Como mínimo, agrega una única entrada de `source`-`target`
-  para `content`. Considera agregar entradas para las páginas de fallback en
-  `en` solo cuando la localización tenga suficiente contenido.
+- `languages` en `config/_default/hugo.yaml`
+- `module.mounts` a través de `config/_default/module-template.yaml`. Como
+  mínimo, agrega una única entrada de `source`-`target` para `content`.
+  Considera agregar entradas para las páginas de fallback en `en` solo cuando la
+  localización tenga suficiente contenido.
 
 #### Ortografía
 
@@ -420,19 +473,38 @@ subsección. De lo contrario:
 - Soporte para Prettier: si `LANG_ID` no está bien soportado por Prettier,
   agrega reglas de exclusión en `.prettierignore`
 
-## Guía para mantenedores del idioma inglés
+## Guía para aprobadores y mantenedores
 
-### Evitar PRs con cambios en la documentación que abarquen varios locales {#prs-should-not-span-locales}
+### Los PRs con cambios semánticos no deben abarcar varios locales {#prs-should-not-span-locales}
 
-Los colaboradores deben evitar enviar PRs que realicen cambios en la
-documentación que afecten a varios locales. La única excepción está documentada
-en la siguiente sección.
+Los aprobadores deben asegurar que los [PRs] que realicen cambios **semánticos**
+en las páginas de documentación no abarquen múltiples locales. Un cambio
+semántico es aquel que impacta el _significado_ del contenido de la página.
+Nuestro [proceso de localización](.) de documentación asegura que los
+aprobadores de cada locale, a su debido tiempo, revisen las ediciones en inglés
+para determinar si los cambios son apropiados para su locale y cómo
+incorporarlos de la mejor manera. Si se requieren cambios, los aprobadores del
+locale los harán mediante sus propios PRs específicos del locale.
 
-### Cuando falla la verificación de enlaces en páginas que no están en inglés {#patch-locale-links}
+### Los cambios puramente editoriales entre locales están permitidos {#patch-locale-links}
 
-A veces, los cambios en la documentación en inglés pueden provocar fallos en la
-verificación de enlaces para locales no ingleses. Esto sucede cuando las páginas
-de documentación se mueven o eliminan.
+Las actualizaciones de páginas **puramente editoriales** son cambios que **no**
+afectan el contenido existente y pueden abarcar múltiples locales. Estos
+incluyen:
+
+- **Mantenimiento de enlaces**: Corregir rutas de enlaces rotos cuando las
+  páginas se mueven o eliminan.
+- **Actualización de recursos**: Actualizar enlaces a recursos externos que se
+  hayan movido.
+- **Adiciones de contenido específico**: Agregar nuevas definiciones o secciones
+  específicas a archivos que han divergido, cuando actualizar el archivo
+  completo no sea factible.
+
+#### Corrección de enlaces y actualización de recursos {#link-fixes-and-resource-updates}
+
+Por ejemplo, a veces los cambios en la documentación en inglés pueden provocar
+fallos en la verificación de enlaces para locales que no están en inglés. Esto
+sucede cuando las páginas de documentación se mueven o eliminan.
 
 En tales situaciones, realiza las siguientes actualizaciones en cada página no
 inglesa cuyo enlace falle en la verificación:
@@ -444,9 +516,45 @@ inglesa cuyo enlace falle en la verificación:
 - Vuelve a ejecutar `npm run check:links` y asegúrate de que no queden fallos de
   enlaces.
 
+Cuando un _enlace externo_ a un recurso **movido** (pero semánticamente **sin
+cambios**) (como un archivo de GitHub) resulte en un fallo de verificación de
+enlaces, considera:
+
+- Eliminar el enlace roto del refcache
+- Actualizar el enlace en todos los locales usando el método descrito
+  anteriormente en esta sección.
+
+#### Adiciones de contenido específico a archivos divergentes {#targeted-content-additions}
+
+Cuando agregues contenido nuevo específico a un archivo localizado que ha
+divergido de la versión en inglés, puedes optar por hacer una actualización
+específica en lugar de actualizar el archivo completo. Por ejemplo, cuando se
+agrega un nuevo término de glosario como "cardinalidad" al glosario en inglés,
+puedes agregar solo ese término al glosario localizado sin abordar otro
+contenido divergente.
+
+Aquí hay un ejemplo del flujo de trabajo para esta actualización específica:
+
+- Agrega solo el bloque de definición de "cardinalidad" al archivo de glosario
+  localizado
+- Actualiza el front matter agregando `# patched` como comentario al final de la
+  línea `default_lang_commit`
+- Deja todo el contenido existente sin cambios
+- En la descripción del PR, documenta claramente:
+  - El contenido específico agregado (definición de "cardinalidad")
+  - Que el archivo sigue divergente en otro contenido
+  - La justificación de la actualización específica (por ejemplo, "Proporcionar
+    nueva terminología crítica a los lectores localizados sin requerir
+    sincronización completa del archivo")
+
+Este enfoque permite mejoras incrementales al contenido localizado mientras se
+mantiene la conciencia de que el archivo aún requiere atención futura para una
+sincronización completa con la versión en inglés.
+
 [front matter]: https://gohugo.io/content-management/front-matter/
 [main]: https://github.com/open-telemetry/opentelemetry.io/commits/main/
 [mantenedores]: https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [framework multilingüe]: https://gohugo.io/content-management/multilingual/
 [nuevo issue]: https://github.com/open-telemetry/opentelemetry.io/issues/new
+[PRs]: ../pull-requests/
 [slack]: https://slack.cncf.io/

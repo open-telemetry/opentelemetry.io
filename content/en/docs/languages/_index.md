@@ -28,17 +28,16 @@ application.
 The current status of the major functional components for OpenTelemetry is as
 follows:
 
-{{% alert title="Important" color="warning" %}}
-
-Regardless of an API/SDK's status, if your instrumentation relies on [semantic
-conventions][] that are marked as [Experimental] in the [semantic conventions
-specification][], your data flow might be subject to **breaking changes**.
-
-[semantic conventions]: /docs/concepts/semantic-conventions/
-[Experimental]: /docs/specs/otel/document-status/
-[semantic conventions specification]: /docs/specs/semconv/
-
-{{% /alert %}}
+> [!WARNING]
+>
+> Regardless of an API/SDK's status, if your instrumentation relies on [semantic
+> conventions][semconv] that are marked as [Experimental] in the [semantic
+> conventions specification][semconv-spec], your data flow might be subject to
+> **breaking changes**.
+>
+> [semconv]: /docs/concepts/semantic-conventions/
+> [Experimental]: /docs/specs/otel/document-status/
+> [semconv-spec]: /docs/specs/semconv/
 
 {{% telemetry-support-table " " %}}
 
@@ -50,11 +49,9 @@ references are available:
 
 {{% apidocs %}}
 
-{{% alert title="Note" %}}
-
-The list above is aliased to [`/api`](/api).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> The list above is aliased to [`/api`](/api).
 
 [zero-code]: /docs/platforms/kubernetes/operator/automatic/
 [instrumentation]: /docs/concepts/instrumentation/

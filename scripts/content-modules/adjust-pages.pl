@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w -i
 #
-# cSpell:ignore oteps
+# cSpell:ignore oteps submod
 
 $^W = 1;
 
@@ -53,6 +53,10 @@ sub printFrontMatter() {
     $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
     # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
+  }
+  elsif ($ARGV =~ m|^tmp/otel/specification/logs/|
+      && applyPatchOrPrintMsgIf('2026-01-29-hugo01550-alias-processing-diff', 'spec', '1.53.0')) {
+    $frontMatterFromFile =~ s{^(\s+-\s+)\./(event-\w+)$}{$1logs/$2}gxm;
   }
   # Sample front-matter patch:
   #
@@ -141,7 +145,7 @@ sub patchSpec_because_of_SpecName_SomeDescription_AsTemplate() {
     # through to the body of this patch function.
     applyPatchOrPrintMsgIf('2026-01-01-some-unique-id', 'semconv', '1.39.0-dev');
 
-  # Give infor about the patch:
+  # Give info about the patch:
   #
   # For the problematic links, see:
   # https://github.com/open-telemetry/semantic-conventions/issues/3103
@@ -155,26 +159,14 @@ sub patchSpec_because_of_SpecName_SomeDescription_AsTemplate() {
   }{$1/v1.52/$3}gx;
 }
 
-sub patchSpec_because_of_SemConv_DockerAPIVersions() {
-  return unless
-    # Restrict the patch to the proper spec, and section or file:
-    $ARGV =~ m|^tmp/semconv/docs/|
-    &&
-    applyPatchOrPrintMsgIf('2025-11-21-docker-api-versions', 'semconv', '1.38.0');
-
-  s{
-    (https://docs.docker.com/reference/api/engine/version)/v1.(43|51)/(\#tag/)
-  }{$1/v1.52/$3}gx;
-}
-
 sub patchSpec_because_of_SemConv_DatabaseRenamedToDb() {
   return unless
     # Restrict the patch to the proper spec, and section or file:
     # Note that here we replace links into semconv from the spec
     $ARGV =~ m|^tmp/otel/specification/|
-      && applyPatchOrPrintMsgIf('2025-11-26-database-section-renamed-to-db', 'semconv', '1.39.0');
+      && applyPatchOrPrintMsgIf('2025-11-26-database-section-renamed-to-db', 'spec', '1.53.0');
 
-  # Give infor about the patch, see:
+  # Give info about the patch, see:
   # https://github.com/open-telemetry/opentelemetry.io/pull/8311#issue-3577941378
 
   # Match both localized paths and GitHub URLs:
@@ -184,13 +176,26 @@ sub patchSpec_because_of_SemConv_DatabaseRenamedToDb() {
 sub patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration() {
   return unless
     $ARGV =~ m|^tmp/otel/specification/|
-      && applyPatchOrPrintMsgIf('2025-12-05-metric-rpc-server-duration-renamed-to-rpc-server-call-duration', 'semconv', '1.39.0');
+      && applyPatchOrPrintMsgIf('2025-12-05-metric-rpc-server-duration-renamed-to-rpc-server-call-duration', 'spec', '1.53.0');
 
-  # Give infor about the patch, see:
+  # Give info about the patch, see:
   # https://github.com/open-telemetry/opentelemetry-specification/pull/4778
 
   # Replace the old metric anchor with the new one
+  # cSpell:disable-next-line
   s|#metric-rpcserverduration|#metric-rpcservercallduration|g;
+}
+
+sub patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL() {
+  # cSpell:ignore mariadb
+  return unless
+    $ARGV =~ m|^tmp/semconv/docs/|
+      && applyPatchOrPrintMsgIf('2026-01-20-mariadb-err-code-reference-docs-updated-url', 'semconv', '1.39.0');
+
+  # See: https://github.com/open-telemetry/semantic-conventions/issues/3303
+
+  # Replace the old URL with the new one
+  s|https://mariadb.com/kb/en/mariadb-error-code-reference/|https://mariadb.com/docs/server/reference/error-codes|g;
 }
 
 sub getVersFromSubmodule() {
@@ -279,9 +284,8 @@ while(<>) {
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
 
-    patchSpec_because_of_SemConv_DockerAPIVersions();
+    patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL();
   }
-
 
   # SPECIFICATION custom processing
 
