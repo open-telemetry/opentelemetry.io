@@ -73,14 +73,38 @@ async function fetchWithRetry(url, options = {}, retries = 3) {
   }
 }
 
+// Fetch all lang:* labels from the repo to exclude localization-only activity.
+async function fetchLangLabels() {
+  const query = `query {
+    repository(owner: "${ORG}", name: "${REPO}") {
+      labels(first: 100, query: "lang:") { nodes { name } }
+    }
+  }`;
+  const res = await fetchWithRetry('https://api.github.com/graphql', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query }),
+  });
+  const json = await res.json();
+  if (json.errors) {
+    throw new Error(`GraphQL errors: ${JSON.stringify(json.errors)}`);
+  }
+  return json.data.repository.labels.nodes
+    .map((l) => l.name)
+    .filter((n) => n.startsWith('lang:'));
+}
+
 // Batch-check activity for all users via a single GraphQL request using aliases.
 // Returns a Set of usernames that have been active since the cutoff date.
-async function fetchActiveUsers(usernames, cutoff) {
+// Excludes issues/PRs labeled with lang:* labels (localization-only activity).
+async function fetchActiveUsers(usernames, cutoff, langLabels) {
+  const exclude = langLabels.map((l) => `-label:\\"${l}\\"`).join(' ');
+
   const aliases = usernames.flatMap((user) => {
     const safeUser = user.replace(/[^a-zA-Z0-9]/g, '_');
-    const reviewQuery = `type:pr repo:${ORG}/${REPO} reviewed-by:${user} updated:>=${cutoff}`;
-    const authorQuery = `type:pr repo:${ORG}/${REPO} author:${user} created:>=${cutoff}`;
-    const commentQuery = `repo:${ORG}/${REPO} commenter:${user} updated:>=${cutoff}`;
+    const reviewQuery = `type:pr repo:${ORG}/${REPO} reviewed-by:${user} updated:>=${cutoff} ${exclude}`;
+    const authorQuery = `type:pr repo:${ORG}/${REPO} author:${user} created:>=${cutoff} ${exclude}`;
+    const commentQuery = `repo:${ORG}/${REPO} commenter:${user} updated:>=${cutoff} ${exclude}`;
     return [
       `${safeUser}_reviews: search(query: "${reviewQuery}", type: ISSUE, first: 1) { issueCount }`,
       `${safeUser}_authored: search(query: "${authorQuery}", type: ISSUE, first: 1) { issueCount }`,
@@ -243,9 +267,13 @@ async function main() {
     allMembers.push(...members);
   }
 
+  // Fetch lang:* labels to exclude localization-only activity
+  const langLabels = await fetchLangLabels();
+  console.log(`Excluding lang labels: ${langLabels.join(', ') || '(none)'}`);
+
   // Batch-check activity for all users in a single GraphQL request
   const allUsernames = allMembers.map((m) => m.username);
-  const activeUsers = await fetchActiveUsers(allUsernames, cutoff);
+  const activeUsers = await fetchActiveUsers(allUsernames, cutoff, langLabels);
   console.log(`Active users: ${[...activeUsers].join(', ') || '(none)'}`);
 
   const inactiveByRole = {};
@@ -297,11 +325,9 @@ async function main() {
     prBody += '\n';
   }
 
-  prBody += `Activity was checked for: PR reviews, PR authorship, and issue/PR comments.\n`;
+  prBody += `Activity was checked for: PR reviews, PR authorship, and issue/PR comments (excluding localization-only activity).\n`;
 
   await writeFile(prBodyPath, prBody, 'utf8');
-  console.log(`PR body written to ${prBodyPath}`);
-  console.log(`pr-body-path=${prBodyPath}`);
 }
 
 main().catch((err) => {
