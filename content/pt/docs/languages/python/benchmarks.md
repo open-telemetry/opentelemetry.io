@@ -17,7 +17,7 @@ cSpell:ignore: Elems rrggbbaa
   }
 </style>
 
-O SDK do OpenTelemetry Python executa testes de _benchmark_ a cada _commit_ no
+O SDK Python do OpenTelemetry executa testes de _benchmark_ a cada _commit_ no
 repositório
 [opentelemetry-python](https://github.com/open-telemetry/opentelemetry-python/).
 O objetivo desses testes é rastrear a tendência de desempenho de operações

@@ -5,13 +5,13 @@ default_lang_commit: 1a135ec4b7a14bddd14b7d70dbf2986695b7a93d
 cSpell:ignore: mypy
 ---
 
-Se você estiver usando o [mypy](https://mypy-lang.org/), precisará ativar os
-[namespace packages](https://mypy.readthedocs.io/en/stable/command_line.html#cmdoption-mypy-namespace-packages),
-caso contrário o `mypy` não conseguirá executar corretamente.
+Se você estiver usando o [_mypy_](https://mypy-lang.org/), será necessário ativar os
+[_namespace packages_](https://mypy.readthedocs.io/en/stable/command_line.html#cmdoption-mypy-namespace-packages);
+caso contrário, o `mypy` não conseguirá executar corretamente.
 
-Para ativar os _namespace packages_, faça uma das seguintes opções:
+Para ativar os _namespace packages_, faça uma das opções a seguir:
 
-Adicione o seguinte ao arquivo de configuração do seu projeto:
+Adicione o seguinte conteúdo ao arquivo de configuração do seu projeto:
 
 ```toml
 [tool.mypy]
