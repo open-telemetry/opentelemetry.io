@@ -3,7 +3,7 @@ title: サイトのローカリゼーション
 description: 非英語ローカリゼーションのサイトページの作成と管理
 linkTitle: ローカリゼーション
 weight: 25
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25 # patched
 drifted_from_default: true
 cSpell:ignore: Dowair shortcodes
 ---
@@ -341,7 +341,7 @@ OpenTelemetryウェブサイトの新しいローカリゼーションを始め�
 
 ### 5. 残りのサイトページを小さな増分でローカライズする {#rest}
 
-用語が確立されたら、残りのサイトページをローカライズできます。<a name="small-prs"></a>
+用語が確立されたら、残りのサイトページをローカライズできます。<a id="small-prs"></a>
 
 {{% alert title="小さなPRを提出する" color="primary" %}}
 
