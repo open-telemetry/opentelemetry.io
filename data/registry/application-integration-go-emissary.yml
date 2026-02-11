@@ -18,6 +18,7 @@ authors:
 urls:
   website: https://emissary-ingress.dev/
   repo: https://github.com/emissary-ingress/emissary
+  docs: https://emissary-ingress.dev/docs/3.10/howtos/dist-tracing/
 createdAt: '2026-02-11'
 cncfProjectLevel: incubating
 isNative: true
