@@ -130,7 +130,7 @@ Each root span represents a request from start to finish. The spans underneath
 the parent provide a more in-depth context of what occurs during a request (or
 what steps make up a request).
 
-For example, when a user loads a webpage, the initial HTTP request may pass
+For example, when a user loads a web page, the initial HTTP request may pass
 through an API gateway, a backend service, and a database. Each of these steps
 is represented by a span, and together they form a single trace that shows the
 end-to-end journey of the request.
