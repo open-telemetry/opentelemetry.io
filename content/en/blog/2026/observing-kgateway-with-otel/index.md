@@ -94,7 +94,7 @@ span representing the hop from the gateway to the backend service. This makes
 routing latency and gateway-introduced delays visible without overwhelming the
 trace with internal implementation detail.
 
-![Jaeger trace view showing reequests flow from kgateway to backend service](image1.png)
+![Jaeger trace view showing requests flow from kgateway to backend service](image1.png)
 
 In Jaeger, this results in traces that feel complete. The entry point is clear,
 the handoff to the backend service is explicit, and the gateway no longer
@@ -135,7 +135,7 @@ observability pipeline, the OpenTelemetry Collector scrapes the Prometheus
 endpoints using the Prometheus receiver. From there, metrics can be enriched
 with Kubernetes resource attributes and queried using PromQL.
 
-![Prometheus view showing the kgateway_controller_* Promehteus metrics](image3.png)
+![Prometheus view showing the kgateway_controller_* Prometheus metrics](image3.png)
 
 This approach works well in practice and mirrors how many Envoy-based projects
 are observed today. However, it does mean that metrics follow a different
