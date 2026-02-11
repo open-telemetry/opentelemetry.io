@@ -1,4 +1,4 @@
-# cSpell:ignore: traefik
+# cSpell:ignore: Traefik
 title: Traefik Proxy
 registryType: application integration
 language: go
