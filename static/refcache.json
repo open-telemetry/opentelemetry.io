@@ -15915,6 +15915,14 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-06T11:53:15.522572+01:00"
   },
+  "https://kgateway.dev/docs/envoy/latest/observability/otel-stack/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-11T13:16:43.105127+01:00"
+  },
+  "https://kgateway.dev/docs/envoy/main/about/policies/httplistenerpolicy/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-11T13:16:43.566775+01:00"
+  },
   "https://kind.sigs.k8s.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-04T09:52:39.181981239Z"
