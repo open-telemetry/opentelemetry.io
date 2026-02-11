@@ -1,7 +1,7 @@
 ---
 title: Observing kgateway with OpenTelemetry
 linkTitle: kgateway OpenTelemetry support
-date: 2026-02-09
+date: 2026-02-16
 author: '[Kasper Borg Nissen](https://github.com/kaspernissen) (Dash0)'
 # prettier-ignore
 cSpell:ignore: agentgateway backfill HTTPListenerPolicy Kasper kgateway LogRecord nissen PromQL
