@@ -19,7 +19,6 @@ urls:
   website: https://projectcontour.io/
   repo: https://github.com/projectcontour/contour
   docs: https://projectcontour.io/docs/main/config/tracing/
-  blog: /blog/2026/observing-contour-with-otel/
 createdAt: '2026-02-11'
-cncfProjectLevel: graduated
+cncfProjectLevel: incubating
 isNative: true
