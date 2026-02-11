@@ -1463,6 +1463,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-30T09:57:32.572372618Z"
   },
+  "https://doc.traefik.io/traefik/observability/tracing/opentelemetry/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:20.43336+01:00"
+  },
   "https://docs.ansible.com/ansible/latest/collections/grafana/grafana/": {
     "StatusCode": 200,
     "LastSeen": "2026-01-28T09:54:03.07992533Z"
@@ -2790,6 +2794,14 @@
   "https://embrace.io/opentelemetry-for-mobile/": {
     "StatusCode": 206,
     "LastSeen": "2026-01-28T09:51:20.542863537Z"
+  },
+  "https://emissary-ingress.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:15.216531+01:00"
+  },
+  "https://emissary-ingress.dev/docs/3.10/howtos/dist-tracing/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:16.407637+01:00"
   },
   "https://en.cppreference.com/w/cpp/container/set.html": {
     "StatusCode": 206,
@@ -5123,6 +5135,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-23T09:46:33.506010297Z"
   },
+  "https://github.com/emissary-ingress": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:14.501474+01:00"
+  },
+  "https://github.com/emissary-ingress/emissary": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:13.234351+01:00"
+  },
   "https://github.com/emreyalvac": {
     "StatusCode": 206,
     "LastSeen": "2026-02-04T09:54:12.187339436Z"
@@ -6042,6 +6062,14 @@
   "https://github.com/keycloak/keycloak": {
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:54:07.754988102Z"
+  },
+  "https://github.com/kgateway-dev": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:20.098738+01:00"
+  },
+  "https://github.com/kgateway-dev/kgateway": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:19.079927+01:00"
   },
   "https://github.com/kieronlanning": {
     "StatusCode": 206,
@@ -14191,6 +14219,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-01-23T09:53:40.006186118Z"
   },
+  "https://github.com/projectcontour": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:11.322891+01:00"
+  },
+  "https://github.com/projectcontour/contour": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:10.532623+01:00"
+  },
   "https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/charts/crds/crds/crd-podmonitors.yaml": {
     "StatusCode": 206,
     "LastSeen": "2026-01-22T09:53:32.129087389Z"
@@ -14994,6 +15030,14 @@
   "https://github.com/traceloop/openllmetry/tree/main/packages/opentelemetry-instrumentation-weaviate": {
     "StatusCode": 206,
     "LastSeen": "2026-01-28T09:55:13.093874328Z"
+  },
+  "https://github.com/traefik": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:23.74471+01:00"
+  },
+  "https://github.com/traefik/traefik": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:22.533236+01:00"
   },
   "https://github.com/trask": {
     "StatusCode": 206,
@@ -15922,6 +15966,11 @@
   "https://kgateway.dev/docs/envoy/main/about/policies/httplistenerpolicy/": {
     "StatusCode": 200,
     "LastSeen": "2026-02-11T13:16:43.566775+01:00"
+    "LastSeen": "2026-02-11T12:08:17.191377+01:00"
+  },
+  "https://kgateway.dev/docs/envoy/latest/observability/otel-stack/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-11T12:08:18.560211+01:00"
   },
   "https://kind.sigs.k8s.io/": {
     "StatusCode": 206,
@@ -19079,6 +19128,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-10T09:54:36.572402636Z"
   },
+  "https://projectcontour.io/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:11.920089+01:00"
+  },
+  "https://projectcontour.io/docs/main/config/tracing/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:12.376541+01:00"
+  },
   "https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html": {
     "StatusCode": 200,
     "LastSeen": "2026-02-10T09:55:00.163378314Z"
@@ -19982,6 +20039,10 @@
   "https://traefik.io/traefik-hub/": {
     "StatusCode": 200,
     "LastSeen": "2026-01-30T09:57:32.484477124Z"
+  },
+  "https://traefik.io/traefik/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T12:08:19.67052+01:00"
   },
   "https://training.linuxfoundation.org/certification/opentelemetry-certified-associate-otca/": {
     "StatusCode": 200,
