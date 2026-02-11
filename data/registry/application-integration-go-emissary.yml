@@ -1,0 +1,23 @@
+# cSpell:ignore: emissary
+title: Emissary Ingress
+registryType: application integration
+language: go
+tags:
+  - go
+  - emissary
+  - ingress
+  - envoy
+  - incubating
+license: Apache-2.0
+description:
+  Emissary Ingress supports exporting traces via OTLP by configuring a
+  TracingService custom resource.
+authors:
+  - name: Emissary Ingress Authors
+    url: https://github.com/emissary-ingress
+urls:
+  website: https://emissary-ingress.dev/
+  repo: https://github.com/emissary-ingress/emissary
+createdAt: '2026-02-11'
+cncfProjectLevel: incubating
+isNative: true

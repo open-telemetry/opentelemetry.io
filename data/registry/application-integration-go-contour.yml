@@ -1,0 +1,25 @@
+# cSpell:ignore: projectcontour
+title: Contour
+registryType: application integration
+language: go
+tags:
+  - go
+  - contour
+  - ingress
+  - envoy
+  - graduated
+license: Apache-2.0
+description:
+  Contour supports OpenTelemetry tracing via Envoy proxy, with configurable
+  export to OpenTelemetry collectors.
+authors:
+  - name: Contour Authors
+    url: https://github.com/projectcontour
+urls:
+  website: https://projectcontour.io/
+  repo: https://github.com/projectcontour/contour
+  docs: https://projectcontour.io/docs/main/config/tracing/
+  blog: /blog/2026/observing-contour-with-otel/
+createdAt: '2026-02-11'
+cncfProjectLevel: graduated
+isNative: true
