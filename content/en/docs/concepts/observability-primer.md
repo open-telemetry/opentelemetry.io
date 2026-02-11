@@ -10,7 +10,7 @@ cSpell:ignore: webshop
 Observability lets you understand a system from the outside by letting you ask
 questions about that system without knowing its inner workings. Furthermore, it
 allows you to easily troubleshoot and handle novel problems, that is, "unknown
-unknowns”. It also helps you answer the question "Why is this happening?"
+unknowns". It also helps you answer the question "Why is this happening?"
 
 To ask those questions about your system, your application must be properly
 instrumented. That is, the application code must emit
@@ -32,8 +32,8 @@ can come in the form of [traces](/docs/concepts/signals/traces/),
 [logs](/docs/concepts/signals/logs/).
 
 **Reliability** answers the question: "Is the service doing what users expect it
-to be doing?” A system could be up 100% of the time, but if, when a user clicks
-"Add to Cart” to add a black pair of shoes to their shopping cart, the system
+to be doing?" A system could be up 100% of the time, but if, when a user clicks
+"Add to Cart" to add a black pair of shoes to their shopping cart, the system
 doesn't always add black shoes, then the system could be **un**reliable.
 
 **Metrics** are aggregations over a period of time of numeric data about your
@@ -85,7 +85,7 @@ For more on logs and how they pertain to OpenTelemetry, see
 
 ### Spans
 
-A **span** represents a unit of work or operation. Spans track specific
+A **span** represents a single unit of work or operation. Spans track specific
 operations that a request makes, painting a picture of what happened during the
 time in which that operation was executed.
 
@@ -120,14 +120,20 @@ For more on spans and how they relate to OpenTelemetry, see
 
 ### Distributed traces
 
-A **distributed trace**, more commonly known as a **trace**, records the paths
-taken by requests (made by an application or end-user) as they propagate through
-multi-service architectures, like microservice and serverless applications.
+A **distributed trace**, more commonly known as a **trace**, records the path
+taken by a single request (made by an application or end user) as it propagates
+through multiple services in an architecture, such as microservice or serverless
+applications.
 
 A trace is made of one or more spans. The first span represents the root span.
 Each root span represents a request from start to finish. The spans underneath
 the parent provide a more in-depth context of what occurs during a request (or
 what steps make up a request).
+
+For example, when a user loads a web page, the initial HTTP request may pass
+through an API gateway, a backend service, and a database. Each of these steps
+is represented by a span, and together they form a single trace that shows the
+end-to-end journey of the request.
 
 Without tracing, finding the root cause of performance problems in a distributed
 system can be challenging. Tracing makes debugging and understanding distributed
