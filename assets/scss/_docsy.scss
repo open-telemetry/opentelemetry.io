@@ -17,6 +17,12 @@
   }
 }
 
+// Code block wrapping
+.td-content pre > code {
+  word-break: break-word !important;
+  white-space: pre-wrap !important;
+}
+
 .td-page-meta__child {
   display: none !important;
 }
