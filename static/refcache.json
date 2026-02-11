@@ -15961,16 +15961,11 @@
   },
   "https://kgateway.dev/docs/envoy/latest/observability/otel-stack/": {
     "StatusCode": 200,
-    "LastSeen": "2026-02-11T13:16:43.105127+01:00"
+    "LastSeen": "2026-02-11T12:08:18.560211+01:00"
   },
   "https://kgateway.dev/docs/envoy/main/about/policies/httplistenerpolicy/": {
     "StatusCode": 200,
     "LastSeen": "2026-02-11T13:16:43.566775+01:00"
-    "LastSeen": "2026-02-11T12:08:17.191377+01:00"
-  },
-  "https://kgateway.dev/docs/envoy/latest/observability/otel-stack/": {
-    "StatusCode": 200,
-    "LastSeen": "2026-02-11T12:08:18.560211+01:00"
   },
   "https://kind.sigs.k8s.io/": {
     "StatusCode": 206,
