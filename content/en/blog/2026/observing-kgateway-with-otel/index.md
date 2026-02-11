@@ -14,7 +14,7 @@ routing rules, and forwarding traffic to backend services. Because every
 external request flows through it, the gateway is also one of the most valuable
 places to observe what users actually experience.
 
-In this post, we’ll look at kgateway’s OpenTelemetry support from two angles.
+In this post, we’ll look at [kgateway’s OpenTelemetry support](https://kgateway.dev/docs/envoy/latest/observability/otel-stack/) from two angles.
 First, we’ll examine how traces, logs, and metrics are exposed in practice using
 a small, self-contained test environment. Second, we’ll evaluate that behavior
 using a draft maturity framework that breaks “OpenTelemetry support” into a set
