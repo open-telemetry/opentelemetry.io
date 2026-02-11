@@ -3,7 +3,7 @@ title: Configuration
 weight: 20
 description: Learn how to configure the Collector to suit your needs
 # prettier-ignore
-cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey hostmetrics initca oidc otlphttp pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
+cSpell:ignore: cfssl cfssljson configtls fluentforward gencert genkey hostmetrics initca oidc pprof prodevent prometheusremotewrite spanevents unredacted upsert zpages
 ---
 
 <!-- markdownlint-disable link-fragments -->
@@ -124,7 +124,7 @@ receivers:
         endpoint: 0.0.0.0:4318
 
 exporters:
-  otlp:
+  otlp_grpc:
     endpoint: otelcol:4317
     sending_queue:
       batch:
@@ -142,13 +142,13 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [otlp]
+      exporters: [otlp_grpc]
     metrics:
       receivers: [otlp]
-      exporters: [otlp]
+      exporters: [otlp_grpc]
     logs:
       receivers: [otlp]
-      exporters: [otlp]
+      exporters: [otlp_grpc]
 ```
 
 Note that receivers, processors, exporters and pipelines are defined through
@@ -170,11 +170,11 @@ receivers:
         endpoint: 0.0.0.0:55690
 
 exporters:
-  otlp:
+  otlp_grpc:
     endpoint: otelcol:4317
     sending_queue:
       batch:
-  otlp/2:
+  otlp_grpc/2:
     endpoint: otelcol2:4317
     sending_queue:
       batch:
@@ -192,16 +192,16 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      exporters: [otlp]
+      exporters: [otlp_grpc]
     traces/2:
       receivers: [otlp/2]
-      exporters: [otlp/2]
+      exporters: [otlp_grpc/2]
     metrics:
       receivers: [otlp]
-      exporters: [otlp]
+      exporters: [otlp_grpc]
     logs:
       receivers: [otlp]
-      exporters: [otlp]
+      exporters: [otlp_grpc]
 ```
 
 The configuration can also include other files, causing the Collector to merge
@@ -222,13 +222,13 @@ service:
     traces:
       receivers: [otlp]
       processors: []
-      exporters: [otlp]
+      exporters: [otlp_grpc]
 ```
 
 With the `exporters.yaml` file being:
 
 ```yaml
-otlp:
+otlp_grpc:
   endpoint: otelcol.observability.svc.cluster.local:443
 ```
 
@@ -242,7 +242,7 @@ receivers:
         endpoint: 0.0.0.0:4317
 
 exporters:
-  otlp:
+  otlp_grpc:
     endpoint: otelcol.observability.svc.cluster.local:443
 
 service:
@@ -251,7 +251,7 @@ service:
     traces:
       receivers: [otlp]
       processors: []
-      exporters: [otlp]
+      exporters: [otlp_grpc]
 ```
 
 ## Receivers <img width="35" class="img-initial otel-icon" alt="" src="/img/logos/32x32/Receivers.svg"> {#receivers}
@@ -458,7 +458,7 @@ exporters:
     path: ./filename.json
 
   # Data sources: traces
-  otlp/jaeger:
+  otlp_grpc/jaeger:
     endpoint: jaeger-server:4317
     tls:
       cert_file: cert.pem
@@ -478,14 +478,14 @@ exporters:
     endpoint: otelcol2:55678
 
   # Data sources: traces, metrics, logs
-  otlp:
+  otlp_grpc:
     endpoint: otelcol2:4317
     tls:
       cert_file: cert.pem
       key_file: cert-key.pem
 
   # Data sources: traces, metrics
-  otlphttp:
+  otlp_http:
     endpoint: https://otlp.example.com:4318
 
   # Data sources: metrics
@@ -800,7 +800,7 @@ receivers:
 processors:
 
 exporters:
-  otlp/auth:
+  otlp_grpc/auth:
     endpoint: remote-collector:4317
     auth:
       authenticator: oauth2client
@@ -814,7 +814,7 @@ service:
         - otlp
       processors: []
       exporters:
-        - otlp/auth
+        - otlp_grpc/auth
 ```
 
 ### Configuring certificates {#setting-up-certificates}
@@ -888,7 +888,7 @@ verify the server's certificate:
 
 ```yaml
 exporters:
-  otlp:
+  otlp_grpc:
     endpoint: otelcol2:4317
     tls:
       ca_file: /path/to/ca.pem
@@ -898,7 +898,7 @@ If you also need to present a client certificate to the server:
 
 ```yaml
 exporters:
-  otlp:
+  otlp_grpc:
     endpoint: otelcol2:4317
     tls:
       ca_file: /path/to/ca.pem
@@ -928,7 +928,7 @@ certificate:
 
 ```yaml
 exporters:
-  otlp:
+  otlp_grpc:
     endpoint: remote-collector:4317
     tls:
       ca_file: /path/to/ca.pem
@@ -1042,7 +1042,7 @@ service:
     traces:
       receivers: [otlp]
       processors: []
-      exporters: [otlp]
+      exporters: [otlp_grpc]
 ```
 
 ## How to check components available in a distribution
@@ -1065,8 +1065,8 @@ receivers:
 processors:
   - memory_limiter
 exporters:
-  - otlp
-  - otlphttp
+  - otlp_grpc
+  - otlp_http
   - debug
 extensions:
   - zpages

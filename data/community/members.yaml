@@ -644,6 +644,7 @@ maintainers:
       - collector-releases-maintainers
       - collector-triagers
       - opamp-go-approvers
+      - opamp-spec-approvers
     html_url: https://github.com/evan-bradley
     avatar_url: https://avatars.githubusercontent.com/u/11745660?v=4
   - name: EzzioMoreira
@@ -776,6 +777,7 @@ maintainers:
       - ecosystem-explorer-approvers
       - ecosystem-explorer-maintainers
       - java-contrib-approvers
+      - java-contrib-maintainers
       - java-instrumentation-approvers
       - java-instrumentation-triagers
     html_url: https://github.com/jaydeluca
@@ -1085,6 +1087,12 @@ maintainers:
       - injector-maintainers
     html_url: https://github.com/mmanciop
     avatar_url: https://avatars.githubusercontent.com/u/14020598?v=4
+  - name: mmat11
+    teams:
+      - ebpf-instrumentation-approvers
+      - ebpf-instrumentation-maintainers
+    html_url: https://github.com/mmat11
+    avatar_url: https://avatars.githubusercontent.com/u/9884419?v=4
   - name: MovieStoreGuy
     teams:
       - collector-contrib-approvers
@@ -1185,6 +1193,12 @@ maintainers:
       - swift-triagers
     html_url: https://github.com/nachoBonafonte
     avatar_url: https://avatars.githubusercontent.com/u/47814950?v=4
+  - name: NimrodAvni78
+    teams:
+      - ebpf-instrumentation-approvers
+      - ebpf-instrumentation-maintainers
+    html_url: https://github.com/NimrodAvni78
+    avatar_url: https://avatars.githubusercontent.com/u/73278770?v=4
   - name: nrcventura
     teams:
       - dotnet-instrumentation-approvers
@@ -1750,14 +1764,6 @@ approvers:
       - ebpf-profiler-approvers
     html_url: https://github.com/athre0z
     avatar_url: https://avatars.githubusercontent.com/u/6553158?v=4
-  - name: atreat
-    teams:
-      - swift-approvers
-      - swift-core-approvers
-      - swift-core-triagers
-      - swift-triagers
-    html_url: https://github.com/atreat
-    avatar_url: https://avatars.githubusercontent.com/u/1031555?v=4
   - name: axw
     teams:
       - collector-approvers
@@ -2143,11 +2149,6 @@ approvers:
       - semconv-security-approvers
     html_url: https://github.com/mjwolf
     avatar_url: https://avatars.githubusercontent.com/u/2590169?v=4
-  - name: mmat11
-    teams:
-      - ebpf-instrumentation-approvers
-    html_url: https://github.com/mmat11
-    avatar_url: https://avatars.githubusercontent.com/u/9884419?v=4
   - name: MSNev
     teams:
       - javascript-contrib-triagers
@@ -2173,11 +2174,6 @@ approvers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/NameHaibinZhang
     avatar_url: https://avatars.githubusercontent.com/u/30917104?v=4
-  - name: NimrodAvni78
-    teams:
-      - ebpf-instrumentation-approvers
-    html_url: https://github.com/NimrodAvni78
-    avatar_url: https://avatars.githubusercontent.com/u/73278770?v=4
   - name: nirga
     teams:
       - opentelemetry-python-contrib-approvers
@@ -2394,11 +2390,6 @@ approvers:
       - cpp-contrib-approvers
     html_url: https://github.com/TomRoSystems
     avatar_url: https://avatars.githubusercontent.com/u/8647888?v=4
-  - name: trasktest
-    teams:
-      - java-contrib-approvers
-    html_url: https://github.com/trasktest
-    avatar_url: https://avatars.githubusercontent.com/u/64627853?v=4
   - name: trisch-me
     teams:
       - semconv-security-approvers
@@ -2443,6 +2434,14 @@ approvers:
       - erlang-contrib-approvers
     html_url: https://github.com/whatyouhide
     avatar_url: https://avatars.githubusercontent.com/u/3890250?v=4
+  - name: williazz
+    teams:
+      - swift-approvers
+      - swift-core-approvers
+      - swift-core-triagers
+      - swift-triagers
+    html_url: https://github.com/williazz
+    avatar_url: https://avatars.githubusercontent.com/u/43121212?v=4
   - name: windsonsea
     teams:
       - docs-triagers
@@ -2492,6 +2491,11 @@ triagers:
       - go-triagers
     html_url: https://github.com/akats7
     avatar_url: https://avatars.githubusercontent.com/u/56042997?v=4
+  - name: atreat
+    teams:
+      - swift-triagers
+    html_url: https://github.com/atreat
+    avatar_url: https://avatars.githubusercontent.com/u/1031555?v=4
   - name: bacherfl
     teams:
       - collector-contrib-triagers
@@ -2675,12 +2679,6 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/Ugzuzg
     avatar_url: https://avatars.githubusercontent.com/u/1078004?v=4
-  - name: williazz
-    teams:
-      - swift-core-triagers
-      - swift-triagers
-    html_url: https://github.com/williazz
-    avatar_url: https://avatars.githubusercontent.com/u/43121212?v=4
   - name: yiyuan-he
     teams:
       - javascript-contrib-triagers

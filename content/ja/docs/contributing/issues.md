@@ -4,7 +4,7 @@ description: 既存イシューの修正方法、またはバグ、セキュリ�
 weight: 10
 _issues: https://github.com/open-telemetry/opentelemetry.io/issues
 _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
-default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
+default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9 # patched
 drifted_from_default: true
 ---
 
@@ -37,7 +37,7 @@ OTel を改善するための最も良い方法の 1 つは、既存のイシュ
 1. [issues]({{% param _issues %}}) のリストを参照してください。
 2. 作業したいイシューを選択してください。短時間で修正できるものが理想です。
 
-   <a name="first-issue"></a>
+   <a id="first-issue"></a>
    {{% alert title="最初のコントリビュートですか？" color="primary alert--first-timer" %}}
 
    以下のラベルのイシューを選択してください。
