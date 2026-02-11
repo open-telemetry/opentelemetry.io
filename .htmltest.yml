@@ -24,9 +24,9 @@ IgnoreDirs:
   - ^zh/docs/contributing/
   # DO NOT EDIT! IgnoreDirs list is auto-generated from markdown file front matter.
 IgnoreInternalURLs: # list of paths
-IgnoreURLs: # list of regexs of paths or URLs to be ignored
+IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - /index.xml$ # Ignore rel="alternative" links to RSS feeds
-  - \?no-link-check
+  - '[?&]link-check=no' # Query param to ignore link checking
   - ^/api/?$
   - ^((/..)?/docs/languages/\w+|\.\.)/(api|examples|registry)/$
   - ^(/..)?/docs/collector/registry/$
@@ -58,6 +58,10 @@ IgnoreURLs: # list of regexs of paths or URLs to be ignored
   - ^https://www.perplexity.ai
   - ^https://sched.co # Often yields 403 Forbidden and needs manual verification
   - ^https://.*\.sched\.com
+
+  # Ignore because they forget to renew their certificates too often, e.g., see:
+  # https://github.com/oatpp/oatpp/issues/1082
+  - ^https://oatpp.io
 
   # Ignore issues and discussions with query parameters, e.g.:
   - ^https://github\.com/open-telemetry/opentelemetry\.io/issues\?q=

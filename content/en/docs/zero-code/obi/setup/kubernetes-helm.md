@@ -2,20 +2,18 @@
 title: Deploy OBI in Kubernetes with Helm
 linkTitle: Helm chart
 description: Learn how to deploy OBI as a Helm chart in Kubernetes.
-weight: 3
-build:
-  list: never
-draft: true
-toc_hide: true
+weight: 2
 ---
 
-{{% alert title="Note" %}}
-
-For more details about the diverse Helm configuration options, check out the
-[OBI Helm chart options](https://github.com/open-telemetry/opentelemetry-helm-charts/)
-document.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> For more details about the diverse Helm configuration options, check out the
+> [OBI Helm chart documentation](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-ebpf-instrumentation)
+> or browse the chart on
+> [Artifact Hub](https://artifacthub.io/packages/helm/opentelemetry-helm/opentelemetry-ebpf-instrumentation).
+> For detailed configuration parameters, see the
+> [values.yaml](https://github.com/open-telemetry/opentelemetry-helm-charts/blob/main/charts/opentelemetry-ebpf-instrumentation/values.yaml)
+> file.
 
 Contents:
 
@@ -107,7 +105,7 @@ podAnnotations:
 Analogously, the Helm chart allows overriding names, labels, and annotations for
 multiple resources involved in the deployment of OBI, such as service accounts,
 cluster roles, security contexts, etc. The
-[OBI Helm chart documentation](https://github.com/open-telemetry/opentelemetry-helm-charts/)
+[OBI Helm chart documentation](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-ebpf-instrumentation)
 describes the diverse configuration options.
 
 ## Providing secrets to the Helm configuration

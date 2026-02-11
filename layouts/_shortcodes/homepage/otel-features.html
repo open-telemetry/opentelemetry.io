@@ -1,0 +1,19 @@
+{{ $color := .Get "color" | default "white" -}}
+{{ $columns := .Get "columns" | default "3" -}}
+
+<section class="row td-box td-box--{{ $color }} otel-features-section">
+  <div class="col-12">
+    <div class="container">
+      {{ with .Get "title" }}
+      <h2 class="otel-features__title text-center">{{ . }}</h2>
+      {{ end }}
+      {{ with .Get "subtitle" }}
+      <p class="otel-features__subtitle text-center">{{ . }}</p>
+      {{ end }}
+      <div class="otel-features otel-features--cols-{{ $columns }}">
+        {{ .Inner }}
+      </div>
+    </div>
+  </div>
+</section>
+

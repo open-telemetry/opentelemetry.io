@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 #
-# cSpell:ignore textlintrc
+# cSpell:ignore getlines
 
 use strict;
 use warnings;
@@ -102,16 +102,25 @@ sub getSiteWideDictWords {
 
   my %dictionary = readYmlOrPlainListOfWords('', $dictionary_file);
   my %textlintDictionary = readYmlOrPlainListOfWords('terms', $textlintrc_file);
-  # Merge dictionaries
   @dictionary{keys %textlintDictionary} = values %textlintDictionary;
+
+  # Merge words from .cspell.yml
+  if (-f '.cspell.yml') {
+    my %cspellYmlWords = readYmlOrPlainListOfWords('words', '.cspell.yml', 1);
+    @dictionary{keys %cspellYmlWords} = values %cspellYmlWords;
+  }
 
   return %dictionary;
 }
 
-sub readYmlOrPlainListOfWords {
-  # Read plain list of words if $wordsFieldName is empty
-  my $wordsFieldName = shift;
-  my $file_path = shift;
+sub readYmlOrPlainListOfWords($$;$) {
+  # Read plain list of words if $wordsFieldName is empty.
+  my (
+    $wordsFieldName,
+    $file_path,
+    $allow_empty # return empty hash instead of dying when no words found
+  ) = @_;
+  $allow_empty //= 0;
   my $fh = FileHandle->new($file_path, "r") or die "Could not open file '$file_path': $!";
   my @lines = $fh->getlines();
   $fh->close();
@@ -139,7 +148,7 @@ sub readYmlOrPlainListOfWords {
     }
   }
 
-  die "ERROR: no words read from '$file_path'!" unless %dictionary; # sanity check
+  die "ERROR: no words read from '$file_path'!" unless $allow_empty || %dictionary;
 
   return %dictionary;
 }

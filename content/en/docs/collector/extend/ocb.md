@@ -3,7 +3,7 @@ title: Build a custom Collector with OpenTelemetry Collector Builder
 linkTitle: Build a custom Collector
 description: Assemble your own distribution of the OpenTelemetry Collector
 weight: 200
-aliases: [/docs/collector/custom-collector/]
+aliases: [/docs/collector/custom-collector]
 params:
   providers-vers: v1.48.0
 # prettier-ignore
@@ -185,26 +185,22 @@ To configure `ocb`, follow these steps:
          providers-vers %}}
    ```
 
-{{% alert title="Tip" %}}
-
-For a list of components that you can add to your custom Collector, see the
-[OpenTelemetry Registry](/ecosystem/registry/?language=collector). Each registry
-entry contains the full name and version you need to add to your
-`builder-config.yaml`.
-
-{{% /alert %}}
+> [!TIP]
+>
+> For a list of components that you can add to your custom Collector, see the
+> [OpenTelemetry Registry](/ecosystem/registry/?language=collector). Each
+> registry entry contains the full name and version you need to add to your
+> `builder-config.yaml`.
 
 ## Generate the code and build your Collector distribution
 
-{{% alert title="Note" %}}
-
-This section instructs you to build your custom Collector distribution using the
-`ocb` binary. If you would like to build and deploy your custom Collector
-distribution to a container orchestrator such as Kubernetes, skip this section
-and see
-[Containerize your Collector Distribution](#containerize-your-collector-distribution).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> This section instructs you to build your custom Collector distribution using
+> the `ocb` binary. If you would like to build and deploy your custom Collector
+> distribution to a container orchestrator such as Kubernetes, skip this section
+> and see
+> [Containerize your Collector Distribution](#containerize-your-collector-distribution).
 
 With `ocb` installed and configured, you are ready to build your distribution.
 
@@ -253,15 +249,13 @@ components.
 
 ## Containerize your Collector distribution
 
-{{% alert title="Note" %}}
-
-This section teaches you to build your Collector distribution inside a
-`Dockerfile`. Follow these instructions if you need to deploy your Collector
-distribution to a container orchestrator such as Kubernetes. If you want to
-build your Collector distribution without containerization, see
-[Generate the code and build your Collector distribution](#generate-the-code-and-build-your-collector-distribution).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> This section teaches you to build your Collector distribution inside a
+> `Dockerfile`. Follow these instructions if you need to deploy your Collector
+> distribution to a container orchestrator such as Kubernetes. If you want to
+> build your Collector distribution without containerization, see
+> [Generate the code and build your Collector distribution](#generate-the-code-and-build-your-collector-distribution).
 
 Follow these steps to containerize your custom Collector.
 

@@ -1,0 +1,14 @@
+{{ $title := .Get "title" | default "Observability Signals" -}}
+
+<section class="row signals-showcase-section">
+  <div class="col-12">
+    <div class="container">
+      {{ with $title }}
+      <h2 class="signals-showcase__title">{{ . }}</h2>
+      {{ end }}
+      <div class="signals-showcase__grid">
+        {{ .Inner }}
+      </div>
+    </div>
+  </div>
+</section>

@@ -319,13 +319,11 @@ discovery:
   default_exclude_instrument: []
 ```
 
-{{% alert title="Warning" color="warning" %}}
-
-Disabling all default exclusions may cause increased resource usage and
-potential feedback loops if OBI instruments itself or other telemetry
-collectors. Use this configuration carefully in production environments.
-
-{{% /alert %}}
+> [!WARNING]
+>
+> Disabling all default exclusions may cause increased resource usage and
+> potential feedback loops if OBI instruments itself or other telemetry
+> collectors. Use this configuration carefully in production environments.
 
 ## Skip go specific tracers
 
