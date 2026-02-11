@@ -187,9 +187,11 @@ works without project-specific interpretation.
 One caveat is that some HTTP attributes still follow older OpenTelemetry
 semantic conventions. For example, spans use `http.status_code` rather than the
 current `http.response.status_code`, and legacy HTTP attribute names such as
-`http.method` and `http.url` are present. This indicates partial alignment with
-OpenTelemetry semantic conventions, but not full adherence to the latest
-recommendations.
+`http.method` and `http.url` are present. This is due to the upstream Envoy
+proxy dependency, which has not yet adopted the latest OpenTelemetry semantic
+conventions — a gap shared by all Envoy-based proxies. You can track the
+progress on this in the
+[Envoy issue #30821](https://github.com/envoyproxy/envoy/issues/30821).
 
 Telemetry is generally consistent and interoperable, with room for more
 intentional refinement.
@@ -352,20 +354,27 @@ gateway model.
 ## Closing thoughts
 
 kgateway demonstrates how far OpenTelemetry support at the gateway layer has
-come. Native OTLP tracing and logging, clean context propagation, and
+come. Native OTLP tracing and logging, reliable context propagation, and
 declarative configuration via the Gateway API make it straightforward to
 integrate kgateway into modern, open source observability stacks.
 
 At the same time, the analysis also makes the remaining gaps more visible.
-Metrics still follow a Prometheus-first model, which works well operationally
+Metrics today still follow a Prometheus-first model, which works well operationally
 but creates a split between push-based and pull-based telemetry. That split
-isn’t unique to kgateway, but it does shape how platform teams design and
+isn't unique to kgateway, but it does shape how platform teams design and
 operate their pipelines.
 
+The good news is that the kgateway maintainers are already working on closing
+the gaps in areas within their control and are collaborating with the upstream Envoy
+community to improve overall alignment with OpenTelemetry conventions. If you
+want to get involved or follow the progress, the
+[kgateway project](https://github.com/kgateway-dev/kgateway) is a great place
+to start.
+
 This is exactly why a dimensional maturity model is useful. Instead of
-collapsing “OpenTelemetry support” into a single label, it allows us to talk
-concretely about where a project is strong, where it’s evolving, and where
-trade-offs are still being made. We’ll continue to apply this model across the
+collapsing "OpenTelemetry support" into a single label, it allows us to talk
+concretely about where a project is strong, where it's evolving, and where
+trade-offs are still being made. We'll continue to apply this model across the
 rest of the series, both to validate the model itself and to make differences
 between gateway implementations easier to reason about.
 
