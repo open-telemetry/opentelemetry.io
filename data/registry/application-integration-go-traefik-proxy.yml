@@ -1,0 +1,21 @@
+# cSpell:ignore: Traefik
+title: Traefik Proxy
+registryType: application integration
+language: go
+tags:
+  - go
+  - traefik
+  - proxy
+  - ingress
+license: MIT
+description:
+  Traefik supports OpenTelemetry for distributed tracing, logs, and metrics.
+authors:
+  - name: Traefik Labs
+    url: https://github.com/traefik
+urls:
+  website: https://traefik.io/traefik/
+  repo: https://github.com/traefik/traefik
+  docs: https://doc.traefik.io/traefik/observability/tracing/opentelemetry/
+createdAt: '2026-02-11'
+isNative: true
