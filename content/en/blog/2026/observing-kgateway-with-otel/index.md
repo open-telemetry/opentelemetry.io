@@ -17,23 +17,20 @@ places to observe what users actually experience.
 In this post, we’ll look at [kgateway’s OpenTelemetry support](https://kgateway.dev/docs/envoy/latest/observability/otel-stack/) from two angles.
 First, we’ll examine how traces, logs, and metrics are exposed in practice using
 a small, self-contained test environment. Second, we’ll evaluate that behavior
-using a [draft maturity framework](https://github.com/open-telemetry/community/issues/3247) that breaks “OpenTelemetry support” into a set
+using a [draft maturity model](https://github.com/open-telemetry/community/issues/3247) that breaks “OpenTelemetry support” into a set
 of concrete dimensions. The goal isn’t to produce a score, but to make
-trade-offs and friction points visible.
+trade-offs and friction points visible. The full draft of the model lives in a public GitHub issue, where feedback
+and discussion are very welcome.
 
 ## How we’ll evaluate OpenTelemetry support
 
 OpenTelemetry support isn’t binary. Most projects land somewhere in between:
 traces might be native, metrics might still rely on Prometheus scraping, logs
 might correlate cleanly in some paths but not others. To make those differences
-easier to talk about, we’ll use a draft maturity framework that evaluates
+easier to talk about, we’ll use a draft maturity model that evaluates
 OpenTelemetry support across several independent dimensions.
 
-The full draft of the framework lives in a public GitHub issue, where feedback
-and discussion are very welcome:
-[https://github.com/open-telemetry/community/issues/3247](https://github.com/open-telemetry/community/issues/3247)
-
-At a high level, the framework looks at OpenTelemetry support across the
+At a high level, the model looks at OpenTelemetry support across the
 following dimensions, each evaluated independently on a scale from _Level 0
 (Instrumented)_ to _Level 3 (OpenTelemetry-Optimized)_:
 
@@ -51,10 +48,10 @@ following dimensions, each evaluated independently on a scale from _Level 0
 - **Stability & Change Management** – how telemetry evolves once users depend on
   it
 
-This framework is an early draft, and this post should be read as an application
-of the framework rather than a definitive judgment of the quality of the support
+This model is an early draft, and this post should be read as an application
+of the model rather than a definitive judgment of the quality of the support
 of OpenTelemetry in kgateway. Gateways are a particularly useful place to test
-this framework, because they exercise all three current stable OpenTelemetry
+this model, because they exercise all three current stable OpenTelemetry
 signals (logs, metrics, traces) and sit at a natural boundary in terms of cloud
 native architectures: the edge of Kubernetes clusters.
 
@@ -92,7 +89,7 @@ span representing the hop from the gateway to the backend service. This makes
 routing latency and gateway-introduced delays visible without overwhelming the
 trace with internal implementation detail.
 
-![image1](image1.png)
+![Jaeger trace view showing reequests flow from kgateway to backend service](image1.png)
 
 In Jaeger, this results in traces that feel complete. The entry point is clear,
 the handoff to the backend service is explicit, and the gateway no longer
@@ -115,7 +112,7 @@ The log body itself is configurable using Envoy's standard formatting operators,
 allowing request metadata, response codes, timing information, and upstream
 details to be included directly in the log record.
 
-![image2](image2.png)
+![OpenSearch view showing the log body and attributes](image2.png)
 
 This makes logs feel like a first-class OpenTelemetry signal rather than
 something retrofitted onto a tracing pipeline.
@@ -133,7 +130,7 @@ observability pipeline, the OpenTelemetry Collector scrapes the Prometheus
 endpoints using the Prometheus receiver. From there, metrics can be enriched
 with Kubernetes resource attributes and queried using PromQL.
 
-![image3](image3.png)
+![Prometheus view showing the kgateway_controller_* Promehteus metrics](image3.png)
 
 This approach works well in practice and mirrors how many Envoy-based projects
 are observed today. However, it does mean that metrics follow a different
@@ -144,12 +141,14 @@ conventions, and neither has the built-in notion of metric unit.
 ## Summary view: kgateway OpenTelemetry maturity
 
 Before diving into each dimension, the radar chart below provides a high-level
-overview of how kgateway’s OpenTelemetry support shapes up across the framework.
+overview of how kgateway’s OpenTelemetry support shapes up across the model.
 
-![image4](image4.png)
+![Radar chart showing kgateway's OpenTelemetry maturity across evaluation dimensions](image4.png)
+_Radar chart showing kgateway’s OpenTelemetry maturity across evaluation dimensions_
 
-_Each dimension is scored independently on a 0–3 scale, where higher values
-indicate deeper, more intentional OpenTelemetry integration._
+
+Each dimension is scored independently on a 0–3 scale, where higher values
+indicate deeper, more intentional OpenTelemetry integration.
 
 The purpose of this chart isn’t to produce a single score. It’s to highlight
 where the experience is already strong and where users are likely to feel
@@ -361,11 +360,11 @@ operate their pipelines.
 This is exactly why a dimensional maturity model is useful. Instead of
 collapsing “OpenTelemetry support” into a single label, it allows us to talk
 concretely about where a project is strong, where it’s evolving, and where
-trade-offs are still being made. We’ll continue to apply this framework across
+trade-offs are still being made. We’ll continue to apply this model across
 the rest of the series, both to validate the model itself and to make
 differences between gateway implementations easier to reason about.
 
-If you have feedback on the framework, the dimensions, or the interpretation
+If you have feedback on the model, the dimensions, or the interpretation
 here, the linked
 [GitHub issue](https://github.com/open-telemetry/community/issues/3247) is the
 place to join the discussion.
