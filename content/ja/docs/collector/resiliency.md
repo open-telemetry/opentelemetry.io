@@ -103,6 +103,7 @@ OpenTelemetryコレクターは、テレメトリーの処理とエクスポー�
   - _エージェントコレクター構成（プロデューサー）:_
 
     ```yaml
+    exporters:
       kafka:
         brokers: ['kafka-broker1:9092', 'kafka-broker2:9092']
         topic: otlp_traces
