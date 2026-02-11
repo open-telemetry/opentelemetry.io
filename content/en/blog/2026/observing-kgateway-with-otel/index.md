@@ -79,7 +79,7 @@ than on deployment mechanics.
 
 Tracing is where kgateway is at its strongest. Tracing is configured
 declaratively using the Gateway API’s policy attachment model via
-`HTTPListenerPolicy`. No application changes or sidecars are required.
+[`HTTPListenerPolicy`](https://kgateway.dev/docs/envoy/main/about/policies/httplistenerpolicy/). No application changes or sidecars are required.
 
 Under the hood, kgateway relies on Envoy’s native OpenTelemetry support and
 exports spans directly over OTLP/gRPC. If a request arrives with W3C trace
