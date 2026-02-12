@@ -1,3 +1,4 @@
+# cSpell:ignore: thoughtbot
 title: RubyLLM Instrumentation
 registryType: instrumentation
 language: ruby
