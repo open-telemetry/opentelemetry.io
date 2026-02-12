@@ -21,5 +21,4 @@ isNative: true
 package:
   name: ZiggyCreatures.FusionCache
   registry: nuget
-
   version: 2.5.0
