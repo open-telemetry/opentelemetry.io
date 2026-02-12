@@ -9959,6 +9959,10 @@
     "StatusCode": 206,
     "LastSeen": "2025-12-19T09:43:07.813382547Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metric-sets": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-12T06:56:30.112929035Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/kafka-broker.md": {
     "StatusCode": 206,
     "LastSeen": "2025-12-22T09:45:29.308853821Z"
