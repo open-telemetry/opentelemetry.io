@@ -15967,6 +15967,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-11T13:16:43.566775+01:00"
   },
+  "https://kgateway.dev/docs/envoy/main/about/policies/listenerpolicy/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-12T06:15:20.204104Z"
+  },
   "https://kind.sigs.k8s.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-04T09:52:39.181981239Z"

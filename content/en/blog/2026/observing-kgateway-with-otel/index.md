@@ -4,7 +4,7 @@ linkTitle: kgateway OpenTelemetry support
 date: 2026-02-16
 author: '[Kasper Borg Nissen](https://github.com/kaspernissen) (Dash0)'
 # prettier-ignore
-cSpell:ignore: agentgateway backfill HTTPListenerPolicy Kasper kgateway LogRecord nissen PromQL
+cSpell:ignore: agentgateway backfill Kasper kgateway ListenerPolicy LogRecord nissen PromQL
 ---
 
 [kgateway](https://kgateway.dev/) is a Kubernetes Gateway API implementation
@@ -80,7 +80,7 @@ than on deployment mechanics.
 
 Tracing is where kgateway is at its strongest. Tracing is configured
 declaratively using the Gateway API’s policy attachment model via
-[`HTTPListenerPolicy`](https://kgateway.dev/docs/envoy/main/about/policies/httplistenerpolicy/).
+[`ListenerPolicy`](https://kgateway.dev/docs/envoy/main/about/policies/listenerpolicy/).
 No application changes or sidecars are required.
 
 Under the hood, kgateway relies on Envoy’s native OpenTelemetry support and
