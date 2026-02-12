@@ -14907,6 +14907,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-03T09:54:24.74119506Z"
   },
+  "https://github.com/thoughtbot": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-12T11:09:18.58057-03:00"
+  },
+  "https://github.com/thoughtbot/opentelemetry-instrumentation-ruby_llm": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-12T11:09:17.503807-03:00"
+  },
   "https://github.com/thousandeyes": {
     "StatusCode": 206,
     "LastSeen": "2026-01-28T09:54:24.651077963Z"
@@ -19734,6 +19742,10 @@
   "https://rubygems.org/gems/opentelemetry-instrumentation-ruby_kafka": {
     "StatusCode": 200,
     "LastSeen": "2026-01-28T09:55:36.560727505Z"
+  },
+  "https://rubygems.org/gems/opentelemetry-instrumentation-ruby_llm": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-12T11:09:19.856864-03:00"
   },
   "https://rubygems.org/gems/opentelemetry-instrumentation-sidekiq": {
     "StatusCode": 200,
