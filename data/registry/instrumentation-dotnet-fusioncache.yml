@@ -8,7 +8,8 @@ tags:
   - .net
 license: MIT
 description:
-  By using OpenTelemetry with FusionCache, you can gain insights into the performance of your systems and how caching is performing
+  By using OpenTelemetry with FusionCache, you can gain insights into the
+  performance of your systems and how caching is performing
 authors:
   - name: Jody Donetti
     url: https://github.com/jodydonetti
