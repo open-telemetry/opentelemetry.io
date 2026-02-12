@@ -2,7 +2,7 @@
 title: JMX Metrics
 weight: 14
 description: Collect metrics from JMX MBeans using OpenTelemetry
-cSpell:ignore: jconsole jmxremote mbean mbeans visualvm
+cSpell:ignore: jconsole jmxremote mbean mbeans visualvm wildfly
 ---
 
 This page describes how to collect metrics from
