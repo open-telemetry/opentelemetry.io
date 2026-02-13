@@ -250,6 +250,6 @@ Come listen, learn, and get involved in OpenTelemetry. See you in Amsterdam!
 [maintainer summit]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/features-add-ons/maintainer-summit/
 [membership]:
-  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#member
+  https://github.com/open-telemetry/community/blob/25f0275/guides/contributor/membership.md#member?from_branch=main
 [obs-day-sched]:
   https://colocatedeventseu2026.sched.com/overview/type/Observability+Day
