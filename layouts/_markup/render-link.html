@@ -1,16 +1,16 @@
-{{ $dest := .Destination -}}
-{{ $u := urls.Parse $dest -}}
+{{ $url := .Destination -}} {{/* TODO: rename to $url */ -}}
+{{ $u := urls.Parse $url -}}
 
-{{/* Note: $u.IsAbs is true if $dest has a scheme (e.g., "http:") */ -}}
+{{/* Note: $u.IsAbs is true if $url has a scheme (e.g., "http:") */ -}}
 
 {{ if and
     (hasPrefix $.PageInner.RelPermalink "/docs/specs")
     (not $u.IsAbs)
-    (not (hasPrefix $dest "#"))
+    (not (hasPrefix $url "#"))
 -}}
 
   {{ $path := replaceRE `\bREADME\.md\b` "_index.md" $u.Path -}}
-  {{ $href := $dest -}}
+  {{ $href := $url -}}
   {{ with or
     ($.PageInner.GetPage $path)
     ($.PageInner.Resources.Get $path)
@@ -21,9 +21,9 @@
     {{ with $u.Fragment -}}{{ $href = printf "%s#%s" $href . -}}{{ end -}}
   {{ else -}}
 
-    {{/* We can't find a page for $dest.
+    {{/* We can't find a page for $url.
 
-    - If $dest refers to a Markdown file, issue a warning, since we should be
+    - If $url refers to a Markdown file, issue a warning, since we should be
       able to find it.
 
     - Otherwise, it's a path to a resource file. Most often, $path is absolute,
@@ -38,7 +38,7 @@
     */ -}}
 
     {{ if hasSuffix $path ".md" -}}
-      {{ warnf "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $dest $path -}}
+      {{ warnf "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $url $path -}}
     {{ else -}}
       {{ if and
             (hasPrefix $href "./")
@@ -47,12 +47,12 @@
       -}}
         {{ $href = add "." $href -}}
       {{ end -}}
-      {{ warnidf "spec-resource-not-found" "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $dest $href -}}
+      {{ warnidf "spec-resource-not-found" "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $url $href -}}
     {{ end -}}
   {{ end -}}
-  {{ $dest = $href -}}
+  {{ $url = $href -}}
 
-{{ else if hasPrefix $dest "/" -}}
+{{ else if hasPrefix $url "/" -}}
 
   {{/*
     Based on Hugo's default render-link hook:
@@ -79,15 +79,15 @@
     {{- end -}}
   {{- end -}}
 
-  {{ $dest = $href -}}
+  {{ $url = $href -}}
 
   {{/* Backwards compatibility with the previous version of this render-link hook */ -}}
-  {{ if hasSuffix $dest (add .Destination "/") -}}
-    {{ $dest = strings.TrimSuffix "/" $dest -}}
-  {{ else if eq .Destination (add $dest "#") -}}
-    {{ $dest = .Destination -}}
-  {{ else if hasSuffix $dest (add $u.Path "/#" $u.Fragment) -}}
-    {{ $dest = replace $dest "/#" "#" -}}
+  {{ if hasSuffix $url (add .Destination "/") -}}
+    {{ $url = strings.TrimSuffix "/" $url -}}
+  {{ else if eq .Destination (add $url "#") -}}
+    {{ $url = .Destination -}}
+  {{ else if hasSuffix $url (add $u.Path "/#" $u.Fragment) -}}
+    {{ $url = replace $url "/#" "#" -}}
   {{ end -}}
 
 {{ else if and $u.IsAbs (eq $u.Scheme "http")
@@ -95,31 +95,31 @@
     (not (findRE `\blocalhost\b|^127\.0` $u.Host))
 -}}
   {{/* TODO: move this check to an mdl rule */ -}}
-  {{ warnf "%s: use 'https' for external URL '%s', or add query parameter '?disable_http_check'" .Page.File.Path $dest -}}
+  {{ warnf "%s: use 'https' for external URL '%s', or add query parameter '?disable_http_check'" .Page.File.Path $url -}}
 {{ end -}}
 
 {{/* General link-render processing */ -}}
 
-{{ $isExternal := hasPrefix $dest "http" -}}
+{{ $isExternal := hasPrefix $url "http" -}}
 {{ if $isExternal -}}
-  {{ $matches := findRESubmatch `^https?://(?:www\.)?opentelemetry.io(/?.*)$` $dest -}}
+  {{ $matches := findRESubmatch `^https?://(?:www\.)?opentelemetry.io(/?.*)$` $url -}}
   {{ $otelIoPath := index (index $matches 0) 1 | default "/" -}}
   {{ if $matches -}}
     {{ warnf "%s: use a local path '%s' instead of external URL '%s' for reference to site-local page"
-        .Page.File.Path $otelIoPath $dest -}}
+        .Page.File.Path $otelIoPath $url -}}
   {{ else if or
-    (findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" $dest)
-    (findRE "^https://github.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification" $dest)
-    (findRE "^https://github.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs" $dest)
+    (findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" $url)
+    (findRE "^https://github.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification" $url)
+    (findRE "^https://github.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs" $url)
     -}}
     {{ warnf "%s: use a local path, not an external URL, for the following reference to a local specification page: %s"
-    .Page.File.Path $dest -}}
+    .Page.File.Path $url -}}
   {{ end -}}
 {{ end -}}
 
 {{/* Until Hugo supports hook params (https://github.com/gohugoio/hugo/issues/6670), we'll inspect .Text. */ -}}
 
-<a href="{{ $dest | safeURL }}"
+<a href="{{ $url | safeURL }}"
   {{- with .Title}} title="{{ . }}"{{ end -}}
   {{- if $isExternal }} target="_blank" rel="noopener"
     {{- $noExternalIcon := in .Text "hk-no-external-icon" -}}
