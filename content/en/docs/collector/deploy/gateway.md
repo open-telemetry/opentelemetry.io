@@ -270,6 +270,5 @@ order of the timestamps is incorrect. For example:
 
 ## Next steps
 
-Learn how to [combine](/docs/collector/deploy/other-patterns/agent-to-gateway/)
-the agent and gateway patterns to create a robust, scalable Collector
-architecture.
+Learn how to [combine](/docs/collector/deploy/other/agent-to-gateway/) the agent
+and gateway patterns to create a robust, scalable Collector architecture.
