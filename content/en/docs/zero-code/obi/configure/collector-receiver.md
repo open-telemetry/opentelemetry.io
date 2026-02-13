@@ -567,10 +567,7 @@ build:
 
 ### Runtime Issues
 
-#### Error: "Required system capabilities not present" or "operation not
-
-permitted"
-
+#### Error: "Required system capabilities not present" or "operation not permitted"
 OBI requires elevated privileges to run. You have two options:
 
 ##### Option 1: Run with sudo (simplest)
