@@ -16,8 +16,8 @@ release from the
 
 Each release includes:
 
-- `obi-<version>-linux-amd64.tar.gz` - Linux AMD64/x86_64 archive
-- `obi-<version>-linux-arm64.tar.gz` - Linux ARM64 archive
+- `obi-v<version>-linux-amd64.tar.gz` - Linux AMD64/x86_64 archive
+- `obi-v<version>-linux-arm64.tar.gz` - Linux ARM64 archive
 - `SHA256SUMS` - Checksums for verification
 
 ### Download and extract

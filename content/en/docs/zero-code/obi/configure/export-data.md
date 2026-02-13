@@ -279,8 +279,8 @@ setting:
 ```yaml
 discovery:
   instrument:
-    - matches:
-        - ProcessName: '.*myapp'
+    - selectors:
+        exe_path: '.*myapp'
       config:
         instrumentations: ['http', 'sql']
 ```

@@ -67,8 +67,7 @@ otel_traces_export:
 # Select services to instrument
 discovery:
   instrument:
-    - matches:
-        - open_ports: '8380'
+    - open_ports: '8380'
 
 # Enable log enrichment for the same services
 ebpf:
