@@ -609,11 +609,12 @@ securityContext:
     add:
       - SYS_ADMIN
       - SYS_PTRACE
-      - CAP_DAC_READ_SEARCH
-      - CAP_NET_RAW
-      - CAP_PERFMON
-      - CAP_BPF
-      - CAP_CHECKPOINT_RESTORE
+      - BPF
+      - SYS_PTRACE
+      - NET_RAW
+      - CHECKPOINT_RESTORE
+      - DAC_READ_SEARCH
+      - PERFMON
 ```
 
 #### Error: "failed to create OBI receiver: permission denied"
@@ -681,7 +682,7 @@ running with `sudo` or the proper Kubernetes security context shown above.
 
 ## Migration from standalone OBI
 
-### Step1: Build custom Collector
+### Step 1: Build custom Collector
 
 Follow the [configuration](#configuration) section to build a Collector with OBI
 receiver.

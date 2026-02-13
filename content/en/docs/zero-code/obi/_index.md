@@ -109,9 +109,7 @@ For a comprehensive list of capabilities required by OBI, refer to
 - Follow the [setup](setup/) documentation to get started with OBI either with
   Docker or Kubernetes.
 - Learn about [trace-log correlation](./trace-log-correlation/) to connect
-  traces with application logs.
-- Learn about [trace-log correlation](./trace-log-correlation/) to enrich JSON
-  logs with trace context.
+  traces with application logs and enrich JSON logs with trace context.
 - Discover how to run
   [OBI as a Collector receiver](./configure/collector-receiver/) for centralized
   telemetry processing.

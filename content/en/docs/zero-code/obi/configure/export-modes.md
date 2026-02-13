@@ -61,5 +61,5 @@ obi -config instrument-config.yml
 or
 
 ```shell
-OTEL_EBF_CONFIG_PATH=instrument-config.yml obi
+OTEL_EBPF_CONFIG_PATH=instrument-config.yml obi
 ```
