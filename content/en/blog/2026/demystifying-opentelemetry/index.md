@@ -310,7 +310,7 @@ break it down.
 
 Many organizations rely on SQL Server databases for production, analytics, or
 inventory. With the OpenTelemetry Collector’s
-[sqlserver receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sqlserverreceiver),
+[sqlserver receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/ab56dd4/receiver/sqlserverreceiver?from_branch=main),
 you can scrape health and performance metrics directly, without needing agents
 on your database hosts. The following is a sample configuration showing how to
 set this up:
@@ -348,7 +348,7 @@ pool, locks, batch rates, and more), exposing them to observability backends.
 ### Observing Windows machines with the Windows performance counters receiver
 
 Classic Windows hosts still drive many production and control environments. The
-[Windows performance counters receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/windowsperfcountersreceiver)
+[Windows performance counters receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/ab56dd4/receiver/windowsperfcountersreceiver?from_branch=main)
 (part of the OpenTelemetry Collector Contrib distribution) lets you collect a
 wide array of system, application, or custom metrics right from the Windows
 registry using the native PDH interface. The following is a sample configuration
