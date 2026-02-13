@@ -90,6 +90,12 @@
   contact: support@chronosphere.io
   oss: false
   commercial: true
+- name: Comet Opik
+  nativeOTLP: true
+  url: https://www.comet.com/docs/opik/integrations/opentelemetry
+  contact: support@comet.com
+  oss: true
+  commercial: true
 - name: Control Plane
   nativeOTLP: true
   url: https://docs.controlplane.com/reference/org#tracing
