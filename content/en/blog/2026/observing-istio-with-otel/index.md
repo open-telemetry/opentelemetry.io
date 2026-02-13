@@ -145,12 +145,14 @@ to associate access logs with the corresponding gateway spans immediately. In
 practice, this makes it straightforward to move from an ingress span to the
 related access log entries without additional correlation logic.
 
-The primary limitation lies in log structure rather than correlation. In the
-evaluated setup, the access log payload is emitted as a single text string in
-the log body rather than being parsed into structured OpenTelemetry log
-attributes. As a result, logs are correlated but not easily filterable or
-aggregatable by common fields such as status code, method, route name, or
-upstream cluster.
+The primary limitation lies in log structure rather than correlation. By default,
+the access log payload is emitted as a single text string in the log body rather
+than being parsed into structured OpenTelemetry log attributes. Istio does
+support
+[custom log formats](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-EnvoyOpenTelemetryLogProvider-LogFormat)
+that allow operators to define structured labels, but in the evaluated default
+configuration, logs are correlated but not easily filterable or aggregatable by
+common fields such as status code, method, route name, or upstream cluster.
 
 This is where the OpenTelemetry Collector plays a key role. It parses the log
 body, extracts structured attributes, and enriches records with Kubernetes
@@ -267,9 +269,10 @@ operating shared gateways. Traces and metrics provide deep insight into ingress
 behavior, routing decisions, and performance characteristics.
 
 At the same time, effective use of the telemetry requires familiarity with
-Envoy, Istio, and the OpenTelemetry Collector. Defaults are powerful but not
-self-explanatory, which limits how broadly usable the telemetry is without prior
-domain knowledge.
+Envoy, Istio, and the OpenTelemetry Collector. While Istio's telemetry is widely
+used and operationally proven, integrating it into an OpenTelemetry-native
+pipeline requires domain knowledge across multiple systems, which can raise the
+barrier for teams that are not already familiar with the Istio ecosystem.
 
 ### Stability & change management
 
@@ -280,7 +283,7 @@ However, Istio does not populate the `schema_url` field in OTLP exports. The
 absence of schema tracking makes it difficult to determine which version of
 OpenTelemetry semantic conventions is implemented and complicates migration
 planning as conventions evolve. As a result, telemetry behavior is stable but
-not treated as an explicit, versioned contract.
+doesn't expose this contract using OTel conventions.
 
 ## Where Istio Gateway lands
 
