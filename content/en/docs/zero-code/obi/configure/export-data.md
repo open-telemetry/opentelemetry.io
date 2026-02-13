@@ -5,7 +5,7 @@ description:
   Configure the OBI components to export Prometheus and OpenTelemetry metrics
   and OpenTelemetry traces
 weight: 10
-cSpell:ignore: pyserver spanmetrics
+cSpell:ignore: AsterixDB couchbase jackc pgxpool pyserver spanmetrics
 ---
 
 OBI can export OpenTelemetry metrics and traces to a OTLP endpoint.
@@ -149,9 +149,12 @@ The list of instrumentation areas OBI can collection data from:
 - `*`: all instrumentation, if `*` is present OBI ignores other values
 - `http`: HTTP/HTTPS/HTTP/2 application metrics
 - `grpc`: gRPC application metrics
-- `sql`: SQL database client call metrics
+- `sql`: SQL database client call metrics (includes PostgreSQL, MySQL, and Go
+  pgx driver)
 - `redis`: Redis client/server database metrics
 - `kafka`: Kafka client/server message queue metrics
+- `mqtt`: MQTT publish/subscribe message metrics (MQTT 3.1.1 and 5.0)
+- `couchbase`: Couchbase N1QL/SQL++ query metrics
 - `gpu`: GPU performance metrics
 - `mongo`: MongoDB client call metrics
 - `dns`: DNS query metrics
@@ -200,9 +203,13 @@ The list of instrumentation areas OBI can collection data from:
 - `*`: all instrumentation, if `*` is present OBI ignores other values
 - `http`: HTTP/HTTPS/HTTP/2 application traces
 - `grpc`: gRPC application traces
-- `sql`: SQL database client call traces
+- `sql`: SQL database client call traces (includes PostgreSQL, MySQL, and Go pgx
+  driver with enhanced Query and Exec operation tracing)
 - `redis`: Redis client/server database traces
 - `kafka`: Kafka client/server message queue traces
+- `mqtt`: MQTT publish/subscribe message traces (MQTT 3.1.1 and 5.0)
+- `couchbase`: Couchbase N1QL/SQL++ query traces with query text and operation
+  details
 - `gpu`: GPU performance traces
 - `mongo`: MongoDB client call traces
 - `dns`: DNS query traces
@@ -210,6 +217,134 @@ The list of instrumentation areas OBI can collection data from:
 For example, setting the `instrumentations` option to: `http,grpc` enables the
 collection of `HTTP/HTTPS/HTTP2` and `gRPC` application traces, and disables
 other instrumentation.
+
+#### MQTT instrumentation
+
+OBI automatically instruments MQTT communication, a lightweight messaging
+protocol commonly used in IoT and embedded systems.
+
+**Supported operations**:
+
+- `publish`: Message publication to topics
+- `subscribe`: Topic subscription requests
+
+**Protocol versions**:
+
+- MQTT 3.1.1
+- MQTT 5.0
+
+**What's captured**:
+
+- Topic names (limited to first topic filter for subscribe operations)
+- Operation latency
+- Client-server communication patterns
+
+**Limitations**:
+
+- For subscribe operations, only the first topic filter is captured
+- Message payloads are not captured to minimize overhead
+
+**Example use case**: Monitor an IoT gateway publishing sensor data to an MQTT
+broker, tracking message delivery rates and identifying communication issues.
+
+#### PostgreSQL pgx driver instrumentation
+
+OBI provides specialized instrumentation for pgx, a high-performance native Go
+driver for PostgreSQL databases.
+
+**What makes pgx special**: pgx instrumentation hooks directly into the Go
+driver using Go-specific eBPF tracing, providing database-specific observability
+without the overhead of generic network-level SQL instrumentation.
+
+**Supported operations**:
+
+- `Query`: SQL query execution with result sets
+- Connection pooling (via pgxpool)
+- Both native pgx API and database/SQL wrapper interface
+
+**What's captured**:
+
+- SQL query text
+- PostgreSQL server hostname (extracted from pgx connection configuration)
+- Operation duration and error details
+- All standard database/SQL metric labels
+
+**Supported pgx versions**: pgx v5.0.0 and later (tested up to v5.8.0). Also
+supported via database/SQL wrapper: `github.com/jackc/pgx/v5/stdlib`
+
+**Configuration**: pgx instrumentation requires explicit configuration based on
+application type detection - it is not part of the generic `sql` instrumentation
+setting:
+
+```yaml
+discovery:
+  instrument:
+    - matches:
+        - ProcessName: '.*myapp'
+      config:
+        instrumentations: ['http', 'sql']
+```
+
+Note: pgx availability depends on runtime detection of the pgx driver in your Go
+application.
+
+**Example use case**: Monitor a Go microservice using pgxpool for database
+connections, tracking query performance and identifying slow SQL statements.
+
+#### Couchbase N1QL/SQL++ instrumentation
+
+OBI instruments Couchbase database operations using SQL++ (the modern name for
+the N1QL query language). SQL++ queries are automatically detected through
+Couchbase's HTTP query service on the `/query/service` endpoint.
+
+**What's Couchbase**: A NoSQL document database that supports SQL-like queries
+through SQL++, commonly used for applications with flexible schemas and high
+availability requirements.
+
+**Supported operations**:
+
+- All SQL++ query types: SELECT, INSERT, UPDATE, DELETE, UPSERT
+- Bucket and collection operations accessed via SQL paths (e.g.,
+  `bucket`.`scope`.`collection`)
+- Cross-collection and cross-bucket queries
+
+**What's captured**:
+
+- Full SQL++ query text
+- Operation type (SELECT, INSERT, etc.) parsed from query
+- Bucket, scope, and collection names (when present in query path)
+- Execution time and error details
+- HTTP status codes and error messages
+
+**Supported databases**:
+
+- **Couchbase Server**: Detected via the N1QL version header in response
+- **Other SQL++ implementations**: Apache AsterixDB and compatible databases
+  also supported with a generic `other_sql` designation
+
+**Configuration**: SQL++ instrumentation requires explicit enablement via
+environment variables:
+
+```bash
+export OTEL_EBPF_HTTP_SQLPP_ENABLED=true
+export OTEL_EBPF_BPF_BUFFER_SIZE_HTTP=2048  # Use larger than default
+```
+
+**Limitations**:
+
+- Bucket and collection discovery requires SQL path notation in the query (e.g.,
+  `bucket`.`scope`.`collection`) or `query_context` field in the request
+- Responses without Couchbase version headers are labeled as generic `other_sql`
+  operations
+- Couchbase-specific authentication and metadata operations are not captured
+- Collection names may not be available if `GET_COLLECTION_ID` occurred before
+  OBI started
+- These limitations only affect operations on connections established before OBI
+  initialization
+
+**Example use case**: Monitor a high-traffic web application using Couchbase for
+session storage and content management, tracking query performance and
+identifying inefficient N1QL queries.
 
 ## Prometheus exporter component
 
@@ -267,9 +402,11 @@ The list of instrumentation areas OBI can collection data from:
 - `*`: all instrumentation, if `*` is present OBI ignores other values
 - `http`: HTTP/HTTPS/HTTP/2 application metrics
 - `grpc`: gRPC application metrics
-- `sql`: SQL database client call metrics
+- `sql`: SQL database client call metrics (includes PostgreSQL and pgx driver)
 - `redis`: Redis client/server database metrics
 - `kafka`: Kafka client/server message queue metrics
+- `mqtt`: MQTT publish/subscribe message metrics
+- `couchbase`: Couchbase N1QL/SQL++ query metrics
 
 For example, setting the `instrumentations` option to: `http,grpc` enables the
 collection of `HTTP/HTTPS/HTTP2` and `gRPC` application metrics, and disables
