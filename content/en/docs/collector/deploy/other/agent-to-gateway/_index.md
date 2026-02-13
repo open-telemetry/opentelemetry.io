@@ -196,7 +196,7 @@ processors:
   # Optional: tail-based sampling
   tail_sampling:
     decision_wait: 10s
-    num_traces: 100000
+    num_traces: 100000 # requires more memory
     policies:
       # Always sample traces with errors
       - name: errors-policy
@@ -280,6 +280,7 @@ exporters:
       dns:
         hostname: otel-gateway-headless
         port: 4317
+    routing_key: traceID
 
 service:
   pipelines:
