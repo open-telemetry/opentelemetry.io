@@ -6,8 +6,7 @@ description:
   backends
 aliases: [/docs/collector/deployment/gateway]
 weight: 300
-# prettier-ignore
-cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
+cSpell:ignore: hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---
 
 The gateway Collector deployment pattern consists of applications or other
