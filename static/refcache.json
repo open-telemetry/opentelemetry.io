@@ -4015,13 +4015,13 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:54:03.530384104Z"
   },
+  "https://github.com/actions/runner-images/blob/71f0157/images/macos/macos-13-Readme.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-12T20:03:17.548767-05:00"
+  },
   "https://github.com/actions/runner-images/blob/e82adb8a25d915d5a4598ced53814bdacac218cc/images/ubuntu/Ubuntu2004-Readme.md": {
     "StatusCode": 206,
     "LastSeen": "2026-02-10T09:54:57.185873516Z"
-  },
-  "https://github.com/actions/runner-images/blob/main/images/macos/macos-13-Readme.md": {
-    "StatusCode": 404,
-    "LastSeen": "2026-02-12T09:53:33.425374276Z"
   },
   "https://github.com/actions/runner-images/blob/main/images/macos/macos-14-Readme.md": {
     "StatusCode": 206,
