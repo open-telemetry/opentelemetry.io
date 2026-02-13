@@ -60,14 +60,11 @@
   */ -}}
 
   {{- $href := $u.String -}}
-  {{- if hasPrefix $href "#" -}}
-    {{/* Do nothing: leave $href as is */ -}}
-  {{- else if and $href (not $u.IsAbs) -}}
-    {{- $path := strings.TrimPrefix "./" $u.Path -}}
+  {{- if and $href (not $u.IsAbs) -}}
     {{- with or
-      ($.PageInner.GetPage $path)
-      ($.PageInner.Resources.Get $path)
-      (resources.Get $path)
+      ($.PageInner.GetPage $u.Path)
+      ($.PageInner.Resources.Get $u.Path)
+      (resources.Get $u.Path)
     -}}
       {{- $href = .RelPermalink -}}
       {{- with $u.RawQuery -}}
