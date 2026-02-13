@@ -45,8 +45,9 @@ dimensions, each evaluated independently on a scale from _Level 0
 - **Resource Attributes & Configuration** – how identity and configuration
   behave across environments
 - **Trace Modeling & Context Propagation** – how traces are structured and how
-  context flows **Multi-Signal Observability** – how traces, metrics, and logs
-  work together in practice
+  context flows
+- **Multi-Signal Observability** – how traces, metrics, and logs work together
+  in practice
 - **Audience & Signal Quality** – who the telemetry is designed for and how
   usable it is by default
 - **Stability & Change Management** – how telemetry evolves once users depend on
