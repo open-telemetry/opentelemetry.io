@@ -6327,6 +6327,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:46:57.433374606Z"
   },
+  "https://github.com/libbpf/bpftool": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-13T17:34:56.374733375Z"
+  },
   "https://github.com/libbpf/libbpf": {
     "StatusCode": 206,
     "LastSeen": "2026-02-20T09:57:37.666697264Z"
@@ -18354,6 +18358,10 @@
   "https://opentelemetry.devstats.cncf.io/d/9/developer-activity-counts-by-repository-group-table?orgId=1": {
     "StatusCode": 200,
     "LastSeen": "2026-02-12T09:58:47.651397651Z"
+  },
+  "https://opentelemetry.io/docs/collector/deployment/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T21:32:19.606736801Z"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
