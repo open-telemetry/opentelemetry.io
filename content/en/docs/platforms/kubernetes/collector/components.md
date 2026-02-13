@@ -620,7 +620,7 @@ subjects:
 Prometheus is a common metrics format for both Kubernetes and services running
 on Kubernetes. The Prometheus receiver is a minimal drop-in replacement for the
 collection of those metrics. It supports the full set of Prometheus
-[`scrape_config` options](https://prometheus.io/docs/prometheus/1.8/configuration/configuration/#scrape_config).
+[`scrape_config` options](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
 
 There are a few advanced Prometheus features that the receiver does not support.
 The receiver returns an error if the configuration YAML/code contains any of the
