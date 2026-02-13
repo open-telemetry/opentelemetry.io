@@ -1,9 +1,9 @@
 {
-  "http://logback.qos.ch/?disable_http_check": {
+  "http://logback.qos.ch/?http_ok": {
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:54:59.929354186Z"
   },
-  "http://www.powerjob.tech/?disable_http_check": {
+  "http://www.powerjob.tech/?http_ok": {
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:55:09.322777508Z"
   },

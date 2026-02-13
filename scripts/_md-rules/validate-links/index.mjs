@@ -38,7 +38,7 @@ function checkContentForUrls(content, lineNumber, onError, urlPatterns) {
 /** @type {import("markdownlint").Rule} */
 export default {
   names: ['validate-links'],
-  description: 'Validate links against given regex patterns',
+  description: 'Pattern-based link checking',
   tags: ['custom', 'links', 'validation'],
   parser: 'micromark',
   function: function validateLinks(params, onError) {
