@@ -149,7 +149,7 @@ conventions, and neither has the built-in notion of metric unit.
 Before diving into each dimension, the radar chart below provides a high-level
 overview of how kgateway’s OpenTelemetry support shapes up across the model.
 
-![Radar chart showing kgateway's OpenTelemetry maturity across evaluation dimensions](image4.png)
+![Radar chart of kgateway’s OpenTelemetry maturity: Integration Surface 2, Semantic Conventions 2, Resource Attributes & Configuration 1, Trace Modeling & Context Propagation 2, Multi‑Signal Observability 1, Audience & Signal Quality 2, Stability & Change Management 1](image4.png)
 _Radar chart showing kgateway’s OpenTelemetry maturity across evaluation
 dimensions_
 
