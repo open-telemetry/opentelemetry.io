@@ -2351,6 +2351,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-18T09:56:17.817339097Z"
   },
+  "https://docs.oracle.com/en/java/javase/17/docs/api/jdk.management/com/sun/management/UnixOperatingSystemMXBean.html#getMaxFileDescriptorCount%28%29": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-14T10:38:31.929335844Z"
+  },
   "https://docs.oracle.com/en/java/javase/17/docs/api/jdk.management/com/sun/management/UnixOperatingSystemMXBean.html#getOpenFileDescriptorCount%28%29": {
     "StatusCode": 200,
     "LastSeen": "2026-02-18T09:56:47.624250894Z"
@@ -12818,6 +12822,18 @@
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/trace/sdk.md#span-processor": {
     "StatusCode": 206,
     "LastSeen": "2026-02-13T18:12:21.247239789Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-14T10:38:09.219535694Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-14T10:38:20.038488095Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-14T10:38:13.310638617Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
