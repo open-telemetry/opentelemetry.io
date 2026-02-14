@@ -9847,6 +9847,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-11T09:58:54.914141125Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/f96ddcf28c2c13d2de7e8d20bb4932be0ec5cc90/devdocs/protocols/tcp/couchbase.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-14T01:22:43.069955798Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/discussions": {
     "StatusCode": 206,
     "LastSeen": "2026-02-10T10:00:31.328691955Z"
