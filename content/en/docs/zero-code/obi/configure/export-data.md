@@ -5,6 +5,7 @@ description:
   Configure the OBI components to export Prometheus and OpenTelemetry metrics
   and OpenTelemetry traces
 weight: 10
+# prettier-ignore
 cSpell:ignore: AsterixDB couchbase jackc memcached pgxpool pyserver spanmetrics
 ---
 
