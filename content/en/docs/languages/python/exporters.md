@@ -7,7 +7,7 @@ cSpell:ignore: LOWMEMORY
 
 {{% docs/languages/exporters/intro %}}
 
-## Dependencies {#otlp-dependencies}
+### Dependencies {#otlp-dependencies}
 
 If you want to send telemetry data to an OTLP endpoint (like the
 [OpenTelemetry Collector](#collector-setup), [Jaeger](#jaeger) or
@@ -186,7 +186,7 @@ metrics.set_meter_provider(meterProvider)
 
 {{% include "exporters/prometheus-setup.md" %}}
 
-## Dependencies {#prometheus-dependencies}
+### Dependencies {#prometheus-dependencies}
 
 Install the
 [exporter package](https://pypi.org/project/opentelemetry-exporter-prometheus/)
@@ -221,13 +221,13 @@ provider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(provider)
 ```
 
-With the above you can access your metrics at <http://localhost:9464/metrics>.
+With the above you can access your metrics at `http://localhost:9464/metrics`.
 Prometheus or an OpenTelemetry Collector with the Prometheus receiver can scrape
 the metrics from this endpoint.
 
 {{% include "exporters/zipkin-setup.md" %}}
 
-## Dependencies {#zipkin-dependencies}
+### Dependencies {#zipkin-dependencies}
 
 To send your trace data to [Zipkin](https://zipkin.io/), you can choose between
 two different protocols to transport your data:
