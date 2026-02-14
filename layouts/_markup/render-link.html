@@ -78,21 +78,6 @@
 
   {{ $url = $href -}}
 
-  {{/* Backwards compatibility with the previous version of this render-link hook */ -}}
-  {{ if hasSuffix $url (add .Destination "/") -}}
-    {{ $url = strings.TrimSuffix "/" $url -}}
-  {{ else if eq .Destination (add $url "#") -}}
-    {{ $url = .Destination -}}
-  {{ else if hasSuffix $url (add $u.Path "/#" $u.Fragment) -}}
-    {{ $url = replace $url "/#" "#" -}}
-  {{ end -}}
-
-{{ else if and $u.IsAbs (eq $u.Scheme "http")
-    (not ($u.Query.Has "disable_http_check"))
-    (not (findRE `\blocalhost\b|^127\.0` $u.Host))
--}}
-  {{/* TODO: move this check to an mdl rule */ -}}
-  {{ warnf "%s: use 'https' for external URL '%s', or add query parameter '?disable_http_check'" .Page.File.Path $url -}}
 {{ end -}}
 
 {{/* General link-render processing */ -}}
