@@ -1,27 +1,14 @@
-{{ $url := .Destination -}} {{/* TODO: rename to $dest */ -}}
+{{ $url := .Destination -}} {{/* TODO: rename to $url */ -}}
 {{ $u := urls.Parse $url -}}
 
-{{/*
-
-  Localization link processing
-
-  The following code will prefix $url with the language code of this page when:
-
-  - This page's localization isn't the default localization (English)
-  - $url is an absolute path -- that is, it starts with /
-  - The $url target page exists in this locale
-
-  Reference to Hugo's default:
-  https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_default/_markup/render-link.html
-
-  */ -}}
-
 {{/* Note: $u.IsAbs is true if $url has a scheme (e.g., "http:") */ -}}
+
 {{ if and
     (hasPrefix $.PageInner.RelPermalink "/docs/specs")
     (not $u.IsAbs)
     (not (hasPrefix $url "#"))
 -}}
+
   {{ $path := replaceRE `\bREADME\.md\b` "_index.md" $u.Path -}}
   {{ $href := $url -}}
   {{ with or
@@ -64,45 +51,33 @@
     {{ end -}}
   {{ end -}}
   {{ $url = $href -}}
+
 {{ else if hasPrefix $url "/" -}}
-  {{/* Hard-coded default lang since it's what's most efficient and won't change :) */ -}}
-  {{ $defaultLang := "en" -}}
-  {{ $lang := .Page.Language.Lang -}}
-  {{ if ne $lang $defaultLang -}}
-    {{ $langPathPrefix := add "/" $lang "/" -}}
-    {{ if and (hasPrefix $url $langPathPrefix) .Page.File -}}
-      {{ warnf "File %s: drop unnecessary '%s' prefix from %s"
-              .Page.File.Filename $langPathPrefix $url -}}
-    {{ else -}}
-      {{ $localizedPagePath := add $langPathPrefix (strings.TrimPrefix "/" $url) -}}
-      {{/*
-        Look for the page (referenced by $url) in this page's locale's site.
-        Note that .Page.GetPage exclusively looks for the given path in the same locale as .Page.
-      */ -}}
-      {{ with .Page.GetPage $u.Path -}}
-        {{/* warnf "Found url %s -> page %s. -- relRef %s" $localizedPagePath . (.RelRef (dict "path" $url))*/ -}}
-        {{/* Assert (eq $localizedPagePath (.RelRef (dict "path" $url))) */ -}}
-        {{ $url = $localizedPagePath -}}
-      {{ else -}}
-        {{/* Use $url as is, letting the link checker report any issues. */ -}}
-        {{/* warnf "Render-link: locale %s doesn't have the page %s (%s)" $lang $url $localizedPagePath */ -}}
-      {{ end -}}
-    {{ end -}}
-  {{ end -}}
-{{ else if and $u.IsAbs (eq $u.Scheme "http")
-    (not ($u.Query.Has "disable_http_check"))
-    (not (findRE `\blocalhost\b|^127\.0` $u.Host))
--}}
+
   {{/*
-    TODO: drop the temporary allowance of various hosts such as publicsuffix.org once
-    https://github.com/open-telemetry/opentelemetry.io/issues/6409
-    is fully resolved.
+    Based on Hugo's default render-link hook:
+    https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_markup/render-link.html
   */ -}}
-  {{ if findRE `^(publicsuffix.org|docs.oasis|unitsofmeasure|connect.build)` $u.Host -}}
-    {{/* Do nothing until semconv fixes land. */ -}}
-  {{ else -}}
-    {{ warnf "%s: use 'https' for external URL '%s', or add query parameter '?disable_http_check'" .Page.File.Path $url -}}
-  {{ end -}}
+
+  {{- $href := $u.String -}}
+  {{- if and $href (not $u.IsAbs) -}}
+    {{- with or
+      ($.PageInner.GetPage $u.Path)
+      ($.PageInner.Resources.Get $u.Path)
+      (resources.Get $u.Path)
+    -}}
+      {{- $href = .RelPermalink -}}
+      {{- with $u.RawQuery -}}
+        {{- $href = printf "%s?%s" $href . -}}
+      {{- end -}}
+      {{- with $u.Fragment -}}
+        {{- $href = printf "%s#%s" $href . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+
+  {{ $url = $href -}}
+
 {{ end -}}
 
 {{/* General link-render processing */ -}}

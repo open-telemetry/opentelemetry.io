@@ -1,4 +1,21 @@
-# See https://github.com/DavidAnson/markdownlint/blob/main/README.md#rules--aliases
+# See
+# https://github.com/DavidAnson/markdownlint/blob/main/README.md#rules--aliases
+#
+# TODO: move the following to the contrib section of the site and link to it
+# here.
+#
+# To disable any rule, including custom rules, use markdownlint disable
+# directives, see
+# https://github.com/DavidAnson/markdownlint/blob/main/README.md#configuration.
+#
+# For example:
+#
+# <!-- markdownlint-disable line-length-->
+# ... text ...
+# <!-- markdownlint-enable line-length -->
+#
+# Or:
+# <!-- markdownlint-disable-next-line validate-links -->
 
 default: true
 
@@ -20,9 +37,30 @@ table-column-style: false # Causes problems in ja and zh pages
 trim-code-blank-lines: true
 unindent-code-blocks: true
 validate-links:
+  # TODO: document this custom rule in the contrib section of the site and link
+  # to it here and in the rule message for further details.
   patterns:
-    - regex: "https://github\\.(?!com|blog|io|github.com)"
+    - description: Flag likely typosquatting GitHub URLs
+      regex: 'https://github\.(?!com|blog|io|github.com)'
       message: >-
-        GitHub URLs should use `github.(com|blog|io)` domains to avoid
-        typosquatting. For details, see
+        GitHub URLs should use `github.(com|blog|io|github.com)` domains to
+        avoid typosquatting. For details, see
         https://github.com/open-telemetry/opentelemetry.io/issues/8085.
+    - description: Report `http` URLs that are not localhost/127.0.0.1
+      regex: 'http://(?!([\w-]+\.)?localhost\b)(?!127\.0)(?!.*[\?&]http_ok\b)'
+      message: >-
+        'http' URLs are only permitted for localhost/127.0.0.1. Use 'https' or
+        add 'http_ok' as a query parameter to the URL, such as:
+        https://example.com?http_ok or http://example.com?q=search&http_ok.
+
+    - description: >-
+        Link paths should not start with a language code. This rule might cause
+        false positives if pages need to reach across locale sites, but that
+        seems unlikely. What has happened often enough is for locale authors to
+        prefix paths with their locale's language code; but that isn't
+        necessary, since absolute paths resolve to the locale's site root. See
+        https://gohugo.io/quick-reference/glossary/#site-relative
+      regex: '^/..(-..)?/.+'
+      # Note: ^/../$ is accepted
+      message: >-
+        Don't prefix paths with a language code.
