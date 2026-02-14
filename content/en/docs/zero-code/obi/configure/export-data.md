@@ -286,7 +286,7 @@ OBI instruments Couchbase database operations through two protocols:
 
 The following sections detail the SQL++ (N1QL) instrumentation. For KV protocol
 instrumentation details, refer to the
-[OBI developer documentation](https://github.com/cisco-open/otel-ebpf).
+[OBI developer documentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/f96ddcf28c2c13d2de7e8d20bb4932be0ec5cc90/devdocs/protocols/tcp/couchbase.md).
 
 ##### SQL++ (N1QL) operations
 
