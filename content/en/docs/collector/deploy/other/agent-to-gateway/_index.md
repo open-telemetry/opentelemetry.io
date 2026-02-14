@@ -341,6 +341,66 @@ service:
 The gateway configuration remains the same as shown in the previous example,
 with tail-based sampling configured in the processor.
 
+#### Architecture for tail-based sampling
+
+The following diagram shows how trace-ID-based load balancing works with
+tail-based sampling across multiple gateway instances.
+
+The `loadbalancingexporter` uses `traceID` to determine which gateway receives
+the spans
+
+- All spans from **traceID 0xf39** (from any agent) route to Gateway 1.
+- All spans from **traceID 0x9f2** (from any agent) route to Gateway 2.
+- All spans from **traceID 0x31c** (from any agent) route to Gateway 3.
+
+This configuration ensures each gateway sees all spans for a trace, enabling
+accurate tail-based sampling decisions.
+
+```mermaid
+graph LR
+    subgraph Applications
+        A1[App 1]
+        A2[App 2]
+        A3[App 3]
+    end
+
+    subgraph "Agent Collectors (DaemonSet)"
+        AC1[Agent 1<br/>loadbalancing]
+        AC2[Agent 2<br/>loadbalancing]
+        AC3[Agent 3<br/>loadbalancing]
+    end
+
+    subgraph "Gateway Collectors"
+        GC1[Gateway 1<br/>tail_sampling]
+        GC2[Gateway 2<br/>tail_sampling]
+        GC3[Gateway 3<br/>tail_sampling]
+    end
+
+    subgraph Backends
+        B1[Observability<br/>backend]
+    end
+
+    A1 -->|OTLP| AC1
+    A2 -->|OTLP| AC2
+    A3 -->|OTLP| AC3
+
+    AC1 -->|traceID 0xf39| GC1
+    AC1 -->|traceID 0x9f2| GC2
+    AC1 -->|traceID 0x31c| GC3
+
+    AC2 -->|traceID 0xf39| GC1
+    AC2 -->|traceID 0x9f2| GC2
+    AC2 -->|traceID 0x31c| GC3
+
+    AC3 -->|traceID 0xf39| GC1
+    AC3 -->|traceID 0x9f2| GC2
+    AC3 -->|traceID 0x31c| GC3
+
+    GC1 -->|OTLP| B1
+    GC2 -->|OTLP| B1
+    GC3 -->|OTLP| B1
+```
+
 ## Processor configuration in agents and gateways
 
 When deploying an agent-to-gateway pattern, configure processors differently
