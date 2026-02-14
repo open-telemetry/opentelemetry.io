@@ -24,17 +24,65 @@ that addresses the following issues:
   gateways. Gateways become a stable egress point that can handle retries and
   manage credentials.
 
+## Example agent-to-gateway architecture
+
 The following diagram shows an architecture for a combined agent-to-gateway
 deployment:
 
-- Use Collectors running in the agent deployment pattern (running on each host,
-  similar to Kubernetes DaemonSets) to collect telemetry from services running
-  on the host as well as the host's own telemetry, such as host metrics and
-  scraped logs.
-- Use Collectors running in the gateway deployment pattern to process data, such
-  as filtering, sampling, and exporting to backends.
+- Agent collectors run on each host in a DaemonSet pattern and collect telemetry
+  from services running on the host as well as the host's own telemetry, with
+  optional load balancing.
+- Gateway collectors receive data from agents, perform centralized processing,
+  such as filtering and sampling, and then export the data to backends.
+- Applications communicate with local agents using `localhost`, agents
+  communicate with gateways over the internal cluster network, and gateways
+  securely communicate with external backends using TLS.
 
 ![gateway](otel-gateway-arch.svg)
+
+```mermaid
+graph TB
+    subgraph "Local Networks"
+        subgraph "Host 1"
+            App1[Application]
+            Agent1["Agent 1"]
+        end
+
+        subgraph "Host 2"
+            App2[Application]
+            Agent2["Agent 2"]
+        end
+
+        subgraph "Host N"
+            AppN[Application]
+            AgentN["Agent 3"]
+        end
+    end
+
+    subgraph "Cluster Network"
+        subgraph "Gateway Tier"
+            Gateway1["Gateway 1"]
+            Gateway2["Gateway 2"]
+        end
+    end
+
+    subgraph "External Network"
+        Backend["Observability<br/>backend"]
+    end
+
+    App1 -->|"OTLP<br/>(localhost)"| Agent1
+    App2 -->|"OTLP<br/>(localhost)"| Agent2
+    AppN -->|"OTLP<br/>(localhost)"| AgentN
+
+    Agent1 -->|"OTLP/gRPC<br/>(internal)"| Gateway1
+    Agent1 -.->|"optional:<br/>load balancing<br/>for tail sampling"| Gateway2
+    Agent2 -->|"OTLP/gRPC<br/>(internal)"| Gateway1
+    Agent2 -.->|"optional:<br/>load balancing<br/>for tail sampling"| Gateway2
+    AgentN -->|"OTLP/gRPC<br/>(internal)"| Gateway2
+
+    Gateway1 -->|"OTLP/gRPC<br/>(TLS)"| Backend
+    Gateway2 -->|"OTLP/gRPC<br/>(TLS)"| Backend
+```
 
 ## When to use this pattern
 
