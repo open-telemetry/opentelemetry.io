@@ -235,7 +235,8 @@ sudo ./otelcol-obi --config collector-config.yaml
 
 OBI requires elevated privileges to instrument processes using eBPF. The
 collector must run with `sudo` or have the appropriate Linux capabilities
-(CAP_DAC_READ_SEARCH, CAP_NET_RAW, CAP_SYS_PTRACE, CAP_PERFMON, CAP_BPF) to:
+(CAP_SYS_ADMIN, CAP_DAC_READ_SEARCH, CAP_NET_RAW, CAP_SYS_PTRACE, CAP_PERFMON,
+CAP_BPF) to:
 
 - Attach eBPF probes to running processes
 - Access process memory and system information
@@ -325,7 +326,11 @@ the custom collector binary into a container image:
                  add:
                    - SYS_ADMIN
                    - SYS_PTRACE
-                   - NET_ADMIN
+                   - NET_RAW
+                   - DAC_READ_SEARCH
+                   - PERFMON
+                   - BPF
+                   - CHECKPOINT_RESTORE
              volumeMounts:
                - name: config
                  mountPath: /conf

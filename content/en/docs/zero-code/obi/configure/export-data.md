@@ -5,7 +5,7 @@ description:
   Configure the OBI components to export Prometheus and OpenTelemetry metrics
   and OpenTelemetry traces
 weight: 10
-cSpell:ignore: AsterixDB couchbase jackc pgxpool pyserver spanmetrics
+cSpell:ignore: AsterixDB couchbase jackc memcached pgxpool pyserver spanmetrics
 ---
 
 OBI can export OpenTelemetry metrics and traces to a OTLP endpoint.
@@ -149,12 +149,13 @@ The list of instrumentation areas OBI can collection data from:
 - `*`: all instrumentation, if `*` is present OBI ignores other values
 - `http`: HTTP/HTTPS/HTTP/2 application metrics
 - `grpc`: gRPC application metrics
-- `sql`: SQL database client call metrics (includes PostgreSQL, MySQL, and Go
-  pgx driver)
+- `sql`: SQL database client call metrics (includes PostgreSQL, MySQL and Go
+  `database/sql` drivers like pgx)
 - `redis`: Redis client/server database metrics
 - `kafka`: Kafka client/server message queue metrics
 - `mqtt`: MQTT publish/subscribe message metrics (MQTT 3.1.1 and 5.0)
-- `couchbase`: Couchbase N1QL/SQL++ query metrics
+- `couchbase`: Couchbase N1QL/SQL++ query metrics and KV (Key-Value) protocol
+  metrics based on memcached protocol
 - `gpu`: GPU performance metrics
 - `mongo`: MongoDB client call metrics
 - `dns`: DNS query metrics
@@ -203,13 +204,13 @@ The list of instrumentation areas OBI can collection data from:
 - `*`: all instrumentation, if `*` is present OBI ignores other values
 - `http`: HTTP/HTTPS/HTTP/2 application traces
 - `grpc`: gRPC application traces
-- `sql`: SQL database client call traces (includes PostgreSQL, MySQL, and Go pgx
-  driver with enhanced Query and Exec operation tracing)
+- `sql`: SQL database client call metrics (includes PostgreSQL, MySQL and Go
+  `database/sql` drivers like pgx)
 - `redis`: Redis client/server database traces
 - `kafka`: Kafka client/server message queue traces
 - `mqtt`: MQTT publish/subscribe message traces (MQTT 3.1.1 and 5.0)
-- `couchbase`: Couchbase N1QL/SQL++ query traces with query text and operation
-  details
+- `couchbase`: Couchbase N1QL/SQL++ query traces and KV (Key-Value) protocol
+  traces, with query text and operation details
 - `gpu`: GPU performance traces
 - `mongo`: MongoDB client call traces
 - `dns`: DNS query traces
@@ -272,30 +273,21 @@ without the overhead of generic network-level SQL instrumentation.
 **Supported pgx versions**: pgx v5.0.0 and later (tested up to v5.8.0). Also
 supported via database/SQL wrapper: `github.com/jackc/pgx/v5/stdlib`
 
-**Configuration**: pgx instrumentation requires explicit configuration based on
-application type detection - it is not part of the generic `sql` instrumentation
-setting:
+#### Couchbase instrumentation
 
-```yaml
-discovery:
-  instrument:
-    - selectors:
-        exe_path: '.*myapp'
-      config:
-        instrumentations: ['http', 'sql']
-```
+OBI instruments Couchbase database operations through two protocols:
 
-Note: pgx availability depends on runtime detection of the pgx driver in your Go
-application.
+1. **SQL++ (N1QL)**: SQL++ queries (the modern name for the N1QL query language)
+   are automatically detected through Couchbase's HTTP query service on the
+   `/query/service` endpoint.
+2. **KV (Key-Value) protocol**: Binary protocol operations based on an extension
+   of the memcached protocol for direct key-value access.
 
-**Example use case**: Monitor a Go microservice using pgxpool for database
-connections, tracking query performance and identifying slow SQL statements.
+The following sections detail the SQL++ (N1QL) instrumentation. For KV protocol
+instrumentation details, refer to the
+[OBI developer documentation](https://github.com/cisco-open/otel-ebpf).
 
-#### Couchbase N1QL/SQL++ instrumentation
-
-OBI instruments Couchbase database operations using SQL++ (the modern name for
-the N1QL query language). SQL++ queries are automatically detected through
-Couchbase's HTTP query service on the `/query/service` endpoint.
+##### SQL++ (N1QL) operations
 
 **What's Couchbase**: A NoSQL document database that supports SQL-like queries
 through SQL++, commonly used for applications with flexible schemas and high
@@ -336,6 +328,9 @@ export OTEL_EBPF_BPF_BUFFER_SIZE_HTTP=2048  # Use larger than default
   `bucket`.`scope`.`collection`) or `query_context` field in the request
 - Responses without Couchbase version headers are labeled as generic `other_sql`
   operations
+
+**Limitations (KV protocol only)**:
+
 - Couchbase-specific authentication and metadata operations are not captured
 - Collection names may not be available if `GET_COLLECTION_ID` occurred before
   OBI started
@@ -402,11 +397,12 @@ The list of instrumentation areas OBI can collection data from:
 - `*`: all instrumentation, if `*` is present OBI ignores other values
 - `http`: HTTP/HTTPS/HTTP/2 application metrics
 - `grpc`: gRPC application metrics
-- `sql`: SQL database client call metrics (includes PostgreSQL and pgx driver)
+- `sql`: SQL database client call metrics (includes PostgreSQL, MySQL and Go
+  `database/sql` drivers like pgx)
 - `redis`: Redis client/server database metrics
 - `kafka`: Kafka client/server message queue metrics
 - `mqtt`: MQTT publish/subscribe message metrics
-- `couchbase`: Couchbase N1QL/SQL++ query metrics
+- `couchbase`: Couchbase N1QL/SQL++ query metrics and KV protocol metrics
 
 For example, setting the `instrumentations` option to: `http,grpc` enables the
 collection of `HTTP/HTTPS/HTTP2` and `gRPC` application metrics, and disables

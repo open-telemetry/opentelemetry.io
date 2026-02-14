@@ -5,6 +5,7 @@ weight: 35
 description:
   Learn how OBI correlates application logs with distributed traces for faster
   debugging and troubleshooting.
+cSpell:ignore: BPFFS ringbuffer
 ---
 
 OpenTelemetry eBPF Instrumentation (OBI) correlates application logs with
@@ -135,10 +136,14 @@ ebpf:
 
 ### 3. Linux kernel
 
-Trace-log correlation requires Linux. It works on:
+Trace-log correlation requires Linux with specific kernel features:
 
-- Linux kernel 5.8+ (for most use cases)
+- **Linux kernel 6.0+** (required for trace-log correlation)
 - Supported architectures: x86_64, ARM64
+- **BPFFS mount**: The kernel must have BPF filesystem mounted at
+  `/sys/kernel/bpf`
+- **Non-security-locked-down kernel**: Requires a kernel that is not running in
+  security lockdown mode (typical for most production distributions)
 
 ### 4. Framework that emits JSON logs
 
@@ -203,17 +208,17 @@ logs to your backend.
   descriptor caching
 - **Cache limits**: File descriptor cache has size and TTL limits to prevent
   unbounded memory usage
-- **Async processing**: Log enrichment uses asynchronous workers to prevent
-  blocking traced operations
+- **Async processing**: Log enrichment uses asynchronous workers avoid
+  overflowing the kernel ringbuffer
 
 ## Known limitations
 
 - **JSON only**: Plain text logs are not enriched with trace context
-- **Linux only**: Requires Linux kernel; not available on Windows or macOS
 - **File descriptor cache**: Cached for performance, with configurable TTL
   (default: 30 minutes)
 - **Span-aligned only**: Logs enriched only while a span is active; logs outside
-  span scope are not enriched
+  span scope are not enriched. This is by design to avoid filling up the kernel
+  eBPF ringbuffer with log entries that cannot be correlated to spans
 
 ## Troubleshooting
 

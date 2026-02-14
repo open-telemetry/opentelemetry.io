@@ -42,7 +42,7 @@ OBI offers the following features:
 - **Context propagation**: Propagate trace context across services automatically
 - **Protocol support**: HTTP/S, gRPC, gRPC-Web, MQTT, and more
 - **Database instrumentation**: PostgreSQL (including pgx driver), MySQL,
-  MongoDB, Redis, Couchbase N1QL/SQL++
+  MongoDB, Redis, Couchbase (N1QL/SQL++ and KV protocol)
 - **Low cardinality metrics**: Prometheus-compatible metrics with low
   cardinality for cost reduction
 - **Network observability**: Capture network flows between services
