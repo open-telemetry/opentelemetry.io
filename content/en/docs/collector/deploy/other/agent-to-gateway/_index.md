@@ -437,14 +437,15 @@ Both agents and gateways should include:
   [`loadbalancingexporter`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter)
   in your agents to distribute traces by trace ID to your gateway instances.
 
-  > [!CAUTION] The tail-sampling processor can make accurate decisions only if
-  > all spans for a trace arrive at the same Collector instance. While the load
-  > balancing exporter supports routing by trace ID, running tail sampling
-  > across multiple gateway instances is an advanced setup and has practical
-  > caveats, such as re-splitting of routing when backends change and
-  > cache/decision consistency. Test carefully and prefer a single
-  > well-resourced tail-sampling gateway unless you have a robust sticky-routing
-  > strategy.
+  > [!CAUTION]
+  >
+  > The tail-sampling processor can make accurate decisions only if all spans
+  > for a trace arrive at the same Collector instance. While the load balancing
+  > exporter supports routing by trace ID, running tail sampling across multiple
+  > gateway instances is an advanced setup and has practical caveats, such as
+  > re-splitting of routing when backends change and cache/decision consistency.
+  > Test carefully and prefer a single well-resourced tail-sampling gateway
+  > unless you have a robust sticky-routing strategy.
 
 ## Communication between agents and gateways
 
@@ -515,10 +516,12 @@ You can scale gateways both vertically and horizontally:
 - **Without tail-based sampling**: Use any load balancer or Kubernetes service
   with round-robin distribution. All gateway instances operate independently.
 
-  > [!NOTE] When scaling gateway instances that export metrics, ensure your
-  > deployment follows the single-writer principle to avoid multiple Collectors
-  > writing the same time series concurrently. Some backends require consistent
-  > time series ownership. See the
+  > [!NOTE]
+  >
+  > When scaling gateway instances that export metrics, ensure your deployment
+  > follows the single-writer principle to avoid multiple Collectors writing the
+  > same time series concurrently. Some backends require consistent time series
+  > ownership. See the
   > [gateway deployment documentation](/docs/collector/deploy/gateway/#multiple-collectors-and-the-single-writer-principle)
   > for details.
 
