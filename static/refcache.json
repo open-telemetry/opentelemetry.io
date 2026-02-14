@@ -13435,6 +13435,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:52:53.690502739Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/landing-page-redesign.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-14T09:35:48.261277107Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl": {
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:53:00.74867758Z"
