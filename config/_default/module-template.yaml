@@ -1,6 +1,9 @@
 # This Hugo config `mounts` template is rendered as `module.yaml` and
 # automatically used by Hugo. Also see `hugo.yaml` for other Hugo configuration.
 
+hugoVersion:
+  extended: true
+  min: 0.155.3
 mounts:
   ## en
   - source: content/en

@@ -1,0 +1,68 @@
+name: Move inactive members to emeritus
+
+on:
+  workflow_dispatch:
+  schedule:
+    # At 05:00, every Monday
+    - cron: 0 5 * * 1
+
+permissions:
+  contents: read
+
+jobs:
+  move-to-emeritus:
+    name: Move inactive members to emeritus
+    runs-on: ubuntu-latest
+    # Remove the if statement below when testing against a fork
+    if: github.repository == 'open-telemetry/opentelemetry.io'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+
+      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
+      - name: Run script
+        id: emeritus
+        run: |
+          output=$(node scripts/move-to-emeritus/move-to-emeritus.js)
+          echo "$output"
+          pr_body_path=$(echo "$output" | grep '^pr-body-path=' | cut -d= -f2-)
+          echo "pr-body-path=$pr_body_path" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet README.md; then
+            echo "has_changes=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "has_changes=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Use CLA approved github bot
+        if: steps.changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name otelbot
+          git config user.email 197425009+otelbot@users.noreply.github.com
+
+      - name: Create pull request
+        if: steps.changes.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          add-paths: README.md
+          author: otelbot <197425009+otelbot@users.noreply.github.com>
+          committer: otelbot <197425009+otelbot@users.noreply.github.com>
+          token: ${{ steps.otelbot-token.outputs.token }}
+          branch: otelbot/move-inactive-to-emeritus
+          title: Move inactive members to emeritus
+          body-path: ${{ steps.emeritus.outputs.pr-body-path }}
