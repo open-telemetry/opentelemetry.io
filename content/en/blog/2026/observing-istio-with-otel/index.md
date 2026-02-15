@@ -145,10 +145,10 @@ to associate access logs with the corresponding gateway spans immediately. In
 practice, this makes it straightforward to move from an ingress span to the
 related access log entries without additional correlation logic.
 
-The primary limitation lies in log structure rather than correlation. By default,
-the access log payload is emitted as a single text string in the log body rather
-than being parsed into structured OpenTelemetry log attributes. Istio does
-support
+The primary limitation lies in log structure rather than correlation. By
+default, the access log payload is emitted as a single text string in the log
+body rather than being parsed into structured OpenTelemetry log attributes.
+Istio does support
 [custom log formats](https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-EnvoyOpenTelemetryLogProvider-LogFormat)
 that allow operators to define structured labels, but in the evaluated default
 configuration, logs are correlated but not easily filterable or aggregatable by
