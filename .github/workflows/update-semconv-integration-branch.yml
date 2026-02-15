@@ -136,8 +136,31 @@ jobs:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
         run: |
           prs=$(gh pr list --state open --head $BRANCH)
-          if [ -z "$prs" ]; then
-            gh pr create --title "DRAFT Update semantic conventions to unreleased $VERSION-dev" \
-                         --body "This is a draft PR used for identifying issues integrating the latest (unreleased) semantic conventions." \
-                         --draft
+          echo "Existing PR(s):"
+          echo "${prs:-none}"
+          if [[ -n "$prs" ]]; then
+            echo "PR already exists, so we're done."
+            exit 0
+          fi
+
+          stderr=$(mktemp)
+          trap 'rm -f "$stderr"' EXIT
+          if gh pr create --title "DRAFT Update semantic conventions to unreleased $VERSION-dev" \
+              --body "This is a draft PR used for identifying issues integrating the latest (unreleased) semantic conventions." \
+              --draft 2>"$stderr";
+          then
+            PR_URL=$(gh pr view --json url --jq '.url')
+            printf "PR created: %s\n" "$PR_URL"
+          else
+            error_output=$(cat "$stderr")
+
+            # Only treat "no commits" error as non-fatal
+            if echo "$error_output" | grep -Fq "No commits between"; then
+              echo "No commits to create PR from - this is expected when already up to date"
+              exit 0
+            else
+              echo "Failed to create PR with unexpected error:"
+              echo "$error_output"
+              exit 1  # Fail the workflow for real errors (auth, permissions, API issues, etc.)
+            fi
           fi
