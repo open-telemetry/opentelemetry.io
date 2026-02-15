@@ -1,0 +1,22 @@
+# cSpell:ignore: thoughtbot
+title: RubyLLM Instrumentation
+registryType: instrumentation
+language: ruby
+tags:
+  - ruby
+  - instrumentation
+  - GenAI
+  - LLM
+license: MIT
+description: RubyLLM instrumentation for Ruby.
+authors:
+  - name: thoughtbot
+    url: https://github.com/thoughtbot
+urls:
+  repo: https://github.com/thoughtbot/opentelemetry-instrumentation-ruby_llm
+createdAt: 2026-02-07
+package:
+  registry: gems
+  name: opentelemetry-instrumentation-ruby_llm
+  version: 0.2.0
+isFirstParty: false
