@@ -4863,6 +4863,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:54:18.003378589Z"
   },
+  "https://github.com/dash0hq/dash0-examples/tree/main/contour": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-06T12:38:15.191146+01:00"
+  },
   "https://github.com/dash0hq/otelbin": {
     "StatusCode": 206,
     "LastSeen": "2026-01-30T09:58:14.994261972Z"
@@ -7038,6 +7042,10 @@
   "https://github.com/open-telemetry/community/issues/3119": {
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:58:47.063647084Z"
+  },
+  "https://github.com/open-telemetry/community/issues/3247": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-06T12:38:13.626799+01:00"
   },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
@@ -16219,6 +16227,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-04T09:52:33.207555201Z"
   },
+  "https://kubernetes.io/blog/2026/01/29/ingress-nginx-statement/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-06T12:38:11.810185+01:00"
+  },
   "https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:52:38.034193103Z"
@@ -19341,7 +19353,7 @@
   },
   "https://projectcontour.io/": {
     "StatusCode": 206,
-    "LastSeen": "2026-02-11T12:08:11.920089+01:00"
+    "LastSeen": "2026-02-06T12:38:10.679141+01:00"
   },
   "https://projectcontour.io/docs/main/config/tracing/": {
     "StatusCode": 206,
