@@ -8,7 +8,7 @@ cascade:
     Make sure to [choose an issue][] that matches your level of **experience**
     and **understanding** of OpenTelemetry. Avoid overreaching your capabilities.
   _issues: https://github.com/open-telemetry/opentelemetry.io/issues
-  _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
+  _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=state%3Aopen%20label%3A
 ---
 
 > [!TIP] Thank you for your interest!
@@ -19,8 +19,8 @@ cascade:
 ## <i class='far fa-exclamation-triangle text-warning '></i> First time contributing? {#first-time-contributing}
 
 - **[Choose an issue][]** with the following labels:
-  - [Good first issue](<{{% param _issue %}}%22good+first+issue%22>)
-  - [Help wanted](<{{% param _issue %}}%3A%22help+wanted%22>)
+  - [Good first issue](<{{% param _issue %}}%22good%20first%20issue%22>)
+  - [Help wanted](<{{% param _issue %}}%22help%20wanted%22>)
 
   > [!WARNING] We do not assign issues
   >
