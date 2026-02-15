@@ -16055,6 +16055,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-03T09:57:26.582057693Z"
   },
+  "https://istio.io/latest/docs/reference/config/istio.mesh.v1alpha1/#MeshConfig-ExtensionProvider-EnvoyOpenTelemetryLogProvider-LogFormat": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-15T08:01:21.341137513Z"
+  },
   "https://istio.io/latest/docs/reference/config/security/peer_authentication/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-03T09:57:37.205816719Z"
