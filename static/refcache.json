@@ -19353,15 +19353,11 @@
   },
   "https://projectcontour.io/": {
     "StatusCode": 206,
-    "LastSeen": "2026-02-11T12:08:11.920089+01:00"
+    "LastSeen": "2026-02-06T12:38:10.679141+01:00"
   },
   "https://projectcontour.io/docs/main/config/tracing/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-11T12:08:12.376541+01:00"
-  },
-  "https://projectcontour.io/": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-06T12:38:10.679141+01:00"
   },
   "https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html": {
     "StatusCode": 200,
