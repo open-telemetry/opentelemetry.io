@@ -40,7 +40,7 @@ fi
 # ---------------------------------------------------------------------------
 add_label() {
   local label="$1"
-  if echo "${CURRENT_LABELS}" | grep -qF "${label}"; then
+  if echo "${CURRENT_LABELS}" | grep -qxF "${label}"; then
     echo "Label '${label}' already present."
   else
     echo "Adding label '${label}'."
@@ -53,7 +53,7 @@ add_label() {
 # ---------------------------------------------------------------------------
 remove_label() {
   local label="$1"
-  if echo "${CURRENT_LABELS}" | grep -qF "${label}"; then
+  if echo "${CURRENT_LABELS}" | grep -qxF "${label}"; then
     echo "Removing label '${label}'."
     gh pr edit "${PR}" --repo "${REPO}" --remove-label "${label}"
   else
@@ -143,7 +143,7 @@ main() {
 
   # Fetch PR data
   local pr_json
-  pr_json=$(gh pr view "${PR}" --repo "${REPO}" --json "files,latestReviews,labels" | tr -dc '[:print:]')
+  pr_json=$(gh pr view "${PR}" --repo "${REPO}" --json "files,latestReviews,labels")
 
   local pr_files
   pr_files=$(echo "${pr_json}" | jq -r '.files[].path')
@@ -261,21 +261,28 @@ ${members}"
   fi
 
   # Ready-to-be-merged label
-  local all_approved=false
+  # Use a tri-state value to avoid changing the label when approval state is unknown.
+  local all_approved="unknown"
   if [[ "${sig_needed}" == "true" ]]; then
     if [[ "${docs_approved}" == "true" && "${sig_approved}" == "true" ]]; then
-      all_approved=true
+      all_approved="true"
+    elif [[ "${docs_approved}" == "false" || "${sig_approved}" == "false" ]]; then
+      all_approved="false"
     fi
   else
     if [[ "${docs_approved}" == "true" ]]; then
-      all_approved=true
+      all_approved="true"
+    elif [[ "${docs_approved}" == "false" ]]; then
+      all_approved="false"
     fi
   fi
 
   if [[ "${all_approved}" == "true" ]]; then
     add_label "${LABEL_READY}"
-  else
+  elif [[ "${all_approved}" == "false" ]]; then
     remove_label "${LABEL_READY}"
+  else
+    echo "Skipping ${LABEL_READY} label update due to unknown approval status."
   fi
 
   echo ""
