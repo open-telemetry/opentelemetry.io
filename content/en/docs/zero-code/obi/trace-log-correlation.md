@@ -140,8 +140,7 @@ Trace-log correlation requires Linux with specific kernel features:
 
 - **Linux kernel 6.0+** (required for trace-log correlation)
 - Supported architectures: x86_64, ARM64
-- **BPFFS mount**: The kernel must have BPF filesystem mounted at
-  `/sys/fs/bpf`
+- **BPFFS mount**: The kernel must have BPF filesystem mounted at `/sys/fs/bpf`
 - **Non-security-locked-down kernel**: Requires a kernel that is not running in
   security lockdown mode (typical for most production distributions)
 
