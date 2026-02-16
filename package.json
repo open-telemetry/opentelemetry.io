@@ -138,7 +138,7 @@
     "markdown-it": "^14.1.0",
     "markdown-link-check": "^3.14.2",
     "markdownlint": "^0.40.0",
-    "markdownlint-cli2": "^0.20.0",
+    "markdownlint-cli2": "^0.21.0",
     "markdownlint-rule-helpers": "^0.30.0",
     "postcss-cli": "^11.0.1",
     "prettier": "3.8.1",
