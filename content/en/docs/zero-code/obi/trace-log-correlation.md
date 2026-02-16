@@ -217,8 +217,7 @@ logs to your backend.
 - **File descriptor cache**: Cached for performance, with configurable TTL
   (default: 30 minutes)
 - **Span-aligned only**: Logs enriched only while a span is active; logs outside
-  span scope are not enriched. This is by design to avoid filling up the kernel
-  eBPF ringbuffer with log entries that cannot be correlated to spans
+  span scope are not enriched.
 
 ## Troubleshooting
 
