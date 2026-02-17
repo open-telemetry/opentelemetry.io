@@ -1,0 +1,38 @@
+.td-navbar {
+  // By design, the navbar has light text on a dark background. It's children,
+  // like dropdown menus and the search box, follow the page's light/dark color
+  // mode.
+
+  // Bootstrap and Docsy overrides:
+  --bs-border-color: #{$gray-500}; // for the search box
+  --td-navbar-border-bottom: none;
+
+  // Improve color contrast
+  .nav-link {
+    --bs-nav-link-color: #{$gray-100};
+
+    &.active {
+      color: tint-color($navbar-dark-hover-color, 65%);
+      text-decoration-color: rgba(
+        var(--bs-secondary-rgb),
+        var(--bs-link-underline-opacity)
+      ) !important;
+    }
+  }
+
+  .td-search:not(:focus-within) {
+    color: $gray-200;
+  }
+
+  .navbar-brand {
+    @include media-breakpoint-up(md) {
+      padding: 0;
+    }
+    svg {
+      height: 48px;
+    }
+    .navbar-brand__name {
+      display: none;
+    }
+  }
+}

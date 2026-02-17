@@ -27,7 +27,7 @@ jobs:
       )
 
     steps:
-      - uses: step-security/harden-runner@e3f713f2d8f53843e71c69a996d56f51aa9adfb9 # v2.14.1
+      - uses: step-security/harden-runner@5ef0c079ce82195b2a36a210272d6b661572d83e # v2.14.2
         with:
           egress-policy: audit
 
@@ -37,7 +37,10 @@ jobs:
         env:
           COMMENT_BODY: ${{ github.event.comment.body }}
         run: |
-          echo "body_lower=$(echo "$COMMENT_BODY" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+          # Use heredoc delimiter for multiline-safe output
+          echo "body_lower<<EOF" >> "$GITHUB_OUTPUT"
+          echo "$COMMENT_BODY" | tr '[:upper:]' '[:lower:]' >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
 
       # Check if the comment looks like an assignment request
       - name: Check if comment is assignment request

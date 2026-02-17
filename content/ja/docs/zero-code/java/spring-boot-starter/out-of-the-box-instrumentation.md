@@ -2,7 +2,7 @@
 title: すぐに使える計装
 weight: 40
 default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
-cSpell:ignore: logback webflux webmvc
+cSpell:ignore: webflux webmvc
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->

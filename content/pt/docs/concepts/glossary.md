@@ -4,8 +4,7 @@ description: >-
   Definições e convenções para termos de telemetria conforme usados no
   OpenTelemetry.
 weight: 200
-default_lang_commit: 530c8fd130c93dd95e9638c8919518dbbc9c6b0a
-drifted_from_default: true
+default_lang_commit: 64e150b6ffbe071402b5aa87afa0b5e56bd6aa75
 ---
 
 Esse glossário define termos e [conceitos](/docs/concepts/) que são novos no
@@ -156,6 +155,14 @@ Termo utilizado especialmente por [Métricas](#metric). Consulte
 Uma distribuição é um encapsulamento em torno de um repositório upstream do
 OpenTelemetry com algumas personalizações. Consulte
 [Distribuições][distributions].
+
+### Entidade {#entity}
+
+Uma coleção de [atributos](#attribute) que identificam e descrevem um objeto
+físico ou lógico. Entidades estão, normalmente, associadas à telemetria. Por
+exemplo, uma entidade de CPU descreve uma CPU física, enquanto uma entidade de
+serviço descreve um agrupamento lógico de processos que compõem um serviço HTTP
+ou outro serviço.
 
 ### Especificação {#specification}
 
@@ -336,11 +343,8 @@ ou pull-based. Consulte [Receiver].
 
 ### Recurso {#resource}
 
-Captura informações sobre a entidade que produz dados telemétricos como
-[Atributos](#attribute). Por exemplo, um processo que gera telemetria e está
-sendo executado em um contêiner no Kubernetes possui um nome de processo, um
-nome de pod, um namespace e, possivelmente, um nome de deployment. Todos esses
-atributos podem ser incluídos no `Recurso`.
+Uma coleção de [entidades](#entity) ou [atributos](#attribute) que identificam
+ou descrevem um objeto físico ou lógico que produz telemetria.
 
 ### Registro de log {#log-record}
 

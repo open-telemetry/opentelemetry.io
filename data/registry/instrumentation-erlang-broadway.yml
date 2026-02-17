@@ -17,4 +17,4 @@ createdAt: 2024-11-18
 package:
   registry: hex
   name: opentelemetry_broadway
-  version: 0.2.0
+  version: 0.3.0

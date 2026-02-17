@@ -7,7 +7,7 @@ aliases:
   - /docs/languages/python/automatic/agent-config
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 drifted_from_default: true
-cSpell:ignore: healthcheck instrumentor myapp pyproject Starlette urllib
+cSpell:ignore: healthcheck instrumentor pyproject Starlette urllib
 ---
 
 L'agent est hautement configurable, soit par :

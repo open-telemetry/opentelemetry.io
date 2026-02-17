@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w -i
 #
-# cSpell:ignore oteps
+# cSpell:ignore oteps submod
 
 $^W = 1;
 
@@ -24,7 +24,7 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.53.0
+    spec: 1.54.0
     otlp: 1.9.0
     semconv: 1.39.0
   );
@@ -53,6 +53,10 @@ sub printFrontMatter() {
     $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
     # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
+  }
+  elsif ($ARGV =~ m|^tmp/otel/specification/logs/|
+      && applyPatchOrPrintMsgIf('2026-01-29-hugo01550-alias-processing-diff', 'spec', '1.53.0')) {
+    $frontMatterFromFile =~ s{^(\s+-\s+)\./(event-\w+)$}{$1logs/$2}gxm;
   }
   # Sample front-matter patch:
   #
@@ -141,7 +145,7 @@ sub patchSpec_because_of_SpecName_SomeDescription_AsTemplate() {
     # through to the body of this patch function.
     applyPatchOrPrintMsgIf('2026-01-01-some-unique-id', 'semconv', '1.39.0-dev');
 
-  # Give infor about the patch:
+  # Give info about the patch:
   #
   # For the problematic links, see:
   # https://github.com/open-telemetry/semantic-conventions/issues/3103
@@ -162,7 +166,7 @@ sub patchSpec_because_of_SemConv_DatabaseRenamedToDb() {
     $ARGV =~ m|^tmp/otel/specification/|
       && applyPatchOrPrintMsgIf('2025-11-26-database-section-renamed-to-db', 'spec', '1.53.0');
 
-  # Give infor about the patch, see:
+  # Give info about the patch, see:
   # https://github.com/open-telemetry/opentelemetry.io/pull/8311#issue-3577941378
 
   # Match both localized paths and GitHub URLs:
@@ -174,7 +178,7 @@ sub patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServer
     $ARGV =~ m|^tmp/otel/specification/|
       && applyPatchOrPrintMsgIf('2025-12-05-metric-rpc-server-duration-renamed-to-rpc-server-call-duration', 'spec', '1.53.0');
 
-  # Give infor about the patch, see:
+  # Give info about the patch, see:
   # https://github.com/open-telemetry/opentelemetry-specification/pull/4778
 
   # Replace the old metric anchor with the new one
@@ -183,6 +187,7 @@ sub patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServer
 }
 
 sub patchSemConv_because_of_MariaDbErrorCodeReferenceDocs_Updated_URL() {
+  # cSpell:ignore mariadb
   return unless
     $ARGV =~ m|^tmp/semconv/docs/|
       && applyPatchOrPrintMsgIf('2026-01-20-mariadb-err-code-reference-docs-updated-url', 'semconv', '1.39.0');
@@ -315,8 +320,8 @@ while(<>) {
     )
   }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
 
-  patchSpec_because_of_SemConv_DatabaseRenamedToDb();
-  patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
+  # patchSpec_because_of_SemConv_DatabaseRenamedToDb();
+  # patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 

@@ -2,7 +2,7 @@
 title: Configuration
 weight: 10
 aliases: [agent-config]
-cSpell:ignore: classloaders customizer logback
+cSpell:ignore: classloaders customizer
 ---
 
 > [!NOTE] For more information
