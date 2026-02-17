@@ -1,4 +1,4 @@
-# cSpell:ignore dalli
+# cSpell:ignore dalli, Goldstein, Perham
 title: Dalli
 registryType: instrumentation
 language: ruby
@@ -13,7 +13,7 @@ urls:
 license: Apache 2.0
 description:
   Dalli is a high performance pure Ruby client for accessing memcached servers.
-  Native instrumentation is avaliable in Dalli v4.2.0+
+  Native instrumentation is available in Dalli v4.2.0+
 authors:
   - name: Peter M. Goldstein
     email: peter.m.goldstein@gmail.com
