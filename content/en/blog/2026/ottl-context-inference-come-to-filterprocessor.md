@@ -9,7 +9,7 @@ cSpell:ignore: Kaise OTTL spanevent
 ---
 
 Last year, the OpenTelemetry project introduced
-[OTTL context inference for the transform processor](https://opentelemetry.io/blog/2025/ottl-contexts-just-got-easier/).
+[OTTL context inference for the transform processor](/blog/2025/ottl-contexts-just-got-easier/).
 The goal was to allow users to write OTTL statements without worrying about
 internal telemetry contexts.
 
