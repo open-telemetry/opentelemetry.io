@@ -240,8 +240,8 @@
     "LastSeen": "2026-02-03T09:57:42.480267865Z"
   },
   "https://bento.me/adrianamvillela": {
-    "StatusCode": 403,
-    "LastSeen": "2026-02-17T09:53:06.643320622Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-17T11:43:29.162Z"
   },
   "https://betterstack.com/docs/logs/open-telemetry/#2-setup": {
     "StatusCode": 200,
@@ -17628,8 +17628,8 @@
     "LastSeen": "2026-02-13T09:52:06.096254503Z"
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
-    "StatusCode": 403,
-    "LastSeen": "2026-02-17T09:52:54.806504572Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-17T11:43:39.895Z"
   },
   "https://openai.com/": {
     "StatusCode": 200,
@@ -20364,7 +20364,7 @@
     "LastSeen": "2026-02-11T09:53:59.385765437Z"
   },
   "https://wiki.osdev.org/CPUID": {
-    "StatusCode": 403,
+    "StatusCode": 200,
     "LastSeen": "2026-02-17T09:55:39.813293235Z"
   },
   "https://wiki.python.org/moin/PythonImplementations": {
