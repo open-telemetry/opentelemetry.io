@@ -367,7 +367,7 @@ app.UseOpenTelemetryPrometheusScrapingEndpoint(
 >
 > This component is intended for dev inner-loop, there is no plan to make it
 > production ready. Production environments should use
-> [`OpenTelemetry.Exporter.Prometheus.AspNetCore`](#prometheus-asp-net-core-usage),
+> [`OpenTelemetry.Exporter.Prometheus.AspNetCore`](#prometheus-exporter-asp-net-core-usage),
 > or a combination of
 > [`OpenTelemetry.Exporter.OpenTelemetryProtocol`](#aspnet-core) and
 > [OpenTelemetry Collector](/docs/collector).
