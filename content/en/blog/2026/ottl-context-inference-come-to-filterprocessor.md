@@ -109,8 +109,8 @@ filter:
         - resource.attributes["service.name"] == "noisy-service"
 ```
 
-This allows different condition groups to fail differently. For example, one
-can propagate errors while another ignores them.
+This allows different condition groups to fail differently. For example, one can
+propagate errors while another ignores them.
 
 ## How the Filter Processor evaluates conditions
 
