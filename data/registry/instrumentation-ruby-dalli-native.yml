@@ -1,0 +1,25 @@
+# cSpell:ignore dalli
+title: Dalli
+registryType: instrumentation
+language: ruby
+tags:
+  - ruby
+  - dalli
+  - instrumentation
+urls:
+  repo: https://github.com/petergoldstein/dalli/
+  website: https://github.com/petergoldstein/dalli
+  docs: https://github.com/petergoldstein/dalli/blob/main/README.md
+license: Apache 2.0
+description:
+  Dalli is a high performance pure Ruby client for accessing memcached servers.
+  Native instrumentation is avaliable in Dalli v4.2.0+
+authors:
+  - name: Peter M. Goldstein
+    email: peter.m.goldstein@gmail.com
+    url: https://github.com/petergoldstein
+  - name: Mike Perham
+    email: mperham@gmail.com
+    url: https://github.com/mperham
+createdAt: '2026-02-17'
+isNative: true
