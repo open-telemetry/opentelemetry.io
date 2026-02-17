@@ -20815,6 +20815,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-13T09:55:39.597917799Z"
   },
+  "https://www.comet.com/docs/opik/integrations/opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-17T10:48:49.672525612Z"
+  },
   "https://www.couchbase.com/": {
     "StatusCode": 200,
     "LastSeen": "2026-02-13T10:00:42.418Z"
