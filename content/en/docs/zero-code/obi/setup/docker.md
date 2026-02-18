@@ -43,7 +43,7 @@ cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/o
 
 Here is an example output:
 
-```
+```log
 Verification for index.docker.io/otel/ebpf-instrument:main --
 The following checks were performed on each of these signatures:
   - The cosign claims were validated
