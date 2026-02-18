@@ -471,6 +471,12 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/codeboten
     avatar_url: https://avatars.githubusercontent.com/u/223565?v=4
+  - name: cyrille-leclerc
+    teams:
+      - demo-approvers
+      - demo-maintainers
+    html_url: https://github.com/cyrille-leclerc
+    avatar_url: https://avatars.githubusercontent.com/u/459691?v=4
   - name: damemi
     teams:
       - ebpf-instrumentation-approvers
@@ -683,6 +689,7 @@ maintainers:
   - name: fractalwrench
     teams:
       - android-approvers
+      - android-maintainers
       - android-triagers
       - kotlin-approvers
       - kotlin-maintainers
@@ -707,6 +714,13 @@ maintainers:
       - injector-approvers
     html_url: https://github.com/grcevski
     avatar_url: https://avatars.githubusercontent.com/u/6207777?v=4
+  - name: gshriver
+    teams:
+      - sig-mainframe-approvers
+      - sig-mainframe-maintainers
+      - sig-mainframe-triagers
+    html_url: https://github.com/gshriver
+    avatar_url: https://avatars.githubusercontent.com/u/5203552?v=4
   - name: hauleth
     teams:
       - erlang-approvers
@@ -786,6 +800,9 @@ maintainers:
     teams:
       - weaver-approvers
       - weaver-maintainers
+      - weaver-package-approvers
+      - weaver-package-maintainers
+      - weaver-package-triagers
     html_url: https://github.com/jerbly
     avatar_url: https://avatars.githubusercontent.com/u/1909032?v=4
   - name: jhalliday
@@ -875,6 +892,9 @@ maintainers:
       - sqlcommenter-approvers
       - weaver-approvers
       - weaver-maintainers
+      - weaver-package-approvers
+      - weaver-package-maintainers
+      - weaver-package-triagers
     html_url: https://github.com/jsuereth
     avatar_url: https://avatars.githubusercontent.com/u/29006?v=4
   - name: julianocosta89
@@ -992,6 +1012,9 @@ maintainers:
       - specs-semconv-maintainers
       - specs-triagers
       - weaver-approvers
+      - weaver-package-approvers
+      - weaver-package-maintainers
+      - weaver-package-triagers
     html_url: https://github.com/lmolkova
     avatar_url: https://avatars.githubusercontent.com/u/2347409?v=4
   - name: lquerel
@@ -1001,6 +1024,9 @@ maintainers:
       - arrow-triagers
       - weaver-approvers
       - weaver-maintainers
+      - weaver-package-approvers
+      - weaver-package-maintainers
+      - weaver-package-triagers
     html_url: https://github.com/lquerel
     avatar_url: https://avatars.githubusercontent.com/u/657994?v=4
   - name: lzchen
@@ -1141,12 +1167,6 @@ maintainers:
       - kotlin-approvers
     html_url: https://github.com/Msksgm
     avatar_url: https://avatars.githubusercontent.com/u/49427230?v=4
-  - name: mviitane
-    teams:
-      - demo-approvers
-      - demo-maintainers
-    html_url: https://github.com/mviitane
-    avatar_url: https://avatars.githubusercontent.com/u/74129181?v=4
   - name: mwear
     teams:
       - collector-contrib-approvers
@@ -1682,13 +1702,6 @@ maintainers:
       - network-triagers
     html_url: https://github.com/yonch
     avatar_url: https://avatars.githubusercontent.com/u/3083478?v=4
-  - name: youngaaronm
-    teams:
-      - sig-mainframe-approvers
-      - sig-mainframe-maintainers
-      - sig-mainframe-triagers
-    html_url: https://github.com/youngaaronm
-    avatar_url: https://avatars.githubusercontent.com/u/145782141?v=4
   - name: zacharycmontoya
     teams:
       - dotnet-instrumentation-approvers
@@ -1983,6 +1996,7 @@ approvers:
   - name: herin049
     teams:
       - lambda-extension-approvers
+      - opentelemetry-python-contrib-approvers
     html_url: https://github.com/herin049
     avatar_url: https://avatars.githubusercontent.com/u/40302054?v=4
   - name: iblancasa
@@ -2163,6 +2177,11 @@ approvers:
       - specs-triagers
     html_url: https://github.com/mtwo
     avatar_url: https://avatars.githubusercontent.com/u/1144235?v=4
+  - name: mviitane
+    teams:
+      - demo-approvers
+    html_url: https://github.com/mviitane
+    avatar_url: https://avatars.githubusercontent.com/u/74129181?v=4
   - name: my-git9
     teams:
       - docs-zh-approvers
@@ -2789,9 +2808,6 @@ members:
   - name: cuichenli
     html_url: https://github.com/cuichenli
     avatar_url: https://avatars.githubusercontent.com/u/29245119?v=4
-  - name: cyrille-leclerc
-    html_url: https://github.com/cyrille-leclerc
-    avatar_url: https://avatars.githubusercontent.com/u/459691?v=4
   - name: dao-jun
     html_url: https://github.com/dao-jun
     avatar_url: https://avatars.githubusercontent.com/u/21362791?v=4
