@@ -30,10 +30,10 @@ The OBI container must be configured in following way:
 ## Image Signing and Verification
 
 The OBI container image is signed using
-[Cosign](https://docs.sigstore.dev/cosign/signing/overview/)
-with ephemeral keys, authenticated via the OIDC (OpenID Connect) protocol
-in GitHub Actions. This ensures the authenticity and integrity of the container
-published by the OpenTelemetry project.
+[Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with ephemeral
+keys, authenticated via the OIDC (OpenID Connect) protocol in GitHub Actions.
+This ensures the authenticity and integrity of the container published by the
+OpenTelemetry project.
 
 You can verify the signature of the container image using the following command:
 
