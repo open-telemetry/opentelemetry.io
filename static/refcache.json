@@ -1447,6 +1447,14 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-13T09:52:21.471634055Z"
   },
+  "https://developers.openai.com/api/reference/chat-completions/overview": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-18T10:40:48.239641705Z"
+  },
+  "https://developers.openai.com/api/reference/responses/overview": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-18T10:40:50.641289937Z"
+  },
   "https://devpod.sh/docs/developing-in-workspaces/devcontainer-json": {
     "StatusCode": 206,
     "LastSeen": "2026-02-11T09:53:55.468320573Z"
