@@ -73,7 +73,6 @@ PATH:
 ```bash
 # Move binaries to a directory in your PATH
 sudo cp obi /usr/local/bin/
-sudo cp k8s-cache /usr/local/bin/
 
 # The Java agent MUST be in the same directory as the OBI binary
 sudo cp obi-java-agent.jar /usr/local/bin/
