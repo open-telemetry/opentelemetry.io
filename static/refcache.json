@@ -15868,8 +15868,8 @@
     "LastSeen": "2026-02-13T09:56:00.497137171Z"
   },
   "https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2": {
-    "StatusCode": 403,
-    "LastSeen": "2026-02-18T09:52:58.171003281Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-18T10:32:45.111Z"
   },
   "https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97": {
     "StatusCode": 200,
