@@ -27,6 +27,32 @@ The OBI container must be configured in following way:
 - Use the `host` PID namespace to allow accessing to the processes in other
   containers.
 
+## Image Signing and Verification
+
+The OBI container image is signed using
+[Cosign](https://docs.sigstore.dev/cosign/signing/overview/)
+with ephemeral keys, authenticated via the OIDC (OpenID Connect) protocol
+in GitHub Actions. This ensures the authenticity and integrity of the container
+published by the OpenTelemetry project.
+
+You can verify the signature of the container image using the following command:
+
+```sh
+cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' otel/ebpf-instrument:main
+```
+
+Here is an example output:
+
+```
+Verification for index.docker.io/otel/ebpf-instrument:main --
+The following checks were performed on each of these signatures:
+  - The cosign claims were validated
+  - Existence of the claims in the transparency log was verified offline
+  - The code-signing certificate was verified using trusted certificate authority certificates
+
+[{"critical":{"identity":{"docker-reference":"index.docker.io/otel/ebpf-instrument:main"},"image":{"docker-manifest-digest":"sha256:55426a2bbb8003573a961697888aa770a1f5f67fcda2276dc2187d1faf7181fe"},"type":"https://sigstore.dev/cosign/sign/v1"},"optional":{}}]
+```
+
 ## Docker CLI example
 
 For this example you need a container running an HTTP/S or gRPC service. If you
