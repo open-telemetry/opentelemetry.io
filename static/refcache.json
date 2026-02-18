@@ -2571,6 +2571,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-11T10:01:49.815018412Z"
   },
+  "https://docs.sigstore.dev/cosign/signing/overview/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-18T14:44:06.653487972Z"
+  },
   "https://docs.splunk.com/Documentation/Splunk/latest/Updating/Aboutdeploymentserver": {
     "StatusCode": 200,
     "LastSeen": "2026-02-11T10:02:33.421Z"
