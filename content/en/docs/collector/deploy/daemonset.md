@@ -5,7 +5,7 @@ description:
   Recommendations for running a resilient OpenTelemetry Collector as a
   Kubernetes DaemonSet
 weight: 250
-cSpell:ignore: OOMKill OOMKilled maxUnavailable
+cSpell:ignore: maxUnavailable OOMKill OOMKilled
 ---
 
 Running the OpenTelemetry Collector as a Kubernetes
@@ -23,10 +23,10 @@ provides recommendations for building a resilient DaemonSet deployment.
 ### OOMKill cascades
 
 When a traffic spike causes the Collector pod to exceed its memory limit,
-Kubernetes terminates it with an OOMKill. The pod restarts, but any data buffered
-in memory is lost. Meanwhile, telemetry from applications on that node
-accumulates. When the restarted Collector begins processing the backlog, it might
-immediately exceed its memory limit again, creating a crash loop.
+Kubernetes terminates it with an OOMKill. The pod restarts, but any data
+buffered in memory is lost. Meanwhile, telemetry from applications on that node
+accumulates. When the restarted Collector begins processing the backlog, it
+might immediately exceed its memory limit again, creating a crash loop.
 
 The `memory_limiter` processor can help prevent this, but it is not bulletproof:
 incoming data must be deserialized and converted into the Collector's internal
@@ -37,8 +37,8 @@ has a chance to act.
 ### Node-scoped blast radius
 
 Because a DaemonSet runs exactly one Collector per node, a single Collector
-failure affects **all** workloads on that node. Unlike the sidecar pattern, where
-a failure only impacts one application, a DaemonSet failure creates a
+failure affects **all** workloads on that node. Unlike the sidecar pattern,
+where a failure only impacts one application, a DaemonSet failure creates a
 node-wide telemetry gap.
 
 ### Noisy neighbors
@@ -97,7 +97,7 @@ Monitor actual consumption before tuning these values.
 ### Use the memory limiter processor
 
 The
-[memory limiter processor](/docs/collector/configuration/#memory-limiter-processor)
+[memory limiter processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/memorylimiterprocessor/README.md)
 acts as a safety valve, rejecting incoming data before the Collector reaches its
 memory limit and gets OOMKilled. Place it as the **first** processor in every
 pipeline:
@@ -123,16 +123,15 @@ env:
     value: '400MiB' # Match or slightly below the memory_limiter limit
 ```
 
-> [!TIP]
-> Monitor `otelcol_processor_refused_spans` (and the metrics/logs equivalents).
-> A sustained increase indicates the Collector is under pressure and you should
-> either scale resources or reduce incoming traffic.
+> [!TIP] Monitor `otelcol_processor_refused_spans` (and the metrics/logs
+> equivalents). A sustained increase indicates the Collector is under pressure
+> and you should either scale resources or reduce incoming traffic.
 
 ### Balance memory between queues and processing
 
 The Collector's memory budget is shared between processing headroom and queue
-buffering. Larger queues improve resilience during backend outages but leave less
-room for processing spikes. Getting this balance right requires nontrivial
+buffering. Larger queues improve resilience during backend outages but leave
+less room for processing spikes. Getting this balance right requires nontrivial
 calculations: you need to account for the memory used by the Go runtime, the
 deserialized data in flight, the batch processor buffer, and the sending queue.
 
@@ -142,7 +141,8 @@ As a starting point:
 - Allocate memory for the `memory_limiter` limit (the safety boundary)
 - Size the sending queue so that its maximum memory footprint fits within the
   remaining budget
-- Monitor memory consumption under both normal and degraded conditions and adjust
+- Monitor memory consumption under both normal and degraded conditions and
+  adjust
 
 ## Resilience configuration
 
@@ -180,9 +180,8 @@ Mount a persistent volume or use the node's local storage for the WAL directory.
 When using local storage (such as `emptyDir` or `hostPath`), be aware that data
 does not survive node failures.
 
-> [!WARNING]
-> If a bug in the Collector causes data in the persistent queue to trigger a
-> crash on replay, the Collector will enter a crash loop. Monitor for
+> [!WARNING] If a bug in the Collector causes data in the persistent queue to
+> trigger a crash on replay, the Collector will enter a crash loop. Monitor for
 > `CrashLoopBackOff` and have a plan to clear the WAL directory if needed. See
 > [opentelemetry-collector#12095](https://github.com/open-telemetry/opentelemetry-collector/issues/12095)
 > for more details.
@@ -221,15 +220,14 @@ spec:
       maxSurge: 1
 ```
 
-Setting `maxUnavailable: 0` with `maxSurge: 1` ensures the new pod starts
-before the old one terminates. This requires Kubernetes 1.22+ and sufficient
-node resources to run two Collector pods simultaneously during the update.
+Setting `maxUnavailable: 0` with `maxSurge: 1` ensures the new pod starts before
+the old one terminates. This requires Kubernetes 1.22+ and sufficient node
+resources to run two Collector pods simultaneously during the update.
 
-> [!NOTE]
-> `maxSurge` for DaemonSets is available since Kubernetes 1.22 as a stable
-> feature. If you're on an older version, `maxUnavailable: 1` (the default)
-> is unavoidable, and you should rely on persistent queues to minimize data loss
-> during updates.
+> [!NOTE] `maxSurge` for DaemonSets is available since Kubernetes 1.22 as a
+> stable feature. If you're on an older version, `maxUnavailable: 1` (the
+> default) is unavoidable, and you should rely on persistent queues to minimize
+> data loss during updates.
 
 ### Configure graceful shutdown
 
@@ -247,8 +245,8 @@ spec:
           # ...
 ```
 
-The Collector will attempt to flush all pipeline data during the shutdown window.
-If the grace period is too short, data still in the pipeline is lost.
+The Collector will attempt to flush all pipeline data during the shutdown
+window. If the grace period is too short, data still in the pipeline is lost.
 
 ## Monitoring and early warning
 
@@ -285,12 +283,12 @@ A DaemonSet is not always the best choice. Consider these alternatives when:
 - **Processing is heavy**: Offload processors like `batch`, `tail_sampling`, or
   `transform` to a [Gateway tier](/docs/collector/deploy/gateway/) and keep the
   DaemonSet Collector lightweight (receive + forward only).
-- **High pod-to-node ratio**: When you have many small pods per node, a DaemonSet
-  works well. When you have few large pods, a sidecar avoids the blast radius
-  problem.
-- **gRPC load balancing**: DaemonSet Collectors behind a Kubernetes Service don't
-  distribute gRPC connections evenly. Use a service mesh or sidecar pattern for
-  balanced gRPC distribution.
+- **High pod-to-node ratio**: When you have many small pods per node, a
+  DaemonSet works well. When you have few large pods, a sidecar avoids the blast
+  radius problem.
+- **gRPC load balancing**: DaemonSet Collectors behind a Kubernetes Service
+  don't distribute gRPC connections evenly. Use a service mesh or sidecar
+  pattern for balanced gRPC distribution.
 
 See [Deployment patterns](/docs/collector/deploy/) for a comparison of all
 available options.
