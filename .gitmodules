@@ -3,7 +3,7 @@
 	path = themes/docsy
 	url = https://github.com/google/docsy.git
   # cSpell:disable-next-line
-	docsy-pin = v0.14.2-17-gadb0e595 # Actually 0.14.3-dev+017
+	docsy-pin = v0.14.3-25-gb219dab5
 	docsy-note = "2024-04-01 Switching to google/docsy.git from cncf/docsy.git since we don't have any CNCF customizations."
 	docsy-reminder = "Ensure that any tag referenced by `docsy-pin` is present in the remote repo (url), otherwise add (push) the tags to the repo."
 [submodule "content-modules/opentelemetry-specification"]
