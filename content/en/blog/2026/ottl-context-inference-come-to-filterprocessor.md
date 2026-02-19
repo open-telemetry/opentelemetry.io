@@ -63,11 +63,7 @@ Where the condition is placed changes how it behaves:
   condition, meaning they pass through the filter even if they belong to the
   matching scope.
 
-Even though these rules describe one logical filtering intent, they must be
-split across three different context blocks. From a user perspective, this feels
-arbitrary. You just want to drop telemetry matching a condition, not reason
-about collector internals. Writing filters becomes an exercise in remembering
-where each field is allowed rather than simply stating what should be dropped.
+Even though these rules describe one logical filtering intent, they are required to be split across distinct context blocks. This requirement diverts attention toward Collector internals rather than allowing a dedicated focus on the filtering logic itself.
 
 ## The new approach: conditions with OTTL context inference
 
