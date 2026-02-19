@@ -69,7 +69,7 @@ arbitrary. You just want to drop telemetry matching a condition, not reason
 about collector internals. Writing filters becomes an exercise in remembering
 where each field is allowed rather than simply stating what should be dropped.
 
-## The new approach: conditions with context inference
+## The new approach: conditions with OTTL context inference
 
 ### Basic configuration
 
