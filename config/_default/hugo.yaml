@@ -161,6 +161,7 @@ params:
         url: https://fosstodon.org/@opentelemetry
         icon: fab fa-mastodon
         desc: Follow us on Mastodon to get the latest news!
+        rel: me
       - name: Stack Overflow
         url: https://stackoverflow.com/questions/tagged/open-telemetry
         icon: fab fa-stack-overflow

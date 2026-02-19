@@ -1,4 +1,5 @@
 <!-- cSpell:ignore Chalin Ferri Benedetti Hrabusa jparsana -->
+<!-- markdownlint-disable no-otel-io-external-urls -->
 
 # <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry.io
 
