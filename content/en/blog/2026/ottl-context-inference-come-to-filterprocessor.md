@@ -26,8 +26,8 @@ and the few edge cases you should know about.
 ## The issue: OTTL context confusion
 
 In the legacy configuration, writing filters requires understanding the
-collector’s internal telemetry hierarchy. Conditions must be placed inside
-specific context blocks such as `resource`, `span`, or `spanevent`.
+OTel Collector’s internal telemetry hierarchy. Conditions must be placed inside
+specific OTTL context blocks such as `resource`, `span`, or `spanevent`.
 
 The confusion becomes clearer with instrumentation scope filtering, for example:
 `scope.name == "com.example.gateway"`
