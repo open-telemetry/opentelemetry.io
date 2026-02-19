@@ -23,7 +23,7 @@ In this post, we’ll look at what context inference means specifically for
 filtering: how it simplifies configuration, how evaluation works under the hood,
 and the few edge cases you should know about.
 
-## The problem: context confusion
+## The issue: OTTL context confusion
 
 In the legacy configuration, writing filters requires understanding the
 collector’s internal telemetry hierarchy. Conditions must be placed inside
