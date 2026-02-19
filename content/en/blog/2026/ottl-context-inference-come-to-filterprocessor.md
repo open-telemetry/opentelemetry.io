@@ -70,7 +70,7 @@ Even though these rules describe one logical filtering intent, they are required
 ### Basic configuration
 
 Context inference removes this complexity. Instead of organizing rules by
-context blocks, you write them as a flat list:
+context blocks, they are written as a flat list using the [basic configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/filterprocessor/README.md#basic-config) style: 
 
 ```yaml
 filter:
