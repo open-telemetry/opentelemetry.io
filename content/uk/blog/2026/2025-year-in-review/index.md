@@ -155,7 +155,7 @@ cSpell:ignore: chalin Hrabusa jaydeluca Msksgm Vasconcellos vitorvasc windsonsea
 
 Давайте зробимо 2026 рік ще одним дивовижним роком для [opentelemetry.io](/)!
 
-[redesign]: https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/landing-page-redesign.md
+[redesign]: https://github.com/open-telemetry/opentelemetry.io/blob/9bd13bd/projects/landing-page-redesign.md?from_branch=main
 [refactoring]: https://github.com/orgs/open-telemetry/projects/174/views/3
 [Comms meetings]: https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY
 [discussions]: https://github.com/open-telemetry/opentelemetry.io/discussions
