@@ -108,25 +108,9 @@
 
 {{/* General link-render processing */ -}}
 
-{{ $startsWithHttp := hasPrefix $u.Scheme "http" -}}
-{{ if $startsWithHttp -}}
-  {{ $matches := findRESubmatch `^https?://(?:www\.)?opentelemetry.io(/?.*)$` $href -}}
-  {{ $otelIoPath := index (index $matches 0) 1 | default "/" -}}
-  {{ if $matches -}}
-    {{ warnf "%s: use a local path '%s' instead of external URL '%s' for reference to site-local page"
-        .Page.File.Path $otelIoPath $href -}}
-  {{ else if or
-    (findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" $href)
-    (findRE "^https://github.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification" $href)
-    (findRE "^https://github.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs" $href)
-    -}}
-    {{ warnf "%s: use a local path, not an external URL, for the following reference to a local specification page: %s"
-    .Page.File.Path $href -}}
-  {{ end -}}
-{{ end -}}
-
 {{/* Until Hugo supports hook params (https://github.com/gohugoio/hugo/issues/6670), we'll inspect .Text. */ -}}
 
+{{ $startsWithHttp := hasPrefix $u.Scheme "http" -}}
 <a href="{{ $href | safeURL }}"
   {{- with .Title}} title="{{ . }}"{{ end -}}
   {{ if $startsWithHttp }} target="_blank" rel="noopener"

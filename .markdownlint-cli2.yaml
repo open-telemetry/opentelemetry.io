@@ -2,7 +2,7 @@ customRules:
   - ./scripts/_md-rules/alert-type-not-translated.mjs
   - ./scripts/_md-rules/unindent-code-blocks.js
   - ./scripts/_md-rules/trim-code-blank-lines.js
-  - ./scripts/_md-rules/validate-links/index.mjs
+  - ./scripts/_md-rules/link-rules.mjs
 
 ignores:
   - '.github/**'
