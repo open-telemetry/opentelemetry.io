@@ -1,0 +1,124 @@
+{{ $u := urls.Parse .Destination -}}
+{{- $href := $u.String -}}
+
+{{ if and
+    (not $u.IsAbs)
+    (not (hasPrefix $href "#"))
+-}}
+
+  {{ $path := replaceRE `\bREADME\.md\b` "_index.md" $u.Path -}}
+  {{ with or
+    ($.PageInner.GetPage $path)
+    ($.PageInner.Resources.Get $path)
+    (resources.Get $path)
+  -}}
+
+    {{ $href = .RelPermalink -}}
+    {{ with $u.RawQuery -}}{{ $href = printf "%s?%s" $href . -}}{{ end -}}
+    {{ with $u.Fragment -}}{{ $href = printf "%s#%s" $href . -}}{{ end -}}
+
+  {{ else -}}
+
+    {{/* We can't find a page for $href.
+
+    - If $href refers to a Markdown file, issue a warning, since we should be
+      able to find it.
+
+    - Otherwise, it's a path to a resource file. Most often, in spec repos,
+      $path is absolute and the resource is inside a page bundle. Hugo's global or
+      page Resource.Get can't handle that, so just ignore the issue. If there is a
+      real problem, and the path is invalid, it will be caught by the link
+      checker.
+
+    - If the resource path starts with `./`, adjust it to be `../` to match
+      GitHub's relative paths, provide the page this link is in is not an index
+      page.
+
+    */ -}}
+
+    {{ if hasSuffix $path ".md" -}}
+      {{ warnf "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $href $path -}}
+    {{ else -}}
+      {{ if and
+            (hasPrefix $href "./")
+            (not (hasSuffix .Page.File.Filename "_index.md"))
+            (not (hasSuffix .Page.File.Filename "README.md"))
+      -}}
+        {{ $href = add "." $href -}}
+      {{ end -}}
+      {{ warnidf "spec-resource-not-found" "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $href $path -}}
+    {{ end -}}
+  {{ end -}}
+
+{{- /* ---------------------------------------------------------------------
+
+  This processing part is based on Hugo's default render-link hook:
+  https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_markup/render-link.html
+
+  Note: $u.IsAbs is true if $url has a scheme (e.g., "http:")
+
+  cSpell:ignore chalin jmooring
+*/ -}}
+
+{{/* Implementation note:
+
+  The if-then code shown below in this comment was added by @jmooring via
+  https://github.com/gohugoio/hugo/pull/12087 to ensure that fragment links
+  resolve correctly no matter the context (such as text appearing in page
+  summaries). I (@chalin) prefer not resolving page-local fragment links in that
+  way. In fact, my preference is to leave each relative path as it is. If ever
+  this becomes a problem, we can revisit this.
+
+  --------------------------------
+  {{- if strings.HasPrefix $u.String "#" -}}
+    {{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
+  --------------------------------
+
+  Notes about the Hugo code below:
+
+  - Why test the truthiness of `$href` in the if condition below? Because
+    `$u.String` can be empty, e.g., when .Destination is just "#".
+
+  - Why trim the `./` prefix from `$u.Path`? Resource Get requires a clean path
+    w/o the `./` prefix, otherwise it won't find page-bundle local resources.
+    Ref: https://github.com/gohugoio/hugo/pull/12515. In our case it's a no-op
+    because we leave relative paths as is.
+
+  */ -}}
+
+{{ else
+  if not (hasPrefix .Destination "/") -}}
+  {{/* Relative path: leave as is */ -}}
+  {{- else if and $href (not $u.IsAbs) -}}
+    {{- $path := strings.TrimPrefix "./" $u.Path -}}
+    {{- with or
+      ($.PageInner.GetPage $path)
+      ($.PageInner.Resources.Get $path)
+      (resources.Get $path)
+    -}}
+      {{- $href = .RelPermalink -}}
+      {{- with $u.RawQuery -}}
+        {{- $href = printf "%s?%s" $href . -}}
+      {{- end -}}
+      {{- with $u.Fragment -}}
+        {{- $href = printf "%s#%s" $href . -}}
+      {{- end -}}
+    {{- end -}}
+{{- end -}}
+
+{{/* General link-render processing */ -}}
+
+{{/* Until Hugo supports hook params (https://github.com/gohugoio/hugo/issues/6670), we'll inspect .Text. */ -}}
+
+{{ $startsWithHttp := hasPrefix $u.Scheme "http" -}}
+<a href="{{ $href | safeURL }}"
+  {{- with .Title}} title="{{ . }}"{{ end -}}
+  {{ if $startsWithHttp }} target="_blank" rel="noopener"
+    {{- $noExternalIcon := in .Text "hk-no-external-icon" -}}
+    {{ if not $noExternalIcon }} class="external-link"{{ end -}}
+  {{ end -}}
+>
+  {{- .Text | safeHTML -}}
+</a>
+
+{{- /* Trim trailing whitespace */ -}}

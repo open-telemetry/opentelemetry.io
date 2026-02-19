@@ -4,7 +4,7 @@ description: Vendor-agnostic way to receive, process and export telemetry data.
 aliases: [collector/about]
 sidebar_root_for: children
 cascade:
-  vers: 0.145.0
+  vers: 0.146.1
 weight: 270
 ---
 
