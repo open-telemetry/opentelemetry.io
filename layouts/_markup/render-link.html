@@ -1,16 +1,17 @@
-{{ $url := .Destination -}} {{/* TODO: rename to $url */ -}}
-{{ $u := urls.Parse $url -}}
+{{ $u := urls.Parse .Destination -}}
+{{- $href := $u.String -}}
+{{/* TODO: drop this next line that we're keeping to minimize diffs for now */ -}}
+{{- $href = .Destination -}}
 
-{{/* Note: $u.IsAbs is true if $url has a scheme (e.g., "http:") */ -}}
+{{/* This processing part is for OTel specs only ------------------------- */ -}}
 
 {{ if and
     (hasPrefix $.PageInner.RelPermalink "/docs/specs")
     (not $u.IsAbs)
-    (not (hasPrefix $url "#"))
+    (not (hasPrefix $href "#"))
 -}}
 
   {{ $path := replaceRE `\bREADME\.md\b` "_index.md" $u.Path -}}
-  {{ $href := $url -}}
   {{ with or
     ($.PageInner.GetPage $path)
     ($.PageInner.Resources.Get $path)
@@ -38,7 +39,7 @@
     */ -}}
 
     {{ if hasSuffix $path ".md" -}}
-      {{ warnf "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $url $path -}}
+      {{ warnf "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $href $path -}}
     {{ else -}}
       {{ if and
             (hasPrefix $href "./")
@@ -47,24 +48,55 @@
       -}}
         {{ $href = add "." $href -}}
       {{ end -}}
-      {{ warnidf "spec-resource-not-found" "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $url $href -}}
+      {{ warnidf "spec-resource-not-found" "File %s: cannot resolve spec link reference '%s' (%s)" .Page.File.Filename $href $path -}}
     {{ end -}}
   {{ end -}}
-  {{ $url = $href -}}
 
-{{ else if hasPrefix $url "/" -}}
+{{- /* ---------------------------------------------------------------------
 
-  {{/*
-    Based on Hugo's default render-link hook:
-    https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_markup/render-link.html
+  This processing part is based on Hugo's default render-link hook:
+  https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_markup/render-link.html
+
+  Note: $u.IsAbs is true if $url has a scheme (e.g., "http:")
+
+  cSpell:ignore chalin jmooring
+*/ -}}
+
+{{/* Implementation note:
+
+  The if-then code shown below in this comment was added by @jmooring via
+  https://github.com/gohugoio/hugo/pull/12087 to ensure that fragment links
+  resolve correctly no matter the context (such as text appearing in page
+  summaries). I (@chalin) prefer not resolving page-local fragment links in that
+  way. In fact, my preference is to leave each relative path as it is. If ever
+  this becomes a problem, we can revisit this.
+
+  --------------------------------
+  {{- if strings.HasPrefix $u.String "#" -}}
+    {{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
+  --------------------------------
+
+  Notes about the Hugo code below:
+
+  - Why test the truthiness of `$href` in the if condition below? Because
+    `$u.String` can be empty, e.g., when .Destination is just "#".
+
+  - Why trim the `./` prefix from `$u.Path`? Resource Get requires a clean path
+    w/o the `./` prefix, otherwise it won't find page-bundle local resources.
+    Ref: https://github.com/gohugoio/hugo/pull/12515. In our case it's a no-op
+    because we leave relative paths as is.
+
   */ -}}
 
-  {{- $href := $u.String -}}
-  {{- if and $href (not $u.IsAbs) -}}
+{{ else
+  if not (hasPrefix .Destination "/") -}}
+  {{/* Relative path: leave as is */ -}}
+  {{- else if and $href (not $u.IsAbs) -}}
+    {{- $path := strings.TrimPrefix "./" $u.Path -}}
     {{- with or
-      ($.PageInner.GetPage $u.Path)
-      ($.PageInner.Resources.Get $u.Path)
-      (resources.Get $u.Path)
+      ($.PageInner.GetPage $path)
+      ($.PageInner.Resources.Get $path)
+      (resources.Get $path)
     -}}
       {{- $href = .RelPermalink -}}
       {{- with $u.RawQuery -}}
@@ -74,36 +106,32 @@
         {{- $href = printf "%s#%s" $href . -}}
       {{- end -}}
     {{- end -}}
-  {{- end -}}
-
-  {{ $url = $href -}}
-
-{{ end -}}
+{{- end -}}
 
 {{/* General link-render processing */ -}}
 
-{{ $isExternal := hasPrefix $url "http" -}}
-{{ if $isExternal -}}
-  {{ $matches := findRESubmatch `^https?://(?:www\.)?opentelemetry.io(/?.*)$` $url -}}
+{{ $startsWithHttp := hasPrefix $u.Scheme "http" -}}
+{{ if $startsWithHttp -}}
+  {{ $matches := findRESubmatch `^https?://(?:www\.)?opentelemetry.io(/?.*)$` $href -}}
   {{ $otelIoPath := index (index $matches 0) 1 | default "/" -}}
   {{ if $matches -}}
     {{ warnf "%s: use a local path '%s' instead of external URL '%s' for reference to site-local page"
-        .Page.File.Path $otelIoPath $url -}}
+        .Page.File.Path $otelIoPath $href -}}
   {{ else if or
-    (findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" $url)
-    (findRE "^https://github.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification" $url)
-    (findRE "^https://github.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs" $url)
+    (findRE "^https://github.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\\w" $href)
+    (findRE "^https://github.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification" $href)
+    (findRE "^https://github.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs" $href)
     -}}
     {{ warnf "%s: use a local path, not an external URL, for the following reference to a local specification page: %s"
-    .Page.File.Path $url -}}
+    .Page.File.Path $href -}}
   {{ end -}}
 {{ end -}}
 
 {{/* Until Hugo supports hook params (https://github.com/gohugoio/hugo/issues/6670), we'll inspect .Text. */ -}}
 
-<a href="{{ $url | safeURL }}"
+<a href="{{ $href | safeURL }}"
   {{- with .Title}} title="{{ . }}"{{ end -}}
-  {{- if $isExternal }} target="_blank" rel="noopener"
+  {{ if $startsWithHttp }} target="_blank" rel="noopener"
     {{- $noExternalIcon := in .Text "hk-no-external-icon" -}}
     {{ if not $noExternalIcon }} class="external-link"{{ end -}}
   {{ end -}}
