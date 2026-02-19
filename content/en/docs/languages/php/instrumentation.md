@@ -798,7 +798,7 @@ $queue = [
     'job2',
     'job3',
 ];
-$reader = $meterProvider
+$meterProvider
     ->getMeter('demo_meter')
     ->createObservableGauge('queued', 'jobs', 'The number of jobs enqueued')
     ->observe(static function (ObserverInterface $observer) use (&$queue): void {
