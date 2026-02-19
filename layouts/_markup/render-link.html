@@ -1,7 +1,5 @@
 {{ $u := urls.Parse .Destination -}}
 {{- $href := $u.String -}}
-{{/* TODO: drop this next line that we're keeping to minimize diffs for now */ -}}
-{{- $href = .Destination -}}
 
 {{/* This processing part is for OTel specs only ------------------------- */ -}}
 
