@@ -256,16 +256,16 @@
     "LastSeen": "2026-02-20T09:58:58.377Z"
   },
   "https://blog.olly.garden/how-to-name-your-metrics": {
-    "StatusCode": 429,
-    "LastSeen": "2026-02-20T09:56:24.250486967Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-20T14:00:12.141Z"
   },
   "https://blog.olly.garden/how-to-name-your-span-attributes": {
-    "StatusCode": 429,
-    "LastSeen": "2026-02-20T09:56:24.482235844Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-20T14:00:25.354Z"
   },
   "https://blog.olly.garden/how-to-name-your-spans": {
-    "StatusCode": 429,
-    "LastSeen": "2026-02-20T09:56:24.462078284Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-20T14:00:38.054Z"
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
     "StatusCode": 200,
@@ -21048,7 +21048,7 @@
     "LastSeen": "2026-02-14T09:54:57.561Z"
   },
   "https://www.iso.org/iso-8601-date-and-time-format.html": {
-    "StatusCode": 403,
+    "StatusCode": 200,
     "LastSeen": "2026-02-20T09:55:01.788160796Z"
   },
   "https://www.itu.int/ITU-T/studygroups/com17/oid.html": {
