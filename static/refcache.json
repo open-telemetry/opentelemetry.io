@@ -16371,6 +16371,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:53:12.554941997Z"
   },
+  "https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/#ephemeral-container": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-02T10:20:20.640652552Z"
+  },
   "https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:47:22.173661595Z"
