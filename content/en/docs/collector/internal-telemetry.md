@@ -160,6 +160,13 @@ You can further configure how metrics from the Collector are emitted by using
 configuration updates the metric named `otelcol_process_uptime` to emit a new
 name `process_uptime` and description:
 
+> [!NOTE]
+>
+> When using the default Prometheus exporter, `otelcol_process_uptime` is
+> exported as `otelcol_process_uptime_seconds_total`. Use the `instrument_name`
+> value `otelcol_process_uptime` (the OTLP name) in views regardless. To
+> control Prometheus-specific suffixes, see [Unit suffixes](#unit-suffixes).
+
 ```yaml
 service:
   telemetry:
@@ -310,7 +317,7 @@ libraries.
 By default and unique to Prometheus, the Prometheus exporter adds a `_total`
 suffix to summation metrics to follow Prometheus naming conventions, such as
 `otelcol_exporter_send_failed_spans_total`. This behavior can be disabled by
-setting `without_type_suffix: false` in the Prometheus exporter's configuration.
+setting `without_type_suffix: true` in the Prometheus exporter's configuration.
 
 If you leave out `service::telemetry::metrics::readers` in the Collector
 configuration, the default Prometheus exporter set up by the Collector already
@@ -322,6 +329,34 @@ the "raw" metric name. For more information, see the
 Internal metrics exported through OTLP do not have this behavior. The
 [internal metrics](#lists-of-internal-metrics) on this page are listed in OTLP
 format, such as `otelcol_exporter_send_failed_spans`.
+
+#### `_seconds` and other unit suffixes {#unit-suffixes}
+
+The Prometheus exporter also appends a unit suffix to metrics that carry a
+unit. For example, `otelcol_process_uptime` (unit: seconds) is exported as
+`otelcol_process_uptime_seconds_total` by default — the `_seconds` unit suffix
+is added first, then the `_total` counter suffix.
+
+To restore the original, shorter metric names (for example, when you have
+existing dashboards or alerts that rely on the short names), set both
+`without_type_suffix` and `without_units` to `true` on the Prometheus exporter:
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      readers:
+        - pull:
+            exporter:
+              prometheus:
+                host: '0.0.0.0'
+                port: 8888
+                without_type_suffix: true
+                without_units: true
+```
+
+With this configuration, `otelcol_process_uptime_seconds_total` is exported
+once again as `otelcol_process_uptime`.
 
 #### Dots (`.`) v. underscores (`_`) {#dots-v-underscores}
 
