@@ -1,5 +1,5 @@
 ---
-title: Migrating from Prometheus Client Libraries
+title: Prometheus Client Libraries vs. OpenTelemetry
 linkTitle: Prometheus Client
 weight: 5
 cSpell:ignore: buildAndStart buildWithCallback hvac hvacOnTime initLabelValues labelValues PrometheusRegistry totalEnergyJoules
@@ -16,14 +16,12 @@ This guide is for developers familiar with the
 [Prometheus client libraries](https://prometheus.github.io/client_java/) who want to understand
 equivalent patterns in the OpenTelemetry metrics API.
 
-The examples use a smart home theme. Smart home metrics have no existing conventions in either
-the Prometheus or the OpenTelemetry ecosystem, which lets the examples focus on API patterns
-rather than naming debates.
-
 ## Conceptual differences
 
 Before looking at code, it helps to understand a few structural differences between the two
-systems.
+systems. The [Prometheus and OpenMetrics Compatibility](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)
+specification documents the complete translation rules between the two systems; this section
+covers the differences most relevant to writing new instrumentation code.
 
 ### Registry vs. MeterProvider
 
@@ -35,6 +33,28 @@ In OpenTelemetry, metrics flow through a `MeterProvider`, which you configure up
 exporters and collection schedules. You obtain a `Meter` — scoped to your library or component —
 from the provider, and create instruments from that `Meter`. The practical consequence is that
 **you configure where metrics go before you create them**, rather than after.
+
+### API and SDK
+
+OpenTelemetry separates instrumentation from configuration with a two-layer design: an **API**
+package and an **SDK** package. The API defines the interfaces used to record metrics. The SDK
+provides the implementation — the concrete provider, exporters, and collection pipeline.
+
+Instrumentation code should depend only on the API. The SDK is configured once at application
+startup and wired to an API reference that gets passed to the rest of the codebase. This keeps
+library code decoupled from any specific SDK version and makes it straightforward to swap in a
+no-op implementation for testing.
+
+### Instrumentation scope
+
+Prometheus metrics are global: every metric in a process shares the same flat namespace,
+identified only by name and labels.
+
+OpenTelemetry scopes each group of instruments to a `Meter`, identified by a name and optional
+version (for example, `openTelemetry.getMeter("smart.home")`). When exporting to Prometheus,
+the scope name and version are added as `otel_scope_name` and `otel_scope_version` labels on
+every metric point. These labels appear automatically and may be unfamiliar to users coming from
+Prometheus.
 
 ### Label names vs. attributes
 
@@ -49,9 +69,18 @@ together at the time of the measurement via `Attributes`.
 Prometheus uses `snake_case` metric names. Counter names must end in `_total`; the client
 library appends this automatically if omitted.
 
-OpenTelemetry conventionally uses dotted names (for example, `motion.events`). When exporting
-to Prometheus, the OpenTelemetry Prometheus exporter converts dots to underscores and appends
-`_total` for counters automatically.
+OpenTelemetry conventionally uses dotted names. When exporting to Prometheus, the exporter
+translates names: dots become underscores, unit abbreviations expand to full words (for example,
+`s` → `seconds`), and counters receive a `_total` suffix. An OTel counter named `hvac.on` with
+unit `s` is exported as `hvac_on_seconds_total`. See the
+[compatibility specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/) for
+the complete set of name translation rules.
+
+### Aggregation temporality
+
+Prometheus metrics are always cumulative. OpenTelemetry supports both cumulative and delta
+temporality, but the Prometheus exporter enforces cumulative for all instruments. For developers
+migrating from Prometheus, this is transparent — the behavior you already rely on is preserved.
 
 ### Synchronous vs. asynchronous instruments
 
@@ -62,6 +91,18 @@ Both systems support two recording modes:
   callback metrics invoke a function at scrape time to get the current value.
 - **OpenTelemetry** calls these _synchronous_ (`LongCounter`, `LongHistogram`, etc.) and
   _asynchronous_ (built with `buildWithCallback(...)`). The semantics are the same.
+
+### Resource attributes
+
+Prometheus identifies scrape targets using `job` and `instance` labels, which are added by the
+Prometheus server at scrape time.
+
+OpenTelemetry has a `Resource` — structured metadata attached to all telemetry from a process,
+with attributes such as `service.name` and `service.instance.id`. When exporting to Prometheus,
+the exporter maps resource attributes to the `job` and `instance` labels, with any remaining
+attributes exposed in a `target_info` metric. See the
+[compatibility specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/) for
+the exact mapping rules.
 
 ## Initialization {#initialization}
 
@@ -96,7 +137,8 @@ public class PrometheusScrapeInit {
             .register();
 
     // Start the HTTP server; Prometheus scrapes http://localhost:9464/metrics.
-    HTTPServer.builder().port(9464).buildAndStart();
+    HTTPServer server = HTTPServer.builder().port(9464).buildAndStart();
+    Runtime.getRuntime().addShutdownHook(new Thread(server::close));
 
     doorOpens.labelValues("front").inc();
 
@@ -113,6 +155,7 @@ public class PrometheusScrapeInit {
 ```java
 package otel;
 
+import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.common.AttributeKey;
 import io.opentelemetry.api.common.Attributes;
 import io.opentelemetry.api.metrics.LongCounter;
@@ -128,13 +171,17 @@ public class OtelScrapeInit {
 
   public static void main(String[] args) throws InterruptedException {
     // Configure the SDK: register a Prometheus reader that serves /metrics.
-    SdkMeterProvider meterProvider =
-        SdkMeterProvider.builder()
-            .registerMetricReader(PrometheusHttpServer.builder().setPort(9464).build())
+    OpenTelemetrySdk sdk =
+        OpenTelemetrySdk.builder()
+            .setMeterProvider(
+                SdkMeterProvider.builder()
+                    .registerMetricReader(PrometheusHttpServer.builder().setPort(9464).build())
+                    .build())
             .build();
+    Runtime.getRuntime().addShutdownHook(new Thread(sdk::close));
 
-    OpenTelemetrySdk openTelemetry =
-        OpenTelemetrySdk.builder().setMeterProvider(meterProvider).build();
+    // Instrumentation code uses the OpenTelemetry API type, not the SDK type directly.
+    OpenTelemetry openTelemetry = sdk;
 
     // Metrics are served at http://localhost:9464/metrics.
     Meter meter = openTelemetry.getMeter("smart.home");
@@ -180,11 +227,13 @@ public class PrometheusOtlpInit {
 
     // Start the OTLP exporter. It reads from the default PrometheusRegistry and
     // pushes metrics to the configured endpoint on a fixed interval.
-    OpenTelemetryExporter.builder()
-        .protocol("http/protobuf")
-        .endpoint("http://localhost:4318")
-        .intervalSeconds(60)
-        .buildAndStart();
+    OpenTelemetryExporter exporter =
+        OpenTelemetryExporter.builder()
+            .protocol("http/protobuf")
+            .endpoint("http://localhost:4318")
+            .intervalSeconds(60)
+            .buildAndStart();
+    Runtime.getRuntime().addShutdownHook(new Thread(exporter::close));
 
     doorOpens.labelValues("front").inc();
 
@@ -201,6 +250,7 @@ public class PrometheusOtlpInit {
 ```java
 package otel;
 
+import io.opentelemetry.api.OpenTelemetry;
 import io.opentelemetry.api.metrics.LongCounter;
 import io.opentelemetry.api.metrics.Meter;
 import io.opentelemetry.exporter.otlp.http.metrics.OtlpHttpMetricExporter;
@@ -212,17 +262,23 @@ import java.time.Duration;
 public class OtelOtlpInit {
   public static void main(String[] args) throws InterruptedException {
     // Configure the SDK: export metrics over OTLP/HTTP on a fixed interval.
-    OtlpHttpMetricExporter exporter =
-        OtlpHttpMetricExporter.builder().setEndpoint("http://localhost:4318").build();
-
-    SdkMeterProvider meterProvider =
-        SdkMeterProvider.builder()
-            .registerMetricReader(
-                PeriodicMetricReader.builder(exporter).setInterval(Duration.ofSeconds(60)).build())
+    OpenTelemetrySdk sdk =
+        OpenTelemetrySdk.builder()
+            .setMeterProvider(
+                SdkMeterProvider.builder()
+                    .registerMetricReader(
+                        PeriodicMetricReader.builder(
+                                OtlpHttpMetricExporter.builder()
+                                    .setEndpoint("http://localhost:4318")
+                                    .build())
+                            .setInterval(Duration.ofSeconds(60))
+                            .build())
+                    .build())
             .build();
+    Runtime.getRuntime().addShutdownHook(new Thread(sdk::close));
 
-    OpenTelemetrySdk openTelemetry =
-        OpenTelemetrySdk.builder().setMeterProvider(meterProvider).build();
+    // Instrumentation code uses the OpenTelemetry API type, not the SDK type directly.
+    OpenTelemetry openTelemetry = sdk;
 
     Meter meter = openTelemetry.getMeter("smart.home");
     LongCounter doorOpens =
