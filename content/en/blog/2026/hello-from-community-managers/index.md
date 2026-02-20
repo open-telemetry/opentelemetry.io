@@ -88,7 +88,7 @@ rest of the OTel community. I think one of our proudest moments was when
 we started seeing an increase in regular contributors to the SIG. The work we 
 were doing was making a difference!
 
-Over the years, I’ve been lucky enough to speak at a number of cloud native 
+Over the years, I’ve been lucky enough to speak about OTel at a number of cloud native 
 events, including KubeCon (EU, NA, Japan), Observability Day (EU, NA), 
 Platform Engineering Day (NA), a number of KCDs (Porto, Warsaw), Open 
 Source Summit (EU, NA, Japan) and Cloud Native Days (Bergen, Austria) 
