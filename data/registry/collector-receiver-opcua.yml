@@ -12,7 +12,7 @@ tags:
 license: Apache 2.0
 description:
   The OPC UA Log Receiver collects log records from OPC UA servers implementing
-  the LogObject specification (OPC UA Part 26) and converts them to
+  the LogObject specification [(OPC UA Part 26)](https://reference.opcfoundation.org/Core/Part26/v105/docs/) and converts them to
   OpenTelemetry log format for industrial automation system observability.
 authors:
   - name: Thomas Brüggemann
