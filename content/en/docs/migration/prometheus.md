@@ -2,7 +2,7 @@
 title: Prometheus Client Libraries vs. OpenTelemetry
 linkTitle: Prometheus Client
 weight: 5
-cSpell:ignore: buildAndStart buildWithCallback hvac hvacOnTime initLabelValues labelValues PrometheusRegistry totalEnergyJoules
+cSpell:ignore: bedroomTemperatureCelsius buildAndStart buildWithCallback GaugeWithCallback gaugeBuilder hvac hvacOnTime initLabelValues labelValues livingRoomTemperatureCelsius PrometheusRegistry thermostatSetpoint totalEnergyJoules
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -452,6 +452,167 @@ public class OtelCounterCallback {
         .setUnit("J")
         .ofDoubles()
         .buildWithCallback(measurement -> measurement.record(SmartHomeDevices.totalEnergyJoules()));
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+{{% /tab %}} {{< /tabpane >}}
+
+## Gauge {#gauge}
+
+A gauge records an instantaneous value that can increase or decrease. Use it for values you
+explicitly set — such as a configuration value or a device setpoint. For values you track
+incrementally (counting up and down), use [UpDownCounter](#updowncounter) instead.
+
+Prometheus `Gauge` maps to OpenTelemetry `DoubleGauge` or `LongGauge`.
+
+### Synchronous gauge
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+**Prometheus**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/PrometheusGauge.java"?>
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.Gauge;
+
+public class PrometheusGauge {
+  public static void gaugeUsage() {
+    Gauge thermostatSetpoint =
+        Gauge.builder()
+            .name("thermostat_setpoint_celsius")
+            .help("Target temperature set on the thermostat")
+            .labelNames("zone")
+            .register();
+
+    thermostatSetpoint.labelValues("upstairs").set(22.5);
+    thermostatSetpoint.labelValues("downstairs").set(20.0);
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+**OpenTelemetry**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/OtelGauge.java"?>
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.DoubleGauge;
+import io.opentelemetry.api.metrics.Meter;
+
+public class OtelGauge {
+  // Preallocate attribute keys and, when values are static, entire Attributes objects.
+  private static final AttributeKey<String> ZONE = AttributeKey.stringKey("zone");
+  private static final Attributes UPSTAIRS = Attributes.of(ZONE, "upstairs");
+  private static final Attributes DOWNSTAIRS = Attributes.of(ZONE, "downstairs");
+
+  public static void gaugeUsage(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    DoubleGauge thermostatSetpoint =
+        meter
+            .gaugeBuilder("thermostat.setpoint")
+            .setDescription("Target temperature set on the thermostat")
+            .setUnit("Cel")
+            .build();
+
+    thermostatSetpoint.set(22.5, UPSTAIRS);
+    thermostatSetpoint.set(20.0, DOWNSTAIRS);
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+Key differences:
+
+- `set(value)` → `set(value, attributes)`. The method name is the same.
+- OpenTelemetry distinguishes `LongGauge` (integers, via `.ofLongs()`) from `DoubleGauge`
+  (the default). Prometheus uses a single `Gauge` type.
+- Preallocate `AttributeKey` instances (always) and `Attributes` objects (when values are
+  static) to avoid per-call allocation on the hot path.
+
+{{% /tab %}} {{< /tabpane >}}
+
+- **`inc()`/`dec()` pattern**: Prometheus `Gauge` supports incrementing and decrementing via
+  `inc()` and `dec()`. OpenTelemetry `Gauge` records absolute values only — `set()` is the only
+  recording method. For the `inc()`/`dec()` pattern, use
+  [UpDownCounter](#updowncounter) instead.
+
+### Asynchronous (callback) gauge
+
+Use an asynchronous gauge when the current value is maintained externally — such as a sensor
+reading — and you want to observe it at collection time rather than track it yourself.
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+**Prometheus**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/PrometheusGaugeCallback.java"?>
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.GaugeWithCallback;
+
+public class PrometheusGaugeCallback {
+  public static void gaugeCallbackUsage() {
+    // Temperature sensors maintain their own readings in firmware.
+    // Use a callback gauge to report those values at scrape time without
+    // maintaining a separate gauge in application code.
+    GaugeWithCallback.builder()
+        .name("room_temperature_celsius")
+        .help("Current temperature in the room")
+        .labelNames("room")
+        .callback(
+            callback -> {
+              callback.call(SmartHomeDevices.livingRoomTemperatureCelsius(), "living_room");
+              callback.call(SmartHomeDevices.bedroomTemperatureCelsius(), "bedroom");
+            })
+        .register();
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+**OpenTelemetry**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/OtelGaugeCallback.java"?>
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.Meter;
+
+public class OtelGaugeCallback {
+  private static final AttributeKey<String> ROOM = AttributeKey.stringKey("room");
+  private static final Attributes LIVING_ROOM = Attributes.of(ROOM, "living_room");
+  private static final Attributes BEDROOM = Attributes.of(ROOM, "bedroom");
+
+  public static void gaugeCallbackUsage(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    // Temperature sensors maintain their own readings in firmware.
+    // Use an asynchronous gauge to report those values when a MetricReader
+    // collects metrics, without maintaining separate gauges in application code.
+    meter
+        .gaugeBuilder("room.temperature")
+        .setDescription("Current temperature in the room")
+        .setUnit("Cel")
+        .buildWithCallback(
+            measurement -> {
+              measurement.record(SmartHomeDevices.livingRoomTemperatureCelsius(), LIVING_ROOM);
+              measurement.record(SmartHomeDevices.bedroomTemperatureCelsius(), BEDROOM);
+            });
   }
 }
 ```
