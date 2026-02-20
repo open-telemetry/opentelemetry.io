@@ -24,9 +24,9 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.53.0
+    spec: 1.54.0
     otlp: 1.9.0
-    semconv: 1.39.0
+    semconv: 1.40.0
   );
 # Versions map without the colon in the keys
 my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
@@ -320,8 +320,8 @@ while(<>) {
     )
   }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
 
-  patchSpec_because_of_SemConv_DatabaseRenamedToDb();
-  patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
+  # patchSpec_because_of_SemConv_DatabaseRenamedToDb();
+  # patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 

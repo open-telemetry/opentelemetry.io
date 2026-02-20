@@ -1,5 +1,7 @@
 # Portuguese Localization
 
+<!-- markdownlint-disable no-otel-io-external-urls -->
+
 ## Description
 
 > **Note**: This project is part of the broader

@@ -42,3 +42,128 @@ By default, the tracer provider uses a `ParentBased` sampler with the
 
 When in a production environment, consider using the `ParentBased` sampler with
 the `TraceIDRatioBased` sampler.
+
+## Custom samplers
+
+If the built-in samplers don't meet your needs, you can create a custom sampler
+by implementing the
+[`Sampler`](https://pkg.go.dev/go.opentelemetry.io/otel/sdk/trace#Sampler)
+interface. A custom sampler must implement two methods:
+
+- `ShouldSample(parameters SamplingParameters) SamplingResult`: Makes the
+  sampling decision based on the provided parameters.
+- `Description() string`: Returns a description of the sampler.
+
+### Preserving tracestate
+
+{{% alert title="Critical: Preserve tracestate" color="warning" %}}
+
+When implementing a custom sampler, you **must** preserve the parent's
+tracestate in your `SamplingResult`. Failing to do so breaks context propagation
+in distributed systems that rely on tracestate for passing vendor-specific or
+application-specific trace data.
+
+Always extract the tracestate from the parent span context:
+
+```go
+psc := trace.SpanContextFromContext(parameters.ParentContext)
+// Use psc.TraceState() in your SamplingResult
+```
+
+{{% /alert %}}
+
+### Example
+
+The following example demonstrates a custom sampler that samples spans based on
+an attribute value while correctly preserving tracestate:
+
+```go
+package main
+
+import (
+    "context"
+
+    "go.opentelemetry.io/otel/attribute"
+    sdktrace "go.opentelemetry.io/otel/sdk/trace"
+    "go.opentelemetry.io/otel/trace"
+)
+
+// AttributeBasedSampler samples spans based on an attribute value.
+// It always samples spans with the "high.priority" attribute set to true.
+type AttributeBasedSampler struct {
+    fallback sdktrace.Sampler
+}
+
+// NewAttributeBasedSampler creates a new AttributeBasedSampler.
+func NewAttributeBasedSampler(fallback sdktrace.Sampler) *AttributeBasedSampler {
+    return &AttributeBasedSampler{fallback: fallback}
+}
+
+func (s *AttributeBasedSampler) ShouldSample(p sdktrace.SamplingParameters) sdktrace.SamplingResult {
+    // Always extract the parent span context to get the tracestate.
+    psc := trace.SpanContextFromContext(p.ParentContext)
+
+    // Check if any attribute indicates high priority.
+    for _, attr := range p.Attributes {
+        if attr.Key == "high.priority" && attr.Value.AsBool() {
+            return sdktrace.SamplingResult{
+                Decision:   sdktrace.RecordAndSample,
+                Attributes: p.Attributes,
+                // Critical: preserve the parent's tracestate
+                Tracestate: psc.TraceState(),
+            }
+        }
+    }
+
+    // Fall back to the default sampler for other spans.
+    result := s.fallback.ShouldSample(p)
+
+    // Ensure tracestate is preserved even when using fallback.
+    // Built-in samplers already handle this, but it's good practice to verify.
+    return sdktrace.SamplingResult{
+        Decision:   result.Decision,
+        Attributes: result.Attributes,
+        Tracestate: psc.TraceState(),
+    }
+}
+
+func (s *AttributeBasedSampler) Description() string {
+    return "AttributeBasedSampler"
+}
+```
+
+### Using your custom sampler
+
+You can use your custom sampler with the tracer provider:
+
+```go
+sampler := NewAttributeBasedSampler(sdktrace.TraceIDRatioBased(0.1))
+
+provider := sdktrace.NewTracerProvider(
+    sdktrace.WithSampler(sampler),
+)
+```
+
+You can also compose it with the `ParentBased` sampler:
+
+```go
+provider := sdktrace.NewTracerProvider(
+    sdktrace.WithSampler(
+        sdktrace.ParentBased(
+            NewAttributeBasedSampler(sdktrace.TraceIDRatioBased(0.1)),
+        ),
+    ),
+)
+```
+
+### Additional considerations
+
+When implementing custom samplers, keep these points in mind:
+
+1. **Ignoring the parent sampling decision**: If you want to respect parent
+   sampling decisions, wrap your sampler with `ParentBased` or check
+   `psc.IsSampled()` manually.
+
+2. **Heavy computations in ShouldSample**: The `ShouldSample` function is called
+   synchronously for every span creation. Avoid expensive operations like
+   network calls or complex computations that could impact performance.
