@@ -2,7 +2,7 @@
 title: Prometheus Client Libraries vs. OpenTelemetry
 linkTitle: Prometheus Client
 weight: 5
-cSpell:ignore: bedroomTemperatureCelsius buildAndStart buildWithCallback GaugeWithCallback gaugeBuilder hvac hvacOnTime initLabelValues labelValues livingRoomTemperatureCelsius PrometheusRegistry thermostatSetpoint totalEnergyJoules
+cSpell:ignore: base2ExponentialBucketHistogram bedroomTemperatureCelsius buildAndStart buildWithCallback classicUpperBounds defaultAggregation deviceCommandDuration explicitBucketHistogram GaugeWithCallback gaugeBuilder hvac hvacOnTime initLabelValues InstrumentSelector InstrumentType labelValues livingRoomTemperatureCelsius nativeOnly OtelHistogramExplicitBucketView PrometheusHistogramNative PrometheusSummary PrometheusRegistry setDefaultAggregationSelector setExplicitBucketBoundariesAdvice thermostatSetpoint totalEnergyJoules
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -302,7 +302,7 @@ public class OtelOtlpInit {
 A counter records monotonically increasing values. Prometheus `Counter` maps to OpenTelemetry
 `DoubleCounter` or `LongCounter`.
 
-### Synchronous counter
+### Counter
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
@@ -467,7 +467,7 @@ incrementally (counting up and down), use [UpDownCounter](#updowncounter) instea
 
 Prometheus `Gauge` maps to OpenTelemetry `DoubleGauge` or `LongGauge`.
 
-### Synchronous gauge
+### Gauge
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
@@ -617,5 +617,278 @@ public class OtelGaugeCallback {
 }
 ```
 <!-- prettier-ignore-end -->
+
+{{% /tab %}} {{< /tabpane >}}
+
+## Histogram {#histogram}
+
+A histogram records the distribution of a set of measurements, tracking the count of
+observations, their sum, and the number that fall within configurable bucket boundaries.
+
+Both Prometheus and OpenTelemetry support explicit-bucket histograms and exponential histograms.
+Prometheus also has a `Summary` type, which has no direct OTel equivalent — see
+[Summary](#summary) below.
+
+Prometheus `Histogram` maps to OpenTelemetry `DoubleHistogram` or `LongHistogram`.
+
+### Explicit (classic) histogram
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+**Prometheus**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/PrometheusHistogram.java"?>
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.Histogram;
+
+public class PrometheusHistogram {
+  public static void histogramUsage() {
+    Histogram deviceCommandDuration =
+        Histogram.builder()
+            .name("device_command_duration_seconds")
+            .help("Time to receive acknowledgment from a smart home device")
+            .labelNames("device_type")
+            .classicUpperBounds(0.1, 0.25, 0.5, 1.0, 2.5, 5.0)
+            .register();
+
+    deviceCommandDuration.labelValues("thermostat").observe(0.35);
+    deviceCommandDuration.labelValues("lock").observe(0.85);
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+**OpenTelemetry**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/OtelHistogram.java"?>
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.DoubleHistogram;
+import io.opentelemetry.api.metrics.Meter;
+import java.util.List;
+
+public class OtelHistogram {
+  // Preallocate attribute keys and, when values are static, entire Attributes objects.
+  private static final AttributeKey<String> DEVICE_TYPE = AttributeKey.stringKey("device_type");
+  private static final Attributes THERMOSTAT = Attributes.of(DEVICE_TYPE, "thermostat");
+  private static final Attributes LOCK = Attributes.of(DEVICE_TYPE, "lock");
+
+  public static void histogramUsage(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    // setExplicitBucketBoundariesAdvice() sets default boundaries as a hint to the SDK.
+    // Views configured at the SDK level take precedence over this advice.
+    DoubleHistogram deviceCommandDuration =
+        meter
+            .histogramBuilder("device.command.duration")
+            .setDescription("Time to receive acknowledgment from a smart home device")
+            .setUnit("s")
+            .setExplicitBucketBoundariesAdvice(List.of(0.1, 0.25, 0.5, 1.0, 2.5, 5.0))
+            .build();
+
+    deviceCommandDuration.record(0.35, THERMOSTAT);
+    deviceCommandDuration.record(0.85, LOCK);
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+Key differences:
+
+- `observe(value)` → `record(value, attributes)`.
+- OpenTelemetry distinguishes `LongHistogram` (integers, via `.ofLongs()`) from `DoubleHistogram`
+  (the default). Prometheus uses a single `Histogram` type.
+- Preallocate `AttributeKey` instances (always) and `Attributes` objects (when values are
+  static) to avoid per-call allocation on the hot path.
+- `setExplicitBucketBoundariesAdvice()` sets default bucket boundaries on the instrument as a
+  hint to the SDK. Views configured at the SDK level take precedence and can override them:
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/OtelHistogramExplicitBucketView.java"?>
+```java
+package otel;
+
+import io.opentelemetry.sdk.metrics.Aggregation;
+import io.opentelemetry.sdk.metrics.InstrumentSelector;
+import io.opentelemetry.sdk.metrics.SdkMeterProvider;
+import io.opentelemetry.sdk.metrics.View;
+import java.util.List;
+
+public class OtelHistogramExplicitBucketView {
+  static SdkMeterProvider createMeterProvider() {
+    // Override the bucket boundaries advised on the instrument for a specific histogram.
+    return SdkMeterProvider.builder()
+        .registerView(
+            InstrumentSelector.builder().setName("device.command.duration").build(),
+            View.builder()
+                .setAggregation(
+                    Aggregation.explicitBucketHistogram(List.of(0.1, 0.25, 0.5, 1.0, 2.5, 5.0)))
+                .build())
+        .build();
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+{{% /tab %}} {{< /tabpane >}}
+
+- **Bucket configuration**: Prometheus declares bucket boundaries on the instrument itself via
+  `classicUpperBounds()`. In OpenTelemetry, `setExplicitBucketBoundariesAdvice()` sets default
+  boundaries on the instrument as a hint, but they can be overridden or replaced by views
+  configured at the SDK level. This separation keeps instrumentation code independent of
+  collection configuration.
+
+### Exponential histogram
+
+Both systems support exponential (auto-scaling) histograms, which automatically adjust bucket
+boundaries to cover the observed range without requiring manual configuration.
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+**Prometheus**
+
+In Prometheus, the native histogram format is enabled at instrument creation time:
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/PrometheusHistogramNative.java"?>
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.Histogram;
+
+public class PrometheusHistogramNative {
+  public static void nativeHistogramUsage() {
+    Histogram deviceCommandDuration =
+        Histogram.builder()
+            .name("device_command_duration_seconds")
+            .help("Time to receive acknowledgment from a smart home device")
+            .labelNames("device_type")
+            .nativeOnly()
+            .register();
+
+    deviceCommandDuration.labelValues("thermostat").observe(0.35);
+    deviceCommandDuration.labelValues("lock").observe(0.85);
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+**OpenTelemetry**
+
+In OpenTelemetry, the instrumentation code is identical to the explicit (classic) histogram
+case. The exponential format is configured separately, outside the instrumentation layer.
+
+The preferred approach is to configure it on the metric exporter. This applies to all
+histograms exported through that exporter without touching instrumentation code:
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/OtelHistogramExponentialExporter.java"?>
+```java
+package otel;
+
+import io.opentelemetry.exporter.otlp.http.metrics.OtlpHttpMetricExporter;
+import io.opentelemetry.sdk.metrics.Aggregation;
+import io.opentelemetry.sdk.metrics.InstrumentType;
+
+public class OtelHistogramExponentialExporter {
+  static OtlpHttpMetricExporter createExporter() {
+    // Configure the exporter to use exponential histograms for all histogram instruments.
+    // This is the preferred approach — it applies globally without modifying instrumentation code.
+    return OtlpHttpMetricExporter.builder()
+        .setEndpoint("http://localhost:4318")
+        .setDefaultAggregationSelector(
+            type ->
+                type == InstrumentType.HISTOGRAM
+                    ? Aggregation.base2ExponentialBucketHistogram()
+                    : Aggregation.defaultAggregation())
+        .build();
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+For more granular control — for example, to use exponential histograms for specific instruments
+while keeping explicit buckets for others — configure a view instead:
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/OtelHistogramExponentialView.java"?>
+```java
+package otel;
+
+import io.opentelemetry.sdk.metrics.Aggregation;
+import io.opentelemetry.sdk.metrics.InstrumentSelector;
+import io.opentelemetry.sdk.metrics.SdkMeterProvider;
+import io.opentelemetry.sdk.metrics.View;
+
+public class OtelHistogramExponentialView {
+  static SdkMeterProvider createMeterProvider() {
+    // Use a view for per-instrument control — select a specific instrument by name
+    // to use exponential histograms while keeping explicit buckets for others.
+    return SdkMeterProvider.builder()
+        .registerView(
+            InstrumentSelector.builder().setName("device.command.duration").build(),
+            View.builder().setAggregation(Aggregation.base2ExponentialBucketHistogram()).build())
+        .build();
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+{{% /tab %}} {{< /tabpane >}}
+
+### Summary {#summary}
+
+Prometheus `Summary` computes quantiles client-side at scrape time and exposes them as labeled
+time series (for example, `{quantile="0.95"}`). OpenTelemetry has no direct equivalent.
+
+For migrating away from `Summary`:
+
+- **Quantile estimation**: Switch to a `Histogram` with bucket boundaries that cover the range
+  of values you care about. Quantiles can then be computed at query time — for example, with
+  `histogram_quantile()` in PromQL. Unlike `Summary`, histogram-based quantiles can be
+  aggregated across instances.
+- **SLO compliance**: If you only need to know what fraction of observations fall below a
+  specific threshold, use a histogram with a single bucket at that threshold. The bucket count
+  directly expresses compliance against the threshold.
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+A typical Prometheus `Summary` recording client-side quantiles:
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/PrometheusSummary.java"?>
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.Summary;
+
+public class PrometheusSummary {
+  public static void summaryUsage() {
+    Summary deviceCommandDuration =
+        Summary.builder()
+            .name("device_command_duration_seconds")
+            .help("Time to receive acknowledgment from a smart home device")
+            .labelNames("device_type")
+            .quantile(0.5, 0.05)
+            .quantile(0.95, 0.01)
+            .quantile(0.99, 0.001)
+            .register();
+
+    deviceCommandDuration.labelValues("thermostat").observe(0.35);
+    deviceCommandDuration.labelValues("lock").observe(0.85);
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+In OpenTelemetry, replace this with a `DoubleHistogram` using bucket boundaries that bracket
+your quantile thresholds. Quantiles are computed at query time rather than in the client.
 
 {{% /tab %}} {{< /tabpane >}}
