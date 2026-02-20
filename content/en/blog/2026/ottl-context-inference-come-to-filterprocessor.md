@@ -164,40 +164,6 @@ trace_conditions:
 Now the resource rule removes the full subtree, while the span-event rule
 removes only matching events.
 
-## When inference needs explicit context
-
-Most of the time, inference works automatically. But some combinations of paths,
-functions, and enums cannot be evaluated in a single condition. For example:
-
-```yaml
-trace_conditions:
-  - IsRootSpan() or spanevent.name == "bar"
-```
-
-This fails because:
-
-- `IsRootSpan()` is valid only in the span context
-- `spanevent.name` requires the span event context
-
-Since no single context supports both, the condition must be split:
-
-```yaml
-trace_conditions:
-  - context: span
-    conditions:
-      - IsRootSpan()
-  - conditions:
-      - spanevent.name == "bar"
-```
-
-Because `IsRootSpan()` has no path prefix, you must explicitly specify its
-context.
-
-Quick rule:
-
-- Path prefixes → inference works automatically
-- Functions/enums without prefixes → specify context manually
-
 ## Migration and compatibility
 
 The legacy configuration format (`traces.resource`, `traces.span`, and similar
