@@ -99,23 +99,31 @@ sub getVersFromGitmodules($) {
   return $vers;
 }
 
-sub applyPatchOrPrintMsgIf($$$) {
+sub applyPatchOrPrintMsgIf($$$;$) {
   # Returns truthy if patch should be applied, otherwise prints message (once) as to why not.
-  # The patch is applied if $submoduleVers starts with $targetVers.
+  # The patch is applied if $submoduleVers starts with $targetVers and is <= $maxVers (if provided).
 
-  my ($patchID, $specName, $targetVers) = @_;
+  my ($patchID, $specName, $targetVers, $maxVers) = @_;
   my $vers = $versions{$specName};
   my $submoduleVers = getVersFromGitmodules($specName);
   my $key = $specName . $patchID;
 
   return 0 if $patchMsgCount{$key} && $patchMsgCount{$key} ne 'Apply the patch';
 
+  if ($maxVers && $submoduleVers && $submoduleVers gt $maxVers) {
+    print STDOUT "INFO: $0: skipping patch '$patchID' since spec '$specName' " .
+      "submodule is at version '$submoduleVers' > '$maxVers' (patch max version); " .
+      "the fix is likely in upstream now\n" unless $patchMsgCount{$key};
+    $patchMsgCount{$key}++;
+    return 0;
+  }
+
   if ($submoduleVers && $submoduleVers =~ /^$targetVers/) {
     print STDOUT "INFO: $0: applying patch '$patchID' since spec '$specName' " .
       "submodule is at version '$submoduleVers', and it starts with the patch target '$targetVers'" .
       "\n" unless $patchMsgCount{$key};
     return $patchMsgCount{$key} = 'Apply the patch';
-  } elsif ($vers ge $targetVers) {
+  } elsif (($maxVers && $vers gt $maxVers) || $vers ge $targetVers) {
     print STDOUT "INFO: $0: patch '$patchID' is probably obsolete now that " .
       "spec '$specName' is at version '$vers' >= '$targetVers' (patch target version); " .
       "if so, remove the patch\n";
@@ -141,9 +149,13 @@ sub patchSpec_because_of_SpecName_SomeDescription_AsTemplate() {
     # Call helper function that will cause the function to return early if the
     # current version of the named spec (arg 2) is greater than the target
     # version (arg 3). The first argument is a unique id that will be printed if
-    # the patch is outdated. Otherwise, if the patch is still relevant we fall
-    # through to the body of this patch function.
+    # the patch is outdated. An optional 4th argument (maxVers) specifies the
+    # upper bound - the patch won't apply if submodule version > maxVers.
+    # Otherwise, if the patch is still relevant we fall through to the body
+    # of this patch function.
     applyPatchOrPrintMsgIf('2026-01-01-some-unique-id', 'semconv', '1.39.0-dev');
+    # Or with an upper bound:
+    # applyPatchOrPrintMsgIf('2026-01-01-some-unique-id', 'semconv', '1.39.0', '1.40.0');
 
   # Give info about the patch:
   #
@@ -164,7 +176,7 @@ sub patchSpec_because_of_SemConv_DatabaseRenamedToDb() {
     # Restrict the patch to the proper spec, and section or file:
     # Note that here we replace links into semconv from the spec
     $ARGV =~ m|^tmp/otel/specification/|
-      && applyPatchOrPrintMsgIf('2025-11-26-database-section-renamed-to-db', 'spec', '1.53.0');
+      && applyPatchOrPrintMsgIf('2025-11-26-database-section-renamed-to-db', 'spec', '1.53.0', '1.53.0');
 
   # Give info about the patch, see:
   # https://github.com/open-telemetry/opentelemetry.io/pull/8311#issue-3577941378
@@ -176,7 +188,7 @@ sub patchSpec_because_of_SemConv_DatabaseRenamedToDb() {
 sub patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration() {
   return unless
     $ARGV =~ m|^tmp/otel/specification/|
-      && applyPatchOrPrintMsgIf('2025-12-05-metric-rpc-server-duration-renamed-to-rpc-server-call-duration', 'spec', '1.53.0');
+      && applyPatchOrPrintMsgIf('2025-12-05-metric-rpc-server-duration-renamed-to-rpc-server-call-duration', 'spec', '1.53.0', '1.53.0');
 
   # Give info about the patch, see:
   # https://github.com/open-telemetry/opentelemetry-specification/pull/4778
