@@ -11,7 +11,7 @@ sig: End-User SIG
 
 ---
 
-![Cover image showing the OTel Community Managers](cover.png)
+![Cover image showing the OTel Community Managers](Cover.png)
 
 Hi, community! We are your [newly appointed Community Managers](https://opentelemetry.io/blog/2026/new-community-managers/). 
 We’ve begun the initial transitional work behind the scenes, and we look 
@@ -61,7 +61,7 @@ I enjoy reading sci-fi, watching horror movies, and training jiu-jitsu.
 Slack handle: @Adriana Villela
 [Socials](https://bio.site/adrianavillela)
 
-![Photo of Adriana taking a selfie with a capybara](adriana-villela.png)
+![Photo of Adriana taking a selfie with a capybara](adriana-villela.JPG)
 
 If I were to tell my younger teenage self what I do for a living now, she 
 would’ve definitely been shocked. I got an early start in computers. BASIC 
