@@ -70,7 +70,6 @@ Each condition includes a simple prefix (`resource`, `scope`, `span`,
 that prefix.
 
 No guessing. No hidden placement rules.
-
 All conditions are combined using logical OR: if any condition matches, the
 telemetry is dropped.
 
