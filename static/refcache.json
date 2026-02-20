@@ -7251,6 +7251,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-11T09:58:39.7925146Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/filterprocessor/README.md#basic-config": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T01:05:58.100521Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/probabilisticsamplerprocessor/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:53:08.855390556Z"

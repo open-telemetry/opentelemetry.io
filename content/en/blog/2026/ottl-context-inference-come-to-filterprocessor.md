@@ -25,39 +25,44 @@ and the few edge cases you should know about.
 
 ## The issue: OTTL context confusion
 
-In the legacy configuration, writing filters requires understanding the
-OTel Collector’s internal telemetry hierarchy. Conditions must be placed inside
+In the legacy configuration, writing filters requires understanding the OTel
+Collector’s internal telemetry hierarchy. Conditions must be placed inside
 specific OTTL context blocks such as `resource`, `span`, or `spanevent`.
 
+```yaml
+filter:
+  traces:
+    span:
+      - resource.attributes["host.name"] == "localhost"
+      - attributes["container.name"] == "app_container_1"
+      - name == "app_3"
+    spanevent:
+      - attributes["grpc"] == true
+      - IsMatch(name, ".*grpc.*")
+```
 
-Where the condition is placed changes how it behaves:
-
-- Under `resource`: parsing fails, because `scope.name` is not a valid path in
-  the resource context.
-- Under `span`: this works. Spans from the matching scope are dropped.
-- Under `spanevent`: this partially works. Only span events are filtered, and
-  spans without events are never checked. The condition is evaluated in the span
-  event context, so it only filters out span events from the matching scope.
-  Spans that have no child span events are never evaluated against this
-  condition, meaning they pass through the filter even if they belong to the
-  matching scope.
-
-Even though these rules describe one logical filtering intent, they are required to be split across distinct context blocks. This requirement diverts attention toward Collector internals rather than allowing a dedicated focus on the filtering logic itself.
+Even though these rules describe one logical filtering intent, they are required
+to be split across distinct context blocks. This requirement diverts attention
+toward Collector internals rather than allowing a dedicated focus on the
+filtering logic itself.
 
 ## The new approach: conditions with OTTL context inference
 
 ### Basic configuration
 
 Context inference removes this complexity. Instead of organizing rules by
-context blocks, they are written as a flat list using the [basic configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/filterprocessor/README.md#basic-config) style: 
+context blocks, they are written as a flat list using the
+[basic configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/filterprocessor/README.md#basic-config)
+style:
 
 ```yaml
 filter:
   trace_conditions:
-    - resource.attributes["deployment.environment"] == "staging" # inferred as resource context
-    - scope.name == "com.example.gateway" # inferred as scope context
-    - span.attributes["http.route"] == "/healthz" # inferred as span context
-    - spanevent.name == "debug-log" # inferred as spanevent context
+    - resource.attributes["host.name"] == "localhost" # inferred as resource context
+    - span.attributes["container.name"] == "app_container_1" # inferred as span context
+    - span.name == "app_3" # inferred as span context
+    - spanevent.attributes["grpc"] == true # inferred as spanevent context
+    - IsMatch(spanevent.name, ".*grpc.*") # inferred as spanevent context
 ```
 
 Each condition includes a simple prefix (`resource`, `scope`, `span`,
