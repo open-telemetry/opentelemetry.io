@@ -77,7 +77,7 @@ an industrial engineering degree, which wasn't related to software, but still of
 My path to cloud native was a long one – I was in tech for 20 years, working 
 mostly in large enterprise, closed systems, before I found my way into 
 OpenTelemetry, first, managing an Observability practices team, and then 
-as a Developer Advocate. In my first advocacy job, my manager, Austin, who 
+as a Developer Advocate. In my first advocacy job, my manager, Austin Parker, who 
 recruited me to work alongside them and Ted Young at Lightstep back in 2022 
 (talk about fangirling), encouraged me to contribute to OpenTelemetry. I 
 started off with a few contributions to the OTel docs, and then in early 2023 
