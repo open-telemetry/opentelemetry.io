@@ -89,7 +89,7 @@ we started seeing an increase in regular contributors to the SIG. The work we
 were doing was making a difference!
 
 Over the years, I’ve been lucky enough to speak at a number of cloud native 
-events, including KubeCon (EU/NA/Japan), Observability Day (EU/NA), 
+events, including KubeCon (EU, NA, Japan), Observability Day (EU, NA), 
 Platform Engineering Day (NA), a number of KCDs (Porto, Warsaw), Open 
 Source Summit (EU, NA, Japan) and Cloud Native Days (Bergen, Austria) 
 around the world. Many of them, with Reese as my amazing co-speaker and 
