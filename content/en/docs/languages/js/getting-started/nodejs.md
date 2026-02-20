@@ -245,6 +245,14 @@ Listening for requests on http://localhost:8080
 
 {{% /tab %}} {{< /tabpane >}}
 
+(Note: If your application is written in JavaScript as ECMAScript Modules (ESM),
+or compiled to ESM from TypeScript, then a loader hook is required to properly
+support instrumentation. Use
+`node --experimental-loader=@opentelemetry/instrumentation/hook.mjs --require ./instrumentation.js app.js`.
+See
+[ESM support docs](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/esm-support.md)
+for details on ESM support in OpenTelemetry.)
+
 Open <http://localhost:8080/rolldice> in your web browser and reload the page a
 few times. After a while you should see the spans printed in the console by the
 `ConsoleSpanExporter`.
@@ -552,6 +560,8 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 ```
 
 {{% /tab %}} {{< /tabpane >}}
+
+{{% include esm-support-node.md %}}
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

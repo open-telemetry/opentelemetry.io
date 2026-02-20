@@ -11323,6 +11323,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-19T09:52:33.798477565Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/esm-support.md": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-18T11:01:16.529047948Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md": {
     "StatusCode": 206,
     "LastSeen": "2026-02-18T09:52:57.22910094Z"
@@ -17254,6 +17258,10 @@
   "https://nodejs.org/api/cli.html#-r---require-module": {
     "StatusCode": 206,
     "LastSeen": "2026-02-18T09:58:09.732495744Z"
+  },
+  "https://nodejs.org/api/modules.html#modules-commonjs-modules": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-18T11:01:15.225540416Z"
   },
   "https://nodejs.org/api/perf_hooks.html": {
     "StatusCode": 206,
