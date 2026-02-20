@@ -1,5 +1,7 @@
 # Language SDK Documentation Consistency
 
+<!-- markdownlint-disable no-otel-io-external-urls -->
+
 ## Ownership
 
 - Lead: Fabrizio Ferri Benedetti (@theletterf)

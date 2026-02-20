@@ -1,5 +1,7 @@
 # Website Localization
 
+<!-- markdownlint-disable no-otel-io-external-urls -->
+
 ## Ownership
 
 - Lead: Vitor Vasconcellos (@vitorvasc)
