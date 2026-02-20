@@ -4455,6 +4455,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-19T09:53:32.379546561Z"
   },
+  "https://github.com/bruegth": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:52:32.148342032Z"
+  },
+  "https://github.com/bruegth/opentelemetry-collector-opcua-receiver": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:52:31.767622931Z"
+  },
   "https://github.com/bruno-garcia": {
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:50:14.141290891Z"

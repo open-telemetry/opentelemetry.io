@@ -12,8 +12,8 @@ tags:
 license: Apache 2.0
 description:
   The OPC UA Log Receiver collects log records from OPC UA servers implementing
-  the LogObject specification (OPC UA Part 26) and converts them to OpenTelemetry
-  log format for industrial automation system observability.
+  the LogObject specification (OPC UA Part 26) and converts them to
+  OpenTelemetry log format for industrial automation system observability.
 authors:
   - name: Thomas Brüggemann
     url: https://github.com/bruegth
@@ -22,4 +22,3 @@ urls:
 createdAt: 2026-02-20
 isNative: false
 isFirstParty: false
-
