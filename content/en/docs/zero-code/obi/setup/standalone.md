@@ -24,7 +24,7 @@ You can get OBI by extracting the necessary files from the container image.
 IMAGE=otel/ebpf-instrument:main
 docker pull $IMAGE
 ID=$(docker create $IMAGE)
-docker cp $ID:ebpf-instrument .
+docker cp $ID:obi .
 docker cp $ID:obi-java-agent.jar .
 docker rm -v $ID
 ```
