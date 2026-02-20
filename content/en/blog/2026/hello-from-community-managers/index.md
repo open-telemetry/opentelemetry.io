@@ -72,7 +72,7 @@ and, post-retirement, Rust. I, on the other hand, as an avid Star Trek fan,
 wanted to design spaceships and had planned to be an aerospace engineer. 
 And yet, ironically, after a summer job writing code at the Canadian Space 
 Agency, I decided that software was in my future. Spoiler: I graduated with 
-an industrial engineering degree.
+an industrial engineering degree, which wasn't related to software, but still offered a number of software-related classes.
 
 My path to cloud native was a long one – I was in tech for 20 years, working 
 mostly in large enterprise, closed systems, before I found my way into 
