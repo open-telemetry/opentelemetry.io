@@ -1,4 +1,4 @@
-# cSpell:ignore docsy javaexamples
+# cSpell:ignore docsy javaexamples javainstrumentation
 [submodule "themes/docsy"]
 	path = themes/docsy
 	url = https://github.com/google/docsy.git
@@ -34,3 +34,7 @@
 	path = content-modules/opentelemetry-java-examples
 	url = https://github.com/open-telemetry/opentelemetry-java-examples.git
 	javaexamples-pin = 5023e70
+[submodule "content-modules/opentelemetry-java-instrumentation"]
+	path = content-modules/opentelemetry-java-instrumentation
+	url = https://github.com/open-telemetry/opentelemetry-java-instrumentation.git
+	javainstrumentation-pin = v2.23.0
