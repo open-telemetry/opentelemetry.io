@@ -2515,6 +2515,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-12T09:54:45.867771529Z"
   },
+  "https://docs.payara.fish/community/docs/Technical%20Documentation/MicroProfile/OpenTelemetry%20and%20OpenTracing.html": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-19T18:27:29.218358936Z"
+  },
   "https://docs.php-http.org/en/latest/clients.html": {
     "StatusCode": 200,
     "LastSeen": "2026-02-14T09:47:15.490571407Z"
