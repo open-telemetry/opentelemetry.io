@@ -8611,6 +8611,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:56:03.234793194Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/vcrreceiver": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:16:07.929410757Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/wavefrontreceiver": {
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:56:06.531524684Z"
