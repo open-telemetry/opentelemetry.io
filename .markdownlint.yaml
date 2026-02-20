@@ -1,4 +1,21 @@
-# See https://github.com/DavidAnson/markdownlint/blob/main/README.md#rules--aliases
+# See
+# https://github.com/DavidAnson/markdownlint/blob/main/README.md#rules--aliases
+#
+# TODO: move the following to the contrib section of the site and link to it
+# here.
+#
+# To disable any rule, including custom rules, use markdownlint disable
+# directives, see
+# https://github.com/DavidAnson/markdownlint/blob/main/README.md#configuration.
+#
+# For example:
+#
+# <!-- markdownlint-disable line-length-->
+# ... text ...
+# <!-- markdownlint-enable line-length -->
+#
+# Or:
+# <!-- markdownlint-disable-next-line no-http-urls -->
 
 default: true
 
@@ -19,10 +36,57 @@ table-column-style: false # Causes problems in ja and zh pages
 # Custom rules below this point:
 trim-code-blank-lines: true
 unindent-code-blocks: true
-validate-links:
-  patterns:
-    - regex: "https://github\\.(?!com|blog|io|github.com)"
-      message: >-
-        GitHub URLs should use `github.(com|blog|io)` domains to avoid
-        typosquatting. For details, see
-        https://github.com/open-telemetry/opentelemetry.io/issues/8085.
+
+# -----------------------------------------------------------------------------
+# Link-validation rules (from scripts/_md-rules/link-rules.mjs)
+
+# TODO: document the custom rules in the contrib section of the site and link
+# to it here and in the rule message for further details.
+
+no-typosquatting-urls:
+  regex: 'https://github\.(?!com|blog|io|github.com)'
+  message: >-
+    GitHub URLs should use `github.(com|blog|io|github.com)` domains to avoid
+    typosquatting. For details, see
+    https://github.com/open-telemetry/opentelemetry.io/issues/8085.
+
+no-http-urls:
+  regex: 'http://(?!([\w-]+\.)?localhost\b)(?!127\.0)(?!.*[\?&]http_ok\b)'
+  message: >-
+    'http' URLs are only permitted for localhost/127.0.0.1. Use 'https' or add
+    'http_ok' as a query parameter to the URL, such as:
+    https://example.com?http_ok or http://example.com?q=search&http_ok.
+
+no-lang-prefix-in-paths:
+  # This rule might cause false positives if pages need to reach across locale
+  # sites, but that seems unlikely. What has happened often enough is for locale
+  # authors to prefix paths with their locale's language code; but that isn't
+  # necessary, since absolute paths resolve to the locale's site root. See
+  # https://gohugo.io/quick-reference/glossary/#site-relative
+  regex: '^/..(-..)?/.+'
+  # Note: ^/../$ is accepted
+  message: >-
+    Don't prefix paths with a language code.
+
+no-otel-io-external-urls:
+  regex: 'https?://(?:www\.)?opentelemetry\.io/'
+  message: >-
+    Use a site-relative path instead of the full opentelemetry.io URL.
+
+no-spec-github-urls:
+  regex: 'https://github\.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\w'
+  message: >-
+    Use a local path, not a GitHub URL, for references to specification pages
+    that are hosted on this site.
+
+no-proto-spec-github-urls:
+  regex: 'https://github\.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification'
+  message: >-
+    Use a local path, not a GitHub URL, for references to specification pages
+    that are hosted on this site.
+
+no-semconv-github-urls:
+  regex: 'https://github\.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs'
+  message: >-
+    Use a local path, not a GitHub URL, for references to semantic conventions
+    pages that are hosted on this site.

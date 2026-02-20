@@ -1,70 +1,68 @@
 // @ts-check
 //
-// Custom markdownlint rule to validate links against given regex patterns.
+// Factory for creating markdownlint rules that validate links against a regex
+// pattern. Each rule created by this factory gets its own name and config,
+// allowing per-rule disable directives.
 
 import { filterByTypes } from 'markdownlint-rule-helpers/micromark';
 
+const linkTokenTypes = /** @type {any} */ ([
+  'resourceDestinationString', // inline link [text](url) or image ![alt](url)
+  'definitionDestinationString', // reference definition [label]: url
+  'autolinkProtocol', // autolink: <https://...>
+  'literalAutolinkHttp', // bare URL: https://... (GFM extension)
+]);
+
 /**
- * Check content for URLs matching the given patterns.
+ * Create a markdownlint rule that checks link URLs against a regex pattern
+ * specified via rule config.
  *
- * @param {string} content - content to check
- * @param {number} lineNumber - line number for error reporting
- * @param {Function} onError - error reporting function
- * @param {Array} urlPatterns - patterns to match against
+ * Config shape (in .markdownlint.yaml):
+ *
+ *   rule-name:
+ *     regex: 'pattern'
+ *     message: 'Error message'
+ *
+ * @param {string} name - rule identifier (used in markdownlint-disable directives)
+ * @param {string} description - human-readable rule description
+ * @returns {import("markdownlint").Rule}
  */
-function checkContentForUrls(content, lineNumber, onError, urlPatterns) {
-  if (!content) return;
+export function createLinkPatternRule(name, description) {
+  return {
+    names: [name],
+    description,
+    tags: ['custom', 'links', 'validation'],
+    parser: 'micromark',
+    function: function (params, onError) {
+      const { regex, message } = params.config;
+      if (!regex || !message) return;
 
-  // Skip URLs that contain Hugo template directives
-  if (content.includes('{{') && content.includes('}}')) return;
+      const compiled = new RegExp(regex, 'g');
 
-  for (const pattern of urlPatterns) {
-    let match;
-    // Reset regex lastIndex to ensure global regex works correctly
-    pattern.regex.lastIndex = 0;
+      const linkDestinations = filterByTypes(
+        params.parsers.micromark.tokens,
+        linkTokenTypes,
+      );
 
-    while ((match = pattern.regex.exec(content)) !== null) {
-      const contextStart = Math.max(0, match.index - 20);
-      const contextEnd = match.index + match[0].length + 20;
-      onError({
-        lineNumber,
-        detail: pattern.message,
-        context: content.substring(contextStart, contextEnd),
-      });
-    }
-  }
+      for (const token of linkDestinations) {
+        const content = token.text;
+        if (!content) continue;
+
+        // Skip URLs that contain Hugo template directives
+        if (content.includes('{{') && content.includes('}}')) continue;
+
+        compiled.lastIndex = 0;
+        let match;
+        while ((match = compiled.exec(content)) !== null) {
+          const contextStart = Math.max(0, match.index - 20);
+          const contextEnd = match.index + match[0].length + 20;
+          onError({
+            lineNumber: token.startLine,
+            detail: message,
+            context: content.substring(contextStart, contextEnd),
+          });
+        }
+      }
+    },
+  };
 }
-
-/** @type {import("markdownlint").Rule} */
-export default {
-  names: ['validate-links'],
-  description: 'Validate links against given regex patterns',
-  tags: ['custom', 'links', 'validation'],
-  parser: 'micromark',
-  function: function validateLinks(params, onError) {
-    // Get regex patterns from config
-    /** @type {{regex: string, message: string}[]} */
-    const configPatterns = params.config.patterns;
-
-    // Convert string regexes to RegExp objects
-    const urlPatterns = configPatterns.map((p) => ({
-      regex: new RegExp(p.regex, 'g'),
-      message: p.message,
-    }));
-
-    // Find all link destination strings (URLs in various Markdown constructs)
-    const linkDestinations = filterByTypes(
-      params.parsers.micromark.tokens,
-      /** @type {any} */ ([
-        'resourceDestinationString', // inline link [text](url) or image ![alt](url)
-        'definitionDestinationString', // reference definition [label]: url
-        'autolinkProtocol', // autolink: <https://...>
-        'literalAutolinkHttp', // bare URL: https://... (GFM extension)
-      ]),
-    );
-
-    for (const token of linkDestinations) {
-      checkContentForUrls(token.text, token.startLine, onError, urlPatterns);
-    }
-  },
-};

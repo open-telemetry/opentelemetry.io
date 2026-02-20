@@ -1,4 +1,5 @@
 <!-- cSpell:ignore Chalin Ferri Benedetti Hrabusa jparsana -->
+<!-- markdownlint-disable no-otel-io-external-urls -->
 
 # <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry.io
 
@@ -86,7 +87,6 @@ These are the members of [@open-telemetry/docs-triagers]:
 
 - [Emídio Neto](https://github.com/emdneto)
 - [Ezzio Moreira](https://github.com/EzzioMoreira)
-- [Kazunori Otani](https://github.com/katzchang), Splunk
 - [Masaki Sugimoto](https://github.com/Msksgm), Henry, Inc.
 - [Michael Yao](https://github.com/windsonsea), DaoCloud
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), AWS
@@ -108,6 +108,13 @@ For more information about the emeritus role, see the
 - [Paul Bruce](https://github.com/paulsbruce)
 - [Michael Hausenblas](https://github.com/mhausenblas)
 - [Ted Young](https://github.com/tedsuo)
+
+For more information about the emeritus role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
+
+### Emeritus triagers
+
+- [Kazunori Otani](https://github.com/katzchang)
 
 For more information about the emeritus role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).

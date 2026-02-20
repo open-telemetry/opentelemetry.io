@@ -141,10 +141,9 @@ params:
     sidebar_root_enabled: true
     feedback:
       enable: true
-      'yes': >-
-        Thank you. Your feedback is appreciated!
+      yes: Thank you. Your feedback is appreciated!
       # prettier-ignore
-      'no': >-
+      no: >-
         Please let us know <a class="external-link" target="_blank" rel="noopener"
         href="https://github.com/open-telemetry/opentelemetry.io/issues/new?template=PAGE_FEEDBACK.yml&title=[Page+feedback]%3A+ADD+A+SUMMARY+OF+YOUR+FEEDBACK+HERE">how
         we can improve this page</a>. Your feedback is appreciated!
@@ -162,6 +161,7 @@ params:
         url: https://fosstodon.org/@opentelemetry
         icon: fab fa-mastodon
         desc: Follow us on Mastodon to get the latest news!
+        rel: me
       - name: Stack Overflow
         url: https://stackoverflow.com/questions/tagged/open-telemetry
         icon: fab fa-stack-overflow
@@ -251,9 +251,14 @@ params:
     docker-compose-v2: |
       `docker-compose` is deprecated. For details, see
       [Migrate to Compose V2](https://docs.docker.com/compose/).
+
   # Docs helpers: use with _param
   FA: <i class="fa-{1} fa-{2} text-{3} px-1"></i>
+  FAB: <i class="fa-brands fa-{1} text-{2} px-1"></i>
   FAS: <i class="fa-solid fa-{1} text-{2} px-1"></i>
+  FAS_LG: <i class="fa-solid fa-{1} text-{2} fa-lg"></i>
+  # Badge usage: {{% _param BADGE text color %}}
+  BADGE: <span class="badge text-bg-{2} rounded-pill text-small">{1}</span>
 
 security:
   funcs: # cspell:disable-line
