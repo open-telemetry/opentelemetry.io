@@ -10,6 +10,8 @@ Exporters send telemetry data to observability backends and destinations. For
 more information on how to configure exporters, see the
 [Collector configuration documentation](/docs/collector/configuration/#exporters).
 
+{{% include unmaintained-components-msg.md %}}
+
 <!-- BEGIN GENERATED: exporter-table SOURCE: collector-watcher -->
 
 | Name                                                                                                                                                     | Distributions[^1]        | Traces[^2]   | Metrics[^2]  | Logs[^2]     |
