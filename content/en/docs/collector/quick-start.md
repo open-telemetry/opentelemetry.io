@@ -45,14 +45,14 @@ preferred shell.
    docker pull otel/opentelemetry-collector:{{% param vers %}}
    ```
 
-2. Install the [telemetrygen] utility:
+2. Install the [telemetrygen][] utility:
 
    ```sh
    go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
    ```
 
-   This utility can simulate a client generating [traces], [metrics], and
-   [logs].
+   This utility can simulate a client generating [traces][], [metrics][], and
+   [logs][].
 
 ## Generate and collect telemetry
 

@@ -10,7 +10,7 @@ weight: 15
 To contribute new or improve existing documentation, submit a [pull request][PR]
 (PR):
 
-- If your change is small, or you're unfamiliar with [Git], see
+- If your change is small, or you're unfamiliar with [Git][], see
   [Using GitHub](#changes-using-github) to learn how to edit a page.
 - Otherwise, see [Work from a local fork](#fork-the-repo) to learn how to make
   changes in your own local development environment.

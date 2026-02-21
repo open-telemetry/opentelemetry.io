@@ -5,11 +5,11 @@ description:
   List of open source OpenTelemetry distributions maintained by third parties.
 ---
 
-OpenTelemetry [distributions] are a way of customizing OpenTelemetry
-[components] so that they're easier to deploy and use with specific
+OpenTelemetry [distributions][] are a way of customizing OpenTelemetry
+[components][] so that they're easier to deploy and use with specific
 observability backends.
 
-Any third-party can customize OpenTelemetry components with backend, [vendor],
+Any third-party can customize OpenTelemetry components with backend, [vendor][],
 or end-user specific changes. You can use OpenTelemetry components without a
 distribution, but a distribution might make things easier in some cases, like
 when a vendor has specific requirements.

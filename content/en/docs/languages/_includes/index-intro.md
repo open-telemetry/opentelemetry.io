@@ -17,7 +17,7 @@ The current status of the major functional components for OpenTelemetry
 | ------------------- | -------------------- | ----------------- |
 | {{ $tracesStatus }} | {{ $metricsStatus }} | {{ $logsStatus }} |
 
-For releases, including the [latest release][], see [Releases]. {{ $.Inner }}
+For releases, including the [latest release][], see [Releases][]. {{ $.Inner }}
 
 [latest release]:
   <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases/latest>
