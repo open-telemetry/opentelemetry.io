@@ -3,7 +3,7 @@ title: サイトのローカリゼーション
 description: 非英語ローカリゼーションのサイトページの作成と管理
 linkTitle: ローカリゼーション
 weight: 25
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25 # patched
+default_lang_commit: 162b6afb3495b2f02f8afd9a16c76dbc2c5c8dfd
 drifted_from_default: true
 cSpell:ignore: Dowair shortcodes
 ---
@@ -16,7 +16,7 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
 
 ウェブサイトのページを英語から翻訳する場合は、この節のガイダンスにしたがうことをおすすめします。
 
-### 要約
+### 要約 {#summary}
 
 #### ✅ すべきこと {#do}
 
@@ -43,14 +43,14 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
 <div class="border-start border-warning bg-warning-subtle">
 
 - **翻訳**
+  - [アラートタイプ](../style-guide/#alerts) (`TIP`、`WARNING` など)
+  - コード (コードブロックやインライン コードを含む。たとえば、`inline code example` など)
   - このレポジトリ内のリソースの **ファイルやディレクトリ** の名前
+  - [すべきこと](#do) で指示されていない [フロントマター][front matter]のフィールド。特に `aliases` は翻訳しないこと。不明な場合はメンテナーに質問すること。
   - [見出しID](#headings) を含む [リンク](#links) [^*]
-  - `inline code-spans` のようなインラインコードスパン
   - `notranslate`（CSSクラスとして）でマークされたMarkdown の要素、特に[見出し](#headings)に対して
-  - [すべきこと](#do) で指示されていない [フロントマター][front matter] のフィールド。特に、`aliases` は翻訳しないこと。よくわからない場合はメンテナーに質問すること。
-  - ソースコード
 - [画像内のテキストを翻訳する](#images) 場合以外で **画像ファイルのコピー** をすること。
-- 新規に追加したり変更すること
+- 新規に追加したり変更したりすること
   - 原文で意図した意味と異なる **内容**
   - 表示の **スタイル**。たとえば _フォーマット_、_レイアウト_、_デザイン_ スタイル（タイポグラフィ、文字の大文字小文字、空白など）。
 
@@ -75,13 +75,11 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
 唯一の例外は、外部ページ（<https://en.wikipedia.org>など）へのリンクで、あなたのロケール固有のバージョンがある場合です。
 多くの場合、これはURLの`en`をあなたのロケールの言語コードに置き換えることを意味します。
 
-{{% alert title="Note" %}}
-
-OTelウェブサイトのリポジトリには、Hugoがドキュメントページを参照する絶対リンクパスを変換するために使用するカスタムの render-link フックがあります。
-**`/docs/some-page` 形式のリンク** は、リンクをレンダリングするときに、パスの先頭にページの言語コードを付けることで、 **ロケール固有になります** 。
-たとえば、先ほどのサンプルのパスは、日本語のページからレンダリングされた場合には `/ja/docs/some-page` となります。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> OTel ウェブサイトのリポジトリには、Hugo がドキュメントページを参照する絶対リンクパスを変換するために使用するカスタムの render-link フックがあります。
+> **`/docs/some-page` 形式のリンク** は、リンクをレンダリングするときに、パスの先頭にページの言語コードを付けることで、 **ロケール固有になります** 。
+> たとえば、先ほどのサンプルのパスは、日本語のページからレンダリングされた場合には `/ja/docs/some-page` となります。
 
 ### リンク定義ラベル {#link-labels}
 
@@ -127,11 +125,9 @@ OTelウェブサイトのリポジトリには、Hugoがドキュメントペー
 
 ### ショートコード {#shortcodes}
 
-{{% alert title="Note" %}}
-
-2025年2月現在、私たちは共有ページのコンテンツをサポートする手段として、ショートコードから[インクルードファイル](#includes)への移行を進めています。
-
-{{% /alert %}}
+> [!NOTE]
+>
+> 2025 年 2 月現在、私たちは共有ページのコンテンツをサポートする手段として、ショートコードから[インクルードファイル](#includes)への移行を進めています。
 
 一部の基本ショートコードには英語のテキストが含まれており、ローカリゼーションが必要になる場合があります。
 特に、[layouts/_shortcodes/docs] に含まれるものについては、その傾向が強いです。
@@ -223,11 +219,9 @@ npm run check:i18n -- -n
 
 対応する英語のページに変更に合わせてローカリゼーションページを更新する際、`default_lang_commit` のコミットハッシュも忘れずに確認してください。
 
-{{% alert title="ヒント" %}}
-
-ローカリゼーションページが `main` の `HEAD` にある英語版と対応するようになった場合、フロントマター内のコミットハッシュの値を消去し、前のセクションであった **add** コマンドを実行して、`default_lang_commit` フィールドの値を自動的に更新してください。
-
-{{% /alert %}}
+> [!TIP] ヒント
+>
+> ローカリゼーション ページが `main` の `HEAD` にある英語版と対応するようになった場合、フロントマター内のコミット ハッシュの値を消去し、前のセクションであった **add** コマンドを実行して、`default_lang_commit` フィールドの値を自動的に更新してください。
 
 乖離したローカリゼーションページをまとめて更新した場合、`-c` フラグに続いてコミットハッシュまたは 'HEAD' を指定することで、それらのファイルのコミットハッシュを `main@HEAD` に更新できます。
 
@@ -236,12 +230,10 @@ npm run check:i18n -- -c <hash> <PATH-TO-YOUR-NEW-FILES>
 npm run check:i18n -- -c HEAD <PATH-TO-YOUR-NEW-FILES>
 ```
 
-{{% alert title="重要" %}}
-
-`HEAD` をハッシュ指定子として使用すると、スクリプトは**ローカル環境**における `main` の HEAD のハッシュを使用します。
-`main` を GitHub 上の HEAD に対応したい場合、必ず `main` のフェッチとプルをしてください。
-
-{{% /alert %}}
+> [!IMPORTANT] 重要
+>
+> `HEAD` をハッシュ指定子として使用すると、スクリプトは**ローカル環境**における `main` の HEAD のハッシュを使用します。
+> `main` を GitHub 上の HEAD に対応したい場合、必ず `main` のフェッチとプルをしてください。
 
 ### 乖離の状況 {#drift-status}
 
@@ -259,17 +251,15 @@ OTelウェブサイトの新しいローカリゼーションを始めること�
 たとえば、GitHubディスカッションやSlackの`#otel-docs-localization`チャンネルを経由することが挙げられます。
 このセクションでは、新しいローカリゼーションを開始する際の手順について説明します。
 
-{{% alert title="Note" %}}
-
-新しいローカリゼーションを開始するために、OpenTelemetryプロジェクトの既存のコントリビューターである必要はありません。
-しかし、[OpenTelemetry GitHub organization](https://github.com/open-telemetry/)のメンバーまたはローカリゼーションの承認者グループのメンバーとして追加されるには、[メンバーシップガイドライン][membership guidelines]に概説されている確立されたメンバーおよび承認者になるための要件を満たす必要があります。
-
-承認者ステータスを獲得する前は、ローカリゼーションPRへの承認を「LGTM」（Looks Good To Me）コメントを追加することで示すことができます。
-この立ち上げ段階では、メンテナーはあなたがすでに承認者であるかのようにあなたのレビューを扱います。
-
-[membership guidelines]: https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
-
-{{% /alert %}}
+> [!NOTE]
+>
+> 新しいローカリゼーションを開始するために、OpenTelemetry プロジェクトの既存のコントリビューターである必要はありません。
+> しかし、[OpenTelemetry GitHub organization](https://github.com/open-telemetry/) のメンバーまたはローカリゼーションの承認者グループのメンバーとして追加されるには、[メンバーシップガイドライン][membership guidelines]に概説されている確立されたメンバーおよび承認者になるための要件を満たす必要があります。
+>
+> 承認者ステータスを獲得する前は、ローカリゼーション PR への承認を 「LGTM」 (Looks Good To Me) コメントを追加することで示すことができます。
+> この立ち上げ段階では、メンテナーはあなたがすでに承認者であるかのようにあなたのレビューを扱います。
+>
+> [membership guidelines]: https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md
 
 ### 1. ローカリゼーションチームを結成する {#team}
 
@@ -309,7 +299,7 @@ OpenTelemetryウェブサイトの新しいローカリゼーションを始め�
          For details, see
          [Localize the homepage](https://opentelemetry.io/docs/contributing/localization/#homepage).
    - [ ] OTel maintainers:
-     - [ ] Update `hugo.yaml`
+     - [ ] Update Hugo config for `LANG_ID`
      - [ ] Configure cSpell and other tooling support
      - [ ] Create an issue label for `lang:LANG_ID`
      - [ ] Create org-level group for `LANG_ID` approvers
@@ -341,24 +331,20 @@ OpenTelemetryウェブサイトの新しいローカリゼーションを始め�
 
 ### 5. 残りのサイトページを小さな増分でローカライズする {#rest}
 
-用語が確立されたら、残りのサイトページをローカライズできます。<a id="small-prs"></a>
+> [!IMPORTANT] 小さな PR を提出する <a id="small-prs"></a>
+>
+> ローカリゼーション チームは、**小さな増分**で作業を提出する必要があります。
+> つまり、[PR][PRs] は小さく保ち、できれば 1 つまたは少数の小さなファイルに限定してください。
+> 小さな PR はレビューが簡単で、通常はより早くマージされます。
 
-{{% alert title="小さなPRを提出する" color="primary" %}}
-
-ローカリゼーションチームは、**小さな増分**で作業を提出する必要があります。
-つまり、[PR][PRs]は小さく保ち、できれば1つまたは少数の小さなファイルに限定してください。
-小さなPRはレビューが簡単で、通常はより早くマージされます。
-
-{{% /alert %}}
-
-### OTelメンテナーチェックリスト {#otel-maintainer-checklist}
+### OTel メンテナー チェックリスト {#otel-maintainer-checklist}
 
 #### Hugo {#hugo}
 
-`hugo.yaml`を更新します。`LANG_ID`の適切なエントリを以下に追加します。
+`LANG_ID` 用に Hugo 設定を更新します。`LANG_ID` の適切なエントリを以下に追加します。
 
-- `languages`
-- `module.mounts`。最低限、`content`用の単一の`source`-`target`エントリを追加します。ロケールに十分なコンテンツがある場合にのみ、`en`フォールバックページのエントリの追加を検討してください。
+- `config/_default/hugo.yaml` の `languages`
+- `config/_default/module-template.yaml` の `module.mounts`。最低限、`content` 用の単一の`source`-`target` エントリを追加します。ロケールに十分なコンテンツがある場合にのみ、`en` フォールバック ページのエントリの追加を検討してください。
 
 #### スペルチェック {#spelling}
 
