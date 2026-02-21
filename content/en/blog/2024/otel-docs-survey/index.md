@@ -55,15 +55,15 @@ results.
 
 #### Q: What source do you primarily rely on when you're looking for information about OpenTelemetry?
 
-- Overall, the majority of respondents (52%) rely on the [opentelemetry.io]
+- Overall, the majority of respondents (52%) rely on the [opentelemetry.io][]
   documentation.
 - Respondents early in their observability practice (beginner and intermediate)
-  are more likely to use the [opentelemetry.io] documentation.
+  are more likely to use the [opentelemetry.io][] documentation.
 - Expert observability practitioners prefer the code repository documentation.
 
 [opentelemetry.io]: /docs/
 
-> **Respondents who use [opentelemetry.io] as their primary information**
+> **Respondents who use [opentelemetry.io][] as their primary information**
 > source<br>_By level of observability knowledge_
 >
 > | Beginners | Intermediates | Experts |
@@ -75,7 +75,7 @@ results.
 #### Q: What features or information would you like to see added to opentelemetry.io that aren't currently available?
 
 We asked respondents to describe in their own words what they'd like to see
-added to the [opentelemetry.io] documentation. We loosely grouped their
+added to the [opentelemetry.io][] documentation. We loosely grouped their
 responses into six categories. Some answers fell in more than one category. For
 full responses, see [Docs Usability Survey Responses].
 
