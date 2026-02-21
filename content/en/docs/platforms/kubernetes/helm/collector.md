@@ -380,5 +380,6 @@ presets:
     enabled: true
 ```
 
-[^1] due to some overlap with the `kubeletMetrics` preset some filesystem types
-and mount points are excluded by default.
+[^1]:
+    Due to some overlap with the `kubeletMetrics` preset some filesystem types
+    and mount points are excluded by default.

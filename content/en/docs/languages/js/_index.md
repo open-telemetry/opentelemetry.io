@@ -44,7 +44,7 @@ OpenTelemetry JavaScript consists of the following repositories:
 
 If you have questions about OpenTelemetry JavaScript, please reach out via
 [GitHub Discussions](https://github.com/open-telemetry/opentelemetry-js/discussions)
-or the [#otel-js] channel on [CNCF Slack](https://slack.cncf.io/).
+or the `#otel-js` channel on [CNCF Slack](https://slack.cncf.io/).
 
 If you want to contribute to OpenTelemetry JavaScript, see the
 [contributing instructions](https://github.com/open-telemetry/opentelemetry-js/blob/main/CONTRIBUTING.md)
