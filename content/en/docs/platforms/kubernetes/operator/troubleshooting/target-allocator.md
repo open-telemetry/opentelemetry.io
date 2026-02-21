@@ -375,8 +375,8 @@ Allocator will fail to discover scrape targets from that `ServiceMonitor`.
 
 > [!TIP]
 >
-> The same applies if you're using a [PodMonitor][]. In that case, you would use a
-> [`podMonitorSelector`][] instead of a `serviceMonitorSelector`.
+> The same applies if you're using a [PodMonitor][]. In that case, you would use
+> a [`podMonitorSelector`][] instead of a `serviceMonitorSelector`.
 
 ### Did you leave out the serviceMonitorSelector and/or podMonitorSelector configuration altogether?
 

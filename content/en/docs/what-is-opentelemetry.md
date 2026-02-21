@@ -42,8 +42,8 @@ understand the internal state of a system by examining its telemetry data, which
 includes traces, metrics, and logs.
 
 To make a system observable, it must be [instrumented][instr]. That is, the code
-must emit [traces][], [metrics][], or [logs][]. The instrumented data must then be
-sent to an observability backend.
+must emit [traces][], [metrics][], or [logs][]. The instrumented data must then
+be sent to an observability backend.
 
 ## Why OpenTelemetry?
 

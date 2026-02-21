@@ -12,8 +12,8 @@ The OpenTelemetry Collector allows you to connect receivers and exporters to
 authenticators so you can authenticate incoming connections at the receiver side
 and add authentication data to outgoing requests at the exporter side.
 
-Authenticators are implemented through [extensions][]. This document guides you on
-implementing your own authenticators. If you want to learn how to use an
+Authenticators are implemented through [extensions][]. This document guides you
+on implementing your own authenticators. If you want to learn how to use an
 existing authenticator, see the documentation for that specific authenticator.
 You can find a list of existing authenticators in the
 [registry](/ecosystem/registry/) on this website.

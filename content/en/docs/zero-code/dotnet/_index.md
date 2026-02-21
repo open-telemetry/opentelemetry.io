@@ -337,8 +337,8 @@ On Windows, use the PowerShell module as an Administrator.
 
 > [!IMPORTANT] Version note
 >
-> Windows [PowerShell Desktop][] (v5.1) is required. Other [versions][], including
-> PowerShell Core (v6.0+) are not supported at this time.
+> Windows [PowerShell Desktop][] (v5.1) is required. Other [versions][],
+> including PowerShell Core (v6.0+) are not supported at this time.
 
 [PowerShell Desktop]:
   https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions

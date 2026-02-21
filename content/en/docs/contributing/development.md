@@ -60,8 +60,8 @@ Your development environment will be initialized via the
     ```
 
 3.  Install or upgrade to the [**active LTS** release][nodejs-rel] of Node.js.
-    We recommend using [nvm][] to manage your Node installation. Under Linux, run
-    the following command, which will install and upgrade to the version
+    We recommend using [nvm][] to manage your Node installation. Under Linux,
+    run the following command, which will install and upgrade to the version
     specified in the .nvmrc file:
 
     ```sh
@@ -124,8 +124,8 @@ npm run serve
 
 The site is served at [localhost:1313][].
 
-If you need to test [Netlify][] redirects, use the following command and visit the
-site at [localhost:8888][]:
+If you need to test [Netlify][] redirects, use the following command and visit
+the site at [localhost:8888][]:
 
 ```sh
 npm run serve:netlify
@@ -153,8 +153,8 @@ The website is built from the following content:
 
 ### Submodule changes
 
-If you change any content inside of a [content-modules][] submodule, then you need
-to first submit a PR (containing the submodule changes) to the submodule's
+If you change any content inside of a [content-modules][] submodule, then you
+need to first submit a PR (containing the submodule changes) to the submodule's
 repository. Only after the submodule PR has been accepted, can you update the
 submodule and have the changes appear in this website.
 

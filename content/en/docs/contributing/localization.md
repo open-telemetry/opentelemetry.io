@@ -368,10 +368,10 @@ with the task list given below:
 ### 3. Localize the homepage {#homepage}
 
 [Submit a pull request](../pull-requests/) with a translation of the website
-[homepage][], and _nothing else_, in the file `content/LANG_ID/_index.md`. Ensure
-that maintainers have the necessary permissions to edit your PR, since they will
-add additional changes to your PR that are required to get your localization
-project started.
+[homepage][], and _nothing else_, in the file `content/LANG_ID/_index.md`.
+Ensure that maintainers have the necessary permissions to edit your PR, since
+they will add additional changes to your PR that are required to get your
+localization project started.
 
 [homepage]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
@@ -401,8 +401,8 @@ With terminology established, you can now localize the remaining site pages.
 > [!IMPORTANT] Submit small PRs <a id="small-prs"></a>
 >
 > Localization teams should submit their work in **small increments**. That is,
-> keep [PRs][] small, preferably limited to one or a few small files. Smaller PRs
-> are easier to review and so typically get merged more quickly.
+> keep [PRs][] small, preferably limited to one or a few small files. Smaller
+> PRs are easier to review and so typically get merged more quickly.
 
 ### OTel maintainer checklist
 
