@@ -2,7 +2,7 @@
 title: Prometheus Client Libraries vs. OpenTelemetry
 linkTitle: Prometheus Client
 weight: 5
-cSpell:ignore: base2ExponentialBucketHistogram bedroomTemperatureCelsius buildAndStart buildWithCallback classicUpperBounds defaultAggregation deviceCommandDuration explicitBucketHistogram GaugeWithCallback gaugeBuilder hvac hvacOnTime initLabelValues InstrumentSelector InstrumentType labelValues livingRoomTemperatureCelsius nativeOnly OtelHistogramExplicitBucketView PrometheusHistogramNative PrometheusSummary PrometheusRegistry setDefaultAggregationSelector setExplicitBucketBoundariesAdvice thermostatSetpoint totalEnergyJoules
+cSpell:ignore: base2ExponentialBucketHistogram bedroomTemperatureCelsius buildAndStart buildWithCallback classicUpperBounds defaultAggregation devicesConnected deviceCommandDuration explicitBucketHistogram GaugeWithCallback gaugeBuilder hvac hvacOnTime initLabelValues InstrumentSelector InstrumentType labelValues livingRoomTemperatureCelsius LongUpDownCounter nativeOnly OtelHistogramExplicitBucketView pendingCommandCount PrometheusHistogramNative PrometheusSummary PrometheusRegistry setDefaultAggregationSelector setExplicitBucketBoundariesAdvice thermostatSetpoint totalEnergyJoules upDownCounterBuilder
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -14,49 +14,27 @@ This page currently covers Java. Support for additional languages is planned.
 
 This guide is for developers familiar with the
 [Prometheus client libraries](https://prometheus.github.io/client_java/) who want to understand
-equivalent patterns in the OpenTelemetry metrics API.
+equivalent patterns in the OpenTelemetry metrics API and SDK.
 
 ## Conceptual differences
 
 Before looking at code, it helps to understand a few structural differences between the two
 systems. The [Prometheus and OpenMetrics Compatibility](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)
-specification documents the complete translation rules between the two systems; this section
+specification documents the complete translation rules between the two systems. This section
 covers the differences most relevant to writing new instrumentation code.
 
-### Registry vs. MeterProvider
+### Registry (MeterProvider)
 
 In Prometheus, metrics self-register to a global `PrometheusRegistry`. You can declare a metric
 anywhere in your code, and it automatically becomes available for scraping. The exporter (HTTP
-server or OTLP push) is attached to the registry separately, after the metrics are defined.
+server or OTLP push) is attached to the registry as a separate independent step.
 
 In OpenTelemetry, metrics flow through a `MeterProvider`, which you configure upfront with
 exporters and collection schedules. You obtain a `Meter` — scoped to your library or component —
 from the provider, and create instruments from that `Meter`. The practical consequence is that
-**you configure where metrics go before you create them**, rather than after.
+**you configure where metrics go before you create them**, rather than independently.
 
-### API and SDK
-
-OpenTelemetry separates instrumentation from configuration with a two-layer design: an **API**
-package and an **SDK** package. The API defines the interfaces used to record metrics. The SDK
-provides the implementation — the concrete provider, exporters, and collection pipeline.
-
-Instrumentation code should depend only on the API. The SDK is configured once at application
-startup and wired to an API reference that gets passed to the rest of the codebase. This keeps
-library code decoupled from any specific SDK version and makes it straightforward to swap in a
-no-op implementation for testing.
-
-### Instrumentation scope
-
-Prometheus metrics are global: every metric in a process shares the same flat namespace,
-identified only by name and labels.
-
-OpenTelemetry scopes each group of instruments to a `Meter`, identified by a name and optional
-version (for example, `openTelemetry.getMeter("smart.home")`). When exporting to Prometheus,
-the scope name and version are added as `otel_scope_name` and `otel_scope_version` labels on
-every metric point. These labels appear automatically and may be unfamiliar to users coming from
-Prometheus.
-
-### Label names vs. attributes
+### Label names (attributes)
 
 Prometheus requires label _names_ to be declared at metric creation time. Label _values_ are
 bound at record time, via `labelValues(...)`.
@@ -69,30 +47,57 @@ together at the time of the measurement via `Attributes`.
 Prometheus uses `snake_case` metric names. Counter names must end in `_total`; the client
 library appends this automatically if omitted.
 
-OpenTelemetry conventionally uses dotted names. When exporting to Prometheus, the exporter
+OpenTelemetry conventionally uses [dotted names](/docs/specs/semconv/general/naming/). When exporting to Prometheus, the exporter
 translates names: dots become underscores, unit abbreviations expand to full words (for example,
-`s` → `seconds`), and counters receive a `_total` suffix. An OTel counter named `hvac.on` with
+`s` → `seconds`), and counters receive a `_total` suffix. An OpenTelemetry counter named `hvac.on` with
 unit `s` is exported as `hvac_on_seconds_total`. See the
 [compatibility specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/) for
-the complete set of name translation rules.
+the complete set of name translation rules. The translation strategy is configurable — for
+example, to preserve UTF-8 characters or suppress unit and type suffixes. See the
+[Prometheus exporter](/docs/specs/otel/metrics/sdk_exporters/prometheus/) configuration
+reference for details.
 
-### Aggregation temporality
-
-Prometheus metrics are always cumulative. OpenTelemetry supports both cumulative and delta
-temporality, but the Prometheus exporter enforces cumulative for all instruments. For developers
-migrating from Prometheus, this is transparent — the behavior you already rely on is preserved.
-
-### Synchronous vs. asynchronous instruments
+### Stateful and callback instruments
 
 Both systems support two recording modes:
 
 - **Prometheus** calls these _stateful_ (`Counter`, `Gauge`) and _callback_
   (`CounterWithCallback`, `GaugeWithCallback`). Stateful metrics maintain their own value;
   callback metrics invoke a function at scrape time to get the current value.
-- **OpenTelemetry** calls these _synchronous_ (`LongCounter`, `LongHistogram`, etc.) and
-  _asynchronous_ (built with `buildWithCallback(...)`). The semantics are the same.
+- **OpenTelemetry** calls these _synchronous_ (counter, histogram, etc.) and
+  _asynchronous_ (observed via a registered callback). The semantics are the same.
 
-### Resource attributes
+### OTel: API and SDK
+
+OpenTelemetry separates instrumentation from configuration with a two-layer design: an **API**
+package and an **SDK** package. The API defines the interfaces used to record metrics. The SDK
+provides the implementation — the concrete provider, exporters, and processing pipeline.
+
+Instrumentation code should depend only on the API. The SDK is configured once at application
+startup and wired to an API reference that gets passed to the rest of the codebase. This keeps
+instrumentation library code decoupled from any specific SDK version and makes it straightforward to swap in a
+no-op implementation for testing.
+
+### OTel: Instrumentation scope
+
+Prometheus metrics are global: every metric in a process shares the same flat namespace,
+identified only by name and labels.
+
+OpenTelemetry scopes each group of instruments to a `Meter`, identified by a name and optional
+version (for example, `smart.home`). When exporting to Prometheus,
+the scope name and version are added as `otel_scope_name` and `otel_scope_version` labels on
+every metric point. These labels appear automatically and may be unfamiliar to users coming from
+Prometheus. They can be suppressed via the exporter's `without_scope_info` option — see the
+[Prometheus exporter](/docs/specs/otel/metrics/sdk_exporters/prometheus/) configuration
+reference for details.
+
+### OTel: Aggregation temporality
+
+Prometheus metrics are always cumulative. OpenTelemetry supports both cumulative and delta
+temporality, but the Prometheus exporter enforces cumulative for all instruments. For developers
+migrating from Prometheus, this is transparent — the behavior you already rely on is preserved.
+
+### OTel: Resource attributes
 
 Prometheus identifies scrape targets using `job` and `instance` labels, which are added by the
 Prometheus server at scrape time.
@@ -102,7 +107,11 @@ with attributes such as `service.name` and `service.instance.id`. When exporting
 the exporter maps resource attributes to the `job` and `instance` labels, with any remaining
 attributes exposed in a `target_info` metric. See the
 [compatibility specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/) for
-the exact mapping rules.
+the exact mapping rules. The `target_info` metric can be suppressed via `without_target_info`,
+and specific resource attributes can be promoted to metric-level labels via
+`with_resource_constant_labels`. See the
+[Prometheus exporter](/docs/specs/otel/metrics/sdk_exporters/prometheus/) configuration
+reference for details.
 
 ## Initialization {#initialization}
 
@@ -299,8 +308,8 @@ public class OtelOtlpInit {
 
 ## Counter {#counter}
 
-A counter records monotonically increasing values. Prometheus `Counter` maps to OpenTelemetry
-`DoubleCounter` or `LongCounter`.
+A counter records monotonically increasing values. Prometheus `Counter` maps to the OpenTelemetry
+`Counter` instrument.
 
 ### Counter
 
@@ -398,7 +407,7 @@ Key differences:
   skipping the internal series lookup. OpenTelemetry has no equivalent, though it is under
   discussion in the OpenTelemetry community.
 
-### Asynchronous (callback) counter
+### Callback (async) counter
 
 Use an asynchronous counter when the total is maintained by an external source — such as a
 device or runtime — and you want to observe it at collection time rather than increment it
@@ -461,13 +470,16 @@ public class OtelCounterCallback {
 
 ## Gauge {#gauge}
 
-A gauge records an instantaneous value that can increase or decrease. Use it for values you
-explicitly set — such as a configuration value or a device setpoint. For values you track
-incrementally (counting up and down), use [UpDownCounter](#updowncounter) instead.
+A gauge records an instantaneous value that can increase or decrease. Prometheus `Gauge`
+supports two distinct recording patterns that map to different OpenTelemetry instrument types:
+`set()` maps to OpenTelemetry `Gauge`, and `inc()`/`dec()` maps to OpenTelemetry
+`UpDownCounter`.
 
-Prometheus `Gauge` maps to OpenTelemetry `DoubleGauge` or `LongGauge`.
+### Gauge — `set()`
 
-### Gauge
+Use this pattern for values you explicitly set to an absolute value — such as a configuration
+value or a device setpoint. Prometheus `Gauge.set()` maps to the OpenTelemetry `Gauge`
+instrument.
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
@@ -541,12 +553,7 @@ Key differences:
 
 {{% /tab %}} {{< /tabpane >}}
 
-- **`inc()`/`dec()` pattern**: Prometheus `Gauge` supports incrementing and decrementing via
-  `inc()` and `dec()`. OpenTelemetry `Gauge` records absolute values only — `set()` is the only
-  recording method. For the `inc()`/`dec()` pattern, use
-  [UpDownCounter](#updowncounter) instead.
-
-### Asynchronous (callback) gauge
+### Callback (async) gauge — `set()`
 
 Use an asynchronous gauge when the current value is maintained externally — such as a sensor
 reading — and you want to observe it at collection time rather than track it yourself.
@@ -620,18 +627,158 @@ public class OtelGaugeCallback {
 
 {{% /tab %}} {{< /tabpane >}}
 
+### Gauge — `inc()` and `dec()`
+
+Prometheus `Gauge` supports `inc()` and `dec()` for values that change incrementally — such as
+the number of connected devices or active sessions. OpenTelemetry `Gauge` records absolute values
+only; this pattern maps to the OpenTelemetry `UpDownCounter` instrument.
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+**Prometheus**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/PrometheusUpDownCounter.java"?>
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.Gauge;
+
+public class PrometheusUpDownCounter {
+  public static void upDownCounterUsage() {
+    // Prometheus uses Gauge for values that can increase or decrease.
+    Gauge devicesConnected =
+        Gauge.builder()
+            .name("devices_connected")
+            .help("Number of smart home devices currently connected")
+            .labelNames("device_type")
+            .register();
+
+    // Increment when a device connects, decrement when it disconnects.
+    devicesConnected.labelValues("thermostat").inc();
+    devicesConnected.labelValues("thermostat").inc();
+    devicesConnected.labelValues("lock").inc();
+    devicesConnected.labelValues("lock").dec();
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+**OpenTelemetry**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/OtelUpDownCounter.java"?>
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.LongUpDownCounter;
+import io.opentelemetry.api.metrics.Meter;
+
+public class OtelUpDownCounter {
+  // Preallocate attribute keys and, when values are static, entire Attributes objects.
+  private static final AttributeKey<String> DEVICE_TYPE = AttributeKey.stringKey("device_type");
+  private static final Attributes THERMOSTAT = Attributes.of(DEVICE_TYPE, "thermostat");
+  private static final Attributes LOCK = Attributes.of(DEVICE_TYPE, "lock");
+
+  public static void upDownCounterUsage(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    LongUpDownCounter devicesConnected =
+        meter
+            .upDownCounterBuilder("devices.connected")
+            .setDescription("Number of smart home devices currently connected")
+            .build();
+
+    // add() accepts positive and negative values.
+    devicesConnected.add(1, THERMOSTAT);
+    devicesConnected.add(1, THERMOSTAT);
+    devicesConnected.add(1, LOCK);
+    devicesConnected.add(-1, LOCK);
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+Key differences:
+
+- `inc()` / `dec()` → `add(1)` / `add(-1)`. `add()` accepts both positive and negative values.
+- The Prometheus type is `Gauge`; the OpenTelemetry type is `LongUpDownCounter` (or
+  `DoubleUpDownCounter` via `.ofDoubles()`).
+
+{{% /tab %}} {{< /tabpane >}}
+
+### Callback (async) gauge — `inc()` and `dec()`
+
+Use an asynchronous variant when the current count is maintained externally — such as a queue or
+pool managed by another component — and you want to observe it at collection time.
+
+{{< tabpane text=true >}} {{% tab Java %}}
+
+**Prometheus**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/PrometheusUpDownCounterCallback.java"?>
+```java
+package otel;
+
+import io.prometheus.metrics.core.metrics.GaugeWithCallback;
+
+public class PrometheusUpDownCounterCallback {
+  public static void upDownCounterCallbackUsage() {
+    // The command queue maintains its own depth counter.
+    // Use a callback gauge to report that value at scrape time.
+    GaugeWithCallback.builder()
+        .name("command_queue_depth")
+        .help("Number of device commands waiting to be processed")
+        .callback(callback -> callback.call(SmartHomeDevices.pendingCommandCount()))
+        .register();
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+**OpenTelemetry**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/OtelUpDownCounterCallback.java"?>
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.metrics.Meter;
+
+public class OtelUpDownCounterCallback {
+  public static void upDownCounterCallbackUsage(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    // The command queue maintains its own depth counter.
+    // Use an asynchronous up-down counter to report that value when a MetricReader
+    // collects metrics.
+    meter
+        .upDownCounterBuilder("command.queue.depth")
+        .setDescription("Number of device commands waiting to be processed")
+        .buildWithCallback(
+            measurement -> measurement.record(SmartHomeDevices.pendingCommandCount()));
+  }
+}
+```
+<!-- prettier-ignore-end -->
+
+{{% /tab %}} {{< /tabpane >}}
+
 ## Histogram {#histogram}
 
 A histogram records the distribution of a set of measurements, tracking the count of
 observations, their sum, and the number that fall within configurable bucket boundaries.
 
-Both Prometheus and OpenTelemetry support explicit-bucket histograms and exponential histograms.
+Both Prometheus and OpenTelemetry support classic (explicit-bucket) histograms and native (base2 exponential) histograms.
 Prometheus also has a `Summary` type, which has no direct OTel equivalent — see
 [Summary](#summary) below.
 
-Prometheus `Histogram` maps to OpenTelemetry `DoubleHistogram` or `LongHistogram`.
+Prometheus `Histogram` maps to the OpenTelemetry `Histogram` instrument.
 
-### Explicit (classic) histogram
+### Classic (explicit) histogram
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
@@ -745,9 +892,9 @@ public class OtelHistogramExplicitBucketView {
   configured at the SDK level. This separation keeps instrumentation code independent of
   collection configuration.
 
-### Exponential histogram
+### Native (base2 exponential) histogram
 
-Both systems support exponential (auto-scaling) histograms, which automatically adjust bucket
+Both systems support native (base2 exponential) histograms, which automatically adjust bucket
 boundaries to cover the observed range without requiring manual configuration.
 
 {{< tabpane text=true >}} {{% tab Java %}}
@@ -782,8 +929,8 @@ public class PrometheusHistogramNative {
 
 **OpenTelemetry**
 
-In OpenTelemetry, the instrumentation code is identical to the explicit (classic) histogram
-case. The exponential format is configured separately, outside the instrumentation layer.
+In OpenTelemetry, the instrumentation code is identical to the classic (explicit) histogram
+case. The base2 exponential format is configured separately, outside the instrumentation layer.
 
 The preferred approach is to configure it on the metric exporter. This applies to all
 histograms exported through that exporter without touching instrumentation code:
@@ -814,7 +961,7 @@ public class OtelHistogramExponentialExporter {
 ```
 <!-- prettier-ignore-end -->
 
-For more granular control — for example, to use exponential histograms for specific instruments
+For more granular control — for example, to use base2 exponential histograms for specific instruments
 while keeping explicit buckets for others — configure a view instead:
 
 <!-- prettier-ignore-start -->
