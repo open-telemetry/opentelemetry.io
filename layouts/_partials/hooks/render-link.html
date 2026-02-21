@@ -1,18 +1,27 @@
 {{/*
-  Standard render-link resolution and rendering.
+
+  Standard render-link resolution and rendering, and we also handle "repo paths".
+  "Repo paths" are (GitHub) repo-relative paths that identify target files by
+  their file names, such as:
+
+  - README.md
+  - ./non-normative/examples-llm-calls.md
+  - /docs/gen-ai/gen-ai-spans.md#recording-content-on-attributes
 
   Params:
-    .ctx          - the render hook context (provides .Destination, .PageInner,
-                    .Title, .Text)
-    .urlParsed    - the parsed URL (from urls.Parse)
-    .href         - optional pre-resolved URL; defaults to .urlParsed.String
-    .resolvedHref - if true, skip further resolution; use .href as is
+    .ctx       - the render hook context; it provides .Destination, .PageInner,
+                 .Title, .Text
+    .repoPaths - if true, do extra processing to resolve repo paths, in particular:
+                 first rename README.md to _index.md
 
-  This processing part is based on Hugo's default render-link hook:
+  The link resolution code is based on Hugo's default render-link hook:
   https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_markup/render-link.html
 
   cSpell:ignore chalin jmooring
 */ -}}
+
+{{ $repoPaths := .repoPaths -}}
+{{ with .ctx -}}
 
 {{/* Implementation note:
 
@@ -28,54 +37,88 @@
     {{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
   --------------------------------
 
-  Notes about the Hugo code below:
-
-  - Why test the truthiness of `$href` in the if condition below? Because
-    `$u.String` can be empty, e.g., when .Destination is just "#".
-
-  - Why trim the `./` prefix from `$u.Path`? Resource Get requires a clean path
-    w/o the `./` prefix, otherwise it won't find page-bundle local resources.
-    Ref: https://github.com/gohugoio/hugo/pull/12515. In our case it's a no-op
-    because we leave relative paths as is.
-
   */ -}}
 
-{{- $href := or .href .urlParsed.String -}}
-{{- $u := .urlParsed -}}
-{{- $ctx := .ctx -}}
+{{ $u := urls.Parse .Destination -}}
+{{ $href := $u.String -}}
 
-{{- if not .resolvedHref -}}
-  {{- if not (hasPrefix $ctx.Destination "/") -}}
+{{ $path := "" -}}
+{{ $resolve := false -}}
+
+{{ if $repoPaths -}}
+
+  {{ if and (not $u.IsAbs) (not (hasPrefix $href "#")) -}}
+    {{ $resolve = true -}}
+    {{ $path = replace $u.Path "README.md" "_index.md" -}}
+  {{ end -}}
+
+{{ else -}}
+
+  {{/* Why test the truthiness of `$href` in the if condition below? Because
+    `$u.String` can be empty when .Destination is just "#". */ -}}
+
+  {{ if not (hasPrefix .Destination "/") -}}
     {{/* Relative path: leave as is */ -}}
-  {{- else if and $href (not $u.IsAbs) -}}
-    {{- $path := strings.TrimPrefix "./" $u.Path -}}
-    {{- with or
-      ($ctx.PageInner.GetPage $path)
-      ($ctx.PageInner.Resources.Get $path)
-      (resources.Get $path)
-    -}}
-      {{- $href = .RelPermalink -}}
-      {{- with $u.RawQuery -}}
-        {{- $href = printf "%s?%s" $href . -}}
-      {{- end -}}
-      {{- with $u.Fragment -}}
-        {{- $href = printf "%s#%s" $href . -}}
-      {{- end -}}
-    {{- end -}}
-  {{- end -}}
-{{- end -}}
+  {{ else if and $href (not $u.IsAbs) -}}
+    {{ $resolve = true -}}
+
+    {{/* Why trim the `./` prefix from `$u.Path` below? Resource Get requires a
+         clean path w/o the `./` prefix, otherwise it won't find page-bundle local
+         resources. Ref: https://github.com/gohugoio/hugo/pull/12515. In our case
+         it's a no-op because we leave relative paths as is. */ -}}
+
+    {{ $path = strings.TrimPrefix "./" $u.Path -}}
+  {{ end -}}
+
+{{ end -}}
+
+{{ if $resolve -}}
+  {{ with or
+    (.PageInner.GetPage $path)
+    (.PageInner.Resources.Get $path)
+    (resources.Get $path)
+  -}}
+
+    {{ $href = .RelPermalink -}}
+    {{ with $u.RawQuery }}{{ $href = printf "%s?%s" $href . }}{{ end -}}
+    {{ with $u.Fragment }}{{ $href = printf "%s#%s" $href . }}{{ end -}}
+
+  {{ else -}}
+
+    {{ if $repoPaths -}}
+      {{ if hasSuffix $path ".md" -}}
+        {{ warnf "File %s: cannot resolve repo-path link '%s'"
+            .Page.File.Filename $href -}}
+      {{ else -}}
+        {{/* For `./` prefixed resource paths in non-index pages, prepend an
+          extra `.` so that `./file` becomes `../file`. This compensates for
+          Hugo rendering `page.md` as `page/index.html` -- the extra level of
+          nesting means relative sibling references need to go up one. */ -}}
+        {{ if and
+              (hasPrefix $href "./")
+              (not (hasSuffix .Page.File.Filename "_index.md"))
+              (not (hasSuffix .Page.File.Filename "README.md"))
+        -}}
+          {{ $href = add "." $href -}}
+        {{ end -}}
+      {{ end -}}
+    {{ end -}}
+
+  {{ end -}}
+{{ end -}}
 
 {{/* Until Hugo supports hook params (https://github.com/gohugoio/hugo/issues/6670),
     external-icon suppression is via "hk-no-external-icon" in .text. */ -}}
 
-{{- $startsWithHttp := hasPrefix $u.Scheme "http" -}}
+{{ $startsWithHttp := hasPrefix $u.Scheme "http" -}}
 <a href="{{ $href }}"
-  {{- with $ctx.Title}} title="{{ . }}"{{ end -}}
+  {{- with .Title}} title="{{ . }}"{{ end -}}
   {{ if $startsWithHttp }} target="_blank" rel="noopener"
-    {{- $noExternalIcon := in $ctx.Text "hk-no-external-icon" -}}
+    {{- $noExternalIcon := in .Text "hk-no-external-icon" -}}
     {{ if not $noExternalIcon }} class="external-link"{{ end -}}
   {{ end -}}
 >
-  {{- $ctx.Text -}}
+  {{- .Text -}}
 </a>
-{{- /**/ -}}
+
+{{- end -}}
