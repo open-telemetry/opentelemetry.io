@@ -116,8 +116,8 @@ resource:
 
 > [!NOTE] Internal telemetry configuration changes
 >
-> As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
-> is ignored. In earlier versions, it could be configured with:
+> As of Collector [v0.123.0][], the `service::telemetry::metrics::address`
+> setting is ignored. In earlier versions, it could be configured with:
 >
 > ```yaml
 > service:
@@ -401,8 +401,8 @@ files in the repository.
 
 > [!NOTE] Batch processor metrics level changes
 >
-> In Collector [v0.99.0], all batch processor metrics were upgraded from `basic`
-> to `normal` (current level), except for
+> In Collector [v0.99.0][], all batch processor metrics were upgraded from
+> `basic` to `normal` (current level), except for
 > `otelcol_processor_batch_batch_send_size_bytes`, which has been `detailed`
 > since its introduction. Note however that these metrics were inadvertently
 > reverted to `basic` from v0.109.0 to v0.121.0.

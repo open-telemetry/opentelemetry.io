@@ -41,12 +41,11 @@ table-column-style: false # Causes problems in ja and zh pages
 # to provide configuration. Rules that need no config can be omitted.
 
 no-shortcut-ref-link:
-  false # TODO: re-enable when this PR lands with select file fixes
   # Skip:
   # - OTel spec informal footnotes like [1], [2]
   # - Markdown footnote references like [^1], [^note]
   # - Ellipsis like [...]
-  # ignore_pattern: '^\d+(\.\.\d+)?$|^\.\.\.$' # skip [1], [2], [0..1], etc.
+  ignore_pattern: '^\d+(\.\.\d+)?$|^\.\.\.$' # skip [1], [2], [0..1], etc.
 
 # -----------------------------------------------------------------------------
 # Link-validation rules (from scripts/_md-rules/link-rules.mjs)

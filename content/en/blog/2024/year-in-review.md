@@ -55,7 +55,7 @@ Key IA updates include:
   [Zero-code Instrumentation](/docs/zero-code/) section to more clearly
   distinguish between instrumentation APIs & SDKs and tools like the Java agent,
   used to inject telemetry.
-- Following these updates, the Java SIG [proposed] and [reorganized their
+- Following these updates, the Java SIG [proposed][] and [reorganized their
   documentation][java-reorg], introducing substantial improvements to the
   structure and clarity of the content. The bulk of this effort is reflected in
   these PRs:
@@ -120,9 +120,9 @@ OpenTelemetry website. Your efforts make a difference!
 
 ### Which pages were the most popular?
 
-According to our publicly available [analytics] data, [opentelemetry.io](/) was
-viewed **12 million** times across 4 million sessions this year. This marks a
-**16% increase** over last year's nearly 10 million views and over 3 million
+According to our publicly available [analytics][] data, [opentelemetry.io](/)
+was viewed **12 million** times across 4 million sessions this year. This marks
+a **16% increase** over last year's nearly 10 million views and over 3 million
 sessions.
 
 The most popular pages and sections of the documentation were:
@@ -130,10 +130,10 @@ The most popular pages and sections of the documentation were:
 | Page/Section             | Views | % [^1] |
 | ------------------------ | ----: | -----: |
 | [What is OpenTelemetry?] |  290K |   2.4% |
-| [Collector]              |  1.3M |  10.5% |
-| [Concepts]               |  1.2M |   9.8% |
-| [Demo]                   |  829K |   6.7% |
-| [Ecosystem]              |  500K |   4.0% |
+| [Collector][]            |  1.3M |  10.5% |
+| [Concepts][]             |  1.2M |   9.8% |
+| [Demo][]                 |  829K |   6.7% |
+| [Ecosystem][]            |  500K |   4.0% |
 
 [analytics]: https://lookerstudio.google.com/s/tSTKxK1ECeU
 [Collector]: /docs/collector
@@ -153,8 +153,8 @@ Did you know that:
   times, putting it in 11th place!
 - The [Collector landing page] has been the most updated file since its
   creation, with 91 changes.
-- With 511 commits (27K additions, and 10K deletions) the [opentelemetrybot] is
-  the fourth most active contributor. Go bots!
+- With 511 commits (27K additions, and 10K deletions) the [opentelemetrybot][]
+  is the fourth most active contributor. Go bots!
 - The record for the PR with the most comments this year—and of all time is held
   by:
   - [Generative AI updates blog post (#5575)][#5575], with 150 comments!
@@ -176,7 +176,7 @@ reviews to ensure that content is accurate, valuable, aligned with our
 documentation goals, and easy to read and understand.
 
 In addition to PRs, contributors created nearly [500 issues] and engaged in many
-[discussions], reporting bugs, suggesting improvements, and driving
+[discussions][], reporting bugs, suggesting improvements, and driving
 collaboration. Each of these efforts reflects our community's dedication to
 maintaining the quality of OpenTelemetry docs.
 
@@ -205,7 +205,7 @@ to continuing our collaboration in 2025.
 
 Whether you're an end user, a contributor, or simply enthusiastic about
 OpenTelemetry, we welcome your participation. You can [get involved] by raising
-[issues], participating in [discussions], or [submitting PRs].
+[issues][], participating in [discussions][], or [submitting PRs].
 
 You can also join us:
 

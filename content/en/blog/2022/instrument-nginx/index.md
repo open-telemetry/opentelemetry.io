@@ -40,7 +40,7 @@ What this `Dockerfile` does:
 
 - Pull a base image with NGINX 1.23.1 pre-installed
 - Install `unzip`
-- Download the [opentelemetry-webserver-sdk-x64-linux] package
+- Download the [opentelemetry-webserver-sdk-x64-linux][] package
 - Unpack the package, put it into `/opt` & run `./install.sh`
 - Add the dependencies at `/opt/opentelemetry-webserver-sdk/sdk_lib/lib` to the
   library path (`LD_LIBRARY_PATH`)
@@ -355,7 +355,7 @@ Within a few moments you should have five docker containers up and running:
 - Backend
 
 Send a few requests to the frontend with `curl localhost:8000` and then check
-the Jaeger UI in your browser at [localhost:16686]. You should see traces going
+the Jaeger UI in your browser at [localhost:16686][]. You should see traces going
 from frontend to NGINX to backend.
 
 The frontend trace should indicate an error, since NGINX is forwarding the

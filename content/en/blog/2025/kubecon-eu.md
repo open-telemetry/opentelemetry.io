@@ -11,7 +11,7 @@ cSpell:ignore: Adevinta Aftab Arianna Baeyens Bartłomiej Boulineau Celalettin C
 
 The OpenTelemetry governance and technical committees, along with the project's
 maintainers, invite you to join them and other members of the OpenTelemetry
-community at [KubeCon + CloudNativeCon Europe][] ([registration]) and at the
+community at [KubeCon + CloudNativeCon Europe][] ([registration][]) and at the
 co-located [Observability Day] in London from April 1 to 4, 2025.
 
 This post covers all currently scheduled activities related to OpenTelemetry
@@ -159,7 +159,7 @@ well.
 ## OpenTelemetry Observatory Booth {#opentelemetry-observatory}
 
 Drop by and say _"Hi!"_ at **OpenTelemetry Observatory booth** in the Expo
-Hall[^1], courtesy of [Splunk]. This will be a place for informal chats,
+Hall[^1], courtesy of [Splunk][]. This will be a place for informal chats,
 meetups, and other discussions led by OpenTelemetry community members and
 maintainers.
 
@@ -174,7 +174,7 @@ like to participate or lead a discussion or short presentation, reach out to the
 You can also help us improve OTel by sharing your thoughts and feedback about
 your OpenTelemetry adoption, implementation, and usage experiences. We will
 create action items from your comments as appropriate, and post results to
-[#otel-sig-end-user] after the conference.
+[#otel-sig-end-user][] after the conference.
 
 {{< comment >}}
 

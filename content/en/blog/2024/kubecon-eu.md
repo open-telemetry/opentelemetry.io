@@ -133,7 +133,7 @@ that SIG. Sessions will be recorded and posted on the
 [OTel YouTube channel](https://youtube.com/@otel-official).
 
 We will create action items from your comments as appropriate. Check
-[#otel-user-research] in CNCF's Slack instance for results and action item
+[#otel-user-research][] in CNCF's Slack instance for results and action item
 updates to come after KubeCon EU.
 
 Back by popular demand! We'll be recording

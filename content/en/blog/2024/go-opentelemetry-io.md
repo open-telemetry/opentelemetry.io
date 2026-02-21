@@ -12,9 +12,9 @@ With contributions from Tyler Yahn and Austin Parker.
 
 ## TL;DR
 
-The app that serves requests to [go.opentelemetry.io] will be migrating to a new
-host on September 5, 2024 at approximately 11:00AM Eastern Time. **There are no
-changes required from you**. We are making this announcement because it is
+The app that serves requests to [go.opentelemetry.io][] will be migrating to a
+new host on September 5, 2024 at approximately 11:00AM Eastern Time. **There are
+no changes required from you**. We are making this announcement because it is
 possible, but unlikely, that there might be downtime during this transition.
 
 ## Details
@@ -57,7 +57,7 @@ this.
 
 ## What you might notice
 
-There is the possibility of the [go.opentelemetry.io] domain experiencing
+There is the possibility of the [go.opentelemetry.io][] domain experiencing
 downtime during this transition. If this happens, you might see projects that
 import `go.opentelemetry.io` modules failing to compile.
 
