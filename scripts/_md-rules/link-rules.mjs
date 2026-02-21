@@ -11,7 +11,7 @@
 //     regex: 'https://github\.(?!com|blog|io|github\.com)'
 //     message: GitHub URLs should use github.(com|blog|io|github.com) domains.
 
-import { createLinkPatternRule } from './validate-links/index.mjs';
+import { createLinkPatternRule } from 'markdownlint-rule-link-pattern';
 
 export default [
   createLinkPatternRule(
