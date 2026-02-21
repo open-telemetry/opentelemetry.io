@@ -59,6 +59,7 @@
     "check:links:internal": "npm run _check:links:internal",
     "check:links": "npm run _check:links",
     "check:markdown": "npx markdownlint-cli2 '**/*.md'",
+    "check:redirects": "scripts/check-redirects.sh",
     "check:registry": "npm run _check:registry -- ",
     "check:spelling": "npx cspell --no-progress -c .cspell.yml content data 'layouts/**/*.md'",
     "check:text": "npm run _check:text -- ",
