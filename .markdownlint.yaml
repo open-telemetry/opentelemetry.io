@@ -33,9 +33,19 @@ no-trailing-spaces:
   strict: true
 table-column-style: false # Causes problems in ja and zh pages
 
-# Custom rules below this point:
-trim-code-blank-lines: true
-unindent-code-blocks: true
+# -----------------------------------------------------------------------------
+# Custom rules
+
+# Custom rules registered in .markdownlint-cli2.yaml are enabled by default
+# (via `default: true` above). Only list custom rules here to disable them or
+# to provide configuration. Rules that need no config can be omitted.
+
+no-shortcut-ref-link:
+  # Skip:
+  # - OTel spec informal footnotes like [1], [2]
+  # - Markdown footnote references like [^1], [^note]
+  # - Ellipsis like [...]
+  ignore_pattern: '^\d+(\.\.\d+)?$|^\.\.\.$' # skip [1], [2], [0..1], etc.
 
 # -----------------------------------------------------------------------------
 # Link-validation rules (from scripts/_md-rules/link-rules.mjs)

@@ -9,7 +9,7 @@ redirects:
   - { from: /js/*, to: ':splat' }
   - { from: /docs/js/*, to: ':splat' }
 weight: 20
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
 ---
 
 {{% docs/languages/index-intro js /%}}
@@ -49,7 +49,7 @@ O OpenTelemetry JavaScript consiste nos seguintes repositórios:
 Caso tenha alguma dúvida sobre o OpenTelemetry JavaScript, por favor, entre em
 contato via
 [GitHub Discussions](https://github.com/open-telemetry/opentelemetry-js/discussions)
-ou através do canal [#otel-js] do [Slack do CNCF](https://slack.cncf.io/).
+ou através do canal `#otel-js` do [Slack do CNCF](https://slack.cncf.io/).
 
 Se desejar contribuir para o OpenTelemetry JavaScript, veja as
 [instruções de contribuição](https://github.com/open-telemetry/opentelemetry-js/blob/main/CONTRIBUTING.md)
