@@ -140,7 +140,7 @@
     "markdownlint": "^0.40.0",
     "markdownlint-cli2": "^0.21.0",
     "markdownlint-rule-helpers": "^0.30.0",
-    "markdownlint-rule-link-pattern": "github:chalin/markdownlint-rule-link-pattern#v0.1.0",
+    "markdownlint-rule-link-pattern": "github:chalin/markdownlint-rule-link-pattern#semver:0.2.0",
     "postcss-cli": "^11.0.1",
     "prettier": "3.8.1",
     "puppeteer": "^24.37.2",

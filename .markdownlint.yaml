@@ -44,14 +44,14 @@ unindent-code-blocks: true
 # to it here and in the rule message for further details.
 
 no-typosquatting-urls:
-  regex: 'https://github\.(?!com|blog|io|github.com)'
+  pattern: 'https://github\.(?!com|blog|io|github.com)'
   message: >-
     GitHub URLs should use `github.(com|blog|io|github.com)` domains to avoid
     typosquatting. For details, see
     https://github.com/open-telemetry/opentelemetry.io/issues/8085.
 
 no-http-urls:
-  regex: 'http://(?!([\w-]+\.)?localhost\b)(?!127\.0)(?!.*[\?&]http_ok\b)'
+  pattern: 'http://(?!([\w-]+\.)?localhost\b)(?!127\.0)(?!.*[\?&]http_ok\b)'
   message: >-
     'http' URLs are only permitted for localhost/127.0.0.1. Use 'https' or add
     'http_ok' as a query parameter to the URL, such as:
@@ -63,30 +63,33 @@ no-lang-prefix-in-paths:
   # authors to prefix paths with their locale's language code; but that isn't
   # necessary, since absolute paths resolve to the locale's site root. See
   # https://gohugo.io/quick-reference/glossary/#site-relative
-  regex: '^/..(-..)?/.+'
+  pattern: '^/..(?:-..)?(/.+)$'
   # Note: ^/../$ is accepted
-  message: >-
-    Don't prefix paths with a language code.
+  message: Don't prefix paths with a language code.
+  replace: '$1'
 
 no-otel-io-external-urls:
-  regex: 'https?://(?:www\.)?opentelemetry\.io/'
-  message: >-
-    Use a site-relative path instead of the full opentelemetry.io URL.
+  pattern: 'https?://(?:www\.)?opentelemetry\.io/'
+  message: Use a site-relative path instead of the full opentelemetry.io URL.
+  replace: '/'
 
 no-spec-github-urls:
-  regex: 'https://github\.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\w'
+  pattern: 'https://github\.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/(\w+)'
   message: >-
     Use a local path, not a GitHub URL, for references to specification pages
     that are hosted on this site.
+  replace: '/docs/specs/otel/$1'
 
 no-proto-spec-github-urls:
-  regex: 'https://github\.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification'
+  pattern: 'https://github\.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification'
   message: >-
     Use a local path, not a GitHub URL, for references to specification pages
     that are hosted on this site.
+  replace: '/docs/specs/otlp/'
 
 no-semconv-github-urls:
-  regex: 'https://github\.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs'
+  pattern: 'https://github\.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs'
   message: >-
     Use a local path, not a GitHub URL, for references to semantic conventions
     pages that are hosted on this site.
+  replace: '/docs/specs/semconv/'
