@@ -1447,6 +1447,14 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-13T09:52:21.471634055Z"
   },
+  "https://developers.openai.com/api/reference/chat-completions/overview": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:47.017360708Z"
+  },
+  "https://developers.openai.com/api/reference/responses/overview": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:51.351343951Z"
+  },
   "https://devpod.sh/docs/developing-in-workspaces/devcontainer-json": {
     "StatusCode": 206,
     "LastSeen": "2026-02-11T09:53:55.468320573Z"
@@ -2351,6 +2359,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-18T09:56:17.817339097Z"
   },
+  "https://docs.oracle.com/en/java/javase/17/docs/api/jdk.management/com/sun/management/UnixOperatingSystemMXBean.html#getMaxFileDescriptorCount%28%29": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-20T14:22:56.238021755Z"
+  },
   "https://docs.oracle.com/en/java/javase/17/docs/api/jdk.management/com/sun/management/UnixOperatingSystemMXBean.html#getOpenFileDescriptorCount%28%29": {
     "StatusCode": 200,
     "LastSeen": "2026-02-18T09:56:47.624250894Z"
@@ -2358,6 +2370,10 @@
   "https://docs.oracle.com/en/java/javase/21/docs/api/jdk.httpserver/module-summary.html": {
     "StatusCode": 200,
     "LastSeen": "2026-02-19T09:53:50.841530472Z"
+  },
+  "https://docs.oracle.com/iaas/Content/General/Concepts/regions.htm": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-20T14:22:45.279394131Z"
   },
   "https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29": {
     "StatusCode": 200,
@@ -2498,6 +2514,10 @@
   "https://docs.particular.net/samples/open-telemetry/prometheus-grafana/#reporting-metric-values": {
     "StatusCode": 200,
     "LastSeen": "2026-02-12T09:54:45.867771529Z"
+  },
+  "https://docs.payara.fish/community/docs/Technical%20Documentation/MicroProfile/OpenTelemetry%20and%20OpenTracing.html": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-19T18:27:29.218358936Z"
   },
   "https://docs.php-http.org/en/latest/clients.html": {
     "StatusCode": 200,
@@ -2730,6 +2750,14 @@
   "https://dubbo.apache.org/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-11T09:56:41.286725819Z"
+  },
+  "https://dubbo.apache.org/en/overview/reference/protocols/tcp/#protocol-specification": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:51.364945726Z"
+  },
+  "https://dubbo.apache.org/en/overview/reference/protocols/triple-spec/#311-request": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:54.074462493Z"
   },
   "https://dyte.io/blog/opentelemetry-at-dyte-part-i/": {
     "StatusCode": 200,
@@ -5514,6 +5542,10 @@
   "https://github.com/grpc/proposal/blob/master/A66-otel-stats.md": {
     "StatusCode": 206,
     "LastSeen": "2026-02-11T09:56:53.774724226Z"
+  },
+  "https://github.com/grpc/proposal/blob/master/A72-open-telemetry-tracing.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:56.420058414Z"
   },
   "https://github.com/gruebel": {
     "StatusCode": 206,
@@ -12823,6 +12855,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-13T18:12:21.247239789Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/oteps/0232-maturity-of-otel.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:23:03.013866484Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/spec-compliance-matrix.md#logs": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:46.470932758Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:42.645293102Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:53:01.729242772Z"
@@ -13763,6 +13807,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-10T09:57:59.703509967Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/rpc-metrics.md#metric-rpcclientduration": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:24:14.420558148Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/rpc-metrics.md#metric-rpcserverduration": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:24:11.117238782Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/rpc-spans.md": {
     "StatusCode": 206,
     "LastSeen": "2026-02-10T09:57:56.805157472Z"
@@ -13891,13 +13943,81 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-18T09:56:10.76144242Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2503": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:23:51.050192026Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/2779": {
     "StatusCode": 206,
     "LastSeen": "2026-02-11T09:56:59.017937479Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2846": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:24:32.98499542Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2852": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:23:44.282885804Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2857": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:23:21.059157559Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2920": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:23:28.207915833Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/2961": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:23:56.793359753Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/2984#discussion_r2466369361": {
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:50:01.548968725Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3169": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:23:33.593807175Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3176": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:58.463159162Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3197": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:24:06.00669145Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3203": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:23:01.180956499Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3223": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:23:06.720703458Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3267": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:24:37.73294058Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3283": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:24:25.924263462Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3284": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:24:01.023413379Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3317": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:23:39.164684883Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3350": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:23:13.275055652Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3426": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:24:20.728437519Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/981": {
     "StatusCode": 206,
@@ -13914,6 +14034,10 @@
   "https://github.com/open-telemetry/semantic-conventions/tree/v1.39.0//model/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:55:03.891330026Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/tree/v1.40.0//model/README.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:43.61274914Z"
   },
   "https://github.com/open-telemetry/sig-contributor-experience": {
     "StatusCode": 206,
@@ -15947,6 +16071,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-14T09:49:50.4326355Z"
   },
+  "https://img.shields.io/badge/beta-lightpink": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-20T14:22:38.718942513Z"
+  },
   "https://img.shields.io/badge/changed-orange?style=flat": {
     "StatusCode": 200,
     "LastSeen": "2026-02-12T09:56:46.261585664Z"
@@ -16191,6 +16319,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-19T09:52:56.749652669Z"
   },
+  "https://kubernetes.io/docs/concepts/services-networking/topology-aware-routing/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:49.864561313Z"
+  },
   "https://kubernetes.io/docs/concepts/workloads/controllers/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-19T09:55:29.513914002Z"
@@ -16351,6 +16483,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-18T09:52:59.044342662Z"
   },
+  "https://kubernetes.io/docs/reference/kubernetes-api/service-resources/endpoint-slice-v1/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:47.436629838Z"
+  },
+  "https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/#ServiceSpec": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:56.046092745Z"
+  },
+  "https://kubernetes.io/docs/reference/kubernetes-api/service-resources/service-v1/#ServiceStatus": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:23:18.143314573Z"
+  },
   "https://kubernetes.io/docs/reference/labels-annotations-taints/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-18T09:55:29.327230279Z"
@@ -16366,6 +16510,10 @@
   "https://kubernetes.io/docs/reference/labels-annotations-taints/#app-kubernetes-io-version": {
     "StatusCode": 206,
     "LastSeen": "2026-02-18T09:55:48.354203845Z"
+  },
+  "https://kubernetes.io/docs/reference/networking/virtual-ips/#traffic-distribution": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:54.882782319Z"
   },
   "https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/": {
     "StatusCode": 206,
@@ -21966,6 +22114,10 @@
   "https://www.python.org/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-10T09:54:35.75611369Z"
+  },
+  "https://www.python.org/download/alternatives": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-20T14:22:52.425656444Z"
   },
   "https://www.quartz-scheduler.org/": {
     "StatusCode": 206,
