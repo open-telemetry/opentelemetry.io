@@ -24,10 +24,10 @@ Windows でのビルドについては、Windows Subsystem for Linux コマン�
 
 ### Gitpod {#gitpod}
 
-[Gitpod.io] で作業する手順は以下です。
+[Gitpod.io][] で作業する手順は以下です。
 
 1.  このリポジトリをフォークします。詳細は [リポジトリのフォーク方法][fork] を参照してください。
-2.  [gitpod.io/workspaces] から新しいワークスペースを作成する（初回のみ）か、フォークしたリポジトリ上の既存のワークスペースを開きます。
+2.  [gitpod.io/workspaces][] から新しいワークスペースを作成する（初回のみ）か、フォークしたリポジトリ上の既存のワークスペースを開きます。
     また、次の形式のリンクを開くこともできます。
     `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`
 
@@ -39,7 +39,7 @@ Gitpod はリポジトリ固有のパッケージを自動的にインストー�
 
 ### Codespaces {#codespaces}
 
-GitHub [Codespaces] で作業するには、下記にしたがってください。
+GitHub [Codespaces][] で作業するには、下記にしたがってください。
 
 1. Web サイトのリポジトリを[フォーク][fork]します。
 2. フォークから Codespace を開きます。
@@ -56,7 +56,7 @@ GitHub [Codespaces] で作業するには、下記にしたがってください
     ```
 
 3.  Node.js の [**Active LTS** リリース][nodejs-rel] をインストールまたはアップグレードします。
-    Node.js インストレーションの管理には [nvm] の使用を推奨します。
+    Node.js インストレーションの管理には [nvm][] の使用を推奨します。
     Linux では以下のコマンドを実行してください。
     .nvmrc ファイルで指定されたバージョンにインストールとアップグレードします。
 
@@ -64,7 +64,7 @@ GitHub [Codespaces] で作業するには、下記にしたがってください
     nvm install
     ```
 
-    Windows で [インストールする場合][nodejs-win] は、[nvm-windows] を使用してください。
+    Windows で [インストールする場合][nodejs-win] は、[nvm-windows][] を使用してください。
     `cmd` を使用し、Windows PowerShell を使用しないことをお勧めします。
 
     ```cmd
@@ -99,7 +99,7 @@ npm run serve
 
 サイトは [localhost:1313][] でサーブされます。
 
-[Netlify] のリダイレクトをテストする必要がある場合は、次のコマンドを実行し、[localhost:8888] にアクセスしてください。
+[Netlify][] のリダイレクトをテストする必要がある場合は、次のコマンドを実行し、[localhost:8888][] にアクセスしてください。
 
 ```sh
 npm run serve:netlify
@@ -114,15 +114,15 @@ macOS で `too many open files` や `pipe failed` というエラーが発生す
 
 Web サイトは以下のコンテンツを基に構築されます。
 
-- `content/`、`static/` などの [Hugo] のデフォルトディレクトリ
-- [hugo.yaml] の `mounts` で定義されたマウントポイント。マウントは [content-modules] の Git サブモジュールから直接取得される場合や、`content-modules` から前処理されたコンテンツ（`tmp/` に配置）の場合があり、それ以外の場所からは取得されません。
+- `content/`、`static/` などの [Hugo][] のデフォルトディレクトリ
+- [hugo.yaml][] の `mounts` で定義されたマウントポイント。マウントは [content-modules][] の Git サブモジュールから直接取得される場合や、`content-modules` から前処理されたコンテンツ（`tmp/` に配置）の場合があり、それ以外の場所からは取得されません。
 
 [hugo.yaml]: https://github.com/open-telemetry/opentelemetry.io/blob/bc94737/hugo.yaml
 [content-modules]: https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
 ### サブモジュールの変更 {#submodule-changes}
 
-[content-modules] のサブモジュール内のコンテンツを変更する場合は、まずそのサブモジュールのリポジトリに対して PR（サブモジュールの変更を含む）を送信する必要があります。
+[content-modules][] のサブモジュール内のコンテンツを変更する場合は、まずそのサブモジュールのリポジトリに対して PR（サブモジュールの変更を含む）を送信する必要があります。
 サブモジュールの PR が承認された後にのみ、サブモジュールを更新し、この Web サイトに変更を反映できます。
 
 これは、サブモジュールそのものを更新するよりも、対応するサブモジュールの元のリポジトリで作業することが、`content-modules` の変更を管理する最も簡単な方法です。
