@@ -1,0 +1,22 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: ['config:best-practices'],
+  customManagers: [
+    {
+      customType: 'regex',
+      description: 'Update Go semconv package versions in documentation',
+      managerFilePatterns: [
+        'content/en/docs/languages/go/instrumentation.md',
+        'content/en/docs/collector/extend/custom-component/receiver.md',
+        'content/pt/docs/languages/go/instrumentation.md',
+        'content/ja/docs/languages/go/instrumentation.md',
+        'content/zh/docs/languages/go/instrumentation.md',
+      ],
+      matchStrings: [
+        'go\\.opentelemetry\\.io/otel/semconv/v(?<currentValue>\\d+\\.\\d+\\.\\d+)',
+      ],
+      depNameTemplate: 'go.opentelemetry.io/otel',
+      datasourceTemplate: 'go',
+    },
+  ],
+}
