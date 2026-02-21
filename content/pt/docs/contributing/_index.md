@@ -9,7 +9,7 @@ cascade:
     **entendimento** de OpenTelemetry. Evite exceder suas capacidades.
   _issues: https://github.com/open-telemetry/opentelemetry.io/issues
   _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
 ---
 
 {{% alert title="Obrigado pelo seu interesse!" color=success %}}
@@ -52,8 +52,8 @@ O que você deseja fazer?
   [Submetendo alterações usando o GitHub](pull-requests/#changes-using-github)
 - Para contribuições mais significativas, leia as páginas desta seção começando
   com:
-  - [Pré-requisitos]
-  - [Issues]
+  - [Pré-requisitos][]
+  - [Issues][]
   - [Submetendo Alterações]
 
 [Pré-requisitos]: prerequisites/

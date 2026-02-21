@@ -1,5 +1,5 @@
 ---
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
+default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4 # patched
 ---
 
 Envie dados de telemetria para o [OpenTelemetry Collector](/docs/collector/)
@@ -27,9 +27,9 @@ O registro oferece uma [lista de exportadores específicos de linguagem][reg].
 Entre os exportadores, os exportadores do [OpenTelemetry Protocol (OTLP)][OTLP]
 são projetados tendo em mente o modelo de dados do OpenTelemetry, emitindo dados
 OTel sem qualquer perda de informação. Além disso, muitas ferramentas que operam
-com dados de telemetria suportam o formato OTLP (como [Prometheus], [Jaeger] e a
-maioria dos [fornecedores]), proporcionando um alto grau de flexibilidade quando
-necessário. Para saber mais sobre o OTLP, consulte a [Especificação do
+com dados de telemetria suportam o formato OTLP (como [Prometheus][], [Jaeger][]
+e a maioria dos [fornecedores][]), proporcionando um alto grau de flexibilidade
+quando necessário. Para saber mais sobre o OTLP, consulte a [Especificação do
 OTLP][OTLP].
 
 [Jaeger]: /blog/2022/jaeger-native-otlp/
