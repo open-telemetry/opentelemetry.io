@@ -345,5 +345,4 @@ presets:
     enabled: true
 ```
 
-[^1]:
-    由于与 `kubeletMetrics` 预设存在一些重叠，某些文件系统类型和挂载点默认会被排除。
+[^1]: 由于与 `kubeletMetrics` 预设存在一些重叠，某些文件系统类型和挂载点默认会被排除。
