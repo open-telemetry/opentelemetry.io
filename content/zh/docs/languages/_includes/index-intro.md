@@ -1,5 +1,5 @@
 ---
-default_lang_commit: 2f850a610b5f7da5730265b32c25c9226dc09e5f
+default_lang_commit: 2f850a610b5f7da5730265b32c25c9226dc09e5f # patched
 ---
 
 这是 OpenTelemetry {{ $name }} 的文档。 OpenTelemetry 是一个可观测性框架，这个框架提供了
@@ -14,7 +14,7 @@ OpenTelemetry {{ $name }} 的当前主要功能组件状态如下：
 | ------------------- | -------------------- | ----------------- |
 | {{ $tracesStatus }} | {{ $metricsStatus }} | {{ $logsStatus }} |
 
-我们可以在 [Releases] 中找到所有已发布的版本，包括[最新发布的版本][latest release]。 {{ $.Inner }}
+我们可以在 [Releases][] 中找到所有已发布的版本，包括[最新发布的版本][latest release]。 {{ $.Inner }}
 
 [latest release]: <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases/latest>
 [Releases]: <https://github.com/open-telemetry/opentelemetry-{{ $lang }}/releases>

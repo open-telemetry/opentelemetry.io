@@ -22,10 +22,10 @@ drifted_from_default: true
 
 ### Gitpod
 
-通过 [Gitpod.io] 使用开发环境：
+通过 [Gitpod.io][] 使用开发环境：
 
 1.  Fork 本仓库。参考 [Fork a repository][fork] 获取帮助。
-2.  在 [gitpod.io/workspaces] 中创建一个新的工作空间（仅需一次）或在你的
+2.  在 [gitpod.io/workspaces][] 中创建一个新的工作空间（仅需一次）或在你的
     fork 上打开一个已有的工作空间。你也可以访问以下格式的链接：
     `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`
 
@@ -37,9 +37,9 @@ Gitpod 会自动为你安装与仓库相关的依赖包。
 
 ### Codespaces
 
-通过 GitHub [Codespaces] 使用开发环境：
+通过 GitHub [Codespaces][] 使用开发环境：
 
-1. [Fork] 此网站仓库。
+1. [Fork][] 此网站仓库。
 2. 从你的 fork 中打开一个 Codespace。
 
 开发环境将通过 [DevContainer](#devcontainers) 配置初始化。
@@ -47,7 +47,7 @@ Gitpod 会自动为你安装与仓库相关的依赖包。
 
 ## 本地开发设置 {#local-setup}
 
-1.  [Fork] 并 [克隆][clone] 网站仓库，地址为：<{{% param github_repo %}}>
+1.  [Fork][] 并 [克隆][clone] 网站仓库，地址为：<{{% param github_repo %}}>
 
 2.  进入仓库目录：
 
@@ -56,13 +56,13 @@ Gitpod 会自动为你安装与仓库相关的依赖包。
     ```
 
 3.  安装或升级到 Node.js 的[**当前 LTS 版本**][nodejs-rel]。我们推荐使用
-    [nvm] 来管理 Node 安装。在 Linux 下运行以下命令，它会根据 `.nvmrc` 中指定的版本进行安装和升级：
+    [nvm][] 来管理 Node 安装。在 Linux 下运行以下命令，它会根据 `.nvmrc` 中指定的版本进行安装和升级：
 
     ```sh
     nvm install
     ```
 
-    若需在 Windows 上[安装 Node.js][nodejs-win]，使用 [nvm-windows]：
+    若需在 Windows 上[安装 Node.js][nodejs-win]，使用 [nvm-windows][]：
 
     ```cmd
     nvm install lts && nvm use lts
@@ -95,9 +95,9 @@ npm run build
 npm run serve
 ```
 
-网站将通过 [localhost:1313] 提供服务。
+网站将通过 [localhost:1313][] 提供服务。
 
-如果你需要测试 [Netlify] 重定向，请使用以下命令，并访问 [localhost:8888]：
+如果你需要测试 [Netlify][] 重定向，请使用以下命令，并访问 [localhost:8888][]：
 
 ```sh
 npm run serve:netlify
@@ -112,16 +112,16 @@ npm run serve:netlify
 
 本网站的构建依赖于以下内容：
 
-- 位于 `content/`、`static/` 等目录下的文件，遵循 [Hugo] 的默认规则；
-- 在 [hugo.yaml] 中通过 `mounts` 字段定义的挂载点。这些挂载点来源于
-  [content-modules] 目录下的 Git 子模块，或是经过预处理后存放在 `tmp/` 目录中的内容，且仅限这两处来源。
+- 位于 `content/`、`static/` 等目录下的文件，遵循 [Hugo][] 的默认规则；
+- 在 [hugo.yaml][] 中通过 `mounts` 字段定义的挂载点。这些挂载点来源于
+  [content-modules][] 目录下的 Git 子模块，或是经过预处理后存放在 `tmp/` 目录中的内容，且仅限这两处来源。
 
 [hugo.yaml]: https://github.com/open-telemetry/opentelemetry.io/blob/bc94737/hugo.yaml
 [content-modules]: https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
 ### 子模块更改 {#submodule-changes}
 
-如果你更改了某个 [content-modules] 子模块中的任何内容，你需要先向该子模块的仓库提交一个包含这些更改的 PR。
+如果你更改了某个 [content-modules][] 子模块中的任何内容，你需要先向该子模块的仓库提交一个包含这些更改的 PR。
 只有当该 PR 被接受后，你才能更新主仓库中的子模块引用，让这些更改体现在本网站中。
 
 管理 `content-modules` 更改的最简单方式，是直接在子模块所关联的上游仓库中操作，而不是在子模块目录内部进行编辑。

@@ -1,5 +1,5 @@
 ---
-default_lang_commit: 8a5b880c16d49257a147c2c3ec4a6ef6fcee8e20
+default_lang_commit: 8a5b880c16d49257a147c2c3ec4a6ef6fcee8e20 # patched
 ---
 
 将遥测数据发送到 [OpenTelemetry Collector](/docs/collector/)，以确保其被正确导出。
@@ -23,7 +23,7 @@ default_lang_commit: 8a5b880c16d49257a147c2c3ec4a6ef6fcee8e20
 
 在所有导出器中，[OpenTelemetry 协议 (OTLP)][OTLP] 导出器是以 OpenTelemetry 数据模型为基础设计的，
 能够无信息丢失地输出 OTel 数据。此外，许多处理遥测数据的工具都支持 OTLP
-（例如 [Prometheus]、[Jaeger] 和大多数[厂商][vendors]），在你需要时为你提供高度的灵活性。
+（例如 [Prometheus][]、[Jaeger][] 和大多数[厂商][vendors]），在你需要时为你提供高度的灵活性。
 若要了解更多关于 OTLP 的信息，请参阅 [OTLP 规范][OTLP]。
 
 [Jaeger]: /blog/2022/jaeger-native-otlp/
