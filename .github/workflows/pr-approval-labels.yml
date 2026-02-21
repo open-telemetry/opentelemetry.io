@@ -1,0 +1,42 @@
+name: PR approval labels
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
+  pull_request_review:
+    types:
+      - submitted
+      - dismissed
+
+permissions:
+  contents: read
+
+jobs:
+  update-approval-labels:
+    name: Update approval labels
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'open-telemetry'
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+
+      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
+      - name: Update approval labels
+        run: ./.github/scripts/pr-approval-labels.sh
+        env:
+          # Use the app token to read org team membership
+          GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
