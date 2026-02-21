@@ -8253,7 +8253,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/bigipreceiver": {
     "StatusCode": 404,
-    "LastSeen": "2026-02-20T09:51:48.627792589Z"
+    "LastSeen": "2026-02-21T09:45:55.754294677Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/carbonreceiver": {
     "StatusCode": 206,
@@ -12731,10 +12731,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-11T09:56:54.874929074Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.42.0/specification/metrics/api.md#instrument-advisory-parameters": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-20T09:55:11.854104142Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.43.0/specification/trace/api.md#span": {
     "StatusCode": 206,
     "LastSeen": "2026-02-11T09:56:57.592979542Z"
@@ -12762,94 +12758,6 @@
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/specification/metrics/api.md#instrument-advisory-parameters": {
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:49:42.494557141Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/oteps/0232-maturity-of-otel.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T09:55:01.657179392Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/spec-compliance-matrix.md#logs": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T09:55:10.6538315Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/common/README.md#attribute": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:11:59.523729094Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/compatibility/prometheus_and_openmetrics.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:11:55.333035957Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/configuration/sdk-environment-variables.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:12:00.101415341Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/context/api-propagators.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:12:00.374716057Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/document-status.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:12:03.762648943Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/logs/api.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:11:54.952557119Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/logs/api.md#emit-a-logrecord": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:12:04.52275825Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/logs/api.md#logger": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T09:55:06.396616098Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/logs/data-model.md#events": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:12:03.526144011Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/logs/data-model.md#field-attributes": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:12:00.019803139Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/logs/data-model.md#field-body": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:12:01.464198694Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/logs/data-model.md#field-eventname": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:11:58.557532056Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/logs/data-model.md#field-severitynumber": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:12:04.725857719Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/logs/data-model.md#log-and-event-record-definition": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:12:05.525530323Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/metrics/api.md#instrument-advisory-parameters": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:11:57.024966182Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/resource/sdk.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:11:54.255778671Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/resource/sdk.md#sdk-provided-resource-attributes": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:12:02.973097366Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/trace/api.md#set-status": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:11:58.679788024Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/trace/api.md#span": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:11:59.331719994Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.53.0/specification/trace/sdk.md#span-processor": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T18:12:21.247239789Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/oteps/0232-maturity-of-otel.md": {
     "StatusCode": 206,
@@ -13815,10 +13723,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-20T09:55:12.405572745Z"
   },
-  "https://github.com/open-telemetry/semantic-conventions/blob/v1.37.0/docs/rpc/rpc-spans.md#events": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T09:55:09.183396162Z"
-  },
   "https://github.com/open-telemetry/semantic-conventions/blob/v1.38.0/docs/database/database-metrics.md": {
     "StatusCode": 206,
     "LastSeen": "2026-02-11T09:58:37.45836193Z"
@@ -13898,10 +13802,6 @@
   "https://github.com/open-telemetry/semantic-conventions/issues/2197": {
     "StatusCode": 206,
     "LastSeen": "2026-02-18T09:55:56.112158122Z"
-  },
-  "https://github.com/open-telemetry/semantic-conventions/issues/2585": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-18T09:55:41.156150093Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "StatusCode": 206,
@@ -14026,10 +13926,6 @@
   "https://github.com/open-telemetry/semantic-conventions/tree/v1.26.0": {
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:55:29.960801899Z"
-  },
-  "https://github.com/open-telemetry/semantic-conventions/tree/v1.39.0//model/README.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-13T09:55:03.891330026Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/tree/v1.40.0//model/README.md": {
     "StatusCode": 206,
@@ -16062,10 +15958,6 @@
   "https://img.shields.io/badge/-stable-lightgreen": {
     "StatusCode": 200,
     "LastSeen": "2026-02-13T09:55:03.568017909Z"
-  },
-  "https://img.shields.io/badge/alpha-mediumpurple": {
-    "StatusCode": 200,
-    "LastSeen": "2026-02-14T09:49:50.4326355Z"
   },
   "https://img.shields.io/badge/beta-lightpink": {
     "StatusCode": 200,
@@ -20542,10 +20434,6 @@
   "https://wiki.osdev.org/CPUID": {
     "StatusCode": 200,
     "LastSeen": "2026-02-17T09:55:39.813293235Z"
-  },
-  "https://wiki.python.org/moin/PythonImplementations": {
-    "StatusCode": 200,
-    "LastSeen": "2026-02-11T09:56:53.369236569Z"
   },
   "https://wikipedia.org/wiki/.NET": {
     "StatusCode": 200,
