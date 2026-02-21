@@ -51,7 +51,7 @@ no-typosquatting-urls:
     https://github.com/open-telemetry/opentelemetry.io/issues/8085.
 
 no-http-urls:
-  pattern: 'http://(?!([\w-]+\.)?localhost\b)(?!127\.0)(?!.*[\?&]http_ok\b)'
+  pattern: '^http://(?!([\w-]+\.)?localhost\b)(?!127\.0)(?!.*[\?&]http_ok\b)'
   message: >-
     'http' URLs are only permitted for localhost/127.0.0.1. Use 'https' or add
     'http_ok' as a query parameter to the URL, such as:
@@ -74,21 +74,21 @@ no-otel-io-external-urls:
   replace: '/'
 
 no-spec-github-urls:
-  pattern: 'https://github\.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/(\w+)'
+  pattern: 'https://github\.com/open-telemetry/opentelemetry-specification/(?:blob|tree)/main/specification/'
   message: >-
     Use a local path, not a GitHub URL, for references to specification pages
     that are hosted on this site.
-  replace: '/docs/specs/otel/$1'
+  replace: '/docs/specs/otel/'
 
 no-proto-spec-github-urls:
-  pattern: 'https://github\.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification'
+  pattern: 'https://github\.com/open-telemetry/opentelemetry-proto/(?:blob|tree)/main/docs/specification'
   message: >-
     Use a local path, not a GitHub URL, for references to specification pages
     that are hosted on this site.
   replace: '/docs/specs/otlp/'
 
 no-semconv-github-urls:
-  pattern: 'https://github\.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs'
+  pattern: 'https://github\.com/open-telemetry/semantic-conventions/(?:blob|tree)/main/docs'
   message: >-
     Use a local path, not a GitHub URL, for references to semantic conventions
     pages that are hosted on this site.

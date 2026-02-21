@@ -13,7 +13,6 @@ ignores:
   - 'resources/**'
   - 'tools/**'
   - 'themes/**'
-  - 'tmp/**'
 
 config:
   extends: .markdownlint.yaml
