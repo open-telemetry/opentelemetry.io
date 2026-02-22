@@ -4899,6 +4899,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:54:18.003378589Z"
   },
+  "https://github.com/dash0hq/dash0-examples/tree/main/traefik": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-06T13:49:43.058543+01:00"
+  },
   "https://github.com/dash0hq/otelbin": {
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:53:00.785534669Z"
@@ -7082,6 +7086,10 @@
   "https://github.com/open-telemetry/community/issues/3119": {
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:58:47.063647084Z"
+  },
+  "https://github.com/open-telemetry/community/issues/3247": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-06T13:49:41.992982+01:00"
   },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
@@ -15311,6 +15319,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-11T12:08:22.533236+01:00"
   },
+  "https://github.com/traefik/traefik/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-06T13:49:38.726387+01:00"
+  },
   "https://github.com/trask": {
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:52:36.351109709Z"
@@ -16266,6 +16278,10 @@
   "https://kubernetes.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-19T09:52:27.877343523Z"
+  },
+  "https://kubernetes.io/blog/2026/01/29/ingress-nginx-statement/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-06T13:49:39.25858+01:00"
   },
   "https://kubernetes.io/docs/concepts/cluster-administration/system-metrics/": {
     "StatusCode": 206,
