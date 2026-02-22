@@ -31,8 +31,8 @@ OTel のウェブサイトは、ページのローカリゼーションをサポ
 - 原文の _内容_、 _意味_、 _スタイル_ を **変更しないこと**
 - [小さなプルリクエスト](#small-prs) で **段階的に作業を提出すること**
 - もしなにか疑問等があれば、以下の方法で [メンテナー][maintainers] に **質問すること**
-  - [Slack] の `#otel-docs-localization` か `#otel-comms` の各チャンネル
-  - [Discussion]やイシュー、あるいはPRコメント
+  - [Slack][] の `#otel-docs-localization` か `#otel-comms` の各チャンネル
+  - [Discussion][]やイシュー、あるいはPRコメント
 
 [Discussion]: https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
 
@@ -134,7 +134,7 @@ OTelウェブサイトのリポジトリには、Hugoがドキュメントペー
 {{% /alert %}}
 
 一部の基本ショートコードには英語のテキストが含まれており、ローカリゼーションが必要になる場合があります。
-特に、[layouts/_shortcodes/docs] に含まれるものについては、その傾向が強いです。
+特に、[layouts/_shortcodes/docs][] に含まれるものについては、その傾向が強いです。
 
 ローカリゼーションしたショートコードを作成する必要がある場合は、`layouts/_shortcodes/xx` に配置してください。
 ここで `xx` はローカリゼーション対象の言語コードを指します。

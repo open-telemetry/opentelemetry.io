@@ -16,7 +16,7 @@ cSpell:ignore: bleh targetallocator
 ### メトリクスは実際にスクレイプされていますか？ {#do-you-know-if-metrics-are-actually-being-scraped}
 
 すべてのリソースをKubernetesにデプロイしたら、ターゲットアロケーターが
-[`ServiceMonitor`](https://prometheus-operator.dev/docs/getting-started/design/#servicemonitor)または[PodMonitor]からスクレイプ対象を検出していることを確認してください。
+[`ServiceMonitor`](https://prometheus-operator.dev/docs/getting-started/design/#servicemonitor)または[PodMonitor][]からスクレイプ対象を検出していることを確認してください。
 
 次のような `ServiceMonitor` の定義があるとします。
 
@@ -342,7 +342,7 @@ spec:
 
 {{% alert title="Tip" %}}
 
-[PodMonitor]を使用している場合も同様です。
+[PodMonitor][]を使用している場合も同様です。
 その場合は、`serviceMonitorSelector` のかわりに [`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr)を使用します。
 
 {{% /alert %}}

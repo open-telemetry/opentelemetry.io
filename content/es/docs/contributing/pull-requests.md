@@ -5,14 +5,14 @@ description:
   o desde un fork local.
 aliases: [new-content]
 weight: 15
-default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
+default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
 cSpell:ignore: aplícala vincúlalos
 ---
 
 Para contribuir con nueva documentación o mejorar la existente, envía un [pull
 request][PR] (PR):
 
-- Si tu cambio es pequeño, o no estás familiarizado con [Git], consulta
+- Si tu cambio es pequeño, o no estás familiarizado con [Git][], consulta
   [Usando GitHub](#changes-using-github) para aprender a editar una página.
 - De lo contrario, consulta [Trabajar localmente](#fork-the-repo) para aprender
   cómo hacer cambios en tu propio entorno de desarrollo local.

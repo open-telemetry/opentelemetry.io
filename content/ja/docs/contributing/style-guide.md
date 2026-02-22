@@ -41,8 +41,8 @@ OpenTelemetry の用語と定義の完璧なリストには、[用語集](/docs/
 
 ## マークダウン規約 {#markdown-standards}
 
-マークダウンファイルに規約と一貫性を確保するために、[markdownlint] によって定められたルールに従う必要があります。
-すべてのルールの一覧は、[.markdownlint.yaml] ファイルを確認してください。
+マークダウンファイルに規約と一貫性を確保するために、[markdownlint][] によって定められたルールに従う必要があります。
+すべてのルールの一覧は、[.markdownlint.yaml][] ファイルを確認してください。
 
 同様に、Markdown [file format](#file-format) を適用し、ファイルの末尾スペースを削除します。
 これは 2 つ以上のスペースを仕様する [line break syntax] を排除します。
@@ -74,7 +74,7 @@ title: registryEntryTitle
 
 ## ファイルのフォーマット {#file-format}
 
-[Prettier] を利用することでファイルフォーマットを強制します。
+[Prettier][] を利用することでファイルフォーマットを強制します。
 `npm run fix:format` を実行して、フォーマットを適用してください。
 
 ## ファイル名 {#file-names}

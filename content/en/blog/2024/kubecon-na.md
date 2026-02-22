@@ -119,7 +119,7 @@ You can help us improve the project by sharing your thoughts and feedback about
 your OpenTelemetry adoption, implementation, and usage.
 
 We will create action items from your comments as appropriate. Check
-[#otel-sig-end-user] in CNCF's Slack instance for results and action item
+[#otel-sig-end-user][] in CNCF's Slack instance for results and action item
 updates to come after KubeCon EU.
 
 Come join us to listen, learn, and get involved in OpenTelemetry.

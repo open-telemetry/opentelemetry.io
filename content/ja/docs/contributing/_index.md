@@ -39,7 +39,7 @@ OpenTelemetryドキュメントコントリビューターは以下を行ない�
 
 このページの本セクションは、OpenTelemetry **ドキュメント**へのコントリビュート方法について説明します。
 
-OpenTelemetryプロジェクトへの一般的なコントリビュートの手引には、[OpenTelemetryコントリビューターガイド]を参照ください。
+OpenTelemetryプロジェクトへの一般的なコントリビュートの手引には、[OpenTelemetryコントリビューターガイド][]を参照ください。
 すべての言語の実装、コレクター、規約の[リポジトリ][org]は独自のコントリビュートの手引があります。
 
 [OpenTelemetryコントリビューターガイド]: https://github.com/open-telemetry/community/blob/main/guides/contributor

@@ -1,6 +1,6 @@
 ---
 title: 插桩生态系统
-default_lang_commit: 6eddc725571667e112a41aa7422bcd4c69764503
+default_lang_commit: 6eddc725571667e112a41aa7422bcd4c69764503 # patched
 drifted_from_default: true
 aliases:
   - /docs/java/getting_started
@@ -160,7 +160,7 @@ OpenTelemetry Java 发布了一些[构件](../api/#semantic-attributes)来帮助
 在“通过文件或标准输出”流程中，日志会被写入文件或标准输出。
 另一个组件（例如 FluentBit）负责读取或跟踪（tailing）这些日志，将其解析为更结构化的格式，并将其转发到目标位置（如收集器）。
 在应用的需求不允许因[直接发送至收集器](#direct-to-collector)而产生额外开销的情况下，这种流程可能更为适用。
-然而，这种流程要求所有下游所需的日志字段都必须编码到日志中，并且读取日志的组件需要将数据解析为[日志数据模型]格式(/docs/specs/otel/logs/data-model)。
+然而，这种流程要求所有下游所需的日志字段都必须编码到日志中，并且读取日志的组件需要将数据解析为[日志数据模型](/docs/specs/otel/logs/data-model/)格式。
 日志转发组件的安装与配置不在本文档的讨论范围内。
 
 通过安装[适配层](#shims)将 OpenTelemetry 上下文桥接到日志框架中，即可实现日志与链路的关联。

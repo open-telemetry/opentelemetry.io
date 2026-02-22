@@ -31,7 +31,7 @@ follows:
 > [!WARNING]
 >
 > Regardless of an API/SDK's status, if your instrumentation relies on [semantic
-> conventions][semconv] that are marked as [Experimental] in the [semantic
+> conventions][semconv] that are marked as [Experimental][] in the [semantic
 > conventions specification][semconv-spec], your data flow might be subject to
 > **breaking changes**.
 >

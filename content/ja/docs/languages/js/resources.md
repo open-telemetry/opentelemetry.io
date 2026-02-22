@@ -236,7 +236,7 @@ DockerCGroupV1Detector found resource. Resource {
 ## 次のステップ {#next-steps}
 
 設定に追加できるリソース検出器は他にもあります。
-たとえば、[Cloud]環境や[Deployment]の詳細を取得するものがあります。
+たとえば、[Cloud][]環境や[Deployment][]の詳細を取得するものがあります。
 詳細については、[opentelemetry-js-contribリポジトリの`resource-detector-*`という名前のパッケージ](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages)を参照してください。
 
 [getting started - node.js]: /docs/languages/js/getting-started/nodejs/

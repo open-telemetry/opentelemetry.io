@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Collector Chart
 linkTitle: Collector Chart
-default_lang_commit: a41755046773da6186e0521e92c6cf1b439f7c7d
+default_lang_commit: a41755046773da6186e0521e92c6cf1b439f7c7d # patched
 # prettier-ignore
 cSpell:ignore: debugexporter filelog filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
 ---
@@ -345,4 +345,4 @@ presets:
     enabled: true
 ```
 
-[^1] 由于与 `kubeletMetrics` 预设存在一些重叠，某些文件系统类型和挂载点默认会被排除。
+[^1]: 由于与 `kubeletMetrics` 预设存在一些重叠，某些文件系统类型和挂载点默认会被排除。

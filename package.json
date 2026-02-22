@@ -58,7 +58,8 @@
     "check:i18n": "scripts/check-i18n.sh",
     "check:links:internal": "npm run _check:links:internal",
     "check:links": "npm run _check:links",
-    "check:markdown": "npx markdownlint-cli2 '**/*.md'",
+    "check:markdown": "npx markdownlint-cli2 '**/*.md' '!tmp/**/*.md'",
+    "check:markdown:specs": "npx markdownlint-cli2 'tmp/(otel|otlp|semconv)/**/*.md'",
     "check:registry": "npm run _check:registry -- ",
     "check:spelling": "npx cspell --no-progress -c .cspell.yml content data 'layouts/**/*.md'",
     "check:text": "npm run _check:text -- ",
@@ -104,6 +105,7 @@
     "prebuild": "npm run _prebuild",
     "precheck:links:internal": "npm run build && npm run fix:htmltest-config",
     "precheck:links": "npm run build && npm run fix:htmltest-config",
+    "precheck:markdown:specs": "mkdir -p tmp && cp .markdownlint-for-specs.yml tmp/.markdownlint.yml",
     "prefix:submodule": "npm run update:submodule",
     "prepare": "npm run seq -- get:submodule _prepare:docsy",
     "preserve:hugo": "npm run _prebuild",
@@ -140,6 +142,8 @@
     "markdownlint": "^0.40.0",
     "markdownlint-cli2": "^0.21.0",
     "markdownlint-rule-helpers": "^0.30.0",
+    "markdownlint-rule-link-pattern": "github:chalin/markdownlint-rule-link-pattern#semver:0.2.0",
+    "markdownlint-rule-no-shortcut-ref-link": "github:chalin/markdownlint-rule-no-shortcut-ref-link#v0.2.0",
     "postcss-cli": "^11.0.1",
     "prettier": "3.8.1",
     "puppeteer": "^24.37.2",
@@ -181,5 +185,5 @@
     "proseWrap": "always",
     "singleQuote": true
   },
-  "spelling": "cSpell:ignore docsy elemetry htmltest hugo loglevel minisearch netlify nowrap postnetlify prebuild precheck preinstall postbuild postget refcache textlint -"
+  "spelling": "cSpell:ignore chalin docsy elemetry htmltest hugo loglevel minisearch netlify nowrap postnetlify prebuild precheck preinstall postbuild postget refcache textlint -"
 }
