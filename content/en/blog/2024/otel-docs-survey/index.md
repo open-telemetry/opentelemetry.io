@@ -77,7 +77,7 @@ results.
 We asked respondents to describe in their own words what they'd like to see
 added to the [opentelemetry.io][] documentation. We loosely grouped their
 responses into six categories. Some answers fell in more than one category. For
-full responses, see [Docs Usability Survey Responses].
+full responses, see [Docs Usability Survey Responses][].
 
 [Docs Usability Survey Responses]:
   https://docs.google.com/spreadsheets/d/1kpJQYiEGtpZorICbl-QfYL3mKfeoRLiUywvKcV8fcNA
@@ -177,7 +177,7 @@ people that needs the most work is the JavaScript documentation.
 
 ## Learn more
 
-For detailed survey results, see [Docs Usability Survey Responses].
+For detailed survey results, see [Docs Usability Survey Responses][].
 
 ## Your feedback is essential
 

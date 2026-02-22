@@ -9,8 +9,8 @@ cSpell:ignore: youtube
 
 OpenTelemetry este:
 
-- Un **cadru și un set de instrumente [de observabilitate]** concepute pentru a
-  facilita
+- Un **cadru și un set de instrumente [de observabilitate][observabilitate]**
+  concepute pentru a facilita
   - [Generarea][instr]
   - Exportarea
   - [Colectarea](../concepts/components/#collector)

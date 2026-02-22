@@ -63,7 +63,7 @@ Tracer tracer = GlobalOpenTelemetry.getTracer("application");
 Use the `Tracer` to create a span as explained in the
 [Span](/docs/languages/java/api/#span) section.
 
-A full example can be found in the [example repository].
+A full example can be found in the [example repository][].
 
 ## Meter
 
@@ -77,7 +77,7 @@ Meter meter = GlobalOpenTelemetry.getMeter("application");
 Use the `Meter` to create a counter, gauge or histogram as explained in the
 [Meter](/docs/languages/java/api/#meter) section.
 
-A full example can be found in the [example repository].
+A full example can be found in the [example repository][].
 
 [example repository]:
   https://github.com/open-telemetry/opentelemetry-java-examples/tree/main/javaagent

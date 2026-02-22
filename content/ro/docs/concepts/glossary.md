@@ -296,7 +296,7 @@ Prescurtare pentru [Colector OpenTelemetry](#collector).
 
 ### OTEP
 
-Un acronim pentru [Propunere de îmbunătățire OpenTelemetry].
+Un acronim pentru [Propunere de îmbunătățire OpenTelemetry][].
 
 > **Ortografie**: Scrie „OTEPs” la plural. Nu scrie `OTep` sau `otep` în
 > descrieri.

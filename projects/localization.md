@@ -190,7 +190,7 @@ interested in helping with translation or review, you might consider:
 
 1. Join the CNCF Slack and introduce yourself in
    [`#otel-docs-localization`][otel-docs-localization]
-2. Review the [localization contributing guide]
+2. Review the [localization contributing guide][]
 3. Look for issues tagged with your language label (e.g.,
    [`lang:pt`][issues-lang-pt])
 4. [Submit a pull request][submitting content] following the established
@@ -210,7 +210,7 @@ To propose a new language localization, you will need:
    outlining your proposal
 
 > [!NOTE] If you're interested in starting a new localization, do not hesitate
-> to read our [new localization guide] for detailed steps.
+> to read our [new localization guide][] for detailed steps.
 
 ## Meeting Times
 

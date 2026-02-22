@@ -131,7 +131,7 @@ certain rules, enforced by [markdownlint][]. For a full list, check the
 [.markdownlint.yaml][] and [.markdownlint-cli2.yaml][] files.
 
 We also enforce Markdown [file format](#file-format) and strip files of trailing
-whitespace. This precludes the [line break syntax] of 2+ spaces; use `<br>`
+whitespace. This precludes the [line break syntax][] of 2+ spaces; use `<br>`
 instead or reformat your text.
 
 ## Spell checking

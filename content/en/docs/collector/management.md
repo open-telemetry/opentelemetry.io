@@ -43,10 +43,10 @@ ideally done using OpenTelemetry.
 
 Observability vendors and cloud providers offer proprietary solutions for agent
 management. In the open source observability space, there is an emerging
-standard that you can use for agent management: [Open Agent Management Protocol]
-(OpAMP).
+standard that you can use for agent management: [Open Agent Management
+Protocol][] (OpAMP).
 
-The [OpAMP specification] defines how to manage a fleet of telemetry data
+The [OpAMP specification][] defines how to manage a fleet of telemetry data
 agents. These agents can be [OpenTelemetry Collectors](/docs/collector/), Fluent
 Bit or other agents in any arbitrary combination.
 

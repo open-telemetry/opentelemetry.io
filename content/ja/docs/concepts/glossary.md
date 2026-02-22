@@ -2,7 +2,7 @@
 title: 用語集
 description: OpenTelemetry で使用されるテレメトリー用語の定義と規則
 weight: 200
-default_lang_commit: 276a42b19e0394586e8c02892fe0a4ed3d96e491
+default_lang_commit: 276a42b19e0394586e8c02892fe0a4ed3d96e491 # patched
 ---
 
 この用語集は、OpenTelemetry プロジェクトに対して新しい、用語と[概念](/docs/concepts/)を定義し、オブザーバビリティの分野で一般的に使われている OpenTelemetry 特有の使用法を明確にします。
@@ -244,7 +244,7 @@ OpenTelemetry の前身です。
 
 ### OTEP {#otep}
 
-[OpenTelemetry Enhancement Proposal] の頭字語。
+[OpenTelemetry Enhancement Proposal][] の頭字語。
 
 > **Spelling**: "OTEPs" は複数形で記述してください。
 > 説明で `OTep` または `otep` と書かないでください。

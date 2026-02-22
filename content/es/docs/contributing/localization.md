@@ -9,8 +9,8 @@ default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
 cSpell:ignore: Dowair shortcodes
 ---
 
-El sitio web de OTel utiliza el [framework multilingüe] de Hugo para soportar la
-localización de páginas. El inglés es el idioma predeterminado, con inglés
+El sitio web de OTel utiliza el [framework multilingüe][] de Hugo para soportar
+la localización de páginas. El inglés es el idioma predeterminado, con inglés
 estadounidense como la localización predeterminada (implícita). Se admite un
 número creciente de otras localizaciones, como se puede ver en el menú
 desplegable de idiomas en la barra de navegación superior.

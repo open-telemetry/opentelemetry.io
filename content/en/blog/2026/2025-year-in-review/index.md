@@ -88,7 +88,7 @@ documentation:
 ## Ecosystem Explorer: Unlocking the power of our metadata
 
 Beyond documentation and localization, 2025 was also the year the
-**OpenTelemetry [Ecosystem Explorer]** initiative took shape under the
+**OpenTelemetry [Ecosystem Explorer][]** initiative took shape under the
 Communications SIG.
 
 As the OpenTelemetry ecosystem grows, it's become harder for users to answer
@@ -98,12 +98,12 @@ basic but critical questions:
 - _What telemetry (spans, metrics, attributes) do they emit?_
 - _How does that telemetry change across versions and configurations?_
 
-The existing [OpenTelemetry Registry] helps users discover components, but it
+The existing [OpenTelemetry Registry][] helps users discover components, but it
 requires significant manual upkeep and doesn't always provide the depth of
 information needed.
 
-A proof-of-concept, the [Instrumentation Explorer], already shows what this can
-look like for the Java agent: you can inspect instrumentations, see emitted
+A proof-of-concept, the [Instrumentation Explorer][], already shows what this
+can look like for the Java agent: you can inspect instrumentations, see emitted
 telemetry, and compare behavior across versions and configurations.
 
 Special kudos to [Jay DeLuca (@jaydeluca)][Jay DeLuca] for driving this effort
@@ -123,7 +123,7 @@ our own team.
 
 ### Contributions
 
-Comparing the periods [December 2023 to November 2024] and [December 2024 to
+Comparing the periods [December 2023 to November 2024][] and [December 2024 to
 November 2025], we observed an upward trend in commits and files changed:
 
 - **Commits** increased 43% from 1,340 to 1,913.
@@ -148,7 +148,7 @@ OpenTelemetry website. Your efforts make a difference!
 
 ### Team spirit
 
-The [Communications SIG], which manages Opentelemetry.io, also grew this year!
+The [Communications SIG][], which manages Opentelemetry.io, also grew this year!
 We added **two** new maintainers, **two** new approvers, and we created the
 triager role where we welcomed **six** new triagers.
 
@@ -167,13 +167,13 @@ million views and 4 million sessions in 2024).
 
 Looking at the most visited documentation pages, a few sections stand out:
 
-| Page/section      | Views | % of all views [^2] |
-| ----------------- | ----: | ------------------: |
-| [Collector][]     |  790K |               ~6.0% |
-| [Concepts][]      |  725K |               ~5.5% |
-| [Languages][]     |  434K |               ~3.3% |
-| [Getting Started] |  326K |               ~2.5% |
-| [Demo][]          |  298K |               ~2.3% |
+| Page/section        | Views | % of all views [^2] |
+| ------------------- | ----: | ------------------: |
+| [Collector][]       |  790K |               ~6.0% |
+| [Concepts][]        |  725K |               ~5.5% |
+| [Languages][]       |  434K |               ~3.3% |
+| [Getting Started][] |  326K |               ~2.5% |
+| [Demo][]            |  298K |               ~2.3% |
 
 [analytics]: https://lookerstudio.google.com/s/tSTKxK1ECeU
 [Collector]: /docs/collector
@@ -194,13 +194,13 @@ homepage and a complete [refactoring][] of the Collector docs.
 
 Whether you're an end user, a contributor, or simply enthusiastic about
 OpenTelemetry, we invite you to get involved. You can [contribute][] by raising
-[issues][], participating in [discussions][], or [submitting PRs].
+[issues][], participating in [discussions][], or [submitting PRs][].
 
 You can also join us:
 
 - On the [CNCF Slack](https://slack.cncf.io/) at any one of the many
   `#otel`-prefixed channels.
-- In [Comms meetings], held every other Tuesday at 9:00 AM Pacific time.
+- In [Comms meetings][], held every other Tuesday at 9:00 AM Pacific time.
 
 Let's make 2026 another amazing year for [opentelemetry.io](/)!
 

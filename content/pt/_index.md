@@ -72,7 +72,7 @@ populares, e suporta [instrumentação][] _manual e sem código_.
 {{% blocks/feature icon="fab fa-github" title="Open Source, Agnóstico a Fornecedor" %}}
 
 100% Gratuito e Open Source, o OpenTelemetry é [adotado][] e apoiado por
-[líderes da indústria] no ecossistema da observabilidade.
+[líderes da indústria][] no ecossistema da observabilidade.
 
 [adotado]: /ecosystem/adopters/
 [líderes da indústria]: /ecosystem/vendors/

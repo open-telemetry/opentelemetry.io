@@ -23,8 +23,8 @@ distributions and the component they customize. For
 
 ## Adding your distribution {#how-to-add}
 
-To have your distribution listed, [submit a PR] with an entry added to the
-[distributions list]. The entry should include the following:
+To have your distribution listed, [submit a PR][] with an entry added to the
+[distributions list][]. The entry should include the following:
 
 - Link to the main page of your distribution
 - Link to the documentation that explains how to use the distribution

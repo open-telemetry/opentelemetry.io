@@ -8,7 +8,7 @@ drifted_from_default: true
 cSpell:ignore: Dowair shortcodes
 ---
 
-OTel のウェブサイトは、ページのローカリゼーションをサポートするために、Hugo の [multilingual framework] をサポートしています。
+OTel のウェブサイトは、ページのローカリゼーションをサポートするために、Hugo の [multilingual framework][] をサポートしています。
 デフォルトの言語は英語であり、米国英語がデフォルト（暗黙の）ローカリゼーションとして設定されています。
 対応する言語の数は増えており、トップナビゲーションの言語ドロップダウンメニューから確認できます。
 

@@ -125,7 +125,7 @@ it easier for them to troubleshoot authentication problems.
 
 ### Client authenticators
 
-[Client authenticators] are extensions with extra functions that implement one
+[Client authenticators][] are extensions with extra functions that implement one
 or more of the defined interfaces. Each authenticator receives an object that
 allows it to inject authentication data. For instance, the HTTP client
 authenticator provides an

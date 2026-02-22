@@ -114,11 +114,11 @@ tendría baja cardinalidad.
 
 ### Collector
 
-El [OpenTelemetry Collector], o Collector para abreviar, es una implementación
+El [OpenTelemetry Collector][], o Collector para abreviar, es una implementación
 independiente de proveedores de cómo recibir, procesar y exportar datos de
 telemetría. Un binario que puede ser desplegado como un agente o gateway.
 
-> **Ortografía**: Cuando se refiere al [OpenTelemetry Collector], siempre
+> **Ortografía**: Cuando se refiere al [OpenTelemetry Collector][], siempre
 > capitalizar Collector. Use just "Collector" si se está usando Collector como
 > un adjetivo &mdash; por ejemplo, "Collector configuration".
 
@@ -301,7 +301,7 @@ Abreviatura para [OpenTelemetry Collector](#collector).
 
 ### OTEP
 
-Abreviatura para [OpenTelemetry Enhancement Proposal].
+Abreviatura para [OpenTelemetry Enhancement Proposal][].
 
 > **Ortografía**: Escribe "OTEPs" como forma plural. No escribas `OTep` ni
 > `otep` en descriptions.

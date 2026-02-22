@@ -117,15 +117,15 @@ baixa cardinalidade.
 
 ### Collector
 
-O [OpenTelemetry Collector], ou simplesmente Collector, é uma implementação
+O [OpenTelemetry Collector][], ou simplesmente Collector, é uma implementação
 neutra em relação a fornecedores sobre como receber, processar e exportar dados
 de telemetria. Um único binário que pode ser implementado como um agente ou
 _gateway_.
 
-> **Ortografia**: Ao referir-se ao [OpenTelemetry Collector], sempre capitalize
-> a palavra "Collector". Utilize apenas o termo "Collector" caso esteja
-> utilizando Collector como um adjetivo &mdash; por exemplo, "Configuração do
-> Collector".
+> **Ortografia**: Ao referir-se ao [OpenTelemetry Collector][], sempre
+> capitalize a palavra "Collector". Utilize apenas o termo "Collector" caso
+> esteja utilizando Collector como um adjetivo &mdash; por exemplo,
+> "Configuração do Collector".
 
 [OpenTelemetry Collector]: /docs/collector/
 

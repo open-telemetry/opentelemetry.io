@@ -8,7 +8,7 @@ cSpell:ignore: Arnell Ashok Chandrasekar Clario Contribfest Ekansh Grabner Haeus
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
-technical committee are thrilled to be at [KubeCon NA] in Salt Lake City from
+technical committee are thrilled to be at [KubeCon NA][] in Salt Lake City from
 November 12 - 15, 2024.
 
 Read on to learn about all the things related OpenTelemetry during KubeCon.
@@ -78,16 +78,17 @@ first steps: documentation, Collector, Java, JS, Ruby, Python, .NET, and more.
 
 ## Observability Day
 
-_[Observability Day] fosters collaboration, discussion, and knowledge sharing of
-cloud native observability projects_. This event will be held on November 12,
+_[Observability Day][] fosters collaboration, discussion, and knowledge sharing
+of cloud native observability projects_. This event will be held on November 12,
 2024 from 9am to 6pm.
 [Check the full schedule](https://colocatedeventsna2024.sched.com/overview/type/Observability+Day)
 to find your favorite talks about Observability and OpenTelemetry.
 
 > <i class="far fa-exclamation-triangle"></i> **IMPORTANT access note**: You
 > need an _in-person all-access_ pass for on-site access to **Observability
-> Day**. For details, see [KubeCon registration]. If you have a virtual ticket,
-> you will be able to follow **Observability Day** through a live stream.
+> Day**. For details, see [KubeCon registration][]. If you have a virtual
+> ticket, you will be able to follow **Observability Day** through a live
+> stream.
 
 ## OpenTelemetry Observatory
 
