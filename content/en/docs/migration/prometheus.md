@@ -2,7 +2,7 @@
 title: Prometheus Client Libraries vs. OpenTelemetry
 linkTitle: Prometheus Client
 weight: 5
-cSpell:ignore: base2ExponentialBucketHistogram bedroomTemperatureCelsius buildAndStart buildWithCallback classicUpperBounds connectedDeviceCount defaultAggregation devicesConnected deviceCommandDuration explicitBucketHistogram GaugeWithCallback gaugeBuilder hvac hvacOnTime initLabelValues InstrumentSelector InstrumentType labelValues livingRoomTemperatureCelsius LongUpDownCounter nativeOnly OtelHistogramExplicitBucketView pendingCommandCount PrometheusHistogramNative PrometheusSummary PrometheusRegistry setDefaultAggregationSelector setExplicitBucketBoundariesAdvice thermostatSetpoint totalEnergyJoules upDownCounterBuilder
+cSpell:ignore: base2ExponentialBucketHistogram bedroomTemperatureCelsius buildAndStart buildWithCallback classicUpperBounds connectedDeviceCount defaultAggregation devicesConnected deviceCommandDuration explicitBucketHistogram GaugeWithCallback gaugeBuilder hvac hvacOnTime initLabelValues InstrumentSelector InstrumentType labelValues livingRoomTemperatureCelsius LongUpDownCounter nativeOnly OtelHistogramAsSummary OtelHistogramExplicitBucketView pendingCommandCount PrometheusHistogramNative PrometheusSummary PrometheusRegistry setDefaultAggregationSelector setExplicitBucketBoundariesAdvice thermostatSetpoint totalEnergyJoules upDownCounterBuilder
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -811,11 +811,13 @@ Prometheus `Histogram` maps to the OpenTelemetry `Histogram` instrument.
 
 ### Classic (explicit) histogram
 
-- **Bucket configuration**: Prometheus declares bucket boundaries on the instrument itself via
-  `classicUpperBounds()`. In OpenTelemetry, `setExplicitBucketBoundariesAdvice()` sets default
-  boundaries on the instrument as a hint, but they can be overridden or replaced by views
-  configured at the SDK level. This separation keeps instrumentation code independent of
-  collection configuration.
+Both systems support classic histograms, where fixed bucket boundaries partition observations
+into discrete ranges.
+
+- **Bucket configuration**: Prometheus declares bucket boundaries on the instrument itself at
+  creation time. In OpenTelemetry, bucket boundaries are set on the instrument as a hint that
+  can be overridden or replaced by views configured at the SDK level. This separation keeps
+  instrumentation code independent of collection configuration.
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
@@ -981,6 +983,7 @@ package otel;
 import io.opentelemetry.exporter.otlp.http.metrics.OtlpHttpMetricExporter;
 import io.opentelemetry.sdk.metrics.Aggregation;
 import io.opentelemetry.sdk.metrics.InstrumentType;
+import io.opentelemetry.sdk.metrics.export.DefaultAggregationSelector;
 
 public class OtelHistogramExponentialExporter {
   static OtlpHttpMetricExporter createExporter() {
@@ -989,10 +992,8 @@ public class OtelHistogramExponentialExporter {
     return OtlpHttpMetricExporter.builder()
         .setEndpoint("http://localhost:4318")
         .setDefaultAggregationSelector(
-            type ->
-                type == InstrumentType.HISTOGRAM
-                    ? Aggregation.base2ExponentialBucketHistogram()
-                    : Aggregation.defaultAggregation())
+            DefaultAggregationSelector.getDefault()
+                .with(InstrumentType.HISTOGRAM, Aggregation.base2ExponentialBucketHistogram()))
         .build();
   }
 }
@@ -1033,19 +1034,15 @@ public class OtelHistogramExponentialView {
 Prometheus `Summary` computes quantiles client-side at scrape time and exposes them as labeled
 time series (for example, `{quantile="0.95"}`). OpenTelemetry has no direct equivalent.
 
-For migrating away from `Summary`:
-
-- **Quantile estimation**: Switch to a `Histogram` with bucket boundaries that cover the range
-  of values you care about. Quantiles can then be computed at query time — for example, with
-  `histogram_quantile()` in PromQL. Unlike `Summary`, histogram-based quantiles can be
-  aggregated across instances.
-- **SLO compliance**: If you only need to know what fraction of observations fall below a
-  specific threshold, use a histogram with a single bucket at that threshold. The bucket count
-  directly expresses compliance against the threshold.
+A histogram with no explicit bucket boundaries is a good stand-in for most `Summary` use cases
+— it captures count and sum without client-side quantile computation. For quantile estimation,
+use bucket boundaries that bracket your thresholds; `histogram_quantile()` in PromQL can then
+compute quantiles at query time. Unlike `Summary`, histogram-based quantiles can be aggregated
+across instances.
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
-A typical Prometheus `Summary` recording client-side quantiles:
+**Prometheus**
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusSummary.java"?>
@@ -1073,7 +1070,42 @@ public class PrometheusSummary {
 ```
 <!-- prettier-ignore-end -->
 
-In OpenTelemetry, replace this with a histogram instrument using bucket boundaries that bracket
-your quantile thresholds. Quantiles are computed at query time rather than in the client.
+**OpenTelemetry**
+
+<!-- prettier-ignore-start -->
+<?code-excerpt "src/main/java/otel/OtelHistogramAsSummary.java"?>
+```java
+package otel;
+
+import io.opentelemetry.api.OpenTelemetry;
+import io.opentelemetry.api.common.AttributeKey;
+import io.opentelemetry.api.common.Attributes;
+import io.opentelemetry.api.metrics.DoubleHistogram;
+import io.opentelemetry.api.metrics.Meter;
+import java.util.List;
+
+public class OtelHistogramAsSummary {
+  private static final AttributeKey<String> DEVICE_TYPE = AttributeKey.stringKey("device_type");
+  private static final Attributes THERMOSTAT = Attributes.of(DEVICE_TYPE, "thermostat");
+  private static final Attributes LOCK = Attributes.of(DEVICE_TYPE, "lock");
+
+  public static void summaryReplacement(OpenTelemetry openTelemetry) {
+    Meter meter = openTelemetry.getMeter("smart.home");
+    // No explicit bucket boundaries: captures count and sum, a good stand-in for most
+    // Summary use cases. For quantile estimation, add boundaries that bracket your thresholds.
+    DoubleHistogram deviceCommandDuration =
+        meter
+            .histogramBuilder("device.command.duration")
+            .setDescription("Time to receive acknowledgment from a smart home device")
+            .setUnit("s")
+            .setExplicitBucketBoundariesAdvice(List.of())
+            .build();
+
+    deviceCommandDuration.record(0.35, THERMOSTAT);
+    deviceCommandDuration.record(0.85, LOCK);
+  }
+}
+```
+<!-- prettier-ignore-end -->
 
 {{% /tab %}} {{< /tabpane >}}
