@@ -4899,6 +4899,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:54:18.003378589Z"
   },
+  "https://github.com/dash0hq/dash0-examples/tree/main/emissary-ingress": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-06T14:12:41.46689+01:00"
+  },
   "https://github.com/dash0hq/otelbin": {
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:53:00.785534669Z"
@@ -5193,7 +5197,7 @@
   },
   "https://github.com/emissary-ingress/emissary": {
     "StatusCode": 206,
-    "LastSeen": "2026-02-11T12:08:13.234351+01:00"
+    "LastSeen": "2026-02-06T14:12:38.60495+01:00"
   },
   "https://github.com/emreyalvac": {
     "StatusCode": 206,
@@ -7082,6 +7086,10 @@
   "https://github.com/open-telemetry/community/issues/3119": {
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:58:47.063647084Z"
+  },
+  "https://github.com/open-telemetry/community/issues/3247": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-06T14:12:39.591797+01:00"
   },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
