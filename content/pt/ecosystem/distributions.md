@@ -3,7 +3,7 @@ title: Distribuições de terceiros
 description:
   Lista de distribuições de código aberto do OpenTelemetry mantidas por
   terceiros.
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
+default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4 # patched
 ---
 
 As [distribuições][distributions] do OpenTelemetry são uma forma de personalizar
@@ -25,8 +25,9 @@ são do Collector e o componente que elas customizam. Para distribuições do
 
 ## Adicionando sua distribuição {#how-to-add}
 
-Para que sua distribuição seja listada, [envie um PR] com uma entrada adicionada
-à [lista de distribuições][distributions list]. A entrada deve incluir:
+Para que sua distribuição seja listada, [envie um PR][] com uma entrada
+adicionada à [lista de distribuições][distributions list]. A entrada deve
+incluir:
 
 - Link para a página principal da sua distribuição
 - Link para a documentação que explica como utilizar a distribuição

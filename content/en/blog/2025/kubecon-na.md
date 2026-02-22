@@ -8,8 +8,8 @@ cSpell:ignore: Aditya Agno Alipio Amir Aronoff Artem Bagga Bodhish Caldwell Chau
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
-technical committee are thrilled to be at [KubeCon NA] in Atlanta from November
-10 - 13, 2025. [Register][kubecon registration] today to join us!
+technical committee are thrilled to be at [KubeCon NA][] in Atlanta from
+November 10 - 13, 2025. [Register][kubecon registration] today to join us!
 
 Read on to learn about all the events related to OpenTelemetry during KubeCon.
 
@@ -126,7 +126,7 @@ all the details. [Sign up][maintainer summit] today!
 
 ## Observability Day
 
-[Observability Day] fosters collaboration, discussion, and knowledge sharing
+[Observability Day][] fosters collaboration, discussion, and knowledge sharing
 with a focus on cloud native observability projects. This event will be held on
 November 10, 2025 from 9:00 to 18:00. Look for your favorite talks about
 Observability and OpenTelemetry in the [schedule][obs-day-sched].
@@ -151,7 +151,7 @@ If you'd like to participate by leading a discussion, or if there is a
 discussion topic you're interested in, please reach out to the [OpenTelemetry
 End User SIG][end user] to let us know, and we will see what we can do.
 
-For activity details, see the [OTel Observatory Schedule]. This schedule is a
+For activity details, see the [OTel Observatory Schedule][]. This schedule is a
 work in progress and will be updated up until the day of the event. Check back
 often for the latest!
 

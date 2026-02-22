@@ -3,7 +3,7 @@ title: ドキュメントスタイルガイド
 description: OpenTelemetry のドキュメントを書く際の用語とスタイル。
 linkTitle: スタイルガイド
 weight: 20
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25 # patched
 drifted_from_default: true
 cSpell:ignore: open-telemetry postgre style-guide
 ---
@@ -45,7 +45,7 @@ OpenTelemetry の用語と定義の完璧なリストには、[用語集](/docs/
 すべてのルールの一覧は、[.markdownlint.yaml][] ファイルを確認してください。
 
 同様に、Markdown [file format](#file-format) を適用し、ファイルの末尾スペースを削除します。
-これは 2 つ以上のスペースを仕様する [line break syntax] を排除します。
+これは 2 つ以上のスペースを仕様する [line break syntax][] を排除します。
 かわりに `<br>` を使うか、再フォーマットしてください。
 
 ## スペルチェック {#spell-checking}

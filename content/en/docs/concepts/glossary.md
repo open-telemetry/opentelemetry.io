@@ -73,11 +73,11 @@ client-side apps are browser apps, mobile apps, and apps running on IoT devices.
 
 ### Collector
 
-The [OpenTelemetry Collector], or Collector for short, is a vendor-agnostic
+The [OpenTelemetry Collector][], or Collector for short, is a vendor-agnostic
 implementation on how to receive, process, and export telemetry data. A single
 binary that can be deployed as an agent or gateway.
 
-> **Spelling**: When referring to the [OpenTelemetry Collector], always
+> **Spelling**: When referring to the [OpenTelemetry Collector][], always
 > capitalize Collector. Use just "Collector" if you are using Collector as an
 > adjective &mdash; for example, "Collector configuration".
 
@@ -279,7 +279,7 @@ Short form for [OpenTelemetry Collector](#collector).
 
 ### OTEP
 
-An acronym for [OpenTelemetry Enhancement Proposal].
+An acronym for [OpenTelemetry Enhancement Proposal][].
 
 > **Spelling**: Write "OTEPs" as plural form. Don't write `OTep` or `otep` in
 > descriptions.

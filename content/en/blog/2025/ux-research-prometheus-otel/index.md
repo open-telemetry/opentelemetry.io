@@ -107,7 +107,7 @@ light:
   > for Prometheus are justified as well. So both have very good arguments." —
   > _Juraci Paixão Kröhling_
 
-  <!-- test -->
+  <!-- markdownlint-disable no-shortcut-ref-link -->
 
   > “I think one of the biggest [interoperability issues] is the difference
   > between push and pull.” — _Julius Volz_

@@ -338,7 +338,7 @@ adoption on mainframes. Connect with members of the SIG via the Slack channel
 [SIG meeting](https://github.com/open-telemetry/community/?tab=readme-ov-file#sig-mainframes)
 on Wednesday at 10:00 PT.
 
-_A version of this article was [originally posted] on the Open Mainframe Project
-blog._
+_A version of this article was [originally posted][] on the Open Mainframe
+Project blog._
 
-[originally posted]: {{% param canonical_url %}}
+[originally posted]: <{{% param canonical_url %}}>

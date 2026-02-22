@@ -74,7 +74,7 @@ completa, verifique os arquivos [.markdownlint.yaml][] e
 [.markdownlint-cli2.yaml][].
 
 Também aplicamos o padrão [file format](#file-format) ao Markdown, que remove
-espaços em branco no final das linhas. Isso exclui a [line break syntax] com
+espaços em branco no final das linhas. Isso exclui a [line break syntax][] com
 dois ou mais espaços. Para forçar a quebra de linha, use `<br>` em vez disso ou
 reformate seu texto.
 

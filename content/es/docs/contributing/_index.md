@@ -49,9 +49,9 @@ cascade:
   [Enviar contenido usando GitHub](pull-requests/#changes-using-github)
 - Para contribuciones más significativas, lee las páginas de esta sección
   comenzando por:
-  - [Requisitos previos]
+  - [Requisitos previos][]
   - [Issues][]
-  - [Enviar contenido]
+  - [Enviar contenido][]
 
 [Requisitos previos]: prerequisites/
 [Enviar contenido]: pull-requests/
@@ -69,7 +69,7 @@ Las páginas de esta sección describen cómo contribuir a la **documentación**
 OpenTelemetry.
 
 Para obtener orientación sobre cómo contribuir al proyecto OpenTelemetry en
-general, consulta la [Guía para nuevos contribuyentes de OpenTelemetry] de la
+general, consulta la [Guía para nuevos contribuyentes de OpenTelemetry][] de la
 comunidad. Cada [repositorio de OTel][org] para implementaciones de lenguajes,
 el Collector y las convenciones tiene sus propias guías específicas para
 contribuir.

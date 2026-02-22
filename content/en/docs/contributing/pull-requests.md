@@ -19,7 +19,7 @@ To contribute new or improve existing documentation, submit a [pull request][PR]
 
 > [!WARNING] **First time contributors** take note!
 >
-> If you are a [first-time contributor], please note the following:
+> If you are a [first-time contributor][], please note the following:
 >
 > Your first 3 contributions to our repository must be primarily human-written,
 > with only minor AI assistance allowed
@@ -188,7 +188,7 @@ fix:text
 If you're more experienced with Git, or if your changes are larger than a few
 lines, work from a local fork.
 
-Make sure you have [`git` installed] on your computer. You can also use a user
+Make sure you have [`git` installed][] on your computer. You can also use a user
 interface for Git.
 
 Figure 3 shows the steps to follow when you work from a local fork. The details

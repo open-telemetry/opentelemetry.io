@@ -2,7 +2,7 @@
 title: Fornecedores
 description: Fornecedores que oferecem suporte nativo ao OpenTelemetry
 aliases: [/vendors]
-default_lang_commit: b6ddba1118d07bc3c8d1d07b293f227686d0290e
+default_lang_commit: b6ddba1118d07bc3c8d1d07b293f227686d0290e # patched
 ---
 
 Uma lista não exaustiva de organizações que oferecem soluções que consomem o
@@ -22,8 +22,8 @@ que disponibiliza um produto de código aberto para seus clientes.
 
 ## Adicionando sua organização {#how-to-add}
 
-Para que sua organização seja listada, [envie um PR] com um a entrada adicionada
-à [lista de fornecedores]. A entrada deve incluir:
+Para que sua organização seja listada, [envie um PR][] com um a entrada
+adicionada à [lista de fornecedores][]. A entrada deve incluir:
 
 - Link para a documentação que detalha como sua solução consome o OpenTelemetry
   nativamente via [OTLP](/docs/specs/otlp).

@@ -178,7 +178,8 @@ receivers:
 ## Give it a try
 
 If you are an OpenTelemetry Collector user on Kubernetes, and you find this new
-feature interesting, see [Receiver Creator configuration] section to learn more.
+feature interesting, see [Receiver Creator configuration][] section to learn
+more.
 
 Give it a try and let us know what you think via the `#otel-collector` channel
 of the [CNCF Slack workspace](https://slack.cncf.io/).

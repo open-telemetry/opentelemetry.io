@@ -62,8 +62,8 @@ reenvía los datos a una amplia variedad de herramientas de análisis.
 
 {{% blocks/feature icon="fas fa-magic" title="Instrumentación & Integraciones listas para usar"%}}
 
-OpenTelemetry [se integra] con muchas librerías y frameworks populares, y admite
-la [instrumentación][] _manual y sin código_.
+OpenTelemetry [se integra][] con muchas librerías y frameworks populares, y
+admite la [instrumentación][] _manual y sin código_.
 
 [instrumentación]: /docs/concepts/instrumentation/
 [se integra]: /ecosystem/integrations/
@@ -73,7 +73,7 @@ la [instrumentación][] _manual y sin código_.
 {{% blocks/feature icon="fab fa-github" title="Código abierto, Independiente de proveedores" %}}
 
 100% gratuito y de código abierto, OpenTelemetry es [adoptado][] y respaldado
-por [empresas líderes] en el sector de la observabilidad.
+por [empresas líderes][] en el sector de la observabilidad.
 
 [adoptado]: /ecosystem/adopters/
 [empresas líderes]: /ecosystem/vendors/

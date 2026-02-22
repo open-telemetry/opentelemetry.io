@@ -82,8 +82,8 @@ Resource associated with Activity:
 You can also add custom resources in code by attaching them to a
 `ResourceBuilder`.
 
-The following example builds on the [getting started] sample and adds two custom
-resources, `environment.name` and `team.name` in code:
+The following example builds on the [getting started][] sample and adds two
+custom resources, `environment.name` and `team.name` in code:
 
 ```csharp
 using System.Diagnostics;

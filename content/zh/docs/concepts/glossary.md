@@ -59,10 +59,10 @@ OpenTelemetry 中对[元数据](#metadata)的术语。为产生遥测数据的�
 
 ### Collector
 
-[OpenTelemetry Collector]，简称 Collector，是一个与厂商无关的遥测数据接收、处理和导出实现。
+[OpenTelemetry Collector][]，简称 Collector，是一个与厂商无关的遥测数据接收、处理和导出实现。
 一个可部署为代理或网关的单一二进制程序。
 
-> **拼写提示**：在指代 [OpenTelemetry Collector] 时，请始终将 “Collector” 大写。
+> **拼写提示**：在指代 [OpenTelemetry Collector][] 时，请始终将 “Collector” 大写。
 > 如果用作形容词，可直接使用 “Collector”，例如 “Collector 配置”。
 
 [OpenTelemetry Collector]: /docs/collector/

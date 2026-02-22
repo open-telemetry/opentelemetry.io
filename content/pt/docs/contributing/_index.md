@@ -21,7 +21,7 @@ OpenTelemetry.
 
 ## <i class='far fa-exclamation-triangle text-warning '></i> Primeira vez contribuindo? {#first-time-contributing}
 
-- **[Escolha uma issue]** com os seguintes labels:
+- **[Escolha uma issue][]** com os seguintes labels:
   - [Good first issue](<{{% param _issue %}}%22good+first+issue%22>)
   - [Help wanted](<{{% param _issue %}}%3A%22help+wanted%22>)
 
@@ -54,7 +54,7 @@ O que você deseja fazer?
   com:
   - [Pré-requisitos][]
   - [Issues][]
-  - [Submetendo Alterações]
+  - [Submetendo Alterações][]
 
 [Pré-requisitos]: prerequisites/
 [Submetendo Alterações]: pull-requests/
@@ -72,8 +72,8 @@ As páginas desta seção descrevem apenas como contribuir com a documentação 
 OpenTelemetry.
 
 Para orientações de como contribuir para o projeto OpenTelemetry em geral,
-consulte o [Guia para novos contribuidores do OpenTelemetry] da comunidade. Cada
-[repositório OTel][org] para implementações de linguagem, o Collector e
+consulte o [Guia para novos contribuidores do OpenTelemetry][] da comunidade.
+Cada [repositório OTel][org] para implementações de linguagem, o Collector e
 convenções possui seu próprio guia de contribuição específico.
 
 [escolha uma issue]: issues/#fixing-an-existing-issue

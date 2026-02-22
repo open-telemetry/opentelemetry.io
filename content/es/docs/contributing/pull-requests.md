@@ -21,7 +21,7 @@ request][PR] (PR):
 
 > [!WARNING] **Nuevos contribuyentes**, ¡presten atención!
 >
-> Si eres un [contribuyente nuevo], ten en cuenta lo siguiente:
+> Si eres un [contribuyente nuevo][], ten en cuenta lo siguiente:
 >
 > Tus primeras 3 contribuciones a nuestro repositorio deben ser principalmente
 > escritas por humanos, con solo asistencia menor de IA permitida
@@ -196,8 +196,8 @@ fix:text
 Si tienes más experiencia con Git, o si tus cambios son más grandes que unas
 pocas líneas, trabaja desde un fork local.
 
-Asegúrate de tener [`git` instalado] en tu computadora. También puedes usar una
-interfaz de usuario para Git.
+Asegúrate de tener [`git` instalado][] en tu computadora. También puedes usar
+una interfaz de usuario para Git.
 
 La Figura 3 muestra los pasos a seguir cuando trabajas desde un fork local. Los
 detalles de cada paso siguen a continuación.
