@@ -2,7 +2,7 @@
 title: アナウンス
 description: 特別なイベントのためのアナウンスやバナーを作成します。
 weight: 50
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+default_lang_commit: e2879b9594cb34f07ea4917772b3bbd3a54079c8
 ---
 
 アナウンスは、ロケールの `announcements` セクション内に含まれる _通常の Hugo ページ_ です。
@@ -24,11 +24,9 @@ hugo new --kind announcement content/YOUR-LOCALE/announcements/announcement-file
 
 > バナーの場合、アナウンスの本文は短いフレーズにしてください。
 
-{{% alert title="ローカリゼーションについて" %}}
-
-**ローカル固有のアナウンスを上書きする場合** は、英語版のアナウンスと **同じファイル名** を使用してください。
-
-{{% /alert %}}
+> [!NOTE] ローカリゼーションについて
+>
+> **ローカル固有のアナウンスを上書きする場合** は、英語版のアナウンスと **同じファイル名** を使用してください。
 
 ## アナウンス一覧 {#announcement-list}
 
