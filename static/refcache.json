@@ -6295,6 +6295,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:46:57.433374606Z"
   },
+  "https://github.com/libbpf/bpftool": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-13T17:34:56.374733375Z"
+  },
   "https://github.com/libbpf/libbpf": {
     "StatusCode": 206,
     "LastSeen": "2026-02-10T10:00:28.240030846Z"
@@ -9886,6 +9890,10 @@
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation": {
     "StatusCode": 206,
     "LastSeen": "2026-02-11T09:58:54.914141125Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/f96ddcf28c2c13d2de7e8d20bb4932be0ec5cc90/devdocs/protocols/tcp/couchbase.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-14T01:22:43.069955798Z"
   },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/discussions": {
     "StatusCode": 206,
@@ -17946,6 +17954,10 @@
   "https://opentelemetry.devstats.cncf.io/d/9/developer-activity-counts-by-repository-group-table?orgId=1": {
     "StatusCode": 200,
     "LastSeen": "2026-02-12T09:58:47.651397651Z"
+  },
+  "https://opentelemetry.io/docs/collector/deployment/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T21:32:19.606736801Z"
   },
   "https://opentracing.io": {
     "StatusCode": 206,

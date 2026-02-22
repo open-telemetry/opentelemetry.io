@@ -6,7 +6,7 @@ description:
   instrument.
 weight: 20
 # prettier-ignore
-cSpell:ignore: beyla filestorecsi kube-node-lease kube-system replicaset statefulset volumepopulator
+cSpell:ignore: beyla filestorecsi kube-node-lease kube-system rdns replicaset statefulset volumepopulator
 ---
 
 The `OTEL_EBPF_AUTO_TARGET_EXE` and `OTEL_EBPF_OPEN_PORT` are environment
@@ -18,14 +18,14 @@ In some scenarios, OBI instruments many services. For example, as a
 services in a node. The `discovery` YAML section lets you specify more granular
 selection criteria for the services OBI can instrument.
 
-| YAML<br>environment variable                                                                                     | Description                                                                                                                                                                                                                                                                                                             | Type            | Default                                                                                                                                                       |
-| ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `instrument`                                                                                                     | Specify different selection criteria for different services, and override their reported name or namespace. Refer to the [discovery services](#discovery-services) section for details. .                                                                                                                               | list of objects | (unset)                                                                                                                                                       |
-| `exclude_instrument`                                                                                             | Specify selection criteria for excluding services from being instrumented. Useful for avoiding instrumentation of services typically found in observability environments. Refer to the [exclude services from instrumentation](#exclude-services-from-instrumentation) section for details.                             | list of objects | (unset)                                                                                                                                                       |
-| `default_exclude_instrument`                                                                                     | Disables instrumentation of OBI itself, the OpenTelemetry Collector, and other observability components. Set to empty to allow OBI to instrument itself and these other components. Refer to the [default exclude services from instrumentation](#default-exclude-services-from-instrumentation) section for details. . | list of objects | Path: `{*beyla,*alloy,*prometheus-config-reloader,*ebpf-instrument,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}` and certain Kubernetes system namespaces |
-| `skip_go_specific_tracers`<br>`OTEL_EBPF_SKIP_GO_SPECIFIC_TRACERS`                                               | Disables the detection of Go specifics when the **eBPF** tracer inspects executables to be instrumented. The tracer falls back to using generic instrumentation, which is generally less efficient. Refer to the [skip go specific tracers](#skip-go-specific-tracers) section for details. .                           | boolean         | false                                                                                                                                                         |
-| `exclude_otel_instrumented_services`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES`                           | Disables OBI instrumentation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                                                | boolean         | true                                                                                                                                                          |
-| `exclude_otel_instrumented_services_span_metrics`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES_SPAN_METRICS` | Disables OBI span metric/service graph metric generation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                    | boolean         | false                                                                                                                                                         |
+| YAML<br>environment variable                                                                                     | Description                                                                                                                                                                                                                                                                                                           | Type            | Default                                                                                                                                           |
+| ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `instrument`                                                                                                     | Specify different selection criteria for different services, and override their reported name or namespace. Refer to the [discovery services](#discovery-services) section for details.                                                                                                                               | list of objects | (unset)                                                                                                                                           |
+| `exclude_instrument`                                                                                             | Specify selection criteria for excluding services from being instrumented. Useful for avoiding instrumentation of services typically found in observability environments. Refer to the [exclude services from instrumentation](#exclude-services-from-instrumentation) section for details.                           | list of objects | (unset)                                                                                                                                           |
+| `default_exclude_instrument`                                                                                     | Disables instrumentation of OBI itself, the OpenTelemetry Collector, and other observability components. Set to empty to allow OBI to instrument itself and these other components. Refer to the [default exclude services from instrumentation](#default-exclude-services-from-instrumentation) section for details. | list of objects | Path: `{*beyla,*alloy,*prometheus-config-reloader,*obi,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}` and certain Kubernetes system namespaces |
+| `skip_go_specific_tracers`<br>`OTEL_EBPF_SKIP_GO_SPECIFIC_TRACERS`                                               | Disables the detection of Go specifics when the **eBPF** tracer inspects executables to be instrumented. The tracer falls back to using generic instrumentation, which is generally less efficient. Refer to the [skip go specific tracers](#skip-go-specific-tracers) section for details.                           | boolean         | false                                                                                                                                             |
+| `exclude_otel_instrumented_services`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES`                           | Disables OBI instrumentation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                                              | boolean         | true                                                                                                                                              |
+| `exclude_otel_instrumented_services_span_metrics`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES_SPAN_METRICS` | Disables OBI span metric/service graph metric generation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                  | boolean         | false                                                                                                                                             |
 
 ## Discovery services
 
@@ -253,8 +253,8 @@ components. It also disables instrumentation of various Kubernetes system
 namespaces to reduce the overall cost of metric generation. The following
 section contains all excluded components:
 
-- Excluded services by `exe_path`: `*beyla`, `*alloy`, `*ebpf-instrument`,
-  `*otelcol`, `*otelcol-contrib`, `*otelcol-contrib[!/]*`.
+- Excluded services by `exe_path`: `*beyla`, `*alloy`, `*obi`, `*otelcol`,
+  `*otelcol-contrib`, `*otelcol-contrib[!/]*`.
 - Excluded services by `k8s_namespace`: `kube-system`, `kube-node-lease`,
   `local-path-storage`, `grafana-alloy`, `cert-manager`, `monitoring`,
   `gke-connect`, `gke-gmp-system`, `gke-managed-cim`,
@@ -286,7 +286,7 @@ discovery:
   # Override default exclusions to remove monitoring namespace
   # This list keeps other default exclusions but removes monitoring
   default_exclude_instrument:
-    - exe_path: '{*beyla,*alloy,*ebpf-instrument,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}'
+    - exe_path: '{*beyla,*alloy,*obi,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}'
     - k8s_namespace: kube-system
     - k8s_namespace: kube-node-lease
     - k8s_namespace: local-path-storage
@@ -395,3 +395,100 @@ attributes:
 ```
 
 They accept a comma-separated list of annotation and label names.
+
+### Enhanced service name lookup (v0.5.0+)
+
+Starting with v0.5.0, OBI includes enhanced service name resolution that
+provides more accurate service identification, especially in dynamic and
+distributed environments.
+
+**Improvements**:
+
+1. **DNS-based resolution**: OBI can resolve service names using DNS queries,
+   providing better alignment with actual service discovery mechanisms used by
+   applications
+2. **Metadata enrichment**: Enhanced lookup from multiple metadata sources
+   including container runtimes and orchestration platforms
+
+3. **Connection tracking**: Better tracking of service-to-service communication
+   by resolving both client and server identities
+
+**How it works**:
+
+When OBI detects network communication between services, it attempts to resolve
+service names using the available configured sources, in this order of priority:
+
+1. **Kubernetes metadata lookup**: Check Pod and owner metadata from the
+   Kubernetes API (enabled by default)
+2. **Reverse DNS from eBPF**: Use DNS responses captured at the kernel level
+   (optional, requires `OTEL_EBPF_NAME_RESOLVER_SOURCES=rdns`)
+3. **Standard DNS reverse lookup**: Perform reverse DNS queries for IP addresses
+   (optional, requires `OTEL_EBPF_NAME_RESOLVER_SOURCES=dns`)
+
+Local service names follow this priority hierarchy:
+
+1. `OTEL_SERVICE_NAME` environment variable (highest priority)
+2. `OTEL_RESOURCE_ATTRIBUTES` environment variable (service.name key)
+3. Service name annotations (resource.opentelemetry.io/service.name)
+4. Service name labels (e.g., app.kubernetes.io/name)
+5. Kubernetes Pod owner name (e.g., Deployment name) (lowest priority)
+
+This enhancement is particularly valuable for:
+
+- **Service mesh environments**: Where DNS is used for service routing
+- **Kubernetes clusters**: Improved correlation with Service resources
+- **Microservices architectures**: Better service graph visualization with
+  accurate service names
+
+**Configuration**:
+
+Kubernetes metadata-based service lookup is enabled by default. To enable
+DNS-based resolution methods, configure the name resolver sources:
+
+```bash
+# Enable both Kubernetes metadata and standard DNS reverse lookups
+export OTEL_EBPF_NAME_RESOLVER_SOURCES=k8s,dns
+
+# Or enable eBPF-captured DNS lookups (requires DNS event capture)
+export OTEL_EBPF_NAME_RESOLVER_SOURCES=k8s,rdns
+
+# Enable all resolver sources
+export OTEL_EBPF_NAME_RESOLVER_SOURCES=k8s,dns,rdns
+
+# Optional: Adjust cache size (default: 1024)
+export OTEL_EBPF_NAME_RESOLVER_CACHE_LEN=2048
+
+# Optional: Adjust cache time-to-live (default: 5 minutes)
+export OTEL_EBPF_NAME_RESOLVER_CACHE_TTL=10m
+```
+
+In Kubernetes environments, ensure:
+
+- Network policies allow DNS queries (if using DNS-based resolution)
+- CoreDNS or equivalent DNS service is running
+- If using RDNS, eBPF programs can capture DNS events
+
+**Benefits**:
+
+- **More accurate service graphs**: Service-to-service communication shows real
+  service names instead of IPs
+- **Better trace correlation**: Traces show service names that match your
+  service catalog
+- **Easier troubleshooting**: Identify which services are communicating without
+  manual IP lookups
+
+**Example**:
+
+Without enhanced lookup, you might see:
+
+```console
+service.name: "10.0.1.42"
+peer.service: "10.0.2.15"
+```
+
+With enhanced lookup enabled:
+
+```console
+service.name: "frontend"
+peer.service: "backend-api"
+```
