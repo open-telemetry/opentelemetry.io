@@ -43,9 +43,9 @@ table-column-style: false # Causes problems in ja and zh pages
 no-shortcut-ref-link:
   # Skip:
   # - OTel spec informal footnotes like [1], [2]
-  # - Markdown footnote references like [^1], [^note]
+  # - SemConf number ranges like [0..1], [0..n-1], [0.0, 1.0]
   # - Ellipsis like [...]
-  ignore_pattern: '^\d+(\.\.\d+)?$|^\.\.\.$' # skip [1], [2], [0..1], etc.
+  ignore_pattern: '^([-+,n\d\.\s]+)$|^\.\.\.$'
 
 # -----------------------------------------------------------------------------
 # Link-validation rules (from scripts/_md-rules/link-rules.mjs)
