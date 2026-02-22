@@ -5695,6 +5695,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:52:10.888735327Z"
   },
+  "https://github.com/hydrolix/hydrolix-exporter/tree/main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-22T14:34:16.436559-08:00"
+  },
   "https://github.com/i-am-bee": {
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:47:34.660674089Z"
@@ -16043,6 +16047,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-18T09:52:56.037458417Z"
   },
+  "https://hydrolix.io/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-22T14:34:19.454532-08:00"
+  },
   "https://hyper.rs/": {
     "StatusCode": 200,
     "LastSeen": "2026-02-11T09:53:34.469581607Z"
@@ -18182,6 +18190,10 @@
   "https://pkg.go.dev/github.com/hertz-contrib/obs-opentelemetry": {
     "StatusCode": 200,
     "LastSeen": "2026-02-18T09:58:19.09080717Z"
+  },
+  "https://pkg.go.dev/github.com/hydrolix/hydrolix-exporter": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-27T13:59:37.683576-08:00"
   },
   "https://pkg.go.dev/github.com/jurabek/otelkafka": {
     "StatusCode": 200,
