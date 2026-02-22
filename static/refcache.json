@@ -16323,6 +16323,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-20T14:22:49.864561313Z"
   },
+  "https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-13T13:36:25.949193-08:00"
+  },
   "https://kubernetes.io/docs/concepts/workloads/controllers/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-19T09:55:29.513914002Z"
