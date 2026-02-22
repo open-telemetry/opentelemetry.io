@@ -47,8 +47,8 @@ What do you want to do?
   [Submitting content using GitHub](pull-requests/#changes-using-github)
 - For more significant contributions, read the pages in this section starting
   with:
-  - [Prerequisites]
-  - [Issues]
+  - [Prerequisites][]
+  - [Issues][]
   - [Submitting content]
 
 [Prerequisites]: prerequisites/

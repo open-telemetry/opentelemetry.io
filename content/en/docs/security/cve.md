@@ -23,6 +23,8 @@ it is refreshed daily.
   </tbody>
 </table>
 
+<!-- markdownlint-disable no-shortcut-ref-link -->
+
 <script id="main-script">
   'use strict';
   (function() {

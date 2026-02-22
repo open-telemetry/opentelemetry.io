@@ -8,6 +8,8 @@ body_class: otel-with-contributions-from
 cSpell:ignore: Aronoff autoscaler codepath fluentbit k8sattributesprocessor kubelet spanmetrics statefulset
 ---
 
+<!-- markdownlint-configure-file {"no-shortcut-ref-link": {"ignore_pattern": "^(and|is|our)$"}} -->
+
 With contributions from [Adriana Villela](https://github.com/avillela)
 (Lightstep from ServiceNow).
 

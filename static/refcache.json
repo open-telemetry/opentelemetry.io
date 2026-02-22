@@ -3535,6 +3535,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-20T09:51:52.436055959Z"
   },
+  "https://github.com/DavidAnson/markdownlint/blob/main/doc/md052.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-21T06:07:56.4178-05:00"
+  },
   "https://github.com/DebajitDas": {
     "StatusCode": 206,
     "LastSeen": "2026-02-20T09:53:31.575889414Z"
@@ -20050,6 +20054,10 @@
   "https://spec.commonmark.org/0.31.2/#link-reference-definitions": {
     "StatusCode": 206,
     "LastSeen": "2026-02-20T09:51:54.713020627Z"
+  },
+  "https://spec.commonmark.org/0.31.2/#reference-link": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-21T03:58:37.871812-05:00"
   },
   "https://spring.io/guides/gs/spring-boot/": {
     "StatusCode": 200,

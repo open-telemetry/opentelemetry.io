@@ -196,7 +196,7 @@ OpenTelemetryはこれらのペアを[属性](#attribute)と呼びます。
 ### オブザーバビリティバックエンド {#observability-backend}
 
 テレメトリーデータの受信、処理、保存、クエリを担うオブザーバビリティプラットフォームのコンポーネントです。
-商用製品だけではなく、たとえば [Jaeger] や [Prometheus] のようなオープンソースツールも含みます。
+商用製品だけではなく、たとえば [Jaeger][] や [Prometheus][] のようなオープンソースツールも含みます。
 OpenTelemetry はオブザーバビリティバックエンドではありません。
 
 ### オブザーバビリティフロントエンド {#observability-frontend}
@@ -262,7 +262,7 @@ OpenTelemetry の前身です。
 
 ### Proto {#proto}
 
-言語に依存しないインターフェイス型。[opentelemetry-proto]を参照してください。
+言語に依存しないインターフェイス型。[opentelemetry-proto][]を参照してください。
 
 ### レシーバー {#receiver}
 
@@ -355,7 +355,7 @@ OpenTelemetryにおいては[トレース](#trace)、[メトリクス](#metric)�
 
 外部エクスポーターにかわるプロセス内エクスポーター。
 これを使うと、トレースとメトリクスの情報をバックグラウンドで収集し、集約できます。
-詳細は[zPages]を参照してください。
+詳細は[zPages][]を参照してください。
 
 [attribute]: /docs/specs/otel/common/#attributes
 [baggage]: /docs/specs/otel/baggage/api/

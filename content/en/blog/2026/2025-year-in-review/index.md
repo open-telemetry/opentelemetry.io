@@ -29,7 +29,7 @@ telemetry.
 
 ## Localization: A breakout year
 
-[Localization] has been one of the standout achievements of 2025. Building on
+[Localization][] has been one of the standout achievements of 2025. Building on
 the five locales introduced in 2024, this year we launched three new languages:
 
 - [Bengali](/bn/) — May 16, 2025
@@ -160,20 +160,20 @@ and experienced alike!
 
 ### Popular pages
 
-Our public [analytics] shows data for page views and popular pages. According to
-the data from December 1, 2024 to November 30, 2025, [opentelemetry.io](/) was
-viewed more than **13 million** times across 5 million sessions (up from 12
+Our public [analytics][] shows data for page views and popular pages. According
+to the data from December 1, 2024 to November 30, 2025, [opentelemetry.io](/)
+was viewed more than **13 million** times across 5 million sessions (up from 12
 million views and 4 million sessions in 2024).
 
 Looking at the most visited documentation pages, a few sections stand out:
 
 | Page/section      | Views | % of all views [^2] |
 | ----------------- | ----: | ------------------: |
-| [Collector]       |  790K |               ~6.0% |
-| [Concepts]        |  725K |               ~5.5% |
-| [Languages]       |  434K |               ~3.3% |
+| [Collector][]     |  790K |               ~6.0% |
+| [Concepts][]      |  725K |               ~5.5% |
+| [Languages][]     |  434K |               ~3.3% |
 | [Getting Started] |  326K |               ~2.5% |
-| [Demo]            |  298K |               ~2.3% |
+| [Demo][]          |  298K |               ~2.3% |
 
 [analytics]: https://lookerstudio.google.com/s/tSTKxK1ECeU
 [Collector]: /docs/collector
@@ -189,12 +189,12 @@ Looking at the most visited documentation pages, a few sections stand out:
 This year is shaping up to be another exciting year for the OpenTelemetry
 project! As part of our preparation for the project's graduation from Cloud
 Native Computing Foundation (CNCF) incubation, the Communications SIG will be
-making some important website improvements, including a [redesign] of the
-homepage and a complete [refactoring] of the Collector docs.
+making some important website improvements, including a [redesign][] of the
+homepage and a complete [refactoring][] of the Collector docs.
 
 Whether you're an end user, a contributor, or simply enthusiastic about
-OpenTelemetry, we invite you to get involved. You can [contribute] by raising
-[issues], participating in [discussions], or [submitting PRs].
+OpenTelemetry, we invite you to get involved. You can [contribute][] by raising
+[issues][], participating in [discussions][], or [submitting PRs].
 
 You can also join us:
 
