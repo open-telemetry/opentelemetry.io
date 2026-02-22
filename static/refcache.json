@@ -2491,6 +2491,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-18T09:55:39.38717882Z"
   },
+  "https://docs.oracle.com/javase/8/docs/technotes/guides/management/agent.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-01-05T15:50:14.87247516Z"
+  },
   "https://docs.oracle.com/javase/specs/jls/se7/html/jls-10.html": {
     "StatusCode": 200,
     "LastSeen": "2026-02-18T09:55:01.753173628Z"
@@ -10347,6 +10351,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-19T09:52:45.225901371Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/releases": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:20.980800941Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources": {
     "StatusCode": 206,
     "LastSeen": "2026-02-10T09:54:48.194728224Z"
@@ -10370,6 +10378,22 @@
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/gcp-resources": {
     "StatusCode": 206,
     "LastSeen": "2026-02-10T09:54:52.884187927Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:23.580862059Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#configuration-reference": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:17.024513191Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#migrating-from-jmx-metric-gatherer": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:28.371643052Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/jmx-scraper#predefined-metric-sets": {
+    "StatusCode": 206,
+    "LastSeen": "2026-01-05T15:50:30.588620347Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/micrometer-meter-provider": {
     "StatusCode": 206,
@@ -10442,6 +10466,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-02-18T09:52:21.807369195Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md#predefined-metric-sets": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-12T06:56:30.112929035Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/kafka-broker.md": {
     "StatusCode": 206,
