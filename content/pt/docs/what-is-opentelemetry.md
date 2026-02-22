@@ -2,7 +2,7 @@
 title: O que é o OpenTelemetry?
 description: Uma breve explicação sobre o que o OpenTelemetry é e não é.
 weight: 150
-default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829
+default_lang_commit: 0930994d5be6f01b05d0caca0550c468d2f3e829 # patched
 cSpell:ignore: youtube
 ---
 
@@ -14,13 +14,13 @@ O OpenTelemetry é:
   - [Coleta](../concepts/components/#collector)
 
   de [dados de telemetria][telemetry data] como [rastros][traces],
-  [métricas][metrics] e [logs].
+  [métricas][metrics] e [logs][].
 
 - **Código aberto**, além de **agnóstico em relação a fornecedores e
   ferramentas**, o que possibilita ser utilizado com uma grande variedade de
   _backends_ de observabilidade, incluindo ferramentas de código aberto como
-  [Jaeger] e [Prometheus], além de soluções comerciais. O OpenTelemetry **não**
-  é um _backend_ de observabilidade.
+  [Jaeger][] e [Prometheus][], além de soluções comerciais. O OpenTelemetry
+  **não** é um _backend_ de observabilidade.
 
 Um dos principais objetivos do OpenTelemetry é permitir que você possa
 instrumentar suas aplicações ou sistemas de maneira fácil, independentemente da
@@ -44,8 +44,9 @@ significa ser capaz de entender o estado interno do sistema analisando seus
 dados de telemetria, que incluem rastros, métricas e logs.
 
 Para tornar um sistema observável, ele deve ser [instrumentado][instr]. Ou seja,
-o código deve emitir [rastros][traces], [métricas][metrics] ou [logs]. Os dados
-instrumentados devem então ser enviados para um backend de observabilidade.
+o código deve emitir [rastros][traces], [métricas][metrics] ou [logs][]. Os
+dados instrumentados devem então ser enviados para um backend de
+observabilidade.
 
 ## Por que OpenTelemetry? {#why-opentelemetry}
 

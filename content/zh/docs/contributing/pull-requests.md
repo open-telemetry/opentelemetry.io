@@ -3,13 +3,13 @@ title: 提交内容
 description: 了解如何通过 GitHub UI 或本地 Fork 提交新增或修改的内容。
 aliases: [new-content]
 weight: 15
-default_lang_commit: e04e8da1f4527d65c162af9a670eb3be8e7e7fb9
+default_lang_commit: e04e8da1f4527d65c162af9a670eb3be8e7e7fb9 # patched
 drifted_from_default: true
 ---
 
 若要贡献新的或改进现有的文档，请提交一个 [pull request][PR]：
 
-- 如果你的改动较小，或你不熟悉 [Git]，请参见[使用 GitHub](#changes-using-github) 了解如何编辑页面。
+- 如果你的改动较小，或你不熟悉 [Git][]，请参见[使用 GitHub](#changes-using-github) 了解如何编辑页面。
 - 否则，请参见[从本地 Fork 开始工作](#fork-the-repo)了解如何在本地开发环境中进行更改。
 
 {{% alert title="贡献者许可协议 (CLA)" color=warning %}}
