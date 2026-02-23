@@ -77,7 +77,7 @@ behaviors may arise.
 
 > [!NOTE]
 >
-> Note that we decided to use [events emitted] with the
+> Note that we decided to use [events emitted][] with the
 > [Logs API](/docs/specs/otel/logs/api/) specification in the Semantic
 > Conventions for Generative AI. Events allows for us to define specific
 > [semantic conventions](/docs/specs/semconv/general/events/) for the user

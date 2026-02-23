@@ -9,8 +9,8 @@ default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
 cSpell:ignore: Dowair shortcodes
 ---
 
-El sitio web de OTel utiliza el [framework multilingüe] de Hugo para soportar la
-localización de páginas. El inglés es el idioma predeterminado, con inglés
+El sitio web de OTel utiliza el [framework multilingüe][] de Hugo para soportar
+la localización de páginas. El inglés es el idioma predeterminado, con inglés
 estadounidense como la localización predeterminada (implícita). Se admite un
 número creciente de otras localizaciones, como se puede ver en el menú
 desplegable de idiomas en la barra de navegación superior.
@@ -36,9 +36,9 @@ instrucciones que se ofrecen en esta sección.
 - **Preservar** el _contenido_, _significado_ y _estilo_ del texto original
 - **Enviar el trabajo _de forma incremental_** mediante
   [pull requests pequeños](#small-prs)
-- **Consultar** a los [mantenedores] si tienes dudas o preguntas a través de:
-  - Canales de [Slack] `#otel-docs-localization` o `#otel-comms`
-  - [Discusión], issue o comentario en un PR
+- **Consultar** a los [mantenedores][] si tienes dudas o preguntas a través de:
+  - Canales de [Slack][] `#otel-docs-localization` o `#otel-comms`
+  - [Discusión][], issue o comentario en un PR
 
 [Discusión]:
   https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
@@ -107,9 +107,9 @@ idioma correspondiente a tu localidad.
 
 ### Etiquetas de definición de enlaces {#link-labels}
 
-Los autores de localizaciones pueden optar por traducir o no las [etiquetas] de
-las [definiciones de enlaces][] en Markdown. Si eliges mantener la etiqueta en
-inglés, sigue las instrucciones de esta sección.
+Los autores de localizaciones pueden optar por traducir o no las [etiquetas][]
+de las [definiciones de enlaces][] en Markdown. Si eliges mantener la etiqueta
+en inglés, sigue las instrucciones de esta sección.
 
 Por ejemplo, considera el siguiente Markdown:
 
@@ -163,7 +163,7 @@ de la propia imagen[^shared-images].
 
 Algunos de los _shortcodes_ base contienen texto en inglés que podrías necesitar
 localizar, especialmente aquellos que se encuentran en
-[layouts/_shortcodes/docs].
+[layouts/_shortcodes/docs][].
 
 Si necesitas crear una versión localizada de un _shortcode_, colócala en
 `layouts/_shortcodes/xx`, donde `xx` es el código de idioma de tu localización.
@@ -429,7 +429,7 @@ del sitio.
 > [!IMPORTANT] Envía PRs pequeños <a id="small-prs"></a>
 >
 > Los equipos de localización deben enviar su trabajo en **incrementos
-> pequeños**. Es decir, mantén los [PRs] pequeños, preferiblemente limitados a
+> pequeños**. Es decir, mantén los [PRs][] pequeños, preferiblemente limitados a
 > uno o unos pocos archivos pequeños. Los PRs más pequeños son más fáciles de
 > revisar y, por lo tanto, generalmente se fusionan más rápido.
 
@@ -477,10 +477,10 @@ subsección. De lo contrario:
 
 ### Los PRs con cambios semánticos no deben abarcar varios locales {#prs-should-not-span-locales}
 
-Los aprobadores deben asegurar que los [PRs] que realicen cambios **semánticos**
-en las páginas de documentación no abarquen múltiples locales. Un cambio
-semántico es aquel que impacta el _significado_ del contenido de la página.
-Nuestro [proceso de localización](.) de documentación asegura que los
+Los aprobadores deben asegurar que los [PRs][] que realicen cambios
+**semánticos** en las páginas de documentación no abarquen múltiples locales. Un
+cambio semántico es aquel que impacta el _significado_ del contenido de la
+página. Nuestro [proceso de localización](.) de documentación asegura que los
 aprobadores de cada locale, a su debido tiempo, revisen las ediciones en inglés
 para determinar si los cambios son apropiados para su locale y cómo
 incorporarlos de la mejor manera. Si se requieren cambios, los aprobadores del
