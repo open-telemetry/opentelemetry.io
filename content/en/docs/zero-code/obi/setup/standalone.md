@@ -13,14 +13,11 @@ inspect other running processes.
 OBI provides pre-built binaries for Linux (amd64 and arm64). Download the latest
 release from the
 [releases page](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases).
-
 Each release includes:
 
 - `obi-v<version>-linux-amd64.tar.gz` - Linux AMD64/x86_64 archive
 - `obi-v<version>-linux-arm64.tar.gz` - Linux ARM64 archive
 - `SHA256SUMS` - Checksums for verification
-
-### Download and extract
 
 Set your desired version and architecture:
 
