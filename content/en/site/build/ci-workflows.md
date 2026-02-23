@@ -5,7 +5,7 @@ description: >-
   GitHub Actions workflows that automate PR checks, label management, and other
   CI/CD processes.
 weight: 10
-cSpell:ignore: OTELBOT regex
+cSpell:ignore: OTELBOT
 ---
 
 All workflow files live under
