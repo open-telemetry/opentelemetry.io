@@ -4,7 +4,7 @@ description: >-
   Definições e convenções para termos de telemetria conforme usados no
   OpenTelemetry.
 weight: 200
-default_lang_commit: 64e150b6ffbe071402b5aa87afa0b5e56bd6aa75
+default_lang_commit: 64e150b6ffbe071402b5aa87afa0b5e56bd6aa75 # patched
 ---
 
 Esse glossário define termos e [conceitos](/docs/concepts/) que são novos no
@@ -65,7 +65,7 @@ atributos][attribute].
 
 O componente de uma plataforma de observabilidade que é responsável por receber,
 processar, armazenar e disponibilizar dados de telemetria. Exemplos incluem
-ferramentas de código aberto como [Jaeger] e [Prometheus], bem como ofertas
+ferramentas de código aberto como [Jaeger][] e [Prometheus][], bem como ofertas
 comerciais. O OpenTelemetry não é um backend de observabilidade.
 
 ### Bagagem {#baggage}
@@ -117,15 +117,15 @@ baixa cardinalidade.
 
 ### Collector
 
-O [OpenTelemetry Collector], ou simplesmente Collector, é uma implementação
+O [OpenTelemetry Collector][], ou simplesmente Collector, é uma implementação
 neutra em relação a fornecedores sobre como receber, processar e exportar dados
 de telemetria. Um único binário que pode ser implementado como um agente ou
 _gateway_.
 
-> **Ortografia**: Ao referir-se ao [OpenTelemetry Collector], sempre capitalize
-> a palavra "Collector". Utilize apenas o termo "Collector" caso esteja
-> utilizando Collector como um adjetivo &mdash; por exemplo, "Configuração do
-> Collector".
+> **Ortografia**: Ao referir-se ao [OpenTelemetry Collector][], sempre
+> capitalize a palavra "Collector". Utilize apenas o termo "Collector" caso
+> esteja utilizando Collector como um adjetivo &mdash; por exemplo,
+> "Configuração do Collector".
 
 [OpenTelemetry Collector]: /docs/collector/
 
@@ -256,7 +256,7 @@ Precursor do OpenTelemetry. Para mais detalhes, consulte
 
 ### OpenTelemetry
 
-Formado por meio de uma [fusão] dos projetos [OpenTracing](#opentracing) e
+Formado por meio de uma [fusão][] dos projetos [OpenTracing](#opentracing) e
 [OpenCensus](#opencensus), o OpenTelemetry &mdash; o tema deste site &mdash; é
 uma coleção de [APIs](#api), [SDKs](#sdk) e ferramentas que você pode utilizar
 para [instrumentar](/docs/concepts/instrumentation/), gerar,
@@ -315,11 +315,11 @@ propagação de contexto][context propagation].
 
 Usado para serializar e desserializar partes específicas de dados telemétricos,
 como contexto de span e [bagagem](#baggage) em [Spans](#span). Consulte
-[Propagators].
+[Propagators][].
 
 ### Proto
 
-Tipos de interface independentes de linguagem. Consulte [opentelemetry-proto].
+Tipos de interface independentes de linguagem. Consulte [opentelemetry-proto][].
 
 ### Rastro {#trace}
 
@@ -339,7 +339,7 @@ Consulte [Rastreamento distribuído][distributed tracing].
 
 Termo utilizado pelo [Collector](/docs/collector/configuration/#receivers) para
 definir como os dados telemétricos são recebidos. Receivers podem ser push-based
-ou pull-based. Consulte [Receiver].
+ou pull-based. Consulte [Receiver][].
 
 ### Recurso {#resource}
 
@@ -395,7 +395,7 @@ consulte [Links entre spans](/docs/specs/otel/overview#links-between-spans) e
 ### Status
 
 O resultado de uma operação. Normalmente usado para indicar se ocorreu um erro.
-Consulte [Status].
+Consulte [Status][].
 
 ### Tag
 
@@ -403,7 +403,7 @@ Consulte [Metadados](#metadata).
 
 ### Tracer {#tracer}
 
-Responsável pela criação de [Trecho](#span). Consulte [Tracer].
+Responsável pela criação de [Trecho](#span). Consulte [Tracer][].
 
 ### Transação {#transaction}
 
@@ -418,7 +418,7 @@ Representa uma única operação dentro de um [Rastro](#trace). Consulte
 
 Uma alternativa interna aos exportadores externos. Quando incluídos, eles
 coletam e agregam informações de rastros e métricas em segundo plano; estes
-dados são exibidos em páginas da web quando solicitados. Consulte [zPages].
+dados são exibidos em páginas da web quando solicitados. Consulte [zPages][].
 
 [attribute]: /docs/specs/otel/common/#attributes
 [baggage]: /docs/specs/otel/baggage/api/
