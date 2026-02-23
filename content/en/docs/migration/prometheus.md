@@ -9,7 +9,7 @@ cSpell:ignore: AggregationBase2ExponentialHistogram AggregationExplicitBucketHis
 <?code-excerpt path-base="examples/java/prometheus-migration"?>
 
 {{% alert title="Note" %}}
-This page covers Java and Go.
+This page covers Java and Go. Examples for other languages are planned.
 {{% /alert %}}
 
 This guide is for developers familiar with the
@@ -544,12 +544,12 @@ package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func counterUsage() {
+func counterUsage(reg *prometheus.Registry) {
 	hvacOnTime := prometheus.NewCounterVec(prometheus.CounterOpts{
 		Name: "hvac_on_seconds_total",
 		Help: "Total time the HVAC system has been running, in seconds",
 	}, []string{"zone"})
-	prometheus.MustRegister(hvacOnTime)
+	reg.MustRegister(hvacOnTime)
 
 	// Pre-bind to label value sets: subsequent calls avoid the series lookup.
 	upstairs := hvacOnTime.WithLabelValues("upstairs")
@@ -678,10 +678,10 @@ package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func counterCallbackUsage() {
+func counterCallbackUsage(reg *prometheus.Registry) {
 	// The smart energy meter maintains its own cumulative joule total in firmware.
 	// Use CounterFunc to report that value at scrape time.
-	prometheus.MustRegister(prometheus.NewCounterFunc(
+	reg.MustRegister(prometheus.NewCounterFunc(
 		prometheus.CounterOpts{
 			Name: "energy_consumed_joules_total",
 			Help: "Total energy consumed in joules",
@@ -829,12 +829,12 @@ package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func gaugeUsage() {
+func gaugeUsage(reg *prometheus.Registry) {
 	thermostatSetpoint := prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "thermostat_setpoint_celsius",
 		Help: "Target temperature set on the thermostat",
 	}, []string{"zone"})
-	prometheus.MustRegister(thermostatSetpoint)
+	reg.MustRegister(thermostatSetpoint)
 
 	thermostatSetpoint.WithLabelValues("upstairs").Set(22.5)
 	thermostatSetpoint.WithLabelValues("downstairs").Set(20.0)
@@ -962,10 +962,10 @@ package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func gaugeCallbackUsage() {
+func gaugeCallbackUsage(reg *prometheus.Registry) {
 	// GaugeFunc supports a single unlabeled value. For labeled observations
 	// from a callback, implement prometheus.Collector instead.
-	prometheus.MustRegister(prometheus.NewGaugeFunc(
+	reg.MustRegister(prometheus.NewGaugeFunc(
 		prometheus.GaugeOpts{
 			Name: "room_temperature_celsius",
 			Help: "Current temperature in the room",
@@ -1108,13 +1108,13 @@ package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func upDownCounterUsage() {
+func upDownCounterUsage(reg *prometheus.Registry) {
 	// Prometheus uses Gauge for values that can increase or decrease.
 	devicesConnected := prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "devices_connected",
 		Help: "Number of smart home devices currently connected",
 	}, []string{"device_type"})
-	prometheus.MustRegister(devicesConnected)
+	reg.MustRegister(devicesConnected)
 
 	// Increment when a device connects, decrement when it disconnects.
 	devicesConnected.WithLabelValues("thermostat").Inc()
@@ -1246,10 +1246,10 @@ package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func upDownCounterCallbackUsage() {
+func upDownCounterCallbackUsage(reg *prometheus.Registry) {
 	// GaugeFunc supports a single unlabeled value. For labeled observations
 	// from a callback, implement prometheus.Collector instead.
-	prometheus.MustRegister(prometheus.NewGaugeFunc(
+	reg.MustRegister(prometheus.NewGaugeFunc(
 		prometheus.GaugeOpts{
 			Name: "devices_connected",
 			Help: "Number of smart home devices currently connected",
@@ -1436,13 +1436,13 @@ package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func histogramUsage() {
+func histogramUsage(reg *prometheus.Registry) {
 	deviceCommandDuration := prometheus.NewHistogramVec(prometheus.HistogramOpts{
 		Name:    "device_command_duration_seconds",
 		Help:    "Time to receive acknowledgment from a smart home device",
 		Buckets: []float64{0.1, 0.25, 0.5, 1.0, 2.5, 5.0},
 	}, []string{"device_type"})
-	prometheus.MustRegister(deviceCommandDuration)
+	reg.MustRegister(deviceCommandDuration)
 
 	deviceCommandDuration.WithLabelValues("thermostat").Observe(0.35)
 	deviceCommandDuration.WithLabelValues("lock").Observe(0.85)
@@ -1625,13 +1625,13 @@ package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func nativeHistogramUsage() {
+func nativeHistogramUsage(reg *prometheus.Registry) {
 	deviceCommandDuration := prometheus.NewHistogramVec(prometheus.HistogramOpts{
 		Name:                        "device_command_duration_seconds",
 		Help:                        "Time to receive acknowledgment from a smart home device",
 		NativeHistogramBucketFactor: 1.1,
 	}, []string{"device_type"})
-	prometheus.MustRegister(deviceCommandDuration)
+	reg.MustRegister(deviceCommandDuration)
 
 	deviceCommandDuration.WithLabelValues("thermostat").Observe(0.35)
 	deviceCommandDuration.WithLabelValues("lock").Observe(0.85)
@@ -1780,13 +1780,13 @@ package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func summaryUsage() {
+func summaryUsage(reg *prometheus.Registry) {
 	deviceCommandDuration := prometheus.NewSummaryVec(prometheus.SummaryOpts{
 		Name:       "device_command_duration_seconds",
 		Help:       "Time to receive acknowledgment from a smart home device",
 		Objectives: map[float64]float64{0.5: 0.05, 0.95: 0.01, 0.99: 0.001},
 	}, []string{"device_type"})
-	prometheus.MustRegister(deviceCommandDuration)
+	reg.MustRegister(deviceCommandDuration)
 
 	deviceCommandDuration.WithLabelValues("thermostat").Observe(0.35)
 	deviceCommandDuration.WithLabelValues("lock").Observe(0.85)
