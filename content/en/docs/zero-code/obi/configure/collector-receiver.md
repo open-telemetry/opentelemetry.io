@@ -1,6 +1,6 @@
 ---
 title: OBI as OpenTelemetry Collector receiver
-linkTitle: OBI as Collector receiver
+linkTitle: Collector receiver
 weight: 75
 description:
   Learn how to use OBI as a receiver component in the OpenTelemetry Collector
