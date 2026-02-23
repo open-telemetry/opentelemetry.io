@@ -614,7 +614,6 @@ securityContext:
       - SYS_ADMIN
       - SYS_PTRACE
       - BPF
-      - SYS_PTRACE
       - NET_RAW
       - CHECKPOINT_RESTORE
       - DAC_READ_SEARCH
