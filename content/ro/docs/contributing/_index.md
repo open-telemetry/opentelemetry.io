@@ -9,7 +9,7 @@ cascade:
     and **understanding** of OpenTelemetry. Avoid overreaching your capabilities.
   _issues: https://github.com/open-telemetry/opentelemetry.io/issues
   _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
-default_lang_commit: d9f9ecf7f33ab10ccb86aff881a64af2e866883f
+default_lang_commit: d9f9ecf7f33ab10ccb86aff881a64af2e866883f # patched
 ---
 
 > [!TIP] Vă mulțumim pentru interes!
@@ -49,9 +49,9 @@ What do you want to do?
   [trimiterea de conținut folosind GitHub](pull-requests/#changes-using-github)
 - Pentru contribuții mai semnificative, citește paginile din această secțiune
   începând cu:
-  - [Cerințe preliminare]
-  - [Probleme]
-  - [Trimiterea de conținut]
+  - [Cerințe preliminare][]
+  - [Probleme][]
+  - [Trimiterea de conținut][]
 
 [Cerințe preliminare]: prerequisites/
 [Trimiterea de conținut]: pull-requests/
@@ -69,7 +69,7 @@ Paginile din această secțiune descriu cum să contribui la **documentația**
 OpenTelemetry.
 
 Pentru îndrumări despre cum să contribui la proiectul OpenTelemetry în general,
-consultǎ [Ghidul pentru noii contribuitori OpenTelemetry] al comunitǎții.
+consultǎ [Ghidul pentru noii contribuitori OpenTelemetry][] al comunitǎții.
 Fiecare [repertoriu OTel][org] pentru implementări de limbaj, Colector și
 convenții are propriile ghiduri de contribuție specifice proiectului.
 

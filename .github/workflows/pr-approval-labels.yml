@@ -6,10 +6,11 @@ on:
       - opened
       - reopened
       - synchronize
-  pull_request_review:
+  workflow_run:
+    workflows:
+      - PR review trigger
     types:
-      - submitted
-      - dismissed
+      - completed
 
 permissions:
   contents: read
@@ -18,14 +19,50 @@ jobs:
   update-approval-labels:
     name: Update approval labels
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'open-telemetry'
+    if: >-
+      github.repository_owner == 'open-telemetry' && (github.event_name !=
+      'workflow_run' || github.event.workflow_run.conclusion == 'success')
     permissions:
+      actions: read
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
-          ref: ${{ github.event.pull_request.base.sha }}
+          ref: ${{ github.event.pull_request.base.sha || github.sha }}
+
+      - name: Download PR number artifact
+        if: github.event_name == 'workflow_run'
+        uses: actions/download-artifact@v7
+        with:
+          name: pr-number
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+
+      - name: Set PR number
+        id: pr
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          if [[ "$EVENT_NAME" == "workflow_run" ]]; then
+            if [[ ! -f pr-number.txt ]]; then
+              echo "Error: pr-number.txt artifact file not found." >&2
+              exit 1
+            fi
+            PR_NUM="$(tr -d '[:space:]' < pr-number.txt)"
+            if [[ -z "$PR_NUM" || ! "$PR_NUM" =~ ^[0-9]+$ ]]; then
+              echo "Error: Invalid PR number from artifact: '$PR_NUM'. Expected a non-empty integer." >&2
+              exit 1
+            fi
+            echo "number=$PR_NUM" >> "$GITHUB_OUTPUT"
+          else
+            if [[ -z "$PR_NUMBER" || ! "$PR_NUMBER" =~ ^[0-9]+$ ]]; then
+              echo "Error: Invalid PR number from event: '$PR_NUMBER'. Expected a non-empty integer." >&2
+              exit 1
+            fi
+            echo "number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
+          fi
 
       - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         id: otelbot-token
@@ -39,4 +76,4 @@ jobs:
           # Use the app token to read org team membership
           GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           REPO: ${{ github.repository }}
-          PR: ${{ github.event.pull_request.number }}
+          PR: ${{ steps.pr.outputs.number }}
