@@ -123,9 +123,8 @@ requirements:
 
 When OBI runs as a sidecar container with `shareProcessNamespace: true`, it
 shares the Pod's PID namespace and can only see processes within that Pod. This
-means you can use `OTEL_EBPF_AUTO_TARGET_EXE=*` to instrument all
-processes in the pod without needing to specify individual executable names or
-ports.
+means you can use `OTEL_EBPF_AUTO_TARGET_EXE=*` to instrument all processes in
+the pod without needing to specify individual executable names or ports.
 
 This is the recommended approach for sidecar deployments, as it provides a
 simple, reusable configuration that works across different pods without
