@@ -9,7 +9,7 @@ cascade:
     **entendimento** de OpenTelemetry. Evite exceder suas capacidades.
   _issues: https://github.com/open-telemetry/opentelemetry.io/issues
   _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue+is%3Aopen+sort%3Aupdated-desc+label%3A
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
 ---
 
 {{% alert title="Obrigado pelo seu interesse!" color=success %}}
@@ -21,7 +21,7 @@ OpenTelemetry.
 
 ## <i class='far fa-exclamation-triangle text-warning '></i> Primeira vez contribuindo? {#first-time-contributing}
 
-- **[Escolha uma issue]** com os seguintes labels:
+- **[Escolha uma issue][]** com os seguintes labels:
   - [Good first issue](<{{% param _issue %}}%22good+first+issue%22>)
   - [Help wanted](<{{% param _issue %}}%3A%22help+wanted%22>)
 
@@ -52,9 +52,9 @@ O que você deseja fazer?
   [Submetendo alterações usando o GitHub](pull-requests/#changes-using-github)
 - Para contribuições mais significativas, leia as páginas desta seção começando
   com:
-  - [Pré-requisitos]
-  - [Issues]
-  - [Submetendo Alterações]
+  - [Pré-requisitos][]
+  - [Issues][]
+  - [Submetendo Alterações][]
 
 [Pré-requisitos]: prerequisites/
 [Submetendo Alterações]: pull-requests/
@@ -72,8 +72,8 @@ As páginas desta seção descrevem apenas como contribuir com a documentação 
 OpenTelemetry.
 
 Para orientações de como contribuir para o projeto OpenTelemetry em geral,
-consulte o [Guia para novos contribuidores do OpenTelemetry] da comunidade. Cada
-[repositório OTel][org] para implementações de linguagem, o Collector e
+consulte o [Guia para novos contribuidores do OpenTelemetry][] da comunidade.
+Cada [repositório OTel][org] para implementações de linguagem, o Collector e
 convenções possui seu próprio guia de contribuição específico.
 
 [escolha uma issue]: issues/#fixing-an-existing-issue

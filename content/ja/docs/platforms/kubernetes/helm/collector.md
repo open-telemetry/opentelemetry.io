@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetryコレクターチャート
 linkTitle: コレクターチャート
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
 drifted_from_default: true
 # prettier-ignore
 cSpell:ignore: debugexporter filelog filelogreceiver hostmetricsreceiver kubelet kubeletstats kubeletstatsreceiver otlphttp sattributesprocessor sclusterreceiver sobjectsreceiver statefulset
@@ -326,4 +326,4 @@ presets:
     enabled: true
 ```
 
-[^1] `kubeletMetrics` プリセットと重複する部分があるため、デフォルトでは一部のファイルシステムタイプとマウントポイントは除外されています。
+[^1]: `kubeletMetrics` プリセットと重複する部分があるため、デフォルトでは一部のファイルシステムタイプとマウントポイントは除外されています。

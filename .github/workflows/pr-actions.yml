@@ -34,7 +34,7 @@ jobs:
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with: { fetch-depth: 0 }
 
       - name: Extract action name
@@ -185,7 +185,7 @@ jobs:
     if: needs.generate-patch.outputs.patch_skipped == 'true'
     needs: generate-patch
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with: { fetch-depth: 1 }
 
       - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1

@@ -12,7 +12,7 @@ jobs:
     name: TEXT linter
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
       - name: Create and use reduced-dependencies package.json
         run: |
           mkdir -p tmp
@@ -32,7 +32,7 @@ jobs:
     name: MARKDOWN linter
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
       - name: Create and use reduced-dependencies package.json
         run: |
           mkdir -p tmp
