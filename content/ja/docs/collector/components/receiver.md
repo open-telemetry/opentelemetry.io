@@ -1,7 +1,7 @@
 ---
 title: レシーバー
 description: OpenTelemetry Collectorの利用可能なレシーバーの一覧
-default_lang_commit: 1c2b0563e8e66ef0952c442e3662e4bec18a8762
+default_lang_commit: 1c2b0563e8e66ef0952c442e3662e4bec18a8762 # patched
 drifted_from_default: true
 weight: 310
 # prettier-ignore
