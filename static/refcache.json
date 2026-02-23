@@ -3979,6 +3979,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:50:14.221926165Z"
   },
+  "https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/docs/opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-23T16:13:18.352949+01:00"
+  },
   "https://github.com/VihasMakwana": {
     "StatusCode": 206,
     "LastSeen": "2026-02-19T09:53:45.944137865Z"
