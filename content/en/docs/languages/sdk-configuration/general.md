@@ -169,7 +169,7 @@ may be a comma-separated list.
 
 Accepted values for `OTEL_METRICS_EXPORTER` are:
 
-- `otlp`: [OTLP]
+- `otlp`: [OTLP][]
 - `prometheus`:
   [Prometheus](https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md)
 - `console`: [Standard Output](/docs/specs/otel/metrics/sdk_exporters/stdout/)
@@ -188,7 +188,7 @@ may be a comma-separated list.
 
 Accepted values for `OTEL_LOGS_EXPORTER` are:
 
-- `otlp`: [OTLP]
+- `otlp`: [OTLP][]
 - `console`: [Standard Output](/docs/specs/otel/logs/sdk_exporters/stdout/)
 - `none`: No automatically configured exporter for logs.
 
