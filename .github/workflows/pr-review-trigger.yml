@@ -9,6 +9,9 @@
 # Security model:
 #   This workflow is intentionally minimal and does not use privileged secrets.
 #   It ignores review.state == "commented" because comments do not affect approvals.
+# 
+# References:
+#   - https://opentelemetry.io/site/build/ci-workflows/#pr-approval-labels
 name: PR review trigger
 
 on:

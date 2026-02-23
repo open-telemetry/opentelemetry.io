@@ -11,6 +11,9 @@
 # Security model:
 #   Runs in a trusted context with app credentials to read org/team membership
 #   and edit PR labels, including for fork-based PRs.
+#
+# References:
+#   - https://opentelemetry.io/site/build/ci-workflows/#pr-approval-labels
 name: PR approval labels
 
 on:
