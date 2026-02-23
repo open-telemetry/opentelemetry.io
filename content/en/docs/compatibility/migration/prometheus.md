@@ -2,7 +2,7 @@
 title: Prometheus Client Libraries vs. OpenTelemetry
 linkTitle: Prometheus Clients
 weight: 5
-cSpell:ignore: AggregationBase2ExponentialHistogram AggregationExplicitBucketHistogram base2ExponentialBucketHistogram bedroomTemperatureCelsius buildAndStart buildWithCallback classicUpperBounds connectedDeviceCount defaultAggregation devicesConnected deviceCommandDuration errcheck explicitBucketHistogram GaugeFunc GaugeWithCallback gaugeBuilder hvac hvacOnTime initLabelValues InstrumentKindHistogram InstrumentSelector InstrumentType labelValues livingRoomTemperatureCelsius LongUpDownCounter NativeHistogramBucketFactor nativeOnly nolint OtelHistogramAsSummary OtelHistogramExplicitBucketView otlpmetrichttp pendingCommandCount PrometheusHistogramNative PrometheusSummary PrometheusRegistry promhttp Pushgateway sdkmetric setDefaultAggregationSelector setExplicitBucketBoundariesAdvice thermostatSetpoint totalEnergyJoules upDownCounterBuilder
+cSpell:ignore: AggregationBase2ExponentialHistogram AggregationExplicitBucketHistogram base2ExponentialBucketHistogram bedroomTemperatureCelsius buildAndStart buildWithCallback classicUpperBounds connectedDeviceCount defaultAggregation devicesConnected deviceCommandDuration errcheck explicitBucketHistogram GaugeFunc GaugeWithCallback gaugeBuilder hvac hvacOnTime initLabelValues InstrumentKindHistogram InstrumentSelector InstrumentType labelValues livingRoomTemperatureCelsius LongUpDownCounter NativeHistogramBucketFactor nativeOnly nolint OtelHistogramAsSummary OtelHistogramExplicitBucketView otlpmetrichttp PrometheusHistogramNative PrometheusSummary PrometheusRegistry promhttp sdkmetric setDefaultAggregationSelector setExplicitBucketBoundariesAdvice thermostatSetpoint totalEnergyJoules upDownCounterBuilder
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -88,7 +88,10 @@ OpenTelemetry scopes each group of instruments to a `Meter`, identified by a nam
 version (for example, `smart.home`). When exporting to Prometheus,
 the scope name and version are added as `otel_scope_name` and `otel_scope_version` labels on
 every metric point. These labels appear automatically and may be unfamiliar to users coming from
-Prometheus. They can be suppressed via the exporter's `without_scope_info` option — see the
+Prometheus. The exporter also emits a separate `otel_scope_info` gauge (always 1) for each
+active scope, carrying `otel_scope_name` and `otel_scope_version` as its labels. Both the
+per-metric labels and the `otel_scope_info` metric can be suppressed via the exporter's
+`without_scope_info` option — see the
 [Prometheus exporter](/docs/specs/otel/metrics/sdk_exporters/prometheus/) configuration
 reference for details. Note that suppressing scope info is only safe when each metric name is
 produced by a single scope. If two scopes emit a metric with the same name, the scope labels
@@ -740,15 +743,14 @@ A gauge records an instantaneous value that can increase or decrease. Prometheus
   device counts summed across service instances give a useful total. These map to OTel
   `UpDownCounter` and `ObservableUpDownCounter`.
 
-This distinction applies to all gauge patterns: `set()`, `inc()`/`dec()`, and callback variants.
+This distinction applies to all gauge patterns: abs, inc and dec, and callback variants.
 See the [instrument selection guide](/docs/specs/otel/metrics/supplementary-guidelines/#instrument-selection)
 for a fuller explanation.
 
-### Gauge — `set()`
+### Gauge — abs
 
-Use this pattern for values you explicitly set to an absolute value — such as a configuration
-value or a device setpoint. Prometheus `Gauge.set()` maps to the OpenTelemetry `Gauge`
-instrument.
+Use this pattern for values recorded as an absolute value — such as a configuration value or a
+device setpoint. Prometheus `Gauge` maps to the OpenTelemetry `Gauge` instrument.
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
@@ -880,7 +882,7 @@ Key differences:
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Callback (async) gauge — absolute value
+### Callback gauge — abs
 
 Use a callback gauge (an asynchronous gauge in OpenTelemetry) when a non-additive value is
 maintained externally — such as a sensor reading — and you want to observe it at collection
@@ -1019,11 +1021,11 @@ Key differences:
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Gauge — `inc()` and `dec()`
+### Gauge — inc and dec
 
-Prometheus `Gauge` supports `inc()` and `dec()` for values that change incrementally — such as
-the number of connected devices or active sessions. OpenTelemetry `Gauge` records absolute values
-only; this pattern maps to the OpenTelemetry `UpDownCounter` instrument.
+Prometheus `Gauge` supports incrementing and decrementing for values that change gradually —
+such as the number of connected devices or active sessions. OpenTelemetry `Gauge` records
+absolute values only; this pattern maps to the OpenTelemetry `UpDownCounter` instrument.
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
@@ -1166,7 +1168,7 @@ Key differences:
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Callback (async) gauge — incremental value
+### Callback gauge — inc and dec
 
 Use a callback gauge (an asynchronous up-down counter in OpenTelemetry) when an additive count
 that would otherwise be tracked with `inc()`/`dec()` is maintained externally — such as by a
@@ -1321,7 +1323,11 @@ into discrete ranges.
 - **Bucket configuration**: Prometheus declares bucket boundaries on the instrument itself at
   creation time. In OpenTelemetry, bucket boundaries are set on the instrument as a hint that
   can be overridden or replaced by views configured at the SDK level. This separation keeps
-  instrumentation code independent of collection configuration.
+  instrumentation code independent of collection configuration. If no boundaries are specified
+  and no view is configured, the SDK uses a default set designed for millisecond-scale latency
+  (`[0, 5, 10, 25, 50, 75, 100, 250, 500, 750, 1000, 2500, 5000, 7500, 10000]`), which is
+  likely wrong for second-scale measurements. Always provide boundaries or configure a view
+  when migrating existing histograms.
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
@@ -1656,12 +1662,7 @@ func createExponentialProvider(reader sdkmetric.Reader) *sdkmetric.MeterProvider
 	// Configure base2 exponential histograms for all histogram instruments via a view.
 	view := sdkmetric.NewView(
 		sdkmetric.Instrument{Kind: sdkmetric.InstrumentKindHistogram},
-		sdkmetric.Stream{
-			Aggregation: sdkmetric.AggregationBase2ExponentialHistogram{
-				MaxSize:  160,
-				MaxScale: 20,
-			},
-		},
+		sdkmetric.Stream{Aggregation: sdkmetric.AggregationBase2ExponentialHistogram{}},
 	)
 	return sdkmetric.NewMeterProvider(sdkmetric.WithView(view), sdkmetric.WithReader(reader))
 }
@@ -1680,15 +1681,19 @@ func createExponentialView() sdkmetric.View {
 	// to use exponential histograms while keeping explicit buckets for others.
 	return sdkmetric.NewView(
 		sdkmetric.Instrument{Name: "device.command.duration"},
-		sdkmetric.Stream{
-			Aggregation: sdkmetric.AggregationBase2ExponentialHistogram{
-				MaxSize:  160,
-				MaxScale: 20,
-			},
-		},
+		sdkmetric.Stream{Aggregation: sdkmetric.AggregationBase2ExponentialHistogram{}},
 	)
 }
 ```
+
+Key differences:
+
+- `NativeHistogramBucketFactor` must be set to a value greater than 1.0 to enable native
+  histograms in Go — it is not optional. Setting it to 0 (the zero value) disables native
+  histograms entirely. The value controls the maximum ratio between consecutive bucket
+  boundaries; smaller values give finer resolution at the cost of more buckets.
+- The Java client's `.nativeOnly()` enables native histograms with a sensible default
+  resolution, so no equivalent parameter is required.
 
 {{% /tab %}} {{< /tabpane >}}
 
