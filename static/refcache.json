@@ -1,4 +1,8 @@
 {
+  "http://bio.site/juliafmorgado": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-23T19:02:24.137808982Z"
+  },
   "http://logback.qos.ch/?http_ok": {
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:54:59.929354186Z"
@@ -246,6 +250,10 @@
   "https://betterstack.com/docs/logs/open-telemetry/#2-setup": {
     "StatusCode": 200,
     "LastSeen": "2026-02-20T09:54:38.188818397Z"
+  },
+  "https://bio.site/adrianavillela": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-23T19:02:19.79539992Z"
   },
   "https://bitbucket.org": {
     "StatusCode": 200,
@@ -1002,6 +1010,10 @@
   "https://community.cncf.io/": {
     "StatusCode": 200,
     "LastSeen": "2026-02-13T09:52:25.577868312Z"
+  },
+  "https://community.cncf.io/cloud-native-new-york-city/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-23T19:02:36.025573031Z"
   },
   "https://community.cncf.io/events/details/cncf-cloud-native-community-japan-presents-japan-community-day-at-kubecon-cloudnativecon-japan-2025/": {
     "StatusCode": 200,
@@ -16627,6 +16639,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-18T09:56:43.681217056Z"
   },
+  "https://kcdnewyork.com/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-23T19:02:32.085356521Z"
+  },
   "https://keda.sh/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:50:17.055153255Z"
@@ -21979,6 +21995,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-13T09:52:41.096826432Z"
   },
+  "https://www.linkedin.com/in/reese-lee/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-23T19:02:17.726480825Z"
+  },
   "https://www.linkedin.com/in/richardchukwu1/": {
     "StatusCode": 200,
     "LastSeen": "2026-02-18T09:53:03.904871821Z"
@@ -22930,6 +22950,10 @@
   "https://www.youtube.com/watch?v=l8xiNOCIdLY": {
     "StatusCode": 200,
     "LastSeen": "2026-02-13T09:52:47.196526718Z"
+  },
+  "https://www.youtube.com/watch?v=rqtENN7iveQ": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-23T19:02:27.756753894Z"
   },
   "https://www.youtube.com/watch?v=t550FzDi054": {
     "StatusCode": 200,
