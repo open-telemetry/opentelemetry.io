@@ -135,14 +135,14 @@ in combination with the
 [Node.js SDK](https://www.npmjs.com/package/@opentelemetry/sdk-node).
 
 You can find the full
-[implementation here](https://github.com/open-telemetry/opentelemetry-demo/blob/298c930/src/frontend/utils/telemetry/Instrumentation.js?from_branch=main).
+[implementation here](https://github.com/open-telemetry/opentelemetry-demo/blob/298c93016e9cf03a06b9dbe07d6306c5040e52a0/src/frontend/utils/telemetry/Instrumentation.js?from_branch=main).
 The basic instrumentation includes auto instrumentation for most of the commonly
 used
 [libraries and tools for Node.js](https://www.npmjs.com/package/@opentelemetry/auto-instrumentations-node).
 As part of providing a better example for users, a manual instrumentation in the
 form of route middleware was added. This would catch the incoming HTTP request
 and create a span based on it, including the context propagation. The
-[implementation can be found here](https://github.com/open-telemetry/opentelemetry-demo/blob/2596ca0/src/frontend/utils/telemetry/InstrumentationMiddleware.ts?from_branch=main).
+[implementation can be found here](https://github.com/open-telemetry/opentelemetry-demo/blob/2596ca097ee4ecda43b2379dd8a2637669d45948/src/frontend/utils/telemetry/InstrumentationMiddleware.ts?from_branch=main).
 
 The front-end was a little trickier, as the
 [initial rendering is server-side](https://nextjs.org/docs/app/building-your-application/rendering#fundamentals).
@@ -151,7 +151,7 @@ code is executed.
 
 After adding validations to check the browser side, we then loaded the custom
 front-end tracing module, which included creating the
-[web tracer provider and the automatic web instrumentations](https://github.com/open-telemetry/opentelemetry-demo/blob/6674686/src/frontend/utils/telemetry/FrontendTracer.ts?from_branch=main).
+[web tracer provider and the automatic web instrumentations](https://github.com/open-telemetry/opentelemetry-demo/blob/6674686ef389791c65f10c9e3dbb4078e0c12b63/src/frontend/utils/telemetry/FrontendTracer.ts?from_branch=main).
 
 The automatic front-end instrumentation captures the most common user actions
 such as clicks, fetch requests, and page loads. In order to allow the browser

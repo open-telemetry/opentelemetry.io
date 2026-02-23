@@ -374,7 +374,7 @@ you run into any problems, [create an issue][].
 [create an issue]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/issues
 [full list of directives]:
-  https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/5009fb7/instrumentation/otel-webserver-module?from_branch=main#configuration-1
+  https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/5009fb7c0428ab7e3c18dd8eb283482ac77de932/instrumentation/otel-webserver-module?from_branch=main#configuration-1
 [localhost:16686]: http://localhost:16686
 [opentelemetry-webserver-sdk-x64-linux]:
   https://github.com/open-telemetry/opentelemetry-cpp-contrib/releases/download/webserver%2Fv1.0.0/opentelemetry-webserver-sdk-x64-linux.tgz.zip
