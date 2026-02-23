@@ -25,7 +25,7 @@ Runs link checking for a specific shard by temporarily modifying
 `.htmltest.yml`.
 
 ```sh
-.github/scripts/check-links-shard.sh [-qkh] <shard-id> <shard-regex>
+.github/scripts/check-links-shard.sh [-qk] <shard-id> <shard-regex>
 ```
 
 | Flag | Description                                                |
