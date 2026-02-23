@@ -11,8 +11,8 @@ jobs:
     name: Save PR number
     runs-on: ubuntu-latest
     if: >-
-      github.repository_owner == 'open-telemetry' &&
-      github.event.review.state != 'commented'
+      github.repository_owner == 'open-telemetry' && github.event.review.state
+      != 'commented'
     steps:
       - name: Save PR number
         env:
