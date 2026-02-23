@@ -8,7 +8,7 @@ author: >
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/5606
 sig: Java, Specification
 # prettier-ignore
-cSpell:ignore: Clerc cust Cyrille Dotel Gregor logback otlphttp otlpjson resourcedetection SLF4J stdout Zeitlinger
+cSpell:ignore: Clerc cust Cyrille Dotel Gregor otlphttp otlpjson resourcedetection SLF4J stdout Zeitlinger
 ---
 
 If you want to get logs from your Java application ingested into an
@@ -50,13 +50,11 @@ This blog post shows how to set up this solution step by step.
 
 ## Configure Java application to output OTLP/JSON logs
 
-{{% alert title="Note" %}}
-
-Blog post instructions can easily get outdated. In case of issues, check this
-[sample application deployed on Kubernetes](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md),
-which is continuously updated and tested against the latest versions.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Blog post instructions can easily get outdated. In case of issues, check this
+> [sample application deployed on Kubernetes](https://github.com/open-telemetry/opentelemetry-java-examples/blob/main/logging-k8s-stdout-otlp-json/README.md),
+> which is continuously updated and tested against the latest versions.
 
 No code changes needed. Continue using your preferred logging library, including
 templated logs, mapped diagnostic context, and structured logging.
@@ -100,13 +98,11 @@ The `-Dotel.logs.exporter=experimental-otlp/stdout` JVM argument and the
 environment variable `OTEL_LOGS_EXPORTER="experimental-otlp/stdout"` can be used
 interchangeably.
 
-{{% alert title="Note" %}}
-
-The OTLP logs exporter is experimental and subject to change. Check the
-[Specification PR](https://github.com/open-telemetry/opentelemetry-specification/pull/4183)
-for the latest updates.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> The OTLP logs exporter is experimental and subject to change. Check the
+> [Specification PR](https://github.com/open-telemetry/opentelemetry-specification/pull/4183)
+> for the latest updates.
 
 Verify that OTLP/JSON logs are outputted to stdout. The logs are in the
 OTLP/JSON format, with a JSON object per line. The log records are nested in the

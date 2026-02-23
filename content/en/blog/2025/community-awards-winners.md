@@ -34,21 +34,19 @@ We would like to thank everyone who participated in the nomination process, and
 we congratulate the winners for their outstanding contributions to the
 OpenTelemetry project.
 
-{{% alert title="Note" %}}
-
-Because the Community Awards are organized by the Governance Committee, members
-of the committee were not eligible to receive awards, regardless of the number
-of nominations they received. This policy is in place to ensure impartiality and
-eliminate any perception of bias. As the Governance Committee elections took
-place during the nomination period, this restriction was applied to those
-serving on the committee at the time the winners were announced (i.e., the
-current Governance Committee).
-
-In future years, we will explicitly highlight this eligibility rule during the
-nomination period.
-
-We are grateful for the nominations and thoughtful words recognizing the
-contributions of Governance Committee members, and we sincerely thank everyone
-who took the time to acknowledge them.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Because the Community Awards are organized by the Governance Committee,
+> members of the committee were not eligible to receive awards, regardless of
+> the number of nominations they received. This policy is in place to ensure
+> impartiality and eliminate any perception of bias. As the Governance Committee
+> elections took place during the nomination period, this restriction was
+> applied to those serving on the committee at the time the winners were
+> announced (i.e., the current Governance Committee).
+>
+> In future years, we will explicitly highlight this eligibility rule during the
+> nomination period.
+>
+> We are grateful for the nominations and thoughtful words recognizing the
+> contributions of Governance Committee members, and we sincerely thank everyone
+> who took the time to acknowledge them.

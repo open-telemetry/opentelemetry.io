@@ -171,13 +171,11 @@ respective documentation pages:
 - Rust
 - Swift
 
-{{% alert title="Help wanted" color="secondary" %}}
-
-For languages .NET, Rust, and Swift, the language-specific documentation for
-context propagation is missing. If you know any of those languages and are
-interested to help, [learn how you can contribute](/docs/contributing/)!
-
-{{% /alert %}}
+> [!IMPORTANT] Help wanted
+>
+> For languages .NET, Rust, and Swift, the language-specific documentation for
+> context propagation is missing. If you know any of those languages and are
+> interested to help, [learn how you can contribute](/docs/contributing/)!
 
 ## Specification
 

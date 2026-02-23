@@ -5,7 +5,7 @@ description: >
   src="/img/logos/32x32/dotnet.svg" alt=".NET"> A language-specific
   implementation of OpenTelemetry in .NET.
 aliases: [net, /csharp, /csharp/metrics, /csharp/tracing]
-weight: 12
+weight: 120
 ---
 
 {{% docs/languages/index-intro dotnet /%}}

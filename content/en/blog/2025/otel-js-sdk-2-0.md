@@ -13,15 +13,13 @@ Exciting news: [OpenTelemetry JavaScript](/docs/languages/js/) has released [SDK
 
 [v2.0.0]: https://github.com/open-telemetry/opentelemetry-js/releases/tag/v2.0.0
 
-{{% alert title="Migration guide" %}}
-
-For a detailed description of breaking changes, see the **migration guide**:
-[Upgrade to OpenTelemetry JS SDK 2.x][migration guide].
+> [!NOTE] Migration guide
+>
+> For a detailed description of breaking changes, see the **migration guide**:
+> [Upgrade to OpenTelemetry JS SDK 2.x][migration guide].
 
 [migration guide]:
   https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md
-
-{{% /alert %}}
 
 ## What is JS SDK 2.x?
 
@@ -73,7 +71,7 @@ improve things related to:
 
 This also begins our goal of releasing a new SDK major release every year.
 
-For a more detailed explanation of why 2.0, see issue [#4083].
+For a more detailed explanation of why 2.0, see issue [#4083][].
 
 [#4083]: https://github.com/open-telemetry/opentelemetry-js/issues/4083
 
@@ -82,7 +80,7 @@ For a more detailed explanation of why 2.0, see issue [#4083].
 [v0.200.0]:
   https://github.com/open-telemetry/opentelemetry-js/releases/tag/experimental%2Fv0.200.0
 
-- Try out the [v2.0.0] and [v0.200.0] releases and provide feedback.
+- Try out the [v2.0.0][] and [v0.200.0][] releases and provide feedback.
 - Review our
   [contributing guide](https://github.com/open-telemetry/opentelemetry-js/blob/main/CONTRIBUTING.md)
   for details on contributing.

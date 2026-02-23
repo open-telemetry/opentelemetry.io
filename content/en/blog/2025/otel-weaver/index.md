@@ -12,14 +12,12 @@ sig: 'Semantic Conventions: Tooling'
 cSpell:ignore: Evertz Liudmila Molkova promconv Quérel SDLC Suereth
 ---
 
-{{% alert title="TL;DR" %}}
-
-OpenTelemetry Weaver helps teams build observability by design, enabling
-consistent, type-safe, and automated telemetry through semantic conventions.
-With Weaver, you can define, validate, and evolve your telemetry schemas,
-ensuring reliability and clarity across your systems.
-
-{{% /alert %}}
+> [!NOTE] TL;DR
+>
+> OpenTelemetry Weaver helps teams build observability by design, enabling
+> consistent, type-safe, and automated telemetry through semantic conventions.
+> With Weaver, you can define, validate, and evolve your telemetry schemas,
+> ensuring reliability and clarity across your systems.
 
 ## Why consistency matters: Enter semantic conventions
 

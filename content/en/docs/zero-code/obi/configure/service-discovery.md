@@ -206,6 +206,45 @@ This option helps you avoid instrumenting services typically found in
 observability environments. For example, use this option to exclude
 instrumenting Prometheus.
 
+### Example: Exclude specific namespaces
+
+```yaml
+discovery:
+  instrument:
+    - k8s_namespace: '*' # Instrument all namespaces
+  exclude_instrument:
+    - k8s_namespace: development # Except development namespace
+    - k8s_namespace: staging # And staging namespace
+```
+
+### Example: Exclude services by labels
+
+```yaml
+discovery:
+  rules:
+    - match:
+        k8s_namespace: production
+      exclude:
+        k8s_pod_labels:
+          skip-instrumentation: 'true'
+```
+
+In this example, `skip-instrumentation` is a user-defined Kubernetes pod label.
+You can use any custom label key and value for matching or exclusion based on
+your organization's labeling conventions.
+
+### Example: Exclude specific executables
+
+```yaml
+discovery:
+  rules:
+    - match:
+        open_ports: 80,443,8080
+      exclude:
+        exe_path: '*prometheus*'
+        exe_path: '*grafana*'
+```
+
 ## Default exclude services from instrumentation
 
 The `default_exclude_instrument` section disables instrumentation of OBI itself
@@ -229,6 +268,62 @@ excluded components.
 Note: to enable such self-instrumentation, you still need to include them in the
 `instrument` section, or these components need to be a part of a encompassing
 inclusion criteria.
+
+### Example: Enable instrumentation for a default-excluded namespace
+
+To enable instrumentation for a namespace that is excluded by default (such as
+`monitoring`), you must both remove it from the default exclusions and add it to
+the `instrument` section.
+
+The following example enables instrumentation for the `monitoring` namespace:
+
+```yaml
+discovery:
+  # Include the monitoring namespace in instrumentation
+  instrument:
+    - k8s_namespace: monitoring
+
+  # Override default exclusions to remove monitoring namespace
+  # This list keeps other default exclusions but removes monitoring
+  default_exclude_instrument:
+    - exe_path: '{*beyla,*alloy,*ebpf-instrument,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}'
+    - k8s_namespace: kube-system
+    - k8s_namespace: kube-node-lease
+    - k8s_namespace: local-path-storage
+    - k8s_namespace: grafana-alloy
+    - k8s_namespace: cert-manager
+    # monitoring namespace removed from this list
+    - k8s_namespace: gke-connect
+    - k8s_namespace: gke-gmp-system
+    - k8s_namespace: gke-managed-cim
+    - k8s_namespace: gke-managed-filestorecsi
+    - k8s_namespace: gke-managed-metrics-server
+    - k8s_namespace: gke-managed-system
+    - k8s_namespace: gke-system
+    - k8s_namespace: gke-managed-volumepopulator
+    - k8s_namespace: gatekeeper-system
+```
+
+### Example: Disable all default exclusions
+
+To disable all default exclusions and allow OBI to instrument any matched
+service (including itself and other observability components), set the
+`default_exclude_instrument` to an empty list:
+
+```yaml
+discovery:
+  instrument:
+    - k8s_namespace: '*' # or specific namespaces/selectors
+
+  # Empty list disables all default exclusions
+  default_exclude_instrument: []
+```
+
+> [!WARNING]
+>
+> Disabling all default exclusions may cause increased resource usage and
+> potential feedback loops if OBI instruments itself or other telemetry
+> collectors. Use this configuration carefully in production environments.
 
 ## Skip go specific tracers
 

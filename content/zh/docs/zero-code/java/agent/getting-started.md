@@ -2,7 +2,7 @@
 title: 快速开始
 weight: 1
 default_lang_commit: 2cb66a7e093114cfe06eb70dbca46abbbee45ef2
-cSpell:ignore: Dotel myapp
+cSpell:ignore: Dotel
 ---
 
 ## 安装 {#setup}

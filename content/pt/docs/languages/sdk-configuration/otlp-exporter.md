@@ -1,15 +1,15 @@
 ---
 title: Configurações do Exporter OTLP
 linkTitle: OTLP Exporter
+weight: 20
 aliases: [otlp-exporter-configuration]
-default_lang_commit: fe0c3f68902aeb6e7584ffc32c6c8964d7a89e6e
-drifted_from_default: true
+default_lang_commit: 99bddc40d1e15c5f33311b736b92fa227f04664a
 ---
 
 ## Configurações de rota {#endpoint-configuration}
 
 As seguintes variáveis de ambiente permitem configurar uma rota OTLP/gRPC ou
-OTLP/HTTP para seus rastros, métricas e logs.
+OTLP/HTTP para seus rastros, métricas, perfis e logs.
 
 ### `OTEL_EXPORTER_OTLP_ENDPOINT`
 
@@ -87,6 +87,23 @@ opcionalmente. Normalmente termina com `v1/logs` ao utilizar OTLP/HTTP.
 - HTTP:
   `export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="http://my-api-endpoint/v1/logs"`
 
+### `OTEL_EXPORTER_OTLP_PROFILES_ENDPOINT`
+
+URL da rota apenas para dados de perfis, com um número de porta especificado
+opcionalmente. Normalmente termina com `v1/profiles` ao utilizar OTLP/HTTP.
+
+**Valor padrão:**
+
+- gRPC: `"http://localhost:4317"`
+- HTTP: `"http://localhost:4318/v1/profiles"`
+
+**Exemplo:**
+
+- gRPC:
+  `export OTEL_EXPORTER_OTLP_PROFILES_ENDPOINT="https://my-api-endpoint:443"`
+- HTTP:
+  `export OTEL_EXPORTER_OTLP_PROFILES_ENDPOINT="http://my-api-endpoint/v1/profiles"`
+
 ## Configurações de cabeçalhos {#header-configuration}
 
 As seguintes variáveis de ambiente permitem configurar cabeçalhos adicionais
@@ -129,10 +146,19 @@ Uma lista de cabeçalhos para aplicar a todos os dados de logs de saída.
 **Exemplo:**
 `export OTEL_EXPORTER_OTLP_LOGS_HEADERS="api-key=key,other-config-value=value"`
 
+### `OTEL_EXPORTER_OTLP_PROFILES_HEADERS`
+
+Uma lista de cabeçalhos para aplicar a todos os dados de perfis de saída.
+
+**Valor padrão:** N/A
+
+**Exemplo:**
+`export OTEL_EXPORTER_OTLP_PROFILES_HEADERS="api-key=key,other-config-value=value"`
+
 ## Configurações de tempo limite {#timeout-configuration}
 
 As seguintes variáveis de ambiente configuram o tempo máximo (em milissegundos)
-que um Exporter OTLP aguardará antes de transmitir o lote de dados.
+que um Exporter OTLP aguardará antes de transmitir o próximo lote de dados.
 
 ### `OTEL_EXPORTER_OTLP_TIMEOUT`
 
@@ -171,6 +197,19 @@ O tempo limite para todos os logs de saída em milissegundos.
 
 As seguintes variáveis de ambiente configuram o protocolo de transporte OTLP que
 um Exporter OTLP utiliza.
+
+### `OTEL_EXPORTER_OTLP_PROFILES_TIMEOUT`
+
+O tempo limite para todos os dados de perfis de saída em milissegundos.
+
+**Valor padrão:** 10000 (10s)
+
+**Exemplo:** `export OTEL_EXPORTER_OTLP_PROFILES_TIMEOUT=500`
+
+## Protocol configuration
+
+The following environment variables configure the OTLP transport protocol an
+OTLP exporter uses.
 
 ### `OTEL_EXPORTER_OTLP_PROTOCOL`
 
@@ -223,6 +262,20 @@ Especifica o protocolo de transporte OTLP a ser utilizado para dados de logs.
 **Valor padrão:** depende do SDK, porém, geralmente é `http/protobuf` ou `grpc`.
 
 **Exemplo:** `export OTEL_EXPORTER_OTLP_LOGS_PROTOCOL=grpc`
+
+Os valores válidos são:
+
+- `grpc` para utilizar OTLP/gRPC
+- `http/protobuf` para utilizar OTLP/HTTP + protobuf
+- `http/json` para utilizar OTLP/HTTP + JSON
+
+### `OTEL_EXPORTER_OTLP_PROFILES_PROTOCOL`
+
+Especifica o protocolo de transporte OTLP a ser utilizado para dados de perfis.
+
+**Valor padrão:** depende do SDK, porém, geralmente é `http/protobuf` ou `grpc`.
+
+**Exemplo:** `export OTEL_EXPORTER_OTLP_PROFILES_PROTOCOL=grpc`
 
 Os valores válidos são:
 

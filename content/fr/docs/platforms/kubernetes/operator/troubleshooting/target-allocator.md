@@ -1,8 +1,9 @@
 ---
 title: Allocateur de cibles
-default_lang_commit: 1253527a5bea528ae37339692e711925785343b1
+default_lang_commit: 1253527a5bea528ae37339692e711925785343b1 # patched
 drifted_from_default: true
-cSpell:ignore: bleh podmonitor podmonitorselector targetallocator
+# prettier-ignore
+cSpell:ignore: bleh podmonitor podmonitorselector servicemonitor targetallocator
 ---
 
 Si vous avez activé
@@ -24,7 +25,7 @@ pertinentes sur votre cluster Kubernetes.
 Après avoir déployé toutes vos ressources sur Kubernetes, assurez-vous que
 l'allocateur de cibles découvre les cibles de vos
 [`ServiceMonitor`](https://prometheus-operator.dev/docs/getting-started/design/#servicemonitor)(s)
-ou [PodMonitor]s.
+ou [PodMonitor][]s.
 
 Supposez que vous ayez cette définition d'un `ServiceMonitor` :
 
@@ -389,7 +390,7 @@ cibles échouera à découvrir les cibles de ce `ServiceMonitor`.
 
 {{% alert title="Astuce" %}}
 
-La même chose s'applique si vous utilisez un [PodMonitor]. Dans ce cas, vous
+La même chose s'applique si vous utilisez un [PodMonitor][]. Dans ce cas, vous
 utiliseriez un
 [`podMonitorSelector`](https://github.com/open-telemetry/opentelemetry-operator/blob/main/docs/api/targetallocators.md#targetallocatorspecprometheuscr)
 au lieu d'un `serviceMonitorSelector`.

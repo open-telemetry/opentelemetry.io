@@ -22,9 +22,9 @@ The registry contains the [list of language specific exporters][reg].
 Among exporters, [OpenTelemetry Protocol (OTLP)][OTLP] exporters are designed
 with the OpenTelemetry data model in mind, emitting OTel data without any loss
 of information. Furthermore, many tools that operate on telemetry data support
-OTLP (such as [Prometheus], [Jaeger], and most [vendors]), providing you with a
-high degree of flexibility when you need it. To learn more about OTLP, see [OTLP
-Specification][OTLP].
+OTLP (such as [Prometheus][], [Jaeger][], and most [vendors][]), providing you
+with a high degree of flexibility when you need it. To learn more about OTLP,
+see [OTLP Specification][OTLP].
 
 [Jaeger]: /blog/2022/jaeger-native-otlp/
 [OTLP]: /docs/specs/otlp/
@@ -42,13 +42,11 @@ them up.
 
 {{ if $zeroConfigPageExists }}
 
-{{% alert title=Note %}}
-
-If you use [zero-code instrumentation](</docs/zero-code/{{ $langIdAsPath }}>),
-you can learn how to set up exporters by following the
-[Configuration Guide](</docs/zero-code/{{ $langIdAsPath }}/configuration/>).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> If you use [zero-code instrumentation](</docs/zero-code/{{ $langIdAsPath }}>),
+> you can learn how to set up exporters by following the
+> [Configuration Guide](</docs/zero-code/{{ $langIdAsPath }}/configuration/>).
 
 {{ end }}
 
@@ -58,13 +56,11 @@ you can learn how to set up exporters by following the
 
 ### Collector Setup
 
-{{% alert title=Note %}}
-
-If you have a OTLP collector or backend already set up, you can skip this
-section and [setup the OTLP exporter dependencies](#otlp-dependencies) for your
-application.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> If you have a OTLP collector or backend already set up, you can skip this
+> section and [setup the OTLP exporter dependencies](#otlp-dependencies) for
+> your application.
 
 To try out and verify your OTLP exporters, you can run the collector in a docker
 container that writes telemetry directly to the console.

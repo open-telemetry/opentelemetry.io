@@ -92,14 +92,12 @@ func main() {
 
 You can now access `tracer` to manually instrument your code.
 
-{{% alert title="Important" color="warning" %}}
-
-If you are adding manual spans in conjunction with eBPF-based
-[Go zero-code instrumentation](/docs/zero-code/go), such as with
-[OBI](/docs/zero-code/obi), do not set a global Tracer Provider. See the
-[Auto SDK](/docs/zero-code/go/autosdk) docs for more information.
-
-{{% /alert %}}
+> [!WARNING]
+>
+> If you are adding manual spans in conjunction with eBPF-based
+> [Go zero-code instrumentation](/docs/zero-code/go), such as with
+> [OBI](/docs/zero-code/obi), do not set a global Tracer Provider. See the
+> [Auto SDK](/docs/zero-code/go/autosdk) docs for more information.
 
 ### Creating Spans
 
@@ -334,7 +332,7 @@ Here you can find more detailed package documentation for:
 
 ### Initialize Metrics
 
-{{% alert %}} If you’re instrumenting a library, skip this step. {{% /alert %}}
+> [!NB] If you’re instrumenting a library, **skip this step**.
 
 To enable [metrics](/docs/concepts/signals/metrics/) in your app, you'll need to
 have an initialized

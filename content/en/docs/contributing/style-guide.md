@@ -3,7 +3,19 @@ title: Documentation style guide
 description: Terminology and style when writing OpenTelemetry docs.
 linkTitle: Style guide
 weight: 20
-cSpell:ignore: open-telemetry postgre style-guide textlintrc
+params:
+  alertExamples: |
+    > [!TIP]
+    >
+    > If you are writing new content, generally prefer using this blockquote alert
+    > syntax instead of the Docsy
+    > [alert shortcode](https://www.docsy.dev/docs/content/shortcodes/#alert).
+
+    > [!WARNING] :warning: Blank line required!
+    >
+    > This site uses the [Prettier] formatter, and it requires an empty line
+    > separating the alert tag/title from the alert body.
+cSpell:ignore: postgre
 ---
 
 We don't have an official style guide yet, but the current OpenTelemetry
@@ -15,17 +27,17 @@ documentation style is inspired by the following style guides:
 The following sections contain guidance that is specific to the OpenTelemetry
 project.
 
-{{% alert title="Note" %}}
+> [!NOTE]
+>
+> Many requirements of our style guide can be enforced by running automation:
+> before submitting a [pull request][] (PR), run `npm run fix:all` on your local
+> machine and commit the changes.
+>
+> If you run into errors or [failed PR checks](../pr-checks), read about our
+> style guide and learn what you can do to fix certain common issues.
 
-Many requirements of our style guide can be enforced by running automation:
-before submitting a
-[pull request](https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request)
-(PR), run `npm run fix:all` on your local machine and commit the changes.
-
-If you run into errors or [failed PR checks](../pr-checks), read about our style
-guide and learn what you can do to fix certain common issues.
-
-{{% /alert %}}
+[pull request]:
+  https://docs.github.com/en/get-started/learning-about-github/github-glossary#pull-request
 
 ## OpenTelemetry.io word list
 
@@ -49,30 +61,77 @@ file.
 
 ## Markdown
 
-Site pages are written in the Markdown syntax supported by the [Goldmark]
+Site pages are written in the Markdown syntax supported by the [Goldmark][]
 Markdown renderer. For the full list of supported Markdown extensions, see
-[Goldmark].
+[Goldmark][].
 
-You can also use the following extensions:
+You can also use the following Markdown extensions:
 
-- [GitHub-flavored Markdown][GFM] (GFM) [alerts][gfm-alerts]
-- [Emojis]. For the complete list of available emojis, see [Emojis] from the
+- [Alerts](#alerts)
+- [Emojis][]: for the complete list of available emojis, see [Emojis][] from the
   Hugo docs.
 
 [Emojis]: https://gohugo.io/quick-reference/emojis/
+
+### Alerts
+
+You can write alerts using the following extended syntax:
+
+- [GitHub-flavored Markdown][GFM] (GFM) [alerts][gfm-alerts]
+- [Obsidian callout][] syntax for custom alert titles
+
+Here is an example of each:
+
+```markdown
+{{% _param alertExamples %}}
+```
+
+These render as:
+
+{{% _param alertExamples %}}
+
+For details about Hugo's blockquote alert syntax, see [Alerts][hugo-alerts] from
+the Hugo docs.
+
 [gfm-alerts]:
   https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide#alerts
 [GFM]: https://github.github.com/gfm/
 [Goldmark]: https://gohugo.io/configuration/markup/#goldmark
+[hugo-alerts]: https://gohugo.io/render-hooks/blockquotes/#alerts
+[Obsidian callout]: https://help.obsidian.md/callouts
+
+### Link references
+
+When using Markdown [reference links][], prefer the _collapsed_ form `[text][]`
+over the _shortcut_ form `[text]`. While both are valid [CommonMark][], the
+shortcut form is not consistently recognized by all Markdown tools. In
+particular, if you write `[example]` and forget the definition, the
+[markdownlint][] linter won't warn you[^md052] -- the text silently renders as
+literal `[example]` instead of a link. With the collapsed form `[example][]`,
+the linter catches the missing definition immediately.
+
+[^md052]:
+    Specifically, the built-in [MD052][] rule (`reference-links-images`) only
+    checks collapsed and full reference forms by default. Its `shortcut_syntax`
+    option can include shortcut references, but it doesn't work well in
+    practice.
+
+[MD052]: https://github.com/DavidAnson/markdownlint/blob/main/doc/md052.md
+
+This is enforced by the `no-shortcut-ref-link` custom rule. Run
+`npm run fix:markdown` to convert shortcut references automatically.
+
+[CommonMark]: https://spec.commonmark.org/0.31.2/#reference-link
+[reference links]: https://spec.commonmark.org/0.31.2/#reference-link
 
 ### Markdown checks {#markdown-standards}
 
 To enforce standards and consistency for Markdown files, all files should follow
-certain rules, enforced by [markdownlint]. For a full list, check the
-[.markdownlint.yaml] and [.markdownlint-cli2.yaml] files.
+certain rules, enforced by [markdownlint][]. For a full list, check the
+[.markdownlint.yaml][] and [.markdownlint-cli2.yaml][] files.
 
 We also enforce Markdown [file format](#file-format) and strip files of trailing
-whitespace. This precludes the [line break syntax] of 2+ spaces; use `<br>`
+whitespace. This precludes the [line break syntax][] of 2+ spaces; use `<br>`
 instead or reformat your text.
 
 ## Spell checking
@@ -106,7 +165,7 @@ title: registryEntryTitle
 
 ## File format
 
-We use [Prettier] to enforce file formatting. Invoke it using:
+We use [Prettier][] to enforce file formatting. Invoke it using:
 
 - `npm run fix:format` to format all files
 - `npm run fix:format:diff` to format only the files that have changed since the

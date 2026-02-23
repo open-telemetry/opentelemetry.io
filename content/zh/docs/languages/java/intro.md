@@ -2,6 +2,7 @@
 title: OpenTelemetry Java 介绍
 description: OpenTelemetry Java 生态系统介绍
 default_lang_commit: 5472965d7714ed898b008d41fa97561591320196
+drifted_from_default: true
 weight: 8
 ---
 

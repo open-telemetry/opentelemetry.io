@@ -69,3 +69,9 @@ swift:
     traces: stable
     metrics: development
     logs: development
+kotlin:
+  name: Kotlin
+  status:
+    traces: development
+    metrics: development
+    logs: development

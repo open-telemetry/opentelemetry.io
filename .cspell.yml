@@ -1,4 +1,3 @@
-# cSpell:ignore textlintrc
 # For settings, see
 # https://www.streetsidesoftware.com/vscode-spell-checker/docs/configuration/
 version: '0.2'
@@ -27,10 +26,13 @@ patterns:
           [\s\S]*?         # content
           \1               # code-block end - cSpell:disable-next-line
       /igmx
+  - name: HeadingID # For example: {#some-id}
+    pattern: /\{\#.*?\}/g
 languageSettings:
   - languageId: markdown
     ignoreRegExpList:
       - CodeBlock
+      - HeadingID
 dictionaryDefinitions:
   - name: en-words
     path: .cspell/en-words.txt
@@ -70,13 +72,40 @@ dictionaries:
   - softwareTerms
   # Other
   - companies
-words: # Valid words across all locales
+words:
+  # Valid words across all locales, in particular for Hugo code keywords,
+  # and proper names.
+  #
+  # WARNING: the list below gets sorted by CI scripts. Any comment lines
+  # will be pushed to the top here.
+  - attrlink
+  - Crossplane
+  - crosspost
+  - desaturate
   - Docsy
   - errorf
   - Goldmark
   - htmltest
   - jsonify
+  - lfasiallc
+  - Loffay
+  - logback
+  - Mancuso
+  - Marylia
+  - millicores
+  - myapp
+  - myprogram
+  - nanocores
+  - notranslate
   - nvmrc
   - opentelemetrybot
+  - Powerjob
+  - refcache
+  - submatch
+  - textlintrc
+  - tracestate
+  - UpDown
+  - Valkey
   - warnf
   - warnidf
+  - Wayback

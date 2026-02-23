@@ -6,6 +6,7 @@ aliases:
 weight: 30
 description: OpenTelemetry JavaScript の計装
 default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+drifted_from_default: true
 cSpell:ignore: dicelib Millis rolldice
 ---
 

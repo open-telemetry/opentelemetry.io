@@ -7,7 +7,7 @@ author: >-
 canonical_url: https://www.causely.ai/blog/demystifying-automatic-instrumentation
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/7810
 sig: Comms
-cspell:ignore: Beyla bpftrace Causely libbpf
+cspell:ignore: Beyla bpftrace Causely libbpf premain uprobes
 ---
 
 Despite the rise of OpenTelemetry and [eBPF](https://ebpf.io/), most developers
@@ -145,8 +145,9 @@ instruction level.
 
 Java’s Instrumentation API provides the foundation for this approach. When a
 Java agent is specified with the `-javaagent` flag, the JVM calls the agent’s
-premain method before the main application starts. This gives us the opportunity
-to register a class transformer that can modify any class as it’s loaded.
+`premain()` method before the main application starts. This gives us the
+opportunity to register a class transformer that can modify any class as it’s
+loaded.
 
 ```java
 public static void premain(String args, Instrumentation inst) {

@@ -8,7 +8,7 @@ tags:
   - tracing
 urls:
   repo: https://github.com/jaegertracing/jaeger
-  docs: https://www.jaegertracing.io/docs/1.60/monitoring/#traces
+  docs: https://www.jaegertracing.io/docs/monitoring/#traces
   website: https://www.jaegertracing.io/
 license: Apache 2.0
 description:

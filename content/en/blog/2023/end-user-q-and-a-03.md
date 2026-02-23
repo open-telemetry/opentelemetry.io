@@ -253,14 +253,14 @@ Iris and team have not played around with this beta feature.
 Because there are so many Kubernetes clusters, having a single OTel Collector
 would be a bottleneck in terms of load and single point of failure. The team
 currently has one
-[OpenTelemetry Collector agent](/docs/collector/deployment/agent/) per
+[OpenTelemetry Collector agent](/docs/collector/deploy/agent/) per
 Kubernetes cluster. The end goal is to replace those agents with the
 [OTel Operator](/docs/platforms/kubernetes/operator/) instead, which allows you
 to deploy and configure the OTel Collector and inject and configure
 auto-instrumentation.
 
 Everything is then sent to a central OTel Collector (i.e. an
-[OTel Collector gateway](/docs/collector/deployment/gateway/)) per data center,
+[OTel Collector gateway](/docs/collector/deploy/gateway/)) per data center,
 where data masking (using the
 [transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor),
 or

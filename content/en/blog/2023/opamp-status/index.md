@@ -53,10 +53,11 @@ want to use OpAMP both as an collector extension, with limited functionality, as
 well as as an (collector-external) supervisor that implements a broader set of
 OpAMP capabilities.
 
-{{% alert title="Note" %}} For a deeper dive, see
-[OpAMP for OpenTelemetry Collector document](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor/specification),
-which describes how to implement both options while minimizing code duplication.
-{{% /alert %}}
+> [!NOTE]
+>
+> For a deeper dive, see
+> [OpAMP for OpenTelemetry Collector document](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor/specification),
+> which describes how to implement both options while minimizing code duplication.
 
 The main idea to support both modes is to implement an extension in the
 collector with a minimal set of OpAMP capabilities. This collector extension can
@@ -113,9 +114,11 @@ to be deployed by the OpenTelemetry Operator:
 
 ![OpAMP bridge in the OTel Operator](opamp-kubernetes-bridge.png)
 
-{{% alert title="Note" %}} Currently, we don't have support for
-deployment via Helm chart, however, if you'd like to contribute to this, you're
-welcome to contribute.{{% /alert %}}
+> [!NOTE]
+>
+> Currently, we don't have support for
+> deployment via Helm chart, however, if you'd like to contribute to this, you're
+> welcome to contribute.
 
 The OpAMP bridge is a binary developed by the OTel
 [SIG Kubernetes Operator](https://docs.google.com/document/d/1Unbs2qp_j5kp8FfL_lRH-ld7i5EOQpsq0I4djkOOSL4/)

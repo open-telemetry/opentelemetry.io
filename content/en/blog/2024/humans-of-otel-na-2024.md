@@ -7,7 +7,7 @@ author: >-
 issue: 5812
 sig: End User SIG
 # prettier-ignore
-cSpell:ignore: Adriana Akhigbe Bhattacharya Bluesky brainer Braydon Budha causely Christos commoditize Creeden David Endre Eromosele Gohberg google hazel Kains Lee Luna Markou Miguel nivenly Outreachy Reese Sara sematext Sharr TIMgKXCeiyQ traducción traduction transformative tyk weakly youtube
+cSpell:ignore: Adriana Akhigbe Bhattacharya Bluesky brainer Braydon Budha causely Christos commoditize Creeden David Endre Eromosele Gohberg google hazel Kains Lee Luna Markou Miguel nivenly Outreachy Reese Sara sematext Sharr TIMgKXCeiyQ traducción traduction transformative tyk weakly youtube zerolog
 ---
 
 We're back with our third edition of

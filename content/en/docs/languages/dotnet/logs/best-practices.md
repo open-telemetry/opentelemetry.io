@@ -102,10 +102,10 @@ logger.LogInformation("Hello from {food} {price}.", food, price);
 
 Avoid string interpolation. For example:
 
-{{% alert title="Warning" color="warning" %}} The following code has bad
-performance due to
-[string interpolation](https://learn.microsoft.com/dotnet/csharp/tutorials/string-interpolation):
-{{% /alert %}}
+> [!WARNING]
+>
+> The following code has bad performance due to
+> [string interpolation](https://learn.microsoft.com/dotnet/csharp/tutorials/string-interpolation).
 
 ```csharp
 var food = "tomato";
@@ -131,12 +131,14 @@ internal static partial class LoggerExtensions
 }
 ```
 
-{{% alert title="Note" %}} There is no need to pass in an explicit
-[EventId](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.eventid)
-while using
-[LoggerMessageAttribute](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loggermessageattribute).
-A durable `EventId` will be automatically assigned based on the hash of the
-method name during code generation. {{% /alert %}}
+> [!NOTE]
+>
+> There is no need to pass in an explicit
+> [EventId](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.eventid)
+> while using
+> [LoggerMessageAttribute](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loggermessageattribute).
+> A durable `EventId` will be automatically assigned based on the hash of the
+> method name during code generation.
 
 Use
 [LogPropertiesAttribute](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.logpropertiesattribute)
@@ -150,10 +152,10 @@ Avoid the extension methods from
 [LoggerExtensions](https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions),
 these methods are not optimized for performance. For example:
 
-{{% alert title="Warning" color="warning" %}} The following code has bad
-performance due to
-[boxing](https://learn.microsoft.com/dotnet/csharp/programming-guide/types/boxing-and-unboxing):
-{{% /alert %}}
+> [!WARNING]
+>
+> The following code has bad performance due to
+> [boxing](https://learn.microsoft.com/dotnet/csharp/programming-guide/types/boxing-and-unboxing).
 
 ```csharp
 var food = "tomato";
@@ -169,9 +171,10 @@ The logging API is highly optimized for the scenario where most loggers are
 **disabled** for certain log levels. Making an extra call to `IsEnabled` before
 logging will not give you any performance gain. For example:
 
-{{% alert title="Warning" color="warning" %}} The
-`logger.IsEnabled(LogLevel.Information)` call in the following code is not going
-to give any performance gain. {{% /alert %}}
+> [!WARNING]
+>
+> The `logger.IsEnabled(LogLevel.Information)` call in the following code is not
+> going to give any performance gain.
 
 ```csharp
 var food = "tomato";
@@ -234,11 +237,12 @@ internal static partial class LoggerExtensions
 }
 ```
 
-{{% alert title="Note" %}} When using the compile-time source generator the
-first `Exception` parameter detected is automatically given special handling. It
-**SHOULD NOT** be part of the message template. For details see:
-[Log method anatomy](https://learn.microsoft.com/dotnet/core/extensions/logger-message-generator#log-method-anatomy).
-{{% /alert %}}
+> [!NOTE]
+>
+> When using the compile-time source generator the first `Exception` parameter
+> detected is automatically given special handling. It **SHOULD NOT** be part of
+> the message template. For details see:
+> [Log method anatomy](https://learn.microsoft.com/dotnet/core/extensions/logger-message-generator#log-method-anatomy).
 
 You should use the dedicated overloads to log exceptions when using the logging
 extensions methods.
@@ -341,7 +345,7 @@ more.
 ## Log filtering
 
 For more advanced filtering and sampling, the .NET team has a plan to cover it
-in .NET 9 timeframe, please use this
+in the .NET 9 timeframe. Use this
 [runtime issue](https://github.com/dotnet/runtime/issues/82465) to track the
 progress or provide feedback and suggestions.
 

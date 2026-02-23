@@ -8,7 +8,7 @@ author: '[Ruediger Schulze](https://github.com/rrschulze) (IBM)'
 canonical_url: https://openmainframeproject.org/blog/exploring-opentelemetry-priorities-for-mainframes-insights-from-survey-responses/
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/7870
 sig: SIG OpenTelemetry on Mainframes
-cSpell:ignore: CICS HLASM IDMS REXX Ruediger Schulze VSAM
+cSpell:ignore: CICS Datacom HLASM IDMS REXX Ruediger Schulze VSAM
 ---
 
 Which [OpenTelemetry](/) features are considered most important by users for
@@ -338,7 +338,7 @@ adoption on mainframes. Connect with members of the SIG via the Slack channel
 [SIG meeting](https://github.com/open-telemetry/community/?tab=readme-ov-file#sig-mainframes)
 on Wednesday at 10:00 PT.
 
-_A version of this article was [originally posted] on the Open Mainframe Project
-blog._
+_A version of this article was [originally posted][] on the Open Mainframe
+Project blog._
 
-[originally posted]: {{% param canonical_url %}}
+[originally posted]: <{{% param canonical_url %}}>

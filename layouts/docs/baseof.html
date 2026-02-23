@@ -6,7 +6,8 @@
     {{- with .Site.Language.LanguageDirection }} dir="{{ . }}" {{- end -}}
     {{ with $lang }} lang="{{ . }}" {{- end }} {{/**/ -}}
     class="no-js"
-    {{- if .Site.Params.ui.showLightDarkModeMenu }} data-theme-init{{ end }}>
+    {{- $darkMode := partialCached "dark-mode-config.html" "dark-mode-global" -}}
+    {{- if $darkMode.enable }} data-theme-init{{ end }}>
   <head>
     {{ partial "head.html" . }}
   </head>
@@ -21,7 +22,7 @@
             <div id="google_translate_element"></div>
             {{ partial "sidebar.html" . }}
           </aside>
-          <aside class="d-none d-xl-block col-xl-2 td-sidebar-toc d-print-none">
+          <aside class="td-sidebar-toc">
             {{ partial "page-meta-links.html" . }}
             {{ partial "toc.html" . }}
             {{ partial "taxonomy_terms_clouds.html" . }}

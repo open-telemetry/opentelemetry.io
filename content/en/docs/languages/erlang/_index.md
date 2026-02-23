@@ -1,17 +1,20 @@
 ---
 title: Erlang/Elixir
-weight: 14
+weight: 130
 description: >
   <img width="35" class="img-initial otel-icon"
   src="/img/logos/32x32/Erlang_SDK.svg" alt="Erlang/Elixir"> A language-specific
   implementation of OpenTelemetry in Erlang/Elixir.
 cascade:
   versions:
-    otelSdk: 1.3
-    otelApi: 1.2
-    otelExporter: 1.6
-    otelPhoenix: 1.1
-    otelCowboy: 0.2
+    otelSdk: 1.5
+    otelApi: 1.4
+    otelSemconv: 1.27
+    otelApiExperimental: 0.6
+    otelSdkExperimental: 0.6
+    otelExporter: 1.8
+    otelPhoenix: 2.0
+    otelCowboy: 1.0
     otelEcto: 1.2
 cSpell:ignore: ecto
 ---

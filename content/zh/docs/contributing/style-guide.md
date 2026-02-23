@@ -5,7 +5,7 @@ linkTitle: 风格指南
 weight: 20
 default_lang_commit: 2394fa1f1c693e547093e46e83a6819d3c26e9d5 # patched
 drifted_from_default: true
-cSpell:ignore: open-telemetry postgre style-guide textlintrc
+cSpell:ignore: open-telemetry postgre style-guide
 ---
 
 OpenTelemetry 还没有官方的风格指南，当前版本的 OpenTelemetry 文档风格受到以下风格指南的启发：

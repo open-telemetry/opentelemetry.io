@@ -112,9 +112,11 @@ dependencies aligned. OpenTelemetry Java publishes several BOMs catering to
 different use cases, listed below in order of increasing scope. We highly
 recommend using a BOM.
 
-{{% alert %}} Because the BOMs are hierarchical, adding dependencies on multiple
-BOMs is not recommended, as it is redundant and can lead unintuitive dependency
-version resolution. {{% /alert %}}
+> [!NOTE]
+>
+> Because the BOMs are hierarchical, adding dependencies on multiple BOMs is not
+> recommended, as it is redundant and can lead unintuitive dependency version
+> resolution.
 
 Click the link in the "Managed Dependencies" column to see a list of the
 artifacts managed by the BOM.

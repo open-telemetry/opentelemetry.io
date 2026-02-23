@@ -127,18 +127,16 @@ flowchart LR
   P2 ~~~ M2[...]
 ```
 
-{{% alert title="Important" color="warning" %}}
-
-When the same receiver is referenced in more than one pipeline, the Collector
-creates only one receiver instance at runtime that sends the data to a fan-out
-consumer. The fan-out consumer in turn sends the data to the first processor of
-each pipeline. The data propagation from receiver to the fan-out consumer and
-then to processors is completed using a synchronous function call. This means
-that if one processor blocks the call, the other pipelines attached to this
-receiver are blocked from receiving the same data, and the receiver itself stops
-processing and forwarding newly received data.
-
-{{% /alert %}}
+> [!WARNING]
+>
+> When the same receiver is referenced in more than one pipeline, the Collector
+> creates only one receiver instance at runtime that sends the data to a fan-out
+> consumer. The fan-out consumer in turn sends the data to the first processor
+> of each pipeline. The data propagation from receiver to the fan-out consumer
+> and then to processors is completed using a synchronous function call. This
+> means that if one processor blocks the call, the other pipelines attached to
+> this receiver are blocked from receiving the same data, and the receiver
+> itself stops processing and forwarding newly received data.
 
 ### Exporters
 

@@ -27,12 +27,12 @@ as the body of the page.
 
 > For banners, the announcement body should be a short phrase.
 
-{{% alert title="For localizations" %}}
+<!-- markdownlint-disable no-blanks-blockquote -->
 
-If you are creating a **locale specific announcement override**, make sure that
-you use the **same filename** as the English language announcement.
-
-{{% /alert %}}
+> [!NOTE] For localizations
+>
+> If you are creating a **locale specific announcement override**, make sure
+> that you use the **same filename** as the English language announcement.
 
 ## Announcement list
 

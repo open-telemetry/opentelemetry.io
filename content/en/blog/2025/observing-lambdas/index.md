@@ -5,7 +5,7 @@ linkTitle: Observing Lambdas
 date: 2025-02-05
 sig: FaaS
 issue: 5961
-cSpell:ignore: Dominik
+cSpell:ignore: Dominik logline
 ---
 
 Getting telemetry data out of modern applications is very straightforward (or at

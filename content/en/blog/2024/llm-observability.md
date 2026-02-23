@@ -82,13 +82,11 @@ costs. Here are the key signals to monitor:
     perspective, providing insights into the model's output characteristics and
     potential areas of inefficiency or unexpected cost.
 
-{{% alert title="Note" %}}
-
-The LLM Working Group has recommended on capturing these details on events
-instead of span attributes because many backend systems can struggle with those
-often large payloads.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> The LLM Working Group has recommended on capturing these details on events
+> instead of span attributes because many backend systems can struggle with
+> those often large payloads.
 
 ### Metrics
 
