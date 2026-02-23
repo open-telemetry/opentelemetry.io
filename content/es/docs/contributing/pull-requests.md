@@ -5,14 +5,14 @@ description:
   o desde un fork local.
 aliases: [new-content]
 weight: 15
-default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
+default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
 cSpell:ignore: aplícala vincúlalos
 ---
 
 Para contribuir con nueva documentación o mejorar la existente, envía un [pull
 request][PR] (PR):
 
-- Si tu cambio es pequeño, o no estás familiarizado con [Git], consulta
+- Si tu cambio es pequeño, o no estás familiarizado con [Git][], consulta
   [Usando GitHub](#changes-using-github) para aprender a editar una página.
 - De lo contrario, consulta [Trabajar localmente](#fork-the-repo) para aprender
   cómo hacer cambios en tu propio entorno de desarrollo local.
@@ -21,7 +21,7 @@ request][PR] (PR):
 
 > [!WARNING] **Nuevos contribuyentes**, ¡presten atención!
 >
-> Si eres un [contribuyente nuevo], ten en cuenta lo siguiente:
+> Si eres un [contribuyente nuevo][], ten en cuenta lo siguiente:
 >
 > Tus primeras 3 contribuciones a nuestro repositorio deben ser principalmente
 > escritas por humanos, con solo asistencia menor de IA permitida
@@ -196,8 +196,8 @@ fix:text
 Si tienes más experiencia con Git, o si tus cambios son más grandes que unas
 pocas líneas, trabaja desde un fork local.
 
-Asegúrate de tener [`git` instalado] en tu computadora. También puedes usar una
-interfaz de usuario para Git.
+Asegúrate de tener [`git` instalado][] en tu computadora. También puedes usar
+una interfaz de usuario para Git.
 
 La Figura 3 muestra los pasos a seguir cuando trabajas desde un fork local. Los
 detalles de cada paso siguen a continuación.
