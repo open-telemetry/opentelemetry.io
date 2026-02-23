@@ -28,6 +28,8 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.base.sha || github.sha }}
 
       - name: Download PR number artifact
         if: github.event_name == 'workflow_run'
