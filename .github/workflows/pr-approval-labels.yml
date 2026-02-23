@@ -44,8 +44,21 @@ jobs:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
           if [[ "$EVENT_NAME" == "workflow_run" ]]; then
-            echo "number=$(cat pr-number.txt)" >> "$GITHUB_OUTPUT"
+            if [[ ! -f pr-number.txt ]]; then
+              echo "Error: pr-number.txt artifact file not found." >&2
+              exit 1
+            fi
+            PR_NUM="$(tr -d '[:space:]' < pr-number.txt)"
+            if [[ -z "$PR_NUM" || ! "$PR_NUM" =~ ^[0-9]+$ ]]; then
+              echo "Error: Invalid PR number from artifact: '$PR_NUM'. Expected a non-empty integer." >&2
+              exit 1
+            fi
+            echo "number=$PR_NUM" >> "$GITHUB_OUTPUT"
           else
+            if [[ -z "$PR_NUMBER" || ! "$PR_NUMBER" =~ ^[0-9]+$ ]]; then
+              echo "Error: Invalid PR number from event: '$PR_NUMBER'. Expected a non-empty integer." >&2
+              exit 1
+            fi
             echo "number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
           fi
 
