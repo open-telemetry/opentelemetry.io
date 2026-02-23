@@ -55,7 +55,7 @@ Key IA updates include:
   [Zero-code Instrumentation](/docs/zero-code/) section to more clearly
   distinguish between instrumentation APIs & SDKs and tools like the Java agent,
   used to inject telemetry.
-- Following these updates, the Java SIG [proposed] and [reorganized their
+- Following these updates, the Java SIG [proposed][] and [reorganized their
   documentation][java-reorg], introducing substantial improvements to the
   structure and clarity of the content. The bulk of this effort is reflected in
   these PRs:
@@ -64,7 +64,7 @@ Key IA updates include:
   - [Move performance to Java agent, merge Javadoc into API page #5590][#5590]
 
   <!-- prettier-ignore -->
-  Kudos to [Jack Berg] and the [Java SIG] for their exemplary leadership in
+  Kudos to [Jack Berg][] and the [Java SIG][] for their exemplary leadership in
   improving language-SIG documentation!
   {.mt-3}
 
@@ -88,13 +88,14 @@ your contributions &mdash; [join us][#2427] in this collaborative effort.
 
 ### Contributions
 
-In [December 2022], we started [monthly releases] of the website so that we
+In [December 2022][], we started [monthly releases][] of the website so that we
 could regularly summarize activities and highlight significant contributions.
 These releases allow us to track progress over time and perform long-term
 comparisons.
 
-For instance, comparing the periods [December 2022 to November 2023] and
-[December 2023 to November 2024], we observed an upward trend in contributions:
+For instance, comparing the periods [December 2022 to November 2023][] and
+[December 2023 to November 2024][], we observed an upward trend in
+contributions:
 
 - **Commits** increased 33% from 1,011 to 1,340
 - **Contributors** grew 15% from 92 to 106
@@ -120,20 +121,20 @@ OpenTelemetry website. Your efforts make a difference!
 
 ### Which pages were the most popular?
 
-According to our publicly available [analytics] data, [opentelemetry.io](/) was
-viewed **12 million** times across 4 million sessions this year. This marks a
-**16% increase** over last year's nearly 10 million views and over 3 million
+According to our publicly available [analytics][] data, [opentelemetry.io](/)
+was viewed **12 million** times across 4 million sessions this year. This marks
+a **16% increase** over last year's nearly 10 million views and over 3 million
 sessions.
 
 The most popular pages and sections of the documentation were:
 
-| Page/Section             | Views | % [^1] |
-| ------------------------ | ----: | -----: |
-| [What is OpenTelemetry?] |  290K |   2.4% |
-| [Collector]              |  1.3M |  10.5% |
-| [Concepts]               |  1.2M |   9.8% |
-| [Demo]                   |  829K |   6.7% |
-| [Ecosystem]              |  500K |   4.0% |
+| Page/Section               | Views | % [^1] |
+| -------------------------- | ----: | -----: |
+| [What is OpenTelemetry?][] |  290K |   2.4% |
+| [Collector][]              |  1.3M |  10.5% |
+| [Concepts][]               |  1.2M |   9.8% |
+| [Demo][]                   |  829K |   6.7% |
+| [Ecosystem][]              |  500K |   4.0% |
 
 [analytics]: https://lookerstudio.google.com/s/tSTKxK1ECeU
 [Collector]: /docs/collector
@@ -151,10 +152,10 @@ Did you know that:
 - "OpenTelemetry" occurs 7.3K times in the English website pages, making it the
   3rd most frequent word after "the" and "to." The word "collector" is used 3.2K
   times, putting it in 11th place!
-- The [Collector landing page] has been the most updated file since its
+- The [Collector landing page][] has been the most updated file since its
   creation, with 91 changes.
-- With 511 commits (27K additions, and 10K deletions) the [opentelemetrybot] is
-  the fourth most active contributor. Go bots!
+- With 511 commits (27K additions, and 10K deletions) the [opentelemetrybot][]
+  is the fourth most active contributor. Go bots!
 - The record for the PR with the most comments this year—and of all time is held
   by:
   - [Generative AI updates blog post (#5575)][#5575], with 150 comments!
@@ -171,12 +172,12 @@ Did you know that:
 
 ## Amazing Community <i class="fa-regular fa-heart"></i> {#amazing-community}
 
-With [1.3K PRs], we collectively contributed an equally impressive number of
+With [1.3K PRs][], we collectively contributed an equally impressive number of
 reviews to ensure that content is accurate, valuable, aligned with our
 documentation goals, and easy to read and understand.
 
-In addition to PRs, contributors created nearly [500 issues] and engaged in many
-[discussions], reporting bugs, suggesting improvements, and driving
+In addition to PRs, contributors created nearly [500 issues][] and engaged in
+many [discussions][], reporting bugs, suggesting improvements, and driving
 collaboration. Each of these efforts reflects our community's dedication to
 maintaining the quality of OpenTelemetry docs.
 
@@ -204,14 +205,14 @@ A big shout-out to everyone for making 2024 a successful year! We look forward
 to continuing our collaboration in 2025.
 
 Whether you're an end user, a contributor, or simply enthusiastic about
-OpenTelemetry, we welcome your participation. You can [get involved] by raising
-[issues], participating in [discussions], or [submitting PRs].
+OpenTelemetry, we welcome your participation. You can [get involved][] by
+raising [issues][], participating in [discussions][], or [submitting PRs][].
 
 You can also join us:
 
 - On the [CNCF Slack](https://slack.cncf.io/) at any one of the many
   `#otel`-prefixed channels.
-- In [Comms meetings], held every other Monday at 10:00 AM Pacific time.
+- In [Comms meetings][], held every other Monday at 10:00 AM Pacific time.
 
 Together, we can make 2025 another amazing year for [opentelemetry.io](/)!
 

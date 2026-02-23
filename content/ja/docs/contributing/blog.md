@@ -2,7 +2,7 @@
 title: ブログ
 description: ブログ投稿する方法を学びます。
 weight: 30
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25 # patched
 drifted_from_default: true
 ---
 
@@ -41,7 +41,7 @@ OpenTelemetry ウェブサイトのメンテナーと承認者はプロジェク
 
 - ベンダー製品の宣伝
 
-もし、ブログ投稿がこの適切な内容のリストに沿っているのであれば、次の詳細と一緒に[イシューを起票]してください。
+もし、ブログ投稿がこの適切な内容のリストに沿っているのであれば、次の詳細と一緒に[イシューを起票](https://github.com/open-telemetry/opentelemetry.io/issues/new?title=New%20Blog%20Post:%20%3Ctitle%3E)してください。
 
 - ブログ投稿のタイトル
 - 簡潔な説明とブログ投稿の概要
