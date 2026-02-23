@@ -3,24 +3,24 @@ title: Ce este OpenTelemetry?
 description: O scurtă explicație despre ce este și ce nu este OpenTelemetry.
 aliases: [/about, /docs/concepts/what-is-opentelemetry, /otel]
 weight: 150
-default_lang_commit: abb36857b0a8c6b09e379a96bf26d08af8d8f99c
+default_lang_commit: abb36857b0a8c6b09e379a96bf26d08af8d8f99c # patched
 cSpell:ignore: youtube
 ---
 
 OpenTelemetry este:
 
-- Un **cadru și un set de instrumente [de observabilitate]** concepute pentru a
-  facilita
+- Un **cadru și un set de instrumente [de observabilitate][observabilitate]**
+  concepute pentru a facilita
   - [Generarea][instr]
   - Exportarea
   - [Colectarea](../concepts/components/#collector)
 
-  de [date de telemetrie][] cum ar fi [urme], [metrici], și [jurnale].
+  de [date de telemetrie][] cum ar fi [urme][], [metrici][], și [jurnale][].
 
 - **Open source**, precum și **agnostic față de furnizor și instrument**, ceea
   ce înseamnă că poate fi utilizat cu o gamă largă de backend-uri de
-  observabilitate, inclusiv instrumente open source precum [Jaeger] și
-  [Prometheus], ​​precum și oferte comerciale. OpenTelemetry **nu** este un
+  observabilitate, inclusiv instrumente open source precum [Jaeger][] și
+  [Prometheus][], ​​precum și oferte comerciale. OpenTelemetry **nu** este un
   backend de observabilitate în sine.
 
 Un obiectiv important al OpenTelemetry este de a permite o instrumentare ușoară
@@ -39,20 +39,20 @@ Pentru mai multe videoclipuri din această serie și resurse suplimentare, vezi
 
 ## Ce este observabilitatea?
 
-[Observabilitatea] este abilitatea de a înțelege starea internă a unui sistem
-prin examinarea ieșirilor sale. În contextul software-ului, aceasta înseamnă a
-fi capabil să înțelegi starea internă a unui sistem prin examinarea datelor sale
-de telemetrie, care includ urme, metrici și jurnale.
+[Observabilitatea][observabilitate] este abilitatea de a înțelege starea internă
+a unui sistem prin examinarea ieșirilor sale. În contextul software-ului,
+aceasta înseamnă a fi capabil să înțelegi starea internă a unui sistem prin
+examinarea datelor sale de telemetrie, care includ urme, metrici și jurnale.
 
 Pentru a face un sistem observabil, acesta trebuie să fie [instrumentat][instr].
-Adică, codul trebuie să emită [urme], [metrici] sau [jurnale]. Datele
+Adică, codul trebuie să emită [urme][], [metrici][] sau [jurnale][]. Datele
 instrumentate trebuie apoi trimise către un backend de observabilitate.
 
 ## De ce OpenTelemetry?
 
 Odată cu creșterea cloud computing-ului, a arhitecturilor de microservicii și a
 cerințelor de afaceri din ce în ce mai complexe, nevoia de software și
-infrastructură [observabilitate] este mai mare ca niciodată.
+infrastructură [observabilitate][] este mai mare ca niciodată.
 
 OpenTelemetry satisface nevoia de observabilitate, respectând în același timp
 două principii cheie:
@@ -119,7 +119,7 @@ aproape orice nivel.
 ## Istorie {#history}
 
 OpenTelemetry este un proiect al [Cloud Native Computing Foundation][] (CNCF)
-care este rezultatul unei [fuziuni] între două proiecte anterioare,
+care este rezultatul unei [fuziuni][] între două proiecte anterioare,
 [OpenTracing](https://opentracing.io) și [OpenCensus](https://opencensus.io).
 Ambele proiecte au fost create pentru a rezolva aceeași problemă: lipsa unui
 standard pentru instrumentarea codului și trimiterea datelor de telemetrie către

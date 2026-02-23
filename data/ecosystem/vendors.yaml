@@ -500,7 +500,7 @@
   commercial: true
 - name: VictoriaMetrics
   nativeOTLP: true
-  url: https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/docs#sending-data-via-opentelemetry
+  url: https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/docs/opentelemetry
   contact: https://github.com/hagen1778
   oss: true
   commercial: true

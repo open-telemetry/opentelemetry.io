@@ -19,7 +19,7 @@ jobs:
     name: BUILD
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
 
       - name: Create NPM cache-hash input file
         run: |
@@ -89,7 +89,7 @@ jobs:
             # Regex to ignore English doc folders and locales a to m.
             regex: '^(..[^/]|[a-m]./)'
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
       - uses: actions/download-artifact@v7
         with: { name: build-artifacts }
 
@@ -115,7 +115,7 @@ jobs:
     needs: check-links
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
       - uses: actions/download-artifact@v7
         with:
           pattern: refcache-*
@@ -129,7 +129,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
       - uses: actions/download-artifact@v7
         with: { name: build-artifacts }
       - run: cat tmp/build-log.txt

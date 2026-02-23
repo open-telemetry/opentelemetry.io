@@ -8,7 +8,7 @@ cSpell:ignore: Altinity Amaechi Anoshin Aravena baeyens Benedetti Benedikt Bhatn
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
-technical committee are thrilled to be at [KubeCon EU] in Amsterdam from March
+technical committee are thrilled to be at [KubeCon EU][] in Amsterdam from March
 23 - 26, 2026. [Register][kubecon registration] today to join us!
 
 Read on to learn about all the events related to OpenTelemetry during KubeCon.
@@ -102,7 +102,7 @@ Read on to learn about all the events related to OpenTelemetry during KubeCon.
 
 ## Observability Day Talks
 
-[Observability Day] fosters collaboration, discussion, and knowledge sharing
+[Observability Day][] fosters collaboration, discussion, and knowledge sharing
 with a focus on cloud native observability projects. This event will be held on
 November 10, 2025 from 9:00 to 18:00. Look for your favorite talks about
 Observability and OpenTelemetry in the [schedule][obs-day-sched].
