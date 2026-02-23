@@ -2,7 +2,7 @@
 title: 管理
 description: OpenTelemetry Collectorのデプロイメントを大規模に管理する方法
 weight: 23
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
 cSpell:ignore: hostmetrics opampsupervisor
 ---
 
@@ -33,7 +33,7 @@ OpenTelemetryのコンテキストでは、タスク _4.ヘルスとパフォー
 
 オブザーバビリティベンダーやクラウドプロバイダーは、エージェント管理に独自のソリューションを提供しています。
 オープンソースのオブザーバビリティの領域では、エージェント管理に使用できる新しい標準があります。
-[Open Agent Management Protocol] (OpAMP)です。
+[Open Agent Management Protocol][] (OpAMP)です。
 
 [OpAMPの仕様][OpAMP specification]では、テレメトリーデータエージェントのフリート管理方法を定義しています。
 これらのエージェントは、[OpenTelemetry コレクター](/docs/collector/)、Fluent Bit、または他のエージェントを任意の組み合わせで使用できます。

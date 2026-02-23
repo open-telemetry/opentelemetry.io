@@ -1,7 +1,7 @@
 ---
 title: Instrumentation prête à l'emploi
 weight: 40
-default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
+default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649 # patched
 cSpell:ignore: autoconfigurations webflux webmvc
 ---
 
@@ -53,14 +53,14 @@ Propriétés communes à toutes les instrumentations de base de données :
 Vous pouvez activer des fonctionnalités expérimentales à l'aide des propriétés
 système pour capturer des attributs :
 
-| Propriété système                                                                      | Type    | Défaut | Description                                                                                                                                                                    |
-| -------------------------------------------------------------------------------------- | ------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `otel.instrumentation.logback-appender.experimental-log-attributes`                    | Boolean | false  | Active la capture des attributs de log expérimentaux `thread.name` et `thread.id`.                                                                                             |
-| `otel.instrumentation.logback-appender.experimental.capture-code-attributes`           | Boolean | false  | Active la capture des [attributs de code source]. Notez que la capture des attributs de code source sur les sites de journalisation peut ajouter une surcharge de performance. |
-| `otel.instrumentation.logback-appender.experimental.capture-marker-attribute`          | Boolean | false  | Active la capture des marqueurs Logback comme attributs.                                                                                                                       |
-| `otel.instrumentation.logback-appender.experimental.capture-key-value-pair-attributes` | Boolean | false  | Active la capture des paires clé-valeur Logback comme attributs.                                                                                                               |
-| `otel.instrumentation.logback-appender.experimental.capture-logger-context-attributes` | Boolean | false  | Active la capture des propriétés de contexte du logger Logback comme attributs.                                                                                                |
-| `otel.instrumentation.logback-appender.experimental.capture-mdc-attributes`            | String  |        | Liste séparée par des virgules des attributs MDC à capturer. Utilisez le caractère générique `*` pour capturer tous les attributs.                                             |
+| Propriété système                                                                      | Type    | Défaut | Description                                                                                                                                                                      |
+| -------------------------------------------------------------------------------------- | ------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `otel.instrumentation.logback-appender.experimental-log-attributes`                    | Boolean | false  | Active la capture des attributs de log expérimentaux `thread.name` et `thread.id`.                                                                                               |
+| `otel.instrumentation.logback-appender.experimental.capture-code-attributes`           | Boolean | false  | Active la capture des [attributs de code source][]. Notez que la capture des attributs de code source sur les sites de journalisation peut ajouter une surcharge de performance. |
+| `otel.instrumentation.logback-appender.experimental.capture-marker-attribute`          | Boolean | false  | Active la capture des marqueurs Logback comme attributs.                                                                                                                         |
+| `otel.instrumentation.logback-appender.experimental.capture-key-value-pair-attributes` | Boolean | false  | Active la capture des paires clé-valeur Logback comme attributs.                                                                                                                 |
+| `otel.instrumentation.logback-appender.experimental.capture-logger-context-attributes` | Boolean | false  | Active la capture des propriétés de contexte du logger Logback comme attributs.                                                                                                  |
+| `otel.instrumentation.logback-appender.experimental.capture-mdc-attributes`            | String  |        | Liste séparée par des virgules des attributs MDC à capturer. Utilisez le caractère générique `*` pour capturer tous les attributs.                                               |
 
 [attributs de code source]:
   /docs/specs/semconv/general/attributes/#source-code-attributes
