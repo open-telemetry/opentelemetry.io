@@ -8259,10 +8259,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-20T09:51:45.27055413Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/bigipreceiver": {
-    "StatusCode": 404,
-    "LastSeen": "2026-02-23T09:53:30.248072819Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/carbonreceiver": {
     "StatusCode": 206,
     "LastSeen": "2026-02-20T09:51:52.496666384Z"
