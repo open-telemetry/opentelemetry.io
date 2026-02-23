@@ -276,67 +276,126 @@ supported via database/SQL wrapper: `github.com/jackc/pgx/v5/stdlib`
 
 #### Couchbase instrumentation
 
-OBI instruments Couchbase database operations through two protocols:
+Couchbase is a NoSQL document database that supports both direct key-value
+access and SQL-like queries through SQL++, commonly used for applications with
+flexible schemas and high availability requirements. OBI instruments Couchbase
+operations through two protocols:
 
-1. **SQL++ (N1QL)**: SQL++ queries (the modern name for the N1QL query language)
-   are automatically detected through Couchbase's HTTP query service on the
-   `/query/service` endpoint.
-2. **KV (Key-Value) protocol**: Binary protocol operations based on an extension
-   of the memcached protocol for direct key-value access.
+- **KV (Key-Value) protocol**: Binary protocol for direct key-value access on
+  port 11210, based on an extension of the
+  [Memcached Binary Protocol](https://github.com/couchbase/memcached/blob/master/docs/BinaryProtocol.md).
+- **SQL++ (N1QL)**: HTTP-based query protocol on port 8093 via the
+  `/query/service` endpoint.
 
-The following sections detail the SQL++ (N1QL) instrumentation. For KV protocol
-instrumentation details, refer to the
-[OBI developer documentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/blob/f96ddcf28c2c13d2de7e8d20bb4932be0ec5cc90/devdocs/protocols/tcp/couchbase.md).
+##### KV (Key-Value) protocol
+
+**What's captured**:
+
+| Attribute                 | Source                 | Example                   |
+| ------------------------- | ---------------------- | ------------------------- |
+| `db.system.name`          | Constant               | `couchbase`               |
+| `db.operation.name`       | Opcode                 | `GET`, `SET`              |
+| `db.namespace`            | Bucket + Scope         | `travel-sample.inventory` |
+| `db.collection.name`      | Collection             | `airline`                 |
+| `db.response.status_code` | Status code (on error) | `1`                       |
+| `server.address`          | Connection info        | Server hostname           |
+| `server.port`             | Connection info        | `11210`                   |
+
+**Bucket, scope, and collection tracking**: Couchbase uses a hierarchical
+namespace: Bucket → Scope → Collection. Unlike per-request namespace protocols,
+namespace is established at the connection level:
+
+- `SELECT_BUCKET` (not traced): Sets the active bucket for all subsequent
+  operations on the connection. Analogous to `USE database` in MySQL or
+  `SELECT db_number` in Redis.
+- `GET_COLLECTION_ID` (not traced): Resolves a `scope.collection` path to a
+  numeric collection ID. OBI uses this to enrich span attributes with scope and
+  collection names.
+
+OBI maintains a per-connection cache of bucket, scope, and collection names and
+uses it to annotate every subsequent span.
+
+**Limitations**:
+
+- If `SELECT_BUCKET` occurs before OBI starts, the bucket name is unknown for
+  that connection
+- If `GET_COLLECTION_ID` occurs before OBI starts, the collection name is not
+  available
+- Authentication and metadata operations are not captured
+- These limitations only affect connections established before OBI
+  initialization
 
 ##### SQL++ (N1QL) operations
 
-**What's Couchbase**: A NoSQL document database that supports SQL-like queries
-through SQL++, commonly used for applications with flexible schemas and high
-availability requirements.
+SQL++ queries (the modern name for the N1QL query language) are automatically
+detected through Couchbase's HTTP query service on port 8093 at the
+`/query/service` endpoint.
 
 **Supported operations**:
 
 - All SQL++ query types: SELECT, INSERT, UPDATE, DELETE, UPSERT
 - Bucket and collection operations accessed via SQL paths (e.g.,
-  `bucket`.`scope`.`collection`)
+  `bucket.scope.collection`)
 - Cross-collection and cross-bucket queries
 
 **What's captured**:
 
-- Full SQL++ query text
-- Operation type (SELECT, INSERT, etc.) parsed from query
-- Bucket, scope, and collection names (when present in query path)
-- Execution time and error details
-- HTTP status codes and error messages
+| Attribute                 | Source                       | Example                      |
+| ------------------------- | ---------------------------- | ---------------------------- |
+| `db.system.name`          | N1QL version header          | `couchbase` or `other_sql`   |
+| `db.operation.name`       | SQL parser                   | `SELECT`, `INSERT`, `UPDATE` |
+| `db.namespace`            | Table path / `query_context` | `travel-sample`              |
+| `db.collection.name`      | Table path                   | `inventory.airline`          |
+| `db.query.text`           | Request body                 | Full SQL++ query text        |
+| `db.response.status_code` | Error code (on error)        | `12003`                      |
+| `error.type`              | Error message (on error)     | Error message from Couchbase |
 
 **Supported databases**:
 
-- **Couchbase Server**: Detected via the N1QL version header in response
-- **Other SQL++ implementations**: Apache AsterixDB and compatible databases
+- **Couchbase Server**: Detected via the N1QL version header in the response
+- **Other SQL++ implementations**: Apache AsterixDB and compatible databases are
   also supported with a generic `other_sql` designation
 
-**Configuration**: SQL++ instrumentation requires explicit enablement via
-environment variables:
+**Request formats**: SQL++ requests are accepted as both JSON body and
+form-encoded POST to `/query/service`:
+
+{{< tabpane text=true >}} {{% tab "JSON Body" %}}
+
+```json
+{
+  "statement": "SELECT * FROM `bucket`.`scope`.`collection` WHERE id = $1",
+  "query_context": "default:`bucket`.`scope`"
+}
+```
+
+{{% /tab %}} {{% tab "Form Encoded" %}}
+
+```text
+statement=SELECT+*+FROM+users&query_context=default:`travel-sample`.`inventory`
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
+**Namespace resolution**: The parser extracts bucket and collection from:
+
+1. Table path in the SQL statement: `` `bucket`.`scope`.`collection` ``
+2. The `query_context` field when present
+3. Single identifier: treated as collection name (with `query_context`) or
+   bucket name (without `query_context`, legacy mode)
+
+**Configuration**: SQL++ instrumentation requires explicit enablement:
 
 ```bash
 export OTEL_EBPF_HTTP_SQLPP_ENABLED=true
-export OTEL_EBPF_BPF_BUFFER_SIZE_HTTP=2048  # Use larger than default
+export OTEL_EBPF_BPF_BUFFER_SIZE_HTTP=2048  # Larger than default; needed to capture request/response bodies
 ```
 
 **Limitations**:
 
 - Bucket and collection discovery requires SQL path notation in the query (e.g.,
-  `bucket`.`scope`.`collection`) or `query_context` field in the request
-- Responses without Couchbase version headers are labeled as generic `other_sql`
-  operations
-
-**Limitations (KV protocol only)**:
-
-- Couchbase-specific authentication and metadata operations are not captured
-- Collection names may not be available if `GET_COLLECTION_ID` occurred before
-  OBI started
-- These limitations only affect operations on connections established before OBI
-  initialization
+  `bucket.scope.collection`) or a `query_context` field in the request
+- Responses without a Couchbase version header are labeled as generic
+  `other_sql` operations
 
 **Example use case**: Monitor a high-traffic web application using Couchbase for
 session storage and content management, tracking query performance and
