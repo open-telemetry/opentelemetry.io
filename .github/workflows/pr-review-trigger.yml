@@ -1,3 +1,14 @@
+# Purpose:
+#   Bridge pull_request_review events to the privileged label updater workflow.
+#
+# Why this exists:
+#   We avoid running label updates directly on pull_request_review.
+#   Instead, this workflow records only the PR number (artifact), and
+#   PR approval labels consumes it via workflow_run in a trusted context.
+#
+# Security model:
+#   This workflow is intentionally minimal and does not use privileged secrets.
+#   It ignores review.state == "commented" because comments do not affect approvals.
 name: PR review trigger
 
 on:
