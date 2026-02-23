@@ -209,7 +209,7 @@ logs to your backend.
   descriptor caching
 - **Cache limits**: File descriptor cache has size and TTL limits to prevent
   unbounded memory usage
-- **Async processing**: Log enrichment uses asynchronous workers avoid
+- **Async processing**: Log enrichment uses asynchronous workers to avoid
   overflowing the kernel ringbuffer
 
 ## Known limitations
