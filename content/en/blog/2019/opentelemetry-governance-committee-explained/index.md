@@ -8,7 +8,7 @@ cSpell:ignore: Kanzhelev Novotny Sergey
 ---
 
 This article describes the functions and responsibilities of the
-[OpenTelemetry Governance Committee's charter document](https://github.com/open-telemetry/community/blob/main/governance-charter.md).
+[OpenTelemetry Governance Committee's charter document](https://github.com/open-telemetry/community/blob/614ece1/governance-charter.md?from_branch=main).
 It is an opinion, not the formal definition. The primary role of the Governance
 Committee is not to centralize power, but to enable and empower the broader
 community by establishing processes. Let me explain.
