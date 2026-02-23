@@ -35,6 +35,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-13T09:59:50.571Z"
   },
+  "https://agentgateway.dev/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-06T11:53:19.679306+01:00"
+  },
   "https://ai.google.dev/api/generate-content": {
     "StatusCode": 200,
     "LastSeen": "2026-02-14T09:50:08.691059888Z"
@@ -4899,6 +4903,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:54:18.003378589Z"
   },
+  "https://github.com/dash0hq/dash0-examples/tree/main/kgateway": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-06T11:53:18.893644+01:00"
+  },
   "https://github.com/dash0hq/otelbin": {
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:53:00.785534669Z"
@@ -7082,6 +7090,10 @@
   "https://github.com/open-telemetry/community/issues/3119": {
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:58:47.063647084Z"
+  },
+  "https://github.com/open-telemetry/community/issues/3247": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-06T11:53:17.626957+01:00"
   },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
@@ -16229,11 +16241,19 @@
   },
   "https://kgateway.dev/": {
     "StatusCode": 200,
-    "LastSeen": "2026-02-11T12:08:17.191377+01:00"
+    "LastSeen": "2026-02-06T11:53:15.522572+01:00"
   },
   "https://kgateway.dev/docs/envoy/latest/observability/otel-stack/": {
     "StatusCode": 200,
     "LastSeen": "2026-02-11T12:08:18.560211+01:00"
+  },
+  "https://kgateway.dev/docs/envoy/main/about/policies/httplistenerpolicy/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-11T13:16:43.566775+01:00"
+  },
+  "https://kgateway.dev/docs/envoy/main/about/policies/listenerpolicy/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-12T06:15:20.204104Z"
   },
   "https://kind.sigs.k8s.io/": {
     "StatusCode": 206,
