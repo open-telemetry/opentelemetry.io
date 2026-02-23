@@ -16,7 +16,7 @@ Find the latest image of OBI on
 name:
 
 ```text
-ebpf-instrument:main
+otel/ebpf-instrument:main
 ```
 
 The OBI container must be configured in following way:
@@ -26,6 +26,32 @@ The OBI container must be configured in following way:
   environments)
 - Use the `host` PID namespace to allow accessing to the processes in other
   containers.
+
+## Image Signing and Verification
+
+The OBI container image is signed using
+[Cosign](https://docs.sigstore.dev/cosign/signing/overview/) with ephemeral
+keys, authenticated via the OIDC (OpenID Connect) protocol in GitHub Actions.
+This ensures the authenticity and integrity of the container published by the
+OpenTelemetry project.
+
+You can verify the signature of the container image using the following command:
+
+```sh
+cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' otel/ebpf-instrument:main
+```
+
+Here is an example output:
+
+```log
+Verification for index.docker.io/otel/ebpf-instrument:main --
+The following checks were performed on each of these signatures:
+  - The cosign claims were validated
+  - Existence of the claims in the transparency log was verified offline
+  - The code-signing certificate was verified using trusted certificate authority certificates
+
+[{"critical":{"identity":{"docker-reference":"index.docker.io/otel/ebpf-instrument:main"},"image":{"docker-manifest-digest":"sha256:55426a2bbb8003573a961697888aa770a1f5f67fcda2276dc2187d1faf7181fe"},"type":"https://sigstore.dev/cosign/sign/v1"},"optional":{}}]
+```
 
 ## Docker CLI example
 
@@ -61,7 +87,7 @@ docker run --rm \
   -e OTEL_EBPF_TRACE_PRINTER=text \
   --pid=host \
   --privileged \
-  docker.io/otel/ebpf-instrument:main
+  otel/ebpf-instrument:main
 ```
 
 After OBI is running, open `https://localhost:18443` in your browser, use the
@@ -102,7 +128,7 @@ services:
       - '18443:8443'
 
   autoinstrumenter:
-    image: docker.io/otel/ebpf-instrument:main
+    image: otel/ebpf-instrument:main
     pid: 'host'
     privileged: true
     environment:

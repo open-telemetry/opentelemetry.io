@@ -24,10 +24,10 @@ this website.
 
 ### Gitpod
 
-To work via [Gitpod.io]:
+To work via [Gitpod.io][]:
 
 1.  Fork this repository. For help, see [Fork a repository][fork].
-2.  From [gitpod.io/workspaces], create a new workspace (do this only once) or
+2.  From [gitpod.io/workspaces][], create a new workspace (do this only once) or
     open an existing workspace over your fork. You can also visit a link of the
     form:
     `https://gitpod.io#https://github.com/YOUR_GITHUB_ID/opentelemetry.io`.
@@ -41,9 +41,9 @@ Gitpod automatically installs the repo-specific packages for you.
 
 ### Codespaces
 
-To work via GitHub [Codespaces]:
+To work via GitHub [Codespaces][]:
 
-1. [Fork] the website repository.
+1. [Fork][] the website repository.
 2. Open a Codespace from your fork.
 
 Your development environment will be initialized via the
@@ -51,7 +51,7 @@ Your development environment will be initialized via the
 
 ## Local setup
 
-1.  [Fork] and then [clone] the website repository at
+1.  [Fork][] and then [clone][] the website repository at
     <{{% param github_repo %}}>.
 2.  Go to the repository directory:
 
@@ -60,15 +60,15 @@ Your development environment will be initialized via the
     ```
 
 3.  Install or upgrade to the [**active LTS** release][nodejs-rel] of Node.js.
-    We recommend using [nvm] to manage your Node installation. Under Linux, run
-    the following command, which will install and upgrade to the version
+    We recommend using [nvm][] to manage your Node installation. Under Linux,
+    run the following command, which will install and upgrade to the version
     specified in the .nvmrc file:
 
     ```sh
     nvm install
     ```
 
-    To [install under Windows][nodejs-win], use [nvm-windows]. We recommend
+    To [install under Windows][nodejs-win], use [nvm-windows][]. We recommend
     using `cmd` and not Windows PowerShell for the command below:
 
     ```cmd
@@ -122,10 +122,10 @@ To serve the site run:
 npm run serve
 ```
 
-The site is served at [localhost:1313].
+The site is served at [localhost:1313][].
 
-If you need to test [Netlify] redirects, use the following command and visit the
-site at [localhost:8888]:
+If you need to test [Netlify][] redirects, use the following command and visit
+the site at [localhost:8888][]:
 
 ```sh
 npm run serve:netlify
@@ -141,10 +141,10 @@ might need to increase the file descriptor limit. See
 
 The website is built from the following content:
 
-- Files under `content/`, `static/`, etc. per [Hugo] defaults.
-- Mount points, defined by Hugo [config] in
+- Files under `content/`, `static/`, etc. per [Hugo][] defaults.
+- Mount points, defined by Hugo [config][] in
   `config/_default/module-template.yaml`. Mounts are either directly from git
-  submodules under [content-modules], or preprocessed content from
+  submodules under [content-modules][], or preprocessed content from
   `content-modules` (placed under `tmp/`), and no where else.
 
 [config]: https://github.com/open-telemetry/opentelemetry.io/tree/main/config
@@ -153,8 +153,8 @@ The website is built from the following content:
 
 ### Submodule changes
 
-If you change any content inside of a [content-modules] submodule, then you need
-to first submit a PR (containing the submodule changes) to the submodule's
+If you change any content inside of a [content-modules][] submodule, then you
+need to first submit a PR (containing the submodule changes) to the submodule's
 repository. Only after the submodule PR has been accepted, can you update the
 submodule and have the changes appear in this website.
 
