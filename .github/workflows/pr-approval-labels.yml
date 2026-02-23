@@ -1,4 +1,4 @@
-# To learn more about this workflow, see: 
+# To learn more about this workflow, see:
 #  https://opentelemetry.io/site/build/ci-workflows/#pr-approval-labels
 name: PR approval labels
 
