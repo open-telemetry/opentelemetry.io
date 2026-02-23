@@ -13243,6 +13243,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:56:05.308544991Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/specification/logs/api.md#emit-a-logrecord": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-23T17:03:27.476336+01:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/specification/logs/api.md#logger": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-23T17:03:28.015277+01:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.48.0/specification/logs/data-model.md#log-and-event-record-definition": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-23T17:03:22.97464+01:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/v1.54.0/oteps/0035-opentelemetry-protocol.md": {
     "StatusCode": 206,
     "LastSeen": "2026-02-13T18:11:52.817945665Z"
