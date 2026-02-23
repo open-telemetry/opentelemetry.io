@@ -9,81 +9,81 @@ cpp:
     traces: stable
     metrics: stable
     logs: stable
-    profiles: "-"
+    profiles: '-'
 dotnet:
   name: .NET
   status:
     traces: stable
     metrics: stable
     logs: stable
-    profiles: "-"
+    profiles: '-'
 erlang:
   name: Erlang/Elixir
   status:
     traces: stable
     metrics: development
     logs: development
-    profiles: "-"
+    profiles: '-'
 go:
   name: Go
   status:
     traces: stable
     metrics: stable
     logs: beta
-    profiles: "-"
+    profiles: '-'
 java:
   name: Java
   status:
     traces: stable
     metrics: stable
     logs: stable
-    profiles: "development"
+    profiles: 'development'
 php:
   name: PHP
   status:
     traces: stable
     metrics: stable
     logs: stable
-    profiles: "-"
+    profiles: '-'
 python:
   name: Python
   status:
     traces: stable
     metrics: stable
     logs: development
-    profiles: "-"
+    profiles: '-'
 ruby:
   name: Ruby
   status:
     traces: stable
     metrics: development
     logs: development
-    profiles: "-"
+    profiles: '-'
 js:
   name: JavaScript
   status:
     traces: stable
     metrics: stable
     logs: development
-    profiles: "development"
+    profiles: 'development'
 rust:
   name: Rust
   status:
     traces: beta
     metrics: stable
     logs: stable
-    profiles: "development"
+    profiles: 'development'
 swift:
   name: Swift
   status:
     traces: stable
     metrics: development
     logs: development
-    profiles: "-"
+    profiles: '-'
 kotlin:
   name: Kotlin
   status:
     traces: development
     metrics: development
     logs: development
-    profiles: "-"
+    profiles: '-'
