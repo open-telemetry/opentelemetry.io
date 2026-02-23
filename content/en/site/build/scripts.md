@@ -5,7 +5,6 @@ description: >-
   Shell scripts used by CI workflows and local development for label management,
   link checking, registry updates, and more.
 weight: 20
-cSpell:ignore: OTELBOT
 ---
 
 All scripts live under
@@ -35,8 +34,9 @@ Runs link checking for a specific shard by temporarily modifying
 | `-k` | Keep modified `.htmltest.yml` (default: restore after run) |
 | `-h` | Show help                                                  |
 
-The script injects the shard regular expression into the `IgnoreDirs` config, runs
-`npm run __check:links`, and restores the original config unless `-k` is used.
+The script injects the shard regular expression into the `IgnoreDirs` config,
+runs `npm run __check:links`, and restores the original config unless `-k` is
+used.
 
 ## check-refcache.sh
 
