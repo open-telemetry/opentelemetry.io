@@ -38,7 +38,7 @@ OpenTelemetryコレクターは、[トレース](/docs/concepts/signals/traces/)
    docker pull otel/opentelemetry-collector-contrib:{{% param vers %}}
    ```
 
-2. [telemetrygen]ユーティリティをインストールします。
+2. [telemetrygen][]ユーティリティをインストールします。
 
    ```sh
    go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest

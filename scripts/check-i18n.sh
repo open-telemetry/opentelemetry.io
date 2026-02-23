@@ -9,6 +9,7 @@ DEFAULT_TARGET="$DEFAULT_CONTENT"
 EXIT_STATUS=0
 EXTRA_DIFF_ARGS="--numstat"
 FLAG_CHANGE_OR_ADD=0
+FLAG_COMPLETENESS=0
 FLAG_DIFF_DETAILS=0
 FLAG_DRIFTED_STATUS=0
 FLAG_FAIL_ON_LIST_OR_MISSING=0
@@ -49,6 +50,9 @@ Options:
            TIP: first fetch and pull the upstream 'main' if you want to use the
                 remote HEAD hash.
 
+  -C       Report completeness: percentage of English pages that have a translation
+           for each language under TARGET_PATH. Use with -v to list missing pages.
+
   -d       Output diff details.
   -D       Update or add the '$I18N_DLD_KEY' key to all target localization pages.
   -h       Help! Output this usage info.
@@ -70,13 +74,15 @@ function usage() {
 }
 
 function process_CLI_args() {
-  while getopts ":ac:dDhinqvx" opt; do
+  while getopts ":ac:CdDhinqvx" opt; do
     case $opt in
       a)
         LIST_KIND="ALL";;
       c)
         FLAG_CHANGE_OR_ADD=1;
         COMMIT_HASH_ARG="$OPTARG";;
+      C)
+        FLAG_COMPLETENESS=1;;
       d)
         FLAG_DIFF_DETAILS=1
         EXTRA_DIFF_ARGS="";;
@@ -108,8 +114,8 @@ function process_CLI_args() {
     validate_hash $COMMIT_HASH_ARG
   fi
 
-  if (( FLAG_CHANGE_OR_ADD + FLAG_DIFF_DETAILS + FLAG_DRIFTED_STATUS > 1 )); then
-    echo -e "ERROR: you can't use -c, -d, and -D at the same time; choose one. For help use -h.\n"
+  if (( FLAG_CHANGE_OR_ADD + FLAG_COMPLETENESS + FLAG_DIFF_DETAILS + FLAG_DRIFTED_STATUS > 1 )); then
+    echo -e "ERROR: you can't use -c, -C, -d, and -D at the same time; choose one. For help use -h.\n"
     exit 1
   fi
 
@@ -257,11 +263,65 @@ function set_file_drifted_status() {
   fi
 }
 
+function report_completeness() {
+  local target_paths="$1"
+  local langs=""
+
+  if [[ -f "$target_paths" ]]; then
+    langs=$(echo "$target_paths" | sed "s|$DEFAULT_CONTENT/\([^/]*\)/.*|\1|")
+  elif [[ "$target_paths" == "$DEFAULT_CONTENT" ]]; then
+    for d in "$DEFAULT_CONTENT"/*/; do
+      local l=$(basename "$d")
+      [[ "$l" != "$DEFAULT_LANG" ]] && langs="$langs $l"
+    done
+  else
+    for p in $target_paths; do
+      local l=$(echo "$p" | sed "s|$DEFAULT_CONTENT/\([^/]*\).*|\1|")
+      [[ "$l" != "$DEFAULT_LANG" ]] && langs="$langs $l"
+    done
+  fi
+
+  local en_files
+  en_files=$(find "$DEFAULT_CONTENT/$DEFAULT_LANG" -name "*.md")
+  local en_count
+  en_count=$(echo "$en_files" | wc -l | tr -d ' ')
+
+  echo "Completeness report (English pages: $en_count)"
+  echo ""
+
+  for lang in $langs; do
+    local translated=0
+    local missing_list=""
+    while IFS= read -r en_file; do
+      local translated_file="${en_file/$DEFAULT_CONTENT\/$DEFAULT_LANG\//$DEFAULT_CONTENT/$lang/}"
+      if [[ -f "$translated_file" ]]; then
+        ((translated++))
+      else
+        missing_list="$missing_list$en_file"$'\n'
+      fi
+    done <<< "$en_files"
+    local pct=$((translated * 100 / en_count))
+    echo "$lang: $translated/$en_count ($pct%)"
+    if [[ -n $FLAG_VERBOSE && -n "$missing_list" ]]; then
+      local missing=$((en_count - translated))
+      echo "$missing_list" | head -20
+      if (( missing > 20 )); then
+        echo "  ... and $((missing - 20)) more"
+      fi
+    fi
+  done
+}
+
 function main() {
   process_CLI_args "$@"
 
   if [[ -n $FLAG_INFO ]]; then
     get_and_print_hashes_of_main
+    return
+  fi
+
+  if [[ $FLAG_COMPLETENESS != 0 ]]; then
+    report_completeness "$TARGET_PATHS"
     return
   fi
 
