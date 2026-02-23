@@ -1,19 +1,5 @@
-# Purpose:
-#   Maintain approval labels on PRs:
-#     - missing:docs-approval
-#     - missing:sig-approval
-#     - ready-to-be-merged
-#
-# Trigger model:
-#   - pull_request_target for PR content changes (opened/reopened/synchronize)
-#   - workflow_run from "PR review trigger" for approval-state changes
-#
-# Security model:
-#   Runs in a trusted context with app credentials to read org/team membership
-#   and edit PR labels, including for fork-based PRs.
-#
-# References:
-#   - https://opentelemetry.io/site/build/ci-workflows/#pr-approval-labels
+# To learn more about this workflow, see: 
+#  https://opentelemetry.io/site/build/ci-workflows/#pr-approval-labels
 name: PR approval labels
 
 on:
