@@ -162,9 +162,11 @@ name `process_uptime` and description:
 
 > [!NOTE]
 >
-> When using the default Prometheus exporter, `otelcol_process_uptime` is
-> exported as `otelcol_process_uptime_seconds_total`. Use the `instrument_name`
-> value `otelcol_process_uptime` (the OTLP name) in views regardless. To control
+> When configuring the Prometheus exporter for internal metrics manually (using
+> `readers`), `otelcol_process_uptime` may be exported as
+> `otelcol_process_uptime_seconds_total` unless `without_type_suffix` and
+> `without_units` are set to `true`. Use the `instrument_name` value
+> `otelcol_process_uptime` (the OTLP name) in views regardless. To control
 > Prometheus-specific suffixes, see [Unit suffixes](#unit-suffixes).
 
 ```yaml
@@ -332,14 +334,18 @@ format, such as `otelcol_exporter_send_failed_spans`.
 
 #### `_seconds` and other unit suffixes {#unit-suffixes}
 
-The Prometheus exporter also appends a unit suffix to metrics that carry a unit.
-For example, `otelcol_process_uptime` (unit: seconds) is exported as
-`otelcol_process_uptime_seconds_total` by default — the `_seconds` unit suffix
-is added first, then the `_total` counter suffix.
+The Prometheus exporter appends a unit suffix to metrics that carry a unit. For
+example, `otelcol_process_uptime` (unit: seconds) can be exported as
+`otelcol_process_uptime_seconds_total` — the `_seconds` unit suffix is added
+first, then the `_total` counter suffix.
 
-To restore the original, shorter metric names (for example, when you have
-existing dashboards or alerts that rely on the short names), set both
-`without_type_suffix` and `without_units` to `true` on the Prometheus exporter:
+The default Prometheus exporter configured by the Collector (when no `readers`
+are specified) already sets `without_type_suffix` and `without_units` to `true`
+for backwards compatibility, so `otelcol_process_uptime` is used as-is.
+
+However, when you manually configure the Prometheus exporter under
+`service::telemetry::metrics::readers`, those options are not set by default. To
+keep the original, shorter metric names, explicitly set both options to `true`:
 
 ```yaml
 service:
@@ -355,8 +361,8 @@ service:
                 without_units: true
 ```
 
-With this configuration, `otelcol_process_uptime_seconds_total` is exported once
-again as `otelcol_process_uptime`.
+With this configuration, `otelcol_process_uptime_seconds_total` is exported as
+`otelcol_process_uptime`.
 
 #### Dots (`.`) v. underscores (`_`) {#dots-v-underscores}
 
