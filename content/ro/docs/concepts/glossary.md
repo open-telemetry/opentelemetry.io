@@ -4,7 +4,7 @@ description:
   Definiții și convenții pentru termenii de telemetrie așa cum sunt utilizați în
   OpenTelemetry.
 weight: 200
-default_lang_commit: af966c967003c6dcee2ea5dfe23ce5831fcb5019
+default_lang_commit: af966c967003c6dcee2ea5dfe23ce5831fcb5019 # patched
 drifted_from_default: true
 ---
 
@@ -235,9 +235,9 @@ Prescurtare pentru [OpenCensus](#opencensus).
 
 Componenta unei platforme de observabilitate care este responsabilă pentru
 primirea, procesarea, stocarea și interogarea datelor de telemetrie. Se pot
-enumera, de exemplu, instrumente open source cum ar fi [Jaeger] și [Prometheus],
-​​precum și oferte comerciale. OpenTelemetry nu este un backend de
-observabilitate.
+enumera, de exemplu, instrumente open source cum ar fi [Jaeger][] și
+[Prometheus][], ​​precum și oferte comerciale. OpenTelemetry nu este un backend
+de observabilitate.
 
 ### Frontend de observabilitate {#observability-frontend}
 
@@ -261,7 +261,7 @@ Precursorul OpenTelemetry. Pentru mai multe detalii, vezi
 
 ### OpenTelemetry
 
-Format printr-o [fuziune] a proiectelor [OpenTracing](#opentracing) și
+Format printr-o [fuziune][] a proiectelor [OpenTracing](#opentracing) și
 [OpenCensus](#opencensus), OpenTelemetry &mdash; subiectul acestui site web
 &mdash; este o colecție de [API-uri](#api), [SDK-uri](#sdk) și instrumente pe
 care le poți utiliza pentru a [instrumenta](/docs/concepts/instrumentation/),
@@ -296,7 +296,7 @@ Prescurtare pentru [Colector OpenTelemetry](#collector).
 
 ### OTEP
 
-Un acronim pentru [Propunere de îmbunătățire OpenTelemetry].
+Un acronim pentru [Propunere de îmbunătățire OpenTelemetry][].
 
 > **Ortografie**: Scrie „OTEPs” la plural. Nu scrie `OTep` sau `otep` în
 > descrieri.
@@ -316,7 +316,7 @@ telemetrie, cum ar fi contextul intervalului și [Bagajul](#baggage) din
 
 ### Proto
 
-Tipuri de interfețe independente de limbă. Vezi [opentelemetry-proto].
+Tipuri de interfețe independente de limbă. Vezi [opentelemetry-proto][].
 
 ### Receptor {#receiver}
 
@@ -407,7 +407,7 @@ Un [DAG](#dag) din [Intervaluri](#span), unde punctele extreme dintre
 
 ### Tracer
 
-Responsabil cu crearea [Intervalurilor](#span). Vezi [Tracer].
+Responsabil cu crearea [Intervalurilor](#span). Vezi [Tracer][].
 
 ### Tranzacţie {#transaction}
 
@@ -417,7 +417,8 @@ Vezi [Urmărire distribuită](#distributed-tracing).
 
 O alternativă în proces la exportatorii externi. Atunci când sunt incluși,
 aceștia colectează și agregă informații de urmărire și metrică în fundal; aceste
-date sunt furnizate pe paginile web atunci când sunt solicitate. Vezi [zPages].
+date sunt furnizate pe paginile web atunci când sunt solicitate. Vezi
+[zPages][].
 
 [attribute]: /docs/specs/otel/common/#attributes
 [baggage]: /docs/specs/otel/baggage/api/

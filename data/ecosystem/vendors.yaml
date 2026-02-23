@@ -90,6 +90,12 @@
   contact: support@chronosphere.io
   oss: false
   commercial: true
+- name: Comet Opik
+  nativeOTLP: true
+  url: https://www.comet.com/docs/opik/integrations/opentelemetry
+  contact: support@comet.com
+  oss: true
+  commercial: true
 - name: Control Plane
   nativeOTLP: true
   url: https://docs.controlplane.com/reference/org#tracing
@@ -494,7 +500,7 @@
   commercial: true
 - name: VictoriaMetrics
   nativeOTLP: true
-  url: https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/docs#sending-data-via-opentelemetry
+  url: https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/docs/opentelemetry
   contact: https://github.com/hagen1778
   oss: true
   commercial: true

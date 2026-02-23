@@ -4,7 +4,7 @@ description:
   Terminología y estilo al escribir la documentación de OpenTelemetry.
 linkTitle: Guía de estilo
 weight: 20
-default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
+default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
 params:
   alertExamples: |
     > [!TIP]
@@ -65,14 +65,14 @@ una lista completa, consulta el archivo
 ## Markdown
 
 Las páginas del sitio están escritas en la sintaxis Markdown soportada por el
-renderizador Markdown [Goldmark]. Para ver la lista completa de extensiones
-Markdown soportadas, consulta [Goldmark].
+renderizador Markdown [Goldmark][]. Para ver la lista completa de extensiones
+Markdown soportadas, consulta [Goldmark][].
 
 También puedes usar las siguientes extensiones de Markdown:
 
 - [Alertas](#alerts)
-- [Emojis]: para ver la lista completa de emojis disponibles, consulta [Emojis]
-  en la documentación de Hugo.
+- [Emojis][]: para ver la lista completa de emojis disponibles, consulta
+  [Emojis][] en la documentación de Hugo.
 
 [Emojis]: https://gohugo.io/quick-reference/emojis/
 
@@ -106,9 +106,9 @@ consulta [Alertas][hugo-alerts] en la documentación de Hugo.
 ### Verificaciones de Markdown {#markdown-standards}
 
 Para hacer cumplir estándares y consistencia en los archivos Markdown, todos los
-archivos deben seguir ciertas reglas, aplicadas por [markdownlint]. Para ver una
-lista completa, consulta los archivos [.markdownlint.yaml] y
-[.markdownlint-cli2.yaml].
+archivos deben seguir ciertas reglas, aplicadas por [markdownlint][]. Para ver
+una lista completa, consulta los archivos [.markdownlint.yaml][] y
+[.markdownlint-cli2.yaml][].
 
 También aplicamos el [formato de archivo](#file-format) de Markdown y eliminamos
 los espacios en blanco finales de los archivos. Esto impide la [sintaxis de
@@ -144,7 +144,7 @@ title: títuloDeEntradaDelRegistro
 
 ## Formato de archivo {#file-format}
 
-Usamos [Prettier] para aplicar el formato de archivos. Invócalo usando:
+Usamos [Prettier][] para aplicar el formato de archivos. Invócalo usando:
 
 - `npm run fix:format` para formatear todos los archivos
 - `npm run fix:format:diff` para formatear solo los archivos que han cambiado

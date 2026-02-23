@@ -471,6 +471,12 @@ maintainers:
       - specs-triagers
     html_url: https://github.com/codeboten
     avatar_url: https://avatars.githubusercontent.com/u/223565?v=4
+  - name: cyrille-leclerc
+    teams:
+      - demo-approvers
+      - demo-maintainers
+    html_url: https://github.com/cyrille-leclerc
+    avatar_url: https://avatars.githubusercontent.com/u/459691?v=4
   - name: damemi
     teams:
       - ebpf-instrumentation-approvers
@@ -1161,12 +1167,6 @@ maintainers:
       - kotlin-approvers
     html_url: https://github.com/Msksgm
     avatar_url: https://avatars.githubusercontent.com/u/49427230?v=4
-  - name: mviitane
-    teams:
-      - demo-approvers
-      - demo-maintainers
-    html_url: https://github.com/mviitane
-    avatar_url: https://avatars.githubusercontent.com/u/74129181?v=4
   - name: mwear
     teams:
       - collector-contrib-approvers
@@ -1859,11 +1859,6 @@ approvers:
       - dotnet-triagers
     html_url: https://github.com/CodeBlanch
     avatar_url: https://avatars.githubusercontent.com/u/28367120?v=4
-  - name: codefromthecrypt
-    teams:
-      - opentelemetry-python-contrib-approvers
-    html_url: https://github.com/codefromthecrypt
-    avatar_url: https://avatars.githubusercontent.com/u/64215?v=4
   - name: crobert-1
     teams:
       - collector-contrib-approvers
@@ -2085,7 +2080,6 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/8219709?v=4
   - name: karthikscale3
     teams:
-      - opentelemetry-python-contrib-approvers
       - semconv-genai-approvers
     html_url: https://github.com/karthikscale3
     avatar_url: https://avatars.githubusercontent.com/u/105607645?v=4
@@ -2177,6 +2171,11 @@ approvers:
       - specs-triagers
     html_url: https://github.com/mtwo
     avatar_url: https://avatars.githubusercontent.com/u/1144235?v=4
+  - name: mviitane
+    teams:
+      - demo-approvers
+    html_url: https://github.com/mviitane
+    avatar_url: https://avatars.githubusercontent.com/u/74129181?v=4
   - name: my-git9
     teams:
       - docs-zh-approvers
@@ -2190,7 +2189,6 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/30917104?v=4
   - name: nirga
     teams:
-      - opentelemetry-python-contrib-approvers
       - semconv-genai-approvers
     html_url: https://github.com/nirga
     avatar_url: https://avatars.githubusercontent.com/u/4224692?v=4
@@ -2803,9 +2801,6 @@ members:
   - name: cuichenli
     html_url: https://github.com/cuichenli
     avatar_url: https://avatars.githubusercontent.com/u/29245119?v=4
-  - name: cyrille-leclerc
-    html_url: https://github.com/cyrille-leclerc
-    avatar_url: https://avatars.githubusercontent.com/u/459691?v=4
   - name: dao-jun
     html_url: https://github.com/dao-jun
     avatar_url: https://avatars.githubusercontent.com/u/21362791?v=4

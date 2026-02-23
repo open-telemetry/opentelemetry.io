@@ -22,7 +22,7 @@ OpenTelemetry for [Observability](/docs/concepts/observability-primer/).
 ## Adding your organization as an adopter {#how-to-add}
 
 To have your organization listed, submit a PR with an entry added to the
-[adopters list]. The entry should include the following:
+[adopters list][]. The entry should include the following:
 
 - Link to a blog post or other resource that describes how your organization
   makes use of OpenTelemetry

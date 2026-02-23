@@ -5,6 +5,7 @@ language: ruby
 tags:
   - ruby
   - instrumentation
+  - dalli
 license: Apache 2.0
 description: Dalli instrumentation for Ruby.
 authors:
