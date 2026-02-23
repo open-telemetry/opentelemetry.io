@@ -20,8 +20,8 @@ jobs:
     name: Update approval labels
     runs-on: ubuntu-latest
     if: >-
-      github.repository_owner == 'open-telemetry' &&
-      (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success')
+      github.repository_owner == 'open-telemetry' && (github.event_name !=
+      'workflow_run' || github.event.workflow_run.conclusion == 'success')
     permissions:
       actions: read
       contents: read
