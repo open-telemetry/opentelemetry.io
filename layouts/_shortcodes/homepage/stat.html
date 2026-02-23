@@ -1,0 +1,41 @@
+{{ $type := .Get "type" -}}
+{{ $label := .Get "label" -}}
+{{ $url := .Get "url" -}}
+{{ $number := .Get "number" -}}
+
+{{- if $type -}}
+  {{- if eq $type "languages" -}}
+    {{- $languageDirs := readDir "content/en/docs/languages" -}}
+    {{- $count := 0 -}}
+    {{- range $languageDirs -}}
+      {{- if and .IsDir (not (eq .Name "_includes")) (not (eq .Name "other")) (not (eq .Name "sdk-configuration")) -}}
+        {{- $count = add $count 1 -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $number = printf "%d+" $count -}}
+  {{- else if eq $type "vendors" -}}
+    {{- $vendors := site.Data.ecosystem.vendors -}}
+    {{- $number = printf "%d+" (len $vendors) -}}
+  {{- else if eq $type "registry" -}}
+    {{- $registryFiles := readDir "data/registry" -}}
+    {{- $count := 0 -}}
+    {{- range $registryFiles -}}
+      {{- if and (not .IsDir) (or (strings.HasSuffix .Name ".yml") (strings.HasSuffix .Name ".yaml")) -}}
+        {{- $count = add $count 1 -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $number = printf "%d+" $count -}}
+  {{- else if eq $type "collector" -}}
+    {{- $number = "200+" -}}
+  {{- end -}}
+{{- end -}}
+
+<div class="ecosystem-stat">
+  <div class="ecosystem-stat__number">
+    {{- with $url }}<a href="{{ . }}">{{ end -}}
+    {{ $number }}
+    {{- with $url }}</a>{{ end -}}
+  </div>
+  <div class="ecosystem-stat__label">{{ $label }}</div>
+</div>
+

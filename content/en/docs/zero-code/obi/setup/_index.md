@@ -7,8 +7,8 @@ weight: 10
 
 There are different options to set up and run OBI:
 
+- [Set up OBI on Kubernetes with Helm](kubernetes-helm/)
 - [Set up OBI on Kubernetes](kubernetes/)
-<!-- - [Set up OBI on Kubernetes with Helm](kubernetes-helm/) -->
 - [Set up OBI on Docker](docker/)
 - [Set up OBI as a standalone process](standalone/)
 

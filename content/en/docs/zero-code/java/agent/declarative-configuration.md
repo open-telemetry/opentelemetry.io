@@ -92,7 +92,7 @@ configuration to declarative configuration, use the following rules:
    section below.
 3. Otherwise, the option most likely belongs to the SDK configuration. Find the
    right section in the
-   [migration config](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml).
+   [migration config](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-migration-config.yaml).
    If you have a system property like `otel.bsp.schedule.delay`, then look for
    the corresponding environment variable `OTEL_BSP_SCHEDULE_DELAY` in the
    migration config.

@@ -116,8 +116,8 @@ resource:
 
 > [!NOTE] Internal telemetry configuration changes
 >
-> As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
-> is ignored. In earlier versions, it could be configured with:
+> As of Collector [v0.123.0][], the `service::telemetry::metrics::address`
+> setting is ignored. In earlier versions, it could be configured with:
 >
 > ```yaml
 > service:
@@ -176,7 +176,7 @@ service:
 You can also use `views` to update the resulting aggregation, attributes, and
 cardinality limits. For the full list of options, see the examples in the
 OpenTelemetry Configuration schema
-[repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/f4e9046682d4386ea533ef7ba6ad30a5ce4451b4/examples/kitchen-sink.yaml#L440).
+[repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/View_kitchen_sink.yaml).
 
 ### Configure internal logs
 
@@ -260,7 +260,7 @@ See the [example configuration][kitchen-sink-config] for additional options.
 Note that the `tracer_provider` section there corresponds to `traces` here.
 
 [kitchen-sink-config]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml
 
 ## Types of internal telemetry
 
@@ -401,8 +401,8 @@ files in the repository.
 
 > [!NOTE] Batch processor metrics level changes
 >
-> In Collector [v0.99.0], all batch processor metrics were upgraded from `basic`
-> to `normal` (current level), except for
+> In Collector [v0.99.0][], all batch processor metrics were upgraded from
+> `basic` to `normal` (current level), except for
 > `otelcol_processor_batch_batch_send_size_bytes`, which has been `detailed`
 > since its introduction. Note however that these metrics were inadvertently
 > reverted to `basic` from v0.109.0 to v0.121.0.

@@ -25,7 +25,7 @@ the OpenTelemetry unconference that we
 
 ## What is OTel Unplugged?
 
-OTel Unplugged is an OpenTelemetry [unconference] and project roadmapping
+OTel Unplugged is an OpenTelemetry [unconference][] and project roadmapping
 session. An unconference is like a conference, only instead of a speaker track,
 we have a series of breakout sessions where attendees get to pick the topics. If
 you are an end user, this is a great opportunity to connect with maintainers and

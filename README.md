@@ -1,4 +1,5 @@
 <!-- cSpell:ignore Chalin Ferri Benedetti Hrabusa jparsana -->
+<!-- markdownlint-disable no-otel-io-external-urls -->
 
 # <img src="https://opentelemetry.io/img/logos/opentelemetry-logo-nav.png" alt="OTel logo" width="45"> OpenTelemetry.io
 
@@ -24,7 +25,7 @@ missing [let us know][].
 For guidance on how to write and submit a blog post, see
 [Submit a blog post](https://opentelemetry.io/docs/contributing/blog/).
 
-### Add a project to the OpenTelemetry [Registry]
+### Add a project to the OpenTelemetry [Registry][]
 
 For details on how to add a project to the OpenTelemetry Registry, see [Adding
 to the registry][].
@@ -57,7 +58,7 @@ Here is a list of community roles with current and previous members:
 
 ### Maintainers
 
-These are the members of [@open-telemetry/docs-maintainers]:
+These are the members of [@open-telemetry/docs-maintainers][]:
 
 - [Austin Parker](https://github.com/austinlparker), Honeycomb
 - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
@@ -72,7 +73,7 @@ For more information about the maintainer role, see the
 
 ### Approvers
 
-These are the members of [@open-telemetry/docs-approvers]:
+These are the members of [@open-telemetry/docs-approvers][]:
 
 - [Jay DeLuca](https://github.com/jaydeluca), Grafana Labs
 - [Marylia Gutierrez](https://github.com/maryliag), Grafana Labs
@@ -82,11 +83,10 @@ For more information about the approver role, see the
 
 ### Triagers
 
-These are the members of [@open-telemetry/docs-triagers]:
+These are the members of [@open-telemetry/docs-triagers][]:
 
 - [Emídio Neto](https://github.com/emdneto)
 - [Ezzio Moreira](https://github.com/EzzioMoreira)
-- [Kazunori Otani](https://github.com/katzchang), Splunk
 - [Masaki Sugimoto](https://github.com/Msksgm), Henry, Inc.
 - [Michael Yao](https://github.com/windsonsea), DaoCloud
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), AWS
@@ -112,6 +112,13 @@ For more information about the emeritus role, see the
 For more information about the emeritus role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
 
+### Emeritus triagers
+
+- [Kazunori Otani](https://github.com/katzchang)
+
+For more information about the emeritus role, see the
+[community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
+
 Learn more about roles in the [community repository][]. Thanks to [all who have
 already contributed][contributors]!
 
@@ -125,6 +132,8 @@ already contributed][contributors]!
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [@open-telemetry/docs-approvers]:
   https://github.com/orgs/open-telemetry/teams/docs-approvers
+[@open-telemetry/docs-triagers]:
+  https://github.com/orgs/open-telemetry/teams/docs-triagers
 [@open-telemetry/docs-maintainers]:
   https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [community repository]:

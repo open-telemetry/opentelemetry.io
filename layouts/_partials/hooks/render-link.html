@@ -1,0 +1,124 @@
+{{/*
+
+  Standard render-link resolution and rendering, and we also handle "repo paths".
+  "Repo paths" are (GitHub) repo-relative paths that identify target files by
+  their file names, such as:
+
+  - README.md
+  - ./non-normative/examples-llm-calls.md
+  - /docs/gen-ai/gen-ai-spans.md#recording-content-on-attributes
+
+  Params:
+    .ctx       - the render hook context; it provides .Destination, .PageInner,
+                 .Title, .Text
+    .repoPaths - if true, do extra processing to resolve repo paths, in particular:
+                 first rename README.md to _index.md
+
+  The link resolution code is based on Hugo's default render-link hook:
+  https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_markup/render-link.html
+
+  cSpell:ignore chalin jmooring
+*/ -}}
+
+{{ $repoPaths := .repoPaths -}}
+{{ with .ctx -}}
+
+{{/* Implementation note:
+
+  The if-then code shown below in this comment was added by @jmooring via
+  https://github.com/gohugoio/hugo/pull/12087 to ensure that fragment links
+  resolve correctly no matter the context (such as text appearing in page
+  summaries). I (@chalin) prefer not resolving page-local fragment links in that
+  way. In fact, my preference is to leave each relative path as it is. If ever
+  this becomes a problem, we can revisit this.
+
+  --------------------------------
+  {{- if strings.HasPrefix $u.String "#" -}}
+    {{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
+  --------------------------------
+
+  */ -}}
+
+{{ $u := urls.Parse .Destination -}}
+{{ $href := $u.String -}}
+
+{{ $path := "" -}}
+{{ $resolve := false -}}
+
+{{ if $repoPaths -}}
+
+  {{ if and (not $u.IsAbs) (not (hasPrefix $href "#")) -}}
+    {{ $resolve = true -}}
+    {{ $path = replace $u.Path "README.md" "_index.md" -}}
+  {{ end -}}
+
+{{ else -}}
+
+  {{/* Why test the truthiness of `$href` in the if condition below? Because
+    `$u.String` can be empty when .Destination is just "#". */ -}}
+
+  {{ if not (hasPrefix .Destination "/") -}}
+    {{/* Relative path: leave as is */ -}}
+  {{ else if and $href (not $u.IsAbs) -}}
+    {{ $resolve = true -}}
+
+    {{/* Why trim the `./` prefix from `$u.Path` below? Resource Get requires a
+         clean path w/o the `./` prefix, otherwise it won't find page-bundle local
+         resources. Ref: https://github.com/gohugoio/hugo/pull/12515. In our case
+         it's a no-op because we leave relative paths as is. */ -}}
+
+    {{ $path = strings.TrimPrefix "./" $u.Path -}}
+  {{ end -}}
+
+{{ end -}}
+
+{{ if $resolve -}}
+  {{ with or
+    (.PageInner.GetPage $path)
+    (.PageInner.Resources.Get $path)
+    (resources.Get $path)
+  -}}
+
+    {{ $href = .RelPermalink -}}
+    {{ with $u.RawQuery }}{{ $href = printf "%s?%s" $href . }}{{ end -}}
+    {{ with $u.Fragment }}{{ $href = printf "%s#%s" $href . }}{{ end -}}
+
+  {{ else -}}
+
+    {{ if $repoPaths -}}
+      {{ if hasSuffix $path ".md" -}}
+        {{ warnf "File %s: cannot resolve repo-path link '%s'"
+            .Page.File.Filename $href -}}
+      {{ else -}}
+        {{/* For `./` prefixed resource paths in non-index pages, prepend an
+          extra `.` so that `./file` becomes `../file`. This compensates for
+          Hugo rendering `page.md` as `page/index.html` -- the extra level of
+          nesting means relative sibling references need to go up one. */ -}}
+        {{ if and
+              (hasPrefix $href "./")
+              (not (hasSuffix .Page.File.Filename "_index.md"))
+              (not (hasSuffix .Page.File.Filename "README.md"))
+        -}}
+          {{ $href = add "." $href -}}
+        {{ end -}}
+      {{ end -}}
+    {{ end -}}
+
+  {{ end -}}
+{{ end -}}
+
+{{/* Until Hugo supports hook params (https://github.com/gohugoio/hugo/issues/6670),
+    external-icon suppression is via "hk-no-external-icon" in .text. */ -}}
+
+{{ $startsWithHttp := hasPrefix $u.Scheme "http" -}}
+<a href="{{ $href }}"
+  {{- with .Title}} title="{{ . }}"{{ end -}}
+  {{ if $startsWithHttp }} target="_blank" rel="noopener"
+    {{- $noExternalIcon := in .Text "hk-no-external-icon" -}}
+    {{ if not $noExternalIcon }} class="external-link"{{ end -}}
+  {{ end -}}
+>
+  {{- .Text -}}
+</a>
+
+{{- end -}}

@@ -1,4 +1,3 @@
-# cSpell:ignore textlintrc
 # For settings, see
 # https://www.streetsidesoftware.com/vscode-spell-checker/docs/configuration/
 version: '0.2'
@@ -75,15 +74,20 @@ dictionaries:
   - companies
 words:
   # Valid words across all locales, in particular for Hugo code keywords,
-  # and proper names
+  # and proper names.
+  #
+  # WARNING: the list below gets sorted by CI scripts. Any comment lines
+  # will be pushed to the top here.
   - attrlink
   - Crossplane
   - crosspost
+  - desaturate
   - Docsy
   - errorf
   - Goldmark
   - htmltest
   - jsonify
+  - lfasiallc
   - Loffay
   - logback
   - Mancuso
@@ -98,6 +102,7 @@ words:
   - Powerjob
   - refcache
   - submatch
+  - textlintrc
   - tracestate
   - UpDown
   - Valkey

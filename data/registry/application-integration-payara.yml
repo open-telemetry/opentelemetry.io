@@ -1,0 +1,20 @@
+# cSpell:ignore payara
+title: Payara Platform
+registryType: application integration
+language: java
+tags:
+  - payara
+  - java
+  - application-server
+license: EPL-2.0
+description:
+  Payara Platform natively supports OpenTelemetry tracing with configurable span
+  conventions, OTLP export settings, and manual tracing APIs.
+authors:
+  - name: Payara Authors
+    url: https://www.payara.fish/
+urls:
+  website: https://www.payara.fish/
+  docs: https://docs.payara.fish/community/docs/Technical%20Documentation/MicroProfile/OpenTelemetry%20and%20OpenTracing.html
+createdAt: '2026-02-19'
+isNative: true

@@ -1,7 +1,7 @@
 ---
 title: Security
 cascade:
-  collector_vers: 0.143.0
+  collector_vers: 0.146.1
 weight: 970
 ---
 
