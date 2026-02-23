@@ -1,0 +1,25 @@
+name: PR review trigger
+
+on:
+  pull_request_review:
+    types:
+      - submitted
+      - dismissed
+
+jobs:
+  save-pr-number:
+    name: Save PR number
+    runs-on: ubuntu-latest
+    if: >-
+      github.repository_owner == 'open-telemetry' && github.event.review.state
+      != 'commented'
+    steps:
+      - name: Save PR number
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: echo "$PR_NUMBER" > pr-number.txt
+      - uses: actions/upload-artifact@v6
+        with:
+          name: pr-number
+          path: pr-number.txt
+          retention-days: 1

@@ -22,7 +22,7 @@ Ensure that you have the following installed locally:
 
 ## Example Application
 
-The following example uses a basic [Spring Boot] application. You can use
+The following example uses a basic [Spring Boot][] application. You can use
 another web framework, such as Apache Wicket or Play. For a complete list of
 libraries and supported frameworks, consult the
 [registry](/ecosystem/registry/?component=instrumentation&language=java).
@@ -248,10 +248,10 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 
 For more:
 
-- Run this example with another [exporter] for telemetry data.
+- Run this example with another [exporter][] for telemetry data.
 - Try [zero-code instrumentation](/docs/zero-code/java/agent/) on one of your
   own apps.
-- For light-weight customized telemetry, try [annotations].
+- For light-weight customized telemetry, try [annotations][].
 - Learn about [manual instrumentation][] and try out more
   [examples](../examples/).
 - Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes Java
