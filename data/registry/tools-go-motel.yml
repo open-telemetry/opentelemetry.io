@@ -17,7 +17,7 @@ description: |
   architecture and motel produces faithful telemetry without requiring live
   services. Import real traces to reverse-engineer topologies, simulate failures
   and latency spikes with time-windowed scenarios, and choose from traffic
-  patterns including diurnal, Poisson, and bursty.
+  patterns.
 authors:
   - name: Andrew Hodgson
     url: https://github.com/andrewh
