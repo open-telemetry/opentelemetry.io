@@ -9,9 +9,9 @@ cSpell:ignore: bpftool PERFMON
 ---
 
 Starting with version v0.5.0, OBI can run as a receiver component within the
-[OpenTelemetry Collector](/docs/collector). This integration enables you to leverage the
-Collector's powerful processing pipeline while benefiting from OBI's zero-code
-eBPF instrumentation.
+[OpenTelemetry Collector](/docs/collector). This integration enables you to
+leverage the Collector's powerful processing pipeline while benefiting from
+OBI's zero-code eBPF instrumentation.
 
 ## Overview
 
@@ -105,8 +105,11 @@ don't have OCB installed, see the
 
 - [Go](https://go.dev) 1.25 or later
 - [OCB](/docs/collector/extend/ocb/) installed and available on your PATH
-- A local checkout of the [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation) repository at v0.5.0 or later
-- [Docker](https://docs.docker.com/get-started/get-docker/) (for generating eBPF files) or a C compiler, clang, and eBPF headers
+- A local checkout of the
+  [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation)
+  repository at v0.5.0 or later
+- [Docker](https://docs.docker.com/get-started/get-docker/) (for generating eBPF
+  files) or a C compiler, clang, and eBPF headers
 
 **Build Steps:**
 
