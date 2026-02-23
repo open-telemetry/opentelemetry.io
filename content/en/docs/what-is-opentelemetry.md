@@ -8,16 +8,16 @@ cSpell:ignore: youtube
 
 OpenTelemetry is:
 
-- An **[observability] framework and toolkit** designed to facilitate the
+- An **[observability][] framework and toolkit** designed to facilitate the
   - [Generation][instr]
   - Export
   - [Collection](../concepts/components/#collector)
 
-  of [telemetry data][] such as [traces], [metrics], and [logs].
+  of [telemetry data][] such as [traces][], [metrics][], and [logs][].
 
 - **Open source**, as well as **vendor- and tool-agnostic**, meaning that it can
   be used with a broad variety of observability backends, including open source
-  tools like [Jaeger] and [Prometheus], as well as commercial offerings.
+  tools like [Jaeger][] and [Prometheus][], as well as commercial offerings.
   OpenTelemetry is **not** an observability backend itself.
 
 A major goal of OpenTelemetry is to enable easy instrumentation of your
@@ -36,20 +36,20 @@ For more videos in this series and additional resources, see
 
 ## What is observability?
 
-[Observability] is the ability to understand the internal state of a system by
+[Observability][] is the ability to understand the internal state of a system by
 examining its outputs. In the context of software, this means being able to
 understand the internal state of a system by examining its telemetry data, which
 includes traces, metrics, and logs.
 
 To make a system observable, it must be [instrumented][instr]. That is, the code
-must emit [traces], [metrics], or [logs]. The instrumented data must then be
-sent to an observability backend.
+must emit [traces][], [metrics][], or [logs][]. The instrumented data must then
+be sent to an observability backend.
 
 ## Why OpenTelemetry?
 
 With the rise of cloud computing, microservices architectures, and increasingly
 complex business requirements, the need for software and infrastructure
-[observability] is greater than ever.
+[observability][] is greater than ever.
 
 OpenTelemetry satisfies the need for observability while following two key
 principles:
@@ -114,7 +114,7 @@ designed to make it possible at nearly every level.
 ## History
 
 OpenTelemetry is a [Cloud Native Computing Foundation][] (CNCF) project that is
-the result of a [merger] between two prior projects,
+the result of a [merger][] between two prior projects,
 [OpenTracing](https://opentracing.io) and [OpenCensus](https://opencensus.io).
 Both of these projects were created to solve the same problem: the lack of a
 standard for how to instrument code and send telemetry data to an Observability
@@ -132,7 +132,7 @@ migrate to OpenTelemetry in the [Migration guide](../migration/).
 
 - [Getting started](../getting-started/) &mdash; jump right in!
 - Learn about [OpenTelemetry concepts](../concepts/).
-- [Watch videos][] from the [OTel for beginners][] or other [playlists].
+- [Watch videos][] from the [OTel for beginners][] or other [playlists][].
 - Sign up for [training](/training), including the **free course**
   [Getting started with OpenTelemetry](/training/#courses).
 

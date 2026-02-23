@@ -10,8 +10,6 @@ show_banner: true
 default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
 ---
 
-<div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
-
 {{% blocks/cover image_anchor="top" height="max" color="primary" %}}
 
 <!-- prettier-ignore -->
@@ -63,8 +61,8 @@ depois encaminhe-os para uma variedade de ferramentas de análise.
 
 {{% blocks/feature icon="fas fa-magic" title="Instrumentação de Fácil Integração"%}}
 
-O OpenTelemetry é [integrável] com diversos frameworks e bibliotecas populares,
-e suporta [instrumentação] _manual e sem código_.
+O OpenTelemetry é [integrável][] com diversos frameworks e bibliotecas
+populares, e suporta [instrumentação][] _manual e sem código_.
 
 [instrumentação]: /docs/concepts/instrumentation/
 [integrável]: /ecosystem/integrations/
@@ -73,8 +71,8 @@ e suporta [instrumentação] _manual e sem código_.
 
 {{% blocks/feature icon="fab fa-github" title="Open Source, Agnóstico a Fornecedor" %}}
 
-100% Gratuito e Open Source, o OpenTelemetry é [adotado] e apoiado por [líderes
-da indústria] no ecossistema da observabilidade.
+100% Gratuito e Open Source, o OpenTelemetry é [adotado][] e apoiado por
+[líderes da indústria][] no ecossistema da observabilidade.
 
 [adotado]: /ecosystem/adopters/
 [líderes da indústria]: /ecosystem/vendors/

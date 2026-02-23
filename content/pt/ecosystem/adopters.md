@@ -1,7 +1,7 @@
 ---
 title: Adotantes
 description: Organizações que usam OpenTelemetry
-default_lang_commit: 379d6a08472e421fda5d1aeb9246796371e7bb84
+default_lang_commit: 379d6a08472e421fda5d1aeb9246796371e7bb84 # patched
 ---
 
 A missão do OpenTelemetry é possibilitar uma observabilidade eficaz para todos
@@ -25,7 +25,7 @@ pode tanto [enviar um PR](#how-to-add) ou
 ## Adicionando sua organização como adotante {#how-to-add}
 
 Para que sua organização seja listada, envie um PR com uma entrada adicionada à
-[lista de adotantes]. A entrada deve incluir:
+[lista de adotantes][]. A entrada deve incluir:
 
 - Link para uma publicação em blog ou outro recurso que descreva como sua
   organização utiliza o OpenTelemetry
