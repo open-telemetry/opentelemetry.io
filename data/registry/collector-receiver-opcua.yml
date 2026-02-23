@@ -1,4 +1,4 @@
-# cSpell:ignore opcua
+# cSpell:ignore Brüggemann opcua
 title: OPC UA Log Receiver
 registryType: receiver
 language: collector
