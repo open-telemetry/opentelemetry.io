@@ -53,8 +53,8 @@ you launch a collector it will automatically start receiving telemetry.
 
 ## Collector security
 
-Follow best practices to make sure your collectors are [hosted] and [configured]
-securely.
+Follow best practices to make sure your collectors are [hosted][] and
+[configured][] securely.
 
 ## Status
 
