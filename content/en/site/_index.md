@@ -27,8 +27,8 @@ Tentatively planned content organization:
   choices, theme related decisions, and other design-level artifacts.
 - **Implementation** — Code-level structure and conventions, Hugo/Docsy
   templates, SCSS/JS customizations, patches, and internal shims.
-- **Build** — Tooling, local development setup, CI/CD workflows, deployment
-  environments, and automation details.
+- [**Build**](./build/) — Tooling, local development setup, CI/CD workflows,
+  deployment environments, and automation details.
 - **Quality** — Link checking, accessibility standards, tests, review practices,
   and other quality-related processes.
 - **Roadmap** — Milestones, backlog, priorities, technical debt, and
