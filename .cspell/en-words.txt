@@ -114,6 +114,7 @@ Rexed
 runbook
 runbooks
 Rynn
+Safonova
 semconv
 servlet
 Severin

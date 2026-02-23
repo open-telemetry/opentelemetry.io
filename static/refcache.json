@@ -6779,6 +6779,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:52:44.900745758Z"
   },
+  "https://github.com/olgasafonova": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-23T19:31:59.063605199Z"
+  },
+  "https://github.com/olgasafonova/mcp-otel-go": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-23T19:31:58.708405006Z"
+  },
   "https://github.com/onurtemizkan": {
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:48:25.239273547Z"
@@ -18130,6 +18138,10 @@
   "https://pkg.go.dev/github.com/mitchellh/mapstructure": {
     "StatusCode": 200,
     "LastSeen": "2026-02-13T09:52:00.673511168Z"
+  },
+  "https://pkg.go.dev/github.com/olgasafonova/mcp-otel-go/mcpotel": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-23T19:32:00.352985133Z"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/cmd/opampsupervisor": {
     "StatusCode": 200,
