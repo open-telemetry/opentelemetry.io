@@ -27,7 +27,7 @@ jobs:
           app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
           # this is needed to do the rebase below
           fetch-depth: 0
