@@ -31,7 +31,7 @@ Slack handle: @Reese Lee [LinkedIn](https://www.linkedin.com/in/reese-lee/)
 
 ![Photo of Reese engaged in a jiu-jitsu leg entanglement](reese-lee.jpg)
 
-I remember thinking How cool! when Austin Parker was announced as the
+I remember thinking "How cool!" when Austin Parker was announced as the
 [first OTel Community Manager back in late 2022](/blog/2022/announcing-community-manager/);
 by that time, I had been involved in the project for almost a year, having
 joined New Relic’s OpenTelemetry engineering team in November 2021. I didn’t
