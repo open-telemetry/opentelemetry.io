@@ -58,7 +58,7 @@
     "check:i18n": "scripts/check-i18n.sh",
     "check:links:internal": "npm run _check:links:internal",
     "check:links": "npm run _check:links",
-    "check:markdown": "npx markdownlint-cli2 '**/*.md' '!tmp/**/*.md'",
+    "check:markdown": "npx markdownlint-cli2 '*.md' '{content,projects}/**/*.md'",
     "check:markdown:specs": "npx markdownlint-cli2 'tmp/(otel|otlp|semconv)/**/*.md'",
     "check:registry": "npm run _check:registry -- ",
     "check:spelling": "npx cspell --no-progress -c .cspell.yml content data 'layouts/**/*.md'",
