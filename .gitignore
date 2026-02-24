@@ -26,9 +26,12 @@ assets/jsconfig.json
 /.vscode/**
 
 # WebStorm
-/.idea/**
+**/.idea/**
 
 .dart_tool
 pubspec.lock
+
+*.pyc
+*tmp_repos/
 
 # cSpell:ignore pubspec

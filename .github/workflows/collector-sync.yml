@@ -1,0 +1,57 @@
+name: Sync Collector component docs
+
+on:
+  workflow_dispatch:
+  schedule:
+    # At 03:00 UTC, every day
+    - cron: 0 3 * * *
+
+# Declare default permissions as read only.
+permissions: read-all
+
+jobs:
+  sync-collector-docs:
+    name: Sync Collector component documentation
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: write
+    # Only run on official repo, not forks
+    if: github.repository == 'open-telemetry/opentelemetry.io'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0  # Full history for git operations
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Use CLA approved github bot
+        run: |
+          git config user.name otelbot
+          git config user.email 197425009+otelbot@users.noreply.github.com
+
+      - name: Create otelbot GitHub App token
+        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
+      - name: Sync collector documentation
+        run: bash .github/scripts/collector-sync.sh
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+          BRANCH_OWNER: open-telemetry
+          PR_BASE_OWNER: open-telemetry
+          GITHUB_REPOSITORY: open-telemetry/opentelemetry.io

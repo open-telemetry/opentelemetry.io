@@ -1,0 +1,13 @@
+distribution: contrib
+version: v0.141.0-snapshot
+repository: opentelemetry-collector-contrib
+component_type: extension
+components:
+  - name: ackextension
+    metadata:
+      status:
+        distributions:
+          - contrib
+        stability:
+          alpha:
+            - extension
