@@ -107,7 +107,7 @@ circuit. Cheers to amazing months ahead!
 
 ## Julia Furst Morgado, Associate Community Manager
 
-Slack handle: @juliafmorgado [Socials](http://bio.site/juliafmorgado)
+Slack handle: @juliafmorgado [Socials](https://bio.site/juliafmorgado)
 
 ![Photo of Julia tandem skydiving over a deserty area](julia-furst-morgado.png)
 
