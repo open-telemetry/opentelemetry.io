@@ -21331,6 +21331,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-19T09:52:44.00352514Z"
   },
+  "https://www.docsy.dev/docs/content/adding-content/#alerts": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-24T14:18:56.088546355Z"
+  },
   "https://www.docsy.dev/docs/content/shortcodes/#alert": {
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:52:26.921677024Z"
