@@ -205,7 +205,7 @@ You can also join us:
 Let's make 2026 another amazing year for [opentelemetry.io](/)!
 
 [redesign]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/9bd13bd/projects/landing-page-redesign.md?from_branch=main
+  https://github.com/open-telemetry/opentelemetry.io/blob/9bd13bd7b3ecd76093fa980c44dc10b5611b4ee0/projects/landing-page-redesign.md?from_branch=main
 [refactoring]: https://github.com/orgs/open-telemetry/projects/174/views/3
 [Comms meetings]:
   https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY

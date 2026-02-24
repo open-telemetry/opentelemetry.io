@@ -712,6 +712,7 @@ maintainers:
       - go-instrumentation-approvers
       - go-instrumentation-triagers
       - injector-approvers
+      - injector-maintainers
     html_url: https://github.com/grcevski
     avatar_url: https://avatars.githubusercontent.com/u/6207777?v=4
   - name: gshriver
@@ -745,6 +746,7 @@ maintainers:
       - configuration-approvers
       - configuration-maintainers
       - injector-approvers
+      - injector-maintainers
       - java-approvers
       - java-contrib-approvers
       - java-contrib-maintainers
