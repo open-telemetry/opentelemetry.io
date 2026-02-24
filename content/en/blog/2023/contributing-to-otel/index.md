@@ -137,7 +137,7 @@ You can check out an example of one of my contributions
 [Integrate with existing metrics code](https://github.com/open-telemetry/opentelemetry-demo/pull/432).
 
 Learn more about how to
-[contribute to the OTel Demo](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CONTRIBUTING.md).
+[contribute to the OTel Demo](https://github.com/open-telemetry/opentelemetry-demo/blob/59c9b2ca32be41e464fedc1eed6dcf4ad1503c3d/CONTRIBUTING.md?from_branch=main).
 
 ### Join a Special Interest Group
 
