@@ -95,7 +95,7 @@ facts from the observability perspective:
   started in the Knative activator service with spans created in the workload
   and further link it with outbound spans - e.g. to calls to the second service.
 - The workload is using instrumented
-  [Cloudevents client/SDK](https://github.com/cloudevents/sdk-go/tree/15a1151/observability/opentelemetry/v2?from_branch=main) -
+  [Cloudevents client/SDK](https://github.com/cloudevents/sdk-go/tree/15a1151928556770f2a76faa5547278545fce8cb/observability/opentelemetry/v2?from_branch=main) -
   similarly to the previous point it allows us to continue the trace in the
   outbound request (in this scenario to the second service).
 
@@ -209,6 +209,6 @@ instrumentation libraries explicitly in the code or even
 - [Cloud events](https://cloudevents.io)
 - [Zipkin B3](https://github.com/openzipkin/b3-propagation)
 - [W3C Trace-Context](https://www.w3.org/TR/trace-context/)
-- [OpenTelemetry instrumentation for Cloudevents Golang SDK](https://github.com/cloudevents/sdk-go/tree/15a1151/observability/opentelemetry/v2?from_branch=main)
+- [OpenTelemetry instrumentation for Cloudevents Golang SDK](https://github.com/cloudevents/sdk-go/tree/15a1151928556770f2a76faa5547278545fce8cb/observability/opentelemetry/v2?from_branch=main)
 - [Cloudevents OpenTelemetry attributes](/docs/specs/semconv/cloudevents/cloudevents-spans/)
 - [Knative tracing demo](https://github.com/pavolloffay/knative-tracing)

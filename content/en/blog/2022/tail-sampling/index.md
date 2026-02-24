@@ -60,7 +60,7 @@ only be interested in traces with errors or latency for debugging.
 
 To use tail sampling in OpenTelemetry, you need to implement a component called
 the
-[tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d425/processor/tailsamplingprocessor?from_branch=main).
+[tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/tailsamplingprocessor?from_branch=main).
 This component samples traces based on a set of policies that you can choose
 from and define. **First, to ensure that you’re capturing all spans, use either
 the default sampler or the AlwaysOn sampler in your SDKs.**
@@ -192,7 +192,7 @@ which the collector is deployed in an agent-collector configuration. You also
 need each collector to have a full view of the traces it receives. This means
 that all spans with the same trace ID need to go to the same collector instance,
 or you’ll end up with fragmented traces. You can use a
-[load-balancing exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/8d0362c/exporter/loadbalancingexporter/README.md?from_branch=main)
+[load-balancing exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/8d0362c4a63f6b4e6f106f007977b6d75e4bd272/exporter/loadbalancingexporter/README.md?from_branch=main)
 if you're running multiple instances of the agent/collector with the tail
 sampling processor. This exporter ensures that all spans with the same trace ID
 end up in the same agent/collector. But there may be additional overhead with

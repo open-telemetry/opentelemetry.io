@@ -251,7 +251,7 @@ sidecar, or when one collector as an agent report to another collector.
 - [K8sattributes processor documentation][k8sattributesprocessor]
 - [K8sattributes processor RBAC](https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/k8sattributesprocessor#hdr-RBAC)
 - [OpenTelemetry Kubernetes attributes](/docs/specs/semconv/resource/k8s)
-- [Resource detector processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/549e115/processor/resourcedetectionprocessor/README.md?from_branch=main)
+- [Resource detector processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/549e115b28292c164eb671618c0ec8b728b69d2a/processor/resourcedetectionprocessor/README.md?from_branch=main)
 
 [pr#832]: https://github.com/open-telemetry/opentelemetry-operator/pull/832
 [opentelemetry operator]:

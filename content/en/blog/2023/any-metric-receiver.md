@@ -11,9 +11,9 @@ While OpenTelemetry (OTel) is here to help you with troubleshooting and handling
 the _"unknown unknowns"_, it is also instrumental for managing route tasks like
 monitoring system metrics, like disk usage, server availability or SSL
 certificate expiration dates. This can be achieved by utilizing any one of the
-[90+ receivers](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver)
+[90+ receivers](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/944d4a82c408d58f9d8ba1a1d4783094301af0de/receiver?from_branch=main)
 available for the [OpenTelemetry Collector](/docs/collector), such as the
-[Host Metrics Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)
+[Host Metrics Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/hostmetricsreceiver?from_branch=main)
 or the [HTTP Check Receiver](/blog/2023/synthetic-testing/).
 
 But what if the available receivers don't meet your specific needs? Suppose you
@@ -24,12 +24,12 @@ but this would require proficiency in Go.
 Before embarking on this path, consider examining the available receivers more
 closely: Some of them are capable of assimilating metrics in different
 formats—like
-[Carbon](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/carbonreceiver),
-[StatsD](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/statsdreceiver),
-[InfluxDB](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/influxdbreceiver),
-[Prometheus](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver),
+[Carbon](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/944d4a82c408d58f9d8ba1a1d4783094301af0de/receiver/carbonreceiver?from_branch=main),
+[StatsD](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/statsdreceiver?from_branch=main),
+[InfluxDB](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/influxdbreceiver?from_branch=main),
+[Prometheus](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/dbdb56d285d860849323346d58c83b14c1ed6c62/receiver/prometheusreceiver?from_branch=main),
 and even
-[SNMP](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/snmpreceiver)—and
+[SNMP](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/snmpreceiver?from_branch=main)—and
 integrating them into the OpenTelemetry ecosystem. With minor tweaks to your
 shell scripts, you can use one of these receivers to achieve your objective. For
 instance, the Carbon Receiver, with its simple
@@ -145,12 +145,12 @@ $ ./otelcol --config collector-config.yml
 > [!NOTE]
 >
 > For testing, you can use the
-> [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/main/distributions/otelcol-contrib)
+> [OpenTelemetry Collector Contrib](https://github.com/open-telemetry/opentelemetry-collector-releases/tree/b590e8bc74a5aacca1236f02b10bafeb4959dd96/distributions/otelcol-contrib?from_branch=main)
 > distribution, which includes all available receivers. However, in a production
 > setting, you can
 > [construct your own Collector](/docs/collector/extend/ocb/) using the
 > OpenTelemetry Collector Builder
-> ([`ocb`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder)).
+> ([`ocb`](https://github.com/open-telemetry/opentelemetry-collector/tree/d25efc7e2f31a3ba5347d0725a22d7bed1b4015d/cmd/builder?from_branch=main)).
 > Here's a suggested configuration:
 >
 > ```yaml
@@ -184,7 +184,7 @@ transmit your metric to it:
 ```
 
 The
-[Debug Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/debugexporter)
+[Debug Exporter](https://github.com/open-telemetry/opentelemetry-collector/tree/d25efc7e2f31a3ba5347d0725a22d7bed1b4015d/exporter/debugexporter?from_branch=main)
 will display the metric on the console for you:
 
 ```log
@@ -224,7 +224,7 @@ details, like a [resource](/docs/concepts/resources/), a metric description, or
 particularly, a metric unit.
 
 However, the
-[Transform Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor)
+[Transform Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/transformprocessor?from_branch=main)
 can help you with this. By incorporating OpenTelemetry Transformation Language
 (OTTL) statements into your `collector-config.yml`, you can convert the data
 point attribute `unit` into the metric's unit:
@@ -349,7 +349,7 @@ Value: 4349619
 The Transform Processor and OTTL offer a wide range of capabilities. Learn more
 from:
 
-- [OTTL README.md](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/ottl/README.md)
+- [OTTL README.md](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/28f41fd7d231bc25c69cffc73fd7dee697793f9a/pkg/ottl/README.md?from_branch=main)
 - [OTTL Me Why Transforming Telemetry in the OpenTelemetry Collector Just Got Better](https://www.youtube.com/watch?v=uVs0oUV72CE),
   a talk by [Tyler Helmuth](https://github.com/TylerHelmuth) and
   [Evan Bradley](https://github.com/evan-bradley)
@@ -366,7 +366,7 @@ format to import metrics into OpenTelemetry, especially when the
 
 As an alternative to using the Carbon Receiver, you can also transmit a custom
 metrics using
-[OTLP JSON](https://github.com/open-telemetry/opentelemetry-proto/tree/main/examples):
+[OTLP JSON](https://github.com/open-telemetry/opentelemetry-proto/tree/b5947908941290bfa11cec2abf714e700412b5d7/examples?from_branch=main):
 
 ```shell
 #!/bin/bash

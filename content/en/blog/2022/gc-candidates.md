@@ -12,7 +12,7 @@ candidates running for one of the four available seats. We encourage all voters
 to take a moment and review all candidates, picking the one that best represents
 your interest. You can find their pictures, profile link, and descriptions on
 the
-[candidates page](https://github.com/open-telemetry/community/blob/24b30b9/elections/2022/governance-committee-candidates.md?from_branch=main),
+[candidates page](https://github.com/open-telemetry/community/blob/24b30b978af4a71066655c62dfc50a2e60101d06/elections/2022/governance-committee-candidates.md?from_branch=main),
 but here are their names:
 
 - Alolita Sharma
