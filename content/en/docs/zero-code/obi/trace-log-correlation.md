@@ -148,7 +148,7 @@ Trace-log correlation requires Linux with specific kernel features:
 
 Applications must use a logging framework configured to output JSON. Examples:
 
-{{< tabpane text=true >}} {{% tab Python %}}
+{{< tabpane text=true persist=lang >}} {{% tab header="Python" lang=python %}}
 
 ```python
 import json
@@ -170,7 +170,7 @@ handler.setFormatter(JSONFormatter())
 logger.addHandler(handler)
 ```
 
-{{% /tab %}} {{% tab "Go (using zap)" %}}
+{{% /tab %}} {{% tab header="Go (using zap)" lang=go %}}
 
 ```go
 import "go.uber.org/zap"
@@ -180,7 +180,7 @@ defer logger.Sync()
 logger.Info("Request processed", zap.Duration("duration", 125*time.Millisecond))
 ```
 
-{{% /tab %}} {{% tab "Java (using Logback)" %}}
+{{% /tab %}} {{% tab header="Java (using Logback)" lang=java %}}
 
 ```xml
 <appender name="FILE" class="ch.qos.logback.core.ConsoleAppender">
@@ -188,7 +188,7 @@ logger.Info("Request processed", zap.Duration("duration", 125*time.Millisecond))
 </appender>
 ```
 
-{{% /tab %}} {{% tab "Node.js (using pino)" %}}
+{{% /tab %}} {{% tab header="Node.js (using pino)" lang=javascript %}}
 
 ```javascript
 const pino = require('pino');
