@@ -96,7 +96,8 @@ A single condition can reference paths from different contexts:
 
 ```yaml
 trace_conditions:
-  - resource.attributes["host.name"] == "localhost" or spanevent.name == "grpc.timeout" # inferred as spanevent context
+  - resource.attributes["host.name"] == "localhost" or spanevent.name ==
+    "grpc.timeout" # inferred as spanevent context
 ```
 
 In this example, the condition is evaluated for each span event.
@@ -133,5 +134,11 @@ For more information about how context inference is evaluated, see the
 The legacy configuration format (`traces.resource`, `traces.span`, and similar
 fields) remains fully supported and backwards compatible.
 
-However, the new `*_conditions` fields offer a simpler, clearer, and more
-flexible way to configure filtering when you’re ready to adopt them.
+## Try it out
+
+The new `*_conditions` fields provide a simpler way to express filtering rules
+by removing the need to manually select execution contexts. This makes filter
+configuration easier to read, easier to maintain, and closer to the intent of
+the rule itself.
+
+We welcome your feedback, and we’d love to hear about your experience using it.
