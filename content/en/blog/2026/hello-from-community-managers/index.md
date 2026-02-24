@@ -10,7 +10,7 @@ draft: true # TODO: remove this line once your post is ready to be published
 sig: End-User SIG
 ---
 
-![Cover image showing the OTel Community Managers](Cover.png)
+![Cover image showing the OTel Community Managers](cover.png)
 
 Hi, community! We are your
 [newly appointed Community Managers](/blog/2026/new-community-managers/).
@@ -26,9 +26,6 @@ ping us directly in
 working on creating one single @ so you can easily reach all of us).
 
 ## Reese Lee, Community Manager
-
-Slack handle: @Reese Lee [LinkedIn](https://www.linkedin.com/in/reese-lee/)
-
 ![Photo of Reese engaged in a jiu-jitsu leg entanglement](reese-lee.jpg)
 
 I remember thinking "How cool!" when Austin Parker was announced as the
@@ -58,11 +55,10 @@ honor (along with a humbling dash of disbelief), and my goal is to do this
 wonderful community and project proud. Oh, and outside of my professional life,
 I enjoy reading sci-fi, watching horror movies, and training jiu-jitsu.
 
+Reach me on Slack at @Reese Lee, or on [LinkedIn](https://www.linkedin.com/in/reese-lee/).
+
 ## Adriana Villela, Community Manager
-
-Slack handle: @Adriana Villela [Socials](https://bio.site/adrianavillela)
-
-![Photo of Adriana taking a selfie with a capybara](adriana-villela.JPG)
+![Photo of Adriana taking a selfie with a capybara](adriana-villela.jpg)
 
 If I were to tell my younger teenage self what I do for a living now, she
 would’ve definitely been shocked. I got an early start in computers. BASIC was
@@ -105,10 +101,9 @@ very much looking forward to continuing to work with Reese, my OTel ride-or-die,
 and with Julia, whom I’ve known for the last few years from the CNCF Ambassadors
 circuit. Cheers to amazing months ahead!
 
+Reach me on Slack at @Adriana Villela, or via one of my [socials](https://bio.site/adrianavillela).
+
 ## Julia Furst Morgado, Associate Community Manager
-
-Slack handle: @juliafmorgado [Socials](https://bio.site/juliafmorgado)
-
 ![Photo of Julia tandem skydiving over a deserty area](julia-furst-morgado.png)
 
 In 2022, I transitioned into tech and I became deeply involved in open source
@@ -147,3 +142,5 @@ think about all of those people, not just one type of contributor or user.
 I am truly grateful to be nominated and excited to step into this new chapter.
 This is both a responsibility and a privilege, and I am ready to continue
 building, learning, and giving back to this community!
+
+Reach me on Slack at @juliafmorgado, or via one of my [socials](https://bio.site/juliafmorgado).
