@@ -13,11 +13,11 @@ sig: End-User SIG
 ![Cover image showing the OTel Community Managers](cover.png)
 
 Hi, community! We are your
-[newly appointed Community Managers](/blog/2026/new-community-managers/).
-We’ve begun the initial transitional work behind the scenes, and we look forward
-to seeing more of you all in the very near future (KubeCon EU, anyone?). With
-great power comes great responsibility, and we want to hear from you as we look
-into expanding both the project and the community.
+[newly appointed Community Managers](/blog/2026/new-community-managers/). We’ve
+begun the initial transitional work behind the scenes, and we look forward to
+seeing more of you all in the very near future (KubeCon EU, anyone?). With great
+power comes great responsibility, and we want to hear from you as we look into
+expanding both the project and the community.
 
 In the meantime, we wanted to (re-)introduce ourselves, and invite you to
 connect with us! Feel free to find us over on CNCF’s Slack; for now, you can
@@ -26,6 +26,7 @@ ping us directly in
 working on creating one single @ so you can easily reach all of us).
 
 ## Reese Lee, Community Manager
+
 ![Photo of Reese engaged in a jiu-jitsu leg entanglement](reese-lee.jpg)
 
 I remember thinking "How cool!" when Austin Parker was announced as the
@@ -46,18 +47,20 @@ Adriana!) at various conferences, worked on the inaugural OTel Unplugged that
 took place during KubeCon NA 2022 (Detroit, Michigan) and the OTel Observatory
 at KubeCons, written blog posts, reviewed CFPs as a Program Committee member for
 multiple events, contributed to docs (my proudest to-date is still
-[this Venn diagram](/docs/concepts/sampling/) that I
-created and that was modified for the Sampling doc), interviewed contributors
-and end users, and more.
+[this Venn diagram](/docs/concepts/sampling/) that I created and that was
+modified for the Sampling doc), interviewed contributors and end users, and
+more.
 
 I take being appointed to this role with a significant amount of reverence and
 honor (along with a humbling dash of disbelief), and my goal is to do this
 wonderful community and project proud. Oh, and outside of my professional life,
 I enjoy reading sci-fi, watching horror movies, and training jiu-jitsu.
 
-Reach me on Slack at @Reese Lee, or on [LinkedIn](https://www.linkedin.com/in/reese-lee/).
+Reach me on Slack at @Reese Lee, or on
+[LinkedIn](https://www.linkedin.com/in/reese-lee/).
 
 ## Adriana Villela, Community Manager
+
 ![Photo of Adriana taking a selfie with a capybara](adriana-villela.jpg)
 
 If I were to tell my younger teenage self what I do for a living now, she
@@ -101,9 +104,11 @@ very much looking forward to continuing to work with Reese, my OTel ride-or-die,
 and with Julia, whom I’ve known for the last few years from the CNCF Ambassadors
 circuit. Cheers to amazing months ahead!
 
-Reach me on Slack at @Adriana Villela, or via one of my [socials](https://bio.site/adrianavillela).
+Reach me on Slack at @Adriana Villela, or via one of my
+[socials](https://bio.site/adrianavillela).
 
 ## Julia Furst Morgado, Associate Community Manager
+
 ![Photo of Julia tandem skydiving over a deserty area](julia-furst-morgado.png)
 
 In 2022, I transitioned into tech and I became deeply involved in open source
@@ -143,4 +148,5 @@ I am truly grateful to be nominated and excited to step into this new chapter.
 This is both a responsibility and a privilege, and I am ready to continue
 building, learning, and giving back to this community!
 
-Reach me on Slack at @juliafmorgado, or via one of my [socials](https://bio.site/juliafmorgado).
+Reach me on Slack at @juliafmorgado, or via one of my
+[socials](https://bio.site/juliafmorgado).
