@@ -1,12 +1,15 @@
 # Collector Documentation Sync
 
-Automated synchronization of OpenTelemetry Collector component documentation from the ecosystem registry to opentelemetry.io.
+Automated synchronization of OpenTelemetry Collector component documentation
+from the ecosystem registry to opentelemetry.io.
 
 ## Overview
 
 This automation:
 
-1. Clones the [opentelemetry-ecosystem-explorer](https://github.com/open-telemetry/opentelemetry-ecosystem-explorer) repository to access the collector registry
+1. Clones the
+   [opentelemetry-ecosystem-explorer](https://github.com/open-telemetry/opentelemetry-ecosystem-explorer)
+   repository to access the collector registry
 2. Reads component metadata from `ecosystem-registry/collector/`
 3. Generates markdown tables with component information
 4. Updates documentation pages in `content/en/docs/collector/components/`
@@ -52,7 +55,8 @@ npm run fix:collector-sync:lint
 
 ## Fork Testing
 
-Contributors can test the automation in their forks using `.github/workflows/collector-sync-fork.yml`.
+Contributors can test the automation in their forks using
+`.github/workflows/collector-sync-fork.yml`.
 
 **To test in a fork:**
 
