@@ -72,7 +72,6 @@ graph TD
     App[Application]
 
     subgraph Collector[OpenTelemetry Collector]
-        space[ ]
         OBI[OBI Receiver<br/>eBPF instrumentation]
         Processors[Processors<br/>sampling, filtering, enrichment]
         Exporters[Exporters<br/>multiple backends]
