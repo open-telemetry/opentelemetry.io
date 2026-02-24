@@ -37,7 +37,7 @@ cd ../.. || { echo "Error: Failed to return to repo root"; exit 1; }
 echo "Formatting documentation..."
 npm run fix:format
 
-echo "Checking links (non-blocking)..."
+#echo "Checking links..."
 npm run check:links || echo "Warning: Link check failed"
 
 # Get version info from cloned ecosystem-explorer registry
@@ -110,7 +110,6 @@ BRANCH_NAME="otelbot/collector-docs-${VERSION//\./-}"
 echo "Branch: $BRANCH_NAME"
 
 echo "Creating branch and committing changes..."
-git checkout main
 git checkout -B "$BRANCH_NAME"
 git add .
 
