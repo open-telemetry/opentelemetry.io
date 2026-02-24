@@ -96,8 +96,7 @@ A single condition can reference paths from different contexts:
 
 ```yaml
 trace_conditions:
-  - resource.attributes["host.name"] == "localhost" or spanevent.name ==
-    "grpc.timeout" # inferred as spanevent context
+  - resource.attributes["host.name"] == "localhost" or spanevent.name == "grpc.timeout" # inferred as spanevent context
 ```
 
 In this example, the condition is evaluated for each span event.
