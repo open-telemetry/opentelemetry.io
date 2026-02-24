@@ -180,7 +180,7 @@ See you in Atlanta!
 [maintainer summit]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/features-add-ons/maintainer-summit/
 [membership]:
-  https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#member
+  https://github.com/open-telemetry/community/blob/25f027532a6e9b503d6eb4dd3db0a98eb3b5f1cb/guides/contributor/membership.md?from_branch=main#member
 [obs-day-sched]:
   https://colocatedeventsna2025.sched.com/overview/type/Observability+Day
 [end user]: https://cloud-native.slack.com/archives/C01RT3MSWGZ

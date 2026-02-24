@@ -21,7 +21,7 @@ can find
 [designated attributes for reporting CI/CD pipelines](/docs/specs/semconv/registry/attributes/cicd/).
 
 This is the result of the hard work of the
-[CI/CD Observability Special Interest Group (SIG) within OpenTelemetry](https://github.com/open-telemetry/community/blob/main/projects/completed-projects/ci-cd.md).
+[CI/CD Observability Special Interest Group (SIG) within OpenTelemetry](https://github.com/open-telemetry/community/blob/514a684953f114217c7b673471969b3ddec5f3a2/projects/completed-projects/ci-cd.md?from_branch=main).
 As we accomplish this core milestone for the first phase, we thought it’d be a
 good time to share it with the world.
 
@@ -89,7 +89,7 @@ With the feedback from the Technical Oversight Committee and others within the
 CNCF, we’ve taken the path of asking the mandate to start a dedicated Working
 Group for the topic under OpenTelemetry’s Semantic Conventions SIG (SIG SemConv
 in short). With their blessing, we
-[launched the formal CI/CD Observability SIG](https://github.com/open-telemetry/community/blob/main/projects/completed-projects/ci-cd.md)
+[launched the formal CI/CD Observability SIG](https://github.com/open-telemetry/community/blob/514a684953f114217c7b673471969b3ddec5f3a2/projects/completed-projects/ci-cd.md?from_branch=main)
 to formalize our previous Slack group discussions and goals.
 
 ## OpenTelemetry’s CI/CD Observability SIG
@@ -183,7 +183,7 @@ Variable Context Propagation, which was just approved and merged. This OTEP sets
 the foundation for writing the specification.
 
 Since we’ve made progress on our initial milestones, we’ve updated the
-[CI/CD Observability SIG milestones for the remainder of 2024](https://github.com/open-telemetry/community/blob/main/projects/completed-projects/ci-cd.md).
+[CI/CD Observability SIG milestones for the remainder of 2024](https://github.com/open-telemetry/community/blob/514a684953f114217c7b673471969b3ddec5f3a2/projects/completed-projects/ci-cd.md?from_branch=main).
 Our goal is to finish out as many of the defined milestones as possible by the
 end of the year. Notably, we’re focused on:
 

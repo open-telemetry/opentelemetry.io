@@ -19,7 +19,7 @@ Exciting news: [OpenTelemetry JavaScript](/docs/languages/js/) has released [SDK
 > [Upgrade to OpenTelemetry JS SDK 2.x][migration guide].
 
 [migration guide]:
-  https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md
+  https://github.com/open-telemetry/opentelemetry-js/blob/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main
 
 ## What is JS SDK 2.x?
 
@@ -42,20 +42,20 @@ In summary:
   (from ES2017).
 - The **public interface has changed**.
   - For notes on migrating to 2.x / 0.200.x, see
-    [the upgrade guide](https://github.com/open-telemetry/opentelemetry-js/tree/main/doc/upgrade-to-2.x.md).
+    [the upgrade guide](https://github.com/open-telemetry/opentelemetry-js/tree/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main).
 
 Details:
 
-- [Node.js supported versions](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-nodejs-supported-versions)
-- [TypeScript supported versions](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-typescript-supported-versions)
-- [ES2022 compilation target](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-es2022-compilation-target)
-- [Drop `window.OTEL_*` support in browsers](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-drop-windowotel_-support-in-browsers)
-- [`@opentelemetry/resources` API changes](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-opentelemetryresources-api-changes)
-- [`@opentelemetry/core` API changes](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-opentelemetrycore-api-changes)
-- [Tracing SDK API changes](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-tracing-sdk-api-changes)
-- [`@opentelemetry/sdk-metrics` API changes](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-opentelemetrysdk-metrics-api-changes)
-- [`@opentelemetry/resources` changes for _implementors_ of Resource Detectors](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-opentelemetryresources-changes-for-implementors-of-resource-detectors)
-- [Other changes](https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/upgrade-to-2.x.md#-other-changes)
+- [Node.js supported versions](https://github.com/open-telemetry/opentelemetry-js/blob/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main#-nodejs-supported-versions)
+- [TypeScript supported versions](https://github.com/open-telemetry/opentelemetry-js/blob/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main#-typescript-supported-versions)
+- [ES2022 compilation target](https://github.com/open-telemetry/opentelemetry-js/blob/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main#-es2022-compilation-target)
+- [Drop `window.OTEL_*` support in browsers](https://github.com/open-telemetry/opentelemetry-js/blob/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main#-drop-windowotel_-support-in-browsers)
+- [`@opentelemetry/resources` API changes](https://github.com/open-telemetry/opentelemetry-js/blob/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main#-opentelemetryresources-api-changes)
+- [`@opentelemetry/core` API changes](https://github.com/open-telemetry/opentelemetry-js/blob/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main#-opentelemetrycore-api-changes)
+- [Tracing SDK API changes](https://github.com/open-telemetry/opentelemetry-js/blob/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main#-tracing-sdk-api-changes)
+- [`@opentelemetry/sdk-metrics` API changes](https://github.com/open-telemetry/opentelemetry-js/blob/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main#-opentelemetrysdk-metrics-api-changes)
+- [`@opentelemetry/resources` changes for _implementors_ of Resource Detectors](https://github.com/open-telemetry/opentelemetry-js/blob/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main#-opentelemetryresources-changes-for-implementors-of-resource-detectors)
+- [Other changes](https://github.com/open-telemetry/opentelemetry-js/blob/4636de6a16d338a418ee901ee6b685b887585c4f/doc/upgrade-to-2.x.md?from_branch=main#-other-changes)
 
 ## Why was this done?
 
@@ -82,7 +82,7 @@ For a more detailed explanation of why 2.0, see issue [#4083][].
 
 - Try out the [v2.0.0][] and [v0.200.0][] releases and provide feedback.
 - Review our
-  [contributing guide](https://github.com/open-telemetry/opentelemetry-js/blob/main/CONTRIBUTING.md)
+  [contributing guide](https://github.com/open-telemetry/opentelemetry-js/blob/2d3716cb858aa79be36bca778b0b2301b3d50748/CONTRIBUTING.md?from_branch=main)
   for details on contributing.
 - Attend our
   [SIG meetings](https://groups.google.com/a/opentelemetry.io/g/calendar-js).
