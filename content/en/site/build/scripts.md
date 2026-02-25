@@ -72,14 +72,6 @@ the [`pr-approval-labels` workflow](../ci-workflows/#pr-approval-labels).
 
 **Required env vars:** `REPO`, `PR`, `GITHUB_TOKEN`.
 
-## textlint.sh
-
-Runs textlint and converts JSON output into
-[GitHub Actions error annotations](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-an-error-message),
-which appear inline on PR diffs.
-
-Exits with code 1 if any violations are found.
-
 ## update-registry-versions.sh
 
 Auto-updates package versions in `data/registry/*.yml` by querying upstream

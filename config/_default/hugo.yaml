@@ -107,15 +107,6 @@ params:
       4.0](https://creativecommons.org/licenses/by/4.0)
     from_year: 2019
     to_year: present
-  tagline: Effective observability requires high-quality telemetry
-  sub_tagline: >-
-    **OpenTelemetry** makes robust, portable telemetry a built-in feature of
-    cloud-native software.
-  sub_description: >-
-    **OpenTelemetry** provides a single set of APIs, libraries, agents, and
-    collector services to capture distributed traces and metrics from your
-    application. You can analyze them using Prometheus, Jaeger, and other
-    observability tools.
   github_repo: https://github.com/open-telemetry/opentelemetry.io
   github_branch: main
   gcs_engine_id: 015faf7de29c34606
