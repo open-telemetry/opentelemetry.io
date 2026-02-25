@@ -11,6 +11,7 @@ appenders
 aspecto
 autoconfiguration
 autoinstrumentation
+autolinks
 autoloaded
 autoloader
 autoloading
@@ -24,6 +25,7 @@ classpath
 cmelius
 cncf
 configurator
+cooldown
 currencyservice
 daemonset
 datadog
