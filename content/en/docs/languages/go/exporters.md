@@ -15,19 +15,21 @@ You can use the
 package to automatically configure exporters using
 [standard OpenTelemetry environment variables](/docs/specs/otel/configuration/sdk-environment-variables/).
 
-This package provides factory functions that read environment variables like
-`OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_PROTOCOL`, and
-`OTEL_TRACES_EXPORTER` to configure exporters without requiring you to hard-code
-configuration values.
+This package provides factory functions that read the **exporter selector**
+environment variables to select and initialize the appropriate exporter at
+runtime:
 
-The autoexport package supports:
+| Function | Environment variable | Description |
+|----------|---------------------|-------------|
+| [`NewSpanExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewSpanExporter) | `OTEL_TRACES_EXPORTER` | Creates a trace exporter |
+| [`NewMetricReader`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewMetricReader) | `OTEL_METRICS_EXPORTER` | Creates a metric reader |
+| [`NewLogExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewLogExporter) | `OTEL_LOGS_EXPORTER` | Creates a log exporter |
 
-- **[`NewSpanExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewSpanExporter)**:
-  Creates a trace exporter based on `OTEL_TRACES_EXPORTER` environment variable
-- **[`NewMetricReader`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewMetricReader)**:
-  Creates a metric reader based on `OTEL_METRICS_EXPORTER` environment variable
-- **[`NewLogExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewLogExporter)**:
-  Creates a log exporter based on `OTEL_LOGS_EXPORTER` environment variable
+Supported values for each selector variable are `otlp` (default) and `none`.
+Once an exporter is selected, its configuration (endpoint, headers, timeout,
+protocol, etc.) is read from the standard
+[OTLP exporter environment variables](/docs/languages/sdk-configuration/otlp-exporter/)
+by the underlying OTLP exporter package.
 
 Example usage:
 
@@ -69,15 +71,22 @@ func main() {
 
 {{% alert title="Note" color="info" %}}
 
-Unlike some other languages, Go does not automatically read environment
-variables when creating exporters with the standard OTLP exporter packages (such
-as `otlptracehttp` or `otlptracegrpc`). You must explicitly use the `autoexport`
-package to enable environment variable configuration.
+The standard OTLP exporter packages (`otlptracegrpc`, `otlptracehttp`, etc.)
+already read most OTLP environment variables such as
+`OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_HEADERS`,
+`OTEL_EXPORTER_OTLP_TIMEOUT`, and `OTEL_EXPORTER_OTLP_COMPRESSION`.
 
-This design choice keeps binary sizes smaller by not including dependencies
-(like gRPC) unless explicitly needed.
+The `autoexport` package adds support for the **exporter selector variables**
+(`OTEL_TRACES_EXPORTER`, `OTEL_METRICS_EXPORTER`, `OTEL_LOGS_EXPORTER`) that
+choose _which_ exporter implementation to use. This separation keeps binary
+sizes smaller by not bundling exporter dependencies (like gRPC) unless
+explicitly imported.
 
 {{% /alert %}}
+
+For a complete overview of which environment variables are supported by the Go
+SDK and contrib packages, see the
+[OpenTelemetry spec compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
 
 ## Console
 
