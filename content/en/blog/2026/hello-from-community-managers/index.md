@@ -62,7 +62,7 @@ Reach me on Slack at @Reese Lee, or on
 
 ## Adriana Villela, Community Manager
 
-![Photo of Adriana taking a selfie with a capybara](adriana-villela.jpg)
+![Photo of Adriana taking a selfie with a capybara](adriana-villela.png)
 
 If I were to tell my younger teenage self what I do for a living now, she
 would’ve definitely been shocked. I got an early start in computers. BASIC was
