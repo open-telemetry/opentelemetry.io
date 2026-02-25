@@ -28,7 +28,7 @@ working on creating one single @ so you can easily reach all of us).
 
 ## Reese Lee, Community Manager
 
-![Photo of Reese engaged in a jiu-jitsu leg entanglement](reese-lee.jpg)
+![Photo of Reese engaged in a jiu-jitsu leg entanglement](reese-lee.png)
 
 I remember thinking "How cool!" when Austin Parker was announced as the
 [first OTel Community Manager back in late 2022](/blog/2022/announcing-community-manager/);
