@@ -8,7 +8,7 @@ author: >-
   Morgado](https://github.com/juliafmorgado) (Dash0)
 draft: true # TODO: remove this line once your post is ready to be published
 sig: End-User SIG
-cSpell:ignore: deserty Furst fangirling juliafmorgado
+cSpell:ignore: deserty fangirling Furst juliafmorgado
 ---
 
 ![Cover image showing the OTel Community Managers](cover.png)
