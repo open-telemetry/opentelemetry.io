@@ -33,5 +33,6 @@ pubspec.lock
 
 *.pyc
 *tmp_repos/
+*uv.lock
 
 # cSpell:ignore pubspec

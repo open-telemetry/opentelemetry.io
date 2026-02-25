@@ -22,22 +22,19 @@ echo "Starting collector component documentation sync"
 echo "Installing Python dependencies..."
 cd scripts/collector-sync || { echo "Error: Failed to change to scripts/collector-sync directory"; exit 1; }
 uv sync
+
+echo "Generating documentation..."
+uv run python -m documentation_sync
+
 cd ../.. || { echo "Error: Failed to return to repo root"; exit 1; }
 
 echo "Installing Node.js dependencies..."
 npm install --omit=optional
 
-echo "Generating documentation..."
-cd scripts/collector-sync || { echo "Error: Failed to change to scripts/collector-sync directory"; exit 1; }
-uv run python -m documentation_sync
-
-# Return to repo root for subsequent operations
-cd ../.. || { echo "Error: Failed to return to repo root"; exit 1; }
-
 echo "Formatting documentation..."
 npm run fix:format
 
-#echo "Checking links..."
+echo "Checking links..."
 npm run check:links || echo "Warning: Link check failed"
 
 # Get version info from cloned ecosystem-explorer registry
@@ -53,7 +50,6 @@ if [ -z "$VERSION" ]; then
 fi
 echo "Version: $VERSION"
 
-# Handle metadata issues
 if [ -f "metadata-issues.md" ]; then
   echo "Reporting metadata quality issues for version ${VERSION}..."
 
