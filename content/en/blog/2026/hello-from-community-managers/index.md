@@ -1,23 +1,22 @@
 ---
 title: What's Up, OTel? It's us, your community managers!
 linkTitle: It's us, your community managers!
-date: 2026-02-20
+date: 2026-02-25
 author: >-
   [Reese Lee](https://github.com/reese-lee) (New Relic), [Adriana
   Villela](https://github.com/avillela) (Dynatrace), [Julia Furst
   Morgado](https://github.com/juliafmorgado) (Dash0)
-draft: true # TODO: remove this line once your post is ready to be published
 sig: End-User SIG
 cSpell:ignore: deserty fangirling Furst juliafmorgado
 ---
 
-![Cover image showing the OTel Community Managers](cover.png)
+![Cover image showing the OTel Community Managers](cover.webp)
 
 Hi, community! We are your
-[newly appointed Community Managers](/blog/2026/new-community-managers/). We’ve
-begun the initial transitional work behind the scenes, and we look forward to
-seeing more of you all in the very near future (KubeCon EU, anyone?). With great
-power comes great responsibility, and we want to hear from you as we look into
+[newly appointed Community Managers](../new-community-managers/). We’ve begun
+the initial transitional work behind the scenes, and we look forward to seeing
+more of you all in the very near future (KubeCon EU, anyone?). With great power
+comes great responsibility, and we want to hear from you as we look into
 expanding both the project and the community.
 
 In the meantime, we wanted to (re-)introduce ourselves, and invite you to
@@ -28,7 +27,7 @@ working on creating one single @ so you can easily reach all of us).
 
 ## Reese Lee, Community Manager
 
-![Photo of Reese engaged in a jiu-jitsu leg entanglement](reese-lee.png)
+![Photo of Reese engaged in a jiu-jitsu leg entanglement](reese-lee.webp)
 
 I remember thinking "How cool!" when Austin Parker was announced as the
 [first OTel Community Manager back in late 2022](/blog/2022/announcing-community-manager/);
@@ -62,7 +61,7 @@ Reach me on Slack at @Reese Lee, or on
 
 ## Adriana Villela, Community Manager
 
-![Photo of Adriana taking a selfie with a capybara](adriana-villela.png)
+![Photo of Adriana taking a selfie with a capybara](adriana-villela.webp)
 
 If I were to tell my younger teenage self what I do for a living now, she
 would’ve definitely been shocked. I got an early start in computers. BASIC was
@@ -110,7 +109,7 @@ Reach me on Slack at @Adriana Villela, or via one of my
 
 ## Julia Furst Morgado, Associate Community Manager
 
-![Photo of Julia tandem skydiving over a deserty area](julia-furst-morgado.png)
+![Photo of Julia tandem skydiving over a deserty area](julia-furst-morgado.webp)
 
 In 2022, I transitioned into tech and I became deeply involved in open source
 right away, contributing to the Kubernetes documentation, the OpenTelemetry
