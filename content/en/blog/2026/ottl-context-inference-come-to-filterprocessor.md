@@ -63,9 +63,8 @@ filter:
     - IsMatch(spanevent.name, ".*grpc.*") # inferred as spanevent context
 ```
 
-Each path includes a simple prefix (`resource`, `scope`, `span`,
-`spanevent`), and the processor automatically infers its execution context from
-that prefix.
+Each path includes a simple prefix (`resource`, `scope`, `span`, `spanevent`),
+and the processor automatically infers its execution context from that prefix.
 
 No guessing. No hidden placement rules. All conditions are combined using
 logical OR: if any condition matches, the telemetry is dropped.
@@ -132,7 +131,8 @@ For more information about how context inference is evaluated, see the
 ## Migration and compatibility
 
 The legacy configuration format (`traces.resource`, `traces.span`, and similar
-fields) remains fully supported and backwards compatible for the foreseeable future.
+fields) remains fully supported and backwards compatible for the foreseeable
+future.
 
 ## Try it out
 
