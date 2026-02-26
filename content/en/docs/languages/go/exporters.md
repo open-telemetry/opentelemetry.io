@@ -25,7 +25,8 @@ runtime:
 | [`NewMetricReader`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewMetricReader) | `OTEL_METRICS_EXPORTER` | Creates a metric reader |
 | [`NewLogExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewLogExporter) | `OTEL_LOGS_EXPORTER` | Creates a log exporter |
 
-Supported values for each selector variable are `otlp` (default) and `none`.
+Supported values for the selector variables are `otlp` (default) and `none`.
+For `OTEL_METRICS_EXPORTER`, `prometheus` is also supported.
 Once an exporter is selected, its configuration (endpoint, headers, timeout,
 protocol, etc.) is read from the standard
 [OTLP exporter environment variables](/docs/languages/sdk-configuration/otlp-exporter/)
@@ -81,6 +82,8 @@ The `autoexport` package adds support for the **exporter selector variables**
 choose _which_ exporter implementation to use. This separation keeps binary
 sizes smaller by not bundling exporter dependencies (like gRPC) unless
 explicitly imported.
+
+Also note that `OTEL_SDK_DISABLED` is not currently supported by the Go SDK.
 
 {{% /alert %}}
 
