@@ -1,6 +1,6 @@
 ---
 title: OTTL context inference comes to the Filter Processor
-linkTitle: OTTL context inference comes to Filter Processor
+linkTitle: OTTL context inference comes to the Filter Processor
 date: 2026-02-17
 author: '[Kaise Cheng](https://github.com/kaisecheng) (Elastic)'
 issue: 9190
