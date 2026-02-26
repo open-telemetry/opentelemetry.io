@@ -14927,6 +14927,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:49:30.151221171Z"
   },
+  "https://github.com/prometheus/OpenMetrics/blob/main/specification/OpenMetrics.md#metricfamily": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-26T10:44:52.779874684Z"
+  },
   "https://github.com/prometheus/OpenMetrics/blob/v1.0.0/specification/OpenMetrics.md#counter-1": {
     "StatusCode": 206,
     "LastSeen": "2026-02-18T09:55:30.713205937Z"
