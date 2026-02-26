@@ -24,7 +24,7 @@ filtering: how it simplifies configuration and how evaluation works.
 
 ## The issue: OTTL context confusion
 
-In the legacy configuration, writing filters requires understanding the OTel
+In the legacy configuration, writing filters required understanding the OTel
 Collector’s internal telemetry hierarchy. Conditions must be placed inside
 specific OTTL context blocks such as `resource`, `span`, or `spanevent`.
 
