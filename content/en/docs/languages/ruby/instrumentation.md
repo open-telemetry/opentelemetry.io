@@ -29,6 +29,26 @@ individually, use `opentelemetry-instrumentation-all`:
 
 ```sh
 gem install opentelemetry-instrumentation-all
+```
+
+Then configure the SDK to enable available instrumentations:
+
+```ruby
+require 'opentelemetry/sdk'
+OpenTelemetry::SDK.configure do |c|
+  c.use_all
+end
+```
+
+> [!TIP]
+>
+> In a Ruby on Rails app, you can place this configuration in
+> `config/initializers/opentelemetry.rb`.
+
+This approach automatically enables supported library instrumentations (so you
+typically don’t need to follow the per-instrumentation steps in the
+[Traces](#traces) section below). You may still need to configure an exporter
+and environment variables appropriate for your deployment.
 
 ## Traces
 
@@ -363,6 +383,11 @@ logger instrumentation package:
 
 ```sh
 gem install opentelemetry-instrumentation-logger
+```
+
+After installing, ensure you have configured an exporter/endpoint that supports
+logs for example, via the exporter configuration referenced in the next section.
+
 ## Next Steps
 
 You’ll also want to configure an appropriate exporter to
