@@ -59,3 +59,33 @@ otel-collector:
     - 4318:4318 # OTLP http receiver
     - 55679:55679 # zpages extension
 ```
+
+
+The `otel-collector-config.yaml` file is required for the Collector to start.
+Here is a minimal example to get started:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [debug]
+    metrics:
+      receivers: [otlp]
+      exporters: [debug]
+    logs:
+      receivers: [otlp]
+      exporters: [debug]
+```
