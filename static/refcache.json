@@ -10891,9 +10891,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:59:52.280269777Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/javalin-5.0": {
-    "StatusCode": 404,
-    "LastSeen": "2026-02-26T09:58:02.811562005Z"
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/javalin": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-26T11:10:43.137092-03:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jaxrs": {
     "StatusCode": 206,
