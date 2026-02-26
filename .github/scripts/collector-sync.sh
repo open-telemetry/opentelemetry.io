@@ -19,6 +19,9 @@ fi
 
 echo "Starting collector component documentation sync"
 
+echo "Installing Node.js dependencies..."
+npm install --omit=optional
+
 echo "Installing Python dependencies..."
 cd scripts/collector-sync || { echo "Error: Failed to change to scripts/collector-sync directory"; exit 1; }
 uv sync
@@ -27,9 +30,6 @@ echo "Generating documentation..."
 uv run python -m documentation_sync
 
 cd ../.. || { echo "Error: Failed to return to repo root"; exit 1; }
-
-echo "Installing Node.js dependencies..."
-npm install --omit=optional
 
 echo "Formatting documentation..."
 npm run fix:format
