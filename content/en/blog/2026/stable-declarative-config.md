@@ -4,7 +4,8 @@ linkTitle: Declarative configuration is stable!
 date: 2026-02-26
 author: >-
   [Jack Berg](https://github.com/jack-berg)(Grafana Labs)
-cSpell:ignore: codeboten Anuraag Agrawal anuraaga brettmc carlosalberto Ashpole dashpole Lüchinger Zeitlinger zeitlinger Danielson jaydeluca Liudmila Molkova lmolkova Alff maryliag Baeyens Kiełkowicz Kielek Pellard pellared Bachert Nevay trask Sloughter tsloughter Yahn Yevhenii Solomchenko ysolomchenko
+# prettier-ignore
+cSpell:ignore: Agrawal Alff Anuraag anuraaga Ashpole Bachert Baeyens brettmc carlosalberto codeboten Danielson dashpole jaydeluca Kielek Kiełkowicz Liudmila lmolkova Lüchinger maryliag Molkova Nevay Pellard pellared Sloughter Solomchenko trask tsloughter Yahn Yevhenii ysolomchenko zeitlinger
 ---
 
 ## What happened?
