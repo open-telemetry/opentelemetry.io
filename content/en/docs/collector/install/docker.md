@@ -60,7 +60,6 @@ otel-collector:
     - 55679:55679 # zpages extension
 ```
 
-
 The `otel-collector-config.yaml` file is required for the Collector to start.
 Here is a minimal example to get started:
 
