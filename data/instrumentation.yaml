@@ -70,7 +70,7 @@ rust:
   name: Rust
   status:
     traces: beta
-    metrics: stable
+    metrics: beta
     logs: stable
     profiles: 'development'
 swift:
