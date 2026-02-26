@@ -132,7 +132,7 @@ For more information about how context inference is evaluated, see the
 ## Migration and compatibility
 
 The legacy configuration format (`traces.resource`, `traces.span`, and similar
-fields) remains fully supported and backwards compatible.
+fields) remains fully supported and backwards compatible for the foreseeable future.
 
 ## Try it out
 
