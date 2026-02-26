@@ -291,16 +291,16 @@ operations through two protocols:
 
 **What's captured**:
 
-| Attribute                 | Source                 | Example                   |
-| ------------------------- | ---------------------- | ------------------------- |
-| `db.system.name`          | Constant               | `couchbase`               |
-| `db.operation.name`       | Opcode                 | `GET`, `SET`              |
-| `db.namespace`            | Bucket         | `travel-sample` |
-| `db.collection.name`      | Scope + Collection | `inventory.airline`                 |
-| `db.collection.name`      | Collection             | `airline`                 |
-| `db.response.status_code` | Status code (on error) | `1`                       |
-| `server.address`          | Connection info        | Server hostname           |
-| `server.port`             | Connection info        | `11210`                   |
+| Attribute                 | Source                 | Example             |
+| ------------------------- | ---------------------- | ------------------- |
+| `db.system.name`          | Constant               | `couchbase`         |
+| `db.operation.name`       | Opcode                 | `GET`, `SET`        |
+| `db.namespace`            | Bucket                 | `travel-sample`     |
+| `db.collection.name`      | Scope + Collection     | `inventory.airline` |
+| `db.collection.name`      | Collection             | `airline`           |
+| `db.response.status_code` | Status code (on error) | `1`                 |
+| `server.address`          | Connection info        | Server hostname     |
+| `server.port`             | Connection info        | `11210`             |
 
 **Bucket, scope, and collection tracking**: Couchbase uses a hierarchical
 namespace: Bucket → Scope → Collection. Unlike per-request namespace protocols,
