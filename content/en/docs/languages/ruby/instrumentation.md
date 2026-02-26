@@ -20,29 +20,15 @@ First, ensure you have the SDK package installed:
 gem install opentelemetry-sdk
 ```
 
-Then include configuration code that runs when your program initializes.
-Make sure that `service.name` is set by configuring a service name
-(ordinarily via `OTEL_SERVICE_NAME` environment variable).
+Then include configuration code that runs when your program initializes. Make
+sure that `service.name` is set by configuring a service name (for example via
+the `OTEL_SERVICE_NAME` environment variable).
 
-```ruby
-# If in a Rails app, this lives in config/initializers/opentelemetry.rb
-require 'opentelemetry/sdk'
-
-OpenTelemetry::SDK.configure do |c|
-  c.use_all
-end
-```
-
-Then install one or more instrumentation packages:
+To instrument many common libraries without enabling each instrumentation
+individually, use `opentelemetry-instrumentation-all`:
 
 ```sh
 gem install opentelemetry-instrumentation-all
-```
-
-If you use the all instrumentation package, you do not need to follow the
-instructions below to enable [traces](#traces).
-However, logging is not instrumented by default, so you will need to install
-the package mentioned below to enable [logs](#logs).
 
 ## Traces
 
@@ -372,12 +358,11 @@ The metrics API & SDK are currently under development.
 
 The logs API & SDK are currently under development.
 
-Ensure you have the logger instrumentation package installed:
+To capture application logs emitted via Ruby’s standard `Logger`, install the
+logger instrumentation package:
 
 ```sh
 gem install opentelemetry-instrumentation-logger
-```
-
 ## Next Steps
 
 You’ll also want to configure an appropriate exporter to
