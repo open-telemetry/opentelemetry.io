@@ -71,7 +71,7 @@ rust:
   status:
     traces: beta
     metrics: beta
-    logs: stable
+    logs: beta
     profiles: 'development'
 swift:
   name: Swift
