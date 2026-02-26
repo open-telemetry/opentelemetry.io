@@ -164,10 +164,22 @@ def fix_component_spelling() -> dict[str, int]:
     files_updated = 0
     total_words_added = 0
 
+    cwd = Path.cwd()
+
     for filepath, words in misspellings.items():
         file_path = Path(filepath)
+
+        if not file_path.exists():
+            # Try relative to current working directory
+            file_path = cwd / filepath
+
+        if not file_path.exists():
+            # Try as absolute path
+            file_path = Path(filepath).resolve()
+
         if not file_path.exists():
             logger.warning(f"  ⚠️  File not found: {filepath}")
+            logger.debug(f"      Tried: {Path(filepath)}, {cwd / filepath}, {Path(filepath).resolve()}")
             continue
 
         component_words = set(words)
