@@ -30,10 +30,6 @@ def run_cspell() -> dict[str, list[str]]:
         "content/en/docs/collector/components/*.md",
     ]
 
-    # Debug logging
-    logger.debug(f"Running cspell from directory: {Path.cwd()}")
-    logger.debug(f"Command: {' '.join(cmd)}")
-
     try:
         result = subprocess.run(
             cmd,
@@ -41,16 +37,6 @@ def run_cspell() -> dict[str, list[str]]:
             text=True,
             check=False,  # Don't raise on non-zero exit (spelling errors)
         )
-
-        # Debug logging
-        logger.debug(f"cspell exit code: {result.returncode}")
-        logger.debug(f"cspell stdout length: {len(result.stdout)} characters")
-        logger.debug(f"cspell stderr: {result.stderr if result.stderr else '(empty)'}")
-
-        # Log first 500 chars of stdout for debugging
-        if result.stdout:
-            preview = result.stdout[:500]
-            logger.debug(f"cspell stdout preview: {preview}")
 
         # cspell exit codes:
         # 0 = no spelling errors
@@ -67,10 +53,7 @@ def run_cspell() -> dict[str, list[str]]:
         misspellings: dict[str, list[str]] = {}
         pattern = r"^(.+?):(\d+):(\d+)\s+-\s+Unknown word \((.+?)\)"
 
-        lines = result.stdout.split("\n")
-        logger.debug(f"Parsing {len(lines)} lines from cspell output")
-
-        for line in lines:
+        for line in result.stdout.split("\n"):
             match = re.match(pattern, line)
             if match:
                 filepath = match.group(1)
@@ -79,9 +62,7 @@ def run_cspell() -> dict[str, list[str]]:
                 if filepath not in misspellings:
                     misspellings[filepath] = []
                 misspellings[filepath].append(word)
-                logger.debug(f"Found misspelling: {word} in {filepath}")
 
-        logger.debug(f"Total files with misspellings: {len(misspellings)}")
         return misspellings
 
     except FileNotFoundError as e:
@@ -167,17 +148,6 @@ def fix_component_spelling() -> dict[str, int]:
         RuntimeError: If cspell command fails
     """
     logger.info("Running cspell to detect spelling errors...")
-    logger.debug(f"Current working directory: {Path.cwd()}")
-
-    # Debug: Check if the component files exist
-    components_dir = Path("content/en/docs/collector/components")
-    if components_dir.exists():
-        md_files = list(components_dir.glob("*.md"))
-        logger.debug(f"Found {len(md_files)} .md files in {components_dir}")
-        logger.debug(f"Files: {[f.name for f in md_files]}")
-    else:
-        logger.warning(f"Components directory not found: {components_dir}")
-
     try:
         misspellings = run_cspell()
     except RuntimeError as e:
@@ -187,11 +157,9 @@ def fix_component_spelling() -> dict[str, int]:
 
     if not misspellings:
         logger.info("✓ No spelling errors found!")
-        logger.debug("(This could mean: 1) all words are correct, 2) all misspellings are already in ignore lists, or 3) cspell didn't run on the files)")
         return {"files_updated": 0, "words_added": 0}
 
     logger.info(f"Found spelling errors in {len(misspellings)} file(s)")
-    logger.debug(f"Files with errors: {list(misspellings.keys())}")
 
     files_updated = 0
     total_words_added = 0
