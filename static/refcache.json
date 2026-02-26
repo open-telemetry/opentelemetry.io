@@ -7411,6 +7411,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-12T09:52:56.116565163Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9c4165139f101a43895d9273192ddb9ae3204844/processor/filterprocessor": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-26T13:15:07.767772Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9c4165139f101a43895d9273192ddb9ae3204844/processor/filterprocessor#context-inference": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-26T13:15:12.897532Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9c4165139f101a43895d9273192ddb9ae3204844/processor/filterprocessor/README.md#basic-config": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-26T13:15:11.096313Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/ae0d64c4c2131c7a4308417fa9549d984347dadc/pkg/stanza/docs/operators/container.md?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-02-23T19:29:08.270631-05:00"
@@ -7458,10 +7470,6 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/pkg/sampling/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:49:37.366418534Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/filterprocessor/README.md#basic-config": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-20T01:05:58.100521Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/probabilisticsamplerprocessor/README.md": {
     "StatusCode": 206,
@@ -8358,10 +8366,6 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor": {
     "StatusCode": 206,
     "LastSeen": "2026-02-18T09:52:12.301590563Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor#context-inference": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-20T14:45:13.91988Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/geoipprocessor": {
     "StatusCode": 206,

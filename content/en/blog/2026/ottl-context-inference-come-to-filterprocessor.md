@@ -15,7 +15,7 @@ internal telemetry contexts.
 
 Starting with **collector-contrib v0.146.0**, context inference is available in
 the
-[Filter Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor)
+[Filter Processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9c4165139f101a43895d9273192ddb9ae3204844/processor/filterprocessor)
 through four new top-level config fields: `trace_conditions`,
 `metric_conditions`, `log_conditions`, and `profile_conditions`.
 
@@ -50,7 +50,7 @@ toward Collector internals instead of the filtering logic itself.
 
 Context inference removes this complexity. Instead of organizing rules by
 context blocks, they are written as a flat list using the
-[basic configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/filterprocessor/README.md#basic-config)
+[basic configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9c4165139f101a43895d9273192ddb9ae3204844/processor/filterprocessor/README.md#basic-config)
 style:
 
 ```yaml
@@ -127,7 +127,7 @@ never inspected. This short-circuit behavior avoids unnecessary work and
 improves performance.
 
 For more information about how context inference is evaluated, see the
-[Filter Processor context inference documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/filterprocessor#context-inference).
+[Filter Processor context inference documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9c4165139f101a43895d9273192ddb9ae3204844/processor/filterprocessor#context-inference).
 
 ## Migration and compatibility
 
