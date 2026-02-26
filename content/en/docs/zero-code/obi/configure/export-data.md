@@ -295,7 +295,8 @@ operations through two protocols:
 | ------------------------- | ---------------------- | ------------------------- |
 | `db.system.name`          | Constant               | `couchbase`               |
 | `db.operation.name`       | Opcode                 | `GET`, `SET`              |
-| `db.namespace`            | Bucket + Scope         | `travel-sample.inventory` |
+| `db.namespace`            | Bucket         | `travel-sample` |
+| `db.collection.name`      | Scope + Collection | `inventory.airline`                 |
 | `db.collection.name`      | Collection             | `airline`                 |
 | `db.response.status_code` | Status code (on error) | `1`                       |
 | `server.address`          | Connection info        | Server hostname           |
