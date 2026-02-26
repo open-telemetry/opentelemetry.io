@@ -63,7 +63,7 @@ filter:
     - IsMatch(spanevent.name, ".*grpc.*") # inferred as spanevent context
 ```
 
-Each condition includes a simple prefix (`resource`, `scope`, `span`,
+Each path includes a simple prefix (`resource`, `scope`, `span`,
 `spanevent`), and the processor automatically infers its execution context from
 that prefix.
 
