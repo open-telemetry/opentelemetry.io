@@ -46,8 +46,8 @@ def find_repo_root() -> Path:
 
 def configure_logging() -> None:
     logging.basicConfig(
-        level=logging.INFO,
-        format="%(message)s",
+        level=logging.DEBUG,
+        format="%(levelname)s: %(message)s",
         handlers=[logging.StreamHandler(sys.stdout)],
     )
 
