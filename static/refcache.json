@@ -1851,10 +1851,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-19T09:52:41.830898958Z"
   },
-  "https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-an-error-message": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-23T17:52:51.304292496Z"
-  },
   "https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#workflow_run": {
     "StatusCode": 206,
     "LastSeen": "2026-02-23T17:52:52.294914459Z"
@@ -2708,8 +2704,8 @@
     "LastSeen": "2026-02-14T09:50:17.035246332Z"
   },
   "https://documentation.softwareag.com/?pf=adabas": {
-    "StatusCode": -10,
-    "LastSeen": "2026-02-25T09:56:49.991484163Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-26T09:59:23.206Z"
   },
   "https://documentation.solarwinds.com/en/success_center/observability/content/intro/otel.htm": {
     "StatusCode": 206,
@@ -2724,8 +2720,8 @@
     "LastSeen": "2026-02-24T09:59:10.230540676Z"
   },
   "https://dotnet.microsoft.com/download": {
-    "StatusCode": 403,
-    "LastSeen": "2026-02-25T09:53:10.616275839Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-26T09:52:52.227576043Z"
   },
   "https://dotnet.microsoft.com/download/dotnet": {
     "StatusCode": 200,
@@ -10897,7 +10893,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/javalin-5.0": {
     "StatusCode": 404,
-    "LastSeen": "2026-02-25T09:59:51.961660985Z"
+    "LastSeen": "2026-02-26T09:58:02.811562005Z"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jaxrs": {
     "StatusCode": 206,
