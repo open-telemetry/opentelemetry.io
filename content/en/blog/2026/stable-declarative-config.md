@@ -5,7 +5,7 @@ date: 2026-02-26
 author: >-
   [Jack Berg](https://github.com/jack-berg)(Grafana Labs)
 # prettier-ignore
-cSpell:ignore: Agrawal Alff Anuraag anuraaga Ashpole Bachert Baeyens brettmc carlosalberto codeboten Danielson dashpole jaydeluca Kielek Kiełkowicz Liudmila lmolkova Lüchinger maryliag Molkova Nevay Pellard pellared Shkuro Sloughter Solomchenko trask tsloughter Yahn Yevhenii ysolomchenko yurishkuro zeitlinger
+cSpell:ignore: Agrawal Alff Anuraag anuraaga Ashpole Bachert Baeyens brettmc carlosalberto codeboten Danielson dashpole jaydeluca Kielek Kiełkowicz Liudmila lmolkova Lüchinger maryliag Molkova Nevay ocelotl Pellard pellared Shkuro Sloughter Solomchenko trask tsloughter Yahn Yevhenii ysolomchenko yurishkuro zeitlinger
 ---
 
 ## What happened?
