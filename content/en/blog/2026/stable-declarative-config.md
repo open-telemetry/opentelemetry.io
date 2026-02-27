@@ -114,6 +114,7 @@ and contributing in other ways.
 - Brett McBride [brettmc](https://github.com/brettmc)
 - Carlos Alberto Cortez [carlosalberto](https://github.com/carlosalberto)
 - David Ashpole [dashpole](https://github.com/dashpole)
+- Diego Hurtado [ocelotl](https://github.com/ocelotl)
 - Dominic Lüchinger [dol](https://github.com/dol)
 - Gregor Zeitlinger [zeitlinger](https://github.com/zeitlinger)
 - Jamie Danielson [JamieDanielson](https://github.com/JamieDanielson)
