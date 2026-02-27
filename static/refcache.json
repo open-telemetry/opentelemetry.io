@@ -831,6 +831,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-25T09:58:57.729022748Z"
   },
+  "https://cloud-native.slack.com/archives/C08NRCD4R4G": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-27T09:16:20.38383Z"
+  },
   "https://cloud-native.slack.com/archives/C08P9L4FPKJ": {
     "StatusCode": 200,
     "LastSeen": "2026-02-24T09:58:41.89889947Z"
@@ -11695,6 +11699,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:53:29.140268648Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-kotlin/issues": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-27T09:16:24.26734Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-kotlin/releases": {
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:53:26.621201761Z"
@@ -11702,6 +11710,10 @@
   "https://github.com/open-telemetry/opentelemetry-kotlin/releases/latest": {
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:53:22.270977709Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-kotlin?tab=readme-ov-file#contributing": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-27T09:16:18.918994Z"
   },
   "https://github.com/open-telemetry/opentelemetry-lambda": {
     "StatusCode": 206,
@@ -12851,6 +12863,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-23T19:29:06.093474-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/68696c9e9b334107c57c259c53c83ff820c3abc0/spec-compliance-matrix.md?from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-27T09:16:16.748674Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/97c826b70e2f89cfdf655d5150791f3f0c2bae19/oteps/profiles/0239-profiles-data-model.md?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-02-23T19:29:04.476483-05:00"
@@ -13014,6 +13030,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/oteps/0232-maturity-of-otel.md": {
     "StatusCode": 206,
     "LastSeen": "2026-02-20T14:23:03.013866484Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/spec-compliance-matrix.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-27T10:07:28.542017Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.54.0/spec-compliance-matrix.md#logs": {
     "StatusCode": 206,
