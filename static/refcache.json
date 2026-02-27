@@ -2640,8 +2640,8 @@
     "LastSeen": "2026-02-14T09:53:50.048Z"
   },
   "https://docs.splunk.com/observability/en/gdi/opentelemetry/opentelemetry.html": {
-    "StatusCode": 403,
-    "LastSeen": "2026-02-27T09:51:23.508809976Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-27T14:23:45.471Z"
   },
   "https://docs.spring.io/spring-boot/docs/current/reference/html/configuration-metadata.html": {
     "StatusCode": 200,
@@ -20444,8 +20444,8 @@
     "LastSeen": "2026-02-27T09:52:10.787281886Z"
   },
   "https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c29": {
-    "StatusCode": 403,
-    "LastSeen": "2026-02-27T09:53:59.473124412Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-27T14:23:55.273Z"
   },
   "https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/dx-operational-observability/saas/monitoring/opentelemetry.html": {
     "StatusCode": 206,
@@ -20916,8 +20916,8 @@
     "LastSeen": "2026-02-14T09:54:48.246Z"
   },
   "https://www.britannica.com/dictionary/pipeline": {
-    "StatusCode": 403,
-    "LastSeen": "2026-02-27T09:54:32.867208394Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-27T14:24:05.223Z"
   },
   "https://www.buoyant.io/mtls-guide": {
     "StatusCode": 200,
@@ -21908,8 +21908,8 @@
     "LastSeen": "2026-02-24T10:03:53.081Z"
   },
   "https://www.npmjs.com/search?q=%40cspell%2Fdict": {
-    "StatusCode": 403,
-    "LastSeen": "2026-02-27T09:51:43.416718965Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-02-27T14:24:09.111Z"
   },
   "https://www.nuget.org/packages/Azure.Monitor.OpenTelemetry.Exporter": {
     "StatusCode": 200,
