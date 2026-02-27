@@ -58,18 +58,16 @@ resources:
 
 ## What does this mean for me?
 
-As language implementations progress, the ability to configure
-OpenTelemetry consistently in various languages will improve.
-In addition, the new configuration model provides a much richer
-language to specify options that go beyond the environment variables
-supported today. These were two of the goals of the configuration
-working group from the very beginning.
+As language implementations progress, the ability to configure OpenTelemetry
+consistently in various languages will improve. In addition, the new
+configuration model provides a much richer language to specify options that go
+beyond the environment variables supported today. These were two of the goals of
+the configuration working group from the very beginning.
 
 Language implementations stabilize on different timelines than the
-specification, but that should be coming soon. If a language you're
-using doesn't have an implementation yet, or is lacking a feature you'd
-like to implement or see implemented, let us know! We'd love to hear
-from you.
+specification, but that should be coming soon. If a language you're using
+doesn't have an implementation yet, or is lacking a feature you'd like to
+implement or see implemented, let us know! We'd love to hear from you.
 
 See the docs in your relevant language for details on how to use. If the docs
 don't exist yet, please open an issue to request them!
