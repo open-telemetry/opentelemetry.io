@@ -10,7 +10,9 @@ tags:
 urls:
   repo: https://github.com/Jamstah/k8ssaauthextension
 license: Apache 2.0
-description: An authenticator that checks a bearer token has suitable Kubernetes RBAC permissions
+description:
+  An authenticator that checks a bearer token has suitable Kubernetes RBAC
+  permissions
 authors:
   - name: James Hewitt
     email: james.hewitt@gmail.com
