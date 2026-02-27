@@ -48,7 +48,7 @@ toward Collector internals instead of the filtering logic itself.
 
 ### Basic configuration
 
-Context inference removes this complexity. Instead of organizing rules by
+Context inference removes this complexity. Instead of organizing conditions by
 context blocks, they are written as a flat list using the
 [basic configuration](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/9c4165139f101a43895d9273192ddb9ae3204844/processor/filterprocessor/README.md#basic-config)
 style:
