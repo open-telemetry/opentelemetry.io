@@ -1,3 +1,4 @@
+# cSpell:ignore Jamstah ssaauthextension
 title: Kubernetes Service Account Authenticator Extension
 registryType: extension
 language: collector
