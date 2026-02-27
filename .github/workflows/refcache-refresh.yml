@@ -1,5 +1,5 @@
 name: Refcache refresh
-# cSpell:ignore chalin otelbot pushd
+# cSpell:ignore chalin pushd
 
 # Creates (or updates) the PR that refreshes a number of the oldest refcache
 # entries. We say "the PR", because there can be at most one such PR at a time.
