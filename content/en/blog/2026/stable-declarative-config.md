@@ -5,7 +5,7 @@ date: 2026-02-26
 author: >-
   [Jack Berg](https://github.com/jack-berg)(Grafana Labs)
 # prettier-ignore
-cSpell:ignore: Agrawal Alff Anuraag anuraaga Ashpole Bachert Baeyens brettmc carlosalberto codeboten Danielson dashpole jaydeluca Kielek Kiełkowicz Liudmila lmolkova Lüchinger maryliag Molkova Nevay Pellard pellared Sloughter Solomchenko trask tsloughter Yahn Yevhenii ysolomchenko zeitlinger
+cSpell:ignore: Agrawal Alff Anuraag anuraaga Ashpole Bachert Baeyens brettmc carlosalberto codeboten Danielson dashpole jaydeluca Kielek Kiełkowicz Liudmila lmolkova Lüchinger maryliag Molkova Nevay Pellard pellared Shkuro Sloughter Solomchenko trask tsloughter Yahn Yevhenii ysolomchenko yurishkuro zeitlinger
 ---
 
 ## What happened?
@@ -113,6 +113,7 @@ and contributing in other ways.
 - Liudmila Molkova [lmolkova](https://github.com/lmolkova)
 - Marc Alff [Marc Alff](https://github.com/marcalff)
 - Marylia Gutierrez [maryliag](https://github.com/maryliag)
+- Mike Goldsmith [MikeGoldsmith](https://github.com/MikeGoldsmith)
 - Pablo Baeyens [mx-psi](https://github.com/mx-psi)
 - Piotr Kiełkowicz [Kielek](https://github.com/Kielek)
 - Robert Pellard [pellared](https://github.com/pellared)
@@ -121,3 +122,4 @@ and contributing in other ways.
 - Tristan Sloughter [tsloughter](https://github.com/tsloughter)
 - Tyler Yahn [MrAlias](https://github.com/MrAlias)
 - Yevhenii Solomchenko [ysolomchenko](https://github.com/ysolomchenko)
+- Yuri Shkuro [yurishkuro](https://github.com/yurishkuro)
