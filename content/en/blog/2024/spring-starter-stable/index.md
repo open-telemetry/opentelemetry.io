@@ -128,7 +128,7 @@ OpenTelemetry Java agent, so that the same properties could be used for both.
 
 The SDK autoconfiguration did not support Spring Boot configuration files,
 however, so we had implement the
-[ConfigProperties](https://github.com/open-telemetry/opentelemetry-java/blob/main/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/ConfigProperties.java)
+[ConfigProperties](https://github.com/open-telemetry/opentelemetry-java/blob/78a917da2e8f4bc3645f4fb10361e3e844aab9fb/sdk-extensions/autoconfigure-spi/src/main/java/io/opentelemetry/sdk/autoconfigure/spi/ConfigProperties.java?from_branch=main)
 interface with the logic to look up Spring configuration values from a Spring
 [Environment](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/env/Environment.html).
 
@@ -155,7 +155,7 @@ that allows you to register Spring beans that will be loaded by the
 OpenTelemetry SDK autoconfiguration.
 
 The
-[Spring Starter implementation of the ComponentLoader interface](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java#L162-L181)
+[Spring Starter implementation of the ComponentLoader interface](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/f7cba3b86167946b3783fb8e575f1c169aec6972/instrumentation/spring/spring-boot-autoconfigure/src/main/java/io/opentelemetry/instrumentation/spring/autoconfigure/OpenTelemetryAutoConfiguration.java?from_branch=main#L162-L181)
 uses Spring's `ApplicationContext` to find all beans of a certain type.
 
 This allows you to register your own customizers, and other SDK components as

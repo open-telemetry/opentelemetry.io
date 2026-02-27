@@ -61,7 +61,7 @@ for Swift, and more.
 
 We’d love for you to take the demo for a spin and let us know what you think!
 Check out the
-[docs](https://github.com/open-telemetry/opentelemetry-demo/tree/06aa374/docs?from_branch=main#opentelemetry-demo-documentation),
+[docs](https://github.com/open-telemetry/opentelemetry-demo/tree/06aa374799319143c15bf7add18a5f056a2c4504/docs?from_branch=main#opentelemetry-demo-documentation),
 or run the demo using [Docker](/docs/demo/docker-deployment/) or
 [Kubernetes](/docs/demo/kubernetes-deployment/), and let us know your thoughts.
 If you’d like to contribute, please file an

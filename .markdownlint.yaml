@@ -36,6 +36,11 @@ table-column-style: false # Causes problems in ja and zh pages
 # -----------------------------------------------------------------------------
 # Custom rules
 
+# We don't apply this rule broadly, only in selected folders such as blog posts;
+# see content/en/blog/.markdownlint.yml.
+
+gh-url-hash: false
+
 # Custom rules registered in .markdownlint-cli2.yaml are enabled by default
 # (via `default: true` above). Only list custom rules here to disable them or
 # to provide configuration. Rules that need no config can be omitted.
