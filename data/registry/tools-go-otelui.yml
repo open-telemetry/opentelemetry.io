@@ -11,8 +11,8 @@ urls:
   repo: https://github.com/pitr/otelui
 license: MIT
 description:
-  A terminal OpenTelemetry viewer that shows locally emitted
-  telemetry data without needing to send it to a telemetry vendor.
+  A terminal OpenTelemetry viewer that shows locally emitted telemetry data
+  without needing to send it to a telemetry vendor.
 authors:
   - name: pitr
     url: https://github.com/pitr
