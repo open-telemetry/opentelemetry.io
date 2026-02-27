@@ -26,24 +26,30 @@ modifications to application code or configuration.
 
 OBI offers the following features:
 
-- **Wide language support**: Java, .NET, Go, Python, Ruby, Node.js, C, C++, and
-  Rust
+- **Wide language support**: Java (JDK 8+), .NET, Go, Python, Ruby, Node.js, C,
+  C++, and Rust
 - **Lightweight**: No code changes required, no libraries to install, no
   restarts needed
 - **Efficient instrumentation**: Traces and metrics are captured by eBPF probes
   with minimal overhead
 - **Distributed tracing**: Distributed trace spans are captured and reported to
   a collector
+- **Log enrichment**: Enrich JSON logs with trace context for correlation
 - **Kubernetes-native**: Provides configuration-free auto-instrumentation for
   Kubernetes applications
 - **Visibility into encrypted communications**: Capture transactions over
   TLS/SSL without decryption
 - **Context propagation**: Propagate trace context across services automatically
-- **Protocol support**: HTTP/S, gRPC, and gRPC-Web
+- **Protocol support**: HTTP/S, gRPC, gRPC-Web, MQTT, and more
+- **Database instrumentation**: PostgreSQL (including pgx driver), MySQL,
+  MongoDB, Redis, Couchbase (N1QL/SQL++ and KV protocol)
 - **Low cardinality metrics**: Prometheus-compatible metrics with low
   cardinality for cost reduction
 - **Network observability**: Capture network flows between services
-- **Database traces**: Capture database queries and connections
+- **Enhanced service discovery**: Improved service name lookup with DNS
+  resolution
+- **Collector integration**: Run OBI as an OpenTelemetry Collector receiver
+  component
 
 ## Requirements
 
@@ -102,6 +108,11 @@ For a comprehensive list of capabilities required by OBI, refer to
 
 - Follow the [setup](setup/) documentation to get started with OBI either with
   Docker or Kubernetes.
+- Learn about [trace-log correlation](./trace-log-correlation/) to connect
+  traces with application logs and enrich JSON logs with trace context.
+- Discover how to run
+  [OBI as a Collector receiver](./configure/collector-receiver/) for centralized
+  telemetry processing.
 
 ## Troubleshooting
 

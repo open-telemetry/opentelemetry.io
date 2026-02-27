@@ -1,6 +1,6 @@
 name: Links
 
-# cSpell:ignore minisearch otelbot
+# cSpell:ignore minisearch
 on:
   merge_group:
   pull_request:
