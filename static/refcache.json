@@ -13603,6 +13603,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:53:24.180601273Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-26T19:16:31.539863-05:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl": {
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:53:27.410375575Z"

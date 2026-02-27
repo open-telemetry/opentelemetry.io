@@ -407,8 +407,8 @@ npm run test-and-fix
 To separately test and fix all issues with your files, run:
 
 ```sh
-npm run test    # Checks but does not update any files
-npm run fix:all # May update files
+npm run test # Checks but does not update any files
+npm run fix  # May update files
 ```
 
 To list available NPM scripts, run `npm run`. See [PR checks](../pr-checks) for
