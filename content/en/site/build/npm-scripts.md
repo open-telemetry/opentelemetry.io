@@ -46,7 +46,7 @@ are internal helpers and are not intended to be run directly.
 | `check:markdown`       | Markdown lint (content and projects).                       |
 | `check:markdown:specs` | Markdown lint for spec fragments in `tmp/`.                 |
 | `check:registry`       | Validate registry YAML under `data/registry/`.              |
-| `check:spelling`       | cspell over content, data, and layout markdown.             |
+| `check:spelling`       | cspell over content, data, and layout Markdown.             |
 | `check:text`           | textlint over content and data.                             |
 | `check:filenames`      | Ensure no underscores in asset/content/static filenames.    |
 | `check:expired`        | List expired content (by front matter).                     |
@@ -61,7 +61,7 @@ are internal helpers and are not intended to be run directly.
 | `fix:format`              | Apply Prettier and trim trailing spaces.                       |
 | `fix:format:staged`       | Format only staged files.                                      |
 | `fix:i18n`                | Add/fix i18n front matter (`fix:i18n:new`, `fix:i18n:status`). |
-| `fix:markdown`            | Auto-fix markdown lint and trailing spaces.                    |
+| `fix:markdown`            | Fix Markdown lint issues and trailing spaces.                  |
 | `fix:refcache`            | Prune refcache and re-run link check (updates refcache).       |
 | `fix:refcache:refresh`    | Prune refcache by count.                                       |
 | `fix:submodule`           | Pin submodule revisions (same as `pin:submodule`).             |
