@@ -66,8 +66,8 @@ filter:
 Each path includes a simple prefix (`resource`, `scope`, `span`, `spanevent`),
 and the processor automatically infers its execution context from that prefix.
 
-This greatly simplifies configuration by combining all conditions with a
-logical OR: if any condition matches, the telemetry is dropped.
+This greatly simplifies configuration by combining all conditions with a logical
+OR: if any condition matches, the telemetry is dropped.
 
 ### Advanced configuration
 
