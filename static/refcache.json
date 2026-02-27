@@ -18167,13 +18167,13 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-25T09:58:55.515806383Z"
   },
-  "https://opentelemetry.io/docs/collector/deployment/": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-11T21:32:19.606736801Z"
-  },
   "https://opentelemetry.io/blog/2025/ottl-contexts-just-got-easier/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-17T21:09:58.787566Z"
+  },
+  "https://opentelemetry.io/docs/collector/deployment/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-11T21:32:19.606736801Z"
   },
   "https://opentracing.io": {
     "StatusCode": 206,
