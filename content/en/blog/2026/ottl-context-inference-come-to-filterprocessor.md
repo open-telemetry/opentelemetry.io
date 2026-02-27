@@ -66,7 +66,7 @@ filter:
 Each path includes a simple prefix (`resource`, `scope`, `span`, `spanevent`),
 and the processor automatically infers its execution context from that prefix.
 
-No guessing. No hidden placement rules. All conditions are combined using
+This greatly simplifies configuration by combining all conditions with a
 logical OR: if any condition matches, the telemetry is dropped.
 
 ### Advanced configuration
