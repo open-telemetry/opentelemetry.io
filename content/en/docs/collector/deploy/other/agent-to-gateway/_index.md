@@ -118,7 +118,7 @@ capabilities:
   complete trace data or perform aggregation across multiple sources before
   sending data to backends.
 
-### When simpler patterns work better
+## When simpler patterns work better
 
 You might not need the agent-to-gateway pattern if:
 
@@ -443,7 +443,7 @@ Both agents and gateways should include:
 
 - **Cumulative-to-delta calculations**: Cumulative-to-delta metric processing
   requires data-aware load balancing because the calculation is only accurate if
-  all points of a given metric series reach the same gateway Collector metric.
+  all points of a given metric series reach the same gateway Collector.
   Take care when using the
   [`cumulativetodelta` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor)
   in an agent-to-gateway deployment. Each data source should send data to a
