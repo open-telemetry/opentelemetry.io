@@ -65,14 +65,14 @@ js:
     traces: stable
     metrics: stable
     logs: development
-    profiles: 'development'
+    profiles: '-'
 rust:
   name: Rust
   status:
     traces: beta
     metrics: beta
     logs: beta
-    profiles: 'development'
+    profiles: '-'
 swift:
   name: Swift
   status:
