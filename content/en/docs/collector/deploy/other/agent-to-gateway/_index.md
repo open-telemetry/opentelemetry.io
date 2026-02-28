@@ -6,7 +6,7 @@ description:
   gateways
 weight: 100
 # prettier-ignore
-cSpell:ignore: bearertokenauthextension debugexporter filelogreceiver hostmetricsreceiver loadbalancingexporter resourcedetectionprocessor
+cSpell:ignore: bearertokenauthextension cumulativetodelta debugexporter filelogreceiver hostmetricsreceiver loadbalancingexporter resourcedetectionprocessor
 ---
 
 [Agents](/docs/collector/deploy/agent/) and
@@ -14,13 +14,13 @@ cSpell:ignore: bearertokenauthextension debugexporter filelogreceiver hostmetric
 combining them in your deployment, you can create an observability architecture
 that addresses the following issues:
 
-- Separation of concerns: Avoid placing complex configuration and processing
+- **Separation of concerns**: Avoid placing complex configuration and processing
   logic on every machine or in every node. Agent configurations stay small and
   focused, while central processors handle the heavier collection tasks.
-- Scalable cost control: Make better sampling and batching decisions in gateways
-  that can receive telemetry from multiple agents. Gateways can see the full
-  picture, including complete traces, and can be independently scaled.
-- Security and stability: Send telemetry over local networks from agents to
+- **Scalable cost control**: Make better sampling and batching decisions in
+  gateways that can receive telemetry from multiple agents. Gateways can see the
+  full picture, including complete traces, and can be independently scaled.
+- **Security and stability**: Send telemetry over local networks from agents to
   gateways. Gateways become a stable egress point that can handle retries and
   manage credentials.
 
@@ -31,12 +31,14 @@ deployment:
 
 - Agent collectors run on each host in a DaemonSet pattern and collect telemetry
   from services running on the host as well as the host's own telemetry, with
-  optional load balancing.
+  load balancing.
 - Gateway collectors receive data from agents, perform centralized processing,
   such as filtering and sampling, and then export the data to backends.
-- Applications communicate with local agents using `localhost`, agents
-  communicate with gateways over the internal cluster network, and gateways
-  securely communicate with external backends using TLS.
+- Applications communicate with local agents using the internal host network,
+  agents communicate with gateways over the internal cluster network, and
+  gateways securely communicate with external backends using TLS.
+
+TODO: Remove if keeping mermaid diagram.
 
 ![gateway](otel-gateway-arch.svg)
 
@@ -70,14 +72,14 @@ graph TB
         Backend["Observability<br/>backend"]
     end
 
-    App1 -->|"OTLP<br/>(localhost)"| Agent1
-    App2 -->|"OTLP<br/>(localhost)"| Agent2
-    AppN -->|"OTLP<br/>(localhost)"| AgentN
+    App1 -->|"OTLP<br/>(local)"| Agent1
+    App2 -->|"OTLP<br/>(local)"| Agent2
+    AppN -->|"OTLP<br/>(local)"| AgentN
 
     Agent1 -->|"OTLP/gRPC<br/>(internal)"| Gateway1
-    Agent1 -.->|"optional:<br/>load balancing<br/>for tail sampling"| Gateway2
+    Agent1 -.->|"load balancing<br/>for tail sampling"| Gateway2
     Agent2 -->|"OTLP/gRPC<br/>(internal)"| Gateway1
-    Agent2 -.->|"optional:<br/>load balancing<br/>for tail sampling"| Gateway2
+    Agent2 -.->|"load balancing<br/>for tail sampling"| Gateway2
     AgentN -->|"OTLP/gRPC<br/>(internal)"| Gateway2
 
     Gateway1 -->|"OTLP/gRPC<br/>(TLS)"| Backend
@@ -135,6 +137,15 @@ For simpler use cases, consider using only
 The following examples show typical configurations for agents and gateways in an
 agent-to-gateway deployment.
 
+> [!WARNING]
+>
+> While it is generally preferable to bind endpoints to `localhost` when all
+> clients are local, our example configurations use the “unspecified” address
+> `0.0.0.0` as a convenience. The Collector currently defaults to `0.0.0.0`, but
+> the default will be changed to `localhost` in the near future. For details
+> concerning either of these choices as endpoint configuration value, see
+> [Protect against denial of service attacks](/docs/security/config-best-practices/#protect-against-denial-of-service-attacks).
+
 ### Example agent configuration
 
 This example shows an agent configuration that collects application telemetry
@@ -152,7 +163,6 @@ receivers:
 
   # Collect host metrics
   hostmetrics:
-    collection_interval: 30s
     scrapers:
       cpu:
       memory:
@@ -172,45 +182,82 @@ processors:
     limit_mib: 512
     spike_limit_mib: 128
 
-  # Use smaller batches on agents
-  batch:
-    send_batch_size: 1024
-    send_batch_max_size: 2048 # safety limit
-    timeout: 1s
-
 exporters:
   # Send to gateway
   otlp:
     endpoint: otel-gateway:4317
-    tls:
-      insecure: false
-      ca_file: /etc/ssl/certs/ca.crt
     # Enable retry logic
     retry_on_failure:
-      enabled: true
       initial_interval: 5s
       max_interval: 30s
       max_elapsed_time: 300s
     # Absorb short gateway outages
     sending_queue:
-      enabled: true
       num_consumers: 2
       queue_size: 5000
+      batch:
+        sizer: items
+        TODO: decide whether to remove specific values
+        # Use smaller batches on agents
+        min_size: 1024
+        max_size: 2048 # safety limit
+        flush_timeout: 1s
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [resourcedetection, memory_limiter, batch]
+      processors: [memory_limiter, resourcedetection]
       exporters: [otlp]
     metrics:
       receivers: [otlp, hostmetrics]
-      processors: [resourcedetection, memory_limiter, batch]
+      processors: [memory_limiter, resourcedetection]
       exporters: [otlp]
     logs:
       receivers: [otlp]
-      processors: [resourcedetection, memory_limiter, batch]
+      processors: [memory_limiter, resourcedetection]
       exporters: [otlp]
+```
+
+### Example agent configuration with tail-based sampling
+
+When using tail-based sampling across multiple gateway instances, configure
+agents to use the load balancing exporter:
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+
+processors:
+  memory_limiter:
+    check_interval: 1s
+    limit_mib: 512
+  batch:
+    send_batch_size: 1024
+    timeout: 1s
+
+exporters:
+  # Load balance by trace ID
+  loadbalancing:
+    protocol:
+      otlp:
+        tls:
+          insecure: false
+    resolver:
+      dns:
+        hostname: otel-gateway-headless
+        port: 4317
+    routing_key: traceID
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [loadbalancing]
 ```
 
 ### Example gateway configuration
@@ -273,12 +320,6 @@ exporters:
       num_consumers: 4
       queue_size: 20000
 
-  # Optional: Export metrics to Prometheus
-  prometheusremotewrite:
-    endpoint: https://prometheus:9090/api/v1/write
-    tls:
-      insecure: false
-
 service:
   pipelines:
     traces:
@@ -295,53 +336,7 @@ service:
       exporters: [otlp]
 ```
 
-### Example tail-based sampling configuration
-
-When using tail-based sampling across multiple gateway instances, configure
-agents to use the load balancing exporter:
-
-#### Agent configuration with load balancing
-
-```yaml
-receivers:
-  otlp:
-    protocols:
-      grpc:
-        endpoint: 0.0.0.0:4317
-
-processors:
-  memory_limiter:
-    check_interval: 1s
-    limit_mib: 512
-  batch:
-    send_batch_size: 1024
-    timeout: 1s
-
-exporters:
-  # Load balance by trace ID
-  loadbalancing:
-    protocol:
-      otlp:
-        tls:
-          insecure: false
-    resolver:
-      dns:
-        hostname: otel-gateway-headless
-        port: 4317
-    routing_key: traceID
-
-service:
-  pipelines:
-    traces:
-      receivers: [otlp]
-      processors: [memory_limiter, batch]
-      exporters: [loadbalancing]
-```
-
-The gateway configuration remains the same as shown in the previous example,
-with tail-based sampling configured in the processor.
-
-#### Architecture for tail-based sampling
+## Architecture for tail-based sampling
 
 The following diagram shows how trace-ID-based load balancing works with
 tail-based sampling across multiple gateway instances.
@@ -401,39 +396,36 @@ graph LR
     GC3 -->|OTLP| B1
 ```
 
-## Processor configuration in agents and gateways
+## Processors in agents and gateways
 
 When deploying an agent-to-gateway pattern, configure processors differently
 based on their role.
 
-### Essential processors for production
+### Recommended processing
 
 Both agents and gateways should include:
 
 - **Memory limiter processor**: This processor prevents out-of-memory issues by
   applying backpressure when memory usage is high. Configure this as the first
-  processor in your pipeline. Agents typically need smaller limits (256-512 MB),
-  while gateways require more memory (1-4 GB or higher) for batching and
-  sampling operations.
+  processor in your pipeline. Agents typically need smaller limits, while
+  gateways require more memory for batching and sampling operations. Adjust the
+  limits based on the requirements of your workloads and your available
+  resources.
 
-- **Batch processor**: This processor improves efficiency by batching telemetry
-  data before export. Configure agents with smaller batch sizes and shorter
-  timeouts (for example, `send_batch_size: 1024`, `timeout: 1s`) to minimize
-  latency and memory usage. Configure gateways with larger batch sizes and
-  longer timeouts (for example, `send_batch_size: 10000`, `timeout: 10s`) for
-  better throughput and backend efficiency.
+- **Batching**: You can improve efficiency by batching telemetry data before
+  export. Configure agents with smaller batch sizes and shorter timeouts to
+  minimize latency and memory usage. Configure gateways with larger batch sizes
+  and longer timeouts for better throughput and backend efficiency.
 
 ### Sampling considerations
 
-- **Probabilistic sampling**: You can configure this on either agents or
-  gateways. When using probabilistic sampling across multiple collectors, ensure
-  they use the same hash seed for consistent sampling decisions.
+- **Probabilistic sampling**: When using probabilistic sampling across multiple
+  collectors, ensure they use the same hash seed for consistent sampling
+  decisions.
 
 - **Tail-based sampling**: Configure tail-based sampling on gateways only
   because the processor must see all spans for a trace to make sampling
-  decisions. When using tail-based sampling with multiple gateway instances, you
-  need to ensure all spans for a given trace ID are routed to the same gateway
-  instance. Use the
+  decisions. Use the
   [`loadbalancingexporter`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter)
   in your agents to distribute traces by trace ID to your gateway instances.
 
@@ -447,6 +439,16 @@ Both agents and gateways should include:
   > Test carefully and prefer a single well-resourced tail-sampling gateway
   > unless you have a robust sticky-routing strategy.
 
+### Other processing considerations
+
+- **Cumulative-to-delta calculations**: Cumulative-to-delta metric processing
+  requires data-aware load balancing because the calculation is only accurate if
+  all points of a given metric series reach the same gateway Collector metric.
+  Take care when using the
+  [`cumulativetodelta` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor)
+  in an agent-to-gateway deployment. Each data source should send data to a
+  single Collector.
+
 ## Communication between agents and gateways
 
 Agents need to reliably send telemetry data to gateways. Configure the
@@ -456,9 +458,9 @@ environment.
 ### Protocol selection
 
 Use the OTLP protocol for communication between agents and gateways. OTLP
-provides the best performance and compatibility across the OpenTelemetry
-ecosystem. Configure the OTLP exporter in your agents to send data to the OTLP
-receiver in your gateways.
+provides the best compatibility across the OpenTelemetry ecosystem. Configure
+the OTLP exporter in your agents to send data to the OTLP receiver in your
+gateways.
 
 In Kubernetes environments, use service names for endpoint configuration. For
 example, if your gateway service is named `otel-gateway`, configure your agent
@@ -466,12 +468,12 @@ exporter with `endpoint: otel-gateway:4317`.
 
 ### Retries
 
-In production, configure exporter queue and retry settings (for example,
-`retry_on_failure` or `sending_queue` settings) on agents and gateways to handle
-temporary outages between agents and gateways or between gateways and backends.
-Gateways often need larger queues and retry policies to handle backend outages.
-Also consider `send_batch_max_size` to avoid transient backend rejections due to
-oversized payloads.
+Configure exporter queue and retry settings (for example, `retry_on_failure` or
+`sending_queue` settings) on agents and gateways to handle temporary outages
+between agents and gateways or between gateways and backends. Gateways often
+need larger queues and retry policies to handle backend outages. Also consider
+`send_batch_max_size` to avoid transient backend rejections due to oversized
+payloads.
 
 ### Security
 
@@ -490,8 +492,8 @@ gateways:
 
 In Kubernetes environments, automate certificate issuance and rotation (for
 example, with [cert-manager](https://cert-manager.io/docs/)) and mount
-certificates into Collector pods as Secrets. Certificate reload behavior can
-vary by component, so plan rolling restarts if needed when certificates rotate.
+certificates into Collector pods as Secrets. Plan rolling restarts when
+certificates rotate.
 
 ## Scaling agents and gateways
 
@@ -500,14 +502,10 @@ Agents and gateways have different scaling characteristics and requirements.
 
 ### Agents
 
-Agents typically don't require horizontal scaling because they run on each host
-(DaemonSet pattern in Kubernetes). Instead, scale agents vertically by adjusting
-resource limits:
-
-- Monitor CPU and memory usage through Collector internal metrics.
-- Increase memory limits if you see memory pressure or memory limiter
-  backpressure.
-- Increase CPU limits if you experience CPU throttling.
+Agents typically don't require horizontal scaling because they run on each host.
+Instead, scale agents vertically by adjusting resource limits. You can monitor
+CPU and memory usage through Collector
+[internal metrics](/docs/collector/internal-telemetry/).
 
 ### Gateways
 
@@ -520,8 +518,7 @@ You can scale gateways both vertically and horizontally:
   >
   > When scaling gateway instances that export metrics, ensure your deployment
   > follows the single-writer principle to avoid multiple Collectors writing the
-  > same time series concurrently. Some backends require consistent time series
-  > ownership. See the
+  > same time series concurrently. See the
   > [gateway deployment documentation](/docs/collector/deploy/gateway/#multiple-collectors-and-the-single-writer-principle)
   > for details.
 
@@ -534,105 +531,6 @@ For automatic scaling in Kubernetes, use
 [Horizontal Pod Autoscaling (HPA)](https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/)
 based on CPU or memory metrics. Configure the HPA to scale gateways based on
 your workload patterns.
-
-## Resource planning
-
-Properly sizing your Collectors prevents performance issues and ensures reliable
-telemetry collection. Resource requirements differ significantly between agents
-and gateways.
-
-### Agent resource requirements
-
-Agents typically require the following resources:
-
-- **Memory**: 256-512 MB for standard workloads
-- **CPU**: 0.5-1 core for standard workloads
-
-Adjust these values based on your telemetry volume and processing requirements.
-Always configure the memory limiter processor to prevent out-of-memory issues.
-
-### Gateway resource requirements
-
-Gateway resource requirements vary significantly based on workload:
-
-- **Memory**: 1-4 GB base requirement, with more memory needed for:
-  - Tail-based sampling (requires buffering spans)
-  - High throughput (larger batches)
-  - Complex processing (transforms, filtering)
-
-- **CPU**: 1-4 cores, scaling with throughput
-
-Monitor gateway resource usage and adjust based on observed patterns. Gateways
-should have sufficient memory overhead to handle traffic spikes.
-
-## Deployment considerations
-
-Choose deployment patterns that match your infrastructure and operational
-requirements. Different deployment options have trade-offs in terms of resource
-usage, isolation, and management complexity.
-
-### Agent deployment options
-
-- **DaemonSet (Kubernetes)**: Recommended for most Kubernetes deployments. Runs
-  one agent per node, automatically scaling with cluster size.
-
-- **Sidecar**: Use only when you need isolated resource limits per application
-  or application-specific configuration. Sidecars increase resource overhead and
-  management complexity. Prefer DaemonSets when possible.
-
-### Handling variable workloads
-
-For workloads with significant variability (seasonal traffic, batch jobs):
-
-- Configure memory limiter processor with appropriate limits and spike
-  thresholds.
-- Use queue settings in exporters to handle temporary traffic spikes.
-- For gateways, configure HPA with appropriate scaling policies.
-- Monitor queue sizes and retry counts to identify capacity issues.
-
-## Troubleshooting
-
-When telemetry isn't flowing as expected or Collectors are experiencing issues,
-use these techniques to identify and resolve problems.
-
-### Verify telemetry flow
-
-To verify that telemetry is flowing correctly between agents and gateways:
-
-1. Enable the
-   [`debugexporter`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/debugexporter)
-   temporarily to see data flowing through the Collector.
-2. Check Collector metrics to verify data is being received and exported.
-3. Look for error logs indicating export failures or backpressure.
-
-### Common issues
-
-- **Memory pressure**: If you see memory limiter dropping data, increase memory
-  limits or reduce batch sizes.
-
-- **Queue full errors**: These errors indicate the gateway cannot keep up with
-  incoming data. Scale gateways horizontally or vertically, or check backend
-  connectivity.
-
-- **CPU throttling**: In Kubernetes, CPU throttling can occur even when usage is
-  below limits. Monitor the `container_cpu_cfs_throttled_periods_total` metric
-  and adjust CPU limits if needed.
-
-- **Missing spans in tail-based sampling**: Verify that the load balancing
-  exporter is configured in agents and that all gateway instances are
-  discoverable.
-
-### Monitor Collector health
-
-Monitor these key metrics from your Collectors:
-
-- `otelcol_processor_refused_spans`: Indicates memory pressure or processing
-  issues
-- `otelcol_exporter_queue_size`: Watch for growing queues indicating export
-  problems
-- `otelcol_exporter_send_failed_spans`: Indicates backend connectivity or
-  capacity issues
-- Memory and CPU usage from the Kubernetes metrics API or Prometheus
 
 ## Additional resources
 
