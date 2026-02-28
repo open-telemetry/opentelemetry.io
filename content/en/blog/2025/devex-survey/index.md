@@ -106,7 +106,7 @@ deployments. More on this in the Future Plans section.
 Interestingly, _collector-contrib_ had a large percentage of the responses to
 the question, “Which collector do you use?”. Sadly, it is unclear if this is due
 to being unaware of OCB
-([https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder))
+([https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder](https://github.com/open-telemetry/opentelemetry-collector/tree/d25efc7e2f31a3ba5347d0725a22d7bed1b4015d/cmd/builder?from_branch=main))
 for building custom images, disinterest in using it or a lack of adequate
 documentation around its use.
 

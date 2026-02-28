@@ -4,9 +4,7 @@ NOTE_TO_LOCALE_AUTHORS: |
   DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
   DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
 title: OpenTelemetry
-description: >-
-  High-quality, ubiquitous, and portable telemetry to enable effective
-  observability
+description: The open standard for telemetry
 outputs:
   - HTML
   # Include the following for `content/en` ONLY

@@ -119,7 +119,7 @@ analysis.
 
 To instrument their code, they configure the
 [Node.js SDK](/docs/languages/js/getting-started/nodejs/) and use a number of
-[Node.js auto-instrumentation plug-ins](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/plugins/node).
+[Node.js auto-instrumentation plug-ins](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/17f4334056e1a97463e5dbf5f45f2e1195d47d7e/plugins/node?from_branch=main).
 While the team is currently only using
 [auto-instrumentation](/docs/specs/otel/glossary/#automatic-instrumentation) to
 generate traces and [spans](/docs/concepts/observability-primer/#spans), they do
@@ -144,7 +144,7 @@ deprecated field usage and overall query usage, which is something that they
 can’t get from their traces. These metrics are being sent to the observability
 backend through the
 [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector#-opentelemetry-collector)’s
-[OTLP metrics receiver](https://github.com/open-telemetry/opentelemetry-collector/blob/main/receiver/otlpreceiver/README.md).
+[OTLP metrics receiver](https://github.com/open-telemetry/opentelemetry-collector/blob/b3125cea266d6453df1bd48a17686f752f7d07d9/receiver/otlpreceiver/README.md?from_branch=main).
 
 There is a long-term goal to have this plugin contributed back to the
 OpenTelemetry community. At the moment, however, the plugin is currently coupled
@@ -215,7 +215,7 @@ organization.
 ### Are you seeing the benefits of using OpenTelemetry with GraphQL in your production environments?
 
 Using the
-[GraphQL OpenTelemetry plugin-for Node.js](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-graphql)
+[GraphQL OpenTelemetry plugin-for Node.js](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/0b33a118f289c0435a241c84c3c3923312fc2b98/packages/instrumentation-graphql?from_branch=main)
 made it super easy to identify an issue with a GraphQL resolver that was acting
 up in production.
 
@@ -223,10 +223,10 @@ up in production.
 
 On the Node.js side, the team used auto-instrumentation for
 [HTTP](https://www.npmjs.com/package/@opentelemetry/instrumentation-http),
-[Express](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-express),
-[GraphQL](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-graphql),
+[Express](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/0b33a118f289c0435a241c84c3c3923312fc2b98/packages/instrumentation-express?from_branch=main),
+[GraphQL](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/0b33a118f289c0435a241c84c3c3923312fc2b98/packages/instrumentation-graphql?from_branch=main),
 and also the
-[AWS SDK](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-aws-sdk)
+[AWS SDK](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/0b33a118f289c0435a241c84c3c3923312fc2b98/packages/instrumentation-aws-sdk?from_branch=main)
 on some systems.
 
 The most useful instrumentation was GraphQL and AWS SDK. Although GraphQL
