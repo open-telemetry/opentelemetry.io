@@ -1,5 +1,4 @@
 name: PR actions
-# cSpell:ignore otelbot
 
 on:
   issue_comment:
@@ -21,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       github.event.issue.pull_request &&
-      startsWith(github.event.comment.body, '/fix:')
+      startsWith(github.event.comment.body, '/fix')
 
     outputs:
       action_name: ${{ steps.extract.outputs.action_name }}
@@ -40,7 +39,14 @@ jobs:
       - name: Extract action name
         id: extract
         run: |
-          PR_ACTION=$(echo "$COMMENT" | grep -oP '/fix:\K[:-_0-9a-z]+')
+          PR_ACTION=$(echo "$COMMENT" | grep -oP '^/\Kfix(:[-_0-9a-zA-Z]+)*$' || true)
+          if [[ -z "$PR_ACTION" ]]; then
+            msg="❌ Invalid fix directive. Use \`/fix\` or \`/fix:<name>\` and no other text."
+            # We don't have permissions in this job to comment on the PR. Skip for now:
+            # gh pr comment "$PR_NUM" --body "$msg"
+            echo "$msg"
+            exit 1
+          fi
           echo "action_name=$PR_ACTION" >> "$GITHUB_OUTPUT"
 
       - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
@@ -60,7 +66,20 @@ jobs:
         # refcache even if there might still be some broken links.
         continue-on-error: true
         run: |
-          npm run fix:${{ steps.extract.outputs.action_name }}
+          cmd="${{ steps.extract.outputs.action_name }}"
+          # Since https://github.com/open-telemetry/opentelemetry.io/pull/9291,
+          # the `fix:all` command is now handled via `fix`; map the command.
+          if [[ $cmd == "fix:all" ]]; then
+            cmd="fix"
+            msg="ℹ️ INFO: Running \`/fix\` for \`/fix:all\` (compat mode). Use \`/fix\` moving forward."
+            # We don't have permissions in this job to comment on the PR. Skip for now:
+            # gh pr comment $PR_NUM --body "$msg"
+            echo "$msg"
+          elif [[ $cmd == "fix:ALL" ]]; then
+            # Allow maintainers to still run `fix:all` via `fix:ALL`.
+            cmd="fix:all"
+          fi
+          (set -x; npm run $cmd)
           action_exit_status=$?
           echo "action_exit_status=$action_exit_status" >> "$GITHUB_OUTPUT"
           echo "PR action exit status: $action_exit_status"
@@ -166,7 +185,9 @@ jobs:
           ${{ !failure() && !cancelled() &&
           needs.generate-patch.outputs.action_exit_status == '0' }}
         run: |
-          gh pr comment $PR_NUM --body "✅ \`fix:${{ needs.generate-patch.outputs.action_name }}\` applied successfully in [run $GITHUB_RUN_ID]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)."
+          cmd="${{ needs.generate-patch.outputs.action_name }}"
+          run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          gh pr comment $PR_NUM --body "✅ \`$cmd\` applied successfully in [run $GITHUB_RUN_ID]($run_url)."
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
@@ -175,7 +196,10 @@ jobs:
           ${{ failure() || cancelled() ||
           needs.generate-patch.outputs.action_exit_status != '0' }}
         run: |
-          gh pr comment $PR_NUM --body "❌ \`fix:${{ needs.generate-patch.outputs.action_name }}\` failed or exited with a non-zero error code (${{ needs.generate-patch.outputs.action_exit_status }}). See logs: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          cmd="${{ needs.generate-patch.outputs.action_name }}"
+          status="${{ needs.generate-patch.outputs.action_exit_status }}"
+          run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          gh pr comment $PR_NUM --body "❌ \`$cmd\` failed or exited with a non-zero error code ($status). See logs: $run_url"
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
@@ -196,6 +220,7 @@ jobs:
 
       - name: Comment no-op
         run: |
-          gh pr comment $PR_NUM --body "ℹ️ \`fix:${{ needs.generate-patch.outputs.action_name }}\` made no changes. Nothing to commit."
+          cmd="${{ needs.generate-patch.outputs.action_name }}"
+          gh pr comment $PR_NUM --body "ℹ️ \`$cmd\` made no changes. Nothing to commit."
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
