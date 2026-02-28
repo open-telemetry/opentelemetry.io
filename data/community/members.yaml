@@ -531,13 +531,6 @@ maintainers:
       - ruby-maintainers
     html_url: https://github.com/dazuma
     avatar_url: https://avatars.githubusercontent.com/u/8911?v=4
-  - name: deadtrickster
-    teams:
-      - erlang-approvers
-      - erlang-contrib-approvers
-      - erlang-maintainers
-    html_url: https://github.com/deadtrickster
-    avatar_url: https://avatars.githubusercontent.com/u/172311?v=4
   - name: dineshg13
     teams:
       - go-compile-instrumentation-approvers
@@ -722,13 +715,6 @@ maintainers:
       - sig-mainframe-triagers
     html_url: https://github.com/gshriver
     avatar_url: https://avatars.githubusercontent.com/u/5203552?v=4
-  - name: hauleth
-    teams:
-      - erlang-approvers
-      - erlang-contrib-approvers
-      - erlang-maintainers
-    html_url: https://github.com/hauleth
-    avatar_url: https://avatars.githubusercontent.com/u/291639?v=4
   - name: hdost
     teams:
       - rust-approvers
@@ -2481,12 +2467,6 @@ approvers:
       - operator-triagers
     html_url: https://github.com/yuriolisa
     avatar_url: https://avatars.githubusercontent.com/u/48062171?v=4
-  - name: zachdaniel
-    teams:
-      - erlang-approvers
-      - erlang-contrib-approvers
-    html_url: https://github.com/zachdaniel
-    avatar_url: https://avatars.githubusercontent.com/u/5722339?v=4
   - name: zeitlinger
     teams:
       - java-approvers
@@ -2811,6 +2791,9 @@ members:
   - name: davidwitten
     html_url: https://github.com/davidwitten
     avatar_url: https://avatars.githubusercontent.com/u/3642085?v=4
+  - name: deadtrickster
+    html_url: https://github.com/deadtrickster
+    avatar_url: https://avatars.githubusercontent.com/u/172311?v=4
   - name: dengliming
     html_url: https://github.com/dengliming
     avatar_url: https://avatars.githubusercontent.com/u/7796156?v=4
@@ -2880,6 +2863,9 @@ members:
   - name: haoqixu
     html_url: https://github.com/haoqixu
     avatar_url: https://avatars.githubusercontent.com/u/9400582?v=4
+  - name: hauleth
+    html_url: https://github.com/hauleth
+    avatar_url: https://avatars.githubusercontent.com/u/291639?v=4
   - name: hekike
     html_url: https://github.com/hekike
     avatar_url: https://avatars.githubusercontent.com/u/1764512?v=4

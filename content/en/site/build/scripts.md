@@ -1,10 +1,9 @@
 ---
-title: Automation scripts
-linkTitle: Scripts
+title: Helper scripts
 description: >-
   Shell scripts used by CI workflows and local development for label management,
   link checking, registry updates, and more.
-weight: 20
+weight: 30
 ---
 
 All scripts live under
