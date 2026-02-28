@@ -6,7 +6,7 @@ description:
   gateways
 weight: 100
 # prettier-ignore
-cSpell:ignore: bearertokenauthextension cumulativetodelta debugexporter filelogreceiver hostmetricsreceiver loadbalancingexporter resourcedetectionprocessor
+cSpell:ignore: bearertokenauthextension cumulativetodelta filelogreceiver hostmetricsreceiver loadbalancingexporter resourcedetectionprocessor
 ---
 
 [Agents](/docs/collector/deploy/agent/) and
@@ -443,8 +443,8 @@ Both agents and gateways should include:
 
 - **Cumulative-to-delta calculations**: Cumulative-to-delta metric processing
   requires data-aware load balancing because the calculation is only accurate if
-  all points of a given metric series reach the same gateway Collector.
-  Take care when using the
+  all points of a given metric series reach the same gateway Collector. Take
+  care when using the
   [`cumulativetodelta` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor)
   in an agent-to-gateway deployment. Each data source should send data to a
   single Collector.
