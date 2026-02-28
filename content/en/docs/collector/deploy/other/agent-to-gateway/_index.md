@@ -539,6 +539,5 @@ For more information, see the following documentation:
 - [Collector benchmarks](/docs/collector/benchmarks/)
 - [Collector configuration](/docs/collector/configuration/)
 - [Memory limiter processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor)
-- [Batch processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor)
 - [Load balancing exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter)
 - [Tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
