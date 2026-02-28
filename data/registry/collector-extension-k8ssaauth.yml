@@ -19,6 +19,6 @@ authors:
     url: https://github.com/Jamstah/
 createdAt: 2026-02-27
 package:
-  registry: k8ssaauthextension
+  registry: go-collector
   name: github.com/Jamstah/k8ssaauthextension
   version: v0.0.2
