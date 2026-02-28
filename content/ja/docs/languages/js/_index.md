@@ -8,7 +8,7 @@ redirects:
   - { from: /js/*, to: ':splat' }
   - { from: /docs/js/*, to: ':splat' }
 weight: 20
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
 drifted_from_default: true
 ---
 
@@ -38,6 +38,6 @@ OpenTelemetry JavaScriptは以下のリポジトリで構成されています�
 
 ## ヘルプまたはフィードバック {#help-or-feedback}
 
-OpenTelemetry JavaScriptについて質問がある場合は、[GitHub Discussions](https://github.com/open-telemetry/opentelemetry-js/discussions)または[CNCF Slack](https://slack.cncf.io/)の[#otel-js]チャンネルまでお問い合わせください。
+OpenTelemetry JavaScriptについて質問がある場合は、[GitHub Discussions](https://github.com/open-telemetry/opentelemetry-js/discussions)または[CNCF Slack](https://slack.cncf.io/)の`#otel-js`チャンネルまでお問い合わせください。
 
 OpenTelemetry JavaScriptに貢献したい場合は、[貢献手順](https://github.com/open-telemetry/opentelemetry-js/blob/main/CONTRIBUTING.md)を参照してください。

@@ -153,7 +153,7 @@ native language, ensuring no typos or inconsistencies.
 
 For example, the code generated from Weaver for the Go client SDK can be found
 in this
-[repository](https://github.com/open-telemetry/opentelemetry-go/tree/main/semconv).
+[repository](https://github.com/open-telemetry/opentelemetry-go/tree/3264bf171b1e6cd70f6be4a483f2bcb84eda6ccf/semconv?from_branch=main).
 The Weaver command used looks like:
 
 ```bash
@@ -175,7 +175,7 @@ weaver registry diff -r current-version-registry-path --baseline-registry previo
 
 **Live instrumentation checks and coverage:**<br/> Users and maintainers can
 leverage Weaver to
-[live-check](https://github.com/open-telemetry/weaver/tree/main/crates/weaver_live_check#readme)
+[live-check](https://github.com/open-telemetry/weaver/tree/4da6fa62e174e1f0df1a990234bd32f5018cb23a/crates/weaver_live_check?from_branch=main#readme)
 that their application correctly emits telemetry conforming to the official
 semantic conventions, or a custom registry (see below).
 
@@ -307,8 +307,9 @@ adopt:
 - **Type-safe semantic-conventions API generation**: Automatically generate
   strongly typed instrumentation libraries to reduce errors and accelerate
   development. An example of a Go type-safe client API for Prometheus is already
-  in progress at [promconv](https://github.com/sh0rez/promconv/tree/main). A
-  more general Go type-safe client API using Weaver is also being developed at
+  in progress at
+  [promconv](https://github.com/sh0rez/promconv/tree/4ef6f697497dec4dc87a0d670cd90ee12335bcdf?from_branch=main).
+  A more general Go type-safe client API using Weaver is also being developed at
   [MrAlias/semconv-go](https://github.com/MrAlias/semconv-go)
 
 Stay tuned, the next generation of semantic convention management is coming, and

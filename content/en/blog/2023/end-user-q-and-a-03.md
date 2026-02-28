@@ -215,7 +215,7 @@ Auto-instrumentation emits some [OTLP](/docs/specs/otlp/) metrics; however, the
 majority of metrics still come from Prometheus.
 
 The team currently uses the
-[Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/prometheusreceiver/README.md)
+[Prometheus Receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/c9585747e97d1ba5a0aae3bee72eaf76438951f4/receiver/prometheusreceiver/README.md?from_branch=main)
 to scrape metrics from [Consul](https://consul.io). Specifically, they use
 Consul to get the targets and the ports where to scrape them. The
 [Receiver’s scrape configs](https://github.com/prometheus/prometheus/blob/v2.28.1/docs/configuration/configuration.md#scrape_config)
@@ -262,13 +262,13 @@ auto-instrumentation.
 Everything is then sent to a central OTel Collector (i.e. an
 [OTel Collector gateway](/docs/collector/deploy/gateway/)) per data center,
 where data masking (using the
-[transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor),
+[transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/transformprocessor?from_branch=main),
 or
-[redaction processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor)),
+[redaction processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/redactionprocessor?from_branch=main)),
 data sampling (e.g.
-[tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
+[tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/tailsamplingprocessor?from_branch=main)
 or
-[probabilistic sample processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/probabilisticsamplerprocessor)),
+[probabilistic sample processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/probabilisticsamplerprocessor?from_branch=main)),
 and other things happen. It then sends traces to Grafana Tempo.
 
 The central OTel Collector resides on another Kubernetes cluster that belongs
@@ -295,18 +295,18 @@ that the team did was to enable auto-scaling for the Collectors, and tweak
 settings to make sure that it could handle large amounts of data.
 
 The team also leaned heavily on
-[OTel Helm charts](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts),
+[OTel Helm charts](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/2c6541c9914ea7ad82c00884af7fc28385fd522d/charts?from_branch=main),
 and on the OTel Community for additional support.
 
 Are you currently using any processors on the OTel Collector? \
 The team is currently experimenting with processors, namely for data masking
-([transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/transformprocessor),
+([transform processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/transformprocessor?from_branch=main),
 or
-[redaction processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/redactionprocessor)),
+[redaction processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/processor/redactionprocessor?from_branch=main)),
 especially as they move to using OTel Logs, which will contain sensitive data
 that they won’t want to transmit to their Observability backend. They currently,
 however, are only using the
-[batch processor](https://github.com/open-telemetry/opentelemetry-collector/blob/main/processor/batchprocessor/README.md).
+[batch processor](https://github.com/open-telemetry/opentelemetry-collector/blob/b3125cea266d6453df1bd48a17686f752f7d07d9/processor/batchprocessor/README.md?from_branch=main).
 
 ### Are you aware of any teams using span events?
 
@@ -429,7 +429,7 @@ organization, we’d love to hear from you! Ways to share:
 - Join the
   [OpenTelemetry group on LinkedIn](https://www.linkedin.com/groups/14081251)
 - Share your stories on the
-  [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/main/README.md#submitting-a-blog-post)
+  [OpenTelemetry blog](https://github.com/open-telemetry/opentelemetry.io/blob/368f811f81c27798a031b4c92024ecdd65cddc19/README.md?from_branch=main#submitting-a-blog-post)
 
 Be sure to follow OpenTelemetry on
 [Mastodon](https://fosstodon.org/@opentelemetry) and

@@ -8,29 +8,75 @@ weight: 5
 OBI can run as a standalone Linux OS process with elevated privileges that can
 inspect other running processes.
 
-## Download and install
+## Download and verify
 
-> [!NOTE]
->
-> We are working on providing a standalone binary distribution. To track planned
-> updates, see [open-telemetry/opentelemetry-ebpf-instrumentation#13][#13].
+OBI provides pre-built binaries for Linux (amd64 and arm64). Download the latest
+release from the
+[releases page](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases).
+Each release includes:
 
-[#13]:
-  https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/issues/13
+- `obi-v<version>-linux-amd64.tar.gz` - Linux AMD64/x86_64 archive
+- `obi-v<version>-linux-arm64.tar.gz` - Linux ARM64 archive
+- `SHA256SUMS` - Checksums for verification
 
-You can get OBI by extracting the necessary files from the container image.
+Set your desired version and architecture:
 
 ```sh
-IMAGE=otel/ebpf-instrument:main
-docker pull $IMAGE
-ID=$(docker create $IMAGE)
-docker cp $ID:ebpf-instrument .
-docker cp $ID:obi-java-agent.jar .
-docker rm -v $ID
+# Set your desired version (find latest at
+# https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases)
+VERSION=0.5.0
+
+# Determine your architecture
+# For Intel/AMD 64-bit: amd64
+# For ARM 64-bit: arm64
+ARCH=amd64
+
+# Download the archive for your architecture
+wget https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/download/v${VERSION}/obi-v${VERSION}-linux-${ARCH}.tar.gz
+
+# Download checksums
+wget https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/download/v${VERSION}/SHA256SUMS
+
+# Verify the archive
+sha256sum -c SHA256SUMS --ignore-missing
+
+# Extract the archive
+tar -xzf obi-v${VERSION}-linux-${ARCH}.tar.gz
 ```
 
-It is important that both `ebpf-instrument` and `obi-java-agent.jar` are located
-in the same directory.
+The archive contains:
+
+- `obi` - Main OBI binary
+- `k8s-cache` - Kubernetes cache binary
+- `obi-java-agent.jar` - Java instrumentation agent
+- `LICENSE` - Project license
+- `NOTICE` - Legal notices
+- `NOTICES/` - Third-party licenses and attributions
+
+> [!IMPORTANT]
+>
+> The `obi-java-agent.jar` file must remain in the same directory as the `obi`
+> binary. This is required for Java instrumentation to function properly.
+
+## Install to system
+
+After extracting the archive, you can install the binaries to a location in your
+PATH so they can be used from any directory.
+
+The following example installs to `/usr/local/bin`, which is a standard location
+on most Linux distributions. You can install to any other directory in your
+PATH:
+
+```bash
+# Move binaries to a directory in your PATH
+sudo cp obi /usr/local/bin/
+
+# The Java agent MUST be in the same directory as the OBI binary
+sudo cp obi-java-agent.jar /usr/local/bin/
+
+# Verify installation
+obi --version
+```
 
 ## Set up OBI
 
@@ -40,9 +86,16 @@ in the same directory.
 
 2. Run OBI as a privileged process:
 
-```bash
-sudo ./ebpf-instrument --config=<path to config file>
-```
+   ```bash
+   sudo obi --config=<path to config file>
+   ```
+
+   If you did not install OBI to your PATH, you can run it from the extracted
+   directory:
+
+   ```bash
+   sudo ./obi --config=<path to config file>
+   ```
 
 ## Permissions
 
