@@ -61,7 +61,7 @@ otel-collector:
 ```
 
 The `otel-collector-config.yaml` file is required for the Collector to start.
-Here is a minimal example to get started:
+Below is a minimal Collector configuration that logs all received telemetry.
 
 ```yaml
 receivers:
