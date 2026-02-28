@@ -14771,6 +14771,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-14T09:49:37.165295354Z"
   },
+  "https://github.com/prometheus/client_java/tree/simpleclient": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-28T18:37:44.811832861Z"
+  },
   "https://github.com/prometheus/client_model/blob/01ca24cafc7877ed5ce091083068cde086b7c3dc/io/prometheus/client/metrics.proto": {
     "StatusCode": 206,
     "LastSeen": "2026-02-20T09:54:51.819198336Z"
@@ -21610,6 +21614,10 @@
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-context/latest/io/opentelemetry/context/propagation/TextMapPropagator.html": {
     "StatusCode": 200,
     "LastSeen": "2026-02-20T09:52:06.673479116Z"
+  },
+  "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-exporter-prometheus/latest/io/opentelemetry/exporter/prometheus/PrometheusMetricReader.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-28T18:37:47.322354864Z"
   },
   "https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-sdk-common/latest/io/opentelemetry/sdk/resources/Resource.html": {
     "StatusCode": 200,
