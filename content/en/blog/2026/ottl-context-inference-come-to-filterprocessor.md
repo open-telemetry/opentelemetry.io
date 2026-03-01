@@ -141,4 +141,7 @@ by removing the need to manually select execution contexts. This makes filter
 configuration easier to read, easier to maintain, and closer to the intent of
 the rule itself.
 
-We welcome your feedback, and we’d love to hear about your experience using it. You can reach us in the [#otel-collector](https://cloud-native.slack.com/archives/C01N6P7KR6W) channel in the [CNCF Slack](https://slack.cncf.io/) workspace.
+We welcome your feedback, and we’d love to hear about your experience using it.
+You can reach us in the
+[#otel-collector](https://cloud-native.slack.com/archives/C01N6P7KR6W) channel
+in the [CNCF Slack](https://slack.cncf.io/) workspace.
