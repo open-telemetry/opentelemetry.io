@@ -1,7 +1,7 @@
 ---
-title: 'Declarative Config Stabilized'
-linkTitle: Declarative configuration is stable!
-date: 2026-02-26
+title: Declarative configuration is stable!
+linkTitle: Declarative Config Stabilized
+date: 2026-03-09
 author: >-
   [Jack Berg](https://github.com/jack-berg)(Grafana Labs)
 # prettier-ignore
@@ -35,7 +35,7 @@ have been marked stable, including
 
 ## What's the status of language implementations?
 
-As of now, there are implementations available in 5 languages:
+As of now, there are implementations available in five languages:
 
 - C++
 - Go
@@ -45,7 +45,7 @@ As of now, there are implementations available in 5 languages:
 
 Development is underway for .NET and Python.
 
-Additionally, the go implementation is leveraged in the collector for
+Additionally, the go implementation is leveraged in the Collector for
 configuring internal telemetry.
 
 Going forward, implementation status can be tracked with the following
@@ -56,7 +56,7 @@ resources:
 - [opentelemetry-configuration Language Support Status](https://github.com/open-telemetry/opentelemetry-configuration/blob/854f201660436d0e66f73785b7b310e4f8d46c6e/language-support-status.md),
   for fine grain details about the status of specific types and properties
 
-## What does this mean for me?
+## What does this mean for you?
 
 As language implementations progress, the ability to configure OpenTelemetry
 consistently in various languages will improve. In addition, the new
