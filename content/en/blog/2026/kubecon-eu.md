@@ -104,7 +104,7 @@ Read on to learn about all the events related to OpenTelemetry during KubeCon.
 
 [Observability Day][] fosters collaboration, discussion, and knowledge sharing
 with a focus on cloud native observability projects. This event will be held on
-November 10, 2025 from 9:00 to 18:00. Look for your favorite talks about
+March 23, 2026 from 9:00 to 18:00. Look for your favorite talks about
 Observability and OpenTelemetry in the [schedule][obs-day-sched].
 
 <details>
@@ -204,7 +204,7 @@ Observability and OpenTelemetry in the [schedule][obs-day-sched].
 
 ## Maintainer Summit
 
-Held on November 9, one day prior to the co-located events and conference, the
+Held on March 22, one day prior to the co-located events and conference, the
 Maintainer Summit is an exclusive opportunity for the people behind the project
 to gather face-to-face. [Members][membership] of the OpenTelemetry organization
 will come together to collaborate, learn, share ideas, solve problems, and
