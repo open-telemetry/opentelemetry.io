@@ -1,7 +1,7 @@
 ---
 title: Declarative configuration is stable!
 linkTitle: Declarative Config Stabilized
-date: 2026-03-09
+date: 2026-03-05
 author: >-
   [Jack Berg](https://github.com/jack-berg)(Grafana Labs)
 # prettier-ignore
