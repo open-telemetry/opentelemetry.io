@@ -1,5 +1,4 @@
 name: Update semconv integration branch
-# cSpell:ignore otelbot
 
 on:
   schedule:

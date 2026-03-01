@@ -62,7 +62,7 @@ from the community for OpAMP. To track progress, see
 endpoints are unavailable?
 
 **A:** There is an experimental
-[storage extension](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/experimental/storage)
+[storage extension](https://github.com/open-telemetry/opentelemetry-collector/tree/232c878cd0a5631cf93f40cbd3fe9c266ed9e6b7/extension/experimental/storage?from_branch=main)
 that is currently under development to support buffering and data persistence.
 
 #### 4 - Periodically profiling Collectors to improve performance
@@ -101,7 +101,7 @@ we can drop or truncate the number of spans.
 **A:** Tail-based sampling processor provides users with a bunch of sampling
 policies. Span count is one such policy. You can also combine multiple policies.
 Here's the link to tail
-[sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/tailsamplingprocessor/README.md).
+[sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/549e115b28292c164eb671618c0ec8b728b69d2a/processor/tailsamplingprocessor/README.md?from_branch=main).
 The span count policy is based on min span count. Some users might look for some
 kind of exclusion policy.
 
@@ -128,14 +128,14 @@ statsd library?
 **A:** The
 [OpenTelemetry Collector contrib](https://github.com/open-telemetry/opentelemetry-collector-contrib)
 has a lot of
-[receivers](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver)
+[receivers](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/944d4a82c408d58f9d8ba1a1d4783094301af0de/receiver?from_branch=main)
 for different types of metrics that can be used. For example, if you are sending
 out metrics in Prometheus format, you can configure your OTel Collector to
 scrape Prometheus metrics. There is also a
-[statsd receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/statsdreceiver)
+[statsd receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/receiver/statsdreceiver?from_branch=main)
 that is available. If you have something that is already working, then you don’t
 need to change it. You can check the
-[list of receivers](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver).
+[list of receivers](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/944d4a82c408d58f9d8ba1a1d4783094301af0de/receiver?from_branch=main).
 
 #### 2 - Emitting business metrics
 
@@ -179,13 +179,13 @@ telemetry from known sources. Prometheus has automatic service discovery in
 Kubernetes. Currently, there is nothing in the Collector which solves this.
 
 There is a
-[receiver creator](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/receivercreator/README.md)
+[receiver creator](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/2f469687a6d48b2a9637eba1a751388f7af81f87/receiver/receivercreator/README.md?from_branch=main)
 which can instantiate other receivers at runtime based on whether an observed
 endpoint matches a configured rule. To use the receiver creator, you must first
 configure one or more
-[observers](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/observer/README.md).
+[observers](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/3b3c4d23ebe578ffd2a30457d1181e3711fc28a8/extension/observer/README.md?from_branch=main).
 Using
-[Kubernetes observer](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/k8sobserver#kubernetes-observer),
+[Kubernetes observer](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/635d4254a3018eb3ca8f1736e71fcb54f8ed6e5a/extension/observer/k8sobserver?from_branch=main#kubernetes-observer),
 users should be able to detect and report Kubernetes pod, port, and node
 endpoints via the Kubernetes API.
 

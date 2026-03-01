@@ -11,7 +11,7 @@ cSpell:ignore: Aoqui Daniela entrypoints ffspostgres hashi hashiqube jobspec job
 Y’all… I’m so excited, because I finally got to work on an item on my tech
 bucket list. Last week, I began the process of translating
 [OpenTelemetry Demo App](/docs/demo/)’s
-[Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-demo)
+[Helm Charts](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/146b47dd310628c8a8d0b0a19ff1e813560b2599/charts/opentelemetry-demo?from_branch=main)
 to [HashiCorp](https://hashicorp.com) [Nomad][] job specs. Today I’ll be talking
 about how to run the OpenTelemetry Demo App on Nomad, using my favorite
 Hashi-in-a-box tool, [HashiQube](https://rubiksqube.com/#/).
@@ -239,9 +239,9 @@ The OTel Demo App uses [Envoy](https://www.envoyproxy.io) to expose a number of
 front-end services: the web store, [Jaeger](https://www.jaegertracing.io/),
 [Grafana](https://grafana.com/), Load Generator, and Feature Flag. These are all
 managed by the
-[frontendproxy](https://github.com/avillela/nomad-conversions/blob/main/otel-demo-app/jobspec/frontendproxy.nomad)
+[frontendproxy](https://github.com/avillela/nomad-conversions/blob/1d160b0b63ceb5f7cddda795fa54cdcf067c47d5/otel-demo-app/jobspec/frontendproxy.nomad?from_branch=main)
 service. Traefik makes the
-[frontendproxy](https://github.com/avillela/nomad-conversions/blob/main/otel-demo-app/jobspec/frontendproxy.nomad)
+[frontendproxy](https://github.com/avillela/nomad-conversions/blob/1d160b0b63ceb5f7cddda795fa54cdcf067c47d5/otel-demo-app/jobspec/frontendproxy.nomad?from_branch=main)
 service available via the `otel-demo.localhost` address.
 
 This is configured via the code snippet below, in the `service` stanza of
@@ -271,7 +271,7 @@ buy a few. 😉🔭
 ![Screen capture of the Jaeger UI](jaeger.png 'Screen capture of the Jaeger UI')
 
 In the screen capture above, we can see a sample Trace from the
-[checkoutservice](https://github.com/avillela/nomad-conversions/blob/main/otel-demo-app/jobspec/checkoutservice.nomad).
+[checkoutservice](https://github.com/avillela/nomad-conversions/blob/f546f9079a97fcbdfc814b82dbe6eec8a5005d7d/otel-demo-app/jobspec/checkoutservice.nomad?from_branch=main).
 
 **Grafana:** <http://otel-demo.localhost/grafana/>
 
@@ -301,10 +301,10 @@ services.
 Although all of the services appear to start up properly, in some cases, some
 services appear to be unable to connect to the OTel Collector. I haven’t quite
 figured out why this is happening, so for now, I just restart
-[otel-collector.nomad](https://github.com/avillela/nomad-conversions/blob/main/otel-demo-app/jobspec/otel-collector.nomad).
+[otel-collector.nomad](https://github.com/avillela/nomad-conversions/blob/ed12ec3d4092a7816aadd2d761a98f9ef51dfb74/otel-demo-app/jobspec/otel-collector.nomad?from_branch=main).
 If things are looking a little weird in the Webapp UI (like missing products or
 currency), I also restart
-[frontend.nomad](https://github.com/avillela/nomad-conversions/blob/main/otel-demo-app/jobspec/frontend.nomad).
+[frontend.nomad](https://github.com/avillela/nomad-conversions/blob/add469c5ad127cfb0956fd3da49c8a65160e1281/otel-demo-app/jobspec/frontend.nomad?from_branch=main).
 Usually a good indicator that services aren’t sending telemetry to the Collector
 is to look at the number of services showing up in Jaeger. You should see 14
 services, including the `jaeger-query` service.
