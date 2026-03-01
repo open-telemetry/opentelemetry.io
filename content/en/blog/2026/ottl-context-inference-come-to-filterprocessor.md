@@ -86,7 +86,7 @@ filter:
         - resource.attributes["service.name"] == "noisy-service"
 ```
 
-This allows different condition groups to fail differently. For example, one can
+This allows different condition groups to fail differently. For example, one condition can
 propagate errors while another ignores them.
 
 ### Cross-context conditions
