@@ -271,7 +271,9 @@ other component in your pipeline, it’s important to verify the following:
 
 ## Troubleshooting in Kubernetes environments
 
-When running the OpenTelemetry Collector on Kubernetes, you can use [ephemeral debug containers](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/#ephemeral-container) to investigate Collector-related issues.
+When running the OpenTelemetry Collector on Kubernetes, you can use
+[ephemeral debug containers](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/#ephemeral-container)
+to investigate Collector-related issues.
 
 ## Common Collector issues
 
