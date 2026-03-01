@@ -67,10 +67,14 @@ the configuration working group from the very beginning.
 Language implementations stabilize on different timelines than the
 specification, but that should be coming soon. If a language you're using
 doesn't have an implementation yet, or is lacking a feature you'd like to
-implement or see implemented, let us know! We'd love to hear from you.
+implement or see implemented, let us know by opening an issue in
+[opentelemetry-configuration](https://github.com/open-telemetry/opentelemetry-configuration)!
+We'd love to hear from you.
 
 See the docs in your relevant language for details on how to use. If the docs
-don't exist yet, please open an issue to request them!
+don't exist yet, please open an issue in
+[opentelemetry.io](https://github.com/open-telemetry/opentelemetry.io) to
+request them!
 
 Even without a particular language implementation declared stable, it's possible
 the user-facing portions will be stable sooner. Stabilizing the schema is the
