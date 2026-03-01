@@ -44,7 +44,7 @@ Even though these rules describe one logical filtering intent, they are required
 to be split across distinct context blocks. This requirement shifts attention
 toward Collector internals instead of the filtering logic itself.
 
-## The new approach: conditions with OTTL context inference
+## The new approach: Conditions with OTTL context inference
 
 ### Basic configuration
 
