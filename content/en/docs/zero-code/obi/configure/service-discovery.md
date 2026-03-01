@@ -32,20 +32,23 @@ selection criteria for the services OBI can instrument.
 You can override the service name, namespace, and other configurations per
 service type.
 
-| YAML                   | Description                                                                                                                              | Type                     | Default |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ------- |
-| `open_ports`           | Selects the process to instrument by the port it has open (listens to). Refer to [open ports](#open-ports).                              | string                   | (unset) |
-| `exe_path`             | Selects the processes to instrument by their executable name path. Refer to [executable path](#executable-path).                         | string (glob)            | (unset) |
-| `containers_only`      | Selects processes to instrument which are running in an OCI container. Refer to [containers only](#containers-only).                     | boolean                  | false   |
-| `k8s_namespace`        | Filter services by Kubernetes namespace. Refer to [K8s namespace](#k8s-namespace).                                                       | string (glob)            | (unset) |
-| `k8s_pod_name`         | Filter services by Kubernetes Pod. Refer to [K8s Pod name](#k8s-pod-name).                                                               | string (glob)            | (unset) |
-| `k8s_deployment_name`  | Filter services by Kubernetes Deployment. Refer to [K8s deployment name](#k8s-deployment-name).                                          | string (glob)            | (unset) |
-| `k8s_replicaset_name`  | Filter services by Kubernetes ReplicaSet. Refer to [K8s ReplicaSet name](#k8s-replicaset-name).                                          | string (glob)            | (unset) |
-| `k8s_statefulset_name` | Filter services by Kubernetes StatefulSet. Refer to [K8s StatefulSet name](#k8s-statefulset-name).                                       | string (glob)            | (unset) |
-| `k8s_daemonset_name`   | Filter services by Kubernetes DaemonSet. Refer to [K8s DaemonSet name](#k8s-daemonset-name).                                             | string (glob)            | (unset) |
-| `k8s_owner_name`       | Filter services by Kubernetes Pod owner (Deployment, ReplicaSet, DaemonSet, or StatefulSet). Refer to [K8s owner name](#k8s-owner-name). | string (glob)            | (unset) |
-| `k8s_pod_labels`       | Filter services by Kubernetes Pod labels. Refer to [K8s Pod labels](#k8s-pod-labels).                                                    | map[string]string (glob) | (unset) |
-| `k8s_pod_annotations`  | Filter services by Kubernetes Pod annotations. Refer to [K8s Pod annotations](#k8s-pod-annotations).                                     | map[string]string (glob) | (unset) |
+| YAML                   | Description                                                                                                                                | Type                         | Default |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------- | ------- |
+| `open_ports`           | Selects the process to instrument by the port it has open (listens to). Refer to [open ports](#open-ports).                                | string                       | (unset) |
+| `exe_path`             | Selects the processes to instrument by their executable name path. Refer to [executable path](#executable-path).                           | string (glob)                | (unset) |
+| `cmd_args`             | Selects the processes to instrument by their command line argument.                                                                        | string (glob)                | (unset) |
+| `languages`            | Selects the processes to instrument by the detected programming language of the executable. Use lowercase names, e.g. `go` or `{go,java}`. | string (glob)                | (unset) |
+| `target_pids`          | Allows selecting processes by PID. When non-empty, the process PID must be in this list (in addition to any path/port criteria).           | comma separated list of pids | (unset) |
+| `containers_only`      | Selects processes to instrument which are running in an OCI container. Refer to [containers only](#containers-only).                       | boolean                      | false   |
+| `k8s_namespace`        | Filter services by Kubernetes namespace. Refer to [K8s namespace](#k8s-namespace).                                                         | string (glob)                | (unset) |
+| `k8s_pod_name`         | Filter services by Kubernetes Pod. Refer to [K8s Pod name](#k8s-pod-name).                                                                 | string (glob)                | (unset) |
+| `k8s_deployment_name`  | Filter services by Kubernetes Deployment. Refer to [K8s deployment name](#k8s-deployment-name).                                            | string (glob)                | (unset) |
+| `k8s_replicaset_name`  | Filter services by Kubernetes ReplicaSet. Refer to [K8s ReplicaSet name](#k8s-replicaset-name).                                            | string (glob)                | (unset) |
+| `k8s_statefulset_name` | Filter services by Kubernetes StatefulSet. Refer to [K8s StatefulSet name](#k8s-statefulset-name).                                         | string (glob)                | (unset) |
+| `k8s_daemonset_name`   | Filter services by Kubernetes DaemonSet. Refer to [K8s DaemonSet name](#k8s-daemonset-name).                                               | string (glob)                | (unset) |
+| `k8s_owner_name`       | Filter services by Kubernetes Pod owner (Deployment, ReplicaSet, DaemonSet, or StatefulSet). Refer to [K8s owner name](#k8s-owner-name).   | string (glob)                | (unset) |
+| `k8s_pod_labels`       | Filter services by Kubernetes Pod labels. Refer to [K8s Pod labels](#k8s-pod-labels).                                                      | map[string]string (glob)     | (unset) |
+| `k8s_pod_annotations`  | Filter services by Kubernetes Pod annotations. Refer to [K8s Pod annotations](#k8s-pod-annotations).                                       | map[string]string (glob)     | (unset) |
 
 ### Open ports
 
