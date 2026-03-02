@@ -3731,6 +3731,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:53:35.474819653Z"
   },
+  "https://github.com/Jamstah/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-27T12:03:31.025131-05:00"
+  },
+  "https://github.com/Jamstah/k8ssaauthextension": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-27T12:03:30.485695-05:00"
+  },
   "https://github.com/JaredTan95": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:54:14.727739878Z"
@@ -18374,6 +18382,10 @@
   "https://pkg.go.dev/github.com/Cyprinus12138/otelgin": {
     "StatusCode": 200,
     "LastSeen": "2026-02-18T09:58:14.297931787Z"
+  },
+  "https://pkg.go.dev/github.com/Jamstah/k8ssaauthextension": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-02T10:08:19.289389721Z"
   },
   "https://pkg.go.dev/github.com/XSAM/otelsql": {
     "StatusCode": 200,
