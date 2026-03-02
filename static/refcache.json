@@ -2287,9 +2287,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:54:11.218464256Z"
   },
-  "https://docs.openlit.io/latest/connections/prometheus-jaeger#dashboard": {
-    "StatusCode": 404,
-    "LastSeen": "2026-03-02T09:52:44.707192241Z"
+  "https://docs.openlit.io/latest/sdk/destinations/prometheus-jaeger#prometheus-jaeger": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-02T07:45:46.938652-03:00"
   },
   "https://docs.openssl.org/1.1.1/man3/SSL_get_version/#return-values": {
     "StatusCode": 206,
@@ -16228,8 +16228,8 @@
     "LastSeen": "2026-02-27T09:55:13.663053273Z"
   },
   "https://horovits.medium.com/improving-devops-performance-with-dora-metrics-918b9604f8e2": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-02T09:53:02.526420234Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-02T10:41:59.029Z"
   },
   "https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97": {
     "StatusCode": 200,
@@ -17436,8 +17436,8 @@
     "LastSeen": "2026-02-27T09:59:10.847Z"
   },
   "https://medium.com/@horovits/fcc6c10c4987": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-02T09:52:59.168321354Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-02T10:42:11.276Z"
   },
   "https://medium.com/inside-picpay/observabilidade-com-hyperf-e-opentelemetry-dd698844eda": {
     "StatusCode": 200,
