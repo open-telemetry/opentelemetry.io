@@ -18399,6 +18399,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-18T09:58:14.297931787Z"
   },
+  "https://pkg.go.dev/github.com/Jamstah/k8ssaauthextension": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-02T10:08:19.289389721Z"
+  },
   "https://pkg.go.dev/github.com/XSAM/otelsql": {
     "StatusCode": 200,
     "LastSeen": "2026-02-20T10:00:09.258Z"
