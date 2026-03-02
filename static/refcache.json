@@ -240,8 +240,8 @@
     "LastSeen": "2026-02-18T09:55:05.859208377Z"
   },
   "https://bento.me/adrianamvillela": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-01T09:46:09.148348907Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-02T09:06:21.072Z"
   },
   "https://betterstack.com/docs/logs/open-telemetry/#2-setup": {
     "StatusCode": 200,
@@ -18008,8 +18008,8 @@
     "LastSeen": "2026-02-25T09:53:25.528308259Z"
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-01T09:45:53.130487842Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-02T09:06:29.687Z"
   },
   "https://openai.com/": {
     "StatusCode": 200,
@@ -20756,7 +20756,7 @@
     "LastSeen": "2026-02-24T09:53:38.228897791Z"
   },
   "https://wiki.osdev.org/CPUID": {
-    "StatusCode": 403,
+    "StatusCode": 200,
     "LastSeen": "2026-03-01T09:48:23.892106768Z"
   },
   "https://wikipedia.org/wiki/.NET": {
@@ -21120,8 +21120,8 @@
     "LastSeen": "2026-02-25T09:53:10.949048889Z"
   },
   "https://www.docsend.com/": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-01T09:45:50.902326523Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-02T09:06:47.783Z"
   },
   "https://www.docsy.dev/docs/": {
     "StatusCode": 206,
