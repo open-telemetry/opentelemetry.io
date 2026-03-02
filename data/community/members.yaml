@@ -2459,6 +2459,7 @@ approvers:
   - name: yordis
     teams:
       - erlang-approvers
+      - erlang-contrib-approvers
     html_url: https://github.com/yordis
     avatar_url: https://avatars.githubusercontent.com/u/4237280?v=4
   - name: yuriolisa
