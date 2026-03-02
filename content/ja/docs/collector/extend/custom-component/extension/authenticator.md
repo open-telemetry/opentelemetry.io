@@ -1,5 +1,5 @@
 ---
-title: 認証機能拡張の構築
+title: 認証エクステンションの構築
 linkTitle: 認証
 weight: 100
 aliases:
@@ -11,25 +11,25 @@ cSpell:ignore: configauth oidc
 
 OpenTelemetryコレクターを使用すると、レシーバーとエクスポーターを認証機能に接続できるため、レシーバー側での受信接続の認証や、エクスポーター側での送信リクエストへの認証データの追加が可能になります。
 
-認証機能は[拡張機能][extensions]を通じて実装されます。
+認証機能は[エクステンション][extensions]を通じて実装されます。
 このドキュメントでは、独自の認証機能を実装する方法について説明します。
 既存の認証機能の使用方法を学びたい場合は、その特定の認証機能のドキュメントを参照してください。
 このウェブサイトの[レジストリ](/ecosystem/registry/)で、既存の認証機能のリストを見つけることができます。
 
-カスタム認証機能の構築方法に関する一般的な手順についてはこのガイドを使用し、各タイプと関数のセマンティクスについては[APIリファレンスガイド](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth)を参照してください
+カスタム認証機能の構築方法に関する一般的な手順についてはこのガイドを使用し、各タイプと関数のセマンティクスについては[APIリファレンスガイド](https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth)を参照してください。
 
 ヘルプが必要な場合は、[CNCFのSlackワークスペース](https://slack.cncf.io)の[#opentelemetry-collector-dev](https://cloud-native.slack.com/archives/C07CCCMRXBK)チャンネルに参加してください。
 
 ## アーキテクチャ {#architecture}
 
-OpenTelemetryにおける[拡張機能][Authenticators]は、ほかの拡張機能と同様ですが、認証がどのように実行されるか（たとえば、HTTPまたはgRPCリクエストの認証など）を定義する1つ以上の特定のインターフェイスも実装する必要があります。
-レーシーバーを備えた[サーバー認証機能][sa]を使用して、HTTPおよびgRPCリクエストをインターセプトします。
+OpenTelemetryにおける[認証機能][authenticators]は、ほかのエクステンションと同様ですが、認証がどのように実行されるか（たとえば、HTTPまたはgRPCリクエストの認証など）を定義する1つ以上の特定のインターフェイスも実装する必要があります。
+レシーバーを備えた[サーバー認証機能][sa]を使用して、HTTPおよびgRPCリクエストをインターセプトします。
 エクスポーターを備えたクライアント認証機能を使用して、HTTPおよびgRPCリクエストに認証データを追加します。
-認証機能は両方のインターフェイスに同時に実装することも可能であり、拡張機能の単一インスタンスが受信および送信両方のリクエストを処理できるようにします。
+認証機能は両方のインターフェイスに同時に実装することも可能であり、エクステンションの単一インスタンスが受信および送信両方のリクエストを処理できるようにします。
 
-拡張機能がコレクターのディストリビューションで利用可能になると、ほかの拡張機能と同様に構成ファイルで参照できます。
+認証エクステンションがコレクターのディストリビューションで利用可能になると、ほかのエクステンションと同様に構成ファイルで参照できます。
 しかし、認証機能は消費者コンポーネントによって参照される場合にのみ有効です。
-次の構成は、`oidc`認証の拡張機能を使用する`otlp/auth`という名前のレシーバーを示しています。
+次の構成は、`oidc`認証エクステンションを使用する`otlp/auth`という名前のレシーバーを示しています。
 
 ```yaml
 extensions:
@@ -89,12 +89,12 @@ service:
 
 ### サーバー認証機能 {#server-authenticators}
 
-[サーバー認証機能][sa]は、`Authenticate`メソッドを持つ拡張機能です。
+[サーバー認証機能][sa]は、`Authenticate`メソッドを持つエクステンションです。
 この関数はリクエストを受信するたびに呼び出され、リクエストのヘッダーをチェックしてリクエストを認証します。
 認証機能はリクエストが有効であると判断した場合、`nil`エラーを返します。
 リクエストが無効な場合は、その理由を説明するエラーを返します。
 
-拡張機能であるため、認証機能は[`Start`](https://pkg.go.dev/go.opentelemetry.io/collector/component#Component)で必要なリソース（キー、クライアント、キャッシュなど）を設定し、`Shutdown`でそれらをすべてクリーンアップする必要があります。
+エクステンションであるため、認証機能は[`Start`](https://pkg.go.dev/go.opentelemetry.io/collector/component#Component)で必要なリソース（キー、クライアント、キャッシュなど）を設定し、`Shutdown`でそれらをすべてクリーンアップする必要があります。
 
 `Authenticate`関数は、受信するすべてのリクエストに対して実行され、パイプラインはこの関数が終了するまで先に進むことができません。
 そのため、認証機能は遅い、または不必要なブロッキング作業を避ける必要があります。
@@ -105,7 +105,7 @@ service:
 
 ### クライアント認証機能 {#client-authenticators}
 
-[クライアント認証機能][Client authenticators]は、1つ以上の定義されたインターフェイスを実装する追加の関数を持つ拡張機能です。
+[クライアント認証機能][Client authenticators]は、1つ以上の定義されたインターフェイスを実装する追加の関数を持つエクステンションです。
 各認証機能は、認証データを注入できるオブジェクトを受け取ります。
 たとえば、HTTPクライアント認証機能は[`http.RoundTripper`](https://pkg.go.dev/net/http#RoundTripper)を提供し、一方でgRPCクライアント認証機能は[`credentials.PerRPCCredentials`](https://pkg.go.dev/google.golang.org/grpc/credentials#PerRPCCredentials)を生成します。
 
@@ -115,7 +115,7 @@ service:
 独自の認証機能を構築する場合、2つのオプションがあります。
 
 - [OpenTelemetry Collector Builder][builder]を使用してカスタムコレクターのディストリビューションを構築できます
-- Goモジュールを公開するなど、ユーザーが独自のディストリビューションに拡張機能を追加する方法を提供できます。
+- Goモジュールを公開するなど、ユーザーが独自のディストリビューションにエクステンションを追加する方法を提供できます。
 
 [authenticators]: https://pkg.go.dev/go.opentelemetry.io/collector/config/configauth
 [builder]: https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder
