@@ -157,7 +157,6 @@ def main() -> None:
     core_version_tag = f"v{core_version}"
     contrib_version_tag = f"v{contrib_version}"
 
-    # Generator uses Hugo param references, so doesn't need version info
     generator = DocContentGenerator(diagnostics)
     tables = generator.generate_all_component_tables(merged_inventory)
 
@@ -200,7 +199,6 @@ def main() -> None:
             "  <!-- END GENERATED: {component-type}-table SOURCE: open-telemetry/opentelemetry-ecosystem-explorer -->"
         )
 
-    # Update collector versions data file
     logger.info("\nUpdating collector versions data file...")
     version_updater = VersionUpdater(repo_root)
     version_updater.update_versions(core_version_tag, contrib_version_tag)
