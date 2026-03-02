@@ -7,8 +7,6 @@ author: >-
 sig: Kotlin
 ---
 
-## New OpenTelemetry Kotlin SDK
-
 Following a [donation](https://github.com/open-telemetry/community/issues/2975)
 from Embrace and a
 [call for contributors](/blog/2025/kotlin-multiplatform-opentelemetry.md),
@@ -34,8 +32,8 @@ staying mobile-friendly for the common Android/iOS use-case.
 
 ## Current state of the project
 
-The Kotlin Special Interest Group (SIG) has started meeting weekly at 9am PST on
-Mondays. Come join the meeting if you're interested in discussing the project or
+The Kotlin Special Interest Group (SIG) has started meeting weekly at [9am PST on
+Mondays](https://github.com/open-telemetry/community#calendar). Come join the meeting if you're interested in discussing the project or
 have questions that you'd like to discuss synchronously!
 
 The Kotlin SDK currently supports the Android, JVM, iOS, and JS targets.
