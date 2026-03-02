@@ -12,87 +12,86 @@ discovery. For more information on how to configure extensions, see the
 
 ## Extensions
 
-<!-- BEGIN GENERATED: extension-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: extension-table SOURCE: scripts/collector-sync -->
 
-| Name                                                                                                                                                   | Distributions[^1]  | Stability[^2] |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ | ------------- |
-| [ackextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/ackextension)                                     | contrib, K8s       | alpha         |
-| [asapauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/asapauthextension)                           | contrib            | beta          |
-| [awsproxy](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/awsproxy)                                             | contrib            | beta          |
-| [azureauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/azureauthextension)                         | contrib            | alpha         |
-| [basicauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/basicauthextension)                         | contrib, K8s       | beta          |
-| [bearertokenauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/bearertokenauthextension)             | contrib, K8s       | beta          |
-| [cgroupruntimeextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/cgroupruntimeextension)                 | contrib            | alpha         |
-| [datadogextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/datadogextension)                             | contrib            | alpha         |
-| [googleclientauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/googleclientauthextension)           | contrib            | beta          |
-| [headerssetterextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/headerssetterextension)                 | contrib, K8s       | alpha         |
-| [healthcheckextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/healthcheckextension)                     | contrib, core, K8s | alpha         |
-| [healthcheckv2extension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/healthcheckv2extension)                 | contrib            | development   |
-| [httpforwarderextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/httpforwarderextension)                 | contrib, K8s       | beta          |
-| [jaegerremotesampling](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/jaegerremotesampling)                     | contrib            | alpha         |
-| [k8sleaderelector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/k8sleaderelector)                             | contrib, K8s       | alpha         |
-| [memorylimiterextension](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/memorylimiterextension)                         | contrib            | development   |
-| [oauth2clientauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/oauth2clientauthextension)           | contrib, K8s       | beta          |
-| [oidcauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/oidcauthextension)                           | contrib, K8s       | beta          |
-| [opampextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/opampextension)                                 | contrib, K8s       | alpha         |
-| [pprofextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/pprofextension)                                 | contrib, core, K8s | beta          |
-| [remotetapextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/remotetapextension)                         | contrib            | development   |
-| [sigv4authextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sigv4authextension)                         | contrib            | beta          |
-| [solarwindsapmsettingsextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/solarwindsapmsettingsextension) | contrib            | development   |
-| [sumologicextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sumologicextension)                         | contrib            | alpha         |
-| [zpagesextension](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/zpagesextension)                                       | contrib, core, K8s | beta          |
+| Name                                                                                         | Distributions[^1]  | Stability[^2] |
+| -------------------------------------------------------------------------------------------- | ------------------ | ------------- |
+| {{< component-link name="ackextension" type="extension" repo="contrib" >}}                   | contrib, K8s       | alpha         |
+| {{< component-link name="asapauthextension" type="extension" repo="contrib" >}}              | contrib            | beta          |
+| {{< component-link name="awsproxy" type="extension" repo="contrib" >}}                       | contrib            | beta          |
+| {{< component-link name="azureauthextension" type="extension" repo="contrib" >}}             | contrib            | alpha         |
+| {{< component-link name="basicauthextension" type="extension" repo="contrib" >}}             | contrib, K8s       | beta          |
+| {{< component-link name="bearertokenauthextension" type="extension" repo="contrib" >}}       | contrib, K8s       | beta          |
+| {{< component-link name="cgroupruntimeextension" type="extension" repo="contrib" >}}         | contrib            | alpha         |
+| {{< component-link name="datadogextension" type="extension" repo="contrib" >}}               | contrib            | alpha         |
+| {{< component-link name="googleclientauthextension" type="extension" repo="contrib" >}}      | contrib            | beta          |
+| {{< component-link name="headerssetterextension" type="extension" repo="contrib" >}}         | contrib, K8s       | alpha         |
+| {{< component-link name="healthcheckextension" type="extension" repo="contrib" >}}           | contrib, core, K8s | alpha         |
+| {{< component-link name="healthcheckv2extension" type="extension" repo="contrib" >}}         | contrib            | development   |
+| {{< component-link name="httpforwarderextension" type="extension" repo="contrib" >}}         | contrib, K8s       | beta          |
+| {{< component-link name="jaegerremotesampling" type="extension" repo="contrib" >}}           | contrib            | alpha         |
+| {{< component-link name="k8sleaderelector" type="extension" repo="contrib" >}}               | contrib, K8s       | alpha         |
+| {{< component-link name="memorylimiterextension" type="extension" repo="core" >}}            | core               | development   |
+| {{< component-link name="oauth2clientauthextension" type="extension" repo="contrib" >}}      | contrib, K8s       | beta          |
+| {{< component-link name="oidcauthextension" type="extension" repo="contrib" >}}              | contrib, K8s       | beta          |
+| {{< component-link name="opampextension" type="extension" repo="contrib" >}}                 | contrib, K8s       | alpha         |
+| {{< component-link name="pprofextension" type="extension" repo="contrib" >}}                 | contrib, core, K8s | beta          |
+| {{< component-link name="remotetapextension" type="extension" repo="contrib" >}}             | contrib            | development   |
+| {{< component-link name="sigv4authextension" type="extension" repo="contrib" >}}             | contrib            | beta          |
+| {{< component-link name="solarwindsapmsettingsextension" type="extension" repo="contrib" >}} | contrib            | development   |
+| {{< component-link name="sumologicextension" type="extension" repo="contrib" >}}             | contrib            | alpha         |
+| {{< component-link name="zpagesextension" type="extension" repo="core" >}}                   | contrib, core, K8s | beta          |
 
-<!-- END GENERATED: extension-table SOURCE: collector-watcher -->
+<!-- END GENERATED: extension-table SOURCE: scripts/collector-sync -->
 
 ## Encoding Extensions
 
-<!-- BEGIN GENERATED: extension-encoding-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: extension-encoding-table SOURCE: scripts/collector-sync -->
 
-| Name                                                                                                                                                                                      | Distributions[^1] | Stability[^2] |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------- |
-| [avrologencodingextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/avrologencodingextension)                                       | contrib           | development   |
-| [awscloudwatchmetricstreamsencodingextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/awscloudwatchmetricstreamsencodingextension) | contrib           | alpha         |
-| [awslogsencodingextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/awslogsencodingextension)                                       | contrib           | alpha         |
-| [azureencodingextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/azureencodingextension)                                           | contrib           | development   |
-| [googlecloudlogentryencodingextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/googlecloudlogentryencodingextension)               | contrib           | alpha         |
-| [jaegerencodingextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/jaegerencodingextension)                                         | contrib           | alpha         |
-| [jsonlogencodingextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/jsonlogencodingextension)                                       | contrib           | alpha         |
-| [otlpencodingextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/otlpencodingextension)                                             | contrib           | beta          |
-| [skywalkingencodingextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/skywalkingencodingextension)                                 | contrib           | alpha         |
-| [textencodingextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/textencodingextension)                                             | contrib           | beta          |
-| [zipkinencodingextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/zipkinencodingextension)                                         | contrib           | alpha         |
+| Name                                                                                                                         | Distributions[^1] | Stability[^2] |
+| ---------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------- |
+| {{< component-link name="avrologencodingextension" type="extension" repo="contrib" subtype="encoding" >}}                    | contrib           | development   |
+| {{< component-link name="awscloudwatchmetricstreamsencodingextension" type="extension" repo="contrib" subtype="encoding" >}} | contrib           | alpha         |
+| {{< component-link name="awslogsencodingextension" type="extension" repo="contrib" subtype="encoding" >}}                    | contrib           | alpha         |
+| {{< component-link name="azureencodingextension" type="extension" repo="contrib" subtype="encoding" >}}                      | contrib           | development   |
+| {{< component-link name="googlecloudlogentryencodingextension" type="extension" repo="contrib" subtype="encoding" >}}        | contrib           | alpha         |
+| {{< component-link name="jaegerencodingextension" type="extension" repo="contrib" subtype="encoding" >}}                     | contrib           | alpha         |
+| {{< component-link name="jsonlogencodingextension" type="extension" repo="contrib" subtype="encoding" >}}                    | contrib           | alpha         |
+| {{< component-link name="otlpencodingextension" type="extension" repo="contrib" subtype="encoding" >}}                       | contrib           | beta          |
+| {{< component-link name="skywalkingencodingextension" type="extension" repo="contrib" subtype="encoding" >}}                 | contrib           | alpha         |
+| {{< component-link name="textencodingextension" type="extension" repo="contrib" subtype="encoding" >}}                       | contrib           | beta          |
+| {{< component-link name="zipkinencodingextension" type="extension" repo="contrib" subtype="encoding" >}}                     | contrib           | alpha         |
 
-<!-- END GENERATED: extension-encoding-table SOURCE: collector-watcher -->
+<!-- END GENERATED: extension-encoding-table SOURCE: scripts/collector-sync -->
 
 ## Observer Extensions
 
-<!-- BEGIN GENERATED: extension-observer-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: extension-observer-table SOURCE: scripts/collector-sync -->
 
-| Name                                                                                                                                      | Distributions[^1] | Stability[^2] |
-| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------- |
-| [cfgardenobserver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/cfgardenobserver)       | contrib           | alpha         |
-| [dockerobserver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/dockerobserver)           | contrib           | beta          |
-| [ecsobserver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/ecsobserver)                 | contrib           | beta          |
-| [endpointswatcher](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/endpointswatcher)       | contrib           | N/A           |
-| [hostobserver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/hostobserver)               | contrib, K8s      | beta          |
-| [k8sobserver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/k8sobserver)                 | contrib, K8s      | alpha         |
-| [kafkatopicsobserver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/kafkatopicsobserver) | contrib           | alpha         |
+| Name                                                                                                 | Distributions[^1] | Stability[^2] |
+| ---------------------------------------------------------------------------------------------------- | ----------------- | ------------- |
+| {{< component-link name="cfgardenobserver" type="extension" repo="contrib" subtype="observer" >}}    | contrib           | alpha         |
+| {{< component-link name="dockerobserver" type="extension" repo="contrib" subtype="observer" >}}      | contrib           | beta          |
+| {{< component-link name="ecsobserver" type="extension" repo="contrib" subtype="observer" >}}         | contrib           | beta          |
+| {{< component-link name="hostobserver" type="extension" repo="contrib" subtype="observer" >}}        | contrib, K8s      | beta          |
+| {{< component-link name="k8sobserver" type="extension" repo="contrib" subtype="observer" >}}         | contrib, K8s      | alpha         |
+| {{< component-link name="kafkatopicsobserver" type="extension" repo="contrib" subtype="observer" >}} | contrib           | alpha         |
 
-<!-- END GENERATED: extension-observer-table SOURCE: collector-watcher -->
+<!-- END GENERATED: extension-observer-table SOURCE: scripts/collector-sync -->
 
 ## Storage Extensions
 
-<!-- BEGIN GENERATED: extension-storage-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: extension-storage-table SOURCE: scripts/collector-sync -->
 
-| Name                                                                                                                                         | Distributions[^1] | Stability[^2] |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------- |
-| [dbstorage](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/storage/dbstorage)                         | contrib           | alpha         |
-| [filestorage](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/storage/filestorage)                     | contrib, K8s      | beta          |
-| [redisstorageextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/storage/redisstorageextension) | contrib           | alpha         |
+| Name                                                                                                  | Distributions[^1] | Stability[^2] |
+| ----------------------------------------------------------------------------------------------------- | ----------------- | ------------- |
+| {{< component-link name="dbstorage" type="extension" repo="contrib" subtype="storage" >}}             | contrib           | alpha         |
+| {{< component-link name="filestorage" type="extension" repo="contrib" subtype="storage" >}}           | contrib, K8s      | beta          |
+| {{< component-link name="redisstorageextension" type="extension" repo="contrib" subtype="storage" >}} | contrib           | alpha         |
 
-<!-- END GENERATED: extension-storage-table SOURCE: collector-watcher -->
+<!-- END GENERATED: extension-storage-table SOURCE: scripts/collector-sync -->
 
-<!-- BEGIN GENERATED: extension-footnotes-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: extension-footnotes-table SOURCE: scripts/collector-sync -->
 
 [^1]:
     Shows which [distributions](/docs/collector/distributions/) (core, contrib,
@@ -102,4 +101,4 @@ discovery. For more information on how to configure extensions, see the
     For details about component stability levels, see the
     [OpenTelemetry Collector component stability definitions](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
 
-<!-- END GENERATED: extension-footnotes-table SOURCE: collector-watcher -->
+<!-- END GENERATED: extension-footnotes-table SOURCE: scripts/collector-sync -->
