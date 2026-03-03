@@ -75,6 +75,7 @@ which provides several commands that help automatically instrument a program.
 ```sh
 pip install opentelemetry-distro
 pip install opentelemetry-exporter-otlp
+pip install opentelemetry-instrumentation-logging
 ```
 
 The examples that follow send instrumentation results to the console. Learn more
@@ -111,7 +112,6 @@ Open up another terminal and run the Python program:
 ```sh
 source python_logs_example/bin/activate
 
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument \
   --traces_exporter console,otlp \
   --metrics_exporter console,otlp \
@@ -119,6 +119,9 @@ opentelemetry-instrument \
   --service_name python-logs-example \
   python $(pwd)/example.py
 ```
+
+> prior to OpenTelemetry Python 1.40.0 you had to enable log instrumentation
+> with `export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true`
 
 Sample output:
 

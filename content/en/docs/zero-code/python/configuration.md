@@ -119,10 +119,11 @@ outputted.
   logging format
 - `OTEL_PYTHON_LOG_LEVEL`: to set a custom log level (info, error, debug,
   warning)
-- `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED`: to enable
-  auto-instrumentation of logs. Attaches OTLP handler to Python root logger. For
-  an example, see
-  [Logs Auto-Instrumentation](/docs/zero-code/python/logs-example/).
+- `OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION`: to disable the enabled by default
+  logging handler (true, false), refer to
+  [Logs Auto-Instrumentation](/docs/zero-code/python/logs-example/)
+- `OTEL_PYTHON_LOG_CODE_ATTRIBUTES`: to add `code` attributes (`code.file.path`,
+  `code.function.name`, `code.line.number`) to the logs
 
 Examples:
 
@@ -130,8 +131,14 @@ Examples:
 export OTEL_PYTHON_LOG_CORRELATION=true
 export OTEL_PYTHON_LOG_FORMAT="%(msg)s [span_id=%(span_id)s]"
 export OTEL_PYTHON_LOG_LEVEL=debug
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
+export OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION=false
+export OTEL_PYTHON_LOG_CODE_ATTRIBUTES=true
 ```
+
+> Before OpenTelemetry Python 1.40.0 logs auto instrumentation was disabled by
+> default and implemented in the `opentelemetry-sdk` package. Setting
+> `OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED` to `true` would have
+> enabled it.
 
 ### Other
 
