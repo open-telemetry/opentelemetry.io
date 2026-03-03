@@ -21,8 +21,8 @@ pages appear under `/docs/specs/`.
 
 Spec Markdown files are written for GitHub rendering: they have no Hugo front
 matter, their links point to GitHub URLs, and image paths assume the repository
-layout. The [`adjust-pages.pl`][script] script bridges this gap by applying
-the following transformations to each file:
+layout. The [`adjust-pages.pl`][script] script bridges this gap by applying the
+following transformations to each file:
 
 | Transformation             | Description                                                                                                                                                            |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -45,10 +45,10 @@ causes CI failures — most commonly in the automated `otelbot/refcache-refresh`
 PRs that check every external link on the site.
 
 To unblock CI without waiting for an upstream release, you can add a temporary
-patch to [`adjust-pages.pl`][script]. Patches are regex-based rewrites that run at build
-time and include built-in version tracking: once the spec advances past the
-target version, `cp:spec` prints a warning that the patch is obsolete and can be
-removed.
+patch to [`adjust-pages.pl`][script]. Patches are regex-based rewrites that run
+at build time and include built-in version tracking: once the spec advances past
+the target version, `cp:spec` prints a warning that the patch is obsolete and
+can be removed.
 
 ### 1. Create a patch function
 
