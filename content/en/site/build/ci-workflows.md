@@ -34,30 +34,40 @@ pull requests:
   (determined by files changed and [`.github/component-owners.yml`][owners]);
   removed once a SIG member approves or when no SIG component is touched.
 - **`ready-to-be-merged`** — added when all required approvals are present;
-  removed otherwise. For PRs with the `blog` label, this label is also gated on
-  the blog post's publish date (see [Blog post date gating](#blog-date-gating)).
+  removed otherwise. For PRs carrying any label in
+  [`PUBLISH_DATE_LABELS`](#publish-date-gating), this label is also gated on the
+  publish date found in changed files.
 
 [docs-approvers]: https://github.com/orgs/open-telemetry/teams/docs-approvers
 [owners]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
 
-### Blog post date gating {#blog-date-gating}
+### Publish date gating {#publish-date-gating}
 
-PRs with the `blog` label (automatically applied to any PR touching
-`content/en/blog/**`) are subject to an additional check: the
-`ready-to-be-merged` label is only added when the `date:` field in the blog
-post's frontmatter is on or before today (UTC). This prevents blog posts from
-being merged before their scheduled publication date.
+The script checks the `date:` frontmatter field of any changed markdown file. If
+a future date is found, the `ready-to-be-merged` label is withheld until the
+date arrives (UTC). This prevents content from being merged before its scheduled
+publication date.
 
-The `pr-approval-labels` workflow runs daily at midnight UTC (in addition to the
-event-driven triggers) so that a blog PR whose publication date arrives
-overnight receives the label automatically, without requiring the author to push
-a new commit. In scheduled mode the script itself queries GitHub for all open
-PRs carrying any label listed in `PUBLISH_DATE_LABELS` (currently `blog`) and
-processes each one — no label filtering is needed in the workflow.
+The check applies to PRs carrying any label listed in the `PUBLISH_DATE_LABELS`
+array in the script (currently: `blog`, automatically applied to any PR touching
+`content/en/blog/**`). Adding a label to that array extends the check to other
+PR types.
 
-If a PR contains multiple blog posts with different dates, the label is gated on
-the latest date (all posts must be ready before merging).
+If a PR contains multiple files with different dates, the label is gated on the
+latest date — all content must be ready before merging.
+
+#### Script operating modes
+
+The script runs in one of two modes, selected by whether the `PR` environment
+variable is set:
+
+- **Single-PR mode** — processes a single PR. Used by the `pull_request_target`
+  and `workflow_run` triggers.
+- **Batch mode** — queries GitHub for all open PRs carrying any
+  `PUBLISH_DATE_LABELS` label and processes each one. Used by the `schedule`
+  trigger (daily at midnight UTC), so a PR whose publish date arrives overnight
+  receives `ready-to-be-merged` automatically without requiring a new commit.
 
 ### Why two workflows?
 
@@ -113,6 +123,23 @@ sequenceDiagram
     GH->>L: Trigger directly (base repo context, with secrets)
     L->>L: Run pr-approval-labels.sh
     L->>GH: Add/remove labels
+```
+
+```mermaid
+sequenceDiagram
+    participant GH as GitHub
+    participant L as pr-approval-labels
+    participant API as GitHub API
+
+    Note over GH: schedule event (daily, midnight UTC)
+
+    GH->>L: Trigger (base repo context, with secrets)
+    L->>API: Query open PRs with PUBLISH_DATE_LABELS labels
+    API-->>L: List of PRs
+    loop Each PR
+        L->>L: Run pr-approval-labels.sh
+        L->>GH: Add/remove labels
+    end
 ```
 
 ### Security model

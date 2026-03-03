@@ -21,7 +21,8 @@
 #
 # Modes:
 #   Single-PR mode (PR env var set): processes the given PR.
-#   Batch mode (PR env var unset): queries GitHub for all open PRs.
+#   Batch mode (PR env var unset): queries open PRs with any of the
+#     PUBLISH_DATE_LABELS and processes each.
 
 set -euo pipefail
 
