@@ -15,7 +15,7 @@ adoptado OpenTelemetry para la
 > [!TIP] ¡Ayúdenos a mostrar la creciente comunidad de OpenTelemetry!
 >
 > Si tu empresa utiliza OpenTelemetry en producción o experimentación, nos
-> encantaría añadirla a la lista oficial de usuarios. Puedes [enviar una >
+> encantaría añadirla a la lista oficial de usuarios. Puedes [enviar una > >
 > solicitud de registro] (#how-to-add) o completar el formulario [Unirse a la
 > lista de usuarios de OpenTelemetry][form].
 
@@ -42,7 +42,7 @@ Si tu organización ofrece una solución que utiliza OpenTelemetry para ofrecer
 **observabilidad a los usuarios finales**, consulta
 [Proveedores](/ecosystem/vendors).
 
-{{% include keep-up-to-date.md adopter %}}
+{{% include en/ecosystem/keep-up-to-date.md adopter %}}
 
 [lista de adoptantes]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml
