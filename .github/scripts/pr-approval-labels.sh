@@ -171,6 +171,15 @@ get_publish_date() {
   local latest_date=""
 
   for file in ${pr_files}; do
+    # Only inspect markdown files in known content paths to avoid unnecessary
+    # GitHub API calls, which can cause rate limiting in batch mode.
+    if [[ ! "${file}" == *.md && ! "${file}" == *.mdx ]]; then
+      continue
+    fi
+    # Restrict to paths that commonly contain publish dates in frontmatter.
+    if [[ ! "${file}" == content/en/blog/* && ! "${file}" == content/en/announcements/* ]]; then
+      continue
+    fi
     local content
     content=$(gh api "/repos/${head_repo}/contents/${file}?ref=${head_sha}" \
       --jq '.content' 2>/dev/null | base64 --decode 2>/dev/null || true)
