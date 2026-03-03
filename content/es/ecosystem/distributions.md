@@ -57,4 +57,4 @@ debe incluir lo siguiente:
 [distribuciones]: /docs/concepts/distributions/
 [lista de distribuciones]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/distributions.yaml
-[proveedores]: ../vendors/
+[proveedor]: ../vendors/
