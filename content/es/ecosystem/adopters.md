@@ -15,7 +15,7 @@ adoptado OpenTelemetry para la
 > [!TIP] ¡Ayúdenos a mostrar la creciente comunidad de OpenTelemetry!
 >
 > Si tu empresa utiliza OpenTelemetry en producción o experimentación, nos
-> encantaría añadirla a la lista oficial de usuarios. Puedes [enviar una
+> encantaría añadirla a la lista oficial de usuarios. Puedes [enviar una >
 > solicitud de registro] (#how-to-add) o completar el formulario [Unirse a la
 > lista de usuarios de OpenTelemetry][form].
 
@@ -29,7 +29,7 @@ añadida a la [lista de adoptantes][]. La entrada debe incluir lo siguiente:
 - Enlace a una entrada de blog u otro recurso que describa cómo tu organización
   utiliza OpenTelemetry
 - Dirección de GitHub o correo electrónico como punto de contacto para que
-  podamos contactarle en caso de tener preguntas
+  podamos contactarte en caso de tener preguntas
 
 Ten en cuenta que esta lista es para
 [organizaciones de usuarios finales](https://www.cncf.io/enduser/) que no
