@@ -1982,6 +1982,7 @@ approvers:
     teams:
       - lambda-extension-approvers
       - opentelemetry-python-contrib-approvers
+      - python-approvers
     html_url: https://github.com/herin049
     avatar_url: https://avatars.githubusercontent.com/u/40302054?v=4
   - name: iblancasa

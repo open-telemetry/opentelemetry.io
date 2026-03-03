@@ -29,7 +29,7 @@ jobs:
       patch_skipped: ${{ steps.check_patch.outputs.skipped }}
 
     steps:
-      - uses: step-security/harden-runner@5ef0c079ce82195b2a36a210272d6b661572d83e # v2.14.2
+      - uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
         with:
           egress-policy: audit
 
@@ -108,7 +108,7 @@ jobs:
 
       - name: Upload patch artifact
         if: steps.check_patch.outputs.skipped != 'true'
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
         with:
           name: pr-fix-${{ github.run_id }}
           path: pr-fix.patch
@@ -124,7 +124,7 @@ jobs:
       pull-requests: write
 
     steps:
-      - uses: step-security/harden-runner@5ef0c079ce82195b2a36a210272d6b661572d83e # v2.14.2
+      - uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
         with:
           egress-policy: audit
 
@@ -145,7 +145,7 @@ jobs:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
 
       - name: Download patch
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: ${{ needs.generate-patch.outputs.patch_name }}
 
