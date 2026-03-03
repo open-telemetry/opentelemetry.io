@@ -12,7 +12,7 @@ more information on how to configure exporters, see the
 
 {{% include unmaintained-components-msg.md %}}
 
-<!-- BEGIN GENERATED: exporter-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: exporter-table SOURCE: scripts/collector-sync -->
 
 | Name                                                                                                                                                     | Distributions[^1]        | Traces[^2]   | Metrics[^2]  | Logs[^2]     |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ------------ | ------------ | ------------ |
@@ -77,4 +77,4 @@ more information on how to configure exporters, see the
     For details about component stability levels, see the
     [OpenTelemetry Collector component stability definitions](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
 
-<!-- END GENERATED: exporter-table SOURCE: collector-watcher -->
+<!-- END GENERATED: exporter-table SOURCE: scripts/collector-sync -->

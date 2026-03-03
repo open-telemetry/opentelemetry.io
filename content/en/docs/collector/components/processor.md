@@ -10,7 +10,7 @@ Processors transform, filter, and enrich telemetry data as it flows through the
 pipeline. For more information on how to configure processors, see the
 [Collector configuration documentation](/docs/collector/configuration/#processors).
 
-<!-- BEGIN GENERATED: processor-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: processor-table SOURCE: scripts/collector-sync -->
 
 | Name                                                                                                                                                 | Distributions[^1]  | Traces[^2]  | Metrics[^2] | Logs[^2]    |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ | ----------- | ----------- | ----------- |
@@ -56,4 +56,4 @@ pipeline. For more information on how to configure processors, see the
     For details about component stability levels, see the
     [OpenTelemetry Collector component stability definitions](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
 
-<!-- END GENERATED: processor-table SOURCE: collector-watcher -->
+<!-- END GENERATED: processor-table SOURCE: scripts/collector-sync -->

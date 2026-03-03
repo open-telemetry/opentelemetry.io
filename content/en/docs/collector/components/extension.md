@@ -12,7 +12,7 @@ discovery. For more information on how to configure extensions, see the
 
 ## Extensions
 
-<!-- BEGIN GENERATED: extension-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: extension-table SOURCE: scripts/collector-sync -->
 
 | Name                                                                                                                                                   | Distributions[^1]  | Stability[^2] |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ | ------------- |
@@ -31,7 +31,7 @@ discovery. For more information on how to configure extensions, see the
 | [httpforwarderextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/httpforwarderextension)                 | contrib, K8s       | beta          |
 | [jaegerremotesampling](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/jaegerremotesampling)                     | contrib            | alpha         |
 | [k8sleaderelector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/k8sleaderelector)                             | contrib, K8s       | alpha         |
-| [memorylimiterextension](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/memorylimiterextension)                         | contrib            | development   |
+| [memorylimiterextension](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/memorylimiterextension)                         | core               | development   |
 | [oauth2clientauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/oauth2clientauthextension)           | contrib, K8s       | beta          |
 | [oidcauthextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/oidcauthextension)                           | contrib, K8s       | beta          |
 | [opampextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/opampextension)                                 | contrib, K8s       | alpha         |
@@ -42,11 +42,11 @@ discovery. For more information on how to configure extensions, see the
 | [sumologicextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sumologicextension)                         | contrib            | alpha         |
 | [zpagesextension](https://github.com/open-telemetry/opentelemetry-collector/tree/main/extension/zpagesextension)                                       | contrib, core, K8s | beta          |
 
-<!-- END GENERATED: extension-table SOURCE: collector-watcher -->
+<!-- END GENERATED: extension-table SOURCE: scripts/collector-sync -->
 
 ## Encoding Extensions
 
-<!-- BEGIN GENERATED: extension-encoding-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: extension-encoding-table SOURCE: scripts/collector-sync -->
 
 | Name                                                                                                                                                                                      | Distributions[^1] | Stability[^2] |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------- |
@@ -62,27 +62,26 @@ discovery. For more information on how to configure extensions, see the
 | [textencodingextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/textencodingextension)                                             | contrib           | beta          |
 | [zipkinencodingextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/zipkinencodingextension)                                         | contrib           | alpha         |
 
-<!-- END GENERATED: extension-encoding-table SOURCE: collector-watcher -->
+<!-- END GENERATED: extension-encoding-table SOURCE: scripts/collector-sync -->
 
 ## Observer Extensions
 
-<!-- BEGIN GENERATED: extension-observer-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: extension-observer-table SOURCE: scripts/collector-sync -->
 
 | Name                                                                                                                                      | Distributions[^1] | Stability[^2] |
 | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------- |
 | [cfgardenobserver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/cfgardenobserver)       | contrib           | alpha         |
 | [dockerobserver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/dockerobserver)           | contrib           | beta          |
 | [ecsobserver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/ecsobserver)                 | contrib           | beta          |
-| [endpointswatcher](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/endpointswatcher)       | contrib           | N/A           |
 | [hostobserver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/hostobserver)               | contrib, K8s      | beta          |
 | [k8sobserver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/k8sobserver)                 | contrib, K8s      | alpha         |
 | [kafkatopicsobserver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/kafkatopicsobserver) | contrib           | alpha         |
 
-<!-- END GENERATED: extension-observer-table SOURCE: collector-watcher -->
+<!-- END GENERATED: extension-observer-table SOURCE: scripts/collector-sync -->
 
 ## Storage Extensions
 
-<!-- BEGIN GENERATED: extension-storage-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: extension-storage-table SOURCE: scripts/collector-sync -->
 
 | Name                                                                                                                                         | Distributions[^1] | Stability[^2] |
 | -------------------------------------------------------------------------------------------------------------------------------------------- | ----------------- | ------------- |
@@ -90,9 +89,9 @@ discovery. For more information on how to configure extensions, see the
 | [filestorage](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/storage/filestorage)                     | contrib, K8s      | beta          |
 | [redisstorageextension](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/storage/redisstorageextension) | contrib           | alpha         |
 
-<!-- END GENERATED: extension-storage-table SOURCE: collector-watcher -->
+<!-- END GENERATED: extension-storage-table SOURCE: scripts/collector-sync -->
 
-<!-- BEGIN GENERATED: extension-footnotes-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: extension-footnotes-table SOURCE: scripts/collector-sync -->
 
 [^1]:
     Shows which [distributions](/docs/collector/distributions/) (core, contrib,
@@ -102,4 +101,4 @@ discovery. For more information on how to configure extensions, see the
     For details about component stability levels, see the
     [OpenTelemetry Collector component stability definitions](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
 
-<!-- END GENERATED: extension-footnotes-table SOURCE: collector-watcher -->
+<!-- END GENERATED: extension-footnotes-table SOURCE: scripts/collector-sync -->

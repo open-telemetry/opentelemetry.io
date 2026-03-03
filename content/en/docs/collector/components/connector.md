@@ -10,7 +10,7 @@ Connectors connect two pipelines, acting as both exporter and receiver. For more
 information on how to configure connectors, see the
 [Collector configuration documentation](/docs/collector/configuration/#connectors).
 
-<!-- BEGIN GENERATED: connector-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: connector-table SOURCE: scripts/collector-sync -->
 
 | Name                                                                                                                                       | Distributions[^1]  |
 | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ |
@@ -34,4 +34,4 @@ information on how to configure connectors, see the
     Shows which [distributions](/docs/collector/distributions/) (core, contrib,
     K8s, etc.) include this component.
 
-<!-- END GENERATED: connector-table SOURCE: collector-watcher -->
+<!-- END GENERATED: connector-table SOURCE: scripts/collector-sync -->
