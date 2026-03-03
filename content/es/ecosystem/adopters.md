@@ -36,8 +36,8 @@ Ten en cuenta que esta lista es para
 [organizaciones de usuarios finales](https://www.cncf.io/enduser/) que no
 ofrecen ningún servicio relacionado con OpenTelemetry.
 
-Si tu organización ofrece una **biblioteca** o un **servicio** de observabilidad a
-través de OpenTelemetry, consulta [Integraciones](/ecosystem/integrations/).
+Si tu organización ofrece una **biblioteca** o un **servicio** de observabilidad
+a través de OpenTelemetry, consulta [Integraciones](/ecosystem/integrations/).
 
 Si tu organización ofrece una solución que utiliza OpenTelemetry para ofrecer
 **observabilidad a los usuarios finales**, consulta
