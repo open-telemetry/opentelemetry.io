@@ -1,10 +1,10 @@
 ---
 title: Mantendo as informações do registro e da lista atualizadas
 linkTitle: Atualizar
-default_lang_commit: 8a15d0d668c516ccb255cd0a92e0bcd442e83b4d
+default_lang_commit: 8a15d0d668c516ccb255cd0a92e0bcd442e83b4d # patched
 ---
 
-Revisamos periodicamente as entradas do [registro](..) e os [dados da lista],
+Revisamos periodicamente as entradas do [registro](..) e os [dados da lista][],
 como links externos, para garantir que apenas [adotantes](../../adopters/),
 [distribuições](../../distributions/),
 [integrações, bibliotecas](../../integrations/), e

@@ -119,6 +119,74 @@ requirements:
           - SYS_RESOURCE # not required for kernels 5.11+
     ```
 
+#### Instrumenting all processes in a pod (recommended)
+
+When OBI runs as a sidecar container with `shareProcessNamespace: true`, it
+shares the Pod's PID namespace and can only see processes within that Pod. This
+means you can use `OTEL_EBPF_AUTO_TARGET_EXE=*` to instrument all processes in
+the pod without needing to specify individual executable names or ports.
+
+This is the recommended approach for sidecar deployments, as it provides a
+simple, reusable configuration that works across different pods without
+modification:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goblog
+  labels:
+    app: goblog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: goblog
+  template:
+    metadata:
+      labels:
+        app: goblog
+    spec:
+      # Required so the sidecar instrument tool can access the service process
+      shareProcessNamespace: true
+      serviceAccountName: obi # required if you want kubernetes metadata decoration
+      containers:
+        # Container for the instrumented service
+        - name: goblog
+          image: mariomac/goblog:dev
+          imagePullPolicy: IfNotPresent
+          command: ['/goblog']
+          ports:
+            - containerPort: 8443
+              name: https
+        # Sidecar container with OBI - the eBPF auto-instrumentation tool
+        - name: obi
+          image: otel/ebpf-instrument:main
+          securityContext: # Privileges are required to install the eBPF probes
+            privileged: true
+          env:
+            # Instrument all processes in the pod (wildcard)
+            - name: OTEL_EBPF_AUTO_TARGET_EXE
+              value: '*'
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: 'http://otelcol:4318'
+            # required if you want kubernetes metadata decoration
+            - name: OTEL_EBPF_KUBE_METADATA_ENABLE
+              value: 'true'
+```
+
+Using the wildcard approach is less error prone than specifying individual
+executable names or ports, since you don't need to update the OBI configuration
+when adding new services to the pod. OBI can only access processes within the
+same Pod (due to the shared PID namespace), so there is no risk of accidentally
+instrumenting processes outside your pod.
+
+#### Instrumenting specific processes in a pod
+
+If you need more granular control over which processes to instrument within a
+pod, you can specify the executable name or open port instead of using the
+wildcard.
+
 The following example instruments the `goblog` pod by attaching OBI as a
 container (image available at `otel/ebpf-instrument:main`). The
 auto-instrumentation tool is configured to forward metrics and traces to

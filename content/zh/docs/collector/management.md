@@ -2,7 +2,7 @@
 title: 管理
 description: 如何管理 OpenTelemetry Collector 大规模部署
 weight: 23
-default_lang_commit: 4f2df45798ecb448e9029f155e8eaa64d23555ff
+default_lang_commit: 4f2df45798ecb448e9029f155e8eaa64d23555ff # patched
 cSpell:ignore: hostmetrics opampsupervisor
 ---
 
@@ -11,7 +11,7 @@ cSpell:ignore: hostmetrics opampsupervisor
 为了更好地理解本文，你应该先了解如何安装和配置 Collector。参阅以下页面所述的主题：
 
 - [快速开始](/docs/collector/quick-start/)：了解如何安装 OpenTelemetry Collector。
-- [配置]：了解如何配置 OpenTelemetry Collector 并设置遥测管道。
+- [配置][configuration]：了解如何配置 OpenTelemetry Collector 并设置遥测管道。
 
 ## 基础知识 {#basics}
 

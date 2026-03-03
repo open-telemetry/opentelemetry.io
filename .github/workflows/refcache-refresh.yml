@@ -1,5 +1,5 @@
 name: Refcache refresh
-# cSpell:ignore chalin otelbot pushd
+# cSpell:ignore chalin pushd
 
 # Creates (or updates) the PR that refreshes a number of the oldest refcache
 # entries. We say "the PR", because there can be at most one such PR at a time.
@@ -51,7 +51,7 @@ jobs:
           app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
         with:
           fetch-depth: 0
           # Needed to trigger workflows when pushing new commits to an existing PR

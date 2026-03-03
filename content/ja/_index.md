@@ -8,8 +8,6 @@ default_lang_commit: fd7da211d5bc37ca93112a494aaf6a94445e2e28 # patched
 drifted_from_default: true
 ---
 
-<div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
-
 {{% blocks/cover image_anchor="top" height="max" color="primary" %}}
 
 <!-- prettier-ignore -->

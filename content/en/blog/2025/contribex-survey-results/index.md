@@ -17,7 +17,7 @@ to contribute to the project and what we can do to improve the contributor
 experience. The Contributor Experience Survey asked contributors for their
 thoughts about the project's organization, SIG contributions, leadership
 committee interactions, and event attendance. We received 120
-[responses](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/contributor-experience)
+[responses](https://github.com/open-telemetry/sig-end-user/tree/01bdcafbc787c0aa0b076ecd85432c24d50e62ac/end-user-surveys/contributor-experience?from_branch=main)
 and heard from all 47 Special Interest Groups (SIGs). We'll use this feedback to
 make contributing to OpenTelemetry easier and more rewarding. A big thank you to
 everyone who participated in the survey! Let's review the results.
@@ -137,7 +137,7 @@ newer contributors v. 65% of experienced contributors.
 ![A stacked bar chart showing the percentage of newer contributors and experienced contributors who can solve problems](chart-5-solve-problems.png)
 
 We received
-[many thoughtful responses](https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/contributor-experience/otel-contributor-experience-survey-free-form-questions.csv)
+[many thoughtful responses](https://github.com/open-telemetry/sig-end-user/blob/5960784a7e300dc23cbde4fba1bf391180a9e79f/end-user-surveys/contributor-experience/otel-contributor-experience-survey-free-form-questions.csv?from_branch=main)
 to our open-ended questions:
 
 > "Do you have any additional comments regarding project organization or your
@@ -283,7 +283,7 @@ investigate offering future surveys to address this request.
 ## Learn more
 
 For detailed results, see the anonymized
-[survey responses](https://github.com/open-telemetry/sig-end-user/tree/main/end-user-surveys/contributor-experience).
+[survey responses](https://github.com/open-telemetry/sig-end-user/tree/01bdcafbc787c0aa0b076ecd85432c24d50e62ac/end-user-surveys/contributor-experience?from_branch=main).
 
 ## Your feedback is essential
 

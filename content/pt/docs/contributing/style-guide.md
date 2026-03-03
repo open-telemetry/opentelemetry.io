@@ -3,7 +3,7 @@ title: Manual de estilo da documentação
 description: Terminologia e estilo ao escrever a documentação do OpenTelemetry.
 linkTitle: Manual de estilo
 weight: 20
-default_lang_commit: 5ab640677e1ac0a57553fb1c72199812f628f461
+default_lang_commit: 5ab640677e1ac0a57553fb1c72199812f628f461 # patched
 cSpell:ignore: open-telemetry opentelemetryio postgre style-guide
 ---
 
@@ -51,14 +51,14 @@ verifique o arquivo
 ## Markdown {#markdown}
 
 As páginas do site são escritas na sintaxe Markdown suportada pelo renderizador
-Markdown [Goldmark]. Para a lista completa de extensões Markdown suportadas,
-consulte [Goldmark].
+Markdown [Goldmark][]. Para a lista completa de extensões Markdown suportadas,
+consulte [Goldmark][].
 
 Você também pode utilizar as seguintes extensões:
 
 - [Alertas][gfm-alerts] do [GitHub-flavored Markdown][GFM] (GFM)
-- [Emojis]. Para a lista completa de emojis disponíveis, consulte os [Emojis] da
-  documentação do Hugo.
+- [Emojis][]. Para a lista completa de emojis disponíveis, consulte os
+  [Emojis][] da documentação do Hugo.
 
 [Emojis]: https://gohugo.io/quick-reference/emojis/
 [gfm-alerts]:
@@ -69,12 +69,12 @@ Você também pode utilizar as seguintes extensões:
 ### Verificações de Markdown {#markdown-standards}
 
 Para garantir padrões e consistência nos arquivos Markdown, todos os arquivos
-devem seguir certas regras, aplicadas pelo [markdownlint]. Para uma lista
-completa, verifique os arquivos [.markdownlint.yaml] e
-[.markdownlint-cli2.yaml].
+devem seguir certas regras, aplicadas pelo [markdownlint][]. Para uma lista
+completa, verifique os arquivos [.markdownlint.yaml][] e
+[.markdownlint-cli2.yaml][].
 
 Também aplicamos o padrão [file format](#file-format) ao Markdown, que remove
-espaços em branco no final das linhas. Isso exclui a [line break syntax] com
+espaços em branco no final das linhas. Isso exclui a [line break syntax][] com
 dois ou mais espaços. Para forçar a quebra de linha, use `<br>` em vez disso ou
 reformate seu texto.
 
@@ -108,7 +108,7 @@ title: TituloDoRegistro
 
 ## Formato de arquivo {#file-format}
 
-Nós utilizamos o [Prettier] para aplicar a formatação de arquivos. Execute-o
+Nós utilizamos o [Prettier][] para aplicar a formatação de arquivos. Execute-o
 usando:
 
 - `npm run fix:format` para formatar todos os arquivos

@@ -11,6 +11,8 @@ sig: End User
 cSpell:ignore: Beorn explorative Kiripolsky Nduka negotiables Rabestein Suereth sunsetting Volz
 ---
 
+<!-- markdownlint-configure-file {"no-shortcut-ref-link": {"ignore_pattern": "^[Ww]ith$"}} -->
+
 On May 29th, 2025, I wrapped up my mentorship with Prometheus through the
 [Linux Foundation Mentorship Program](https://mentorship.lfx.linuxfoundation.org/project/36e3f336-ce78-4074-b833-012015eb59be).
 My project focused on understanding how Prometheus handles OpenTelemetry
@@ -105,7 +107,7 @@ light:
   > for Prometheus are justified as well. So both have very good arguments." —
   > _Juraci Paixão Kröhling_
 
-  <!-- test -->
+  <!-- markdownlint-disable no-shortcut-ref-link -->
 
   > “I think one of the biggest [interoperability issues] is the difference
   > between push and pull.” — _Julius Volz_
@@ -180,7 +182,7 @@ Here are the key findings:
 
 The survey patterns were consistent with what emerged from my qualitative
 research. For detailed results, see the
-[anonymized survey responses](https://github.com/prometheus-community/ux-research/blob/main/prom-otel-research/survey-results.csv)
+[anonymized survey responses](https://github.com/prometheus-community/ux-research/blob/acc0194a79aa0f2ee1c6eb93462c9488d236a275/prom-otel-research/survey-results.csv?from_branch=main)
 
 ## What I didn’t expect to learn (but did)
 
@@ -271,7 +273,7 @@ foundation for that work.
 If you're interested in the ongoing discussions, proposals, and feedback around
 these ideas, you can check out the GitHub repository where everything is being
 documented:
-[OpenTelemetry Resource Attributes in Prometheus UX Research](https://github.com/prometheus-community/ux-research/tree/main/prom-otel-research)
+[OpenTelemetry Resource Attributes in Prometheus UX Research](https://github.com/prometheus-community/ux-research/tree/a2f8c6684321fd04de7b94cfbd39a48bb1d7beb4/prom-otel-research?from_branch=main)
 
 ## Acknowledgments
 

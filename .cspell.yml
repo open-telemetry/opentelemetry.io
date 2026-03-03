@@ -99,6 +99,7 @@ words:
   - notranslate
   - nvmrc
   - opentelemetrybot
+  - otelbot
   - Powerjob
   - refcache
   - submatch

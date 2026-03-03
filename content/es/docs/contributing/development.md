@@ -8,7 +8,7 @@ what-next: >
   actualizaciones a los archivos del sitio web. Para más detalles sobre cómo
   enviar cambios, consulta [Enviar contenido][].
 weight: 60
-default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
+default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
 cSpell:ignore: preprocesado prerequisitos
 ---
 
@@ -27,11 +27,11 @@ para este sitio web.
 
 ### Gitpod
 
-Para trabajar a través de [Gitpod.io]:
+Para trabajar a través de [Gitpod.io][]:
 
 1.  Haz fork de este repositorio. Si necesitas ayuda, consulta [Fork a
     repository][fork].
-2.  Desde [gitpod.io/workspaces], crea un nuevo espacio de trabajo (haz esto
+2.  Desde [gitpod.io/workspaces][], crea un nuevo espacio de trabajo (haz esto
     solo una vez) o abre un espacio de trabajo existente de tu fork. También
     puedes visitar un enlace con el formato:
     `https://gitpod.io#https://github.com/TU_USUARIO_GITHUB/opentelemetry.io`.
@@ -45,9 +45,9 @@ Gitpod instala automáticamente los paquetes específicos del repositorio por ti
 
 ### Codespaces
 
-Para trabajar a través de GitHub [Codespaces]:
+Para trabajar a través de GitHub [Codespaces][]:
 
-1. Haz [Fork] del repositorio del sitio web.
+1. Haz [Fork][] del repositorio del sitio web.
 2. Abre un Codespace desde tu fork.
 
 Tu entorno de desarrollo se inicializará a través de la configuración de
@@ -55,7 +55,7 @@ Tu entorno de desarrollo se inicializará a través de la configuración de
 
 ## Configuración local
 
-1.  Haz [Fork] y luego [clone] del repositorio del sitio web en
+1.  Haz [Fork][] y luego [clone][] del repositorio del sitio web en
     <{{% param github_repo %}}>.
 2.  Ve al directorio del repositorio:
 
@@ -64,7 +64,7 @@ Tu entorno de desarrollo se inicializará a través de la configuración de
     ```
 
 3.  Instala o actualiza a la versión [**LTS activa**][nodejs-rel] de Node.js.
-    Recomendamos usar [nvm] para gestionar tu instalación de Node. En Linux,
+    Recomendamos usar [nvm][] para gestionar tu instalación de Node. En Linux,
     ejecuta el siguiente comando, que instalará y actualizará a la versión
     especificada en el archivo .nvmrc:
 
@@ -72,8 +72,8 @@ Tu entorno de desarrollo se inicializará a través de la configuración de
     nvm install
     ```
 
-    Para [instalar en Windows][nodejs-win], usa [nvm-windows]. Recomendamos usar
-    `cmd` y no Windows PowerShell para el siguiente comando:
+    Para [instalar en Windows][nodejs-win], usa [nvm-windows][]. Recomendamos
+    usar `cmd` y no Windows PowerShell para el siguiente comando:
 
     ```cmd
     nvm install lts && nvm use lts
@@ -105,10 +105,10 @@ Para servir el sitio ejecuta:
 npm run serve
 ```
 
-El sitio se sirve en [localhost:1313].
+El sitio se sirve en [localhost:1313][].
 
-Si necesitas probar las redirecciones de [Netlify], usa el siguiente comando y
-visita el sitio en [localhost:8888]:
+Si necesitas probar las redirecciones de [Netlify][], usa el siguiente comando y
+visita el sitio en [localhost:8888][]:
 
 ```sh
 npm run serve:netlify
@@ -125,10 +125,10 @@ que necesites aumentar el límite de descriptores de archivo. Consulta
 El sitio web se construye a partir del siguiente contenido:
 
 - Archivos bajo `content/`, `static/`, etc. según los valores predeterminados de
-  [Hugo].
+  [Hugo][].
 - Puntos de montaje, definidos por la [configuración][config] de Hugo en
   `config/_default/module-template.yaml`. Los montajes son directamente desde
-  submódulos de git bajo [content-modules], o contenido preprocesado desde
+  submódulos de git bajo [content-modules][], o contenido preprocesado desde
   `content-modules` (colocado bajo `tmp/`), y en ningún otro lugar.
 
 [config]: https://github.com/open-telemetry/opentelemetry.io/tree/main/config
@@ -137,7 +137,7 @@ El sitio web se construye a partir del siguiente contenido:
 
 ### Cambios en submódulos
 
-Si cambias cualquier contenido dentro de un submódulo de [content-modules],
+Si cambias cualquier contenido dentro de un submódulo de [content-modules][],
 necesitas primero enviar un PR (que contenga los cambios del submódulo) al
 repositorio del submódulo. Solo después de que el PR del submódulo haya sido
 aceptado, puedes actualizar el submódulo y hacer que los cambios aparezcan en

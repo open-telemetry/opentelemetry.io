@@ -47,9 +47,9 @@ What do you want to do?
   [Submitting content using GitHub](pull-requests/#changes-using-github)
 - For more significant contributions, read the pages in this section starting
   with:
-  - [Prerequisites]
-  - [Issues]
-  - [Submitting content]
+  - [Prerequisites][]
+  - [Issues][]
+  - [Submitting content][]
 
 [Prerequisites]: prerequisites/
 [Submitting content]: pull-requests/
@@ -67,7 +67,7 @@ The pages in this section describe how to contribute to OpenTelemetry
 **documentation**.
 
 For guidance on how to contribute to the OpenTelemetry project in general, see
-the community [OpenTelemetry New Contributor Guide]. Every [OTel
+the community [OpenTelemetry New Contributor Guide][]. Every [OTel
 repository][org] for language implementations, the Collector, and conventions
 have their own project-specific contributing guides.
 

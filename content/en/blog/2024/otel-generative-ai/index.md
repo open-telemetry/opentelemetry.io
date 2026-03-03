@@ -37,7 +37,7 @@ The
 is being developed within the
 [OpenTelemetry Python Contrib](https://github.com/open-telemetry/opentelemetry-python-contrib)
 under
-[instrumentation-genai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai)
+[instrumentation-genai](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/5560324cff80148de07324715aef5efa1e6242c1/instrumentation-genai?from_branch=main)
 project to automate telemetry collection for generative AI applications. The
 first release is a Python library for instrumenting OpenAI client calls. This
 library captures spans and events, gathering essential data like model inputs,
@@ -77,7 +77,7 @@ behaviors may arise.
 
 > [!NOTE]
 >
-> Note that we decided to use [events emitted] with the
+> Note that we decided to use [events emitted][] with the
 > [Logs API](/docs/specs/otel/logs/api/) specification in the Semantic
 > Conventions for Generative AI. Events allows for us to define specific
 > [semantic conventions](/docs/specs/semconv/general/events/) for the user
@@ -169,7 +169,7 @@ opentelemetry-instrument --traces_exporter console --metrics_exporter console py
 ```
 
 There is a complete example
-[available here](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation-genai/opentelemetry-instrumentation-openai-v2/examples/).
+[available here](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/fecd8afac9ecc3fdc0d581fbaad2e063a2f8018d/instrumentation-genai/opentelemetry-instrumentation-openai-v2/examples?from_branch=main).
 
 With this simple instrumentation, one can begin capture traces from their
 generative AI application. Here is an example from the
@@ -225,7 +225,7 @@ We now have contributors from [Amazon](https://aws.amazon.com/),
 and more!
 
 You are welcome to join the community! More information can be found at the
-[Generative AI Observability project page](https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md).
+[Generative AI Observability project page](https://github.com/open-telemetry/community/blob/5125996b5d159ff9aaa906f9a25226a821dc7bed/projects/gen-ai.md?from_branch=main).
 
 _A version of this article also [appears on the CNCF blog][]._
 
