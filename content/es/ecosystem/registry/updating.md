@@ -4,8 +4,8 @@ linkTitle: Updating
 default_lang_commit: 1a6db8fe3a989fa20267368336aceb5665b4394b
 ---
 
-Revisamos periódicamente la entrada del [registro](..) y los [datos de la
-lista][], como los enlaces externos, para garantizar que solo los
+Revisamos periódicamente la entrada del [registro](..) y los [lista de datos][],
+como los enlaces externos, para garantizar que solo los
 [adoptantes](../../adopters/), [distribuciones](../../distributions/),
 [integraciones, bibliotecas](../../integrations/) y
 [proveedores](../../vendors/) que apoyan activamente a OpenTelemetry estén
