@@ -44,7 +44,7 @@ Read on to learn about all the events related to OpenTelemetry during KubeCon.
 - **[Overcoming OpenTelemetry Adoption Challenges](https://kccnceu2026.sched.com/event/2CVyK/overcoming-opentelemetry-adoption-challenges-chris-weldon-wolters-kluwer)**<br>by
   Chris Weldon, Wolters Kluwer<br> Tuesday March 24, 2026 17:00 - 17:30CET
 
-- **[Retroactive Sampling with OpenTelemetry: Cut 90% Distributed Tracing Bandwidth Usage](https://kccnceu2026.sched.com/event/2CW83/retroactive-sampling-with-opentelemetry-cut-90-distributed-tracing-bandwidth-usage-zhu-jiekun-victoriametrics-jayice-zhou-baidu)**<br>by
+- **[Retroactive Sampling with OpenTelemetry: Cut 90% Distributed Tracing Bandwidth Usage](https://kccnceu2026.sched.com/event/2CW83/retroactive-sampling-with-opentelemetry-cut-90-distributed-tracing-bandwidth-usage-roman-khavronenko-zhu-jiekun-victoriametrics)**<br>by
   Roman Khavronenko & Zhu Jiekun, VictoriaMetrics<br> Tuesday March 24, 2026
   17:00 - 17:30CET
 
