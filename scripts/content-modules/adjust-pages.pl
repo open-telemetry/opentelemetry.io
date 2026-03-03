@@ -243,7 +243,7 @@ while(<>) {
   if ($ARGV =~ /^tmp\/semconv/) {
     s|(\]\()/docs/|$1$specBasePath/semconv/|g;
     s|(\]:\s*)/docs/|$1$specBasePath/semconv/|;
-    s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g; 
+    s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
   }
 
   # SPECIFICATION custom processing
