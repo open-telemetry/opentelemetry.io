@@ -36,17 +36,18 @@ debe incluir lo siguiente:
 - Dirección de GitHub o correo electrónico como punto de contacto para que
   podamos contactarte en caso de tener preguntas
 
-> [!NOTA]
->
-> - Si proporcionas integración externa de OpenTelemetry para cualquier tipo de
->   biblioteca, servicio o aplicación, considera
->   [añadirlo al registro](/ecosystem/registry/adding).
-> - Si adoptas OpenTelemetry para la observabilidad como usuario final y no
->   proporcionas ningún tipo de servicio relacionado con OpenTelemetry, consulta
->   [Adoptadores](/ecosystem/adopters).
-> - Si ofreces una solución que utiliza OpenTelemetry para ofrecer
->   observabilidad a los usuarios finales, consulta
->   [Proveedores](/ecosystem/vendors).
+{{% alert title="Nota" %}}
+
+- Si proporcionas integración externa de OpenTelemetry para cualquier tipo de
+  biblioteca, servicio o aplicación, considera
+  [añadirlo al registro](/ecosystem/registry/adding).
+- Si adoptas OpenTelemetry para la observabilidad como usuario final y no
+  proporcionas ningún tipo de servicio relacionado con OpenTelemetry, consulta
+  [Adoptadores](/ecosystem/adopters).
+- Si ofreces una solución que utiliza OpenTelemetry para ofrecer observabilidad
+  a los usuarios finales, consulta [Proveedores](/ecosystem/vendors).
+
+{{% /alert %}}
 
 [envia una solicitud de registro]: /docs/contributing/pull-requests/
 
