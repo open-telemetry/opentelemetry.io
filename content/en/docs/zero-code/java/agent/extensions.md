@@ -348,3 +348,9 @@ val extendedAgent by tasks.registering(Jar::class) {
   }
 }
 ```
+
+## Extension examples
+
+For more extension examples, see the
+[extension project](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/examples/extension)
+within the Java instrumentation repository.
