@@ -45,7 +45,7 @@ causes CI failures — most commonly in the automated `otelbot/refcache-refresh`
 PRs that check every external link on the site.
 
 To unblock CI without waiting for an upstream release, you can add a temporary
-patch to `adjust-pages.pl`. Patches are regex-based rewrites that run at build
+patch to [`adjust-pages.pl`][script]. Patches are regex-based rewrites that run at build
 time and include built-in version tracking: once the spec advances past the
 target version, `cp:spec` prints a warning that the patch is obsolete and can be
 removed.
