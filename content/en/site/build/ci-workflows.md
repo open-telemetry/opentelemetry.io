@@ -44,7 +44,7 @@ pull requests:
 
 ### Publish date gating {#publish-date-gating}
 
-The script checks the `date:` frontmatter field of any changed markdown file. If
+The script checks the `date:` front matter field of any changed markdown file. If
 a future date is found, the `ready-to-be-merged` label is withheld until the
 date arrives (UTC). This prevents content from being merged before its scheduled
 publication date.
