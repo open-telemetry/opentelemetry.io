@@ -13,8 +13,8 @@ updated by bumping to a newer release.
 
 When you run [`npm run cp:spec`](../npm-scripts/#submodules-and-content),
 [`cp-pages.sh`][cp-pages] copies submodule content into `tmp/`, renames
-`README.md` files to `_index.md`, and then runs [`adjust-pages.pl`][script]
-over every Markdown file. Hugo mounts `tmp/` into the site tree so the processed
+`README.md` files to `_index.md`, and then runs [`adjust-pages.pl`][script] over
+every Markdown file. Hugo mounts `tmp/` into the site tree so the processed
 pages appear under `/docs/specs/`.
 
 ## What the script does
@@ -28,7 +28,7 @@ the following transformations to each file:
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Front matter injection** | Extracts the first `# Heading` as `title`, generates `linkTitle`, and emits Hugo front matter. Supports front matter embedded in `<!--- Hugo ... --->` comment blocks. |
 | **Version stamping**       | Appends spec version numbers (e.g., `1.54.0`) to titles and linkTitles for OTel spec, OTLP, and semconv landing pages.                                                 |
-| **URL rewriting**          | Converts absolute GitHub URLs for spec repos into local `/docs/specs/...` paths so cross-spec links work on the site.                                                  |
+| **URL rewriting**          | Converts absolute GitHub URLs for spec repositories into local `/docs/specs/...` paths so cross-spec links work on the site.                                           |
 | **Image path adjustment**  | Rewrites relative image paths so they resolve correctly from the Hugo page location.                                                                                   |
 | **Content stripping**      | Removes `<details>` blocks and `<!-- toc -->` sections that are not needed on the site.                                                                                |
 | **Temporary patches**      | Applies regex-based patches for spec issues that have not yet been fixed in a release (see below).                                                                     |
@@ -39,10 +39,10 @@ and are updated automatically by the version-update workflow.
 ## Patching specs between releases {#patching-specs}
 
 Fixing a broken link or incorrect content in a spec requires a PR to the
-upstream repository, a new release, and a submodule bump in this repo. That
-process can take weeks or months. In the meantime, the broken content causes CI
-failures — most commonly in the automated `otelbot/refcache-refresh` PRs that
-check every external link on the site.
+upstream repository, a new release, and a submodule bump in this repository.
+That process can take weeks or months. In the meantime, the broken content
+causes CI failures — most commonly in the automated `otelbot/refcache-refresh`
+PRs that check every external link on the site.
 
 To unblock CI without waiting for an upstream release, you can add a temporary
 patch to `adjust-pages.pl`. Patches are regex-based rewrites that run at build
@@ -57,7 +57,7 @@ Copy the template below and adapt it. A patch function has three parts:
 1. A **file-scope guard** that restricts the patch to the relevant spec files.
 2. A call to **`applyPatchOrPrintMsgIf`** that controls whether the patch runs
    based on the current spec version.
-3. The **regex replacement** that fixes the content.
+3. The **regular expression replacement** that fixes the content.
 
 ```perl
 sub patchSpec_because_of_SemConv_DockerAPIVersions() {
