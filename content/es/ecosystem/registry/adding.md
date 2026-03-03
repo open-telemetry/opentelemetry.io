@@ -32,10 +32,12 @@ bibliotecas de instrumentación.
 **Ejemplos**: Consulta la lista de integraciones de aplicaciones nativas en la
 página [Integraciones](/ecosystem/integrations/).
 
-> [!NOTA]
->
-> Este es el único tipo de registro que permite licencias
-> comerciales/propietarias.
+{{% alert title="Nota" %}}
+
+Este es el único tipo de registro que permite licencias
+comerciales/propietarias.
+
+{{% /alert %}}
 
 ### `core` {#core}
 
@@ -105,10 +107,11 @@ cualquier componente que proporcione recursos o configuración al Collector.
 **Ejemplos**: Receptores OTLP, receptores Prometheus o cualquier componente que
 reciba datos de telemetría de fuentes externas.
 
-> [!NOTA]
->
-> No aplicable a componentes de terceros que reciben telemetría de
-> OpenTelemetry.
+{{% alert title="Nota" %}}
+
+No aplicable a componentes de terceros que reciben telemetría de OpenTelemetry.
+
+{{% /alert %}}
 
 ### `detector de recursos` {#resource-detector}
 
