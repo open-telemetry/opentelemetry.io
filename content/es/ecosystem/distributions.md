@@ -26,11 +26,11 @@ Collector y el componente que personalizan. Para distribuciones del
 
 ## Añadiendo tu distribución {#how-to-add}
 
-Para que tu distribución aparezca en la lista, [envia una solicitud de
+Para que tu distribución aparezca en la lista, [envía una solicitud de
 registro][] con una entrada añadida a la [lista de distribuciones][]. La entrada
 debe incluir lo siguiente:
 
-- Enlace a la página principal de su distribución
+- Enlace a la página principal de tu distribución
 - Enlace a la documentación que explica cómo usar la distribución
 - Lista de los componentes que contiene tu distribución
 - Dirección de GitHub o correo electrónico como punto de contacto para que
@@ -49,9 +49,9 @@ debe incluir lo siguiente:
 
 {{% /alert %}}
 
-[envia una solicitud de registro]: /docs/contributing/pull-requests/
+[envía una solicitud de registro]: /docs/contributing/pull-requests/
 
-{{% include keep-up-to-date.md distribution %}}
+{{% include keep-up-to-date.md distribucion %}}
 
 [componentes]: /docs/concepts/components/
 [distribuciones]: /docs/concepts/distributions/
