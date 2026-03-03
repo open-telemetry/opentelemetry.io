@@ -17,7 +17,7 @@ adoptado OpenTelemetry para la
 > Si tu empresa utiliza OpenTelemetry en producción o experimentación, nos
 > encantaría añadirla a la lista oficial de usuarios. Puedes [enviar una
 > solicitud de registro] (#how-to-add) o completar el formulario [Unirse a la
-> lista de usuarios de OpenTelemetry] [form].
+> lista de usuarios de OpenTelemetry][form].
 
 {{% ecosystem/adopters-table %}}
 
