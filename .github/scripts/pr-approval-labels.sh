@@ -18,6 +18,10 @@
 #   - missing:docs-approval  -> when docs-approvers approval is pending
 #   - missing:sig-approval   -> when SIG approval is pending
 #   - ready-to-be-merged     -> when all required approvals are present
+#
+# Modes:
+#   Single-PR mode (PR env var set): processes the given PR.
+#   Batch mode (PR env var unset): queries GitHub for all open PRs.
 
 set -euo pipefail
 
@@ -34,8 +38,8 @@ ORG="open-telemetry"
 # frontmatter. Add labels here to extend the publish date gating check.
 PUBLISH_DATE_LABELS=("blog")
 
-if [[ -z "${REPO:-}" || -z "${PR:-}" ]]; then
-  echo "ERROR: REPO and PR environment variables must be set."
+if [[ -z "${REPO:-}" ]]; then
+  echo "ERROR: REPO environment variable must be set."
   exit 0
 fi
 
@@ -142,8 +146,6 @@ get_sig_teams_for_files() {
 # ---------------------------------------------------------------------------
 # Check if the PR has potentially a publish date in the frontmatter of 
 # changed files.
-# This is commonly used for blog posts that often have a "date:" field in 
-# their markdown frontmatter.
 # -------------------------------------------------------------------------
 should_check_publish_date() {
   local label
@@ -185,6 +187,43 @@ get_publish_date() {
   done
 
   echo "${latest_date}"
+}
+
+# ---------------------------------------------------------------------------
+# Batch mode: find all open PRs that carry any of the PUBLISH_DATE_LABELS
+# and run main() for each one.
+# ---------------------------------------------------------------------------
+run_batch() {
+  echo "Running in batch mode."
+  echo "Fetching open PRs with labels: ${PUBLISH_DATE_LABELS[*]}"
+
+  local all_prs=""
+  local label
+  for label in "${PUBLISH_DATE_LABELS[@]}"; do
+    local prs
+    prs=$(gh pr list \
+      --repo "${REPO}" \
+      --label "${label}" \
+      --state open \
+      --json number \
+      --jq '.[].number' 2>/dev/null || true)
+    all_prs="${all_prs} ${prs}"
+  done
+
+  local pr_nums
+  pr_nums=$(echo "${all_prs}" | tr ' ' '\n' | sort -un | grep -v '^$' || true)
+
+  if [[ -z "${pr_nums}" ]]; then
+    echo "No open PRs found with labels: ${PUBLISH_DATE_LABELS[*]}"
+    return
+  fi
+
+  echo "Found PRs: ${pr_nums}"
+  while IFS= read -r pr_num; do
+    [[ -z "${pr_num}" ]] && continue
+    echo "--- Processing PR #${pr_num} ---"
+    PR="${pr_num}" main || echo "WARNING: Failed for PR #${pr_num}"
+  done <<< "${pr_nums}"
 }
 
 # ===========================================================================
@@ -294,7 +333,7 @@ ${members}"
   fi
 
   # -------------------------------------------------------------------------
-  # 3. Check publish date (usually for blog posts, when applicable)
+  # 3. Check publish date, if applicable
   # -------------------------------------------------------------------------
   echo ""
   echo "=== Checking publish date ==="
@@ -307,18 +346,18 @@ ${members}"
     if [[ -n "${publish_date}" ]]; then
       local today
       today=$(date -u +%Y-%m-%d)
-      echo "Blog publish date: ${publish_date}, today: ${today}"
+      echo "Publish date: ${publish_date}, today: ${today}"
       if [[ "${publish_date}" > "${today}" ]]; then
-        echo "Blog post publish date is in the future. Not labeling ready-to-be-merged."
+        echo "Publish date is in the future. Not labeling ready-to-be-merged."
         publish_date_ready="false"
       else
-        echo "Blog post publish date is today or past. Labeling ready-to-be-merged."
+        echo "Publish date is today or past. Labeling ready-to-be-merged."
       fi
     else
       echo "No publish date found in changed files."
     fi
   else
-    echo "PR does not have 'blog' label. Skipping date check."
+    echo "PR does not have any of the '${PUBLISH_DATE_LABELS[*]}' labels. Skipping date check."
   fi
 
   # -------------------------------------------------------------------------
@@ -380,5 +419,10 @@ ${members}"
   echo "Done."
 }
 
-# Ensure the script does not block a PR even if it fails
-main || echo "Failed to run $0"
+# Route between single-PR mode and batch mode (no PR env var set)
+if [[ -z "${PR:-}" ]]; then
+  run_batch || echo "Failed to run $0 in batch mode"
+else
+  # Ensure the script does not block a PR even if it fails
+  main || echo "Failed to run $0"
+fi

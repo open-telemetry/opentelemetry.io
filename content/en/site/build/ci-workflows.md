@@ -52,7 +52,9 @@ being merged before their scheduled publication date.
 The `pr-approval-labels` workflow runs daily at midnight UTC (in addition to the
 event-driven triggers) so that a blog PR whose publication date arrives
 overnight receives the label automatically, without requiring the author to push
-a new commit.
+a new commit. In scheduled mode the script itself queries GitHub for all open
+PRs carrying any label listed in `PUBLISH_DATE_LABELS` (currently `blog`) and
+processes each one — no label filtering is needed in the workflow.
 
 If a PR contains multiple blog posts with different dates, the label is gated on
 the latest date (all posts must be ready before merging).
