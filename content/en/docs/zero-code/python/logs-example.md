@@ -120,7 +120,7 @@ opentelemetry-instrument \
   python $(pwd)/example.py
 ```
 
-> prior to OpenTelemetry Python 1.40.0 you had to enable log instrumentation
+> Prior to OpenTelemetry Python 1.40.0 you had to enable log instrumentation
 > with `export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true`
 
 Sample output:
