@@ -51,7 +51,7 @@ debe incluir lo siguiente:
 
 [envía una solicitud de registro]: /docs/contributing/pull-requests/
 
-{{% include keep-up-to-date.md distribucion %}}
+{{% include keep-up-to-date.md distribution %}}
 
 [componentes]: /docs/concepts/components/
 [distribuciones]: /docs/concepts/distributions/
