@@ -15,10 +15,10 @@ All workflow files live under
 Two workflows work together to automatically manage approval-related labels on
 pull requests:
 
-| Workflow file                      | Trigger                               | Privileges                                   |
-| ---------------------------------- | ------------------------------------- | -------------------------------------------- |
-| [`pr-review-trigger.yml`][trigger] | `pull_request_review`                 | Minimal (no secrets)                         |
-| [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run` | App token for label edits and org/team reads |
+| Workflow file                      | Trigger                                           | Privileges                                   |
+| ---------------------------------- | ------------------------------------------------- | -------------------------------------------- |
+| [`pr-review-trigger.yml`][trigger] | `pull_request_review`                             | Minimal (no secrets)                         |
+| [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run`, `schedule` | App token for label edits and org/team reads |
 
 [trigger]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-review-trigger.yml
@@ -34,11 +34,28 @@ pull requests:
   (determined by files changed and [`.github/component-owners.yml`][owners]);
   removed once a SIG member approves or when no SIG component is touched.
 - **`ready-to-be-merged`** — added when all required approvals are present;
-  removed otherwise.
+  removed otherwise. For PRs with the `blog` label, this label is also gated on
+  the blog post's publish date (see [Blog post date gating](#blog-date-gating)).
 
 [docs-approvers]: https://github.com/orgs/open-telemetry/teams/docs-approvers
 [owners]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
+
+### Blog post date gating {#blog-date-gating}
+
+PRs with the `blog` label (automatically applied to any PR touching
+`content/en/blog/**`) are subject to an additional check: the
+`ready-to-be-merged` label is only added when the `date:` field in the blog
+post's frontmatter is on or before today (UTC). This prevents blog posts from
+being merged before their scheduled publication date.
+
+The `pr-approval-labels` workflow runs daily at midnight UTC (in addition to the
+event-driven triggers) so that a blog PR whose publication date arrives
+overnight receives the label automatically, without requiring the author to push
+a new commit.
+
+If a PR contains multiple blog posts with different dates, the label is gated on
+the latest date (all posts must be ready before merging).
 
 ### Why two workflows?
 

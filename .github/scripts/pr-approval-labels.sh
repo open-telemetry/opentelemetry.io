@@ -30,6 +30,10 @@ DOCS_MAINTAINERS_TEAM="docs-maintainers"
 COMPONENT_OWNERS_FILE=".github/component-owners.yml"
 ORG="open-telemetry"
 
+# Labels that indicate a PR may contain content with a publish date in its
+# frontmatter. Add labels here to extend the publish date gating check.
+PUBLISH_DATE_LABELS=("blog")
+
 if [[ -z "${REPO:-}" || -z "${PR:-}" ]]; then
   echo "ERROR: REPO and PR environment variables must be set."
   exit 0
@@ -135,6 +139,54 @@ get_sig_teams_for_files() {
   echo "${sig_teams}" | tr ' ' '\n' | sort -u | grep -v '^$' || true
 }
 
+# ---------------------------------------------------------------------------
+# Check if the PR has potentially a publish date in the frontmatter of 
+# changed files.
+# This is commonly used for blog posts that often have a "date:" field in 
+# their markdown frontmatter.
+# -------------------------------------------------------------------------
+should_check_publish_date() {
+  local label
+  for label in "${PUBLISH_DATE_LABELS[@]}"; do
+    if echo "${CURRENT_LABELS}" | grep -qxF "${label}"; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+# ---------------------------------------------------------------------------
+# Fetch the latest publish date (YYYY-MM-DD) from the 'date:' frontmatter
+# field of all markdown files changed in the PR, commonly used on blog posts.
+# Uses the GitHub API to read content from the PR head (handles fork PRs).
+# Returns the latest date found, or empty string if none.
+# ---------------------------------------------------------------------------
+get_publish_date() {
+  local pr_files="$1"
+  local head_repo="$2"
+  local head_sha="$3"
+  local latest_date=""
+
+  for file in ${pr_files}; do
+    local content
+    content=$(gh api "/repos/${head_repo}/contents/${file}?ref=${head_sha}" \
+      --jq '.content' 2>/dev/null | base64 --decode 2>/dev/null || true)
+    [[ -z "${content}" ]] && continue
+
+    local file_date
+    file_date=$(echo "${content}" | grep -m 1 '^date:' \
+      | sed 's/date:[[:space:]]*//' | tr -d "\"' " | tr -d '[:space:]')
+    [[ -z "${file_date}" ]] && continue
+
+    echo "Found date '${file_date}' in ${file}" >&2
+    if [[ -z "${latest_date}" || "${file_date}" > "${latest_date}" ]]; then
+      latest_date="${file_date}"
+    fi
+  done
+
+  echo "${latest_date}"
+}
+
 # ===========================================================================
 # Main
 # ===========================================================================
@@ -143,7 +195,8 @@ main() {
 
   # Fetch PR data
   local pr_json
-  pr_json=$(gh pr view "${PR}" --repo "${REPO}" --json "files,latestReviews,labels")
+  pr_json=$(gh pr view "${PR}" --repo "${REPO}" \
+    --json "files,latestReviews,labels,headRefOid,headRepository")
 
   local pr_files
   pr_files=$(echo "${pr_json}" | jq -r '.files[].path')
@@ -152,6 +205,11 @@ main() {
   latest_reviews=$(echo "${pr_json}" | jq -c '.latestReviews')
 
   CURRENT_LABELS=$(echo "${pr_json}" | jq -r '.labels[].name')
+
+  local head_sha
+  head_sha=$(echo "${pr_json}" | jq -r '.headRefOid')
+  local head_repo
+  head_repo=$(echo "${pr_json}" | jq -r '.headRepository.nameWithOwner')
 
   # -------------------------------------------------------------------------
   # 1. Check docs approval
@@ -236,7 +294,35 @@ ${members}"
   fi
 
   # -------------------------------------------------------------------------
-  # 3. Apply / remove labels
+  # 3. Check publish date (usually for blog posts, when applicable)
+  # -------------------------------------------------------------------------
+  echo ""
+  echo "=== Checking publish date ==="
+  local publish_date_ready="true"
+
+  if should_check_publish_date; then
+    local publish_date
+    publish_date=$(get_publish_date "${pr_files}" "${head_repo}" "${head_sha}")
+
+    if [[ -n "${publish_date}" ]]; then
+      local today
+      today=$(date -u +%Y-%m-%d)
+      echo "Blog publish date: ${publish_date}, today: ${today}"
+      if [[ "${publish_date}" > "${today}" ]]; then
+        echo "Blog post publish date is in the future. Not labeling ready-to-be-merged."
+        publish_date_ready="false"
+      else
+        echo "Blog post publish date is today or past. Labeling ready-to-be-merged."
+      fi
+    else
+      echo "No publish date found in changed files."
+    fi
+  else
+    echo "PR does not have 'blog' label. Skipping date check."
+  fi
+
+  # -------------------------------------------------------------------------
+  # 4. Apply / remove labels
   # -------------------------------------------------------------------------
   echo ""
   echo "=== Applying labels ==="
@@ -275,6 +361,11 @@ ${members}"
     elif [[ "${docs_approved}" == "false" ]]; then
       all_approved="false"
     fi
+  fi
+
+  # Do not label ready-to-be-merged if publish date is in the future
+  if [[ "${all_approved}" == "true" && "${publish_date_ready}" == "false" ]]; then
+    all_approved="false"
   fi
 
   if [[ "${all_approved}" == "true" ]]; then

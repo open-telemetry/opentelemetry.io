@@ -3,6 +3,8 @@
 name: PR approval labels
 
 on:
+  schedule:
+    - cron: '0 0 * * *' # Daily at midnight UTC
   pull_request_target:
     types:
       - opened
@@ -47,7 +49,9 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          if [[ "$EVENT_NAME" == "workflow_run" ]]; then
+          if [[ "$EVENT_NAME" == "schedule" ]]; then
+            echo "number=" >> "$GITHUB_OUTPUT"  # unused for scheduled runs
+          elif [[ "$EVENT_NAME" == "workflow_run" ]]; then
             if [[ ! -f pr-number.txt ]]; then
               echo "Error: pr-number.txt artifact file not found." >&2
               exit 1
@@ -73,9 +77,33 @@ jobs:
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
       - name: Update approval labels
+        if: github.event_name != 'schedule'
         run: ./.github/scripts/pr-approval-labels.sh
         env:
           # Use the app token to read org team membership
           GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           REPO: ${{ github.repository }}
           PR: ${{ steps.pr.outputs.number }}
+
+      - name: Update approval labels (scheduled)
+        if: github.event_name == 'schedule'
+        env:
+          GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          blog_prs=$(gh pr list \
+            --repo "${REPO}" \
+            --label "blog" \
+            --state open \
+            --json number \
+            --jq '.[].number')
+          if [[ -z "${blog_prs}" ]]; then
+            echo "No open blog PRs found."
+            exit 0
+          fi
+          echo "Open blog PRs: ${blog_prs}"
+          for pr_num in ${blog_prs}; do
+            echo "--- Processing PR #${pr_num} ---"
+            PR="${pr_num}" ./.github/scripts/pr-approval-labels.sh \
+              || echo "WARNING: Failed for PR #${pr_num}"
+          done
