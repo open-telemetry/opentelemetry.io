@@ -25,8 +25,8 @@ default_lang_commit: 1a6db8fe3a989fa20267368336aceb5665b4394b
 {{% alert %}}
 
 El Registro de OpenTelemetry te permite buscar bibliotecas de instrumentación,
-componentes de recopilación, utilidades y otros proyectos útiles en el
-ecosistema de OpenTelemetry. Si eres un mantenedor de proyectos, puedes
+componentes del Collector, utilidades y otros proyectos útiles en el ecosistema
+de OpenTelemetry. Si eres un mantenedor de proyectos, puedes
 [agregar tu proyecto al Registro de OpenTelemetry](adding/).
 
 {{% /alert %}}
