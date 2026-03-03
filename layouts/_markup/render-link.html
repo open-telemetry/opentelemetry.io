@@ -1,6 +1,1 @@
-{{ $u := urls.Parse .Destination -}}
-
-{{- partial "hooks/render-link.html" (dict
-    "ctx" .
-    "urlParsed" $u)
--}}
+{{- partial "hooks/render-link.html" (dict "ctx" .) -}}

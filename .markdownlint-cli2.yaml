@@ -3,17 +3,15 @@ customRules:
   - ./scripts/_md-rules/unindent-code-blocks.js
   - ./scripts/_md-rules/trim-code-blank-lines.js
   - ./scripts/_md-rules/link-rules.mjs
+  - markdownlint-rule-no-shortcut-ref-link
+  - ./scripts/_md-rules/gh-url-hash/index.mjs
 
-ignores:
-  - '.github/**'
-  - 'content-modules/**'
-  - 'examples/**'
-  - 'layouts/**'
-  - '**/node_modules/**'
-  - 'resources/**'
-  - 'tools/**'
-  - 'themes/**'
-  - 'tmp/**'
+# TODO: uncomment the `ignores` block for a possible optimization after the main
+# churn of applying the gh-url-hash rule is complete
+#
+# ignores:
+#   - 'content/en/blog/2019/**/*.md'
+#   - 'content/en/blog/202[234]/**/*.md'
 
 config:
   extends: .markdownlint.yaml

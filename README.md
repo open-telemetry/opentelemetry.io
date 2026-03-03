@@ -25,7 +25,7 @@ missing [let us know][].
 For guidance on how to write and submit a blog post, see
 [Submit a blog post](https://opentelemetry.io/docs/contributing/blog/).
 
-### Add a project to the OpenTelemetry [Registry]
+### Add a project to the OpenTelemetry [Registry][]
 
 For details on how to add a project to the OpenTelemetry Registry, see [Adding
 to the registry][].
@@ -58,7 +58,7 @@ Here is a list of community roles with current and previous members:
 
 ### Maintainers
 
-These are the members of [@open-telemetry/docs-maintainers]:
+These are the members of [@open-telemetry/docs-maintainers][]:
 
 - [Austin Parker](https://github.com/austinlparker), Honeycomb
 - [Fabrizio Ferri-Benedetti](https://github.com/theletterf), Elastic
@@ -73,7 +73,7 @@ For more information about the maintainer role, see the
 
 ### Approvers
 
-These are the members of [@open-telemetry/docs-approvers]:
+These are the members of [@open-telemetry/docs-approvers][]:
 
 - [Jay DeLuca](https://github.com/jaydeluca), Grafana Labs
 - [Marylia Gutierrez](https://github.com/maryliag), Grafana Labs
@@ -83,7 +83,7 @@ For more information about the approver role, see the
 
 ### Triagers
 
-These are the members of [@open-telemetry/docs-triagers]:
+These are the members of [@open-telemetry/docs-triagers][]:
 
 - [Emídio Neto](https://github.com/emdneto)
 - [Ezzio Moreira](https://github.com/EzzioMoreira)
@@ -132,6 +132,8 @@ already contributed][contributors]!
   https://github.com/open-telemetry/opentelemetry.io/issues/new/choose
 [@open-telemetry/docs-approvers]:
   https://github.com/orgs/open-telemetry/teams/docs-approvers
+[@open-telemetry/docs-triagers]:
+  https://github.com/orgs/open-telemetry/teams/docs-triagers
 [@open-telemetry/docs-maintainers]:
   https://github.com/orgs/open-telemetry/teams/docs-maintainers
 [community repository]:

@@ -61,14 +61,14 @@ file.
 
 ## Markdown
 
-Site pages are written in the Markdown syntax supported by the [Goldmark]
+Site pages are written in the Markdown syntax supported by the [Goldmark][]
 Markdown renderer. For the full list of supported Markdown extensions, see
-[Goldmark].
+[Goldmark][].
 
 You can also use the following Markdown extensions:
 
 - [Alerts](#alerts)
-- [Emojis]: for the complete list of available emojis, see [Emojis] from the
+- [Emojis][]: for the complete list of available emojis, see [Emojis][] from the
   Hugo docs.
 
 [Emojis]: https://gohugo.io/quick-reference/emojis/
@@ -90,24 +90,48 @@ These render as:
 
 {{% _param alertExamples %}}
 
-For details about Hugo's blockquote alert syntax, see [Alerts][hugo-alerts] from
-the Hugo docs.
+For details about the blockquote alert syntax, see [Alerts][docsy-alerts] from
+the Docsy docs.
 
 [gfm-alerts]:
   https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide#alerts
 [GFM]: https://github.github.com/gfm/
 [Goldmark]: https://gohugo.io/configuration/markup/#goldmark
-[hugo-alerts]: https://gohugo.io/render-hooks/blockquotes/#alerts
+[docsy-alerts]: https://www.docsy.dev/docs/content/adding-content/#alerts
 [Obsidian callout]: https://help.obsidian.md/callouts
+
+### Link references
+
+When using Markdown [reference links][], prefer the _collapsed_ form `[text][]`
+over the _shortcut_ form `[text]`. While both are valid [CommonMark][], the
+shortcut form is not consistently recognized by all Markdown tools. In
+particular, if you write `[example]` and forget the definition, the
+[markdownlint][] linter won't warn you[^md052] -- the text silently renders as
+literal `[example]` instead of a link. With the collapsed form `[example][]`,
+the linter catches the missing definition immediately.
+
+[^md052]:
+    Specifically, the built-in [MD052][] rule (`reference-links-images`) only
+    checks collapsed and full reference forms by default. Its `shortcut_syntax`
+    option can include shortcut references, but it doesn't work well in
+    practice.
+
+[MD052]: https://github.com/DavidAnson/markdownlint/blob/main/doc/md052.md
+
+This is enforced by the `no-shortcut-ref-link` custom rule. Run
+`npm run fix:markdown` to convert shortcut references automatically.
+
+[CommonMark]: https://spec.commonmark.org/0.31.2/#reference-link
+[reference links]: https://spec.commonmark.org/0.31.2/#reference-link
 
 ### Markdown checks {#markdown-standards}
 
 To enforce standards and consistency for Markdown files, all files should follow
-certain rules, enforced by [markdownlint]. For a full list, check the
-[.markdownlint.yaml] and [.markdownlint-cli2.yaml] files.
+certain rules, enforced by [markdownlint][]. For a full list, check the
+[.markdownlint.yaml][] and [.markdownlint-cli2.yaml][] files.
 
 We also enforce Markdown [file format](#file-format) and strip files of trailing
-whitespace. This precludes the [line break syntax] of 2+ spaces; use `<br>`
+whitespace. This precludes the [line break syntax][] of 2+ spaces; use `<br>`
 instead or reformat your text.
 
 ## Spell checking
@@ -141,7 +165,7 @@ title: registryEntryTitle
 
 ## File format
 
-We use [Prettier] to enforce file formatting. Invoke it using:
+We use [Prettier][] to enforce file formatting. Invoke it using:
 
 - `npm run fix:format` to format all files
 - `npm run fix:format:diff` to format only the files that have changed since the

@@ -5,7 +5,7 @@ disableKinds: [taxonomy]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
-ignoreLogs: [spec-resource-not-found]
+ignoreLogs: []
 
 # Language settings
 defaultContentLanguage: en
@@ -107,15 +107,6 @@ params:
       4.0](https://creativecommons.org/licenses/by/4.0)
     from_year: 2019
     to_year: present
-  tagline: Effective observability requires high-quality telemetry
-  sub_tagline: >-
-    **OpenTelemetry** makes robust, portable telemetry a built-in feature of
-    cloud-native software.
-  sub_description: >-
-    **OpenTelemetry** provides a single set of APIs, libraries, agents, and
-    collector services to capture distributed traces and metrics from your
-    application. You can analyze them using Prometheus, Jaeger, and other
-    observability tools.
   github_repo: https://github.com/open-telemetry/opentelemetry.io
   github_branch: main
   gcs_engine_id: 015faf7de29c34606
@@ -251,9 +242,14 @@ params:
     docker-compose-v2: |
       `docker-compose` is deprecated. For details, see
       [Migrate to Compose V2](https://docs.docker.com/compose/).
+
   # Docs helpers: use with _param
   FA: <i class="fa-{1} fa-{2} text-{3} px-1"></i>
+  FAB: <i class="fa-brands fa-{1} text-{2} px-1"></i>
   FAS: <i class="fa-solid fa-{1} text-{2} px-1"></i>
+  FAS_LG: <i class="fa-solid fa-{1} text-{2} fa-lg"></i>
+  # Badge usage: {{% _param BADGE text color %}}
+  BADGE: <span class="badge text-bg-{2} rounded-pill text-small">{1}</span>
 
 security:
   funcs: # cspell:disable-line

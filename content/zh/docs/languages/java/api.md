@@ -563,7 +563,7 @@ public class OpenTelemetryUsage {
 {{% alert title="Java agent" %}} Java agent 是一种特殊情况，其中 `GlobalOpenTelemetry` 由 agent 进行设置。
 只需调用 `GlobalOpenTelemetry.get()` 即可访问 `OpenTelemetry` 实例。
 
-了解更多关于[使用自定义手动插桩扩展 Java agent] 的信息(/docs/zero-code/Java/agent/api/)。
+了解更多关于[使用自定义手动插桩扩展 Java agent](/docs/zero-code/Java/agent/api/)的信息。
 {{% /alert %}}
 
 [GlobalOpenTelemetry](https://www.javadoc.io/doc/io.opentelemetry/opentelemetry-api/latest/io/opentelemetry/api/GlobalOpenTelemetry.html)

@@ -33,9 +33,24 @@ no-trailing-spaces:
   strict: true
 table-column-style: false # Causes problems in ja and zh pages
 
-# Custom rules below this point:
-trim-code-blank-lines: true
-unindent-code-blocks: true
+# -----------------------------------------------------------------------------
+# Custom rules
+
+# We don't apply this rule broadly, only in selected folders such as blog posts;
+# see content/en/blog/.markdownlint.yml.
+
+gh-url-hash: false
+
+# Custom rules registered in .markdownlint-cli2.yaml are enabled by default
+# (via `default: true` above). Only list custom rules here to disable them or
+# to provide configuration. Rules that need no config can be omitted.
+
+no-shortcut-ref-link:
+  # Skip:
+  # - OTel spec informal footnotes like [1], [2]
+  # - SemConf number ranges like [0..1], [0..n-1], [0.0, 1.0]
+  # - Ellipsis like [...]
+  ignore_pattern: '^([-+,n\d\.\s]+)$|^\.\.\.$'
 
 # -----------------------------------------------------------------------------
 # Link-validation rules (from scripts/_md-rules/link-rules.mjs)
@@ -44,14 +59,14 @@ unindent-code-blocks: true
 # to it here and in the rule message for further details.
 
 no-typosquatting-urls:
-  regex: 'https://github\.(?!com|blog|io|github.com)'
+  pattern: 'https://github\.(?!com|blog|io|github.com)'
   message: >-
     GitHub URLs should use `github.(com|blog|io|github.com)` domains to avoid
     typosquatting. For details, see
     https://github.com/open-telemetry/opentelemetry.io/issues/8085.
 
 no-http-urls:
-  regex: 'http://(?!([\w-]+\.)?localhost\b)(?!127\.0)(?!.*[\?&]http_ok\b)'
+  pattern: '^http://(?!([\w-]+\.)?localhost\b)(?!127\.0)(?!.*[\?&]http_ok\b)'
   message: >-
     'http' URLs are only permitted for localhost/127.0.0.1. Use 'https' or add
     'http_ok' as a query parameter to the URL, such as:
@@ -63,30 +78,33 @@ no-lang-prefix-in-paths:
   # authors to prefix paths with their locale's language code; but that isn't
   # necessary, since absolute paths resolve to the locale's site root. See
   # https://gohugo.io/quick-reference/glossary/#site-relative
-  regex: '^/..(-..)?/.+'
+  pattern: '^/..(?:-..)?(/.+)$'
   # Note: ^/../$ is accepted
-  message: >-
-    Don't prefix paths with a language code.
+  message: Don't prefix paths with a language code.
+  replace: '$1'
 
 no-otel-io-external-urls:
-  regex: 'https?://(?:www\.)?opentelemetry\.io/'
-  message: >-
-    Use a site-relative path instead of the full opentelemetry.io URL.
+  pattern: 'https?://(?:www\.)?opentelemetry\.io/'
+  message: Use a site-relative path instead of the full opentelemetry.io URL.
+  replace: '/'
 
 no-spec-github-urls:
-  regex: 'https://github\.com/open-telemetry/opentelemetry-specification/(blob|tree)/main/specification/\w'
+  pattern: 'https://github\.com/open-telemetry/opentelemetry-specification/(?:blob|tree)/main/specification/'
   message: >-
     Use a local path, not a GitHub URL, for references to specification pages
     that are hosted on this site.
+  replace: '/docs/specs/otel/'
 
 no-proto-spec-github-urls:
-  regex: 'https://github\.com/open-telemetry/opentelemetry-proto/(blob|tree)/main/docs/specification'
+  pattern: 'https://github\.com/open-telemetry/opentelemetry-proto/(?:blob|tree)/main/docs/specification'
   message: >-
     Use a local path, not a GitHub URL, for references to specification pages
     that are hosted on this site.
+  replace: '/docs/specs/otlp/'
 
 no-semconv-github-urls:
-  regex: 'https://github\.com/open-telemetry/semantic-conventions/(blob|tree)/main/docs'
+  pattern: 'https://github\.com/open-telemetry/semantic-conventions/(?:blob|tree)/main/docs'
   message: >-
     Use a local path, not a GitHub URL, for references to semantic conventions
     pages that are hosted on this site.
+  replace: '/docs/specs/semconv/'
