@@ -21,7 +21,7 @@ pages appear under `/docs/specs/`.
 
 Spec Markdown files are written for GitHub rendering: they have no Hugo front
 matter, their links point to GitHub URLs, and image paths assume the repository
-layout. The [`adjust-pages.pl`][script][] script bridges this gap by applying
+layout. The [`adjust-pages.pl`][script] script bridges this gap by applying
 the following transformations to each file:
 
 | Transformation             | Description                                                                                                                                                            |
