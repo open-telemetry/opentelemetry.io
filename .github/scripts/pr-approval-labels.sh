@@ -176,10 +176,25 @@ get_publish_date() {
       --jq '.content' 2>/dev/null | base64 --decode 2>/dev/null || true)
     [[ -z "${content}" ]] && continue
 
+    local raw_date_line
+    raw_date_line=$(echo "${content}" | grep -m 1 '^date:' || true)
+    [[ -z "${raw_date_line}" ]] && continue
+
+    # Strip the "date:" prefix.
     local file_date
-    file_date=$(echo "${content}" | grep -m 1 '^date:' \
-      | sed 's/date:[[:space:]]*//' | tr -d "\"' " | tr -d '[:space:]')
-    [[ -z "${file_date}" ]] && continue
+    file_date=$(echo "${raw_date_line}" | sed 's/date:[[:space:]]*//')
+    # Remove any inline comment starting with '#'.
+    file_date=${file_date%%#*}
+    # Remove surrounding quotes.
+    file_date=$(echo "${file_date}" | tr -d "\"'")
+    # Take the first whitespace-delimited token as the date.
+    file_date=$(echo "${file_date}" | awk '{print $1}')
+    # Ensure we only keep the first 10 characters (YYYY-MM-DD).
+    file_date=${file_date:0:10}
+    # Validate that the extracted string is a proper YYYY-MM-DD date.
+    if [[ ! "${file_date}" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+      continue
+    fi
 
     echo "Found date '${file_date}' in ${file}" >&2
     if [[ -z "${latest_date}" || "${file_date}" > "${latest_date}" ]]; then
