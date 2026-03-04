@@ -3,7 +3,7 @@ title: OpenTelemetry with Mainframes
 linkTitle: Mainframes
 weight: 420
 description:
-  Use OpenTelemetry to gain observability into mainframe workloads alongside
+  Use OpenTelemetry to gain insights into mainframe workloads alongside
   your cloud and distributed systems.
 ---
 
