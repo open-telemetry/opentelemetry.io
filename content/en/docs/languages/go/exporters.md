@@ -19,16 +19,16 @@ This package provides factory functions that read the **exporter selector**
 environment variables to select and initialize the appropriate exporter at
 runtime:
 
-| Function | Environment variable | Description |
-|----------|---------------------|-------------|
-| [`NewSpanExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewSpanExporter) | `OTEL_TRACES_EXPORTER` | Creates a trace exporter |
-| [`NewMetricReader`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewMetricReader) | `OTEL_METRICS_EXPORTER` | Creates a metric reader |
-| [`NewLogExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewLogExporter) | `OTEL_LOGS_EXPORTER` | Creates a log exporter |
+| Function                                                                                                 | Environment variable    | Description              |
+| -------------------------------------------------------------------------------------------------------- | ----------------------- | ------------------------ |
+| [`NewSpanExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewSpanExporter) | `OTEL_TRACES_EXPORTER`  | Creates a trace exporter |
+| [`NewMetricReader`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewMetricReader) | `OTEL_METRICS_EXPORTER` | Creates a metric reader  |
+| [`NewLogExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewLogExporter)   | `OTEL_LOGS_EXPORTER`    | Creates a log exporter   |
 
-Supported values for the selector variables are `otlp` (default) and `none`.
-For `OTEL_METRICS_EXPORTER`, `prometheus` is also supported.
-Once an exporter is selected, its configuration (endpoint, headers, timeout,
-protocol, etc.) is read from the standard
+Supported values for the selector variables are `otlp` (default) and `none`. For
+`OTEL_METRICS_EXPORTER`, `prometheus` is also supported. Once an exporter is
+selected, its configuration (endpoint, headers, timeout, protocol, etc.) is read
+from the standard
 [OTLP exporter environment variables](/docs/languages/sdk-configuration/otlp-exporter/)
 by the underlying OTLP exporter package.
 
