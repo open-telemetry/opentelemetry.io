@@ -119,11 +119,11 @@ outputted.
   logging format
 - `OTEL_PYTHON_LOG_LEVEL`: to set a custom log level (info, error, debug,
   warning)
-- `OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION`: to disable the enabled by default
-  logging handler (true, false), refer to
+- `OTEL_PYTHON_LOG_AUTO_INSTRUMENTATION`: controls whether the logging handler is configured
+  automatically (true, false), enabled by default. Refer to
   [Logs Auto-Instrumentation](/docs/zero-code/python/logs-example/)
-- `OTEL_PYTHON_LOG_CODE_ATTRIBUTES`: to add `code` attributes (`code.file.path`,
-  `code.function.name`, `code.line.number`) to the logs
+- `OTEL_PYTHON_LOG_CODE_ATTRIBUTES`: to enable addition of `code` attributes (`code.file.path`,
+  `code.function.name`, `code.line.number`) to the logs (true, false)
 
 Examples:
 
