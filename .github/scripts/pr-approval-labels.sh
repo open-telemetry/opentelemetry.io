@@ -179,6 +179,12 @@ get_publish_date() {
     if [[ ! "${file}" == content/en/blog/* && ! "${file}" == content/en/announcements/* ]]; then
       continue
     fi
+    # Skip any file path containing potentially unsafe characters to avoid
+    # shell injection when constructing the GitHub API URL.
+    if [[ ! "${file}" =~ ^[A-Za-z0-9._/-]+$ ]]; then
+      echo "Skipping potentially unsafe file path: ${file}" >&2
+      continue
+    fi
     local content
     content=$(gh api "/repos/${REPO}/contents/${file}?ref=${head_sha}" \
       --jq '.content' 2>/dev/null | base64 --decode 2>/dev/null || true)
