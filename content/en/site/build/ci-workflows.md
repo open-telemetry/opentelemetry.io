@@ -5,7 +5,6 @@ description: >-
   GitHub Actions workflows that automate PR checks, label management, and other
   CI/CD processes.
 weight: 10
-cSpell:ignore: OTELBOT
 ---
 
 All workflow files live under
@@ -16,10 +15,10 @@ All workflow files live under
 Two workflows work together to automatically manage approval-related labels on
 pull requests:
 
-| Workflow file                      | Trigger                               | Privileges                                   |
-| ---------------------------------- | ------------------------------------- | -------------------------------------------- |
-| [`pr-review-trigger.yml`][trigger] | `pull_request_review`                 | Minimal (no secrets)                         |
-| [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run` | App token for label edits and org/team reads |
+| Workflow file                      | Trigger                                           | Privileges                                   |
+| ---------------------------------- | ------------------------------------------------- | -------------------------------------------- |
+| [`pr-review-trigger.yml`][trigger] | `pull_request_review`                             | Minimal (no secrets)                         |
+| [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run`, `schedule` | App token for label edits and org/team reads |
 
 [trigger]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-review-trigger.yml
@@ -35,11 +34,40 @@ pull requests:
   (determined by files changed and [`.github/component-owners.yml`][owners]);
   removed once a SIG member approves or when no SIG component is touched.
 - **`ready-to-be-merged`** — added when all required approvals are present;
-  removed otherwise.
+  removed otherwise. For PRs carrying any label in
+  [`PUBLISH_DATE_LABELS`](#publish-date-gating), this label is also gated on the
+  publish date found in changed files.
 
 [docs-approvers]: https://github.com/orgs/open-telemetry/teams/docs-approvers
 [owners]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
+
+### Publish date gating {#publish-date-gating}
+
+The script scans each changed file for a line beginning with `date:` (typically
+from the front matter in Markdown content). If it finds a date in the future,
+the `ready-to-be-merged` label is withheld until that date arrives (UTC). This
+helps prevent content from being merged before its scheduled publication date.
+
+The check applies to PRs carrying any label listed in the `PUBLISH_DATE_LABELS`
+array in the script (currently: `blog`, automatically applied to any PR touching
+`content/en/blog/**`). Adding a label to that array extends the check to other
+PR types.
+
+If a PR contains multiple files with different dates, the label is gated on the
+latest date — all content must be ready before merging.
+
+#### Script operating modes
+
+The script runs in one of two modes, selected by whether the `PR` environment
+variable is set:
+
+- **Single-PR mode** — processes a single PR. Used by the `pull_request_target`
+  and `workflow_run` triggers.
+- **Batch mode** — queries GitHub for all open PRs carrying any
+  `PUBLISH_DATE_LABELS` label and processes each one. Used by the `schedule`
+  trigger (daily at midnight UTC), so a PR whose publish date arrives overnight
+  receives `ready-to-be-merged` automatically without requiring a new commit.
 
 ### Why two workflows?
 
@@ -97,6 +125,23 @@ sequenceDiagram
     L->>GH: Add/remove labels
 ```
 
+```mermaid
+sequenceDiagram
+    participant GH as GitHub
+    participant L as pr-approval-labels
+    participant API as GitHub API
+
+    Note over GH: schedule event (daily, midnight UTC)
+
+    GH->>L: Trigger (base repo context, with secrets)
+    L->>API: Query open PRs with PUBLISH_DATE_LABELS labels
+    API-->>L: List of PRs
+    loop Each PR
+        L->>L: Run pr-approval-labels.sh
+        L->>GH: Add/remove labels
+    end
+```
+
 ### Security model
 
 - **`pr-review-trigger`**: intentionally minimal — no secrets, no privileged
@@ -106,6 +151,33 @@ sequenceDiagram
   / `OTELBOT_DOCS_PRIVATE_KEY`) that has permissions to read org/team membership
   and edit PR labels. Uses `pull_request_target` and `workflow_run` to ensure it
   always executes in the trusted base repository context.
+
+## PR fix directives {#pr-fix-directives}
+
+The [`pr-actions.yml`][pr-actions] workflow lets contributors run selected `fix`
+scripts by commenting on a PR:
+
+- **`/fix`** runs `npm run fix`.
+- **`/fix:<name>`** runs `npm run fix:<name>` (for example, `/fix:format`).
+- **`/fix:all`** is mapped to `/fix` since the command semantics changed
+  ([#9291][]).
+- **`/fix:ALL`** is mapped to `fix:all` so that maintainers can run `fix:all`.
+
+[#9291]: https://github.com/open-telemetry/opentelemetry.io/pull/9291
+
+It runs as a two-stage pipeline:
+
+1. **`generate-patch`** (untrusted): checks out the PR branch, runs the fix
+   command, prunes the link refcache, and uploads a patch artifact
+   (`pr-fix.patch`), up to 1024 KB.
+2. **`apply-patch`** (trusted): runs with a GitHub App token, applies the patch,
+   and pushes a commit to the PR branch.
+
+If a directive produces no changes, a separate `notify-noop` job comments that
+nothing needed to be committed.
+
+[pr-actions]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-actions.yml
 
 ## Other workflows
 
@@ -121,5 +193,4 @@ The repository includes several other workflows:
 | `auto-update-versions.yml` | Auto-update OTel component versions           |
 | `build-dev.yml`            | Development build and preview                 |
 | `label-prs.yml`            | Auto-label PRs based on file paths            |
-| `pr-actions.yml`           | PR-related automations                        |
 | `component-owners.yml`     | Assign reviewers based on component ownership |
