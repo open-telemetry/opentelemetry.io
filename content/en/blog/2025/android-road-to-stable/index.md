@@ -65,17 +65,17 @@ sync.
 Through community contributions, the OpenTelemetry Android project gained a
 number of useful new instrumentation libraries. These include:
 
-- [android-log](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/android-log) -
+- [android-log](https://github.com/open-telemetry/opentelemetry-android/tree/4d3290f84d2612286eabfb1072f1885905c2b756/instrumentation/android-log?from_branch=main) -
   the ability to generate OTel log records from idiomatic Android `Log.x(...)`
   calls.
-- [httpurlconnection](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/httpurlconnection) -
+- [httpurlconnection](https://github.com/open-telemetry/opentelemetry-android/tree/c090b3c2aa34477879e3481a8e1e06b089406c36/instrumentation/httpurlconnection?from_branch=main) -
   tracing instrumentation for this runtime-supplied HTTP client with a lot of
   history.
-- [view-click](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/view-click)
+- [view-click](https://github.com/open-telemetry/opentelemetry-android/tree/f0cf647e364e290f03ad7d77252fd7209dd2bf41/instrumentation/view-click?from_branch=main)
   – generates click events for user presses on Android Views.
-- [compose-click](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/compose/click)
+- [compose-click](https://github.com/open-telemetry/opentelemetry-android/tree/f0cf647e364e290f03ad7d77252fd7209dd2bf41/instrumentation/compose/click?from_branch=main)
   – generates click events for user presses within Jetpack Compose components
-- [sessions](https://github.com/open-telemetry/opentelemetry-android/tree/main/instrumentation/sessions)
+- [sessions](https://github.com/open-telemetry/opentelemetry-android/tree/f0cf647e364e290f03ad7d77252fd7209dd2bf41/instrumentation/sessions?from_branch=main)
   – generates events when the session lifecycle changes
 
 ### Auto-instrumentation
@@ -141,7 +141,7 @@ applications, we have created a new sample app. This demo app is modeled closely
 after the
 [OpenTelemetry Demo](https://github.com/open-telemetry/opentelemetry-demo)
 Astronomy Shop and is
-[included in the Android GitHub repository](https://github.com/open-telemetry/opentelemetry-android/tree/main/demo-app).
+[included in the Android GitHub repository](https://github.com/open-telemetry/opentelemetry-android/tree/c090b3c2aa34477879e3481a8e1e06b089406c36/demo-app?from_branch=main).
 In addition to demonstrating how to set up the agent and install
 instrumentation, the demo app also has features that generate off-the-shelf logs
 and tracing telemetry.

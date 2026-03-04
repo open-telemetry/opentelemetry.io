@@ -12,125 +12,125 @@ information on how to configure receivers, see the
 
 {{% include unmaintained-components-msg.md %}}
 
-<!-- BEGIN GENERATED: receiver-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: receiver-table SOURCE: scripts/collector-sync -->
 
-| Name                                                                                                                                                  | Distributions[^1]        | Traces[^2]  | Metrics[^2]  | Logs[^2]     |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ----------- | ------------ | ------------ |
-| [activedirectorydsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/activedirectorydsreceiver)           | contrib                  | -           | beta         | -            |
-| [aerospikereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/aerospikereceiver)                           | contrib                  | -           | alpha        | -            |
-| [apachereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/apachereceiver)                                 | contrib                  | -           | beta         | -            |
-| [apachesparkreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/apachesparkreceiver)                       | contrib                  | -           | alpha        | -            |
-| [awscloudwatchreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awscloudwatchreceiver)                   | contrib                  | -           | -            | alpha        |
-| [awscontainerinsightreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awscontainerinsightreceiver)       | contrib                  | -           | beta         | -            |
-| [awsecscontainermetricsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awsecscontainermetricsreceiver) | contrib                  | -           | beta         | -            |
-| [awsfirehosereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awsfirehosereceiver)                       | contrib                  | -           | alpha        | alpha        |
-| [awslambdareceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awslambdareceiver)                           | contrib                  | -           | development  | development  |
-| [awss3receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awss3receiver)                                   | contrib                  | alpha       | alpha        | alpha        |
-| [awsxrayreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/awsxrayreceiver)                               | contrib                  | beta        | -            | -            |
-| [azureblobreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/azureblobreceiver)                           | contrib                  | alpha       | -            | alpha        |
-| [azureeventhubreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/azureeventhubreceiver)                   | contrib                  | alpha       | alpha        | alpha        |
-| [azuremonitorreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/azuremonitorreceiver)                     | contrib                  | -           | alpha        | -            |
-| [carbonreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/carbonreceiver) ⚠️                              | contrib                  | -           | unmaintained | -            |
-| [chronyreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/chronyreceiver)                                 | contrib                  | -           | beta         | -            |
-| [ciscoosreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/ciscoosreceiver)                               | contrib                  | -           | alpha        | -            |
-| [cloudflarereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/cloudflarereceiver)                         | contrib                  | -           | -            | alpha        |
-| [cloudfoundryreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/cloudfoundryreceiver)                     | contrib                  | -           | beta         | development  |
-| [collectdreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/collectdreceiver)                             | contrib                  | -           | beta         | -            |
-| [couchdbreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/couchdbreceiver)                               | contrib                  | -           | beta         | -            |
-| [datadogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/datadogreceiver)                               | contrib                  | alpha       | alpha        | alpha        |
-| [dockerstatsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/dockerstatsreceiver)                       | contrib                  | -           | alpha        | -            |
-| [elasticsearchreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/elasticsearchreceiver)                   | contrib                  | -           | beta         | -            |
-| [envoyalsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/envoyalsreceiver)                             | contrib                  | -           | -            | alpha        |
-| [expvarreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/expvarreceiver)                                 | contrib                  | -           | alpha        | -            |
-| [faroreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/faroreceiver)                                     | contrib                  | alpha       | -            | alpha        |
-| [filelogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)                               | contrib, K8s             | -           | -            | beta         |
-| [filestatsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filestatsreceiver)                           | contrib                  | -           | beta         | -            |
-| [flinkmetricsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/flinkmetricsreceiver)                     | contrib                  | -           | alpha        | -            |
-| [fluentforwardreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/fluentforwardreceiver)                   | contrib, K8s             | -           | -            | beta         |
-| [githubreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/githubreceiver)                                 | contrib                  | development | alpha        | -            |
-| [gitlabreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/gitlabreceiver)                                 | contrib                  | alpha       | -            | -            |
-| [googlecloudmonitoringreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/googlecloudmonitoringreceiver)   | contrib                  | -           | alpha        | -            |
-| [googlecloudpubsubpushreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/googlecloudpubsubpushreceiver)   | contrib                  | -           | -            | development  |
-| [googlecloudpubsubreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/googlecloudpubsubreceiver)           | contrib                  | beta        | beta         | beta         |
-| [googlecloudspannerreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/googlecloudspannerreceiver)         | contrib                  | -           | beta         | -            |
-| [haproxyreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/haproxyreceiver)                               | contrib                  | -           | beta         | -            |
-| [hostmetricsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)                       | contrib, core, K8s       | -           | beta         | development  |
-| [httpcheckreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/httpcheckreceiver)                           | contrib, K8s             | -           | alpha        | -            |
-| [huaweicloudcesreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/huaweicloudcesreceiver)                 | contrib                  | -           | alpha        | -            |
-| [icmpcheckreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/icmpcheckreceiver)                           | contrib                  | -           | development  | -            |
-| [iisreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/iisreceiver)                                       | contrib                  | -           | beta         | -            |
-| [influxdbreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/influxdbreceiver)                             | contrib                  | -           | beta         | -            |
-| [jaegerreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jaegerreceiver)                                 | contrib, core, K8s       | beta        | -            | -            |
-| [jmxreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/jmxreceiver)                                       | contrib                  | -           | deprecated   | -            |
-| [journaldreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/journaldreceiver)                             | contrib, K8s             | -           | -            | alpha        |
-| [k8sclusterreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sclusterreceiver)                         | contrib, K8s             | -           | beta         | development  |
-| [k8seventsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8seventsreceiver)                           | contrib, K8s             | -           | -            | alpha        |
-| [k8slogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8slogreceiver) ⚠️                              | contrib                  | -           | -            | unmaintained |
-| [k8sobjectsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver)                         | contrib, K8s             | -           | -            | beta         |
-| [kafkametricsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kafkametricsreceiver)                     | contrib                  | -           | beta         | -            |
-| [kafkareceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kafkareceiver)                                   | contrib, core            | beta        | beta         | beta         |
-| [kubeletstatsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/kubeletstatsreceiver)                     | contrib, K8s             | -           | beta         | -            |
-| [libhoneyreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/libhoneyreceiver)                             | contrib                  | alpha       | -            | alpha        |
-| [lokireceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/lokireceiver)                                     | contrib                  | -           | -            | alpha        |
-| [macosunifiedloggingreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/macosunifiedloggingreceiver)       | contrib                  | -           | -            | alpha        |
-| [memcachedreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/memcachedreceiver)                           | contrib                  | -           | beta         | -            |
-| [mongodbatlasreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/mongodbatlasreceiver)                     | contrib                  | -           | beta         | beta         |
-| [mongodbreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/mongodbreceiver)                               | contrib                  | -           | beta         | -            |
-| [mysqlreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/mysqlreceiver)                                   | contrib                  | -           | beta         | development  |
-| [namedpipereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/namedpipereceiver)                           | contrib                  | -           | -            | alpha        |
-| [netflowreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/netflowreceiver)                               | contrib                  | -           | -            | alpha        |
-| [nginxreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/nginxreceiver)                                   | contrib                  | -           | beta         | -            |
-| [nopreceiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/nopreceiver)                                               | contrib, core            | beta        | beta         | beta         |
-| [nsxtreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/nsxtreceiver)                                     | contrib                  | -           | alpha        | -            |
-| [ntpreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/ntpreceiver)                                       | contrib                  | -           | beta         | -            |
-| [oracledbreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/oracledbreceiver)                             | contrib                  | -           | alpha        | development  |
-| [osqueryreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/osqueryreceiver)                               | contrib                  | -           | -            | development  |
-| [otelarrowreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/otelarrowreceiver)                           | contrib, K8s             | beta        | beta         | beta         |
-| [otlpjsonfilereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/otlpjsonfilereceiver)                     | contrib                  | alpha       | alpha        | alpha        |
-| [otlpreceiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)                                             | contrib, core, K8s, otlp | stable      | stable       | stable       |
-| [podmanreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/podmanreceiver)                                 | contrib                  | -           | alpha        | -            |
-| [postgresqlreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/postgresqlreceiver)                         | contrib                  | -           | beta         | development  |
-| [pprofreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/pprofreceiver)                                   | contrib                  | -           | -            | -            |
-| [prometheusreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusreceiver)                         | contrib, core, K8s       | -           | beta         | -            |
-| [prometheusremotewritereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/prometheusremotewritereceiver)   | contrib                  | -           | alpha        | -            |
-| [pulsarreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/pulsarreceiver)                                 | contrib                  | alpha       | alpha        | alpha        |
-| [purefareceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/purefareceiver)                                 | contrib                  | -           | alpha        | -            |
-| [purefbreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/purefbreceiver)                                 | contrib                  | -           | alpha        | -            |
-| [rabbitmqreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/rabbitmqreceiver)                             | contrib                  | -           | beta         | -            |
-| [receivercreator](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/receivercreator)                               | contrib, K8s             | alpha       | beta         | alpha        |
-| [redfishreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/redfishreceiver)                               | contrib                  | -           | development  | -            |
-| [redisreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/redisreceiver)                                   | contrib                  | -           | beta         | -            |
-| [riakreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/riakreceiver)                                     | contrib                  | -           | beta         | -            |
-| [saphanareceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/saphanareceiver)                               | contrib                  | -           | alpha        | -            |
-| [signalfxreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/signalfxreceiver)                             | contrib                  | -           | deprecated   | deprecated   |
-| [simpleprometheusreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/simpleprometheusreceiver)             | contrib                  | -           | beta         | -            |
-| [skywalkingreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/skywalkingreceiver)                         | contrib                  | beta        | development  | -            |
-| [snmpreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/snmpreceiver)                                     | contrib                  | -           | alpha        | -            |
-| [snowflakereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/snowflakereceiver)                           | contrib                  | -           | alpha        | -            |
-| [solacereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/solacereceiver)                                 | contrib                  | beta        | -            | -            |
-| [splunkenterprisereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/splunkenterprisereceiver)             | contrib                  | -           | alpha        | -            |
-| [splunkhecreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/splunkhecreceiver)                           | contrib                  | -           | beta         | beta         |
-| [sqlqueryreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sqlqueryreceiver)                             | contrib                  | -           | alpha        | development  |
-| [sqlserverreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sqlserverreceiver)                           | contrib                  | -           | beta         | development  |
-| [sshcheckreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/sshcheckreceiver)                             | contrib                  | -           | beta         | -            |
-| [statsdreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/statsdreceiver)                                 | contrib                  | -           | beta         | -            |
-| [stefreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/stefreceiver)                                     | contrib                  | -           | alpha        | -            |
-| [syslogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/syslogreceiver)                                 | contrib                  | -           | -            | beta         |
-| [systemdreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/systemdreceiver)                               | contrib                  | -           | alpha        | -            |
-| [tcpcheckreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/tcpcheckreceiver)                             | contrib                  | -           | alpha        | -            |
-| [tcplogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/tcplogreceiver)                                 | contrib                  | -           | -            | alpha        |
-| [tlscheckreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/tlscheckreceiver)                             | contrib                  | -           | alpha        | -            |
-| [udplogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/udplogreceiver)                                 | contrib                  | -           | -            | alpha        |
-| [vcenterreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/vcenterreceiver)                               | contrib                  | -           | alpha        | -            |
-| [vcrreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/vcrreceiver)                                       | contrib                  | development | development  | development  |
-| [wavefrontreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/wavefrontreceiver)                           | contrib                  | -           | deprecated   | -            |
-| [webhookeventreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/webhookeventreceiver)                     | contrib                  | -           | -            | beta         |
-| [windowseventlogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/windowseventlogreceiver)               | contrib                  | -           | -            | alpha        |
-| [windowsperfcountersreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/windowsperfcountersreceiver)       | contrib                  | -           | beta         | -            |
-| [windowsservicereceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/windowsservicereceiver)                 | contrib                  | -           | development  | -            |
-| [yanggrpcreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/yanggrpcreceiver)                             | contrib                  | -           | alpha        | -            |
-| [zipkinreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zipkinreceiver)                                 | contrib, core, K8s       | beta        | -            | -            |
-| [zookeeperreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/zookeeperreceiver)                           | contrib                  | -           | alpha        | -            |
+| Name                                                                                        | Distributions[^1]        | Traces[^2]  | Metrics[^2] | Logs[^2]     |
+| ------------------------------------------------------------------------------------------- | ------------------------ | ----------- | ----------- | ------------ |
+| {{< component-link name="activedirectorydsreceiver" type="receiver" repo="contrib" >}}      | contrib                  | -           | beta        | -            |
+| {{< component-link name="aerospikereceiver" type="receiver" repo="contrib" >}}              | contrib                  | -           | alpha       | -            |
+| {{< component-link name="apachereceiver" type="receiver" repo="contrib" >}}                 | contrib                  | -           | beta        | -            |
+| {{< component-link name="apachesparkreceiver" type="receiver" repo="contrib" >}}            | contrib                  | -           | alpha       | -            |
+| {{< component-link name="awscloudwatchreceiver" type="receiver" repo="contrib" >}}          | contrib                  | -           | -           | alpha        |
+| {{< component-link name="awscontainerinsightreceiver" type="receiver" repo="contrib" >}}    | contrib                  | -           | beta        | -            |
+| {{< component-link name="awsecscontainermetricsreceiver" type="receiver" repo="contrib" >}} | contrib                  | -           | beta        | -            |
+| {{< component-link name="awsfirehosereceiver" type="receiver" repo="contrib" >}}            | contrib                  | -           | alpha       | alpha        |
+| {{< component-link name="awslambdareceiver" type="receiver" repo="contrib" >}}              | contrib                  | -           | development | development  |
+| {{< component-link name="awss3receiver" type="receiver" repo="contrib" >}}                  | contrib                  | alpha       | alpha       | alpha        |
+| {{< component-link name="awsxrayreceiver" type="receiver" repo="contrib" >}}                | contrib                  | beta        | -           | -            |
+| {{< component-link name="azureblobreceiver" type="receiver" repo="contrib" >}}              | contrib                  | alpha       | -           | alpha        |
+| {{< component-link name="azureeventhubreceiver" type="receiver" repo="contrib" >}}          | contrib                  | beta        | beta        | beta         |
+| {{< component-link name="azuremonitorreceiver" type="receiver" repo="contrib" >}}           | contrib                  | -           | alpha       | -            |
+| {{< component-link name="carbonreceiver" type="receiver" repo="contrib" >}}                 | contrib                  | -           | beta        | -            |
+| {{< component-link name="chronyreceiver" type="receiver" repo="contrib" >}}                 | contrib                  | -           | beta        | -            |
+| {{< component-link name="ciscoosreceiver" type="receiver" repo="contrib" >}}                | contrib                  | -           | alpha       | -            |
+| {{< component-link name="cloudflarereceiver" type="receiver" repo="contrib" >}}             | contrib                  | -           | -           | alpha        |
+| {{< component-link name="cloudfoundryreceiver" type="receiver" repo="contrib" >}}           | contrib                  | -           | beta        | development  |
+| {{< component-link name="collectdreceiver" type="receiver" repo="contrib" >}}               | contrib                  | -           | beta        | -            |
+| {{< component-link name="couchdbreceiver" type="receiver" repo="contrib" >}}                | contrib                  | -           | beta        | -            |
+| {{< component-link name="datadogreceiver" type="receiver" repo="contrib" >}}                | contrib                  | alpha       | alpha       | alpha        |
+| {{< component-link name="dockerstatsreceiver" type="receiver" repo="contrib" >}}            | contrib                  | -           | alpha       | -            |
+| {{< component-link name="elasticsearchreceiver" type="receiver" repo="contrib" >}}          | contrib                  | -           | beta        | -            |
+| {{< component-link name="envoyalsreceiver" type="receiver" repo="contrib" >}}               | contrib                  | -           | -           | alpha        |
+| {{< component-link name="expvarreceiver" type="receiver" repo="contrib" >}}                 | contrib                  | -           | alpha       | -            |
+| {{< component-link name="faroreceiver" type="receiver" repo="contrib" >}}                   | contrib                  | alpha       | -           | alpha        |
+| {{< component-link name="filelogreceiver" type="receiver" repo="contrib" >}}                | contrib, K8s             | -           | -           | beta         |
+| {{< component-link name="filestatsreceiver" type="receiver" repo="contrib" >}}              | contrib                  | -           | beta        | -            |
+| {{< component-link name="flinkmetricsreceiver" type="receiver" repo="contrib" >}}           | contrib                  | -           | alpha       | -            |
+| {{< component-link name="fluentforwardreceiver" type="receiver" repo="contrib" >}}          | contrib, K8s             | -           | -           | beta         |
+| {{< component-link name="githubreceiver" type="receiver" repo="contrib" >}}                 | contrib                  | development | alpha       | -            |
+| {{< component-link name="gitlabreceiver" type="receiver" repo="contrib" >}}                 | contrib                  | alpha       | -           | -            |
+| {{< component-link name="googlecloudmonitoringreceiver" type="receiver" repo="contrib" >}}  | contrib                  | -           | alpha       | -            |
+| {{< component-link name="googlecloudpubsubpushreceiver" type="receiver" repo="contrib" >}}  | contrib                  | -           | -           | development  |
+| {{< component-link name="googlecloudpubsubreceiver" type="receiver" repo="contrib" >}}      | contrib                  | beta        | beta        | beta         |
+| {{< component-link name="googlecloudspannerreceiver" type="receiver" repo="contrib" >}}     | contrib                  | -           | beta        | -            |
+| {{< component-link name="haproxyreceiver" type="receiver" repo="contrib" >}}                | contrib                  | -           | beta        | -            |
+| {{< component-link name="hostmetricsreceiver" type="receiver" repo="contrib" >}}            | contrib, core, K8s       | -           | beta        | development  |
+| {{< component-link name="httpcheckreceiver" type="receiver" repo="contrib" >}}              | contrib, K8s             | -           | alpha       | -            |
+| {{< component-link name="huaweicloudcesreceiver" type="receiver" repo="contrib" >}}         | contrib                  | -           | alpha       | -            |
+| {{< component-link name="icmpcheckreceiver" type="receiver" repo="contrib" >}}              | contrib                  | -           | development | -            |
+| {{< component-link name="iisreceiver" type="receiver" repo="contrib" >}}                    | contrib                  | -           | beta        | -            |
+| {{< component-link name="influxdbreceiver" type="receiver" repo="contrib" >}}               | contrib                  | -           | beta        | -            |
+| {{< component-link name="jaegerreceiver" type="receiver" repo="contrib" >}}                 | contrib, core, K8s       | beta        | -           | -            |
+| {{< component-link name="jmxreceiver" type="receiver" repo="contrib" >}}                    | contrib                  | -           | deprecated  | -            |
+| {{< component-link name="journaldreceiver" type="receiver" repo="contrib" >}}               | contrib, K8s             | -           | -           | alpha        |
+| {{< component-link name="k8sclusterreceiver" type="receiver" repo="contrib" >}}             | contrib, K8s             | -           | beta        | development  |
+| {{< component-link name="k8seventsreceiver" type="receiver" repo="contrib" >}}              | contrib, K8s             | -           | -           | alpha        |
+| {{< component-link name="k8slogreceiver" type="receiver" repo="contrib" >}} ⚠️              | contrib                  | -           | -           | unmaintained |
+| {{< component-link name="k8sobjectsreceiver" type="receiver" repo="contrib" >}}             | contrib, K8s             | -           | -           | beta         |
+| {{< component-link name="kafkametricsreceiver" type="receiver" repo="contrib" >}}           | contrib                  | -           | beta        | -            |
+| {{< component-link name="kafkareceiver" type="receiver" repo="contrib" >}}                  | contrib, core            | beta        | beta        | beta         |
+| {{< component-link name="kubeletstatsreceiver" type="receiver" repo="contrib" >}}           | contrib, K8s             | -           | beta        | -            |
+| {{< component-link name="libhoneyreceiver" type="receiver" repo="contrib" >}}               | contrib                  | alpha       | -           | alpha        |
+| {{< component-link name="lokireceiver" type="receiver" repo="contrib" >}}                   | contrib                  | -           | -           | alpha        |
+| {{< component-link name="macosunifiedloggingreceiver" type="receiver" repo="contrib" >}}    | contrib                  | -           | -           | alpha        |
+| {{< component-link name="memcachedreceiver" type="receiver" repo="contrib" >}}              | contrib                  | -           | beta        | -            |
+| {{< component-link name="mongodbatlasreceiver" type="receiver" repo="contrib" >}}           | contrib                  | -           | beta        | beta         |
+| {{< component-link name="mongodbreceiver" type="receiver" repo="contrib" >}}                | contrib                  | -           | beta        | -            |
+| {{< component-link name="mysqlreceiver" type="receiver" repo="contrib" >}}                  | contrib                  | -           | beta        | development  |
+| {{< component-link name="namedpipereceiver" type="receiver" repo="contrib" >}}              | contrib                  | -           | -           | alpha        |
+| {{< component-link name="netflowreceiver" type="receiver" repo="contrib" >}}                | contrib                  | -           | -           | alpha        |
+| {{< component-link name="nginxreceiver" type="receiver" repo="contrib" >}}                  | contrib                  | -           | beta        | -            |
+| {{< component-link name="nopreceiver" type="receiver" repo="core" >}}                       | contrib, core            | beta        | beta        | beta         |
+| {{< component-link name="nsxtreceiver" type="receiver" repo="contrib" >}}                   | contrib                  | -           | alpha       | -            |
+| {{< component-link name="ntpreceiver" type="receiver" repo="contrib" >}}                    | contrib                  | -           | beta        | -            |
+| {{< component-link name="oracledbreceiver" type="receiver" repo="contrib" >}}               | contrib                  | -           | alpha       | development  |
+| {{< component-link name="osqueryreceiver" type="receiver" repo="contrib" >}}                | contrib                  | -           | -           | development  |
+| {{< component-link name="otelarrowreceiver" type="receiver" repo="contrib" >}}              | contrib, K8s             | beta        | beta        | beta         |
+| {{< component-link name="otlpjsonfilereceiver" type="receiver" repo="contrib" >}}           | contrib                  | alpha       | alpha       | alpha        |
+| {{< component-link name="otlpreceiver" type="receiver" repo="core" >}}                      | contrib, core, K8s, otlp | stable      | stable      | stable       |
+| {{< component-link name="podmanreceiver" type="receiver" repo="contrib" >}}                 | contrib                  | -           | alpha       | -            |
+| {{< component-link name="postgresqlreceiver" type="receiver" repo="contrib" >}}             | contrib                  | -           | beta        | development  |
+| {{< component-link name="pprofreceiver" type="receiver" repo="contrib" >}}                  | contrib                  | -           | -           | -            |
+| {{< component-link name="prometheusreceiver" type="receiver" repo="contrib" >}}             | contrib, core, K8s       | -           | beta        | -            |
+| {{< component-link name="prometheusremotewritereceiver" type="receiver" repo="contrib" >}}  | contrib                  | -           | alpha       | -            |
+| {{< component-link name="pulsarreceiver" type="receiver" repo="contrib" >}}                 | contrib                  | alpha       | alpha       | alpha        |
+| {{< component-link name="purefareceiver" type="receiver" repo="contrib" >}}                 | contrib                  | -           | alpha       | -            |
+| {{< component-link name="purefbreceiver" type="receiver" repo="contrib" >}}                 | contrib                  | -           | alpha       | -            |
+| {{< component-link name="rabbitmqreceiver" type="receiver" repo="contrib" >}}               | contrib                  | -           | beta        | -            |
+| {{< component-link name="receivercreator" type="receiver" repo="contrib" >}}                | contrib, K8s             | alpha       | beta        | alpha        |
+| {{< component-link name="redfishreceiver" type="receiver" repo="contrib" >}}                | contrib                  | -           | development | -            |
+| {{< component-link name="redisreceiver" type="receiver" repo="contrib" >}}                  | contrib                  | -           | beta        | -            |
+| {{< component-link name="riakreceiver" type="receiver" repo="contrib" >}}                   | contrib                  | -           | beta        | -            |
+| {{< component-link name="saphanareceiver" type="receiver" repo="contrib" >}}                | contrib                  | -           | alpha       | -            |
+| {{< component-link name="signalfxreceiver" type="receiver" repo="contrib" >}}               | contrib                  | -           | deprecated  | deprecated   |
+| {{< component-link name="simpleprometheusreceiver" type="receiver" repo="contrib" >}}       | contrib                  | -           | beta        | -            |
+| {{< component-link name="skywalkingreceiver" type="receiver" repo="contrib" >}}             | contrib                  | beta        | development | -            |
+| {{< component-link name="snmpreceiver" type="receiver" repo="contrib" >}}                   | contrib                  | -           | alpha       | -            |
+| {{< component-link name="snowflakereceiver" type="receiver" repo="contrib" >}}              | contrib                  | -           | alpha       | -            |
+| {{< component-link name="solacereceiver" type="receiver" repo="contrib" >}}                 | contrib                  | beta        | -           | -            |
+| {{< component-link name="splunkenterprisereceiver" type="receiver" repo="contrib" >}}       | contrib                  | -           | alpha       | -            |
+| {{< component-link name="splunkhecreceiver" type="receiver" repo="contrib" >}}              | contrib                  | -           | beta        | beta         |
+| {{< component-link name="sqlqueryreceiver" type="receiver" repo="contrib" >}}               | contrib                  | -           | alpha       | development  |
+| {{< component-link name="sqlserverreceiver" type="receiver" repo="contrib" >}}              | contrib                  | -           | beta        | development  |
+| {{< component-link name="sshcheckreceiver" type="receiver" repo="contrib" >}}               | contrib                  | -           | beta        | -            |
+| {{< component-link name="statsdreceiver" type="receiver" repo="contrib" >}}                 | contrib                  | -           | beta        | -            |
+| {{< component-link name="stefreceiver" type="receiver" repo="contrib" >}}                   | contrib                  | -           | alpha       | -            |
+| {{< component-link name="syslogreceiver" type="receiver" repo="contrib" >}}                 | contrib                  | -           | -           | beta         |
+| {{< component-link name="systemdreceiver" type="receiver" repo="contrib" >}}                | contrib                  | -           | alpha       | -            |
+| {{< component-link name="tcpcheckreceiver" type="receiver" repo="contrib" >}}               | contrib                  | -           | alpha       | -            |
+| {{< component-link name="tcplogreceiver" type="receiver" repo="contrib" >}}                 | contrib                  | -           | -           | alpha        |
+| {{< component-link name="tlscheckreceiver" type="receiver" repo="contrib" >}}               | contrib                  | -           | alpha       | -            |
+| {{< component-link name="udplogreceiver" type="receiver" repo="contrib" >}}                 | contrib                  | -           | -           | alpha        |
+| {{< component-link name="vcenterreceiver" type="receiver" repo="contrib" >}}                | contrib                  | -           | alpha       | -            |
+| {{< component-link name="vcrreceiver" type="receiver" repo="contrib" >}}                    | contrib                  | development | development | development  |
+| {{< component-link name="wavefrontreceiver" type="receiver" repo="contrib" >}}              | contrib                  | -           | deprecated  | -            |
+| {{< component-link name="webhookeventreceiver" type="receiver" repo="contrib" >}}           | contrib                  | -           | -           | beta         |
+| {{< component-link name="windowseventlogreceiver" type="receiver" repo="contrib" >}}        | contrib                  | -           | -           | alpha        |
+| {{< component-link name="windowsperfcountersreceiver" type="receiver" repo="contrib" >}}    | contrib                  | -           | beta        | -            |
+| {{< component-link name="windowsservicereceiver" type="receiver" repo="contrib" >}}         | contrib                  | -           | development | -            |
+| {{< component-link name="yanggrpcreceiver" type="receiver" repo="contrib" >}}               | contrib                  | -           | alpha       | -            |
+| {{< component-link name="zipkinreceiver" type="receiver" repo="contrib" >}}                 | contrib, core, K8s       | beta        | -           | -            |
+| {{< component-link name="zookeeperreceiver" type="receiver" repo="contrib" >}}              | contrib                  | -           | alpha       | -            |
 
 [^1]:
     Shows which [distributions](/docs/collector/distributions/) (core, contrib,
@@ -140,4 +140,4 @@ information on how to configure receivers, see the
     For details about component stability levels, see the
     [OpenTelemetry Collector component stability definitions](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
 
-<!-- END GENERATED: receiver-table SOURCE: collector-watcher -->
+<!-- END GENERATED: receiver-table SOURCE: scripts/collector-sync -->

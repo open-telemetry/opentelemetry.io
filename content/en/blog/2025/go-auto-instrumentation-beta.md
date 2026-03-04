@@ -53,7 +53,7 @@ these key features:
 Getting started with OpenTelemetry Go Auto-Instrumentation is straightforward!
 For detailed instructions on installation, configuration, and running your
 application with auto-instrumentation, check out the
-[Getting Started guide](https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/main/docs/getting-started.md).
+[Getting Started guide](https://github.com/open-telemetry/opentelemetry-go-instrumentation/blob/407fe957bbd8d9046ad6e29a2ab4a0731219931c/docs/getting-started.md?from_branch=main).
 
 To see a complete example, check out the
 [`rolldice` application](https://github.com/open-telemetry/opentelemetry-go-instrumentation/tree/0ebb7f21116bfdd8e29c315efdbf359cd74bddac/examples/rolldice).

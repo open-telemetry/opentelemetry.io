@@ -4,7 +4,7 @@ linkTitle: KubeCon EU '26
 date: 2026-02-02
 author: '[Zhu Jiekun](https://github.com/jiekun) (VictoriaMetrics)'
 # prettier-ignore
-cSpell:ignore: Altinity Amaechi Anoshin Aravena baeyens Benedetti Benedikt Bhatnagar Bongartz Bunino Cail Cijo Danielson Dapr Diagrid Dmitrii dyrmishi Ferri Geisendörfer Grcevski Guiton Haeussler Hantzaras helmuth Jayice Jernigan jiekun kasper Kluwer Kovalenko Kunju Kuntzer Lahouel Lehner Llinares Menderico Mikhailov Milind nissen Observablity Okorie Onyedikachi OTTL Pająk Perath Rabenhorst Schrottner Skyscanner Spanimals Srivastava tacular Therrien Timelthaler Toulme Travaglini Ujuk Vamerlatti Wolters yash Zhou
+cSpell:ignore: Altinity Amaechi Anoshin Aravena baeyens Benedetti Benedikt Bhatnagar Bongartz Bunino Cail Cijo Danielson Dapr Diagrid Dmitrii dyrmishi Ferri Geisendörfer Grcevski Guiton Haeussler Hantzaras helmuth Jernigan jiekun kasper Khavronenko Kluwer Kovalenko Kunju Kuntzer Lahouel Lehner Llinares Menderico Mikhailov Milind nissen Observablity Okorie Onyedikachi OTTL Pająk Perath Rabenhorst Roman Schrottner Skyscanner Spanimals Srivastava tacular Therrien Timelthaler Toulme Travaglini Ujuk Vamerlatti Wolters yash
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
@@ -44,8 +44,8 @@ Read on to learn about all the events related to OpenTelemetry during KubeCon.
 - **[Overcoming OpenTelemetry Adoption Challenges](https://kccnceu2026.sched.com/event/2CVyK/overcoming-opentelemetry-adoption-challenges-chris-weldon-wolters-kluwer)**<br>by
   Chris Weldon, Wolters Kluwer<br> Tuesday March 24, 2026 17:00 - 17:30CET
 
-- **[Retroactive Sampling with OpenTelemetry: Cut 90% Distributed Tracing Bandwidth Usage](https://kccnceu2026.sched.com/event/2CW83/retroactive-sampling-with-opentelemetry-cut-90-distributed-tracing-bandwidth-usage-zhu-jiekun-victoriametrics-jayice-zhou-baidu)**<br>by
-  Zhu Jiekun, VictoriaMetrics; Jayice Zhou, Baidu<br> Tuesday March 24, 2026
+- **[Retroactive Sampling with OpenTelemetry: Cut 90% Distributed Tracing Bandwidth Usage](https://kccnceu2026.sched.com/event/2CW83/retroactive-sampling-with-opentelemetry-cut-90-distributed-tracing-bandwidth-usage-roman-khavronenko-zhu-jiekun-victoriametrics)**<br>by
+  Roman Khavronenko & Zhu Jiekun, VictoriaMetrics<br> Tuesday March 24, 2026
   17:00 - 17:30CET
 
 - **[Hello World, Meet the Spanimals: Observability for Beginners](https://kccnceu2026.sched.com/event/2CW2F/hello-world-meet-the-spanimals-observability-for-beginners-tiffany-jernigan-grafana-labs-matthias-haeussler-cgi)**<br>by
@@ -104,7 +104,7 @@ Read on to learn about all the events related to OpenTelemetry during KubeCon.
 
 [Observability Day][] fosters collaboration, discussion, and knowledge sharing
 with a focus on cloud native observability projects. This event will be held on
-November 10, 2025 from 9:00 to 18:00. Look for your favorite talks about
+March 23, 2026 from 9:00 to 18:00. Look for your favorite talks about
 Observability and OpenTelemetry in the [schedule][obs-day-sched].
 
 <details>
@@ -204,7 +204,7 @@ Observability and OpenTelemetry in the [schedule][obs-day-sched].
 
 ## Maintainer Summit
 
-Held on November 9, one day prior to the co-located events and conference, the
+Held on March 22, one day prior to the co-located events and conference, the
 Maintainer Summit is an exclusive opportunity for the people behind the project
 to gather face-to-face. [Members][membership] of the OpenTelemetry organization
 will come together to collaborate, learn, share ideas, solve problems, and
@@ -250,6 +250,6 @@ Come listen, learn, and get involved in OpenTelemetry. See you in Amsterdam!
 [maintainer summit]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/features-add-ons/maintainer-summit/
 [membership]:
-  https://github.com/open-telemetry/community/blob/25f0275/guides/contributor/membership.md#member?from_branch=main
+  https://github.com/open-telemetry/community/blob/25f027532a6e9b503d6eb4dd3db0a98eb3b5f1cb/guides/contributor/membership.md#member?from_branch=main
 [obs-day-sched]:
   https://colocatedeventseu2026.sched.com/overview/type/Observability+Day
