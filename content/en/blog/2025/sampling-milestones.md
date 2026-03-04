@@ -219,7 +219,7 @@ the OpenTelemetry TraceState. It does this by synthesizing an explicit
 randomness value from the hash function that it uses.
 
 [PROBABILISTICSAMPLERPROCESSOR]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/probabilisticsamplerprocessor/README.md
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/549e115b28292c164eb671618c0ec8b728b69d2a/processor/probabilisticsamplerprocessor/README.md?from_branch=main
 
 ## Looking forward
 
@@ -230,10 +230,10 @@ components.
 Here are some useful references including the four OpenTelemetry enhancement
 proposals that plotted our course:
 
-- [0168 Sampling Propagation](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0168-sampling-propagation.md)
-- [0170 Sampling Probability](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0170-sampling-probability.md)
-- [0235 Sampling Threshold in TraceState](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0235-sampling-threshold-in-trace-state.md)
-- [0250 Composite Samplers](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/trace/0250-Composite_Samplers.md)
+- [0168 Sampling Propagation](https://github.com/open-telemetry/opentelemetry-specification/blob/97c826b70e2f89cfdf655d5150791f3f0c2bae19/oteps/trace/0168-sampling-propagation.md?from_branch=main)
+- [0170 Sampling Probability](https://github.com/open-telemetry/opentelemetry-specification/blob/97c826b70e2f89cfdf655d5150791f3f0c2bae19/oteps/trace/0170-sampling-probability.md?from_branch=main)
+- [0235 Sampling Threshold in TraceState](https://github.com/open-telemetry/opentelemetry-specification/blob/02531b063da09bca753070d8071180ca2c287117/oteps/trace/0235-sampling-threshold-in-trace-state.md?from_branch=main)
+- [0250 Composite Samplers](https://github.com/open-telemetry/opentelemetry-specification/blob/b72b9e1127391871eaedee841895ff9ce52d11f3/oteps/trace/0250-Composite_Samplers.md?from_branch=main)
 
 The following are our primary specification documents:
 

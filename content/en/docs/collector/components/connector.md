@@ -10,28 +10,28 @@ Connectors connect two pipelines, acting as both exporter and receiver. For more
 information on how to configure connectors, see the
 [Collector configuration documentation](/docs/collector/configuration/#connectors).
 
-<!-- BEGIN GENERATED: connector-table SOURCE: collector-watcher -->
+<!-- BEGIN GENERATED: connector-table SOURCE: scripts/collector-sync -->
 
-| Name                                                                                                                                       | Distributions[^1]  |
-| ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ |
-| [countconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/countconnector)                     | contrib, K8s       |
-| [datadogconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/datadogconnector)                 | contrib            |
-| [exceptionsconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/exceptionsconnector)           | contrib, K8s       |
-| [failoverconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/failoverconnector)               | contrib, K8s       |
-| [forwardconnector](https://github.com/open-telemetry/opentelemetry-collector/tree/main/connector/forwardconnector)                         | contrib, core, K8s |
-| [grafanacloudconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/grafanacloudconnector)       | contrib            |
-| [metricsaslogsconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/metricsaslogsconnector)     | contrib            |
-| [otlpjsonconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/otlpjsonconnector)               | contrib, K8s       |
-| [roundrobinconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/roundrobinconnector)           | contrib, K8s       |
-| [routingconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/routingconnector)                 | contrib, K8s       |
-| [servicegraphconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/servicegraphconnector)       | contrib, K8s       |
-| [signaltometricsconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/signaltometricsconnector) | contrib            |
-| [slowsqlconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/slowsqlconnector)                 | contrib            |
-| [spanmetricsconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/spanmetricsconnector)         | contrib            |
-| [sumconnector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/sumconnector)                         | contrib            |
+| Name                                                                                   | Distributions[^1]  |
+| -------------------------------------------------------------------------------------- | ------------------ |
+| {{< component-link name="countconnector" type="connector" repo="contrib" >}}           | contrib, K8s       |
+| {{< component-link name="datadogconnector" type="connector" repo="contrib" >}}         | contrib            |
+| {{< component-link name="exceptionsconnector" type="connector" repo="contrib" >}}      | contrib, K8s       |
+| {{< component-link name="failoverconnector" type="connector" repo="contrib" >}}        | contrib, K8s       |
+| {{< component-link name="forwardconnector" type="connector" repo="core" >}}            | contrib, core, K8s |
+| {{< component-link name="grafanacloudconnector" type="connector" repo="contrib" >}}    | contrib            |
+| {{< component-link name="metricsaslogsconnector" type="connector" repo="contrib" >}}   | contrib            |
+| {{< component-link name="otlpjsonconnector" type="connector" repo="contrib" >}}        | contrib, K8s       |
+| {{< component-link name="roundrobinconnector" type="connector" repo="contrib" >}}      | contrib, K8s       |
+| {{< component-link name="routingconnector" type="connector" repo="contrib" >}}         | contrib, K8s       |
+| {{< component-link name="servicegraphconnector" type="connector" repo="contrib" >}}    | contrib, K8s       |
+| {{< component-link name="signaltometricsconnector" type="connector" repo="contrib" >}} | contrib            |
+| {{< component-link name="slowsqlconnector" type="connector" repo="contrib" >}}         | contrib            |
+| {{< component-link name="spanmetricsconnector" type="connector" repo="contrib" >}}     | contrib            |
+| {{< component-link name="sumconnector" type="connector" repo="contrib" >}}             | contrib            |
 
 [^1]:
     Shows which [distributions](/docs/collector/distributions/) (core, contrib,
     K8s, etc.) include this component.
 
-<!-- END GENERATED: connector-table SOURCE: collector-watcher -->
+<!-- END GENERATED: connector-table SOURCE: scripts/collector-sync -->

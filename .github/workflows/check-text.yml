@@ -12,7 +12,7 @@ jobs:
     name: TEXT linter
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
       - name: Create and use reduced-dependencies package.json
         run: |
           mkdir -p tmp
@@ -26,13 +26,13 @@ jobs:
           cache: npm
           cache-dependency-path: tmp/package-ci.json
       - run: npm install --ignore-scripts --omit=optional
-      - run: .github/scripts/textlint.sh
+      - run: npm run check:text -- --format=github
 
   markdown-linter:
     name: MARKDOWN linter
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6.0.2
+      - uses: actions/checkout@v6
       - name: Create and use reduced-dependencies package.json
         run: |
           mkdir -p tmp

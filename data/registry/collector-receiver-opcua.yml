@@ -1,0 +1,26 @@
+# cSpell:ignore Brüggemann opcua
+title: OPC UA Log Receiver
+registryType: receiver
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+  - opc-ua
+  - logs
+  - industrial
+license: Apache 2.0
+description:
+  The OPC UA Log Receiver collects log records from OPC UA servers implementing
+  the LogObject specification [(OPC UA Part
+  26)](https://reference.opcfoundation.org/Core/Part26/v105/docs/) and converts
+  them to OpenTelemetry log format for industrial automation system
+  observability.
+authors:
+  - name: Thomas Brüggemann
+    url: https://github.com/bruegth
+urls:
+  repo: https://github.com/bruegth/opentelemetry-collector-opcua-receiver
+createdAt: 2026-02-20
+isNative: false
+isFirstParty: false
