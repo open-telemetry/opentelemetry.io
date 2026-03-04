@@ -7,13 +7,11 @@ developer_note:
   La macro "blocks/cover" définie ci-dessous permet d'utiliser comme image de
   fond tout visuel contenant "background" dans son nom.
 show_banner: true
-default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268
+default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268 # patched
 drifted_from_default: true
 ---
 
-<div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
-
-{{< blocks/cover image_anchor="top" height="max" color="primary" >}}
+{{% blocks/cover image_anchor="top" height="max" color="primary" %}}
 
 <!-- prettier-ignore -->
 ![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
@@ -39,7 +37,7 @@ drifted_from_default: true
 - [Ops](docs/getting-started/ops/)
 
 </div>
-{{< /blocks/cover >}}
+{{% /blocks/cover %}}
 
 {{% blocks/lead color="white" %}}
 
@@ -64,8 +62,8 @@ transmettez-les à une multitude d'outils d'analyse.
 
 {{% blocks/feature icon="fas fa-magic" title="Instrumentation & Intégrations clé en main" %}}
 
-OpenTelemetry [s'intègre] avec de nombreuses librairies et frameworks et propose
-une [instrumentation] _code et no-code_.
+OpenTelemetry [s'intègre][] avec de nombreuses librairies et frameworks et
+propose une [instrumentation][] _code et no-code_.
 
 [instrumentation]: /docs/concepts/instrumentation/
 [s'intègre]: /ecosystem/integrations/
@@ -74,8 +72,8 @@ une [instrumentation] _code et no-code_.
 
 {{% blocks/feature icon="fab fa-github" title="Open Source, Indépendant" %}}
 
-Entièrement gratuit et open source, OpenTelemetry est [utilisé] et supporté par
-des [leaders] du marché de l'observabilité.
+Entièrement gratuit et open source, OpenTelemetry est [utilisé][] et supporté
+par des [leaders][] du marché de l'observabilité.
 
 [utilisé]: /ecosystem/adopters/
 [leaders]: /ecosystem/vendors/
@@ -86,7 +84,7 @@ des [leaders] du marché de l'observabilité.
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**OpenTelemetry est un projet [CNCF][] en phase d'[incubation]**.<br> Né de la
+**OpenTelemetry est un projet [CNCF][] en phase d'[incubation][]**.<br> Né de la
 fusion des projets OpenTracing et OpenCensus.
 
 [![CNCF logo][]][cncf]

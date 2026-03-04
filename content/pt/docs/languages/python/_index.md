@@ -1,12 +1,11 @@
 ---
 title: Python
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/Python_SDK.svg"
-  alt="Python"> Uma implementação específica de linguagem do OpenTelemetry em
-  Python.
+  <img width="35" class="img-initial otel-icon"
+  src="/img/logos/32x32/Python_SDK.svg" alt="Python"> Uma implementação
+  específica de linguagem do OpenTelemetry em Python.
 weight: 22
-default_lang_commit: 5c112f86bd72c1d17f031b3a95b6fe2f79d6f699
-drifted_from_default: true
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 ---
 
 {{% docs/languages/index-intro python /%}}

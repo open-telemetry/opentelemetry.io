@@ -34,13 +34,16 @@ follow the policies outlined in the
 
 ### Linking to GitHub repositories
 
-When linking to source code in GitHub repositories, do not link to the `main`
-(or other default) branch. Instead, link to a **specific commit** or a **tagged
-release** that reflects the state of the code at the time the blog post was
-written.
+Blog posts are checked by markdownlint (`gh-url-hash`) to prevent unstable
+GitHub `blob`/`tree` links.
 
-This ensures that blog posts remain stable and do not break in the future as
-repositories evolve.
+If the check reports an issue:
+
+- Replace default-branch refs (for example `main`/`master`) with a tag/release
+  or a commit hash.
+- Use a full 40-character commit hash (short hashes are flagged).
+- Run `npm run fix:markdown` to auto-fix what it can, then fix any remaining
+  reported links manually.
 
 Verify that your intended content broadly applies to the OpenTelemetry Community
 . Appropriate content includes:

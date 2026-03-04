@@ -121,11 +121,13 @@ is a set of attributes defining the telemetry source. An application should
 associate the same resource with [SdkTracerProvider](#sdktracerprovider),
 [SdkMeterProvider](#sdkmeterprovider), [SdkLoggerProvider](#sdkloggerprovider).
 
-{{% alert %}} [ResourceProviders](../configuration/#resourceprovider) contribute
-contextual information to the
-[autoconfigured](../configuration/#zero-code-sdk-autoconfigure) resource based
-on the environment. See documentation for list of available `ResourceProvider`s.
-{{% /alert %}}
+> [!NOTE]
+>
+> [ResourceProviders](../configuration/#resourceprovider) contribute contextual
+> information to the
+> [autoconfigured](../configuration/#zero-code-sdk-autoconfigure) resource based
+> on the environment. See documentation for list of available
+> `ResourceProvider`s.
 
 The following code snippet demonstrates `Resource` programmatic configuration:
 
@@ -195,10 +197,12 @@ A
 is a [plugin extension interface](#sdk-plugin-extension-interfaces) responsible
 for determining which spans are recorded and sampled.
 
-{{% alert %}} By default `SdkTracerProvider` is configured with the
-`ParentBased(root=AlwaysOn)` sampler. This results in 100% of spans being
-sampled unless a calling application performs sampling. If this is too noisy /
-expensive, change the sampler. {{% /alert %}}
+> [!NOTE]
+>
+> By default `SdkTracerProvider` is configured with the
+> `ParentBased(root=AlwaysOn)` sampler. This results in 100% of spans being
+> sampled unless a calling application performs sampling. If this is too noisy /
+> expensive, change the sampler.
 
 Samplers built-in to the SDK and maintained by the community in
 `opentelemetry-java-contrib`:
@@ -888,14 +892,16 @@ allow metric streams to be customized, including changing metric names, metric
 descriptions, metric aggregations (i.e. histogram bucket boundaries), the set of
 attribute keys to retain, cardinality limit, etc.
 
-{{% alert %}} Views have somewhat unintuitive behavior when multiple match a
-particular instrument. If one matching view changes the metric name and another
-changes the metric aggregation, you might expect the name and aggregation are
-changed, but this is not the case. Instead, two metric streams are produced: one
-with the configured metric name and the default aggregation, and another with
-the original metric name and the configured aggregation. In other words,
-matching views _do not merge_. For best results, configure views with narrow
-selection criteria (i.e. select a single specific instrument). {{% /alert %}}
+> [!NOTE]
+>
+> Views have somewhat unintuitive behavior when multiple match a particular
+> instrument. If one matching view changes the metric name and another changes
+> the metric aggregation, you might expect the name and aggregation are changed,
+> but this is not the case. Instead, two metric streams are produced: one with
+> the configured metric name and the default aggregation, and another with the
+> original metric name and the configured aggregation. In other words, matching
+> views _do not merge_. For best results, configure views with narrow selection
+> criteria (i.e. select a single specific instrument).
 
 The following code snippet demonstrates `View` programmatic configuration:
 

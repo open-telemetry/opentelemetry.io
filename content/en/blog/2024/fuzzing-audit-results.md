@@ -9,7 +9,7 @@ cSpell:ignore: containerd Korczynski
 ---
 
 OpenTelemetry is happy to announce the completion of the Collector's fuzzing
-audit [sponsored by the CNCF] and carried out by
+audit [sponsored by the CNCF][] and carried out by
 [Ada Logics](https://adalogics.com/). The audit marks a significant step in the
 OpenTelemetry project, ensuring the security and reliability of the Collector
 for its users.
@@ -72,4 +72,4 @@ rely on to create their own fuzz testing, ensuring greater stability for the
 project as a whole.
 
 For more insight into the audit process, see the
-[published summary](https://github.com/open-telemetry/community/blob/main/reports/ADA_Logics-collector-fuzzing-audit-2024.pdf).
+[published summary](https://github.com/open-telemetry/community/blob/7e33a8732fb251462808838108c8779f33930669/reports/ADA_Logics-collector-fuzzing-audit-2024.pdf?from_branch=main).

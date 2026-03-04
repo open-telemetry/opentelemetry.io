@@ -2,7 +2,7 @@
 title: Logs
 description: Um registro de um evento.
 weight: 3
-default_lang_commit: 7c0e4db0b6c39b0ca0e7efb17df5610d1b77b8a3
+default_lang_commit: 53606c1471278a89ebf8344fb8cfaa79ab6916a2
 cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
 
@@ -14,16 +14,18 @@ bibliotecas bem conhecidas e amplamente utilizadas para gerar logs.
 
 ## Logs do OpenTelemetry {#opentelemetry-logs}
 
-O OpenTelemetry não possui uma especificação de API ou SDK própria para gerar
-logs. Em vez disso, os logs no OpenTelemetry são os logs que você já possui, que
-foram gerados por um framework de _logging_ ou componente de infraestrutura. Os
-SDKs e a autoinstrumentação do OpenTelemetry utilizam vários componentes para
-correlacionar automaticamente logs com [rastros](../traces).
+O OpenTelemetry fornece uma API e SDK de Logs para produzir registros de log, e
+SDKs de linguagem e pontes de log (_logging bridges_) para integrar com
+_frameworks_ de _logging_ existentes. Logs são qualquer coisa que você envie
+através de um Logging Provider, e eventos são um tipo especial de logs. Nem
+todos os logs são eventos, mas todos os eventos são logs. A API de Logs é
+pública e pode ser usada diretamente pelo código da aplicação ou indiretamente
+por meio de bibliotecas de _logging_ e pontes existentes.
 
-O suporte do OpenTelemetry para logs é projetado para ser totalmente compatível
-com o que você já possui, oferecendo a capacidade de adicionar contextos a esses
-logs e uma série de ferramentas para analisar e manipular logs em um formato
-comum, abrangendo diversas fontes.
+O OpenTelemetry é projetado para funcionar com os logs que você já produz,
+oferecendo ferramentas para correlacionar logs com outros sinais, adicionar
+atributos de contexto, e normalizar diferentes fontes em uma representação comum
+para processamento e exportação.
 
 ### Logs do OpenTelemetry no OpenTelemetry Collector {#opentelemetry-logs-in-the-opentelemetry-collector}
 
@@ -59,17 +61,22 @@ de Logs em cada linguagem, temos o seguinte estado:
 
 ## Logs estruturados, não estruturados e semiestruturados {#structured-unstructured-and-semistructured-logs}
 
-Tecnicamente o OpenTelemetry não distingue entre logs estruturados e não
-estruturados. Você pode usar qualquer log que tiver com o OpenTelemetry. No
-entanto, nem todos os formatos de log são igualmente úteis! Logs estruturados,
-em particular, são recomendados para observabilidade em produção porque são
-fáceis de analisar e interpretar em escala. A seção a seguir explica as
-diferenças entre logs estruturados, não estruturados e semiestruturados.
+O OpenTelemetry aceita qualquer formato de log, mas nem todos os formatos são
+igualmente úteis para análise. A seção a seguir explica as diferenças entre logs
+estruturados, semiestruturados e não estruturados. Importante: um log codificado
+como JSON não é automaticamente "estruturado" no sentido de possuir um esquema
+estável — podendo ser semiestruturado. Logs estruturados implicam um esquema
+consistente ou campos com tipos bem definidos nos quais o processamento
+_downstream_ pode confiavelmente depender.
 
 ### Logs estruturados {#structured-logs}
 
-Um log estruturado é aquele que segue um formato consistente e legível por
-máquina. Para aplicações, um dos formatos mais comuns é o JSON:
+Um log estruturado é um log com um esquema definido e consistente ou campos
+tipados que sistemas _downstream_ podem analisar e interpretar de forma
+confiável. A codificação textual pode ser JSON, protobuf ou outro formato, mas o
+que torna um log estruturado é a presença de um esquema estável (nomes de
+campos, tipos e semântica), e não apenas o fato de ser um JSON válido. Por
+exemplo, um log JSON estruturado pode se parecer com:
 
 ```json
 {
@@ -77,7 +84,7 @@ máquina. Para aplicações, um dos formatos mais comuns é o JSON:
   "level": "INFO",
   "service": "user-authentication",
   "environment": "production",
-  "message": "User login successful",
+  "message": "Usuário fez login com sucesso",
   "context": {
     "userId": "12345",
     "username": "johndoe",
@@ -108,31 +115,28 @@ máquina. Para aplicações, um dos formatos mais comuns é o JSON:
 }
 ```
 
-e para componentes de infraestrutura, o _Common Log Format_ (CLF) é
+e, para componentes de infraestrutura, o _Common Log Format_ (CLF) é
 frequentemente usado:
 
 ```text
 127.0.0.1 - johndoe [04/Aug/2024:12:34:56 -0400] "POST /api/v1/login HTTP/1.1" 200 1234
 ```
 
-Também é comum ter logs estruturados com uma mistura de formatos. Por exemplo,
-um log no formato _Extended Log Format_ (ELF) pode combinar JSON com os dados
-separados por espaços em um log CLF.
+Também é comum encontrar formatos híbridos ou estendidos (por exemplo, campos
+CLF combinados com um _blob_ JSON ao final).
 
 ```text
 192.168.1.1 - johndoe [04/Aug/2024:12:34:56 -0400] "POST /api/v1/login HTTP/1.1" 200 1234 "http://example.com" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36" {"transactionId": "abcd-efgh-ijkl-mnop", "responseTime": 150, "requestBody": {"username": "johndoe"}, "responseHeaders": {"Content-Type": "application/json"}}
 ```
 
-Para aproveitar ao máximo este log, transforme tantos os dados formatados em
-JSON quanto os formatados em ELF em um mesmo formato comum para facilitar a
-análise em um backend de observabilidade. O `filelogreceiver` do
-[OpenTelemetry Collector](/docs/collector) contém maneiras padronizadas de
-analisar logs como estes.
+Nesses casos, analise ou extraia as partes necessárias para um registro
+normalizado, de modo que as ferramentas _downstream_ possam analisá-las de forma
+consistente. O `filelogreceiver`no [OpenTelemetry Collector](/docs/collector/)
+fornece auxiliares para analisar formatos mistos.
 
-Logs estruturados são a melhor forma de usar logs. Por serem emitidos em um
-formato consistente, eles são simples de extrair informações, o que facilita o
-pré-processamento no OpenTelemetry Collector, a correlação com outros dados e,
-por fim, a análise em um backend de Observabilidade.
+Logs estruturados são preferidos em produção porque seu esquema estável facilita
+a validação, a análise, a correlação com rastros e métricas e a análise em
+escala.
 
 ### Logs não estruturados {#unstructured-logs}
 
@@ -164,9 +168,12 @@ logs estruturados, através de um framework de log padrão em suas aplicações.
 
 ### Logs Semiestruturados {#semistructured-logs}
 
-Um log semiestruturado é um log que utiliza um padrão interno consistente para
-distinguir dados de forma que sejam legíveis por máquinas, mas que pode não usar
-o mesmo formato e delimitadores entre os dados em diferentes sistemas.
+Logs semiestruturados incluem pares chave/valor legíveis por máquina ou campos
+delimitados, mas não garantem um esquema estável entre emissores. Exemplos
+incluem _logging_ no formato chave=valor (mostrado abaixo) ou _blobs_ JSON em
+que nomes e tipos de campos variam entre mensagens. Logs semiestruturados
+geralmente são mais fáceis de analisar do que logs não estruturados, mas ainda
+podem exigir processamento e normalização antes da análise.
 
 Exemplo de um log semiestruturado:
 
@@ -174,8 +181,8 @@ Exemplo de um log semiestruturado:
 2024-08-04T12:45:23Z level=ERROR service=user-authentication userId=12345 action=login message="Failed login attempt" error="Invalid password" ipAddress=192.168.1.1 userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 ```
 
-Embora sejam legíveis por máquinas, logs semiestruturados podem precisar de
-diferentes tipos de analisadores para interpretação em grande escala.
+Logs semiestruturados podem exigir mapeamento e coerção de tipos durante a
+ingestão para serem totalmente úteis na análise _downstream_.
 
 ## Componentes de logs do OpenTelemetry {#opentelemetry-logging-components}
 

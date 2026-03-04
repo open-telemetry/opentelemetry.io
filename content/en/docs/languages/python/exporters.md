@@ -140,51 +140,47 @@ meterProvider = MeterProvider(resource=resource, metric_readers=[reader])
 metrics.set_meter_provider(meterProvider)
 ```
 
-{{% alert title="Note" %}}
-
-There are temporality presets for each instrumentation kind. These presets can
-be set with the environment variable
-`OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`, for example:
-
-```sh
-export OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE="DELTA"
-```
-
-The default value for `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` is
-`"CUMULATIVE"`.
-
-The available values and their corresponding settings for this environment
-variable are:
-
-- `CUMULATIVE`
-  - `Counter`: `CUMULATIVE`
-  - `UpDownCounter`: `CUMULATIVE`
-  - `Histogram`: `CUMULATIVE`
-  - `ObservableCounter`: `CUMULATIVE`
-  - `ObservableUpDownCounter`: `CUMULATIVE`
-  - `ObservableGauge`: `CUMULATIVE`
-
-- `DELTA`
-  - `Counter`: `DELTA`
-  - `UpDownCounter`: `CUMULATIVE`
-  - `Histogram`: `DELTA`
-  - `ObservableCounter`: `DELTA`
-  - `ObservableUpDownCounter`: `CUMULATIVE`
-  - `ObservableGauge`: `CUMULATIVE`
-
-- `LOWMEMORY`
-  - `Counter`: `DELTA`
-  - `UpDownCounter`: `CUMULATIVE`
-  - `Histogram`: `DELTA`
-  - `ObservableCounter`: `CUMULATIVE`
-  - `ObservableUpDownCounter`: `CUMULATIVE`
-  - `ObservableGauge`: `CUMULATIVE`
-
-Setting `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` to any other value
-than `CUMULATIVE`, `DELTA` or `LOWMEMORY` will log a warning and set this
-environment variable to `CUMULATIVE`.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> There are temporality presets for each instrumentation kind. These presets can
+> be set with the environment variable
+> `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE`, for example:
+>
+> ```sh
+> export OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE="DELTA"
+> ```
+>
+> The default value for `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` is
+> `"CUMULATIVE"`.
+>
+> The available values and their corresponding settings for this environment
+> variable are:
+>
+> - `CUMULATIVE`
+>   - `Counter`: `CUMULATIVE`
+>   - `UpDownCounter`: `CUMULATIVE`
+>   - `Histogram`: `CUMULATIVE`
+>   - `ObservableCounter`: `CUMULATIVE`
+>   - `ObservableUpDownCounter`: `CUMULATIVE`
+>   - `ObservableGauge`: `CUMULATIVE`
+> - `DELTA`
+>   - `Counter`: `DELTA`
+>   - `UpDownCounter`: `CUMULATIVE`
+>   - `Histogram`: `DELTA`
+>   - `ObservableCounter`: `DELTA`
+>   - `ObservableUpDownCounter`: `CUMULATIVE`
+>   - `ObservableGauge`: `CUMULATIVE`
+> - `LOWMEMORY`
+>   - `Counter`: `DELTA`
+>   - `UpDownCounter`: `CUMULATIVE`
+>   - `Histogram`: `DELTA`
+>   - `ObservableCounter`: `CUMULATIVE`
+>   - `ObservableUpDownCounter`: `CUMULATIVE`
+>   - `ObservableGauge`: `CUMULATIVE`
+>
+> Setting `OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE` to any other value
+> than `CUMULATIVE`, `DELTA` or `LOWMEMORY` will log a warning and set this
+> environment variable to `CUMULATIVE`.
 
 {{% include "exporters/jaeger.md" %}}
 

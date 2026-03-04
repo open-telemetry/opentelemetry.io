@@ -2,7 +2,7 @@
 title: Troubleshooting
 description: Troubleshooting OBI common issues and errors
 weight: 22
-cSpell:ignore: Clickhouse
+cSpell:ignore: Clickhouse uprobe uprobes
 ---
 
 On this page, you can learn how to diagnose and resolve common OBI errors and

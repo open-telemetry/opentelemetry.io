@@ -2,7 +2,7 @@
 title: Usando bibliotecas de instrumentação
 linkTitle: Bibliotecas
 weight: 40
-default_lang_commit: 115933c1b9c643c8b6cf0d413a32061cd3a1b65f
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 description: Como instrumentar bibliotecas das quais uma aplicação depende
 cSpell:ignore: metapackages metapacotes
 ---
@@ -224,8 +224,8 @@ criados automaticamente com um _hook_ de requisição:
 ```typescript
 import { Span } from '@opentelemetry/api';
 import {
-  SEMATTRS_HTTP_METHOD,
-  SEMATTRS_HTTP_URL,
+  ATTR_HTTP_REQUEST_METHOD,
+  ATTR_URL_FULL,
 } from '@opentelemetry/semantic-conventions';
 import {
   ExpressInstrumentation,
@@ -236,8 +236,8 @@ import {
 const expressInstrumentation = new ExpressInstrumentation({
   requestHook: function (span: Span, info: ExpressRequestInfo) {
     if (info.layerType === ExpressLayerType.REQUEST_HANDLER) {
-      span.setAttribute(SEMATTRS_HTTP_METHOD, info.request.method);
-      span.setAttribute(SEMATTRS_HTTP_URL, info.request.baseUrl);
+      span.setAttribute(ATTR_HTTP_REQUEST_METHOD, info.request.method);
+      span.setAttribute(ATTR_URL_FULL, info.request.baseUrl);
     }
   },
 });
@@ -250,8 +250,8 @@ const expressInstrumentation = new ExpressInstrumentation({
 ```javascript
 /*instrumentation.js*/
 const {
-  SEMATTRS_HTTP_METHOD,
-  SEMATTRS_HTTP_URL,
+  ATTR_HTTP_REQUEST_METHOD,
+  ATTR_URL_FULL,
 } = require('@opentelemetry/semantic-conventions');
 const {
   ExpressInstrumentation,
@@ -261,8 +261,8 @@ const {
 const expressInstrumentation = new ExpressInstrumentation({
   requestHook: function (span, info) {
     if (info.layerType === ExpressLayerType.REQUEST_HANDLER) {
-      span.setAttribute(SEMATTRS_HTTP_METHOD, info.request.method);
-      span.setAttribute(SEMATTRS_HTTP_URL, info.request.baseUrl);
+      span.setAttribute(ATTR_HTTP_REQUEST_METHOD, info.request.method);
+      span.setAttribute(ATTR_URL_FULL, info.request.baseUrl);
     }
   },
 });

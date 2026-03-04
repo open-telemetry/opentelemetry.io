@@ -7,12 +7,12 @@ cSpell:ignore: ansible associated Ishan ishanjainn Jain
 ---
 
 You can scale the deployment of
-[OpenTelemetry Collector](/docs/collector/deployment/) across multiple Linux
-hosts through [Ansible](https://www.ansible.com/), to function both as
-[gateways](/docs/collector/deployment/gateway/) and
-[agents](/docs/collector/deployment/agent/) within your observability
-architecture. Using the OpenTelemetry Collector in this dual capacity enables a
-robust collection and forwarding of metrics, traces, and logs to analysis and
+[OpenTelemetry Collector](/docs/collector/deploy/) across multiple Linux hosts
+through [Ansible](https://www.ansible.com/), to function both as
+[gateways](/docs/collector/deploy/gateway/) and
+[agents](/docs/collector/deploy/agent/) within your observability architecture.
+Using the OpenTelemetry Collector in this dual capacity enables a robust
+collection and forwarding of metrics, traces, and logs to analysis and
 visualization platforms.
 
 We outline a strategy for deploying and managing the OpenTelemetry Collector's
@@ -31,7 +31,7 @@ Before we begin, make sure you meet the following requirements:
 ## Install the Grafana Ansible collection
 
 The
-[OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector)
+[OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/0e0e9a57a64d4ffce8dfbfd84cf8f5454f9114ba/roles/opentelemetry_collector?from_branch=main)
 is provided through the
 [Grafana Ansible collection](https://docs.ansible.com/ansible/latest/collections/grafana/grafana/)
 as of release 4.0.
@@ -144,14 +144,12 @@ Create a file named `deploy-opentelemetry.yml` in the same directory as your
               exporters: [prometheusremotewrite]
 ```
 
-{{% alert title="Note" %}}
-
-Adjust the configuration to match the specific telemetry you intend to collect
-as well as where you plan to forward it to. This configuration snippet is a
-basic example designed for collecting host metrics that get forwarded to
-Prometheus.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> Adjust the configuration to match the specific telemetry you intend to collect
+> as well as where you plan to forward it to. This configuration snippet is a
+> basic example designed for collecting host metrics that get forwarded to
+> Prometheus.
 
 The previous configuration would provision the OpenTelemetry Collector to
 collect metrics from the Linux host.
@@ -216,7 +214,7 @@ This blog post illustrated how you can configure and deploy multiple
 OpenTelemetry Collectors across various Linux hosts with the help of Ansible, as
 well as visualize collected telemetry in Grafana. Incase you find this useful,
 GitHub repository for
-[OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector)
+[OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/0e0e9a57a64d4ffce8dfbfd84cf8f5454f9114ba/roles/opentelemetry_collector?from_branch=main)
 for detailed configuration options. If you have questions, You can connect with
 me using my contact details at my GitHub profile
 [@ishanjainn](https://github.com/ishanjainn).

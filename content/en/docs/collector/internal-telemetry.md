@@ -10,17 +10,17 @@ configure it to help you
 [monitor](#use-internal-telemetry-to-monitor-the-collector) and
 [troubleshoot](/docs/collector/troubleshooting/) the Collector.
 
-{{% alert title="Important" color="warning" %}} The Collector uses the
-OpenTelemetry SDK
-[declarative configuration schema](https://github.com/open-telemetry/opentelemetry-configuration)
-for configuring how to export its internal telemetry. This schema is still under
-[development](/docs/specs/otel/document-status/) and may undergo **breaking
-changes** in future releases. We intend to keep supporting older schemas until a
-1.0 schema release is available, and offer a transition period for users to
-update their configurations before dropping pre-1.0 schemas. For details and to
-track progress see
-[issue #10808](https://github.com/open-telemetry/opentelemetry-collector/issues/10808).
-{{% /alert %}}
+> [!WARNING]
+>
+> The Collector uses the OpenTelemetry SDK
+> [declarative configuration schema](https://github.com/open-telemetry/opentelemetry-configuration)
+> for configuring how to export its internal telemetry. This schema is still
+> under [development](/docs/specs/otel/document-status/) and may undergo
+> **breaking changes** in future releases. We intend to keep supporting older
+> schemas until a 1.0 schema release is available, and offer a transition period
+> for users to update their configurations before dropping pre-1.0 schemas. For
+> details and to track progress see
+> [issue #10808](https://github.com/open-telemetry/opentelemetry-collector/issues/10808).
 
 ## Activate internal telemetry in the Collector
 
@@ -114,22 +114,20 @@ resource:
 
 #### Service address
 
-{{% alert title="Internal telemetry configuration changes" %}}
-
-As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
-is ignored. In earlier versions, it could be configured with:
-
-```yaml
-service:
-  telemetry:
-    metrics:
-      address: 0.0.0.0:8888
-```
+> [!NOTE] Internal telemetry configuration changes
+>
+> As of Collector [v0.123.0][], the `service::telemetry::metrics::address`
+> setting is ignored. In earlier versions, it could be configured with:
+>
+> ```yaml
+> service:
+>   telemetry:
+>     metrics:
+>       address: 0.0.0.0:8888
+> ```
 
 [v0.123.0]:
   https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0
-
-{{% /alert %}}
 
 #### Metric verbosity
 
@@ -162,6 +160,15 @@ You can further configure how metrics from the Collector are emitted by using
 configuration updates the metric named `otelcol_process_uptime` to emit a new
 name `process_uptime` and description:
 
+> [!NOTE]
+>
+> When configuring the Prometheus exporter for internal metrics manually (using
+> `readers`), `otelcol_process_uptime` may be exported as
+> `otelcol_process_uptime_seconds_total` unless `without_type_suffix` and
+> `without_units` are set to `true`. Use the `instrument_name` value
+> `otelcol_process_uptime` (the OTLP name) in views regardless. To control
+> Prometheus-specific suffixes, see [Unit suffixes](#unit-suffixes).
+
 ```yaml
 service:
   telemetry:
@@ -178,7 +185,7 @@ service:
 You can also use `views` to update the resulting aggregation, attributes, and
 cardinality limits. For the full list of options, see the examples in the
 OpenTelemetry Configuration schema
-[repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/f4e9046682d4386ea533ef7ba6ad30a5ce4451b4/examples/kitchen-sink.yaml#L440).
+[repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/View_kitchen_sink.yaml).
 
 ### Configure internal logs
 
@@ -238,12 +245,10 @@ service:
 
 The Collector does not expose traces by default, but it can be configured to.
 
-{{% alert title="Caution" color="warning" %}}
-
-Internal tracing is an experimental feature, and no guarantees are made as to
-the stability of the emitted span names and attributes.
-
-{{% /alert %}}
+> [!CAUTION]
+>
+> Internal tracing is an experimental feature, and no guarantees are made as to
+> the stability of the emitted span names and attributes.
 
 The following configuration can be used to emit internal traces from the
 Collector to an OTLP backend:
@@ -264,7 +269,7 @@ See the [example configuration][kitchen-sink-config] for additional options.
 Note that the `tracer_provider` section there corresponds to `traces` here.
 
 [kitchen-sink-config]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml
 
 ## Types of internal telemetry
 
@@ -314,7 +319,7 @@ libraries.
 By default and unique to Prometheus, the Prometheus exporter adds a `_total`
 suffix to summation metrics to follow Prometheus naming conventions, such as
 `otelcol_exporter_send_failed_spans_total`. This behavior can be disabled by
-setting `without_type_suffix: false` in the Prometheus exporter's configuration.
+setting `without_type_suffix: true` in the Prometheus exporter's configuration.
 
 If you leave out `service::telemetry::metrics::readers` in the Collector
 configuration, the default Prometheus exporter set up by the Collector already
@@ -326,6 +331,38 @@ the "raw" metric name. For more information, see the
 Internal metrics exported through OTLP do not have this behavior. The
 [internal metrics](#lists-of-internal-metrics) on this page are listed in OTLP
 format, such as `otelcol_exporter_send_failed_spans`.
+
+#### `_seconds` and other unit suffixes {#unit-suffixes}
+
+The Prometheus exporter appends a unit suffix to metrics that carry a unit. For
+example, `otelcol_process_uptime` (unit: seconds) can be exported as
+`otelcol_process_uptime_seconds_total` — the `_seconds` unit suffix is added
+first, then the `_total` counter suffix.
+
+The default Prometheus exporter configured by the Collector (when no `readers`
+are specified) already sets `without_type_suffix` and `without_units` to `true`
+for backwards compatibility, so `otelcol_process_uptime` is used as-is.
+
+However, when you manually configure the Prometheus exporter under
+`service::telemetry::metrics::readers`, those options are not set by default. To
+keep the original, shorter metric names, explicitly set both options to `true`:
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      readers:
+        - pull:
+            exporter:
+              prometheus:
+                host: '0.0.0.0'
+                port: 8888
+                without_type_suffix: true
+                without_units: true
+```
+
+With this configuration, `otelcol_process_uptime_seconds_total` is exported as
+`otelcol_process_uptime`.
 
 #### Dots (`.`) v. underscores (`_`) {#dots-v-underscores}
 
@@ -403,18 +440,16 @@ files in the repository.
 | `otelcol_processor_batch_metadata_`<br>`cardinality`    | Number of distinct metadata value combinations being processed. | Counter   |
 | `otelcol_processor_batch_timeout_`<br>`trigger_send`    | Number of times the batch was sent due to a timeout trigger.    | Counter   |
 
-{{% alert title="Batch processor metrics level changes" %}}
-
-In Collector [v0.99.0], all batch processor metrics were upgraded from `basic`
-to `normal` (current level), except for
-`otelcol_processor_batch_batch_send_size_bytes`, which has been `detailed` since
-its introduction. Note however that these metrics were inadvertently reverted to
-`basic` from v0.109.0 to v0.121.0.
+> [!NOTE] Batch processor metrics level changes
+>
+> In Collector [v0.99.0][], all batch processor metrics were upgraded from
+> `basic` to `normal` (current level), except for
+> `otelcol_processor_batch_batch_send_size_bytes`, which has been `detailed`
+> since its introduction. Note however that these metrics were inadvertently
+> reverted to `basic` from v0.109.0 to v0.121.0.
 
 [v0.99.0]:
   https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0
-
-{{% /alert %}}
 
 #### Additional `detailed`-level metrics
 
@@ -437,16 +472,16 @@ its introduction. Note however that these metrics were inadvertently reverted to
 | `rpc.server.response.size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
 | `rpc.server.responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
 
-{{% alert title="Note" color="info" %}} The `http*` and `rpc*` metrics are not
-covered by the maturity levels below since they are not under the Collector SIG
-control.
-
-The `otelcol_processor_batch_` metrics are unique to the `batchprocessor`.
-
-The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
-`otelcol_exporter_` metrics come from their respective `helper` packages. As
-such, some components not using those packages might not emit them.
-{{% /alert %}}
+> [!NOTE]
+>
+> The `http*` and `rpc*` metrics are not covered by the maturity levels below
+> since they are not under the Collector SIG control.
+>
+> The `otelcol_processor_batch_` metrics are unique to the `batchprocessor`.
+>
+> The `otelcol_receiver_`, `otelcol_scraper_`, `otelcol_processor_`, and
+> `otelcol_exporter_` metrics come from their respective `helper` packages. As
+> such, some components not using those packages might not emit them.
 
 ### Events observable with internal logs
 

@@ -18,13 +18,11 @@ propagate context across services for you.
 If you followed the [Getting Started Guide](../getting-started/nodejs) you can
 create a client application that queries the `/rolldice` endpoint.
 
-{{% alert title="Note" %}}
-
-You can combine this example with the sample application from the Getting
-Started guide of any other language as well. Correlation works across
-applications written in different languages without any differences.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> You can combine this example with the sample application from the Getting
+> Started guide of any other language as well. Correlation works across
+> applications written in different languages without any differences.
 
 Start by creating a new folder called `dice-client` and install the required
 dependencies:
@@ -174,6 +172,7 @@ Take note of the traceId (`cccd19c3a2d10e589f01bfe2dc896dc2`) and ID
   resource: {
     attributes: {
       // ...
+    }
   },
   traceId: 'cccd19c3a2d10e589f01bfe2dc896dc2',
   parentSpanContext: {
@@ -457,13 +456,11 @@ Since the example so far only took dependency on the OpenTelemetry API all calls
 to it are [no-op instructions](<https://en.wikipedia.org/wiki/NOP_(code)>) and
 the client and server behave as if OpenTelemetry is not used.
 
-{{% alert title="Note" color="warning" %}}
-
-This is especially important if your server and client code are libraries, since
-they should only use the OpenTelemetry API. To understand why, read the
-[concept page on how to add instrumentation to your library](/docs/concepts/instrumentation/libraries/).
-
-{{% /alert %}}
+> [!IMPORTANT]
+>
+> This is especially important if your server and client code are libraries,
+> since they should only use the OpenTelemetry API. To understand why, read the
+> [concept page on how to add instrumentation to your library](/docs/concepts/instrumentation/libraries/).
 
 To enable OpenTelemetry and see the context propagation in action, create an
 additional file called `instrumentation.js` with the following content:

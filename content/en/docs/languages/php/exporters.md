@@ -6,13 +6,11 @@ cSpell:ignore: fastcgi pecl
 
 {{% docs/languages/exporters/intro %}}
 
-{{% alert title="Note" %}}
-
-If you use [zero-code instrumentation](/docs/zero-code/php/) you can set up
-exporters with
-[zero-code configuration to setup exporters](/docs/zero-code/php#configuration).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> If you use [zero-code instrumentation](/docs/zero-code/php/) you can set up
+> exporters with
+> [zero-code configuration to setup exporters](/docs/zero-code/php#configuration).
 
 ## OTLP
 
@@ -195,5 +193,5 @@ will not hold up request processing.
 To minimize the impact of slow transport of telemetry data, particularly for
 external or cloud-based backends, you should consider using the
 [OpenTelemetry Collector](/docs/collector/) as an
-[agent](/docs/collector/deployment/agent/). The agent can quickly accept, then
-batch send telemetry data to the backend.
+[agent](/docs/collector/deploy/agent/). The agent can quickly accept, then batch
+send telemetry data to the backend.

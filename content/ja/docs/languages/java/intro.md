@@ -3,6 +3,7 @@ title: OpenTelemetry Java入門
 description: OpenTelemetry Javaエコシステム入門
 weight: 9
 default_lang_commit: beb85b4f56de76aa8a8d6e96cd7528396476f95a
+drifted_from_default: true
 ---
 
 OpenTelemetry JavaはJavaエコシステム向けのOpenTelemetryオブザーバビリティツールのセットです。

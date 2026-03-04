@@ -1,4 +1,4 @@
-# cSpell:ignore ziehms
+# cSpell:ignore Uptrace ziehms
 title: GraphQL-Go instrumentation
 registryType: instrumentation
 language: go

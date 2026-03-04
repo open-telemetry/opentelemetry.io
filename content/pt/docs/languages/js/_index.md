@@ -1,15 +1,15 @@
 ---
 title: JavaScript
 description: >-
-  <img width="35" class="img-initial" src="/img/logos/32x32/JS_SDK.svg"
-  alt="JavaScript"> Implementação do OpenTelemetry específica em JavaScript
-  (para Node.js & o navegador).
+  <img width="35" class="img-initial otel-icon"
+  src="/img/logos/32x32/JS_SDK.svg" alt="JavaScript"> Implementação do
+  OpenTelemetry específica em JavaScript (para Node.js & o navegador).
 aliases: [/js/metrics, /js/tracing, nodejs]
 redirects:
   - { from: /js/*, to: ':splat' }
   - { from: /docs/js/*, to: ':splat' }
 weight: 20
-default_lang_commit: 33a23bc0805eb0940d214e20e7f2d7da056cbebb
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
 ---
 
 {{% docs/languages/index-intro js /%}}
@@ -49,7 +49,7 @@ O OpenTelemetry JavaScript consiste nos seguintes repositórios:
 Caso tenha alguma dúvida sobre o OpenTelemetry JavaScript, por favor, entre em
 contato via
 [GitHub Discussions](https://github.com/open-telemetry/opentelemetry-js/discussions)
-ou através do canal [#otel-js] do [Slack do CNCF](https://slack.cncf.io/).
+ou através do canal `#otel-js` do [Slack do CNCF](https://slack.cncf.io/).
 
 Se desejar contribuir para o OpenTelemetry JavaScript, veja as
 [instruções de contribuição](https://github.com/open-telemetry/opentelemetry-js/blob/main/CONTRIBUTING.md)

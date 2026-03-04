@@ -3,8 +3,9 @@ title: ドキュメントスタイルガイド
 description: OpenTelemetry のドキュメントを書く際の用語とスタイル。
 linkTitle: スタイルガイド
 weight: 20
-default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
-cSpell:ignore: open-telemetry postgre style-guide textlintrc
+default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25 # patched
+drifted_from_default: true
+cSpell:ignore: open-telemetry postgre style-guide
 ---
 
 公式のスタイルガイドはまだありませんが、現在の OpenTelemetry ドキュメントのスタイルは以下のスタイルガイドに触発されています。
@@ -40,11 +41,11 @@ OpenTelemetry の用語と定義の完璧なリストには、[用語集](/docs/
 
 ## マークダウン規約 {#markdown-standards}
 
-マークダウンファイルに規約と一貫性を確保するために、[markdownlint] によって定められたルールに従う必要があります。
-すべてのルールの一覧は、[.markdownlint.yaml] ファイルを確認してください。
+マークダウンファイルに規約と一貫性を確保するために、[markdownlint][] によって定められたルールに従う必要があります。
+すべてのルールの一覧は、[.markdownlint.yaml][] ファイルを確認してください。
 
 同様に、Markdown [file format](#file-format) を適用し、ファイルの末尾スペースを削除します。
-これは 2 つ以上のスペースを仕様する [line break syntax] を排除します。
+これは 2 つ以上のスペースを仕様する [line break syntax][] を排除します。
 かわりに `<br>` を使うか、再フォーマットしてください。
 
 ## スペルチェック {#spell-checking}
@@ -73,7 +74,7 @@ title: registryEntryTitle
 
 ## ファイルのフォーマット {#file-format}
 
-[Prettier] を利用することでファイルフォーマットを強制します。
+[Prettier][] を利用することでファイルフォーマットを強制します。
 `npm run fix:format` を実行して、フォーマットを適用してください。
 
 ## ファイル名 {#file-names}

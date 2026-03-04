@@ -6,7 +6,7 @@ description: >-
 redirects:
   - { from: /php/*, to: ':splat' }
   - { from: /docs/php/*, to: ':splat' }
-weight: 21
+weight: 180
 cSpell:ignore: mbstring opcache
 ---
 

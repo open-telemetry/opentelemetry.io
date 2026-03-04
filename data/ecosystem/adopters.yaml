@@ -26,6 +26,12 @@
   reference: 'https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c29'
   referenceTitle: blog post
   contact: https://github.com/ethicalmohit
+- name: Capital One
+  url: https://www.capitalone.com/
+  components: [Collector Contrib, Java, Python, Go, Javascript, Lambda]
+  reference: 'https://colocatedeventsna2025.sched.com/event/28D7q'
+  referenceTitle: presentation
+  contact: ''
 - name: Care.com
   url: https://www.care.com
   components: [Collector, Go, Java, JavaScript, .NET]
@@ -91,7 +97,7 @@
   url: https://www.globalprocessing.com.ar/
   components: [Collector, .NET, Python, Java, Go]
   reference: 'https://www.linkedin.com/posts/santiago-lator_opentelemetry-opentelemetry-observabilidad-activity-7258132675268354050-oP1q'
-  referenceTitle: post
+  referenceTitle: blog post
   contact: 'santiago.lator@globalprocessing.com.ar'
 - name: HDFC Bank
   url: https://www.hdfcbank.com/
@@ -202,9 +208,10 @@
   contact: ''
 - name: Tranzzo
   url: https://tranzzo.com/
-  components: [Collector, Java]
-  reference: ''
-  contact: https://github.com/illenko
+  components: [Collector, Java, JavaScript]
+  reference: 'https://www.linkedin.com/posts/killenko_opentelemetry-observability-fintech-activity-7416735796872785920-XHER'
+  contact: 'k.illenko@tranzzo.com'
+  referenceTitle: blog post
 - name: Truffle AI
   url: https://trytruffle.ai
   components: [JavaScript]

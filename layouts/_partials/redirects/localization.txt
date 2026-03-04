@@ -21,9 +21,11 @@
 
 {{/* Add redirect rules for non-default languages. */ -}}
 
-{{ range after 1 .Sites -}}
+{{ range .Sites -}}
 
   {{ $siteLang := .Language.Lang -}}
+
+  {{ if eq $defaultLang $siteLang }}{{ continue }}{{ end -}}
 
   # Site localization {{ $siteLang }}
   {{ range $p := .Pages -}}

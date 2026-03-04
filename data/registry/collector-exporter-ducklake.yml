@@ -1,0 +1,20 @@
+# cSpell:ignore datalake duckdb ducklakeexporter
+title: DuckLake Exporter
+registryType: exporter
+language: collector
+tags:
+  - exporter
+  - collector
+  - datalake
+  - duckdb
+urls:
+  repo: https://github.com/hrl20/ducklakeexporter
+license: Apache 2.0
+description:
+  This exporter supports writing logs and traces to the DuckLake format.
+authors:
+  - name: hrl20
+    url: https://github.com/hrl20
+createdAt: 2026-01-04
+isNative: false
+isFirstParty: false

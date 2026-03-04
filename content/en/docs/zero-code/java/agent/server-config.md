@@ -3,7 +3,7 @@ title: Application server configuration
 linkTitle: App server config
 description: Learn how to define agent paths for Java application servers
 weight: 215
-cSpell:ignore: asadmin Glassfish Payara setenv
+cSpell:ignore: asadmin Glassfish Payara setenv wildfly
 ---
 
 When instrumenting an app that runs on a Java application server with a Java
@@ -197,11 +197,9 @@ The following are known application server values for `otel.jmx.target.system`:
 - [`tomcat`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/tomcat.md)
 - [`wildfly`](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/library/wildfly.md)
 
-{{% alert title="Note" %}}
-
-This list is not comprehensive, and other JMX target systems are supported.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> This list is not comprehensive, and other JMX target systems are supported.
 
 For a list of metrics extracted from each application server, select the
 previous name, or refer to
