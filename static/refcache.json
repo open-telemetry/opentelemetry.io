@@ -12679,13 +12679,13 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-19T09:52:45.225901371Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/b7a327218c8cf0928c8cb2198e5fa764d530afda/samplers?from_branch=main": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-24T07:00:16.555063-05:00"
-  },
   "https://github.com/open-telemetry/opentelemetry-java-contrib/releases": {
     "StatusCode": 206,
     "LastSeen": "2026-01-05T15:50:20.980800941Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/b7a327218c8cf0928c8cb2198e5fa764d530afda/samplers?from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-24T07:00:16.555063-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java-contrib/tree/main/aws-resources": {
     "StatusCode": 206,
