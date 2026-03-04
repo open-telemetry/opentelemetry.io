@@ -4,7 +4,7 @@ linkTitle: KubeCon EU '26
 date: 2026-02-02
 author: '[Zhu Jiekun](https://github.com/jiekun) (VictoriaMetrics)'
 # prettier-ignore
-cSpell:ignore: Altinity Amaechi Anoshin Aravena baeyens Benedetti Benedikt Bhatnagar Bongartz Bunino Cail Cijo Danielson Dapr Diagrid Dmitrii dyrmishi Ferri Geisendörfer Grcevski Guiton Haeussler Hantzaras helmuth Jayice Jernigan jiekun kasper Kluwer Kovalenko Kunju Kuntzer Lahouel Lehner Llinares Menderico Mikhailov Milind nissen Observablity Okorie Onyedikachi OTTL Pająk Perath Rabenhorst Schrottner Skyscanner Spanimals Srivastava tacular Therrien Timelthaler Toulme Travaglini Ujuk Vamerlatti Wolters yash Zhou
+cSpell:ignore: Altinity Amaechi Anoshin Aravena baeyens Benedetti Benedikt Bhatnagar Bongartz Bunino Cail Cijo Danielson Dapr Diagrid Dmitrii dyrmishi Ferri Geisendörfer Grcevski Guiton Haeussler Hantzaras helmuth Jernigan jiekun kasper Khavronenko Kluwer Kovalenko Kunju Kuntzer Lahouel Lehner Llinares Menderico Mikhailov Milind nissen Observablity Okorie Onyedikachi OTTL Pająk Perath Rabenhorst Roman Schrottner Skyscanner Spanimals Srivastava tacular Therrien Timelthaler Toulme Travaglini Ujuk Vamerlatti Wolters yash
 ---
 
 The OpenTelemetry project maintainers, members of the governance committee, and
@@ -44,8 +44,8 @@ Read on to learn about all the events related to OpenTelemetry during KubeCon.
 - **[Overcoming OpenTelemetry Adoption Challenges](https://kccnceu2026.sched.com/event/2CVyK/overcoming-opentelemetry-adoption-challenges-chris-weldon-wolters-kluwer)**<br>by
   Chris Weldon, Wolters Kluwer<br> Tuesday March 24, 2026 17:00 - 17:30CET
 
-- **[Retroactive Sampling with OpenTelemetry: Cut 90% Distributed Tracing Bandwidth Usage](https://kccnceu2026.sched.com/event/2CW83/retroactive-sampling-with-opentelemetry-cut-90-distributed-tracing-bandwidth-usage-zhu-jiekun-victoriametrics-jayice-zhou-baidu)**<br>by
-  Zhu Jiekun, VictoriaMetrics; Jayice Zhou, Baidu<br> Tuesday March 24, 2026
+- **[Retroactive Sampling with OpenTelemetry: Cut 90% Distributed Tracing Bandwidth Usage](https://kccnceu2026.sched.com/event/2CW83/retroactive-sampling-with-opentelemetry-cut-90-distributed-tracing-bandwidth-usage-roman-khavronenko-zhu-jiekun-victoriametrics)**<br>by
+  Roman Khavronenko & Zhu Jiekun, VictoriaMetrics<br> Tuesday March 24, 2026
   17:00 - 17:30CET
 
 - **[Hello World, Meet the Spanimals: Observability for Beginners](https://kccnceu2026.sched.com/event/2CW2F/hello-world-meet-the-spanimals-observability-for-beginners-tiffany-jernigan-grafana-labs-matthias-haeussler-cgi)**<br>by
