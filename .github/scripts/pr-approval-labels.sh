@@ -166,8 +166,7 @@ should_check_publish_date() {
 # ---------------------------------------------------------------------------
 get_publish_date() {
   local pr_files="$1"
-  local head_repo="$2"
-  local head_sha="$3"
+  local head_sha="$2"
   local latest_date=""
 
   for file in ${pr_files}; do
@@ -181,7 +180,7 @@ get_publish_date() {
       continue
     fi
     local content
-    content=$(gh api "/repos/${head_repo}/contents/${file}?ref=${head_sha}" \
+    content=$(gh api "/repos/${REPO}/contents/${file}?ref=${head_sha}" \
       --jq '.content' 2>/dev/null | base64 --decode 2>/dev/null || true)
     [[ -z "${content}" ]] && continue
 
@@ -366,7 +365,7 @@ ${members}"
 
   if should_check_publish_date; then
     local publish_date
-    publish_date=$(get_publish_date "${pr_files}" "${head_repo}" "${head_sha}")
+    publish_date=$(get_publish_date "${pr_files}" "${head_sha}")
 
     if [[ -n "${publish_date}" ]]; then
       local today
