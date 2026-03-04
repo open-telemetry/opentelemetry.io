@@ -163,17 +163,33 @@ class DocContentGenerator:
             )
 
     @staticmethod
-    def _build_component_url(component_type: str, name: str, source_repo: str, subtype: str | None) -> str:
-        """Build GitHub URL for component."""
-        repo_name = "opentelemetry-collector" if source_repo == "core" else "opentelemetry-collector-contrib"
-        repo_url = f"https://github.com/open-telemetry/{repo_name}"
+    def _build_component_link(component_type: str, name: str, source_repo: str, subtype: str | None) -> str:
+        """
+        Build Hugo shortcode for component link.
+
+        Uses the custom component-link shortcode which dynamically builds URLs
+        using version parameters from the page's front matter (core_vers or contrib_vers).
+
+        Args:
+            component_type: Type of component (receiver, processor, etc.)
+            name: Component name
+            source_repo: Source repository ("core" or "contrib")
+            subtype: Optional subtype for nested components (e.g., "encoding")
+
+        Returns:
+            Hugo shortcode string that will be evaluated at build time
+        """
+        params = [
+            f'name="{name}"',
+            f'type="{component_type}"',
+            f'repo="{source_repo}"',
+        ]
 
         if subtype:
-            component_path = f"{component_type}/{subtype}/{name}"
-        else:
-            component_path = f"{component_type}/{name}"
+            params.append(f'subtype="{subtype}"')
 
-        return f"{repo_url}/tree/main/{component_path}"
+        params_str = " ".join(params)
+        return f"{{{{< component-link {params_str} >}}}}"
 
     def _generate_table_row(self, component_type: str, component: dict[str, Any], subtype: str | None = None) -> str:
         """Generate a single table row for a component."""
@@ -185,8 +201,8 @@ class DocContentGenerator:
         distributions_str = self._format_distributions(distributions)
         stability_map = self.get_stability_by_signal(metadata, component, component_type)
 
-        readme_link = self._build_component_url(component_type, name, source_repo, subtype)
-        name_link = f"[{name}]({readme_link})"
+        # Use Hugo shortcode for component link
+        name_link = self._build_component_link(component_type, name, source_repo, subtype)
 
         # connectors don't use the stability mechanism the same way as other components
         # so they don't mark unmaintained components
