@@ -1,16 +1,15 @@
 ---
-title: Adoptantes
+title: Usuarios
 description: Organizaciones que utilizan OpenTelemetry
 default_lang_commit: 1a6db8fe3a989fa20267368336aceb5665b4394b
 ---
 
 La misión de OpenTelemetry es facilitar la observabilidad efectiva para todos
-sus usuarios finales. Si estas considerando adoptar OpenTelemetry en tu
+sus usuarios finales. Si estas considerando usar OpenTelemetry en tu
 organización, quizás te interesa conocer otras experiencias de adopción. La
 siguiente tabla es una lista no exhaustiva de
-[organizaciones de usuarios finales](https://www.cncf.io/enduser/) que han
-adoptado OpenTelemetry para la
-[observabilidad](/docs/concepts/observability-primer/).
+[organizaciones de usuarios finales](https://www.cncf.io/enduser/) que usan
+OpenTelemetry para la [observabilidad](/docs/concepts/observability-primer/).
 
 > [!TIP] ¡Ayúdenos a mostrar la creciente comunidad de OpenTelemetry!
 >
@@ -22,10 +21,10 @@ adoptado OpenTelemetry para la
 
 {{% ecosystem/adopters-table %}}
 
-## Agregar tu organización como adoptante {#how-to-add}
+## Agregar tu organización como usuario {#how-to-add}
 
 Para que tu organización aparezca en la lista, envia un PR con una entrada
-añadida a la [lista de adoptantes][]. La entrada debe incluir lo siguiente:
+añadida a la [lista de usuarios][]. La entrada debe incluir lo siguiente:
 
 - Enlace a una entrada de blog u otro recurso que describa cómo tu organización
   utiliza OpenTelemetry
@@ -45,6 +44,6 @@ Si tu organización ofrece una solución que utiliza OpenTelemetry para ofrecer
 
 {{% include keep-up-to-date.md adopter %}}
 
-[lista de adoptantes]:
+[lista de usuarios]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem/adopters.yaml
 [form]: https://forms.gle/K3pKmQdTc2eevLJv9
