@@ -241,7 +241,9 @@ env:
     value: '400MiB' # Match or slightly below the memory_limiter limit
 ```
 
-> [!TIP] Monitor `otelcol_processor_refused_spans` (and the metrics/logs
+> [!TIP]
+>
+> Monitor `otelcol_processor_refused_spans` (and the metrics/logs
 > equivalents). A sustained increase indicates the Collector is under pressure
 > and you should either scale resources or reduce incoming traffic.
 
@@ -298,7 +300,9 @@ Mount a persistent volume or use the node's local storage for the WAL directory.
 When using local storage (such as `emptyDir` or `hostPath`), be aware that data
 does not survive node failures.
 
-> [!WARNING] If a bug in the Collector causes data in the persistent queue to
+> [!WARNING]
+>
+> If a bug in the Collector causes data in the persistent queue to
 > trigger a crash on replay, the Collector will enter a crash loop. Monitor for
 > `CrashLoopBackOff` and have a plan to clear the WAL directory if needed. See
 > [opentelemetry-collector#12095](https://github.com/open-telemetry/opentelemetry-collector/issues/12095)
@@ -342,7 +346,9 @@ Setting `maxUnavailable: 0` with `maxSurge: 1` ensures the new pod starts before
 the old one terminates. This requires Kubernetes 1.22+ and sufficient node
 resources to run two Collector pods simultaneously during the update.
 
-> [!NOTE] `maxSurge` for DaemonSets is available since Kubernetes 1.22 as a
+> [!NOTE]
+>
+> `maxSurge` for DaemonSets is available since Kubernetes 1.22 as a
 > stable feature. If you're on an older version, `maxUnavailable: 1` (the
 > default) is unavoidable, and you should rely on persistent queues to minimize
 > data loss during updates.
@@ -402,7 +408,7 @@ A DaemonSet is not always the best choice. Consider these alternatives when:
   `transform` to a [Gateway tier](/docs/collector/deploy/gateway/) and keep the
   DaemonSet Collector lightweight (receive + forward only).
 - **High pod-to-node ratio**: When you have many small pods per node, a
-  DaemonSet works well. When you have few large pods, a sidecar avoids the blast
+  DaemonSet works well. When you have a few large pods, a sidecar avoids the blast
   radius problem.
 - **gRPC load balancing**: DaemonSet Collectors behind a Kubernetes Service
   don't distribute gRPC connections evenly. Use a service mesh or sidecar
