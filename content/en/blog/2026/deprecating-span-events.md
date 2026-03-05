@@ -74,7 +74,7 @@ plan includes changes:
 - In the Collector.
 - In semantic conventions and instrumentations.
 
-The details below summarize the current intent.
+The details below summarize the intent.
 
 ### OTLP
 
