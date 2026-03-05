@@ -118,6 +118,14 @@ Language APIs and SDKs will implement the following steps:
      while ensuring that existing usages of span events continue to work during
      the transition.
 
+### Collector
+
+For the OpenTelemetry Collector, this plan encourages:
+
+- Providing or adopting processors that implement the event-to-span-event
+  bridge, so users can continue seeing events attached to spans while
+  instrumentations migrate to the Logs API.
+
 ### Instrumentations and semantic conventions
 
 For **stable instrumentations** that currently use span events:
@@ -210,15 +218,12 @@ If you author OpenTelemetry instrumentations:
 - Follow updated semantic conventions for naming events and choosing attributes,
   particularly for exceptions and other commonly used event types.
 
-### Backend and Collector authors
+### Backend authors
 
-If you build observability backends or work on the OpenTelemetry Collector:
+If you build observability backends:
 
 - Ensure you can **ingest and present log-based events** with the same care you
   give to span events today.
-- Consider providing or adopting processors that implement the
-  event-to-span-event bridge, so users can continue seeing events attached to
-  spans while migrating.
 - Use this transition as an opportunity to improve how users navigate between
   traces and logs, since both will be carrying the same structured events.
 
