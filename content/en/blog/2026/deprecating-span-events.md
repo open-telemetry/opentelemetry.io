@@ -71,6 +71,7 @@ plan includes changes:
 
 - In the core specification.
 - In language APIs and SDKs.
+- In the Collector.
 - In semantic conventions and instrumentations.
 
 The details below summarize the intent; for the normative text, please refer to
