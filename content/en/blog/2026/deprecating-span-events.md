@@ -77,7 +77,7 @@ The details below summarize the intent; for the normative text, please refer to
 [OTEP 4430][OTEP]and the corresponding specification and semantic convention
 changes.
 
-### OTLP and the data model
+### OTLP
 
 Span events remain part of the OTLP trace data model. The deprecation targets
 the **Span Event API** in the language APIs, not the wire representation.
@@ -86,7 +86,7 @@ At the same time, OTLP support for log-based events is already stable. This
 allows the Logs API to represent the same kinds of structured events that span
 events have historically carried, with better alignment across signals.
 
-### Specification changes
+### Specification
 
 In the tracing specification, the following APIs will be marked as deprecated in
 favor of the Logs API:
@@ -99,17 +99,6 @@ The updated guidance will recommend:
 - Using the Logs API to record exceptions and other named events.
 - Recording additional span details that don’t need their own timestamp as span
   attributes instead of span events.
-
-Some of this work is already underway. For example:
-
-- [opentelemetry-specification#4886](https://github.com/open-telemetry/opentelemetry-specification/pull/4886)
-  refines how exceptions are emitted as logs via the Logs API.
-- [semantic-conventions#3256](https://github.com/open-telemetry/semantic-conventions/pull/3256),
-  [semantic-conventions#3226](https://github.com/open-telemetry/semantic-conventions/pull/3226),
-  and
-  [semantic-conventions#3311](https://github.com/open-telemetry/semantic-conventions/pull/3311)
-  adjust semantic conventions so they can be consistently applied to log-based
-  events.
 
 ### Language APIs and SDKs
 
@@ -246,6 +235,17 @@ We would very much appreciate your feedback on:
 
 We are gathering feedback in the
 [community#3312](https://github.com/open-telemetry/community/issues/3312) issue.
+
+Some of this work is already underway. For example:
+
+- [opentelemetry-specification#4886](https://github.com/open-telemetry/opentelemetry-specification/pull/4886)
+  refines how exceptions are emitted as logs via the Logs API.
+- [semantic-conventions#3256](https://github.com/open-telemetry/semantic-conventions/pull/3256),
+  [semantic-conventions#3226](https://github.com/open-telemetry/semantic-conventions/pull/3226),
+  and
+  [semantic-conventions#3311](https://github.com/open-telemetry/semantic-conventions/pull/3311)
+  adjust semantic conventions so they can be consistently applied to log-based
+  events.
 
 As the specification and implementations progress, we will continue to refine
 the guidance and provide more concrete migration examples in SDK and
