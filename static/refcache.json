@@ -7179,6 +7179,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:58:49.771624997Z"
   },
+  "https://github.com/open-telemetry/community/issues/3312": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-05T21:09:03.478944533Z"
+  },
   "https://github.com/open-telemetry/community/issues/828": {
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:53:15.040902409Z"
@@ -15015,6 +15019,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-24T07:00:17.885904-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/fd43145dde7e5192ebc59a20992d98a3e6af5553/oteps/4430-span-event-api-deprecation-plan.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-05T21:08:58.24078157Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/main/development/trace/zpages.md": {
     "StatusCode": 206,
     "LastSeen": "2026-02-20T09:52:13.259450548Z"
@@ -15190,6 +15198,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/pull/4197": {
     "StatusCode": 206,
     "LastSeen": "2026-02-20T09:57:14.632625339Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/4886": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-05T21:09:07.622722159Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme": {
     "StatusCode": 206,
@@ -16319,6 +16331,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-20T14:23:06.720703458Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3226": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-05T21:09:16.498831887Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3256": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-05T21:09:12.021643516Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/pull/3267": {
     "StatusCode": 206,
     "LastSeen": "2026-02-20T14:24:37.73294058Z"
@@ -16330,6 +16350,10 @@
   "https://github.com/open-telemetry/semantic-conventions/pull/3284": {
     "StatusCode": 206,
     "LastSeen": "2026-02-20T14:24:01.023413379Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3311": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-05T21:09:22.153672633Z"
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/3317": {
     "StatusCode": 206,
