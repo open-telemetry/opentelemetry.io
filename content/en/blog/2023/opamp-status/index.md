@@ -53,10 +53,11 @@ want to use OpAMP both as an collector extension, with limited functionality, as
 well as as an (collector-external) supervisor that implements a broader set of
 OpAMP capabilities.
 
-{{% alert title="Note" %}} For a deeper dive, see
-[OpAMP for OpenTelemetry Collector document](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor/specification),
-which describes how to implement both options while minimizing code duplication.
-{{% /alert %}}
+> [!NOTE]
+>
+> For a deeper dive, see
+> [OpAMP for OpenTelemetry Collector document](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/85c75369612717542acf07ff7bd2700af80dd0d4/cmd/opampsupervisor/specification?from_branch=main),
+> which describes how to implement both options while minimizing code duplication.
 
 The main idea to support both modes is to implement an extension in the
 collector with a minimal set of OpAMP capabilities. This collector extension can
@@ -97,9 +98,9 @@ situation. On top of implementing an OpAMP client, the Supervisor will also
 implement an OpAMP server where it will communicate with the OpAMP extension
 running in the collector to receive information about the Collector. We defined
 the Supervisor's functionality in a
-[design document](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor/specification)
+[design document](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/85c75369612717542acf07ff7bd2700af80dd0d4/cmd/opampsupervisor/specification?from_branch=main)
 and based on it we contributed an initial implementation to the
-[opentelemetry-collector-contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor)
+[opentelemetry-collector-contrib repository](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/9e5f710f8d760adb80f27cfa2516538de0637037/cmd/opampsupervisor?from_branch=main)
 with a backlog of issues created to guide further development.
 
 ## OpAMP in Kubernetes
@@ -113,9 +114,11 @@ to be deployed by the OpenTelemetry Operator:
 
 ![OpAMP bridge in the OTel Operator](opamp-kubernetes-bridge.png)
 
-{{% alert title="Note" %}} Currently, we don't have support for
-deployment via Helm chart, however, if you'd like to contribute to this, you're
-welcome to contribute.{{% /alert %}}
+> [!NOTE]
+>
+> Currently, we don't have support for
+> deployment via Helm chart, however, if you'd like to contribute to this, you're
+> welcome to contribute.
 
 The OpAMP bridge is a binary developed by the OTel
 [SIG Kubernetes Operator](https://docs.google.com/document/d/1Unbs2qp_j5kp8FfL_lRH-ld7i5EOQpsq0I4djkOOSL4/)
@@ -128,7 +131,7 @@ through enhanced status and improved health checks. You can also extend the
 bridge to support the remote configuration of Instrumentation resources. The
 bridge’s image is already built and released with the OpenTelemetry Operator. In
 addition, we're working on a convenience
-[Custom Resource Definition (CRD)](https://github.com/open-telemetry/opentelemetry-operator/blob/main/apis/v1alpha1/opentelemetrycollector_types.go)
+[Custom Resource Definition (CRD)](https://github.com/open-telemetry/opentelemetry-operator/blob/d8953ec7247c41bec4cc9dc154d272a568662c00/apis/v1alpha1/opentelemetrycollector_types.go?from_branch=main)
 which will enable you to easily deploy the bridge into a Kubernetes cluster.
 
 ## What’s next?
@@ -145,5 +148,5 @@ spec please provide feedback and as an end-user you may wish to try out the
 reference implementation of the Server, Supervisor and a simple UI by following
 the steps in the [OpAMP entry in the OTel docs](/docs/collector/management/) or
 maybe even dive deep into the
-[Supervisor code (in Go)](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/opampsupervisor)
+[Supervisor code (in Go)](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/9e5f710f8d760adb80f27cfa2516538de0637037/cmd/opampsupervisor?from_branch=main)
 in the OTel collector.

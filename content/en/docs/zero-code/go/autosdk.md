@@ -77,14 +77,12 @@ create manual spans in an application instrumented by a Go zero-code agent. As
 long as you don't manually register a global TracerProvider, the Auto SDK will
 automatically be enabled.
 
-{{% alert title="Important" color="warning" %}}
-
-Manually setting a global TracerProvider will conflict with the Auto SDK and
-prevent manual spans from properly correlating with eBPF-based spans. If you are
-creating manual spans in a Go application that is also instrumented by eBPF, do
-not initialize your own global TracerProvider.
-
-{{% /alert %}}
+> [!WARNING]
+>
+> Manually setting a global TracerProvider will conflict with the Auto SDK and
+> prevent manual spans from properly correlating with eBPF-based spans. If you
+> are creating manual spans in a Go application that is also instrumented by
+> eBPF, do not initialize your own global TracerProvider.
 
 ### Auto SDK TracerProvider
 

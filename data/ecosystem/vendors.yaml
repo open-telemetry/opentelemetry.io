@@ -90,6 +90,12 @@
   contact: support@chronosphere.io
   oss: false
   commercial: true
+- name: Comet Opik
+  nativeOTLP: true
+  url: https://www.comet.com/docs/opik/integrations/opentelemetry
+  contact: support@comet.com
+  oss: true
+  commercial: true
 - name: Control Plane
   nativeOTLP: true
   url: https://docs.controlplane.com/reference/org#tracing
@@ -270,6 +276,12 @@
   contact: https://github.com/iguitton
   oss: true
   commercial: true
+- name: Metoro
+  nativeOTLP: true
+  url: https://metoro.io/docs/metrics/custom-metrics
+  contact: otel@metoro.io
+  oss: false
+  commercial: true
 - name: Middleware
   nativeOTLP: true
   url: https://docs.middleware.io/open-telemetry
@@ -320,7 +332,7 @@
   commercial: true
 - name: OneUptime
   nativeOTLP: true
-  url: https://oneuptime.com/product/apm
+  url: https://oneuptime.com/docs/telemetry/open-telemetry
   contact: hello@oneuptime.com
   oss: true
   commercial: true
@@ -350,7 +362,7 @@
   commercial: true
 - name: Parseable
   nativeOTLP: true
-  url: https://www.parseable.com/docs/server/opentelemetry
+  url: https://www.parseable.com/docs/ingest-data/otel
   contact: hi@parseable.com
   oss: true
   commercial: true
@@ -384,16 +396,22 @@
   contact: hi@s2.dev
   oss: false
   commercial: true
-- name: ServicePilot
-  nativeOTLP: true
-  url: https://www.servicepilot.com/en/doc/apm#opentelemetry
-  contact:
-  oss: false
-  commercial: true
 - name: Scout
   nativeOTLP: true
   url: https://docs.base14.io/category/opentelemetry-collector-setup
   contact: support@base14.io
+  oss: false
+  commercial: true
+- name: Sematext
+  nativeOTLP: true
+  url: https://sematext.com/docs/tracing/
+  contact: support@sematext.com
+  oss: false
+  commercial: true
+- name: ServicePilot
+  nativeOTLP: true
+  url: https://www.servicepilot.com/en/doc/apm#opentelemetry
+  contact:
   oss: false
   commercial: true
 - name: SigNoz
@@ -482,7 +500,7 @@
   commercial: true
 - name: VictoriaMetrics
   nativeOTLP: true
-  url: https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/docs#sending-data-via-opentelemetry
+  url: https://github.com/VictoriaMetrics/VictoriaMetrics/tree/master/docs/opentelemetry
   contact: https://github.com/hagen1778
   oss: true
   commercial: true

@@ -6,11 +6,9 @@ description:
 weight: 1
 ---
 
-{{% alert title="Note" %}}
-
-This feature is currently only available in Kubernetes clusters.
-
-{{% /alert %}}
+> [!NOTE]
+>
+> This feature is currently only available in Kubernetes clusters.
 
 Traffic between Cloud Availability Zones might incur additional costs. OBI is
 able to measure it either by adding `src.zone` and `dst.zone` attributes to

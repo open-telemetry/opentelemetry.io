@@ -1,0 +1,24 @@
+# cSpell:ignore Jamstah ssaauthextension k8ssaauthextension
+title: Kubernetes Service Account Authenticator Extension
+registryType: extension
+language: collector
+tags:
+  - Kubernetes
+  - Service Account
+  - RBAC
+  - Token
+urls:
+  repo: https://github.com/Jamstah/k8ssaauthextension
+license: Apache 2.0
+description:
+  An authenticator that checks a bearer token has suitable Kubernetes RBAC
+  permissions
+authors:
+  - name: James Hewitt
+    email: james.hewitt@gmail.com
+    url: https://github.com/Jamstah/
+createdAt: 2026-02-27
+package:
+  registry: go-collector
+  name: github.com/Jamstah/k8ssaauthextension
+  version: v0.0.2

@@ -3,6 +3,7 @@ title: ログ自動計装の例
 linkTitle: Logs Example
 weight: 20
 default_lang_commit: 3d737b777f7bfa070f7f14835570add916d4dcb0
+drifted_from_default: true
 ---
 
 このページでは、OpenTelemetry で Python ログを自動計装する方法を説明します。

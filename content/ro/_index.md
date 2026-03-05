@@ -9,13 +9,11 @@ developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
 show_banner: true
-default_lang_commit: 493a530efd3c2a058cc4aa055d7c8aadb5348beb
+default_lang_commit: 493a530efd3c2a058cc4aa055d7c8aadb5348beb # patched
 drifted_from_default: true
 ---
 
-<div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
-
-{{< blocks/cover image_anchor="top" height="max" color="primary" >}}
+{{% blocks/cover image_anchor="top" height="max" color="primary" %}}
 
 <!-- prettier-ignore -->
 ![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
@@ -41,7 +39,7 @@ drifted_from_default: true
 - [Ops](docs/getting-started/ops/)
 
 </div>
-{{< /blocks/cover >}}
+{{% /blocks/cover %}}
 
 {{% blocks/lead color="white" %}}
 
@@ -67,8 +65,8 @@ software-ul tău, apoi transmite-le către o varietate de instrumente de analiz�
 
 {{% blocks/feature icon="fas fa-magic" title="Drop-in Instrumentation & Integrations" %}}
 
-OpenTelemetry [se integrează] cu multe biblioteci și framework-uri, și suportă
-[instrumentarea] _bazată pe cod și zero-code_ .
+OpenTelemetry [se integrează][] cu multe biblioteci și framework-uri, și suportă
+[instrumentarea][] _bazată pe cod și zero-code_ .
 
 [instrumentarea]: /docs/concepts/instrumentation/
 [se integrează]: /ecosystem/integrations/
@@ -77,8 +75,8 @@ OpenTelemetry [se integrează] cu multe biblioteci și framework-uri, și suport
 
 {{% blocks/feature icon="fab fa-github" title="Open Source, Vendor Neutral" %}}
 
-100% gratuit și open source, OpenTelemetry este [adoptat] și susținut de [lideri
-din industrie] din domeniul observabilității.
+100% gratuit și open source, OpenTelemetry este [adoptat][] și susținut de
+[lideri din industrie][] din domeniul observabilității.
 
 [adoptat]: /ecosystem/adopters/
 [lideri din industrie]: /ecosystem/vendors/

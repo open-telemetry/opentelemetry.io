@@ -4,8 +4,8 @@ linkTitle: Práticas do SIG
 description:
   Saiba como aprovadores e mantenedores gerenciam issues e contribuições.
 weight: 999
-default_lang_commit: 9ed7149e924a9fb6b1c83862aad8b9858c0ebb06
-cSpell:ignore: branch chalin Comms docsy mergeados
+default_lang_commit: 6acef01464b667456e7ba6d151235e56d39c12ca
+cSpell:ignore: branch chalin Comms contribfest docsy mergeados
 ---
 
 Esta página inclui diretrizes e algumas práticas comuns utilizadas por
@@ -64,6 +64,99 @@ Outros recursos valiosos para revisão:
   mal-entendido ou qualquer outro tipo de situação que deixe um
   aprovador/mantenedor desconfortável, eles podem se afastar da conversa, issue
   ou PR e pedir que outra pessoa assuma.
+
+## Triagem {#triage}
+
+### Issues {#issues}
+
+- _Issues_ recebidas são triadas pela equipe `@open-telemetry/docs-triagers`.
+- Como primeiro passo, um triador irá ler o título e a descrição da _issue_ e
+  aplicará os seguintes rótulos (_labels_):
+  - Obrigatório: Um rótulo `sig:*`, `lang:*` ou `docs:*` para determinar a
+    (co)propriedade da _issue_:
+    - Um rótulo `sig:*` caso a _issue_ esteja relacionada a um conteúdo ou uma
+      pergunta que é co-propriedade de um SIG (_Special Interest Group_, ou
+      Grupo de Interesse Especial). Por exemplo, uma pergunta sobre o Collector
+      será rotulada com `sig:collector`.
+    - Um rótulo `lang:*` caso a _issue_ esteja relacionada a um conteúdo ou uma
+      pergunta que é co-propriedade de uma localização específica.
+    - Um rótulo `docs:*` caso a _issue_ esteja relacionada a um conteúdo ou uma
+      pergunta que é de propriedade exclusiva da equipe de documentação (SIG
+      Comms):
+      - `docs`
+      - `docs:admin`
+      - `docs:accessibility`
+      - `docs:analytics-and-seo`
+      - `docs:IA`
+      - `docs:blog`
+      - `docs:cleanup/refactoring`
+      - `docs:upstream`, `docs:upstream/docsy`
+      - `docs:javascript`
+      - `docs:mobile`
+      - `docs:registry`
+      - `docs:ux`
+  - Obrigatório: Um rótulo `triage:*`:
+    - `triage:accepted`, `triage:accepted:needs-pr`
+    - `triage:deciding`, `triage:deciding:blocked`, `triage:deciding:needs-info`
+    - `triage:rejected`, `triage:rejected:duplicate`, `triage:rejected:invalid`,
+      `triage:rejected:wontfix`
+  - Obrigatório: Definir o "tipo" da _issue_ da seguinte forma:
+    - tipo de _issue_ `bug` para _bugs_
+    - tipo de _issue_ `enhancement` para solicitações de recursos
+    - rótulo `type:question` para perguntas
+    - rótulo `type:copyedit` para edições de texto
+    - mover a _issue_ para "_discussions_", caso pareça ser uma conversa aberta
+      não solucionável
+  - Opcional: Um rótulo de estimativa, se aplicável:
+    - `e0-minutes`
+    - ...
+    - `e4-months`
+  - Opcional (e somente definido por mantenedores): Um rótulo de prioridade:
+    - `p0-critical`
+    - `p1-high`
+    - `p2-medium`
+    - `p3-low`
+  - Opcional: Um dos seguintes rótulos especiais:
+    - `good first issue`
+    - `help wanted`
+    - `contribfest`
+    - `maintainers only`
+    - `forever`
+    - `stale`
+- A automação marcará uma _issue_ em `triage:deciding` com `triage:followup`
+  para re-triagem após 14 dias de inatividade em uma _issue_. O rótulo
+  `triage:followup` deve ser removido dentro de 7 dias. Mencionar os
+  participantes e remover o rótulo é atividade suficiente.
+
+### PRs {#prs}
+
+- PRs devem ter uma _issue_ vinculada rotulada como `triage:accepted`, com as
+  seguintes exceções:
+  - PRs automáticos
+  - correções rápidas por mantenedores/aprovadores
+- A automação garantirá que os PRs sejam
+  [rotulados](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml)
+  e
+  [atribuídos](https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml)
+  para o SIG co-proprietário ou equipe de localização apropriada.
+- PRs devem ter os mesmos rótulos de co-propriedade que as _issues_.
+- Se o PR for co-propriedade de um SIG, esse grupo é responsável por fazer uma
+  primeira revisão para garantir que o conteúdo esteja tecnicamente correto.
+- Se o PR for co-propriedade de uma equipe de localização, esse grupo é
+  responsável por garantir que a tradução do conteúdo esteja correta.
+- A principal responsabilidade da equipe de documentação é garantir que o PR
+  esteja alinhado com os objetivos gerais do projeto, esteja no lugar certo
+  dentro da estrutura e siga os guias de estilo e conteúdo do projeto.
+- PRs que estiverem faltando algo para serem _mergeados_ devem ser rotulados
+  adequadamente:
+  - `missing:cla`
+  - `missing:docs-approval`
+  - `missing:sig-approval`
+  - `blocked`
+- A automação marcará um PR como `stale` para solicitar uma nova revisão após 21
+  dias de inatividade. O rótulo `stale` deve ser removido dentro de 14 dias.
+  Mencionar os participantes e remover o rótulo é atividade suficiente.
+- PRs nunca são fechados automaticamente.
 
 ## Revisão de Código {#code-reviews}
 

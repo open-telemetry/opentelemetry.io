@@ -58,12 +58,12 @@ sending queue.
         max_elapsed_time: 10m # Increase max retry time (default 300s)
   ```
 
-{{% alert title="Tip: Use sending queues for remote exporters" %}} Enable
-sending queues for any exporter sending data over a network. Adjust `queue_size`
-and `max_elapsed_time` based on expected data volume, available Collector
-memory, and acceptable downtime for the endpoint. Monitor queue metrics
-(`otelcol_exporter_queue_size`, `otelcol_exporter_queue_capacity`).
-{{% /alert %}}
+> [!TIP] Tip: Use sending queues for remote exporters
+>
+> Enable sending queues for any exporter sending data over a network. Adjust
+> `queue_size` and `max_elapsed_time` based on expected data volume, available
+> Collector memory, and acceptable downtime for the endpoint. Monitor queue
+> metrics (`otelcol_exporter_queue_size`, `otelcol_exporter_queue_capacity`).
 
 ## Persistent storage (write-ahead log - WAL)
 
@@ -103,11 +103,12 @@ restarts, you can enable persistent storage for the sending queue using the
         exporters: [otlp]
   ```
 
-{{% alert title="Tip: Use WALs for selected Collectors" %}} Use persistent
-storage for critical Collectors (like Gateway instances or Agents collecting
-crucial data) where data loss due to Collector crashes is unacceptable. Ensure
-the chosen directory has sufficient disk space and appropriate permissions.
-{{% /alert %}}
+> [!TIP] Tip: Use WALs for selected Collectors
+>
+> Use persistent storage for critical Collectors (like Gateway instances or
+> Agents collecting crucial data) where data loss due to Collector crashes is
+> unacceptable. Ensure the chosen directory has sufficient disk space and
+> appropriate permissions.
 
 ## Message queues
 
@@ -172,12 +173,13 @@ backend, you can introduce a dedicated message queue like Kafka.
           exporters: [otlp]
     ```
 
-{{% alert title="Tip: Use message queues for critical hops" %}} Use a message
-queue for critical data paths requiring high durability, especially across
-network boundaries (e.g., between data centers, availability zones, or to a
-cloud vendor). This approach leverages the robust, built-in resilience of
-systems like Kafka but adds operational complexity and requires expertise in
-managing the message queue system. {{% /alert %}}
+> [!TIP] Tip: Use message queues for critical hops
+>
+> Use a message queue for critical data paths requiring high durability,
+> especially across network boundaries (e.g., between data centers, availability
+> zones, or to a cloud vendor). This approach leverages the robust, built-in
+> resilience of systems like Kafka but adds operational complexity and requires
+> expertise in managing the message queue system.
 
 ## Circumstances of data loss
 

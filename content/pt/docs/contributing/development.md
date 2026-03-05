@@ -8,8 +8,7 @@ what-next: >
   atualizações nos arquivos do site. Para mais detalhes sobre como submeter
   alterações, veja [Enviando conteúdo][].
 weight: 60
-default_lang_commit: 3337aa6fbaccf5e8734a1ef2c6ca8b61496c3d93 # patched
-drifted_from_default: true
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
 ---
 
 {{% alert title="Ambientes de construção suportados" color=warning %}}
@@ -29,11 +28,11 @@ para este site.
 
 ### Gitpod
 
-Para trabalhar via [Gitpod.io]:
+Para trabalhar via [Gitpod.io][]:
 
 1.  Faça um _fork_ deste repositório. Para ajuda, veja [Fazer fork de um
     repositório][fork].
-2.  De [gitpod.io/workspaces], crie um novo _workspace_ (faça isso apenas uma
+2.  De [gitpod.io/workspaces][], crie um novo _workspace_ (faça isso apenas uma
     vez) ou abra um _workspace_ existente sobre seu fork. Você também pode
     visitar um link da forma:
     `https://gitpod.io#https://github.com/SEU_ID_GITHUB/opentelemetry.io`.
@@ -47,9 +46,9 @@ você. {{% param what-next %}}
 
 ### Codespaces {#codespaces}
 
-Para trabalhar via GitHub [Codespaces]:
+Para trabalhar via GitHub [Codespaces][]:
 
-1. Faça um [_Fork_] do repositório do site.
+1. Faça um [_Fork_][] do repositório do site.
 2. Abra um _Codespace_ a partir do seu _fork_.
 
 Seu ambiente de desenvolvimento será inicializado via a configuração
@@ -57,7 +56,7 @@ Seu ambiente de desenvolvimento será inicializado via a configuração
 
 ## Configuração local {#local-setup}
 
-1.  Faça um [_Fork_] e então [clone] o repositório do site em
+1.  Faça um [_Fork_][] e então [clone][] o repositório do site em
     <{{% param github_repo %}}>.
 2.  Vá para o diretório do repositório:
 
@@ -66,7 +65,7 @@ Seu ambiente de desenvolvimento será inicializado via a configuração
     ```
 
 3.  Instale ou atualize para a [versão **LTS ativa**][nodejs-rel] do Node.js.
-    Recomendamos usar [nvm] para gerenciar sua instalação do Node. No Linux,
+    Recomendamos usar [nvm][] para gerenciar sua instalação do Node. No Linux,
     execute o seguinte comando, que instalará e atualizará para a versão
     especificada no arquivo .nvmrc:
 
@@ -74,8 +73,8 @@ Seu ambiente de desenvolvimento será inicializado via a configuração
     nvm install
     ```
 
-    Para [instalar no Windows][nodejs-win], use [nvm-windows]. Recomendamos usar
-    `cmd` e não o Windows PowerShell para o comando abaixo:
+    Para [instalar no Windows][nodejs-win], use [nvm-windows][]. Recomendamos
+    usar `cmd` e não o Windows PowerShell para o comando abaixo:
 
     ```cmd
     nvm install lts && nvm use lts
@@ -107,10 +106,10 @@ Para servir o site execute:
 npm run serve
 ```
 
-O site é servido em [localhost:1313].
+O site é servido em [localhost:1313][].
 
-Se você precisar testar redirecionamentos do [Netlify], use o seguinte comando e
-visite o site em [localhost:8888]:
+Se você precisar testar redirecionamentos do [Netlify][], use o seguinte comando
+e visite o site em [localhost:8888][]:
 
 ```sh
 npm run serve:netlify
@@ -126,20 +125,19 @@ precisar aumentar o limite de descritores de arquivo. Veja
 
 O site é construído a partir do seguinte conteúdo:
 
-- Arquivos sob `content/`, `static/`, etc. conforme os padrões do [Hugo].
-- Pontos de montagem, definidos em [hugo.yaml] sob `mounts`. As montagens são
-  diretamente de submódulos git sob [content-modules], ou conteúdo
-  pré-processado de `content-modules` (colocado sob `tmp/`), e em nenhum outro
-  lugar.
+- Arquivos sob `content/`, `static/`, etc. conforme os padrões do [Hugo][].
+- Pontos de montagem, definidos pela [configuração][config] do Hugo em
+  `config/_default/module-template.yaml`. As montagens são diretamente de
+  submódulos git sob [content-modules][], ou conteúdo pré-processado de
+  `content-modules` (colocado sob `tmp/`), e em nenhum outro lugar.
 
-[hugo.yaml]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/bc94737/hugo.yaml
+[config]: https://github.com/open-telemetry/opentelemetry.io/tree/main/config
 [content-modules]:
   https://github.com/open-telemetry/opentelemetry.io/tree/main/content-modules
 
 ### Alterações em submódulos {#content-modules-changes}
 
-Se você alterar qualquer conteúdo dentro de um submódulo [content-modules],
+Se você alterar qualquer conteúdo dentro de um submódulo [content-modules][],
 então você precisa primeiro submeter um PR (contendo as alterações do submódulo)
 para o repositório do submódulo. Somente depois que o PR do submódulo for
 aceito, você pode atualizar o submódulo e ter as mudanças publicadas neste site.

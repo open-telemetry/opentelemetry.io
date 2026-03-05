@@ -47,21 +47,19 @@ the following content:
 
 To disable self-diagnostics, delete the configuration file.
 
-{{% alert title="Tip" %}}
-
-In most cases, you can drop the file alongside your application. On Windows, you
-can use
-[Process Explorer](https://docs.microsoft.com/sysinternals/downloads/process-explorer),
-double-click on the process to open the Properties dialog, and find "Current
-directory" in the "Image" tab.
-
-Internally, the SDK looks for the configuration file located in
-[GetCurrentDirectory](https://docs.microsoft.com/dotnet/api/system.io.directory.getcurrentdirectory),
-and then
-[AppContext.BaseDirectory](https://docs.microsoft.com/dotnet/api/system.appcontext.basedirectory).
-You can also find the exact directory by calling these methods from your code.
-
-{{% /alert %}}
+> [!TIP]
+>
+> In most cases, you can drop the file alongside your application. On Windows,
+> you can use
+> [Process Explorer](https://docs.microsoft.com/sysinternals/downloads/process-explorer),
+> double-click on the process to open the Properties dialog, and find "Current
+> directory" in the "Image" tab.
+>
+> Internally, the SDK looks for the configuration file located in
+> [GetCurrentDirectory](https://docs.microsoft.com/dotnet/api/system.io.directory.getcurrentdirectory),
+> and then
+> [AppContext.BaseDirectory](https://docs.microsoft.com/dotnet/api/system.appcontext.basedirectory).
+> You can also find the exact directory by calling these methods from your code.
 
 ### Configuration parameters
 

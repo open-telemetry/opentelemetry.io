@@ -25,7 +25,7 @@ SDKs will assign the value `unknown_service` for this value, so it is
 recommended to set it explicitly, either in code or via setting the environment
 variable `OTEL_SERVICE_NAME`.
 
-Additionally, the SDK will also provides the following resource attributes to
+Additionally, the SDK will also provide the following resource attributes to
 identify itself: `telemetry.sdk.name`, `telemetry.sdk.language` and
 `telemetry.sdk.version`.
 

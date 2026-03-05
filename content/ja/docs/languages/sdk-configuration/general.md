@@ -3,7 +3,8 @@ title: 一般的なSDK設定
 linkTitle: 一般
 weight: 10
 aliases: [general-sdk-configuration]
-default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8
+default_lang_commit: 276d7eb3f936deef6487cdd2b1d89822951da6c8 # patched
+drifted_from_default: true
 cSpell:ignore: ottrace
 ---
 
@@ -107,7 +108,7 @@ export OTEL_TRACES_SAMPLER_ARG="0.5"
 - `"b3multi"`:
   [B3 Multi](/docs/specs/otel/context/api-propagators#configuration)
 - `"jaeger"`:
-  [Jaeger](https://www.jaegertracing.io/docs/1.21/client-libraries/#propagation-format)
+  [Jaeger](https://www.jaegertracing.io/sdk-migration/)
 - `"xray"`:
   [AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader)
   (_サードパーティ_)

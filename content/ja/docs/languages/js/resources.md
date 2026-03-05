@@ -3,6 +3,7 @@ title: リソース
 weight: 70
 description: アプリケーションの環境に関する詳細情報をテレメトリに追加する
 default_lang_commit: 68e94a4555606e74c27182b79789d46faf84ec25
+drifted_from_default: true
 cSpell:ignore: myhost SIGINT uuidgen WORKDIR
 ---
 
@@ -235,7 +236,7 @@ DockerCGroupV1Detector found resource. Resource {
 ## 次のステップ {#next-steps}
 
 設定に追加できるリソース検出器は他にもあります。
-たとえば、[Cloud]環境や[Deployment]の詳細を取得するものがあります。
+たとえば、[Cloud][]環境や[Deployment][]の詳細を取得するものがあります。
 詳細については、[opentelemetry-js-contribリポジトリの`resource-detector-*`という名前のパッケージ](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages)を参照してください。
 
 [getting started - node.js]: /docs/languages/js/getting-started/nodejs/

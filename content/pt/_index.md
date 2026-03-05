@@ -3,17 +3,14 @@ title: OpenTelemetry
 description: >-
   Telemetria de alta qualidade, abrangente e portátil para permitir uma
   observabilidade eficaz
-developer_note:
+developer_note: >
   O shortcode blocks/cover (usado abaixo) vai servir como imagem de background
   para qualquer arquivo de imagem que contenha "background" no nome.
 show_banner: true
-default_lang_commit: c0a5eea5d720b0e075efa87f99dcf58c89106268
-drifted_from_default: true
+default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a # patched
 ---
 
-<div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
-
-{{< blocks/cover image_anchor="top" height="max" color="primary" >}}
+{{% blocks/cover image_anchor="top" height="max" color="primary" %}}
 
 <!-- prettier-ignore -->
 ![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
@@ -39,7 +36,7 @@ drifted_from_default: true
 - [Ops](docs/getting-started/ops/)
 
 </div>
-{{< /blocks/cover >}}
+{{% /blocks/cover %}}
 
 {{% blocks/lead color="white" %}}
 
@@ -64,8 +61,8 @@ depois encaminhe-os para uma variedade de ferramentas de análise.
 
 {{% blocks/feature icon="fas fa-magic" title="Instrumentação de Fácil Integração"%}}
 
-O OpenTelemetry é [integrável] com diversos frameworks e bibliotecas populares,
-e suporta [instrumentação] _manual e sem código_.
+O OpenTelemetry é [integrável][] com diversos frameworks e bibliotecas
+populares, e suporta [instrumentação][] _manual e sem código_.
 
 [instrumentação]: /docs/concepts/instrumentation/
 [integrável]: /ecosystem/integrations/
@@ -74,8 +71,8 @@ e suporta [instrumentação] _manual e sem código_.
 
 {{% blocks/feature icon="fab fa-github" title="Open Source, Agnóstico a Fornecedor" %}}
 
-100% Gratuito e Open Source, o OpenTelemetry é [adotado] e apoiado por [líderes
-da indústria] no ecossistema da observabilidade.
+100% Gratuito e Open Source, o OpenTelemetry é [adotado][] e apoiado por
+[líderes da indústria][] no ecossistema da observabilidade.
 
 [adotado]: /ecosystem/adopters/
 [líderes da indústria]: /ecosystem/vendors/

@@ -63,7 +63,7 @@ exporters:
 
 Further example of manifest files for existing Collector distributions can be
 found in the
-[opentelemetry-collector-releases](https://github.com/open-telemetry/opentelemetry-collector-releases/blob/main/distributions/otelcol)
+[opentelemetry-collector-releases](https://github.com/open-telemetry/opentelemetry-collector-releases/blob/b590e8bc74a5aacca1236f02b10bafeb4959dd96/distributions/otelcol?from_branch=main)
 repository.
 
 If either of these options do not work for your use-case, please reach out to

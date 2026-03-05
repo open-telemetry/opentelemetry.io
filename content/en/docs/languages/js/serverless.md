@@ -10,12 +10,10 @@ OpenTelemetry instrumentation libraries.
 
 ## AWS Lambda
 
-{{% alert title="Note" %}}
-
-You can also automatically instrument your AWS Lambda functions by using the
-[community provided Lambda layers](/docs/platforms/faas/lambda-auto-instrument/).
-
-{{% /alert %}}
+> [!NOTE]
+>
+> You can also automatically instrument your AWS Lambda functions by using the
+> [community provided Lambda layers](/docs/platforms/faas/lambda-auto-instrument/).
 
 The following show how to use Lambda wrappers with OpenTelemetry to instrument
 AWS Lambda functions manually and send traces to a configured backend.
@@ -227,9 +225,7 @@ service. Please make sure that you provide a `SERVICE_NAME` and that you set the
 /* otelwrapper.js */
 
 const { resourceFromAttributes } = require('@opentelemetry/resources');
-const {
-  SEMRESATTRS_SERVICE_NAME,
-} = require('@opentelemetry/semantic-conventions');
+const { ATTR_SERVICE_NAME } = require('@opentelemetry/semantic-conventions');
 const api = require('@opentelemetry/api');
 const { BatchSpanProcessor } = require('@opentelemetry/sdk-trace-base');
 const {
@@ -249,7 +245,7 @@ const collectorOptions = {
 
 const provider = new NodeTracerProvider({
   resource: resourceFromAttributes({
-    [SEMRESATTRS_SERVICE_NAME]: '<your function name>',
+    [ATTR_SERVICE_NAME]: '<your function name>',
   }),
   spanProcessors: [
     new BatchSpanProcessor(new OTLPTraceExporter(collectorOptions)),

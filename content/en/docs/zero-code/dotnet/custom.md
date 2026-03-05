@@ -43,9 +43,11 @@ To create your custom traces manually, follow these steps:
    `Examples.ManualInstrumentations.Registered` or to
    `Examples.ManualInstrumentations.*`, which registers the entire prefix.
 
-{{% alert title="Note" color="warning" %}} An `Activity` created for
-`NonRegistered.ManualInstrumentations` `ActivitySource` is not handled by the
-OpenTelemetry Automatic Instrumentation. {{% /alert %}}
+> [!WARNING]
+>
+> An `Activity` created for `NonRegistered.ManualInstrumentations`
+> `ActivitySource` is not handled by the OpenTelemetry Automatic
+> Instrumentation.
 
 ## Metrics
 

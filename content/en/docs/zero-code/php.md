@@ -3,7 +3,7 @@ title: PHP zero-code instrumentation
 linkTitle: PHP
 weight: 30
 aliases: [/docs/languages/php/automatic]
-cSpell:ignore: centos democlass epel myapp pecl phar remi
+cSpell:ignore: centos democlass epel pecl phar remi
 ---
 
 ## Requirements
@@ -20,8 +20,9 @@ Automatic instrumentation with PHP requires:
 
 ## Install the OpenTelemetry extension
 
-{{% alert title="Important" color="warning" %}}Installing the OpenTelemetry
-extension by itself does not generate traces. {{% /alert %}}
+> [!IMPORTANT]
+>
+> Installing the OpenTelemetry extension by itself does not generate traces.
 
 The extension can be installed via pecl,
 [pickle](https://github.com/FriendsOfPHP/pickle),
@@ -196,9 +197,10 @@ to outgoing HTTP requests.
 
 ## How it works
 
-{{% alert title="Optional" %}} You can skip over this section if you just want
-to get up and running quickly, and there are suitable instrumentation libraries
-for your application. {{% /alert %}}
+> [!NOTE] Optional
+>
+> You can skip over this section if you just want to get up and running quickly,
+> and there are suitable instrumentation libraries for your application.
 
 The extension enables registering observer functions as PHP code against classes
 and methods, and executing those functions before and after the observed method

@@ -3,6 +3,7 @@ title: 部署
 description: 部署 OpenTelemetry Collector 可使用的模式
 weight: 3
 default_lang_commit: 82dc25ce2cc1c6b3b2bde68b5d25bd58e5ac49b3
+drifted_from_default: true
 ---
 
 OpenTelemetry Collector 由单一的可执行文件组成，你可以根据不同的用途以不同的方式使用。

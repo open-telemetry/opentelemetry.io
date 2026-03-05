@@ -4,8 +4,6 @@ linkTitle: Docker
 weight: 100
 ---
 
-## Docker
-
 The following commands pull a Docker image and run the Collector in a container.
 Replace `{{% param vers %}}` with the version of the Collector you want to run.
 
@@ -25,7 +23,7 @@ docker run ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry
 
 {{% /tab %}} {{< /tabpane >}}
 
-To load a custom configuration file from your working directory, mount that file
+To load a custom configuration file from your working directory, mount the file
 as a volume:
 
 {{< tabpane text=true >}} {{% tab DockerHub %}}
@@ -44,8 +42,8 @@ docker run -v $(pwd)/config.yaml:/etc/otelcol/config.yaml ghcr.io/open-telemetry
 
 ## Docker Compose
 
-You can add OpenTelemetry Collector to your existing `docker-compose.yaml` file
-as in the following example:
+You can also add the OpenTelemetry Collector to your existing
+`docker-compose.yaml` file:
 
 ```yaml
 otel-collector:
@@ -60,4 +58,36 @@ otel-collector:
     - 4317:4317 # OTLP gRPC receiver
     - 4318:4318 # OTLP http receiver
     - 55679:55679 # zpages extension
+```
+
+The `otel-collector-config.yaml` file is required for the Collector to start.
+For more information, see
+[Collector configuration](/docs/collector/configuration/).
+
+Below is a minimal Collector configuration that logs all received telemetry.
+
+```yaml
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+      http:
+        endpoint: 0.0.0.0:4318
+
+exporters:
+  debug:
+    verbosity: detailed
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      exporters: [debug]
+    metrics:
+      receivers: [otlp]
+      exporters: [debug]
+    logs:
+      receivers: [otlp]
+      exporters: [debug]
 ```

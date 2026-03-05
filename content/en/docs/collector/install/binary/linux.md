@@ -4,17 +4,15 @@ linkTitle: Linux
 weight: 100
 ---
 
-## Linux
-
 Every Collector release includes APK, DEB and RPM packaging for Linux
 amd64/arm64/i386 systems. You can find the default configuration in
 `/etc/otelcol/config.yaml` after installation.
 
 > Note: `systemd` is required for automatic service configuration.
 
-### DEB Installation
+## DEB installation
 
-To get started on Debian systems run the following commands:
+To get started on Debian systems, run the following commands:
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
@@ -45,9 +43,9 @@ sudo dpkg -i otelcol_{{% param vers %}}_linux_386.deb
 
 {{% /tab %}} {{< /tabpane >}}
 
-### RPM Installation
+## RPM installation
 
-To get started on Red Hat systems run the following commands:
+To get started on Red Hat systems, run the following commands:
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
@@ -78,10 +76,10 @@ sudo rpm -ivh otelcol_{{% param vers %}}_linux_386.rpm
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Manual Linux installation
+## Manual installation
 
 Linux [releases][] are available for various architectures. You can download the
-file containing the binary and install it on your machine manually:
+binary file and install it on your machine manually:
 
 {{< tabpane text=true >}} {{% tab AMD64 %}}
 
@@ -113,25 +111,29 @@ tar -xvf otelcol_{{% param vers %}}_linux_ppc64le.tar.gz
 
 {{% /tab %}} {{< /tabpane >}}
 
-### Automatic service configuration
+## Automatic service configuration
 
-By default, the `otelcol` systemd service starts with the
-`--config=/etc/otelcol/config.yaml` option after installation.
+When the OpenTelemetry Collector runs as a `systemd` service, it starts with the
+`/etc/otelcol/config.yaml` configuration file by default.
 
-To use a different settings, set the `OTELCOL_OPTIONS` variable in the
-`/etc/otelcol/otelcol.conf` systemd environment file to the appropriate
-command-line options. You can run `/usr/bin/otelcol --help` to see all available
-options. You can pass additional environment variables to the `otelcol` service
-by adding them to this file.
+If you want to change this setting, you can edit the `OTELCOL_OPTIONS` variable
+in the `systemd` environment file, `/etc/otelcol/otelcol.conf`. You can also
+define additional environment variables for the `otelcol` service in the same
+file. For a complete list of supported options, run the following command:
 
-If you modify the Collector configuration file or `/etc/otelcol/otelcol.conf`,
-restart the `otelcol` service to apply the changes by running:
+```sh
+/usr/bin/otelcol --help
+```
+
+If you modify the Collector configuration file (`config.yaml`) or the
+environment file (`otelcol.conf`), you must restart the service to apply the
+changes:
 
 ```sh
 sudo systemctl restart otelcol
 ```
 
-To check the output from the `otelcol` service, run:
+To check the log output from the `otelcol` service, run:
 
 ```sh
 sudo journalctl -u otelcol

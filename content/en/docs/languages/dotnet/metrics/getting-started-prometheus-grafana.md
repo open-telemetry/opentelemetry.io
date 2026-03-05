@@ -103,9 +103,10 @@ store metrics.
 ./prometheus --web.enable-otlp-receiver
 ```
 
-{{% alert title="Note" %}} The `--web.enable-otlp-receiver` flag enables
-Prometheus to receive metrics through the OpenTelemetry Protocol (OTLP).
-{{% /alert %}}
+> [!NOTE]
+>
+> The `--web.enable-otlp-receiver` flag enables Prometheus to receive metrics
+> through the OpenTelemetry Protocol (OTLP).
 
 ### Viewing metrics in Prometheus
 

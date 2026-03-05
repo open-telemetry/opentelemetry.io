@@ -25,12 +25,10 @@ for OTLP export, resource attributes, and service name.
 const FrontendTracer = async () => {
   const { ZoneContextManager } = await import('@opentelemetry/context-zone');
 
-  let resource = new Resource({
-    [SEMRESATTRS_SERVICE_NAME]: NEXT_PUBLIC_OTEL_SERVICE_NAME,
+  let resource = resourceFromAttributes({
+    [ATTR_SERVICE_NAME]: NEXT_PUBLIC_OTEL_SERVICE_NAME,
   });
-  const detectedResources = detectResourcesSync({
-    detectors: [browserDetector],
-  });
+  const detectedResources = detectResources({ detectors: [browserDetector] });
   resource = resource.merge(detectedResources);
 
   const provider = new WebTracerProvider({
@@ -117,18 +115,18 @@ how the span can be created.
   application context.
 
 ```typescript
-span = tracer.startSpan(`HTTP ${method}`, {
+span = tracer.startSpan(`${method}`, {
   root: true,
   kind: SpanKind.SERVER,
   links: [{ context: syntheticSpan.spanContext() }],
   attributes: {
     'app.synthetic_request': true,
-    [SEMATTRS_HTTP_TARGET]: target,
-    [SEMATTRS_HTTP_STATUS_CODE]: response.statusCode,
-    [SEMATTRS_HTTP_METHOD]: method,
-    [SEMATTRS_HTTP_USER_AGENT]: headers['user-agent'] || '',
-    [SEMATTRS_HTTP_URL]: `${headers.host}${url}`,
-    [SEMATTRS_HTTP_FLAVOR]: httpVersion,
+    [ATTR_HTTP_RESPONSE_STATUS_CODE]: response.statusCode,
+    [ATTR_HTTP_REQUEST_METHOD]: method,
+    [ATTR_USER_AGENT_ORIGINAL]: headers['user-agent'] || '',
+    [ATTR_URL_PATH]: target,
+    [ATTR_URL_FULL]: `${headers.host}${url}`,
+    [ATTR_NETWORK_PROTOCOL_VERSION]: httpVersion,
   },
 });
 ```
@@ -166,16 +164,16 @@ import { WebTracerProvider } from '@opentelemetry/sdk-trace-web';
 import { SimpleSpanProcessor } from '@opentelemetry/sdk-trace-base';
 import { registerInstrumentations } from '@opentelemetry/instrumentation';
 import { getWebAutoInstrumentations } from '@opentelemetry/auto-instrumentations-web';
-import { Resource } from '@opentelemetry/resources';
-import { SEMRESATTRS_SERVICE_NAME } from '@opentelemetry/semantic-conventions';
+import { resourceFromAttributes } from '@opentelemetry/resources';
+import { ATTR_SERVICE_NAME } from '@opentelemetry/semantic-conventions';
 import { OTLPTraceExporter } from '@opentelemetry/exporter-trace-otlp-http';
 
 const FrontendTracer = async () => {
   const { ZoneContextManager } = await import('@opentelemetry/context-zone');
 
   const provider = new WebTracerProvider({
-    resource: new Resource({
-      [SEMRESATTRS_SERVICE_NAME]: process.env.NEXT_PUBLIC_OTEL_SERVICE_NAME,
+    resource: resourceFromAttributes({
+      [ATTR_SERVICE_NAME]: process.env.NEXT_PUBLIC_OTEL_SERVICE_NAME,
     }),
     spanProcessors: [new SimpleSpanProcessor(new OTLPTraceExporter())],
   });

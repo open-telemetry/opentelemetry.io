@@ -5,7 +5,7 @@ disableKinds: [taxonomy]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
-ignoreLogs: [spec-resource-not-found]
+ignoreLogs: []
 
 # Language settings
 defaultContentLanguage: en
@@ -35,7 +35,7 @@ languages:
       notes:
         docker-compose-v2: |
           `docker-compose` は非推奨です. 詳細は、
-          [Migrate to Compose V2](https://docs.docker.com/compose/migrate/) を確認してください。
+          [Migrate to Compose V2](https://docs.docker.com/compose/) を確認してください。
   pt:
     languageName: Português
     languageCode: pt-BR
@@ -106,15 +106,7 @@ params:
       OpenTelemetry Authors | Docs [CC BY
       4.0](https://creativecommons.org/licenses/by/4.0)
     from_year: 2019
-  tagline: Effective observability requires high-quality telemetry
-  sub_tagline: >-
-    **OpenTelemetry** makes robust, portable telemetry a built-in feature of
-    cloud-native software.
-  sub_description: >-
-    **OpenTelemetry** provides a single set of APIs, libraries, agents, and
-    collector services to capture distributed traces and metrics from your
-    application. You can analyze them using Prometheus, Jaeger, and other
-    observability tools.
+    to_year: present
   github_repo: https://github.com/open-telemetry/opentelemetry.io
   github_branch: main
   gcs_engine_id: 015faf7de29c34606
@@ -130,6 +122,7 @@ params:
 
   ui:
     navbar_logo: true
+    navbar_theme: dark
     navbar_translucent_over_cover_disable: true
     showLightDarkModeMenu: true
     sidebar_menu_compact: true
@@ -139,10 +132,9 @@ params:
     sidebar_root_enabled: true
     feedback:
       enable: true
-      'yes': >-
-        Thank you. Your feedback is appreciated!
+      yes: Thank you. Your feedback is appreciated!
       # prettier-ignore
-      'no': >-
+      no: >-
         Please let us know <a class="external-link" target="_blank" rel="noopener"
         href="https://github.com/open-telemetry/opentelemetry.io/issues/new?template=PAGE_FEEDBACK.yml&title=[Page+feedback]%3A+ADD+A+SUMMARY+OF+YOUR+FEEDBACK+HERE">how
         we can improve this page</a>. Your feedback is appreciated!
@@ -160,6 +152,7 @@ params:
         url: https://fosstodon.org/@opentelemetry
         icon: fab fa-mastodon
         desc: Follow us on Mastodon to get the latest news!
+        rel: me
       - name: Stack Overflow
         url: https://stackoverflow.com/questions/tagged/open-telemetry
         icon: fab fa-stack-overflow
@@ -248,7 +241,15 @@ params:
     # top-level `languages.XX.params` entry for your locale XX.
     docker-compose-v2: |
       `docker-compose` is deprecated. For details, see
-      [Migrate to Compose V2](https://docs.docker.com/compose/migrate/).
+      [Migrate to Compose V2](https://docs.docker.com/compose/).
+
+  # Docs helpers: use with _param
+  FA: <i class="fa-{1} fa-{2} text-{3} px-1"></i>
+  FAB: <i class="fa-brands fa-{1} text-{2} px-1"></i>
+  FAS: <i class="fa-solid fa-{1} text-{2} px-1"></i>
+  FAS_LG: <i class="fa-solid fa-{1} text-{2} fa-lg"></i>
+  # Badge usage: {{% _param BADGE text color %}}
+  BADGE: <span class="badge text-bg-{2} rounded-pill text-small">{1}</span>
 
 security:
   funcs: # cspell:disable-line
