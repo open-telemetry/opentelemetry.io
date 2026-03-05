@@ -74,9 +74,7 @@ plan includes changes:
 - In the Collector.
 - In semantic conventions and instrumentations.
 
-The details below summarize the intent; for the normative text, please refer to
-[OTEP 4430][OTEP] and the corresponding specification and semantic convention
-changes.
+The details below summarize the current intent.
 
 ### OTLP
 
