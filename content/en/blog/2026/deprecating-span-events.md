@@ -7,7 +7,7 @@ author: >-
   Pajak](https://github.com/pellared) (Splunk), [Trask
   Stalnaker](https://github.com/trask) (Microsoft),
 sig: Specification, Logs
-cSpell:ignore: Liudmila Molkova Pająk
+cSpell:ignore: Liudmila Molkova
 ---
 
 If you have been following OpenTelemetry’s work on logging and events, you may
