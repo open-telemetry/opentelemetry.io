@@ -17775,6 +17775,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-25T10:00:25.928140609Z"
   },
+  "https://github.com/vincentfree": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-04T04:20:38.753331183Z"
+  },
   "https://github.com/vipinvkmenon": {
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:52:49.821193825Z"
@@ -21518,6 +21522,22 @@
   "https://pkg.go.dev/go.opentelemetry.io/contrib/detectors/aws/lambda": {
     "StatusCode": 200,
     "LastSeen": "2026-02-27T09:52:18.449826343Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-12T07:10:41.375703562Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewLogExporter": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-12T07:10:46.588378862Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewMetricReader": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-12T07:10:45.527456942Z"
+  },
+  "https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewSpanExporter": {
+    "StatusCode": 200,
+    "LastSeen": "2026-02-12T07:10:44.131640591Z"
   },
   "https://pkg.go.dev/go.opentelemetry.io/contrib/instrumentation/github.com/aws/aws-lambda-go/otellambda": {
     "StatusCode": 200,
