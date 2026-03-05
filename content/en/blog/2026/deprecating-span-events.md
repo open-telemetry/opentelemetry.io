@@ -254,4 +254,5 @@ instrumentation documentation.
 Our goal is to make events in OpenTelemetry **simpler, more consistent, and more
 powerful**, without breaking the workflows you rely on today.
 
-[OTEP]: https://github.com/open-telemetry/opentelemetry-specification/blob/fd43145dde7e5192ebc59a20992d98a3e6af5553/oteps/4430-span-event-api-deprecation-plan.md
+[OTEP]:
+  https://github.com/open-telemetry/opentelemetry-specification/blob/fd43145dde7e5192ebc59a20992d98a3e6af5553/oteps/4430-span-event-api-deprecation-plan.md
