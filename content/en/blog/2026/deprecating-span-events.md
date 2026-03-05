@@ -4,10 +4,10 @@ linkTitle: Deprecating Span Events
 date: 2026-03-13
 author: >-
   [Liudmila Molkova](https://github.com/lmolkova) (Grafana Labs), [Robert
-  Pajak](https://github.com/pellared) (Splunk), [Trask
+  Pająk](https://github.com/pellared) (Splunk), [Trask
   Stalnaker](https://github.com/trask) (Microsoft),
 sig: Specification, Logs
-cSpell:ignore: Liudmila Molkova
+cSpell:ignore: Liudmila Molkova Pająk
 ---
 
 If you have been following OpenTelemetry’s work on logging and events, you may
