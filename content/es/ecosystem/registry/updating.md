@@ -1,6 +1,6 @@
 ---
 title: Mantener actualizada la información del registro y de la lista
-linkTitle: Updating
+linkTitle: Actualizar
 default_lang_commit: 1a6db8fe3a989fa20267368336aceb5665b4394b
 ---
 
