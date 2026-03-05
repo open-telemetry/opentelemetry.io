@@ -34,7 +34,7 @@ Declarative configuration is supported in the **OpenTelemetry Java agent version
    `-Dotel.experimental.config.file=/path/to/otel-config.yaml`
 
 ```yaml
-file_format: '1.0-rc.1'
+file_format: '1.0'
 
 resource:
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}

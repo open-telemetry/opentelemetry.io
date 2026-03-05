@@ -108,7 +108,7 @@ PHP supports OpenTelemetry's experimental
 [Declarative Configuration](/docs/specs/otel/configuration/#declarative-configuration),
 where the SDK can be configured through a YAML file.
 
-To enable this, set `OTEL_EXPERIMENTAL_CONFIG_FILE=/path/to/config.yaml` where
+To enable this, set `OTEL_CONFIG_FILE=/path/to/config.yaml` where
 `config.yaml` is a file which conforms to the declarative configuration schema,
 for example:
 
@@ -132,11 +132,11 @@ resource:
 
 ```shell
 OTEL_PHP_AUTOLOAD_ENABLED=true \
-OTEL_EXPERIMENTAL_CONFIG_FILE=/path/to/config.yaml
+OTEL_CONFIG_FILE=/path/to/config.yaml
 php example.php
 ```
 
-The existence of `OTEL_EXPERIMENTAL_CONFIG_FILE` will cause the autoloader to
+The existence of `OTEL_CONFIG_FILE` will cause the autoloader to
 attempt to configure with the provided config file, and other environment
 variables will be ignored.
 
