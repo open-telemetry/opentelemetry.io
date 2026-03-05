@@ -75,7 +75,7 @@ plan includes changes:
 - In semantic conventions and instrumentations.
 
 The details below summarize the intent; for the normative text, please refer to
-[OTEP 4430][OTEP]and the corresponding specification and semantic convention
+[OTEP 4430][OTEP] and the corresponding specification and semantic convention
 changes.
 
 ### OTLP
