@@ -53,9 +53,8 @@ At the same time, we recognize that span events are widely used today. Many
 backends present span events in dedicated trace views, and some users depend on
 events being sent in the same OTLP export payload as their parent span.
 
-The plan in
-[OTEP 4430: Span Event API deprecation plan](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/4430-span-event-api-deprecation-plan.md)
-aims to balance these goals:
+The plan in [OTEP 4430: Span Event API deprecation plan][OTEP] aims to balance
+these goals:
 
 - Provide **clear, consistent guidance** that new events should go through the
   Logs API.
@@ -75,8 +74,8 @@ plan includes changes:
 - In semantic conventions and instrumentations.
 
 The details below summarize the intent; for the normative text, please refer to
-[OTEP 4430](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/4430-span-event-api-deprecation-plan.md)
-and the corresponding specification and semantic convention changes.
+[OTEP 4430][OTEP]and the corresponding specification and semantic convention
+changes.
 
 ### OTLP and the data model
 
@@ -236,9 +235,8 @@ If you build observability backends or work on the OpenTelemetry Collector:
 
 ## Feedback and next steps
 
-This post summarizes the plan from
-[OTEP 4430](https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/4430-span-event-api-deprecation-plan.md)
-and related specification work.
+This post summarizes the plan from [OTEP 4430][OTEP] and related specification
+work.
 
 We would very much appreciate your feedback on:
 
@@ -255,3 +253,5 @@ instrumentation documentation.
 
 Our goal is to make events in OpenTelemetry **simpler, more consistent, and more
 powerful**, without breaking the workflows you rely on today.
+
+[OTEP]: https://github.com/open-telemetry/opentelemetry-specification/blob/fd43145dde7e5192ebc59a20992d98a3e6af5553/oteps/4430-span-event-api-deprecation-plan.md
