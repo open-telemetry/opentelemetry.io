@@ -3847,6 +3847,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:53:13.376104765Z"
   },
+  "https://github.com/Nevay": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-26T16:10:57.498324-06:00"
+  },
   "https://github.com/NimrodAvni78": {
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:52:18.351191684Z"
@@ -4247,6 +4251,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:51:50.932042617Z"
   },
+  "https://github.com/anuraaga": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-26T16:10:53.18511-06:00"
+  },
   "https://github.com/apache/apisix/blob/master/apisix/plugins/opentelemetry.lua": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:57:07.477329223Z"
@@ -4550,6 +4558,10 @@
   "https://github.com/bshetti": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:51:51.406392471Z"
+  },
+  "https://github.com/c": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-26T16:10:58.446007-06:00"
   },
   "https://github.com/c24t": {
     "StatusCode": 206,
@@ -5058,6 +5070,10 @@
   "https://github.com/dodegaard": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:51:57.411344601Z"
+  },
+  "https://github.com/dol": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-26T16:10:55.491306-06:00"
   },
   "https://github.com/dominicfraser": {
     "StatusCode": 206,
@@ -6822,6 +6838,10 @@
   "https://github.com/observIQ/observiq-otel-collector": {
     "StatusCode": 206,
     "LastSeen": "2026-02-20T09:52:24.162871549Z"
+  },
+  "https://github.com/ocelotl": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-27T09:51:13.126664-06:00"
   },
   "https://github.com/odeke-em": {
     "StatusCode": 206,
@@ -10322,6 +10342,10 @@
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/670901762dd5cce1eecee423b8660e69f71ef4be/examples/kitchen-sink.yaml#L438-L439": {
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:46:42.94477807Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-configuration/blob/854f201660436d0e66f73785b7b310e4f8d46c6e/language-support-status.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-26T16:10:46.505655-06:00"
   },
   "https://github.com/open-telemetry/opentelemetry-configuration/blob/db08177916083273421c1fd10247b63badd6a87a/examples/otel-sdk-migration-config.yaml?from_branch=main": {
     "StatusCode": 206,
@@ -13835,6 +13859,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-24T07:00:16.195229-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/9a946352ecdec2565520e9c65d635f6e68d6cdfb/spec-compliance-matrix.md#declarative-configuration": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-26T16:10:44.885014-06:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/blob/af2606810c19c31850738d1fd105b4eca7aa8c98/spec-compliance-matrix.md?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-02-23T19:29:06.725694-05:00"
@@ -14022,6 +14050,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/pull/4197": {
     "StatusCode": 206,
     "LastSeen": "2026-02-20T09:57:14.632625339Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/4738": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-26T16:10:50.893159-06:00"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme": {
     "StatusCode": 206,
@@ -16742,6 +16774,10 @@
   "https://github.com/yordis": {
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:53:21.50970961Z"
+  },
+  "https://github.com/ysolomchenko": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-27T08:48:38.597529-06:00"
   },
   "https://github.com/yuanyuanzhao3": {
     "StatusCode": 206,
