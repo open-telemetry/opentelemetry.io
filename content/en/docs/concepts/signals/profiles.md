@@ -119,13 +119,13 @@ OpenTelemetry's common profile data model and exported via OTLP.
 
 OpenTelemetry provides an
 [eBPF-based profiling agent](https://github.com/open-telemetry/opentelemetry-ebpf-profiler)
-for Linux, capable of profiling most languages with zero code changes.
+for Linux, capable of profiling most languages without any code changes.
 
 Additional language-specific profiling integrations that tap into built-in
 runtime profiling frameworks, such as JFR for Java or pprof for Go, will also become
 available as the signal matures.
 
-Profiles can be exported via OTLP to the OpenTelemetry Collector or directly to
+You can export Profiles through OTLP to the OpenTelemetry Collector or directly to
 any compatible backend.
 
 ## Specification
