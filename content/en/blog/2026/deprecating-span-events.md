@@ -108,7 +108,7 @@ Language APIs and SDKs will implement the following steps:
      detail that span events historically offered.
    - Stabilize this support so instrumentation authors can rely on it.
 2. **SDK-based compatibility for span events.**
-   - Ensure that there is a mechanism that allows converting log-based
+   - Ensure that there is a opt-in mechanism that allows converting log-based
      exceptions and events into span events and attaching them to the current
      span.
 3. **Deprecate span event methods.**
