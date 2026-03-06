@@ -102,7 +102,7 @@ There are multiple approaches to collecting profiles and we designed
 OpenTelemetry profiles to support all of them:
 
 - **Sampling-based profiling**: A profiler periodically interrupts the program
-  (e.g. using timer-based interrupts) and records the current stack trace. This
+  for example using timer-based interrupts, and records the current stack trace. This
   is the most common approach for CPU profiling. On Linux, profilers can use
   eBPF to capture stack traces from the kernel without modifying userspace
   applications at all. This approach enables zero-instrumentation, whole-system
