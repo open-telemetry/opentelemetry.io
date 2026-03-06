@@ -69,7 +69,7 @@ correlations work across two dimensions:
 
 - **Resource context correlation**: Linking profiling data to the same
   [resource](/docs/concepts/resources/) that emitted the associated metrics,
-  logs or traces (e.g. the same service instance).
+  logs or traces, such as the same service instance.
 
 Profiles become especially powerful when correlated with other signals:
 
