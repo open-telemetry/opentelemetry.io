@@ -122,7 +122,7 @@ OpenTelemetry provides an
 for Linux, capable of profiling most languages with zero code changes.
 
 Additional language-specific profiling integrations that tap into built-in
-runtime profiling frameworks (e.g. JFR for Java, pprof for Go) will also become
+runtime profiling frameworks, such as JFR for Java or pprof for Go, will also become
 available as the signal matures.
 
 Profiles can be exported via OTLP to the OpenTelemetry Collector or directly to
