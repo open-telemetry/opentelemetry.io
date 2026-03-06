@@ -1060,6 +1060,7 @@ maintainers:
       - dotnet-contrib-approvers
       - dotnet-contrib-maintainers
       - dotnet-contrib-triagers
+      - dotnet-maintainers
       - dotnet-triagers
     html_url: https://github.com/martincostello
     avatar_url: https://avatars.githubusercontent.com/u/1439341?v=4
@@ -1750,6 +1751,7 @@ approvers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-triagers
     html_url: https://github.com/ArthurSens
     avatar_url: https://avatars.githubusercontent.com/u/24193764?v=4
   - name: aryanishan1001
@@ -1997,6 +1999,12 @@ approvers:
       - specs-trace-approvers
     html_url: https://github.com/iNikem
     avatar_url: https://avatars.githubusercontent.com/u/3010154?v=4
+  - name: iskiselev
+    teams:
+      - dotnet-instrumentation-approvers
+      - dotnet-instrumentation-triagers
+    html_url: https://github.com/iskiselev
+    avatar_url: https://avatars.githubusercontent.com/u/5084964?v=4
   - name: jackgopack4
     teams:
       - collector-releases-approvers
@@ -2074,6 +2082,11 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/karthikscale3
     avatar_url: https://avatars.githubusercontent.com/u/105607645?v=4
+  - name: keith-decker
+    teams:
+      - opentelemetry-python-contrib-approvers
+    html_url: https://github.com/keith-decker
+    avatar_url: https://avatars.githubusercontent.com/u/47755047?v=4
   - name: kinyoklion
     teams:
       - semconv-feature-flag-approvers
