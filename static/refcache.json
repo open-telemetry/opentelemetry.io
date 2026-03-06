@@ -18447,6 +18447,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T15:38:42.103958448Z"
   },
+  "https://kotlinlang.org/multiplatform/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-28T13:19:16.64618+01:00"
+  },
   "https://kubernetes.io": {
     "StatusCode": 206,
     "LastSeen": "2026-04-23T10:13:22.523678068Z"
