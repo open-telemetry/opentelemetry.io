@@ -89,26 +89,26 @@ The top components according to our survey results are as follows:
 
 ### Exporters
 
-1. [otlpexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter)
+1. [otlpexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/f306288b57856f7668e541a49d9945c3c707b7a3/exporter/otlpexporter?from_branch=main)
 2. [prometheusremotewriteexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/exporter/prometheusremotewriteexporter/README.md)
 3. [prometheusexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/exporter/prometheusexporter/README.md)
 4. [lokiexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/exporter/lokiexporter/README.md)
-5. [debugexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/debugexporter)
+5. [debugexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/d25efc7e2f31a3ba5347d0725a22d7bed1b4015d/exporter/debugexporter?from_branch=main)
 
 ### Receivers
 
-1. [otlpreceiver](https://github.com/open-telemetry/opentelemetry-collector/tree/main/receiver/otlpreceiver)
+1. [otlpreceiver](https://github.com/open-telemetry/opentelemetry-collector/tree/f306288b57856f7668e541a49d9945c3c707b7a3/receiver/otlpreceiver?from_branch=main)
 2. [prometheusreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/receiver/prometheusreceiver/README.md)
-3. [filelogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)
+3. [filelogreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/72087f655403778da46f4168dca2433fa0775098/receiver/filelogreceiver?from_branch=main)
 4. [hostmetricsreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/receiver/hostmetricsreceiver/README.md)
 5. [k8sclusterreceiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/receiver/k8sclusterreceiver/README.md)
 
 ### Processors
 
-1. [batchprocessor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/batchprocessor)
+1. [batchprocessor](https://github.com/open-telemetry/opentelemetry-collector/tree/811b5147d3ae2da9610f85265305dd46c79de179/processor/batchprocessor?from_branch=main)
 2. [attributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/processor/attributesprocessor/README.md)
 3. [filterprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/processor/filterprocessor/README.md)
-4. [memorylimiterprocessor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor)
+4. [memorylimiterprocessor](https://github.com/open-telemetry/opentelemetry-collector/tree/811b5147d3ae2da9610f85265305dd46c79de179/processor/memorylimiterprocessor?from_branch=main)
 5. [k8sattributesprocessor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.117.0/processor/k8sattributesprocessor/README.md)
 
 ### Connectors
@@ -131,7 +131,7 @@ The top components according to our survey results are as follows:
 
 For a more detailed look at the specific exporters, receivers, processors,
 connectors, and extensions in use, you can check out the
-[raw results](https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-collector/otel-collector-survey.csv).
+[raw results](https://github.com/open-telemetry/sig-end-user/blob/684fca78b4f13c8ac5009d7a99638f78b336b8d7/end-user-surveys/otel-collector/otel-collector-survey.csv?from_branch=main).
 The data provides a clear view of the popular choices within the community as
 well as the niche configurations that exemplify the customizability of the OTel
 Collector.
@@ -145,7 +145,7 @@ versus wanting new components (<8%)
 ![Chart showing interested areas of improvement for the otel collector](areas-of-improvement.png)
 
 The
-[OTel Collector survey results](https://github.com/open-telemetry/sig-end-user/blob/main/end-user-surveys/otel-collector/otel-collector-survey.csv)
+[OTel Collector survey results](https://github.com/open-telemetry/sig-end-user/blob/684fca78b4f13c8ac5009d7a99638f78b336b8d7/end-user-surveys/otel-collector/otel-collector-survey.csv?from_branch=main)
 offer a snapshot of the current state of Collector deployment and utilization.
 It's evident that while the OTel Collector is widely adopted and highly
 customizable, there are also opportunities to make it more user-friendly and

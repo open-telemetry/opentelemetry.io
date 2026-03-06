@@ -25,7 +25,7 @@ projects? I don't know about you, but for me, up until last year, the prospect
 of contributing to open source was just plain _scary_!! I mean, when you open up
 a
 [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
-(PR), _[you are putting yourself out there]_, to be judged by those little
+(PR), _[you are putting yourself out there][]_, to be judged by those little
 GitHub avatars that make up the approvers list for the repository you're
 contributing to. YIKES!
 
@@ -137,7 +137,7 @@ You can check out an example of one of my contributions
 [Integrate with existing metrics code](https://github.com/open-telemetry/opentelemetry-demo/pull/432).
 
 Learn more about how to
-[contribute to the OTel Demo](https://github.com/open-telemetry/opentelemetry-demo/blob/main/CONTRIBUTING.md).
+[contribute to the OTel Demo](https://github.com/open-telemetry/opentelemetry-demo/blob/59c9b2ca32be41e464fedc1eed6dcf4ad1503c3d/CONTRIBUTING.md?from_branch=main).
 
 ### Join a Special Interest Group
 

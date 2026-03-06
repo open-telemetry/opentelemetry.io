@@ -3,10 +3,93 @@ title: Exporters
 aliases: [exporting_data]
 weight: 50
 # prettier-ignore
-cSpell:ignore: otlplog otlploggrpc otlploghttp otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp stdoutlog stdouttrace
+cSpell:ignore: autoexport otlplog otlploggrpc otlploghttp otlpmetric otlpmetricgrpc otlpmetrichttp otlptrace otlptracegrpc otlptracehttp sdkmetric sdktrace stdoutlog stdouttrace
 ---
 
 {{% docs/languages/exporters/intro %}}
+
+## Automatic Exporter Configuration with Environment Variables
+
+You can use the
+[`go.opentelemetry.io/contrib/exporters/autoexport`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport)
+package to automatically configure exporters using
+[standard OpenTelemetry environment variables](/docs/specs/otel/configuration/sdk-environment-variables/).
+
+This package provides factory functions that read the **exporter selector**
+environment variables to select and initialize the appropriate exporter at
+runtime:
+
+| Function                                                                                                 | Environment variable    | Description              |
+| -------------------------------------------------------------------------------------------------------- | ----------------------- | ------------------------ |
+| [`NewSpanExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewSpanExporter) | `OTEL_TRACES_EXPORTER`  | Creates a trace exporter |
+| [`NewMetricReader`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewMetricReader) | `OTEL_METRICS_EXPORTER` | Creates a metric reader  |
+| [`NewLogExporter`](https://pkg.go.dev/go.opentelemetry.io/contrib/exporters/autoexport#NewLogExporter)   | `OTEL_LOGS_EXPORTER`    | Creates a log exporter   |
+
+Supported values for the selector variables are `otlp` (default) and `none`. For
+`OTEL_METRICS_EXPORTER`, `prometheus` is also supported. Once an exporter is
+selected, its configuration (endpoint, headers, timeout, protocol, etc.) is read
+from the standard
+[OTLP exporter environment variables](/docs/languages/sdk-configuration/otlp-exporter/)
+by the underlying OTLP exporter package.
+
+Example usage:
+
+```go
+import (
+	"context"
+
+	"go.opentelemetry.io/contrib/exporters/autoexport"
+	sdkmetric "go.opentelemetry.io/otel/sdk/metric"
+	sdktrace "go.opentelemetry.io/otel/sdk/trace"
+)
+
+func main() {
+	ctx := context.Background()
+
+	// Create trace exporter using environment variables
+	spanExporter, err := autoexport.NewSpanExporter(ctx)
+	if err != nil {
+		// handle error
+	}
+
+	// Create trace provider with the exporter
+	tracerProvider := sdktrace.NewTracerProvider(
+		sdktrace.WithBatcher(spanExporter),
+	)
+
+	// Create metric reader using environment variables
+	metricReader, err := autoexport.NewMetricReader(ctx)
+	if err != nil {
+		// handle error
+	}
+
+	// Create meter provider with the reader
+	meterProvider := sdkmetric.NewMeterProvider(
+		sdkmetric.WithReader(metricReader),
+	)
+}
+```
+
+{{% alert title="Note" color="info" %}}
+
+The standard OTLP exporter packages (`otlptracegrpc`, `otlptracehttp`, etc.)
+already read most OTLP environment variables such as
+`OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_EXPORTER_OTLP_HEADERS`,
+`OTEL_EXPORTER_OTLP_TIMEOUT`, and `OTEL_EXPORTER_OTLP_COMPRESSION`.
+
+The `autoexport` package adds support for the **exporter selector variables**
+(`OTEL_TRACES_EXPORTER`, `OTEL_METRICS_EXPORTER`, `OTEL_LOGS_EXPORTER`) that
+choose _which_ exporter implementation to use. This separation keeps binary
+sizes smaller by not bundling exporter dependencies (like gRPC) unless
+explicitly imported.
+
+Also note that `OTEL_SDK_DISABLED` is not currently supported by the Go SDK.
+
+{{% /alert %}}
+
+For a complete overview of which environment variables are supported by the Go
+SDK and contrib packages, see the
+[OpenTelemetry spec compliance matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
 
 ## Console
 
