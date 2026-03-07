@@ -6115,6 +6115,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:44:22.039474834Z"
   },
+  "https://github.com/juliafmorgado": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-02T10:24:35.05488928Z"
+  },
   "https://github.com/julianocosta89": {
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:53:50.010616398Z"
@@ -11215,9 +11219,17 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-24T09:53:09.994846053Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/issues/13766": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-02T10:24:39.87319434Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/6151": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:52:29.239009889Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/issues/8122": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-02T10:24:45.303078461Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/8510": {
     "StatusCode": 206,
