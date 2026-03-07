@@ -1,0 +1,20 @@
+# cSpell:ignore Raphaelli
+title: Exec Receiver
+registryType: receiver
+language: collector
+tags:
+  - collector
+  - command
+  - commandline
+  - exec
+  - subprocess
+urls:
+  repo: https://github.com/graphaelli/execreceiver
+license: Apache 2.0
+description: Collect output from running a subprocess under OpenTelemetry Collector
+authors:
+  - name: Gil Raphaelli
+    email: graphaelli@gmail.com
+createdAt: 2026-03-06
+isNative: true
+isFirstParty: false
