@@ -24,7 +24,7 @@ Set your desired version and architecture:
 ```sh
 # Set your desired version (find latest at
 # https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases)
-VERSION=0.5.0
+VERSION=0.6.0
 
 # Determine your architecture
 # For Intel/AMD 64-bit: amd64
@@ -48,15 +48,16 @@ The archive contains:
 
 - `obi` - Main OBI binary
 - `k8s-cache` - Kubernetes cache binary
-- `obi-java-agent.jar` - Java instrumentation agent
 - `LICENSE` - Project license
 - `NOTICE` - Legal notices
 - `NOTICES/` - Third-party licenses and attributions
 
 > [!IMPORTANT]
 >
-> The `obi-java-agent.jar` file must remain in the same directory as the `obi`
-> binary. This is required for Java instrumentation to function properly.
+> Starting in OBI v0.6.0, the Java agent is embedded in the `obi` binary. No
+> separate `obi-java-agent.jar` file is required. At runtime, OBI extracts and
+> caches the embedded Java agent under `$XDG_CACHE_HOME/obi/java` (or
+> `~/.cache/obi/java`).
 
 ## Install to system
 
@@ -70,9 +71,6 @@ PATH:
 ```bash
 # Move binaries to a directory in your PATH
 sudo cp obi /usr/local/bin/
-
-# The Java agent MUST be in the same directory as the OBI binary
-sudo cp obi-java-agent.jar /usr/local/bin/
 
 # Verify installation
 obi --version
