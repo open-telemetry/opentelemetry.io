@@ -6,6 +6,7 @@ author: >-
 [Diana Todea](https://github.com/didiViking) (VictoriaMetrics),
 [Elizabeth Mathew](https://github.com/Elizabeth-Mathew1) (Signoz)
 sig: End-User SIG
+cSpell:ignore: Todea, CLOTributor
 ---
 
 ## Alternative approaches to contributing to OpenTelemetry
@@ -184,7 +185,7 @@ The ROI of contributing can also be significant, both personally and
 professionally. You will gain a deeper understanding of how instrumentation,
 tracing, and metrics work under the hood. You will interact with engineers from
 companies across the industry, and these connections can lead to job
-opportunities and collaborations. Many contributors also find fulfilment in
+opportunities and collaborations. Many contributors also find fulfillment in
 paying it forward to the open source community that has benefited them.
 
 OpenTelemetry is a global collaboration. There is space in it for you.
