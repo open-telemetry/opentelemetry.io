@@ -22,12 +22,13 @@ from an underrepresented background in tech.
 
 ## Context and community
 
-Before diving into a specific repo, explore the broader cloud native ecosystem.
-What observability tools are evolving? Where are the gaps? Which projects
-influence OpenTelemetry adoption? Strategic contribution starts with context.
-Platforms like [CLOTributor](https://clotributor.dev/) help you discover "good
-first issues" across cloud native projects, not just within one organization.
-This allows you to position yourself where your skills are most impactful.
+Before diving into a specific repository, explore the broader cloud native
+ecosystem. What observability tools are evolving? Where are the gaps? Which
+projects influence OpenTelemetry adoption? Strategic contribution starts with
+context. Platforms like [CLOTributor](https://clotributor.dev/) help you
+discover "good first issues" across cloud native projects, not just within one
+organization. This allows you to position yourself where your skills are most
+impactful.
 
 Be aware that "good first issues" are highly competitive and often get claimed
 within hours of being posted. If you can’t find one, shift your strategy:
@@ -46,9 +47,8 @@ communities connect.
 ## Contribution is more than code
 
 ![Graph showing the most popular pages in OTel](graph-contributions.webp) Graph
-showing the most popular pages from the
-[OpenTelemetry.io](https://opentelemetry.io/) website starting with January 2026
-up to March 2026
+showing the most popular pages from the [OpenTelemetry.io](/docs/) website
+starting with January 2026 up to March 2026
 
 A pull request is not just a code change. It is discussion, feedback and
 alignment with project direction. Maintainers, approvers, and SIG members guide
@@ -66,11 +66,12 @@ Also, non-code contributions go beyond documentation and blogs. You can
 volunteer for note-taking in SIG meetings, help organise community events like
 the OpenTelemetry Community Day at KubeCon, or join the Contributor Experience
 SIG, which focuses on making the project better for all contributors. Some
-examples of these SIGs are: **#otel-sig-end-user, #otel-devex,
-#opentelemetry-new-contributors, #otel-contributor-experience,
-#otel-docs-localization**. Your contribution track is also fluid, i.e., starting
-with documentation does not lock you in; you can switch to code contributions as
-you learn more, or vice versa. All contributions count and are welcome.
+examples of these SIGs are: **otel-sig-end-user**, **otel-devex**,
+**opentelemetry-new-contributors**, **otel-contributor-experience**,
+**otel-docs-localization**. Your contribution track is also fluid, i.e.,
+starting with documentation does not lock you in; you can switch to code
+contributions as you learn more, or vice versa. All contributions count and are
+welcome.
 
 If you do not see people like you in the room, that is not a signal to withdraw.
 It is an opportunity to participate.
@@ -96,10 +97,9 @@ broader understanding of the codebase.
 
 ## Who to talk to
 
-Engage with
-[maintainers](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md),
-SIG members, senior contributors and approvers. They shape direction and review
-work. Observing their discussions accelerates learning.
+Engage with maintainers, SIG members, senior contributors and approvers. They
+shape direction and review work. Observing their discussions accelerates
+learning.
 
 The End User SIG actively seeks practitioner feedback. Contributing through
 interviews and discussions can influence the project beyond code. For many
@@ -131,13 +131,12 @@ The official documentation provides the foundation. Contributing to clarity,
 examples, and localization improves accessibility and adoption. Some specific
 areas are currently under-resourced and could use more contributors.
 
-[Documentation](https://opentelemetry.io/docs/contributing/localization/)
-localisation is a major need; some language communities, like Japanese and
-Chinese, have been very active in translating OpenTelemetry docs, but others
-have barely started. If you are fluent in any language besides English, you can
-make a big difference by contributing to localisation efforts. When
-documentation exists in more languages and reflects real-world use cases, it
-expands who can participate.
+[Documentation](/docs/contributing/localization/) localisation is a major need;
+some language communities, like Japanese and Chinese, have been very active in
+translating OpenTelemetry docs, but others have barely started. If you are
+fluent in any language besides English, you can make a big difference by
+contributing to localisation efforts. When documentation exists in more
+languages and reflects real-world use cases, it expands who can participate.
 
 ## Setting up a local sandbox
 
