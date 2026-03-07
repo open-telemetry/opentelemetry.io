@@ -11,7 +11,8 @@ tags:
 urls:
   repo: https://github.com/graphaelli/execreceiver
 license: Apache 2.0
-description: Collect output from running a subprocess under OpenTelemetry Collector
+description:
+  Collect output from running a subprocess under OpenTelemetry Collector
 authors:
   - name: Gil Raphaelli
     email: graphaelli@gmail.com
