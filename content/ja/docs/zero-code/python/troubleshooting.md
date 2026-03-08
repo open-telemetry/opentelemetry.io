@@ -46,13 +46,13 @@ apk add build-base
 まず、適切なパッケージをインストール（またはプロジェクトファイルに追加して `uv sync` を実行）します。
 
 ```sh
-uv pip install opentelemetry-distro opentelemetry-exporter-otlp
+uv add opentelemetry-distro opentelemetry-exporter-otlp
 ```
 
 これで、自動計装をインストールできます。
 
 ```sh
-uv run opentelemetry-bootstrap -a requirements | uv pip install --requirement -
+uv run opentelemetry-bootstrap -a requirements | uv add --requirement -
 ```
 
 最後に、 `uv run` を使用してアプリケーションを起動します（[エージェントの設定](/docs/zero-code/python/#configuring-the-agent)を参照してください）。
