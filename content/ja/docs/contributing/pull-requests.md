@@ -3,8 +3,7 @@ title: コンテンツの提出
 description: GitHub UI 利用して、またはローカルのフォークから、新しいコンテンツまたはコンテンツの変更を提出する方法を学びます
 aliases: [new-content]
 weight: 15
-default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
-drifted_from_default: true
+default_lang_commit: ae2a3f327e0360c11a97bdf3e2704bd997924645
 ---
 
 新しいドキュメントの内容を追加や改善するには、[プルリクエスト][PR] （PR）を提出してください。
@@ -12,21 +11,31 @@ drifted_from_default: true
 - もし変更が小さかったり、自身が [Git][] に慣れていなかったら、[GitHub を使用](#changes-using-github)を参照しページの編集方法を学んでください。
 - もしくは、[ローカルのフォークから作業する](#fork-the-repo)を参照し、ローカルのコンピュータから変更を行う方法を学んでください。
 
-{{% alert title="Contributor License Agreement (CLA)" color=warning %}}
+## 生成 AI コントリビューション ポリシー {#using-ai}
 
-All contributors are required to [sign a Contributor License Agreement
-(CLA)][CLA] before changes can be reviewed and merged.
+> [!WARNING] **初めてのコントリビューター**への注意!
+>
+> もし、[初めてのコントリビューター][first-time contributor] であれば、以下の点に注意してください。
+>
+> 最初の 3 つのコントリビューションは、マイナーな AI 支援のみが許可され ([AIL1](https://danielmiessler.com/blog/ai-influence-level-ail))、主に人間が書いたものでなければなりません。
+> これは、コードをご自身で書くということを意味しますが、AI はコードの補完、フォーマット、リンティング、およびベストプラクティスに役立つことがあります。
+> あなたの PR の説明は、AI の関与なしで完全に人間が書いたものでなければなりません (AIL0)。
+>
+> もちろん、AI ツールを使用して、リポジトリやプロジェクト、コントリビューション方法について学べます。
+>
+> この要件は、コントリビューションを通じて学びを深めていただくためと、メンテナーと承認者が限られた時間とリソースを有効に活用するためのものです。
+>
+> メンテナーは例外を認めることがあります。それは、コントリビューションが単発かつ軽いものであり、メンテナー側の追加作業をほとんどせずにマージできると判断された場合です。
 
-[CLA]: ../prerequisites/#cla
+生成 AI は許可されていますが、あなたにはすべての AI 生成コンテンツを**レビューおよび検証**する**責任があります**。
+もしあなたがそのことを理解できない場合、そのコンテンツを提出しないでください!
 
-{{% /alert %}}
+詳細については、[生成 AI コントリビューション ポリシー][Generative AI Contribution Policy]を参照してください。
 
-{{% alert title="ヒント: Draft ステータス" %}}
+[first-time contributor]: ../#first-time-contributing
+[Generative AI Contribution Policy]: https://github.com/open-telemetry/community/blob/main/policies/genai.md
 
-コンテンツがレビューの準備ができていないことをメンテナーに知らせるために、プルリクエストのステータスを **Draft** にしてください。
-メンテナーは、Draft ステータスを解除するまでコンテンツを完全なレビューはしませんが、コメントや高レベルのレビューを行うことがあります。
-
-{{% /alert %}}
+## コントリビュート方法 {#how-to-contribute}
 
 以下の図は新しいドキュメントにコントリビュートする方法を示しています。
 
@@ -38,7 +47,7 @@ flowchart LR
        B[GitHub でフォークする] --- C[Markdownでドキュメントを作成する<br>Hugo でサイトをビルドする]
        C --- D[フォーク先にソースコードを push する]
        D --- E[プルリクエストを公開する]
-       E --- F[CNCF CLA に署名する]
+       E --- F[<a href="../prerequisites/#cla">CNCF CLA</a> に署名する]
     end
 
 classDef grey fill:#dddddd,stroke:#ffffff,stroke-width:px,color:#000000, font-size:15px;
@@ -50,6 +59,11 @@ class first,second white
 ```
 
 _図 1. 新しいコンテンツにコントリビュートする。_
+
+> [!TIP]
+>
+> レビューの準備ができていないことをメンテナーに知らせるために、プルリクエストのステータスを **Draft** にしてください。
+> メンテナーは、Draft ステータスを解除するまで内容の完全なレビューを行いませんが、コメントや高レベルのレビューは行うことがあります。
 
 ## GitHub を使用 {#changes-using-github}
 
@@ -142,12 +156,10 @@ fix:submodule
 fix:text
 ```
 
-{{% alert title="Pro Tip" %}}
-
-`fix` コマンドをローカルで実行できます。
-修正コマンドの全リストは、`npm run -s '_list:fix:*'` を実行してください。
-
-{{% /alert %}}
+> [!TIP]
+>
+> `fix` コマンドをローカルで実行できます。
+> 修正コマンドの全リストは、`npm run -s '_list:fix:*'` を実行してください。
 
 ## ローカルで作業する {#fork-the-repo}
 
@@ -353,8 +365,8 @@ npm run test-and-fix
 ファイルに対して、テストとすべての問題の修正を分割して実行するには、以下を実行してください。
 
 ```sh
-npm run test    # ファイルを更新せずにチェックのみを実行します
-npm run fix:all # ファイルを更新する場合があります。
+npm run test # ファイルを更新せずにチェックのみを実行します
+npm run fix  # ファイルを更新する場合があります
 ```
 
 利用可能な NPM スクリプトのリストを表示するには、`npm run` を実行してください。
