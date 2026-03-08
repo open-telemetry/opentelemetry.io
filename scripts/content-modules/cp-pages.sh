@@ -5,14 +5,22 @@ DEST_BASE=tmp
 
 ## OTel specification
 
-SRC=content-modules/opentelemetry-specification/specification
-DEST=$DEST_BASE/otel/specification
+DEST=$DEST_BASE/otel/
 
 rm -Rf $DEST
-mkdir -p $DEST
+
+SRC=content-modules/opentelemetry-specification/specification
+SUBDEST=$DEST/specification/
+
+mkdir -p $SUBDEST
 # FIX_FILES=$(find $SRC -name "*.md" -not -path '*/semantic_conventions/*')
 # $SCRIPT_DIR/otel-spec-fix.pl $FIX_FILES
-cp -R $SRC/* $DEST/
+cp -R $SRC/* $SUBDEST/
+
+SRC=content-modules/opentelemetry-specification/spec-compliance-matrix.md
+SUBDEST=$DEST/spec-compliance-matrix.md
+
+cp $SRC $SUBDEST
 
 find $DEST/ -name "README.md" -exec sh -c 'f="{}"; mv -- "$f" "${f%README.md}_index.md"' \;
 
