@@ -53,6 +53,8 @@ sub printFrontMatter() {
     $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
     # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
+  } elsif ($ARGV =~ "tmp/otel/spec-compliance-matrix.md") {
+    $linkTitle = "Spec compliance";
   }
   # Sample front-matter patch:
   #
@@ -314,6 +316,7 @@ while(<>) {
       [^)]+
     )
   }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
+  s|(\]\()(?:\./)?specification/([^)#]+)\.md|$1/docs/specs/otel/$2|g if $ARGV eq "tmp/otel/spec-compliance-matrix.md";
 
   patchSpec_because_of_SemConv_DatabaseRenamedToDb();
   patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
