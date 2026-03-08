@@ -27,6 +27,7 @@ jobs:
       action_exit_status: ${{ steps.run_action.outputs.action_exit_status }}
       patch_name: pr-fix-${{ github.run_id }}
       patch_skipped: ${{ steps.check_patch.outputs.skipped }}
+      result: ${{ steps.extract.outputs.result }}
 
     steps:
       - uses: step-security/harden-runner@a90bcbc6539c36a85cdfeb73f7e2f433735f215b # v2.15.0
@@ -42,12 +43,12 @@ jobs:
           PR_ACTION=$(echo "$COMMENT" | grep -oP '^/\Kfix(:[-_0-9a-zA-Z]+)*$' || true)
           if [[ -z "$PR_ACTION" ]]; then
             msg="❌ Invalid fix directive. Use \`/fix\` or \`/fix:<name>\` and no other text."
-            # We don't have permissions in this job to comment on the PR. Skip for now:
-            # gh pr comment "$PR_NUM" --body "$msg"
             echo "$msg"
-            exit 1
+            echo "result=invalid-directive" >> "$GITHUB_OUTPUT"
+            exit 0
           fi
           echo "action_name=$PR_ACTION" >> "$GITHUB_OUTPUT"
+          echo "result=success" >> "$GITHUB_OUTPUT"
 
       - run: gh pr checkout $PR_NUM -b "pr-action-${RANDOM}"
         env:
@@ -118,7 +119,9 @@ jobs:
     name: Apply and push patch (trusted)
     runs-on: ubuntu-latest
     needs: generate-patch
-    if: needs.generate-patch.outputs.patch_skipped != 'true'
+    if: |
+      needs.generate-patch.outputs.patch_skipped != 'true' &&
+      needs.generate-patch.outputs.result != 'invalid-directive'
     permissions:
       contents: write
       pull-requests: write
@@ -206,7 +209,9 @@ jobs:
   notify-noop:
     name: Comment no-op patch
     runs-on: ubuntu-latest
-    if: needs.generate-patch.outputs.patch_skipped == 'true'
+    if: |
+      needs.generate-patch.outputs.patch_skipped == 'true' &&
+      needs.generate-patch.outputs.result != 'invalid-directive'
     needs: generate-patch
     steps:
       - uses: actions/checkout@v6
@@ -221,6 +226,31 @@ jobs:
       - name: Comment no-op
         run: |
           cmd="${{ needs.generate-patch.outputs.action_name }}"
-          gh pr comment $PR_NUM --body "ℹ️ \`$cmd\` made no changes. Nothing to commit."
+          run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          gh pr comment $PR_NUM --body "ℹ️ \`$cmd\` made no changes. Nothing to commit. See [run $GITHUB_RUN_ID]($run_url)."
+        env:
+          GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+
+  notify-invalid-directive:
+    name: Comment invalid directive
+    runs-on: ubuntu-latest
+    if: needs.generate-patch.outputs.result == 'invalid-directive'
+    needs: generate-patch
+    permissions:
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+        with: { fetch-depth: 1 }
+
+      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_PRIVATE_KEY }}
+
+      - name: Comment invalid directive
+        run: |
+          run_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          gh pr comment $PR_NUM --body "❌ Invalid fix directive. Valid directives are \`/fix\` and \`/fix:all\`. See [run $GITHUB_RUN_ID]($run_url) for details."
         env:
           GH_TOKEN: ${{ steps.otelbot-token.outputs.token }}
