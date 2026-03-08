@@ -2323,6 +2323,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-19T09:53:37.99368881Z"
   },
+  "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ServiceLoader.html": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-03T16:11:58.519399-05:00"
+  },
   "https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Set.html": {
     "StatusCode": 200,
     "LastSeen": "2026-02-19T09:55:12.358113636Z"
@@ -12818,6 +12822,10 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks": {
     "StatusCode": 206,
     "LastSeen": "2026-02-24T09:53:20.363035479Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/build.gradle": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-03T16:12:00.133493-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md": {
     "StatusCode": 206,
