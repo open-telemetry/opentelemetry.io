@@ -6,7 +6,7 @@ author: >-
 [Diana Todea](https://github.com/didiViking) (VictoriaMetrics),
 [Elizabeth Mathew](https://github.com/Elizabeth-Mathew1) (Signoz)
 sig: End-User SIG
-cSpell:ignore: CLOTributor Todea
+cSpell:ignore: CLOTributor devex Signoz Todea
 ---
 
 ## Alternative approaches to contributing to OpenTelemetry
