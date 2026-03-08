@@ -53,6 +53,8 @@ sub printFrontMatter() {
     $frontMatterFromFile =~ s/linkTitle: .*/$& $semconvVers/;
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
     # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
+  } elsif ($ARGV =~ "tmp/otel/spec-compliance-matrix.md") {
+    $linkTitle = "Spec compliance";
   }
   # elsif ($ARGV =~ m|^tmp/otel/specification/logs/|
   #     && applyPatchOrPrintMsgIf('2026-01-29-hugo01550-alias-processing-diff', 'spec', '1.53.0')) {
@@ -296,6 +298,7 @@ while(<>) {
       [^)]+
     )
   }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
+  s|(\]\()(?:\./)?specification/([^)#]+)\.md|$1/docs/specs/otel/$2|g if $ARGV eq "tmp/otel/spec-compliance-matrix.md";
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
 
