@@ -13,8 +13,10 @@ cSpell:ignore: Liudmila loggerconfig Molkova Pająk
 ## TL;DR
 
 - OpenTelemetry is simplifying how it records events.
-- New code should write events as logs that are correlated with the current trace/span.
-- The older "span events" style will be phased out over time, but existing data and views that show events on spans will keep working.
+- New code should write events as logs that are correlated with the current
+  trace/span.
+- The older "span events" style will be phased out over time, but existing data
+  and views that show events on spans will keep working.
 - You likely do not need to change anything if you do not rely on span events.
 
 ## Preface
@@ -156,8 +158,9 @@ Semantic conventions for events and exceptions will be updated to clearly
 support both log-based events and, where necessary, the compatibility layer that
 turns those events back into span events.
 
-We are also working on stabilizing the [Recording errors](/docs/specs/semconv/general/recording-errors/)
-semantic conventions, a core place where span events are used today.
+We are also working on stabilizing the
+[Recording errors](/docs/specs/semconv/general/recording-errors/) semantic
+conventions, a core place where span events are used today.
 
 ## What stays the same?
 
