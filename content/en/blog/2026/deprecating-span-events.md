@@ -259,6 +259,9 @@ As the specification and implementations progress, we will continue to refine
 the guidance and provide more concrete migration examples in SDK and
 instrumentation documentation.
 
+Deprecation here does **not** mean removing span events.
+It is about shifting the recommended way to emit new events toward the Logs API.
+
 Our goal is to make events in OpenTelemetry **simpler, more consistent, and
 more powerful**, without breaking the workflows you rely on today.
 
