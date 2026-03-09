@@ -45,16 +45,16 @@ shutdown_timeout: 30s
 channel_buffer_len: 33
 ```
 
-| YAML<br>environment variable                       | Description                                                                                                                                | Type         | Default    |
-| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------ | ---------- |
-| _(No YAML)_<br>`OTEL_EBPF_AUTO_TARGET_EXE`         | Selects the process to instrument by [Glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) matching against the full executable path. | string       | unset      |
-| _(No YAML)_<br>`OTEL_EBPF_AUTO_TARGET_LANGUAGE`    | Selects processes to instrument by detected programming language (glob matcher), for example `go`, `java`, or `nodejs`.                    | string       | unset      |
-| `open_port`<br>`OTEL_EBPF_OPEN_PORT`               | Selects a process to instrument by open ports. Accepts comma-separated lists of ports and port ranges.                                     | string       | unset      |
-| `target_pids`<br>`OTEL_EBPF_TARGET_PID`            | Selects processes to instrument by PID. Accepts a YAML list, a single value, or a comma-separated environment variable list.               | integer list | unset      |
-| `shutdown_timeout`<br>`OTEL_EBPF_SHUTDOWN_TIMEOUT` | Sets the timeout for a graceful shutdown                                                                                                   | string       | "10s"      |
-| `log_level`<br>`OTEL_EBPF_LOG_LEVEL`               | Sets process logger verbosity. Valid values: `DEBUG`, `INFO`, `WARN`, `ERROR`.                                                             | string       | `INFO`     |
-| `trace_printer`<br>`OTEL_EBPF_TRACE_PRINTER`       | Prints instrumented traces to stdout in a specified format, refer to [trace printer formats](#trace-printer-formats).                      | string       | `disabled` |
-| `enforce_sys_caps`<br>`OTEL_EBPF_ENFORCE_SYS_CAPS` | Controls how OBI handles missing system capabilities at startup.                                                                           | boolean      | `false`    |
+| YAML<br>environment variable                       | Description                                                                                                                                | Type                      | Default    |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------- | ---------- |
+| _(No YAML)_<br>`OTEL_EBPF_AUTO_TARGET_EXE`         | Selects the process to instrument by [Glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) matching against the full executable path. | string                    | unset      |
+| _(No YAML)_<br>`OTEL_EBPF_AUTO_TARGET_LANGUAGE`    | Selects processes to instrument by detected programming language (glob matcher), for example `go`, `java`, or `nodejs`.                    | string                    | unset      |
+| `open_port`<br>`OTEL_EBPF_OPEN_PORT`               | Selects a process to instrument by open ports. Accepts comma-separated lists of ports and port ranges.                                     | string                    | unset      |
+| `target_pids`<br>`OTEL_EBPF_TARGET_PID`            | Selects processes to instrument by PID. Accepts a YAML list, a single value, or a comma-separated environment variable list.               | integer or integer list   | unset      |
+| `shutdown_timeout`<br>`OTEL_EBPF_SHUTDOWN_TIMEOUT` | Sets the timeout for a graceful shutdown                                                                                                   | string                    | "10s"      |
+| `log_level`<br>`OTEL_EBPF_LOG_LEVEL`               | Sets process logger verbosity. Valid values: `DEBUG`, `INFO`, `WARN`, `ERROR`.                                                             | string                    | `INFO`     |
+| `trace_printer`<br>`OTEL_EBPF_TRACE_PRINTER`       | Prints instrumented traces to stdout in a specified format, refer to [trace printer formats](#trace-printer-formats).                      | string                    | `disabled` |
+| `enforce_sys_caps`<br>`OTEL_EBPF_ENFORCE_SYS_CAPS` | Controls how OBI handles missing system capabilities at startup.                                                                           | boolean                   | `false`    |
 
 ## Executable name matching
 

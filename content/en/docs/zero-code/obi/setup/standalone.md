@@ -58,6 +58,13 @@ The archive contains:
 > separate `obi-java-agent.jar` file is required. At runtime, OBI extracts and
 > caches the embedded Java agent under `$XDG_CACHE_HOME/obi/java` (or
 > `~/.cache/obi/java`).
+>
+> The cache directory is determined by the user account running `obi`. When you
+> use `sudo`, the cache will typically be created under the root user's cache
+> directory (for example `/root/.cache/obi/java`) unless you override it. For
+> system or service deployments, set `XDG_CACHE_HOME` to a suitable location
+> (for example `XDG_CACHE_HOME=/var/cache/obi sudo -E obi ...`) or configure an
+> explicit cache path according to your environment.
 
 ## Install to system
 

@@ -72,8 +72,8 @@ Resource SchemaURL:
 Resource attributes:
      -> service.name: Str(flagd)
      -> telemetry.sdk.language: Str(go)
-      -> telemetry.sdk.name: Str(opentelemetry)
-      -> telemetry.distro.name: Str(opentelemetry-ebpf-instrumentation)
+     -> telemetry.sdk.name: Str(opentelemetry)
+     -> telemetry.distro.name: Str(opentelemetry-ebpf-instrumentation)
      -> telemetry.sdk.version: Str(main)
      -> host.name: Str(flagd-5cccb4c4f5-sfkcm)
      -> os.type: Str(linux)
