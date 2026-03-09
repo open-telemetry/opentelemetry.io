@@ -10,6 +10,15 @@ sig: Specification, Logs
 cSpell:ignore: Liudmila loggerconfig Molkova Pająk
 ---
 
+## TL;DR
+
+- OpenTelemetry is simplifying how it records events.
+- New code should write events as logs that are correlated with the current trace/span.
+- The older "span events" style will be phased out over time, but existing data and views that show events on spans will keep working.
+- You likely do not need to change anything if you do not rely on span events.
+
+## Preface
+
 If you've been following OpenTelemetry’s work on logging and events, you may
 have seen the long-term vision laid out in
 [OpenTelemetry Logging and You](/blog/2025/opentelemetry-logging-and-you/). In
