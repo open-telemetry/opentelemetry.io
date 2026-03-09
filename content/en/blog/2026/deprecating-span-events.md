@@ -118,9 +118,9 @@ Language APIs and SDKs will implement the following steps:
      naturally follow trace sampling decisions; logs do not, by default.
 3. **Deprecate span event methods.**
    - Mark span APIs for recording events and exceptions as deprecated in
-     documentation and type systems, pointing users to the Logs API instead,
-     while ensuring that existing usages of span events continue to work during
-     the transition.
+     documentation and type systems, pointing users to emit log-based events
+     instead, while ensuring that existing usages of span events continue to
+     work during the transition.
 
 ### Collector
 
