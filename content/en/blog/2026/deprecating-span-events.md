@@ -10,11 +10,11 @@ sig: Specification, Logs
 cSpell:ignore: Liudmila Molkova Pająk loggerconfig OTEP
 ---
 
-If you have been following OpenTelemetry’s work on logging and events, you may
+If you've been following OpenTelemetry’s work on logging and events, you may
 have seen the long-term vision laid out in
-[OpenTelemetry Logging and You](/blog/2025/opentelemetry-logging-and-you/). That
-post described a future where **events are logs**, emitted through the Logs API
-and correlated with traces and metrics through context.
+[OpenTelemetry Logging and You](/blog/2025/opentelemetry-logging-and-you/). In
+that post, **events are logs**, emitted through the Logs API and correlated
+with traces and metrics through context.
 
 To move closer to that vision, the OpenTelemetry maintainers have agreed on a
 plan to **deprecate the Span Event API**, while still supporting use cases that
@@ -25,8 +25,8 @@ for you, and how we plan to help you migrate.
 
 ## Why deprecate the Span Event API?
 
-OpenTelemetry today offers two main ways to emit events that are correlated with
-traces:
+Today, OpenTelemetry offers two main ways to emit events that are correlated
+with traces:
 
 - Span events, created via methods like `Span.AddEvent` and
   `Span.RecordException`.
@@ -37,19 +37,18 @@ traces:
 Having two competing APIs for the same concept has several drawbacks:
 
 - **Split guidance for instrumentation authors.** Library and framework authors
-  need to decide between two ways of emitting very similar data. Different
+  must choose between two ways of emitting very similar data. Different
   choices lead to inconsistent user experiences across the ecosystem.
-- **Duplicate concepts for users.** Operators need to understand both span
-  events and log events, how they are exported, and how their backends treat
-  them.
+- **Duplicate concepts for users.** Operators must understand both span events
+  and log events, how they are exported, and how their backends treat them.
 - **Slower evolution.** Improvements to the event model (for example, around
-  schemas, attributes, and back-compat) need to be specified and implemented in
+  schemas, attributes, and back-compat) must be specified and implemented in
   two places.
 
 The OpenTelemetry community has been converging on a simpler mental model: as
 described in _OpenTelemetry Logging and You_, **events are logs with a
-well-defined structure**. They should be emitted via the Logs API, not as a
-special case on spans.
+well-defined structure**, emitted via the Logs API rather than as a special
+case on spans.
 
 At the same time, we recognize that span events are widely used today. Many
 backends present span events in dedicated trace views, and some users depend on
@@ -63,13 +62,13 @@ these goals:
 - **Preserve existing workflows** that depend on span events in traces, via a
   compatibility layer.
 
-In short: we are deprecating the **API** for recording span events, not the
+In short, we are deprecating the **API** for recording span events, not the
 ability to see events attached to spans.
 
 ## What is changing?
 
-The deprecation touches several parts of the ecosystem. At a high level, the
-plan includes changes:
+The deprecation touches several parts of the ecosystem. At a high level, it
+includes changes:
 
 - In the core specification.
 - In language APIs and SDKs.
@@ -110,15 +109,14 @@ Language APIs and SDKs will implement the following steps:
      detail that span events historically offered.
    - Stabilize this support so instrumentation authors can rely on it.
 2. **SDK-based compatibility for span events.**
-   - Ensure that there is an opt-in mechanism that allows converting log-based
-     exceptions and events into span events and attaching them to the current
-     span.
-   - Ensure that there is an opt-in mechanism for dropping log records
-     associated with an unsampled trace. Span events are part of a span, so they
-     naturally follow trace sampling decisions; logs do not, by default.
+   - Provide an opt-in mechanism to convert log-based exceptions and events
+     into span events and attach them to the current span.
+   - Provide an opt-in mechanism for dropping log records associated with an
+     unsampled trace. Span events are part of a span, so they naturally follow
+     trace sampling decisions; logs do not, by default.
 3. **Deprecate span event methods.**
    - Mark span APIs for recording events and exceptions as deprecated in
-     documentation and type systems, pointing users to emit log-based events
+     documentation and type systems, and point users to emit log-based events
      instead, while ensuring that existing usages of span events continue to
      work during the transition.
 
