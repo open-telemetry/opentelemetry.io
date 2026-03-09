@@ -602,3 +602,9 @@
   contact: support@oodle.ai
   oss: false
   commercial: true
+- name: Future AGI
+  nativeOTLP: true
+  url: https://docs.futureagi.com/
+  contact: support@futureagi.com
+  oss: true
+  commercial: true
