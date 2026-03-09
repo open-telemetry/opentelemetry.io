@@ -1,7 +1,9 @@
 ---
+title: Declarative Configuration
 linkTitle: Declarative Configuration
 weight: 10
 aliases: [general-sdk-configuration]
+description: Complete reference for OpenTelemetry SDK declarative configuration schema types, properties, and constraints
 ---
 
 <style>

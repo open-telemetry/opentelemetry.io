@@ -1,91 +1,139 @@
-{{- /* SDK Language Implementation Status Accordion Viewer */ -}}
-<div id="config-lang-status-accordion-container" class="config-lang-status-accordion">
+{{- /*
+  SDK Language Implementation Status Accordion Viewer
+
+  Usage: {{< config-lang-status-accordion >}}
+
+  Optional parameters:
+  - class: Additional CSS classes to add to the container
+  - id: Custom ID for the container (default: config-lang-status-accordion-container)
+*/ -}}
+
+{{- $class := .Get "class" | default "" -}}
+{{- $id := .Get "id" | default "config-lang-status-accordion-container" -}}
+
+{{- /* I18n strings */ -}}
+{{- $searchLabel := i18n "config_accordion_search_label" | default "Search types" -}}
+{{- $searchPlaceholder := i18n "config_accordion_search_placeholder" | default "Filter by type name..." -}}
+{{- $categoryLabel := i18n "config_accordion_category_label" | default "Type category" -}}
+{{- $allTypes := i18n "config_accordion_all_types" | default "All types" -}}
+{{- $stableOnly := i18n "config_accordion_stable_only" | default "Stable only" -}}
+{{- $experimentalOnly := i18n "config_accordion_experimental_only" | default "Experimental only" -}}
+{{- $expandAll := i18n "config_accordion_expand_all" | default "Expand all" -}}
+{{- $collapseAll := i18n "config_accordion_collapse_all" | default "Collapse all" -}}
+{{- $languagesLabel := i18n "config_accordion_languages" | default "Languages:" -}}
+{{- $statusLabel := i18n "config_accordion_status" | default "Status:" -}}
+{{- $showingText := i18n "config_accordion_showing" | default "Showing" -}}
+{{- $ofText := i18n "config_accordion_of" | default "of" -}}
+{{- $typesText := i18n "config_accordion_types" | default "types" -}}
+
+<div id="{{ $id }}" class="config-lang-status-accordion {{ $class }}" role="region" aria-label="Language implementation status viewer">
   <div class="accordion-controls mb-4">
     <div class="row g-3">
       <div class="col-md-8">
-        <label for="accordion-search" class="form-label">Search types</label>
+        <label for="accordion-search" class="form-label">{{ $searchLabel }}</label>
         <input
-          type="text"
+          type="search"
           id="accordion-search"
           class="form-control"
-          placeholder="Filter by type name..."
+          placeholder="{{ $searchPlaceholder }}"
+          aria-label="{{ $searchLabel }}"
+          aria-describedby="accordion-search-help"
         />
+        <div id="accordion-search-help" class="visually-hidden">
+          Enter text to filter configuration types by name
+        </div>
       </div>
       <div class="col-md-4">
-        <label for="accordion-type-filter" class="form-label">Type category</label>
-        <select id="accordion-type-filter" class="form-select">
-          <option value="all">All types</option>
-          <option value="stable">Stable only</option>
-          <option value="experimental">Experimental only</option>
+        <label for="accordion-type-filter" class="form-label">{{ $categoryLabel }}</label>
+        <select
+          id="accordion-type-filter"
+          class="form-select"
+          aria-label="{{ $categoryLabel }}"
+        >
+          <option value="all">{{ $allTypes }}</option>
+          <option value="stable">{{ $stableOnly }}</option>
+          <option value="experimental">{{ $experimentalOnly }}</option>
         </select>
       </div>
     </div>
-    <div class="mt-3">
-      <button class="btn btn-sm btn-outline-primary" id="expand-all">Expand all</button>
-      <button class="btn btn-sm btn-outline-secondary" id="collapse-all">Collapse all</button>
+    <div class="mt-3" role="group" aria-label="Accordion controls">
+      <button
+        class="btn btn-sm btn-outline-primary"
+        id="expand-all"
+        aria-label="{{ $expandAll }}"
+      >
+        {{ $expandAll }}
+      </button>
+      <button
+        class="btn btn-sm btn-outline-secondary"
+        id="collapse-all"
+        aria-label="{{ $collapseAll }}"
+      >
+        {{ $collapseAll }}
+      </button>
     </div>
   </div>
 
-  <div class="status-legend mb-3">
+  <div class="status-legend mb-3" role="complementary" aria-label="Legend">
     <div class="legend-section">
-      <div class="legend-title">Languages:</div>
-      <div class="legend-items">
-        <div class="legend-item">
-          <span class="lang-indicator">1</span>
+      <div class="legend-title" id="languages-legend">{{ $languagesLabel }}</div>
+      <div class="legend-items" role="list" aria-labelledby="languages-legend">
+        <div class="legend-item" role="listitem">
+          <span class="lang-indicator" aria-hidden="true">1</span>
           <span class="legend-label">C++</span>
         </div>
-        <div class="legend-item">
-          <span class="lang-indicator">2</span>
+        <div class="legend-item" role="listitem">
+          <span class="lang-indicator" aria-hidden="true">2</span>
           <span class="legend-label">Go</span>
         </div>
-        <div class="legend-item">
-          <span class="lang-indicator">3</span>
+        <div class="legend-item" role="listitem">
+          <span class="lang-indicator" aria-hidden="true">3</span>
           <span class="legend-label">Java</span>
         </div>
-        <div class="legend-item">
-          <span class="lang-indicator">4</span>
+        <div class="legend-item" role="listitem">
+          <span class="lang-indicator" aria-hidden="true">4</span>
           <span class="legend-label">JavaScript</span>
         </div>
       </div>
     </div>
-    <div class="legend-divider"></div>
+    <div class="legend-divider" aria-hidden="true"></div>
     <div class="legend-section">
-      <div class="legend-title">Status:</div>
-      <div class="legend-items">
-        <div class="legend-item">
-          <span class="lang-status-pill status-supported"></span>
+      <div class="legend-title" id="status-legend">{{ $statusLabel }}</div>
+      <div class="legend-items" role="list" aria-labelledby="status-legend">
+        <div class="legend-item" role="listitem">
+          <span class="lang-status-pill status-supported" aria-hidden="true"></span>
           <span class="legend-label">Supported</span>
         </div>
-        <div class="legend-item">
-          <span class="lang-status-pill status-not_implemented"></span>
+        <div class="legend-item" role="listitem">
+          <span class="lang-status-pill status-not_implemented" aria-hidden="true"></span>
           <span class="legend-label">Not Implemented</span>
         </div>
-        <div class="legend-item">
-          <span class="lang-status-pill status-unknown"></span>
+        <div class="legend-item" role="listitem">
+          <span class="lang-status-pill status-unknown" aria-hidden="true"></span>
           <span class="legend-label">Unknown</span>
         </div>
-        <div class="legend-item">
-          <span class="lang-status-pill status-not_applicable"></span>
+        <div class="legend-item" role="listitem">
+          <span class="lang-status-pill status-not_applicable" aria-hidden="true"></span>
           <span class="legend-label">Not Applicable</span>
         </div>
-        <div class="legend-item">
-          <span class="lang-status-pill status-ignored"></span>
+        <div class="legend-item" role="listitem">
+          <span class="lang-status-pill status-ignored" aria-hidden="true"></span>
           <span class="legend-label">Ignored</span>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="accordion-stats mb-3">
+  <div class="accordion-stats mb-3" role="status" aria-live="polite" aria-atomic="true">
     <small class="text-muted">
-      Showing <span id="accordion-visible-count">0</span> of <span id="accordion-total-count">0</span> types
+      {{ $showingText }} <span id="accordion-visible-count">0</span> {{ $ofText }} <span id="accordion-total-count">0</span> {{ $typesText }}
     </small>
   </div>
 
-  <div class="accordion" id="statusAccordion">
+  <div class="accordion" id="statusAccordion" role="region" aria-label="Configuration types accordion">
     <!-- Accordion items will be populated by JavaScript -->
   </div>
 </div>
 
 {{- $js := resources.Get "js/configLangStatusAccordion.js" | js.Build | minify | fingerprint -}}
-<script type="module" src="{{ $js.RelPermalink }}" defer></script>
+<script src="{{ $js.RelPermalink }}" defer></script>

@@ -2,7 +2,8 @@
 title: Language Status
 linkTitle: Language Status
 weight: 10
-aliases: [general-sdk-configuration]
+aliases: [declarative-config-language-status]
+description: Language implementation status for OpenTelemetry SDK declarative configuration types
 notoc: true
 ---
 
