@@ -512,7 +512,7 @@
   commercial: true
 - name: Alauda
   nativeOTLP: true
-  url: https://www.alauda.io/community/143237
+  url: https://docs.alauda.io/container_platform/4.2/observability/tracing/concept#opentelemetry
   contact: info@alauda.io
   oss: false
   commercial: true
