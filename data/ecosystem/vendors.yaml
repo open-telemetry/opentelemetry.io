@@ -604,7 +604,7 @@
   commercial: true
 - name: Respan
   nativeOTLP: true
-  url: https://www.respan.ai/docs/apis/observe/traces/otlp-ingest
+  url: https://respan.ai/docs/apis/observe/traces/otlp-ingest
   contact: frank@respan.ai
   oss: false
   commercial: true
