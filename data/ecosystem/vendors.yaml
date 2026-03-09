@@ -602,3 +602,9 @@
   contact: support@oodle.ai
   oss: false
   commercial: true
+- name: Respan
+  nativeOTLP: true
+  url: https://www.respan.ai/docs/apis/observe/traces/otlp-ingest
+  contact: frank@respan.ai
+  oss: false
+  commercial: true
