@@ -5,9 +5,9 @@ date: 2026-03-13
 author: >-
   [Liudmila Molkova](https://github.com/lmolkova) (Grafana Labs), [Robert
   Pająk](https://github.com/pellared) (Splunk), [Trask
-  Stalnaker](https://github.com/trask) (Microsoft),
+  Stalnaker](https://github.com/trask) (Microsoft)
 sig: Specification, Logs
-cSpell:ignore: Liudmila Molkova Pająk loggerconfig
+cSpell:ignore: Liudmila Molkova Pająk loggerconfig OTEP
 ---
 
 If you have been following OpenTelemetry’s work on logging and events, you may
@@ -16,12 +16,12 @@ have seen the long-term vision laid out in
 post described a future where **events are logs**, emitted through the Logs API
 and correlated with traces and metrics through context.
 
-To move us closer to that vision, the OpenTelemetry maintainers have agreed on
-an incremental plan to **deprecate the Span Event API**, while still supporting
-use cases that rely on span events in exported traces.
+To move closer to that vision, the OpenTelemetry maintainers have agreed on a
+plan to **deprecate the Span Event API**, while still supporting use cases that
+rely on span events in exported traces.
 
 This post explains why we’re making this change, what will (and won’t) change
-for users, and how we plan to help you migrate.
+for you, and how we plan to help you migrate.
 
 ## Why deprecate the Span Event API?
 
