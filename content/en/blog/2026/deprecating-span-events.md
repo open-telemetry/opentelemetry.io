@@ -156,6 +156,9 @@ Semantic conventions for events and exceptions will be updated to clearly
 support both log-based events and, where necessary, the compatibility layer that
 turns those events back into span events.
 
+We are also working on stabilizing the [Recording errors](/docs/specs/semconv/general/recording-errors/)
+semantic conventions, a core place where span events are used today.
+
 ## What stays the same?
 
 Even though the Span Event API is being deprecated, several important aspects of
