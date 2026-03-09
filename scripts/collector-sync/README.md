@@ -13,8 +13,33 @@ This automation:
 2. Reads component metadata from `ecosystem-registry/collector/`
 3. Generates markdown tables with component information
 4. Updates documentation pages in `content/en/docs/collector/components/`
-5. Fixes spelling errors in component names
-6. Creates/updates pull requests with the changes
+5. Updates version information in `data/collector-versions.yml`
+6. Fixes spelling errors in component names
+7. Creates/updates pull requests with the changes
+
+## Version Management
+
+Component links dynamically reference versions from
+`data/collector-versions.yml`:
+
+```yaml
+# data/collector-versions.yml
+core: v0.146.1
+contrib: v0.146.0
+```
+
+The automation:
+
+- Updates this file with the latest release versions
+- Markdown tables use Hugo shortcodes:
+  `{{< component-link name="otlp" type="receiver" repo="core" >}}`
+- Hugo reads versions from the data file at build time
+
+**To update versions for a new release:**
+
+1. Run the automation script (updates `data/collector-versions.yml`)
+2. Hugo automatically uses new versions in all component links
+3. No need to regenerate markdown tables
 
 ## Local Development
 

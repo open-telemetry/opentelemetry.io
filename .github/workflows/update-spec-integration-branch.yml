@@ -1,5 +1,4 @@
 name: Update specification integration branch
-# cSpell:ignore otelbot
 
 on:
   schedule:
