@@ -24787,6 +24787,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-20T09:52:12.59488099Z"
   },
+  "https://www.respan.ai/docs/apis/observe/traces/otlp-ingest": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-09T10:56:02.022321852Z"
+  },
   "https://www.rfc-editor.org/info/bcp14": {
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:46:41.873216885Z"
