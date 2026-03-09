@@ -7,7 +7,7 @@ author: >-
   Pająk](https://github.com/pellared) (Splunk), [Trask
   Stalnaker](https://github.com/trask) (Microsoft),
 sig: Specification, Logs
-cSpell:ignore: Liudmila Molkova Pająk
+cSpell:ignore: Liudmila Molkova Pająk loggerconfig
 ---
 
 If you have been following OpenTelemetry’s work on logging and events, you may
@@ -30,7 +30,9 @@ traces:
 
 - Span events, created via methods like `Span.AddEvent` and
   `Span.RecordException`.
-- Log-based events, created via the Logs API and linked to the active context.
+- Log-based events, created via the Logs API and linked to the active context
+  (either directly, or via logging libraries when those are bridged into
+  OpenTelemetry).
 
 Having two competing APIs for the same concept has several drawbacks:
 
@@ -108,9 +110,12 @@ Language APIs and SDKs will implement the following steps:
      detail that span events historically offered.
    - Stabilize this support so instrumentation authors can rely on it.
 2. **SDK-based compatibility for span events.**
-   - Ensure that there is a opt-in mechanism that allows converting log-based
+   - Ensure that there is an opt-in mechanism that allows converting log-based
      exceptions and events into span events and attaching them to the current
      span.
+   - Ensure that there is an opt-in mechanism for dropping log records
+     associated with an unsampled trace. Span events are part of a span, so they
+     naturally follow trace sampling decisions; logs do not, by default.
 3. **Deprecate span event methods.**
    - Mark span APIs for recording events and exceptions as deprecated in
      documentation and type systems, pointing users to the Logs API instead,
@@ -244,6 +249,9 @@ Some of this work is already underway. For example:
 
 - [opentelemetry-specification#4886](https://github.com/open-telemetry/opentelemetry-specification/pull/4886)
   refines how exceptions are emitted as logs via the Logs API.
+- [opentelemetry-specification#4612](https://github.com/open-telemetry/opentelemetry-specification/pull/4612)
+  introduces the `LoggerConfig.trace_based` option to drop log records
+  associated with unsampled traces.
 - [semantic-conventions#3256](https://github.com/open-telemetry/semantic-conventions/pull/3256),
   [semantic-conventions#3226](https://github.com/open-telemetry/semantic-conventions/pull/3226),
   and
