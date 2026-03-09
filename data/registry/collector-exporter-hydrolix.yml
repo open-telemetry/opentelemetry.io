@@ -20,4 +20,4 @@ createdAt: 2026-01-22
 package:
   name: github.com/hydrolix/hydrolix-exporter
   registry: go-collector
-  version: v1.1.0
+  version: v1.2.0
