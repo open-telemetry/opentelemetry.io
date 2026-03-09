@@ -276,8 +276,8 @@
     "LastSeen": "2026-02-20T14:00:38.054Z"
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
-    "StatusCode": 429,
-    "LastSeen": "2026-03-09T09:52:56.422949964Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-09T12:33:10.087Z"
   },
   "https://blog.remirepo.net/pages/PECL-extensions-RPM-status": {
     "StatusCode": 200,
@@ -1498,6 +1498,10 @@
   "https://doc.traefik.io/traefik/observability/tracing/opentelemetry/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-24T09:59:03.267229177Z"
+  },
+  "https://docs.alauda.io/container_platform/4.2/observability/tracing/concept#opentelemetry": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-09T09:31:38.575576-03:00"
   },
   "https://docs.ansible.com/ansible/latest/collections/grafana/grafana/": {
     "StatusCode": 200,
@@ -21432,8 +21436,8 @@
     "LastSeen": "2026-03-02T09:56:30.038533178Z"
   },
   "https://sakshipatle.substack.com/p/outreachy-how-when-and-why": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-09T09:52:56.359315492Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-09T09:32:18.340573-03:00"
   },
   "https://schemas.dmtf.org/wbem/cim-html/2.31.0/CIM_Battery.html": {
     "StatusCode": 206,
@@ -22054,10 +22058,6 @@
   "https://www.actian.com/databases/ingres/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:54:39.835807521Z"
-  },
-  "https://www.alauda.io/community/143237": {
-    "StatusCode": 404,
-    "LastSeen": "2026-03-09T09:55:08.365077436Z"
   },
   "https://www.alibabacloud.com/": {
     "StatusCode": 200,
