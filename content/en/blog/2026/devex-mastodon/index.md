@@ -130,7 +130,7 @@ Each Collector is defined as an `OpenTelemetryCollector` custom resource. From
 there, Kubernetes handles reconciliation, restarts, and lifecycle management
 automatically.
 
-> ““Basically we just need to create a yaml file for each
+> “Basically we just need to create a yaml file for each
 > `OpenTelemetryCollector` object we need to create, and Argo will automatically
 > deploy/update what we need.”
 
