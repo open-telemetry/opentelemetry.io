@@ -102,9 +102,9 @@ There are multiple approaches to collecting profiles and we designed
 OpenTelemetry profiles to support all of them:
 
 - **Sampling-based profiling**: A profiler periodically interrupts the program
-  for example using timer-based interrupts, and records the current stack trace. This
-  is the most common approach for CPU profiling. On Linux, profilers can use
-  eBPF to capture stack traces from the kernel without modifying userspace
+  for example using timer-based interrupts, and records the current stack trace.
+  This is the most common approach for CPU profiling. On Linux, profilers can
+  use eBPF to capture stack traces from the kernel without modifying userspace
   applications at all. This approach enables zero-instrumentation, whole-system
   profiling (including code produced by compiled languages without runtime
   support) and is designed for continuous, low-overhead production use.
@@ -122,11 +122,11 @@ OpenTelemetry provides an
 for Linux, capable of profiling most languages without any code changes.
 
 Additional language-specific profiling integrations that tap into built-in
-runtime profiling frameworks, such as JFR for Java or pprof for Go, will also become
-available as the signal matures.
+runtime profiling frameworks, such as JFR for Java or pprof for Go, will also
+become available as the signal matures.
 
-You can export Profiles through OTLP to the OpenTelemetry Collector or directly to
-any compatible backend.
+You can export Profiles through OTLP to the OpenTelemetry Collector or directly
+to any compatible backend.
 
 ## Specification
 
