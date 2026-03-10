@@ -9,7 +9,6 @@ author: >-
   Mathieu](https://github.com/dmathieu) (Elastic), [Tim
   Campbell](https://github.com/timetinytim) (Mastodon)
 sig: Developer Experience SIG
-cSpell:ignore:
 ---
 
 At the beginning of 2025, the OpenTelemetry Developer Experience SIG
