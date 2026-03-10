@@ -58,18 +58,18 @@ automaticamente.
 
 ## Segurança do collector {#collector-security}
 
-Siga as melhores práticas para garantir que seus collectors sejam [hospedados][]
-e [configurados][] com segurança.
+Siga as melhores práticas para garantir que seus collectors sejam [hosted][] e
+[configured][] com segurança.
 
 ## Status {#status}
 
-O status do **Collector** é: [misto][], pois os componentes centrais do
-Collector atualmente têm [níveis de estabilidade][] mistos.
+O status do **Collector** é: [mixed][], pois os componentes centrais do
+Collector atualmente têm [stability levels][] mistos.
 
 Os **componentes do Collector** diferem em seus níveis de maturidade. Cada
 componente tem sua estabilidade documentada em seu `README.md`. Você pode
 encontrar uma lista de todos os componentes de Collector disponíveis no
-[registro][].
+[registry][].
 
 O suporte é garantido para os artefatos de _software_ do Collector por um
 período de tempo determinado, com base no público-alvo do artefato. Esse suporte
@@ -81,13 +81,13 @@ para mais detalhes.
 ## Distribuições e lançamentos {#releases}
 
 Para informações sobre distribuições e lançamentos do Collector, incluindo a
-[última versão][], consulte [Distribuições](distributions/).
+[latest release][], consulte [Distributions](distributions/).
 
-[configurados]: /docs/security/config-best-practices/
-[hospedados]: /docs/security/hosting-best-practices/
-[última versão]:
+[configured]: /docs/security/config-best-practices/
+[hosted]: /docs/security/hosting-best-practices/
+[latest release]:
   https://github.com/open-telemetry/opentelemetry-collector-releases/releases/latest
-[misto]: /docs/specs/otel/document-status/#mixed
-[registro]: /ecosystem/registry/?language=collector
-[níveis de estabilidade]:
+[mixed]: /docs/specs/otel/document-status/#mixed
+[registry]: /ecosystem/registry/?language=collector
+[stability levels]:
   https://github.com/open-telemetry/opentelemetry-collector#stability-levels
