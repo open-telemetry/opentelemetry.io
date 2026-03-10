@@ -1,6 +1,6 @@
 ---
 title: Añadiendo al registro
-linkTitle: Añadiendo
+linkTitle: Añadir
 description: Cómo agregar entradas al registro.
 default_lang_commit: 1a6db8fe3a989fa20267368336aceb5665b4394b
 cSpell:ignore: zpages

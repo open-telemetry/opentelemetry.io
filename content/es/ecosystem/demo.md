@@ -1,6 +1,6 @@
 ---
 title: La demostración de OpenTelemetry
-linkTitle: demostración
+linkTitle: Demostración
 description:
   La demostración de OpenTelemetry es un sistema distribuido basado en
   microservicios diseñado para ilustrar la implementación de OpenTelemetry en un
