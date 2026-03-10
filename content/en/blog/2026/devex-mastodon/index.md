@@ -9,7 +9,7 @@ author: >-
   Mathieu](https://github.com/dmathieu) (Elastic), [Tim
   Campbell](https://github.com/timetinytim) (Mastodon)
 sig: Developer Experience SIG
-cSpell:ignore: Sloughter Ojeling Sidekiq otelbin devex
+cSpell:ignore: devex Ojeling otelbin Sidekiq Sloughter
 ---
 
 At the beginning of 2025, the OpenTelemetry Developer Experience SIG
