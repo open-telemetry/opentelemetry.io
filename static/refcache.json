@@ -751,6 +751,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-03-03T09:52:12.25440689Z"
   },
+  "https://cloud-native.slack.com/archives/C01S42U83B2": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-10T14:20:43.43728215Z"
+  },
   "https://cloud-native.slack.com/archives/C02UN96HZH6": {
     "StatusCode": 200,
     "LastSeen": "2026-03-03T09:52:11.57752481Z"
@@ -2058,6 +2062,14 @@
   "https://docs.itrsgroup.com/docs/geneos/data-collection/opentelemetry/current/opentelemetry.html": {
     "StatusCode": 200,
     "LastSeen": "2026-02-24T10:01:58.709Z"
+  },
+  "https://docs.joinmastodon.org/admin/config/#otel": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T14:20:36.356911836Z"
+  },
+  "https://docs.joinmastodon.org/user/run-your-own/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T14:20:26.375575484Z"
   },
   "https://docs.kernel.org/trace/user_events.html": {
     "StatusCode": 206,
@@ -16527,6 +16539,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:52:43.434550598Z"
   },
+  "https://github.com/timetinytim": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T14:20:22.2621196Z"
+  },
   "https://github.com/tobiasstadler": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:56:21.425783143Z"
@@ -17526,6 +17542,10 @@
   "https://jdbi.org/#_opentelemetry_tracing": {
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:57:55.12326182Z"
+  },
+  "https://joinmastodon.org": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T14:20:23.881699885Z"
   },
   "https://jqlang.github.io/jq/manual/": {
     "StatusCode": 206,
@@ -18550,6 +18570,14 @@
   "https://masstransit.io/documentation/configuration/observability": {
     "StatusCode": 200,
     "LastSeen": "2026-02-25T09:53:12.859741397Z"
+  },
+  "https://mastodon.online": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T14:20:34.198903093Z"
+  },
+  "https://mastodon.social": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-10T14:20:29.092345944Z"
   },
   "https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html#Bill_of_Materials_.28BOM.29_POMs": {
     "StatusCode": 206,
@@ -23438,6 +23466,10 @@
   "https://www.ostif.org/otel-audit-complete/": {
     "StatusCode": 200,
     "LastSeen": "2026-02-27T09:52:16.171910597Z"
+  },
+  "https://www.otelbin.io/?#config=receivers%3A*N__otlp%3A*N____protocols%3A*N______grpc%3A*N________endpoint%3A_0.0.0.0%3A4317*N______http%3A*N________endpoint%3A_0.0.0.0%3A4318*N________cors%3A*N__________allowed*_origins%3A*N____________-_*%22http%3A%2F%2F***%22*N____________-_*%22https%3A%2F%2F***%22*N*Nprocessors%3A*N__batch%3A_%7B%7D*N__resource%3A*N____attributes%3A*N______-_key%3A_deployment.environment.name*N________value%3A_*%22production*%22*N________action%3A_upsert*N______-_key%3A_property*N________value%3A_*%22mastodon.social*%22*N________action%3A_upsert*N______-_key%3A_git.commit.sha*N________from*_attribute%3A_vcs.repository.ref.revision*N________action%3A_insert*N______-_key%3A_git.repository*_url*N________from*_attribute%3A_vcs.repository.url.full*N________action%3A_insert*N__k8sattributes%3A*N____auth*_type%3A_*%22serviceAccount*%22*N____passthrough%3A_false*N____extract%3A*N______metadata%3A*N________-_k8s.namespace.name*N________-_k8s.pod.name*N________-_k8s.pod.start*_time*N________-_k8s.pod.uid*N________-_k8s.deployment.name*N________-_k8s.node.name*N______labels%3A*N________-_tag*_name%3A_app.label.component*N__________key%3A_app.kubernetes.io%2Fcomponent*N__________from%3A_pod*N____pod*_association%3A*N______-_sources%3A*N__________-_from%3A_resource*_attribute*N____________name%3A_k8s.pod.ip*N______-_sources%3A*N__________-_from%3A_resource*_attribute*N____________name%3A_k8s.pod.uid*N______-_sources%3A*N__________-_from%3A_connection*N__resourcedetection%3A*N____detectors%3A_%5Bsystem%5D*N____system%3A*N______resource*_attributes%3A*N________os.description%3A*N__________enabled%3A_true*N________host.arch%3A*N__________enabled%3A_true*N________host.cpu.vendor.id%3A*N__________enabled%3A_true*N________host.cpu.family%3A*N__________enabled%3A_true*N________host.cpu.model.id%3A*N__________enabled%3A_true*N________host.cpu.model.name%3A*N__________enabled%3A_true*N________host.cpu.stepping%3A*N__________enabled%3A_true*N________host.cpu.cache.l2.size%3A*N__________enabled%3A_true*N__transform%3A*N____error*_mode%3A_ignore*N*N____*H_Proper_code_function_naming*N____trace*_statements%3A*N______-_context%3A_span*N________conditions%3A*N__________-_attributes%5B%22code.namespace%22%5D_%21*E_nil*N________statements%3A*N__________-_set*Cattributes%5B%22resource.name%22%5D%2C*N____________Concat*C%5Battributes%5B%22code.namespace%22%5D%2C*N____________attributes%5B%22code.function%22%5D%5D%2C_%22*H%22*D*D*N*N______*H_Proper_kubernetes_hostname*N______-_context%3A_resource*N________conditions%3A*N__________-_attributes%5B%22k8s.node.name%22%5D_%21*E_nil*N________statements%3A*N__________-_set_*Cattributes%5B%22k8s.node.name%22%5D%2C*N____________Concat*C%5Battributes%5B%22k8s.node.name%22%5D%2C_%22k8s-1%22%5D%2C_%22-%22*D*D*N____metric*_statements%3A*N______-_context%3A_resource*N________conditions%3A*N__________-_attributes%5B%22k8s.node.name%22%5D_%21*E_nil*N________statements%3A*N__________-_set_*Cattributes%5B%22k8s.node.name%22%5D%2C*N____________Concat*C%5Battributes%5B%22k8s.node.name%22%5D%2C_%22k8s-1%22%5D%2C_%22-%22*D*D*N____log*_statements%3A*N______-_context%3A_resource*N________conditions%3A*N__________-_attributes%5B%22k8s.node.name%22%5D_%21*E_nil*N________statements%3A*N__________-_set_*Cattributes%5B%22k8s.node.name%22%5D%2C*N____________Concat*C%5Battributes%5B%22k8s.node.name%22%5D%2C_%22k8s-1%22%5D%2C_%22-%22*D*D*N__attributes%2Fsidekiq%3A*N____include%3A*N______match*_type%3A_strict*N______attributes%3A*N________-_key%3A_messaging.sidekiq.job*_class*N____actions%3A*N______-_key%3A_resource.name*N________from*_attribute%3A_messaging.sidekiq.job*_class*N________action%3A_upsert*N__tail*_sampling%3A*N____policies%3A*N______%5B*N________%7B*N__________name%3A_errors-policy%2C*N__________type%3A_status*_code%2C*N__________status*_code%3A_%7B_status*_codes%3A_%5BERROR%5D_%7D%2C*N________%7D%2C*N________%7B*N__________name%3A_randomized-policy%2C*N__________type%3A_probabilistic%2C*N__________probabilistic%3A_%7B_sampling*_percentage%3A_0.1_%7D%2C*N________%7D%2C*N______%5D*N*Nconnectors%3A*N__datadog%2Fconnector%3A*N____traces%3A*N______compute*_stats*_by*_span*_kind%3A_true*N*Nexporters%3A*N__datadog%3A*N____api%3A*N______site%3A_*S%7BDD*_SITE%7D*N______key%3A_*S%7BDD*_API*_KEY%7D*N____traces%3A*N______compute*_stats*_by*_span*_kind%3A_true*N______trace*_buffer%3A_500*N*Nservice%3A*N__pipelines%3A*N____traces%2Fall%3A*N______receivers%3A_%5Botlp%5D*N______processors%3A*N________%5B*N__________resource%2C*N__________k8sattributes%2C*N__________resourcedetection%2C*N__________transform%2C*N__________attributes%2Fsidekiq%2C*N__________batch%2C*N________%5D*N______exporters%3A_%5Bdatadog%2Fconnector%5D*N____traces%2Fsample%3A*N______receivers%3A_%5Bdatadog%2Fconnector%5D*N______processors%3A_%5Btail*_sampling%2C_batch%5D*N______exporters%3A_%5Bdatadog%5D*N____metrics%3A*N______receivers%3A_%5Bdatadog%2Fconnector%2C_otlp%5D*N______processors%3A*N________%5Bresource%2C_k8sattributes%2C_resourcedetection%2C_transform%2C_batch%5D*N______exporters%3A_%5Bdatadog%5D*N____logs%3A*N______receivers%3A_%5Botlp%5D*N______processors%3A*N________%5B*N__________resource%2C*N__________k8sattributes%2C*N__________resourcedetection%2C*N__________transform%2C*N__________attributes%2Fsidekiq%2C*N__________batch%2C*N________%5D*N______exporters%3A_%5Bdatadog%5D%7E": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-10T14:20:40.913367409Z"
   },
   "https://www.otelbin.io/s/69739d790cf279c203fc8efc86ad1a876a2fc01a": {
     "StatusCode": 200,
