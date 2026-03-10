@@ -171,8 +171,6 @@ The configuration focuses on:
 - Tail-based sampling
 - Transformation for backend compatibility
 
-![Mastodon Collector configuration diagram](mastodon-otelbin.png)
-
 A full production configuration is included below for reference (you can also
 view it on [otelbin][otelbin-mastodon]):
 
