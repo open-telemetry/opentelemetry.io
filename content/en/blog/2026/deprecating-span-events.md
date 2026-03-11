@@ -88,9 +88,10 @@ The details below summarize the intent.
 Span events remain part of the OTLP trace data model. The deprecation targets
 the **Span Event API** in the language APIs, not the wire representation.
 
-At the same time, OTLP support for log-based events is already stable. This
-allows the Logs API to represent the same kinds of structured events that span
-events have historically carried, with better alignment across signals.
+At the same time, OTLP support for log-based events is already stable. This lets
+the Logs API capture everything span events historically carried, with richer
+metadata such as severity, the ability to export before a span ends, and more
+flexible filtering.
 
 ### Specification
 
