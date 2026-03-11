@@ -172,8 +172,7 @@ If you maintain OpenTelemetry language APIs and SDKs:
 
 ## Feedback and next steps
 
-This post summarizes the plan from [OTEP 4430][OTEP] and related specification
-work. We would appreciate your feedback on the direction, migration path, and
+We would appreciate your feedback on the direction, migration path, and
 compatibility mechanisms.
 
 We are gathering feedback in
