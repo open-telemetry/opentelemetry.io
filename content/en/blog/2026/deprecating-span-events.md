@@ -22,7 +22,8 @@ cSpell:ignore: Liudmila loggerconfig Molkova Pająk
 
 In OpenTelemetry **events are named logs**, they are emitted through the Logs
 API and correlated with traces and metrics through context. Check out
-[OpenTelemetry Logging and You](/blog/2025/opentelemetry-logging-and-you/) for more details.
+[OpenTelemetry Logging and You](/blog/2025/opentelemetry-logging-and-you/) for
+more details.
 
 To support this direction, we plan to deprecate the Span Event API, while
 continuing to support use cases that rely on span events in exported traces.
@@ -35,9 +36,11 @@ for you, and how we plan to help you migrate.
 Today, OpenTelemetry offers two main ways to emit events that are correlated
 with traces:
 
-- Span events, created via [Tracing API](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/trace/api.md)
+- Span events, created via
+  [Tracing API](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/trace/api.md)
   using methods `Span.AddEvent` or `Span.RecordException`.
-- Log-based events, emitted via the [Logs API](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/logs/api.md)
+- Log-based events, emitted via the
+  [Logs API](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/logs/api.md)
   (either directly or through logging libraries bridged into OpenTelemetry) and
   associated with the active context.
 
