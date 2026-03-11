@@ -21,11 +21,9 @@ cSpell:ignore: Liudmila loggerconfig Molkova Pająk
 
 ## Preface
 
-If you've been following OpenTelemetry’s work on logging and events, you may
-have seen the long-term vision laid out in
-[OpenTelemetry Logging and You](/blog/2025/opentelemetry-logging-and-you/). In
-that post, **events are logs**, emitted through the Logs API and correlated with
-traces and metrics through context.
+In OpenTelemetry **events are named logs**, they are emitted through the Logs
+API and correlated with traces and metrics through context. Check out
+[OpenTelemetry Logging and You](/blog/2025/opentelemetry-logging-and-you/) for more details.
 
 To support this direction, we plan to deprecate the Span Event API, while
 continuing to support use cases that rely on span events in exported traces.
