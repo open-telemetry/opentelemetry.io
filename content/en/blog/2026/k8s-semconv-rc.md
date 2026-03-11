@@ -59,6 +59,8 @@ Conventions behind the respective feature gates, following the Collector's
 This will allow users to optionally switch to the new schema using the feature
 gates, enabling the community to provide feedback before the K8s attributes
 Semantic Conventions are promoted to `stable`.
+During that period, the K8s SemConv SIG will be accepting feedback while also
+working on K8s metrics' and entities' stability.
 
 ## Call for feedback
 
