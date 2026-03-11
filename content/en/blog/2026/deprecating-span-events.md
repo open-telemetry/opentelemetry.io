@@ -107,7 +107,7 @@ favor of the Logs API:
 
 The updated guidance will recommend:
 
-- Using the Logs API to record exceptions and other named events.
+- Using the Logs API to record exceptions and other events.
 - Recording additional span details that don’t need their own timestamp as span
   attributes instead of span events.
 
@@ -116,11 +116,11 @@ The updated guidance will recommend:
 Language APIs and SDKs will implement the following steps:
 
 1. **First-class support for log-based events.**
-   - Ensure the Logs API can record exceptions and events with the same level of
+   - Ensure the Logs API can record exceptions and events with even better level of
      detail that span events historically offered.
    - Stabilize this support so instrumentation authors can rely on it.
 2. **SDK-based compatibility for span events.**
-   - Provide an opt-in mechanism to convert log-based exceptions and events into
+   - Provide an opt-in mechanism to convert log-based events into
      span events and attach them to the current span.
    - Provide an opt-in mechanism for dropping log records associated with an
      unsampled trace. Span events are part of a span, so they naturally follow
@@ -144,7 +144,7 @@ For the OpenTelemetry Collector, this plan encourages:
 For **stable instrumentations** that currently use span events:
 
 - In the current major version, they are expected to **continue using existing
-  span event APIs**.
+  span event APIs** by default.
 - In the next major version, they should **switch to emitting events via the
   Logs API** instead of span events.
 - Where span events were previously used just to attach additional details to a
