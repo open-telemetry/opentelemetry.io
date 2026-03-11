@@ -12,7 +12,9 @@ cSpell:ignore: Liudmila loggerconfig Molkova Pająk
 
 ## TL;DR
 
-- OpenTelemetry is simplifying how it records events.
+- OpenTelemetry is deprecating the Span Event API to remove confusion and
+  duplication caused by having two overlapping ways to emit events: span events
+  and log-based events.
 - New code should write events as logs that are correlated with the current
   trace/span.
 - The older "span events" style will be phased out over time, but existing data
@@ -20,15 +22,23 @@ cSpell:ignore: Liudmila loggerconfig Molkova Pająk
 
 ## Preface
 
+This change is significant because it unifies how OpenTelemetry represents
+events. Today, having both span events and log-based events forces
+instrumentation authors and operators to reason about two very similar
+concepts, which leads to inconsistent guidance, fragmented user experiences,
+and slower evolution of the event model across the ecosystem.
+
 In OpenTelemetry **events are named logs**, they are emitted through the Logs
 API and correlated with traces and metrics through context. Check out
 [OpenTelemetry Logging and You](/blog/2025/opentelemetry-logging-and-you/) for more details.
 
-To support this direction, we plan to deprecate the Span Event API, while
-continuing to support use cases that rely on span events in exported traces.
+To support this direction and give everyone a single, consistent way to record
+events, we plan to deprecate the Span Event API, while continuing to support
+use cases that rely on span events in exported traces.
 
-This post explains why we’re making this change, what will (and won’t) change
-for you, and how we plan to help you migrate.
+This post explains why we’re making this change, the problems it is meant to
+solve, what will (and won’t) change for you, and how we plan to help you
+migrate.
 
 ## Why deprecate the Span Event API?
 
