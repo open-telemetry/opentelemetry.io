@@ -32,9 +32,8 @@ benefit the `k8sattributes` processor's stability progress.
 
 ## Alignment with Collector SIG
 
-From this discussion, the decision was made, and the plan for the following
-months was set, as described at
-[this link](https://github.com/open-telemetry/semantic-conventions/issues/3119).
+From this discussion, we made a decision and drafted up [a plan for the following
+months](https://github.com/open-telemetry/semantic-conventions/issues/3119).
 The plan was indeed to focus on attributes' stability in alignment with the
 Collector's SIG priorities and after that to focus K8s metrics' stability
 accordingly.
