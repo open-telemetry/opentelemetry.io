@@ -17,7 +17,6 @@ cSpell:ignore: Liudmila loggerconfig Molkova Pająk
   trace/span.
 - The older "span events" style will be phased out over time, but existing data
   and views that show events on spans will keep working.
-- You likely do not need to change anything if you do not rely on span events.
 
 ## Preface
 
