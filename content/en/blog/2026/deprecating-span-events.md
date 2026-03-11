@@ -99,7 +99,19 @@ code, not about removing visibility into events on spans.
 Depending on how you use OpenTelemetry today, this plan will affect you in
 different ways.
 
-### Application developers and operators
+### Operators
+
+If you mainly consume traces, logs, and metrics in dashboards and analysis
+tools:
+
+- You should not need to change your applications or dashboards immediately.
+- Expect that, over time, your instrumentations and SDKs will emit exceptions
+  and other events as log-based events rather than span events.
+- When you upgrade SDKs or observability backends, verify that events still
+  appear in the views you rely on (for example, span timelines and log/event
+  views).
+
+### Application developers
 
 If you primarily rely on **auto-instrumentation or library-provided
 instrumentation**:
@@ -115,21 +127,48 @@ If you maintain your own custom instrumentation:
 - Avoid adding new dependencies on span event methods, especially where they
   are already marked as deprecated.
 
+### Observability vendors
+
+If you build observability backends or services:
+
+- Support ingestion of log-based events.
+- Ensure that log-based events can still be surfaced in existing span-oriented
+  views where users expect them.
+
 ### Instrumentation authors
 
 If you author OpenTelemetry instrumentations:
 
 - Keep existing stable major versions behaviorally compatible for now.
+- Consider adding an opt-in mechanism in current major
+  versions (for example, via an environment variable such as
+  `OTEL_SEMCONV_EXCEPTION_SIGNAL_OPT_IN`) to emit log-based events alongside
+  existing span events.
 - For the next major versions, plan to migrate events and exceptions to the
-  Logs API following updated semantic conventions.
+  Logs API following updated semantic conventions, rather than adding new span
+  events.
 
-### Backend authors
+### Semantic convention authors
 
-If you build observability backends:
+If you define or maintain OpenTelemetry semantic conventions:
 
-- Ensure you can **ingest and present log-based events** alongside traces.
-- Use this transition to improve how users navigate between traces and logs
-  carrying the same structured events.
+- Document events as log-based events, specifying attributes and event names
+  for log records instead of span events.
+- When evolving existing conventions that currently rely on span events,
+  provide clear guidance on their log-based equivalents.
+
+### OpenTelemetry API maintainers
+
+If you maintain OpenTelemetry language APIs and SDKs:
+
+- Expose and stabilize the Logs API so that end users can easily emit
+  log-based events.
+- Prepare for the deprecation of span event methods such as `Span.AddEvent` and
+  `Span.RecordException` in favor of log-based events, while maintaining
+  compatibility where needed.
+- Consider providing helpers or configuration that can project log-based
+  events back onto spans for users and backends that still depend on that
+  representation.
 
 ## Feedback and next steps
 
