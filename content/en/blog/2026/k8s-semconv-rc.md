@@ -10,9 +10,17 @@ author: >-
 cSpell:ignore: Ashpole Markou resourcedetection sattributes
 ---
 
+Over the past few months, the K8s (Kubernetes) Semantic Conventions SIG focused
+on stabilizing Kubernetes attributes used by OpenTelemetry Collector processors
+such as `k8sattributes` and `resourcedetection`. That work has now paid off:
+Kubernetes attributes have been promoted to release candidate status. Users can
+try this new schema via feature gates and provide feedback before the final
+stable release. Read on to discover how we reached this milestone and what’s on
+the horizon.
+
 ## Prior art
 
-Last October, the K8s (Kubernetes) SemConv SIG
+Last October, the K8s (Kubernetes) Semantic Conventions SIG
 [completed](https://github.com/open-telemetry/semantic-conventions/issues/1032#issuecomment-3401648352)
 the first target of the group's goals: to define as Semantic Conventions the
 K8s-related metrics that the OpenTelemetry Collector already had in place, i.e.,
