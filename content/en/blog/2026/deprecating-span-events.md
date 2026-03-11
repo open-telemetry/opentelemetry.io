@@ -18,8 +18,8 @@ cSpell:ignore: Liudmila Molkova Pająk
 - The older "span events" style will be phased out over time, but existing data
   and views that show events on spans will keep working.
 
-This post explains why we’re making this change, what it means at a high
-level, and how you can prepare.
+This post explains why we’re making this change, what it means at a high level,
+and how you can prepare.
 
 ## Why deprecate the Span Event API?
 
@@ -70,16 +70,16 @@ ability to see events attached to spans.
 The deprecation focuses on **how new events are recorded**:
 
 - OTLP support for log-based events is already stable, and the Logs API can
-  capture everything span events historically carried, with richer metadata
-  and more flexible export and filtering.
+  capture everything span events historically carried, with richer metadata and
+  more flexible export and filtering.
 - The tracing specification will deprecate APIs such as `Span.AddEvent` and
   `Span.RecordException` in favor of emitting log-based events.
 - Language APIs and SDKs will make log-based events first-class, and provide
-  compatibility options that can still surface those events as span events
-  where needed.
-- Instrumentations and semantic conventions will gradually move from span
-  events to log-based events in their next major versions, while keeping
-  existing behavior stable until then.
+  compatibility options that can still surface those events as span events where
+  needed.
+- Instrumentations and semantic conventions will gradually move from span events
+  to log-based events in their next major versions, while keeping existing
+  behavior stable until then.
 
 ## What stays the same?
 
@@ -124,8 +124,8 @@ instrumentation**:
 If you maintain your own custom instrumentation:
 
 - Prefer the Logs API for new events and exceptions.
-- Avoid adding new dependencies on span event methods, especially where they
-  are already marked as deprecated.
+- Avoid adding new dependencies on span event methods, especially where they are
+  already marked as deprecated.
 
 ### Observability vendors
 
@@ -140,34 +140,33 @@ If you build observability backends or services:
 If you author OpenTelemetry instrumentations:
 
 - Keep existing stable major versions behaviorally compatible for now.
-- Consider adding an opt-in mechanism in current major
-  versions (for example, via an environment variable such as
-  `OTEL_SEMCONV_EXCEPTION_SIGNAL_OPT_IN`) to emit log-based events alongside
-  existing span events.
-- For the next major versions, plan to migrate events and exceptions to the
-  Logs API following updated semantic conventions, rather than adding new span
+- Consider adding an opt-in mechanism in current major versions (for example,
+  via an environment variable such as `OTEL_SEMCONV_EXCEPTION_SIGNAL_OPT_IN`) to
+  emit log-based events alongside existing span events.
+- For the next major versions, plan to migrate events and exceptions to the Logs
+  API following updated semantic conventions, rather than adding new span
   events.
 
 ### Semantic convention authors
 
 If you define or maintain OpenTelemetry semantic conventions:
 
-- Document events as log-based events, specifying attributes and event names
-  for log records instead of span events.
-- When evolving existing conventions that currently rely on span events,
-  provide clear guidance on their log-based equivalents.
+- Document events as log-based events, specifying attributes and event names for
+  log records instead of span events.
+- When evolving existing conventions that currently rely on span events, provide
+  clear guidance on their log-based equivalents.
 
 ### OpenTelemetry API maintainers
 
 If you maintain OpenTelemetry language APIs and SDKs:
 
-- Expose and stabilize the Logs API so that end users can easily emit
-  log-based events.
+- Expose and stabilize the Logs API so that end users can easily emit log-based
+  events.
 - Prepare for the deprecation of span event methods such as `Span.AddEvent` and
   `Span.RecordException` in favor of log-based events, while maintaining
   compatibility where needed.
-- Consider providing helpers or configuration that can project log-based
-  events back onto spans for users and backends that still depend on that
+- Consider providing helpers or configuration that can project log-based events
+  back onto spans for users and backends that still depend on that
   representation.
 
 ## Feedback and next steps
