@@ -1,0 +1,17 @@
+title: Chromium Receiver
+registryType: receiver
+language: collector
+tags:
+  - chromium
+  - cdp
+  - playwright
+urls:
+  repo: https://github.com/stuart23/chromiumreceiver
+license: Apache 2.0
+description: Otel collector receiver for generating metrics from a Chromium instance.
+authors:
+  - name: Stuart Buckingham
+    url: https://github.com/stuart23
+createdAt: '2026-03-11'
+isNative: false
+isFirstParty: false
