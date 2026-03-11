@@ -152,8 +152,11 @@ Even though the Span Event API is being deprecated, several important aspects of
 user experience are intentionally preserved:
 
 - **Trace-centric views can still show events on spans.** When the
-  event-to-span-event bridge is enabled, log-based events will appear as span
-  events in traces, preserving existing dashboards and workflows.
+  event-to-span-event bridge is enabled, log-based events can appear as span
+  events in traces. In many backends this allows existing dashboards and
+  workflows that rely on span events to keep working, though some systems may
+  need configuration changes or feature work to treat log-based events
+  equivalently.
 - **Correlation across signals continues to work the same way.** Log-based
   events participate in OpenTelemetry context, just like span events do today.
 - **Existing data remains valid.** Data that already uses span events is still
