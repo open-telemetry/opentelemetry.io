@@ -5,11 +5,11 @@ date: 2026-03-10
 author: >-
   [Juliano Costa](https://github.com/julianocosta89) (Datadog), [Tristan
   Sloughter](https://github.com/tsloughter) (community), [Johanna
-  Ojeling](https://github.com/johannaojeling) (Grafana Labs), [Damien
+  Öjeling](https://github.com/johannaojeling) (Grafana Labs), [Damien
   Mathieu](https://github.com/dmathieu) (Elastic), [Tim
   Campbell](https://github.com/timetinytim) (Mastodon)
 sig: Developer Experience SIG
-cSpell:ignore: devex Ojeling otelbin Sidekiq Sloughter
+cSpell:ignore: devex Öjeling otelbin Sidekiq Sloughter
 ---
 
 At the beginning of 2025, the OpenTelemetry Developer Experience SIG
