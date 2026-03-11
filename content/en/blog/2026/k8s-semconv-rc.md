@@ -32,8 +32,8 @@ benefit the `k8sattributes` processor's stability progress.
 
 ## Alignment with Collector SIG
 
-From this discussion, we made a decision and drafted up [a plan for the following
-months](https://github.com/open-telemetry/semantic-conventions/issues/3119).
+From this discussion, we made a decision and drafted up
+[a plan for the following months](https://github.com/open-telemetry/semantic-conventions/issues/3119).
 The plan was indeed to focus on attributes' stability in alignment with the
 Collector's SIG priorities and after that to focus K8s metrics' stability
 accordingly.
@@ -51,15 +51,21 @@ tracks this work, and the K8s SemConv SIG is happy to share that
 
 ## Next steps
 
-Next, after the next Semantic Conventions release, the `k8sattributes` processor will
-be updated accordingly to use the latest `release_candidate` K8s Semantic
+Next, after the next Semantic Conventions release, the `k8sattributes` processor
+will be updated accordingly to use the latest `release_candidate` K8s Semantic
 Conventions behind the respective feature gates, following the Collector's
 [guidelines](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/docs/rfcs/semconv-feature-gates.md#proposed-mechanism).
 This will allow users to optionally switch to the new schema using the feature
 gates, enabling the community to provide feedback before the K8s attributes
-Semantic Conventions are promoted to `stable`.
-During that period, the K8s SemConv SIG will be accepting feedback while also
-working on K8s metrics' and entities' stability.
+Semantic Conventions are promoted to `stable`. During that period, the K8s
+SemConv SIG will be accepting feedback while also working on K8s metrics' and
+entities' stability. The
+[feature gates](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.147.0/processor/k8sattributesprocessor/documentation.md#feature-gates)
+`processor.k8sattributes.DontEmitV0K8sConventions` and
+`processor.k8sattributes.EmitV1K8sConventions` are already available in the
+`k8sattributes` processor and you can learn more about their usage in the
+component's
+[documentation](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.147.0/processor/k8sattributesprocessor/README.md#semantic-conventions-compatibility)
 
 ## Call for feedback
 

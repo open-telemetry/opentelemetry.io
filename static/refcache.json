@@ -7639,6 +7639,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:52:35.573725106Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.147.0/processor/k8sattributesprocessor/README.md#semantic-conventions-compatibility": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-11T16:25:08.471919+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.147.0/processor/k8sattributesprocessor/documentation.md#feature-gates": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-11T16:25:07.064017+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/17418": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:52:12.522449064Z"
