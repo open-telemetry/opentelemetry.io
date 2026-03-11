@@ -265,15 +265,15 @@
   },
   "https://blog.olly.garden/how-to-name-your-metrics": {
     "StatusCode": 429,
-    "LastSeen": "2026-03-10T09:52:28.157753581Z"
+    "LastSeen": "2026-03-11T09:51:59.307322675Z"
   },
   "https://blog.olly.garden/how-to-name-your-span-attributes": {
     "StatusCode": 429,
-    "LastSeen": "2026-03-10T09:52:25.280435593Z"
+    "LastSeen": "2026-03-11T09:51:56.961294868Z"
   },
   "https://blog.olly.garden/how-to-name-your-spans": {
     "StatusCode": 429,
-    "LastSeen": "2026-03-10T09:52:22.198927848Z"
+    "LastSeen": "2026-03-11T09:51:54.848683229Z"
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
     "StatusCode": 200,
@@ -13207,38 +13207,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-10T10:03:31.24180365Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.9.0/README.md#maturity-level": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-25T09:57:10.549149045Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.9.0/examples/README.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-25T09:57:14.692851214Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.9.0/opentelemetry/proto": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-25T09:57:05.426012315Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.9.0/opentelemetry/proto/collector": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-25T09:57:01.266023526Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.9.0/opentelemetry/proto/collector/logs/v1/logs_service.proto": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-25T09:56:47.251026813Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.9.0/opentelemetry/proto/collector/metrics/v1/metrics_service.proto": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-25T09:56:52.455146014Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.9.0/opentelemetry/proto/collector/profiles/v1development/profiles_service.proto": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-25T09:57:00.163438969Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-proto/tree/v1.9.0/opentelemetry/proto/collector/trace/v1/trace_service.proto": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-25T09:56:55.849976575Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-python": {
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:53:18.930610439Z"
@@ -18588,8 +18556,8 @@
     "LastSeen": "2026-03-03T09:59:46.416Z"
   },
   "https://medium.com/opentracing/merging-opentracing-and-opencensus-f0fe9c7ca6f0": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-10T09:52:31.348337218Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-11T09:58:07.658Z"
   },
   "https://medium.com/p/42337e994b63": {
     "StatusCode": 200,
