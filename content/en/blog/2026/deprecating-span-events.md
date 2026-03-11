@@ -7,7 +7,7 @@ author: >-
   Pająk](https://github.com/pellared) (Splunk), [Trask
   Stalnaker](https://github.com/trask) (Microsoft)
 sig: Specification, Logs
-cSpell:ignore: Liudmila loggerconfig Molkova Pająk
+cSpell:ignore: Liudmila Molkova Pająk
 ---
 
 - OpenTelemetry is deprecating the Span Event API to remove confusion and
