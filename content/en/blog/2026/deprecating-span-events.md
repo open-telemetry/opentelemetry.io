@@ -81,7 +81,6 @@ includes changes:
 
 - In the core specification.
 - In language APIs and SDKs.
-- In the Collector.
 - In semantic conventions and instrumentations.
 
 The details below summarize the intent.
@@ -128,14 +127,6 @@ Language APIs and SDKs will implement the following steps:
      documentation and type systems, and point users to emit log-based events
      instead, while ensuring that existing usages of span events continue to
      work during the transition.
-
-### Collector
-
-For the OpenTelemetry Collector, this plan encourages:
-
-- Providing or adopting processors that implement the event-to-span-event
-  bridge, so users can continue seeing events attached to spans while
-  instrumentations migrate to the Logs API.
 
 ### Instrumentations and semantic conventions
 
@@ -212,9 +203,9 @@ instrumentation**:
 - You should not need to change code immediately.
 - Watch for new major versions of your instrumentation libraries that start
   emitting log-based events.
-- When you upgrade, consider enabling the event-to-span-event compatibility
-  option in your SDK or Collector if you depend on seeing events in span views
-  and your backend does not yet support log-based events natively.
+- When you upgrade, consider enabling the SDK-based event-to-span-event
+  compatibility option if you depend on seeing events in span views and your
+  backend does not yet support log-based events natively.
 
 If you maintain your own custom instrumentation:
 
@@ -249,7 +240,7 @@ work. We would appreciate your feedback on:
 
 - The overall direction of treating events as log records.
 - The proposed migration path for instrumentations.
-- The SDK and Collector-based compatibility mechanisms.
+- The SDK-based compatibility mechanisms.
 
 We are gathering feedback in
 [community#3312](https://github.com/open-telemetry/community/issues/3312).
