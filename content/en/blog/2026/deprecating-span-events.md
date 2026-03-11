@@ -39,9 +39,7 @@ with traces:
 
 - Span events, created via methods like `Span.AddEvent` and
   `Span.RecordException`.
-- Log-based events, created via the Logs API and linked to the active context
-  (either directly, or via logging libraries when those are bridged into
-  OpenTelemetry).
+- Log-based events, created via the Logs API (either directly or through logging libraries bridged into OpenTelemetry) and associated with the active context.
 
 Having two competing APIs for the same concept has several drawbacks:
 
