@@ -27,7 +27,8 @@ have seen the long-term vision laid out in
 that post, **events are logs**, emitted through the Logs API and correlated with
 traces and metrics through context.
 
-To support this direction, we plan to deprecate the Span Event API, while continuing to support use cases that rely on span events in exported traces.
+To support this direction, we plan to deprecate the Span Event API, while
+continuing to support use cases that rely on span events in exported traces.
 
 This post explains why we’re making this change, what will (and won’t) change
 for you, and how we plan to help you migrate.
@@ -39,7 +40,8 @@ with traces:
 
 - Span events, created via methods like `Span.AddEvent` and
   `Span.RecordException`.
-- Log-based events, created via the Logs API (either directly or through logging libraries bridged into OpenTelemetry) and associated with the active context.
+- Log-based events, created via the Logs API (either directly or through logging
+  libraries bridged into OpenTelemetry) and associated with the active context.
 
 Having two competing APIs for the same concept has several drawbacks:
 
@@ -112,12 +114,12 @@ The updated guidance will recommend:
 Language APIs and SDKs will implement the following steps:
 
 1. **First-class support for log-based events.**
-   - Ensure the Logs API can record exceptions and events with even better level of
-     detail that span events historically offered.
+   - Ensure the Logs API can record exceptions and events with even better level
+     of detail that span events historically offered.
    - Stabilize this support so instrumentation authors can rely on it.
 2. **SDK-based compatibility for span events.**
-   - Provide an opt-in mechanism to convert log-based events into
-     span events and attach them to the current span.
+   - Provide an opt-in mechanism to convert log-based events into span events
+     and attach them to the current span.
    - Provide an opt-in mechanism for dropping log records associated with an
      unsampled trace. Span events are part of a span, so they naturally follow
      trace sampling decisions; logs do not, by default.
