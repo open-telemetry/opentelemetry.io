@@ -6,49 +6,50 @@ description:
   instrument.
 weight: 20
 # prettier-ignore
-cSpell:ignore: beyla filestorecsi kube-node-lease kube-system rdns replicaset statefulset volumepopulator
+cSpell:ignore: filestorecsi kube-node-lease kube-system rdns replicaset statefulset volumepopulator
 ---
 
-The `OTEL_EBPF_AUTO_TARGET_EXE` and `OTEL_EBPF_OPEN_PORT` are environment
-variables that make it easier to configure OBI to instrument a single service or
-a group of related services.
+The `OTEL_EBPF_AUTO_TARGET_EXE`, `OTEL_EBPF_OPEN_PORT`,
+`OTEL_EBPF_AUTO_TARGET_LANGUAGE`, and `OTEL_EBPF_TARGET_PID` environment
+variables make it easier to configure OBI to instrument a single service or a
+group of related services.
 
 In some scenarios, OBI instruments many services. For example, as a
 [Kubernetes DaemonSet](../../setup/kubernetes/) that instruments all the
 services in a node. The `discovery` YAML section lets you specify more granular
 selection criteria for the services OBI can instrument.
 
-| YAML<br>environment variable                                                                                     | Description                                                                                                                                                                                                                                                                                                           | Type            | Default                                                                                                                                           |
-| ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `instrument`                                                                                                     | Specify different selection criteria for different services, and override their reported name or namespace. Refer to the [discovery services](#discovery-services) section for details.                                                                                                                               | list of objects | (unset)                                                                                                                                           |
-| `exclude_instrument`                                                                                             | Specify selection criteria for excluding services from being instrumented. Useful for avoiding instrumentation of services typically found in observability environments. Refer to the [exclude services from instrumentation](#exclude-services-from-instrumentation) section for details.                           | list of objects | (unset)                                                                                                                                           |
-| `default_exclude_instrument`                                                                                     | Disables instrumentation of OBI itself, the OpenTelemetry Collector, and other observability components. Set to empty to allow OBI to instrument itself and these other components. Refer to the [default exclude services from instrumentation](#default-exclude-services-from-instrumentation) section for details. | list of objects | Path: `{*beyla,*alloy,*prometheus-config-reloader,*obi,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}` and certain Kubernetes system namespaces |
-| `skip_go_specific_tracers`<br>`OTEL_EBPF_SKIP_GO_SPECIFIC_TRACERS`                                               | Disables the detection of Go specifics when the **eBPF** tracer inspects executables to be instrumented. The tracer falls back to using generic instrumentation, which is generally less efficient. Refer to the [skip go specific tracers](#skip-go-specific-tracers) section for details.                           | boolean         | false                                                                                                                                             |
-| `exclude_otel_instrumented_services`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES`                           | Disables OBI instrumentation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                                              | boolean         | true                                                                                                                                              |
-| `exclude_otel_instrumented_services_span_metrics`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES_SPAN_METRICS` | Disables OBI span metric/service graph metric generation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                  | boolean         | false                                                                                                                                             |
+| YAML<br>environment variable                                                                                     | Description                                                                                                                                                                                                                                                                                                                                                           | Type            | Default                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------ |
+| `instrument`                                                                                                     | Specify different selection criteria for different services, and override their reported name or namespace. Refer to the [discovery services](#discovery-services) section for details.                                                                                                                                                                               | list of objects | (unset)                                                                                                      |
+| `exclude_instrument`                                                                                             | Specify selection criteria for excluding services from being instrumented. Useful for avoiding instrumentation of services typically found in observability environments. Refer to the [exclude services from instrumentation](#exclude-services-from-instrumentation) section for details.                                                                           | list of objects | (unset)                                                                                                      |
+| `default_exclude_instrument`                                                                                     | Disables instrumentation of OBI itself, the OpenTelemetry Collector, and services running in certain Kubernetes system namespaces. Set to empty to allow OBI to instrument itself, the collector, and services in these namespaces. Refer to the [default exclude services from instrumentation](#default-exclude-services-from-instrumentation) section for details. | list of objects | Path: `{*/obi,obi,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}` and certain Kubernetes system namespaces |
+| `skip_go_specific_tracers`<br>`OTEL_EBPF_SKIP_GO_SPECIFIC_TRACERS`                                               | Disables the detection of Go specifics when the **eBPF** tracer inspects executables to be instrumented. The tracer falls back to using generic instrumentation, which is generally less efficient. Refer to the [skip go specific tracers](#skip-go-specific-tracers) section for details.                                                                           | boolean         | false                                                                                                        |
+| `exclude_otel_instrumented_services`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES`                           | Disables OBI instrumentation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                                                                                              | boolean         | true                                                                                                         |
+| `exclude_otel_instrumented_services_span_metrics`<br>`OTEL_EBPF_EXCLUDE_OTEL_INSTRUMENTED_SERVICES_SPAN_METRICS` | Disables OBI span metric/service graph metric generation of services already instrumented with OpenTelemetry. Refer to the [exclude instrumented services](#exclude-otel-instrumented-services) section for details.                                                                                                                                                  | boolean         | false                                                                                                        |
 
 ## Discovery services
 
 You can override the service name, namespace, and other configurations per
 service type.
 
-| YAML                   | Description                                                                                                                                | Type                         | Default |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------- | ------- |
-| `open_ports`           | Selects the process to instrument by the port it has open (listens to). Refer to [open ports](#open-ports).                                | string                       | (unset) |
-| `exe_path`             | Selects the processes to instrument by their executable name path. Refer to [executable path](#executable-path).                           | string (glob)                | (unset) |
-| `cmd_args`             | Selects the processes to instrument by their command line argument.                                                                        | string (glob)                | (unset) |
-| `languages`            | Selects the processes to instrument by the detected programming language of the executable. Use lowercase names, e.g. `go` or `{go,java}`. | string (glob)                | (unset) |
-| `target_pids`          | Allows selecting processes by PID. When non-empty, the process PID must be in this list (in addition to any path/port criteria).           | comma separated list of pids | (unset) |
-| `containers_only`      | Selects processes to instrument which are running in an OCI container. Refer to [containers only](#containers-only).                       | boolean                      | false   |
-| `k8s_namespace`        | Filter services by Kubernetes namespace. Refer to [K8s namespace](#k8s-namespace).                                                         | string (glob)                | (unset) |
-| `k8s_pod_name`         | Filter services by Kubernetes Pod. Refer to [K8s Pod name](#k8s-pod-name).                                                                 | string (glob)                | (unset) |
-| `k8s_deployment_name`  | Filter services by Kubernetes Deployment. Refer to [K8s deployment name](#k8s-deployment-name).                                            | string (glob)                | (unset) |
-| `k8s_replicaset_name`  | Filter services by Kubernetes ReplicaSet. Refer to [K8s ReplicaSet name](#k8s-replicaset-name).                                            | string (glob)                | (unset) |
-| `k8s_statefulset_name` | Filter services by Kubernetes StatefulSet. Refer to [K8s StatefulSet name](#k8s-statefulset-name).                                         | string (glob)                | (unset) |
-| `k8s_daemonset_name`   | Filter services by Kubernetes DaemonSet. Refer to [K8s DaemonSet name](#k8s-daemonset-name).                                               | string (glob)                | (unset) |
-| `k8s_owner_name`       | Filter services by Kubernetes Pod owner (Deployment, ReplicaSet, DaemonSet, or StatefulSet). Refer to [K8s owner name](#k8s-owner-name).   | string (glob)                | (unset) |
-| `k8s_pod_labels`       | Filter services by Kubernetes Pod labels. Refer to [K8s Pod labels](#k8s-pod-labels).                                                      | map[string]string (glob)     | (unset) |
-| `k8s_pod_annotations`  | Filter services by Kubernetes Pod annotations. Refer to [K8s Pod annotations](#k8s-pod-annotations).                                       | map[string]string (glob)     | (unset) |
+| YAML                   | Description                                                                                                                              | Type                     | Default |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------ | ------- |
+| `open_ports`           | Selects the process to instrument by the port it has open (listens to). Refer to [open ports](#open-ports).                              | string                   | (unset) |
+| `exe_path`             | Selects the processes to instrument by their executable name path. Refer to [executable path](#executable-path).                         | string (glob)            | (unset) |
+| `languages`            | Selects processes by detected programming language. Refer to [languages](#languages).                                                    | string (glob)            | (unset) |
+| `cmd_args`             | Selects processes by command-line arguments. Refer to [command-line arguments](#command-line-arguments).                                 | string (glob)            | (unset) |
+| `target_pids`          | Selects processes by PID. Refer to [target pids](#target-pids).                                                                          | list of integers         | (unset) |
+| `containers_only`      | Selects processes to instrument which are running in an OCI container. Refer to [containers only](#containers-only).                     | boolean                  | false   |
+| `k8s_namespace`        | Filter services by Kubernetes namespace. Refer to [K8s namespace](#k8s-namespace).                                                       | string (glob)            | (unset) |
+| `k8s_pod_name`         | Filter services by Kubernetes Pod. Refer to [K8s Pod name](#k8s-pod-name).                                                               | string (glob)            | (unset) |
+| `k8s_deployment_name`  | Filter services by Kubernetes Deployment. Refer to [K8s deployment name](#k8s-deployment-name).                                          | string (glob)            | (unset) |
+| `k8s_replicaset_name`  | Filter services by Kubernetes ReplicaSet. Refer to [K8s ReplicaSet name](#k8s-replicaset-name).                                          | string (glob)            | (unset) |
+| `k8s_statefulset_name` | Filter services by Kubernetes StatefulSet. Refer to [K8s StatefulSet name](#k8s-statefulset-name).                                       | string (glob)            | (unset) |
+| `k8s_daemonset_name`   | Filter services by Kubernetes DaemonSet. Refer to [K8s DaemonSet name](#k8s-daemonset-name).                                             | string (glob)            | (unset) |
+| `k8s_owner_name`       | Filter services by Kubernetes Pod owner (Deployment, ReplicaSet, DaemonSet, or StatefulSet). Refer to [K8s owner name](#k8s-owner-name). | string (glob)            | (unset) |
+| `k8s_pod_labels`       | Filter services by Kubernetes Pod labels. Refer to [K8s Pod labels](#k8s-pod-labels).                                                    | map[string]string (glob) | (unset) |
+| `k8s_pod_annotations`  | Filter services by Kubernetes Pod annotations. Refer to [K8s Pod annotations](#k8s-pod-annotations).                                     | map[string]string (glob) | (unset) |
 
 ### Open ports
 
@@ -88,6 +89,55 @@ executables in the host.
 
 If you specify other selectors in the same `instrument` entry, the processes
 must match all the selector properties.
+
+### Languages
+
+Selects processes by detected programming language. This property accepts a glob
+matcher over normalized language names, for example `go`, `java`, `python`, and
+`nodejs`.
+
+For example:
+
+```yaml
+discovery:
+  instrument:
+    - languages: go
+```
+
+You can combine this with other selectors, for example `exe_path` or
+`open_ports`, and all configured selectors must match.
+
+### Command-line arguments
+
+Selects processes by command-line arguments. This property accepts a glob that
+is matched against the full process command line arguments.
+
+For example:
+
+```yaml
+discovery:
+  instrument:
+    - cmd_args: '*--profile=prod*'
+```
+
+This selector can be combined with other selectors in the same `instrument`
+entry.
+
+### Target PIDs
+
+Selects processes by PID. Use this selector when you already know which process
+IDs should be instrumented.
+
+For example:
+
+```yaml
+discovery:
+  instrument:
+    - target_pids: [1234, 5678]
+```
+
+You can also configure PID targeting globally using `target_pids` at the root
+level or via `OTEL_EBPF_TARGET_PID=1234,5678`.
 
 ### Containers only
 
@@ -256,14 +306,13 @@ components. It also disables instrumentation of various Kubernetes system
 namespaces to reduce the overall cost of metric generation. The following
 section contains all excluded components:
 
-- Excluded services by `exe_path`: `*beyla`, `*alloy`, `*obi`, `*otelcol`,
+- Excluded services by `exe_path`: `*/obi`, `obi`, `*otelcol`,
   `*otelcol-contrib`, `*otelcol-contrib[!/]*`.
 - Excluded services by `k8s_namespace`: `kube-system`, `kube-node-lease`,
-  `local-path-storage`, `grafana-alloy`, `cert-manager`, `monitoring`,
-  `gke-connect`, `gke-gmp-system`, `gke-managed-cim`,
-  `gke-managed-filestorecsi`, `gke-managed-metrics-server`,
-  `gke-managed-system`, `gke-system`, `gke-managed-volumepopulator`,
-  `gatekeeper-system`.
+  `local-path-storage`, `cert-manager`, `monitoring`, `gke-connect`,
+  `gke-gmp-system`, `gke-managed-cim`, `gke-managed-filestorecsi`,
+  `gke-managed-metrics-server`, `gke-managed-system`, `gke-system`,
+  `gke-managed-volumepopulator`, `gatekeeper-system`.
 
 Change this option to allow OBI to instrument itself or some of the other
 excluded components.
@@ -289,11 +338,10 @@ discovery:
   # Override default exclusions to remove monitoring namespace
   # This list keeps other default exclusions but removes monitoring
   default_exclude_instrument:
-    - exe_path: '{*beyla,*alloy,*obi,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}'
+    - exe_path: '{*/obi,obi,*otelcol,*otelcol-contrib,*otelcol-contrib[!/]*}'
     - k8s_namespace: kube-system
     - k8s_namespace: kube-node-lease
     - k8s_namespace: local-path-storage
-    - k8s_namespace: grafana-alloy
     - k8s_namespace: cert-manager
     # monitoring namespace removed from this list
     - k8s_namespace: gke-connect
