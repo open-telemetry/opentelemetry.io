@@ -12,7 +12,7 @@ cSpell:ignore: Ashpole Markou resourcedetection sattributes
 
 ## Prior art
 
-Last October, the K8s SemConv SIG
+Last October, the K8s (Kubernetes) SemConv SIG
 [completed](https://github.com/open-telemetry/semantic-conventions/issues/1032#issuecomment-3401648352)
 the first target of the group's goals: to define as Semantic Conventions the
 K8s-related metrics that the OpenTelemetry Collector already had in place, i.e.,
