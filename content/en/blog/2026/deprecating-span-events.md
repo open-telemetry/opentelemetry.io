@@ -35,10 +35,11 @@ for you, and how we plan to help you migrate.
 Today, OpenTelemetry offers two main ways to emit events that are correlated
 with traces:
 
-- Span events, created via methods like `Span.AddEvent` and
-  `Span.RecordException`.
-- Log-based events, created via the Logs API (either directly or through logging
-  libraries bridged into OpenTelemetry) and associated with the active context.
+- Span events, created via [Tracing API](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/trace/api.md)
+  using methods `Span.AddEvent` or `Span.RecordException`.
+- Log-based events, emitted via the [Logs API](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/logs/api.md)
+  (either directly or through logging libraries bridged into OpenTelemetry) and
+  associated with the active context.
 
 Having two competing APIs for the same concept has several drawbacks:
 
