@@ -10,35 +10,16 @@ sig: Specification, Logs
 cSpell:ignore: Liudmila loggerconfig Molkova Pająk
 ---
 
-## TL;DR
-
 - OpenTelemetry is deprecating the Span Event API to remove confusion and
   duplication caused by having two overlapping ways to emit events: span events
   and log-based events.
 - New code should write events as logs that are correlated with the current
-  trace/span.
+  span.
 - The older "span events" style will be phased out over time, but existing data
   and views that show events on spans will keep working.
 
-## Preface
-
-This change is significant because it unifies how OpenTelemetry represents
-events. Today, having both span events and log-based events forces
-instrumentation authors and operators to reason about two very similar
-concepts, which leads to inconsistent guidance, fragmented user experiences,
-and slower evolution of the event model across the ecosystem.
-
-In OpenTelemetry **events are named logs**, they are emitted through the Logs
-API and correlated with traces and metrics through context. Check out
-[OpenTelemetry Logging and You](/blog/2025/opentelemetry-logging-and-you/) for more details.
-
-To support this direction and give everyone a single, consistent way to record
-events, we plan to deprecate the Span Event API, while continuing to support
-use cases that rely on span events in exported traces.
-
-This post explains why we’re making this change, the problems it is meant to
-solve, what will (and won’t) change for you, and how we plan to help you
-migrate.
+This post explains why we’re making this change, what it means at a high
+level, and how you can prepare.
 
 ## Why deprecate the Span Event API?
 
@@ -62,10 +43,10 @@ Having two competing APIs for the same concept has several drawbacks:
   schemas, attributes, and back-compat) must be specified and implemented in two
   places.
 
-The OpenTelemetry community has been converging on a simpler mental model: as
-described in _OpenTelemetry Logging and You_, **events are logs with a
-well-defined structure**, emitted via the Logs API rather than as a special case
-on spans.
+The OpenTelemetry community has been converging on a simpler mental model:
+**events are named logs** emitted via the Logs API, correlated with traces and
+metrics through context, rather than as a special case on spans. This change is
+significant because it unifies how OpenTelemetry represents events.
 
 At the same time, we recognize that span events are widely used today. Many
 backends present span events in dedicated trace views, and some users depend on
@@ -84,120 +65,32 @@ ability to see events attached to spans.
 
 ## What is changing?
 
-The deprecation touches several parts of the ecosystem. At a high level, it
-includes changes:
+The deprecation focuses on **how new events are recorded**:
 
-- In the core specification.
-- In language APIs and SDKs.
-- In semantic conventions and instrumentations.
-
-The details below summarize the intent.
-
-### OTLP
-
-Span events remain part of the OTLP trace data model. The deprecation targets
-the **Span Event API** in the language APIs, not the wire representation.
-
-At the same time, OTLP support for log-based events is already stable. This lets
-the Logs API capture everything span events historically carried, with richer
-metadata such as severity, the ability to export before a span ends, and more
-flexible filtering.
-
-### Specification
-
-In the tracing specification, the following APIs will be marked as deprecated in
-favor of the Logs API:
-
-- Methods that record exceptions on spans, such as `RecordException`.
-- Methods that add arbitrary events to spans, such as `AddEvent`.
-
-The updated guidance will recommend:
-
-- Using the Logs API to record exceptions and other events.
-- Recording additional span details that don’t need their own timestamp as span
-  attributes instead of span events.
-
-### Language APIs and SDKs
-
-Language APIs and SDKs will implement the following steps:
-
-1. **First-class support for log-based events.**
-   - Ensure the Logs API can record exceptions and events with even better level
-     of detail that span events historically offered.
-   - Stabilize this support so instrumentation authors can rely on it.
-2. **SDK-based compatibility for span events.**
-   - Provide an opt-in mechanism to convert log-based events into span events
-     and attach them to the current span.
-   - Provide an opt-in mechanism for dropping log records associated with an
-     unsampled trace. Span events are part of a span, so they naturally follow
-     trace sampling decisions; logs do not, by default.
-3. **Deprecate span event methods.**
-   - Mark span APIs for recording events and exceptions as deprecated in
-     documentation and type systems, and point users to emit log-based events
-     instead, while ensuring that existing usages of span events continue to
-     work during the transition.
-
-### Instrumentations and semantic conventions
-
-For **stable instrumentations** that currently use span events:
-
-- In the current major version, they are expected to **continue using existing
-  span event APIs** by default.
-- In the next major version, they should **switch to emitting events via the
-  Logs API** instead of span events.
-
-Non-stable instrumentations are encouraged to follow this guidance as soon as
-practical, but have more flexibility.
-
-Semantic conventions for events and exceptions will be updated to clearly
-support both log-based events and, where necessary, the compatibility layer that
-turns those events back into span events.
-
-We are also working on stabilizing the
-[Recording errors](/docs/specs/semconv/general/recording-errors/) semantic
-conventions, a core place where span events are used today.
+- OTLP support for log-based events is already stable, and the Logs API can
+  capture everything span events historically carried, with richer metadata
+  and more flexible export and filtering.
+- The tracing specification will deprecate APIs such as `Span.AddEvent` and
+  `Span.RecordException` in favor of emitting log-based events.
+- Language APIs and SDKs will make log-based events first-class, and provide
+  compatibility options that can still surface those events as span events
+  where needed.
+- Instrumentations and semantic conventions will gradually move from span
+  events to log-based events in their next major versions, while keeping
+  existing behavior stable until then.
 
 ## What stays the same?
 
 Even though the Span Event API is being deprecated, several important aspects of
 user experience are intentionally preserved:
 
-- **Trace-centric views can still show events on spans.** When the
-  event-to-span-event bridge is enabled, log-based events can appear as span
-  events in traces. In many backends this allows existing dashboards and
-  workflows that rely on span events to keep working, though some systems may
-  need configuration changes or feature work to treat log-based events
-  equivalently.
 - **Correlation across signals continues to work the same way.** Log-based
-  events participate in OpenTelemetry context, just like span events do today.
-- **Existing data remains valid.** Data that already uses span events is still
+  events still participate in OpenTelemetry context.
+- **Existing data remains valid.** Data that already uses span events remains
   part of the supported OTLP trace model.
 
-The deprecation is about providing a single recommended way to emit events in
-new code, not about removing visibility into events on spans.
-
-## How this fits into the logging vision
-
-In _OpenTelemetry Logging and You_, we outlined a direction where:
-
-- Logs are anything sent through a Logging Provider.
-- **Events are a special kind of logs** with a stronger structure and schema.
-
-Deprecating the Span Event API is a key step toward that model:
-
-- Instrumentations and semantic conventions can treat events consistently as log
-  records.
-- Backends can invest in rich experiences for events in one place—the log and
-  event data model—while still surfacing those events in trace views when
-  helpful.
-- Future enhancements (for example, around schemas, complex attributes, or event
-  types) can be specified once for log-based events and applied across all
-  signals.
-
-If you’ve read
-[Announcing Support for Complex Attribute Types in OTel](/blog/2025/complex-attribute-types/),
-you can think of this as another step in making OpenTelemetry’s data model more
-expressive and better aligned across traces, metrics, and logs.
+Deprecation is about providing a single recommended way to emit events in new
+code, not about removing visibility into events on spans.
 
 ## What should you do?
 
@@ -211,66 +104,41 @@ instrumentation**:
 
 - You should not need to change code immediately.
 - Watch for new major versions of your instrumentation libraries that start
-  emitting log-based events.
-- When you upgrade, consider enabling the SDK-based event-to-span-event
-  compatibility option if you depend on seeing events in span views and your
-  backend does not yet support log-based events natively.
+  emitting log-based events, and enable any compatibility options your SDK
+  offers if you rely on events in span views.
 
 If you maintain your own custom instrumentation:
 
 - Prefer the Logs API for new events and exceptions.
-- Use span events only when you absolutely need them and your language API has
-  not yet deprecated those methods.
+- Avoid adding new dependencies on span event methods, especially where they
+  are already marked as deprecated.
 
 ### Instrumentation authors
 
 If you author OpenTelemetry instrumentations:
 
-- **Keep using span events** in your current stable major versions so users are
-  not surprised by behavioral changes.
-- For the next major version of each instrumentation, plan a **migration to the
-  Logs API** for events and exceptions.
-- Follow updated semantic conventions for naming events and choosing attributes,
-  particularly for exceptions and other commonly used event types.
+- Keep existing stable major versions behaviorally compatible for now.
+- For the next major versions, plan to migrate events and exceptions to the
+  Logs API following updated semantic conventions.
 
 ### Backend authors
 
 If you build observability backends:
 
-- Ensure you can **ingest and present log-based events** with the same care you
-  give to span events today.
-- Use this transition as an opportunity to improve how users navigate between
-  traces and logs, since both will carry the same structured events.
+- Ensure you can **ingest and present log-based events** alongside traces.
+- Use this transition to improve how users navigate between traces and logs
+  carrying the same structured events.
 
 ## Feedback and next steps
 
 This post summarizes the plan from [OTEP 4430][OTEP] and related specification
-work. We would appreciate your feedback on:
-
-- The overall direction of treating events as log records.
-- The proposed migration path for instrumentations.
-- The SDK-based compatibility mechanisms.
+work. We would appreciate your feedback on the direction, migration path, and
+compatibility mechanisms.
 
 We are gathering feedback in
-[community#3312](https://github.com/open-telemetry/community/issues/3312).
-
-Some of this work is already underway. For example:
-
-- [opentelemetry-specification#4886](https://github.com/open-telemetry/opentelemetry-specification/pull/4886)
-  refines how exceptions are emitted as logs via the Logs API.
-- [opentelemetry-specification#4612](https://github.com/open-telemetry/opentelemetry-specification/pull/4612)
-  introduces the `LoggerConfig.trace_based` option to drop log records
-  associated with unsampled traces.
-- [semantic-conventions#3256](https://github.com/open-telemetry/semantic-conventions/pull/3256),
-  [semantic-conventions#3226](https://github.com/open-telemetry/semantic-conventions/pull/3226),
-  and
-  [semantic-conventions#3311](https://github.com/open-telemetry/semantic-conventions/pull/3311)
-  adjust semantic conventions so they can be consistently applied to log-based
-  events.
-
-As the specification and implementations progress, we will continue to refine
-the guidance and provide more concrete migration examples in SDK and
-instrumentation documentation.
+[community#3312](https://github.com/open-telemetry/community/issues/3312), and
+ongoing specification and semantic convention changes are tracked in the
+OpenTelemetry GitHub repositories.
 
 Deprecation here does **not** mean removing span events. It is about shifting
 the recommended way to emit new events toward the Logs API.
