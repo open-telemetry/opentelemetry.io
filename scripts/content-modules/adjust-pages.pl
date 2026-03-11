@@ -316,7 +316,13 @@ while(<>) {
       [^)]+
     )
   }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
-  s|(\]\()(?:\./)?specification/([^)#]+)\.md|$1/docs/specs/otel/$2|g if $ARGV eq "tmp/otel/spec-compliance-matrix.md";
+
+
+  if ($ARGV eq "tmp/otel/spec-compliance-matrix.md") {
+    s|(\]\()(?:\./)?specification/([^)#]+?)\.md|$1/docs/specs/otel/$2|g;
+    # Strip /README.md from relative/absolute (localized) links
+    s|\]\((\.?/[^#) ]+/)README(?:\.md)?((?:#[^) ]*)?)\)|]($1$2)|g;
+  }
 
   patchSpec_because_of_SemConv_DatabaseRenamedToDb();
   patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
