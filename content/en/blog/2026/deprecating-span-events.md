@@ -136,9 +136,6 @@ For **stable instrumentations** that currently use span events:
   span event APIs** by default.
 - In the next major version, they should **switch to emitting events via the
   Logs API** instead of span events.
-- Where span events were previously used just to attach additional details to a
-  span (without needing a separate timestamp), those details should be moved to
-  span attributes.
 
 Non-stable instrumentations are encouraged to follow this guidance as soon as
 practical, but have more flexibility.
