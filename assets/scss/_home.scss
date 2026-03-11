@@ -1,0 +1,11 @@
+// Homepage styles before the revamp of January 2026. The new styles are in
+// _homepage.scss. Keeping these until all locales have been updated their
+// homepages.
+//
+// TODO: remove this file once all locales have been updated their homepages.
+
+.td-home {
+  .td-box--white .container blockquote {
+    font-size: smaller;
+  }
+}

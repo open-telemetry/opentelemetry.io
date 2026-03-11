@@ -11,7 +11,7 @@ The OpenTelemetry Election Committee is excited to announce the final list of
 candidates for the upcoming 2025 OpenTelemetry Governance Committee Election!
 
 If you are an
-[eligible voter](https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-election.md#voter-eligibility),
+[eligible voter](https://github.com/open-telemetry/community/blob/55c58353ce8651dbb5269ca91bb6dde5b47bac2e/elections/2025/governance-committee-election.md?from_branch=main#voter-eligibility),
 you’ll have the opportunity to continue shaping the future of OpenTelemetry by
 casting your vote between 27 October 2025 00:00 UTC and 29 October 2025 end of
 day, [Anywhere on Earth](https://en.wikipedia.org/wiki/Anywhere_on_Earth) (30
@@ -19,7 +19,7 @@ October 2025 12:00 UTC). You'll be selecting your preferred candidates to fill
 the five available seats in this year's election.
 
 You can find the candidates' pictures, profile links, and descriptions on the
-[candidates page](https://github.com/open-telemetry/community/blob/main/elections/2025/governance-committee-candidates.md).
+[candidates page](https://github.com/open-telemetry/community/blob/1b7d0d85924677149593a18639ce0b897ed4751f/elections/2025/governance-committee-candidates.md?from_branch=main).
 Here are their names:
 
 - Antoine Toulme
@@ -37,5 +37,5 @@ You can check your eligibility by reviewing
 [this GitHub issue](https://github.com/open-telemetry/community/issues/3001). If
 you have made contributions to our ecosystem not measured by the automatic
 process, you can
-[request an exception](https://github.com/open-telemetry/community/blob/main/governance-charter.md#elections)
+[request an exception](https://github.com/open-telemetry/community/blob/614ece1538e6697842bc25d436d8d70ab6175808/governance-charter.md?from_branch=main#elections)
 before 23:59 UTC on 24 October 2025 to participate in the election.

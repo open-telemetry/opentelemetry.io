@@ -5,7 +5,7 @@ weight: 30
 aliases: [/docs/languages/python/automatic]
 default_lang_commit: 3d179dbe1270b83aafff0d3b6aa3311afd482649
 drifted_from_default: true
-cSpell:ignore: distro myapp
+cSpell:ignore: distro
 ---
 
 L'instrumentation automatique avec Python utilise un agent Python qui peut être

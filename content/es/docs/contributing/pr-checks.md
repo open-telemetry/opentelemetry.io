@@ -4,7 +4,7 @@ description:
   Aprende cómo hacer que tu pull request pase exitosamente todas las
   verificaciones.
 weight: 40
-default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8
+default_lang_commit: 400dcdabbc210eb25cda6c864110127ad6229da8 # patched
 ---
 
 Cuando creas un
@@ -127,8 +127,8 @@ que son los más comunes. Algunos servidores, como LinkedIn, reportan 999.
 
 Si has validado manualmente un enlace externo para el cual el verificador no
 obtiene un estado de éxito, puedes agregar el siguiente parámetro de consulta a
-tu URL para que el verificador de enlaces lo ignore: `?no-link-check`. Por
-ejemplo, <https:/some-example.org?no-link-check> será ignorado por el
+tu URL para que el verificador de enlaces lo ignore: `?link-check=no`. Por
+ejemplo, <https:/some-example.org?link-check=no> será ignorado por el
 verificador de enlaces.
 
 > [!TIP] Consejo para mantenedores

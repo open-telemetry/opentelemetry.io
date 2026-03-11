@@ -116,8 +116,8 @@ resource:
 
 > [!NOTE] Internal telemetry configuration changes
 >
-> As of Collector [v0.123.0], the `service::telemetry::metrics::address` setting
-> is ignored. In earlier versions, it could be configured with:
+> As of Collector [v0.123.0][], the `service::telemetry::metrics::address`
+> setting is ignored. In earlier versions, it could be configured with:
 >
 > ```yaml
 > service:
@@ -160,6 +160,15 @@ You can further configure how metrics from the Collector are emitted by using
 configuration updates the metric named `otelcol_process_uptime` to emit a new
 name `process_uptime` and description:
 
+> [!NOTE]
+>
+> When configuring the Prometheus exporter for internal metrics manually (using
+> `readers`), `otelcol_process_uptime` may be exported as
+> `otelcol_process_uptime_seconds_total` unless `without_type_suffix` and
+> `without_units` are set to `true`. Use the `instrument_name` value
+> `otelcol_process_uptime` (the OTLP name) in views regardless. To control
+> Prometheus-specific suffixes, see [Unit suffixes](#unit-suffixes).
+
 ```yaml
 service:
   telemetry:
@@ -176,7 +185,7 @@ service:
 You can also use `views` to update the resulting aggregation, attributes, and
 cardinality limits. For the full list of options, see the examples in the
 OpenTelemetry Configuration schema
-[repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/f4e9046682d4386ea533ef7ba6ad30a5ce4451b4/examples/kitchen-sink.yaml#L440).
+[repository](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/View_kitchen_sink.yaml).
 
 ### Configure internal logs
 
@@ -260,7 +269,7 @@ See the [example configuration][kitchen-sink-config] for additional options.
 Note that the `tracer_provider` section there corresponds to `traces` here.
 
 [kitchen-sink-config]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/kitchen-sink.yaml
+  https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml
 
 ## Types of internal telemetry
 
@@ -310,7 +319,7 @@ libraries.
 By default and unique to Prometheus, the Prometheus exporter adds a `_total`
 suffix to summation metrics to follow Prometheus naming conventions, such as
 `otelcol_exporter_send_failed_spans_total`. This behavior can be disabled by
-setting `without_type_suffix: false` in the Prometheus exporter's configuration.
+setting `without_type_suffix: true` in the Prometheus exporter's configuration.
 
 If you leave out `service::telemetry::metrics::readers` in the Collector
 configuration, the default Prometheus exporter set up by the Collector already
@@ -322,6 +331,38 @@ the "raw" metric name. For more information, see the
 Internal metrics exported through OTLP do not have this behavior. The
 [internal metrics](#lists-of-internal-metrics) on this page are listed in OTLP
 format, such as `otelcol_exporter_send_failed_spans`.
+
+#### `_seconds` and other unit suffixes {#unit-suffixes}
+
+The Prometheus exporter appends a unit suffix to metrics that carry a unit. For
+example, `otelcol_process_uptime` (unit: seconds) can be exported as
+`otelcol_process_uptime_seconds_total` — the `_seconds` unit suffix is added
+first, then the `_total` counter suffix.
+
+The default Prometheus exporter configured by the Collector (when no `readers`
+are specified) already sets `without_type_suffix` and `without_units` to `true`
+for backwards compatibility, so `otelcol_process_uptime` is used as-is.
+
+However, when you manually configure the Prometheus exporter under
+`service::telemetry::metrics::readers`, those options are not set by default. To
+keep the original, shorter metric names, explicitly set both options to `true`:
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      readers:
+        - pull:
+            exporter:
+              prometheus:
+                host: '0.0.0.0'
+                port: 8888
+                without_type_suffix: true
+                without_units: true
+```
+
+With this configuration, `otelcol_process_uptime_seconds_total` is exported as
+`otelcol_process_uptime`.
 
 #### Dots (`.`) v. underscores (`_`) {#dots-v-underscores}
 
@@ -401,8 +442,8 @@ files in the repository.
 
 > [!NOTE] Batch processor metrics level changes
 >
-> In Collector [v0.99.0], all batch processor metrics were upgraded from `basic`
-> to `normal` (current level), except for
+> In Collector [v0.99.0][], all batch processor metrics were upgraded from
+> `basic` to `normal` (current level), except for
 > `otelcol_processor_batch_batch_send_size_bytes`, which has been `detailed`
 > since its introduction. Note however that these metrics were inadvertently
 > reverted to `basic` from v0.109.0 to v0.121.0.

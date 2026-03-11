@@ -3,7 +3,7 @@ title: 配置
 weight: 10
 default_lang_commit: 4a613ef41a86ffa53495e951fdff53de43ba11df
 aliases: [agent-config]
-cSpell:ignore: customizer logback
+cSpell:ignore: customizer
 ---
 
 {{% alert title="了解更多信息" %}}

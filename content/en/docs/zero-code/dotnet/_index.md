@@ -5,7 +5,7 @@ linkTitle: .NET
 aliases: [net]
 redirects: [{ from: /docs/languages/net/automatic/*, to: ':splat' }]
 weight: 30
-cSpell:ignore: coreutils HKLM iisreset myapp Sonoma
+cSpell:ignore: coreutils HKLM iisreset Sonoma
 ---
 
 Use the OpenTelemetry .NET Automatic Instrumentation to send traces and metrics
@@ -266,7 +266,7 @@ To see the full range of configuration options, see
 >
 > Automatic log to trace correlation provided by OpenTelemetry .NET Automatic
 > Instrumentation currently works only for .NET applications using
-> `Microsoft.Extensions.Logging`. For more details, see [#2310].
+> `Microsoft.Extensions.Logging`. For more details, see [#2310][].
 
 [#2310]:
   https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/issues/2310
@@ -337,8 +337,8 @@ On Windows, use the PowerShell module as an Administrator.
 
 > [!IMPORTANT] Version note
 >
-> Windows [PowerShell Desktop][] (v5.1) is required. Other [versions], including
-> PowerShell Core (v6.0+) are not supported at this time.
+> Windows [PowerShell Desktop][] (v5.1) is required. Other [versions][],
+> including PowerShell Core (v6.0+) are not supported at this time.
 
 [PowerShell Desktop]:
   https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_windows_powershell_5.1#powershell-editions

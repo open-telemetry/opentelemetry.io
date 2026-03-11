@@ -6,14 +6,7 @@ aliases: [general-sdk-configuration]
 cSpell:ignore: ottrace
 ---
 
-> [!NOTE]
->
-> Support for environment variables is optional. For detailed information on
-> which environment variables each language implementation supports, see the
-> [Implementation Compliance Matrix][].
-
-[Implementation Compliance Matrix]:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md#environment-variables
+{{% include "env-var-note.md" %}}
 
 ## `OTEL_SERVICE_NAME`
 
@@ -169,7 +162,7 @@ may be a comma-separated list.
 
 Accepted values for `OTEL_METRICS_EXPORTER` are:
 
-- `otlp`: [OTLP]
+- `otlp`: [OTLP][]
 - `prometheus`:
   [Prometheus](https://github.com/prometheus/docs/blob/main/docs/instrumenting/exposition_formats.md)
 - `console`: [Standard Output](/docs/specs/otel/metrics/sdk_exporters/stdout/)
@@ -188,7 +181,7 @@ may be a comma-separated list.
 
 Accepted values for `OTEL_LOGS_EXPORTER` are:
 
-- `otlp`: [OTLP]
+- `otlp`: [OTLP][]
 - `console`: [Standard Output](/docs/specs/otel/logs/sdk_exporters/stdout/)
 - `none`: No automatically configured exporter for logs.
 

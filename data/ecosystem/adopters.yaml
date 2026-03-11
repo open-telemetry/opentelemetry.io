@@ -26,6 +26,12 @@
   reference: 'https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c29'
   referenceTitle: blog post
   contact: https://github.com/ethicalmohit
+- name: Capital One
+  url: https://www.capitalone.com/
+  components: [Collector Contrib, Java, Python, Go, Javascript, Lambda]
+  reference: 'https://colocatedeventsna2025.sched.com/event/28D7q'
+  referenceTitle: presentation
+  contact: ''
 - name: Care.com
   url: https://www.care.com
   components: [Collector, Go, Java, JavaScript, .NET]
