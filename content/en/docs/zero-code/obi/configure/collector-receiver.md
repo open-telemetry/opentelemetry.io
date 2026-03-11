@@ -106,7 +106,7 @@ don't have OCB installed, see the
 - [OCB](/docs/collector/extend/ocb/) installed and available on your PATH
 - A local checkout of the
   [OpenTelemetry eBPF Instrumentation](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation)
-  repository at v0.5.0 or later
+  repository at v0.6.0 or later
 - [Docker](https://docs.docker.com/get-started/get-docker/) (for generating eBPF
   files) or a C compiler, clang, and eBPF headers
 
@@ -140,7 +140,7 @@ don't have OCB installed, see the
      - gomod: go.opentelemetry.io/collector/processor/batchprocessor v0.142.0
 
    receivers:
-     - gomod: go.opentelemetry.io/obi v0.5.0
+     - gomod: go.opentelemetry.io/obi v0.6.0
        import: go.opentelemetry.io/obi/collector
 
    providers:
@@ -164,7 +164,7 @@ don't have OCB installed, see the
    published OBI module does not include the generated BPF code.
 
    **Version selection**: You must specify versions for each component. The
-   example above uses versions that are known to be compatible with OBI v0.5.0.
+   example above uses versions that are known to be compatible with OBI v0.6.0.
    If you're using a different OBI version or want to use newer component
    versions, check your OBI repository's `go.mod` file to see which collector
    component versions it depends on, then update the versions in your builder
@@ -294,8 +294,8 @@ the custom collector binary into a container image:
 2. Build and push the image:
 
    ```shell
-   docker build -t my-registry/otelcol-obi:v0.5.0 .
-   docker push my-registry/otelcol-obi:v0.5.0
+   docker build -t my-registry/otelcol-obi:v0.6.0 .
+   docker push my-registry/otelcol-obi:v0.6.0
    ```
 
 3. Deploy the DaemonSet:
@@ -320,7 +320,7 @@ the custom collector binary into a container image:
          hostPID: true
          containers:
            - name: otel-collector
-             image: my-registry/otelcol-obi:v0.5.0
+             image: my-registry/otelcol-obi:v0.6.0
              args:
                - --config=/conf/collector-config.yaml
              securityContext:
