@@ -27,9 +27,7 @@ have seen the long-term vision laid out in
 that post, **events are logs**, emitted through the Logs API and correlated with
 traces and metrics through context.
 
-To move closer to that vision, the OpenTelemetry maintainers have agreed on a
-plan to **deprecate the Span Event API**, while still supporting use cases that
-rely on span events in exported traces.
+To support this direction, we plan to deprecate the Span Event API, while continuing to support use cases that rely on span events in exported traces.
 
 This post explains why we’re making this change, what will (and won’t) change
 for you, and how we plan to help you migrate.
