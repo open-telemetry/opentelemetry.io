@@ -51,7 +51,7 @@ tracks this work, and the K8s SemConv SIG is happy to share that
 
 ## Next steps
 
-Next, once Semantic Conventions are released, the `k8sattributes` processor will
+Next, after the next Semantic Conventions release, the `k8sattributes` processor will
 be updated accordingly to use the latest `release_candidate` K8s Semantic
 Conventions behind the respective feature gates, following the Collector's
 [guidelines](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/docs/rfcs/semconv-feature-gates.md#proposed-mechanism).
