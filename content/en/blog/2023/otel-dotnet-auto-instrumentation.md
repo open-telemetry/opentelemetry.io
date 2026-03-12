@@ -21,7 +21,7 @@ telemetry. The automatic instrumentation is fully compatible with manual
 instrumentation in case you need to send custom spans or metrics.
 
 To get started, [read the documentation](/docs/zero-code/dotnet) or browse the
-[examples](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/tree/main/examples)
+[examples](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation/tree/8b0d32d5fc7b809a264ea1d70b69c8d3c32fb297/examples?from_branch=main)
 for demonstrations of different instrumentation scenarios covered by the
 OpenTelemetry .NET Automatic Instrumentation.
 

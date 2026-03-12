@@ -12,7 +12,7 @@ OpenTelemetry とは、次のようなものです。
   - エクスポート
   - [収集](../concepts/components/#collector)
 
-- **オープンソース**であり、**ベンダーやツールにとらわれません**。つまり、[Jaeger]や[Prometheus]のようなオープンソースツールや、商用製品を含む、さまざまなオブザーバビリティバックエンドで使用できるということです。OpenTelemetry はオブザーバビリティバックエンドでは**ありません**。
+- **オープンソース**であり、**ベンダーやツールにとらわれません**。つまり、[Jaeger][]や[Prometheus][]のようなオープンソースツールや、商用製品を含む、さまざまなオブザーバビリティバックエンドで使用できるということです。OpenTelemetry はオブザーバビリティバックエンドでは**ありません**。
 
 OpenTelemetryの主な目的は、あなたのアプリケーションやシステムを、その言語、インフラ、ランタイム環境に関係なく、簡単に計装できるようにすることです。
 
@@ -78,7 +78,7 @@ OpenTelemetryは拡張できるように設計されています。どのよう�
 
 ## 歴史 {#history}
 
-OpenTelemetryは、[Cloud Native Computing Foundation][](CNCF)プロジェクトであり、[OpenTracing](https://opentracing.io)と[OpenCensus](https://opencensus.io)の2つのプロジェクトが[統合された]成果物です。
+OpenTelemetryは、[Cloud Native Computing Foundation][](CNCF)プロジェクトであり、[OpenTracing](https://opentracing.io)と[OpenCensus](https://opencensus.io)の2つのプロジェクトが[統合された][]成果物です。
 これらのプロジェクトはどちらも、コードを計装し、オブザーバビリティバックエンドにテレメトリーデータを送信する方法の標準がないという問題を解決するために作られました。
 どちらのプロジェクトも、独立してこの問題を完全には解決できなかったので、協力するためにOpenTelemetryプロジェクトとして合併し、単一のソリューションを提供しながら、それぞれの強みを組み合わせました。
 
@@ -90,7 +90,7 @@ OpenTelemetryは、[Cloud Native Computing Foundation][](CNCF)プロジェクト
 
 - [Getting started](../getting-started/) &mdash; 早速始めてみましょう！
 - [OpenTelemetryの概念](../concepts/)について学ぶ
-- [Watch videos][] from the [OTel for beginners][] or other [playlists].
+- [Watch videos][] from the [OTel for beginners][] or other [playlists][].
 - Sign up for [training](/training), including the **free course** [Getting started with OpenTelemetry](/training/#courses).
 
 [Cloud Native Computing Foundation]: https://www.cncf.io

@@ -16,7 +16,7 @@ can diagnose them with the help of metrics collected, and fine-tune the system
 for optimal performance.
 
 With the addition of the
-[JMX Metric Insight](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics)
+[JMX Metric Insight](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/61d1e53727bede6e5289fd996ea3c95ee89c4bb6/instrumentation/jmx-metrics?from_branch=main)
 module into the
 [OpenTelemetry Java agent](https://github.com/open-telemetry/opentelemetry-java-instrumentation),
 we don't need to deploy a separate service just to collect JMX metrics for
@@ -30,16 +30,16 @@ identification. JMX Metric Insight comes with a number of predefined
 configurations containing curated sets of JMX metrics for popular application
 servers or frameworks, such as:
 
-- [ActiveMQ](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/activemq.md)
-- [Hadoop](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/hadoop.md)
-- [Jetty](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/jetty.md)
-- [Kafka Broker](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/kafka-broker.md)
-- [Tomcat](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/tomcat.md)
-- [WildFly](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/wildfly.md)
+- [ActiveMQ](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/09671184832be2ca5a8356a5753a001a49a300b8/instrumentation/jmx-metrics/javaagent/activemq.md?from_branch=main)
+- [Hadoop](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/3df64dabf914606bebb74dbf83fc45021b773368/instrumentation/jmx-metrics/javaagent/hadoop.md?from_branch=main)
+- [Jetty](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/e4547d427d4ca69c4cee9912263ac988775b7771/instrumentation/jmx-metrics/javaagent/jetty.md?from_branch=main)
+- [Kafka Broker](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/2bdddafdc49d17d8e5482f4f97b782afe85884d3/instrumentation/jmx-metrics/javaagent/kafka-broker.md?from_branch=main)
+- [Tomcat](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/4ec198fbadeadd1dd53bd07ecd356239c577efd4/instrumentation/jmx-metrics/javaagent/tomcat.md?from_branch=main)
+- [WildFly](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/39a68b068d88e6389824b5ae406c8f8c9e344b96/instrumentation/jmx-metrics/javaagent/wildfly.md?from_branch=main)
 
 You can also provide your own metric definitions, through one or more YAML
 files. For more information, see the
-[YAML file syntax documentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/jmx-metrics/javaagent#configuration-files).
+[YAML file syntax documentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/bc8deee72a88bc7cccb401adde14a422ca424dc4/instrumentation/jmx-metrics/javaagent?from_branch=main#configuration-files).
 
 ## Observe Kafka Broker metrics
 
@@ -179,7 +179,7 @@ in real time on this dashboard.
 You can also explore the official
 [OpenTelemetry Astronomy shop demo application](https://github.com/open-telemetry/opentelemetry-demo).
 The
-[message queue service](https://github.com/open-telemetry/opentelemetry-demo/tree/main/src/kafka)
+[message queue service](https://github.com/open-telemetry/opentelemetry-demo/tree/65489fd5faaff8438832e41fa7b3577f37565022/src/kafka?from_branch=main)
 which connects the checkout service with the accounting and fraud detection
 services is based on Kafka and utilizes the JMX Metric Insight module to export
 Kafka broker metrics out of the box. You can head to the
@@ -198,7 +198,7 @@ not! The module provides you with the option to create your custom metric
 definition yaml files, so you can observe any metric exposed as an MBean
 attribute. To get a peek into the structure of the yaml file, We can take a look
 at a segment of the
-[kafka-broker.yaml](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/kafka-broker.yaml):
+[kafka-broker.yaml](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/aabd14fb6ea88a7122a5bfc10abbb3051e4abf54/instrumentation/jmx-metrics/javaagent/src/main/resources/jmx/rules/kafka-broker.yaml?from_branch=main):
 
 ```yaml
 ---
@@ -221,7 +221,7 @@ specified under `mapping`. The metric reported will have the name
 metric is a monotonic sum. It's unit will be `{messages}`. We have also provided
 a description of the metric. This yaml segment is simple, to try out more
 configuration options, you can head to the
-[documentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/javaagent/README.md)
+[documentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/68cf3c4a399e32b3932239e35927cce2c3db3a22/instrumentation/jmx-metrics/javaagent/README.md?from_branch=main)
 to understand and try out all the features of the module.
 
 Lastly, if you feel some metrics are important to be in the predefined sets of

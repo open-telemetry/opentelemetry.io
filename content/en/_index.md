@@ -1,12 +1,6 @@
 ---
-NOTE_TO_LOCALE_AUTHORS: |
-  DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
-  DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
-  DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
 title: OpenTelemetry
-description: >-
-  High-quality, ubiquitous, and portable telemetry to enable effective
-  observability
+description: The open standard for telemetry
 outputs:
   - HTML
   # Include the following for `content/en` ONLY
@@ -15,12 +9,12 @@ outputs:
 developer_note: >
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
-show_banner: true
+params:
+  btn-lg: class="btn btn-lg btn-{1}" role="button"
+  show_banner: true
 ---
 
-<div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
-
-{{% blocks/cover image_anchor="top" height="max" color="primary" %}}
+{{% blocks/cover image_anchor="top" height="max td-below-navbar" %}}
 
 <!-- prettier-ignore -->
 ![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
@@ -30,11 +24,14 @@ show_banner: true
 {{% param description %}}
 {.display-6}
 
-<div class="l-primary-buttons mt-5">
-
-- [Learn more](docs/what-is-opentelemetry/)
-- [Try the demo](docs/demo/)
-
+<!-- prettier-ignore -->
+<div class="td-cta-buttons my-5">
+  <a {{% _param btn-lg primary %}} href="docs/what-is-opentelemetry/">
+    Learn More
+  </a>
+  <a {{% _param btn-lg secondary %}} href="docs/demo/">
+    Try the demo
+  </a>
 </div>
 
 {{% /blocks/cover %}}

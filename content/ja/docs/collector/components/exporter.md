@@ -2,10 +2,10 @@
 title: エクスポーター
 description: OpenTelemetry Collectorで利用可能なエクスポーターの一覧
 weight: 330
-default_lang_commit: 1c2b0563e8e66ef0952c442e3662e4bec18a8762
+default_lang_commit: 1c2b0563e8e66ef0952c442e3662e4bec18a8762 # patched
 drifted_from_default: true
 # prettier-ignore
-cSpell:ignore: alertmanagerexporter alibabacloudlogserviceexporter awscloudwatchlogsexporter awsemfexporter awskinesisexporter awss awsxrayexporter azureblobexporter azuredataexplorerexporter azuremonitorexporter bmchelixexporter cassandraexporter clickhouseexporter coralogixexporter datadogexporter datasetexporter debugexporter dorisexporter elasticsearchexporter faroexporter fileexporter googlecloudexporter googlecloudpubsubexporter googlecloudstorageexporter googlemanagedprometheusexporter honeycombmarkerexporter influxdbexporter kafkaexporter loadbalancingexporter logicmonitorexporter logzioexporter mezmoexporter nopexporter opensearchexporter otelarrowexporter otlpexporter otlphttpexporter prometheusexporter prometheusremotewriteexporter pulsarexporter rabbitmqexporter sapmexporter sematextexporter sentryexporter signalfxexporter splunkhecexporter stefexporter sumologicexporter syslogexporter tencentcloudlogserviceexporter tinybirdexporter xexporter zipkinexporter
+cSpell:ignore: alertmanagerexporter alibabacloudlogserviceexporter awscloudwatchlogsexporter awsemfexporter awskinesisexporter awss awsxrayexporter azureblobexporter azuredataexplorerexporter azuremonitorexporter bmchelixexporter cassandraexporter clickhouseexporter coralogixexporter datadogexporter datasetexporter debugexporter dorisexporter elasticsearchexporter faroexporter fileexporter googlecloudexporter googlecloudpubsubexporter googlecloudstorageexporter googlemanagedprometheusexporter honeycombmarkerexporter influxdbexporter kafkaexporter loadbalancingexporter logicmonitorexporter logzioexporter mezmoexporter nopexporter opensearchexporter otelarrowexporter otlpexporter otlphttpexporter prometheusexporter prometheusremotewriteexporter pulsarexporter rabbitmqexporter sematextexporter sentryexporter signalfxexporter splunkhecexporter stefexporter sumologicexporter syslogexporter tencentcloudlogserviceexporter tinybirdexporter xexporter zipkinexporter
 ---
 
 エクスポーターは、テレメトリーデータをオブザーバビリティバックエンドや宛先に送信します。
@@ -56,7 +56,6 @@ cSpell:ignore: alertmanagerexporter alibabacloudlogserviceexporter awscloudwatch
 | [prometheusremotewriteexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusremotewriteexporter)     | contrib, core              | -            | beta           | -           |
 | [pulsarexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/pulsarexporter)                                   | contrib                    | alpha        | alpha          | alpha       |
 | [rabbitmqexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/rabbitmqexporter)                               | contrib                    | alpha        | alpha          | alpha       |
-| [sapmexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sapmexporter)                                       | contrib                    | deprecated   | -              | -           |
 | [sematextexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sematextexporter)                               | contrib                    | -            | development    | development |
 | [sentryexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sentryexporter)                                   | contrib                    | beta         | -              | -           |
 | [signalfxexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/signalfxexporter)                               | contrib                    | beta         | beta           | beta        |

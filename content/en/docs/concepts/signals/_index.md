@@ -5,7 +5,7 @@ aliases: [data-sources, otel-concepts]
 weight: 11
 ---
 
-The purpose of OpenTelemetry is to collect, process, and export [signals].
+The purpose of OpenTelemetry is to collect, process, and export [signals][].
 Signals are system outputs that describe the underlying activity of the
 operating system and applications running on a platform. A signal can be
 something you want to measure at a specific point in time, like temperature or
@@ -21,14 +21,12 @@ OpenTelemetry currently supports:
 - [Logs](logs)
 - [Baggage](baggage)
 
-Also under development or at the [proposal] stage:
+Also under development or at the [proposal][] stage:
 
-- [Events], a specific type of [log](logs)
-- [Profiles] are being worked on by the Profiling Working Group.
+- [Events][], a specific type of [log](logs)
+- [Profiles](profiles)
 
 [Events]: /docs/specs/otel/logs/data-model/#events
-[Profiles]:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/main/oteps/profiles/0212-profiling-vision.md
 [proposal]:
   https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme
 [signals]: /docs/specs/otel/glossary/#signals

@@ -6,7 +6,7 @@ date: 2023-11-06
 
 {{< blog/integration-badge >}}
 
-Embracing OpenTelemetry's [vision], we are committed to enabling high-quality
+Embracing OpenTelemetry's [vision][], we are committed to enabling high-quality
 telemetry throughout the entire software stack!
 
 We're thrilled to see an expanding collection of
