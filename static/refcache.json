@@ -21900,8 +21900,8 @@
     "LastSeen": "2026-03-12T09:59:34.174975866Z"
   },
   "https://wiki.debian.org/SecureBoot": {
-    "StatusCode": -10,
-    "LastSeen": "2026-03-12T10:00:00.148677943Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-12T10:22:21.632Z"
   },
   "https://wiki.osdev.org/CPUID": {
     "StatusCode": 200,
