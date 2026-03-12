@@ -16,7 +16,7 @@ cSpell:ignore: alloc batchprocessor journalctl
 
 ## コレクターで内部テレメトリーを有効化する {#activate-internal-telemetry-in-the-collector}
 
-デフォルトでは、 コレクターは2つの方法で自身のテレメトリーを公開します。
+デフォルトでは、コレクターは2つの方法で自身のテレメトリーを公開します。
 
 - 内部 [メトリクス](#configure-internal-metrics) はデフォルトのポート `8888` の Prometheus インターフェイスを使用して公開されます。
 - デフォルトで[ログ](#configure-internal-logs) は `stderr` に出力されます。
@@ -95,7 +95,7 @@ resource:
 
 #### サービスのアドレス {#service-address}
 
-> [!NOTE] 内部テレメトリー構造の変更点
+> [!NOTE] 内部テレメトリー設定の変更点
 >
 > コレクター [v0.123.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0) 以降では、`service::telemetry::metrics::address` 設定は無視されます。
 > 以前のバージョンでは、以下のように設定できました。
@@ -107,7 +107,7 @@ resource:
 >       address: 0.0.0.0:8888
 > ```
 
-#### メトリクスの冗長度 {#metric-verbosity}
+#### メトリクスの詳細度 {#metric-verbosity}
 
 以下のいずれかの値を `level` フィールドに設定することで、コレクターのメトリクス出力の冗長度を調整できます。
 
@@ -132,7 +132,7 @@ service:
 #### メトリクスビュー {#metric-views}
 
 [`views`](/docs/specs/otel/metrics/sdk/#view) を使用することで、コレクターからどのようにメトリクスが出力されるかをさらに設定できます。
-たとえば、以下の設定は、新しい名前 `process_uptime` と説明を出力するために `otelcol_process_uptime` と名付けられたメトリクスを更新します。
+たとえば、以下の設定は、`otelcol_process_uptime` という名前のメトリクスを、新しい名前 `process_uptime` と説明で出力するように更新します。
 
 ```yaml
 service:
@@ -148,7 +148,7 @@ service:
 ```
 
 結果となる集計、属性、およびカーディナリティ制限を更新するために `views` を使用することもできます。
-オプションの完全な一覧については、OpenTelemetry 構成スキーマの[レポジトリ](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/View_kitchen_sink.yaml)にある例を参照してください。
+オプションの完全な一覧については、OpenTelemetry 構成スキーマの[リポジトリ](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/snippets/View_kitchen_sink.yaml)にある例を参照してください。
 
 ### 内部ログの設定 {#configure-internal-logs}
 
@@ -279,7 +279,7 @@ OTLP を通じてエクスポートされる内部メトリクスは、この動
 
 `http*` および `rpc*` メトリクスは計装ライブラリに由来します。
 それらの元の名前はドット（`.`）を使っていました。
-コレクター v0.120.0 より前では、Prometheus で公開される内部メトリクスは、Prometheus の命名規則に合わせるためにドット（`.`）がアンダースコア（`_`）へ変更していました。、その結果、`rpc_server_duration`のようなメトリクス名になっていました。
+コレクター v0.120.0 より前では、Prometheus で公開される内部メトリクスは、Prometheus の命名規則に合わせるためにドット（`.`）をアンダースコア（`_`）に変更していました。その結果、`rpc_server_duration`のようなメトリクス名になっていました。
 
 コレクターの 0.120.0 以降のバージョンでは Prometheus 3.0 スクレーパーを使用するため、ドットを含む元の `http*` および `rpc*` メトリクス名が保持されます。
 このページの[内部メトリクス](#lists-of-internal-metrics) は、`rpc.server.duration` のような元の形式で一覧化されています。
@@ -372,6 +372,7 @@ OTLP を通じてエクスポートされる内部メトリクスは、この動
 > [!NOTE]
 >
 > `http*` と `rpc*` のメトリクスは、コレクター SIG の管理下にないため、以下の成熟度レベルの対象外になります。
+>
 > `otelcol_processor_batch_` メトリクスは `batchprocessor` 固有です。
 >
 > `otelcol_receiver_`、`otelcol_scraper_`、`otelcol_processor_`、と `otelcol_exporter_` のメトリクスは、それぞれ対応する `helper` パッケージに由来します。
@@ -386,7 +387,7 @@ OTLP を通じてエクスポートされる内部メトリクスは、この動
 - スロットリングによるデータドロップが停止する。
 - 無効なデータによるデータドロップが開始される。無効なデータのサンプルが含まれる。
 - 無効なデータによるデータドロップが停止する。
-- クラッシュが検出され、クリーン停止と区別される。利用可能であればクラッシュデータが含まれる。
+- クリーン停止とは区別される形でクラッシュが検出される。利用可能であればクラッシュデータが含まれる。
 
 ## テレメトリーの成熟度レベル {#telemetry-maturity-levels}
 
@@ -434,7 +435,7 @@ OpenTelemetry Go の計装ライブラリによって生成されるものを含
 #### ベータ {#beta}
 
 ベータのメトリクスはリリース間でまだ変更される可能性がありますが、コンポーネントのオーナーは破壊的変更を最小化するよう努める必要があります。
-この段階は、より広い利用を促進したり、`stable` の前の最終ステップです。
+この段階は、より広い利用を促進し、`stable` の前の最終ステップです。
 
 #### 安定版 {#stable}
 
@@ -445,7 +446,7 @@ OpenTelemetry Go の計装ライブラリによって生成されるものを含
 
 #### 非推奨 {#deprecated}
 
-非推奨メトリクスは削除予定ですが、まだ使用可能になります。
+非推奨メトリクスは削除予定ですが、まだ使用可能です。
 これらのメトリクスの説明には、それらが非推奨になったバージョンに関する注記が含まれます。
 たとえば、以下になります。
 
