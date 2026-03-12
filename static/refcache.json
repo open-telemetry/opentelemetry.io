@@ -8055,10 +8055,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-12T10:00:34.244962414Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sapmexporter": {
-    "StatusCode": 404,
-    "LastSeen": "2026-03-12T10:00:37.140824743Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sematextexporter": {
     "StatusCode": 206,
     "LastSeen": "2026-03-12T10:00:41.738090172Z"
