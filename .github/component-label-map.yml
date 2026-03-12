@@ -24,6 +24,10 @@ lang:ja:
   - changed-files:
       - any-glob-to-any-file:
           - content/ja/**
+lang:pl:
+  - changed-files:
+      - any-glob-to-any-file:
+          - content/pl/**
 lang:pt:
   - changed-files:
       - any-glob-to-any-file:
