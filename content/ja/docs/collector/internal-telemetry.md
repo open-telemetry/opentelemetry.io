@@ -18,7 +18,7 @@ default_lang_commit: e4d556eb3c2204fa110a7960e14250a803d005a9
 
 デフォルトでは、 コレクターは2つの方法で自身のテレメトリーを公開します。
 
-- 内部 [メトリクス](#configure-internal-metrics) はデフォルトのポート `8888` の Prometheus インターフェースを使用して公開されます。
+- 内部 [メトリクス](#configure-internal-metrics) はデフォルトのポート `8888` の Prometheus インターフェイスを使用して公開されます。
 - デフォルトで[ログ](#configure-internal-logs) は `stderr` に出力されます。
 
 ### リソース属性を設定する {#configure-resource-attributes}
@@ -58,8 +58,8 @@ service:
 
 #### 内部メトリクス向けの Prometheus エンドポイント {#prometheus-endpoint-for-internal-metrics}
 
-また、必要に応じて、Prometheus エンドポイントを特定の 1 つのネットワークインターフェース、またはすべてのネットワークインターフェースで公開できます。
-コンテナ化された環境では、このポートをパブリックインターフェースで公開したい場合があります。
+また、必要に応じて、Prometheus エンドポイントを特定の 1 つのネットワークインターフェイス、またはすべてのネットワークインターフェイスで公開できます。
+コンテナ化された環境では、このポートをパブリックインターフェイスで公開したい場合があります。
 
 Prometheus の設定を `service::telemetry::metrics` の下に設定してください。
 
@@ -257,19 +257,19 @@ OpenTelemetry コレクターは、自身の運用メトリクスを明確に公
 
 このセクションでは、いくつかの内部メトリクスに適用される特別な命名規則を説明します。
 
-#### `otelcol_` プレフィックス {#otelcol-prefix}
+#### `otelcol_` 接頭辞 {#otelcol-prefix}
 
 コレクターの v0.106.1 以降では、内部メトリクス名はそのソースに基づいて異なる方法で扱われます。
 
-- コレクターコンポーネントから生成されるメトリクスは、`otelcol_` プレフィックスが付きます。
-- 計装ライブラリから生成されるメトリクスは、そのメトリクス名に明示的にプレフィックスが付けられていない限り、デフォルトでは `otelcol_`プレフィックスを使用しません。
+- コレクターコンポーネントから生成されるメトリクスは、`otelcol_` 接頭辞が付きます。
+- 計装ライブラリから生成されるメトリクスは、そのメトリクス名に明示的に接頭辞が付けられていない限り、デフォルトでは `otelcol_`接頭辞を使用しません。
 
-v0.106.1 より前のコレクターのバージョンにおいて、Prometheus エクスポーターを使用して出力されるすべての内部メトリクスは、そのメトリクスの生成元に関係なく `otelcol_` というプレフィックスが付与されます。
+v0.106.1 より前のコレクターのバージョンにおいて、Prometheus エクスポーターを使用して出力されるすべての内部メトリクスは、そのメトリクスの生成元に関係なく `otelcol_` という接頭辞が付与されます。
 これには、コレクターのコンポーネントと計装ライブラリの両方からのメトリクスが含まれます。
 
-#### `_total` サフィックス {#total-suffix}
+#### `_total` 接尾辞 {#total-suffix}
 
-デフォルトで Prometheus 固有の動作として、Prometheus エクスポーターは`otelcol_exporter_send_failed_spans_total` のように、Prometheus の命名規則に従うため合計メトリクスに `_total` サフィックスを追加します。
+デフォルトで Prometheus 固有の動作として、Prometheus エクスポーターは`otelcol_exporter_send_failed_spans_total` のように、Prometheus の命名規則に従うため合計メトリクスに `_total` 接尾辞を追加します。
 この動作は、Prometheus エクスポーターの設定で `without_type_suffix: false` を設定することで無効化できます。
 
 コレクターの設定で `service::telemetry::metrics::readers` を省略する場合、コレクターによって設定されるデフォルトの Prometheus エクスポーターは、すでに `without_type_suffix` が `false` に設定されています。
@@ -299,7 +299,7 @@ OTLP を通じてエクスポートされる内部メトリクスは、この動
 この一覧を作成するには、自身のメトリクスを localhost:8888/metrics エンドポイントに出力させるために、コレクターのインスタンスを設定してください。
 メトリクスを選び、コレクター core リポジトリーでそれを grep を使って検索してください。
 たとえば、`otelcol_process_memory_rss` は `grep -Hrn "memory_rss" .` を使って見つけられます。
-検索文字列からは、プレフィックスとなる可能性がある単語を必ず取り除いてください。
+検索文字列からは、接頭辞となる可能性がある単語を必ず取り除いてください。
 メトリクス一覧を含む .go ファイルが見つかるまで結果を確認します。
 `otelcol_process_memory_rss` の場合、それと他の process メトリクスは<https://github.com/open-telemetry/opentelemetry-collector/blob/31528ce81d44e9265e1a3bbbd27dc86d09ba1354/service/internal/proctelemetry/process_telemetry.go#L92>で見つけることができます。
 コレクターの内部メトリクスは、リポジトリー内の複数の異なるファイルで定義されている点に注意してください。
