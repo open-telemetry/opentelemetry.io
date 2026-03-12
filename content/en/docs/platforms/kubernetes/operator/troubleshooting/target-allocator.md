@@ -23,7 +23,7 @@ Kubernetes cluster.
 After you've deployed all of your resources to Kubernetes, make sure that the
 Target Allocator is discovering scrape targets from your
 [`ServiceMonitor`](https://prometheus-operator.dev/docs/getting-started/design/#servicemonitor)(s)
-or [PodMonitor]s.
+or [PodMonitor][]s.
 
 Suppose that you have this `ServiceMonitor` definition:
 
@@ -375,8 +375,8 @@ Allocator will fail to discover scrape targets from that `ServiceMonitor`.
 
 > [!TIP]
 >
-> The same applies if you're using a [PodMonitor]. In that case, you would use a
-> [`podMonitorSelector`] instead of a `serviceMonitorSelector`.
+> The same applies if you're using a [PodMonitor][]. In that case, you would use
+> a [`podMonitorSelector`][] instead of a `serviceMonitorSelector`.
 
 ### Did you leave out the serviceMonitorSelector and/or podMonitorSelector configuration altogether?
 

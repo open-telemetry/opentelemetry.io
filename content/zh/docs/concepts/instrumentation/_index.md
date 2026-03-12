@@ -3,7 +3,7 @@ title: 插桩
 description: OpenTelemetry 如何促进插桩
 aliases: [instrumenting]
 weight: 15
-default_lang_commit: deb98d0648c4833d9e9d77d42e91e2872658b50c
+default_lang_commit: deb98d0648c4833d9e9d77d42e91e2872658b50c # patched
 ---
 
 要使系统具备[可观测性][observable]，就必须进行**插桩（Instrumentation）**：
@@ -29,7 +29,7 @@ OpenTelemetry 不仅仅提供零代码和基于代码的遥测解决方案。以
 
 - 代码库可以将 OpenTelemetry API 作为依赖项进行集成，除非导入 OpenTelemetry SDK，
   否则对使用该库的应用不会产生任何影响。
-- 对于每种[信号]，你都有多种方法可以创建、处理和导出它们。
+- 对于每种[信号][signals]，你都有多种方法可以创建、处理和导出它们。
 - 借助实现中内建的[上下文传播](../context-propagation/)，你可以关联不同位置生成的信号。
 - [资源](../resources/)和[插桩作用域](../instrumentation-scope/)允许按不同实体对信号进行分组，
   例如[主机](/docs/specs/semconv/resource/host/)、[操作系统](/docs/specs/semconv/resource/os/)或
