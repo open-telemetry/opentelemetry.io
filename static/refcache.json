@@ -14723,6 +14723,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:52:37.740766798Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.prettierignore": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-12T08:36:23.416569-03:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:44:18.185306561Z"
@@ -14738,6 +14742,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json": {
     "StatusCode": 206,
     "LastSeen": "2026-02-26T19:16:31.539863-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/localization.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-12T08:36:34.812193-03:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl": {
     "StatusCode": 206,
@@ -16414,6 +16422,10 @@
   "https://github.com/streetsidesoftware/cspell-dicts": {
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:52:43.283371238Z"
+  },
+  "https://github.com/streetsidesoftware/cspell-dicts#natural-language-dictionaries": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-12T08:36:10.989299-03:00"
   },
   "https://github.com/strimzi": {
     "StatusCode": 206,

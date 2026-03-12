@@ -58,7 +58,9 @@ Keep entries alphabetically ordered by language code.
 
 Hugo uses content mounts to route locale-specific content and to fall back to
 English pages for sections that have not yet been translated. Add a block for
-`LANG_ID` in `config/_default/module-template.yaml` under `module.mounts`.
+`LANG_ID` in
+[`config/_default/module-template.yaml`][https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml]
+under `module.mounts`.
 
 ### Minimal setup
 
@@ -117,7 +119,9 @@ npm search @cspell/dict
 ```
 
 Look for a package matching `@cspell/dict-LANG_ID` or the closest regional
-variant (for example, `@cspell/dict-pl_pl` for Polish).
+variant (for example, `@cspell/dict-pl_pl` for Polish). You can also browse the
+full list of available dictionaries at the
+[cspell-dicts repository](https://github.com/streetsidesoftware/cspell-dicts#natural-language-dictionaries).
 
 ### 3b. Install the dictionary (if available)
 
@@ -141,7 +145,8 @@ here over time.
 
 ### 3d. Update `.cspell.yml`
 
-Add three entries to `.cspell.yml`:
+Add three entries to [`.cspell.yml`][] to enable spell checking for the new
+language:
 
 1. Under `import:` — import the cspell dictionary:
 
@@ -172,8 +177,8 @@ Keep entries in each section in alphabetical order by language code.
 > `import` and `dictionaries` entries. Only create the custom word list (step
 > 3c) and register it under `dictionaryDefinitions`.
 >
-> Also add the locale path to the `ignorePaths` list in `.cspell.yml` so that
-> cspell does not attempt to spell-check content it cannot validate:
+> Also add the locale path to the `ignorePaths` list in [`.cspell.yml`][] so
+> that cspell does not attempt to spell-check content it cannot validate:
 >
 > ```yaml
 > ignorePaths:
@@ -184,22 +189,22 @@ Keep entries in each section in alphabetical order by language code.
 
 If Prettier does not handle the language well — for example, scripts that are
 right-to-left or use non-Latin characters — add an ignore glob to
-`.prettierignore`:
+[`.prettierignore`][]:
 
 ```sh
 content/LANG_ID/**
 ```
 
-Check existing ignore entries in `.prettierignore` to see whether other locales
-with similar scripts have already been excluded, and follow the same pattern.
-This step is optional and should only be done when Prettier is known to produce
-incorrect formatting for the language.
+Check existing ignore entries in [`.prettierignore`][] to see whether other
+locales with similar scripts have already been excluded, and follow the same
+pattern. This step is optional and should only be done when Prettier is known to
+produce incorrect formatting for the language.
 
 ## Step 5 — GitHub repository automation {#gh-repo}
 
 ### Component label map
 
-In `.github/component-label-map.yml`, add an entry that triggers the
+In [`.github/component-label-map.yml`][], add an entry that triggers the
 `lang:LANG_ID` label on any PR touching `content/LANG_ID/`:
 
 ```yaml
@@ -211,8 +216,8 @@ lang:LANG_ID:
 
 ### Component owners
 
-In `.github/component-owners.yml`, add an entry that requires review from the
-locale's approvers team and the docs maintainers:
+In [`.github/component-owners.yml`][], add an entry that requires review from
+the locale's approvers team and the docs maintainers:
 
 ```yaml
 content/LANG_ID:
@@ -300,6 +305,14 @@ After all changes are merged, verify that the setup is correct:
   translated pages to validate that `default_lang_commit` front matter is
   present and correct.
 
+[`.cspell.yml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml
+[`.prettierignore`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.prettierignore
+[`.github/component-label-map.yml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml
+[`.github/component-owners.yml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
 [`projects/localization.md`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/localization.md
 [kickoff issue]: /docs/contributing/localization/#kickoff
