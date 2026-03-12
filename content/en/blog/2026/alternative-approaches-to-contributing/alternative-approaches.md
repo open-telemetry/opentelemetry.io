@@ -1,7 +1,7 @@
 ---
-title: Alternative approaches to contributing to OpenTelemetry
-linkTitle: Alternative approaches to contributing
-date: 2026-03-11
+title: Beyond the good first issue: how to make your contributions sustainable
+linkTitle: Beyong the good first issue
+date: 2026-03-20
 author: >-
 [Diana Todea](https://github.com/didiViking) (VictoriaMetrics),
 [Elizabeth Mathew](https://github.com/Elizabeth-Mathew1) (Signoz)
@@ -9,17 +9,24 @@ sig: End-User SIG
 cSpell:ignore: CLOTributor devex Signoz Todea
 ---
 
-## Alternative approaches to contributing to OpenTelemetry
+## Beyond the good first issue: how to make your contributions sustainable
 
-OpenTelemetry provides the tools and standards to collect metrics, logs, and
-traces from applications and services. Getting started with contributions can
-feel overwhelming, so here are some things we learned by getting hands on.
+OpenTelemetry provides the tools and standards to collect metrics, logs, and traces
+from applications and services. Getting started with contributions can feel overwhelming,
+so here are some lessons from hands-on experience.
 
-Most guides explain how to find a "good first issue," fork a repository, or join
-a SIG meeting. That advice is useful. But contributing to OpenTelemetry is not
-just about opening your first pull request. It is about understanding
-ecosystems, community dynamics, and long-term engagement, especially if you come
-from an underrepresented background in tech.
+Most guides explain how to find a “good first issue,” fork a repository, or join a SIG meeting.
+That advice is useful, and many resources cover it well. What often receives less attention is
+the broader context around contributing: understanding the ecosystem, navigating community dynamics,
+and building long-term engagement in a large open-source project.
+
+These aspects are especially important in OpenTelemetry, where development happens across many repositories,
+SIGs, and organizations. For newcomers, and particularly contributors from underrepresented backgrounds,
+this context can make a meaningful difference. When the unwritten rules of collaboration and decision-making are not visible,
+it’s harder to know where to start, participate confidently, or grow from occasional contributor to long-term member.
+
+This guide focuses on that deeper layer: going beyond the “first contribution” checklist to help you
+understand how the OpenTelemetry community works and find your place within it.
 
 ## Context and community
 
@@ -35,12 +42,17 @@ Be aware that "good first issues" are highly competitive and often get claimed
 within hours of being posted. If you can’t find one, shift your strategy:
 instead of waiting for the perfect issue, become an active part of the community
 through SIG calls and Slack discussions, and look for ad hoc tasks where you can
-make yourself useful. There are also initiatives like
-[Merge Forward](https://community.cncf.io/merge-forward/) that support
-underrepresented groups in open source. These communities provide mentorship,
+make yourself useful. 
+
+Initiatives like
+[Merge Forward](https://community.cncf.io/merge-forward/) support
+underrepresented groups in open source, providing mentorship,
 visibility, and access that many engineers lack in traditional corporate
 environments. OpenTelemetry exists within this larger CNCF ecosystem that
 actively works to lower participation barriers.
+
+OpenTelemetry actively supports inclusive participation through mentorship programs,
+localization groups, and asynchronous collaboration, helping contributors from diverse backgrounds engage on equal footing.
 
 Contribution becomes more meaningful when you understand how projects and
 communities connect.
@@ -63,7 +75,20 @@ End User discussions are open entry points into real technical conversations.
 These spaces allow contributors from different geographies, languages, and
 backgrounds to participate in shaping observability standards.
 
-Also, non-code contributions go beyond documentation and blogs. You can
+Participation happens through a mix of synchronous and asynchronous channels.
+While SIG meetings are important, many decisions also happen in GitHub issues, pull requests,
+and Slack threads, letting contributors engage across time zones.
+The project supports localization groups and community-driven documentation improvements,
+helping contributors from different language backgrounds participate and extend the reach of observability tooling globally.
+
+Non-native English speakers can actively contribute by improving phrasing, simplifying complex language,
+or helping with translations. Localization groups and documentation efforts are powerful ways to make OpenTelemetry more accessible worldwide.
+
+These mechanisms are not perfect, time zone differences and language barriers remain,
+but they provide multiple entry points for engagement: joining meetings, contributing
+asynchronously on GitHub, or helping improve documentation and translations.
+
+Non-code contributions go beyond documentation and blogs. You can
 volunteer for note-taking in SIG meetings, help organise community events like
 the OpenTelemetry Community Day at KubeCon, or join the Contributor Experience
 SIG, which focuses on making the project better for all contributors. Some
@@ -87,6 +112,14 @@ Your background is leverage. If you are an SRE, platform engineer, backend
 developer, or DevRel professional, you understand production realities. You know
 where documentation feels unclear and where automation breaks. That insight is
 practical and needed. Community context matters as much as technical skill.
+
+Background also goes beyond technical roles. Non-native English speakers can spot unclear phrasing,
+uncommon words, or ambiguous explanations and help simplify or localize them.
+Contributors with accessibility needs often identify gaps in documentation, tooling, or processes, improving readability, navigation, and inclusivity.
+
+These contributions, often overlooked, are just as critical as writing code, they shape the experience for everyone in the community.
+In large open-source communities, these perspectives matter as much as technical skill.
+Improving clarity, accessibility, and usability strengthens the ecosystem and enables broader participation.
 
 Let’s talk about a pain point that’s very common across most of CNCF’s Slack
 channels. Not being able to get feedback or PR reviews. If you do not get
@@ -139,6 +172,9 @@ fluent in any language besides English, you can make a big difference by
 contributing to localisation efforts. When documentation exists in more
 languages and reflects real-world use cases, it expands who can participate.
 
+Localization contributions have outsized impact: improving examples,
+simplifying phrasing and translating documentation allows global contributors to learn and engage more effectively.
+
 ## Setting up a local sandbox
 
 Hands-on exploration builds confidence. Clone repositories, run tests, modify
@@ -158,21 +194,17 @@ reinforce each other.
 
 ## Making contributions sustainable — an example
 
-Starting is simple. Staying engaged is what creates impact. Sustainable
-contribution means choosing an area of focus, attending SIG meetings, reviewing
-work, mentoring newcomers, and sharing knowledge. It is not about one large code
-change. It is about consistency.
+Starting is simple. Staying engaged is what creates impact.
 
-This is also a major challenge faced today; many contributors drop off after a
-couple of contributions. Consistency in open source comes from aligning your
-contributions with what genuinely excites you. Set a realistic routine to
-contribute weekly or monthly and stay connected by attending bi-weekly SIG
-meetings (even just as a listener at first), tracking GitHub updates, or staying
-active in Slack. When something triggers your curiosity and helps you learn, it
-becomes easier to show up consistently and enjoy the journey.
+Sustainable contribution means choosing a focus area, attending SIG meetings, reviewing work,
+mentoring newcomers, and sharing knowledge. It is about consistency, not one large code change.
+Many contributors drop off after a couple of contributions. Aligning your contributions with what
+excites you helps build a realistic routine: weekly or monthly contributions, attending SIG meetings
+(even as a listener), tracking GitHub updates, and staying active in Slack. Curiosity and learning drive consistent engagement.
 
-That progression came from sustained involvement, not a single breakthrough
-moment. OpenTelemetry offers a visible and structured pathway for growth. For
+Long-term consistency builds credibility and influence, especially for underrepresented contributors, where visibility matters.
+
+OpenTelemetry offers a visible and structured pathway for growth. For
 engineers from underrepresented groups, this matters. It provides credibility,
 influence, and community recognition beyond traditional corporate hierarchies.
 
