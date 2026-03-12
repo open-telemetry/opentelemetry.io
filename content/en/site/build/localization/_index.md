@@ -58,7 +58,8 @@ Keep entries alphabetically ordered by language code.
 
 Hugo uses content mounts to route locale-specific content and to fall back to
 English pages for sections that have not yet been translated. Add a block for
-`LANG_ID` in [`config/_default/module-template.yaml`][] under `module.mounts`.
+`LANG_ID` in [`config/_default/module-template.yaml`][] under the top-level
+`mounts:` section (this template is rendered into `module.yaml`).
 
 ### Minimal setup
 
@@ -103,8 +104,9 @@ untranslated sections serve English pages rather than returning 404s:
 > amount of translated content. Enabling fallbacks too early can give readers
 > the impression that the site is more translated than it actually is.
 
-Insert the new block in alphabetical order by language code among the existing
-locale blocks.
+Insert the new block alongside the existing locale blocks in
+`config/_default/module-template.yaml`, following the current ordering
+convention used in that file.
 
 ## Step 3 — Spell checking {#cspell}
 
@@ -186,11 +188,9 @@ Keep entries in each section in alphabetical order by language code.
 ## Step 4 — Prettier (conditional) {#prettier}
 
 If Prettier does not handle the language well — for example, scripts that are
-right-to-left or use non-Latin characters — add an ignore glob to
+right-to-left or use non-Latin characters — add an ignore entry to
 [`.prettierignore`][]:
 
-```sh
-content/LANG_ID/**
 ```
 
 Check existing ignore entries in [`.prettierignore`][] to see whether other
@@ -248,7 +248,7 @@ the `open-telemetry` GitHub organization.
 Update [`projects/localization.md`][] with the new locale's information:
 
 1. Add the language to the supported languages list at the top, in alphabetical
-   order by English language name:
+   order by language code:
 
    ```markdown
    - [NativeName - EnglishName (LANG_ID)][LANG_ID]
