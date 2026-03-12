@@ -191,6 +191,8 @@ If Prettier does not handle the language well — for example, scripts that are
 right-to-left or use non-Latin characters — add an ignore entry to
 [`.prettierignore`][]:
 
+```sh
+content/LANG_ID/**
 ```
 
 Check existing ignore entries in [`.prettierignore`][] to see whether other
