@@ -1,8 +1,8 @@
 ---
 title: 内部テレメトリー
 weight: 25
-cSpell:ignore: alloc batchprocessor journalctl
 default_lang_commit: e4d556eb3c2204fa110a7960e14250a803d005a9
+cSpell:ignore: alloc batchprocessor journalctl
 ---
 
 インスタンス自身の内部テレメトリーを確認することで、任意の OpenTelemetry コレクターのインスタンスの健全性を詳しく調べることができます。
@@ -97,7 +97,7 @@ resource:
 
 > [!NOTE] 内部テレメトリー構造の変更点
 >
-> コレクター [v0.123.0] 以降では、`service::telemetry::metrics::address` 設定は無視されます。
+> コレクター [v0.123.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0) 以降では、`service::telemetry::metrics::address` 設定は無視されます。
 > 以前のバージョンでは、以下のように設定できました。
 >
 > ```yaml
@@ -106,9 +106,6 @@ resource:
 >     metrics:
 >       address: 0.0.0.0:8888
 > ```
-
-[v0.123.0]:
-  https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0
 
 #### メトリクスの冗長度 {#metric-verbosity}
 
@@ -159,20 +156,20 @@ service:
 ログは構成 `service::telemetry::logs` で設定できます。
 [設定のオプション](https://github.com/open-telemetry/opentelemetry-collector/blob/main/service/telemetry/otelconftelemetry/config.go)は以下のとおりです。
 
-| フィールド名             | デフォルト値　　 | 説明                                                                                                                                                                                                                               　　　　　                                                        |
-| ---------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `level`                | `INFO`        | 有効なロギングレベルの最小値を設定します。指定可能な他の値は `DEBUG`、`WARN`、`ERROR` になります。                                                                                                                                                                                                             |
-| `development`          | `false`       | ロガーを開発モードにします。                                                                                                                                                                                                                                                                           |
-| `encoding`             | `console`     | ロガーのエンコーディングを設定します。指定可能な他の値は `json` になります。                                                                                                                                                                                                                                  |
-| `disable_caller`       | `false`       | 呼び出し関数のファイル名と行番号をログに注記しないようにします。デフォルトでは、すべてのログに注記が付与されます。                                                                                                                                                                                                    |
-| `disable_stacktrace`   | `false`       | スタックトレースの自動取得を無効化します。スタックトレースは、開発環境では `WARN` レベル以上、本番環境では `ERROR` レベル以上のログで取得されます。                                                                                                                                                                      |
-| `sampling::enabled`    | `true`        | サンプリングポリシーを設定します。                                                                                                                                                                                                                                                                      |
-| `sampling::tick`       | `10s`         | ロガーが各サンプリングに適用する秒単位の間隔。                                                                                                                                                                                                                                                            |
-| `sampling::initial`    | `10`          | 各 `sampling::tick` の開始時に記録されるメッセージ数。                                                                                                                                                                                                                                                  |
-| `sampling::thereafter` | `100`         | `sampling::initial` のメッセージが記録された後の後続メッセージに対するサンプリングポリシーを設定します。`sampling::thereafter` を `N` に設定すると、`N` 番目ごとのメッセージが記録され、それ以外は破棄されます。`N` が 0 の場合、`sampling::initial` のメッセージ記録後はすべてのメッセージが破棄されます。                             |
-| `output_paths`         | `["stderr"]`  | ロギング出力の書き込み先となる URL またはファイルパスの一覧。                                                                                                                                                                                                                                               |
-| `error_output_paths`   | `["stderr"]`  | ロガーエラーの書き込み先となる URL またはファイルパスの一覧。                                                                                                                                                                                                                                               |
-| `initial_fields`       |               | ロギングコンテキストを拡充するため、すべてのログエントリーに追加される静的なキーと値のペアの集合。デフォルトでは initial field がありません。                                                                                                                                                                           |
+| フィールド名           | デフォルト値　　 | 説明 　　　　　                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `level`                | `INFO`           | 有効なロギングレベルの最小値を設定します。指定可能な他の値は `DEBUG`、`WARN`、`ERROR` になります。                                                                                                                                                                                                          |
+| `development`          | `false`          | ロガーを開発モードにします。                                                                                                                                                                                                                                                                                |
+| `encoding`             | `console`        | ロガーのエンコーディングを設定します。指定可能な他の値は `json` になります。                                                                                                                                                                                                                                |
+| `disable_caller`       | `false`          | 呼び出し関数のファイル名と行番号をログに注記しないようにします。デフォルトでは、すべてのログに注記が付与されます。                                                                                                                                                                                          |
+| `disable_stacktrace`   | `false`          | スタックトレースの自動取得を無効化します。スタックトレースは、開発環境では `WARN` レベル以上、本番環境では `ERROR` レベル以上のログで取得されます。                                                                                                                                                         |
+| `sampling::enabled`    | `true`           | サンプリングポリシーを設定します。                                                                                                                                                                                                                                                                          |
+| `sampling::tick`       | `10s`            | ロガーが各サンプリングに適用する秒単位の間隔。                                                                                                                                                                                                                                                              |
+| `sampling::initial`    | `10`             | 各 `sampling::tick` の開始時に記録されるメッセージ数。                                                                                                                                                                                                                                                      |
+| `sampling::thereafter` | `100`            | `sampling::initial` のメッセージが記録された後の後続メッセージに対するサンプリングポリシーを設定します。`sampling::thereafter` を `N` に設定すると、`N` 番目ごとのメッセージが記録され、それ以外は破棄されます。`N` が 0 の場合、`sampling::initial` のメッセージ記録後はすべてのメッセージが破棄されます。 |
+| `output_paths`         | `["stderr"]`     | ロギング出力の書き込み先となる URL またはファイルパスの一覧。                                                                                                                                                                                                                                               |
+| `error_output_paths`   | `["stderr"]`     | ロガーエラーの書き込み先となる URL またはファイルパスの一覧。                                                                                                                                                                                                                                               |
+| `initial_fields`       |                  | ロギングコンテキストを拡充するため、すべてのログエントリーに追加される静的なキーと値のペアの集合。デフォルトでは initial field がありません。                                                                                                                                                               |
 
 `journalctl` を使用して、Linux の systemd システム上でコレクターのログを確認することもできます。
 
@@ -229,8 +226,7 @@ service:
 追加のオプションについては、[設定例][kitchen-sink-config] を参照してください。
 `tracer_provider` セクションが、ここでの `traces` に対応していることに注意してください。
 
-[kitchen-sink-config]:
-  https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml
+[kitchen-sink-config]: https://github.com/open-telemetry/opentelemetry-configuration/blob/v0.3.0/examples/kitchen-sink.yaml
 
 ## 内部テレメトリーの種類 {#types-of-internal-telemetry}
 
@@ -308,73 +304,70 @@ OTLP を通じてエクスポートされる内部メトリクスは、この動
 
 #### `basic` レベルのメトリクス {#basic-level-metrics}
 
-| メトリクス名                                             | 説明                                                                                     | 種別    |
-| ------------------------------------------------------ | --------------------------------------------------------------------------------------- | ------- |
-| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | エクスポーターがキュー投入に失敗したログの数。                                                    | Counter |
-| `otelcol_exporter_enqueue_failed_`<br>`metric_points`  | エクスポーターがキュー投入に失敗したメトリクスポイントの数。                                        | Counter |
-| `otelcol_exporter_enqueue_failed_`<br>`spans`          | エクスポーターがキュー投入に失敗したスパンの数。                                                  | Counter |
-| `otelcol_exporter_queue_capacity`                      | 送信キューの固定容量（バッチ単位）。                                                          | Gauge   |
-| `otelcol_exporter_queue_size`                          | 送信キューの現在サイズ（バッチ単位）。                                                        | Gauge   |
-| `otelcol_exporter_send_failed_`<br>`log_records`       | エクスポーターが宛先への送信に失敗したログの数。                                                  | Counter |
-| `otelcol_exporter_send_failed_`<br>`metric_points`     | エクスポーターが宛先への送信に失敗したメトリクスポイントの数。                                      | Counter |
-| `otelcol_exporter_send_failed_`<br>`spans`             | エクスポーターが宛先への送信に失敗したスパンの数。                                                | Counter |
-| `otelcol_exporter_sent_log_records`                    | 宛先に正常に送信されたログの数。                                                             | Counter |
-| `otelcol_exporter_sent_metric_points`                  | 宛先に正常に送信されたメトリクスポイントの数。                                                 | Counter |
-| `otelcol_exporter_sent_spans`                          | 宛先に正常に送信されたスパンの数。                                                           | Counter |
-| `otelcol_process_cpu_seconds`                          | CPU のユーザー時間とシステム時間の合計（秒）。                                                 | Counter |
-| `otelcol_process_memory_rss`                           | 物理メモリーの合計（RSS: resident set size）（バイト）。                                      | Gauge   |
-| `otelcol_process_runtime_heap_`<br>`alloc_bytes`       | 割り当て済みヒープオブジェクトのバイト数（`go doc runtime.MemStats.HeapAlloc` を参照）。         | Gauge   |
-| `otelcol_process_runtime_total_`<br>`alloc_bytes`      | ヒープオブジェクトに割り当てられた累積バイト数（`go doc runtime.MemStats.TotalAlloc` を参照）。   | Counter |
-| `otelcol_process_runtime_total_`<br>`sys_memory_bytes` | OS から取得したメモリー総バイト数（`go doc runtime.MemStats.Sys` を参照）。                   | Gauge   |
-| `otelcol_process_uptime`                               | プロセスの稼働時間（秒）。                                                                 | Counter |
-| `otelcol_processor_incoming_items`                     | processor に渡された項目数。                                                             | Counter |
-| `otelcol_processor_outgoing_items`                     | processor から出力された項目数。                                                          | Counter |
-| `otelcol_receiver_accepted_`<br>`log_records`          | 正常に取り込まれ、パイプラインへプッシュされたログの数。                                       | Counter |
-| `otelcol_receiver_accepted_`<br>`metric_points`        | 正常に取り込まれ、パイプラインへプッシュされたメトリクスポイントの数。                            | Counter |
+| メトリクス名                                           | 説明                                                                                            | 種別    |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------- | ------- |
+| `otelcol_exporter_enqueue_failed_`<br>`log_records`    | エクスポーターがキュー投入に失敗したログの数。                                                  | Counter |
+| `otelcol_exporter_enqueue_failed_`<br>`metric_points`  | エクスポーターがキュー投入に失敗したメトリクスポイントの数。                                    | Counter |
+| `otelcol_exporter_enqueue_failed_`<br>`spans`          | エクスポーターがキュー投入に失敗したスパンの数。                                                | Counter |
+| `otelcol_exporter_queue_capacity`                      | 送信キューの固定容量（バッチ単位）。                                                            | Gauge   |
+| `otelcol_exporter_queue_size`                          | 送信キューの現在サイズ（バッチ単位）。                                                          | Gauge   |
+| `otelcol_exporter_send_failed_`<br>`log_records`       | エクスポーターが宛先への送信に失敗したログの数。                                                | Counter |
+| `otelcol_exporter_send_failed_`<br>`metric_points`     | エクスポーターが宛先への送信に失敗したメトリクスポイントの数。                                  | Counter |
+| `otelcol_exporter_send_failed_`<br>`spans`             | エクスポーターが宛先への送信に失敗したスパンの数。                                              | Counter |
+| `otelcol_exporter_sent_log_records`                    | 宛先に正常に送信されたログの数。                                                                | Counter |
+| `otelcol_exporter_sent_metric_points`                  | 宛先に正常に送信されたメトリクスポイントの数。                                                  | Counter |
+| `otelcol_exporter_sent_spans`                          | 宛先に正常に送信されたスパンの数。                                                              | Counter |
+| `otelcol_process_cpu_seconds`                          | CPU のユーザー時間とシステム時間の合計（秒）。                                                  | Counter |
+| `otelcol_process_memory_rss`                           | 物理メモリーの合計（RSS: resident set size）（バイト）。                                        | Gauge   |
+| `otelcol_process_runtime_heap_`<br>`alloc_bytes`       | 割り当て済みヒープオブジェクトのバイト数（`go doc runtime.MemStats.HeapAlloc` を参照）。        | Gauge   |
+| `otelcol_process_runtime_total_`<br>`alloc_bytes`      | ヒープオブジェクトに割り当てられた累積バイト数（`go doc runtime.MemStats.TotalAlloc` を参照）。 | Counter |
+| `otelcol_process_runtime_total_`<br>`sys_memory_bytes` | OS から取得したメモリー総バイト数（`go doc runtime.MemStats.Sys` を参照）。                     | Gauge   |
+| `otelcol_process_uptime`                               | プロセスの稼働時間（秒）。                                                                      | Counter |
+| `otelcol_processor_incoming_items`                     | processor に渡された項目数。                                                                    | Counter |
+| `otelcol_processor_outgoing_items`                     | processor から出力された項目数。                                                                | Counter |
+| `otelcol_receiver_accepted_`<br>`log_records`          | 正常に取り込まれ、パイプラインへプッシュされたログの数。                                        | Counter |
+| `otelcol_receiver_accepted_`<br>`metric_points`        | 正常に取り込まれ、パイプラインへプッシュされたメトリクスポイントの数。                          | Counter |
 | `otelcol_receiver_accepted_spans`                      | 正常に取り込まれ、パイプラインへプッシュされたスパンの数。                                      | Counter |
-| `otelcol_receiver_refused_`<br>`log_records`           | パイプラインへプッシュできなかったログの数。                                                  | Counter |
+| `otelcol_receiver_refused_`<br>`log_records`           | パイプラインへプッシュできなかったログの数。                                                    | Counter |
 | `otelcol_receiver_refused_`<br>`metric_points`         | パイプラインへプッシュできなかったメトリクスポイントの数。                                      | Counter |
-| `otelcol_receiver_refused_spans`                       | パイプラインへプッシュできなかったスパンの数。                                                | Counter |
-| `otelcol_scraper_errored_`<br>`metric_points`          | コレクターがスクレイプに失敗したメトリクスポイントの数。                                       | Counter |
-| `otelcol_scraper_scraped_`<br>`metric_points`          | コレクターがスクレイプしたメトリクスポイントの数。                                            | Counter |
+| `otelcol_receiver_refused_spans`                       | パイプラインへプッシュできなかったスパンの数。                                                  | Counter |
+| `otelcol_scraper_errored_`<br>`metric_points`          | コレクターがスクレイプに失敗したメトリクスポイントの数。                                        | Counter |
+| `otelcol_scraper_scraped_`<br>`metric_points`          | コレクターがスクレイプしたメトリクスポイントの数。                                              | Counter |
 
 #### 追加の `normal` レベルのメトリクス {#additional-normal-level-metrics}
 
-| メトリクス名                                              | 説明                                                             | 種別      |
-| ------------------------------------------------------- | --------------------------------------------------------------- | --------- |
-| `otelcol_processor_batch_batch_`<br>`send_size`         | 送信されたバッチ内のユニット数。                                      | Histogram |
-| `otelcol_processor_batch_batch_size_`<br>`trigger_send` | サイズトリガーによりバッチが送信された回数。                            | Counter   |
-| `otelcol_processor_batch_metadata_`<br>`cardinality`    | 処理されている異なるメタデータ値の組み合わせ数。                         | Counter   |
-| `otelcol_processor_batch_timeout_`<br>`trigger_send`    | タイムアウトトリガーによりバッチが送信された回数。                       | Counter   |
+| メトリクス名                                            | 説明                                               | 種別      |
+| ------------------------------------------------------- | -------------------------------------------------- | --------- |
+| `otelcol_processor_batch_batch_`<br>`send_size`         | 送信されたバッチ内のユニット数。                   | Histogram |
+| `otelcol_processor_batch_batch_size_`<br>`trigger_send` | サイズトリガーによりバッチが送信された回数。       | Counter   |
+| `otelcol_processor_batch_metadata_`<br>`cardinality`    | 処理されている異なるメタデータ値の組み合わせ数。   | Counter   |
+| `otelcol_processor_batch_timeout_`<br>`trigger_send`    | タイムアウトトリガーによりバッチが送信された回数。 | Counter   |
 
 > [!NOTE] Batch processor メトリクスのレベルの変更
 >
-> コレクター [v0.99.0] では、導入時から `detailed` となっている `otelcol_processor_batch_batch_send_size_bytes` を除くすべての batch processor メトリクスが `basic` から `normal`（現在のレベル）へ引き上げられました。
+> コレクター [v0.99.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0) では、導入時から `detailed` となっている `otelcol_processor_batch_batch_send_size_bytes` を除くすべての batch processor メトリクスが `basic` から `normal`（現在のレベル）へ引き上げられました。
 > ただし、これらのメトリクスは v0.109.0 から v0.121.0 までの間、意図せず `basic` に戻されていた点に注意してください。
-
-[v0.99.0]:
-  https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0
 
 #### 追加の `detailed` レベルのメトリクス {#additional-detailed-level-metrics}
 
-| メトリクス名                                            | 説明                                                                                       | 種別      |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------------------- | --------- |
-| `http.client.request.body.size`                       | HTTP クライアントリクエストボディーのサイズを測定します。                                          | Counter   |
-| `http.client.request.duration`                        | HTTP クライアントリクエストの継続時間を測定します。                                               | Histogram |
-| `http.server.request.body.size`                       | HTTP サーバーリクエストボディーのサイズを測定します。                                             | Counter   |
-| `http.server.request.duration`                        | HTTP サーバーリクエストの継続時間を測定します。                                                  | Histogram |
-| `http.server.response.body.size`                      | HTTP サーバーレスポンスボディーのサイズを測定します。                                              | Counter   |
-| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | 送信されたバッチ内のバイト数。                                                                 | Histogram |
-| `rpc.client.duration`                                 | アウトバウンド RPC の継続時間を測定します。                                                      | Histogram |
-| `rpc.client.request.size`                             | RPC リクエストメッセージ（非圧縮）のサイズを測定します。                                           | Histogram |
-| `rpc.client.requests_per_rpc`                         | RPC ごとに受信されたメッセージ数を測定します。すべての非ストリーミング RPC では 1 になる必要があります。  | Histogram |
-| `rpc.client.response.size`                            | RPC レスポンスメッセージ（非圧縮）のサイズを測定します。                                           | Histogram |
-| `rpc.client.responses_per_rpc`                        | RPC ごとに送信されたメッセージ数を測定します。すべての非ストリーミング RPC では 1 になる必要があります。  | Histogram |
-| `rpc.server.duration`                                 | インバウンド RPC の継続時間を測定します。                                                       | Histogram |
-| `rpc.server.request.size`                             | RPC リクエストメッセージ（非圧縮）のサイズを測定します。                                           | Histogram |
-| `rpc.server.requests_per_rpc`                         | RPC ごとに受信されたメッセージ数を測定します。すべての非ストリーミング RPC では 1 になる必要があります。  | Histogram |
-| `rpc.server.response.size`                            | RPC レスポンスメッセージ（非圧縮）のサイズを測定します。                                           | Histogram |
-| `rpc.server.responses_per_rpc`                        | RPC ごとに送信されたメッセージ数を測定します。すべての非ストリーミング RPC では 1 になる必要があります。  | Histogram |
+| メトリクス名                                          | 説明                                                                                                     | 種別      |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | --------- |
+| `http.client.request.body.size`                       | HTTP クライアントリクエストボディーのサイズを測定します。                                                | Counter   |
+| `http.client.request.duration`                        | HTTP クライアントリクエストの継続時間を測定します。                                                      | Histogram |
+| `http.server.request.body.size`                       | HTTP サーバーリクエストボディーのサイズを測定します。                                                    | Counter   |
+| `http.server.request.duration`                        | HTTP サーバーリクエストの継続時間を測定します。                                                          | Histogram |
+| `http.server.response.body.size`                      | HTTP サーバーレスポンスボディーのサイズを測定します。                                                    | Counter   |
+| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | 送信されたバッチ内のバイト数。                                                                           | Histogram |
+| `rpc.client.duration`                                 | アウトバウンド RPC の継続時間を測定します。                                                              | Histogram |
+| `rpc.client.request.size`                             | RPC リクエストメッセージ（非圧縮）のサイズを測定します。                                                 | Histogram |
+| `rpc.client.requests_per_rpc`                         | RPC ごとに受信されたメッセージ数を測定します。すべての非ストリーミング RPC では 1 になる必要があります。 | Histogram |
+| `rpc.client.response.size`                            | RPC レスポンスメッセージ（非圧縮）のサイズを測定します。                                                 | Histogram |
+| `rpc.client.responses_per_rpc`                        | RPC ごとに送信されたメッセージ数を測定します。すべての非ストリーミング RPC では 1 になる必要があります。 | Histogram |
+| `rpc.server.duration`                                 | インバウンド RPC の継続時間を測定します。                                                                | Histogram |
+| `rpc.server.request.size`                             | RPC リクエストメッセージ（非圧縮）のサイズを測定します。                                                 | Histogram |
+| `rpc.server.requests_per_rpc`                         | RPC ごとに受信されたメッセージ数を測定します。すべての非ストリーミング RPC では 1 になる必要があります。 | Histogram |
+| `rpc.server.response.size`                            | RPC レスポンスメッセージ（非圧縮）のサイズを測定します。                                                 | Histogram |
+| `rpc.server.responses_per_rpc`                        | RPC ごとに送信されたメッセージ数を測定します。すべての非ストリーミング RPC では 1 になる必要があります。 | Histogram |
 
 > [!NOTE]
 >
@@ -521,7 +514,5 @@ otelcol_exporter_queue_size 0
 `otelcol_receiver_accepted_log_records`、`otelcol_receiver_accepted_spans`、と `otelcol_receiver_accepted_metric_points` メトリクスでデータ流入を監視できます。
 そして、 `otelcol_exporter_sent_log_records`、`otelcol_exporter_sent_spans`、と `otelcol_exporter_sent_metric_points` メトリクスでデータ流出を監視できます。
 
-[SemConvGuidance]:
-  /docs/specs/semconv/general/semantic-convention-groups#group-stability
-[OTEP-0232]:
-  https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/oteps/0232-maturity-of-otel.md
+[SemConvGuidance]: /docs/specs/semconv/general/semantic-convention-groups#group-stability
+[OTEP-0232]: https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/oteps/0232-maturity-of-otel.md
