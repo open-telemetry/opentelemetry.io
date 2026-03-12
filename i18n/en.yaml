@@ -26,3 +26,22 @@ ui_search_ai_modal_disclaimer: >-
   [feedback](https://github.com/open-telemetry/opentelemetry.io/discussions/6802).
 ui_search_ai_popover_content: >-
   <a id='ask-ai-trigger' href='#'>Ask AI</a> (&#x2318;-K)
+
+# Config Language Status Accordion
+config_accordion_search_label: Search types
+config_accordion_search_placeholder: Filter by type name...
+config_accordion_category_label: Type category
+config_accordion_all_types: All types
+config_accordion_stable_only: Stable only
+config_accordion_experimental_only: Experimental only
+config_accordion_expand_all: Expand all
+config_accordion_collapse_all: Collapse all
+config_accordion_languages: 'Languages:'
+config_accordion_status: 'Status:'
+config_accordion_showing: Showing
+config_accordion_of: of
+config_accordion_types: types
+config_accordion_notes: 'Notes:'
+config_accordion_properties: 'Properties:'
+config_accordion_version: version
+config_accordion_no_data: No data available

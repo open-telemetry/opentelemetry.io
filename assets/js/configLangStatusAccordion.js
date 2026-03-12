@@ -8,14 +8,13 @@
 (function () {
   'use strict';
 
-  // Constants
   const DEBOUNCE_DELAY = 300; // milliseconds
   const LOCAL_STORAGE_KEY = 'config-lang-status-preferences';
   const URL_PARAM_SEARCH = 'search';
   const URL_PARAM_FILTER = 'filter';
 
-  // I18n strings (can be overridden)
-  const i18nStrings = {
+  // I18n strings (defaults, overridden by data-i18n attribute)
+  let i18nStrings = {
     searchPlaceholder: 'Filter by type name...',
     allTypes: 'All types',
     stableOnly: 'Stable only',
@@ -28,7 +27,7 @@
     noDataAvailable: 'No data available',
     notes: 'Notes:',
     properties: 'Properties:',
-    version: 'version:'
+    version: 'version:',
   };
 
   /**
@@ -38,7 +37,7 @@
   const statusData = {
     languages: {},
     types: [],
-    languageOrder: [] // Order in which languages appear
+    languageOrder: [], // Order in which languages appear
   };
 
   /**
@@ -46,6 +45,12 @@
    * @type {Array<{element: HTMLElement, event: string, handler: Function}>}
    */
   const eventListeners = [];
+
+  /**
+   * Container element for the accordion
+   * @type {HTMLElement|null}
+   */
+  let container = null;
 
   /**
    * Escapes HTML to prevent XSS attacks
@@ -67,19 +72,26 @@
     const temp = document.createElement('div');
     temp.innerHTML = html;
 
-    // Only allow specific tags and attributes
+    // Only allow specific tags and no attributes (to prevent XSS via event handlers)
     const allowedTags = ['br', 'strong', 'em', 'code', 'ul', 'li'];
-    const cleanHtml = Array.from(temp.childNodes)
-      .map(node => {
-        if (node.nodeType === Node.TEXT_NODE) {
-          return escapeHtml(node.textContent);
-        }
-        if (node.nodeType === Node.ELEMENT_NODE && allowedTags.includes(node.tagName.toLowerCase())) {
-          return node.outerHTML;
-        }
+
+    function sanitizeNode(node) {
+      if (node.nodeType === Node.TEXT_NODE) {
         return escapeHtml(node.textContent);
-      })
-      .join('');
+      }
+      if (
+        node.nodeType === Node.ELEMENT_NODE &&
+        allowedTags.includes(node.tagName.toLowerCase())
+      ) {
+        // Create a clean element without any attributes
+        const tagName = node.tagName.toLowerCase();
+        const children = Array.from(node.childNodes).map(sanitizeNode).join('');
+        return `<${tagName}>${children}</${tagName}>`;
+      }
+      return escapeHtml(node.textContent);
+    }
+
+    const cleanHtml = Array.from(temp.childNodes).map(sanitizeNode).join('');
 
     return cleanHtml;
   }
@@ -92,7 +104,9 @@
    */
   function addTrackedEventListener(element, event, handler) {
     if (!element) {
-      console.error(`Cannot add event listener: element is null for event "${event}"`);
+      console.error(
+        `Cannot add event listener: element is null for event "${event}"`,
+      );
       return;
     }
     element.addEventListener(event, handler);
@@ -128,13 +142,17 @@
    * Dynamically discovers languages from the content
    */
   function parseExistingContent() {
-    const content = document.querySelector('.language-implementation-status-content');
+    const content = document.querySelector(
+      '.language-implementation-status-content',
+    );
     if (!content) {
-      console.error('Could not find .language-implementation-status-content element');
+      console.error(
+        'Could not find .language-implementation-status-content element',
+      );
       return false;
     }
 
-    const sections = content.querySelectorAll('h3');
+    const sections = content.querySelectorAll('h2');
 
     if (sections.length === 0) {
       console.warn('No language sections found in content');
@@ -142,7 +160,7 @@
     }
 
     // Dynamically parse languages from content
-    sections.forEach(section => {
+    sections.forEach((section) => {
       const langId = section.id;
       if (!langId) {
         console.warn('Section found without ID', section);
@@ -157,7 +175,7 @@
         statusData.languages[langId] = {
           name: langName,
           version: '',
-          types: {}
+          types: {},
         };
         statusData.languageOrder.push(langId);
       }
@@ -169,7 +187,9 @@
       while (currentElement) {
         // Match version string more robustly
         if (currentElement.textContent) {
-          const versionMatch = currentElement.textContent.match(/Latest supported file format:\s*`?([^`\n]+)`?/);
+          const versionMatch = currentElement.textContent.match(
+            /Latest supported file format:\s*`?([^`\n]+)`?/,
+          );
           if (versionMatch) {
             statusData.languages[langId].version = versionMatch[1].trim();
           }
@@ -180,8 +200,8 @@
           break;
         }
 
-        // Stop if we hit another h3 (next language section)
-        if (currentElement.tagName === 'H3') {
+        // Stop if we hit another h2 (next language section)
+        if (currentElement.tagName === 'H2') {
           break;
         }
 
@@ -190,17 +210,21 @@
 
       if (table) {
         const rows = table.querySelectorAll('tbody tr');
-        rows.forEach(row => {
+        rows.forEach((row) => {
           const cells = row.querySelectorAll('td');
           if (cells.length >= 2) {
             const typeLink = cells[0].querySelector('a');
-            const typeName = (typeLink?.textContent || cells[0].textContent).trim();
+            const typeName = (
+              typeLink?.textContent || cells[0].textContent
+            ).trim();
             const status = cells[1].textContent.trim();
             const notes = cells[2]?.textContent.trim() || '';
             // Use textContent instead of innerHTML to prevent XSS
             const detailsText = cells[3]?.textContent.trim() || '';
             // If we need HTML, sanitize it
-            const detailsHtml = cells[3]?.innerHTML ? sanitizeHtml(cells[3].innerHTML) : '';
+            const detailsHtml = cells[3]?.innerHTML
+              ? sanitizeHtml(cells[3].innerHTML)
+              : '';
 
             if (!statusData.types.includes(typeName)) {
               statusData.types.push(typeName);
@@ -210,7 +234,7 @@
               status: status,
               notes: notes,
               detailsText: detailsText,
-              detailsHtml: detailsHtml
+              detailsHtml: detailsHtml,
             };
           }
         });
@@ -221,7 +245,9 @@
 
     statusData.types.sort();
 
-    console.log(`Parsed ${statusData.languageOrder.length} languages and ${statusData.types.length} types`);
+    console.log(
+      `Parsed ${statusData.languageOrder.length} languages and ${statusData.types.length} types`,
+    );
     return true;
   }
 
@@ -239,10 +265,13 @@
       not_implemented: { class: 'bg-danger', text: '✗ Not implemented' },
       unknown: { class: 'bg-warning text-dark', text: '? Unknown' },
       not_applicable: { class: 'bg-secondary', text: 'N/A' },
-      ignored: { class: 'bg-info', text: '○ Ignored' }
+      ignored: { class: 'bg-info', text: '○ Ignored' },
     };
 
-    const config = statusConfig[status] || { class: 'bg-light text-dark', text: status };
+    const config = statusConfig[status] || {
+      class: 'bg-light text-dark',
+      text: status,
+    };
     span.className += ' ' + config.class;
     span.textContent = config.text;
 
@@ -253,9 +282,11 @@
    * Renders the accordion with all types
    */
   function renderAccordion() {
-    const accordion = document.getElementById('statusAccordion');
+    if (!container) return false;
+
+    const accordion = container.querySelector('.accordion-items-container');
     if (!accordion) {
-      console.error('statusAccordion element not found');
+      console.error('accordion-items-container element not found');
       return false;
     }
 
@@ -269,7 +300,9 @@
       const item = document.createElement('div');
       item.className = 'accordion-item';
       item.dataset.typeName = typeName;
-      item.dataset.experimental = typeName.startsWith('Experimental') ? 'true' : 'false';
+      item.dataset.experimental = typeName.startsWith('Experimental')
+        ? 'true'
+        : 'false';
 
       const headerId = `heading-${index}`;
       const collapseId = `collapse-${index}`;
@@ -288,13 +321,14 @@
       button.setAttribute('aria-controls', collapseId);
 
       const buttonContent = document.createElement('div');
-      buttonContent.className = 'd-flex w-100 justify-content-between align-items-center pe-3';
+      buttonContent.className =
+        'd-flex w-100 justify-content-between align-items-center pe-3';
 
       // Type name with link
       const typeNameSpan = document.createElement('span');
       typeNameSpan.className = 'type-name';
       const typeLink = document.createElement('a');
-      typeLink.href = `../types#${typeName.toLowerCase()}`;
+      typeLink.href = `../#${typeName.toLowerCase()}`;
       typeLink.textContent = typeName;
       typeLink.onclick = (e) => e.stopPropagation();
       typeNameSpan.appendChild(typeLink);
@@ -340,7 +374,6 @@
       collapseDiv.id = collapseId;
       collapseDiv.className = 'accordion-collapse collapse';
       collapseDiv.setAttribute('aria-labelledby', headerId);
-      collapseDiv.setAttribute('data-bs-parent', '#statusAccordion');
 
       const bodyDiv = document.createElement('div');
       bodyDiv.className = 'accordion-body';
@@ -367,7 +400,7 @@
     const row = document.createElement('div');
     row.className = 'row g-3';
 
-    statusData.languageOrder.forEach(langId => {
+    statusData.languageOrder.forEach((langId) => {
       const langData = statusData.languages[langId];
       const typeData = langData.types[typeName];
 
@@ -434,11 +467,15 @@
    * Updates the visible/total stats display
    */
   function updateStats() {
-    const items = document.querySelectorAll('.accordion-item');
-    const visibleItems = Array.from(items).filter(item => !item.classList.contains('d-none'));
+    if (!container) return;
 
-    const visibleCount = document.getElementById('accordion-visible-count');
-    const totalCount = document.getElementById('accordion-total-count');
+    const items = container.querySelectorAll('.accordion-item');
+    const visibleItems = Array.from(items).filter(
+      (item) => !item.classList.contains('d-none'),
+    );
+
+    const visibleCount = container.querySelector('.accordion-visible-count');
+    const totalCount = container.querySelector('.accordion-total-count');
 
     if (visibleCount) visibleCount.textContent = visibleItems.length;
     if (totalCount) totalCount.textContent = items.length;
@@ -448,8 +485,12 @@
    * Applies search and filter to accordion items
    */
   function applyFilters() {
-    const searchInput = document.getElementById('accordion-search');
-    const filterSelect = document.getElementById('accordion-type-filter');
+    if (!container) return;
+
+    const searchInput = container.querySelector('.accordion-search-input');
+    const filterSelect = container.querySelector(
+      '.accordion-type-filter-select',
+    );
 
     if (!searchInput || !filterSelect) {
       console.error('Filter controls not found');
@@ -459,9 +500,9 @@
     const searchTerm = searchInput.value.toLowerCase();
     const typeFilter = filterSelect.value;
 
-    const items = document.querySelectorAll('.accordion-item');
+    const items = container.querySelectorAll('.accordion-item');
 
-    items.forEach(item => {
+    items.forEach((item) => {
       const typeName = (item.dataset.typeName || '').toLowerCase();
       const isExperimental = item.dataset.experimental === 'true';
 
@@ -490,31 +531,41 @@
    * Expands all accordion items
    */
   function expandAll() {
-    const buttons = document.querySelectorAll('.accordion-button.collapsed');
-    buttons.forEach(button => button.click());
+    if (!container) return;
+
+    const buttons = container.querySelectorAll('.accordion-button.collapsed');
+    buttons.forEach((button) => button.click());
   }
 
   /**
    * Collapses all accordion items
    */
   function collapseAll() {
-    const buttons = document.querySelectorAll('.accordion-button:not(.collapsed)');
-    buttons.forEach(button => button.click());
+    if (!container) return;
+
+    const buttons = container.querySelectorAll(
+      '.accordion-button:not(.collapsed)',
+    );
+    buttons.forEach((button) => button.click());
   }
 
   /**
    * Saves user preferences to localStorage
    */
   function savePreferences() {
+    if (!container) return;
+
     try {
-      const searchInput = document.getElementById('accordion-search');
-      const filterSelect = document.getElementById('accordion-type-filter');
+      const searchInput = container.querySelector('.accordion-search-input');
+      const filterSelect = container.querySelector(
+        '.accordion-type-filter-select',
+      );
 
       if (!searchInput || !filterSelect) return;
 
       const preferences = {
         search: searchInput.value,
-        filter: filterSelect.value
+        filter: filterSelect.value,
       };
 
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(preferences));
@@ -542,8 +593,12 @@
    * Updates URL parameters with current filter state
    */
   function updateUrlParams() {
-    const searchInput = document.getElementById('accordion-search');
-    const filterSelect = document.getElementById('accordion-type-filter');
+    if (!container) return;
+
+    const searchInput = container.querySelector('.accordion-search-input');
+    const filterSelect = container.querySelector(
+      '.accordion-type-filter-select',
+    );
 
     if (!searchInput || !filterSelect) return;
 
@@ -575,7 +630,7 @@
 
     return {
       search: searchParam || '',
-      filter: filterParam || 'all'
+      filter: filterParam || 'all',
     };
   }
 
@@ -583,8 +638,12 @@
    * Restores filter state from URL or localStorage
    */
   function restoreFilterState() {
-    const searchInput = document.getElementById('accordion-search');
-    const filterSelect = document.getElementById('accordion-type-filter');
+    if (!container) return;
+
+    const searchInput = container.querySelector('.accordion-search-input');
+    const filterSelect = container.querySelector(
+      '.accordion-type-filter-select',
+    );
 
     if (!searchInput || !filterSelect) return;
 
@@ -592,7 +651,7 @@
     const urlState = loadFromUrlParams();
     const hasUrlState = urlState.search || urlState.filter !== 'all';
 
-    const state = hasUrlState ? urlState : (loadPreferences() || urlState);
+    const state = hasUrlState ? urlState : loadPreferences() || urlState;
 
     searchInput.value = state.search || '';
     filterSelect.value = state.filter || 'all';
@@ -613,7 +672,12 @@
    * @returns {boolean} Success status
    */
   function init() {
-    const container = document.getElementById('config-lang-status-accordion-container');
+    container = document.querySelector('.config-lang-status-accordion');
+    if (!container) {
+      container = document.getElementById(
+        'config-lang-status-accordion-container',
+      );
+    }
     if (!container) {
       // Component not on this page, exit silently
       return false;
@@ -621,26 +685,42 @@
 
     console.log('Initializing ConfigLangStatusAccordion...');
 
-    // Parse content
+    // Load i18n strings from data attribute
+    try {
+      const i18nData = container.dataset.i18n;
+      if (i18nData) {
+        const parsedData = JSON.parse(i18nData);
+        i18nStrings = { ...i18nStrings, ...parsedData };
+        console.log('Loaded i18n strings from data attribute');
+      }
+    } catch (e) {
+      console.warn('Could not parse i18n data, using defaults:', e);
+    }
+
     if (!parseExistingContent()) {
       console.error('Failed to parse content');
       return false;
     }
 
-    // Render accordion
     if (!renderAccordion()) {
       console.error('Failed to render accordion');
       return false;
     }
 
     // Set up event listeners with debouncing for search
-    const searchInput = document.getElementById('accordion-search');
-    const filterSelect = document.getElementById('accordion-type-filter');
-    const expandBtn = document.getElementById('expand-all');
-    const collapseBtn = document.getElementById('collapse-all');
+    const searchInput = container.querySelector('.accordion-search-input');
+    const filterSelect = container.querySelector(
+      '.accordion-type-filter-select',
+    );
+    const expandBtn = container.querySelector('.accordion-expand-all-btn');
+    const collapseBtn = container.querySelector('.accordion-collapse-all-btn');
 
     if (searchInput) {
-      addTrackedEventListener(searchInput, 'input', debounce(applyFilters, DEBOUNCE_DELAY));
+      addTrackedEventListener(
+        searchInput,
+        'input',
+        debounce(applyFilters, DEBOUNCE_DELAY),
+      );
     }
 
     if (filterSelect) {
@@ -655,10 +735,8 @@
       addTrackedEventListener(collapseBtn, 'click', collapseAll);
     }
 
-    // Restore previous filter state
     restoreFilterState();
 
-    // Clean up on page unload
     addTrackedEventListener(window, 'beforeunload', destroy);
 
     console.log('ConfigLangStatusAccordion initialized successfully');
@@ -674,7 +752,6 @@
 
   // Expose destroy function for cleanup if needed
   window.ConfigLangStatusAccordion = {
-    destroy: destroy
+    destroy: destroy,
   };
-
 })();

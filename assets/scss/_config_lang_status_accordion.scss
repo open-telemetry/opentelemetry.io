@@ -136,7 +136,9 @@
       color: var(--bs-body-color);
       padding: 1rem 1.25rem;
       font-weight: 500;
-      transition: background-color 0.2s ease, color 0.2s ease;
+      transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
 
       &:not(.collapsed) {
         background-color: var(--bs-primary);
@@ -224,7 +226,9 @@
   border-radius: 50%;
   border: 2px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   font-size: var(--config-accordion-pill-font-size);
   font-weight: 700;
   color: white;
