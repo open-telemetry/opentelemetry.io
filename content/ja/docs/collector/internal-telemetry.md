@@ -9,6 +9,7 @@ cSpell:ignore: alloc batchprocessor journalctl
 このテレメトリーとコレクターの[監視](#use-internal-telemetry-to-monitor-the-collector) および[トラブルシューティング](/docs/collector/troubleshooting/) に役立つように設定する方法を学ぶために読み進めてください。
 
 > [!WARNING]
+>
 > コレクターは、どのようにその内部テレメトリーをエクスポートするかを設定するために、OpenTelemetry SDK の[宣言的構成スキーマ](https://github.com/open-telemetry/opentelemetry-configuration)を使用します。
 > このスキーマはまだ[開発](/docs/specs/otel/document-status/)段階であり、将来のリリースで **破壊的な変更** を受ける可能性があります。
 > 私たちは、1.0 スキーマのリリースが利用可能になるまで古いスキーマのサポートを継続する予定で、1.0 より前のスキーマを廃止する前に、ユーザーが構成を更新するための移行期間を提供します。
@@ -266,7 +267,7 @@ OpenTelemetry コレクターは、自身の運用メトリクスを明確に公
 コレクターの v0.106.1 以降では、内部メトリクス名はそのソースに基づいて異なる方法で扱われます。
 
 - コレクターコンポーネントから生成されるメトリクスは、`otelcol_` 接頭辞が付きます。
-- 計装ライブラリから生成されるメトリクスは、そのメトリクス名に明示的に接頭辞が付けられていない限り、デフォルトでは `otelcol_`接頭辞を使用しません。
+- 計装ライブラリから生成されるメトリクスは、そのメトリクス名に明示的に接頭辞が付けられていない限り、デフォルトでは `otelcol_` 接頭辞を使用しません。
 
 v0.106.1 より前のコレクターのバージョンにおいて、Prometheus エクスポーターを使用して出力されるすべての内部メトリクスは、そのメトリクスの生成元に関係なく `otelcol_` という接頭辞が付与されます。
 これには、コレクターのコンポーネントと計装ライブラリの両方からのメトリクスが含まれます。
@@ -413,7 +414,7 @@ service:
 >
 > `otelcol_processor_batch_` メトリクスは `batchprocessor` 固有です。
 >
-> `otelcol_receiver_`、`otelcol_scraper_`、`otelcol_processor_`、と `otelcol_exporter_` のメトリクスは、それぞれ対応する `helper` パッケージに由来します。
+> `otelcol_receiver_`、`otelcol_scraper_`、`otelcol_processor_`、および `otelcol_exporter_` のメトリクスは、それぞれ対応する `helper` パッケージに由来します。
 > そのため、これらのパッケージを使用していないいくつかのコンポーネントは、それらを出力しない可能性があります。
 
 ### 内部ログで観測可能なイベント {#events-observable-with-internal-logs}
@@ -527,7 +528,7 @@ otelcol_exporter_queue_size 0
 `otelcol_exporter_queue_size` メトリクスは、送信キューの現在のサイズを示します。
 キュー容量がワークロードをサポートできるかどうか確認するため、これら 2 つのメトリクスを使ってください。
 
-以下の 3 つのメトリクスを使用すると、送信キューへの到達に失敗した spans、metric points、log records の数を特定できます。
+以下の 3 つのメトリクスを使用すると、送信キューへの到達に失敗したスパン、メトリクスポイント、ログの数を特定できます。
 
 - `otelcol_exporter_enqueue_failed_spans`
 - `otelcol_exporter_enqueue_failed_metric_points`
