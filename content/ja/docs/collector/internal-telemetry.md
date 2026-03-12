@@ -1,7 +1,7 @@
 ---
 title: 内部テレメトリー
 weight: 25
-default_lang_commit: e4d556eb3c2204fa110a7960e14250a803d005a9
+default_lang_commit: 548ae50123bba6fd70cb0b080c68294b8239769a
 cSpell:ignore: alloc batchprocessor journalctl
 ---
 
@@ -97,7 +97,7 @@ resource:
 
 > [!NOTE] 内部テレメトリー設定の変更点
 >
-> コレクター [v0.123.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0) 以降では、`service::telemetry::metrics::address` 設定は無視されます。
+> コレクター [v0.123.0][] 以降では、`service::telemetry::metrics::address` 設定は無視されます。
 > 以前のバージョンでは、以下のように設定できました。
 >
 > ```yaml
@@ -106,6 +106,8 @@ resource:
 >     metrics:
 >       address: 0.0.0.0:8888
 > ```
+
+[v0.123.0]: https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.123.0
 
 #### メトリクスの詳細度 {#metric-verbosity}
 
@@ -133,6 +135,12 @@ service:
 
 [`views`](/docs/specs/otel/metrics/sdk/#view) を使用することで、コレクターからどのようにメトリクスが出力されるかをさらに設定できます。
 たとえば、以下の設定は、`otelcol_process_uptime` という名前のメトリクスを、新しい名前 `process_uptime` と説明で出力するように更新します。
+
+> [!NOTE]
+>
+> 内部メトリクス用の Prometheus エクスポーターを手動で（`readers` を使って）設定する場合、`otelcol_process_uptime` は `without_type_suffix` と `without_units` が `true` に設定されていない限り、`otelcol_process_uptime_seconds_total` としてエクスポートされる可能性があります。
+> それにかかわらず、views では `instrument_name` の値 `otelcol_process_uptime`（OTLP 名）を使用してください。
+> Prometheus 固有の接尾辞を制御するには、[単位接尾辞](#unit-suffixes) を参照してください。
 
 ```yaml
 service:
@@ -266,7 +274,7 @@ v0.106.1 より前のコレクターのバージョンにおいて、Prometheus 
 #### `_total` 接尾辞 {#total-suffix}
 
 デフォルトで Prometheus 固有の動作として、Prometheus エクスポーターは`otelcol_exporter_send_failed_spans_total` のように、Prometheus の命名規則に従うため合計メトリクスに `_total` 接尾辞を追加します。
-この動作は、Prometheus エクスポーターの設定で `without_type_suffix: false` を設定することで無効化できます。
+この動作は、Prometheus エクスポーターの設定で `without_type_suffix: true` を設定することで無効化できます。
 
 コレクターの設定で `service::telemetry::metrics::readers` を省略する場合、コレクターによって設定されるデフォルトの Prometheus エクスポーターは、すでに `without_type_suffix` が `false` に設定されています。
 ただし、readers をカスタマイズして Prometheus エクスポーターを手動で追加する場合は、「raw」メトリクス名に戻すためにそのオプションを設定する必要があります。
@@ -274,6 +282,34 @@ v0.106.1 より前のコレクターのバージョンにおいて、Prometheus 
 
 OTLP を通じてエクスポートされる内部メトリクスは、この動作がありません。
 このページの [内部メトリクス](#lists-of-internal-metrics) は、`otelcol_exporter_send_failed_spans` のような OTLP 形式で一覧化されています。
+
+#### `_seconds` とその他の単位接尾辞 {#unit-suffixes}
+
+Prometheus エクスポーターは、単位を持つメトリクスに単位接尾辞を付加します。
+たとえば、`otelcol_process_uptime`（単位: 秒）は `otelcol_process_uptime_seconds_total` としてエクスポートされることがあります。
+つまり、`_seconds` の単位接尾辞が先に追加され、その後に `_total` のカウンタを示す接尾辞が追加されます。
+
+コレクターによって設定されるデフォルトの Prometheus エクスポーター（`readers` が指定されていない場合）は、すでに後方互換性のために `without_type_suffix` と `without_units`を `true` に設定しています。
+そのため、 `otelcol_process_uptime` はそのまま使用されます。
+
+しかし、`service::telemetry::metrics::readers` の下で Prometheus エクスポーターを手動で設定する場合、それらのオプションはデフォルトでは設定されません。
+元のより短いメトリクス名を維持するには、以下のように両方のオプションを明示的に `true` に設定してください。
+
+```yaml
+service:
+  telemetry:
+    metrics:
+      readers:
+        - pull:
+            exporter:
+              prometheus:
+                host: '0.0.0.0'
+                port: 8888
+                without_type_suffix: true
+                without_units: true
+```
+
+この設定では、`otelcol_process_uptime_seconds_total` は `otelcol_process_uptime` としてエクスポートされます。
 
 #### ドット (`.`) とアンダースコア (`_`) {#dots-v-underscores}
 
@@ -345,8 +381,10 @@ OTLP を通じてエクスポートされる内部メトリクスは、この動
 
 > [!NOTE] Batch processor メトリクスのレベルの変更
 >
-> コレクター [v0.99.0](https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0) では、導入時から `detailed` となっている `otelcol_processor_batch_batch_send_size_bytes` を除くすべての batch processor メトリクスが `basic` から `normal`（現在のレベル）へ引き上げられました。
+> コレクター [v0.99.0][] では、導入時から `detailed` となっている `otelcol_processor_batch_batch_send_size_bytes` を除くすべての batch processor メトリクスが `basic` から `normal`（現在のレベル）へ引き上げられました。
 > ただし、これらのメトリクスは v0.109.0 から v0.121.0 までの間、意図せず `basic` に戻されていた点に注意してください。
+
+[v0.99.0]: https://github.com/open-telemetry/opentelemetry-collector/releases/tag/v0.99.0
 
 #### 追加の `detailed` レベルのメトリクス {#additional-detailed-level-metrics}
 
