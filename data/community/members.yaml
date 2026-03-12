@@ -2217,6 +2217,11 @@ approvers:
       - cpp-approvers
     html_url: https://github.com/owent
     avatar_url: https://avatars.githubusercontent.com/u/1209475?v=4
+  - name: pinoOgni
+    teams:
+      - ebpf-instrumentation-approvers
+    html_url: https://github.com/pinoOgni
+    avatar_url: https://avatars.githubusercontent.com/u/26680903?v=4
   - name: pjanotti
     teams:
       - collector-contrib-approvers
@@ -2675,6 +2680,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/t2t2
     avatar_url: https://avatars.githubusercontent.com/u/1122555?v=4
+  - name: thompson-tomo
+    teams:
+      - ruby-contrib-triagers
+    html_url: https://github.com/thompson-tomo
+    avatar_url: https://avatars.githubusercontent.com/u/19771933?v=4
   - name: tidal
     teams:
       - php-triagers
