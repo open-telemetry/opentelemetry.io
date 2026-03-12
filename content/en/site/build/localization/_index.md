@@ -58,9 +58,7 @@ Keep entries alphabetically ordered by language code.
 
 Hugo uses content mounts to route locale-specific content and to fall back to
 English pages for sections that have not yet been translated. Add a block for
-`LANG_ID` in
-[`config/_default/module-template.yaml`][https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml]
-under `module.mounts`.
+`LANG_ID` in [`config/_default/module-template.yaml`][] under `module.mounts`.
 
 ### Minimal setup
 
@@ -315,6 +313,8 @@ After all changes are merged, verify that the setup is correct:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
 [`projects/localization.md`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/localization.md
+[`config/_default/module-template.yaml`]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
 [kickoff issue]: /docs/contributing/localization/#kickoff
 [New localizations]: /docs/contributing/localization/#new-localizations
 [Site localization]: /docs/contributing/localization/
