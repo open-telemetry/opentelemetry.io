@@ -1187,6 +1187,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-24T09:53:05.481992065Z"
   },
+  "https://creativecommons.org/licenses/by/4.0/deed.uk": {
+    "StatusCode": 206,
+    "LastSeen": "2025-09-14T22:02:11.153782+03:00"
+  },
   "https://cri-o.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-24T09:59:00.362741603Z"
