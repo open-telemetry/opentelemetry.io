@@ -108,6 +108,13 @@
       font-size: 0.75rem;
       font-weight: 600;
     }
+
+    .legend-lang-logo {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
   }
 
   .accordion-stats {
@@ -233,6 +240,15 @@
   font-weight: 700;
   color: white;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  padding: 2px;
+  overflow: hidden;
+
+  .language-logo {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: none;
+  }
 
   &:hover {
     transform: scale(1.4);
@@ -305,6 +321,12 @@
     &.status-missing {
       color: var(--config-status-missing-text);
     }
+
+    // Make logos visible on colored backgrounds in dark mode
+    .language-logo {
+      filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.8))
+        drop-shadow(0 0 4px rgba(255, 255, 255, 0.4));
+    }
   }
 
   .config-lang-status-accordion {
@@ -316,6 +338,13 @@
 
     .accordion-item {
       background-color: transparent;
+    }
+
+    // Make legend logos visible in dark mode
+    .status-legend {
+      .legend-lang-logo {
+        filter: brightness(0) invert(1);
+      }
     }
   }
 }

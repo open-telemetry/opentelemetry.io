@@ -1,31 +1,17 @@
 /**
- * SDK Language Implementation Status Accordion
- * Collapsible list view for browsing language support with filtering and search
+ * Configuration Types Accordion
+ * Collapsible list view for browsing configuration types with filtering and search
  *
- * @module ConfigLangStatusAccordion
+ * @module ConfigTypesAccordion
  */
 
 (function () {
   'use strict';
 
   const DEBOUNCE_DELAY = 300; // milliseconds
-  const LOCAL_STORAGE_KEY = 'config-lang-status-preferences';
+  const LOCAL_STORAGE_KEY = 'config-types-preferences';
   const URL_PARAM_SEARCH = 'search';
   const URL_PARAM_FILTER = 'filter';
-
-  // Language logo mapping
-  const LANGUAGE_LOGOS = {
-    cpp: '/img/logos/32x32/C++_SDK.svg',
-    dotnet: '/img/logos/32x32/Csharp_SDK.svg',
-    go: '/img/logos/32x32/Golang_SDK.svg',
-    java: '/img/logos/32x32/Java_SDK.svg',
-    js: '/img/logos/32x32/JS_SDK.svg',
-    php: '/img/logos/32x32/PHP.svg',
-    python: '/img/logos/32x32/Python_SDK.svg',
-    ruby: '/img/logos/32x32/Ruby_SDK.svg',
-    rust: '/img/logos/32x32/Rust.svg',
-    swift: '/img/logos/32x32/Swift.svg',
-  };
 
   // I18n strings (defaults, overridden by data-i18n attribute)
   let i18nStrings = {
@@ -38,20 +24,14 @@
     showingText: 'Showing',
     ofText: 'of',
     typesText: 'types',
-    noDataAvailable: 'No data available',
-    notes: 'Notes:',
-    properties: 'Properties:',
-    version: 'version:',
   };
 
   /**
-   * Status data structure containing languages and types
+   * Types data structure
    * @type {Object}
    */
-  const statusData = {
-    languages: {},
+  const typesData = {
     types: [],
-    languageOrder: [], // Order in which languages appear
   };
 
   /**
@@ -75,39 +55,6 @@
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
-  }
-
-  /**
-   * Sanitizes HTML content by parsing and reconstructing it safely
-   * @param {string} html - HTML content to sanitize
-   * @returns {string} Sanitized HTML
-   */
-  function sanitizeHtml(html) {
-    const temp = document.createElement('div');
-    temp.innerHTML = html;
-
-    // Only allow specific tags and no attributes (to prevent XSS via event handlers)
-    const allowedTags = ['br', 'strong', 'em', 'code', 'ul', 'li'];
-
-    function sanitizeNode(node) {
-      if (node.nodeType === Node.TEXT_NODE) {
-        return escapeHtml(node.textContent);
-      }
-      if (
-        node.nodeType === Node.ELEMENT_NODE &&
-        allowedTags.includes(node.tagName.toLowerCase())
-      ) {
-        // Create a clean element without any attributes
-        const tagName = node.tagName.toLowerCase();
-        const children = Array.from(node.childNodes).map(sanitizeNode).join('');
-        return `<${tagName}>${children}</${tagName}>`;
-      }
-      return escapeHtml(node.textContent);
-    }
-
-    const cleanHtml = Array.from(temp.childNodes).map(sanitizeNode).join('');
-
-    return cleanHtml;
   }
 
   /**
@@ -153,198 +100,114 @@
 
   /**
    * Parses existing markdown-rendered content to populate data structure
-   * Dynamically discovers languages from the content
    */
   function parseExistingContent() {
     const content = document.querySelector(
-      '.language-implementation-status-content',
+      '.config-types-content',
     );
     if (!content) {
       console.error(
-        'Could not find .language-implementation-status-content element',
+        'Could not find .config-types-content element',
       );
       return false;
     }
 
-    const sections = content.querySelectorAll('h2');
+    // Find all type sections (h3 headers with IDs)
+    const typeHeaders = content.querySelectorAll('h3[id]');
 
-    if (sections.length === 0) {
-      console.warn('No language sections found in content');
+    if (typeHeaders.length === 0) {
+      console.warn('No type headers found in content');
       return false;
     }
 
-    // Dynamically parse languages from content
-    sections.forEach((section) => {
-      const langId = section.id;
-      if (!langId) {
-        console.warn('Section found without ID', section);
-        return;
-      }
+    typeHeaders.forEach((header) => {
+      const typeId = header.id;
+      const typeName = header.textContent.trim();
 
-      // Get language name from section content
-      const langName = section.textContent.trim();
+      // Determine if experimental
+      const isExperimental = typeName.toLowerCase().startsWith('experimental');
 
-      // Initialize language in statusData
-      if (!statusData.languages[langId]) {
-        statusData.languages[langId] = {
-          name: langName,
-          version: '',
-          types: {},
-        };
-        statusData.languageOrder.push(langId);
-      }
-
-      // Find version and table
-      let currentElement = section.nextElementSibling;
+      // Find the next table or paragraph elements after this header
+      let currentElement = header.nextElementSibling;
       let table = null;
+      let description = '';
+      let constraints = '';
+      let hasNoProperties = false;
 
       while (currentElement) {
-        // Match version string more robustly
-        if (currentElement.textContent) {
-          const versionMatch = currentElement.textContent.match(
-            /Latest supported file format:\s*`?([^`\n]+)`?/,
-          );
-          if (versionMatch) {
-            statusData.languages[langId].version = versionMatch[1].trim();
-          }
+        // Stop if we hit another h3 (next type section)
+        if (currentElement.tagName === 'H3') {
+          break;
         }
 
-        if (currentElement.tagName === 'TABLE') {
+        // Check for "No properties" text
+        if (currentElement.tagName === 'P' && currentElement.textContent.includes('No properties')) {
+          hasNoProperties = true;
+        }
+
+        // Look for table
+        if (currentElement.tagName === 'TABLE' && !table) {
           table = currentElement;
-          break;
         }
 
-        // Stop if we hit another h2 (next language section)
-        if (currentElement.tagName === 'H2') {
-          break;
+        // Look for constraints paragraph (usually after the table)
+        if (currentElement.tagName === 'P' && currentElement.textContent.includes('Constraints:')) {
+          const constraintsText = currentElement.textContent.replace('Constraints:', '').trim();
+          constraints = constraintsText;
+          // Also check for following lines
+          let nextEl = currentElement.nextElementSibling;
+          while (nextEl && nextEl.tagName !== 'H3' && nextEl.tagName !== 'TABLE') {
+            if (nextEl.textContent && nextEl.textContent.trim()) {
+              constraints += ' ' + nextEl.textContent.trim();
+            }
+            nextEl = nextEl.nextElementSibling;
+          }
         }
 
         currentElement = currentElement.nextElementSibling;
       }
 
-      if (table) {
+      // Extract properties from table if exists
+      const properties = [];
+      if (table && !hasNoProperties) {
         const rows = table.querySelectorAll('tbody tr');
         rows.forEach((row) => {
           const cells = row.querySelectorAll('td');
-          if (cells.length >= 2) {
-            const typeLink = cells[0].querySelector('a');
-            const typeName = (
-              typeLink?.textContent || cells[0].textContent
-            ).trim();
-            const status = cells[1].textContent.trim();
-            const notes = cells[2]?.textContent.trim() || '';
-            // Use textContent instead of innerHTML to prevent XSS
-            const detailsText = cells[3]?.textContent.trim() || '';
-            // If we need HTML, sanitize it
-            const detailsHtml = cells[3]?.innerHTML
-              ? sanitizeHtml(cells[3].innerHTML)
-              : '';
+          if (cells.length >= 1) {
+            const propertyName = cells[0].textContent.trim();
+            const propertyType = cells[1]?.textContent.trim() || '';
+            const propertyDefault = cells[2]?.textContent.trim() || '';
+            const propertyConstraints = cells[3]?.textContent.trim() || '';
+            const propertyDescription = cells[4]?.textContent.trim() || cells[3]?.textContent.trim() || '';
 
-            if (!statusData.types.includes(typeName)) {
-              statusData.types.push(typeName);
-            }
-
-            statusData.languages[langId].types[typeName] = {
-              status: status,
-              notes: notes,
-              detailsText: detailsText,
-              detailsHtml: detailsHtml,
-            };
+            properties.push({
+              name: propertyName,
+              type: propertyType,
+              default: propertyDefault,
+              constraints: propertyConstraints,
+              description: propertyDescription,
+            });
           }
         });
-      } else {
-        console.warn(`No table found for language: ${langId}`);
       }
+
+      // Check if this is an enum type
+      const isEnum = hasNoProperties && table;
+
+      typesData.types.push({
+        id: typeId,
+        name: typeName,
+        isExperimental: isExperimental,
+        properties: properties,
+        constraints: constraints,
+        hasNoProperties: hasNoProperties,
+        isEnum: isEnum,
+        tableHtml: table ? table.outerHTML : '',
+      });
     });
 
-    // Sort types: stable types first, then experimental types
-    // Within each group, sort alphabetically
-    statusData.types.sort((a, b) => {
-      const aIsExperimental = a.toLowerCase().startsWith('experimental');
-      const bIsExperimental = b.toLowerCase().startsWith('experimental');
-
-      if (aIsExperimental && !bIsExperimental) {
-        return 1; // a comes after b
-      }
-      if (!aIsExperimental && bIsExperimental) {
-        return -1; // a comes before b
-      }
-      // Both are the same category (both experimental or both stable)
-      return a.localeCompare(b);
-    });
-
-    console.log(
-      `Parsed ${statusData.languageOrder.length} languages and ${statusData.types.length} types`,
-    );
+    console.log(`Parsed ${typesData.types.length} types`);
     return true;
-  }
-
-  /**
-   * Creates a status badge element
-   * @param {string} status - Status value
-   * @returns {HTMLSpanElement} Badge element
-   */
-  function createStatusBadge(status) {
-    const span = document.createElement('span');
-    span.className = 'badge';
-
-    const statusConfig = {
-      supported: { class: 'bg-success', text: '✓ Supported' },
-      not_implemented: { class: 'bg-danger', text: '✗ Not implemented' },
-      unknown: { class: 'bg-warning text-dark', text: '? Unknown' },
-      not_applicable: { class: 'bg-secondary', text: 'N/A' },
-      ignored: { class: 'bg-info', text: '○ Ignored' },
-    };
-
-    const config = statusConfig[status] || {
-      class: 'bg-light text-dark',
-      text: status,
-    };
-    span.className += ' ' + config.class;
-    span.textContent = config.text;
-
-    return span;
-  }
-
-  /**
-   * Renders the language legend dynamically
-   */
-  function renderLanguageLegend() {
-    if (!container) return;
-
-    const legendContainer = container.querySelector('.legend-languages-items');
-    if (!legendContainer) {
-      console.warn('Language legend container not found');
-      return;
-    }
-
-    // Clear existing content
-    legendContainer.innerHTML = '';
-
-    // Render legend items for each language
-    statusData.languageOrder.forEach((langId) => {
-      const langName = statusData.languages[langId].name;
-      const logo = LANGUAGE_LOGOS[langId] || '/img/logos/32x32/SDK.svg';
-
-      const legendItem = document.createElement('div');
-      legendItem.className = 'legend-item';
-      legendItem.setAttribute('role', 'listitem');
-
-      const logoImg = document.createElement('img');
-      logoImg.src = logo;
-      logoImg.alt = langName;
-      logoImg.className = 'legend-lang-logo';
-      logoImg.width = 24;
-      logoImg.height = 24;
-
-      const label = document.createElement('span');
-      label.className = 'legend-label';
-      label.textContent = langName;
-
-      legendItem.appendChild(logoImg);
-      legendItem.appendChild(label);
-      legendContainer.appendChild(legendItem);
-    });
   }
 
   /**
@@ -365,13 +228,11 @@
     // Use DocumentFragment for better performance
     const fragment = document.createDocumentFragment();
 
-    statusData.types.forEach((typeName, index) => {
+    typesData.types.forEach((type, index) => {
       const item = document.createElement('div');
       item.className = 'accordion-item';
-      item.dataset.typeName = typeName;
-      item.dataset.experimental = typeName.startsWith('Experimental')
-        ? 'true'
-        : 'false';
+      item.dataset.typeName = type.name.toLowerCase();
+      item.dataset.experimental = type.isExperimental ? 'true' : 'false';
 
       const headerId = `heading-${index}`;
       const collapseId = `collapse-${index}`;
@@ -393,58 +254,30 @@
       buttonContent.className =
         'd-flex w-100 justify-content-between align-items-center pe-3';
 
-      // Type name with link
+      // Type name
       const typeNameSpan = document.createElement('span');
       typeNameSpan.className = 'type-name';
-      const typeLink = document.createElement('a');
-      typeLink.href = `../#${typeName.toLowerCase()}`;
-      typeLink.textContent = typeName;
-      typeLink.onclick = (e) => e.stopPropagation();
-      typeNameSpan.appendChild(typeLink);
+      typeNameSpan.textContent = type.name;
 
-      // Language status summary with accessibility
-      const statusSummary = document.createElement('span');
-      statusSummary.className = 'lang-status-summary';
-      statusSummary.setAttribute('role', 'list');
-      statusSummary.setAttribute('aria-label', 'Language support status');
+      // Badge for experimental
+      if (type.isExperimental) {
+        const badge = document.createElement('span');
+        badge.className = 'badge bg-warning text-dark ms-2';
+        badge.textContent = 'Experimental';
+        typeNameSpan.appendChild(badge);
+      }
 
-      statusData.languageOrder.forEach((langId, langIndex) => {
-        const langName = statusData.languages[langId].name;
-        const position = langIndex + 1;
-        const typeData = statusData.languages[langId].types[typeName];
-
-        const pill = document.createElement('span');
-        pill.className = 'lang-status-pill';
-        pill.setAttribute('role', 'listitem');
-        pill.dataset.position = position;
-        pill.dataset.language = langId;
-
-        if (typeData) {
-          const statusLabel = typeData.status.replace(/_/g, ' ');
-          pill.classList.add(`status-${typeData.status}`);
-          pill.title = `${langName}: ${statusLabel}`;
-          pill.setAttribute('aria-label', `${langName}: ${statusLabel}`);
-        } else {
-          pill.classList.add('status-missing');
-          pill.title = `${langName}: No data`;
-          pill.setAttribute('aria-label', `${langName}: No data`);
-        }
-
-        // Use language logo instead of number
-        const logo = LANGUAGE_LOGOS[langId] || '/img/logos/32x32/SDK.svg';
-        const img = document.createElement('img');
-        img.src = logo;
-        img.alt = langName;
-        img.className = 'language-logo';
-        img.width = 24;
-        img.height = 24;
-
-        pill.appendChild(img);
-        statusSummary.appendChild(pill);
-      });
+      // Property count summary
+      const propertySummary = document.createElement('span');
+      propertySummary.className = 'property-summary text-muted';
+      if (type.hasNoProperties) {
+        propertySummary.textContent = type.isEnum ? 'Enum type' : 'No properties';
+      } else {
+        propertySummary.textContent = `${type.properties.length} ${type.properties.length === 1 ? 'property' : 'properties'}`;
+      }
 
       buttonContent.appendChild(typeNameSpan);
-      buttonContent.appendChild(statusSummary);
+      buttonContent.appendChild(propertySummary);
       button.appendChild(buttonContent);
       header.appendChild(button);
 
@@ -456,7 +289,7 @@
 
       const bodyDiv = document.createElement('div');
       bodyDiv.className = 'accordion-body';
-      bodyDiv.appendChild(generateAccordionBody(typeName));
+      bodyDiv.appendChild(generateAccordionBody(type));
 
       collapseDiv.appendChild(bodyDiv);
 
@@ -472,74 +305,50 @@
 
   /**
    * Generates the accordion body content for a type
-   * @param {string} typeName - Type name
+   * @param {Object} type - Type data
    * @returns {HTMLDivElement} Body content element
    */
-  function generateAccordionBody(typeName) {
-    const row = document.createElement('div');
-    row.className = 'row g-3';
+  function generateAccordionBody(type) {
+    const container = document.createElement('div');
 
-    statusData.languageOrder.forEach((langId) => {
-      const langData = statusData.languages[langId];
-      const typeData = langData.types[typeName];
+    // Add anchor link
+    const anchorLink = document.createElement('a');
+    anchorLink.href = `#${type.id}`;
+    anchorLink.className = 'type-anchor-link';
+    anchorLink.innerHTML = `🔗 Permanent link to ${escapeHtml(type.name)}`;
+    container.appendChild(anchorLink);
 
-      const col = document.createElement('div');
-      col.className = 'col-md-6';
+    // If has table HTML, insert it
+    if (type.tableHtml) {
+      const tableContainer = document.createElement('div');
+      tableContainer.className = 'type-table-container';
+      tableContainer.innerHTML = type.tableHtml;
+      container.appendChild(tableContainer);
+    }
 
-      const card = document.createElement('div');
-      card.className = 'lang-support-card';
+    // Add constraints if present
+    if (type.constraints) {
+      const constraintsDiv = document.createElement('div');
+      constraintsDiv.className = 'type-constraints mt-3';
+      const constraintsTitle = document.createElement('strong');
+      constraintsTitle.textContent = 'Constraints:';
+      constraintsDiv.appendChild(constraintsTitle);
+      constraintsDiv.appendChild(document.createElement('br'));
+      constraintsDiv.appendChild(document.createTextNode(type.constraints));
+      container.appendChild(constraintsDiv);
+    }
 
-      const heading = document.createElement('h6');
-      heading.textContent = langData.name;
+    // Add link to language status
+    const langStatusLink = document.createElement('div');
+    langStatusLink.className = 'mt-3';
+    const link = document.createElement('a');
+    link.href = `../language-status/?search=${encodeURIComponent(type.name)}`;
+    link.className = 'btn btn-sm btn-outline-primary';
+    link.textContent = 'View language support →';
+    langStatusLink.appendChild(link);
+    container.appendChild(langStatusLink);
 
-      if (langData.version) {
-        const versionSmall = document.createElement('small');
-        versionSmall.className = 'text-muted';
-        versionSmall.textContent = ` (${i18nStrings.version} ${langData.version})`;
-        heading.appendChild(versionSmall);
-      }
-
-      card.appendChild(heading);
-
-      if (typeData) {
-        const badgeDiv = document.createElement('div');
-        badgeDiv.className = 'mb-2';
-        badgeDiv.appendChild(createStatusBadge(typeData.status));
-        card.appendChild(badgeDiv);
-
-        if (typeData.notes) {
-          const notesP = document.createElement('p');
-          notesP.className = 'small';
-          const notesStrong = document.createElement('strong');
-          notesStrong.textContent = `${i18nStrings.notes} `;
-          notesP.appendChild(notesStrong);
-          notesP.appendChild(document.createTextNode(typeData.notes));
-          card.appendChild(notesP);
-        }
-
-        if (typeData.detailsHtml) {
-          const detailsDiv = document.createElement('div');
-          detailsDiv.className = 'property-support';
-          const detailsStrong = document.createElement('strong');
-          detailsStrong.textContent = `${i18nStrings.properties}`;
-          detailsDiv.appendChild(detailsStrong);
-          detailsDiv.appendChild(document.createElement('br'));
-          // Use sanitized HTML
-          detailsDiv.innerHTML += typeData.detailsHtml;
-          card.appendChild(detailsDiv);
-        }
-      } else {
-        const noDataP = document.createElement('p');
-        noDataP.className = 'text-muted';
-        noDataP.textContent = i18nStrings.noDataAvailable;
-        card.appendChild(noDataP);
-      }
-
-      col.appendChild(card);
-      row.appendChild(col);
-    });
-
-    return row;
+    return container;
   }
 
   /**
@@ -743,7 +552,7 @@
    */
   function destroy() {
     removeAllEventListeners();
-    console.log('ConfigLangStatusAccordion destroyed');
+    console.log('ConfigTypesAccordion destroyed');
   }
 
   /**
@@ -751,10 +560,10 @@
    * @returns {boolean} Success status
    */
   function init() {
-    container = document.querySelector('.config-lang-status-accordion');
+    container = document.querySelector('.config-types-accordion');
     if (!container) {
       container = document.getElementById(
-        'config-lang-status-accordion-container',
+        'config-types-accordion-container',
       );
     }
     if (!container) {
@@ -762,7 +571,7 @@
       return false;
     }
 
-    console.log('Initializing ConfigLangStatusAccordion...');
+    console.log('Initializing ConfigTypesAccordion...');
 
     // Load i18n strings from data attribute
     try {
@@ -780,8 +589,6 @@
       console.error('Failed to parse content');
       return false;
     }
-
-    renderLanguageLegend();
 
     if (!renderAccordion()) {
       console.error('Failed to render accordion');
@@ -820,7 +627,7 @@
 
     addTrackedEventListener(window, 'beforeunload', destroy);
 
-    console.log('ConfigLangStatusAccordion initialized successfully');
+    console.log('ConfigTypesAccordion initialized successfully');
     return true;
   }
 
@@ -832,7 +639,7 @@
   }
 
   // Expose destroy function for cleanup if needed
-  window.ConfigLangStatusAccordion = {
+  window.ConfigTypesAccordion = {
     destroy: destroy,
   };
 })();

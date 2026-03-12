@@ -16,6 +16,43 @@ article table td:first-child {
 
 </style>
 
+## Overview
+
+OpenTelemetry supports **declarative configuration** through a standardized
+YAML/JSON schema that allows you to configure SDK behavior without writing code.
+This approach provides a consistent configuration experience across all languages
+that implement the specification.
+
+**Key Benefits:**
+
+- Consistent configuration across multiple languages
+- No code changes needed to adjust telemetry behavior
+- Version-controlled configuration files
+- Easy to validate against JSON schema
+
+**Related Resources:**
+
+- [Language Implementation Status](language-status/) - See which languages
+  support which types
+- [Configuration Schema
+  Repository](https://github.com/open-telemetry/opentelemetry-configuration) -
+  Official schema repository
+- [File Configuration
+  Specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md) -
+  Official specification
+
+## How to Use This Page
+
+- **Search**: Use the search bar to quickly find specific configuration types
+- **Filter**: Toggle between All types, Stable only, or Experimental only
+- **Expand**: Click type names to view detailed properties and constraints
+- **Cross-reference**: Click type names in property descriptions to jump to that
+  type's definition
+
+{{< config-types-accordion >}}
+
+<div class="config-types-content visually-hidden">
+
 ## Declarative Configuration Schema
 
 This page documents all configuration types for the OpenTelemetry SDK
@@ -1300,3 +1337,5 @@ are specified, the rule matches all spans that reach it.
 • `additionalProperties`: `false`<br>• `required`: `["name","config"]`<br>
 
 <!-- END GENERATED: types SOURCE: opentelemetry-configuration -->
+
+</div>
