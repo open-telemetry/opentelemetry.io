@@ -21,12 +21,13 @@ The canonical registry of active localization teams and their resources is in
 
 Before starting, confirm the following with the locale team:
 
-- A [kickoff issue][] has been filed following the steps in [New localizations][].
+- A [kickoff issue][] has been filed following the steps in [New
+  localizations][].
 - The ISO 639-1 language code (`LANG_ID`) has been agreed upon.
 - GitHub handles for the mentor and initial contributors are known.
 
-In the rest of this guide, replace every occurrence of `LANG_ID` with the
-actual ISO 639-1 code (for example, `pl` for Polish).
+In the rest of this guide, replace every occurrence of `LANG_ID` with the actual
+ISO 639-1 code (for example, `pl` for Polish).
 
 ## Step 1 — Hugo language config {#hugo-config}
 
@@ -66,7 +67,7 @@ It routes only the locale's own files, without any English fallback:
 
 ```yaml
 ## LANG_ID
-- source: content/LANG_ID     # locale-specific pages
+- source: content/LANG_ID # locale-specific pages
   target: content
   sites: &LANG_ID-matrix
     matrix: { languages: [LANG_ID] }
@@ -79,7 +80,7 @@ untranslated sections serve English pages rather than returning 404s:
 
 ```yaml
 ## LANG_ID
-- source: content/LANG_ID     # locale-specific pages
+- source: content/LANG_ID # locale-specific pages
   target: content
   sites: &LANG_ID-matrix
     matrix: { languages: [LANG_ID] }
@@ -92,7 +93,7 @@ untranslated sections serve English pages rather than returning 404s:
   sites: *LANG_ID-matrix
 - source: content/en/docs
   target: content/docs
-  files: ['! specs/**']        # exclude spec fragments (too large to fall back)
+  files: ['! specs/**'] # exclude spec fragments (too large to fall back)
   sites: *LANG_ID-matrix
 ```
 
@@ -159,17 +160,17 @@ Add three entries to `.cspell.yml`:
    word list:
 
    ```yaml
-   - LANG_ID          # the @cspell/dict-LANG_ID package
-   - LANG_ID-words    # the .cspell/LANG_ID-words.txt list
+   - LANG_ID # the @cspell/dict-LANG_ID package
+   - LANG_ID-words # the .cspell/LANG_ID-words.txt list
    ```
 
 Keep entries in each section in alphabetical order by language code.
 
 > [!NOTE]
 >
-> If no cspell dictionary package exists for the language, skip steps 3b and
-> the `import` and `dictionaries` entries. Only create the custom word list
-> (step 3c) and register it under `dictionaryDefinitions`.
+> If no cspell dictionary package exists for the language, skip steps 3b and the
+> `import` and `dictionaries` entries. Only create the custom word list (step
+> 3c) and register it under `dictionaryDefinitions`.
 >
 > Also add the locale path to the `ignorePaths` list in `.cspell.yml` so that
 > cspell does not attempt to spell-check content it cannot validate:
@@ -224,20 +225,20 @@ respective locale sections.
 
 ## Step 6 — GitHub org-level setup {#gh-org}
 
-These steps happen outside the repository and require maintainer-level access
-to the `open-telemetry` GitHub organization.
+These steps happen outside the repository and require maintainer-level access to
+the `open-telemetry` GitHub organization.
 
 1. **Create the approvers team** — Create a new team named
-   `docs-LANG_ID-approvers` in the `open-telemetry` GitHub organization. Add
-   the initial contributors as members.
+   `docs-LANG_ID-approvers` in the `open-telemetry` GitHub organization. Add the
+   initial contributors as members.
 
 2. **Create the issue label** — In the `opentelemetry.io` repository, create a
    new label named `lang:LANG_ID`. Use a consistent color with the other
    `lang:*` labels.
 
-3. **Create the maintainers team** (optional at launch) — Some locales also
-   have a `docs-LANG_ID-maintainers` team. This is optional during the initial
-   setup and can be added later as the team grows.
+3. **Create the maintainers team** (optional at launch) — Some locales also have
+   a `docs-LANG_ID-maintainers` team. This is optional during the initial setup
+   and can be added later as the team grows.
 
 ## Step 7 — Project tracking {#projects}
 
@@ -280,7 +281,8 @@ Update [`projects/localization.md`][] with the new locale's information:
 4. Add the Slack channel link definition:
 
    ```markdown
-   [otel-localization-LANG_ID]: https://cloud-native.slack.com/archives/CHANNEL_ID
+   [otel-localization-LANG_ID]:
+     https://cloud-native.slack.com/archives/CHANNEL_ID
    ```
 
 ## Verification {#verification}
