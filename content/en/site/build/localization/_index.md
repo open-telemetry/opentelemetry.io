@@ -239,8 +239,8 @@ the `open-telemetry` GitHub organization.
 
 Team creation is done by opening a pull request against the
 [`open-telemetry/admin`][] repository (private). See
-[this PR](https://github.com/open-telemetry/admin/pull/588) for an example of
-the expected format.
+[this PR](https://github.com/open-telemetry/admin/pull/588?link-check=no) for an
+example of the expected format.
 
 > [!NOTE]
 >
@@ -349,7 +349,7 @@ correct:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/localization.md
 [`config/_default/module-template.yaml`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
-[`open-telemetry/admin`]: https://github.com/open-telemetry/admin
+[`open-telemetry/admin`]: https://github.com/open-telemetry/admin?link-check=no
 [kickoff issue]: /docs/contributing/localization/#kickoff
 [New localizations]: /docs/contributing/localization/#new-localizations
 [Site localization]: /docs/contributing/localization/
