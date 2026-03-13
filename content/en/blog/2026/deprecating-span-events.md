@@ -10,12 +10,12 @@ sig: Specification, Logs
 cSpell:ignore: Liudmila Molkova Pająk
 ---
 
-OpenTelemetry is deprecating the Span Event API. This post explains why we’re making this change, what it means at a high level,
-and how you can prepare. In short:
+OpenTelemetry is deprecating the Span Event API. This post explains why we’re
+making this change, what it means at a high level, and how you can prepare. In
+short:
 
-- We want to remove confusion and
-  duplication caused by having two overlapping ways to emit events: span events
-  and log-based events.
+- We want to remove confusion and duplication caused by having two overlapping
+  ways to emit events: span events and log-based events.
 - New code should write events as logs that are correlated with the current
   span.
 - The older "span events" style will be phased out over time, but existing data
@@ -42,13 +42,13 @@ Having two competing APIs for the same concept has several drawbacks:
 - **Duplicate concepts for users.** Operators must understand both span events
   and log events, how they are exported, and how their backends treat them.
 - **Slower evolution.** Improvements to the event model (for example, around
-  schemas, attributes, and backward-compatibility) must be specified and implemented in two
-  places.
+  schemas, attributes, and backward-compatibility) must be specified and
+  implemented in two places.
 
 The OpenTelemetry community has been converging on a simpler mental model:
-**events are logs with names** emitted via the Logs API, correlated with traces and
-metrics through context, rather than as a special case on spans. This change is
-significant because it unifies how OpenTelemetry represents events.
+**events are logs with names** emitted via the Logs API, correlated with traces
+and metrics through context, rather than as a special case on spans. This change
+is significant because it unifies how OpenTelemetry represents events.
 
 At the same time, we recognize that span events are widely used today. Many
 backends present span events in dedicated trace views, and some users depend on
