@@ -152,10 +152,10 @@ here over time.
 Add three entries to [`.cspell.yml`][] to enable spell checking for the new
 language:
 
-1. Under `import:` — import the cspell dictionary:
+1. Under `import:` — import the cspell dictionary for your locale:
 
    ```yaml
-   - '@cspell/dict-LANG_ID/cspell-ext.json'
+   - '@cspell/dict-CSPELL_DICT_ID/cspell-ext.json'
    ```
 
 2. Under `dictionaryDefinitions:` — register the custom word list:
@@ -169,7 +169,7 @@ language:
    word list:
 
    ```yaml
-   - LANG_ID # the @cspell/dict-LANG_ID package
+   - CSPELL_DICT_ID # the @cspell/dict-CSPELL_DICT_ID package
    - LANG_ID-words # the .cspell/LANG_ID-words.txt list
    ```
 
@@ -276,7 +276,7 @@ Update [`projects/localization.md`][] with the new locale's information:
 
    - Website: <https://opentelemetry.io/LANG_ID/>
    - Slack channel:
-     [`#otel-localization-LANG_ID`][https://cloud-native.slack.com/archives/XXXXXXXXXXX]
+     [`#otel-localization-LANG_ID`](https://cloud-native.slack.com/archives/XXXXXXXXXXX)
    - Maintainers: `@open-telemetry/docs-LANG_ID-maintainers`
    - Approvers: `@open-telemetry/docs-LANG_ID-approvers`
    ```
