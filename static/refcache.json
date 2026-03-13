@@ -715,6 +715,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:52:38.482440919Z"
   },
+  "https://clotributor.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-13T19:17:11.496804303Z"
+  },
   "https://cloud-native.slack.com/archives/C014L2KCTE3": {
     "StatusCode": 200,
     "LastSeen": "2026-03-02T09:53:07.25685297Z"
@@ -1018,6 +1022,10 @@
   "https://community.cncf.io/events/details/cncf-cloud-native-community-japan-presents-japan-community-day-at-kubecon-cloudnativecon-japan-2025/": {
     "StatusCode": 200,
     "LastSeen": "2026-02-28T09:44:25.191050306Z"
+  },
+  "https://community.cncf.io/merge-forward/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-13T19:17:14.115968547Z"
   },
   "https://community.cncf.io/opentelemetry/": {
     "StatusCode": 200,
@@ -3618,6 +3626,10 @@
   "https://github.com/E-STAT": {
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:58:46.341688045Z"
+  },
+  "https://github.com/Elizabeth-Mathew1": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-13T19:17:10.731527729Z"
   },
   "https://github.com/EzzioMoreira": {
     "StatusCode": 206,
@@ -18543,6 +18555,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-27T09:59:10.847Z"
   },
+  "https://medium.com/@dianatodea/the-unofficial-guide-to-contributing-to-opentelemetry-where-to-look-and-who-to-talk-to-9de04ae75fe0": {
+    "StatusCode": 403,
+    "LastSeen": "2026-03-13T19:17:15.586642043Z"
+  },
   "https://medium.com/@horovits/fcc6c10c4987": {
     "StatusCode": 200,
     "LastSeen": "2026-03-02T10:42:11.276Z"
@@ -18702,6 +18718,10 @@
   "https://news.microsoft.com/source/features/ai/ai-agents-what-they-are-and-how-theyll-change-the-way-we-work/": {
     "StatusCode": 200,
     "LastSeen": "2026-02-28T09:44:35.492526141Z"
+  },
+  "https://newsletter.signoz.io/p/6-things-i-learned-about-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-13T19:17:17.513259029Z"
   },
   "https://nextjs.org/": {
     "StatusCode": 200,
