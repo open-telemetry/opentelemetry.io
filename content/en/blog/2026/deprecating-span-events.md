@@ -167,7 +167,7 @@ If you maintain OpenTelemetry language APIs and SDKs:
   `Span.RecordException` in favor of log-based events, while maintaining
   compatibility where needed.
 - Consider providing helpers or configuration that can project log-based events
-  back onto spans for users and backends that still depend on that
+  back onto span events for users and backends that still depend on that
   representation.
 
 ## Closing
