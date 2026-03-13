@@ -24,7 +24,3 @@ urls:
   repo: https://github.com/jrandolf/smapped-traces
   docs: https://github.com/jrandolf/smapped-traces#readme
 createdAt: 2026-03-10
-package:
-  registry: npm
-  name: smapped-traces
-  version: 0.1.0
