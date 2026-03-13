@@ -33,18 +33,18 @@ The shortcode reads from data/collector/{type}s.yml and uses i18n strings for he
 {{- $colLogs := i18n "collector_component_table_header_logs" -}}
 {{- $colStability := i18n "collector_component_table_header_stability" -}}
 
+{{- /* Get optional subtype filter */ -}}
+{{- $subtype := .Get "subtype" -}}
+
 {{- /* Footnote numbers */ -}}
 {{- $distributionsFootnote := .Get "distributionsFootnote" | default "1" -}}
 {{- $stabilityFootnote := .Get "stabilityFootnote" | default "2" -}}
 {{- $signalsFootnote := .Get "signalsFootnote" | default "2" -}}
 
-{{- /* Generate footnote HTML */ -}}
-{{- $distFootnoteHTML := printf "<sup id=\"fnref:%s\"><a href=\"#fn:%s\" class=\"footnote-ref\" role=\"doc-noteref\">%s</a></sup>" $distributionsFootnote $distributionsFootnote $distributionsFootnote -}}
-{{- $stabilityFootnoteHTML := printf "<sup id=\"fnref:%s\"><a href=\"#fn:%s\" class=\"footnote-ref\" role=\"doc-noteref\">%s</a></sup>" $stabilityFootnote $stabilityFootnote $stabilityFootnote -}}
-{{- $signalsFootnoteHTML := printf "<sup id=\"fnref:%s\"><a href=\"#fn:%s\" class=\"footnote-ref\" role=\"doc-noteref\">%s</a></sup>" $signalsFootnote $signalsFootnote $signalsFootnote -}}
-
-{{- /* Get optional subtype filter */ -}}
-{{- $subtype := .Get "subtype" -}}
+{{- /* Generate footnote HTML - no id on sup to avoid duplicates, all tables share same footnote targets */ -}}
+{{- $distFootnoteHTML := printf "<sup><a href=\"#fn:%s\" class=\"footnote-ref\" role=\"doc-noteref\">%s</a></sup>" $distributionsFootnote $distributionsFootnote -}}
+{{- $stabilityFootnoteHTML := printf "<sup><a href=\"#fn:%s\" class=\"footnote-ref\" role=\"doc-noteref\">%s</a></sup>" $stabilityFootnote $stabilityFootnote -}}
+{{- $signalsFootnoteHTML := printf "<sup><a href=\"#fn:%s\" class=\"footnote-ref\" role=\"doc-noteref\">%s</a></sup>" $signalsFootnote $signalsFootnote -}}
 
 <table>
 <thead>
@@ -128,12 +128,10 @@ The shortcode reads from data/collector/{type}s.yml and uses i18n strings for he
   <ol>
     <li id="fn:{{ $distributionsFootnote }}">
       {{ i18n "collector_component_distributions_footnote" | markdownify }}
-      <a href="#fnref:{{ $distributionsFootnote }}" class="footnote-backref">↩</a>
     </li>
     {{- if ne $componentType "connector" -}}
     <li id="fn:{{ $signalsFootnote }}">
       {{ i18n "collector_component_stability_footnote" | markdownify }}
-      <a href="#fnref:{{ $signalsFootnote }}" class="footnote-backref">↩</a>
     </li>
     {{- end -}}
   </ol>

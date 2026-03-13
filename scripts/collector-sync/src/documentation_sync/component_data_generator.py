@@ -5,8 +5,12 @@ from typing import Any
 
 import yaml
 
+import logging
+
 from documentation_sync import component_utils
 from documentation_sync.metadata_diagnostics import MetadataDiagnostics
+
+logger = logging.getLogger(__name__)
 
 
 class ComponentDataGenerator:
@@ -109,7 +113,7 @@ class ComponentDataGenerator:
             output_file = collector_dir / f"{component_type}s.yml"
 
             with open(output_file, "w", encoding="utf-8") as f:
-                f.write("# OpenTelemetry Collector distribution versions\n")
+                f.write("# OpenTelemetry Collector component data\n")
                 f.write("# This file is automatically updated by scripts/collector-sync\n\n")
 
                 yaml.dump(
@@ -122,4 +126,4 @@ class ComponentDataGenerator:
                     width=100,
                 )
 
-            print(f"  ✓ {output_file.relative_to(output_dir)}")
+            logger.info("  ✓ %s", output_file.relative_to(output_dir))
