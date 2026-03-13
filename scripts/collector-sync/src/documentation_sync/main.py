@@ -5,6 +5,7 @@ import logging
 import sys
 from pathlib import Path
 
+from documentation_sync.component_data_generator import ComponentDataGenerator
 from documentation_sync.doc_content_generator import DocContentGenerator
 from documentation_sync.doc_marker_updater import DocMarkerUpdater
 from documentation_sync.explorer_repository_manager import ExplorerRepositoryManager
@@ -202,6 +203,11 @@ def main() -> None:
     logger.info("\nUpdating collector versions data file...")
     version_updater = VersionUpdater(repo_root)
     version_updater.update_versions(core_version_tag, contrib_version_tag)
+
+    logger.info("\nGenerating component data files for Hugo...")
+    data_generator = ComponentDataGenerator()
+    data_generator.write_component_data_files(merged_inventory, repo_root)
+    logger.info("✅ Component data files generated")
 
     # Fix spelling errors (runs in current directory)
     logger.info("\n" + "=" * 60)

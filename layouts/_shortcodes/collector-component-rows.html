@@ -1,0 +1,141 @@
+{{- /*
+Collector component table shortcode - renders complete HTML table from data files
+
+Usage:
+  {{< collector-component-rows type="receiver" >}}
+  {{< collector-component-rows type="extension" subtype="encoding" >}}
+  {{< collector-component-rows type="extension" renderFootnotes="false" >}}
+
+Parameters:
+- type: Component type (receiver, processor, exporter, connector, extension) (required)
+- subtype: For extensions, filter by subtype (encoding, observer, storage) (optional)
+- renderFootnotes: Whether to render footnotes after table (default: "true")
+- distributionsFootnote: Footnote number for Distributions column (default: "1")
+- stabilityFootnote: Footnote number for Stability column (for extension, default: "2")
+- signalsFootnote: Footnote number for signal columns (for receiver/processor/exporter, default: "2")
+
+The shortcode reads from data/collector/{type}s.yml and uses i18n strings for headers and footnotes.
+*/ -}}
+
+{{- $componentType := .Get "type" -}}
+{{- $dataFile := printf "%ss" $componentType -}}
+{{- $data := index .Site.Data.collector $dataFile -}}
+
+{{- if not $data -}}
+  {{- errorf "No data found for component type '%s' (expected data/collector/%s.yml)" $componentType $dataFile -}}
+{{- end -}}
+
+{{- /* Get column headers from i18n */ -}}
+{{- $colName := i18n "collector_component_table_header_name" -}}
+{{- $colDistributions := i18n "collector_component_table_header_distributions" -}}
+{{- $colTraces := i18n "collector_component_table_header_traces" -}}
+{{- $colMetrics := i18n "collector_component_table_header_metrics" -}}
+{{- $colLogs := i18n "collector_component_table_header_logs" -}}
+{{- $colStability := i18n "collector_component_table_header_stability" -}}
+
+{{- /* Footnote numbers */ -}}
+{{- $distributionsFootnote := .Get "distributionsFootnote" | default "1" -}}
+{{- $stabilityFootnote := .Get "stabilityFootnote" | default "2" -}}
+{{- $signalsFootnote := .Get "signalsFootnote" | default "2" -}}
+
+{{- /* Generate footnote HTML */ -}}
+{{- $distFootnoteHTML := printf "<sup id=\"fnref:%s\"><a href=\"#fn:%s\" class=\"footnote-ref\" role=\"doc-noteref\">%s</a></sup>" $distributionsFootnote $distributionsFootnote $distributionsFootnote -}}
+{{- $stabilityFootnoteHTML := printf "<sup id=\"fnref:%s\"><a href=\"#fn:%s\" class=\"footnote-ref\" role=\"doc-noteref\">%s</a></sup>" $stabilityFootnote $stabilityFootnote $stabilityFootnote -}}
+{{- $signalsFootnoteHTML := printf "<sup id=\"fnref:%s\"><a href=\"#fn:%s\" class=\"footnote-ref\" role=\"doc-noteref\">%s</a></sup>" $signalsFootnote $signalsFootnote $signalsFootnote -}}
+
+{{- /* Get optional subtype filter */ -}}
+{{- $subtype := .Get "subtype" -}}
+
+<table>
+<thead>
+  <tr>
+    <th>{{ $colName }}</th>
+    <th>{{ $colDistributions }}{{ $distFootnoteHTML | safeHTML }}</th>
+    {{- if eq $componentType "extension" }}
+    <th>{{ $colStability }}{{ $stabilityFootnoteHTML | safeHTML }}</th>
+    {{- else if ne $componentType "connector" }}
+    <th>{{ $colTraces }}{{ $signalsFootnoteHTML | safeHTML }}</th>
+    <th>{{ $colMetrics }}{{ $signalsFootnoteHTML | safeHTML }}</th>
+    <th>{{ $colLogs }}{{ $signalsFootnoteHTML | safeHTML }}</th>
+    {{- end }}
+  </tr>
+</thead>
+<tbody>
+{{- range $data -}}
+  {{- $name := .name -}}
+  {{- $repo := .repo -}}
+  {{- $distributions := .distributions -}}
+  {{- $stability := .stability -}}
+  {{- $unmaintained := .unmaintained | default false -}}
+  {{- $itemSubtype := .subtype -}}
+
+  {{- /* Filter by subtype if specified */ -}}
+  {{- $shouldRender := false -}}
+  {{- if $subtype -}}
+    {{- if eq $itemSubtype $subtype -}}
+      {{- $shouldRender = true -}}
+    {{- end -}}
+  {{- else if not $itemSubtype -}}
+    {{- /* Only render items without subtype if no subtype filter */ -}}
+    {{- $shouldRender = true -}}
+  {{- end -}}
+
+  {{- if $shouldRender -}}
+    {{- /* Build GitHub URL */ -}}
+    {{- $repoName := cond (eq $repo "core") "opentelemetry-collector" "opentelemetry-collector-contrib" -}}
+    {{- $version := index $.Site.Data "collector-versions" $repo -}}
+    {{- $path := "" -}}
+    {{- if $itemSubtype -}}
+      {{- $path = printf "%s/%s/%s" $componentType $itemSubtype $name -}}
+    {{- else -}}
+      {{- $path = printf "%s/%s" $componentType $name -}}
+    {{- end -}}
+    {{- $url := printf "https://github.com/open-telemetry/%s/tree/%s/%s" $repoName $version $path -}}
+
+    {{- /* Format distributions */ -}}
+    {{- $formattedDists := slice -}}
+    {{- range $distributions -}}
+      {{- if eq (lower .) "k8s" -}}
+        {{- $formattedDists = $formattedDists | append "K8s" -}}
+      {{- else -}}
+        {{- $formattedDists = $formattedDists | append . -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $distString := delimit $formattedDists ", " -}}
+
+    <tr>
+      <td><a href="{{ $url }}" target='_blank'>{{ $name }}</a>{{- if $unmaintained }} ⚠️{{ end }}</td>
+      <td>{{ $distString }}</td>
+      {{- if eq $componentType "extension" }}
+      <td>{{ index $stability "extension" | default "N/A" }}</td>
+      {{- else if eq $componentType "connector" }}
+      {{- /* connectors only have 2 columns */ -}}
+      {{- else }}
+      <td>{{ index $stability "traces" | default "-" }}</td>
+      <td>{{ index $stability "metrics" | default "-" }}</td>
+      <td>{{ index $stability "logs" | default "-" }}</td>
+      {{- end }}
+    </tr>
+  {{- end -}}
+{{- end }}
+</tbody>
+</table>
+
+{{- /* Render footnotes if requested */ -}}
+{{- $renderFootnotes := .Get "renderFootnotes" | default "true" -}}
+{{- if eq $renderFootnotes "true" -}}
+<div class="footnotes">
+  <ol>
+    <li id="fn:{{ $distributionsFootnote }}">
+      {{ i18n "collector_component_distributions_footnote" | markdownify }}
+      <a href="#fnref:{{ $distributionsFootnote }}" class="footnote-backref">↩</a>
+    </li>
+    {{- if ne $componentType "connector" -}}
+    <li id="fn:{{ $signalsFootnote }}">
+      {{ i18n "collector_component_stability_footnote" | markdownify }}
+      <a href="#fnref:{{ $signalsFootnote }}" class="footnote-backref">↩</a>
+    </li>
+    {{- end -}}
+  </ol>
+</div>
+{{- end -}}

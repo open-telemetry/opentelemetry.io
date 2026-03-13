@@ -1,0 +1,405 @@
+---
+- name: alertmanagerexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    traces: development
+- name: alibabacloudlogserviceexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: unmaintained
+    metrics: unmaintained
+    traces: unmaintained
+  unmaintained: true
+- name: awscloudwatchlogsexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+- name: awsemfexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    metrics: beta
+- name: awskinesisexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: awss3exporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+- name: awsxrayexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    traces: beta
+- name: azureblobexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+- name: azuredataexplorerexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: azuremonitorexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: bmchelixexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    metrics: alpha
+- name: cassandraexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+    traces: alpha
+- name: clickhouseexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    metrics: alpha
+    logs: beta
+    traces: beta
+- name: coralogixexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    profiles: alpha
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: datadogexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: datasetexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+    traces: alpha
+- name: debugexporter
+  repo: core
+  distributions:
+  - contrib
+  - core
+  - k8s
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+    profiles: development
+- name: dorisexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+- name: elasticsearchexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+    traces: beta
+    metrics: development
+    profiles: development
+- name: faroexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+    traces: alpha
+- name: fileexporter
+  repo: contrib
+  distributions:
+  - contrib
+  - core
+  - k8s
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+    profiles: development
+- name: googlecloudexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: googlecloudpubsubexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: googlecloudstorageexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+    traces: development
+- name: googlemanagedprometheusexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    metrics: beta
+- name: honeycombmarkerexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+- name: influxdbexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: kafkaexporter
+  repo: contrib
+  distributions:
+  - contrib
+  - core
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+    profiles: development
+- name: loadbalancingexporter
+  repo: contrib
+  distributions:
+  - contrib
+  - k8s
+  stability:
+    logs: beta
+    traces: beta
+    metrics: development
+- name: logicmonitorexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+    traces: alpha
+- name: logzioexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+    traces: beta
+- name: mezmoexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+- name: nopexporter
+  repo: core
+  distributions:
+  - contrib
+  - core
+  - k8s
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+    profiles: development
+- name: opensearchexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+    traces: alpha
+- name: otelarrowexporter
+  repo: contrib
+  distributions:
+  - contrib
+  - k8s
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: otlpexporter
+  repo: core
+  distributions:
+  - contrib
+  - core
+  - k8s
+  - otlp
+  stability:
+    profiles: development
+    logs: stable
+    metrics: stable
+    traces: stable
+- name: otlphttpexporter
+  repo: core
+  distributions:
+  - contrib
+  - core
+  - k8s
+  - otlp
+  stability:
+    profiles: development
+    logs: stable
+    metrics: stable
+    traces: stable
+- name: prometheusexporter
+  repo: contrib
+  distributions:
+  - contrib
+  - core
+  stability:
+    metrics: beta
+- name: prometheusremotewriteexporter
+  repo: contrib
+  distributions:
+  - contrib
+  - core
+  stability:
+    metrics: beta
+- name: pulsarexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+- name: rabbitmqexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+- name: sapmexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    traces: deprecated
+- name: sematextexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: development
+    metrics: development
+- name: sentryexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+    traces: alpha
+- name: signalfxexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: splunkhecexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: stefexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    metrics: alpha
+- name: sumologicexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: syslogexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+- name: tencentcloudlogserviceexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: beta
+- name: tinybirdexporter
+  repo: contrib
+  distributions:
+  - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+- name: zipkinexporter
+  repo: contrib
+  distributions:
+  - contrib
+  - core
+  stability:
+    traces: beta
