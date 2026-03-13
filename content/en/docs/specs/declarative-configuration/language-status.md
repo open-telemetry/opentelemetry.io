@@ -16,16 +16,6 @@ This page shows the implementation status of
 OpenTelemetry language SDKs. Each type is listed with its support status in each
 language, including property-level implementation details.
 
-**Understanding the Status:**
-
-- **Supported** ✓ - Type is fully implemented and available
-- **Not Implemented** ✗ - Type is defined in the specification but not yet
-  implemented
-- **Unknown** ? - Implementation status has not been determined
-- **Not Applicable** N/A - Type does not apply to this language's
-  implementation
-- **Ignored** ○ - Type is intentionally not implemented
-
 **Related Resources:**
 
 - [Configuration Types](../) - Complete reference for all configuration types
@@ -33,14 +23,6 @@ language, including property-level implementation details.
   Repository](https://github.com/open-telemetry/opentelemetry-configuration) -
   Official schema repository
 
-## How to Use This Page
-
-- **Search**: Use the search bar to quickly find specific configuration types
-- **Filter**: Toggle between All types, Stable only, or Experimental only
-- **Expand**: Click type names to view detailed language support and
-  property-level status
-- **Language Icons**: Each language is represented by its logo in the type
-  headers, with color-coded status indicators
 
 <!-- BEGIN GENERATED: language-implementation-status SOURCE: opentelemetry-configuration -->
 

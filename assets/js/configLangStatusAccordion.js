@@ -436,8 +436,7 @@
         img.src = logo;
         img.alt = langName;
         img.className = 'language-logo';
-        img.width = 24;
-        img.height = 24;
+        // Width and height controlled by CSS for responsive sizing
 
         pill.appendChild(img);
         statusSummary.appendChild(pill);
