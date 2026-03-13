@@ -115,7 +115,7 @@ tools:
 
 ### Application developers
 
-If you maitain an application that you instrument:
+If you maintain an application that you instrument:
 
 - You should not need to change code immediately.
 - Watch for new versions of your instrumentation libraries as they may start
