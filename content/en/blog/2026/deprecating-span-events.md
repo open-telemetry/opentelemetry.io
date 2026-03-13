@@ -21,7 +21,6 @@ and how you can prepare. In short:
 - The older "span events" style will be phased out over time, but existing data
   and views that show events on spans will keep working.
 
-
 ## Why deprecate the Span Event API?
 
 Today, OpenTelemetry offers two main ways to emit events that are correlated
