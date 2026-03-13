@@ -6,7 +6,7 @@ author: >-
   [Diana Todea](https://github.com/didiViking) (VictoriaMetrics), [Elizabeth
   Mathew](https://github.com/Elizabeth-Mathew1) (Signoz)
 sig: End-User SIG
-cSpell:ignore: CLOTributor devex Signoz Todea
+cSpell:ignore: CLOTributor devex inclusivity Signoz Todea
 ---
 
 ## Beyond the good first issue: how to make your contributions sustainable
