@@ -5,308 +5,308 @@
 - name: ackextension
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - k8s
   stability:
     extension: alpha
 - name: asapauthextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: beta
 - name: avrologencodingextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: development
   subtype: encoding
 - name: awscloudwatchmetricstreamsencodingextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
   subtype: encoding
 - name: awslogsencodingextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
   subtype: encoding
 - name: awsproxy
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: beta
 - name: azureauthextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
 - name: azureencodingextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: development
   subtype: encoding
 - name: basicauthextension
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - k8s
   stability:
     extension: beta
 - name: bearertokenauthextension
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - k8s
   stability:
     extension: beta
 - name: cfgardenobserver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
   subtype: observer
 - name: cgroupruntimeextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
 - name: datadogextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
 - name: dbstorage
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
   subtype: storage
 - name: dockerobserver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: beta
   subtype: observer
 - name: ecsobserver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: beta
   subtype: observer
 - name: filestorage
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - k8s
   stability:
     extension: beta
   subtype: storage
 - name: googleclientauthextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: beta
 - name: googlecloudlogentryencodingextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
   subtype: encoding
 - name: headerssetterextension
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - k8s
   stability:
     extension: alpha
 - name: healthcheckextension
   repo: contrib
   distributions:
-  - contrib
-  - core
-  - k8s
+    - contrib
+    - core
+    - k8s
   stability:
     extension: alpha
 - name: healthcheckv2extension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: development
 - name: hostobserver
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - k8s
   stability:
     extension: beta
   subtype: observer
 - name: httpforwarderextension
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - k8s
   stability:
     extension: beta
 - name: jaegerencodingextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
   subtype: encoding
 - name: jaegerremotesampling
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
 - name: jsonlogencodingextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
   subtype: encoding
 - name: k8sleaderelector
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - k8s
   stability:
     extension: alpha
 - name: k8sobserver
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - k8s
   stability:
     extension: alpha
   subtype: observer
 - name: kafkatopicsobserver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
   subtype: observer
 - name: memorylimiterextension
   repo: core
   distributions:
-  - core
+    - core
   stability:
     extension: development
 - name: oauth2clientauthextension
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - k8s
   stability:
     extension: beta
 - name: oidcauthextension
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - k8s
   stability:
     extension: beta
 - name: opampextension
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - k8s
   stability:
     extension: alpha
 - name: otlpencodingextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: beta
   subtype: encoding
 - name: pprofextension
   repo: contrib
   distributions:
-  - contrib
-  - core
-  - k8s
+    - contrib
+    - core
+    - k8s
   stability:
     extension: beta
 - name: redisstorageextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
   subtype: storage
 - name: remotetapextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: development
 - name: sigv4authextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: beta
 - name: skywalkingencodingextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
   subtype: encoding
 - name: solarwindsapmsettingsextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: development
 - name: sumologicextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
 - name: textencodingextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: beta
   subtype: encoding
 - name: zipkinencodingextension
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     extension: alpha
   subtype: encoding
 - name: zpagesextension
   repo: core
   distributions:
-  - contrib
-  - core
-  - k8s
+    - contrib
+    - core
+    - k8s
   stability:
     extension: beta
