@@ -715,6 +715,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:52:38.482440919Z"
   },
+  "https://cloud-native.slack.com": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-13T12:03:42.256228183Z"
+  },
   "https://cloud-native.slack.com/archives/C014L2KCTE3": {
     "StatusCode": 200,
     "LastSeen": "2026-03-02T09:53:07.25685297Z"
@@ -846,6 +850,10 @@
   "https://cloud-native.slack.com/team/U03UARAJ405": {
     "StatusCode": 200,
     "LastSeen": "2026-02-28T09:44:19.977613318Z"
+  },
+  "https://cloud-native.slack.com/team/U07DR07KAEQ": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-13T12:03:48.024814189Z"
   },
   "https://cloud.google.com/": {
     "StatusCode": 200,
@@ -2983,6 +2991,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-03-10T09:52:28.024741527Z"
   },
+  "https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-13T12:03:41.003594719Z"
+  },
   "https://en.wikipedia.org/wiki/Monkey_patch": {
     "StatusCode": 200,
     "LastSeen": "2026-03-03T09:52:00.257314694Z"
@@ -3954,6 +3966,10 @@
   "https://github.com/SergeyKleyman": {
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:55:11.14959992Z"
+  },
+  "https://github.com/ShaanveerS": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-13T04:23:26.226261627Z"
   },
   "https://github.com/SpencerTorres": {
     "StatusCode": 206,
@@ -14687,9 +14703,17 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:52:37.740766798Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.prettierignore": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-12T08:36:23.416569-03:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.textlintrc.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:44:18.185306561Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-12T12:09:20.70361711Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md": {
     "StatusCode": 206,
@@ -14702,6 +14726,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json": {
     "StatusCode": 206,
     "LastSeen": "2026-02-26T19:16:31.539863-05:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/localization.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-12T08:36:34.812193-03:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl": {
     "StatusCode": 206,
@@ -16379,9 +16407,21 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:52:43.283371238Z"
   },
+  "https://github.com/streetsidesoftware/cspell-dicts#natural-language-dictionaries": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-12T08:36:10.989299-03:00"
+  },
   "https://github.com/strimzi": {
     "StatusCode": 206,
     "LastSeen": "2026-03-12T10:02:44.23896209Z"
+  },
+  "https://github.com/stuart23": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-12T19:27:01.592035078Z"
+  },
+  "https://github.com/stuart23/chromiumreceiver": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-12T19:26:57.310379314Z"
   },
   "https://github.com/sudarshan12s": {
     "StatusCode": 206,
