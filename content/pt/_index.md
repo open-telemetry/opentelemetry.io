@@ -39,7 +39,7 @@ params:
 {{% homepage/intro-section image="/img/homepage/collector-pipeline.svg" imageAlt="Visão geral do OpenTelemetry" %}}
 
 **OpenTelemetry** é um _framework_ de observabilidade de código aberto para
-_software_ nativo da nuvem. Fornece um conjunto único de APIs, bibliotecas,
+_software_ nativo da nuvem. Ele fornece um conjunto único de APIs, bibliotecas,
 agentes e serviços de coleta para capturar rastros distribuídos e métricas da
 sua aplicação.
 
@@ -63,7 +63,7 @@ sem alterar o código da sua aplicação.
 {{% /homepage/main-feature %}}
 
 {{% homepage/main-feature
-      title="Sinais de observabilidade unificados"
+      title="Sinais unificados de observabilidade"
       image="/img/homepage/unified-signals.svg"
       imagePosition="right" %}}
 
