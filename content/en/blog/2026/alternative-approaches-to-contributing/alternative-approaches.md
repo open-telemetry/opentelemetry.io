@@ -1,6 +1,6 @@
 ---
-title: Beyond the good first issue: how to make your contributions sustainable
-linkTitle: Beyong the good first issue
+title: Beyond the good first issue - How to make your contributions sustainable
+linkTitle: Beyond the good first issue
 date: 2026-03-20
 author: >-
 [Diana Todea](https://github.com/didiViking) (VictoriaMetrics),
