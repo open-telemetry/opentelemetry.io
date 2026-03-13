@@ -6,7 +6,7 @@ description:
   instrument.
 weight: 20
 # prettier-ignore
-cSpell:ignore: filestorecsi kube-node-lease kube-system rdns replicaset statefulset volumepopulator
+cSpell:ignore: filestorecsi kube-node-lease kube-system rdns replicaset statefulset testserver volumepopulator
 ---
 
 The `OTEL_EBPF_AUTO_TARGET_EXE`, `OTEL_EBPF_OPEN_PORT`,
