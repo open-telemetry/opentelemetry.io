@@ -23,11 +23,11 @@ Before starting, confirm the following with the locale team:
 
 - A [kickoff issue][] has been filed following the steps in [New
   localizations][].
-- The ISO 639-1 language code (`LANG_ID`) has been agreed upon.
+- The [ISO 639-1][] language code (`LANG_ID`) has been agreed upon.
 - GitHub handles for the mentor and initial contributors are known.
 
 In the rest of this guide, replace every occurrence of `LANG_ID` with the actual
-ISO 639-1 code (for example, `pl` for Polish).
+[ISO 639-1][] code (for example, `pl` for Polish).
 
 ## Step 1 — Hugo language config {#hugo-config}
 
@@ -52,8 +52,6 @@ pl:
     description: Strona projektu OpenTelemetry
 ```
 
-Keep entries alphabetically ordered by language code.
-
 ## Step 2 — Hugo content mounts {#hugo-mounts}
 
 Hugo uses content mounts to route locale-specific content and to fall back to
@@ -61,23 +59,10 @@ English pages for sections that have not yet been translated. Add a block for
 `LANG_ID` in [`config/_default/module-template.yaml`][] under the top-level
 `mounts:` section (this template is rendered into `module.yaml`).
 
-### Minimal setup
+### Base setup
 
-Use this when the localization is just getting started and has little content.
-It routes only the locale's own files, without any English fallback:
-
-```yaml
-## LANG_ID
-- source: content/LANG_ID # locale-specific pages
-  target: content
-  sites: &LANG_ID-matrix
-    matrix: { languages: [LANG_ID] }
-```
-
-### Full setup with English fallbacks {#full-mounts}
-
-Once the localization has meaningful coverage, add fallback mounts so that
-untranslated sections serve English pages rather than returning 404s:
+Every locale requires at least the following mounts — the locale's own content
+plus fallbacks for the core English sections:
 
 ```yaml
 ## LANG_ID
@@ -98,11 +83,30 @@ untranslated sections serve English pages rather than returning 404s:
   sites: *LANG_ID-matrix
 ```
 
-> [!TIP]
->
-> Add the fallback mounts in a follow-up PR once the locale has a reasonable
-> amount of translated content. Enabling fallbacks too early can give readers
-> the impression that the site is more translated than it actually is.
+Additional sections (such as `ecosystem`) can be added as the localization
+matures. For example, the `pt` block includes an `ecosystem` fallback:
+
+```yaml
+## pt
+- source: content/pt
+  target: content
+  sites: &pt-matrix
+    matrix: { languages: [pt] }
+# fallback pages
+- source: content/en/_includes
+  target: content/_includes
+  sites: *pt-matrix
+- source: content/en/announcements
+  target: content/announcements
+  sites: *pt-matrix
+- source: content/en/docs
+  target: content/docs
+  files: ['! specs/**']
+  sites: *pt-matrix
+- source: content/en/ecosystem
+  target: content/ecosystem
+  sites: *pt-matrix
+```
 
 Insert the new block alongside the existing locale blocks in
 `config/_default/module-template.yaml`, following the current ordering
@@ -233,19 +237,25 @@ respective locale sections.
 These steps happen outside the repository and require maintainer-level access to
 the `open-telemetry` GitHub organization.
 
-1. **Create the approvers team** — Create a new team named
-   `docs-LANG_ID-approvers` in the `open-telemetry` GitHub organization. Add the
-   initial contributors as members.
+Team creation is done by opening a pull request against the
+[`open-telemetry/admin`][] repository (private). See
+[this PR](https://github.com/open-telemetry/admin/pull/588) for an example of
+the expected format.
 
-2. **Create the issue label** — In the `opentelemetry.io` repository, create a
-   new label named `lang:LANG_ID`. Use a consistent color with the other
-   `lang:*` labels.
+> [!NOTE]
+>
+> [Team members should be added manually](https://github.com/open-telemetry/admin/issues/58),
+> since they aren't currently being managed by this repository.
 
-3. **Create the maintainers team** (optional at launch) — Some locales also have
-   a `docs-LANG_ID-maintainers` team. This is optional during the initial setup
-   and can be added later as the team grows.
+## Step 7 — Slack channel {#slack}
 
-## Step 7 — Project tracking {#projects}
+Create a channel for the locale in the [CNCF Slack workspace][], using the
+naming convention `#otel-localization-LANG_ID` (for example,
+`#otel-localization-pl` for Polish). After creating the channel, add the
+[OpenTelemetry Admin](https://cloud-native.slack.com/team/U07DR07KAEQ) as a
+channel manager.
+
+## Step 8 — Project tracking {#projects}
 
 Update [`projects/localization.md`][] with the new locale's information:
 
@@ -265,7 +275,8 @@ Update [`projects/localization.md`][] with the new locale's information:
    **EnglishName**:
 
    - Website: <https://opentelemetry.io/LANG_ID/>
-   - Slack channel: [`#otel-localization-LANG_ID`][otel-localization-LANG_ID]
+   - Slack channel:
+     [`#otel-localization-LANG_ID`][https://cloud-native.slack.com/archives/XXXXXXXXXXX]
    - Maintainers: `@open-telemetry/docs-LANG_ID-maintainers`
    - Approvers: `@open-telemetry/docs-LANG_ID-approvers`
    ```
@@ -292,7 +303,31 @@ Update [`projects/localization.md`][] with the new locale's information:
 
 ## Verification {#verification}
 
-After all changes are merged, verify that the setup is correct:
+### Setup checklist
+
+Use this checklist to confirm that every setup step is complete before
+requesting a review:
+
+- [ ] **Step 1** — Language entry added to `config/_default/hugo.yaml`
+- [ ] **Step 2** — Content mounts added to
+      `config/_default/module-template.yaml`
+- [ ] **Step 3** — cSpell configured: dictionary installed (or locale added to
+      `ignorePaths`), custom word list created at `.cspell/LANG_ID-words.txt`,
+      and `.cspell.yml` updated
+- [ ] **Step 4** — `.prettierignore` updated (if applicable for the script)
+- [ ] **Step 5** — `.github/component-label-map.yml` and
+      `.github/component-owners.yml` updated with the `lang:LANG_ID` entries
+- [ ] **Step 6** — Team PR opened against `open-telemetry/admin`; team members
+      added manually
+- [ ] **Step 7** — Slack channel `#otel-localization-LANG_ID` created;
+      OpenTelemetry Admin added as channel manager
+- [ ] **Step 8** — `projects/localization.md` updated with the language entry,
+      team entry, label, and Slack channel link
+
+### Automated checks
+
+After all PRs are merged, run the following to confirm the configuration is
+correct:
 
 - **`npm run build`** — confirms Hugo recognizes the new language without
   errors.
@@ -301,9 +336,6 @@ After all changes are merged, verify that the setup is correct:
 - **GitHub label automation** — open a test PR that touches a file under
   `content/LANG_ID/` and confirm the `lang:LANG_ID` label is applied
   automatically.
-- **`npm run check:i18n`** — run once the locale team submits their first
-  translated pages to validate that `default_lang_commit` front matter is
-  present and correct.
 
 [`.cspell.yml`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.cspell.yml
@@ -317,6 +349,9 @@ After all changes are merged, verify that the setup is correct:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/localization.md
 [`config/_default/module-template.yaml`]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/config/_default/module-template.yaml
+[`open-telemetry/admin`]: https://github.com/open-telemetry/admin
 [kickoff issue]: /docs/contributing/localization/#kickoff
 [New localizations]: /docs/contributing/localization/#new-localizations
 [Site localization]: /docs/contributing/localization/
+[ISO 639-1]: https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes
+[CNCF Slack workspace]: https://cloud-native.slack.com
