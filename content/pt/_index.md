@@ -40,7 +40,7 @@ params:
 
 **OpenTelemetry** é um _framework_ de observabilidade de código aberto para
 _software_ nativo da nuvem. Fornece um conjunto único de APIs, bibliotecas,
-agentes e serviços de coleta para capturar rastros distribúidos e métricas da
+agentes e serviços de coleta para capturar rastros distribuídos e métricas da
 sua aplicação.
 
 Construído com base em anos de experiência dos projetos OpenTracing e
@@ -103,10 +103,10 @@ Metadados contextuais {{< /homepage/signal >}}
 {{< homepage/otel-feature image="/img/homepage/feature-auto-instrumentation.svg" title="Auto-instrumentação" url="/docs/concepts/instrumentation/zero-code/" >}}
 Comece em minutos com a instrumentação sem código para _frameworks_ e
 bibliotecas populares. Agentes de instrumentação automática capturam rastros,
-métricas e logs sem motificar seu código-fonte. {{< /homepage/otel-feature >}}
+métricas e logs sem modificar seu código-fonte. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-pipeline.svg" title="Pipeline do Collector" url="/docs/collector/" >}}
-Processe, filtr e roteie dados de telemetria com o OpenTelemetry Collector.
+Processe, filtre e roteie dados de telemetria com o OpenTelemetry Collector.
 Implante como agente ou gateway para receber, processar e exportar telemetria em
 escala com mais de 200 componentes. {{< /homepage/otel-feature >}}
 
@@ -116,10 +116,10 @@ contexto distribuído flui por todo o caminho da requisição, conectando logs,
 métricas e rastros em uma visão unificada. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-multi-language.svg" title="Suporte a múltiplas linguagens de programação" url="/docs/languages/" >}}
-SDKs nativos para mais de 12+ linguagens de programação, incluindo Java, Kotlin,
-Python, Go, JavaScript, .NET, Ruby, PHP, Rust, C++, Swift, e Erlang. Use sua
-linguagem de programação preferida com suporte de primeira classe do
-OpenTelemetry. {{< /homepage/otel-feature >}}
+SDKs nativos para 12+ linguagens de programação, incluindo Java, Kotlin, Python,
+Go, JavaScript, .NET, Ruby, PHP, Rust, C++, Swift, e Erlang. Use sua linguagem
+de programação preferida com suporte de primeira classe do OpenTelemetry.
+{{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-production-ready.svg" title="Estável e pronto para produção" url="/status/" >}}
 As APIs de rastros e métricas são estáveis nas principais linguagens de
@@ -151,7 +151,7 @@ garante estabilidade a longo prazo e evolução orientada pela comunidade.
 {{% blocks/section color="secondary" type="cncf" %}}
 
 **OpenTelemetry é um projeto em [incubação][incubating] da [CNCF][]**.<br>
-Formato por meio de uma junção dos projetos OpenTracing e OpenCensus.
+Formado por meio de uma junção dos projetos OpenTracing e OpenCensus.
 
 [![CNCF logo][]][cncf]
 
