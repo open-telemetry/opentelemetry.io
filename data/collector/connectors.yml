@@ -1,12 +1,12 @@
-# OpenTelemetry Collector distribution versions
+# OpenTelemetry Collector component data
 # This file is automatically updated by scripts/collector-sync
 
 ---
 - name: countconnector
   repo: contrib
   distributions:
-    - contrib
-    - k8s
+  - contrib
+  - k8s
   stability:
     logs_to_metrics: alpha
     metrics_to_metrics: alpha
@@ -15,23 +15,23 @@
 - name: datadogconnector
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     traces_to_metrics: beta
     traces_to_traces: beta
 - name: exceptionsconnector
   repo: contrib
   distributions:
-    - contrib
-    - k8s
+  - contrib
+  - k8s
   stability:
     traces_to_logs: alpha
     traces_to_metrics: alpha
 - name: failoverconnector
   repo: contrib
   distributions:
-    - contrib
-    - k8s
+  - contrib
+  - k8s
   stability:
     logs_to_logs: alpha
     metrics_to_metrics: alpha
@@ -39,9 +39,9 @@
 - name: forwardconnector
   repo: core
   distributions:
-    - contrib
-    - core
-    - k8s
+  - contrib
+  - core
+  - k8s
   stability:
     logs_to_logs: beta
     metrics_to_metrics: beta
@@ -50,20 +50,20 @@
 - name: grafanacloudconnector
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     traces_to_metrics: alpha
 - name: metricsaslogsconnector
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     metrics_to_logs: development
 - name: otlpjsonconnector
   repo: contrib
   distributions:
-    - contrib
-    - k8s
+  - contrib
+  - k8s
   stability:
     logs_to_logs: alpha
     logs_to_metrics: alpha
@@ -71,8 +71,8 @@
 - name: roundrobinconnector
   repo: contrib
   distributions:
-    - contrib
-    - k8s
+  - contrib
+  - k8s
   stability:
     logs_to_logs: beta
     metrics_to_metrics: beta
@@ -80,8 +80,8 @@
 - name: routingconnector
   repo: contrib
   distributions:
-    - contrib
-    - k8s
+  - contrib
+  - k8s
   stability:
     logs_to_logs: alpha
     metrics_to_metrics: alpha
@@ -89,14 +89,14 @@
 - name: servicegraphconnector
   repo: contrib
   distributions:
-    - contrib
-    - k8s
+  - contrib
+  - k8s
   stability:
     traces_to_metrics: alpha
 - name: signaltometricsconnector
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs_to_metrics: alpha
     metrics_to_metrics: alpha
@@ -105,19 +105,19 @@
 - name: slowsqlconnector
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     traces_to_logs: development
 - name: spanmetricsconnector
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     traces_to_metrics: alpha
 - name: sumconnector
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs_to_metrics: alpha
     metrics_to_metrics: alpha

@@ -1,17 +1,17 @@
-# OpenTelemetry Collector distribution versions
+# OpenTelemetry Collector component data
 # This file is automatically updated by scripts/collector-sync
 
 ---
 - name: alertmanagerexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     traces: development
 - name: alibabacloudlogserviceexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: unmaintained
     metrics: unmaintained
@@ -20,19 +20,19 @@
 - name: awscloudwatchlogsexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
 - name: awsemfexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     metrics: beta
 - name: awskinesisexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
     metrics: beta
@@ -40,7 +40,7 @@
 - name: awss3exporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
     metrics: alpha
@@ -48,13 +48,13 @@
 - name: awsxrayexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     traces: beta
 - name: azureblobexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
     metrics: alpha
@@ -62,7 +62,7 @@
 - name: azuredataexplorerexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
     metrics: beta
@@ -70,7 +70,7 @@
 - name: azuremonitorexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
     metrics: beta
@@ -78,20 +78,20 @@
 - name: bmchelixexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     metrics: alpha
 - name: cassandraexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
     traces: alpha
 - name: clickhouseexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     metrics: alpha
     logs: beta
@@ -99,7 +99,7 @@
 - name: coralogixexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     profiles: alpha
     logs: beta
@@ -108,7 +108,7 @@
 - name: datadogexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
     metrics: beta
@@ -116,16 +116,16 @@
 - name: datasetexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
     traces: alpha
 - name: debugexporter
   repo: core
   distributions:
-    - contrib
-    - core
-    - k8s
+  - contrib
+  - core
+  - k8s
   stability:
     logs: alpha
     metrics: alpha
@@ -134,7 +134,7 @@
 - name: dorisexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
     metrics: alpha
@@ -142,7 +142,7 @@
 - name: elasticsearchexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
     traces: beta
@@ -151,16 +151,16 @@
 - name: faroexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
     traces: alpha
 - name: fileexporter
   repo: contrib
   distributions:
-    - contrib
-    - core
-    - k8s
+  - contrib
+  - core
+  - k8s
   stability:
     logs: alpha
     metrics: alpha
@@ -169,7 +169,7 @@
 - name: googlecloudexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
     metrics: beta
@@ -177,7 +177,7 @@
 - name: googlecloudpubsubexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
     metrics: beta
@@ -185,26 +185,26 @@
 - name: googlecloudstorageexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
     traces: development
 - name: googlemanagedprometheusexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     metrics: beta
 - name: honeycombmarkerexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
 - name: influxdbexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
     metrics: beta
@@ -212,8 +212,8 @@
 - name: kafkaexporter
   repo: contrib
   distributions:
-    - contrib
-    - core
+  - contrib
+  - core
   stability:
     logs: beta
     metrics: beta
@@ -222,8 +222,8 @@
 - name: loadbalancingexporter
   repo: contrib
   distributions:
-    - contrib
-    - k8s
+  - contrib
+  - k8s
   stability:
     logs: beta
     traces: beta
@@ -231,29 +231,29 @@
 - name: logicmonitorexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
     traces: alpha
 - name: logzioexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
     traces: beta
 - name: mezmoexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
 - name: nopexporter
   repo: core
   distributions:
-    - contrib
-    - core
-    - k8s
+  - contrib
+  - core
+  - k8s
   stability:
     logs: beta
     metrics: beta
@@ -262,15 +262,15 @@
 - name: opensearchexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
     traces: alpha
 - name: otelarrowexporter
   repo: contrib
   distributions:
-    - contrib
-    - k8s
+  - contrib
+  - k8s
   stability:
     logs: beta
     metrics: beta
@@ -278,10 +278,10 @@
 - name: otlpexporter
   repo: core
   distributions:
-    - contrib
-    - core
-    - k8s
-    - otlp
+  - contrib
+  - core
+  - k8s
+  - otlp
   stability:
     profiles: development
     logs: stable
@@ -290,10 +290,10 @@
 - name: otlphttpexporter
   repo: core
   distributions:
-    - contrib
-    - core
-    - k8s
-    - otlp
+  - contrib
+  - core
+  - k8s
+  - otlp
   stability:
     profiles: development
     logs: stable
@@ -302,21 +302,21 @@
 - name: prometheusexporter
   repo: contrib
   distributions:
-    - contrib
-    - core
+  - contrib
+  - core
   stability:
     metrics: beta
 - name: prometheusremotewriteexporter
   repo: contrib
   distributions:
-    - contrib
-    - core
+  - contrib
+  - core
   stability:
     metrics: beta
 - name: pulsarexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
     metrics: alpha
@@ -324,7 +324,7 @@
 - name: rabbitmqexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
     metrics: alpha
@@ -332,27 +332,27 @@
 - name: sapmexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     traces: deprecated
 - name: sematextexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: development
     metrics: development
 - name: sentryexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
     traces: alpha
 - name: signalfxexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
     metrics: beta
@@ -360,7 +360,7 @@
 - name: splunkhecexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
     metrics: beta
@@ -368,13 +368,13 @@
 - name: stefexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     metrics: alpha
 - name: sumologicexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
     metrics: beta
@@ -382,19 +382,19 @@
 - name: syslogexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
 - name: tencentcloudlogserviceexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: beta
 - name: tinybirdexporter
   repo: contrib
   distributions:
-    - contrib
+  - contrib
   stability:
     logs: alpha
     metrics: alpha
@@ -402,7 +402,7 @@
 - name: zipkinexporter
   repo: contrib
   distributions:
-    - contrib
-    - core
+  - contrib
+  - core
   stability:
     traces: beta
