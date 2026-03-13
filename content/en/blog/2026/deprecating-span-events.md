@@ -99,8 +99,8 @@ code, not about removing visibility into events on spans.
 First and foremost, we want this transition to be safe, gradual, and compatible
 with the workflows you rely on today.
 
-Depending on your role, here is how the upcoming changes can affect you and
-what you can do.
+Depending on your role, here is how the upcoming changes can affect you and what
+you can do.
 
 ### Operators
 
@@ -108,10 +108,9 @@ If you mainly consume traces, logs, and metrics in dashboards and analysis
 tools:
 
 - You should not need to change your applications or dashboards immediately.
-- When you upgrade your instrumentations may emit exceptions
-  and other events as log-based events rather than span events.
-  Verify that events still appear in the views you rely on (for example,
-  span timelines and event views).
+- When you upgrade your instrumentations may emit exceptions and other events as
+  log-based events rather than span events. Verify that events still appear in
+  the views you rely on (for example, span timelines and event views).
 
 ### Application developers
 
@@ -120,8 +119,8 @@ If you maintain an application that you instrument:
 - You should not need to change code immediately.
 - Watch for new versions of your instrumentation libraries as they may start
   emitting log-based events,
-- The SDK or instrumentation libraries may still offer you a way to keep
-  using span events that may be helpful if you cannot use log-based events.
+- The SDK or instrumentation libraries may still offer you a way to keep using
+  span events that may be helpful if you cannot use log-based events.
 
 If you maintain your own custom instrumentation:
 
@@ -174,11 +173,11 @@ If you maintain OpenTelemetry language APIs and SDKs:
 ## Closing
 
 Please share your requirements and concerns in
-[community#3312](https://github.com/open-telemetry/community/issues/3312).
-We are especially interested in which compatibility aspects matter most to you,
-for example, whether you rely on seeing events directly on spans in trace
-views, on having events included in the same OTLP export payload as their
-parent spans, or on other behaviors your current tooling depends on.
+[community#3312](https://github.com/open-telemetry/community/issues/3312). We
+are especially interested in which compatibility aspects matter most to you, for
+example, whether you rely on seeing events directly on spans in trace views, on
+having events included in the same OTLP export payload as their parent spans, or
+on other behaviors your current tooling depends on.
 
 Deprecation here does **not** mean removing span events. It is about shifting
 the recommended way to emit new events toward the Logs API.
