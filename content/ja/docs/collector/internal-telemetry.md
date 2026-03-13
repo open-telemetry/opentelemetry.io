@@ -290,7 +290,7 @@ Prometheus エクスポーターは、単位を持つメトリクスに単位接
 たとえば、`otelcol_process_uptime`（単位: 秒）は `otelcol_process_uptime_seconds_total` としてエクスポートされることがあります。
 つまり、`_seconds` の単位接尾辞が先に追加され、その後に `_total` のカウンタを示す接尾辞が追加されます。
 
-コレクターによって設定されるデフォルトの Prometheus エクスポーター（`readers` が指定されていない場合）は、すでに後方互換性のために `without_type_suffix` と `without_units`を `true` に設定しています。
+コレクターによって設定されるデフォルトの Prometheus エクスポーター（`readers` が指定されていない場合）は、すでに後方互換性のために `without_type_suffix` と `without_units` を `true` に設定しています。
 そのため、 `otelcol_process_uptime` はそのまま使用されます。
 
 しかし、`service::telemetry::metrics::readers` の下で Prometheus エクスポーターを手動で設定する場合、それらのオプションはデフォルトでは設定されません。
@@ -542,17 +542,17 @@ otelcol_exporter_queue_size 0
 
 #### 受信失敗 {#receive-failures}
 
-`otelcol_receiver_refused_log_records`、`otelcol_receiver_refused_spans`、と `otelcol_receiver_refused_metric_points` の発生率が継続している場合、クライアントに返されたエラーが多すぎることを示します。
+`otelcol_receiver_refused_log_records`、`otelcol_receiver_refused_spans`、および `otelcol_receiver_refused_metric_points` の発生率が継続している場合、クライアントに返されたエラーが多すぎることを示します。
 デプロイメントやクライアントの耐障害性によっては、これはクライアントのデータ損失を示す可能性があります。
 
-`otelcol_exporter_send_failed_log_records`、`otelcol_exporter_send_failed_spans`、と `otelcol_exporter_send_failed_metric_points` の発生率が継続している場合、コレクターが期待どおりにデータをエクスポートできていないことを示します。
+`otelcol_exporter_send_failed_log_records`、`otelcol_exporter_send_failed_spans`、および `otelcol_exporter_send_failed_metric_points` の発生率が継続している場合、コレクターが期待どおりにデータをエクスポートできていないことを示します。
 これらのメトリクスは、再試行の可能性があるため、本質的にデータ損失を意味するものではありません。
 しかし、失敗率が高い場合は、データを受信するネットワークまたはバックエンドに問題があることを示している可能性があります。
 
 #### データフロー {#data-flow}
 
-`otelcol_receiver_accepted_log_records`、`otelcol_receiver_accepted_spans`、と `otelcol_receiver_accepted_metric_points` メトリクスでデータ流入を監視できます。
-そして、 `otelcol_exporter_sent_log_records`、`otelcol_exporter_sent_spans`、と `otelcol_exporter_sent_metric_points` メトリクスでデータ流出を監視できます。
+`otelcol_receiver_accepted_log_records`、`otelcol_receiver_accepted_spans`、および `otelcol_receiver_accepted_metric_points` メトリクスでデータ流入を監視できます。
+そして、 `otelcol_exporter_sent_log_records`、`otelcol_exporter_sent_spans`、および `otelcol_exporter_sent_metric_points` メトリクスでデータ流出を監視できます。
 
 [SemConvGuidance]: /docs/specs/semconv/general/semantic-convention-groups#group-stability
 [OTEP-0232]: https://github.com/open-telemetry/opentelemetry-specification/blob/v1.50.0/oteps/0232-maturity-of-otel.md
