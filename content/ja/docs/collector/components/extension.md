@@ -13,33 +13,33 @@ cSpell:ignore: ackextension asapauthextension authextension awsproxy azureauthex
 
 <!-- BEGIN GENERATED: extension-table SOURCE: scripts/collector-sync -->
 
-| 名前                                                                                                                                                   | ディストリビューション[^1] | 安定性[^2]  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------- | ----------- |
-| {{< component-link name="ackextension" type="extension" repo="contrib" >}}                   | contrib, K8s       | alpha         |
-| {{< component-link name="asapauthextension" type="extension" repo="contrib" >}}              | contrib            | beta          |
-| {{< component-link name="awsproxy" type="extension" repo="contrib" >}}                       | contrib            | beta          |
-| {{< component-link name="azureauthextension" type="extension" repo="contrib" >}}             | contrib            | alpha         |
-| {{< component-link name="basicauthextension" type="extension" repo="contrib" >}}             | contrib, K8s       | beta          |
-| {{< component-link name="bearertokenauthextension" type="extension" repo="contrib" >}}       | contrib, K8s       | beta          |
-| {{< component-link name="cgroupruntimeextension" type="extension" repo="contrib" >}}         | contrib            | alpha         |
-| {{< component-link name="datadogextension" type="extension" repo="contrib" >}}               | contrib            | alpha         |
-| {{< component-link name="googleclientauthextension" type="extension" repo="contrib" >}}      | contrib            | beta          |
-| {{< component-link name="headerssetterextension" type="extension" repo="contrib" >}}         | contrib, K8s       | alpha         |
-| {{< component-link name="healthcheckextension" type="extension" repo="contrib" >}}           | contrib, core, K8s | alpha         |
-| {{< component-link name="healthcheckv2extension" type="extension" repo="contrib" >}}         | contrib            | development   |
-| {{< component-link name="httpforwarderextension" type="extension" repo="contrib" >}}         | contrib, K8s       | beta          |
-| {{< component-link name="jaegerremotesampling" type="extension" repo="contrib" >}}           | contrib            | alpha         |
-| {{< component-link name="k8sleaderelector" type="extension" repo="contrib" >}}               | contrib, K8s       | alpha         |
-| {{< component-link name="memorylimiterextension" type="extension" repo="core" >}}            | core               | development   |
-| {{< component-link name="oauth2clientauthextension" type="extension" repo="contrib" >}}      | contrib, K8s       | beta          |
-| {{< component-link name="oidcauthextension" type="extension" repo="contrib" >}}              | contrib, K8s       | beta          |
-| {{< component-link name="opampextension" type="extension" repo="contrib" >}}                 | contrib, K8s       | alpha         |
-| {{< component-link name="pprofextension" type="extension" repo="contrib" >}}                 | contrib, core, K8s | beta          |
-| {{< component-link name="remotetapextension" type="extension" repo="contrib" >}}             | contrib            | development   |
-| {{< component-link name="sigv4authextension" type="extension" repo="contrib" >}}             | contrib            | beta          |
-| {{< component-link name="solarwindsapmsettingsextension" type="extension" repo="contrib" >}} | contrib            | development   |
-| {{< component-link name="sumologicextension" type="extension" repo="contrib" >}}             | contrib            | alpha         |
-| {{< component-link name="zpagesextension" type="extension" repo="core" >}}                   | contrib, core, K8s | beta          |
+| 名前                                                                                         | ディストリビューション[^1] | 安定性[^2]  |
+| -------------------------------------------------------------------------------------------- | -------------------------- | ----------- |
+| {{< component-link name="ackextension" type="extension" repo="contrib" >}}                   | contrib, K8s               | alpha       |
+| {{< component-link name="asapauthextension" type="extension" repo="contrib" >}}              | contrib                    | beta        |
+| {{< component-link name="awsproxy" type="extension" repo="contrib" >}}                       | contrib                    | beta        |
+| {{< component-link name="azureauthextension" type="extension" repo="contrib" >}}             | contrib                    | alpha       |
+| {{< component-link name="basicauthextension" type="extension" repo="contrib" >}}             | contrib, K8s               | beta        |
+| {{< component-link name="bearertokenauthextension" type="extension" repo="contrib" >}}       | contrib, K8s               | beta        |
+| {{< component-link name="cgroupruntimeextension" type="extension" repo="contrib" >}}         | contrib                    | alpha       |
+| {{< component-link name="datadogextension" type="extension" repo="contrib" >}}               | contrib                    | alpha       |
+| {{< component-link name="googleclientauthextension" type="extension" repo="contrib" >}}      | contrib                    | beta        |
+| {{< component-link name="headerssetterextension" type="extension" repo="contrib" >}}         | contrib, K8s               | alpha       |
+| {{< component-link name="healthcheckextension" type="extension" repo="contrib" >}}           | contrib, core, K8s         | alpha       |
+| {{< component-link name="healthcheckv2extension" type="extension" repo="contrib" >}}         | contrib                    | development |
+| {{< component-link name="httpforwarderextension" type="extension" repo="contrib" >}}         | contrib, K8s               | beta        |
+| {{< component-link name="jaegerremotesampling" type="extension" repo="contrib" >}}           | contrib                    | alpha       |
+| {{< component-link name="k8sleaderelector" type="extension" repo="contrib" >}}               | contrib, K8s               | alpha       |
+| {{< component-link name="memorylimiterextension" type="extension" repo="core" >}}            | core                       | development |
+| {{< component-link name="oauth2clientauthextension" type="extension" repo="contrib" >}}      | contrib, K8s               | beta        |
+| {{< component-link name="oidcauthextension" type="extension" repo="contrib" >}}              | contrib, K8s               | beta        |
+| {{< component-link name="opampextension" type="extension" repo="contrib" >}}                 | contrib, K8s               | alpha       |
+| {{< component-link name="pprofextension" type="extension" repo="contrib" >}}                 | contrib, core, K8s         | beta        |
+| {{< component-link name="remotetapextension" type="extension" repo="contrib" >}}             | contrib                    | development |
+| {{< component-link name="sigv4authextension" type="extension" repo="contrib" >}}             | contrib                    | beta        |
+| {{< component-link name="solarwindsapmsettingsextension" type="extension" repo="contrib" >}} | contrib                    | development |
+| {{< component-link name="sumologicextension" type="extension" repo="contrib" >}}             | contrib                    | alpha       |
+| {{< component-link name="zpagesextension" type="extension" repo="core" >}}                   | contrib, core, K8s         | beta        |
 
 <!-- END GENERATED: extension-table SOURCE: scripts/collector-sync -->
 
