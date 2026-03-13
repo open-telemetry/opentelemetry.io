@@ -1,7 +1,7 @@
 ---
-title: Deprecating Span Events
-linkTitle: Deprecating Span Events
-date: 2026-03-13
+title: Deprecating Span Events API
+linkTitle: Deprecating Span Events API
+date: 2026-03-17
 author: >-
   [Liudmila Molkova](https://github.com/lmolkova) (Grafana Labs), [Robert
   Pająk](https://github.com/pellared) (Splunk), [Trask
@@ -10,7 +10,10 @@ sig: Specification, Logs
 cSpell:ignore: Liudmila Molkova Pająk
 ---
 
-- OpenTelemetry is deprecating the Span Event API to remove confusion and
+OpenTelemetry is deprecating the Span Event API. This post explains why we’re making this change, what it means at a high level,
+and how you can prepare. In short:
+
+- We want to remove confusion and
   duplication caused by having two overlapping ways to emit events: span events
   and log-based events.
 - New code should write events as logs that are correlated with the current
@@ -18,15 +21,13 @@ cSpell:ignore: Liudmila Molkova Pająk
 - The older "span events" style will be phased out over time, but existing data
   and views that show events on spans will keep working.
 
-This post explains why we’re making this change, what it means at a high level,
-and how you can prepare.
 
 ## Why deprecate the Span Event API?
 
 Today, OpenTelemetry offers two main ways to emit events that are correlated
 with traces:
 
-- Span events, created via
+- Span events, created via the
   [Tracing API](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.40.0/specification/trace/api.md)
   using methods `Span.AddEvent` or `Span.RecordException`.
 - Log-based events, emitted via the
@@ -42,11 +43,11 @@ Having two competing APIs for the same concept has several drawbacks:
 - **Duplicate concepts for users.** Operators must understand both span events
   and log events, how they are exported, and how their backends treat them.
 - **Slower evolution.** Improvements to the event model (for example, around
-  schemas, attributes, and back-compat) must be specified and implemented in two
+  schemas, attributes, and backward-compatibility) must be specified and implemented in two
   places.
 
 The OpenTelemetry community has been converging on a simpler mental model:
-**events are named logs** emitted via the Logs API, correlated with traces and
+**events are logs with names** emitted via the Logs API, correlated with traces and
 metrics through context, rather than as a special case on spans. This change is
 significant because it unifies how OpenTelemetry represents events.
 
