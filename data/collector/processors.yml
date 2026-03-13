@@ -5,9 +5,9 @@
 - name: attributesprocessor
   repo: contrib
   distributions:
-  - contrib
-  - core
-  - k8s
+    - contrib
+    - core
+    - K8s
   stability:
     logs: beta
     metrics: beta
@@ -15,9 +15,9 @@
 - name: batchprocessor
   repo: core
   distributions:
-  - contrib
-  - core
-  - k8s
+    - contrib
+    - core
+    - K8s
   stability:
     logs: beta
     metrics: beta
@@ -25,40 +25,40 @@
 - name: coralogixprocessor
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     traces: alpha
 - name: cumulativetodeltaprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     metrics: beta
 - name: datadogsemanticsprocessor
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     traces: deprecated
 - name: deltatocumulativeprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     metrics: alpha
 - name: deltatorateprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     metrics: alpha
 - name: dnslookupprocessor
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: development
     metrics: development
@@ -66,9 +66,9 @@
 - name: filterprocessor
   repo: contrib
   distributions:
-  - contrib
-  - core
-  - k8s
+    - contrib
+    - core
+    - K8s
   stability:
     logs: alpha
     metrics: alpha
@@ -77,7 +77,7 @@
 - name: geoipprocessor
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
     metrics: alpha
@@ -85,8 +85,8 @@
 - name: groupbyattrsprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: beta
     metrics: beta
@@ -94,21 +94,21 @@
 - name: groupbytraceprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     traces: beta
 - name: intervalprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     metrics: alpha
 - name: isolationforestprocessor
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
     metrics: alpha
@@ -116,8 +116,8 @@
 - name: k8sattributesprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: beta
     metrics: beta
@@ -126,28 +126,28 @@
 - name: logdedupprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: alpha
 - name: logstransformprocessor
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: development
 - name: lookupprocessor
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: development
 - name: memorylimiterprocessor
   repo: core
   distributions:
-  - contrib
-  - core
-  - k8s
+    - contrib
+    - core
+    - K8s
   stability:
     profiles: alpha
     logs: beta
@@ -156,36 +156,36 @@
 - name: metricsgenerationprocessor
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: metricstarttimeprocessor
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: metricstransformprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     metrics: beta
 - name: probabilisticsamplerprocessor
   repo: contrib
   distributions:
-  - contrib
-  - core
-  - k8s
+    - contrib
+    - core
+    - K8s
   stability:
     logs: alpha
     traces: beta
 - name: redactionprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: alpha
     metrics: alpha
@@ -193,8 +193,8 @@
 - name: remotetapprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: alpha
     metrics: alpha
@@ -202,8 +202,8 @@
 - name: resourcedetectionprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: beta
     metrics: beta
@@ -212,9 +212,9 @@
 - name: resourceprocessor
   repo: contrib
   distributions:
-  - contrib
-  - core
-  - k8s
+    - contrib
+    - core
+    - K8s
   stability:
     logs: beta
     metrics: beta
@@ -223,7 +223,7 @@
 - name: schemaprocessor
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: development
     metrics: development
@@ -231,14 +231,14 @@
 - name: spanprocessor
   repo: contrib
   distributions:
-  - contrib
-  - core
+    - contrib
+    - core
   stability:
     traces: alpha
 - name: sumologicprocessor
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: beta
     metrics: beta
@@ -246,15 +246,15 @@
 - name: tailsamplingprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     traces: beta
 - name: transformprocessor
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: beta
     metrics: beta
@@ -263,6 +263,6 @@
 - name: unrollprocessor
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha

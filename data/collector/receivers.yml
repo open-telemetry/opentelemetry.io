@@ -5,63 +5,63 @@
 - name: activedirectorydsreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: aerospikereceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: apachereceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: apachesparkreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: awscloudwatchreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
 - name: awscontainerinsightreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: awsecscontainermetricsreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: awsfirehosereceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
     metrics: alpha
 - name: awslambdareceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: development
     metrics: development
 - name: awss3receiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
     metrics: alpha
@@ -69,20 +69,20 @@
 - name: awsxrayreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     traces: beta
 - name: azureblobreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
     traces: alpha
 - name: azureeventhubreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: beta
     metrics: beta
@@ -90,56 +90,56 @@
 - name: azuremonitorreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: carbonreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: chronyreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: ciscoosreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: cloudflarereceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
 - name: cloudfoundryreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
     logs: development
 - name: collectdreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: couchdbreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: datadogreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
     metrics: alpha
@@ -147,89 +147,89 @@
 - name: dockerstatsreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: elasticsearchreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: envoyalsreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
 - name: expvarreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: faroreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
     traces: alpha
 - name: filelogreceiver
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: beta
 - name: filestatsreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: flinkmetricsreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: fluentforwardreceiver
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: beta
 - name: githubreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
     traces: development
 - name: gitlabreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     traces: alpha
 - name: googlecloudmonitoringreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: googlecloudpubsubpushreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: development
 - name: googlecloudpubsubreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: beta
     metrics: beta
@@ -237,116 +237,116 @@
 - name: googlecloudspannerreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: haproxyreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: hostmetricsreceiver
   repo: contrib
   distributions:
-  - contrib
-  - core
-  - k8s
+    - contrib
+    - core
+    - K8s
   stability:
     metrics: beta
     logs: development
 - name: httpcheckreceiver
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     metrics: alpha
 - name: huaweicloudcesreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: icmpcheckreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: development
 - name: iisreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: influxdbreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: jaegerreceiver
   repo: contrib
   distributions:
-  - contrib
-  - core
-  - k8s
+    - contrib
+    - core
+    - K8s
   stability:
     traces: beta
 - name: jmxreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: deprecated
 - name: journaldreceiver
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: alpha
 - name: k8sclusterreceiver
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     metrics: beta
     logs: development
 - name: k8seventsreceiver
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: alpha
 - name: k8slogreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: unmaintained
   unmaintained: true
 - name: k8sobjectsreceiver
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: beta
 - name: kafkametricsreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: kafkareceiver
   repo: contrib
   distributions:
-  - contrib
-  - core
+    - contrib
+    - core
   stability:
     logs: beta
     metrics: beta
@@ -355,78 +355,78 @@
 - name: kubeletstatsreceiver
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     metrics: beta
 - name: libhoneyreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
     traces: alpha
 - name: lokireceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
 - name: macosunifiedloggingreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
 - name: memcachedreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: mongodbatlasreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: beta
     metrics: beta
 - name: mongodbreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: mysqlreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
     logs: development
 - name: namedpipereceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
 - name: netflowreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
 - name: nginxreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: nopreceiver
   repo: core
   distributions:
-  - contrib
-  - core
+    - contrib
+    - core
   stability:
     logs: beta
     metrics: beta
@@ -435,33 +435,33 @@
 - name: nsxtreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: ntpreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: oracledbreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
     logs: development
 - name: osqueryreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: development
 - name: otelarrowreceiver
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: beta
     metrics: beta
@@ -469,7 +469,7 @@
 - name: otlpjsonfilereceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
     metrics: alpha
@@ -478,10 +478,10 @@
 - name: otlpreceiver
   repo: core
   distributions:
-  - contrib
-  - core
-  - k8s
-  - otlp
+    - contrib
+    - core
+    - K8s
+    - otlp
   stability:
     profiles: development
     logs: stable
@@ -490,40 +490,40 @@
 - name: podmanreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: postgresqlreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
     logs: development
 - name: pprofreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     profiles: development
 - name: prometheusreceiver
   repo: contrib
   distributions:
-  - contrib
-  - core
-  - k8s
+    - contrib
+    - core
+    - K8s
   stability:
     metrics: beta
 - name: prometheusremotewritereceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: pulsarreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
     metrics: alpha
@@ -531,26 +531,26 @@
 - name: purefareceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: purefbreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: rabbitmqreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: receivercreator
   repo: contrib
   distributions:
-  - contrib
-  - k8s
+    - contrib
+    - K8s
   stability:
     logs: alpha
     traces: alpha
@@ -558,156 +558,156 @@
 - name: redfishreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: development
 - name: redisreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: riakreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: saphanareceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: signalfxreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: deprecated
     metrics: deprecated
 - name: simpleprometheusreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: skywalkingreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     traces: beta
     metrics: development
 - name: snmpreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: snowflakereceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: solacereceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     traces: beta
 - name: splunkenterprisereceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: splunkhecreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: beta
     metrics: beta
 - name: sqlqueryreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
     logs: development
 - name: sqlserverreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
     logs: development
 - name: sshcheckreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: statsdreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: stefreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: syslogreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: beta
 - name: systemdreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: tcpcheckreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: tcplogreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
 - name: tlscheckreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: udplogreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
 - name: vcenterreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: vcrreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: development
     metrics: development
@@ -716,50 +716,50 @@
 - name: wavefrontreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: deprecated
 - name: webhookeventreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: beta
 - name: windowseventlogreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     logs: alpha
 - name: windowsperfcountersreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: beta
 - name: windowsservicereceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: development
 - name: yanggrpcreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
 - name: zipkinreceiver
   repo: contrib
   distributions:
-  - contrib
-  - core
-  - k8s
+    - contrib
+    - core
+    - K8s
   stability:
     traces: beta
 - name: zookeeperreceiver
   repo: contrib
   distributions:
-  - contrib
+    - contrib
   stability:
     metrics: alpha
