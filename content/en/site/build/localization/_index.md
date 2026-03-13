@@ -244,7 +244,7 @@ example of the expected format.
 
 > [!NOTE]
 >
-> [Team members should be added manually](https://github.com/open-telemetry/admin/issues/58),
+> [Team members should be added manually](https://github.com/open-telemetry/admin/issues/58?link-check=no),
 > since they aren't currently being managed by this repository.
 
 ## Step 7 — Slack channel {#slack}
