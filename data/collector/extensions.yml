@@ -1,3 +1,6 @@
+# OpenTelemetry Collector distribution versions
+# This file is automatically updated by scripts/collector-sync
+
 ---
 - name: ackextension
   repo: contrib

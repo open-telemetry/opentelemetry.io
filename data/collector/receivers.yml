@@ -1,3 +1,6 @@
+# OpenTelemetry Collector distribution versions
+# This file is automatically updated by scripts/collector-sync
+
 ---
 - name: activedirectorydsreceiver
   repo: contrib
@@ -81,29 +84,21 @@
   distributions:
   - contrib
   stability:
-    logs: alpha
-    metrics: alpha
-    traces: alpha
+    logs: beta
+    metrics: beta
+    traces: beta
 - name: azuremonitorreceiver
   repo: contrib
   distributions:
   - contrib
   stability:
     metrics: alpha
-- name: bigipreceiver
-  repo: contrib
-  distributions:
-  - contrib
-  stability:
-    metrics: unmaintained
-  unmaintained: true
 - name: carbonreceiver
   repo: contrib
   distributions:
   - contrib
   stability:
-    metrics: unmaintained
-  unmaintained: true
+    metrics: beta
 - name: chronyreceiver
   repo: contrib
   distributions:

@@ -12,8 +12,4 @@ information on how to configure receivers, see the
 
 {{% include unmaintained-components-msg.md %}}
 
-<!-- BEGIN GENERATED: receiver-table SOURCE: scripts/collector-sync -->
-
 {{< collector-component-rows type="receiver" >}}
-
-<!-- END GENERATED: receiver-table SOURCE: scripts/collector-sync -->

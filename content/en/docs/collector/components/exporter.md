@@ -12,8 +12,4 @@ more information on how to configure exporters, see the
 
 {{% include unmaintained-components-msg.md %}}
 
-<!-- BEGIN GENERATED: exporter-table SOURCE: scripts/collector-sync -->
-
 {{< collector-component-rows type="exporter" >}}
-
-<!-- END GENERATED: exporter-table SOURCE: scripts/collector-sync -->

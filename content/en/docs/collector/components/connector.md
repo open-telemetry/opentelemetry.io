@@ -10,8 +10,4 @@ Connectors connect two pipelines, acting as both exporter and receiver. For more
 information on how to configure connectors, see the
 [Collector configuration documentation](/docs/collector/configuration/#connectors).
 
-<!-- BEGIN GENERATED: connector-table SOURCE: scripts/collector-sync -->
-
 {{< collector-component-rows type="connector" >}}
-
-<!-- END GENERATED: connector-table SOURCE: scripts/collector-sync -->

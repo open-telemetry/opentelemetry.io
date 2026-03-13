@@ -12,32 +12,16 @@ discovery. For more information on how to configure extensions, see the
 
 ## Extensions
 
-<!-- BEGIN GENERATED: extension-table SOURCE: scripts/collector-sync -->
-
 {{< collector-component-rows type="extension" renderFootnotes="false" >}}
-
-<!-- END GENERATED: extension-table SOURCE: scripts/collector-sync -->
 
 ## Encoding Extensions
 
-<!-- BEGIN GENERATED: extension-encoding-table SOURCE: scripts/collector-sync -->
-
 {{< collector-component-rows type="extension" subtype="encoding" renderFootnotes="false" >}}
-
-<!-- END GENERATED: extension-encoding-table SOURCE: scripts/collector-sync -->
 
 ## Observer Extensions
 
-<!-- BEGIN GENERATED: extension-observer-table SOURCE: scripts/collector-sync -->
-
 {{< collector-component-rows type="extension" subtype="observer" renderFootnotes="false" >}}
-
-<!-- END GENERATED: extension-observer-table SOURCE: scripts/collector-sync -->
 
 ## Storage Extensions
 
-<!-- BEGIN GENERATED: extension-storage-table SOURCE: scripts/collector-sync -->
-
 {{< collector-component-rows type="extension" subtype="storage" >}}
-
-<!-- END GENERATED: extension-storage-table SOURCE: scripts/collector-sync -->

@@ -5,95 +5,31 @@ from typing import Any
 
 import yaml
 
+from documentation_sync import component_utils
+from documentation_sync.metadata_diagnostics import MetadataDiagnostics
+
 
 class ComponentDataGenerator:
-    """Generates component data files for translation-friendly Hugo rendering."""
+    """Generates component data files."""
 
-    def __init__(self) -> None:
-        """Initialize the data generator."""
-        pass
-
-    @staticmethod
-    def _get_distributions(component: dict[str, Any]) -> list[str]:
+    def __init__(self, diagnostics: MetadataDiagnostics | None = None) -> None:
         """
-        Get the list of distributions for a component.
+        Initialize the data generator.
 
         Args:
-            component: Component data
-
-        Returns:
-            List of distribution names (e.g., ["core", "contrib"])
+            diagnostics: Optional diagnostics tracker to record metadata issues
         """
-        metadata = component.get("metadata", {})
-        status = metadata.get("status", {})
-        distributions = status.get("distributions", [])
+        self.diagnostics = diagnostics
 
-        if not distributions:
-            # Use source_repo as fallback when distributions are empty
-            source_repo = component.get("source_repo", "contrib")
-            return [source_repo]
-
-        return sorted(distributions)
-
-    @staticmethod
-    def _get_stability_by_signal(metadata: dict[str, Any]) -> dict[str, str]:
-        """
-        Get stability information by signal type.
-
-        Args:
-            metadata: Component metadata containing status.stability
-
-        Returns:
-            Dictionary mapping signal type to stability level
-            For extensions: {"extension": "beta"}
-            For others: {"traces": "beta", "metrics": "alpha", "logs": "-"}
-        """
-        if not metadata or "status" not in metadata:
-            return {}
-
-        status = metadata.get("status", {})
-        stability = status.get("stability", {})
-
-        if not stability:
-            return {}
-
-        signal_stability = {}
-        for level, signals in stability.items():
-            if isinstance(signals, list):
-                for signal in signals:
-                    signal_stability[signal] = level
-
-        return signal_stability
-
-    @staticmethod
-    def _is_unmaintained(component: dict[str, Any]) -> bool:
-        """
-        Check if a component is unmaintained.
-
-        A component is considered unmaintained if any of its signals
-        have an "unmaintained" stability level.
-
-        Args:
-            component: Component data
-
-        Returns:
-            True if component is unmaintained
-        """
-        metadata = component.get("metadata", {})
-        if not metadata:
-            return False
-
-        status = metadata.get("status", {})
-        stability = status.get("stability", {})
-
-        return "unmaintained" in stability
-
-    def _generate_component_data(self, component: dict[str, Any]) -> dict[str, Any]:
+    def _generate_component_data(
+        self, component: dict[str, Any], component_type: str
+    ) -> dict[str, Any]:
         """
         Generate data dictionary for a single component.
 
         Args:
             component: Component metadata
+            component_type: Type of component (receiver, processor, etc.)
 
         Returns:
             Dictionary with component data for YAML output
@@ -103,11 +39,12 @@ class ComponentDataGenerator:
         metadata = component.get("metadata", {})
         subtype = component.get("subtype")
 
-        distributions = self._get_distributions(component)
-        stability = self._get_stability_by_signal(metadata)
-        unmaintained = self._is_unmaintained(component)
+        distributions = component_utils.get_distributions(component)
+        stability = component_utils.get_stability_by_signal(
+            metadata, component, component_type, self.diagnostics
+        )
+        unmaintained = component_utils.is_unmaintained(component)
 
-        # Build minimal data structure
         data = {
             "name": name,
             "repo": source_repo,
@@ -115,7 +52,6 @@ class ComponentDataGenerator:
             "stability": stability,
         }
 
-        # Only include optional fields if they have values
         if unmaintained:
             data["unmaintained"] = True
 
@@ -139,7 +75,7 @@ class ComponentDataGenerator:
         """
         data = []
         for component in components:
-            component_data = self._generate_component_data(component)
+            component_data = self._generate_component_data(component, component_type)
             data.append(component_data)
 
         # Sort by name for consistent output
@@ -169,11 +105,13 @@ class ComponentDataGenerator:
             component_list = components.get(component_type, [])
             data = self.generate_component_type_data(component_type, component_list)
 
-            # Write to data/collector/{type}s.yml (plural form)
+            # data/collector/{type}s.yml
             output_file = collector_dir / f"{component_type}s.yml"
 
             with open(output_file, "w", encoding="utf-8") as f:
-                # Write with nice formatting
+                f.write("# OpenTelemetry Collector distribution versions\n")
+                f.write("# This file is automatically updated by scripts/collector-sync\n\n")
+
                 yaml.dump(
                     data,
                     f,
