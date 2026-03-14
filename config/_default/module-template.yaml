@@ -150,6 +150,23 @@ mounts:
     files: ['! specs/**']
     sites: *zh-matrix
 
+  ## pl
+  - source: content/pl
+    target: content
+    sites: &pl-matrix
+      matrix: { languages: [pl] }
+  # fallback pages
+  - source: content/en/_includes
+    target: content/_includes
+    sites: *pl-matrix
+  - source: content/en/announcements
+    target: content/announcements
+    sites: *pl-matrix
+  - source: content/en/docs
+    target: content/docs
+    files: ['! specs/**']
+    sites: *pl-matrix
+
   ## pt
   - source: content/pt
     target: content
