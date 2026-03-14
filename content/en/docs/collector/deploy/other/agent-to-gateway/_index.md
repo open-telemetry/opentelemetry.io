@@ -147,8 +147,8 @@ This example shows an agent configuration that collects application telemetry
 and host metrics, then forwards them to a gateway. If you plan to tail sample,
 convert cumulative metrics to delta, or need data-aware routing for another
 reason, see the
-[next configuration](#example-agent-configuration-with-tail-based-sampling) for
-an example with data-aware load balancing.
+[next configuration](#example-agent-configuration-with-load-balancing) for an
+example with data-aware load balancing.
 
 ```yaml
 receivers:
