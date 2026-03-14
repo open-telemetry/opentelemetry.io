@@ -38,10 +38,6 @@ deployment:
   agents communicate with gateways over the internal cluster network, and
   gateways securely communicate with external backends using TLS.
 
-TODO: Remove if keeping mermaid diagram.
-
-![gateway](otel-gateway-arch.svg)
-
 ```mermaid
 graph TB
     subgraph "Local Networks"
@@ -141,15 +137,18 @@ agent-to-gateway deployment.
 >
 > While it is generally preferable to bind endpoints to `localhost` when all
 > clients are local, our example configurations use the “unspecified” address
-> `0.0.0.0` as a convenience. The Collector currently defaults to `0.0.0.0`, but
-> the default will be changed to `localhost` in the near future. For details
+> `0.0.0.0` as a convenience. The Collector defaults to `localhost`. For details
 > concerning either of these choices as endpoint configuration value, see
 > [Protect against denial of service attacks](/docs/security/config-best-practices/#protect-against-denial-of-service-attacks).
 
-### Example agent configuration
+### Example agent configuration without load balancing
 
 This example shows an agent configuration that collects application telemetry
-and host metrics, then forwards to a gateway:
+and host metrics, then forwards them to a gateway. If you plan to tail sample,
+convert cumulative metrics to delta, or need data-aware routing for another
+reason, see the
+[next configuration](#example-agent-configuration-with-tail-based-sampling) for
+an example with data-aware load balancing.
 
 ```yaml
 receivers:
@@ -180,27 +179,15 @@ processors:
   memory_limiter:
     check_interval: 1s
     limit_mib: 512
-    spike_limit_mib: 128
 
 exporters:
   # Send to gateway
-  otlp:
+  otlp_grpc:
     endpoint: otel-gateway:4317
-    # Enable retry logic
-    retry_on_failure:
-      initial_interval: 5s
-      max_interval: 30s
-      max_elapsed_time: 300s
     # Absorb short gateway outages
     sending_queue:
-      num_consumers: 2
-      queue_size: 5000
       batch:
         sizer: items
-        TODO: decide whether to remove specific values
-        # Use smaller batches on agents
-        min_size: 1024
-        max_size: 2048 # safety limit
         flush_timeout: 1s
 
 service:
@@ -219,10 +206,12 @@ service:
       exporters: [otlp]
 ```
 
-### Example agent configuration with tail-based sampling
+### Example agent configuration with load balancing
 
-When using tail-based sampling across multiple gateway instances, configure
-agents to use the load balancing exporter:
+This example configures an agent to use the load balancing exporter, routing
+telemetry based on `traceID`. Data-aware routing is necessary for some
+processing, including tail-based sampling and cumulative-to-delta metric
+conversions.
 
 ```yaml
 receivers:
@@ -235,35 +224,32 @@ processors:
   memory_limiter:
     check_interval: 1s
     limit_mib: 512
-  batch:
-    send_batch_size: 1024
-    timeout: 1s
 
 exporters:
   # Load balance by trace ID
   loadbalancing:
-    protocol:
-      otlp:
-        tls:
-          insecure: false
     resolver:
       dns:
         hostname: otel-gateway-headless
         port: 4317
     routing_key: traceID
+    sending_queue:
+      batch:
+        sizer: items
+        flush_timeout: 1s
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [memory_limiter, batch]
+      processors: [memory_limiter]
       exporters: [loadbalancing]
 ```
 
 ### Example gateway configuration
 
 This example shows a gateway configuration that receives data from agents,
-performs sampling, and exports to backends:
+performs tail sampling, and exports to backends:
 
 ```yaml
 receivers:
@@ -280,18 +266,9 @@ processors:
   memory_limiter:
     check_interval: 1s
     limit_mib: 2048
-    spike_limit_mib: 512
-
-  # Use larger batches for efficiency
-  batch:
-    send_batch_size: 10000
-    send_batch_max_size: 20000 # safety limit
-    timeout: 10s
 
   # Optional: tail-based sampling
   tail_sampling:
-    decision_wait: 10s
-    num_traces: 100000 # requires more memory
     policies:
       # Always sample traces with errors
       - name: errors-policy
@@ -304,39 +281,75 @@ processors:
 
 exporters:
   # Export to your observability backend
-  otlp:
+  otlp_grpc:
     endpoint: your-backend:4317
     headers:
       api-key: ${env:BACKEND_API_KEY}
-    # Enable retry logic
-    retry_on_failure:
-      enabled: true
-      initial_interval: 5s
-      max_interval: 60s
-      max_elapsed_time: 0s # retry indefinitely
     # Absorb backend outages
     sending_queue:
-      enabled: true
-      num_consumers: 4
-      queue_size: 20000
+      batch:
+        sizer: items
+        flush_timeout: 10s
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [memory_limiter, tail_sampling, batch]
+      processors: [memory_limiter, tail_sampling]
       exporters: [otlp]
     metrics:
       receivers: [otlp]
-      processors: [memory_limiter, batch]
-      exporters: [otlp, prometheusremotewrite]
+      processors: [memory_limiter]
+      exporters: [otlp]
     logs:
       receivers: [otlp]
-      processors: [memory_limiter, batch]
+      processors: [memory_limiter]
       exporters: [otlp]
 ```
 
-## Architecture for tail-based sampling
+## Processors in agents and gateways
+
+In an agent-to-gateway pattern, process telemetry with care to ensure the
+accuracy of your data.
+
+### Recommended processing
+
+Both agents and gateways should include:
+
+- **Memory limiter processor**: This processor prevents out-of-memory issues by
+  applying backpressure when memory usage is high. Configure this as the first
+  processor in your pipeline. Agents typically need smaller limits, while
+  gateways require more memory for batching and sampling operations. Adjust the
+  limits based on the requirements of your workloads and your available
+  resources.
+
+- **Batching**: You can improve efficiency by batching telemetry data before
+  export. Configure agents with smaller batch sizes and shorter timeouts to
+  minimize latency and memory usage. Configure gateways with larger batch sizes
+  and longer timeouts for better throughput and backend efficiency.
+
+### Sampling considerations
+
+- **Probabilistic sampling**: When using probabilistic sampling across multiple
+  collectors, ensure they use the same hash seed for consistent sampling
+  decisions.
+
+- **Tail-based sampling**: Configure tail-based sampling on gateways only. The
+  processor must see all spans from a trace to make sampling decisions. Use the
+  [`loadbalancingexporter`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter)
+  in your agents to distribute traces by trace ID to your gateway instances.
+
+  > [!CAUTION]
+  >
+  > The tail-sampling processor can make accurate decisions only if all spans
+  > for a trace arrive at the same Collector instance. While the load balancing
+  > exporter supports routing by trace ID, running tail sampling across multiple
+  > gateway instances is an advanced setup and has practical caveats, such as
+  > re-splitting of routing when backends change and cache/decision consistency.
+  > Test carefully and prefer a single well-resourced tail-sampling gateway
+  > unless you have a robust sticky-routing strategy.
+
+#### Example tail sampling architecture
 
 The following diagram shows how trace-ID-based load balancing works with
 tail-based sampling across multiple gateway instances.
@@ -396,57 +409,14 @@ graph LR
     GC3 -->|OTLP| B1
 ```
 
-## Processors in agents and gateways
-
-When deploying an agent-to-gateway pattern, configure processors differently
-based on their role.
-
-### Recommended processing
-
-Both agents and gateways should include:
-
-- **Memory limiter processor**: This processor prevents out-of-memory issues by
-  applying backpressure when memory usage is high. Configure this as the first
-  processor in your pipeline. Agents typically need smaller limits, while
-  gateways require more memory for batching and sampling operations. Adjust the
-  limits based on the requirements of your workloads and your available
-  resources.
-
-- **Batching**: You can improve efficiency by batching telemetry data before
-  export. Configure agents with smaller batch sizes and shorter timeouts to
-  minimize latency and memory usage. Configure gateways with larger batch sizes
-  and longer timeouts for better throughput and backend efficiency.
-
-### Sampling considerations
-
-- **Probabilistic sampling**: When using probabilistic sampling across multiple
-  collectors, ensure they use the same hash seed for consistent sampling
-  decisions.
-
-- **Tail-based sampling**: Configure tail-based sampling on gateways only
-  because the processor must see all spans for a trace to make sampling
-  decisions. Use the
-  [`loadbalancingexporter`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter)
-  in your agents to distribute traces by trace ID to your gateway instances.
-
-  > [!CAUTION]
-  >
-  > The tail-sampling processor can make accurate decisions only if all spans
-  > for a trace arrive at the same Collector instance. While the load balancing
-  > exporter supports routing by trace ID, running tail sampling across multiple
-  > gateway instances is an advanced setup and has practical caveats, such as
-  > re-splitting of routing when backends change and cache/decision consistency.
-  > Test carefully and prefer a single well-resourced tail-sampling gateway
-  > unless you have a robust sticky-routing strategy.
-
 ### Other processing considerations
 
 - **Cumulative-to-delta calculations**: Cumulative-to-delta metric processing
   requires data-aware load balancing because the calculation is only accurate if
-  all points of a given metric series reach the same gateway Collector. Take
-  care when using the
+  all points of a given metric series reach the same gateway Collector. When
+  using the
   [`cumulativetodelta` processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor)
-  in an agent-to-gateway deployment. Each data source should send data to a
+  in an agent-to-gateway deployment, make sure to send each metric stream to a
   single Collector.
 
 ## Communication between agents and gateways
@@ -472,8 +442,8 @@ Configure exporter queue and retry settings (for example, `retry_on_failure` or
 `sending_queue` settings) on agents and gateways to handle temporary outages
 between agents and gateways or between gateways and backends. Gateways often
 need larger queues and retry policies to handle backend outages. Also consider
-`send_batch_max_size` to avoid transient backend rejections due to oversized
-payloads.
+setting a `max_size` for batches to avoid transient backend rejections due to
+oversized payloads.
 
 ### Security
 
@@ -511,8 +481,8 @@ CPU and memory usage through Collector
 
 You can scale gateways both vertically and horizontally:
 
-- **Without tail-based sampling**: Use any load balancer or Kubernetes service
-  with round-robin distribution. All gateway instances operate independently.
+- **Without tail sampling**: Use any load balancer or Kubernetes service with
+  round-robin distribution. All gateway instances operate independently.
 
   > [!NOTE]
   >
@@ -522,10 +492,9 @@ You can scale gateways both vertically and horizontally:
   > [gateway deployment documentation](/docs/collector/deploy/gateway/#multiple-collectors-and-the-single-writer-principle)
   > for details.
 
-- **With tail-based sampling**: Deploy agents with the `loadbalancingexporter`
-  to route spans by trace ID. The load balancing exporter ensures all spans for
-  a trace go to the same gateway instance, which is required for tail-based
-  sampling decisions.
+- **With tail sampling**: Deploy agents with the `loadbalancingexporter` to
+  route spans by trace ID and ensure all spans for a trace go to the same
+  gateway instance.
 
 For automatic scaling in Kubernetes, use
 [Horizontal Pod Autoscaling (HPA)](https://kubernetes.io/docs/concepts/workloads/autoscaling/horizontal-pod-autoscale/)
@@ -538,6 +507,7 @@ For more information, see the following documentation:
 
 - [Collector benchmarks](/docs/collector/benchmarks/)
 - [Collector configuration](/docs/collector/configuration/)
-- [Memory limiter processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor)
+- [Cumulative-to-delta processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor)
 - [Load balancing exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter)
+- [Memory limiter processor](https://github.com/open-telemetry/opentelemetry-collector/tree/main/processor/memorylimiterprocessor)
 - [Tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/tailsamplingprocessor)
