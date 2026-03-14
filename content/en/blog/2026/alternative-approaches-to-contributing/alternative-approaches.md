@@ -62,6 +62,7 @@ communities connect.
 ## Contribution is more than code
 
 ![Graph showing the most popular pages in OTel](graph-contributions.webp)
+
 Graph showing the most popular pages from the [OpenTelemetry.io](/docs/) website
 starting with January 2026 up to March 2026
 
