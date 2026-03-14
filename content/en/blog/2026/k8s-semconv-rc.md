@@ -3,7 +3,7 @@ title:
   Kubernetes attributes promoted to release candidate in OTel Semantic
   Conventions
 linkTitle: Kubernetes SemConv RC
-date: 2026-03-18
+date: 2026-03-16
 author: >-
   [Christos Markou](https://github.com/ChrsMark)(Elastic) [David
   Ashpole](https://github.com/dashpole)(Google)
