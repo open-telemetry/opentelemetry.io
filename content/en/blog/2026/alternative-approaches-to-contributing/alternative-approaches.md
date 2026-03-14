@@ -1,15 +1,13 @@
 ---
 title: Beyond the good first issue - How to make your contributions sustainable
 linkTitle: Beyond the good first issue
-date: 2026-03-20
+date: 2026-03-19
 author: >-
   [Diana Todea](https://github.com/didiViking) (VictoriaMetrics), [Elizabeth
   Mathew](https://github.com/Elizabeth-Mathew1) (Signoz)
 sig: End-User SIG
 cSpell:ignore: CLOTributor devex inclusivity Signoz Todea
 ---
-
-## Beyond the good first issue: how to make your contributions sustainable
 
 OpenTelemetry provides the tools and standards to collect metrics, logs, and
 traces from applications and services. Getting started with contributions can
@@ -63,8 +61,8 @@ communities connect.
 
 ## Contribution is more than code
 
-![Graph showing the most popular pages in OTel](graph-contributions.webp) Graph
-showing the most popular pages from the [OpenTelemetry.io](/docs/) website
+![Graph showing the most popular pages in OTel](graph-contributions.webp)
+Graph showing the most popular pages from the [OpenTelemetry.io](/docs/) website
 starting with January 2026 up to March 2026
 
 A pull request is not just a code change. It is discussion, feedback and
@@ -91,8 +89,8 @@ simplifying complex language, or helping with translations. Localization groups
 and documentation efforts are powerful ways to make OpenTelemetry more
 accessible worldwide.
 
-These mechanisms are not perfect, time zone differences and language barriers
-remain, but they provide multiple entry points for engagement: joining meetings,
+These mechanisms are not perfect - time zone differences and language barriers
+remain - but they provide multiple entry points for engagement: joining meetings,
 contributing asynchronously on GitHub, or helping improve documentation and
 translations.
 
@@ -100,12 +98,14 @@ Non-code contributions go beyond documentation and blogs. You can volunteer for
 note-taking in SIG meetings, help organise community events like the
 OpenTelemetry Community Day at KubeCon, or join the Contributor Experience SIG,
 which focuses on making the project better for all contributors. Some examples
-of these SIGs are: **otel-sig-end-user**, **otel-devex**,
-**opentelemetry-new-contributors**, **otel-contributor-experience**,
-**otel-docs-localization**. Your contribution track is also fluid, i.e.,
-starting with documentation does not lock you in; you can switch to code
-contributions as you learn more, or vice versa. All contributions count and are
-welcome.
+of these SIGs are: [**otel-sig-end-user**](https://cloud-native.slack.com/archives/C01RT3MSWGZ),
+[**otel-devex**](https://cloud-native.slack.com/archives/C01S42U83B2),
+[**opentelemetry-new-contributors**](https://cloud-native.slack.com/archives/C09H3MNMBQV),
+[**otel-contributor-experience**](https://cloud-native.slack.com/archives/C06TMJ2R0SK),
+[**otel-docs-localization**](https://cloud-native.slack.com/archives/C076RUAGP37).
+Your contribution track is also fluid, i.e., starting with documentation does not lock you in;
+you can switch to code contributions as you learn more, or vice versa.
+All contributions count and are welcome.
 
 If you do not see people like you in the room, that is not a signal to withdraw.
 It is an opportunity to participate.
@@ -127,8 +127,8 @@ simplify or localize them. Contributors with accessibility needs often identify
 gaps in documentation, tooling, or processes, improving readability, navigation,
 and inclusivity.
 
-These contributions, often overlooked, are just as critical as writing code,
-they shape the experience for everyone in the community. In large open source
+These contributions, often overlooked, are just as critical as writing code.
+They shape the experience for everyone in the community. In large open source
 communities, these perspectives matter as much as technical skill. Improving
 clarity, accessibility, and usability strengthens the ecosystem and enables
 broader participation.
@@ -171,7 +171,7 @@ programming or Linux kernel tech, this is a great place to contribute.
 
 Thinking beyond a single repository strengthens your contribution strategy.
 
-## Official documentation: a starting point
+## Official documentation: A starting point
 
 The official documentation provides the foundation. Contributing to clarity,
 examples, and localization improves accessibility and adoption. Some specific
