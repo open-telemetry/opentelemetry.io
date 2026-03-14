@@ -1,0 +1,24 @@
+title: Deno
+registryType: application integration
+language: js
+tags:
+  - deno
+  - javascript
+  - typescript
+  - runtime
+license: MIT
+description:
+  Deno has built-in OpenTelemetry support for traces, metrics, and logs.
+  Enabled via the OTEL_DENO=true environment variable, it automatically
+  instruments HTTP servers (Deno.serve) and outgoing fetch requests, exports
+  telemetry over OTLP, and supports custom instrumentation via the
+  @opentelemetry/api npm package.
+authors:
+  - name: Deno Land Inc.
+    url: https://github.com/denoland
+urls:
+  website: https://deno.com
+  repo: https://github.com/denoland/deno
+  docs: https://docs.deno.com/runtime/fundamentals/open_telemetry/
+createdAt: '2026-03-14'
+isNative: true
