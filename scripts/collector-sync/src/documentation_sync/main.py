@@ -12,6 +12,7 @@ from documentation_sync.fix_spelling import fix_component_spelling
 from documentation_sync.inventory_manager import InventoryManager
 from documentation_sync.metadata_diagnostics import MetadataDiagnostics
 from documentation_sync.update_docs import get_latest_version, merge_inventories
+from documentation_sync.version_updater import VersionUpdater
 
 logger = logging.getLogger(__name__)
 
@@ -151,6 +152,11 @@ def main() -> None:
     logger.info(f"Loaded {total_components} total components")
 
     diagnostics = MetadataDiagnostics()
+
+    # Format versions as tags (e.g., v0.115.0)
+    core_version_tag = f"v{core_version}"
+    contrib_version_tag = f"v{contrib_version}"
+
     generator = DocContentGenerator(diagnostics)
     tables = generator.generate_all_component_tables(merged_inventory)
 
@@ -192,6 +198,10 @@ def main() -> None:
         logger.error(
             "  <!-- END GENERATED: {component-type}-table SOURCE: open-telemetry/opentelemetry-ecosystem-explorer -->"
         )
+
+    logger.info("\nUpdating collector versions data file...")
+    version_updater = VersionUpdater(repo_root)
+    version_updater.update_versions(core_version_tag, contrib_version_tag)
 
     # Fix spelling errors (runs in current directory)
     logger.info("\n" + "=" * 60)

@@ -1060,6 +1060,7 @@ maintainers:
       - dotnet-contrib-approvers
       - dotnet-contrib-maintainers
       - dotnet-contrib-triagers
+      - dotnet-maintainers
       - dotnet-triagers
     html_url: https://github.com/martincostello
     avatar_url: https://avatars.githubusercontent.com/u/1439341?v=4
@@ -1750,6 +1751,7 @@ approvers:
     teams:
       - collector-contrib-approvers
       - collector-contrib-triagers
+      - collector-triagers
     html_url: https://github.com/ArthurSens
     avatar_url: https://avatars.githubusercontent.com/u/24193764?v=4
   - name: aryanishan1001
@@ -1982,6 +1984,7 @@ approvers:
     teams:
       - lambda-extension-approvers
       - opentelemetry-python-contrib-approvers
+      - python-approvers
     html_url: https://github.com/herin049
     avatar_url: https://avatars.githubusercontent.com/u/40302054?v=4
   - name: iblancasa
@@ -1996,6 +1999,12 @@ approvers:
       - specs-trace-approvers
     html_url: https://github.com/iNikem
     avatar_url: https://avatars.githubusercontent.com/u/3010154?v=4
+  - name: iskiselev
+    teams:
+      - dotnet-instrumentation-approvers
+      - dotnet-instrumentation-triagers
+    html_url: https://github.com/iskiselev
+    avatar_url: https://avatars.githubusercontent.com/u/5084964?v=4
   - name: jackgopack4
     teams:
       - collector-releases-approvers
@@ -2073,6 +2082,11 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/karthikscale3
     avatar_url: https://avatars.githubusercontent.com/u/105607645?v=4
+  - name: keith-decker
+    teams:
+      - opentelemetry-python-contrib-approvers
+    html_url: https://github.com/keith-decker
+    avatar_url: https://avatars.githubusercontent.com/u/47755047?v=4
   - name: kinyoklion
     teams:
       - semconv-feature-flag-approvers
@@ -2203,6 +2217,11 @@ approvers:
       - cpp-approvers
     html_url: https://github.com/owent
     avatar_url: https://avatars.githubusercontent.com/u/1209475?v=4
+  - name: pinoOgni
+    teams:
+      - ebpf-instrumentation-approvers
+    html_url: https://github.com/pinoOgni
+    avatar_url: https://avatars.githubusercontent.com/u/26680903?v=4
   - name: pjanotti
     teams:
       - collector-contrib-approvers
@@ -2661,6 +2680,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/t2t2
     avatar_url: https://avatars.githubusercontent.com/u/1122555?v=4
+  - name: thompson-tomo
+    teams:
+      - ruby-contrib-triagers
+    html_url: https://github.com/thompson-tomo
+    avatar_url: https://avatars.githubusercontent.com/u/19771933?v=4
   - name: tidal
     teams:
       - php-triagers
@@ -3119,6 +3143,9 @@ members:
   - name: scorpionknifes
     html_url: https://github.com/scorpionknifes
     avatar_url: https://avatars.githubusercontent.com/u/23299540?v=4
+  - name: ShaanveerS
+    html_url: https://github.com/ShaanveerS
+    avatar_url: https://avatars.githubusercontent.com/u/146979751?v=4
   - name: shanduur
     html_url: https://github.com/shanduur
     avatar_url: https://avatars.githubusercontent.com/u/32583062?v=4
@@ -3167,6 +3194,9 @@ members:
   - name: VenuEmmadi
     html_url: https://github.com/VenuEmmadi
     avatar_url: https://avatars.githubusercontent.com/u/57027311?v=4
+  - name: vincentfree
+    html_url: https://github.com/vincentfree
+    avatar_url: https://avatars.githubusercontent.com/u/820860?v=4
   - name: vishweshbankwar
     html_url: https://github.com/vishweshbankwar
     avatar_url: https://avatars.githubusercontent.com/u/17655898?v=4
