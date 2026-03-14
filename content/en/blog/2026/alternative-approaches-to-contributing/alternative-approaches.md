@@ -91,22 +91,23 @@ and documentation efforts are powerful ways to make OpenTelemetry more
 accessible worldwide.
 
 These mechanisms are not perfect - time zone differences and language barriers
-remain - but they provide multiple entry points for engagement: joining meetings,
-contributing asynchronously on GitHub, or helping improve documentation and
-translations.
+remain - but they provide multiple entry points for engagement: joining
+meetings, contributing asynchronously on GitHub, or helping improve
+documentation and translations.
 
 Non-code contributions go beyond documentation and blogs. You can volunteer for
 note-taking in SIG meetings, help organise community events like the
 OpenTelemetry Community Day at KubeCon, or join the Contributor Experience SIG,
 which focuses on making the project better for all contributors. Some examples
-of these SIGs are: [**otel-sig-end-user**](https://cloud-native.slack.com/archives/C01RT3MSWGZ),
+of these SIGs are:
+[**otel-sig-end-user**](https://cloud-native.slack.com/archives/C01RT3MSWGZ),
 [**otel-devex**](https://cloud-native.slack.com/archives/C01S42U83B2),
 [**opentelemetry-new-contributors**](https://cloud-native.slack.com/archives/C09H3MNMBQV),
 [**otel-contributor-experience**](https://cloud-native.slack.com/archives/C06TMJ2R0SK),
 [**otel-docs-localization**](https://cloud-native.slack.com/archives/C076RUAGP37).
-Your contribution track is also fluid, i.e., starting with documentation does not lock you in;
-you can switch to code contributions as you learn more, or vice versa.
-All contributions count and are welcome.
+Your contribution track is also fluid, i.e., starting with documentation does
+not lock you in; you can switch to code contributions as you learn more, or vice
+versa. All contributions count and are welcome.
 
 If you do not see people like you in the room, that is not a signal to withdraw.
 It is an opportunity to participate.
