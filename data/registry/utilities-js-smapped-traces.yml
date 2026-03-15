@@ -1,0 +1,26 @@
+# cSpell:ignore jrandolf nextjs smapped
+title: smapped-traces
+registryType: utilities
+language: js
+tags:
+  - browser
+  - source-map
+  - debug-id
+  - stack-trace
+  - nextjs
+license: Apache 2.0
+description: |
+  Source map resolution for OpenTelemetry exception stack traces using debug IDs.
+  Resolves minified stack traces back to original source locations without serving
+  source maps publicly. Includes a client-side span exporter that attaches debug
+  IDs to exception events, a server-side route handler that resolves stack frames
+  before forwarding to your OTLP collector, and a Next.js build plugin for
+  collecting source maps at build time. Storage backends: SQLite, S3-compatible
+  (AWS S3, GCS, Cloudflare R2), and HTTP.
+authors:
+  - name: jrandolf
+    url: https://github.com/jrandolf
+urls:
+  repo: https://github.com/jrandolf/smapped-traces
+  docs: https://github.com/jrandolf/smapped-traces#readme
+createdAt: 2026-03-10
