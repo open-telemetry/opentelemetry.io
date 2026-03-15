@@ -6,8 +6,7 @@ description:
   backends
 aliases: [/docs/collector/deployment/gateway]
 weight: 300
-# prettier-ignore
-cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
+cSpell:ignore: hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---
 
 The gateway Collector deployment pattern consists of applications or other
@@ -206,39 +205,6 @@ including `otelcol_loadbalancer_num_backends` and
 `otelcol_loadbalancer_backend_latency` that you can use to monitor the health
 and performance of the Collector serving the OTLP endpoint.
 
-## Combined deployment of Collectors as agents and gateways
-
-Often, a deployment of multiple OpenTelemetry Collectors runs both Collectors as
-gateways and as [agents](/docs/collector/deploy/agent/).
-
-The following diagram shows an architecture for such a combined deployment:
-
-- Use Collectors running in the agent deployment pattern (running on each host,
-  similar to Kubernetes DaemonSets) to collect telemetry from services running
-  on the host as well as the host's own telemetry, such as host metrics and
-  scraped logs.
-- Use Collectors running in the gateway deployment pattern to process data, such
-  as filtering, sampling, and exporting to backends.
-
-![gateway](otel-gateway-arch.svg)
-
-This combined deployment pattern is necessary when you use components in your
-Collector that either must be unique per host or consume information that is
-available only on the same host where the application runs:
-
-- Receivers like the
-  [`hostmetricsreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/hostmetricsreceiver)
-  or
-  [`filelogreceiver`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver)
-  must be unique per host instance. Running multiple instances of these
-  receivers on the same host results in duplicate data.
-
-- Processors like the
-  [`resourcedetectionprocessor`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/resourcedetectionprocessor)
-  add information about the host where both the Collector and the application
-  are running. Running the processor in a Collector on a separate machine from
-  the application results in incorrect data.
-
 ## Trade-offs
 
 Pros:
@@ -300,3 +266,8 @@ order of the timestamps is incorrect. For example:
 - Use the
   [resource detector processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/resourcedetectionprocessor/README.md)
   to detect resource information from the host and collect resource metadata.
+
+## Next steps
+
+Learn how to [combine](/docs/collector/deploy/other/agent-to-gateway/) the agent
+and gateway patterns to create a robust, scalable Collector architecture.
