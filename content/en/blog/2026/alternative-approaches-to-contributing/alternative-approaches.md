@@ -243,6 +243,6 @@ OpenTelemetry is a global collaboration. There is space in it for you.
 ## Resources
 
 1. Diana Todea -
-   [The Unofficial Guide to Contributing to OpenTelemetry — where to look and who to talk to!](https://medium.com/@dianatodea/the-unofficial-guide-to-contributing-to-opentelemetry-where-to-look-and-who-to-talk-to-9de04ae75fe0)
+   [The Unofficial Guide to Contributing to OpenTelemetry — where to look and who to talk to!](https://medium.com/@dianatodea/the-unofficial-guide-to-contributing-to-opentelemetry-where-to-look-and-who-to-talk-to-9de04ae75fe0?link-check=no)
 2. Elizabeth -
    [6 Things I Learned About OpenTelemetry Contribution (That the Docs Won't Tell You)](https://newsletter.signoz.io/p/6-things-i-learned-about-opentelemetry)
