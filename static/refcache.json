@@ -5035,6 +5035,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:48:05.329085709Z"
   },
+  "https://github.com/denoland": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-15T00:15:02.908310917Z"
+  },
+  "https://github.com/denoland/deno": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-15T00:14:59.086552379Z"
+  },
   "https://github.com/didiViking": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:53:47.338790537Z"
