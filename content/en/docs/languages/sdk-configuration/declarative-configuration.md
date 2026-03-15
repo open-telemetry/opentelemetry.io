@@ -14,7 +14,9 @@ This approach is useful when:
 
 > [!WARNING]
 >
-> Declarative configuration is experimental.
+> The declarative configuration schema is stable. The parts of it that are
+> still experimental are suffixed with `/development`. Support for declarative
+> configuration in various implementations is still experimental.
 
 ## Supported languages
 
@@ -28,13 +30,12 @@ For details, refer to the
 ## Getting started
 
 1. Save the following configuration file as `otel-config.yaml`.
-2. Set the environment variable
-   `OTEL_EXPERIMENTAL_CONFIG_FILE=/path/to/otel-config.yaml`
+2. Set the environment variable `OTEL_CONFIG_FILE=/path/to/otel-config.yaml`
 
 Recommended configuration file:
 
 ```yaml
-file_format: '1.0-rc.1'
+file_format: '1.0'
 
 resource:
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}

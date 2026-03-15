@@ -20,7 +20,9 @@ configuration, including the OpenTelemetry Java agent.
 
 > [!WARNING]
 >
-> Declarative configuration is experimental.
+> The declarative configuration schema is stable. The parts of it that are
+> still experimental are suffixed with `/development`. Java support for
+> declarative configuration is still experimental.
 
 ## Supported versions
 
@@ -34,7 +36,7 @@ Declarative configuration is supported in the **OpenTelemetry Java agent version
    `-Dotel.experimental.config.file=/path/to/otel-config.yaml`
 
 ```yaml
-file_format: '1.0-rc.1'
+file_format: '1.0'
 
 resource:
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
