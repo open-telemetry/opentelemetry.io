@@ -2,11 +2,38 @@
 title: コントリビューション
 aliases: [/docs/contribution-guidelines]
 weight: 980
-default_lang_commit: 24146bd1368e4c6082c7d6077efd29dba0d51055
-drifted_from_default: true
+default_lang_commit: ae2a3f327e0360c11a97bdf3e2704bd997924645
+cascade:
+  chooseAnIssueAtYourLevel: |
+    ご自身の**経験**と OpenTelemetry への**理解**のレベルに合わせた[イシューを選択する][choose an issue]ようにしてください。
+    ご自身の能力を超えるものを選択するのはお控えください。
+  _issues: https://github.com/open-telemetry/opentelemetry.io/issues
+  _issue: https://github.com/open-telemetry/opentelemetry.io/issues?q=state%3Aopen%20label%3A
 ---
 
-OpenTelemetry のドキュメントとWebサイトのコントリビューションに興味を持っていただきありがとうございます。
+> [!TIP] 興味を持っていただきありがとうございます!
+>
+> OpenTelemetry のドキュメントと Web サイトのコントリビューションに興味を持っていただきありがとうございます。
+
+## <i class='far fa-exclamation-triangle text-warning '></i> 初めてのコントリビュートですか? {#first-time-contributing}
+
+- 以下のラベルを持つ[**イシューを選択する**][choose an issue]
+  - [Good first issue](<{{% param _issue %}}%22good%20first%20issue%22>)
+  - [Help wanted](<{{% param _issue %}}%22help%20wanted%22>)
+
+  > [!WARNING] イシューを割り当てません
+  >
+  > 確認されたメンターシップまたはオンボーディング プロセスの一環でない限り、[OpenTelemetry organization][org] に貢献していない人に対しては**イシューを割り当てません**。
+  >
+  > [org]: https://github.com/open-telemetry
+
+- {{% param chooseAnIssueAtYourLevel %}}
+
+- [生成 AI コントリビューション ポリシー](pull-requests#using-ai)を確認してください
+
+- 他のイシューまたはより大きな変更に取り組みたい場合は、[メンテナーに相談してください][discuss it with maintainers first]。
+
+[discuss it with maintainers first]: issues/#fixing-an-existing-issue
 
 ## 今すぐ飛び込んでみよう! {#jump-right-in}
 
@@ -19,28 +46,22 @@ OpenTelemetry のドキュメントとWebサイトのコントリビューショ
   - [コンテンツの提出][Submitting content]
 
 [Prerequisites]: prerequisites/
-[Issues]: issues/
 [Submitting content]: pull-requests/
-
-{{% alert title="<i class='far fa-exclamation-triangle'></i> 初めてのコントリビュートですか? " %}}
-
-意欲的な初めてのコントリビューターの方は、重要なガイダンスとして[既存のイシューを修正](issues/#fixing-an-existing-issue)を確認してください。
-
-{{% /alert %}}
 
 ## 何にコントリビュートできる? {#what-can-i-contribute-to}
 
-OpenTelemetryドキュメントコントリビューターは以下を行ないます。
+OpenTelemetry ドキュメント コントリビューターは以下を行ないます。
 
 - 既存コンテンツの改善または新しいコンテンツの作成。
 - [ブログ記事の作成](/blog)またはケーススタディ。
-- OpenTelemetry Registryの追加または更新。
+- OpenTelemetry Registry の追加または更新。
 - サイトをビルドするコードの改善。
 
 このページの本セクションは、OpenTelemetry **ドキュメント**へのコントリビュート方法について説明します。
 
-OpenTelemetryプロジェクトへの一般的なコントリビュートの手引には、[OpenTelemetryコントリビューターガイド][]を参照ください。
+OpenTelemetry プロジェクトへの一般的なコントリビュートの手引には、[OpenTelemetry コントリビューター ガイド][OpenTelemetry New Contributor Guide]を参照ください。
 すべての言語の実装、コレクター、規約の[リポジトリ][org]は独自のコントリビュートの手引があります。
 
-[OpenTelemetryコントリビューターガイド]: https://github.com/open-telemetry/community/blob/main/guides/contributor
-[org]: https://github.com/open-telemetry
+[choose an issue]: issues/#fixing-an-existing-issue
+[issues]: issues/
+[OpenTelemetry New Contributor Guide]: https://github.com/open-telemetry/community/blob/main/guides/contributor
