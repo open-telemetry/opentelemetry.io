@@ -8,11 +8,11 @@ tags:
   - runtime
 license: MIT
 description:
-  Deno has built-in OpenTelemetry support for traces, metrics, and logs.
-  Enabled via the OTEL_DENO=true environment variable, it automatically
-  instruments HTTP servers, outgoing fetch requests, and Deno.cron jobs,
-  exports telemetry over OTLP, and supports custom instrumentation via the
-  @opentelemetry/api npm package.
+  Deno has built-in OpenTelemetry support for traces, metrics, and logs. Enabled
+  via the OTEL_DENO=true environment variable, it automatically instruments HTTP
+  servers, outgoing fetch requests, and Deno.cron jobs, exports telemetry over
+  OTLP, and supports custom instrumentation via the @opentelemetry/api npm
+  package.
 authors:
   - name: Deno Land Inc.
     url: https://github.com/denoland
