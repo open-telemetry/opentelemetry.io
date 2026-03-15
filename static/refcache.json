@@ -2009,7 +2009,7 @@
   },
   "https://docs.google.com/spreadsheets/d/1E23Dkz1B2us71BtlQq8oG4o_QFsTeLPeh-X2uVnlubg/edit?usp=sharing": {
     "StatusCode": 401,
-    "LastSeen": "2026-03-14T09:49:09.225376274Z"
+    "LastSeen": "2026-03-15T09:49:03.13027443Z"
   },
   "https://docs.google.com/spreadsheets/d/1I2ACFAgzWaa1H5EQx99-rLTro2FHlS44gsWuQsU8Ssw/edit#gid=191407209": {
     "StatusCode": 200,
@@ -8561,7 +8561,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8slogreceiver": {
     "StatusCode": 404,
-    "LastSeen": "2026-03-14T09:49:50.005960641Z"
+    "LastSeen": "2026-03-15T09:49:53.338198218Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver": {
     "StatusCode": 206,
@@ -21163,10 +21163,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:54:20.867646998Z"
   },
-  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.25.0-alpha/opentelemetry-instrumentation-bom-alpha-2.25.0-alpha.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2026-03-13T09:51:13.479026708Z"
-  },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom-alpha/2.26.0-alpha/opentelemetry-instrumentation-bom-alpha-2.26.0-alpha.pom": {
     "StatusCode": 206,
     "LastSeen": "2026-03-14T23:55:16.898429804Z"
@@ -21182,10 +21178,6 @@
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.23.0/opentelemetry-instrumentation-bom-2.23.0.pom": {
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:54:18.269309151Z"
-  },
-  "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.25.0/opentelemetry-instrumentation-bom-2.25.0.pom": {
-    "StatusCode": 206,
-    "LastSeen": "2026-03-13T09:51:09.896226742Z"
   },
   "https://repo1.maven.org/maven2/io/opentelemetry/instrumentation/opentelemetry-instrumentation-bom/2.26.0/opentelemetry-instrumentation-bom-2.26.0.pom": {
     "StatusCode": 206,
