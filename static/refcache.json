@@ -715,6 +715,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:52:38.482440919Z"
   },
+  "https://clotributor.dev/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-13T19:17:11.496804303Z"
+  },
   "https://cloud-native.slack.com": {
     "StatusCode": 200,
     "LastSeen": "2026-03-13T12:03:42.256228183Z"
@@ -754,6 +758,10 @@
   "https://cloud-native.slack.com/archives/C01RT3MSWGZ": {
     "StatusCode": 200,
     "LastSeen": "2026-03-03T09:52:12.25440689Z"
+  },
+  "https://cloud-native.slack.com/archives/C01S42U83B2": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-15T00:24:48.059755977Z"
   },
   "https://cloud-native.slack.com/archives/C02UN96HZH6": {
     "StatusCode": 200,
@@ -838,6 +846,10 @@
   "https://cloud-native.slack.com/archives/C091NUGP5KN": {
     "StatusCode": 200,
     "LastSeen": "2026-02-28T09:44:28.797414021Z"
+  },
+  "https://cloud-native.slack.com/archives/C09H3MNMBQV": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-15T00:24:50.283912008Z"
   },
   "https://cloud-native.slack.com/archives/CJFCJHG4Q": {
     "StatusCode": 200,
@@ -1026,6 +1038,10 @@
   "https://community.cncf.io/events/details/cncf-cloud-native-community-japan-presents-japan-community-day-at-kubecon-cloudnativecon-japan-2025/": {
     "StatusCode": 200,
     "LastSeen": "2026-02-28T09:44:25.191050306Z"
+  },
+  "https://community.cncf.io/merge-forward/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-13T19:17:14.115968547Z"
   },
   "https://community.cncf.io/opentelemetry/": {
     "StatusCode": 200,
@@ -3630,6 +3646,10 @@
   "https://github.com/E-STAT": {
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:58:46.341688045Z"
+  },
+  "https://github.com/Elizabeth-Mathew1": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-13T19:17:10.731527729Z"
   },
   "https://github.com/EzzioMoreira": {
     "StatusCode": 206,
@@ -18750,6 +18770,10 @@
   "https://news.microsoft.com/source/features/ai/ai-agents-what-they-are-and-how-theyll-change-the-way-we-work/": {
     "StatusCode": 200,
     "LastSeen": "2026-02-28T09:44:35.492526141Z"
+  },
+  "https://newsletter.signoz.io/p/6-things-i-learned-about-opentelemetry": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-13T19:17:17.513259029Z"
   },
   "https://nextjs.org/": {
     "StatusCode": 200,
