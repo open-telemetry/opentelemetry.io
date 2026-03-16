@@ -7895,6 +7895,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:52:47.872312935Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/6aff35ab5351482a4664f29a7d5428cedcf61a92/connector/routingconnector?from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T10:06:04.86792+01:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/72087f655403778da46f4168dca2433fa0775098/receiver/filelogreceiver?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:52:32.45408359Z"
