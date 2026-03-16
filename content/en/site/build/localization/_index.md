@@ -56,10 +56,10 @@ pl:
 
 ### Step 1b. Translation File
 
-Within the `i18n` directory, create a new file named `LANG_ID.yaml` (for example, `pl.yaml`). This file will contain
-some translated strings for the new language. These strings are used for UI elements and other site components that
+Within the `i18n` directory, create a new file named `LANG_ID.yaml` (for
+example, `pl.yaml`). This file will contain some translated strings for the new
+language. These strings are used for UI elements and other site components that
 may not necessarily be part of the main content, or are used in multiple pages.
-
 
 ## Step 2 — Hugo content mounts {#hugo-mounts}
 
