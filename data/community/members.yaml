@@ -2217,6 +2217,11 @@ approvers:
       - cpp-approvers
     html_url: https://github.com/owent
     avatar_url: https://avatars.githubusercontent.com/u/1209475?v=4
+  - name: pinoOgni
+    teams:
+      - ebpf-instrumentation-approvers
+    html_url: https://github.com/pinoOgni
+    avatar_url: https://avatars.githubusercontent.com/u/26680903?v=4
   - name: pjanotti
     teams:
       - collector-contrib-approvers
@@ -3138,6 +3143,9 @@ members:
   - name: scorpionknifes
     html_url: https://github.com/scorpionknifes
     avatar_url: https://avatars.githubusercontent.com/u/23299540?v=4
+  - name: ShaanveerS
+    html_url: https://github.com/ShaanveerS
+    avatar_url: https://avatars.githubusercontent.com/u/146979751?v=4
   - name: shanduur
     html_url: https://github.com/shanduur
     avatar_url: https://avatars.githubusercontent.com/u/32583062?v=4
