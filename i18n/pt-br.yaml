@@ -23,7 +23,7 @@ ui_search_ai_modal_title: Assistente de IA do OpenTelemetry
 ui_search_ai_modal_disclaimer: >-
   Este **recurso experimental** utiliza IA para responder a perguntas com base
   na documentação do site, GitHub do OpenTelemetry, Stack Overflow e outros
-  recursos. A IA nem sempre fornece informações precias ou relevantes.
+  recursos. A IA nem sempre fornece informações precisas ou relevantes.
   Compartilhe sua opinião enviando seu 
   [_feedback_](https://github.com/open-telemetry/opentelemetry.io/discussions/6802).
 ui_search_ai_popover_content: >-
