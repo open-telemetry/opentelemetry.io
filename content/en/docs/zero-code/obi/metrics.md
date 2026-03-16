@@ -60,6 +60,19 @@ check the `attributes`->`select` section in the
 | Application (all)              | `k8s.replicaset.name`        | shown if Kubernetes metadata is enabled           |
 | Application (all)              | `k8s.statefulset.name`       | shown if Kubernetes metadata is enabled           |
 | Application (all)              | `k8s.cluster.name`           | shown if Kubernetes metadata is enabled           |
+| Application (all)              | `container.id`               | shown if Docker metadata is enabled               |
+| Application (all)              | `container.name`             | shown if Docker metadata is enabled               |
+| Application (all)              | `cloud.provider`             | shown if cloud metadata is enabled                |
+| Application (all)              | `cloud.platform`             | shown if cloud metadata is enabled                |
+| Application (all)              | `cloud.region`               | shown if cloud metadata is enabled                |
+| Application (all)              | `cloud.account.id`           | shown if cloud metadata is enabled                |
+| Application (all)              | `cloud.availability_zone`    | shown if cloud metadata is enabled                |
+| Application (all)              | `cloud.resource_id`          | shown if cloud metadata is enabled (Azure only)   |
+| Application (all)              | `host.id`                    | shown if cloud metadata is enabled                |
+| Application (all)              | `host.type`                  | shown if cloud metadata is enabled                |
+| Application (all)              | `host.image.id`              | shown if cloud metadata is enabled (AWS only)     |
+| Application (all)              | `gcp.gce.instance.name`      | shown if cloud metadata is enabled (GCP only)     |
+| Application (all)              | `gcp.gce.instance.hostname`  | shown if cloud metadata is enabled (GCP only)     |
 | Application (all)              | `service.name`               | shown                                             |
 | Application (all)              | `service.namespace`          | shown                                             |
 | Application (all)              | `target.instance`            | shown                                             |
