@@ -141,8 +141,8 @@ If you build observability backends or services:
 If you author OpenTelemetry instrumentations:
 
 - Keep existing stable major versions behaviorally compatible for now.
-- Consider adding an opt-in mechanism in current major versions (for example,
-  via an environment variable such as `OTEL_SEMCONV_EXCEPTION_SIGNAL_OPT_IN`) to
+- Consider adding an opt-in mechanism in current major versions (like
+  [`OTEL_SEMCONV_EXCEPTION_SIGNAL_OPT_IN`](/docs/specs/semconv/exceptions)) to
   emit log-based events alongside existing span events.
 - For the next major versions, plan to migrate events and exceptions to the Logs
   API following updated semantic conventions, rather than adding new span
