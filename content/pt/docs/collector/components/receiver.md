@@ -1,6 +1,6 @@
 ---
 title: Receivers
-description: Lista de recebedores disponíveis do OpenTelemetry Collector
+description: Lista de receptores disponíveis do OpenTelemetry Collector
 weight: 310
 default_lang_commit: 3040a67e16dcc198614b025bd894c662c03441b3
 ---
