@@ -1,0 +1,46 @@
+# Docsy overrides
+
+ui_search: AIに質問または検索…
+
+# Community
+
+community_introduce: >-
+  {{ .Site.Title }}はコミュニティの誰もが使用、改善、楽しむことができるオープン
+  ソースプロジェクトです。ぜひご参加ください！
+
+community_contribute: >-
+  {{ .Site.Title }}のドキュメントへの貢献方法については、
+  [貢献ガイド](/docs/contributing/)を参照してください。その他の便利なリンク：
+
+community_how_to: ドキュメントスタイルガイドなどについては、こちらを参照してください
+community_guideline: 貢献ガイド
+
+# Search AI
+ui_search_ai_modal_title: OpenTelemetry AIアシスタント
+
+ui_search_ai_modal_disclaimer: >-
+  この**実験的機能**は、サイトのドキュメント、OpenTelemetry GitHub、Stack
+  Overflow、
+  その他のリソースに基づいてAIが質問に回答します。AIは常に正確または関連性のある
+  情報を提供するとは限りません。
+  [フィードバック](https://github.com/open-telemetry/opentelemetry.io/discussions/6802)
+  をお寄せください。
+ui_search_ai_popover_content: >-
+  <a id='ask-ai-trigger' href='#'>AIに質問</a> (&#x2318;-K)
+
+# Collector component table headers
+collector_component_table_header_name: 名前
+collector_component_table_header_distributions: ディストリビューション
+collector_component_table_header_traces: トレース
+collector_component_table_header_metrics: メトリクス
+collector_component_table_header_logs: ログ
+collector_component_table_header_stability: 安定性
+
+# Footnotes
+collector_component_distributions_footnote: >-
+  どの[ディストリビューション](/docs/collector/distributions/)（core、contrib、
+  K8sなど）にこのコンポーネントが含まれているかを示します。
+
+collector_component_stability_footnote: >-
+  コンポーネントの安定性レベルの詳細については、[OpenTelemetry Collector
+  コンポーネント安定性の定義](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md)を参照してください。
