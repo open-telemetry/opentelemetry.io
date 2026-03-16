@@ -1,7 +1,7 @@
 ---
 title: 'How Mastodon Runs OpenTelemetry Collectors in Production'
 linkTitle: How Mastodon Runs OpenTelemetry Collectors in Production
-date: 2026-03-10
+date: 2026-03-18
 author: >-
   [Juliano Costa](https://github.com/julianocosta89) (Datadog), [Tristan
   Sloughter](https://github.com/tsloughter) (community), [Johanna
@@ -26,7 +26,7 @@ with a small but uniquely challenging case.
 This first story features Mastodon, a non-profit organization operating at
 global scale with a remarkably small team.
 
-## Mastodon at a Glance
+## Mastodon at a glance
 
 [Mastodon](https://joinmastodon.org) is a free, open source, decentralized
 social media platform operated by a non-profit organization.
@@ -43,7 +43,7 @@ of who operates them.
 This philosophy shapes not just Mastodon’s feature decisions, but also its
 approach to observability.
 
-### Organizational Structure
+### Organizational structure
 
 The entire Mastodon organization consists of around 20 people, and observability
 infrastructure (including the OpenTelemetry Collector) is managed by a single
@@ -70,7 +70,7 @@ instances:
 With such limited operational bandwidth, simplicity and reliability are
 non-negotiable.
 
-### OpenTelemetry Adoption: Freedom of Choice by Design
+### OpenTelemetry adoption: Freedom of choice by design
 
 Because Mastodon is open source and designed to be run by others, the team
 wanted a telemetry solution that preserved operator freedom.
@@ -96,7 +96,7 @@ This approach avoids vendor-specific data models and ensures compatibility with
 the broader OpenTelemetry ecosystem—without Mastodon having to maintain its own
 conventions.
 
-## Collector Architecture: One Per Namespace, No More
+## Collector architecture: One per namespace, no more
 
 Mastodon’s Collector architecture is intentionally minimal.
 
@@ -118,7 +118,7 @@ Collector, they’ve _never had a single issue_ with it.
 > traces and logs go in Datadog, I haven't seen any gaps. Memory and
 > process-wise, it's stayed perfectly happy within the limits that we've set.”
 
-## Deployment and Lifecycle Management
+## Deployment and lifecycle management
 
 To keep operational overhead as low as possible, Mastodon relies on:
 
@@ -144,7 +144,7 @@ Notably, Mastodon does not enforce strict CPU or memory limits on Collector
 pods. In practice, resource consumption has remained negligible compared to the
 rest of the platform.
 
-## Traffic Management Through Sampling
+## Traffic management through sampling
 
 Rather than relying on resource limits, Mastodon controls observability overhead
 primarily through tail-based sampling.
@@ -158,7 +158,7 @@ primarily through tail-based sampling.
 This approach keeps data volume predictable while preserving high-value
 diagnostic data.
 
-## Configuration: Opinionated, but Minimal
+## Configuration: Opinionated, but minimal
 
 Mastodon uses the OpenTelemetry Collector Contrib distribution, primarily for
 convenience—it includes everything they need without requiring custom builds.
@@ -376,7 +376,7 @@ spec:
           exporters: [datadog]
 ```
 
-### Staying Up to Date
+### Staying up to date
 
 Mastodon typically upgrades the OpenTelemetry Collector within a day or two of
 each release.
@@ -422,7 +422,7 @@ curve, the overall experience has exceeded expectations.
 That reliability and flexibility are the reasons why Mastodon continues to use
 the OpenTelemetry Collector in production.
 
-## Advice for Small Teams
+## Advice for small teams
 
 Based on Mastodon’s experience, a few lessons stand out:
 
@@ -432,7 +432,7 @@ Based on Mastodon’s experience, a few lessons stand out:
 - **Stick to semantic conventions** to avoid long-term lock-in
 - **Upgrade frequently** to reduce the pain of breaking changes
 
-## What’s Next
+## What’s next
 
 Mastodon’s story shows that even a very small team can successfully operate
 OpenTelemetry Collectors in production—at global scale—without significant
