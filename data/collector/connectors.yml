@@ -1,0 +1,124 @@
+# OpenTelemetry Collector component data
+# This file is automatically updated by scripts/collector-sync
+
+---
+- name: countconnector
+  repo: contrib
+  distributions:
+    - contrib
+    - K8s
+  stability:
+    logs_to_metrics: alpha
+    metrics_to_metrics: alpha
+    profiles_to_metrics: alpha
+    traces_to_metrics: alpha
+- name: datadogconnector
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces_to_metrics: beta
+    traces_to_traces: beta
+- name: exceptionsconnector
+  repo: contrib
+  distributions:
+    - contrib
+    - K8s
+  stability:
+    traces_to_logs: alpha
+    traces_to_metrics: alpha
+- name: failoverconnector
+  repo: contrib
+  distributions:
+    - contrib
+    - K8s
+  stability:
+    logs_to_logs: alpha
+    metrics_to_metrics: alpha
+    traces_to_traces: alpha
+- name: forwardconnector
+  repo: core
+  distributions:
+    - contrib
+    - core
+    - K8s
+  stability:
+    logs_to_logs: beta
+    metrics_to_metrics: beta
+    traces_to_traces: beta
+    profiles_to_profiles: development
+- name: grafanacloudconnector
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces_to_metrics: alpha
+- name: metricsaslogsconnector
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics_to_logs: development
+- name: otlpjsonconnector
+  repo: contrib
+  distributions:
+    - contrib
+    - K8s
+  stability:
+    logs_to_logs: alpha
+    logs_to_metrics: alpha
+    logs_to_traces: alpha
+- name: roundrobinconnector
+  repo: contrib
+  distributions:
+    - contrib
+    - K8s
+  stability:
+    logs_to_logs: beta
+    metrics_to_metrics: beta
+    traces_to_traces: beta
+- name: routingconnector
+  repo: contrib
+  distributions:
+    - contrib
+    - K8s
+  stability:
+    logs_to_logs: alpha
+    metrics_to_metrics: alpha
+    traces_to_traces: alpha
+- name: servicegraphconnector
+  repo: contrib
+  distributions:
+    - contrib
+    - K8s
+  stability:
+    traces_to_metrics: alpha
+- name: signaltometricsconnector
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs_to_metrics: alpha
+    metrics_to_metrics: alpha
+    profiles_to_metrics: alpha
+    traces_to_metrics: alpha
+- name: slowsqlconnector
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces_to_logs: development
+- name: spanmetricsconnector
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces_to_metrics: alpha
+- name: sumconnector
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs_to_metrics: alpha
+    metrics_to_metrics: alpha
+    traces_to_metrics: alpha
