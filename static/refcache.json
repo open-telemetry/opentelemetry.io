@@ -11175,6 +11175,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:52:02.880296698Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/tree/main/ecosystem-registry/collector": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T13:38:12.058838651Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-erlang": {
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:52:36.085463748Z"
