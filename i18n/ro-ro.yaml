@@ -1,0 +1,48 @@
+# Docsy overrides
+
+ui_search: Întreabă AI sau caută…
+
+# Community
+
+community_introduce: >-
+  {{ .Site.Title }} este un proiect open source pe care oricine din comunitate
+  îl poate folosi, îmbunătăți și de care se poate bucura. Ne-ar plăcea să ni te
+  alături!
+
+community_contribute: >-
+  Pentru a afla cum să contribui la documentația {{ .Site.Title }}, consultă
+  [Contribuire](/docs/contributing/). Alte link-uri utile:
+
+community_how_to:
+  Pentru ghidul nostru de stil al documentației și mai mult, consultă
+community_guideline: Contribuire
+
+# Search AI
+ui_search_ai_modal_title: Asistentul AI al OpenTelemetry
+
+ui_search_ai_modal_disclaimer: >-
+  Această **funcție experimentală** folosește AI pentru a răspunde la întrebări
+  pe baza documentației site-ului, GitHub OpenTelemetry, Stack Overflow și a
+  altor resurse. AI-ul poate să nu ofere întotdeauna informații precise sau
+  relevante. Împărtășește-ți gândurile oferind
+  [feedback](https://github.com/open-telemetry/opentelemetry.io/discussions/6802).
+ui_search_ai_popover_content: >-
+  <a id='ask-ai-trigger' href='#'>Întreabă AI</a> (&#x2318;-K)
+
+# Collector component table headers
+collector_component_table_header_name: Nume
+collector_component_table_header_distributions: Distribuții
+collector_component_table_header_traces: Urme
+collector_component_table_header_metrics: Metrici
+collector_component_table_header_logs: Jurnale
+collector_component_table_header_stability: Stabilitate
+
+# Footnotes
+collector_component_distributions_footnote: >-
+  Arată care [distribuții](/docs/collector/distributions/) (core, contrib, K8s
+  etc.) includ această componentă.
+
+collector_component_stability_footnote: >-
+  Pentru detalii despre nivelurile de stabilitate ale componentelor, consultă
+  [definițiile de stabilitate ale componentelor OpenTelemetry
+  Collector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
