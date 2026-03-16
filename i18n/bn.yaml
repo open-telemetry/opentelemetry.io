@@ -1,0 +1,47 @@
+# Docsy overrides
+
+ui_search: AI-কে জিজ্ঞাসা করুন বা খুঁজুন…
+
+# Community
+
+community_introduce: >-
+  {{ .Site.Title }} একটি ওপেন সোর্স প্রকল্প যা সম্প্রদায়ের যে কেউ ব্যবহার,
+  উন্নত এবং উপভোগ করতে পারে। আমরা চাই আপনি আমাদের সাথে যোগ দিন!
+
+community_contribute: >-
+  {{ .Site.Title }} ডকুমেন্টেশনে কিভাবে অবদান রাখতে হয় তা জানতে,
+  [অবদান](/docs/contributing/) দেখুন। অন্যান্য দরকারী লিঙ্ক:
+
+community_how_to: আমাদের ডকুমেন্টেশন স্টাইল গাইড এবং আরও তথ্যের জন্য দেখুন
+community_guideline: অবদান
+
+# Search AI
+ui_search_ai_modal_title: OpenTelemetry-র AI সহকারী
+
+ui_search_ai_modal_disclaimer: >-
+  এই **পরীক্ষামূলক ফিচারটি** সাইটের ডকুমেন্টেশন, OpenTelemetry GitHub, Stack
+  Overflow, এবং অন্যান্য সংস্থানের উপর ভিত্তি করে প্রশ্নের উত্তর দিতে AI ব্যবহার
+  করে। AI সবসময় সঠিক বা প্রাসঙ্গিক তথ্য প্রদান নাও করতে পারে।
+  [প্রতিক্রিয়া](https://github.com/open-telemetry/opentelemetry.io/discussions/6802)
+  প্রদান করে আপনার মতামত জানান।
+ui_search_ai_popover_content: >-
+  <a id='ask-ai-trigger' href='#'>AI-কে জিজ্ঞাসা করুন</a> (&#x2318;-K)
+
+# Collector component table headers
+collector_component_table_header_name: নাম
+collector_component_table_header_distributions: ডিস্ট্রিবিউশন
+collector_component_table_header_traces: ট্রেস
+collector_component_table_header_metrics: মেট্রিক্স
+collector_component_table_header_logs: লগ
+collector_component_table_header_stability: স্থিতিশীলতা
+
+# Footnotes
+collector_component_distributions_footnote: >-
+  কোন [ডিস্ট্রিবিউশনগুলো](/docs/collector/distributions/) (core, contrib, K8s,
+  ইত্যাদি) এই কম্পোনেন্ট অন্তর্ভুক্ত করে তা দেখায়।
+
+collector_component_stability_footnote: >-
+  কম্পোনেন্ট স্থিতিশীলতার স্তর সম্পর্কে বিস্তারিত জানতে, [OpenTelemetry
+  Collector কম্পোনেন্ট স্থিতিশীলতার
+  সংজ্ঞা](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md)
+  দেখুন।
