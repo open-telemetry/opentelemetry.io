@@ -183,7 +183,7 @@ Deprecation here does **not** mean removing span events. It is about shifting
 the recommended way to emit new events toward the Logs API.
 
 Our goal is to make events in OpenTelemetry **simpler, more consistent, and more
-powerful**, without breaking the workflows you rely on today.
+powerful**, while providing a graceful transition to the new recommendations.
 
 [OTEP]:
   https://github.com/open-telemetry/opentelemetry-specification/blob/fd43145dde7e5192ebc59a20992d98a3e6af5553/oteps/4430-span-event-api-deprecation-plan.md
