@@ -29,7 +29,9 @@ Before starting, confirm the following with the locale team:
 In the rest of this guide, replace every occurrence of `LANG_ID` with the actual
 [ISO 639-1][] code (for example, `pl` for Polish).
 
-## Step 1 — Hugo language config {#hugo-config}
+## Step 1 — Hugo language configs {#hugo-config}
+
+### Step 1a. Language config entry
 
 Add an entry for the new language in `config/_default/hugo.yaml` under the
 `languages:` key:
@@ -51,6 +53,13 @@ pl:
   params:
     description: Strona projektu OpenTelemetry
 ```
+
+### Step 1b. Translation File
+
+Within the `i18n` directory, create a new file named `LANG_ID.yaml` (for example, `pl.yaml`). This file will contain
+some translated strings for the new language. These strings are used for UI elements and other site components that
+may not necessarily be part of the main content, or are used in multiple pages.
+
 
 ## Step 2 — Hugo content mounts {#hugo-mounts}
 
