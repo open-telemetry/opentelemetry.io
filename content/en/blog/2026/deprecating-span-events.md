@@ -157,7 +157,7 @@ If you define or maintain OpenTelemetry semantic conventions:
 - When evolving existing conventions that currently rely on span events, provide
   clear guidance on their log-based equivalents.
 
-### OpenTelemetry API maintainers
+### OpenTelemetry maintainers
 
 If you maintain OpenTelemetry language APIs and SDKs:
 
@@ -166,7 +166,7 @@ If you maintain OpenTelemetry language APIs and SDKs:
 - Prepare for the deprecation of span event methods such as `Span.AddEvent` and
   `Span.RecordException` in favor of log-based events, while maintaining
   compatibility where needed.
-- Consider providing helpers or configuration that can project log-based events
+- Provide helpers or configuration that can project log-based events
   back onto span events for users and backends that still depend on that
   representation.
 
