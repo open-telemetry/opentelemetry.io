@@ -72,46 +72,57 @@ priorities. Reading issue threads and PR discussions teaches you how decisions
 are made and where real friction exists. That awareness makes your contributions
 stronger.
 
-For engineers from underrepresented groups in tech, visibility and sustained participation matter.
-OpenTelemetry provides several ways to participate that do not depend on being in a specific location
-or working in a large technology company. Conversations happen across multiple community spaces,
-including Slack channels, SIG meetings, GitHub issues, and pull request discussions.
-These channels allow contributors from different geographies, professional backgrounds,
-and experience levels to engage with the project and share practical feedback.
+For engineers from underrepresented groups in tech, visibility and sustained
+participation matter. OpenTelemetry provides several ways to participate that do
+not depend on being in a specific location or working in a large technology
+company. Conversations happen across multiple community spaces, including Slack
+channels, SIG meetings, GitHub issues, and pull request discussions. These
+channels allow contributors from different geographies, professional
+backgrounds, and experience levels to engage with the project and share
+practical feedback.
 
-Participation in a global open source community is not always easy. Time zone differences mean
-that not everyone can attend SIG meetings live. Because of this, many technical discussions and
-decisions also happen asynchronously through GitHub issues, pull request reviews, and Slack threads.
-This allows contributors to participate when their schedules allow, even if they cannot join synchronous meetings.
+Participation in a global open source community is not always easy. Time zone
+differences mean that not everyone can attend SIG meetings live. Because of
+this, many technical discussions and decisions also happen asynchronously
+through GitHub issues, pull request reviews, and Slack threads. This allows
+contributors to participate when their schedules allow, even if they cannot join
+synchronous meetings.
 
-Language can also be a barrier in international communities. Many OpenTelemetry contributors are non-native English speakers,
-and improving documentation clarity is an important part of the project. Contributors can help by simplifying complex phrasing,
-suggesting clearer explanations, or translating documentation into other languages.
-These contributions make the project more approachable for developers who are learning OpenTelemetry in different regions of the world.
+Language can also be a barrier in international communities. Many OpenTelemetry
+contributors are non-native English speakers, and improving documentation
+clarity is an important part of the project. Contributors can help by
+simplifying complex phrasing, suggesting clearer explanations, or translating
+documentation into other languages. These contributions make the project more
+approachable for developers who are learning OpenTelemetry in different regions
+of the world.
 
 Localization groups are another way the community expands participation.
-Translating documentation, improving examples, and adapting explanations for different
-language communities helps observability knowledge reach developers who might otherwise
-struggle to access it. Localization efforts also create opportunities for contributors
-who may not feel comfortable starting with code contributions.
+Translating documentation, improving examples, and adapting explanations for
+different language communities helps observability knowledge reach developers
+who might otherwise struggle to access it. Localization efforts also create
+opportunities for contributors who may not feel comfortable starting with code
+contributions.
 
-These mechanisms are not perfect. Time zone differences, language barriers, and accessibility
-challenges still exist. But by supporting both synchronous and asynchronous collaboration,
-documentation improvements, and localization initiatives, the OpenTelemetry community provides multiple ways
-for contributors from diverse backgrounds to participate and help shape the future of observability tooling.
+These mechanisms are not perfect. Time zone differences, language barriers, and
+accessibility challenges still exist. But by supporting both synchronous and
+asynchronous collaboration, documentation improvements, and localization
+initiatives, the OpenTelemetry community provides multiple ways for contributors
+from diverse backgrounds to participate and help shape the future of
+observability tooling.
 
 Non-code contributions go beyond documentation and blogs. You can volunteer for
 note-taking in SIG meetings, help organise community events like the
 OpenTelemetry Community Day at KubeCon, or join the Contributor Experience SIG,
 which focuses on making the project better for all contributors. Some examples
-of these SIGs are: [**otel-sig-end-user**](https://cloud-native.slack.com/archives/C01RT3MSWGZ),
+of these SIGs are:
+[**otel-sig-end-user**](https://cloud-native.slack.com/archives/C01RT3MSWGZ),
 [**otel-devex**](https://cloud-native.slack.com/archives/C01S42U83B2),
 [**opentelemetry-new-contributors**](https://cloud-native.slack.com/archives/C09H3MNMBQV),
 [**otel-contributor-experience**](https://cloud-native.slack.com/archives/C06TMJ2R0SK),
 [**otel-docs-localization**](https://cloud-native.slack.com/archives/C076RUAGP37).
-Your contribution track is also fluid, i.e., starting with documentation does not lock you in;
-you can switch to code contributions as you learn more, or vice versa.
-All contributions count and are welcome.
+Your contribution track is also fluid, i.e., starting with documentation does
+not lock you in; you can switch to code contributions as you learn more, or vice
+versa. All contributions count and are welcome.
 
 If you do not see people like you in the room, that is not a signal to withdraw.
 It is an opportunity to participate.
