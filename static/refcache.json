@@ -6591,6 +6591,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:53:18.410612568Z"
   },
+  "https://github.com/metafab": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T10:53:40.646391906Z"
+  },
+  "https://github.com/metafab/otel-gui": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T10:53:36.109739647Z"
+  },
+  "https://github.com/metafab/otel-gui#readme": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T10:53:45.422534767Z"
+  },
   "https://github.com/metrico/otel-collector": {
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:49:58.461060898Z"
