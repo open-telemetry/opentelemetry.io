@@ -108,9 +108,9 @@ If you mainly consume traces, logs, and metrics in dashboards and analysis
 tools:
 
 - You should not need to change your applications or dashboards immediately.
-- When you upgrade, your instrumentations may emit exceptions and other events as
-  log-based events rather than span events. Verify that events still appear in
-  the views you rely on (for example, span timelines and event views).
+- When you upgrade, your instrumentations may emit exceptions and other events
+  as log-based events rather than span events. Verify that events still appear
+  in the views you rely on (for example, span timelines and event views).
 
 ### Application developers
 
