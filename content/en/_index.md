@@ -1,12 +1,6 @@
 ---
-NOTE_TO_LOCALE_AUTHORS: |
-  DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
-  DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
-  DO NOT PORT THE CHANGES TO THIS PAGE UNTIL EN MAINTAINERS REMOVE THIS COMMENT
 title: OpenTelemetry
-description: >-
-  High-quality, ubiquitous, and portable telemetry to enable effective
-  observability
+description: The open standard for telemetry
 outputs:
   - HTML
   # Include the following for `content/en` ONLY
@@ -19,8 +13,6 @@ params:
   btn-lg: class="btn btn-lg btn-{1}" role="button"
   show_banner: true
 ---
-
-<div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
 
 {{% blocks/cover image_anchor="top" height="max td-below-navbar" %}}
 
