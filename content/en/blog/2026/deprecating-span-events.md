@@ -120,8 +120,7 @@ If you maintain an application that you instrument:
 - Watch for new versions of your instrumentation libraries as they may start
   emitting log-based events. However, they may still have an option to keep
   using span events.
-- The SDK will offer you a way transform log-based events back onto span
-  events.
+- The SDK will offer you a way transform log-based events back onto span events.
 
 If you maintain your own custom instrumentation:
 
