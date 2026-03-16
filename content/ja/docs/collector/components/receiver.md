@@ -66,7 +66,6 @@ cSpell:ignore: activedirectorydsreceiver aerospikereceiver apachereceiver apache
 | {{< component-link name="journaldreceiver" type="receiver" repo="contrib" >}}               | contrib, K8s               | -            | -              | alpha        |
 | {{< component-link name="k8sclusterreceiver" type="receiver" repo="contrib" >}}             | contrib, K8s               | -            | beta           | development  |
 | {{< component-link name="k8seventsreceiver" type="receiver" repo="contrib" >}}              | contrib, K8s               | -            | -              | alpha        |
-| {{< component-link name="k8slogreceiver" type="receiver" repo="contrib" >}} ⚠️              | contrib                    | -            | -              | unmaintained |
 | {{< component-link name="k8sobjectsreceiver" type="receiver" repo="contrib" >}}             | contrib, K8s               | -            | -              | beta         |
 | {{< component-link name="kafkametricsreceiver" type="receiver" repo="contrib" >}}           | contrib                    | -            | beta           | -            |
 | {{< component-link name="kafkareceiver" type="receiver" repo="contrib" >}}                  | contrib, core              | beta         | beta           | beta         |
