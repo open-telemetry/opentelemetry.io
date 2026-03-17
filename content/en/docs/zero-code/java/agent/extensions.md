@@ -147,8 +147,8 @@ java -javaagent:opentelemetry-javaagent.jar \
 
 There are two ways to use extensions with the Java agent:
 
-1. **Load as a separate jar file** - Flexible for development and testing
-2. **Embed in the agent** - Single JAR deployment for production
+- **Load as a separate JAR file** - Flexible for development and testing
+- **Embed in the agent** - Single JAR deployment for production
 
 | Approach            | Pros                                                 | Cons                                  | Best For                 |
 | ------------------- | ---------------------------------------------------- | ------------------------------------- | ------------------------ |
@@ -203,8 +203,8 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
 
 When you load extensions at runtime, the agent:
 
-1. Makes OpenTelemetry APIs available to your extension (without needing to
-   package them in your extension JAR)
+1. Makes OpenTelemetry APIs available to your extension without needing to
+   package them in your extension JAR
 2. Discovers your extension's components using Java's
    [ServiceLoader](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ServiceLoader.html)
    mechanism (via `@AutoService` annotations in your code, for example)
