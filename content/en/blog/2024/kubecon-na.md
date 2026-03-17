@@ -100,7 +100,7 @@ Note, that the Observatory may show up as "Splunk Activation Booth" on the event
 map.
 
 For the activity schedule, see the
-[OTel Observatory Schedule](https://docs.google.com/spreadsheets/d/1E23Dkz1B2us71BtlQq8oG4o_QFsTeLPeh-X2uVnlubg/edit?no-link-check&usp=sharing).
+[OTel Observatory Schedule](https://docs.google.com/spreadsheets/d/1E23Dkz1B2us71BtlQq8oG4o_QFsTeLPeh-X2uVnlubg/edit?usp=sharing&link-check=no).
 Note that this schedule may be updated up until the day of the event, so check
 back for the latest!
 
