@@ -90,14 +90,14 @@ These render as:
 
 {{% _param alertExamples %}}
 
-For details about Hugo's blockquote alert syntax, see [Alerts][hugo-alerts] from
-the Hugo docs.
+For details about the blockquote alert syntax, see [Alerts][docsy-alerts] from
+the Docsy docs.
 
 [gfm-alerts]:
   https://docs.github.com/en/contributing/style-guide-and-content-model/style-guide#alerts
 [GFM]: https://github.github.com/gfm/
 [Goldmark]: https://gohugo.io/configuration/markup/#goldmark
-[hugo-alerts]: https://gohugo.io/render-hooks/blockquotes/#alerts
+[docsy-alerts]: https://www.docsy.dev/docs/content/adding-content/#alerts
 [Obsidian callout]: https://help.obsidian.md/callouts
 
 ### Link references

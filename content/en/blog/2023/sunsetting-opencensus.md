@@ -72,13 +72,13 @@ One exception to this is the [census-instrumentation/opencensus-python][]
 repository[^python-timeline].
 
 [go shim]:
-  https://github.com/open-telemetry/opentelemetry-go/tree/main/bridge/opencensus
+  https://github.com/open-telemetry/opentelemetry-go/tree/dbeb92241acd17d8c2a4a70c9b449407558e83de/bridge/opencensus?from_branch=main
 [java shim]:
-  https://github.com/open-telemetry/opentelemetry-java/tree/main/opencensus-shim
+  https://github.com/open-telemetry/opentelemetry-java/tree/4c43b37f780372c2f6f5a8489b606f79ebfef854/opencensus-shim?from_branch=main
 [python shim]:
-  https://github.com/open-telemetry/opentelemetry-python/tree/main/shim/opentelemetry-opencensus-shim
+  https://github.com/open-telemetry/opentelemetry-python/tree/89dbe26f93aadcc7f774eb40b0c656b7e0c48f57/shim/opentelemetry-opencensus-shim?from_branch=main
 [js shim]:
-  https://github.com/open-telemetry/opentelemetry-js/tree/main/experimental/packages/shim-opencensus
+  https://github.com/open-telemetry/opentelemetry-js/tree/ad92be4c2c1094745a85b0b7eeff1444a11b1b4a/experimental/packages/shim-opencensus?from_branch=main
 [census-instrumentation/opencensus-python]:
   https://github.com/census-instrumentation/opencensus-python
 

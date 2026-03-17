@@ -182,7 +182,7 @@ Here are the key findings:
 
 The survey patterns were consistent with what emerged from my qualitative
 research. For detailed results, see the
-[anonymized survey responses](https://github.com/prometheus-community/ux-research/blob/main/prom-otel-research/survey-results.csv)
+[anonymized survey responses](https://github.com/prometheus-community/ux-research/blob/acc0194a79aa0f2ee1c6eb93462c9488d236a275/prom-otel-research/survey-results.csv?from_branch=main)
 
 ## What I didn’t expect to learn (but did)
 
@@ -273,7 +273,7 @@ foundation for that work.
 If you're interested in the ongoing discussions, proposals, and feedback around
 these ideas, you can check out the GitHub repository where everything is being
 documented:
-[OpenTelemetry Resource Attributes in Prometheus UX Research](https://github.com/prometheus-community/ux-research/tree/main/prom-otel-research)
+[OpenTelemetry Resource Attributes in Prometheus UX Research](https://github.com/prometheus-community/ux-research/tree/a2f8c6684321fd04de7b94cfbd39a48bb1d7beb4/prom-otel-research?from_branch=main)
 
 ## Acknowledgments
 

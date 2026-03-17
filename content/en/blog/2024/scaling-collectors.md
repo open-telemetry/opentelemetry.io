@@ -31,7 +31,7 @@ Before we begin, make sure you meet the following requirements:
 ## Install the Grafana Ansible collection
 
 The
-[OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector)
+[OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/0e0e9a57a64d4ffce8dfbfd84cf8f5454f9114ba/roles/opentelemetry_collector?from_branch=main)
 is provided through the
 [Grafana Ansible collection](https://docs.ansible.com/ansible/latest/collections/grafana/grafana/)
 as of release 4.0.
@@ -214,7 +214,7 @@ This blog post illustrated how you can configure and deploy multiple
 OpenTelemetry Collectors across various Linux hosts with the help of Ansible, as
 well as visualize collected telemetry in Grafana. Incase you find this useful,
 GitHub repository for
-[OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/main/roles/opentelemetry_collector)
+[OpenTelemetry Collector role](https://github.com/grafana/grafana-ansible-collection/tree/0e0e9a57a64d4ffce8dfbfd84cf8f5454f9114ba/roles/opentelemetry_collector?from_branch=main)
 for detailed configuration options. If you have questions, You can connect with
 me using my contact details at my GitHub profile
 [@ishanjainn](https://github.com/ishanjainn).

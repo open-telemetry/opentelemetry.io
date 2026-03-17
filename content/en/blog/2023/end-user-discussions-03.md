@@ -50,9 +50,9 @@ very long-running connections.
 synthetics? If not, are there any plans to work towards such a thing?
 
 **A:** The
-[health check](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/healthcheckextension/README.md)
+[health check](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/443567a6a00d7cff8cae1432a6fef655d8698e94/extension/healthcheckextension/README.md?from_branch=main)
 might be a helpful reference. Also check out the
-[HTTP check receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/extension/healthcheckextension/README.md).
+[HTTP check receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/443567a6a00d7cff8cae1432a6fef655d8698e94/extension/healthcheckextension/README.md?from_branch=main).
 
 #### 3 - Collector distributions
 
@@ -128,7 +128,7 @@ further exploration:
 - [OpAMP](/blog/2022/opamp/)
 - Your backend vendor’s tail-based sampling strategies
 - [Paper by Uber](https://uber.com/blog/crisp-critical-path-analysis-for-microservice-architectures/)
-- [Tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/processor/tailsamplingprocessor/README.md)
+- [Tail sampling processor](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/549e115b28292c164eb671618c0ec8b728b69d2a/processor/tailsamplingprocessor/README.md?from_branch=main)
 
 ### Adoption, Migration, and Implementation
 
@@ -175,7 +175,7 @@ instrumentation, as the overall performance impact is negligible.
 
 Another suggestion is to try infrastructure monitoring with OpenTelemetry using
 the
-[host metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/receiver/hostmetricsreceiver/README.md)
+[host metrics receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/d613690dbc58780aebf40237cf66b487bd579581/receiver/hostmetricsreceiver/README.md?from_branch=main)
 in the Collector, as it covers a lot of metrics, and has no dependencies. One
 user noticed a 20% reduction in CPU usage when they moved from a vendor-specific
 agent to the host metrics receiver for infrastructure monitoring.
@@ -188,7 +188,7 @@ agent to the host metrics receiver for infrastructure monitoring.
 
 - [Auto instrumentation](/docs/concepts/instrumentation/zero-code/) options are
   maturing in OTel; for example, the Java JAR agent takes care of instrumenting
-  [most libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks)
+  [most libraries](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/9b99a549b7e1f4b180625a2771706d7170a7e949/docs/supported-libraries.md?from_branch=main#libraries--frameworks)
   that are used by applications. Auto-instrumentation is also available for
   [Python](/docs/zero-code/python/), [.NET](/docs/zero-code/dotnet/), and
   [Node.js](/docs/zero-code/js/).

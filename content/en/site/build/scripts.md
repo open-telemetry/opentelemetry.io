@@ -1,10 +1,9 @@
 ---
-title: Automation scripts
-linkTitle: Scripts
+title: Helper scripts
 description: >-
   Shell scripts used by CI workflows and local development for label management,
   link checking, registry updates, and more.
-weight: 20
+weight: 30
 ---
 
 All scripts live under
@@ -71,14 +70,6 @@ the [`pr-approval-labels` workflow](../ci-workflows/#pr-approval-labels).
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
 
 **Required env vars:** `REPO`, `PR`, `GITHUB_TOKEN`.
-
-## textlint.sh
-
-Runs textlint and converts JSON output into
-[GitHub Actions error annotations](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/workflow-commands-for-github-actions#setting-an-error-message),
-which appear inline on PR diffs.
-
-Exits with code 1 if any violations are found.
 
 ## update-registry-versions.sh
 

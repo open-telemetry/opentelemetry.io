@@ -143,9 +143,9 @@ feedback, and enthusiasm to make this milestone possible.
 [distributed-traces]: /docs/zero-code/obi/distributed-traces/
 [getting-started]: /docs/zero-code/obi/setup/
 [integration-examples]:
-  https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/internal/test/integration
+  https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/f6deabc4387de1e0bf4b2acdbc674f7601d4c7f2/internal/test/integration?from_branch=main
 [test-repository]:
-  https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/main/internal/test/integration/k8s/manifests
+  https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/2feaeb84ef7aeeb1e57e642b46c96b965ae4b804/internal/test/integration/k8s/manifests?from_branch=main
 [ebpf-repo]:
   https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation
 [sigs]:

@@ -31,7 +31,7 @@ it takes to send the data and with many invocations, this adds up.
 But there is another way! Lambda extension layers allow you to run any process
 alongside your code, sharing the execution runtime and providing additional
 services. With the
-[opentelemetry-lambda](https://github.com/open-telemetry/opentelemetry-lambda/blob/main/collector/README.md)
+[opentelemetry-lambda](https://github.com/open-telemetry/opentelemetry-lambda/blob/653874a89dc684e2408f5eb397e41dd98c56ba83/collector/README.md?from_branch=main)
 extension layer, you get a local endpoint to send data to while it keeps track
 of the Lambda lifecycle and ensures your telemetry gets to the storage layer.
 
@@ -101,7 +101,7 @@ service:
 The `decouple` processor is configured by default if omitted. It is explicitly
 added in this example to illustrate the entire pipeline. For more information,
 see
-[Autoconfiguration](https://github.com/open-telemetry/opentelemetry-lambda/tree/main/collector#auto-configuration).
+[Autoconfiguration](https://github.com/open-telemetry/opentelemetry-lambda/tree/dd62a87dcef7c1a94a02739a2425a1af3770313e/collector?from_branch=main#auto-configuration).
 
 Afterward, set the `OPENTELEMETRY_COLLECTOR_CONFIG_URI` environment variable to
 `/var/task/collector.yaml`. Once the function is redeployed, you’ll see your
