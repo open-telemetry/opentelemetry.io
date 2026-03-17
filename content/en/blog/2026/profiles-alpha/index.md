@@ -10,7 +10,8 @@ author: >-
   [Florian Lehner](https://github.com/florianl) (Elastic)
   [Damien Mathieu](https://github.com/dmathieu) (Elastic)
 sig: Profiling
-cSpell:ignore: k8sattributesprocessor Alexandrov Branczyk devfiler Filimonov Geisendörfer Ghattas Halliday Höner Kalkanis Lehner Mefford Najaryan Nayef OTTL Rühsen Suereth Teräs Tigran Zymtrace
+# prettier-ignore
+cSpell:ignore: Alexandrov Branczyk devfiler Filimonov Geisendörfer Ghattas Halliday Höner k8sattributesprocessor Kalkanis Lehner Mefford Najaryan Nayef OTTL Rühsen Suereth Teräs Tigran Zymtrace
 ---
 
 Since OpenTelemetry first
