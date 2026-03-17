@@ -9,7 +9,7 @@ weight: 270
 ---
 
 OpenTelemetry gives you access to the OpenTelemetry Collector,
-an open-source central hub for all of your telemetry data.
+an open source central hub for all of your telemetry data.
 
 For information about Collector distributions and releases, including the
 [latest release][], see [Distributions](distributions/).
