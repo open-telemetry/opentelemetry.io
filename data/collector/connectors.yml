@@ -6,7 +6,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs_to_metrics: alpha
     metrics_to_metrics: alpha
@@ -23,7 +23,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     traces_to_logs: alpha
     traces_to_metrics: alpha
@@ -31,7 +31,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs_to_logs: alpha
     metrics_to_metrics: alpha
@@ -41,7 +41,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     logs_to_logs: beta
     metrics_to_metrics: beta
@@ -63,7 +63,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs_to_logs: alpha
     logs_to_metrics: alpha
@@ -72,7 +72,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs_to_logs: beta
     metrics_to_metrics: beta
@@ -81,7 +81,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs_to_logs: alpha
     metrics_to_metrics: alpha
@@ -90,7 +90,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     traces_to_metrics: alpha
 - name: signaltometricsconnector

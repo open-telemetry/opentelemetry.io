@@ -7,7 +7,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     logs: beta
     metrics: beta
@@ -17,7 +17,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     logs: beta
     metrics: beta
@@ -32,7 +32,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     metrics: beta
 - name: datadogsemanticsprocessor
@@ -45,14 +45,14 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     metrics: alpha
 - name: deltatorateprocessor
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     metrics: alpha
 - name: dnslookupprocessor
@@ -68,7 +68,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     logs: alpha
     metrics: alpha
@@ -86,7 +86,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: beta
     metrics: beta
@@ -95,14 +95,14 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     traces: beta
 - name: intervalprocessor
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     metrics: alpha
 - name: isolationforestprocessor
@@ -117,7 +117,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: beta
     metrics: beta
@@ -127,7 +127,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: alpha
 - name: logstransformprocessor
@@ -147,7 +147,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     profiles: alpha
     logs: beta
@@ -169,7 +169,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     metrics: beta
 - name: probabilisticsamplerprocessor
@@ -177,7 +177,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     logs: alpha
     traces: beta
@@ -185,7 +185,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: alpha
     metrics: alpha
@@ -194,7 +194,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: alpha
     metrics: alpha
@@ -203,7 +203,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: beta
     metrics: beta
@@ -214,7 +214,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     logs: beta
     metrics: beta
@@ -247,14 +247,14 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     traces: beta
 - name: transformprocessor
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: beta
     metrics: beta
