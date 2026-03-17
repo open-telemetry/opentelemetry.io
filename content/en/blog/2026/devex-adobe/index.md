@@ -1,11 +1,11 @@
 ---
 title: "Inside Adobe's OpenTelemetry pipeline: simplicity at scale"
 linkTitle: "Inside Adobe's OpenTelemetry pipeline: simplicity at scale"
-date: 2026-03-16
+date: 2026-03-30
 author: >-
-  [Juliano Costa](https://github.com/julianocosta89) (Datadog), [Tristan
-  Sloughter](https://github.com/tsloughter) (community), [Johanna
-  Öjeling](https://github.com/johannaojeling) (Grafana Labs), [Damien
+  [Johanna Öjeling](https://github.com/johannaojeling) (Grafana Labs), [Juliano
+  Costa](https://github.com/julianocosta89) (Datadog), [Tristan
+  Sloughter](https://github.com/tsloughter) (community), [Damien
   Mathieu](https://github.com/dmathieu) (Elastic), [Bogdan
   Stancu](https://github.com/bogdan-st) (Adobe)
 sig: Developer Experience SIG
