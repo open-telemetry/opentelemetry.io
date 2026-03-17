@@ -2,77 +2,76 @@
 title: エクスポーター
 description: OpenTelemetry Collectorで利用可能なエクスポーターの一覧
 weight: 330
-default_lang_commit: 1c2b0563e8e66ef0952c442e3662e4bec18a8762
+default_lang_commit: 1c2b0563e8e66ef0952c442e3662e4bec18a8762 # patched
 drifted_from_default: true
 # prettier-ignore
-cSpell:ignore: alertmanagerexporter alibabacloudlogserviceexporter awscloudwatchlogsexporter awsemfexporter awskinesisexporter awss awsxrayexporter azureblobexporter azuredataexplorerexporter azuremonitorexporter bmchelixexporter cassandraexporter clickhouseexporter coralogixexporter datadogexporter datasetexporter debugexporter dorisexporter elasticsearchexporter faroexporter fileexporter googlecloudexporter googlecloudpubsubexporter googlecloudstorageexporter googlemanagedprometheusexporter honeycombmarkerexporter influxdbexporter kafkaexporter loadbalancingexporter logicmonitorexporter logzioexporter mezmoexporter nopexporter opensearchexporter otelarrowexporter otlpexporter otlphttpexporter prometheusexporter prometheusremotewriteexporter pulsarexporter rabbitmqexporter sapmexporter sematextexporter sentryexporter signalfxexporter splunkhecexporter stefexporter sumologicexporter syslogexporter tencentcloudlogserviceexporter tinybirdexporter xexporter zipkinexporter
+cSpell:ignore: alertmanagerexporter alibabacloudlogserviceexporter awscloudwatchlogsexporter awsemfexporter awskinesisexporter awss awsxrayexporter azureblobexporter azuredataexplorerexporter azuremonitorexporter bmchelixexporter cassandraexporter clickhouseexporter coralogixexporter datadogexporter datasetexporter debugexporter dorisexporter elasticsearchexporter faroexporter fileexporter googlecloudexporter googlecloudpubsubexporter googlecloudstorageexporter googlemanagedprometheusexporter honeycombmarkerexporter influxdbexporter kafkaexporter loadbalancingexporter logicmonitorexporter logzioexporter mezmoexporter nopexporter opensearchexporter otelarrowexporter otlpexporter otlphttpexporter prometheusexporter prometheusremotewriteexporter pulsarexporter rabbitmqexporter sematextexporter sentryexporter signalfxexporter splunkhecexporter stefexporter sumologicexporter syslogexporter tencentcloudlogserviceexporter tinybirdexporter xexporter zipkinexporter
 ---
 
 エクスポーターは、テレメトリーデータをオブザーバビリティバックエンドや宛先に送信します。
 エクスポーターの詳細な設定方法については、[Collectorの設定ドキュメント](/docs/collector/configuration/#exporters)を参照してください。
 
-<!-- BEGIN GENERATED: exporter-table -->
+{{% include unmaintained-components-msg.md %}}
 
-| 名前                                                                                                                                                    | ディストリビューション[^1] | トレース[^2] | メトリクス[^2] | ログ[^2]    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ------------ | -------------- | ----------- |
-| [alertmanagerexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/alertmanagerexporter)                       | contrib                    | development  | -              | -           |
-| [alibabacloudlogserviceexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/alibabacloudlogserviceexporter)   | contrib                    | beta         | beta           | beta        |
-| [awscloudwatchlogsexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/awscloudwatchlogsexporter)             | contrib                    | -            | -              | alpha       |
-| [awsemfexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/awsemfexporter)                                   | contrib                    | -            | beta           | -           |
-| [awskinesisexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/awskinesisexporter)                           | contrib                    | beta         | beta           | beta        |
-| [awss3exporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/awss3exporter)                                     | contrib                    | alpha        | alpha          | alpha       |
-| [awsxrayexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/awsxrayexporter)                                 | contrib                    | beta         | -              | -           |
-| [azureblobexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azureblobexporter)                             | contrib                    | alpha        | alpha          | alpha       |
-| [azuredataexplorerexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuredataexplorerexporter)             | contrib                    | beta         | beta           | beta        |
-| [azuremonitorexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuremonitorexporter)                       | contrib                    | beta         | beta           | beta        |
-| [bmchelixexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/bmchelixexporter)                               | contrib                    | -            | alpha          | -           |
-| [cassandraexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/cassandraexporter)                             | contrib                    | alpha        | -              | alpha       |
-| [clickhouseexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/clickhouseexporter)                           | contrib                    | beta         | alpha          | beta        |
-| [coralogixexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/coralogixexporter)                             | contrib                    | beta         | beta           | beta        |
-| [datadogexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/datadogexporter)                                 | contrib                    | beta         | beta           | beta        |
-| [datasetexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/datasetexporter)                                 | contrib                    | alpha        | -              | alpha       |
-| [debugexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/debugexporter)                                             | contrib, core, K8s         | alpha        | alpha          | alpha       |
-| [dorisexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/dorisexporter)                                     | contrib                    | alpha        | alpha          | alpha       |
-| [elasticsearchexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/elasticsearchexporter)                     | contrib                    | beta         | development    | beta        |
-| [faroexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/faroexporter)                                       | contrib                    | alpha        | -              | alpha       |
-| [fileexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/fileexporter)                                       | contrib, core, K8s         | alpha        | alpha          | alpha       |
-| [googlecloudexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudexporter)                         | contrib                    | beta         | beta           | beta        |
-| [googlecloudpubsubexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudpubsubexporter)             | contrib                    | beta         | beta           | beta        |
-| [googlecloudstorageexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlecloudstorageexporter)           | contrib                    | -            | -              | alpha       |
-| [googlemanagedprometheusexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/googlemanagedprometheusexporter) | contrib                    | -            | beta           | -           |
-| [honeycombmarkerexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/honeycombmarkerexporter)                 | contrib                    | -            | -              | alpha       |
-| [influxdbexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/influxdbexporter)                               | contrib                    | beta         | beta           | beta        |
-| [kafkaexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/kafkaexporter)                                     | contrib, core              | beta         | beta           | beta        |
-| [loadbalancingexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/loadbalancingexporter)                     | contrib, K8s               | beta         | development    | beta        |
-| [logicmonitorexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/logicmonitorexporter)                       | contrib                    | alpha        | -              | alpha       |
-| [logzioexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/logzioexporter)                                   | contrib                    | beta         | -              | beta        |
-| [mezmoexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/mezmoexporter)                                     | contrib                    | -            | -              | beta        |
-| [nopexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/nopexporter)                                                 | contrib, core, K8s         | beta         | beta           | beta        |
-| [opensearchexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/opensearchexporter)                           | contrib                    | alpha        | -              | alpha       |
-| [otelarrowexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/otelarrowexporter)                             | contrib, K8s               | beta         | beta           | beta        |
-| [otlpexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlpexporter)                                               | contrib, core, K8s, otlp   | stable       | stable         | stable      |
-| [otlphttpexporter](https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/otlphttpexporter)                                       | contrib, core, K8s, otlp   | stable       | stable         | stable      |
-| [prometheusexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusexporter)                           | contrib, core              | -            | beta           | -           |
-| [prometheusremotewriteexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/prometheusremotewriteexporter)     | contrib, core              | -            | beta           | -           |
-| [pulsarexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/pulsarexporter)                                   | contrib                    | alpha        | alpha          | alpha       |
-| [rabbitmqexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/rabbitmqexporter)                               | contrib                    | alpha        | alpha          | alpha       |
-| [sapmexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sapmexporter)                                       | contrib                    | deprecated   | -              | -           |
-| [sematextexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sematextexporter)                               | contrib                    | -            | development    | development |
-| [sentryexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sentryexporter)                                   | contrib                    | beta         | -              | -           |
-| [signalfxexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/signalfxexporter)                               | contrib                    | beta         | beta           | beta        |
-| [splunkhecexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/splunkhecexporter)                             | contrib                    | beta         | beta           | beta        |
-| [stefexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/stefexporter)                                       | contrib                    | -            | alpha          | -           |
-| [sumologicexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sumologicexporter)                             | contrib                    | beta         | beta           | beta        |
-| [syslogexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/syslogexporter)                                   | contrib                    | -            | -              | alpha       |
-| [tencentcloudlogserviceexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/tencentcloudlogserviceexporter)   | contrib                    | -            | -              | beta        |
-| [tinybirdexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/tinybirdexporter)                               | contrib                    | alpha        | alpha          | alpha       |
-| [zipkinexporter](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/zipkinexporter)                                   | contrib, core              | beta         | -              | -           |
+<!-- BEGIN GENERATED: exporter-table SOURCE: scripts/collector-sync -->
 
-⚠️ **注意:** ⚠️ マークが付いているコンポーネントはメンテナンスされておらず、アクティブなコードオーナーがいません。
-それらのコンポーネントは定期的な更新やバグ修正を受け付けていない可能性があります。
+| 名前                                                                                           | ディストリビューション[^1] | トレース[^2] | メトリクス[^2] | ログ[^2]     |
+| ---------------------------------------------------------------------------------------------- | -------------------------- | ------------ | -------------- | ------------ |
+| {{< component-link name="alertmanagerexporter" type="exporter" repo="contrib" >}}              | contrib                    | development  | -              | -            |
+| {{< component-link name="alibabacloudlogserviceexporter" type="exporter" repo="contrib" >}} ⚠️ | contrib                    | unmaintained | unmaintained   | unmaintained |
+| {{< component-link name="awscloudwatchlogsexporter" type="exporter" repo="contrib" >}}         | contrib                    | -            | -              | alpha        |
+| {{< component-link name="awsemfexporter" type="exporter" repo="contrib" >}}                    | contrib                    | -            | beta           | -            |
+| {{< component-link name="awskinesisexporter" type="exporter" repo="contrib" >}}                | contrib                    | beta         | beta           | beta         |
+| {{< component-link name="awss3exporter" type="exporter" repo="contrib" >}}                     | contrib                    | alpha        | alpha          | alpha        |
+| {{< component-link name="awsxrayexporter" type="exporter" repo="contrib" >}}                   | contrib                    | beta         | -              | -            |
+| {{< component-link name="azureblobexporter" type="exporter" repo="contrib" >}}                 | contrib                    | alpha        | alpha          | alpha        |
+| {{< component-link name="azuredataexplorerexporter" type="exporter" repo="contrib" >}}         | contrib                    | beta         | beta           | beta         |
+| {{< component-link name="azuremonitorexporter" type="exporter" repo="contrib" >}}              | contrib                    | beta         | beta           | beta         |
+| {{< component-link name="bmchelixexporter" type="exporter" repo="contrib" >}}                  | contrib                    | -            | alpha          | -            |
+| {{< component-link name="cassandraexporter" type="exporter" repo="contrib" >}}                 | contrib                    | alpha        | -              | alpha        |
+| {{< component-link name="clickhouseexporter" type="exporter" repo="contrib" >}}                | contrib                    | beta         | alpha          | beta         |
+| {{< component-link name="coralogixexporter" type="exporter" repo="contrib" >}}                 | contrib                    | beta         | beta           | beta         |
+| {{< component-link name="datadogexporter" type="exporter" repo="contrib" >}}                   | contrib                    | beta         | beta           | beta         |
+| {{< component-link name="datasetexporter" type="exporter" repo="contrib" >}}                   | contrib                    | alpha        | -              | alpha        |
+| {{< component-link name="debugexporter" type="exporter" repo="core" >}}                        | contrib, core, K8s         | alpha        | alpha          | alpha        |
+| {{< component-link name="dorisexporter" type="exporter" repo="contrib" >}}                     | contrib                    | alpha        | alpha          | alpha        |
+| {{< component-link name="elasticsearchexporter" type="exporter" repo="contrib" >}}             | contrib                    | beta         | development    | beta         |
+| {{< component-link name="faroexporter" type="exporter" repo="contrib" >}}                      | contrib                    | alpha        | -              | alpha        |
+| {{< component-link name="fileexporter" type="exporter" repo="contrib" >}}                      | contrib, core, K8s         | alpha        | alpha          | alpha        |
+| {{< component-link name="googlecloudexporter" type="exporter" repo="contrib" >}}               | contrib                    | beta         | beta           | beta         |
+| {{< component-link name="googlecloudpubsubexporter" type="exporter" repo="contrib" >}}         | contrib                    | beta         | beta           | beta         |
+| {{< component-link name="googlecloudstorageexporter" type="exporter" repo="contrib" >}}        | contrib                    | development  | -              | alpha        |
+| {{< component-link name="googlemanagedprometheusexporter" type="exporter" repo="contrib" >}}   | contrib                    | -            | beta           | -            |
+| {{< component-link name="honeycombmarkerexporter" type="exporter" repo="contrib" >}}           | contrib                    | -            | -              | alpha        |
+| {{< component-link name="influxdbexporter" type="exporter" repo="contrib" >}}                  | contrib                    | beta         | beta           | beta         |
+| {{< component-link name="kafkaexporter" type="exporter" repo="contrib" >}}                     | contrib, core              | beta         | beta           | beta         |
+| {{< component-link name="loadbalancingexporter" type="exporter" repo="contrib" >}}             | contrib, K8s               | beta         | development    | beta         |
+| {{< component-link name="logicmonitorexporter" type="exporter" repo="contrib" >}}              | contrib                    | alpha        | -              | alpha        |
+| {{< component-link name="logzioexporter" type="exporter" repo="contrib" >}}                    | contrib                    | beta         | -              | beta         |
+| {{< component-link name="mezmoexporter" type="exporter" repo="contrib" >}}                     | contrib                    | -            | -              | beta         |
+| {{< component-link name="nopexporter" type="exporter" repo="core" >}}                          | contrib, core, K8s         | beta         | beta           | beta         |
+| {{< component-link name="opensearchexporter" type="exporter" repo="contrib" >}}                | contrib                    | alpha        | -              | alpha        |
+| {{< component-link name="otelarrowexporter" type="exporter" repo="contrib" >}}                 | contrib, K8s               | beta         | beta           | beta         |
+| {{< component-link name="otlpexporter" type="exporter" repo="core" >}}                         | contrib, core, K8s, otlp   | stable       | stable         | stable       |
+| {{< component-link name="otlphttpexporter" type="exporter" repo="core" >}}                     | contrib, core, K8s, otlp   | stable       | stable         | stable       |
+| {{< component-link name="prometheusexporter" type="exporter" repo="contrib" >}}                | contrib, core              | -            | beta           | -            |
+| {{< component-link name="prometheusremotewriteexporter" type="exporter" repo="contrib" >}}     | contrib, core              | -            | beta           | -            |
+| {{< component-link name="pulsarexporter" type="exporter" repo="contrib" >}}                    | contrib                    | alpha        | alpha          | alpha        |
+| {{< component-link name="rabbitmqexporter" type="exporter" repo="contrib" >}}                  | contrib                    | alpha        | alpha          | alpha        |
+| {{< component-link name="sapmexporter" type="exporter" repo="contrib" >}}                      | contrib                    | deprecated   | -              | -            |
+| {{< component-link name="sematextexporter" type="exporter" repo="contrib" >}}                  | contrib                    | -            | development    | development  |
+| {{< component-link name="sentryexporter" type="exporter" repo="contrib" >}}                    | contrib                    | alpha        | -              | alpha        |
+| {{< component-link name="signalfxexporter" type="exporter" repo="contrib" >}}                  | contrib                    | beta         | beta           | beta         |
+| {{< component-link name="splunkhecexporter" type="exporter" repo="contrib" >}}                 | contrib                    | beta         | beta           | beta         |
+| {{< component-link name="stefexporter" type="exporter" repo="contrib" >}}                      | contrib                    | -            | alpha          | -            |
+| {{< component-link name="sumologicexporter" type="exporter" repo="contrib" >}}                 | contrib                    | beta         | beta           | beta         |
+| {{< component-link name="syslogexporter" type="exporter" repo="contrib" >}}                    | contrib                    | -            | -              | alpha        |
+| {{< component-link name="tencentcloudlogserviceexporter" type="exporter" repo="contrib" >}}    | contrib                    | -            | -              | beta         |
+| {{< component-link name="tinybirdexporter" type="exporter" repo="contrib" >}}                  | contrib                    | alpha        | alpha          | alpha        |
+| {{< component-link name="zipkinexporter" type="exporter" repo="contrib" >}}                    | contrib, core              | beta         | -              | -            |
 
 [^1]: このコンポーネントが含まれている[ディストリビューション](/docs/collector/distributions/)（core、contrib、K8sなど）を示します。
 
 [^2]: コンポーネントの安定性レベルの詳細については、[OpenTelemetry Collectorコンポーネントの安定性の定義](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md)を参照してください。
 
-<!-- END GENERATED: exporter-table -->
+<!-- END GENERATED: exporter-table SOURCE: scripts/collector-sync -->

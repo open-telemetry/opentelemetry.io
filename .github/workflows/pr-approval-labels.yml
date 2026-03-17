@@ -3,6 +3,8 @@
 name: PR approval labels
 
 on:
+  schedule:
+    - cron: '0 0 * * *' # Daily at midnight UTC
   pull_request_target:
     types:
       - opened
@@ -35,7 +37,7 @@ jobs:
 
       - name: Download PR number artifact
         if: github.event_name == 'workflow_run'
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: pr-number
           run-id: ${{ github.event.workflow_run.id }}
@@ -47,7 +49,9 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          if [[ "$EVENT_NAME" == "workflow_run" ]]; then
+          if [[ "$EVENT_NAME" == "schedule" ]]; then
+            echo "number=" >> "$GITHUB_OUTPUT"  # unused for scheduled runs
+          elif [[ "$EVENT_NAME" == "workflow_run" ]]; then
             if [[ ! -f pr-number.txt ]]; then
               echo "Error: pr-number.txt artifact file not found." >&2
               exit 1
@@ -66,7 +70,7 @@ jobs:
             echo "number=$PR_NUMBER" >> "$GITHUB_OUTPUT"
           fi
 
-      - uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+      - uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
         id: otelbot-token
         with:
           app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
