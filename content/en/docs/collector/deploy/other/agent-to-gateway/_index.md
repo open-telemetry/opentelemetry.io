@@ -6,7 +6,7 @@ description:
   gateways
 weight: 100
 # prettier-ignore
-cSpell:ignore: bearertokenauthextension cumulativetodelta filelogreceiver hostmetricsreceiver loadbalancingexporter resourcedetectionprocessor
+cSpell:ignore: cumulativetodelta filelogreceiver hostmetricsreceiver loadbalancingexporter resourcedetectionprocessor
 ---
 
 [Agents](/docs/collector/deploy/agent/) and
