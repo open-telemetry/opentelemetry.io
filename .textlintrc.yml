@@ -11,6 +11,8 @@ filters:
       # Don't check registry .yml file fields for language, repo, url and tags:
       - '/^\s*(?:language|repo|name|docs|url|website): .*$/m'
       - /^(?:tags):(\s*-.+$)*/m
+      # Don't check Collector component .yml file fields for distributions:
+      - /^\s*(?:distributions):(\s*-.+$)*/m
       # Hugo template syntax:
       - /{{.*?}}/
       - /{{%.*?%}}/
