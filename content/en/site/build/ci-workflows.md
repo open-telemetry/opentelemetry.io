@@ -15,11 +15,11 @@ All workflow files live under
 Two workflows work together to automatically manage approval-related labels on
 pull requests:
 
-| Workflow file                      | Trigger                                           | Privileges                                   |
-| ---------------------------------- | ------------------------------------------------- | -------------------------------------------- |
-| [`pr-review-trigger.yml`][trigger] | `pull_request_review`                             | Minimal (no secrets)                         |
-| [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run`             | App token for label edits and org/team reads |
-| [`blog-publish-labels.yml`][blog]  | `schedule` (daily midnight UTC)                   | App token + `SLACK_WEBHOOK_URL` secret       |
+| Workflow file                      | Trigger                               | Privileges                                   |
+| ---------------------------------- | ------------------------------------- | -------------------------------------------- |
+| [`pr-review-trigger.yml`][trigger] | `pull_request_review`                 | Minimal (no secrets)                         |
+| [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run` | App token for label edits and org/team reads |
+| [`blog-publish-labels.yml`][blog]  | `schedule` (daily midnight UTC)       | App token + `SLACK_WEBHOOK_URL` secret       |
 
 [trigger]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-review-trigger.yml
@@ -38,8 +38,9 @@ pull requests:
   removed once a SIG member approves or when no SIG component is touched.
 - **`ready-to-be-merged`** — added when all required approvals are present;
   removed otherwise. For PRs carrying any label in
-  [`PUBLISH_DATE_LABELS`](#publish-date-gating) (currently: `blog`, `announcements`),
-  this label is also gated on the publish date found in changed files.
+  [`PUBLISH_DATE_LABELS`](#publish-date-gating) (currently: `blog`,
+  `announcements`), this label is also gated on the publish date found in
+  changed files.
 
 [docs-approvers]: https://github.com/orgs/open-telemetry/teams/docs-approvers
 [owners]:
@@ -107,7 +108,7 @@ sequenceDiagram
 
     Note over GH: workflow_run event (completed)
 
-    GH->>L: Trigger (base repo context, with secrets)
+    GH->>L: Trigger (base repository context, with secrets)
     L->>L: Download PR number artifact
     L->>L: Run pr-approval-labels.sh
     L->>GH: Add/remove labels
@@ -137,15 +138,15 @@ sequenceDiagram
   / `OTELBOT_DOCS_PRIVATE_KEY`) that has permissions to read org/team membership
   and edit PR labels. Uses `pull_request_target` and `workflow_run` to ensure it
   always executes in the trusted base repository context.
-- **`blog-publish-labels`**: runs on a schedule with a GitHub App token and
-  the `SLACK_WEBHOOK_URL` secret. Always executes in the trusted base repository
+- **`blog-publish-labels`**: runs on a schedule with a GitHub App token and the
+  `SLACK_WEBHOOK_URL` secret. Always executes in the trusted base repository
   context (schedule events have no fork variant).
 
 ## Blog publish labels {#blog-publish-labels}
 
 The [`blog-publish-labels.yml`][blog] workflow runs daily at midnight UTC. It
-executes `pr-approval-labels.sh` in [batch mode](#publish-date-gating) — checking
-all open PRs with `blog` or `announcements` labels — and posts a Slack
+executes `pr-approval-labels.sh` in [batch mode](#publish-date-gating) —
+checking all open PRs with `blog` or `announcements` labels — and posts a Slack
 notification when `ready-to-be-merged` is newly applied to any of them.
 
 | Workflow file                     | Trigger                         | Secrets required                                |
@@ -168,8 +169,8 @@ non-engineers to own the message format without touching workflow code.
 3. Declare one variable — name: `pr_list`, type: **Text**
 4. Add a step: **Send a message** to the desired channel
 5. **Publish** the workflow and copy the webhook URL
-6. Add it to the repo: **Settings → Secrets and variables → Actions →
-   New repository secret**, name: `SLACK_WEBHOOK_URL`
+6. Add it to the repository: **Settings → Secrets and variables → Actions → New
+   repository secret**, name: `SLACK_WEBHOOK_URL`
 
 **Payload sent by the workflow:**
 
@@ -180,8 +181,8 @@ non-engineers to own the message format without touching workflow code.
 ```
 
 Each entry is a Slack `mrkdwn` link (`<url|display text>`), separated by
-newlines. Multiple PRs labeled on the same day are batched into a single
-message — one webhook call regardless of how many PRs are ready.
+newlines. Multiple PRs labeled on the same day are batched into a single message
+— one webhook call regardless of how many PRs are ready.
 
 ```mermaid
 sequenceDiagram
@@ -192,7 +193,7 @@ sequenceDiagram
 
     Note over GH: schedule event (daily, midnight UTC)
 
-    GH->>B: Trigger (base repo context, with secrets)
+    GH->>B: Trigger (base repository context, with secrets)
     B->>API: Query open PRs with PUBLISH_DATE_LABELS labels
     API-->>B: List of PRs
     loop Each PR
