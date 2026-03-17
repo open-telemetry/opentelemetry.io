@@ -1,0 +1,56 @@
+# To learn more about this workflow, see:
+#  https://opentelemetry.io/site/build/ci-workflows/#blog-publish-labels
+name: Blog publish labels
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Daily at midnight UTC
+
+permissions:
+  contents: read
+
+jobs:
+  update-blog-publish-labels:
+    name: Update blog publish labels
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'open-telemetry'
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+
+      - uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
+      - name: Update blog publish labels
+        run: ./.github/scripts/pr-approval-labels.sh
+        env:
+          GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+          REPO: ${{ github.repository }}
+          PR: ''
+          LABELED_PRS_OUTPUT_FILE: ${{ github.workspace }}/labeled-prs.json
+
+      - name: Notify Slack
+        if: hashFiles('labeled-prs.json') != ''
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          payload=$(jq -Rs '
+            [split("\n")[] | select(length > 0) | fromjson] as $prs |
+            {"blocks": [
+              {"type":"section","text":{"type":"mrkdwn","text":"*PRs newly labeled ready-to-be-merged:*"}}
+            ] + [
+              $prs[] | {"type":"section","text":{"type":"mrkdwn","text":"<\(.url)|#\(.number): \(.title)>"}}
+            ]}
+          ' "${{ github.workspace }}/labeled-prs.json")
+          curl --fail --silent --show-error \
+            -X POST \
+            -H 'Content-type: application/json' \
+            --data "${payload}" \
+            "${SLACK_WEBHOOK_URL}"
