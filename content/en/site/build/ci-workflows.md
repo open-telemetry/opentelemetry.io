@@ -156,6 +156,33 @@ The Slack notification fires only when the label transitions from absent to
 present on that run — repeated daily runs for an already-labeled PR do not
 re-notify.
 
+### Slack webhook setup {#slack-webhook-setup}
+
+The workflow uses a **Slack Workflow Builder webhook trigger**, which allows
+non-engineers to own the message format without touching workflow code.
+
+**Create the webhook:**
+
+1. In Slack: **Tools → Workflow Builder → New Workflow → Start from scratch**
+2. Choose trigger: **Webhook**
+3. Declare one variable — name: `pr_list`, type: **Text**
+4. Add a step: **Send a message** to the desired channel
+5. **Publish** the workflow and copy the webhook URL
+6. Add it to the repo: **Settings → Secrets and variables → Actions →
+   New repository secret**, name: `SLACK_WEBHOOK_URL`
+
+**Payload sent by the workflow:**
+
+```json
+{
+  "pr_list": "<https://github.com/.../pull/123|#123: Add blog post: OTel 1.0>\n<https://github.com/.../pull/456|#456: Announce: new SIG>"
+}
+```
+
+Each entry is a Slack `mrkdwn` link (`<url|display text>`), separated by
+newlines. Multiple PRs labeled on the same day are batched into a single
+message — one webhook call regardless of how many PRs are ready.
+
 ```mermaid
 sequenceDiagram
     participant GH as GitHub
