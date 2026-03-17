@@ -5,6 +5,7 @@ name: Blog publish labels
 on:
   schedule:
     - cron: '0 0 * * *' # Daily at midnight UTC
+  workflow_dispatch: # Allow manual runs for testing
 
 permissions:
   contents: read
@@ -41,14 +42,13 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          payload=$(jq -Rs '
-            [split("\n")[] | select(length > 0) | fromjson] as $prs |
-            {"blocks": [
-              {"type":"section","text":{"type":"mrkdwn","text":"*PRs newly labeled ready-to-be-merged:*"}}
-            ] + [
-              $prs[] | {"type":"section","text":{"type":"mrkdwn","text":"<\(.url)|#\(.number): \(.title)>"}}
-            ]}
-          ' "${{ github.workspace }}/labeled-prs.json")
+          # Builds a single newline-separated list of mrkdwn links and sends it
+          # as one webhook call. Compatible with Slack Workflow Builder webhook
+          # triggers: declare a variable named "pr_list" (type: text) in the
+          # workflow trigger, then use {{pr_list}} in the message step.
+          pr_list=$(jq -Rs '[split("\n")[] | select(length > 0) | fromjson | "<\(.url)|#\(.number): \(.title)>"] | join("\n")' \
+            "${{ github.workspace }}/labeled-prs.json")
+          payload=$(jq -cn --arg pr_list "${pr_list}" '{"pr_list": $pr_list}')
           curl --fail --silent --show-error \
             -X POST \
             -H 'Content-type: application/json' \
