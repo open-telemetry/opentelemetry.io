@@ -441,26 +441,6 @@ need larger queues and retry policies to handle backend outages. Also consider
 setting a `max_size` for batches to avoid transient backend rejections due to
 oversized payloads.
 
-### Security
-
-For production deployments, secure the communication between agents and
-gateways:
-
-- Enable
-  [TLS](https://pkg.go.dev/go.opentelemetry.io/collector/config/configtls) on
-  OTLP receivers and exporters.
-- Use mutual TLS
-  ([mTLS](https://pkg.go.dev/go.opentelemetry.io/collector/config/configtls)) to
-  authenticate both agents and gateways.
-- Consider token-based authentication using the
-  [`bearertokenauthextension`](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/bearertokenauthextension)
-  when mTLS is not practical.
-
-In Kubernetes environments, automate certificate issuance and rotation (for
-example, with [cert-manager](https://cert-manager.io/docs/)) and mount
-certificates into Collector pods as Secrets. Plan rolling restarts when
-certificates rotate.
-
 ## Scaling agents and gateways
 
 As your telemetry volume grows, you need to scale your Collectors appropriately.
