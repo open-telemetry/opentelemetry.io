@@ -157,8 +157,6 @@ receivers:
     protocols:
       grpc:
         endpoint: 0.0.0.0:4317
-      http:
-        endpoint: 0.0.0.0:4318
 
   # Collect host metrics
   hostmetrics:
