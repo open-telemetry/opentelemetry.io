@@ -2012,7 +2012,7 @@
     "LastSeen": "2026-03-10T09:52:39.434435229Z"
   },
   "https://docs.google.com/spreadsheets/d/1E23Dkz1B2us71BtlQq8oG4o_QFsTeLPeh-X2uVnlubg/edit?usp=sharing": {
-    "StatusCode": -10,
+    "StatusCode": 200,
     "LastSeen": "2026-03-17T09:54:46.029757902Z"
   },
   "https://docs.google.com/spreadsheets/d/1I2ACFAgzWaa1H5EQx99-rLTro2FHlS44gsWuQsU8Ssw/edit#gid=191407209": {
@@ -8518,10 +8518,6 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8seventsreceiver": {
     "StatusCode": 206,
     "LastSeen": "2026-03-17T09:59:30.349537357Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8slogreceiver": {
-    "StatusCode": 404,
-    "LastSeen": "2026-03-17T09:59:35.462259277Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver": {
     "StatusCode": 206,
