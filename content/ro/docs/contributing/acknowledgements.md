@@ -2,8 +2,8 @@
 title: Mulțumiri
 description: Dorim să menționăm următoarele surse pentru conținutul acestui site
 aliases: [/mulțumiri, /docs/mulțumiri]
-cSpell:ignore: Pigram
 default_lang_commit: 8a80ba717805752aa6d1c2edb38057535f7b5d4e
+cSpell:ignore: Pigram
 ---
 
 Dorim să menționăm următoarele surse pentru o parte din conținutul acestui site:
@@ -16,4 +16,4 @@ Dorim să menționăm următoarele surse pentru o parte din conținutul acestui 
 4. [Introducere în OpenTracing, OpenCensus și OpenMetrics - BMC](https://web.archive.org/web/20250624231058/https://www.bmc.com/blogs/opentracing-opencensus-openmetrics/)
 5. [Întreab-o pe Miss O11y: Baggage în OTel - Honeycomb](https://www.honeycomb.io/blog/ask-miss-o11y-opentelemetry-baggage/)
 6. [Observability Whitepaper - CNCF Tag Observability](https://github.com/cncf/tag-observability/blob/whitepaper-v1.0.0/whitepaper.md)
-   pentru conținutul din [Semnale](/docs/concepte/semnale/)
+   pentru conținutul din [Semnale](/docs/concepts/signals/)
