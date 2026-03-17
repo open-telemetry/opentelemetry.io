@@ -12699,6 +12699,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:52:36.24661858Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/esm-support.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-17T09:57:57.21652344Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-js/discussions": {
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:44:10.519724831Z"
