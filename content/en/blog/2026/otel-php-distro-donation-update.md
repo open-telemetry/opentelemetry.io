@@ -7,7 +7,7 @@ author: >-
 draft: true
 issue: https://github.com/open-telemetry/opentelemetry.io/issues/9434
 sig: OpenTelemetry PHP
-cSpell:ignore: Pawel Filipczak
+cSpell:ignore: Filipczak Pawel
 ---
 
 The OpenTelemetry community accepted the donation of the OpenTelemetry PHP
