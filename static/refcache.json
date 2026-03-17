@@ -1,4 +1,8 @@
 {
+  "http://github.com/felixge": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:45:58.048927062-07:00"
+  },
   "http://logback.qos.ch/?http_ok": {
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:54:55.688787791Z"
@@ -1486,6 +1490,10 @@
   "https://devstats.cncf.io/": {
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:44:09.08593377Z"
+  },
+  "https://dl.acm.org/doi/abs/10.1145/265924.265925": {
+    "StatusCode": 403,
+    "LastSeen": "2026-03-16T20:46:03.311517374-07:00"
   },
   "https://doc.akka.io/docs/akka-http/current/index.html": {
     "StatusCode": 206,
@@ -4367,6 +4375,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:46:54.88499507Z"
   },
+  "https://github.com/async-profiler/async-profiler/blob/b3f58429f5c0252e9ced3f0fcb444fed17671321/docs/OutputFormats.md?from_branch=master": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:25.595519236-07:00"
+  },
   "https://github.com/athre0z": {
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:52:47.041223454Z"
@@ -4542,6 +4554,10 @@
   "https://github.com/bpftrace/bpftrace": {
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:52:54.122290245Z"
+  },
+  "https://github.com/brancz": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:17.85015402-07:00"
   },
   "https://github.com/braydonk": {
     "StatusCode": 206,
@@ -4943,6 +4959,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:55:41.851631205Z"
   },
+  "https://github.com/dalehamel": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:19.367129678-07:00"
+  },
   "https://github.com/damemi": {
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:52:19.088379275Z"
@@ -5211,6 +5231,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:55:32.952237094Z"
   },
+  "https://github.com/elastic/devfiler": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:16.613452626-07:00"
+  },
   "https://github.com/elastic/elastic-agent/tree/main/internal/pkg/otel": {
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:51:56.534683429Z"
@@ -5474,6 +5498,10 @@
   "https://github.com/git-ecosystem/trace2receiver": {
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:50:05.543388755Z"
+  },
+  "https://github.com/gnurizen": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:20.779898307-07:00"
   },
   "https://github.com/go-gorm/opentelemetry": {
     "StatusCode": 206,
@@ -5910,6 +5938,10 @@
   "https://github.com/istio": {
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:55:58.047886548Z"
+  },
+  "https://github.com/ivoanjo": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:45:56.46204445-07:00"
   },
   "https://github.com/jack-berg": {
     "StatusCode": 206,
@@ -7878,6 +7910,18 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/b7fedfd4c04c78503c0cac618298a044e04d4b07/exporter/prometheusremotewriteexporter?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:52:42.975056255Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/cb1f1bb54ee849b4c569eb8f6a950c0f9c7c6d43/receiver/pprofreceiver?from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:12.341581848-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/cc10682103a84a8d7700d6e64c469d7a1469af49/pkg/translator/pprof?from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:07.335675766-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/cc10682103a84a8d7700d6e64c469d7a1469af49/processor/k8sattributesprocessor?from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:14.359953811-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/dbdb56d285d860849323346d58c83b14c1ed6c62/receiver/prometheusreceiver?from_branch=main": {
     "StatusCode": 206,
@@ -9922,6 +9966,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-releases/tags": {
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:53:19.828431344Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-releases/tree/4c40558ecfad1e7ae8b535013ef3cd14ae763ff9/distributions/otelcol-ebpf-profiler?from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:11.648899584-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-releases/tree/b590e8bc74a5aacca1236f02b10bafeb4959dd96/distributions/otelcol-k8s?from_branch=main": {
     "StatusCode": 206,
@@ -13219,6 +13267,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:55:11.135021562Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.10.0/opentelemetry/proto/profiles/v1development/profiles.proto": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:05.195312087-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-proto/issues/567#issuecomment-2286565449": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:51:51.568054633Z"
@@ -14183,6 +14235,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-05T19:33:34.977072827Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/blob/v1.55.0/oteps/0232-maturity-of-otel.md#alpha": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:02.549356985-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/1413": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:52:29.744827368Z"
@@ -14211,9 +14267,21 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:52:37.469361095Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/4719": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:30.946660039-07:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/pull/4738": {
     "StatusCode": 206,
     "LastSeen": "2026-02-26T16:10:50.893159-06:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/4855": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:27.822273121-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/4947": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:31.771660861-07:00"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/tree/main/oteps/#readme": {
     "StatusCode": 206,
@@ -15486,6 +15554,18 @@
   "https://github.com/open-telemetry/sig-mainframe": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:52:10.22084329Z"
+  },
+  "https://github.com/open-telemetry/sig-profiling": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:35.355741622-07:00"
+  },
+  "https://github.com/open-telemetry/sig-profiling/blob/ec8a031b86205e905a1211e162f6f7691a6ff5d2/otlp-bench/reports/2025-11-27-gh733-resource-attr-dict/README.md?from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:06.374044042-07:00"
+  },
+  "https://github.com/open-telemetry/sig-profiling/tree/3ee8c0d4f303285cb72e0b3b934f8b20b209edaa/profcheck?from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:10.088551325-07:00"
   },
   "https://github.com/open-telemetry/sig-security": {
     "StatusCode": 206,
@@ -16826,6 +16906,10 @@
   "https://github.com/ulid/spec": {
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:54:58.488803767Z"
+  },
+  "https://github.com/umanwizard": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:46:23.11921325-07:00"
   },
   "https://github.com/uptrace": {
     "StatusCode": 206,
@@ -23934,6 +24018,10 @@
   "https://www.w3.org/standards/types/#x4-2-1-candidate-recommendation-draft": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:52:34.469590434Z"
+  },
+  "https://www.waldspurger.org/carl/papers/dcpi-sosp97.pdf": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T20:50:48.72887897-07:00"
   },
   "https://www.wildfly.org/": {
     "StatusCode": 206,
