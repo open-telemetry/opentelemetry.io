@@ -168,6 +168,7 @@ maintainers:
       - collector-releases-approvers
       - collector-releases-maintainers
       - collector-triagers
+      - docs-pl-approvers
     html_url: https://github.com/andrzej-stencel
     avatar_url: https://avatars.githubusercontent.com/u/70892616?v=4
   - name: andykellr
@@ -240,6 +241,8 @@ maintainers:
       - docs-fr-approvers
       - docs-fr-maintainers
       - docs-maintainers
+      - docs-pl-approvers
+      - docs-pl-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-ro-approvers
@@ -379,6 +382,8 @@ maintainers:
       - docs-ja-approvers
       - docs-ja-maintainers
       - docs-maintainers
+      - docs-pl-approvers
+      - docs-pl-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-ro-approvers
@@ -403,6 +408,8 @@ maintainers:
       - docs-ja-approvers
       - docs-ja-maintainers
       - docs-maintainers
+      - docs-pl-approvers
+      - docs-pl-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-ro-approvers
@@ -924,6 +931,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/87386821?v=4
   - name: Kielek
     teams:
+      - docs-pl-approvers
       - dotnet-approvers
       - dotnet-contrib-approvers
       - dotnet-contrib-maintainers
@@ -1241,6 +1249,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/102958445?v=4
   - name: pellared
     teams:
+      - docs-pl-approvers
       - dotnet-instrumentation-approvers
       - dotnet-instrumentation-maintainers
       - dotnet-instrumentation-triagers
@@ -1429,6 +1438,8 @@ maintainers:
       - docs-ja-approvers
       - docs-ja-maintainers
       - docs-maintainers
+      - docs-pl-approvers
+      - docs-pl-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-ro-approvers
@@ -1483,6 +1494,8 @@ maintainers:
       - docs-fr-approvers
       - docs-fr-maintainers
       - docs-maintainers
+      - docs-pl-approvers
+      - docs-pl-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-ro-approvers
@@ -1514,6 +1527,8 @@ maintainers:
       - docs-ja-approvers
       - docs-ja-maintainers
       - docs-maintainers
+      - docs-pl-approvers
+      - docs-pl-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-ro-approvers
@@ -1638,6 +1653,8 @@ maintainers:
     teams:
       - docs-approvers
       - docs-maintainers
+      - docs-pl-approvers
+      - docs-pl-maintainers
       - docs-pt-approvers
       - docs-pt-maintainers
       - docs-triagers
@@ -2753,6 +2770,9 @@ members:
   - name: asaharn
     html_url: https://github.com/asaharn
     avatar_url: https://avatars.githubusercontent.com/u/102726227?v=4
+  - name: ash2k
+    html_url: https://github.com/ash2k
+    avatar_url: https://avatars.githubusercontent.com/u/126021?v=4
   - name: ashu658
     html_url: https://github.com/ashu658
     avatar_url: https://avatars.githubusercontent.com/u/39601429?v=4

@@ -827,6 +827,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-02-27T09:51:17.834903675Z"
   },
+  "https://cloud-native.slack.com/archives/C07Q1L0FGKX": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-10T22:16:53.149064+02:00"
+  },
   "https://cloud-native.slack.com/archives/C088D8GSSSF": {
     "StatusCode": 200,
     "LastSeen": "2026-02-25T09:58:57.729022748Z"
@@ -4327,6 +4331,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:53:37.636115469Z"
   },
+  "https://github.com/ash2k": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-17T04:28:13.836458825Z"
+  },
   "https://github.com/ashu658": {
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:46:48.035849957Z"
@@ -6591,6 +6599,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:53:18.410612568Z"
   },
+  "https://github.com/metafab": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T10:53:40.646391906Z"
+  },
+  "https://github.com/metafab/otel-gui": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T10:53:36.109739647Z"
+  },
+  "https://github.com/metafab/otel-gui#readme": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T10:53:45.422534767Z"
+  },
   "https://github.com/metrico/otel-collector": {
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:49:58.461060898Z"
@@ -6991,6 +7011,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:52:26.045790393Z"
   },
+  "https://github.com/open-telemetry/community/blob/184336e3d39010eb22496d97a01cc2120763c929/projects/k8s-semconv.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T22:33:51.668232+02:00"
+  },
   "https://github.com/open-telemetry/community/blob/1b7d0d85924677149593a18639ce0b897ed4751f/elections/2025/governance-committee-candidates.md?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-02-24T07:00:13.963487-05:00"
@@ -7154,6 +7178,10 @@
   "https://github.com/open-telemetry/community/blob/main/projects/gen-ai.md#meeting-times": {
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:45:22.573902344Z"
+  },
+  "https://github.com/open-telemetry/community/blob/main/projects/k8s-semconv.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T22:16:54.590549+02:00"
   },
   "https://github.com/open-telemetry/community/blob/main/social-media-guide.md": {
     "StatusCode": 206,
@@ -7651,6 +7679,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:52:35.573725106Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.147.0/processor/k8sattributesprocessor/README.md#semantic-conventions-compatibility": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-11T16:25:08.471919+02:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v0.147.0/processor/k8sattributesprocessor/documentation.md#feature-gates": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-11T16:25:07.064017+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/17418": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:52:12.522449064Z"
@@ -7694,6 +7730,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/42491": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:52:12.474414105Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues/44130": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T22:16:42.06226+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/issues?q=is%3Aissue+is%3Aopen+label%3A%22help+wanted%22+label%3Adata%3Aprofiles": {
     "StatusCode": 206,
@@ -9967,6 +10007,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:51:52.348722856Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/rfcs/semconv-feature-gates.md#proposed-mechanism": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T22:16:51.556302+02:00"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md": {
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:53:14.504726325Z"
@@ -10082,6 +10126,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/config/configtls/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-03-02T21:14:55.421567025Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/docs/rfcs/semconv-feature-gates.md#proposed-mechanism": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T22:33:47.645393+02:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector/blob/v0.147.0/pdata/pcommon/map.go": {
     "StatusCode": 206,
@@ -11162,6 +11210,10 @@
   "https://github.com/open-telemetry/opentelemetry-ebpf-profiler": {
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:52:02.880296698Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ecosystem-explorer/tree/main/ecosystem-registry/collector": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T13:38:12.058838651Z"
   },
   "https://github.com/open-telemetry/opentelemetry-erlang": {
     "StatusCode": 206,
@@ -14691,6 +14743,14 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:51:43.594832605Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/collector-sync.sh": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T12:16:31.13124-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/collector-sync.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T12:16:33.400715-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-actions.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T13:48:16.8698-05:00"
@@ -14730,6 +14790,14 @@
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_markup/render-link.html": {
     "StatusCode": 206,
     "LastSeen": "2026-02-25T09:53:24.180601273Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_shortcodes/collector-component-rows.html": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T12:16:37.966915-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/layouts/_shortcodes/component-link.html": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T12:16:39.349667-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/package.json": {
     "StatusCode": 206,
@@ -14871,6 +14939,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:47:31.033745981Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/data/collector": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T12:16:35.381642-04:00"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/data/ecosystem": {
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:46:32.479165925Z"
@@ -14890,6 +14962,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/data/registry": {
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:55:01.108255009Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/tree/main/i18n": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T12:16:42.206321-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/tree/main/layouts/_shortcodes/docs": {
     "StatusCode": 206,
@@ -15151,6 +15227,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:51:59.090626545Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/issues/1032#issuecomment-3401648352": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T22:16:39.05232+02:00"
+  },
   "https://github.com/open-telemetry/semantic-conventions/issues/1139": {
     "StatusCode": 206,
     "LastSeen": "2026-02-27T09:54:44.396210875Z"
@@ -15218,6 +15298,14 @@
   "https://github.com/open-telemetry/semantic-conventions/issues/2197": {
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:56:06.721538572Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/3119": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T22:16:45.970536+02:00"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/issues/3120": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T22:16:48.132981+02:00"
   },
   "https://github.com/open-telemetry/semantic-conventions/issues/new": {
     "StatusCode": 206,
@@ -15330,6 +15418,10 @@
   "https://github.com/open-telemetry/semantic-conventions/pull/3426": {
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:56:28.918652338Z"
+  },
+  "https://github.com/open-telemetry/semantic-conventions/pull/3491": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-10T22:16:50.48117+02:00"
   },
   "https://github.com/open-telemetry/semantic-conventions/pull/981": {
     "StatusCode": 206,
