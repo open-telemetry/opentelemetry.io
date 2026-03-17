@@ -12,8 +12,8 @@ All workflow files live under
 
 ## PR approval labels {#pr-approval-labels}
 
-Two workflows work together to automatically manage approval-related labels on
-pull requests:
+The following workflows work together to automatically manage approval-related
+labels on pull requests:
 
 | Workflow file                      | Trigger                               | Privileges                                   |
 | ---------------------------------- | ------------------------------------- | -------------------------------------------- |

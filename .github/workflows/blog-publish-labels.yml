@@ -46,7 +46,7 @@ jobs:
           # as one webhook call. Compatible with Slack Workflow Builder webhook
           # triggers: declare a variable named "pr_list" (type: text) in the
           # workflow trigger, then use {{pr_list}} in the message step.
-          pr_list=$(jq -Rs '[split("\n")[] | select(length > 0) | fromjson | "<\(.url)|#\(.number): \(.title)>"] | join("\n")' \
+          pr_list=$(jq -rRs '[split("\n")[] | select(length > 0) | fromjson | "<\(.url)|#\(.number): \(.title)>"] | join("\n")' \
             "${{ github.workspace }}/labeled-prs.json")
           payload=$(jq -cn --arg pr_list "${pr_list}" '{"pr_list": $pr_list}')
           curl --fail --silent --show-error \
