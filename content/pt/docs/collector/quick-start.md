@@ -3,19 +3,20 @@ title: Quick start
 description: Setup and collect telemetry in minutes!
 aliases: [getting-started]
 weight: 1
+default_lang_commit: HEAD
 cSpell:ignore: docker dokey gobin okey telemetrygen
 ---
 
 <!-- markdownlint-disable ol-prefix blanks-around-fences -->
 
-O OpenTelemetry Collector recebe [traces](/docs/concepts/signals/traces/), [metrics](/docs/concepts/signals/metrics/) e [logs](/docs/concepts/signals/logs/), processa a telemetria e a exporta para uma grande variedade de backends de observabilidade usando seus componentes. Para uma visão geral conceitual do Collector, veja [Collector](/docs/collector).
+O OpenTelemetry Collector recebe [rastros](/docs/concepts/signals/traces/), [métricas](/docs/concepts/signals/metrics/) e [logs](/docs/concepts/signals/logs/), processa a telemetria e a exporta para diversos backends de observabilidade usando seus componentes. Para uma visão geral conceitual do Collector, veja [Collector](/docs/collector).
 
 Você aprenderá o seguinte em menos de cinco minutos:
 
 - Configurar e executar o OpenTelemetry Collector.
 - Enviar telemetria e ver como ela é processada pelo Collector.
 
-## Pré-requisitos
+## Pré-requisitos {#prerequisites}
 
 Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta página assume que você está usando `bash`. Adapte as configurações e os comandos conforme o seu shell preferido.
 
@@ -30,7 +31,7 @@ Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta pág
 [^1]: Para mais informações, veja
     [Your first program](https://go.dev/doc/code#Command).
 
-## Configurar o ambiente
+## Configurar o ambiente {#set-up-the-environment}
 
 1. Baixe a imagem Docker do OpenTelemetry Collector:
 
@@ -44,10 +45,10 @@ Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta pág
   go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
   ```
 
-  Esse utilitário pode simular um cliente gerando [traces][], [metrics][] e
+  Esse utilitário pode simular um cliente gerando [rastros][], [métricas][] e
   [logs][].
 
-## Gerar e coletar telemetria
+## Gerar e coletar telemetria {#generate-and-collect-telemetry}
 
 3. Execute o Collector, escutando nas portas 4317 (OTLP gRPC), 4318 (OTLP HTTP)
   e 55679 (ZPages):
@@ -61,13 +62,13 @@ Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta pág
     2>&1 | tee collector-output.txt # Opcional: use tee para facilitar buscas
   ```
 
-4. Em outro terminal, gere alguns traces de exemplo:
+4. Em outro terminal, gere alguns rastros de exemplo:
 
   ```sh
   $GOBIN/telemetrygen traces --otlp-insecure --traces 3
   ```
 
-  Na saída gerada pela ferramenta, você deverá ver uma confirmação de que traces foram gerados:
+  Na saída gerada pela ferramenta, você deverá ver uma confirmação de que rastros foram gerados:
 
   ```text
   2024-01-16T14:33:15.692-0500  INFO  traces/worker.go:99  traces generated  {"worker": 0, "traces": 3}
@@ -82,7 +83,7 @@ Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta pág
   ```
 
 5. No terminal onde o container do Collector está em execução, você deverá ver
-  atividade de ingestão de traces semelhante ao exemplo a seguir:
+  atividade de ingestão de rastros semelhante ao exemplo a seguir:
 
   ```console
   $ grep -E '^Span|(ID|Name|Kind|time|Status \w+)\s+:' ./collector-output.txt
@@ -110,12 +111,12 @@ Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta pág
   ```
 
 6. Abra <http://localhost:55679/debug/tracez> e selecione uma das amostras na
-  tabela para ver os traces que você acabou de gerar.
+  tabela para ver os rastros que você acabou de gerar.
 
 7. Quando terminar, pare o contêiner do Collector, por exemplo, usando
   <kbd>Control-C</kbd>.
 
-## Próximos passos
+## Próximos passos {#next-steps}
 
 Neste tutorial você iniciou o OpenTelemetry Collector e enviou telemetria para
 ele. Como próximos passos, considere:
@@ -132,7 +133,7 @@ ele. Como próximos passos, considere:
 
 [gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
 [logs]: /docs/concepts/signals/logs/
-[metrics]: /docs/concepts/signals/metrics/
+[métricas]: /docs/concepts/signals/metrics/
 [telemetrygen]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen
-[traces]: /docs/concepts/signals/traces/
+[rastros]: /docs/concepts/signals/traces/
