@@ -5,6 +5,8 @@ weight: 20
 aliases: [otlp-exporter-configuration]
 ---
 
+{{% include "env-var-note.md" %}}
+
 ## Endpoint Configuration
 
 The following environment variables let you configure an OTLP/gRPC or OTLP/HTTP

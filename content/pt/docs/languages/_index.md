@@ -4,7 +4,7 @@ description:
   A instrumentação de código do OpenTelemetry é suportada para muitas linguagens
   populares de programação.
 weight: 250
-default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4
+default_lang_commit: c392c714849921cd56aca8ca99ab11e0e4cb16f4 # patched
 ---
 
 A [instrumentação][instrumentation] de código do OpenTelemetry é suportada para
@@ -30,7 +30,7 @@ seguir:
 
 Independente do estado de um API/SDK, se a sua instrumentação depende de
 [convenções semânticas][semantic conventions] que são marcadas como
-[Experimental] na [especificação de convenções
+[Experimental][] na [especificação de convenções
 semânticas][semantic conventions specification], seu fluxo de dados pode estar
 sujeito à **quebra de compatibilidade**
 
