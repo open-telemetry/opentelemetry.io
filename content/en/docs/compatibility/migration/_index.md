@@ -2,7 +2,7 @@
 title: Migration
 description: How to migrate to OpenTelemetry
 aliases:
-    - /docs/migration/
+  - /docs/migration/
 weight: 800
 ---
 

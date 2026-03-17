@@ -4,7 +4,7 @@ linkTitle: OpenCensus
 redirect: /blog/2023/sunsetting-opencensus/#how-to-migrate-to-opentelemetry
 build: { render: link }
 aliases:
-    - /docs/migration/opencensus/
+  - /docs/migration/opencensus/
 weight: 3
 cSpell:ignore: sunsetting
 ---
