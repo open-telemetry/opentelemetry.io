@@ -91,15 +91,15 @@ _Last updated: $(date -u '+%Y-%m-%d %H:%M:%S UTC')_"
   rm -f metadata-issues.md
 fi
 
-echo "Checking for documentation changes..."
-CHANGED_FILES=$(git diff --name-only content/en/docs/collector/components/)
+echo "Checking for component changes..."
+CHANGED_FILES=$(git diff --name-only data/collector/)
 
 if [ -z "$CHANGED_FILES" ]; then
-  echo "No documentation changes detected"
+  echo "No component changes detected"
   exit 0
 fi
 
-echo "Documentation changes detected:"
+echo "Component changes detected:"
 echo "$CHANGED_FILES"
 
 BRANCH_NAME="otelbot/collector-docs-${VERSION//\./-}"
