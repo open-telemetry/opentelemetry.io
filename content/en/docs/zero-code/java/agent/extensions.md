@@ -303,7 +303,7 @@ tasks {
 ```
 
 For a complete example, reference the gradle file from the
-[extension example](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/build.gradle).
+[extension example](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/build.gradle.kts).
 
 #### Building and Using the Extended Agent
 
