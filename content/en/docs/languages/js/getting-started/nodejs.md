@@ -561,7 +561,7 @@ diag.setLogger(new DiagConsoleLogger(), DiagLogLevel.INFO);
 
 {{% /tab %}} {{< /tabpane >}}
 
-{{% include esm-support-node.md %}}
+{{% include esm-support-note.md %}}
 
 [traces]: /docs/concepts/signals/traces/
 [metrics]: /docs/concepts/signals/metrics/

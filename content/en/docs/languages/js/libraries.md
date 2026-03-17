@@ -19,7 +19,7 @@ For example,
 will automatically create [spans](/docs/concepts/signals/traces/#spans) based on
 the inbound HTTP requests.
 
-{{% include esm-support-node.md %}}
+{{% include esm-support-note.md %}}
 
 ### Setup
 

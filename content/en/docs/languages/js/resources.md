@@ -16,7 +16,7 @@ Follow the instructions in the [Getting Started - Node.js][], so that you have
 the files `package.json`, `app.js` (or `app.ts`) and `instrumentation.mjs` (or
 `instrumentation.ts`).
 
-{{% include esm-support-node.md %}}
+{{% include esm-support-note.md %}}
 
 ## Process & Environment Resource Detection
 
