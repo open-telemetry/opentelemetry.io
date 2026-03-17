@@ -11731,6 +11731,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-03T16:12:00.133493-05:00"
   },
+  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/build.gradle.kts": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-17T21:36:47.886867666Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/jmx-metrics/README.md": {
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:52:33.821016455Z"
