@@ -9127,6 +9127,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-24T09:53:09.994846053Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-collector/issues/12095": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-18T09:42:38.281993491Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-collector/issues/6151": {
     "StatusCode": 206,
     "LastSeen": "2026-02-13T09:52:59.334701839Z"
