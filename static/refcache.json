@@ -8227,10 +8227,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-17T09:58:10.518479475Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/datadogsemanticsprocessor": {
-    "StatusCode": 404,
-    "LastSeen": "2026-03-18T09:58:09.150145475Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/deltatocumulativeprocessor": {
     "StatusCode": 206,
     "LastSeen": "2026-03-18T09:58:11.592449394Z"
@@ -13258,10 +13254,6 @@
   "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-aws-lambda": {
     "StatusCode": 206,
     "LastSeen": "2026-03-18T10:01:36.307678161Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-boto": {
-    "StatusCode": 404,
-    "LastSeen": "2026-03-18T10:01:37.938017487Z"
   },
   "https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-boto3sqs": {
     "StatusCode": 206,
