@@ -179,7 +179,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: beta
 - name: filestatsreceiver
@@ -198,7 +198,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: beta
 - name: githubreceiver
@@ -251,7 +251,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     metrics: beta
     logs: development
@@ -259,7 +259,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     metrics: alpha
 - name: huaweicloudcesreceiver
@@ -291,7 +291,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     traces: beta
 - name: jmxreceiver
@@ -304,14 +304,14 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: alpha
 - name: k8sclusterreceiver
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     metrics: beta
     logs: development
@@ -319,7 +319,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: alpha
 - name: k8slogreceiver
@@ -333,7 +333,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: beta
 - name: kafkametricsreceiver
@@ -356,7 +356,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     metrics: beta
 - name: libhoneyreceiver
@@ -461,7 +461,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: beta
     metrics: beta
@@ -480,7 +480,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
     - otlp
   stability:
     profiles: development
@@ -511,7 +511,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     metrics: beta
 - name: prometheusremotewritereceiver
@@ -550,7 +550,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: alpha
     traces: alpha
@@ -754,7 +754,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     traces: beta
 - name: zookeeperreceiver
