@@ -19,14 +19,14 @@ labels on pull requests:
 | ---------------------------------- | ------------------------------------- | -------------------------------------------- |
 | [`pr-review-trigger.yml`][trigger] | `pull_request_review`                 | Minimal (no secrets)                         |
 | [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run` | App token for label edits and org/team reads |
-| [`blog-publish-labels.yml`][blog]  | `schedule` (daily midnight UTC)       | App token + `SLACK_WEBHOOK_URL` secret       |
+| [`blog-publish-labels.yml`][blog]  | `schedule` (daily 7 AM UTC)       | App token + `SLACK_WEBHOOK_URL` secret       |
 
 [trigger]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-review-trigger.yml
 [labels]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-approval-labels.yml
 [blog]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-approval-labels.yml
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/blog-publish-labels.yml
 
 ### Labels managed
 
@@ -70,7 +70,7 @@ variable is set:
 - **Batch mode** — queries GitHub for all open PRs carrying any
   `PUBLISH_DATE_LABELS` label and processes each one. Used by the
   [`blog-publish-labels.yml`](#blog-publish-labels) `schedule` trigger (daily at
-  midnight UTC), so a PR whose publish date arrives overnight receives
+  7 AM UTC), so a PR whose publish date arrives overnight receives
   `ready-to-be-merged` automatically without requiring a new commit.
 
 ### Why two workflows?
@@ -144,14 +144,14 @@ sequenceDiagram
 
 ## Blog publish labels {#blog-publish-labels}
 
-The [`blog-publish-labels.yml`][blog] workflow runs daily at midnight UTC. It
+The [`blog-publish-labels.yml`][blog] workflow runs daily at 7 AM UTC. It
 executes `pr-approval-labels.sh` in [batch mode](#publish-date-gating) —
 checking all open PRs with `blog` or `announcements` labels — and posts a Slack
 notification when `ready-to-be-merged` is newly applied to any of them.
 
 | Workflow file                     | Trigger                         | Secrets required                                |
 | --------------------------------- | ------------------------------- | ----------------------------------------------- |
-| [`blog-publish-labels.yml`][blog] | `schedule` (daily midnight UTC) | `OTELBOT_DOCS_PRIVATE_KEY`, `SLACK_WEBHOOK_URL` |
+| [`blog-publish-labels.yml`][blog] | `schedule` (daily 7 AM UTC) | `OTELBOT_DOCS_PRIVATE_KEY`, `SLACK_WEBHOOK_URL` |
 
 The Slack notification fires only when the label transitions from absent to
 present on that run — repeated daily runs for an already-labeled PR do not
@@ -167,7 +167,25 @@ non-engineers to own the message format without touching workflow code.
 1. In Slack: **Tools → Workflow Builder → New Workflow → Start from scratch**
 2. Choose trigger: **Webhook**
 3. Declare one variable — name: `pr_list`, type: **Text**
-4. Add a step: **Send a message** to the desired channel
+4. Add a step: **Send a message** to the desired channel, with body:
+
+   ```text
+   :newspaper: *Blog posts ready to publish*
+
+   The following PRs have reached their publish date and all required
+   approvals — they are ready to be merged:
+
+   {{pr_list}}
+
+   Have a great day! :sunny:
+   ```
+
+   Then click **Add button** and configure:
+   - **Label**: `Review and merge`
+   - **Color**: Primary (green)
+   - **Action**: Open a link
+   - **URL**: `https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Apr+state%3Aopen+label%3Ablog+label%3Aready-to-be-merged`
+
 5. **Publish** the workflow and copy the webhook URL
 6. Add it to the repository: **Settings → Secrets and variables → Actions → New
    repository secret**, name: `SLACK_WEBHOOK_URL`
@@ -176,13 +194,14 @@ non-engineers to own the message format without touching workflow code.
 
 ```json
 {
-  "pr_list": "<https://github.com/.../pull/123|#123: Add blog post: OTel 1.0>\n<https://github.com/.../pull/456|#456: Announce: new SIG>"
+  "pr_list": "#123: Add blog post: OTel 1.0\nhttps://github.com/.../pull/123\n\n#456: Announce: new SIG\nhttps://github.com/.../pull/456"
 }
 ```
 
-Each entry is a Slack `mrkdwn` link (`<url|display text>`), separated by
-newlines. Multiple PRs labeled on the same day are batched into a single message
-— one webhook call regardless of how many PRs are ready.
+Each PR is listed as a title line followed by its URL on the next line, with a
+blank line between entries. Slack auto-links bare URLs. Multiple PRs labeled on
+the same day are batched into a single message — one webhook call regardless of
+how many PRs are ready.
 
 ```mermaid
 sequenceDiagram
@@ -191,7 +210,7 @@ sequenceDiagram
     participant API as GitHub API
     participant S as Slack
 
-    Note over GH: schedule event (daily, midnight UTC)
+    Note over GH: schedule event (daily, 7 AM UTC)
 
     GH->>B: Trigger (base repository context, with secrets)
     B->>API: Query open PRs with PUBLISH_DATE_LABELS labels
