@@ -22,7 +22,7 @@ entered
 [public Alpha](https://github.com/open-telemetry/opentelemetry-specification/blob/v1.55.0/oteps/0232-maturity-of-otel.md#alpha),
 and we are ready for broader community use and feedback.
 
-## Production Profiling for All
+## Production profiling for all
 
 Continuously capturing low-overhead performance profiles in production is a
 technique that
@@ -47,7 +47,7 @@ ecosystem support. There are a few components to making this a reality:
 All of the above have been substantially improved in the Alpha release, so let's
 dive into what we've been working on!
 
-## Standardizing the Data Representation
+## Standardizing the data representation
 
 Creating a unified profiling format is a significant challenge, as it must serve
 as the industry standard across diverse environments. The working group had to
@@ -89,7 +89,7 @@ To ensure data quality and ease of adoption, we are also releasing a
 This allows validating that the exported profiles adhere to the technical
 specifications and semantic conventions of OpenTelemetry Profiles.
 
-## Frictionless Insights via the eBPF Profiling Agent
+## Frictionless insights via the eBPF Profiling Agent
 
 With the Elastic
 [donation](/blog/2024/elastic-contributes-continuous-profiling-agent/) of its
@@ -111,7 +111,7 @@ A number of significant improvements are available with the Alpha release:
 - Support for .NET 9 and 10
 - Fixes and improvements to Ruby unwinding and symbolization
 
-## Profiles in the OTel Ecosystem
+## Profiles in the OTel ecosystem
 
 OpenTelemetry is a holistic ecosystem with many orchestrated parts. It's
 critical that a new signal like Profiles integrates ubiquitously, so that all
@@ -120,7 +120,7 @@ improvements in this area across many dimensions of the OTel universe.
 
 Some notable examples of the horizontal integration of Profiles include:
 
-- OTel Collector includes support for receiving Profiles data in specific
+- OTel Collector now includes support for receiving Profiles data in specific
   formats or augmenting profiles with infrastructure information.
   - A
     [pprof receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/cb1f1bb54ee849b4c569eb8f6a950c0f9c7c6d43/receiver/pprofreceiver?from_branch=main)
@@ -134,7 +134,7 @@ Some notable examples of the horizontal integration of Profiles include:
   including updating Collector to transparently support this optimization for
   Profiles signal.
 
-## Getting Started
+## Getting started
 
 To learn more about OpenTelemetry profiles, you can visit the
 [profiles concepts](/docs/concepts/signals/profiles) page that is part of the
@@ -156,7 +156,7 @@ profiler
 
 ![Devfiler example](devfiler-latest.png)
 
-## Brought to You by...
+## Brought to you by...
 
 Projects like this involve many people. Thanks to everyone who made this
 possible, including:
@@ -182,13 +182,13 @@ possible, including:
 - [Timo Teräs](https://github.com/fabled) (Elastic)
 - [Brennan Vincent](https://github.com/umanwizard) (Polar Signals)
 
-## What's Next
+## What's next
 
 We encourage teams building profiling tools and products to start using the
 OpenTelemetry Profiles. Here is how you can participate:
 
-- Add OTel Profiles as an export option in your tool. This is already happening
-  (e.g.
+- Add OTel Profiles as an export or receive option in your tool. This is already
+  happening (e.g.
   [async-profiler](https://github.com/async-profiler/async-profiler/blob/b3f58429f5c0252e9ced3f0fcb444fed17671321/docs/OutputFormats.md?from_branch=master))!
 - Test the eBPF agent and OTel Collector (v0.148.0 or newer) support for
   Profiles and report issues. Or even send PRs!
