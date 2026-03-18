@@ -8,7 +8,8 @@ on:
   workflow_dispatch:
     inputs:
       force_notify:
-        description: 'Send a test Slack notification even if no PRs were newly labeled'
+        description:
+          'Send a test Slack notification even if no PRs were newly labeled'
         type: boolean
         default: false
 
