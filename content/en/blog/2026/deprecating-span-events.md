@@ -48,7 +48,9 @@ Having two competing APIs for the same concept has several drawbacks:
 The OpenTelemetry community has been converging on a simpler mental model:
 **events are logs with names** emitted via the Logs API, correlated with traces
 and metrics through context, rather than as a special case on spans. This change
-is significant because it unifies how OpenTelemetry represents events.
+is significant because it unifies how OpenTelemetry represents events. For more
+background on this direction, see the earlier blog post
+[OpenTelemetry Logging and You](/blog/2025/opentelemetry-logging-and-you/).
 
 At the same time, we recognize that span events are widely used today. Many
 backends present span events in dedicated trace views, and some users depend on
