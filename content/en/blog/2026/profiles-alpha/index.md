@@ -89,7 +89,7 @@ To ensure data quality and ease of adoption, we are also releasing a
 This allows validating that the exported profiles adhere to the technical
 specifications and semantic conventions of OpenTelemetry Profiles.
 
-## Frictionless insights via the eBPF Profiling Agent
+## Frictionless insights with the eBPF Profiling Agent
 
 With the Elastic
 [donation](/blog/2024/elastic-contributes-continuous-profiling-agent/) of its
