@@ -14671,6 +14671,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-16T12:16:31.13124-04:00"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/blog-publish-labels.yml": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-18T10:14:10.318037266Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/collector-sync.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-03-16T12:16:33.400715-04:00"
