@@ -36,7 +36,7 @@ With OpenTelemetry Profiles, we're introducing an industry-wide standard for
 production profiling, with true vendor neutrality and powered by community and
 ecosystem support. There are a few components to making this a reality:
 
-- Creating an unified data
+- Creating a unified data
   [representation](https://github.com/open-telemetry/opentelemetry-proto/blob/v1.10.0/opentelemetry/proto/profiles/v1development/profiles.proto)
   for profiling data, compatible with existing formats like pprof.
 - Introducing a novel reference eBPF-based profiler
