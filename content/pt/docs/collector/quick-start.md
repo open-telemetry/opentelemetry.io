@@ -1,15 +1,15 @@
 ---
-title: Quick start
-description: Setup and collect telemetry in minutes!
+title: Início rápido
+description: Configure e colete telemetria em minutos!
 aliases: [getting-started]
 weight: 1
-default_lang_commit: HEAD
+default_lang_commit: 58e684763e8dd50a07ef5fbf428303973025428a
 cSpell:ignore: docker dokey gobin okey telemetrygen
 ---
 
 <!-- markdownlint-disable ol-prefix blanks-around-fences -->
 
-O OpenTelemetry Collector recebe [rastros](/docs/concepts/signals/traces/), [métricas](/docs/concepts/signals/metrics/) e [logs](/docs/concepts/signals/logs/), processa a telemetria e a exporta para diversos backends de observabilidade usando seus componentes. Para uma visão geral conceitual do Collector, veja [Collector](/docs/collector).
+O OpenTelemetry Collector recebe [rastros](/docs/concepts/signals/traces/), [métricas](/docs/concepts/signals/metrics/) e [logs](/docs/concepts/signals/logs/), processa a telemetria e a exporta para diversos _backends_ de observabilidade utilizando seus componentes. Para uma visão geral conceitual do Collector, veja [Collector](/docs/collector).
 
 Você aprenderá o seguinte em menos de cinco minutos:
 
@@ -18,7 +18,7 @@ Você aprenderá o seguinte em menos de cinco minutos:
 
 ## Pré-requisitos {#prerequisites}
 
-Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta página assume que você está usando `bash`. Adapte as configurações e os comandos conforme o seu shell preferido.
+Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta página pressupõe que você esteja usando `bash`. Adapte as configurações e comandos conforme necessário para o seu _shell_ de preferência.
 
 - [Docker](https://www.docker.com/) ou outro ambiente de execução compatível com containers.
 - [Go](https://go.dev/) 1.20 ou superior
@@ -28,8 +28,8 @@ Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta pág
   export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
   ```
 
-[^1]: Para mais informações, veja
-    [Your first program](https://go.dev/doc/code#Command).
+[^1]: Para mais informações, consulte
+    [_Your first program_](https://go.dev/doc/code#Command).
 
 ## Configurar o ambiente {#set-up-the-environment}
 
@@ -62,13 +62,13 @@ Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta pág
     2>&1 | tee collector-output.txt # Opcional: use tee para facilitar buscas
   ```
 
-4. Em outro terminal, gere alguns rastros de exemplo:
+4. Em uma janela de terminal separada, gere alguns rastros de exemplo:
 
   ```sh
   $GOBIN/telemetrygen traces --otlp-insecure --traces 3
   ```
 
-  Na saída gerada pela ferramenta, você deverá ver uma confirmação de que rastros foram gerados:
+  Entre as saídas geradas pelo utilitário, você deverá ver uma confirmação de que rastros foram gerados:
 
   ```text
   2024-01-16T14:33:15.692-0500  INFO  traces/worker.go:99  traces generated  {"worker": 0, "traces": 3}
@@ -82,8 +82,7 @@ Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta pág
     --traces 3 2>&1 | grep -E 'start|traces|stop'
   ```
 
-5. No terminal onde o container do Collector está em execução, você deverá ver
-  atividade de ingestão de rastros semelhante ao exemplo a seguir:
+5. No terminal onde o contêiner do Collector está em execução, você deverá ver a atividade de ingestão de rastros semelhante ao que é mostrado no exemplo a seguir:
 
   ```console
   $ grep -E '^Span|(ID|Name|Kind|time|Status \w+)\s+:' ./collector-output.txt
@@ -113,12 +112,12 @@ Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta pág
 6. Abra <http://localhost:55679/debug/tracez> e selecione uma das amostras na
   tabela para ver os rastros que você acabou de gerar.
 
-7. Quando terminar, pare o contêiner do Collector, por exemplo, usando
+7. Quando terminar, encerre o contêiner do Collector, por exemplo, usando
   <kbd>Control-C</kbd>.
 
 ## Próximos passos {#next-steps}
 
-Neste tutorial você iniciou o OpenTelemetry Collector e enviou telemetria para
+Neste tutorial, você iniciou o OpenTelemetry Collector e enviou telemetria para
 ele. Como próximos passos, considere:
 
 - Explorar diferentes maneiras de [instalar o Collector](/docs/collector/install/).
@@ -133,7 +132,7 @@ ele. Como próximos passos, considere:
 
 [gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
 [logs]: /docs/concepts/signals/logs/
-[métricas]: /docs/concepts/signals/metrics/
+[metrics]: /docs/concepts/signals/metrics/
 [telemetrygen]:
   https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/cmd/telemetrygen
-[rastros]: /docs/concepts/signals/traces/
+[traces]: /docs/concepts/signals/traces/
