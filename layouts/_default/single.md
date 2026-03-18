@@ -6,4 +6,4 @@ url: {{ .RelPermalink }}
 {{ with .Lastmod }}lastmod: {{ .Format "2006-01-02" }}{{ end }}
 ---
 
-{{ .Content }}
+{{ partial "render-shortcodes.md" . }}
