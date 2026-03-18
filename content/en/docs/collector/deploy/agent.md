@@ -270,7 +270,7 @@ As a starting point:
 
 By default, the sending queue buffers data in memory. If the Collector pod
 restarts, all queued data is lost. Enable
-[persistent storage](/docs/collector/resiliency/#persistent-storage-write-ahead-log---wal)
+[persistent storage](/docs/collector/resiliency/#persistent-storage-write-ahead-log-wal)
 so the queue survives pod restarts:
 
 ```yaml

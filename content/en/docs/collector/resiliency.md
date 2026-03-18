@@ -65,7 +65,7 @@ sending queue.
 > Collector memory, and acceptable downtime for the endpoint. Monitor queue
 > metrics (`otelcol_exporter_queue_size`, `otelcol_exporter_queue_capacity`).
 
-## Persistent storage (write-ahead log - WAL)
+## Persistent storage (write-ahead log - WAL) {#persistent-storage-write-ahead-log-wal}
 
 To protect against data loss if the Collector instance itself crashes or
 restarts, you can enable persistent storage for the sending queue using the
