@@ -43,7 +43,7 @@ jobs:
           LABELED_PRS_OUTPUT_FILE: ${{ github.workspace }}/labeled-prs.json
 
       - name: Inject test payload for Slack validation
-        if: inputs.force_notify == true
+        if: github.event_name == 'workflow_dispatch' && github.event.inputs.force_notify == 'true'
         run: |
           printf '{"number": 9000, "title": "[blog] Test post: first blog ready to publish", "url": "https://github.com/${{ github.repository }}/pull/9000"}\n' \
             >> "${{ github.workspace }}/labeled-prs.json"
@@ -55,10 +55,11 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          # Builds a single newline-separated list of mrkdwn links and sends it
-          # as one webhook call. Compatible with Slack Workflow Builder webhook
-          # triggers: declare a variable named "pr_list" (type: text) in the
-          # workflow trigger, then use {{pr_list}} in the message step.
+          # Builds a single list where each PR is formatted as a title line plus
+          # a bare URL on the next line, with blank lines between entries, and
+          # sends it as one webhook call. Compatible with Slack Workflow Builder
+          # webhook triggers: declare a variable named "pr_list" (type: text) in
+          # the workflow trigger, then use {{pr_list}} in the message step.
           pr_list=$(jq -Rs '[split("\n")[] | select(length > 0) | fromjson | "#\(.number): \(.title)\n\(.url)"] | join("\n\n")' \
             "${{ github.workspace }}/labeled-prs.json")
           payload=$(jq -cn --arg pr_list "${pr_list}" '{"pr_list": $pr_list}')

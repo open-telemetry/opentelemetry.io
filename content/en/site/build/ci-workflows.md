@@ -147,15 +147,18 @@ sequenceDiagram
 The [`blog-publish-labels.yml`][blog] workflow runs daily at 7 AM UTC. It
 executes `pr-approval-labels.sh` in [batch mode](#publish-date-gating) —
 checking all open PRs with `blog` or `announcements` labels — and posts a Slack
-notification when `ready-to-be-merged` is newly applied to any of them.
+notification when `ready-to-be-merged` is newly applied to any of them. You can
+also trigger it manually via `workflow_dispatch` with a `force_notify` input to
+send a test Slack notification without waiting for a label change on a PR.
 
-| Workflow file                     | Trigger                     | Secrets required                                |
-| --------------------------------- | --------------------------- | ----------------------------------------------- |
-| [`blog-publish-labels.yml`][blog] | `schedule` (daily 7 AM UTC) | `OTELBOT_DOCS_PRIVATE_KEY`, `SLACK_WEBHOOK_URL` |
+| Workflow file                     | Trigger                                                                 | Secrets required                                |
+| --------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------- |
+| [`blog-publish-labels.yml`][blog] | `schedule` (daily 7 AM UTC), `workflow_dispatch` (manual test via `force_notify`) | `OTELBOT_DOCS_PRIVATE_KEY`, `SLACK_WEBHOOK_URL` |
 
 The Slack notification fires only when the label transitions from absent to
 present on that run — repeated daily runs for an already-labeled PR do not
-re-notify.
+re-notify. When triggering the workflow manually, set `force_notify` to `true`
+to force a one-off test notification so you can verify the Slack formatting.
 
 ### Slack webhook setup {#slack-webhook-setup}
 
