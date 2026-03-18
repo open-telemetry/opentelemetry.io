@@ -1,67 +1,13 @@
 // Configuration Types Accordion Styles
 
-// CSS Custom Properties for theming
-:root {
-  --config-types-border-radius: 0.375rem;
-  --config-types-spacing: 1.5rem;
-
-  // Dark mode colors
-  --config-types-controls-bg: var(--bs-light);
-  --config-types-card-bg: var(--bs-light);
-}
-
-// Dark mode support
-@media (prefers-color-scheme: dark) {
-  :root {
-    --config-types-controls-bg: rgba(255, 255, 255, 0.05);
-    --config-types-card-bg: rgba(255, 255, 255, 0.03);
-  }
-}
-
+// Extend shared accordion base styles
 .config-types-accordion {
-  margin: 2rem 0;
+  @extend %config-accordion-base;
 
-  .accordion-controls {
-    background: var(--config-types-controls-bg);
-    padding: var(--config-types-spacing);
-    border-radius: var(--config-types-border-radius);
-    margin-bottom: var(--config-types-spacing);
-  }
-
-  .accordion-stats {
-    font-size: 0.875rem;
-    color: var(--bs-secondary);
-  }
-
-  .accordion-item {
-    border: 1px solid var(--bs-border-color);
-    margin-bottom: 0.5rem;
-    border-radius: var(--config-types-border-radius) !important;
-
-    &.d-none {
-      display: none !important;
-    }
-
-    &:first-child,
-    &:last-child {
-      border-radius: var(--config-types-border-radius) !important;
-    }
-  }
-
+  // Type-specific overrides and additions
   .accordion-header {
     .accordion-button {
-      background-color: var(--bs-body-bg);
-      color: var(--bs-body-color);
-      padding: 1rem 1.25rem;
-      font-weight: 500;
-      transition:
-        background-color 0.2s ease,
-        color 0.2s ease;
-
       &:not(.collapsed) {
-        background-color: var(--bs-primary);
-        color: white;
-
         .type-name {
           color: white;
 
@@ -76,13 +22,7 @@
         }
       }
 
-      &:focus {
-        box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
-        border-color: var(--bs-border-color);
-      }
-
       .type-name {
-        flex: 1;
         display: flex;
         align-items: center;
       }
@@ -94,19 +34,25 @@
     }
   }
 
-  .accordion-body {
-    padding: 1.5rem 1.25rem;
-    background-color: var(--bs-body-bg);
-  }
-
   .type-anchor-link {
     display: inline-block;
     margin-bottom: 1rem;
     font-size: 0.875rem;
     text-decoration: none;
+    color: var(--bs-secondary);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    margin-left: 0.5rem;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: none;
+      color: var(--bs-primary);
+    }
+
+    // Show on parent hover or focus
+    .accordion-body:hover &,
+    .accordion-body:focus-within & {
+      opacity: 1;
     }
   }
 
@@ -122,9 +68,9 @@
 
   .type-constraints {
     padding: 1rem;
-    background: var(--config-types-card-bg);
+    background: var(--config-card-bg);
     border: 1px solid var(--bs-border-color);
-    border-radius: var(--config-types-border-radius);
+    border-radius: var(--config-accordion-border-radius);
     font-size: 0.875rem;
   }
 }
@@ -145,32 +91,20 @@
 // Dark mode specific overrides
 @media (prefers-color-scheme: dark) {
   .config-types-accordion {
-    .accordion-button {
-      &:focus {
-        box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.1);
-      }
-    }
-
-    .accordion-item {
-      background-color: transparent;
-    }
+    @extend %config-accordion-dark;
   }
 }
 
 // Responsive adjustments
 @media (max-width: 768px) {
   .config-types-accordion {
-    .accordion-button {
-      padding: 0.875rem 1rem;
+    @extend %config-accordion-mobile;
 
+    .accordion-button {
       .property-summary {
         margin-left: 0.5rem;
         font-size: 0.75rem;
       }
-    }
-
-    .accordion-body {
-      padding: 1rem;
     }
   }
 }
@@ -178,20 +112,7 @@
 // Print styles
 @media print {
   .config-types-accordion {
-    .accordion-controls {
-      display: none;
-    }
-
-    .accordion-button {
-      &.collapsed::after {
-        display: none;
-      }
-    }
-
-    .accordion-collapse {
-      display: block !important;
-      height: auto !important;
-    }
+    @extend %config-accordion-print;
   }
 
   .config-types-content.visually-hidden {
@@ -207,8 +128,6 @@
 // Reduced motion support
 @media (prefers-reduced-motion: reduce) {
   .config-types-accordion {
-    .accordion-button {
-      transition: none;
-    }
+    @extend %config-accordion-reduced-motion;
   }
 }

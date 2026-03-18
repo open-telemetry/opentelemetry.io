@@ -1,0 +1,140 @@
+// Shared Configuration Accordion Styles
+// Used by both config types and language status accordions
+
+// Shared CSS Custom Properties for theming
+:root {
+  --config-accordion-border-radius: 0.375rem;
+  --config-accordion-spacing: 1.5rem;
+
+  // Shared dark mode colors
+  --config-controls-bg: var(--bs-light);
+  --config-card-bg: var(--bs-light);
+}
+
+// Shared dark mode support
+@media (prefers-color-scheme: dark) {
+  :root {
+    --config-controls-bg: rgba(255, 255, 255, 0.05);
+    --config-card-bg: rgba(255, 255, 255, 0.03);
+  }
+}
+
+// Shared accordion base styles (use with @extend)
+%config-accordion-base {
+  margin: 2rem 0;
+
+  .accordion-controls {
+    background: var(--config-controls-bg);
+    padding: var(--config-accordion-spacing);
+    border-radius: var(--config-accordion-border-radius);
+    margin-bottom: var(--config-accordion-spacing);
+  }
+
+  .accordion-stats {
+    font-size: 0.875rem;
+    color: var(--bs-secondary);
+  }
+
+  .accordion-item {
+    border: 1px solid var(--bs-border-color);
+    margin-bottom: 0.5rem;
+    border-radius: var(--config-accordion-border-radius) !important;
+
+    &.d-none {
+      display: none !important;
+    }
+
+    &:first-child,
+    &:last-child {
+      border-radius: var(--config-accordion-border-radius) !important;
+    }
+  }
+
+  .accordion-header {
+    .accordion-button {
+      background-color: var(--bs-body-bg);
+      color: var(--bs-body-color);
+      padding: 1rem 1.25rem;
+      font-weight: 500;
+      transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+
+      &:not(.collapsed) {
+        background-color: var(--bs-primary);
+        color: white;
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 0.25rem rgba(var(--bs-primary-rgb), 0.25);
+        border-color: var(--bs-border-color);
+      }
+
+      .type-name {
+        flex: 1;
+      }
+    }
+  }
+
+  .accordion-body {
+    padding: 1.5rem 1.25rem;
+    background-color: var(--bs-body-bg);
+  }
+}
+
+// Shared dark mode overrides
+@media (prefers-color-scheme: dark) {
+  %config-accordion-dark {
+    .accordion-button {
+      &:focus {
+        box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    .accordion-item {
+      background-color: transparent;
+    }
+  }
+}
+
+// Shared responsive adjustments
+@media (max-width: 768px) {
+  %config-accordion-mobile {
+    .accordion-button {
+      padding: 0.875rem 1rem;
+    }
+
+    .accordion-body {
+      padding: 1rem;
+    }
+  }
+}
+
+// Shared print styles
+@media print {
+  %config-accordion-print {
+    .accordion-controls {
+      display: none;
+    }
+
+    .accordion-button {
+      &.collapsed::after {
+        display: none;
+      }
+    }
+
+    .accordion-collapse {
+      display: block !important;
+      height: auto !important;
+    }
+  }
+}
+
+// Shared reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  %config-accordion-reduced-motion {
+    .accordion-button {
+      transition: none;
+    }
+  }
+}

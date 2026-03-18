@@ -20,18 +20,16 @@ article table td:first-child {
 
 OpenTelemetry supports **declarative configuration** through a standardized
 YAML/JSON schema that allows you to configure SDK behavior without writing code.
-This approach provides a consistent configuration experience across all languages
-that implement the specification.
+This approach provides a consistent configuration experience across all
+languages that implement the specification.
 
 **Related Resources:**
 
 - [Language Implementation Status](language-status/) - See which languages
   support which types
-- [Configuration Schema
-  Repository](https://github.com/open-telemetry/opentelemetry-configuration) -
+- [Configuration Schema Repository](https://github.com/open-telemetry/opentelemetry-configuration) -
   Official schema repository
-- [File Configuration
-  Specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md) -
+- [File Configuration Specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md) -
   Official specification
 
 {{< config-types-accordion >}}
@@ -845,10 +843,10 @@ declarative configuration.
 
 ### View {#view}
 
-| Property                | Type                            | Default Behavior                           | Description                                                                                                                                                                                                           |
-| ----------------------- | ------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Property                | Type                            | Default Behavior                           | Description                                                                                                                                      |
+| ----------------------- | ------------------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `selector`<sup>\*</sup> | [`ViewSelector`](#viewselector) | Property is required and must be non-null. | Configure view selector. <br>Selection criteria is additive as described in </docs/specs/otel/metrics/sdk.md#instrument-selection-criteria>.<br> |
-| `stream`<sup>\*</sup>   | [`ViewStream`](#viewstream)     | Property is required and must be non-null. | Configure view stream.                                                                                                                                                                                                |
+| `stream`<sup>\*</sup>   | [`ViewStream`](#viewstream)     | Property is required and must be non-null. | Configure view stream.                                                                                                                           |
 
 **Constraints:**
 
@@ -999,8 +997,8 @@ are specified, the rule matches all spans that reach it.
 
 ### ExperimentalGeneralInstrumentation {#experimentalgeneralinstrumentation}
 
-| Property | Type                                                                  | Default Behavior                                                               | Description                                                                                                                                                                       |
-| -------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Property | Type                                                                  | Default Behavior                                                               | Description                                                                                                                                               |
+| -------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `http`   | [`ExperimentalHttpInstrumentation`](#experimentalhttpinstrumentation) | If omitted, defaults as described in ExperimentalHttpInstrumentation are used. | Configure instrumentations following the http semantic conventions.<br>See http semantic conventions: </docs/specs/semconv/http/><br>                     |
 | `peer`   | [`ExperimentalPeerInstrumentation`](#experimentalpeerinstrumentation) | If omitted, defaults as described in ExperimentalPeerInstrumentation are used. | Configure instrumentations following the peer semantic conventions.<br>See peer semantic conventions: </docs/specs/semconv/attributes-registry/peer/><br> |
 
@@ -1181,8 +1179,8 @@ are specified, the rule matches all spans that reach it.
 
 ### ExperimentalPeerInstrumentation {#experimentalpeerinstrumentation}
 
-| Property          | Type                                                                           | Default Behavior                               | Constraints     | Description                                                                                                                                                                                                                                       |
-| ----------------- | ------------------------------------------------------------------------------ | ---------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Property          | Type                                                                           | Default Behavior                               | Constraints     | Description                                                                                                                                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------ | ---------------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `service_mapping` | `array` of [`ExperimentalPeerServiceMapping`](#experimentalpeerservicemapping) | If omitted, no peer service mappings are used. | `minItems`: `1` | Configure the service mapping for instrumentations following peer.service semantic conventions.<br>See peer.service semantic conventions: </docs/specs/semconv/general/attributes/#general-remote-service-attributes><br> |
 
 **Constraints:**

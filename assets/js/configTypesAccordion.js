@@ -5,6 +5,8 @@
  * @module ConfigTypesAccordion
  */
 
+import * as AccordionUtils from './shared/accordionUtils.js';
+
 (function () {
   'use strict';
 
@@ -47,68 +49,12 @@
   let container = null;
 
   /**
-   * Escapes HTML to prevent XSS attacks
-   * @param {string} text - Text to escape
-   * @returns {string} Escaped text
-   */
-  function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
-
-  /**
-   * Adds an event listener and tracks it for cleanup
-   * @param {HTMLElement} element - Element to attach listener to
-   * @param {string} event - Event name
-   * @param {Function} handler - Event handler
-   */
-  function addTrackedEventListener(element, event, handler) {
-    if (!element) {
-      console.error(
-        `Cannot add event listener: element is null for event "${event}"`,
-      );
-      return;
-    }
-    element.addEventListener(event, handler);
-    eventListeners.push({ element, event, handler });
-  }
-
-  /**
-   * Removes all tracked event listeners
-   */
-  function removeAllEventListeners() {
-    eventListeners.forEach(({ element, event, handler }) => {
-      element.removeEventListener(event, handler);
-    });
-    eventListeners.length = 0;
-  }
-
-  /**
-   * Debounces a function call
-   * @param {Function} func - Function to debounce
-   * @param {number} delay - Delay in milliseconds
-   * @returns {Function} Debounced function
-   */
-  function debounce(func, delay) {
-    let timeoutId;
-    return function (...args) {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => func.apply(this, args), delay);
-    };
-  }
-
-  /**
    * Parses existing markdown-rendered content to populate data structure
    */
   function parseExistingContent() {
-    const content = document.querySelector(
-      '.config-types-content',
-    );
+    const content = document.querySelector('.config-types-content');
     if (!content) {
-      console.error(
-        'Could not find .config-types-content element',
-      );
+      console.error('Could not find .config-types-content element');
       return false;
     }
 
@@ -141,7 +87,10 @@
         }
 
         // Check for "No properties" text
-        if (currentElement.tagName === 'P' && currentElement.textContent.includes('No properties')) {
+        if (
+          currentElement.tagName === 'P' &&
+          currentElement.textContent.includes('No properties')
+        ) {
           hasNoProperties = true;
         }
 
@@ -151,12 +100,21 @@
         }
 
         // Look for constraints paragraph (usually after the table)
-        if (currentElement.tagName === 'P' && currentElement.textContent.includes('Constraints:')) {
-          const constraintsText = currentElement.textContent.replace('Constraints:', '').trim();
+        if (
+          currentElement.tagName === 'P' &&
+          currentElement.textContent.includes('Constraints:')
+        ) {
+          const constraintsText = currentElement.textContent
+            .replace('Constraints:', '')
+            .trim();
           constraints = constraintsText;
           // Also check for following lines
           let nextEl = currentElement.nextElementSibling;
-          while (nextEl && nextEl.tagName !== 'H3' && nextEl.tagName !== 'TABLE') {
+          while (
+            nextEl &&
+            nextEl.tagName !== 'H3' &&
+            nextEl.tagName !== 'TABLE'
+          ) {
             if (nextEl.textContent && nextEl.textContent.trim()) {
               constraints += ' ' + nextEl.textContent.trim();
             }
@@ -178,7 +136,10 @@
             const propertyType = cells[1]?.textContent.trim() || '';
             const propertyDefault = cells[2]?.textContent.trim() || '';
             const propertyConstraints = cells[3]?.textContent.trim() || '';
-            const propertyDescription = cells[4]?.textContent.trim() || cells[3]?.textContent.trim() || '';
+            const propertyDescription =
+              cells[4]?.textContent.trim() ||
+              cells[3]?.textContent.trim() ||
+              '';
 
             properties.push({
               name: propertyName,
@@ -271,7 +232,9 @@
       const propertySummary = document.createElement('span');
       propertySummary.className = 'property-summary text-muted';
       if (type.hasNoProperties) {
-        propertySummary.textContent = type.isEnum ? 'Enum type' : 'No properties';
+        propertySummary.textContent = type.isEnum
+          ? 'Enum type'
+          : 'No properties';
       } else {
         propertySummary.textContent = `${type.properties.length} ${type.properties.length === 1 ? 'property' : 'properties'}`;
       }
@@ -299,7 +262,7 @@
     });
 
     accordion.appendChild(fragment);
-    updateStats();
+    AccordionUtils.updateStats(container);
     return true;
   }
 
@@ -314,8 +277,12 @@
     // Add anchor link
     const anchorLink = document.createElement('a');
     anchorLink.href = `#${type.id}`;
-    anchorLink.className = 'type-anchor-link';
-    anchorLink.innerHTML = `🔗 Permanent link to ${escapeHtml(type.name)}`;
+    anchorLink.className = 'type-anchor-link td-heading-self-link';
+    anchorLink.setAttribute(
+      'aria-label',
+      `Permalink to ${AccordionUtils.escapeHtml(type.name)}`,
+    );
+    anchorLink.textContent = '#';
     container.appendChild(anchorLink);
 
     // If has table HTML, insert it
@@ -342,7 +309,7 @@
     const langStatusLink = document.createElement('div');
     langStatusLink.className = 'mt-3';
     const link = document.createElement('a');
-    link.href = `../language-status/?search=${encodeURIComponent(type.name)}`;
+    link.href = `language-status/?search=${encodeURIComponent(type.name)}`;
     link.className = 'btn btn-sm btn-outline-primary';
     link.textContent = 'View language support →';
     langStatusLink.appendChild(link);
@@ -352,174 +319,56 @@
   }
 
   /**
-   * Updates the visible/total stats display
-   */
-  function updateStats() {
-    if (!container) return;
-
-    const items = container.querySelectorAll('.accordion-item');
-    const visibleItems = Array.from(items).filter(
-      (item) => !item.classList.contains('d-none'),
-    );
-
-    const visibleCount = container.querySelector('.accordion-visible-count');
-    const totalCount = container.querySelector('.accordion-total-count');
-
-    if (visibleCount) visibleCount.textContent = visibleItems.length;
-    if (totalCount) totalCount.textContent = items.length;
-  }
-
-  /**
    * Applies search and filter to accordion items
    */
   function applyFilters() {
-    if (!container) return;
-
-    const searchInput = container.querySelector('.accordion-search-input');
-    const filterSelect = container.querySelector(
-      '.accordion-type-filter-select',
-    );
-
-    if (!searchInput || !filterSelect) {
-      console.error('Filter controls not found');
-      return;
-    }
-
-    const searchTerm = searchInput.value.toLowerCase();
-    const typeFilter = filterSelect.value;
-
-    const items = container.querySelectorAll('.accordion-item');
-
-    items.forEach((item) => {
-      const typeName = (item.dataset.typeName || '').toLowerCase();
-      const isExperimental = item.dataset.experimental === 'true';
-
-      const matchesSearch = typeName.includes(searchTerm);
-
-      let matchesTypeFilter = true;
-      if (typeFilter === 'stable') {
-        matchesTypeFilter = !isExperimental;
-      } else if (typeFilter === 'experimental') {
-        matchesTypeFilter = isExperimental;
-      }
-
-      if (matchesSearch && matchesTypeFilter) {
-        item.classList.remove('d-none');
-      } else {
-        item.classList.add('d-none');
-      }
-    });
-
-    updateStats();
-    savePreferences();
-    updateUrlParams();
+    AccordionUtils.applyFilters(container, savePreferences, updateUrlParams);
   }
 
   /**
    * Expands all accordion items
    */
   function expandAll() {
-    if (!container) return;
-
-    const buttons = container.querySelectorAll('.accordion-button.collapsed');
-    buttons.forEach((button) => button.click());
+    AccordionUtils.expandAll(container);
   }
 
   /**
    * Collapses all accordion items
    */
   function collapseAll() {
-    if (!container) return;
-
-    const buttons = container.querySelectorAll(
-      '.accordion-button:not(.collapsed)',
-    );
-    buttons.forEach((button) => button.click());
+    AccordionUtils.collapseAll(container);
   }
 
   /**
    * Saves user preferences to localStorage
    */
   function savePreferences() {
-    if (!container) return;
-
-    try {
-      const searchInput = container.querySelector('.accordion-search-input');
-      const filterSelect = container.querySelector(
-        '.accordion-type-filter-select',
-      );
-
-      if (!searchInput || !filterSelect) return;
-
-      const preferences = {
-        search: searchInput.value,
-        filter: filterSelect.value,
-      };
-
-      localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(preferences));
-    } catch (e) {
-      console.warn('Could not save preferences to localStorage:', e);
-    }
+    AccordionUtils.savePreferences(container, LOCAL_STORAGE_KEY);
   }
 
   /**
    * Loads user preferences from localStorage
    */
   function loadPreferences() {
-    try {
-      const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
-      if (stored) {
-        return JSON.parse(stored);
-      }
-    } catch (e) {
-      console.warn('Could not load preferences from localStorage:', e);
-    }
-    return null;
+    return AccordionUtils.loadPreferences(LOCAL_STORAGE_KEY);
   }
 
   /**
    * Updates URL parameters with current filter state
    */
   function updateUrlParams() {
-    if (!container) return;
-
-    const searchInput = container.querySelector('.accordion-search-input');
-    const filterSelect = container.querySelector(
-      '.accordion-type-filter-select',
+    AccordionUtils.updateUrlParams(
+      container,
+      URL_PARAM_SEARCH,
+      URL_PARAM_FILTER,
     );
-
-    if (!searchInput || !filterSelect) return;
-
-    const url = new URL(window.location);
-
-    if (searchInput.value) {
-      url.searchParams.set(URL_PARAM_SEARCH, searchInput.value);
-    } else {
-      url.searchParams.delete(URL_PARAM_SEARCH);
-    }
-
-    if (filterSelect.value && filterSelect.value !== 'all') {
-      url.searchParams.set(URL_PARAM_FILTER, filterSelect.value);
-    } else {
-      url.searchParams.delete(URL_PARAM_FILTER);
-    }
-
-    // Update URL without reloading page
-    window.history.replaceState({}, '', url);
   }
 
   /**
    * Loads filter state from URL parameters
    */
   function loadFromUrlParams() {
-    const url = new URL(window.location);
-    const searchParam = url.searchParams.get(URL_PARAM_SEARCH);
-    const filterParam = url.searchParams.get(URL_PARAM_FILTER);
-
-    return {
-      search: searchParam || '',
-      filter: filterParam || 'all',
-    };
+    return AccordionUtils.loadFromUrlParams(URL_PARAM_SEARCH, URL_PARAM_FILTER);
   }
 
   /**
@@ -551,7 +400,7 @@
    * Destroys the component and cleans up resources
    */
   function destroy() {
-    removeAllEventListeners();
+    AccordionUtils.removeAllEventListeners(eventListeners);
     console.log('ConfigTypesAccordion destroyed');
   }
 
@@ -562,9 +411,7 @@
   function init() {
     container = document.querySelector('.config-types-accordion');
     if (!container) {
-      container = document.getElementById(
-        'config-types-accordion-container',
-      );
+      container = document.getElementById('config-types-accordion-container');
     }
     if (!container) {
       // Component not on this page, exit silently
@@ -604,28 +451,49 @@
     const collapseBtn = container.querySelector('.accordion-collapse-all-btn');
 
     if (searchInput) {
-      addTrackedEventListener(
+      AccordionUtils.addTrackedEventListener(
+        eventListeners,
         searchInput,
         'input',
-        debounce(applyFilters, DEBOUNCE_DELAY),
+        AccordionUtils.debounce(applyFilters, DEBOUNCE_DELAY),
       );
     }
 
     if (filterSelect) {
-      addTrackedEventListener(filterSelect, 'change', applyFilters);
+      AccordionUtils.addTrackedEventListener(
+        eventListeners,
+        filterSelect,
+        'change',
+        applyFilters,
+      );
     }
 
     if (expandBtn) {
-      addTrackedEventListener(expandBtn, 'click', expandAll);
+      AccordionUtils.addTrackedEventListener(
+        eventListeners,
+        expandBtn,
+        'click',
+        expandAll,
+      );
     }
 
     if (collapseBtn) {
-      addTrackedEventListener(collapseBtn, 'click', collapseAll);
+      AccordionUtils.addTrackedEventListener(
+        eventListeners,
+        collapseBtn,
+        'click',
+        collapseAll,
+      );
     }
 
     restoreFilterState();
 
-    addTrackedEventListener(window, 'beforeunload', destroy);
+    AccordionUtils.addTrackedEventListener(
+      eventListeners,
+      window,
+      'beforeunload',
+      destroy,
+    );
 
     console.log('ConfigTypesAccordion initialized successfully');
     return true;
