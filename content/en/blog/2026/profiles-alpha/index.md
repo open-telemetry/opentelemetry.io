@@ -69,8 +69,8 @@ offers a balanced feature set that can efficiently capture profiling data:
 - Resource attributes allow augmenting the data model with additional
   information. String dictionary support enables efficient
   ([40% smaller wire size](https://github.com/open-telemetry/sig-profiling/blob/ec8a031b86205e905a1211e162f6f7691a6ff5d2/otlp-bench/reports/2025-11-27-gh733-resource-attr-dict/README.md?from_branch=main))
-  linking of profiling data to the same [resource](/docs/concepts/resources/) that
-  emitted associated logs, metrics or traces.
+  linking of profiling data to the same [resource](/docs/concepts/resources/)
+  that emitted associated logs, metrics or traces.
 - Profile samples can be further associated with the Tracing `trace_id` /
   `span_id` attributes, enabling cross-signal correlation of the data.
 - [Semantic conventions](https://github.com/open-telemetry/semantic-conventions)
