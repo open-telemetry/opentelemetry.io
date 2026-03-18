@@ -4,8 +4,13 @@ name: Blog publish labels
 
 on:
   schedule:
-    - cron: '0 0 * * *' # Daily at midnight UTC
-  workflow_dispatch: # Allow manual runs for testing
+    - cron: '0 7 * * *' # Daily at 7 AM UTC
+  workflow_dispatch:
+    inputs:
+      force_notify:
+        description: 'Send a test Slack notification even if no PRs were newly labeled'
+        type: boolean
+        default: false
 
 permissions:
   contents: read
@@ -36,6 +41,14 @@ jobs:
           REPO: ${{ github.repository }}
           PR: ''
           LABELED_PRS_OUTPUT_FILE: ${{ github.workspace }}/labeled-prs.json
+
+      - name: Inject test payload for Slack validation
+        if: inputs.force_notify == true
+        run: |
+          printf '{"number": 9000, "title": "[blog] Test post: first blog ready to publish", "url": "https://github.com/${{ github.repository }}/pull/9000"}\n' \
+            >> "${{ github.workspace }}/labeled-prs.json"
+          printf '{"number": 9001, "title": "[blog] Test post: second blog ready to publish", "url": "https://github.com/${{ github.repository }}/pull/9001"}\n' \
+            >> "${{ github.workspace }}/labeled-prs.json"
 
       - name: Notify Slack
         if: hashFiles('labeled-prs.json') != ''
