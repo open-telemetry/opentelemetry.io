@@ -37,7 +37,7 @@ ORG="open-telemetry"
 
 # Labels that indicate a PR may contain content with a publish date in its
 # frontmatter. Add labels here to extend the publish date gating check.
-PUBLISH_DATE_LABELS=("blog")
+PUBLISH_DATE_LABELS=("blog" "announcements")
 
 if [[ -z "${REPO:-}" ]]; then
   echo "ERROR: REPO environment variable must be set."
@@ -265,7 +265,7 @@ main() {
   # Fetch PR data
   local pr_json
   pr_json=$(gh pr view "${PR}" --repo "${REPO}" \
-    --json "files,latestReviews,labels,headRefOid,headRepository")
+    --json "files,latestReviews,labels,headRefOid,headRepository,title,url")
 
   local pr_files
   pr_files=$(echo "${pr_json}" | jq -r '.files[].path')
@@ -438,7 +438,15 @@ ${members}"
   fi
 
   if [[ "${all_approved}" == "true" ]]; then
+    local was_ready_before="false"
+    if echo "${CURRENT_LABELS}" | grep -qxF "${LABEL_READY}"; then
+      was_ready_before="true"
+    fi
     add_label "${LABEL_READY}"
+    if [[ "${was_ready_before}" == "false" && -n "${LABELED_PRS_OUTPUT_FILE:-}" ]]; then
+      echo "${pr_json}" | jq -c --argjson number "${PR}" '{number: $number, title, url}' \
+        >> "${LABELED_PRS_OUTPUT_FILE}"
+    fi
   elif [[ "${all_approved}" == "false" ]]; then
     remove_label "${LABEL_READY}"
   else
