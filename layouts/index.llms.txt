@@ -4,14 +4,86 @@
 > instrumenting, generating, collecting, and exporting telemetry data such as
 > traces, metrics, and logs.
 
-## Docs
-
+## Getting Started
 {{ range (where .Site.RegularPages "Section" "docs") }}
+{{- if hasPrefix .RelPermalink "/docs/getting-started/" }}
 - [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
-{{ end }}
+{{- end }}
+{{- end }}
+
+- [What is OpenTelemetry?]({{ (site.GetPage "/docs/what-is-opentelemetry").Permalink }}index.md)
+
+## Concepts
+{{ range (where .Site.RegularPages "Section" "docs") }}
+{{- if hasPrefix .RelPermalink "/docs/concepts/" }}
+- [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
+{{- end }}
+{{- end }}
+
+## Languages
+{{ range (where .Site.RegularPages "Section" "docs") }}
+{{- if hasPrefix .RelPermalink "/docs/languages/" }}
+- [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
+{{- end }}
+{{- end }}
+
+## Zero-Code Instrumentation
+{{ range (where .Site.RegularPages "Section" "docs") }}
+{{- if hasPrefix .RelPermalink "/docs/zero-code/" }}
+- [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
+{{- end }}
+{{- end }}
+
+## Collector
+{{ range (where .Site.RegularPages "Section" "docs") }}
+{{- if hasPrefix .RelPermalink "/docs/collector/" }}
+- [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
+{{- end }}
+{{- end }}
+
+## Platforms
+{{ range (where .Site.RegularPages "Section" "docs") }}
+{{- if hasPrefix .RelPermalink "/docs/platforms/" }}
+- [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
+{{- end }}
+{{- end }}
+
+## Specifications
+{{ range (where .Site.RegularPages "Section" "docs") }}
+{{- if hasPrefix .RelPermalink "/docs/specs/" }}
+- [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
+{{- end }}
+{{- end }}
+
+## Demo
+{{ range (where .Site.RegularPages "Section" "docs") }}
+{{- if hasPrefix .RelPermalink "/docs/demo/" }}
+- [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
+{{- end }}
+{{- end }}
+
+## Migration
+{{ range (where .Site.RegularPages "Section" "docs") }}
+{{- if hasPrefix .RelPermalink "/docs/migration/" }}
+- [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
+{{- end }}
+{{- end }}
+
+## Security
+{{ range (where .Site.RegularPages "Section" "docs") }}
+{{- if hasPrefix .RelPermalink "/docs/security/" }}
+- [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
+{{- end }}
+{{- end }}
+
+## Contributing
+{{ range (where .Site.RegularPages "Section" "docs") }}
+{{- if hasPrefix .RelPermalink "/docs/contributing/" }}
+- [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
+{{- end }}
+{{- end }}
 
 ## Blog
-
 {{ range (where .Site.RegularPages "Section" "blog") | first 30 }}
 - [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
-{{ end }}
+{{- end }}
