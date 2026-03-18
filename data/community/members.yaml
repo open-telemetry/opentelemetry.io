@@ -915,7 +915,6 @@ maintainers:
     teams:
       - docs-ja-approvers
       - docs-ja-maintainers
-      - docs-triagers
     html_url: https://github.com/katzchang
     avatar_url: https://avatars.githubusercontent.com/u/70050?v=4
   - name: kaylareopelle
