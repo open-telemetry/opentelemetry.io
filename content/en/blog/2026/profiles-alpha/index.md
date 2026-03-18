@@ -120,7 +120,7 @@ improvements in this area across many dimensions of the OTel universe.
 
 Some notable examples of the horizontal integration of Profiles include:
 
-- OTel Collector included support for receiving Profiles data in specific
+- OTel Collector includes support for receiving Profiles data in specific
   formats or augmenting profiles with infrastructure information.
   - A
     [pprof receiver](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/cb1f1bb54ee849b4c569eb8f6a950c0f9c7c6d43/receiver/pprofreceiver?from_branch=main)
