@@ -27,3 +27,15 @@ force = true
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Frame-Options = "SAMEORIGIN"
     Content-Security-Policy = "frame-ancestors 'self';"
+
+[[headers]]
+  for = "/**/index.md"
+  [headers.values]
+    content-type = "text/markdown; charset=utf-8"
+    cache-control = "public, max-age=3600, must-revalidate"
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    content-type = "text/plain; charset=utf-8"
+    cache-control = "public, max-age=3600, must-revalidate"

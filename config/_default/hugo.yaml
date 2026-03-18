@@ -84,19 +84,30 @@ markup:
   highlight:
     noClasses: false
 
-# Netlify _redirects file
 mediaTypes:
-  text/netlify: {}
+  text/netlify: {} # Netlify _redirects file
+  text/markdown:
+    suffixes: [md]
 
 outputFormats:
   REDIRECTS:
     mediaType: text/netlify
     baseName: _redirects
     notAlternative: true
+  LLMS:
+    mediaType: text/plain
+    baseName: llms
+    isPlainText: true
+    notAlternative: true
+  Markdown:
+    mediaType: text/markdown
+    baseName: index
+    isPlainText: true
 
 outputs:
-  home: [HTML, RSS]
-  section: [HTML]
+  home: [HTML, RSS, Markdown]
+  page: [HTML, Markdown]
+  section: [HTML, Markdown]
 
 services:
   rss: { limit: 20 }

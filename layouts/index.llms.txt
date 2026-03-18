@@ -1,0 +1,17 @@
+# OpenTelemetry
+
+> OpenTelemetry is a vendor-neutral open source observability framework for
+> instrumenting, generating, collecting, and exporting telemetry data such as
+> traces, metrics, and logs.
+
+## Docs
+
+{{ range (where .Site.RegularPages "Section" "docs") }}
+- [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
+{{ end }}
+
+## Blog
+
+{{ range (where .Site.RegularPages "Section" "blog") | first 30 }}
+- [{{ .Title }}]({{ .Permalink }}index.md){{ with .Description }}: {{ . }}{{ end }}
+{{ end }}
