@@ -11,19 +11,19 @@ cSpell:ignore: docker dokey gobin okey telemetrygen
 
 O OpenTelemetry Collector recebe [rastros](/docs/concepts/signals/traces/), [métricas](/docs/concepts/signals/metrics/) e [logs](/docs/concepts/signals/logs/), processa a telemetria e a exporta para diversos _backends_ de observabilidade utilizando seus componentes. Para uma visão geral conceitual do Collector, veja [Collector](/docs/collector).
 
-Você aprenderá o seguinte em menos de cinco minutos:
+Você aprenderá a fazer o seguinte em menos de cinco minutos:
 
 - Configurar e executar o OpenTelemetry Collector.
-- Enviar telemetria e ver como ela é processada pelo Collector.
+- Enviar telemetria e vê-la sendo processada pelo Collector.
 
 ## Pré-requisitos {#prerequisites}
 
 Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta página pressupõe que você esteja usando `bash`. Adapte as configurações e comandos conforme necessário para o seu _shell_ de preferência.
 
-- [Docker](https://www.docker.com/) ou outro ambiente de execução compatível com containers.
+- [Docker](https://www.docker.com/) ou outro ambiente de execução compatível com contêineres.
 - [Go](https://go.dev/) 1.20 ou superior
 - A variável de ambiente `GOBIN` está definida; se não estiver, inicialize-a
-  apropriadamente, por exemplo[^1]:
+  adequadamente, por exemplo[^1]:
   ```sh
   export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
   ```
@@ -45,13 +45,13 @@ Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta pág
   go install github.com/open-telemetry/opentelemetry-collector-contrib/cmd/telemetrygen@latest
   ```
 
-  Esse utilitário pode simular um cliente gerando [rastros][], [métricas][] e
+  Esse utilitário pode simular um cliente gerando [rastros][traces], [métricas][metrics] e
   [logs][].
 
 ## Gerar e coletar telemetria {#generate-and-collect-telemetry}
 
-3. Execute o Collector, escutando nas portas 4317 (OTLP gRPC), 4318 (OTLP HTTP)
-  e 55679 (ZPages):
+3. Inicie o Collector, escutando nas portas 4317 (para OTLP gRPC), 4318 (para OTLP HTTP)
+  e 55679 (para ZPages):
 
   ```sh
   docker run \
@@ -59,7 +59,7 @@ Certifique-se de que seu ambiente de desenvolvimento tenha o seguinte. Esta pág
     -p 127.0.0.1:4318:4318 \
     -p 127.0.0.1:55679:55679 \
     otel/opentelemetry-collector:{{% param vers %}} \
-    2>&1 | tee collector-output.txt # Opcional: use tee para facilitar buscas
+    2>&1 | tee collector-output.txt # Opcionalmente use tee para facilitar buscas posteriores
   ```
 
 4. Em uma janela de terminal separada, gere alguns rastros de exemplo:
