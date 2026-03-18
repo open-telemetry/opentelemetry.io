@@ -10,8 +10,6 @@ url: {{ .RelPermalink }}
 ## Pages
 
 {{ range .Pages }}{{ if not .Draft }}
-
 - [{{ .Title }}]({{ .RelPermalink }}){{ with .Description }}: {{ . }}{{ end }}
-
 {{ end }}{{ end }}
 {{ end }}
