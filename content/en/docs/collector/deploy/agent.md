@@ -171,11 +171,11 @@ an external load balancer to handle rate limiting when needed.
 #### Limited back-pressure in async pipelines
 
 When the Collector is overwhelmed, it responds to clients with errors (gRPC
-Unavailable or HTTP 503). However, in the typical configuration with batch
-processing or an exporting queue enabled, back-pressure signals from the export
-destination do not propagate back to the sending applications. This means
-applications continue sending telemetry at full rate even when the Collector
-cannot keep up with exporting, which accelerates queue fill-up and data loss.
+Unavailable or HTTP 503). However, in the typical configuration with an
+exporting queue enabled, back-pressure signals from the export destination do
+not propagate back to the sending applications. This means applications continue
+sending telemetry at full rate even when the Collector cannot keep up with
+exporting, which accelerates queue fill-up and data loss.
 
 #### Rolling update gaps
 
@@ -253,7 +253,7 @@ The Collector's memory budget is shared between processing headroom and queue
 buffering. Larger queues improve resilience during backend outages but leave
 less room for processing spikes. Getting this balance right requires nontrivial
 calculations: you need to account for the memory used by the Go runtime, the
-deserialized data in flight, the batch processor buffer, and the sending queue.
+deserialized data in flight, and the sending queue (including its batch buffer).
 
 As a starting point:
 
@@ -284,6 +284,7 @@ exporters:
     sending_queue:
       storage: file_storage
       queue_size: 5000
+      batch: {}
     retry_on_failure:
       max_elapsed_time: 10m
 
@@ -292,7 +293,7 @@ service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [memory_limiter, batch]
+      processors: [memory_limiter]
       exporters: [otlp]
 ```
 
@@ -404,7 +405,7 @@ A DaemonSet is not always the best choice. Consider these alternatives when:
   [sidecar pattern](/docs/collector/scaling/#scaling-stateless-collectors-and-using-load-balancers)
   when you need per-application isolation, so that one application's telemetry
   spike cannot affect another.
-- **Processing is heavy**: Offload processors like `batch`, `tail_sampling`, or
+- **Processing is heavy**: Offload processors like `tail_sampling` or
   `transform` to a [Gateway tier](/docs/collector/deploy/gateway/) and keep the
   DaemonSet Collector lightweight (receive + forward only).
 - **High pod-to-node ratio**: When you have many small pods per node, a
