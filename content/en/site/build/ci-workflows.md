@@ -19,7 +19,7 @@ labels on pull requests:
 | ---------------------------------- | ------------------------------------- | -------------------------------------------- |
 | [`pr-review-trigger.yml`][trigger] | `pull_request_review`                 | Minimal (no secrets)                         |
 | [`pr-approval-labels.yml`][labels] | `pull_request_target`, `workflow_run` | App token for label edits and org/team reads |
-| [`blog-publish-labels.yml`][blog]  | `schedule` (daily 7 AM UTC)       | App token + `SLACK_WEBHOOK_URL` secret       |
+| [`blog-publish-labels.yml`][blog]  | `schedule` (daily 7 AM UTC)           | App token + `SLACK_WEBHOOK_URL` secret       |
 
 [trigger]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-review-trigger.yml
@@ -149,8 +149,8 @@ executes `pr-approval-labels.sh` in [batch mode](#publish-date-gating) —
 checking all open PRs with `blog` or `announcements` labels — and posts a Slack
 notification when `ready-to-be-merged` is newly applied to any of them.
 
-| Workflow file                     | Trigger                         | Secrets required                                |
-| --------------------------------- | ------------------------------- | ----------------------------------------------- |
+| Workflow file                     | Trigger                     | Secrets required                                |
+| --------------------------------- | --------------------------- | ----------------------------------------------- |
 | [`blog-publish-labels.yml`][blog] | `schedule` (daily 7 AM UTC) | `OTELBOT_DOCS_PRIVATE_KEY`, `SLACK_WEBHOOK_URL` |
 
 The Slack notification fires only when the label transitions from absent to
@@ -184,7 +184,8 @@ non-engineers to own the message format without touching workflow code.
    - **Label**: `Review and merge`
    - **Color**: Primary (green)
    - **Action**: Open a link
-   - **URL**: `https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Apr+state%3Aopen+label%3Ablog+label%3Aready-to-be-merged`
+   - **URL**:
+     `https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Apr+state%3Aopen+label%3Ablog+label%3Aready-to-be-merged`
 
 5. **Publish** the workflow and copy the webhook URL
 6. Add it to the repository: **Settings → Secrets and variables → Actions → New
