@@ -150,9 +150,9 @@ multiple vendors are working on supporting OpenTelemetry Profiles.
 To speed up development and experimentation, Elastic has open-sourced a desktop
 application named [devfiler](https://github.com/elastic/devfiler) that
 reimplements the backend (collection, data storage, symbolization and UI)
-portion of the eBPF profiler. Note that devfiler is not a real production backend and
-should not be used as such. For further instructions, please refer to the eBPF
-profiler
+portion of the eBPF profiler. Note that devfiler is not a real production
+backend and should not be used as such. For further instructions, please refer
+to the eBPF profiler
 [repository](https://github.com/open-telemetry/opentelemetry-ebpf-profiler).
 
 ![Devfiler example](devfiler-latest.png)
