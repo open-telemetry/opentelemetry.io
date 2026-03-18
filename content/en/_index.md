@@ -14,6 +14,7 @@ developer_note: >
 params:
   btn-lg: class="btn btn-lg btn-{1}" role="button"
   show_banner: true
+cSpell:ignore: LLMS
 ---
 
 {{% blocks/cover image_anchor="top" height="max td-below-navbar" %}}
