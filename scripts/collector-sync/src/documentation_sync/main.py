@@ -5,8 +5,7 @@ import logging
 import sys
 from pathlib import Path
 
-from documentation_sync.doc_content_generator import DocContentGenerator
-from documentation_sync.doc_marker_updater import DocMarkerUpdater
+from documentation_sync.component_data_generator import ComponentDataGenerator
 from documentation_sync.explorer_repository_manager import ExplorerRepositoryManager
 from documentation_sync.fix_spelling import fix_component_spelling
 from documentation_sync.inventory_manager import InventoryManager
@@ -51,44 +50,6 @@ def configure_logging() -> None:
         format="%(message)s",
         handlers=[logging.StreamHandler(sys.stdout)],
     )
-
-
-def get_page_info(table_key: str) -> tuple[str, str]:
-    """
-    Determine page name and marker ID from table key.
-
-    Extension subtypes (e.g., "extension-encoding") go in extension.md,
-    everything else uses the table_key as the filename.
-
-    Args:
-        table_key: Key from tables dict (e.g., "receiver", "extension-encoding")
-
-    Returns:
-        Tuple of (page_name, marker_id)
-    """
-    page_name = "extension" if table_key.startswith("extension-") else table_key
-    marker_id = f"{table_key}-table"
-    return page_name, marker_id
-
-
-def update_component_page(page_path: Path, marker_id: str, content: str, updater: DocMarkerUpdater) -> tuple[bool, str]:
-    """
-    Update a single component documentation page.
-
-    Args:
-        page_path: Path to the markdown file
-        marker_id: Marker identifier for the section
-        content: New content to insert
-        updater: DocMarkerUpdater instance
-
-    Returns:
-        Tuple of (success, status_message)
-    """
-    if not page_path.exists():
-        return False, "not found"
-
-    success = updater.update_file(page_path, marker_id, content)
-    return success, "updated" if success else f"marker '{marker_id}' not found"
 
 
 def main() -> None:
@@ -151,57 +112,19 @@ def main() -> None:
     total_components = sum(len(comps) for comps in merged_inventory["components"].values())
     logger.info(f"Loaded {total_components} total components")
 
-    diagnostics = MetadataDiagnostics()
-
     # Format versions as tags (e.g., v0.115.0)
     core_version_tag = f"v{core_version}"
     contrib_version_tag = f"v{contrib_version}"
 
-    generator = DocContentGenerator(diagnostics)
-    tables = generator.generate_all_component_tables(merged_inventory)
-
-    logger.info(f"Generated {len(tables)} component tables")
-
-    updater = DocMarkerUpdater()
-    # We're already in the opentelemetry.io repo, use relative path
-    components_dir = Path("content/en/docs/collector/components")
-
-    if not components_dir.exists():
-        logger.error(f"\n❌ {components_dir} does not exist")
-        logger.error("Please ensure you're running from the opentelemetry.io repository root")
-        sys.exit(1)
-
-    logger.info(f"\nUpdating pages in {components_dir}...")
-    updated_count = 0
-
-    for table_key, table_content in tables.items():
-        page_name, marker_id = get_page_info(table_key)
-        page_path = components_dir / f"{page_name}.md"
-
-        success, status = update_component_page(page_path, marker_id, table_content, updater)
-
-        if status == "not found":
-            logger.info(f"  ⚠️  {page_name}.md not found, skipping")
-        elif success:
-            logger.info(f"  ✓ {page_name}.md ({marker_id})")
-            updated_count += 1
-        else:
-            logger.info(f"  ⚠️  {page_name}.md - {status}")
-
-    if updated_count > 0:
-        logger.info(f"\n✅ Done! Updated {updated_count} page(s)")
-    else:
-        logger.error("\n⚠️  No pages were updated. Make sure the pages have the correct markers:")
-        logger.error(
-            "  <!-- BEGIN GENERATED: {component-type}-table SOURCE: open-telemetry/opentelemetry-ecosystem-explorer -->"
-        )
-        logger.error(
-            "  <!-- END GENERATED: {component-type}-table SOURCE: open-telemetry/opentelemetry-ecosystem-explorer -->"
-        )
-
     logger.info("\nUpdating collector versions data file...")
     version_updater = VersionUpdater(repo_root)
     version_updater.update_versions(core_version_tag, contrib_version_tag)
+
+    logger.info("\nGenerating component data files for Hugo...")
+    diagnostics = MetadataDiagnostics()
+    data_generator = ComponentDataGenerator(diagnostics)
+    data_generator.write_component_data_files(merged_inventory, repo_root)
+    logger.info("✅ Component data files generated")
 
     # Fix spelling errors (runs in current directory)
     logger.info("\n" + "=" * 60)
