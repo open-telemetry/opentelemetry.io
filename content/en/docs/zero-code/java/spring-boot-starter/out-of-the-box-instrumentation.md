@@ -9,6 +9,8 @@ cSpell:ignore: autoconfigurations autoconfigures webflux webmvc
 
 Out of the box instrumentation is available for several frameworks:
 
+{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+
 | Feature               | Property                                        | Default Value |
 | --------------------- | ----------------------------------------------- | ------------- |
 | JDBC                  | `otel.instrumentation.jdbc.enabled`             | true          |
@@ -22,7 +24,42 @@ Out of the box instrumentation is available for several frameworks:
 | Micrometer            | `otel.instrumentation.micrometer.enabled`       | false         |
 | R2DBC (reactive JDBC) | `otel.instrumentation.r2dbc.enabled`            | true          |
 
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+In [declarative configuration](../declarative-configuration/), instrumentation
+enable/disable uses centralized lists under
+`otel.distribution.spring_starter.instrumentation`. The instrumentation name
+uses `_` (snake_case), not `-` (kebab-case).
+
+| Feature               | Name                | Default |
+| --------------------- | ------------------- | ------- |
+| JDBC                  | `jdbc`              | enabled |
+| Logback               | `logback_appender`  | enabled |
+| Logback MDC           | `logback_mdc`       | enabled |
+| Spring Web            | `spring_web`        | enabled |
+| Spring Web MVC        | `spring_webmvc`     | enabled |
+| Spring WebFlux        | `spring_webflux`    | enabled |
+| Kafka                 | `kafka`             | enabled |
+| MongoDB               | `mongo`             | enabled |
+| Micrometer            | `micrometer`        | disabled |
+| R2DBC (reactive JDBC) | `r2dbc`             | enabled |
+
+To disable a specific instrumentation:
+
+```yaml
+otel:
+  distribution:
+    spring_starter:
+      instrumentation:
+        disabled:
+          - logback_appender
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
 ## Turn on instrumentations selectively
+
+{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
 
 To use only specific instrumentations, turn off all the instrumentations first
 by setting the `otel.instrumentation.common.default-enabled` property to
@@ -31,24 +68,78 @@ by setting the `otel.instrumentation.common.default-enabled` property to
 For example, if you want to only enable the JDBC instrumentation, set
 `otel.instrumentation.jdbc.enabled` to `true`.
 
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+In [declarative configuration](../declarative-configuration/), set
+`default_enabled` to `false` and list the instrumentations you want in
+`enabled`:
+
+```yaml
+otel:
+  distribution:
+    spring_starter:
+      instrumentation:
+        default_enabled: false
+        enabled:
+          - jdbc
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
 ## Common instrumentation configuration
 
 Common properties for all database instrumentations:
+
+{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
 
 | System property                                              | Type    | Default | Description                            |
 | ------------------------------------------------------------ | ------- | ------- | -------------------------------------- |
 | `otel.instrumentation.common.db-statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
 
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+Enables the DB statement sanitization for all database instrumentations:
+
+```yaml
+otel:
+  instrumentation/development:
+    java:
+      common:
+        db_statement_sanitizer:
+          enabled: true
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
 ## JDBC Instrumentation
+
+{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
 
 | System property                                         | Type    | Default | Description                            |
 | ------------------------------------------------------- | ------- | ------- | -------------------------------------- |
 | `otel.instrumentation.jdbc.statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
 
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+Enables the DB statement sanitization for JDBC:
+
+```yaml
+otel:
+  instrumentation/development:
+    java:
+      jdbc:
+        statement_sanitizer:
+          enabled: true
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
 ## Logback
 
 You can enable experimental features with system properties to capture
 attributes :
+
+{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
 
 | System property                                                                        | Type    | Default | Description                                                                                                                                     |
 | -------------------------------------------------------------------------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -58,6 +149,26 @@ attributes :
 | `otel.instrumentation.logback-appender.experimental.capture-key-value-pair-attributes` | Boolean | false   | Enable the capture of Logback key value pairs as attributes.                                                                                    |
 | `otel.instrumentation.logback-appender.experimental.capture-logger-context-attributes` | Boolean | false   | Enable the capture of Logback logger context properties as attributes.                                                                          |
 | `otel.instrumentation.logback-appender.experimental.capture-mdc-attributes`            | String  |         | Comma separated list of MDC attributes to capture. Use the wildcard character `*` to capture all attributes.                                    |
+
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+Experimental Logback capture options:
+
+```yaml
+otel:
+  instrumentation/development:
+    java:
+      logback_appender:
+        experimental_log_attributes: false # thread.name and thread.id
+        experimental:
+          capture_code_attributes: false # source code attributes
+          capture_marker_attribute: false # Logback markers
+          capture_key_value_pair_attributes: false # key value pairs
+          capture_logger_context_attributes: false # logger context properties
+          capture_mdc_attributes: '*' # MDC attributes (* = all)
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 [source code attributes]:
   /docs/specs/semconv/general/attributes/#source-code-attributes
@@ -262,9 +373,25 @@ public class WebClientController {
 
 Provides autoconfiguration for the Kafka client instrumentation.
 
+{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+
 | System property                                           | Type    | Default | Description                                          |
 | --------------------------------------------------------- | ------- | ------- | ---------------------------------------------------- |
 | `otel.instrumentation.kafka.experimental-span-attributes` | Boolean | false   | Enables the capture of experimental span attributes. |
+
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+Enables the capture of experimental span attributes for Kafka:
+
+```yaml
+otel:
+  instrumentation/development:
+    java:
+      kafka:
+        experimental_span_attributes: false
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ## Micrometer Instrumentation
 
@@ -274,14 +401,48 @@ Provides autoconfiguration for the Micrometer to OpenTelemetry bridge.
 
 Provides autoconfiguration for the MongoDB client instrumentation.
 
+{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+
 | System property                                          | Type    | Default | Description                            |
 | -------------------------------------------------------- | ------- | ------- | -------------------------------------- |
 | `otel.instrumentation.mongo.statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
+
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+Enables the DB statement sanitization for MongoDB:
+
+```yaml
+otel:
+  instrumentation/development:
+    java:
+      mongo:
+        statement_sanitizer:
+          enabled: true
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ## R2DBC Instrumentation
 
 Provides autoconfiguration for the OpenTelemetry R2DBC instrumentation.
 
+{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+
 | System property                                          | Type    | Default | Description                            |
 | -------------------------------------------------------- | ------- | ------- | -------------------------------------- |
 | `otel.instrumentation.r2dbc.statement-sanitizer.enabled` | Boolean | true    | Enables the DB statement sanitization. |
+
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+Enables the DB statement sanitization for R2DBC:
+
+```yaml
+otel:
+  instrumentation/development:
+    java:
+      r2dbc:
+        statement_sanitizer:
+          enabled: true
+```
+
+{{% /tab %}} {{< /tabpane >}}

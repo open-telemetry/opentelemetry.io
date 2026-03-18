@@ -21,6 +21,8 @@ The OpenTelemetry Starter supports all the
 You can update the configuration with properties in the `application.properties`
 or the `application.yaml` file, or with environment variables.
 
+{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+
 `application.properties` example:
 
 ```properties
@@ -51,6 +53,35 @@ Environment variables example:
 export OTEL_PROPAGATORS="tracecontext,b3"
 export OTEL_RESOURCE_ATTRIBUTES="deployment.environment=dev,service.name=cart,service.namespace=shop"
 ```
+
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+SDK-level settings (resources, propagators, exporters) use the standard
+[declarative configuration schema](/docs/languages/sdk-configuration/declarative-configuration/)
+directly in `application.yaml`. System properties and environment variables
+still work to override values — see
+[Environment variable overrides](../declarative-configuration/#environment-variable-overrides).
+
+```yaml
+otel:
+  file_format: '1.0'
+
+  resource:
+    attributes:
+      - name: deployment.environment
+        value: dev
+      - name: service.name
+        value: cart
+      - name: service.namespace
+        value: shop
+
+  propagator:
+    composite:
+      - tracecontext:
+      - b3:
+```
+
+{{% /tab %}} {{< /tabpane >}}
 
 ## Overriding Resource Attributes
 
@@ -83,118 +114,36 @@ Spring Boot's
 
 ## Disable the OpenTelemetry Starter
 
+{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+
 {{% config_option name="otel.sdk.disabled" %}}
 
 Set the value to `true` to disable the starter, e.g. for testing purposes.
 
 {{% /config_option %}}
 
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+Set `otel.disabled` to `true` to disable the starter, e.g. for testing purposes.
+
+Note: with [declarative configuration](../declarative-configuration/), the
+property name is `otel.disabled`, not `otel.sdk.disabled`.
+
+```yaml
+otel:
+  file_format: '1.0'
+  disabled: true
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
 ## Programmatic configuration
 
-You can use the `AutoConfigurationCustomizerProvider` for programmatic
-configuration. Programmatic configuration is recommended for advanced use cases,
-which are not configurable using properties.
-
-### Exclude actuator endpoints from tracing
-
-As an example, you can customize the sampler to exclude health check endpoints
-from tracing:
-
-{{< tabpane text=true >}} {{% tab header="Maven (`pom.xml`)" lang=Maven %}}
-
-```xml
-<dependencies>
-  <dependency>
-    <groupId>io.opentelemetry.contrib</groupId>
-    <artifactId>opentelemetry-samplers</artifactId>
-    <version>1.33.0-alpha</version>
-  </dependency>
-</dependencies>
-```
-
-{{% /tab %}} {{% tab header="Gradle (`build.gradle`)" lang=Gradle %}}
-
-```kotlin
-dependencies {
-  implementation("io.opentelemetry.contrib:opentelemetry-samplers:1.33.0-alpha")
-}
-```
-
-{{% /tab %}} {{< /tabpane>}}
-
-<!-- prettier-ignore-start -->
-<?code-excerpt "src/main/java/otel/FilterPaths.java"?>
-```java
-package otel;
-
-import io.opentelemetry.api.trace.SpanKind;
-import io.opentelemetry.contrib.sampler.RuleBasedRoutingSampler;
-import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
-import io.opentelemetry.semconv.UrlAttributes;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-public class FilterPaths {
-
-  @Bean
-  public AutoConfigurationCustomizerProvider otelCustomizer() {
-    return p ->
-        p.addSamplerCustomizer(
-            (fallback, config) ->
-                RuleBasedRoutingSampler.builder(SpanKind.SERVER, fallback)
-                    .drop(UrlAttributes.URL_PATH, "^/actuator")
-                    .build());
-  }
-}
-```
-<!-- prettier-ignore-end -->
-
-### Configure the exporter programmatically
-
-You can also configure OTLP exporters programmatically. This configuration
-replaces the default OTLP exporter and adds a custom header to the requests.
-
-<!-- prettier-ignore-start -->
-<?code-excerpt "src/main/java/otel/CustomAuth.java"?>
-```java
-package otel;
-
-import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
-import io.opentelemetry.sdk.autoconfigure.spi.AutoConfigurationCustomizerProvider;
-import java.util.Collections;
-import java.util.Map;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-
-@Configuration
-public class CustomAuth {
-  @Bean
-  public AutoConfigurationCustomizerProvider otelCustomizer() {
-    return p ->
-        p.addSpanExporterCustomizer(
-            (exporter, config) -> {
-              if (exporter instanceof OtlpHttpSpanExporter) {
-                return ((OtlpHttpSpanExporter) exporter)
-                    .toBuilder().setHeaders(this::headers).build();
-              }
-              return exporter;
-            });
-  }
-
-  private Map<String, String> headers() {
-    return Collections.singletonMap("Authorization", "Bearer " + refreshToken());
-  }
-
-  private String refreshToken() {
-    // e.g. read the token from a kubernetes secret
-    return "token";
-  }
-}
-```
-<!-- prettier-ignore-end -->
+See [Programmatic configuration](../programmatic-configuration/).
 
 ## Resource Providers
+
+{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
 
 The OpenTelemetry Starter includes the same resource providers as the Java
 agent:
@@ -225,11 +174,40 @@ FQN:
 | `service.name`    | `spring.application.name` or `build.name` from `build-info.properties` (see [Service name](#service-name)) |
 | `service.version` | `build.version` from `build-info.properties`                                                               |
 
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+With [declarative configuration](../declarative-configuration/), resource
+providers are configured explicitly as detectors under
+`resource.detection/development.detectors`. Only listed detectors are active —
+nothing is auto-discovered via SPI.
+
+```yaml
+otel:
+  resource:
+    detection/development:
+      detectors:
+        - container: # container.id
+        - host: # host.name, host.arch
+        - host_id: # host.id
+        - os: # os.type, os.description
+        - process: # process.pid, process.executable.path, process.command_line
+        - process_runtime: # process.runtime.name/version/description
+        - service: # service.name, service.instance.id
+        - spring: # service.name (from spring.application.name), service.version (from build-info)
+```
+
+The `telemetry.distro.name` and `telemetry.distro.version` attributes are always
+added automatically by the starter for troubleshooting purposes.
+
+{{% /tab %}} {{< /tabpane >}}
+
 ## Service name
 
 Using these resource providers, the service name is determined by the following
 precedence rules, in accordance with the OpenTelemetry
 [specification](/docs/languages/sdk-configuration/general/#otel_service_name):
+
+{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
 
 1. `otel.service.name` spring property or `OTEL_SERVICE_NAME` environment
    variable (highest precedence)
@@ -239,6 +217,47 @@ precedence rules, in accordance with the OpenTelemetry
 4. `build-info.properties`
 5. `Implementation-Title` from META-INF/MANIFEST.MF
 6. The default value is `unknown_service:java` (lowest precedence)
+
+{{% /tab %}} {{% tab "Declarative Configuration" %}}
+
+The service name depends on which resource detectors you include (see
+[Resource Providers](#resource-providers)):
+
+1. `service.name` in `otel.resource.attributes` (highest precedence):
+
+   ```yaml
+   otel:
+     resource:
+       attributes:
+         - name: service.name
+           value: my-spring-app
+   ```
+
+2. The `service` detector — if included, auto-detects from
+   `OTEL_SERVICE_NAME`:
+
+   ```yaml
+   otel:
+     resource:
+       detection/development:
+         detectors:
+           - service:
+   ```
+
+3. The `spring` detector — if included, detects from
+   `spring.application.name` and `build-info.properties`:
+
+   ```yaml
+   otel:
+     resource:
+       detection/development:
+         detectors:
+           - spring:
+   ```
+
+4. The default value is `unknown_service:java` (lowest precedence)
+
+{{% /tab %}} {{< /tabpane >}}
 
 Use the following snippet in your pom.xml file to generate the
 `build-info.properties` file:

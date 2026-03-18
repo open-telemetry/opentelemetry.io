@@ -116,6 +116,18 @@ dependencies {
 You can disable the OpenTelemetry annotations by setting the
 `otel.instrumentation.annotations.enabled` property to `false`.
 
+In [declarative configuration](../declarative-configuration/), use the
+centralized instrumentation lists instead:
+
+```yaml
+otel:
+  distribution:
+    spring_starter:
+      instrumentation:
+        disabled:
+          - annotations
+```
+
 You can customize the span by using the elements of the `WithSpan` annotation:
 
 | Name    | Type       | Description           | Default Value       |
