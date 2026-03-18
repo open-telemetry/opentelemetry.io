@@ -74,7 +74,7 @@ offers a balanced feature set that can efficiently capture profiling data:
 - Profile samples can be further associated with the Tracing `trace_id` /
   `span_id` attributes, enabling cross-signal correlation of the data.
 - [Semantic conventions](https://github.com/open-telemetry/semantic-conventions)
-  provide definition for the most common profiling specific attributes.
+  provide definition for the most common profiling-specific attributes.
 
 Originally inspired by the pprof format and developed in collaboration with
 `pprof` maintainers, OTLP Profiles has evolved into an independent standard that
