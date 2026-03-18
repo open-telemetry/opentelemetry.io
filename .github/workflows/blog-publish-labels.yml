@@ -44,7 +44,9 @@ jobs:
           LABELED_PRS_OUTPUT_FILE: ${{ github.workspace }}/labeled-prs.json
 
       - name: Inject test payload for Slack validation
-        if: github.event_name == 'workflow_dispatch' && github.event.inputs.force_notify == 'true'
+        if:
+          github.event_name == 'workflow_dispatch' &&
+          github.event.inputs.force_notify == 'true'
         run: |
           printf '{"number": 9000, "title": "[blog] Test post: first blog ready to publish", "url": "https://github.com/${{ github.repository }}/pull/9000"}\n' \
             >> "${{ github.workspace }}/labeled-prs.json"
