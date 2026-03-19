@@ -1,7 +1,7 @@
 ---
 title: Declarative configuration
 weight: 25
-cSpell:ignore: Customizer
+cSpell:ignore: Customizer Dotel
 ---
 
 Declarative configuration uses the
@@ -74,9 +74,8 @@ Note that `${VAR:default}` uses a single colon (Spring syntax), not the
 
 ## Mapping of configuration options
 
-The following rules describe how `application.properties` /
-`application.yaml` configuration options map to their declarative configuration
-equivalents:
+The following rules describe how `application.properties` / `application.yaml`
+configuration options map to their declarative configuration equivalents:
 
 ### Instrumentation enable/disable
 
@@ -84,11 +83,11 @@ In declarative configuration, instrumentation enable/disable uses centralized
 lists instead of individual properties. The instrumentation name uses `_`
 (snake_case), not `-` (kebab-case).
 
-| Properties                                       | Declarative Configuration                                                    |
-| ------------------------------------------------ | ---------------------------------------------------------------------------- |
-| `otel.instrumentation.jdbc.enabled=true`         | `otel.distribution.spring_starter.instrumentation.enabled: [jdbc]`           |
+| Properties                                            | Declarative Configuration                                                       |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `otel.instrumentation.jdbc.enabled=true`              | `otel.distribution.spring_starter.instrumentation.enabled: [jdbc]`              |
 | `otel.instrumentation.logback-appender.enabled=false` | `otel.distribution.spring_starter.instrumentation.disabled: [logback_appender]` |
-| `otel.instrumentation.common.default-enabled=false` | `otel.distribution.spring_starter.instrumentation.default_enabled: false`    |
+| `otel.instrumentation.common.default-enabled=false`   | `otel.distribution.spring_starter.instrumentation.default_enabled: false`       |
 
 Example:
 
@@ -119,24 +118,24 @@ map to `otel.instrumentation/development.java.*`:
 
 For example:
 
-| Properties                                                            | Declarative Configuration                                                                |
-| --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `otel.instrumentation.logback-appender.experimental-log-attributes`   | `otel.instrumentation/development.java.logback_appender.experimental_log_attributes/development` |
+| Properties                                                          | Declarative Configuration                                                                        |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `otel.instrumentation.logback-appender.experimental-log-attributes` | `otel.instrumentation/development.java.logback_appender.experimental_log_attributes/development` |
 
 Some options have special mappings that don't follow the default algorithm:
 
-| Properties                                                            | Declarative Configuration                                                    |
-| --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `otel.instrumentation.common.db-statement-sanitizer.enabled`            | `otel.instrumentation/development.java.common.database.statement_sanitizer.enabled` |
-| `otel.instrumentation.http.client.capture-request-headers`              | `otel.instrumentation/development.general.http.client.request_captured_headers` |
-| `otel.instrumentation.http.client.capture-response-headers`             | `otel.instrumentation/development.general.http.client.response_captured_headers` |
-| `otel.instrumentation.http.server.capture-request-headers`              | `otel.instrumentation/development.general.http.server.request_captured_headers` |
-| `otel.instrumentation.http.server.capture-response-headers`             | `otel.instrumentation/development.general.http.server.response_captured_headers` |
+| Properties                                                              | Declarative Configuration                                                                          |
+| ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `otel.instrumentation.common.db-statement-sanitizer.enabled`            | `otel.instrumentation/development.java.common.database.statement_sanitizer.enabled`                |
+| `otel.instrumentation.http.client.capture-request-headers`              | `otel.instrumentation/development.general.http.client.request_captured_headers`                    |
+| `otel.instrumentation.http.client.capture-response-headers`             | `otel.instrumentation/development.general.http.client.response_captured_headers`                   |
+| `otel.instrumentation.http.server.capture-request-headers`              | `otel.instrumentation/development.general.http.server.request_captured_headers`                    |
+| `otel.instrumentation.http.server.capture-response-headers`             | `otel.instrumentation/development.general.http.server.response_captured_headers`                   |
 | `otel.instrumentation.http.client.emit-experimental-telemetry`          | `otel.instrumentation/development.java.common.http.client.emit_experimental_telemetry/development` |
 | `otel.instrumentation.http.server.emit-experimental-telemetry`          | `otel.instrumentation/development.java.common.http.server.emit_experimental_telemetry/development` |
-| `otel.instrumentation.http.known-methods`                               | `otel.instrumentation/development.java.common.http.known_methods` |
-| `otel.instrumentation.messaging.experimental.receive-telemetry.enabled` | `otel.instrumentation/development.java.common.messaging.receive_telemetry/development.enabled` |
-| `otel.jmx.enabled`                                                     | `otel.instrumentation/development.java.jmx.enabled`                          |
+| `otel.instrumentation.http.known-methods`                               | `otel.instrumentation/development.java.common.http.known_methods`                                  |
+| `otel.instrumentation.messaging.experimental.receive-telemetry.enabled` | `otel.instrumentation/development.java.common.messaging.receive_telemetry/development.enabled`     |
+| `otel.jmx.enabled`                                                      | `otel.instrumentation/development.java.jmx.enabled`                                                |
 
 The `instrumentation/development` section has two top-level groups:
 
@@ -159,13 +158,13 @@ example.
 
 ## Differences from agent declarative configuration
 
-| Aspect             | Agent                                                | Spring Boot starter                       |
-| ------------------ | ---------------------------------------------------- | ----------------------------------------- |
-| Config location    | Separate file (`-Dotel.config.file=...`)             | Inside `application.yaml`                 |
-| Variable syntax    | `${VAR:-default}` (double-colon)                     | `${VAR:default}` (single colon, Spring)   |
-| Profiles           | Not supported                                        | Spring profiles work normally              |
-| Enable/disable     | `distribution.javaagent.instrumentation.*`           | `distribution.spring_starter.instrumentation.*` |
-| Default-enabled    | `distribution.javaagent.instrumentation.default_enabled` | `distribution.spring_starter.instrumentation.default_enabled` |
+| Aspect          | Agent                                                    | Spring Boot starter                                           |
+| --------------- | -------------------------------------------------------- | ------------------------------------------------------------- |
+| Config location | Separate file (`-Dotel.config.file=...`)                 | Inside `application.yaml`                                     |
+| Variable syntax | `${VAR:-default}` (double-colon)                         | `${VAR:default}` (single colon, Spring)                       |
+| Profiles        | Not supported                                            | Spring profiles work normally                                 |
+| Enable/disable  | `distribution.javaagent.instrumentation.*`               | `distribution.spring_starter.instrumentation.*`               |
+| Default-enabled | `distribution.javaagent.instrumentation.default_enabled` | `distribution.spring_starter.instrumentation.default_enabled` |
 
 ## Environment variable overrides
 

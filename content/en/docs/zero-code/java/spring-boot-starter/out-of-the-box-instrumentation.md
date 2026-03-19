@@ -40,18 +40,18 @@ enable/disable uses centralized lists under
 `otel.distribution.spring_starter.instrumentation`. The instrumentation name
 uses `_` (snake_case), not `-` (kebab-case).
 
-| Feature               | Name                | Default |
-| --------------------- | ------------------- | ------- |
-| JDBC                  | `jdbc`              | enabled |
-| Logback               | `logback_appender`  | enabled |
-| Logback MDC           | `logback_mdc`       | enabled |
-| Spring Web            | `spring_web`        | enabled |
-| Spring Web MVC        | `spring_webmvc`     | enabled |
-| Spring WebFlux        | `spring_webflux`    | enabled |
-| Kafka                 | `kafka`             | enabled |
-| MongoDB               | `mongo`             | enabled |
-| Micrometer            | `micrometer`        | disabled |
-| R2DBC (reactive JDBC) | `r2dbc`             | enabled |
+| Feature               | Name               | Default  |
+| --------------------- | ------------------ | -------- |
+| JDBC                  | `jdbc`             | enabled  |
+| Logback               | `logback_appender` | enabled  |
+| Logback MDC           | `logback_mdc`      | enabled  |
+| Spring Web            | `spring_web`       | enabled  |
+| Spring Web MVC        | `spring_webmvc`    | enabled  |
+| Spring WebFlux        | `spring_webflux`   | enabled  |
+| Kafka                 | `kafka`            | enabled  |
+| MongoDB               | `mongo`            | enabled  |
+| Micrometer            | `micrometer`       | disabled |
+| R2DBC (reactive JDBC) | `r2dbc`            | enabled  |
 
 To disable a specific instrumentation:
 
@@ -168,14 +168,14 @@ attributes :
 
 {{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
 
-| Property                                                                               | Type    | Default | Description                                                                                                                                     |
-| -------------------------------------------------------------------------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `experimental-log-attributes`                                                          | Boolean | false   | Enable the capture of experimental log attributes `thread.name` and `thread.id`.                                                                |
-| `experimental.capture-code-attributes`                                                 | Boolean | false   | Enable the capture of [source code attributes][]. Note that capturing source code attributes at logging sites might add a performance overhead. |
-| `experimental.capture-marker-attribute`                                                | Boolean | false   | Enable the capture of Logback markers as attributes.                                                                                            |
-| `experimental.capture-key-value-pair-attributes`                                       | Boolean | false   | Enable the capture of Logback key value pairs as attributes.                                                                                    |
-| `experimental.capture-logger-context-attributes`                                       | Boolean | false   | Enable the capture of Logback logger context properties as attributes.                                                                          |
-| `experimental.capture-mdc-attributes`                                                  | String  |         | Comma separated list of MDC attributes to capture. Use the wildcard character `*` to capture all attributes.                                    |
+| Property                                         | Type    | Default | Description                                                                                                                                     |
+| ------------------------------------------------ | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `experimental-log-attributes`                    | Boolean | false   | Enable the capture of experimental log attributes `thread.name` and `thread.id`.                                                                |
+| `experimental.capture-code-attributes`           | Boolean | false   | Enable the capture of [source code attributes][]. Note that capturing source code attributes at logging sites might add a performance overhead. |
+| `experimental.capture-marker-attribute`          | Boolean | false   | Enable the capture of Logback markers as attributes.                                                                                            |
+| `experimental.capture-key-value-pair-attributes` | Boolean | false   | Enable the capture of Logback key value pairs as attributes.                                                                                    |
+| `experimental.capture-logger-context-attributes` | Boolean | false   | Enable the capture of Logback logger context properties as attributes.                                                                          |
+| `experimental.capture-mdc-attributes`            | String  |         | Comma separated list of MDC attributes to capture. Use the wildcard character `*` to capture all attributes.                                    |
 
 ```yaml
 otel:
@@ -192,14 +192,14 @@ otel:
 
 {{% /tab %}} {{% tab "Declarative Configuration" %}}
 
-| Property                                           | Type    | Default | Description                                                                                                                                     |
-| -------------------------------------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `experimental_log_attributes/development`          | Boolean | false   | Enable the capture of experimental log attributes `thread.name` and `thread.id`.                                                                |
-| `capture_code_attributes/development`              | Boolean | false   | Enable the capture of [source code attributes][]. Note that capturing source code attributes at logging sites might add a performance overhead. |
-| `capture_marker_attribute/development`             | Boolean | false   | Enable the capture of Logback markers as attributes.                                                                                            |
-| `capture_key_value_pair_attributes/development`    | Boolean | false   | Enable the capture of Logback key value pairs as attributes.                                                                                    |
-| `capture_logger_context_attributes/development`    | Boolean | false   | Enable the capture of Logback logger context properties as attributes.                                                                          |
-| `capture_mdc_attributes/development`               | String  |         | Comma separated list of MDC attributes to capture. Use the wildcard character `*` to capture all attributes.                                    |
+| Property                                        | Type    | Default | Description                                                                                                                                     |
+| ----------------------------------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `experimental_log_attributes/development`       | Boolean | false   | Enable the capture of experimental log attributes `thread.name` and `thread.id`.                                                                |
+| `capture_code_attributes/development`           | Boolean | false   | Enable the capture of [source code attributes][]. Note that capturing source code attributes at logging sites might add a performance overhead. |
+| `capture_marker_attribute/development`          | Boolean | false   | Enable the capture of Logback markers as attributes.                                                                                            |
+| `capture_key_value_pair_attributes/development` | Boolean | false   | Enable the capture of Logback key value pairs as attributes.                                                                                    |
+| `capture_logger_context_attributes/development` | Boolean | false   | Enable the capture of Logback logger context properties as attributes.                                                                          |
+| `capture_mdc_attributes/development`            | String  |         | Comma separated list of MDC attributes to capture. Use the wildcard character `*` to capture all attributes.                                    |
 
 ```yaml
 otel:

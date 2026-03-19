@@ -1,7 +1,7 @@
 ---
 title: SDK configuration
 weight: 30
-cSpell:ignore: customizer distro
+cSpell:ignore: distro
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -227,8 +227,7 @@ The service name depends on which resource detectors you include (see
            value: my-spring-app
    ```
 
-2. The `service` detector — if included, auto-detects from
-   `OTEL_SERVICE_NAME`:
+2. The `service` detector — if included, auto-detects from `OTEL_SERVICE_NAME`:
 
    ```yaml
    otel:
@@ -238,8 +237,8 @@ The service name depends on which resource detectors you include (see
            - service:
    ```
 
-3. The `spring` detector — if included, detects from
-   `spring.application.name` and `build-info.properties`:
+3. The `spring` detector — if included, detects from `spring.application.name`
+   and `build-info.properties`:
 
    ```yaml
    otel:
