@@ -16,7 +16,8 @@ which are not configurable using properties.
 > `AutoConfigurationCustomizerProvider` does not work with
 > [declarative configuration](../declarative-configuration/). With declarative
 > configuration, use `DeclarativeConfigurationCustomizerProvider` instead — see
-> the [agent Extension API](/docs/zero-code/java/agent/declarative-configuration/#extension-api)
+> the
+> [agent Extension API](/docs/zero-code/java/agent/declarative-configuration/#extension-api)
 > for details and examples.
 
 ## Exclude actuator endpoints from tracing
