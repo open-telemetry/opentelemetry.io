@@ -29,7 +29,7 @@ comandos conforme necessário para o seu _shell_ de preferência.
 - [Docker](https://www.docker.com/) ou outro ambiente de execução compatível com
   contêineres.
 - [Go](https://go.dev/) 1.20 ou superior
-- A variável de ambiente `GOBIN` está definida; se não estiver, inicialize-a
+- [A variável de ambiente `GOBIN`][gobin] está definida; se não estiver, inicialize-a
   adequadamente, por exemplo[^1]:
   ```sh
   export GOBIN=${GOBIN:-$(go env GOPATH)/bin}
