@@ -125,7 +125,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     logs: alpha
     metrics: alpha
@@ -160,7 +160,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     logs: alpha
     metrics: alpha
@@ -223,7 +223,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: beta
     traces: beta
@@ -253,7 +253,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     logs: beta
     metrics: beta
@@ -270,7 +270,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     logs: beta
     metrics: beta
@@ -280,7 +280,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
     - otlp
   stability:
     profiles: development
@@ -292,7 +292,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
     - otlp
   stability:
     profiles: development
