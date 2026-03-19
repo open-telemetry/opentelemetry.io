@@ -31,9 +31,15 @@ instrumentation library.
 
 {{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
 
-| System property                               | Type    | Default | Description                                                                                     |
-| --------------------------------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------- |
-| `otel.instrumentation.log4j-appender.enabled` | Boolean | true    | Enables the configuration of the Log4j OpenTelemetry appender with an `OpenTelemetry` instance. |
+Enables the configuration of the Log4j OpenTelemetry appender with an
+`OpenTelemetry` instance:
+
+```yaml
+otel:
+  instrumentation:
+    log4j-appender:
+      enabled: true # default: true
+```
 
 {{% /tab %}} {{% tab "Declarative Configuration" %}}
 

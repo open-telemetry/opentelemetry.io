@@ -113,27 +113,30 @@ map to `otel.instrumentation/development.java.*`:
 1. Strip the `otel.instrumentation.` prefix
 2. Per segment: replace `-` with `_`
 3. Place under `otel.instrumentation/development.java.`
+4. A `/development` suffix on a key indicates an experimental feature (see the
+   `translateName` method in `ConfigPropertiesBackedDeclarativeConfigProperties`
+   for the reverse mapping)
 
 For example:
 
-| Properties                                                            | Declarative Configuration                                                    |
-| --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `otel.instrumentation.logback-appender.experimental-log-attributes`   | `otel.instrumentation/development.java.logback_appender.experimental_log_attributes` |
-| `otel.instrumentation.common.db-statement-sanitizer.enabled`          | `otel.instrumentation/development.java.common.db_statement_sanitizer.enabled` |
+| Properties                                                            | Declarative Configuration                                                                |
+| --------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `otel.instrumentation.logback-appender.experimental-log-attributes`   | `otel.instrumentation/development.java.logback_appender.experimental_log_attributes/development` |
 
 Some options have special mappings that don't follow the default algorithm:
 
 | Properties                                                            | Declarative Configuration                                                    |
 | --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `otel.instrumentation.http.client.capture-request-headers`            | `otel.instrumentation/development.general.http.client.request_captured_headers` |
-| `otel.instrumentation.http.client.capture-response-headers`           | `otel.instrumentation/development.general.http.client.response_captured_headers` |
-| `otel.instrumentation.http.server.capture-request-headers`            | `otel.instrumentation/development.general.http.server.request_captured_headers` |
-| `otel.instrumentation.http.server.capture-response-headers`           | `otel.instrumentation/development.general.http.server.response_captured_headers` |
-| `otel.instrumentation.http.client.emit-experimental-telemetry`        | `otel.instrumentation/development.java.common.http.client.emit_experimental_telemetry/development` |
-| `otel.instrumentation.http.server.emit-experimental-telemetry`        | `otel.instrumentation/development.java.common.http.server.emit_experimental_telemetry/development` |
-| `otel.instrumentation.http.known-methods`                             | `otel.instrumentation/development.java.common.http.known_methods` |
+| `otel.instrumentation.common.db-statement-sanitizer.enabled`            | `otel.instrumentation/development.java.common.database.statement_sanitizer.enabled` |
+| `otel.instrumentation.http.client.capture-request-headers`              | `otel.instrumentation/development.general.http.client.request_captured_headers` |
+| `otel.instrumentation.http.client.capture-response-headers`             | `otel.instrumentation/development.general.http.client.response_captured_headers` |
+| `otel.instrumentation.http.server.capture-request-headers`              | `otel.instrumentation/development.general.http.server.request_captured_headers` |
+| `otel.instrumentation.http.server.capture-response-headers`             | `otel.instrumentation/development.general.http.server.response_captured_headers` |
+| `otel.instrumentation.http.client.emit-experimental-telemetry`          | `otel.instrumentation/development.java.common.http.client.emit_experimental_telemetry/development` |
+| `otel.instrumentation.http.server.emit-experimental-telemetry`          | `otel.instrumentation/development.java.common.http.server.emit_experimental_telemetry/development` |
+| `otel.instrumentation.http.known-methods`                               | `otel.instrumentation/development.java.common.http.known_methods` |
 | `otel.instrumentation.messaging.experimental.receive-telemetry.enabled` | `otel.instrumentation/development.java.common.messaging.receive_telemetry/development.enabled` |
-| `otel.jmx.enabled`                                                   | `otel.instrumentation/development.java.jmx.enabled`                          |
+| `otel.jmx.enabled`                                                     | `otel.instrumentation/development.java.jmx.enabled`                          |
 
 The `instrumentation/development` section has two top-level groups:
 

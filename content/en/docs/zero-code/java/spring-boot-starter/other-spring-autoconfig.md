@@ -52,9 +52,14 @@ dependencies {
 
 {{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
 
-| Property                       | Default Value | ConditionalOnClass   |
-| ------------------------------ | ------------- | -------------------- |
-| `otel.exporter.zipkin.enabled` | true          | `ZipkinSpanExporter` |
+Enables the Zipkin exporter (requires `ZipkinSpanExporter` on the classpath):
+
+```yaml
+otel:
+  exporter:
+    zipkin:
+      enabled: true # default: true
+```
 
 {{% /tab %}} {{% tab "Declarative Configuration" %}}
 

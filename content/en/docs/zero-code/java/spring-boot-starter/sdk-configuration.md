@@ -23,15 +23,6 @@ or the `application.yaml` file, or with environment variables.
 
 {{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
 
-`application.properties` example:
-
-```properties
-otel.propagators=tracecontext,b3
-otel.resource.attributes.deployment.environment=dev
-otel.resource.attributes.service.name=cart
-otel.resource.attributes.service.namespace=shop
-```
-
 `application.yaml` example:
 
 ```yaml
@@ -116,11 +107,14 @@ Spring Boot's
 
 {{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
 
-{{% config_option name="otel.sdk.disabled" %}}
+Set `otel.sdk.disabled` to `true` to disable the starter, e.g. for testing
+purposes:
 
-Set the value to `true` to disable the starter, e.g. for testing purposes.
-
-{{% /config_option %}}
+```yaml
+otel:
+  sdk:
+    disabled: true
+```
 
 {{% /tab %}} {{% tab "Declarative Configuration" %}}
 
