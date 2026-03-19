@@ -155,6 +155,13 @@ All language teams also work with `@open-telemetry/docs-approvers` and
 - Maintainers: `@open-telemetry/docs-ja-maintainers`
 - Approvers: `@open-telemetry/docs-ja-approvers`
 
+**Polish**:
+
+- Website: <https://opentelemetry.io/pl/>
+- Slack channel: [`#otel-localization-pl`][otel-localization-pl]
+- Maintainers: `@open-telemetry/docs-pl-maintainers`
+- Approvers: `@open-telemetry/docs-pl-approvers`
+
 **Portuguese**:
 
 - Website: <https://opentelemetry.io/pt/>
@@ -190,7 +197,7 @@ interested in helping with translation or review, you might consider:
 
 1. Join the CNCF Slack and introduce yourself in
    [`#otel-docs-localization`][otel-docs-localization]
-2. Review the [localization contributing guide]
+2. Review the [localization contributing guide][]
 3. Look for issues tagged with your language label (e.g.,
    [`lang:pt`][issues-lang-pt])
 4. [Submit a pull request][submitting content] following the established
@@ -210,7 +217,7 @@ To propose a new language localization, you will need:
    outlining your proposal
 
 > [!NOTE] If you're interested in starting a new localization, do not hesitate
-> to read our [new localization guide] for detailed steps.
+> to read our [new localization guide][] for detailed steps.
 
 ## Meeting Times
 
@@ -259,6 +266,7 @@ GitHub labels for tracking localization work:
 - [`lang:es`][issues-lang-es] - Spanish localization
 - [`lang:fr`][issues-lang-fr] - French localization
 - [`lang:ja`][issues-lang-ja] - Japanese localization
+- [`lang:pl`][issues-lang-pl] - Polish localization
 - [`lang:pt`][issues-lang-pt] - Portuguese localization
 - [`lang:ro`][issues-lang-ro] - Romanian localization
 - [`lang:uk`][issues-lang-uk] - Ukrainian localization
@@ -287,6 +295,7 @@ localization efforts.
 [otel-localization-zhcn]: https://cloud-native.slack.com/archives/C08SSK25Y7L
 [otel-localization-fr]: https://cloud-native.slack.com/archives/C08TBCU7I3L
 [otel-localization-ja]: https://cloud-native.slack.com/archives/C08SGPBN44E
+[otel-localization-pl]: https://cloud-native.slack.com/archives/C0ALHN9V7PT
 [otel-localization-ptbr]: https://cloud-native.slack.com/archives/C076LET8YSK
 [otel-localization-ro]: https://cloud-native.slack.com/archives/C09E9KNNLP4
 [otel-localization-es]: https://cloud-native.slack.com/archives/C07PVQVCHA6
@@ -303,6 +312,8 @@ localization efforts.
   https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue%20state%3Aopen%20label%3Alang%3Afr
 [issues-lang-ja]:
   https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue%20state%3Aopen%20label%3Alang%3Aja
+[issues-lang-pl]:
+  https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue%20state%3Aopen%20label%3Alang%3Apl
 [issues-lang-pt]:
   https://github.com/open-telemetry/opentelemetry.io/issues?q=is%3Aissue%20state%3Aopen%20label%3Alang%3Apt
 [issues-lang-ro]:

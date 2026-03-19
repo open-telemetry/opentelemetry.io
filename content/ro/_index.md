@@ -65,8 +65,8 @@ software-ul tău, apoi transmite-le către o varietate de instrumente de analiz�
 
 {{% blocks/feature icon="fas fa-magic" title="Drop-in Instrumentation & Integrations" %}}
 
-OpenTelemetry [se integrează] cu multe biblioteci și framework-uri, și suportă
-[instrumentarea] _bazată pe cod și zero-code_ .
+OpenTelemetry [se integrează][] cu multe biblioteci și framework-uri, și suportă
+[instrumentarea][] _bazată pe cod și zero-code_ .
 
 [instrumentarea]: /docs/concepts/instrumentation/
 [se integrează]: /ecosystem/integrations/
@@ -75,8 +75,8 @@ OpenTelemetry [se integrează] cu multe biblioteci și framework-uri, și suport
 
 {{% blocks/feature icon="fab fa-github" title="Open Source, Vendor Neutral" %}}
 
-100% gratuit și open source, OpenTelemetry este [adoptat] și susținut de [lideri
-din industrie] din domeniul observabilității.
+100% gratuit și open source, OpenTelemetry este [adoptat][] și susținut de
+[lideri din industrie][] din domeniul observabilității.
 
 [adoptat]: /ecosystem/adopters/
 [lideri din industrie]: /ecosystem/vendors/

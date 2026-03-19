@@ -36,8 +36,8 @@ nesta seção.
 - **Envie o trabalho _incrementalmente_** através de
   [pequenos _pull requests_](#small-prs)
 - **Perguntar** aos [mantenedores][maintainers] em caso de dúvidas, através de:
-  - Canais do [Slack], como `#otel-docs-localization`, `#otel-localization-ptbr`
-    ou `#otel-comms`
+  - Canais do [Slack][], como `#otel-docs-localization`,
+    `#otel-localization-ptbr` ou `#otel-comms`
   - [Discussões][Discussion], _issue_, ou comentário de PR
 
 [Discussion]:
@@ -107,9 +107,9 @@ renderizar o link. Por exemplo, o caminho de exemplo anterior se tornaria
 
 ### Labels de definição de links {#link-labels}
 
-Autores de localização podem escolher traduzir ou não _[labels]_ de [definições
-de links][link definitions] _Markdown_. Se você escolher manter o _label_ em
-inglês, então siga a orientação dada nesta seção.
+Autores de localização podem escolher traduzir ou não _[labels][]_ de
+[definições de links][link definitions] _Markdown_. Se você escolher manter o
+_label_ em inglês, então siga a orientação dada nesta seção.
 
 Por exemplo, considere o seguinte _Markdown_:
 
@@ -163,7 +163,8 @@ compartilhado de página.
 {{% /alert %}}
 
 Alguns dos _shortcodes_ base contêm texto em inglês que você pode precisar
-localizar -- especialmente para aqueles contidos em [layouts/_shortcodes/docs].
+localizar -- especialmente para aqueles contidos em
+[layouts/_shortcodes/docs][].
 
 Se você precisar criar uma versão localizada de um _shortcode_, coloque-o em
 `layouts/_shortcodes/pt`, onde `pt` é o código do idioma da sua localização. A
@@ -428,7 +429,7 @@ restantes do site. <a id="small-prs"></a>
 {{% alert title="Enviar PRs pequenos" color="primary" %}}
 
 Equipes de localização devem enviar seu trabalho em **pequenos incrementos**. Ou
-seja, mantenha os [PRs] pequenos, preferencialmente limitados a um arquivo ou
+seja, mantenha os [PRs][] pequenos, preferencialmente limitados a um arquivo ou
 alguns arquivos pequenos. PRs menores são mais fáceis de revisar e normalmente
 são aprovados mais rapidamente.
 
@@ -478,9 +479,9 @@ contrário:
 
 ### PRs com mudanças semânticas não devem abranger localizações {#prs-should-not-span-locales}
 
-Aprovadores devem garantir que [PRs] fazendo mudanças **semânticas** em páginas
-de documentação não abranjam múltiplas localizações. Uma mudança semântica é
-aquela que impacta o _significado_ do conteúdo da página. Nosso
+Aprovadores devem garantir que [PRs][] fazendo mudanças **semânticas** em
+páginas de documentação não abranjam múltiplas localizações. Uma mudança
+semântica é aquela que impacta o _significado_ do conteúdo da página. Nosso
 [processo de localização](.) de documentação garante que aprovadores de
 localização irão, com o tempo, revisar as edições em inglês para determinar se
 as mudanças são apropriadas para sua localização, e a melhor forma de

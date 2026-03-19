@@ -18,6 +18,11 @@
 #   - missing:docs-approval  -> when docs-approvers approval is pending
 #   - missing:sig-approval   -> when SIG approval is pending
 #   - ready-to-be-merged     -> when all required approvals are present
+#
+# Modes:
+#   Single-PR mode (PR env var set): processes the given PR.
+#   Batch mode (PR env var unset): queries open PRs with any of the
+#     PUBLISH_DATE_LABELS and processes each.
 
 set -euo pipefail
 
@@ -30,8 +35,12 @@ DOCS_MAINTAINERS_TEAM="docs-maintainers"
 COMPONENT_OWNERS_FILE=".github/component-owners.yml"
 ORG="open-telemetry"
 
-if [[ -z "${REPO:-}" || -z "${PR:-}" ]]; then
-  echo "ERROR: REPO and PR environment variables must be set."
+# Labels that indicate a PR may contain content with a publish date in its
+# frontmatter. Add labels here to extend the publish date gating check.
+PUBLISH_DATE_LABELS=("blog" "announcements")
+
+if [[ -z "${REPO:-}" ]]; then
+  echo "ERROR: REPO environment variable must be set."
   exit 0
 fi
 
@@ -135,6 +144,118 @@ get_sig_teams_for_files() {
   echo "${sig_teams}" | tr ' ' '\n' | sort -u | grep -v '^$' || true
 }
 
+# ---------------------------------------------------------------------------
+# Check if the PR has potentially a publish date in the frontmatter of 
+# changed files.
+# -------------------------------------------------------------------------
+should_check_publish_date() {
+  local label
+  for label in "${PUBLISH_DATE_LABELS[@]}"; do
+    if echo "${CURRENT_LABELS}" | grep -qxF "${label}"; then
+      return 0
+    fi
+  done
+  return 1
+}
+
+# ---------------------------------------------------------------------------
+# Fetch the latest publish date (YYYY-MM-DD) from the 'date:' frontmatter
+# field of all markdown files changed in the PR, commonly used on blog posts.
+# Uses the GitHub API to read content from the PR head (handles fork PRs).
+# Returns the latest date found, or empty string if none.
+# ---------------------------------------------------------------------------
+get_publish_date() {
+  local pr_files="$1"
+  local head_sha="$2"
+  local latest_date=""
+
+  for file in ${pr_files}; do
+    # Only inspect markdown files in known content paths to avoid unnecessary
+    # GitHub API calls, which can cause rate limiting in batch mode.
+    if [[ ! "${file}" == *.md && ! "${file}" == *.mdx ]]; then
+      continue
+    fi
+    # Restrict to paths that commonly contain publish dates in frontmatter.
+    if [[ ! "${file}" == content/en/blog/* && ! "${file}" == content/en/announcements/* ]]; then
+      continue
+    fi
+    # Skip any file path containing potentially unsafe characters to avoid
+    # shell injection when constructing the GitHub API URL.
+    if [[ ! "${file}" =~ ^[A-Za-z0-9._/-]+$ ]]; then
+      echo "Skipping potentially unsafe file path: ${file}" >&2
+      continue
+    fi
+    local content
+    content=$(gh api "/repos/${REPO}/contents/${file}?ref=${head_sha}" \
+      --jq '.content' 2>/dev/null | base64 --decode 2>/dev/null || true)
+    [[ -z "${content}" ]] && continue
+
+    local raw_date_line
+    raw_date_line=$(echo "${content}" | grep -m 1 '^date:' || true)
+    [[ -z "${raw_date_line}" ]] && continue
+
+    # Strip the "date:" prefix.
+    local file_date
+    file_date=$(echo "${raw_date_line}" | sed 's/date:[[:space:]]*//')
+    # Remove any inline comment starting with '#'.
+    file_date=${file_date%%#*}
+    # Remove surrounding quotes.
+    file_date=$(echo "${file_date}" | tr -d "\"'")
+    # Take the first whitespace-delimited token as the date.
+    file_date=$(echo "${file_date}" | awk '{print $1}')
+    # Ensure we only keep the first 10 characters (YYYY-MM-DD).
+    file_date=${file_date:0:10}
+    # Validate that the extracted string is a proper YYYY-MM-DD date.
+    if [[ ! "${file_date}" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}$ ]]; then
+      continue
+    fi
+
+    echo "Found date '${file_date}' in ${file}" >&2
+    if [[ -z "${latest_date}" || "${file_date}" > "${latest_date}" ]]; then
+      latest_date="${file_date}"
+    fi
+  done
+
+  echo "${latest_date}"
+}
+
+# ---------------------------------------------------------------------------
+# Batch mode: find all open PRs that carry any of the PUBLISH_DATE_LABELS
+# and run main() for each one.
+# ---------------------------------------------------------------------------
+run_batch() {
+  echo "Running in batch mode."
+  echo "Fetching open PRs with labels: ${PUBLISH_DATE_LABELS[*]}"
+
+  local all_prs=""
+  local label
+  for label in "${PUBLISH_DATE_LABELS[@]}"; do
+    local prs
+    prs=$(gh pr list \
+      --repo "${REPO}" \
+      --label "${label}" \
+      --state open \
+      --json number \
+      --jq '.[].number' 2>/dev/null || true)
+    all_prs="${all_prs} ${prs}"
+  done
+
+  local pr_nums
+  pr_nums=$(echo "${all_prs}" | tr ' ' '\n' | sort -un | grep -v '^$' || true)
+
+  if [[ -z "${pr_nums}" ]]; then
+    echo "No open PRs found with labels: ${PUBLISH_DATE_LABELS[*]}"
+    return
+  fi
+
+  echo "Found PRs: ${pr_nums}"
+  while IFS= read -r pr_num; do
+    [[ -z "${pr_num}" ]] && continue
+    echo "--- Processing PR #${pr_num} ---"
+    PR="${pr_num}" main || echo "WARNING: Failed for PR #${pr_num}"
+  done <<< "${pr_nums}"
+}
+
 # ===========================================================================
 # Main
 # ===========================================================================
@@ -143,7 +264,8 @@ main() {
 
   # Fetch PR data
   local pr_json
-  pr_json=$(gh pr view "${PR}" --repo "${REPO}" --json "files,latestReviews,labels")
+  pr_json=$(gh pr view "${PR}" --repo "${REPO}" \
+    --json "files,latestReviews,labels,headRefOid,headRepository,title,url")
 
   local pr_files
   pr_files=$(echo "${pr_json}" | jq -r '.files[].path')
@@ -152,6 +274,11 @@ main() {
   latest_reviews=$(echo "${pr_json}" | jq -c '.latestReviews')
 
   CURRENT_LABELS=$(echo "${pr_json}" | jq -r '.labels[].name')
+
+  local head_sha
+  head_sha=$(echo "${pr_json}" | jq -r '.headRefOid')
+  local head_repo
+  head_repo=$(echo "${pr_json}" | jq -r '.headRepository.nameWithOwner')
 
   # -------------------------------------------------------------------------
   # 1. Check docs approval
@@ -236,7 +363,35 @@ ${members}"
   fi
 
   # -------------------------------------------------------------------------
-  # 3. Apply / remove labels
+  # 3. Check publish date, if applicable
+  # -------------------------------------------------------------------------
+  echo ""
+  echo "=== Checking publish date ==="
+  local publish_date_ready="true"
+
+  if should_check_publish_date; then
+    local publish_date
+    publish_date=$(get_publish_date "${pr_files}" "${head_sha}")
+
+    if [[ -n "${publish_date}" ]]; then
+      local today
+      today=$(date -u +%Y-%m-%d)
+      echo "Publish date: ${publish_date}, today: ${today}"
+      if [[ "${publish_date}" > "${today}" ]]; then
+        echo "Publish date is in the future. Not labeling ready-to-be-merged."
+        publish_date_ready="false"
+      else
+        echo "Publish date is today or past. Labeling ready-to-be-merged."
+      fi
+    else
+      echo "No publish date found in changed files."
+    fi
+  else
+    echo "PR does not have any of the '${PUBLISH_DATE_LABELS[*]}' labels. Skipping date check."
+  fi
+
+  # -------------------------------------------------------------------------
+  # 4. Apply / remove labels
   # -------------------------------------------------------------------------
   echo ""
   echo "=== Applying labels ==="
@@ -277,8 +432,21 @@ ${members}"
     fi
   fi
 
+  # Do not label ready-to-be-merged if publish date is in the future
+  if [[ "${all_approved}" == "true" && "${publish_date_ready}" == "false" ]]; then
+    all_approved="false"
+  fi
+
   if [[ "${all_approved}" == "true" ]]; then
+    local was_ready_before="false"
+    if echo "${CURRENT_LABELS}" | grep -qxF "${LABEL_READY}"; then
+      was_ready_before="true"
+    fi
     add_label "${LABEL_READY}"
+    if [[ "${was_ready_before}" == "false" && -n "${LABELED_PRS_OUTPUT_FILE:-}" ]]; then
+      echo "${pr_json}" | jq -c --argjson number "${PR}" '{number: $number, title, url}' \
+        >> "${LABELED_PRS_OUTPUT_FILE}"
+    fi
   elif [[ "${all_approved}" == "false" ]]; then
     remove_label "${LABEL_READY}"
   else
@@ -289,5 +457,10 @@ ${members}"
   echo "Done."
 }
 
-# Ensure the script does not block a PR even if it fails
-main || echo "Failed to run $0"
+# Route between single-PR mode and batch mode (no PR env var set)
+if [[ -z "${PR:-}" ]]; then
+  run_batch || echo "Failed to run $0 in batch mode"
+else
+  # Ensure the script does not block a PR even if it fails
+  main || echo "Failed to run $0"
+fi

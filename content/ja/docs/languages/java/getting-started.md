@@ -2,7 +2,7 @@
 title: サンプルによる入門
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
-default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
+default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9 # patched
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -21,7 +21,7 @@ default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9
 
 ## サンプルアプリケーション {#example-application}
 
-次の例では、基本的な[Spring Boot]アプリケーションを使用します。
+次の例では、基本的な[Spring Boot][]アプリケーションを使用します。
 Apache WicketやPlayなどの他のWebフレームワークを使用することもできます。
 ライブラリとサポートされているフレームワークの完全なリストについては、[レジストリ](/ecosystem/registry/?component=instrumentation&language=java)を参照してください。
 

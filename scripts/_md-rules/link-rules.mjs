@@ -1,17 +1,12 @@
 // @ts-check
 //
-// Project-specific link-validation rules built on the generic
-// createLinkPatternRule factory. Each entry becomes an independently
-// configurable (and disableable) markdownlint rule.
+// Project-specific link-pattern rules built on the generic
+// createLinkPatternRule factory. Each rule can then be independently configured
+// and disabled.
 //
-// Rule config (regex + message) lives in .markdownlint.yaml under the rule
-// name. For example:
-//
-//   no-typosquatting-urls:
-//     regex: 'https://github\.(?!com|blog|io|github\.com)'
-//     message: GitHub URLs should use github.(com|blog|io|github.com) domains.
+// Rule configuration lives in .markdownlint.yaml under the rule name.
 
-import { createLinkPatternRule } from './validate-links/index.mjs';
+import { createLinkPatternRule } from 'markdownlint-rule-link-pattern';
 
 export default [
   createLinkPatternRule(
