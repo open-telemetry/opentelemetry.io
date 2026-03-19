@@ -6,8 +6,8 @@ default_lang_commit: 3040a67e16dcc198614b025bd894c662c03441b3
 ---
 
 Los exportadores envían datos de telemetría a backends y destinos de
-observabilidad. Para más información sobre cómo configurar exportadores, consulta
-la
+observabilidad. Para más información sobre cómo configurar exportadores,
+consulta la
 [documentación de configuración del Collector](/docs/collector/configuration/#exporters).
 
 {{% include unmaintained-components-msg.md %}}

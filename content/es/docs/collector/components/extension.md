@@ -5,8 +5,8 @@ weight: 350
 default_lang_commit: 3040a67e16dcc198614b025bd894c662c03441b3
 ---
 
-Las extensiones proporcionan capacidades adicionales como verificaciones de salud
-y descubrimiento de servicios. Para más información sobre cómo configurar
+Las extensiones proporcionan capacidades adicionales como verificaciones de
+salud y descubrimiento de servicios. Para más información sobre cómo configurar
 extensiones, consulta la
 [documentación de configuración del Collector](/docs/collector/configuration/#extensions).
 
