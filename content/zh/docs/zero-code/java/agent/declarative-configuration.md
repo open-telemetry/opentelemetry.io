@@ -164,8 +164,4 @@ Contrib 中尚未被声明式配置支持的功能：
 
 - 但是，你已经可以使用 `application.yaml` 来配置 OpenTelemetry Spring Boot 启动器
 
-## 扩展 API {#extension-api}
-
-有关扩展 API 的详细信息，请参阅[英文版本](/docs/zero-code/java/agent/declarative-configuration/#extension-api)。
-
 [SDK Declarative configuration]: /docs/languages/sdk-configuration/declarative-configuration
