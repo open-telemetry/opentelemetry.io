@@ -3,7 +3,7 @@ title: Prometheus Client Libraries vs. OpenTelemetry
 linkTitle: Prometheus Clients
 weight: 5
 # prettier-ignore
-cSpell:ignore: AggregationBase2ExponentialHistogram AggregationExplicitBucketHistogram base2ExponentialBucketHistogram bedroomTemperatureCelsius buildAndStart buildWithCallback classicUpperBounds connectedDeviceCount CounterValue defaultAggregation deviceCommandDuration devicesConnected errcheck explicitBucketHistogram gaugeBuilder GaugeFunc GaugeValue GaugeWithCallback hvac hvacOnTime initLabelValues InstrumentKindHistogram InstrumentSelector InstrumentType labelValues livingRoomTemperatureCelsius LongUpDownCounter MustNewConstMetric NativeHistogramBucketFactor nativeOnly nolint OtelHistogramAsSummary otlpmetrichttp PrometheusHistogramNative PrometheusRegistry PrometheusSummary promhttp sdkmetric setDefaultAggregationSelector setExplicitBucketBoundariesAdvice thermostatSetpoint totalEnergyJoules upDownCounterBuilder
+cSpell:ignore: AggregationBase2ExponentialHistogram base2ExponentialBucketHistogram bedroomTemperatureCelsius buildAndStart buildWithCallback classicUpperBounds connectedDeviceCount CounterValue defaultAggregation deviceCommandDuration devicesConnected errcheck gaugeBuilder GaugeFunc GaugeValue GaugeWithCallback hvac hvacOnTime initLabelValues InstrumentKindHistogram InstrumentSelector InstrumentType labelValues livingRoomTemperatureCelsius LongUpDownCounter MustNewConstMetric NativeHistogramBucketFactor nativeOnly nolint OtelHistogramAsSummary otlpmetrichttp PrometheusHistogramNative PrometheusRegistry PrometheusSummary promhttp sdkmetric setDefaultAggregationSelector setExplicitBucketBoundariesAdvice thermostatSetpoint totalEnergyJoules upDownCounterBuilder
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -38,7 +38,8 @@ obtain a `Meter` — scoped to your library or component — from a `MeterProvid
 and create instruments from that `Meter`. How those measurements are processed —
 which exporters receive them, how they are aggregated, on what schedule — is
 determined by the SDK bound to the `MeterProvider` and its configuration, which
-is separate from the instrumentation code itself (see [API and SDK](#otel-api-and-sdk)).
+is separate from the instrumentation code itself (see
+[API and SDK](#otel-api-and-sdk)).
 
 Like Prometheus, OpenTelemetry supports both a global `MeterProvider` (requiring
 no explicit wiring from instrumentation code) and explicit `MeterProvider`
@@ -55,20 +56,18 @@ both provided together at the time of the measurement via `Attributes`.
 ### Naming conventions
 
 Prometheus uses `snake_case` metric names. Counter names end in `_total`. By
-convention,
-Prometheus metric names are prefixed with the application or library name to
-avoid collisions (for example, `smart_home_hvac_on_seconds_total`), since all
-metrics share a flat global namespace.
+convention, Prometheus metric names are prefixed with the application or library
+name to avoid collisions (for example, `smart_home_hvac_on_seconds_total`),
+since all metrics share a flat global namespace.
 
 OpenTelemetry conventionally uses
 [dotted names](/docs/specs/semconv/general/naming/). Ownership and namespacing
 are captured in the instrumentation scope (the `Meter` name, for example
 `smart.home`), so metric names themselves do not need a prefix (for example,
-`hvac.on`). When exporting to Prometheus, the exporter translates
-names: dots become underscores, unit abbreviations expand to full words (for
-example, `s` → `seconds`), and counters receive a `_total` suffix. An
-OpenTelemetry counter named `hvac.on` with unit `s` is exported as
-`hvac_on_seconds_total`. See the
+`hvac.on`). When exporting to Prometheus, the exporter translates names: dots
+become underscores, unit abbreviations expand to full words (for example, `s` →
+`seconds`), and counters receive a `_total` suffix. An OpenTelemetry counter
+named `hvac.on` with unit `s` is exported as `hvac_on_seconds_total`. See the
 [compatibility specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)
 for the complete set of name translation rules. The translation strategy is
 configurable — for example, to preserve UTF-8 characters or suppress unit and
@@ -82,8 +81,8 @@ Both systems support two recording modes:
 
 - **Prometheus** distinguishes _stateful_ instruments (`Counter`, `Gauge`),
   which maintain their own accumulated value, from function-based instruments,
-  which invoke a callback at scrape time to return the current value. The
-  naming varies by client library (`GaugeFunc`/`CounterFunc` in Go;
+  which invoke a callback at scrape time to return the current value. The naming
+  varies by client library (`GaugeFunc`/`CounterFunc` in Go;
   `GaugeWithCallback`/`CounterWithCallback` in Java).
 - **OpenTelemetry** calls these _synchronous_ (counter, histogram, etc.) and
   _asynchronous_ (observed via a registered callback). The semantics are the
@@ -1578,8 +1577,8 @@ configuration.
 - **Format selection**: Prometheus instruments can emit classic format only,
   native format only, or both simultaneously — enabling gradual migration
   without instrumentation changes. In OpenTelemetry, format selection is
-  configured outside instrumentation code — on the exporter or via a view —
-  so instrumentation code requires no changes either way.
+  configured outside instrumentation code — on the exporter or via a view — so
+  instrumentation code requires no changes either way.
 - **Instrumentation code**: The OpenTelemetry instrumentation code is identical
   for classic and native histograms. The same `record()` calls produce either
   format depending on how the SDK is configured.
@@ -1589,8 +1588,8 @@ configuration.
 Prometheus
 
 In Prometheus, the histogram format is controlled at instrument creation time.
-The example below uses `.nativeOnly()` to restrict to native format; omitting
-it would emit both classic and native formats simultaneously:
+The example below uses `.nativeOnly()` to restrict to native format; omitting it
+would emit both classic and native formats simultaneously:
 
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusHistogramNative.java"?>
@@ -1772,7 +1771,8 @@ For quantile estimation, a **base2 exponential histogram** is the recommended
 replacement: it automatically adjusts bucket boundaries to cover the observed
 range, and `histogram_quantile()` in PromQL can compute quantiles with bounded
 errors at query time. Unlike `Summary`, the results can be aggregated across
-instances. See [Native (base2 exponential) histogram](#native-base2-exponential-histogram).
+instances. See
+[Native (base2 exponential) histogram](#native-base2-exponential-histogram).
 
 If you only need count and sum — not quantiles — a histogram with no explicit
 bucket boundaries captures those statistics with minimal overhead. The examples
