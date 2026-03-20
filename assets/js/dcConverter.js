@@ -14,8 +14,7 @@ const SPECIAL_MAPPINGS = {
   'otel.instrumentation.sanitization.url.experimental.sensitive-query-parameters':
     'general.sanitization.url.sensitive_query_parameters/development',
   'otel.semconv-stability.opt-in': 'general.semconv_stability.opt_in',
-  'otel.instrumentation.http.known-methods':
-    'java.common.http.known_methods',
+  'otel.instrumentation.http.known-methods': 'java.common.http.known_methods',
   'otel.instrumentation.http.client.experimental.redact-query-parameters':
     'java.common.http.client.redact_query_parameters/development',
   'otel.instrumentation.http.client.emit-experimental-telemetry':
@@ -53,15 +52,32 @@ for (const key of Object.keys(SPECIAL_MAPPINGS)) {
 
 // Known instrumentation names for enable/disable and env var matching
 const KNOWN_INSTRUMENTATIONS = [
-  'jdbc', 'kafka', 'mongo', 'r2dbc', 'micrometer',
-  'logback-appender', 'logback-mdc', 'log4j-appender',
-  'spring-web', 'spring-webmvc', 'spring-webflux',
-  'spring-kafka', 'spring-data', 'spring-jms',
-  'spring-integration', 'spring-rabbit', 'spring-scheduling',
-  'annotations', 'opentelemetry-annotations',
-  'methods', 'external-annotations',
-  'grpc', 'okhttp', 'apache-httpclient',
-  'runtime-telemetry', 'oshi',
+  'jdbc',
+  'kafka',
+  'mongo',
+  'r2dbc',
+  'micrometer',
+  'logback-appender',
+  'logback-mdc',
+  'log4j-appender',
+  'spring-web',
+  'spring-webmvc',
+  'spring-webflux',
+  'spring-kafka',
+  'spring-data',
+  'spring-jms',
+  'spring-integration',
+  'spring-rabbit',
+  'spring-scheduling',
+  'annotations',
+  'opentelemetry-annotations',
+  'methods',
+  'external-annotations',
+  'grpc',
+  'okhttp',
+  'apache-httpclient',
+  'runtime-telemetry',
+  'oshi',
 ];
 
 // ── Parsing ────────────────────────────────────────────────────────────
@@ -70,12 +86,16 @@ function parseProperties(text) {
   const result = [];
   for (const line of text.split('\n')) {
     const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#') || trimmed.startsWith('//')) continue;
+    if (!trimmed || trimmed.startsWith('#') || trimmed.startsWith('//'))
+      continue;
     // Strip -D prefix for sys props
     const clean = trimmed.startsWith('-D') ? trimmed.slice(2) : trimmed;
     const eq = clean.indexOf('=');
     if (eq === -1) continue;
-    result.push({ key: clean.slice(0, eq).trim(), value: clean.slice(eq + 1).trim() });
+    result.push({
+      key: clean.slice(0, eq).trim(),
+      value: clean.slice(eq + 1).trim(),
+    });
   }
   return result;
 }
@@ -85,9 +105,7 @@ function envVarToProperty(envKey) {
   if (ENV_TO_PROPERTY[envKey]) return ENV_TO_PROPERTY[envKey];
 
   // Handle enable/disable: OTEL_INSTRUMENTATION_<NAME>_ENABLED
-  const enableMatch = envKey.match(
-    /^OTEL_INSTRUMENTATION_(.+)_ENABLED$/
-  );
+  const enableMatch = envKey.match(/^OTEL_INSTRUMENTATION_(.+)_ENABLED$/);
   if (enableMatch) {
     const rawName = enableMatch[1].toLowerCase();
     // Try known instrumentation names
@@ -197,7 +215,10 @@ function classify(key) {
 
   // Generic instrumentation config
   if (key.startsWith('otel.instrumentation.')) {
-    return { type: 'instrumentation', suffix: key.slice('otel.instrumentation.'.length) };
+    return {
+      type: 'instrumentation',
+      suffix: key.slice('otel.instrumentation.'.length),
+    };
   }
 
   // Known SDK properties
@@ -266,7 +287,7 @@ function coerceListValue(value) {
   return coerceValue(value);
 }
 
-function buildDcYaml(properties, source) {
+function buildDcYaml(properties, source, gettingStartedYaml) {
   const warnings = [];
   const enabled = [];
   const disabled = [];
@@ -328,10 +349,6 @@ function buildDcYaml(properties, source) {
     }
   }
 
-  const varSyntax = source === 'spring'
-    ? (name, fallback) => `\${${name}:${fallback}}`
-    : (name, fallback) => `\${${name}:-${fallback}}`;
-
   const dumpOpts = {
     indent: 2,
     lineWidth: -1,
@@ -345,71 +362,26 @@ function buildDcYaml(properties, source) {
     return yaml.dump(obj, dumpOpts).replace(/: null$/gm, ':');
   }
 
-  // ── Recommended skeleton ──────────────────────────────────────────
-  // DC requires explicit config for exporters, propagators, and resource
-  // detectors that were auto-configured before.
+  // ── Getting-started skeleton from opentelemetry-configuration repo ──
+  // For Spring, convert ${VAR:-default} to ${VAR:default} syntax.
+  let skeletonYaml = gettingStartedYaml;
+  if (source === 'spring') {
+    skeletonYaml = skeletonYaml.replace(/\$\{([^}]+?):-/g, '${$1:');
+  }
 
-  const skeleton = {
-    file_format: '1.0',
-    resource: {
-      'detection/development': {
-        detectors: [{ service: null }],
-      },
-    },
-    propagator: sdkConfig.propagator || {
-      composite: [{ tracecontext: null }, { baggage: null }],
-    },
-    tracer_provider: {
-      processors: [
-        {
-          batch: {
-            exporter: {
-              otlp_http: {
-                endpoint: varSyntax(
-                  'OTEL_EXPORTER_OTLP_TRACES_ENDPOINT',
-                  'http://localhost:4318/v1/traces'
-                ),
-              },
-            },
-          },
-        },
-      ],
-    },
-    meter_provider: {
-      readers: [
-        {
-          periodic: {
-            exporter: {
-              otlp_http: {
-                endpoint: varSyntax(
-                  'OTEL_EXPORTER_OTLP_METRICS_ENDPOINT',
-                  'http://localhost:4318/v1/metrics'
-                ),
-              },
-            },
-          },
-        },
-      ],
-    },
-    logger_provider: {
-      processors: [
-        {
-          batch: {
-            exporter: {
-              otlp_http: {
-                endpoint: varSyntax(
-                  'OTEL_EXPORTER_OTLP_LOGS_ENDPOINT',
-                  'http://localhost:4318/v1/logs'
-                ),
-              },
-            },
-          },
-        },
-      ],
-    },
-  };
+  // Parse the skeleton to apply SDK overrides (propagators, resource attributes)
+  let skeleton;
+  try {
+    skeleton = yaml.load(skeletonYaml);
+  } catch {
+    skeleton = {};
+  }
 
+  if (sdkConfig.propagator) {
+    skeleton.propagator = sdkConfig.propagator;
+  }
   if (sdkConfig.resource && sdkConfig.resource.attributes) {
+    if (!skeleton.resource) skeleton.resource = {};
     skeleton.resource.attributes = sdkConfig.resource.attributes;
   }
   if (sdkConfig.disabled != null) skeleton.disabled = sdkConfig.disabled;
@@ -419,11 +391,11 @@ function buildDcYaml(properties, source) {
   const converted = {};
 
   // Distribution (enable/disable)
-  const distroKey =
-    source === 'spring' ? 'spring_starter' : 'javaagent';
+  const distroKey = source === 'spring' ? 'spring_starter' : 'javaagent';
   if (enabled.length || disabled.length || defaultEnabled != null) {
     const instrumentation = {};
-    if (defaultEnabled != null) instrumentation.default_enabled = defaultEnabled;
+    if (defaultEnabled != null)
+      instrumentation.default_enabled = defaultEnabled;
     if (enabled.length) instrumentation.enabled = enabled;
     if (disabled.length) instrumentation.disabled = disabled;
     converted.distribution = { [distroKey]: { instrumentation } };
@@ -437,12 +409,11 @@ function buildDcYaml(properties, source) {
   // ── Assemble output with comments ─────────────────────────────────
 
   const indent = source === 'spring' ? '  ' : '';
-  const wrap = (obj) =>
-    source === 'spring' ? { otel: obj } : obj;
+  const wrap = (obj) => (source === 'spring' ? { otel: obj } : obj);
 
-  let output = '# Recommended: base configuration for declarative config\n';
-  output += '# (exporters, propagators, and resource detectors must be\n';
-  output += '# configured explicitly — see Getting Started above)\n';
+  let output = '# Getting started configuration from\n';
+  output +=
+    '# https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-getting-started.yaml\n';
   output += dumpClean(wrap(skeleton));
 
   if (Object.keys(converted).length) {
@@ -487,6 +458,7 @@ function init() {
   if (!output) return;
 
   const source = container.dataset.source || 'agent';
+  const gettingStartedYaml = container.dataset.gettingStarted || '';
 
   function convert() {
     const properties = [
@@ -495,7 +467,7 @@ function init() {
       ...(yamlInput ? parseYamlInput(yamlInput.value) : []),
     ];
 
-    const result = buildDcYaml(properties, source);
+    const result = buildDcYaml(properties, source, gettingStartedYaml);
     output.value = result.yaml;
 
     if (result.warnings.length) {

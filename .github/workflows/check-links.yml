@@ -32,7 +32,7 @@ jobs:
                   select(.key | test("prefix|hugo|css"))
                 )
                 | .dependencies |= with_entries(
-                  select(.key | test("minisearch")))
+                  select(.key | test("minisearch|js-yaml")))
                 | del(.optionalDependencies)' \
             package.json > tmp/package-min.json
           cp tmp/package-min.json package.json

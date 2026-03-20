@@ -1,6 +1,7 @@
 {{ $source := .Get "source" | default "agent" -}}
+{{ $gettingStarted := readFile "examples/otel-config/examples/otel-getting-started.yaml" -}}
 
-<div class="dc-converter card p-3 my-4" data-source="{{ $source }}">
+<div class="dc-converter card p-3 my-4" data-source="{{ $source }}" data-getting-started="{{ $gettingStarted | htmlEscape }}">
   <p class="text-body-secondary mb-3">
     Paste your existing configuration below to generate the equivalent
     declarative configuration YAML. You can fill in any combination of inputs.
