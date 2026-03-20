@@ -3,7 +3,7 @@ title: Qu'est-ce qu'OpenTelemetry ?
 description:
   Une brève explication de ce qu'est OpenTelemetry, et de ce qu'il n'est pas.
 weight: 150
-default_lang_commit: 71833a5f8b84110dadf1e98604b87a900724ac33
+default_lang_commit: 71833a5f8b84110dadf1e98604b87a900724ac33 # patched
 drifted_from_default: true
 ---
 
@@ -126,7 +126,7 @@ OpenTelemetry et combiner leurs forces tout en offrant une solution unique.
 
 Si vous utilisez actuellement OpenTracing ou OpenCensus, vous pouvez découvrir
 comment migrer vers OpenTelemetry dans le
-[guide de migration](/docs/migration/).
+[guide de migration](/docs/compatibility/migration/).
 
 ## Et ensuite ? {#what-next}
 
