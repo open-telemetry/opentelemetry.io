@@ -1,6 +1,7 @@
 ---
 title: Instalar o Collector
 linkTitle: Instalar
+aliases: [installation]
 weight: 2
 default_lang_commit: 9f912d59a165ded5dec82d0e1a94c2aef54e5c57
 ---
