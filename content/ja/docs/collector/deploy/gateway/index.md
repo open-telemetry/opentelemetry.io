@@ -2,10 +2,9 @@
 title: ゲートウェイデプロイメントパターン
 linkTitle: ゲートウェイパターン
 description: シグナルを単一のOTLPエンドポイントに送信し、そこからバックエンドに送信する理由と方法
-aliases:
-  - /docs/collector/deployment/gateway/
+aliases: [/docs/collector/deployment/gateway]
 weight: 300
-default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197
+default_lang_commit: 4cb7e22f1e45d17854b309efc730499880aa7197 # patched
 # prettier-ignore
 cSpell:ignore: filelogreceiver hostmetricsreceiver hostnames loadbalancer loadbalancing resourcedetectionprocessor
 ---

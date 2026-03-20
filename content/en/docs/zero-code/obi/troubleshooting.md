@@ -72,7 +72,8 @@ Resource SchemaURL:
 Resource attributes:
      -> service.name: Str(flagd)
      -> telemetry.sdk.language: Str(go)
-     -> telemetry.sdk.name: Str(opentelemetry-ebpf-instrumentation)
+     -> telemetry.sdk.name: Str(opentelemetry)
+     -> telemetry.distro.name: Str(opentelemetry-ebpf-instrumentation)
      -> telemetry.sdk.version: Str(main)
      -> host.name: Str(flagd-5cccb4c4f5-sfkcm)
      -> os.type: Str(linux)
@@ -107,6 +108,9 @@ Attributes:
      -> peer.service: Str(otel-collector.default)
      -> server.port: Int(4317)
 ```
+
+Starting with OBI v0.6.0, `telemetry.sdk.name` reflects the underlying SDK when
+available, and OBI identifies itself using `telemetry.distro.name`.
 
 ### Performance profiler (pprof)
 

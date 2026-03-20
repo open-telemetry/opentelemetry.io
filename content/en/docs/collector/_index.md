@@ -1,10 +1,10 @@
 ---
 title: Collector
 description: Vendor-agnostic way to receive, process and export telemetry data.
-aliases: [./about]
+aliases: [collector/about]
 sidebar_root_for: children
 cascade:
-  vers: 0.144.0
+  vers: 0.147.0
 weight: 270
 ---
 
@@ -53,8 +53,8 @@ you launch a collector it will automatically start receiving telemetry.
 
 ## Collector security
 
-Follow best practices to make sure your collectors are [hosted] and [configured]
-securely.
+Follow best practices to make sure your collectors are [hosted][] and
+[configured][] securely.
 
 ## Status
 

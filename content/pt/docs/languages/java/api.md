@@ -1,9 +1,7 @@
 ---
 title: Registrar Telemetria com a API
 weight: 11
-default_lang_commit: dabd30226437f71ca1eca69f9e8f04926a042bae
-aliases:
-  - /docs/languages/java/api-components/
+aliases: [/docs/languages/java/api-components]
 logBridgeWarning: >
   Embora as APIs `LoggerProvider` / `Logger` sejam estruturalmente semelhantes
   às APIs equivalentes de rastros e métricas, elas atendem a um caso de uso
@@ -13,6 +11,7 @@ logBridgeWarning: >
   registrados por meio de outras APIs / _frameworks_ de log no OpenTelemetry.
   Elas não são destinadas ao uso do usuário final como alternativas para Log4j /
   SLF4J / Logback / etc.
+default_lang_commit: dabd30226437f71ca1eca69f9e8f04926a042bae # patched
 cSpell:ignore: kotlint Logback updowncounter
 ---
 
