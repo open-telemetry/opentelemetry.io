@@ -123,7 +123,7 @@ they merged to form OpenTelemetry and combine their strengths while offering a
 single solution.
 
 If you are currently using OpenTracing or OpenCensus, you can learn how to
-migrate to OpenTelemetry in the [Migration guide](../migration/).
+migrate to OpenTelemetry in the [Migration guide](../compatibility/migration/).
 
 [merger]:
   https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
