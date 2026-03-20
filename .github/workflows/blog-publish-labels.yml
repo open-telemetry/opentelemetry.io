@@ -36,6 +36,9 @@ jobs:
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
       - name: Update blog publish labels
+        if: >-
+          github.event_name != 'workflow_dispatch' ||
+          github.event.inputs.force_notify != 'true'
         run: ./.github/scripts/pr-approval-labels.sh
         env:
           GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
@@ -58,12 +61,11 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         run: |
-          # Builds a single list where each PR is formatted as a title line plus
-          # a bare URL on the next line, with blank lines between entries, and
-          # sends it as one webhook call. Compatible with Slack Workflow Builder
-          # webhook triggers: declare a variable named "pr_list" (type: text) in
-          # the workflow trigger, then use {{pr_list}} in the message step.
-          pr_list=$(jq -Rs '[split("\n")[] | select(length > 0) | fromjson | "#\(.number): \(.title)\n\(.url)"] | join("\n\n")' \
+          # Builds a bulleted list of PRs and sends it as one webhook call.
+          # Compatible with Slack Workflow Builder webhook triggers: declare a
+          # variable named "pr_list" (type: text) in the workflow trigger, then
+          # use {{pr_list}} in the message step.
+          pr_list=$(jq -r -Rs '[split("\n")[] | select(length > 0) | fromjson | "\u2022 #\(.number): \(.title) \u2014 \(.url)"] | join("\n")' \
             "${{ github.workspace }}/labeled-prs.json")
           payload=$(jq -cn --arg pr_list "${pr_list}" '{"pr_list": $pr_list}')
           curl --fail --silent --show-error \

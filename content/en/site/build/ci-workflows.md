@@ -148,8 +148,9 @@ The [`blog-publish-labels.yml`][blog] workflow runs daily at 7 AM UTC. It
 executes `pr-approval-labels.sh` in [batch mode](#publish-date-gating) —
 checking all open PRs with `blog` or `announcements` labels — and posts a Slack
 notification when `ready-to-be-merged` is newly applied to any of them. You can
-also trigger it manually via `workflow_dispatch` with a `force_notify` input to
-send a test Slack notification without waiting for a label change on a PR.
+also trigger it manually via `workflow_dispatch` with the `force_notify` input to
+send a test Slack notification. When `force_notify` is `true`, the labeling step
+is skipped entirely (dry run) — only the test Slack payload is sent.
 
 | Workflow file                     | Trigger                                                                           | Secrets required                                |
 | --------------------------------- | --------------------------------------------------------------------------------- | ----------------------------------------------- |
@@ -158,7 +159,8 @@ send a test Slack notification without waiting for a label change on a PR.
 The Slack notification fires only when the label transitions from absent to
 present on that run — repeated daily runs for an already-labeled PR do not
 re-notify. When triggering the workflow manually, set `force_notify` to `true`
-to force a one-off test notification so you can verify the Slack formatting.
+to send a one-off test notification (no labels are applied) so you can verify
+the Slack formatting.
 
 ### Slack webhook setup {#slack-webhook-setup}
 
@@ -198,14 +200,13 @@ non-engineers to own the message format without touching workflow code.
 
 ```json
 {
-  "pr_list": "#123: Add blog post: OTel 1.0\nhttps://github.com/.../pull/123\n\n#456: Announce: new SIG\nhttps://github.com/.../pull/456"
+  "pr_list": "• #123: Add blog post: OTel 1.0 — https://github.com/.../pull/123\n• #456: Announce: new SIG — https://github.com/.../pull/456"
 }
 ```
 
-Each PR is listed as a title line followed by its URL on the next line, with a
-blank line between entries. Slack auto-links bare URLs. Multiple PRs labeled on
-the same day are batched into a single message — one webhook call regardless of
-how many PRs are ready.
+Each PR is a bulleted line with its title and URL. Slack auto-links bare URLs.
+Multiple PRs labeled on the same day are batched into a single message — one
+webhook call regardless of how many PRs are ready.
 
 ```mermaid
 sequenceDiagram
