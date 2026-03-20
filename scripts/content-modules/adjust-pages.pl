@@ -211,9 +211,12 @@ sub applyPatchOrPrintMsgIf($$$;$) {
       "spec '$specName' is at version '$vers' >= '$targetVers' (patch target version); " .
       "if so, remove the patch\n";
   } else {
+    my $submodInfo = $submoduleVers
+      ? "and submodule version '$submoduleVers' doesn't start with the patch target '$targetVers'"
+      : "and submodule version is unknown";
     print STDOUT "INFO: $0: skipping patch '$patchID' since spec '$specName' " .
       "submodule is at version '$vers' < '$targetVers' (patch target version); " .
-      "and submodule version '$submoduleVers' doesn't start with the patch target '$targetVers'\n";
+      "$submodInfo\n";
   }
   $patchMsgCount{$key}++;
   return 0;
