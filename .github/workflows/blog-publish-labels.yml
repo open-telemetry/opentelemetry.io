@@ -43,6 +43,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           REPO: ${{ github.repository }}
+          PUBLISH_DATE_LABELS: blog
           LABELED_PRS_OUTPUT_FILE: ${{ github.workspace }}/labeled-prs.json
 
       - name: Inject test payload for Slack validation

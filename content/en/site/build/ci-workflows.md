@@ -38,9 +38,8 @@ labels on pull requests:
   removed once a SIG member approves or when no SIG component is touched.
 - **`ready-to-be-merged`** — added when all required approvals are present;
   removed otherwise. For PRs carrying any label in
-  [`PUBLISH_DATE_LABELS`](#publish-date-gating) (currently: `blog`,
-  `announcements`), this label is also gated on the publish date found in
-  changed files.
+  [`PUBLISH_DATE_LABELS`](#publish-date-gating) (currently: `blog`), this label
+  is also gated on the publish date found in changed files.
 
 [docs-approvers]: https://github.com/orgs/open-telemetry/teams/docs-approvers
 [owners]:
@@ -54,8 +53,8 @@ the `ready-to-be-merged` label is withheld until that date arrives (UTC). This
 helps prevent content from being merged before its scheduled publication date.
 
 The check applies to PRs carrying any label listed in the `PUBLISH_DATE_LABELS`
-array in the script (currently: `blog` and `announcements`). Adding a label to
-that array extends the check to other PR types.
+environment variable, set in each workflow YAML (currently: `blog` and
+`announcements`). Adding a label extends the check to other PR types.
 
 If a PR contains multiple files with different dates, the label is gated on the
 latest date — all content must be ready before merging.

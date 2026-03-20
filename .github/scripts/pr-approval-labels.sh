@@ -39,8 +39,14 @@ COMPONENT_OWNERS_FILE=".github/component-owners.yml"
 ORG="open-telemetry"
 
 # Labels that indicate a PR may contain content with a publish date in its
-# frontmatter. Add labels here to extend the publish date gating check.
-PUBLISH_DATE_LABELS=("blog" "announcements")
+# frontmatter. Set via the PUBLISH_DATE_LABELS environment variable (space-
+# separated list) in the workflow YAML. Falls back gracefully if unset.
+if [[ -z "${PUBLISH_DATE_LABELS:-}" ]]; then
+  echo "WARNING: PUBLISH_DATE_LABELS not set. Skipping publish date checks."
+  _PUBLISH_DATE_LABELS=()
+else
+  read -ra _PUBLISH_DATE_LABELS <<< "${PUBLISH_DATE_LABELS}"
+fi
 
 if [[ -z "${REPO:-}" ]]; then
   echo "ERROR: REPO environment variable must be set."
@@ -158,7 +164,7 @@ get_sig_teams_for_files() {
 # -------------------------------------------------------------------------
 should_check_publish_date() {
   local label
-  for label in "${PUBLISH_DATE_LABELS[@]}"; do
+  for label in "${_PUBLISH_DATE_LABELS[@]}"; do
     if echo "${CURRENT_LABELS}" | grep -qxF "${label}"; then
       return 0
     fi
@@ -358,7 +364,7 @@ ${members}"
       echo "No publish date found in changed files."
     fi
   else
-    echo "PR does not have any of the '${PUBLISH_DATE_LABELS[*]}' labels. Skipping date check."
+    echo "PR does not have any of the '${_PUBLISH_DATE_LABELS[*]}' labels. Skipping date check."
   fi
 
   # -------------------------------------------------------------------------

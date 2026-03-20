@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Batch check for blog/announcement PRs ready to publish.
+# Batch check for blog PRs ready to publish.
 #
 # Queries all open PRs carrying any of the PUBLISH_DATE_LABELS and runs
 # pr-approval-labels.sh for each one. PRs that transition to
@@ -31,7 +31,12 @@
 set -euo pipefail
 
 # Labels that indicate a PR may contain content with a publish date.
-PUBLISH_DATE_LABELS=("blog" "announcements")
+# Set via the PUBLISH_DATE_LABELS environment variable (space-separated list).
+if [[ -z "${PUBLISH_DATE_LABELS:-}" ]]; then
+  echo "ERROR: PUBLISH_DATE_LABELS environment variable must be set."
+  exit 1
+fi
+read -ra _PUBLISH_DATE_LABELS <<< "${PUBLISH_DATE_LABELS}"
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
@@ -41,10 +46,10 @@ if [[ -z "${REPO:-}" ]]; then
 fi
 
 echo "Running blog publish check in batch mode."
-echo "Fetching open PRs with labels: ${PUBLISH_DATE_LABELS[*]}"
+echo "Fetching open PRs with labels: ${_PUBLISH_DATE_LABELS[*]}"
 
 all_prs=""
-for label in "${PUBLISH_DATE_LABELS[@]}"; do
+for label in "${_PUBLISH_DATE_LABELS[@]}"; do
   prs=$(gh pr list \
     --repo "${REPO}" \
     --label "${label}" \
@@ -57,7 +62,7 @@ done
 pr_nums=$(echo "${all_prs}" | tr ' ' '\n' | sort -un | grep -v '^$' || true)
 
 if [[ -z "${pr_nums}" ]]; then
-  echo "No open PRs found with labels: ${PUBLISH_DATE_LABELS[*]}"
+  echo "No open PRs found with labels: ${_PUBLISH_DATE_LABELS[*]}"
   exit 0
 fi
 

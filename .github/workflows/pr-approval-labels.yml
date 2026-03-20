@@ -79,3 +79,4 @@ jobs:
           GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           REPO: ${{ github.repository }}
           PR: ${{ steps.pr.outputs.number }}
+          PUBLISH_DATE_LABELS: blog
