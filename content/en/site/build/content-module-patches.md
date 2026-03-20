@@ -3,7 +3,6 @@ title: Content module patches
 description: >-
   Creating and managing temporary patches for content modules between releases.
 weight: 15
-cSpell:ignore: id
 ---
 
 Spec pages published on this site (OTel specification, OTLP, semantic
@@ -82,15 +81,15 @@ my @patches = (
 
 The fields for each patch entry are:
 
-| Field       | Description                                                                                                                                                                                         |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- | ----------------------------------------------------- |
-| **id**      | A unique identifier (date + short description) printed in log messages.                                                                                                                             |
-| **module**  | One of `spec`, `otlp`, or `semconv`.                                                                                                                                                                |
-| **minVers** | The spec version the patch applies to. The patch runs while the submodule is at this version and becomes obsolete once the spec advances past it.                                                   |
-| **maxVers** | Optional upper bound version. Set to `undef` if not needed. When set, the patch won't apply if the submodule version exceeds this value.                                                            |
-| **file**    | A compiled regular expression (`qr                                                                                                                                                                  | ... | `) matching the file paths the patch should apply to. |
-| **context** | Optional. Set to `'frontmatter'` for patches that modify front matter. Defaults to `'body'` (patches that modify page content).                                                                     |
-| **apply**   | An anonymous subroutine containing the regular expression substitution. For body patches, it operates on `$_`. For front-matter patches, it operates on `$frontMatterFromFile` (via `$_` aliasing). |
+| Field       | Description                                                                                                                                                                                |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **id**      | A unique ID (date + short description) printed in log messages.                                                                                                                            |
+| **module**  | One of `spec`, `otlp`, or `semconv`.                                                                                                                                                       |
+| **minVers** | The spec version the patch applies to. The patch runs while the submodule is at this version and becomes obsolete once the spec advances past it.                                          |
+| **maxVers** | Optional upper bound version. Set to `undef` if not needed. When set, the patch won't apply if the submodule version exceeds this value.                                                   |
+| **file**    | A compiled regex matching the file paths the patch should apply to, for example `qr\|^tmp/semconv/docs/\|`.                                                                                |
+| **context** | Optional. Set to `'frontmatter'` for patches that modify front matter. Defaults to `'body'` (patches that modify page content).                                                            |
+| **apply**   | An anonymous subroutine containing the regex substitution. For body patches, it operates on `$_`. For front-matter patches, it operates on `$frontMatterFromFile` (via `$_` aliasing).     |
 
 No separate registration step is needed — the `applyPatches` dispatcher
 automatically iterates over all entries in `@patches` during the build.
