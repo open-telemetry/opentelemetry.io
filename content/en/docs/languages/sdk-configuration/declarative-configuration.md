@@ -4,6 +4,7 @@ linkTitle: Declarative configuration
 weight: 30
 ---
 
+<!-- markdownlint-disable blanks-around-fences -->
 <?code-excerpt path-base="examples/otel-config"?>
 
 Declarative configuration uses a YAML file instead of environment variables.
