@@ -62,16 +62,21 @@ latest date — all content must be ready before merging.
 
 #### Script operating modes
 
-The script runs in one of two modes, selected by whether the `PR` environment
-variable is set:
+The [`pr-approval-labels.sh`][script] script processes a single PR (set via the
+`PR` environment variable). It is called by `pr-approval-labels.yml` on PR
+events and by [`blog-publish-check.sh`][batch-script] in batch mode.
 
-- **Single-PR mode** — processes a single PR. Used by the `pull_request_target`
-  and `workflow_run` triggers.
-- **Batch mode** — queries GitHub for all open PRs carrying any
-  `PUBLISH_DATE_LABELS` label and processes each one. Used by the
-  [`blog-publish-labels.yml`](#blog-publish-labels) `schedule` trigger (daily at
-  7 AM UTC), so a PR whose publish date arrives overnight receives
-  `ready-to-be-merged` automatically without requiring a new commit.
+[script]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/pr-approval-labels.sh
+[batch-script]:
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/blog-publish-check.sh
+
+The [`blog-publish-check.sh`][batch-script] script handles batch iteration: it
+queries all open PRs carrying any `PUBLISH_DATE_LABELS` label and calls
+`pr-approval-labels.sh` for each one. Used by the
+[`blog-publish-labels.yml`](#blog-publish-labels) `schedule` trigger (daily at 7
+AM UTC), so a PR whose publish date arrives overnight receives
+`ready-to-be-merged` automatically without requiring a new commit.
 
 ### Why two workflows?
 
@@ -145,12 +150,13 @@ sequenceDiagram
 ## Blog publish labels {#blog-publish-labels}
 
 The [`blog-publish-labels.yml`][blog] workflow runs daily at 7 AM UTC. It
-executes `pr-approval-labels.sh` in [batch mode](#publish-date-gating) —
-checking all open PRs with `blog` or `announcements` labels — and posts a Slack
-notification when `ready-to-be-merged` is newly applied to any of them. You can
-also trigger it manually via `workflow_dispatch` with the `force_notify` input to
-send a test Slack notification. When `force_notify` is `true`, the labeling step
-is skipped entirely (dry run) — only the test Slack payload is sent.
+executes [`blog-publish-check.sh`][batch-script], which iterates over all open
+PRs with `blog` or `announcements` labels and calls `pr-approval-labels.sh` for
+each one. When `ready-to-be-merged` is newly applied to any of them, a Slack
+notification is posted. You can also trigger it manually via `workflow_dispatch`
+with the `force_notify` input to send a test Slack notification. When
+`force_notify` is `true`, the labeling step is skipped entirely (dry run) — only
+the test Slack payload is sent.
 
 | Workflow file                     | Trigger                                                                           | Secrets required                                |
 | --------------------------------- | --------------------------------------------------------------------------------- | ----------------------------------------------- |
@@ -211,21 +217,23 @@ webhook call regardless of how many PRs are ready.
 ```mermaid
 sequenceDiagram
     participant GH as GitHub
-    participant B as blog-publish-labels
-    participant API as GitHub API
+    participant W as blog-publish-labels
+    participant B as blog-publish-check.sh
+    participant L as pr-approval-labels.sh
     participant S as Slack
 
     Note over GH: schedule event (daily, 7 AM UTC)
 
-    GH->>B: Trigger (base repository context, with secrets)
-    B->>API: Query open PRs with PUBLISH_DATE_LABELS labels
-    API-->>B: List of PRs
+    GH->>W: Trigger (base repository context, with secrets)
+    W->>B: Run blog-publish-check.sh
+    B->>GH: Query open PRs with PUBLISH_DATE_LABELS labels
+    GH-->>B: List of PRs
     loop Each PR
-        B->>B: Run pr-approval-labels.sh (batch mode)
-        B->>GH: Add/remove labels
+        B->>L: Run pr-approval-labels.sh (PR=number)
+        L->>GH: Add/remove labels
     end
     alt Any PR newly labeled ready-to-be-merged
-        B->>S: POST Slack notification with PR links
+        W->>S: POST Slack notification with PR links
     end
 ```
 

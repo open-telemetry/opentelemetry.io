@@ -14,15 +14,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# Automatically manages PR approval labels:
+# Manages PR approval labels for a single PR:
 #   - missing:docs-approval  -> when docs-approvers approval is pending
 #   - missing:sig-approval   -> when SIG approval is pending
 #   - ready-to-be-merged     -> when all required approvals are present
 #
-# Modes:
-#   Single-PR mode (PR env var set): processes the given PR.
-#   Batch mode (PR env var unset): queries open PRs with any of the
-#     PUBLISH_DATE_LABELS and processes each.
+# Required environment variables:
+#   GITHUB_TOKEN  - GitHub token with repo/org read access
+#   REPO          - Repository in "owner/repo" format
+#   PR            - Pull request number to process
+#
+# Optional environment variables:
+#   LABELED_PRS_OUTPUT_FILE - Path to append newly-labeled PR metadata (JSONL)
 
 set -euo pipefail
 
@@ -41,7 +44,12 @@ PUBLISH_DATE_LABELS=("blog" "announcements")
 
 if [[ -z "${REPO:-}" ]]; then
   echo "ERROR: REPO environment variable must be set."
-  exit 0
+  exit 1
+fi
+
+if [[ -z "${PR:-}" ]]; then
+  echo "ERROR: PR environment variable must be set."
+  exit 1
 fi
 
 # ---------------------------------------------------------------------------
@@ -217,43 +225,6 @@ get_publish_date() {
   done
 
   echo "${latest_date}"
-}
-
-# ---------------------------------------------------------------------------
-# Batch mode: find all open PRs that carry any of the PUBLISH_DATE_LABELS
-# and run main() for each one.
-# ---------------------------------------------------------------------------
-run_batch() {
-  echo "Running in batch mode."
-  echo "Fetching open PRs with labels: ${PUBLISH_DATE_LABELS[*]}"
-
-  local all_prs=""
-  local label
-  for label in "${PUBLISH_DATE_LABELS[@]}"; do
-    local prs
-    prs=$(gh pr list \
-      --repo "${REPO}" \
-      --label "${label}" \
-      --state open \
-      --json number \
-      --jq '.[].number' 2>/dev/null || true)
-    all_prs="${all_prs} ${prs}"
-  done
-
-  local pr_nums
-  pr_nums=$(echo "${all_prs}" | tr ' ' '\n' | sort -un | grep -v '^$' || true)
-
-  if [[ -z "${pr_nums}" ]]; then
-    echo "No open PRs found with labels: ${PUBLISH_DATE_LABELS[*]}"
-    return
-  fi
-
-  echo "Found PRs: ${pr_nums}"
-  while IFS= read -r pr_num; do
-    [[ -z "${pr_num}" ]] && continue
-    echo "--- Processing PR #${pr_num} ---"
-    PR="${pr_num}" main || echo "WARNING: Failed for PR #${pr_num}"
-  done <<< "${pr_nums}"
 }
 
 # ===========================================================================
@@ -457,10 +428,5 @@ ${members}"
   echo "Done."
 }
 
-# Route between single-PR mode and batch mode (no PR env var set)
-if [[ -z "${PR:-}" ]]; then
-  run_batch || echo "Failed to run $0 in batch mode"
-else
-  # Ensure the script does not block a PR even if it fails
-  main || echo "Failed to run $0"
-fi
+# Ensure the script does not block a PR even if it fails
+main || echo "Failed to run $0"

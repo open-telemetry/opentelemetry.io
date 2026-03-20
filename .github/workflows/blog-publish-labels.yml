@@ -39,11 +39,10 @@ jobs:
         if: >-
           github.event_name != 'workflow_dispatch' ||
           github.event.inputs.force_notify != 'true'
-        run: ./.github/scripts/pr-approval-labels.sh
+        run: ./.github/scripts/blog-publish-check.sh
         env:
           GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           REPO: ${{ github.repository }}
-          PR: ''
           LABELED_PRS_OUTPUT_FILE: ${{ github.workspace }}/labeled-prs.json
 
       - name: Inject test payload for Slack validation
@@ -65,9 +64,11 @@ jobs:
           # Compatible with Slack Workflow Builder webhook triggers: declare a
           # variable named "pr_list" (type: text) in the workflow trigger, then
           # use {{pr_list}} in the message step.
-          pr_list=$(jq -r -Rs '[split("\n")[] | select(length > 0) | fromjson | "\u2022 #\(.number): \(.title) \u2014 \(.url)"] | join("\n")' \
-            "${{ github.workspace }}/labeled-prs.json")
-          payload=$(jq -cn --arg pr_list "${pr_list}" '{"pr_list": $pr_list}')
+          pr_list_file=$(mktemp)
+          jq -r -Rs '[split("\n")[] | select(length > 0) | fromjson | "\u2022 #\(.number): \(.title) \u2014 \(.url)"] | join("\n")' \
+            "${{ github.workspace }}/labeled-prs.json" > "${pr_list_file}"
+          payload=$(jq -nc --rawfile pr_list "${pr_list_file}" '{"pr_list": $pr_list}')
+          rm -f "${pr_list_file}"
           curl --fail --silent --show-error \
             -X POST \
             -H 'Content-type: application/json' \
