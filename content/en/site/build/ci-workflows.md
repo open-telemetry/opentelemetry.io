@@ -53,8 +53,8 @@ the `ready-to-be-merged` label is withheld until that date arrives (UTC). This
 helps prevent content from being merged before its scheduled publication date.
 
 The check applies to PRs carrying any label listed in the `PUBLISH_DATE_LABELS`
-environment variable, set in each workflow YAML (currently: `blog` and
-`announcements`). Adding a label extends the check to other PR types.
+environment variable, set in each workflow YAML (currently: `blog`). Adding a
+label extends the check to other PR types.
 
 If a PR contains multiple files with different dates, the label is gated on the
 latest date — all content must be ready before merging.
@@ -150,12 +150,12 @@ sequenceDiagram
 
 The [`blog-publish-labels.yml`][blog] workflow runs daily at 7 AM UTC. It
 executes [`blog-publish-check.sh`][batch-script], which iterates over all open
-PRs with `blog` or `announcements` labels and calls `pr-approval-labels.sh` for
-each one. When `ready-to-be-merged` is newly applied to any of them, a Slack
-notification is posted. You can also trigger it manually via `workflow_dispatch`
-with the `force_notify` input to send a test Slack notification. When
-`force_notify` is `true`, the labeling step is skipped entirely (dry run) — only
-the test Slack payload is sent.
+PRs with `blog` label and calls `pr-approval-labels.sh` for each one. When
+`ready-to-be-merged` is newly applied to any of them, a Slack notification is
+posted. You can also trigger it manually via `workflow_dispatch` with the
+`force_notify` input to send a test Slack notification. When `force_notify` is
+`true`, the labeling step is skipped entirely (dry run) — only the test Slack
+payload is sent.
 
 | Workflow file                     | Trigger                                                                           | Secrets required                                |
 | --------------------------------- | --------------------------------------------------------------------------------- | ----------------------------------------------- |
