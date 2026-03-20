@@ -20,6 +20,9 @@ jobs:
   update-blog-publish-labels:
     name: Update blog publish labels
     runs-on: ubuntu-latest
+    concurrency:
+      group: blog-publish-labels
+      cancel-in-progress: false
     if: github.repository_owner == 'open-telemetry'
     permissions:
       contents: read
@@ -36,6 +39,7 @@ jobs:
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
       - name: Update blog publish labels
+        continue-on-error: true
         if: >-
           github.event_name != 'workflow_dispatch' ||
           github.event.inputs.force_notify != 'true'

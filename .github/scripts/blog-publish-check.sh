@@ -45,17 +45,48 @@ if [[ -z "${REPO:-}" ]]; then
   exit 1
 fi
 
+# ---------------------------------------------------------------------------
+# Rate-limit awareness: pause if close to exhausting the GitHub API budget.
+# ---------------------------------------------------------------------------
+check_rate_limit() {
+  local remaining
+  remaining=$(gh api /rate_limit --jq '.resources.core.remaining' 2>/dev/null || echo "unknown")
+  if [[ "${remaining}" == "unknown" ]]; then
+    return 0
+  fi
+  if (( remaining < 100 )); then
+    local reset_at
+    reset_at=$(gh api /rate_limit --jq '.resources.core.reset' 2>/dev/null || echo "0")
+    local now
+    now=$(date +%s)
+    local wait_secs=$(( reset_at - now + 5 ))
+    if (( wait_secs > 0 && wait_secs < 3600 )); then
+      echo "::warning::API rate limit low (${remaining} remaining). Waiting ${wait_secs}s for reset."
+      sleep "${wait_secs}"
+    fi
+  fi
+}
+
+# Set up a shared cache directory for team membership lookups so that
+# pr-approval-labels.sh can reuse results across PRs in the batch.
+TEAM_CACHE_DIR=$(mktemp -d)
+export TEAM_CACHE_DIR
+trap 'rm -rf "${TEAM_CACHE_DIR}"' EXIT
+
 echo "Running blog publish check in batch mode."
 echo "Fetching open PRs with labels: ${_PUBLISH_DATE_LABELS[*]}"
 
 all_prs=""
 for label in "${_PUBLISH_DATE_LABELS[@]}"; do
-  prs=$(gh pr list \
+  if ! prs=$(gh pr list \
     --repo "${REPO}" \
     --label "${label}" \
     --state open \
     --json number \
-    --jq '.[].number' 2>/dev/null || true)
+    --jq '.[].number' 2>&1); then
+    echo "::warning::Failed to list PRs with label '${label}': ${prs}"
+    prs=""
+  fi
   all_prs="${all_prs} ${prs}"
 done
 
@@ -69,8 +100,9 @@ fi
 echo "Found PRs: ${pr_nums}"
 while IFS= read -r pr_num; do
   [[ -z "${pr_num}" ]] && continue
+  check_rate_limit
   echo ""
   echo "--- Processing PR #${pr_num} ---"
   PR="${pr_num}" "${SCRIPT_DIR}/pr-approval-labels.sh" \
-    || echo "WARNING: Failed for PR #${pr_num}"
+    || echo "::warning::Failed to process PR #${pr_num}"
 done <<< "${pr_nums}"

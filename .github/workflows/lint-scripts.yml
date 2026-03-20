@@ -1,0 +1,34 @@
+name: Lint shell scripts
+
+on:
+  pull_request:
+    paths:
+      - '.github/scripts/**'
+      - '.shellcheckrc'
+
+permissions:
+  contents: read
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Run ShellCheck on changed scripts
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          changed_scripts=$(git diff --name-only --diff-filter=ACMR \
+            "${BASE_SHA}" "${HEAD_SHA}" \
+            -- '.github/scripts/*.sh' || true)
+          if [[ -z "${changed_scripts}" ]]; then
+            echo "No shell scripts changed."
+            exit 0
+          fi
+          echo "Checking: ${changed_scripts}"
+          # shellcheck disable=SC2086 # Intentional word-splitting on file list
+          shellcheck -x ${changed_scripts}

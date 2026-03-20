@@ -90,10 +90,33 @@ remove_label() {
 # ---------------------------------------------------------------------------
 get_team_members() {
   local team_slug="$1"
-  gh api \
+
+  # Use cache if available (set by blog-publish-check.sh for batch mode)
+  if [[ -n "${TEAM_CACHE_DIR:-}" ]]; then
+    local cache_file="${TEAM_CACHE_DIR}/${team_slug}.txt"
+    if [[ -f "${cache_file}" ]]; then
+      cat "${cache_file}"
+      return
+    fi
+  fi
+
+  local output
+  if ! output=$(gh api \
     --paginate \
     "/orgs/${ORG}/teams/${team_slug}/members" \
-    --jq '.[].login' 2>/dev/null | tr '[:upper:]' '[:lower:]' || true
+    --jq '.[].login' 2>&1); then
+    echo "::warning::Failed to fetch team '${team_slug}': ${output}" >&2
+    return 0  # Return empty (graceful degradation)
+  fi
+  local members
+  members=$(echo "${output}" | tr '[:upper:]' '[:lower:]')
+
+  # Populate cache if available
+  if [[ -n "${TEAM_CACHE_DIR:-}" ]]; then
+    echo "${members}" > "${TEAM_CACHE_DIR}/${team_slug}.txt"
+  fi
+
+  echo "${members}"
 }
 
 # ---------------------------------------------------------------------------
@@ -108,7 +131,7 @@ get_team_members() {
 # Outputs unique team slugs (without the org prefix), one per line.
 # ---------------------------------------------------------------------------
 get_sig_teams_for_files() {
-  local pr_files="$1"
+  local -a pr_files=("$@")
   local sig_teams=""
 
   local current_component=""
@@ -122,7 +145,7 @@ get_sig_teams_for_files() {
     if [[ "${line}" =~ ^[[:space:]]+([^[:space:]-][^:]+):[[:space:]]*$ ]]; then
       # Before moving to new component, process the previous one
       if [[ -n "${current_component}" && -n "${current_teams}" ]]; then
-        for file in ${pr_files}; do
+        for file in "${pr_files[@]}"; do
           if [[ "${file}" == "${current_component}"/* || "${file}" == "${current_component}" ]]; then
             sig_teams="${sig_teams} ${current_teams}"
             break
@@ -146,7 +169,7 @@ get_sig_teams_for_files() {
 
   # Process the last component
   if [[ -n "${current_component}" && -n "${current_teams}" ]]; then
-    for file in ${pr_files}; do
+    for file in "${pr_files[@]}"; do
       if [[ "${file}" == "${current_component}"/* || "${file}" == "${current_component}" ]]; then
         sig_teams="${sig_teams} ${current_teams}"
         break
@@ -179,11 +202,12 @@ should_check_publish_date() {
 # Returns the latest date found, or empty string if none.
 # ---------------------------------------------------------------------------
 get_publish_date() {
-  local pr_files="$1"
-  local head_sha="$2"
+  local head_sha="$1"
+  shift
+  local -a pr_files=("$@")
   local latest_date=""
 
-  for file in ${pr_files}; do
+  for file in "${pr_files[@]}"; do
     # Only inspect markdown files in known content paths to avoid unnecessary
     # GitHub API calls, which can cause rate limiting in batch mode.
     if [[ ! "${file}" == *.md && ! "${file}" == *.mdx ]]; then
@@ -199,9 +223,14 @@ get_publish_date() {
       echo "Skipping potentially unsafe file path: ${file}" >&2
       continue
     fi
+    local raw_content
+    if ! raw_content=$(gh api "/repos/${REPO}/contents/${file}?ref=${head_sha}" \
+      --jq '.content' 2>&1); then
+      echo "::warning::Failed to fetch content for ${file}: ${raw_content}" >&2
+      continue
+    fi
     local content
-    content=$(gh api "/repos/${REPO}/contents/${file}?ref=${head_sha}" \
-      --jq '.content' 2>/dev/null | base64 --decode 2>/dev/null || true)
+    content=$(echo "${raw_content}" | base64 --decode 2>/dev/null || true)
     [[ -z "${content}" ]] && continue
 
     local raw_date_line
@@ -210,6 +239,7 @@ get_publish_date() {
 
     # Strip the "date:" prefix.
     local file_date
+    # shellcheck disable=SC2001 # sed is clearer here than nested parameter expansion
     file_date=$(echo "${raw_date_line}" | sed 's/date:[[:space:]]*//')
     # Remove any inline comment starting with '#'.
     file_date=${file_date%%#*}
@@ -244,8 +274,8 @@ main() {
   pr_json=$(gh pr view "${PR}" --repo "${REPO}" \
     --json "files,latestReviews,labels,headRefOid,headRepository,title,url")
 
-  local pr_files
-  pr_files=$(echo "${pr_json}" | jq -r '.files[].path')
+  local -a pr_files
+  mapfile -t pr_files < <(echo "${pr_json}" | jq -r '.files[].path')
 
   local latest_reviews
   latest_reviews=$(echo "${pr_json}" | jq -c '.latestReviews')
@@ -254,8 +284,7 @@ main() {
 
   local head_sha
   head_sha=$(echo "${pr_json}" | jq -r '.headRefOid')
-  local head_repo
-  head_repo=$(echo "${pr_json}" | jq -r '.headRepository.nameWithOwner')
+
 
   # -------------------------------------------------------------------------
   # 1. Check docs approval
@@ -293,7 +322,7 @@ main() {
   echo ""
   echo "=== Checking SIG approval ==="
   local sig_teams
-  sig_teams=$(get_sig_teams_for_files "${pr_files}")
+  sig_teams=$(get_sig_teams_for_files "${pr_files[@]}")
 
   local sig_needed=false
   local sig_approved=false
@@ -348,7 +377,7 @@ ${members}"
 
   if should_check_publish_date; then
     local publish_date
-    publish_date=$(get_publish_date "${pr_files}" "${head_sha}")
+    publish_date=$(get_publish_date "${head_sha}" "${pr_files[@]}")
 
     if [[ -n "${publish_date}" ]]; then
       local today
@@ -434,5 +463,4 @@ ${members}"
   echo "Done."
 }
 
-# Ensure the script does not block a PR even if it fails
-main || echo "Failed to run $0"
+main

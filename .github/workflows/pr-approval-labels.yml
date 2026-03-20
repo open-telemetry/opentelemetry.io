@@ -21,6 +21,9 @@ jobs:
   update-approval-labels:
     name: Update approval labels
     runs-on: ubuntu-latest
+    concurrency:
+      group: pr-approval-${{ github.event.pull_request.number || github.event.workflow_run.id }}
+      cancel-in-progress: true
     if: >-
       github.repository_owner == 'open-telemetry' && (github.event_name !=
       'workflow_run' || github.event.workflow_run.conclusion == 'success')
@@ -73,6 +76,7 @@ jobs:
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
       - name: Update approval labels
+        continue-on-error: true
         run: ./.github/scripts/pr-approval-labels.sh
         env:
           # Use the app token to read org team membership
