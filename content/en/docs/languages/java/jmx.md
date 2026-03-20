@@ -12,9 +12,9 @@ This page describes how to collect metrics from
 ## Overview
 
 JMX (Java Management Extensions) is a Java technology that provides tools for
-managing and monitoring applications, system objects, devices, and
-service-oriented networks. JMX MBeans (Managed Beans) expose management
-attributes and operations that can be monitored.
+managing and monitoring applications via JMX MBeans (Managed Beans). These
+MBeans expose management attributes and operations that can be externally
+observed.
 
 The OpenTelemetry JMX Metric Insight module allows you to bridge JMX metrics
 into OpenTelemetry, enabling you to:
