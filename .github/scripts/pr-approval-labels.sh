@@ -194,6 +194,11 @@ get_sig_teams_for_files() {
 # changed files.
 # -------------------------------------------------------------------------
 should_check_publish_date() {
+  # Skip if the PR is already labeled ready-to-be-merged — the date check was
+  # satisfied on a previous run and re-evaluating could only flip-flop the label.
+  if echo "${CURRENT_LABELS}" | grep -qxF "${LABEL_READY}"; then
+    return 1
+  fi
   local label
   for label in "${_PUBLISH_DATE_LABELS[@]}"; do
     if echo "${CURRENT_LABELS}" | grep -qxF "${label}"; then
