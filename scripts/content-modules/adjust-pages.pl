@@ -170,10 +170,11 @@ sub getVersFromGitmodules($) {
     if (open(my $fh, '<', '.gitmodules')) {
       while (my $line = <$fh>) {
         if ($line =~ /^\s*(\w+)-pin\s*=\s*(.+)/) {
+          my $key = $1;
           my $vers = $2;
           chomp($vers);
           $vers =~ s/^v//;
-          $_gitmodulesCache{$1} = $vers;
+          $_gitmodulesCache{$key} = $vers;
         }
       }
       close($fh);
