@@ -20,12 +20,20 @@
 #   - ready-to-be-merged     -> when all required approvals are present
 #
 # Required environment variables:
-#   GITHUB_TOKEN  - GitHub token with repo/org read access
-#   REPO          - Repository in "owner/repo" format
-#   PR            - Pull request number to process
+#   REPO - Repository in "owner/repo" format
+#   PR   - Pull request number to process
 #
 # Optional environment variables:
 #   LABELED_PRS_OUTPUT_FILE - Path to append newly-labeled PR metadata (JSONL)
+#   PUBLISH_DATE_LABELS     - Space-separated list of labels that trigger
+#                             publish-date checks. If unset, date checks are
+#                             skipped with a warning.
+#   TEAM_CACHE_DIR          - Directory for caching team membership lookups
+#                             (set by blog-publish-check.sh in batch mode)
+#
+# Authentication:
+#   Uses the GitHub CLI (gh). Expects it to be authenticated via GITHUB_TOKEN,
+#   GH_TOKEN, or `gh auth login`.
 
 set -euo pipefail
 
@@ -272,7 +280,7 @@ main() {
   # Fetch PR data
   local pr_json
   pr_json=$(gh pr view "${PR}" --repo "${REPO}" \
-    --json "files,latestReviews,labels,headRefOid,headRepository,title,url")
+    --json "files,latestReviews,labels,headRefOid,title,url")
 
   local -a pr_files
   mapfile -t pr_files < <(echo "${pr_json}" | jq -r '.files[].path')
@@ -284,7 +292,6 @@ main() {
 
   local head_sha
   head_sha=$(echo "${pr_json}" | jq -r '.headRefOid')
-
 
   # -------------------------------------------------------------------------
   # 1. Check docs approval

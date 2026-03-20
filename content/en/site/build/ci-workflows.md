@@ -276,5 +276,6 @@ The repository includes several other workflows:
 | `auto-update-registry.yml` | Auto-update registry package versions         |
 | `auto-update-versions.yml` | Auto-update OTel component versions           |
 | `build-dev.yml`            | Development build and preview                 |
+| `lint-scripts.yml`         | ShellCheck linting for `.github/scripts/`     |
 | `label-prs.yml`            | Auto-label PRs based on file paths            |
 | `component-owners.yml`     | Assign reviewers based on component ownership |

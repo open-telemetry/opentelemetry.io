@@ -22,11 +22,16 @@
 # downstream Slack notification.
 #
 # Required environment variables:
-#   GITHUB_TOKEN  - GitHub token with repo read access
-#   REPO          - Repository in "owner/repo" format
+#   REPO                - Repository in "owner/repo" format
+#   PUBLISH_DATE_LABELS - Space-separated list of labels that trigger publish-
+#                         date checks (e.g. "blog" or "blog announcements")
 #
 # Optional environment variables:
 #   LABELED_PRS_OUTPUT_FILE - Path to write newly-labeled PR metadata (JSONL)
+#
+# Authentication:
+#   Uses the GitHub CLI (gh). Expects it to be authenticated via GITHUB_TOKEN,
+#   GH_TOKEN, or `gh auth login`.
 
 set -euo pipefail
 

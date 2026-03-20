@@ -22,11 +22,18 @@ jobs:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
-          changed_scripts=$(git diff --name-only --diff-filter=ACMR \
-            "${BASE_SHA}" "${HEAD_SHA}" \
-            -- '.github/scripts/*.sh' || true)
+          rc_changed=$(git diff --name-only "${BASE_SHA}" "${HEAD_SHA}" \
+            -- '.shellcheckrc' || true)
+          if [[ -n "${rc_changed}" ]]; then
+            echo ".shellcheckrc changed; checking all scripts."
+            changed_scripts=$(find .github/scripts -type f -name '*.sh' || true)
+          else
+            changed_scripts=$(git diff --name-only --diff-filter=ACMR \
+              "${BASE_SHA}" "${HEAD_SHA}" \
+              -- '.github/scripts/*.sh' || true)
+          fi
           if [[ -z "${changed_scripts}" ]]; then
-            echo "No shell scripts changed."
+            echo "No shell scripts to check."
             exit 0
           fi
           echo "Checking: ${changed_scripts}"
