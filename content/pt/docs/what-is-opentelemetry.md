@@ -128,7 +128,7 @@ problema por completo de forma independente, eles se fundiram para formar o
 OpenTelemetry e combinar seus esforços para oferecer uma solução única.
 
 Se você está atualmente utilizando OpenTracing ou OpenCensus, pode aprender como
-migrar para o OpenTelemetry no [guia de migração](../migration/).
+migrar para o OpenTelemetry no [guia de migração](../compatibility/migration/).
 
 [merger]:
   https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
