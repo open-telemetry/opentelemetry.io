@@ -22,7 +22,9 @@ jobs:
     name: Update approval labels
     runs-on: ubuntu-latest
     concurrency:
-      group: pr-approval-${{ github.event.pull_request.number || github.event.workflow_run.pull_requests[0].number || github.run_id }}
+      group:
+        pr-approval-${{ github.event.pull_request.number ||
+        github.event.workflow_run.pull_requests[0].number || github.run_id }}
       cancel-in-progress: true
     if: >-
       github.repository_owner == 'open-telemetry' && (github.event_name !=
