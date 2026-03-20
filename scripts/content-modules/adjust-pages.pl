@@ -159,6 +159,24 @@ sub patchSpec_because_of_SpecName_SomeDescription_AsTemplate() {
   }{$1/v1.52/$3}gx;
 }
 
+sub patchSpec_because_of_Spec_OpenTracingMigrationLinks() {
+  return unless
+    $ARGV =~ m|^tmp/otel/specification/compatibility/opentracing\.md$|
+    &&
+    applyPatchOrPrintMsgIf('2026-03-18-opentracing-migration-links',
+      'spec', '1.55.0');
+
+  # For the problematic links, see:
+  # https://github.com/open-telemetry/opentelemetry-specification/issues/4958
+  #
+  # Update migration links to new compatibility/migration paths:
+  # https://github.com/open-telemetry/opentelemetry-specification/pull/4958
+
+  s{
+    (https://opentelemetry\.io/docs)/migration/(opentracing/)
+  }{$1/compatibility/migration/$2}gx;
+}
+
 sub getVersFromSubmodule() {
   my %repoNames = qw(
     otlp    opentelemetry-proto
@@ -280,6 +298,8 @@ while(<>) {
   }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
 
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
+
+  patchSpec_because_of_Spec_OpenTracingMigrationLinks();
 
   # Make website-local page references local:
   s|https://opentelemetry.io/|/|g;
