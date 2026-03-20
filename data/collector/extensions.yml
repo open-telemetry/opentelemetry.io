@@ -6,7 +6,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     extension: alpha
 - name: asapauthextension
@@ -59,14 +59,14 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     extension: beta
 - name: bearertokenauthextension
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     extension: beta
 - name: cfgardenobserver
@@ -113,7 +113,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     extension: beta
   subtype: storage
@@ -134,7 +134,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     extension: alpha
 - name: healthcheckextension
@@ -142,7 +142,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     extension: alpha
 - name: healthcheckv2extension
@@ -155,7 +155,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     extension: beta
   subtype: observer
@@ -163,7 +163,7 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     extension: beta
 - name: jaegerencodingextension
@@ -190,14 +190,14 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     extension: alpha
 - name: k8sobserver
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     extension: alpha
   subtype: observer
@@ -218,21 +218,21 @@
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     extension: beta
 - name: oidcauthextension
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     extension: beta
 - name: opampextension
   repo: contrib
   distributions:
     - contrib
-    - K8s
+    - k8s
   stability:
     extension: alpha
 - name: otlpencodingextension
@@ -247,7 +247,7 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     extension: beta
 - name: redisstorageextension
@@ -307,6 +307,6 @@
   distributions:
     - contrib
     - core
-    - K8s
+    - k8s
   stability:
     extension: beta

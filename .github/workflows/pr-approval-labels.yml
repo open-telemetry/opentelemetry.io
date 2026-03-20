@@ -3,8 +3,6 @@
 name: PR approval labels
 
 on:
-  schedule:
-    - cron: '0 0 * * *' # Daily at midnight UTC
   pull_request_target:
     types:
       - opened
@@ -49,9 +47,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          if [[ "$EVENT_NAME" == "schedule" ]]; then
-            echo "number=" >> "$GITHUB_OUTPUT"  # unused for scheduled runs
-          elif [[ "$EVENT_NAME" == "workflow_run" ]]; then
+          if [[ "$EVENT_NAME" == "workflow_run" ]]; then
             if [[ ! -f pr-number.txt ]]; then
               echo "Error: pr-number.txt artifact file not found." >&2
               exit 1
