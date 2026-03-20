@@ -68,7 +68,7 @@ events and by [`blog-publish-check.sh`][batch-script] in batch mode.
 [script]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/pr-approval-labels.sh
 [batch-script]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/blog-publish-check.sh
+  https://github.com/open-telemetry/opentelemetry.io/blob/248cc6f/.github/scripts/blog-publish-check.sh
 
 The [`blog-publish-check.sh`][batch-script] script handles batch iteration: it
 queries all open PRs carrying any `PUBLISH_DATE_LABELS` label and calls
