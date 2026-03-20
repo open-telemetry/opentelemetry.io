@@ -6,7 +6,6 @@ cSpell:ignore: defmodule defp ecto elixirc elli KHTML postgres rebar relx rolldi
 ---
 
 <!-- markdownlint-disable no-duplicate-heading -->
-<!-- markdownlint-capture -->
 
 Welcome to the OpenTelemetry for Erlang/Elixir getting started guide! This guide
 will walk you through the basic steps in installing, configuring, and exporting

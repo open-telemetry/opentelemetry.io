@@ -1,0 +1,73 @@
+# To learn more about this workflow, see:
+#  https://opentelemetry.io/site/build/ci-workflows/#blog-publish-labels
+name: Blog publish labels
+
+on:
+  schedule:
+    - cron: '0 7 * * *' # Daily at 7 AM UTC
+  workflow_dispatch:
+    inputs:
+      force_notify:
+        description:
+          'Send a test Slack notification even if no PRs were newly labeled'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  update-blog-publish-labels:
+    name: Update blog publish labels
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'open-telemetry'
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+
+      - uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
+        id: otelbot-token
+        with:
+          app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
+          private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
+
+      - name: Update blog publish labels
+        run: ./.github/scripts/pr-approval-labels.sh
+        env:
+          GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
+          REPO: ${{ github.repository }}
+          PR: ''
+          LABELED_PRS_OUTPUT_FILE: ${{ github.workspace }}/labeled-prs.json
+
+      - name: Inject test payload for Slack validation
+        if:
+          github.event_name == 'workflow_dispatch' &&
+          github.event.inputs.force_notify == 'true'
+        run: |
+          printf '{"number": 9000, "title": "[blog] Test post: first blog ready to publish", "url": "https://github.com/${{ github.repository }}/pull/9000"}\n' \
+            >> "${{ github.workspace }}/labeled-prs.json"
+          printf '{"number": 9001, "title": "[blog] Test post: second blog ready to publish", "url": "https://github.com/${{ github.repository }}/pull/9001"}\n' \
+            >> "${{ github.workspace }}/labeled-prs.json"
+
+      - name: Notify Slack
+        if: hashFiles('labeled-prs.json') != ''
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          # Builds a single list where each PR is formatted as a title line plus
+          # a bare URL on the next line, with blank lines between entries, and
+          # sends it as one webhook call. Compatible with Slack Workflow Builder
+          # webhook triggers: declare a variable named "pr_list" (type: text) in
+          # the workflow trigger, then use {{pr_list}} in the message step.
+          pr_list=$(jq -Rs '[split("\n")[] | select(length > 0) | fromjson | "#\(.number): \(.title)\n\(.url)"] | join("\n\n")' \
+            "${{ github.workspace }}/labeled-prs.json")
+          payload=$(jq -cn --arg pr_list "${pr_list}" '{"pr_list": $pr_list}')
+          curl --fail --silent --show-error \
+            -X POST \
+            -H 'Content-type: application/json' \
+            --data "${payload}" \
+            "${SLACK_WEBHOOK_URL}"

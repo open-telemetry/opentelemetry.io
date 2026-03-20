@@ -11,6 +11,8 @@ filters:
       # Don't check registry .yml file fields for language, repo, url and tags:
       - '/^\s*(?:language|repo|name|docs|url|website): .*$/m'
       - /^(?:tags):(\s*-.+$)*/m
+      # Don't check Collector component .yml file fields for distributions:
+      - /^\s*(?:distributions):(\s*-.+$)*/m
       # Hugo template syntax:
       - /{{.*?}}/
       - /{{%.*?%}}/
@@ -132,7 +134,7 @@ rules:
         - '(?<=(^|\s))(?:\bdot|\.)net\b'
         - .NET
       - [ebpf, eBPF]
-      - [epbf, eBPF]
+      - [epbf, eBPF] # cSpell:disable-line
       - ['http[ /]?2(?:\.0)?', HTTP/2]
       - [he(/| or )she, they]
       - [\(s\)he, they]
@@ -150,9 +152,13 @@ rules:
       - [nd-?json, NDJSON]
       - [node\.?js, Node.js]
       - [open-source, open source]
-      - # OpenTelemetry
-        # Catch typos like: OpenTelemtry, opentelementry
-        # Exclude occurrences like:
+
+      - # OpenTelemetry rule
+        #
+        # Use to catch typos like: # cSpell:disable-next
+        # - OpenTelemtry, opentelementry
+        #
+        # We exclude (i.e., allow) occurrences like:
         # - Compound names: go.opentelemetry.io
         # - Paths: medium.com/opentelemetry
         # - Repo names: opentelemetry-cpp or ocaml-opentelemetry
@@ -161,6 +167,7 @@ rules:
         # cSpell:ignore teleme
         - '(?<![-#@./])\bopen[- ]?teleme?n?try\b(?![-./])'
         - OpenTelemetry
+
       - [os x, macOS]
       - [protable, portable]
       - [postgres, PostgreSQL]
@@ -174,6 +181,7 @@ rules:
       - ["uid['’]?(s)?", UID$1]
       - ['(walk)-(throughs?)', $1$2] # cSpell:disable-line
       - ['(work)-(arounds?)', $1$2]
+
       # Enable the following to find and replace "instrumentation module/package" with "instrumentation library":
       # - ["(auto(matic)?[- ])?instrumentation (module|package)", "instrumentation library"]
       # - ["(auto(matic)?[- ])?instrumentation (modules|packages)", "instrumentation libraries"]

@@ -38,6 +38,6 @@ the conference!
 Come listen, learn, and get involved in OpenTelemetry. See you in Hong!
 
 [KubeCon + CloudNativeCon China]:
-  https://events.linuxfoundation.org/kubecon-cloudnativecon-china/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog
+  https://www.lfasiallc.com/kubecon-cloudnativecon-openinfra-summit-pytorch-conference-china/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-EU-2025&utm_content=blog
 [registration]:
   https://events.linuxfoundation.org/kubecon-cloudnativecon-china/reg/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-China-2025

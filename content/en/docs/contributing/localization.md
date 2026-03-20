@@ -6,7 +6,7 @@ weight: 25
 cSpell:ignore: Dowair shortcodes
 ---
 
-The OTel website uses Hugo's [multilingual framework] to support page
+The OTel website uses Hugo's [multilingual framework][] to support page
 localizations. English is the default language, with US English as the default
 (implicit) localization. A growing number of other localizations are supported,
 as can be seen from the languages dropdown menu in the top nav.
@@ -30,9 +30,9 @@ guidance offered in this section.
   - **All** page content and front matter unless indicated otherwise
 - **Preserve** the _content_, _meaning_, and _style_ of the original text
 - **Submit work _incrementally_** via [small pull requests](#small-prs)
-- **Ask** [maintainers] if you have any doubts or questions through:
-  - [Slack] `#otel-docs-localization` or `#otel-comms` channels
-  - [Discussion], issue, or PR comment
+- **Ask** [maintainers][] if you have any doubts or questions through:
+  - [Slack][] `#otel-docs-localization` or `#otel-comms` channels
+  - [Discussion][], issue, or PR comment
 
 [Discussion]:
   https://github.com/open-telemetry/opentelemetry.io/discussions?discussions_q=is%3Aopen+label%3Ai18n
@@ -44,14 +44,15 @@ guidance offered in this section.
 <div class="border-start border-warning bg-warning-subtle">
 
 - **Translate**:
+  - [Alert types](../style-guide/#alerts) such as `TIP`, `WARNING`, etc.
+  - Code, including code blocks and inline code (like this
+    `inline code example`)
   - **File or directory** names of resources in this repository
-  - [Links](#links), this includes [heading IDs](#headings) [^*]
-  - Inline code-spans like these: `inline code example`
-  - Markdown elements marked as `notranslate` (usually as a CSS class), in
-    particular for [headings](#headings)
   - [Front matter][] fields other than those listed in [Do](#do). In particular,
     do not translate `aliases`. When in doubt, ask maintainers.
-  - Code
+  - [Links](#links), this includes [heading IDs](#headings) [^*]
+  - Markdown elements marked as `notranslate` (usually as a CSS class), in
+    particular for [headings](#headings)
 - Create **copies of images**, unless you [localize text in the images](#images)
 - Add new or change:
   - **Content** that would be different from the originally intended meaning
@@ -95,7 +96,7 @@ this means replacing the `en` in the URL by your locale's language code.
 
 ### Link definition labels {#link-labels}
 
-Locale authors can choose or not to translate [labels] of Markdown [link
+Locale authors can choose or not to translate [labels][] of Markdown [link
 definitions][]. If you choose to keep the English label, then follow the
 guidance given in this section.
 
@@ -148,7 +149,7 @@ would translate any other page content.
 > [include files](#includes) as a means of supporting shared-page content.
 
 Some of the base shortcodes contain English text that you might need to localize
--- this is particularly true of those contained in [layouts/_shortcodes/docs].
+-- this is particularly true of those contained in [layouts/_shortcodes/docs][].
 
 If you need to create a localized version of a shortcode, place it under
 `layouts/_shortcodes/xx`, where `xx` is your localization's language code. From
@@ -367,10 +368,10 @@ with the task list given below:
 ### 3. Localize the homepage {#homepage}
 
 [Submit a pull request](../pull-requests/) with a translation of the website
-[homepage], and _nothing else_, in the file `content/LANG_ID/_index.md`. Ensure
-that maintainers have the necessary permissions to edit your PR, since they will
-add additional changes to your PR that are required to get your localization
-project started.
+[homepage][], and _nothing else_, in the file `content/LANG_ID/_index.md`.
+Ensure that maintainers have the necessary permissions to edit your PR, since
+they will add additional changes to your PR that are required to get your
+localization project started.
 
 [homepage]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/content/en/_index.md
@@ -395,14 +396,13 @@ content][ali-dowair-2024].
 
 ### 5. Localize remaining site pages in small increments {#rest}
 
-With terminology established, you can now localize the remaining site pages. <a
-name="small-prs"></a>
+With terminology established, you can now localize the remaining site pages.
 
-> [!IMPORTANT] Submit small PRs
+> [!IMPORTANT] Submit small PRs <a id="small-prs"></a>
 >
 > Localization teams should submit their work in **small increments**. That is,
-> keep [PRs] small, preferably limited to one or a few small files. Smaller PRs
-> are easier to review and so typically get merged more quickly.
+> keep [PRs][] small, preferably limited to one or a few small files. Smaller
+> PRs are easier to review and so typically get merged more quickly.
 
 ### OTel maintainer checklist
 
@@ -445,7 +445,7 @@ If no dictionary is available, then skip the rest of this subsection. Otherwise:
 
 ### PRs with semantic changes should not span locales {#prs-should-not-span-locales}
 
-Approvers should ensure that [PRs] making **semantic** changes to doc pages do
+Approvers should ensure that [PRs][] making **semantic** changes to doc pages do
 not span multiple locales. A semantic change is one that impacts the _meaning_
 of the page content. Our docs [localization process](.) ensures that locale
 approvers will, in time, review the English-language edits to determine if the

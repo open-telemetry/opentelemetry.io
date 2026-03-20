@@ -1,18 +1,18 @@
 ---
 title: OpenTelemetry
-description: >-
-  Telemetria de alta qualidade, abrangente e portátil para permitir uma
-  observabilidade eficaz
+description: O padrão aberto para telemetria
+outputs:
+  - HTML
 developer_note: >
   O shortcode blocks/cover (usado abaixo) vai servir como imagem de background
   para qualquer arquivo de imagem que contenha "background" no nome.
-show_banner: true
-default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
+default_lang_commit: 48f579c733f727417a51edb81a294151e5878d4d
+params:
+  btn-lg: class="btn btn-lg btn-{1}" role="button"
+  show_banner: true
 ---
 
-<div class="d-none"><a rel="me" href="https://fosstodon.org/@opentelemetry"></a></div>
-
-{{< blocks/cover image_anchor="top" height="max" color="primary" >}}
+{{% blocks/cover image_anchor="top" height="max td-below-navbar" %}}
 
 <!-- prettier-ignore -->
 ![OpenTelemetry](/img/logos/opentelemetry-horizontal-color.svg)
@@ -22,76 +22,141 @@ default_lang_commit: 505e2d1d650a80f8a8d72206f2e285430bc6b36a
 {{% param description %}}
 {.display-6}
 
-<div class="l-primary-buttons mt-5">
-
-- [Saiba mais](docs/what-is-opentelemetry/)
-- [Experimente a demonstração](docs/demo/)
-
+<!-- prettier-ignore -->
+<div class="td-cta-buttons my-5">
+  <a {{% _param btn-lg primary %}} href="docs/what-is-opentelemetry/">
+    Saiba mais
+  </a>
+  <a {{% _param btn-lg secondary %}} href="docs/demo/">
+    Experimente a demonstração
+  </a>
 </div>
 
-<div class="h3 mt-4">
-<a class="text-secondary" href="/docs/getting-started/">Comece</a> baseado na sua área
-</div>
-<div class="l-get-started-buttons">
+{{% /blocks/cover %}}
 
-- [Dev](docs/getting-started/dev/)
-- [Ops](docs/getting-started/ops/)
+{{< homepage/hero-search placeholder="Pesquisar na documentação do OpenTelemetry..." >}}
 
-</div>
-{{< /blocks/cover >}}
+{{% homepage/intro-section image="/img/homepage/collector-pipeline.svg" imageAlt="Visão geral do OpenTelemetry" %}}
 
-{{% blocks/lead color="white" %}}
+**OpenTelemetry** é um _framework_ de observabilidade de código aberto para
+_software_ nativo da nuvem. Ele fornece um conjunto único de APIs, bibliotecas,
+agentes e serviços de coleta para capturar rastros distribuídos e métricas da
+sua aplicação.
 
-O OpenTelemetry é uma coleção de APIs, SDKs e ferramentas. Use-o para
-instrumentar, gerar, coletar e exportar dados de telemetria (métricas, logs e
-rastros) para ajudar você a analisar o desempenho e o comportamento do seu
-software.
+Construído com base em anos de experiência dos projetos OpenTracing e
+OpenCensus, o OpenTelemetry combina as melhores ideias e práticas da comunidade.
 
-> O OpenTelemetry está [disponível](/status/) em
-> [diversas linguagens](docs/languages/) e está pronto para uso em produção.
+{{% /homepage/intro-section %}}
 
-{{% /blocks/lead %}}
+{{< homepage/main-features >}}
 
-{{% blocks/section color="dark" type="row" %}}
+{{% homepage/main-feature
+      title="Instrumentação agnóstica a fornecedor"
+      image="/img/homepage/data-sources.svg"
+      imagePosition="left" %}}
 
-{{% blocks/feature icon="fas fa-chart-line" title="Rastros, Métricas, Logs" url="docs/concepts/observability-primer/" %}}
+Instrumente seu código uma única vez utilizando as APIs e SDKs do OpenTelemetry.
+Exporte dados de telemetria para qualquer _backend_ de observabilidade — Jaeger,
+Prometheus, fornecedores comerciais ou sua própria solução. Troque de _backend_
+sem alterar o código da sua aplicação.
 
-Crie e colete dados de telemetria a partir de seus serviços e softwares, e
-depois encaminhe-os para uma variedade de ferramentas de análise.
+{{% /homepage/main-feature %}}
 
-{{% /blocks/feature %}}
+{{% homepage/main-feature
+      title="Sinais unificados de observabilidade"
+      image="/img/homepage/unified-signals.svg"
+      imagePosition="right" %}}
 
-{{% blocks/feature icon="fas fa-magic" title="Instrumentação de Fácil Integração"%}}
+Correlacione rastros, métricas e logs com contexto compartilhado que flui por
+todo o caminho da requisição. Obtenha uma visão completa do comportamento da sua
+aplicação em todos os componentes e serviços.
 
-O OpenTelemetry é [integrável] com diversos frameworks e bibliotecas populares,
-e suporta [instrumentação] _manual e sem código_.
+{{% /homepage/main-feature %}}
 
-[instrumentação]: /docs/concepts/instrumentation/
-[integrável]: /ecosystem/integrations/
+{{% homepage/main-feature
+      title="Execute em qualquer lugar"
+      image="/img/homepage/global-deployment.svg"
+      imagePosition="left" %}}
 
-{{% /blocks/feature %}}
+O OpenTelemetry é 100% código aberto e agnóstico a fornecedor. Implante
+localmente, em ambientes híbridos ou em múltiplas nuvens com total flexibilidade
+e sem dependência de fornecedor. Mova cargas de trabalho para onde fizer mais
+sentido para você.
 
-{{% blocks/feature icon="fab fa-github" title="Open Source, Agnóstico a Fornecedor" %}}
+{{% /homepage/main-feature %}}
 
-100% Gratuito e Open Source, o OpenTelemetry é [adotado] e apoiado por [líderes
-da indústria] no ecossistema da observabilidade.
+{{< /homepage/main-features >}}
 
-[adotado]: /ecosystem/adopters/
-[líderes da indústria]: /ecosystem/vendors/
+{{< homepage/signals-showcase title="Sinais de Observabilidade" >}}
+{{< homepage/signal name="Rastros" image="/img/homepage/signal-traces.svg" url="/docs/concepts/signals/traces/" >}}
+Rastros distribuídos {{< /homepage/signal >}}
+{{< homepage/signal name="Métricas" image="/img/homepage/signal-metrics.svg" url="/docs/concepts/signals/metrics/" >}}
+Medições ao longo do tempo {{< /homepage/signal >}}
+{{< homepage/signal name="Logs" image="/img/homepage/signal-logs.svg" url="/docs/concepts/signals/logs/" >}}
+Registros com marcação temporal {{< /homepage/signal >}}
+{{< homepage/signal name="Bagagem" image="/img/homepage/signal-baggage.svg" url="/docs/concepts/signals/baggage/" >}}
+Metadados contextuais {{< /homepage/signal >}}
+{{< /homepage/signals-showcase >}}
 
-{{% /blocks/feature %}}
+{{< homepage/otel-features title="Funcionalidades do OpenTelemetry" columns="2" >}}
 
-{{% /blocks/section %}}
+{{< homepage/otel-feature image="/img/homepage/feature-auto-instrumentation.svg" title="Auto-instrumentação" url="/docs/concepts/instrumentation/zero-code/" >}}
+Comece em minutos com a instrumentação sem código para _frameworks_ e
+bibliotecas populares. Agentes de instrumentação automática capturam rastros,
+métricas e logs sem modificar seu código-fonte. {{< /homepage/otel-feature >}}
+
+{{< homepage/otel-feature image="/img/homepage/feature-pipeline.svg" title="Pipeline do Collector" url="/docs/collector/" >}}
+Processe, filtre e roteie dados de telemetria com o OpenTelemetry Collector.
+Implante como agente ou gateway para receber, processar e exportar telemetria em
+escala com mais de 200 componentes. {{< /homepage/otel-feature >}}
+
+{{< homepage/otel-feature image="/img/homepage/feature-observability.svg" title="Propagação de contexto" url="/docs/concepts/context-propagation/" >}}
+Correlacione rastros automaticamente através dos limites dos serviços. O
+contexto distribuído flui por todo o caminho da requisição, conectando logs,
+métricas e rastros em uma visão unificada. {{< /homepage/otel-feature >}}
+
+{{< homepage/otel-feature image="/img/homepage/feature-multi-language.svg" title="Suporte a múltiplas linguagens de programação" url="/docs/languages/" >}}
+SDKs nativos para 12+ linguagens de programação, incluindo Java, Kotlin, Python,
+Go, JavaScript, .NET, Ruby, PHP, Rust, C++, Swift, e Erlang. Use sua linguagem
+de programação preferida com suporte de primeira classe do OpenTelemetry.
+{{< /homepage/otel-feature >}}
+
+{{< homepage/otel-feature image="/img/homepage/feature-production-ready.svg" title="Estável e pronto para produção" url="/status/" >}}
+As APIs de rastros e métricas são estáveis nas principais linguagens de
+programação. Milhares de organizações executam o OpenTelemetry em produção.
+Apoiado pela CNCF e pelos principais provedores de computação em nuvem.
+{{< /homepage/otel-feature >}}
+
+{{< homepage/otel-feature image="/img/homepage/feature-openness.svg" title="Especificações abertas" url="/docs/specs/status/" >}}
+Construído sobre especificações abertas e agnósticas a fornecedor para APIs,
+SDKs e o protocolo de comunicação (OTLP). A governança transparente sob a CNCF
+garante estabilidade a longo prazo e evolução orientada pela comunidade.
+{{< /homepage/otel-feature >}}
+
+{{< /homepage/otel-features >}}
+
+{{< homepage/ecosystem-stats title="O Ecossistema OpenTelemetry" >}}
+{{< homepage/stat type="languages" label="Linguagens de programação" url="/docs/languages/" >}}
+{{< homepage/stat type="collector" label="Componentes do Collector" url="/docs/collector/" >}}
+{{< homepage/stat type="registry" label="Integrações" url="/ecosystem/registry/" >}}
+{{< homepage/stat type="vendors" label="Fornecedores" url="/ecosystem/vendors/" >}}
+{{< /homepage/ecosystem-stats >}}
+
+{{< homepage/adopters-showcase
+    title="Utilizado por líderes da indústria"
+    limit="10"
+    ctaText="Visualizar todos"
+    ctaUrl="/ecosystem/adopters/" >}}
 
 {{% blocks/section color="secondary" type="cncf" %}}
 
-**O OpenTelemetry é um projeto em [incubação][] da [CNCF][]**.<br> Formado por
-meio de uma junção dos projetos OpenTracing e OpenCensus.
+**OpenTelemetry é um projeto em [incubação][incubating] da [CNCF][]**.<br>
+Formado por meio de uma junção dos projetos OpenTracing e OpenCensus.
 
 [![CNCF logo][]][cncf]
 
 [cncf]: https://cncf.io
 [cncf logo]: /img/logos/cncf-white.svg
-[incubação]: https://www.cncf.io/projects/
+[incubating]: https://www.cncf.io/projects/
 
 {{% /blocks/section %}}

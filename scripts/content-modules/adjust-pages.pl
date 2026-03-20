@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w -i
 #
-# cSpell:ignore oteps
+# cSpell:ignore oteps submod
 
 $^W = 1;
 
@@ -24,9 +24,9 @@ my $lineNum;
 
 my %versionsRaw = # Keyname must end with colons because the auto-version update script expects one
   qw(
-    spec: 1.53.0
-    otlp: 1.9.0
-    semconv: 1.39.0
+    spec: 1.55.0
+    otlp: 1.10.0
+    semconv: 1.40.0
   );
 # Versions map without the colon in the keys
 my %versions = map { s/://r => $versionsRaw{$_} } keys %versionsRaw;
@@ -54,6 +54,10 @@ sub printFrontMatter() {
     # $frontMatterFromFile =~ s/body_class: .*/$& td-page--draft/;
     # $frontMatterFromFile =~ s/cascade:\n/$&  draft: true\n/;
   }
+  # elsif ($ARGV =~ m|^tmp/otel/specification/logs/|
+  #     && applyPatchOrPrintMsgIf('2026-01-29-hugo01550-alias-processing-diff', 'spec', '1.53.0')) {
+  #   $frontMatterFromFile =~ s{^(\s+-\s+)\./(event-\w+)$}{$1logs/$2}gxm;
+  # }
   # Sample front-matter patch:
   #
   # } elsif ($ARGV =~ /otel\/specification\/logs\/api.md$/) {
@@ -153,7 +157,7 @@ sub patchSpec_because_of_SpecName_SomeDescription_AsTemplate() {
     # Or with an upper bound:
     # applyPatchOrPrintMsgIf('2026-01-01-some-unique-id', 'semconv', '1.39.0', '1.40.0');
 
-  # Give infor about the patch:
+  # Give info about the patch:
   #
   # For the problematic links, see:
   # https://github.com/open-telemetry/semantic-conventions/issues/3103
@@ -167,31 +171,22 @@ sub patchSpec_because_of_SpecName_SomeDescription_AsTemplate() {
   }{$1/v1.52/$3}gx;
 }
 
-sub patchSpec_because_of_SemConv_DatabaseRenamedToDb() {
+sub patchSpec_because_of_Spec_OpenTracingMigrationLinks() {
   return unless
-    # Restrict the patch to the proper spec, and section or file:
-    # Note that here we replace links into semconv from the spec
-    $ARGV =~ m|^tmp/otel/specification/|
-      && applyPatchOrPrintMsgIf('2025-11-26-database-section-renamed-to-db', 'spec', '1.53.0', '1.53.0');
+    $ARGV =~ m|^tmp/otel/specification/compatibility/opentracing\.md$|
+    &&
+    applyPatchOrPrintMsgIf('2026-03-18-opentracing-migration-links',
+      'spec', '1.55.0');
 
-  # Give infor about the patch, see:
-  # https://github.com/open-telemetry/opentelemetry.io/pull/8311#issue-3577941378
+  # For the problematic links, see:
+  # https://github.com/open-telemetry/opentelemetry-specification/issues/4958
+  #
+  # Update migration links to new compatibility/migration paths:
+  # https://github.com/open-telemetry/opentelemetry-specification/pull/4958
 
-  # Match both localized paths and GitHub URLs:
-  s|(/semconv)/database(/database-)|$1/db$2|g;
-}
-
-sub patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration() {
-  return unless
-    $ARGV =~ m|^tmp/otel/specification/|
-      && applyPatchOrPrintMsgIf('2025-12-05-metric-rpc-server-duration-renamed-to-rpc-server-call-duration', 'spec', '1.53.0', '1.53.0');
-
-  # Give infor about the patch, see:
-  # https://github.com/open-telemetry/opentelemetry-specification/pull/4778
-
-  # Replace the old metric anchor with the new one
-  # cSpell:disable-next-line
-  s|#metric-rpcserverduration|#metric-rpcservercallduration|g;
+  s{
+    (https://opentelemetry\.io/docs)/migration/(opentracing/)
+  }{$1/compatibility/migration/$2}gx;
 }
 
 sub getVersFromSubmodule() {
@@ -281,7 +276,6 @@ while(<>) {
     s|\((/model/.*?)\)|($semconvSpecRepoUrl/tree/v$semconvVers/$1)|g;
   }
 
-
   # SPECIFICATION custom processing
 
   s|\(https://github.com/open-telemetry/opentelemetry-specification\)|($specBasePath/otel/)|;
@@ -315,10 +309,9 @@ while(<>) {
     )
   }{$otelSpecRepoUrl/tree/v$otelSpecVers/$2}gx;
 
-  patchSpec_because_of_SemConv_DatabaseRenamedToDb();
-  patchSpec_because_of_SemConv_MetricRPCServerDurationRenamedToMetricRPCServerCallDuration();
-
   s|\.\./((?:examples/)?README\.md)|$otlpSpecRepoUrl/tree/v$otlpSpecVers/$1|g if $ARGV =~ /^tmp\/otlp/;
+
+  patchSpec_because_of_Spec_OpenTracingMigrationLinks();
 
   # Make website-local page references local:
   s|https://opentelemetry.io/|/|g;

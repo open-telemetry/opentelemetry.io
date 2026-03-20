@@ -188,9 +188,9 @@ roleRef:
 | Deployment (gateway) | Yes, but will only collect metrics from the node it is deployed on |
 | Sidecar              | No                                                                 |
 
-Each Kubernetes node runs a kubelet that includes an API server. The Kubernetes
-Receiver connects to that kubelet via the API server to collect metrics about
-the node and the workloads running on the node.
+Each Kubernetes node runs a kubelet that includes an API server. The
+Kubeletstats Receiver connects to that kubelet via the API server to collect
+metrics about the node and the workloads running on the node.
 
 There are different methods for authentication, but typically a service account
 is used. The service account will also need proper permissions to pull data from
@@ -620,7 +620,7 @@ subjects:
 Prometheus is a common metrics format for both Kubernetes and services running
 on Kubernetes. The Prometheus receiver is a minimal drop-in replacement for the
 collection of those metrics. It supports the full set of Prometheus
-[`scrape_config` options](https://prometheus.io/docs/prometheus/1.8/configuration/configuration/#scrape_config).
+[`scrape_config` options](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
 
 There are a few advanced Prometheus features that the receiver does not support.
 The receiver returns an error if the configuration YAML/code contains any of the

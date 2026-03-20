@@ -2,7 +2,7 @@
 title: Java Agent Declarative configuration
 linkTitle: Declarative configuration
 weight: 11
-cSpell:ignore: Customizer Dotel genai
+cSpell:ignore: Customizer Dotel
 ---
 
 Declarative configuration uses a YAML file instead of environment variables or
@@ -25,16 +25,16 @@ configuration, including the OpenTelemetry Java agent.
 ## Supported versions
 
 Declarative configuration is supported in the **OpenTelemetry Java agent version
-2.20.0 and later**.
+2.26.0 and later**.
 
 ## Getting started
 
 1. Save the configuration file below as `otel-config.yaml`.
 2. Add the following to your JVM startup arguments:<br>
-   `-Dotel.experimental.config.file=/path/to/otel-config.yaml`
+   `-Dotel.config.file=/path/to/otel-config.yaml`
 
 ```yaml
-file_format: '1.0-rc.1'
+file_format: '1.0'
 
 resource:
   attributes_list: ${OTEL_RESOURCE_ATTRIBUTES}
@@ -92,7 +92,7 @@ configuration to declarative configuration, use the following rules:
    section below.
 3. Otherwise, the option most likely belongs to the SDK configuration. Find the
    right section in the
-   [migration config](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/sdk-migration-config.yaml).
+   [migration config](https://github.com/open-telemetry/opentelemetry-configuration/blob/main/examples/otel-sdk-migration-config.yaml).
    If you have a system property like `otel.bsp.schedule.delay`, then look for
    the corresponding environment variable `OTEL_BSP_SCHEDULE_DELAY` in the
    migration config.
@@ -135,6 +135,25 @@ instrumentation/development:
       experimental:
         chunk:
           new_trace: true
+```
+
+Agent-specific options (starting with `otel.javaagent.`) are placed under the
+`distribution` section:
+
+```yaml
+distribution:
+  javaagent:
+    instrumentation:
+      default_enabled: false # was otel.instrumentation.common.default-enabled
+      enabled:
+        - tomcat
+        - spring_webmvc
+      disabled:
+        - armeria_grpc
+    exclude_classes: # was otel.javaagent.exclude-classes
+      - com.example.excluded.Class1
+    exclude_class_loaders: # was otel.javaagent.exclude-class-loaders
+      - com.example.ExcludedClassLoader
 ```
 
 ## Environment variables and system properties only options
@@ -187,29 +206,12 @@ are not yet supported by declarative configuration:
 The following settings still need to be set via environment variables or system
 properties:
 
-- `otel.experimental.javascript-snippet`
-- `otel.instrumentation.aws-sdk.experimental-record-individual-http-error`
-- `otel.instrumentation.aws-sdk.experimental-span-attributes`
-- `otel.instrumentation.aws-sdk.experimental-use-propagator-for-messaging`
-- `otel.instrumentation.common.db-statement-sanitizer.enabled`
-- `otel.instrumentation.common.logging.span-id`
-- `otel.instrumentation.common.logging.trace-flags`
-- `otel.instrumentation.common.logging.trace-id`
-- `otel.instrumentation.experimental.span-suppression-strategy`
-- `otel.instrumentation.genai.capture-message-content`
-- `otel.instrumentation.jdbc.experimental.capture-query-parameters`
-- `otel.instrumentation.jdbc.experimental.transaction.enabled`
-- `otel.instrumentation.log4j-context-data.add-baggage`
-- `otel.instrumentation.messaging.experimental.capture-headers`
-- `otel.instrumentation.messaging.experimental.receive-telemetry.enabled`
 - `otel.javaagent.experimental.thread-propagation-debugger.enabled`
-- `otel.semconv-stability.opt-in`
 
 ### Features not yet supported at all
 
 Java agent features that are not yet supported by declarative configuration:
 
-- `otel.instrumentation.common.mdc.resource-attributes`
 - `otel.javaagent.add-thread-details`
 
 Contrib features that are not yet supported by declarative configuration:

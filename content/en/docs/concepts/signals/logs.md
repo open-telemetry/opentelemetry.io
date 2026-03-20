@@ -124,7 +124,7 @@ fields combined with a trailing JSON blob).
 
 In those cases, parse or extract the parts you need into a normalized record so
 downstream tooling can analyze them consistently. The `filelogreceiver` in the
-[OpenTelemetry Collector] (/docs/collector) provides helpers to parse mixed
+[OpenTelemetry Collector](/docs/collector/) provides helpers to parse mixed
 formats.
 
 Structured logs are preferred in production because their stable schema makes

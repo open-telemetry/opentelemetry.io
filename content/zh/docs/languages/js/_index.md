@@ -4,7 +4,7 @@ description: >-
   <img width="35" class="img-initial otel-icon" src="/img/logos/32x32/JS_SDK.svg"
   alt="JavaScript"> OpenTelemetry 在 JavaScript 中的特定语言实现（适用于 Node.js 和浏览器）。
 aliases: [/js, /js/metrics, /js/tracing]
-default_lang_commit: 3d401ad8e2e5d528c107d83d202b4c6f62c020ef
+default_lang_commit: 3d401ad8e2e5d528c107d83d202b4c6f62c020ef # patched
 redirects:
   - { from: /js/*, to: ':splat' }
   - { from: /docs/js/*, to: ':splat' }
@@ -37,7 +37,7 @@ OpenTelemetry JavaScript 由以下仓库组成：
 ## 帮助或反馈 {#help-or-feedback}
 
 如果您对 OpenTelemetry JavaScript 有任何疑问，
-请通过 [GitHub 讨论区](https://github.com/open-telemetry/opentelemetry-js/discussions)或 [CNCF Slack](https://slack.cncf.io/) 的 [#otel-js] 频道联系我们。
+请通过 [GitHub 讨论区](https://github.com/open-telemetry/opentelemetry-js/discussions)或 [CNCF Slack](https://slack.cncf.io/) 的 `#otel-js` 频道联系我们。
 
 如果您想为 OpenTelemetry JavaScript 做出贡献，
 请参阅[贡献说明](https://github.com/open-telemetry/opentelemetry-js/blob/main/CONTRIBUTING.md)。
