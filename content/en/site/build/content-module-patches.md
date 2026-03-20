@@ -3,6 +3,7 @@ title: Content module patches
 description: >-
   Creating and managing temporary patches for content modules between releases.
 weight: 15
+cSpell:ignore: frontmatter
 ---
 
 Spec pages published on this site (OTel specification, OTLP, semantic
