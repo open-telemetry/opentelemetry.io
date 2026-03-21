@@ -12627,6 +12627,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:52:36.24661858Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-js/blob/main/doc/esm-support.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-17T09:57:57.21652344Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-js/discussions": {
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:44:10.519724831Z"
@@ -14655,6 +14659,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-02-28T09:44:11.127650892Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/248cc6f/.github/scripts/blog-publish-check.sh": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-20T19:58:14.025523139Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/9bd13bd7b3ecd76093fa980c44dc10b5611b4ee0/projects/landing-page-redesign.md?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-03-17T09:54:39.066187881Z"
@@ -14678,6 +14686,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/collector-sync.sh": {
     "StatusCode": 206,
     "LastSeen": "2026-03-16T12:16:31.13124-04:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/pr-approval-labels.sh": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-20T19:58:09.54793788Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/blog-publish-labels.yml": {
     "StatusCode": 206,
@@ -18826,6 +18838,10 @@
   "https://nodejs.org/api/cli.html#-r---require-module": {
     "StatusCode": 206,
     "LastSeen": "2026-03-02T09:58:08.183553018Z"
+  },
+  "https://nodejs.org/api/modules.html#modules-commonjs-modules": {
+    "StatusCode": 206,
+    "LastSeen": "2025-12-18T11:01:15.225540416Z"
   },
   "https://nodejs.org/api/perf_hooks.html": {
     "StatusCode": 206,
