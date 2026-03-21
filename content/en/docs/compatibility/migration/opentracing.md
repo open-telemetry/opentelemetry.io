@@ -2,6 +2,8 @@
 title: Migrating from OpenTracing
 linkTitle: OpenTracing
 weight: 2
+aliases:
+  - /docs/migration/opentracing/
 cSpell:ignore: codebases
 ---
 
