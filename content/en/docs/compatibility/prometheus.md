@@ -7,7 +7,7 @@ cSpell:ignore: AggregationBase2ExponentialHistogram base2ExponentialBucketHistog
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
-<?code-excerpt path-base="examples/java/prometheus-migration"?>
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 
 {{% alert title="Note" %}} This page covers Java and Go. Examples for other
 languages are planned. {{% /alert %}}
@@ -245,7 +245,11 @@ public class OtelScrapeInit {
 
 {{% /tab %}} {{% tab Go %}}
 
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
 Prometheus
+
+<?code-excerpt "prometheus_scrape_init.go"?>
 
 ```go
 package main
@@ -277,6 +281,8 @@ func main() {
 ```
 
 OpenTelemetry
+
+<?code-excerpt "otel_scrape_init.go"?>
 
 ```go
 package main
@@ -328,6 +334,7 @@ func main() {
 
 Prometheus
 
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusOtlpInit.java"?>
 ```java
@@ -418,11 +425,15 @@ public class OtelOtlpInit {
 
 {{% /tab %}} {{% tab Go %}}
 
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
 Prometheus
 
 The Prometheus Go client library does not include an OTLP push exporter.
 
 OpenTelemetry
+
+<?code-excerpt "otel_otlp_init.go"?>
 
 ```go
 package main
@@ -494,6 +505,7 @@ OpenTelemetry equivalent:
 
 Prometheus
 
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusCounter.java"?>
 ```java
@@ -575,7 +587,11 @@ Key differences:
 
 {{% /tab %}} {{% tab Go %}}
 
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
 Prometheus
+
+<?code-excerpt "prometheus_counter.go"?>
 
 ```go
 package main
@@ -602,6 +618,8 @@ func counterUsage(reg *prometheus.Registry) {
 ```
 
 OpenTelemetry
+
+<?code-excerpt "otel_counter.go"?>
 
 ```go
 package main
@@ -654,6 +672,7 @@ to observe it at collection time rather than increment it yourself.
 
 Prometheus
 
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusCounterCallback.java"?>
 ```java
@@ -726,7 +745,11 @@ Key differences:
 
 {{% /tab %}} {{% tab Go %}}
 
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
 Prometheus
+
+<?code-excerpt "prometheus_counter_callback.go"?>
 
 ```go
 package main
@@ -757,6 +780,8 @@ func counterCallbackUsage(reg *prometheus.Registry) {
 ```
 
 OpenTelemetry
+
+<?code-excerpt "otel_counter_callback.go"?>
 
 ```go
 package main
@@ -828,6 +853,7 @@ OpenTelemetry `Gauge` instrument.
 
 Prometheus
 
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusGauge.java"?>
 ```java
@@ -896,7 +922,11 @@ Key differences:
 
 {{% /tab %}} {{% tab Go %}}
 
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
 Prometheus
+
+<?code-excerpt "prometheus_gauge.go"?>
 
 ```go
 package main
@@ -916,6 +946,8 @@ func gaugeUsage(reg *prometheus.Registry) {
 ```
 
 OpenTelemetry
+
+<?code-excerpt "otel_gauge.go"?>
 
 ```go
 package main
@@ -964,6 +996,7 @@ want to observe it at collection time rather than track it yourself.
 
 Prometheus
 
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusGaugeCallback.java"?>
 ```java
@@ -1029,7 +1062,11 @@ public class OtelGaugeCallback {
 
 {{% /tab %}} {{% tab Go %}}
 
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
 Prometheus
+
+<?code-excerpt "prometheus_gauge_callback.go"?>
 
 ```go
 package main
@@ -1060,6 +1097,8 @@ func gaugeCallbackUsage(reg *prometheus.Registry) {
 ```
 
 OpenTelemetry
+
+<?code-excerpt "otel_gauge_callback.go"?>
 
 ```go
 package main
@@ -1111,6 +1150,7 @@ OpenTelemetry `UpDownCounter` instrument.
 
 Prometheus
 
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusUpDownCounter.java"?>
 ```java
@@ -1184,7 +1224,11 @@ Key differences:
 
 {{% /tab %}} {{% tab Go %}}
 
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
 Prometheus
+
+<?code-excerpt "prometheus_up_down_counter.go"?>
 
 ```go
 package main
@@ -1208,6 +1252,8 @@ func upDownCounterUsage(reg *prometheus.Registry) {
 ```
 
 OpenTelemetry
+
+<?code-excerpt "otel_up_down_counter.go"?>
 
 ```go
 package main
@@ -1260,6 +1306,7 @@ want to observe it at collection time.
 
 Prometheus
 
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusUpDownCounterCallback.java"?>
 ```java
@@ -1323,7 +1370,11 @@ public class OtelUpDownCounterCallback {
 
 {{% /tab %}} {{% tab Go %}}
 
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
 Prometheus
+
+<?code-excerpt "prometheus_up_down_counter_callback.go"?>
 
 ```go
 package main
@@ -1354,6 +1405,8 @@ func upDownCounterCallbackUsage(reg *prometheus.Registry) {
 ```
 
 OpenTelemetry
+
+<?code-excerpt "otel_up_down_counter_callback.go"?>
 
 ```go
 package main
@@ -1426,6 +1479,7 @@ observations into discrete ranges.
 
 Prometheus
 
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusHistogram.java"?>
 ```java
@@ -1503,7 +1557,11 @@ Key differences:
 
 {{% /tab %}} {{% tab Go %}}
 
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
 Prometheus
+
+<?code-excerpt "prometheus_histogram.go"?>
 
 ```go
 package main
@@ -1524,6 +1582,8 @@ func histogramUsage(reg *prometheus.Registry) {
 ```
 
 OpenTelemetry
+
+<?code-excerpt "otel_histogram.go"?>
 
 ```go
 package main
@@ -1591,6 +1651,7 @@ In Prometheus, the histogram format is controlled at instrument creation time.
 The example below uses `.nativeOnly()` to restrict to native format; omitting it
 would emit both classic and native formats simultaneously:
 
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusHistogramNative.java"?>
 ```java
@@ -1680,11 +1741,15 @@ public class OtelHistogramExponentialView {
 
 {{% /tab %}} {{% tab Go %}}
 
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
 Prometheus
 
 In Prometheus, setting `NativeHistogramBucketFactor` enables native histograms
 alongside the classic bucket configuration — both formats are reported
 simultaneously:
+
+<?code-excerpt "prometheus_histogram_native.go"?>
 
 ```go
 package main
@@ -1715,6 +1780,8 @@ The Go OTLP exporter does not support exporter-level aggregation selection
 the base2 exponential format via a view on the `MeterProvider`. To apply it to
 all histograms, match by instrument kind:
 
+<?code-excerpt "otel_histogram_exponential.go" region="createExponentialProvider"?>
+
 ```go
 package main
 
@@ -1733,6 +1800,8 @@ func createExponentialProvider(reader sdkmetric.Reader) *sdkmetric.MeterProvider
 For per-instrument control — for example, to use base2 exponential histograms
 for specific instruments while keeping explicit buckets for others — match by
 name instead:
+
+<?code-excerpt "otel_histogram_exponential.go" region="createExponentialView"?>
 
 ```go
 package main
@@ -1782,6 +1851,7 @@ below show this simpler approach.
 
 Prometheus
 
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/PrometheusSummary.java"?>
 ```java
@@ -1848,7 +1918,11 @@ public class OtelHistogramAsSummary {
 
 {{% /tab %}} {{% tab Go %}}
 
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
 Prometheus
+
+<?code-excerpt "prometheus_summary.go"?>
 
 ```go
 package main
@@ -1869,6 +1943,8 @@ func summaryUsage(reg *prometheus.Registry) {
 ```
 
 OpenTelemetry
+
+<?code-excerpt "otel_histogram_as_summary.go"?>
 
 ```go
 package main
