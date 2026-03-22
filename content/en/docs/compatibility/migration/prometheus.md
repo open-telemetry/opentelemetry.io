@@ -637,7 +637,7 @@ var (
 	zoneDownstairsOpts = []metric.AddOption{metric.WithAttributes(attribute.String("zone", "downstairs"))}
 )
 
-func counterUsage(ctx context.Context, meter metric.Meter) {
+func otelCounterUsage(ctx context.Context, meter metric.Meter) {
 	// No upfront label declaration: attributes are provided at record time.
 	hvacOnTime, err := meter.Float64Counter("hvac.on",
 		metric.WithDescription("Total time the HVAC system has been running"),
@@ -772,7 +772,7 @@ func (c *energyCollector) Collect(ch chan<- prometheus.Metric) {
 	ch <- prometheus.MustNewConstMetric(c.desc, prometheus.CounterValue, totalEnergyJoules("downstairs"), "downstairs")
 }
 
-func counterCallbackUsage(reg *prometheus.Registry) {
+func prometheusCounterCallbackUsage(reg *prometheus.Registry) {
 	// Each zone has its own smart energy meter tracking cumulative joule totals.
 	// Implement prometheus.Collector to report those values at scrape time.
 	reg.MustRegister(newEnergyCollector())
@@ -798,7 +798,7 @@ var (
 	zoneDownstairs = attribute.String("zone", "downstairs")
 )
 
-func counterCallbackUsage(meter metric.Meter) {
+func otelCounterCallbackUsage(meter metric.Meter) {
 	// Each zone has its own smart energy meter tracking cumulative joule totals.
 	// Use an observable counter to report those values when metrics are collected.
 	_, err := meter.Float64ObservableCounter("energy.consumed",
@@ -933,7 +933,7 @@ package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func gaugeUsage(reg *prometheus.Registry) {
+func prometheusGaugeUsage(reg *prometheus.Registry) {
 	thermostatSetpoint := prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "thermostat_setpoint_celsius",
 		Help: "Target temperature set on the thermostat",
@@ -961,11 +961,11 @@ import (
 
 // Preallocate attribute options when values are static to avoid per-call allocation.
 var (
-	zoneUpstairsOpts   = []metric.RecordOption{metric.WithAttributes(attribute.String("zone", "upstairs"))}
-	zoneDownstairsOpts = []metric.RecordOption{metric.WithAttributes(attribute.String("zone", "downstairs"))}
+	zoneUpstairsGaugeOpts   = []metric.RecordOption{metric.WithAttributes(attribute.String("zone", "upstairs"))}
+	zoneDownstairsGaugeOpts = []metric.RecordOption{metric.WithAttributes(attribute.String("zone", "downstairs"))}
 )
 
-func gaugeUsage(ctx context.Context, meter metric.Meter) {
+func otelGaugeUsage(ctx context.Context, meter metric.Meter) {
 	thermostatSetpoint, err := meter.Float64Gauge("thermostat.setpoint",
 		metric.WithDescription("Target temperature set on the thermostat"),
 		metric.WithUnit("Cel"))
@@ -973,8 +973,8 @@ func gaugeUsage(ctx context.Context, meter metric.Meter) {
 		panic(err)
 	}
 
-	thermostatSetpoint.Record(ctx, 22.5, zoneUpstairsOpts...)
-	thermostatSetpoint.Record(ctx, 20.0, zoneDownstairsOpts...)
+	thermostatSetpoint.Record(ctx, 22.5, zoneUpstairsGaugeOpts...)
+	thermostatSetpoint.Record(ctx, 20.0, zoneDownstairsGaugeOpts...)
 }
 ```
 
@@ -1089,7 +1089,7 @@ func (c *temperatureCollector) Collect(ch chan<- prometheus.Metric) {
 	ch <- prometheus.MustNewConstMetric(c.desc, prometheus.GaugeValue, bedroomTemperatureCelsius(), "bedroom")
 }
 
-func gaugeCallbackUsage(reg *prometheus.Registry) {
+func prometheusGaugeCallbackUsage(reg *prometheus.Registry) {
 	// Temperature sensors maintain their own readings in firmware.
 	// Implement prometheus.Collector to report those values at scrape time.
 	reg.MustRegister(newTemperatureCollector())
@@ -1115,7 +1115,7 @@ var (
 	roomBedroom    = attribute.String("room", "bedroom")
 )
 
-func gaugeCallbackUsage(meter metric.Meter) {
+func otelGaugeCallbackUsage(meter metric.Meter) {
 	// Temperature sensors maintain their own readings in firmware.
 	// Use an observable gauge to report those values when metrics are collected.
 	_, err := meter.Float64ObservableGauge("room.temperature",
@@ -1235,7 +1235,7 @@ package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func upDownCounterUsage(reg *prometheus.Registry) {
+func prometheusUpDownCounterUsage(reg *prometheus.Registry) {
 	// Prometheus uses Gauge for values that can increase or decrease.
 	devicesConnected := prometheus.NewGaugeVec(prometheus.GaugeOpts{
 		Name: "devices_connected",
@@ -1267,11 +1267,11 @@ import (
 
 // Preallocate attribute options when values are static to avoid per-call allocation.
 var (
-	deviceThermostatOpts = []metric.AddOption{metric.WithAttributes(attribute.String("device_type", "thermostat"))}
-	deviceLockOpts       = []metric.AddOption{metric.WithAttributes(attribute.String("device_type", "lock"))}
+	deviceThermostatAddOpts = []metric.AddOption{metric.WithAttributes(attribute.String("device_type", "thermostat"))}
+	deviceLockAddOpts       = []metric.AddOption{metric.WithAttributes(attribute.String("device_type", "lock"))}
 )
 
-func upDownCounterUsage(ctx context.Context, meter metric.Meter) {
+func otelUpDownCounterUsage(ctx context.Context, meter metric.Meter) {
 	devicesConnected, err := meter.Int64UpDownCounter("devices.connected",
 		metric.WithDescription("Number of smart home devices currently connected"))
 	if err != nil {
@@ -1279,10 +1279,10 @@ func upDownCounterUsage(ctx context.Context, meter metric.Meter) {
 	}
 
 	// Add() accepts positive and negative values.
-	devicesConnected.Add(ctx, 1, deviceThermostatOpts...)
-	devicesConnected.Add(ctx, 1, deviceThermostatOpts...)
-	devicesConnected.Add(ctx, 1, deviceLockOpts...)
-	devicesConnected.Add(ctx, -1, deviceLockOpts...)
+	devicesConnected.Add(ctx, 1, deviceThermostatAddOpts...)
+	devicesConnected.Add(ctx, 1, deviceThermostatAddOpts...)
+	devicesConnected.Add(ctx, 1, deviceLockAddOpts...)
+	devicesConnected.Add(ctx, -1, deviceLockAddOpts...)
 }
 ```
 
@@ -1397,7 +1397,7 @@ func (c *deviceCountCollector) Collect(ch chan<- prometheus.Metric) {
 	ch <- prometheus.MustNewConstMetric(c.desc, prometheus.GaugeValue, float64(connectedDeviceCount("lock")), "lock")
 }
 
-func upDownCounterCallbackUsage(reg *prometheus.Registry) {
+func prometheusUpDownCounterCallbackUsage(reg *prometheus.Registry) {
 	// The device manager maintains the count of connected devices.
 	// Implement prometheus.Collector to report those values at scrape time.
 	reg.MustRegister(newDeviceCountCollector())
@@ -1423,14 +1423,14 @@ var (
 	deviceLock       = attribute.String("device_type", "lock")
 )
 
-func upDownCounterCallbackUsage(meter metric.Meter) {
+func otelUpDownCounterCallbackUsage(meter metric.Meter) {
 	// The device manager maintains the count of connected devices.
 	// Use an observable up-down counter to report that value when metrics are collected.
 	_, err := meter.Int64ObservableUpDownCounter("devices.connected",
 		metric.WithDescription("Number of smart home devices currently connected"),
 		metric.WithInt64Callback(func(_ context.Context, o metric.Int64Observer) error {
-			o.Observe(connectedDeviceCount("thermostat"), metric.WithAttributes(deviceThermostat))
-			o.Observe(connectedDeviceCount("lock"), metric.WithAttributes(deviceLock))
+			o.Observe(int64(connectedDeviceCount("thermostat")), metric.WithAttributes(deviceThermostat))
+			o.Observe(int64(connectedDeviceCount("lock")), metric.WithAttributes(deviceLock))
 			return nil
 		}))
 	if err != nil {
@@ -1568,7 +1568,7 @@ package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func histogramUsage(reg *prometheus.Registry) {
+func prometheusHistogramUsage(reg *prometheus.Registry) {
 	deviceCommandDuration := prometheus.NewHistogramVec(prometheus.HistogramOpts{
 		Name:    "device_command_duration_seconds",
 		Help:    "Time to receive acknowledgment from a smart home device",
@@ -1601,7 +1601,7 @@ var (
 	deviceLockOpts       = []metric.RecordOption{metric.WithAttributes(attribute.String("device_type", "lock"))}
 )
 
-func histogramUsage(ctx context.Context, meter metric.Meter) {
+func otelHistogramUsage(ctx context.Context, meter metric.Meter) {
 	// WithExplicitBucketBoundaries sets default boundaries as a hint to the SDK.
 	// Views configured at the SDK level take precedence over this hint.
 	deviceCommandDuration, err := meter.Float64Histogram("device.command.duration",
@@ -1791,7 +1791,7 @@ func createExponentialProvider(reader sdkmetric.Reader) *sdkmetric.MeterProvider
 	// Configure base2 exponential histograms for all histogram instruments via a view.
 	view := sdkmetric.NewView(
 		sdkmetric.Instrument{Kind: sdkmetric.InstrumentKindHistogram},
-		sdkmetric.Stream{Aggregation: sdkmetric.AggregationBase2ExponentialHistogram{}},
+		sdkmetric.Stream{Aggregation: sdkmetric.AggregationBase2ExponentialHistogram{}!},
 	)
 	return sdkmetric.NewMeterProvider(sdkmetric.WithView(view), sdkmetric.WithReader(reader))
 }
@@ -1804,16 +1804,12 @@ name instead:
 <?code-excerpt "otel_histogram_exponential.go" region="createExponentialView"?>
 
 ```go
-package main
-
-import sdkmetric "go.opentelemetry.io/otel/sdk/metric"
-
 func createExponentialView() sdkmetric.View {
 	// Use a view for per-instrument control — select a specific instrument by name
 	// to use exponential histograms while keeping explicit buckets for others.
 	return sdkmetric.NewView(
 		sdkmetric.Instrument{Name: "device.command.duration"},
-		sdkmetric.Stream{Aggregation: sdkmetric.AggregationBase2ExponentialHistogram{}},
+		sdkmetric.Stream{Aggregation: sdkmetric.AggregationBase2ExponentialHistogram{}!},
 	)
 }
 ```
@@ -1899,8 +1895,8 @@ public class OtelHistogramAsSummary {
 
   public static void summaryReplacement(OpenTelemetry openTelemetry) {
     Meter meter = openTelemetry.getMeter("smart.home");
-    // No explicit bucket boundaries: captures count and sum only.
-    // For quantile estimation, prefer a base2 exponential histogram instead.
+    // No explicit bucket boundaries: captures count and sum, a good stand-in for most
+    // Summary use cases. For quantile estimation, add boundaries that bracket your thresholds.
     DoubleHistogram deviceCommandDuration =
         meter
             .histogramBuilder("device.command.duration")
@@ -1958,8 +1954,8 @@ import (
 
 // Preallocate attribute options when values are static to avoid per-call allocation.
 var (
-	deviceThermostatOpts = []metric.RecordOption{metric.WithAttributes(attribute.String("device_type", "thermostat"))}
-	deviceLockOpts       = []metric.RecordOption{metric.WithAttributes(attribute.String("device_type", "lock"))}
+	summaryThermostatOpts = []metric.RecordOption{metric.WithAttributes(attribute.String("device_type", "thermostat"))}
+	summaryLockOpts       = []metric.RecordOption{metric.WithAttributes(attribute.String("device_type", "lock"))}
 )
 
 func summaryReplacement(ctx context.Context, meter metric.Meter) {
@@ -1973,8 +1969,8 @@ func summaryReplacement(ctx context.Context, meter metric.Meter) {
 		panic(err)
 	}
 
-	deviceCommandDuration.Record(ctx, 0.35, deviceThermostatOpts...)
-	deviceCommandDuration.Record(ctx, 0.85, deviceLockOpts...)
+	deviceCommandDuration.Record(ctx, 0.35, summaryThermostatOpts...)
+	deviceCommandDuration.Record(ctx, 0.85, summaryLockOpts...)
 }
 ```
 
