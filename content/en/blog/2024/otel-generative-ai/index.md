@@ -131,7 +131,6 @@ OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4318
 OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 OTEL_SERVICE_NAME=python-opentelemetry-openai
 OTEL_LOGS_EXPORTER=otlp_proto_http
-OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 # Set to false or remove to disable log events
 OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT=true
 ```

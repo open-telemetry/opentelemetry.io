@@ -1,7 +1,9 @@
 ---
 title: Migration
 description: How to migrate to OpenTelemetry
-weight: 950
+aliases:
+  - /docs/migration/
+weight: 800
 ---
 
 ## OpenTracing and OpenCensus
@@ -22,9 +24,9 @@ libraries and recommends
 [migrating](https://www.jaegertracing.io/docs/latest/migration/) to the
 OpenTelemetry APIs, SDKs and instrumentations.
 
-The Jaeger backend can receive trace data via the OpenTelemetry Protocol (OTLP)
-since v1.35. Therefore you can migrate your OpenTelemetry SDKs and collectors
-from using the Jaeger exporter to the OTLP exporter.
+The Jaeger backend can receive trace data using the OpenTelemetry Protocol
+(OTLP) since v1.35. You can migrate your OpenTelemetry SDKs and Collectors from
+the Jaeger exporter to the OTLP exporter.
 
 [to be the next major version of both OpenTracing and OpenCensus]:
   https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
