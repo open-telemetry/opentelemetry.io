@@ -179,11 +179,6 @@ maintainers:
       - opamp-spec-maintainers
     html_url: https://github.com/andykellr
     avatar_url: https://avatars.githubusercontent.com/u/2660251?v=4
-  - name: Aneurysm9
-    teams:
-      - operator-ta-maintainers
-    html_url: https://github.com/Aneurysm9
-    avatar_url: https://avatars.githubusercontent.com/u/473616?v=4
   - name: ArielDemarco
     teams:
       - swift-approvers
@@ -774,7 +769,6 @@ maintainers:
       - injector-maintainers
       - operator-approvers
       - operator-maintainers
-      - operator-ta-maintainers
       - operator-triagers
       - sig-project-infra-approvers
     html_url: https://github.com/jaronoff97
@@ -942,11 +936,6 @@ maintainers:
       - dotnet-triagers
     html_url: https://github.com/Kielek
     avatar_url: https://avatars.githubusercontent.com/u/5972917?v=4
-  - name: kristinapathak
-    teams:
-      - operator-ta-maintainers
-    html_url: https://github.com/kristinapathak
-    avatar_url: https://avatars.githubusercontent.com/u/17073792?v=4
   - name: lalitb
     teams:
       - arrow-approvers
@@ -1234,7 +1223,6 @@ maintainers:
     teams:
       - operator-approvers
       - operator-maintainers
-      - operator-ta-maintainers
       - operator-triagers
     html_url: https://github.com/pavolloffay
     avatar_url: https://avatars.githubusercontent.com/u/5618424?v=4
@@ -1390,11 +1378,6 @@ maintainers:
       - sig-mainframe-triagers
     html_url: https://github.com/rrschulze
     avatar_url: https://avatars.githubusercontent.com/u/140042958?v=4
-  - name: secustor
-    teams:
-      - operator-ta-maintainers
-    html_url: https://github.com/secustor
-    avatar_url: https://avatars.githubusercontent.com/u/17493763?v=4
   - name: SergeyKleyman
     teams:
       - php-distro-approvers
@@ -1643,11 +1626,6 @@ maintainers:
       - rust-maintainers
     html_url: https://github.com/utpilla
     avatar_url: https://avatars.githubusercontent.com/u/66651184?v=4
-  - name: VineethReddy02
-    teams:
-      - operator-ta-maintainers
-    html_url: https://github.com/VineethReddy02
-    avatar_url: https://avatars.githubusercontent.com/u/25104868?v=4
   - name: vitorvasc
     teams:
       - docs-approvers
@@ -2760,6 +2738,9 @@ members:
   - name: andrewhsu
     html_url: https://github.com/andrewhsu
     avatar_url: https://avatars.githubusercontent.com/u/57640?v=4
+  - name: Aneurysm9
+    html_url: https://github.com/Aneurysm9
+    avatar_url: https://avatars.githubusercontent.com/u/473616?v=4
   - name: anunarapureddy
     html_url: https://github.com/anunarapureddy
     avatar_url: https://avatars.githubusercontent.com/u/23454368?v=4
@@ -3162,6 +3143,9 @@ members:
   - name: scorpionknifes
     html_url: https://github.com/scorpionknifes
     avatar_url: https://avatars.githubusercontent.com/u/23299540?v=4
+  - name: secustor
+    html_url: https://github.com/secustor
+    avatar_url: https://avatars.githubusercontent.com/u/17493763?v=4
   - name: ShaanveerS
     html_url: https://github.com/ShaanveerS
     avatar_url: https://avatars.githubusercontent.com/u/146979751?v=4
