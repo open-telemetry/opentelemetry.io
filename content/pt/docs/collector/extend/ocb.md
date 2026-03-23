@@ -33,7 +33,7 @@ Certifique-se de [instalar](https://go.dev/doc/install) uma
 [versão compatível](https://github.com/open-telemetry/opentelemetry-collector/blob/main/README.md#compatibility)
 do Go em sua máquina antes de começar.
 
-## Instalar o OpenTelemetry Collector Builder
+## Instalar o OpenTelemetry Collector Builder {#install-the-opentelemetry-collector-builder}
 
 O binário `ocb` está disponível como um recurso (asset) para download nas
 versões do OpenTelemetry Collector com as [tags `cmd/builder`][tags]. Encontre e
@@ -94,7 +94,7 @@ Unblock-File -Path "ocb.exe"
 Para garantir que o `ocb` foi instalado corretamente, digite `./ocb help` no seu
 terminal. Você deverá ver a saída do comando `help` no seu console.
 
-## Configurar o OpenTelemetry Collector Builder
+## Configurar o OpenTelemetry Collector Builder {#configure-the-opentelemetry-collector-builder}
 
 Configure o `ocb` com um arquivo de manifesto YAML. O manifesto possui duas
 seções principais. A primeira seção, `dist`, contém opções para configurar a
@@ -195,7 +195,7 @@ Para configurar o `ocb`, siga estas etapas:
 > entrada do registro contém o nome completo e a versão que você precisa
 > adicionar ao seu `builder-config.yaml`.
 
-## Gerar o código e compilar sua distribuição do Collector
+## Gerar o código e compilar sua distribuição do Collector {#generate-the-code-and-build-your-collector-distribution}
 
 > [!NOTE]
 >
@@ -251,18 +251,18 @@ Você pode usar o código gerado para inicializar seus projetos de desenvolvimen
 de componentes e, em seguida, compilar e distribuir sua própria distribuição do
 Collector com esses componentes.
 
-## Containerize sua distribuição do Collector
+## Gerar container da sua distribuição do Collector {#containerize-your-collector-distribution}
 
 > [!NOTE]
 >
 > Esta seção ensina você a compilar sua distribuição do Collector dentro de um
 > `Dockerfile`. Siga estas instruções se precisar implantar sua distribuição do
 > Collector em um orquestrador de containers, como o Kubernetes. Se você deseja
-> compilar sua distribuição do Collector sem a etapa de containerização,
+> compilar sua distribuição do Collector sem a etapa de container,
 > consulte
 > [Gerar o código e compilar sua distribuição do Collector](#generate-the-code-and-build-your-collector-distribution).
 
-Siga estas etapas para containerizar seu Collector personalizado.
+Siga estas etapas para gerar o container do seu Collector personalizado.
 
 1. Adicione dois novos arquivos ao seu projeto:
    - `Dockerfile` - Definição da imagem de container da sua distribuição do
@@ -350,14 +350,14 @@ Siga estas etapas para containerizar seu Collector personalizado.
          exporters: [debug]
    ```
 
-1. Use os seguintes comandos para compilar uma imagem Docker multiarquitetura do
+1. Use os seguintes comandos para compilar uma imagem Docker multi-arquitetura do
    `ocb` usando `linux/amd64` e `linux/arm64` como as arquiteturas de compilação
    de destino. Para saber mais, consulte este
    [post no blog](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/)
-   sobre compilações multiarquitetura.
+   sobre compilações multi-arquitetura.
 
    ```sh
-   # Habilitar compilações multiarquitetura no Docker
+   # Habilitar compilações multi-arquitetura no Docker
    docker run --rm --privileged tonistiigi/binfmt --install all
    docker buildx create --name mybuilder --use
 
