@@ -8217,7 +8217,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/remotetapextension": {
     "StatusCode": 206,
-    "403,LastSeen": "2026-03-10T09:53:24.907691143Z"
+    "LastSeen": "2026-03-23T11:50:16.678706-03:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sigv4authextension": {
     "StatusCode": 206,
