@@ -1,6 +1,6 @@
 ---
 title: 基准测试
-default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57
+default_lang_commit: 06837fe15457a584f6a9e09579be0f0400593d57 # patched
 weight: 101
 cSpell:ignore: Elems rrggbbaa
 ---
@@ -11,178 +11,180 @@ OpenTelemetry JavaScript SDK 会对 [opentelemetry-js](https://github.com/open-t
 这些测试的目的是跟踪关键操作随时间的性能趋势。
 这些测试不能替代端到端性能测试。
 
-  <div class="container">
-    <main id="main"></main>
-  </div>
+<!-- markdownlint-disable no-shortcut-ref-link -->
 
-  <footer>
-    <button id="dl-button">将数据下载为 JSON</button>
-    <div class="spacer"></div>
-    <div class="small">由 <a rel="noopener"
-        href="https://github.com/marketplace/actions/continuous-benchmark">github-action-benchmark</a> 提供支持</div>
-  </footer>
+<div class="container">
+  <main id="main"></main>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.2/dist/Chart.min.js"></script>
-  <script src="https://open-telemetry.github.io/opentelemetry-js/benchmarks/data.js"></script>
-  <script id="main-script">
-    'use strict';
-    (function() {
-      const COLORS = [
-        "#48aaf9",
-        "#8a3ef2",
-        "#78eeda",
-        "#d78000",
-        "#1248b3",
-        "#97dbfc",
-        "#006174",
-        "#00b6b6",
-        "#854200",
-        "#f3c8ad",
-        "#410472",
-      ];
+<footer>
+  <button id="dl-button">将数据下载为 JSON</button>
+  <div class="spacer"></div>
+  <div class="small">由 <a rel="noopener"
+      href="https://github.com/marketplace/actions/continuous-benchmark">github-action-benchmark</a> 提供支持</div>
+</footer>
 
-      function init() {
-        function collectBenchesPerTestCase(entries) {
-          const map = new Map();
-          for (const entry of entries) {
-            const {commit, date, tool, benches} = entry;
-            for (const bench of benches) {
-              const result = { commit, date, tool, bench };
-              const arr = map.get(bench.name);
-              if (arr === undefined) {
-                map.set(bench.name, [result]);
-              } else {
-                arr.push(result);
-              }
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.2/dist/Chart.min.js"></script>
+<script src="https://open-telemetry.github.io/opentelemetry-js/benchmarks/data.js"></script>
+<script id="main-script">
+  'use strict';
+  (function() {
+    const COLORS = [
+      "#48aaf9",
+      "#8a3ef2",
+      "#78eeda",
+      "#d78000",
+      "#1248b3",
+      "#97dbfc",
+      "#006174",
+      "#00b6b6",
+      "#854200",
+      "#f3c8ad",
+      "#410472",
+    ];
+
+    function init() {
+      function collectBenchesPerTestCase(entries) {
+        const map = new Map();
+        for (const entry of entries) {
+          const {commit, date, tool, benches} = entry;
+          for (const bench of benches) {
+            const result = { commit, date, tool, bench };
+            const arr = map.get(bench.name);
+            if (arr === undefined) {
+              map.set(bench.name, [result]);
+            } else {
+              arr.push(result);
             }
           }
-          return map;
         }
-
-        const data = window.BENCHMARK_DATA;
-
-        // Render footer
-        document.getElementById('dl-button').onclick = () => {
-          const dataUrl = 'data:,' + JSON.stringify(data, null, 2);
-          const a = document.createElement('a');
-          a.href = dataUrl;
-          a.download = 'benchmark_data.json';
-          a.click();
-        };
-
-        // Prepare data points for charts
-        return Object.keys(data.entries).map(name => ({
-          name,
-          dataSet: collectBenchesPerTestCase(data.entries[name]),
-        }));
+        return map;
       }
 
-      function renderAllChars(dataSets) {
+      const data = window.BENCHMARK_DATA;
 
-        function renderGraph(parent, name, dataset) {
-          const chartTitle = document.createElement('h3');
-          chartTitle.textContent = name;
-          parent.append(chartTitle);
+      // Render footer
+      document.getElementById('dl-button').onclick = () => {
+        const dataUrl = 'data:,' + JSON.stringify(data, null, 2);
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = 'benchmark_data.json';
+        a.click();
+      };
 
-          const canvas = document.createElement('canvas');
-          canvas.className = 'benchmark-chart';
-          parent.appendChild(canvas);
+      // Prepare data points for charts
+      return Object.keys(data.entries).map(name => ({
+        name,
+        dataSet: collectBenchesPerTestCase(data.entries[name]),
+      }));
+    }
 
-          const color = COLORS[0];
-          const data = {
-            labels: dataset.map(d => d.commit.id.slice(0, 7)),
-            datasets: [
+    function renderAllChars(dataSets) {
+
+      function renderGraph(parent, name, dataset) {
+        const chartTitle = document.createElement('h3');
+        chartTitle.textContent = name;
+        parent.append(chartTitle);
+
+        const canvas = document.createElement('canvas');
+        canvas.className = 'benchmark-chart';
+        parent.appendChild(canvas);
+
+        const color = COLORS[0];
+        const data = {
+          labels: dataset.map(d => d.commit.id.slice(0, 7)),
+          datasets: [
+            {
+              label: name,
+              data: dataset.map(d => d.bench.value),
+              borderColor: color,
+              backgroundColor: color + '60', // Add alpha for #rrggbbaa,
+              fill: false
+            }
+          ],
+        };
+        const options = {
+          scales: {
+            xAxes: [
               {
-                label: name,
-                data: dataset.map(d => d.bench.value),
-                borderColor: color,
-                backgroundColor: color + '60', // Add alpha for #rrggbbaa,
-                fill: false
+                scaleLabel: {
+                  display: true,
+                  labelString: 'commit',
+                },
               }
             ],
-          };
-          const options = {
-            scales: {
-              xAxes: [
-                {
-                  scaleLabel: {
-                    display: true,
-                    labelString: 'commit',
-                  },
-                }
-              ],
-              yAxes: [
-                {
-                  scaleLabel: {
-                    display: true,
-                    labelString: dataset.length > 0 ? dataset[0].bench.unit : '',
-                  },
-                  ticks: {
-                    beginAtZero: true,
-                  }
-                }
-              ],
-            },
-            tooltips: {
-              callbacks: {
-                afterTitle: items => {
-                  const {index} = items[0];
-                  const data = dataset[index];
-                  return '\n' + data.commit.message + '\n\n' + data.commit.timestamp + ' committed by @' + data.commit.committer.username + '\n';
+            yAxes: [
+              {
+                scaleLabel: {
+                  display: true,
+                  labelString: dataset.length > 0 ? dataset[0].bench.unit : '',
                 },
-                label: item => {
-                  let label = item.value;
-                  const { range, unit } = dataset[item.index].bench;
-                  label += ' ' + unit;
-                  if (range) {
-                    label += ' (' + range + ')';
-                  }
-                  return label;
-                },
-                afterLabel: item => {
-                  const { extra } = dataset[item.index].bench;
-                  return extra ? '\n' + extra : '';
+                ticks: {
+                  beginAtZero: true,
                 }
               }
-            },
-            onClick: (_mouseEvent, activeElems) => {
-              if (activeElems.length === 0) {
-                return;
+            ],
+          },
+          tooltips: {
+            callbacks: {
+              afterTitle: items => {
+                const {index} = items[0];
+                const data = dataset[index];
+                return '\n' + data.commit.message + '\n\n' + data.commit.timestamp + ' committed by @' + data.commit.committer.username + '\n';
+              },
+              label: item => {
+                let label = item.value;
+                const { range, unit } = dataset[item.index].bench;
+                label += ' ' + unit;
+                if (range) {
+                  label += ' (' + range + ')';
+                }
+                return label;
+              },
+              afterLabel: item => {
+                const { extra } = dataset[item.index].bench;
+                return extra ? '\n' + extra : '';
               }
-              // XXX: Undocumented. How can we know the index?
-              const index = activeElems[0]._index;
-              const url = dataset[index].commit.url;
-              window.open(url, '_blank');
-            },
-          };
+            }
+          },
+          onClick: (_mouseEvent, activeElems) => {
+            if (activeElems.length === 0) {
+              return;
+            }
+            // XXX: Undocumented. How can we know the index?
+            const index = activeElems[0]._index;
+            const url = dataset[index].commit.url;
+            window.open(url, '_blank');
+          },
+        };
 
-          new Chart(canvas, {
-            type: 'line',
-            data,
-            options,
-          });
-        }
+        new Chart(canvas, {
+          type: 'line',
+          data,
+          options,
+        });
+      }
 
-        function renderBenchSet(name, benchSet, main) {
-          const setElem = document.createElement('div');
-          setElem.className = 'benchmark-set';
-          main.appendChild(setElem);
+      function renderBenchSet(name, benchSet, main) {
+        const setElem = document.createElement('div');
+        setElem.className = 'benchmark-set';
+        main.appendChild(setElem);
 
-          const graphsElem = document.createElement('div');
-          graphsElem.className = 'benchmark-graphs';
-          setElem.appendChild(graphsElem);
+        const graphsElem = document.createElement('div');
+        graphsElem.className = 'benchmark-graphs';
+        setElem.appendChild(graphsElem);
 
-          for (const [benchName, benches] of benchSet.entries()) {
-            renderGraph(graphsElem, benchName, benches)
-          }
-        }
-
-        const main = document.getElementById('main');
-        for (const {name, dataSet} of dataSets) {
-          renderBenchSet(name, dataSet, main);
+        for (const [benchName, benches] of benchSet.entries()) {
+          renderGraph(graphsElem, benchName, benches)
         }
       }
 
-      renderAllChars(init()); // Start
-    })();
-  </script>
+      const main = document.getElementById('main');
+      for (const {name, dataSet} of dataSets) {
+        renderBenchSet(name, dataSet, main);
+      }
+    }
+
+    renderAllChars(init()); // Start
+  })();
+</script>

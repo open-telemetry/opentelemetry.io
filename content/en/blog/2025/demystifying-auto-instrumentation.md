@@ -42,7 +42,7 @@ monkey patching, etc.) that we explore in this blog post. These techniques are
 used by
 [instrumentation libraries](/docs/concepts/glossary/#instrumentation-library)
 that target specific frameworks, for example, libraries that instrument
-[Spring and Spring Boot](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation/spring),
+[Spring and Spring Boot](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/f7cba3b86167946b3783fb8e575f1c169aec6972/instrumentation/spring?from_branch=main),
 [Express.js](https://www.npmjs.com/package/@opentelemetry/instrumentation-express),
 [Laravel](https://packagist.org/packages/open-telemetry/opentelemetry-auto-laravel),
 or other popular frameworks. Finally, complete solutions like the OpenTelemetry
@@ -132,9 +132,9 @@ from the lab.
 
 If you’d like to see actively used implementations of monkey patching, you can
 take a look into the instrumentation libraries provided by OpenTelemetry for
-[JavaScript](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages)
+[JavaScript](https://github.com/open-telemetry/opentelemetry-js-contrib/tree/87876b5451052f336bad2f5b9df65d77c75dbd76/packages?from_branch=main)
 or
-[Python](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation).
+[Python](https://github.com/open-telemetry/opentelemetry-python-contrib/tree/413c98e542b747b14bc35d79c18c7d020662f745/instrumentation?from_branch=main).
 
 ### Bytecode instrumentation: Modifying the virtual machine
 
@@ -198,9 +198,9 @@ from the lab.
 If you’d like to see actively used implementations of bytecode instrumentation,
 you can take a look into the instrumentation libraries provided by OpenTelemetry
 for
-[Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/main/instrumentation)
+[Java](https://github.com/open-telemetry/opentelemetry-java-instrumentation/tree/bc533f6df8545f79fcce2b138b14a6aca748e7fc/instrumentation?from_branch=main)
 or
-[.NET](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src).
+[.NET](https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/4a4fab74f466cdbae23876e88e17b797b7674319/src?from_branch=main).
 
 ### Compile-time instrumentation: Baking observability into the binary
 
@@ -370,7 +370,7 @@ from the lab.
 
 If you’d like to see actively used implementations of API instrumentation, you
 can take a look into the instrumentation libraries provided by OpenTelemetry for
-[PHP](https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation).
+[PHP](https://github.com/open-telemetry/opentelemetry-php-contrib/tree/2b6a02f67d85f7f94ebc285d2c08c3523d26e093/src/Instrumentation?from_branch=main).
 
 ## A note on context propagation
 

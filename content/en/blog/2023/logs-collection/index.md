@@ -420,7 +420,7 @@ extend Yoda's code to do the following:
    [transform or attributes processors](/docs/collector/transforming-telemetry/).
 1. Add [tracing](/docs/concepts/signals/traces/) support by emitting spans,
    where it makes sense.
-1. Add an Observability backend such as OpenSearch (along with [Data Prepper])
+1. Add an Observability backend such as OpenSearch (along with [Data Prepper][])
    to the setup, allowing to ingest spans and logs in OTLP format.
 1. Once you have traces and logs ingested in a backend, try to correlate these
    two telemetry signal types in the backend along with a frontend such as
@@ -451,15 +451,15 @@ check out the following resources:
 - [OpenTelemetry Logs SDK example][py-docs-logs-example] (Python docs)
 
 [repo-baby-grogu]:
-  https://github.com/mhausenblas/ref.otel.help/tree/main/how-to/logs-collection/baby-grogu/
+  https://github.com/mhausenblas/ref.otel.help/tree/6902fc3086c0e00c40094438f96ded5deaaa1d97/how-to/logs-collection/baby-grogu?from_branch=main
 [repo-expert-grogu]:
-  https://github.com/mhausenblas/ref.otel.help/tree/main/how-to/logs-collection/expert-grogu/
+  https://github.com/mhausenblas/ref.otel.help/tree/ccb846659399810c8479e92b8f4b69c540182b2f/how-to/logs-collection/expert-grogu?from_branch=main
 [repo-yoda]:
-  https://github.com/mhausenblas/ref.otel.help/tree/main/how-to/logs-collection/yoda/
+  https://github.com/mhausenblas/ref.otel.help/tree/477deb72f855c5e14d031fb787c812afd05cbd45/how-to/logs-collection/yoda?from_branch=main
 [filelog]:
-  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/filelogreceiver
+  https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/72087f655403778da46f4168dca2433fa0775098/receiver/filelogreceiver?from_branch=main
 [debug]:
-  https://github.com/open-telemetry/opentelemetry-collector/tree/main/exporter/debugexporter
+  https://github.com/open-telemetry/opentelemetry-collector/tree/d25efc7e2f31a3ba5347d0725a22d7bed1b4015d/exporter/debugexporter?from_branch=main
 [otelbin-expert-grogu]:
   https://www.otelbin.io/?#config=receivers%3A*N__filelog%3A*N____include%3A_%5B_%2Fusr%2Fsrc%2Fapp%2F**.log_%5D*N____start*_at%3A_beginning*N____operators%3A*N____-_type%3A_json*_parser*N______timestamp%3A*N________parse*_from%3A_attributes.asctime*N________layout%3A_*%22*.Y-*.m-*.dT*.H%3A*.M%3A*.S*%22*N______severity%3A*N________parse*_from%3A_attributes.levelname*Nexporters%3A*N__logging%3A*N____verbosity%3A_detailed*Nservice%3A*N__pipelines%3A*N____logs%3A*N______receivers%3A_%5B_filelog_%5D*N______exporters%3A_%5B_logging_%5D%7E
 [otlp]: /docs/specs/otlp/
