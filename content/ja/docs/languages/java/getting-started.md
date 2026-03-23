@@ -2,7 +2,7 @@
 title: サンプルによる入門
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
-default_lang_commit: 8eda3ad35e6fbeea601a033023f694c8750fd1b9 # patched
+default_lang_commit: 4b5381a2e9f129651ab8658357ab846bd4c965f2
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
@@ -133,11 +133,7 @@ java -jar ./build/libs/java-simple.jar
    curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar
    ```
 
-   {{% alert %}}
-
-   <i class="fas fa-edit"></i> JARファイルへのパスをメモしてください。
-
-   {{% /alert %}}
+   > [!IMPORTANT] <i class="fas fa-edit"></i> JARファイルへのパスをメモしてください。
 
 2. JavaエージェントJARと[コンソールエクスポーター][console exporter]を指定する変数を設定してエクスポートします。シェル/ターミナル環境に適した記法を使用してください。ここではbashライクなシェルの記法を示します。
 
@@ -149,11 +145,15 @@ java -jar ./build/libs/java-simple.jar
      OTEL_METRIC_EXPORT_INTERVAL=15000
    ```
 
-   {{% alert title="重要" color="warning" %}}
-   - 上記の`PATH/TO`を、JARへのパスに置き換えてください。
-   - メトリクスが適切に生成されることを迅速に確認するために、**テスト中のみ**、上記のように`OTEL_METRIC_EXPORT_INTERVAL`をデフォルトよりもはるかに低い値に設定してください。
+   <!-- markdownlint-disable no-blanks-blockquote -->
 
-   {{% /alert %}}
+   > [!NOTE]
+   >
+   > 上記の`PATH/TO`を、JARへのパスに置き換えてください。
+
+   > [!WARNING]
+   >
+   > **テスト中のみ**、上記のように`OTEL_METRIC_EXPORT_INTERVAL`をデフォルトよりもはるかに低い値に設定してください。メトリクスが適切に生成されることを迅速に確認するためです。
 
 3. **アプリケーション**をもう一度実行します。
 

@@ -84,7 +84,7 @@ OpenTelemetry ডিজাইন করা হয়েছে এক্সটে
 
 OpenTelemetry হলো [Cloud Native Computing Foundation][] (CNCF)-এর একটি প্রজেক্ট, যা [OpenTracing](https://opentracing.io) ও [OpenCensus](https://opencensus.io) নামক দুটি পূর্ববর্তী প্রজেক্টের [একীভূতকরণের][merger] ফলে গঠিত হয়েছে। এই দুইটি প্রজেক্টের জন্ম হয়েছিলো কোড কীভাবে ইন্সট্রুমেন্ট করতে হবে এবং অবজার্ভেবিলিটি ব্যাকএন্ডে টেলিমেট্রি ডেটা কীভাবে পাঠাতে হবে, সে বিষয়ে কোনো নির্দিষ্ট কোনো স্ট্যান্ডার্ড না থাকায়। তবে কোনো প্রজেক্টই এককভাবে স্ট্যান্ডার্ড তৈরিতে সফল না হওয়ায়, তারা একত্রিত হয়ে OpenTelemetry তৈরি করে এবং একটি একক সমাধান নিয়ে আসে।
 
-আপনি যদি বর্তমানে OpenTracing বা OpenCensus ব্যবহার করেন, তাহলে [মাইগ্রেশন গাইড](../migration/) থেকে OpenTelemetry-তে কীভাবে মাইগ্রেট করবেন তা জেনে নিতে পারেন।
+আপনি যদি বর্তমানে OpenTracing বা OpenCensus ব্যবহার করেন, তাহলে [মাইগ্রেশন গাইড](../compatibility/migration/) থেকে OpenTelemetry-তে কীভাবে মাইগ্রেট করবেন তা জেনে নিতে পারেন।
 
 [merger]: https://www.cncf.io/blog/2019/05/21/a-brief-history-of-opentelemetry-so-far/
 
