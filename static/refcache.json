@@ -28,8 +28,8 @@
     "LastSeen": "2026-03-12T09:59:33.750883327Z"
   },
   "https://adri-v.medium.com/81d63addbf92": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-23T14:15:19.402431812Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-23T14:34:26.199Z"
   },
   "https://adri-v.medium.com/prometheus-opentelemetry-better-together-41dc637f2292": {
     "StatusCode": 200,
@@ -1760,8 +1760,8 @@
     "LastSeen": "2026-03-03T09:55:04.445328993Z"
   },
   "https://docs.bmc.com/docs/helixoperationsmanagement/244/en/metric-operation-management-endpoints-in-the-rest-api-1392780044.html": {
-    "StatusCode": -10,
-    "LastSeen": "2026-03-23T14:20:33.506942165Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-23T14:35:05.512Z"
   },
   "https://docs.bugsnag.com/performance/distributed-tracing": {
     "StatusCode": 206,
@@ -8217,7 +8217,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/remotetapextension": {
     "StatusCode": 206,
-    "LastSeen": "2026-03-10T09:53:24.907691143Z"
+    "403,LastSeen": "2026-03-10T09:53:24.907691143Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/sigv4authextension": {
     "StatusCode": 206,
@@ -18676,8 +18676,8 @@
     "LastSeen": "2026-03-23T14:23:23.935Z"
   },
   "https://medium.com/wish-engineering/horizontally-scaling-prometheus-at-wish-ea4b694318dd": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-23T14:15:23.337018774Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-23T14:35:16.224Z"
   },
   "https://memcached.org/": {
     "StatusCode": 206,
@@ -21700,8 +21700,8 @@
     "LastSeen": "2026-03-18T09:55:04.610211185Z"
   },
   "https://tech.bureau.id/connecting-the-dots-with-opentelemetry-part-ii-5ea5f6b06c29": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-23T14:17:37.193345715Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-23T14:35:27.835Z"
   },
   "https://techdocs.broadcom.com/us/en/ca-enterprise-software/it-operations-management/dx-operational-observability/saas/monitoring/opentelemetry.html": {
     "StatusCode": 206,
@@ -22168,7 +22168,7 @@
     "LastSeen": "2026-02-28T09:52:18.643Z"
   },
   "https://www.britannica.com/dictionary/pipeline": {
-    "StatusCode": 403,
+    "StatusCode": 200,
     "LastSeen": "2026-03-23T14:18:08.042153692Z"
   },
   "https://www.buoyant.io/mtls-guide": {
