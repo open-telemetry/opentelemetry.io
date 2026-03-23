@@ -75,7 +75,9 @@ with translations, you must follow the OpenTelemetry
 - **Review and validate** all AI-generated translations for accuracy. You are
   responsible for the content you submit.
 - **Do not submit** AI-generated translations that you cannot review and verify
-  yourself.
+  yourself (e.g., submissions in languages you are not proficient in). This creates
+  a significant review bottleneck, and your PR may be closed to protect maintainer
+  bandwidth.
 
 [genai-policy]:
   https://github.com/open-telemetry/community/blob/main/policies/genai.md
