@@ -258,8 +258,7 @@ Collector com esses componentes.
 > Esta seção ensina você a compilar sua distribuição do Collector dentro de um
 > `Dockerfile`. Siga estas instruções se precisar implantar sua distribuição do
 > Collector em um orquestrador de containers, como o Kubernetes. Se você deseja
-> compilar sua distribuição do Collector sem a etapa de container,
-> consulte
+> compilar sua distribuição do Collector sem a etapa de container, consulte
 > [Gerar o código e compilar sua distribuição do Collector](#generate-the-code-and-build-your-collector-distribution).
 
 Siga estas etapas para gerar o container do seu Collector personalizado.
@@ -350,9 +349,9 @@ Siga estas etapas para gerar o container do seu Collector personalizado.
          exporters: [debug]
    ```
 
-1. Use os seguintes comandos para compilar uma imagem Docker multi-arquitetura do
-   `ocb` usando `linux/amd64` e `linux/arm64` como as arquiteturas de compilação
-   de destino. Para saber mais, consulte este
+1. Use os seguintes comandos para compilar uma imagem Docker multi-arquitetura
+   do `ocb` usando `linux/amd64` e `linux/arm64` como as arquiteturas de
+   compilação de destino. Para saber mais, consulte este
    [post no blog](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/)
    sobre compilações multi-arquitetura.
 
