@@ -76,6 +76,8 @@ add_label() {
   else
     echo "Adding label '${label}'."
     gh pr edit "${PR}" --repo "${REPO}" --add-label "${label}"
+    CURRENT_LABELS="${CURRENT_LABELS}
+${label}"
   fi
 }
 
@@ -87,6 +89,7 @@ remove_label() {
   if echo "${CURRENT_LABELS}" | grep -qxF "${label}"; then
     echo "Removing label '${label}'."
     gh pr edit "${PR}" --repo "${REPO}" --remove-label "${label}"
+    CURRENT_LABELS=$(echo "${CURRENT_LABELS}" | grep -vxF "${label}")
   else
     echo "Label '${label}' not present, nothing to remove."
   fi
@@ -299,6 +302,28 @@ main() {
   head_sha=$(echo "${pr_json}" | jq -r '.headRefOid')
 
   # -------------------------------------------------------------------------
+  # 0. Pre-check: block merge if any reviewer has an outstanding CHANGES_REQUESTED
+  # -------------------------------------------------------------------------
+  echo ""
+  echo "=== Checking for outstanding change requests ==="
+  local has_changes_requested=false
+  while IFS= read -r review; do
+    local cr_state
+    cr_state=$(echo "${review}" | jq -r '.state')
+    if [[ "${cr_state}" == "CHANGES_REQUESTED" ]]; then
+      local cr_reviewer
+      cr_reviewer=$(echo "${review}" | jq -r '.author.login')
+      echo "Outstanding change request from: ${cr_reviewer}"
+      has_changes_requested=true
+      break
+    fi
+  done < <(echo "${latest_reviews}" | jq -c '.[]')
+
+  if [[ "${has_changes_requested}" == "false" ]]; then
+    echo "No outstanding change requests found."
+  fi
+
+  # -------------------------------------------------------------------------
   # 1. Check docs approval
   # -------------------------------------------------------------------------
   echo ""
@@ -453,6 +478,14 @@ ${members}"
   # Do not label ready-to-be-merged if publish date is in the future
   if [[ "${all_approved}" == "true" && "${publish_date_ready}" == "false" ]]; then
     all_approved="false"
+  fi
+
+  # Block ready-to-be-merged if any reviewer has an outstanding change request.
+  # Also ensure missing:docs-approval is present so maintainers have visibility.
+  if [[ "${has_changes_requested}" == "true" && "${all_approved}" != "unknown" ]]; then
+    echo "Blocking ${LABEL_READY}: outstanding change request(s) detected."
+    all_approved="false"
+    add_label "${LABEL_DOCS_MISSING}"
   fi
 
   if [[ "${all_approved}" == "true" ]]; then
