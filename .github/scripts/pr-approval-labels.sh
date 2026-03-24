@@ -76,6 +76,8 @@ add_label() {
   else
     echo "Adding label '${label}'."
     gh pr edit "${PR}" --repo "${REPO}" --add-label "${label}"
+    CURRENT_LABELS="${CURRENT_LABELS}
+${label}"
   fi
 }
 
@@ -87,6 +89,7 @@ remove_label() {
   if echo "${CURRENT_LABELS}" | grep -qxF "${label}"; then
     echo "Removing label '${label}'."
     gh pr edit "${PR}" --repo "${REPO}" --remove-label "${label}"
+    CURRENT_LABELS=$(echo "${CURRENT_LABELS}" | grep -vxF "${label}")
   else
     echo "Label '${label}' not present, nothing to remove."
   fi
