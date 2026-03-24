@@ -7,8 +7,8 @@ author: >-
   Pająk](https://github.com/pellared) (Splunk), [Trask
   Stalnaker](https://github.com/trask) (Microsoft)
 sig: Specification, Logs
-cSpell:ignore: Liudmila Molkova Pająk
 default_lang_commit: 794bd41bda00265d8aa5e9c49bf82b1196839f88
+cSpell:ignore: Liudmila Molkova Pająk
 ---
 
 OpenTelemetryはSpan Event APIを非推奨化します。
