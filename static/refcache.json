@@ -1751,9 +1751,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-24T09:57:42.59279469Z"
   },
-  "https://docs.bindplane.observiq.com": {
+  "https://docs.bindplane.com": {
     "StatusCode": 200,
-    "LastSeen": "2026-03-23T14:18:15.06758383Z"
+    "LastSeen": "2026-03-24T13:00:56.952366-04:00"
   },
   "https://docs.bmc.com/docs/helixaiops/244/enabling-bmc-helix-applications-to-collect-service-traces-from-opentelemetry-1391498839.html": {
     "StatusCode": 200,
@@ -6915,13 +6915,13 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-23T14:16:42.350784812Z"
   },
-  "https://github.com/observIQ/bindplane-agent/tree/main/docs": {
+  "https://github.com/observIQ/bindplane-otel-collector": {
     "StatusCode": 206,
-    "LastSeen": "2026-03-10T09:52:15.958413664Z"
+    "LastSeen": "2026-03-24T13:01:00.478355-04:00"
   },
-  "https://github.com/observIQ/observiq-otel-collector": {
+  "https://github.com/observIQ/bindplane-otel-collector/tree/main/docs": {
     "StatusCode": 206,
-    "LastSeen": "2026-03-10T09:52:13.385101553Z"
+    "LastSeen": "2026-03-24T13:01:01.378604-04:00"
   },
   "https://github.com/ocelotl": {
     "StatusCode": 206,
