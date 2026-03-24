@@ -4,7 +4,7 @@ description: 5分以内にアプリのテレメトリーを取得しましょう
 weight: 10
 # prettier-ignore
 cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
-default_lang_commit: 79fae0cb7bd70b216bbc8e41f2f1038f6bd0402c
+default_lang_commit: 7a39e1b950db0738665a8bfcf3be286e207fa7c1
 ---
 
 このページでは、PythonでOpenTelemetryを始める方法を説明します。
@@ -98,11 +98,11 @@ flask run -p 8080
 
 ## 計装 {#instrumentation}
 
-ゼロコード計装は、かわりにテレメトリーデータを生成します。
+ゼロコード計装が代わりにテレメトリーデータを生成します。
 利用可能なオプションはいくつかあり、[ゼロコード計装](/docs/zero-code/python/)で詳しく説明しています。
 ここでは`opentelemetry-instrument`エージェントを使用します。
 
-OpenTelemetry API、SDK、および`opentelemetry-bootstrap`と`opentelemetry-instrument`ツールが含まれる`opentelemetry-distro`パッケージをインストールします。
+OpenTelemetry API、SDK、および以下で使用する`opentelemetry-bootstrap`と`opentelemetry-instrument`ツールが含まれる`opentelemetry-distro`パッケージをインストールします。
 
 ```shell
 pip install opentelemetry-distro
@@ -692,7 +692,7 @@ opentelemetry-instrument `
 コレクターの使用が有益な例としては、以下のものがあります。
 
 - 複数のサービスで共有される単一のテレメトリーシンク（エクスポーターの切り替えオーバーヘッドを削減）
-- 複数のホストで実行される複数のサービスにわたるトレースの集約（アグリゲーション）
+- 複数のホストで実行される複数のサービスにわたるトレースの集約
 - バックエンドにエクスポートする前にトレースを処理する一元的な場所
 
 単一のサービスのみを使用している場合や実験中の場合を除き、本番環境デプロイメントではコレクターを使用することをお勧めします。
