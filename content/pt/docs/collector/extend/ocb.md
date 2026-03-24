@@ -101,7 +101,7 @@ geração de código e o processo de compilação. A segunda seção contém os 
 módulos de nível superior, como `extensions`, `exporters`, `receivers` ou
 `processors`. Cada tipo de módulo aceita uma lista de componentes.
 
-A seção `dist` do manifesto contém tags que são equivalentes às `flags` de linha
+A seção `dist` do manifesto contém _tags_ que são equivalentes às `flags` de linha
 de comando do `ocb`. A tabela a seguir lista as opções para configurar a seção
 `dist`.
 
