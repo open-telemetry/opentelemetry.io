@@ -1,3 +1,4 @@
+# cSpell:ignore Traceway
 title: Traceway OpenTelemetry Symfony Bundle
 registryType: instrumentation
 language: php
