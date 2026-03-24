@@ -16,7 +16,10 @@ urls:
   repo: https://github.com/tracewayapp/opentelemetry-symfony-bundle
   docs: https://github.com/tracewayapp/opentelemetry-symfony-bundle#readme
 license: MIT
-description: Pure-PHP OpenTelemetry tracing for Symfony — automatic instrumentation for HTTP, Console, Doctrine DBAL, Cache, Twig, Messenger, and HttpClient. No C extension required. Supports PHP 8.1+ and Symfony 6.4/7.x/8.x.
+description:
+  Pure-PHP OpenTelemetry tracing for Symfony — automatic instrumentation for
+  HTTP, Console, Doctrine DBAL, Cache, Twig, Messenger, and HttpClient. No C
+  extension required. Supports PHP 8.1+ and Symfony 6.4/7.x/8.x.
 authors:
   - name: Traceway
     url: https://github.com/tracewayapp
