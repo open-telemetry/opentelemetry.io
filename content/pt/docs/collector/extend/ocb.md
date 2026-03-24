@@ -37,7 +37,8 @@ do Go em sua máquina antes de começar.
 
 O binário `ocb` está disponível como um recurso (_asset_) para _download_ nas
 versões do OpenTelemetry Collector com [_tags_ `cmd/builder`][tags]. Encontre e
-baixe o recurso compatível com seu sistema operacional e arquitetura de processador:
+baixe o recurso compatível com seu sistema operacional e arquitetura de
+processador:
 
 {{< tabpane text=true >}}
 
@@ -101,19 +102,19 @@ geração de código e o processo de compilação. A segunda seção contém os 
 módulos de nível superior, como `extensions`, `exporters`, `receivers` ou
 `processors`. Cada tipo de módulo aceita uma lista de componentes.
 
-A seção `dist` do manifesto contém _tags_ que são equivalentes às `flags` de linha
-de comando do `ocb`. A tabela a seguir lista as opções para configurar a seção
-`dist`.
+A seção `dist` do manifesto contém _tags_ que são equivalentes às `flags` de
+linha de comando do `ocb`. A tabela a seguir lista as opções para configurar a
+seção `dist`.
 
 | Tag                | Descrição                                                                   | Opcional             | Valor Padrão                                                                      |
 | ------------------ | --------------------------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------- |
 | module:            | O nome do módulo para a nova distribuição, seguindo as convenções do Go mod | Sim, mas recomendado | `go.opentelemetry.io/collector/cmd/builder`                                       |
 | name:              | O nome do binário para a sua distribuição                                   | Sim                  | `otelcol-custom`                                                                  |
-| description:       | Um nome descritivo para a aplicação                                              | Sim                  | `Custom OpenTelemetry Collector distribution`                                     |
+| description:       | Um nome descritivo para a aplicação                                         | Sim                  | `Custom OpenTelemetry Collector distribution`                                     |
 | output_path:       | O caminho para gravar a saída (fontes e binário)                            | Sim                  | `/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831` |
 | version:           | A versão para o seu OpenTelemetry Collector personalizado                   | Sim                  | `1.0.0`                                                                           |
 | go:                | O binário Go a ser usado para compilar as fontes geradas                    | Sim                  | O binário Go definido na variável de ambiente PATH                                |
-| debug_compilation: | Manter os símbolos de depuração (_debug_) no binário resultante               | Sim                  | False                                                                             |
+| debug_compilation: | Manter os símbolos de depuração (_debug_) no binário resultante             | Sim                  | False                                                                             |
 
 Todas as _tags_ de `dist` são opcionais. É possível adicionar valores
 personalizados para elas, dependendo se pretende disponibilizar sua distribuição
@@ -132,8 +133,8 @@ Para configurar o `ocb`, siga estas etapas:
      output_path: ./otelcol-dev
    ```
 
-1. Adicione módulos para os componentes que deseja incluir nesta
-   distribuição personalizada do Collector. Consulte a
+1. Adicione módulos para os componentes que deseja incluir nesta distribuição
+   personalizada do Collector. Consulte a
    [documentação de configuração do `ocb`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder#configuration)
    para entender os diferentes módulos e como adicionar componentes.
 
@@ -199,9 +200,8 @@ Para configurar o `ocb`, siga estas etapas:
 > [!NOTE]
 >
 > Esta seção instrui como compilar sua distribuição personalizada do Collector
-> utilizando o binário `ocb`. Para compilar e implantar sua distribuição
-> em um orquestrador de contêineres, como o Kubernetes, pule esta seção e
-> consulte
+> utilizando o binário `ocb`. Para compilar e implantar sua distribuição em um
+> orquestrador de contêineres, como o Kubernetes, pule esta seção e consulte
 > [Conteinerizar sua Distribuição do Collector](#containerize-your-collector-distribution).
 
 Com o `ocb` instalado e configurado, é possível compilar sua distribuição.
@@ -224,9 +224,9 @@ A saída do comando deve ser semelhante a esta:
 2025-06-13T14:25:17.259-0500	INFO	builder/main.go:94	Compiled	{"binary": "./otelcol-dev/otelcol-dev"}
 ```
 
-Conforme definido na seção `dist` do manifesto, agora existe uma pasta
-chamada `otelcol-dev` contendo todo o código-fonte e o binário da sua
-distribuição do Collector.
+Conforme definido na seção `dist` do manifesto, agora existe uma pasta chamada
+`otelcol-dev` contendo todo o código-fonte e o binário da sua distribuição do
+Collector.
 
 A estrutura da pasta será semelhante a esta:
 
@@ -245,9 +245,9 @@ A estrutura da pasta será semelhante a esta:
     └── otelcol-dev
 ```
 
-É possível utilizar o código gerado para inicializar seus projetos de desenvolvimento
-de componentes e, em seguida, compilar e distribuir sua própria distribuição do
-Collector com esses componentes.
+É possível utilizar o código gerado para inicializar seus projetos de
+desenvolvimento de componentes e, em seguida, compilar e distribuir sua própria
+distribuição do Collector com esses componentes.
 
 ## Conteinerizar sua distribuição do Collector {#containerize-your-collector-distribution}
 
