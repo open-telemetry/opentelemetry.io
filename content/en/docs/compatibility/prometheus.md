@@ -142,7 +142,7 @@ OpenTelemetry has a `Resource` — structured metadata attached to all telemetry
 from a process, with attributes such as `service.name` and
 `service.instance.id`. When exporting to Prometheus, the exporter maps resource
 attributes to the `job` and `instance` labels, with any remaining attributes
-exposed in a `target_info` metric. See the
+exposed in a `target_info` metric (`target_info` is an OpenMetrics 1.0 convention — if you currently emit it manually from Prometheus, the OTel equivalent is to set resource attributes). See the
 [compatibility specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)
 for the exact mapping rules. The `target_info` metric can be suppressed via
 `without_target_info`, and specific resource attributes can be promoted to
@@ -250,7 +250,6 @@ public class OtelScrapeInit {
 Prometheus
 
 <?code-excerpt "prometheus_scrape_init.go"?>
-
 ```go
 package main
 
@@ -283,7 +282,6 @@ func main() {
 OpenTelemetry
 
 <?code-excerpt "otel_scrape_init.go"?>
-
 ```go
 package main
 
@@ -434,7 +432,6 @@ The Prometheus Go client library does not include an OTLP push exporter.
 OpenTelemetry
 
 <?code-excerpt "otel_otlp_init.go"?>
-
 ```go
 package main
 
@@ -592,17 +589,17 @@ Key differences:
 Prometheus
 
 <?code-excerpt "prometheus_counter.go"?>
-
 ```go
 package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func counterUsage(reg *prometheus.Registry) {
-	hvacOnTime := prometheus.NewCounterVec(prometheus.CounterOpts{
-		Name: "hvac_on_seconds_total",
-		Help: "Total time the HVAC system has been running, in seconds",
-	}, []string{"zone"})
+var hvacOnTime = prometheus.NewCounterVec(prometheus.CounterOpts{
+	Name: "hvac_on_seconds_total",
+	Help: "Total time the HVAC system has been running, in seconds",
+}, []string{"zone"})
+
+func prometheusCounterUsage(reg *prometheus.Registry) {
 	reg.MustRegister(hvacOnTime)
 
 	// Pre-bind to label value sets: subsequent calls avoid the series lookup.
@@ -620,7 +617,6 @@ func counterUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_counter.go"?>
-
 ```go
 package main
 
@@ -750,7 +746,6 @@ Key differences:
 Prometheus
 
 <?code-excerpt "prometheus_counter_callback.go"?>
-
 ```go
 package main
 
@@ -782,7 +777,6 @@ func prometheusCounterCallbackUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_counter_callback.go"?>
-
 ```go
 package main
 
@@ -927,17 +921,17 @@ Key differences:
 Prometheus
 
 <?code-excerpt "prometheus_gauge.go"?>
-
 ```go
 package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
+var thermostatSetpoint = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+	Name: "thermostat_setpoint_celsius",
+	Help: "Target temperature set on the thermostat",
+}, []string{"zone"})
+
 func prometheusGaugeUsage(reg *prometheus.Registry) {
-	thermostatSetpoint := prometheus.NewGaugeVec(prometheus.GaugeOpts{
-		Name: "thermostat_setpoint_celsius",
-		Help: "Target temperature set on the thermostat",
-	}, []string{"zone"})
 	reg.MustRegister(thermostatSetpoint)
 
 	thermostatSetpoint.WithLabelValues("upstairs").Set(22.5)
@@ -948,7 +942,6 @@ func prometheusGaugeUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_gauge.go"?>
-
 ```go
 package main
 
@@ -1067,7 +1060,6 @@ public class OtelGaugeCallback {
 Prometheus
 
 <?code-excerpt "prometheus_gauge_callback.go"?>
-
 ```go
 package main
 
@@ -1099,7 +1091,6 @@ func prometheusGaugeCallbackUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_gauge_callback.go"?>
-
 ```go
 package main
 
@@ -1229,18 +1220,18 @@ Key differences:
 Prometheus
 
 <?code-excerpt "prometheus_up_down_counter.go"?>
-
 ```go
 package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
+// Prometheus uses Gauge for values that can increase or decrease.
+var devicesConnected = prometheus.NewGaugeVec(prometheus.GaugeOpts{
+	Name: "devices_connected",
+	Help: "Number of smart home devices currently connected",
+}, []string{"device_type"})
+
 func prometheusUpDownCounterUsage(reg *prometheus.Registry) {
-	// Prometheus uses Gauge for values that can increase or decrease.
-	devicesConnected := prometheus.NewGaugeVec(prometheus.GaugeOpts{
-		Name: "devices_connected",
-		Help: "Number of smart home devices currently connected",
-	}, []string{"device_type"})
 	reg.MustRegister(devicesConnected)
 
 	// Increment when a device connects, decrement when it disconnects.
@@ -1254,7 +1245,6 @@ func prometheusUpDownCounterUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_up_down_counter.go"?>
-
 ```go
 package main
 
@@ -1375,7 +1365,6 @@ public class OtelUpDownCounterCallback {
 Prometheus
 
 <?code-excerpt "prometheus_up_down_counter_callback.go"?>
-
 ```go
 package main
 
@@ -1407,7 +1396,6 @@ func prometheusUpDownCounterCallbackUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_up_down_counter_callback.go"?>
-
 ```go
 package main
 
@@ -1562,18 +1550,18 @@ Key differences:
 Prometheus
 
 <?code-excerpt "prometheus_histogram.go"?>
-
 ```go
 package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
+var deviceCommandDuration = prometheus.NewHistogramVec(prometheus.HistogramOpts{
+	Name:    "device_command_duration_seconds",
+	Help:    "Time to receive acknowledgment from a smart home device",
+	Buckets: []float64{0.1, 0.25, 0.5, 1.0, 2.5, 5.0},
+}, []string{"device_type"})
+
 func prometheusHistogramUsage(reg *prometheus.Registry) {
-	deviceCommandDuration := prometheus.NewHistogramVec(prometheus.HistogramOpts{
-		Name:    "device_command_duration_seconds",
-		Help:    "Time to receive acknowledgment from a smart home device",
-		Buckets: []float64{0.1, 0.25, 0.5, 1.0, 2.5, 5.0},
-	}, []string{"device_type"})
 	reg.MustRegister(deviceCommandDuration)
 
 	deviceCommandDuration.WithLabelValues("thermostat").Observe(0.35)
@@ -1584,7 +1572,6 @@ func prometheusHistogramUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_histogram.go"?>
-
 ```go
 package main
 
@@ -1676,16 +1663,59 @@ public class PrometheusHistogramNative {
 ```
 <!-- prettier-ignore-end -->
 
-OpenTelemetry
+{{% /tab %}} {{% tab Go %}}
 
-In OpenTelemetry, the instrumentation code is identical to the classic
-(explicit) histogram case. The base2 exponential format is configured
-separately, outside the instrumentation layer.
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+
+Prometheus
+
+In Prometheus, setting `NativeHistogramBucketFactor` enables native histograms
+alongside the classic bucket configuration — both formats are reported
+simultaneously:
+
+<?code-excerpt "prometheus_histogram_native.go"?>
+```go
+package main
+
+import "github.com/prometheus/client_golang/prometheus"
+
+var nativeDeviceCommandDuration = prometheus.NewHistogramVec(prometheus.HistogramOpts{
+	Name:                        "device_command_duration_seconds",
+	Help:                        "Time to receive acknowledgment from a smart home device",
+	NativeHistogramBucketFactor: 1.1,
+}, []string{"device_type"})
+
+func nativeHistogramUsage(reg *prometheus.Registry) {
+	reg.MustRegister(nativeDeviceCommandDuration)
+
+	nativeDeviceCommandDuration.WithLabelValues("thermostat").Observe(0.35)
+	nativeDeviceCommandDuration.WithLabelValues("lock").Observe(0.85)
+}
+```
+
+Key differences:
+
+- `NativeHistogramBucketFactor` must be set to a value greater than 1.0 to
+  enable native histograms in Go — it is not optional. Setting it to 0 (the zero
+  value) disables native histograms entirely. The value controls the maximum
+  ratio between consecutive bucket boundaries; smaller values give finer
+  resolution at the cost of more buckets. To approximate the same bucket density
+  as the commonly used value of `1.1`, set `MaxScale: 3` on
+  `AggregationBase2ExponentialHistogram`.
+
+{{% /tab %}} {{< /tabpane >}}
+
+In OpenTelemetry, the instrumentation code is identical to the classic histogram
+case. The base2 exponential format is configured separately, outside the
+instrumentation layer.
 
 The preferred approach is to configure it on the metric exporter. This applies
-to all histograms exported through that exporter without touching
-instrumentation code:
+to all histograms exported through that exporter without touching instrumentation
+code:
 
+{{< tabpane text=true >}} {{% tab Java %}}
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelHistogramExponentialExporter.java"?>
 ```java
@@ -1711,10 +1741,43 @@ public class OtelHistogramExponentialExporter {
 ```
 <!-- prettier-ignore-end -->
 
+{{% /tab %}} {{% tab Go %}}
+
+<?code-excerpt path-base="examples/go/prometheus-compatibility"?>
+<?code-excerpt "otel_histogram_exponential_exporter.go" region="createExponentialExporter"?>
+```go
+package main
+
+import (
+	"context"
+
+	"go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp"
+	sdkmetric "go.opentelemetry.io/otel/sdk/metric"
+)
+
+func createExponentialExporter(ctx context.Context) (*otlpmetrichttp.Exporter, error) {
+	// Configure the exporter to use exponential histograms for all histogram instruments.
+	// This is the preferred approach — it applies globally without modifying instrumentation code.
+	return otlpmetrichttp.New(ctx,
+		otlpmetrichttp.WithAggregationSelector(func(ik sdkmetric.InstrumentKind) sdkmetric.Aggregation {
+			if ik == sdkmetric.InstrumentKindHistogram {
+				return sdkmetric.AggregationBase2ExponentialHistogram{}
+			}
+			return sdkmetric.DefaultAggregationSelector(ik)
+		}),
+	)
+}
+```
+
+{{% /tab %}} {{< /tabpane >}}
+
 For more granular control — for example, to use base2 exponential histograms for
 specific instruments while keeping explicit buckets for others — configure a
 view instead:
 
+{{< tabpane text=true >}} {{% tab Java %}}
+
+<?code-excerpt path-base="examples/java/prometheus-compatibility"?>
 <!-- prettier-ignore-start -->
 <?code-excerpt "src/main/java/otel/OtelHistogramExponentialView.java"?>
 ```java
@@ -1742,67 +1805,7 @@ public class OtelHistogramExponentialView {
 {{% /tab %}} {{% tab Go %}}
 
 <?code-excerpt path-base="examples/go/prometheus-compatibility"?>
-
-Prometheus
-
-In Prometheus, setting `NativeHistogramBucketFactor` enables native histograms
-alongside the classic bucket configuration — both formats are reported
-simultaneously:
-
-<?code-excerpt "prometheus_histogram_native.go"?>
-
-```go
-package main
-
-import "github.com/prometheus/client_golang/prometheus"
-
-func nativeHistogramUsage(reg *prometheus.Registry) {
-	deviceCommandDuration := prometheus.NewHistogramVec(prometheus.HistogramOpts{
-		Name:                        "device_command_duration_seconds",
-		Help:                        "Time to receive acknowledgment from a smart home device",
-		NativeHistogramBucketFactor: 1.1,
-	}, []string{"device_type"})
-	reg.MustRegister(deviceCommandDuration)
-
-	deviceCommandDuration.WithLabelValues("thermostat").Observe(0.35)
-	deviceCommandDuration.WithLabelValues("lock").Observe(0.85)
-}
-```
-
-OpenTelemetry
-
-In OpenTelemetry, the instrumentation code is identical to the classic histogram
-case. The base2 exponential format is configured separately, outside the
-instrumentation layer.
-
-The Go OTLP exporter does not support exporter-level aggregation selection
-(unlike the Java exporter's `setDefaultAggregationSelector`). In Go, configure
-the base2 exponential format via a view on the `MeterProvider`. To apply it to
-all histograms, match by instrument kind:
-
-<?code-excerpt "otel_histogram_exponential.go" region="createExponentialProvider"?>
-
-```go
-package main
-
-import sdkmetric "go.opentelemetry.io/otel/sdk/metric"
-
-func createExponentialProvider(reader sdkmetric.Reader) *sdkmetric.MeterProvider {
-	// Configure base2 exponential histograms for all histogram instruments via a view.
-	view := sdkmetric.NewView(
-		sdkmetric.Instrument{Kind: sdkmetric.InstrumentKindHistogram},
-		sdkmetric.Stream{Aggregation: sdkmetric.AggregationBase2ExponentialHistogram{}!},
-	)
-	return sdkmetric.NewMeterProvider(sdkmetric.WithView(view), sdkmetric.WithReader(reader))
-}
-```
-
-For per-instrument control — for example, to use base2 exponential histograms
-for specific instruments while keeping explicit buckets for others — match by
-name instead:
-
 <?code-excerpt "otel_histogram_exponential.go" region="createExponentialView"?>
-
 ```go
 func createExponentialView() sdkmetric.View {
 	// Use a view for per-instrument control — select a specific instrument by name
@@ -1813,16 +1816,6 @@ func createExponentialView() sdkmetric.View {
 	)
 }
 ```
-
-Key differences:
-
-- `NativeHistogramBucketFactor` must be set to a value greater than 1.0 to
-  enable native histograms in Go — it is not optional. Setting it to 0 (the zero
-  value) disables native histograms entirely. The value controls the maximum
-  ratio between consecutive bucket boundaries; smaller values give finer
-  resolution at the cost of more buckets.
-- The Java client's `.nativeOnly()` enables native histograms with a sensible
-  default resolution, so no equivalent parameter is required.
 
 {{% /tab %}} {{< /tabpane >}}
 
@@ -1919,29 +1912,28 @@ public class OtelHistogramAsSummary {
 Prometheus
 
 <?code-excerpt "prometheus_summary.go"?>
-
 ```go
 package main
 
 import "github.com/prometheus/client_golang/prometheus"
 
-func summaryUsage(reg *prometheus.Registry) {
-	deviceCommandDuration := prometheus.NewSummaryVec(prometheus.SummaryOpts{
-		Name:       "device_command_duration_seconds",
-		Help:       "Time to receive acknowledgment from a smart home device",
-		Objectives: map[float64]float64{0.5: 0.05, 0.95: 0.01, 0.99: 0.001},
-	}, []string{"device_type"})
-	reg.MustRegister(deviceCommandDuration)
+var summaryDeviceCommandDuration = prometheus.NewSummaryVec(prometheus.SummaryOpts{
+	Name:       "device_command_duration_seconds",
+	Help:       "Time to receive acknowledgment from a smart home device",
+	Objectives: map[float64]float64{0.5: 0.05, 0.95: 0.01, 0.99: 0.001},
+}, []string{"device_type"})
 
-	deviceCommandDuration.WithLabelValues("thermostat").Observe(0.35)
-	deviceCommandDuration.WithLabelValues("lock").Observe(0.85)
+func summaryUsage(reg *prometheus.Registry) {
+	reg.MustRegister(summaryDeviceCommandDuration)
+
+	summaryDeviceCommandDuration.WithLabelValues("thermostat").Observe(0.35)
+	summaryDeviceCommandDuration.WithLabelValues("lock").Observe(0.85)
 }
 ```
 
 OpenTelemetry
 
 <?code-excerpt "otel_histogram_as_summary.go"?>
-
 ```go
 package main
 
