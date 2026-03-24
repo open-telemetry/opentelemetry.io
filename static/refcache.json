@@ -16711,6 +16711,18 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-18T10:02:05.801710219Z"
   },
+  "https://github.com/tracewayapp": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-24T10:59:22.276830007Z"
+  },
+  "https://github.com/tracewayapp/opentelemetry-symfony-bundle": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-24T10:59:16.191698279Z"
+  },
+  "https://github.com/tracewayapp/opentelemetry-symfony-bundle#readme": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-24T10:59:26.865950543Z"
+  },
   "https://github.com/traefik": {
     "StatusCode": 206,
     "LastSeen": "2026-03-12T10:02:30.244019576Z"
@@ -19542,6 +19554,10 @@
   "https://packagist.org/packages/openai-php/client": {
     "StatusCode": 200,
     "LastSeen": "2026-03-23T14:22:03.583079618Z"
+  },
+  "https://packagist.org/packages/traceway/opentelemetry-symfony": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-24T10:59:30.040111492Z"
   },
   "https://packagist.org/providers/php-http/async-client-implementation": {
     "StatusCode": 200,
