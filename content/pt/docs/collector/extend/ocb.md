@@ -6,7 +6,7 @@ weight: 200
 params:
   providers-vers: v1.48.0
 default_lang_commit: 150fe5a5c5f0914cd067d4632ab26e529e7b9167
-cSpell:ignore: darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
+cSpell:ignore: Conteinerizar darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
 ---
 
 O OpenTelemetry Collector possui cinco
