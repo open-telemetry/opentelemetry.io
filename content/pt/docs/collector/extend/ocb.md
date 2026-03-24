@@ -18,11 +18,11 @@ personalizados, componentes upstream e outros componentes disponíveis
 publicamente.
 
 O guia a seguir mostra como começar a usar o `ocb` para compilar seu próprio
-Collector. Neste exemplo, você criará uma distribuição do Collector para
-suportar o desenvolvimento e teste de componentes personalizados. Você poderá
-iniciar e depurar (debug) os componentes do seu Collector diretamente no seu
-ambiente de desenvolvimento integrado (IDE) preferido para Golang. Use todos os
-recursos de depuração da sua IDE (stack traces são ótimos professores!) para
+Collector. Neste exemplo, será criada uma distribuição do Collector voltada para
+o desenvolvimento e teste de componentes personalizados. É possível iniciar e
+depurar (_debug_) os componentes do Collector diretamente no ambiente de
+desenvolvimento integrado (IDE) de sua preferência para Golang. Utilize todos os
+recursos de depuração da sua IDE (_stack traces_ são ótimos professores!) para
 entender como o Collector interage com o código do seu componente.
 
 ## Pré-requisitos
