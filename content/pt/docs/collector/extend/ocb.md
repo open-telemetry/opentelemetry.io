@@ -3,7 +3,6 @@ title: Compilar um Collector personalizado com o OpenTelemetry Collector Builder
 linkTitle: Compilar um Collector personalizado
 description: Monte sua própria distribuição do OpenTelemetry Collector
 weight: 200
-aliases: [/docs/collector/custom-collector]
 params:
   providers-vers: v1.48.0
 # prettier-ignore
