@@ -142,7 +142,9 @@ OpenTelemetry has a `Resource` — structured metadata attached to all telemetry
 from a process, with attributes such as `service.name` and
 `service.instance.id`. When exporting to Prometheus, the exporter maps resource
 attributes to the `job` and `instance` labels, with any remaining attributes
-exposed in a `target_info` metric (`target_info` is an OpenMetrics 1.0 convention — if you currently emit it manually from Prometheus, the OTel equivalent is to set resource attributes). See the
+exposed in a `target_info` metric (`target_info` is an OpenMetrics 1.0
+convention — if you currently emit it manually from Prometheus, the OTel
+equivalent is to set resource attributes). See the
 [compatibility specification](/docs/specs/otel/compatibility/prometheus_and_openmetrics/)
 for the exact mapping rules. The `target_info` metric can be suppressed via
 `without_target_info`, and specific resource attributes can be promoted to
@@ -250,6 +252,7 @@ public class OtelScrapeInit {
 Prometheus
 
 <?code-excerpt "prometheus_scrape_init.go"?>
+
 ```go
 package main
 
@@ -282,6 +285,7 @@ func main() {
 OpenTelemetry
 
 <?code-excerpt "otel_scrape_init.go"?>
+
 ```go
 package main
 
@@ -432,6 +436,7 @@ The Prometheus Go client library does not include an OTLP push exporter.
 OpenTelemetry
 
 <?code-excerpt "otel_otlp_init.go"?>
+
 ```go
 package main
 
@@ -589,6 +594,7 @@ Key differences:
 Prometheus
 
 <?code-excerpt "prometheus_counter.go"?>
+
 ```go
 package main
 
@@ -617,6 +623,7 @@ func prometheusCounterUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_counter.go"?>
+
 ```go
 package main
 
@@ -746,6 +753,7 @@ Key differences:
 Prometheus
 
 <?code-excerpt "prometheus_counter_callback.go"?>
+
 ```go
 package main
 
@@ -777,6 +785,7 @@ func prometheusCounterCallbackUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_counter_callback.go"?>
+
 ```go
 package main
 
@@ -921,6 +930,7 @@ Key differences:
 Prometheus
 
 <?code-excerpt "prometheus_gauge.go"?>
+
 ```go
 package main
 
@@ -942,6 +952,7 @@ func prometheusGaugeUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_gauge.go"?>
+
 ```go
 package main
 
@@ -1060,6 +1071,7 @@ public class OtelGaugeCallback {
 Prometheus
 
 <?code-excerpt "prometheus_gauge_callback.go"?>
+
 ```go
 package main
 
@@ -1091,6 +1103,7 @@ func prometheusGaugeCallbackUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_gauge_callback.go"?>
+
 ```go
 package main
 
@@ -1220,6 +1233,7 @@ Key differences:
 Prometheus
 
 <?code-excerpt "prometheus_up_down_counter.go"?>
+
 ```go
 package main
 
@@ -1245,6 +1259,7 @@ func prometheusUpDownCounterUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_up_down_counter.go"?>
+
 ```go
 package main
 
@@ -1365,6 +1380,7 @@ public class OtelUpDownCounterCallback {
 Prometheus
 
 <?code-excerpt "prometheus_up_down_counter_callback.go"?>
+
 ```go
 package main
 
@@ -1396,6 +1412,7 @@ func prometheusUpDownCounterCallbackUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_up_down_counter_callback.go"?>
+
 ```go
 package main
 
@@ -1550,6 +1567,7 @@ Key differences:
 Prometheus
 
 <?code-excerpt "prometheus_histogram.go"?>
+
 ```go
 package main
 
@@ -1572,6 +1590,7 @@ func prometheusHistogramUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_histogram.go"?>
+
 ```go
 package main
 
@@ -1674,6 +1693,7 @@ alongside the classic bucket configuration — both formats are reported
 simultaneously:
 
 <?code-excerpt "prometheus_histogram_native.go"?>
+
 ```go
 package main
 
@@ -1710,8 +1730,8 @@ case. The base2 exponential format is configured separately, outside the
 instrumentation layer.
 
 The preferred approach is to configure it on the metric exporter. This applies
-to all histograms exported through that exporter without touching instrumentation
-code:
+to all histograms exported through that exporter without touching
+instrumentation code:
 
 {{< tabpane text=true >}} {{% tab Java %}}
 
@@ -1745,6 +1765,7 @@ public class OtelHistogramExponentialExporter {
 
 <?code-excerpt path-base="examples/go/prometheus-compatibility"?>
 <?code-excerpt "otel_histogram_exponential_exporter.go" region="createExponentialExporter"?>
+
 ```go
 package main
 
@@ -1806,6 +1827,7 @@ public class OtelHistogramExponentialView {
 
 <?code-excerpt path-base="examples/go/prometheus-compatibility"?>
 <?code-excerpt "otel_histogram_exponential.go" region="createExponentialView"?>
+
 ```go
 func createExponentialView() sdkmetric.View {
 	// Use a view for per-instrument control — select a specific instrument by name
@@ -1912,6 +1934,7 @@ public class OtelHistogramAsSummary {
 Prometheus
 
 <?code-excerpt "prometheus_summary.go"?>
+
 ```go
 package main
 
@@ -1934,6 +1957,7 @@ func summaryUsage(reg *prometheus.Registry) {
 OpenTelemetry
 
 <?code-excerpt "otel_histogram_as_summary.go"?>
+
 ```go
 package main
 
