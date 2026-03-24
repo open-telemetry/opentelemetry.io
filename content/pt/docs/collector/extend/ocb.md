@@ -7,6 +7,7 @@ params:
   providers-vers: v1.48.0
 # prettier-ignore
 cSpell:ignore: chipset darwin debugexporter gomod otlpexporter otlpreceiver wyrtw
+default_lang_commit: 150fe5a5c5f0914cd067d4632ab26e529e7b9167
 ---
 
 O OpenTelemetry Collector possui cinco
@@ -25,19 +26,18 @@ desenvolvimento integrado (IDE) de sua preferência para Golang. Utilize todos o
 recursos de depuração da sua IDE (_stack traces_ são ótimos professores!) para
 entender como o Collector interage com o código do seu componente.
 
-## Pré-requisitos
+## Pré-requisitos {#prerequisites}
 
-A ferramenta `ocb` requer o Go para compilar a distribuição do Collector.
+A ferramenta `ocb` requer Go para compilar a distribuição do Collector.
 Certifique-se de [instalar](https://go.dev/doc/install) uma
 [versão compatível](https://github.com/open-telemetry/opentelemetry-collector/blob/main/README.md#compatibility)
 do Go em sua máquina antes de começar.
 
 ## Instalar o OpenTelemetry Collector Builder {#install-the-opentelemetry-collector-builder}
 
-O binário `ocb` está disponível como um recurso (asset) para download nas
-versões do OpenTelemetry Collector com as [tags `cmd/builder`][tags]. Encontre e
-baixe o recurso que corresponda ao seu sistema operacional e arquitetura
-(chipset):
+O binário `ocb` está disponível como um recurso (_asset_) para _download_ nas
+versões do OpenTelemetry Collector com [_tags_ `cmd/builder`][tags]. Encontre e
+baixe o recurso compatível com seu sistema operacional e arquitetura de processador:
 
 {{< tabpane text=true >}}
 
@@ -90,8 +90,8 @@ Unblock-File -Path "ocb.exe"
 
 {{% /tab %}} {{< /tabpane >}}
 
-Para garantir que o `ocb` foi instalado corretamente, digite `./ocb help` no seu
-terminal. Você deverá ver a saída do comando `help` no seu console.
+Para verificar se o `ocb` foi instalado corretamente, execute `./ocb help` no
+terminal. A saída do comando `help` deve ser exibida no console.
 
 ## Configurar o OpenTelemetry Collector Builder {#configure-the-opentelemetry-collector-builder}
 
@@ -109,13 +109,13 @@ de comando do `ocb`. A tabela a seguir lista as opções para configurar a seç�
 | ------------------ | --------------------------------------------------------------------------- | -------------------- | --------------------------------------------------------------------------------- |
 | module:            | O nome do módulo para a nova distribuição, seguindo as convenções do Go mod | Sim, mas recomendado | `go.opentelemetry.io/collector/cmd/builder`                                       |
 | name:              | O nome do binário para a sua distribuição                                   | Sim                  | `otelcol-custom`                                                                  |
-| description:       | Um nome longo para a aplicação                                              | Sim                  | `Custom OpenTelemetry Collector distribution`                                     |
+| description:       | Um nome descritivo para a aplicação                                              | Sim                  | `Custom OpenTelemetry Collector distribution`                                     |
 | output_path:       | O caminho para gravar a saída (fontes e binário)                            | Sim                  | `/var/folders/86/s7l1czb16g124tng0d7wyrtw0000gn/T/otelcol-distribution3618633831` |
 | version:           | A versão para o seu OpenTelemetry Collector personalizado                   | Sim                  | `1.0.0`                                                                           |
-| go:                | O binário Go a ser usado para compilar as fontes geradas                    | Sim                  | O binário go definido na variável de ambiente PATH                                |
-| debug_compilation: | Manter os símbolos de depuração (debug) no binário resultante               | Sim                  | False                                                                             |
+| go:                | O binário Go a ser usado para compilar as fontes geradas                    | Sim                  | O binário Go definido na variável de ambiente PATH                                |
+| debug_compilation: | Manter os símbolos de depuração (_debug_) no binário resultante               | Sim                  | False                                                                             |
 
-Todas as tags de `dist` são opcionais. Você pode adicionar valores
+Todas as _tags_ de `dist` são opcionais. É possível adicionar valores
 personalizados para elas, dependendo se pretende disponibilizar sua distribuição
 personalizada do Collector para outros usuários ou se está usando o `ocb` para
 inicializar seu ambiente de desenvolvimento e teste de componentes.
@@ -132,7 +132,7 @@ Para configurar o `ocb`, siga estas etapas:
      output_path: ./otelcol-dev
    ```
 
-1. Adicione módulos para os componentes que você deseja incluir nesta
+1. Adicione módulos para os componentes que deseja incluir nesta
    distribuição personalizada do Collector. Consulte a
    [documentação de configuração do `ocb`](https://github.com/open-telemetry/opentelemetry-collector/tree/main/cmd/builder#configuration)
    para entender os diferentes módulos e como adicionar componentes.
@@ -188,26 +188,25 @@ Para configurar o `ocb`, siga estas etapas:
 
 > [!TIP]
 >
-> Para uma lista de componentes que você pode adicionar ao seu Collector
+> Para uma lista de componentes que podem ser adicionados ao seu Collector
 > personalizado, consulte o
-> [OpenTelemetry Registry](/ecosystem/registry/?language=collector). Cada
-> entrada do registro contém o nome completo e a versão que você precisa
+> [Registro do OpenTelemetry](/ecosystem/registry/?language=collector). Cada
+> entrada do registro contém o nome completo e a versão necessários para
 > adicionar ao seu `builder-config.yaml`.
 
 ## Gerar o código e compilar sua distribuição do Collector {#generate-the-code-and-build-your-collector-distribution}
 
 > [!NOTE]
 >
-> Esta seção instrui você a compilar sua distribuição personalizada do Collector
-> usando o binário `ocb`. Se você deseja compilar e implantar sua distribuição
-> em um orquestrador de containers, como o Kubernetes, pule esta seção e
+> Esta seção instrui como compilar sua distribuição personalizada do Collector
+> utilizando o binário `ocb`. Para compilar e implantar sua distribuição
+> em um orquestrador de contêineres, como o Kubernetes, pule esta seção e
 > consulte
-> [Containerize sua Distribuição do Collector](#containerize-your-collector-distribution).
+> [Conteinerizar sua Distribuição do Collector](#containerize-your-collector-distribution).
 
-Com o `ocb` instalado e configurado, você está pronto para compilar sua
-distribuição.
+Com o `ocb` instalado e configurado, é possível compilar sua distribuição.
 
-No seu terminal, digite o seguinte comando para iniciar o `ocb`:
+No terminal, execute o seguinte comando para iniciar o `ocb`:
 
 ```sh
 ./ocb --config builder-config.yaml
@@ -225,7 +224,7 @@ A saída do comando deve ser semelhante a esta:
 2025-06-13T14:25:17.259-0500	INFO	builder/main.go:94	Compiled	{"binary": "./otelcol-dev/otelcol-dev"}
 ```
 
-Conforme definido na seção `dist` do seu manifesto, você agora tem uma pasta
+Conforme definido na seção `dist` do manifesto, agora existe uma pasta
 chamada `otelcol-dev` contendo todo o código-fonte e o binário da sua
 distribuição do Collector.
 
@@ -246,29 +245,29 @@ A estrutura da pasta será semelhante a esta:
     └── otelcol-dev
 ```
 
-Você pode usar o código gerado para inicializar seus projetos de desenvolvimento
+É possível utilizar o código gerado para inicializar seus projetos de desenvolvimento
 de componentes e, em seguida, compilar e distribuir sua própria distribuição do
 Collector com esses componentes.
 
-## Gerar container da sua distribuição do Collector {#containerize-your-collector-distribution}
+## Conteinerizar sua distribuição do Collector {#containerize-your-collector-distribution}
 
 > [!NOTE]
 >
-> Esta seção ensina você a compilar sua distribuição do Collector dentro de um
-> `Dockerfile`. Siga estas instruções se precisar implantar sua distribuição do
-> Collector em um orquestrador de containers, como o Kubernetes. Se você deseja
-> compilar sua distribuição do Collector sem a etapa de container, consulte
+> Esta seção ensina como compilar sua distribuição do Collector dentro de um
+> `Dockerfile`. Siga estas instruções caso seja necessário implantar sua
+> distribuição do Collector em um orquestrador de contêineres como o Kubernetes.
+> Para compilar sua distribuição do Collector sem conteinerização, consulte
 > [Gerar o código e compilar sua distribuição do Collector](#generate-the-code-and-build-your-collector-distribution).
 
-Siga estas etapas para gerar o container do seu Collector personalizado.
+Siga estas etapas para gerar o contêiner do seu Collector personalizado.
 
-1. Adicione dois novos arquivos ao seu projeto:
-   - `Dockerfile` - Definição da imagem de container da sua distribuição do
+1. Adicione dois novos arquivos ao projeto:
+   - `Dockerfile` - Definição da imagem de contêiner da sua distribuição do
      Collector
    - `collector-config.yaml` - YAML de configuração mínima do Collector para
      testar sua distribuição
 
-   Após adicionar esses arquivos, sua estrutura de arquivos ficará assim:
+   Após adicionar esses arquivos, a estrutura de arquivos ficará assim:
 
    ```text
    .
@@ -351,7 +350,7 @@ Siga estas etapas para gerar o container do seu Collector personalizado.
 1. Use os seguintes comandos para compilar uma imagem Docker multi-arquitetura
    do `ocb` usando `linux/amd64` e `linux/arm64` como as arquiteturas de
    compilação de destino. Para saber mais, consulte este
-   [post no blog](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/)
+   [artigo](https://blog.jaimyn.dev/how-to-build-multi-architecture-docker-images-on-an-m1-mac/)
    sobre compilações multi-arquitetura.
 
    ```sh
@@ -370,7 +369,7 @@ Siga estas etapas para gerar o container do seu Collector personalizado.
        --name otelcol <collector_distribution_image_name>:<version>
    ```
 
-## Leituras complementares
+## Leituras complementares {#further-reading}
 
 - [Criar um receiver](/docs/collector/extend/custom-component/receiver)
 - [Criar um connector](/docs/collector/extend/custom-component/connector)
