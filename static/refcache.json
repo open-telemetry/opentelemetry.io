@@ -240,8 +240,8 @@
     "LastSeen": "2026-03-24T09:56:15.689301508Z"
   },
   "https://bento.me/adrianamvillela": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-24T09:54:17.324979355Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-24T13:19:35.517Z"
   },
   "https://betterstack.com/docs/logs/open-telemetry/#2-setup": {
     "StatusCode": 200,
@@ -1891,9 +1891,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:51:53.559255244Z"
   },
-  "https://docs.expo.dev/get-started/introduction/": {
-    "StatusCode": 404,
-    "LastSeen": "2026-03-24T09:53:22.223908213Z"
+  "https://docs.expo.dev/get-started/create-a-project/": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-24T10:24:51.261146-03:00"
   },
   "https://docs.fluentbit.io/manual/pipeline/inputs/opentelemetry/": {
     "StatusCode": 200,
@@ -3116,8 +3116,8 @@
     "LastSeen": "2026-03-18T09:54:49.655992618Z"
   },
   "https://engineering.uipath.com/scaling-observability-with-opentelemetry-adx-how-we-improve-the-monitoring-with-cost-reduced-42100a99b89a": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-24T09:54:24.297687662Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-24T13:20:03.337Z"
   },
   "https://erinmeyer.com/books/the-culture-map/": {
     "StatusCode": 200,
@@ -19244,11 +19244,11 @@
     "LastSeen": "2026-03-17T09:54:02.78601311Z"
   },
   "https://open.substack.com/pub/geekingoutpodcast/p/opentelemetry-collector-anti-patterns": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-24T09:53:46.317184138Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-24T13:20:14.375Z"
   },
   "https://openai.com/": {
-    "StatusCode": 403,
+    "StatusCode": 200,
     "LastSeen": "2026-03-24T09:57:03.718044724Z"
   },
   "https://opencensus.io": {
@@ -21972,8 +21972,8 @@
     "LastSeen": "2026-03-12T10:22:21.632Z"
   },
   "https://wiki.osdev.org/CPUID": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-24T09:56:33.924930264Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-24T13:21:16.655Z"
   },
   "https://wikipedia.org/wiki/.NET": {
     "StatusCode": 200,
@@ -22332,8 +22332,8 @@
     "LastSeen": "2026-03-17T09:53:47.889035511Z"
   },
   "https://www.docsend.com/": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-24T09:53:42.54572344Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-24T13:21:24.715Z"
   },
   "https://www.docsy.dev/docs/": {
     "StatusCode": 206,
