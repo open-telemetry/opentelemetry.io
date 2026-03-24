@@ -876,7 +876,7 @@ Pythonの自動計装にはいくつかのオプションがあります。
 OpenTelemetry APIの初期化方法やその他多くの機能については、[手動計装](../instrumentation/)を参照してください。
 
 OpenTelemetryでテレメトリーデータをエクスポートするオプションはいくつかあります。
-優先するバックエンドへのデータエクスポート方法については、[エクスポーター](../exporters/)を参照してください。
+お好みのバックエンドへのデータエクスポート方法については、[エクスポーター](../exporters/)を参照してください。
 
 より複雑な例を参照したい場合は、Pythonベースの[推奨サービス](/docs/demo/services/recommendation/)と[ロードジェネレーター](/docs/demo/services/load-generator/)を含む[OpenTelemetryデモ](/docs/demo/)をご覧ください。
 
