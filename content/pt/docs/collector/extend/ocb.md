@@ -280,7 +280,7 @@ Siga estas etapas para gerar o container do seu Collector personalizado.
 1. Adicione o seguinte conteúdo ao `Dockerfile`. Esta definição compila sua
    distribuição do Collector localmente (_in-place_) e garante que o binário
    resultante da distribuição do Collector corresponda à arquitetura do
-   container de destino (por exemplo, `linux/arm64`, `linux/amd64`):
+   contêiner de destino (por exemplo, `linux/arm64`, `linux/amd64`):
 
    ```dockerfile
    FROM alpine:3.19 AS certs
