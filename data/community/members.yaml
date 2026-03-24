@@ -2624,6 +2624,11 @@ triagers:
       - ruby-contrib-triagers
     html_url: https://github.com/NathanielRN
     avatar_url: https://avatars.githubusercontent.com/u/23139455?v=4
+  - name: neilime
+    teams:
+      - javascript-contrib-triagers
+    html_url: https://github.com/neilime
+    avatar_url: https://avatars.githubusercontent.com/u/314088?v=4
   - name: obecny
     teams:
       - javascript-contrib-triagers
