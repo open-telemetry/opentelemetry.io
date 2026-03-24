@@ -14,7 +14,7 @@ O OpenTelemetry Collector possui cinco
 pré-configuradas com certos componentes. Se você precisar de mais flexibilidade,
 pode usar o [OpenTelemetry Collector Builder][ocb] (ou `ocb`) para gerar um
 binário personalizado da sua própria distribuição que inclua componentes
-personalizados, componentes upstream e outros componentes disponíveis
+personalizados, componentes _upstream_ e outros componentes disponíveis
 publicamente.
 
 O guia a seguir mostra como começar a usar o `ocb` para compilar seu próprio
