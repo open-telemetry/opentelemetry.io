@@ -312,8 +312,8 @@ Siga estas etapas para gerar o container do seu Collector personalizado.
 > [!NOTE]
 >
 > O Dockerfile faz referência ao nome da distribuição `otelcol-dev` do
-> `builder-config.yaml` nas instruções `COPY` e `ENTRYPOINT`. Se você alterar o
-> `name` ou o `output_path` na seção `dist` do seu `builder-config.yaml`,
+> `builder-config.yaml` nas instruções `COPY` e `ENTRYPOINT`. Caso altere o
+> `name` ou o `output_path` na seção `dist` do `builder-config.yaml`,
 > certifique-se de atualizar as seguintes linhas no Dockerfile para que
 > correspondam:
 >
