@@ -21,7 +21,8 @@ description: >-
   Zero-code instrumentation for 19+ LLM providers (OpenAI, Anthropic, Google,
   AWS Bedrock, etc.), 8 multi-agent frameworks (CrewAI, LangGraph, Google ADK,
   AutoGen, OpenAI Agents SDK), and 20+ MCP tools (databases, caches, vector DBs)
-  with automatic cost tracking for 1,050+ models, GPU metrics, and CO2 emissions tracking.
+  with automatic cost tracking for 1,050+ models, GPU metrics, and CO2 emissions
+  tracking.
 authors:
   - name: Kshitij Thakkar
     url: https://github.com/Mandark-droid
