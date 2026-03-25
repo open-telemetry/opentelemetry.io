@@ -35,7 +35,10 @@
   "typesText" $typesText
 -}}
 
-<div id="config-types-accordion-container" class="config-types-accordion {{ $class }}" role="region" aria-label="Configuration types viewer" data-i18n="{{ $i18nData | jsonify }}">
+{{- /* Load pre-processed types data from simplified JSON */ -}}
+{{- $typesData := site.Data.opentelemetry.configurationTypes -}}
+
+<div id="config-types-accordion-container" class="config-types-accordion {{ $class }}" role="region" aria-label="Configuration types viewer" data-i18n="{{ $i18nData | jsonify }}" data-types="{{ $typesData | jsonify }}">
   <div class="accordion-controls mb-4">
     <div class="row g-3">
       <div class="col-md-8">

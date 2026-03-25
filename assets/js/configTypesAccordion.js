@@ -7,174 +7,56 @@
 
 import * as AccordionUtils from './shared/accordionUtils.js';
 
-(function () {
-  'use strict';
+const DEBOUNCE_DELAY = 300;
+const LOCAL_STORAGE_KEY = 'config-types-preferences';
+const URL_PARAM_SEARCH = 'search';
+const URL_PARAM_FILTER = 'filter';
 
-  const DEBOUNCE_DELAY = 300; // milliseconds
-  const LOCAL_STORAGE_KEY = 'config-types-preferences';
-  const URL_PARAM_SEARCH = 'search';
-  const URL_PARAM_FILTER = 'filter';
+let i18nStrings = {
+  searchPlaceholder: 'Filter by type name...',
+  allTypes: 'All types',
+  stableOnly: 'Stable only',
+  experimentalOnly: 'Experimental only',
+  expandAll: 'Expand all',
+  collapseAll: 'Collapse all',
+  showingText: 'Showing',
+  ofText: 'of',
+  typesText: 'types',
+};
 
-  // I18n strings (defaults, overridden by data-i18n attribute)
-  let i18nStrings = {
-    searchPlaceholder: 'Filter by type name...',
-    allTypes: 'All types',
-    stableOnly: 'Stable only',
-    experimentalOnly: 'Experimental only',
-    expandAll: 'Expand all',
-    collapseAll: 'Collapse all',
-    showingText: 'Showing',
-    ofText: 'of',
-    typesText: 'types',
-  };
+const typesData = {
+  types: [],
+};
 
-  /**
-   * Types data structure
-   * @type {Object}
-   */
-  const typesData = {
-    types: [],
-  };
+let container = null;
 
-  /**
-   * Event listeners array for cleanup
-   * @type {Array<{element: HTMLElement, event: string, handler: Function}>}
-   */
-  const eventListeners = [];
-
-  /**
-   * Container element for the accordion
-   * @type {HTMLElement|null}
-   */
-  let container = null;
-
-  /**
-   * Parses existing markdown-rendered content to populate data structure
-   */
-  function parseExistingContent() {
-    const content = document.querySelector('.config-types-content');
-    if (!content) {
-      console.error('Could not find .config-types-content element');
+/**
+ * Load types data from JSON embedded in data-types attribute
+ * @returns {boolean} True if successfully loaded from JSON
+ */
+function loadTypesData() {
+  try {
+    const typesJson = container.dataset.types;
+    if (!typesJson) {
+      console.error('No types JSON data found in data-types attribute');
       return false;
     }
 
-    // Find all type sections (h3 headers with IDs)
-    const typeHeaders = content.querySelectorAll('h3[id]');
-
-    if (typeHeaders.length === 0) {
-      console.warn('No type headers found in content');
+    const parsed = JSON.parse(typesJson);
+    if (!parsed.types || !Array.isArray(parsed.types)) {
+      console.error('Invalid types data structure');
       return false;
     }
 
-    typeHeaders.forEach((header) => {
-      const typeId = header.id;
-      const typeName = header.textContent.trim();
-
-      // Determine if experimental
-      const isExperimental = typeName.toLowerCase().startsWith('experimental');
-
-      // Find the next table or paragraph elements after this header
-      let currentElement = header.nextElementSibling;
-      let table = null;
-      let description = '';
-      let constraints = '';
-      let hasNoProperties = false;
-
-      while (currentElement) {
-        // Stop if we hit another h3 (next type section)
-        if (currentElement.tagName === 'H3') {
-          break;
-        }
-
-        // Check for "No properties" text
-        if (
-          currentElement.tagName === 'P' &&
-          currentElement.textContent.includes('No properties')
-        ) {
-          hasNoProperties = true;
-        }
-
-        // Look for table
-        if (currentElement.tagName === 'TABLE' && !table) {
-          table = currentElement;
-        }
-
-        // Look for constraints paragraph (usually after the table)
-        if (
-          currentElement.tagName === 'P' &&
-          currentElement.textContent.includes('Constraints:')
-        ) {
-          const constraintsText = currentElement.textContent
-            .replace('Constraints:', '')
-            .trim();
-          constraints = constraintsText;
-          // Also check for following lines
-          let nextEl = currentElement.nextElementSibling;
-          while (
-            nextEl &&
-            nextEl.tagName !== 'H3' &&
-            nextEl.tagName !== 'TABLE'
-          ) {
-            if (nextEl.textContent && nextEl.textContent.trim()) {
-              constraints += ' ' + nextEl.textContent.trim();
-            }
-            nextEl = nextEl.nextElementSibling;
-          }
-        }
-
-        currentElement = currentElement.nextElementSibling;
-      }
-
-      // Extract properties from table if exists
-      const properties = [];
-      if (table && !hasNoProperties) {
-        const rows = table.querySelectorAll('tbody tr');
-        rows.forEach((row) => {
-          const cells = row.querySelectorAll('td');
-          if (cells.length >= 1) {
-            const propertyName = cells[0].textContent.trim();
-            const propertyType = cells[1]?.textContent.trim() || '';
-            const propertyDefault = cells[2]?.textContent.trim() || '';
-            const propertyConstraints = cells[3]?.textContent.trim() || '';
-            const propertyDescription =
-              cells[4]?.textContent.trim() ||
-              cells[3]?.textContent.trim() ||
-              '';
-
-            properties.push({
-              name: propertyName,
-              type: propertyType,
-              default: propertyDefault,
-              constraints: propertyConstraints,
-              description: propertyDescription,
-            });
-          }
-        });
-      }
-
-      // Check if this is an enum type
-      const isEnum = hasNoProperties && table;
-
-      typesData.types.push({
-        id: typeId,
-        name: typeName,
-        isExperimental: isExperimental,
-        properties: properties,
-        constraints: constraints,
-        hasNoProperties: hasNoProperties,
-        isEnum: isEnum,
-        tableHtml: table ? table.outerHTML : '',
-      });
-    });
-
-    console.log(`Parsed ${typesData.types.length} types`);
+    typesData.types = parsed.types;
     return true;
+  } catch (e) {
+    console.error('Failed to parse types JSON:', e);
+    return false;
   }
+}
 
-  /**
-   * Renders the accordion with all types
-   */
-  function renderAccordion() {
+function renderAccordion() {
     if (!container) return false;
 
     const accordion = container.querySelector('.accordion-items-container');
@@ -183,10 +65,8 @@ import * as AccordionUtils from './shared/accordionUtils.js';
       return false;
     }
 
-    // Clear existing content
     accordion.innerHTML = '';
 
-    // Use DocumentFragment for better performance
     const fragment = document.createDocumentFragment();
 
     typesData.types.forEach((type, index) => {
@@ -198,7 +78,6 @@ import * as AccordionUtils from './shared/accordionUtils.js';
       const headerId = `heading-${index}`;
       const collapseId = `collapse-${index}`;
 
-      // Create accordion header
       const header = document.createElement('h2');
       header.className = 'accordion-header';
       header.id = headerId;
@@ -215,12 +94,10 @@ import * as AccordionUtils from './shared/accordionUtils.js';
       buttonContent.className =
         'd-flex w-100 justify-content-between align-items-center pe-3';
 
-      // Type name
       const typeNameSpan = document.createElement('span');
       typeNameSpan.className = 'type-name';
       typeNameSpan.textContent = type.name;
 
-      // Badge for experimental
       if (type.isExperimental) {
         const badge = document.createElement('span');
         badge.className = 'badge bg-warning text-dark ms-2';
@@ -228,7 +105,6 @@ import * as AccordionUtils from './shared/accordionUtils.js';
         typeNameSpan.appendChild(badge);
       }
 
-      // Property count summary
       const propertySummary = document.createElement('span');
       propertySummary.className = 'property-summary text-muted';
       if (type.hasNoProperties) {
@@ -244,7 +120,6 @@ import * as AccordionUtils from './shared/accordionUtils.js';
       button.appendChild(buttonContent);
       header.appendChild(button);
 
-      // Create collapsible body
       const collapseDiv = document.createElement('div');
       collapseDiv.id = collapseId;
       collapseDiv.className = 'accordion-collapse collapse';
@@ -261,17 +136,79 @@ import * as AccordionUtils from './shared/accordionUtils.js';
       fragment.appendChild(item);
     });
 
-    accordion.appendChild(fragment);
-    AccordionUtils.updateStats(container);
-    return true;
-  }
+  accordion.appendChild(fragment);
+  AccordionUtils.updateStats(container);
+  return true;
+}
 
-  /**
-   * Generates the accordion body content for a type
-   * @param {Object} type - Type data
-   * @returns {HTMLDivElement} Body content element
-   */
-  function generateAccordionBody(type) {
+/**
+ * Generate a property table from properties array
+ * @param {Array} properties - Array of property objects
+ * @returns {HTMLTableElement|null} Generated table or null if no properties
+ */
+function generatePropertyTable(properties) {
+  if (!properties || properties.length === 0) return null;
+
+  const table = document.createElement('table');
+  table.className = 'table table-striped';
+
+  const thead = document.createElement('thead');
+  const headerRow = document.createElement('tr');
+  const headers = ['Property', 'Type', 'Default Behavior', 'Constraints', 'Description'];
+
+  // Check if any property has constraints to decide whether to show that column
+  const hasConstraints = properties.some(prop => prop.constraints && prop.constraints.length > 0);
+
+  headers.forEach((headerText, index) => {
+    // Skip Constraints column if no properties have constraints
+    if (headerText === 'Constraints' && !hasConstraints) return;
+
+    const th = document.createElement('th');
+    th.textContent = headerText;
+    headerRow.appendChild(th);
+  });
+  thead.appendChild(headerRow);
+  table.appendChild(thead);
+
+  const tbody = document.createElement('tbody');
+  properties.forEach(prop => {
+    const row = document.createElement('tr');
+
+    // Property name
+    const nameCell = document.createElement('td');
+    nameCell.textContent = prop.name || '';
+    row.appendChild(nameCell);
+
+    // Type
+    const typeCell = document.createElement('td');
+    typeCell.textContent = prop.type || '';
+    row.appendChild(typeCell);
+
+    // Default behavior
+    const defaultCell = document.createElement('td');
+    defaultCell.textContent = prop.default || '';
+    row.appendChild(defaultCell);
+
+    // Constraints (only if column is shown)
+    if (hasConstraints) {
+      const constraintsCell = document.createElement('td');
+      constraintsCell.textContent = prop.constraints || '';
+      row.appendChild(constraintsCell);
+    }
+
+    // Description
+    const descCell = document.createElement('td');
+    descCell.textContent = prop.description || '';
+    row.appendChild(descCell);
+
+    tbody.appendChild(row);
+  });
+  table.appendChild(tbody);
+
+  return table;
+}
+
+function generateAccordionBody(type) {
     const container = document.createElement('div');
 
     // Add anchor link
@@ -280,17 +217,26 @@ import * as AccordionUtils from './shared/accordionUtils.js';
     anchorLink.className = 'type-anchor-link td-heading-self-link';
     anchorLink.setAttribute(
       'aria-label',
-      `Permalink to ${AccordionUtils.escapeHtml(type.name)}`,
+      `Permalink to ${type.name}`,
     );
     anchorLink.textContent = '#';
     container.appendChild(anchorLink);
 
-    // If has table HTML, insert it
-    if (type.tableHtml) {
-      const tableContainer = document.createElement('div');
-      tableContainer.className = 'type-table-container';
-      tableContainer.innerHTML = type.tableHtml;
-      container.appendChild(tableContainer);
+    // Generate table from properties
+    if (type.properties && type.properties.length > 0) {
+      const table = generatePropertyTable(type.properties);
+      if (table) {
+        const tableContainer = document.createElement('div');
+        tableContainer.className = 'type-table-container';
+        tableContainer.appendChild(table);
+        container.appendChild(tableContainer);
+      }
+    } else if (type.hasNoProperties) {
+      // Show "No properties" message
+      const noPropsP = document.createElement('p');
+      noPropsP.textContent = 'No properties.';
+      noPropsP.className = 'text-muted';
+      container.appendChild(noPropsP);
     }
 
     // Add constraints if present
@@ -313,201 +259,113 @@ import * as AccordionUtils from './shared/accordionUtils.js';
     link.className = 'btn btn-sm btn-outline-primary';
     link.textContent = 'View language support →';
     langStatusLink.appendChild(link);
-    container.appendChild(langStatusLink);
+  container.appendChild(langStatusLink);
 
-    return container;
+  return container;
+}
+
+function applyFilters() {
+  AccordionUtils.applyFilters(
+    container,
+    () => AccordionUtils.savePreferences(container, LOCAL_STORAGE_KEY),
+    () =>
+      AccordionUtils.updateUrlParams(
+        container,
+        URL_PARAM_SEARCH,
+        URL_PARAM_FILTER,
+      ),
+  );
+}
+
+function restoreFilterState() {
+  if (!container) return;
+
+  const searchInput = container.querySelector('.accordion-search-input');
+  const filterSelect = container.querySelector('.accordion-type-filter-select');
+
+  if (!searchInput || !filterSelect) return;
+
+  const urlState = AccordionUtils.loadFromUrlParams(
+    URL_PARAM_SEARCH,
+    URL_PARAM_FILTER,
+  );
+  const hasUrlState = urlState.search || urlState.filter !== 'all';
+
+  const state =
+    hasUrlState
+      ? urlState
+      : AccordionUtils.loadPreferences(LOCAL_STORAGE_KEY) || urlState;
+
+  searchInput.value = state.search || '';
+  filterSelect.value = state.filter || 'all';
+
+  applyFilters();
+}
+
+function init() {
+  container = document.querySelector('.config-types-accordion');
+  if (!container) {
+    container = document.getElementById('config-types-accordion-container');
+  }
+  if (!container) {
+    return false;
   }
 
-  /**
-   * Applies search and filter to accordion items
-   */
-  function applyFilters() {
-    AccordionUtils.applyFilters(container, savePreferences, updateUrlParams);
+  try {
+    const i18nData = container.dataset.i18n;
+    if (i18nData) {
+      const parsedData = JSON.parse(i18nData);
+      i18nStrings = { ...i18nStrings, ...parsedData };
+    }
+  } catch (e) {
+    console.warn('Could not parse i18n data, using defaults:', e);
   }
 
-  /**
-   * Expands all accordion items
-   */
-  function expandAll() {
-    AccordionUtils.expandAll(container);
+  if (!loadTypesData()) {
+    console.error('Failed to load types data');
+    return false;
   }
 
-  /**
-   * Collapses all accordion items
-   */
-  function collapseAll() {
-    AccordionUtils.collapseAll(container);
+  if (!renderAccordion()) {
+    console.error('Failed to render accordion');
+    return false;
   }
 
-  /**
-   * Saves user preferences to localStorage
-   */
-  function savePreferences() {
-    AccordionUtils.savePreferences(container, LOCAL_STORAGE_KEY);
-  }
+  const searchInput = container.querySelector('.accordion-search-input');
+  const filterSelect = container.querySelector('.accordion-type-filter-select');
+  const expandBtn = container.querySelector('.accordion-expand-all-btn');
+  const collapseBtn = container.querySelector('.accordion-collapse-all-btn');
 
-  /**
-   * Loads user preferences from localStorage
-   */
-  function loadPreferences() {
-    return AccordionUtils.loadPreferences(LOCAL_STORAGE_KEY);
-  }
-
-  /**
-   * Updates URL parameters with current filter state
-   */
-  function updateUrlParams() {
-    AccordionUtils.updateUrlParams(
-      container,
-      URL_PARAM_SEARCH,
-      URL_PARAM_FILTER,
+  if (searchInput) {
+    searchInput.addEventListener(
+      'input',
+      AccordionUtils.debounce(applyFilters, DEBOUNCE_DELAY),
     );
   }
 
-  /**
-   * Loads filter state from URL parameters
-   */
-  function loadFromUrlParams() {
-    return AccordionUtils.loadFromUrlParams(URL_PARAM_SEARCH, URL_PARAM_FILTER);
+  if (filterSelect) {
+    filterSelect.addEventListener('change', applyFilters);
   }
 
-  /**
-   * Restores filter state from URL or localStorage
-   */
-  function restoreFilterState() {
-    if (!container) return;
-
-    const searchInput = container.querySelector('.accordion-search-input');
-    const filterSelect = container.querySelector(
-      '.accordion-type-filter-select',
+  if (expandBtn) {
+    expandBtn.addEventListener('click', () =>
+      AccordionUtils.expandAll(container),
     );
-
-    if (!searchInput || !filterSelect) return;
-
-    // URL params take precedence over localStorage
-    const urlState = loadFromUrlParams();
-    const hasUrlState = urlState.search || urlState.filter !== 'all';
-
-    const state = hasUrlState ? urlState : loadPreferences() || urlState;
-
-    searchInput.value = state.search || '';
-    filterSelect.value = state.filter || 'all';
-
-    applyFilters();
   }
 
-  /**
-   * Destroys the component and cleans up resources
-   */
-  function destroy() {
-    AccordionUtils.removeAllEventListeners(eventListeners);
-    console.log('ConfigTypesAccordion destroyed');
-  }
-
-  /**
-   * Initializes the accordion component
-   * @returns {boolean} Success status
-   */
-  function init() {
-    container = document.querySelector('.config-types-accordion');
-    if (!container) {
-      container = document.getElementById('config-types-accordion-container');
-    }
-    if (!container) {
-      // Component not on this page, exit silently
-      return false;
-    }
-
-    console.log('Initializing ConfigTypesAccordion...');
-
-    // Load i18n strings from data attribute
-    try {
-      const i18nData = container.dataset.i18n;
-      if (i18nData) {
-        const parsedData = JSON.parse(i18nData);
-        i18nStrings = { ...i18nStrings, ...parsedData };
-        console.log('Loaded i18n strings from data attribute');
-      }
-    } catch (e) {
-      console.warn('Could not parse i18n data, using defaults:', e);
-    }
-
-    if (!parseExistingContent()) {
-      console.error('Failed to parse content');
-      return false;
-    }
-
-    if (!renderAccordion()) {
-      console.error('Failed to render accordion');
-      return false;
-    }
-
-    // Set up event listeners with debouncing for search
-    const searchInput = container.querySelector('.accordion-search-input');
-    const filterSelect = container.querySelector(
-      '.accordion-type-filter-select',
+  if (collapseBtn) {
+    collapseBtn.addEventListener('click', () =>
+      AccordionUtils.collapseAll(container),
     );
-    const expandBtn = container.querySelector('.accordion-expand-all-btn');
-    const collapseBtn = container.querySelector('.accordion-collapse-all-btn');
-
-    if (searchInput) {
-      AccordionUtils.addTrackedEventListener(
-        eventListeners,
-        searchInput,
-        'input',
-        AccordionUtils.debounce(applyFilters, DEBOUNCE_DELAY),
-      );
-    }
-
-    if (filterSelect) {
-      AccordionUtils.addTrackedEventListener(
-        eventListeners,
-        filterSelect,
-        'change',
-        applyFilters,
-      );
-    }
-
-    if (expandBtn) {
-      AccordionUtils.addTrackedEventListener(
-        eventListeners,
-        expandBtn,
-        'click',
-        expandAll,
-      );
-    }
-
-    if (collapseBtn) {
-      AccordionUtils.addTrackedEventListener(
-        eventListeners,
-        collapseBtn,
-        'click',
-        collapseAll,
-      );
-    }
-
-    restoreFilterState();
-
-    AccordionUtils.addTrackedEventListener(
-      eventListeners,
-      window,
-      'beforeunload',
-      destroy,
-    );
-
-    console.log('ConfigTypesAccordion initialized successfully');
-    return true;
   }
 
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  restoreFilterState();
 
-  // Expose destroy function for cleanup if needed
-  window.ConfigTypesAccordion = {
-    destroy: destroy,
-  };
-})();
+  return true;
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}

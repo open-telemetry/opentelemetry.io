@@ -7,72 +7,49 @@
 
 import * as AccordionUtils from './shared/accordionUtils.js';
 
-(function () {
-  'use strict';
+const DEBOUNCE_DELAY = 300;
+const LOCAL_STORAGE_KEY = 'config-lang-status-preferences';
+const URL_PARAM_SEARCH = 'search';
+const URL_PARAM_FILTER = 'filter';
 
-  const DEBOUNCE_DELAY = 300; // milliseconds
-  const LOCAL_STORAGE_KEY = 'config-lang-status-preferences';
-  const URL_PARAM_SEARCH = 'search';
-  const URL_PARAM_FILTER = 'filter';
-
-  // Language logo mapping
-  const LANGUAGE_LOGOS = {
+const LANGUAGE_LOGOS = {
     cpp: '/img/logos/32x32/C++_SDK.svg',
-    dotnet: '/img/logos/32x32/Csharp_SDK.svg',
-    go: '/img/logos/32x32/Golang_SDK.svg',
-    java: '/img/logos/32x32/Java_SDK.svg',
-    js: '/img/logos/32x32/JS_SDK.svg',
-    php: '/img/logos/32x32/PHP.svg',
-    python: '/img/logos/32x32/Python_SDK.svg',
-    ruby: '/img/logos/32x32/Ruby_SDK.svg',
-    rust: '/img/logos/32x32/Rust.svg',
-    swift: '/img/logos/32x32/Swift.svg',
-  };
+  dotnet: '/img/logos/32x32/Csharp_SDK.svg',
+  go: '/img/logos/32x32/Golang_SDK.svg',
+  java: '/img/logos/32x32/Java_SDK.svg',
+  js: '/img/logos/32x32/JS_SDK.svg',
+  php: '/img/logos/32x32/PHP.svg',
+  python: '/img/logos/32x32/Python_SDK.svg',
+  ruby: '/img/logos/32x32/Ruby_SDK.svg',
+  rust: '/img/logos/32x32/Rust.svg',
+  swift: '/img/logos/32x32/Swift.svg',
+};
 
-  // I18n strings (defaults, overridden by data-i18n attribute)
-  let i18nStrings = {
-    searchPlaceholder: 'Filter by type name...',
-    allTypes: 'All types',
-    stableOnly: 'Stable only',
-    experimentalOnly: 'Experimental only',
-    expandAll: 'Expand all',
-    collapseAll: 'Collapse all',
-    showingText: 'Showing',
-    ofText: 'of',
-    typesText: 'types',
-    noDataAvailable: 'No data available',
-    notes: 'Notes:',
-    properties: 'Properties:',
-    version: 'version:',
-  };
+let i18nStrings = {
+  searchPlaceholder: 'Filter by type name...',
+  allTypes: 'All types',
+  stableOnly: 'Stable only',
+  experimentalOnly: 'Experimental only',
+  expandAll: 'Expand all',
+  collapseAll: 'Collapse all',
+  showingText: 'Showing',
+  ofText: 'of',
+  typesText: 'types',
+  noDataAvailable: 'No data available',
+  notes: 'Notes:',
+  properties: 'Properties:',
+  version: 'version:',
+};
 
-  /**
-   * Status data structure containing languages and types
-   * @type {Object}
-   */
-  const statusData = {
-    languages: {},
-    types: [],
-    languageOrder: [], // Order in which languages appear
-  };
+const statusData = {
+  languages: {},
+  types: [],
+  languageOrder: [],
+};
 
-  /**
-   * Event listeners array for cleanup
-   * @type {Array<{element: HTMLElement, event: string, handler: Function}>}
-   */
-  const eventListeners = [];
+let container = null;
 
-  /**
-   * Container element for the accordion
-   * @type {HTMLElement|null}
-   */
-  let container = null;
-
-  /**
-   * Parses existing markdown-rendered content to populate data structure
-   * Dynamically discovers languages from the content
-   */
-  function parseExistingContent() {
+function parseExistingContent() {
     const content = document.querySelector(
       '.language-implementation-status-content',
     );
@@ -154,7 +131,7 @@ import * as AccordionUtils from './shared/accordionUtils.js';
             const detailsText = cells[3]?.textContent.trim() || '';
             // If we need HTML, sanitize it
             const detailsHtml = cells[3]?.innerHTML
-              ? AccordionUtils.sanitizeHtml(cells[3].innerHTML)
+              ? cells[3].innerHTML
               : '';
 
             if (!statusData.types.includes(typeName)) {
@@ -190,18 +167,13 @@ import * as AccordionUtils from './shared/accordionUtils.js';
       return a.localeCompare(b);
     });
 
-    console.log(
-      `Parsed ${statusData.languageOrder.length} languages and ${statusData.types.length} types`,
-    );
-    return true;
-  }
+  console.log(
+    `Parsed ${statusData.languageOrder.length} languages and ${statusData.types.length} types`,
+  );
+  return true;
+}
 
-  /**
-   * Creates a status badge element
-   * @param {string} status - Status value
-   * @returns {HTMLSpanElement} Badge element
-   */
-  function createStatusBadge(status) {
+function createStatusBadge(status) {
     const span = document.createElement('span');
     span.className = 'badge';
 
@@ -218,15 +190,12 @@ import * as AccordionUtils from './shared/accordionUtils.js';
       text: status,
     };
     span.className += ' ' + config.class;
-    span.textContent = config.text;
+  span.textContent = config.text;
 
-    return span;
-  }
+  return span;
+}
 
-  /**
-   * Renders the language legend dynamically
-   */
-  function renderLanguageLegend() {
+function renderLanguageLegend() {
     if (!container) return;
 
     const legendContainer = container.querySelector('.legend-languages-items');
@@ -260,14 +229,11 @@ import * as AccordionUtils from './shared/accordionUtils.js';
 
       legendItem.appendChild(logoImg);
       legendItem.appendChild(label);
-      legendContainer.appendChild(legendItem);
-    });
-  }
+    legendContainer.appendChild(legendItem);
+  });
+}
 
-  /**
-   * Renders the accordion with all types
-   */
-  function renderAccordion() {
+function renderAccordion() {
     if (!container) return false;
 
     const accordion = container.querySelector('.accordion-items-container');
@@ -381,17 +347,12 @@ import * as AccordionUtils from './shared/accordionUtils.js';
       fragment.appendChild(item);
     });
 
-    accordion.appendChild(fragment);
-    AccordionUtils.updateStats(container);
-    return true;
-  }
+  accordion.appendChild(fragment);
+  AccordionUtils.updateStats(container);
+  return true;
+}
 
-  /**
-   * Generates the accordion body content for a type
-   * @param {string} typeName - Type name
-   * @returns {HTMLDivElement} Body content element
-   */
-  function generateAccordionBody(typeName) {
+function generateAccordionBody(typeName) {
     const container = document.createElement('div');
 
     // Add "View type definition" link at top
@@ -467,204 +428,118 @@ import * as AccordionUtils from './shared/accordionUtils.js';
       row.appendChild(col);
     });
 
-    container.appendChild(row);
-    return container;
+  container.appendChild(row);
+  return container;
+}
+
+function applyFilters() {
+  AccordionUtils.applyFilters(
+    container,
+    () => AccordionUtils.savePreferences(container, LOCAL_STORAGE_KEY),
+    () =>
+      AccordionUtils.updateUrlParams(
+        container,
+        URL_PARAM_SEARCH,
+        URL_PARAM_FILTER,
+      ),
+  );
+}
+
+function restoreFilterState() {
+  if (!container) return;
+
+  const searchInput = container.querySelector('.accordion-search-input');
+  const filterSelect = container.querySelector('.accordion-type-filter-select');
+
+  if (!searchInput || !filterSelect) return;
+
+  const urlState = AccordionUtils.loadFromUrlParams(
+    URL_PARAM_SEARCH,
+    URL_PARAM_FILTER,
+  );
+  const hasUrlState = urlState.search || urlState.filter !== 'all';
+
+  const state =
+    hasUrlState
+      ? urlState
+      : AccordionUtils.loadPreferences(LOCAL_STORAGE_KEY) || urlState;
+
+  searchInput.value = state.search || '';
+  filterSelect.value = state.filter || 'all';
+
+  applyFilters();
+}
+
+function init() {
+  container = document.querySelector('.config-lang-status-accordion');
+  if (!container) {
+    container = document.getElementById('config-lang-status-accordion-container');
+  }
+  if (!container) {
+    return false;
   }
 
-  /**
-   * Applies search and filter to accordion items
-   */
-  function applyFilters() {
-    AccordionUtils.applyFilters(container, savePreferences, updateUrlParams);
+  console.log('Initializing ConfigLangStatusAccordion...');
+
+  try {
+    const i18nData = container.dataset.i18n;
+    if (i18nData) {
+      const parsedData = JSON.parse(i18nData);
+      i18nStrings = { ...i18nStrings, ...parsedData };
+      console.log('Loaded i18n strings from data attribute');
+    }
+  } catch (e) {
+    console.warn('Could not parse i18n data, using defaults:', e);
   }
 
-  /**
-   * Expands all accordion items
-   */
-  function expandAll() {
-    AccordionUtils.expandAll(container);
+  if (!parseExistingContent()) {
+    console.error('Failed to parse content');
+    return false;
   }
 
-  /**
-   * Collapses all accordion items
-   */
-  function collapseAll() {
-    AccordionUtils.collapseAll(container);
+  renderLanguageLegend();
+
+  if (!renderAccordion()) {
+    console.error('Failed to render accordion');
+    return false;
   }
 
-  /**
-   * Saves user preferences to localStorage
-   */
-  function savePreferences() {
-    AccordionUtils.savePreferences(container, LOCAL_STORAGE_KEY);
-  }
+  const searchInput = container.querySelector('.accordion-search-input');
+  const filterSelect = container.querySelector('.accordion-type-filter-select');
+  const expandBtn = container.querySelector('.accordion-expand-all-btn');
+  const collapseBtn = container.querySelector('.accordion-collapse-all-btn');
 
-  /**
-   * Loads user preferences from localStorage
-   */
-  function loadPreferences() {
-    return AccordionUtils.loadPreferences(LOCAL_STORAGE_KEY);
-  }
-
-  /**
-   * Updates URL parameters with current filter state
-   */
-  function updateUrlParams() {
-    AccordionUtils.updateUrlParams(
-      container,
-      URL_PARAM_SEARCH,
-      URL_PARAM_FILTER,
+  if (searchInput) {
+    searchInput.addEventListener(
+      'input',
+      AccordionUtils.debounce(applyFilters, DEBOUNCE_DELAY),
     );
   }
 
-  /**
-   * Loads filter state from URL parameters
-   */
-  function loadFromUrlParams() {
-    return AccordionUtils.loadFromUrlParams(URL_PARAM_SEARCH, URL_PARAM_FILTER);
+  if (filterSelect) {
+    filterSelect.addEventListener('change', applyFilters);
   }
 
-  /**
-   * Restores filter state from URL or localStorage
-   */
-  function restoreFilterState() {
-    if (!container) return;
-
-    const searchInput = container.querySelector('.accordion-search-input');
-    const filterSelect = container.querySelector(
-      '.accordion-type-filter-select',
+  if (expandBtn) {
+    expandBtn.addEventListener('click', () =>
+      AccordionUtils.expandAll(container),
     );
-
-    if (!searchInput || !filterSelect) return;
-
-    // URL params take precedence over localStorage
-    const urlState = loadFromUrlParams();
-    const hasUrlState = urlState.search || urlState.filter !== 'all';
-
-    const state = hasUrlState ? urlState : loadPreferences() || urlState;
-
-    searchInput.value = state.search || '';
-    filterSelect.value = state.filter || 'all';
-
-    applyFilters();
   }
 
-  /**
-   * Destroys the component and cleans up resources
-   */
-  function destroy() {
-    AccordionUtils.removeAllEventListeners(eventListeners);
-    console.log('ConfigLangStatusAccordion destroyed');
-  }
-
-  /**
-   * Initializes the accordion component
-   * @returns {boolean} Success status
-   */
-  function init() {
-    container = document.querySelector('.config-lang-status-accordion');
-    if (!container) {
-      container = document.getElementById(
-        'config-lang-status-accordion-container',
-      );
-    }
-    if (!container) {
-      // Component not on this page, exit silently
-      return false;
-    }
-
-    console.log('Initializing ConfigLangStatusAccordion...');
-
-    // Load i18n strings from data attribute
-    try {
-      const i18nData = container.dataset.i18n;
-      if (i18nData) {
-        const parsedData = JSON.parse(i18nData);
-        i18nStrings = { ...i18nStrings, ...parsedData };
-        console.log('Loaded i18n strings from data attribute');
-      }
-    } catch (e) {
-      console.warn('Could not parse i18n data, using defaults:', e);
-    }
-
-    if (!parseExistingContent()) {
-      console.error('Failed to parse content');
-      return false;
-    }
-
-    renderLanguageLegend();
-
-    if (!renderAccordion()) {
-      console.error('Failed to render accordion');
-      return false;
-    }
-
-    // Set up event listeners with debouncing for search
-    const searchInput = container.querySelector('.accordion-search-input');
-    const filterSelect = container.querySelector(
-      '.accordion-type-filter-select',
+  if (collapseBtn) {
+    collapseBtn.addEventListener('click', () =>
+      AccordionUtils.collapseAll(container),
     );
-    const expandBtn = container.querySelector('.accordion-expand-all-btn');
-    const collapseBtn = container.querySelector('.accordion-collapse-all-btn');
-
-    if (searchInput) {
-      AccordionUtils.addTrackedEventListener(
-        eventListeners,
-        searchInput,
-        'input',
-        AccordionUtils.debounce(applyFilters, DEBOUNCE_DELAY),
-      );
-    }
-
-    if (filterSelect) {
-      AccordionUtils.addTrackedEventListener(
-        eventListeners,
-        filterSelect,
-        'change',
-        applyFilters,
-      );
-    }
-
-    if (expandBtn) {
-      AccordionUtils.addTrackedEventListener(
-        eventListeners,
-        expandBtn,
-        'click',
-        expandAll,
-      );
-    }
-
-    if (collapseBtn) {
-      AccordionUtils.addTrackedEventListener(
-        eventListeners,
-        collapseBtn,
-        'click',
-        collapseAll,
-      );
-    }
-
-    restoreFilterState();
-
-    AccordionUtils.addTrackedEventListener(
-      eventListeners,
-      window,
-      'beforeunload',
-      destroy,
-    );
-
-    console.log('ConfigLangStatusAccordion initialized successfully');
-    return true;
   }
 
-  // Initialize when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  restoreFilterState();
 
-  // Expose destroy function for cleanup if needed
-  window.ConfigLangStatusAccordion = {
-    destroy: destroy,
-  };
-})();
+  console.log('ConfigLangStatusAccordion initialized successfully');
+  return true;
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
