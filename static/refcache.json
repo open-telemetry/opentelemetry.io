@@ -17452,8 +17452,8 @@
     "LastSeen": "2026-03-25T10:00:51.74Z"
   },
   "https://horovits.medium.com/the-rise-of-open-standards-in-observability-highlights-from-kubecon-13694e732c97": {
-    "StatusCode": 403,
-    "LastSeen": "2026-03-25T09:53:43.40192778Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-03-25T12:47:58.715Z"
   },
   "https://hsqldb.org/": {
     "StatusCode": 206,
