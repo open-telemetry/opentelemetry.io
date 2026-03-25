@@ -1,0 +1,16 @@
+title: Exporter Creator # the name of your project
+registryType: exporter # See https://opentelemetry.io/ecosystem/registry/adding/#registry-types for all possible values and definitions
+language: collector
+tags:
+- exporter
+- dynamic
+urls:
+  repo: https://github.com/stuart23/exportercreator
+license: Apache 2.0 # or whatever your OSS license is (see https://opensource.org/licenses/), proprietary or non-OSI approved may be rejected
+description: A collector plugin that dynamically creates exporters at runtime based on observed endpoints.
+authors:
+- name: Stuart Buckingham
+  url: https://github.com/stuart23
+createdAt: '2026-03-25'
+isNative: false # set this to true only if OpenTelemetry is directly integrated into your software (no plugin, no instrumentation library)
+isFirstParty: false # set this to true if "isNative" is set to false, but the plugin / instrumentation library is from the same vendor/project as the instrumented software
