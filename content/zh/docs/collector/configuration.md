@@ -83,8 +83,7 @@ otelcol validate --config=customconfig.yaml
 >
 > 虽然通常最好将端点绑定到 `localhost`（当所有客户端都是本地客户端时），但为方便起见，我们的示例配置使用"未指定"地址 `0.0.0.0`。Collector 当前默认为 `0.0.0.0`，但不久的将来默认值将更改为 `localhost`。有关这些端点配置值选择的详细信息，请参阅[防止拒绝服务攻击][Safeguards against denial of service attacks]。
 
-[Safeguards against denial of service attacks]:
-  https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md#safeguards-against-denial-of-service-attacks
+[Safeguards against denial of service attacks]: https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/security-best-practices.md#safeguards-against-denial-of-service-attacks
 
 ```yaml
 receivers:
@@ -811,17 +810,17 @@ exporters:
 
 TLS 配置有以下可用设置：
 
-| 设置 | 描述 |
-| ---------------------- | --------------------------------------------------------- |
-| `ca_file` | 用于验证对等方证书的 CA 证书路径 |
-| `cert_file` | TLS 证书路径 |
-| `key_file` | TLS 私钥路径 |
-| `client_ca_file` | 用于验证客户端证书的 CA 证书路径 |
-| `insecure` | 禁用 TLS 验证（生产环境不推荐） |
-| `insecure_skip_verify` | 跳过服务器证书验证（不推荐） |
-| `min_version` | 最低 TLS 版本（例如 `1.2` 或 `1.3`） |
-| `max_version` | 最高 TLS 版本 |
-| `reload_interval` | 证书重新加载的间隔时间 |
+| 设置                   | 描述                                 |
+| ---------------------- | ------------------------------------ |
+| `ca_file`              | 用于验证对等方证书的 CA 证书路径     |
+| `cert_file`            | TLS 证书路径                         |
+| `key_file`             | TLS 私钥路径                         |
+| `client_ca_file`       | 用于验证客户端证书的 CA 证书路径     |
+| `insecure`             | 禁用 TLS 验证（生产环境不推荐）      |
+| `insecure_skip_verify` | 跳过服务器证书验证（不推荐）         |
+| `min_version`          | 最低 TLS 版本（例如 `1.2` 或 `1.3`） |
+| `max_version`          | 最高 TLS 版本                        |
+| `reload_interval`      | 证书重新加载的间隔时间               |
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable MD034 -->
