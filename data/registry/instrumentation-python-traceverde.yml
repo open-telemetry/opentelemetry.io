@@ -1,3 +1,4 @@
+# cSpell:ignore genai openai langchain crewai Kshitij Thakkar
 title: TraceVerde (genai-otel-instrument)
 registryType: instrumentation
 language: python
@@ -21,6 +22,7 @@ description: >-
   with automatic cost tracking for 1,050+ models and GPU metrics collection.
 authors:
   - name: Kshitij Thakkar
+    url: https://github.com/Mandark-droid
 urls:
   repo: https://github.com/Mandark-droid/genai_otel_instrument
   docs: https://mandark-droid.github.io/genai_otel_instrument/
