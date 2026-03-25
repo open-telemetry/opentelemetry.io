@@ -1,0 +1,28 @@
+title: TraceVerde (genai-otel-instrument)
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+  - genai
+  - llm
+  - openai
+  - anthropic
+  - langchain
+  - crewai
+  - cost-tracking
+  - gpu-metrics
+license: Apache 2.0
+description: >-
+  Comprehensive OpenTelemetry auto-instrumentation for LLM/GenAI applications.
+  Zero-code instrumentation for 19+ LLM providers (OpenAI, Anthropic, Google,
+  AWS Bedrock, etc.), 8 multi-agent frameworks (CrewAI, LangGraph, Google ADK,
+  AutoGen, OpenAI Agents SDK), and 20+ MCP tools (databases, caches, vector DBs)
+  with automatic cost tracking for 1,050+ models and GPU metrics collection.
+authors:
+  - name: Kshitij Thakkar
+urls:
+  repo: https://github.com/Mandark-droid/genai_otel_instrument
+  docs: https://mandark-droid.github.io/genai_otel_instrument/
+createdAt: 2025-10-11
+isFirstParty: false
