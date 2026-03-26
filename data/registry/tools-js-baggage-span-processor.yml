@@ -13,5 +13,5 @@ urls:
 createdAt: 2025-03-26
 package:
   registry: npm
-  name: @opentelemetry/baggage-span-processor
+  name: '@opentelemetry/baggage-span-processor'
 isFirstParty: false

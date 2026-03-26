@@ -13,5 +13,5 @@ urls:
 createdAt: 2025-03-26
 package:
   registry: npm
-  name: @opentelemetry/id-generator-aws-xray
+  name: '@opentelemetry/id-generator-aws-xray'
 isFirstParty: false

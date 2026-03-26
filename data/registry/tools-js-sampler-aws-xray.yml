@@ -13,5 +13,5 @@ urls:
 createdAt: 2025-03-26
 package:
   registry: npm
-  name: @opentelemetry/sampler-aws-xray
+  name: '@opentelemetry/sampler-aws-xray'
 isFirstParty: false

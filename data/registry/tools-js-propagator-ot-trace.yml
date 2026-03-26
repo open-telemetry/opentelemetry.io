@@ -13,5 +13,5 @@ urls:
 createdAt: 2025-03-26
 package:
   registry: npm
-  name: @opentelemetry/propagator-ot-trace
+  name: '@opentelemetry/propagator-ot-trace'
 isFirstParty: false

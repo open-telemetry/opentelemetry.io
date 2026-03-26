@@ -13,5 +13,5 @@ urls:
 createdAt: 2025-03-26
 package:
   registry: npm
-  name: @opentelemetry/instrumentation-browser-navigation
+  name: '@opentelemetry/instrumentation-browser-navigation'
 isFirstParty: false
