@@ -570,7 +570,7 @@ service:
 
 ## 其他信息 {#other-information}
 
-### 环境变量
+### 环境变量 {#environment-variables}
 
 Collector 配置中支持环境变量的使用和展开。例如，要使用存储在 `DB_KEY` 和 `OPERATION` 环境变量中的值，可以编写以下内容：
 
