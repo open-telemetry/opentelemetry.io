@@ -1,0 +1,17 @@
+title: .NET Remoting Instrumentation for OpenTelemetry .NET
+registryType: instrumentation
+language: dotnet
+tags:
+  - dotnet
+  - instrumentation
+license: Apache 2.0
+description: This is an [Instrumentation.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.Remoting
+createdAt: 2025-03-26
+package:
+  registry: nuget
+  name: OpenTelemetry.Instrumentation.Remoting
+isFirstParty: false
