@@ -1755,10 +1755,6 @@
     "StatusCode": 200,
     "LastSeen": "2026-03-24T17:23:11.441206267Z"
   },
-  "https://docs.bindplane.observiq.com": {
-    "StatusCode": 200,
-    "LastSeen": "2026-03-23T14:18:15.06758383Z"
-  },
   "https://docs.bmc.com/docs/helixaiops/244/enabling-bmc-helix-applications-to-collect-service-traces-from-opentelemetry-1391498839.html": {
     "StatusCode": 200,
     "LastSeen": "2026-03-25T09:56:05.920775096Z"
@@ -2013,11 +2009,11 @@
   },
   "https://docs.google.com/document/d/1WQDz1jF0yKBXe3OibXWfy3g6lor9SvjZ4xT-8uuDCiA/edit": {
     "StatusCode": 404,
-    "LastSeen": "2026-03-25T09:55:51.458581349Z"
+    "LastSeen": "2026-03-26T09:58:47.975720853Z"
   },
   "https://docs.google.com/document/d/1ix9_4TQO3o-qyeyNhcOmqAc1MTyr-wnXxxsdWgCMn9c/edit": {
     "StatusCode": 404,
-    "LastSeen": "2026-03-25T09:55:46.419119775Z"
+    "LastSeen": "2026-03-26T09:58:46.043739011Z"
   },
   "https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY": {
     "StatusCode": 200,
@@ -6923,10 +6919,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-23T14:16:42.350784812Z"
   },
-  "https://github.com/observIQ/bindplane-agent/tree/main/docs": {
-    "StatusCode": 206,
-    "LastSeen": "2026-03-10T09:52:15.958413664Z"
-  },
   "https://github.com/observIQ/bindplane-otel-collector": {
     "StatusCode": 206,
     "LastSeen": "2026-03-24T17:21:02.085262586Z"
@@ -6934,10 +6926,6 @@
   "https://github.com/observIQ/bindplane-otel-collector/tree/main/docs": {
     "StatusCode": 206,
     "LastSeen": "2026-03-24T17:21:05.648957544Z"
-  },
-  "https://github.com/observIQ/observiq-otel-collector": {
-    "StatusCode": 206,
-    "LastSeen": "2026-03-10T09:52:13.385101553Z"
   },
   "https://github.com/ocelotl": {
     "StatusCode": 206,
@@ -12434,10 +12422,6 @@
   "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-express#express-instrumentation-options": {
     "StatusCode": 206,
     "LastSeen": "2026-03-24T09:53:34.985896654Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-fastify": {
-    "StatusCode": 404,
-    "LastSeen": "2026-03-25T09:59:54.983416171Z"
   },
   "https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/instrumentation-fs": {
     "StatusCode": 206,
@@ -19022,10 +19006,6 @@
   "https://npmjs.com/package/@opentelemetry/instrumentation-express": {
     "StatusCode": 200,
     "LastSeen": "2026-03-10T09:59:54.101Z"
-  },
-  "https://npmjs.com/package/@opentelemetry/instrumentation-fastify": {
-    "StatusCode": 200,
-    "LastSeen": "2026-03-10T09:59:56.077Z"
   },
   "https://npmjs.com/package/@opentelemetry/instrumentation-fetch": {
     "StatusCode": 200,
