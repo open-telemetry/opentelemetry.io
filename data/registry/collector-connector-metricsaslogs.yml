@@ -1,0 +1,18 @@
+title: Metrics as Logs Connector
+registryType: connector
+language: collector
+tags:
+  - go
+  - connector
+  - collector
+license: Apache 2.0
+description: This connector converts OpenTelemetry metrics into logs, creating one log entry per metric data point. Each metric data point is transformed into a structured log record with configurable JSON body...
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/metricsaslogsconnector
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/connector/metricsaslogsconnector
+  version: v0.147.0

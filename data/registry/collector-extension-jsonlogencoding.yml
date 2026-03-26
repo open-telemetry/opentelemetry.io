@@ -1,0 +1,18 @@
+title: JSON Log Encoding Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+license: Apache 2.0
+description: The `body` mode of the JSON encoding extension is used to marshal or unmarshal the JSON log body, ignoring other log fields.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/jsonlogencodingextension
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding/jsonlogencodingextension
+  version: v0.147.0

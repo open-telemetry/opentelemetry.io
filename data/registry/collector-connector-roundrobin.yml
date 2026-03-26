@@ -1,0 +1,18 @@
+title: Round-Robin Connector
+registryType: connector
+language: collector
+tags:
+  - go
+  - connector
+  - collector
+license: Apache 2.0
+description: The `roundrobin` connector can fork pipelines of the same type and equally split the load between them.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/roundrobinconnector
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/connector/roundrobinconnector
+  version: v0.147.0

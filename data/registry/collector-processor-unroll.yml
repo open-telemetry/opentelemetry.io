@@ -1,0 +1,18 @@
+title: Unroll Processor
+registryType: processor
+language: collector
+tags:
+  - go
+  - processor
+  - collector
+license: Apache 2.0
+description: The Unroll Processor takes log records with slice bodies and expands each element of the slice into its own log record.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/unrollprocessor
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/unrollprocessor
+  version: v0.147.0

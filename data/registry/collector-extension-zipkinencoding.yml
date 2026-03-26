@@ -1,0 +1,18 @@
+title: Zipkin Encoding Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+license: Apache 2.0
+description: This extension supports marshaling and unmarshalling Zipkin data representing traces.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/zipkinencodingextension
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding/zipkinencodingextension
+  version: v0.147.0

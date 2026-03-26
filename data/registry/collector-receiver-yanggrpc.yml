@@ -1,0 +1,18 @@
+title: YANG gRPC Receiver
+registryType: receiver
+language: collector
+tags:
+  - go
+  - receiver
+  - collector
+license: Apache 2.0
+description: The YANG/gRPC receiver collects metrics from network devices using the gNMI (gRPC Network Management Interface) protocol.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/yanggrpcreceiver
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/receiver/yanggrpcreceiver
+  version: v0.147.0

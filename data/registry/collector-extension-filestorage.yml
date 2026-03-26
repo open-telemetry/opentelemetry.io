@@ -1,0 +1,18 @@
+title: File Storage Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+license: Apache 2.0
+description: The File Storage Extension can persist state to the local file system.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/storage/filestorage
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/storage/filestorage
+  version: v0.147.0

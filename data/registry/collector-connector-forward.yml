@@ -1,0 +1,18 @@
+title: Forward Connector
+registryType: connector
+language: collector
+tags:
+  - go
+  - connector
+  - collector
+license: Apache 2.0
+description: The `forward` connector can merge or fork pipelines of the same type.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector/tree/main/connector/forwardconnector
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: go.opentelemetry.io/collector/connector/forwardconnector
+  version: v0.147.0
