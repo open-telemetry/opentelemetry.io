@@ -14,4 +14,5 @@ createdAt: 2025-03-26
 package:
   registry: npm
   name: '@opentelemetry/sampler-aws-xray'
+  version: 0.2.0
 isFirstParty: false

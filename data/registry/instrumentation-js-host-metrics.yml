@@ -16,4 +16,5 @@ createdAt: 2025-03-26
 package:
   registry: npm
   name: '@opentelemetry/host-metrics'
+  version: 0.38.3
 isFirstParty: false

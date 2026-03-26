@@ -17,4 +17,5 @@ createdAt: 2025-03-26
 package:
   registry: npm
   name: '@opentelemetry/propagator-aws-xray'
+  version: 2.2.0
 isFirstParty: false

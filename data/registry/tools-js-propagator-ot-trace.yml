@@ -15,4 +15,5 @@ createdAt: 2025-03-26
 package:
   registry: npm
   name: '@opentelemetry/propagator-ot-trace'
+  version: 0.29.0
 isFirstParty: false
