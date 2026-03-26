@@ -1,0 +1,14 @@
+title: OpenTelemetry AWS SDK auto-instrumentation
+registryType: instrumentation
+language: php
+tags:
+  - php
+  - instrumentation
+license: Apache 2.0
+description: This is a read-only subtree split of https://github.com/open-telemetry/opentelemetry-php-contrib.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/Instrumentation/AwsSdk
+createdAt: 2025-03-26
+isFirstParty: false
