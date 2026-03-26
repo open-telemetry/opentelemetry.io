@@ -1,6 +1,6 @@
 ---
-title: OpenTelemetry Profiling Enters Public Alpha
-linkTitle: Profiling Public Alpha
+title: OpenTelemetry Profiles Enters Public Alpha
+linkTitle: Profiles Public Alpha
 date: 2026-03-26
 author: >-
   [Alexey Alexandrov](https://github.com/aalexand) (Google) [Ivo
