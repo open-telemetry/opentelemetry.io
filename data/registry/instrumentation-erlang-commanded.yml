@@ -1,0 +1,17 @@
+title: OpentelemetryCommanded
+registryType: instrumentation
+language: erlang
+tags:
+  - erlang
+  - instrumentation
+license: Apache 2.0
+description: Telemetry handler that creates OpenTelemetry spans from Commanded commands and events.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_commanded
+createdAt: 2025-03-26
+package:
+  registry: hex
+  name: opentelemetry_commanded
+isFirstParty: false
