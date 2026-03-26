@@ -56,8 +56,8 @@
   distributions:
     - contrib
   stability:
-    logs: development
-    metrics: development
+    logs: alpha
+    metrics: alpha
 - name: awss3receiver
   repo: contrib
   distributions:
@@ -87,6 +87,12 @@
     logs: beta
     metrics: beta
     traces: beta
+- name: azurefunctionsreceiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
 - name: azuremonitorreceiver
   repo: contrib
   distributions:
@@ -322,13 +328,6 @@
     - k8s
   stability:
     logs: alpha
-- name: k8slogreceiver
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    logs: unmaintained
-  unmaintained: true
 - name: k8sobjectsreceiver
   repo: contrib
   distributions:
@@ -505,7 +504,7 @@
   distributions:
     - contrib
   stability:
-    profiles: development
+    profiles: alpha
 - name: prometheusreceiver
   repo: contrib
   distributions:

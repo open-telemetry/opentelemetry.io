@@ -329,12 +329,6 @@
     logs: alpha
     metrics: alpha
     traces: alpha
-- name: sapmexporter
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    traces: deprecated
 - name: sematextexporter
   repo: contrib
   distributions:

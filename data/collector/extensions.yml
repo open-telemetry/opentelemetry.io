@@ -53,7 +53,7 @@
   distributions:
     - contrib
   stability:
-    extension: development
+    extension: alpha
   subtype: encoding
 - name: basicauthextension
   repo: contrib

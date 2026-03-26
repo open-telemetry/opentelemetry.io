@@ -35,12 +35,6 @@
     - k8s
   stability:
     metrics: beta
-- name: datadogsemanticsprocessor
-  repo: contrib
-  distributions:
-    - contrib
-  stability:
-    traces: deprecated
 - name: deltatocumulativeprocessor
   repo: contrib
   distributions:
