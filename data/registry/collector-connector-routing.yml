@@ -6,7 +6,10 @@ tags:
   - connector
   - collector
 license: Apache 2.0
-description: Routes logs, metrics or traces based on resource attributes to specific pipelines using OpenTelemetry Transformation Language (OTTL) statements as routing conditions.
+description:
+  Routes logs, metrics or traces based on resource attributes to specific
+  pipelines using OpenTelemetry Transformation Language (OTTL) statements as
+  routing conditions.
 authors:
   - name: OpenTelemetry Authors
 urls:

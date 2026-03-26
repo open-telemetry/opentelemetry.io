@@ -6,7 +6,9 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: The ecsobserver uses the ECS/EC2 API to discover Prometheus scrape targets from all running tasks.
+description:
+  The ecsobserver uses the ECS/EC2 API to discover Prometheus scrape targets
+  from all running tasks.
 authors:
   - name: OpenTelemetry Authors
 urls:

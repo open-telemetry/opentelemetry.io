@@ -6,7 +6,9 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: This extension enables OpenTelemetry components to run in HA mode across a Kubernetes cluster using leader election.
+description:
+  This extension enables OpenTelemetry components to run in HA mode across a
+  Kubernetes cluster using leader election.
 authors:
   - name: OpenTelemetry Authors
 urls:

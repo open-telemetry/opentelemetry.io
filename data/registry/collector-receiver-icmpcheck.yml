@@ -6,7 +6,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The ICMP Check Receiver can be used for synthetic checks against network endpoints using ICMP Echo requests.
+description:
+  The ICMP Check Receiver can be used for synthetic checks against network
+  endpoints using ICMP Echo requests.
 authors:
   - name: OpenTelemetry Authors
 urls:

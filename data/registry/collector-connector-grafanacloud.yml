@@ -6,7 +6,9 @@ tags:
   - connector
   - collector
 license: Apache 2.0
-description: The Grafana Cloud Connector analyzes telemetry in pipelines to generate usage metrics for Grafana Cloud products.
+description:
+  The Grafana Cloud Connector analyzes telemetry in pipelines to generate usage
+  metrics for Grafana Cloud products.
 authors:
   - name: OpenTelemetry Authors
 urls:

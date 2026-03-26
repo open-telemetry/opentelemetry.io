@@ -6,7 +6,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The macOS Unified Logging Receiver collects logs from macOS systems using the native log command.
+description:
+  The macOS Unified Logging Receiver collects logs from macOS systems using the
+  native log command.
 authors:
   - name: OpenTelemetry Authors
 urls:

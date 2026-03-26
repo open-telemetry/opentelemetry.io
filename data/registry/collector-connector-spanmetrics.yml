@@ -6,7 +6,10 @@ tags:
   - connector
   - collector
 license: Apache 2.0
-description: The default duration metrics unit will change from `ms` to `s` to adhere to the OpenTelemetry semantic conventions and a feature gate `connector.spanmetrics.useSecondAsDefaultMetricsUnit` is also a...
+description:
+  The default duration metrics unit will change from `ms` to `s` to adhere to
+  the OpenTelemetry semantic conventions and a feature gate
+  `connector.spanmetrics.useSecondAsDefaultMetricsUnit` is also a...
 authors:
   - name: OpenTelemetry Authors
 urls:

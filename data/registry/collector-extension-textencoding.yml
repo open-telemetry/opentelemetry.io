@@ -6,7 +6,9 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: The `text_encoding` extension is an encoding extension that can unmarshal and marshal logs.
+description:
+  The `text_encoding` extension is an encoding extension that can unmarshal and
+  marshal logs.
 authors:
   - name: OpenTelemetry Authors
 urls:

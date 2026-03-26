@@ -6,7 +6,10 @@ tags:
   - connector
   - collector
 license: Apache 2.0
-description: This connector converts OpenTelemetry metrics into logs, creating one log entry per metric data point. Each metric data point is transformed into a structured log record with configurable JSON body...
+description:
+  This connector converts OpenTelemetry metrics into logs, creating one log
+  entry per metric data point. Each metric data point is transformed into a
+  structured log record with configurable JSON body...
 authors:
   - name: OpenTelemetry Authors
 urls:

@@ -6,7 +6,9 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: This extension unmarshals and marshals data encoded according to the [OTLP specification](https://opentelemetry.io/docs/specs/otlp/).
+description:
+  This extension unmarshals and marshals data encoded according to the [OTLP
+  specification](https://opentelemetry.io/docs/specs/otlp/).
 authors:
   - name: OpenTelemetry Authors
 urls:

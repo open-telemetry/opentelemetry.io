@@ -5,7 +5,9 @@ tags:
   - ruby
   - instrumentation
 license: Apache 2.0
-description: The FactoryBot instrumentation is a community-maintained instrumentation for the FactoryBot gem.
+description:
+  The FactoryBot instrumentation is a community-maintained instrumentation for
+  the FactoryBot gem.
 authors:
   - name: OpenTelemetry Authors
 urls:

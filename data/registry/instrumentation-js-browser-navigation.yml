@@ -5,7 +5,9 @@ tags:
   - js
   - instrumentation
 license: Apache 2.0
-description: This module provides automatic instrumentation for browser navigation in Web applications. It emits log records via the Logs API to represent:.
+description:
+  This module provides automatic instrumentation for browser navigation in Web
+  applications. It emits log records via the Logs API to represent:.
 authors:
   - name: OpenTelemetry Authors
 urls:

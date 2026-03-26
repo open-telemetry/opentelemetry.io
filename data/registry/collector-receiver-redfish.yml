@@ -6,7 +6,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: This receiver fetches metrics for a server running a [Redfish](https://en.wikipedia.org/wiki/Redfish_(specification))
+description:
+  This receiver fetches metrics for a server running a
+  [Redfish](https://en.wikipedia.org/wiki/Redfish_(specification))
 authors:
   - name: OpenTelemetry Authors
 urls:

@@ -6,7 +6,9 @@ tags:
   - connector
   - collector
 license: Apache 2.0
-description: The service graphs connector builds a map representing the interrelationships between various services in a system.
+description:
+  The service graphs connector builds a map representing the interrelationships
+  between various services in a system.
 authors:
   - name: OpenTelemetry Authors
 urls:

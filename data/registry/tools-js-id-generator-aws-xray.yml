@@ -5,7 +5,9 @@ tags:
   - js
   - utilities
 license: Apache 2.0
-description: The OpenTelemetry IdGenerator for AWS X-Ray generates trace IDs with its first four bytes set to the start time of the.
+description:
+  The OpenTelemetry IdGenerator for AWS X-Ray generates trace IDs with its first
+  four bytes set to the start time of the.
 authors:
   - name: OpenTelemetry Authors
 urls:

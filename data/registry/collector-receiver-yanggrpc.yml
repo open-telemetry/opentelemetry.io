@@ -6,7 +6,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The YANG/gRPC receiver collects metrics from network devices using the gNMI (gRPC Network Management Interface) protocol.
+description:
+  The YANG/gRPC receiver collects metrics from network devices using the gNMI
+  (gRPC Network Management Interface) protocol.
 authors:
   - name: OpenTelemetry Authors
 urls:

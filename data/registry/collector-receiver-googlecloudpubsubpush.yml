@@ -6,7 +6,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The googlecloudpubsubpush receiver ingests OpenTelemetry data through Google Cloud Pub/Sub push subscriptions.
+description:
+  The googlecloudpubsubpush receiver ingests OpenTelemetry data through Google
+  Cloud Pub/Sub push subscriptions.
 authors:
   - name: OpenTelemetry Authors
 urls:

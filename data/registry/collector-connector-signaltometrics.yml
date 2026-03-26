@@ -6,7 +6,9 @@ tags:
   - connector
   - collector
 license: Apache 2.0
-description: Signal to metrics connector produces metrics from all signal types (traces, logs, or metrics).
+description:
+  Signal to metrics connector produces metrics from all signal types (traces,
+  logs, or metrics).
 authors:
   - name: OpenTelemetry Authors
 urls:

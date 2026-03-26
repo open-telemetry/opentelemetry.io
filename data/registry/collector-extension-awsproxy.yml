@@ -6,7 +6,9 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: The AWS proxy extension accepts requests and forwards them to AWS X-Ray and other AWS services.
+description:
+  The AWS proxy extension accepts requests and forwards them to AWS X-Ray and
+  other AWS services.
 authors:
   - name: OpenTelemetry Authors
 urls:

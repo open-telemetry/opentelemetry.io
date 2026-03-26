@@ -6,7 +6,8 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description: The Datadogsemantics Collector Processor for the OpenTelemetry Collector.
+description:
+  The Datadogsemantics Collector Processor for the OpenTelemetry Collector.
 authors:
   - name: OpenTelemetry Authors
 urls:

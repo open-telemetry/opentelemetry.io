@@ -6,7 +6,9 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: The Docker observer extension is a Receiver Creator-compatible watch observer that detects and reports container endpoints.
+description:
+  The Docker observer extension is a Receiver Creator-compatible watch observer
+  that detects and reports container endpoints.
 authors:
   - name: OpenTelemetry Authors
 urls:

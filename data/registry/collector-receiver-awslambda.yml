@@ -6,7 +6,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: A receiver for collecting logs & metrics from AWS services via Lambda invocations.
+description:
+  A receiver for collecting logs & metrics from AWS services via Lambda
+  invocations.
 authors:
   - name: OpenTelemetry Authors
 urls:

@@ -6,7 +6,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The VCR (Verbatim Capture and Replay) receiver enables full-fidelity capture and replay of telemetry data.
+description:
+  The VCR (Verbatim Capture and Replay) receiver enables full-fidelity capture
+  and replay of telemetry data.
 authors:
   - name: OpenTelemetry Authors
 urls:

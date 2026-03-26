@@ -5,7 +5,9 @@ tags:
   - ruby
   - instrumentation
 license: Apache 2.0
-description: The Anthropic instrumentation is a community-maintained instrumentation for the [Anthropic][anthropic-home] gem.
+description:
+  The Anthropic instrumentation is a community-maintained instrumentation for
+  the [Anthropic][anthropic-home] gem.
 authors:
   - name: OpenTelemetry Authors
 urls:

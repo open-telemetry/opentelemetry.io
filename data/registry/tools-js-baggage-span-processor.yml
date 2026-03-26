@@ -5,7 +5,9 @@ tags:
   - js
   - utilities
 license: Apache 2.0
-description: The BaggageSpanProcessor reads entries stored in Baggage from the parent context and adds the baggage entries' keys and.
+description:
+  The BaggageSpanProcessor reads entries stored in Baggage from the parent
+  context and adds the baggage entries' keys and.
 authors:
   - name: OpenTelemetry Authors
 urls:

@@ -6,7 +6,9 @@ tags:
   - receiver
   - collector
 license: Apache 2.0
-description: The Cisco OS Receiver is a modular receiver that collects metrics from Cisco network devices via SSH connections.
+description:
+  The Cisco OS Receiver is a modular receiver that collects metrics from Cisco
+  network devices via SSH connections.
 authors:
   - name: OpenTelemetry Authors
 urls:

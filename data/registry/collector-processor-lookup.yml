@@ -6,7 +6,9 @@ tags:
   - processor
   - collector
 license: Apache 2.0
-description: The lookup processor enriches telemetry signals by performing external lookups to retrieve additional data.
+description:
+  The lookup processor enriches telemetry signals by performing external lookups
+  to retrieve additional data.
 authors:
   - name: OpenTelemetry Authors
 urls:

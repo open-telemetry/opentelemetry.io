@@ -6,7 +6,8 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: This extension unmarshalls logs encoded in formats produced by AWS services.
+description:
+  This extension unmarshalls logs encoded in formats produced by AWS services.
 authors:
   - name: OpenTelemetry Authors
 urls:

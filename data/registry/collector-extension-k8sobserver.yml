@@ -6,7 +6,9 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: The k8s_observer is a Receiver Creator-compatible watch observer that detects and reports Kubernetes pod and port endpoints.
+description:
+  The k8s_observer is a Receiver Creator-compatible watch observer that detects
+  and reports Kubernetes pod and port endpoints.
 authors:
   - name: OpenTelemetry Authors
 urls:

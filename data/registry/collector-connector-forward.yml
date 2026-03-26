@@ -6,7 +6,8 @@ tags:
   - connector
   - collector
 license: Apache 2.0
-description: The `forward` connector can merge or fork pipelines of the same type.
+description:
+  The `forward` connector can merge or fork pipelines of the same type.
 authors:
   - name: OpenTelemetry Authors
 urls:

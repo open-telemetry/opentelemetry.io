@@ -6,7 +6,8 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: The File Storage Extension can persist state to the local file system.
+description:
+  The File Storage Extension can persist state to the local file system.
 authors:
   - name: OpenTelemetry Authors
 urls:

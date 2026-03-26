@@ -6,7 +6,8 @@ tags:
   - exporter
   - collector
 license: Apache 2.0
-description: This exporter writes received OpenTelemetry data to a cloud storage bucket.
+description:
+  This exporter writes received OpenTelemetry data to a cloud storage bucket.
 authors:
   - name: OpenTelemetry Authors
 urls:

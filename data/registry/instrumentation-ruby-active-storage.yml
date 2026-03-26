@@ -5,7 +5,10 @@ tags:
   - ruby
   - instrumentation
 license: Apache 2.0
-description: The ActiveStorage instrumentation is a community-maintained instrumentation for the ActiveStorage portion of the [Ruby on Rails][rails-home] web-application framework.
+description:
+  The ActiveStorage instrumentation is a community-maintained instrumentation
+  for the ActiveStorage portion of the [Ruby on Rails][rails-home]
+  web-application framework.
 authors:
   - name: OpenTelemetry Authors
 urls:

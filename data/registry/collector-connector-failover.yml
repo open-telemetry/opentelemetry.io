@@ -6,7 +6,9 @@ tags:
   - connector
   - collector
 license: Apache 2.0
-description: Allows for health based routing between trace, metric, and log pipelines depending on the health of target downstream exporters.
+description:
+  Allows for health based routing between trace, metric, and log pipelines
+  depending on the health of target downstream exporters.
 authors:
   - name: OpenTelemetry Authors
 urls:

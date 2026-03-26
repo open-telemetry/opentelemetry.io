@@ -6,7 +6,9 @@ tags:
   - connector
   - collector
 license: Apache 2.0
-description: Allows to extract otlpjson data from incoming Logs and specifically the `Body` field.
+description:
+  Allows to extract otlpjson data from incoming Logs and specifically the `Body`
+  field.
 authors:
   - name: OpenTelemetry Authors
 urls:

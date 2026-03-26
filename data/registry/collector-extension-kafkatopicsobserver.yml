@@ -6,7 +6,9 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: The Kafka topics observer extension is a Receiver Creator-compatible watch observer that detects and reports Kafka topic endpoints.
+description:
+  The Kafka topics observer extension is a Receiver Creator-compatible watch
+  observer that detects and reports Kafka topic endpoints.
 authors:
   - name: OpenTelemetry Authors
 urls:

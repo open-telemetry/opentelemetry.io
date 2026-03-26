@@ -6,7 +6,10 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: This extension is designed for unmarshaling logs/traces/metrics encoded in specific format produced by [Azure Diagnostic Settings Export](https://learn.microsoft.com/en-us/azure/azure-monitor/essen...
+description:
+  This extension is designed for unmarshaling logs/traces/metrics encoded in
+  specific format produced by [Azure Diagnostic Settings
+  Export](https://learn.microsoft.com/en-us/azure/azure-monitor/essen...
 authors:
   - name: OpenTelemetry Authors
 urls:

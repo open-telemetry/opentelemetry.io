@@ -5,7 +5,9 @@ tags:
   - js
   - instrumentation
 license: Apache 2.0
-description: This module provides automatic collection of Host Metrics which includes metrics for:.
+description:
+  This module provides automatic collection of Host Metrics which includes
+  metrics for:.
 authors:
   - name: OpenTelemetry Authors
 urls:

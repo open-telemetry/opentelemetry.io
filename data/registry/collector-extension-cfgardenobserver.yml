@@ -6,7 +6,10 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: Cloud Foundry (CF) is a platform as a service (PaaS) which has implemented their own container technology. The component in charge of providing a local API in each node (also known as 'diego-cell')...
+description:
+  Cloud Foundry (CF) is a platform as a service (PaaS) which has implemented
+  their own container technology. The component in charge of providing a local
+  API in each node (also known as 'diego-cell')...
 authors:
   - name: OpenTelemetry Authors
 urls:

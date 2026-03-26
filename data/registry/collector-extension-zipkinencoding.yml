@@ -6,7 +6,9 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: This extension supports marshaling and unmarshalling Zipkin data representing traces.
+description:
+  This extension supports marshaling and unmarshalling Zipkin data representing
+  traces.
 authors:
   - name: OpenTelemetry Authors
 urls:

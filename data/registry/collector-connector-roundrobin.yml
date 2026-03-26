@@ -6,7 +6,9 @@ tags:
   - connector
   - collector
 license: Apache 2.0
-description: The `roundrobin` connector can fork pipelines of the same type and equally split the load between them.
+description:
+  The `roundrobin` connector can fork pipelines of the same type and equally
+  split the load between them.
 authors:
   - name: OpenTelemetry Authors
 urls:

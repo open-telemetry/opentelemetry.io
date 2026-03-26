@@ -5,7 +5,9 @@ tags:
   - php
   - instrumentation
 license: Apache 2.0
-description: This is a read-only subtree split of https://github.com/open-telemetry/opentelemetry-php-contrib.
+description:
+  This is a read-only subtree split of
+  https://github.com/open-telemetry/opentelemetry-php-contrib.
 authors:
   - name: OpenTelemetry Authors
 urls:

@@ -6,7 +6,8 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: The `host_observer` looks at the current host for listening network endpoints.
+description:
+  The `host_observer` looks at the current host for listening network endpoints.
 authors:
   - name: OpenTelemetry Authors
 urls:

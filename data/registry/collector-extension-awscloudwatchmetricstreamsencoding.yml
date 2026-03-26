@@ -6,7 +6,10 @@ tags:
   - extension
   - collector
 license: Apache 2.0
-description: This extension unmarshalls metrics encoded in formats produced by [Amazon CloudWatch Metric Streams](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Streams.html).
+description:
+  This extension unmarshalls metrics encoded in formats produced by [Amazon
+  CloudWatch Metric
+  Streams](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Streams.html).
 authors:
   - name: OpenTelemetry Authors
 urls:
