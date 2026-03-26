@@ -64,6 +64,12 @@
   contact: hello@betterstack.com
   oss: false
   commercial: true
+- name: Bindplane
+  nativeOTLP: true
+  url: https://docs.bindplane.com
+  contact: hello@bindplane.com
+  oss: true
+  commercial: true
 - name: BugSnag
   nativeOTLP: true
   url: https://docs.bugsnag.com/performance/distributed-tracing
@@ -317,12 +323,6 @@
   url: https://otelic.com/en/open-telemetry-sample-instrumentation/nodejs-simple
   contact: support@otelic.com
   oss: false
-  commercial: true
-- name: observIQ
-  nativeOTLP: true
-  url: https://docs.bindplane.observiq.com
-  contact:
-  oss: true
   commercial: true
 - name: Odigos
   nativeOTLP: true
