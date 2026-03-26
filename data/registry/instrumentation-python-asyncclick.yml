@@ -1,0 +1,14 @@
+title: AsyncClick Instrumentation
+registryType: instrumentation
+language: python
+tags:
+  - python
+  - instrumentation
+license: Apache 2.0
+description: OpenTelemetry asyncclick Instrumentation.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-asyncclick
+createdAt: 2025-03-26
+isFirstParty: false
