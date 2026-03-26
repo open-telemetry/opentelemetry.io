@@ -1,3 +1,4 @@
+# cSpell:ignore sobserver
 title: Kubernetes Observer Extension
 registryType: extension
 language: collector

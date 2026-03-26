@@ -1,3 +1,4 @@
+# cSpell:ignore Sapm sapmexporter
 title: Sapm Collector Exporter
 registryType: exporter
 language: collector

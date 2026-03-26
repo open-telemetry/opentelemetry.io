@@ -1,3 +1,4 @@
+# cSpell:ignore spanmetrics spanmetricsconnector
 title: Span Metrics Connector
 registryType: connector
 language: collector

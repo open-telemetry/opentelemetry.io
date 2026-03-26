@@ -1,3 +1,4 @@
+# cSpell:ignore icmpcheckreceiver
 title: ICMP Check Receiver
 registryType: receiver
 language: collector

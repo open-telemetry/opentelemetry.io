@@ -1,3 +1,4 @@
+# cSpell:ignore ecsobserver
 title: Amazon Elastic Container Service Observer
 registryType: extension
 language: collector

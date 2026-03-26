@@ -1,3 +1,4 @@
+# cSpell:ignore otlpjson otlpjsonconnector
 title: OTLP JSON Connector
 registryType: connector
 language: collector

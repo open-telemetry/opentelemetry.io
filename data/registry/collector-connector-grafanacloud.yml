@@ -1,3 +1,4 @@
+# cSpell:ignore grafanacloudconnector
 title: Grafana Cloud Connector
 registryType: connector
 language: collector

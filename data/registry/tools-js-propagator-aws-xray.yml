@@ -1,3 +1,4 @@
+# cSpell:ignore Amzn
 title: OpenTelemetry Propagator AWS X-Ray
 registryType: utilities
 language: js

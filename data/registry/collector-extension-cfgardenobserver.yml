@@ -1,3 +1,4 @@
+# cSpell:ignore cfgardenobserver
 title: Cloud Foundry Garden Observer Extension
 registryType: extension
 language: collector

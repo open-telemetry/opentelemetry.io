@@ -1,3 +1,4 @@
+# cSpell:ignore dockerobserver
 title: Docker Observer Extension
 registryType: extension
 language: collector

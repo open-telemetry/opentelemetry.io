@@ -1,3 +1,4 @@
+# cSpell:ignore yanggrpcreceiver
 title: YANG gRPC Receiver
 registryType: receiver
 language: collector

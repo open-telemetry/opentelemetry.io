@@ -1,3 +1,4 @@
+# cSpell:ignore azureencodingextension
 title: Azure Logs/Traces/Metrics Encoding Extension
 registryType: extension
 language: collector

@@ -1,3 +1,4 @@
+# cSpell:ignore sleaderelector
 title: Kubernetes Leader Elector Extension
 registryType: extension
 language: collector

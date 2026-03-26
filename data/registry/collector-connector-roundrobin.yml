@@ -1,3 +1,4 @@
+# cSpell:ignore roundrobin roundrobinconnector
 title: Round-Robin Connector
 registryType: connector
 language: collector

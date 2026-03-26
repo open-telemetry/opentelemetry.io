@@ -1,3 +1,4 @@
+# cSpell:ignore kafkatopicsobserver
 title: Kafka Topics Observer Extension
 registryType: extension
 language: collector

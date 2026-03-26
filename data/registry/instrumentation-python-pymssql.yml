@@ -1,3 +1,4 @@
+# cSpell:ignore pymssql
 title: pymssql Instrumentation
 registryType: instrumentation
 language: python

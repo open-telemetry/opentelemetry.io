@@ -1,3 +1,4 @@
+# cSpell:ignore signaltometricsconnector
 title: Signal to Metrics Connector
 registryType: connector
 language: collector

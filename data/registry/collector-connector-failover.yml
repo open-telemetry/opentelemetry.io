@@ -1,3 +1,4 @@
+# cSpell:ignore failoverconnector
 title: Failover Connector
 registryType: connector
 language: collector

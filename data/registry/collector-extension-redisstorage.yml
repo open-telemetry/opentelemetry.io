@@ -1,3 +1,4 @@
+# cSpell:ignore redisstorageextension
 title: Redis Storage Extension
 registryType: extension
 language: collector

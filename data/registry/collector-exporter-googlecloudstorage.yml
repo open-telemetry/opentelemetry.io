@@ -1,3 +1,4 @@
+# cSpell:ignore googlecloudstorageexporter
 title: Google Cloud Storage Exporter
 registryType: exporter
 language: collector
