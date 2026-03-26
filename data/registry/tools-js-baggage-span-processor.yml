@@ -1,0 +1,17 @@
+title: OpenTelemetry Baggage Span Processor for Node.js
+registryType: utilities
+language: js
+tags:
+  - js
+  - utilities
+license: Apache 2.0
+description: The BaggageSpanProcessor reads entries stored in Baggage from the parent context and adds the baggage entries' keys and.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/baggage-span-processor
+createdAt: 2025-03-26
+package:
+  registry: npm
+  name: @opentelemetry/baggage-span-processor
+isFirstParty: false

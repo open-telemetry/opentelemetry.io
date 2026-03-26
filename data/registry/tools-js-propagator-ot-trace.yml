@@ -1,0 +1,17 @@
+title: OpenTelemetry OTTracePropagator
+registryType: utilities
+language: js
+tags:
+  - js
+  - utilities
+license: Apache 2.0
+description: The OT trace propagation format expects trace ids to be 64 bits. In order to.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/propagator-ot-trace
+createdAt: 2025-03-26
+package:
+  registry: npm
+  name: @opentelemetry/propagator-ot-trace
+isFirstParty: false
