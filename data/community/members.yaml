@@ -2281,6 +2281,11 @@ approvers:
       - javascript-triagers
     html_url: https://github.com/raphael-theriault-swi
     avatar_url: https://avatars.githubusercontent.com/u/113933910?v=4
+  - name: RaphaelManke
+    teams:
+      - lambda-extension-approvers
+    html_url: https://github.com/RaphaelManke
+    avatar_url: https://avatars.githubusercontent.com/u/15867688?v=4
   - name: RassK
     teams:
       - dotnet-instrumentation-approvers
