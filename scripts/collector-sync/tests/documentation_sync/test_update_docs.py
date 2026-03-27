@@ -54,6 +54,7 @@ class TestMergeInventories:
                     {
                         "name": "memorylimiterextension",
                         "metadata": {
+                            "display_name": "Memory Limiter Extension",
                             "status": {
                                 "distributions": [],
                                 "stability": {"development": ["extension"]},
@@ -85,6 +86,7 @@ class TestMergeInventories:
         extensions = result["components"]["extension"]
         assert len(extensions) == 2
         assert any(e["name"] == "memorylimiterextension" for e in extensions)
+        assert any(e["metadata"].get("display_name") == "Memory Limiter Extension" for e in extensions)
         assert any(e["name"] == "ackextension" for e in extensions)
 
     def test_merge_overlapping_components(self) -> None:
