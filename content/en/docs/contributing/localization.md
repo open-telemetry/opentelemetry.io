@@ -66,18 +66,18 @@ guidance offered in this section.
 #### Use of AI tools {#ai-tools}
 
 If you use generative AI tools (such as ChatGPT, Gemini, or similar) to assist
-with translations, you must follow the OpenTelemetry
-[Generative AI Contribution Policy][genai-policy] and the Linux Foundation
-[Generative AI Policy][lf-ai-policy]. In particular:
+with translations, you must follow the OpenTelemetry [Generative AI Contribution
+Policy][genai-policy] and the Linux Foundation [Generative AI
+Policy][lf-ai-policy]. In particular:
 
-- **Disclose** that you used AI by checking the appropriate box in the
-  [pull request template][].
+- **Disclose** that you used AI by checking the appropriate box in the [pull
+  request template][].
 - **Review and validate** all AI-generated translations for accuracy. You are
   responsible for the content you submit.
 - **Do not submit** AI-generated translations that you cannot review and verify
-  yourself (e.g., submissions in languages you are not proficient in). This creates
-  a significant review bottleneck, and your PR may be closed to protect maintainer
-  bandwidth.
+  yourself (e.g., submissions in languages you are not proficient in). This
+  creates a significant review bottleneck, and your PR may be closed to protect
+  maintainer bandwidth.
 
 [genai-policy]:
   https://github.com/open-telemetry/community/blob/main/policies/genai.md
