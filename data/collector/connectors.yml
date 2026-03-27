@@ -3,6 +3,7 @@
 
 ---
 - name: countconnector
+  display_name: Count Connector
   repo: contrib
   distributions:
     - contrib
@@ -13,6 +14,7 @@
     profiles_to_metrics: alpha
     traces_to_metrics: alpha
 - name: datadogconnector
+  display_name: Datadog Connector
   repo: contrib
   distributions:
     - contrib
@@ -20,6 +22,7 @@
     traces_to_metrics: beta
     traces_to_traces: beta
 - name: exceptionsconnector
+  display_name: Exceptions Connector
   repo: contrib
   distributions:
     - contrib
@@ -28,6 +31,7 @@
     traces_to_logs: alpha
     traces_to_metrics: alpha
 - name: failoverconnector
+  display_name: Failover Connector
   repo: contrib
   distributions:
     - contrib
@@ -37,6 +41,7 @@
     metrics_to_metrics: alpha
     traces_to_traces: alpha
 - name: forwardconnector
+  display_name: Forward Connector
   repo: core
   distributions:
     - contrib
@@ -48,18 +53,21 @@
     traces_to_traces: beta
     profiles_to_profiles: development
 - name: grafanacloudconnector
+  display_name: Grafana Cloud Connector
   repo: contrib
   distributions:
     - contrib
   stability:
     traces_to_metrics: alpha
 - name: metricsaslogsconnector
+  display_name: Metrics as Logs Connector
   repo: contrib
   distributions:
     - contrib
   stability:
     metrics_to_logs: development
 - name: otlpjsonconnector
+  display_name: OTLP JSON Connector
   repo: contrib
   distributions:
     - contrib
@@ -69,6 +77,7 @@
     logs_to_metrics: alpha
     logs_to_traces: alpha
 - name: roundrobinconnector
+  display_name: Round-Robin Connector
   repo: contrib
   distributions:
     - contrib
@@ -78,6 +87,7 @@
     metrics_to_metrics: beta
     traces_to_traces: beta
 - name: routingconnector
+  display_name: Routing Connector
   repo: contrib
   distributions:
     - contrib
@@ -87,6 +97,7 @@
     metrics_to_metrics: alpha
     traces_to_traces: alpha
 - name: servicegraphconnector
+  display_name: Service Graph Connector
   repo: contrib
   distributions:
     - contrib
@@ -94,6 +105,7 @@
   stability:
     traces_to_metrics: alpha
 - name: signaltometricsconnector
+  display_name: Signal to Metrics Connector
   repo: contrib
   distributions:
     - contrib
@@ -103,18 +115,21 @@
     profiles_to_metrics: alpha
     traces_to_metrics: alpha
 - name: slowsqlconnector
+  display_name: Slow SQL Connector
   repo: contrib
   distributions:
     - contrib
   stability:
     traces_to_logs: development
 - name: spanmetricsconnector
+  display_name: Span Metrics Connector
   repo: contrib
   distributions:
     - contrib
   stability:
     traces_to_metrics: alpha
 - name: sumconnector
+  display_name: Sum Connector
   repo: contrib
   distributions:
     - contrib
