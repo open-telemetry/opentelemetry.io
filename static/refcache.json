@@ -15843,6 +15843,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:52:23.35558422Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/PULL_REQUEST_TEMPLATE.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-27T13:36:24.100525737Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-label-map.yml": {
     "StatusCode": 206,
     "LastSeen": "2026-03-18T09:54:25.041802798Z"
@@ -24210,6 +24214,10 @@
   "https://www.linuxfoundation.org/": {
     "StatusCode": 200,
     "LastSeen": "2026-03-10T09:52:44.896396671Z"
+  },
+  "https://www.linuxfoundation.org/legal/generative-ai": {
+    "StatusCode": 200,
+    "LastSeen": "2026-03-27T13:36:23.167950371Z"
   },
   "https://www.linuxfoundation.org/legal/privacy-policy": {
     "StatusCode": 200,
