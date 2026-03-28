@@ -14,8 +14,8 @@ This approach is useful when:
 
 > [!WARNING]
 >
-> The declarative configuration schema is stable. The parts of it that are
-> still experimental are suffixed with `/development`. Support for declarative
+> The declarative configuration schema is stable. The parts of it that are still
+> experimental are suffixed with `/development`. Support for declarative
 > configuration in various implementations is still experimental.
 
 ## Supported languages
