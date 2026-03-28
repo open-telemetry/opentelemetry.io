@@ -63,6 +63,7 @@ The shortcode reads from data/collector/{type}s.yml and uses i18n strings for he
 <tbody>
 {{- range $data -}}
   {{- $name := .name -}}
+  {{- $displayName := .display_name -}}
   {{- $repo := .repo -}}
   {{- $distributions := .distributions -}}
   {{- $stability := .stability -}}
@@ -104,7 +105,7 @@ The shortcode reads from data/collector/{type}s.yml and uses i18n strings for he
     {{- $distString := delimit $formattedDists ", " -}}
 
     <tr>
-      <td><a href="{{ $url }}" target='_blank'>{{ $name }}</a>{{- if $unmaintained }} ⚠️{{ end }}</td>
+      <td><a href="{{ $url }}" target='_blank'>{{ $displayName }}</a>{{- if $unmaintained }} ⚠️{{ end }}</td>
       <td>{{ $distString }}</td>
       {{- if eq $componentType "extension" }}
       <td>{{ index $stability "extension" | default "N/A" }}</td>
