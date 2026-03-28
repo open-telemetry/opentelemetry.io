@@ -204,7 +204,7 @@ record][].
 
 A key-value pair, for example `foo="bar"`, added to an entity producing
 telemetry. OpenTelemetry calls these pairs [Attributes](#attribute). In
-addition, [Metrics](#metric) have [Dimensions](#dimension) an [Labels](#label),
+addition, [Metrics](#metric) have [Dimensions](#dimension) and [Labels](#label),
 while [Logs](#log) have [Fields](#field).
 
 ### Metric
