@@ -2013,11 +2013,11 @@
   },
   "https://docs.google.com/document/d/1WQDz1jF0yKBXe3OibXWfy3g6lor9SvjZ4xT-8uuDCiA/edit": {
     "StatusCode": 404,
-    "LastSeen": "2026-03-27T09:58:06.360884937Z"
+    "LastSeen": "2026-03-28T09:55:41.495391798Z"
   },
   "https://docs.google.com/document/d/1ix9_4TQO3o-qyeyNhcOmqAc1MTyr-wnXxxsdWgCMn9c/edit": {
     "StatusCode": 404,
-    "LastSeen": "2026-03-27T09:58:03.935237053Z"
+    "LastSeen": "2026-03-28T09:55:37.69117032Z"
   },
   "https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY": {
     "StatusCode": 200,
@@ -11706,10 +11706,6 @@
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md#libraries--frameworks": {
     "StatusCode": 206,
     "LastSeen": "2026-03-12T09:59:36.929905136Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/build.gradle": {
-    "StatusCode": 206,
-    "LastSeen": "2026-03-03T16:12:00.133493-05:00"
   },
   "https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/build.gradle.kts": {
     "StatusCode": 206,
