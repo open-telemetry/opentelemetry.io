@@ -115,7 +115,7 @@ w ujednolicony widok. {{< /homepage/otel-feature >}}
 {{< homepage/otel-feature image="/img/homepage/feature-multi-language.svg" title="Wsparcie wielu języków" url="/docs/languages/" >}}
 Natywne SDK dla ponad 12 języków, w tym Java, Kotlin, Python, Go, JavaScript,
 .NET, Ruby, PHP, Rust, C++, Swift i Erlang. Korzystaj z preferowanego języka
-z pierwszorzędnym wsparciem OpenTelemetry. {{< /homepage/otel-feature >}}
+ze wsparciem OpenTelemetry. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-production-ready.svg" title="Stabilne i gotowe do produkcji" url="/status/" >}}
 Interfejsy API śledzenia i metryk są stabilne we wszystkich głównych językach.
