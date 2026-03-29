@@ -2,9 +2,9 @@
 title: Getting Started
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
+default_lang_commit: 7a39e1b95f51cf97fe203ef98a1011d3be33d77e
 # prettier-ignore
 cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
-default_lang_commit: 7a39e1b950db0738665a8bfcf3be286e207fa7c1
 ---
 
 このページでは、PythonでOpenTelemetryを始める方法を説明します。
@@ -123,7 +123,6 @@ opentelemetry-bootstrap -a install
 {{< tabpane text=true >}} {{% tab "Linux/macOS" %}}
 
 ```shell
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
@@ -135,7 +134,6 @@ opentelemetry-instrument \
 {{% /tab %}} {{% tab "Windows (PowerShell)" %}}
 
 ```powershell
-$env:OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED="true"
 opentelemetry-instrument `
     --traces_exporter console `
     --metrics_exporter console `
@@ -348,7 +346,6 @@ def roll():
 {{< tabpane text=true >}} {{% tab "Linux/macOS" %}}
 
 ```shell
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
@@ -360,7 +357,6 @@ opentelemetry-instrument \
 {{% /tab %}} {{% tab "Windows (PowerShell)" %}}
 
 ```powershell
-$env:OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED="true"
 opentelemetry-instrument `
     --traces_exporter console `
     --metrics_exporter console `
@@ -506,7 +502,6 @@ def roll():
 {{< tabpane text=true >}} {{% tab "Linux/macOS" %}}
 
 ```shell
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument \
     --traces_exporter console \
     --metrics_exporter console \
@@ -518,7 +513,6 @@ opentelemetry-instrument \
 {{% /tab %}} {{% tab "Windows (PowerShell)" %}}
 
 ```powershell
-$env:OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED="true"
 opentelemetry-instrument `
     --traces_exporter console `
     --metrics_exporter console `
@@ -771,14 +765,12 @@ pip install opentelemetry-exporter-otlp
 {{< tabpane text=true >}} {{% tab "Linux/macOS" %}}
 
 ```shell
-export OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
 opentelemetry-instrument --logs_exporter otlp flask run -p 8080
 ```
 
 {{% /tab %}} {{% tab "Windows (PowerShell)" %}}
 
 ```powershell
-$env:OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED="true"
 opentelemetry-instrument --logs_exporter otlp flask run -p 8080
 ```
 
