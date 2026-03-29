@@ -66,7 +66,7 @@ bez modyfikowania kodu aplikacji.
       imagePosition="right" %}}
 
 Koreluj ślady, metryki i logi ze współdzielonym kontekstem, który przepływa
-przez całą ścieżkę zapytań. Uzyskaj pełny obraz zachowania aplikacji
+przez całą ścieżkę zapytania. Uzyskaj pełny obraz zachowania aplikacji
 we wszystkich komponentach i usługach.
 
 {{% /homepage/main-feature %}}
@@ -76,7 +76,7 @@ we wszystkich komponentach i usługach.
       image="/img/homepage/global-deployment.svg"
       imagePosition="left" %}}
 
-OpenTelemetry jest w 100% open source i niezależne od dostawców. Wdrażaj
+OpenTelemetry jest w 100% otwartoźródłowe i niezależne od dostawców. Wdrażaj
 we własnej infrastrukturze, w środowiskach hybrydowych lub w wielu
 chmurach z pełną elastycznością i zerowym uzależnieniem od dostawcy.
 Przenoś aplikacje tam, gdzie ich potrzebujesz.
