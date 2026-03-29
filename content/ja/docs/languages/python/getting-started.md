@@ -98,7 +98,7 @@ flask run -p 8080
 
 ## 計装 {#instrumentation}
 
-ゼロコード計装が代わりにテレメトリーデータを生成します。
+ゼロコード計装がかわりにテレメトリーデータを生成します。
 利用可能なオプションはいくつかあり、[ゼロコード計装](/docs/zero-code/python/)で詳しく説明しています。
 ここでは`opentelemetry-instrument`エージェントを使用します。
 
