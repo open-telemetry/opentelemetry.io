@@ -1,23 +1,23 @@
 ---
-title: Getting started for Ops
+title: Pierwsze kroki dla operatorów
 linkTitle: Ops
 ---
 
-This is the [getting-started](..) page for you if:
+To jest strona [pierwszych kroków](..) dla Ciebie, jeśli:
 
-- You run a set of applications in production.
-- Your goal is to get telemetry out of them without touching their code.
-- You want to collect traces, metrics, and logs from several services and send
-  them off to your observability backend.
+- Zarządzasz zestawem aplikacji na produkcji.
+- Twoim celem jest uzyskanie danych telemetrycznych bez modyfikowania ich kodu.
+- Chcesz zbierać ślady (traces), metryki i logi z wielu serwisów i wysyłać je
+  do swojego backendu obserwowalności.
 
-OpenTelemetry can help you! To accomplish your goal of getting telemetry out of
-applications without touching their code, we recommend that you learn the
-following:
+OpenTelemetry może Ci w tym pomóc! Aby osiągnąć swój cel — uzyskania danych
+telemetrycznych z aplikacji bez modyfikowania ich kodu — zalecamy zapoznanie
+się z następującymi zagadnieniami:
 
-- [What is OpenTelemetry?](../../what-is-opentelemetry/)
-- [How can I instrument applications without touching their code?](../../concepts/instrumentation/zero-code/)
-- [How can I set up a collector?](../../collector/)
-- [How can I get automation for Kubernetes with the OpenTelemetry Operator?](../../platforms/kubernetes/operator/)
+- [Czym jest OpenTelemetry?](../../what-is-opentelemetry/)
+- [Jak mogę instrumentować aplikacje bez modyfikowania ich kodu?](../../concepts/instrumentation/zero-code/)
+- [Jak mogę skonfigurować kolektor?](../../collector/)
+- [Jak mogę uzyskać automatyzację dla Kubernetes za pomocą OpenTelemetry Operator?](../../platforms/kubernetes/operator/)
 
-If you are looking for a set of applications to try things out, you will find
-our official [OpenTelemetry demo](/ecosystem/demo/) useful.
+Jeśli szukasz zestawu aplikacji do eksperymentowania, przydatne może okazać się
+nasze oficjalne [demo OpenTelemetry](/ecosystem/demo/).

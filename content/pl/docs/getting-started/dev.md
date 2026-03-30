@@ -1,32 +1,32 @@
 ---
-title: Getting started for Developers
+title: Pierwsze kroki dla deweloperów
 linkTitle: Dev
 ---
 
-This is the [getting-started](..) page for you if:
+To jest strona [pierwszych kroków](..) dla Ciebie, jeśli:
 
-- You develop software.
-- Your goal is to get observability by writing code.
-- You want to have your dependencies emit telemetry for you automatically.
+- Tworzysz oprogramowanie.
+- Twoim celem jest uzyskanie obserwowalności poprzez pisanie kodu.
+- Chcesz, aby Twoje zależności automatycznie emitowały dane telemetryczne.
 
-OpenTelemetry can help you! To accomplish your goals of having your dependencies
-instrumented automatically and instrumenting your own code with our API
-manually, we recommend that you learn the following concepts first:
+OpenTelemetry może Ci w tym pomóc! Aby osiągnąć swoje cele — automatycznej
+instrumentacji zależności oraz ręcznej instrumentacji własnego kodu za pomocą
+naszego API — zalecamy najpierw zapoznanie się z następującymi koncepcjami:
 
-- [What is OpenTelemetry?](../../what-is-opentelemetry/)
-- [How can I add instrumentation to my code base?](../../concepts/instrumentation/code-based/)
+- [Czym jest OpenTelemetry?](../../what-is-opentelemetry/)
+- [Jak mogę dodać instrumentację do mojego kodu?](../../concepts/instrumentation/code-based/)
 
-If you develop libraries, frameworks or middleware that is used as a dependency
-within other software, we recommend that you learn how you can provide telemetry
-natively:
+Jeśli tworzysz biblioteki, frameworki lub oprogramowanie pośredniczące (middleware),
+które jest używane jako zależność w innych projektach, zalecamy zapoznanie się
+z tym, jak możesz natywnie dostarczać dane telemetryczne:
 
-- [How can I add native instrumentation to my library?](../../concepts/instrumentation/libraries/)
+- [Jak mogę dodać natywną instrumentację do mojej biblioteki?](../../concepts/instrumentation/libraries/)
 
-If you are looking for a set of applications to try things out, you will find
-our official [OpenTelemetry demo](/ecosystem/demo/) useful.
+Jeśli szukasz zestawu aplikacji do eksperymentowania, przydatne może okazać się
+nasze oficjalne [demo OpenTelemetry](/ecosystem/demo/).
 
-Next, you can deep dive into the documentations for the
-[language](../../languages/) you are using:
+Następnie możesz zagłębić się w dokumentację dla
+[języka](../../languages/), którego używasz:
 
 - [C++](../../languages/cpp/)
 - [.NET](../../languages/dotnet/)
@@ -39,4 +39,4 @@ Next, you can deep dive into the documentations for the
 - [Ruby](../../languages/ruby/)
 - [Rust](../../languages/rust/)
 - [Swift](../../languages/swift/)
-- [Other](../../languages/other/)
+- [Inne](../../languages/other/)
