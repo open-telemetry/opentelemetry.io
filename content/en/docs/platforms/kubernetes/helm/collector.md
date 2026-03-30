@@ -9,8 +9,8 @@ cSpell:ignore: filelog filelogreceiver hostmetricsreceiver kubelet kubeletstats 
 
 The [OpenTelemetry Collector](/docs/collector) is an important tool for
 monitoring a Kubernetes cluster and all the services that operate within. To
-facilitate installation and management of a collector deployment in a Kubernetes cluster
-the OpenTelemetry community created the
+facilitate installation and management of a collector deployment in a Kubernetes
+cluster the OpenTelemetry community created the
 [OpenTelemetry Collector Helm Chart](https://github.com/open-telemetry/opentelemetry-helm-charts/tree/main/charts/opentelemetry-collector).
 This helm chart can be used to install a collector as a Deployment, Daemonset,
 or Statefulset.
