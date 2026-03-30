@@ -5,7 +5,7 @@ description:
   Extensions add capabilities to the agent without having to create a separate
   distribution.
 weight: 300
-cSpell:ignore: Customizer Dotel
+cSpell:ignore: Customizer Dotel myextension
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
