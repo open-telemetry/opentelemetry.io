@@ -90,7 +90,7 @@ These are the members of [@open-telemetry/docs-triagers][]:
 - [Masaki Sugimoto](https://github.com/Msksgm), Henry, Inc.
 - [Michael Yao](https://github.com/windsonsea), DaoCloud
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), AWS
-
+- [Diana Todea](https://github.com/didiViking), VictoriaMetrics
 For more information about the triager role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#triager).
 
