@@ -2281,6 +2281,11 @@ approvers:
       - javascript-triagers
     html_url: https://github.com/raphael-theriault-swi
     avatar_url: https://avatars.githubusercontent.com/u/113933910?v=4
+  - name: RaphaelManke
+    teams:
+      - lambda-extension-approvers
+    html_url: https://github.com/RaphaelManke
+    avatar_url: https://avatars.githubusercontent.com/u/15867688?v=4
   - name: RassK
     teams:
       - dotnet-instrumentation-approvers
@@ -2803,6 +2808,9 @@ members:
   - name: cnnradams
     html_url: https://github.com/cnnradams
     avatar_url: https://avatars.githubusercontent.com/u/10487992?v=4
+  - name: colelaven
+    html_url: https://github.com/colelaven
+    avatar_url: https://avatars.githubusercontent.com/u/82364622?v=4
   - name: colin-higgins
     html_url: https://github.com/colin-higgins
     avatar_url: https://avatars.githubusercontent.com/u/1801443?v=4
