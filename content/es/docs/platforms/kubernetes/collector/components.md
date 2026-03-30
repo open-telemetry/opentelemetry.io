@@ -41,16 +41,15 @@ pero cualquier receptor que se ajuste a sus datos es adecuado.
 | Sidecar                  | No         |
 
 El procesador de atributos de Kubernetes descubre automáticamente los pods de
-Kubernetes, extrae sus metadatos y agrega los metadatos extraídos a spans, métricas y logs como atributos de
-recursos.
+Kubernetes, extrae sus metadatos y agrega los metadatos extraídos a spans,
+métricas y logs como atributos de recursos.
 
 **El procesador de atributos de Kubernetes es uno de los componentes más
 importantes para un recopilador que se ejecuta en Kubernetes. Cualquier
 recopilador que reciba datos de la aplicación debe usarlo.** Debido a que agrega
 contexto de Kubernetes a su telemetría, el procesador de atributos de Kubernetes
-le permite correlacionar las trazas, las métricas y los logs de su
-aplicación con su telemetría de Kubernetes, como las métricas de pod y las
-trazas.
+le permite correlacionar las trazas, las métricas y los logs de su aplicación
+con su telemetría de Kubernetes, como las métricas de pod y las trazas.
 
 El procesador de atributos de Kubernetes utiliza la API de Kubernetes para
 descubrir todos los pods que se ejecutan en un clúster y mantiene un registro de
