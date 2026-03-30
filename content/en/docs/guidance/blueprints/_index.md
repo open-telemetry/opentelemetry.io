@@ -14,4 +14,4 @@ need to refer to multiple blueprints, depending on your environment.
 
 <!-- Add how to propose a new blueprint once the issue template and repo are ready. -->
 
-Coming soon!
+**Coming soon!**

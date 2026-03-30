@@ -12,4 +12,4 @@ approach OpenTelemetry adoption.
 
 <!-- Add how to propose a new reference implementation once the issue template and repo are ready. -->
 
-Coming soon!
+**Coming soon!**
