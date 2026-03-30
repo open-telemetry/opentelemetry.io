@@ -17,7 +17,7 @@ which are not configurable using properties.
 > [declarative configuration](../declarative-configuration/). With declarative
 > configuration, use `DeclarativeConfigurationCustomizerProvider` instead — see
 > the
-> [agent Extension API](/docs/zero-code/java/agent/declarative-configuration/#extension-api)
+> [agent Extension API section](/docs/zero-code/java/agent/declarative-configuration/)
 > for details and examples.
 
 ## Exclude actuator endpoints from tracing
@@ -32,7 +32,7 @@ from tracing:
   <dependency>
     <groupId>io.opentelemetry.contrib</groupId>
     <artifactId>opentelemetry-samplers</artifactId>
-    <version>1.33.0-alpha</version>
+    <version>{{% param vers.contrib %}}-alpha</version>
   </dependency>
 </dependencies>
 ```
@@ -41,7 +41,7 @@ from tracing:
 
 ```kotlin
 dependencies {
-  implementation("io.opentelemetry.contrib:opentelemetry-samplers:1.33.0-alpha")
+  implementation("io.opentelemetry.contrib:opentelemetry-samplers:{{% param vers.contrib %}}-alpha")
 }
 ```
 

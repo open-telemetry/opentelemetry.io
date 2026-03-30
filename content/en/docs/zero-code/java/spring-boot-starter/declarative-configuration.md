@@ -27,7 +27,7 @@ starter version 2.26.0 and later**.
 
 ## Getting started
 
-Add `otel.file_format: "1.0"` to your `application.yaml` to opt in to
+Add `otel.file_format: "1.0"` (or the current or desired version) to your `application.yaml` to opt in to
 declarative configuration:
 
 ```yaml
@@ -196,5 +196,5 @@ With declarative configuration, `AutoConfigurationCustomizerProvider` (see
 [Programmatic configuration](../programmatic-configuration/)) is replaced by
 `DeclarativeConfigurationCustomizerProvider`. Components such as span exporters
 use the `ComponentProvider` API. See the
-[agent Extension API](/docs/zero-code/java/agent/declarative-configuration/#extension-api)
+[agent Extension API section](/docs/zero-code/java/agent/declarative-configuration/)
 for details and examples — the same APIs apply to the Spring Boot starter.
