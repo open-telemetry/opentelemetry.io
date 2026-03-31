@@ -85,6 +85,7 @@ For more information about the approver role, see the
 
 These are the members of [@open-telemetry/docs-triagers][]:
 
+- [Diana Todea](https://github.com/didiViking), VictoriaMetrics
 - [Emídio Neto](https://github.com/emdneto)
 - [Ezzio Moreira](https://github.com/EzzioMoreira)
 - [Michael Yao](https://github.com/windsonsea), DaoCloud
