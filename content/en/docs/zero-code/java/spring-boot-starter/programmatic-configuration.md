@@ -1,9 +1,9 @@
 ---
 title: Programmatic configuration
 weight: 35
-cSpell:ignore: customizer
 vers:
   contrib: 1.54.0
+cSpell:ignore: customizer
 ---
 
 <!-- markdownlint-disable blanks-around-fences -->
