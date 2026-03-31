@@ -27,8 +27,8 @@ starter version 2.26.0 and later**.
 
 ## Getting started
 
-Add `otel.file_format: "1.0"` (or the current or desired version) to your `application.yaml` to opt in to
-declarative configuration:
+Add `otel.file_format: "1.0"` (or the current or desired version) to your
+`application.yaml` to opt in to declarative configuration:
 
 ```yaml
 otel:
@@ -83,7 +83,7 @@ In declarative configuration, instrumentation enable/disable uses centralized
 lists instead of individual properties. The instrumentation name uses `_`
 (snake_case), not `-` (kebab-case).
 
-| Properties                                  | Declarative Configuration                                                       |
+| Properties                                            | Declarative Configuration                                                       |
 | ----------------------------------------------------- | ------------------------------------------------------------------------------- |
 | `otel.instrumentation.jdbc.enabled=true`              | `otel.distribution.spring_starter.instrumentation.enabled: [jdbc]`              |
 | `otel.instrumentation.logback-appender.enabled=false` | `otel.distribution.spring_starter.instrumentation.disabled: [logback_appender]` |
@@ -118,13 +118,13 @@ map to `otel.instrumentation/development.java.*`:
 
 For example:
 
-| Properties                                                | Declarative Configuration                                                                        |
+| Properties                                                          | Declarative Configuration                                                                        |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | `otel.instrumentation.logback-appender.experimental-log-attributes` | `otel.instrumentation/development.java.logback_appender.experimental_log_attributes/development` |
 
 Some options have special mappings that don't follow the default algorithm:
 
-| Properties                                                    | Declarative Configuration                                                                          |
+| Properties                                                              | Declarative Configuration                                                                          |
 | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `otel.instrumentation.common.db-statement-sanitizer.enabled`            | `otel.instrumentation/development.java.common.database.statement_sanitizer.enabled`                |
 | `otel.instrumentation.http.client.capture-request-headers`              | `otel.instrumentation/development.general.http.client.request_captured_headers`                    |
@@ -145,7 +145,7 @@ The `instrumentation/development` section has two top-level groups:
 
 ### Disable the SDK
 
-| Properties     | Declarative Configuration |
+| Properties               | Declarative Configuration |
 | ------------------------ | ------------------------- |
 | `otel.sdk.disabled=true` | `otel.disabled: true`     |
 
