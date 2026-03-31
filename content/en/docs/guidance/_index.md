@@ -26,8 +26,8 @@ section:
   challenges in a given environment. Each blueprint is tightly scoped to address
   specific challenges, so you might need to refer to multiple blueprints,
   depending on your environment.
-- Reference implementations are snapshots in time that show how different
-  institutions, with different organizational structures and technology stacks,
-  approach OpenTelemetry adoption.
+- Reference implementations are snapshots in time that show how real-world
+  organizations use OpenTelemetry to build scalable, resilient pipelines that
+  send application telemetry to observability backends.
 
 <!-- If your organization has implemented OpenTelemetry and you think others could benefit from your experience, you can propose a new reference implementation by raising an issue in the End User SIG repository. To request a new blueprint for an environment or challenge not already covered, raise an issue using the Blueprints template. TODO: add links to issue template, if possible -->
