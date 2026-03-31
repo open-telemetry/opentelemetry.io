@@ -210,12 +210,14 @@ npm run fix:markdown     # Auto-fix markdown issues
 
 When working with GitHub Actions in this repository:
 
-* **Always pin actions to specific commit SHAs** for security (helps to prevent supply chain attacks)
-* **Verify SHA authenticity** before using - check the actual repository to ensure the SHA exists and corresponds to
-  the intended version
-* **Never generate or guess SHAs** - always look up the correct SHA from the action's repository
-* **Include version comments** alongside SHAs for readability (e.g., `# v4.1.0`)
-* **Format**: `uses: owner/action@<full-sha> # vX.Y.Z`
+- **Always pin actions to specific commit SHAs** for security (helps to prevent
+  supply chain attacks)
+- **Verify SHA authenticity** before using - check the actual repository to
+  ensure the SHA exists and corresponds to the intended version
+- **Never generate or guess SHAs** - always look up the correct SHA from the
+  action's repository
+- **Include version comments** alongside SHAs for readability (e.g., `# v4.1.0`)
+- **Format**: `uses: owner/action@<full-sha> # vX.Y.Z`
 
 Example:
 
