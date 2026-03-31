@@ -2190,6 +2190,12 @@ approvers:
       - semconv-genai-approvers
     html_url: https://github.com/nirga
     avatar_url: https://avatars.githubusercontent.com/u/4224692?v=4
+  - name: nwanduka
+    teams:
+      - sig-end-user-approvers
+      - sig-end-user-triagers
+    html_url: https://github.com/nwanduka
+    avatar_url: https://avatars.githubusercontent.com/u/122698422?v=4
   - name: Oberon00
     teams:
       - build-tools-approvers
