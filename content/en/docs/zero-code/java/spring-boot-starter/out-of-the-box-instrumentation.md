@@ -9,7 +9,7 @@ cSpell:ignore: autoconfigurations autoconfigures webflux webmvc
 
 Out of the box instrumentation is available for several frameworks:
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 | Feature               | Property                                        | Default |
 | --------------------- | ----------------------------------------------- | ------- |
@@ -68,7 +68,7 @@ otel:
 
 ## Turn on instrumentations selectively
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 To use only specific instrumentations, turn off all the instrumentations first
 and then turn on instrumentations one by one:
@@ -104,7 +104,7 @@ otel:
 
 Common properties for all database instrumentations:
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 Enables the DB statement sanitization for all database instrumentations:
 
@@ -134,7 +134,7 @@ otel:
 
 ## JDBC Instrumentation
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 Enables the DB statement sanitization for JDBC:
 
@@ -166,7 +166,7 @@ otel:
 You can enable experimental features with system properties to capture
 attributes :
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 | Property                                         | Type    | Default | Description                                                                                                                                     |
 | ------------------------------------------------ | ------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -419,7 +419,7 @@ public class WebClientController {
 
 Provides autoconfiguration for the Kafka client instrumentation.
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 Enables the capture of experimental span attributes for Kafka:
 
@@ -452,7 +452,7 @@ Provides autoconfiguration for the Micrometer to OpenTelemetry bridge.
 
 Provides autoconfiguration for the MongoDB client instrumentation.
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 Enables the DB statement sanitization for MongoDB:
 
@@ -483,7 +483,7 @@ otel:
 
 Provides autoconfiguration for the OpenTelemetry R2DBC instrumentation.
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 Enables the DB statement sanitization for R2DBC:
 

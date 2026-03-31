@@ -29,7 +29,7 @@ You can find more configuration options for the OpenTelemetry appender in the
 [Log4j](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/instrumentation/log4j/log4j-appender-2.17/library/README.md)
 instrumentation library.
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 Enables the configuration of the Log4j OpenTelemetry appender with an
 `OpenTelemetry` instance:

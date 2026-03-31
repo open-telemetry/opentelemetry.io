@@ -21,7 +21,7 @@ The OpenTelemetry Starter supports all the
 You can update the configuration with properties in the `application.properties`
 or the `application.yaml` file, or with environment variables.
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 `application.yaml` example:
 
@@ -105,7 +105,7 @@ Spring Boot's
 
 ## Disable the OpenTelemetry Starter
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 Set `otel.sdk.disabled` to `true` to disable the starter, e.g. for testing
 purposes:
@@ -137,7 +137,7 @@ See [Programmatic configuration](../programmatic-configuration/).
 
 ## Resource Providers
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 The OpenTelemetry Starter includes the same resource providers as the Java
 agent:
@@ -201,7 +201,7 @@ Using these resource providers, the service name is determined by the following
 precedence rules, in accordance with the OpenTelemetry
 [specification](/docs/languages/sdk-configuration/general/#otel_service_name):
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 1. `otel.service.name` spring property or `OTEL_SERVICE_NAME` environment
    variable (highest precedence)

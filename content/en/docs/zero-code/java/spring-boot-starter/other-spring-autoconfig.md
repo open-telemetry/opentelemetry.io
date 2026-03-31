@@ -50,7 +50,7 @@ dependencies {
 
 ### Configurations
 
-{{< tabpane text=true >}} {{% tab "not Declarative Configuration" %}}
+{{< tabpane text=true >}} {{% tab "Properties" %}}
 
 Enables the Zipkin exporter (requires `ZipkinSpanExporter` on the classpath):
 
