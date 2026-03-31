@@ -205,3 +205,20 @@ npm run fix:markdown     # Auto-fix markdown issues
   initial build
 - Network restrictions may cause CDN warnings but do not prevent successful
   builds
+
+## GitHub Actions Best Practices
+
+When working with GitHub Actions in this repository:
+
+* **Always pin actions to specific commit SHAs** for security (helps to prevent supply chain attacks)
+* **Verify SHA authenticity** before using - check the actual repository to ensure the SHA exists and corresponds to
+  the intended version
+* **Never generate or guess SHAs** - always look up the correct SHA from the action's repository
+* **Include version comments** alongside SHAs for readability (e.g., `# v4.1.0`)
+* **Format**: `uses: owner/action@<full-sha> # vX.Y.Z`
+
+Example:
+
+```yaml
+- uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.1
+```
