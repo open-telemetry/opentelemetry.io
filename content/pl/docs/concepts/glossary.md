@@ -1,8 +1,7 @@
 ---
-title: Słownik
+title: Glosariusz
 description:
-  Definicje i konwencje dotyczące terminów telemetrii stosowanych w
-  OpenTelemetry.
+  Definicje i konwencje dotyczące terminów stosowanych w OpenTelemetry.
 weight: 200
 default_lang_commit: 0cbe6d7a9d94ab78637023f0d31119fa7ac7ebe1
 ---
@@ -11,8 +10,8 @@ Ten słownik definiuje terminy i [pojęcia](/docs/concepts/) specyficzne dla
 projektu OpenTelemetry oraz wyjaśnia, jak w OpenTelemetry używa się powszechnych
 terminów z dziedziny obserwowalności.
 
-Komentujemy również pisownię i wielkość liter, gdy jest to pomocne. Na przykład
-zobacz [OpenTelemetry](#opentelemetry) i [OTel](#otel).
+Dokumentujemy również pisownię, także dotyczącą wielkości liter, gdy jest to pomocne. Przykłady:
+[OpenTelemetry](#opentelemetry) i [OTel](#otel).
 
 ## Terminy {#terms}
 
