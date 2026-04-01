@@ -135,15 +135,15 @@ DEBUG - 2024-08-04 09:30:15 - User johndoe performed action: file_upload. Filena
 
 ### 半構造化ログ {#semistructured-logs}
 
-半構造化ログとは、データを識別するために一定の一貫したパターンを使用し、機械が読みやすくしているものの、異なるシステム間でデータのフォーマットや区切り文字が統一されていないログのことを指します。
+半構造化ログとは、データを識別するために一定の一貫したパターンを使用し、機械が読みやすくしているものの、異なるシステム間でデータのフォーマットや区切り文字が統一されていないログのことを指します。例としては、キーと値のペアによるログ記録（下記参照）や、メッセージごとにフィールド名や型が異なるJSONデータなどが挙げられます。半構造化ログは非構造化ログよりも解析が容易な場合が多いですが、分析前に処理や正規化が必要となる場合もあります。
 
-以下は、準構造かログの例です。
+以下は、半構造化ログの例です。
 
 ```text
 2024-08-04T12:45:23Z level=ERROR service=user-authentication userId=12345 action=login message="Failed login attempt" error="Invalid password" ipAddress=192.168.1.1 userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 ```
 
-機会が読みやすいですが、半構造化ログは大規模に分析を可能にするには、複数の異なるパーサーを必要になる場合があります。
+半構造化ログは、下流の分析で完全に活用するためには、取り込み時にマッピングと型変換が必要になる場合があります。
 
 ## OpenTelemetry ログコンポーネント {#opentelemetry-logging-components}
 
