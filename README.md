@@ -66,7 +66,7 @@ These are the members of [@open-telemetry/docs-maintainers][]:
 - [Phillip Carter](https://github.com/cartermp), Salesforce
 - [Severin Neumann](https://github.com/svrnm), Causely
 - [Tiffany Hrabusa](https://github.com/tiffany76), Grafana Labs
-- [Vitor Vasconcellos](https://github.com/vitorvasc), Mercado Libre
+- [Vitor Vasconcellos](https://github.com/vitorvasc)
 
 For more information about the maintainer role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/community-membership.md#maintainer).
@@ -85,9 +85,9 @@ For more information about the approver role, see the
 
 These are the members of [@open-telemetry/docs-triagers][]:
 
+- [Diana Todea](https://github.com/didiViking), VictoriaMetrics
 - [Emídio Neto](https://github.com/emdneto)
 - [Ezzio Moreira](https://github.com/EzzioMoreira)
-- [Masaki Sugimoto](https://github.com/Msksgm), Henry, Inc.
 - [Michael Yao](https://github.com/windsonsea), DaoCloud
 - [Yoshi Yamaguchi](https://github.com/ymotongpoo), AWS
 
@@ -115,6 +115,7 @@ For more information about the emeritus role, see the
 ### Emeritus triagers
 
 - [Kazunori Otani](https://github.com/katzchang)
+- [Masaki Sugimoto](https://github.com/Msksgm)
 
 For more information about the emeritus role, see the
 [community repository](https://github.com/open-telemetry/community/blob/main/guides/contributor/membership.md#emeritus-maintainerapprovertriager).
