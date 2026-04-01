@@ -7,11 +7,11 @@ default_lang_commit: 0cbe6d7a9d94ab78637023f0d31119fa7ac7ebe1
 ---
 
 Ten słownik definiuje terminologię i [pojęcia](/docs/concepts/) specyficzne dla
-projektu OpenTelemetry oraz wyjaśnia, jak  używać
-terminów z dziedziny obserwowalności w kontekście OpenTelemetry.
+projektu OpenTelemetry oraz wyjaśnia, jak używać terminów z dziedziny
+obserwowalności w kontekście OpenTelemetry.
 
-Dokumentujemy również pisownię, także dotyczącą wielkości liter, gdy jest to pomocne. Przykłady:
-[OpenTelemetry](#opentelemetry) i [OTel](#otel).
+Dokumentujemy również pisownię, także dotyczącą wielkości liter, gdy jest to
+pomocne. Przykłady: [OpenTelemetry](#opentelemetry) i [OTel](#otel).
 
 ## Terminy {#terms}
 
@@ -35,7 +35,8 @@ lub dla innych aplikacji.
 ### APM {#apm}
 
 Application Performance Monitoring — monitorowanie aplikacji, ich wydajności
-(szybkość, niezawodność, dostępność itp.) w celu wykrywania problemów, ostrzeganie oraz narzędzia do znajdowania przyczyny źródłowej.
+(szybkość, niezawodność, dostępność itp.) w celu wykrywania problemów,
+ostrzeganie oraz narzędzia do znajdowania przyczyny źródłowej.
 
 ### Atrybut {#attribute}
 
@@ -62,8 +63,8 @@ bagażu][baggage].
 Liczba unikalnych wartości dla danego [atrybutu](#attribute) lub zestawu
 atrybutów. Wysoka kardynalność oznacza wiele unikalnych wartości, co może
 wpływać na wydajność i wymagania magazynowe backendów telemetrii. Na przykład
-atrybut `user_id` miałby wysoką kardynalność, natomiast atrybut `status_code`
-z wartościami takimi jak "200", "404", "500" miałby niską kardynalność.
+atrybut `user_id` miałby wysoką kardynalność, natomiast atrybut `status_code` z
+wartościami takimi jak "200", "404", "500" miałby niską kardynalność.
 
 ### Biblioteka kliencka {#client-library}
 
@@ -252,9 +253,8 @@ Poprzednik OpenTelemetry. Szczegóły w sekcji
 
 Projekt OpenTelemetry, powstały w wyniku [połączenia][merger] projektów
 [OpenTracing](#opentracing) i [OpenCensus](#opencensus) &mdash; tematyka tej
-witryny &mdash; to zbiór [API](#api), [SDK](#sdk) i narzędzi, których można
-użyć do
-[instrumentacji](/docs/concepts/instrumentation/), generowania,
+witryny &mdash; to zbiór [API](#api), [SDK](#sdk) i narzędzi, których można użyć
+do [instrumentacji](/docs/concepts/instrumentation/), generowania,
 [zbierania](/docs/concepts/components/#collector) i
 [eksportowania](/docs/concepts/components/#exporters)
 [danych telemetrycznych](/docs/concepts/signals/) takich jak [metryki](#metric),
@@ -350,8 +350,8 @@ dostarczenia danych telemetrycznych niezależnych od dostawcy.
 ### Usługa {#service}
 
 Komponent [aplikacji](#application). Zazwyczaj wdraża się wiele instancji
-[usługi](#service) dla wysokiej dostępności i skalowalności.
-[Usługa](#service) może być wdrożona w wielu lokalizacjach.
+[usługi](#service) dla wysokiej dostępności i skalowalności. [Usługa](#service)
+może być wdrożona w wielu lokalizacjach.
 
 ### Sygnał {#signal}
 
