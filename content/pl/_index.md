@@ -36,13 +36,13 @@ default_lang_commit: 385a8b07a0ea97568abc86caf46606c16d3110c6
 
 {{% homepage/intro-section image="/img/homepage/collector-pipeline.svg" imageAlt="Przegląd OpenTelemetry" %}}
 
-**OpenTelemetry** to otwartoźródłowy framework obserwowalności dla oprogramowania
-chmurowego. Dostarcza jednolity zestaw interfejsów API, bibliotek, agentów
-i usług kolektorów do przechwytywania rozproszonych śladów i metryk z Twojej
-aplikacji.
+**OpenTelemetry** to otwartoźródłowy framework obserwowalności dla
+oprogramowania chmurowego. Dostarcza jednolity zestaw interfejsów API,
+bibliotek, agentów i usług kolektorów do przechwytywania rozproszonych śladów i
+metryk z Twojej aplikacji.
 
-OpenTelemetry czerpie z wieloletniego doświadczenia projektów OpenTracing
-i OpenCensus, łącząc najlepsze w swojej klasie pomysły i praktyki społeczności.
+OpenTelemetry czerpie z wieloletniego doświadczenia projektów OpenTracing i
+OpenCensus, łącząc najlepsze w swojej klasie pomysły i praktyki społeczności.
 
 {{% /homepage/intro-section %}}
 
@@ -66,8 +66,8 @@ bez modyfikowania kodu aplikacji.
       imagePosition="right" %}}
 
 Koreluj ślady, metryki i logi ze współdzielonym kontekstem, który przepływa
-przez całą ścieżkę zapytania. Uzyskaj pełny obraz zachowania aplikacji
-we wszystkich komponentach i usługach.
+przez całą ścieżkę zapytania. Uzyskaj pełny obraz zachowania aplikacji we
+wszystkich komponentach i usługach.
 
 {{% /homepage/main-feature %}}
 
@@ -76,10 +76,10 @@ we wszystkich komponentach i usługach.
       image="/img/homepage/global-deployment.svg"
       imagePosition="left" %}}
 
-OpenTelemetry jest w 100% otwartoźródłowe i niezależne od dostawców. Wdrażaj
-we własnej infrastrukturze, w środowiskach hybrydowych lub w wielu
-chmurach z pełną elastycznością i zerowym uzależnieniem od dostawcy.
-Przenoś aplikacje tam, gdzie ich potrzebujesz.
+OpenTelemetry jest w 100% otwartoźródłowe i niezależne od dostawców. Wdrażaj we
+własnej infrastrukturze, w środowiskach hybrydowych lub w wielu chmurach z pełną
+elastycznością i zerowym uzależnieniem od dostawcy. Przenoś aplikacje tam, gdzie
+ich potrzebujesz.
 
 {{% /homepage/main-feature %}}
 
@@ -104,28 +104,30 @@ metryki i logi bez modyfikowania kodu źródłowego. {{< /homepage/otel-feature 
 
 {{< homepage/otel-feature image="/img/homepage/feature-pipeline.svg" title="Potok kolektora" url="/docs/collector/" >}}
 Przetwarzaj, filtruj i kieruj dane telemetryczne za pomocą kolektora
-OpenTelemetry. Wdrażaj jako agenta lub bramę do odbierania, przetwarzania
-i eksportowania telemetrii na dużą skalę z ponad 200 komponentami. {{< /homepage/otel-feature >}}
+OpenTelemetry. Wdrażaj jako agenta lub bramę do odbierania, przetwarzania i
+eksportowania telemetrii na dużą skalę z ponad 200 komponentami.
+{{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-observability.svg" title="Propagacja kontekstu" url="/docs/concepts/context-propagation/" >}}
 Automatycznie koreluj ślady między granicami usług. Rozproszony kontekst
-przepływa przez całą ścieżkę zapytań, łącząc logi, metryki i ślady
-w ujednolicony widok. {{< /homepage/otel-feature >}}
+przepływa przez całą ścieżkę zapytań, łącząc logi, metryki i ślady w
+ujednolicony widok. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-multi-language.svg" title="Wsparcie wielu języków" url="/docs/languages/" >}}
 Natywne SDK dla ponad 12 języków, w tym Java, Kotlin, Python, Go, JavaScript,
-.NET, Ruby, PHP, Rust, C++, Swift i Erlang. Korzystaj z preferowanego języka
-ze wsparciem OpenTelemetry. {{< /homepage/otel-feature >}}
+.NET, Ruby, PHP, Rust, C++, Swift i Erlang. Korzystaj z preferowanego języka ze
+wsparciem OpenTelemetry. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-production-ready.svg" title="Stabilne i gotowe do produkcji" url="/status/" >}}
 Interfejsy API śledzenia i metryk są stabilne we wszystkich głównych językach.
-Tysiące organizacji używa OpenTelemetry w produkcji. Wspierane przez CNCF
-i głównych dostawców chmurowych. {{< /homepage/otel-feature >}}
+Tysiące organizacji używa OpenTelemetry w produkcji. Wspierane przez CNCF i
+głównych dostawców chmurowych. {{< /homepage/otel-feature >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-openness.svg" title="Otwarte specyfikacje" url="/docs/specs/status/" >}}
 Zbudowane na otwartych, niezależnych od dostawców specyfikacjach dla interfejsów
 API, SDK i protokołu sieciowego (OTLP). Przejrzyste zarządzanie w ramach CNCF
-zapewnia długoterminową stabilność i rozwój napędzany przez społeczność. {{< /homepage/otel-feature >}}
+zapewnia długoterminową stabilność i rozwój napędzany przez społeczność.
+{{< /homepage/otel-feature >}}
 
 {{< /homepage/otel-features >}}
 
