@@ -12,8 +12,8 @@ jobs:
     name: SPELLING check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+      - uses: actions/checkout@v6.0.2
+      - uses: actions/setup-node@v6.3.0
         with:
           node-version-file: .nvmrc
       - run: npm run _install:cspell --ignore-scripts
@@ -25,7 +25,7 @@ jobs:
     env:
       FIX_CMD: fix:dict
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: actions/checkout@v6.0.2
       # Note: FIX_CMD runs fine without setup-node
       - run: npm run ${{ env.FIX_CMD }}
       - name: Any changed files?

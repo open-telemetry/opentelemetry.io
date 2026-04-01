@@ -21,18 +21,18 @@ jobs:
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - name: Checkout code
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        uses: actions/checkout@v6.0.2
 
       - name: Set up Python
-        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        uses: actions/setup-python@v6.2.0
 
       - name: Install uv
-        uses: astral-sh/setup-uv@cec208311dfd045dd5311c1add060b2062131d57 # v8.0.0
+        uses: astral-sh/setup-uv@v8.0.0
         with:
           enable-cache: true
 
       - name: Set up Node.js
-        uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+        uses: actions/setup-node@v6.3.0
         with:
           node-version-file: .nvmrc
           cache: 'npm'
@@ -44,7 +44,7 @@ jobs:
           git config user.email 197425009+otelbot@users.noreply.github.com
 
       - name: Create otelbot GitHub App token
-        uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
+        uses: actions/create-github-app-token@v3.0.0
         id: otelbot-token
         with:
           app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}

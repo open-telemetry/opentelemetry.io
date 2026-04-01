@@ -44,14 +44,14 @@ jobs:
       PRUNE_MORE: ${{ github.event.inputs.prune_more_in_same_PR }}
       REBASE_FROM_MAIN: ${{ github.event.inputs.rebase_from_main }}
     steps:
-      - uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
+      - uses: actions/create-github-app-token@v3.0.0
         id: otelbot-token
         with:
           # the higher privileged docs token is needed to push commits to an existing PR
           app-id: ${{ vars.OTELBOT_DOCS_APP_ID }}
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - uses: actions/checkout@v6.0.2
         with:
           fetch-depth: 0
           # Needed to trigger workflows when pushing new commits to an existing PR
@@ -105,12 +105,12 @@ jobs:
             echo "DELAYED_PUSH_CMD=$DELAYED_PUSH_CMD" >> $GITHUB_ENV
           fi
 
-      - uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # v6
+      - uses: actions/setup-node@v6.3.0
         with: { node-version-file: .nvmrc }
 
       - run: npm install --omit=optional
 
-      - uses: actions/setup-go@4a3601121dd01d1626a1e23e37211e3254c1c06c # v6
+      - uses: actions/setup-go@v6.4.0
 
       - name: Install htmltest
         run: |
@@ -149,7 +149,7 @@ jobs:
           REFCACHE_NUM_STATUS_4XX=$(grep '"StatusCode": 4' static/refcache.json | wc -l | xargs)
           echo "REFCACHE_NUM_STATUS_4XX=$REFCACHE_NUM_STATUS_4XX" >> $GITHUB_ENV
 
-      - uses: browser-actions/setup-chrome@4f8e94349a351df0f048634f25fec36c3c91eded # v2
+      - uses: browser-actions/setup-chrome@v2.1.1
         id: setup-chrome
         if: ${{ env.REFCACHE_NUM_STATUS_4XX != '0' }}
         with:
