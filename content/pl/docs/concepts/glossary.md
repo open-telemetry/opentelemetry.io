@@ -6,9 +6,9 @@ weight: 200
 default_lang_commit: 0cbe6d7a9d94ab78637023f0d31119fa7ac7ebe1
 ---
 
-Ten słownik definiuje terminy i [pojęcia](/docs/concepts/) specyficzne dla
-projektu OpenTelemetry oraz wyjaśnia, jak w OpenTelemetry używa się powszechnych
-terminów z dziedziny obserwowalności.
+Ten słownik definiuje terminologię i [pojęcia](/docs/concepts/) specyficzne dla
+projektu OpenTelemetry oraz wyjaśnia, jak  używać
+terminów z dziedziny obserwowalności w kontekście OpenTelemetry.
 
 Dokumentujemy również pisownię, także dotyczącą wielkości liter, gdy jest to pomocne. Przykłady:
 [OpenTelemetry](#opentelemetry) i [OTel](#otel).
@@ -29,14 +29,13 @@ definiowania sposobu generowania danych telemetrycznych dla każdego
 
 ### Aplikacja {#application}
 
-Co najmniej jedna [usługa](#service) zaprojektowana dla użytkowników końcowych
-lub innych aplikacji.
+Jedna lub więcej [usług](#service) zaprojektowanych dla użytkowników końcowych
+lub dla innych aplikacji.
 
 ### APM {#apm}
 
 Application Performance Monitoring — monitorowanie aplikacji, ich wydajności
-(szybkość, niezawodność, dostępność itp.) w celu wykrywania problemów,
-alertowania oraz stosowania narzędzi do znajdowania przyczyny źródłowej.
+(szybkość, niezawodność, dostępność itp.) w celu wykrywania problemów, ostrzeganie oraz narzędzia do znajdowania przyczyny źródłowej.
 
 ### Atrybut {#attribute}
 
@@ -50,7 +49,7 @@ atrybutów][attribute].
 Odnosi się do metod zbierania telemetrii, które nie wymagają od użytkownika
 końcowego modyfikacji kodu źródłowego aplikacji. Metody różnią się w zależności
 od języka programowania; przykłady obejmują wstrzykiwanie kodu bajtowego lub
-monkey patching.
+dynamiczną modyfikację kodu wykonywanego, tzw. "monkey patching".
 
 ### Bagaż {#baggage}
 
@@ -84,8 +83,8 @@ dostawcy, która odbiera, przetwarza i eksportuje dane telemetryczne. Pojedynczy
 plik binarny, który można wdrożyć jako agenta lub bramę.
 
 > **Pisownia**: Odnosząc się do [OpenTelemetry Collector][], zawsze pisz
-> Collector z wielkiej litery. Używaj samego "Collector", gdy używasz go jako
-> przymiotnika &mdash; np. "Collector configuration".
+> Kolektor z wielkiej litery. Używaj samego "Kolektor", gdy używasz go jako
+> przymiotnika &mdash; np. "konfiguracja Kolektora".
 
 [OpenTelemetry Collector]: /docs/collector/
 
@@ -93,7 +92,7 @@ plik binarny, który można wdrożyć jako agenta lub bramę.
 
 [Biblioteki instrumentacji](#instrumentation-library) oraz
 [Kolektor](#collector) oferują zestaw podstawowych funkcji, a także dedykowane
-repozytorium contrib z funkcjami dodatkowymi, w tym `Exportery` dostawców.
+repozytorium contrib z funkcjami dodatkowymi, w tym `Eksportery` dostawców.
 
 ### Propagacja kontekstu {#context-propagation}
 
@@ -104,7 +103,7 @@ kontekstu][context propagation].
 
 ### DAG {#dag}
 
-[Directed Acyclic Graph][dag].
+[Directed Acyclic Graph][dag] - skierowany graf acykliczny.
 
 ### Źródło danych {#data-source}
 
@@ -140,12 +139,12 @@ procesów składających się na usługę HTTP lub inną.
 
 Zdarzenie to [rekord logu](#log-record) z nazwą zdarzenia i dobrze znaną
 strukturą. Na przykład zdarzenia przeglądarki w OpenTelemetry stosują określoną
-konwencję nazewnictwa i przenoszą określone dane we wspólnej strukturze.
+konwencję nazewnictwa i są nośnikiem zestawu danych w określonej strukturze.
 
-### Exporter {#exporter}
+### Eksporter {#exporter}
 
-Zapewnia funkcjonalność wysyłania telemetrii do odbiorców. Exportery mogą
-działać w trybie push lub pull.
+Zapewnia funkcjonalność wysyłania telemetrii do odbiorców. Eksportery mogą
+działać w trybie wysyłania (push) lub udostępniania (pull).
 
 ### Pole {#field}
 
@@ -201,7 +200,7 @@ Specyficzna dla języka kolekcja zachowań wywoływanych przez interfejs.
 Czasami używany w odniesieniu do zbioru [rekordów logów](#log-record). Może być
 niejednoznaczny, ponieważ ludzie czasami używają [Log](#log) także w odniesieniu
 do pojedynczego [rekordu logu](#log-record). Gdy możliwa jest niejednoznaczność,
-użyj dodatkowych określeń, na przykład `Log record`. Zobacz [Log][].
+użyj dodatkowych określeń, na przykład `rekord logu`. Zobacz [Log][].
 
 ### Rekord logu {#log-record}
 
@@ -289,7 +288,7 @@ Skrót od [OpenTelemetry Collector](#collector).
 
 Skrót od [OpenTelemetry Enhancement Proposal][].
 
-> **Pisownia**: Pisz "OTEPs" w liczbie mnogiej. Nie pisz `OTep` ani `otep` w
+> **Pisownia**: Pisz "OTEPy" w liczbie mnogiej. Nie pisz `OTep` ani `otep` w
 > opisach.
 
 [OpenTelemetry Enhancement Proposal]:
