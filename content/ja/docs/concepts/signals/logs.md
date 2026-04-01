@@ -143,7 +143,7 @@ DEBUG - 2024-08-04 09:30:15 - User johndoe performed action: file_upload. Filena
 2024-08-04T12:45:23Z level=ERROR service=user-authentication userId=12345 action=login message="Failed login attempt" error="Invalid password" ipAddress=192.168.1.1 userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36"
 ```
 
-半構造化ログは、下流の分析で完全に活用するためには、取り込み時にマッピングと型変換が必要になる場合があります。
+半構造化ログは、下流の分析で完全に活用するためには、データ取り込み時にマッピングと型変換が必要になる場合があります。
 
 ## OpenTelemetry ログコンポーネント {#opentelemetry-logging-components}
 
