@@ -251,7 +251,7 @@ Poprzednik OpenTelemetry. Szczegóły w sekcji
 ### OpenTelemetry {#opentelemetry}
 
 Projekt OpenTelemetry, powstały w wyniku [połączenia][merger] projektów
-[OpenTracing](#opentracing) i [OpenCensus](#opencensus) &mdash; temat tej
+[OpenTracing](#opentracing) i [OpenCensus](#opencensus) &mdash; tematyka tej
 witryny &mdash; to zbiór [API](#api), [SDK](#sdk) i narzędzi, których można
 użyć do
 [instrumentacji](/docs/concepts/instrumentation/), generowania,
@@ -397,7 +397,7 @@ Zobacz [Śledzenie rozproszone](#distributed-tracing).
 
 ### zPages {#zpages}
 
-Alternatywa wewnątrzprocesowa dla zewnętrznych Exporterów. Po dołączeniu
+Alternatywa wewnątrzprocesowa dla zewnętrznych Eksporterów. Po dołączeniu
 zbierają i agregują informacje o śledzeniu i metrykach w tle; dane te są
 serwowane na stronach internetowych na żądanie. Zobacz [zPages][].
 
