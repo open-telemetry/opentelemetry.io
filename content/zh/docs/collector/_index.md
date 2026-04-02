@@ -3,7 +3,7 @@ title: Collector（收集器）
 description: 提供厂商中立的遥测数据接收、处理和导出功能。
 aliases: [collector/about]
 cascade:
-  vers: 0.128.0
+  vers: 0.149.0
 weight: 270
 default_lang_commit: b13d5dd3a9f288ab64d2af98c0b4ec1694499ef3 # patched
 drifted_from_default: true

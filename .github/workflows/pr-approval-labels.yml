@@ -3,8 +3,6 @@
 name: PR approval labels
 
 on:
-  schedule:
-    - cron: '0 0 * * *' # Daily at midnight UTC
   pull_request_target:
     types:
       - opened
@@ -23,6 +21,11 @@ jobs:
   update-approval-labels:
     name: Update approval labels
     runs-on: ubuntu-latest
+    concurrency:
+      group:
+        pr-approval-${{ github.event.pull_request.number ||
+        github.event.workflow_run.pull_requests[0].number || github.run_id }}
+      cancel-in-progress: true
     if: >-
       github.repository_owner == 'open-telemetry' && (github.event_name !=
       'workflow_run' || github.event.workflow_run.conclusion == 'success')
@@ -49,9 +52,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: |
-          if [[ "$EVENT_NAME" == "schedule" ]]; then
-            echo "number=" >> "$GITHUB_OUTPUT"  # unused for scheduled runs
-          elif [[ "$EVENT_NAME" == "workflow_run" ]]; then
+          if [[ "$EVENT_NAME" == "workflow_run" ]]; then
             if [[ ! -f pr-number.txt ]]; then
               echo "Error: pr-number.txt artifact file not found." >&2
               exit 1
@@ -77,9 +78,11 @@ jobs:
           private-key: ${{ secrets.OTELBOT_DOCS_PRIVATE_KEY }}
 
       - name: Update approval labels
+        continue-on-error: true
         run: ./.github/scripts/pr-approval-labels.sh
         env:
           # Use the app token to read org team membership
           GITHUB_TOKEN: ${{ steps.otelbot-token.outputs.token }}
           REPO: ${{ github.repository }}
           PR: ${{ steps.pr.outputs.number }}
+          PUBLISH_DATE_LABELS: blog
