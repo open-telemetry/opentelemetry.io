@@ -1,0 +1,21 @@
+# cSpell:ignore sobserver
+title: Kubernetes Observer Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+license: Apache 2.0
+description:
+  The k8s_observer is a Receiver Creator-compatible watch observer that detects
+  and reports Kubernetes pod and port endpoints.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/k8sobserver
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/observer/k8sobserver
+  version: v0.147.0

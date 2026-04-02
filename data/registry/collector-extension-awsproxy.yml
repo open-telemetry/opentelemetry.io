@@ -1,0 +1,21 @@
+# cSpell:ignore awsproxy
+title: AWS Proxy Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+license: Apache 2.0
+description:
+  The AWS proxy extension accepts requests and forwards them to AWS X-Ray and
+  other AWS services.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/awsproxy
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/awsproxy
+  version: v0.147.0
