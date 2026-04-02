@@ -1,0 +1,21 @@
+# cSpell:ignore failoverconnector
+title: Failover Connector
+registryType: connector
+language: collector
+tags:
+  - go
+  - connector
+  - collector
+license: Apache 2.0
+description:
+  Allows for health based routing between trace, metric, and log pipelines
+  depending on the health of target downstream exporters.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/failoverconnector
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/connector/failoverconnector
+  version: v0.147.0

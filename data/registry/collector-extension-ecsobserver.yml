@@ -1,0 +1,21 @@
+# cSpell:ignore ecsobserver
+title: Amazon Elastic Container Service Observer
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+license: Apache 2.0
+description:
+  The ecsobserver uses the ECS/EC2 API to discover Prometheus scrape targets
+  from all running tasks.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/observer/ecsobserver
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/observer/ecsobserver
+  version: v0.147.0
