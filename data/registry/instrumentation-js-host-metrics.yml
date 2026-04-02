@@ -7,7 +7,7 @@ tags:
 license: Apache 2.0
 description:
   This module provides automatic collection of Host Metrics which includes
-  metrics for:.
+  metrics for CPU, memory, and network.
 authors:
   - name: OpenTelemetry Authors
 urls:

@@ -5,7 +5,9 @@ tags:
   - dotnet
   - instrumentation
 license: Apache 2.0
-description: This is an Instrumentation Library,.
+description:
+  This is an Instrumentation Library, which instruments Service Fabric Remoting
+  and collects telemetry about incoming requests.
 authors:
   - name: OpenTelemetry Authors
 urls:

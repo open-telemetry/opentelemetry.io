@@ -10,7 +10,9 @@ license: Apache 2.0
 description:
   Cloud Foundry (CF) is a platform as a service (PaaS) which has implemented
   their own container technology. The component in charge of providing a local
-  API in each node (also known as 'diego-cell')...
+  API in each node (also known as "diego-cell") is named Garden. The
+  cfgarden_observer looks at the current host to discover Garden containers.
+
 authors:
   - name: OpenTelemetry Authors
 urls:

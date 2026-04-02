@@ -1,4 +1,4 @@
-# cSpell:ignore unmarshalls awslogsencodingextension
+# cSpell:ignore awslogsencodingextension
 title: AWS Logs Encoding Extension
 registryType: extension
 language: collector
@@ -8,7 +8,7 @@ tags:
   - collector
 license: Apache 2.0
 description:
-  This extension unmarshalls logs encoded in formats produced by AWS services.
+  This extension unmarshals logs encoded in formats produced by AWS services.
 authors:
   - name: OpenTelemetry Authors
 urls:

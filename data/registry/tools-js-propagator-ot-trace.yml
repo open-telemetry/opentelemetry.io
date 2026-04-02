@@ -6,7 +6,11 @@ tags:
   - utilities
 license: Apache 2.0
 description:
-  The OT trace propagation format expects Trace IDs to be 64 bits. In order to.
+  Implements the OT trace propagation format for OpenTelemetry. The OT format
+  uses 64-bit Trace IDs (encoded as 16 hex characters), unlike OpenTelemetry's
+  128-bit IDs — when converting, the least significant bits are retained.
+  Propagates context via ot-tracer-traceid, ot-tracer-spanid, ot-tracer-sampled
+  headers, and ot-baggage-* prefixed baggage entries.
 authors:
   - name: OpenTelemetry Authors
 urls:

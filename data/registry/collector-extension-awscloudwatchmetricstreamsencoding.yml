@@ -1,4 +1,4 @@
-# cSpell:ignore unmarshalls awscloudwatchmetricstreamsencodingextension
+# cSpell:ignore awscloudwatchmetricstreamsencodingextension
 title: AWS CloudWatch Metric Streams Encoding Extension
 registryType: extension
 language: collector
@@ -8,7 +8,7 @@ tags:
   - collector
 license: Apache 2.0
 description:
-  This extension unmarshalls metrics encoded in formats produced by [Amazon
+  This extension unmarshals metrics encoded in formats produced by [Amazon
   CloudWatch Metric
   Streams](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Streams.html).
 authors:

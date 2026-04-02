@@ -6,8 +6,9 @@ tags:
   - instrumentation
 license: Apache 2.0
 description:
-  Please read https://opentelemetry.io/docs/instrumentation/php/automatic/ for
-  instructions on how to.
+  This package provides auto-instrumentation for the PostgreSQL native PHP
+  extension (ext-pgsql). Hooks are registered via Composer, and client spans are
+  automatically created for key database operations.
 authors:
   - name: OpenTelemetry Authors
 urls:

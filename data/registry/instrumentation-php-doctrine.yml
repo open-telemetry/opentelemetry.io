@@ -6,8 +6,8 @@ tags:
   - instrumentation
 license: Apache 2.0
 description:
-  This is a read-only subtree split of
-  https://github.com/open-telemetry/opentelemetry-php-contrib.
+  This package provides auto-instrumentation for the Doctrine DBAL and ORM
+  libraries.
 authors:
   - name: OpenTelemetry Authors
 urls:

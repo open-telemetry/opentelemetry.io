@@ -7,10 +7,12 @@ tags:
   - connector
   - collector
 license: Apache 2.0
-description:
-  The default duration metrics unit will change from `ms` to `s` to adhere to
-  the OpenTelemetry semantic conventions and a feature gate
-  `connector.spanmetrics.useSecondAsDefaultMetricsUnit` is also a...
+description: >-
+  Converts distributed trace span data into RED (Request, Error, Duration)
+  metrics. Generates call counts, error rates, and duration histograms
+  aggregated by service name, span name, span kind, and status code, with
+  support for customizable dimensions, exponential histograms, exemplars, and
+  both cumulative and delta aggregation temporality.
 authors:
   - name: OpenTelemetry Authors
 urls:
