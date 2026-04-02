@@ -78,8 +78,7 @@ release. Active follow-up topics include:
 - Declarative configuration support.
 - PHP `8.5` compatibility.
 - Central configuration capabilities aligned with OpenTelemetry policy work.
-- Ongoing alignment between upstream OpenTelemetry distro work and vendor
-  distributions built on top.
+- Ongoing alignment between upstream OpenTelemetry distro work and vendor distributions built on top of it.
 
 ## How to contribute
 
