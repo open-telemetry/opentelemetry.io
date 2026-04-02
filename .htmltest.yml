@@ -31,7 +31,7 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - ^((/..)?/docs/languages/\w+|\.\.)/(api|examples|registry)/$
   - ^(/..)?/docs/collector/registry/$
   - ^(/..)?/docs/languages/dotnet/(metrics-api|traces-api)/
-  - ^((/..)?/docs/migration/)?opencensus/$
+  - ^((/..)?/docs/compatibility/migration/)?opencensus/$
   - ^/../docs/specs/?$ # non-default locale spec redirect
 
   - ^https://deploy-preview-\d+--opentelemetry.netlify.app/

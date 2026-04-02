@@ -1,0 +1,48 @@
+# Docsy overrides
+
+ui_search: Pergunte à IA ou pesquise…
+
+# Community
+
+community_introduce: >-
+  O {{ .Site.Title }} é um projeto de código aberto que qualquer pessoa na
+  comuniadde pode utilizar, melhorar e aproveitar. Adoraríamos que você se
+  juntasse a nós!
+
+community_contribute: >-
+  Para saber como contribuir com a documentação do {{ .Site.Title }}, consulte
+  [Contribuindo](/docs/contributing/). Outros links úteis:
+
+community_how_to:
+  Para o nosso guia de estilo de documentação e muito mais, consulte
+community_guideline: Contribuindo
+
+# Search AI
+ui_search_ai_modal_title: Assistente de IA do OpenTelemetry
+
+ui_search_ai_modal_disclaimer: >-
+  Este **recurso experimental** utiliza IA para responder a perguntas com base
+  na documentação do site, GitHub do OpenTelemetry, Stack Overflow e outros
+  recursos. A IA nem sempre fornece informações precisas ou relevantes.
+  Compartilhe sua opinião enviando seu 
+  [_feedback_](https://github.com/open-telemetry/opentelemetry.io/discussions/6802).
+ui_search_ai_popover_content: >-
+  <a id='ask-ai-trigger' href='#'>Pergunte à IA</a> (&#x2318;-K)
+
+# Collector component table headers
+collector_component_table_header_name: Nome
+collector_component_table_header_distributions: Distribuições
+collector_component_table_header_traces: Rastros
+collector_component_table_header_metrics: Métricas
+collector_component_table_header_logs: Logs
+collector_component_table_header_stability: Estabilidade
+
+# Footnotes
+collector_component_distributions_footnote: >-
+  Mostra quais [distribuições](/docs/collector/distributions/) (core, contrib,
+  K8s, etc.) incluem este componente.
+
+collector_component_stability_footnote: >-
+  Para detalhes sobre os níveis de estabilidade dos componentes, consulte as
+  [definições de estabilidade dos componentes do OpenTelemetry
+  Collector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).

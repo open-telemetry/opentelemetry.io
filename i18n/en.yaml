@@ -45,3 +45,21 @@ config_accordion_notes: 'Notes:'
 config_accordion_properties: 'Properties:'
 config_accordion_version: version
 config_accordion_no_data: No data available
+
+# Collector component table headers
+collector_component_table_header_name: Name
+collector_component_table_header_distributions: Distributions
+collector_component_table_header_traces: Traces
+collector_component_table_header_metrics: Metrics
+collector_component_table_header_logs: Logs
+collector_component_table_header_stability: Stability
+
+# Footnotes
+collector_component_distributions_footnote: >-
+  Shows which [distributions](/docs/collector/distributions/) (core, contrib,
+  K8s, etc.) include this component.
+
+collector_component_stability_footnote: >-
+  For details about component stability levels, see the [OpenTelemetry Collector
+  component stability
+  definitions](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/component-stability.md).
