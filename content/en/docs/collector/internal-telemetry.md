@@ -375,7 +375,7 @@ naming conventions, resulting in metric names that looked like
 Versions 0.120.0 and later of the Collector use Prometheus 3.0 scrapers, so the
 original `http*` and `rpc*` metric names with dots are preserved. The
 [internal metrics](#lists-of-internal-metrics) on this page are listed in their
-original form, such as`rpc.server.duration`. For more information, see the
+original form, such as `rpc.server.call.duration`. For more information, see the
 [Collector v0.120.0 release notes](https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/main/CHANGELOG.md#v01200).
 
 ### Lists of internal metrics
@@ -453,29 +453,29 @@ files in the repository.
 
 #### Additional `detailed`-level metrics
 
-| Metric name                                           | Description                                                                               | Type      |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------------------- | --------- |
-| `http.client.request.body.size`                       | Measures the size of HTTP client request bodies.                                          | Counter   |
-| `http.client.request.duration`                        | Measures the duration of HTTP client requests.                                            | Histogram |
-| `http.server.request.body.size`                       | Measures the size of HTTP server request bodies.                                          | Counter   |
-| `http.server.request.duration`                        | Measures the duration of HTTP server requests.                                            | Histogram |
-| `http.server.response.body.size`                      | Measures the size of HTTP server response bodies.                                         | Counter   |
-| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | Number of bytes in the batch that was sent.                                               | Histogram |
-| `rpc.client.duration`                                 | Measures the duration of outbound RPC.                                                    | Histogram |
-| `rpc.client.request.size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
-| `rpc.client.requests_per_rpc`                         | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
-| `rpc.client.response.size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
-| `rpc.client.responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
-| `rpc.server.duration`                                 | Measures the duration of inbound RPC.                                                     | Histogram |
-| `rpc.server.request.size`                             | Measures the size of RPC request messages (uncompressed).                                 | Histogram |
-| `rpc.server.requests_per_rpc`                         | Measures the number of messages received per RPC. Should be 1 for all non-streaming RPCs. | Histogram |
-| `rpc.server.response.size`                            | Measures the size of RPC response messages (uncompressed).                                | Histogram |
-| `rpc.server.responses_per_rpc`                        | Measures the number of messages sent per RPC. Should be 1 for all non-streaming RPCs.     | Histogram |
+| Metric name                                           | Description                                                     | Type      |
+| ----------------------------------------------------- | --------------------------------------------------------------- | --------- |
+| `http.client.request.body.size`                       | Measures the size of HTTP client request bodies.                | Counter   |
+| `http.client.request.duration`                        | Measures the duration of HTTP client requests.                  | Histogram |
+| `http.server.request.body.size`                       | Measures the size of HTTP server request bodies.                | Counter   |
+| `http.server.request.duration`                        | Measures the duration of HTTP server requests.                  | Histogram |
+| `http.server.response.body.size`                      | Measures the size of HTTP server response bodies.               | Counter   |
+| `otelcol_processor_batch_batch_`<br>`send_size_bytes` | Number of bytes in the batch that was sent.                     | Histogram |
+| `rpc.client.call.duration`                            | Measures the duration of outbound remote procedure calls (RPC). | Histogram |
+| `rpc.client.request.size`                             | Measures the size of RPC request messages (uncompressed).       | Histogram |
+| `rpc.client.response.size`                            | Measures the size of RPC response messages (uncompressed).      | Histogram |
+| `rpc.server.call.duration`                            | Measures the duration of inbound remote procedure calls (RPC).  | Histogram |
+| `rpc.server.request.size`                             | Measures the size of RPC request messages (uncompressed).       | Histogram |
+| `rpc.server.response.size`                            | Measures the size of RPC response messages (uncompressed).      | Histogram |
 
 > [!NOTE]
 >
 > The `http*` and `rpc*` metrics are not covered by the maturity levels below
 > since they are not under the Collector SIG control.
+>
+> RPC metric names are version-dependent. For instance, Collector releases
+> prior to 0.147.0 exposed `rpc.client.duration` and `rpc.server.duration`
+> instead of `rpc.client.call.duration` and `rpc.server.call.duration`.
 >
 > The `otelcol_processor_batch_` metrics are unique to the `batchprocessor`.
 >
