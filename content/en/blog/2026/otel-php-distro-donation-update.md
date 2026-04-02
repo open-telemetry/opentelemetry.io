@@ -58,7 +58,7 @@ and ownership of runtime packaging.
 
 ## Practical rollout checklist
 
-Before broad production rollout, validate:
+Before broad production rollout, validate the following:
 
 - Runtime compatibility across PHP versions and SAPIs (`php-fpm`, `mod_php`,
   CLI).
