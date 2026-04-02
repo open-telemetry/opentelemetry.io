@@ -16,9 +16,9 @@ to existing PHP instrumentation paths, and where contributors can help next.
 
 ## Why this donation matters
 
-OpenTelemetry gives us a common observability standard, but PHP adoption can
-still be difficult in environments with strict operational constraints. Common
-blockers include:
+OpenTelemetry provides a common observability standard, but OpenTelemetry PHP
+adoption can still be difficult in environments where installing or compiling
+native extensions is restricted. Common blockers include:
 
 - Restricted or hardened systems where native extensions cannot be built during
   deployment.
@@ -30,8 +30,8 @@ installation model.
 
 ## What the PHP Distro provides
 
-The project combines native and PHP runtime components into a single deployment
-path for production environments. Current capabilities include:
+The project combines native and PHP runtime components into a single
+deployment model for production environments. Current capabilities include:
 
 - Prebuilt native extension and loader artifacts.
 - Runtime/bootstrap logic for auto-instrumentation.
@@ -40,7 +40,8 @@ path for production environments. Current capabilities include:
 - Inferred spans and URL grouping features for better visibility.
 - OpAMP integration support.
 
-For teams running PHP `8.1` through `8.4`, this can reduce adoption overhead compared with custom build pipelines.
+For teams running PHP `8.1` through `8.4`, this can reduce adoption overhead
+compared with custom build pipelines.
 
 ## Relationship to existing PHP instrumentation
 
@@ -77,7 +78,8 @@ release. Active follow-up topics include:
 - Declarative configuration support.
 - PHP `8.5` compatibility.
 - Central configuration capabilities aligned with OpenTelemetry policy work.
-- Ongoing alignment between upstream OpenTelemetry distro work and vendor distributions built on top of it.
+- Ongoing alignment between upstream OpenTelemetry distro work and vendor
+  distributions built on top of it.
 
 ## How to contribute
 
