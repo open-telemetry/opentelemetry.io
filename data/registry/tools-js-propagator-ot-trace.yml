@@ -1,3 +1,4 @@
+# cSpell:ignore traceid spanid
 title: OpenTelemetry OTTracePropagator
 registryType: utilities
 language: js

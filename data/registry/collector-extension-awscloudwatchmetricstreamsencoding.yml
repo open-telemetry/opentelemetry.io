@@ -1,4 +1,4 @@
-# cSpell:ignore awscloudwatchmetricstreamsencodingextension
+# cSpell:ignore awscloudwatchmetricstreamsencodingextension unmarshals
 title: AWS CloudWatch Metric Streams Encoding Extension
 registryType: extension
 language: collector
