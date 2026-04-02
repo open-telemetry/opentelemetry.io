@@ -50,7 +50,7 @@ not replace them.
 
 - Distro path: package-managed, operations-first rollout with minimal code
   changes.
-- Composer-centric path: manual control and portability where application-level
+- Composer-based path: manual control and portability where application-level
   packaging is preferred.
 
 Choosing between them depends on your deployment model, security constraints,
