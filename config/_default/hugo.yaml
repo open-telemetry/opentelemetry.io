@@ -21,11 +21,11 @@ languages:
     params:
       description: ওপেনটেলিমেট্রি প্রকল্পের সাইট
   es:
-    languageName: Español
+    languageName: Español (Spanish)
     params:
       description: Sitio del proyecto OpenTelemetry
   fr:
-    languageName: Français
+    languageName: Français (French)
     params:
       description: Site du projet OpenTelemetry
   ja:
@@ -42,7 +42,7 @@ languages:
     params:
       description: Strona projektu OpenTelemetry
   pt:
-    languageName: Português
+    languageName: Português (Portuguese)
     languageCode: pt-BR
     params:
       description: Site do Projeto OpenTelemetry
