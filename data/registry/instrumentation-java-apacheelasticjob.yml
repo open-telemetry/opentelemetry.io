@@ -1,4 +1,4 @@
-title: Settings for the Apache ElasticJob instrumentation
+title: Apache ElasticJob instrumentation
 registryType: instrumentation
 language: java
 tags:
