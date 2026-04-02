@@ -16587,6 +16587,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:51:55.962742991Z"
   },
+  "https://github.com/open-telemetry/semantic-conventions/blob/main/docs/exceptions/exceptions-spans.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-02T12:28:23.387268982Z"
+  },
   "https://github.com/open-telemetry/semantic-conventions/blob/main/docs/exceptions/exceptions-spans.md/": {
     "StatusCode": 206,
     "LastSeen": "2026-03-26T17:16:48.697009657Z"
@@ -20018,6 +20022,14 @@
   "https://learn.microsoft.com/en-us/azure/azure-monitor/app/opentelemetry-enable": {
     "StatusCode": 206,
     "LastSeen": "2026-03-24T09:53:33.769351651Z"
+  },
+  "https://learn.microsoft.com/en-us/azure/azure-monitor/data-collection/data-collection-rule-overview": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-02T12:28:44.056871863Z"
+  },
+  "https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-02T12:28:40.884521315Z"
   },
   "https://learn.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger": {
     "StatusCode": 206,
