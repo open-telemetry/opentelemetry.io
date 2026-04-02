@@ -9,7 +9,7 @@ tags:
 license: Apache 2.0
 description:
   Generate logs from recorded [slow database
-  statement](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/exceptions/exceptions-spans.md/)
+  statement](https://github.com/open-telemetry/semantic-conventions/blob/main/docs/exceptions/exceptions-spans.md)
   associated with spans.
 authors:
   - name: OpenTelemetry Authors
