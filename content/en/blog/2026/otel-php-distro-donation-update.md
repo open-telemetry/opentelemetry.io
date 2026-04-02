@@ -30,8 +30,8 @@ installation model.
 
 ## What the PHP Distro provides
 
-The project combines native and PHP runtime components into a single
-deployment model for production environments. Current capabilities include:
+The project combines native and PHP runtime components into a single deployment
+model for production environments. Current capabilities include:
 
 - Prebuilt native extension and loader artifacts.
 - Runtime/bootstrap logic for auto-instrumentation.
