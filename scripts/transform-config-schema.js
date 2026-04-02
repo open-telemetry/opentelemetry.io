@@ -7,10 +7,10 @@
  * format optimized for the configuration types accordion UI.
  *
  * Input:  data/opentelemetry/configuration.json (standard JSON Schema)
- * Output: data/opentelemetry/configuration-types.json (simplified structure)
+ * Output: data/opentelemetry/configurationTypes.json (simplified structure)
  *
  * This script extracts type definitions, processes properties, resolves constraints,
- * and generates human-readable default text - all logic previously done in Hugo templates.
+ * and generates human-readable default text
  */
 
 const fs = require('fs');
@@ -18,7 +18,7 @@ const path = require('path');
 
 // File paths relative to project root
 const INPUT_FILE = 'data/opentelemetry/configuration.json';
-const OUTPUT_FILE = 'data/opentelemetry/configuration-types.json';
+const OUTPUT_FILE = 'data/opentelemetry/configurationTypes.json';
 
 /**
  * Resolve type information from a property definition
@@ -53,7 +53,6 @@ function resolveType(propDef) {
 function buildConstraints(propDef) {
   const parts = [];
 
-  // Numeric constraints
   if (propDef.minimum !== undefined) {
     parts.push(`minimum: ${propDef.minimum}`);
   }
@@ -61,7 +60,6 @@ function buildConstraints(propDef) {
     parts.push(`maximum: ${propDef.maximum}`);
   }
 
-  // String constraints
   if (propDef.minLength !== undefined) {
     parts.push(`minLength: ${propDef.minLength}`);
   }
@@ -72,13 +70,11 @@ function buildConstraints(propDef) {
     parts.push(`pattern: ${propDef.pattern}`);
   }
 
-  // Enum constraint
   if (propDef.enum) {
     const enumVals = propDef.enum.join(', ');
     parts.push(`enum: [${enumVals}]`);
   }
 
-  // Object constraints
   if (propDef.minProperties !== undefined) {
     parts.push(`minProperties: ${propDef.minProperties}`);
   }
@@ -86,7 +82,6 @@ function buildConstraints(propDef) {
     parts.push(`maxProperties: ${propDef.maxProperties}`);
   }
 
-  // Array constraints
   if (propDef.minItems !== undefined) {
     parts.push(`minItems: ${propDef.minItems}`);
   }
@@ -107,7 +102,6 @@ function generateDefaultText(propDef) {
     return `If omitted, ${propDef.default} is used.`;
   }
 
-  // Check if null is an allowed type
   const types = Array.isArray(propDef.type) ? propDef.type : [propDef.type];
   if (types.includes('null')) {
     return 'If omitted or null, default behavior applies.';
@@ -141,7 +135,7 @@ function processProperty(propName, propDef) {
     type: resolveType(propDef),
     default: generateDefaultText(propDef),
     constraints: buildConstraints(propDef),
-    description: cleanDescription(propDef.description)
+    description: cleanDescription(propDef.description),
   };
 }
 
@@ -200,7 +194,7 @@ function processType(typeName, typeDef) {
     isExperimental: typeName.startsWith('Experimental'),
     hasNoProperties,
     properties,
-    constraints: buildTypeConstraints(typeDef)
+    constraints: buildTypeConstraints(typeDef),
   };
 }
 
@@ -263,14 +257,13 @@ function transform() {
     fs.writeFileSync(
       outputPath,
       JSON.stringify(output, null, 2) + '\n',
-      'utf8'
+      'utf8',
     );
 
     console.log('✓ Transformation complete!');
     console.log(`  Input:  ${INPUT_FILE}`);
     console.log(`  Output: ${OUTPUT_FILE}`);
     console.log(`  Types:  ${types.length}`);
-
   } catch (error) {
     console.error('Error during transformation:');
     console.error(error.message);
@@ -287,12 +280,5 @@ if (require.main === module) {
 }
 
 module.exports = {
-  resolveType,
-  buildConstraints,
-  generateDefaultText,
-  cleanDescription,
-  processProperty,
-  processType,
-  extractTypes,
-  transform
+  transform,
 };

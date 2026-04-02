@@ -57,84 +57,82 @@ function loadTypesData() {
 }
 
 function renderAccordion() {
-    if (!container) return false;
+  if (!container) return false;
 
-    const accordion = container.querySelector('.accordion-items-container');
-    if (!accordion) {
-      console.error('accordion-items-container element not found');
-      return false;
+  const accordion = container.querySelector('.accordion-items-container');
+  if (!accordion) {
+    console.error('accordion-items-container element not found');
+    return false;
+  }
+
+  accordion.innerHTML = '';
+
+  const fragment = document.createDocumentFragment();
+
+  typesData.types.forEach((type, index) => {
+    const item = document.createElement('div');
+    item.className = 'accordion-item';
+    item.dataset.typeName = type.name.toLowerCase();
+    item.dataset.experimental = type.isExperimental ? 'true' : 'false';
+
+    const headerId = `heading-${index}`;
+    const collapseId = `collapse-${index}`;
+
+    const header = document.createElement('h2');
+    header.className = 'accordion-header';
+    header.id = headerId;
+
+    const button = document.createElement('button');
+    button.className = 'accordion-button collapsed';
+    button.type = 'button';
+    button.setAttribute('data-bs-toggle', 'collapse');
+    button.setAttribute('data-bs-target', `#${collapseId}`);
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-controls', collapseId);
+
+    const buttonContent = document.createElement('div');
+    buttonContent.className =
+      'd-flex w-100 justify-content-between align-items-center pe-3';
+
+    const typeNameSpan = document.createElement('span');
+    typeNameSpan.className = 'type-name';
+    typeNameSpan.textContent = type.name;
+
+    if (type.isExperimental) {
+      const badge = document.createElement('span');
+      badge.className = 'badge bg-warning text-dark ms-2';
+      badge.textContent = 'Experimental';
+      typeNameSpan.appendChild(badge);
     }
 
-    accordion.innerHTML = '';
+    const propertySummary = document.createElement('span');
+    propertySummary.className = 'property-summary text-muted';
+    if (type.hasNoProperties) {
+      propertySummary.textContent = type.isEnum ? 'Enum type' : 'No properties';
+    } else {
+      propertySummary.textContent = `${type.properties.length} ${type.properties.length === 1 ? 'property' : 'properties'}`;
+    }
 
-    const fragment = document.createDocumentFragment();
+    buttonContent.appendChild(typeNameSpan);
+    buttonContent.appendChild(propertySummary);
+    button.appendChild(buttonContent);
+    header.appendChild(button);
 
-    typesData.types.forEach((type, index) => {
-      const item = document.createElement('div');
-      item.className = 'accordion-item';
-      item.dataset.typeName = type.name.toLowerCase();
-      item.dataset.experimental = type.isExperimental ? 'true' : 'false';
+    const collapseDiv = document.createElement('div');
+    collapseDiv.id = collapseId;
+    collapseDiv.className = 'accordion-collapse collapse';
+    collapseDiv.setAttribute('aria-labelledby', headerId);
 
-      const headerId = `heading-${index}`;
-      const collapseId = `collapse-${index}`;
+    const bodyDiv = document.createElement('div');
+    bodyDiv.className = 'accordion-body';
+    bodyDiv.appendChild(generateAccordionBody(type));
 
-      const header = document.createElement('h2');
-      header.className = 'accordion-header';
-      header.id = headerId;
+    collapseDiv.appendChild(bodyDiv);
 
-      const button = document.createElement('button');
-      button.className = 'accordion-button collapsed';
-      button.type = 'button';
-      button.setAttribute('data-bs-toggle', 'collapse');
-      button.setAttribute('data-bs-target', `#${collapseId}`);
-      button.setAttribute('aria-expanded', 'false');
-      button.setAttribute('aria-controls', collapseId);
-
-      const buttonContent = document.createElement('div');
-      buttonContent.className =
-        'd-flex w-100 justify-content-between align-items-center pe-3';
-
-      const typeNameSpan = document.createElement('span');
-      typeNameSpan.className = 'type-name';
-      typeNameSpan.textContent = type.name;
-
-      if (type.isExperimental) {
-        const badge = document.createElement('span');
-        badge.className = 'badge bg-warning text-dark ms-2';
-        badge.textContent = 'Experimental';
-        typeNameSpan.appendChild(badge);
-      }
-
-      const propertySummary = document.createElement('span');
-      propertySummary.className = 'property-summary text-muted';
-      if (type.hasNoProperties) {
-        propertySummary.textContent = type.isEnum
-          ? 'Enum type'
-          : 'No properties';
-      } else {
-        propertySummary.textContent = `${type.properties.length} ${type.properties.length === 1 ? 'property' : 'properties'}`;
-      }
-
-      buttonContent.appendChild(typeNameSpan);
-      buttonContent.appendChild(propertySummary);
-      button.appendChild(buttonContent);
-      header.appendChild(button);
-
-      const collapseDiv = document.createElement('div');
-      collapseDiv.id = collapseId;
-      collapseDiv.className = 'accordion-collapse collapse';
-      collapseDiv.setAttribute('aria-labelledby', headerId);
-
-      const bodyDiv = document.createElement('div');
-      bodyDiv.className = 'accordion-body';
-      bodyDiv.appendChild(generateAccordionBody(type));
-
-      collapseDiv.appendChild(bodyDiv);
-
-      item.appendChild(header);
-      item.appendChild(collapseDiv);
-      fragment.appendChild(item);
-    });
+    item.appendChild(header);
+    item.appendChild(collapseDiv);
+    fragment.appendChild(item);
+  });
 
   accordion.appendChild(fragment);
   AccordionUtils.updateStats(container);
@@ -154,10 +152,18 @@ function generatePropertyTable(properties) {
 
   const thead = document.createElement('thead');
   const headerRow = document.createElement('tr');
-  const headers = ['Property', 'Type', 'Default Behavior', 'Constraints', 'Description'];
+  const headers = [
+    'Property',
+    'Type',
+    'Default Behavior',
+    'Constraints',
+    'Description',
+  ];
 
   // Check if any property has constraints to decide whether to show that column
-  const hasConstraints = properties.some(prop => prop.constraints && prop.constraints.length > 0);
+  const hasConstraints = properties.some(
+    (prop) => prop.constraints && prop.constraints.length > 0,
+  );
 
   headers.forEach((headerText, index) => {
     // Skip Constraints column if no properties have constraints
@@ -171,7 +177,7 @@ function generatePropertyTable(properties) {
   table.appendChild(thead);
 
   const tbody = document.createElement('tbody');
-  properties.forEach(prop => {
+  properties.forEach((prop) => {
     const row = document.createElement('tr');
 
     // Property name
@@ -209,56 +215,53 @@ function generatePropertyTable(properties) {
 }
 
 function generateAccordionBody(type) {
-    const container = document.createElement('div');
+  const container = document.createElement('div');
 
-    // Add anchor link
-    const anchorLink = document.createElement('a');
-    anchorLink.href = `#${type.id}`;
-    anchorLink.className = 'type-anchor-link td-heading-self-link';
-    anchorLink.setAttribute(
-      'aria-label',
-      `Permalink to ${type.name}`,
-    );
-    anchorLink.textContent = '#';
-    container.appendChild(anchorLink);
+  // Add anchor link
+  const anchorLink = document.createElement('a');
+  anchorLink.href = `#${type.id}`;
+  anchorLink.className = 'type-anchor-link td-heading-self-link';
+  anchorLink.setAttribute('aria-label', `Permalink to ${type.name}`);
+  anchorLink.textContent = '#';
+  container.appendChild(anchorLink);
 
-    // Generate table from properties
-    if (type.properties && type.properties.length > 0) {
-      const table = generatePropertyTable(type.properties);
-      if (table) {
-        const tableContainer = document.createElement('div');
-        tableContainer.className = 'type-table-container';
-        tableContainer.appendChild(table);
-        container.appendChild(tableContainer);
-      }
-    } else if (type.hasNoProperties) {
-      // Show "No properties" message
-      const noPropsP = document.createElement('p');
-      noPropsP.textContent = 'No properties.';
-      noPropsP.className = 'text-muted';
-      container.appendChild(noPropsP);
+  // Generate table from properties
+  if (type.properties && type.properties.length > 0) {
+    const table = generatePropertyTable(type.properties);
+    if (table) {
+      const tableContainer = document.createElement('div');
+      tableContainer.className = 'type-table-container';
+      tableContainer.appendChild(table);
+      container.appendChild(tableContainer);
     }
+  } else if (type.hasNoProperties) {
+    // Show "No properties" message
+    const noPropsP = document.createElement('p');
+    noPropsP.textContent = 'No properties.';
+    noPropsP.className = 'text-muted';
+    container.appendChild(noPropsP);
+  }
 
-    // Add constraints if present
-    if (type.constraints) {
-      const constraintsDiv = document.createElement('div');
-      constraintsDiv.className = 'type-constraints mt-3';
-      const constraintsTitle = document.createElement('strong');
-      constraintsTitle.textContent = 'Constraints:';
-      constraintsDiv.appendChild(constraintsTitle);
-      constraintsDiv.appendChild(document.createElement('br'));
-      constraintsDiv.appendChild(document.createTextNode(type.constraints));
-      container.appendChild(constraintsDiv);
-    }
+  // Add constraints if present
+  if (type.constraints) {
+    const constraintsDiv = document.createElement('div');
+    constraintsDiv.className = 'type-constraints mt-3';
+    const constraintsTitle = document.createElement('strong');
+    constraintsTitle.textContent = 'Constraints:';
+    constraintsDiv.appendChild(constraintsTitle);
+    constraintsDiv.appendChild(document.createElement('br'));
+    constraintsDiv.appendChild(document.createTextNode(type.constraints));
+    container.appendChild(constraintsDiv);
+  }
 
-    // Add link to language status
-    const langStatusLink = document.createElement('div');
-    langStatusLink.className = 'mt-3';
-    const link = document.createElement('a');
-    link.href = `language-status/?search=${encodeURIComponent(type.name)}`;
-    link.className = 'btn btn-sm btn-outline-primary';
-    link.textContent = 'View language support →';
-    langStatusLink.appendChild(link);
+  // Add link to language status
+  const langStatusLink = document.createElement('div');
+  langStatusLink.className = 'mt-3';
+  const link = document.createElement('a');
+  link.href = `language-status/?search=${encodeURIComponent(type.name)}`;
+  link.className = 'btn btn-sm btn-outline-primary';
+  link.textContent = 'View language support →';
+  langStatusLink.appendChild(link);
   container.appendChild(langStatusLink);
 
   return container;
@@ -291,10 +294,9 @@ function restoreFilterState() {
   );
   const hasUrlState = urlState.search || urlState.filter !== 'all';
 
-  const state =
-    hasUrlState
-      ? urlState
-      : AccordionUtils.loadPreferences(LOCAL_STORAGE_KEY) || urlState;
+  const state = hasUrlState
+    ? urlState
+    : AccordionUtils.loadPreferences(LOCAL_STORAGE_KEY) || urlState;
 
   searchInput.value = state.search || '';
   filterSelect.value = state.filter || 'all';
