@@ -8231,10 +8231,6 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-12T10:00:34.244962414Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sapmexporter": {
-    "StatusCode": 404,
-    "LastSeen": "2026-03-26T17:18:26.914670435Z"
-  },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/sematextexporter": {
     "StatusCode": 206,
     "LastSeen": "2026-03-12T10:00:41.738090172Z"
@@ -8478,10 +8474,6 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/cumulativetodeltaprocessor": {
     "StatusCode": 206,
     "LastSeen": "2026-03-17T09:58:10.518479475Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/datadogsemanticsprocessor": {
-    "StatusCode": 404,
-    "LastSeen": "2026-03-26T17:19:33.511837014Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/deltatocumulativeprocessor": {
     "StatusCode": 206,
@@ -8798,10 +8790,6 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8seventsreceiver": {
     "StatusCode": 206,
     "LastSeen": "2026-03-17T09:59:30.349537357Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8slogreceiver": {
-    "StatusCode": 404,
-    "LastSeen": "2026-03-26T17:19:38.185252744Z"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/receiver/k8sobjectsreceiver": {
     "StatusCode": 206,
@@ -18999,10 +18987,6 @@
     "StatusCode": 200,
     "LastSeen": "2026-03-12T10:06:00.100917752Z"
   },
-  "https://hex.pm/packages/opentelemetry_commanded": {
-    "StatusCode": 404,
-    "LastSeen": "2026-03-26T17:19:45.853009331Z"
-  },
   "https://hex.pm/packages/opentelemetry_ecto": {
     "StatusCode": 200,
     "LastSeen": "2026-03-10T09:58:19.611753106Z"
@@ -25298,10 +25282,6 @@
   "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Quartz": {
     "StatusCode": 200,
     "LastSeen": "2026-03-10T09:58:19.11136954Z"
-  },
-  "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Remoting": {
-    "StatusCode": 404,
-    "LastSeen": "2026-03-26T17:19:44.319543506Z"
   },
   "https://www.nuget.org/packages/OpenTelemetry.Instrumentation.Runtime": {
     "StatusCode": 200,
