@@ -45,8 +45,9 @@ compared with custom build pipelines.
 
 ## Relationship to existing PHP instrumentation
 
-The distro is intended to coexist with existing OpenTelemetry PHP approaches,
-not replace them.
+The distro builds on the same OpenTelemetry PHP APIs and SDK, so it does not
+fork or replace core components. Teams can choose either installation path on a
+per-service basis:
 
 - Distro path: package-managed, operations-first rollout with minimal code
   changes.
