@@ -14,3 +14,8 @@ echo "Lines: $(wc -l < "$SCHEMA_PATH" | tr -d ' ')"
 echo ""
 echo "Transforming schema to simplified format..."
 node scripts/transform-config-schema.js
+
+echo ""
+echo "Cleaning up intermediate file..."
+rm -f "$SCHEMA_PATH"
+echo "Removed: $SCHEMA_PATH"

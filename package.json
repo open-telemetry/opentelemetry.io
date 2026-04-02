@@ -41,7 +41,7 @@
     "_list:fix:for-test-and-fix": "npm -s run _list:fix:* | grep -Ev \"collector-sync|i18n|refcache|submodule\"",
     "_ls-bad-filenames": "find assets content static -name '*_*' ! -name '[_.]*'",
     "_pin:submodule": "scripts/pin-submodules.pl",
-    "_prebuild": "npm run seq -- get:submodule cp:spec transform:config-schema",
+    "_prebuild": "npm run seq -- get:submodule cp:spec",
     "_prepare:docsy": "cd themes/docsy && npm install",
     "_prettier:any": "npx prettier --ignore-path ''",
     "_refcache:prune": "npx gulp prune",
