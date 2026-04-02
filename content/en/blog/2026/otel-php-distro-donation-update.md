@@ -87,7 +87,7 @@ If you want to help:
 
 - Test the distro in real environments and share compatibility findings.
 - Report installation and runtime issues in
-  [`opentelemetry-php-distro`](https://github.com/open-telemetry/opentelemetry-php-distro).
+  [`opentelemetry-php-distro` repository](https://github.com/open-telemetry/opentelemetry-php-distro).
 - Propose documentation improvements for deployment, migration, and
   troubleshooting.
 - Join OpenTelemetry PHP and relevant SIG discussions to align roadmap and user
