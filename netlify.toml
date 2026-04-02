@@ -19,6 +19,10 @@ force = true
 function = "schema-analytics"
 path = "/schemas/*"
 
+# Note: the schema-analytics Edge Function also sets this content-type for
+# /schemas/* 2xx responses, since Netlify custom headers don't reliably apply
+# once an Edge Function handles the route. This rule is kept as a fallback in
+# case the Edge Function is removed.
 [[headers]]
   for = "/schemas/:version"
   [headers.values]

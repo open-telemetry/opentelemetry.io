@@ -424,6 +424,13 @@ After deploying:
 4. After custom dimensions propagate, confirm `asset_group = schema` and the
    expected `asset_path` appear in GA4 and Looker Studio.
 
+Validation note:
+
+- GA4 `mp/collect` returns `2xx` even when a payload is malformed, so use the
+  GA4 Measurement Protocol validation server during initial bring-up if payload
+  validation is needed:
+  <https://developers.google.com/analytics/devguides/collection/protocol/ga4/validating-events>
+
 ## Edge Function collection rules
 
 ### Tracked paths

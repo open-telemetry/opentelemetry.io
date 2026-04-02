@@ -37,7 +37,7 @@ export default async function schemaAnalytics(request: Request, context: any) {
 function buildPayload(request: Request, response: Response) {
   const requestUrl = new URL(request.url);
   const contentType = normalizeContentType(
-    response.headers.get('content-type') ?? 'application/yaml',
+    response.headers.get('content-type'),
   );
 
   return {
@@ -157,6 +157,11 @@ async function sendGa4Event({
   endpoint.searchParams.set('measurement_id', measurementId);
 
   try {
+    // GA4 /mp/collect returns 2xx when the HTTP request is received, even if
+    // the payload is malformed or the event is not processed. Use the GA4
+    // validation server (/debug/mp/collect) during bring-up if payload
+    // validation is needed:
+    // https://developers.google.com/analytics/devguides/collection/protocol/ga4/validating-events
     const response = await fetch(endpoint, {
       body: JSON.stringify(payload),
       headers: { 'content-type': 'application/json' },
