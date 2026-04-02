@@ -5,7 +5,10 @@ tags:
   - dotnet
   - instrumentation
 license: Apache 2.0
-description: This is an [Instrumentation.
+description:
+  This is an Instrumentation Library, which instruments .NET Remoting and
+  collects telemetry about incoming and outgoing requests on client and server
+  objects.
 authors:
   - name: OpenTelemetry Authors
 urls:
