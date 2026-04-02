@@ -3,7 +3,6 @@ title: Blueprints
 description:
   Blueprints for best practices when adopting and implementing OpenTelemetry in
   common environments
-weight: 100
 ---
 
 Blueprints are living documents that solve common OpenTelemetry adoption and

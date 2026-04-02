@@ -3,7 +3,6 @@ title: Reference implementations
 description:
   Examples of how different organizations with different environments have
   implemented OpenTelemetry
-weight: 200
 ---
 
 Reference implementations show how real-world organizations use OpenTelemetry to
