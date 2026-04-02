@@ -13,7 +13,4 @@ authors:
 urls:
   repo: https://github.com/open-telemetry/opentelemetry-erlang-contrib/tree/main/instrumentation/opentelemetry_commanded
 createdAt: 2025-03-26
-package:
-  registry: hex
-  name: opentelemetry_commanded
 isFirstParty: false
