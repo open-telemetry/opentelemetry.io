@@ -498,6 +498,12 @@ Do not send:
 
 If coarse origin analysis is useful, send only a normalized `referrer_host`.
 
+Phase 1 intentionally does not forward the original request `User-Agent` header
+to GA4. The primary reporting goal is event counts and top-accessed asset paths,
+not browser or device attribution, and Netlify Observability is the better
+source for request-level traffic classification such as browsers, crawlers, and
+AI agents.
+
 ## Cardinality controls
 
 ### Known GA4 risk
