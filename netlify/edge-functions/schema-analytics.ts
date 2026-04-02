@@ -7,7 +7,7 @@ export default async function schemaAnalytics(request: Request, context: any) {
   const response = await context.next();
   const normalizedResponse = ensureSchemaContentType(request, response);
 
-  if (!shouldTrackSchemaFetch(request, normalizedResponse, context)) {
+  if (!shouldTrackSchemaFetch(request, normalizedResponse)) {
     return normalizedResponse;
   }
 
@@ -15,6 +15,9 @@ export default async function schemaAnalytics(request: Request, context: any) {
   const apiSecret = getEnvValue(API_SECRET_ENV_NAMES);
 
   if (!measurementId || !apiSecret) {
+    // Event sending is enabled in any environment that defines GA4_API_SECRET.
+    // Keep that secret scoped to production unless a non-production environment
+    // should intentionally emit GA4 asset_fetch events.
     return normalizedResponse;
   }
 
@@ -87,20 +90,6 @@ function getEnvValue(names: string[]) {
   }
 
   return null;
-}
-
-function getProductionHost(context: any) {
-  const siteUrl = context?.site?.url;
-
-  if (!siteUrl) {
-    return null;
-  }
-
-  try {
-    return new URL(siteUrl).hostname;
-  } catch {
-    return null;
-  }
 }
 
 function isSchemaContentType(contentTypeHeader: string | null) {
@@ -189,11 +178,7 @@ async function sendGa4Event({
   }
 }
 
-function shouldTrackSchemaFetch(
-  request: Request,
-  response: Response,
-  context: any,
-) {
+function shouldTrackSchemaFetch(request: Request, response: Response) {
   if (request.method !== 'GET') {
     return false;
   }
@@ -201,11 +186,6 @@ function shouldTrackSchemaFetch(
   const requestUrl = new URL(request.url);
 
   if (!requestUrl.pathname.startsWith('/schemas/')) {
-    return false;
-  }
-
-  const productionHost = getProductionHost(context);
-  if (!productionHost || requestUrl.hostname !== productionHost) {
     return false;
   }
 

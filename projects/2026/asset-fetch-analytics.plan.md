@@ -331,6 +331,11 @@ Configure the Netlify site with:
 Phase 1 should reuse the existing web stream and should not introduce a second
 measurement ID.
 
+Phase 1 should rely on environment-variable scoping rather than host-based
+checks inside the Edge Function. If `GA4_API_SECRET` is only configured for
+production, local and preview environments will not send GA4 events unless the
+secret is intentionally provided there as well.
+
 ### Create the GA4 Measurement Protocol API secret
 
 In GA4:
