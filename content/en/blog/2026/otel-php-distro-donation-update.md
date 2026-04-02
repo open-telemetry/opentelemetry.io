@@ -40,8 +40,7 @@ path for production environments. Current capabilities include:
 - Inferred spans and URL grouping features for better visibility.
 - OpAMP integration support.
 
-For teams running PHP `8.1` through `8.4`, this can reduce adoption friction
-compared with custom build pipelines.
+For teams running PHP `8.1` through `8.4`, this can reduce adoption overhead compared with custom build pipelines.
 
 ## Relationship to existing PHP instrumentation
 
