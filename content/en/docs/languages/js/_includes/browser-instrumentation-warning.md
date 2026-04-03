@@ -5,7 +5,6 @@
 >
 > Client instrumentation for the browser is **experimental** and mostly
 > **unspecified**. If you are interested in helping out, get in touch with the
-> [Client Instrumentation SIG][].
+> [Browser SIG][].
 
-[Client Instrumentation SIG]:
-  https://docs.google.com/document/d/16Vsdh-DM72AfMg_FIt9yT9ExEWF4A_vRbQ3jRNBe09w
+[Browser SIG]: https://github.com/open-telemetry/community#implementation-sigs
