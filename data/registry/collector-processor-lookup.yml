@@ -1,0 +1,21 @@
+# cSpell:ignore lookupprocessor
+title: Lookup Processor
+registryType: processor
+language: collector
+tags:
+  - go
+  - processor
+  - collector
+license: Apache 2.0
+description:
+  The lookup processor enriches telemetry signals by performing external lookups
+  to retrieve additional data.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/processor/lookupprocessor
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/processor/lookupprocessor
+  version: v0.147.0

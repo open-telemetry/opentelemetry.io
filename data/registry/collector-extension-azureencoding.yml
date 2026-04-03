@@ -1,0 +1,24 @@
+# cSpell:ignore azureencodingextension
+title: Azure Logs/Traces/Metrics Encoding Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+license: Apache 2.0
+description:
+  This extension is designed for unmarshaling logs/traces/metrics encoded in
+  specific format produced by [Azure Diagnostic Settings
+  Export](https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/diagnostic-settings)
+  or [Azure Data Collection Rules
+  (DCRs)](https://learn.microsoft.com/en-us/azure/azure-monitor/data-collection/data-collection-rule-overview)
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/azureencodingextension
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding/azureencodingextension
+  version: v0.147.0
