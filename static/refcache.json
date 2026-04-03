@@ -2021,11 +2021,11 @@
   },
   "https://docs.google.com/document/d/1WQDz1jF0yKBXe3OibXWfy3g6lor9SvjZ4xT-8uuDCiA/edit": {
     "StatusCode": 404,
-    "LastSeen": "2026-04-02T09:58:46.224667332Z"
+    "LastSeen": "2026-04-03T09:57:54.759399105Z"
   },
   "https://docs.google.com/document/d/1ix9_4TQO3o-qyeyNhcOmqAc1MTyr-wnXxxsdWgCMn9c/edit": {
     "StatusCode": 404,
-    "LastSeen": "2026-04-02T09:58:43.213111125Z"
+    "LastSeen": "2026-04-03T09:57:52.245718129Z"
   },
   "https://docs.google.com/document/d/1wW0jLldwXN8Nptq2xmgETGbGn9eWP8fitvD5njM-xZY": {
     "StatusCode": 200,
@@ -11074,10 +11074,6 @@
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.Quartz": {
     "StatusCode": 206,
     "LastSeen": "2026-03-12T10:05:55.219510697Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.Remoting": {
-    "StatusCode": 206,
-    "LastSeen": "2026-03-26T17:19:44.105962914Z"
   },
   "https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.Runtime": {
     "StatusCode": 206,
@@ -20343,10 +20339,6 @@
     "StatusCode": 200,
     "LastSeen": "2026-03-23T14:21:06.627335663Z"
   },
-  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/sapmexporter": {
-    "StatusCode": 200,
-    "LastSeen": "2026-03-26T17:18:22.452908083Z"
-  },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/exporter/sematextexporter": {
     "StatusCode": 200,
     "LastSeen": "2026-03-23T14:21:16.769475019Z"
@@ -20574,10 +20566,6 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/cumulativetodeltaprocessor": {
     "StatusCode": 200,
     "LastSeen": "2026-03-10T09:56:31.45694456Z"
-  },
-  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/datadogsemanticsprocessor": {
-    "StatusCode": 200,
-    "LastSeen": "2026-03-26T17:19:33.334297913Z"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/processor/deltatocumulativeprocessor": {
     "StatusCode": 200,
@@ -20882,10 +20870,6 @@
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8seventsreceiver": {
     "StatusCode": 200,
     "LastSeen": "2026-03-10T10:00:34.926Z"
-  },
-  "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8slogreceiver": {
-    "StatusCode": 200,
-    "LastSeen": "2026-03-26T17:19:37.999611212Z"
   },
   "https://pkg.go.dev/github.com/open-telemetry/opentelemetry-collector-contrib/receiver/k8sobjectsreceiver": {
     "StatusCode": 200,
