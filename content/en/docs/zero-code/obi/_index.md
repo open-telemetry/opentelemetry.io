@@ -83,7 +83,7 @@ For a complete list of changes and upgrade notes, see the
 [release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.7.0).
 
 If you want to explore the new NGINX example, see the
-[example walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/release-v0.7.0/examples/nginx).
+[example walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.7.0/examples/nginx).
 
 ## Requirements
 
