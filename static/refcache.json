@@ -12547,9 +12547,9 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-17T09:54:36.82748599Z"
   },
-  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/release-v0.7.0/examples/nginx": {
-    "StatusCode": 404,
-    "LastSeen": "2026-04-03T18:44:41.294254871Z"
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.7.0/examples/nginx": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-03T19:48:49.65041184Z"
   },
   "https://github.com/open-telemetry/opentelemetry-ebpf-profiler": {
     "StatusCode": 206,
