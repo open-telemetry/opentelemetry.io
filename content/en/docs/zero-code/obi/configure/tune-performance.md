@@ -20,7 +20,7 @@ configuration or with environment variables.
 | `traffic_control_backend`<p>`OTEL_EBPF_BPF_TC_BACKEND`</p>        | Selects the backend for attaching traffic control probes. Refer to the [traffic control backend](#traffic-control-backend) section for details.                                   | string  | `auto`  |
 | `http_request_timeout`<p>`OTEL_EBPF_BPF_HTTP_REQUEST_TIMEOUT`</p> | Sets the time interval after which OBI considers an HTTP request a timeout. Refer to the [HTTP request timeout](#http-request-timeout) section for details.                       | string  | (0ms)   |
 | `high_request_volume`<p>`OTEL_EBPF_BPF_HIGH_REQUEST_VOLUME`</p>   | Sends telemetry events as soon as OBI detects a response. Refer to the [high request volume](#high-request-volume) section for details.                                           | boolean | (false) |
-| `maps_config.global_scale_factor`                                 | Scales eBPF map sizes in powers of two. Positive values grow map sizes, negative values shrink map sizes, and 0 keeps defaults. Refer to [eBPF map resizing](#ebpf-map-resizing). | integer | 0       |
+| `maps_config.global_scale_factor`                                 | Scales eBPF map sizes in powers of two. Positive values grow map sizes, negative values shrink map sizes, and 0 keeps defaults. Refer to [eBPF map resizing](#ebpf-map-resizing). | int     | 0       |
 
 ## Wake up length
 

@@ -427,7 +427,7 @@ prometheus_export:
   buckets:
     request_size_histogram: [0, 10, 20, 22]
     response_size_histogram: [0, 10, 20, 22]
-  instrumentations: ["http, "sql"]
+  instrumentations: ["http", "sql"]
 ```
 
 | YAML<br>environment variable                                                                        | Description                                                                                                                                                                                                                       | Type            | Default      |

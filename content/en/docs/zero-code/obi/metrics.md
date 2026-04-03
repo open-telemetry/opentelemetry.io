@@ -25,8 +25,8 @@ Prometheus format.
 | Application | `messaging.process.duration`       | `messaging_process_duration`               | Histogram | seconds | Duration of Messaging (Kafka) process operations (Experimental)                                                       |
 | Application | `gen_ai.client.operation.duration` | `gen_ai_client_operation_duration_seconds` | Histogram | seconds | Duration of GenAI client operations (Experimental)                                                                    |
 | Application | `gen_ai.client.token.usage`        | `gen_ai_client_token_usage`                | Histogram | 1       | Number of GenAI input/output tokens consumed, labeled by token type (Experimental)                                    |
-| Network     | `obi.network.flow.bytes`           | `obi_network_flow_bytes`                   | Counter   | bytes   | Bytes submitted from a source network endpoint to a destination network endpoint                                      |
-| Network     | `obi.network.inter.zone.bytes`     | `obi_network_inter_zone_bytes`             | Counter   | bytes   | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes) |
+| Network     | `obi.network.flow.bytes`           | `obi_network_flow_bytes_total`             | Counter   | bytes   | Bytes submitted from a source network endpoint to a destination network endpoint                                      |
+| Network     | `obi.network.inter.zone.bytes`     | `obi_network_inter_zone_bytes_total`       | Counter   | bytes   | Bytes flowing between cloud availability zones in your cluster (Experimental, currently only available in Kubernetes) |
 | Network     | `obi.stat.tcp.rtt`                 | `obi_stat_tcp_rtt_seconds`                 | Histogram | seconds | TCP round-trip time (RTT) latency observed between network endpoints (StatsO11y)                                      |
 
 OBI can also export
