@@ -145,7 +145,7 @@ If you don't set a protocol OBI sets the protocol as follows:
 
 ### Metrics instrumentation
 
-The list of instrumentation areas OBI can collection data from:
+The list of instrumentation areas OBI can collect data from:
 
 - `*`: all instrumentation, if `*` is present OBI ignores other values
 - `http`: HTTP/HTTPS/HTTP/2 application metrics
@@ -204,7 +204,7 @@ If you don't set a protocol OBI sets the protocol as follows:
 
 ### Traces instrumentation
 
-The list of instrumentation areas OBI can collection data from:
+The list of instrumentation areas OBI can collect data from:
 
 - `*`: all instrumentation, if `*` is present OBI ignores other values
 - `http`: HTTP/HTTPS/HTTP/2 application traces
