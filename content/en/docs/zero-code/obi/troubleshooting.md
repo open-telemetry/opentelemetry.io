@@ -216,8 +216,7 @@ assumptions about unknown initiators in network flows.
 In v0.6.0 and earlier, OBI would attempt to guess which endpoint was the client
 and which was the server in network flows where the initiator couldn't be
 determined. This guessing was based on ordinal heuristics (typically assuming
-the lower port number was the server and the higher port number was the
-client).
+the lower port number was the server and the higher port number was the client).
 
 In v0.7.0, this guessing is disabled by default, which means:
 

@@ -422,12 +422,12 @@ pull metrics in Prometheus format. It is enabled if the `port` property is set.
 prometheus_export:
   port: 8999
   path: /metrics
-  extra_resource_attributes: ["deployment_environment"]
+  extra_resource_attributes: ['deployment_environment']
   ttl: 1s
   buckets:
     request_size_histogram: [0, 10, 20, 22]
     response_size_histogram: [0, 10, 20, 22]
-  instrumentations: ["http", "sql"]
+  instrumentations: ['http', 'sql']
 ```
 
 | YAML<br>environment variable                                                                        | Description                                                                                                                                                                                                                       | Type            | Default      |
