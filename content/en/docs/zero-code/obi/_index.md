@@ -9,7 +9,7 @@ cascade:
   OTEL_RESOURCE_ATTRIBUTES_APPLICATION: obi
   OTEL_RESOURCE_ATTRIBUTES_NAMESPACE: obi
   OTEL_RESOURCE_ATTRIBUTES_POD: obi
-cSpell:ignore: CAP_PERFMON
+cSpell:ignore: asyncio CAP_PERFMON uvloop
 ---
 
 OpenTelemetry libraries provide telemetry collection for popular programming

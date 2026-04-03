@@ -3,6 +3,7 @@ title: Distributed traces with OBI
 linkTitle: Distributed traces
 description: Learn about OBI's distributed traces support.
 weight: 22
+cSpell:ignore: asyncio uvloop
 ---
 
 ## Introduction
