@@ -27,15 +27,16 @@ metrics:
   features: ['network', 'network_inter_zone']
 ```
 
-| YAML<br>environment variable               | Description                                                                                                                                                                                                                                           | Type            | Default           |
-| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------- |
-| `features`<br>`OTEL_EBPF_METRICS_FEATURES` | The list of metric groups OBI exports data for, refer to [metrics export features](#metrics-export-features). Accepted values `application`, `application_span`, `application_host`, `application_service_graph`, `network` and `network_inter_zone`. | list of strings | `["application"]` |
+| YAML<br>environment variable               | Description                                                                                                                                                                                                                                                       | Type            | Default           |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------- |
+| `features`<br>`OTEL_EBPF_METRICS_FEATURES` | The list of metric groups OBI exports data for, refer to [metrics export features](#metrics-export-features). Accepted values `all`, `*`, `application`, `application_span`, `application_host`, `application_service_graph`, `network` and `network_inter_zone`. | list of strings | `["application"]` |
 
 ### Metrics export features
 
 The OBI metrics exporter can export the following metrics data groups for
 processes matching entries in the [metrics discovery](./) configuration.
 
+- `all` or `*`: All metric groups (convenience option for enabling all metrics)
 - `application`: Application-level metrics.
 - `application_host`: Application-level host metrics for host-based pricing.
 - `application_span`: Application-level trace span metrics in legacy format
@@ -157,6 +158,7 @@ The list of instrumentation areas OBI can collection data from:
 - `mqtt`: MQTT publish/subscribe message metrics (MQTT 3.1.1 and 5.0)
 - `couchbase`: Couchbase N1QL/SQL++ query metrics and KV (Key-Value) protocol
   metrics based on memcached protocol
+- `genai`: GenAI client metrics (OpenAI and Anthropic)
 - `gpu`: GPU performance metrics
 - `mongo`: MongoDB client call metrics
 - `dns`: DNS query metrics
@@ -216,6 +218,7 @@ The list of instrumentation areas OBI can collection data from:
 - `mqtt`: MQTT publish/subscribe message traces (MQTT 3.1.1 and 5.0)
 - `couchbase`: Couchbase N1QL/SQL++ query traces and KV (Key-Value) protocol
   traces, with query text and operation details
+- `genai`: GenAI client traces (OpenAI and Anthropic)
 - `gpu`: GPU performance traces
 - `mongo`: MongoDB client call traces
 - `dns`: DNS query traces
@@ -427,15 +430,16 @@ prometheus_export:
   instrumentations: ["http, "sql"]
 ```
 
-| YAML<br>environment variable                                                                        | Description                                                                                                                                                                                                                       | Type            | Default    |
-| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ---------- |
-| `port`<br>`OTEL_EBPF_PROMETHEUS_PORT`                                                               | The HTTP port for the Prometheus scrape endpoint. If unset or 0, no Prometheus endpoint is open.                                                                                                                                  | int             |            |
-| `path`<br>`OTEL_EBPF_PROMETHEUS_PATH`                                                               | The HTTP query path to fetch the list of Prometheus metrics.                                                                                                                                                                      | string          | `/metrics` |
-| `extra_resource_attributes`<br>`OTEL_EBPF_PROMETHEUS_EXTRA_RESOURCE_ATTRIBUTES`                     | A list of additional resource attributes to be added to the reported `target_info` metric. Refer to [extra resource attributes](#prometheus-extra-resource-attributes) for important details about runtime discovered attributes. | list of strings |            |
-| `ttl`<br>`OTEL_EBPF_PROMETHEUS_TTL`                                                                 | The duration after which metric instances are not reported if they haven't been updated. Used to avoid reporting indefinitely finished application instances.                                                                     | Duration        | `5m`       |
-| `buckets`                                                                                           | Sets how you can override bucket boundaries of diverse histograms, refer to [override histogram buckets](../metrics-histograms/).                                                                                                 | Object          |            |
-| `allow_service_graph_self_references`<br>`OTEL_EBPF_PROMETHEUS_ALLOW_SERVICE_GRAPH_SELF_REFERENCES` | Does OBI include self-referencing service in service graph generation. Self referencing isn't useful for service graphs and increases data cardinality.                                                                           | boolean         | `false`    |
-| `instrumentations`<br>`OTEL_EBPF_PROMETHEUS_INSTRUMENTATIONS`                                       | The list of instrumentation OBI collects data for, refer to [Prometheus instrumentation](#prometheus-instrumentation) section.                                                                                                    | list of strings | `["*"]`    |
+| YAML<br>environment variable                                                                        | Description                                                                                                                                                                                                                       | Type            | Default      |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------ |
+| `port`<br>`OTEL_EBPF_PROMETHEUS_PORT`                                                               | The HTTP port for the Prometheus scrape endpoint. If unset or 0, no Prometheus endpoint is open.                                                                                                                                  | int             |              |
+| `path`<br>`OTEL_EBPF_PROMETHEUS_PATH`                                                               | The HTTP query path to fetch the list of Prometheus metrics.                                                                                                                                                                      | string          | `/metrics`   |
+| `extra_resource_attributes`<br>`OTEL_EBPF_PROMETHEUS_EXTRA_RESOURCE_ATTRIBUTES`                     | A list of additional resource attributes to be added to the reported `target_info` metric. Refer to [extra resource attributes](#prometheus-extra-resource-attributes) for important details about runtime discovered attributes. | list of strings |              |
+| `ttl`<br>`OTEL_EBPF_PROMETHEUS_TTL`                                                                 | The duration after which metric instances are not reported if they haven't been updated. Used to avoid reporting indefinitely finished application instances.                                                                     | Duration        | `5m`         |
+| `buckets`                                                                                           | Sets how you can override bucket boundaries of diverse histograms, refer to [override histogram buckets](../metrics-histograms/).                                                                                                 | Object          |              |
+| `exemplar_filter`<br>`OTEL_EBPF_PROMETHEUS_EXEMPLAR_FILTER`                                         | Controls when exemplars are attached to Prometheus metrics. Accepted values: `always_on`, `always_off`, `trace_based`.                                                                                                            | string          | `always_off` |
+| `allow_service_graph_self_references`<br>`OTEL_EBPF_PROMETHEUS_ALLOW_SERVICE_GRAPH_SELF_REFERENCES` | Does OBI include self-referencing service in service graph generation. Self referencing isn't useful for service graphs and increases data cardinality.                                                                           | boolean         | `false`      |
+| `instrumentations`<br>`OTEL_EBPF_PROMETHEUS_INSTRUMENTATIONS`                                       | The list of instrumentation OBI collects data for, refer to [Prometheus instrumentation](#prometheus-instrumentation) section.                                                                                                    | list of strings | `["*"]`      |
 
 ### Prometheus extra resource attributes
 
@@ -468,6 +472,7 @@ The list of instrumentation areas OBI can collection data from:
 - `kafka`: Kafka client/server message queue metrics
 - `mqtt`: MQTT publish/subscribe message metrics
 - `couchbase`: Couchbase N1QL/SQL++ query metrics and KV protocol metrics
+- `genai`: GenAI client metrics (OpenAI and Anthropic)
 
 For example, setting the `instrumentations` option to: `http,grpc` enables the
 collection of `HTTP/HTTPS/HTTP2` and `gRPC` application metrics, and disables

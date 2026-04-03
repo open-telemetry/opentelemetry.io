@@ -40,16 +40,50 @@ OBI offers the following features:
 - **Visibility into encrypted communications**: Capture transactions over
   TLS/SSL without decryption
 - **Context propagation**: Propagate trace context across services automatically
-- **Protocol support**: HTTP/S, gRPC, gRPC-Web, MQTT, and more
+- **Protocol support**: HTTP/S, gRPC, gRPC-Web, MQTT, Memcached, and more
 - **Database instrumentation**: PostgreSQL (including pgx driver), MySQL,
   MongoDB, Redis, Couchbase (N1QL/SQL++ and KV protocol)
+- **GenAI instrumentation**: Trace and metrics for OpenAI and Anthropic Claude
+  API calls with automatic payload extraction
 - **Low cardinality metrics**: Prometheus-compatible metrics with low
   cardinality for cost reduction
-- **Network observability**: Capture network flows between services
+- **Network observability**: Capture network flows between services with
+  host-level TCP RTT statistics
 - **Enhanced service discovery**: Improved service name lookup with DNS
   resolution
 - **Collector integration**: Run OBI as an OpenTelemetry Collector receiver
   component
+
+## Recent highlights (v0.7.0)
+
+OBI v0.7.0 introduces several significant improvements:
+
+- **StatsO11y**: New statistical metrics pipeline for host-level network
+  statistics, starting with TCP RTT metrics
+- **Expanded protocol coverage**: Added Memcached protocol tracing support
+- **Enhanced GenAI instrumentation**: Added support for Anthropic Claude with
+  automatic payload extraction
+- **Python asyncio improvements**: Added context propagation support for Python
+  asyncio workloads using `uvloop`
+- **New example scenario**: Added an NGINX example covering direct routing,
+  reverse proxying, and route-based telemetry across Docker, Kubernetes, and
+  standalone deployments
+- **Prometheus exemplars**: Support for exemplars in metrics export for better
+  correlation with traces
+- **New span types**: SQL instrumentation now emits server spans for database
+  calls
+- **Operational controls**: Added configurable `log_format` and Kubernetes API
+  reconnect interval settings
+- **Network diagnostics**: Added `obi_bpf_network_ignored_packets_total` for
+  troubleshooting dropped network packets
+- **Release artifacts**: CycloneDX SBOMs now included in release packages for
+  supply chain security
+
+For a complete list of changes and upgrade notes, see the
+[release notes](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.7.0).
+
+If you want to explore the new NGINX example, see the
+[example walkthrough](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/release-v0.7.0/examples/nginx).
 
 ## Requirements
 
