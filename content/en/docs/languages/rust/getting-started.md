@@ -247,6 +247,7 @@ Span #0
 
 For more:
 
+- Learn about [Instrumentation](../instrumentation/) in Rust.
 - Consult the [API & SDK](/docs/languages/rust/api/) reference
 - Try other [examples](/docs/languages/rust/examples/).
 
