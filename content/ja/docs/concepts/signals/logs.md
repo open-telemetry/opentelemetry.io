@@ -2,7 +2,7 @@
 title: ログ
 description: イベントの記録
 weight: 3
-default_lang_commit: e851eb6903ed768e9cf3f427df74a5ccd7739114
+default_lang_commit: 3b1656f719549d7c7081167ba6bdf98a4e45cf0c
 drifted_from_default: true
 cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
@@ -13,11 +13,13 @@ cSpell:ignore: filelogreceiver semistructured transformprocessor
 
 ## OpenTelemetry のログ {#opentelemetry-logs}
 
-OpenTelemetry はログを作成するための独自の API や SDK を定義しません。
-かわりに、OpenTelemetry のログは、ログフレームワークやインフラコンポーネントから得られるログを指します。
-OpenTelemetry SDK と自動計装は、複数のコンポーネントを活用しログを[トレース](../traces)と関連付けます。
+OpenTelemetry は、ログレコードを生成するための Logs API と SDK、そして既存のロギングフレームワークと統合するための言語 SDK とロギングブリッジを提供します。
+ログとは、ロギングプロバイダを通して送信されるあらゆるデータを指し、イベントはログの特殊なタイプです。
+すべてのログがイベントであるとは限りませんが、すべてのイベントはログです。Logs API は公開されており、アプリケーションコードから直接使用することも、既存のロギングライブラリやブリッジを介して間接的に使用することもできます。
 
-OpenTelemetry のログサポートは、既存のログと完全に互換性を持つように設計されており、追加のコンテキストを付与したり、さまざまなソースからのログを共通のフォーマットに解析・変換するための統一ツールキットを提供します。
+OpenTelemetry は、既に生成されているログを扱うように設計されており、
+ログを他のシグナルと関連付けたり、コンテキスト属性を追加したり、
+異なるソースを共通の表現形式に正規化して処理およびエクスポートするためのツールを提供します。
 
 ### OpenTelemetry コレクターの OpenTelemetry のログ {#opentelemetry-logs-in-the-opentelemetry-collector}
 
@@ -26,13 +28,13 @@ OpenTelemetry のログサポートは、既存のログと完全に互換性を
 - 既知の特定のログデータソースを解析する複数のレシーバー
 - 任意のファイルからログを読み取り、異なるフォーマットの解析や正規表現の解析が可能な `filelogreceiver`
 - ネストされたデータの解析、構造のフラット化、値の追加/削除/更新などを実行できる `transformprocessor` などのプロセッサー
-- OpenTelemetry のフォーマットでログデータを送信できるエクスポーター
+- OpenTelemetry 以外のフォーマットでログデータを送信できるエクスポーター
 
 OpenTelemetry を採用する最初のステップとして、汎用的なログエージェントとしてコレクターをデプロイがよく含まれます。
 
 ### アプリケーションの OpenTelemetry {#opentelemetry-logs-for-applications}
 
-アプリケーションにおいて、OpenTelemetry のログは任意のログライブラリやビルトインのログ機能を仕様して作成されます。
+アプリケーションにおいて、OpenTelemetry のログは任意のログライブラリやビルトインのログ機能を使って作成されます。
 自動計装を追加したりSDKを活用したりすると、OpenTelemetry は既存のログをアクティブなトレースやスパンと自動的に関連付け、それらの ID をログの本体に含めます。
 つまり、OpenTelemetry はログとトレースを自動的に関連付けます。
 
@@ -45,16 +47,21 @@ OpenTelemetry を採用する最初のステップとして、汎用的なログ
 
 ## 構造化、非構造化、半構造化ログ {#structured-unstructured-and-semistructured-logs}
 
-OpenTelemetry は構造化ログと非構造化ログを技術的に区別していません。
-OpenTelemetry では既存のどのようなログも利用できます。
-しかし、すべてのログフォーマットは等しく有用ではありません！
-特に、構造化ログは大規模な解析や分析がしやすいため、本番環境のオブザーバビリティに推奨されます。
-後述するセクションは構造化、非構造化、半構造化ログの違いを説明します。
+OpenTelemetryはあらゆるログ形式に対応していますが、すべての形式が分析に等しく役立つわけではありません。
+次のセクションでは、構造化ログ、
+半構造化ログ、非構造化ログの違いについて説明します。重要：JSON形式でエンコードされたログは、
+安定したスキーマを持つという意味で自動的に「構造化」されるわけではありません。
+半構造化されている場合もあります。構造化ログとは、一貫したスキーマ、または明確に定義された型付きフィールドを持ち、
+下流の処理が確実に依存できるログを指します。
 
 ### 構造化ログ {#structured-logs}
 
-構造化ログは、一貫性のある機械が読みやすいフォーマットに従ったテキスト形式のログです。
-アプリケーションにおいて、最も一般的なフォーマットの 1 つは JSON です。
+構造化ログとは、定義済みで一貫性のあるスキーマまたは型付きフィールドを持つログであり、
+下流システムが確実に解析および解釈できるものです。テキストエンコーディングは、
+JSON、protobuf、またはその他の形式を使用できますが、ログが構造化されているというのは、
+単に有効な JSON であることではなく、
+安定したスキーマ（フィールド名、型、意味）が存在するためです。
+たとえば、構造化 JSON ログは次のようになります。
 
 ```json
 {
@@ -106,7 +113,7 @@ OpenTelemetry では既存のどのようなログも利用できます。
 192.168.1.1 - johndoe [04/Aug/2024:12:34:56 -0400] "POST /api/v1/login HTTP/1.1" 200 1234 "http://example.com" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36" {"transactionId": "abcd-efgh-ijkl-mnop", "responseTime": 150, "requestBody": {"username": "johndoe"}, "responseHeaders": {"Content-Type": "application/json"}}
 ```
 
-このログを最大限に活用するには、オブザーバビリティバックエンドの分析を簡単にするために、JSON と ELF に関連する部分の両方を共通したフォーマットに解析します。
+そのような場合は、必要な部分を解析または抽出して正規化されたレコードに変換し、後続のツールがそれらを一貫して分析できるようにします。
 [OpenTelemetry コレクター](/docs/collector)の `filelogreceiver` はこのようにログを分析する標準化された方法が含まれています。
 
 構造化ログはログの利用において推奨される方法です。
@@ -128,7 +135,7 @@ System reboot initiated at 2024-08-04 03:00:00 by user: admin. Reason: Scheduled
 DEBUG - 2024-08-04 09:30:15 - User johndoe performed action: file_upload. Filename: report_Q3_2024.pdf, Size: 2.3 MB, Duration: 5.2 seconds. Result: Success
 ```
 
-本番環境において非構造化ログの蓄積と分析は可能ですが、機械が読みやすくするために大幅な分析や前処理が必要にある場合があります。
+本番環境において非構造化ログの蓄積と分析は可能ですが、機械が読みやすくするために大幅な分析や前処理が必要になる場合があります。
 たとえば、上述した 3 つのログを解析するには、タイムスタンプを抽出するための正規表現やログメッセージの本文を一貫して抽出するためのカスタムパーサーが必要になります。
 通常、ログのバックエンドがタイムスタンプを基にログを並び替えたり整理したりするには、このような処理がもとめられます。
 非構造化ログを解析して分析に活用することは可能ですが、アプリケーションの標準ログフレームワークを経由して構造化ログに切り替えるよりも作業量が多くなる可能性があります。
