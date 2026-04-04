@@ -9,7 +9,8 @@ description: Instrumentation records telemetry using the API.
 
 ## Setup
 
-To instrument your Rust application, you need to include the OpenTelemetry API and SDK in your `Cargo.toml`.
+To instrument your Rust application, you need to include the OpenTelemetry API
+and SDK in your `Cargo.toml`.
 
 ```toml
 [dependencies]
@@ -21,7 +22,8 @@ For more details on initial setup, see [Getting Started](../getting-started/).
 
 ## Traces
 
-Traces record the path of a request through your application. To implement tracing in Rust:
+Traces record the path of a request through your application. To implement
+tracing in Rust:
 
 1. Initialize a `TracerProvider`.
 2. Create a `Tracer`.
@@ -31,19 +33,24 @@ For detailed information, see [Traces](../api/).
 
 ## Metrics
 
-Metrics record numerical data about your application's performance. To implement metrics in Rust:
+Metrics record numerical data about your application's performance. To implement
+metrics in Rust:
 
 1. Initialize a `MeterProvider`.
 2. Create a `Meter`.
 3. Use the `Meter` to create instruments.
 
-For more information, see the [API documentation](https://docs.rs/opentelemetry/latest/opentelemetry/metrics/index.html).
+For more information, see the
+[API documentation](https://docs.rs/opentelemetry/latest/opentelemetry/metrics/index.html).
 
 ## Logs
 
-Logs provide a record of events that occur within your application. The OpenTelemetry Rust log bridge allows you to integrate with existing logging frameworks.
+Logs provide a record of events that occur within your application. The
+OpenTelemetry Rust log bridge allows you to integrate with existing logging
+frameworks.
 
-For more information, see the [API documentation](https://docs.rs/opentelemetry/latest/opentelemetry/logs/index.html).
+For more information, see the
+[API documentation](https://docs.rs/opentelemetry/latest/opentelemetry/logs/index.html).
 
 ## Next steps
 
