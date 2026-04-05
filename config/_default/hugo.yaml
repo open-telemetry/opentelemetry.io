@@ -61,6 +61,11 @@ languages:
     languageCode: zh-CN
     params:
       description: OpenTelemetry 项目网站
+  si:
+    languageName: සිංහල (Sinhala)
+    title: OpenTelemetry
+    weight: 10
+    contentDir: content/si
 
 enableEmoji: true
 
