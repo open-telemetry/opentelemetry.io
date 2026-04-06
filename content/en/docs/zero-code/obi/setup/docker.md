@@ -11,9 +11,14 @@ cSpell:ignore: goblog
 OBI can run a standalone Docker container that can instrument a process running
 in another container.
 
-Find the latest image of OBI on
-[Docker Hub](https://hub.docker.com/r/otel/ebpf-instrument) with the following
-name:
+OBI container images are published to both registries:
+
+- [Docker Hub](https://hub.docker.com/r/otel/ebpf-instrument):
+  `otel/ebpf-instrument:<version>`
+- [GHCR](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkgs/container/opentelemetry-ebpf-instrumentation):
+  `ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/ebpf-instrument:<version>`
+
+The development tag is also published on Docker Hub as:
 
 ```text
 otel/ebpf-instrument:main
@@ -35,10 +40,17 @@ keys, authenticated via the OIDC (OpenID Connect) protocol in GitHub Actions.
 This ensures the authenticity and integrity of the container published by the
 OpenTelemetry project.
 
-You can verify the signature of the container image using the following command:
+You can verify the signature of the container image using the following
+commands:
 
 ```sh
-cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' otel/ebpf-instrument:main
+export VERSION=0.7.0
+
+# Verify a release image from Docker Hub
+cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' otel/ebpf-instrument:${VERSION}
+
+# Verify the same release from GHCR
+cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/ebpf-instrument:${VERSION}
 ```
 
 Here is an example output:
@@ -53,6 +65,13 @@ The following checks were performed on each of these signatures:
 [{"critical":{"identity":{"docker-reference":"index.docker.io/otel/ebpf-instrument:main"},"image":{"docker-manifest-digest":"sha256:55426a2bbb8003573a961697888aa770a1f5f67fcda2276dc2187d1faf7181fe"},"type":"https://sigstore.dev/cosign/sign/v1"},"optional":{}}]
 ```
 
+Successful verification reports that the Cosign claims were validated and shows
+the signed image digest. If verification fails:
+
+- confirm that the tag exists in the registry you queried
+- make sure you are verifying a published release tag, not just `main`
+- verify that you are using the GitHub OIDC issuer and identity regexp shown above
+
 ## Docker CLI example
 
 For this example you need a container running an HTTP/S or gRPC service. If you
@@ -60,6 +79,7 @@ don't have one, you can use this
 [simple blog engine service written in Go](https://macias.info):
 
 ```sh
+export VERSION=0.7.0
 docker run -p 18443:8443 --name goblog mariomac/goblog:dev
 ```
 
@@ -87,7 +107,7 @@ docker run --rm \
   -e OTEL_EBPF_TRACE_PRINTER=text \
   --pid=host \
   --privileged \
-  otel/ebpf-instrument:main
+  otel/ebpf-instrument:${VERSION}
 ```
 
 After OBI is running, open `https://localhost:18443` in your browser, use the

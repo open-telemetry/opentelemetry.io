@@ -17,7 +17,14 @@ Each release includes:
 
 - `obi-v<version>-linux-amd64.tar.gz` - Linux AMD64/x86_64 archive
 - `obi-v<version>-linux-arm64.tar.gz` - Linux ARM64 archive
-- `SHA256SUMS` - Checksums for verification
+- `obi-v<version>-linux-amd64.cyclonedx.json` - CycloneDX SBOM for the AMD64 archive
+- `obi-v<version>-linux-arm64.cyclonedx.json` - CycloneDX SBOM for the ARM64 archive
+- `obi-v<version>-source-generated.cyclonedx.json` - CycloneDX SBOM for the source-generated archive
+- `obi-java-agent-v<version>.cyclonedx.json` - CycloneDX SBOM for the embedded Java agent and its Java dependencies
+- `SHA256SUMS` - Checksums for verification of the release archives and SBOM assets
+
+Container images for the same release are also published. For image pull and
+signature verification instructions, see [Run OBI as a Docker container](../docker/).
 
 Set your desired version and architecture:
 
@@ -44,6 +51,18 @@ sha256sum -c SHA256SUMS --ignore-missing
 tar -xzf obi-v${VERSION}-linux-${ARCH}.tar.gz
 ```
 
+Successful verification prints an `OK` result for each downloaded file:
+
+```text
+obi-v${VERSION}-linux-${ARCH}.tar.gz: OK
+```
+
+If verification fails, `sha256sum` reports `FAILED`. When that happens:
+
+- confirm that `VERSION` matches the archive and `SHA256SUMS` you downloaded
+- remove any partially downloaded files and fetch them again
+- verify only the files you actually downloaded from that release
+
 The archive contains:
 
 - `obi` - Main OBI binary
@@ -65,6 +84,42 @@ The archive contains:
 > system or service deployments, set `XDG_CACHE_HOME` to a suitable location
 > (for example `XDG_CACHE_HOME=/var/cache/obi sudo -E obi ...`) or configure an
 > explicit cache path according to your environment.
+
+## SBOMs
+
+CycloneDX SBOM files are optional metadata for supply-chain review and
+automation. They are not required to install or run OBI.
+
+The published SBOMs describe the contents of the binary archives and embedded
+components in [CycloneDX JSON format](https://cyclonedx.org/). They can be used
+with standard SBOM tooling to inspect dependencies, licenses, and components
+without executing the binaries.
+
+Download the SBOMs you want to inspect:
+
+```sh
+# SBOM for the binary archive you downloaded
+wget https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/download/v${VERSION}/obi-v${VERSION}-linux-${ARCH}.cyclonedx.json
+
+# SBOM for the embedded Java agent and its Java dependencies
+wget https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/download/v${VERSION}/obi-java-agent-v${VERSION}.cyclonedx.json
+
+# Optional: verify the downloaded SBOM files against SHA256SUMS too
+sha256sum -c SHA256SUMS --ignore-missing
+```
+
+Example inspection commands:
+
+```sh
+# List component names and versions from the archive SBOM
+jq '.components[] | {name, version}' obi-v${VERSION}-linux-${ARCH}.cyclonedx.json
+
+# Scan the SBOM with Grype
+grype sbom:obi-v${VERSION}-linux-${ARCH}.cyclonedx.json
+
+# Inspect the Java agent dependency graph
+jq '.components[] | {name, version}' obi-java-agent-v${VERSION}.cyclonedx.json
+```
 
 ## Install to system
 
