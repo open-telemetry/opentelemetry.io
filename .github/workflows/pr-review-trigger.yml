@@ -20,7 +20,7 @@ jobs:
         env:
           PR_NUMBER: ${{ github.event.pull_request.number }}
         run: echo "$PR_NUMBER" > pr-number.txt
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@v7.0.0
         with:
           name: pr-number
           path: pr-number.txt

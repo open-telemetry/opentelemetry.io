@@ -17,10 +17,10 @@ jobs:
     if: github.repository == 'open-telemetry/opentelemetry.io'
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v6.0.2
 
       - name: Set up Node.js
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v6.3.0
         with:
           node-version: '22'
 
@@ -28,7 +28,7 @@ jobs:
         working-directory: ./scripts/generate-community-data
         run: npm install
 
-      - uses: actions/create-github-app-token@f8d387b68d61c58ab83c6c016672934102569859 # v3.0.0
+      - uses: actions/create-github-app-token@v3.0.0
         id: otelbot-token
         with:
           # the higher privileged docs token is needed to push commits to an existing PR
@@ -52,7 +52,7 @@ jobs:
           npm run fix:refcache
 
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v8
+        uses: peter-evans/create-pull-request@v8.1.0
         with:
           add-paths: |
             data/community/members.yaml
