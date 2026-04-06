@@ -492,10 +492,10 @@
     - contrib
     - core
   stability:
+    profiles: alpha
     logs: beta
     metrics: beta
     traces: beta
-    profiles: development
 - name: nsxtreceiver
   display_name: NSX-T Receiver
   repo: contrib
@@ -554,7 +554,7 @@
     - k8s
     - otlp
   stability:
-    profiles: development
+    profiles: alpha
     logs: stable
     metrics: stable
     traces: stable

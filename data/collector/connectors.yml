@@ -48,10 +48,10 @@
     - core
     - k8s
   stability:
+    profiles_to_profiles: alpha
     logs_to_logs: beta
     metrics_to_metrics: beta
     traces_to_traces: beta
-    profiles_to_profiles: development
 - name: grafanacloudconnector
   display_name: Grafana Cloud Connector
   repo: contrib

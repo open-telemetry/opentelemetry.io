@@ -5,6 +5,7 @@ disableKinds: [taxonomy]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
+enableRobotsTXT: true
 ignoreLogs: []
 
 # Language settings
