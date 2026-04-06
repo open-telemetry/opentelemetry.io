@@ -25,7 +25,7 @@ Extensions allow you to:
 - Implement custom SDK components (samplers, exporters, propagators)
 - Modify telemetry data collection and processing
 
-## Quick Start
+## Quick start
 
 Here's a minimal extension that adds a custom span processor to get you started:
 
@@ -143,7 +143,7 @@ java -javaagent:opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-## Using Extensions
+## Using extensions
 
 There are two ways to use extensions with the Java agent:
 
@@ -155,14 +155,14 @@ There are two ways to use extensions with the Java agent:
 | **Runtime Loading** | Easy to swap extensions, no rebuild needed           | Extra command-line flag required      | Development, testing     |
 | **Embedding**       | Single JAR, simpler deployment, can't forget to load | Requires rebuild to change extensions | Production, distribution |
 
-### Loading Extensions at Runtime
+### Loading extensions at runtime
 
 Extensions can be loaded at runtime using the `otel.javaagent.extensions` system
 property or `OTEL_JAVAAGENT_EXTENSIONS` environment variable. This configuration
 option accepts comma-separated paths to extension JAR files or directories
 containing extension JARs.
 
-#### Single Extension
+#### Single extension
 
 ```bash
 java -javaagent:path/to/opentelemetry-javaagent.jar \
@@ -170,7 +170,7 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-#### Multiple Extensions
+#### Multiple extensions
 
 ```bash
 java -javaagent:path/to/opentelemetry-javaagent.jar \
@@ -178,7 +178,7 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-#### Extension Directory
+#### Extension directory
 
 You can specify a directory containing multiple extension JARs, and all JARs in
 that directory will be loaded:
@@ -189,7 +189,7 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-#### Mixed Paths
+#### Mixed paths
 
 You can combine individual JAR files and directories:
 
@@ -199,7 +199,7 @@ java -javaagent:path/to/opentelemetry-javaagent.jar \
      -jar myapp.jar
 ```
 
-#### How Extension Loading Works
+#### How extension loading works
 
 When you load extensions at runtime, the agent:
 
@@ -209,7 +209,7 @@ When you load extensions at runtime, the agent:
    [ServiceLoader](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ServiceLoader.html)
    mechanism (via `@AutoService` annotations in your code, for example)
 
-### Embedding Extensions in the Agent
+### Embedding extensions in the agent
 
 Another deployment option is to create a single JAR file that contains both the
 OpenTelemetry Java agent and your extension(s). This approach simplifies
@@ -217,7 +217,7 @@ deployment (just one JAR file to manage) and eliminates the need for the
 `-Dotel.javaagent.extensions` command line option, which makes it harder to
 accidentally forget to load your extension.
 
-#### How It Works
+#### How it works
 
 The agent automatically looks for extensions in a special `extensions/`
 directory inside the agent JAR file, so we can use a Gradle build task to:
@@ -227,7 +227,7 @@ directory inside the agent JAR file, so we can use a Gradle build task to:
 3. Add your extension JAR(s) into the `extensions/` directory
 4. Repackage everything into a single JAR
 
-#### The `extendedAgent` Gradle Task
+#### The `extendedAgent` Gradle task
 
 Add the following to your extension project's `build.gradle.kts` file:
 
@@ -305,7 +305,7 @@ tasks {
 For a complete example, reference the gradle file from the
 [extension example](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/examples/extension/build.gradle.kts).
 
-#### Building and Using the Extended Agent
+#### Building and using the extended agent
 
 Once you've added the `extendedAgent` task to your `build.gradle.kts`:
 
@@ -320,7 +320,7 @@ ls build/libs/opentelemetry-javaagent.jar
 java -javaagent:build/libs/opentelemetry-javaagent.jar -jar myapp.jar
 ```
 
-#### Embedding Multiple Extensions
+#### Embedding multiple extensions
 
 To embed multiple extensions, modify the `extendedAgent` task to include
 multiple extension JARs:
@@ -350,17 +350,17 @@ val extendedAgent by tasks.registering(Jar::class) {
 }
 ```
 
-## Writing Extensions
+## Writing extensions
 
 Creating an extension involves implementing one or more Service Provider
 Interface (SPI) classes and packaging them as a JAR file.
 
-### Project Setup and Dependencies
+### Project setup and dependencies
 
 Extensions must carefully manage their dependencies to avoid conflicts with the
 agent and application.
 
-#### Dependencies Provided by Agent (use `compileOnly`)
+#### Dependencies provided by agent (use `compileOnly`)
 
 These APIs are available at runtime from the agent:
 
@@ -371,7 +371,7 @@ compileOnly("io.opentelemetry.instrumentation:opentelemetry-instrumentation-api-
 compileOnly("io.opentelemetry.javaagent:opentelemetry-javaagent-extension-api")
 ```
 
-#### Dependencies from Application Classpath (use `compileOnly`)
+#### Dependencies from application classpath (use `compileOnly`)
 
 When creating instrumentation, you need to reference classes from the target
 application. These should also be `compileOnly`:
@@ -381,7 +381,7 @@ application. These should also be `compileOnly`:
 compileOnly("javax.servlet:javax.servlet-api:3.0.1")
 ```
 
-#### External Runtime Dependencies (use `implementation`)
+#### External runtime dependencies (use `implementation`)
 
 Any external libraries your extension needs at runtime must use `implementation`
 scope and will be packaged into the shadow JAR:
@@ -396,7 +396,7 @@ implementation("com.google.guava:guava:33.0.0-jre")
 > Extensions cannot load dependencies from separate JAR files. All dependencies
 > must be merged into a single shadow JAR.
 
-### Extension Points Overview
+### Extension points overview
 
 OpenTelemetry Java agent provides multiple extension points through SPI
 interfaces, here are the most commonly used ones:
@@ -410,11 +410,11 @@ interfaces, here are the most commonly used ones:
 | `InstrumenterCustomizerProvider`      | `io.opentelemetry.instrumentation.api.incubator.instrumenter` | Customize existing instrumentations    |
 | `InstrumentationModule`               | `io.opentelemetry.javaagent.extension.instrumentation`        | Create new instrumentations            |
 
-### Configuration in Extensions
+### Configuration in extensions
 
 Extensions can read and provide configuration to customize their behavior.
 
-#### Accessing Configuration in Extensions
+#### Accessing configuration in extensions
 
 Many SPI methods receive a `ConfigProperties` parameter that allows you to read
 configuration:
@@ -430,7 +430,7 @@ public Sampler createSampler(ConfigProperties config) {
 }
 ```
 
-#### Providing Default Configuration
+#### Providing default configuration
 
 Extensions can provide default configuration values that will be used if not
 overridden:
@@ -448,7 +448,7 @@ public void customize(AutoConfigurationCustomizer config) {
 }
 ```
 
-#### Configuration Naming Conventions
+#### Configuration naming conventions
 
 Follow these conventions for configuration parameter names:
 
@@ -498,7 +498,7 @@ with your class name.
 
 ---
 
-## Extension Point Reference
+## Extension point reference
 
 ### AutoConfigurationCustomizerProvider
 
