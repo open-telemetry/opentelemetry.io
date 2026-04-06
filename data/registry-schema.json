@@ -17,6 +17,7 @@
       "description": "The type of the entry. See https://opentelemetry.io/ecosystem/registry/adding/#registry-types for detailed definitions and usage guidelines for each type.",
       "enum": [
         "application integration",
+        "connector",
         "core",
         "exporter",
         "extension",
