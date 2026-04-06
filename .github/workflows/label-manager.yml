@@ -1,6 +1,6 @@
 # To learn more about this workflow, see:
 #  https://opentelemetry.io/site/build/ci-workflows/#label-gate
-name: Label gate
+name: Label manager
 
 on:
   pull_request_target:
