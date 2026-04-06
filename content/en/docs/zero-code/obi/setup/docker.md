@@ -44,7 +44,7 @@ You can verify the signature of the container image using the following
 commands:
 
 ```sh
-export VERSION=0.7.0
+export VERSION=v0.7.0
 
 # Verify a release image from Docker Hub
 cosign verify --certificate-identity-regexp 'https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/' --certificate-oidc-issuer 'https://token.actions.githubusercontent.com' otel/ebpf-instrument:${VERSION}
@@ -80,7 +80,7 @@ don't have one, you can use this
 [simple blog engine service written in Go](https://macias.info):
 
 ```sh
-export VERSION=0.7.0
+export VERSION=v0.7.0
 docker run -p 18443:8443 --name goblog mariomac/goblog:dev
 ```
 
