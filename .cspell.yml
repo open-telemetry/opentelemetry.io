@@ -16,6 +16,7 @@ ignorePaths:
   - content/{ja,zh}
   - data/community/members.yaml
   - data/ecosystem/vendors.yaml
+  - data/opentelemetry/configurationTypes.json
   - data/collector
   - public/_redirects
   - static/refcache.json
