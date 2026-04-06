@@ -90,7 +90,7 @@ mediaTypes:
   text/netlify: {}
 
 outputFormats:
-  REDIRECTS:
+  redirects:
     mediaType: text/netlify
     baseName: _redirects
     notAlternative: true
@@ -103,8 +103,8 @@ services:
   rss: { limit: 20 }
 
 cascade:
-  build: { list: never, publishResources: false, render: never }
-  _target: { path: '{,/**}/_includes{,/**}' }
+  - build: { list: never, publishResources: false, render: never }
+    target: { path: '{,/**}/_includes{,/**}' }
 
 params:
   copyright:
