@@ -204,3 +204,51 @@ You can either:
 - Run OBI as privileged.
 - Add `CAP_SYS_ADMIN` to the list of capabilities in your deployment security
   configuration.
+
+## Migration to v0.7.0: Network port guessing changes
+
+OBI v0.7.0 introduces a breaking change: **network port guessing is now disabled
+by default**. This change improves network metrics accuracy by not making
+assumptions about unknown initiators in network flows.
+
+### What changed
+
+In v0.6.0 and earlier, OBI would attempt to guess which endpoint was the client
+and which was the server in network flows where the initiator couldn't be
+determined. This guessing was based on ordinal heuristics (typically assuming
+the lower port number was the server and the higher port number was the client).
+
+In v0.7.0, this guessing is disabled by default, which means:
+
+- `client.port` and `server.port` attributes may be empty for flows where OBI
+  cannot determine the initiator
+- Network metrics will be more accurate but may lose information for unknown
+  flows
+
+### How to migrate
+
+If you depend on the old behavior and want `client.port` and `server.port` to be
+inferred even when the initiator is unknown, re-enable port guessing with
+ordinal heuristics:
+
+**YAML configuration:**
+
+```yaml
+network:
+  guess_ports: ordinal
+```
+
+**Environment variable:**
+
+```sh
+OTEL_EBPF_NETWORK_GUESS_PORTS=ordinal
+```
+
+For more details, see the
+[network configuration documentation](../network/config/).
+
+### Recommendation
+
+We recommend leaving port guessing disabled unless you have a specific use case
+that requires it. The default behavior provides cleaner, more accurate network
+metrics that are less prone to misclassification.
