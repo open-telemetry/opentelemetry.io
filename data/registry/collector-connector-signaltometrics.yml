@@ -1,0 +1,21 @@
+# cSpell:ignore signaltometricsconnector
+title: Signal to Metrics Connector
+registryType: connector
+language: collector
+tags:
+  - go
+  - connector
+  - collector
+license: Apache 2.0
+description:
+  Signal to metrics connector produces metrics from all signal types (traces,
+  logs, or metrics).
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/connector/signaltometricsconnector
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/connector/signaltometricsconnector
+  version: v0.149.0
