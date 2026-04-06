@@ -31,7 +31,7 @@ Each release includes:
 
 Container images for the same release are also published. For image pull and
 signature verification instructions, see
-[Run OBI as a Docker container](docker/).
+[Run OBI as a Docker container](../docker/).
 
 Set your desired version and architecture:
 
