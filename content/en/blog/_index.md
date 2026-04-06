@@ -1,7 +1,6 @@
 ---
 title: Blog
 menu: { main: { weight: 50 } }
-outputs: [HTML, RSS, Markdown]
 htmltest:
   # 2024-11-07 DO NOT COPY the following IgnoreDirs to non-en pages because it handles all locales.
   IgnoreDirs:

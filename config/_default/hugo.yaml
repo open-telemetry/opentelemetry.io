@@ -18,7 +18,7 @@ languages:
     params:
       description: The OpenTelemetry Project Site
   bn:
-    languageName: বাংলা (Bengali)
+    languageName: বাংলা
     params:
       description: ওপেনটেলিমেট্রি প্রকল্পের সাইট
   es:
@@ -30,7 +30,7 @@ languages:
     params:
       description: Site du projet OpenTelemetry
   ja:
-    languageName: 日本語 (Japanese)
+    languageName: 日本語
     params:
       description: OpenTelemetryプロジェクト公式サイト
       notes:
@@ -38,7 +38,7 @@ languages:
           `docker-compose` は非推奨です. 詳細は、
           [Migrate to Compose V2](https://docs.docker.com/compose/) を確認してください。
   pl:
-    languageName: Polski (Polish)
+    languageName: Polski
     languageCode: pl-PL
     params:
       description: Strona projektu OpenTelemetry
@@ -48,17 +48,17 @@ languages:
     params:
       description: Site do Projeto OpenTelemetry
   ro:
-    languageName: Română (Romanian)
+    languageName: Română
     languageCode: ro-RO
     params:
       description: Site-ul proiectului OpenTelemetry
   uk:
-    languageName: Українська (Ukrainian)
+    languageName: Українська
     languageCode: uk-UA
     params:
       description: Сайт проєкту OpenTelemetry
   zh:
-    languageName: 中文 (Chinese)
+    languageName: 中文
     languageCode: zh-CN
     params:
       description: OpenTelemetry 项目网站
@@ -106,9 +106,8 @@ outputFormats:
     isPlainText: true
 
 outputs:
-  home: [HTML, RSS, Markdown]
-  page: [HTML, Markdown]
-  section: [HTML, Markdown]
+  home: &home-outputs [HTML, RSS]
+  section: &section-outputs [HTML]
 
 services:
   rss: { limit: 20 }
@@ -116,6 +115,22 @@ services:
 cascade:
   - build: { list: never, publishResources: false, render: never }
     target: { path: '{,/**}/_includes{,/**}' }
+
+  # Enable redirects for site root (and not locales)
+  - outputs:
+      # This must match the equivalent of [*home-outputs, redirects]
+      [HTML, RSS, redirects]
+    target:
+      kind: home
+      sites: { matrix: { languages: [en] } }
+
+  # Enable RSS for blog section
+  - outputs:
+      # This must match the equivalent of [*section-outputs, RSS]
+      [HTML, RSS]
+    target:
+      kind: section
+      path: '/blog'
 
 params:
   copyright:
