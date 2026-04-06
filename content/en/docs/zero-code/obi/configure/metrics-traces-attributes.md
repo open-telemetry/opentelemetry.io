@@ -154,6 +154,66 @@ because it can create false positives, for example, if an application sends SQL
 text for logging through a TCP connection. Currently, OBI natively supports the
 PostgreSQL and MySQL binary protocols.
 
+### HTTP header enrichment for spans
+
+OBI can attach selected HTTP headers to spans through the
+`ebpf.payload_extraction.http.enrichment` configuration section. This is useful
+when you want to carry business or routing headers into traces without manually
+instrumenting the application.
+
+The enrichment engine is rule-based:
+
+- Set `enabled: true` to activate HTTP header enrichment.
+- Use `policy.default_action` to define whether unmatched headers are included
+  or excluded. The default is `exclude`.
+- Use `policy.match_order` to control rule evaluation. The default is
+  `first_match_wins`.
+- Use `obfuscate` rules to redact sensitive values while still exposing the
+  header key on the span.
+
+For example:
+
+```yaml
+ebpf:
+  buffer_sizes:
+    http: 8192
+  payload_extraction:
+    http:
+      enrichment:
+        enabled: true
+        policy:
+          default_action: exclude
+          match_order: first_match_wins
+          obfuscation_string: '***'
+        rules:
+          - action: obfuscate
+            type: headers
+            scope: all
+            match:
+              patterns:
+                - Authorization
+              case_sensitive: false
+          - action: include
+            type: headers
+            scope: all
+            match:
+              patterns:
+                - Content-Type
+                - X-Custom-*
+                - X-Dice-Roll
+              case_sensitive: false
+```
+
+The following environment variables control the policy defaults:
+
+- `OTEL_EBPF_HTTP_ENRICHMENT_ENABLED`
+- `OTEL_EBPF_HTTP_ENRICHMENT_DEFAULT_ACTION`
+- `OTEL_EBPF_HTTP_ENRICHMENT_MATCH_ORDER`
+- `OTEL_EBPF_HTTP_ENRICHMENT_OBFUSCATION_STRING`
+
+Rules themselves are configured in YAML. If you expect large headers, increase
+`ebpf.buffer_sizes.http` so OBI can capture the relevant values.
+
 ## Instance ID decoration
 
 YAML section: `attributes.instance_id`
@@ -212,15 +272,16 @@ attributes:
     enable: true
 ```
 
-| YAML<br>environment variable                                            | Description                                                                                                                                                                                   | Type           | Default        |
-| ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- |
-| `enable`<br>`OTEL_EBPF_KUBE_METADATA_ENABLE`                            | Enable or disable Kubernetes metadata decoration. Set to `autodetect` to enable if running in Kubernetes. For more information, refer to the [enable Kubernetes section](#enable-kubernetes). | boolean/string | false          |
-| `kubeconfig_path`<br>`KUBECONFIG`                                       | Path to the Kubernetes config file. For more information, refer to the [Kubernetes configuration path section](#kubernetes-configuration-path).                                               | string         | ~/.kube/config |
-| `disable_informers`<br>`OTEL_EBPF_KUBE_DISABLE_INFORMERS`               | List of informers to disable (`node`, `service`). For more information, refer to the [disable informers section](#disable-informers).                                                         | string         | (empty)        |
-| `meta_restrict_local_node`<br>`OTEL_EBPF_KUBE_META_RESTRICT_LOCAL_NODE` | Restrict metadata to local node only. For more information, refer to the [meta restrict local node section](#meta-restrict-local-node).                                                       | boolean        | false          |
-| `informers_sync_timeout`<br>`OTEL_EBPF_KUBE_INFORMERS_SYNC_TIMEOUT`     | Maximum time to wait for Kubernetes metadata before starting. For more information, refer to the [informers sync timeout section](#informers-sync-timeout).                                   | Duration       | 30s            |
-| `informers_resync_period`<br>`OTEL_EBPF_KUBE_INFORMERS_RESYNC_PERIOD`   | Periodically resynchronize all Kubernetes metadata. For more information, refer to the [informers resynchronization period section](#informers-resynchronization-period).                     | Duration       | 30m            |
-| `service_name_template`<br>`OTEL_EBPF_SERVICE_NAME_TEMPLATE`            | Go template for service names. For more information, refer to the [service name template section](#service-name-template).                                                                    | string         | (empty)        |
+| YAML<br>environment variable                                                | Description                                                                                                                                                                                   | Type           | Default        |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- |
+| `enable`<br>`OTEL_EBPF_KUBE_METADATA_ENABLE`                                | Enable or disable Kubernetes metadata decoration. Set to `autodetect` to enable if running in Kubernetes. For more information, refer to the [enable Kubernetes section](#enable-kubernetes). | boolean/string | false          |
+| `kubeconfig_path`<br>`KUBECONFIG`                                           | Path to the Kubernetes config file. For more information, refer to the [Kubernetes configuration path section](#kubernetes-configuration-path).                                               | string         | ~/.kube/config |
+| `disable_informers`<br>`OTEL_EBPF_KUBE_DISABLE_INFORMERS`                   | List of informers to disable (`node`, `service`). For more information, refer to the [disable informers section](#disable-informers).                                                         | string         | (empty)        |
+| `meta_restrict_local_node`<br>`OTEL_EBPF_KUBE_META_RESTRICT_LOCAL_NODE`     | Restrict metadata to local node only. For more information, refer to the [meta restrict local node section](#meta-restrict-local-node).                                                       | boolean        | false          |
+| `informers_sync_timeout`<br>`OTEL_EBPF_KUBE_INFORMERS_SYNC_TIMEOUT`         | Maximum time to wait for Kubernetes metadata before starting. For more information, refer to the [informers sync timeout section](#informers-sync-timeout).                                   | Duration       | 30s            |
+| `reconnect_initial_interval`<br>`OTEL_EBPF_KUBE_RECONNECT_INITIAL_INTERVAL` | Initial delay before reconnecting to the Kubernetes API after connection loss. For more information, refer to the [reconnect initial interval section](#reconnect-initial-interval).          | Duration       | 5s             |
+| `informers_resync_period`<br>`OTEL_EBPF_KUBE_INFORMERS_RESYNC_PERIOD`       | Periodically resynchronize all Kubernetes metadata. For more information, refer to the [informers resynchronization period section](#informers-resynchronization-period).                     | Duration       | 30m            |
+| `service_name_template`<br>`OTEL_EBPF_SERVICE_NAME_TEMPLATE`                | Go template for service names. For more information, refer to the [service name template section](#service-name-template).                                                                    | string         | (empty)        |
 
 ### Enable Kubernetes
 
@@ -278,6 +339,14 @@ This is the maximum time OBI waits to get all the Kubernetes metadata before
 starting to decorate metrics and traces. If this timeout is reached, OBI starts
 normally, but the metadata attributes might be incomplete until all the
 Kubernetes metadata is updated in the background.
+
+### Reconnect initial interval
+
+When OBI loses connection to the Kubernetes API, this value controls the initial
+delay before retrying the connection.
+
+Increase this value to reduce reconnect pressure on unstable or overloaded API
+servers. Decrease it when you need faster recovery after temporary API outages.
 
 ### Informers resynchronization period
 
