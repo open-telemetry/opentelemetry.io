@@ -5,6 +5,7 @@ disableKinds: [taxonomy]
 theme: [docsy]
 disableAliases: true # We do redirects via Netlify's _redirects file
 enableGitInfo: true
+enableRobotsTXT: true
 ignoreLogs: []
 
 # Language settings
@@ -89,21 +90,37 @@ mediaTypes:
   text/netlify: {}
 
 outputFormats:
-  REDIRECTS:
+  redirects:
     mediaType: text/netlify
     baseName: _redirects
     notAlternative: true
 
 outputs:
-  home: [HTML, RSS]
-  section: [HTML]
+  home: &home-outputs [HTML, RSS]
+  section: &section-outputs [HTML]
 
 services:
   rss: { limit: 20 }
 
 cascade:
-  build: { list: never, publishResources: false, render: never }
-  _target: { path: '{,/**}/_includes{,/**}' }
+  - build: { list: never, publishResources: false, render: never }
+    target: { path: '{,/**}/_includes{,/**}' }
+
+  # Enable redirects for site root (and not locales)
+  - outputs:
+      # This must match the equivalent of [*home-outputs, redirects]
+      [HTML, RSS, redirects]
+    target:
+      kind: home
+      sites: { matrix: { languages: [en] } }
+
+  # Enable RSS for blog section
+  - outputs:
+      # This must match the equivalent of [*section-outputs, RSS]
+      [HTML, RSS]
+    target:
+      kind: section
+      path: '/blog'
 
 params:
   copyright:

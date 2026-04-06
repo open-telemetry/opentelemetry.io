@@ -231,3 +231,35 @@ target collector.
 
 If set to `true`, OBI prints each network flow to standard output. Note, this
 might generate a lot of output.
+
+| YAML          | Environment variable            | Type   | Default   |
+| ------------- | ------------------------------- | ------ | --------- |
+| `guess_ports` | `OTEL_EBPF_NETWORK_GUESS_PORTS` | string | `disable` |
+
+> [!IMPORTANT]
+>
+> In v0.7.0, network port guessing is now **disabled by default**. This is a
+> breaking change from v0.6.0 and earlier versions. If you depend on inferred
+> client/server ports for flows where OBI cannot determine the initiator,
+> `client.port` and `server.port` may now be empty unless you explicitly opt
+> back into ordinal guessing.
+
+Specifies whether OBI should attempt to guess client and server ports based on
+ordinal heuristics when the initiator cannot be determined from flow metadata.
+This is useful for tracking connections to unknown services where the port alone
+might help identify the service.
+
+Accepted values are: `disable` (default), `ordinal`.
+
+To re-enable port guessing based on ordinal heuristics, use:
+
+```yaml
+network:
+  guess_ports: ordinal
+```
+
+Or via environment variable:
+
+```sh
+OTEL_EBPF_NETWORK_GUESS_PORTS=ordinal
+```
