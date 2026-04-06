@@ -14,30 +14,6 @@ Prometheus text format on request.
 > can skip this section and setup the [Prometheus](#prometheus-dependencies) or
 > [OTLP](#otlp-dependencies) exporter dependencies for your application.
 
-You can run [Prometheus](https://prometheus.io) in a docker container,
-accessible on port `9090` by following these instructions:
+To run a Prometheus server backend and begin scraping metrics, see the [Prometheus getting started guide](https://prometheus.io/docs/prometheus/latest/getting_started/).
 
-Create a file called `prometheus.yml` with the following content:
-
-```yaml
-scrape_configs:
-  - job_name: dice-service
-    scrape_interval: 5s
-    static_configs:
-      - targets: [host.docker.internal:9464]
-```
-
-Run Prometheus in a docker container with the UI accessible on port `9090`:
-
-```shell
-docker run --rm -v ${PWD}/prometheus.yml:/prometheus/prometheus.yml -p 9090:9090 prom/prometheus --web.enable-otlp-receiver
-```
-
-> [!NOTE]
->
-> When using Prometheus' OTLP Receiver, make sure that you set the OTLP endpoint
-> for metrics in your application to `http://localhost:9090/api/v1/otlp`.
->
-> Not all docker environments support `host.docker.internal`. In some cases you
-> may need to replace `host.docker.internal` with `localhost` or the IP address
-> of your machine.
+To enable the OTLP Receiver, see the [Prometheus guide for enabling the OTLP Receiver](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver)
