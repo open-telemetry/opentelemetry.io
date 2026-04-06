@@ -1218,7 +1218,6 @@ package tailtracer
 
 import (
 	"math/rand"
-	"time"
 )
 
 type Atm struct{
@@ -1296,7 +1295,6 @@ func generateBackendSystem() BackendSystem{
 }
 
 func getRandomNumber(min int, max int) int {
-	rand.Seed(time.Now().UnixNano())
 	i := (rand.Intn(max - min + 1) + min)
 	return i
 }
@@ -1304,7 +1302,7 @@ func getRandomNumber(min int, max int) int {
 
 > [!NOTE] Check your work
 >
-> - Imported the `math/rand` and `time` packages to support the implementation
+> - Imported the `math/rand` package to support the implementation
 >   of the `generateRandomNumber` function.
 > - Added the `generateAtm` function, that instantiates an `Atm` type and
 >   randomly assigns either Illinois or California as the value for `StateID`,
@@ -1339,7 +1337,7 @@ Open the `tailtracer/model.go` file and add the following function to it:
 func generateTraces(numberOfTraces int) ptrace.Traces{
 	traces := ptrace.NewTraces()
 
-	for i := 0; i <= numberOfTraces; i++{
+	for i := 0; i < numberOfTraces; i++{
 		newAtm := generateAtm()
 		newBackendSystem := generateBackendSystem()
 	}
@@ -1386,7 +1384,7 @@ Here is what the function should look like after you implement the changes:
 func generateTraces(numberOfTraces int) ptrace.Traces{
 	traces := ptrace.NewTraces()
 
-	for i := 0; i <= numberOfTraces; i++{
+	for i := 0; i < numberOfTraces; i++{
 		newAtm := generateAtm()
 		newBackendSystem := generateBackendSystem()
 
@@ -1474,10 +1472,9 @@ to [Operating System](/docs/specs/semconv/resource/os/) and
 and values specified by the resource semantic convention to represent this
 information on its `Resource`.
 
-All the resource semantic convention attribute names and well known-values are
-kept in the
-[/semconv/v1.9.0/generated_resource.go](https://github.com/open-telemetry/opentelemetry-collector/blob/v0.128.0/semconv/v1.9.0/generated_resource.go)
-file in the Collector GitHub project.
+The resource semantic convention keys and well-known values are defined by the
+OpenTelemetry semantic conventions package:
+[`go.opentelemetry.io/otel/semconv/v1.38.0`](https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.38.0).
 
 Let's create a function to read the field values from a `BackendSystem` instance
 and write them as attributes into a `pcommon.Resource` instance. Open the
@@ -1490,27 +1487,27 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 	switch {
 		case backend.CloudProvider == "amzn":
-			cloudProvider = semconv.AttributeCloudProviderAWS
-		case backend.OSType == "mcrsft":
-			cloudProvider = semconv.AttributeCloudProviderAzure
-		case backend.OSType == "gogl":
-			cloudProvider = semconv.AttributeCloudProviderGCP
+			cloudProvider = semconv.CloudProviderAWS.Value.AsString()
+		case backend.CloudProvider == "mcrsft":
+			cloudProvider = semconv.CloudProviderAzure.Value.AsString()
+		case backend.CloudProvider == "gogl":
+			cloudProvider = semconv.CloudProviderGCP.Value.AsString()
 	}
 
-	backendAttrs.PutStr(semconv.AttributeCloudProvider, cloudProvider)
-	backendAttrs.PutStr(semconv.AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(string(semconv.CloudProviderKey), cloudProvider)
+	backendAttrs.PutStr(string(semconv.CloudRegionKey), backend.CloudRegion)
 
 	switch {
 		case backend.OSType == "lnx":
-			osType = semconv.AttributeOSTypeLinux
+			osType = semconv.OSTypeLinux.Value.AsString()
 		case backend.OSType == "wndws":
-			osType = semconv.AttributeOSTypeWindows
+			osType = semconv.OSTypeWindows.Value.AsString()
 		case backend.OSType == "slrs":
-			osType = semconv.AttributeOSTypeSolaris
+			osType = semconv.OSTypeSolaris.Value.AsString()
 	}
 
-	backendAttrs.PutStr(semconv.AttributeOSType, osType)
-	backendAttrs.PutStr(semconv.AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(string(semconv.OSTypeKey), osType)
+	backendAttrs.PutStr(string(semconv.OSVersionKey), backend.OSVersion)
  }
 ```
 
@@ -1615,7 +1612,6 @@ func generateBackendSystem() BackendSystem {
 }
 
 func getRandomNumber(min int, max int) int {
-	rand.Seed(time.Now().UnixNano())
 	i := (rand.Intn(max-min+1) + min)
 	return i
 }
@@ -1623,7 +1619,7 @@ func getRandomNumber(min int, max int) int {
 func generateTraces(numberOfTraces int) ptrace.Traces {
 	traces := ptrace.NewTraces()
 
-	for i := 0; i <= numberOfTraces; i++ {
+	for i := 0; i < numberOfTraces; i++ {
 		newAtm := generateAtm()
 		newBackendSystem := generateBackendSystem()
 
@@ -1645,8 +1641,8 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm) {
 	atmAttrs.PutStr("atm.stateid", atm.StateID)
 	atmAttrs.PutStr("atm.ispnetwork", atm.ISPNetwork)
 	atmAttrs.PutStr("atm.serialnumber", atm.SerialNumber)
-	atmAttrs.PutStr(semconv.AttributeServiceName, atm.Name)
-	atmAttrs.PutStr(semconv.AttributeServiceVersion, atm.Version)
+	atmAttrs.PutStr(string(semconv.ServiceNameKey), atm.Name)
+	atmAttrs.PutStr(string(semconv.ServiceVersionKey), atm.Version)
 
 }
 
@@ -1656,30 +1652,30 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 	switch {
 	case backend.CloudProvider == "amzn":
-		cloudProvider = semconv.AttributeCloudProviderAWS
-	case backend.OSType == "mcrsft":
-		cloudProvider = semconv.AttributeCloudProviderAzure
-	case backend.OSType == "gogl":
-		cloudProvider = semconv.AttributeCloudProviderGCP
+		cloudProvider = semconv.CloudProviderAWS.Value.AsString()
+	case backend.CloudProvider == "mcrsft":
+		cloudProvider = semconv.CloudProviderAzure.Value.AsString()
+	case backend.CloudProvider == "gogl":
+		cloudProvider = semconv.CloudProviderGCP.Value.AsString()
 	}
 
-	backendAttrs.PutStr(semconv.AttributeCloudProvider, cloudProvider)
-	backendAttrs.PutStr(semconv.AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(string(semconv.CloudProviderKey), cloudProvider)
+	backendAttrs.PutStr(string(semconv.CloudRegionKey), backend.CloudRegion)
 
 	switch {
 	case backend.OSType == "lnx":
-		osType = semconv.AttributeOSTypeLinux
+		osType = semconv.OSTypeLinux.Value.AsString()
 	case backend.OSType == "wndws":
-		osType = semconv.AttributeOSTypeWindows
+		osType = semconv.OSTypeWindows.Value.AsString()
 	case backend.OSType == "slrs":
-		osType = semconv.AttributeOSTypeSolaris
+		osType = semconv.OSTypeSolaris.Value.AsString()
 	}
 
-	backendAttrs.PutStr(semconv.AttributeOSType, osType)
-	backendAttrs.PutStr(semconv.AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(string(semconv.OSTypeKey), osType)
+	backendAttrs.PutStr(string(semconv.OSVersionKey), backend.OSVersion)
 
-	backendAttrs.PutStr(semconv.AttributeServiceName, backend.ProcessName)
-	backendAttrs.PutStr(semconv.AttributeServiceVersion, backend.Version)
+	backendAttrs.PutStr(string(semconv.ServiceNameKey), backend.ProcessName)
+	backendAttrs.PutStr(string(semconv.ServiceVersionKey), backend.Version)
 }
 ```
 
@@ -1771,7 +1767,7 @@ initializing them with the `appendAtmSystemInstrScopeSpans()`. Here is what
 func generateTraces(numberOfTraces int) ptrace.Traces{
 	traces := ptrace.NewTraces()
 
-	for i := 0; i <= numberOfTraces; i++{
+	for i := 0; i < numberOfTraces; i++{
 		newAtm := generateAtm()
 		newBackendSystem := generateBackendSystem()
 
@@ -1946,7 +1942,7 @@ the trace by calling the `appendTraceSpans()` function. Here is what the updated
 func generateTraces(numberOfTraces int) ptrace.Traces {
 	traces := ptrace.NewTraces()
 
-	for i := 0; i <= numberOfTraces; i++ {
+	for i := 0; i < numberOfTraces; i++ {
 		newAtm := generateAtm()
 		newBackendSystem := generateBackendSystem()
 
@@ -2066,7 +2062,6 @@ func generateBackendSystem() BackendSystem {
 }
 
 func getRandomNumber(min int, max int) int {
-	rand.Seed(time.Now().UnixNano())
 	i := (rand.Intn(max-min+1) + min)
 	return i
 }
@@ -2074,7 +2069,7 @@ func getRandomNumber(min int, max int) int {
 func generateTraces(numberOfTraces int) ptrace.Traces {
 	traces := ptrace.NewTraces()
 
-	for i := 0; i <= numberOfTraces; i++ {
+	for i := 0; i < numberOfTraces; i++ {
 		newAtm := generateAtm()
 		newBackendSystem := generateBackendSystem()
 
@@ -2102,8 +2097,8 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm) {
 	atmAttrs.PutStr("atm.stateid", atm.StateID)
 	atmAttrs.PutStr("atm.ispnetwork", atm.ISPNetwork)
 	atmAttrs.PutStr("atm.serialnumber", atm.SerialNumber)
-	atmAttrs.PutStr(semconv.AttributeServiceName, atm.Name)
-	atmAttrs.PutStr(semconv.AttributeServiceVersion, atm.Version)
+	atmAttrs.PutStr(string(semconv.ServiceNameKey), atm.Name)
+	atmAttrs.PutStr(string(semconv.ServiceVersionKey), atm.Version)
 
 }
 
@@ -2113,30 +2108,30 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 	switch {
 	case backend.CloudProvider == "amzn":
-		cloudProvider = semconv.AttributeCloudProviderAWS
-	case backend.OSType == "mcrsft":
-		cloudProvider = semconv.AttributeCloudProviderAzure
-	case backend.OSType == "gogl":
-		cloudProvider = semconv.AttributeCloudProviderGCP
+		cloudProvider = semconv.CloudProviderAWS.Value.AsString()
+	case backend.CloudProvider == "mcrsft":
+		cloudProvider = semconv.CloudProviderAzure.Value.AsString()
+	case backend.CloudProvider == "gogl":
+		cloudProvider = semconv.CloudProviderGCP.Value.AsString()
 	}
 
-	backendAttrs.PutStr(semconv.AttributeCloudProvider, cloudProvider)
-	backendAttrs.PutStr(semconv.AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(string(semconv.CloudProviderKey), cloudProvider)
+	backendAttrs.PutStr(string(semconv.CloudRegionKey), backend.CloudRegion)
 
 	switch {
 	case backend.OSType == "lnx":
-		osType = semconv.AttributeOSTypeLinux
+		osType = semconv.OSTypeLinux.Value.AsString()
 	case backend.OSType == "wndws":
-		osType = semconv.AttributeOSTypeWindows
+		osType = semconv.OSTypeWindows.Value.AsString()
 	case backend.OSType == "slrs":
-		osType = semconv.AttributeOSTypeSolaris
+		osType = semconv.OSTypeSolaris.Value.AsString()
 	}
 
-	backendAttrs.PutStr(semconv.AttributeOSType, osType)
-	backendAttrs.PutStr(semconv.AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(string(semconv.OSTypeKey), osType)
+	backendAttrs.PutStr(string(semconv.OSVersionKey), backend.OSVersion)
 
-	backendAttrs.PutStr(semconv.AttributeServiceName, backend.ProcessName)
-	backendAttrs.PutStr(semconv.AttributeServiceVersion, backend.Version)
+	backendAttrs.PutStr(string(semconv.ServiceNameKey), backend.ProcessName)
+	backendAttrs.PutStr(string(semconv.ServiceVersionKey), backend.Version)
 }
 
 func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {
@@ -2478,7 +2473,6 @@ func generateBackendSystem() BackendSystem {
 }
 
 func getRandomNumber(min int, max int) int {
-	rand.Seed(time.Now().UnixNano())
 	i := (rand.Intn(max-min+1) + min)
 	return i
 }
@@ -2486,7 +2480,7 @@ func getRandomNumber(min int, max int) int {
 func generateTraces(numberOfTraces int) ptrace.Traces {
 	traces := ptrace.NewTraces()
 
-	for i := 0; i <= numberOfTraces; i++ {
+	for i := 0; i < numberOfTraces; i++ {
 		newAtm := generateAtm()
 		newBackendSystem := generateBackendSystem()
 
@@ -2514,8 +2508,8 @@ func fillResourceWithAtm(resource *pcommon.Resource, atm Atm) {
 	atmAttrs.PutStr("atm.stateid", atm.StateID)
 	atmAttrs.PutStr("atm.ispnetwork", atm.ISPNetwork)
 	atmAttrs.PutStr("atm.serialnumber", atm.SerialNumber)
-	atmAttrs.PutStr(semconv.AttributeServiceName, atm.Name)
-	atmAttrs.PutStr(semconv.AttributeServiceVersion, atm.Version)
+	atmAttrs.PutStr(string(semconv.ServiceNameKey), atm.Name)
+	atmAttrs.PutStr(string(semconv.ServiceVersionKey), atm.Version)
 
 }
 
@@ -2525,30 +2519,30 @@ func fillResourceWithBackendSystem(resource *pcommon.Resource, backend BackendSy
 
 	switch {
 	case backend.CloudProvider == "amzn":
-		cloudProvider = semconv.AttributeCloudProviderAWS
-	case backend.OSType == "mcrsft":
-		cloudProvider = semconv.AttributeCloudProviderAzure
-	case backend.OSType == "gogl":
-		cloudProvider = semconv.AttributeCloudProviderGCP
+		cloudProvider = semconv.CloudProviderAWS.Value.AsString()
+	case backend.CloudProvider == "mcrsft":
+		cloudProvider = semconv.CloudProviderAzure.Value.AsString()
+	case backend.CloudProvider == "gogl":
+		cloudProvider = semconv.CloudProviderGCP.Value.AsString()
 	}
 
-	backendAttrs.PutStr(semconv.AttributeCloudProvider, cloudProvider)
-	backendAttrs.PutStr(semconv.AttributeCloudRegion, backend.CloudRegion)
+	backendAttrs.PutStr(string(semconv.CloudProviderKey), cloudProvider)
+	backendAttrs.PutStr(string(semconv.CloudRegionKey), backend.CloudRegion)
 
 	switch {
 	case backend.OSType == "lnx":
-		osType = semconv.AttributeOSTypeLinux
+		osType = semconv.OSTypeLinux.Value.AsString()
 	case backend.OSType == "wndws":
-		osType = semconv.AttributeOSTypeWindows
+		osType = semconv.OSTypeWindows.Value.AsString()
 	case backend.OSType == "slrs":
-		osType = semconv.AttributeOSTypeSolaris
+		osType = semconv.OSTypeSolaris.Value.AsString()
 	}
 
-	backendAttrs.PutStr(semconv.AttributeOSType, osType)
-	backendAttrs.PutStr(semconv.AttributeOSVersion, backend.OSVersion)
+	backendAttrs.PutStr(string(semconv.OSTypeKey), osType)
+	backendAttrs.PutStr(string(semconv.OSVersionKey), backend.OSVersion)
 
-	backendAttrs.PutStr(semconv.AttributeServiceName, backend.ProcessName)
-	backendAttrs.PutStr(semconv.AttributeServiceVersion, backend.Version)
+	backendAttrs.PutStr(string(semconv.ServiceNameKey), backend.ProcessName)
+	backendAttrs.PutStr(string(semconv.ServiceVersionKey), backend.Version)
 }
 
 func appendAtmSystemInstrScopeSpans(resourceSpans *ptrace.ResourceSpans) ptrace.ScopeSpans {
