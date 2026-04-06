@@ -3,6 +3,7 @@ title: Pierwsze kroki
 description: Zacznij korzystać z OpenTelemetry zgodnie ze swoją rolą.
 no_list: true
 weight: 160
+default_lang_commit: e7a62891accc831de331336c8d10245969276112
 ---
 
 Wybierz rolę,[^1] aby rozpocząć:

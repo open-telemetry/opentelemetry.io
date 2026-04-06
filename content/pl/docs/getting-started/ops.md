@@ -1,6 +1,7 @@
 ---
 title: Pierwsze kroki dla operatorów
 linkTitle: Ops
+default_lang_commit: 99a39c5e4e51daba968bfbb3eb078be4a14ad363
 ---
 
 To jest strona [pierwszych kroków](..) dla Ciebie, jeśli:

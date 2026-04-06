@@ -1,6 +1,7 @@
 ---
 title: Pierwsze kroki dla deweloperów
 linkTitle: Dev
+default_lang_commit: f1ccafef4b5070f26ce63a3dc19fcafc8a00fb8f
 ---
 
 To jest strona [pierwszych kroków](..) dla Ciebie, jeśli:
