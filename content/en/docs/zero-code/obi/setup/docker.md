@@ -70,7 +70,8 @@ the signed image digest. If verification fails:
 
 - confirm that the tag exists in the registry you queried
 - make sure you are verifying a published release tag, not just `main`
-- verify that you are using the GitHub OIDC issuer and identity regexp shown above
+- verify that you are using the GitHub OIDC issuer and identity regular expression shown
+  above
 
 ## Docker CLI example
 
