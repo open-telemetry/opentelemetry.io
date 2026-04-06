@@ -1091,8 +1091,10 @@ maintainers:
   - name: MikeGoldsmith
     teams:
       - javascript-contrib-triagers
+      - opentelemetry-python-contrib-approvers
       - proto-go-approvers
       - proto-go-maintainers
+      - python-approvers
       - ruby-contrib-triagers
     html_url: https://github.com/MikeGoldsmith
     avatar_url: https://avatars.githubusercontent.com/u/3481731?v=4
@@ -3178,6 +3180,9 @@ members:
   - name: ShaanveerS
     html_url: https://github.com/ShaanveerS
     avatar_url: https://avatars.githubusercontent.com/u/146979751?v=4
+  - name: shalk
+    html_url: https://github.com/shalk
+    avatar_url: https://avatars.githubusercontent.com/u/2435781?v=4
   - name: shanduur
     html_url: https://github.com/shanduur
     avatar_url: https://avatars.githubusercontent.com/u/32583062?v=4
