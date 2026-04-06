@@ -7,8 +7,6 @@ description: >-
 weight: 30
 ---
 
-## PR fix directives {#pr-fix-directives}
-
 The [`pr-actions.yml`][pr-actions] workflow lets contributors run selected `fix`
 scripts by commenting on a PR:
 

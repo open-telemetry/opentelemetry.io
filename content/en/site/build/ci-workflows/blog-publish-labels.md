@@ -7,8 +7,6 @@ description: >-
 weight: 20
 ---
 
-## Blog publish labels {#blog-publish-labels}
-
 The [`blog-publish-labels.yml`][blog] workflow runs daily at 7 AM UTC. It
 executes [`blog-publish-check.sh`][batch-script], which iterates over all open
 PRs with `blog` label and calls `pr-approval-labels.sh` for each one. When
@@ -28,7 +26,7 @@ re-notify. When triggering the workflow manually, set `force_notify` to `true`
 to send a one-off test notification (no labels are applied) so you can verify
 the Slack formatting.
 
-### Slack webhook setup {#slack-webhook-setup}
+## Slack webhook setup {#slack-webhook-setup}
 
 The workflow uses a **Slack Workflow Builder webhook trigger**, which allows
 non-engineers to own the message format without touching workflow code.
@@ -79,7 +77,7 @@ sequenceDiagram
     participant GH as GitHub
     participant W as blog-publish-labels
     participant B as blog-publish-check.sh
-    participant L as label-gate.sh
+    participant L as pr-approval-labels.sh
     participant S as Slack
 
     Note over GH: schedule event (daily, 7 AM UTC)
@@ -100,4 +98,4 @@ sequenceDiagram
 [blog]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/blog-publish-labels.yml
 [batch-script]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/248cc6f/.github/scripts/blog-publish-check.sh
+  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/blog-publish-check.sh

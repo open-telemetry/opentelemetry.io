@@ -7,8 +7,6 @@ description: >-
 weight: 10
 ---
 
-## Label gate {#label-gate}
-
 The following workflows work together to automatically manage approval-related
 labels on pull requests:
 
@@ -16,16 +14,13 @@ labels on pull requests:
 | ---------------------------------- | ------------------------------------- | -------------------------------------------- |
 | [`pr-review-trigger.yml`][trigger] | `pull_request_review`                 | Minimal (no secrets)                         |
 | [`label-gate.yml`][labels]         | `pull_request_target`, `workflow_run` | App token for label edits and org/team reads |
-| [`blog-publish-labels.yml`][blog]  | `schedule` (daily 7 AM UTC)           | App token + `SLACK_WEBHOOK_URL` secret       |
 
 [trigger]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-review-trigger.yml
 [labels]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/label-gate.yml
-[blog]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/blog-publish-labels.yml
 
-### Labels managed
+## Labels managed
 
 - **`missing:docs-approval`** — added when approval from the
   [`docs-approvers`][docs-approvers] team is pending; removed once a
@@ -42,7 +37,7 @@ labels on pull requests:
 [owners]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/component-owners.yml
 
-### Publish date gating {#publish-date-gating}
+## Publish date gating {#publish-date-gating}
 
 The script scans each changed file for a line beginning with `date:` (typically
 from the front matter in Markdown content). If it finds a date in the future,
@@ -56,25 +51,18 @@ label extends the check to other PR types.
 If a PR contains multiple files with different dates, the label is gated on the
 latest date — all content must be ready before merging.
 
-#### Script operating modes
+### Script operating modes
 
 The [`pr-approval-labels.sh`][script] script processes a single PR (set via the
-`PR` environment variable). It is called by `label-gate.yml` on PR events and by
-[`blog-publish-check.sh`][batch-script] in batch mode.
+`PR` environment variable). It is called by `label-gate.yml` on PR events.
+
+For batch mode (daily scheduled runs), see
+[Blog publish labels](../blog-publish-labels/).
 
 [script]:
   https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/scripts/pr-approval-labels.sh
-[batch-script]:
-  https://github.com/open-telemetry/opentelemetry.io/blob/248cc6f/.github/scripts/blog-publish-check.sh
 
-The [`blog-publish-check.sh`][batch-script] script handles batch iteration: it
-queries all open PRs carrying any `PUBLISH_DATE_LABELS` label and calls
-`pr-approval-labels.sh` for each one. Used by the
-[`blog-publish-labels.yml`](#blog-publish-labels) `schedule` trigger (daily at 7
-AM UTC), so a PR whose publish date arrives overnight receives
-`ready-to-be-merged` automatically without requiring a new commit.
-
-### Why two workflows?
+## Why two workflows?
 
 GitHub's `pull_request_review` event has no `_target` variant. This means a
 workflow triggered by a review on a **fork PR** runs in the fork's context and
@@ -131,7 +119,7 @@ sequenceDiagram
     L->>GH: Add/remove labels
 ```
 
-### Security model
+## Security model
 
 - **`pr-review-trigger`**: intentionally minimal — no secrets, no privileged
   permissions. Ignores `review.state == "commented"` since comments don't affect
@@ -141,6 +129,3 @@ sequenceDiagram
   and edit PR labels. Uses `pull_request_target` and `workflow_run` to ensure it
   always executes in the trusted base repository context. Also adds component
   labels via `actions/labeler`.
-- **`blog-publish-labels`**: runs on a schedule with a GitHub App token and the
-  `SLACK_WEBHOOK_URL` secret. Always executes in the trusted base repository
-  context (schedule events have no fork variant).
