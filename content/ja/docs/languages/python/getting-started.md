@@ -2,7 +2,7 @@
 title: Getting Started
 description: 5分以内にアプリのテレメトリーを取得しましょう！
 weight: 10
-default_lang_commit: 7a39e1b95f51cf97fe203ef98a1011d3be33d77e
+default_lang_commit: aaffe18c9ef8f9f311b73d11f216061c3cd7c6cc
 # prettier-ignore
 cSpell:ignore: debugexporter diceroller distro maxlen randint rolldice rollspan venv
 ---
