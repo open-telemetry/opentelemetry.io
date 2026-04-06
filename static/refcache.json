@@ -103,6 +103,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-03-12T09:59:38.891172213Z"
   },
+  "https://aspire.dev/dashboard/standalone/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-06T13:53:18.890175811Z"
+  },
   "https://avaje.io/jex/": {
     "StatusCode": 206,
     "LastSeen": "2026-03-18T09:55:22.165685974Z"
@@ -6742,6 +6746,10 @@
   "https://github.com/microsoft/ApplicationInsights-Java": {
     "StatusCode": 206,
     "LastSeen": "2026-03-18T09:56:51.230582634Z"
+  },
+  "https://github.com/microsoft/aspire/tree/main/src/Aspire.Dashboard": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-06T13:53:14.952568738Z"
   },
   "https://github.com/microsoft/perfview": {
     "StatusCode": 206,
