@@ -3,6 +3,7 @@ title: Run OBI as a standalone process
 linkTitle: Standalone
 description: Learn how to setup and run OBI as a standalone Linux process.
 weight: 5
+cSpell:ignore: cyclonedx
 ---
 
 OBI can run as a standalone Linux OS process with elevated privileges that can
