@@ -4,7 +4,7 @@ linkTitle: Blog publish labels
 description: >-
   Daily scheduled workflow that applies ready-to-be-merged labels to blog PRs
   whose publish date has arrived and sends Slack notifications.
-weight: 20
+weight: 200
 ---
 
 The [`blog-publish-labels.yml`][blog] workflow runs daily at 7 AM UTC. It

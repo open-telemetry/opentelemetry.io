@@ -7,12 +7,24 @@ description: >-
 weight: 10
 ---
 
-All workflow files live under
+The repository uses GitHub Actions workflows to automate PR checks, label
+management, content validation, and maintenance tasks. All workflow files live
+under
 [`.github/workflows/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/.github/workflows).
+
+The subpages below cover the more complex workflows in detail:
+
+- [Label gate](label-gate/) — approval labels, component labeling, and
+  publish-date gating
+- [Blog publish labels](blog-publish-labels/) — daily scheduled labeling with
+  Slack notifications
+- [PR fix directives](pr-fix-directives/) — comment-driven fix scripts via a
+  two-stage patch pipeline
 
 ## Other workflows {#other-workflows}
 
-The repository includes several other workflows:
+The following workflows handle additional CI tasks and are not covered in
+dedicated subpages:
 
 | Workflow                   | Purpose                                       |
 | -------------------------- | --------------------------------------------- |

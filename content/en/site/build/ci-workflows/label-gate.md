@@ -4,7 +4,7 @@ linkTitle: Label gate
 description: >-
   Workflows that manage approval labels on PRs — adding component labels,
   tracking docs and SIG approvals, and gating merges on publish dates.
-weight: 10
+weight: 100
 ---
 
 The following workflows work together to automatically manage approval-related

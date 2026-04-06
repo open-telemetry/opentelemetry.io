@@ -4,7 +4,7 @@ linkTitle: PR fix directives
 description: >-
   Workflow that lets contributors run fix scripts by commenting on a PR, using a
   two-stage patch pipeline for safe execution.
-weight: 30
+weight: 300
 ---
 
 The [`pr-actions.yml`][pr-actions] workflow lets contributors run selected `fix`
