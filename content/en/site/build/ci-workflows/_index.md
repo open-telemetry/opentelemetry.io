@@ -12,7 +12,7 @@ management, content validation, and maintenance tasks. All workflow files live
 under
 [`.github/workflows/`](https://github.com/open-telemetry/opentelemetry.io/tree/main/.github/workflows).
 
-The subpages below cover the more complex workflows in detail:
+The pages below cover the more complex workflows in detail:
 
 - [Label gate](label-gate/) — approval labels, component labeling, and
   publish-date gating
@@ -24,7 +24,7 @@ The subpages below cover the more complex workflows in detail:
 ## Other workflows {#other-workflows}
 
 The following workflows handle additional CI tasks and are not covered in
-dedicated subpages:
+dedicated pages:
 
 | Workflow                   | Purpose                                       |
 | -------------------------- | --------------------------------------------- |

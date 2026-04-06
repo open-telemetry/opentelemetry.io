@@ -5,6 +5,7 @@ description: >-
   Workflows that manage approval labels on PRs — adding component labels,
   tracking docs and SIG approvals, and gating merges on publish dates.
 weight: 100
+cSpell:ignore: enduser
 ---
 
 The label gate system ensures that every pull request receives the required
