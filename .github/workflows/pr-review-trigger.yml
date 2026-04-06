@@ -1,5 +1,5 @@
 # To learn more about this workflow, see:
-# https://opentelemetry.io/site/build/ci-workflows/#pr-approval-labels
+# https://opentelemetry.io/site/build/ci-workflows/#label-gate
 name: PR review trigger
 
 on:
