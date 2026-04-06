@@ -94,24 +94,6 @@ function buildConstraints(propDef) {
 }
 
 /**
- * Generate human-readable default behavior text
- * @param {Object} propDef - Property definition from JSON Schema
- * @returns {string} Default behavior description
- */
-function generateDefaultText(propDef) {
-  if (propDef.default !== undefined) {
-    return `If omitted, ${propDef.default} is used.`;
-  }
-
-  const types = Array.isArray(propDef.type) ? propDef.type : [propDef.type];
-  if (types.includes('null')) {
-    return 'If omitted or null, default behavior applies.';
-  }
-
-  return 'If omitted, default behavior applies.';
-}
-
-/**
  * Clean description text
  * Normalizes whitespace and trims
  * @param {string} description - Raw description text
@@ -134,7 +116,6 @@ function processProperty(propName, propDef) {
   return {
     name: propName,
     type: resolveType(propDef),
-    default: generateDefaultText(propDef),
     constraints: buildConstraints(propDef),
     description: cleanDescription(propDef.description),
   };
