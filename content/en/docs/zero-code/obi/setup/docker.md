@@ -15,7 +15,7 @@ OBI container images are published to both registries:
 
 - [Docker Hub](https://hub.docker.com/r/otel/ebpf-instrument):
   `otel/ebpf-instrument:<version>`
-- [GHCR](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkgs/container/opentelemetry-ebpf-instrumentation):
+- [GHCR](https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/pkgs/container/opentelemetry-ebpf-instrumentation%2Febpf-instrument):
   `ghcr.io/open-telemetry/opentelemetry-ebpf-instrumentation/ebpf-instrument:<version>`
 
 The development tag is also published on Docker Hub as:
