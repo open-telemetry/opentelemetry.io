@@ -100,10 +100,6 @@ outputFormats:
     baseName: llms
     isPlainText: true
     notAlternative: true
-  Markdown:
-    mediaType: text/markdown
-    baseName: index
-    isPlainText: true
 
 outputs:
   home: &home-outputs [HTML, RSS]
