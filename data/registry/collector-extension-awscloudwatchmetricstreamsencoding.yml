@@ -1,0 +1,22 @@
+# cSpell:ignore awscloudwatchmetricstreamsencodingextension unmarshals
+title: AWS CloudWatch Metric Streams Encoding Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+license: Apache 2.0
+description:
+  This extension unmarshals metrics encoded in formats produced by [Amazon
+  CloudWatch Metric
+  Streams](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Metric-Streams.html).
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/awscloudwatchmetricstreamsencodingextension
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding/awscloudwatchmetricstreamsencodingextension
+  version: v0.149.0

@@ -1,0 +1,22 @@
+# cSpell:ignore unmarshal googlecloudlogentryencodingextension
+title: Google Cloud LogEntry Encoding Extension
+registryType: extension
+language: collector
+tags:
+  - go
+  - extension
+  - collector
+license: Apache 2.0
+description:
+  This extension can be used to unmarshal a [Cloud Logging
+  LogEntry](https://cloud.google.com/logging/docs/reference/v2/rest/v2/LogEntry)
+  message type.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/extension/encoding/googlecloudlogentryencodingextension
+createdAt: 2025-03-26
+package:
+  registry: go-collector
+  name: github.com/open-telemetry/opentelemetry-collector-contrib/extension/encoding/googlecloudlogentryencodingextension
+  version: v0.149.0

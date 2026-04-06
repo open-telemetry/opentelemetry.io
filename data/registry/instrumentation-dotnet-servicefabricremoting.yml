@@ -1,0 +1,20 @@
+title: Service Fabric Remoting Instrumentation for OpenTelemetry .NET
+registryType: instrumentation
+language: dotnet
+tags:
+  - dotnet
+  - instrumentation
+license: Apache 2.0
+description:
+  This is an Instrumentation Library, which instruments Service Fabric Remoting
+  and collects telemetry about incoming requests.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-dotnet-contrib/tree/main/src/OpenTelemetry.Instrumentation.ServiceFabricRemoting
+createdAt: 2025-03-26
+package:
+  registry: nuget
+  name: OpenTelemetry.Instrumentation.ServiceFabricRemoting
+  version: 1.15.0-beta.1
+isFirstParty: false
