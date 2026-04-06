@@ -16,4 +16,5 @@ createdAt: 2025-03-26
 package:
   registry: gems
   name: opentelemetry-instrumentation-factory_bot
+  version: 0.1.0
 isFirstParty: false

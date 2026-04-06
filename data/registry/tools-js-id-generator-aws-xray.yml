@@ -17,4 +17,5 @@ createdAt: 2025-03-26
 package:
   registry: npm
   name: '@opentelemetry/id-generator-aws-xray'
+  version: 2.1.0
 isFirstParty: false
