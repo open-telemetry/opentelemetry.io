@@ -1,0 +1,21 @@
+# cSpell:ignore Amzn
+title: OpenTelemetry Propagator AWS X-Ray
+registryType: utilities
+language: js
+tags:
+  - js
+  - utilities
+license: Apache 2.0
+description:
+  The OpenTelemetry Propagator for AWS X-Ray provides HTTP header propagation
+  for systems that are using AWS X-Amzn-Trace-Id format.
+authors:
+  - name: OpenTelemetry Authors
+urls:
+  repo: https://github.com/open-telemetry/opentelemetry-js-contrib/tree/main/packages/propagator-aws-xray
+createdAt: 2025-03-26
+package:
+  registry: npm
+  name: '@opentelemetry/propagator-aws-xray'
+  version: 2.2.0
+isFirstParty: false
