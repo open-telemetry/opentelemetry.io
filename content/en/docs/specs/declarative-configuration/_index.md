@@ -29,7 +29,7 @@ languages that implement the specification.
   support which types
 - [Configuration Schema Repository](https://github.com/open-telemetry/opentelemetry-configuration) -
   Official schema repository
-- [File Configuration Specification](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/configuration/file-configuration.md) -
+- [File Configuration Specification](/docs/specs/otel/configuration/file-configuration.md) -
   Official specification
 
 {{< config-types-accordion >}}
