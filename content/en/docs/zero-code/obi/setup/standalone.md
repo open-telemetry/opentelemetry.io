@@ -18,14 +18,20 @@ Each release includes:
 
 - `obi-v<version>-linux-amd64.tar.gz` - Linux AMD64/x86_64 archive
 - `obi-v<version>-linux-arm64.tar.gz` - Linux ARM64 archive
-- `obi-v<version>-linux-amd64.cyclonedx.json` - CycloneDX SBOM for the AMD64 archive
-- `obi-v<version>-linux-arm64.cyclonedx.json` - CycloneDX SBOM for the ARM64 archive
-- `obi-v<version>-source-generated.cyclonedx.json` - CycloneDX SBOM for the source-generated archive
-- `obi-java-agent-v<version>.cyclonedx.json` - CycloneDX SBOM for the embedded Java agent and its Java dependencies
-- `SHA256SUMS` - Checksums for verification of the release archives and SBOM assets
+- `obi-v<version>-linux-amd64.cyclonedx.json` - CycloneDX SBOM for the AMD64
+  archive
+- `obi-v<version>-linux-arm64.cyclonedx.json` - CycloneDX SBOM for the ARM64
+  archive
+- `obi-v<version>-source-generated.cyclonedx.json` - CycloneDX SBOM for the
+  source-generated archive
+- `obi-java-agent-v<version>.cyclonedx.json` - CycloneDX SBOM for the embedded
+  Java agent and its Java dependencies
+- `SHA256SUMS` - Checksums for verification of the release archives and SBOM
+  assets
 
 Container images for the same release are also published. For image pull and
-signature verification instructions, see [Run OBI as a Docker container](../docker/).
+signature verification instructions, see
+[Run OBI as a Docker container](../docker/).
 
 Set your desired version and architecture:
 
