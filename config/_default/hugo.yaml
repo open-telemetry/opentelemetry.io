@@ -120,7 +120,7 @@ cascade:
       [HTML, RSS]
     target:
       kind: section
-      path: '/blog{,2026,2025}'
+      path: '/blog'
 
 params:
   copyright:
