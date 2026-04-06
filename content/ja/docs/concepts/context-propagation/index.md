@@ -120,7 +120,7 @@ OpenTelemetry SDKは、ログをトレースと自動的に関連づけること
 
 ## 言語SDKでのサポート {#language-sdk-support}
 
-OpenTelemetry APIおよびSDKの個々の言語特有の実装については、それぞれのドキュメントページでコンテキスト伝搬のsパオートに関する詳細を確認できます。
+OpenTelemetry APIおよびSDKの個々の言語特有の実装については、それぞれのドキュメントページでコンテキスト伝搬のサポートに関する詳細を確認できます。
 
 - [C++](/docs/languages/cpp/instrumentation/#context-propagation)
 - .NET

@@ -3,7 +3,6 @@ title: ログ
 description: イベントの記録
 weight: 3
 default_lang_commit: 3b1656f719549d7c7081167ba6bdf98a4e45cf0c
-drifted_from_default: true
 cSpell:ignore: filelogreceiver semistructured transformprocessor
 ---
 
@@ -15,7 +14,8 @@ cSpell:ignore: filelogreceiver semistructured transformprocessor
 
 OpenTelemetry は、ログレコードを生成するための Logs API と SDK、そして既存のロギングフレームワークと統合するための言語 SDK とロギングブリッジを提供します。
 ログとは、ロギングプロバイダを通して送信されるあらゆるデータを指し、イベントはログの特殊なタイプです。
-すべてのログがイベントであるとは限りませんが、すべてのイベントはログです。Logs API は公開されており、アプリケーションコードから直接使用することも、既存のロギングライブラリやブリッジを介して間接的に使用することもできます。
+すべてのログがイベントであるとは限りませんが、すべてのイベントはログです。
+Logs API は公開されており、アプリケーションコードから直接使用することも、既存のロギングライブラリやブリッジを介して間接的に使用することもできます。
 
 OpenTelemetry は、既に生成されているログを扱うように設計されており、ログを他のシグナルと関連付けたり、コンテキスト属性を追加したり、異なるソースを共通のフォーマットに正規化して処理およびエクスポートするためのツールを提供します。
 
