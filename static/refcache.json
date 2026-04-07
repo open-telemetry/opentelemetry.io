@@ -12583,6 +12583,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-17T09:54:42.999934807Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/b1f159092a3743464e53e78b16f0c4d817c47e02/examples/http-header-enrichment-demo": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-07T18:43:59.342178912Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/f6deabc4387de1e0bf4b2acdbc674f7601d4c7f2/internal/test/integration?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-03-17T09:54:36.82748599Z"
