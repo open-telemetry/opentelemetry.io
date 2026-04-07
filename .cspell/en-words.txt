@@ -38,6 +38,7 @@ emailservice
 EMEA
 erlang
 errorf
+extensionless
 featureflagservice
 flagd
 frauddetectionservice
