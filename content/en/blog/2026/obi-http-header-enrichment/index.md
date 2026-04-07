@@ -1,7 +1,7 @@
 ---
 title: OBI Gives Incident Response the Request Context It Needs
 linkTitle: OBI Incident Response Context
-date: 2026-04-06
+date: 2026-04-10
 author: >-
   [Tyler Yahn](https://github.com/MrAlias) (Splunk), [Nimrod
   Avni](https://github.com/NimrodAvni78) (Coralogix)
