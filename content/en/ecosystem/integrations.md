@@ -10,7 +10,7 @@ The mission of OpenTelemetry is
 In other words, observability should be built in into the software you develop.
 
 While external instrumentation through
-[zero code instrumentation solutions](/docs/concepts/instrumentation/zero-code)
+[auto instrumentation solutions](/docs/concepts/instrumentation/zero-code)
 and
 [instrumentation libraries](/docs/specs/otel/overview/#instrumentation-libraries)
 provide a convenient way to make your application observable, we believe that

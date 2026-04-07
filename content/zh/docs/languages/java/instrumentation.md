@@ -31,8 +31,8 @@ Java 代理的安装过程简单，能自动检测并能从大量库中安装插
 
 插桩分为以下几类：
 
-- [零代码: Java 代理](#zero-code-java-agent)是一种零代码插桩形式 **[1]**，可动态操作应用的字节码。
-- [零代码: Spring Boot 启动器](#zero-code-spring-boot-starter)是一种零代码插桩形式 **[1]**，
+- [自动插桩: Java 代理](#zero-code-java-agent)是一种自动插桩形式 **[1]**，可动态操作应用的字节码。
+- [自动插桩: Spring Boot 启动器](#zero-code-spring-boot-starter)是一种自动插桩形式 **[1]**，
   它利用 Spring 自动配置来安装[库插桩](#library-instrumentation).
 - [库插桩](#library-instrumentation) 通过包装或使用扩展点来对库进行插桩，
   这要求用户手动安装和/或调整库的使用方式。
@@ -40,22 +40,22 @@ Java 代理的安装过程简单，能自动检测并能从大量库中安装插
 - [手动插桩](#manual-instrumentation)是由应用开发者编写的，且通常特定于应用的业务领域。
 - [适配层](#shims)用于将数据从一个可观测性库桥接到另一个，通常是**从**某些库导入到 OpenTelemetry 中。
 
-**[1]**： 零代码插桩会根据检测到的库或框架自动安装。
+**[1]**： 自动插桩会根据检测到的库或框架自动安装。
 
 [opentelemetry-java-instrumentation](https://github.com/open-telemetry/opentelemetry-java-instrumentation)
 项目包含了 Java 代理、Spring Boot 启动器和库插桩的源代码。
 
-### 零代码: Java 代理 {#zero-code-java-agent}
+### 自动插桩: Java 代理 {#zero-code-java-agent}
 
-Java 代理是一种零代码的[自动插桩](/docs/specs/otel/glossary/#automatic-instrumentation)形式，可动态操作应用的字节码。
+Java 代理是一种[自动插桩](/docs/specs/otel/glossary/#automatic-instrumentation)形式，可动态操作应用的字节码。
 
 要查看 Java 代理已插桩库列表，请参考[支持的库](https://github.com/open-telemetry/opentelemetry-java-instrumentation/blob/main/docs/supported-libraries.md)中 “自动插桩版本” 一栏。
 
 更多详情请参见 [Java 代理](/docs/zero-code/java/agent/)。
 
-### 零代码: Spring Boot 启动器 {#zero-code-spring-boot-starter}
+### 自动插桩: Spring Boot 启动器 {#zero-code-spring-boot-starter}
 
-Spring Boot 启动器是一种零代码的[自动插桩](/docs/specs/otel/glossary/#automatic-instrumentation)形式，
+Spring Boot 启动器是一种[自动插桩](/docs/specs/otel/glossary/#automatic-instrumentation)形式，
 它利用 Spring 自动配置来安装[库插桩](#library-instrumentation)。
 
 详情请参见 [Spring Boot 启动器](/docs/zero-code/java/spring-boot-starter/)。

@@ -1,17 +1,17 @@
 ---
-title: Zero-code Instrumentation
+title: Auto Instrumentation
 redirects: [{ from: 'net/*', to: 'dotnet/:splat' }]
 weight: 265
 ---
 
-OpenTelemetry [zero-code instrumentation][] is supported for the languages
+OpenTelemetry [auto instrumentation][] is supported for the languages
 listed below in the section index.
 
 If you are using Kubernetes, you can use the [OpenTelemetry Operator for
-Kubernetes][otel-op] to [inject zero-code instrumentation][] for .NET, Java,
+Kubernetes][otel-op] to [inject auto instrumentation][] for .NET, Java,
 Node.js, Python, or Go into your application.
 
-[inject zero-code instrumentation]:
+[inject auto instrumentation]:
   /docs/platforms/kubernetes/operator/automatic/
-[zero-code instrumentation]: /docs/concepts/instrumentation/zero-code/
+[auto instrumentation]: /docs/concepts/instrumentation/zero-code/
 [otel-op]: /docs/platforms/kubernetes/operator/

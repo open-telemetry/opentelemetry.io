@@ -101,9 +101,9 @@ flask run -p 8080
 
 ## Instrumentation
 
-Zero-code instrumentation will generate telemetry data on your behalf. There are
+Auto instrumentation will generate telemetry data on your behalf. There are
 several options you can take, covered in more detail in
-[Zero-code Instrumentation](/docs/zero-code/python/). Here we'll use the
+[Auto Instrumentation](/docs/zero-code/python/). Here we'll use the
 `opentelemetry-instrument` agent.
 
 Install the `opentelemetry-distro` package, which contains the OpenTelemetry
@@ -892,7 +892,7 @@ Value: 1
 ## Next steps
 
 There are several options available for automatic instrumentation and Python.
-See [Zero-code Instrumentation](/docs/zero-code/python/) to learn about them and
+See [Auto Instrumentation](/docs/zero-code/python/) to learn about them and
 how to configure them.
 
 There's a lot more to manual instrumentation than just creating a child span. To

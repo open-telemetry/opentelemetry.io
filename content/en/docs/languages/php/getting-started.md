@@ -16,7 +16,7 @@ will then emit some [logs][] which will also be sent to the console.
 
 ## Prerequisites
 
-OpenTelemetry requires PHP 8.0+ for zero-code instrumentation, however manual
+OpenTelemetry requires PHP 8.0+ for auto instrumentation, however manual
 instrumentation will work with PHP 7.4
 
 Ensure that you have the following installed:
@@ -86,7 +86,7 @@ php -S localhost:8080
 Open <http://localhost:8080/rolldice> in your web browser to ensure it is
 working.
 
-## Add zero-code instrumentation
+## Add auto instrumentation
 
 Next, you’ll use the OpenTelemetry PHP extension to
 [automatically instrument](/docs/zero-code/php/) the application.
@@ -117,7 +117,7 @@ Next, you’ll use the OpenTelemetry PHP extension to
    > [!NOTE]
    >
    > Alternative methods of installing the extension are detailed in
-   > [zero-code instrumentation](/docs/zero-code/php/#install-the-opentelemetry-extension).
+   > [auto instrumentation](/docs/zero-code/php/#install-the-opentelemetry-extension).
 
 3. Add the extension to your `php.ini` file:
 
@@ -488,7 +488,7 @@ values correspond to the active span at the time the log message was generated.
 For more:
 
 - Run this example with another [exporter][] for telemetry data.
-- Try [zero-code instrumentation](/docs/zero-code/php/) on one of your own apps.
+- Try [auto instrumentation](/docs/zero-code/php/) on one of your own apps.
 - Learn more about [manual instrumentation][] and try out some
   [examples](/docs/languages/php/examples/).
 - Take a look at the [OpenTelemetry Demo](/docs/demo/), which includes the PHP

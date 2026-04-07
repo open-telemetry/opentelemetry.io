@@ -12,6 +12,12 @@ cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 
 {{% include instrumentation-intro.md %}}
 
+> [!NOTE]
+>
+> 在本页中，你将学习如何手动向代码添加链路、指标和日志。
+> 你并不局限于只使用一种插桩方式：
+> 可以使用[自动插桩](/docs/zero-code/go/)来入门，然后根据需要使用手动插桩来丰富代码。
+
 ## 配置{#setup}
 
 ## 链路追踪{#traces}

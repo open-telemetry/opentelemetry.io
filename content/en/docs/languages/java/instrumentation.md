@@ -40,10 +40,10 @@ instrumentation topics:
 
 There are several categories of instrumentation:
 
-- [Zero-code: Java agent](#zero-code-java-agent) is a form of zero-code
+- [Auto: Java agent](#zero-code-java-agent) is a form of auto
   instrumentation **[1]** that dynamically manipulates application bytecode.
-- [Zero-code: Spring Boot starter](#zero-code-spring-boot-starter) is a form of
-  zero-code instrumentation **[1]** that leverages spring autoconfigure to
+- [Auto: Spring Boot starter](#zero-code-spring-boot-starter) is a form of
+  auto instrumentation **[1]** that leverages spring autoconfigure to
   install [library instrumentation](#library-instrumentation).
 - [Library instrumentation](#library-instrumentation) wraps or uses extension
   points to instrument a library, requiring users to install and/or adapt
@@ -55,7 +55,7 @@ There are several categories of instrumentation:
 - [Shims](#shims) bridge data from one observability library to another,
   typically _from_ some library into OpenTelemetry.
 
-**[1]**: Zero-code instrumentation is installed automatically based on detected
+**[1]**: Auto instrumentation is installed automatically based on detected
 libraries / frameworks.
 
 The

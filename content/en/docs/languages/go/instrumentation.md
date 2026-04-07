@@ -10,6 +10,13 @@ cSpell:ignore: fatalf logr logrus otlplog otlploghttp sdktrace sighup
 
 {{% include instrumentation-intro.md %}}
 
+> [!NOTE]
+>
+> On this page you will learn how you can add traces, metrics and logs to your
+> code manually. You are not limited to using one kind of instrumentation: you
+> can also use [auto instrumentation](/docs/zero-code/go/) to get started and
+> then enrich your code with manual instrumentation as needed.
+
 ## Setup
 
 ## Traces
@@ -95,7 +102,7 @@ You can now access `tracer` to manually instrument your code.
 > [!WARNING]
 >
 > If you are adding manual spans in conjunction with eBPF-based
-> [Go zero-code instrumentation](/docs/zero-code/go), such as with
+> [Go auto instrumentation](/docs/zero-code/go), such as with
 > [OBI](/docs/zero-code/obi), do not set a global Tracer Provider. See the
 > [Auto SDK](/docs/zero-code/go/autosdk) docs for more information.
 

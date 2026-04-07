@@ -10,6 +10,18 @@ cSpell:ignore: guzzlehttp
 
 {{% include instrumentation-intro.md %}}
 
+> [!NOTE]
+>
+> On this page you will learn how you can add traces, metrics and logs to your
+> code manually. You are not limited to using one kind of instrumentation: you
+> can also use [auto instrumentation](/docs/zero-code/php/) to get started and
+> then enrich your code with manual instrumentation as needed.
+>
+> Also, for libraries your code depends on, you don't have to write
+> instrumentation code yourself, since they might be already instrumented or
+> there are [instrumentation libraries](/docs/languages/php/libraries/) for
+> them.
+
 ## Example app preparation {#example-app}
 
 These instructions use a modified version of the example app from

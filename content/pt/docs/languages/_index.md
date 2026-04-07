@@ -1,5 +1,5 @@
 ---
-title: APIs e SDKs de Linguagens
+title: Instrumentação Manual
 description:
   A instrumentação de código do OpenTelemetry é suportada para muitas linguagens
   populares de programação.
@@ -18,7 +18,7 @@ Para Go, .NET, PHP, Python, Java e JavaScript, você pode usar
 aplicações sem alterações de código.
 
 Se você estiver usando Kubernetes, você pode usar o [OpenTelemetry Operator para
-Kubernetes][otel-op] para [injetar soluções de implementação
+Kubernetes][otel-op] para [injetar soluções de instrumentação
 automática][zero-code] em suas aplicações.
 
 ## Estado e Lançamentos {#status-and-releases}

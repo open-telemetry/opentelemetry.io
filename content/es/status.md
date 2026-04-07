@@ -16,7 +16,7 @@ estado en la página del componente correcto. Por ejemplo, el estado de una señ
 en la especificación puede no ser el mismo que el estado de esa señal en un SDK
 de un lenguaje específico.
 
-## API y SDK por lenguaje
+## Instrumentación manual
 
 Para conocer el estado de desarrollo o el nivel de madurez de una
 [API o SDK por lenguaje](/docs/languages/), consulta la siguiente tabla:
@@ -27,9 +27,20 @@ Para más detalles sobre el cumplimiento de la especificación por implementaci�
 consulta la
 [Matriz de Cumplimiento de la Especificación](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
 
-Para más detalles sobre el cumplimiento de la especificación por implementación,
-consulta la
-[Matriz de Cumplimiento de la Especificación](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
+## Instrumentación automática
+
+La [instrumentación automática](/docs/zero-code/) está disponible para los
+siguientes lenguajes:
+
+- [.NET](/docs/zero-code/dotnet/)
+- [Go](/docs/zero-code/go/)
+- [Java](/docs/zero-code/java/)
+- [JavaScript](/docs/zero-code/js/)
+- [PHP](/docs/zero-code/php/)
+- [Python](/docs/zero-code/python/)
+
+Para obtener detalles sobre el estado y las bibliotecas compatibles por
+lenguaje, consulta las páginas respectivas enlazadas anteriormente.
 
 ## Collector
 

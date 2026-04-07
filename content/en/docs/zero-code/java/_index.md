@@ -1,5 +1,5 @@
 ---
-title: Java zero-code instrumentation
+title: Java auto instrumentation
 linkTitle: Java
 aliases:
   - /docs/java/automatic_instrumentation
@@ -10,7 +10,7 @@ cascade:
     otel: 1.60.1
 ---
 
-Common options for zero-code instrumentation with Java are the Java agent JAR,
+Common options for auto instrumentation with Java are the Java agent JAR,
 Spring Boot Starter, and the Quarkus OpenTelemetry Extension. To learn how to
 manually instrument your service or app code, see
 [Manual instrumentation](/docs/languages/java/instrumentation/).

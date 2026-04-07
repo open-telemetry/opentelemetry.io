@@ -11,7 +11,7 @@ cSpell:ignore: bpftool PERFMON
 Starting with version v0.5.0, OBI can run as a receiver component within the
 [OpenTelemetry Collector](/docs/collector). This integration enables you to
 leverage the Collector's powerful processing pipeline while benefiting from
-OBI's zero-code eBPF instrumentation.
+OBI's auto instrumentation via eBPF.
 
 ## Overview
 
@@ -19,7 +19,7 @@ Running OBI as a Collector receiver combines the strengths of both tools:
 
 **From OBI**:
 
-- Zero-code instrumentation using eBPF
+- Auto instrumentation using eBPF
 - Automatic service discovery
 - Low overhead observability
 

@@ -77,7 +77,7 @@ cSpell:ignore: chalin Comms docsy
 针对机器人创建的 PR，可以采用以下处理流程：
 
 - 自动更新注册表中版本号的 PR 可直接修复、审批并合并。
-- 自动更新 SDK、零代码接入方式或 collector 的 PR
+- 自动更新 SDK、自动插桩方式或 collector 的 PR
   可审批合并，除非相关 SIG 明确表示应延迟合并。
 - 自动更新规范（spec）的 PR 往往需要修改脚本才能通过 CI
   检查。此类 PR 通常由 [@chalin](https://github.com/chalin/) 处理。

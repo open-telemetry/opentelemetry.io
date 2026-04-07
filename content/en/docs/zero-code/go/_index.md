@@ -1,10 +1,10 @@
 ---
-title: Go zero-code instrumentation
+title: Go auto instrumentation
 linkTitle: Go
 weight: 16
 ---
 
-Zero-code instrumentation for Go provides a way to instrument any Go application
+Auto instrumentation for Go provides a way to instrument any Go application
 and capture telemetry data from many popular libraries and frameworks without
 any code changes.
 

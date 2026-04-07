@@ -1,5 +1,5 @@
 ---
-title: Zero-code
+title: Auto instrumentation
 description: >-
   Learn how to add observability to an application without the need to write
   code
@@ -15,23 +15,23 @@ OpenTelemetry API & SDK for
 
 ![Zero Code](./zero-code.svg)
 
-Zero-code instrumentation adds the OpenTelemetry API and SDK capabilities to
+Auto instrumentation adds the OpenTelemetry API and SDK capabilities to
 your application typically as an agent or agent-like installation. The specific
 mechanisms involved may differ by language, ranging from bytecode manipulation,
 monkey patching, or eBPF to inject calls to the OpenTelemetry API and SDK into
 your application.
 
-Typically, zero-code instrumentation adds instrumentation for the libraries
+Typically, auto instrumentation adds instrumentation for the libraries
 you're using. This means that requests and responses, database calls, message
 queue calls, and so forth are what are instrumented. Your application's code,
 however, is not typically instrumented. To instrument your code, you'll need to
 use [code-based instrumentation](/docs/concepts/instrumentation/code-based).
 
-Additionally, zero-code instrumentation lets you configure the
+Additionally, auto instrumentation lets you configure the
 [Instrumentation Libraries](/docs/concepts/instrumentation/libraries) and
 [exporters](/docs/concepts/components/#exporters) loaded.
 
-You can configure zero-code instrumentation through environment variables and
+You can configure auto instrumentation through environment variables and
 other language-specific mechanisms, such as system properties or arguments
 passed to initialization methods. To get started, you only need a service name
 configured so that you can identify the service in the observability backend of

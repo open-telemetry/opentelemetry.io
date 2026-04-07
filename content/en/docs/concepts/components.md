@@ -9,10 +9,10 @@ OpenTelemetry is currently made up of several main components:
 
 - [Specification](#specification)
 - [Collector](#collector)
-- [Language-specific API \& SDK implementations](#language-specific-api--sdk-implementations)
+- [Manual Instrumentation](#manual-instrumentation)
   - [Instrumentation Libraries](#instrumentation-libraries)
   - [Exporters](#exporters)
-  - [Zero-Code Instrumentation](#zero-code-instrumentation)
+  - [Auto Instrumentation](#auto-instrumentation)
   - [Resource Detectors](#resource-detectors)
   - [Cross Service Propagators](#cross-service-propagators)
   - [Samplers](#samplers)
@@ -48,7 +48,7 @@ supports processing and filtering telemetry data before it gets exported.
 
 For more information, see [Collector](/docs/collector/).
 
-## Language-specific API & SDK implementations
+## Manual Instrumentation
 
 OpenTelemetry also has language SDKs that let you use the OpenTelemetry API to
 generate telemetry data with your language of choice and export that data to a
@@ -75,16 +75,16 @@ For more information, see
 
 {{% docs/languages/exporters/intro %}}
 
-### Zero-code instrumentation
+### Auto instrumentation
 
 If applicable, a language specific implementation of OpenTelemetry provides a
 way to instrument your application without touching your source code. While the
-underlying mechanism depends on the language, zero-code instrumentation adds the
+underlying mechanism depends on the language, auto instrumentation adds the
 OpenTelemetry API and SDK capabilities to your application. Additionally, it
 might add a set of instrumentation libraries and exporter dependencies.
 
 For more information, see
-[Zero-code instrumentation](/docs/concepts/instrumentation/zero-code/).
+[Auto instrumentation](/docs/concepts/instrumentation/zero-code/).
 
 ### Resource detectors
 

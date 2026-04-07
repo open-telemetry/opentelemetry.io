@@ -14,7 +14,7 @@ status from the right component page. For example, the status of a signal in the
 specification may not be the same as the signal status in a particular language
 SDK.
 
-## Language APIs & SDKs
+## Manual Instrumentation
 
 For the development status, or maturity level, of a
 [language API or SDK](/docs/languages/), see the following table:
@@ -23,6 +23,21 @@ For the development status, or maturity level, of a
 
 For more details on the specification compliance per implementation, see the
 [Spec Compliance Matrix](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
+
+## Auto Instrumentation
+
+[Auto instrumentation](/docs/zero-code/) is available for the following
+languages:
+
+- [.NET](/docs/zero-code/dotnet/)
+- [Go](/docs/zero-code/go/)
+- [Java](/docs/zero-code/java/)
+- [JavaScript](/docs/zero-code/js/)
+- [PHP](/docs/zero-code/php/)
+- [Python](/docs/zero-code/python/)
+
+For details on status and supported libraries per language, see the respective
+pages linked above.
 
 ## Collector
 

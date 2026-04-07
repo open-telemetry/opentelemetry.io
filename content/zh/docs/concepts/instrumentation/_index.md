@@ -12,12 +12,12 @@ default_lang_commit: deb98d0648c4833d9e9d77d42e91e2872658b50c # patched
 使用 OpenTelemetry，你可以通过两种主要方式对代码进行插桩：
 
 1. 通过官方[适用于大多数编程语言的 API 和 SDK](/docs/languages/)的[代码开发方案](code-based/)
-2. [零代码方案](zero-code/)
+2. [自动插桩方案](zero-code/)
 
 **基于代码**的方案可以让你从应用本身获取更深入的洞察和丰富的遥测数据。
-它们使你能够使用 OpenTelemetry API 从应用中生成遥测数据，作为零代码方案生成遥测数据的重要补充。
+它们使你能够使用 OpenTelemetry API 从应用中生成遥测数据，作为自动插桩方案生成遥测数据的重要补充。
 
-**零代码**方案非常适合入门使用，或在你无法修改需要获取遥测数据的应用时使用。
+**自动插桩**方案非常适合入门使用，或在你无法修改需要获取遥测数据的应用时使用。
 它们可以从你所使用的库和/或应用运行的环境中提供丰富的遥测数据。
 换句话说，它们提供的是关于应用**边缘**发生情况的信息。
 
@@ -25,7 +25,7 @@ default_lang_commit: deb98d0648c4833d9e9d77d42e91e2872658b50c # patched
 
 ## OpenTelemetry 的其他优势 {#additional-opentelemetry-benefits}
 
-OpenTelemetry 不仅仅提供零代码和基于代码的遥测解决方案。以下内容也是 OpenTelemetry 的一部分：
+OpenTelemetry 不仅仅提供自动插桩和基于代码的遥测解决方案。以下内容也是 OpenTelemetry 的一部分：
 
 - 代码库可以将 OpenTelemetry API 作为依赖项进行集成，除非导入 OpenTelemetry SDK，
   否则对使用该库的应用不会产生任何影响。

@@ -10,6 +10,13 @@ cSpell:ignore: millis ottrace textmap
 
 {{% include instrumentation-intro.md %}}
 
+> [!NOTE]
+>
+> On this page you will learn how you can add traces, metrics and logs to your
+> code manually. You are not limited to using one kind of instrumentation: you
+> can also use [auto instrumentation](/docs/zero-code/python/) to get started
+> and then enrich your code with manual instrumentation as needed.
+
 ## Setup
 
 First, ensure you have the API and SDK packages:

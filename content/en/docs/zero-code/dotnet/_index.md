@@ -1,5 +1,5 @@
 ---
-title: .NET zero-code instrumentation
+title: .NET auto instrumentation
 description: Send traces and metrics from .NET applications and services.
 linkTitle: .NET
 aliases: [net]

@@ -44,7 +44,7 @@ them up.
 
 > [!NOTE]
 >
-> If you use [zero-code instrumentation](</docs/zero-code/{{ $langIdAsPath }}>),
+> If you use [auto instrumentation](</docs/zero-code/{{ $langIdAsPath }}>),
 > you can learn how to set up exporters by following the
 > [Configuration Guide](</docs/zero-code/{{ $langIdAsPath }}/configuration/>).
 

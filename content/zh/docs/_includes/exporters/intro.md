@@ -42,7 +42,7 @@ default_lang_commit: 8a5b880c16d49257a147c2c3ec4a6ef6fcee8e20 # patched
 
 {{% alert title=注意 %}}
 
-如果你使用了[零代码自动插桩](</docs/zero-code/{{ $langIdAsPath }}>)，
+如果你使用了[自动插桩](</docs/zero-code/{{ $langIdAsPath }}>)，
 你可以参考[配置指南](</docs/zero-code/{{ $langIdAsPath }}/configuration/>)来了解如何设置导出器。
 
 {{% /alert %}}

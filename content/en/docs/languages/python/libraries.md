@@ -104,7 +104,7 @@ You might also want to configure an appropriate exporter to
 telemetry backends.
 
 You can also check the
-[Zero-code instrumentation for Python](/docs/zero-code/python/).
+[Auto instrumentation for Python](/docs/zero-code/python/).
 
 [opentelemetry-python-contrib]:
   https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation#readme

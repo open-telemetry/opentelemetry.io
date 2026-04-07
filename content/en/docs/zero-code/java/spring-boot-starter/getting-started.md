@@ -7,7 +7,7 @@ cSpell:ignore: springboot
 > [!NOTE]
 >
 > You can also use the [Java agent](../../agent) to instrument your Spring Boot
-> application. For the pros and cons, see [Java zero-code instrumentation](..).
+> application. For the pros and cons, see [Java auto instrumentation](..).
 
 ## Compatibility
 

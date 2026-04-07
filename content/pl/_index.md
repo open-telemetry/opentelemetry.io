@@ -96,7 +96,7 @@ Contextual metadata {{< /homepage/signal >}} {{< /homepage/signals-showcase >}}
 {{< homepage/otel-features title="OpenTelemetry Features" columns="2" >}}
 
 {{< homepage/otel-feature image="/img/homepage/feature-auto-instrumentation.svg" title="Auto-instrumentation" url="/docs/concepts/instrumentation/zero-code/" >}}
-Get started in minutes with zero-code instrumentation for popular frameworks and
+Get started in minutes with auto instrumentation for popular frameworks and
 libraries. Automatic instrumentation agents capture traces, metrics, and logs
 without modifying your source code. {{< /homepage/otel-feature >}}
 

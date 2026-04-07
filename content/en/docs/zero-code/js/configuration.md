@@ -1,7 +1,7 @@
 ---
-title: Zero-Code Instrumentation Configuration
+title: Auto Instrumentation Configuration
 linkTitle: Configuration
-description: Learn how to configure Zero-Code Instrumentation for Node.js
+description: Learn how to configure Auto Instrumentation for Node.js
 aliases:
   - /docs/languages/js/automatic/configuration
   - /docs/languages/js/automatic/module-config

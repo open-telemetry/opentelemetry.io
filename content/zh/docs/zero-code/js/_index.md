@@ -1,12 +1,12 @@
 ---
-title: JavaScript 零代码插桩
+title: JavaScript 自动插桩
 linkTitle: JavaScript
 default_lang_commit: 55f8de69ad3cf54f24243c200f70cd0b3a608ad4
 description: 无需修改源代码即可从应用程序捕获遥测数据
 aliases: [/docs/languages/js/automatic]
 ---
 
-JavaScript 零代码插桩方案为 Node.js 应用提供了一种插桩方式，无需修改任何代码，即可对任意 Node.js 应用进行插桩，并采集众多主流类库与框架的遥测数据。
+JavaScript 自动插桩方案为 Node.js 应用提供了一种插桩方式，无需修改任何代码，即可对任意 Node.js 应用进行插桩，并采集众多主流类库与框架的遥测数据。
 
 ## 设置 {#setup}
 

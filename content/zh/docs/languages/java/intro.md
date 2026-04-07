@@ -23,8 +23,8 @@ SDK 是 API 的内置参考实现，用于处理和导出由插桩 API 调用生
 配置 SDK 以进行适当的处理和导出是将 OpenTelemetry 集成到应用程序中的重要步骤。
 SDK 提供自动配置和编程式配置选项。
 
-插桩通过 API 记录遥测数据。插桩分为多种类型，包括：零代码 Java 代理、
-零代码 Spring Boot 启动器、库（library）、原生（native）、手动（manual）和适配层（Shim）。
+插桩通过 API 记录遥测数据。插桩分为多种类型，包括：自动插桩 Java 代理、
+自动插桩 Spring Boot 启动器、库（library）、原生（native）、手动（manual）和适配层（Shim）。
 
 若需与编程语言无关的概述，请参阅 [OpenTelemetry 概念](/docs/concepts/)。
 

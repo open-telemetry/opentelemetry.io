@@ -235,7 +235,7 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 更多内容:
 
 - 使用另一个[导出器][exporter]运行此示例以处理遥测数据。
-- 在你自己的某个应用上尝试[零代码插桩](/docs/zero-code/java/agent/)。
+- 在你自己的某个应用上尝试[自动插桩](/docs/zero-code/java/agent/)。
 - 对于轻量级的自定义遥测数据，可尝试使用[注解][annotations]。
 - 学习[手动插桩][manual instrumentation]相关知识，并尝试更多[示例](../examples/)。
 - 查看 [OpenTelemetry Demo](/docs/demo/)，

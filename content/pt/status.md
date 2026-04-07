@@ -16,7 +16,7 @@ verificar o _status_ na página correta do componente. Por exemplo, o _status_ d
 um sinal na especificação pode não ser o mesmo que o _status_ do sinal em um SDK
 de uma linguagem especifica.
 
-## APIs e SDKs de Linguagem de Programação {#language-apis--sdks}
+## Instrumentação Manual {#manual-instrumentation}
 
 Para o _status_ de desenvolvimento ou nível de maturidade de uma
 [API ou SDK de linguagem de programação](/docs/languages/), consulte a tabela a
@@ -27,6 +27,21 @@ seguir:
 Para mais detalhes sobre a conformidade com a especificação por implementação,
 veja a
 [Matriz de Conformidade da Especificação](https://github.com/open-telemetry/opentelemetry-specification/blob/main/spec-compliance-matrix.md).
+
+## Instrumentação Automática {#auto-instrumentation}
+
+A [instrumentação automática](/docs/zero-code/) está disponível para as
+seguintes linguagens:
+
+- [.NET](/docs/zero-code/dotnet/)
+- [Go](/docs/zero-code/go/)
+- [Java](/docs/zero-code/java/)
+- [JavaScript](/docs/zero-code/js/)
+- [PHP](/docs/zero-code/php/)
+- [Python](/docs/zero-code/python/)
+
+Para detalhes sobre o _status_ e as bibliotecas suportadas por linguagem,
+consulte as respectivas páginas linkadas acima.
 
 ## Collector
 

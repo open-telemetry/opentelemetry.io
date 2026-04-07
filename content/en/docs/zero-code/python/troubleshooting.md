@@ -188,7 +188,7 @@ per process to push to Prometheus server. We recommend _not_ using
 
 ##### Use a single worker
 
-Alternatively, use a single worker in pre-fork with zero-code instrumentation:
+Alternatively, use a single worker in pre-fork with auto instrumentation:
 
 ```sh
 opentelemetry-instrument gunicorn your_app:app --workers 1

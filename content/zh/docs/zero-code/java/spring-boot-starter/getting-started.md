@@ -8,7 +8,7 @@ cSpell:ignore: springboot
 {{% alert title="Note" %}}
 
 你也可以使用 [Java 代理](../../agent)为你的 Spring Boot 应用程序配置插桩。
-有关优缺点，请参见 [Java 零代码插桩](..).
+有关优缺点，请参见 [Java 自动插桩](..).
 
 {{% /alert %}}
 

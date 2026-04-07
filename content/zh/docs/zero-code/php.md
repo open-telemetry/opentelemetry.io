@@ -1,5 +1,5 @@
 ---
-title: PHP 零代码插桩
+title: PHP 自动插桩
 linkTitle: PHP
 weight: 30
 aliases: [/docs/languages/php/automatic]

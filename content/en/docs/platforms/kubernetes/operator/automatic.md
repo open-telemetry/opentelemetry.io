@@ -374,12 +374,12 @@ must be able to receive OTLP over `grpc`. Therefore, the example uses
 
 #### Excluding instrumentation libraries {#js-excluding-instrumentation-libraries}
 
-By default, the Node.js zero-code instrumentation has all the instrumentation
+By default, the Node.js auto instrumentation has all the instrumentation
 libraries enabled.
 
 To enable only specific instrumentation libraries you can use the
 `OTEL_NODE_ENABLED_INSTRUMENTATIONS` environment variable as documented in the
-[Node.js zero-code instrumentation documentation](/docs/zero-code/js/configuration/#excluding-instrumentation-libraries).
+[Node.js auto instrumentation documentation](/docs/zero-code/js/configuration/#excluding-instrumentation-libraries).
 
 ```yaml
 apiVersion: opentelemetry.io/v1alpha1

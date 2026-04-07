@@ -1,5 +1,5 @@
 ---
-title: Python zero-code instrumentation
+title: Python auto instrumentation
 linkTitle: Python
 weight: 30
 aliases: [/docs/languages/python/automatic]
