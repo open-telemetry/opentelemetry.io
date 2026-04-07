@@ -103,7 +103,7 @@
     "netlify-build:preview": "npm run seq -- build:preview diff:check",
     "netlify-build:production": "npm run seq -- build:production diff:check",
     "pin:submodule": "npm run _pin:submodule -- $PIN_SKIP",
-    "post_hugo": "echo 'Temporarily rm Docsy favicons until https://github.com/google/docsy/issues/2595 is fixed'; cd public && rm -Rf favicons",
+    "post_hugo": "scripts/strip-hugo-ctx.sh public; echo 'Temporarily rm Docsy favicons until https://github.com/google/docsy/issues/2595 is fixed'; cd public && rm -Rf favicons",
     "postfix:refcache:refresh": "npm run fix:refcache",
     "postfix:submodule": "git submodule",
     "postget:submodule": "git submodule && echo && scripts/update-semconv-mounts.pl",
