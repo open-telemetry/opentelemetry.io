@@ -166,6 +166,39 @@ test('handler bypasses negotiation for non-index html paths', async (t) => {
   assert.equal(await fourOhFourResponse.text(), '<html>not found</html>');
 });
 
+test('handler bypasses markdown fetch when html is preferred', async (t) => {
+  const originalFetch = globalThis.fetch;
+  t.after(() => {
+    globalThis.fetch = originalFetch;
+  });
+
+  let fetched = false;
+  globalThis.fetch = (async () => {
+    fetched = true;
+    return new Response('unexpected', { status: 200 });
+  }) as typeof fetch;
+
+  const response = await markdownNegotiation(
+    new Request('https://example.com/docs/', {
+      headers: { accept: 'text/html, text/markdown;q=0.8' },
+    }),
+    {
+      next: async () =>
+        new Response('<html>docs</html>', {
+          headers: { 'content-type': 'text/html; charset=utf-8' },
+          status: 200,
+        }),
+    },
+  );
+
+  assert.equal(fetched, false);
+  assert.equal(await response.text(), '<html>docs</html>');
+  assert.equal(
+    response.headers.get('content-type'),
+    'text/html; charset=utf-8',
+  );
+});
+
 test('handler serves HEAD markdown responses without a body', async (t) => {
   const originalFetch = globalThis.fetch;
   t.after(() => {
@@ -194,6 +227,53 @@ test('handler serves HEAD markdown responses without a body', async (t) => {
     },
   );
 
+  assert.equal(response.status, 200);
+  assert.equal(response.statusText, 'OK');
+  assert.equal(await response.text(), '');
+  assert.equal(
+    response.headers.get('content-type'),
+    'text/markdown; charset=utf-8',
+  );
+  assert.match(response.headers.get('vary') ?? '', /(^|,\s*)Accept(,|$)/);
+});
+
+test('handler falls back from HEAD to GET when HEAD is not supported', async (t) => {
+  const originalFetch = globalThis.fetch;
+  t.after(() => {
+    globalThis.fetch = originalFetch;
+  });
+
+  const methods: string[] = [];
+  globalThis.fetch = (async (input) => {
+    const request = input as Request;
+    methods.push(request.method);
+    assert.equal(request.url, 'https://example.com/docs/index.md');
+
+    if (request.method === 'HEAD') {
+      return new Response(null, {
+        status: 405,
+        statusText: 'Method Not Allowed',
+      });
+    }
+
+    return new Response('# Docs', {
+      headers: { 'content-type': 'text/plain; charset=utf-8' },
+      status: 200,
+      statusText: 'OK',
+    });
+  }) as typeof fetch;
+
+  const response = await markdownNegotiation(
+    new Request('https://example.com/docs/', {
+      headers: { accept: 'text/markdown' },
+      method: 'HEAD',
+    }),
+    {
+      next: async () => new Response(null, { status: 200 }),
+    },
+  );
+
+  assert.deepEqual(methods, ['HEAD', 'GET']);
   assert.equal(response.status, 200);
   assert.equal(response.statusText, 'OK');
   assert.equal(await response.text(), '');

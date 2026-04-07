@@ -22,5 +22,13 @@ test('prefersMarkdownOverHtml honors explicit markdown preference', () => {
     prefersMarkdownOverHtml('text/html;q=0.5, text/markdown;q=0.8'),
     true,
   );
+  assert.equal(
+    prefersMarkdownOverHtml('application/xhtml+xml, text/markdown;q=0.8'),
+    false,
+  );
+  assert.equal(
+    prefersMarkdownOverHtml('application/xhtml+xml;q=0.5, text/markdown;q=0.8'),
+    true,
+  );
   assert.equal(prefersMarkdownOverHtml('text/html, */*;q=0.8'), false);
 });

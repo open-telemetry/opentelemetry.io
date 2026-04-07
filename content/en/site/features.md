@@ -4,6 +4,7 @@ description: >-
   Brief summaries of notable site features with links to their primary
   references.
 weight: 20
+cSpell:ignore: docsy
 ---
 
 ## Agent-friendly content delivery
