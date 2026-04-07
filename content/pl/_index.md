@@ -1,15 +1,13 @@
 ---
 title: OpenTelemetry
 description: The open standard for telemetry
-outputs:
-  - HTML
-developer_note: >
+developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.
 params:
   btn-lg: class="btn btn-lg btn-{1}" role="button"
   show_banner: true
-default_lang_commit: 48f579c733f727417a51edb81a294151e5878d4d
+default_lang_commit: 48f579c733f727417a51edb81a294151e5878d4d # patched
 ---
 
 {{% blocks/cover image_anchor="top" height="max td-below-navbar" %}}

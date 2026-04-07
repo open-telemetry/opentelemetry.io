@@ -103,6 +103,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-03-12T09:59:38.891172213Z"
   },
+  "https://aspire.dev/dashboard/standalone/": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-06T13:53:18.890175811Z"
+  },
   "https://avaje.io/jex/": {
     "StatusCode": 206,
     "LastSeen": "2026-03-18T09:55:22.165685974Z"
@@ -3867,6 +3871,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-18T09:58:11.594549107Z"
   },
+  "https://github.com/MagicStack/uvloop": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-03T18:40:14.077267692Z"
+  },
   "https://github.com/Mandark-droid": {
     "StatusCode": 206,
     "LastSeen": "2026-03-25T14:26:05.991744332Z"
@@ -6738,6 +6746,10 @@
   "https://github.com/microsoft/ApplicationInsights-Java": {
     "StatusCode": 206,
     "LastSeen": "2026-03-18T09:56:51.230582634Z"
+  },
+  "https://github.com/microsoft/aspire/tree/main/src/Aspire.Dashboard": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-06T13:53:14.952568738Z"
   },
   "https://github.com/microsoft/perfview": {
     "StatusCode": 206,
@@ -12531,6 +12543,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-12T09:59:20.644535557Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/releases/tag/v0.7.0": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-03T18:40:19.553351857Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/2feaeb84ef7aeeb1e57e642b46c96b965ae4b804/internal/test/integration/k8s/manifests?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-03-17T09:54:42.999934807Z"
@@ -12538,6 +12554,10 @@
   "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/f6deabc4387de1e0bf4b2acdbc674f7601d4c7f2/internal/test/integration?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-03-17T09:54:36.82748599Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-ebpf-instrumentation/tree/v0.7.0/examples/nginx": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-03T19:48:49.65041184Z"
   },
   "https://github.com/open-telemetry/opentelemetry-ebpf-profiler": {
     "StatusCode": 206,
@@ -17870,6 +17890,10 @@
   "https://github.com/shalevr": {
     "StatusCode": 206,
     "LastSeen": "2026-03-18T09:59:13.603287842Z"
+  },
+  "https://github.com/shalk": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-06T04:35:40.904294817Z"
   },
   "https://github.com/shanduur": {
     "StatusCode": 206,
