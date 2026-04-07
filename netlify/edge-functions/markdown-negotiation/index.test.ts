@@ -24,6 +24,8 @@ test('shouldConsiderRequest only accepts page-like GET/HEAD requests', () => {
   assert.equal(shouldConsiderRequest('GET', '/docs/'), true);
   assert.equal(shouldConsiderRequest('HEAD', '/docs'), true);
   assert.equal(shouldConsiderRequest('GET', '/docs/index.html'), true);
+  assert.equal(shouldConsiderRequest('GET', '/docs.html'), false);
+  assert.equal(shouldConsiderRequest('GET', '/404.html'), false);
   assert.equal(shouldConsiderRequest('POST', '/docs/'), false);
   assert.equal(shouldConsiderRequest('GET', '/docs/index.md'), false);
   assert.equal(shouldConsiderRequest('GET', '/data/search.json'), false);
@@ -36,8 +38,10 @@ test('resolveMarkdownPath maps page requests to markdown artifacts', () => {
   assert.equal(resolveMarkdownPath('/'), '/index.md');
   assert.equal(resolveMarkdownPath('/docs/'), '/docs/index.md');
   assert.equal(resolveMarkdownPath('/docs'), '/docs/index.md');
+  assert.equal(resolveMarkdownPath('/index.html'), '/index.md');
   assert.equal(resolveMarkdownPath('/docs/index.html'), '/docs/index.md');
-  assert.equal(resolveMarkdownPath('/404.html'), '/404.md');
+  assert.equal(resolveMarkdownPath('/docs/index.HTML'), '/docs/index.md');
+  assert.equal(resolveMarkdownPath('/docs/INDEX.HTML'), '/docs/index.md');
 });
 
 test('prefersMarkdownOverHtml honors explicit markdown preference', () => {
@@ -161,6 +165,53 @@ test('handler serves markdown for explicit html page requests', async (t) => {
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
   );
+});
+
+test('handler bypasses negotiation for non-index html paths', async (t) => {
+  const originalFetch = globalThis.fetch;
+  t.after(() => {
+    globalThis.fetch = originalFetch;
+  });
+
+  let fetched = false;
+  globalThis.fetch = (async () => {
+    fetched = true;
+    return new Response('unexpected', { status: 200 });
+  }) as typeof fetch;
+
+  const docsHtmlResponse = await markdownNegotiation(
+    new Request('https://example.com/docs.html', {
+      headers: { accept: 'text/markdown' },
+    }),
+    {
+      next: async () =>
+        new Response(null, {
+          headers: { location: '/docs/' },
+          status: 301,
+        }),
+    },
+  );
+
+  assert.equal(fetched, false);
+  assert.equal(docsHtmlResponse.status, 301);
+  assert.equal(docsHtmlResponse.headers.get('location'), '/docs/');
+
+  const fourOhFourResponse = await markdownNegotiation(
+    new Request('https://example.com/404.html', {
+      headers: { accept: 'text/markdown' },
+    }),
+    {
+      next: async () =>
+        new Response('<html>not found</html>', {
+          headers: { 'content-type': 'text/html; charset=utf-8' },
+          status: 404,
+        }),
+    },
+  );
+
+  assert.equal(fetched, false);
+  assert.equal(fourOhFourResponse.status, 404);
+  assert.equal(await fourOhFourResponse.text(), '<html>not found</html>');
 });
 
 test('handler serves HEAD markdown responses without a body', async (t) => {

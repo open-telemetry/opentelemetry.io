@@ -5,8 +5,9 @@
  * Serve Hugo's Markdown alternate output (`.../index.md`) when the client
  * explicitly accepts `text/markdown` and does not prefer HTML more strongly.
  *
- * Strategy: treat slash and extensionless paths as pages, map `.html` to
- * sibling `.md`, and treat other extensions as non-page resources.
+ * Strategy: treat slash and extensionless paths as pages; only
+ * `.../index.html` maps to sibling `index.md`. Other `.html` paths skip
+ * negotiation so Netlify redirects (e.g. `/docs.html` → `/docs/`) still run.
  *
  * We fetch the prebuilt Markdown artifact directly instead of rewriting
  * blindly. That lets us fall back to the normal HTML route when a page has no
@@ -83,12 +84,12 @@ export function shouldConsiderRequest(
     return true;
   }
 
-  return extension === '.html';
+  return isIndexHtmlPath(pathname);
 }
 
 export function resolveMarkdownPath(pathname: string): string {
-  if (pathname.endsWith('.html')) {
-    return pathname.replace(/\.html$/i, '.md');
+  if (isIndexHtmlPath(pathname)) {
+    return pathname.replace(/index\.html$/i, 'index.md');
   }
 
   const normalizedPath = pathname.replace(/\/+$/, '') || '/';
@@ -104,6 +105,10 @@ function getPathExtension(pathname: string): string {
   const match = /\.([^.]+)$/.exec(lastSegment);
 
   return match ? `.${match[1].toLowerCase()}` : '';
+}
+
+function isIndexHtmlPath(pathname: string): boolean {
+  return pathname.toLowerCase().endsWith('/index.html');
 }
 
 function resolveMarkdownUrl(url: URL): URL {

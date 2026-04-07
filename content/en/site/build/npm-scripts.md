@@ -89,8 +89,9 @@ are internal helpers and are not intended to be run directly.
 | -------------------------- | ----------------------------------------------------------------- |
 | `test`                     | Run the most commonly needed tests.                               |
 | `test:base`                | Base tests.                                                       |
-| `test:all`                 | Run all tests: base checks plus collector-sync tests and lint.    |
+| `test:all`                 | Runs `test:*` tests (excluding `:all`).                           |
 | `test:collector-sync`      | Collector-sync tests.                                             |
+| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.      |
 | `test-and-fix`             | Run fix scripts (excluding i18n/refcache/submodule), then checks. |
 | `diff:check`               | Warn if working tree has uncommitted changes.                     |
 | `diff:fail`                | Fail if working tree has changes (e.g. after build).              |

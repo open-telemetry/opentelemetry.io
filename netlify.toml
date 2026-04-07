@@ -15,8 +15,6 @@ from = "https://blog.opentelemetry.io/*"
 to = "https://opentelemetry.io/blog/:splat"
 force = true
 
-# Runs before schema-analytics: serves prebuilt `index.md` when Accept prefers
-# text/markdown; otherwise forwards via context.next().
 [[edge_functions]]
 function = "markdown-negotiation"
 path = "/*"
