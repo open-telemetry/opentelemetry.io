@@ -127,6 +127,7 @@
     "test:base": "npm run check",
     "test:collector-sync": "npm run check:collector-sync && npm run check:collector-sync:types && npm run check:collector-sync:lint",
     "test:edge-functions": "node --test \"netlify/edge-functions/**/*.test.ts\"",
+    "test:edge-functions:live": "node netlify/edge-functions/markdown-negotiation/live-check.mjs",
     "test": "CMD_SKIP=collector-sync npm run test:base",
     "update:hugo": "npm install --save-dev --save-exact hugo-extended@latest",
     "update:packages": "npx npm-check-updates --dep 'prod,dev,optional,peer' -u",
