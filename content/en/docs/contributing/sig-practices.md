@@ -207,9 +207,8 @@ PRs created by bots can be merged by the following practice:
 - PRs that auto-update versions in the registry can be fixed, approved and
   merged immediately.
 - PRs that auto-update the versions of SDKs, auto-instrumentation projects, or
-  the
-  collector can be approved and merged except the corresponding SIG signals that
-  merging should be postponed.
+  the collector can be approved and merged except the corresponding SIG signals
+  that merging should be postponed.
 - PRs that auto-update the version of any specification often require updates to
   scripts for the CI checks to pass. In that case
   [@chalin](https://github.com/chalin/) will handle the PR. Otherwise those PRs

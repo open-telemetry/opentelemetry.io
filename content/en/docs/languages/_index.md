@@ -20,8 +20,8 @@ For Go, .NET, PHP, Python, Java and JavaScript you can use
 application without code changes.
 
 If you are using Kubernetes, you can use the [OpenTelemetry Operator for
-Kubernetes][otel-op] to [inject these auto instrumentation solutions][zero-code] into your
-application.
+Kubernetes][otel-op] to [inject these auto instrumentation solutions][zero-code]
+into your application.
 
 ## Status and Releases
 

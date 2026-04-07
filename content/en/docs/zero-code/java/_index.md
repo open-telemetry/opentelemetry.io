@@ -10,7 +10,7 @@ cascade:
     otel: 1.60.1
 ---
 
-Common options for auto instrumentation with Java are the Java agent JAR,
-Spring Boot Starter, and the Quarkus OpenTelemetry Extension. To learn how to
-manually instrument your service or app code, see
+Common options for auto instrumentation with Java are the Java agent JAR, Spring
+Boot Starter, and the Quarkus OpenTelemetry Extension. To learn how to manually
+instrument your service or app code, see
 [Manual instrumentation](/docs/languages/java/instrumentation/).

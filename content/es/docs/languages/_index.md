@@ -19,8 +19,8 @@ Para Go, .NET, PHP, Python, Java y JavaScript puedes usar
 aplicación sin hacer cambios en el código.
 
 Si estás utilizando Kubernetes, puedes usar el [Operador de OpenTelemetry para
-Kubernetes][otel-op] para [inyectar estas soluciones de instrumentación automática][zero-code] en tu
-aplicación.
+Kubernetes][otel-op] para [inyectar estas soluciones de instrumentación
+automática][zero-code] en tu aplicación.
 
 ## Estados y lanzamientos
 

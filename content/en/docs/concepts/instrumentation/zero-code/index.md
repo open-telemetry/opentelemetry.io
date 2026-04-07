@@ -15,27 +15,27 @@ OpenTelemetry API & SDK for
 
 ![Zero Code](./zero-code.svg)
 
-Auto instrumentation adds the OpenTelemetry API and SDK capabilities to
-your application typically as an agent or agent-like installation. The specific
+Auto instrumentation adds the OpenTelemetry API and SDK capabilities to your
+application typically as an agent or agent-like installation. The specific
 mechanisms involved may differ by language, ranging from bytecode manipulation,
 monkey patching, or eBPF to inject calls to the OpenTelemetry API and SDK into
 your application.
 
-Typically, auto instrumentation adds instrumentation for the libraries
-you're using. This means that requests and responses, database calls, message
-queue calls, and so forth are what are instrumented. Your application's code,
-however, is not typically instrumented. To instrument your code, you'll need to
-use [code-based instrumentation](/docs/concepts/instrumentation/code-based).
+Typically, auto instrumentation adds instrumentation for the libraries you're
+using. This means that requests and responses, database calls, message queue
+calls, and so forth are what are instrumented. Your application's code, however,
+is not typically instrumented. To instrument your code, you'll need to use
+[code-based instrumentation](/docs/concepts/instrumentation/code-based).
 
 Additionally, auto instrumentation lets you configure the
 [Instrumentation Libraries](/docs/concepts/instrumentation/libraries) and
 [exporters](/docs/concepts/components/#exporters) loaded.
 
-You can configure auto instrumentation through environment variables and
-other language-specific mechanisms, such as system properties or arguments
-passed to initialization methods. To get started, you only need a service name
-configured so that you can identify the service in the observability backend of
-your choice.
+You can configure auto instrumentation through environment variables and other
+language-specific mechanisms, such as system properties or arguments passed to
+initialization methods. To get started, you only need a service name configured
+so that you can identify the service in the observability backend of your
+choice.
 
 Other configuration options are available, including:
 

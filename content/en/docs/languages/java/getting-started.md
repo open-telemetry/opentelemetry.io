@@ -249,8 +249,8 @@ value=8192, exemplars=[]}], monotonic=false, aggregationTemporality=CUMULATIVE}}
 For more:
 
 - Run this example with another [exporter][] for telemetry data.
-- Try [auto instrumentation](/docs/zero-code/java/agent/) on one of your
-  own apps.
+- Try [auto instrumentation](/docs/zero-code/java/agent/) on one of your own
+  apps.
 - For light-weight customized telemetry, try [annotations][].
 - Learn about [manual instrumentation][] and try out more
   [examples](../examples/).

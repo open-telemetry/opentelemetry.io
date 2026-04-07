@@ -6,8 +6,8 @@ description:
 aliases: [/docs/languages/js/automatic]
 ---
 
-Auto instrumentation for JavaScript provides a way to instrument any
-Node.js application and capture telemetry data from many popular libraries and
+Auto instrumentation for JavaScript provides a way to instrument any Node.js
+application and capture telemetry data from many popular libraries and
 frameworks without any code changes.
 
 ## Setup

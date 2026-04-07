@@ -40,11 +40,11 @@ instrumentation topics:
 
 There are several categories of instrumentation:
 
-- [Auto: Java agent](#zero-code-java-agent) is a form of auto
-  instrumentation **[1]** that dynamically manipulates application bytecode.
-- [Auto: Spring Boot starter](#zero-code-spring-boot-starter) is a form of
-  auto instrumentation **[1]** that leverages spring autoconfigure to
-  install [library instrumentation](#library-instrumentation).
+- [Auto: Java agent](#zero-code-java-agent) is a form of auto instrumentation
+  **[1]** that dynamically manipulates application bytecode.
+- [Auto: Spring Boot starter](#zero-code-spring-boot-starter) is a form of auto
+  instrumentation **[1]** that leverages spring autoconfigure to install
+  [library instrumentation](#library-instrumentation).
 - [Library instrumentation](#library-instrumentation) wraps or uses extension
   points to instrument a library, requiring users to install and/or adapt
   library usage.

@@ -892,8 +892,8 @@ Value: 1
 ## Next steps
 
 There are several options available for automatic instrumentation and Python.
-See [Auto Instrumentation](/docs/zero-code/python/) to learn about them and
-how to configure them.
+See [Auto Instrumentation](/docs/zero-code/python/) to learn about them and how
+to configure them.
 
 There's a lot more to manual instrumentation than just creating a child span. To
 learn details about initializing manual instrumentation and many more parts of
