@@ -4,6 +4,7 @@ autoinstrumentações
 corrotinas
 desserializa
 desserializar
+linkadas
 mentoria
 reagregação
 serialização
