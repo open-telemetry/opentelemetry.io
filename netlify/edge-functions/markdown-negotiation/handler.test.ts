@@ -199,6 +199,71 @@ test('handler bypasses markdown fetch when html is preferred', async (t) => {
   );
 });
 
+test('handler bypasses markdown fetch when Accept is missing', async (t) => {
+  const originalFetch = globalThis.fetch;
+  t.after(() => {
+    globalThis.fetch = originalFetch;
+  });
+
+  let fetched = false;
+  globalThis.fetch = (async () => {
+    fetched = true;
+    return new Response('unexpected', { status: 200 });
+  }) as typeof fetch;
+
+  const response = await markdownNegotiation(
+    new Request('https://example.com/docs/'),
+    {
+      next: async () =>
+        new Response('<html>docs</html>', {
+          headers: { 'content-type': 'text/html; charset=utf-8' },
+          status: 200,
+        }),
+    },
+  );
+
+  assert.equal(fetched, false);
+  assert.equal(await response.text(), '<html>docs</html>');
+  assert.equal(
+    response.headers.get('content-type'),
+    'text/html; charset=utf-8',
+  );
+});
+
+test('handler bypasses markdown fetch for unsupported methods', async (t) => {
+  const originalFetch = globalThis.fetch;
+  t.after(() => {
+    globalThis.fetch = originalFetch;
+  });
+
+  let fetched = false;
+  globalThis.fetch = (async () => {
+    fetched = true;
+    return new Response('unexpected', { status: 200 });
+  }) as typeof fetch;
+
+  const response = await markdownNegotiation(
+    new Request('https://example.com/docs/', {
+      headers: { accept: 'text/markdown' },
+      method: 'POST',
+    }),
+    {
+      next: async () =>
+        new Response('<html>post passthrough</html>', {
+          headers: { 'content-type': 'text/html; charset=utf-8' },
+          status: 200,
+        }),
+    },
+  );
+
+  assert.equal(fetched, false);
+  assert.equal(await response.text(), '<html>post passthrough</html>');
+  assert.equal(
+    response.headers.get('content-type'),
+    'text/html; charset=utf-8',
+  );
+});
+
 test('handler serves HEAD markdown responses without a body', async (t) => {
   const originalFetch = globalThis.fetch;
   t.after(() => {

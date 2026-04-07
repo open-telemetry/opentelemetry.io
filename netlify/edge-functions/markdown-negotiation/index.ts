@@ -152,6 +152,7 @@ export function prefersMarkdownOverHtml(acceptHeader: string): boolean {
   let htmlQuality = 0;
 
   for (const { mediaType, q } of parseAccept(acceptHeader)) {
+    // Note: wildcards are ignore by design.
     if (mediaType === 'text/markdown') {
       markdownQuality = Math.max(markdownQuality, q);
     } else if (HTML_TYPES.has(mediaType)) {

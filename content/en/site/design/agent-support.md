@@ -31,6 +31,9 @@ request explicitly asks for or prefers `text/markdown`.
 - Markdown is served when `text/markdown` is accepted with `q` greater than zero
   and its `q` is **greater than or equal to** the highest `q` for `text/html` /
   `application/xhtml+xml` (equal weights choose Markdown).
+- Wildcards such as `*/*` are ignored by design: only explicit markdown/html
+  media types contribute q-values. This is a conservative choice that may be
+  revisited later.
 - Missing Markdown falls back to the normal HTML response.
 - Negotiated responses set `Vary: Accept`.
 - `/search/` emits only HTML and therefore always falls back to HTML.
@@ -45,7 +48,7 @@ A note on path mapping:
 
 ### Related implementation
 
-- `config/_default/hugo.yaml` defines the Markdown output format.
+- `config/_default/hugo.yaml` enables Markdown outputs for this site.
 - `content/en/search.md` opts the search page out with `outputs: [HTML]`.
 - `netlify.toml` wires the Edge Function ahead of other route handling.
 - `netlify/edge-functions/markdown-negotiation/index.ts` implements negotiation;

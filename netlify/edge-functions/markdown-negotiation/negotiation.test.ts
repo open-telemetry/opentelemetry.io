@@ -30,5 +30,7 @@ test('prefersMarkdownOverHtml honors explicit markdown preference', () => {
     prefersMarkdownOverHtml('application/xhtml+xml;q=0.5, text/markdown;q=0.8'),
     true,
   );
+  // Wildcards are ignored by design: explicit markdown still wins here.
+  assert.equal(prefersMarkdownOverHtml('text/markdown;q=0.5, */*'), true);
   assert.equal(prefersMarkdownOverHtml('text/html, */*;q=0.8'), false);
 });
