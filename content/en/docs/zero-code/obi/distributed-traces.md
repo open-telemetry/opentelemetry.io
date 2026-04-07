@@ -3,6 +3,7 @@ title: Distributed traces with OBI
 linkTitle: Distributed traces
 description: Learn about OBI's distributed traces support.
 weight: 22
+cSpell:ignore: asyncio uvloop
 ---
 
 ## Introduction
@@ -217,3 +218,19 @@ services:
 
 If the `/sys/kernel/security/` volume is not mounted, OBI assumes that the Linux
 Kernel is not running in integrity mode.
+
+### Python asyncio with uvloop
+
+Starting with v0.7.0, OBI supports context propagation for Python asyncio
+workloads running on [`uvloop`](https://github.com/MagicStack/uvloop). This
+enables distributed tracing of asynchronous Python services that use the
+`uvloop` event loop, in addition to the standard `asyncio` support.
+
+The context propagation at network level applies to Python applications running
+on `uvloop`, allowing OBI to automatically instrument and propagate trace
+context for asynchronous operations. No additional configuration is required
+beyond enabling context propagation as described in the
+[introduction](#introduction).
+
+To use OBI with Python asyncio and `uvloop`, ensure your Python application is
+configured to use `uvloop` as the event loop implementation.
