@@ -1,7 +1,7 @@
 ---
 title: "Inside Adobe's OpenTelemetry pipeline: simplicity at scale"
 linkTitle: "Inside Adobe's OpenTelemetry pipeline: simplicity at scale"
-date: 2026-03-30
+date: 2026-04-08
 author: >-
   [Johanna Öjeling](https://github.com/johannaojeling) (Grafana Labs), [Juliano
   Costa](https://github.com/julianocosta89) (Datadog), [Tristan
