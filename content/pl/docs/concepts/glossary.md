@@ -308,11 +308,11 @@ telemetrycznych, takich jak kontekst spana i [bagaż](#baggage) w
 
 Niezależne od języka typy interfejsów. Zobacz [opentelemetry-proto][].
 
-### Receiver {#receiver}
+### Odbiornik {#receiver}
 
 Termin używany przez [Kolektor](/docs/collector/configuration/#receivers) do
-określenia sposobu odbierania danych telemetrycznych. Receivery mogą działać w
-trybie push lub pull. Zobacz [Receiver][].
+określenia sposobu odbierania danych telemetrycznych. Odbiorniki mogą działać w
+trybie wysyłania (push) lub udostępniania (pull). Zobacz [Receiver][].
 
 ### Żądanie {#request}
 
@@ -358,13 +358,13 @@ może być wdrożona w wielu lokalizacjach.
 Jeden z [śladów](#trace), [metryk](#metric) lub [logów](#log). Zobacz
 [Sygnały][signals].
 
-### Span {#span}
+### Zakres {#span}
 
 Reprezentuje pojedynczą operację w ramach [śladu](#trace). Zobacz [Span][].
 
-### Span link {#span-link}
+### Powiązanie między zakresami {#span-link}
 
-Span link to powiązanie między przyczynowo związanymi spanami. Szczegóły w
+Powiązanie między zakresami to powiązanie między przyczynowo związanymi zakresami. Szczegóły w
 [Linkach między spanami](/docs/specs/otel/overview#links-between-spans) oraz
 [Określaniu linków](/docs/specs/otel/trace/api#specifying-links).
 
@@ -384,7 +384,7 @@ Zobacz [Metadane](#metadata).
 
 ### Ślad {#trace}
 
-[DAG](#dag) [spanów](#span), gdzie krawędzie między [spanami](#span) są
+[DAG](#dag) [zakresów](#span), gdzie krawędzie między [zakresami](#span) są
 zdefiniowane jako relacja rodzic-dziecko. Zobacz [Ślady][traces].
 
 ### Tracer {#tracer}
