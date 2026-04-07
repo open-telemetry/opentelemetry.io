@@ -102,6 +102,7 @@ For more information about the triager role, see the
 - [Michael Hausenblas](https://github.com/mhausenblas), Approver
 - [Morgan McLean](https://github.com/mtwo), Maintainer
 - [Paul Bruce](https://github.com/paulsbruce), Approver
+- [Sergey Kanzhelev](https://github.com/SergeyKanzhelev), Approver
 - [Steve Flanders](https://github.com/flands), Maintainer
 - [Ted Young](https://github.com/tedsuo), Approver
 
