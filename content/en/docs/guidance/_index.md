@@ -1,5 +1,5 @@
 ---
-title: Guidance & Architecture
+title: Blueprints and reference implementations
 description:
   Blueprints and sample architectures for best practices when adopting and
   implementing OpenTelemetry in common environments
