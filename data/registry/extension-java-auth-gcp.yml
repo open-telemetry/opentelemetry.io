@@ -11,7 +11,7 @@ license: Apache 2.0
 description:
   This extension provides automatic Google Cloud authentication for
   OpenTelemetry Java's OTLP exporters, enabling telemetry export to Google Cloud
-  for both auto and manual instrumentation setups.
+  for both automatic and manual instrumentation setups.
 authors:
   - name: OpenTelemetry Authors
 urls:

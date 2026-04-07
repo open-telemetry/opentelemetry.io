@@ -14,10 +14,10 @@ OpenTelemetry 项目目前由以下几个主要部分构成：
 - [手动插桩](#manual-instrumentation)
   - [插桩库](#instrumentation-libraries)
   - [导出器](#exporters)
-  - [自动插桩](#auto-instrumentation)
   - [资源检测器](#resource-detectors)
   - [跨服务传播器](#cross-service-propagators)
   - [采样器](#samplers)
+- [自动插桩](#auto-instrumentation)
 - [K8s Operator](#kubernetes-operator)
 - [函数即服务（FaaS）资产](#function-as-a-service-assets)
 
@@ -61,7 +61,7 @@ OpenTelemetry 的一个远景目标是，使所有流行的库默认即可被观
 
 {{% docs/languages/exporters/intro %}}
 
-### 自动插桩 {#auto-instrumentation}
+## 自动插桩 {#auto-instrumentation}
 
 如果适用，OpenTelemetry 的特定语言实现提供一种无需修改源代码即可对应用程序进行插桩的方法。
 虽然底层机制取决于使用的语言，自动插桩将 OpenTelemetry API 和 SDK 能力添加到你的应用程序中。

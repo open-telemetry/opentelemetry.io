@@ -12,10 +12,10 @@ OpenTelemetry is currently made up of several main components:
 - [Manual Instrumentation](#manual-instrumentation)
   - [Instrumentation Libraries](#instrumentation-libraries)
   - [Exporters](#exporters)
-  - [Auto Instrumentation](#auto-instrumentation)
   - [Resource Detectors](#resource-detectors)
   - [Cross Service Propagators](#cross-service-propagators)
   - [Samplers](#samplers)
+- [Auto Instrumentation](#auto-instrumentation)
 - [Kubernetes operator](#kubernetes-operator)
 - [Function as a Service assets](#function-as-a-service-assets)
 
@@ -75,7 +75,7 @@ For more information, see
 
 {{% docs/languages/exporters/intro %}}
 
-### Auto instrumentation
+## Auto instrumentation
 
 If applicable, a language specific implementation of OpenTelemetry provides a
 way to instrument your application without touching your source code. While the

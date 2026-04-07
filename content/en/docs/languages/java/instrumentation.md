@@ -63,9 +63,9 @@ The
 project contains the source code for Java agent, Spring Boot starter, and
 Library instrumentation.
 
-### Zero-code: Java agent
+### Auto: Java agent
 
-The Java agent is a form of zero-code
+The Java agent is a form of
 [automatic instrumentation](/docs/specs/otel/glossary/#automatic-instrumentation)
 that dynamically manipulates application bytecode.
 
@@ -75,9 +75,9 @@ For a list of libraries instrumented by the Java agent, see the
 
 See [Java agent](/docs/zero-code/java/agent/) for more details.
 
-### Zero-code: Spring Boot starter
+### Auto: Spring Boot starter
 
-The Spring Boot starter is a form of zero-code
+The Spring Boot starter is a form of
 [automatic instrumentation](/docs/specs/otel/glossary/#automatic-instrumentation)
 that leverages spring autoconfigure to install
 [library instrumentation](#library-instrumentation).
