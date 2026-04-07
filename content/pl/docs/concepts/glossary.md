@@ -112,7 +112,7 @@ Zobacz [Sygnał](#signal).
 
 ### Wymiar {#dimension}
 
-Termin używany specyficznie przez [metryki](#metric). Zobacz
+Termin używany wyłącznie w kontekście [metryk](#metric). Zobacz
 [Atrybut](#attribute).
 
 ### Śledzenie rozproszone {#distributed-tracing}
@@ -185,7 +185,7 @@ Skrót od [JavaScript Object Notation][json].
 
 ### Etykieta {#label}
 
-Termin używany specyficznie przez [metryki](#metric). Zobacz
+Termin używany wyłącznie w kontekście [metryk](#metric). Zobacz
 [Metadane](#metadata).
 
 ### Język {#language}
