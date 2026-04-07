@@ -261,7 +261,7 @@ do [instrumentacji](/docs/concepts/instrumentation/), generowania,
 [logi](#log) i [ślady](#trace).
 
 > **Pisownia**: OpenTelemetry powinno być zawsze jednym słowem bez łącznika i
-> pisane z wielkiej litery jak pokazano.
+> pisane z wielkiej litery.
 
 [merger]: /docs/what-is-opentelemetry/#history
 
@@ -301,8 +301,8 @@ Skrót od [OpenTelemetry Protocol](/docs/specs/otlp/).
 ### Propagatory {#propagators}
 
 Służą do serializacji i deserializacji określonych części danych
-telemetrycznych, takich jak kontekst spana i [bagaż](#baggage) w
-[spanach](#span). Zobacz [Propagators][propagators].
+telemetrycznych, takich jak kontekst zakresu i [bagaż](#baggage) w
+[zakresach](#span). Zobacz [Propagatory][propagators].
 
 ### Proto {#proto}
 
@@ -360,12 +360,12 @@ Jeden z [śladów](#trace), [metryk](#metric) lub [logów](#log). Zobacz
 
 ### Zakres {#span}
 
-Reprezentuje pojedynczą operację w ramach [śladu](#trace). Zobacz [Span][].
+Reprezentuje pojedynczą operację w ramach [śladu](#trace). Zobacz [Zakres][span].
 
 ### Powiązanie między zakresami {#span-link}
 
 Powiązanie między zakresami to powiązanie między przyczynowo związanymi zakresami. Szczegóły w
-[Linkach między spanami](/docs/specs/otel/overview#links-between-spans) oraz
+[Linkach między zakresami](/docs/specs/otel/overview#links-between-spans) oraz
 [Określaniu linków](/docs/specs/otel/trace/api#specifying-links).
 
 ### Specyfikacja {#specification}
@@ -389,7 +389,7 @@ zdefiniowane jako relacja rodzic-dziecko. Zobacz [Ślady][traces].
 
 ### Tracer {#tracer}
 
-Odpowiedzialny za tworzenie [spanów](#span). Zobacz [Tracer][].
+Odpowiedzialny za tworzenie [zakresów](#span). Zobacz [Tracer][].
 
 ### Transakcja {#transaction}
 
