@@ -10,5 +10,5 @@ if [[ ! -d "$target_dir" ]]; then
 fi
 
 find -L "$target_dir" -type f -name '*.md' -exec perl -i -ne '
-  print unless /^\{\{__hugo_ctx pid=\d+\}\}\s*$/;
+  print unless /^\s*\{\{__hugo_ctx pid=\d+\}\}\s*$/;
 ' {} +
