@@ -96,8 +96,9 @@ outputFormats:
     notAlternative: true
 
 outputs:
-  home: &home-outputs [HTML, RSS]
-  section: &section-outputs [HTML]
+  home: [HTML, markdown, RSS]
+  page: [HTML, markdown]
+  section: [HTML, markdown]
 
 services:
   rss: { limit: 20 }
@@ -108,16 +109,16 @@ cascade:
 
   # Enable redirects for site root (and not locales)
   - outputs:
-      # This must match the equivalent of [*home-outputs, redirects]
-      [HTML, RSS, redirects]
+      # This must match the equivalent of [outputs.home, redirects]
+      [HTML, markdown, RSS, redirects]
     target:
       kind: home
       sites: { matrix: { languages: [en] } }
 
   # Enable RSS for blog section
   - outputs:
-      # This must match the equivalent of [*section-outputs, RSS]
-      [HTML, RSS]
+      # This must match the equivalent of [outputs.section, RSS]
+      [HTML, markdown, RSS]
     target:
       kind: section
       path: '/blog'
