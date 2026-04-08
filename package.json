@@ -145,7 +145,7 @@
     "autoprefixer": "^10.4.27",
     "cspell": "^10.0.0",
     "gulp": "^5.0.1",
-    "hugo-extended": "0.160.0",
+    "hugo-extended": "0.157.0",
     "js-yaml": "^4.1.1",
     "markdown-it": "^14.1.1",
     "markdown-link-check": "^3.14.2",
