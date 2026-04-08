@@ -533,6 +533,14 @@ maintainers:
       - ruby-maintainers
     html_url: https://github.com/dazuma
     avatar_url: https://avatars.githubusercontent.com/u/8911?v=4
+  - name: dbarker
+    teams:
+      - cpp-approvers
+      - cpp-contrib-approvers
+      - cpp-contrib-maintainers
+      - cpp-maintainers
+    html_url: https://github.com/dbarker
+    avatar_url: https://avatars.githubusercontent.com/u/3782873?v=4
   - name: dineshg13
     teams:
       - go-compile-instrumentation-approvers
@@ -1162,8 +1170,6 @@ maintainers:
       - collector-contrib-approvers
       - collector-contrib-triagers
       - collector-releases-approvers
-      - javascript-contrib-triagers
-      - javascript-triagers
       - ruby-approvers
       - ruby-contrib-approvers
       - ruby-contrib-maintainers
@@ -1861,11 +1867,6 @@ approvers:
       - go-compile-instrumentation-triagers
     html_url: https://github.com/darccio
     avatar_url: https://avatars.githubusercontent.com/u/163009?v=4
-  - name: dbarker
-    teams:
-      - cpp-approvers
-    html_url: https://github.com/dbarker
-    avatar_url: https://avatars.githubusercontent.com/u/3782873?v=4
   - name: DebajitDas
     teams:
       - cpp-contrib-approvers
@@ -2166,8 +2167,6 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/2590169?v=4
   - name: MSNev
     teams:
-      - javascript-contrib-triagers
-      - javascript-triagers
       - semconv-browser-approvers
       - semconv-client-approvers
     html_url: https://github.com/MSNev
@@ -2240,7 +2239,6 @@ approvers:
   - name: pkanal
     teams:
       - javascript-contrib-triagers
-      - javascript-triagers
       - semconv-browser-approvers
       - semconv-client-approvers
     html_url: https://github.com/pkanal
