@@ -5667,6 +5667,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-12T10:02:04.998783541Z"
   },
+  "https://github.com/google/docsy/issues/2596": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-07T14:33:02.362758-04:00"
+  },
   "https://github.com/google/oss-fuzz": {
     "StatusCode": 206,
     "LastSeen": "2026-03-12T09:59:41.031304352Z"
@@ -16454,6 +16458,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/issues": {
     "StatusCode": 206,
     "LastSeen": "2026-03-23T14:15:17.701943521Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/issues/9449": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-07T14:33:01.136998-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/issues/new": {
     "StatusCode": 206,
