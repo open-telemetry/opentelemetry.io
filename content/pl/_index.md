@@ -53,10 +53,10 @@ OpenCensus, łącząc najlepsze w swojej klasie pomysły i praktyki społecznoś
       image="/img/homepage/data-sources.svg"
       imagePosition="left" %}}
 
-Instrumentuj swój kod raz, korzystając z OpenTelemetry API i SDK.
-Eksportuj dane telemetryczne do dowolnego backendu obserwowalności — Jaeger,
-Prometheus, dostawców komercyjnych lub własnego rozwiązania. Zmieniaj backend
-bez modyfikowania kodu aplikacji.
+Instrumentuj swój kod raz, korzystając z OpenTelemetry API i SDK. Eksportuj dane
+telemetryczne do dowolnego backendu obserwowalności — Jaeger, Prometheus,
+dostawców komercyjnych lub własnego rozwiązania. Zmieniaj backend bez
+modyfikowania kodu aplikacji.
 
 {{% /homepage/main-feature %}}
 
