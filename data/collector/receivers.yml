@@ -1,0 +1,879 @@
+# OpenTelemetry Collector component data
+# This file is automatically updated by scripts/collector-sync
+
+---
+- name: activedirectorydsreceiver
+  display_name: Active Directory Domain Services Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: aerospikereceiver
+  display_name: Aerospike Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: apachereceiver
+  display_name: Apache Web Server Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: apachesparkreceiver
+  display_name: Apache Spark Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: awscloudwatchreceiver
+  display_name: AWS CloudWatch Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+- name: awscontainerinsightreceiver
+  display_name: AWS Container Insights Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: awsecscontainermetricsreceiver
+  display_name: AWS ECS Container Metrics Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: awsfirehosereceiver
+  display_name: AWS Kinesis Data Firehose Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+- name: awslambdareceiver
+  display_name: AWS Lambda Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+- name: awss3receiver
+  display_name: AWS S3 Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+- name: awsxrayreceiver
+  display_name: AWS X-Ray Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: beta
+- name: azureblobreceiver
+  display_name: Azure Blob Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+    traces: alpha
+- name: azureeventhubreceiver
+  display_name: Azure Event Hub Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: azurefunctionsreceiver
+  display_name: Azure Functions Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+- name: azuremonitorreceiver
+  display_name: Azure Monitor Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: carbonreceiver
+  display_name: Carbon Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: chronyreceiver
+  display_name: Chrony Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: ciscoosreceiver
+  display_name: Cisco OS Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: cloudflarereceiver
+  display_name: Cloudflare Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+- name: cloudfoundryreceiver
+  display_name: Cloud Foundry Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+    logs: development
+- name: collectdreceiver
+  display_name: CollectD `write_http` plugin JSON receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: couchdbreceiver
+  display_name: CouchDB Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: datadogreceiver
+  display_name: Datadog Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+- name: dockerstatsreceiver
+  display_name: Docker Stats Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: elasticsearchreceiver
+  display_name: Elasticsearch Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: envoyalsreceiver
+  display_name: Envoy ALS (Access Log Service) Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+- name: expvarreceiver
+  display_name: Expvar Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: faroreceiver
+  display_name: Faro Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+    traces: alpha
+- name: filelogreceiver
+  display_name: File Log Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: beta
+- name: filestatsreceiver
+  display_name: File Stats Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: flinkmetricsreceiver
+  display_name: FlinkMetrics Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: fluentforwardreceiver
+  display_name: Fluent Forward Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: beta
+- name: githubreceiver
+  display_name: GitHub Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+    traces: development
+- name: gitlabreceiver
+  display_name: GitLab Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: alpha
+- name: googlecloudmonitoringreceiver
+  display_name: Google Cloud Monitoring Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: googlecloudpubsubpushreceiver
+  display_name: Google Pub/Sub Push Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+- name: googlecloudpubsubreceiver
+  display_name: Google Pub/Sub Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: googlecloudspannerreceiver
+  display_name: Google Cloud Spanner Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: haproxyreceiver
+  display_name: HAProxy Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: hostmetricsreceiver
+  display_name: Host Metrics Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - core
+    - k8s
+  stability:
+    metrics: beta
+    logs: development
+- name: httpcheckreceiver
+  display_name: HTTP Check Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    metrics: alpha
+- name: huaweicloudcesreceiver
+  display_name: Huawei Cloud CES Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: icmpcheckreceiver
+  display_name: ICMP Check Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: development
+- name: iisreceiver
+  display_name: Microsoft IIS Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: influxdbreceiver
+  display_name: InfluxDB Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: jaegerreceiver
+  display_name: Jaeger Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - core
+    - k8s
+  stability:
+    traces: beta
+- name: jmxreceiver
+  display_name: JMX Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: deprecated
+- name: journaldreceiver
+  display_name: Journald Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: alpha
+- name: k8sclusterreceiver
+  display_name: Kubernetes Cluster Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    metrics: beta
+    logs: development
+- name: k8seventsreceiver
+  display_name: Kubernetes Events Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: alpha
+- name: k8sobjectsreceiver
+  display_name: Kubernetes Objects Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: beta
+- name: kafkametricsreceiver
+  display_name: Kafka Metrics Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: kafkareceiver
+  display_name: Kafka Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - core
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+    profiles: development
+- name: kubeletstatsreceiver
+  display_name: Kubelet Stats Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    metrics: beta
+- name: libhoneyreceiver
+  display_name: Libhoney Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+    traces: alpha
+- name: lokireceiver
+  display_name: Loki Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+- name: macosunifiedloggingreceiver
+  display_name: macOS Unified Logging Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+- name: memcachedreceiver
+  display_name: Memcached Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: mongodbatlasreceiver
+  display_name: MongoDB Atlas Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: beta
+    metrics: beta
+- name: mongodbreceiver
+  display_name: MongoDB Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: mysqlreceiver
+  display_name: MySQL Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+    logs: development
+- name: namedpipereceiver
+  display_name: Named Pipe Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+- name: netflowreceiver
+  display_name: Netflow Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+- name: nginxreceiver
+  display_name: NGINX Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: nopreceiver
+  display_name: No-op Receiver
+  repo: core
+  distributions:
+    - contrib
+    - core
+  stability:
+    profiles: alpha
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: nsxtreceiver
+  display_name: NSX-T Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: ntpreceiver
+  display_name: NTP Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: oracledbreceiver
+  display_name: Oracle DB Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+    logs: development
+- name: osqueryreceiver
+  display_name: osquery Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+- name: otelarrowreceiver
+  display_name: Apache Arrow OTLP Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: beta
+    metrics: beta
+    traces: beta
+- name: otlpjsonfilereceiver
+  display_name: OTLP JSON File Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+    profiles: development
+- name: otlpreceiver
+  display_name: OTLP Receiver
+  repo: core
+  distributions:
+    - contrib
+    - core
+    - k8s
+    - otlp
+  stability:
+    profiles: alpha
+    logs: stable
+    metrics: stable
+    traces: stable
+- name: podmanreceiver
+  display_name: Podman Stats Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: postgresqlreceiver
+  display_name: PostgreSQL Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+    logs: development
+- name: pprofreceiver
+  display_name: Pprof Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    profiles: alpha
+- name: prometheusreceiver
+  display_name: Prometheus Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - core
+    - k8s
+  stability:
+    metrics: beta
+- name: prometheusremotewritereceiver
+  display_name: Prometheus Remote Write Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: pulsarreceiver
+  display_name: Pulsar Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+    metrics: alpha
+    traces: alpha
+- name: purefareceiver
+  display_name: Pure Storage FlashArray Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: purefbreceiver
+  display_name: Pure Storage FlashBlade Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: rabbitmqreceiver
+  display_name: RabbitMQ Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: receivercreator
+  display_name: Receiver Creator
+  repo: contrib
+  distributions:
+    - contrib
+    - k8s
+  stability:
+    logs: alpha
+    traces: alpha
+    metrics: beta
+- name: redfishreceiver
+  display_name: Redfish Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: development
+- name: redisreceiver
+  display_name: Redis Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: riakreceiver
+  display_name: Riak Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: saphanareceiver
+  display_name: SAP HANA Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: signalfxreceiver
+  display_name: SignalFx Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: deprecated
+    metrics: deprecated
+- name: simpleprometheusreceiver
+  display_name: Simple Prometheus Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: skywalkingreceiver
+  display_name: SkyWalking Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: beta
+    metrics: development
+- name: snmpreceiver
+  display_name: SNMP Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: snowflakereceiver
+  display_name: Snowflake Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: solacereceiver
+  display_name: Solace Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    traces: beta
+- name: splunkenterprisereceiver
+  display_name: Splunk Enterprise Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: splunkhecreceiver
+  display_name: Splunk HEC Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: beta
+    metrics: beta
+- name: sqlqueryreceiver
+  display_name: SQL Query Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+    logs: development
+- name: sqlserverreceiver
+  display_name: Microsoft SQL Server Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+    logs: development
+- name: sshcheckreceiver
+  display_name: SSH Check Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: statsdreceiver
+  display_name: StatsD Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: stefreceiver
+  display_name: STEF Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: syslogreceiver
+  display_name: Syslog Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: beta
+- name: systemdreceiver
+  display_name: Systemd Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: tcpcheckreceiver
+  display_name: TCP Check Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: tcplogreceiver
+  display_name: TCP Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+- name: tlscheckreceiver
+  display_name: TLS Check Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: udplogreceiver
+  display_name: UDP Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+- name: vcenterreceiver
+  display_name: vCenter Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: vcrreceiver
+  display_name: VCR Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: development
+    metrics: development
+    profiles: development
+    traces: development
+- name: wavefrontreceiver
+  display_name: Wavefront Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: deprecated
+- name: webhookeventreceiver
+  display_name: Webhook Event Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: beta
+- name: windowseventlogreceiver
+  display_name: Windows Event Log Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    logs: alpha
+- name: windowsperfcountersreceiver
+  display_name: Windows Performance Counters Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: beta
+- name: windowsservicereceiver
+  display_name: Windows Service Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: development
+- name: yanggrpcreceiver
+  display_name: YANG gRPC Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha
+- name: zipkinreceiver
+  display_name: Zipkin Receiver
+  repo: contrib
+  distributions:
+    - contrib
+    - core
+    - k8s
+  stability:
+    traces: beta
+- name: zookeeperreceiver
+  display_name: Zookeeper Receiver
+  repo: contrib
+  distributions:
+    - contrib
+  stability:
+    metrics: alpha

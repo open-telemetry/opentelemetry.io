@@ -31,8 +31,11 @@ IgnoreURLs: # list of regexes of paths or URLs to be ignored
   - ^((/..)?/docs/languages/\w+|\.\.)/(api|examples|registry)/$
   - ^(/..)?/docs/collector/registry/$
   - ^(/..)?/docs/languages/dotnet/(metrics-api|traces-api)/
-  - ^((/..)?/docs/migration/)?opencensus/$
+  - ^((/..)?/docs/compatibility/migration/)?opencensus/$
   - ^/../docs/specs/?$ # non-default locale spec redirect
+  # Temporary until the following is fixed and Docsy is updated:
+  # https://github.com/google/docsy/issues/2595
+  - ^/favicons
 
   - ^https://deploy-preview-\d+--opentelemetry.netlify.app/
   - ^https://www\.googletagmanager\.com

@@ -6,6 +6,7 @@ import:
   - '@cspell/dict-bn/cspell-ext.json'
   - '@cspell/dict-es-es/cspell-ext.json'
   - '@cspell/dict-fr-fr/cspell-ext.json'
+  - '@cspell/dict-pl_pl/cspell-ext.json'
   - '@cspell/dict-pt-br/cspell-ext.json'
   - '@cspell/dict-ro-ro/cspell-ext.json'
   - '@cspell/dict-uk-ua/cspell-ext.json'
@@ -15,6 +16,7 @@ ignorePaths:
   - content/{ja,zh}
   - data/community/members.yaml
   - data/ecosystem/vendors.yaml
+  - data/collector
   - public/_redirects
   - static/refcache.json
 patterns:
@@ -42,6 +44,8 @@ dictionaryDefinitions:
     path: .cspell/es-palabras.txt
   - name: fr-mots
     path: .cspell/fr-mots.txt
+  - name: pl-words
+    path: .cspell/pl-words.txt
   - name: pt-palavras
     path: .cspell/pt-palavras.txt
   - name: ro-words
@@ -53,6 +57,7 @@ dictionaries:
   - bn
   - es-es
   - fr-fr
+  - pl_pl
   - pt-br
   - ro-ro
   - uk-ua
@@ -61,6 +66,7 @@ dictionaries:
   - en-words
   - es-palabras
   - fr-mots
+  - pl-words
   - pt-palavras
   - ro-words
   - uk-words
@@ -84,6 +90,7 @@ words:
   - desaturate
   - Docsy
   - errorf
+  - favicons
   - Goldmark
   - htmltest
   - jsonify
