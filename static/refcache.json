@@ -5659,6 +5659,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-12T10:02:04.998783541Z"
   },
+  "https://github.com/google/docsy/issues/2596": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-07T14:33:02.362758-04:00"
+  },
   "https://github.com/google/oss-fuzz": {
     "StatusCode": 206,
     "LastSeen": "2026-03-12T09:59:41.031304352Z"
@@ -8002,6 +8006,10 @@
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/6a2bd15cc941859767c7043a0597b8b0f6dd9f64/receiver/sapmreceiver#sapm-receiver": {
     "StatusCode": 206,
     "LastSeen": "2026-03-24T09:53:56.972186001Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/6aff35ab5351482a4664f29a7d5428cedcf61a92/connector/routingconnector?from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-03-16T10:06:04.86792+01:00"
   },
   "https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/72087f655403778da46f4168dca2433fa0775098/receiver/filelogreceiver?from_branch=main": {
     "StatusCode": 206,
@@ -15250,6 +15258,10 @@
   "https://github.com/open-telemetry/opentelemetry.io/issues": {
     "StatusCode": 206,
     "LastSeen": "2026-03-23T14:15:17.701943521Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry.io/issues/9449": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-07T14:33:01.136998-04:00"
   },
   "https://github.com/open-telemetry/opentelemetry.io/issues/new": {
     "StatusCode": 206,
