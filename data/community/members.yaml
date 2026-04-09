@@ -227,7 +227,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/16758?v=4
   - name: austinlparker
     teams:
-      - blog-approvers
       - docs-approvers
       - docs-bn-approvers
       - docs-bn-maintainers
@@ -366,7 +365,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/260065?v=4
   - name: cartermp
     teams:
-      - blog-approvers
       - docs-approvers
       - docs-bn-approvers
       - docs-bn-maintainers
@@ -861,7 +859,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/32420835?v=4
   - name: jpkrohling
     teams:
-      - collector-triagers
       - docs-pt-approvers
       - docs-pt-maintainers
       - proto-approvers
@@ -934,6 +931,7 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/87386821?v=4
   - name: Kielek
     teams:
+      - demo-approvers
       - docs-pl-approvers
       - dotnet-approvers
       - dotnet-contrib-approvers
@@ -1008,6 +1006,7 @@ maintainers:
       - specs-semconv-maintainers
       - specs-triagers
       - weaver-approvers
+      - weaver-maintainers
       - weaver-package-approvers
       - weaver-package-maintainers
       - weaver-package-triagers
@@ -1418,7 +1417,6 @@ maintainers:
     avatar_url: https://avatars.githubusercontent.com/u/10536136?v=4
   - name: svrnm
     teams:
-      - blog-approvers
       - docs-approvers
       - docs-bn-approvers
       - docs-bn-maintainers
@@ -1743,7 +1741,6 @@ approvers:
     avatar_url: https://avatars.githubusercontent.com/u/8087146?v=4
   - name: alolita
     teams:
-      - blog-approvers
       - specs-triagers
       - sqlcommenter-approvers
       - swift-core-triagers
@@ -2171,12 +2168,6 @@ approvers:
       - semconv-client-approvers
     html_url: https://github.com/MSNev
     avatar_url: https://avatars.githubusercontent.com/u/54870357?v=4
-  - name: mtwo
-    teams:
-      - blog-approvers
-      - specs-triagers
-    html_url: https://github.com/mtwo
-    avatar_url: https://avatars.githubusercontent.com/u/1144235?v=4
   - name: mviitane
     teams:
       - demo-approvers
@@ -2337,11 +2328,6 @@ approvers:
       - javascript-contrib-triagers
     html_url: https://github.com/seemk
     avatar_url: https://avatars.githubusercontent.com/u/5329631?v=4
-  - name: SergeyKanzhelev
-    teams:
-      - blog-approvers
-    html_url: https://github.com/SergeyKanzhelev
-    avatar_url: https://avatars.githubusercontent.com/u/9950081?v=4
   - name: shalevr
     teams:
       - opentelemetry-python-contrib-approvers
@@ -2626,6 +2612,11 @@ triagers:
       - javascript-contrib-triagers
     html_url: https://github.com/mottibec
     avatar_url: https://avatars.githubusercontent.com/u/25174561?v=4
+  - name: mtwo
+    teams:
+      - specs-triagers
+    html_url: https://github.com/mtwo
+    avatar_url: https://avatars.githubusercontent.com/u/1144235?v=4
   - name: muripic
     teams:
       - ruby-contrib-triagers
@@ -3175,6 +3166,9 @@ members:
   - name: secustor
     html_url: https://github.com/secustor
     avatar_url: https://avatars.githubusercontent.com/u/17493763?v=4
+  - name: SergeyKanzhelev
+    html_url: https://github.com/SergeyKanzhelev
+    avatar_url: https://avatars.githubusercontent.com/u/9950081?v=4
   - name: ShaanveerS
     html_url: https://github.com/ShaanveerS
     avatar_url: https://avatars.githubusercontent.com/u/146979751?v=4

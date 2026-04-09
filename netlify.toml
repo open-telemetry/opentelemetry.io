@@ -16,6 +16,10 @@ to = "https://opentelemetry.io/blog/:splat"
 force = true
 
 [[edge_functions]]
+function = "markdown-negotiation"
+path = "/*"
+
+[[edge_functions]]
 function = "schema-analytics"
 path = "/schemas/*"
 
