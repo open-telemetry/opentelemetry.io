@@ -1,5 +1,6 @@
 ---
 title: GA4 asset fetch analytics plan
+date: 2026-04-09
 custodian: [Patrice Chalin](https://github.com/chalin)
 cSpell:ignore: GA4 BigQuery Netlify NDJSON referrer eventparams GOOGLEANALYTICS
 ---
@@ -9,22 +10,26 @@ cSpell:ignore: GA4 BigQuery Netlify NDJSON referrer eventparams GOOGLEANALYTICS
 Provide a single design for collecting analytics for non-HTML assets served from
 `opentelemetry.io`, including:
 
-- schema files under `/schemas/*`
-- future Markdown assets such as `*.md` variants of site pages
-- other machine-oriented static assets that should not be counted as page views
+- Schema files under `/schemas/*`
+- Future Markdown assets such as `*.md` variants of site pages
+- Other machine-oriented static assets that should not be counted as page views
 
 The design should keep reporting accessible to the existing team through Google
 Analytics while preserving a reliable operational view in Netlify.
 
 ## Summary
 
-Use a Netlify Edge Function to emit a GA4 custom event named `asset_fetch` for
-selected asset responses. Keep Netlify Observability enabled as the
-request-level validation and debugging surface.
+- Implement using Netlify Edge Function(s) to emit a GA4 custom event named
+  `asset_fetch` for selected asset responses.
+- Keep Netlify Observability enabled as the request-level validation and
+  debugging surface.
+- If/once a markdown-negotiation Edge Function is implemented, it may be used to
+  emit `asset_fetch` events for the original request path and the actual
+  Markdown artifact path.
 
-Do not model asset requests as GA4 `page_view` events. Asset requests are not
-HTML page loads, and treating them as page views would pollute site browsing
-metrics.
+We won't model asset requests as GA4 `page_view` events because asset requests
+are not HTML page loads, and treating them as page views would pollute site
+browsing metrics.
 
 ## Why this plan
 
@@ -82,7 +87,7 @@ Observability remains useful as the operational backstop:
 
 ```mermaid
 flowchart LR
-  A["Client or agent requests /schemas/* or *.md"] --> B["Netlify Edge Function"]
+  A["Client or agent requests /schemas/* or a Markdown-capable page path"] --> B["Netlify Edge Function"]
   B --> C["context.next() serves static asset"]
   C --> D["Response returned to client"]
   B --> E["context.waitUntil() sends GA4 asset_fetch event"]
@@ -121,28 +126,24 @@ Send the following GA4 event parameters for every tracked asset request:
   - normalized response content type, for example `application/yaml`
 - `status_code`
   - response status as a string, for example `200`
+- `served_path`
+  - actual asset path returned when it differs from the original request path (phase 2)
 
 ### Optional event parameters
 
-Only add these if they are useful enough to justify extra cardinality:
-
-- `asset_kind`
-  - finer grouping such as `page-markdown`, `schema-version`, `schema-latest`
 - `referrer_host`
-  - normalized host only, not full referrer URL
-- `ua_category`
-  - coarse user-agent class such as `browser`, `ai-agent`, `crawler`, `tooling`,
-    `other`
+- `ua_category`: coarse user-agent class such as `browser`, `ai-agent`,
+    `crawler`, `tooling`, `other`
 
 ### Parameters to avoid
 
 Do not send the following to GA4:
 
-- full user agent string
-- full referrer URL
-- query strings by default
+- Full user agent string
+- Referrer URL
+- Query strings by default
 - IP address
-- request headers beyond coarse classification
+- Request headers beyond coarse classification
 
 These fields either create unnecessary cardinality, expose more data than
 needed, or are poor fits for GA4 reporting.
@@ -199,7 +200,7 @@ Register these event-scoped custom dimensions in GA4:
 - `asset_ext`
 - `content_type`
 - `status_code`
-- `asset_kind` if used
+- `served_path` (phase 2)
 - `referrer_host` if used
 - `ua_category` if used
 
@@ -250,6 +251,10 @@ GA4 answer shape:
 - filter `asset_group = markdown`
 - breakdown by `asset_path`
 - metric `Event count`
+
+For negotiated Markdown delivery, phase 2 should preserve the original request
+path in `asset_path` and may additionally record the actual Markdown artifact
+returned in `served_path`.
 
 ### Bot and AI traffic split
 
@@ -319,7 +324,7 @@ becomes too high-cardinality and GA4 starts collapsing values into `(other)`,
 move the public path-level report to Looker Studio on top of GA4 BigQuery
 export.
 
-## Phase 1 runtime configuration
+## Phase 1 runtime configuration (completed)
 
 Configure the Netlify site with:
 
@@ -364,7 +369,7 @@ In Netlify site settings:
 `HUGO_SERVICES_GOOGLEANALYTICS_ID` should already exist and should continue to
 point at the existing web stream measurement ID.
 
-### Register GA4 custom dimensions
+### How to register GA4 custom dimensions
 
 In GA4:
 
@@ -372,14 +377,6 @@ In GA4:
 2. Under `Data display`, open `Custom definitions`.
 3. Open the `Custom dimensions` tab.
 4. Create event-scoped custom dimensions for the `asset_fetch` parameters.
-
-Recommended phase 1 custom dimensions:
-
-- `asset_group`
-- `asset_path`
-- `asset_ext`
-- `content_type`
-- `status_code`
 
 Suggested GA4 dimension definitions:
 
@@ -407,12 +404,14 @@ Suggested GA4 dimension definitions:
   - Scope: `Event`
   - Event parameter: `status_code`
   - Description: HTTP response status code returned when serving the asset
+- Dimension name: `Served path`
+  - Scope: `Event`
+  - Event parameter: `served_path`
+  - Description: Actual asset path returned when it differs from the original
+    request path.
 
-Reporting note:
-
-- GA4 custom dimensions typically become available in reports and explorations
-  24 to 48 hours after the event data is sent and the custom dimension is
-  created
+GA4 custom dimensions typically become available in reports and explorations 24
+to 48 hours after the event data is sent and the custom dimension is created.
 
 ### Validate phase 1 after deploy
 
@@ -438,7 +437,8 @@ Validation note:
 Initial scope:
 
 - `/schemas/*`
-- `*.md` public asset routes once those assets are published
+- Markdown asset responses, including direct `.md` requests and negotiated
+  Markdown responses
 
 Future optional scope:
 
@@ -543,7 +543,7 @@ is better suited to internal operational use than broad publishing.
 
 ## Implementation plan
 
-### Phase 1
+### Phase 1 (completed)
 
 1. Add a Netlify Edge Function that matches `/schemas/*`.
 2. Send `asset_fetch` to GA4 with the required parameters only.
@@ -552,9 +552,13 @@ is better suited to internal operational use than broad publishing.
 
 ### Phase 2
 
-1. Extend tracked routes to public `*.md` assets.
-2. Add `ua_category` if the classification is stable and low-cardinality.
-3. Build a shared GA4 exploration or Looker Studio report for the team.
+1. Extend tracking to Markdown assets, preserving the original request path in
+   `asset_path` and adding `served_path` only when the returned Markdown path
+   differs from the request path.
+2. Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
+   files.
+3. Add `ua_category` if the classification is stable and low-cardinality.
+4. Build a shared GA4 exploration or Looker Studio report for the team.
 
 ### Phase 3
 
@@ -621,3 +625,9 @@ to only count `2xx`.
   <https://docs.cloud.google.com/looker/docs/studio/table-reference>
 - Looker Studio sharing:
   <https://docs.cloud.google.com/looker/docs/studio/ways-to-share-your-reports>
+
+## Edit history
+
+- 2026-04-09: ...
+
+- 2026-04-03: initial draft
