@@ -1,6 +1,5 @@
 ---
 title: Sample Configurations
-linkTitle: Sample Configurations
 ---
 
 This section provides sample OpenTelemetry Collector configurations that
