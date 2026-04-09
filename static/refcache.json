@@ -4271,6 +4271,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-12T09:59:44.942837566Z"
   },
+  "https://github.com/adp2201": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-09T18:02:03.574738781Z"
+  },
   "https://github.com/adrielp": {
     "StatusCode": 206,
     "LastSeen": "2026-03-18T09:54:42.886535103Z"
@@ -15775,6 +15779,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-18T09:54:51.749798255Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/issues/4849": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-09T18:02:20.00705171Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/issues/617": {
     "StatusCode": 206,
     "LastSeen": "2026-03-12T09:59:52.264002138Z"
@@ -15795,6 +15803,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-10T09:52:37.469361095Z"
   },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/4715": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-09T18:02:15.253384405Z"
+  },
   "https://github.com/open-telemetry/opentelemetry-specification/pull/4719": {
     "StatusCode": 206,
     "LastSeen": "2026-03-18T15:38:20.43438739-07:00"
@@ -15806,6 +15818,10 @@
   "https://github.com/open-telemetry/opentelemetry-specification/pull/4855": {
     "StatusCode": 206,
     "LastSeen": "2026-03-18T15:38:16.556284959-07:00"
+  },
+  "https://github.com/open-telemetry/opentelemetry-specification/pull/4938": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-09T18:02:09.18182436Z"
   },
   "https://github.com/open-telemetry/opentelemetry-specification/pull/4947": {
     "StatusCode": 206,

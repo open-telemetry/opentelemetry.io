@@ -17,9 +17,9 @@ OpenTracing has been archived for years, and new integrations are expected to
 use native OpenTelemetry APIs and SDKs instead of building on OpenTracing shim
 requirements.
 
-This is a deprecation of specification requirements, not an immediate removal
-of compatibility material and not a requirement to remove existing shim
-artifacts right away.
+This is a deprecation of specification requirements, not an immediate removal of
+compatibility material and not a requirement to remove existing shim artifacts
+right away.
 
 ## What is changing?
 
