@@ -1,10 +1,11 @@
 ---
-title: OpenTelemetry Concepts
-linkTitle: Concepts
-description: Key concepts in OpenTelemetry
+title: Koncepcje OpenTelemetry
+linkTitle: Koncepcje
+description: Kluczowe koncepcje w OpenTelemetry
 aliases: [concepts/overview]
 weight: 170
+default_lang_commit: d638c386ae327328ff35604df54fa6ddd8b51b65
 ---
 
-This section covers data sources and key components of the OpenTelemetry
-project, which can help you understand how OpenTelemetry works.
+Ta sekcja omawia źródła danych i kluczowe komponenty projektu OpenTelemetry,
+które pomogą Ci zrozumieć, jak OpenTelemetry działa.

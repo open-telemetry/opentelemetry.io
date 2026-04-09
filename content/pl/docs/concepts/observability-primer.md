@@ -1,106 +1,110 @@
 ---
-title: Observability primer
-description: Core observability concepts.
+title: Podstawy obserwowalności
+description: Podstawowe koncepcje obserwowalności.
 weight: 9
 cSpell:ignore: webshop
+default_lang_commit: 0ef7c639162832ada8e2021d9b1883546976066c
 ---
 
-## What is Observability?
+## Czym jest obserwowalność?
 
-Observability lets you understand a system from the outside by letting you ask
-questions about that system without knowing its inner workings. Furthermore, it
-allows you to easily troubleshoot and handle novel problems, that is, "unknown
-unknowns". It also helps you answer the question "Why is this happening?"
+Obserwowalność pozwala zrozumieć system z zewnątrz, umożliwiając zadawanie
+pytań o ten system bez znajomości jego wewnętrznego działania. Ponadto pozwala
+łatwo diagnozować i rozwiązywać nowe problemy, czyli tzw. "nieznane niewiadome"
+(ang. _unknown unknowns_). Pomaga również odpowiedzieć na pytanie "Dlaczego to
+się dzieje?"
 
-To ask those questions about your system, your application must be properly
-instrumented. That is, the application code must emit
-[signals](/docs/concepts/signals/) such as
-[traces](/docs/concepts/signals/traces/),
-[metrics](/docs/concepts/signals/metrics/), and
-[logs](/docs/concepts/signals/logs/). An application is properly instrumented
-when developers don't need to add more instrumentation to troubleshoot an issue,
-because they have all of the information they need.
+Aby móc zadawać takie pytania o swój system, aplikacja musi być odpowiednio
+zinstrumentowana. Oznacza to, że kod aplikacji musi emitować
+[sygnały](/docs/concepts/signals/) takie jak
+[ślady (traces)](/docs/concepts/signals/traces/),
+[metryki](/docs/concepts/signals/metrics/), i
+[logi](/docs/concepts/signals/logs/). Aplikacja jest odpowiednio
+zinstrumentowana, gdy deweloperzy nie muszą dodawać kolejnej instrumentacji,
+aby zdiagnozować problem, ponieważ mają wszystkie potrzebne informacje.
 
-[OpenTelemetry](/docs/what-is-opentelemetry/) is the mechanism by which
-application code is instrumented to help make a system observable.
+[OpenTelemetry](/docs/what-is-opentelemetry/) jest mechanizmem, dzięki któremu
+kod aplikacji jest instrumentowany, aby uczynić system obserwowalnym.
 
-## Reliability and metrics
+## Niezawodność i metryki
 
-**Telemetry** refers to data emitted from a system and its behavior. The data
-can come in the form of [traces](/docs/concepts/signals/traces/),
-[metrics](/docs/concepts/signals/metrics/), and
-[logs](/docs/concepts/signals/logs/).
+**Telemetria** odnosi się do danych emitowanych przez system i opisujących jego
+zachowanie. Dane mogą przyjmować postać [śladów (traces)](/docs/concepts/signals/traces/),
+[metryk](/docs/concepts/signals/metrics/), i
+[logów](/docs/concepts/signals/logs/).
 
-**Reliability** answers the question: "Is the service doing what users expect it
-to be doing?" A system could be up 100% of the time, but if, when a user clicks
-"Add to Cart" to add a black pair of shoes to their shopping cart, the system
-doesn't always add black shoes, then the system could be **un**reliable.
+**Niezawodność** odpowiada na pytanie: "Czy usługa robi to, czego oczekują
+użytkownicy?" System może działać przez 100% czasu, ale jeśli użytkownik kliknie
+"Dodaj do koszyka", aby dodać czarne buty, a system nie zawsze dodaje czarne
+buty — system można uznać za **nie**niezawodny.
 
-**Metrics** are aggregations over a period of time of numeric data about your
-infrastructure or application. Examples include: system error rate, CPU
-utilization, and request rate for a given service. For more on metrics and how
-they relate to OpenTelemetry, see [Metrics](/docs/concepts/signals/metrics/).
+**Metryki** to agregacje danych liczbowych o Twojej infrastrukturze lub
+aplikacji zbierane w określonym czasie. Przykłady obejmują: współczynnik błędów
+systemu, wykorzystanie procesora (CPU) oraz współczynnik żądań dla danej usługi.
+Więcej informacji o metrykach i ich związku z OpenTelemetry znajdziesz
+w sekcji [Metryki](/docs/concepts/signals/metrics/).
 
-**SLI**, or Service Level Indicator, represents a measurement of a service's
-behavior. A good SLI measures your service from the perspective of your users.
-An example SLI can be the speed at which a web page loads.
+**SLI**, czyli wskaźnik poziomu usług (ang. _Service Level Indicator_),
+reprezentuje pomiar zachowania usługi. Dobry SLI mierzy usługę z perspektywy
+użytkownika. Przykładem SLI może być szybkość ładowania strony internetowej.
 
-**SLO**, or Service Level Objective, represents the means by which reliability
-is communicated to an organization/other teams. This is accomplished by
-attaching one or more SLIs to business value.
+**SLO**, czyli cel poziomu usług (ang. _Service Level Objective_), reprezentuje
+sposób komunikowania niezawodności w organizacji lub między zespołami. Osiąga
+się to przez powiązanie jednego lub więcej SLI z wartością biznesową.
 
-## Understanding distributed tracing
+## Wprowadzenie do śledzenia rozproszonego
 
-Distributed tracing lets you observe requests as they propagate through complex,
-distributed systems. Distributed tracing improves the visibility of your
-application or system's health and lets you debug behavior that is difficult to
-reproduce locally. It is essential for distributed systems, which commonly have
-nondeterministic problems or are too complicated to reproduce locally.
+Śledzenie rozproszone pozwala obserwować żądania w miarę ich propagacji przez
+złożone systemy rozproszone. Poprawia widoczność kondycji aplikacji lub systemu
+i umożliwia debugowanie zachowań trudnych do odtworzenia lokalnie. Jest
+niezbędne w systemach rozproszonych, które często mają niedeterministyczne
+problemy lub są zbyt złożone, aby odtworzyć je lokalnie.
 
-To understand distributed tracing, you need to understand the role of each of
-its components: logs, spans, and traces.
+Aby zrozumieć śledzenie rozproszone, należy poznać rolę każdego z jego
+komponentów: logów, zakresów i śladów.
 
-### Logs
+### Logi
 
-A **log** is a timestamped message emitted by services or other components.
-Unlike [traces](#distributed-traces), they aren't necessarily associated with
-any particular user request or transaction. You can find logs almost everywhere
-in software. Logs have been heavily relied on in the past by both developers and
-operators to help them understand system behavior.
+**Log** to opatrzona znacznikiem czasu wiadomość emitowana przez usługi lub
+inne komponenty. W przeciwieństwie do [śladów](#distributed-traces), nie są one
+koniecznie powiązane z konkretnym żądaniem użytkownika lub transakcją. Logi
+można znaleźć niemal wszędzie w oprogramowaniu. Zarówno deweloperzy, jak i
+operatorzy od dawna polegają na logach, aby zrozumieć zachowanie systemu.
 
-Sample log:
+Przykładowy log:
 
 ```text
 I, [2021-02-23T13:26:23.505892 #22473]  INFO -- : [6459ffe1-ea53-4044-aaa3-bf902868f730] Started GET "/" for ::1 at 2021-02-23 13:26:23 -0800
 ```
 
-Logs aren't enough for tracking code execution, as they usually lack contextual
-information, such as where they were called from.
+Same logi nie wystarczą do śledzenia wykonania kodu, ponieważ zazwyczaj
+brakuje im informacji kontekstowych, np. skąd zostały wywołane.
 
-They become far more useful when they are included as part of a [span](#spans),
-or when they are correlated with a trace and a span.
 
-For more on logs and how they pertain to OpenTelemetry, see
-[Logs](/docs/concepts/signals/logs/).
+Stają się znacznie bardziej użyteczne, gdy są dołączone do [zakresów](#zakresy),
+lub gdy są skorelowane ze śladem i zakresem.
 
-### Spans
+Więcej informacji o logach i ich związku z OpenTelemetry znajdziesz w sekcji
+[Logi](/docs/concepts/signals/logs/).
 
-A **span** represents a single unit of work or operation. Spans track specific
-operations that a request makes, painting a picture of what happened during the
-time in which that operation was executed.
+### Zakresy
 
-A span contains name, time-related data,
-[structured log messages](/docs/concepts/signals/traces/#span-events), and
-[other metadata (that is, Attributes)](/docs/concepts/signals/traces/#attributes)
-to provide information about the operation it tracks.
+**Zakres** reprezentuje pojedynczą jednostkę pracy lub operację. Zakresy śledzą
+konkretne operacje wykonywane w ramach żądania, tworząc obraz tego, co działo
+się podczas wykonywania danej operacji.
 
-#### Span attributes
+Zakres zawiera nazwę, dane czasowe,
+[ustrukturyzowane komunikaty logów](/docs/concepts/signals/traces/#span-events)
+oraz [inne metadane (czyli Atrybuty)](/docs/concepts/signals/traces/#attributes)
+dostarczające informacji o śledzonej operacji.
 
-Span attributes are metadata attached to a span.
+#### Atrybuty zakresu
 
-The following table contains examples of span attributes:
+Atrybuty zakresu to metadane dołączone do zakresu.
 
-| Key                         | Value                                                                              |
+Poniższa tabela zawiera przykłady atrybutów zakresu:
+
+| Klucz                         | Wartość                                                                              |
 | :-------------------------- | :--------------------------------------------------------------------------------- |
 | `http.request.method`       | `"GET"`                                                                            |
 | `network.protocol.version`  | `"1.1"`                                                                            |
@@ -115,39 +119,40 @@ The following table contains examples of span attributes:
 | `client.socket.address`     | `"192.0.2.5"` (the client goes through a proxy)                                    |
 | `user_agent.original`       | `"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:72.0) Gecko/20100101 Firefox/72.0"` |
 
-For more on spans and how they relate to OpenTelemetry, see
-[Spans](/docs/concepts/signals/traces/#spans).
+Więcej informacji o zakresach i ich związku z OpenTelemetry znajdziesz w sekcji
+[Zakresy](/docs/concepts/signals/traces/#spans).
 
-### Distributed traces
+### Ślady rozproszone
 
-A **distributed trace**, more commonly known as a **trace**, records the path
-taken by a single request (made by an application or end user) as it propagates
-through multiple services in an architecture, such as microservice or serverless
-applications.
+**Ślad rozproszony**, powszechniej znany jako **ślad**, rejestruje ścieżkę
+przebytą przez pojedyncze żądanie (wykonane przez aplikację lub użytkownika
+końcowego) w miarę jego propagacji przez wiele usług w architekturze, takiej
+jak aplikacje mikroserwisowe lub bezserwerowe (ang. _serverless_).
 
-A trace is made of one or more spans. The first span represents the root span.
-Each root span represents a request from start to finish. The spans underneath
-the parent provide a more in-depth context of what occurs during a request (or
-what steps make up a request).
+Ślad składa się z jednego lub więcej zakresów. Pierwszy zakres reprezentuje
+zakres główny (ang. _root span_). Każdy zakres główny reprezentuje żądanie od
+początku do końca. Zakresy podrzędne względem rodzica dostarczają głębszego
+kontekstu tego, co dzieje się podczas żądania (lub jakie kroki się na nie
+składają).
 
-For example, when a user loads a web page, the initial HTTP request may pass
-through an API gateway, a backend service, and a database. Each of these steps
-is represented by a span, and together they form a single trace that shows the
-end-to-end journey of the request.
+Na przykład, gdy użytkownik ładuje stronę internetową, początkowe żądanie HTTP
+może przejść przez bramę API, usługę backendową i bazę danych. Każdy z tych
+kroków jest reprezentowany przez zakres, a razem tworzą pojedynczy ślad
+pokazujący pełną drogę żądania od początku do końca.
 
-Without tracing, finding the root cause of performance problems in a distributed
-system can be challenging. Tracing makes debugging and understanding distributed
-systems less daunting by breaking down what happens within a request as it flows
-through a distributed system.
+Bez śledzenia znalezienie głównej przyczyny problemów z wydajnością w systemie
+rozproszonym może być trudne. Śledzenie sprawia, że debugowanie i rozumienie
+systemów rozproszonych jest mniej zniechęcające, rozkładając na części to, co
+dzieje się z żądaniem przepływającym przez system rozproszony.
 
-Many Observability backends visualize traces as waterfall diagrams that look
-like this:
+Wiele backendów obserwowalności wizualizuje ślady jako diagramy kaskadowe
+(ang. _waterfall diagrams_) wyglądające następująco:
 
-![Sample Trace](/img/waterfall-trace.svg 'Trace waterfall diagram')
+![Przykładowy ślad](/img/waterfall-trace.svg 'Diagram kaskadowy śladu')
 
-Waterfall diagrams show the parent-child relationship between a root span and
-its child spans. When a span encapsulates another span, this also represents a
-nested relationship.
+Diagramy kaskadowe pokazują relację rodzic-dziecko między zakresem głównym a jego
+zakresami podrzędnymi. Gdy zakres obejmuje inny zakres, reprezentuje to również
+relację zagnieżdżenia.
 
-For more on traces and how they pertain to OpenTelemetry, see
-[Traces](/docs/concepts/signals/traces/).
+Więcej informacji o śladach i ich związku z OpenTelemetry znajdziesz w sekcji
+[Ślady](/docs/concepts/signals/traces/).
