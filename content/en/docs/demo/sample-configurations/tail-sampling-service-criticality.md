@@ -1,6 +1,7 @@
 ---
 title: Tail-Based Sampling with service.criticality
 linkTitle: Tail Sampling
+cSpell:ignore: kafka
 ---
 
 This example demonstrates how to use the
