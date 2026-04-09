@@ -390,7 +390,7 @@ aplicação. Quando o SDK do OpenTelemetry é configurado, ele
 [consome recursos limitados](/docs/specs/otel/performance/).
 
 Aplicações reais, especialmente em grande escala, frequentemente têm amostragem
-baseada em cabeçalho configurada. Techos não amostrados são baratos e você pode
+baseada em cabeçalho configurada. Trechos não amostrados são baratos e você pode
 verificar se o trecho está gravando, para evitar alocações extras e cálculos
 potencialmente caros, enquanto preenche atributos. O exemplo a seguir em Java
 mostra como fornecer atributos para amostragem e verificar a gravação do trecho.
