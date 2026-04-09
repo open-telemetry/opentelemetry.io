@@ -1,7 +1,7 @@
 ---
 title: OpenTelemetry Accepted Elastic's PHP Distro Donation
 linkTitle: Elastic PHP Distro Donation
-date: 2026-04-09
+date: 2026-04-16
 author: >-
   [Pawel Filipczak](https://github.com/intuibase) (Elastic)
 draft: true
