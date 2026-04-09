@@ -12,7 +12,7 @@ Provide a single design for collecting analytics for non-HTML assets served from
 
 - Schema files under `/schemas/*`
 - Future Markdown assets such as `*.md` variants of site pages
-- Other machine-oriented static assets that should not be counted as page views
+- Other non-HTML assets, including `llms.txt`
 
 The design should keep reporting accessible to the existing team through Google
 Analytics while preserving a reliable operational view in Netlify.
@@ -24,8 +24,8 @@ Analytics while preserving a reliable operational view in Netlify.
 - Keep Netlify Observability enabled as the request-level validation and
   debugging surface.
 - If/once a markdown-negotiation Edge Function is implemented, it may be used to
-  emit `asset_fetch` events for the original request path and the actual
-  Markdown artifact path.
+  emit `asset_fetch` events with `asset_path` for the returned Markdown resource
+  and `original_path` when the request path differs.
 
 We won't model asset requests as GA4 `page_view` events because asset requests
 are not HTML page loads, and treating them as page views would pollute site
@@ -116,18 +116,18 @@ This keeps reporting simple and avoids proliferating many event names.
 
 Send the following GA4 event parameters for every tracked asset request:
 
-- `asset_group`
-  - one of: `schema`, `markdown`, `other`
-- `asset_path`
-  - normalized request path, for example `/schemas/1.40.0`
-- `asset_ext`
-  - one of: `yaml`, `md`, `json`, `txt`, `other`
-- `content_type`
-  - normalized response content type, for example `application/yaml`
-- `status_code`
-  - response status as a string, for example `200`
-- `served_path`
-  - actual asset path returned when it differs from the original request path (phase 2)
+- `asset_group`: one of: `schema`, `markdown`, `other`
+- `asset_path`: path of the resource returned in the response, after Path
+  resolution (for example `/schemas/1.40.0` or `/docs/concepts/context/index.md`)
+- `asset_ext`: one of: `yaml`, `md`, `json`, `txt`, maybe others
+- `content_type`: stable response content type, for example `application/yaml`
+- `status_code`: response status as a string, for example `200`
+
+### Phase 2 parameter
+
+- `original_path`: unmodified request path when it differs from `asset_path`,
+  for example `/docs/concepts/context/` when the resolved `asset_path` is
+  `/docs/concepts/context/index.md` (omit when request and resolution match).
 
 ### Optional event parameters
 
@@ -148,22 +148,33 @@ Do not send the following to GA4:
 These fields either create unnecessary cardinality, expose more data than
 needed, or are poor fits for GA4 reporting.
 
-### Path normalization
+### Path resolution
 
-Normalize paths before sending them to GA4:
+Apply the following when resolving paths for GA4:
+
+**Always (all phases):**
 
 - strip query strings
 - preserve the route path
 - keep the exact schema version path, for example `/schemas/1.40.0`
-- for Markdown assets, prefer the stable public path rather than a filesystem
-  path
 
-Examples:
+**Phase 2 (Markdown and other negotiated routes):**
+
+- `asset_path` is the path of the returned resource after resolution.
+- `original_path`, when sent, is the unmodified request path (only when it
+  differs from `asset_path`).
+
+#### Examples
 
 - `/schemas/1.40.0?cache=1` -> `/schemas/1.40.0`
 - `/docs/concepts/context/index.md` -> `/docs/concepts/context/index.md`
-- `/docs/concepts/context/` with content negotiation should map to the actual
-  served asset path only if that path is stable and public
+
+Phase 2:
+
+- `/docs/` resolves to `/docs/index.md` for `asset_path`; send `original_path`
+  `/docs/` if it differs from the resolved path.
+- `/docs/concepts/context/` with content negotiation: `asset_path` is the path of
+  the returned Markdown file; send `original_path` when the request path differs
 
 ## GA4 configuration
 
@@ -200,7 +211,7 @@ Register these event-scoped custom dimensions in GA4:
 - `asset_ext`
 - `content_type`
 - `status_code`
-- `served_path` (phase 2)
+- `original_path` (phase 2)
 - `referrer_host` if used
 - `ua_category` if used
 
@@ -252,9 +263,8 @@ GA4 answer shape:
 - breakdown by `asset_path`
 - metric `Event count`
 
-For negotiated Markdown delivery, phase 2 should preserve the original request
-path in `asset_path` and may additionally record the actual Markdown artifact
-returned in `served_path`.
+For negotiated Markdown delivery, phase 2 should set `asset_path` to the path
+of the returned resource and send `original_path` when the request path differs.
 
 ### Bot and AI traffic split
 
@@ -388,8 +398,8 @@ Suggested GA4 dimension definitions:
 - Dimension name: `Asset path`
   - Scope: `Event`
   - Event parameter: `asset_path`
-  - Description: Normalized request path of the fetched asset, such as
-    `/schemas/1.40.0`
+  - Description: Path of the resource returned for the fetch (after Path
+    resolution), such as `/schemas/1.40.0`
 - Dimension name: `Asset extension`
   - Scope: `Event`
   - Event parameter: `asset_ext`
@@ -404,11 +414,11 @@ Suggested GA4 dimension definitions:
   - Scope: `Event`
   - Event parameter: `status_code`
   - Description: HTTP response status code returned when serving the asset
-- Dimension name: `Served path`
+- Dimension name: `Original path`
   - Scope: `Event`
-  - Event parameter: `served_path`
-  - Description: Actual asset path returned when it differs from the original
-    request path.
+  - Event parameter: `original_path`
+  - Description: Unmodified request path when it differs from `asset_path`.
+    Register when phase 2 tracking is enabled; omit the parameter when unused.
 
 GA4 custom dimensions typically become available in reports and explorations 24
 to 48 hours after the event data is sent and the custom dimension is created.
@@ -496,7 +506,8 @@ Do not send:
 - full referrer URLs
 - any user-entered content
 
-If coarse origin analysis is useful, send only a normalized `referrer_host`.
+If coarse origin analysis is useful, send only a stable `referrer_host`
+(hostname, no path).
 
 Phase 1 intentionally does not forward the original request `User-Agent` header
 to GA4. The primary reporting goal is event counts and top-accessed asset paths,
@@ -515,7 +526,7 @@ assets are generated for many pages.
 
 - use one event name only
 - use a small set of categorical parameters
-- keep `asset_path` normalized
+- keep `asset_path` stable (Path resolution)
 - do not send query strings
 - use BigQuery export for exact long-term analysis
 
@@ -552,9 +563,10 @@ is better suited to internal operational use than broad publishing.
 
 ### Phase 2
 
-1. Extend tracking to Markdown assets, preserving the original request path in
-   `asset_path` and adding `served_path` only when the returned Markdown path
-   differs from the request path.
+Steps:
+
+1. Extend tracking to Markdown assets, setting `asset_path` to the returned
+   resource path and adding `original_path` only when the request path differs.
 2. Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
    files.
 3. Add `ua_category` if the classification is stable and low-cardinality.
@@ -628,6 +640,8 @@ to only count `2xx`.
 
 ## Edit history
 
-- 2026-04-09: ...
+- 2026-04-09: `asset_path` / `original_path` semantics (returned resource vs
+  request when it differs); Path resolution wording; required vs phase-2
+  parameters; section structure and examples.
 
 - 2026-04-03: initial draft
