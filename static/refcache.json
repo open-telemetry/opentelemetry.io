@@ -15243,6 +15243,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-22T13:18:19.380753781Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/9bd13bd/projects/landing-page-redesign.md?from_branch=main": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-09T06:55:22.764788061Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/9bd13bd7b3ecd76093fa980c44dc10b5611b4ee0/projects/landing-page-redesign.md?from_branch=main": {
     "StatusCode": 206,
     "LastSeen": "2026-04-22T22:57:10.055551779Z"
@@ -15355,17 +15359,13 @@
     "StatusCode": 206,
     "LastSeen": "2026-04-23T10:14:13.461679082Z"
   },
+  "https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/landing-page-redesign.md": {
+    "StatusCode": 206,
+    "LastSeen": "2026-02-14T09:35:48.261277107Z"
+  },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/localization.md": {
     "StatusCode": 206,
     "LastSeen": "2026-04-23T10:14:13.461673728Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/landing-page-redesign.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-14T09:35:48.261277107Z"
-  },
-  "https://github.com/open-telemetry/opentelemetry.io/blob/main/projects/landing-page-redesign.md": {
-    "StatusCode": 206,
-    "LastSeen": "2026-02-14T09:35:48.261277107Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/scripts/content-modules/adjust-pages.pl": {
     "StatusCode": 206,
