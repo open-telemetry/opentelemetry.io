@@ -7395,6 +7395,10 @@
     "StatusCode": 206,
     "LastSeen": "2026-03-24T09:54:05.407124668Z"
   },
+  "https://github.com/open-telemetry/community/issues/2846": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-09T08:36:44.720113556Z"
+  },
   "https://github.com/open-telemetry/community/issues/2975": {
     "StatusCode": 206,
     "LastSeen": "2026-03-03T09:52:35.604298212Z"
@@ -14590,6 +14594,10 @@
   "https://github.com/open-telemetry/opentelemetry-php-contrib/tree/main/src/ResourceDetectors/Container": {
     "StatusCode": 206,
     "LastSeen": "2026-03-23T14:22:19.441950748Z"
+  },
+  "https://github.com/open-telemetry/opentelemetry-php-distro": {
+    "StatusCode": 206,
+    "LastSeen": "2026-04-09T08:36:39.599057204Z"
   },
   "https://github.com/open-telemetry/opentelemetry-php-instrumentation": {
     "StatusCode": 206,
