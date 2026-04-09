@@ -1,7 +1,7 @@
 ---
 title: Deprecating OpenTracing compatibility requirements
 linkTitle: Deprecating OpenTracing compatibility
-date: 2026-04-07
+date: 2026-04-14
 author: '[Amol Patil](https://github.com/adp2201)'
 issue: 9385
 sig: Specification
