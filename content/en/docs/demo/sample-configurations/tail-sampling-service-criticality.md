@@ -11,11 +11,11 @@ OpenTelemetry Collector.
 The demo application assigns a `service.criticality` value to each service,
 classifying them by operational importance:
 
-| Criticality | Sampling Rate | Services |
-| ----------- | ------------- | -------- |
-| `critical`  | 100%          | payment, checkout, frontend, frontend-proxy |
-| `high`      | 50%           | cart, product-catalog, currency, shipping |
-| `medium`    | 10%           | recommendation, ad, product-reviews, email |
+| Criticality | Sampling Rate | Services                                                                                   |
+| ----------- | ------------- | ------------------------------------------------------------------------------------------ |
+| `critical`  | 100%          | payment, checkout, frontend, frontend-proxy                                                |
+| `high`      | 50%           | cart, product-catalog, currency, shipping                                                  |
+| `medium`    | 10%           | recommendation, ad, product-reviews, email                                                 |
 | `low`       | 1%            | accounting, fraud-detection, image-provider, load-generator, quote, flagd, flagd-ui, kafka |
 
 ## Collector Configuration
@@ -131,7 +131,7 @@ policies. A trace is sampled if **any** policy matches:
    with data volume.
 3. **Medium and low-criticality services** are progressively sampled at lower
    rates to reduce noise from less critical paths.
-4. **Errors are always captured** regardless of service criticality, ensuring
-   no issues go unnoticed.
+4. **Errors are always captured** regardless of service criticality, ensuring no
+   issues go unnoticed.
 5. **Slow traces** (>5s) from critical and high-criticality services are always
    sampled to help identify performance bottlenecks.
