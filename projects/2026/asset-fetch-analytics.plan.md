@@ -3,7 +3,7 @@ title: GA4 asset fetch analytics plan
 date: 2026-04-10
 version: 0.2
 custodian: Patrice Chalin
-cSpell:ignore: GA4 BigQuery Netlify NDJSON referrer eventparams GOOGLEANALYTICS trackability
+cSpell:ignore: GOOGLEANALYTICS trackability
 ---
 
 ## Goal
@@ -592,10 +592,14 @@ Steps:
    Rationale: keeps `markdown-negotiation` focused on `Accept`-based
    negotiation; direct `*.md` uses only `context.next()` (no alternate fetch),
    so a small dedicated handler is simpler to test; a single combined entrypoint
-   can be revisited later if preferred. Internal fetches from
-   `markdown-negotiation` should carry a private request header such as
-   `X-Otel-Asset-Fetch-Internal: 1`, and the direct-asset handler should ignore
-   such requests to avoid double-counting negotiated page requests.
+   can be revisited later if preferred.
+
+   Internal fetches from `markdown-negotiation` should carry
+   `X-Asset-Fetch-Ga-Info`; the direct-asset handler should treat the presence
+   of that request header as an internal subrequest marker and skip tracking to
+   avoid double-counting negotiated page requests. The same header can also
+   expose compact debug info on responses, which keeps the mechanism simple and
+   live-testable.
 3. Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
    files.
 4. Add `ua_category` if the classification is stable and low-cardinality.
@@ -696,10 +700,11 @@ All done for this iteration.
 
 Add a temporary compiled-const debug response header for post-merge production
 sanity checks, for example
-`X-Asset-Fetch-Ga-Path-Debug: /schemas/1.40.0;trackable,config-present` or
+`X-Asset-Fetch-Ga-Info: /schemas/1.40.0;trackable,config-present` or
 `none:<reason>`. Use it only to confirm the derived GA path and basic
-trackability/config state, not GA ingestion. Keep this separate from the private
-internal-request marker planned for phase 2.2.
+trackability/config state, not GA ingestion. In phase 2.2, the presence of the
+same header on internal subrequests will also act as the duplicate-suppression
+marker.
 
 ### Other tasks
 
