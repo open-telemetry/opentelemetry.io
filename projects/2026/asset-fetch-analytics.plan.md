@@ -119,7 +119,8 @@ Send the following GA4 event parameters for every tracked asset request:
 - `asset_group`: one of: `schema`, `markdown`, `other`
 - `asset_path`: path of the resource returned in the response, after Path
   resolution (for example `/schemas/1.40.0` or `/docs/concepts/context/index.md`)
-- `asset_ext`: one of: `yaml`, `md`, `json`, `txt`, maybe others
+- `asset_ext`: extension-style label for reporting, aligned with
+  `content_type` (e.g. `yaml`, `md`, `json`, `txt`, maybe others)
 - `content_type`: stable response content type, for example `application/yaml`
 - `status_code`: response status as a string, for example `200`
 
@@ -403,8 +404,8 @@ Suggested GA4 dimension definitions:
 - Dimension name: `Asset extension`
   - Scope: `Event`
   - Event parameter: `asset_ext`
-  - Description: File extension group for the fetched asset, such as `yaml` or
-    `md`
+  - Description: Extension-style label for reporting such as `yaml`, `md`,
+    `txt`, etc., corresponding to the response `content_type`
 - Dimension name: `Content type`
   - Scope: `Event`
   - Event parameter: `content_type`
@@ -642,6 +643,7 @@ to only count `2xx`.
 
 - 2026-04-09: `asset_path` / `original_path` semantics (returned resource vs
   request when it differs); Path resolution wording; required vs phase-2
-  parameters; section structure and examples.
+  parameters; section structure and examples; `asset_ext` described as aligned
+  with `content_type`.
 
 - 2026-04-03: initial draft

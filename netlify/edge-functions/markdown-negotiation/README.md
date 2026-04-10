@@ -3,6 +3,12 @@
 This folder contains the markdown-negotiation Edge Function implementation and
 its tests.
 
+Successful Markdown responses enqueue a GA4 `asset_fetch` event when
+`GA4_API_SECRET` and `HUGO_SERVICES_GOOGLEANALYTICS_ID` are set (see
+`../lib/ga4-asset-fetch.ts` and `projects/2026/asset-fetch-analytics.plan.md`):
+`asset_path` is the resolved `*.md` path; `original_path` is included only when
+it differs from `asset_path`.
+
 The local `package.json` sets `"type": "module"` so Node treats the `.ts` test
 files in this folder as ESM without changing module semantics for the whole
 repo.

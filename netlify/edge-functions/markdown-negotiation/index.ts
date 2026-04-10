@@ -5,20 +5,32 @@
  * Serve Hugo's Markdown alternate output (`.../index.md`) when the client
  * explicitly accepts `text/markdown` and does not prefer HTML more strongly.
  *
- * Strategy: treat slash and extensionless paths as pages; only
- * `.../index.html` maps to sibling `index.md`. Other `.html` paths skip
- * negotiation so Netlify redirects (e.g. `/docs.html` → `/docs/`) still run.
+ * Strategy: treat slash and extensionless paths as pages; only `.../index.html`
+ * maps to sibling `index.md`. Other `.html` paths skip negotiation so Netlify
+ * redirects (e.g. `/docs.html` → `/docs/`) still run.
  *
  * We fetch the prebuilt Markdown artifact directly instead of rewriting
  * blindly. That lets us fall back to the normal HTML route when a page has no
  * Markdown output.
+ *
+ * GA4 `asset_fetch` events are issued as described in
+ * projects/2026/asset-fetch-analytics.plan.md.
  */
+
+import {
+  enqueueAssetFetchEvent,
+  normalizeContentType,
+} from '../lib/ga4-asset-fetch.ts';
 
 const HTML_TYPES = new Set(['text/html', 'application/xhtml+xml']);
 
 export default async function markdownNegotiation(
   request: Request,
-  context: { next: () => Promise<Response> },
+  context: {
+    next: () => Promise<Response>;
+    waitUntil?: (promise: Promise<unknown>) => void;
+    requestId?: string;
+  },
 ) {
   const url = new URL(request.url);
 
@@ -43,6 +55,21 @@ export default async function markdownNegotiation(
   const headers = new Headers(markdownResponse.headers);
   headers.set('content-type', 'text/markdown; charset=utf-8');
   setVaryAccept(headers);
+
+  if (request.method === 'GET') {
+    const assetPath = resolveMarkdownPath(url.pathname);
+    const eventParams: Record<string, string | undefined> = {
+      asset_group: 'markdown',
+      asset_path: assetPath,
+      asset_ext: 'md',
+      content_type: normalizeContentType('text/markdown; charset=utf-8'),
+      status_code: String(markdownResponse.status),
+    };
+    if (url.pathname !== assetPath) {
+      eventParams.original_path = url.pathname;
+    }
+    enqueueAssetFetchEvent(request, context, eventParams);
+  }
 
   if (request.method === 'HEAD') {
     if (markdownResponse.body) {
