@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${PLUGIN_DIR}/hooks/frontmatter-check.sh \"$TOOL_INPUT\""
+          }
+        ]
+      }
+    ]
+  }
+}
