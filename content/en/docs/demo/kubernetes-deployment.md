@@ -18,7 +18,7 @@ Helm's [documentation](https://helm.sh/docs/) to get started.
 - 6 GB of free RAM for the application
 - Helm 3.14+ (for Helm installation method only)
 
-## Install using Helm (recommended)
+## Install using Helm
 
 Add OpenTelemetry Helm repository:
 
@@ -33,8 +33,6 @@ command:
 helm install my-otel-demo open-telemetry/opentelemetry-demo
 ```
 
-<!-- markdownlint-disable no-blanks-blockquote -->
-
 > [!NOTE]
 >
 > The OpenTelemetry Demo Helm chart does not support being upgraded from one
@@ -46,13 +44,14 @@ helm install my-otel-demo open-telemetry/opentelemetry-demo
 > The OpenTelemetry Demo Helm chart version 0.11.0 or greater is required to
 > perform all usage methods mentioned below.
 
-## Install using kubectl
+### Use Helm to generate a Kubernetes manifests
 
-The following command will install the demo application to your Kubernetes
-cluster.
+The following command will generate a single Kubernetes manifest file which
+will contain a definition for all required resources. You can apply this
+manifest using `kubectl apply -f opentelemetry-demo.yaml` after generating it.
 
 ```shell
-kubectl create --namespace otel-demo -f https://raw.githubusercontent.com/open-telemetry/opentelemetry-demo/main/kubernetes/opentelemetry-demo.yaml
+helm template opentelemetry-demo open-telemetry/opentelemetry-demo --namespace otel-demo > opentelemetry-demo.yaml
 ```
 
 > [!NOTE]
@@ -60,11 +59,6 @@ kubectl create --namespace otel-demo -f https://raw.githubusercontent.com/open-t
 > The OpenTelemetry Demo Kubernetes manifests do not support being upgraded from
 > one version to another. If you need to upgrade the demo, you must first delete
 > the existing resources and then install the new version.
-
-> [!NOTE]
->
-> These manifests are generated from the Helm chart and are provided for
-> convenience. It is recommended to use the Helm chart for installation.
 
 ## Use the Demo
 
