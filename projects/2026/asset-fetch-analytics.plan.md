@@ -1,20 +1,20 @@
 ---
 title: GA4 asset fetch analytics plan
 date: 2026-04-09
-custodian: [Patrice Chalin](https://github.com/chalin)
+custodian: Patrice Chalin
 cSpell:ignore: GA4 BigQuery Netlify NDJSON referrer eventparams GOOGLEANALYTICS
 ---
 
 ## Goal
 
-Provide a single design for collecting analytics for non-HTML assets served from
-`opentelemetry.io`, including:
+Support analytics/observability for non-HTML assets served from [opentelemetry.io][],
+including:
 
 - Schema files under `/schemas/*`
 - Future Markdown assets such as `*.md` variants of site pages
 - Other non-HTML assets, including `llms.txt`
 
-The design should keep reporting accessible to the existing team through Google
+The chosen design keeps reporting accessible to the existing team through Google
 Analytics while preserving a reliable operational view in Netlify.
 
 ## Summary
@@ -459,12 +459,15 @@ Future optional scope:
 
 Only send GA4 events when all of the following are true:
 
-1. request method is `GET`
-2. response status is in the `2xx` or `3xx` range
-3. response content type matches a tracked asset type
-4. path matches configured tracked routes
+1. Request method is `GET`
+2. Response status is in the `2xx` or `3xx` range
+3. Response content type matches a tracked asset type
+4. Path matches configured tracked routes
 
 This avoids inflating counts with failed or irrelevant requests.
+
+In the future we might broaden tracking to other HTTP methods, and for other
+response status codes.
 
 ### Deduplication policy
 
@@ -639,11 +642,44 @@ to only count `2xx`.
 - Looker Studio sharing:
   <https://docs.cloud.google.com/looker/docs/studio/ways-to-share-your-reports>
 
+## Tasks
+
+This section broadly tracks the tasks for the implementation plan.
+
+### Refactor the schema edge function code to use a shared library for the asset fetch event emission
+
+- In progress.
+- [ ] Add basic tests for the schema edge function similar to the other edge function tests.
+- [ ] Add basic tests for the shared library, if useful.
+
+### Extend event tracking to Markdown assets
+
+- [ ] Basic setup done
+- [ ] Ensure that event tracking covers the conditions listed in "Response
+  gating" section.
+
+### Other tasks
+
+- [ ] Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
+  files.
+- [ ] Add `ua_category` if the classification is stable and low-cardinality.
+- [ ] Build a shared GA4 exploration or Looker Studio report for the team.
+
 ## Edit history
 
-- 2026-04-09: `asset_path` / `original_path` semantics (returned resource vs
-  request when it differs); Path resolution wording; required vs phase-2
-  parameters; section structure and examples; `asset_ext` described as aligned
-  with `content_type`.
+Reverse chronological: prepend a `### v…` section for each plan-changing PR; use
+`-dev` on the version until that change set is merged.
 
-- 2026-04-03: initial draft
+### v0.2-dev - TBD (not merged yet)
+
+- `asset_path` / `original_path` semantics (returned resource vs request when
+  it differs); Path resolution wording; required vs phase-2 parameters; section
+  structure and examples; `asset_ext` described as aligned with `content_type`;
+  GET-only analytics (not HEAD/POST), with possible later broadening to other
+  methods.
+
+### v0.1 - 2026-04-03
+
+- First version.
+
+[opentelemetry.io]: https://opentelemetry.io/
