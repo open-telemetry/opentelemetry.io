@@ -462,7 +462,7 @@ Initial scope:
 
 - `/schemas/*`
 - Negotiated Markdown responses
-- Explicit `.md` requests
+- Explicit `.md` and `.txt` requests
 
 Future optional scope:
 
@@ -482,8 +482,9 @@ Current route-specific rules:
   successful `3xx` redirects under `/schemas/*`
 - Negotiated Markdown: track only successful negotiated Markdown `GET 2xx`
   responses
-- Explicit `.md`: track direct `GET` requests to tracked asset URLs regardless
-  of response status, and skip any request marked with `X-Asset-Fetch-Ga-Info`
+- Explicit `.md` and `.txt`: track direct `GET` requests to tracked asset URLs
+  regardless of response status, and skip any request marked with
+  `X-Asset-Fetch-Ga-Info`
 
 This avoids inflating counts with irrelevant methods or internal subrequests.
 
@@ -702,20 +703,21 @@ This section broadly tracks the tasks for the implementation plan.
 
 All done for this iteration.
 
-### Next
-
-Add a temporary compiled-const debug response header for post-merge production
-sanity checks, for example
-`X-Asset-Fetch-Ga-Info: /schemas/1.40.0;trackable,config-present` or
-`none:<reason>`. Use it only to confirm the derived GA path and basic
-trackability/config state, not GA ingestion. In phase 2.2, the presence of the
-same header on internal subrequests will also act as the duplicate-suppression
-marker.
-
 ### Other tasks
 
-- [ ] Add `ua_category` if the classification is stable and low-cardinality.
-- [ ] Build a shared GA4 exploration or Looker Studio report for the team.
+In no particular order:
+
+- Add `ua_category` if the classification is stable and low-cardinality.
+- Build a shared GA4 exploration or Looker Studio report for the team.
+- Add a temporary compiled-const debug response header for post-merge production
+  sanity checks, for example
+  `X-Asset-Fetch-Ga-Info: /schemas/1.40.0;trackable,config-present` or
+  `none:<reason>`. Use it only to confirm the derived GA path and basic
+  trackability/config state, not GA ingestion. In phase 2.2, the presence of the
+  same header on internal subrequests will also act as the duplicate-suppression
+  marker.
+- Report non-2XX and non-3XX responses from internal markdown-negotiation
+  subrequests.
 
 ## Edit history
 
@@ -729,10 +731,12 @@ Reverse chronological: prepend a `### v…` section for each plan-changing PR; u
   regardless of response status.
 - Added `X-Asset-Fetch-Ga-Info` as the shared marker for internal subrequests,
   with direct asset tracking skipping any request where the header is present.
-- Added unit and live tests for explicit `.md` delivery and internal-marker
-  behavior.
+- Added unit and live tests for explicit `.md` and `.txt` delivery, plus
+  internal-marker behavior.
+- Added cross-function integration tests for negotiated Markdown deduplication
+  and direct `.md` pass-through into asset tracking.
 - Updated routing, summary, and tracked-path documentation to reflect explicit
-  `.md` tracking as live.
+  `.md` and `.txt` tracking as live.
 
 ### v0.2 - 2026-04-10
 
