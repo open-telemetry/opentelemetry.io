@@ -96,6 +96,7 @@ words:
   - htmltest
   - jsonify
   - lfasiallc
+  - llms
   - Loffay
   - logback
   - Mancuso
@@ -105,7 +106,6 @@ words:
   - myprogram
   - nanocores
   - notranslate
-  - llms
   - nvmrc
   - opentelemetrybot
   - otelbot
