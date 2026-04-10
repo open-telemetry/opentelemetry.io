@@ -1,6 +1,7 @@
 ---
 title: GA4 asset fetch analytics plan
-date: 2026-04-09
+date: 2026-04-10
+version: 0.2
 custodian: Patrice Chalin
 cSpell:ignore: GA4 BigQuery Netlify NDJSON referrer eventparams GOOGLEANALYTICS
 ---
@@ -468,9 +469,15 @@ Future optional scope:
 Only send GA4 events when all of the following are true:
 
 1. Request method is `GET`
-2. Response status is in the `2xx` or `3xx` range
-3. Response content type matches a tracked asset type
-4. Path matches configured tracked routes
+2. Path matches configured tracked routes
+3. The response matches the route-specific tracking rules
+
+Current route-specific rules:
+
+- Schemas: track `GET /schemas/*` for successful `2xx` YAML responses and
+  successful `3xx` redirects under `/schemas/*`
+- Negotiated Markdown: track only successful negotiated Markdown `GET 2xx`
+  responses
 
 This avoids inflating counts with failed or irrelevant requests.
 
@@ -665,6 +672,14 @@ This section broadly tracks the tasks for the implementation plan.
 
 All done for this iteration.
 
+### Next
+
+Add a temporary compiled-const debug response header for post-merge production
+sanity checks, for example
+`X-Asset-Fetch-Ga-Path-Debug: /schemas/1.40.0;trackable,config-present` or
+`none:<reason>`. Use it only to confirm the derived GA path and basic
+trackability/config state, not GA ingestion.
+
 ### Other tasks
 
 - [ ] Add a separate Edge Function for direct `.md` pass-through requests (see
@@ -679,16 +694,20 @@ All done for this iteration.
 Reverse chronological: prepend a `### v…` section for each plan-changing PR; use
 `-dev` on the version until that change set is merged.
 
-### v0.2-dev - TBD (not merged yet)
+### v0.2
 
-- `asset_path` / `original_path` semantics (returned resource vs request when it
-  differs); Path resolution wording; `original_path` documented as live for
-  Markdown negotiation; section structure and examples; GET-only analytics (not
-  HEAD/POST), with possible later broadening to other methods; `asset_ext`
-  wording (path suffix vs `yaml` for schemas); direct `.md` pass-through
-  tracking deferred to a separate step; Markdown `index.html` handling made
-  intentionally case-sensitive to align with normal URL-path semantics; README
-  and Phase 2 note for unit tests, direct-`.md` deferral, separate-EF rationale.
+- Clarified GA4 parameter semantics, especially `asset_path` and
+  `original_path`, plus path-resolution wording and examples.
+- Documented current Markdown behavior: negotiated Markdown tracking is live,
+  direct `.md` pass-through tracking is deferred to a separate step, and
+  `original_path` is specific to negotiated Markdown.
+- Refined tracking rules: GET-only analytics for now, route-specific response
+  gating, and `asset_ext` wording that keeps schemas as `yaml`.
+- Captured implementation/testing work: README notes, unit-test rationale,
+  negotiated Markdown live checks, and schema delivery live checks.
+- Updated deployment/config notes: removed the fallback `/schemas/:version`
+  header rule from `netlify.toml` and added a follow-up task for a temporary
+  debug response header.
 
 ### v0.1 - 2026-04-03
 
