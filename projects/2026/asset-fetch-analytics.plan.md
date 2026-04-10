@@ -722,10 +722,10 @@ marker.
 Reverse chronological: prepend a `### v…` section for each plan-changing PR; use
 `-dev` on the version until that change set is merged.
 
-### v0.3-dev - TBD (not merged yet)
+### v0.3 - 2026-04-10
 
 - Implemented phase 2.2/2.3 with a generic `asset-tracking` Edge Function for
-  explicit `.md` and `*.txt` requests, with direct tracked asset URLs counted
+  explicit `.md` and `.txt` requests, with direct tracked asset URLs counted
   regardless of response status.
 - Added `X-Asset-Fetch-Ga-Info` as the shared marker for internal subrequests,
   with direct asset tracking skipping any request where the header is present.
@@ -734,7 +734,7 @@ Reverse chronological: prepend a `### v…` section for each plan-changing PR; u
 - Updated routing, summary, and tracked-path documentation to reflect explicit
   `.md` tracking as live.
 
-### v0.2
+### v0.2 - 2026-04-10
 
 - Clarified GA4 parameter semantics, especially `asset_path` and
   `original_path`, plus path-resolution wording and examples.
