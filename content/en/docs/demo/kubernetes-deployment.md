@@ -33,6 +33,8 @@ command:
 helm install my-otel-demo open-telemetry/opentelemetry-demo
 ```
 
+<!-- markdownlint-disable no-blanks-blockquote -->
+
 > [!NOTE]
 >
 > The OpenTelemetry Demo Helm chart does not support being upgraded from one
