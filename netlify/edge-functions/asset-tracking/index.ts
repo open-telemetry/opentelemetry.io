@@ -36,6 +36,8 @@ export function shouldTrackAssetFetch(
   request: Request,
   response: Response,
 ): boolean {
+  void response;
+
   if (request.method !== 'GET') {
     return false;
   }
@@ -51,19 +53,7 @@ export function shouldTrackAssetFetch(
     return false;
   }
 
-  if (response.status < 200 || response.status >= 300) {
-    return false;
-  }
-
-  const contentType = normalizeContentType(
-    response.headers.get('content-type'),
-  );
-
-  if (extension === '.md') {
-    return contentType === 'text/markdown';
-  }
-
-  return false;
+  return true;
 }
 
 function classifyAssetGroup(extension: string): 'markdown' | 'other' {

@@ -3,6 +3,8 @@
  *
  * - tracking gate (shouldTrackAssetFetch)
  * - handler integration (assetTracking default export)
+ *
+ * cSpell:ignore GOOGLEANALYTICS
  */
 
 import assert from 'node:assert/strict';
@@ -71,7 +73,7 @@ function createWaitUntilSpy() {
   };
 }
 
-test('shouldTrackAssetFetch accepts GET .md with markdown content type', () => {
+test('shouldTrackAssetFetch accepts GET .md requests', () => {
   const request = new Request(
     'https://example.com/docs/concepts/resources/index.md',
   );
@@ -115,8 +117,8 @@ test('shouldTrackAssetFetch rejects non-GET methods', () => {
   }
 });
 
-test('shouldTrackAssetFetch rejects non-2xx responses', () => {
-  for (const status of [301, 404]) {
+test('shouldTrackAssetFetch accepts non-2xx responses for tracked assets', () => {
+  for (const status of [301, 404, 500]) {
     const request = new Request(
       'https://example.com/docs/concepts/resources/index.md',
     );
@@ -125,11 +127,11 @@ test('shouldTrackAssetFetch rejects non-2xx responses', () => {
       status,
     });
 
-    assert.equal(shouldTrackAssetFetch(request, response), false);
+    assert.equal(shouldTrackAssetFetch(request, response), true);
   }
 });
 
-test('shouldTrackAssetFetch rejects non-markdown content type', () => {
+test('shouldTrackAssetFetch accepts non-markdown content type for tracked assets', () => {
   const request = new Request(
     'https://example.com/docs/concepts/resources/index.md',
   );
@@ -138,7 +140,7 @@ test('shouldTrackAssetFetch rejects non-markdown content type', () => {
     status: 200,
   });
 
-  assert.equal(shouldTrackAssetFetch(request, response), false);
+  assert.equal(shouldTrackAssetFetch(request, response), true);
 });
 
 test('shouldTrackAssetFetch rejects non-tracked extensions', () => {
@@ -212,4 +214,37 @@ test('handler skips asset_fetch for internal marked explicit .md requests', asyn
 
   assert.equal(response.status, 200);
   assert.equal(ga4Bodies.length, 0);
+});
+
+test('handler emits asset_fetch for explicit .md requests regardless of response status', async (t) => {
+  setupNetlifyEnv(t);
+  const ga4Bodies = setupFetchMock(t);
+  const spy = createWaitUntilSpy();
+
+  const response = await assetTracking(
+    new Request('https://example.com/docs/concepts/resources/index.md'),
+    {
+      next: async () =>
+        new Response('missing', {
+          headers: { 'content-type': 'text/plain; charset=utf-8' },
+          status: 404,
+        }),
+      ...spy,
+    },
+  );
+
+  await spy.flush();
+
+  assert.equal(response.status, 404);
+  assert.equal(ga4Bodies.length, 1);
+
+  const event = (
+    ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
+  )[0];
+  assert.equal(event.name, 'asset_fetch');
+  assert.equal(event.params.asset_group, 'markdown');
+  assert.equal(event.params.asset_path, '/docs/concepts/resources/index.md');
+  assert.equal(event.params.asset_ext, 'md');
+  assert.equal(event.params.content_type, 'text/plain');
+  assert.equal(event.params.status_code, '404');
 });

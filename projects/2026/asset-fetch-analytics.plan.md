@@ -481,10 +481,10 @@ Current route-specific rules:
   successful `3xx` redirects under `/schemas/*`
 - Negotiated Markdown: track only successful negotiated Markdown `GET 2xx`
   responses
-- Explicit `.md`: track only successful direct `GET 2xx` Markdown responses, and
-  skip any request marked with `X-Asset-Fetch-Ga-Info`
+- Explicit `.md`: track direct `GET` requests to tracked asset URLs regardless
+  of response status, and skip any request marked with `X-Asset-Fetch-Ga-Info`
 
-This avoids inflating counts with failed or irrelevant requests.
+This avoids inflating counts with irrelevant methods or internal subrequests.
 
 In the future we might broaden tracking to other HTTP methods, and for other
 response status codes.
@@ -593,10 +593,12 @@ Steps:
    Edge Function (`asset_path`, `original_path` when the request path differs,
    GET only, successful Markdown responses).
 2. **Direct `.md` tracking** — implemented in the `asset-tracking` Edge Function
-   for explicit `.md` requests. Rationale: keeps `markdown-negotiation` focused
-   on `Accept`-based negotiation; direct `*.md` uses only `context.next()` (no
-   alternate fetch), so a small dedicated handler is simpler to test; a single
-   combined entrypoint can be revisited later if preferred.
+   for explicit `.md` requests. It tracks `GET` requests to tracked asset URLs
+   regardless of response status. Rationale: keeps `markdown-negotiation`
+   focused on `Accept`-based negotiation; direct `*.md` uses only
+   `context.next()` (no alternate fetch), so a small dedicated handler is
+   simpler to test; a single combined entrypoint can be revisited later if
+   preferred.
 
    Internal fetches from `markdown-negotiation` should carry
    `X-Asset-Fetch-Ga-Info`; the direct-asset handler should treat the presence
@@ -726,7 +728,8 @@ Reverse chronological: prepend a `### v…` section for each plan-changing PR; u
 ### v0.3-dev - TBD (not merged yet)
 
 - Implemented phase 2.2 with a generic `asset-tracking` Edge Function for
-  explicit `.md` requests.
+  explicit `.md` requests, with direct tracked asset URLs counted regardless of
+  response status.
 - Added `X-Asset-Fetch-Ga-Info` as the shared marker for internal subrequests,
   with direct asset tracking skipping any request where the header is present.
 - Added unit and live tests for explicit `.md` delivery and internal-marker
