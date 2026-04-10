@@ -3,6 +3,7 @@
  *
  * - GET success: event with correct params and original_path when path differs
  * - GET index.html: original_path is the request path, asset_path is *.md
+ * - GET direct *.md URL: asset_fetch, asset_path matches URL, no original_path
  * - HEAD success: no event
  * - markdown unavailable (HTML fallback): no event
  *
@@ -156,6 +157,45 @@ test('GET markdown includes original_path when request path differs from resolve
   )[0].params;
   assert.equal(params.asset_path, '/docs/index.md');
   assert.equal(params.original_path, '/docs/index.html');
+});
+
+test('GET direct .md URL emits asset_fetch without original_path', async (t) => {
+  setupNetlifyEnv(t);
+  const ga4Bodies = setupFetchMock(
+    t,
+    async () =>
+      new Response('unexpected: fetch should not run for pass-through .md', {
+        status: 500,
+      }),
+  );
+
+  const spy = createWaitUntilSpy();
+
+  await markdownNegotiation(
+    new Request('https://example.com/docs/concepts/index.md'),
+    {
+      next: async () =>
+        new Response('# Page', {
+          headers: { 'content-type': 'text/markdown; charset=utf-8' },
+          status: 200,
+        }),
+      ...spy,
+    },
+  );
+
+  await spy.flush();
+
+  assert.equal(ga4Bodies.length, 1);
+
+  const params = (
+    ga4Bodies[0].events as { params: Record<string, string> }[]
+  )[0].params;
+  assert.equal(params.asset_group, 'markdown');
+  assert.equal(params.asset_path, '/docs/concepts/index.md');
+  assert.equal(params.asset_ext, 'md');
+  assert.equal(params.content_type, 'text/markdown');
+  assert.equal(params.status_code, '200');
+  assert.ok(!('original_path' in params));
 });
 
 test('HEAD markdown does not emit asset_fetch', async (t) => {

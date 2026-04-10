@@ -23,9 +23,9 @@ Analytics while preserving a reliable operational view in Netlify.
   `asset_fetch` for selected asset responses.
 - Keep Netlify Observability enabled as the request-level validation and
   debugging surface.
-- If/once a markdown-negotiation Edge Function is implemented, it may be used to
-  emit `asset_fetch` events with `asset_path` for the returned Markdown resource
-  and `original_path` when the request path differs.
+- The `markdown-negotiation` Edge Function emits `asset_fetch` for Markdown
+  delivery: negotiated page paths (with `original_path` when it differs from the
+  resolved `*.md` path) and direct `*.md` requests.
 
 We won't model asset requests as GA4 `page_view` events because asset requests
 are not HTML page loads, and treating them as page views would pollute site
