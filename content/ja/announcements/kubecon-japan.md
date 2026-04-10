@@ -13,4 +13,4 @@ default_lang_commit: 9bc3c40e6e637b3d776281eb946a60ebf79a4cd5
 <span class="d-none d-sm-inline"> Cloud Nativeコミュニティと一緒に</span>、[協力し、学び、共有しましょう][blog]！
 
 [blog]: /blog/2025/kubecon-japan/
-[LF]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=all&utm_campaign=KubeCon-Japan-2025&utm_content=slim-banner
+[LF]: https://events.linuxfoundation.org/kubecon-cloudnativecon-japan/register/?utm_source=opentelemetry&utm_medium=website&utm_content=slim-banner
