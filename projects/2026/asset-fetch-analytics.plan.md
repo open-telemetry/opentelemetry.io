@@ -24,8 +24,8 @@ Analytics while preserving a reliable operational view in Netlify.
 - Keep Netlify Observability enabled as the request-level validation and
   debugging surface.
 - The `markdown-negotiation` Edge Function emits `asset_fetch` for Markdown
-  delivery: negotiated page paths (with `original_path` when it differs from the
-  resolved `*.md` path) and direct `*.md` requests.
+  delivery for negotiated page paths, with `original_path` when it differs from
+  the resolved `*.md` path.
 
 We won't model asset requests as GA4 `page_view` events because asset requests
 are not HTML page loads, and treating them as page views would pollute site
@@ -457,12 +457,11 @@ Validation note:
 Initial scope:
 
 - `/schemas/*`
-- Markdown asset responses, including direct `.md` requests and negotiated
-  Markdown responses
+- Negotiated Markdown responses
 
 Future optional scope:
 
-- other machine-readable non-HTML assets that warrant analytics
+- Other machine-readable non-HTML assets that warrant analytics
 
 ### Response gating
 
@@ -578,13 +577,15 @@ is better suited to internal operational use than broad publishing.
 
 Steps:
 
-1. **Markdown asset tracking** — implemented in the `markdown-negotiation` Edge
-   Function (`asset_path`, `original_path` when the request path differs, GET
-   only, successful Markdown responses).
-2. Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
+1. **Negotiated Markdown tracking** — implemented in the `markdown-negotiation`
+   Edge Function (`asset_path`, `original_path` when the request path differs,
+   GET only, successful Markdown responses).
+2. **Direct `.md` pass-through tracking** — add a separate Edge Function for
+   explicit `.md` requests that pass through without Markdown negotiation.
+3. Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
    files.
-3. Add `ua_category` if the classification is stable and low-cardinality.
-4. Build a shared GA4 exploration or Looker Studio report for the team.
+4. Add `ua_category` if the classification is stable and low-cardinality.
+5. Build a shared GA4 exploration or Looker Studio report for the team.
 
 ### Phase 3
 
@@ -662,6 +663,7 @@ All done for this iteration.
 
 ### Other tasks
 
+- [ ] Add a separate Edge Function for direct `.md` pass-through requests.
 - [ ] Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
       files.
 - [ ] Add `ua_category` if the classification is stable and low-cardinality.
@@ -678,7 +680,9 @@ Reverse chronological: prepend a `### v…` section for each plan-changing PR; u
   differs); Path resolution wording; `original_path` documented as live for
   Markdown negotiation; section structure and examples; GET-only analytics (not
   HEAD/POST), with possible later broadening to other methods; `asset_ext`
-  wording (path suffix vs `yaml` for schemas).
+  wording (path suffix vs `yaml` for schemas); direct `.md` pass-through
+  tracking deferred to a separate step; Markdown `index.html` handling made
+  intentionally case-sensitive to align with normal URL-path semantics.
 
 ### v0.1 - 2026-04-03
 
