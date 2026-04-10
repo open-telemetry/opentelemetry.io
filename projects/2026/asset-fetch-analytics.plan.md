@@ -3,7 +3,7 @@ title: GA4 asset fetch analytics plan
 date: 2026-04-10
 version: 0.2
 custodian: Patrice Chalin
-cSpell:ignore: GA4 BigQuery Netlify NDJSON referrer eventparams GOOGLEANALYTICS
+cSpell:ignore: GA4 BigQuery Netlify NDJSON referrer eventparams GOOGLEANALYTICS trackability
 ---
 
 ## Goal
@@ -592,7 +592,10 @@ Steps:
    Rationale: keeps `markdown-negotiation` focused on `Accept`-based
    negotiation; direct `*.md` uses only `context.next()` (no alternate fetch),
    so a small dedicated handler is simpler to test; a single combined entrypoint
-   can be revisited later if preferred.
+   can be revisited later if preferred. Internal fetches from
+   `markdown-negotiation` should carry a private request header such as
+   `X-Otel-Asset-Fetch-Internal: 1`, and the direct-asset handler should ignore
+   such requests to avoid double-counting negotiated page requests.
 3. Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
    files.
 4. Add `ua_category` if the classification is stable and low-cardinality.
@@ -645,6 +648,23 @@ to only count `2xx`.
 - Which documentation sections receive the most Markdown asset traffic?
 - What share of asset traffic is non-`200`?
 
+## Prior art
+
+Useful prior art for phase 2.2 and related documentation:
+
+- Cloudflare Workers subrequests:
+  <https://developers.cloudflare.com/workers/platform/limits/#subrequests>
+- Cloudflare analytics with Workers:
+  <https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/>
+- Envoy `x-envoy-internal` header:
+  <https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers.html#x-envoy-internal>
+- Envoy header sanitizing / internal headers:
+  <https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/header_sanitizing.html>
+- NGINX subrequests:
+  <https://nginx.org/en/docs/dev/development_guide.html#subrequests>
+- Next.js middleware docs:
+  <https://nextjs.org/docs/pages/api-reference/file-conventions/middleware>
+
 ## References
 
 - GA4 Measurement Protocol:
@@ -678,7 +698,8 @@ Add a temporary compiled-const debug response header for post-merge production
 sanity checks, for example
 `X-Asset-Fetch-Ga-Path-Debug: /schemas/1.40.0;trackable,config-present` or
 `none:<reason>`. Use it only to confirm the derived GA path and basic
-trackability/config state, not GA ingestion.
+trackability/config state, not GA ingestion. Keep this separate from the private
+internal-request marker planned for phase 2.2.
 
 ### Other tasks
 
@@ -693,6 +714,10 @@ trackability/config state, not GA ingestion.
 
 Reverse chronological: prepend a `### v…` section for each plan-changing PR; use
 `-dev` on the version until that change set is merged.
+
+### v0.3-dev - TBD (not merged yet)
+
+- ...
 
 ### v0.2
 
