@@ -7,8 +7,8 @@ cSpell:ignore: GA4 BigQuery Netlify NDJSON referrer eventparams GOOGLEANALYTICS
 
 ## Goal
 
-Support analytics/observability for non-HTML assets served from [opentelemetry.io][],
-including:
+Support analytics/observability for non-HTML assets served from
+[opentelemetry.io][], including:
 
 - Schema files under `/schemas/*`
 - Future Markdown assets such as `*.md` variants of site pages
@@ -118,9 +118,10 @@ Send the following GA4 event parameters for every tracked asset request:
 
 - `asset_group`: one of: `schema`, `markdown`, `other`
 - `asset_path`: path of the resource returned in the response, after Path
-  resolution (for example `/schemas/1.40.0` or `/docs/concepts/context/index.md`)
-- `asset_ext`: extension-style label for reporting, aligned with
-  `content_type` (e.g. `yaml`, `md`, `json`, `txt`, maybe others)
+  resolution (for example `/schemas/1.40.0` or
+  `/docs/concepts/context/index.md`)
+- `asset_ext`: extension-style label for reporting, aligned with `content_type`
+  (e.g. `yaml`, `md`, `json`, `txt`, maybe others)
 - `content_type`: stable response content type, for example `application/yaml`
 - `status_code`: response status as a string, for example `200`
 
@@ -134,7 +135,7 @@ Send the following GA4 event parameters for every tracked asset request:
 
 - `referrer_host`
 - `ua_category`: coarse user-agent class such as `browser`, `ai-agent`,
-    `crawler`, `tooling`, `other`
+  `crawler`, `tooling`, `other`
 
 ### Parameters to avoid
 
@@ -174,8 +175,9 @@ Phase 2:
 
 - `/docs/` resolves to `/docs/index.md` for `asset_path`; send `original_path`
   `/docs/` if it differs from the resolved path.
-- `/docs/concepts/context/` with content negotiation: `asset_path` is the path of
-  the returned Markdown file; send `original_path` when the request path differs
+- `/docs/concepts/context/` with content negotiation: `asset_path` is the path
+  of the returned Markdown file; send `original_path` when the request path
+  differs
 
 ## GA4 configuration
 
@@ -264,8 +266,8 @@ GA4 answer shape:
 - breakdown by `asset_path`
 - metric `Event count`
 
-For negotiated Markdown delivery, phase 2 should set `asset_path` to the path
-of the returned resource and send `original_path` when the request path differs.
+For negotiated Markdown delivery, phase 2 should set `asset_path` to the path of
+the returned resource and send `original_path` when the request path differs.
 
 ### Bot and AI traffic split
 
@@ -646,22 +648,18 @@ to only count `2xx`.
 
 This section broadly tracks the tasks for the implementation plan.
 
-### Refactor the schema edge function code to use a shared library for the asset fetch event emission
+### In progress
 
-- In progress.
-- [ ] Add basic tests for the schema edge function similar to the other edge function tests.
-- [ ] Add basic tests for the shared library, if useful.
-
-### Extend event tracking to Markdown assets
+Extend event tracking to Markdown assets:
 
 - [ ] Basic setup done
 - [ ] Ensure that event tracking covers the conditions listed in "Response
-  gating" section.
+      gating" section.
 
 ### Other tasks
 
 - [ ] Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
-  files.
+      files.
 - [ ] Add `ua_category` if the classification is stable and low-cardinality.
 - [ ] Build a shared GA4 exploration or Looker Studio report for the team.
 
@@ -672,8 +670,8 @@ Reverse chronological: prepend a `### v…` section for each plan-changing PR; u
 
 ### v0.2-dev - TBD (not merged yet)
 
-- `asset_path` / `original_path` semantics (returned resource vs request when
-  it differs); Path resolution wording; required vs phase-2 parameters; section
+- `asset_path` / `original_path` semantics (returned resource vs request when it
+  differs); Path resolution wording; required vs phase-2 parameters; section
   structure and examples; `asset_ext` described as aligned with `content_type`;
   GET-only analytics (not HEAD/POST), with possible later broadening to other
   methods.
