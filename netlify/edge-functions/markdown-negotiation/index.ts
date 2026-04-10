@@ -5,20 +5,33 @@
  * Serve Hugo's Markdown alternate output (`.../index.md`) when the client
  * explicitly accepts `text/markdown` and does not prefer HTML more strongly.
  *
- * Strategy: treat slash and extensionless paths as pages; only
- * `.../index.html` maps to sibling `index.md`. Other `.html` paths skip
- * negotiation so Netlify redirects (e.g. `/docs.html` → `/docs/`) still run.
+ * Strategy: treat slash and extensionless paths as pages; only `.../index.html`
+ * maps to sibling `index.md`. Other `.html` paths skip negotiation so Netlify
+ * redirects (e.g. `/docs.html` → `/docs/`) still run.
  *
  * We fetch the prebuilt Markdown artifact directly instead of rewriting
  * blindly. That lets us fall back to the normal HTML route when a page has no
  * Markdown output.
+ *
+ * GA4 `asset_fetch` events are issued as described in
+ * projects/2026/asset-fetch-analytics.plan.md.
  */
+
+import {
+  type AssetFetchEventParams,
+  enqueueAssetFetchEvent,
+  normalizeContentType,
+} from '../lib/ga4-asset-fetch.ts';
 
 const HTML_TYPES = new Set(['text/html', 'application/xhtml+xml']);
 
 export default async function markdownNegotiation(
   request: Request,
-  context: { next: () => Promise<Response> },
+  context: {
+    next: () => Promise<Response>;
+    waitUntil?: (promise: Promise<unknown>) => void;
+    requestId?: string;
+  },
 ) {
   const url = new URL(request.url);
 
@@ -43,6 +56,21 @@ export default async function markdownNegotiation(
   const headers = new Headers(markdownResponse.headers);
   headers.set('content-type', 'text/markdown; charset=utf-8');
   setVaryAccept(headers);
+
+  // GA4 asset_fetch: only for GET 2xx. Non-2xx falls back to HTML, tracked by
+  // client-side page_view. content_type is read from the response headers above.
+  if (request.method === 'GET') {
+    const assetPath = resolveMarkdownPath(url.pathname);
+    const eventParams: AssetFetchEventParams = {
+      asset_group: 'markdown',
+      asset_path: assetPath,
+      asset_ext: 'md',
+      content_type: normalizeContentType(headers.get('content-type') ?? ''),
+      status_code: String(markdownResponse.status),
+      ...(url.pathname !== assetPath ? { original_path: url.pathname } : {}),
+    };
+    enqueueAssetFetchEvent(request, context, eventParams);
+  }
 
   if (request.method === 'HEAD') {
     if (markdownResponse.body) {
@@ -89,7 +117,7 @@ export function shouldConsiderRequest(
 
 export function resolveMarkdownPath(pathname: string): string {
   if (isIndexHtmlPath(pathname)) {
-    return pathname.replace(/index\.html$/i, 'index.md');
+    return pathname.replace(/index\.html$/, 'index.md');
   }
 
   const normalizedPath = pathname.replace(/\/+$/, '') || '/';
@@ -108,7 +136,7 @@ function getPathExtension(pathname: string): string {
 }
 
 function isIndexHtmlPath(pathname: string): boolean {
-  return pathname.toLowerCase().endsWith('/index.html');
+  return pathname.endsWith('/index.html');
 }
 
 function resolveMarkdownUrl(url: URL): URL {
