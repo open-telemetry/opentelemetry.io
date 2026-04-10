@@ -197,5 +197,5 @@
     "proseWrap": "always",
     "singleQuote": true
   },
-  "spelling": "cSpell:ignore chalin docsy elemetry htmltest hugo loglevel minisearch mypy netlify nowrap postnetlify prebuild precheck preinstall postbuild postget pytest refcache textlint -"
+  "spelling": "cSpell:ignore chalin docsy elemetry htmltest hugo loglevel minisearch mypy netlify nowrap postnetlify prebuild precheck preinstall postbuild postget pytest refcache startswith textlint -"
 }

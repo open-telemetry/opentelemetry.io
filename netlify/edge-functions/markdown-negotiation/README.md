@@ -33,3 +33,5 @@ npm run test:edge-functions:live -- --help
 Live tests use Node’s built-in **`node:test`** runner in
 [`live-check.test.mjs`](./live-check.test.mjs). They are **not** picked up by
 `npm run test:edge-functions`, which only runs `**/*.test.ts`.
+
+<!-- cSpell:ignore GOOGLEANALYTICS -->

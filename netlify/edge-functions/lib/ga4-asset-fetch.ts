@@ -1,6 +1,8 @@
 /**
- * Shared GA4 Measurement Protocol helpers for `asset_fetch` events.
+ * GA4 Measurement Protocol helpers for `asset_fetch` events.
  * Event shape matches projects/2026/asset-fetch-analytics.plan.md.
+ *
+ * cSpell:ignore GOOGLEANALYTICS
  */
 
 const GA4_COLLECT_URL = 'https://www.google-analytics.com/mp/collect';
