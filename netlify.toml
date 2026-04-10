@@ -25,7 +25,7 @@ path = "/schemas/*"
 
 [[edge_functions]]
 function = "asset-tracking"
-pattern = "/(.*)\\.(md)$"
+pattern = "/(.*)\\.(md|txt)$"
 
 # cSpell:ignore nosniff sameorigin
 

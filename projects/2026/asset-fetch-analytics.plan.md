@@ -27,8 +27,9 @@ Analytics while preserving a reliable operational view in Netlify.
 - The `markdown-negotiation` Edge Function emits `asset_fetch` for Markdown
   delivery for negotiated page paths, with `original_path` when it differs from
   the resolved `*.md` path.
-- The `asset-tracking` Edge Function emits `asset_fetch` for explicit `.md`
-  requests and skips internal subrequests marked with `X-Asset-Fetch-Ga-Info`.
+- The `asset-tracking` Edge Function emits `asset_fetch` for explicit `.md` and
+  `*.txt` requests and skips internal subrequests marked with
+  `X-Asset-Fetch-Ga-Info`.
 
 We won't model asset requests as GA4 `page_view` events because asset requests
 are not HTML page loads, and treating them as page views would pollute site
@@ -119,7 +120,7 @@ This keeps reporting simple and avoids proliferating many event names.
 
 Send the following GA4 event parameters for every tracked asset request:
 
-- `asset_group`: one of: `schema`, `markdown`, `other`
+- `asset_group`: one of: `schema`, `markdown`, `text`, `other`
 - `asset_path`: path of the resource returned in the response, after Path
   resolution (for example `/schemas/1.40.0` or
   `/docs/concepts/context/index.md`)
@@ -592,13 +593,13 @@ Steps:
 1. **Negotiated Markdown tracking** — implemented in the `markdown-negotiation`
    Edge Function (`asset_path`, `original_path` when the request path differs,
    GET only, successful Markdown responses).
-2. **Direct `.md` tracking** — implemented in the `asset-tracking` Edge Function
-   for explicit `.md` requests. It tracks `GET` requests to tracked asset URLs
-   regardless of response status. Rationale: keeps `markdown-negotiation`
-   focused on `Accept`-based negotiation; direct `*.md` uses only
-   `context.next()` (no alternate fetch), so a small dedicated handler is
-   simpler to test; a single combined entrypoint can be revisited later if
-   preferred.
+2. **Asset tracking** — implemented in the `asset-tracking` Edge Function for
+   explicit `.md` and `*.txt` requests. It tracks `GET` requests to tracked
+   asset URLs regardless of response status. Rationale: keeps
+   `markdown-negotiation` focused on `Accept`-based negotiation; direct asset
+   routes use only `context.next()` (no alternate fetch), so a small dedicated
+   handler is simpler to test; a single combined entrypoint can be revisited
+   later if preferred.
 
    Internal fetches from `markdown-negotiation` should carry
    `X-Asset-Fetch-Ga-Info`; the direct-asset handler should treat the presence
@@ -607,10 +608,8 @@ Steps:
    expose compact debug info on responses, which keeps the mechanism simple and
    live-testable.
 
-3. Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
-   files.
-4. Add `ua_category` if the classification is stable and low-cardinality.
-5. Build a shared GA4 exploration or Looker Studio report for the team.
+3. Add `ua_category` if the classification is stable and low-cardinality.
+4. Build a shared GA4 exploration or Looker Studio report for the team.
 
 ### Phase 3
 
@@ -715,8 +714,6 @@ marker.
 
 ### Other tasks
 
-- [ ] Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
-      files.
 - [ ] Add `ua_category` if the classification is stable and low-cardinality.
 - [ ] Build a shared GA4 exploration or Looker Studio report for the team.
 
@@ -727,9 +724,9 @@ Reverse chronological: prepend a `### v…` section for each plan-changing PR; u
 
 ### v0.3-dev - TBD (not merged yet)
 
-- Implemented phase 2.2 with a generic `asset-tracking` Edge Function for
-  explicit `.md` requests, with direct tracked asset URLs counted regardless of
-  response status.
+- Implemented phase 2.2/2.3 with a generic `asset-tracking` Edge Function for
+  explicit `.md` and `*.txt` requests, with direct tracked asset URLs counted
+  regardless of response status.
 - Added `X-Asset-Fetch-Ga-Info` as the shared marker for internal subrequests,
   with direct asset tracking skipping any request where the header is present.
 - Added unit and live tests for explicit `.md` delivery and internal-marker

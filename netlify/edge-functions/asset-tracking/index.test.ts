@@ -85,7 +85,17 @@ test('shouldTrackAssetFetch accepts GET .md requests', () => {
   assert.equal(shouldTrackAssetFetch(request, response), true);
 });
 
-test('shouldTrackAssetFetch rejects internal marked requests', () => {
+test('shouldTrackAssetFetch accepts GET .txt requests', () => {
+  const request = new Request('https://example.com/llms.txt');
+  const response = new Response('OpenTelemetry', {
+    headers: { 'content-type': 'text/plain; charset=utf-8' },
+    status: 200,
+  });
+
+  assert.equal(shouldTrackAssetFetch(request, response), true);
+});
+
+test('shouldTrackAssetFetch returns false for internal marked requests', () => {
   const request = new Request(
     'https://example.com/docs/concepts/resources/index.md',
     {
@@ -102,7 +112,7 @@ test('shouldTrackAssetFetch rejects internal marked requests', () => {
   assert.equal(shouldTrackAssetFetch(request, response), false);
 });
 
-test('shouldTrackAssetFetch rejects non-GET methods', () => {
+test('shouldTrackAssetFetch returns false for non-GET methods', () => {
   for (const method of ['HEAD', 'POST']) {
     const request = new Request(
       'https://example.com/docs/concepts/resources/index.md',
@@ -143,7 +153,7 @@ test('shouldTrackAssetFetch accepts non-markdown content type for tracked assets
   assert.equal(shouldTrackAssetFetch(request, response), true);
 });
 
-test('shouldTrackAssetFetch rejects non-tracked extensions', () => {
+test('shouldTrackAssetFetch returns false for non-tracked extensions', () => {
   const request = new Request(
     'https://example.com/docs/concepts/resources/index.html',
   );
@@ -185,6 +195,40 @@ test('handler emits asset_fetch for explicit .md requests', async (t) => {
   assert.equal(event.params.asset_path, '/docs/concepts/resources/index.md');
   assert.equal(event.params.asset_ext, 'md');
   assert.equal(event.params.content_type, 'text/markdown');
+  assert.equal(event.params.status_code, '200');
+  assert.ok(!('original_path' in event.params));
+});
+
+test('handler emits asset_fetch for explicit .txt requests', async (t) => {
+  setupNetlifyEnv(t);
+  const ga4Bodies = setupFetchMock(t);
+  const spy = createWaitUntilSpy();
+
+  const response = await assetTracking(
+    new Request('https://example.com/llms.txt'),
+    {
+      next: async () =>
+        new Response('OpenTelemetry', {
+          headers: { 'content-type': 'text/plain; charset=utf-8' },
+          status: 200,
+        }),
+      ...spy,
+    },
+  );
+
+  await spy.flush();
+
+  assert.equal(response.status, 200);
+  assert.equal(ga4Bodies.length, 1);
+
+  const event = (
+    ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
+  )[0];
+  assert.equal(event.name, 'asset_fetch');
+  assert.equal(event.params.asset_group, 'text');
+  assert.equal(event.params.asset_path, '/llms.txt');
+  assert.equal(event.params.asset_ext, 'txt');
+  assert.equal(event.params.content_type, 'text/plain');
   assert.equal(event.params.status_code, '200');
   assert.ok(!('original_path' in event.params));
 });

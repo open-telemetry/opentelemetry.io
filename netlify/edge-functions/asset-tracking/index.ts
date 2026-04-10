@@ -5,7 +5,7 @@ import {
   normalizeContentType,
 } from '../lib/ga4-asset-fetch.ts';
 
-const TRACKED_EXTENSIONS = new Set(['.md']);
+const TRACKED_EXTENSIONS = new Set(['.md', '.txt']);
 
 export default async function assetTracking(
   request: Request,
@@ -56,9 +56,13 @@ export function shouldTrackAssetFetch(
   return true;
 }
 
-function classifyAssetGroup(extension: string): 'markdown' | 'other' {
+function classifyAssetGroup(extension: string): 'markdown' | 'text' | 'other' {
   if (extension === '.md') {
     return 'markdown';
+  }
+
+  if (extension === '.txt') {
+    return 'text';
   }
 
   return 'other';
