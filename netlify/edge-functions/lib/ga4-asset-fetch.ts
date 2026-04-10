@@ -8,12 +8,22 @@ const FALLBACK_CLIENT_ID = 'asset_fetch.anonymous';
 const MEASUREMENT_ID_ENV_NAME = 'HUGO_SERVICES_GOOGLEANALYTICS_ID';
 const API_SECRET_ENV_NAMES = ['GA4_API_SECRET'];
 
+let warnedNoNetlify = false;
+
 function netlifyEnvGet(name: string): string | undefined {
   const g = globalThis as unknown as {
     Netlify?: { env: { get: (name: string) => string | undefined } };
   };
 
-  return g.Netlify?.env.get(name);
+  if (!g.Netlify) {
+    if (!warnedNoNetlify) {
+      warnedNoNetlify = true;
+      console.warn('ga4-asset-fetch: Netlify runtime not available; GA4 events will not be sent');
+    }
+    return undefined;
+  }
+
+  return g.Netlify.env.get(name);
 }
 
 export function getEnvValue(names: string[]): string | null {
