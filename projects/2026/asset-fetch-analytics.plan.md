@@ -125,11 +125,13 @@ Send the following GA4 event parameters for every tracked asset request:
 - `content_type`: stable response content type, for example `application/yaml`
 - `status_code`: response status as a string, for example `200`
 
-### Phase 2 parameter
+### Markdown negotiation: `original_path`
 
 - `original_path`: unmodified request path when it differs from `asset_path`,
   for example `/docs/concepts/context/` when the resolved `asset_path` is
   `/docs/concepts/context/index.md` (omit when request and resolution match).
+  The `markdown-negotiation` Edge Function sends this today; other asset types
+  may add it later.
 
 ### Optional event parameters
 
@@ -171,7 +173,7 @@ Apply the following when resolving paths for GA4:
 - `/schemas/1.40.0?cache=1` -> `/schemas/1.40.0`
 - `/docs/concepts/context/index.md` -> `/docs/concepts/context/index.md`
 
-Phase 2:
+Markdown negotiation examples:
 
 - `/docs/` resolves to `/docs/index.md` for `asset_path`; send `original_path`
   `/docs/` if it differs from the resolved path.
@@ -266,8 +268,9 @@ GA4 answer shape:
 - breakdown by `asset_path`
 - metric `Event count`
 
-For negotiated Markdown delivery, phase 2 should set `asset_path` to the path of
-the returned resource and send `original_path` when the request path differs.
+For negotiated Markdown delivery, the `markdown-negotiation` Edge Function sets
+`asset_path` to the path of the returned resource and sends `original_path` when
+the request path differs.
 
 ### Bot and AI traffic split
 
@@ -421,7 +424,8 @@ Suggested GA4 dimension definitions:
   - Scope: `Event`
   - Event parameter: `original_path`
   - Description: Unmodified request path when it differs from `asset_path`.
-    Register when phase 2 tracking is enabled; omit the parameter when unused.
+    Register for Markdown negotiation; omit when unused (for example schemas do
+    not send this parameter).
 
 GA4 custom dimensions typically become available in reports and explorations 24
 to 48 hours after the event data is sent and the custom dimension is created.
@@ -571,8 +575,9 @@ is better suited to internal operational use than broad publishing.
 
 Steps:
 
-1. Extend tracking to Markdown assets, setting `asset_path` to the returned
-   resource path and adding `original_path` only when the request path differs.
+1. **Markdown asset tracking** — implemented in the `markdown-negotiation` Edge
+   Function (`asset_path`, `original_path` when the request path differs, GET
+   only, successful Markdown responses).
 2. Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
    files.
 3. Add `ua_category` if the classification is stable and low-cardinality.
@@ -667,9 +672,10 @@ Reverse chronological: prepend a `### v…` section for each plan-changing PR; u
 ### v0.2-dev - TBD (not merged yet)
 
 - `asset_path` / `original_path` semantics (returned resource vs request when it
-  differs); Path resolution wording; required vs phase-2 parameters; section
-  structure and examples; GET-only analytics (not HEAD/POST), with possible
-  later broadening to other methods.
+  differs); Path resolution wording; `original_path` documented as live for
+  Markdown negotiation; section structure and examples; GET-only analytics (not
+  HEAD/POST), with possible later broadening to other methods; `asset_ext`
+  wording (path suffix vs `yaml` for schemas).
 
 ### v0.1 - 2026-04-03
 

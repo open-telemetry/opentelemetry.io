@@ -2,7 +2,7 @@
  * Tests GA4 asset_fetch event integration in the markdown negotiation handler.
  *
  * - GET success: event with correct params and original_path when path differs
- * - GET success same path: no original_path
+ * - GET index.html: original_path is the request path, asset_path is *.md
  * - HEAD success: no event
  * - markdown unavailable (HTML fallback): no event
  */
@@ -119,7 +119,7 @@ test('GET markdown emits asset_fetch with original_path when path differs', asyn
   assert.equal(event.params.original_path, '/docs/');
 });
 
-test('GET markdown omits original_path when request path matches resolved path', async (t) => {
+test('GET markdown includes original_path when request path differs from resolved md', async (t) => {
   setupNetlifyEnv(t);
   const ga4Bodies = setupFetchMock(
     t,

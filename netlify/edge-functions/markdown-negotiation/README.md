@@ -11,18 +11,6 @@ it differs from `asset_path`; `content_type` is read from the response headers.
 Non-2xx results fall back to the normal HTML page, which is covered by the
 site's client-side GA `page_view` instrumentation.
 
-The local `package.json` sets `"type": "module"` so Node treats the `.ts` test
-files in this folder as ESM without changing module semantics for the whole
-repo.
-
-## Unit tests
-
-Run the unit tests with:
-
-```console
-npm run test:edge-functions
-```
-
 ### Live tests
 
 To run the live checks over a server run the `test:edge-functions:live` NPM
