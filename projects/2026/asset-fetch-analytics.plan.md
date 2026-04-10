@@ -8,7 +8,7 @@ cSpell:ignore: GA4 BigQuery Netlify NDJSON referrer eventparams GOOGLEANALYTICS
 ## Goal
 
 Support analytics/observability for non-HTML assets served from
-[opentelemetry.io][], including:
+`opentelemetry.io`, including:
 
 - Schema files under `/schemas/*`
 - Future Markdown assets such as `*.md` variants of site pages
@@ -120,8 +120,8 @@ Send the following GA4 event parameters for every tracked asset request:
 - `asset_path`: path of the resource returned in the response, after Path
   resolution (for example `/schemas/1.40.0` or
   `/docs/concepts/context/index.md`)
-- `asset_ext`: extension-style label for reporting, aligned with `content_type`
-  (e.g. `yaml`, `md`, `json`, `txt`, maybe others)
+- `asset_ext`: extension from `asset_path` when present; always `yaml` for
+  schemas
 - `content_type`: stable response content type, for example `application/yaml`
 - `status_code`: response status as a string, for example `200`
 
@@ -406,8 +406,8 @@ Suggested GA4 dimension definitions:
 - Dimension name: `Asset extension`
   - Scope: `Event`
   - Event parameter: `asset_ext`
-  - Description: Extension-style label for reporting such as `yaml`, `md`,
-    `txt`, etc., corresponding to the response `content_type`
+  - Description: Extension from `asset_path` when present. Always `yaml` for
+    schemas.
 - Dimension name: `Content type`
   - Scope: `Event`
   - Event parameter: `content_type`
@@ -650,11 +650,7 @@ This section broadly tracks the tasks for the implementation plan.
 
 ### In progress
 
-Extend event tracking to Markdown assets:
-
-- [ ] Basic setup done
-- [ ] Ensure that event tracking covers the conditions listed in "Response
-      gating" section.
+All done for this iteration.
 
 ### Other tasks
 
@@ -672,12 +668,9 @@ Reverse chronological: prepend a `### v…` section for each plan-changing PR; u
 
 - `asset_path` / `original_path` semantics (returned resource vs request when it
   differs); Path resolution wording; required vs phase-2 parameters; section
-  structure and examples; `asset_ext` described as aligned with `content_type`;
-  GET-only analytics (not HEAD/POST), with possible later broadening to other
-  methods.
+  structure and examples; GET-only analytics (not HEAD/POST), with possible
+  later broadening to other methods.
 
 ### v0.1 - 2026-04-03
 
 - First version.
-
-[opentelemetry.io]: https://opentelemetry.io/
