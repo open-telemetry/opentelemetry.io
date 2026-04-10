@@ -5,6 +5,8 @@
  * - GET index.html: original_path is the request path, asset_path is *.md
  * - HEAD success: no event
  * - markdown unavailable (HTML fallback): no event
+ *
+ * cSpell:ignore GOOGLEANALYTICS
  */
 
 import assert from 'node:assert/strict';

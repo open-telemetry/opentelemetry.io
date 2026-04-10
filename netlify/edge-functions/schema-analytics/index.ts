@@ -1,9 +1,13 @@
 import {
+  type AssetFetchContext,
   enqueueAssetFetchEvent,
   normalizeContentType,
 } from '../lib/ga4-asset-fetch.ts';
 
-export default async function schemaAnalytics(request: Request, context: any) {
+export default async function schemaAnalytics(
+  request: Request,
+  context: AssetFetchContext & { next: () => Promise<Response> },
+) {
   const response = await context.next();
   const normalizedResponse = ensureSchemaContentType(request, response);
 
