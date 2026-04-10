@@ -23,17 +23,11 @@ Once you have Prometheus set up, you can set up the OTLP Exporter, Prometheus ex
 This section explains how to configure your application to send metrics directly to a Prometheus endpoint.
 
 #### Use environment variables
-OpenTelemetry SDKs and instrumentation libraries can usually be configured via [standard environment variables](/docs/languages/sdk-configuration/). Set the environment variables before starting your application by:
-- exporting them directly from your terminal,
-- adding them to your shell config file (e.g., `.bashrc`, `.zshrc`), 
-- or loading them from a `.env` file. 
-
-Below are the OpenTelemetry variables needed to send OpenTelemetry metrics to a Prometheus server on localhost:
+You can configure OpenTelemetry SDKs and instrumentation libraries with [standard environment variables](/docs/languages/sdk-configuration/). Set the environment variables before starting your application. Below are the OpenTelemetry variables needed to send OpenTelemetry metrics to a Prometheus server on localhost:
 
 ```bash
 export OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf
 export OTEL_EXPORTER_OTLP_METRICS_ENDPOINT=http://localhost:9090/api/v1/otlp
-
 ```
 Note:
 
@@ -53,14 +47,18 @@ The default push interval for OpenTelemetry metrics is 60 seconds. The following
 export OTEL_METRIC_EXPORT_INTERVAL=15000
 ```
 
-If your instrumentation library does not provide `service.name` and `service.instance.id` out-of-the-box, it is highly recommended to set them.
+If your instrumentation library does not provide `service.name` and `service.instance.id` out-of-the-box, it is highly recommended to set them. The example below assumes that the `uuidgen` command is available on your system.
 
 ```bash
 export OTEL_SERVICE_NAME="my-example-service"
 export OTEL_RESOURCE_ATTRIBUTES="service.instance.id=$(uuidgen)"
 ```
 
-The above assumes that the `uuidgen` command is available on your system. Make sure that `service.instance.id` is unique for each instance, and that a new `service.instance.id` is generated whenever a resource attribute changes. The [recommended way](https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource) is to generate a new UUID on each startup of an instance.
+> [!NOTE]
+> Make sure that `service.instance.id` is unique for each instance, 
+> and that a new `service.instance.id` is generated whenever a resource attribute changes.
+> The [recommended way](https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource) 
+> is to generate a new UUID on each startup of an instance.
 
-#### Step 2: Configuring Telemetry
+#### Configure telemetry
 Update your OpenTelemetry Configuration to use the same `exporter` and `reader` from the [OTLP](#otlp-dependencies) setup. If the environment variables are set up and loaded correctly, the OpenTelemetry SDK reads them automatically. 
