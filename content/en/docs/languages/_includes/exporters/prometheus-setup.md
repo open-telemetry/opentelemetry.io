@@ -7,15 +7,15 @@ and use the [OTLP exporter](#otlp) (best practice),
 and [push Prometheus to the metrics endpoint directly](#push-metrics-directly) (for development or testing purposes),
 - or you can use the Prometheus exporter, a `MetricReader` that starts an HTTP server that collects metrics and serialize to Prometheus text format on request.
 
-### Backend Setup {#prometheus-setup}
+### Backend setup {#prometheus-setup}
 
-- For [OTLP Exporter](#otlp-dependencies) or [Prometheus exporter](#prometheus-dependencies):
+For [OTLP Exporter](#otlp-dependencies) or [Prometheus exporter](#prometheus-dependencies):
 
   To run a Prometheus server backend and begin scraping metrics, see the [Prometheus getting started guide](https://prometheus.io/docs/prometheus/latest/getting_started/). To enable the OTLP Receiver, see the [Prometheus guide for enabling the OTLP Receiver](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver).
 
-- For pushing to a metrics endpoint directly:
+For pushing to a metrics endpoint directly:
   
-  Follow this [guide for prometheus.yml configuration in this Prometheus guide](https://prometheus.io/docs/guides/opentelemetry/#configuring-prometheus).
+  Follow the [example prometheus.yml configuration in this Prometheus guide](https://prometheus.io/docs/guides/opentelemetry/#configuring-prometheus).
 
 Once you have Prometheus set up, you can set up the OTLP Exporter, Prometheus exporter, or push to a metrics endpoint directly.
 
@@ -61,4 +61,4 @@ export OTEL_RESOURCE_ATTRIBUTES="service.instance.id=$(uuidgen)"
 The above assumes that the `uuidgen` command is available on your system. Make sure that `service.instance.id` is unique for each instance, and that a new `service.instance.id` is generated whenever a resource attribute changes. The [recommended way](https://github.com/open-telemetry/semantic-conventions/tree/main/docs/resource) is to generate a new UUID on each startup of an instance.
 
 #### Step 2: Configuring Telemetry
-Update your OpenTelemetry Configuration to use the same `exporter` and `reader` from the [OTLP](#otlp-dependencies) setup. If the environment variables are set up and loaded correctly, the OpenTelemetry SDK will read them automatically. 
+Update your OpenTelemetry Configuration to use the same `exporter` and `reader` from the [OTLP](#otlp-dependencies) setup. If the environment variables are set up and loaded correctly, the OpenTelemetry SDK reads them automatically. 
