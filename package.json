@@ -33,7 +33,7 @@
     "_install:netlify-cli": "npm list netlify-cli || npm install -O netlify-cli",
     "_list:check:*": "npm run --loglevel=warn | grep -Ee '^\\s*check:[^:]+$' | grep -Ev \"check:all|${CMD_SKIP:-noop}\"",
     "_list:check:for-test-and-fix": "npm -s run _list:check:* | grep -Ev \"collector-sync|i18n\"",
-    "_list:cspell": "grep -Ee '^\\s*\"@?cspell' package.json | awk -F: '{print $1}'  | tr -d '\"'",
+    "_list:cspell": "jq -r '.devDependencies | keys[] | select(. == \"cspell\" or startswith(\"@cspell/\"))' package.json | xargs",
     "_list:diff-never-empty": "echo README.md && npm run _list:diff --",
     "_list:diff:all": "(npm run -s _list:diff -- HEAD; git ls-files --others --exclude-standard) | sort -u",
     "_list:diff": "git diff --name-only --diff-filter=AMR",
