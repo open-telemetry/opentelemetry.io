@@ -117,7 +117,7 @@ export function shouldConsiderRequest(
 
 export function resolveMarkdownPath(pathname: string): string {
   if (isIndexHtmlPath(pathname)) {
-    return pathname.replace(/index\.html$/i, 'index.md');
+    return pathname.replace(/index\.html$/, 'index.md');
   }
 
   const normalizedPath = pathname.replace(/\/+$/, '') || '/';
@@ -136,7 +136,7 @@ function getPathExtension(pathname: string): string {
 }
 
 function isIndexHtmlPath(pathname: string): boolean {
-  return pathname.toLowerCase().endsWith('/index.html');
+  return pathname.endsWith('/index.html');
 }
 
 function resolveMarkdownUrl(url: URL): URL {

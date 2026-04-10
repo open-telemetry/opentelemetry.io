@@ -175,6 +175,9 @@ Apply the following when resolving paths for GA4:
 
 Markdown negotiation examples:
 
+- Path resolution is case-sensitive by design. URL paths are normally
+  case-sensitive on the web, so only lowercase `index.html` participates in
+  Markdown negotiation; unusual variants such as `index.HTML` fall through.
 - `/docs/` resolves to `/docs/index.md` for `asset_path`; send `original_path`
   `/docs/` if it differs from the resolved path.
 - `/docs/concepts/context/` with content negotiation: `asset_path` is the path
