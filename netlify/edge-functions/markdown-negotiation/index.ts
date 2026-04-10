@@ -18,6 +18,7 @@
  */
 
 import {
+  type AssetFetchEventParams,
   enqueueAssetFetchEvent,
   normalizeContentType,
 } from '../lib/ga4-asset-fetch.ts';
@@ -60,16 +61,14 @@ export default async function markdownNegotiation(
   // client-side page_view. content_type is read from the response headers above.
   if (request.method === 'GET') {
     const assetPath = resolveMarkdownPath(url.pathname);
-    const eventParams: Record<string, string | undefined> = {
+    const eventParams: AssetFetchEventParams = {
       asset_group: 'markdown',
       asset_path: assetPath,
       asset_ext: 'md',
       content_type: normalizeContentType(headers.get('content-type') ?? ''),
       status_code: String(markdownResponse.status),
+      ...(url.pathname !== assetPath ? { original_path: url.pathname } : {}),
     };
-    if (url.pathname !== assetPath) {
-      eventParams.original_path = url.pathname;
-    }
     enqueueAssetFetchEvent(request, context, eventParams);
   }
 

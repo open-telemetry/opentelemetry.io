@@ -11,10 +11,7 @@ import {
 
 test('normalizeContentType extracts media type', () => {
   assert.equal(normalizeContentType('application/yaml'), 'application/yaml');
-  assert.equal(
-    normalizeContentType('text/html; charset=utf-8'),
-    'text/html',
-  );
+  assert.equal(normalizeContentType('text/html; charset=utf-8'), 'text/html');
   assert.equal(
     normalizeContentType('  Application/JSON ; q=0.9'),
     'application/json',
@@ -54,7 +51,17 @@ test('resolveClientId finds GA cookie among multiple cookies', () => {
 test('enqueueAssetFetchEvent no-ops without waitUntil', () => {
   const request = new Request('https://example.com/schemas/1.40.0');
   // No waitUntil on context — should not throw.
-  enqueueAssetFetchEvent(request, {}, { asset_group: 'schema' });
+  enqueueAssetFetchEvent(
+    request,
+    {},
+    {
+      asset_group: 'schema',
+      asset_path: '/schemas/1.40.0',
+      asset_ext: 'yaml',
+      content_type: 'application/yaml',
+      status_code: '200',
+    },
+  );
 });
 
 test('enqueueAssetFetchEvent calls waitUntil with GA4 payload', async (t) => {
@@ -108,7 +115,6 @@ test('enqueueAssetFetchEvent calls waitUntil with GA4 payload', async (t) => {
     asset_ext: 'yaml',
     content_type: 'application/yaml',
     status_code: '200',
-    original_path: undefined,
   });
 
   assert.ok(waitUntilPromise, 'waitUntil should have been called');

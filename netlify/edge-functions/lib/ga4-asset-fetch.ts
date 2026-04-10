@@ -20,7 +20,9 @@ function netlifyEnvGet(name: string): string | undefined {
   if (!g.Netlify) {
     if (!warnedNoNetlify) {
       warnedNoNetlify = true;
-      console.warn('ga4-asset-fetch: Netlify runtime not available; GA4 events will not be sent');
+      console.warn(
+        'ga4-asset-fetch: Netlify runtime not available; GA4 events will not be sent',
+      );
     }
     return undefined;
   }
@@ -48,7 +50,10 @@ export function normalizeContentType(contentTypeHeader: string | null): string {
   return contentTypeHeader.split(';', 1)[0].trim().toLowerCase();
 }
 
-function getCookieValue(cookieHeader: string | null, name: string): string | null {
+function getCookieValue(
+  cookieHeader: string | null,
+  name: string,
+): string | null {
   if (!cookieHeader) {
     return null;
   }
@@ -81,6 +86,32 @@ export type AssetFetchContext = {
   requestId?: string;
 };
 
+/** `asset_group` values from the analytics plan. */
+export type AssetFetchEventGroup = 'schema' | 'markdown' | 'other';
+
+/**
+ * GA4 `asset_fetch` event parameters (custom dimensions). Required fields match
+ * the plan; optional fields are omitted from the payload when unset.
+ */
+export type AssetFetchEventParams = {
+  asset_group: AssetFetchEventGroup;
+  asset_path: string;
+  asset_ext: string;
+  content_type: string;
+  status_code: string;
+  original_path?: string;
+  referrer_host?: string;
+  ua_category?: string;
+};
+
+function compactStringParams(
+  eventParams: AssetFetchEventParams,
+): Record<string, string> {
+  return Object.fromEntries(
+    Object.entries(eventParams).filter(([, v]) => v !== undefined),
+  ) as Record<string, string>;
+}
+
 /**
  * Queues a GA4 `asset_fetch` event. No-ops when credentials or `waitUntil` are
  * missing (e.g. local tests without Netlify globals).
@@ -88,7 +119,7 @@ export type AssetFetchContext = {
 export function enqueueAssetFetchEvent(
   request: Request,
   context: AssetFetchContext,
-  eventParams: Record<string, string | undefined>,
+  eventParams: AssetFetchEventParams,
 ): void {
   const measurementId = netlifyEnvGet(MEASUREMENT_ID_ENV_NAME)?.trim();
   const apiSecret = getEnvValue(API_SECRET_ENV_NAMES);
@@ -97,9 +128,7 @@ export function enqueueAssetFetchEvent(
     return;
   }
 
-  const params = Object.fromEntries(
-    Object.entries(eventParams).filter(([, v]) => v !== undefined),
-  ) as Record<string, string>;
+  const params = compactStringParams(eventParams);
 
   const payload = {
     client_id: resolveClientId(request),

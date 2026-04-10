@@ -11,7 +11,7 @@ Support analytics/observability for non-HTML assets served from
 `opentelemetry.io`, including:
 
 - Schema files under `/schemas/*`
-- Future Markdown assets such as `*.md` variants of site pages
+- Markdown assets such as `*.md` variants of site pages
 - Other non-HTML assets, including `llms.txt`
 
 The chosen design keeps reporting accessible to the existing team through Google
