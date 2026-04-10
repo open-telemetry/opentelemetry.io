@@ -19,8 +19,10 @@ For pushing to a metrics endpoint directly:
 
 Once you have Prometheus set up, you can set up the OTLP Exporter, Prometheus exporter, or push to a metrics endpoint directly.
 
-### Push To Metrics Endpoint {#push-metrics-directly}
-#### Step 1: Using Environment Variables
+### Push to metrics endpoint {#push-metrics-directly}
+This section explains how to configure your application to send metrics directly to a Prometheus endpoint.
+
+#### Use environment variables
 OpenTelemetry SDKs and instrumentation libraries can usually be configured via [standard environment variables](/docs/languages/sdk-configuration/). Set the environment variables before starting your application by:
 - exporting them directly from your terminal,
 - adding them to your shell config file (e.g., `.bashrc`, `.zshrc`), 
