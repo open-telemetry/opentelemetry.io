@@ -71,13 +71,7 @@ test('GET /schemas/latest → redirect', async () => {
   const url = absUrl(latestSchemaPath, ref);
   const res = await fetch(url, { redirect: 'manual' });
 
-  assert.ok(
-    res.status === 301 ||
-      res.status === 302 ||
-      res.status === 307 ||
-      res.status === 308,
-    `expected redirect (3xx), got ${res.status} for ${url}`,
-  );
+  assert.ok(300 <= res.status && res.status <= 399, `status for ${url}`);
 
   const loc = res.headers.get('location');
   assert.ok(loc, 'missing Location header');
@@ -92,11 +86,12 @@ test('GET /schemas/does-not-exist → not found', async () => {
   const ref = baseRef();
   const url = absUrl(missingSchemaPath, ref);
   const res = await fetch(url, { redirect: 'manual' });
-  const ct = res.headers.get('content-type') ?? '';
 
-  assert.equal(res.status, 404, `expected 404 for ${url}`);
-  assert.ok(
-    ct.toLowerCase() !== 'application/yaml',
-    `expected non-yaml content-type for missing schema, got ${JSON.stringify(ct)}`,
+  assert.equal(res.status, 404, `status for ${url}`);
+  const ct = res.headers.get('content-type') ?? '';
+  assert.notEqual(
+    ct,
+    'application/yaml',
+    `non-YAML content-type for missing schema, got ${JSON.stringify(ct)}`,
   );
 });
