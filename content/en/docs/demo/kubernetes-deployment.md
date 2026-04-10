@@ -48,9 +48,9 @@ helm install my-otel-demo open-telemetry/opentelemetry-demo
 
 ### Use Helm to generate a Kubernetes manifests
 
-The following command will generate a single Kubernetes manifest file which
-will contain a definition for all required resources. You can apply this
-manifest using `kubectl apply -f opentelemetry-demo.yaml` after generating it.
+The following command will generate a single Kubernetes manifest file which will
+contain a definition for all required resources. You can apply this manifest
+using `kubectl apply -f opentelemetry-demo.yaml` after generating it.
 
 ```shell
 helm template opentelemetry-demo open-telemetry/opentelemetry-demo --namespace otel-demo > opentelemetry-demo.yaml
