@@ -42,21 +42,20 @@ produce recommendations and read-only queries.
 - For external links outside `github.com/open-telemetry/*`, flag them but do not
   follow — note "external — manual review needed"
 - **Never suggest labels that belong to PR workflows.** Even if a repo profile
-  accidentally includes them in `label_taxonomy`, reject these on issue
-  drafts: `ready-to-be-merged`, `missing:cla`, `missing:docs-approval`,
+  accidentally includes them in `label_taxonomy`, reject these on issue drafts:
+  `ready-to-be-merged`, `missing:cla`, `missing:docs-approval`,
   `missing:sig-approval`, `sig-approval-missing`, `auto-update`, `0-meta`,
-  `admin`. See `otel-issue-draft` skill,
-  `#pr-only-labels-do-not-suggest`.
-- **Never suggest `type:discussion`.** The label's own description says "Do
-  not use, convert discussion issues into real Discussions." If the issue
-  reads as an open-ended conversation, recommend `close:not-planned` with a
-  suggested comment pointing to GitHub Discussions instead.
+  `admin`. See `otel-issue-draft` skill, `#pr-only-labels-do-not-suggest`.
+- **Never suggest `type:discussion`.** The label's own description says "Do not
+  use, convert discussion issues into real Discussions." If the issue reads as
+  an open-ended conversation, recommend `close:not-planned` with a suggested
+  comment pointing to GitHub Discussions instead.
 - **Never recommend `--add-assignee` for first-time contributors.** Per
   `content/en/docs/contributing/_index.md:19-31`, the repo does not assign
-  issues to contributors who have not already landed a PR (absent a
-  confirmed mentorship). If an assignment-request comment appears, note
-  that `.github/workflows/first-timer-response.yml` handles the
-  auto-response; do not generate an assign command.
+  issues to contributors who have not already landed a PR (absent a confirmed
+  mentorship). If an assignment-request comment appears, note that
+  `.github/workflows/first-timer-response.yml` handles the auto-response; do not
+  generate an assign command.
 
 ## Workflow
 
@@ -244,52 +243,51 @@ Assign a triage action and confidence tier.
 | LOW    | Ambiguous description; cross-cutting concerns; external blockers; high community engagement requiring judgment                                  |
 
 **Triage actions** (internal decision tokens — see
-[Close-Reason Mapping](#close-reason-mapping) for the `gh` command
-translation):
+[Close-Reason Mapping](#close-reason-mapping) for the `gh` command translation):
 
-| Action                             | When to Recommend                                        |
-| ---------------------------------- | -------------------------------------------------------- |
-| `close:completed`                  | A merged PR addresses the issue; content now exists      |
-| `close:stale`                      | No activity, referenced content updated, likely resolved |
-| `close:duplicate`                  | Near-duplicate of #XXXX                                  |
-| `close:wontfix`                    | Out of scope or superseded                               |
-| `close:invalid`                    | Not a real issue, spam, or unclear                       |
-| `label:triage:accepted:needs-pr`   | Valid, actionable, needs a contributor                   |
-| `label:triage:accepted`            | Valid, may already have someone working on it            |
-| `label:triage:deciding:needs-info` | Missing details from reporter                            |
-| `label:triage:deciding:blocked`    | Blocked on external dependency                           |
-| `label:triage:deciding:needs-mentor-or-sponsor` | Needs a mentor/sponsor (per `sig-practices.md:98`) |
-| `label:triage:deciding`            | Needs maintainer discussion                              |
-| `label:good first issue`           | Small, well-scoped, good for onboarding (label is `good first issue`, with spaces) |
-| `add-labels`                       | Only needs co-ownership (`sig:*`/`lang:*`/`docs:*`) / type / area labels added |
+| Action                                          | When to Recommend                                                                  |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `close:completed`                               | A merged PR addresses the issue; content now exists                                |
+| `close:stale`                                   | No activity, referenced content updated, likely resolved                           |
+| `close:duplicate`                               | Near-duplicate of #XXXX                                                            |
+| `close:wontfix`                                 | Out of scope or superseded                                                         |
+| `close:invalid`                                 | Not a real issue, spam, or unclear                                                 |
+| `label:triage:accepted:needs-pr`                | Valid, actionable, needs a contributor                                             |
+| `label:triage:accepted`                         | Valid, may already have someone working on it                                      |
+| `label:triage:deciding:needs-info`              | Missing details from reporter                                                      |
+| `label:triage:deciding:blocked`                 | Blocked on external dependency                                                     |
+| `label:triage:deciding:needs-mentor-or-sponsor` | Needs a mentor/sponsor (per `sig-practices.md:98`)                                 |
+| `label:triage:deciding`                         | Needs maintainer discussion                                                        |
+| `label:good first issue`                        | Small, well-scoped, good for onboarding (label is `good first issue`, with spaces) |
+| `add-labels`                                    | Only needs co-ownership (`sig:*`/`lang:*`/`docs:*`) / type / area labels added     |
 
 **Mandatory labels on `add-labels` / `label:triage:accepted*`.** Per
-`content/en/docs/contributing/sig-practices.md:77-107`, every accepted
-issue must carry:
+`content/en/docs/contributing/sig-practices.md:77-107`, every accepted issue
+must carry:
 
 1. One co-ownership label: `sig:*`, `lang:*`, or `docs:*`
 2. One `triage:*` status label (the action already encodes this)
-3. One type signal: GitHub-native type `bug`/`enhancement` (usually set
-   by the issue template's `type:` field — do NOT set manually), or
-   label `type:question` / `type:copyedit`, or recommend "move to
-   Discussions" for open-ended conversation
+3. One type signal: GitHub-native type `bug`/`enhancement` (usually set by the
+   issue template's `type:` field — do NOT set manually), or label
+   `type:question` / `type:copyedit`, or recommend "move to Discussions" for
+   open-ended conversation
 
 ### Close-Reason Mapping {#close-reason-mapping}
 
-The internal action tokens above are _decisions_, not `gh` command
-flags. When emitting `gh issue close` commands, map to the values the
-CLI actually accepts (`gh issue close --help`):
+The internal action tokens above are _decisions_, not `gh` command flags. When
+emitting `gh issue close` commands, map to the values the CLI actually accepts
+(`gh issue close --help`):
 
-| Internal action   | `gh issue close --reason` value |
-| ----------------- | ------------------------------- |
-| `close:completed` | `"completed"`                   |
-| `close:stale`     | `"not planned"`                 |
-| `close:wontfix`   | `"not planned"`                 |
-| `close:invalid`   | `"not planned"`                 |
+| Internal action   | `gh issue close --reason` value                             |
+| ----------------- | ----------------------------------------------------------- |
+| `close:completed` | `"completed"`                                               |
+| `close:stale`     | `"not planned"`                                             |
+| `close:wontfix`   | `"not planned"`                                             |
+| `close:invalid`   | `"not planned"`                                             |
 | `close:duplicate` | `"duplicate"` (preferred: use `--duplicate-of <N>` instead) |
 
-Never emit `--reason "stale"` / `"wontfix"` / `"invalid"` — `gh` will
-reject them.
+Never emit `--reason "stale"` / `"wontfix"` / `"invalid"` — `gh` will reject
+them.
 
 ### 7b. Profile Assessment (evaluation profiles only)
 
@@ -375,9 +373,8 @@ gh issue close <number> -R <REPO> --reason "not planned"
 gh issue close <number> -R <REPO> --duplicate-of <dup-number>
 ```
 
-**Do NOT emit `gh issue edit ... --add-assignee` on assignment-request
-comments from first-time contributors.** See
-[Constraints](#constraints).
+**Do NOT emit `gh issue edit ... --add-assignee` on assignment-request comments
+from first-time contributors.** See [Constraints](#constraints).
 ````
 
 <!-- Render one block per evaluation profile. Omit entirely if none active. -->
@@ -460,32 +457,30 @@ This issue has been triaged as a good first issue for new contributors.
 Source-of-truth files — if this agent drifts from them, trust the file:
 
 - `content/en/docs/contributing/sig-practices.md:77-127` — mandatory
-  co-ownership + `triage:*` + type labels on every triaged issue;
-  optional special tags; `triage:followup` convention (no live
-  automation)
-- `content/en/docs/contributing/issues.md:71-80` — issue-filing rules:
-  scope, search-first, issue linking syntax, Code of Conduct
-- `content/en/docs/contributing/_index.md:19-31` — "We do not assign
-  issues" first-time contributor policy
+  co-ownership + `triage:*` + type labels on every triaged issue; optional
+  special tags; `triage:followup` convention (no live automation)
+- `content/en/docs/contributing/issues.md:71-80` — issue-filing rules: scope,
+  search-first, issue linking syntax, Code of Conduct
+- `content/en/docs/contributing/_index.md:19-31` — "We do not assign issues"
+  first-time contributor policy
 - `.github/ISSUE_TEMPLATE/DOCS_UPDATE.yml`, `ISSUE_REPORT.yml`,
-  `FEATURE_REQUEST.yml`, `BLOG_POST.yml`, `PAGE_FEEDBACK.yml` — 5
-  templates; title prefixes (`[Docs]: `, `bug: `, `feat: `, `blog: `,
-  `page feedback: `) and template-level `type:` fields (set
-  automatically — do not override)
-- `.github/workflows/first-timer-response.yml` — auto-responder that
-  handles assignment-request comments on `good first issue` and
+  `FEATURE_REQUEST.yml`, `BLOG_POST.yml`, `PAGE_FEEDBACK.yml` — 5 templates;
+  title prefixes (`[Docs]: `, `bug: `, `feat: `, `blog: `, `page feedback: `)
+  and template-level `type:` fields (set automatically — do not override)
+- `.github/workflows/first-timer-response.yml` — auto-responder that handles
+  assignment-request comments on `good first issue` and
   `triage:accepted:needs-pr` issues
-- `.github/component-label-map.yml`, `.github/component-owners.yml` —
-  PR-only auto-labeling via `pull_request_target`. **Issues are not
-  auto-labeled by any workflow.**
-- `gh` CLI: `gh issue close --help` — valid `--reason` values are
-  `completed`, `not planned`, `duplicate`
-- Sibling skill `otel-issue-draft/SKILL.md` — validated label taxonomy,
-  PR-only label warning (`#pr-only-labels-do-not-suggest`),
-  `type:discussion` deprecation (`#type`), 5-template list
-- Sibling skill `otel-triage/SKILL.md` — this agent's orchestrator;
-  provides `<repo_profile>` and `<evaluation_profiles>` XML blocks
-- Plugin: `${CLAUDE_PLUGIN_ROOT}/data/opentelemetry-website.yml` — default
-  repo profile for `open-telemetry/opentelemetry.io`
+- `.github/component-label-map.yml`, `.github/component-owners.yml` — PR-only
+  auto-labeling via `pull_request_target`. **Issues are not auto-labeled by any
+  workflow.**
+- `gh` CLI: `gh issue close --help` — valid `--reason` values are `completed`,
+  `not planned`, `duplicate`
+- Sibling skill `otel-issue-draft/SKILL.md` — validated label taxonomy, PR-only
+  label warning (`#pr-only-labels-do-not-suggest`), `type:discussion`
+  deprecation (`#type`), 5-template list
+- Sibling skill `otel-triage/SKILL.md` — this agent's orchestrator; provides
+  `<repo_profile>` and `<evaluation_profiles>` XML blocks
+- Plugin: `${CLAUDE_PLUGIN_ROOT}/data/opentelemetry-website.yml` — default repo
+  profile for `open-telemetry/opentelemetry.io`
 - Plugin: `${CLAUDE_PLUGIN_ROOT}/schemas/triage-profiles.schema.json` — profile
   schema

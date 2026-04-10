@@ -1,10 +1,10 @@
 ---
 name: otel-issue-draft
 description: >-
-  Draft GitHub issues for opentelemetry.io following the real issue
-  templates under `.github/ISSUE_TEMPLATE/`, the contributing guide, and
-  the repo's live label taxonomy. Use when creating issue drafts from
-  investigation findings or conversation context.
+  Draft GitHub issues for opentelemetry.io following the real issue templates
+  under `.github/ISSUE_TEMPLATE/`, the contributing guide, and the repo's live
+  label taxonomy. Use when creating issue drafts from investigation findings or
+  conversation context.
 argument-hint: '<description of issue to draft>'
 allowed-tools: Read Grep
 model: haiku
@@ -13,10 +13,10 @@ effort: low
 
 # OTel Issue Draft
 
-Draft ready-to-paste GitHub issues for `open-telemetry/opentelemetry.io`.
-Every rule in this skill is grounded in a source-of-truth file — if a
-claim here conflicts with one of those files, trust the file and update
-this skill. See the [References](#references) section at the end.
+Draft ready-to-paste GitHub issues for `open-telemetry/opentelemetry.io`. Every
+rule in this skill is grounded in a source-of-truth file — if a claim here
+conflicts with one of those files, trust the file and update this skill. See the
+[References](#references) section at the end.
 
 ## When to Use
 
@@ -30,24 +30,24 @@ this skill. See the [References](#references) section at the end.
 The repo has **five** issue templates under `.github/ISSUE_TEMPLATE/`.
 Auto-detect type from context, or accept an explicit type from the user.
 
-| Template file         | Title prefix     | Use for                                                |
-| --------------------- | ---------------- | ------------------------------------------------------ |
-| `DOCS_UPDATE.yml`     | `[Docs]: `       | Documentation errors, missing content, outdated info  |
-| `ISSUE_REPORT.yml`    | `bug: `          | Site bugs, broken functionality, CI/workflow issues   |
-| `FEATURE_REQUEST.yml` | `feat: `         | New site features, tooling improvements               |
-| `BLOG_POST.yml`       | `blog: `         | Blog post proposals (auto-applies `blog` label)       |
-| `PAGE_FEEDBACK.yml`   | `page feedback: ` | Feedback from the "was this page helpful?" widget     |
+| Template file         | Title prefix      | Use for                                              |
+| --------------------- | ----------------- | ---------------------------------------------------- |
+| `DOCS_UPDATE.yml`     | `[Docs]: `        | Documentation errors, missing content, outdated info |
+| `ISSUE_REPORT.yml`    | `bug: `           | Site bugs, broken functionality, CI/workflow issues  |
+| `FEATURE_REQUEST.yml` | `feat: `          | New site features, tooling improvements              |
+| `BLOG_POST.yml`       | `blog: `          | Blog post proposals (auto-applies `blog` label)      |
+| `PAGE_FEEDBACK.yml`   | `page feedback: ` | Feedback from the "was this page helpful?" widget    |
 
 Notes on template metadata:
 
-- `DOCS_UPDATE.yml` sets `type: bug` at the template level (GitHub's
-  new issue "type" classification). Drafters don't set this manually.
+- `DOCS_UPDATE.yml` sets `type: bug` at the template level (GitHub's new issue
+  "type" classification). Drafters don't set this manually.
 - `BLOG_POST.yml` auto-applies `labels: ['blog']`. Don't duplicate.
 
 ## Template Structures
 
-Each snippet below matches its YAML field-for-field. `(required)` marks
-fields that the template enforces.
+Each snippet below matches its YAML field-for-field. `(required)` marks fields
+that the template enforces.
 
 ### Docs Update (`[Docs]: `)
 
@@ -103,8 +103,8 @@ E.g., Chrome 120 on macOS 14 (Apple Silicon)
 
 ### Blog Post Proposal (`blog: `)
 
-`BLOG_POST.yml` auto-applies the `blog` label. For writing or reviewing
-the actual post afterward, see the `otel-blog-review` skill.
+`BLOG_POST.yml` auto-applies the `blog` label. For writing or reviewing the
+actual post afterward, see the `otel-blog-review` skill.
 
 ```markdown
 ### Blog Post Title (required)
@@ -129,7 +129,8 @@ the actual post afterward, see the `otel-blog-review` skill.
 
 ### Sponsor Name
 
-<maintainer or approver from the sponsoring SIG; ideally from a different company>
+<maintainer or approver from the sponsoring SIG; ideally from a different
+company>
 
 ### Additional Information
 
@@ -138,8 +139,8 @@ the actual post afterward, see the `otel-blog-review` skill.
 
 ### Page Feedback (`page feedback: `)
 
-Filed by the "was this page helpful?" widget when a visitor clicks "no".
-Rarely hand-drafted, but follow the shape if you do.
+Filed by the "was this page helpful?" widget when a visitor clicks "no". Rarely
+hand-drafted, but follow the shape if you do.
 
 ```markdown
 ### URL (required)
@@ -155,32 +156,31 @@ https://opentelemetry.io/...
 
 From `content/en/docs/contributing/issues.md`:
 
-- **Be specific.** Describe what is missing, out of date, wrong, or
-  needs improvement. "Fix the security docs" is too broad; "Add details
-  to the 'Restricting network access' topic" is actionable.
+- **Be specific.** Describe what is missing, out of date, wrong, or needs
+  improvement. "Fix the security docs" is too broad; "Add details to the
+  'Restricting network access' topic" is actionable.
 - **Explain user impact.** What does this cost someone reading the site?
 - **Right-size the scope.** Break broad problems into smaller, reviewable
   issues. One issue = one reasonable unit of work.
-- **Search first.** Check existing issues for duplicates or related
-  work before filing.
-- **Reference related issues and PRs** with `#1234` for the same repo,
-  or the full URL for cross-repo references. Example: `Introduced by #987654`.
-- **Follow the Code of Conduct.** Respect fellow contributors. "The
-  docs are terrible" is not helpful feedback.
+- **Search first.** Check existing issues for duplicates or related work before
+  filing.
+- **Reference related issues and PRs** with `#1234` for the same repo, or the
+  full URL for cross-repo references. Example: `Introduced by #987654`.
+- **Follow the Code of Conduct.** Respect fellow contributors. "The docs are
+  terrible" is not helpful feedback.
 
 ## Label Taxonomy
 
-Suggest labels based on the issue content. The labels below are
-validated against the live label set on
-`open-telemetry/opentelemetry.io`. Labels starting `missing:*` and
-`ready-to-be-merged` are **PR workflow labels** and never belong on an
-issue draft — see [PR-only labels](#pr-only-labels-do-not-suggest) below.
+Suggest labels based on the issue content. The labels below are validated
+against the live label set on `open-telemetry/opentelemetry.io`. Labels starting
+`missing:*` and `ready-to-be-merged` are **PR workflow labels** and never belong
+on an issue draft — see [PR-only labels](#pr-only-labels-do-not-suggest) below.
 
 ### Area labels
 
-- `CI/infra`, `Github actions`, `github_actions` — workflow / CI issues
-  (both the space and underscore spellings exist in the repo as
-  separate labels — that's a repo quirk, not a typo)
+- `CI/infra`, `Github actions`, `github_actions` — workflow / CI issues (both
+  the space and underscore spellings exist in the repo as separate labels —
+  that's a repo quirk, not a typo)
 - `blog` — blog content (auto-applied to blog PRs)
 - `docs` — generic docs issues and PRs
 - `docs:mobile`, `docs:blog`, `docs:registry`, `docs:javascript`,
@@ -198,23 +198,22 @@ issue draft — see [PR-only labels](#pr-only-labels-do-not-suggest) below.
 
 ### SIG labels
 
-Auto-applied to PRs that touch the matching `content/en/docs/...` path
-via `.github/component-label-map.yml`. For issues, add manually.
+Auto-applied to PRs that touch the matching `content/en/docs/...` path via
+`.github/component-label-map.yml`. For issues, add manually.
 
-`sig:android`, `sig:collector`, `sig:collector:refactor`, `sig:cpp`,
-`sig:demo`, `sig:dotnet`, `sig:enduser`, `sig:erlang`, `sig:faas`,
-`sig:go`, `sig:helm`, `sig:java`, `sig:javascript`, `sig:kotlin`,
-`sig:obi`, `sig:operator`, `sig:php`, `sig:profiling`, `sig:python`,
-`sig:ruby`, `sig:rust`, `sig:security`, `sig:semconv`, `sig:spec`,
-`sig:swift`
+`sig:android`, `sig:collector`, `sig:collector:refactor`, `sig:cpp`, `sig:demo`,
+`sig:dotnet`, `sig:enduser`, `sig:erlang`, `sig:faas`, `sig:go`, `sig:helm`,
+`sig:java`, `sig:javascript`, `sig:kotlin`, `sig:obi`, `sig:operator`,
+`sig:php`, `sig:profiling`, `sig:python`, `sig:ruby`, `sig:rust`,
+`sig:security`, `sig:semconv`, `sig:spec`, `sig:swift`
 
 ### Localization labels
 
 Auto-applied to PRs that touch `content/<lang>/**` via
 `component-label-map.yml`.
 
-`lang:bn`, `lang:es`, `lang:fr`, `lang:ja`, `lang:pl`, `lang:pt`,
-`lang:ro`, `lang:uk`, `lang:zh`
+`lang:bn`, `lang:es`, `lang:fr`, `lang:ja`, `lang:pl`, `lang:pt`, `lang:ro`,
+`lang:uk`, `lang:zh`
 
 ### Effort estimates
 
@@ -241,9 +240,8 @@ Auto-applied to PRs that touch `content/<lang>/**` via
 - `type:copyedit` — copyediting / small textual fixes
 - `type:question` — a question, not a bug or feature
 
-> **Do not use `type:discussion`.** Its own label description says
-> "Do not use, convert discussion issues into real Discussions." Skip
-> it in drafts.
+> **Do not use `type:discussion`.** Its own label description says "Do not use,
+> convert discussion issues into real Discussions." Skip it in drafts.
 
 ### Assignment / availability
 
@@ -252,13 +250,12 @@ Use these to signal that an issue is grabbable by a contributor.
 - `good first issue` — good for newcomers
 - `help wanted` — extra attention is needed
 - `contribfest` — issues tagged for contribfest events (KubeCon, etc.)
-- `mentorship:bloomberg` — curated for the Bloomberg OSS Mentorship
-  program
+- `mentorship:bloomberg` — curated for the Bloomberg OSS Mentorship program
 
 ### PR-only labels (do not suggest) {#pr-only-labels-do-not-suggest}
 
-These labels are managed by PR workflows. They should never appear in
-an issue draft:
+These labels are managed by PR workflows. They should never appear in an issue
+draft:
 
 - `ready-to-be-merged`
 - `missing:cla`, `missing:sig-approval`, `missing:docs-approval`
@@ -266,32 +263,31 @@ an issue draft:
 
 ### Auto-applied labels (informational)
 
-`component-label-map.yml` auto-applies some labels to PRs based on
-changed file paths (not to issues): `blog`, `registry`, `i18n`,
-`lang:*`, and several `sig:*`. You can still suggest these on an issue
-manually; they just won't be set automatically on an issue the way they
-are on a PR.
+`component-label-map.yml` auto-applies some labels to PRs based on changed file
+paths (not to issues): `blog`, `registry`, `i18n`, `lang:*`, and several
+`sig:*`. You can still suggest these on an issue manually; they just won't be
+set automatically on an issue the way they are on a PR.
 
 ## Formatting Rules
 
 - **Title** uses the exact template prefix (see [Issue Types](#issue-types))
   plus a concise summary.
-- **Body** uses markdown with sections matching the chosen template.
-  Keep the template's exact field labels — GitHub maps them back to
-  template fields for search and filtering.
-- **References to other issues/PRs**: `#1234` for the same repo, full
-  URL for cross-repo. From `issues.md:76-78`.
+- **Body** uses markdown with sections matching the chosen template. Keep the
+  template's exact field labels — GitHub maps them back to template fields for
+  search and filtering.
+- **References to other issues/PRs**: `#1234` for the same repo, full URL for
+  cross-repo. From `issues.md:76-78`.
 - **Code snippets** use fenced blocks with language tags.
 - **File paths** are relative to repo root (e.g.,
   `content/en/docs/concepts/what-is-otel.md`).
 - **Concise, actionable** descriptions — no filler.
-- Wrap body prose at 80 characters for readability (convention, not
-  enforced by GitHub).
+- Wrap body prose at 80 characters for readability (convention, not enforced by
+  GitHub).
 
 ## Output Format
 
-Produce a fenced block with title, suggested labels, and body. Labels
-go comma-separated so they can be passed directly to
+Produce a fenced block with title, suggested labels, and body. Labels go
+comma-separated so they can be passed directly to
 `gh issue create --label "<comma,separated>"`.
 
 ```
@@ -326,15 +322,13 @@ Related to #1234.
 Source-of-truth files — if this skill drifts from them, trust the file:
 
 - `.github/ISSUE_TEMPLATE/DOCS_UPDATE.yml` — docs issue template
-- `.github/ISSUE_TEMPLATE/ISSUE_REPORT.yml` — bug / website issue
-  template
-- `.github/ISSUE_TEMPLATE/FEATURE_REQUEST.yml` — feature request
-  template
-- `.github/ISSUE_TEMPLATE/BLOG_POST.yml` — blog post proposal template
-  (7 fields; auto-applies `blog` label)
+- `.github/ISSUE_TEMPLATE/ISSUE_REPORT.yml` — bug / website issue template
+- `.github/ISSUE_TEMPLATE/FEATURE_REQUEST.yml` — feature request template
+- `.github/ISSUE_TEMPLATE/BLOG_POST.yml` — blog post proposal template (7
+  fields; auto-applies `blog` label)
 - `.github/ISSUE_TEMPLATE/PAGE_FEEDBACK.yml` — page feedback template
-- `content/en/docs/contributing/issues.md` — user-facing guidance on
-  filing great issues
+- `content/en/docs/contributing/issues.md` — user-facing guidance on filing
+  great issues
 - `.github/component-label-map.yml` — path-based auto-labeling for PRs
 - Live label set (refresh as needed):
   `gh label list --repo open-telemetry/opentelemetry.io --limit 200`

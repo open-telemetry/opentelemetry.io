@@ -23,9 +23,9 @@ omitted.
 When targeting `open-telemetry/opentelemetry.io`, every rule in this skill is
 grounded in a source-of-truth file. For the full validated label taxonomy and
 the PR-only labels that must never be applied to issues, see the sibling skill
-`otel-issue-draft`. For process rules that connect triaged issues to PR
-reviews (e.g., the `triage:accepted` linked-issue requirement), see
-`otel-pr-review`. See [References](#references) at the bottom.
+`otel-issue-draft`. For process rules that connect triaged issues to PR reviews
+(e.g., the `triage:accepted` linked-issue requirement), see `otel-pr-review`.
+See [References](#references) at the bottom.
 
 ## When to Use {#when-to-use}
 
@@ -106,8 +106,9 @@ ls "$PROFILE_FILE" 2>/dev/null || {
 }
 ```
 
-Read and validate against `${CLAUDE_PLUGIN_ROOT}/schemas/triage-profiles.schema.json`.
-Abort with a clear error if validation fails.
+Read and validate against
+`${CLAUDE_PLUGIN_ROOT}/schemas/triage-profiles.schema.json`. Abort with a clear
+error if validation fails.
 
 ### 4. Merge profiles
 
@@ -217,12 +218,11 @@ issues per `--count`.
 
 Group issues for analysis (especially relevant for `--parallel` mode).
 
-> **Note for `open-telemetry/opentelemetry.io`.** No workflow
-> auto-labels issues in this repo. `.github/component-label-map.yml`
-> and `.github/component-owners.yml` trigger on `pull_request_target`
-> only. Any `sig:*`/`lang:*`/`docs:*` label already on an issue was
-> applied manually by a triager, so it's authoritative. Unlabeled
-> issues need categorization here.
+> **Note for `open-telemetry/opentelemetry.io`.** No workflow auto-labels issues
+> in this repo. `.github/component-label-map.yml` and
+> `.github/component-owners.yml` trigger on `pull_request_target` only. Any
+> `sig:*`/`lang:*`/`docs:*` label already on an issue was applied manually by a
+> triager, so it's authoritative. Unlabeled issues need categorization here.
 
 ### By Existing Labels
 
@@ -291,10 +291,10 @@ Infer from title prefix and body structure:
 # Calculate from updatedAt field
 ```
 
-Staleness tiers below are heuristic only — there is no auto-close
-automation for issues in `open-telemetry/opentelemetry.io` (unlike PRs,
-which have a 21-day stale rule per `sig-practices.md:153-155`). Use
-these as triage signals, not as policy:
+Staleness tiers below are heuristic only — there is no auto-close automation for
+issues in `open-telemetry/opentelemetry.io` (unlike PRs, which have a 21-day
+stale rule per `sig-practices.md:153-155`). Use these as triage signals, not as
+policy:
 
 | Tier     | Days Since Last Update |
 | -------- | ---------------------- |
@@ -386,59 +386,56 @@ symptoms.
 | LOW    | Ambiguous description; cross-cutting; external blockers; high engagement needing judgment                          |
 
 **Triage actions** (internal decision tokens — see
-[Close-Reason Mapping](#close-reason-mapping) for the valid `gh
-issue close --reason` value each token maps to):
+[Close-Reason Mapping](#close-reason-mapping) for the valid
+`gh issue close --reason` value each token maps to):
 
-| Action                             | When                                                     |
-| ---------------------------------- | -------------------------------------------------------- |
-| `close:completed`                  | A merged PR resolved the issue; referenced content now exists |
-| `close:stale`                      | No activity, referenced content updated, likely resolved |
-| `close:duplicate`                  | Near-duplicate of #XXXX                                  |
-| `close:wontfix`                    | Out of scope or superseded                               |
-| `close:invalid`                    | Spam, unclear, not a real issue                          |
-| `label:triage:accepted:needs-pr`   | Valid, actionable, needs contributor                     |
-| `label:triage:accepted`            | Valid, may have someone on it                            |
-| `label:triage:deciding:needs-info` | Missing details from reporter                            |
-| `label:triage:deciding:blocked`    | Blocked on external dependency                           |
-| `label:triage:deciding:needs-mentor-or-sponsor` | Needs a mentor/sponsor (`sig-practices.md:98`) |
-| `label:triage:deciding`            | Needs maintainer discussion                              |
-| `label:good first issue`           | Small, well-scoped onboarding task (label is `good first issue` — spaces, no hyphens) |
-| `add-labels`                       | Only needs co-ownership (`sig:*`/`lang:*`/`docs:*`) / type / area labels added |
+| Action                                          | When                                                                                  |
+| ----------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `close:completed`                               | A merged PR resolved the issue; referenced content now exists                         |
+| `close:stale`                                   | No activity, referenced content updated, likely resolved                              |
+| `close:duplicate`                               | Near-duplicate of #XXXX                                                               |
+| `close:wontfix`                                 | Out of scope or superseded                                                            |
+| `close:invalid`                                 | Spam, unclear, not a real issue                                                       |
+| `label:triage:accepted:needs-pr`                | Valid, actionable, needs contributor                                                  |
+| `label:triage:accepted`                         | Valid, may have someone on it                                                         |
+| `label:triage:deciding:needs-info`              | Missing details from reporter                                                         |
+| `label:triage:deciding:blocked`                 | Blocked on external dependency                                                        |
+| `label:triage:deciding:needs-mentor-or-sponsor` | Needs a mentor/sponsor (`sig-practices.md:98`)                                        |
+| `label:triage:deciding`                         | Needs maintainer discussion                                                           |
+| `label:good first issue`                        | Small, well-scoped onboarding task (label is `good first issue` — spaces, no hyphens) |
+| `add-labels`                                    | Only needs co-ownership (`sig:*`/`lang:*`/`docs:*`) / type / area labels added        |
 
-**Accepted issues must carry the `sig-practices.md:77-107` mandatory
-set.** When emitting `label:triage:accepted*` or `add-labels`, also
-apply — if not already present — one co-ownership label
-(`sig:*`, `lang:*`, or `docs:*`) and verify an issue type is set
-(GitHub-native `bug`/`enhancement`, usually inherited from the issue
-template's `type:` field, or one of the label-based types
-`type:question` / `type:copyedit`). Do not manually set GitHub-native
-types; they come from the template.
+**Accepted issues must carry the `sig-practices.md:77-107` mandatory set.** When
+emitting `label:triage:accepted*` or `add-labels`, also apply — if not already
+present — one co-ownership label (`sig:*`, `lang:*`, or `docs:*`) and verify an
+issue type is set (GitHub-native `bug`/`enhancement`, usually inherited from the
+issue template's `type:` field, or one of the label-based types `type:question`
+/ `type:copyedit`). Do not manually set GitHub-native types; they come from the
+template.
 
-**Never suggest PR-only labels on issues.** `ready-to-be-merged`,
-`missing:cla`, `missing:docs-approval`, `missing:sig-approval`,
-`sig-approval-missing`, `auto-update`, `0-meta`, `admin` are managed
-by PR workflows and don't belong on issues. See `otel-issue-draft`
-skill, `#pr-only-labels-do-not-suggest`.
+**Never suggest PR-only labels on issues.** `ready-to-be-merged`, `missing:cla`,
+`missing:docs-approval`, `missing:sig-approval`, `sig-approval-missing`,
+`auto-update`, `0-meta`, `admin` are managed by PR workflows and don't belong on
+issues. See `otel-issue-draft` skill, `#pr-only-labels-do-not-suggest`.
 
-**Never suggest `type:discussion`.** The label's own description says
-"Do not use, convert discussion issues into real Discussions." If the
-issue reads as open-ended conversation, recommend `close:wontfix` (→
-`--reason "not planned"`) with a suggested comment pointing to
-GitHub Discussions.
+**Never suggest `type:discussion`.** The label's own description says "Do not
+use, convert discussion issues into real Discussions." If the issue reads as
+open-ended conversation, recommend `close:wontfix` (→ `--reason "not planned"`)
+with a suggested comment pointing to GitHub Discussions.
 
 **Never recommend `--add-assignee` for first-time contributors.**
-`content/en/docs/contributing/_index.md:19-31`: issues are not
-assigned to contributors who have not already landed a PR (absent a
-confirmed mentorship). If an assignment-request comment is present,
-note that `.github/workflows/first-timer-response.yml` already
-auto-responds; do not emit an assign command.
+`content/en/docs/contributing/_index.md:19-31`: issues are not assigned to
+contributors who have not already landed a PR (absent a confirmed mentorship).
+If an assignment-request comment is present, note that
+`.github/workflows/first-timer-response.yml` already auto-responds; do not emit
+an assign command.
 
 **`triage:followup` is a manual convention, not automation.**
-`sig-practices.md:124-127` describes an automated 14-day re-triage
-marker, but the `triage:followup` label does not currently exist in
-the live label set and no workflow applies it. Treat it as a manual
-marker a triager may apply when walking stale `triage:deciding`
-issues. Flag to maintainers if you'd like this automated.
+`sig-practices.md:124-127` describes an automated 14-day re-triage marker, but
+the `triage:followup` label does not currently exist in the live label set and
+no workflow applies it. Treat it as a manual marker a triager may apply when
+walking stale `triage:deciding` issues. Flag to maintainers if you'd like this
+automated.
 
 ---
 
@@ -654,8 +651,8 @@ handles fetching, filtering, categorization, report assembly, and state
 management. The token-expensive per-issue analysis (reading full issue bodies,
 comment threads, git log, PR searches, codebase cross-referencing) runs through
 `otel-issue-triager` subagents on a cheaper model (Sonnet). See
-`.claude/agents/otel-issue-triager.md` for the full subagent spec — it
-mirrors the actions, confidence tiers, link-format rules, and
+`.claude/agents/otel-issue-triager.md` for the full subagent spec — it mirrors
+the actions, confidence tiers, link-format rules, and
 [Close-Reason Mapping](#close-reason-mapping) used here.
 
 ### Execution flow
@@ -706,11 +703,10 @@ The built-in `opentelemetry-website` profile defines the full taxonomy for
 
 **For `open-telemetry/opentelemetry.io` specifically**, the sibling skill
 `otel-issue-draft` has the validated taxonomy grouped by area / SIG /
-localization / effort / priority / triage / type / assignment, already
-checked against the live label set. Treat it as the source of truth and
-refer to it instead of hand-typing label names. Also honor the
-PR-only labels warning in that skill
-(`#pr-only-labels-do-not-suggest`) — never apply those to an issue.
+localization / effort / priority / triage / type / assignment, already checked
+against the live label set. Treat it as the source of truth and refer to it
+instead of hand-typing label names. Also honor the PR-only labels warning in
+that skill (`#pr-only-labels-do-not-suggest`) — never apply those to an issue.
 
 ---
 
@@ -718,21 +714,19 @@ PR-only labels warning in that skill
 
 ### Close-Reason Mapping {#close-reason-mapping}
 
-The internal action tokens from [Phase 3](#phase-3-analyze-issues) are
-decision labels, not `gh` command flags. `gh issue close --reason`
-accepts only three values (`gh issue close --help`); map as follows
-when emitting commands:
+The internal action tokens from [Phase 3](#phase-3-analyze-issues) are decision
+labels, not `gh` command flags. `gh issue close --reason` accepts only three
+values (`gh issue close --help`); map as follows when emitting commands:
 
-| Internal action   | `gh issue close --reason` value |
-| ----------------- | ------------------------------- |
-| `close:completed` | `"completed"`                   |
-| `close:stale`     | `"not planned"`                 |
-| `close:wontfix`   | `"not planned"`                 |
-| `close:invalid`   | `"not planned"`                 |
+| Internal action   | `gh issue close --reason` value                         |
+| ----------------- | ------------------------------------------------------- |
+| `close:completed` | `"completed"`                                           |
+| `close:stale`     | `"not planned"`                                         |
+| `close:wontfix`   | `"not planned"`                                         |
+| `close:invalid`   | `"not planned"`                                         |
 | `close:duplicate` | `"duplicate"` — prefer `--duplicate-of <N>` (see below) |
 
-Never emit `--reason "stale"` / `"wontfix"` / `"invalid"` — `gh`
-rejects them.
+Never emit `--reason "stale"` / `"wontfix"` / `"invalid"` — `gh` rejects them.
 
 ### Add triage label
 
@@ -840,40 +834,38 @@ This issue has been triaged as a good first issue for new contributors.
 Source-of-truth files — if this skill drifts from them, trust the file:
 
 - `content/en/docs/contributing/sig-practices.md:77-127` — mandatory
-  co-ownership + `triage:*` + type labels on every triaged issue;
-  optional effort / priority / special tags; `triage:followup`
-  convention (note: the label does not currently exist in the live
-  label set and no workflow automates it — manual only)
-- `content/en/docs/contributing/issues.md:71-80` — scope, search-first,
-  issue linking syntax, Code of Conduct
-- `content/en/docs/contributing/_index.md:19-31` — first-time
-  contributor "we do not assign issues" policy
+  co-ownership + `triage:*` + type labels on every triaged issue; optional
+  effort / priority / special tags; `triage:followup` convention (note: the
+  label does not currently exist in the live label set and no workflow automates
+  it — manual only)
+- `content/en/docs/contributing/issues.md:71-80` — scope, search-first, issue
+  linking syntax, Code of Conduct
+- `content/en/docs/contributing/_index.md:19-31` — first-time contributor "we do
+  not assign issues" policy
 - `.github/ISSUE_TEMPLATE/DOCS_UPDATE.yml`, `ISSUE_REPORT.yml`,
-  `FEATURE_REQUEST.yml`, `BLOG_POST.yml`, `PAGE_FEEDBACK.yml` — the 5
-  real templates; title prefixes (`[Docs]: `, `bug: `, `feat: `,
-  `blog: `, `page feedback: `) and template-level `type:` fields
+  `FEATURE_REQUEST.yml`, `BLOG_POST.yml`, `PAGE_FEEDBACK.yml` — the 5 real
+  templates; title prefixes (`[Docs]: `, `bug: `, `feat: `, `blog: `,
+  `page feedback: `) and template-level `type:` fields
 - `.github/workflows/first-timer-response.yml` — auto-responds to
-  assignment-request comments on `good first issue` /
-  `triage:accepted:needs-pr` issues
-- `.github/component-label-map.yml`, `.github/component-owners.yml`
-  — PR-only auto-labeling (trigger `pull_request_target`); no
-  workflow auto-labels issues
-- `.github/scripts/pr-approval-labels.sh` — source of the
-  `ready-to-be-merged` and `missing:*` labels that never belong on
+  assignment-request comments on `good first issue` / `triage:accepted:needs-pr`
   issues
-- `gh` CLI: `gh issue close --help` — the only valid `--reason`
-  values are `completed`, `not planned`, and `duplicate`. The
-  `--duplicate-of <N>` flag is preferred for duplicates.
+- `.github/component-label-map.yml`, `.github/component-owners.yml` — PR-only
+  auto-labeling (trigger `pull_request_target`); no workflow auto-labels issues
+- `.github/scripts/pr-approval-labels.sh` — source of the `ready-to-be-merged`
+  and `missing:*` labels that never belong on issues
+- `gh` CLI: `gh issue close --help` — the only valid `--reason` values are
+  `completed`, `not planned`, and `duplicate`. The `--duplicate-of <N>` flag is
+  preferred for duplicates.
 - Sibling skill `otel-issue-draft/SKILL.md` — validated label taxonomy,
-  `#pr-only-labels-do-not-suggest`, `type:discussion` deprecation,
-  5-template reference
+  `#pr-only-labels-do-not-suggest`, `type:discussion` deprecation, 5-template
+  reference
 - Sibling skill `otel-pr-review/SKILL.md` — linked-issue requirement
   (`triage:accepted`), approval-label workflow
-- Sibling agent `.claude/agents/otel-issue-triager.md` — the subagent
-  spawned by this skill; mirrors actions, confidence tiers,
-  close-reason mapping, and link-format rules
-- Plugin: `${CLAUDE_PLUGIN_ROOT}/data/opentelemetry-website.yml` — default
-  repo profile (`sig_keywords`, `type_filters`, `category_buckets`,
-  `label_taxonomy`, `comment_templates`)
+- Sibling agent `.claude/agents/otel-issue-triager.md` — the subagent spawned by
+  this skill; mirrors actions, confidence tiers, close-reason mapping, and
+  link-format rules
+- Plugin: `${CLAUDE_PLUGIN_ROOT}/data/opentelemetry-website.yml` — default repo
+  profile (`sig_keywords`, `type_filters`, `category_buckets`, `label_taxonomy`,
+  `comment_templates`)
 - Plugin: `${CLAUDE_PLUGIN_ROOT}/schemas/triage-profiles.schema.json`,
   `${CLAUDE_PLUGIN_ROOT}/schemas/triage-state.schema.json`
