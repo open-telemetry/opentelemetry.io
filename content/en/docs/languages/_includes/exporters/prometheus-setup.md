@@ -1,11 +1,11 @@
 ## Prometheus
 
 To send your metric data to [Prometheus](https://prometheus.io/), you can either:
-- [enable Prometheus' OTLP Receiver](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver)
+- [Enable Prometheus' OTLP Receiver](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver)
 and use the [OTLP exporter](#otlp) (best practice),
-- [enable Prometheus' OTLP Receiver](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver)
-and [push Prometheus to the metrics endpoint directly](#push-metrics-directly) (for development or testing purposes),
-- or you can use the Prometheus exporter, a `MetricReader` that starts an HTTP server that collects metrics and serialize to Prometheus text format on request.
+- [Enable Prometheus' OTLP Receiver](https://prometheus.io/docs/guides/opentelemetry/#enable-the-otlp-receiver)
+and [push Prometheus to the metrics endpoint directly](#push-metrics-directly) (for development or testing purposes), or
+- Use the Prometheus exporter, a `MetricReader` that starts an HTTP server that collects metrics and serializes to Prometheus text format on request.
 
 ### Backend setup {#prometheus-setup}
 
