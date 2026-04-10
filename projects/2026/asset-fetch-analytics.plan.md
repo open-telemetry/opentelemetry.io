@@ -27,6 +27,8 @@ Analytics while preserving a reliable operational view in Netlify.
 - The `markdown-negotiation` Edge Function emits `asset_fetch` for Markdown
   delivery for negotiated page paths, with `original_path` when it differs from
   the resolved `*.md` path.
+- The `asset-tracking` Edge Function emits `asset_fetch` for explicit `.md`
+  requests and skips internal subrequests marked with `X-Asset-Fetch-Ga-Info`.
 
 We won't model asset requests as GA4 `page_view` events because asset requests
 are not HTML page loads, and treating them as page views would pollute site
@@ -459,6 +461,7 @@ Initial scope:
 
 - `/schemas/*`
 - Negotiated Markdown responses
+- Explicit `.md` requests
 
 Future optional scope:
 
@@ -478,6 +481,8 @@ Current route-specific rules:
   successful `3xx` redirects under `/schemas/*`
 - Negotiated Markdown: track only successful negotiated Markdown `GET 2xx`
   responses
+- Explicit `.md`: track only successful direct `GET 2xx` Markdown responses, and
+  skip any request marked with `X-Asset-Fetch-Ga-Info`
 
 This avoids inflating counts with failed or irrelevant requests.
 
@@ -587,12 +592,11 @@ Steps:
 1. **Negotiated Markdown tracking** — implemented in the `markdown-negotiation`
    Edge Function (`asset_path`, `original_path` when the request path differs,
    GET only, successful Markdown responses).
-2. **Direct `.md` pass-through tracking** — add a separate Edge Function for
-   explicit `.md` requests that pass through without Markdown negotiation.
-   Rationale: keeps `markdown-negotiation` focused on `Accept`-based
-   negotiation; direct `*.md` uses only `context.next()` (no alternate fetch),
-   so a small dedicated handler is simpler to test; a single combined entrypoint
-   can be revisited later if preferred.
+2. **Direct `.md` tracking** — implemented in the `asset-tracking` Edge Function
+   for explicit `.md` requests. Rationale: keeps `markdown-negotiation` focused
+   on `Accept`-based negotiation; direct `*.md` uses only `context.next()` (no
+   alternate fetch), so a small dedicated handler is simpler to test; a single
+   combined entrypoint can be revisited later if preferred.
 
    Internal fetches from `markdown-negotiation` should carry
    `X-Asset-Fetch-Ga-Info`; the direct-asset handler should treat the presence
@@ -600,6 +604,7 @@ Steps:
    avoid double-counting negotiated page requests. The same header can also
    expose compact debug info on responses, which keeps the mechanism simple and
    live-testable.
+
 3. Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
    files.
 4. Add `ua_category` if the classification is stable and low-cardinality.
@@ -708,8 +713,6 @@ marker.
 
 ### Other tasks
 
-- [ ] Add a separate Edge Function for direct `.md` pass-through requests (see
-      Phase 2 step 2 rationale).
 - [ ] Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
       files.
 - [ ] Add `ua_category` if the classification is stable and low-cardinality.
@@ -722,7 +725,14 @@ Reverse chronological: prepend a `### v…` section for each plan-changing PR; u
 
 ### v0.3-dev - TBD (not merged yet)
 
-- ...
+- Implemented phase 2.2 with a generic `asset-tracking` Edge Function for
+  explicit `.md` requests.
+- Added `X-Asset-Fetch-Ga-Info` as the shared marker for internal subrequests,
+  with direct asset tracking skipping any request where the header is present.
+- Added unit and live tests for explicit `.md` delivery and internal-marker
+  behavior.
+- Updated routing, summary, and tracked-path documentation to reflect explicit
+  `.md` tracking as live.
 
 ### v0.2
 

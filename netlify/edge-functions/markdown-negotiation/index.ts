@@ -18,6 +18,8 @@
  */
 
 import {
+  ASSET_FETCH_GA_INFO_HEADER,
+  INTERNAL_ASSET_FETCH_GA_INFO_VALUE,
   type AssetFetchEventParams,
   enqueueAssetFetchEvent,
   normalizeContentType,
@@ -148,7 +150,10 @@ async function fetchMarkdownVariant(
   originalMethod: string,
 ): Promise<Response> {
   const requestInit = {
-    headers: { accept: 'text/markdown' },
+    headers: {
+      accept: 'text/markdown',
+      [ASSET_FETCH_GA_INFO_HEADER]: INTERNAL_ASSET_FETCH_GA_INFO_VALUE,
+    },
   };
 
   if (originalMethod === 'HEAD') {

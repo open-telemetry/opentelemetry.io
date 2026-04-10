@@ -11,6 +11,10 @@ it differs from `asset_path`; `content_type` is read from the response headers.
 Non-2xx results fall back to the normal HTML page, which is covered by the
 site's client-side GA `page_view` instrumentation.
 
+Internal fetches for sibling `index.md` assets include `X-Asset-Fetch-Ga-Info`
+so the asset-tracking Edge Function can detect and skip those subrequests,
+avoiding duplicate `asset_fetch` events.
+
 Explicit `GET` requests to a `*.md` URL pass straight through and do **not**
 emit `asset_fetch` here.
 
