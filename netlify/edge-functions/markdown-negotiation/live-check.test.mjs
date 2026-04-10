@@ -37,6 +37,8 @@ function baseRef() {
 }
 
 const docsPath = '/docs/concepts/resources/';
+const docsIndexHtmlPath = '/docs/concepts/resources/index.html';
+const docsUppercaseIndexHtmlPath = '/docs/concepts/resources/index.HTML';
 
 test('GET /docs/concepts/resources/ with Accept: text/markdown → markdown + Vary: Accept', async () => {
   const ref = baseRef();
@@ -77,6 +79,53 @@ test('GET same URL with HTML preferred → HTML', async () => {
   assert.ok(
     text.includes('<!DOCTYPE html') || text.includes('<html'),
     'body should look like HTML',
+  );
+});
+
+test('GET /docs/concepts/resources/index.html with Accept: text/markdown → markdown + Vary: Accept', async () => {
+  const ref = baseRef();
+  const url = absUrl(docsIndexHtmlPath, ref);
+  const res = await fetch(url, {
+    headers: { accept: 'text/markdown' },
+  });
+  const ct = res.headers.get('content-type') ?? '';
+  const text = await res.text();
+  assert.equal(res.status, 200, `expected 200 for ${url}`);
+  assert.ok(
+    ct.toLowerCase().includes('text/markdown'),
+    `expected text/markdown content-type, got ${JSON.stringify(ct)}`,
+  );
+  assert.ok(
+    text.includes('# Resources'),
+    'body should contain "# Resources" (English docs index heading)',
+  );
+  assert.ok(
+    varyIncludesAccept(res.headers.get('vary')),
+    `Vary should include Accept, got ${JSON.stringify(res.headers.get('vary'))}`,
+  );
+});
+
+test('GET /docs/concepts/resources/index.HTML with Accept: text/markdown → redirect', async () => {
+  // This assertion is Netlify-specific: the platform appears to apply its
+  // Pretty URLs redirect behavior to uppercase `index.HTML` before the final
+  // negotiated Markdown response would be followed by the client.
+  const ref = baseRef();
+  const url = absUrl(docsUppercaseIndexHtmlPath, ref);
+  const res = await fetch(url, {
+    headers: { accept: 'text/markdown' },
+    redirect: 'manual',
+  });
+  assert.ok(
+    300 <= res.status && res.status <= 399,
+    `expected redirect (3xx), got ${res.status} for ${url}`,
+  );
+  const loc = res.headers.get('location');
+  assert.ok(loc, 'missing Location header');
+  const target = new URL(loc, url).href;
+  const expected = '/docs/concepts/resources/';
+  assert.ok(
+    target.endsWith(expected),
+    `Location should end with ${expected} (or without trailing slash), got ${JSON.stringify(loc)} → ${target}`,
   );
 });
 
