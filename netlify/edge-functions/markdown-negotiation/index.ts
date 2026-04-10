@@ -56,13 +56,15 @@ export default async function markdownNegotiation(
   headers.set('content-type', 'text/markdown; charset=utf-8');
   setVaryAccept(headers);
 
+  // GA4 asset_fetch: only for GET 2xx. Non-2xx falls back to HTML, tracked by
+  // client-side page_view. content_type is read from the response headers above.
   if (request.method === 'GET') {
     const assetPath = resolveMarkdownPath(url.pathname);
     const eventParams: Record<string, string | undefined> = {
       asset_group: 'markdown',
       asset_path: assetPath,
       asset_ext: 'md',
-      content_type: normalizeContentType('text/markdown; charset=utf-8'),
+      content_type: normalizeContentType(headers.get('content-type') ?? ''),
       status_code: String(markdownResponse.status),
     };
     if (url.pathname !== assetPath) {
