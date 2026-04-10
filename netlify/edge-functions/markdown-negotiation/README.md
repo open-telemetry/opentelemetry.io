@@ -11,6 +11,14 @@ it differs from `asset_path`; `content_type` is read from the response headers.
 Non-2xx results fall back to the normal HTML page, which is covered by the
 site's client-side GA `page_view` instrumentation.
 
+Explicit `GET` requests to a `*.md` URL pass straight through and do **not**
+emit `asset_fetch` here.
+
+## Unit tests
+
+From the repository root, run all edge-function unit tests, see
+[`../README.md`](../README.md).
+
 ### Live tests
 
 To run the live checks over a server run the `test:edge-functions:live` NPM

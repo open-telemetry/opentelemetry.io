@@ -11,7 +11,9 @@ changing module semantics for the rest of the repository.
 
 ## Testing
 
-From the repository root, run all edge-function unit tests with:
+Per-function testing, if any, is documented in each folder’s README.
+
+To run all edge-function unit tests, from the repository root:
 
 ```console
 npm run test:edge-functions

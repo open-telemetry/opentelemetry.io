@@ -582,6 +582,10 @@ Steps:
    GET only, successful Markdown responses).
 2. **Direct `.md` pass-through tracking** — add a separate Edge Function for
    explicit `.md` requests that pass through without Markdown negotiation.
+   Rationale: keeps `markdown-negotiation` focused on `Accept`-based
+   negotiation; direct `*.md` uses only `context.next()` (no alternate fetch),
+   so a small dedicated handler is simpler to test; a single combined entrypoint
+   can be revisited later if preferred.
 3. Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
    files.
 4. Add `ua_category` if the classification is stable and low-cardinality.
@@ -663,7 +667,8 @@ All done for this iteration.
 
 ### Other tasks
 
-- [ ] Add a separate Edge Function for direct `.md` pass-through requests.
+- [ ] Add a separate Edge Function for direct `.md` pass-through requests (see
+      Phase 2 step 2 rationale).
 - [ ] Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
       files.
 - [ ] Add `ua_category` if the classification is stable and low-cardinality.
@@ -682,7 +687,8 @@ Reverse chronological: prepend a `### v…` section for each plan-changing PR; u
   HEAD/POST), with possible later broadening to other methods; `asset_ext`
   wording (path suffix vs `yaml` for schemas); direct `.md` pass-through
   tracking deferred to a separate step; Markdown `index.html` handling made
-  intentionally case-sensitive to align with normal URL-path semantics.
+  intentionally case-sensitive to align with normal URL-path semantics; README
+  and Phase 2 note for unit tests, direct-`.md` deferral, separate-EF rationale.
 
 ### v0.1 - 2026-04-03
 
