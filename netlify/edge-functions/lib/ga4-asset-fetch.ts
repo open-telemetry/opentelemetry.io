@@ -9,6 +9,8 @@ const GA4_COLLECT_URL = 'https://www.google-analytics.com/mp/collect';
 const FALLBACK_CLIENT_ID = 'asset_fetch.anonymous';
 const MEASUREMENT_ID_ENV_NAME = 'HUGO_SERVICES_GOOGLEANALYTICS_ID';
 const API_SECRET_ENV_NAMES = ['GA4_API_SECRET'];
+export const ASSET_FETCH_GA_INFO_HEADER = 'x-asset-fetch-ga-info';
+export const INTERNAL_ASSET_FETCH_GA_INFO_VALUE = 'pending';
 
 let warnedNoNetlify = false;
 
@@ -85,6 +87,10 @@ export type AssetFetchContext = {
   waitUntil?: (promise: Promise<unknown>) => void;
   requestId?: string;
 };
+
+export function isInternalAssetFetchRequest(request: Request): boolean {
+  return request.headers.has(ASSET_FETCH_GA_INFO_HEADER);
+}
 
 /** `asset_group` values from the analytics plan. */
 export type AssetFetchEventGroup = 'schema' | 'markdown' | 'other';

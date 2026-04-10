@@ -3,7 +3,7 @@ title: GA4 asset fetch analytics plan
 date: 2026-04-10
 version: 0.2
 custodian: Patrice Chalin
-cSpell:ignore: GA4 BigQuery Netlify NDJSON referrer eventparams GOOGLEANALYTICS
+cSpell:ignore: GOOGLEANALYTICS trackability
 ---
 
 ## Goal
@@ -27,6 +27,9 @@ Analytics while preserving a reliable operational view in Netlify.
 - The `markdown-negotiation` Edge Function emits `asset_fetch` for Markdown
   delivery for negotiated page paths, with `original_path` when it differs from
   the resolved `*.md` path.
+- The `asset-tracking` Edge Function emits `asset_fetch` for explicit `.md` and
+  `*.txt` requests and skips internal subrequests marked with
+  `X-Asset-Fetch-Ga-Info`.
 
 We won't model asset requests as GA4 `page_view` events because asset requests
 are not HTML page loads, and treating them as page views would pollute site
@@ -117,7 +120,7 @@ This keeps reporting simple and avoids proliferating many event names.
 
 Send the following GA4 event parameters for every tracked asset request:
 
-- `asset_group`: one of: `schema`, `markdown`, `other`
+- `asset_group`: one of: `schema`, `markdown`, `text`, `other`
 - `asset_path`: path of the resource returned in the response, after Path
   resolution (for example `/schemas/1.40.0` or
   `/docs/concepts/context/index.md`)
@@ -459,6 +462,7 @@ Initial scope:
 
 - `/schemas/*`
 - Negotiated Markdown responses
+- Explicit `.md` and `.txt` requests
 
 Future optional scope:
 
@@ -478,8 +482,11 @@ Current route-specific rules:
   successful `3xx` redirects under `/schemas/*`
 - Negotiated Markdown: track only successful negotiated Markdown `GET 2xx`
   responses
+- Explicit `.md` and `.txt`: track direct `GET` requests to tracked asset URLs
+  regardless of response status, and skip any request marked with
+  `X-Asset-Fetch-Ga-Info`
 
-This avoids inflating counts with failed or irrelevant requests.
+This avoids inflating counts with irrelevant methods or internal subrequests.
 
 In the future we might broaden tracking to other HTTP methods, and for other
 response status codes.
@@ -587,16 +594,23 @@ Steps:
 1. **Negotiated Markdown tracking** — implemented in the `markdown-negotiation`
    Edge Function (`asset_path`, `original_path` when the request path differs,
    GET only, successful Markdown responses).
-2. **Direct `.md` pass-through tracking** — add a separate Edge Function for
-   explicit `.md` requests that pass through without Markdown negotiation.
-   Rationale: keeps `markdown-negotiation` focused on `Accept`-based
-   negotiation; direct `*.md` uses only `context.next()` (no alternate fetch),
-   so a small dedicated handler is simpler to test; a single combined entrypoint
-   can be revisited later if preferred.
-3. Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
-   files.
-4. Add `ua_category` if the classification is stable and low-cardinality.
-5. Build a shared GA4 exploration or Looker Studio report for the team.
+2. **Asset tracking** — implemented in the `asset-tracking` Edge Function for
+   explicit `.md` and `*.txt` requests. It tracks `GET` requests to tracked
+   asset URLs regardless of response status. Rationale: keeps
+   `markdown-negotiation` focused on `Accept`-based negotiation; direct asset
+   routes use only `context.next()` (no alternate fetch), so a small dedicated
+   handler is simpler to test; a single combined entrypoint can be revisited
+   later if preferred.
+
+   Internal fetches from `markdown-negotiation` should carry
+   `X-Asset-Fetch-Ga-Info`; the direct-asset handler should treat the presence
+   of that request header as an internal subrequest marker and skip tracking to
+   avoid double-counting negotiated page requests. The same header can also
+   expose compact debug info on responses, which keeps the mechanism simple and
+   live-testable.
+
+3. Add `ua_category` if the classification is stable and low-cardinality.
+4. Build a shared GA4 exploration or Looker Studio report for the team.
 
 ### Phase 3
 
@@ -645,6 +659,23 @@ to only count `2xx`.
 - Which documentation sections receive the most Markdown asset traffic?
 - What share of asset traffic is non-`200`?
 
+## Prior art
+
+Useful prior art for phase 2.2 and related documentation:
+
+- Cloudflare Workers subrequests:
+  <https://developers.cloudflare.com/workers/platform/limits/#subrequests>
+- Cloudflare analytics with Workers:
+  <https://developers.cloudflare.com/analytics/account-and-zone-analytics/analytics-with-workers/>
+- Envoy `x-envoy-internal` header:
+  <https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/headers.html#x-envoy-internal>
+- Envoy header sanitizing / internal headers:
+  <https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_conn_man/header_sanitizing.html>
+- NGINX subrequests:
+  <https://nginx.org/en/docs/dev/development_guide.html#subrequests>
+- Next.js middleware docs:
+  <https://nextjs.org/docs/pages/api-reference/file-conventions/middleware>
+
 ## References
 
 - GA4 Measurement Protocol:
@@ -672,29 +703,42 @@ This section broadly tracks the tasks for the implementation plan.
 
 All done for this iteration.
 
-### Next
-
-Add a temporary compiled-const debug response header for post-merge production
-sanity checks, for example
-`X-Asset-Fetch-Ga-Path-Debug: /schemas/1.40.0;trackable,config-present` or
-`none:<reason>`. Use it only to confirm the derived GA path and basic
-trackability/config state, not GA ingestion.
-
 ### Other tasks
 
-- [ ] Add a separate Edge Function for direct `.md` pass-through requests (see
-      Phase 2 step 2 rationale).
-- [ ] Extend tracking to plain-text assets such as `llms.txt` and other `*.txt`
-      files.
-- [ ] Add `ua_category` if the classification is stable and low-cardinality.
-- [ ] Build a shared GA4 exploration or Looker Studio report for the team.
+In no particular order:
+
+- Add `ua_category` if the classification is stable and low-cardinality.
+- Build a shared GA4 exploration or Looker Studio report for the team.
+- Add a temporary compiled-const debug response header for post-merge production
+  sanity checks, for example
+  `X-Asset-Fetch-Ga-Info: /schemas/1.40.0;trackable,config-present` or
+  `none:<reason>`. Use it only to confirm the derived GA path and basic
+  trackability/config state, not GA ingestion. In phase 2.2, the presence of the
+  same header on internal subrequests will also act as the duplicate-suppression
+  marker.
+- Report non-2XX and non-3XX responses from internal markdown-negotiation
+  subrequests.
 
 ## Edit history
 
 Reverse chronological: prepend a `### v…` section for each plan-changing PR; use
 `-dev` on the version until that change set is merged.
 
-### v0.2
+### v0.3 - 2026-04-10
+
+- Implemented phase 2.2/2.3 with a generic `asset-tracking` Edge Function for
+  explicit `.md` and `.txt` requests, with direct tracked asset URLs counted
+  regardless of response status.
+- Added `X-Asset-Fetch-Ga-Info` as the shared marker for internal subrequests,
+  with direct asset tracking skipping any request where the header is present.
+- Added unit and live tests for explicit `.md` and `.txt` delivery, plus
+  internal-marker behavior.
+- Added cross-function integration tests for negotiated Markdown deduplication
+  and direct `.md` pass-through into asset tracking.
+- Updated routing, summary, and tracked-path documentation to reflect explicit
+  `.md` and `.txt` tracking as live.
+
+### v0.2 - 2026-04-10
 
 - Clarified GA4 parameter semantics, especially `asset_path` and
   `original_path`, plus path-resolution wording and examples.

@@ -94,7 +94,7 @@ test('shouldTrackSchemaFetch accepts various yaml content types', () => {
   }
 });
 
-test('shouldTrackSchemaFetch rejects non-GET methods', () => {
+test('shouldTrackSchemaFetch returns false for non-GET methods', () => {
   for (const method of ['HEAD', 'POST', 'PUT', 'DELETE']) {
     const request = new Request('https://example.com/schemas/1.40.0', {
       method,
@@ -111,7 +111,7 @@ test('shouldTrackSchemaFetch rejects non-GET methods', () => {
   }
 });
 
-test('shouldTrackSchemaFetch rejects non-/schemas/ paths', () => {
+test('shouldTrackSchemaFetch returns false for non-/schemas/ paths', () => {
   const request = new Request('https://example.com/docs/');
   const response = new Response('', {
     headers: { 'content-type': 'application/yaml' },
@@ -120,7 +120,7 @@ test('shouldTrackSchemaFetch rejects non-/schemas/ paths', () => {
   assert.equal(shouldTrackSchemaFetch(request, response), false);
 });
 
-test('shouldTrackSchemaFetch rejects 4xx and 5xx responses', () => {
+test('shouldTrackSchemaFetch returns false for 4xx and 5xx responses', () => {
   for (const status of [400, 404, 500]) {
     const request = new Request('https://example.com/schemas/1.40.0');
     const response = new Response('', {
@@ -144,7 +144,7 @@ test('shouldTrackSchemaFetch accepts 3xx redirects', () => {
   assert.equal(shouldTrackSchemaFetch(request, response), true);
 });
 
-test('shouldTrackSchemaFetch rejects 2xx with non-yaml content type', () => {
+test('shouldTrackSchemaFetch returns false for 2xx with non-yaml content type', () => {
   const request = new Request('https://example.com/schemas/1.40.0');
   const response = new Response('<html></html>', {
     headers: { 'content-type': 'text/html' },

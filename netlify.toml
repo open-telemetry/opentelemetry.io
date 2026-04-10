@@ -23,6 +23,12 @@ path = "/*"
 function = "schema-analytics"
 path = "/schemas/*"
 
+[[edge_functions]]
+function = "asset-tracking"
+pattern = "/(.*)\\.(md|txt)$"
+
+# cSpell:ignore nosniff sameorigin
+
 [[headers]]
   for = "/*"
   [headers.values]
