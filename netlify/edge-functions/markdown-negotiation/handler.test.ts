@@ -148,6 +148,25 @@ test('handler bypasses negotiation for non-index html paths', async (t) => {
   assert.equal(docsHtmlResponse.status, 301);
   assert.equal(docsHtmlResponse.headers.get('location'), '/docs/');
 
+  const uppercaseIndexHtmlResponse = await markdownNegotiation(
+    new Request('https://example.com/docs/index.HTML', {
+      headers: { accept: 'text/markdown' },
+    }),
+    {
+      next: async () =>
+        new Response('<html>uppercase</html>', {
+          headers: { 'content-type': 'text/html; charset=utf-8' },
+          status: 200,
+        }),
+    },
+  );
+
+  assert.equal(fetched, false);
+  assert.equal(
+    await uppercaseIndexHtmlResponse.text(),
+    '<html>uppercase</html>',
+  );
+
   const fourOhFourResponse = await markdownNegotiation(
     new Request('https://example.com/404.html', {
       headers: { accept: 'text/markdown' },
