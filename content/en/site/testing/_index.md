@@ -1,10 +1,10 @@
 ---
 title: Testing
-description: Testing strategies, processes, and test pages.
+description: Checking and testing strategies, processes, and test pages.
 ---
 
-This section contains testing strategies, processes, and test pages used by
-website tests and deployed live checks.
+This section contains checking and testing strategies, processes, and test pages
+used by website tests and deployed live checks.
 
 > This section is under construction.
 
@@ -39,8 +39,8 @@ short and specific, and extract shared helpers when the same check repeats.
    strictness and diff quality matter.
 2. Add a short third argument as context, for example `HTTP status`,
    `Content-Type`, `Location`, `Request body`.
-3. Use `assert.match` when a regex expresses the intent more clearly than
-   `includes` or chained `ok` logic.
+3. Use `assert.match` when a regular expression can capture the intent more
+   clearly than `includes` or chained `ok` logic.
 4. Put shared assertion helpers in a module imported by the test suites that use
    them, colocated with those tests instead of copy-pasted across files. Other
    small, test-only utilities can live in the same module when it stays focused
