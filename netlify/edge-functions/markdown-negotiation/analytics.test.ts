@@ -14,7 +14,11 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  assertAssetFetchGa4Event,
+  assertAssetFetchParams,
   createWaitUntilSpy,
+  firstAssetFetchEvent,
+  firstAssetFetchParams,
   setupGa4CapturingFetchMock,
   setupNetlifyEnv,
 } from '../lib/test-helpers.ts';
@@ -54,30 +58,19 @@ test('GET markdown emits asset_fetch with original_path when path differs', asyn
     'text/markdown; charset=utf-8',
     'Content-Type',
   );
-  assert.strictEqual(ga4Bodies.length, 1, 'GA4 body count');
   assert.strictEqual(
     response.headers.get('x-asset-fetch-ga-info'),
     '/docs/index.md;ga-event-candidate,config-present',
     'X-Asset-Fetch-Ga-Info',
   );
 
-  const event = (
-    ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
-  )[0];
-  assert.strictEqual(event.name, 'asset_fetch', 'event name');
-  assert.strictEqual(event.params.asset_path, '/docs/index.md', 'asset_path');
-  assert.strictEqual(
-    event.params.content_type,
-    'text/markdown',
-    'content_type',
-  );
-  assert.strictEqual(event.params.status_code, '200', 'status_code');
-  assert.strictEqual(event.params.original_path, '/docs/', 'original_path');
-  assert.strictEqual(
-    event.params.event_emitter,
-    'negotiation',
-    'event_emitter',
-  );
+  assertAssetFetchGa4Event(firstAssetFetchEvent(ga4Bodies), {
+    asset_path: '/docs/index.md',
+    content_type: 'text/markdown',
+    status_code: '200',
+    original_path: '/docs/',
+    event_emitter: 'negotiation',
+  });
 });
 
 test('GET markdown includes original_path when request path differs from resolved md', async (t) => {
@@ -109,13 +102,11 @@ test('GET markdown includes original_path when request path differs from resolve
 
   await spy.flush();
 
-  assert.strictEqual(ga4Bodies.length, 1, 'GA4 body count');
-  const params = (
-    ga4Bodies[0].events as { params: Record<string, string> }[]
-  )[0].params;
-  assert.strictEqual(params.asset_path, '/docs/index.md', 'asset_path');
-  assert.strictEqual(params.original_path, '/docs/index.html', 'original_path');
-  assert.strictEqual(params.event_emitter, 'negotiation', 'event_emitter');
+  assertAssetFetchParams(firstAssetFetchParams(ga4Bodies), {
+    asset_path: '/docs/index.md',
+    original_path: '/docs/index.html',
+    event_emitter: 'negotiation',
+  });
 });
 
 test('GET direct .md URL currently passes through without asset_fetch', async (t) => {

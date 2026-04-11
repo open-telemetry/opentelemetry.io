@@ -13,31 +13,11 @@ import {
   ASSET_FETCH_GA_INFO_HEADER,
   INTERNAL_ASSET_FETCH_GA_INFO_VALUE,
 } from '../lib/ga4-asset-fetch.ts';
-
-/** Must match the key set in `live-check.mjs` before spawning `node --test`. */
-const LIVE_CHECK_BASE_URL_ENV = 'LIVE_CHECK_BASE_URL';
-
-function resolveBaseRef(raw) {
-  const withScheme = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
-  return new URL(withScheme.endsWith('/') ? withScheme : `${withScheme}/`);
-}
-
-function absUrl(path, baseRef) {
-  return new URL(path, baseRef).href;
-}
-
-function baseRef() {
-  const raw = process.env[LIVE_CHECK_BASE_URL_ENV]?.trim();
-  assert.ok(raw, 'Run live checks via: node .../live-check.mjs [-h] [BASE]');
-  return resolveBaseRef(raw);
-}
-
-function expectedConfigTag(baseRef) {
-  return (
-    'config-' +
-    (baseRef.hostname === 'opentelemetry.io' ? 'present' : 'missing')
-  );
-}
+import {
+  absUrl,
+  baseRef,
+  expectedConfigTag,
+} from '../lib/live-check-test-base.mjs';
 
 const markdownPath = '/site/testing/tests/regular/index.md';
 const textPath = '/llms.txt';

@@ -15,7 +15,9 @@ import {
   INTERNAL_ASSET_FETCH_GA_INFO_VALUE,
 } from '../lib/ga4-asset-fetch.ts';
 import {
+  assertAssetFetchGa4Event,
   createWaitUntilSpy,
+  firstAssetFetchEvent,
   setupGa4CapturingFetchMock,
   setupNetlifyEnv,
 } from '../lib/test-helpers.ts';
@@ -161,30 +163,22 @@ test('handler emits asset_fetch for explicit .md requests', async (t) => {
   await spy.flush();
 
   assert.strictEqual(response.status, 200, 'HTTP status');
-  assert.strictEqual(ga4Bodies.length, 1, 'GA4 body count');
   assert.strictEqual(
     response.headers.get('x-asset-fetch-ga-info'),
     '/docs/concepts/resources/index.md;ga-event-candidate,config-present',
     'X-Asset-Fetch-Ga-Info',
   );
 
-  const event = (
-    ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
-  )[0];
-  assert.strictEqual(event.name, 'asset_fetch', 'event name');
-  assert.strictEqual(
-    event.params.asset_path,
-    '/docs/concepts/resources/index.md',
-    'asset_path',
+  assertAssetFetchGa4Event(
+    firstAssetFetchEvent(ga4Bodies),
+    {
+      asset_path: '/docs/concepts/resources/index.md',
+      content_type: 'text/markdown',
+      status_code: '200',
+      event_emitter: 'tracking',
+    },
+    { expectOriginalPathAbsent: true },
   );
-  assert.strictEqual(
-    event.params.content_type,
-    'text/markdown',
-    'content_type',
-  );
-  assert.strictEqual(event.params.status_code, '200', 'status_code');
-  assert.ok(!('original_path' in event.params));
-  assert.strictEqual(event.params.event_emitter, 'tracking', 'event_emitter');
 });
 
 test('handler emits asset_fetch for explicit .txt requests', async (t) => {
@@ -207,17 +201,17 @@ test('handler emits asset_fetch for explicit .txt requests', async (t) => {
   await spy.flush();
 
   assert.strictEqual(response.status, 200, 'HTTP status');
-  assert.strictEqual(ga4Bodies.length, 1, 'GA4 body count');
 
-  const event = (
-    ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
-  )[0];
-  assert.strictEqual(event.name, 'asset_fetch', 'event name');
-  assert.strictEqual(event.params.asset_path, '/llms.txt', 'asset_path');
-  assert.strictEqual(event.params.content_type, 'text/plain', 'content_type');
-  assert.strictEqual(event.params.status_code, '200', 'status_code');
-  assert.ok(!('original_path' in event.params));
-  assert.strictEqual(event.params.event_emitter, 'tracking', 'event_emitter');
+  assertAssetFetchGa4Event(
+    firstAssetFetchEvent(ga4Bodies),
+    {
+      asset_path: '/llms.txt',
+      content_type: 'text/plain',
+      status_code: '200',
+      event_emitter: 'tracking',
+    },
+    { expectOriginalPathAbsent: true },
+  );
 });
 
 test('handler skips asset_fetch for internal marked explicit .md requests', async (t) => {
@@ -272,18 +266,11 @@ test('handler emits asset_fetch for explicit .md requests regardless of response
   await spy.flush();
 
   assert.strictEqual(response.status, 404, 'HTTP status');
-  assert.strictEqual(ga4Bodies.length, 1, 'GA4 body count');
 
-  const event = (
-    ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
-  )[0];
-  assert.strictEqual(event.name, 'asset_fetch', 'event name');
-  assert.strictEqual(
-    event.params.asset_path,
-    '/docs/concepts/resources/index.md',
-    'asset_path',
-  );
-  assert.strictEqual(event.params.content_type, 'text/plain', 'content_type');
-  assert.strictEqual(event.params.status_code, '404', 'status_code');
-  assert.strictEqual(event.params.event_emitter, 'tracking', 'event_emitter');
+  assertAssetFetchGa4Event(firstAssetFetchEvent(ga4Bodies), {
+    asset_path: '/docs/concepts/resources/index.md',
+    content_type: 'text/plain',
+    status_code: '404',
+    event_emitter: 'tracking',
+  });
 });

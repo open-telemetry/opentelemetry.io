@@ -12,7 +12,12 @@ import {
   ASSET_FETCH_GA_INFO_HEADER,
   INTERNAL_ASSET_FETCH_GA_INFO_VALUE,
 } from '../lib/ga4-asset-fetch.ts';
-import { createWaitUntilSpy, setupNetlifyEnv } from '../lib/test-helpers.ts';
+import {
+  assertAssetFetchGa4Event,
+  createWaitUntilSpy,
+  firstAssetFetchEvent,
+  setupNetlifyEnv,
+} from '../lib/test-helpers.ts';
 import markdownNegotiation from '../markdown-negotiation/index.ts';
 
 test('markdown negotiation internal .md fetch does not double-count asset_fetch', async (t) => {
@@ -94,25 +99,14 @@ test('markdown negotiation internal .md fetch does not double-count asset_fetch'
     'X-Asset-Fetch-Ga-Info',
   );
   assert.strictEqual(await response.text(), '# Docs', 'Response body');
-  assert.strictEqual(ga4Bodies.length, 1, 'GA4 body count');
 
-  const event = (
-    ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
-  )[0];
-  assert.strictEqual(event.name, 'asset_fetch', 'event name');
-  assert.strictEqual(event.params.asset_path, '/docs/index.md', 'asset_path');
-  assert.strictEqual(
-    event.params.content_type,
-    'text/markdown',
-    'content_type',
-  );
-  assert.strictEqual(event.params.status_code, '200', 'status_code');
-  assert.strictEqual(event.params.original_path, '/docs/', 'original_path');
-  assert.strictEqual(
-    event.params.event_emitter,
-    'negotiation',
-    'event_emitter',
-  );
+  assertAssetFetchGa4Event(firstAssetFetchEvent(ga4Bodies), {
+    asset_path: '/docs/index.md',
+    content_type: 'text/markdown',
+    status_code: '200',
+    original_path: '/docs/',
+    event_emitter: 'negotiation',
+  });
 });
 
 test('direct .md request passes through markdown negotiation and emits one asset_fetch', async (t) => {
@@ -173,19 +167,15 @@ test('direct .md request passes through markdown negotiation and emits one asset
     'X-Asset-Fetch-Ga-Info',
   );
   assert.strictEqual(await response.text(), '# Docs', 'Response body');
-  assert.strictEqual(ga4Bodies.length, 1, 'GA4 body count');
 
-  const event = (
-    ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
-  )[0];
-  assert.strictEqual(event.name, 'asset_fetch', 'event name');
-  assert.strictEqual(event.params.asset_path, '/docs/index.md', 'asset_path');
-  assert.strictEqual(
-    event.params.content_type,
-    'text/markdown',
-    'content_type',
+  assertAssetFetchGa4Event(
+    firstAssetFetchEvent(ga4Bodies),
+    {
+      asset_path: '/docs/index.md',
+      content_type: 'text/markdown',
+      status_code: '200',
+      event_emitter: 'tracking',
+    },
+    { expectOriginalPathAbsent: true },
   );
-  assert.strictEqual(event.params.status_code, '200', 'status_code');
-  assert.ok(!('original_path' in event.params));
-  assert.strictEqual(event.params.event_emitter, 'tracking', 'event_emitter');
 });

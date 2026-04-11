@@ -80,6 +80,102 @@ export function setupGa4CapturingFetchMock(
   return ga4Bodies;
 }
 
+/**
+ * Replaces `globalThis.fetch` for the duration of the test; restores the
+ * previous implementation in `t.after`.
+ */
+export function withMockFetch(
+  t: TestLifecycle,
+  implementation: typeof fetch,
+): void {
+  const originalFetch = globalThis.fetch;
+  t.after(() => {
+    globalThis.fetch = originalFetch;
+  });
+  globalThis.fetch = implementation;
+}
+
+/** One GA4 Measurement Protocol `events[]` entry used in `asset_fetch` tests. */
+export type AssetFetchGa4Event = {
+  name: string;
+  params: Record<string, string>;
+};
+
+const ASSET_FETCH_PARAM_KEYS = [
+  'asset_path',
+  'content_type',
+  'status_code',
+  'original_path',
+  'event_emitter',
+] as const;
+
+export type AssetFetchParamsExpected = Partial<
+  Record<(typeof ASSET_FETCH_PARAM_KEYS)[number], string>
+>;
+
+function parseGa4EventsArray(
+  body: Record<string, unknown>,
+): AssetFetchGa4Event[] {
+  const events = body.events;
+  assert.ok(Array.isArray(events), 'GA4 body.events');
+  return events as AssetFetchGa4Event[];
+}
+
+/**
+ * Asserts `ga4Bodies.length` and returns the first event from the first captured
+ * GA4 POST JSON body.
+ */
+export function firstAssetFetchEvent(
+  ga4Bodies: Record<string, unknown>[],
+  expectedBodyCount = 1,
+): AssetFetchGa4Event {
+  assert.strictEqual(
+    ga4Bodies.length,
+    expectedBodyCount,
+    'GA4 body count',
+  );
+  const events = parseGa4EventsArray(ga4Bodies[0] as Record<string, unknown>);
+  assert.ok(events.length > 0, 'GA4 events length');
+  return events[0]!;
+}
+
+/** Like {@link firstAssetFetchEvent} but returns only `params` (no `name` check). */
+export function firstAssetFetchParams(
+  ga4Bodies: Record<string, unknown>[],
+  expectedBodyCount = 1,
+): Record<string, string> {
+  return firstAssetFetchEvent(ga4Bodies, expectedBodyCount).params;
+}
+
+export function assertAssetFetchGa4Event(
+  event: AssetFetchGa4Event,
+  expectedParams: AssetFetchParamsExpected,
+  options?: { expectOriginalPathAbsent?: boolean },
+): void {
+  assert.strictEqual(event.name, 'asset_fetch', 'event name');
+  assertAssetFetchParams(event.params, expectedParams, options);
+}
+
+/**
+ * Asserts selected `asset_fetch` params. Only keys present on `expected` are
+ * checked. When `expectOriginalPathAbsent` is true, asserts `original_path` is
+ * not present on `params` (same as `assert.ok(!('original_path' in params))`).
+ */
+export function assertAssetFetchParams(
+  params: Record<string, string>,
+  expected: AssetFetchParamsExpected,
+  options?: { expectOriginalPathAbsent?: boolean },
+): void {
+  if (options?.expectOriginalPathAbsent) {
+    assert.ok(!('original_path' in params));
+  }
+  for (const k of ASSET_FETCH_PARAM_KEYS) {
+    if (Object.prototype.hasOwnProperty.call(expected, k)) {
+      assert.strictEqual(params[k], expected[k], k);
+    }
+  }
+}
+
 export function varyIncludesAccept(
   varyHeader: string | null | undefined,
 ): boolean {
