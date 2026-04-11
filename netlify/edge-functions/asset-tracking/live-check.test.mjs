@@ -17,7 +17,7 @@ import {
   absUrl,
   baseRef,
   expectedConfigTag,
-} from '../lib/live-check-test-base.mjs';
+} from '../../../tests/lib/live-check-base.mjs';
 
 const markdownPath = '/site/testing/tests/regular/index.md';
 const textPath = '/llms.txt';
