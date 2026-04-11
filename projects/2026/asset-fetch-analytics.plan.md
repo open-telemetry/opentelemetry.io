@@ -1,7 +1,8 @@
 ---
 title: GA4 asset fetch analytics plan
-date: 2026-04-10
-version: 0.4-dev
+date: 2026-04-03
+lastmod: 2026-04-11
+version: 0.4
 custodian: Patrice Chalin
 cSpell:ignore: GOOGLEANALYTICS
 ---
@@ -621,7 +622,7 @@ In no particular order:
 Plan changes in reverse chronological order. Prepend a `### v…` section for each
 plan-changing PR; use `-dev` on the version until that change set is merged.
 
-### v0.4-dev - TBD (not merged yet)
+### v0.4 - 2026-04-11
 
 - Added `event_emitter` with canonical values `negotiation`, `tracking`, and
   `schema`, and updated the implementation/tests to emit and validate it.
@@ -632,8 +633,12 @@ plan-changing PR; use `-dev` on the version until that change set is merged.
   `none[: <info-tag> [,<info-tag>]*]`, and updated tests to validate the initial
   GA event candidate and non-candidate cases, including integration tests and
   deployed-host live checks.
+- Made deployed-host GA-info header checks environment-aware so production
+  expects `config-present` while preview/local expects `config-missing`.
 - Added dedicated `/site/testing/tests/` content fixtures for live checks,
   including a regular page and an HTML-only page that does not publish Markdown.
+- Added edge-function test assertion guidance to this plan and refactored
+  repeated helper logic so the test suites stay DRY without changing coverage.
 
 ### v0.3 - 2026-04-10
 
