@@ -38,7 +38,10 @@ contrib: {contrib_version}
 """
 
             self.data_file_path.write_text(content)
-            logger.info(f"✓ Updated versions in {self.data_file_path.relative_to(self.data_file_path.parent.parent.parent)}")
+            rel_path = self.data_file_path.relative_to(
+                self.data_file_path.parent.parent.parent
+            )
+            logger.info(f"✓ Updated versions in {rel_path}")
             logger.info(f"  - core: {core_version}")
             logger.info(f"  - contrib: {contrib_version}")
 

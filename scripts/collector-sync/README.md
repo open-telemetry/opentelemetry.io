@@ -37,7 +37,6 @@ The automation:
 
 1. Run the automation script (updates `data/collector-versions.yml`)
 
-
 ## Local Development
 
 ### Setup
@@ -63,7 +62,8 @@ uv run python -m documentation_sync --no-update
 
 ### Testing
 
-**Prerequisites:** Ensure dev dependencies are installed with `uv sync --all-extras`.
+**Prerequisites:** Ensure dev dependencies are installed with
+`uv sync --all-extras`.
 
 ```bash
 # Run all tests

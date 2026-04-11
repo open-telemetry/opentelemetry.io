@@ -17,7 +17,9 @@ from documentation_sync.type_defs import DistributionName
 logger = logging.getLogger(__name__)
 
 
-def get_latest_version(inventory_manager: InventoryManager, distribution: DistributionName) -> Version:
+def get_latest_version(
+    inventory_manager: InventoryManager, distribution: DistributionName
+) -> Version:
     versions = inventory_manager.list_versions(distribution)
     if not versions:
         logger.error(f"❌ No versions found for {distribution} distribution in inventory.")
@@ -66,7 +68,12 @@ def _merge_component_metadata(existing: dict[str, Any], new: dict[str, Any]) -> 
     existing["metadata"]["status"]["distributions"] = all_dists
 
 
-def _add_component_to_map(component_map: dict[str, Any], component: dict[str, Any], source_repo: str, component_type: str) -> None:
+def _add_component_to_map(
+    component_map: dict[str, Any],
+    component: dict[str, Any],
+    source_repo: str,
+    component_type: str,
+) -> None:
     """
     Add or merge a component into the component map.
 
@@ -92,7 +99,9 @@ def _add_component_to_map(component_map: dict[str, Any], component: dict[str, An
         component_map[name] = component_copy
 
 
-def merge_inventories(core_inventory: dict[str, Any], contrib_inventory: dict[str, Any]) -> dict[str, Any]:
+def merge_inventories(
+    core_inventory: dict[str, Any], contrib_inventory: dict[str, Any]
+) -> dict[str, Any]:
     """
     Merge core and contrib inventories into a unified inventory.
 
@@ -108,7 +117,9 @@ def merge_inventories(core_inventory: dict[str, Any], contrib_inventory: dict[st
     """
     merged: dict[str, Any] = {"components": {}}
 
-    all_types = set(core_inventory.get("components", {}).keys()) | set(contrib_inventory.get("components", {}).keys())
+    all_types = set(core_inventory.get("components", {}).keys()) | set(
+        contrib_inventory.get("components", {}).keys()
+    )
 
     for component_type in all_types:
         core_comps = core_inventory.get("components", {}).get(component_type, [])
@@ -122,6 +133,8 @@ def merge_inventories(core_inventory: dict[str, Any], contrib_inventory: dict[st
         for component in contrib_comps:
             _add_component_to_map(component_map, component, "contrib", component_type)
 
-        merged["components"][component_type] = sorted(component_map.values(), key=lambda c: c.get("name", ""))
+        merged["components"][component_type] = sorted(
+            component_map.values(), key=lambda c: c.get("name", "")
+        )
 
     return merged
