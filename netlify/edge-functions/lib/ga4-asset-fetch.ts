@@ -2,7 +2,7 @@
  * GA4 Measurement Protocol helpers for `asset_fetch` events.
  * Event shape matches projects/2026/asset-fetch-analytics.plan.md.
  *
- * cSpell:ignore GOOGLEANALYTICS
+ * cSpell:ignore GOOGLEANALYTICS replayable
  */
 
 const GA4_COLLECT_URL = 'https://www.google-analytics.com/mp/collect';
@@ -96,6 +96,10 @@ export type AssetFetchContext = {
 };
 
 export function isInternalAssetFetchRequest(request: Request): boolean {
+  // We deliberately use a publicly visible and replayable marker. In this
+  // project GA4 asset analytics are a convenience surface, not the source of
+  // truth; Netlify Observability remains the cross-check for request counts and
+  // anomalies.
   return request.headers.has(ASSET_FETCH_GA_INFO_HEADER);
 }
 

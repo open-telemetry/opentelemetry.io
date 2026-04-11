@@ -13,7 +13,7 @@ internal subrequest and skips tracking. This prevents duplicate events when
 `markdown-negotiation` fetches sibling `index.md` assets internally.
 
 Responses also include `X-Asset-Fetch-Ga-Info` for coarse sanity-checking of the
-derived GA path and local trackability/config state.
+derived GA path and local GA-event candidate/config state.
 
 ### Live tests
 

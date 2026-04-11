@@ -4,6 +4,8 @@
  * - content-type fixup (ensureSchemaContentType)
  * - tracking gate (shouldTrackSchemaFetch)
  * - handler integration (schemaAnalytics default export)
+ *
+ * cSpell:ignore GOOGLEANALYTICS
  */
 
 import assert from 'node:assert/strict';

@@ -3,7 +3,7 @@ title: GA4 asset fetch analytics plan
 date: 2026-04-10
 version: 0.4-dev
 custodian: Patrice Chalin
-cSpell:ignore: GOOGLEANALYTICS trackability
+cSpell:ignore: GOOGLEANALYTICS
 ---
 
 ## Goal
@@ -505,13 +505,19 @@ Steps:
    `X-Asset-Fetch-Ga-Info`; the direct-asset handler should treat the presence
    of that request header as an internal subrequest marker and skip tracking to
    avoid double-counting negotiated page requests. The same header can also
-   expose compact debug info on responses, which keeps the mechanism simple and
+   expose compact GA-info on responses, which keeps the mechanism simple and
    live-testable.
 
-3. **Debug response header** — add `X-Asset-Fetch-Ga-Info` to responses using
-   the format described in [Debug response header](#debug-response-header).
-   Purpose: validate derived GA path plus coarse trackability/config state in
-   production without implying GA ingestion.
+3. **GA-info response header** — `X-Asset-Fetch-Ga-Info` responses use the
+   format described in [Response header](#response-header). Purpose: validate
+   derived GA path plus coarse GA event candidate/config state in production
+   without implying GA ingestion.
+
+   The same header is also used as the internal-subrequest marker for
+   deduplication. External callers can emulate it and therefore it is not a
+   security boundary. That tradeoff is accepted: GA4 asset analytics are a
+   convenience surface, while Netlify Observability remains the source of truth
+   for request counts and cross-checking.
 
 4. (optional) Add `ua_category` if the classification is stable and
    low-cardinality.
@@ -570,7 +576,7 @@ This section broadly tracks the tasks for the implementation plan.
 
 ### In progress
 
-Add support for `X-Asset-Fetch-Ga-Info` header.
+None.
 
 ### Other tasks
 
@@ -626,8 +632,8 @@ plan-changing PR; use `-dev` on the version until that change set is merged.
 - Captured implementation/testing work: README notes, unit-test rationale,
   negotiated Markdown live checks, and schema delivery live checks.
 - Updated deployment/config notes: removed the fallback `/schemas/:version`
-  header rule from `netlify.toml` and added a follow-up task for a temporary
-  debug response header.
+  header rule from `netlify.toml` and recorded a later GA-info response header
+  follow-up.
 
 ### v0.1 - 2026-04-03
 

@@ -17,7 +17,7 @@ so the asset-tracking Edge Function can detect and skip those subrequests,
 avoiding duplicate `asset_fetch` events.
 
 Responses also include `X-Asset-Fetch-Ga-Info` for coarse sanity-checking of the
-derived GA path and local trackability/config state.
+derived GA path and local request-path/config state.
 
 Explicit `GET` requests to a `*.md` URL pass straight through and do **not**
 emit `asset_fetch` here.
