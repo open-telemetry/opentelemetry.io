@@ -414,6 +414,35 @@ the event. The header might be dropped in the future.
 Edge Function design should ensure that at most one `asset_fetch` event is sent
 for each request.
 
+### Test assertions (edge functions)
+
+**Goal:** When a test fails, the output should make it obvious _what_ was being
+checked and show a clear **actual vs expected** diff, without long hand-written
+messages.
+
+**Guidance for writing tests** (unit tests under
+`netlify/edge-functions/**/*.test.ts` and live checks under
+`**/live-check.test.mjs`):
+
+1. Prefer **`assert.strictEqual`** over **`assert.equal`** for primitive checks
+   where strictness and diff quality matter.
+2. Add a **short third argument** as context: e.g. `'HTTP status'`,
+   `'Content-Type'`, `'Location'`, `'Request body'`, `'Response body'`,
+   `'X-Asset-Fetch-Ga-Info'`, or `'Subrequest URL'` / `'Subrequest method'` for
+   mocked `fetch` expectations. Let Node print values; avoid long interpolated
+   strings unless the case is truly one-off.
+3. Use **`assert.match`** when a regex expresses the intent more clearly than
+   `includes` or chained `ok` logic (especially for bodies and redirect status
+   classes).
+4. For **`Content-Type`**, compare to a **fixed full string** when the
+   implementation sets a stable value; avoid `toLowerCase()` unless the
+   environment is inconsistent.
+5. For **redirects**, resolve **`Location`** with `new URL(loc, baseUrl)` and
+   assert on **pathname** (or a tight pathname regex) with label
+   **`'Location'`**.
+6. **DRY** repeated checks into **`netlify/edge-functions/lib/test-helpers.ts`**
+   (or similar), e.g. shared **`assertVaryIncludesAccept`**.
+
 ## Identity and privacy
 
 ### Client identity

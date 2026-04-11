@@ -12,6 +12,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
+import { assertVaryIncludesAccept } from '../lib/test-helpers.ts';
 import markdownNegotiation from './index.ts';
 
 test('handler serves markdown when preferred and available', async (t) => {
@@ -22,9 +23,17 @@ test('handler serves markdown when preferred and available', async (t) => {
 
   globalThis.fetch = (async (input) => {
     const request = input as Request;
-    assert.equal(request.url, 'https://example.com/docs/index.md');
-    assert.equal(request.method, 'GET');
-    assert.equal(request.headers.get('accept'), 'text/markdown');
+    assert.strictEqual(
+      request.url,
+      'https://example.com/docs/index.md',
+      'Subrequest URL',
+    );
+    assert.strictEqual(request.method, 'GET', 'Subrequest method');
+    assert.strictEqual(
+      request.headers.get('accept'),
+      'text/markdown',
+      'Accept header',
+    );
 
     return new Response('# Docs', {
       headers: { 'content-type': 'text/plain; charset=utf-8' },
@@ -45,12 +54,13 @@ test('handler serves markdown when preferred and available', async (t) => {
     },
   );
 
-  assert.equal(await response.text(), '# Docs');
-  assert.equal(
+  assert.strictEqual(await response.text(), '# Docs', 'Response body');
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
+    'Content-Type',
   );
-  assert.match(response.headers.get('vary') ?? '', /(^|,\s*)Accept(,|$)/);
+  assertVaryIncludesAccept(response);
 });
 
 test('handler serves markdown for the site root', async (t) => {
@@ -61,8 +71,12 @@ test('handler serves markdown for the site root', async (t) => {
 
   globalThis.fetch = (async (input) => {
     const request = input as Request;
-    assert.equal(request.url, 'https://example.com/index.md');
-    assert.equal(request.method, 'GET');
+    assert.strictEqual(
+      request.url,
+      'https://example.com/index.md',
+      'Subrequest URL',
+    );
+    assert.strictEqual(request.method, 'GET', 'Subrequest method');
 
     return new Response('# Home', {
       headers: { 'content-type': 'text/plain; charset=utf-8' },
@@ -79,10 +93,11 @@ test('handler serves markdown for the site root', async (t) => {
     },
   );
 
-  assert.equal(await response.text(), '# Home');
-  assert.equal(
+  assert.strictEqual(await response.text(), '# Home', 'Response body');
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
+    'Content-Type',
   );
 });
 
@@ -94,8 +109,12 @@ test('handler serves markdown for explicit html page requests', async (t) => {
 
   globalThis.fetch = (async (input) => {
     const request = input as Request;
-    assert.equal(request.url, 'https://example.com/docs/index.md');
-    assert.equal(request.method, 'GET');
+    assert.strictEqual(
+      request.url,
+      'https://example.com/docs/index.md',
+      'Subrequest URL',
+    );
+    assert.strictEqual(request.method, 'GET', 'Subrequest method');
 
     return new Response('# Html page mapped to markdown', {
       headers: { 'content-type': 'text/plain; charset=utf-8' },
@@ -112,10 +131,15 @@ test('handler serves markdown for explicit html page requests', async (t) => {
     },
   );
 
-  assert.equal(await response.text(), '# Html page mapped to markdown');
-  assert.equal(
+  assert.strictEqual(
+    await response.text(),
+    '# Html page mapped to markdown',
+    'Response body',
+  );
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
+    'Content-Type',
   );
 });
 
@@ -144,9 +168,13 @@ test('handler bypasses negotiation for non-index html paths', async (t) => {
     },
   );
 
-  assert.equal(fetched, false);
-  assert.equal(docsHtmlResponse.status, 301);
-  assert.equal(docsHtmlResponse.headers.get('location'), '/docs/');
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(docsHtmlResponse.status, 301, 'HTTP status');
+  assert.strictEqual(
+    docsHtmlResponse.headers.get('location'),
+    '/docs/',
+    'Location',
+  );
 
   const uppercaseIndexHtmlResponse = await markdownNegotiation(
     new Request('https://example.com/docs/index.HTML', {
@@ -161,10 +189,11 @@ test('handler bypasses negotiation for non-index html paths', async (t) => {
     },
   );
 
-  assert.equal(fetched, false);
-  assert.equal(
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(
     await uppercaseIndexHtmlResponse.text(),
     '<html>uppercase</html>',
+    'Response body',
   );
 
   const fourOhFourResponse = await markdownNegotiation(
@@ -180,9 +209,13 @@ test('handler bypasses negotiation for non-index html paths', async (t) => {
     },
   );
 
-  assert.equal(fetched, false);
-  assert.equal(fourOhFourResponse.status, 404);
-  assert.equal(await fourOhFourResponse.text(), '<html>not found</html>');
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(fourOhFourResponse.status, 404, 'HTTP status');
+  assert.strictEqual(
+    await fourOhFourResponse.text(),
+    '<html>not found</html>',
+    'Response body',
+  );
 });
 
 test('handler bypasses markdown fetch when html is preferred', async (t) => {
@@ -210,11 +243,16 @@ test('handler bypasses markdown fetch when html is preferred', async (t) => {
     },
   );
 
-  assert.equal(fetched, false);
-  assert.equal(await response.text(), '<html>docs</html>');
-  assert.equal(
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(
+    await response.text(),
+    '<html>docs</html>',
+    'Response body',
+  );
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/html; charset=utf-8',
+    'Content-Type',
   );
 });
 
@@ -241,11 +279,16 @@ test('handler bypasses markdown fetch when Accept is missing', async (t) => {
     },
   );
 
-  assert.equal(fetched, false);
-  assert.equal(await response.text(), '<html>docs</html>');
-  assert.equal(
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(
+    await response.text(),
+    '<html>docs</html>',
+    'Response body',
+  );
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/html; charset=utf-8',
+    'Content-Type',
   );
 });
 
@@ -275,11 +318,16 @@ test('handler bypasses markdown fetch for unsupported methods', async (t) => {
     },
   );
 
-  assert.equal(fetched, false);
-  assert.equal(await response.text(), '<html>post passthrough</html>');
-  assert.equal(
+  assert.strictEqual(fetched, false, 'Markdown subrequest');
+  assert.strictEqual(
+    await response.text(),
+    '<html>post passthrough</html>',
+    'Response body',
+  );
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/html; charset=utf-8',
+    'Content-Type',
   );
 });
 
@@ -291,8 +339,12 @@ test('handler serves HEAD markdown responses without a body', async (t) => {
 
   globalThis.fetch = (async (input) => {
     const request = input as Request;
-    assert.equal(request.url, 'https://example.com/docs/index.md');
-    assert.equal(request.method, 'HEAD');
+    assert.strictEqual(
+      request.url,
+      'https://example.com/docs/index.md',
+      'Subrequest URL',
+    );
+    assert.strictEqual(request.method, 'HEAD', 'Subrequest method');
 
     return new Response('ignored', {
       headers: { 'content-type': 'text/plain; charset=utf-8' },
@@ -311,14 +363,15 @@ test('handler serves HEAD markdown responses without a body', async (t) => {
     },
   );
 
-  assert.equal(response.status, 200);
-  assert.equal(response.statusText, 'OK');
-  assert.equal(await response.text(), '');
-  assert.equal(
+  assert.strictEqual(response.status, 200, 'HTTP status');
+  assert.strictEqual(response.statusText, 'OK', 'HTTP statusText');
+  assert.strictEqual(await response.text(), '', 'Response body');
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
+    'Content-Type',
   );
-  assert.match(response.headers.get('vary') ?? '', /(^|,\s*)Accept(,|$)/);
+  assertVaryIncludesAccept(response);
 });
 
 test('handler falls back from HEAD to GET when HEAD is not supported', async (t) => {
@@ -331,7 +384,11 @@ test('handler falls back from HEAD to GET when HEAD is not supported', async (t)
   globalThis.fetch = (async (input) => {
     const request = input as Request;
     methods.push(request.method);
-    assert.equal(request.url, 'https://example.com/docs/index.md');
+    assert.strictEqual(
+      request.url,
+      'https://example.com/docs/index.md',
+      'Subrequest URL',
+    );
 
     if (request.method === 'HEAD') {
       return new Response(null, {
@@ -357,15 +414,16 @@ test('handler falls back from HEAD to GET when HEAD is not supported', async (t)
     },
   );
 
-  assert.deepEqual(methods, ['HEAD', 'GET']);
-  assert.equal(response.status, 200);
-  assert.equal(response.statusText, 'OK');
-  assert.equal(await response.text(), '');
-  assert.equal(
+  assert.deepStrictEqual(methods, ['HEAD', 'GET'], 'Subrequest methods');
+  assert.strictEqual(response.status, 200, 'HTTP status');
+  assert.strictEqual(response.statusText, 'OK', 'HTTP statusText');
+  assert.strictEqual(await response.text(), '', 'Response body');
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
+    'Content-Type',
   );
-  assert.match(response.headers.get('vary') ?? '', /(^|,\s*)Accept(,|$)/);
+  assertVaryIncludesAccept(response);
 });
 
 test('handler falls back to html and varies on Accept when markdown is missing', async (t) => {
@@ -390,10 +448,15 @@ test('handler falls back to html and varies on Accept when markdown is missing',
     },
   );
 
-  assert.equal(await response.text(), '<html>search</html>');
-  assert.equal(
+  assert.strictEqual(
+    await response.text(),
+    '<html>search</html>',
+    'Response body',
+  );
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/html; charset=utf-8',
+    'Content-Type',
   );
-  assert.match(response.headers.get('vary') ?? '', /(^|,\s*)Accept(,|$)/);
+  assertVaryIncludesAccept(response);
 });

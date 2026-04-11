@@ -11,28 +11,11 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
+import { setupNetlifyEnv } from '../lib/test-helpers.ts';
 import schemaAnalytics, {
   ensureSchemaContentType,
   shouldTrackSchemaFetch,
 } from './index.ts';
-
-function setupNetlifyEnv(t: { after: (fn: () => void) => void }) {
-  const g = globalThis as Record<string, unknown>;
-  const originalNetlify = g.Netlify;
-  t.after(() => {
-    g.Netlify = originalNetlify;
-  });
-
-  g.Netlify = {
-    env: {
-      get: (name: string) => {
-        if (name === 'HUGO_SERVICES_GOOGLEANALYTICS_ID') return 'G-TEST';
-        if (name === 'GA4_API_SECRET') return 'secret';
-        return undefined;
-      },
-    },
-  };
-}
 
 // --- ensureSchemaContentType ---
 
@@ -44,8 +27,12 @@ test('ensureSchemaContentType sets application/yaml for 2xx /schemas/ responses'
   });
 
   const result = ensureSchemaContentType(request, response);
-  assert.equal(result.headers.get('content-type'), 'application/yaml');
-  assert.equal(result.status, 200);
+  assert.strictEqual(
+    result.headers.get('content-type'),
+    'application/yaml',
+    'Content-Type',
+  );
+  assert.strictEqual(result.status, 200, 'HTTP status');
 });
 
 test('ensureSchemaContentType does not alter non-/schemas/ responses', () => {
@@ -56,7 +43,11 @@ test('ensureSchemaContentType does not alter non-/schemas/ responses', () => {
   });
 
   const result = ensureSchemaContentType(request, response);
-  assert.equal(result.headers.get('content-type'), 'text/html');
+  assert.strictEqual(
+    result.headers.get('content-type'),
+    'text/html',
+    'Content-Type',
+  );
 });
 
 test('ensureSchemaContentType passes through non-2xx /schemas/ responses', () => {
@@ -64,8 +55,12 @@ test('ensureSchemaContentType passes through non-2xx /schemas/ responses', () =>
   const response = new Response('Not Found', { status: 404 });
 
   const result = ensureSchemaContentType(request, response);
-  assert.equal(result.status, 404);
-  assert.notEqual(result.headers.get('content-type'), 'application/yaml');
+  assert.strictEqual(result.status, 404, 'HTTP status');
+  assert.notStrictEqual(
+    result.headers.get('content-type'),
+    'application/yaml',
+    'Content-Type',
+  );
 });
 
 test('ensureSchemaContentType passes through 3xx /schemas/ responses', () => {
@@ -76,8 +71,12 @@ test('ensureSchemaContentType passes through 3xx /schemas/ responses', () => {
   });
 
   const result = ensureSchemaContentType(request, response);
-  assert.equal(result.status, 302);
-  assert.notEqual(result.headers.get('content-type'), 'application/yaml');
+  assert.strictEqual(result.status, 302, 'HTTP status');
+  assert.notStrictEqual(
+    result.headers.get('content-type'),
+    'application/yaml',
+    'Content-Type',
+  );
 });
 
 // --- shouldTrackSchemaFetch ---
@@ -88,14 +87,22 @@ test('shouldTrackSchemaFetch accepts GET /schemas/ with yaml content type', () =
     headers: { 'content-type': 'application/yaml' },
     status: 200,
   });
-  assert.equal(shouldTrackSchemaFetch(request, response), true);
+  assert.strictEqual(
+    shouldTrackSchemaFetch(request, response),
+    true,
+    'shouldTrackSchemaFetch',
+  );
 });
 
 test('shouldTrackSchemaFetch accepts GET /schemas/ with no content type', () => {
   const request = new Request('https://example.com/schemas/1.40.0');
   const response = new Response(null, { status: 200 });
   response.headers.delete('content-type');
-  assert.equal(shouldTrackSchemaFetch(request, response), true);
+  assert.strictEqual(
+    shouldTrackSchemaFetch(request, response),
+    true,
+    'shouldTrackSchemaFetch',
+  );
 });
 
 test('shouldTrackSchemaFetch accepts various yaml content types', () => {
@@ -110,7 +117,11 @@ test('shouldTrackSchemaFetch accepts various yaml content types', () => {
       headers: { 'content-type': ct },
       status: 200,
     });
-    assert.equal(shouldTrackSchemaFetch(request, response), true, `${ct}`);
+    assert.strictEqual(
+      shouldTrackSchemaFetch(request, response),
+      true,
+      'shouldTrackSchemaFetch',
+    );
   }
 });
 
@@ -123,10 +134,10 @@ test('shouldTrackSchemaFetch returns false for non-GET methods', () => {
       headers: { 'content-type': 'application/yaml' },
       status: 200,
     });
-    assert.equal(
+    assert.strictEqual(
       shouldTrackSchemaFetch(request, response),
       false,
-      `method ${method}`,
+      'shouldTrackSchemaFetch',
     );
   }
 });
@@ -137,7 +148,11 @@ test('shouldTrackSchemaFetch returns false for non-/schemas/ paths', () => {
     headers: { 'content-type': 'application/yaml' },
     status: 200,
   });
-  assert.equal(shouldTrackSchemaFetch(request, response), false);
+  assert.strictEqual(
+    shouldTrackSchemaFetch(request, response),
+    false,
+    'shouldTrackSchemaFetch',
+  );
 });
 
 test('shouldTrackSchemaFetch returns false for 4xx and 5xx responses', () => {
@@ -147,10 +162,10 @@ test('shouldTrackSchemaFetch returns false for 4xx and 5xx responses', () => {
       headers: { 'content-type': 'application/yaml' },
       status,
     });
-    assert.equal(
+    assert.strictEqual(
       shouldTrackSchemaFetch(request, response),
       false,
-      `status ${status}`,
+      'shouldTrackSchemaFetch',
     );
   }
 });
@@ -161,7 +176,11 @@ test('shouldTrackSchemaFetch accepts 3xx redirects', () => {
     status: 302,
     headers: { location: '/schemas/1.40.0' },
   });
-  assert.equal(shouldTrackSchemaFetch(request, response), true);
+  assert.strictEqual(
+    shouldTrackSchemaFetch(request, response),
+    true,
+    'shouldTrackSchemaFetch',
+  );
 });
 
 test('shouldTrackSchemaFetch returns false for 2xx with non-yaml content type', () => {
@@ -170,7 +189,11 @@ test('shouldTrackSchemaFetch returns false for 2xx with non-yaml content type', 
     headers: { 'content-type': 'text/html' },
     status: 200,
   });
-  assert.equal(shouldTrackSchemaFetch(request, response), false);
+  assert.strictEqual(
+    shouldTrackSchemaFetch(request, response),
+    false,
+    'shouldTrackSchemaFetch',
+  );
 });
 
 // --- handler integration ---
@@ -186,9 +209,17 @@ test('handler returns response with yaml content type for /schemas/ GET', async 
   };
 
   const response = await schemaAnalytics(request, context);
-  assert.equal(response.status, 200);
-  assert.equal(response.headers.get('content-type'), 'application/yaml');
-  assert.equal(await response.text(), 'opentelemetry: 1.40.0');
+  assert.strictEqual(response.status, 200, 'HTTP status');
+  assert.strictEqual(
+    response.headers.get('content-type'),
+    'application/yaml',
+    'Content-Type',
+  );
+  assert.strictEqual(
+    await response.text(),
+    'opentelemetry: 1.40.0',
+    'Response body',
+  );
 });
 
 test('handler adds X-Asset-Fetch-Ga-Info for GA event candidate schema responses when config is present', async (t) => {
@@ -204,9 +235,10 @@ test('handler adds X-Asset-Fetch-Ga-Info for GA event candidate schema responses
   };
 
   const response = await schemaAnalytics(request, context);
-  assert.equal(
+  assert.strictEqual(
     response.headers.get('x-asset-fetch-ga-info'),
     '/schemas/1.40.0;ga-event-candidate,config-present',
+    'X-Asset-Fetch-Ga-Info',
   );
 });
 
@@ -221,7 +253,11 @@ test('handler passes through non-/schemas/ requests unchanged', async () => {
   };
 
   const response = await schemaAnalytics(request, context);
-  assert.equal(response.headers.get('content-type'), 'text/html');
+  assert.strictEqual(
+    response.headers.get('content-type'),
+    'text/html',
+    'Content-Type',
+  );
 });
 
 test('handler passes through 404 /schemas/ responses', async () => {
@@ -231,7 +267,7 @@ test('handler passes through 404 /schemas/ responses', async () => {
   };
 
   const response = await schemaAnalytics(request, context);
-  assert.equal(response.status, 404);
+  assert.strictEqual(response.status, 404, 'HTTP status');
 });
 
 test('handler skips tracking for HEAD requests', async () => {
@@ -247,5 +283,5 @@ test('handler skips tracking for HEAD requests', async () => {
   };
 
   const response = await schemaAnalytics(request, context);
-  assert.equal(response.status, 200);
+  assert.strictEqual(response.status, 200, 'HTTP status');
 });

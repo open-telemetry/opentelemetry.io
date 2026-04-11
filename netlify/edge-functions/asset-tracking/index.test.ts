@@ -14,64 +14,12 @@ import {
   ASSET_FETCH_GA_INFO_HEADER,
   INTERNAL_ASSET_FETCH_GA_INFO_VALUE,
 } from '../lib/ga4-asset-fetch.ts';
+import {
+  createWaitUntilSpy,
+  setupGa4CapturingFetchMock,
+  setupNetlifyEnv,
+} from '../lib/test-helpers.ts';
 import assetTracking, { shouldTrackAssetFetch } from './index.ts';
-
-function setupNetlifyEnv(t: { after: (fn: () => void) => void }) {
-  const g = globalThis as Record<string, unknown>;
-  const originalNetlify = g.Netlify;
-  t.after(() => {
-    g.Netlify = originalNetlify;
-  });
-
-  g.Netlify = {
-    env: {
-      get: (name: string) => {
-        if (name === 'HUGO_SERVICES_GOOGLEANALYTICS_ID') return 'G-TEST';
-        if (name === 'GA4_API_SECRET') return 'secret';
-        return undefined;
-      },
-    },
-  };
-}
-
-function setupFetchMock(t: { after: (fn: () => void) => void }) {
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
-  const ga4Bodies: Record<string, unknown>[] = [];
-
-  globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
-    const url =
-      input instanceof URL
-        ? input.toString()
-        : typeof input === 'string'
-          ? input
-          : input.url;
-
-    if (url.includes('google-analytics.com')) {
-      if (init?.body) {
-        ga4Bodies.push(JSON.parse(init.body as string));
-      }
-      return new Response('', { status: 200 });
-    }
-
-    return new Response('unexpected fetch', { status: 500 });
-  }) as typeof fetch;
-
-  return ga4Bodies;
-}
-
-function createWaitUntilSpy() {
-  const promises: Promise<unknown>[] = [];
-  return {
-    waitUntil: (p: Promise<unknown>) => {
-      promises.push(p);
-    },
-    flush: () => Promise.all(promises),
-  };
-}
 
 test('shouldTrackAssetFetch accepts GET .md requests', () => {
   const request = new Request(
@@ -82,7 +30,11 @@ test('shouldTrackAssetFetch accepts GET .md requests', () => {
     status: 200,
   });
 
-  assert.equal(shouldTrackAssetFetch(request, response), true);
+  assert.strictEqual(
+    shouldTrackAssetFetch(request, response),
+    true,
+    'shouldTrackAssetFetch',
+  );
 });
 
 test('shouldTrackAssetFetch accepts GET .txt requests', () => {
@@ -92,7 +44,11 @@ test('shouldTrackAssetFetch accepts GET .txt requests', () => {
     status: 200,
   });
 
-  assert.equal(shouldTrackAssetFetch(request, response), true);
+  assert.strictEqual(
+    shouldTrackAssetFetch(request, response),
+    true,
+    'shouldTrackAssetFetch',
+  );
 });
 
 test('shouldTrackAssetFetch returns false for internal marked requests', () => {
@@ -109,7 +65,11 @@ test('shouldTrackAssetFetch returns false for internal marked requests', () => {
     status: 200,
   });
 
-  assert.equal(shouldTrackAssetFetch(request, response), false);
+  assert.strictEqual(
+    shouldTrackAssetFetch(request, response),
+    false,
+    'shouldTrackAssetFetch',
+  );
 });
 
 test('shouldTrackAssetFetch returns false for non-GET methods', () => {
@@ -123,7 +83,11 @@ test('shouldTrackAssetFetch returns false for non-GET methods', () => {
       status: 200,
     });
 
-    assert.equal(shouldTrackAssetFetch(request, response), false);
+    assert.strictEqual(
+      shouldTrackAssetFetch(request, response),
+      false,
+      'shouldTrackAssetFetch',
+    );
   }
 });
 
@@ -137,7 +101,11 @@ test('shouldTrackAssetFetch accepts non-2xx responses for tracked assets', () =>
       status,
     });
 
-    assert.equal(shouldTrackAssetFetch(request, response), true);
+    assert.strictEqual(
+      shouldTrackAssetFetch(request, response),
+      true,
+      'shouldTrackAssetFetch',
+    );
   }
 });
 
@@ -150,7 +118,11 @@ test('shouldTrackAssetFetch accepts non-markdown content type for tracked assets
     status: 200,
   });
 
-  assert.equal(shouldTrackAssetFetch(request, response), true);
+  assert.strictEqual(
+    shouldTrackAssetFetch(request, response),
+    true,
+    'shouldTrackAssetFetch',
+  );
 });
 
 test('shouldTrackAssetFetch returns false for non-tracked extensions', () => {
@@ -162,12 +134,16 @@ test('shouldTrackAssetFetch returns false for non-tracked extensions', () => {
     status: 200,
   });
 
-  assert.equal(shouldTrackAssetFetch(request, response), false);
+  assert.strictEqual(
+    shouldTrackAssetFetch(request, response),
+    false,
+    'shouldTrackAssetFetch',
+  );
 });
 
 test('handler emits asset_fetch for explicit .md requests', async (t) => {
   setupNetlifyEnv(t);
-  const ga4Bodies = setupFetchMock(t);
+  const ga4Bodies = setupGa4CapturingFetchMock(t);
   const spy = createWaitUntilSpy();
 
   const response = await assetTracking(
@@ -184,27 +160,36 @@ test('handler emits asset_fetch for explicit .md requests', async (t) => {
 
   await spy.flush();
 
-  assert.equal(response.status, 200);
-  assert.equal(ga4Bodies.length, 1);
-  assert.equal(
+  assert.strictEqual(response.status, 200, 'HTTP status');
+  assert.strictEqual(ga4Bodies.length, 1, 'GA4 body count');
+  assert.strictEqual(
     response.headers.get('x-asset-fetch-ga-info'),
     '/docs/concepts/resources/index.md;ga-event-candidate,config-present',
+    'X-Asset-Fetch-Ga-Info',
   );
 
   const event = (
     ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
   )[0];
-  assert.equal(event.name, 'asset_fetch');
-  assert.equal(event.params.asset_path, '/docs/concepts/resources/index.md');
-  assert.equal(event.params.content_type, 'text/markdown');
-  assert.equal(event.params.status_code, '200');
+  assert.strictEqual(event.name, 'asset_fetch', 'event name');
+  assert.strictEqual(
+    event.params.asset_path,
+    '/docs/concepts/resources/index.md',
+    'asset_path',
+  );
+  assert.strictEqual(
+    event.params.content_type,
+    'text/markdown',
+    'content_type',
+  );
+  assert.strictEqual(event.params.status_code, '200', 'status_code');
   assert.ok(!('original_path' in event.params));
-  assert.equal(event.params.event_emitter, 'tracking');
+  assert.strictEqual(event.params.event_emitter, 'tracking', 'event_emitter');
 });
 
 test('handler emits asset_fetch for explicit .txt requests', async (t) => {
   setupNetlifyEnv(t);
-  const ga4Bodies = setupFetchMock(t);
+  const ga4Bodies = setupGa4CapturingFetchMock(t);
   const spy = createWaitUntilSpy();
 
   const response = await assetTracking(
@@ -221,23 +206,23 @@ test('handler emits asset_fetch for explicit .txt requests', async (t) => {
 
   await spy.flush();
 
-  assert.equal(response.status, 200);
-  assert.equal(ga4Bodies.length, 1);
+  assert.strictEqual(response.status, 200, 'HTTP status');
+  assert.strictEqual(ga4Bodies.length, 1, 'GA4 body count');
 
   const event = (
     ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
   )[0];
-  assert.equal(event.name, 'asset_fetch');
-  assert.equal(event.params.asset_path, '/llms.txt');
-  assert.equal(event.params.content_type, 'text/plain');
-  assert.equal(event.params.status_code, '200');
+  assert.strictEqual(event.name, 'asset_fetch', 'event name');
+  assert.strictEqual(event.params.asset_path, '/llms.txt', 'asset_path');
+  assert.strictEqual(event.params.content_type, 'text/plain', 'content_type');
+  assert.strictEqual(event.params.status_code, '200', 'status_code');
   assert.ok(!('original_path' in event.params));
-  assert.equal(event.params.event_emitter, 'tracking');
+  assert.strictEqual(event.params.event_emitter, 'tracking', 'event_emitter');
 });
 
 test('handler skips asset_fetch for internal marked explicit .md requests', async (t) => {
   setupNetlifyEnv(t);
-  const ga4Bodies = setupFetchMock(t);
+  const ga4Bodies = setupGa4CapturingFetchMock(t);
   const spy = createWaitUntilSpy();
 
   const response = await assetTracking(
@@ -258,17 +243,18 @@ test('handler skips asset_fetch for internal marked explicit .md requests', asyn
 
   await spy.flush();
 
-  assert.equal(response.status, 200);
-  assert.equal(ga4Bodies.length, 0);
-  assert.equal(
+  assert.strictEqual(response.status, 200, 'HTTP status');
+  assert.strictEqual(ga4Bodies.length, 0, 'GA4 body count');
+  assert.strictEqual(
     response.headers.get('x-asset-fetch-ga-info'),
     'none: internal subrequest',
+    'X-Asset-Fetch-Ga-Info',
   );
 });
 
 test('handler emits asset_fetch for explicit .md requests regardless of response status', async (t) => {
   setupNetlifyEnv(t);
-  const ga4Bodies = setupFetchMock(t);
+  const ga4Bodies = setupGa4CapturingFetchMock(t);
   const spy = createWaitUntilSpy();
 
   const response = await assetTracking(
@@ -285,15 +271,19 @@ test('handler emits asset_fetch for explicit .md requests regardless of response
 
   await spy.flush();
 
-  assert.equal(response.status, 404);
-  assert.equal(ga4Bodies.length, 1);
+  assert.strictEqual(response.status, 404, 'HTTP status');
+  assert.strictEqual(ga4Bodies.length, 1, 'GA4 body count');
 
   const event = (
     ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
   )[0];
-  assert.equal(event.name, 'asset_fetch');
-  assert.equal(event.params.asset_path, '/docs/concepts/resources/index.md');
-  assert.equal(event.params.content_type, 'text/plain');
-  assert.equal(event.params.status_code, '404');
-  assert.equal(event.params.event_emitter, 'tracking');
+  assert.strictEqual(event.name, 'asset_fetch', 'event name');
+  assert.strictEqual(
+    event.params.asset_path,
+    '/docs/concepts/resources/index.md',
+    'asset_path',
+  );
+  assert.strictEqual(event.params.content_type, 'text/plain', 'content_type');
+  assert.strictEqual(event.params.status_code, '404', 'status_code');
+  assert.strictEqual(event.params.event_emitter, 'tracking', 'event_emitter');
 });

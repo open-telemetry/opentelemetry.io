@@ -32,8 +32,20 @@ function baseRef() {
   return resolveBaseRef(raw);
 }
 
+function expectedConfigTag(baseRef) {
+  return (
+    'config-' +
+    (baseRef.hostname === 'opentelemetry.io' ? 'present' : 'missing')
+  );
+}
+
 const markdownPath = '/site/testing/tests/regular/index.md';
 const textPath = '/llms.txt';
+const expectedMarkdownContentType = 'text/markdown; charset=UTF-8';
+const expectedPlainTextContentType = 'text/plain; charset=UTF-8';
+
+const regularPageMarkdownHeading = /^# Regular test page/;
+const llmsTxtHeading = /^# OpenTelemetry/;
 
 test('GET explicit .md path → markdown response', async () => {
   const ref = baseRef();
@@ -42,15 +54,9 @@ test('GET explicit .md path → markdown response', async () => {
   const ct = res.headers.get('content-type') ?? '';
   const text = await res.text();
 
-  assert.equal(res.status, 200, `expected 200 for ${url}`);
-  assert.ok(
-    ct.toLowerCase().includes('text/markdown'),
-    `expected text/markdown content-type, got ${JSON.stringify(ct)}`,
-  );
-  assert.ok(
-    text.includes('# Regular edge function test page'),
-    'body should contain "# Regular edge function test page"',
-  );
+  assert.strictEqual(res.status, 200, 'HTTP status');
+  assert.strictEqual(ct, expectedMarkdownContentType, 'Content-Type');
+  assert.match(text, regularPageMarkdownHeading, 'Request body');
 });
 
 test('GET explicit .md path → X-Asset-Fetch-Ga-Info header', async () => {
@@ -58,9 +64,10 @@ test('GET explicit .md path → X-Asset-Fetch-Ga-Info header', async () => {
   const url = absUrl(markdownPath, ref);
   const res = await fetch(url);
 
-  assert.equal(
+  assert.strictEqual(
     res.headers.get(ASSET_FETCH_GA_INFO_HEADER),
-    `${markdownPath};ga-event-candidate,config-present`,
+    `${markdownPath};ga-event-candidate,${expectedConfigTag(ref)}`,
+    'X-Asset-Fetch-Ga-Info',
   );
 });
 
@@ -71,12 +78,9 @@ test('HEAD explicit .md path → success with empty body', async () => {
   const ct = res.headers.get('content-type') ?? '';
   const buf = await res.arrayBuffer();
 
-  assert.equal(res.status, 200, `expected 200 for ${url}`);
-  assert.ok(
-    ct.toLowerCase().includes('text/markdown'),
-    `expected text/markdown content-type, got ${JSON.stringify(ct)}`,
-  );
-  assert.equal(buf.byteLength, 0, 'expected empty body');
+  assert.strictEqual(res.status, 200, 'HTTP status');
+  assert.strictEqual(ct, expectedMarkdownContentType, 'Content-Type');
+  assert.strictEqual(buf.byteLength, 0, 'Response body');
 });
 
 test('GET explicit .md path with internal marker → same markdown response', async () => {
@@ -90,15 +94,9 @@ test('GET explicit .md path with internal marker → same markdown response', as
   const ct = res.headers.get('content-type') ?? '';
   const text = await res.text();
 
-  assert.equal(res.status, 200, `expected 200 for ${url}`);
-  assert.ok(
-    ct.toLowerCase().includes('text/markdown'),
-    `expected text/markdown content-type, got ${JSON.stringify(ct)}`,
-  );
-  assert.ok(
-    text.includes('# Regular edge function test page'),
-    'body should contain "# Regular edge function test page"',
-  );
+  assert.strictEqual(res.status, 200, 'HTTP status');
+  assert.strictEqual(ct, expectedMarkdownContentType, 'Content-Type');
+  assert.match(text, regularPageMarkdownHeading, 'Request body');
 });
 
 test('GET explicit .txt path → text response', async () => {
@@ -108,15 +106,9 @@ test('GET explicit .txt path → text response', async () => {
   const ct = res.headers.get('content-type') ?? '';
   const text = await res.text();
 
-  assert.equal(res.status, 200, `expected 200 for ${url}`);
-  assert.ok(
-    ct.toLowerCase().includes('text/plain'),
-    `expected text/plain content-type, got ${JSON.stringify(ct)}`,
-  );
-  assert.ok(
-    text.includes('# OpenTelemetry'),
-    'body should contain "# OpenTelemetry" (llms.txt heading)',
-  );
+  assert.strictEqual(res.status, 200, 'HTTP status');
+  assert.strictEqual(ct, expectedPlainTextContentType, 'Content-Type');
+  assert.match(text, llmsTxtHeading, 'Request body');
 });
 
 test('GET explicit .txt path with internal marker → same text response', async () => {
@@ -130,13 +122,7 @@ test('GET explicit .txt path with internal marker → same text response', async
   const ct = res.headers.get('content-type') ?? '';
   const text = await res.text();
 
-  assert.equal(res.status, 200, `expected 200 for ${url}`);
-  assert.ok(
-    ct.toLowerCase().includes('text/plain'),
-    `expected text/plain content-type, got ${JSON.stringify(ct)}`,
-  );
-  assert.ok(
-    text.includes('# OpenTelemetry'),
-    'body should contain "# OpenTelemetry" (llms.txt heading)',
-  );
+  assert.strictEqual(res.status, 200, 'HTTP status');
+  assert.strictEqual(ct, expectedPlainTextContentType, 'Content-Type');
+  assert.match(text, llmsTxtHeading, 'Request body');
 });
