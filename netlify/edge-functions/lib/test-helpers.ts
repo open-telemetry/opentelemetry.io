@@ -129,11 +129,7 @@ export function firstAssetFetchEvent(
   ga4Bodies: Record<string, unknown>[],
   expectedBodyCount = 1,
 ): AssetFetchGa4Event {
-  assert.strictEqual(
-    ga4Bodies.length,
-    expectedBodyCount,
-    'GA4 body count',
-  );
+  assert.strictEqual(ga4Bodies.length, expectedBodyCount, 'GA4 body count');
   const events = parseGa4EventsArray(ga4Bodies[0] as Record<string, unknown>);
   assert.ok(events.length > 0, 'GA4 events length');
   return events[0]!;
