@@ -139,6 +139,12 @@ Event parameters correspond to the following GA4 custom dimensions:
   - Scope: `Event`
   - Event parameter: `status_code`
   - Description: HTTP response status code returned when serving the asset
+- Dimension name: `Event emitter`
+  - Scope: `Event`
+  - Event parameter: `event_emitter`
+  - Description: Instrumentation scope that emitted the `asset_fetch` event. One
+    of `markdown-negotiation`, `schema-analytics`, and `asset-tracking`. These
+    correspond to the corresponding Edge Function names.
 
 Deprecated dimensions:
 
@@ -155,9 +161,7 @@ Deprecated dimensions:
   - Description: Broad category for fetched non-HTML assets, such as `schema` or
     `markdown`
 
-Possible future optional event parameters:
-
-### Optional event parameters
+Possible future event parameters:
 
 - `referrer_host`
 - `ua_category`: coarse user-agent class such as `browser`, `ai-agent`,
@@ -241,6 +245,7 @@ Register these event-scoped custom dimensions in GA4:
 - `asset_path`
 - `content_type`
 - `status_code`
+- `event_emitter`
 - `original_path` (phase 2)
 - `referrer_host` if used
 - `ua_category` if used
