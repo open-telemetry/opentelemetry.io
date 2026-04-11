@@ -1,14 +1,14 @@
 ---
 title: GA4 asset fetch analytics plan
 date: 2026-04-10
-version: 0.2
+version: 0.4-dev
 custodian: Patrice Chalin
 cSpell:ignore: GOOGLEANALYTICS trackability
 ---
 
 ## Goal
 
-Support analytics/observability for non-HTML assets served from
+Support essential GA4 analytics for non-HTML assets served from
 `opentelemetry.io`, including:
 
 - Schema files under `/schemas/*`
@@ -17,6 +17,9 @@ Support analytics/observability for non-HTML assets served from
 
 The chosen design keeps reporting accessible to the existing team through Google
 Analytics while preserving a reliable operational view in Netlify.
+
+[Netlify Observability][] remains the operational backstop for request-level
+validation and debugging.
 
 ## Summary
 
@@ -110,32 +113,49 @@ flowchart LR
 
 ### Event name
 
-Use one custom event:
+Use a single custom event: `asset_fetch`
 
-`asset_fetch`
+### Event parameters
 
-This keeps reporting simple and avoids proliferating many event names.
+Event parameters correspond to the following GA4 custom dimensions:
 
-### Required event parameters
+- Dimension name: `Asset path`
+  - Scope: `Event`
+  - Event parameter: `asset_path`
+  - Description: Path of the resource returned for the fetch (after Path
+    resolution), such as `/schemas/1.40.0`
+- Dimension name: `Original path`
+  - Scope: `Event`
+  - Event parameter: `original_path`
+  - Description: Unmodified request path when it differs from `asset_path`.
+    Register for Markdown negotiation; omit when unused (for example schemas do
+    not send this parameter).
+- Dimension name: `Content type`
+  - Scope: `Event`
+  - Event parameter: `content_type`
+  - Description: Response content type returned for the fetched asset, such as
+    `application/yaml`
+- Dimension name: `Status code`
+  - Scope: `Event`
+  - Event parameter: `status_code`
+  - Description: HTTP response status code returned when serving the asset
 
-Send the following GA4 event parameters for every tracked asset request:
+Deprecated dimensions:
 
-- `asset_group`: one of: `schema`, `markdown`, `text`, `other`
-- `asset_path`: path of the resource returned in the response, after Path
-  resolution (for example `/schemas/1.40.0` or
-  `/docs/concepts/context/index.md`)
-- `asset_ext`: extension from `asset_path` when present; always `yaml` for
-  schemas
-- `content_type`: stable response content type, for example `application/yaml`
-- `status_code`: response status as a string, for example `200`
+- Dimension name: `Asset extension`
+  - Status: **DEPRECATED** since v0.4
+  - Scope: `Event`
+  - Event parameter: `asset_ext`
+  - Description: Extension from `asset_path` when present. Always `yaml` for
+    schemas.
+- Dimension name: `Asset group`
+  - Status: **DEPRECATED** since v0.4
+  - Scope: `Event`
+  - Event parameter: `asset_group`
+  - Description: Broad category for fetched non-HTML assets, such as `schema` or
+    `markdown`
 
-### Markdown negotiation: `original_path`
-
-- `original_path`: unmodified request path when it differs from `asset_path`,
-  for example `/docs/concepts/context/` when the resolved `asset_path` is
-  `/docs/concepts/context/index.md` (omit when request and resolution match).
-  The `markdown-negotiation` Edge Function sends this today; other asset types
-  may add it later.
+Possible future optional event parameters:
 
 ### Optional event parameters
 
@@ -218,153 +238,38 @@ property.
 
 Register these event-scoped custom dimensions in GA4:
 
-- `asset_group`
 - `asset_path`
-- `asset_ext`
 - `content_type`
 - `status_code`
 - `original_path` (phase 2)
 - `referrer_host` if used
 - `ua_category` if used
 
-### Reporting model
-
-The primary GA4 metric is:
-
-- `Event count`
-
-The main report slices are:
-
-- event count by `asset_path`
-- event count by `asset_group`
-- event count by `asset_ext`
-- event count by `status_code`
-- event count by `ua_category` if implemented
-
 ### Retention and history
 
 GA4 aggregated reports remain available in the GA UI, but event-level retention
-used by Explorations is limited by GA4 retention settings. If exact long-term
-path-level history matters, enable BigQuery export.
+used by Explorations is limited by GA4 retention settings, which is set to 14
+months (as of 2026-04-03).
 
-## Reporting examples
+## Reporting
 
-### Schema access counts
-
-Example question:
-
-How many times was `/schemas/1.40.0` fetched in the last 30 days?
-
-GA4 answer shape:
-
-- filter `event_name = asset_fetch`
-- filter `asset_group = schema`
-- breakdown by `asset_path`
-- metric `Event count`
-
-### Markdown asset access counts
-
-Example question:
-
-Which Markdown-rendered page assets were fetched most often this month?
-
-GA4 answer shape:
-
-- filter `event_name = asset_fetch`
-- filter `asset_group = markdown`
-- breakdown by `asset_path`
-- metric `Event count`
-
-For negotiated Markdown delivery, the `markdown-negotiation` Edge Function sets
-`asset_path` to the path of the returned resource and sends `original_path` when
-the request path differs.
-
-### Bot and AI traffic split
-
-Example question:
-
-How much of Markdown asset traffic comes from AI agents vs browsers?
-
-Two options:
-
-1. In GA4, if `ua_category` is sent as an event parameter.
-2. In Netlify Observability, which already classifies user agents and is better
-   suited for validation and operational analysis.
-
-## Looker Studio reporting
-
-Use the existing GA4-backed Looker Studio reporting approach for asset
-analytics. This should work well for the current goals:
-
-- access counts
-- top-accessed schema files
-- top-accessed Markdown assets
-
-### Top 10 schemas in the last 30 days
-
-Recommended chart configuration:
-
-- data source: GA4 property or dedicated asset stream
-- chart type: table
-- dimension: `asset_path`
-- metric: `Event count`
-- filters:
-  - `event_name = asset_fetch`
-  - `asset_group = schema`
-- sort: `Event count` descending
-- row limit: top `10`
-- date range: last `30` days
-
-### Top Markdown assets in the last 30 days
-
-Recommended chart configuration:
-
-- data source: GA4 property or dedicated asset stream
-- chart type: table
-- dimension: `asset_path`
-- metric: `Event count`
-- filters:
-  - `event_name = asset_fetch`
-  - `asset_group = markdown`
-- sort: `Event count` descending
-- row limit: top `10`
-- date range: last `30` days
-
-### Publishing and sharing
-
-This reporting can be added to the existing public Looker Studio dashboard,
-assuming:
-
-- the report uses owner credentials for the GA4 data source
-- the GA4 custom dimensions have been registered
-- the new fields have propagated and the Looker data source fields have been
-  refreshed
-
-### Limits
-
-This approach is a good fit for top-N reporting. If `asset_path` eventually
-becomes too high-cardinality and GA4 starts collapsing values into `(other)`,
-move the public path-level report to Looker Studio on top of GA4 BigQuery
-export.
+- Google Analytics console:
+  - Engagement > Events report. Select `asset_fetch` to view details of all
+    asset fetch events.
+- Looker Studio
+  - Asset fetch event reporting can be added to the existing public Looker
+    Studio dashboard.
+    - For an example, see the Schema table (added around 2026-04-09)
+  - Note: You may have to refresh the data source to see new custom dimensions.
+  - Limits:
+    - This approach is a good fit for top-N reporting. If `asset_path`
+      eventually becomes too high-cardinality and GA4 starts collapsing values
+      into `(other)`, move the public path-level report to Looker Studio on top
+      of GA4 BigQuery export.
 
 ## Phase 1 runtime configuration (completed)
 
-Configure the Netlify site with:
-
-- `HUGO_SERVICES_GOOGLEANALYTICS_ID`
-  - existing GA4 measurement ID for the site's current web stream
-- `GA4_API_SECRET`
-  - new GA4 Measurement Protocol API secret for `asset_fetch` events
-
-Phase 1 should reuse the existing web stream and should not introduce a second
-measurement ID.
-
-Phase 1 should rely on environment-variable scoping rather than host-based
-checks inside the Edge Function. If `GA4_API_SECRET` is only configured for
-production, local and preview environments will not send GA4 events unless the
-secret is intentionally provided there as well.
-
-### Create the GA4 Measurement Protocol API secret
+### Create a GA4 Measurement Protocol API secret
 
 In GA4:
 
@@ -376,16 +281,16 @@ In GA4:
 
 Operational notes:
 
-- keep the secret private
-- store it only in Netlify site settings
-- rotate it if there is any reason to suspect exposure
+- Keep the secret private
+- Store it only in Netlify site settings
+- Rotate it if there is any reason to suspect exposure
 
-### Set the Netlify environment variable
+### Set `GA4_API_SECRET`
 
-In Netlify site settings:
+In Netlify site Environment Variables settings:
 
 1. Open the site's environment variable settings.
-2. Add `GA4_API_SECRET`.
+2. Add `GA4_API_SECRET` for **production only**.
 3. Paste the Measurement Protocol API secret value.
 4. Redeploy after the variable is added or updated.
 
@@ -399,43 +304,12 @@ In GA4:
 1. Open `Admin`.
 2. Under `Data display`, open `Custom definitions`.
 3. Open the `Custom dimensions` tab.
-4. Create event-scoped custom dimensions for the `asset_fetch` parameters.
+4. Create event-scoped custom dimensions for each of the `asset_fetch`
+   parameters listed in [Event parameters](#event-parameters).
 
-Suggested GA4 dimension definitions:
-
-- Dimension name: `Asset group`
-  - Scope: `Event`
-  - Event parameter: `asset_group`
-  - Description: Broad category for fetched non-HTML assets, such as `schema` or
-    `markdown`
-- Dimension name: `Asset path`
-  - Scope: `Event`
-  - Event parameter: `asset_path`
-  - Description: Path of the resource returned for the fetch (after Path
-    resolution), such as `/schemas/1.40.0`
-- Dimension name: `Asset extension`
-  - Scope: `Event`
-  - Event parameter: `asset_ext`
-  - Description: Extension from `asset_path` when present. Always `yaml` for
-    schemas.
-- Dimension name: `Content type`
-  - Scope: `Event`
-  - Event parameter: `content_type`
-  - Description: Response content type returned for the fetched asset, such as
-    `application/yaml`
-- Dimension name: `Status code`
-  - Scope: `Event`
-  - Event parameter: `status_code`
-  - Description: HTTP response status code returned when serving the asset
-- Dimension name: `Original path`
-  - Scope: `Event`
-  - Event parameter: `original_path`
-  - Description: Unmodified request path when it differs from `asset_path`.
-    Register for Markdown negotiation; omit when unused (for example schemas do
-    not send this parameter).
-
-GA4 custom dimensions typically become available in reports and explorations 24
-to 48 hours after the event data is sent and the custom dimension is created.
+> **Note:** GA4 custom dimensions typically become available in reports and
+> explorations 24 to 48 hours after the event data is sent and the custom
+> dimension is created.
 
 ### Validate phase 1 after deploy
 
@@ -444,8 +318,8 @@ After deploying:
 1. Fetch a known schema URL such as `/schemas/1.40.0`.
 2. Confirm the response still returns YAML.
 3. Check GA4 Realtime for the `asset_fetch` event.
-4. After custom dimensions propagate, confirm `asset_group = schema` and the
-   expected `asset_path` appear in GA4 and Looker Studio.
+4. After custom dimensions propagate, confirm the expected `asset_path`,
+   `content_type`, and `status_code` appear in GA4 and Looker Studio.
 
 Validation note:
 
@@ -458,15 +332,14 @@ Validation note:
 
 ### Tracked paths
 
-Initial scope:
-
 - `/schemas/*`
-- Negotiated Markdown responses
-- Explicit `.md` and `.txt` requests
+- Request paths ending in `.md` or `.txt`
+- Any path with content negotiation for Markdown
 
-Future optional scope:
+> **Note:** More extensions may be added in the future in support of [Download
+> URLs #4079][#4079].
 
-- Other machine-readable non-HTML assets that warrant analytics
+[#4079]: https://github.com/open-telemetry/opentelemetry.io/issues/4079
 
 ### Response gating
 
@@ -478,29 +351,22 @@ Only send GA4 events when all of the following are true:
 
 Current route-specific rules:
 
-- Schemas: track `GET /schemas/*` for successful `2xx` YAML responses and
-  successful `3xx` redirects under `/schemas/*`
 - Negotiated Markdown: track only successful negotiated Markdown `GET 2xx`
   responses
 - Explicit `.md` and `.txt`: track direct `GET` requests to tracked asset URLs
   regardless of response status, and skip any request marked with
   `X-Asset-Fetch-Ga-Info`
+- Schemas: track `GET /schemas/*` for successful `2xx` YAML responses and
+  successful `3xx` redirects under `/schemas/*`.
 
-This avoids inflating counts with irrelevant methods or internal subrequests.
-
-In the future we might broaden tracking to other HTTP methods, and for other
-response status codes.
+These rule help avoid emitting non-essential events to GA. Consult the site's
+[Netlify Observability][] page for responses with other status codes such as
+`4xx` or `5xx`, and other HTTP methods.
 
 ### Deduplication policy
 
-Do not attempt request deduplication in the Edge Function. Count each served
-request as one `asset_fetch` event.
-
-Reason:
-
-- request count is the simplest and most defensible metric
-- GA4 user/session semantics are weak for server-side asset fetches anyway
-- deduplication would add ambiguity and operational complexity
+Edge Function design should ensure that at most one `asset_fetch` event is sent
+for each request.
 
 ## Identity and privacy
 
@@ -550,11 +416,11 @@ assets are generated for many pages.
 
 ### Mitigations
 
-- use one event name only
-- use a small set of categorical parameters
-- keep `asset_path` stable (Path resolution)
-- do not send query strings
-- use BigQuery export for exact long-term analysis
+- Use one event name only
+- Use a small set of categorical parameters
+- Keep `asset_path` stable (path resolution)
+- Do not send query strings
+- Use BigQuery export for exact long-term analysis
 
 ### When to move beyond GA4 UI
 
@@ -562,21 +428,6 @@ If the GA4 UI starts collapsing rows into `(other)` for `asset_path`, use:
 
 - GA4 for high-level grouped reporting
 - BigQuery for exact path-level analysis
-
-## Netlify Observability role
-
-Netlify Observability should remain enabled even after GA4 asset tracking is
-added.
-
-Use it for:
-
-- sanity-checking request volumes
-- short-term incident analysis
-- debugging status-code spikes
-- identifying traffic classes such as AI agents and crawlers
-
-Do not treat it as the primary shared reporting surface for this initiative. It
-is better suited to internal operational use than broad publishing.
 
 ## Implementation plan
 
@@ -588,6 +439,8 @@ is better suited to internal operational use than broad publishing.
 4. Validate counts against Netlify Observability.
 
 ### Phase 2
+
+**Status:** In progress. Completed steps: 1, 2.
 
 Steps:
 
@@ -609,55 +462,20 @@ Steps:
    expose compact debug info on responses, which keeps the mechanism simple and
    live-testable.
 
-3. Add `ua_category` if the classification is stable and low-cardinality.
-4. Build a shared GA4 exploration or Looker Studio report for the team.
+3. (optional) Add `ua_category` if the classification is stable and
+   low-cardinality.
 
 ### Phase 3
 
+This phase is optional.
+
+1. Build a shared GA4 exploration or Looker Studio report for the team.
 1. Enable GA4 BigQuery export if exact long-term path-level reporting becomes
    important.
-2. Add grouped dashboards for:
+1. Add grouped dashboards for:
    - schema usage by version
    - Markdown asset usage by section
    - asset traffic by status code
-
-## Open decisions
-
-### Stream vs property
-
-Default recommendation: use the existing web stream in the existing property.
-
-Decision triggers for a separate property:
-
-- stricter access control
-- a need for stronger isolation than a separate event name provides
-- desire to isolate machine traffic completely
-- concern that asset events will confuse non-technical GA users
-
-### Whether to send `ua_category`
-
-Recommended default: not in phase 1.
-
-Reason:
-
-- Netlify already provides agent classification operationally
-- it can be added later if needed
-
-### Whether to count redirects
-
-Recommended default: yes, if the request is a successful redirect for a tracked
-asset route such as `/schemas/latest`.
-
-If reports should reflect only terminal asset responses, change the gating rule
-to only count `2xx`.
-
-## Proposed dashboard questions
-
-- Which schema versions are fetched most often?
-- How often is `/schemas/latest` used compared to pinned schema versions?
-- Which Markdown asset routes are fetched most often?
-- Which documentation sections receive the most Markdown asset traffic?
-- What share of asset traffic is non-`200`?
 
 ## Prior art
 
@@ -724,6 +542,10 @@ In no particular order:
 Reverse chronological: prepend a `### v…` section for each plan-changing PR; use
 `-dev` on the version until that change set is merged.
 
+### v0.4-dev - TBD (not merged yet)
+
+- ...
+
 ### v0.3 - 2026-04-10
 
 - Implemented phase 2.2/2.3 with a generic `asset-tracking` Edge Function for
@@ -756,3 +578,6 @@ Reverse chronological: prepend a `### v…` section for each plan-changing PR; u
 ### v0.1 - 2026-04-03
 
 - First version.
+
+[Netlify Observability]:
+  https://app.netlify.com/projects/opentelemetry/logs-and-metrics/observability
