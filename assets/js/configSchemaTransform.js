@@ -1,24 +1,17 @@
-#!/usr/bin/env node
-
 /**
- * Configuration Schema Transformer
+ * Configuration Schema Transformer - Client-Side Version
  *
  * Transforms the raw OpenTelemetry configuration JSON Schema into a simplified
  * format optimized for the configuration types accordion UI.
  *
- * Input:  data/opentelemetry/configuration.json (standard JSON Schema)
- * Output: data/opentelemetry/configurationTypes.json (simplified structure)
+ * Input:  Raw JSON Schema from /schemas/opentelemetry_configuration.json
+ * Output: Simplified structure for accordion rendering
  *
- * This script extracts type definitions, processes properties, resolves constraints,
+ * This module extracts type definitions, processes properties, resolves constraints,
  * and generates human-readable default text
+ *
+ * @module configSchemaTransform
  */
-
-const fs = require('fs');
-const path = require('path');
-
-// File paths relative to project root
-const INPUT_FILE = 'data/opentelemetry/configuration.json';
-const OUTPUT_FILE = 'data/opentelemetry/configurationTypes.json';
 
 /**
  * Resolve type information from a property definition
@@ -112,15 +105,103 @@ function generateDefaultText(propDef) {
 
 /**
  * Clean description text
- * Normalizes whitespace and trims
+ * Converts markdown lists to HTML, linkifies URLs, and normalizes whitespace
  * @param {string} description - Raw description text
- * @returns {string} Cleaned description
+ * @returns {string} Cleaned description with HTML formatting
  */
 function cleanDescription(description) {
   if (!description) return '';
 
-  // Replace multiple whitespace characters with single space
-  return description.replace(/\s+/g, ' ').trim();
+  let result = description.trim();
+
+  // Split into lines for list processing
+  const lines = result.split('\n');
+  const processed = [];
+  let currentList = null;
+  let listType = null;
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i].trim();
+
+    // Skip empty lines
+    if (!line) continue;
+
+    // Check for unordered list item (- or *)
+    const unorderedMatch = line.match(/^[-*]\s+(.+)$/);
+    if (unorderedMatch) {
+      if (listType !== 'ul') {
+        // Close any open list
+        if (currentList) {
+          processed.push(currentList);
+        }
+        currentList = { type: 'ul', items: [] };
+        listType = 'ul';
+      }
+      currentList.items.push(unorderedMatch[1]);
+      continue;
+    }
+
+    // Check for ordered list item (1. 2. etc.)
+    const orderedMatch = line.match(/^\d+\.\s+(.+)$/);
+    if (orderedMatch) {
+      if (listType !== 'ol') {
+        // Close any open list
+        if (currentList) {
+          processed.push(currentList);
+        }
+        currentList = { type: 'ol', items: [] };
+        listType = 'ol';
+      }
+      currentList.items.push(orderedMatch[1]);
+      continue;
+    }
+
+    // Not a list item - close any open list
+    if (currentList) {
+      processed.push(currentList);
+      currentList = null;
+      listType = null;
+    }
+
+    // Add non-list line
+    processed.push(line);
+  }
+
+  // Close final list if still open
+  if (currentList) {
+    processed.push(currentList);
+  }
+
+  // Convert processed structure to HTML
+  result = processed.map(item => {
+    if (typeof item === 'string') {
+      return item;
+    } else if (item.type === 'ul') {
+      const items = item.items.map(i => `<li>${i}</li>`).join('');
+      return `<ul>${items}</ul>`;
+    } else if (item.type === 'ol') {
+      const items = item.items.map(i => `<li>${i}</li>`).join('');
+      return `<ol>${items}</ol>`;
+    }
+    return '';
+  }).join(' ');
+
+  // Linkify URLs after list processing
+  result = result.replace(/(https?:\/\/[^\s<>"]+)/g, (url) => {
+    // Don't linkify if already in an href attribute
+    return `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`;
+  });
+
+  // Normalize excessive whitespace between non-HTML content
+  result = result.replace(/>\s+</g, '><');  // Remove whitespace between tags
+  result = result.replace(/\s+/g, ' ').trim();  // Normalize other whitespace
+
+  // Debug logging for descriptions with HTML
+  if (result.includes('<')) {
+    console.log('cleanDescription output with HTML:', result.substring(0, 200));
+  }
+
+  return result;
 }
 
 /**
@@ -227,58 +308,19 @@ function extractTypes(schema) {
 
 /**
  * Main transformation function
- * Reads input JSON Schema, transforms it, and writes simplified output
+ * Transforms raw JSON Schema to simplified format for accordion UI
+ * @param {Object} rawSchema - Raw JSON Schema object
+ * @returns {Object} Simplified data structure { types: [...] }
  */
-function transform() {
+export function transformSchema(rawSchema) {
   try {
-    // Resolve paths relative to project root
-    const projectRoot = path.resolve(__dirname, '..');
-    const inputPath = path.join(projectRoot, INPUT_FILE);
-    const outputPath = path.join(projectRoot, OUTPUT_FILE);
-
-    console.log(`Reading JSON Schema from: ${inputPath}`);
-
-    // Read and parse input schema
-    const schemaContent = fs.readFileSync(inputPath, 'utf8');
-    const schema = JSON.parse(schemaContent);
-
-    console.log('Extracting and processing type definitions...');
-
     // Extract and process types
-    const types = extractTypes(schema);
-
-    console.log(`Processed ${types.length} type definitions`);
+    const types = extractTypes(rawSchema);
 
     // Create output structure
-    const output = { types };
-
-    // Write output file
-    console.log(`Writing simplified data to: ${outputPath}`);
-    fs.writeFileSync(
-      outputPath,
-      JSON.stringify(output, null, 2) + '\n',
-      'utf8',
-    );
-
-    console.log('✓ Transformation complete!');
-    console.log(`  Input:  ${INPUT_FILE}`);
-    console.log(`  Output: ${OUTPUT_FILE}`);
-    console.log(`  Types:  ${types.length}`);
+    return { types };
   } catch (error) {
-    console.error('Error during transformation:');
-    console.error(error.message);
-    if (error.stack) {
-      console.error(error.stack);
-    }
-    process.exit(1);
+    console.error('Error during schema transformation:', error);
+    throw error;
   }
 }
-
-// Run transformation if executed directly
-if (require.main === module) {
-  transform();
-}
-
-module.exports = {
-  transform,
-};

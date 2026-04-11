@@ -6,11 +6,13 @@
  */
 
 import * as AccordionUtils from './shared/accordionUtils.js';
+import { transformSchema } from './configSchemaTransform.js';
 
 const DEBOUNCE_DELAY = 300;
 const LOCAL_STORAGE_KEY = 'config-types-preferences';
 const URL_PARAM_SEARCH = 'search';
 const URL_PARAM_FILTER = 'filter';
+const SCHEMA_URL = '/schemas/opentelemetry_configuration.json';
 
 let i18nStrings = {
   searchPlaceholder: 'Filter by type name...',
@@ -31,27 +33,65 @@ const typesData = {
 let container = null;
 
 /**
- * Load types data from JSON embedded in data-types attribute
- * @returns {boolean} True if successfully loaded from JSON
+ * Show loading indicator in the accordion container
  */
-function loadTypesData() {
+function showLoading() {
+  const accordionContainer = container.querySelector('.accordion-items-container');
+  if (!accordionContainer) return;
+
+  accordionContainer.innerHTML = `
+    <div class="text-center py-5">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading configuration types...</span>
+      </div>
+      <p class="mt-3">Loading configuration types...</p>
+    </div>
+  `;
+}
+
+/**
+ * Show error message in the accordion container
+ * @param {string} message - Error message to display
+ */
+function showError(message) {
+  const accordionContainer = container.querySelector('.accordion-items-container');
+  if (!accordionContainer) return;
+
+  accordionContainer.innerHTML = `
+    <div class="alert alert-danger" role="alert">
+      <strong>Error:</strong> ${message}
+    </div>
+  `;
+}
+
+/**
+ * Load types data from server
+ * Fetches raw schema from static mount and transforms it client-side
+ * @returns {Promise<boolean>} True if successfully loaded
+ */
+async function loadTypesData() {
   try {
-    const typesJson = container.dataset.types;
-    if (!typesJson) {
-      console.error('No types JSON data found in data-types attribute');
-      return false;
+    // Fetch raw schema from static asset (served from submodule)
+    const response = await fetch(SCHEMA_URL);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch schema: ${response.status} ${response.statusText}`);
     }
 
-    const parsed = JSON.parse(typesJson);
-    if (!parsed.types || !Array.isArray(parsed.types)) {
-      console.error('Invalid types data structure');
-      return false;
+    const rawSchema = await response.json();
+
+    // Transform using client-side logic
+    const transformedData = transformSchema(rawSchema);
+
+    if (!transformedData.types || !Array.isArray(transformedData.types)) {
+      throw new Error('Invalid transformed data structure');
     }
 
-    typesData.types = parsed.types;
+    typesData.types = transformedData.types;
+
     return true;
-  } catch (e) {
-    console.error('Failed to parse types JSON:', e);
+  } catch (error) {
+    console.error('Error loading configuration types:', error);
+    showError(`Failed to load configuration types: ${error.message}`);
     return false;
   }
 }
@@ -155,7 +195,6 @@ function generatePropertyTable(properties) {
   const headers = [
     'Property',
     'Type',
-    'Default Behavior',
     'Constraints',
     'Description',
   ];
@@ -190,11 +229,6 @@ function generatePropertyTable(properties) {
     typeCell.textContent = prop.type || '';
     row.appendChild(typeCell);
 
-    // Default behavior
-    const defaultCell = document.createElement('td');
-    defaultCell.textContent = prop.default || '';
-    row.appendChild(defaultCell);
-
     // Constraints (only if column is shown)
     if (hasConstraints) {
       const constraintsCell = document.createElement('td');
@@ -204,7 +238,7 @@ function generatePropertyTable(properties) {
 
     // Description
     const descCell = document.createElement('td');
-    descCell.textContent = prop.description || '';
+    descCell.innerHTML = prop.description || '';
     row.appendChild(descCell);
 
     tbody.appendChild(row);
@@ -304,7 +338,7 @@ function restoreFilterState() {
   applyFilters();
 }
 
-function init() {
+async function init() {
   container = document.querySelector('.config-types-accordion');
   if (!container) {
     container = document.getElementById('config-types-accordion-container');
@@ -323,7 +357,12 @@ function init() {
     console.warn('Could not parse i18n data, using defaults:', e);
   }
 
-  if (!loadTypesData()) {
+  // Show loading indicator
+  showLoading();
+
+  // Load types data (async - fetches and transforms schema)
+  const loaded = await loadTypesData();
+  if (!loaded) {
     console.error('Failed to load types data');
     return false;
   }

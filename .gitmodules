@@ -34,3 +34,7 @@
 	path = content-modules/opentelemetry-go-contrib
 	url = https://github.com/open-telemetry/opentelemetry-go-contrib
 	go-contrib-pin = 0a5b338
+[submodule "content-modules/opentelemetry-configuration"]
+	path = content-modules/opentelemetry-configuration
+	url = https://github.com/open-telemetry/opentelemetry-configuration
+	config-pin = v1.0.0
