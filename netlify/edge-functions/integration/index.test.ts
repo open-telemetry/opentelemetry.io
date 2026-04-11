@@ -120,6 +120,7 @@ test('markdown negotiation internal .md fetch does not double-count asset_fetch'
   assert.equal(event.params.content_type, 'text/markdown');
   assert.equal(event.params.status_code, '200');
   assert.equal(event.params.original_path, '/docs/');
+  assert.equal(event.params.event_emitter, 'negotiation');
 });
 
 test('direct .md request passes through markdown negotiation and emits one asset_fetch', async (t) => {
@@ -184,4 +185,5 @@ test('direct .md request passes through markdown negotiation and emits one asset
   assert.equal(event.params.content_type, 'text/markdown');
   assert.equal(event.params.status_code, '200');
   assert.ok(!('original_path' in event.params));
+  assert.equal(event.params.event_emitter, 'tracking');
 });

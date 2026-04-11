@@ -58,6 +58,7 @@ test('enqueueAssetFetchEvent no-ops without waitUntil', () => {
       asset_path: '/schemas/1.40.0',
       content_type: 'application/yaml',
       status_code: '200',
+      event_emitter: 'schema',
     },
   );
 });
@@ -111,6 +112,7 @@ test('enqueueAssetFetchEvent calls waitUntil with GA4 payload', async (t) => {
     asset_path: '/schemas/1.40.0',
     content_type: 'application/yaml',
     status_code: '200',
+    event_emitter: 'schema',
   });
 
   assert.ok(waitUntilPromise, 'waitUntil should have been called');
@@ -133,6 +135,7 @@ test('enqueueAssetFetchEvent calls waitUntil with GA4 payload', async (t) => {
   assert.equal(events[0].params.asset_path, '/schemas/1.40.0');
   assert.equal(events[0].params.content_type, 'application/yaml');
   assert.equal(events[0].params.status_code, '200');
+  assert.equal(events[0].params.event_emitter, 'schema');
   assert.equal(
     events[0].params.original_path,
     undefined,

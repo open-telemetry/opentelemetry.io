@@ -92,6 +92,9 @@ export function isInternalAssetFetchRequest(request: Request): boolean {
   return request.headers.has(ASSET_FETCH_GA_INFO_HEADER);
 }
 
+/** Canonical `event_emitter` values; see projects/2026/asset-fetch-analytics.plan.md */
+export type AssetFetchEventEmitter = 'negotiation' | 'tracking' | 'schema';
+
 /**
  * GA4 `asset_fetch` event parameters (custom dimensions). Required fields match
  * the plan; optional fields are omitted from the payload when unset.
@@ -100,6 +103,7 @@ export type AssetFetchEventParams = {
   asset_path: string;
   content_type: string;
   status_code: string;
+  event_emitter: AssetFetchEventEmitter;
   original_path?: string;
   referrer_host?: string;
   ua_category?: string;

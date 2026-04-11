@@ -5,7 +5,8 @@ tests.
 
 It tracks explicit asset-path requests by extension using `context.next()`
 (currently `*.md` and `*.txt`) and emits GA4 `asset_fetch` events for tracked
-`GET` requests regardless of response status.
+`GET` requests regardless of response status. Emitted events set `event_emitter`
+to `tracking`.
 
 If the request includes `X-Asset-Fetch-Ga-Info`, the function treats it as an
 internal subrequest and skips tracking. This prevents duplicate events when

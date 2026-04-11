@@ -118,6 +118,7 @@ test('GET markdown emits asset_fetch with original_path when path differs', asyn
   assert.equal(event.params.content_type, 'text/markdown');
   assert.equal(event.params.status_code, '200');
   assert.equal(event.params.original_path, '/docs/');
+  assert.equal(event.params.event_emitter, 'negotiation');
 });
 
 test('GET markdown includes original_path when request path differs from resolved md', async (t) => {
@@ -155,6 +156,7 @@ test('GET markdown includes original_path when request path differs from resolve
   )[0].params;
   assert.equal(params.asset_path, '/docs/index.md');
   assert.equal(params.original_path, '/docs/index.html');
+  assert.equal(params.event_emitter, 'negotiation');
 });
 
 test('GET direct .md URL currently passes through without asset_fetch', async (t) => {

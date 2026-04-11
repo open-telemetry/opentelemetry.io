@@ -142,9 +142,13 @@ Event parameters correspond to the following GA4 custom dimensions:
 - Dimension name: `Event emitter`
   - Scope: `Event`
   - Event parameter: `event_emitter`
-  - Description: Instrumentation scope that emitted the `asset_fetch` event. One
-    of `markdown-negotiation`, `schema-analytics`, and `asset-tracking`. These
-    correspond to the corresponding Edge Function names.
+  - Description: Short stable id for the instrumentation scope that emitted the
+    `asset_fetch` event.
+  - Canonical values:
+    - `negotiation` — Accept-negotiated page Markdown (`markdown-negotiation`)
+    - `tracking` — direct `.md` / `.txt` paths (`asset-tracking`)
+    - `schema` — `/schemas/*` responses (`schema-analytics`). **Note:** this
+      value may be deprecated in the future.
 
 Deprecated dimensions:
 
@@ -549,7 +553,10 @@ Reverse chronological: prepend a `### v…` section for each plan-changing PR; u
 
 ### v0.4-dev - TBD (not merged yet)
 
-- ...
+- Added `event_emitter` with canonical values `negotiation`, `tracking`, and
+  `schema`, and updated the implementation/tests to emit and validate it.
+- Deprecated `asset_group` and `asset_ext`, and removed them from the emitted
+  GA4 payloads and related test assertions.
 
 ### v0.3 - 2026-04-10
 

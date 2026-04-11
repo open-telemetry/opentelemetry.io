@@ -23,6 +23,7 @@ export default async function assetTracking(
     asset_path: assetPath,
     content_type: normalizeContentType(response.headers.get('content-type')),
     status_code: String(response.status),
+    event_emitter: 'tracking',
   });
 
   return response;

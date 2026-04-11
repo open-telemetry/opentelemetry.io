@@ -67,6 +67,7 @@ export default async function markdownNegotiation(
       asset_path: assetPath,
       content_type: normalizeContentType(headers.get('content-type') ?? ''),
       status_code: String(markdownResponse.status),
+      event_emitter: 'negotiation',
       ...(url.pathname !== assetPath ? { original_path: url.pathname } : {}),
     };
     enqueueAssetFetchEvent(request, context, eventParams);

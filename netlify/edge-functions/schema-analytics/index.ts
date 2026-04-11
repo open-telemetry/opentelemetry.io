@@ -24,6 +24,7 @@ export default async function schemaAnalytics(
     asset_path: requestUrl.pathname,
     content_type: contentType,
     status_code: String(normalizedResponse.status),
+    event_emitter: 'schema',
   });
 
   return normalizedResponse;

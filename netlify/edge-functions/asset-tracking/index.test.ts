@@ -195,6 +195,7 @@ test('handler emits asset_fetch for explicit .md requests', async (t) => {
   assert.equal(event.params.content_type, 'text/markdown');
   assert.equal(event.params.status_code, '200');
   assert.ok(!('original_path' in event.params));
+  assert.equal(event.params.event_emitter, 'tracking');
 });
 
 test('handler emits asset_fetch for explicit .txt requests', async (t) => {
@@ -227,6 +228,7 @@ test('handler emits asset_fetch for explicit .txt requests', async (t) => {
   assert.equal(event.params.content_type, 'text/plain');
   assert.equal(event.params.status_code, '200');
   assert.ok(!('original_path' in event.params));
+  assert.equal(event.params.event_emitter, 'tracking');
 });
 
 test('handler skips asset_fetch for internal marked explicit .md requests', async (t) => {
@@ -285,4 +287,5 @@ test('handler emits asset_fetch for explicit .md requests regardless of response
   assert.equal(event.params.asset_path, '/docs/concepts/resources/index.md');
   assert.equal(event.params.content_type, 'text/plain');
   assert.equal(event.params.status_code, '404');
+  assert.equal(event.params.event_emitter, 'tracking');
 });
