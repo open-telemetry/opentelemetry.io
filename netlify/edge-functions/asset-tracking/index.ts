@@ -19,12 +19,8 @@ export default async function assetTracking(
 
   const requestUrl = new URL(request.url);
   const assetPath = requestUrl.pathname;
-  const assetExt = getPathExtension(assetPath);
-
   enqueueAssetFetchEvent(request, context, {
-    asset_group: classifyAssetGroup(assetExt),
     asset_path: assetPath,
-    asset_ext: assetExt.slice(1),
     content_type: normalizeContentType(response.headers.get('content-type')),
     status_code: String(response.status),
   });
@@ -55,19 +51,6 @@ export function shouldTrackAssetFetch(
 
   return true;
 }
-
-function classifyAssetGroup(extension: string): 'markdown' | 'text' | 'other' {
-  if (extension === '.md') {
-    return 'markdown';
-  }
-
-  if (extension === '.txt') {
-    return 'text';
-  }
-
-  return 'other';
-}
-
 function getPathExtension(pathname: string): string {
   const lastSegment = pathname.split('/').pop() ?? '';
   const match = /\.([^.]+)$/.exec(lastSegment);

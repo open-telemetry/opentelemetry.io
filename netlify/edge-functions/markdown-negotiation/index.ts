@@ -64,9 +64,7 @@ export default async function markdownNegotiation(
   if (request.method === 'GET') {
     const assetPath = resolveMarkdownPath(url.pathname);
     const eventParams: AssetFetchEventParams = {
-      asset_group: 'markdown',
       asset_path: assetPath,
-      asset_ext: 'md',
       content_type: normalizeContentType(headers.get('content-type') ?? ''),
       status_code: String(markdownResponse.status),
       ...(url.pathname !== assetPath ? { original_path: url.pathname } : {}),

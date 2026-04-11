@@ -92,17 +92,12 @@ export function isInternalAssetFetchRequest(request: Request): boolean {
   return request.headers.has(ASSET_FETCH_GA_INFO_HEADER);
 }
 
-/** `asset_group` values from the analytics plan. */
-export type AssetFetchEventGroup = 'schema' | 'markdown' | 'other';
-
 /**
  * GA4 `asset_fetch` event parameters (custom dimensions). Required fields match
  * the plan; optional fields are omitted from the payload when unset.
  */
 export type AssetFetchEventParams = {
-  asset_group: AssetFetchEventGroup;
   asset_path: string;
-  asset_ext: string;
   content_type: string;
   status_code: string;
   original_path?: string;

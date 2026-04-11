@@ -116,9 +116,7 @@ test('markdown negotiation internal .md fetch does not double-count asset_fetch'
     ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
   )[0];
   assert.equal(event.name, 'asset_fetch');
-  assert.equal(event.params.asset_group, 'markdown');
   assert.equal(event.params.asset_path, '/docs/index.md');
-  assert.equal(event.params.asset_ext, 'md');
   assert.equal(event.params.content_type, 'text/markdown');
   assert.equal(event.params.status_code, '200');
   assert.equal(event.params.original_path, '/docs/');
@@ -182,9 +180,7 @@ test('direct .md request passes through markdown negotiation and emits one asset
     ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
   )[0];
   assert.equal(event.name, 'asset_fetch');
-  assert.equal(event.params.asset_group, 'markdown');
   assert.equal(event.params.asset_path, '/docs/index.md');
-  assert.equal(event.params.asset_ext, 'md');
   assert.equal(event.params.content_type, 'text/markdown');
   assert.equal(event.params.status_code, '200');
   assert.ok(!('original_path' in event.params));

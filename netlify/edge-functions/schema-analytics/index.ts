@@ -21,9 +21,7 @@ export default async function schemaAnalytics(
   );
 
   enqueueAssetFetchEvent(request, context, {
-    asset_group: 'schema',
     asset_path: requestUrl.pathname,
-    asset_ext: 'yaml',
     content_type: contentType,
     status_code: String(normalizedResponse.status),
   });

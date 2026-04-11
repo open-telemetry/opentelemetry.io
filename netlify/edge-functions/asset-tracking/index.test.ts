@@ -191,9 +191,7 @@ test('handler emits asset_fetch for explicit .md requests', async (t) => {
     ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
   )[0];
   assert.equal(event.name, 'asset_fetch');
-  assert.equal(event.params.asset_group, 'markdown');
   assert.equal(event.params.asset_path, '/docs/concepts/resources/index.md');
-  assert.equal(event.params.asset_ext, 'md');
   assert.equal(event.params.content_type, 'text/markdown');
   assert.equal(event.params.status_code, '200');
   assert.ok(!('original_path' in event.params));
@@ -225,9 +223,7 @@ test('handler emits asset_fetch for explicit .txt requests', async (t) => {
     ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
   )[0];
   assert.equal(event.name, 'asset_fetch');
-  assert.equal(event.params.asset_group, 'text');
   assert.equal(event.params.asset_path, '/llms.txt');
-  assert.equal(event.params.asset_ext, 'txt');
   assert.equal(event.params.content_type, 'text/plain');
   assert.equal(event.params.status_code, '200');
   assert.ok(!('original_path' in event.params));
@@ -286,9 +282,7 @@ test('handler emits asset_fetch for explicit .md requests regardless of response
     ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
   )[0];
   assert.equal(event.name, 'asset_fetch');
-  assert.equal(event.params.asset_group, 'markdown');
   assert.equal(event.params.asset_path, '/docs/concepts/resources/index.md');
-  assert.equal(event.params.asset_ext, 'md');
   assert.equal(event.params.content_type, 'text/plain');
   assert.equal(event.params.status_code, '404');
 });
