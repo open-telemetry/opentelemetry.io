@@ -755,6 +755,9 @@ plan-changing PR; use `-dev` on the version until that change set is merged.
 - Added dedicated redirect fixtures under `/site/testing/tests/` so the live
   suite can exercise real negotiated redirect responses once alias redirect
   handling is fixed.
+- Added site-level redirect live checks plus shared live-check helpers/runners,
+  including grouped `node:test` entry points for edge-function live checks and
+  for the combined edge-function + redirect live suite.
 - Enabled Markdown output for `/search` and `/ecosystem/registry/` so those
   routes can participate in negotiated Markdown delivery; registry Markdown
   currently uses the generic fallback renderer, with a dedicated template left
