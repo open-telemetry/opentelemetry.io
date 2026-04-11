@@ -2,8 +2,6 @@
 title: OpenTelemetry
 description: >-
   ইফেক্টিভ অবজারভেবিলিটির জন্য উচ্চ-মানের, সর্বজনীন ও পোর্টেবল টেলিমেট্রি প্রদান
-outputs:
-  - HTML
 developer_note:
   The blocks/cover shortcode (used below) will use as a background image any
   image file containing "background" in its name.

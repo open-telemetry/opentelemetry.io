@@ -15,7 +15,7 @@ weight: 20
 # =============================================================================
 
 aliases: [/registry/*]
-outputs: [html, json]
+outputs: [HTML, JSON]
 
 # The redirects and aliases implement catch-all rules for old registry entries;
 # we don't publish individual entry pages anymore.
