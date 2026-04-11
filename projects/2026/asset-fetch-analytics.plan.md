@@ -372,6 +372,43 @@ These rule help avoid emitting non-essential events to GA. Consult the site's
 [Netlify Observability][] page for responses with other status codes such as
 `4xx` or `5xx`, and other HTTP methods.
 
+### Response header
+
+For rollout and sanity-checking, add a response header:
+
+- `X-Asset-Fetch-Ga-Info: <asset_path>[; <info-tag>[,<info-tag>]*]`
+- `X-Asset-Fetch-Ga-Info: none[: <info-tag> [,<info-tag>]*]`
+
+Where:
+
+- `<asset_path>` is the derived GA `asset_path` that would be sent for the
+  request; or `none` when there is no derived GA path
+
+When `<asset_path>` is `none`, the info-tag offers a reason:
+
+- `request method X is not currently tracked` (where X is the request method)
+- `request path does not match a tracked route`
+- `internal subrequest`
+  - Request is an internal subrequest already marked with
+    `X-Asset-Fetch-Ga-Info`.
+- `response does not meet route-specific gating`
+  - Request path matches, but the response does not meet route-specific gating.
+
+When there is a path, possible info-tags include:
+
+- `config-missing`
+  - GA credentials are not present, so the request is only a local GA event
+    candidate.
+- `config-present`
+  - GA credentials are present, so event enqueue will be attempted.
+- `ga-event-candidate`
+  - The request matches the current route/method/response gating and is a
+    candidate to emit `asset_fetch`.
+
+This header is for validating path derivation and coarse GA event
+candidate/config state only. It does not indicate that GA accepted or reported
+the event. The header might be dropped in the future.
+
 ### Deduplication policy
 
 Edge Function design should ensure that at most one `asset_fetch` event is sent
@@ -471,7 +508,12 @@ Steps:
    expose compact debug info on responses, which keeps the mechanism simple and
    live-testable.
 
-3. (optional) Add `ua_category` if the classification is stable and
+3. **Debug response header** — add `X-Asset-Fetch-Ga-Info` to responses using
+   the format described in [Debug response header](#debug-response-header).
+   Purpose: validate derived GA path plus coarse trackability/config state in
+   production without implying GA ingestion.
+
+4. (optional) Add `ua_category` if the classification is stable and
    low-cardinality.
 
 ### Phase 3
@@ -528,7 +570,7 @@ This section broadly tracks the tasks for the implementation plan.
 
 ### In progress
 
-All done for this iteration.
+Add support for `X-Asset-Fetch-Ga-Info` header.
 
 ### Other tasks
 
@@ -536,20 +578,13 @@ In no particular order:
 
 - Add `ua_category` if the classification is stable and low-cardinality.
 - Build a shared GA4 exploration or Looker Studio report for the team.
-- Add a temporary compiled-const debug response header for post-merge production
-  sanity checks, for example
-  `X-Asset-Fetch-Ga-Info: /schemas/1.40.0;trackable,config-present` or
-  `none:<reason>`. Use it only to confirm the derived GA path and basic
-  trackability/config state, not GA ingestion. In phase 2.2, the presence of the
-  same header on internal subrequests will also act as the duplicate-suppression
-  marker.
 - Report non-2XX and non-3XX responses from internal markdown-negotiation
   subrequests.
 
 ## Edit history
 
-Reverse chronological: prepend a `### v…` section for each plan-changing PR; use
-`-dev` on the version until that change set is merged.
+Plan changes in reverse chronological order. Prepend a `### v…` section for each
+plan-changing PR; use `-dev` on the version until that change set is merged.
 
 ### v0.4-dev - TBD (not merged yet)
 
@@ -557,6 +592,13 @@ Reverse chronological: prepend a `### v…` section for each plan-changing PR; u
   `schema`, and updated the implementation/tests to emit and validate it.
 - Deprecated `asset_group` and `asset_ext`, and removed them from the emitted
   GA4 payloads and related test assertions.
+- Added support for `X-Asset-Fetch-Ga-Info` response headers using
+  `<asset_path>[;<info-tag>[,<info-tag>]*]` or
+  `none[: <info-tag> [,<info-tag>]*]`, and updated tests to validate the initial
+  GA event candidate and non-candidate cases, including integration tests and
+  deployed-host live checks.
+- Added dedicated `/site/testing/tests/` content fixtures for live checks,
+  including a regular page and an HTML-only page that does not publish Markdown.
 
 ### v0.3 - 2026-04-10
 

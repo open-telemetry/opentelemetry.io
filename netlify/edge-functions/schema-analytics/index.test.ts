@@ -14,6 +14,24 @@ import schemaAnalytics, {
   shouldTrackSchemaFetch,
 } from './index.ts';
 
+function setupNetlifyEnv(t: { after: (fn: () => void) => void }) {
+  const g = globalThis as Record<string, unknown>;
+  const originalNetlify = g.Netlify;
+  t.after(() => {
+    g.Netlify = originalNetlify;
+  });
+
+  g.Netlify = {
+    env: {
+      get: (name: string) => {
+        if (name === 'HUGO_SERVICES_GOOGLEANALYTICS_ID') return 'G-TEST';
+        if (name === 'GA4_API_SECRET') return 'secret';
+        return undefined;
+      },
+    },
+  };
+}
+
 // --- ensureSchemaContentType ---
 
 test('ensureSchemaContentType sets application/yaml for 2xx /schemas/ responses', () => {
@@ -169,6 +187,25 @@ test('handler returns response with yaml content type for /schemas/ GET', async 
   assert.equal(response.status, 200);
   assert.equal(response.headers.get('content-type'), 'application/yaml');
   assert.equal(await response.text(), 'opentelemetry: 1.40.0');
+});
+
+test('handler adds X-Asset-Fetch-Ga-Info for GA event candidate schema responses when config is present', async (t) => {
+  setupNetlifyEnv(t);
+
+  const request = new Request('https://example.com/schemas/1.40.0');
+  const context = {
+    next: async () =>
+      new Response('opentelemetry: 1.40.0', {
+        headers: { 'content-type': 'text/plain' },
+        status: 200,
+      }),
+  };
+
+  const response = await schemaAnalytics(request, context);
+  assert.equal(
+    response.headers.get('x-asset-fetch-ga-info'),
+    '/schemas/1.40.0;ga-event-candidate,config-present',
+  );
 });
 
 test('handler passes through non-/schemas/ requests unchanged', async () => {

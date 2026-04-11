@@ -109,6 +109,10 @@ test('markdown negotiation internal .md fetch does not double-count asset_fetch'
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
   );
+  assert.equal(
+    response.headers.get('x-asset-fetch-ga-info'),
+    '/docs/index.md;ga-event-candidate,config-present',
+  );
   assert.equal(await response.text(), '# Docs');
   assert.equal(ga4Bodies.length, 1);
 
@@ -173,6 +177,10 @@ test('direct .md request passes through markdown negotiation and emits one asset
   assert.equal(
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
+  );
+  assert.equal(
+    response.headers.get('x-asset-fetch-ga-info'),
+    '/docs/index.md;ga-event-candidate,config-present',
   );
   assert.equal(await response.text(), '# Docs');
   assert.equal(ga4Bodies.length, 1);

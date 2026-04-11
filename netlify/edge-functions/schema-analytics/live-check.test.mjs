@@ -9,6 +9,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
+import { ASSET_FETCH_GA_INFO_HEADER } from '../lib/ga4-asset-fetch.ts';
+
 /** Must match the key set in `live-check.mjs` before spawning `node --test`. */
 const LIVE_CHECK_BASE_URL_ENV = 'LIVE_CHECK_BASE_URL';
 
@@ -47,6 +49,17 @@ test('GET /schemas/1.40.0 → YAML response', async () => {
   assert.ok(
     text.includes('schema_url:'),
     'body should look like a schema YAML document',
+  );
+});
+
+test('GET /schemas/1.40.0 → X-Asset-Fetch-Ga-Info header', async () => {
+  const ref = baseRef();
+  const url = absUrl(schemaVersionPath, ref);
+  const res = await fetch(url);
+
+  assert.equal(
+    res.headers.get(ASSET_FETCH_GA_INFO_HEADER),
+    `${schemaVersionPath};ga-event-candidate,config-present`,
   );
 });
 

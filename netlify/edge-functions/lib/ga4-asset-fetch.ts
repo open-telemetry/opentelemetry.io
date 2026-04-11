@@ -44,6 +44,13 @@ export function getEnvValue(names: string[]): string | null {
   return null;
 }
 
+export function hasAssetFetchConfig(): boolean {
+  return !!(
+    netlifyEnvGet(MEASUREMENT_ID_ENV_NAME)?.trim() &&
+    getEnvValue(API_SECRET_ENV_NAMES)
+  );
+}
+
 export function normalizeContentType(contentTypeHeader: string | null): string {
   if (!contentTypeHeader) {
     return 'none';
@@ -115,6 +122,48 @@ function compactStringParams(
   return Object.fromEntries(
     Object.entries(eventParams).filter(([, v]) => v !== undefined),
   ) as Record<string, string>;
+}
+
+export function buildAssetFetchGaInfoHeaderValue({
+  assetPath,
+  gaEventCandidate,
+  configPresent,
+  noneReason,
+}: {
+  assetPath?: string;
+  gaEventCandidate: boolean;
+  configPresent?: boolean;
+  noneReason?: string;
+}): string {
+  if (!gaEventCandidate || !assetPath) {
+    return noneReason ? `none: ${noneReason}` : 'none';
+  }
+
+  const tags = [
+    'ga-event-candidate',
+    configPresent ? 'config-present' : 'config-missing',
+  ];
+  return `${assetPath};${tags.join(',')}`;
+}
+
+export function withAssetFetchGaInfoHeader(
+  response: Response,
+  value: string,
+  { overwrite = true }: { overwrite?: boolean } = {},
+): Response {
+  const headers = new Headers(response.headers);
+
+  if (!overwrite && headers.has(ASSET_FETCH_GA_INFO_HEADER)) {
+    return response;
+  }
+
+  headers.set(ASSET_FETCH_GA_INFO_HEADER, value);
+
+  return new Response(response.body, {
+    headers,
+    status: response.status,
+    statusText: response.statusText,
+  });
 }
 
 /**

@@ -12,6 +12,9 @@ If the request includes `X-Asset-Fetch-Ga-Info`, the function treats it as an
 internal subrequest and skips tracking. This prevents duplicate events when
 `markdown-negotiation` fetches sibling `index.md` assets internally.
 
+Responses also include `X-Asset-Fetch-Ga-Info` for coarse sanity-checking of the
+derived GA path and local trackability/config state.
+
 ### Live tests
 
 To run the live checks over a server:

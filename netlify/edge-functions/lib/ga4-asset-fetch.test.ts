@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  buildAssetFetchGaInfoHeaderValue,
   enqueueAssetFetchEvent,
   normalizeContentType,
   resolveClientId,
@@ -18,6 +19,27 @@ test('normalizeContentType extracts media type', () => {
   );
   assert.equal(normalizeContentType(null), 'none');
   assert.equal(normalizeContentType(''), 'none');
+});
+
+test('buildAssetFetchGaInfoHeaderValue formats GA event candidate path with tags', () => {
+  assert.equal(
+    buildAssetFetchGaInfoHeaderValue({
+      assetPath: '/schemas/1.40.0',
+      configPresent: true,
+      gaEventCandidate: true,
+    }),
+    '/schemas/1.40.0;ga-event-candidate,config-present',
+  );
+});
+
+test('buildAssetFetchGaInfoHeaderValue formats none reason', () => {
+  assert.equal(
+    buildAssetFetchGaInfoHeaderValue({
+      noneReason: 'internal subrequest',
+      gaEventCandidate: false,
+    }),
+    'none: internal subrequest',
+  );
 });
 
 test('resolveClientId returns fallback when no GA cookie is present', () => {

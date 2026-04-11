@@ -186,6 +186,10 @@ test('handler emits asset_fetch for explicit .md requests', async (t) => {
 
   assert.equal(response.status, 200);
   assert.equal(ga4Bodies.length, 1);
+  assert.equal(
+    response.headers.get('x-asset-fetch-ga-info'),
+    '/docs/concepts/resources/index.md;ga-event-candidate,config-present',
+  );
 
   const event = (
     ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
@@ -256,6 +260,10 @@ test('handler skips asset_fetch for internal marked explicit .md requests', asyn
 
   assert.equal(response.status, 200);
   assert.equal(ga4Bodies.length, 0);
+  assert.equal(
+    response.headers.get('x-asset-fetch-ga-info'),
+    'none: internal subrequest',
+  );
 });
 
 test('handler emits asset_fetch for explicit .md requests regardless of response status', async (t) => {

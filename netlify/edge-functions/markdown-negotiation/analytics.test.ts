@@ -109,6 +109,10 @@ test('GET markdown emits asset_fetch with original_path when path differs', asyn
     'text/markdown; charset=utf-8',
   );
   assert.equal(ga4Bodies.length, 1);
+  assert.equal(
+    response.headers.get('x-asset-fetch-ga-info'),
+    '/docs/index.md;ga-event-candidate,config-present',
+  );
 
   const event = (
     ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
@@ -231,7 +235,7 @@ test('markdown unavailable does not emit asset_fetch', async (t) => {
 
   const spy = createWaitUntilSpy();
 
-  await markdownNegotiation(
+  const response = await markdownNegotiation(
     new Request('https://example.com/search/', {
       headers: { accept: 'text/markdown' },
     }),
@@ -251,5 +255,9 @@ test('markdown unavailable does not emit asset_fetch', async (t) => {
     ga4Bodies.length,
     0,
     'failed markdown fetch should not emit GA4 events',
+  );
+  assert.equal(
+    response.headers.get('x-asset-fetch-ga-info'),
+    'none: response does not meet route-specific gating',
   );
 });

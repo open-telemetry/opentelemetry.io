@@ -1,8 +1,11 @@
 import {
+  buildAssetFetchGaInfoHeaderValue,
+  hasAssetFetchConfig,
   isInternalAssetFetchRequest,
   type AssetFetchContext,
   enqueueAssetFetchEvent,
   normalizeContentType,
+  withAssetFetchGaInfoHeader,
 } from '../lib/ga4-asset-fetch.ts';
 
 const TRACKED_EXTENSIONS = new Set(['.md', '.txt']);
@@ -12,21 +15,34 @@ export default async function assetTracking(
   context: AssetFetchContext & { next: () => Promise<Response> },
 ) {
   const response = await context.next();
+  const requestUrl = new URL(request.url);
+  const trackable = shouldTrackAssetFetch(request, response);
+  const responseWithGaInfo = withAssetFetchGaInfoHeader(
+    response,
+    buildAssetFetchGaInfoHeaderValue({
+      assetPath: trackable ? requestUrl.pathname : undefined,
+      configPresent: hasAssetFetchConfig(),
+      noneReason: trackable
+        ? undefined
+        : getAssetTrackingGaInfoNoneReason(request),
+      gaEventCandidate: trackable,
+    }),
+  );
 
-  if (!shouldTrackAssetFetch(request, response)) {
-    return response;
+  if (!trackable) {
+    return responseWithGaInfo;
   }
 
-  const requestUrl = new URL(request.url);
-  const assetPath = requestUrl.pathname;
   enqueueAssetFetchEvent(request, context, {
-    asset_path: assetPath,
-    content_type: normalizeContentType(response.headers.get('content-type')),
-    status_code: String(response.status),
+    asset_path: requestUrl.pathname,
+    content_type: normalizeContentType(
+      responseWithGaInfo.headers.get('content-type'),
+    ),
+    status_code: String(responseWithGaInfo.status),
     event_emitter: 'tracking',
   });
 
-  return response;
+  return responseWithGaInfo;
 }
 
 export function shouldTrackAssetFetch(
@@ -52,6 +68,28 @@ export function shouldTrackAssetFetch(
 
   return true;
 }
+
+function getAssetTrackingGaInfoNoneReason(
+  request: Request,
+): string | undefined {
+  if (request.method !== 'GET') {
+    return `request method ${request.method} is not currently tracked`;
+  }
+
+  if (isInternalAssetFetchRequest(request)) {
+    return 'internal subrequest';
+  }
+
+  const requestUrl = new URL(request.url);
+  const extension = getPathExtension(requestUrl.pathname);
+
+  if (!TRACKED_EXTENSIONS.has(extension)) {
+    return 'request path does not match a tracked route';
+  }
+
+  return undefined;
+}
+
 function getPathExtension(pathname: string): string {
   const lastSegment = pathname.split('/').pop() ?? '';
   const match = /\.([^.]+)$/.exec(lastSegment);

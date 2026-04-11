@@ -32,7 +32,7 @@ function baseRef() {
   return resolveBaseRef(raw);
 }
 
-const markdownPath = '/docs/concepts/resources/index.md';
+const markdownPath = '/site/testing/tests/regular/index.md';
 const textPath = '/llms.txt';
 
 test('GET explicit .md path → markdown response', async () => {
@@ -48,8 +48,19 @@ test('GET explicit .md path → markdown response', async () => {
     `expected text/markdown content-type, got ${JSON.stringify(ct)}`,
   );
   assert.ok(
-    text.includes('# Resources'),
-    'body should contain "# Resources" (English docs index heading)',
+    text.includes('# Regular edge function test page'),
+    'body should contain "# Regular edge function test page"',
+  );
+});
+
+test('GET explicit .md path → X-Asset-Fetch-Ga-Info header', async () => {
+  const ref = baseRef();
+  const url = absUrl(markdownPath, ref);
+  const res = await fetch(url);
+
+  assert.equal(
+    res.headers.get(ASSET_FETCH_GA_INFO_HEADER),
+    `${markdownPath};ga-event-candidate,config-present`,
   );
 });
 
@@ -85,8 +96,8 @@ test('GET explicit .md path with internal marker → same markdown response', as
     `expected text/markdown content-type, got ${JSON.stringify(ct)}`,
   );
   assert.ok(
-    text.includes('# Resources'),
-    'body should contain "# Resources" (English docs index heading)',
+    text.includes('# Regular edge function test page'),
+    'body should contain "# Regular edge function test page"',
   );
 });
 
