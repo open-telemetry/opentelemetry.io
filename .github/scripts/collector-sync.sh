@@ -43,7 +43,10 @@ if [ ! -d "tmp_repos/opentelemetry-ecosystem-explorer" ]; then
   exit 1
 fi
 
-VERSION=$(ls -1 tmp_repos/opentelemetry-ecosystem-explorer/ecosystem-registry/collector/core 2>/dev/null | grep -v -i 'SNAPSHOT' | sort -V | tail -n 1)
+VERSION=$(find tmp_repos/opentelemetry-ecosystem-explorer/ecosystem-registry/collector/core \
+  -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null | \
+  grep -v -i 'SNAPSHOT' | sort -V | tail -n 1)
+
 if [ -z "$VERSION" ]; then
   echo "Error: No collector versions found"
   exit 1
