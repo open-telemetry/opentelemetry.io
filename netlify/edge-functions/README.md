@@ -30,6 +30,9 @@ To run the live deployed-host tests:
 npm run test:edge-functions:live -- [URL | PR_NUMBER]
 ```
 
+This combined runner executes all edge-function live suites and reports all
+suite failures together instead of stopping at the first failure.
+
 Per-function live test launchers:
 
 ```console
