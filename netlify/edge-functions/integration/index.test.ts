@@ -16,6 +16,7 @@ import {
   assertAssetFetchGa4Event,
   createWaitUntilSpy,
   firstAssetFetchEvent,
+  setupGa4CapturingFetchMock,
   setupNetlifyEnv,
 } from '../lib/test-helpers.ts';
 import markdownNegotiation from '../markdown-negotiation/index.ts';
@@ -23,30 +24,8 @@ import markdownNegotiation from '../markdown-negotiation/index.ts';
 test('markdown negotiation internal .md fetch does not double-count asset_fetch', async (t) => {
   setupNetlifyEnv(t);
 
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
   const spy = createWaitUntilSpy();
-  const ga4Bodies: Record<string, unknown>[] = [];
-
-  globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
-    const request =
-      input instanceof Request
-        ? input
-        : new Request(
-            input instanceof URL ? input.toString() : String(input),
-            init,
-          );
-
-    if (request.url.includes('google-analytics.com')) {
-      if (init?.body) {
-        ga4Bodies.push(JSON.parse(init.body as string));
-      }
-      return new Response('', { status: 200 });
-    }
-
+  const ga4Bodies = setupGa4CapturingFetchMock(t, async (request) => {
     const url = new URL(request.url);
     assert.strictEqual(url.pathname, '/docs/index.md', 'Subrequest pathname');
     assert.strictEqual(request.method, 'GET', 'Subrequest method');
@@ -69,7 +48,7 @@ test('markdown negotiation internal .md fetch does not double-count asset_fetch'
         }),
       ...spy,
     });
-  }) as typeof fetch;
+  });
 
   const response = await markdownNegotiation(
     new Request('https://example.com/docs/', {
@@ -112,31 +91,8 @@ test('markdown negotiation internal .md fetch does not double-count asset_fetch'
 test('direct .md request passes through markdown negotiation and emits one asset_fetch', async (t) => {
   setupNetlifyEnv(t);
 
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
   const spy = createWaitUntilSpy();
-  const ga4Bodies: Record<string, unknown>[] = [];
-
-  globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
-    const url =
-      input instanceof URL
-        ? input.toString()
-        : typeof input === 'string'
-          ? input
-          : input.url;
-
-    if (url.includes('google-analytics.com')) {
-      if (init?.body) {
-        ga4Bodies.push(JSON.parse(init.body as string));
-      }
-      return new Response('', { status: 200 });
-    }
-
-    return new Response('unexpected fetch', { status: 500 });
-  }) as typeof fetch;
+  const ga4Bodies = setupGa4CapturingFetchMock(t);
 
   const request = new Request('https://example.com/docs/index.md');
 
