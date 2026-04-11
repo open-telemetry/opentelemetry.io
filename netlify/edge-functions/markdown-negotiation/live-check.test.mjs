@@ -21,11 +21,15 @@ const docsPath = '/site/testing/tests/regular/';
 const docsIndexHtmlPath = '/site/testing/tests/regular/index.html';
 const docsUppercaseIndexHtmlPath = '/site/testing/tests/regular/index.HTML';
 const noMarkdownPath = '/site/testing/tests/no-md/';
+const redirectRegularPath = '/site/testing/tests/redirect-regular/';
+const redirectNoMarkdownPath = '/site/testing/tests/redirect-no-md/';
 
 /** Negotiated Markdown responses set this in `markdown-negotiation/index.ts`. */
 const expectedNegotiatedMarkdownContentType = 'text/markdown; charset=utf-8';
 /** Static HTML from `context.next()` (typical Netlify / Hugo). */
 const expectedHtmlContentType = 'text/html; charset=UTF-8';
+/** Static 404 for missing markdown output currently comes back as HTML. */
+const expectedMissingMarkdownContentType = 'text/html; charset=UTF-8';
 
 const regularPageMarkdownHeading = /^# Regular test page/;
 const htmlDocumentPattern = /<!DOCTYPE html|<html[\s>]/i;
@@ -108,7 +112,7 @@ test(
   },
 );
 
-test('GET /site/testing/tests/no-md/ with Accept: text/markdown → HTML fallback + Vary: Accept', async () => {
+test('GET /site/testing/tests/no-md/ with Accept: text/markdown → direct 404 subresponse + Vary: Accept', async () => {
   const ref = baseRef();
   const url = absUrl(noMarkdownPath, ref);
   const res = await fetch(url, {
@@ -116,10 +120,44 @@ test('GET /site/testing/tests/no-md/ with Accept: text/markdown → HTML fallbac
   });
   const ct = res.headers.get('content-type') ?? '';
   const text = await res.text();
-  assert.strictEqual(res.status, 200, 'HTTP status');
-  assert.strictEqual(ct, expectedHtmlContentType, 'Content-Type');
+  assert.strictEqual(res.status, 404, 'HTTP status');
+  assert.strictEqual(ct, expectedMissingMarkdownContentType, 'Content-Type');
   assertVaryIncludesAccept(res);
   assert.match(text, htmlDocumentPattern, 'Request body');
+});
+
+test('GET /site/testing/tests/redirect-regular/ with Accept: text/markdown → direct redirect subresponse + Vary: Accept', async () => {
+  const ref = baseRef();
+  const url = absUrl(redirectRegularPath, ref);
+  const res = await fetch(url, {
+    headers: { accept: 'text/markdown' },
+    redirect: 'manual',
+  });
+
+  assert.match(String(res.status), /^30[1278]$/, 'HTTP status');
+  assert.strictEqual(
+    new URL(res.headers.get('location') ?? '', url).pathname,
+    '/site/testing/tests/regular/index.md',
+    'Location',
+  );
+  assertVaryIncludesAccept(res);
+});
+
+test('GET /site/testing/tests/redirect-no-md/ with Accept: text/markdown → direct redirect subresponse + Vary: Accept', async () => {
+  const ref = baseRef();
+  const url = absUrl(redirectNoMarkdownPath, ref);
+  const res = await fetch(url, {
+    headers: { accept: 'text/markdown' },
+    redirect: 'manual',
+  });
+
+  assert.match(String(res.status), /^30[1278]$/, 'HTTP status');
+  assert.strictEqual(
+    new URL(res.headers.get('location') ?? '', url).pathname,
+    '/site/testing/tests/no-md/index.md',
+    'Location',
+  );
+  assertVaryIncludesAccept(res);
 });
 
 test('HEAD /site/testing/tests/regular/ with Accept: text/markdown → empty body', async () => {
@@ -133,6 +171,35 @@ test('HEAD /site/testing/tests/regular/ with Accept: text/markdown → empty bod
   const buf = await res.arrayBuffer();
   assert.strictEqual(res.status, 200, 'HTTP status');
   assert.strictEqual(ct, expectedNegotiatedMarkdownContentType, 'Content-Type');
+  assert.strictEqual(buf.byteLength, 0, 'Response body');
+});
+
+test('HEAD /site/testing/tests/no-md/ with Accept: text/markdown → direct 404 subresponse without a body', async () => {
+  const ref = baseRef();
+  const url = absUrl(noMarkdownPath, ref);
+  const res = await fetch(url, {
+    method: 'HEAD',
+    headers: { accept: 'text/markdown' },
+  });
+  const ct = res.headers.get('content-type') ?? '';
+  const buf = await res.arrayBuffer();
+  assert.strictEqual(res.status, 404, 'HTTP status');
+  assert.strictEqual(ct, expectedMissingMarkdownContentType, 'Content-Type');
+  assert.strictEqual(buf.byteLength, 0, 'Response body');
+  assertVaryIncludesAccept(res);
+});
+
+test('HEAD same URL with HTML preferred → pass-through response', async () => {
+  const ref = baseRef();
+  const url = absUrl(docsPath, ref);
+  const res = await fetch(url, {
+    method: 'HEAD',
+    headers: { accept: 'text/html, text/markdown;q=0.8' },
+  });
+  const ct = res.headers.get('content-type') ?? '';
+  const buf = await res.arrayBuffer();
+  assert.strictEqual(res.status, 200, 'HTTP status');
+  assert.strictEqual(ct, expectedHtmlContentType, 'Content-Type');
   assert.strictEqual(buf.byteLength, 0, 'Response body');
 });
 

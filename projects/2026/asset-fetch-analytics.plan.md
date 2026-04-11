@@ -2,9 +2,9 @@
 title: GA4 asset fetch analytics plan
 date: 2026-04-03
 lastmod: 2026-04-11
-version: 0.4
+version: 0.5
 custodian: Patrice Chalin
-cSpell:ignore: GOOGLEANALYTICS
+cSpell:ignore: GOOGLEANALYTICS SRRCT subresponse subresponses
 ---
 
 ## Goal
@@ -30,7 +30,8 @@ validation and debugging.
   debugging surface.
 - The `markdown-negotiation` Edge Function emits `asset_fetch` for Markdown
   delivery for negotiated page paths, with `original_path` when it differs from
-  the resolved `*.md` path.
+  the resolved `*.md` path; negotiated `GET` requests emit for all returned
+  subrequest statuses and surface that subrequest outcome directly.
 - The `asset-tracking` Edge Function emits `asset_fetch` for explicit `.md` and
   `*.txt` requests and skips internal subrequests marked with
   `X-Asset-Fetch-Ga-Info`.
@@ -74,7 +75,8 @@ that the team already uses.
 An Edge Function can:
 
 1. intercept selected asset requests
-2. let Netlify serve the asset normally
+2. either let Netlify serve the route normally or fetch a negotiated asset
+   variant directly
 3. read the response metadata
 4. enqueue a post-response GA4 event send
 
@@ -96,10 +98,13 @@ Observability remains useful as the operational backstop:
 ```mermaid
 flowchart LR
   A["Client or agent requests /schemas/* or a Markdown-capable page path"] --> B["Netlify Edge Function"]
-  B --> C["context.next() serves static asset"]
-  C --> D["Response returned to client"]
-  B --> E["context.waitUntil() sends GA4 asset_fetch event"]
-  C --> F["Netlify Observability records request metadata"]
+  B --> C["context.next() serves normal route response"]
+  B --> D["or fetch() serves negotiated asset variant"]
+  C --> E["Response returned to client"]
+  D --> E
+  B --> F["context.waitUntil() sends GA4 asset_fetch event"]
+  C --> G["Netlify Observability records request metadata"]
+  D --> G
 ```
 
 ### System roles
@@ -118,7 +123,7 @@ Use a single custom event: `asset_fetch`
 
 ### Event parameters
 
-Event parameters correspond to the following GA4 custom dimensions:
+Also call **custom dimensions** in GA4, the following define the event payload:
 
 - Dimension name: `Asset path`
   - Scope: `Event`
@@ -243,39 +248,11 @@ Examples:
 If stream-level separation is not enough for governance, use a separate GA4
 property.
 
-### Custom dimensions
-
-Register these event-scoped custom dimensions in GA4:
-
-- `asset_path`
-- `content_type`
-- `status_code`
-- `event_emitter`
-- `original_path` (phase 2)
-- `referrer_host` if used
-- `ua_category` if used
-
 ### Retention and history
 
 GA4 aggregated reports remain available in the GA UI, but event-level retention
 used by Explorations is limited by GA4 retention settings, which is set to 14
 months (as of 2026-04-03).
-
-## Reporting
-
-- Google Analytics console:
-  - Engagement > Events report. Select `asset_fetch` to view details of all
-    asset fetch events.
-- Looker Studio
-  - Asset fetch event reporting can be added to the existing public Looker
-    Studio dashboard.
-    - For an example, see the Schema table (added around 2026-04-09)
-  - Note: You may have to refresh the data source to see new custom dimensions.
-  - Limits:
-    - This approach is a good fit for top-N reporting. If `asset_path`
-      eventually becomes too high-cardinality and GA4 starts collapsing values
-      into `(other)`, move the public path-level report to Looker Studio on top
-      of GA4 BigQuery export.
 
 ## Phase 1 runtime configuration (completed)
 
@@ -338,6 +315,22 @@ Validation note:
   validation is needed:
   <https://developers.google.com/analytics/devguides/collection/protocol/ga4/validating-events>
 
+## Analytics reporting
+
+- Google Analytics console:
+  - Engagement > Events report. Select `asset_fetch` to view details of all
+    asset fetch events.
+- Looker Studio
+  - Asset fetch event reporting can be added to the existing public Looker
+    Studio dashboard.
+    - For an example, see the Schema table (added around 2026-04-09)
+  - Note: You may have to refresh the data source to see new custom dimensions.
+  - Limits:
+    - This approach is a good fit for top-N reporting. If `asset_path`
+      eventually becomes too high-cardinality and GA4 starts collapsing values
+      into `(other)`, move the public path-level report to Looker Studio on top
+      of GA4 BigQuery export.
+
 ## Edge Function collection rules
 
 ### Tracked paths
@@ -355,14 +348,15 @@ Validation note:
 
 Only send GA4 events when all of the following are true:
 
-1. Request method is `GET`
+1. Request method is `GET` or route-specific tracked `HEAD`
 2. Path matches configured tracked routes
 3. The response matches the route-specific tracking rules
 
 Current route-specific rules:
 
-- Negotiated Markdown: track only successful negotiated Markdown `GET 2xx`
-  responses
+- Negotiated Markdown: track Markdown-preferring negotiated requests for all
+  returned subrequest statuses (`2xx`, `3xx`, `4xx`, `5xx`) across `GET` and
+  `HEAD`
 - Explicit `.md` and `.txt`: track direct `GET` requests to tracked asset URLs
   regardless of response status, and skip any request marked with
   `X-Asset-Fetch-Ga-Info`
@@ -487,13 +481,15 @@ If the GA4 UI starts collapsing rows into `(other)` for `asset_path`, use:
 
 ### Phase 2
 
-**Status:** In progress. Completed steps: 1, 2.
+**Status:** In progress. Completed steps: 1, 2, 3.
 
 Steps:
 
 1. **Negotiated Markdown tracking** — implemented in the `markdown-negotiation`
    Edge Function (`asset_path`, `original_path` when the request path differs,
-   GET only, successful Markdown responses).
+   negotiated Markdown responses across returned subrequest statuses, and direct
+   subresponse return for negotiated non-`2xx` outcomes).
+
 2. **Asset tracking** — implemented in the `asset-tracking` Edge Function for
    explicit `.md` and `*.txt` requests. It tracks `GET` requests to tracked
    asset URLs regardless of response status. Rationale: keeps
@@ -522,6 +518,157 @@ Steps:
 
 4. (optional) Add `ua_category` if the classification is stable and
    low-cardinality.
+
+### Phase 2b (as of v0.5)
+
+Refine negotiated Markdown so that content negotiation preserves route
+semantics, not just best-effort representation selection.
+
+#### Design principle
+
+When a client prefers Markdown, the negotiated response should preserve the same
+route semantics that a non-Markdown client would observe for the corresponding
+resource, modulo representation format.
+
+In practical terms:
+
+- Content negotiation may change the representation returned.
+- Content negotiation should not silently change redirect behavior or other
+  status semantics unless we explicitly choose that tradeoff
+- Analytics should reflect the semantics we choose, not obscure them.
+
+#### Negotiated Markdown status policy
+
+Decision: for negotiated Markdown, `asset_fetch` should be emitted for all
+relevant negotiated-response outcomes, while still ensuring that exactly one
+event is emitted per negotiated request.
+
+Invariant:
+
+- Emit exactly one `asset_fetch` for each negotiated Markdown request that
+  prefers Markdown.
+- Include all negotiated-response outcomes we intentionally expose to clients.
+- Do not emit when the request does not prefer Markdown.
+
+Grey-area decision:
+
+When the internal Markdown subrequest diverges from what the normal route might
+return, prefer surfacing the Markdown subrequest outcome directly instead of
+falling back to `context.next()`.
+
+Rationale:
+
+- Report status early to clients.
+- Keep the client-visible response aligned with the emitted GA `status_code`.
+- Avoid extra fallback traffic.
+
+Decision table for the case split:
+
+| Condition / case               | A          | B          | C        | D     |
+| ------------------------------ | ---------- | ---------- | -------- | ----- |
+| Method - `GET`/`HEAD`/other    | GET / HEAD | GET / HEAD | GET/HEAD | other |
+| Path is Markdown-negotiable    | Y          | Y          |          | -     |
+| Prefers Markdown               | Y          |            | -        | -     |
+| ------------------------------ | -----      | -----      | -----    | ----  |
+| Case                           | 1          | 2          | 3        | 3     |
+| Emit (`status_code`)           | SRS        | none       | none     | none  |
+| Resp status                    | SRS        | pass       | pass     | pass  |
+| Resp content & content type    | SRRCT      | pass       | pass     | pass  |
+
+Legend:
+
+- `Y`/` ` means true/false
+- `*` means any value
+- `-` means N/A
+- `pass` means the normal response returned by Netlify via `context.next()`
+- `SRS` means the subrequest response status
+- `SRRCT` means the subrequest response content type, and content if any (none
+  for HEAD requests)
+
+The cases are:
+
+1. `GET`/`HEAD` + preferred Markdown
+   - Emit one event: `status_code` is SRS
+   - Response: SRRCT
+2. Request does not prefer Markdown
+   - No event emitted.
+   - Response: pass
+3. Request is outside negotiated Markdown handling
+   - No event emitted.
+   - Response: pass
+
+Current test coverage by condition combo:
+
+| Condition / combo              | 1a   | 1b    | 1c   | 1d    | 2a   | 2b   | 3a       | 3b    |
+| ------------------------------ | ---- | ----- | ---- | ----- | ---- | ---- | -------- | ----- |
+| Method                         | GET  | GET   | HEAD | HEAD  | GET  | HEAD | GET/HEAD | other |
+| Path is Markdown-negotiable    | Y    | Y     | Y    | Y     | Y    | Y    |          | -     |
+| Prefers Markdown               | Y    | Y     | Y    | Y     |      |      | -        | -     |
+| Subrequest status              | 2xx  | non-2 | 2xx  | non-2 | -    | -    | -        | -     |
+| ------------------------------ | ---- | ----- | ---- | ----- | ---- | ---- | -------- | ----  |
+| Case (from table above)        | 1    | 1     | 1    | 1     | 2    | 2    | 3        | 3     |
+| Unit tests                     | Good | Good  | Good | Good  | Good | Good | Some     | Good  |
+| Live tests                     | Good | Good  | Good | Some  | Good | Good | Some     | GAP   |
+
+Uses the same legend as the decision table above.
+
+Tests exercising each combo:
+
+- **1a** (GET + negotiable + prefers md + 2xx):
+  - `analytics.test.ts`: original_path when path differs; index.html → resolved
+    md
+  - `handler.test.ts`: serves markdown when preferred; site root; explicit
+    `index.html` page
+  - `live-check.test.mjs`: regular path; `index.html` with markdown preferred
+- **1b** (GET + negotiable + prefers md + non-2xx):
+  - `analytics.test.ts`: internal 404, 302, 500 subresponses
+  - `handler.test.ts`: direct 404 / 302 / 500 markdown subresponses
+  - `live-check.test.mjs`: `no-md/` 404 subresponse; redirect fixtures for real
+    3xx subresponses
+- **1c** (HEAD + negotiable + prefers md + 2xx):
+  - `analytics.test.ts`: HEAD emits `asset_fetch`
+  - `handler.test.ts`: HEAD markdown without body; HEAD fallback to GET
+  - `live-check.test.mjs`: HEAD regular path with markdown preferred
+- **1d** (HEAD + negotiable + prefers md + non-2xx):
+  - `analytics.test.ts`: HEAD 404 emits `asset_fetch`
+  - `handler.test.ts`: HEAD 404 direct subresponse without a body
+  - `live-check.test.mjs`: HEAD `no-md/` 404 subresponse
+- **2a** (GET + negotiable + does not prefer md):
+  - `analytics.test.ts`: HTML preferred (no `asset_fetch`)
+  - `handler.test.ts`: HTML preferred; missing `Accept` header
+  - `live-check.test.mjs`: HTML preferred
+- **2b** (HEAD + negotiable + does not prefer md):
+  - `analytics.test.ts`: HEAD HTML preferred (no `asset_fetch`)
+  - `handler.test.ts`: HEAD HTML preferred
+  - `live-check.test.mjs`: HEAD HTML preferred
+- **3a** (GET/HEAD + non-negotiable path):
+  - `analytics.test.ts`: direct `.md` URL pass-through for `GET` and `HEAD` (no
+    `asset_fetch`)
+  - `pathing.test.ts`: `shouldConsiderRequest` matrix (`.md`, `/.`, extensions)
+  - `handler.test.ts`: non-index `.html` bypass; uppercase `index.HTML` bypass;
+    non-negotiable `HEAD` bypass
+  - `live-check.test.mjs`: `/docs.html` redirect; `index.HTML` (skipped)
+- **3b** (non-GET/HEAD method):
+  - `pathing.test.ts`: `shouldConsiderRequest` rejects POST etc.
+  - `handler.test.ts`: unsupported methods bypass
+  - no live coverage
+
+**Significant gaps:**
+
+- **1d**: live coverage now exercises HEAD `404`, but not a real deployed HEAD
+  `3xx` or `5xx` negotiated subresponse.
+- **3a**: live coverage still leans on `/docs.html` and a skipped uppercase
+  `index.HTML` edge case rather than a dedicated non-negotiable `HEAD` fixture.
+- **3b**: no live test for non-GET/HEAD methods.
+
+Fixture note:
+
+- The canonical fixtures under `/site/testing/tests/` remain the preferred live
+  probes.
+- Adding page `aliases` does not by itself change the behavior of those
+  canonical fixture paths.
+- Alias paths should be treated as separate redirect/canonicalization cases and
+  verified on preview before being used as negotiated-Markdown control probes.
 
 ### Phase 3
 
@@ -583,15 +730,33 @@ None.
 
 In no particular order:
 
+- If registry Markdown output is kept, add a dedicated Markdown-friendly
+  registry template instead of relying on the generic fallback renderer.
 - Add `ua_category` if the classification is stable and low-cardinality.
 - Build a shared GA4 exploration or Looker Studio report for the team.
-- Report non-2XX and non-3XX responses from internal markdown-negotiation
-  subrequests.
 
 ## Edit history
 
 Plan changes in reverse chronological order. Prepend a `### v…` section for each
 plan-changing PR; use `-dev` on the version until that change set is merged.
+
+### v0.5 - 2026-04-11
+
+- Negotiated Markdown: adopt phase 2b semantics so negotiated `GET` requests
+  emit `asset_fetch` for all returned subrequest statuses and return the
+  subresponse directly for `3xx` / `4xx` / `5xx`.
+- Negotiated Markdown: switch internal fetches to `redirect: 'manual'` so
+  internal `3xx` responses become observable and can be surfaced directly.
+- Negotiated Markdown: extend that same emission policy to Markdown-preferring
+  `HEAD` requests.
+- Added dedicated redirect fixtures under `/site/testing/tests/` so the live
+  suite can exercise real negotiated redirect responses.
+- Enabled Markdown output for `/search` and `/ecosystem/registry/` so those
+  routes can participate in negotiated Markdown delivery; registry Markdown
+  currently uses the generic fallback renderer, with a dedicated template left
+  as follow-up.
+- Updated the negotiation tests, live checks, coverage matrix, collection rules,
+  and `markdown-negotiation` README to match the phase 2b design.
 
 ### v0.4 - 2026-04-11
 

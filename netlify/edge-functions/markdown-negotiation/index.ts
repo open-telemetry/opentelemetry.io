@@ -10,8 +10,8 @@
  * redirects (e.g. `/docs.html` → `/docs/`) still run.
  *
  * We fetch the prebuilt Markdown artifact directly instead of rewriting
- * blindly. That lets us fall back to the normal HTML route when a page has no
- * Markdown output.
+ * blindly. Negotiated responses surface that subrequest outcome directly
+ * rather than falling back to the normal route for non-2xx outcomes.
  *
  * GA4 `asset_fetch` events are issued as described in
  * projects/2026/asset-fetch-analytics.plan.md.
@@ -67,32 +67,17 @@ export default async function markdownNegotiation(
     resolveMarkdownUrl(url),
     request.method,
   );
-
-  if (!isSuccessfulMarkdownResponse(markdownResponse)) {
-    return withAssetFetchGaInfoHeader(
-      withVaryAccept(await context.next()),
-      buildAssetFetchGaInfoHeaderValue({
-        noneReason:
-          request.method === 'GET'
-            ? 'response does not meet route-specific gating'
-            : `request method ${request.method} is not currently tracked`,
-        gaEventCandidate: false,
-      }),
-      { overwrite: false },
-    );
-  }
-
-  const headers = new Headers(markdownResponse.headers);
-  headers.set('content-type', 'text/markdown; charset=utf-8');
-  setVaryAccept(headers);
-
-  // GA4 asset_fetch: only for GET 2xx. Non-2xx falls back to HTML, tracked by
-  // client-side page_view. content_type is read from the response headers above.
-  if (request.method === 'GET') {
-    const assetPath = resolveMarkdownPath(url.pathname);
+  const assetPath = resolveMarkdownPath(url.pathname);
+  const negotiatedResponse = buildNegotiatedMarkdownResponse(
+    markdownResponse,
+    request.method,
+  );
+  if (request.method === 'GET' || request.method === 'HEAD') {
     const eventParams: AssetFetchEventParams = {
       asset_path: assetPath,
-      content_type: normalizeContentType(headers.get('content-type') ?? ''),
+      content_type: normalizeContentType(
+        negotiatedResponse.headers.get('content-type'),
+      ),
       status_code: String(markdownResponse.status),
       event_emitter: 'negotiation',
       ...(url.pathname !== assetPath ? { original_path: url.pathname } : {}),
@@ -100,40 +85,18 @@ export default async function markdownNegotiation(
     enqueueAssetFetchEvent(request, context, eventParams);
   }
 
-  const gaInfoValue =
-    request.method === 'GET'
+  return withAssetFetchGaInfoHeader(
+    negotiatedResponse,
+    request.method === 'GET' || request.method === 'HEAD'
       ? buildAssetFetchGaInfoHeaderValue({
-          assetPath: resolveMarkdownPath(url.pathname),
+          assetPath,
           configPresent: hasAssetFetchConfig(),
           gaEventCandidate: true,
         })
       : buildAssetFetchGaInfoHeaderValue({
           noneReason: `request method ${request.method} is not currently tracked`,
           gaEventCandidate: false,
-        });
-
-  if (request.method === 'HEAD') {
-    if (markdownResponse.body) {
-      void markdownResponse.body.cancel();
-    }
-
-    return withAssetFetchGaInfoHeader(
-      new Response(null, {
-        headers,
-        status: markdownResponse.status,
-        statusText: markdownResponse.statusText,
-      }),
-      gaInfoValue,
-    );
-  }
-
-  return withAssetFetchGaInfoHeader(
-    new Response(markdownResponse.body, {
-      headers,
-      status: markdownResponse.status,
-      statusText: markdownResponse.statusText,
-    }),
-    gaInfoValue,
+        }),
   );
 }
 
@@ -198,6 +161,7 @@ async function fetchMarkdownVariant(
       accept: 'text/markdown',
       [ASSET_FETCH_GA_INFO_HEADER]: INTERNAL_ASSET_FETCH_GA_INFO_VALUE,
     },
+    redirect: 'manual' as const,
   };
 
   if (originalMethod === 'HEAD') {
@@ -220,8 +184,33 @@ async function fetchMarkdownVariant(
   );
 }
 
-function isSuccessfulMarkdownResponse(response: Response): boolean {
-  return response.status >= 200 && response.status < 300;
+function buildNegotiatedMarkdownResponse(
+  markdownResponse: Response,
+  requestMethod: string,
+): Response {
+  const headers = new Headers(markdownResponse.headers);
+  if (markdownResponse.status >= 200 && markdownResponse.status < 300) {
+    headers.set('content-type', 'text/markdown; charset=utf-8');
+  }
+  setVaryAccept(headers);
+
+  if (requestMethod === 'HEAD') {
+    if (markdownResponse.body) {
+      void markdownResponse.body.cancel();
+    }
+
+    return new Response(null, {
+      headers,
+      status: markdownResponse.status,
+      statusText: markdownResponse.statusText,
+    });
+  }
+
+  return new Response(markdownResponse.body, {
+    headers,
+    status: markdownResponse.status,
+    statusText: markdownResponse.statusText,
+  });
 }
 
 function getMarkdownNegotiationPathOrMethodNoneReason(
@@ -292,13 +281,6 @@ function parseAccept(acceptHeader: string): { mediaType: string; q: number }[] {
   return mediaRanges;
 }
 
-/**
- * Fallback HTML responses also need `Vary: Accept`:
- *
- * - clone the fallback response headers
- * - ensure `Accept` is present in `Vary`
- * - return the response unchanged otherwise
- */
 function withVaryAccept(response: Response): Response {
   const headers = new Headers(response.headers);
   setVaryAccept(headers);
