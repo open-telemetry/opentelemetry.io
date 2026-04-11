@@ -92,7 +92,7 @@ _Last updated: $(date -u '+%Y-%m-%d %H:%M:%S UTC')_"
 fi
 
 echo "Checking for component changes..."
-CHANGED_FILES=$(git diff --name-only data/collector/)
+CHANGED_FILES=$(git diff --name-only data/collector/ data/collector-versions.yml)
 
 if [ -z "$CHANGED_FILES" ]; then
   echo "No component changes detected"
