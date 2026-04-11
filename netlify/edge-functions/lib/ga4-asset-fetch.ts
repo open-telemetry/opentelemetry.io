@@ -2,7 +2,7 @@
  * GA4 Measurement Protocol helpers for `asset_fetch` events.
  * Event shape matches projects/2026/asset-fetch-analytics.plan.md.
  *
- * cSpell:ignore GOOGLEANALYTICS
+ * cSpell:ignore GOOGLEANALYTICS replayable
  */
 
 const GA4_COLLECT_URL = 'https://www.google-analytics.com/mp/collect';
@@ -42,6 +42,13 @@ export function getEnvValue(names: string[]): string | null {
   }
 
   return null;
+}
+
+export function hasAssetFetchConfig(): boolean {
+  return !!(
+    netlifyEnvGet(MEASUREMENT_ID_ENV_NAME)?.trim() &&
+    getEnvValue(API_SECRET_ENV_NAMES)
+  );
 }
 
 export function normalizeContentType(contentTypeHeader: string | null): string {
@@ -89,22 +96,25 @@ export type AssetFetchContext = {
 };
 
 export function isInternalAssetFetchRequest(request: Request): boolean {
+  // We deliberately use a publicly visible and replayable marker. In this
+  // project GA4 asset analytics are a convenience surface, not the source of
+  // truth; Netlify Observability remains the cross-check for request counts and
+  // anomalies.
   return request.headers.has(ASSET_FETCH_GA_INFO_HEADER);
 }
 
-/** `asset_group` values from the analytics plan. */
-export type AssetFetchEventGroup = 'schema' | 'markdown' | 'other';
+/** Canonical `event_emitter` values; see projects/2026/asset-fetch-analytics.plan.md */
+export type AssetFetchEventEmitter = 'negotiation' | 'tracking' | 'schema';
 
 /**
  * GA4 `asset_fetch` event parameters (custom dimensions). Required fields match
  * the plan; optional fields are omitted from the payload when unset.
  */
 export type AssetFetchEventParams = {
-  asset_group: AssetFetchEventGroup;
   asset_path: string;
-  asset_ext: string;
   content_type: string;
   status_code: string;
+  event_emitter: AssetFetchEventEmitter;
   original_path?: string;
   referrer_host?: string;
   ua_category?: string;
@@ -116,6 +126,48 @@ function compactStringParams(
   return Object.fromEntries(
     Object.entries(eventParams).filter(([, v]) => v !== undefined),
   ) as Record<string, string>;
+}
+
+export function buildAssetFetchGaInfoHeaderValue({
+  assetPath,
+  gaEventCandidate,
+  configPresent,
+  noneReason,
+}: {
+  assetPath?: string;
+  gaEventCandidate: boolean;
+  configPresent?: boolean;
+  noneReason?: string;
+}): string {
+  if (!gaEventCandidate || !assetPath) {
+    return noneReason ? `none: ${noneReason}` : 'none';
+  }
+
+  const tags = [
+    'ga-event-candidate',
+    configPresent ? 'config-present' : 'config-missing',
+  ];
+  return `${assetPath};${tags.join(',')}`;
+}
+
+export function withAssetFetchGaInfoHeader(
+  response: Response,
+  value: string,
+  { overwrite = true }: { overwrite?: boolean } = {},
+): Response {
+  const headers = new Headers(response.headers);
+
+  if (!overwrite && headers.has(ASSET_FETCH_GA_INFO_HEADER)) {
+    return response;
+  }
+
+  headers.set(ASSET_FETCH_GA_INFO_HEADER, value);
+
+  return new Response(response.body, {
+    headers,
+    status: response.status,
+    statusText: response.statusText,
+  });
 }
 
 /**

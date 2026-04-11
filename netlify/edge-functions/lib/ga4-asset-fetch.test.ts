@@ -4,48 +4,97 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
+  buildAssetFetchGaInfoHeaderValue,
   enqueueAssetFetchEvent,
   normalizeContentType,
   resolveClientId,
 } from './ga4-asset-fetch.ts';
 
 test('normalizeContentType extracts media type', () => {
-  assert.equal(normalizeContentType('application/yaml'), 'application/yaml');
-  assert.equal(normalizeContentType('text/html; charset=utf-8'), 'text/html');
-  assert.equal(
+  assert.strictEqual(
+    normalizeContentType('application/yaml'),
+    'application/yaml',
+    'normalizeContentType',
+  );
+  assert.strictEqual(
+    normalizeContentType('text/html; charset=utf-8'),
+    'text/html',
+    'normalizeContentType',
+  );
+  assert.strictEqual(
     normalizeContentType('  Application/JSON ; q=0.9'),
     'application/json',
+    'normalizeContentType',
   );
-  assert.equal(normalizeContentType(null), 'none');
-  assert.equal(normalizeContentType(''), 'none');
+  assert.strictEqual(
+    normalizeContentType(null),
+    'none',
+    'normalizeContentType',
+  );
+  assert.strictEqual(normalizeContentType(''), 'none', 'normalizeContentType');
+});
+
+test('buildAssetFetchGaInfoHeaderValue formats GA event candidate path with tags', () => {
+  assert.strictEqual(
+    buildAssetFetchGaInfoHeaderValue({
+      assetPath: '/schemas/1.40.0',
+      configPresent: true,
+      gaEventCandidate: true,
+    }),
+    '/schemas/1.40.0;ga-event-candidate,config-present',
+    'buildAssetFetchGaInfoHeaderValue',
+  );
+});
+
+test('buildAssetFetchGaInfoHeaderValue formats none reason', () => {
+  assert.strictEqual(
+    buildAssetFetchGaInfoHeaderValue({
+      noneReason: 'internal subrequest',
+      gaEventCandidate: false,
+    }),
+    'none: internal subrequest',
+    'buildAssetFetchGaInfoHeaderValue',
+  );
 });
 
 test('resolveClientId returns fallback when no GA cookie is present', () => {
   const request = new Request('https://example.com/', {
     headers: {},
   });
-  assert.equal(resolveClientId(request), 'asset_fetch.anonymous');
+  assert.strictEqual(
+    resolveClientId(request),
+    'asset_fetch.anonymous',
+    'resolveClientId',
+  );
 });
 
 test('resolveClientId extracts client id from GA cookie', () => {
   const request = new Request('https://example.com/', {
     headers: { cookie: '_ga=GA1.1.123456789.1234567890' },
   });
-  assert.equal(resolveClientId(request), '123456789.1234567890');
+  assert.strictEqual(
+    resolveClientId(request),
+    '123456789.1234567890',
+    'resolveClientId',
+  );
 });
 
 test('resolveClientId returns raw value for non-standard GA cookie', () => {
   const request = new Request('https://example.com/', {
     headers: { cookie: '_ga=custom-value' },
   });
-  assert.equal(resolveClientId(request), 'custom-value');
+  assert.strictEqual(
+    resolveClientId(request),
+    'custom-value',
+    'resolveClientId',
+  );
 });
 
 test('resolveClientId finds GA cookie among multiple cookies', () => {
   const request = new Request('https://example.com/', {
     headers: { cookie: 'session=abc; _ga=GA1.2.111.222; other=xyz' },
   });
-  assert.equal(resolveClientId(request), '111.222');
+  assert.strictEqual(resolveClientId(request), '111.222', 'resolveClientId');
 });
 
 test('enqueueAssetFetchEvent no-ops without waitUntil', () => {
@@ -55,11 +104,10 @@ test('enqueueAssetFetchEvent no-ops without waitUntil', () => {
     request,
     {},
     {
-      asset_group: 'schema',
       asset_path: '/schemas/1.40.0',
-      asset_ext: 'yaml',
       content_type: 'application/yaml',
       status_code: '200',
+      event_emitter: 'schema',
     },
   );
 });
@@ -110,11 +158,10 @@ test('enqueueAssetFetchEvent calls waitUntil with GA4 payload', async (t) => {
   const request = new Request('https://example.com/schemas/1.40.0');
 
   enqueueAssetFetchEvent(request, context, {
-    asset_group: 'schema',
     asset_path: '/schemas/1.40.0',
-    asset_ext: 'yaml',
     content_type: 'application/yaml',
     status_code: '200',
+    event_emitter: 'schema',
   });
 
   assert.ok(waitUntilPromise, 'waitUntil should have been called');
@@ -122,26 +169,45 @@ test('enqueueAssetFetchEvent calls waitUntil with GA4 payload', async (t) => {
 
   assert.ok(capturedUrl, 'fetch should have been called');
   const url = new URL(capturedUrl!);
-  assert.equal(url.searchParams.get('api_secret'), 'secret-test');
-  assert.equal(url.searchParams.get('measurement_id'), 'G-TEST123');
+  assert.strictEqual(
+    url.searchParams.get('api_secret'),
+    'secret-test',
+    'api_secret',
+  );
+  assert.strictEqual(
+    url.searchParams.get('measurement_id'),
+    'G-TEST123',
+    'measurement_id',
+  );
 
-  assert.ok(capturedBody);
-  assert.equal(capturedBody!.client_id, 'asset_fetch.anonymous');
+  assert.ok(capturedBody, 'Body exists');
+  assert.strictEqual(
+    capturedBody!.client_id,
+    'asset_fetch.anonymous',
+    'client_id',
+  );
 
   const events = capturedBody!.events as Array<{
     name: string;
     params: Record<string, string>;
   }>;
-  assert.equal(events.length, 1);
-  assert.equal(events[0].name, 'asset_fetch');
-  assert.equal(events[0].params.asset_group, 'schema');
-  assert.equal(events[0].params.asset_path, '/schemas/1.40.0');
-  assert.equal(events[0].params.asset_ext, 'yaml');
-  assert.equal(events[0].params.content_type, 'application/yaml');
-  assert.equal(events[0].params.status_code, '200');
-  assert.equal(
+  assert.strictEqual(events.length, 1, 'events length');
+  assert.strictEqual(events[0].name, 'asset_fetch', 'event name');
+  assert.strictEqual(
+    events[0].params.asset_path,
+    '/schemas/1.40.0',
+    'asset_path',
+  );
+  assert.strictEqual(
+    events[0].params.content_type,
+    'application/yaml',
+    'content_type',
+  );
+  assert.strictEqual(events[0].params.status_code, '200', 'status_code');
+  assert.strictEqual(events[0].params.event_emitter, 'schema', 'event_emitter');
+  assert.strictEqual(
     events[0].params.original_path,
     undefined,
-    'undefined params should be stripped',
+    'original_path',
   );
 });
