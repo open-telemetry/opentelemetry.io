@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import Any
 
 import yaml
-from semantic_version import Version
+from semantic_version import Version  # type: ignore[import-untyped]
 
 from .type_defs import COMPONENT_TYPES, DistributionName
 
