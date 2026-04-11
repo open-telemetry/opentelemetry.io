@@ -1,5 +1,7 @@
 import test from 'node:test';
 
+const GROUPED_LIVE_CHECK_ENV = 'SITE_LIVE_CHECK_GROUPED';
+
 process.env.EDGE_FUNCTION_LIVE_CHECK_GROUPED = '1';
 
 const { registerLiveChecks: registerMarkdownNegotiationLiveChecks } =
@@ -9,14 +11,20 @@ const { registerLiveChecks: registerAssetTrackingLiveChecks } =
 const { registerLiveChecks: registerSchemaAnalyticsLiveChecks } =
   await import('../schema-analytics/live-check.test.mjs');
 
-test('markdown-negotiation', async (t) => {
-  registerMarkdownNegotiationLiveChecks(t.test.bind(t));
-});
+export function registerLiveChecks(registerTest = test) {
+  registerTest('markdown-negotiation', async (t) => {
+    registerMarkdownNegotiationLiveChecks(t.test.bind(t));
+  });
 
-test('asset-tracking', async (t) => {
-  registerAssetTrackingLiveChecks(t.test.bind(t));
-});
+  registerTest('asset-tracking', async (t) => {
+    registerAssetTrackingLiveChecks(t.test.bind(t));
+  });
 
-test('schema-analytics', async (t) => {
-  registerSchemaAnalyticsLiveChecks(t.test.bind(t));
-});
+  registerTest('schema-analytics', async (t) => {
+    registerSchemaAnalyticsLiveChecks(t.test.bind(t));
+  });
+}
+
+if (process.env[GROUPED_LIVE_CHECK_ENV] !== '1') {
+  registerLiveChecks();
+}
