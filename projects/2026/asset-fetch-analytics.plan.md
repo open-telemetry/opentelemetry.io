@@ -608,7 +608,7 @@ Current test coverage by condition combo:
 | ------------------------------ | ---- | ----- | ---- | ----- | ---- | ---- | -------- | ----  |
 | Case (from table above)        | 1    | 1     | 1    | 1     | 2    | 2    | 3        | 3     |
 | Unit tests                     | Good | Good  | Good | Good  | Good | Good | Some     | Good  |
-| Live tests                     | Good | Good  | Good | Some  | Good | Good | Some     | GAP   |
+| Live tests                     | Good | Some  | Good | Some  | Good | Good | Some     | GAP   |
 
 Uses the same legend as the decision table above.
 
@@ -623,8 +623,9 @@ Tests exercising each combo:
 - **1b** (GET + negotiable + prefers md + non-2xx):
   - `analytics.test.ts`: internal 404, 302, 500 subresponses
   - `handler.test.ts`: direct 404 / 302 / 500 markdown subresponses
-  - `live-check.test.mjs`: `no-md/` 404 subresponse; redirect fixtures for real
-    3xx subresponses
+  - `live-check.test.mjs`: `no-md/` 404 subresponse; redirect fixtures and live
+    assertions for real 3xx subresponses are scaffolded but currently skipped
+    pending an alias redirect fix
 - **1c** (HEAD + negotiable + prefers md + 2xx):
   - `analytics.test.ts`: HEAD emits `asset_fetch`
   - `handler.test.ts`: HEAD markdown without body; HEAD fallback to GET
@@ -655,6 +656,8 @@ Tests exercising each combo:
 
 **Significant gaps:**
 
+- **1b**: real deployed negotiated `3xx` coverage is currently skipped pending
+  an alias redirect fix.
 - **1d**: live coverage now exercises HEAD `404`, but not a real deployed HEAD
   `3xx` or `5xx` negotiated subresponse.
 - **3a**: live coverage still leans on `/docs.html` and a skipped uppercase
@@ -750,7 +753,8 @@ plan-changing PR; use `-dev` on the version until that change set is merged.
 - Negotiated Markdown: extend that same emission policy to Markdown-preferring
   `HEAD` requests.
 - Added dedicated redirect fixtures under `/site/testing/tests/` so the live
-  suite can exercise real negotiated redirect responses.
+  suite can exercise real negotiated redirect responses once alias redirect
+  handling is fixed.
 - Enabled Markdown output for `/search` and `/ecosystem/registry/` so those
   routes can participate in negotiated Markdown delivery; registry Markdown
   currently uses the generic fallback renderer, with a dedicated template left
