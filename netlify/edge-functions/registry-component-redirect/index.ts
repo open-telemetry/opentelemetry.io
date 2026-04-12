@@ -4,7 +4,7 @@
  * registry index.
  *
  * Note: MP `page_view` here is intentionally minimal vs browser `gtag` (see
- * `enqueueGa4PageViewEvent` JSDoc in `lib/ga4-asset-fetch.ts`).
+ * `enqueueGa4PageViewEvent` JSDoc in `lib/ga4-mp.ts`).
  *
  * cSpell:ignore subresponse
  */
@@ -12,7 +12,7 @@
 import {
   type AssetFetchContext,
   enqueueGa4PageViewEvent,
-} from '../lib/ga4-asset-fetch.ts';
+} from '../lib/ga4-mp.ts';
 
 export const REGISTRY_COMP_PROBE_HEADER = 'x-otel-registry-component-probe';
 export const REGISTRY_COMP_PROBE_VALUE = '1';

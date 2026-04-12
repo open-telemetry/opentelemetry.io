@@ -9,7 +9,7 @@ import {
   enqueueGa4PageViewEvent,
   normalizeContentType,
   resolveClientId,
-} from './ga4-asset-fetch.ts';
+} from './ga4-mp.ts';
 
 test('normalizeContentType extracts media type', () => {
   assert.strictEqual(

@@ -9,7 +9,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { ASSET_FETCH_GA_INFO_HEADER } from '../lib/ga4-asset-fetch.ts';
+import { ASSET_FETCH_GA_INFO_HEADER } from '../lib/ga4-mp.ts';
 import {
   absUrl,
   baseRef,

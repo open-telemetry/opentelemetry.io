@@ -1,6 +1,9 @@
 /**
- * GA4 Measurement Protocol helpers for `asset_fetch` events.
- * Event shape matches projects/2026/asset-fetch-analytics.plan.md.
+ * GA4 Measurement Protocol (`/mp/collect`) helpers for edge functions.
+ *
+ * Includes `asset_fetch` enqueueing (event shape matches
+ * projects/2026/asset-fetch-analytics.plan.md), optional `page_view` hits, and
+ * shared env / client-id utilities used by multiple functions.
  *
  * cSpell:ignore GOOGLEANALYTICS replayable
  */
@@ -23,7 +26,7 @@ function netlifyEnvGet(name: string): string | undefined {
     if (!warnedNoNetlify) {
       warnedNoNetlify = true;
       console.warn(
-        'ga4-asset-fetch: Netlify runtime not available; GA4 events will not be sent',
+        'ga4-mp: Netlify runtime not available; GA4 events will not be sent',
       );
     }
     return undefined;

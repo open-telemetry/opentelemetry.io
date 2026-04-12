@@ -20,7 +20,7 @@ todos:
     status: completed
   - id: ga-integration
     content:
-      'Use `enqueueGa4PageViewEvent` from `lib/ga4-asset-fetch.ts` for 4xx (MP
+      'Use `enqueueGa4PageViewEvent` from `lib/ga4-mp.ts` for 4xx (MP
       `page_view` with `page_location` = missed URL)'
     status: completed
   - id: remove-hugo-redirect
@@ -79,7 +79,7 @@ loop while preserving redirects for missing component URLs.
      status, headers, and body as needed—mirror “what the origin returned”).
    - **4xx**: enqueue a GA4 **`page_view`** via Measurement Protocol (same
      endpoint/credentials as `asset_fetch`; see
-     [`enqueueGa4PageViewEvent`](../../netlify/edge-functions/lib/ga4-asset-fetch.ts)),
+     [`enqueueGa4PageViewEvent`](../../netlify/edge-functions/lib/ga4-mp.ts)),
      then respond with a **redirect to `/ecosystem/registry/`** (preserve
      incoming **query string** unless product says otherwise).
 
@@ -89,7 +89,7 @@ loop while preserving redirects for missing component URLs.
    stitching, etc.). That is **by design**—keep the edge payload simple while
    still recording **`client_id`**, **`page_location`**, and
    **`engagement_time_msec`** for the missed URL. Extend
-   [`enqueueGa4PageViewEvent`](../../netlify/edge-functions/lib/ga4-asset-fetch.ts)
+   [`enqueueGa4PageViewEvent`](../../netlify/edge-functions/lib/ga4-mp.ts)
    later if you need closer parity.
 
 4. **Non-matching** paths: bare `/ecosystem/registry` and `/ecosystem/registry/`

@@ -6,7 +6,7 @@ its tests.
 Negotiated Markdown requests that prefer Markdown enqueue a GA4 `asset_fetch`
 event for the returned Markdown subresponse status, including `2xx`, `3xx`,
 `4xx`, and `5xx`, when `GA4_API_SECRET` and `HUGO_SERVICES_GOOGLEANALYTICS_ID`
-are set (see `../lib/ga4-asset-fetch.ts` and
+are set (see `../lib/ga4-mp.ts` and
 `projects/2026/asset-fetch-analytics.plan.md`). `asset_path` is the resolved
 `*.md` path; `original_path` is included only when it differs from `asset_path`;
 `content_type` is read from the returned response headers; and `event_emitter`

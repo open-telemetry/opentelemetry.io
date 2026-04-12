@@ -26,7 +26,7 @@ import {
   enqueueAssetFetchEvent,
   normalizeContentType,
   withAssetFetchGaInfoHeader,
-} from '../lib/ga4-asset-fetch.ts';
+} from '../lib/ga4-mp.ts';
 
 const HTML_TYPES = new Set(['text/html', 'application/xhtml+xml']);
 
