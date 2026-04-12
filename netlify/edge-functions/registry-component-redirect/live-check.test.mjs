@@ -12,7 +12,7 @@ import test from 'node:test';
 import { absUrl, baseRef } from '../../../tests/lib/live-check-base.mjs';
 
 const bogusSlugPath =
-  '/ecosystem/registry/no-such-registry-entry-xyzzy-for-live-check';
+  '/ecosystem/registry/no-such-registry-entry-for-live-check';
 const addingPath = '/ecosystem/registry/adding/';
 const indexJsonPath = '/ecosystem/registry/index.json';
 const GROUPED_LIVE_CHECK_ENV = 'EDGE_FUNCTION_LIVE_CHECK_GROUPED';

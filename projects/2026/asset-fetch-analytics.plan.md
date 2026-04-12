@@ -4,7 +4,7 @@ date: 2026-04-03
 lastmod: 2026-04-11
 version: 0.5
 custodian: Patrice Chalin
-cSpell:ignore: GOOGLEANALYTICS SRRCT subresponse subresponses
+cSpell:ignore: GOOGLEANALYTICS pathing SRRCT subresponse subresponses
 ---
 
 ## Goal
