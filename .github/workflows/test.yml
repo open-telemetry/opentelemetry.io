@@ -22,8 +22,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version-file: .nvmrc
-          cache: npm
-          cache-dependency-path: package.json
 
       - run: npm install --ignore-scripts --omit=optional
 
