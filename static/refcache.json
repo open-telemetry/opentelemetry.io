@@ -285,7 +285,7 @@
   },
   "https://blog.olly.garden/what-10000-slack-messages-reveal-about-opentelemetry-adoption-challenges": {
     "StatusCode": 429,
-    "LastSeen": "2026-04-11T09:56:33.775801132Z"
+    "LastSeen": "2026-04-12T09:57:05.201001211Z"
   },
   "https://blog.remirepo.net/pages/PECL-extensions-RPM-status": {
     "StatusCode": 200,
@@ -15173,7 +15173,7 @@
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-approval-labels.yml": {
     "StatusCode": 404,
-    "LastSeen": "2026-04-11T09:57:57.946493024Z"
+    "LastSeen": "2026-04-12T09:58:27.969410085Z"
   },
   "https://github.com/open-telemetry/opentelemetry.io/blob/main/.github/workflows/pr-review-trigger.yml": {
     "StatusCode": 206,
@@ -19184,8 +19184,8 @@
     "LastSeen": "2026-03-25T10:01:00.173Z"
   },
   "https://medium.com/mercadolibre-tech/building-a-large-scale-observability-ecosystem-1edf654b249e": {
-    "StatusCode": 403,
-    "LastSeen": "2026-04-11T09:51:22.40105497Z"
+    "StatusCode": 200,
+    "LastSeen": "2026-04-12T09:59:30.768Z"
   },
   "https://medium.com/opentracing/merging-opentracing-and-opencensus-f0fe9c7ca6f0": {
     "StatusCode": 200,
@@ -22281,7 +22281,7 @@
   },
   "https://sakshipatle.substack.com/p/outreachy-how-when-and-why": {
     "StatusCode": 403,
-    "LastSeen": "2026-04-11T09:56:42.751086842Z"
+    "LastSeen": "2026-04-12T09:57:11.203231781Z"
   },
   "https://schemas.dmtf.org/wbem/cim-html/2.31.0/CIM_Battery.html": {
     "StatusCode": 206,
