@@ -19,10 +19,13 @@
 
 import {
   ASSET_FETCH_GA_INFO_HEADER,
+  buildAssetFetchGaInfoHeaderValue,
+  hasAssetFetchConfig,
   INTERNAL_ASSET_FETCH_GA_INFO_VALUE,
   type AssetFetchEventParams,
   enqueueAssetFetchEvent,
   normalizeContentType,
+  withAssetFetchGaInfoHeader,
 } from '../lib/ga4-asset-fetch.ts';
 
 const HTML_TYPES = new Set(['text/html', 'application/xhtml+xml']);
@@ -38,12 +41,26 @@ export default async function markdownNegotiation(
   const url = new URL(request.url);
 
   if (!shouldConsiderRequest(request.method, url.pathname)) {
-    return context.next();
+    return withAssetFetchGaInfoHeader(
+      await context.next(),
+      buildAssetFetchGaInfoHeaderValue({
+        noneReason: getMarkdownNegotiationPathOrMethodNoneReason(
+          request.method,
+          url.pathname,
+        ),
+        gaEventCandidate: false,
+      }),
+      { overwrite: false },
+    );
   }
 
   const acceptHeader = request.headers.get('accept');
   if (!acceptHeader || !prefersMarkdownOverHtml(acceptHeader)) {
-    return context.next();
+    return withAssetFetchGaInfoHeader(
+      await context.next(),
+      buildAssetFetchGaInfoHeaderValue({ gaEventCandidate: false }),
+      { overwrite: false },
+    );
   }
 
   const markdownResponse = await fetchMarkdownVariant(
@@ -52,7 +69,17 @@ export default async function markdownNegotiation(
   );
 
   if (!isSuccessfulMarkdownResponse(markdownResponse)) {
-    return withVaryAccept(await context.next());
+    return withAssetFetchGaInfoHeader(
+      withVaryAccept(await context.next()),
+      buildAssetFetchGaInfoHeaderValue({
+        noneReason:
+          request.method === 'GET'
+            ? 'response does not meet route-specific gating'
+            : `request method ${request.method} is not currently tracked`,
+        gaEventCandidate: false,
+      }),
+      { overwrite: false },
+    );
   }
 
   const headers = new Headers(markdownResponse.headers);
@@ -64,33 +91,50 @@ export default async function markdownNegotiation(
   if (request.method === 'GET') {
     const assetPath = resolveMarkdownPath(url.pathname);
     const eventParams: AssetFetchEventParams = {
-      asset_group: 'markdown',
       asset_path: assetPath,
-      asset_ext: 'md',
       content_type: normalizeContentType(headers.get('content-type') ?? ''),
       status_code: String(markdownResponse.status),
+      event_emitter: 'negotiation',
       ...(url.pathname !== assetPath ? { original_path: url.pathname } : {}),
     };
     enqueueAssetFetchEvent(request, context, eventParams);
   }
+
+  const gaInfoValue =
+    request.method === 'GET'
+      ? buildAssetFetchGaInfoHeaderValue({
+          assetPath: resolveMarkdownPath(url.pathname),
+          configPresent: hasAssetFetchConfig(),
+          gaEventCandidate: true,
+        })
+      : buildAssetFetchGaInfoHeaderValue({
+          noneReason: `request method ${request.method} is not currently tracked`,
+          gaEventCandidate: false,
+        });
 
   if (request.method === 'HEAD') {
     if (markdownResponse.body) {
       void markdownResponse.body.cancel();
     }
 
-    return new Response(null, {
+    return withAssetFetchGaInfoHeader(
+      new Response(null, {
+        headers,
+        status: markdownResponse.status,
+        statusText: markdownResponse.statusText,
+      }),
+      gaInfoValue,
+    );
+  }
+
+  return withAssetFetchGaInfoHeader(
+    new Response(markdownResponse.body, {
       headers,
       status: markdownResponse.status,
       statusText: markdownResponse.statusText,
-    });
-  }
-
-  return new Response(markdownResponse.body, {
-    headers,
-    status: markdownResponse.status,
-    statusText: markdownResponse.statusText,
-  });
+    }),
+    gaInfoValue,
+  );
 }
 
 export function shouldConsiderRequest(
@@ -178,6 +222,21 @@ async function fetchMarkdownVariant(
 
 function isSuccessfulMarkdownResponse(response: Response): boolean {
   return response.status >= 200 && response.status < 300;
+}
+
+function getMarkdownNegotiationPathOrMethodNoneReason(
+  method: string,
+  pathname: string,
+): string | undefined {
+  if (method !== 'GET' && method !== 'HEAD') {
+    return `request method ${method} is not currently tracked`;
+  }
+
+  if (!shouldConsiderRequest(method, pathname)) {
+    return 'request path does not match a tracked route';
+  }
+
+  return undefined;
 }
 
 export function prefersMarkdownOverHtml(acceptHeader: string): boolean {

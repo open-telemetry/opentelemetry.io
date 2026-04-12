@@ -12,70 +12,32 @@ import {
   ASSET_FETCH_GA_INFO_HEADER,
   INTERNAL_ASSET_FETCH_GA_INFO_VALUE,
 } from '../lib/ga4-asset-fetch.ts';
+import {
+  assertAssetFetchGa4Event,
+  createWaitUntilSpy,
+  firstAssetFetchEvent,
+  setupGa4CapturingFetchMock,
+  setupNetlifyEnv,
+} from '../lib/test-helpers.ts';
 import markdownNegotiation from '../markdown-negotiation/index.ts';
-
-function setupNetlifyEnv(t: { after: (fn: () => void) => void }) {
-  const g = globalThis as Record<string, unknown>;
-  const originalNetlify = g.Netlify;
-  t.after(() => {
-    g.Netlify = originalNetlify;
-  });
-
-  g.Netlify = {
-    env: {
-      get: (name: string) => {
-        if (name === 'HUGO_SERVICES_GOOGLEANALYTICS_ID') return 'G-TEST';
-        if (name === 'GA4_API_SECRET') return 'secret';
-        return undefined;
-      },
-    },
-  };
-}
-
-function createWaitUntilSpy() {
-  const promises: Promise<unknown>[] = [];
-  return {
-    waitUntil: (p: Promise<unknown>) => {
-      promises.push(p);
-    },
-    flush: () => Promise.all(promises),
-  };
-}
 
 test('markdown negotiation internal .md fetch does not double-count asset_fetch', async (t) => {
   setupNetlifyEnv(t);
 
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
   const spy = createWaitUntilSpy();
-  const ga4Bodies: Record<string, unknown>[] = [];
-
-  globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
-    const request =
-      input instanceof Request
-        ? input
-        : new Request(
-            input instanceof URL ? input.toString() : String(input),
-            init,
-          );
-
-    if (request.url.includes('google-analytics.com')) {
-      if (init?.body) {
-        ga4Bodies.push(JSON.parse(init.body as string));
-      }
-      return new Response('', { status: 200 });
-    }
-
+  const ga4Bodies = setupGa4CapturingFetchMock(t, async (request) => {
     const url = new URL(request.url);
-    assert.equal(url.pathname, '/docs/index.md');
-    assert.equal(request.method, 'GET');
-    assert.equal(request.headers.get('accept'), 'text/markdown');
-    assert.equal(
+    assert.strictEqual(url.pathname, '/docs/index.md', 'Subrequest pathname');
+    assert.strictEqual(request.method, 'GET', 'Subrequest method');
+    assert.strictEqual(
+      request.headers.get('accept'),
+      'text/markdown',
+      'Accept header',
+    );
+    assert.strictEqual(
       request.headers.get(ASSET_FETCH_GA_INFO_HEADER),
       INTERNAL_ASSET_FETCH_GA_INFO_VALUE,
+      'X-Asset-Fetch-Ga-Info',
     );
 
     return assetTracking(request, {
@@ -86,7 +48,7 @@ test('markdown negotiation internal .md fetch does not double-count asset_fetch'
         }),
       ...spy,
     });
-  }) as typeof fetch;
+  });
 
   const response = await markdownNegotiation(
     new Request('https://example.com/docs/', {
@@ -104,54 +66,33 @@ test('markdown negotiation internal .md fetch does not double-count asset_fetch'
 
   await spy.flush();
 
-  assert.equal(response.status, 200);
-  assert.equal(
+  assert.strictEqual(response.status, 200, 'HTTP status');
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
+    'Content-Type',
   );
-  assert.equal(await response.text(), '# Docs');
-  assert.equal(ga4Bodies.length, 1);
+  assert.strictEqual(
+    response.headers.get('x-asset-fetch-ga-info'),
+    '/docs/index.md;ga-event-candidate,config-present',
+    'X-Asset-Fetch-Ga-Info',
+  );
+  assert.strictEqual(await response.text(), '# Docs', 'Response body');
 
-  const event = (
-    ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
-  )[0];
-  assert.equal(event.name, 'asset_fetch');
-  assert.equal(event.params.asset_group, 'markdown');
-  assert.equal(event.params.asset_path, '/docs/index.md');
-  assert.equal(event.params.asset_ext, 'md');
-  assert.equal(event.params.content_type, 'text/markdown');
-  assert.equal(event.params.status_code, '200');
-  assert.equal(event.params.original_path, '/docs/');
+  assertAssetFetchGa4Event(firstAssetFetchEvent(ga4Bodies), {
+    asset_path: '/docs/index.md',
+    content_type: 'text/markdown',
+    status_code: '200',
+    original_path: '/docs/',
+    event_emitter: 'negotiation',
+  });
 });
 
 test('direct .md request passes through markdown negotiation and emits one asset_fetch', async (t) => {
   setupNetlifyEnv(t);
 
-  const originalFetch = globalThis.fetch;
-  t.after(() => {
-    globalThis.fetch = originalFetch;
-  });
-
   const spy = createWaitUntilSpy();
-  const ga4Bodies: Record<string, unknown>[] = [];
-
-  globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
-    const url =
-      input instanceof URL
-        ? input.toString()
-        : typeof input === 'string'
-          ? input
-          : input.url;
-
-    if (url.includes('google-analytics.com')) {
-      if (init?.body) {
-        ga4Bodies.push(JSON.parse(init.body as string));
-      }
-      return new Response('', { status: 200 });
-    }
-
-    return new Response('unexpected fetch', { status: 500 });
-  }) as typeof fetch;
+  const ga4Bodies = setupGa4CapturingFetchMock(t);
 
   const request = new Request('https://example.com/docs/index.md');
 
@@ -170,22 +111,27 @@ test('direct .md request passes through markdown negotiation and emits one asset
 
   await spy.flush();
 
-  assert.equal(response.status, 200);
-  assert.equal(
+  assert.strictEqual(response.status, 200, 'HTTP status');
+  assert.strictEqual(
     response.headers.get('content-type'),
     'text/markdown; charset=utf-8',
+    'Content-Type',
   );
-  assert.equal(await response.text(), '# Docs');
-  assert.equal(ga4Bodies.length, 1);
+  assert.strictEqual(
+    response.headers.get('x-asset-fetch-ga-info'),
+    '/docs/index.md;ga-event-candidate,config-present',
+    'X-Asset-Fetch-Ga-Info',
+  );
+  assert.strictEqual(await response.text(), '# Docs', 'Response body');
 
-  const event = (
-    ga4Bodies[0].events as { name: string; params: Record<string, string> }[]
-  )[0];
-  assert.equal(event.name, 'asset_fetch');
-  assert.equal(event.params.asset_group, 'markdown');
-  assert.equal(event.params.asset_path, '/docs/index.md');
-  assert.equal(event.params.asset_ext, 'md');
-  assert.equal(event.params.content_type, 'text/markdown');
-  assert.equal(event.params.status_code, '200');
-  assert.ok(!('original_path' in event.params));
+  assertAssetFetchGa4Event(
+    firstAssetFetchEvent(ga4Bodies),
+    {
+      asset_path: '/docs/index.md',
+      content_type: 'text/markdown',
+      status_code: '200',
+      event_emitter: 'tracking',
+    },
+    { expectOriginalPathAbsent: true },
+  );
 });

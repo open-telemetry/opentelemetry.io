@@ -7,13 +7,17 @@ Successful `2xx` Markdown responses enqueue a GA4 `asset_fetch` event (GET only)
 when `GA4_API_SECRET` and `HUGO_SERVICES_GOOGLEANALYTICS_ID` are set (see
 `../lib/ga4-asset-fetch.ts` and `projects/2026/asset-fetch-analytics.plan.md`).
 `asset_path` is the resolved `*.md` path; `original_path` is included only when
-it differs from `asset_path`; `content_type` is read from the response headers.
-Non-2xx results fall back to the normal HTML page, which is covered by the
-site's client-side GA `page_view` instrumentation.
+it differs from `asset_path`; `content_type` is read from the response headers;
+and `event_emitter` is `negotiation`. Non-2xx results fall back to the normal
+HTML page, which is covered by the site's client-side GA `page_view`
+instrumentation.
 
 Internal fetches for sibling `index.md` assets include `X-Asset-Fetch-Ga-Info`
 so the asset-tracking Edge Function can detect and skip those subrequests,
 avoiding duplicate `asset_fetch` events.
+
+Responses also include `X-Asset-Fetch-Ga-Info` for coarse sanity-checking of the
+derived GA path and local request-path/config state.
 
 Explicit `GET` requests to a `*.md` URL pass straight through and do **not**
 emit `asset_fetch` here.
