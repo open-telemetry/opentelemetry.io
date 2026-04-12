@@ -110,11 +110,6 @@ export function registerLiveChecks(registerTest = test) {
 
   registerTest(
     'GET /site/testing/tests/regular/index.HTML with Accept: text/markdown → redirect',
-    {
-      // Deployed behavior for uppercase `index.HTML` is inconsistent across
-      // paths and environments on Netlify. Skip this edge case for now.
-      skip: 'Deferred while clarifying Netlify handling of uppercase index.HTML paths',
-    },
     async () => {
       const ref = baseRef();
       const url = absUrl(docsUppercaseIndexHtmlPath, ref);
