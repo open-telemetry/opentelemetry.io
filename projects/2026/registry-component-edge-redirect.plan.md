@@ -4,8 +4,8 @@ overview:
   'Add a Netlify Edge Function for `/ecosystem/registry/<non-empty-suffix>` (any
   extra path segment, including `index.html|md|json`): probe with an internal
   `fetch` plus probe guard header; return the subresponse for 2xx/3xx/5xx; on
-  4xx emit a GA event and redirect to `/ecosystem/registry/`; then remove the
-  Hugo-generated Netlify redirect for the old catch-all.'
+  4xx emit a GA4 `page_view` (MP) and redirect to `/ecosystem/registry/`; then
+  remove the Hugo-generated Netlify redirect for the old catch-all.'
 todos:
   - id: implement-handler
     content:
@@ -20,9 +20,8 @@ todos:
     status: completed
   - id: ga-integration
     content:
-      'Reuse existing GA4 edge helpers (`enqueueAssetFetchEvent` / headers from
-      `lib/ga4-asset-fetch.ts`) with a clear event name or params for
-      registry-component 4xx'
+      'Use `enqueueGa4PageViewEvent` from `lib/ga4-asset-fetch.ts` for 4xx (MP
+      `page_view` with `page_location` = missed URL)'
     status: completed
   - id: remove-hugo-redirect
     content:
@@ -54,6 +53,15 @@ cSpell:ignore: distinguisher subresponse
 
 # Registry component redirect edge function (revised)
 
+## Context
+
+The Hugo `redirects` catch-all for old registry paths interacted badly with
+markdown negotiation when `Accept: text/markdown` was set, producing unstable
+redirect / `cache-status` behavior
+([opentelemetry.io#9633](https://github.com/open-telemetry/opentelemetry.io/issues/9633)).
+Dropping that rule in favor of **`registry-component-redirect`** removed the
+loop while preserving redirects for missing component URLs.
+
 ## Desired behavior (authoritative)
 
 1. **Path gate**: Only handle requests whose pathname has a **non-empty path
@@ -69,13 +77,21 @@ cSpell:ignore: distinguisher subresponse
 3. **Interpret subresponse status**:
    - **2xx, 3xx, or 5xx**: return that subresponse to the client (pass through
      status, headers, and body as needed—mirror “what the origin returned”).
-   - **4xx**: enqueue a **GA event** (reuse the repo’s existing Measurement
-     Protocol / edge GA plumbing, e.g.
-     [`netlify/edge-functions/lib/ga4-asset-fetch.ts`](../../netlify/edge-functions/lib/ga4-asset-fetch.ts)
-     and patterns from
-     [`netlify/edge-functions/asset-tracking/index.ts`](../../netlify/edge-functions/asset-tracking/index.ts)),
+   - **4xx**: enqueue a GA4 **`page_view`** via Measurement Protocol (same
+     endpoint/credentials as `asset_fetch`; see
+     [`enqueueGa4PageViewEvent`](../../netlify/edge-functions/lib/ga4-asset-fetch.ts)),
      then respond with a **redirect to `/ecosystem/registry/`** (preserve
      incoming **query string** unless product says otherwise).
+
+   **Note (GA4 `page_view` dimensions):** These Measurement Protocol `page_view`
+   events do **not** mirror every dimension a browser `gtag` `page_view` would
+   collect (referrer, document title, enhanced measurement, full session
+   stitching, etc.). That is **by design**—keep the edge payload simple while
+   still recording **`client_id`**, **`page_location`**, and
+   **`engagement_time_msec`** for the missed URL. Extend
+   [`enqueueGa4PageViewEvent`](../../netlify/edge-functions/lib/ga4-asset-fetch.ts)
+   later if you need closer parity.
+
 4. **Non-matching** paths: bare `/ecosystem/registry` and `/ecosystem/registry/`
    only—**`context.next()`** with no outer `fetch` (the registry index page and
    its normal pipeline, including markdown negotiation when applicable).
@@ -89,8 +105,8 @@ distinguisher, the handler would run again on that `fetch` and recurse.
 
 **Required** (unless Netlify documents that same-origin `fetch` from an edge
 function bypasses edge for that URL—do not assume): send a dedicated **internal
-request header** on the subrequest (e.g. `X-Otel-Registry-Legacy-Probe: 1`) and,
-at the **top** of this handler, if that header is present **immediately**
+request header** on the subrequest (e.g. `X-Otel-Registry-Component-Probe: 1`)
+and, at the **top** of this handler, if that header is present **immediately**
 `return context.next()` so the probe hits static / downstream logic without
 probing again.
 
@@ -166,8 +182,8 @@ pattern) once in a helper if multiple cases need the same `fetch` stub shape.
 - **Subresponse passthrough**: mocked `fetch` returns 2xx / 3xx / 5xx → client
   sees that status (and body/headers where relevant).
 - **4xx branch**: mocked `fetch` returns 4xx → redirect `Location` is
-  `/ecosystem/registry/` (plus preserved query); GA enqueue / `waitUntil` wired
-  or spied the same way as existing GA edge tests (see
+  `/ecosystem/registry/` (plus preserved query); MP **`page_view`** captured via
+  `setupGa4CapturingFetchMock` / `firstMpEventNamed` (see
   [`netlify/edge-functions/lib/test-helpers.ts`](../../netlify/edge-functions/lib/test-helpers.ts)).
 
 ## Redirect semantics
@@ -186,7 +202,7 @@ flowchart TD
   probe[fetch same URL with probe header]
   status{Subresponse status}
   pass[Return subresponse]
-  ga[Enqueue GA event]
+  ga[Enqueue GA4 page_view]
   redir[Redirect to /ecosystem/registry/]
 
   req --> gate

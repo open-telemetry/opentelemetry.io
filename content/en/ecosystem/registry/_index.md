@@ -19,7 +19,8 @@ outputs: [HTML, markdown, JSON]
 
 # TODO(chalin): move the following comment into the site docs, then add a link
 # to it here. Old /ecosystem/registry/<component> URLs are handled by the
-# `registry-component-redirect` Netlify Edge Function.
+# `registry-component-redirect` Netlify Edge Function (replaces the Hugo
+# catch-all redirect; see https://github.com/open-telemetry/opentelemetry.io/issues/9633).
 ---
 
 {{% blocks/lead color="dark" %}}

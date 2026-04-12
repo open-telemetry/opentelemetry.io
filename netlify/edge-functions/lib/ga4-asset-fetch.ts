@@ -104,11 +104,7 @@ export function isInternalAssetFetchRequest(request: Request): boolean {
 }
 
 /** Canonical `event_emitter` values; see projects/2026/asset-fetch-analytics.plan.md */
-export type AssetFetchEventEmitter =
-  | 'negotiation'
-  | 'tracking'
-  | 'schema'
-  | 'registry-component';
+export type AssetFetchEventEmitter = 'negotiation' | 'tracking' | 'schema';
 
 /**
  * GA4 `asset_fetch` event parameters (custom dimensions). Required fields match
@@ -203,7 +199,7 @@ export function enqueueAssetFetchEvent(
   };
 
   context.waitUntil(
-    sendGa4AssetFetchPayload({
+    sendGa4MpCollect({
       apiSecret,
       measurementId,
       payload,
@@ -212,7 +208,65 @@ export function enqueueAssetFetchEvent(
   );
 }
 
-async function sendGa4AssetFetchPayload({
+/** GA4 recommended `page_view` params for Measurement Protocol (snake_case keys). */
+export type Ga4PageViewMpParams = {
+  page_location: string;
+  page_title?: string;
+};
+
+/**
+ * Queues a GA4 automatic `page_view` event (MP). No-ops when credentials or
+ * `waitUntil` are missing.
+ *
+ * **Note:** These hits intentionally do **not** mirror every dimension a
+ * browser `gtag` `page_view` would collect (referrer, title, session stitching,
+ * enhanced measurement, etc.). We keep the payload small while still sending
+ * **`client_id`**, **`page_location`**, and **`engagement_time_msec`**—enough
+ * for basic URL-level reporting. Add optional params (e.g. `page_title`) or
+ * top-level MP fields later if you need closer parity.
+ */
+export function enqueueGa4PageViewEvent(
+  request: Request,
+  context: AssetFetchContext,
+  pageViewParams: Ga4PageViewMpParams,
+): void {
+  const measurementId = netlifyEnvGet(MEASUREMENT_ID_ENV_NAME)?.trim();
+  const apiSecret = getEnvValue(API_SECRET_ENV_NAMES);
+
+  if (!measurementId || !apiSecret || !context.waitUntil) {
+    return;
+  }
+
+  const params: Record<string, string | number> = {
+    engagement_time_msec: 1,
+    page_location: pageViewParams.page_location,
+  };
+
+  if (pageViewParams.page_title !== undefined) {
+    params.page_title = pageViewParams.page_title;
+  }
+
+  const payload = {
+    client_id: resolveClientId(request),
+    events: [
+      {
+        name: 'page_view',
+        params,
+      },
+    ],
+  };
+
+  context.waitUntil(
+    sendGa4MpCollect({
+      apiSecret,
+      measurementId,
+      payload,
+      requestId: context.requestId,
+    }),
+  );
+}
+
+async function sendGa4MpCollect({
   apiSecret,
   measurementId,
   payload,
@@ -241,13 +295,13 @@ async function sendGa4AssetFetchPayload({
 
     if (!response.ok) {
       console.warn(
-        `ga4-asset-fetch: GA4 event send failed with ${response.status}` +
+        `ga4-mp: GA4 MP send failed with ${response.status}` +
           (requestId ? ` for request ${requestId}` : ''),
       );
     }
   } catch (error) {
     console.warn(
-      `ga4-asset-fetch: GA4 event send threw` +
+      `ga4-mp: GA4 MP send threw` +
         (requestId ? ` for request ${requestId}` : ''),
       error,
     );

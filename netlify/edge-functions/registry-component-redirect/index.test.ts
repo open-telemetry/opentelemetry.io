@@ -8,9 +8,8 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 
 import {
-  assertAssetFetchGa4Event,
   createWaitUntilSpy,
-  firstAssetFetchEvent,
+  firstMpEventNamed,
   setupGa4CapturingFetchMock,
   setupNetlifyEnv,
   withMockFetch,
@@ -145,7 +144,7 @@ test('GET suffix: subresponse 502 is passed through', async (t) => {
   assert.strictEqual(res.status, 502, 'HTTP status');
 });
 
-test('GET suffix: subresponse 404 → 301 redirect + GA asset_fetch', async (t) => {
+test('GET suffix: subresponse 404 → 301 redirect + GA page_view', async (t) => {
   setupNetlifyEnv(t);
   const spy = createWaitUntilSpy();
   const gaBodies = setupGa4CapturingFetchMock(
@@ -173,13 +172,14 @@ test('GET suffix: subresponse 404 → 301 redirect + GA asset_fetch', async (t) 
   assert.strictEqual(locUrl.pathname, '/ecosystem/registry/', 'Location path');
   assert.strictEqual(locUrl.search, '?lang=en', 'Location query');
 
-  const event = firstAssetFetchEvent(gaBodies);
-  assertAssetFetchGa4Event(event, {
-    asset_path: '/ecosystem/registry/missing-slug',
-    content_type: 'text/html',
-    event_emitter: 'registry-component',
-    status_code: '404',
-  });
+  const event = firstMpEventNamed(gaBodies, 'page_view');
+  assert.strictEqual(event.name, 'page_view', 'event name');
+  assert.strictEqual(event.params.page_location, reqUrl, 'page_location');
+  assert.strictEqual(
+    Number(event.params.engagement_time_msec),
+    1,
+    'engagement_time_msec',
+  );
 });
 
 test('HEAD suffix: subresponse 404 → 301 redirect', async (t) => {

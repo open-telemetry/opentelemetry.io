@@ -1,14 +1,17 @@
 /**
- * Old registry component (per-entry) URLs: probe the path; on 4xx, emit GA
- * `asset_fetch` and redirect to the registry index.
+ * Old registry component (per-entry) URLs: probe the path; on 4xx, emit a GA4
+ * `page_view` (Measurement Protocol) for the missed URL, then redirect to the
+ * registry index.
+ *
+ * Note: MP `page_view` here is intentionally minimal vs browser `gtag` (see
+ * `enqueueGa4PageViewEvent` JSDoc in `lib/ga4-asset-fetch.ts`).
  *
  * cSpell:ignore subresponse
  */
 
 import {
   type AssetFetchContext,
-  enqueueAssetFetchEvent,
-  normalizeContentType,
+  enqueueGa4PageViewEvent,
 } from '../lib/ga4-asset-fetch.ts';
 
 export const REGISTRY_COMP_PROBE_HEADER = 'x-otel-registry-component-probe';
@@ -72,11 +75,8 @@ export default async function registryCompRedirect(
   }
 
   if (sub.status >= 400 && sub.status < 500) {
-    enqueueAssetFetchEvent(request, context, {
-      asset_path: url.pathname,
-      content_type: normalizeContentType(sub.headers.get('content-type')),
-      event_emitter: 'registry-component',
-      status_code: String(sub.status),
+    enqueueGa4PageViewEvent(request, context, {
+      page_location: new URL(request.url).href,
     });
     return Response.redirect(buildRegistryIndexRedirectUrl(url), 301);
   }
