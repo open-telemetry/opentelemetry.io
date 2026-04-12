@@ -9,38 +9,28 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-/** Must match the key set in `live-check.mjs` before spawning `node --test`. */
-const LIVE_CHECK_BASE_URL_ENV = 'LIVE_CHECK_BASE_URL';
+import { ASSET_FETCH_GA_INFO_HEADER } from '../lib/ga4-asset-fetch.ts';
+import {
+  absUrl,
+  baseRef,
+  expectedConfigTag,
+} from '../lib/live-check-test-base.mjs';
+import { assertVaryIncludesAccept } from '../lib/test-helpers.ts';
 
-function resolveBaseRef(raw) {
-  const withScheme = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
-  return new URL(withScheme.endsWith('/') ? withScheme : `${withScheme}/`);
-}
+const docsPath = '/site/testing/tests/regular/';
+const docsIndexHtmlPath = '/site/testing/tests/regular/index.html';
+const docsUppercaseIndexHtmlPath = '/site/testing/tests/regular/index.HTML';
+const noMarkdownPath = '/site/testing/tests/no-md/';
 
-function absUrl(path, baseRef) {
-  return new URL(path, baseRef).href;
-}
+/** Negotiated Markdown responses set this in `markdown-negotiation/index.ts`. */
+const expectedNegotiatedMarkdownContentType = 'text/markdown; charset=utf-8';
+/** Static HTML from `context.next()` (typical Netlify / Hugo). */
+const expectedHtmlContentType = 'text/html; charset=UTF-8';
 
-function varyIncludesAccept(varyHeader) {
-  if (!varyHeader) {
-    return false;
-  }
-  return varyHeader
-    .split(',')
-    .some((part) => part.trim().toLowerCase() === 'accept');
-}
+const regularPageMarkdownHeading = /^# Regular test page/;
+const htmlDocumentPattern = /<!DOCTYPE html|<html[\s>]/i;
 
-function baseRef() {
-  const raw = process.env[LIVE_CHECK_BASE_URL_ENV]?.trim();
-  assert.ok(raw, 'Run live checks via: node .../live-check.mjs [-h] [BASE]');
-  return resolveBaseRef(raw);
-}
-
-const docsPath = '/docs/concepts/resources/';
-const docsIndexHtmlPath = '/docs/concepts/resources/index.html';
-const docsUppercaseIndexHtmlPath = '/docs/concepts/resources/index.HTML';
-
-test('GET /docs/concepts/resources/ with Accept: text/markdown → markdown + Vary: Accept', async () => {
+test('GET /site/testing/tests/regular/ with Accept: text/markdown → markdown + Vary: Accept', async () => {
   const ref = baseRef();
   const url = absUrl(docsPath, ref);
   const res = await fetch(url, {
@@ -48,18 +38,23 @@ test('GET /docs/concepts/resources/ with Accept: text/markdown → markdown + Va
   });
   const ct = res.headers.get('content-type') ?? '';
   const text = await res.text();
-  assert.equal(res.status, 200, `expected 200 for ${url}`);
-  assert.ok(
-    ct.toLowerCase().includes('text/markdown'),
-    `expected text/markdown content-type, got ${JSON.stringify(ct)}`,
-  );
-  assert.ok(
-    text.includes('# Resources'),
-    'body should contain "# Resources" (English docs index heading)',
-  );
-  assert.ok(
-    varyIncludesAccept(res.headers.get('vary')),
-    `Vary should include Accept, got ${JSON.stringify(res.headers.get('vary'))}`,
+  assert.strictEqual(res.status, 200, 'HTTP status');
+  assert.strictEqual(ct, expectedNegotiatedMarkdownContentType, 'Content-Type');
+  assert.match(text, regularPageMarkdownHeading, 'Request body');
+  assertVaryIncludesAccept(res);
+});
+
+test('GET /site/testing/tests/regular/ with Accept: text/markdown → X-Asset-Fetch-Ga-Info header', async () => {
+  const ref = baseRef();
+  const url = absUrl(docsPath, ref);
+  const res = await fetch(url, {
+    headers: { accept: 'text/markdown' },
+  });
+
+  assert.strictEqual(
+    res.headers.get(ASSET_FETCH_GA_INFO_HEADER),
+    `/site/testing/tests/regular/index.md;ga-event-candidate,${expectedConfigTag(ref)}`,
+    'X-Asset-Fetch-Ga-Info',
   );
 });
 
@@ -71,18 +66,12 @@ test('GET same URL with HTML preferred → HTML', async () => {
   });
   const ct = res.headers.get('content-type') ?? '';
   const text = await res.text();
-  assert.equal(res.status, 200, `expected 200 for ${url}`);
-  assert.ok(
-    ct.toLowerCase().includes('text/html'),
-    `expected text/html content-type, got ${JSON.stringify(ct)}`,
-  );
-  assert.ok(
-    text.includes('<!DOCTYPE html') || text.includes('<html'),
-    'body should look like HTML',
-  );
+  assert.strictEqual(res.status, 200, 'HTTP status');
+  assert.strictEqual(ct, expectedHtmlContentType, 'Content-Type');
+  assert.match(text, htmlDocumentPattern, 'Request body');
 });
 
-test('GET /docs/concepts/resources/index.html with Accept: text/markdown → markdown + Vary: Accept', async () => {
+test('GET /site/testing/tests/regular/index.html with Accept: text/markdown → markdown + Vary: Accept', async () => {
   const ref = baseRef();
   const url = absUrl(docsIndexHtmlPath, ref);
   const res = await fetch(url, {
@@ -90,23 +79,14 @@ test('GET /docs/concepts/resources/index.html with Accept: text/markdown → mar
   });
   const ct = res.headers.get('content-type') ?? '';
   const text = await res.text();
-  assert.equal(res.status, 200, `expected 200 for ${url}`);
-  assert.ok(
-    ct.toLowerCase().includes('text/markdown'),
-    `expected text/markdown content-type, got ${JSON.stringify(ct)}`,
-  );
-  assert.ok(
-    text.includes('# Resources'),
-    'body should contain "# Resources" (English docs index heading)',
-  );
-  assert.ok(
-    varyIncludesAccept(res.headers.get('vary')),
-    `Vary should include Accept, got ${JSON.stringify(res.headers.get('vary'))}`,
-  );
+  assert.strictEqual(res.status, 200, 'HTTP status');
+  assert.strictEqual(ct, expectedNegotiatedMarkdownContentType, 'Content-Type');
+  assert.match(text, regularPageMarkdownHeading, 'Request body');
+  assertVaryIncludesAccept(res);
 });
 
 test(
-  'GET /docs/concepts/resources/index.HTML with Accept: text/markdown → redirect',
+  'GET /site/testing/tests/regular/index.HTML with Accept: text/markdown → redirect',
   {
     // Deployed behavior for uppercase `index.HTML` is inconsistent across
     // paths and environments on Netlify. Skip this edge case for now.
@@ -119,45 +99,30 @@ test(
       headers: { accept: 'text/markdown' },
       redirect: 'manual',
     });
-    assert.ok(
-      300 <= res.status && res.status <= 399,
-      `expected redirect (3xx), got ${res.status} for ${url}`,
-    );
+    assert.match(String(res.status), /^3\d\d$/, 'HTTP status');
     const loc = res.headers.get('location');
-    assert.ok(loc, 'missing Location header');
-    const target = new URL(loc, url).href;
-    const expected = '/docs/concepts/resources/';
-    assert.ok(
-      target.endsWith(expected),
-      `Location should end with ${expected} (or without trailing slash), got ${JSON.stringify(loc)} → ${target}`,
-    );
+    assert.ok(loc, 'Location');
+    const expectedPathname = '/site/testing/tests/regular/';
+    const locUrl = new URL(loc, url);
+    assert.strictEqual(locUrl.pathname, expectedPathname, 'Location');
   },
 );
 
-test('GET /search/ with Accept: text/markdown → HTML fallback + Vary: Accept', async () => {
+test('GET /site/testing/tests/no-md/ with Accept: text/markdown → HTML fallback + Vary: Accept', async () => {
   const ref = baseRef();
-  const url = absUrl('/search/', ref);
+  const url = absUrl(noMarkdownPath, ref);
   const res = await fetch(url, {
     headers: { accept: 'text/markdown' },
   });
   const ct = res.headers.get('content-type') ?? '';
   const text = await res.text();
-  assert.equal(res.status, 200, `expected 200 for ${url}`);
-  assert.ok(
-    ct.toLowerCase().includes('text/html'),
-    `expected text/html, got ${JSON.stringify(ct)}`,
-  );
-  assert.ok(
-    varyIncludesAccept(res.headers.get('vary')),
-    `Vary should include Accept, got ${JSON.stringify(res.headers.get('vary'))}`,
-  );
-  assert.ok(
-    text.includes('<!DOCTYPE html') || text.includes('<html'),
-    'body should look like HTML',
-  );
+  assert.strictEqual(res.status, 200, 'HTTP status');
+  assert.strictEqual(ct, expectedHtmlContentType, 'Content-Type');
+  assertVaryIncludesAccept(res);
+  assert.match(text, htmlDocumentPattern, 'Request body');
 });
 
-test('HEAD /docs/concepts/resources/ with Accept: text/markdown → empty body', async () => {
+test('HEAD /site/testing/tests/regular/ with Accept: text/markdown → empty body', async () => {
   const ref = baseRef();
   const url = absUrl(docsPath, ref);
   const res = await fetch(url, {
@@ -166,12 +131,9 @@ test('HEAD /docs/concepts/resources/ with Accept: text/markdown → empty body',
   });
   const ct = res.headers.get('content-type') ?? '';
   const buf = await res.arrayBuffer();
-  assert.equal(res.status, 200, `expected 200 for ${url}`);
-  assert.ok(
-    ct.toLowerCase().includes('text/markdown'),
-    `expected text/markdown, got ${JSON.stringify(ct)}`,
-  );
-  assert.equal(buf.byteLength, 0, 'expected empty body');
+  assert.strictEqual(res.status, 200, 'HTTP status');
+  assert.strictEqual(ct, expectedNegotiatedMarkdownContentType, 'Content-Type');
+  assert.strictEqual(buf.byteLength, 0, 'Response body');
 });
 
 test('GET /docs.html → redirect toward /docs/', async () => {
@@ -181,18 +143,9 @@ test('GET /docs.html → redirect toward /docs/', async () => {
     headers: { accept: 'text/markdown' },
     redirect: 'manual',
   });
-  assert.ok(
-    res.status === 301 ||
-      res.status === 302 ||
-      res.status === 307 ||
-      res.status === 308,
-    `expected redirect (3xx), got ${res.status} for ${url}`,
-  );
+  assert.match(String(res.status), /^30[1278]$/, 'HTTP status');
   const loc = res.headers.get('location');
-  assert.ok(loc, 'missing Location header');
-  const target = new URL(loc, url).href;
-  assert.ok(
-    target.replace(/\/+$/, '').endsWith('/docs'),
-    `Location should end with /docs/ (or /docs), got ${JSON.stringify(loc)} → ${target}`,
-  );
+  assert.ok(loc, 'Location');
+  const docsLocUrl = new URL(loc, url);
+  assert.match(docsLocUrl.pathname, /^\/docs\/?$/, 'Location');
 });
