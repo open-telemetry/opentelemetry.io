@@ -1,0 +1,30 @@
+name: Tests
+
+# Scope: runs the `test:*-*` scripts grouped by `test:compound-tests` in
+# package.json (e.g. edge-function and redirect live checks). It does not run
+# `test:base`, which is currently `npm run check` / `check:all`; those are
+# covered elsewhere (check-file, check-links, check-text, spelling, i18n, …).
+
+on:
+  merge_group:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: 'TEST (excluding test:base)'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package.json
+
+      - run: npm install --ignore-scripts --omit=optional
+
+      - run: npm run test:compound-tests

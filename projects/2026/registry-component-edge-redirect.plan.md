@@ -89,8 +89,8 @@ loop while preserving redirects for missing component URLs.
    stitching, etc.). That is **by design**—keep the edge payload simple while
    still recording **`client_id`**, **`page_location`**, and
    **`engagement_time_msec`** for the missed URL. Extend
-   [`enqueueGa4PageViewEvent`](../../netlify/edge-functions/lib/ga4-mp.ts)
-   later if you need closer parity.
+   [`enqueueGa4PageViewEvent`](../../netlify/edge-functions/lib/ga4-mp.ts) later
+   if you need closer parity.
 
 4. **Non-matching** paths: bare `/ecosystem/registry` and `/ecosystem/registry/`
    only—**`context.next()`** with no outer `fetch` (the registry index page and

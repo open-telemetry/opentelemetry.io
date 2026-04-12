@@ -273,9 +273,10 @@ The repository includes several other workflows:
 | `check-text.yml`           | Textlint terminology checks                   |
 | `check-i18n.yml`           | Localization front matter validation          |
 | `check-spelling.yml`       | Spell checking                                |
+| `test.yml`                 | Test (excludes `test:base`)                   |
 | `auto-update-registry.yml` | Auto-update registry package versions         |
 | `auto-update-versions.yml` | Auto-update OTel component versions           |
 | `build-dev.yml`            | Development build and preview                 |
 | `lint-scripts.yml`         | ShellCheck linting for `.github/scripts/`     |
-| `label-prs.yml`            | Auto-label PRs based on file paths            |
+| `label-manager.yml`        | PR labels (component labels & approval flow)  |
 | `component-owners.yml`     | Assign reviewers based on component ownership |
