@@ -39,4 +39,5 @@ Per-function live test launchers:
 npm run _test:ef:live:markdown-negotiation -- [URL | PR_NUMBER]
 npm run _test:ef:live:asset-tracking -- [URL | PR_NUMBER]
 npm run _test:ef:live:schema-analytics -- [URL | PR_NUMBER]
+npm run _test:ef:live:registry-component-redirect -- [URL | PR_NUMBER]
 ```

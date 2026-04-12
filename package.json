@@ -53,6 +53,7 @@
     "_test:ef:live:asset-tracking": "node netlify/edge-functions/asset-tracking/live-check.mjs",
     "_test:ef:live:markdown-negotiation": "node netlify/edge-functions/markdown-negotiation/live-check.mjs",
     "_test:ef:live:schema-analytics": "node netlify/edge-functions/schema-analytics/live-check.mjs",
+    "_test:ef:live:registry-component-redirect": "node netlify/edge-functions/registry-component-redirect/live-check.mjs",
     "_test:ef:live": "node netlify/edge-functions/bin/live-check.mjs",
     "_test:redirects:live": "node tests/redirects/live-check.mjs",
     "all": "bash -c 'x=0; for c in \"$@\"; do npm run $c || x=$((x+1)); done; ((!x)) || (echo \"ERROR: some scripts failed!\" && exit 1)' -",

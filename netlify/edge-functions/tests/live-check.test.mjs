@@ -10,6 +10,8 @@ const { registerLiveChecks: registerAssetTrackingLiveChecks } =
   await import('../asset-tracking/live-check.test.mjs');
 const { registerLiveChecks: registerSchemaAnalyticsLiveChecks } =
   await import('../schema-analytics/live-check.test.mjs');
+const { registerLiveChecks: registerRegistryCompRedirectLiveChecks } =
+  await import('../registry-component-redirect/live-check.test.mjs');
 
 export function registerLiveChecks(registerTest = test) {
   registerTest('markdown-negotiation', async (t) => {
@@ -22,6 +24,10 @@ export function registerLiveChecks(registerTest = test) {
 
   registerTest('schema-analytics', async (t) => {
     registerSchemaAnalyticsLiveChecks(t.test.bind(t));
+  });
+
+  registerTest('registry-component-redirect', async (t) => {
+    registerRegistryCompRedirectLiveChecks(t.test.bind(t));
   });
 }
 

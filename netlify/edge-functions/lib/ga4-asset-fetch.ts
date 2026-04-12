@@ -104,7 +104,11 @@ export function isInternalAssetFetchRequest(request: Request): boolean {
 }
 
 /** Canonical `event_emitter` values; see projects/2026/asset-fetch-analytics.plan.md */
-export type AssetFetchEventEmitter = 'negotiation' | 'tracking' | 'schema';
+export type AssetFetchEventEmitter =
+  | 'negotiation'
+  | 'tracking'
+  | 'schema'
+  | 'registry-component';
 
 /**
  * GA4 `asset_fetch` event parameters (custom dimensions). Required fields match
