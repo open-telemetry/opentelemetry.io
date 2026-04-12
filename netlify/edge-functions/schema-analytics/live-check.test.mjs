@@ -9,27 +9,19 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-/** Must match the key set in `live-check.mjs` before spawning `node --test`. */
-const LIVE_CHECK_BASE_URL_ENV = 'LIVE_CHECK_BASE_URL';
-
-function resolveBaseRef(raw) {
-  const withScheme = /^https?:\/\//i.test(raw) ? raw : `https://${raw}`;
-  return new URL(withScheme.endsWith('/') ? withScheme : `${withScheme}/`);
-}
-
-function absUrl(path, baseRef) {
-  return new URL(path, baseRef).href;
-}
-
-function baseRef() {
-  const raw = process.env[LIVE_CHECK_BASE_URL_ENV]?.trim();
-  assert.ok(raw, 'Run live checks via: node .../live-check.mjs [-h] [BASE]');
-  return resolveBaseRef(raw);
-}
+import { ASSET_FETCH_GA_INFO_HEADER } from '../lib/ga4-asset-fetch.ts';
+import {
+  absUrl,
+  baseRef,
+  expectedConfigTag,
+} from '../lib/live-check-test-base.mjs';
 
 const schemaVersionPath = '/schemas/1.40.0';
 const latestSchemaPath = '/schemas/latest';
 const missingSchemaPath = '/schemas/does-not-exist';
+
+/** Set on successful `/schemas/*` responses in `schema-analytics/index.ts`. */
+const expectedSchemaYamlContentType = 'application/yaml';
 
 test('GET /schemas/1.40.0 → YAML response', async () => {
   const ref = baseRef();
@@ -38,15 +30,20 @@ test('GET /schemas/1.40.0 → YAML response', async () => {
   const ct = res.headers.get('content-type') ?? '';
   const text = await res.text();
 
-  assert.equal(res.status, 200, `expected 200 for ${url}`);
-  assert.equal(
-    ct.toLowerCase(),
-    'application/yaml',
-    `expected application/yaml content-type, got ${JSON.stringify(ct)}`,
-  );
-  assert.ok(
-    text.includes('schema_url:'),
-    'body should look like a schema YAML document',
+  assert.strictEqual(res.status, 200, 'HTTP status');
+  assert.strictEqual(ct, expectedSchemaYamlContentType, 'Content-Type');
+  assert.match(text, /schema_url:/, 'Request body');
+});
+
+test('GET /schemas/1.40.0 → X-Asset-Fetch-Ga-Info header', async () => {
+  const ref = baseRef();
+  const url = absUrl(schemaVersionPath, ref);
+  const res = await fetch(url);
+
+  assert.strictEqual(
+    res.headers.get(ASSET_FETCH_GA_INFO_HEADER),
+    `${schemaVersionPath};ga-event-candidate,${expectedConfigTag(ref)}`,
+    'X-Asset-Fetch-Ga-Info',
   );
 });
 
@@ -57,13 +54,9 @@ test('HEAD /schemas/1.40.0 → success with empty body', async () => {
   const ct = res.headers.get('content-type') ?? '';
   const buf = await res.arrayBuffer();
 
-  assert.equal(res.status, 200, `expected 200 for ${url}`);
-  assert.equal(
-    ct.toLowerCase(),
-    'application/yaml',
-    `expected application/yaml content-type, got ${JSON.stringify(ct)}`,
-  );
-  assert.equal(buf.byteLength, 0, 'expected empty body');
+  assert.strictEqual(res.status, 200, 'HTTP status');
+  assert.strictEqual(ct, expectedSchemaYamlContentType, 'Content-Type');
+  assert.strictEqual(buf.byteLength, 0, 'Response body');
 });
 
 test('GET /schemas/latest → redirect', async () => {
@@ -71,15 +64,12 @@ test('GET /schemas/latest → redirect', async () => {
   const url = absUrl(latestSchemaPath, ref);
   const res = await fetch(url, { redirect: 'manual' });
 
-  assert.ok(300 <= res.status && res.status <= 399, `status for ${url}`);
+  assert.match(String(res.status), /^3\d\d$/, 'HTTP status');
 
   const loc = res.headers.get('location');
-  assert.ok(loc, 'missing Location header');
-  const target = new URL(loc, url).href;
-  assert.ok(
-    target.includes('/schemas/'),
-    `Location should stay under /schemas/, got ${JSON.stringify(loc)} → ${target}`,
-  );
+  assert.ok(loc, 'Location');
+  const latestLocUrl = new URL(loc, url);
+  assert.match(latestLocUrl.pathname, /^\/schemas\/.+$/, 'Location');
 });
 
 test('GET /schemas/does-not-exist → not found', async () => {
@@ -87,11 +77,7 @@ test('GET /schemas/does-not-exist → not found', async () => {
   const url = absUrl(missingSchemaPath, ref);
   const res = await fetch(url, { redirect: 'manual' });
 
-  assert.equal(res.status, 404, `status for ${url}`);
+  assert.strictEqual(res.status, 404, 'HTTP status');
   const ct = res.headers.get('content-type') ?? '';
-  assert.notEqual(
-    ct,
-    'application/yaml',
-    `non-YAML content-type for missing schema, got ${JSON.stringify(ct)}`,
-  );
+  assert.notStrictEqual(ct, 'application/yaml', 'Content-Type');
 });
