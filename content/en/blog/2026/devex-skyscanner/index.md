@@ -12,7 +12,8 @@ author: >-
   Sloughter](https://github.com/tsloughter) (community), [Neil
   Fordyce](https://github.com/neilfordyce) (Skyscanner)
 sig: Developer Experience SIG
-cSpell:ignore: devex Sloughter Öjeling
+# prettier-ignore
+cSpell:ignore: devex Fordyce kube kubelet rollouts Skyscanner Sloughter unsets Öjeling
 ---
 
 The Developer Experience SIG is publishing a series of blog posts featuring
