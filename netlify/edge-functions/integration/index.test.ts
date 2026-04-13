@@ -11,7 +11,7 @@ import assetTracking from '../asset-tracking/index.ts';
 import {
   ASSET_FETCH_GA_INFO_HEADER,
   INTERNAL_ASSET_FETCH_GA_INFO_VALUE,
-} from '../lib/ga4-asset-fetch.ts';
+} from '../lib/ga4-mp.ts';
 import {
   assertAssetFetchGa4Event,
   createWaitUntilSpy,

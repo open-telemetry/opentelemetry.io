@@ -6,7 +6,7 @@ import {
   enqueueAssetFetchEvent,
   normalizeContentType,
   withAssetFetchGaInfoHeader,
-} from '../lib/ga4-asset-fetch.ts';
+} from '../lib/ga4-mp.ts';
 
 const TRACKED_EXTENSIONS = new Set(['.md', '.txt']);
 
