@@ -22511,6 +22511,10 @@
     "StatusCode": 200,
     "LastSeen": "2026-03-23T14:15:06.803246611Z"
   },
+  "https://pkg.go.dev/go.opentelemetry.io/otel/semconv/v1.38.0": {
+    "StatusCode": 200,
+    "LastSeen": "2026-04-13T17:30:53.82668158Z"
+  },
   "https://pkg.go.dev/google.golang.org/grpc": {
     "StatusCode": 200,
     "LastSeen": "2026-03-18T09:54:51.577785387Z"
