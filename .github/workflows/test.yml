@@ -23,6 +23,7 @@ jobs:
         with:
           node-version-file: .nvmrc
 
-      - run: npm install --ignore-scripts --omit=optional
+      # Don't --ignore-scripts: code-excerpter needs submodules
+      - run: npm install --omit=optional
 
       - run: npm run test:compound-tests
