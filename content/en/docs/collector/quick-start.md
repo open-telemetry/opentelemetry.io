@@ -11,12 +11,11 @@ cSpell:ignore: docker dokey gobin okey telemetrygen
 The OpenTelemetry Collector is responsible for receiving telemetry data;
 [traces](/docs/concepts/signals/traces/),
 [metrics](/docs/concepts/signals/metrics/), and
-[logs](/docs/concepts/signals/logs/) processing it, and forwarding it to one
-or more observability backends through its component pipeline.
+[logs](/docs/concepts/signals/logs/) processing it, and forwarding it to one or
+more observability backends through its component pipeline.
 
-{{% alert title="Note" %}}
-This is a basic local demo. The goal here is to show you how the Collector
-works, not to set up a production-ready environment.
+{{% alert title="Note" %}} This is a basic local demo. The goal here is to show
+you how the Collector works, not to set up a production-ready environment.
 {{% /alert %}}
 
 In this guide, you will:
@@ -36,10 +35,9 @@ Before you begin, make sure your environment has the following tools installed:
 
 - [Docker](https://www.docker.com/) or any compatible container runtime — used
   to run the Collector
-- [Go](https://go.dev/) 1.20 or higher — used to install the telemetry
-  generator
-- [`GOBIN` environment variable][gobin] set — ensures installed Go
-  binaries are available in your PATH[^1]
+- [Go](https://go.dev/) 1.20 or higher — used to install the telemetry generator
+- [`GOBIN` environment variable][gobin] set — ensures installed Go binaries are
+  available in your PATH[^1]
 
 If `GOBIN` isn't set, run:
 
@@ -81,11 +79,11 @@ adjust the command syntax.
      2>&1 | tee collector-output.txt
 ```
 
-   This runs the Collector locally and opens three ports:
+This runs the Collector locally and opens three ports:
 
-   - `4317` — OTLP over gRPC (the default for most SDKs)
-   - `4318` — OTLP over HTTP, for clients that don't support gRPC
-   - `55679` — ZPages, a built-in debug UI you can open in the browser
+- `4317` — OTLP over gRPC (the default for most SDKs)
+- `4318` — OTLP over HTTP, for clients that don't support gRPC
+- `55679` — ZPages, a built-in debug UI you can open in the browser
 
 4. In a separate terminal, generate some traces:
 
@@ -93,65 +91,64 @@ adjust the command syntax.
    $GOBIN/telemetrygen traces --otlp-insecure --traces 3
 ```
 
-   You will see output confirming the traces were sent:
+You will see output confirming the traces were sent:
 
 ```text
    2024-01-16T14:33:15.692-0500  INFO  traces/worker.go:99  traces generated  {"worker": 0, "traces": 3}
    2024-01-16T14:33:15.692-0500  INFO  traces/traces.go:58  stop the batch span processor
 ```
 
-5. Back in the Collector terminal,  you should see trace ingest activity
-   similar to the following:
+5. Back in the Collector terminal, you should see trace ingest activity similar
+   to the following:
 
- ```console
-   $ grep -E '^Span|(ID|Name|Kind|time|Status \w+)\s+:' ./collector-output.txt
-   Span #0
-       Trace ID       : f30faffbde5fcf71432f89da1bf7bc14
-       Parent ID      : 6f1ff7f9cf4ec1c7
-       ID             : 8d1e820c1ac57337
-       Name           : okey-dokey
-       Kind           : Server
-       Start time     : 2024-01-16 14:13:54.585877 +0000 UTC
-       End time       : 2024-01-16 14:13:54.586 +0000 UTC
-       Status code    : Unset
-       Status message :
-   Span #1
-       Trace ID       : f30faffbde5fcf71432f89da1bf7bc14
-       Parent ID      :
-       ID             : 6f1ff7f9cf4ec1c7
-       Name           : lets-go
-       Kind           : Client
-       Start time     : 2024-01-16 14:13:54.585877 +0000 UTC
-       End time       : 2024-01-16 14:13:54.586 +0000 UTC
-       Status code    : Unset
-       Status message :
-   ...
-   ```
+```console
+  $ grep -E '^Span|(ID|Name|Kind|time|Status \w+)\s+:' ./collector-output.txt
+  Span #0
+      Trace ID       : f30faffbde5fcf71432f89da1bf7bc14
+      Parent ID      : 6f1ff7f9cf4ec1c7
+      ID             : 8d1e820c1ac57337
+      Name           : okey-dokey
+      Kind           : Server
+      Start time     : 2024-01-16 14:13:54.585877 +0000 UTC
+      End time       : 2024-01-16 14:13:54.586 +0000 UTC
+      Status code    : Unset
+      Status message :
+  Span #1
+      Trace ID       : f30faffbde5fcf71432f89da1bf7bc14
+      Parent ID      :
+      ID             : 6f1ff7f9cf4ec1c7
+      Name           : lets-go
+      Kind           : Client
+      Start time     : 2024-01-16 14:13:54.585877 +0000 UTC
+      End time       : 2024-01-16 14:13:54.586 +0000 UTC
+      Status code    : Unset
+      Status message :
+  ...
+```
 
-   You should see span details like Trace ID, Name, Kind, and timestamps,
-   that's the Collector receiving and processing your data.
+You should see span details like Trace ID, Name, Kind, and timestamps, that's
+the Collector receiving and processing your data.
 
-6. To explore the traces visually, open <http://localhost:55679/debug/tracez>
-   in your browser and select one of the traces from the table.
+6. To explore the traces visually, open <http://localhost:55679/debug/tracez> in
+   your browser and select one of the traces from the table.
 
 7. Press <kbd>Control-C</kbd> to stop the Collector.
 
 ## Next steps
 
 At this point, you've run the Collector locally and seen how it handles
-telemetry end to end. From here, you can start digging into how it's
-used in real setups:
+telemetry end to end. From here, you can start digging into how it's used in
+real setups:
 
-- [Configuration](/docs/collector/configuration): Learn how the
-  Collector's config file works and how to connect it to a real backend
-  like Jaeger or Prometheus.
-- [Deployment Methods](/docs/collector/deploy/): Understand the
-  difference between running the Collector as an agent versus a gateway.
-- [Install the Collector](/docs/collector/install/): Explore
-  installation options beyond Docker, including binaries and Kubernetes.
+- [Configuration](/docs/collector/configuration): Learn how the Collector's
+  config file works and how to connect it to a real backend like Jaeger or
+  Prometheus.
+- [Deployment Methods](/docs/collector/deploy/): Understand the difference
+  between running the Collector as an agent versus a gateway.
+- [Install the Collector](/docs/collector/install/): Explore installation
+  options beyond Docker, including binaries and Kubernetes.
 - [Component registry](/ecosystem/registry/?language=collector): Browse
-  available receivers, processors, and exporters to extend your
-  pipeline.
+  available receivers, processors, and exporters to extend your pipeline.
 
 [gobin]: https://pkg.go.dev/cmd/go#hdr-Environment_variables
 [logs]: /docs/concepts/signals/logs/
