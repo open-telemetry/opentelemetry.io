@@ -2,10 +2,8 @@
 title:
   'How Skyscanner scales OpenTelemetry: managing collectors across 24 production
   clusters'
-linkTitle:
-  'How Skyscanner scales OpenTelemetry: managing collectors across 24 production
-  clusters'
-date: 2026-04-13
+linkTitle: How Skyscanner scales OpenTelemetry
+date: 2026-04-21
 author: >-
   [Johanna Öjeling](https://github.com/johannaojeling) (Grafana Labs), [Juliano
   Costa](https://github.com/julianocosta89) (Datadog), [Tristan
