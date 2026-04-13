@@ -85,19 +85,20 @@ are internal helpers and are not intended to be run directly.
 
 ## Test and CI
 
-| Script                     | Description                                                         |
-| -------------------------- | ------------------------------------------------------------------- |
-| `test`                     | Run the most commonly needed tests.                                 |
-| `test:base`                | Base tests.                                                         |
-| `test:all`                 | Runs `test:base`, `test:collector-sync`, and `test:edge-functions`. |
-| `test:collector-sync`      | Collector-sync tests.                                               |
-| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.        |
-| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.                 |
-| `test-and-fix`             | Run fix scripts (excluding i18n/refcache/submodule), then checks.   |
-| `diff:check`               | Warn if working tree has uncommitted changes.                       |
-| `diff:fail`                | Fail if working tree has changes (e.g. after build).                |
-| `netlify-build:preview`    | `build:preview` then `diff:check`.                                  |
-| `netlify-build:production` | `build:production` then `diff:check`.                               |
+| Script                     | Description                                                       |
+| -------------------------- | ----------------------------------------------------------------- |
+| `test`                     | Run the most commonly needed tests.                               |
+| `test:base`                | Base tests (same as `check`).                                     |
+| `test:compound-tests`      | Runs compound `test:*-*` scripts.                                 |
+| `test:all`                 | Runs `test:base` then `test:compound-tests`.                      |
+| `test:collector-sync`      | Collector-sync tests.                                             |
+| `test:edge-functions`      | Node test runner over `netlify/edge-functions/**/*.test.ts`.      |
+| `test:edge-functions:live` | Optional `node:test` live suite; supports `--help`.               |
+| `test-and-fix`             | Run fix scripts (excluding i18n/refcache/submodule), then checks. |
+| `diff:check`               | Warn if working tree has uncommitted changes.                     |
+| `diff:fail`                | Fail if working tree has changes (e.g. after build).              |
+| `netlify-build:preview`    | `build:preview` then `diff:check`.                                |
+| `netlify-build:production` | `build:production` then `diff:check`.                             |
 
 ## Utilities
 
