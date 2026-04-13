@@ -5,62 +5,99 @@
  * Serve Hugo's Markdown alternate output (`.../index.md`) when the client
  * explicitly accepts `text/markdown` and does not prefer HTML more strongly.
  *
- * Strategy: treat slash and extensionless paths as pages; only
- * `.../index.html` maps to sibling `index.md`. Other `.html` paths skip
- * negotiation so Netlify redirects (e.g. `/docs.html` → `/docs/`) still run.
+ * Strategy: treat slash and extensionless paths as pages; only `.../index.html`
+ * maps to sibling `index.md`. Other `.html` paths skip negotiation so Netlify
+ * redirects (e.g. `/docs.html` → `/docs/`) still run.
  *
  * We fetch the prebuilt Markdown artifact directly instead of rewriting
- * blindly. That lets us fall back to the normal HTML route when a page has no
- * Markdown output.
+ * blindly. Negotiated responses surface that subrequest outcome directly
+ * rather than falling back to the normal route for non-2xx outcomes.
+ *
+ * GA4 `asset_fetch` events are issued as described in
+ * projects/2026/asset-fetch-analytics.plan.md.
  */
+
+import {
+  ASSET_FETCH_GA_INFO_HEADER,
+  buildAssetFetchGaInfoHeaderValue,
+  hasAssetFetchConfig,
+  INTERNAL_ASSET_FETCH_GA_INFO_VALUE,
+  type AssetFetchEventParams,
+  enqueueAssetFetchEvent,
+  normalizeContentType,
+  withAssetFetchGaInfoHeader,
+} from '../lib/ga4-mp.ts';
 
 const HTML_TYPES = new Set(['text/html', 'application/xhtml+xml']);
 
 export default async function markdownNegotiation(
   request: Request,
-  context: { next: () => Promise<Response> },
+  context: {
+    next: () => Promise<Response>;
+    waitUntil?: (promise: Promise<unknown>) => void;
+    requestId?: string;
+  },
 ) {
   const url = new URL(request.url);
 
   if (!shouldConsiderRequest(request.method, url.pathname)) {
-    return context.next();
+    return withAssetFetchGaInfoHeader(
+      await context.next(),
+      buildAssetFetchGaInfoHeaderValue({
+        noneReason: getMarkdownNegotiationPathOrMethodNoneReason(
+          request.method,
+          url.pathname,
+        ),
+        gaEventCandidate: false,
+      }),
+      { overwrite: false },
+    );
   }
 
   const acceptHeader = request.headers.get('accept');
   if (!acceptHeader || !prefersMarkdownOverHtml(acceptHeader)) {
-    return context.next();
+    return withAssetFetchGaInfoHeader(
+      await context.next(),
+      buildAssetFetchGaInfoHeaderValue({ gaEventCandidate: false }),
+      { overwrite: false },
+    );
   }
 
   const markdownResponse = await fetchMarkdownVariant(
     resolveMarkdownUrl(url),
     request.method,
   );
-
-  if (!isSuccessfulMarkdownResponse(markdownResponse)) {
-    return withVaryAccept(await context.next());
+  const assetPath = resolveMarkdownPath(url.pathname);
+  const negotiatedResponse = buildNegotiatedMarkdownResponse(
+    markdownResponse,
+    request.method,
+  );
+  if (request.method === 'GET' || request.method === 'HEAD') {
+    const eventParams: AssetFetchEventParams = {
+      asset_path: assetPath,
+      content_type: normalizeContentType(
+        negotiatedResponse.headers.get('content-type'),
+      ),
+      status_code: String(markdownResponse.status),
+      event_emitter: 'negotiation',
+      ...(url.pathname !== assetPath ? { original_path: url.pathname } : {}),
+    };
+    enqueueAssetFetchEvent(request, context, eventParams);
   }
 
-  const headers = new Headers(markdownResponse.headers);
-  headers.set('content-type', 'text/markdown; charset=utf-8');
-  setVaryAccept(headers);
-
-  if (request.method === 'HEAD') {
-    if (markdownResponse.body) {
-      void markdownResponse.body.cancel();
-    }
-
-    return new Response(null, {
-      headers,
-      status: markdownResponse.status,
-      statusText: markdownResponse.statusText,
-    });
-  }
-
-  return new Response(markdownResponse.body, {
-    headers,
-    status: markdownResponse.status,
-    statusText: markdownResponse.statusText,
-  });
+  return withAssetFetchGaInfoHeader(
+    negotiatedResponse,
+    request.method === 'GET' || request.method === 'HEAD'
+      ? buildAssetFetchGaInfoHeaderValue({
+          assetPath,
+          configPresent: hasAssetFetchConfig(),
+          gaEventCandidate: true,
+        })
+      : buildAssetFetchGaInfoHeaderValue({
+          noneReason: `request method ${request.method} is not currently tracked`,
+          gaEventCandidate: false,
+        }),
+  );
 }
 
 export function shouldConsiderRequest(
@@ -89,7 +126,7 @@ export function shouldConsiderRequest(
 
 export function resolveMarkdownPath(pathname: string): string {
   if (isIndexHtmlPath(pathname)) {
-    return pathname.replace(/index\.html$/i, 'index.md');
+    return pathname.replace(/index\.html$/, 'index.md');
   }
 
   const normalizedPath = pathname.replace(/\/+$/, '') || '/';
@@ -108,7 +145,7 @@ function getPathExtension(pathname: string): string {
 }
 
 function isIndexHtmlPath(pathname: string): boolean {
-  return pathname.toLowerCase().endsWith('/index.html');
+  return pathname.endsWith('/index.html');
 }
 
 function resolveMarkdownUrl(url: URL): URL {
@@ -120,7 +157,11 @@ async function fetchMarkdownVariant(
   originalMethod: string,
 ): Promise<Response> {
   const requestInit = {
-    headers: { accept: 'text/markdown' },
+    headers: {
+      accept: 'text/markdown',
+      [ASSET_FETCH_GA_INFO_HEADER]: INTERNAL_ASSET_FETCH_GA_INFO_VALUE,
+    },
+    redirect: 'manual' as const,
   };
 
   if (originalMethod === 'HEAD') {
@@ -143,8 +184,48 @@ async function fetchMarkdownVariant(
   );
 }
 
-function isSuccessfulMarkdownResponse(response: Response): boolean {
-  return response.status >= 200 && response.status < 300;
+function buildNegotiatedMarkdownResponse(
+  markdownResponse: Response,
+  requestMethod: string,
+): Response {
+  const headers = new Headers(markdownResponse.headers);
+  if (markdownResponse.status >= 200 && markdownResponse.status < 300) {
+    headers.set('content-type', 'text/markdown; charset=utf-8');
+  }
+  setVaryAccept(headers);
+
+  if (requestMethod === 'HEAD') {
+    if (markdownResponse.body) {
+      void markdownResponse.body.cancel();
+    }
+
+    return new Response(null, {
+      headers,
+      status: markdownResponse.status,
+      statusText: markdownResponse.statusText,
+    });
+  }
+
+  return new Response(markdownResponse.body, {
+    headers,
+    status: markdownResponse.status,
+    statusText: markdownResponse.statusText,
+  });
+}
+
+function getMarkdownNegotiationPathOrMethodNoneReason(
+  method: string,
+  pathname: string,
+): string | undefined {
+  if (method !== 'GET' && method !== 'HEAD') {
+    return `request method ${method} is not currently tracked`;
+  }
+
+  if (!shouldConsiderRequest(method, pathname)) {
+    return 'request path does not match a tracked route';
+  }
+
+  return undefined;
 }
 
 export function prefersMarkdownOverHtml(acceptHeader: string): boolean {
@@ -200,13 +281,6 @@ function parseAccept(acceptHeader: string): { mediaType: string; q: number }[] {
   return mediaRanges;
 }
 
-/**
- * Fallback HTML responses also need `Vary: Accept`:
- *
- * - clone the fallback response headers
- * - ensure `Accept` is present in `Vary`
- * - return the response unchanged otherwise
- */
 function withVaryAccept(response: Response): Response {
   const headers = new Headers(response.headers);
   setVaryAccept(headers);
