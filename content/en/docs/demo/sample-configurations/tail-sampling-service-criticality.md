@@ -4,9 +4,9 @@ linkTitle: Tail Sampling
 ---
 
 This example demonstrates how to use the
-[`service.criticality`](/docs/specs/semconv/resource/service/#service)
-resource attribute for intelligent tail-based sampling decisions in the
-OpenTelemetry Collector.
+[`service.criticality`](/docs/specs/semconv/resource/service/#service) resource
+attribute for intelligent tail-based sampling decisions in the OpenTelemetry
+Collector.
 
 The demo application assigns a `service.criticality` value to each service,
 classifying them by operational importance:
@@ -16,7 +16,7 @@ classifying them by operational importance:
 | `critical`  | 100%          | payment, checkout, frontend, frontend-proxy                                                |
 | `high`      | 50%           | cart, product-catalog, currency, shipping                                                  |
 | `medium`    | 10%           | recommendation, ad, product-reviews, email                                                 |
-| `low`       | 1%            | accounting, fraud-detection, image-provider, load-generator, quote, flagd, flagd-ui, kafka |
+| `low`       | 1%            | accounting, fraud-detection, image-provider, load-generator, quote, flagd, flagd-ui, Kafka |
 
 ## Collector Configuration
 
