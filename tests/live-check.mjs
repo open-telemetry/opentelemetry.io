@@ -1,13 +1,21 @@
 #!/usr/bin/env node
+
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import { runLiveCheckLauncher } from '../../../tests/lib/live-check-launcher.mjs';
+
+import { runLiveCheckLauncher } from './lib/live-check-launcher.mjs';
 
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const testFile = path.join(dir, 'live-check.test.mjs');
+
 runLiveCheckLauncher({
   rawArgs: process.argv.slice(2),
-  command: 'node netlify/edge-functions/asset-tracking/live-check.mjs',
-  label: 'Asset tracking',
+  command: 'node tests/live-check.mjs',
+  label: 'Site',
   testFile,
+  examples: [
+    'node tests/live-check.mjs',
+    'node tests/live-check.mjs 9632',
+    'node tests/live-check.mjs http://localhost:8888',
+  ],
 });
